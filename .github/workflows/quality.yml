@@ -1,35 +1,25 @@
-name: Apply Foundation Refactor
+name: Quality
 
 on:
-  push:
-    branches: [agent/platform-foundation]
   pull_request:
+    branches: [main]
+  push:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: foundation-bootstrap
+  group: quality-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  apply-and-verify:
-    if: github.head_ref == 'agent/platform-foundation' || github.ref == 'refs/heads/agent/platform-foundation'
+  quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
-      - name: Checkout branch
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: agent/platform-foundation
-          fetch-depth: 0
-
-      - name: Reconstruct and apply reviewed patch
-        run: |
-          cat .foundation/part-* | base64 --decode | gzip --decompress > /tmp/foundation.patch
-          git apply --index /tmp/foundation.patch
-          rm -rf .foundation .foundation.patch.gz.b64
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,29 +27,8 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Regenerate and verify dependency lock
-        run: |
-          npm install
-          rm -rf node_modules
-          npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Generate immutable-content baseline
-        run: npm run canonical:generate
-
-      - name: Verify protected content and application quality
+      - name: Run canonical, content, guide, type and build checks
         run: npm run quality
-
-      - name: Ensure canonical source files were not edited
-        run: |
-          if git diff --cached --name-only HEAD -- 'src/data/**/pages.ts' | grep -q .; then
-            echo 'Protected page data changed; refusing to commit.'
-            exit 1
-          fi
-
-      - name: Commit verified foundation
-        run: |
-          git config user.name 'OpenAI'
-          git config user.email 'noreply@openai.com'
-          git add -A
-          git commit -m 'refactor: establish scalable platform foundation'
-          git push origin HEAD:agent/platform-foundation
