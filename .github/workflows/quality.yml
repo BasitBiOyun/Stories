@@ -10,16 +10,18 @@ permissions:
   contents: read
 
 concurrency:
-  group: quality
+  group: quality-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,3 +37,42 @@ jobs:
 
       - name: Run canonical, content, guide, type, build and bundle checks
         run: npm run quality
+
+      - name: Install pinned browser regression tooling
+        run: |
+          npm install --no-save --package-lock=false playwright@1.55.0 pixelmatch@6.0.0 pngjs@7.0.0
+          npx playwright install --with-deps chromium
+
+      - name: Build main-branch visual baseline
+        run: |
+          git fetch origin main
+          git worktree add /tmp/stories-main origin/main
+          npm --prefix /tmp/stories-main ci
+          npm --prefix /tmp/stories-main run build
+
+      - name: Start branch and main preview servers
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/stories-branch-preview.log 2>&1 &
+          echo $! > /tmp/stories-branch-preview.pid
+          npm --prefix /tmp/stories-main run preview -- --host 127.0.0.1 --port 4174 > /tmp/stories-main-preview.log 2>&1 &
+          echo $! > /tmp/stories-main-preview.pid
+
+      - name: Run runtime and visual regression suite
+        run: node scripts/validation/runtimeRegression.mjs --branch=http://127.0.0.1:4173 --main=http://127.0.0.1:4174 --artifacts=artifacts/runtime
+
+      - name: Show preview logs on failure
+        if: failure()
+        run: |
+          echo '--- Branch preview ---'
+          cat /tmp/stories-branch-preview.log || true
+          echo '--- Main preview ---'
+          cat /tmp/stories-main-preview.log || true
+
+      - name: Upload runtime regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-regression
+          path: artifacts/runtime
+          retention-days: 14
+          if-no-files-found: warn
