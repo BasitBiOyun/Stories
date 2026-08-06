@@ -3,6 +3,8 @@ name: Apply Foundation Refactor
 on:
   push:
     branches: [agent/platform-foundation]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
@@ -13,12 +15,14 @@ concurrency:
 
 jobs:
   apply-and-verify:
+    if: github.head_ref == 'agent/platform-foundation' || github.ref == 'refs/heads/agent/platform-foundation'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
+          ref: agent/platform-foundation
           fetch-depth: 0
 
       - name: Reconstruct and apply reviewed patch
@@ -27,7 +31,7 @@ jobs:
           git apply --index /tmp/foundation.patch
           rm -rf .foundation .foundation.patch.gz.b64
 
-      - name: Install dependencies
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
