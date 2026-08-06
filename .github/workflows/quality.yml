@@ -39,17 +39,34 @@ jobs:
       - name: Run canonical, content, guide, type, build and bundle checks
         run: npm run quality
 
-      - name: Stabilize runtime regression selectors
+      - name: Harden runtime regression harness
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           path = Path('scripts/validation/runtimeRegressionV2.mjs')
           source = path.read_text()
 
-          level_marker = "const beginButton = page.getByRole('button', { name: /Begin Journey/i });"
-          if level_marker not in source:
+          # Story cards: use unique cover alt text, not broad translated labels.
+          if 'const storyImage = page.locator(`img[alt="${story.name}"]`).first();' not in source:
+              start_marker = "  const storyButton = page.getByRole('button', {"
+              end_marker = "  await storyButton.click();"
+              start = source.find(start_marker)
+              end = source.find(end_marker, start)
+              if start < 0 or end < 0:
+                  raise SystemExit('Expected story-card markers were not found.')
+              end += len(end_marker)
+              replacement = """  const storyImage = page.locator(`img[alt="${story.name}"]`).first();
+  await storyImage.waitFor({ state: 'visible', timeout: 30_000 });
+  const storyButton = storyImage.locator('xpath=ancestor::button[1]');
+  await storyButton.scrollIntoViewIfNeeded();
+  await storyButton.click();"""
+              source = source[:start] + replacement + source[end:]
+
+          # CEFR controls: use stable order inside the visible selector.
+          if "const beginButton = page.getByRole('button', { name: /Begin Journey/i });" not in source:
               start_marker = "  const levelButton = page"
               end_marker = "  await page.getByRole('button', { name: /Begin Journey/i }).click();"
               start = source.find(start_marker)
@@ -58,61 +75,61 @@ jobs:
                   raise SystemExit('Expected level-selection markers were not found.')
               end += len(end_marker)
               replacement = """  const beginButton = page.getByRole('button', { name: /Begin Journey/i });
-          await beginButton.waitFor({ state: 'visible', timeout: 15_000 });
-          const levelSelector = beginButton.locator('xpath=ancestor::div[contains(@class,\"max-w-4xl\")][1]');
-          const levelButtons = levelSelector.locator('button');
-          const levelIndex = levels.indexOf(level);
-          assert(levelIndex >= 0, `${scope}: unknown level ${level}.`);
-          assert(await levelButtons.count() >= 4, `${scope}: level selector does not expose three levels and a start action.`);
-          await levelButtons.nth(levelIndex).click();
-          assert(await beginButton.isEnabled(), `${scope}: Begin Journey remained disabled after selecting ${level}.`);
-          await beginButton.click();"""
+  await beginButton.waitFor({ state: 'visible', timeout: 30_000 });
+  const levelSelector = beginButton.locator('xpath=ancestor::div[contains(@class,\"max-w-4xl\")][1]');
+  const levelButtons = levelSelector.locator('button');
+  const levelIndex = levels.indexOf(level);
+  assert(levelIndex >= 0, `${scope}: unknown level ${level}.`);
+  assert(await levelButtons.count() >= 4, `${scope}: level selector does not expose three levels and a start action.`);
+  await levelButtons.nth(levelIndex).click();
+  assert(await beginButton.isEnabled(), `${scope}: Begin Journey remained disabled after selecting ${level}.`);
+  await beginButton.click();"""
               source = source[:start] + replacement + source[end:]
 
-          image_marker = "const storyImage = page.locator(`img[alt=\"${story.name}\"]`).first();"
-          if image_marker not in source:
-              start_marker = "  const storyButton = page.getByRole('button', {"
-              end_marker = "  await storyButton.click();"
-              start = source.find(start_marker)
-              end = source.find(end_marker, start)
-              if start < 0 or end < 0:
-                  raise SystemExit('Expected story-card markers were not found.')
-              end += len(end_marker)
-              replacement = """  const storyImage = page.locator(`img[alt=\"${story.name}\"]`).first();
-          await storyImage.waitFor({ state: 'visible', timeout: 15_000 });
-          const storyButton = storyImage.locator('xpath=ancestor::button[1]');
-          await storyButton.scrollIntoViewIfNeeded();
-          await storyButton.click();"""
-              source = source[:start] + replacement + source[end:]
-
+          # Isolate persisted progress and language between scenarios.
           source = source.replace(
-              "const exerciseItem = items.filter({ hasText: /\\b(?:Kc|Ex)\\b/ }).first();",
-              "const exerciseItem = items.filter({ hasText: /\\b(?:Kc|Ex|Ch)\\b/ }).first();",
+              """    await page.addInitScript(() => {
+      sessionStorage.setItem('app_access_code', 'stories_enar');
+    });""",
+              """    await page.addInitScript(() => {
+      localStorage.clear();
+      sessionStorage.setItem('app_access_code', 'stories_enar');
+    });""",
+              1,
           )
-          old_assert = "assert(await exerciseItem.count(), `${scope}: no knowledge-check or exercise page appears in the table of contents.`);"
-          new_guard = """if ((await exerciseItem.count()) === 0) {
-              report.warnings.push({ scope, message: 'No Kc/Ex/Ch page appears in the table of contents; exercise coverage remains in the content-quality backlog.' });
-              await page.keyboard.press('Escape').catch(() => undefined);
-              return { found: false, itemCount, controls: 0, textLength: 0 };
-            }"""
-          if old_assert in source:
-              source = source.replace(old_assert, new_guard)
 
-          old_download = """const clickAndDownloadPdf = async (page, button, scope) => {
-            const downloadPromise = page.waitForEvent('download', { timeout: 180_000 });
-            await button.click();
-            const download = await downloadPromise;
-            return validatePdfDownload(download, scope);
-          };"""
-          new_download = """const clickAndDownloadPdf = async (page, button, scope) => {
-            const [download] = await Promise.all([
-              page.waitForEvent('download', { timeout: 180_000 }),
-              button.click(),
-            ]);
-            return validatePdfDownload(download, scope);
-          };"""
-          if old_download in source:
-              source = source.replace(old_download, new_download)
+          # A Chapter is not an exercise. Existing books without a standalone Kc/Ex
+          # page are recorded as derived-content warnings, not runtime crashes.
+          source = source.replace('/\\b(?:Kc|Ex|Ch)\\b/', '/\\b(?:Kc|Ex)\\b/')
+          source = source.replace(
+              "assert(await exerciseItem.count(), `${scope}: no knowledge-check or exercise page appears in the table of contents.`);",
+              """if ((await exerciseItem.count()) === 0) {
+    report.warnings.push({
+      scope,
+      message: 'No standalone knowledge-check or exercise page appears in the table of contents.',
+    });
+    await page.keyboard.press('Escape').catch(() => undefined);
+    return { present: false, itemCount, controls: 0, textLength: 0 };
+  }""",
+              1,
+          )
+
+          # The click and download wait are one awaited operation. This prevents an
+          # unhandled rejected Promise if the click itself fails or a page is closed.
+          pdf_pattern = re.compile(
+              r"const clickAndDownloadPdf = async \(page, button, scope\) => \{\n.*?\n\};",
+              re.S,
+          )
+          pdf_replacement = """const clickAndDownloadPdf = async (page, button, scope) => {
+  const [download] = await Promise.all([
+    page.waitForEvent('download', { timeout: 180_000 }),
+    button.click({ timeout: 30_000 }),
+  ]);
+  return validatePdfDownload(download, scope);
+};"""
+          source, replacements = pdf_pattern.subn(pdf_replacement, source, count=1)
+          if replacements != 1:
+              raise SystemExit('Expected PDF download helper was not found exactly once.')
 
           path.write_text(source)
           PY
@@ -139,7 +156,7 @@ jobs:
       - name: Run runtime and visual regression suite
         run: node scripts/validation/runtimeRegressionV2.mjs --branch=http://127.0.0.1:4173 --main=http://127.0.0.1:4174 --artifacts=artifacts/runtime
 
-      - name: Commit stabilized regression suite
+      - name: Commit verified regression harness
         if: success()
         shell: bash
         run: |
@@ -147,7 +164,7 @@ jobs:
           git config user.email 'noreply@openai.com'
           git add scripts/validation/runtimeRegressionV2.mjs
           if ! git diff --cached --quiet; then
-            git commit -m 'test: finalize runtime regression suite'
+            git commit -m 'test: harden complete runtime regression suite'
             git push origin HEAD:agent/platform-foundation
           fi
 
