@@ -13,3 +13,12 @@ The expanded English and Arabic layout pilot contains:
 9. Answer Key
 
 All story text, vocabulary, exercises, answers, and images are read from the current Adam A2 repository data. This file documents layout coverage only.
+
+Review goals:
+
+- confirm cover safe areas
+- confirm A2 readability
+- confirm image presence on chapter pages
+- confirm highlighted-word visibility and definitions
+- confirm cards and answer controls do not split badly
+- confirm English and Arabic page archetypes remain comparable
