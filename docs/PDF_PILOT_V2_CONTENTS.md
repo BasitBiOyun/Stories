@@ -22,3 +22,4 @@ Review goals:
 - confirm highlighted-word visibility and definitions
 - confirm cards and answer controls do not split badly
 - confirm English and Arabic page archetypes remain comparable
+- confirm no canonical story, audio, or synchronization data changed
