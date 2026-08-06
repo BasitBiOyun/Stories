@@ -76,3 +76,59 @@ jobs:
           path: artifacts/runtime
           retention-days: 14
           if-no-files-found: warn
+
+  pdf-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Build canonical-data-backed pilot HTML
+        run: npx tsx scripts/pdf-pilot/buildAdamA2Pilot.ts
+
+      - name: Install pinned Vivliostyle CLI
+        run: npm install --no-save --package-lock=false @vivliostyle/cli@11.1.0
+
+      - name: Build English pilot PDF
+        run: npx vivliostyle build artifacts/pdf-pilot/adam-a2-en-pilot.html --size A4 --output artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf --no-sandbox
+
+      - name: Build Arabic pilot PDF
+        run: npx vivliostyle build artifacts/pdf-pilot/adam-a2-ar-pilot.html --size A4 --output artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf --no-sandbox
+
+      - name: Install PDF inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Render sample pages for visual inspection
+        run: |
+          mkdir -p artifacts/pdf-pilot/rendered/en artifacts/pdf-pilot/rendered/ar
+          pdftoppm -png -r 120 artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf artifacts/pdf-pilot/rendered/en/page
+          pdftoppm -png -r 120 artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf artifacts/pdf-pilot/rendered/ar/page
+
+      - name: Verify expected page count
+        run: |
+          test "$(pdfinfo artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf | awk '/^Pages:/ {print $2}')" = "4"
+          test "$(pdfinfo artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf | awk '/^Pages:/ {print $2}')" = "4"
+          test "$(find artifacts/pdf-pilot/rendered/en -name '*.png' | wc -l)" = "4"
+          test "$(find artifacts/pdf-pilot/rendered/ar -name '*.png' | wc -l)" = "4"
+
+      - name: Upload pilot PDFs and page renders
+        uses: actions/upload-artifact@v4
+        with:
+          name: adam-a2-vivliostyle-pilot
+          path: |
+            artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf
+            artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf
+            artifacts/pdf-pilot/rendered/**/*.png
+            artifacts/pdf-pilot/README.txt
+          retention-days: 14
+          if-no-files-found: error
