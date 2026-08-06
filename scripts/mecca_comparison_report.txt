@@ -1,0 +1,10 @@
+Starting comparison for Mecca...
+
+=== Comparing Mecca A2 Pages ===
+Finished Mecca A2. Total mismatches/warnings: 0
+
+=== Comparing Mecca B1 Pages ===
+Finished Mecca B1. Total mismatches/warnings: 0
+
+=== Comparing Mecca B2 Pages ===
+Finished Mecca B2. Total mismatches/warnings: 0

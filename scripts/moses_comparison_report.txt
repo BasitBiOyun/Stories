@@ -1,0 +1,10 @@
+Starting comparison for Moses...
+
+=== Comparing A2 Pages ===
+Finished A2. Total mismatches/warnings: 0
+
+=== Comparing B1 Pages ===
+Finished B1. Total mismatches/warnings: 0
+
+=== Comparing B2 Pages ===
+Finished B2. Total mismatches/warnings: 0

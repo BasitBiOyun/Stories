@@ -1,0 +1,795 @@
+=== A2 EN VOCABULARY AND HOTSPOTS ===
+Page 1:
+  Vocab: [
+  {
+    word: 'Messenger',
+    definition: 'A person chosen by Allah to deliver His guidance and messages to people.'
+  },
+  {
+    word: 'worship',
+    definition: 'To show great love and respect to Allah.'
+  },
+  {
+    word: 'Mesopotamia',
+    definition: 'An ancient land between two big rivers.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h1',
+    x: 25,
+    y: 35,
+    title: 'Babylon',
+    description: 'One of the most famous cities of ancient Mesopotamia.'
+  },
+  {
+    id: 'h2',
+    x: 65,
+    y: 55,
+    title: 'The Idols',
+    description: 'Statues that people wrongly believed were gods.'
+  }
+]
+  Animated: [ 'kingdom', 'silly' ]
+Page 2:
+  Vocab: [
+  {
+    word: 'idol',
+    definition: 'A statue or object that people worship as a god.'
+  },
+  {
+    word: 'respect',
+    definition: 'A feeling that someone is important and should be treated well.'
+  },
+  { word: 'ridiculous', definition: 'Very silly or not making sense.' }
+]
+  Hotspots: [
+  {
+    id: 'h3',
+    x: 40,
+    y: 60,
+    title: 'Idol Making',
+    description: "Abraham's father made these statues from stone."
+  },
+  {
+    id: 'h4',
+    x: 30,
+    y: 30,
+    title: 'Mardukh',
+    description: 'The people called this statue the king of their gods.'
+  }
+]
+  Animated: [ 'presents', 'human-like' ]
+Page 3:
+  Vocab: [
+  {
+    word: 'Creator',
+    definition: 'The one who made everything in the universe.'
+  },
+  { word: 'search', definition: 'The act of looking for something.' },
+  {
+    word: 'disappeared',
+    definition: 'Went out of sight; stopped being visible.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h5',
+    x: 20,
+    y: 20,
+    title: 'The Star',
+    description: 'A bright point of light in the night sky.'
+  },
+  {
+    id: 'h6',
+    x: 70,
+    y: 15,
+    title: 'The Moon',
+    description: 'The large NATURAL object that shines in the sky at night.'
+  }
+]
+  Animated: [ 'countryside', 'beautiful', 'sets' ]
+Page 4:
+  Vocab: [
+  {
+    word: 'creation',
+    definition: 'Something that has been made or created.'
+  },
+  {
+    word: 'prayer',
+    definition: 'A request or act of speaking to Allah.'
+  },
+  {
+    word: 'forehead',
+    definition: 'The part of the face above the eyes.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h7',
+    x: 50,
+    y: 10,
+    title: 'The Sun',
+    description: 'The bright star that gives light to the Earth.'
+  },
+  {
+    id: 'h8',
+    x: 45,
+    y: 85,
+    title: 'Sujud',
+    description: 'Putting the forehead on the ground while speaking to Allah.'
+  }
+]
+  Animated: [ 'shining', 'angry' ]
+Page 5:
+  Vocab: [
+  { word: 'heals', definition: 'To make someone healthy again.' },
+  { word: 'believe', definition: 'To accept that something is true.' },
+  {
+    word: 'power',
+    definition: 'The ability to do something or help someone.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h9',
+    x: 35,
+    y: 50,
+    title: 'The People',
+    description: 'They followed their GRANDFATHERS…..'
+  },
+  {
+    id: 'h10',
+    x: 55,
+    y: 70,
+    title: 'Provisions',
+    description: 'Only Allah provides food and drink.'
+  }
+]
+  Animated: [ 'special', 'against' ]
+Page 6:
+  Vocab: [
+  { word: 'festival', definition: 'A day or period of celebration.' },
+  { word: 'unbroken', definition: 'Not damaged or in pieces.' }
+]
+  Hotspots: [
+  {
+    id: 'h11',
+    x: 60,
+    y: 40,
+    title: 'The Axe',
+    description: 'The tool Abraham used to break the stone statues.'
+  },
+  {
+    id: 'h12',
+    x: 20,
+    y: 70,
+    title: 'The Offerings',
+    description: 'Food placed in front of statues that cannot eat.'
+  }
+]
+  Animated: [ 'jokingly', 'hurried' ]
+Page 7:
+  Vocab: [
+  { word: 'shocked', definition: 'Very surprised and upset.' },
+  {
+    word: 'displeased',
+    definition: 'Feeling unhappy or annoyed about something.'
+  },
+  { word: 'protect', definition: 'To keep safe from harm.' }
+]
+  Hotspots: [
+  {
+    id: 'h13',
+    x: 45,
+    y: 70,
+    title: 'The Pieces',
+    description: 'The remains of the broken stone statues.'
+  },
+  {
+    id: 'h14',
+    x: 25,
+    y: 40,
+    title: 'Questioning',
+    description: 'The people brought Abraham to explain what happened.'
+  }
+]
+  Animated: [ 'harm', 'crazy' ]
+Page 8:
+  Vocab: [
+  {
+    word: 'arrogant',
+    definition: 'Thinking you are better or more important than everyone else.'
+  },
+  {
+    word: 'catapult',
+    definition: 'A big machine for throwing things far away.'
+  },
+  {
+    word: 'flames',
+    definition: 'The hot, bright, burning gas from a fire.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h15',
+    x: 80,
+    y: 60,
+    title: 'Firewood',
+    description: 'Piles of wood collected to make a huge fire.'
+  },
+  {
+    id: 'h16',
+    x: 30,
+    y: 75,
+    title: 'The Catapult',
+    description: 'The engine used to throw Abraham into the flames.'
+  }
+]
+  Animated: [ 'ashamed', 'dangerous' ]
+Page 9:
+  Vocab: [
+  {
+    word: 'miracle',
+    definition: 'A wonderful event from Allah that we cannot explain.'
+  },
+  {
+    word: 'amazed',
+    definition: 'Extremely surprised and filled with wonder.'
+  },
+  { word: 'harmed', definition: 'Injured, hurt, or damaged.' }
+]
+  Hotspots: [
+  {
+    id: 'h17',
+    x: 50,
+    y: 50,
+    title: 'The Miracle',
+    description: "The fire became cool by Allah's command."
+  },
+  {
+    id: 'h18',
+    x: 40,
+    y: 20,
+    title: 'Angel Gabriel',
+    description: 'He came to offer help, but Abraham relied only on Allah.'
+  }
+]
+  Animated: [ 'cool', 'rude' ]
+Page 10:
+  Vocab: [
+  {
+    word: 'slaves',
+    definition: 'People whose freedom is taken and they are owned by others.'
+  },
+  {
+    word: 'ordinary',
+    definition: 'Normal or common; not special or different.'
+  },
+  {
+    word: 'guards',
+    definition: 'People whose job is to protect a person or place.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h19',
+    x: 20,
+    y: 70,
+    title: 'Nimrod',
+    description: 'The king who said power over life and death.'
+  },
+  {
+    id: 'h20',
+    x: 80,
+    y: 20,
+    title: 'The Challenge',
+    description: 'Abraham challenged the king to control the sun.'
+  }
+]
+  Animated: [ 'rise', 'ordered' ]
+Page 11:
+  Vocab: [
+  {
+    word: 'journey',
+    definition: 'The act of traveling from one place to another.'
+  },
+  {
+    word: 'valley',
+    definition: 'A low area of land between hills or mountains.'
+  },
+  {
+    word: 'tiring',
+    definition: 'Making you feel exhausted or in need of rest.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h21',
+    x: 40,
+    y: 75,
+    title: 'Travel',
+    description: 'Traveling across the desert was very difficult.'
+  },
+  {
+    id: 'h22',
+    x: 60,
+    y: 85,
+    title: 'The Valley',
+    description: 'The quiet valley where Mecca would grow.'
+  }
+]
+  Animated: [ 'lands', 'arrived' ]
+Page 12:
+  Vocab: [
+  {
+    word: 'blessings',
+    definition: 'Things that bring happiness or help from Allah.'
+  },
+  {
+    word: 'fearlessly',
+    definition: 'In a brave way, without showing any fear.'
+  },
+  {
+    word: 'useless',
+    definition: 'Having no benefit or not helping at all.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h23',
+    x: 30,
+    y: 70,
+    title: "Hagar's Faith",
+    description: 'She trusted Allah in the empty desert.'
+  },
+  {
+    id: 'h24',
+    x: 70,
+    y: 90,
+    title: 'Desert life',
+    description: 'There was no food or water in sight.'
+  }
+]
+  Animated: [ 'planner', 'peace' ]
+Page 13:
+  Vocab: [
+  {
+    word: 'desert',
+    definition: 'A dry land with very little water or plants.'
+  },
+  {
+    word: 'gift',
+    definition: 'Something special given to another person.'
+  },
+  { word: 'ground', definition: 'The solid surface of the earth.' }
+]
+  Hotspots: [
+  {
+    id: 'h25',
+    x: 50,
+    y: 80,
+    title: 'Zamzam Well',
+    description: 'The miraculous water source that still flows today.'
+  },
+  {
+    id: 'h26',
+    x: 60,
+    y: 70,
+    title: 'Mecca',
+    description: 'The city that grew around the holy water.'
+  }
+]
+  Animated: [ 'famous', 'suddenly' ]
+Page 14:
+  Vocab: [
+  {
+    word: 'mission',
+    definition: 'An important job or task given to someone.'
+  },
+  { word: 'unique', definition: 'Being the only one of its kind.' },
+  {
+    word: 'partner',
+    definition: 'Someone who shares a task or power with another.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h27',
+    x: 50,
+    y: 40,
+    title: 'The Ka’ba',
+    description: 'The first House of Allah built in the world.'
+  },
+  {
+    id: 'h28',
+    x: 40,
+    y: 20,
+    title: 'Hajj',
+    description: 'The holy journey Muslims take to follow these lessons.'
+  }
+]
+  Animated: [ 'holy', 'Muslims' ]
+
+=== A2 AR VOCABULARY AND HOTSPOTS ===
+Page 1:
+  Vocab: [
+  { word: 'رَسُولًا', definition: 'مبعوث يختاره الله ليوجه الناس.' },
+  {
+    word: 'يَعْبُدُونَهُ',
+    definition: 'إظهار الحب الشديد والاحترام لله.'
+  },
+  {
+    word: 'النَّهْرَيْنِ',
+    definition: 'أرض قديمة تقع بين نهرين كبيرين.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h1',
+    x: 25,
+    y: 35,
+    title: 'بابل',
+    description: 'واحدة من أشهر المدن القديمة في بلاد ما بين النهرين.'
+  },
+  {
+    id: 'h2',
+    x: 65,
+    y: 55,
+    title: 'الأصنام',
+    description: 'تماثيل اعتقد الناس خطأ أنها آلهة.'
+  }
+]
+  Animated: [ 'مملكة', 'سخيف' ]
+Page 2:
+  Vocab: [
+  {
+    word: 'الْأَصْنَامَ',
+    definition: 'تماثيل من الحجر لا تتكلم ولا تسمع.'
+  },
+  { word: 'الِاحْتِرَامَ', definition: 'معاملة الآخرين بأدب ولطف.' },
+  { word: 'سَخِيفًا', definition: 'شيء مضحك وليس فيه عقل أو فائدة.' }
+]
+  Hotspots: [
+  {
+    id: 'h3',
+    x: 40,
+    y: 60,
+    title: 'صنع الأصنام',
+    description: 'تماثيل صغيرة أو كبيرة مصنوعة من الطين والحجر.'
+  },
+  {
+    id: 'h4',
+    x: 30,
+    y: 30,
+    title: 'مردوخ',
+    description: 'كان الناس يسمون هذا التمثال الكبير ملك آلهتهم.'
+  }
+]
+  Animated: [ 'الْهَدَايَا', 'الْإِنْسَانَ' ]
+Page 3:
+  Vocab: [
+  {
+    word: 'الْخَالِقِ',
+    definition: 'الله الذي صنع كل شيء في هذا الكون.'
+  },
+  {
+    word: 'يَبْحَثُ',
+    definition: 'يحاول أن يجد شيئاً أو يعرف حقيقته.'
+  },
+  { word: 'غَابَ', definition: 'ذهب بعيداً ولم يعد يظهر للناس.' }
+]
+  Hotspots: [
+  {
+    id: 'h5',
+    x: 20,
+    y: 20,
+    title: 'النجم',
+    description: 'نجم صغير يلمع في السماء ليلاً.'
+  },
+  {
+    id: 'h6',
+    x: 70,
+    y: 15,
+    title: 'القمر',
+    description: 'جسم كبير يضيء السماء في الليل.'
+  }
+]
+  Animated: [ 'الريف', 'الجميلة', 'غاب' ]
+Page 4:
+  Vocab: [
+  { word: 'مَخْلُوقًا', definition: 'شيء صنعه أو خلقه الله.' },
+  {
+    word: 'دُعَاءَهُ',
+    definition: 'التكلم مع الله وطلب المساعدة منه.'
+  },
+  {
+    word: 'جَبْهَتَهُ',
+    definition: 'الجزء الأعلى من الوجه فوق العينين.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h7',
+    x: 50,
+    y: 10,
+    title: 'الشمس',
+    description: 'نجم كبير حار جداً يعطينا النور في النهار.'
+  },
+  {
+    id: 'h8',
+    x: 45,
+    y: 85,
+    title: 'السجود',
+    description: 'وضع الجبهة على الأرض عند الصلاة لله.'
+  }
+]
+  Animated: [ 'ساطعة', 'غضب' ]
+Page 5:
+  Vocab: [
+  { word: 'يَشْفِينِي', definition: 'يجعلني بصحة جيدة بعد المرض.' },
+  {
+    word: 'أُؤْمِنُ',
+    definition: 'أعرف وأصدق في قلبي أن الشيء حقيقي.'
+  },
+  {
+    word: 'قُوَّةً',
+    definition: 'القدرة على فعل الأشياء أو مساعدة الآخرين.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h9',
+    x: 35,
+    y: 50,
+    title: 'الناس',
+    description: 'الرجال والنساء الذين يعيشون معاً.'
+  },
+  {
+    id: 'h10',
+    x: 55,
+    y: 70,
+    title: 'الرزق',
+    description: 'كل ما يعطيه الله لنا من طعام وشراب لنعيش.'
+  }
+]
+  Animated: [ 'خاص', 'ضد' ]
+Page 6:
+  Vocab: [
+  {
+    word: 'عِيدٌ',
+    definition: 'يوم جميل للاحتفال والفرح مع الأهل والأصدقاء.'
+  },
+  { word: 'سَلِيمًا', definition: 'كامل وصحيح وليس فيه كسر.' }
+]
+  Hotspots: [
+  {
+    id: 'h11',
+    x: 60,
+    y: 40,
+    title: 'الفأس',
+    description: 'أداة حديدية قوية تستخدم لقطع الخشب أو كسر الحجر.'
+  },
+  {
+    id: 'h12',
+    x: 20,
+    y: 70,
+    title: 'القرابين',
+    description: 'طعام كثير يضعه الناس للأصنام.'
+  }
+]
+  Animated: [ 'مَازِحًا', 'مُسْرِعًا' ]
+Page 7:
+  Vocab: [
+  { word: 'فَصُدِمُوا', definition: 'تفاجأوا وغضبوا كثيراً مما حدث.' },
+  {
+    word: 'فَلَمْ يَرْضَ',
+    definition: 'شعروا بالحزن والغضب ولم يعجبهم الجواب.'
+  },
+  {
+    word: 'تَحْمِيَ',
+    definition: 'تبقي الشيء آمناً من الخطر أو الأذى.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h13',
+    x: 45,
+    y: 70,
+    title: 'القطع',
+    description: 'بقايا الأصنام الحجرية المكسورة.'
+  },
+  {
+    id: 'h14',
+    x: 25,
+    y: 40,
+    title: 'الاستجواب',
+    description: 'سؤال الناس لإبراهيم عن كسر الأصنام.'
+  }
+]
+  Animated: [ 'آذيت', 'تعقلون' ]
+Page 8:
+  Vocab: [
+  {
+    word: 'متكبرين',
+    definition: 'الاعتقاد بأنك أفضل أو أهم من الجميع.'
+  },
+  {
+    word: 'منجنيق',
+    definition: 'آلة كبيرة تستخدم لإلقاء الأشياء بقوة كبيرة.'
+  },
+  {
+    word: 'اللهب',
+    definition: 'الغاز الساخن والمشرق والمشتعل من النار.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h15',
+    x: 80,
+    y: 60,
+    title: 'الحطب',
+    description: 'أكوام من الخشب جمعت لصنع نار ضخمة.'
+  },
+  {
+    id: 'h16',
+    x: 30,
+    y: 75,
+    title: 'المنجنيق',
+    description: 'الآلة التي استخدمها الناس لإلقاء إبراهيم في النار.'
+  }
+]
+  Animated: [ 'بالخزي', 'خطيرة' ]
+Page 9:
+  Vocab: [
+  {
+    word: 'المعجزة',
+    definition: 'حدث رائع لا يمكن تفسيره بالقوانين العادية.'
+  },
+  { word: 'مندهشين', definition: 'متفاجئون جداً ومليئون بالعجب.' },
+  { word: 'أذى', definition: 'إصابة أو ضرر.' }
+]
+  Hotspots: [
+  {
+    id: 'h17',
+    x: 50,
+    y: 50,
+    title: 'المعجزة',
+    description: 'أصبحت النار برداً بأمر الله.'
+  },
+  {
+    id: 'h18',
+    x: 40,
+    y: 20,
+    title: 'جبريل عليه السلام',
+    description: 'جاء ليعرض المساعدة، لكن إبراهيم توكل على الله وحده.'
+  }
+]
+  Animated: [ 'آمنة', 'وقحين' ]
+Page 10:
+  Vocab: [
+  { word: 'عبدين', definition: 'أشخاص تسلب حريتهم ويملكونهم آخرون.' },
+  { word: 'عادياً', definition: 'طبيعي أو مألوف؛ غير مميز أو مختلف.' },
+  { word: 'حراسه', definition: 'أشخاص وظيفتهم حماية شخص أو مكان.' }
+]
+  Hotspots: [
+  {
+    id: 'h19',
+    x: 20,
+    y: 70,
+    title: 'نمرود',
+    description: 'الملك الذي ادعى السلطة على الحياة والموت.'
+  },
+  {
+    id: 'h20',
+    x: 80,
+    y: 20,
+    title: 'التحدي',
+    description: 'تحدى إبراهيم الملك ليتحكم في الشمس.'
+  }
+]
+  Animated: [ 'المغرب', 'أمر' ]
+Page 11:
+  Vocab: [
+  { word: 'رحلته', definition: 'فعل السفر من مكان إلى آخر.' },
+  {
+    word: 'وادٍ',
+    definition: 'منطقة منخفضة من الأرض بين التلال أو الجبال.'
+  },
+  {
+    word: 'مرهقة',
+    definition: 'تجعلك تشعر بالتعب الشديد أو الحاجة إلى الراحة.'
+  }
+]
+  Hotspots: [
+  {
+    id: 'h21',
+    x: 40,
+    y: 75,
+    title: 'السفر',
+    description: 'كان السفر عبر الصحراء صعباً للغاية.'
+  },
+  {
+    id: 'h22',
+    x: 60,
+    y: 85,
+    title: 'الوادي',
+    description: 'الوادي الهادئ الذي ستنمو فيه مكة.'
+  }
+]
+  Animated: [ 'أراضٍ', 'وصلوا' ]
+Page 12:
+  Vocab: [
+  {
+    word: 'بركاته',
+    definition: 'أشياء تجلب السعادة أو المساعدة من الله.'
+  },
+  { word: 'خوف', definition: 'بطريقة شجاعة، دون إظهار أي خوف.' },
+  { word: 'فائدة', definition: 'ليس له نفع أو لا يساعد على الإطلاق.' }
+]
+  Hotspots: [
+  {
+    id: 'h23',
+    x: 30,
+    y: 70,
+    title: 'إيمان هاجر',
+    description: 'توكلت على الله في الصحراء القافرة.'
+  },
+  {
+    id: 'h24',
+    x: 70,
+    y: 90,
+    title: 'حياة الصحراء',
+    description: 'لم يكن هناك طعام أو ماء في الأفق.'
+  }
+]
+  Animated: [ 'المخططين', 'نموت' ]
+Page 13:
+  Vocab: [
+  {
+    word: 'الصحراء',
+    definition: 'أرض جافة بها القليل جداً من الماء أو النباتات.'
+  },
+  { word: 'هدية', definition: 'شيء مميز يعطى لشخص آخر.' },
+  { word: 'الأرض', definition: 'السطح الصلب للكرة الأرضية.' }
+]
+  Hotspots: [
+  {
+    id: 'h25',
+    x: 50,
+    y: 80,
+    title: 'بئر زمزم',
+    description: 'مصدر الماء المعجز الذي لا يزال يتدفق اليوم.'
+  },
+  {
+    id: 'h26',
+    x: 60,
+    y: 70,
+    title: 'مكة',
+    description: 'المدينة التي نمت حول الماء المقدس.'
+  }
+]
+  Animated: [ 'مشهوراً', 'فجأة' ]
+Page 14:
+  Vocab: [
+  { word: 'مهمته', definition: 'وظيفة أو مهمة هامة توكل إلى شخص ما.' },
+  { word: 'واحد', definition: 'كونه الوحيد من نوعه؛ لا يشبهه شيء.' },
+  { word: 'شريك', definition: 'شخص يشارك في مهمة أو سلطة مع شخص آخر.' }
+]
+  Hotspots: [
+  {
+    id: 'h27',
+    x: 50,
+    y: 40,
+    title: 'الكعبة',
+    description: 'أول بيت لله بُني في العالم.'
+  },
+  {
+    id: 'h28',
+    x: 40,
+    y: 20,
+    title: 'الحج',
+    description: 'الرحلة المقدسة التي يقوم بها المسلمون لاتباع هذه الدروس.'
+  }
+]
+  Animated: [ 'انتهت', 'المسلمين' ]
