@@ -1,25 +1,26 @@
-name: Quality
+name: Apply Final Performance Hardening
 
 on:
-  pull_request:
-    branches: [main]
   push:
-    branches: [main]
+    branches: [agent/platform-foundation]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: quality-${{ github.workflow }}-${{ github.ref }}
+  group: platform-foundation-finalize
   cancel-in-progress: true
 
 jobs:
-  quality:
+  apply-and-verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - name: Checkout repository
+      - name: Checkout foundation branch
         uses: actions/checkout@v4
+        with:
+          ref: agent/platform-foundation
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,11 +28,271 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Apply lazy-loading and bundle-budget changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cp src/lib/pdfGenerator.ts src/lib/pdfGeneratorImpl.ts
+
+          cat > src/lib/pdfGenerator.ts <<'TS'
+          import type {
+            BookData,
+            StudentGuideMetadata,
+            TeacherGuideMetadata,
+            TeacherGuideSection,
+          } from '../types';
+
+          type PdfGeneratorModule = typeof import('./pdfGeneratorImpl');
+
+          let modulePromise: Promise<PdfGeneratorModule> | null = null;
+
+          const loadPdfGenerator = (): Promise<PdfGeneratorModule> => {
+            modulePromise ??= import('./pdfGeneratorImpl');
+            return modulePromise;
+          };
+
+          export const generateBookPDF = async (book: BookData): Promise<void> => {
+            const module = await loadPdfGenerator();
+            await module.generateBookPDF(book);
+          };
+
+          export const generateTeacherGuidePDF = async (
+            title: string,
+            subtitle: string,
+            content: TeacherGuideSection[],
+            metadata?: TeacherGuideMetadata,
+          ): Promise<void> => {
+            const module = await loadPdfGenerator();
+            await module.generateTeacherGuidePDF(title, subtitle, content, metadata);
+          };
+
+          export const generateStudentGuidePDF = async (
+            title: string,
+            subtitle: string,
+            metadata?: StudentGuideMetadata,
+            guideText?: string,
+            sections?: unknown[],
+          ): Promise<void> => {
+            const module = await loadPdfGenerator();
+            await module.generateStudentGuidePDF(title, subtitle, metadata, guideText, sections);
+          };
+          TS
+
+          cat > src/hooks/useBookBundle.ts <<'TS'
+          import { useEffect, useMemo, useState } from 'react';
+          import type { Level } from '../types';
+          import { getBookDefinition } from '../core/content/bookRegistry';
+          import type { BookDefinition } from '../core/content/bookRegistry';
+          import type { BookPair } from '../core/content/contracts';
+
+          export interface BookBundleState {
+            definition: BookDefinition | null;
+            pair: BookPair | null;
+            loading: boolean;
+            error: Error | null;
+          }
+
+          /**
+           * Loads only the selected story-level bundle. The Firebase Storage SDK is
+           * imported after selection, and canonical BookData is never mutated.
+           */
+          export const useBookBundle = (storyId: string | null, level: Level | null): BookBundleState => {
+            const definition = useMemo(
+              () => storyId && level ? getBookDefinition(storyId, level) : null,
+              [storyId, level],
+            );
+            const [pair, setPair] = useState<BookPair | null>(null);
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState<Error | null>(null);
+
+            useEffect(() => {
+              let cancelled = false;
+              setPair(null);
+              setError(null);
+
+              if (!definition) {
+                setLoading(false);
+                return () => {
+                  cancelled = true;
+                };
+              }
+
+              setLoading(true);
+
+              const load = async () => {
+                const [loadedPair, storageModule] = await Promise.all([
+                  definition.load(),
+                  import('../core/storage/storageAssetLoader'),
+                ]);
+                const loadedAssets = await storageModule.loadBookAssets(definition.storage);
+                return storageModule.applyResolvedAssets(loadedPair, loadedAssets);
+              };
+
+              load()
+                .then(loadedPair => {
+                  if (cancelled) return;
+                  setPair(loadedPair);
+                  setLoading(false);
+                })
+                .catch(reason => {
+                  if (cancelled) return;
+                  setError(reason instanceof Error ? reason : new Error(String(reason)));
+                  setLoading(false);
+                });
+
+              return () => {
+                cancelled = true;
+              };
+            }, [definition]);
+
+            return { definition, pair, loading, error };
+          };
+          TS
+
+          cat > vite.config.ts <<'TS'
+          import tailwindcss from '@tailwindcss/vite';
+          import react from '@vitejs/plugin-react';
+          import path from 'node:path';
+          import { defineConfig, loadEnv } from 'vite';
+
+          export default defineConfig(({ mode }) => {
+            const env = loadEnv(mode, '.', '');
+
+            return {
+              plugins: [react(), tailwindcss()],
+              define: {
+                'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+              },
+              resolve: {
+                alias: {
+                  '@': path.resolve(__dirname, 'src'),
+                },
+              },
+              build: {
+                manifest: true,
+                sourcemap: false,
+                chunkSizeWarningLimit: 700,
+              },
+              server: {
+                // AI Studio can disable HMR through DISABLE_HMR during automated edits.
+                hmr: process.env.DISABLE_HMR !== 'true',
+              },
+            };
+          });
+          TS
+
+          cat > scripts/validation/validateBundle.ts <<'TS'
+          import { gzipSync } from 'node:zlib';
+          import { readFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
+
+          interface ManifestEntry {
+            file: string;
+            isEntry?: boolean;
+          }
+
+          const manifestPath = resolve('dist/.vite/manifest.json');
+          const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as Record<string, ManifestEntry>;
+          const entries = Object.values(manifest).filter(entry => entry.isEntry);
+
+          if (entries.length === 0) {
+            throw new Error('No initial JavaScript entry was found in the Vite manifest.');
+          }
+
+          const rawLimit = Number(process.env.INITIAL_JS_RAW_LIMIT_KB ?? 900) * 1024;
+          const gzipLimit = Number(process.env.INITIAL_JS_GZIP_LIMIT_KB ?? 300) * 1024;
+
+          let totalRaw = 0;
+          let totalGzip = 0;
+
+          for (const entry of entries) {
+            const bytes = readFileSync(resolve('dist', entry.file));
+            totalRaw += bytes.byteLength;
+            totalGzip += gzipSync(bytes).byteLength;
+          }
+
+          const formatKb = (bytes: number): string => `${(bytes / 1024).toFixed(1)} kB`;
+          console.log(`Initial JavaScript: ${formatKb(totalRaw)} raw / ${formatKb(totalGzip)} gzip.`);
+          console.log(`Budget: ${formatKb(rawLimit)} raw / ${formatKb(gzipLimit)} gzip.`);
+
+          if (totalRaw > rawLimit || totalGzip > gzipLimit) {
+            throw new Error('Initial JavaScript bundle exceeds the configured performance budget.');
+          }
+          TS
+
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+          pkg.scripts['validate:bundle'] = 'tsx scripts/validation/validateBundle.ts';
+          pkg.scripts.quality = 'npm run validate && npm run typecheck && npm run build && npm run validate:bundle';
+          writeFileSync('package.json', `${JSON.stringify(pkg, null, 2)}\n`);
+          NODE
+
       - name: Install dependencies
         run: npm ci
 
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
 
-      - name: Run canonical, content, guide, type and build checks
+      - name: Run complete quality gate
         run: npm run quality
+
+      - name: Restore permanent single quality workflow
+        shell: bash
+        run: |
+          cat > .github/workflows/quality.yml <<'YAML'
+          name: Quality
+
+          on:
+            pull_request:
+              branches: [main]
+            push:
+              branches: [main]
+
+          permissions:
+            contents: read
+
+          concurrency:
+            group: quality-${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
+
+          jobs:
+            quality:
+              runs-on: ubuntu-latest
+              timeout-minutes: 15
+              steps:
+                - name: Checkout repository
+                  uses: actions/checkout@v4
+
+                - name: Setup Node.js
+                  uses: actions/setup-node@v4
+                  with:
+                    node-version: 22
+                    cache: npm
+
+                - name: Install dependencies
+                  run: npm ci
+
+                - name: Audit production dependencies
+                  run: npm audit --omit=dev --audit-level=high
+
+                - name: Run canonical, content, guide, type, build and bundle checks
+                  run: npm run quality
+          YAML
+
+      - name: Commit verified performance hardening
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'OpenAI'
+          git config user.email 'noreply@openai.com'
+          git add -A
+
+          if git diff --cached --name-only -- 'src/data/**/pages.ts' 'src/data/**/pages*.ts' | grep -q .; then
+            echo 'Protected canonical page data changed; refusing to commit.'
+            exit 1
+          fi
+
+          git commit -m 'perf: lazy-load heavy services and enforce bundle budget'
+          git push origin HEAD:agent/platform-foundation
