@@ -1,26 +1,25 @@
-name: Refresh Safe Transitive Dependencies
+name: Quality
 
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: dependency-refresh
+  group: quality-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  refresh-and-verify:
-    if: github.head_ref == 'agent/platform-foundation'
+  quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
-      - name: Checkout branch
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: agent/platform-foundation
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,32 +30,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Apply non-breaking audit fixes to lockfile
-        run: npm audit fix --package-lock-only --omit=dev
-
-      - name: Verify exact lock and production audit
-        run: |
-          rm -rf node_modules
-          npm ci
-          npm audit --omit=dev --audit-level=high
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
 
       - name: Run canonical, content, guide, type and build checks
         run: npm run quality
-
-      - name: Commit lockfile-only security update
-        run: |
-          changed="$(git diff --name-only)"
-          if [ -z "$changed" ]; then
-            echo 'No lockfile changes were needed.'
-            exit 0
-          fi
-          if [ "$changed" != "package-lock.json" ]; then
-            echo "Unexpected files changed:"
-            echo "$changed"
-            exit 1
-          fi
-          git config user.name 'OpenAI'
-          git config user.email 'noreply@openai.com'
-          git add package-lock.json
-          git commit -m 'chore: update safe transitive dependencies'
-          git push origin HEAD:agent/platform-foundation
