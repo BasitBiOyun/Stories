@@ -49,45 +49,6 @@ jobs:
       - name: Verify protected content and application quality
         run: npm run quality
 
-      - name: Install final quality workflow
-        run: |
-          cat > .github/workflows/quality.yml <<'YAML'
-          name: Quality
-
-          on:
-            pull_request:
-              branches: [main]
-            push:
-              branches: [main]
-
-          permissions:
-            contents: read
-
-          concurrency:
-            group: quality-${{ github.workflow }}-${{ github.ref }}
-            cancel-in-progress: true
-
-          jobs:
-            quality:
-              runs-on: ubuntu-latest
-              timeout-minutes: 15
-              steps:
-                - name: Checkout repository
-                  uses: actions/checkout@v4
-
-                - name: Setup Node.js
-                  uses: actions/setup-node@v4
-                  with:
-                    node-version: 22
-                    cache: npm
-
-                - name: Install dependencies
-                  run: npm ci
-
-                - name: Run canonical, content, guide, type and build checks
-                  run: npm run quality
-          YAML
-
       - name: Ensure canonical source files were not edited
         run: |
           if git diff --cached --name-only HEAD -- 'src/data/**/pages.ts' | grep -q .; then
