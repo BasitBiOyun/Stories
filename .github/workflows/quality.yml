@@ -3,6 +3,8 @@ name: Apply Final Performance Hardening
 on:
   push:
     branches: [agent/platform-foundation]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
@@ -254,7 +256,7 @@ jobs:
             contents: read
 
           concurrency:
-            group: quality-${{ github.workflow }}-${{ github.ref }}
+            group: quality
             cancel-in-progress: true
 
           jobs:
