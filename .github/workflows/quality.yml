@@ -98,6 +98,22 @@ jobs:
           if old_assert in source:
               source = source.replace(old_assert, new_guard)
 
+          old_download = """const clickAndDownloadPdf = async (page, button, scope) => {
+            const downloadPromise = page.waitForEvent('download', { timeout: 180_000 });
+            await button.click();
+            const download = await downloadPromise;
+            return validatePdfDownload(download, scope);
+          };"""
+          new_download = """const clickAndDownloadPdf = async (page, button, scope) => {
+            const [download] = await Promise.all([
+              page.waitForEvent('download', { timeout: 180_000 }),
+              button.click(),
+            ]);
+            return validatePdfDownload(download, scope);
+          };"""
+          if old_download in source:
+              source = source.replace(old_download, new_download)
+
           path.write_text(source)
           PY
 
@@ -131,7 +147,7 @@ jobs:
           git config user.email 'noreply@openai.com'
           git add scripts/validation/runtimeRegressionV2.mjs
           if ! git diff --cached --quiet; then
-            git commit -m 'test: finalize runtime regression selectors'
+            git commit -m 'test: finalize runtime regression suite'
             git push origin HEAD:agent/platform-foundation
           fi
 
