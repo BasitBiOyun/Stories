@@ -1,6 +1,6 @@
 import { bookRegistry } from '../../src/core/content/bookRegistry';
 import { exercisePolicyByLevel } from '../../src/core/content/exercisePolicy';
-import type { BookData, Exercise, PageData } from '../../src/types';
+import type { BookData, Exercise, PageData, QuizQuestion } from '../../src/types';
 
 interface ValidationResult {
   errors: string[];
@@ -10,6 +10,31 @@ interface ValidationResult {
 const result: ValidationResult = { errors: [], warnings: [] };
 const error = (message: string) => result.errors.push(message);
 const warn = (message: string) => result.warnings.push(message);
+
+const isValidMultipleChoiceAnswer = (options: string[], correctAnswer: unknown): boolean => {
+  if (typeof correctAnswer === 'number') {
+    return Number.isInteger(correctAnswer) && correctAnswer >= 0 && correctAnswer < options.length;
+  }
+
+  if (typeof correctAnswer === 'string') {
+    if (options.includes(correctAnswer)) return true;
+    const possibleIndex = Number(correctAnswer);
+    return Number.isInteger(possibleIndex) && possibleIndex >= 0 && possibleIndex < options.length;
+  }
+
+  return false;
+};
+
+const validateQuizQuestion = (bookKey: string, page: PageData, exerciseId: string, question: QuizQuestion, index: number) => {
+  const label = `${bookKey} page ${page.id}: ${exerciseId} quiz question ${index + 1}`;
+  if (!question.question?.trim()) error(`${label} has no question text.`);
+  if (!question.options?.length) error(`${label} has no options.`);
+
+  const correctOptions = question.options?.filter(option => option.isCorrect).length ?? 0;
+  if (correctOptions !== 1) {
+    error(`${label} must have exactly one correct option; found ${correctOptions}.`);
+  }
+};
 
 const validateExercise = (bookKey: string, page: PageData, exercise: Exercise, seenIds: Set<string>) => {
   if (!exercise.id?.trim()) error(`${bookKey} page ${page.id}: exercise has no id.`);
@@ -23,9 +48,18 @@ const validateExercise = (bookKey: string, page: PageData, exercise: Exercise, s
   if (!exercise.feedback?.correct?.trim() || !exercise.feedback?.incorrect?.trim()) {
     warn(`${bookKey} page ${page.id}: exercise ${exercise.id} has incomplete feedback.`);
   }
-  if (exercise.type === 'multiple-choice' && exercise.options?.length && !exercise.options.includes(String(exercise.correctAnswer))) {
-    warn(`${bookKey} page ${page.id}: multiple-choice answer is not one of its options (${exercise.id}).`);
+
+  if (
+    exercise.type === 'multiple-choice'
+    && exercise.options?.length
+    && !isValidMultipleChoiceAnswer(exercise.options, exercise.correctAnswer)
+  ) {
+    error(`${bookKey} page ${page.id}: multiple-choice answer does not reference a valid option (${exercise.id}).`);
   }
+
+  exercise.quizQuestions?.forEach((question, index) => {
+    validateQuizQuestion(bookKey, page, exercise.id, question, index);
+  });
 };
 
 const countFinalQuestions = (book: BookData): number => {
