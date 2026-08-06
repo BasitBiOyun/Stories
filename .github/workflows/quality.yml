@@ -37,8 +37,11 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install exact dependency lock
-        run: npm ci
+      - name: Regenerate and verify dependency lock
+        run: |
+          npm install
+          rm -rf node_modules
+          npm ci
 
       - name: Generate immutable-content baseline
         run: npm run canonical:generate
