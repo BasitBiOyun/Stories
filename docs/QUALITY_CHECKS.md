@@ -52,6 +52,8 @@ The single GitHub workflow also runs the production build in Chromium and checks
 
 Books that do not yet contain a standalone exercise page are reported as derived-content warnings rather than technical runtime failures. Those gaps belong to the later educational-quality phase.
 
+Screenshots, pixel diffs, and the machine-readable runtime report are retained as a GitHub Actions artifact for 14 days after each workflow run.
+
 ## CI policy
 
 The repository uses one workflow file: `.github/workflows/quality.yml`. It runs installation, production dependency audit, canonical validation, content validation, guide validation, typecheck, production build, bundle budget, runtime checks, and visual regression evidence generation.
