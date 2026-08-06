@@ -1,45 +1,28 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Menu, 
-  X, 
-  ChevronLeft, 
-  ChevronRight, 
-  BookOpen, 
-  GraduationCap, 
-  ClipboardList,
-  Home,
-  Book as BookIcon,
-  Download,
+import { motion, AnimatePresence } from 'motion/react';
+import {
   BookMarked,
+  ChevronLeft,
+  ChevronRight,
   ChevronUp,
+  ClipboardList,
+  Download,
   Eye,
-  EyeOff
-} from 'lucide-react';
+  EyeOff,
+  GraduationCap,
+  Home,
+  LoaderCircle,
+  Menu,
+  X,
+} from './components/ui/icons';
 
-import { BookData, Level } from './types';
-import { adamA2BookDataEn, adamA2BookDataAr } from './data/adam/a2';
-import { abrahamA2BookDataEn, abrahamA2BookDataAr } from './data/abraham/a2';
-import { adamB1BookDataEn, adamB1BookDataAr } from './data/adam/b1';
-import { adamB2BookDataEn, adamB2BookDataAr } from './data/adam/b2';
-import { abrahamB1BookDataEn, abrahamB1BookDataAr } from './data/abraham/b1';
-import { abrahamB2BookDataEn, abrahamB2BookDataAr } from './data/abraham/b2';
-import { mosesA2BookDataEn, mosesA2BookDataAr } from './data/moses/a2';
-import { mosesB1BookDataEn, mosesB1BookDataAr } from './data/moses/b1';
-import { mosesB2BookDataEn, mosesB2BookDataAr } from './data/moses/b2';
-import { meccaA2BookDataEn, meccaA2BookDataAr } from './data/mecca/a2';
-import { meccaB1BookDataEn, meccaB1BookDataAr } from './data/mecca/b1';
-import { meccaB2BookDataEn, meccaB2BookDataAr } from './data/mecca/b2';
-import { yunusEmreA2BookDataEn, yunusEmreA2BookDataAr } from './data/yunusEmre/a2';
-import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from './data/yunusEmre/b1';
-import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from './data/yunusEmre/b2';
+import { Level } from './types';
+import { useBookBundle } from './hooks/useBookBundle';
 import { cn } from './lib/utils';
 import { generateBookPDF } from './lib/pdfGenerator';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
-import { ref, listAll, getDownloadURL } from 'firebase/storage';
-import { storage } from './lib/firebase';
 
 // Layout Components
 import { TeacherGuide } from './components/layout/TeacherGuide';
@@ -85,28 +68,6 @@ const AppContent = () => {
   const [isDyslexic, setIsDyslexic] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
-  const [abrahamB2Images, setAbrahamB2Images] = useState<Record<number, string>>({});
-  const [mosesA2Images, setMosesA2Images] = useState<Record<number, string>>({});
-  const [mosesB1Images, setMosesB1Images] = useState<Record<number, string>>({});
-  const [mosesB2Images, setMosesB2Images] = useState<Record<number, string>>({});
-  const [yunusEmreA2Images, setYunusEmreA2Images] = useState<Record<number, string>>({});
-  const [yunusEmreB1Images, setYunusEmreB1Images] = useState<Record<number, string>>({});
-  const [yunusEmreB2Images, setYunusEmreB2Images] = useState<Record<number, string>>({});
-  const [adamA2ArabicAudios, setAdamA2ArabicAudios] = useState<Record<number, string>>({});
-  const [adamB1ArabicAudios, setAdamB1ArabicAudios] = useState<Record<number, string>>({});
-  const [adamB2ArabicAudios, setAdamB2ArabicAudios] = useState<Record<number, string>>({});
-  const [yunusA2ArabicAudios, setYunusA2ArabicAudios] = useState<Record<number, string>>({});
-  const [yunusB1ArabicAudios, setYunusB1ArabicAudios] = useState<Record<number, string>>({});
-  const [yunusB2ArabicAudios, setYunusB2ArabicAudios] = useState<Record<number, string>>({});
-  const [mosesA2ArabicAudios, setMosesA2ArabicAudios] = useState<Record<number, string>>({});
-  const [mosesB1ArabicAudios, setMosesB1ArabicAudios] = useState<Record<number, string>>({});
-  const [mosesB2ArabicAudios, setMosesB2ArabicAudios] = useState<Record<number, string>>({});
-  const [abrahamA2ArabicAudios, setAbrahamA2ArabicAudios] = useState<Record<number, string>>({});
-  const [abrahamB1ArabicAudios, setAbrahamB1ArabicAudios] = useState<Record<number, string>>({});
-  const [abrahamB2ArabicAudios, setAbrahamB2ArabicAudios] = useState<Record<number, string>>({});
-  const [meccaA2ArabicAudios, setMeccaA2ArabicAudios] = useState<Record<number, string>>({});
-  const [meccaB1ArabicAudios, setMeccaB1ArabicAudios] = useState<Record<number, string>>({});
-  const [meccaB2ArabicAudios, setMeccaB2ArabicAudios] = useState<Record<number, string>>({});
   const [isQuickTOCOpen, setIsQuickTOCOpen] = useState(false);
   const [activePdfDownloads, setActivePdfDownloads] = useState<string[]>([]);
  
@@ -131,992 +92,28 @@ const AppContent = () => {
     };
   }, []);
  
-  useEffect(() => {
-    const parseChapterNumber = (name: string): number | null => {
-      // 1. Try to match 'chapter' followed by optional separators and then digits
-      let match = name.match(/chapter\s*[-_]?\s*(\d+)/i);
-      if (match) return parseInt(match[1], 10);
 
-      // 2. Try to match 'ch' followed by optional separators and then digits
-      match = name.match(/\bch\s*[-_]?\s*(\d+)/i) || name.match(/_ch\s*[-_]?\s*(\d+)/i);
-      if (match) return parseInt(match[1], 10);
-
-      // 3. Strip 'a1', 'a2', 'b1', 'b2' to avoid false positives from the level name in the prefix
-      const cleanedName = name.replace(/\b[ab][12]\b/i, '').replace(/^[ab][12]\s*[-_]?\s*/i, '');
-      match = cleanedName.match(/(\d+)/);
-      if (match) return parseInt(match[1], 10);
-
-      return null;
-    };
-
-    const fetchB2Images = async () => {
-      try {
-        const imagesRef = ref(storage, 'Abraham/abraham_b2/images');
-        const res = await listAll(imagesRef);
-        
-        // Parse chapter numbers and pair them with storage items
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        // Sort chapters numerically
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAbrahamB2Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading B2 images from Firebase Storage:", error);
-      }
-    };
- 
-    const fetchMosesA2Images = async () => {
-      try {
-        // Try 'Moses/a2/images' first, if empty try 'Moses/moses_a2/images'
-        let imagesRef = ref(storage, 'Moses/a2/images');
-        let res = await listAll(imagesRef);
-        
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Moses/moses_a2/images');
-          res = await listAll(imagesRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Moses A2 ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMosesA2Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading Moses A2 images from Firebase Storage:", error);
-      }
-    };
- 
-    const fetchMosesB1Images = async () => {
-      try {
-        // Try 'Moses/b1/images' first, if empty try 'Moses/moses_b1/images'
-        let imagesRef = ref(storage, 'Moses/b1/images');
-        let res = await listAll(imagesRef);
-        
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Moses/moses_b1/images');
-          res = await listAll(imagesRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Moses B1 ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMosesB1Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading Moses B1 images from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMosesB2Images = async () => {
-      try {
-        // Try 'Moses/b2/images' first, if empty try 'Moses/moses_b2/images'
-        let imagesRef = ref(storage, 'Moses/b2/images');
-        let res = await listAll(imagesRef);
-        
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Moses/moses_b2/images');
-          res = await listAll(imagesRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Moses B2 ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMosesB2Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading Moses B2 images from Firebase Storage:", error);
-      }
-    };
-
-    const fetchYunusEmreA2Images = async () => {
-      try {
-        let imagesRef = ref(storage, 'Yunus/a2/images');
-        let res = await listAll(imagesRef);
-        
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunus/a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Yunus/yunus_a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunus/yunus_a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'YunusEmre/a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'YunusEmre/yunusemre_a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Yunus_Emre/a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Yunus_Emre/yunusemre_a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunusEmre/a2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunusEmre/yunusemre_a2/images');
-          res = await listAll(imagesRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Yunus Emre A2 ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setYunusEmreA2Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading Yunus Emre A2 images from Firebase Storage:", error);
-      }
-    };
-
-    const fetchYunusEmreB1Images = async () => {
-      try {
-        let imagesRef = ref(storage, 'Yunus/b1/images');
-        let res = await listAll(imagesRef);
-        
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunus/b1/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Yunus/yunus_b1/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunus/yunus_b1/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'YunusEmre/b1/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'YunusEmre/yunusemre_b1/images');
-          res = await listAll(imagesRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Yunus Emre B1 ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setYunusEmreB1Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading Yunus Emre B1 images from Firebase Storage:", error);
-      }
-    };
-
-    const fetchYunusEmreB2Images = async () => {
-      try {
-        let imagesRef = ref(storage, 'yunus/b2/images');
-        let res = await listAll(imagesRef);
-        
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Yunus/b2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'Yunus/yunus_b2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'yunus/yunus_b2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'YunusEmre/b2/images');
-          res = await listAll(imagesRef);
-        }
-        if (res.items.length === 0) {
-          imagesRef = ref(storage, 'YunusEmre/yunusemre_b2/images');
-          res = await listAll(imagesRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        parsedItems.sort((a, b) => a.chNum - b.chNum);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Yunus Emre B2 ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setYunusEmreB2Images(urlsMap);
-      } catch (error) {
-        console.error("Error loading Yunus Emre B2 images from Firebase Storage:", error);
-      }
-    };
-
-    const fetchAdamA2ArabicAudios = async () => {
-      try {
-        const audioRef = ref(storage, 'Adam_A2/Adam_a2_arabic_audio');
-        const res = await listAll(audioRef);
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Adam A2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAdamA2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Adam A2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchAdamB1ArabicAudios = async () => {
-      try {
-        const audioRef = ref(storage, 'adam_b1/audio/arabic_audio');
-        const res = await listAll(audioRef);
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Adam B1 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAdamB1ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Adam B1 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchAdamB2ArabicAudios = async () => {
-      try {
-        const audioRef = ref(storage, 'adam_b2/audio/arabic_audio');
-        const res = await listAll(audioRef);
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Adam B2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAdamB2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Adam B2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchYunusA2ArabicAudios = async () => {
-      try {
-        const audioRef = ref(storage, 'yunus/a2/audio/arabic_audio');
-        const res = await listAll(audioRef);
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Yunus A2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setYunusA2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Yunus A2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchYunusB1ArabicAudios = async () => {
-      try {
-        const audioRef = ref(storage, 'yunus/b1/audio/arabic_audio');
-        const res = await listAll(audioRef);
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Yunus B1 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setYunusB1ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Yunus B1 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchYunusB2ArabicAudios = async () => {
-      try {
-        const audioRef = ref(storage, 'yunus/b2/audio/arabic_audio');
-        const res = await listAll(audioRef);
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Yunus B2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setYunusB2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Yunus B2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMosesA2ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'Moses/a2/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'moses/a2/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Moses A2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMosesA2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Moses A2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMosesB1ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'Moses/b1/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'moses/b1/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Moses B1 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMosesB1ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Moses B1 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMosesB2ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'Moses/b2/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'moses/b2/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Moses B2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMosesB2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Moses B2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchAbrahamA2ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'Abraham/abraham_a2/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'abraham/abraham_a2/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Abraham A2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAbrahamA2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Abraham A2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchAbrahamB1ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'Abraham/abraham_b1/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'abraham/abraham_b1/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Abraham B1 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAbrahamB1ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Abraham B1 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchAbrahamB2ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'Abraham/abraham_b2/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'abraham/abraham_b2/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Abraham B2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setAbrahamB2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Abraham B2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMeccaA2ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'mecca/a2/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'Mecca/a2/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Mecca A2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMeccaA2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Mecca A2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMeccaB1ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'mecca/b1/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'Mecca/b1/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Mecca B1 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMeccaB1ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Mecca B1 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    const fetchMeccaB2ArabicAudios = async () => {
-      try {
-        let audioRef = ref(storage, 'mecca/b2/audio/arabic_audio');
-        let res = await listAll(audioRef);
-        if (res.items.length === 0) {
-          audioRef = ref(storage, 'Mecca/b2/audio/arabic_audio');
-          res = await listAll(audioRef);
-        }
-        
-        const parsedItems = res.items.map(item => {
-          const name = item.name;
-          const chNum = parseChapterNumber(name);
-          return { item, chNum };
-        }).filter((x): x is { item: typeof x.item, chNum: number } => x.chNum !== null);
-        
-        const urlsMap: Record<number, string> = {};
-        await Promise.all(
-          parsedItems.map(async ({ item, chNum }) => {
-            try {
-              const url = await getDownloadURL(item);
-              urlsMap[chNum] = url;
-            } catch (err) {
-              console.error(`Error getting download URL for Mecca B2 Arabic Audio ${item.name}:`, err);
-            }
-          })
-        );
-        
-        setMeccaB2ArabicAudios(urlsMap);
-      } catch (error) {
-        console.error("Error loading Mecca B2 Arabic audios from Firebase Storage:", error);
-      }
-    };
-
-    fetchB2Images();
-    fetchMosesA2Images();
-    fetchMosesB1Images();
-    fetchMosesB2Images();
-    fetchYunusEmreA2Images();
-    fetchYunusEmreB1Images();
-    fetchYunusEmreB2Images();
-    fetchAdamA2ArabicAudios();
-    fetchAdamB1ArabicAudios();
-    fetchAdamB2ArabicAudios();
-    fetchYunusA2ArabicAudios();
-    fetchYunusB1ArabicAudios();
-    fetchYunusB2ArabicAudios();
-    fetchMosesA2ArabicAudios();
-    fetchMosesB1ArabicAudios();
-    fetchMosesB2ArabicAudios();
-    fetchAbrahamA2ArabicAudios();
-    fetchAbrahamB1ArabicAudios();
-    fetchAbrahamB2ArabicAudios();
-    fetchMeccaA2ArabicAudios();
-    fetchMeccaB1ArabicAudios();
-    fetchMeccaB2ArabicAudios();
-  }, []);
 
   const { language, t, formatNumber, isRTL } = useLanguage();
-  const { stats, resetStats } = useStoryProgress();
+  const { resetStats } = useStoryProgress();
+  const {
+    definition: currentDefinition,
+    pair: currentBookPair,
+    loading: isBookLoading,
+    error: bookLoadError,
+  } = useBookBundle(selectedProphetId, currentLevel);
 
   // --- Data ---
   const currentBook = useMemo(() => {
-    if (!selectedProphetId || !currentLevel) return null;
-
-    let bookEn: BookData | null = null;
-    let bookAr: BookData | null = null;
-
-    if (selectedProphetId === 'adam') {
-      const booksEn = { 'A2': adamA2BookDataEn, 'B1': adamB1BookDataEn, 'B2': adamB2BookDataEn };
-      const booksAr = { 'A2': adamA2BookDataAr, 'B1': adamB1BookDataAr, 'B2': adamB2BookDataAr };
-      bookEn = booksEn[currentLevel];
-      bookAr = booksAr[currentLevel];
-    } else if (selectedProphetId === 'ibrahim') {
-      const booksEn = { 'A2': abrahamA2BookDataEn, 'B1': abrahamB1BookDataEn, 'B2': abrahamB2BookDataEn };
-      const booksAr = { 'A2': abrahamA2BookDataAr, 'B1': abrahamB1BookDataAr, 'B2': abrahamB2BookDataAr };
-      bookEn = booksEn[currentLevel];
-      bookAr = booksAr[currentLevel];
-    } else if (selectedProphetId === 'musa') {
-      const booksEn = { 'A2': mosesA2BookDataEn, 'B1': mosesB1BookDataEn, 'B2': mosesB2BookDataEn };
-      const booksAr = { 'A2': mosesA2BookDataAr, 'B1': mosesB1BookDataAr, 'B2': mosesB2BookDataAr };
-      bookEn = booksEn[currentLevel];
-      bookAr = booksAr[currentLevel];
-    } else if (selectedProphetId === 'mecca') {
-      const booksEn = { 'A2': meccaA2BookDataEn, 'B1': meccaB1BookDataEn, 'B2': meccaB2BookDataEn };
-      const booksAr = { 'A2': meccaA2BookDataAr, 'B1': meccaB1BookDataAr, 'B2': meccaB2BookDataAr };
-      bookEn = booksEn[currentLevel];
-      bookAr = booksAr[currentLevel];
-    } else if (selectedProphetId === 'yunusEmre') {
-      const booksEn = { 'A2': yunusEmreA2BookDataEn, 'B1': yunusEmreB1BookDataEn, 'B2': yunusEmreB2BookDataEn };
-      const booksAr = { 'A2': yunusEmreA2BookDataAr, 'B1': yunusEmreB1BookDataAr, 'B2': yunusEmreB2BookDataAr };
-      bookEn = booksEn[currentLevel];
-      bookAr = booksAr[currentLevel];
-    }
-
-    if (!bookEn) return null;
-
-    // Apply dynamic custom storage images (shared/synced across all languages)
-    let imagesToUse: Record<number, string> | null = null;
-    if (selectedProphetId === 'ibrahim' && currentLevel === 'B2' && Object.keys(abrahamB2Images).length > 0) {
-      imagesToUse = abrahamB2Images;
-    } else if (selectedProphetId === 'musa') {
-      if (currentLevel === 'A2' && Object.keys(mosesA2Images).length > 0) imagesToUse = mosesA2Images;
-      else if (currentLevel === 'B1' && Object.keys(mosesB1Images).length > 0) imagesToUse = mosesB1Images;
-      else if (currentLevel === 'B2' && Object.keys(mosesB2Images).length > 0) imagesToUse = mosesB2Images;
-    } else if (selectedProphetId === 'yunusEmre') {
-      if (currentLevel === 'A2' && Object.keys(yunusEmreA2Images).length > 0) imagesToUse = yunusEmreA2Images;
-      else if (currentLevel === 'B1' && Object.keys(yunusEmreB1Images).length > 0) imagesToUse = yunusEmreB1Images;
-      else if (currentLevel === 'B2' && Object.keys(yunusEmreB2Images).length > 0) imagesToUse = yunusEmreB2Images;
-    }
-
-    if (imagesToUse) {
-      bookEn = {
-        ...bookEn,
-        pages: bookEn.pages.map(page => {
-          if (imagesToUse && imagesToUse[page.id]) {
-            return { ...page, image: imagesToUse[page.id] };
-          }
-          return page;
-        })
-      };
-    }
-
-    // Now construct the final book to return based on active language
-    if (language === 'ar' && bookAr) {
-      // 1. Apply Arabic audio files
-      let audiosToUse: Record<number, string> | null = null;
-      if (selectedProphetId === 'adam') {
-        if (currentLevel === 'A2' && Object.keys(adamA2ArabicAudios).length > 0) audiosToUse = adamA2ArabicAudios;
-        else if (currentLevel === 'B1' && Object.keys(adamB1ArabicAudios).length > 0) audiosToUse = adamB1ArabicAudios;
-        else if (currentLevel === 'B2' && Object.keys(adamB2ArabicAudios).length > 0) audiosToUse = adamB2ArabicAudios;
-      } else if (selectedProphetId === 'ibrahim') {
-        if (currentLevel === 'A2' && Object.keys(abrahamA2ArabicAudios).length > 0) audiosToUse = abrahamA2ArabicAudios;
-        else if (currentLevel === 'B1' && Object.keys(abrahamB1ArabicAudios).length > 0) audiosToUse = abrahamB1ArabicAudios;
-        else if (currentLevel === 'B2' && Object.keys(abrahamB2ArabicAudios).length > 0) audiosToUse = abrahamB2ArabicAudios;
-      } else if (selectedProphetId === 'musa') {
-        if (currentLevel === 'A2' && Object.keys(mosesA2ArabicAudios).length > 0) audiosToUse = mosesA2ArabicAudios;
-        else if (currentLevel === 'B1' && Object.keys(mosesB1ArabicAudios).length > 0) audiosToUse = mosesB1ArabicAudios;
-        else if (currentLevel === 'B2' && Object.keys(mosesB2ArabicAudios).length > 0) audiosToUse = mosesB2ArabicAudios;
-      } else if (selectedProphetId === 'mecca') {
-        if (currentLevel === 'A2' && Object.keys(meccaA2ArabicAudios).length > 0) audiosToUse = meccaA2ArabicAudios;
-        else if (currentLevel === 'B1' && Object.keys(meccaB1ArabicAudios).length > 0) audiosToUse = meccaB1ArabicAudios;
-        else if (currentLevel === 'B2' && Object.keys(meccaB2ArabicAudios).length > 0) audiosToUse = meccaB2ArabicAudios;
-      } else if (selectedProphetId === 'yunusEmre') {
-        if (currentLevel === 'A2' && Object.keys(yunusA2ArabicAudios).length > 0) audiosToUse = yunusA2ArabicAudios;
-        else if (currentLevel === 'B1' && Object.keys(yunusB1ArabicAudios).length > 0) audiosToUse = yunusB1ArabicAudios;
-        else if (currentLevel === 'B2' && Object.keys(yunusB2ArabicAudios).length > 0) audiosToUse = yunusB2ArabicAudios;
-      }
-
-      // 2. Synchronize images directly from bookEn to ensure absolute synchrony!
-      const englishPageImages: Record<number, string> = {};
-      bookEn.pages.forEach(p => {
-        if (p.image) {
-          englishPageImages[p.id] = p.image;
-        }
-      });
-
-      bookAr = {
-        ...bookAr,
-        pages: bookAr.pages.map(page => {
-          const updatedPage = { ...page };
-          // Enforce English image synchrony
-          if (englishPageImages[page.id]) {
-            updatedPage.image = englishPageImages[page.id];
-          }
-          // Enforce Arabic audio Url if exists
-          if (audiosToUse && audiosToUse[page.id]) {
-            updatedPage.audioUrl = audiosToUse[page.id];
-          }
-          return updatedPage;
-        })
-      };
-
-      return bookAr;
-    }
-
-    return bookEn;
-  }, [
-    selectedProphetId, 
-    currentLevel, 
-    language, 
-    abrahamB2Images, 
-    mosesA2Images, 
-    mosesB1Images, 
-    mosesB2Images, 
-    yunusEmreA2Images, 
-    yunusEmreB1Images, 
-    yunusEmreB2Images,
-    yunusA2ArabicAudios,
-    yunusB1ArabicAudios,
-    yunusB2ArabicAudios,
-    mosesA2ArabicAudios,
-    mosesB1ArabicAudios,
-    mosesB2ArabicAudios,
-    abrahamA2ArabicAudios,
-    abrahamB1ArabicAudios,
-    abrahamB2ArabicAudios,
-    meccaA2ArabicAudios,
-    meccaB1ArabicAudios,
-    meccaB2ArabicAudios,
-    adamA2ArabicAudios,
-    adamB1ArabicAudios,
-    adamB2ArabicAudios
-  ]);
+    if (!currentBookPair) return null;
+    return language === 'ar' ? currentBookPair.ar : currentBookPair.en;
+  }, [currentBookPair, language]);
 
   const currentPage = currentBook?.pages[currentPageIndex];
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
 
-  const currentCollection = useMemo(() => {
-    if (!selectedProphetId) return null;
-    if (selectedProphetId === 'mecca') return 'history';
-    if (selectedProphetId === 'yunusEmre') return 'turkish';
-    return 'prophets';
-  }, [selectedProphetId]);
+  const currentCollection = currentDefinition?.collection ?? null;
 
   // Dynamic UI theme classes based on active collection
   const themeClasses = useMemo(() => {
@@ -1208,39 +205,9 @@ const AppContent = () => {
   }, [currentCollection, currentLevel, showSummary]);
 
   const currentBookTitle = useMemo(() => {
-    if (!currentBook) return '';
-    if (language === 'ar') {
-      if (selectedProphetId === 'adam') {
-        return 'قصص الأنبياء: آدم (عليه السلام)';
-      }
-      if (selectedProphetId === 'ibrahim') {
-        return 'قصص الأنبياء: إبراهيم (عليه السلام)';
-      }
-      if (selectedProphetId === 'musa') {
-        return 'قصص الأنبياء: موسى (عليه السلام)';
-      }
-      if (selectedProphetId === 'mecca') {
-        return 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام';
-      }
-      if (selectedProphetId === 'yunusEmre') {
-        return 'أعلام التراث التركي الإسلامي: يونس إمره';
-      }
-      return currentBook.title
-        .replace(/stories of the prophets:/gi, 'قصص الأنبياء:')
-        .replace(/prophet abraham \(as\)/gi, 'النبي إبراهيم (عليه السلام)')
-        .replace(/prophet adam \(as\)/gi, 'النبي آدم (عليه السلام)')
-        .replace(/prophet moses \(as\)/gi, 'النبي موسى (عليه السلام)');
-    }
-    
-    // English
-    if (selectedProphetId === 'mecca') {
-      return 'Islamic History & Civilization: Mecca';
-    }
-    if (selectedProphetId === 'yunusEmre') {
-      return 'Great Figures of Turkish-Islamic Heritage: Yunus Emre';
-    }
-    return currentBook.title;
-  }, [currentBook, language, selectedProphetId]);
+    if (!currentDefinition) return currentBook?.title ?? '';
+    return currentDefinition.titles[language];
+  }, [currentBook, currentDefinition, language]);
 
   // --- Handlers ---
   const handleStartJourney = (prophetId: string, level: Level) => {
@@ -1444,6 +411,29 @@ const AppContent = () => {
     return <HomePage onStart={handleStartJourney} />;
   }
 
+  if (bookLoadError) {
+    return (
+      <div className="min-h-screen bg-wood page-texture flex items-center justify-center p-6 text-center" role="alert">
+        <div className="max-w-lg rounded-2xl border border-red-400/30 bg-black/30 p-8 text-parchment shadow-2xl">
+          <h2 className="font-display text-xl text-red-300">Book could not be loaded</h2>
+          <p className="mt-3 font-serif text-sm text-parchment/70">{bookLoadError.message}</p>
+          <button onClick={handleReturnToLibrary} className="mt-6 rounded-xl border border-gold/40 px-5 py-2 font-display text-sm text-gold">
+            {t('nav.returnToLibrary')}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (isBookLoading || !currentBook) {
+    return (
+      <div className="min-h-screen bg-wood page-texture flex items-center justify-center" role="status" aria-live="polite">
+        <LoaderCircle className="h-8 w-8 animate-spin text-gold" aria-hidden="true" />
+        <span className="sr-only">Loading book</span>
+      </div>
+    );
+  }
+
   const renderPage = () => {
     if (showSummary) {
       return (
@@ -1526,6 +516,8 @@ const AppContent = () => {
               onClick={() => setIsMenuOpen(true)}
               className="p-1.5 sm:p-2 rounded-full transition-colors shrink-0 hover:bg-white/10 text-parchment cursor-pointer"
               title={t('nav.menu')}
+              aria-label={t('nav.menu')}
+              aria-expanded={isMenuOpen}
             >
               <Menu className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </button>
@@ -1561,6 +553,7 @@ const AppContent = () => {
                 themeClasses.buttonSec
               )}
               title={t('nav.downloadPdf')}
+              aria-label={t('nav.downloadPdf')}
             >
               <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span className="hidden lg:inline font-display text-[10px] sm:text-[11px] uppercase tracking-wider">
@@ -1599,6 +592,7 @@ const AppContent = () => {
                 currentCollection === 'turkish' && "bg-[#0D1D2C]/40 border-[#22D3EE]/30 text-[#22D3EE] hover:text-parchment hover:bg-[#22D3EE]/25 hover:border-[#22D3EE]/60"
               )}
               title={t('nav.returnToLibrary')}
+              aria-label={t('nav.returnToLibrary')}
             >
               <Home className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
             </button>
@@ -1624,6 +618,7 @@ const AppContent = () => {
                   themeClasses.navButton
                 )}
                 title={t('nav.back')}
+                aria-label={t('nav.back')}
               >
                 <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
               </button>
@@ -1636,6 +631,7 @@ const AppContent = () => {
                   themeClasses.navButton
                 )}
                 title={t('nav.next')}
+                aria-label={t('nav.next')}
               >
                 <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
               </button>
@@ -1679,6 +675,8 @@ const AppContent = () => {
                 "hover:bg-white/10 hover:border-gold/20 select-none active:scale-95"
               )}
               title={t('nav.tableOfContents')}
+              aria-label={t('nav.tableOfContents')}
+              aria-expanded={isQuickTOCOpen}
             >
               <BookMarked className={cn(themeClasses.goldText, "w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2] shrink-0")} />
               <span className={cn(
@@ -1874,7 +872,7 @@ const AppContent = () => {
                     {t('nav.mainMenu')}
                   </h3>
                 </div>
-                <button onClick={() => setIsMenuOpen(false)} className={cn("transition-colors", themeClasses.menuCloseButton)}>
+                <button onClick={() => setIsMenuOpen(false)} className={cn("transition-colors", themeClasses.menuCloseButton)} aria-label="Close menu">
                   <X size={24} />
                 </button>
               </div>

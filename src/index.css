@@ -117,3 +117,15 @@
   .markdown-body span { @apply !text-white; }
   .markdown-body div { @apply !text-white; }
 }
+
+/* Respect the operating system's reduced-motion preference without changing the default design. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

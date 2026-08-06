@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Reorder, motion, AnimatePresence, useDragControls } from 'framer-motion';
+import { Reorder, motion, AnimatePresence, useDragControls } from 'motion/react';
 import { CheckCircle2, XCircle, RotateCcw, GripVertical, Zap, ArrowDown, ListOrdered } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';

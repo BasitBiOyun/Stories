@@ -1,16 +1,18 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Globe } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 export const LanguageToggle: React.FC = () => {
   const { language, setLanguage, isRTL } = useLanguage();
 
   return (
-    <div className="flex items-center gap-1 sm:gap-2 bg-black/35 backdrop-blur-md p-1 rounded-full border border-gold/40 shadow-lg transition-all duration-300 hover:border-gold/60">
+    <div className="flex items-center gap-1 sm:gap-2 bg-black/35 backdrop-blur-md p-1 rounded-full border border-gold/40 shadow-lg transition-all duration-300 hover:border-gold/60" role="group" aria-label="Language selection">
       <button
+        type="button"
         onClick={() => setLanguage('en')}
+        aria-label="Use English"
+        aria-pressed={language === 'en'}
         className={cn(
           "px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[12px] font-display font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
           language === 'en' 
@@ -21,7 +23,10 @@ export const LanguageToggle: React.FC = () => {
         EN
       </button>
       <button
+        type="button"
         onClick={() => setLanguage('ar')}
+        aria-label="استخدام العربية"
+        aria-pressed={language === 'ar'}
         className={cn(
           "px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-[13px] font-arabic font-semibold transition-all duration-300 cursor-pointer",
           language === 'ar' 
