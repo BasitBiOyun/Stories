@@ -47,7 +47,7 @@ jobs:
         run: |
           git fetch origin main
           git worktree add /tmp/stories-main origin/main
-          npm --prefix /tmp/stories-main ci
+          npm --prefix /tmp/stories-main install --package-lock=false
           npm --prefix /tmp/stories-main run build
 
       - name: Start branch and main preview servers
