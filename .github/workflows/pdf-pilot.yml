@@ -13,10 +13,14 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: pdf-pilot-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   adam-a2-pilot:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,42 +34,51 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
-      - name: Build canonical-data-backed pilot HTML
-        run: npx tsx scripts/pdf-pilot/buildAdamA2Pilot.ts
+      - name: Build canonical-data-backed expanded pilot HTML
+        run: npx tsx scripts/pdf-pilot/buildAdamA2PilotV2.ts
 
       - name: Install pinned Vivliostyle CLI
         run: npm install --no-save --package-lock=false @vivliostyle/cli@11.1.0
 
       - name: Build English pilot PDF
-        run: npx vivliostyle build artifacts/pdf-pilot/adam-a2-en-pilot.html --size A4 --output artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf --no-sandbox
+        run: npx vivliostyle build artifacts/pdf-pilot-v2/adam-a2-en-pilot-v2.html --size A4 --output artifacts/pdf-pilot-v2/adam-a2-en-vivliostyle-v2.pdf
 
       - name: Build Arabic pilot PDF
-        run: npx vivliostyle build artifacts/pdf-pilot/adam-a2-ar-pilot.html --size A4 --output artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf --no-sandbox
+        run: npx vivliostyle build artifacts/pdf-pilot-v2/adam-a2-ar-pilot-v2.html --size A4 --output artifacts/pdf-pilot-v2/adam-a2-ar-vivliostyle-v2.pdf
 
       - name: Install PDF inspection tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
-      - name: Render sample pages for visual inspection
+      - name: Render all pages for visual inspection
         run: |
-          mkdir -p artifacts/pdf-pilot/rendered/en artifacts/pdf-pilot/rendered/ar
-          pdftoppm -png -r 120 artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf artifacts/pdf-pilot/rendered/en/page
-          pdftoppm -png -r 120 artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf artifacts/pdf-pilot/rendered/ar/page
+          mkdir -p artifacts/pdf-pilot-v2/rendered/en artifacts/pdf-pilot-v2/rendered/ar
+          pdftoppm -png -r 135 artifacts/pdf-pilot-v2/adam-a2-en-vivliostyle-v2.pdf artifacts/pdf-pilot-v2/rendered/en/page
+          pdftoppm -png -r 135 artifacts/pdf-pilot-v2/adam-a2-ar-vivliostyle-v2.pdf artifacts/pdf-pilot-v2/rendered/ar/page
 
-      - name: Verify expected page count and embedded chapter images
+      - name: Record and verify page counts
         run: |
-          test "$(pdfinfo artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf | awk '/^Pages:/ {print $2}')" = "4"
-          test "$(pdfinfo artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf | awk '/^Pages:/ {print $2}')" = "4"
-          test "$(find artifacts/pdf-pilot/rendered/en -name '*.png' | wc -l)" = "4"
-          test "$(find artifacts/pdf-pilot/rendered/ar -name '*.png' | wc -l)" = "4"
+          EN_PAGES=$(pdfinfo artifacts/pdf-pilot-v2/adam-a2-en-vivliostyle-v2.pdf | awk '/^Pages:/ {print $2}')
+          AR_PAGES=$(pdfinfo artifacts/pdf-pilot-v2/adam-a2-ar-vivliostyle-v2.pdf | awk '/^Pages:/ {print $2}')
+          EN_RENDERS=$(find artifacts/pdf-pilot-v2/rendered/en -name '*.png' | wc -l)
+          AR_RENDERS=$(find artifacts/pdf-pilot-v2/rendered/ar -name '*.png' | wc -l)
+          echo "English pages: $EN_PAGES" | tee artifacts/pdf-pilot-v2/page-counts.txt
+          echo "Arabic pages: $AR_PAGES" | tee -a artifacts/pdf-pilot-v2/page-counts.txt
+          test "$EN_PAGES" -ge 9
+          test "$AR_PAGES" -ge 9
+          test "$EN_PAGES" -le 12
+          test "$AR_PAGES" -le 12
+          test "$EN_RENDERS" = "$EN_PAGES"
+          test "$AR_RENDERS" = "$AR_PAGES"
 
-      - name: Upload pilot PDFs and page renders
+      - name: Upload expanded pilot PDFs and page renders
         uses: actions/upload-artifact@v4
         with:
-          name: adam-a2-vivliostyle-pilot
+          name: adam-a2-vivliostyle-pilot-v2
           path: |
-            artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf
-            artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf
-            artifacts/pdf-pilot/rendered/**/*.png
-            artifacts/pdf-pilot/README.txt
+            artifacts/pdf-pilot-v2/adam-a2-en-vivliostyle-v2.pdf
+            artifacts/pdf-pilot-v2/adam-a2-ar-vivliostyle-v2.pdf
+            artifacts/pdf-pilot-v2/rendered/**/*.png
+            artifacts/pdf-pilot-v2/README.txt
+            artifacts/pdf-pilot-v2/page-counts.txt
           retention-days: 14
           if-no-files-found: error
