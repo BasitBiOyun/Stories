@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Play, Pause, Volume2, VolumeX, BrainCircuit, ArrowRight, CheckCircle2, Book as BookIcon } from 'lucide-react';
 import { PageData, Exercise } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';

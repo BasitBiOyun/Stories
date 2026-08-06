@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { GraduationCap, CheckCircle2, XCircle, Rocket, Sparkles, Trophy, Info, RotateCcw } from 'lucide-react';
 import { Exercise } from '../../types';
 import { cn } from '../../lib/utils';
