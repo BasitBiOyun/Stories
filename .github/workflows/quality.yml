@@ -16,7 +16,7 @@ concurrency:
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -58,7 +58,7 @@ jobs:
           echo $! > /tmp/stories-main-preview.pid
 
       - name: Run runtime and visual regression suite
-        run: node scripts/validation/runtimeRegression.mjs --branch=http://127.0.0.1:4173 --main=http://127.0.0.1:4174 --artifacts=artifacts/runtime
+        run: node scripts/validation/runtimeRegressionV2.mjs --branch=http://127.0.0.1:4173 --main=http://127.0.0.1:4174 --artifacts=artifacts/runtime
 
       - name: Show preview logs on failure
         if: failure()
