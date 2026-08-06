@@ -50,7 +50,7 @@ The single GitHub workflow also runs the production build in Chromium and checks
 - mobile reader navigation
 - pixel comparison against the current `main` interface
 
-Books that do not yet contain a standalone exercise page are reported as derived-content warnings rather than technical runtime failures. Those gaps belong to the later educational-quality phase.
+Books that do not yet contain a standalone exercise page are reported as derived-content warnings rather than technical runtime failures. The regression harness closes the contents overlay and continues with PDF and remaining checks. Those gaps belong to the later educational-quality phase.
 
 Screenshots, pixel diffs, and the machine-readable runtime report are retained as a GitHub Actions artifact for 14 days after each workflow run.
 
