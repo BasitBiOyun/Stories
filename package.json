@@ -18,7 +18,8 @@
     "validate:content": "tsx scripts/validation/validateContent.ts",
     "validate:guides": "tsx scripts/validation/validateGuides.ts",
     "validate": "npm run validate:canonical && npm run validate:content && npm run validate:guides",
-    "quality": "npm run validate && npm run typecheck && npm run build"
+    "quality": "npm run validate && npm run typecheck && npm run build && npm run validate:bundle",
+    "validate:bundle": "tsx scripts/validation/validateBundle.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

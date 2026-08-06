@@ -17,8 +17,9 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      sourcemap: true,
-      chunkSizeWarningLimit: 900,
+      manifest: true,
+      sourcemap: false,
+      chunkSizeWarningLimit: 1000,
     },
     server: {
       // AI Studio can disable HMR through DISABLE_HMR during automated edits.

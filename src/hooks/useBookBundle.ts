@@ -3,7 +3,6 @@ import type { Level } from '../types';
 import { getBookDefinition } from '../core/content/bookRegistry';
 import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
-import { applyResolvedAssets, loadBookAssets } from '../core/storage/storageAssetLoader';
 
 export interface BookBundleState {
   definition: BookDefinition | null;
@@ -13,8 +12,8 @@ export interface BookBundleState {
 }
 
 /**
- * Loads only the selected story-level bundle and its optional Storage overlays.
- * Canonical BookData is never mutated; Storage URLs are applied to a derived view model.
+ * Loads only the selected story-level bundle. The Firebase Storage SDK is
+ * imported after selection, and canonical BookData is never mutated.
  */
 export const useBookBundle = (storyId: string | null, level: Level | null): BookBundleState => {
   const definition = useMemo(
@@ -38,13 +37,20 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
     }
 
     setLoading(true);
-    Promise.all([
-      definition.load(),
-      loadBookAssets(definition.storage),
-    ])
-      .then(([loadedPair, loadedAssets]) => {
+
+    const load = async () => {
+      const [loadedPair, storageModule] = await Promise.all([
+        definition.load(),
+        import('../core/storage/storageAssetLoader'),
+      ]);
+      const loadedAssets = await storageModule.loadBookAssets(definition.storage);
+      return storageModule.applyResolvedAssets(loadedPair, loadedAssets);
+    };
+
+    load()
+      .then(loadedPair => {
         if (cancelled) return;
-        setPair(applyResolvedAssets(loadedPair, loadedAssets));
+        setPair(loadedPair);
         setLoading(false);
       })
       .catch(reason => {
