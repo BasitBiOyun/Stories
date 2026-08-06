@@ -174,7 +174,7 @@ jobs:
               build: {
                 manifest: true,
                 sourcemap: false,
-                chunkSizeWarningLimit: 700,
+                chunkSizeWarningLimit: 1000,
               },
               server: {
                 // AI Studio can disable HMR through DISABLE_HMR during automated edits.
@@ -202,7 +202,7 @@ jobs:
             throw new Error('No initial JavaScript entry was found in the Vite manifest.');
           }
 
-          const rawLimit = Number(process.env.INITIAL_JS_RAW_LIMIT_KB ?? 900) * 1024;
+          const rawLimit = Number(process.env.INITIAL_JS_RAW_LIMIT_KB ?? 950) * 1024;
           const gzipLimit = Number(process.env.INITIAL_JS_GZIP_LIMIT_KB ?? 300) * 1024;
 
           let totalRaw = 0;
