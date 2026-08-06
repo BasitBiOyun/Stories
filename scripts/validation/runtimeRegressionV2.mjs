@@ -295,13 +295,15 @@ const openFirstExercise = async (page, scope) => {
   const itemCount = await items.count();
   assert(itemCount > 1, `${scope}: table of contents contains no page items.`);
 
-  const exerciseItem = items.filter({ hasText: /\b(?:Kc|Ex)\b/ }).first();
+  const exercisePattern = /\b(?:Kc|Ex)\b/;
+  const exerciseItem = items.filter({ hasText: exercisePattern }).first();
   if ((await exerciseItem.count()) === 0) {
     report.warnings.push({
       scope,
       message: 'No standalone knowledge-check or exercise page appears in the table of contents.',
     });
-    await tocButton.click();
+    await page.mouse.click(4, 4);
+    await popover.waitFor({ state: 'hidden', timeout: 10_000 });
     return { present: false, itemCount, controls: 0, textLength: 0 };
   }
 
