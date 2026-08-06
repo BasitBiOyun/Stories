@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/dist/css/open-dyslexic.min.css');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Arakom';
+  src: url('/Arakom-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  size-adjust: 125%;
+}
+
+@font-face {
+  font-family: 'Arakom';
+  src: url('/Arakom-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  size-adjust: 125%;
+}
+
+@theme {
+  --font-display: "Poppins", sans-serif;
+  --font-serif: "Poppins", sans-serif;
+  --font-sans: "Poppins", sans-serif;
+  --font-dyslexic: "OpenDyslexic", sans-serif;
+  --font-cursive: "Great Vibes", cursive;
+  --font-medieval: "Poppins", sans-serif;
+  --font-arabic: "Arakom", sans-serif;
+  
+  --color-parchment: #f4f1ea;
+  --color-wood: #14221a; /* Calming sage green deep forest background */
+  --color-gold: #c2aa6b; /* Warm beautiful gold/champagne highlight */
+  --color-ink: #111a14;
+
+  --animate-shake: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-wood text-ink selection:bg-gold/30 transition-colors duration-500;
+  }
+  
+  .font-dyslexic-mode * {
+    font-family: var(--font-dyslexic) !important;
+  }
+
+  /* Global fix for Arabic: Force all common font classes to use Arakom when in RTL mode */
+  [dir="rtl"], [lang="ar"], .font-arabic {
+    --font-display: var(--font-arabic);
+    --font-serif: var(--font-arabic);
+    --font-sans: var(--font-arabic);
+    --font-medieval: var(--font-arabic);
+    
+    font-family: var(--font-arabic) !important;
+    font-style: normal !important;
+  }
+}
+
+@layer components {
+  .page-texture {
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  }
+  
+  .book-shadow {
+    box-shadow: 
+      0 30px 60px -12px rgba(0, 0, 0, 0.7),
+      0 18px 36px -18px rgba(0, 0, 0, 0.5),
+      inset 0 0 100px rgba(0,0,0,0.1);
+  }
+  
+  .book-shadow {
+    box-shadow: 
+      0 30px 60px -12px rgba(0, 0, 0, 0.7),
+      0 18px 36px -18px rgba(0, 0, 0, 0.5),
+      inset 0 0 100px rgba(0,0,0,0.1);
+  }
+
+  .page-curl {
+    @apply absolute bottom-0 right-0 w-12 h-12 pointer-events-none;
+    background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.1) 100%);
+    border-radius: 0 0 4px 0;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gold/40 rounded-full hover:bg-gold/60 transition-colors;
+  }
+
+  .markdown-body h1 { @apply font-display text-3xl text-gold mb-6 border-b border-gold/20 pb-4; }
+  .markdown-body h2 { @apply font-display text-2xl text-gold mt-8 mb-4; }
+  .markdown-body h3 { @apply font-display text-xl text-gold mt-6 mb-3; }
+  .markdown-body h4 { @apply font-display text-lg text-gold mt-4 mb-2; }
+  .markdown-body p { @apply font-serif !text-white leading-relaxed mb-4; }
+  .markdown-body ul { @apply list-disc list-inside mb-6 space-y-2 !text-white font-serif; }
+  .markdown-body ol { @apply list-decimal list-inside mb-6 space-y-2 !text-white font-serif; }
+  .markdown-body li { @apply ml-4 !text-white; }
+  .markdown-body strong { @apply !text-gold font-bold; }
+  .markdown-body hr { @apply border-gold/20 my-8; }
+  .markdown-body blockquote { @apply border-l-4 border-gold/30 pl-4 italic my-6 !text-white; }
+  .markdown-body table { @apply w-full border-collapse mb-6 !text-white; }
+  .markdown-body th { @apply border border-gold/20 p-2 bg-gold/10 !text-gold; }
+  .markdown-body td { @apply border border-gold/20 p-2 !text-white; }
+  .markdown-body span { @apply !text-white; }
+  .markdown-body div { @apply !text-white; }
+}
