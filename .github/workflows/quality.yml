@@ -30,5 +30,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
       - name: Run canonical, content, guide, type and build checks
         run: npm run quality
