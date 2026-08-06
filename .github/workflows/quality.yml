@@ -1,0 +1,44 @@
+name: Quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [agent/platform-foundation]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload source snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: stories-source-snapshot
+          path: |
+            .
+            !.git/**
+            !node_modules/**
+            !dist/**
+          include-hidden-files: true
+          retention-days: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
