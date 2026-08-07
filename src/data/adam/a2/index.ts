@@ -3,8 +3,8 @@ import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from 
 import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
 
-import { adamA2PagesAr } from './ar/pages';
-import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } from './ar/qualityFinalization';
+import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr, adamA2StudentGuideTextAr } from './ar/selfStudyGuide';
 
 export const adamA2BookDataEn: BookData = {
@@ -25,8 +25,8 @@ export const adamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'A2',
   baseFontSize: 14,
-  pages: adamA2PagesAr,
-  teacherGuide: adamA2TeacherGuideAr,
+  pages: adamA2PagesArQualityFinalized,
+  teacherGuide: adamA2TeacherGuideArQualityFinalized,
   teacherGuideMetadata: adamA2TeacherGuideMetadataAr,
   selfStudyGuide: adamA2SelfStudyGuideAr,
   studentGuideSections: adamA2StudentGuideSectionsAr,
