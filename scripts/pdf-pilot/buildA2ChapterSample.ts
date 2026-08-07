@@ -189,6 +189,19 @@ const exerciseBody = (exercise: Exercise, language: Language): string => {
     return `<div class="tap-reveal-print"><span>${escapeHtml(language === 'ar' ? 'اكتب إجابتك:' : 'Write your answer:')}</span><div class="writing-line"></div></div>`;
   }
 
+  if (exercise.type === 'drag-drop' || exercise.type === 'matching') {
+    const groups = exercise.dragDropGroups ?? [];
+    if (!groups.length) return '<div class="writing-line"></div>';
+    const bank = groups.flatMap((group) => group.items);
+    const bankLabel = language === 'ar' ? 'الكلمات المتاحة' : 'Word bank';
+    return `<div class="matching-print">
+      <div class="matching-bank"><strong>${escapeHtml(bankLabel)}:</strong>${bank.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
+      <div class="matching-targets">
+        ${groups.map((group) => `<div class="matching-target"><strong>${escapeHtml(group.group)}</strong><div class="matching-lines"><i></i><i></i></div></div>`).join('')}
+      </div>
+    </div>`;
+  }
+
   return '<div class="writing-line"></div>';
 };
 
