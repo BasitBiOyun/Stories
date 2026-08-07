@@ -1,10 +1,12 @@
 import type { PageData, TeacherGuideSection } from '../../../../types';
 import { adamA2PagesArForLearning } from './learningMaterials';
 import { adamA2TeacherGuideAr } from './teacherGuide';
+import { adamA2HotspotsGoldAr } from '../hotspotsGold';
 
 /**
  * الطبقة النهائية للمحتوى العربي المشتق في Adam A2.
- * النص الأصلي، العناوين، الصور، الصوت، النقاط التفاعلية وبيانات المزامنة لا تتغير هنا.
+ * النص الأصلي، العناوين، الصور، الصوت وبيانات المزامنة لا تتغير هنا.
+ * تتم مراجعة نص النقاط التفاعلية فقط مع الحفاظ على المعرّفات والإحداثيات.
  */
 
 const chapterVocabularyAr: Record<number, NonNullable<PageData['vocabulary']>> = {
@@ -114,7 +116,11 @@ const glossaryArPart2: NonNullable<PageData['vocabulary']> = [
 
 export const adamA2PagesArQualityFinalized: PageData[] = adamA2PagesArForLearning.map((page) => {
   if (page.type === 'story' && page.id >= 1 && page.id <= 10) {
-    return { ...page, vocabulary: chapterVocabularyAr[page.id] };
+    const hotspots = page.hotspots?.map((hotspot) => {
+      const replacement = adamA2HotspotsGoldAr[hotspot.id];
+      return replacement ? { ...hotspot, ...replacement } : hotspot;
+    });
+    return { ...page, vocabulary: chapterVocabularyAr[page.id], hotspots };
   }
 
   if (page.id === 14) {
