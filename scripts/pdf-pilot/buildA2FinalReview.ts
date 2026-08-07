@@ -1,7 +1,7 @@
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { adamA2Pages } from '../../src/data/adam/a2/en/pages';
+import { adamA2BookDataEn } from '../../src/data/adam/a2';
 import { adamA2PagesAr } from '../../src/data/adam/a2/ar/pages';
 import type { Exercise, PageData } from '../../src/types';
 
@@ -30,6 +30,12 @@ const findExercise = (page: PageData, type: string): Exercise => {
   return exercise;
 };
 
+const findMatchingExercise = (page: PageData): Exercise => {
+  const exercise = page.exercises?.find((item) => item.type === 'matching' || item.type === 'drag-drop');
+  if (!exercise) throw new Error('Final Review matching activity not found.');
+  return exercise;
+};
+
 const renderPageHeader = (title: string, subtitle: string, eyebrow: string, continuation = ''): string => `
 <header class="review-header">
   <div>
@@ -41,22 +47,20 @@ const renderPageHeader = (title: string, subtitle: string, eyebrow: string, cont
 </header>`;
 
 const sequenceOrder = [3, 0, 4, 1, 2];
+const matchingOrder = [2, 0, 3, 1];
 
 const renderSkillsPage = (page: PageData, language: Language): string => {
   const isArabic = language === 'ar';
   const sequencing = findExercise(page, 'sequencing');
-  const grouping = findExercise(page, 'drag-drop');
+  const matching = findMatchingExercise(page);
   const sequenceItems = sequenceOrder
     .map((index) => sequencing.sequencingItems?.[index])
     .filter(Boolean);
-  const groups = grouping.dragDropGroups ?? [];
-  const bank: string[] = [];
-  const maxItems = Math.max(0, ...groups.map((group) => group.items.length));
-  for (let i = 0; i < maxItems; i++) {
-    groups.forEach((group) => {
-      if (group.items[i]) bank.push(group.items[i]);
-    });
-  }
+
+  const pairs = matching.matchingPairs ?? [];
+  const shuffledRights = matchingOrder
+    .map((index) => pairs[index]?.right)
+    .filter((value): value is string => Boolean(value));
 
   return `<article class="review-page${isArabic ? ' review-rtl' : ''}">
     ${renderPageHeader(
@@ -84,12 +88,14 @@ const renderSkillsPage = (page: PageData, language: Language): string => {
     </section>
 
     <section class="review-block behavior-block">
-      <div class="block-kicker">${escapeHtml(isArabic ? '٢ • صنف السلوك' : '2 • SORT THE BEHAVIOR')}</div>
-      <h2>${escapeHtml(grouping.title || '')}</h2>
-      <p class="instruction">${escapeHtml(grouping.instructions || '')}</p>
-      <div class="behavior-bank">${bank.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
+      <div class="block-kicker">${escapeHtml(isArabic ? '٢ • صِل المعلومات' : '2 • MATCH PEOPLE AND INFORMATION')}</div>
+      <h2>${escapeHtml(matching.title || '')}</h2>
+      <p class="instruction">${escapeHtml(matching.instructions || '')}</p>
+      <div class="behavior-bank">
+        ${shuffledRights.map((item, index) => `<span><b>${String.fromCharCode(65 + index)}</b> ${escapeHtml(item)}</span>`).join('')}
+      </div>
       <div class="behavior-targets">
-        ${groups.map((group) => `<div class="behavior-target"><strong>${escapeHtml(group.group)}</strong><i></i><i></i><i></i></div>`).join('')}
+        ${pairs.map((pair) => `<div class="behavior-target"><strong>${escapeHtml(pair.left)}</strong><i></i></div>`).join('')}
       </div>
     </section>
   </article>`;
@@ -145,6 +151,9 @@ const renderQuizPages = (page: PageData, language: Language): string => {
   const isArabic = language === 'ar';
   const quiz = findExercise(page, 'quiz-game');
   const questions = quiz.quizQuestions ?? [];
+  if (questions.length !== 8) {
+    throw new Error(`Review Challenge must contain exactly 8 questions; found ${questions.length}.`);
+  }
   const chunks = [questions.slice(0, 4), questions.slice(4, 8)];
 
   return chunks.map((chunk, pageIndex) => `<article class="review-page${isArabic ? ' review-rtl' : ''}">
@@ -152,7 +161,7 @@ const renderQuizPages = (page: PageData, language: Language): string => {
       quiz.title || page.title,
       pageIndex === 0
         ? (quiz.instructions || '')
-        : (isArabic ? `أكمل الأسئلة ${chunk.length} الأخيرة.` : `Complete the final ${chunk.length} questions.`),
+        : (isArabic ? 'أكمل الأسئلة الأربعة الأخيرة.' : 'Complete the final four questions.'),
       isArabic ? 'تحدي المراجعة' : 'REVIEW CHALLENGE',
     )}
 
@@ -193,14 +202,12 @@ await Promise.all([
 ]);
 
 await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-final-review.css'), path.join(OUTPUT, 'a2-final-review.css'));
-await writeFile(path.join(OUTPUT, 'adam-a2-en-final-review.html'), renderDocument(adamA2Pages, 'en'));
+await writeFile(path.join(OUTPUT, 'adam-a2-en-final-review.html'), renderDocument(adamA2BookDataEn.pages, 'en'));
 await writeFile(path.join(OUTPUT, 'adam-a2-ar-final-review.html'), renderDocument(adamA2PagesAr, 'ar'));
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 Final Review print pilot.',
-  'All existing Final Review exercises are rendered without exposing correct answers.',
-  'Sequencing and grouping source items are deterministically rearranged for meaningful paper tasks.',
-  'The Review Challenge contract is eight questions split 4 + 4 across two deliberately filled A4 pages.',
-  'Review Challenge headings do not carry page-number suffixes.',
-  'No decorative completion block is used to fill space; the four question blocks themselves use the page area.',
-  'No exercise wording, story content, correct answer, audio, or synchronization source data is modified by the renderer.',
+  'English reads the finalized learning BookData; Arabic remains on its own source data pending Phase 3.',
+  'The finalized person-information matching task is adapted to a paper answer bank without changing wording.',
+  'The Review Challenge contract is exactly eight questions split 4 + 4 across two pages.',
+  'No canonical story, audio, image, synchronization, or approved learning-source content is changed by the renderer.',
 ].join('\n'));
