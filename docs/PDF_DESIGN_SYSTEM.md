@@ -2,11 +2,11 @@
 
 ## Purpose
 
-This document defines the visual and pagination rules for replacing the hand-positioned jsPDF output with a publication-oriented HTML/CSS PDF pipeline.
+This document defines the visual and pagination rules for replacing the hand-positioned jsPDF output with a publication-oriented HTML/CSS + Vivliostyle PDF pipeline.
 
 The PDF pipeline must never modify canonical story text, chapter titles, page order, narration files, audio references, or synchronization data. It only changes how approved content is laid out for print.
 
-For A2 books, the detailed binding geometry and page rules are defined in `docs/A2_PRINT_DESIGN_SYSTEM.md`. That file takes precedence for A2 story-page layout.
+For A2 books, the detailed binding geometry and page rules are defined in `docs/A2_PRINT_DESIGN_SYSTEM.md`. That file takes precedence for A2 layout.
 
 ## Design principle
 
@@ -20,256 +20,132 @@ No page or component may choose arbitrary colors, margins, borders, or spacing.
 
 ## Collection themes
 
-The existing product identity is retained and normalized as print tokens.
-
 ### Stories of the Prophets
 
-- primary: `#C2AA6B`
-- dark: `#1F0E08`
-- light surface: `#FEF3C7`
-- accent: `#D97706`
-- title: `#78350F`
+- primary: warm gold
+- dark: deep brown
+- light surface: cream
+- accent: restrained orange
 
 Character: warm, dignified, restrained.
 
 ### Islamic History and Civilization
 
-- primary: `#10B981`
-- dark: `#052117`
-- light surface: `#ECFDF5`
-- accent: `#047857`
-- title: `#064E3B`
-
-Character: scholarly, historical, calm.
+Green-led, scholarly, historical, calm.
 
 ### Turkish-Islamic Heritage
 
-- primary: `#22D3EE`
-- dark: `#051121`
-- light surface: `#F0F9FF`
-- accent: `#0369A1`
-- title: `#0C4A6E`
-
-Character: cultural, refined, modern.
+Blue/turquoise-led, cultural, refined, modern.
 
 ## Neutral print palette
 
-The main reading pages use neutral surfaces so that long texts remain comfortable and economical to print.
+Normal reading and activity pages use light neutral surfaces. Long text never sits directly on saturated collection colors. Strong full-page color is reserved mainly for covers and major section openers.
 
-- paper background: `#F4F1EA`
-- content card: `#FFFFFF`
-- primary text: `#2A2622`
-- secondary text: `#57534E`
-- neutral rule: `#D7D1C6`
-- soft grey surface: `#F7F7F5`
-
-Rules:
-
-- Full-page dark or saturated backgrounds are limited to the front cover, back cover, and major section openers.
-- Story, exercise, glossary, guide, and answer-key pages use the neutral paper background.
-- Long text never sits directly on strong category colors.
-- Category colors appear as chapter numbers, thin rules, labels, small panels, and controlled accents.
-
-## Border system
-
-Borders communicate hierarchy rather than decoration.
-
-### Level 0 — no border
-
-Used for:
-
-- normal story text
-- headings
-- running headers and footers
-- simple vocabulary lists
-
-### Level 1 — neutral divider
-
-- `0.5pt solid #D7D1C6`
-- used between compact sections, table rows, and answer-key groups
-
-### Level 2 — content card
-
-- `0.75pt solid` category primary at approximately 25% visual strength
-- white or light category surface
-- 3–4 mm corner radius
-- used for vocabulary cards, tips, examples, and compact chapter activities
-
-### Level 3 — important learning block
-
-- 1.5–2 mm category-colored start border
-- otherwise neutral border or no border
-- used for Quick Challenge, key idea, teacher note, and important instructions
-
-### Level 4 — assessment block
-
-- 1pt category accent border
-- white background
-- stronger heading strip
-- used for Final Challenge, scoring areas, and answer-key sections
-
-Rules:
-
-- Decorative double borders are prohibited.
-- Border thickness must not vary within the same component family.
-- Cards must not be nested more than one level deep.
-- A border must never be the only indicator of correctness or state.
+Borders communicate hierarchy rather than decoration. Decorative double borders, nested cards, chip clouds, overlapping circles, and dashboard-like widgets are prohibited.
 
 ## Page archetypes
 
-Every PDF page belongs to one of these templates:
+Every PDF page belongs to a print-specific template. Current student-book archetypes include:
 
-1. Front cover
-2. Copyright / publication information
-3. Table of contents
-4. Section opener
-5. Story chapter
-6. Practice / exercise
-7. Vocabulary / glossary
-8. Final Review
-9. Final Challenge
-10. Answer key
-11. Teacher guide
-12. Self-study guide
-13. Back cover
+1. Front cover / section opener
+2. Story chapter
+3. Knowledge Check
+4. Vocabulary Challenge
+5. Final Review & Reflection
+6. Master Glossary
+7. Final Challenge
+8. Answer key when approved source data is available
 
-Each archetype has fixed margins, heading positions, footer rules, and allowed components. Components cannot manually position themselves outside the page flow.
+Teacher Guide and Self-Study Guide use their own later archetypes rather than reusing student-book pages.
 
 ## A4 geometry
 
-General default:
+A2 download PDFs use the binding geometry in `docs/A2_PRINT_DESIGN_SYSTEM.md`:
 
-- page size: A4 portrait
-- top margin: 18 mm
-- bottom margin: 18 mm
-- inner margin: 20 mm
-- outer margin: 16 mm
-- running header zone: 8 mm
-- running footer zone: 8 mm
-- minimum usable content width: 165 mm
-
-A2 download PDFs use the more specific geometry in `docs/A2_PRINT_DESIGN_SYSTEM.md`: 14 mm left/right/top, 15 mm bottom, yielding 182 × 268 mm usable space.
-
-Mirrored inner and outer margins may be enabled for book-print mode. Screen-download mode may use equal left and right margins.
-
-## Pagination rules
-
-The publication engine must apply these rules automatically:
-
-- chapter titles always begin with at least three following lines on the same page
-- exercise heading and its first item remain together
-- one question, its options, and its answer area remain together whenever they fit on one page
-- short cards are never split across pages
-- long cards may split only at explicitly permitted internal boundaries
-- table headers repeat on continued pages
-- glossary entries do not split between the word and definition
-- isolated headings at the bottom of a page are prohibited
-- isolated final lines at the top or bottom of a page are minimized through widow/orphan control
-- section openers begin on a new page
-- intentional blank pages are allowed only for print-signature or right-page starts and must not appear in normal downloadable PDFs
+- A4 portrait: 210 x 297 mm
+- left/right/top: 14 mm
+- bottom: 15 mm
+- usable area: 182 x 268 mm
 
 No layout decision may be based on manually incrementing a global vertical coordinate.
 
-## Component alignment
+## A2 story-page system
 
-The inconsistent up/down placement seen in the current PDFs is removed by using shared component classes.
+The current validated Adam A2 story layout uses:
 
-- all action labels and answer fields use a common baseline and minimum height
-- all question numbers occupy the same width
-- option markers use a fixed-size square or restrained marker
-- instruction strips use one fixed padding system
-- buttons from the web interface are not reproduced literally; they become print-native labels or answer boxes
-- components align to a 4 mm vertical rhythm
+- one logical story reading flow
+- 58 x 72.5 mm exact 4:5 chapter image
+- image alternates sides and Arabic mirrors direction
+- English Poppins approximately 12.7 pt
+- Arabic Arakom approximately 14 pt
+- automatic hyphenation disabled
+- highlighted vocabulary underlined only
+- Word Notes generated from terms actually underlined in the story
+- definitions sourced from the same application vocabulary/fallback logic
+- Word Notes and Quick Challenge remain in normal document flow
+- dense Word Notes may use three columns without shrinking story text
 
-## Background usage by page type
+Print conversions preserve question wording while replacing web interactions with paper-native controls.
 
-### Cover
+## Pagination rules
 
-- full dark category background
-- category primary and accent used prominently
-- one strong image area
+- chapter headings remain with following content
+- story body is never reduced merely to force a one-page chapter
+- exact image aspect ratio is preserved
+- Word Notes follow completed story text
+- Quick Challenge stays intact when possible
+- questions and their options stay together
+- glossary term and definition stay together
+- isolated headings and accidental blank pages are prohibited
+- a second page is preferable to unreadable compression
 
-### Section opener
+## Adam A2 validation status
 
-- dark or light category surface
-- minimal text
-- no dense activities
+Actual Vivliostyle PDF and PNG rendering now covers the current Adam A2 student-book source structure in English and Arabic.
 
-### Story page
+### Story chapters 1-10
 
-- neutral paper background
-- category color limited to chapter label, rule, and small highlights
-- A2 story pages follow the single-column golden layout
+Validated with real source text, 4:5 images, highlighted words, Word Notes, and Quick Challenges. Current chapters fit one A4 each at approved typography; the two-page fallback remains available for future longer content.
 
-### Exercise page
+### Page 11 - Knowledge Check
 
-- neutral paper background
-- white question cards
-- category-colored question number and instruction strip
+Six readable True/False rows with print checkboxes and no answer leakage.
 
-### Glossary
+### Page 12 - Vocabulary Challenge
 
-- neutral paper background
-- alternating white and soft-grey rows or compact cards
-- no strong full-width color bands except section title
+Words and meanings are presented in separate columns. Meanings are deterministically reordered for the paper task without changing their wording.
 
-### Final Challenge
+### Page 13 - Final Review & Reflection
 
-- neutral background
-- stronger category frame and title band
-- consistent answer areas
-- no gamified web-button appearance
+The current source is intentionally spread across four readable A4 pages:
 
-### Teacher and self-study guides
+1. sequencing and behavior sorting
+2. reflection with writing space
+3. review questions 1-4
+4. review questions 5-7
 
-- neutral background
-- category-colored section labels
-- tables and planning blocks use restrained neutral borders
+Source items may be deterministically reordered in print so the source data does not reveal correct order/grouping.
 
-## Typography
+### Pages 14-15 - Master Glossary
 
-- Latin interface and English: Poppins
-- Arabic: a tested Arabic typeface with reliable shaping and metric compatibility; it must be embedded and approved in the pilot before rollout
-- general minimum story body size: 11.5 pt
-- A2 English story target: 12.5–13 pt, absolute minimum 12 pt
-- A2 Arabic story target: 13.5–14.5 pt depending on approved font metrics
-- minimum guide body size: 10.5 pt
-- headings must not be resized dynamically merely to force content onto a page
+One A4 page per source glossary part, twelve current entries per page, two-column reference layout.
+
+### Page 16 - Final Challenge
+
+The current source contains the title and introduction but no approved question array. The PDF layer therefore renders a Final Challenge opener only and does not invent production questions.
+
+The current Firebase image reference on this source page returns 404. The PDF source data is not modified and no different story image is substituted. The opener falls back to non-content print decoration.
 
 ## Accessibility and print quality
 
-- body text/background contrast must meet WCAG AA-equivalent contrast
 - color is not the only information carrier
-- greyscale printing must preserve hierarchy
-- backgrounds must not cause excessive ink usage on normal content pages
-- images must retain aspect ratio and must never stretch to fill a box
-- raster assets should target at least 150 dpi at final printed size; 300 dpi is preferred for print masters
-
-## Pilot decision process
-
-Adam A2 English and Arabic are the visual pilot.
-
-The first binding A2 page approval is Adam A2 Chapter 2 in both languages. It validates the standard one-page chapter archetype defined in `docs/A2_PRINT_DESIGN_SYSTEM.md`.
-
-After that approval, Adam A2 Chapter 1 validates the intentional two-page fallback for long chapters.
-
-Only after both archetypes pass visual review should exercise, glossary, Final Review, Final Challenge, answer-key, teacher-guide, and self-study page archetypes inherit the same geometry and visual language.
-
-## Visual regression gate
-
-The PDF pipeline is not accepted only because it builds successfully.
-
-Automated checks must include:
-
-- page count recorded for each pilot document
-- no text or component outside page bounds
-- no unexpected blank page
-- no clipped text
-- no split short question card
-- fonts embedded
-- English and Arabic direction correct
-- screenshots of representative pages compared with approved baselines
+- body/background contrast remains high
+- normal pages remain economical to print
+- images never stretch
+- English and Arabic fonts are embedded
+- RTL direction is verified through rendered artifacts
+- every pilot build records page count and renders PNGs for visual inspection
 
 ## Engine migration boundary
 
-The new engine is introduced beside the existing jsPDF generator during the pilot. The existing generator remains available until Adam A2 English and Arabic pass visual and content-preservation checks. After approval, the old generator may be retired in a separate reviewed change.
+Vivliostyle is introduced beside the existing jsPDF generator. The existing generator remains available until the Adam A2 publication system, content-quality work, cover strategy, and final answer-key strategy are accepted. Retirement of the old generator must be a separate reviewed change.
