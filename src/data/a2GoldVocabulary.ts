@@ -41,11 +41,13 @@ export const applyA2VocabularyGold = ({
   pages,
   storyIds,
   vocabularyPageId,
+  language,
   chapterAdditions = {},
 }: {
   pages: PageData[];
   storyIds: number[];
   vocabularyPageId: number;
+  language: 'en' | 'ar';
   chapterAdditions?: Record<number, A2VocabularyEntry[]>;
 }): PageData[] => {
   const withWordNotes = pages.map((page) => {
@@ -66,7 +68,9 @@ export const applyA2VocabularyGold = ({
   return withWordNotes.map((page) => page.id === vocabularyPageId
     ? {
         ...page,
-        content: 'Match six useful words from the story with their meanings.',
+        content: language === 'ar'
+          ? 'صِل ست كلمات مفيدة من القصة بمعانيها.'
+          : 'Match six useful words from the story with their meanings.',
         vocabularyPairs: challengeWords.map((entry) => ({ word: entry.word, meaning: entry.definition })),
       }
     : page);
