@@ -1,38 +1,47 @@
 import { BookData } from '../../../types';
-import { meccaA2Pages } from './en/pages';
-import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
-import { meccaA2SelfStudyGuide, meccaA2StudentGuideSections, meccaA2StudentGuideText, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
-
-import { meccaA2PagesAr } from './ar/pages';
-import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { meccaA2SelfStudyGuideAr, meccaA2StudentGuideSectionsAr, meccaA2StudentGuideTextAr, meccaA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import {
+  meccaA2PagesGoldAr,
+  meccaA2PagesGoldEn,
+  meccaA2SelfStudyGuideGoldAr,
+  meccaA2SelfStudyGuideGoldEn,
+  meccaA2StudentGuideMetadataGoldAr,
+  meccaA2StudentGuideMetadataGoldEn,
+  meccaA2StudentGuideSectionsGoldAr,
+  meccaA2StudentGuideSectionsGoldEn,
+  meccaA2StudentGuideTextGoldAr,
+  meccaA2StudentGuideTextGoldEn,
+  meccaA2TeacherGuideGoldAr,
+  meccaA2TeacherGuideGoldEn,
+  meccaA2TeacherGuideMetadataGoldAr,
+  meccaA2TeacherGuideMetadataGoldEn,
+} from './gold';
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
-  title: 'Stories of the Prophets: Mecca (A2)',
+  title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: meccaA2Pages,
-  teacherGuide: meccaA2TeacherGuide,
-  teacherGuideMetadata: meccaA2TeacherGuideMetadata,
-  selfStudyGuide: meccaA2SelfStudyGuide,
-  studentGuideSections: meccaA2StudentGuideSections,
-  studentGuideText: meccaA2StudentGuideText,
-  studentGuideMetadata: meccaA2StudentGuideMetadata,
+  pages: meccaA2PagesGoldEn,
+  teacherGuide: meccaA2TeacherGuideGoldEn,
+  teacherGuideMetadata: meccaA2TeacherGuideMetadataGoldEn,
+  selfStudyGuide: meccaA2SelfStudyGuideGoldEn,
+  studentGuideSections: meccaA2StudentGuideSectionsGoldEn,
+  studentGuideMetadata: meccaA2StudentGuideMetadataGoldEn,
+  studentGuideText: meccaA2StudentGuideTextGoldEn,
 };
 
 export const meccaA2BookDataAr: BookData = {
   id: 'mecca-a2-ar',
-  title: 'قصص الأنبياء: مكة المكرمة (A2)',
+  title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: meccaA2PagesAr,
-  teacherGuide: meccaA2TeacherGuideAr,
-  teacherGuideMetadata: meccaA2TeacherGuideMetadataAr,
-  selfStudyGuide: meccaA2SelfStudyGuideAr,
-  studentGuideSections: meccaA2StudentGuideSectionsAr,
-  studentGuideText: meccaA2StudentGuideTextAr,
-  studentGuideMetadata: meccaA2StudentGuideMetadataAr,
+  pages: meccaA2PagesGoldAr,
+  teacherGuide: meccaA2TeacherGuideGoldAr,
+  teacherGuideMetadata: meccaA2TeacherGuideMetadataGoldAr,
+  selfStudyGuide: meccaA2SelfStudyGuideGoldAr,
+  studentGuideSections: meccaA2StudentGuideSectionsGoldAr,
+  studentGuideMetadata: meccaA2StudentGuideMetadataGoldAr,
+  studentGuideText: meccaA2StudentGuideTextGoldAr,
 };
 
 export const meccaA2BookData = meccaA2BookDataEn;
