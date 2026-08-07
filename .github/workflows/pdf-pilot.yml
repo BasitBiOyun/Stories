@@ -172,3 +172,64 @@ jobs:
             ${{ matrix.output }}/page-counts.txt
           retention-days: 14
           if-no-files-found: error
+
+  a2-review-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Build Adam A2 pages 11 and 12 HTML
+        run: npx tsx scripts/pdf-pilot/buildA2ReviewPages.ts
+
+      - name: Install pinned Vivliostyle CLI
+        run: npm install --no-save --package-lock=false @vivliostyle/cli@11.1.0
+
+      - name: Build English review pages
+        run: npx vivliostyle build artifacts/a2-review-pages/adam-a2-en-review.html --size A4 --output artifacts/a2-review-pages/adam-a2-en-pages11-12.pdf
+
+      - name: Build Arabic review pages
+        run: npx vivliostyle build artifacts/a2-review-pages/adam-a2-ar-review.html --size A4 --output artifacts/a2-review-pages/adam-a2-ar-pages11-12.pdf
+
+      - name: Install PDF inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Render review pages
+        run: |
+          mkdir -p artifacts/a2-review-pages/rendered/en artifacts/a2-review-pages/rendered/ar
+          pdftoppm -png -r 150 artifacts/a2-review-pages/adam-a2-en-pages11-12.pdf artifacts/a2-review-pages/rendered/en/page
+          pdftoppm -png -r 150 artifacts/a2-review-pages/adam-a2-ar-pages11-12.pdf artifacts/a2-review-pages/rendered/ar/page
+
+      - name: Verify review page pagination
+        run: |
+          EN_PAGES=$(pdfinfo artifacts/a2-review-pages/adam-a2-en-pages11-12.pdf | awk '/^Pages:/ {print $2}')
+          AR_PAGES=$(pdfinfo artifacts/a2-review-pages/adam-a2-ar-pages11-12.pdf | awk '/^Pages:/ {print $2}')
+          test "$EN_PAGES" = "2"
+          test "$AR_PAGES" = "2"
+          test "$(find artifacts/a2-review-pages/rendered/en -name '*.png' | wc -l)" = "2"
+          test "$(find artifacts/a2-review-pages/rendered/ar -name '*.png' | wc -l)" = "2"
+          echo "English pages: $EN_PAGES" | tee artifacts/a2-review-pages/page-counts.txt
+          echo "Arabic pages: $AR_PAGES" | tee -a artifacts/a2-review-pages/page-counts.txt
+
+      - name: Upload review PDFs and renders
+        uses: actions/upload-artifact@v4
+        with:
+          name: adam-a2-pages11-12-vivliostyle
+          path: |
+            artifacts/a2-review-pages/adam-a2-en-pages11-12.pdf
+            artifacts/a2-review-pages/adam-a2-ar-pages11-12.pdf
+            artifacts/a2-review-pages/rendered/**/*.png
+            artifacts/a2-review-pages/README.txt
+            artifacts/a2-review-pages/page-counts.txt
+          retention-days: 14
+          if-no-files-found: error
