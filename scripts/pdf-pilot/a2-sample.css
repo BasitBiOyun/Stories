@@ -52,6 +52,13 @@ body.lang-ar{font-family:Arakom,serif;font-size:14pt;line-height:1.58}
 .word-note{min-width:0;padding-top:2mm;border-top:.25mm solid rgba(91,122,101,.25);break-inside:avoid}.word-note strong,.word-note span{display:block}
 .word-note strong{margin-bottom:.8mm;font-size:9.8pt;line-height:1.2;font-weight:700;color:#355541}.word-note span{font-size:8.6pt;line-height:1.38;color:#536158}
 .lang-ar .word-note strong{font-size:12pt}.lang-ar .word-note span{font-size:10.5pt;line-height:1.45}
+.word-notes-dense{margin-top:4mm;padding:3.2mm 4mm 3.4mm}
+.word-notes-dense .word-notes-label{margin-bottom:2mm}
+.word-notes-dense .word-notes-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:2.4mm 5mm}
+.word-notes-dense .word-note{padding-top:1.4mm}
+.word-notes-dense .word-note strong{margin-bottom:.5mm;font-size:9.3pt}
+.word-notes-dense .word-note span{font-size:8.25pt;line-height:1.3}
+.lang-ar .word-notes-dense .word-note strong{font-size:11.5pt}.lang-ar .word-notes-dense .word-note span{font-size:10.1pt;line-height:1.38}
 
 .quick-challenge{clear:both;margin-top:5mm;padding:4mm 4.5mm 4.2mm;border:.35mm solid #d8caa8;border-inline-start:1.8mm solid var(--gold-deep);border-radius:3.2mm;background:linear-gradient(135deg,#fffaf0 0%,#fbf2dd 100%);break-inside:avoid}
 .quick-label{margin-bottom:2.5mm;color:var(--gold-deep)}.quick-content h3{margin:0;font-size:11.8pt;line-height:1.25;font-weight:700;color:var(--brown)}.lang-ar .quick-content h3{font-size:14pt}
@@ -61,5 +68,6 @@ body.lang-ar{font-family:Arakom,serif;font-size:14pt;line-height:1.58}
 .print-option{display:inline-flex;align-items:center;gap:1.8mm;min-height:7mm;padding:1mm 1.6mm;border-radius:1.5mm;font-size:8.9pt;line-height:1.25;color:#453d34;break-inside:avoid}.answer-row-mc .print-option{border:.25mm solid #e1d4b8;background:rgba(255,255,255,.65)}.lang-ar .print-option{font-size:10.8pt}
 .print-option i{display:inline-block;width:4.2mm;height:4.2mm;flex:none;border:.35mm solid var(--gold-deep);border-radius:.6mm;background:#fff}.print-option b{font-size:8pt;color:var(--gold-deep)}
 .fill-text{margin-bottom:2mm;font-size:9.4pt;line-height:1.35}.writing-line{height:7mm;border-bottom:.3mm solid #bca977}
+.tap-reveal-print>span{display:block;margin-bottom:1.2mm;font-size:9.2pt;color:#5e5145}.lang-ar .tap-reveal-print>span{font-size:11.2pt}
 
 .chapter-header,.chapter-image,.word-note,.quick-challenge,.print-option{break-inside:avoid}
