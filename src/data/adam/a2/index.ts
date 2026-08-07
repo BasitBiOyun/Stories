@@ -1,6 +1,6 @@
 import { BookData } from '../../../types';
-import { adamA2PagesForLearning } from './en/learningMaterials';
-import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
+import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
+import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
 
 import { adamA2PagesAr } from './ar/pages';
@@ -12,8 +12,8 @@ export const adamA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: adamA2PagesForLearning,
-  teacherGuide: adamA2TeacherGuide,
+  pages: adamA2PagesQualityFinalized,
+  teacherGuide: adamA2TeacherGuideQualityFinalized,
   teacherGuideMetadata: adamA2TeacherGuideMetadata,
   selfStudyGuide: adamA2SelfStudyGuide,
   studentGuideSections: adamA2StudentGuideSections,
