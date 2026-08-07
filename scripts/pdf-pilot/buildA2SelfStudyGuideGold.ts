@@ -77,11 +77,11 @@ const splitNumberedSteps = (value: string): string[] => {
 const stepMeta = (step: string): { title: string; icon: GuidePdfIcon } => {
   const text = step.toLowerCase();
   if (/title|image|look|preview/.test(text)) return { title: 'Look', icon: 'eye' };
-  if (/listen|audio|narration|repeat/.test(text)) return { title: 'Listen', icon: 'headphones' };
+  if (/listen|audio|repeat|play/.test(text)) return { title: 'Listen', icon: 'headphones' };
   if (/word notes|highlight|underlined|key word/.test(text)) return { title: 'Word Notes', icon: 'book' };
   if (/quick challenge|challenge/.test(text)) return { title: 'Quick Challenge', icon: 'target' };
-  if (/evidence|find|return to|reread|read again/.test(text)) return { title: 'Find the evidence', icon: 'search' };
-  if (/write|finish|sentence|say|recap/.test(text)) return { title: 'Finish', icon: 'pencil' };
+  if (/find|answer sentence|read again|reread/.test(text)) return { title: 'Find the answer', icon: 'search' };
+  if (/write|finish|sentence|say/.test(text)) return { title: 'Finish', icon: 'pencil' };
   if (/check|compare|correct/.test(text)) return { title: 'Check', icon: 'check' };
   return { title: 'Read', icon: 'book' };
 };
@@ -96,24 +96,24 @@ const renderStudySteps = (lessonPlan: string): string => {
 
 const renderCover = (): string => `
 <section class="guide-cover">
-  <div class="cover-kicker">STORIES OF THE PROPHETS • INDEPENDENT LEARNING RESOURCE</div>
+  <div class="cover-kicker">STORIES OF THE PROPHETS • A2 LEARNER GUIDE</div>
   <h1 class="cover-title">Self-Study Guide<br/>The Story of Prophet Adam</h1>
-  <p class="cover-subtitle">A practical A2 routine for reading, listening, Word Notes, Quick Challenges, rereading, and whole-book review.</p>
-  <span class="cover-badge">CEFR A2 • GOLD MASTER</span>
+  <p class="cover-subtitle">A simple guide to help you look, listen, read, learn new words, and try the activities.</p>
+  <span class="cover-badge">A2 • GRADES 5–6</span>
   <div class="cover-footer"><span>English edition</span><span>Adam • A2</span></div>
 </section>`;
 
 const renderQuickStart = (sections: StudentGuideSection[]): string => {
   const chapterPages = adamA2BookDataEn.pages.filter((page) => page.type === 'story' && page.id >= 1 && page.id <= 10);
   return `<article class="self-page">
-    <header class="guide-header"><div><p class="eyebrow">Independent learning map</p><h1>Your A2 Study Routine</h1><p class="chapter-meta">Use the same short cycle in every chapter.</p></div><div class="level-marker">A2</div></header>
-    <div class="self-intro">Do not try to memorise everything at once. Use the narration, text, highlighted words, and feedback together. A wrong answer is a signal to reread a small part of the chapter and try again.</div>
-    <div class="study-cycle"><span>Read</span><i>→</i><span>Try</span><i>→</i><span>Check</span><i>→</i><span>Reread</span><i>→</i><span>Try again</span></div>
+    <header class="guide-header"><div><p class="eyebrow">Study map</p><h1>Your A2 Study Plan</h1><p class="chapter-meta">Use the same easy steps in every chapter.</p></div><div class="level-marker">A2</div></header>
+    <div class="self-intro">You do not need to learn everything at one time. Listen, read, check the key words, and try the activity. If an answer is wrong, find the answer sentence, read it again, and try again.</div>
+    <div class="study-cycle"><span>Read</span><i>→</i><span>Try</span><i>→</i><span>Check</span><i>→</i><span>Read again</span><i>→</i><span>Try again</span></div>
     <div class="self-section-grid">
       ${sections.map((section) => `<section class="card self-section"><div style="display:flex;align-items:center;gap:2.5mm;margin-bottom:2mm;color:var(--gold-deep)">${guideIconSvg(sectionIcon(section.icon), section.title)}<h3 style="margin:0">${escapeHtml(section.title)}</h3></div><p>${escapeHtml(section.text)}</p>${list(section.points)}</section>`).join('\n')}
     </div>
-    <section class="section-block" style="margin-top:5mm"><h3>Whole-book tracker</h3>
-      <table class="tracker"><thead><tr><th>Chapter</th><th>Read + listened</th><th>Word Notes</th><th>Quick Challenge + evidence check</th></tr></thead><tbody>
+    <section class="section-block" style="margin-top:5mm"><h3>My chapter tracker</h3>
+      <table class="tracker"><thead><tr><th>Chapter</th><th>Read + listen</th><th>Word Notes</th><th>Quick Challenge + answer check</th></tr></thead><tbody>
         ${chapterPages.map((page) => `<tr><td>${page.id}. ${escapeHtml(page.title)}</td><td><span class="check-box"></span></td><td><span class="check-box"></span></td><td><span class="check-box"></span></td></tr>`).join('')}
       </tbody></table>
     </section>
@@ -123,31 +123,31 @@ const renderQuickStart = (sections: StudentGuideSection[]): string => {
 const renderChapter = (section: TeacherGuideSection, index: number): string => `
 <article class="self-chapter">
   <header class="guide-header">
-    <div><p class="eyebrow">Chapter ${index + 1} • self-study routine</p><h2>${escapeHtml(section.chapter.replace(/^Chapter\s+\d+:\s*/, ''))}</h2><p class="chapter-meta">Suggested study time: ${escapeHtml(section.timing)}</p></div>
+    <div><p class="eyebrow">Chapter ${index + 1} • study steps</p><h2>${escapeHtml(section.chapter.replace(/^Chapter\s+\d+:\s*/, ''))}</h2><p class="chapter-meta">Study time: ${escapeHtml(section.timing)}</p></div>
     <div class="level-marker">A2</div>
   </header>
 
-  <section class="card sage"><h3>What you should be able to do</h3>${list(section.objectives)}</section>
-  <section class="lesson-plan" style="margin-top:4mm"><h3>Do this in order</h3>${renderStudySteps(section.lessonPlan)}</section>
+  <section class="card sage"><h3>Your goals</h3>${list(section.objectives)}</section>
+  <section class="lesson-plan" style="margin-top:4mm"><h3>Do these steps</h3>${renderStudySteps(section.lessonPlan)}</section>
 
   <div class="two-col" style="margin-top:4mm">
-    <section class="card cream"><h3>Support</h3><p>${escapeHtml(section.differentiation.strugglingLearners)}</p></section>
-    <section class="card blue"><h3>Extension</h3><p>${escapeHtml(section.differentiation.fastFinishers)}</p></section>
+    <section class="card cream"><h3>Need help?</h3><p>${escapeHtml(section.differentiation.strugglingLearners)}</p></section>
+    <section class="card blue"><h3>Want more?</h3><p>${escapeHtml(section.differentiation.fastFinishers)}</p></section>
   </div>
 
   <div class="two-col" style="margin-top:4mm">
-    <section class="card"><h3>Notice the language</h3><p>${escapeHtml(section.grammarFocus || 'Focus first on meaning; notice useful language in the chapter after you understand it.')}</p></section>
-    <section class="card"><h3>Listen and say</h3><p>${escapeHtml(section.pronunciationFocus || 'Replay difficult words and repeat them clearly after the narration.')}</p></section>
+    <section class="card"><h3>Look at the English</h3><p>${escapeHtml(section.grammarFocus || 'First understand the story. Then look at one useful English pattern.')}</p></section>
+    <section class="card"><h3>Listen and say</h3><p>${escapeHtml(section.pronunciationFocus || 'Play the hard words again and say them slowly.')}</p></section>
   </div>
 
-  <section class="card rose" style="margin-top:4mm"><h3>Self-check questions</h3>${list(section.discussionPoints)}</section>
-  <section class="card" style="margin-top:4mm"><h3>Use feedback well</h3>${list(section.interactiveTips)}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Before you finish</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
+  <section class="card rose" style="margin-top:4mm"><h3>Can you answer?</h3>${list(section.discussionPoints)}</section>
+  <section class="card" style="margin-top:4mm"><h3>Check and try again</h3>${list(section.interactiveTips)}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Before you stop</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
 </article>`;
 
 const renderFullGuide = (): string => {
   const text = adamA2BookDataEn.studentGuideText ?? '';
   return `<article class="self-full-guide">
-    <header class="guide-header"><div><p class="eyebrow">Reference section</p><h1>Full Self-Study Guide</h1><p class="chapter-meta">Keep this section for review when you need help with your study routine.</p></div><div class="level-marker">A2</div></header>
+    <header class="guide-header"><div><p class="eyebrow">Help pages</p><h1>Your Full Study Guide</h1><p class="chapter-meta">Use these pages when you want help with your study plan.</p></div><div class="level-marker">A2</div></header>
     <div class="markdown">${markdownToHtml(text)}</div>
   </article>`;
 };
@@ -179,8 +179,8 @@ ${renderFullGuide()}
 await writeFile(path.join(OUTPUT, 'adam-a2-en-self-study-guide.html'), html);
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 English Self-Study Guide Gold Master.',
-  'Uses the finalized chapter-aligned independent-study material from adamA2BookDataEn.',
-  'Student routines are rendered as stacked Phosphor-icon steps, never as a single inline numbered paragraph.',
-  'Phosphor duotone SVGs are embedded directly into HTML/PDF output for print-safe vector rendering.',
+  'Learner-facing language is written for Grades 5–6 EFL learners around CEFR A2.',
+  'Student routines use short stacked Phosphor-icon steps, never one long numbered paragraph.',
+  'Phosphor duotone SVGs use explicit print-safe colours and remain vector sharp in PDF.',
   'No canonical story, chapter, image, audio, or synchronization field is modified.',
 ].join('\n'));
