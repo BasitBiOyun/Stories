@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/pdf-pilot/**'
+      - 'docs/A2_PRINT_DESIGN_SYSTEM.md'
       - '.github/workflows/pdf-pilot.yml'
       - 'src/data/adam/a2/**'
       - 'public/Arakom-*.ttf'
@@ -18,7 +19,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  adam-a2-pilot:
+  a2-golden-chapter:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -34,42 +35,46 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
-      - name: Build canonical-data-backed pilot HTML
-        run: npx tsx scripts/pdf-pilot/buildAdamA2Pilot.ts
+      - name: Build canonical-data-backed A2 golden HTML
+        run: npx tsx scripts/pdf-pilot/buildA2GoldenChapter.ts
 
       - name: Install pinned Vivliostyle CLI
         run: npm install --no-save --package-lock=false @vivliostyle/cli@11.1.0
 
-      - name: Build English pilot PDF
-        run: npx vivliostyle build artifacts/pdf-pilot/adam-a2-en-pilot.html --size A4 --output artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf
+      - name: Build English golden page
+        run: npx vivliostyle build artifacts/a2-golden-chapter/adam-a2-en-golden.html --size A4 --output artifacts/a2-golden-chapter/adam-a2-en-golden.pdf
 
-      - name: Build Arabic pilot PDF
-        run: npx vivliostyle build artifacts/pdf-pilot/adam-a2-ar-pilot.html --size A4 --output artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf
+      - name: Build Arabic golden page
+        run: npx vivliostyle build artifacts/a2-golden-chapter/adam-a2-ar-golden.html --size A4 --output artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf
 
       - name: Install PDF inspection tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
-      - name: Render sample pages for visual inspection
+      - name: Render golden pages for visual inspection
         run: |
-          mkdir -p artifacts/pdf-pilot/rendered/en artifacts/pdf-pilot/rendered/ar
-          pdftoppm -png -r 120 artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf artifacts/pdf-pilot/rendered/en/page
-          pdftoppm -png -r 120 artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf artifacts/pdf-pilot/rendered/ar/page
+          mkdir -p artifacts/a2-golden-chapter/rendered/en artifacts/a2-golden-chapter/rendered/ar
+          pdftoppm -png -r 150 -singlefile artifacts/a2-golden-chapter/adam-a2-en-golden.pdf artifacts/a2-golden-chapter/rendered/en/chapter-2
+          pdftoppm -png -r 150 -singlefile artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf artifacts/a2-golden-chapter/rendered/ar/chapter-2
 
-      - name: Verify expected page count
+      - name: Verify one-page A2 golden contract
         run: |
-          test "$(pdfinfo artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf | awk '/^Pages:/ {print $2}')" = "4"
-          test "$(pdfinfo artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf | awk '/^Pages:/ {print $2}')" = "4"
-          test "$(find artifacts/pdf-pilot/rendered/en -name '*.png' | wc -l)" = "4"
-          test "$(find artifacts/pdf-pilot/rendered/ar -name '*.png' | wc -l)" = "4"
+          EN_PAGES=$(pdfinfo artifacts/a2-golden-chapter/adam-a2-en-golden.pdf | awk '/^Pages:/ {print $2}')
+          AR_PAGES=$(pdfinfo artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf | awk '/^Pages:/ {print $2}')
+          echo "English pages: $EN_PAGES"
+          echo "Arabic pages: $AR_PAGES"
+          test "$EN_PAGES" = "1"
+          test "$AR_PAGES" = "1"
+          test -f artifacts/a2-golden-chapter/rendered/en/chapter-2.png
+          test -f artifacts/a2-golden-chapter/rendered/ar/chapter-2.png
 
-      - name: Upload pilot PDFs and page renders
+      - name: Upload A2 golden PDFs and renders
         uses: actions/upload-artifact@v4
         with:
-          name: adam-a2-vivliostyle-pilot
+          name: adam-a2-golden-chapter
           path: |
-            artifacts/pdf-pilot/adam-a2-en-vivliostyle.pdf
-            artifacts/pdf-pilot/adam-a2-ar-vivliostyle.pdf
-            artifacts/pdf-pilot/rendered/**/*.png
-            artifacts/pdf-pilot/README.txt
+            artifacts/a2-golden-chapter/adam-a2-en-golden.pdf
+            artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf
+            artifacts/a2-golden-chapter/rendered/**/*.png
+            artifacts/a2-golden-chapter/README.txt
           retention-days: 14
           if-no-files-found: error
