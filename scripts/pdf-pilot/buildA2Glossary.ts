@@ -1,8 +1,7 @@
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { adamA2BookDataEn } from '../../src/data/adam/a2';
-import { adamA2PagesAr } from '../../src/data/adam/a2/ar/pages';
+import { adamA2BookDataEn, adamA2BookDataAr } from '../../src/data/adam/a2';
 import type { PageData } from '../../src/types';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -87,10 +86,9 @@ await Promise.all([
 
 await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-glossary.css'), path.join(OUTPUT, 'a2-glossary.css'));
 await writeFile(path.join(OUTPUT, 'adam-a2-en-glossary.html'), renderDocument(adamA2BookDataEn.pages, 'en'));
-await writeFile(path.join(OUTPUT, 'adam-a2-ar-glossary.html'), renderDocument(adamA2PagesAr, 'ar'));
+await writeFile(path.join(OUTPUT, 'adam-a2-ar-glossary.html'), renderDocument(adamA2BookDataAr.pages, 'ar'));
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 Master Glossary print pilot: source pages 14 and 15.',
-  'English uses the finalized learning BookData, including the reviewed A2 vocabulary and complete late-chapter coverage.',
-  'Arabic continues to use its own canonical source data pending Phase 3.',
+  'English and Arabic both use their finalized learning BookData and reviewed A2 vocabulary.',
   'The PDF changes presentation only.',
 ].join('\n'));
