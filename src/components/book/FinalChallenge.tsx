@@ -25,7 +25,18 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const isHistory = bookData.id.toLowerCase().includes('mecca') || bookData.id.toLowerCase().includes('history');
   const isTurkish = bookData.id.toLowerCase().includes('yunus');
 
-  // Extract all multiple-choice and true-false questions from the book
+  // Approved books can provide an explicit ten-question Final Challenge on the
+  // final-challenge page. Prefer that stable set so the app and print edition
+  // use the same questions. Legacy books without a complete dedicated set keep
+  // the previous random-pool behaviour until their content is reviewed.
+  const dedicatedFinalQuestions = useMemo(() => {
+    const finalPage = bookData.pages.find(page => page.type === 'final-challenge');
+    return (finalPage?.exercises ?? []).filter(
+      ex => ex.type === 'multiple-choice' || ex.type === 'true-false'
+    );
+  }, [bookData]);
+
+  // Legacy fallback: extract all multiple-choice and true-false questions from the book.
   const allQuestions = useMemo(() => {
     const questions: Exercise[] = [];
     bookData.pages.forEach(page => {
@@ -39,16 +50,16 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   }, [bookData]);
 
   const startChallenge = () => {
-    const shuffled = [...allQuestions]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 10); // Take 10 random questions
+    const selected = dedicatedFinalQuestions.length === 10
+      ? [...dedicatedFinalQuestions]
+      : [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 10);
     
-    if (shuffled.length === 0) {
+    if (selected.length === 0) {
       setGameState('results');
       return;
     }
 
-    setShuffledQuestions(shuffled);
+    setShuffledQuestions(selected);
     setGameState('playing');
     setCurrentStep(0);
     setScore(0);
