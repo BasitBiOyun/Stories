@@ -1,24 +1,33 @@
 import { BookData } from '../../../types';
-import { mosesA2Pages } from './en/pages';
-import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesA2SelfStudyGuide, mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
-
-import { mosesA2PagesAr } from './ar/pages';
-import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesA2SelfStudyGuideAr, mosesA2StudentGuideSectionsAr, mosesA2StudentGuideTextAr, mosesA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import {
+  mosesA2PagesGoldAr,
+  mosesA2PagesGoldEn,
+  mosesA2SelfStudyGuideGoldAr,
+  mosesA2SelfStudyGuideGoldEn,
+  mosesA2StudentGuideMetadataGoldAr,
+  mosesA2StudentGuideMetadataGoldEn,
+  mosesA2StudentGuideSectionsGoldAr,
+  mosesA2StudentGuideSectionsGoldEn,
+  mosesA2StudentGuideTextGoldAr,
+  mosesA2StudentGuideTextGoldEn,
+  mosesA2TeacherGuideGoldAr,
+  mosesA2TeacherGuideGoldEn,
+  mosesA2TeacherGuideMetadataGoldAr,
+  mosesA2TeacherGuideMetadataGoldEn,
+} from './gold';
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: mosesA2Pages,
-  teacherGuide: mosesA2TeacherGuide,
-  teacherGuideMetadata: mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesA2SelfStudyGuide,
-  studentGuideSections: mosesA2StudentGuideSections,
-  studentGuideText: mosesA2StudentGuideText,
-  studentGuideMetadata: mosesA2StudentGuideMetadata,
+  pages: mosesA2PagesGoldEn,
+  teacherGuide: mosesA2TeacherGuideGoldEn,
+  teacherGuideMetadata: mosesA2TeacherGuideMetadataGoldEn,
+  selfStudyGuide: mosesA2SelfStudyGuideGoldEn,
+  studentGuideSections: mosesA2StudentGuideSectionsGoldEn,
+  studentGuideMetadata: mosesA2StudentGuideMetadataGoldEn,
+  studentGuideText: mosesA2StudentGuideTextGoldEn,
 };
 
 export const mosesA2BookDataAr: BookData = {
@@ -26,13 +35,13 @@ export const mosesA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: mosesA2PagesAr.length > 0 ? mosesA2PagesAr : mosesA2Pages,
-  teacherGuide: mosesA2TeacherGuideAr.length > 0 ? mosesA2TeacherGuideAr : mosesA2TeacherGuide,
-  teacherGuideMetadata: mosesA2TeacherGuideMetadataAr.targetLearners ? mosesA2TeacherGuideMetadataAr : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesA2SelfStudyGuideAr.length > 0 ? mosesA2SelfStudyGuideAr : mosesA2SelfStudyGuide,
-  studentGuideSections: mosesA2StudentGuideSectionsAr.length > 0 ? mosesA2StudentGuideSectionsAr : mosesA2StudentGuideSections,
-  studentGuideText: mosesA2StudentGuideTextAr || mosesA2StudentGuideText,
-  studentGuideMetadata: mosesA2StudentGuideMetadataAr.whoIsThisFor ? mosesA2StudentGuideMetadataAr : mosesA2StudentGuideMetadata,
+  pages: mosesA2PagesGoldAr,
+  teacherGuide: mosesA2TeacherGuideGoldAr,
+  teacherGuideMetadata: mosesA2TeacherGuideMetadataGoldAr,
+  selfStudyGuide: mosesA2SelfStudyGuideGoldAr,
+  studentGuideSections: mosesA2StudentGuideSectionsGoldAr,
+  studentGuideMetadata: mosesA2StudentGuideMetadataGoldAr,
+  studentGuideText: mosesA2StudentGuideTextGoldAr,
 };
 
 export const mosesA2BookData = mosesA2BookDataEn;
