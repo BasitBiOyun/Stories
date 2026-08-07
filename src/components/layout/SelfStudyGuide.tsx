@@ -1,49 +1,40 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
-import { 
-  BookOpen, 
-  X, 
-  Lightbulb, 
-  CheckCircle, 
-  Heart, 
-  Award,
-  Crown,
-  Target,
-  Compass,
-  Rocket,
-  Users,
-  Clock,
-  Ear,
-  PenTool,
-  Smile,
-  HelpCircle,
-  Map,
-  Download,
-  FileText
-} from 'lucide-react';
+import { X, Crown, Download, FileText } from 'lucide-react';
+import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
 import { cn } from '../../lib/utils';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection, StudentGuideSection } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-const IconMap: Record<string, React.ReactNode> = {
-  'Users': <Users size={28} className="text-blue-400" />,
-  'BookOpen': <BookOpen size={28} className="text-amber-400" />,
-  'Rocket': <Rocket size={28} className="text-purple-400" />,
-  'Clock': <Clock size={28} className="text-emerald-400" />,
-  'Compass': <Compass size={28} className="text-rose-400" />,
-  'Stars': <Award size={28} className="text-gold" />,
-  'Ear': <Ear size={28} className="text-indigo-400" />,
-  'PenTool': <PenTool size={28} className="text-cyan-400" />,
-  'Smile': <Smile size={28} className="text-orange-400" />,
-  'Map': <Map size={28} className="text-yellow-400" />,
-  'Lightbulb': <Lightbulb size={28} className="text-gold" />,
-  'Target': <Target size={28} className="text-green-400" />,
-  'Heart': <Heart size={28} className="text-red-400" />,
-  'HelpCircle': <HelpCircle size={28} className="text-blue-300" />,
-  'FileText': <FileText size={28} className="text-parchment/60" />
+const GuideIcon = ({ name, className = 'w-7 h-7' }: { name: GuideIconName; className?: string }) => (
+  <PhosphorGuideIcon name={name} className={className} />
+);
+
+const iconNameMap: Record<string, GuideIconName> = {
+  'Users': 'book',
+  'BookOpen': 'book',
+  'Rocket': 'target',
+  'Clock': 'clock',
+  'Compass': 'search',
+  'Stars': 'trophy',
+  'Ear': 'headphones',
+  'PenTool': 'pencil',
+  'Smile': 'check',
+  'Map': 'search',
+  'Lightbulb': 'book',
+  'Target': 'target',
+  'Heart': 'check',
+  'HelpCircle': 'search',
+  'FileText': 'book',
+  'Eye': 'eye',
+  'CheckCircle': 'check'
 };
+
+const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => (
+  <GuideIcon name={name && iconNameMap[name] ? iconNameMap[name] : 'book'} className={className} />
+);
 
 export const SelfStudyGuide = ({ 
   isOpen, 
@@ -82,61 +73,61 @@ export const SelfStudyGuide = ({
   const defaultGuideSections = [
     {
       title: t('ssg.whoIsThisFor'),
-      icon: <Users size={28} className="text-blue-400" />,
+      icon: iconFor('Users'),
       text: metadata?.whoIsThisFor || t('ssg.whoIsThisForDesc'),
       points: [t('ssg.learnerType1'), t('ssg.learnerType2')]
     },
     {
       title: t('ssg.whatInBook'),
-      icon: <BookOpen size={28} className="text-amber-400" />,
+      icon: iconFor('BookOpen'),
       text: t('ssg.whatInBookDesc'),
       points: [t('ssg.content1'), t('ssg.content2'), t('ssg.content3'), t('ssg.content4')]
     },
     {
       title: t('ssg.howToUse'),
-      icon: <Rocket size={28} className="text-purple-400" />,
+      icon: iconFor('Rocket'),
       text: t('ssg.howToUseDesc'),
       points: [t('ssg.step1'), t('ssg.step2'), t('ssg.step3'), t('ssg.step4')]
     },
     {
       title: t('ssg.routine'),
-      icon: <Clock size={28} className="text-emerald-400" />,
+      icon: iconFor('Clock'),
       text: t('ssg.routineDesc'),
       points: [t('ssg.routine1'), t('ssg.routine2'), t('ssg.routine3')]
     },
     {
       title: t('ssg.readingTips'),
-      icon: <Compass size={28} className="text-rose-400" />,
+      icon: iconFor('Compass'),
       text: t('ssg.readingTipsDesc'),
       points: [t('ssg.readingTip1'), t('ssg.readingTip2'), t('ssg.readingTip3')]
     },
     {
       title: t('ssg.learningWords'),
-      icon: <Award size={28} className="text-gold" />,
+      icon: iconFor('Stars'),
       text: t('ssg.learningWordsDesc'),
       points: [t('ssg.learningWord1'), t('ssg.learningWord2'), t('ssg.learningWord3'), t('ssg.learningWord4')]
     },
     {
       title: t('ssg.listeningSpeaking'),
-      icon: <Ear size={28} className="text-indigo-400" />,
+      icon: iconFor('Ear'),
       text: t('ssg.listeningSpeakingDesc'),
       points: [t('ssg.listeningSpeaking1'), t('ssg.listeningSpeaking2')]
     },
     {
       title: t('ssg.writingPractice'),
-      icon: <PenTool size={28} className="text-cyan-400" />,
+      icon: iconFor('PenTool'),
       text: t('ssg.writingPracticeDesc'),
       points: [t('ssg.writingPractice1'), t('ssg.writingPractice2'), t('ssg.writingPractice3')]
     },
     {
       title: t('ssg.whenHard'),
-      icon: <Smile size={28} className="text-orange-400" />,
+      icon: iconFor('Smile'),
       text: t('ssg.whenHardDesc'),
       points: [t('ssg.whenHard1'), t('ssg.whenHard2'), t('ssg.whenHard3')]
     },
     {
       title: t('ssg.chapterSupport'),
-      icon: <Map size={28} className="text-yellow-400" />,
+      icon: iconFor('Map'),
       text: t('ssg.chapterSupportDesc'),
       points: [t('ssg.chapterSupport1'), t('ssg.chapterSupport2'), t('ssg.chapterSupport3')]
     }
@@ -145,18 +136,22 @@ export const SelfStudyGuide = ({
   const displaySections = studentGuideSections.length > 0 
     ? studentGuideSections.map(s => ({
         ...s,
-        icon: s.icon ? IconMap[s.icon] : <FileText size={28} className="text-parchment/60" />
+        icon: iconFor(s.icon)
       }))
     : defaultGuideSections;
 
   const tabs = [
-    { id: 'welcome', label: t('ssg.welcome'), icon: <Award size={20} /> },
+    { id: 'welcome', label: t('ssg.welcome'), icon: iconFor('Stars', 'w-5 h-5') },
     ...displaySections.map((section, idx) => ({
       id: `section-${idx}`,
       label: section.title,
-      icon: React.isValidElement(section.icon) ? React.cloneElement(section.icon as React.ReactElement<any>, { size: 20 }) : <FileText size={20} />
+      icon: studentGuideSections.length > 0
+        ? iconFor(studentGuideSections[idx]?.icon, 'w-5 h-5')
+        : React.isValidElement(section.icon)
+          ? React.cloneElement(section.icon as React.ReactElement<{ className?: string }>, { className: 'w-5 h-5' })
+          : iconFor('FileText', 'w-5 h-5')
     })),
-    ...(studentGuideText ? [{ id: 'full-guide', label: t('ssg.fullGuide') || 'Full Guide', icon: <FileText size={20} /> }] : [])
+    ...(studentGuideText ? [{ id: 'full-guide', label: t('ssg.fullGuide') || 'Full Guide', icon: iconFor('FileText', 'w-5 h-5') }] : [])
   ];
 
   React.useEffect(() => {
@@ -184,7 +179,9 @@ export const SelfStudyGuide = ({
             <div className="relative z-10">
               <div className="flex items-center gap-3 sm:gap-6 mb-6 sm:mb-10">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl sm:rounded-3xl bg-gold/20 flex items-center justify-center text-gold shadow-inner shrink-0">
-                  {React.isValidElement(section.icon) ? React.cloneElement(section.icon as React.ReactElement<any>, { className: "w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" }) : section.icon}
+                  {React.isValidElement(section.icon)
+                    ? React.cloneElement(section.icon as React.ReactElement<{ className?: string }>, { className: "w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" })
+                    : section.icon}
                 </div>
                 <div>
                   <h3 className="font-display text-xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2">{section.title}</h3>
@@ -206,8 +203,8 @@ export const SelfStudyGuide = ({
                       transition={{ delay: pIdx * 0.1 }}
                       className="flex items-start sm:items-center gap-3 sm:gap-5 bg-white/5 p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 hover:border-gold/20 transition-all group"
                     >
-                      <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-0.5 sm:mt-0 group-hover:bg-gold group-hover:text-white transition-colors">
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-2xl bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-0.5 sm:mt-0 group-hover:bg-gold group-hover:text-white transition-colors">
+                        <GuideIcon name="check" className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                       <span className="font-serif text-sm sm:text-lg md:text-xl text-white leading-snug">{point}</span>
                     </motion.div>
@@ -239,8 +236,8 @@ export const SelfStudyGuide = ({
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-6 sm:space-y-8 text-center py-4 sm:py-12"
           >
-            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-8 text-gold animate-pulse">
-              <Crown className="w-8 h-8 sm:w-12 sm:h-12" />
+            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gold/20 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-8 text-gold animate-pulse">
+              <GuideIcon name="trophy" className="w-8 h-8 sm:w-12 sm:h-12" />
             </div>
             <h3 className="font-display text-2xl sm:text-4xl text-white">
               {t('ssg.welcomeExplorer')}
