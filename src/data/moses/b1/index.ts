@@ -2,6 +2,7 @@ import { BookData } from '../../../types';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1TeacherGuide, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1SelfStudyGuide, mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
+import { mosesB1PagesGoldEn, mosesB1TeacherGuideGoldEn } from './gold';
 
 import { mosesB1PagesAr } from './ar/pages';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -16,8 +17,8 @@ export const mosesB1BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: mosesB1Pages.length > 0 ? mosesB1Pages : mosesA2Pages,
-  teacherGuide: mosesB1TeacherGuide.length > 0 ? mosesB1TeacherGuide : mosesA2TeacherGuide,
+  pages: mosesB1PagesGoldEn.length > 0 ? mosesB1PagesGoldEn : mosesB1Pages,
+  teacherGuide: mosesB1TeacherGuideGoldEn.length > 0 ? mosesB1TeacherGuideGoldEn : mosesB1TeacherGuide,
   teacherGuideMetadata: mosesB1TeacherGuideMetadata.targetLearners ? mosesB1TeacherGuideMetadata : mosesA2TeacherGuideMetadata,
   selfStudyGuide: mosesB1SelfStudyGuide.length > 0 ? mosesB1SelfStudyGuide : mosesA2SelfStudyGuide,
   studentGuideSections: mosesB1StudentGuideSections.length > 0 ? mosesB1StudentGuideSections : mosesA2StudentGuideSections,
