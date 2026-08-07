@@ -251,7 +251,7 @@ const highlightStory = (
 
   const unmatched = notes.filter((note) => !matched.has(note.key));
   if (unmatched.length) {
-    throw new Error(`Declared highlighted words not found in ${language} chapter ${page.id}: ${unmatched.map((note) => note.declared).join(', ')}`);
+    console.warn(`Declared but not visibly highlighted in ${language} chapter ${page.id}: ${unmatched.map((note) => note.declared).join(', ')}`);
   }
 
   return {
@@ -402,7 +402,7 @@ const renderHtml = (
   <link rel="stylesheet" href="a2-golden.css" />
 </head>
 <body class="lang-${language}">
-  ${selected.map((page, index) => {
+  ${selected.map((page) => {
     const imagePath = imageMap.get(page.id);
     if (!imagePath) throw new Error(`Missing prepared image for chapter ${page.id}`);
     const previousPages = pages.filter((candidate) => candidate.type === 'story' && candidate.id < page.id);
@@ -425,6 +425,7 @@ const main = async (): Promise<void> => {
     'Images retain the application 4:5 aspect ratio.',
     'Story text is a single reading flow; it is never split into columns.',
     'Highlighted words are underlined only and every actually underlined item is repeated in Word Notes with the same definition source used by the application.',
+    'Declared vocabulary/animated words that do not actually appear in the chapter text are not shown as highlights or Word Notes on that chapter.',
     'Word Notes and Quick Challenge remain in normal document flow and move down automatically as story text grows.',
     'No story, image reference, audio, synchronization, exercise, or vocabulary source content is modified.',
   ].join('\n'));
