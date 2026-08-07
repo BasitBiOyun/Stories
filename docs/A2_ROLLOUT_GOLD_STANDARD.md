@@ -1,6 +1,6 @@
 # A2 Rollout Gold Standard
 
-This contract applies to Abraham A2, Mecca/Bilal A2, Moses A2, and Yunus Emre A2 in English and Arabic. Adam A2 remains the reference Gold Master.
+This contract applies to all current A2 books: Adam, Abraham, Mecca/Bilal, Moses, and Yunus Emre, in English and Arabic. Adam A2 remains the reference Gold Master for the learning and print system.
 
 ## Canonical boundary
 
@@ -61,8 +61,12 @@ Every hotspot must pass all three checks:
 ### 3. Chapter-critical information
 - hotspots should reinforce the chapter's main event, relationship, decision, belief, consequence, or value
 - replace duplicate hotspots with complementary key information where possible
-- remove unsupported embellishment (for example, visual similes not stated in the chapter)
+- remove unsupported embellishment or symbolism when the chapter itself does not state it
 - preserve hotspot ids and x/y coordinates so approved images and interaction placement remain unchanged
+
+## Adam hotspot correction
+
+Adam A2 previously treated hotspot text as fully protected together with image geometry. The rollout now separates these concerns: canonical hotspot ids and x/y coordinates remain protected, while title/description copy is a derived learning layer. This allowed decorative or unsupported lines such as **The Light — Symbolizes Adam’s knowledge** to be replaced by short, chapter-grounded information without changing the image or interaction position.
 
 ## Metadata accuracy
 
@@ -80,7 +84,8 @@ Finalized A2 BookData remains compatible with the shared production PDF generato
 Run locally without GitHub Actions:
 
 ```bash
+npm run validate:adam-a2-learning
 npm run validate:a2-rollout
 ```
 
-The validator checks protected canonical fields, hotspot id/coordinate safety and reviewed copy, Word Notes, vocabulary challenge, 8/8/10 review contracts, 12+12 glossary, guide chapter coverage, A2 learner language, EN–AR structural parity, and corrected non-prophet metadata.
+Together, the validators cover all five A2 books in English and Arabic. They check protected canonical fields, hotspot id/coordinate safety and reviewed copy, Word Notes, Vocabulary Challenge, 8/8/10 review contracts, 12+12 glossary, guide chapter coverage, A2 learner language, EN–AR structural parity, and corrected non-prophet metadata.
