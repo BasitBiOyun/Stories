@@ -1,8 +1,7 @@
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { adamA2Pages } from '../../src/data/adam/a2/en/pages';
-import { adamA2PagesAr } from '../../src/data/adam/a2/ar/pages';
+import { adamA2BookDataEn, adamA2BookDataAr } from '../../src/data/adam/a2';
 import { fallbackDefinitions, arabicAnimatedDefinitions } from '../../src/data/fallbackVocab';
 import type { Exercise, PageData } from '../../src/types';
 
@@ -189,6 +188,30 @@ const exerciseBody = (exercise: Exercise, language: Language): string => {
     return `<div class="tap-reveal-print"><span>${escapeHtml(language === 'ar' ? 'اكتب إجابتك:' : 'Write your answer:')}</span><div class="writing-line"></div></div>`;
   }
 
+  if (exercise.type === 'sequencing') {
+    const items = exercise.sequencingItems ?? [];
+    const bank = [...items].reverse();
+    const label = language === 'ar' ? 'رتّب الأحداث' : 'Put the events in order';
+    return `<div class="sequence-print">
+      <div class="sequence-print-label">${escapeHtml(label)}</div>
+      <div class="sequence-print-bank">
+        ${bank.map((item, index) => `<div><b>${String.fromCharCode(65 + index)}</b><span>${escapeHtml(item.text)}</span></div>`).join('')}
+      </div>
+      <div class="sequence-print-answer">${items.map((_, index) => `<span><b>${index + 1}</b><i></i></span>`).join('')}</div>
+    </div>`;
+  }
+
+  if (exercise.type === 'matching' && exercise.matchingPairs?.length) {
+    const pairs = exercise.matchingPairs;
+    const bankLabel = language === 'ar' ? 'المعاني' : 'Answer bank';
+    return `<div class="matching-print">
+      <div class="matching-bank"><strong>${escapeHtml(bankLabel)}:</strong>${[...pairs].reverse().map((pair, index) => `<span><b>${String.fromCharCode(65 + index)}</b>${escapeHtml(pair.right)}</span>`).join('')}</div>
+      <div class="matching-targets">
+        ${pairs.map((pair) => `<div class="matching-target"><strong>${escapeHtml(pair.left)}</strong><div class="matching-lines"><i></i></div></div>`).join('')}
+      </div>
+    </div>`;
+  }
+
   if (exercise.type === 'drag-drop' || exercise.type === 'matching') {
     const groups = exercise.dragDropGroups ?? [];
     if (!groups.length) return '<div class="writing-line"></div>';
@@ -300,17 +323,21 @@ ${selected.map((page) => chapterHtml(page, pages, language, imageMap.get(page.id
 </body></html>`;
 };
 
+const englishPages = adamA2BookDataEn.pages;
+const arabicPages = adamA2BookDataAr.pages;
+
 await mkdir(OUTPUT, { recursive: true });
-const images = await prepareAssets(adamA2Pages);
+const images = await prepareAssets(englishPages);
 await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-sample.css'), path.join(OUTPUT, 'a2-sample.css'));
-await writeFile(path.join(OUTPUT, 'adam-a2-en.html'), documentHtml(adamA2Pages, 'en', images));
-await writeFile(path.join(OUTPUT, 'adam-a2-ar.html'), documentHtml(adamA2PagesAr, 'ar', images));
+await writeFile(path.join(OUTPUT, 'adam-a2-en.html'), documentHtml(englishPages, 'en', images));
+await writeFile(path.join(OUTPUT, 'adam-a2-ar.html'), documentHtml(arabicPages, 'ar', images));
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   `Adam A2 Chapters ${CHAPTER_IDS.join(', ')} Vivliostyle sample.`,
-  'All chapter text, image references, vocabulary, animated/highlighted words and Quick Challenge content come from current application data.',
+  'Story text, image references, vocabulary, animated/highlighted words and approved Quick Challenge content come from effective application BookData.',
+  'Canonical story text/audio/sync data are not rewritten by this renderer.',
   'Only words actually underlined in the chapter text appear in Word Notes.',
   'Animated words without a dedicated definition use the same generic fallback text as the application.',
   'Images are rendered at an exact 4:5 box.',
   'Word Notes and Quick Challenge are normal-flow blocks and move automatically after the story text.',
-  'Interactive-only challenge types are converted to print-native response areas without changing the question content.',
+  'Interactive-only challenge types are converted to print-native response areas without changing the learning objective or source content.',
 ].join('\n'));
