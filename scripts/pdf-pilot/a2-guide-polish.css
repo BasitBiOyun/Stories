@@ -36,6 +36,17 @@
   color: var(--gold-deep);
 }
 
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  margin: 0 0 2mm !important;
+  color: var(--brown);
+  font-size: 11.4pt;
+  line-height: 1.25;
+}
+.icon-heading .guide-svg-icon { width: 5.2mm; height: 5.2mm; }
+
 .lesson-step-list,
 .study-step-list {
   display: grid;
@@ -50,6 +61,7 @@
   align-items: start;
   padding: 2.5mm 3mm;
   border-top: .25mm solid rgba(148,104,32,.20);
+  break-inside: avoid;
 }
 .lesson-step:first-child { border-top: 0; }
 .lesson-step-time {
