@@ -39,10 +39,11 @@ body.lang-ar{font-family:Arakom,serif;font-size:14pt;line-height:1.58}
 .lang-ar .story-text{font-size:14pt;line-height:1.58;text-align:right;hyphens:none}
 .story-text::after{content:"";display:block;clear:both}.story-text p{margin:0 0 3.5mm;widows:3;orphans:3}.story-text p:last-child{margin-bottom:0}
 
-.chapter-image{width:58mm;height:72.5mm;margin-top:.5mm;margin-bottom:4mm;padding:2mm;border:.35mm solid #d9c9aa;border-radius:3.8mm;background:#fff9ed;box-shadow:0 1.5mm 4mm rgba(59,36,24,.10);break-inside:avoid}
-.chapter-image.image-start{float:left;margin-right:6mm}.chapter-image.image-end{float:right;margin-left:6mm}
+/* Golden A2 image geometry: exact 4:5, larger, and visually flush to the active content edge. */
+.chapter-image{width:64mm;height:80mm;margin-top:.5mm;margin-bottom:4mm;padding:0;border:.35mm solid #d5c29f;border-radius:3.4mm;background:transparent;box-shadow:0 1.4mm 3.5mm rgba(59,36,24,.09);overflow:hidden;break-inside:avoid}
+.chapter-image.image-start{float:left;margin-left:0;margin-right:6mm}.chapter-image.image-end{float:right;margin-right:0;margin-left:6mm}
 .lang-ar .chapter-image.image-start{float:right;margin-right:0;margin-left:6mm}.lang-ar .chapter-image.image-end{float:left;margin-left:0;margin-right:6mm}
-.chapter-image img{display:block;width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2.5mm}
+.chapter-image img{display:block;width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3mm}
 
 .vocab-highlight{color:inherit;background:transparent;font-weight:inherit;text-decoration-line:underline;text-decoration-color:var(--gold);text-decoration-thickness:1.2pt;text-underline-offset:2.2pt;text-decoration-skip-ink:auto}
 .section-label{font-size:9.4pt;line-height:1;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.lang-ar .section-label{font-size:12pt;letter-spacing:0;text-transform:none}
