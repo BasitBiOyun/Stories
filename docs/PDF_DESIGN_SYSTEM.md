@@ -6,6 +6,8 @@ This document defines the visual and pagination rules for replacing the hand-pos
 
 The PDF pipeline must never modify canonical story text, chapter titles, page order, narration files, audio references, or synchronization data. It only changes how approved content is laid out for print.
 
+For A2 books, the detailed binding geometry and page rules are defined in `docs/A2_PRINT_DESIGN_SYSTEM.md`. That file takes precedence for A2 story-page layout.
+
 ## Design principle
 
 PDF appearance is determined by three independent layers:
@@ -95,7 +97,7 @@ Used for:
 
 ### Level 3 — important learning block
 
-- 1.5–2 mm category-colored left border
+- 1.5–2 mm category-colored start border
 - otherwise neutral border or no border
 - used for Quick Challenge, key idea, teacher note, and important instructions
 
@@ -135,6 +137,8 @@ Each archetype has fixed margins, heading positions, footer rules, and allowed c
 
 ## A4 geometry
 
+General default:
+
 - page size: A4 portrait
 - top margin: 18 mm
 - bottom margin: 18 mm
@@ -143,6 +147,8 @@ Each archetype has fixed margins, heading positions, footer rules, and allowed c
 - running header zone: 8 mm
 - running footer zone: 8 mm
 - minimum usable content width: 165 mm
+
+A2 download PDFs use the more specific geometry in `docs/A2_PRINT_DESIGN_SYSTEM.md`: 14 mm left/right/top, 15 mm bottom, yielding 182 × 268 mm usable space.
 
 Mirrored inner and outer margins may be enabled for book-print mode. Screen-download mode may use equal left and right margins.
 
@@ -170,7 +176,7 @@ The inconsistent up/down placement seen in the current PDFs is removed by using 
 
 - all action labels and answer fields use a common baseline and minimum height
 - all question numbers occupy the same width
-- option markers use a fixed-size circle or square
+- option markers use a fixed-size square or restrained marker
 - instruction strips use one fixed padding system
 - buttons from the web interface are not reproduced literally; they become print-native labels or answer boxes
 - components align to a 4 mm vertical rhythm
@@ -192,8 +198,8 @@ The inconsistent up/down placement seen in the current PDFs is removed by using 
 ### Story page
 
 - neutral paper background
-- optional white text panel only when necessary for readability over an image
 - category color limited to chapter label, rule, and small highlights
+- A2 story pages follow the single-column golden layout
 
 ### Exercise page
 
@@ -224,9 +230,10 @@ The inconsistent up/down placement seen in the current PDFs is removed by using 
 
 - Latin interface and English: Poppins
 - Arabic: a tested Arabic typeface with reliable shaping and metric compatibility; it must be embedded and approved in the pilot before rollout
-- minimum story body size: 11.5 pt
+- general minimum story body size: 11.5 pt
+- A2 English story target: 12.5–13 pt, absolute minimum 12 pt
+- A2 Arabic story target: 13.5–14.5 pt depending on approved font metrics
 - minimum guide body size: 10.5 pt
-- line height: approximately 1.4 for story text and 1.3 for guides
 - headings must not be resized dynamically merely to force content onto a page
 
 ## Accessibility and print quality
@@ -242,20 +249,11 @@ The inconsistent up/down placement seen in the current PDFs is removed by using 
 
 Adam A2 English and Arabic are the visual pilot.
 
-For each language, generate and compare:
+The first binding A2 page approval is Adam A2 Chapter 2 in both languages. It validates the standard one-page chapter archetype defined in `docs/A2_PRINT_DESIGN_SYSTEM.md`.
 
-1. cover
-2. table of contents
-3. one short story chapter
-4. one long story chapter
-5. one mixed exercise page
-6. glossary
-7. Final Challenge
-8. answer key
-9. teacher guide
-10. self-study guide
+After that approval, Adam A2 Chapter 1 validates the intentional two-page fallback for long chapters.
 
-The team selects one approved style. That style becomes the immutable print design baseline for all later books.
+Only after both archetypes pass visual review should exercise, glossary, Final Review, Final Challenge, answer-key, teacher-guide, and self-study page archetypes inherit the same geometry and visual language.
 
 ## Visual regression gate
 
