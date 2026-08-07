@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { adamA2BookDataEn } from '../../src/data/adam/a2';
 import type { Exercise, TeacherGuideSection } from '../../src/types';
+import { guideIconSvg, type GuidePdfIcon } from './phosphorGuideSvg';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const OUTPUT = path.join(ROOT, 'artifacts/a2-teacher-guide-gold');
@@ -20,20 +21,29 @@ const list = (items: string[] | undefined, className = ''): string => {
   return `<ul${className ? ` class="${className}"` : ''}>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
 };
 
-const renderCard = (title: string, body: string, className = ''): string =>
-  `<section class="card ${className}"><h3>${escapeHtml(title)}</h3>${body}</section>`;
+const iconHeading = (title: string, icon: GuidePdfIcon): string =>
+  `<h3 class="icon-heading">${guideIconSvg(icon, title)}<span>${escapeHtml(title)}</span></h3>`;
+
+const renderCard = (title: string, body: string, className = '', icon?: GuidePdfIcon): string =>
+  `<section class="card ${className}">${icon ? iconHeading(title, icon) : `<h3>${escapeHtml(title)}</h3>`}${body}</section>`;
+
+const renderLessonSteps = (value: string): string => {
+  const chunks = value.split(/(?=\d+[–-]\d+\s*min:)/g).map((item) => item.trim()).filter(Boolean);
+  if (chunks.length <= 1) return `<p>${escapeHtml(value)}</p>`;
+  return `<div class="lesson-step-list">${chunks.map((chunk) => {
+    const match = chunk.match(/^(\d+[–-]\d+\s*min):\s*(.*)$/s);
+    if (!match) return `<div class="lesson-step"><div class="lesson-step-copy">${escapeHtml(chunk)}</div></div>`;
+    return `<div class="lesson-step"><div class="lesson-step-time">${escapeHtml(match[1])}</div><div class="lesson-step-copy">${escapeHtml(match[2])}</div></div>`;
+  }).join('')}</div>`;
+};
 
 const formatAnswer = (exercise: Exercise): string => {
   if (exercise.type === 'multiple-choice' && typeof exercise.correctAnswer === 'number') {
     const option = exercise.options?.[exercise.correctAnswer];
     return option === undefined ? String(exercise.correctAnswer) : `${String.fromCharCode(65 + exercise.correctAnswer)}. ${option}`;
   }
-  if (exercise.type === 'true-false' && typeof exercise.correctAnswer === 'boolean') {
-    return exercise.correctAnswer ? 'True' : 'False';
-  }
-  if (typeof exercise.correctAnswer === 'string' || typeof exercise.correctAnswer === 'number') {
-    return String(exercise.correctAnswer);
-  }
+  if (exercise.type === 'true-false' && typeof exercise.correctAnswer === 'boolean') return exercise.correctAnswer ? 'True' : 'False';
+  if (typeof exercise.correctAnswer === 'string' || typeof exercise.correctAnswer === 'number') return String(exercise.correctAnswer);
   if (Array.isArray(exercise.correctAnswer)) return exercise.correctAnswer.join(' → ');
   if (exercise.correctAnswer && typeof exercise.correctAnswer === 'object') {
     return Object.entries(exercise.correctAnswer)
@@ -58,17 +68,14 @@ const renderOverview = (): string => {
   const during = meta?.readingFramework?.during ?? '';
   const after = meta?.readingFramework?.after ?? '';
   return `<article class="teacher-page">
-    <header class="guide-header">
-      <div><p class="eyebrow">Gold-master teaching framework</p><h1>How to Use This Guide</h1><p class="chapter-meta">${escapeHtml(meta?.targetAudience || 'CEFR A2 learners')}</p></div>
-      <div class="level-marker">A2</div>
-    </header>
+    <header class="guide-header"><div><p class="eyebrow">Gold-master teaching framework</p><h1>How to Use This Guide</h1><p class="chapter-meta">${escapeHtml(meta?.targetAudience || 'CEFR A2 learners')}</p></div><div class="level-marker">A2</div></header>
     <div class="overview-grid">
-      ${renderCard('Purpose', `<p>${escapeHtml(meta?.purpose || '')}</p>`, 'cream')}
-      ${renderCard('Teaching approach', `<p>${escapeHtml(meta?.approachDesc || '')}</p>`, 'sage')}
-      ${renderCard('Before reading', `<p>${escapeHtml(before)}</p>`, 'blue')}
-      ${renderCard('During reading', `<p>${escapeHtml(during)}</p>`, 'cream')}
-      ${renderCard('After reading', `<p>${escapeHtml(after)}</p>`, 'sage')}
-      ${renderCard('Assessment evidence', `<p>${escapeHtml(meta?.assessmentEvidence || '')}</p>`, 'blue')}
+      ${renderCard('Purpose', `<p>${escapeHtml(meta?.purpose || '')}</p>`, 'cream', 'target')}
+      ${renderCard('Teaching approach', `<p>${escapeHtml(meta?.approachDesc || '')}</p>`, 'sage', 'book')}
+      ${renderCard('Before reading', `<p>${escapeHtml(before)}</p>`, 'blue', 'eye')}
+      ${renderCard('During reading', `<p>${escapeHtml(during)}</p>`, 'cream', 'book')}
+      ${renderCard('After reading', `<p>${escapeHtml(after)}</p>`, 'sage', 'check')}
+      ${renderCard('Assessment evidence', `<p>${escapeHtml(meta?.assessmentEvidence || '')}</p>`, 'blue', 'search')}
     </div>
     <section class="section-block" style="margin-top:5mm"><h3>Core classroom principles</h3>${list(meta?.classroomManagement)}</section>
     <div class="two-col">
@@ -87,25 +94,25 @@ const renderChapter = (section: TeacherGuideSection, index: number): string => `
   </header>
 
   <div class="two-col">
-    <section class="card cream"><h3>Measurable objectives</h3>${list(section.objectives, 'objectives')}</section>
-    <section class="card sage"><h3>Pedagogical purpose</h3><p>${escapeHtml(section.pedagogy)}</p></section>
+    <section class="card cream">${iconHeading('Measurable objectives', 'target')}${list(section.objectives, 'objectives')}</section>
+    <section class="card sage">${iconHeading('Pedagogical purpose', 'book')}<p>${escapeHtml(section.pedagogy)}</p></section>
   </div>
 
-  <section class="lesson-plan" style="margin-top:4mm"><h3>Lesson sequence</h3><p>${escapeHtml(section.lessonPlan)}</p></section>
+  <section class="lesson-plan" style="margin-top:4mm">${iconHeading('Lesson sequence', 'clock')}${renderLessonSteps(section.lessonPlan)}</section>
 
   <div class="two-col" style="margin-top:4mm">
-    ${renderCard('Grammar in context', `<p>${escapeHtml(section.grammarFocus || 'Use grammar only as it supports comprehension.')}</p>`, 'blue')}
-    ${renderCard('Pronunciation focus', `<p>${escapeHtml(section.pronunciationFocus || 'Model key chapter vocabulary clearly.')}</p>`, 'blue')}
+    ${renderCard('Grammar in context', `<p>${escapeHtml(section.grammarFocus || 'Use grammar only as it supports comprehension.')}</p>`, 'blue', 'book')}
+    ${renderCard('Pronunciation focus', `<p>${escapeHtml(section.pronunciationFocus || 'Model key chapter vocabulary clearly.')}</p>`, 'blue', 'headphones')}
   </div>
 
   <div class="two-col" style="margin-top:4mm">
-    <section class="card"><h3>Discussion and evidence questions</h3>${list(section.discussionPoints)}</section>
+    <section class="card">${iconHeading('Discussion and evidence questions', 'search')}${list(section.discussionPoints)}</section>
     <section class="card"><h3>Differentiation</h3><h4>Support</h4><p>${escapeHtml(section.differentiation.strugglingLearners)}</p><h4 style="margin-top:2.5mm">Extension</h4><p>${escapeHtml(section.differentiation.fastFinishers)}</p></section>
   </div>
 
   <div class="two-col" style="margin-top:4mm">
     <section class="card sage"><h3>Interactive teaching tips</h3>${list(section.interactiveTips)}</section>
-    <section class="card cream"><h3>Assessment evidence</h3>${section.assessmentTools?.rubric?.length ? `<h4>Look for</h4>${list(section.assessmentTools.rubric)}` : ''}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Exit ticket</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
+    <section class="card cream">${iconHeading('Assessment evidence', 'check')}${section.assessmentTools?.rubric?.length ? `<h4>Look for</h4>${list(section.assessmentTools.rubric)}` : ''}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Exit ticket</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
   </div>
 
   ${(section.kinestheticActivities?.length || section.globalCitizenship?.length) ? `<div class="two-col" style="margin-top:4mm">
@@ -157,9 +164,11 @@ await Promise.all([
   download(`${poppins}/Poppins-SemiBold.ttf`, path.join(FONT_DIR, 'Poppins-SemiBold.ttf')),
   download(`${poppins}/Poppins-Bold.ttf`, path.join(FONT_DIR, 'Poppins-Bold.ttf')),
 ]);
-await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-guide-gold.css'), path.join(OUTPUT, 'a2-guide-gold.css'));
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+await copyFile(path.join(scriptDir, 'a2-guide-gold.css'), path.join(OUTPUT, 'a2-guide-gold.css'));
+await copyFile(path.join(scriptDir, 'a2-guide-polish.css'), path.join(OUTPUT, 'a2-guide-polish.css'));
 
-const html = `<!doctype html><html lang="en"><head><meta charset="utf-8" /><title>Adam A2 Teacher Guide Gold Master</title><link rel="stylesheet" href="a2-guide-gold.css" /></head><body>
+const html = `<!doctype html><html lang="en"><head><meta charset="utf-8" /><title>Adam A2 Teacher Guide Gold Master</title><link rel="stylesheet" href="a2-guide-gold.css" /><link rel="stylesheet" href="a2-guide-polish.css" /></head><body>
 ${renderCover()}
 ${renderOverview()}
 ${adamA2BookDataEn.teacherGuide.map(renderChapter).join('\n')}
@@ -170,6 +179,7 @@ await writeFile(path.join(OUTPUT, 'adam-a2-en-teacher-guide.html'), html);
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 English Teacher Guide Gold Master.',
   'Uses finalized chapter-aligned Teacher Guide data from adamA2BookDataEn.',
-  'Includes 10 chapter plans plus answer/evidence appendices for Quick Challenges, Knowledge Check, Review Challenge, and Final Challenge.',
+  'Objectives use plain numbered rows; lesson sequences use separate timed rows. Decorative circular counters are prohibited.',
+  'Restrained Phosphor SVG icons clarify the guide hierarchy without turning the teacher resource into a student worksheet.',
   'No canonical story, chapter, image, audio, or synchronization field is modified.',
 ].join('\n'));
