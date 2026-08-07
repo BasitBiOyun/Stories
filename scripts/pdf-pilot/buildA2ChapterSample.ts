@@ -7,10 +7,18 @@ import { fallbackDefinitions, arabicAnimatedDefinitions } from '../../src/data/f
 import type { Exercise, PageData } from '../../src/types';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const OUTPUT = path.join(ROOT, 'artifacts/a2-chapter-sample');
+const OUTPUT_RELATIVE = process.env.A2_OUTPUT_DIR?.trim() || 'artifacts/a2-chapter-sample';
+const OUTPUT = path.resolve(ROOT, OUTPUT_RELATIVE);
 const IMAGE_DIR = path.join(OUTPUT, 'assets/images');
 const FONT_DIR = path.join(OUTPUT, 'assets/fonts');
-const CHAPTER_IDS = [1, 2] as const;
+const CHAPTER_IDS = (process.env.A2_CHAPTER_IDS || '1,2')
+  .split(',')
+  .map((value) => Number.parseInt(value.trim(), 10))
+  .filter((value) => Number.isInteger(value) && value > 0);
+
+if (!CHAPTER_IDS.length) {
+  throw new Error('A2_CHAPTER_IDS must contain at least one valid chapter id.');
+}
 
 const UI_FALLBACK: Record<'en' | 'ar', string> = {
   en: 'A key word in this story.',
@@ -168,12 +176,19 @@ const exerciseBody = (exercise: Exercise, language: Language): string => {
     const labels = language === 'ar' ? ['صحيح', 'خطأ'] : ['TRUE', 'FALSE'];
     return `<div class="answer-row">${labels.map((label) => `<span class="print-option"><i></i>${escapeHtml(label)}</span>`).join('')}</div>`;
   }
+
   if (exercise.type === 'multiple-choice') {
     return `<div class="answer-row answer-row-mc">${(exercise.options ?? []).map((option, index) => `<span class="print-option"><i></i><b>${String.fromCharCode(65 + index)}</b>${escapeHtml(normalizeOption(option))}</span>`).join('')}</div>`;
   }
+
   if (exercise.type === 'fill-blanks') {
     return `<div class="fill-text">${escapeHtml(exercise.fillBlanksText || exercise.question || '')}</div><div class="writing-line"></div>`;
   }
+
+  if (exercise.type === 'tap-reveal') {
+    return `<div class="tap-reveal-print"><span>${escapeHtml(language === 'ar' ? 'اكتب إجابتك:' : 'Write your answer:')}</span><div class="writing-line"></div></div>`;
+  }
+
   return '<div class="writing-line"></div>';
 };
 
@@ -246,7 +261,7 @@ const chapterHtml = (page: PageData, pages: PageData[], language: Language, imag
   const chapterLabel = language === 'ar' ? `الفصل ${page.id}` : `CHAPTER ${page.id}`;
   const side = page.id % 2 === 1 ? 'image-start' : 'image-end';
 
-  return `<article class="golden-chapter${language === 'ar' ? ' golden-chapter-rtl' : ''}">
+  return `<article class="golden-chapter${language === 'ar' ? ' golden-chapter-rtl' : ''}" data-chapter="${page.id}">
     <header class="chapter-header">
       <div><div class="chapter-eyebrow">${escapeHtml(chapterLabel)}</div><h1>${escapeHtml(page.title)}</h1></div>
       <div class="level-marker">A2</div>
@@ -262,9 +277,10 @@ const chapterHtml = (page: PageData, pages: PageData[], language: Language, imag
 
 const documentHtml = (pages: PageData[], language: Language, imageMap: Map<number, string>): string => {
   const selected = CHAPTER_IDS.map((id) => findChapter(pages, id));
+  const chapterRange = CHAPTER_IDS.join(', ');
   return `<!doctype html>
 <html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">
-<head><meta charset="utf-8" /><title>Adam A2 Chapter Sample</title><link rel="stylesheet" href="a2-sample.css" /></head>
+<head><meta charset="utf-8" /><title>Adam A2 Chapters ${escapeHtml(chapterRange)} - Print Sample</title><link rel="stylesheet" href="a2-sample.css" /></head>
 <body class="lang-${language}">
 ${selected.map((page) => chapterHtml(page, pages, language, imageMap.get(page.id)!)).join('\n')}
 </body></html>`;
@@ -276,10 +292,11 @@ await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-sampl
 await writeFile(path.join(OUTPUT, 'adam-a2-en.html'), documentHtml(adamA2Pages, 'en', images));
 await writeFile(path.join(OUTPUT, 'adam-a2-ar.html'), documentHtml(adamA2PagesAr, 'ar', images));
 await writeFile(path.join(OUTPUT, 'README.txt'), [
-  'Adam A2 Chapters 1-2 Vivliostyle sample.',
+  `Adam A2 Chapters ${CHAPTER_IDS.join(', ')} Vivliostyle sample.`,
   'All chapter text, image references, vocabulary, animated/highlighted words and Quick Challenge content come from current application data.',
   'Only words actually underlined in the chapter text appear in Word Notes.',
   'Animated words without a dedicated definition use the same generic fallback text as the application.',
   'Images are rendered at an exact 4:5 box.',
   'Word Notes and Quick Challenge are normal-flow blocks and move automatically after the story text.',
+  'Interactive-only challenge types are converted to print-native response areas without changing the question content.',
 ].join('\n'));
