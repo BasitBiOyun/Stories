@@ -2,749 +2,309 @@ import { TeacherGuideSection, StudentGuideSection } from '../../../../types';
 
 export const adamA2SelfStudyGuide: TeacherGuideSection[] = [
   {
-    chapter: 'Chapter 1: Creation & Knowledge',
-    timing: '20 minutes',
-    objectives: ['Reflect on the importance of knowledge.', 'Practice self-assessment.'],
-    pedagogy: 'Self-Directed Learning.',
-    lessonPlan: 'Read the chapter and think about why knowledge makes humans special.',
-    discussionPoints: [
-      'What makes humans special according to the story?',
-      'How should we use the knowledge we have?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short paragraph about one thing you want to learn more about.',
-      strugglingLearners: 'Draw a picture of something you learned from the chapter.'
-    },
-    interactiveTips: ['Click all the hotspots to learn more about the creation of Adam.']
+    chapter: 'Chapter 1: Opening & The Creation',
+    timing: '15–20 minutes',
+    objectives: ['Recall the main creation information.', 'Learn the highlighted words in context.', 'Use the Quick Challenge as a rereading guide.'],
+    pedagogy: 'Independent read-listen-reread cycle.',
+    grammarFocus: 'Notice "be going to" in the chapter; do not study it separately before understanding the text.',
+    pronunciationFocus: 'Say messenger, soil, earth, and curiosity aloud after listening.',
+    lessonPlan: '1) Look at the title and image. 2) Listen once while following the text. 3) Read each paragraph slowly. 4) Check every underlined word in Word Notes. 5) Complete the Quick Challenge. 6) If the answer is wrong, find the evidence sentence and try again. 7) Finish with one sentence: Adam was created from ____.',
+    discussionPoints: ['What is one fact from the opening paragraph?', 'What did the angels wait for with curiosity?'],
+    differentiation: { fastFinishers: 'Write three facts in chapter order.', strugglingLearners: 'Read one paragraph at a time and use Word Notes before continuing.' },
+    interactiveTips: ['Use the audio again only for the paragraph that felt difficult.', 'Do not translate every sentence; first find the main information.'],
+    assessmentTools: { exitTicket: ['One fact', 'One highlighted word + meaning'] }
   },
   {
-    chapter: 'Chapter 2: arrogance vs Humility',
-    timing: '20 minutes',
-    objectives: ['Understand the difference between arrogance and humility.', 'Reflect on personal mistakes.'],
-    pedagogy: 'Self-Directed Learning.',
-    lessonPlan: 'Compare Adam and Iblis and think about how they reacted to their mistakes.',
-    discussionPoints: [
-      'Why is arrogance dangerous?',
-      'Why is it important to say sorry when we make a mistake?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short advice to someone who is feeling proud.',
-      strugglingLearners: 'List three things you can say when you want to apologize.'
-    },
-    interactiveTips: ['Use the comparison chart to see the differences between the characters.']
+    chapter: 'Chapter 2: Knowledge and Respect',
+    timing: '15–20 minutes',
+    objectives: ['Recall why Adam could learn and understand.', 'Connect knowledge and respect using the text.'],
+    pedagogy: 'Independent evidence-finding.',
+    grammarFocus: 'Notice "wiser than" and because in the chapter.',
+    pronunciationFocus: 'Repeat knowledge, amazing, respect, and wiser after the narration.',
+    lessonPlan: '1) Preview title/image. 2) Listen and read. 3) Underline the sentence about knowledge. 4) Underline the sentence about the angels’ reaction. 5) Check Word Notes. 6) Complete the Quick Challenge. 7) Say: Adam could learn because ____.',
+    discussionPoints: ['What did Allah give Adam?', 'Why did the angels admire him?'],
+    differentiation: { fastFinishers: 'Write two because-sentences.', strugglingLearners: 'Use the frame: Allah gave Adam ____. The angels ____ him.' },
+    interactiveTips: ['Return to the first paragraph before checking an answer you are unsure about.'],
+    assessmentTools: { exitTicket: ['Adam could learn because …'] }
   },
   {
-    chapter: 'Chapter 3: Habil and Qabil',
+    chapter: "Chapter 3: Iblis's Arrogance",
+    timing: '15–20 minutes',
+    objectives: ['Recall the fire/soil comparison.', 'Understand the chapter’s explanation of useful knowledge.'],
+    pedagogy: 'Independent compare-and-check routine.',
+    grammarFocus: 'Notice better than, more valuable, and because.',
+    pronunciationFocus: 'Repeat arrogant, valuable, fire, and clay.',
+    lessonPlan: '1) Read the first paragraph and identify Iblis’s claim. 2) Read the next paragraphs and find what the chapter says about useful knowledge. 3) Check Word Notes. 4) Complete the matching Quick Challenge. 5) For any wrong match, reread the sentence with that word. 6) Write one sentence about useful knowledge.',
+    discussionPoints: ['What did Iblis compare?', 'What can useful knowledge help people do according to the chapter?'],
+    differentiation: { fastFinishers: 'Write three lines: Iblis/fire, Adam/soil, knowledge/good actions.', strugglingLearners: 'Make a three-box note with FIRE / SOIL / KNOWLEDGE.' },
+    interactiveTips: ['Keep your answer inside the information given by the chapter.'],
+    assessmentTools: { exitTicket: ['Useful knowledge can help people …'] }
+  },
+  {
+    chapter: 'Chapter 4: Paradise and the Warning',
+    timing: '15 minutes',
+    objectives: ['Recall the main information about Paradise.', 'Remember the one warning.'],
+    pedagogy: 'Independent think-reveal-reread.',
+    grammarFocus: 'Notice started to feel and not to go near.',
+    pronunciationFocus: 'Repeat lonely, wonderful, and warning.',
+    lessonPlan: '1) Listen/read the chapter. 2) Find why Adam felt lonely. 3) Find the one warning. 4) Check Word Notes. 5) Think before opening the tap-reveal Quick Challenge. 6) Reveal the answer, compare it with your answer, and reread the final sentence.',
+    discussionPoints: ['Why did Adam no longer live alone?', 'What was the one warning?'],
+    differentiation: { fastFinishers: 'Write a beginning-middle-end summary.', strugglingLearners: 'Complete: Adam felt ____. He lived with ____. The warning was ____.' },
+    interactiveTips: ['Do not reveal the Quick Challenge answer until you have made your own first attempt.'],
+    assessmentTools: { exitTicket: ['The warning was …'] }
+  },
+  {
+    chapter: "Chapter 5: Satan's Lie and Regret",
     timing: '20 minutes',
-    objectives: ['Reflect on sincerity and jealousy.', 'Practice peaceful conflict resolution.'],
-    pedagogy: 'Self-Directed Learning.',
-    lessonPlan: 'Think about the lesson the crow taught Qabil.',
-    discussionPoints: [
-      'What is real goodness?',
-      'How can we stop feeling jealous of others?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short poem about peace and sincerity.',
-      strugglingLearners: 'Draw the crow and write one thing it taught.'
-    },
-    interactiveTips: ['Watch the animation of the crow carefully to understand the lesson.']
+    objectives: ['Follow the event sequence.', 'Recall the different reactions described after the mistake.'],
+    pedagogy: 'Independent sequence-and-reread routine.',
+    grammarFocus: 'Notice after a while, unfortunately, and however as text signals.',
+    pronunciationFocus: 'Repeat regret, superior, and on purpose.',
+    lessonPlan: '1) Read/listen once. 2) Mark four points: LIE / ACTION / REGRET / RESPONSE. 3) Check Word Notes. 4) Put the Quick Challenge events in order. 5) If one is wrong, reread only the related paragraph. 6) Write one sentence about what Adam and Eve did after the mistake.',
+    discussionPoints: ['What lie did Iblis tell?', 'How did Adam and Eve react after the mistake?'],
+    differentiation: { fastFinishers: 'Write the four stages with first, then, after that, finally.', strugglingLearners: 'Write one key word for each stage before sequencing.' },
+    interactiveTips: ['Use a wrong sequence as a clue about which paragraph to reread.'],
+    assessmentTools: { exitTicket: ['After the mistake, Adam and Eve …'] }
+  },
+  {
+    chapter: 'Chapter 6: Life on Earth',
+    timing: '15–20 minutes',
+    objectives: ['Find examples of life and responsibility on Earth.', 'Recall one key activity from the chapter.'],
+    pedagogy: 'Independent list-to-main-idea routine.',
+    grammarFocus: 'Notice were using and were going to in the list of activities.',
+    pronunciationFocus: 'Repeat crops, planet, rule, and excused.',
+    lessonPlan: '1) Read/listen. 2) Underline every action people were going to do on Earth. 3) Check Word Notes. 4) Complete the Quick Challenge with a word from the chapter. 5) Reread the activity list. 6) Say one main idea: On Earth, people were going to ____.',
+    discussionPoints: ['Which activities are about food?', 'Which activities are about caring for people or nature?'],
+    differentiation: { fastFinishers: 'Sort the activities into FOOD / HOME / CARE.', strugglingLearners: 'Find only the verbs first: grow, keep, build, protect, help.' },
+    interactiveTips: ['This Quick Challenge belongs to the Earth chapter; use only the Earth text for help.'],
+    assessmentTools: { exitTicket: ['One responsibility from the chapter'] }
+  },
+  {
+    chapter: 'Chapter 7: The First Messenger',
+    timing: '15–20 minutes',
+    objectives: ['Recall what Adam taught people.', 'Summarise the chapter in simple English.'],
+    pedagogy: 'Independent information-retrieval and recap.',
+    grammarFocus: 'Notice taught, warned, sent, and started teaching.',
+    pronunciationFocus: 'Repeat honest, behave, enemy, and remember.',
+    lessonPlan: '1) Read/listen. 2) Make a short list of what Adam taught. 3) Check Word Notes. 4) Complete the Quick Challenge. 5) Check the answer against the teaching sentence. 6) Write two factual sentences about the chapter.',
+    discussionPoints: ['What did Adam teach people?', 'What warning did Adam and Eve give their children?'],
+    differentiation: { fastFinishers: 'Write three teaching points.', strugglingLearners: 'Complete: Be ____. Do ____. Remember ____.' },
+    interactiveTips: ['Check every teaching point against the text before adding it to your notes.'],
+    assessmentTools: { exitTicket: ['One thing Adam taught people'] }
+  },
+  {
+    chapter: 'Chapter 8: Story of Habil and Qabil',
+    timing: '20 minutes',
+    objectives: ['Compare the brothers using stated information.', 'Recall their work and offerings.'],
+    pedagogy: 'Independent two-column comparison.',
+    grammarFocus: 'Notice simple past descriptions and contrast with but.',
+    pronunciationFocus: 'Repeat shepherd, farmer, offering, and jealous.',
+    lessonPlan: '1) Read/listen. 2) Make two columns: HABIL / QABIL. 3) Add only information stated in the chapter. 4) Check Word Notes. 5) Complete the matching Quick Challenge. 6) Reread any detail you matched incorrectly. 7) Say one comparison sentence.',
+    discussionPoints: ['What work did each brother do?', 'What did each brother offer?'],
+    differentiation: { fastFinishers: 'Write four comparison facts.', strugglingLearners: 'Start with only two rows: WORK and DESCRIPTION.' },
+    interactiveTips: ['Do not add extra character information from outside the chapter.'],
+    assessmentTools: { exitTicket: ['Habil was …; Qabil was …'] }
+  },
+  {
+    chapter: 'Chapter 9: The First Crime',
+    timing: '15–20 minutes',
+    objectives: ['Follow the sequence calmly and accurately.', 'Recall the crow’s action.'],
+    pedagogy: 'Independent factual sequencing with sensitive content.',
+    grammarFocus: 'Notice when, soon, then, and started digging.',
+    pronunciationFocus: 'Repeat crow, panic, and digging.',
+    lessonPlan: '1) Read/listen in short parts. 2) Focus on sequence, not dramatic detail. 3) Mark ANGER / HARM / PANIC / CROW. 4) Check Word Notes. 5) Complete the sequencing Quick Challenge. 6) Reread only the event that is out of order. 7) Finish with: The crow showed Qabil ____.',
+    discussionPoints: ['How did Qabil feel after Habil died?', 'What did the crow do?'],
+    differentiation: { fastFinishers: 'Write four factual sentences in order.', strugglingLearners: 'Use four event labels and match one sentence to each.' },
+    interactiveTips: ['Keep the task factual and non-graphic.'],
+    assessmentTools: { exitTicket: ['The crow showed Qabil …'] }
+  },
+  {
+    chapter: 'Chapter 10: The Story of Adam (pbuh)',
+    timing: '20 minutes',
+    objectives: ['Recall the closing message.', 'Review the whole story through chapter titles.'],
+    pedagogy: 'Independent conclusion and whole-story recap.',
+    grammarFocus: 'Notice became, spread, advises, tells, and helps.',
+    pronunciationFocus: 'Repeat jealousy, worldwide, honest, and respect.',
+    lessonPlan: '1) Read/listen. 2) Underline the closing advice. 3) Check Word Notes. 4) Complete the Quick Challenge. 5) Look back at all ten chapter titles and say one fact from each. 6) Write a three-sentence whole-story recap. 7) Move to the Knowledge Check only after this recap.',
+    discussionPoints: ['What should people stay away from according to the final chapter?', 'What message continued after Adam grew old?'],
+    differentiation: { fastFinishers: 'Write five summary sentences.', strugglingLearners: 'Choose five chapter titles and recall one fact from each.' },
+    interactiveTips: ['Use this chapter as the bridge from while-reading practice to post-reading review.'],
+    assessmentTools: { exitTicket: ['One closing message + one earlier chapter fact'] }
   }
 ];
 
 export const adamA2StudentGuideSections: StudentGuideSection[] = [
   {
-    title: "1. Who is this for?",
-    icon: "Users",
-    text: "This guide is for A2 English learners (Grades 6-8). It helps you understand the story and learn new words easily.",
-    points: ["English students", "Learners studying alone or with a teacher"]
+    title: '1. Your A2 Study Goal',
+    icon: 'Target',
+    text: 'This guide is for Grades 5–6 learners working around A2. Your main goal is to understand the information in the story and learn useful English from it.',
+    points: ['Understand the main information', 'Use Word Notes', 'Learn from rereading and feedback']
   },
   {
-    title: "2. What will you learn?",
-    icon: "BookOpen",
-    text: "This storybook tells the story of Prophet Adam in simple English. You will find reading, listening, and interactive activities.",
-    points: ["Understand English better", "Remember vocabulary", "Express your thoughts"]
+    title: '2. Before You Read',
+    icon: 'Image',
+    text: 'Look at the chapter title and 4:5 image first. Read the Word Notes only when you need them.',
+    points: ['Predict the topic', 'Notice 2–4 important words', 'Do not translate everything']
   },
   {
-    title: "3. How to use this book",
-    icon: "Rocket",
-    text: "Follow the 8 steps: Look, Listen, Read, Click help, Do activity, Check answer, Review, and Reflect.",
-    points: ["Don't read too fast", "Use word help carefully", "Understand the main idea"]
+    title: '3. Read and Listen',
+    icon: 'Ear',
+    text: 'Use the narration and text together. Read in short parts and stop after each main idea.',
+    points: ['Listen once', 'Read slowly', 'Replay only difficult parts']
   },
   {
-    title: "4. A Simple Study Routine",
-    icon: "Clock",
-    text: "You don't need to study for a long time. Short and regular study is better (10-40 minutes).",
-    points: ["Short Plan (10-15m)", "Standard Plan (20-25m)", "Full Chapter Plan (30-40m)"]
+    title: '4. Highlighted Words',
+    icon: 'BookOpen',
+    text: 'Underlined words are important. Every underlined word should appear in Word Notes. Read the definition, then return to the sentence.',
+    points: ['Notice the word in context', 'Check the meaning', 'Reread the sentence']
   },
   {
-    title: "5. How to Learn Vocabulary",
-    icon: "PenTool",
-    text: "Don't memorize long lists. Learn 3-5 words per page and use them in sentences.",
-    points: ["Word + Meaning + Sentence + Picture", "Repeat words aloud", "Review old words weekly"]
+    title: '5. Quick Challenge = Learning Practice',
+    icon: 'Puzzle',
+    text: 'Quick Challenges are not mini exams. They help you remember and understand the page you just read.',
+    points: ['Try from memory', 'If unsure, reread', 'Use feedback before a second attempt']
   },
   {
-    title: "6. Improve Your Listening",
-    icon: "Ear",
-    text: "Listening becomes easier when you do it more than once. Try the 3-step listening method.",
-    points: ["1. Just listen", "2. Listen with text", "3. Pause and repeat"]
+    title: '6. When an Answer Is Wrong',
+    icon: 'Search',
+    text: 'A wrong answer tells you where to look again. Find the related sentence, read it, then try the question one more time.',
+    points: ['Find evidence', 'Reread a small part', 'Try again']
   },
   {
-    title: "7. Improve Your Reading",
-    icon: "Compass",
-    text: "You don't need to translate every sentence. Try to understand the story in English.",
-    points: ["Read slowly in short parts", "Notice names, actions, and feelings", "Ask yourself questions"]
+    title: '7. After Each Chapter',
+    icon: 'PenTool',
+    text: 'Finish with a very short recap. One or two clear sentences are enough at A2.',
+    points: ['Say one fact', 'Use one new word', 'Write one short sentence']
   },
   {
-    title: "8. Interactive Activities",
-    icon: "Target",
-    text: "Activities are for helping you learn, not just finishing fast. A mistake is part of learning.",
-    points: ["Read instructions carefully", "Check wrong answers", "Return to the text for help"]
+    title: '8. Review Challenge',
+    icon: 'RefreshCw',
+    text: 'The eight-question Review Challenge helps you rebuild important information after reading. It is split into two groups of four in print.',
+    points: ['Recall first', 'Return to chapters when needed', 'Use review as preparation']
   },
   {
-    title: "9. When it feels hard",
-    icon: "Smile",
-    text: "It's normal for some parts to feel hard. Stop, breathe, and try a smaller part.",
-    points: ["Listen one more time", "Click only important words", "Ask for help if needed"]
+    title: '9. Final Challenge',
+    icon: 'Trophy',
+    text: 'The ten-question Final Challenge reminds you of the whole story. Review chapter titles and key facts before you start.',
+    points: ['10 questions', 'Whole-story recall', '5 + 5 questions in the print version']
   },
   {
-    title: "10. Reflection & Growth",
-    icon: "Heart",
-    text: "Reflection means thinking about what you learned and how it connects to your life.",
-    points: ["What is the main idea?", "What lesson can I learn?", "How can I be better?"]
+    title: '10. A Simple Weekly Routine',
+    icon: 'Clock',
+    text: 'Short, regular sessions are enough. Study one or two chapters, then use review questions to revisit older information.',
+    points: ['15–20 minutes per chapter', 'Review old Word Notes', 'Use chapter titles for recall']
   }
 ];
 
 export const adamA2StudentGuideText = `
-# A2 SELF-STUDY GUIDE  
-## for the Interactive Storybook: *The Story of Prophet Adam*  
-
----
-
-## Welcome!
-
-Hello!
-Welcome to your **A2 Self-Study Guide**.
-
-This guide will help you use your interactive storybook in a smart, calm, and easy way.
-You can use it:
-- at school,
-- at home,
-- after class,
-- before a quiz,
-- or when you want to study by yourself.
-
-This book is not only for reading.
-It is also for:
-- listening,
-- learning new words,
-- thinking,
-- speaking,
-- writing,
-- and checking your understanding.
-
-You do **not** need to be perfect.
-You do **not** need to know every word.
-You only need to go **step by step**.
-
-This guide will show you how to:
-- start a chapter,
-- read and listen in the best order,
-- learn vocabulary,
-- use interactive activities,
-- check mistakes,
-- study alone in a useful way,
-- and grow more confident in English.
-
-Take your time.  
-Think carefully.  
-Keep going.  
-You can do it.
-
----
-
-## 1. Who Is This Guide For?
-
-This guide is for:
-- **A2 English learners**,
-- **students in grades 6, 7, and 8**,
-- students who want to study **with or without a teacher**,
-- students who want to understand the story and improve their English.
-
-This guide is helpful if:
-- you sometimes need extra support,
-- you like clear steps,
-- you want to learn vocabulary better,
-- you want to use the book more effectively,
-- you want to study on your own.
-
-Think of this guide as your **study helper inside the book**.
-
----
-
-## 2. What Will You Learn in This Book?
-
-This storybook tells the story of **Prophet Adam** in simple English.
-
-In this book, you will find:
-- short reading parts,
-- listening parts,
-- pictures and visual clues,
-- useful vocabulary,
-- clickable word help,
-- interactive exercises,
-- chapter review activities,
-- summary tasks,
-- reflection questions.
-
-This means you are not only reading a story.
-You are also learning how to:
-- understand English better,
-- notice feelings and ideas,
-- answer questions,
-- remember vocabulary,
-- and express your thoughts.
-
----
-
-## 3. How to Use This Book
-
-Use the book in this order whenever possible.
-
-### Step 1: Look First
-Before reading, stop and look.
-
-Look at:
-- the title,
-- the picture,
-- the page layout,
-- the highlighted words.
-
-Ask yourself:
-- What can I see?
-- Who is this part about?
-- What may happen in this part?
-- What do I already know?
-
-### Step 2: Choose Your Start
-You can begin in two ways:
-- **listen first, then read**, or
-- **read first, then listen**.
-
-A good rule:
-- If the page feels difficult, **listen first**.
-- If the page looks easy, **read first**.
-
-### Step 3: Read in Small Parts
-Do not read too fast.
-
-Read **2 to 4 lines**.  
-Then stop.  
-Then think.  
-Then continue.
-
-This helps your brain understand more.
-
-### Step 4: Use Word Help Carefully
-If you see a difficult word:
-1. try to guess the meaning,
-2. click the word,
-3. read the short help,
-4. go back to the sentence.
-
-Do not click every word.
-First try to understand the main idea.
-
-### Step 5: Find the Main Idea
-Do not worry about every single word.
-First ask:
-- Who is in this part?
-- What is happening?
-- What is the important idea?
-- Is the feeling happy, sad, calm, serious, or surprising?
-
-### Step 6: Do the Activities
-After reading, do the exercises.
-
-Take your time.
-Think before you choose.
-Read the question carefully.
-
-### Step 7: Check the Feedback
-When you finish an activity:
-- check your answer,
-- read the feedback,
-- understand your mistake,
-- try again if needed.
-
-Do not only look at **correct** or **incorrect**.
-Try to understand **why**.
-
-### Step 8: Review Before You Leave
-Before you close the book:
-- write **3 to 5 new words**,
-- say **1 sentence aloud**,
-- tell yourself the main idea again.
-
-Then move to the next part.
-
----
-
-## 4. A Simple Study Routine
-
-You do not need to study for a very long time every day.
-**Short and regular study** is better.
-
-### A. Short Study Plan (10–15 minutes)
-Best for:
-- busy days,
-- quick review,
-- checking homework,
-- reading one small part.
-
-### What to do:
-1. Open one page or one short section.
-2. Look at the picture.
-3. Listen once.
-4. Read the text slowly.
-5. Click 2 or 3 difficult words.
-6. Do one activity.
-7. Say one sentence about what you learned.
-
----
-
-### B. Standard Study Plan (20–25 minutes)
-Best for:
-- normal self-study,
-- after-school review,
-- chapter preparation.
-
-### What to do:
-1. Look at the page and guess the topic.
-2. Listen once.
-3. Read carefully.
-4. Write 5 new words.
-5. Do the interactive activity.
-6. Check your mistakes.
-7. Write 2 or 3 sentences in your notebook.
-8. Read your sentences aloud.
-
----
-
-### C. Full Chapter Study Plan (30–40 minutes)
-Best for:
-- weekend study,
-- deep review,
-- revision before assessment.
-
-### What to do:
-1. Preview the chapter.
-2. Listen to the whole chapter.
-3. Read section by section.
-4. Use vocabulary help when needed.
-5. Complete all activities.
-6. Review difficult parts.
-7. Write a short summary.
-8. Answer one reflection question.
-9. Check what you learned.
-
----
-
-## 5. The Best Order for Self-Study
-
-When you study alone, this order is very helpful:
-
-1. **Look**  
-2. **Listen**  
-3. **Read**  
-4. **Click word help**  
-5. **Do the activity**  
-6. **Check your answer**  
-7. **Review**  
-8. **Reflect**
-
-Try not to jump too quickly.
-Each step helps the next step.
-
----
-
-## 6. How to Learn Vocabulary
-
-Vocabulary is very important.
-But you do not need to memorize long lists.
-You need to learn words in a smart way.
-
-### A good vocabulary method:
-
-For each new word, write:
-- the **word**,
-- the **short meaning**,
-- **one example sentence**,
-- and if possible, a **small drawing or symbol**.
-
-### Example:
-- **regret** = feeling sorry about a mistake  
-- *Adam felt regret after his mistake.*
-
-### Your vocabulary notebook can have 4 parts:
-- **Word**
-- **Meaning**
-- **Sentence**
-- **Picture / Memory clue**
-
-### Good vocabulary habits:
-- Learn **3 to 5 words**, not 20 words at one time.
-- Repeat the words aloud.
-- Use the words in your own sentence.
-- Review old words every week.
-
----
-
-## 7. How to Improve Listening
-
-Listening becomes easier when you do it more than once.
-
-### Try this listening method:
-
-#### First listening
-Just listen.
-Do not stop too much.
-Try to understand the general meaning.
-
-Ask yourself:
-- Who is speaking or being described?
-- What is happening?
-- What feeling do I hear?
-
-#### Second listening
-Listen again with the text.
-Now follow the words with your eyes.
-
-#### Third listening
-Pause after one sentence or short part.
-Repeat it aloud.
-Try to copy the pronunciation and rhythm.
-
-### Listening tips:
-- Use headphones if possible.
-- Listen in a quiet place.
-- Do not worry if you miss some words.
-- Focus on the main meaning first.
-
----
-
-## 8. How to Improve Reading
-
-When reading in English, you do not need to translate every sentence.
-Try to understand the story in English as much as possible.
-
-### Good reading habits:
-- Read slowly.
-- Read in short parts.
-- Notice names, actions, and feelings.
-- Stop and think after each part.
-- Go back if needed.
-
-### Ask yourself these questions:
-- Who is this part about?
-- What happened first?
-- What happened next?
-- Why is this part important?
-- What can I learn from this part?
-
----
-
-## 9. How to Use Interactive Activities Well
-
-The activities are not only for finishing fast.
-They are for helping you learn.
-
-### Before the activity:
-- Think about the chapter.
-- Remember the key words.
-- Read the instructions carefully.
-
-### During the activity:
-- Take your time.
-- Do not guess too fast.
-- Read all options.
-- Use the text if you need help.
-
-### After the activity:
-- Check wrong answers.
-- Return to the text.
-- Find the correct sentence.
-- Try again.
-
-A mistake is not a problem.
-A mistake is part of learning.
-
----
-
-## 10. What to Do When a Part Feels Difficult
-
-Sometimes a page or activity may feel hard.
-That is normal.
-
-When this happens, do this:
-1. Stop.
-2. Breathe.
-3. Read the title again.
-4. Look at the picture.
-5. Listen one more time.
-6. Read only a small part.
-7. Click only the most important difficult words.
-8. Ask: “What is the main idea?”
-
-If it is still difficult:
-- do a shorter study session,
-- come back later,
-- ask your teacher or family member for help.
-
-Do not quit too quickly.
-Small progress is still progress.
-
----
-
-## 11. Chapter Self-Study Routine
-
-You can use this same routine for each chapter or section.
-
-### Before the chapter
-- Look at the title and picture.
-- Guess the topic.
-- Think of 2 words you may see.
-
-### During the chapter
-- Listen.
-- Read slowly.
-- notice important words,
-- click vocabulary help when needed,
-- pause and think.
-
-### After the chapter
-- Do the activities.
-- Check mistakes.
-- Write new words.
-- Say the main idea aloud.
-- answer one reflection question.
-
----
-
-## 12. Reflection Questions for Self-Study
-
-Reflection means thinking about what you learned and how it connects to life.
-
-After a chapter, you can ask yourself:
-- What is the most important idea in this part?
-- Which new word do I want to remember?
-- Which character or action do I remember most?
-- What lesson can I learn from this story?
-- What would I do in a similar situation?
-- What was easy for me?
-- What was difficult for me?
-
-You do not need long answers.
-Even **one or two good sentences** are useful.
-
----
-
-## 13. A2 Writing Tasks You Can Do Alone
-
-Here are simple writing tasks for self-study.
-Choose one after you finish a chapter.
-
-### Easy tasks
-- Write **3 new words** and one sentence for each.
-- Write **3 sentences** about the chapter.
-- Write **2 things you learned**.
-
-### Medium tasks
-- Write a **short summary** of the chapter.
-- Write about a character’s feeling.
-- Write what happened first, next, and last.
-
-### Reflection tasks
-- What lesson can I learn from Adam’s story?
-- How can I be more careful when I make a mistake?
-- How can I be a better caretaker of the world around me?
-
----
-
-## 14. A2 Speaking Tasks You Can Do Alone
-
-Yes, you can practice speaking even when you study alone.
-
-Try these:
-- Read one paragraph aloud.
-- Repeat after the audio.
-- Say 3 new words clearly.
-- Explain the chapter in 3 simple sentences.
-- Answer one reflection question aloud.
-
-### Example speaking frame:
-- “This chapter is about…”
-- ...
-- “One new word is…”
-- “My opinion is…”
-
-Speaking aloud helps your pronunciation, confidence, and memory.
-
----
-
-## 15. My Self-Check Page
-
-After you study, check yourself.
-
-### I can say:
-- [ ] I understood the main idea.
-- [ ] I listened carefully.
-- [ ] I read the text slowly.
-- [ ] I learned some new words.
-- [ ] I finished the activity.
-- [ ] I checked my mistakes.
-- [ ] I can say one thing about the chapter.
-
-### My study today was:
-- [ ] easy
-- [ ] okay
-- [ ] a little difficult
-- [ ] difficult but useful
-
-### Today I want to remember:
-- One word: __________
-- One idea: __________
-- One question: __________
-
----
-
-## 16. Weekly Study Plan
-
-You do not need to do everything in one day.
-Here is a simple weekly plan.
-
-### Option A: 3-Day Plan
-**Day 1**
-- Read and listen
-- Learn vocabulary
-
-**Day 2**
-- Do activities
-- Check mistakes
-
-**Day 3**
-- Review
-- Write a summary
-- Answer a reflection question
-
-### Option B: 5-Day Light Plan
-**Day 1:** Look + Listen  
-**Day 2:** Read  
-**Day 3:** Vocabulary  
-**Day 4:** Activities  
-**Day 5:** Review + Reflection
-
-Use the plan that feels best for you.
-
----
-
-## 17. Family Support
-
-A family member does not need to know perfect English to help you.
-They can still support your learning.
-
-They can:
-- ask what the chapter is about,
-- listen to you read aloud,
-- help you make a study routine,
-- ask which new words you learned,
-- encourage you when a part feels difficult.
-
-### Simple family questions:
-- What did you read today?
-- Which word was new for you?
-- What happened in the story?
-- What did you learn from it?
-
----
-
-## 18. Good Study Habits
-
-Try to remember these habits:
-- Study in a quiet place.
-- Keep your notebook near you.
-- Do not rush.
-- Review old words.
-- Read aloud sometimes.
-- Take short breaks if you feel tired.
-- Come back tomorrow if today feels hard.
-
-Learning works best when you are calm and regular.
-
----
-
-## 19. What Success Looks Like
-
-Success does not mean:
-- knowing every word,
-- never making mistakes,
-- finishing everything very fast.
-
-Success means:
-- understanding more than before,
-- trying again,
-- noticing your mistakes,
-- learning new words,
-- feeling more confident,
-- using English a little better each time.
-
-That is real progress.
-
----
-
-## 20. Final Message to the Student
-
-Dear student,
-
-This book is a journey.
-You are not only reading a story.
-You are also building:
-- better English,
-- better study habits,
-- better thinking,
-- and better confidence.
-
-Go step by step.
-Use the pictures.
-Listen carefully.
-Read slowly.
-Think deeply.
-Do your best.
-
-You do not have to be perfect.  
-You only have to keep learning.
-
-Well done.  
-Keep going.
-
----
-
-## Quick One-Page Self-Study Checklist
-
-Before I start:
-- [ ] I am in a quiet place.
-- [ ] I have my book and notebook.
-- [ ] I am ready to focus.
-
-While I study:
-- [ ] I looked at the picture first.
-- [ ] I listened carefully.
-- [ ] I read slowly.
-- [ ] I used word help carefully.
-- [ ] I completed the activity.
-
-After I study:
-- [ ] I checked my mistakes.
-- [ ] I wrote new words.
-- [ ] I said or wrote one thing I learned.
-- [ ] I know what to review next time.
+# A2 SELF-STUDY GUIDE
+## The Story of Prophet Adam
+
+### What this guide is for
+
+This guide helps Grades 5–6 learners study the A2 story independently. The story is written as an informative narrative, so your main job is to follow information, sequence, comparisons, and simple cause-and-result ideas.
+
+The activities are not only tests. During reading, **Quick Challenges are learning practice**. They help you notice and remember the information on the page. After reading, the **Knowledge Check** and **Review Challenge** help you rebuild important information. The **Final Challenge** helps you recall the whole story.
+
+### Use every chapter in this order
+
+1. **Look** at the title and image.
+2. **Listen** once while following the text.
+3. **Read** in short parts.
+4. Notice the **underlined words**.
+5. Check those words in **Word Notes**.
+6. Complete the **Quick Challenge**.
+7. If an answer is wrong, **find the evidence sentence** and reread it.
+8. Try again.
+9. Finish with **one fact + one new word**.
+
+### Highlighted words and Word Notes
+
+The underlined words in the chapter are there to support reading. Do not stop for every ordinary word. For an underlined word:
+
+- first read the full sentence,
+- guess the meaning if you can,
+- check the Word Note,
+- read the sentence again.
+
+Every word that is underlined in the text should be available in Word Notes.
+
+### Quick Challenge: use it to learn
+
+At A2, a Quick Challenge is mainly for **reinforcement**. Try the activity after reading the chapter. If you are not sure, go back to the text. If you choose a wrong answer, use the feedback to find the correct part of the story.
+
+A good learning cycle is:
+
+**Read → Try → Check → Reread → Try again**
+
+Do not focus only on the score. Focus on the sentence or idea you learned after checking.
+
+### After every chapter
+
+Before moving on, do three small things:
+
+- Say one important fact aloud.
+- Choose one highlighted word and explain it simply.
+- Write one short sentence about the chapter.
+
+This should take only two or three minutes.
+
+### Knowledge Check and Review Challenge
+
+After the story chapters, use the Knowledge Check to recall important details. The Review Challenge has **8 questions**. In the print book, it is organised as **4 questions + 4 questions** so each page remains clear and readable.
+
+If you cannot remember an answer, this is the correct strategy:
+
+1. identify the related chapter,
+2. find the sentence,
+3. reread it,
+4. answer again.
+
+This is still learning.
+
+### Final Challenge
+
+The Final Challenge has **10 questions** for every level and section. In print, it is organised as **5 questions + 5 questions**.
+
+Before starting:
+
+- read the ten chapter titles,
+- remember one fact from each chapter,
+- review difficult Word Notes,
+- then begin the challenge.
+
+The Final Challenge should remind you of the whole story. It is not designed around tricks or tiny wording differences.
+
+### Listening routine
+
+If a chapter is difficult:
+
+- listen once without stopping,
+- listen again while reading,
+- replay only the difficult paragraph,
+- then read that paragraph by yourself.
+
+You do not need to replay the whole chapter every time.
+
+### Vocabulary routine
+
+For each chapter, choose three to five useful words. In a notebook, write:
+
+**word | simple meaning | one sentence**
+
+Use the meaning from the chapter. Review old words before adding many new ones.
+
+### When the story feels difficult
+
+Make the task smaller instead of making the text disappear:
+
+- read one paragraph,
+- check only the underlined words,
+- listen to that paragraph,
+- answer one simple question,
+- continue when the main idea is clear.
+
+### Whole-book review
+
+At the end, look at the chapter titles from 1 to 10. Try to say one fact for each title. Then check the story and correct anything you forgot. This simple routine prepares you for the Review Challenge and Final Challenge while keeping the focus on understanding and remembering the information.
 `;
