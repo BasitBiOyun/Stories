@@ -70,4 +70,9 @@ body.lang-ar{font-family:Arakom,serif;font-size:14pt;line-height:1.58}
 .fill-text{margin-bottom:2mm;font-size:9.4pt;line-height:1.35}.writing-line{height:7mm;border-bottom:.3mm solid #bca977}
 .tap-reveal-print>span{display:block;margin-bottom:1.2mm;font-size:9.2pt;color:#5e5145}.lang-ar .tap-reveal-print>span{font-size:11.2pt}
 
-.chapter-header,.chapter-image,.word-note,.quick-challenge,.print-option{break-inside:avoid}
+.matching-print{display:grid;gap:2.2mm}.matching-bank{display:flex;align-items:center;flex-wrap:wrap;gap:1.5mm 2mm;font-size:8.7pt;line-height:1.2;color:#5a4b3d}.lang-ar .matching-bank{font-size:10.5pt}
+.matching-bank strong{margin-inline-end:1mm;color:var(--brown)}.matching-bank span{padding:1mm 2.2mm;border:.25mm solid #dccba8;border-radius:1.5mm;background:#fffdf8}
+.matching-targets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.8mm}.matching-target{padding:2mm 2.5mm;border:.25mm solid #dfd0b2;border-radius:1.8mm;background:rgba(255,255,255,.55);break-inside:avoid}.matching-target>strong{display:block;margin-bottom:1mm;font-size:8.9pt;color:var(--brown)}.lang-ar .matching-target>strong{font-size:10.7pt}
+.matching-lines i{display:block;height:4.5mm;border-bottom:.25mm solid #c1ad80}
+
+.chapter-header,.chapter-image,.word-note,.quick-challenge,.print-option,.matching-target{break-inside:avoid}
