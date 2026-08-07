@@ -33,7 +33,7 @@
   width: 6mm;
   height: 6mm;
   flex: none;
-  color: var(--gold-deep);
+  overflow: visible;
 }
 
 .icon-heading {
@@ -133,7 +133,7 @@
 
 .study-step {
   display: grid;
-  grid-template-columns: 9mm minmax(0, 1fr);
+  grid-template-columns: 8mm minmax(0, 1fr);
   gap: 3mm;
   align-items: start;
   padding: 3mm 3.5mm;
@@ -143,15 +143,21 @@
   break-inside: avoid;
 }
 .study-step-icon {
-  width: 8mm;
-  height: 8mm;
+  width: 7mm;
+  height: 7mm;
   display: grid;
   place-items: center;
-  border-radius: 2mm;
-  background: var(--cream);
-  color: var(--gold-deep);
+  margin-top: .3mm;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
-.study-step-icon .guide-svg-icon { width: 5.5mm; height: 5.5mm; }
+.study-step-icon .guide-svg-icon {
+  width: 6.2mm;
+  height: 6.2mm;
+}
 .study-step-copy strong {
   display: block;
   margin-bottom: .6mm;
