@@ -85,9 +85,29 @@ jobs:
           retention-days: 14
           if-no-files-found: error
 
-  a2-chapters-3-4:
+  a2-story-pairs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ids: '3,4'
+            label: '3 and 4'
+            slug: 'ch3-ch4'
+            output: 'artifacts/a2-chapter-3-4'
+          - ids: '5,6'
+            label: '5 and 6'
+            slug: 'ch5-ch6'
+            output: 'artifacts/a2-chapter-5-6'
+          - ids: '7,8'
+            label: '7 and 8'
+            slug: 'ch7-ch8'
+            output: 'artifacts/a2-chapter-7-8'
+          - ids: '9,10'
+            label: '9 and 10'
+            slug: 'ch9-ch10'
+            output: 'artifacts/a2-chapter-9-10'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -101,38 +121,38 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
-      - name: Build Adam A2 chapters 3 and 4 HTML
+      - name: Build Adam A2 chapter pair HTML
         env:
-          A2_CHAPTER_IDS: '3,4'
-          A2_OUTPUT_DIR: 'artifacts/a2-chapter-3-4'
+          A2_CHAPTER_IDS: ${{ matrix.ids }}
+          A2_OUTPUT_DIR: ${{ matrix.output }}
         run: npx tsx scripts/pdf-pilot/buildA2ChapterSample.ts
 
       - name: Install pinned Vivliostyle CLI
         run: npm install --no-save --package-lock=false @vivliostyle/cli@11.1.0
 
-      - name: Build English chapters 3 and 4
-        run: npx vivliostyle build artifacts/a2-chapter-3-4/adam-a2-en.html --size A4 --output artifacts/a2-chapter-3-4/adam-a2-en-ch3-ch4.pdf
+      - name: Build English chapter pair
+        run: npx vivliostyle build ${{ matrix.output }}/adam-a2-en.html --size A4 --output ${{ matrix.output }}/adam-a2-en-${{ matrix.slug }}.pdf
 
-      - name: Build Arabic chapters 3 and 4
-        run: npx vivliostyle build artifacts/a2-chapter-3-4/adam-a2-ar.html --size A4 --output artifacts/a2-chapter-3-4/adam-a2-ar-ch3-ch4.pdf
+      - name: Build Arabic chapter pair
+        run: npx vivliostyle build ${{ matrix.output }}/adam-a2-ar.html --size A4 --output ${{ matrix.output }}/adam-a2-ar-${{ matrix.slug }}.pdf
 
       - name: Install PDF inspection tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
-      - name: Render chapter 3 and 4 pages
+      - name: Render chapter pair
         run: |
-          mkdir -p artifacts/a2-chapter-3-4/rendered/en artifacts/a2-chapter-3-4/rendered/ar
-          pdftoppm -png -r 150 artifacts/a2-chapter-3-4/adam-a2-en-ch3-ch4.pdf artifacts/a2-chapter-3-4/rendered/en/page
-          pdftoppm -png -r 150 artifacts/a2-chapter-3-4/adam-a2-ar-ch3-ch4.pdf artifacts/a2-chapter-3-4/rendered/ar/page
+          mkdir -p ${{ matrix.output }}/rendered/en ${{ matrix.output }}/rendered/ar
+          pdftoppm -png -r 150 ${{ matrix.output }}/adam-a2-en-${{ matrix.slug }}.pdf ${{ matrix.output }}/rendered/en/page
+          pdftoppm -png -r 150 ${{ matrix.output }}/adam-a2-ar-${{ matrix.slug }}.pdf ${{ matrix.output }}/rendered/ar/page
 
-      - name: Verify chapter 3 and 4 pagination
+      - name: Verify chapter pair pagination
         run: |
-          EN_PAGES=$(pdfinfo artifacts/a2-chapter-3-4/adam-a2-en-ch3-ch4.pdf | awk '/^Pages:/ {print $2}')
-          AR_PAGES=$(pdfinfo artifacts/a2-chapter-3-4/adam-a2-ar-ch3-ch4.pdf | awk '/^Pages:/ {print $2}')
-          EN_RENDERS=$(find artifacts/a2-chapter-3-4/rendered/en -name '*.png' | wc -l)
-          AR_RENDERS=$(find artifacts/a2-chapter-3-4/rendered/ar -name '*.png' | wc -l)
-          echo "English pages: $EN_PAGES" | tee artifacts/a2-chapter-3-4/page-counts.txt
-          echo "Arabic pages: $AR_PAGES" | tee -a artifacts/a2-chapter-3-4/page-counts.txt
+          EN_PAGES=$(pdfinfo ${{ matrix.output }}/adam-a2-en-${{ matrix.slug }}.pdf | awk '/^Pages:/ {print $2}')
+          AR_PAGES=$(pdfinfo ${{ matrix.output }}/adam-a2-ar-${{ matrix.slug }}.pdf | awk '/^Pages:/ {print $2}')
+          EN_RENDERS=$(find ${{ matrix.output }}/rendered/en -name '*.png' | wc -l)
+          AR_RENDERS=$(find ${{ matrix.output }}/rendered/ar -name '*.png' | wc -l)
+          echo "English pages: $EN_PAGES" | tee ${{ matrix.output }}/page-counts.txt
+          echo "Arabic pages: $AR_PAGES" | tee -a ${{ matrix.output }}/page-counts.txt
           test "$EN_PAGES" -ge 2
           test "$AR_PAGES" -ge 2
           test "$EN_PAGES" -le 4
@@ -140,15 +160,15 @@ jobs:
           test "$EN_RENDERS" = "$EN_PAGES"
           test "$AR_RENDERS" = "$AR_PAGES"
 
-      - name: Upload chapters 3 and 4 PDFs and renders
+      - name: Upload chapter pair PDFs and renders
         uses: actions/upload-artifact@v4
         with:
-          name: adam-a2-ch3-ch4-vivliostyle
+          name: adam-a2-${{ matrix.slug }}-vivliostyle
           path: |
-            artifacts/a2-chapter-3-4/adam-a2-en-ch3-ch4.pdf
-            artifacts/a2-chapter-3-4/adam-a2-ar-ch3-ch4.pdf
-            artifacts/a2-chapter-3-4/rendered/**/*.png
-            artifacts/a2-chapter-3-4/README.txt
-            artifacts/a2-chapter-3-4/page-counts.txt
+            ${{ matrix.output }}/adam-a2-en-${{ matrix.slug }}.pdf
+            ${{ matrix.output }}/adam-a2-ar-${{ matrix.slug }}.pdf
+            ${{ matrix.output }}/rendered/**/*.png
+            ${{ matrix.output }}/README.txt
+            ${{ matrix.output }}/page-counts.txt
           retention-days: 14
           if-no-files-found: error
