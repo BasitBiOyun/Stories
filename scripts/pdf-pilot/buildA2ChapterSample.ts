@@ -12,6 +12,11 @@ const IMAGE_DIR = path.join(OUTPUT, 'assets/images');
 const FONT_DIR = path.join(OUTPUT, 'assets/fonts');
 const CHAPTER_IDS = [1, 2] as const;
 
+const UI_FALLBACK: Record<'en' | 'ar', string> = {
+  en: 'A key word in this story.',
+  ar: 'كَلِمَةٌ رَئِيسِيَّةٌ فِي هَذِهِ الْقِصَّة.',
+};
+
 type Language = 'en' | 'ar';
 type Note = { key: string; declared: string; display: string; definition: string };
 
@@ -84,8 +89,7 @@ const chapterNotes = (
   declared.forEach((word) => {
     const key = keyOf(word, language);
     if (!key || seen.has(key) || notes.has(key)) return;
-    const definition = currentVocab.get(key) ?? bookDefinitions.get(key) ?? fallback.get(key);
-    if (!definition) throw new Error(`Missing ${language} definition for highlighted word: ${word}`);
+    const definition = currentVocab.get(key) ?? bookDefinitions.get(key) ?? fallback.get(key) ?? UI_FALLBACK[language];
     notes.set(key, { key, declared: word, display: word, definition });
   });
 
@@ -275,6 +279,7 @@ await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 Chapters 1-2 Vivliostyle sample.',
   'All chapter text, image references, vocabulary, animated/highlighted words and Quick Challenge content come from current application data.',
   'Only words actually underlined in the chapter text appear in Word Notes.',
+  'Animated words without a dedicated definition use the same generic fallback text as the application.',
   'Images are rendered at an exact 4:5 box.',
   'Word Notes and Quick Challenge are normal-flow blocks and move automatically after the story text.',
 ].join('\n'));
