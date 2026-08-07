@@ -25,16 +25,19 @@
 }
 
 :root {
-  --paper: #f7f3e9;
-  --card: #fffdf8;
-  --ink: #26231f;
-  --muted: #6d6255;
-  --brown: #2b140c;
-  --gold: #c9aa61;
-  --gold-deep: #9e7830;
-  --orange: #d96c09;
-  --line: #d9caa5;
-  --highlight: #f6e7b6;
+  --paper: #fffdf8;
+  --ink: #2f2923;
+  --muted: #70665d;
+  --brown: #3b2418;
+  --gold: #c4933f;
+  --gold-deep: #946820;
+  --orange: #dc7b32;
+  --line: #ddd3c5;
+  --cream: #fbf3df;
+  --sage: #edf5ef;
+  --sage-line: #8cab98;
+  --sky: #eef5f9;
+  --sky-line: #86a8bd;
 }
 
 @page a2-golden {
@@ -45,26 +48,26 @@
   @top-left {
     content: "STORIES OF THE PROPHETS";
     font-family: "Poppins", sans-serif;
-    font-size: 7.4pt;
+    font-size: 7.2pt;
     font-weight: 600;
     letter-spacing: .11em;
-    color: #80652f;
+    color: #86662e;
   }
 
   @top-right {
     content: "ADAM • A2";
     font-family: "Poppins", sans-serif;
-    font-size: 7.4pt;
+    font-size: 7.2pt;
     font-weight: 600;
     letter-spacing: .08em;
-    color: #80652f;
+    color: #86662e;
   }
 
   @bottom-center {
     content: counter(page);
     font-family: "Poppins", sans-serif;
     font-size: 8pt;
-    color: #80652f;
+    color: #86662e;
   }
 }
 
@@ -76,24 +79,24 @@
   @top-left {
     content: "آدم • A2";
     font-family: "Arakom", serif;
-    font-size: 9.5pt;
+    font-size: 9.4pt;
     font-weight: 700;
-    color: #80652f;
+    color: #86662e;
   }
 
   @top-right {
     content: "قصص الأنبياء";
     font-family: "Arakom", serif;
-    font-size: 9.5pt;
+    font-size: 9.4pt;
     font-weight: 700;
-    color: #80652f;
+    color: #86662e;
   }
 
   @bottom-center {
     content: counter(page);
     font-family: "Arakom", serif;
     font-size: 9pt;
-    color: #80652f;
+    color: #86662e;
   }
 }
 
@@ -109,26 +112,26 @@ body {
 
 body {
   font-family: "Poppins", Arial, sans-serif;
-  font-size: 12.8pt;
-  line-height: 1.45;
+  font-size: 12.7pt;
+  line-height: 1.47;
 }
 
 body.lang-ar {
   font-family: "Arakom", serif;
   font-size: 14pt;
-  line-height: 1.56;
+  line-height: 1.58;
 }
 
 .golden-chapter {
   page: a2-golden;
-  min-height: 268mm;
-  display: flex;
-  flex-direction: column;
-  gap: 4mm;
 }
 
 .golden-chapter-rtl {
   page: a2-golden-rtl;
+}
+
+.golden-chapter + .golden-chapter {
+  break-before: page;
 }
 
 .chapter-header {
@@ -137,17 +140,16 @@ body.lang-ar {
   align-items: flex-end;
   justify-content: space-between;
   gap: 8mm;
-  padding-bottom: 3mm;
+  margin-bottom: 5mm;
+  padding: 0 0 3mm;
   border-bottom: .45mm solid var(--line);
   break-after: avoid;
 }
 
-.chapter-heading-copy {
-  min-width: 0;
-}
+.chapter-heading-copy { min-width: 0; }
 
 .chapter-eyebrow {
-  margin: 0 0 1.2mm;
+  margin: 0 0 1.4mm;
   font-size: 8.5pt;
   line-height: 1;
   font-weight: 700;
@@ -156,7 +158,7 @@ body.lang-ar {
 }
 
 .lang-ar .chapter-eyebrow {
-  font-size: 11.5pt;
+  font-size: 11.6pt;
   letter-spacing: 0;
 }
 
@@ -178,48 +180,21 @@ body.lang-ar {
 
 .level-marker {
   flex: none;
-  min-width: 16mm;
-  padding: 1.7mm 4mm 1.5mm;
-  border: .35mm solid var(--gold-deep);
-  border-radius: 3mm;
+  min-width: 17mm;
+  padding: 1.8mm 4mm 1.6mm;
+  border: .35mm solid #d4b36f;
+  border-radius: 2.4mm;
+  background: var(--cream);
+  color: var(--brown);
   font-size: 9pt;
   line-height: 1;
   font-weight: 700;
   text-align: center;
-  color: var(--brown);
-  background: #fbf2d8;
-}
-
-.chapter-image {
-  margin: 0;
-  break-inside: avoid;
-}
-
-.chapter-image img {
-  display: block;
-  width: 100%;
-  height: 56mm;
-  object-fit: cover;
-  border: .35mm solid var(--line);
-  border-radius: 3.5mm;
-}
-
-.chapter-image figcaption {
-  margin: 1.8mm 1mm 0;
-  font-size: 8.5pt;
-  line-height: 1.3;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.lang-ar .chapter-image figcaption {
-  font-size: 10.5pt;
-  font-style: normal;
 }
 
 .story-text {
-  font-size: 12.8pt;
-  line-height: 1.45;
+  font-size: 12.7pt;
+  line-height: 1.47;
   text-align: left;
   hyphens: auto;
   text-wrap: pretty;
@@ -227,63 +202,121 @@ body.lang-ar {
 
 .lang-ar .story-text {
   font-size: 14pt;
-  line-height: 1.56;
+  line-height: 1.58;
   text-align: right;
   hyphens: none;
 }
 
+.story-text::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .story-text p {
-  margin: 0 0 3.4mm;
+  margin: 0 0 3.5mm;
   widows: 3;
   orphans: 3;
 }
 
-.story-text p:last-child {
-  margin-bottom: 0;
-}
+.story-text p:last-child { margin-bottom: 0; }
 
-.vocab-highlight {
-  padding: 0 .35mm;
-  border-bottom: .55mm solid rgba(201,170,97,.85);
-  background: linear-gradient(to top, var(--highlight) 0 46%, transparent 46% 100%);
-  color: inherit;
-}
-
-.word-notes {
-  display: grid;
-  grid-template-columns: 28mm 1fr;
-  gap: 4mm;
-  padding: 3.4mm 4mm;
-  border-top: .35mm solid var(--line);
-  border-bottom: .35mm solid var(--line);
+.chapter-image {
+  width: 58mm;
+  height: 72.5mm;
+  margin-top: .5mm;
+  margin-bottom: 4mm;
+  padding: 2mm;
+  border: .35mm solid #d9c9aa;
+  border-radius: 3.8mm;
+  background: #fff9ed;
+  box-shadow: 0 1.5mm 4mm rgba(59,36,24,.10);
   break-inside: avoid;
 }
 
-.lang-ar .word-notes {
-  grid-template-columns: 30mm 1fr;
+.chapter-image.image-start {
+  float: left;
+  margin-right: 6mm;
 }
 
-.word-notes-title {
-  align-self: start;
-  padding-top: .7mm;
-  font-size: 9.3pt;
-  line-height: 1.2;
+.chapter-image.image-end {
+  float: right;
+  margin-left: 6mm;
+}
+
+.lang-ar .chapter-image.image-start {
+  float: right;
+  margin-right: 0;
+  margin-left: 6mm;
+}
+
+.lang-ar .chapter-image.image-end {
+  float: left;
+  margin-left: 0;
+  margin-right: 6mm;
+}
+
+.chapter-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 2.5mm;
+}
+
+.vocab-highlight {
+  color: inherit;
+  background: transparent;
+  font-weight: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1.2pt;
+  text-underline-offset: 2.2pt;
+  text-decoration-skip-ink: auto;
+}
+
+.section-label {
+  font-size: 9.4pt;
+  line-height: 1;
   font-weight: 700;
-  color: var(--gold-deep);
+  letter-spacing: .04em;
+  text-transform: uppercase;
 }
 
-.lang-ar .word-notes-title {
+.lang-ar .section-label {
   font-size: 12pt;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.word-notes {
+  clear: both;
+  margin-top: 5mm;
+  padding: 4mm 4.5mm 4.2mm;
+  border: .35mm solid #cbdccf;
+  border-inline-start: 1.6mm solid var(--sage-line);
+  border-radius: 3.2mm;
+  background: var(--sage);
+  break-inside: avoid;
+}
+
+.word-notes-label {
+  margin-bottom: 3mm;
+  color: #486b57;
 }
 
 .word-notes-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4mm;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3.2mm 7mm;
 }
 
 .word-note {
   min-width: 0;
+  padding-top: 2mm;
+  border-top: .25mm solid rgba(91,122,101,.25);
+  break-inside: avoid;
 }
 
 .word-note strong,
@@ -292,133 +325,132 @@ body.lang-ar {
 }
 
 .word-note strong {
-  margin-bottom: .7mm;
-  font-size: 9.4pt;
+  margin-bottom: .8mm;
+  font-size: 9.8pt;
   line-height: 1.2;
   font-weight: 700;
-  color: var(--brown);
+  color: #355541;
 }
 
 .word-note span {
-  font-size: 8.3pt;
-  line-height: 1.32;
-  color: var(--muted);
+  font-size: 8.6pt;
+  line-height: 1.38;
+  color: #536158;
 }
 
 .lang-ar .word-note strong {
-  font-size: 11.6pt;
+  font-size: 12pt;
 }
 
 .lang-ar .word-note span {
-  font-size: 10.2pt;
-  line-height: 1.4;
+  font-size: 10.5pt;
+  line-height: 1.45;
 }
 
 .quick-challenge {
-  display: grid;
-  grid-template-columns: 34mm 1fr;
-  min-height: 38mm;
-  border: .35mm solid #d8cba8;
+  clear: both;
+  margin-top: 5mm;
+  padding: 4mm 4.5mm 4.2mm;
+  border: .35mm solid #d8caa8;
   border-inline-start: 1.8mm solid var(--gold-deep);
-  border-radius: 3.5mm;
-  background: var(--card);
-  overflow: hidden;
+  border-radius: 3.2mm;
+  background: linear-gradient(135deg, #fffaf0 0%, #fbf2dd 100%);
   break-inside: avoid;
 }
 
-.quick-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4mm;
-  border-inline-end: .35mm solid #e4dac1;
-  font-size: 10.4pt;
-  line-height: 1.28;
-  font-weight: 700;
-  text-align: center;
-  color: var(--brown);
-  background: #fbf4df;
-}
-
-.lang-ar .quick-title {
-  font-size: 13pt;
-}
-
-.quick-content {
-  padding: 3.4mm 4mm 3mm;
+.quick-label {
+  margin-bottom: 2.5mm;
+  color: var(--gold-deep);
 }
 
 .quick-content h3 {
   margin: 0;
-  font-size: 11.5pt;
-  line-height: 1.22;
+  font-size: 11.8pt;
+  line-height: 1.25;
   font-weight: 700;
   color: var(--brown);
 }
 
 .lang-ar .quick-content h3 {
-  font-size: 13.7pt;
+  font-size: 14pt;
 }
 
 .quick-instruction {
-  margin: .8mm 0 1.3mm;
-  font-size: 8.6pt;
-  line-height: 1.25;
+  margin: 1mm 0 1.5mm;
+  font-size: 8.8pt;
+  line-height: 1.3;
   color: var(--muted);
 }
 
 .lang-ar .quick-instruction {
-  font-size: 10.5pt;
+  font-size: 10.7pt;
 }
 
 .quick-question {
-  margin: 0 0 2mm;
-  font-size: 10.6pt;
-  line-height: 1.32;
+  margin: 0 0 2.5mm;
+  font-size: 10.7pt;
+  line-height: 1.35;
   font-weight: 600;
+  color: #3f3730;
 }
 
 .lang-ar .quick-question {
-  font-size: 12.7pt;
+  font-size: 12.8pt;
 }
 
 .answer-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.2mm 4mm;
+  gap: 2.2mm 5mm;
 }
 
 .answer-row-mc {
-  gap: 1.8mm 3mm;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.3mm;
 }
 
 .print-option {
   display: inline-flex;
   align-items: center;
   gap: 1.8mm;
-  min-height: 6mm;
-  font-size: 8.8pt;
-  line-height: 1.2;
+  min-height: 7mm;
+  padding: 1mm 1.6mm;
+  border-radius: 1.5mm;
+  font-size: 8.9pt;
+  line-height: 1.25;
   color: #453d34;
+  break-inside: avoid;
+}
+
+.answer-row-mc .print-option {
+  border: .25mm solid #e1d4b8;
+  background: rgba(255,255,255,.65);
 }
 
 .lang-ar .print-option {
-  font-size: 10.7pt;
+  font-size: 10.8pt;
 }
 
 .print-option i {
   display: inline-block;
-  width: 4mm;
-  height: 4mm;
+  width: 4.2mm;
+  height: 4.2mm;
   flex: none;
   border: .35mm solid var(--gold-deep);
-  border-radius: .7mm;
+  border-radius: .6mm;
   background: #fff;
 }
 
 .print-option b {
   font-size: 8pt;
   color: var(--gold-deep);
+}
+
+.fill-text {
+  margin-bottom: 2mm;
+  font-size: 9.4pt;
+  line-height: 1.35;
 }
 
 .writing-line {
@@ -428,7 +460,7 @@ body.lang-ar {
 
 .chapter-header,
 .chapter-image,
-.word-notes,
+.word-note,
 .quick-challenge,
 .print-option {
   break-inside: avoid;
