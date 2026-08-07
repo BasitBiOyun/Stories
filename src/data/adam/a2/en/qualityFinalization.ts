@@ -1,13 +1,15 @@
 import type { PageData, TeacherGuideSection } from '../../../../types';
 import { adamA2PagesForLearning } from './learningMaterials';
 import { adamA2TeacherGuide } from './teacherGuide';
+import { adamA2HotspotsGoldEn } from '../hotspotsGold';
 
 /**
  * Final Adam A2 English derived-content pass.
  *
- * Canonical story fields remain owned by pages.ts. This layer only refines
- * vocabulary/glossary data, reflection feedback, and teacher-guide support
- * material that is derived from the unchanged canonical chapters.
+ * Canonical story prose, chapter structure, images, audio and timing data remain
+ * owned by pages.ts. This layer refines derived vocabulary/glossary material,
+ * reflection feedback, Teacher Guide support, and reviewed hotspot copy while
+ * preserving every hotspot id and coordinate.
  */
 
 const chapterVocabulary: Record<number, NonNullable<PageData['vocabulary']>> = {
@@ -112,9 +114,14 @@ const glossaryPart2: NonNullable<PageData['vocabulary']> = [
 
 export const adamA2PagesQualityFinalized: PageData[] = adamA2PagesForLearning.map((page) => {
   if (page.type === 'story' && page.id >= 1 && page.id <= 10) {
+    const hotspots = page.hotspots?.map((hotspot) => {
+      const replacement = adamA2HotspotsGoldEn[hotspot.id];
+      return replacement ? { ...hotspot, ...replacement } : hotspot;
+    });
     return {
       ...page,
       vocabulary: chapterVocabulary[page.id],
+      hotspots,
     };
   }
 
