@@ -9,6 +9,7 @@ on:
       - 'docs/A2_PRINT_DESIGN_SYSTEM.md'
       - '.github/workflows/pdf-pilot.yml'
       - 'src/data/adam/a2/**'
+      - 'src/data/fallbackVocab.ts'
       - 'public/Arakom-*.ttf'
 
 permissions:
@@ -19,7 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  a2-golden-chapter:
+  a2-golden-chapters:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -35,46 +36,51 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
-      - name: Build canonical-data-backed A2 golden HTML
+      - name: Build canonical-data-backed A2 chapter sample HTML
         run: npx tsx scripts/pdf-pilot/buildA2GoldenChapter.ts
 
       - name: Install pinned Vivliostyle CLI
         run: npm install --no-save --package-lock=false @vivliostyle/cli@11.1.0
 
-      - name: Build English golden page
-        run: npx vivliostyle build artifacts/a2-golden-chapter/adam-a2-en-golden.html --size A4 --output artifacts/a2-golden-chapter/adam-a2-en-golden.pdf
+      - name: Build English chapters 1 and 2
+        run: npx vivliostyle build artifacts/a2-golden-chapter/adam-a2-en-golden.html --size A4 --output artifacts/a2-golden-chapter/adam-a2-en-ch1-ch2.pdf
 
-      - name: Build Arabic golden page
-        run: npx vivliostyle build artifacts/a2-golden-chapter/adam-a2-ar-golden.html --size A4 --output artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf
+      - name: Build Arabic chapters 1 and 2
+        run: npx vivliostyle build artifacts/a2-golden-chapter/adam-a2-ar-golden.html --size A4 --output artifacts/a2-golden-chapter/adam-a2-ar-ch1-ch2.pdf
 
       - name: Install PDF inspection tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
-      - name: Render golden pages for visual inspection
+      - name: Render all sample pages for visual inspection
         run: |
           mkdir -p artifacts/a2-golden-chapter/rendered/en artifacts/a2-golden-chapter/rendered/ar
-          pdftoppm -png -r 150 -singlefile artifacts/a2-golden-chapter/adam-a2-en-golden.pdf artifacts/a2-golden-chapter/rendered/en/chapter-2
-          pdftoppm -png -r 150 -singlefile artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf artifacts/a2-golden-chapter/rendered/ar/chapter-2
+          pdftoppm -png -r 150 artifacts/a2-golden-chapter/adam-a2-en-ch1-ch2.pdf artifacts/a2-golden-chapter/rendered/en/page
+          pdftoppm -png -r 150 artifacts/a2-golden-chapter/adam-a2-ar-ch1-ch2.pdf artifacts/a2-golden-chapter/rendered/ar/page
 
-      - name: Verify one-page A2 golden contract
+      - name: Verify A2 pagination contract
         run: |
-          EN_PAGES=$(pdfinfo artifacts/a2-golden-chapter/adam-a2-en-golden.pdf | awk '/^Pages:/ {print $2}')
-          AR_PAGES=$(pdfinfo artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf | awk '/^Pages:/ {print $2}')
-          echo "English pages: $EN_PAGES"
-          echo "Arabic pages: $AR_PAGES"
-          test "$EN_PAGES" = "1"
-          test "$AR_PAGES" = "1"
-          test -f artifacts/a2-golden-chapter/rendered/en/chapter-2.png
-          test -f artifacts/a2-golden-chapter/rendered/ar/chapter-2.png
+          EN_PAGES=$(pdfinfo artifacts/a2-golden-chapter/adam-a2-en-ch1-ch2.pdf | awk '/^Pages:/ {print $2}')
+          AR_PAGES=$(pdfinfo artifacts/a2-golden-chapter/adam-a2-ar-ch1-ch2.pdf | awk '/^Pages:/ {print $2}')
+          EN_RENDERS=$(find artifacts/a2-golden-chapter/rendered/en -name '*.png' | wc -l)
+          AR_RENDERS=$(find artifacts/a2-golden-chapter/rendered/ar -name '*.png' | wc -l)
+          echo "English pages: $EN_PAGES" | tee artifacts/a2-golden-chapter/page-counts.txt
+          echo "Arabic pages: $AR_PAGES" | tee -a artifacts/a2-golden-chapter/page-counts.txt
+          test "$EN_PAGES" -ge 2
+          test "$AR_PAGES" -ge 2
+          test "$EN_PAGES" -le 5
+          test "$AR_PAGES" -le 6
+          test "$EN_RENDERS" = "$EN_PAGES"
+          test "$AR_RENDERS" = "$AR_PAGES"
 
-      - name: Upload A2 golden PDFs and renders
+      - name: Upload A2 chapter PDFs and renders
         uses: actions/upload-artifact@v4
         with:
-          name: adam-a2-golden-chapter
+          name: adam-a2-ch1-ch2-vivliostyle
           path: |
-            artifacts/a2-golden-chapter/adam-a2-en-golden.pdf
-            artifacts/a2-golden-chapter/adam-a2-ar-golden.pdf
+            artifacts/a2-golden-chapter/adam-a2-en-ch1-ch2.pdf
+            artifacts/a2-golden-chapter/adam-a2-ar-ch1-ch2.pdf
             artifacts/a2-golden-chapter/rendered/**/*.png
             artifacts/a2-golden-chapter/README.txt
+            artifacts/a2-golden-chapter/page-counts.txt
           retention-days: 14
           if-no-files-found: error
