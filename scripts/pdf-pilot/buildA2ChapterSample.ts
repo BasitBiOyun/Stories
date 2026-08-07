@@ -195,7 +195,8 @@ const exerciseBody = (exercise: Exercise, language: Language): string => {
 const wordNotes = (notes: Note[], language: Language): string => {
   if (!notes.length) return '';
   const label = language === 'ar' ? 'كلمات مهمة' : 'Word Notes';
-  return `<section class="word-notes">
+  const densityClass = notes.length >= 5 ? ' word-notes-dense' : '';
+  return `<section class="word-notes${densityClass}">
     <div class="section-label word-notes-label">${escapeHtml(label)}</div>
     <div class="word-notes-list">
       ${notes.map((note) => `<div class="word-note"><strong>${escapeHtml(note.display)}</strong><span>${escapeHtml(note.definition)}</span></div>`).join('')}
