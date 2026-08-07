@@ -1,0 +1,115 @@
+/* Final guide layout overrides: deliberately avoids fragile decorative counters. */
+.objectives {
+  counter-reset: objective;
+  list-style: none;
+  padding: 0 !important;
+}
+.objectives li {
+  counter-increment: objective;
+  display: grid;
+  grid-template-columns: 7mm minmax(0, 1fr);
+  gap: 1.5mm;
+  align-items: start;
+  margin: 0 0 2.2mm;
+}
+.objectives li::before {
+  content: counter(objective) ".";
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--gold-deep);
+  font-size: 9pt;
+  line-height: 1.45;
+  font-weight: 700;
+  text-align: right;
+}
+
+.guide-svg-icon {
+  display: block;
+  width: 6mm;
+  height: 6mm;
+  flex: none;
+  color: var(--gold-deep);
+}
+
+.lesson-step-list,
+.study-step-list {
+  display: grid;
+  gap: 2mm;
+  margin-top: 2.5mm;
+}
+
+.lesson-step {
+  display: grid;
+  grid-template-columns: 24mm minmax(0, 1fr);
+  gap: 3mm;
+  align-items: start;
+  padding: 2.5mm 3mm;
+  border-top: .25mm solid rgba(148,104,32,.20);
+}
+.lesson-step:first-child { border-top: 0; }
+.lesson-step-time {
+  color: var(--gold-deep);
+  font-size: 8.7pt;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.lesson-step-copy {
+  color: var(--ink);
+  font-size: 9.2pt;
+  line-height: 1.42;
+}
+
+.study-step {
+  display: grid;
+  grid-template-columns: 9mm minmax(0, 1fr);
+  gap: 3mm;
+  align-items: start;
+  padding: 3mm 3.5mm;
+  border: .28mm solid #e2d5b9;
+  border-radius: 2.5mm;
+  background: rgba(255,255,255,.74);
+  break-inside: avoid;
+}
+.study-step-icon {
+  width: 8mm;
+  height: 8mm;
+  display: grid;
+  place-items: center;
+  border-radius: 2mm;
+  background: var(--cream);
+  color: var(--gold-deep);
+}
+.study-step-icon .guide-svg-icon { width: 5.5mm; height: 5.5mm; }
+.study-step-copy strong {
+  display: block;
+  margin-bottom: .6mm;
+  color: var(--brown);
+  font-size: 9.5pt;
+  line-height: 1.25;
+}
+.study-step-copy span {
+  display: block;
+  color: var(--ink);
+  font-size: 9pt;
+  line-height: 1.42;
+}
+
+.self-section-grid .card ul,
+.self-chapter .card ul,
+.teacher-chapter .card ul {
+  list-style-position: outside;
+}
+
+/* Never use generated circular pseudo-markers in final guide PDFs. */
+.teacher-chapter li::marker,
+.self-chapter li::marker,
+.self-page li::marker,
+.markdown li::marker {
+  color: var(--gold-deep);
+  font-weight: 700;
+}
