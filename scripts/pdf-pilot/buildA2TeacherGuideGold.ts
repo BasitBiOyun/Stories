@@ -74,8 +74,8 @@ const renderOverview = (): string => {
       ${renderCard('Teaching approach', `<p>${escapeHtml(meta?.approachDesc || '')}</p>`, 'sage', 'lightbulb')}
       ${renderCard('Before reading', `<p>${escapeHtml(before)}</p>`, 'blue', 'eye')}
       ${renderCard('During reading', `<p>${escapeHtml(during)}</p>`, 'cream', 'book')}
-      ${renderCard('After reading', `<p>${escapeHtml(after)}</p>`, 'sage', 'check')}
-      ${renderCard('Assessment evidence', `<p>${escapeHtml(meta?.assessmentEvidence || '')}</p>`, 'blue', 'check')}
+      ${renderCard('After reading', `<p>${escapeHtml(after)}</p>`, 'sage', 'seal')}
+      ${renderCard('Assessment evidence', `<p>${escapeHtml(meta?.assessmentEvidence || '')}</p>`, 'blue', 'clipboard')}
     </div>
     <section class="section-block" style="margin-top:5mm">${iconHeading('Core classroom principles', 'users')}${list(meta?.classroomManagement)}</section>
     <div class="two-col">
@@ -95,7 +95,7 @@ const renderChapter = (section: TeacherGuideSection, index: number): string => `
 
   <div class="two-col">
     <section class="card cream">${iconHeading('Measurable objectives', 'target')}${list(section.objectives, 'objectives')}</section>
-    <section class="card sage">${iconHeading('Pedagogical purpose', 'lightbulb')}<p>${escapeHtml(section.pedagogy)}</p></section>
+    <section class="card sage">${iconHeading('Pedagogical purpose', 'graduation')}<p>${escapeHtml(section.pedagogy)}</p></section>
   </div>
 
   <section class="lesson-plan" style="margin-top:4mm">${iconHeading('Lesson sequence', 'clock')}${renderLessonSteps(section.lessonPlan)}</section>
@@ -112,7 +112,7 @@ const renderChapter = (section: TeacherGuideSection, index: number): string => `
 
   <div class="two-col" style="margin-top:4mm">
     <section class="card sage">${iconHeading('Interactive teaching tips', 'lightbulb')}${list(section.interactiveTips)}</section>
-    <section class="card cream">${iconHeading('Assessment evidence', 'check')}${section.assessmentTools?.rubric?.length ? `<h4>Look for</h4>${list(section.assessmentTools.rubric)}` : ''}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Exit ticket</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
+    <section class="card cream">${iconHeading('Assessment evidence', 'clipboard')}${section.assessmentTools?.rubric?.length ? `<h4>Look for</h4>${list(section.assessmentTools.rubric)}` : ''}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Exit ticket</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
   </div>
 
   ${(section.kinestheticActivities?.length || section.globalCitizenship?.length) ? `<div class="two-col" style="margin-top:4mm">
@@ -180,6 +180,6 @@ await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 English Teacher Guide Gold Master.',
   'Uses finalized chapter-aligned Teacher Guide data from adamA2BookDataEn.',
   'Objectives use plain numbered rows; lesson sequences use separate timed rows. Decorative circular counters are prohibited.',
-  'Distinct Phosphor duotone SVG icons clarify major guide sections and use explicit print-safe colours.',
+  'Major guide sections use distinct semantic Phosphor duotone SVG icons with print-safe explicit colours.',
   'No canonical story, chapter, image, audio, or synchronization field is modified.',
 ].join('\n'));
