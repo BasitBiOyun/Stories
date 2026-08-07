@@ -1,9 +1,8 @@
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { adamA2Pages } from '../../src/data/adam/a2/en/pages';
-import { adamA2PagesAr } from '../../src/data/adam/a2/ar/pages';
-import type { PageData } from '../../src/types';
+import { adamA2BookDataEn, adamA2BookDataAr } from '../../src/data/adam/a2';
+import type { Exercise, PageData } from '../../src/types';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const OUTPUT = path.join(ROOT, 'artifacts/a2-review-pages');
@@ -24,15 +23,34 @@ const findPage = (pages: PageData[], id: number): PageData => {
   return page;
 };
 
+const normalizeOption = (value: unknown): string => {
+  if (typeof value === 'string') return value;
+  if (value && typeof value === 'object' && 'text' in value) return String((value as { text?: string }).text ?? '');
+  return String(value ?? '');
+};
+
+const renderKnowledgeControls = (exercise: Exercise, language: Language): string => {
+  const isArabic = language === 'ar';
+  if (exercise.type === 'true-false') {
+    const labels = isArabic ? ['صحيح', 'خطأ'] : ['TRUE', 'FALSE'];
+    return `<div class="knowledge-options knowledge-options-tf">${labels.map((label) => `<span class="knowledge-option"><i></i>${escapeHtml(label)}</span>`).join('')}</div>`;
+  }
+
+  if (exercise.type === 'multiple-choice') {
+    return `<div class="knowledge-options">${(exercise.options ?? []).map((option, index) => `<span class="knowledge-option"><i></i><b>${String.fromCharCode(65 + index)}</b>${escapeHtml(normalizeOption(option))}</span>`).join('')}</div>`;
+  }
+
+  return '<div class="knowledge-writing-line"></div>';
+};
+
 const renderKnowledgeCheck = (page: PageData, language: Language): string => {
   const isArabic = language === 'ar';
   const eyebrow = isArabic ? 'مراجعة الفهم' : 'CHECK YOUR UNDERSTANDING';
-  const trueLabel = isArabic ? 'صحيح' : 'TRUE';
-  const falseLabel = isArabic ? 'خطأ' : 'FALSE';
   const hint = isArabic
-    ? 'اقرأ كل جملة بعناية، ثم ضع علامة في المربع الصحيح.'
-    : 'Read each statement carefully, then tick the correct box.';
+    ? 'أجب عن كل سؤال. إذا لم تكن متأكدًا، عد إلى القصة وابحث عن الدليل.'
+    : 'Answer each question. If you are unsure, return to the story and find the evidence.';
   const exercises = page.exercises ?? [];
+  const arabicNumbers = ['١','٢','٣','٤','٥','٦','٧','٨','٩','١٠'];
 
   return `<article class="assessment-page knowledge-page${isArabic ? ' assessment-rtl' : ''}">
     <header class="assessment-header">
@@ -46,18 +64,17 @@ const renderKnowledgeCheck = (page: PageData, language: Language): string => {
 
     <aside class="student-direction">${escapeHtml(hint)}</aside>
 
-    <section class="tf-list">
-      ${exercises.map((exercise, index) => `<div class="tf-item">
-        <div class="question-number">${isArabic ? ['١','٢','٣','٤','٥','٦'][index] ?? String(index + 1) : String(index + 1)}</div>
-        <div class="question-copy">${escapeHtml(exercise.question || '')}</div>
-        <div class="tf-controls">
-          <span><i></i>${escapeHtml(trueLabel)}</span>
-          <span><i></i>${escapeHtml(falseLabel)}</span>
+    <section class="knowledge-list${exercises.length >= 8 ? ' knowledge-list-eight' : ''}">
+      ${exercises.map((exercise, index) => `<div class="knowledge-item">
+        <div class="question-number">${isArabic ? arabicNumbers[index] ?? String(index + 1) : String(index + 1)}</div>
+        <div class="knowledge-copy">
+          <div class="question-copy">${escapeHtml(exercise.question || exercise.instructions || '')}</div>
+          ${renderKnowledgeControls(exercise, language)}
         </div>
       </div>`).join('\n')}
     </section>
 
-    <footer class="assessment-footer-note">${escapeHtml(isArabic ? 'تحقق من إجاباتك بعد الانتهاء من جميع الأسئلة.' : 'Check your answers only after you finish all six questions.')}</footer>
+    <footer class="assessment-footer-note">${escapeHtml(isArabic ? 'بعد الانتهاء، ارجع إلى الفصول التي احتجت فيها إلى مساعدة.' : 'After you finish, revisit any chapter where you needed help.')}</footer>
   </article>`;
 };
 
@@ -152,11 +169,12 @@ await Promise.all([
 ]);
 
 await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-review.css'), path.join(OUTPUT, 'a2-review.css'));
-await writeFile(path.join(OUTPUT, 'adam-a2-en-review.html'), renderDocument(adamA2Pages, 'en'));
-await writeFile(path.join(OUTPUT, 'adam-a2-ar-review.html'), renderDocument(adamA2PagesAr, 'ar'));
+await writeFile(path.join(OUTPUT, 'adam-a2-en-review.html'), renderDocument(adamA2BookDataEn.pages, 'en'));
+await writeFile(path.join(OUTPUT, 'adam-a2-ar-review.html'), renderDocument(adamA2BookDataAr.pages, 'ar'));
 await writeFile(path.join(OUTPUT, 'README.txt'), [
-  'Adam A2 review-page print pilot: pages 11 and 12.',
-  'Page 11 uses the six existing Knowledge Check statements without showing answers.',
-  'Page 12 uses the six existing vocabulary pairs; meanings are deterministically reordered for a meaningful print matching task.',
-  'No canonical story, exercise wording, answer, audio, image reference, or synchronization data is modified.',
+  'Adam A2 review-page print pilot: Knowledge Check and Vocabulary Challenge.',
+  'The renderer reads effective application BookData so approved learning overlays and print use the same question/vocabulary content.',
+  'Knowledge Check supports mixed multiple-choice and true/false items without exposing correct answers.',
+  'Vocabulary meanings are deterministically reordered for a meaningful print matching task.',
+  'No canonical story, answer, audio, image reference, or synchronization data is modified by the renderer.',
 ].join('\n'));
