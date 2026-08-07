@@ -159,8 +159,6 @@ const renderQuizPages = (page: PageData, language: Language): string => {
     <section class="quiz-list quiz-list-four">
       ${chunk.map((question, index) => renderQuizQuestion(question, pageIndex === 0 ? index + 1 : index + 5, language)).join('\n')}
     </section>
-
-    ${pageIndex === 1 ? `<section class="review-finish"><strong>${escapeHtml(isArabic ? 'أنهيت المراجعة!' : 'Review complete!')}</strong><span>${escapeHtml(isArabic ? 'راجع إجاباتك قبل الانتقال إلى التحدي التالي.' : 'Check your answers before moving on.')}</span></section>` : ''}
   </article>`).join('\n');
 };
 
@@ -201,7 +199,8 @@ await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 Final Review print pilot.',
   'All existing Final Review exercises are rendered without exposing correct answers.',
   'Sequencing and grouping source items are deterministically rearranged for meaningful paper tasks.',
-  'The Review Challenge contract is eight questions split 4 + 4 across two full A4 pages.',
+  'The Review Challenge contract is eight questions split 4 + 4 across two deliberately filled A4 pages.',
   'Review Challenge headings do not carry page-number suffixes.',
+  'No decorative completion block is used to fill space; the four question blocks themselves use the page area.',
   'No exercise wording, story content, correct answer, audio, or synchronization source data is modified by the renderer.',
 ].join('\n'));
