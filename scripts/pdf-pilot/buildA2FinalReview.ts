@@ -1,8 +1,7 @@
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { adamA2BookDataEn } from '../../src/data/adam/a2';
-import { adamA2PagesAr } from '../../src/data/adam/a2/ar/pages';
+import { adamA2BookDataEn, adamA2BookDataAr } from '../../src/data/adam/a2';
 import type { Exercise, PageData } from '../../src/types';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -203,10 +202,10 @@ await Promise.all([
 
 await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-final-review.css'), path.join(OUTPUT, 'a2-final-review.css'));
 await writeFile(path.join(OUTPUT, 'adam-a2-en-final-review.html'), renderDocument(adamA2BookDataEn.pages, 'en'));
-await writeFile(path.join(OUTPUT, 'adam-a2-ar-final-review.html'), renderDocument(adamA2PagesAr, 'ar'));
+await writeFile(path.join(OUTPUT, 'adam-a2-ar-final-review.html'), renderDocument(adamA2BookDataAr.pages, 'ar'));
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 Final Review print pilot.',
-  'English reads the finalized learning BookData; Arabic remains on its own source data pending Phase 3.',
+  'English and Arabic both read their finalized learning BookData.',
   'The finalized person-information matching task is adapted to a paper answer bank without changing wording.',
   'The Review Challenge contract is exactly eight questions split 4 + 4 across two pages.',
   'No canonical story, audio, image, synchronization, or approved learning-source content is changed by the renderer.',
