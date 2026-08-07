@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { adamA2BookDataEn } from '../../src/data/adam/a2';
 import type { StudentGuideSection, TeacherGuideSection } from '../../src/types';
+import { guideIconSvg, type GuidePdfIcon } from './phosphorGuideSvg';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const OUTPUT = path.join(ROOT, 'artifacts/a2-self-study-guide-gold');
@@ -23,11 +24,7 @@ const markdownToHtml = (source: string): string => {
   const lines = source.trim().split(/\r?\n/);
   const out: string[] = [];
   let listType: 'ul' | 'ol' | null = null;
-
-  const closeList = () => {
-    if (listType) out.push(`</${listType}>`);
-    listType = null;
-  };
+  const closeList = () => { if (listType) out.push(`</${listType}>`); listType = null; };
 
   for (const raw of lines) {
     const line = raw.trim();
@@ -57,6 +54,46 @@ const list = (items: string[] | undefined): string => items?.length
   ? `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
   : '';
 
+const sectionIcon = (icon?: string): GuidePdfIcon => {
+  switch (icon) {
+    case 'Ear': return 'headphones';
+    case 'BookOpen': return 'book';
+    case 'Clock': return 'clock';
+    case 'Compass': return 'search';
+    case 'PenTool': return 'pencil';
+    case 'Target': return 'target';
+    case 'Stars': return 'trophy';
+    case 'CheckCircle': return 'check';
+    case 'Eye': return 'eye';
+    default: return 'book';
+  }
+};
+
+const splitNumberedSteps = (value: string): string[] => {
+  const matches = [...value.matchAll(/(?:^|\s)(\d+)\)\s*([\s\S]*?)(?=(?:\s+\d+\)\s)|$)/g)];
+  return matches.length ? matches.map((match) => match[2].trim()).filter(Boolean) : [value.trim()].filter(Boolean);
+};
+
+const stepMeta = (step: string): { title: string; icon: GuidePdfIcon } => {
+  const text = step.toLowerCase();
+  if (/title|image|look|preview/.test(text)) return { title: 'Look', icon: 'eye' };
+  if (/listen|audio|narration|repeat/.test(text)) return { title: 'Listen', icon: 'headphones' };
+  if (/word notes|highlight|underlined|key word/.test(text)) return { title: 'Word Notes', icon: 'book' };
+  if (/quick challenge|challenge/.test(text)) return { title: 'Quick Challenge', icon: 'target' };
+  if (/evidence|find|return to|reread|read again/.test(text)) return { title: 'Find the evidence', icon: 'search' };
+  if (/write|finish|sentence|say|recap/.test(text)) return { title: 'Finish', icon: 'pencil' };
+  if (/check|compare|correct/.test(text)) return { title: 'Check', icon: 'check' };
+  return { title: 'Read', icon: 'book' };
+};
+
+const renderStudySteps = (lessonPlan: string): string => {
+  const steps = splitNumberedSteps(lessonPlan);
+  return `<div class="study-step-list">${steps.map((step) => {
+    const meta = stepMeta(step);
+    return `<div class="study-step"><div class="study-step-icon">${guideIconSvg(meta.icon, meta.title)}</div><div class="study-step-copy"><strong>${escapeHtml(meta.title)}</strong><span>${escapeHtml(step)}</span></div></div>`;
+  }).join('')}</div>`;
+};
+
 const renderCover = (): string => `
 <section class="guide-cover">
   <div class="cover-kicker">STORIES OF THE PROPHETS • INDEPENDENT LEARNING RESOURCE</div>
@@ -73,7 +110,7 @@ const renderQuickStart = (sections: StudentGuideSection[]): string => {
     <div class="self-intro">Do not try to memorise everything at once. Use the narration, text, highlighted words, and feedback together. A wrong answer is a signal to reread a small part of the chapter and try again.</div>
     <div class="study-cycle"><span>Read</span><i>→</i><span>Try</span><i>→</i><span>Check</span><i>→</i><span>Reread</span><i>→</i><span>Try again</span></div>
     <div class="self-section-grid">
-      ${sections.map((section) => `<section class="card self-section"><h3>${escapeHtml(section.title)}</h3><p>${escapeHtml(section.text)}</p>${list(section.points)}</section>`).join('\n')}
+      ${sections.map((section) => `<section class="card self-section"><div style="display:flex;align-items:center;gap:2.5mm;margin-bottom:2mm;color:var(--gold-deep)">${guideIconSvg(sectionIcon(section.icon), section.title)}<h3 style="margin:0">${escapeHtml(section.title)}</h3></div><p>${escapeHtml(section.text)}</p>${list(section.points)}</section>`).join('\n')}
     </div>
     <section class="section-block" style="margin-top:5mm"><h3>Whole-book tracker</h3>
       <table class="tracker"><thead><tr><th>Chapter</th><th>Read + listened</th><th>Word Notes</th><th>Quick Challenge + evidence check</th></tr></thead><tbody>
@@ -91,7 +128,7 @@ const renderChapter = (section: TeacherGuideSection, index: number): string => `
   </header>
 
   <section class="card sage"><h3>What you should be able to do</h3>${list(section.objectives)}</section>
-  <section class="lesson-plan" style="margin-top:4mm"><h3>Do this in order</h3><p>${escapeHtml(section.lessonPlan)}</p></section>
+  <section class="lesson-plan" style="margin-top:4mm"><h3>Do this in order</h3>${renderStudySteps(section.lessonPlan)}</section>
 
   <div class="two-col" style="margin-top:4mm">
     <section class="card cream"><h3>Support</h3><p>${escapeHtml(section.differentiation.strugglingLearners)}</p></section>
@@ -128,9 +165,11 @@ await Promise.all([
   download(`${poppins}/Poppins-SemiBold.ttf`, path.join(FONT_DIR, 'Poppins-SemiBold.ttf')),
   download(`${poppins}/Poppins-Bold.ttf`, path.join(FONT_DIR, 'Poppins-Bold.ttf')),
 ]);
-await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-guide-gold.css'), path.join(OUTPUT, 'a2-guide-gold.css'));
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+await copyFile(path.join(scriptDir, 'a2-guide-gold.css'), path.join(OUTPUT, 'a2-guide-gold.css'));
+await copyFile(path.join(scriptDir, 'a2-guide-polish.css'), path.join(OUTPUT, 'a2-guide-polish.css'));
 
-const html = `<!doctype html><html lang="en"><head><meta charset="utf-8" /><title>Adam A2 Self-Study Guide Gold Master</title><link rel="stylesheet" href="a2-guide-gold.css" /></head><body>
+const html = `<!doctype html><html lang="en"><head><meta charset="utf-8" /><title>Adam A2 Self-Study Guide Gold Master</title><link rel="stylesheet" href="a2-guide-gold.css" /><link rel="stylesheet" href="a2-guide-polish.css" /></head><body>
 ${renderCover()}
 ${renderQuickStart(adamA2BookDataEn.studentGuideSections ?? [])}
 ${adamA2BookDataEn.selfStudyGuide.map(renderChapter).join('\n')}
@@ -141,6 +180,7 @@ await writeFile(path.join(OUTPUT, 'adam-a2-en-self-study-guide.html'), html);
 await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 English Self-Study Guide Gold Master.',
   'Uses the finalized chapter-aligned independent-study material from adamA2BookDataEn.',
-  'Includes a quick-start routine, whole-book tracker, 10 chapter routines, support/extension routes, self-checks, and the full study guide.',
+  'Student routines are rendered as stacked Phosphor-icon steps, never as a single inline numbered paragraph.',
+  'Phosphor duotone SVGs are embedded directly into HTML/PDF output for print-safe vector rendering.',
   'No canonical story, chapter, image, audio, or synchronization field is modified.',
 ].join('\n'));
