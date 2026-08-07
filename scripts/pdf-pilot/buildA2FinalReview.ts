@@ -129,8 +129,9 @@ const renderReflectionPage = (page: PageData, language: Language): string => {
 const renderQuizQuestion = (question: NonNullable<Exercise['quizQuestions']>[number], number: number, language: Language): string => {
   const isArabic = language === 'ar';
   const options = question.options ?? [];
+  const arabicNumbers = ['١','٢','٣','٤','٥','٦','٧','٨'];
   return `<div class="quiz-question">
-    <div class="quiz-number">${isArabic ? ['١','٢','٣','٤','٥','٦','٧'][number - 1] : number}</div>
+    <div class="quiz-number">${isArabic ? arabicNumbers[number - 1] : number}</div>
     <div class="quiz-copy">
       <h3>${escapeHtml(question.question)}</h3>
       <div class="quiz-options">
@@ -144,17 +145,18 @@ const renderQuizPages = (page: PageData, language: Language): string => {
   const isArabic = language === 'ar';
   const quiz = findExercise(page, 'quiz-game');
   const questions = quiz.quizQuestions ?? [];
-  const chunks = [questions.slice(0, 4), questions.slice(4, 7)];
+  const chunks = [questions.slice(0, 4), questions.slice(4, 8)];
 
   return chunks.map((chunk, pageIndex) => `<article class="review-page${isArabic ? ' review-rtl' : ''}">
     ${renderPageHeader(
       quiz.title || page.title,
-      pageIndex === 0 ? (quiz.instructions || '') : (isArabic ? 'أكمل الأسئلة الثلاثة الأخيرة.' : 'Complete the final three questions.'),
+      pageIndex === 0
+        ? (quiz.instructions || '')
+        : (isArabic ? `أكمل الأسئلة ${chunk.length} الأخيرة.` : `Complete the final ${chunk.length} questions.`),
       isArabic ? 'تحدي المراجعة' : 'REVIEW CHALLENGE',
-      isArabic ? ` • ${pageIndex === 0 ? '٣' : '٤'}` : ` • ${pageIndex + 3}`,
     )}
 
-    <section class="quiz-list">
+    <section class="quiz-list quiz-list-four">
       ${chunk.map((question, index) => renderQuizQuestion(question, pageIndex === 0 ? index + 1 : index + 5, language)).join('\n')}
     </section>
 
@@ -199,6 +201,7 @@ await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 Final Review print pilot.',
   'All existing Final Review exercises are rendered without exposing correct answers.',
   'Sequencing and grouping source items are deterministically rearranged for meaningful paper tasks.',
-  'The seven quiz-game questions are split across two readable A4 pages.',
-  'No exercise wording, story content, correct answer, audio, or synchronization source data is modified.',
+  'The Review Challenge contract is eight questions split 4 + 4 across two full A4 pages.',
+  'Review Challenge headings do not carry page-number suffixes.',
+  'No exercise wording, story content, correct answer, audio, or synchronization source data is modified by the renderer.',
 ].join('\n'));
