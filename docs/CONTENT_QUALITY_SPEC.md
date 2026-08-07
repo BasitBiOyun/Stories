@@ -2,7 +2,7 @@
 
 ## Status
 
-Version: 0.1 — foundation draft
+Version: 0.2 — teaching-first gold-standard baseline
 
 This document is the single source of truth for reviewing and regenerating derived learning material in Stories. It applies to English and Arabic A2, B1, and B2 books.
 
@@ -13,6 +13,7 @@ Content-quality work must not change canonical material:
 - story prose
 - chapter titles, boundaries, order, or page identity
 - approved narration audio or audio references
+- synchronization data
 - quotations and source references embedded in story pages
 
 Only derived material may be reviewed or regenerated:
@@ -20,6 +21,7 @@ Only derived material may be reviewed or regenerated:
 - vocabulary and glossary material
 - chapter exercises
 - Quick Challenges
+- Knowledge Checks and Review Challenges
 - Final Challenges
 - correct and incorrect feedback
 - teacher guides
@@ -34,11 +36,13 @@ Every book must be:
 
 1. Text-grounded: answers and teaching claims are recoverable from the canonical book.
 2. CEFR-appropriate: language, reasoning demand, instructions, and expected output match the declared level.
-3. Pedagogically varied: exercises test more than simple recall while remaining suitable for the level.
-4. Consistent: instructions, answer data, feedback, ids, and guide structure follow one shared standard.
-5. Respectful: religious, historical, and cultural material is handled without speculation, ridicule, sensationalism, or unsupported interpretation.
-6. Classroom-ready: activities can be used by a teacher without reconstructing missing objectives, answers, timing, or differentiation.
-7. Self-study-ready: independent learners receive clear instructions, useful feedback, and realistic next steps.
+3. Teaching-first: questions support learning as well as measurement, with purpose changing across before-, while-, post-, and final-reading stages.
+4. Discourse-aligned: question types and cognitive operations fit the source text, including informative narrative/essay-like organisation where relevant.
+5. Pedagogically varied: exercises use more than simple recall while remaining suitable for the level.
+6. Consistent: instructions, answer data, feedback, ids, challenge counts, and guide structure follow one shared standard.
+7. Respectful: religious, historical, and cultural material is handled without speculation, ridicule, sensationalism, or unsupported interpretation.
+8. Classroom-ready: activities can be used by a teacher without reconstructing missing objectives, answers, timing, or differentiation.
+9. Self-study-ready: independent learners receive clear instructions, useful feedback, rereading routes, and realistic next steps.
 
 ## Evidence rule
 
@@ -59,6 +63,53 @@ Not allowed:
 - asking for a detail that appears only in another level or language version
 - inventing quotations, motives, dates, names, relationships, or outcomes
 - creating distractors that introduce harmful or misleading claims without clear correction
+
+## Reading-stage question model
+
+Questions in Stories are not only assessment instruments. Their primary purpose changes with reading stage.
+
+### Before reading
+
+Use orientation, prediction, image/title noticing, and a small amount of vocabulary preparation. Do not pre-teach the whole story or introduce outside factual content.
+
+### While reading
+
+At A2 and B1, Quick Challenges are primarily **teaching and reinforcement** activities. They should help learners notice, retrieve, sequence, compare, or reconnect the information they have just read.
+
+A wrong answer should normally trigger:
+
+1. a useful hint or evidence direction,
+2. rereading of the relevant sentence/paragraph,
+3. a second attempt.
+
+At B2, while-reading questions may combine reinforcement with stronger assessment and challenge where appropriate.
+
+### Post reading
+
+Knowledge Checks and Review Challenges retrieve, organise, and consolidate information. They may increase cognitive demand, but they should still support remembering and understanding rather than rely on trick wording.
+
+### Final review
+
+Final Challenge revisits the whole text. Questions should remind learners of important information and identify gaps for rereading. B2 may combine recall with stronger evidence, inference, comparison, evaluation, and synthesis.
+
+## Source-style alignment
+
+Question approach must match the discourse and style of the source.
+
+For informative narrative/essay-like texts, preferred operations include:
+
+- identify stated information
+- identify main idea or supporting information
+- sequence stages/events
+- connect a person/event/concept with stated information
+- identify simple cause/result
+- compare people, events, or ideas using textual evidence
+- retrieve vocabulary meaning in context
+- complete a key sentence or idea
+- summarise a short section
+- make a clearly labelled evidence-supported reflection
+
+Avoid artificial game-show difficulty, outside factual knowledge, trick negatives, or wording that is more difficult than the reading without a learning reason.
 
 ## CEFR standard
 
@@ -140,7 +191,7 @@ Expected production:
 - useful correct feedback
 - useful incorrect feedback
 
-Incorrect feedback must help the learner reconsider the relevant idea without simply revealing the full answer. Empty, generic, or punitive feedback is not acceptable.
+Incorrect feedback must help the learner reconsider the relevant idea without simply revealing the full answer. At A2/B1, it should normally support evidence finding and rereading before a second attempt. Empty, generic, or punitive feedback is not acceptable.
 
 ### Exercise variety
 
@@ -177,7 +228,7 @@ No book should rely almost entirely on one question type. Reflection items are u
 
 ### Sequencing rules
 
-- each item represents a distinct event
+- each item represents a distinct event/stage
 - the canonical text establishes the order
 - wording must not reveal the order through numbering or temporal labels unless those labels are the learning target
 
@@ -204,54 +255,72 @@ No book should rely almost entirely on one question type. Reflection items are u
 
 ### Quick Challenges
 
-A Quick Challenge should review the chapter or a clearly defined chapter group. It should be short, varied, and focused on the most important comprehension and language outcomes.
+A Quick Challenge should reinforce the current chapter or a clearly defined chapter group. Especially at A2 and B1, it functions as short learning practice rather than a mini high-stakes test.
 
 Recommended range:
 
-- A2: 2–4 objective items or one compact interactive activity
-- B1: 3–5 items with at least one cause, sequence, or contextual vocabulary task
-- B2: 3–5 items with at least one inference, comparison, or evidence task
+- A2: one compact activity or 1–3 very short items that reinforce stated information, sequence, vocabulary, comparison, or simple cause/result
+- B1: 2–4 items with reinforcement plus cause/result, sequence, contextual vocabulary, or short interpretation
+- B2: 3–5 items combining reinforcement with inference, comparison, evidence, or challenge where justified
+
+A learner who answers incorrectly should have a clear route back to the relevant text.
+
+### Review Challenges
+
+Exact target count for every level:
+
+- A2: **8 objective questions**
+- B1: **8 objective questions**
+- B2: **8 objective questions**
+
+Review Challenge consolidates important information across the intended review scope. In the A2 print system, the approved layout is 4 + 4 questions across two pages.
 
 ### Final Challenges
 
-Exact target counts:
+Exact target count for every level:
 
-- A2: 8 objective questions
-- B1: 9 objective questions
-- B2: 10 objective questions
+- A2: **10 objective questions**
+- B1: **10 objective questions**
+- B2: **10 objective questions**
 
-The count refers to scored objective questions. Reflection prompts may accompany the challenge but do not replace the required objective questions.
+The count refers to scored objective questions. Reflection prompts may accompany the challenge but do not replace the required objective questions. Print layout uses 5 + 5 questions across two question pages.
 
-Recommended blueprint:
+Recommended demand:
 
-#### A2 — 8 questions
+#### A2 — 10 questions
 
-- 3 direct comprehension
-- 1 sequence
-- 2 vocabulary in context
-- 1 cause or simple lesson
-- 1 whole-story review
+- direct whole-story recall
+- basic sequence
+- concrete vocabulary/context
+- simple cause/result or comparison
+- important closing information
 
-#### B1 — 9 questions
+Questions remain short, clear, directly recoverable, and reminder-oriented.
 
-- 2 direct comprehension
-- 2 cause, result, or motivation
-- 1 sequence or chronology
-- 2 vocabulary or collocation
-- 1 comparison or short inference
-- 1 whole-story synthesis
+#### B1 — 10 questions
+
+- direct recall where important
+- cause/result or motivation
+- sequence/chronology
+- vocabulary/collocation
+- comparison or short inference
+- whole-story retrieval/synthesis
+
+The set remains reinforcement-oriented while increasing interpretation.
 
 #### B2 — 10 questions
 
-- 2 evidence-based comprehension
-- 2 inference or motivation
-- 1 comparison
-- 1 chronology or development
-- 2 nuanced vocabulary or meaning in context
-- 1 evaluation of an idea using textual evidence
-- 1 whole-story synthesis
+- evidence-based comprehension
+- inference or motivation
+- comparison
+- chronology/development
+- nuanced vocabulary/meaning in context
+- evaluation using textual evidence
+- whole-story synthesis
 
-Questions should cover the book rather than concentrating on the final chapters.
+B2 may combine reinforcement, measurement, and genuine challenge within the same ten-question contract.
+
+Questions should cover the whole book rather than concentrating on the final chapters.
 
 ## Vocabulary standard
 
@@ -262,10 +331,16 @@ Each selected item should:
 - be useful at the declared CEFR level
 - have a definition simpler than or equal to the target level
 - use the intended meaning from the chapter
-- include an example that does not introduce unsupported story facts
+- include an example only when it does not introduce unsupported story facts
 - avoid duplicate entries unless deliberate recycling is documented
 
 A2 prioritizes concrete and high-frequency words. B1 includes useful collocations and contextual meanings. B2 includes nuanced, academic, and topic-specific language that genuinely appears in or supports the text.
+
+Highlighted-word rule for print/application alignment:
+
+- important words may be underlined in the reading text
+- every word actually highlighted/underlined must appear in Word Notes
+- definitions come from the approved vocabulary/fallback source, not from the PDF renderer
 
 ## Teacher guide standard
 
@@ -275,12 +350,14 @@ A chapter-linked section must include:
 
 - realistic timing
 - measurable objectives
+- before-, during-, and after-reading purpose
 - reading, language, or values focus supported by the chapter
 - a usable lesson sequence
 - discussion prompts
 - support for struggling learners
 - extension for fast finishers
 - formative assessment or exit evidence
+- explicit guidance on how Quick Challenge supports teaching/reinforcement
 
 The guide must distinguish between:
 
@@ -296,10 +373,12 @@ A self-study guide must tell the learner:
 
 - what to do before reading
 - how to use narration and text together
-- how to record vocabulary
+- how to use highlighted words and Word Notes
+- how to use Quick Challenge as learning practice
 - how to check exercises and use feedback
-- what to do after a weak result
+- how to find evidence and reread after a wrong/weak response
 - how to review the whole book
+- how to prepare for the 8-question Review Challenge and 10-question Final Challenge
 
 Instructions must be achievable without a teacher. A self-study section must not refer to unavailable worksheets, classroom groups, or teacher-only actions.
 
@@ -310,7 +389,8 @@ English and Arabic materials should pursue equivalent learning objectives for th
 Required alignment:
 
 - same covered chapters
-- same Final Challenge objective-question count
+- same Review Challenge objective-question count: 8
+- same Final Challenge objective-question count: 10
 - comparable cognitive demand
 - equivalent answerability from the respective canonical text
 - comparable guide coverage
@@ -323,7 +403,8 @@ A fact may not be copied from one language version into the other unless it is p
 - do not invent dialogue or divine speech
 - do not present speculation as revelation or established history
 - avoid visual or verbal trivialisation of sacred subjects
-- do not turn complex moral events into mocking or game-like punishment language
+- do not turn sensitive or violent events into game-like entertainment
+- do not turn complex moral events into mocking or punishment language
 - avoid claiming that one personal reflection is the only acceptable moral response
 - flag uncertainty for human review instead of silently resolving it
 
@@ -333,8 +414,8 @@ Each regenerated book is scored out of 100:
 
 - canonical grounding: 25
 - CEFR appropriateness: 20
-- question and feedback quality: 20
-- coverage and variety: 15
+- question, feedback, and reading-stage quality: 20
+- coverage, variety, and discourse alignment: 15
 - guide usability and alignment: 10
 - English–Arabic parity: 5
 - religious, historical, and cultural care: 5
@@ -345,7 +426,7 @@ Minimum release threshold: 85/100, with no failure in canonical grounding or saf
 
 1. Lock and verify the canonical baseline.
 2. Inventory the current derived material and validator warnings.
-3. Produce an evidence map from chapters to learning objectives.
+3. Produce an evidence map from chapters to learning objectives and reading stage.
 4. Draft English derived material for one pilot book.
 5. Run structural validators and a manual pedagogical review.
 6. Adapt the Arabic material from its own canonical text and the approved objectives.
@@ -360,7 +441,7 @@ The first pilot is `adam:A2`.
 
 Pilot scope:
 
-- English vocabulary, chapter exercises, Quick Challenges, Final Challenge, teacher guide, and self-study guide
+- English vocabulary, chapter exercises, Quick Challenges, Knowledge/Review Challenges, Final Challenge, teacher guide, and self-study guide
 - Arabic equivalent after English structure and objectives are approved
 - no canonical story or narration change
 
@@ -368,9 +449,9 @@ The pilot must be approved before bulk regeneration begins.
 
 ## Current baseline backlog
 
-The initial automated inventory reports:
+The initial automated inventory reported:
 
 - 48 exercise and Final Challenge warnings
 - 16 teacher-guide alignment warnings
 
-These counts are a starting inventory, not a complete pedagogical audit. The pilot review must identify additional qualitative issues that structural validation cannot detect.
+These counts describe the original baseline. The Adam A2 English pilot now adds stronger pedagogical and canonical-protection validation beyond the original structural checks.
