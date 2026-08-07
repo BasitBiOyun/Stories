@@ -71,18 +71,18 @@ const renderOverview = (): string => {
     <header class="guide-header"><div><p class="eyebrow">Gold-master teaching framework</p><h1>How to Use This Guide</h1><p class="chapter-meta">${escapeHtml(meta?.targetAudience || 'CEFR A2 learners')}</p></div><div class="level-marker">A2</div></header>
     <div class="overview-grid">
       ${renderCard('Purpose', `<p>${escapeHtml(meta?.purpose || '')}</p>`, 'cream', 'target')}
-      ${renderCard('Teaching approach', `<p>${escapeHtml(meta?.approachDesc || '')}</p>`, 'sage', 'book')}
+      ${renderCard('Teaching approach', `<p>${escapeHtml(meta?.approachDesc || '')}</p>`, 'sage', 'lightbulb')}
       ${renderCard('Before reading', `<p>${escapeHtml(before)}</p>`, 'blue', 'eye')}
       ${renderCard('During reading', `<p>${escapeHtml(during)}</p>`, 'cream', 'book')}
       ${renderCard('After reading', `<p>${escapeHtml(after)}</p>`, 'sage', 'check')}
-      ${renderCard('Assessment evidence', `<p>${escapeHtml(meta?.assessmentEvidence || '')}</p>`, 'blue', 'search')}
+      ${renderCard('Assessment evidence', `<p>${escapeHtml(meta?.assessmentEvidence || '')}</p>`, 'blue', 'check')}
     </div>
-    <section class="section-block" style="margin-top:5mm"><h3>Core classroom principles</h3>${list(meta?.classroomManagement)}</section>
+    <section class="section-block" style="margin-top:5mm">${iconHeading('Core classroom principles', 'users')}${list(meta?.classroomManagement)}</section>
     <div class="two-col">
-      ${renderCard('Values focus', `<div class="tag-list">${(meta?.valuesFocus ?? []).map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('')}</div>`)}
-      ${renderCard('Language focus', `<div class="tag-list">${(meta?.languageFocus ?? []).map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('')}</div>`)}
+      ${renderCard('Values focus', `<div class="tag-list">${(meta?.valuesFocus ?? []).map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('')}</div>`, '', 'heart')}
+      ${renderCard('Language focus', `<div class="tag-list">${(meta?.languageFocus ?? []).map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('')}</div>`, '', 'book')}
     </div>
-    ${meta?.sensitiveNotes ? `<section class="card rose" style="margin-top:4mm"><h3>${escapeHtml(meta.sensitiveNotes.title)}</h3>${list(meta.sensitiveNotes.notes)}</section>` : ''}
+    ${meta?.sensitiveNotes ? `<section class="card rose" style="margin-top:4mm">${iconHeading(meta.sensitiveNotes.title, 'heart')}${list(meta.sensitiveNotes.notes)}</section>` : ''}
   </article>`;
 };
 
@@ -95,7 +95,7 @@ const renderChapter = (section: TeacherGuideSection, index: number): string => `
 
   <div class="two-col">
     <section class="card cream">${iconHeading('Measurable objectives', 'target')}${list(section.objectives, 'objectives')}</section>
-    <section class="card sage">${iconHeading('Pedagogical purpose', 'book')}<p>${escapeHtml(section.pedagogy)}</p></section>
+    <section class="card sage">${iconHeading('Pedagogical purpose', 'lightbulb')}<p>${escapeHtml(section.pedagogy)}</p></section>
   </div>
 
   <section class="lesson-plan" style="margin-top:4mm">${iconHeading('Lesson sequence', 'clock')}${renderLessonSteps(section.lessonPlan)}</section>
@@ -106,18 +106,18 @@ const renderChapter = (section: TeacherGuideSection, index: number): string => `
   </div>
 
   <div class="two-col" style="margin-top:4mm">
-    <section class="card">${iconHeading('Discussion and evidence questions', 'search')}${list(section.discussionPoints)}</section>
-    <section class="card"><h3>Differentiation</h3><h4>Support</h4><p>${escapeHtml(section.differentiation.strugglingLearners)}</p><h4 style="margin-top:2.5mm">Extension</h4><p>${escapeHtml(section.differentiation.fastFinishers)}</p></section>
+    <section class="card">${iconHeading('Discussion and evidence questions', 'chat')}${list(section.discussionPoints)}</section>
+    <section class="card">${iconHeading('Differentiation', 'users')}<h4>Support</h4><p>${escapeHtml(section.differentiation.strugglingLearners)}</p><h4 style="margin-top:2.5mm">Extension</h4><p>${escapeHtml(section.differentiation.fastFinishers)}</p></section>
   </div>
 
   <div class="two-col" style="margin-top:4mm">
-    <section class="card sage"><h3>Interactive teaching tips</h3>${list(section.interactiveTips)}</section>
+    <section class="card sage">${iconHeading('Interactive teaching tips', 'lightbulb')}${list(section.interactiveTips)}</section>
     <section class="card cream">${iconHeading('Assessment evidence', 'check')}${section.assessmentTools?.rubric?.length ? `<h4>Look for</h4>${list(section.assessmentTools.rubric)}` : ''}${section.assessmentTools?.exitTicket?.length ? `<h4 style="margin-top:2.5mm">Exit ticket</h4>${list(section.assessmentTools.exitTicket)}` : ''}</section>
   </div>
 
   ${(section.kinestheticActivities?.length || section.globalCitizenship?.length) ? `<div class="two-col" style="margin-top:4mm">
-    <section class="card blue"><h3>No-print activity</h3>${list(section.kinestheticActivities)}</section>
-    <section class="card rose"><h3>Values reflection</h3>${list(section.globalCitizenship)}</section>
+    <section class="card blue">${iconHeading('No-print activity', 'users')}${list(section.kinestheticActivities)}</section>
+    <section class="card rose">${iconHeading('Values reflection', 'heart')}${list(section.globalCitizenship)}</section>
   </div>` : ''}
 </article>`;
 
@@ -180,6 +180,6 @@ await writeFile(path.join(OUTPUT, 'README.txt'), [
   'Adam A2 English Teacher Guide Gold Master.',
   'Uses finalized chapter-aligned Teacher Guide data from adamA2BookDataEn.',
   'Objectives use plain numbered rows; lesson sequences use separate timed rows. Decorative circular counters are prohibited.',
-  'Restrained Phosphor SVG icons clarify the guide hierarchy without turning the teacher resource into a student worksheet.',
+  'Distinct Phosphor duotone SVG icons clarify major guide sections and use explicit print-safe colours.',
   'No canonical story, chapter, image, audio, or synchronization field is modified.',
 ].join('\n'));
