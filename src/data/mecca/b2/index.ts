@@ -1,7 +1,13 @@
 import { BookData } from '../../../types';
-import { meccaB2Pages } from './en/pages';
-import { meccaB2TeacherGuide, meccaB2TeacherGuideMetadata } from './en/teacherGuide';
-import { meccaB2SelfStudyGuide, meccaB2StudentGuideSections, meccaB2StudentGuideText, meccaB2StudentGuideMetadata } from './en/selfStudyGuide';
+import {
+  meccaB2PagesGoldEn,
+  meccaB2TeacherGuideGoldEn,
+  meccaB2TeacherGuideMetadataGoldEn,
+  meccaB2SelfStudyGuideGoldEn,
+  meccaB2StudentGuideSectionsGoldEn,
+  meccaB2StudentGuideTextGoldEn,
+  meccaB2StudentGuideMetadataGoldEn,
+} from './gold';
 
 import { meccaB2PagesAr } from './ar/pages';
 import { meccaB2TeacherGuideAr, meccaB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -12,15 +18,16 @@ export const meccaB2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: meccaB2Pages,
-  teacherGuide: meccaB2TeacherGuide,
-  teacherGuideMetadata: meccaB2TeacherGuideMetadata,
-  selfStudyGuide: meccaB2SelfStudyGuide,
-  studentGuideSections: meccaB2StudentGuideSections,
-  studentGuideText: meccaB2StudentGuideText,
-  studentGuideMetadata: meccaB2StudentGuideMetadata,
+  pages: meccaB2PagesGoldEn,
+  teacherGuide: meccaB2TeacherGuideGoldEn,
+  teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldEn,
+  selfStudyGuide: meccaB2SelfStudyGuideGoldEn,
+  studentGuideSections: meccaB2StudentGuideSectionsGoldEn,
+  studentGuideText: meccaB2StudentGuideTextGoldEn,
+  studentGuideMetadata: meccaB2StudentGuideMetadataGoldEn,
 };
 
+// Arabic remains on its canonical pre-Gold path until the Arabic audit is completed.
 export const meccaB2BookDataAr: BookData = {
   id: 'mecca-b2-ar',
   title: 'قصص الأنبياء: مكة المكرمة (B2)',
