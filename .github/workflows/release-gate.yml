@@ -3,8 +3,6 @@ name: Minimal A2-B1-B2 Release Gate
 on:
   pull_request:
     branches: [production]
-    paths:
-      - '.github/workflows/release-gate.yml'
 
 permissions:
   contents: read
