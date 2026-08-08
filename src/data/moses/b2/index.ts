@@ -1,7 +1,13 @@
 import { BookData } from '../../../types';
-import { mosesB2Pages } from './en/pages';
-import { mosesB2TeacherGuide, mosesB2TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesB2SelfStudyGuide, mosesB2StudentGuideSections, mosesB2StudentGuideText, mosesB2StudentGuideMetadata } from './en/selfStudyGuide';
+import {
+  mosesB2PagesGoldEn,
+  mosesB2TeacherGuideGoldEn,
+  mosesB2TeacherGuideMetadataGoldEn,
+  mosesB2SelfStudyGuideGoldEn,
+  mosesB2StudentGuideSectionsGoldEn,
+  mosesB2StudentGuideTextGoldEn,
+  mosesB2StudentGuideMetadataGoldEn,
+} from './gold';
 
 import { mosesB2PagesAr } from './ar/pages';
 import { mosesB2TeacherGuideAr, mosesB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -16,15 +22,16 @@ export const mosesB2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: mosesB2Pages.length > 0 ? mosesB2Pages : mosesA2Pages,
-  teacherGuide: mosesB2TeacherGuide.length > 0 ? mosesB2TeacherGuide : mosesA2TeacherGuide,
-  teacherGuideMetadata: mosesB2TeacherGuideMetadata.targetLearners ? mosesB2TeacherGuideMetadata : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesB2SelfStudyGuide.length > 0 ? mosesB2SelfStudyGuide : mosesA2SelfStudyGuide,
-  studentGuideSections: mosesB2StudentGuideSections.length > 0 ? mosesB2StudentGuideSections : mosesA2StudentGuideSections,
-  studentGuideText: mosesB2StudentGuideText || mosesA2StudentGuideText,
-  studentGuideMetadata: mosesB2StudentGuideMetadata.whoIsThisFor ? mosesB2StudentGuideMetadata : mosesA2StudentGuideMetadata,
+  pages: mosesB2PagesGoldEn,
+  teacherGuide: mosesB2TeacherGuideGoldEn,
+  teacherGuideMetadata: mosesB2TeacherGuideMetadataGoldEn,
+  selfStudyGuide: mosesB2SelfStudyGuideGoldEn,
+  studentGuideSections: mosesB2StudentGuideSectionsGoldEn,
+  studentGuideText: mosesB2StudentGuideTextGoldEn,
+  studentGuideMetadata: mosesB2StudentGuideMetadataGoldEn,
 };
 
+// Arabic remains on the pre-rollout path until the English B2 pilot is accepted.
 export const mosesB2BookDataAr: BookData = {
   id: 'moses-b2-ar',
   title: 'قصص الأنبياء: موسى (عليه السلام) (B2)',
