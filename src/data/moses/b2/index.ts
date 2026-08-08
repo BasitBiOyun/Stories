@@ -1,13 +1,13 @@
 import { BookData } from '../../../types';
+import { mosesB2PagesGoldEn } from './goldLearning';
 import {
-  mosesB2PagesGoldEn,
-  mosesB2TeacherGuideGoldEn,
-  mosesB2TeacherGuideMetadataGoldEn,
-  mosesB2SelfStudyGuideGoldEn,
+  mosesB2TeacherGuideFinalEn,
+  mosesB2TeacherGuideMetadataFinalEn,
+  mosesB2SelfStudyGuideFinalEn,
   mosesB2StudentGuideSectionsFinalEn,
-  mosesB2StudentGuideTextGoldEn,
-  mosesB2StudentGuideMetadataGoldEn,
-} from './gold';
+  mosesB2StudentGuideTextFinalEn,
+  mosesB2StudentGuideMetadataFinalEn,
+} from './goldGuideFinal';
 
 import { mosesB2PagesAr } from './ar/pages';
 import { mosesB2TeacherGuideAr, mosesB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -23,12 +23,12 @@ export const mosesB2BookDataEn: BookData = {
   level: 'B2',
   baseFontSize: 13,
   pages: mosesB2PagesGoldEn,
-  teacherGuide: mosesB2TeacherGuideGoldEn,
-  teacherGuideMetadata: mosesB2TeacherGuideMetadataGoldEn,
-  selfStudyGuide: mosesB2SelfStudyGuideGoldEn,
+  teacherGuide: mosesB2TeacherGuideFinalEn,
+  teacherGuideMetadata: mosesB2TeacherGuideMetadataFinalEn,
+  selfStudyGuide: mosesB2SelfStudyGuideFinalEn,
   studentGuideSections: mosesB2StudentGuideSectionsFinalEn,
-  studentGuideText: mosesB2StudentGuideTextGoldEn,
-  studentGuideMetadata: mosesB2StudentGuideMetadataGoldEn,
+  studentGuideText: mosesB2StudentGuideTextFinalEn,
+  studentGuideMetadata: mosesB2StudentGuideMetadataFinalEn,
 };
 
 // Arabic remains on the pre-rollout path until the English B2 pilot is accepted.
