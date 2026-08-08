@@ -21,7 +21,7 @@
     "validate:a2-rollout": "tsx scripts/validation/validateA2Rollout.ts",
     "validate:b1-rollout": "tsx scripts/validation/validateB1Rollout.ts && tsx scripts/validation/validateB1Safety.ts",
     "validate:b2-pilot": "tsx scripts/validation/validateMosesB2GoldPilot.ts && tsx scripts/validation/validateMosesB2StudentGuide.ts && tsx scripts/validation/validateMosesB2GoldArabic.ts",
-    "validate:b2-adam": "tsx scripts/validation/validateAdamB2Gold.ts",
+    "validate:b2-adam": "tsx scripts/validation/validateAdamB2Gold.ts && tsx scripts/validation/validateAdamB2GoldArabic.ts",
     "validate": "npm run validate:canonical && npm run validate:content && npm run validate:guides && npm run validate:adam-a2-learning && npm run validate:a2-rollout && npm run validate:b1-rollout",
     "quality": "npm run validate && npm run typecheck && npm run build && npm run validate:bundle",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
