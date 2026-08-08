@@ -64,9 +64,20 @@ GitHub Actions are intentionally not required for this rollout.
 
 ## PDF status
 
-The B1 content layer inherits the fixed A2 print design system. The approved pagination policy is readability-first: a long B1 chapter may flow to a second A4 page at the same readable body size instead of shrinking canonical prose.
+B1 inherits the fixed A2 print design system. The approved pagination policy is readability-first: a long B1 chapter may flow to a second A4 page at the same readable body size instead of shrinking canonical prose.
 
-A Moses B1 fit sample has already demonstrated that representative short/medium/long B1 chapters fit the inherited system without requiring a new visual design. Full per-book PDF master generation remains a local publication/build gate, not a content rewrite step.
+A Moses B1 fit sample already demonstrated that representative short/medium/long B1 chapters fit the inherited geometry without requiring a new visual design.
+
+The rollout now also includes a shared EN/AR B1 chapter renderer:
+
+- `scripts/pdf-pilot/buildB1ChapterSample.ts`
+- `scripts/pdf-pilot/b1-sample.css`
+- `docs/B1_PRINT_DESIGN_SYSTEM.md`
+- npm command: `pdf:b1-sample`
+
+It accepts `B1_BOOK`, `B1_LANGUAGE`, and `B1_CHAPTER_IDS`, reads effective finalized BookData, renders with pinned Vivliostyle 11.1.0, and writes PNG renders for visual QA. The renderer keeps the A2 Gold safe area, readable body-size floor, exact 4:5 image treatment, Word Notes flow, and print-native Quick Challenge conversion.
+
+Full assembled Student Book / Teacher Guide / Self-Study Guide masters for every B1 book remain a publication build step after the common content/type/build gate is executed locally. They do not require another content rewrite.
 
 ## Merge readiness definition
 
