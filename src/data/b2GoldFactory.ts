@@ -253,7 +253,9 @@ export const applyB2GoldPages = ({
   const storyPages = config.storyIds.map((id) => {
     const page = canonicalPages.find((candidate) => candidate.id === id && candidate.type === 'story');
     if (!page) throw new Error(`B2 Gold: story page ${id} is missing.`);
-    const candidates = [...(page.exercises || [])].sort((a, b) => b2Score(b) - b2Score(a));
+    const candidates = [...(page.exercises || [])]
+      .filter(isObjective)
+      .sort((a, b) => b2Score(b) - b2Score(a));
     const chosen = quickChallengeOverrides[id] || candidates[0] || fallbackQuickChallenge(page, language);
     const challenge = rotateObjectiveOptions(enrichExercise(chosen, page, language));
     return {
