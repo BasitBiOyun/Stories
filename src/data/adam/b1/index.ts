@@ -1,20 +1,23 @@
 import { BookData } from '../../../types';
-import { adamB1Pages } from './en/pages';
-import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB1SelfStudyGuide, adamB1StudentGuideText, adamB1StudentGuideMetadata, adamB1StudentGuideSections } from './en/selfStudyGuide';
+import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
+import { adamB1StudentGuideText, adamB1StudentGuideMetadata, adamB1StudentGuideSections } from './en/selfStudyGuide';
 
-import { adamB1PagesAr } from './ar/pages';
-import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB1SelfStudyGuideAr, adamB1StudentGuideTextAr, adamB1StudentGuideMetadataAr, adamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
+import { adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { adamB1StudentGuideTextAr, adamB1StudentGuideMetadataAr, adamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
+import { adamB1PagesGoldEn, adamB1PagesGoldAr } from './gold';
+
+const adamB1GuidesEn = buildB1EvidenceGuides(adamB1PagesGoldEn, 'en');
+const adamB1GuidesAr = buildB1EvidenceGuides(adamB1PagesGoldAr, 'ar');
 
 export const adamB1BookDataEn: BookData = {
   id: 'b1-prophets-en',
   title: 'Stories of the Prophets: Adam (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: adamB1Pages,
-  teacherGuide: adamB1TeacherGuide,
-  selfStudyGuide: adamB1SelfStudyGuide,
+  pages: adamB1PagesGoldEn,
+  teacherGuide: adamB1GuidesEn.teacherGuide,
+  selfStudyGuide: adamB1GuidesEn.selfStudyGuide,
   studentGuideText: adamB1StudentGuideText,
   studentGuideSections: adamB1StudentGuideSections,
   teacherGuideMetadata: adamB1TeacherGuideMetadata,
@@ -26,9 +29,9 @@ export const adamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B1',
   baseFontSize: 14,
-  pages: adamB1PagesAr,
-  teacherGuide: adamB1TeacherGuideAr,
-  selfStudyGuide: adamB1SelfStudyGuideAr,
+  pages: adamB1PagesGoldAr,
+  teacherGuide: adamB1GuidesAr.teacherGuide,
+  selfStudyGuide: adamB1GuidesAr.selfStudyGuide,
   studentGuideText: adamB1StudentGuideTextAr,
   studentGuideSections: adamB1StudentGuideSectionsAr,
   teacherGuideMetadata: adamB1TeacherGuideMetadataAr,

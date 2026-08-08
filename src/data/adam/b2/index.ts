@@ -1,24 +1,35 @@
 import { BookData } from '../../../types';
-import { adamB2Pages } from './en/pages';
-import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB2SelfStudyGuide, adamB2StudentGuideText, adamB2StudentGuideMetadata, adamB2StudentGuideSections } from './en/selfStudyGuide';
-
-import { adamB2PagesAr } from './ar/pages';
-import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB2SelfStudyGuideAr, adamB2StudentGuideTextAr, adamB2StudentGuideMetadataAr, adamB2StudentGuideSectionsAr } from './ar/selfStudyGuide';
+import {
+  adamB2PagesGoldEn,
+  adamB2TeacherGuideGoldEn,
+  adamB2SelfStudyGuideGoldEn,
+  adamB2StudentGuideTextGoldEn,
+  adamB2StudentGuideSectionsGoldEn,
+  adamB2TeacherGuideMetadataGoldEn,
+  adamB2StudentGuideMetadataGoldEn,
+} from './gold';
+import {
+  adamB2PagesGoldAr,
+  adamB2TeacherGuideGoldAr,
+  adamB2SelfStudyGuideGoldAr,
+  adamB2StudentGuideTextGoldAr,
+  adamB2StudentGuideSectionsGoldAr,
+  adamB2TeacherGuideMetadataGoldAr,
+  adamB2StudentGuideMetadataGoldAr,
+} from './goldAr';
 
 export const adamB2BookDataEn: BookData = {
   id: 'b2-prophets-en',
   title: 'Stories of the Prophets: Adam (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: adamB2Pages,
-  teacherGuide: adamB2TeacherGuide,
-  selfStudyGuide: adamB2SelfStudyGuide,
-  studentGuideText: adamB2StudentGuideText,
-  studentGuideSections: adamB2StudentGuideSections,
-  teacherGuideMetadata: adamB2TeacherGuideMetadata,
-  studentGuideMetadata: adamB2StudentGuideMetadata
+  pages: adamB2PagesGoldEn,
+  teacherGuide: adamB2TeacherGuideGoldEn,
+  selfStudyGuide: adamB2SelfStudyGuideGoldEn,
+  studentGuideText: adamB2StudentGuideTextGoldEn,
+  studentGuideSections: adamB2StudentGuideSectionsGoldEn,
+  teacherGuideMetadata: adamB2TeacherGuideMetadataGoldEn,
+  studentGuideMetadata: adamB2StudentGuideMetadataGoldEn
 };
 
 export const adamB2BookDataAr: BookData = {
@@ -26,11 +37,11 @@ export const adamB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B2',
   baseFontSize: 14,
-  pages: adamB2PagesAr,
-  teacherGuide: adamB2TeacherGuideAr,
-  selfStudyGuide: adamB2SelfStudyGuideAr,
-  studentGuideText: adamB2StudentGuideTextAr,
-  studentGuideSections: adamB2StudentGuideSectionsAr,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
-  studentGuideMetadata: adamB2StudentGuideMetadataAr
+  pages: adamB2PagesGoldAr,
+  teacherGuide: adamB2TeacherGuideGoldAr,
+  selfStudyGuide: adamB2SelfStudyGuideGoldAr,
+  studentGuideText: adamB2StudentGuideTextGoldAr,
+  studentGuideSections: adamB2StudentGuideSectionsGoldAr,
+  teacherGuideMetadata: adamB2TeacherGuideMetadataGoldAr,
+  studentGuideMetadata: adamB2StudentGuideMetadataGoldAr
 };
