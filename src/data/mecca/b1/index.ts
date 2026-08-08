@@ -1,19 +1,23 @@
 import { BookData } from '../../../types';
-import { meccaB1Pages } from './en/pages';
-import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
+import { meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1SelfStudyGuide, meccaB1StudentGuideSections, meccaB1StudentGuideText, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
 
-import { meccaB1PagesAr } from './ar/pages';
-import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideSectionsAr, meccaB1StudentGuideTextAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import {
+  meccaB1PagesGoldEn,
+  meccaB1PagesGoldAr,
+  meccaB1TeacherGuideGoldEn,
+  meccaB1TeacherGuideGoldAr,
+} from './gold';
 
 export const meccaB1BookDataEn: BookData = {
   id: 'mecca-b1-en',
   title: 'Stories of the Prophets: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: meccaB1Pages,
-  teacherGuide: meccaB1TeacherGuide,
+  pages: meccaB1PagesGoldEn,
+  teacherGuide: meccaB1TeacherGuideGoldEn,
   teacherGuideMetadata: meccaB1TeacherGuideMetadata,
   selfStudyGuide: meccaB1SelfStudyGuide,
   studentGuideSections: meccaB1StudentGuideSections,
@@ -26,8 +30,8 @@ export const meccaB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: meccaB1PagesAr,
-  teacherGuide: meccaB1TeacherGuideAr,
+  pages: meccaB1PagesGoldAr,
+  teacherGuide: meccaB1TeacherGuideGoldAr,
   teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
   selfStudyGuide: meccaB1SelfStudyGuideAr,
   studentGuideSections: meccaB1StudentGuideSectionsAr,
