@@ -1,23 +1,35 @@
 import { BookData } from '../../../types';
-import { abrahamB2Pages } from './en/pages';
-import { abrahamB2PagesAr } from './ar/pages';
-import { abrahamB2TeacherGuide, abrahamB2TeacherGuideMetadata } from './en/teacherGuide';
-import { abrahamB2TeacherGuideAr, abrahamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamB2StudentGuideMetadata, abrahamB2StudentGuideSections, abrahamB2StudentGuideText, abrahamB2SelfStudyGuide } from './en/selfStudyGuide';
-import { abrahamB2StudentGuideMetadataAr, abrahamB2StudentGuideSectionsAr, abrahamB2StudentGuideTextAr, abrahamB2SelfStudyGuideAr } from './ar/selfStudyGuide';
+import {
+  abrahamB2PagesGoldEn,
+  abrahamB2TeacherGuideGoldEn,
+  abrahamB2TeacherGuideMetadataGoldEn,
+  abrahamB2StudentGuideMetadataGoldEn,
+  abrahamB2StudentGuideSectionsGoldEn,
+  abrahamB2StudentGuideTextGoldEn,
+  abrahamB2SelfStudyGuideGoldEn,
+} from './gold';
+import {
+  abrahamB2PagesGoldAr,
+  abrahamB2TeacherGuideGoldAr,
+  abrahamB2TeacherGuideMetadataGoldAr,
+  abrahamB2StudentGuideMetadataGoldAr,
+  abrahamB2StudentGuideSectionsGoldAr,
+  abrahamB2StudentGuideTextGoldAr,
+  abrahamB2SelfStudyGuideGoldAr,
+} from './goldAr';
 
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: abrahamB2Pages,
-  teacherGuide: abrahamB2TeacherGuide,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadata,
-  studentGuideMetadata: abrahamB2StudentGuideMetadata,
-  studentGuideSections: abrahamB2StudentGuideSections,
-  selfStudyGuide: abrahamB2SelfStudyGuide,
-  studentGuideText: abrahamB2StudentGuideText
+  pages: abrahamB2PagesGoldEn,
+  teacherGuide: abrahamB2TeacherGuideGoldEn,
+  teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldEn,
+  studentGuideMetadata: abrahamB2StudentGuideMetadataGoldEn,
+  studentGuideSections: abrahamB2StudentGuideSectionsGoldEn,
+  selfStudyGuide: abrahamB2SelfStudyGuideGoldEn,
+  studentGuideText: abrahamB2StudentGuideTextGoldEn
 };
 
 export const abrahamB2BookDataAr: BookData = {
@@ -25,11 +37,11 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم (ع)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesAr,
-  teacherGuide: abrahamB2TeacherGuideAr,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadataAr,
-  studentGuideMetadata: abrahamB2StudentGuideMetadataAr,
-  studentGuideSections: abrahamB2StudentGuideSectionsAr,
-  selfStudyGuide: abrahamB2SelfStudyGuideAr,
-  studentGuideText: abrahamB2StudentGuideTextAr
+  pages: abrahamB2PagesGoldAr,
+  teacherGuide: abrahamB2TeacherGuideGoldAr,
+  teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldAr,
+  studentGuideMetadata: abrahamB2StudentGuideMetadataGoldAr,
+  studentGuideSections: abrahamB2StudentGuideSectionsGoldAr,
+  selfStudyGuide: abrahamB2SelfStudyGuideGoldAr,
+  studentGuideText: abrahamB2StudentGuideTextGoldAr
 };
