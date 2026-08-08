@@ -19,7 +19,7 @@
     "validate:guides": "tsx scripts/validation/validateGuides.ts",
     "validate:adam-a2-learning": "tsx scripts/validation/validateAdamA2Learning.ts",
     "validate:a2-rollout": "tsx scripts/validation/validateA2Rollout.ts",
-    "validate:b1-rollout": "tsx scripts/validation/validateB1Rollout.ts",
+    "validate:b1-rollout": "tsx scripts/validation/validateB1Rollout.ts && tsx scripts/validation/validateB1Safety.ts",
     "validate": "npm run validate:canonical && npm run validate:content && npm run validate:guides && npm run validate:adam-a2-learning && npm run validate:a2-rollout && npm run validate:b1-rollout",
     "quality": "npm run validate && npm run typecheck && npm run build && npm run validate:bundle",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
