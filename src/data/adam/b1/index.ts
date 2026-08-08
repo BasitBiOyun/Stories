@@ -1,15 +1,14 @@
 import { BookData } from '../../../types';
+import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB1SelfStudyGuide, adamB1StudentGuideText, adamB1StudentGuideMetadata, adamB1StudentGuideSections } from './en/selfStudyGuide';
+import { adamB1StudentGuideText, adamB1StudentGuideMetadata, adamB1StudentGuideSections } from './en/selfStudyGuide';
 
 import { adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB1SelfStudyGuideAr, adamB1StudentGuideTextAr, adamB1StudentGuideMetadataAr, adamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
-import {
-  adamB1PagesGoldEn,
-  adamB1PagesGoldAr,
-  adamB1TeacherGuideGoldEn,
-  adamB1TeacherGuideGoldAr,
-} from './gold';
+import { adamB1StudentGuideTextAr, adamB1StudentGuideMetadataAr, adamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
+import { adamB1PagesGoldEn, adamB1PagesGoldAr } from './gold';
+
+const adamB1GuidesEn = buildB1EvidenceGuides(adamB1PagesGoldEn, 'en');
+const adamB1GuidesAr = buildB1EvidenceGuides(adamB1PagesGoldAr, 'ar');
 
 export const adamB1BookDataEn: BookData = {
   id: 'b1-prophets-en',
@@ -17,8 +16,8 @@ export const adamB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 12,
   pages: adamB1PagesGoldEn,
-  teacherGuide: adamB1TeacherGuideGoldEn,
-  selfStudyGuide: adamB1SelfStudyGuide,
+  teacherGuide: adamB1GuidesEn.teacherGuide,
+  selfStudyGuide: adamB1GuidesEn.selfStudyGuide,
   studentGuideText: adamB1StudentGuideText,
   studentGuideSections: adamB1StudentGuideSections,
   teacherGuideMetadata: adamB1TeacherGuideMetadata,
@@ -31,8 +30,8 @@ export const adamB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: adamB1PagesGoldAr,
-  teacherGuide: adamB1TeacherGuideGoldAr,
-  selfStudyGuide: adamB1SelfStudyGuideAr,
+  teacherGuide: adamB1GuidesAr.teacherGuide,
+  selfStudyGuide: adamB1GuidesAr.selfStudyGuide,
   studentGuideText: adamB1StudentGuideTextAr,
   studentGuideSections: adamB1StudentGuideSectionsAr,
   teacherGuideMetadata: adamB1TeacherGuideMetadataAr,
