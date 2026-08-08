@@ -1,7 +1,13 @@
 import { BookData } from '../../../types';
-import { adamB2Pages } from './en/pages';
-import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB2SelfStudyGuide, adamB2StudentGuideText, adamB2StudentGuideMetadata, adamB2StudentGuideSections } from './en/selfStudyGuide';
+import {
+  adamB2PagesGoldEn,
+  adamB2TeacherGuideGoldEn,
+  adamB2SelfStudyGuideGoldEn,
+  adamB2StudentGuideTextGoldEn,
+  adamB2StudentGuideSectionsGoldEn,
+  adamB2TeacherGuideMetadataGoldEn,
+  adamB2StudentGuideMetadataGoldEn,
+} from './gold';
 
 import { adamB2PagesAr } from './ar/pages';
 import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -12,15 +18,16 @@ export const adamB2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: adamB2Pages,
-  teacherGuide: adamB2TeacherGuide,
-  selfStudyGuide: adamB2SelfStudyGuide,
-  studentGuideText: adamB2StudentGuideText,
-  studentGuideSections: adamB2StudentGuideSections,
-  teacherGuideMetadata: adamB2TeacherGuideMetadata,
-  studentGuideMetadata: adamB2StudentGuideMetadata
+  pages: adamB2PagesGoldEn,
+  teacherGuide: adamB2TeacherGuideGoldEn,
+  selfStudyGuide: adamB2SelfStudyGuideGoldEn,
+  studentGuideText: adamB2StudentGuideTextGoldEn,
+  studentGuideSections: adamB2StudentGuideSectionsGoldEn,
+  teacherGuideMetadata: adamB2TeacherGuideMetadataGoldEn,
+  studentGuideMetadata: adamB2StudentGuideMetadataGoldEn
 };
 
+// Arabic remains on its canonical pre-Gold path until the Arabic B2 audit is completed.
 export const adamB2BookDataAr: BookData = {
   id: 'b2-prophets-ar',
   title: 'قصص الأنبياء: آدم (عليه السلام)',
