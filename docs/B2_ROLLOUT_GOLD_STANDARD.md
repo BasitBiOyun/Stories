@@ -1,16 +1,16 @@
 # B2 Rollout Gold Standard
 
-Status: **B2 rollout started on `agent/b2-rollout-gold`**.
+Status: **source rollout complete on `agent/b2-rollout-gold`; runtime execution gate pending**.
 
 Base branch: `agent/b1-rollout-gold`.
 
-The B2 branch is intentionally stacked on the B1 source milestone because `main` has not yet absorbed the A2/B1 Gold rollout. No work in this branch should be merged directly to stale `main` without integrating the earlier milestones first.
+The B2 branch is intentionally stacked on the B1 source milestone because `main` has not yet absorbed the A2/B1 Gold rollout. Do not merge this branch directly to stale `main` without first integrating the earlier milestones.
 
 ## 1. Canonical-content lock
 
 The active `src/data/.../b2/.../pages.ts` file is the canonical application source.
 
-For every B2 story chapter, rollout work must preserve:
+For every B2 story chapter, rollout work preserves:
 
 - story `content`
 - chapter `id`, `type`, `title`, boundaries, and order
@@ -21,156 +21,245 @@ For every B2 story chapter, rollout work must preserve:
 - `syncPoints`
 - `timedChunks`
 
-Hotspot title/description, vocabulary, exercises, guides, assessment pages, and metadata are derived learning content and may be improved only when the canonical chapter supports the change.
+Hotspot title/description, vocabulary, exercises, guides, assessment content, and metadata are derived learning material and may be improved only when supported by the corresponding canonical book/language.
 
-## 2. B2 is not B1 with longer text
+No canonical story page may be retyped, inserted, removed, or reordered merely to satisfy a derived-learning template.
 
-B2 learning material should regularly require:
+## 2. B2 cognitive standard
+
+B2 is not B1 with longer prose. Gold learning material regularly uses:
 
 - evidence-based inference
-- comparison across events or chapters
-- evaluation of choices and consequences
-- chronology/development across a longer narrative
-- nuanced vocabulary and meaning in context
-- distinguishing stated fact from interpretation
-- synthesis across several chapters
+- cause/consequence
+- comparison across events or ideas
+- evaluation of choices and interpretations
+- chronology and development
+- nuanced vocabulary in context
+- distinguishing fact, attribution, inference, and reflection
+- synthesis across chapters
 - justified short explanations
-- identifying credible misunderstandings rather than absurd distractors
+- credible distractors representing plausible misunderstandings
 
-Direct recall remains useful for reinforcement, but it must not dominate the book.
+Direct recall remains useful for reinforcement but does not dominate the Gold set.
 
-## 3. B2 assessment contract
+## 3. Assessment contract
 
-The active repository quality specification requires:
+The repository quality specification requires:
 
 - Review Challenge: **8 objective questions**
 - Final Challenge: **10 objective questions**
 
-The rollout also uses:
+Where the canonical page structure already contains a dedicated Knowledge Check page, Gold also standardizes it to:
 
 - Knowledge Check: **8 objective questions**
-- dedicated Final Challenge set rather than an empty/random fallback
+
+Where a canonical Knowledge page does **not** exist, the rollout does not create or retype a page to force one. Abraham B2 is the current example: pages 1–35 are narrative chapters, page 36 is canonical References, page 37 is Review, pages 38–39 are Glossary, and page 40 is Final. Page 36 therefore stays References and Abraham uses Review 8 + Final 10 without an invented Knowledge page.
+
+Other assessment rules:
+
+- dedicated Final Challenge questions rather than empty/random fallback
 - broad whole-book coverage
 - explanation and useful retry feedback for every scored item
-- stable answer-position balance for multiple-choice sets
+- deterministic answer-position rotation for MC sets
+- wrong/weak answers point the learner back to relevant evidence
 
-## 4. Chapter Quick Challenge runtime constraint
+## 4. Quick Challenge runtime reconciliation
 
-`CONTENT_QUALITY_SPEC.md` recommends 3–5 items for B2 chapter Quick Challenges.
+`CONTENT_QUALITY_SPEC.md` recommends 3–5 B2 Quick Challenge items per chapter.
 
-The current `StoryPage.tsx` runtime exposes only `page.exercises[0]` on mobile and desktop. Therefore the current B2 rollout uses **one visible, high-value B2 Quick Challenge per chapter** rather than silently authoring hidden exercises.
+Current `StoryPage.tsx` exposes only `page.exercises[0]` on mobile and desktop. The present rollout therefore uses **one visible high-value B2 Quick Challenge per story chapter** rather than authoring hidden exercises the learner cannot reach.
 
-The visible item should prioritize inference, cause/result, comparison, evaluation, context, or evidence when supported by the chapter.
+The visible question prioritizes inference, cause/result, comparison, evaluation, source framing, context, or evidence where supported by the chapter.
 
-A future multi-item StoryPage UI can expand the chapter activity count without changing canonical story prose.
+A later multi-item StoryPage UI may increase the visible count without touching canonical prose.
 
-## 5. Vocabulary and glossary
+## 5. Shared B2 implementation
 
-B2 vocabulary should prioritize nuanced, academic, historical, and topic-specific language actually supported by the application data.
+Common rollout code:
 
-Working target:
+- `src/data/b2GoldFactory.ts`
+- `src/data/b2GoldGuides.ts`
 
-- **5–7** useful Word Notes per story chapter when defensible definitions already exist
-- safety floor: **4** when the chapter does not contain enough reviewed definitions
-- no invented definition merely to meet a count
-- **10** Vocabulary in Context pairs when a dedicated page exists
-- two balanced Master Glossary sections with **at least 18 reviewed entries each**
+The factory provides:
 
-## 6. Historical/religious attribution safety
+- canonical-safe page overlays
+- one visible Quick Challenge per current runtime
+- Review 8 / Final 10 and Knowledge 8 when a dedicated page exists
+- deterministic MC option rotation
+- vocabulary normalization using reviewed definitions already present in the book
+- 10 Vocabulary-in-Context pairs where a dedicated vocabulary page exists
+- two Master Glossary sections targeting at least 18 reviewed entries each
 
-B2 texts sometimes contain source attributions, traditional reports, historical reconstruction, literary interpretation, or Sûfî/metaphorical framing.
+The guide builder creates one Teacher Guide and one Self-Study section directly from each effective canonical story page and its actual Gold Quick Challenge. This avoids stale chapter-number remapping.
 
-Derived learning material must distinguish:
+## 6. Vocabulary and glossary
+
+B2 vocabulary prioritizes nuanced, academic, historical, literary, and topic-specific language actually supported by application data.
+
+Working rule:
+
+- target 4–7 useful Word Notes per chapter where reviewed definitions are available
+- a lower count may remain when the canonical book has no defensible reviewed addition
+- never fabricate a dictionary definition merely to meet a quota
+- 10 vocabulary pairs where the canonical book has a dedicated vocabulary page
+- two balanced Master Glossary sections with at least 18 reviewed entries each
+
+Important print/application rule: highlighted/animated vocabulary must use definitions from approved application data; the PDF renderer must not invent definitions.
+
+## 7. Historical/religious/cultural safeguards
+
+Derived material distinguishes:
 
 - what the canonical chapter explicitly states
-- what the chapter attributes to sources or a named person
+- what the chapter attributes to sources, a narration, a scholar, a named person, or a theory
 - what is a text-supported interpretation
 - what is open reflection
 
-Do not make a disputed historical reconstruction more certain in a hotspot, question, explanation, Teacher Guide, or Self-Study Guide than the canonical chapter itself makes it.
+Do not make historical reconstruction more certain than the canonical text. Phrases such as `some sources`, `according to another narration`, `probably`, `widely accepted view`, and `exact date unknown` remain meaningful in B2 questions and explanations.
 
-For Yunus Emre, literary/Sûfî claims require explicit chapter/Yunus attribution framing in newly authored learning copy.
+### Yunus Emre
 
-For Mecca/Bilal and other oppression narratives, do not increase graphic detail in derived copy.
+Sûfî, mystical, literary, and metaphorical claims must remain explicitly attributed to Yunus Emre, a poem, a named theory, or the chapter. This applies to newly authored:
 
-## 7. Teacher Guide contract
+- hotspot descriptions
+- Quick Challenges
+- assessment questions/explanations
+- Teacher Guide
+- Self-Study Guide
+- interpretive glossary definitions
 
-Every story chapter must have one aligned Teacher Guide section.
+Do not convert concepts such as vahdet-i vücut or the heart as “the throne of the Lord” into unqualified creed statements.
 
-A finalized section should contain:
+### Mecca / oppression narratives
+
+Do not amplify graphic detail involving slavery, physical abuse, hunger, boycott, warfare, or vulnerable people. Derived material should focus on:
+
+- dignity
+- justice
+- vulnerability/protection
+- social/economic structure
+- causes and consequences
+- the chapter’s stated message
+
+Suffering must not become game-like or shock-value distractor content.
+
+## 8. Teacher Guide contract
+
+Every canonical story chapter has one aligned Teacher Guide section.
+
+A finalized section contains:
 
 - realistic timing
 - at least three measurable objectives
 - B2 reading/analysis purpose
 - usable lesson sequence
-- discussion questions
+- discussion prompts
 - differentiation/support
-- assessment evidence
-- guidance for the visible Quick Challenge
+- formative assessment evidence
+- explicit Quick Challenge reread/retry guidance
 
-Unsupported worksheet/handout/resource claims must be removed unless the resource actually exists.
+Unsupported worksheet/handout/resource claims are removed unless the resource actually exists.
 
-Guide chapter numbers/titles must align with the active canonical B2 story sequence.
+## 9. Self-Study Guide contract
 
-## 8. Self-Study Guide contract
+Every canonical story chapter has one learner-facing Self-Study section aligned to the same page.
 
-Every story chapter must have one learner-facing Self-Study section aligned to the active canonical sequence.
+The independent routine includes:
 
-B2 independent study should include:
-
-- preview and prediction
-- read/listen/reread
-- annotation and evidence finding
+- preview/prediction
+- read or listen for gist
+- reread and annotate
+- evidence finding
 - vocabulary in context
 - cause/consequence or comparison
-- summary and paragraph writing
+- summary/paragraph writing
 - inference/evaluation
-- reflection clearly separated from factual recall
-- retry/reread route after a weak answer
+- reflection separated from factual recall
+- retry/reread after a weak or incorrect answer
 
-Whole-book student-guide text must describe the actual number and sequence of canonical chapters.
+Whole-book structured and long-form guide copy must state the actual canonical chapter count and actual assessment structure.
 
-## 9. B2 PDF inheritance
+## 10. Book-specific rollout contracts
 
-B2 inherits the validated A2/B1 print system rather than introducing a third visual language:
+### Moses B2 — EN + AR
+
+- 24 story chapters
+- legacy Teacher/Self-Study 20 → 24
+- Knowledge 6 → 8
+- Vocabulary 6 → 10
+- Glossary 12+12 → >=18+18
+- Review → 8 objective
+- Final empty → 10 dedicated objective
+- historical-caution guard on Exodus chronology/Pharaoh identification
+
+### Adam B2 — EN + AR
+
+- 17 story chapters
+- legacy Teacher Guide 3 broad sections → 17 chapter sections
+- Knowledge 6 → 8
+- Review → 8 objective
+- Glossary 12+12 → >=18+18
+- Final → 10 evidence-supported objective
+- source-framing safeguards for estimated chronology and the unidentified forbidden tree
+
+### Abraham B2 — EN + AR
+
+- 35 narrative chapters
+- page 36 References preserved exactly
+- no dedicated Knowledge page invented
+- Review 8
+- Glossary >=18+18
+- Final 10
+- Teacher/Self-Study 35/35
+- safeguards for birthplace/date uncertainty, attributed narrations, and chapter-specific historical/religious framing
+
+### Mecca B2 — EN + AR
+
+- 17 story chapters
+- Knowledge 8 / Review 8 / Final 10
+- Glossary >=18+18
+- Teacher/Self-Study 17/17
+- systems-level questions across geography, trade, class, tribal protection, religion, and power
+- non-graphic safeguards for slavery/oppression/boycott material
+- women’s social position represented as varied by class/status as the chapter states
+
+### Yunus Emre B2 — EN + AR
+
+- 13 narrative chapters
+- page 14 References preserved
+- Knowledge 8 / Vocabulary 10 / Review 8 / Final 10
+- Glossary >=18+18
+- Teacher/Self-Study 13/13
+- explicit attribution across hotspot/exercise/guide/interpretive glossary copy
+- historical violence discussed through consequence rather than graphic amplification
+
+## 11. B2 PDF inheritance
+
+B2 inherits the A2/B1 Gold print language:
 
 - A4 portrait
-- current Gold safe margins
-- exact 4:5 chapter image
+- Gold safe margins
+- 4:5 chapter image
 - single-flow story prose
 - Word Notes after prose
 - Quick Challenge after Word Notes
 - no answer leakage
 - no story-font reduction below 12 pt simply to force one page
-- intentional two-page chapter fallback when needed
+- intentional continuation page when content exceeds the safe page area
 
-B2 is expected to use the two-page fallback more often than B1 because the canonical prose is generally longer.
+B2 is expected to require continuation pages more often than B1. More pages are preferable to smaller type.
 
-## 10. Moses B2 English pilot
+Representative long chapters must be rendered to PNG and visually inspected for clipping, RTL behavior, poem/quotation handling, Word Notes placement, and Quick Challenge flow before release.
 
-Moses B2 English is the first B2 reference pilot.
+## 12. Validation gate
 
-Initial source audit found:
+Full source validator:
 
-- 24 canonical story chapters
-- 20 Teacher Guide chapter sections
-- 20 chapter-level Self-Study sections
-- whole-book Self-Study text says the learner will study 20 chapters
-- Knowledge Check = 6 questions
-- Vocabulary Challenge = 6 pairs
-- Master Glossary = 12 + 12 entries
-- Review page exists but requires Gold audit
-- Final Challenge page exists but currently has no dedicated questions
-- many chapter Quick Challenges are direct-detail recall rather than B2 inference/evaluation
-- several historical reconstructions are explicitly qualified in canonical prose and must not be strengthened by derived learning copy
+```bash
+npm run validate:b2-rollout
+```
 
-The pilot must resolve these mismatches without modifying canonical story prose.
-
-## 11. Validation strategy
-
-B2 rollout will add a dedicated validator before the pilot is labelled complete.
-
-Required gates once implemented:
+Release gate:
 
 ```bash
 npm run validate:b2-rollout
@@ -178,11 +267,11 @@ npm run typecheck
 npm run build
 ```
 
-Representative B2 PDFs must then be rendered to PNG and visually inspected for long-chapter pagination, clipping, RTL, poem/quotation handling, Word Notes placement, and Quick Challenge flow.
+The B2 rollout is not runtime-verified until these commands pass in a real repository checkout.
 
-GitHub Actions are not required and must not be triggered merely for rollout validation.
+GitHub Actions are not required for this gate and must not be triggered merely for rollout validation.
 
-## 12. Deployment rule
+## 13. Deployment rule
 
 `agent/b2-rollout-gold` is a source-development branch only.
 
