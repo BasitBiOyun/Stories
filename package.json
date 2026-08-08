@@ -23,7 +23,8 @@
     "validate": "npm run validate:canonical && npm run validate:content && npm run validate:guides && npm run validate:adam-a2-learning && npm run validate:a2-rollout && npm run validate:b1-rollout",
     "quality": "npm run validate && npm run typecheck && npm run build && npm run validate:bundle",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
-    "pdf:adam-a2-gold": "node scripts/pdf-pilot/buildAdamA2EnglishGoldMaster.mjs"
+    "pdf:adam-a2-gold": "node scripts/pdf-pilot/buildAdamA2EnglishGoldMaster.mjs",
+    "pdf:b1-sample": "tsx scripts/pdf-pilot/buildB1ChapterSample.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
