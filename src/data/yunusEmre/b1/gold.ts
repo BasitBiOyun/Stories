@@ -18,9 +18,20 @@ const lowerFirst = (value: string): string => value
   ? `${value.charAt(0).toLowerCase()}${value.slice(1)}`
   : value;
 
+const frameHotspot = (description: string, language: 'en' | 'ar'): string => {
+  if (language === 'ar') {
+    return `يُقَدِّمُ الْفَصْلُ هَذِهِ الْفِكْرَةَ فِي سِيَاقِ يُونُس إِمْرَه: ${description}`;
+  }
+  return `The chapter presents this in Yunus Emre's historical and literary context: ${description}`;
+};
+
 const withYunusAttribution = (pages: PageData[], language: 'en' | 'ar'): PageData[] =>
   pages.map((page) => ({
     ...page,
+    hotspots: page.hotspots?.map((hotspot) => ({
+      ...hotspot,
+      description: frameHotspot(hotspot.description, language),
+    })),
     exercises: page.exercises?.map((exercise) => {
       const question = exercise.question?.trim();
       const explanation = exercise.explanation?.trim();
