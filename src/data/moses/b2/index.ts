@@ -4,7 +4,7 @@ import {
   mosesB2TeacherGuideGoldEn,
   mosesB2TeacherGuideMetadataGoldEn,
   mosesB2SelfStudyGuideGoldEn,
-  mosesB2StudentGuideSectionsGoldEn,
+  mosesB2StudentGuideSectionsFinalEn,
   mosesB2StudentGuideTextGoldEn,
   mosesB2StudentGuideMetadataGoldEn,
 } from './gold';
@@ -26,7 +26,7 @@ export const mosesB2BookDataEn: BookData = {
   teacherGuide: mosesB2TeacherGuideGoldEn,
   teacherGuideMetadata: mosesB2TeacherGuideMetadataGoldEn,
   selfStudyGuide: mosesB2SelfStudyGuideGoldEn,
-  studentGuideSections: mosesB2StudentGuideSectionsGoldEn,
+  studentGuideSections: mosesB2StudentGuideSectionsFinalEn,
   studentGuideText: mosesB2StudentGuideTextGoldEn,
   studentGuideMetadata: mosesB2StudentGuideMetadataGoldEn,
 };
