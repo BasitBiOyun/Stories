@@ -8,10 +8,15 @@ import {
   abrahamB2StudentGuideTextGoldEn,
   abrahamB2SelfStudyGuideGoldEn,
 } from './gold';
-
-import { abrahamB2PagesAr } from './ar/pages';
-import { abrahamB2TeacherGuideAr, abrahamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamB2StudentGuideMetadataAr, abrahamB2StudentGuideSectionsAr, abrahamB2StudentGuideTextAr, abrahamB2SelfStudyGuideAr } from './ar/selfStudyGuide';
+import {
+  abrahamB2PagesGoldAr,
+  abrahamB2TeacherGuideGoldAr,
+  abrahamB2TeacherGuideMetadataGoldAr,
+  abrahamB2StudentGuideMetadataGoldAr,
+  abrahamB2StudentGuideSectionsGoldAr,
+  abrahamB2StudentGuideTextGoldAr,
+  abrahamB2SelfStudyGuideGoldAr,
+} from './goldAr';
 
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
@@ -27,17 +32,16 @@ export const abrahamB2BookDataEn: BookData = {
   studentGuideText: abrahamB2StudentGuideTextGoldEn
 };
 
-// Arabic stays on its canonical pre-Gold path until its language-specific audit is complete.
 export const abrahamB2BookDataAr: BookData = {
   id: 'b2-abraham-ar',
   title: 'النبي إبراهيم (ع)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesAr,
-  teacherGuide: abrahamB2TeacherGuideAr,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadataAr,
-  studentGuideMetadata: abrahamB2StudentGuideMetadataAr,
-  studentGuideSections: abrahamB2StudentGuideSectionsAr,
-  selfStudyGuide: abrahamB2SelfStudyGuideAr,
-  studentGuideText: abrahamB2StudentGuideTextAr
+  pages: abrahamB2PagesGoldAr,
+  teacherGuide: abrahamB2TeacherGuideGoldAr,
+  teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldAr,
+  studentGuideMetadata: abrahamB2StudentGuideMetadataGoldAr,
+  studentGuideSections: abrahamB2StudentGuideSectionsGoldAr,
+  selfStudyGuide: abrahamB2SelfStudyGuideGoldAr,
+  studentGuideText: abrahamB2StudentGuideTextGoldAr
 };
