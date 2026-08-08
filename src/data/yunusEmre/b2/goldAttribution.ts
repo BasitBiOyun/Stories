@@ -3,10 +3,10 @@ import { yunusB2PagesGoldEn } from './gold';
 import { yunusB2PagesGoldAr } from './goldAr';
 
 const needsEnglishAttribution = (word: string): boolean =>
-  /vahdet-i vücut|true and only reality|absolute reality|initial unity|multiple existence|intellect|divine love|islamic mysticism|sufism/i.test(word);
+  /vahdet-i vücut|true and only reality|absolute reality|initial unity|multiple existence|intellect|divine love|islamic mysticism|sufism|mystic|mystical|spiritual/i.test(word);
 
 const needsArabicAttribution = (word: string): boolean =>
-  /وحدة الوجود|الحقيقة|الوجود|العقل|الذهن|الكلي|الجزئي|الحب الإلهي|التصوف/.test(word.normalize('NFKD').replace(/\p{M}/gu, ''));
+  /وحدة الوجود|الحقيقة|الوجود|العقل|الذهن|الكلي|الجزئي|الحب الالهي|التصوف|الصوفي|الصوفية|روحي|روحاني/.test(word.normalize('NFKD').replace(/\p{M}/gu, ''));
 
 const frameEnglish = (pages: PageData[]): PageData[] => pages.map((page) => ({
   ...page,
