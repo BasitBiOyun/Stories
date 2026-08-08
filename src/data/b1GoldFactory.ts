@@ -1,4 +1,5 @@
 import type { Exercise, PageData, TeacherGuideSection } from '../types';
+import { fallbackDefinitions } from './fallbackVocab';
 
 export type B1GoldLanguage = 'en' | 'ar';
 
@@ -22,6 +23,13 @@ const normalizeQuestion = (value: string): string => value
   .toLowerCase()
   .normalize('NFKD')
   .replace(/[^a-z0-9\u0600-\u06ff]+/g, ' ')
+  .trim();
+
+const normalizeVocabKey = (value: string): string => value
+  .toLowerCase()
+  .normalize('NFKD')
+  .replace(/\p{M}/gu, '')
+  .replace(/[^\p{L}\p{N}]+/gu, ' ')
   .trim();
 
 const cleanSentence = (value: string): string => value
@@ -165,40 +173,58 @@ const objectiveFromChallenge = (
 const uniqueVocabulary = (entries: VocabularyEntry[]): VocabularyEntry[] => {
   const seen = new Set<string>();
   return entries.filter((entry) => {
-    const key = entry.word.toLowerCase().trim();
+    const key = normalizeVocabKey(entry.word);
     if (!key || seen.has(key) || !entry.definition?.trim()) return false;
     seen.add(key);
     return true;
   });
 };
 
-const vocabularyDefinitionMap = (pages: PageData[]): Map<string, string> => {
-  const map = new Map<string, string>();
+const vocabularyDefinitionMap = (pages: PageData[]): Map<string, VocabularyEntry> => {
+  const map = new Map<string, VocabularyEntry>();
   for (const page of pages) {
     for (const entry of page.vocabulary || []) {
-      const key = entry.word.toLowerCase().trim();
-      if (key && entry.definition?.trim() && !map.has(key)) map.set(key, entry.definition.trim());
+      const key = normalizeVocabKey(entry.word);
+      if (key && entry.definition?.trim() && !map.has(key)) map.set(key, entry);
     }
+  }
+  for (const [word, definition] of Object.entries(fallbackDefinitions)) {
+    const key = normalizeVocabKey(word);
+    if (key && definition.trim() && !map.has(key)) map.set(key, { word, definition });
   }
   return map;
 };
 
 const normalizeChapterVocabulary = (
   page: PageData,
-  definitions: Map<string, string>,
+  definitions: Map<string, VocabularyEntry>,
 ): VocabularyEntry[] => {
   const current = uniqueVocabulary([...(page.vocabulary || [])]);
   if (current.length >= 4) return current.slice(0, 5);
 
   const additions: VocabularyEntry[] = [];
   for (const word of page.animatedWords || []) {
-    const key = word.toLowerCase().trim();
-    if (!key || current.some((entry) => entry.word.toLowerCase().trim() === key)) continue;
-    const definition = definitions.get(key);
-    if (!definition) continue;
-    additions.push({ word, definition });
+    const key = normalizeVocabKey(word);
+    if (!key || current.some((entry) => normalizeVocabKey(entry.word) === key)) continue;
+    const found = definitions.get(key);
+    if (!found) continue;
+    additions.push({ word, definition: found.definition });
     if (current.length + additions.length >= 5) break;
   }
+
+  if (current.length + additions.length < 4) {
+    const content = ` ${normalizeVocabKey(page.content)} `;
+    const candidates = [...definitions.entries()]
+      .filter(([key]) => key.length >= 3 && content.includes(` ${key} `))
+      .sort((a, b) => b[0].length - a[0].length);
+
+    for (const [key, found] of candidates) {
+      if ([...current, ...additions].some((entry) => normalizeVocabKey(entry.word) === key)) continue;
+      additions.push({ word: found.word, definition: found.definition });
+      if (current.length + additions.length >= 4) break;
+    }
+  }
+
   return uniqueVocabulary([...current, ...additions]).slice(0, 5);
 };
 
