@@ -24,16 +24,19 @@ const findPage = (pages: PageData[], id: number): PageData => {
 };
 
 const validateObjectiveQuestion = (exercise: Exercise, label: string) => {
+  const options = exercise.options ?? [];
+  const correctIndex = exercise.correctAnswer;
+
   assert.equal(exercise.type, 'multiple-choice', `${label}: objective pilot item must be multiple-choice.`);
-  assert.equal(exercise.options?.length, 3, `${label}: multiple-choice item must have three options.`);
-  assert.equal(typeof exercise.correctAnswer, 'number', `${label}: correct answer must be an option index.`);
+  assert.equal(options.length, 3, `${label}: multiple-choice item must have three options.`);
+  assert.equal(typeof correctIndex, 'number', `${label}: correct answer must be an option index.`);
   assert.ok(
-    typeof exercise.correctAnswer === 'number'
-      && exercise.correctAnswer >= 0
-      && exercise.correctAnswer < (exercise.options?.length ?? 0),
+    typeof correctIndex === 'number'
+      && correctIndex >= 0
+      && correctIndex < options.length,
     `${label}: correct answer index is invalid.`,
   );
-  assert.equal(new Set(exercise.options).size, exercise.options?.length, `${label}: duplicate answer options found.`);
+  assert.equal(new Set(options).size, options.length, `${label}: duplicate answer options found.`);
   assert.ok((exercise.explanation?.trim().length ?? 0) >= 30, `${label}: explanation is too thin for B1.`);
   assert.ok(exercise.feedback.incorrect.trim(), `${label}: retry feedback must point the learner back to evidence.`);
 };
@@ -89,7 +92,7 @@ for (const id of mosesB1GoldContract.storyIds) {
 const quickPositions = mosesB1GoldContract.storyIds.map(id => {
   const exercise = findPage(mosesB1BookDataEn.pages, id).exercises?.[0];
   assert.ok(exercise && typeof exercise.correctAnswer === 'number', `Moses B1 chapter ${id}: missing answer position.`);
-  return exercise.correctAnswer;
+  return exercise.correctAnswer as number;
 });
 assert.ok(new Set(quickPositions).size >= 3, 'Moses B1: Quick Challenge correct answers are not position-balanced.');
 
@@ -112,10 +115,11 @@ for (const [page, label] of [
 }
 
 const vocabularyPage = findPage(mosesB1BookDataEn.pages, mosesB1GoldContract.vocabularyPageId);
-assert.equal(vocabularyPage.vocabularyPairs?.length, 10, 'Moses B1: Vocabulary in Context must contain 10 reviewed pairs.');
+const vocabularyPairs = vocabularyPage.vocabularyPairs ?? [];
+assert.equal(vocabularyPairs.length, 10, 'Moses B1: Vocabulary in Context must contain 10 reviewed pairs.');
 assert.equal(
-  new Set((vocabularyPage.vocabularyPairs ?? []).map(pair => pair.word.toLowerCase().trim())).size,
-  vocabularyPage.vocabularyPairs?.length,
+  new Set(vocabularyPairs.map(pair => pair.word.toLowerCase().trim())).size,
+  vocabularyPairs.length,
   'Moses B1: Vocabulary in Context contains duplicate words.',
 );
 
