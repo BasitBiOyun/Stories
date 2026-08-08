@@ -1,18 +1,17 @@
 import { BookData } from '../../../types';
+import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { mosesB1TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesB1SelfStudyGuide, mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
+import { mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
 
 import { mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesB1SelfStudyGuideAr, mosesB1StudentGuideSectionsAr, mosesB1StudentGuideTextAr, mosesB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
-import {
-  mosesB1PagesRolloutEn,
-  mosesB1PagesRolloutAr,
-  mosesB1TeacherGuideRolloutEn,
-  mosesB1TeacherGuideRolloutAr,
-} from './rollout';
+import { mosesB1StudentGuideSectionsAr, mosesB1StudentGuideTextAr, mosesB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { mosesB1PagesRolloutEn, mosesB1PagesRolloutAr } from './rollout';
 
 import { mosesA2TeacherGuideMetadata } from '../a2/en/teacherGuide';
-import { mosesA2SelfStudyGuide, mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from '../a2/en/selfStudyGuide';
+import { mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from '../a2/en/selfStudyGuide';
+
+const mosesB1GuidesEn = buildB1EvidenceGuides(mosesB1PagesRolloutEn, 'en');
+const mosesB1GuidesAr = buildB1EvidenceGuides(mosesB1PagesRolloutAr, 'ar');
 
 export const mosesB1BookDataEn: BookData = {
   id: 'moses-b1-en',
@@ -20,9 +19,9 @@ export const mosesB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 13,
   pages: mosesB1PagesRolloutEn,
-  teacherGuide: mosesB1TeacherGuideRolloutEn,
+  teacherGuide: mosesB1GuidesEn.teacherGuide,
   teacherGuideMetadata: mosesB1TeacherGuideMetadata.targetLearners ? mosesB1TeacherGuideMetadata : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesB1SelfStudyGuide.length > 0 ? mosesB1SelfStudyGuide : mosesA2SelfStudyGuide,
+  selfStudyGuide: mosesB1GuidesEn.selfStudyGuide,
   studentGuideSections: mosesB1StudentGuideSections.length > 0 ? mosesB1StudentGuideSections : mosesA2StudentGuideSections,
   studentGuideText: mosesB1StudentGuideText || mosesA2StudentGuideText,
   studentGuideMetadata: mosesB1StudentGuideMetadata.whoIsThisFor ? mosesB1StudentGuideMetadata : mosesA2StudentGuideMetadata,
@@ -34,9 +33,9 @@ export const mosesB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: mosesB1PagesRolloutAr,
-  teacherGuide: mosesB1TeacherGuideRolloutAr,
+  teacherGuide: mosesB1GuidesAr.teacherGuide,
   teacherGuideMetadata: mosesB1TeacherGuideMetadataAr.targetLearners ? mosesB1TeacherGuideMetadataAr : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesB1SelfStudyGuideAr.length > 0 ? mosesB1SelfStudyGuideAr : mosesA2SelfStudyGuide,
+  selfStudyGuide: mosesB1GuidesAr.selfStudyGuide,
   studentGuideSections: mosesB1StudentGuideSectionsAr.length > 0 ? mosesB1StudentGuideSectionsAr : mosesA2StudentGuideSections,
   studentGuideText: mosesB1StudentGuideTextAr || mosesA2StudentGuideText,
   studentGuideMetadata: mosesB1StudentGuideMetadataAr.whoIsThisFor ? mosesB1StudentGuideMetadataAr : mosesA2StudentGuideMetadata,
