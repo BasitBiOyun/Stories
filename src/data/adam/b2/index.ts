@@ -8,10 +8,15 @@ import {
   adamB2TeacherGuideMetadataGoldEn,
   adamB2StudentGuideMetadataGoldEn,
 } from './gold';
-
-import { adamB2PagesAr } from './ar/pages';
-import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB2SelfStudyGuideAr, adamB2StudentGuideTextAr, adamB2StudentGuideMetadataAr, adamB2StudentGuideSectionsAr } from './ar/selfStudyGuide';
+import {
+  adamB2PagesGoldAr,
+  adamB2TeacherGuideGoldAr,
+  adamB2SelfStudyGuideGoldAr,
+  adamB2StudentGuideTextGoldAr,
+  adamB2StudentGuideSectionsGoldAr,
+  adamB2TeacherGuideMetadataGoldAr,
+  adamB2StudentGuideMetadataGoldAr,
+} from './goldAr';
 
 export const adamB2BookDataEn: BookData = {
   id: 'b2-prophets-en',
@@ -27,17 +32,16 @@ export const adamB2BookDataEn: BookData = {
   studentGuideMetadata: adamB2StudentGuideMetadataGoldEn
 };
 
-// Arabic remains on its canonical pre-Gold path until the Arabic B2 audit is completed.
 export const adamB2BookDataAr: BookData = {
   id: 'b2-prophets-ar',
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B2',
   baseFontSize: 14,
-  pages: adamB2PagesAr,
-  teacherGuide: adamB2TeacherGuideAr,
-  selfStudyGuide: adamB2SelfStudyGuideAr,
-  studentGuideText: adamB2StudentGuideTextAr,
-  studentGuideSections: adamB2StudentGuideSectionsAr,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
-  studentGuideMetadata: adamB2StudentGuideMetadataAr
+  pages: adamB2PagesGoldAr,
+  teacherGuide: adamB2TeacherGuideGoldAr,
+  selfStudyGuide: adamB2SelfStudyGuideGoldAr,
+  studentGuideText: adamB2StudentGuideTextGoldAr,
+  studentGuideSections: adamB2StudentGuideSectionsGoldAr,
+  teacherGuideMetadata: adamB2TeacherGuideMetadataGoldAr,
+  studentGuideMetadata: adamB2StudentGuideMetadataGoldAr
 };
