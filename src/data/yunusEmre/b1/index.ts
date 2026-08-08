@@ -1,15 +1,14 @@
 import { BookData } from '../../../types';
+import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
-import { yunusB1SelfStudyGuide, yunusB1StudentGuideSections, yunusB1StudentGuideText, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
+import { yunusB1StudentGuideSections, yunusB1StudentGuideText, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
 
 import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { yunusEmreB1SelfStudyGuideAr, yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
-import {
-  yunusEmreB1PagesGoldEn,
-  yunusEmreB1PagesGoldAr,
-  yunusEmreB1TeacherGuideGoldEn,
-  yunusEmreB1TeacherGuideGoldAr,
-} from './gold';
+import { yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
+
+const yunusB1GuidesEn = buildB1EvidenceGuides(yunusEmreB1PagesGoldEn, 'en');
+const yunusB1GuidesAr = buildB1EvidenceGuides(yunusEmreB1PagesGoldAr, 'ar');
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
@@ -17,9 +16,9 @@ export const yunusEmreB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 13,
   pages: yunusEmreB1PagesGoldEn,
-  teacherGuide: yunusEmreB1TeacherGuideGoldEn,
+  teacherGuide: yunusB1GuidesEn.teacherGuide,
   teacherGuideMetadata: yunusB1TeacherGuideMetadata,
-  selfStudyGuide: yunusB1SelfStudyGuide,
+  selfStudyGuide: yunusB1GuidesEn.selfStudyGuide,
   studentGuideSections: yunusB1StudentGuideSections,
   studentGuideText: yunusB1StudentGuideText,
   studentGuideMetadata: yunusB1StudentGuideMetadata,
@@ -31,9 +30,9 @@ export const yunusEmreB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: yunusEmreB1PagesGoldAr,
-  teacherGuide: yunusEmreB1TeacherGuideGoldAr,
+  teacherGuide: yunusB1GuidesAr.teacherGuide,
   teacherGuideMetadata: yunusEmreB1TeacherGuideMetadataAr,
-  selfStudyGuide: yunusEmreB1SelfStudyGuideAr,
+  selfStudyGuide: yunusB1GuidesAr.selfStudyGuide,
   studentGuideSections: yunusEmreB1StudentGuideSectionsAr,
   studentGuideText: yunusEmreB1StudentGuideTextAr,
   studentGuideMetadata: yunusEmreB1StudentGuideMetadataAr,
