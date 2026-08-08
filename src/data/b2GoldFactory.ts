@@ -88,6 +88,12 @@ const enrichExercise = (exercise: Exercise, page: PageData, language: B2GoldLang
   const evidence = exercise.explanation?.trim()
     || page.hotspots?.[0]?.description?.trim()
     || cleanSentence(page.content.split(/\n\s*\n/)[0] || page.content);
+  const currentCorrect = exercise.feedback?.correct?.trim() ?? '';
+  const usefulCorrect = currentCorrect.length >= 20
+    ? currentCorrect
+    : language === 'ar'
+      ? `صحيح. ${evidence}`
+      : `Correct. ${evidence}`;
 
   return {
     ...exercise,
@@ -95,7 +101,7 @@ const enrichExercise = (exercise: Exercise, page: PageData, language: B2GoldLang
     instructions: exercise.instructions || (exercise.type === 'true-false' ? text.trueFalse : text.choose),
     explanation: exercise.explanation?.trim() || evidence,
     feedback: {
-      correct: exercise.feedback?.correct?.trim() || text.correct,
+      correct: usefulCorrect,
       incorrect: (exercise.feedback?.incorrect?.trim().length ?? 0) >= 20
         ? exercise.feedback!.incorrect
         : text.retry,
@@ -205,13 +211,21 @@ const rotateArray = <T,>(items: T[], shift: number): T[] => {
 const cloneObjective = (item: BankItem, id: string, language: B2GoldLanguage): Exercise => {
   const text = copy(language);
   const source = item.exercise;
+  const explanation = source.explanation?.trim() || text.retry;
+  const currentCorrect = source.feedback?.correct?.trim() ?? '';
+  const usefulCorrect = currentCorrect.length >= 20
+    ? currentCorrect
+    : language === 'ar'
+      ? `صحيح. ${explanation}`
+      : `Correct. ${explanation}`;
+
   return rotateObjectiveOptions({
     ...source,
     id,
     instructions: source.type === 'true-false' ? text.trueFalse : text.choose,
-    explanation: source.explanation?.trim() || text.retry,
+    explanation,
     feedback: {
-      correct: source.feedback?.correct?.trim() || text.correct,
+      correct: usefulCorrect,
       incorrect: (source.feedback?.incorrect?.trim().length ?? 0) >= 20 ? source.feedback!.incorrect : text.retry,
     },
   });
