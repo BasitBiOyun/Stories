@@ -63,6 +63,9 @@ const normalizeText = (text: string, language: StoryLanguage): string => {
   normalized = normalized.replace(/[’']s\b/g, '');
 
   if (language === 'ar') {
+    // Arabic accusative indefinite case adds fathatan + alif to the same lexical word
+    // (for example رسولًا vs رسول). Remove only that case ending before diacritic stripping.
+    normalized = normalized.replace(/\u064B\u0627/g, '');
     normalized = stripArabicDiacritics(normalized)
       .replace(/[أإآٱ]/g, 'ا')
       .replace(/ى/g, 'ي')
