@@ -22,6 +22,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm install --no-save --no-package-lock @phosphor-icons/core@2.1.1
       - run: node scripts/migrations/applyPhosphor.mjs
       - run: npm install --package-lock-only --ignore-scripts
       - run: npm ci
