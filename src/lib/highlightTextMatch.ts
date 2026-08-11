@@ -53,6 +53,8 @@ const addArabicPrefixForms = (forms: Set<string>, value: string): void => {
   };
 
   if ((value.startsWith('و') || value.startsWith('ف')) && value.length > 4) add(value.slice(1));
+  // Future marker: سيدبران -> يدبران. This is a grammatical prefix, not a stem rewrite.
+  if (value.startsWith('س') && value.length > 4) add(value.slice(1));
   if (value.startsWith('بال') && value.length > 5) {
     add(value.slice(1)); // بالكتاب -> الكتاب
     add(value.slice(3)); // بالكتاب -> كتاب
@@ -94,6 +96,9 @@ export const arabicTokenForms = (raw: string): Set<string> => {
         forms.add(value.slice(0, -suffix.length));
       }
     }
+    // Some source files omit tanwin while keeping its supporting final alif
+    // (for example متكبرا). Treat that final alif as an inflectional surface form.
+    if (value.endsWith('ا') && value.length > 4) forms.add(value.slice(0, -1));
   }
 
   // Prefixes may become visible only after a suffix is removed.
