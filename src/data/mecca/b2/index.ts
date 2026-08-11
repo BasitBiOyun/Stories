@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import {
   meccaB2PagesGoldEn,
   meccaB2TeacherGuideGoldEn,
@@ -18,12 +19,22 @@ import {
   meccaB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 
+const meccaB2PagesLockedEn = applyB2StoryLanguageLock(meccaB2PagesGoldEn, {
+  language: 'en',
+  maxUniqueHighlights: 10,
+});
+
+const meccaB2PagesLockedAr = applyB2StoryLanguageLock(meccaB2PagesGoldAr, {
+  language: 'ar',
+  maxUniqueHighlights: 10,
+});
+
 export const meccaB2BookDataEn: BookData = {
   id: 'mecca-b2-en',
   title: 'Stories of the Prophets: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: meccaB2PagesGoldEn,
+  pages: meccaB2PagesLockedEn,
   teacherGuide: meccaB2TeacherGuideGoldEn,
   teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldEn,
   selfStudyGuide: meccaB2SelfStudyGuideGoldEn,
@@ -37,7 +48,7 @@ export const meccaB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: meccaB2PagesGoldAr,
+  pages: meccaB2PagesLockedAr,
   teacherGuide: meccaB2TeacherGuideGoldAr,
   teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldAr,
   selfStudyGuide: meccaB2SelfStudyGuideGoldAr,
