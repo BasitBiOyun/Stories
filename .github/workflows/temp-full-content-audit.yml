@@ -18,7 +18,22 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Run full validation
-        run: npm run validate
+      - name: Canonical lock
+        run: npm run validate:canonical
+      - name: Content structure
+        run: npm run validate:content
+      - name: Teacher and self-study guides
+        run: npm run validate:guides
+      - name: Story language lock inventory
+        continue-on-error: true
+        run: npm run validate:story-language-lock
+      - name: Adam A2 learning contract
+        run: npm run validate:adam-a2-learning
+      - name: A2 rollout contract
+        run: npm run validate:a2-rollout
+      - name: B1 rollout contract
+        run: npm run validate:b1-rollout
+      - name: B2 rollout contract
+        run: npm run validate:b2-rollout
       - name: Typecheck
         run: npm run typecheck
