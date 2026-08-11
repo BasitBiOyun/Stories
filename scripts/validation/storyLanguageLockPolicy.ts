@@ -61,12 +61,14 @@ export const legacyStoryLanguageSnapshots: readonly LegacyStoryLanguageSnapshot[
 export const lockedStoryLanguageBooks = new Set<string>([
   'adam:A2',
   'adam:B1',
+  'adam:B2',
   'ibrahim:A2',
   'ibrahim:B1',
   'musa:A2',
   'musa:B1',
   'mecca:A2',
   'mecca:B1',
+  'mecca:B2',
   'yunusEmre:A2',
   'yunusEmre:B1',
 ]);
