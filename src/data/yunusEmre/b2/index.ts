@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { yunusB2PagesGoldFinalEn, yunusB2PagesGoldFinalAr } from './goldAttribution';
 import {
   yunusB2TeacherGuideGoldEn,
@@ -17,12 +18,35 @@ import {
   yunusB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 
+const yunusB2PagesLockedEn = applyB2StoryLanguageLock(yunusB2PagesGoldFinalEn, {
+  language: 'en',
+  blockedHighlights: [
+    'relates to',
+    'adhere to',
+    'coincided with',
+    'cope with',
+    'upside down',
+  ],
+  titleOverrides: {
+    1: { 'h1-1': 'Old Anatolian Turkish', 'h1-2': 'Sûfî' },
+    2: { 'h2-1': 'Historical accounts' },
+    3: { 'h3-1': 'fine arts', 'h3-2': 'hard times' },
+    4: { 'h4-1': 'Mongol invasion', 'h4-2': 'Turkmen rebelled' },
+  },
+  maxUniqueHighlights: 10,
+});
+
+const yunusB2PagesLockedAr = applyB2StoryLanguageLock(yunusB2PagesGoldFinalAr, {
+  language: 'ar',
+  maxUniqueHighlights: 10,
+});
+
 export const yunusEmreB2BookDataEn: BookData = {
   id: 'yunusEmre-b2-en',
   title: 'Stories of the Prophets: Yunus Emre (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: yunusB2PagesGoldFinalEn,
+  pages: yunusB2PagesLockedEn,
   teacherGuide: yunusB2TeacherGuideGoldEn,
   teacherGuideMetadata: yunusB2TeacherGuideMetadataGoldEn,
   selfStudyGuide: yunusB2SelfStudyGuideGoldEn,
@@ -36,7 +60,7 @@ export const yunusEmreB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: يونس إمره (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: yunusB2PagesGoldFinalAr,
+  pages: yunusB2PagesLockedAr,
   teacherGuide: yunusB2TeacherGuideGoldAr,
   teacherGuideMetadata: yunusB2TeacherGuideMetadataGoldAr,
   selfStudyGuide: yunusB2SelfStudyGuideGoldAr,
