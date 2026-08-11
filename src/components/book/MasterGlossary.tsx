@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, Search, GraduationCap, Check, X, RotateCcw, BookOpenCheck } from 'lucide-react';
+import { Volume2, Search, GraduationCap, Check, X, RotateCcw, BookOpenCheck } from '../ui/icons';
 import { PageData, BookData } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';

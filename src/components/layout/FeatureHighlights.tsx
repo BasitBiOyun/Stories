@@ -18,7 +18,7 @@ import {
   Volume2,
   ShieldCheck,
   School
-} from 'lucide-react';
+} from '../ui/icons';
 
 interface AppFeature {
   id: number;

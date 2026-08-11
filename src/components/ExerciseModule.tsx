@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, HelpCircle, ArrowRight, RotateCcw, MessageSquare, Users, GraduationCap } from 'lucide-react';
+import { CheckCircle2, XCircle, HelpCircle, ArrowRight, RotateCcw, MessageSquare, Users, GraduationCap } from './ui/icons';
 import { Exercise, ExerciseType } from '../types';
 import { cn } from '../lib/utils';
 import confetti from 'canvas-confetti';

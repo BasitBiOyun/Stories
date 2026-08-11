@@ -31,7 +31,7 @@ import {
   ShieldCheck,
   School,
   Languages
-} from 'lucide-react';
+} from '../ui/icons';
 
 // @ts-ignore
 import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';

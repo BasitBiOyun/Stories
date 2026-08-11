@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
-import { X, Crown, Download, FileText } from 'lucide-react';
+import { X, Crown, Download, FileText } from '../ui/icons';
 import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
 import { cn } from '../../lib/utils';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';

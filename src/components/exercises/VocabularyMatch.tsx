@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb } from 'lucide-react';
+import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb } from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';

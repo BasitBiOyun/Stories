@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Compass, X, MapPin, Sparkles, AlertCircle } from 'lucide-react';
+import { Compass, X, MapPin, Sparkles, AlertCircle } from '../ui/icons';
 import { PageData, Hotspot } from '../../types';
 import { cn } from '../../lib/utils';
 

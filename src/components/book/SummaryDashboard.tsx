@@ -16,7 +16,7 @@ import {
   Star,
   ChevronRight,
   ChevronLeft
-} from 'lucide-react';
+} from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { cn } from '../../lib/utils';
