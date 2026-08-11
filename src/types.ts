@@ -72,7 +72,7 @@ export interface PageData {
 
 export interface StudentGuideSection {
   title: string;
-  icon?: string; // Icon name from lucide-react
+  icon?: string; // Icon name from the application semantic icon registry
   text: string;
   points: string[];
 }

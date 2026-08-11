@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, BrainCircuit, ArrowRight, CheckCircle2, Book as BookIcon } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, BrainCircuit, ArrowRight, CheckCircle2, Book as BookIcon } from '../ui/icons';
 import { PageData, Exercise } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
 import { SequencingExercise } from '../exercises/SequencingExercise';

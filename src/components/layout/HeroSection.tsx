@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Compass, Clock, Zap, ArrowRight, BookOpen, GraduationCap, Languages } from 'lucide-react';
+import { Compass, Clock, Zap, ArrowRight, BookOpen, GraduationCap, Languages } from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Level } from '../../types';
 import { cn } from '../../lib/utils';

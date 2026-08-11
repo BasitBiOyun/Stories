@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Trophy, Zap, RotateCcw, ArrowRight, CheckCircle2, XCircle, Medal, Target, Book as BookIcon } from 'lucide-react';
+import { Trophy, Zap, RotateCcw, ArrowRight, CheckCircle2, XCircle, Medal, Target, Book as BookIcon } from '../ui/icons';
 import { BookData, Exercise } from '../../types';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';

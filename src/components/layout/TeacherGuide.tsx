@@ -20,7 +20,7 @@ import {
   Link as LinkIcon,
   Award,
   Download
-} from 'lucide-react';
+} from '../ui/icons';
 import { cn } from '../../lib/utils';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection } from '../../types';
