@@ -4,26 +4,25 @@ import type { BookData, PageData, TeacherGuideSection } from '../../src/types';
 import { abrahamA2PagesEn } from '../../src/data/abraham/a2/en/pages';
 import { abrahamA2PagesAr } from '../../src/data/abraham/a2/ar/pages';
 import { abrahamA2BookDataEn, abrahamA2BookDataAr } from '../../src/data/abraham/a2';
-import { abrahamA2GoldConfig, abrahamA2HotspotsGoldEn, abrahamA2HotspotsGoldAr } from '../../src/data/abraham/a2/gold';
+import { abrahamA2GoldConfig } from '../../src/data/abraham/a2/gold';
 
 import { meccaA2Pages } from '../../src/data/mecca/a2/en/pages';
 import { meccaA2PagesAr } from '../../src/data/mecca/a2/ar/pages';
 import { meccaA2BookDataEn, meccaA2BookDataAr } from '../../src/data/mecca/a2';
-import { meccaA2GoldConfig, meccaA2HotspotsGoldEn, meccaA2HotspotsGoldAr } from '../../src/data/mecca/a2/gold';
+import { meccaA2GoldConfig } from '../../src/data/mecca/a2/gold';
 
 import { mosesA2Pages } from '../../src/data/moses/a2/en/pages';
 import { mosesA2PagesAr } from '../../src/data/moses/a2/ar/pages';
 import { mosesA2BookDataEn, mosesA2BookDataAr } from '../../src/data/moses/a2';
-import { mosesA2GoldConfig, mosesA2HotspotsGoldEn, mosesA2HotspotsGoldAr } from '../../src/data/moses/a2/gold';
+import { mosesA2GoldConfig } from '../../src/data/moses/a2/gold';
 
 import { yunusA2Pages } from '../../src/data/yunusEmre/a2/en/pages';
 import { yunusEmreA2PagesAr } from '../../src/data/yunusEmre/a2/ar/pages';
 import { yunusEmreA2BookDataEn, yunusEmreA2BookDataAr } from '../../src/data/yunusEmre/a2';
-import { yunusA2GoldConfig, yunusA2HotspotsGoldEn, yunusA2HotspotsGoldAr } from '../../src/data/yunusEmre/a2/gold';
+import { yunusA2GoldConfig } from '../../src/data/yunusEmre/a2/gold';
 
 const protectedStoryFields = [
-  'id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl',
-  'animatedWords', 'syncPoints', 'timedChunks',
+  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl', 'animatedWords', 'syncPoints',
 ] as const;
 
 const learnerJargon = [
@@ -33,6 +32,39 @@ const learnerJargon = [
 ];
 
 const words = (value: string): number => value.trim().split(/\s+/).filter(Boolean).length;
+
+const normalizeSource = (value: string, language: 'en' | 'ar'): string => {
+  let normalized = value
+    .normalize('NFKC')
+    .replaceAll('**', '')
+    .replace(/\s+/g, ' ')
+    .replace(/[“”]/g, '"')
+    .replace(/[‘’]/g, "'")
+    .toLocaleLowerCase()
+    .trim();
+
+  if (language === 'ar') {
+    normalized = normalized
+      .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
+      .replace(/ـ/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي');
+  }
+
+  return normalized;
+};
+
+const sourceContains = (content: string, excerpt: string, language: 'en' | 'ar'): boolean =>
+  normalizeSource(content, language).includes(normalizeSource(excerpt, language));
+
+const applyApprovedYunusMechanicalFix = (value: string, storyName: string, pageId: number, language: 'en' | 'ar'): string => {
+  if (storyName !== 'Yunus Emre' || language !== 'en' || pageId !== 7) return value;
+  return value.replace(
+    'Yunus replied, “My teacher” “I walked around the fields,',
+    'Yunus replied, “My teacher, I walked around the fields,',
+  );
+};
 
 const allGuideText = (sections: TeacherGuideSection[]): string => sections.flatMap((section) => [
   section.chapter,
@@ -58,26 +90,24 @@ interface GoldConfig {
 }
 
 const validateEdition = ({
+  storyName,
   label,
   language,
   canonicalPages,
   book,
   config,
-  hotspotMap,
   vocabularyPageId,
 }: {
+  storyName: string;
   label: string;
   language: 'en' | 'ar';
   canonicalPages: PageData[];
   book: BookData;
   config: GoldConfig;
-  hotspotMap: Record<string, { title: string; description: string }>;
   vocabularyPageId: number;
 }) => {
   assert.equal(book.pages.length, canonicalPages.length, `${label}: page count changed.`);
   assert.equal(book.level, 'A2', `${label}: level must remain A2.`);
-
-  const expectedHotspotIds = new Set<string>();
 
   for (const id of config.storyIds) {
     const canonical = canonicalPages.find((page) => page.id === id);
@@ -88,6 +118,20 @@ const validateEdition = ({
     for (const field of protectedStoryFields) {
       assert.deepEqual(finalized[field], canonical[field], `${label}: protected field ${field} changed in chapter ${id}.`);
     }
+
+    assert.equal(
+      finalized.content,
+      applyApprovedYunusMechanicalFix(canonical.content, storyName, id, language),
+      `${label}: canonical prose changed beyond the approved mechanical correction in chapter ${id}.`,
+    );
+    assert.deepEqual(
+      finalized.timedChunks,
+      canonical.timedChunks?.map(chunk => ({
+        ...chunk,
+        text: applyApprovedYunusMechanicalFix(chunk.text, storyName, id, language),
+      })),
+      `${label}: timed chunks changed beyond the approved mechanical correction in chapter ${id}.`,
+    );
 
     assert.equal(finalized.exercises?.length, canonical.exercises?.length, `${label}: chapter ${id} Quick Challenge count changed.`);
     assert.ok((finalized.vocabulary?.length || 0) >= 3, `${label}: chapter ${id} needs at least 3 Word Notes items.`);
@@ -101,25 +145,25 @@ const validateEdition = ({
     assert.equal(finalHotspots.length, originalHotspots.length, `${label}: hotspot count changed in chapter ${id}.`);
 
     originalHotspots.forEach((hotspot, index) => {
-      expectedHotspotIds.add(hotspot.id);
       const current = finalHotspots[index];
+      assert.ok(current, `${label}: hotspot ${index + 1} missing in chapter ${id}.`);
       assert.equal(current.id, hotspot.id, `${label}: hotspot id changed in chapter ${id}.`);
       assert.equal(current.x, hotspot.x, `${label}: hotspot x changed for ${hotspot.id}.`);
       assert.equal(current.y, hotspot.y, `${label}: hotspot y changed for ${hotspot.id}.`);
-      assert.ok(hotspotMap[hotspot.id], `${label}: hotspot ${hotspot.id} was not reviewed.`);
-      assert.equal(current.title, hotspotMap[hotspot.id].title, `${label}: hotspot ${hotspot.id} title is not using reviewed copy.`);
-      assert.equal(current.description, hotspotMap[hotspot.id].description, `${label}: hotspot ${hotspot.id} description is not using reviewed copy.`);
-      assert.ok(current.title.trim().length > 0 && current.description.trim().length > 0, `${label}: hotspot ${hotspot.id} is empty.`);
-      assert.ok(!/[.]{3,}|…{2,}/.test(current.description), `${label}: hotspot ${hotspot.id} has broken ellipsis copy.`);
-      if (language === 'en') {
-        assert.ok(words(current.description) <= 28, `${label}: hotspot ${hotspot.id} is too long for A2 (${words(current.description)} words).`);
-      } else {
-        assert.ok(words(current.description) <= 34, `${label}: hotspot ${hotspot.id} is too long for A2 Arabic.`);
-      }
+      assert.ok(current.title.trim(), `${label}: hotspot ${hotspot.id} title is empty.`);
+      assert.ok(current.description.trim(), `${label}: hotspot ${hotspot.id} description is empty.`);
+      assert.ok(words(current.title) <= 4, `${label}: hotspot ${hotspot.id} title exceeds the A2 source-lock limit.`);
+      assert.ok(words(current.description) <= (language === 'en' ? 28 : 34), `${label}: hotspot ${hotspot.id} is too long for A2.`);
+      assert.ok(
+        sourceContains(finalized.content, current.title, language),
+        `${label}: hotspot ${hotspot.id} title is not a direct phrase from the same chapter.`,
+      );
+      assert.ok(
+        sourceContains(finalized.content, current.description, language),
+        `${label}: hotspot ${hotspot.id} description is not a direct extract from the same chapter.`,
+      );
     });
   }
-
-  assert.deepEqual(new Set(Object.keys(hotspotMap)), expectedHotspotIds, `${label}: hotspot review map does not exactly match canonical hotspot IDs.`);
 
   const knowledge = book.pages.find((page) => page.id === config.knowledgeCheckPageId);
   assert.equal(knowledge?.exercises?.length, 8, `${label}: Knowledge Check must have exactly 8 questions.`);
@@ -128,9 +172,7 @@ const validateEdition = ({
   const reviewQuiz = review?.exercises?.find((exercise) => exercise.type === 'quiz-game');
   assert.equal(reviewQuiz?.quizQuestions?.length, 8, `${label}: Review Challenge must have exactly 8 questions.`);
   const reflection = review?.exercises?.find((exercise) => exercise.type === 'reflection');
-  if (reflection) {
-    assert.ok(reflection.feedback.incorrect.trim(), `${label}: reflection needs supportive non-empty incorrect feedback.`);
-  }
+  if (reflection) assert.ok(reflection.feedback.incorrect.trim(), `${label}: reflection needs supportive non-empty incorrect feedback.`);
 
   const finalChallenge = book.pages.find((page) => page.id === config.finalChallengePageId);
   assert.equal(finalChallenge?.exercises?.length, 10, `${label}: Final Challenge must have exactly 10 questions.`);
@@ -171,29 +213,29 @@ const validateEdition = ({
 const books = [
   {
     name: 'Abraham', config: abrahamA2GoldConfig, vocabPage: 16,
-    en: { canonical: abrahamA2PagesEn, book: abrahamA2BookDataEn, map: abrahamA2HotspotsGoldEn },
-    ar: { canonical: abrahamA2PagesAr, book: abrahamA2BookDataAr, map: abrahamA2HotspotsGoldAr },
+    en: { canonical: abrahamA2PagesEn, book: abrahamA2BookDataEn },
+    ar: { canonical: abrahamA2PagesAr, book: abrahamA2BookDataAr },
   },
   {
     name: 'Mecca / Bilal', config: meccaA2GoldConfig, vocabPage: 15,
-    en: { canonical: meccaA2Pages, book: meccaA2BookDataEn, map: meccaA2HotspotsGoldEn },
-    ar: { canonical: meccaA2PagesAr, book: meccaA2BookDataAr, map: meccaA2HotspotsGoldAr },
+    en: { canonical: meccaA2Pages, book: meccaA2BookDataEn },
+    ar: { canonical: meccaA2PagesAr, book: meccaA2BookDataAr },
   },
   {
     name: 'Moses', config: mosesA2GoldConfig, vocabPage: 18,
-    en: { canonical: mosesA2Pages, book: mosesA2BookDataEn, map: mosesA2HotspotsGoldEn },
-    ar: { canonical: mosesA2PagesAr, book: mosesA2BookDataAr, map: mosesA2HotspotsGoldAr },
+    en: { canonical: mosesA2Pages, book: mosesA2BookDataEn },
+    ar: { canonical: mosesA2PagesAr, book: mosesA2BookDataAr },
   },
   {
     name: 'Yunus Emre', config: yunusA2GoldConfig, vocabPage: 10,
-    en: { canonical: yunusA2Pages, book: yunusEmreA2BookDataEn, map: yunusA2HotspotsGoldEn },
-    ar: { canonical: yunusEmreA2PagesAr, book: yunusEmreA2BookDataAr, map: yunusA2HotspotsGoldAr },
+    en: { canonical: yunusA2Pages, book: yunusEmreA2BookDataEn },
+    ar: { canonical: yunusEmreA2PagesAr, book: yunusEmreA2BookDataAr },
   },
 ] as const;
 
 for (const item of books) {
-  validateEdition({ label: `${item.name} A2 English`, language: 'en', canonicalPages: item.en.canonical, book: item.en.book, config: item.config, hotspotMap: item.en.map, vocabularyPageId: item.vocabPage });
-  validateEdition({ label: `${item.name} A2 Arabic`, language: 'ar', canonicalPages: item.ar.canonical, book: item.ar.book, config: item.config, hotspotMap: item.ar.map, vocabularyPageId: item.vocabPage });
+  validateEdition({ storyName: item.name, label: `${item.name} A2 English`, language: 'en', canonicalPages: item.en.canonical, book: item.en.book, config: item.config, vocabularyPageId: item.vocabPage });
+  validateEdition({ storyName: item.name, label: `${item.name} A2 Arabic`, language: 'ar', canonicalPages: item.ar.canonical, book: item.ar.book, config: item.config, vocabularyPageId: item.vocabPage });
 
   assert.equal(item.en.book.pages.length, item.ar.book.pages.length, `${item.name}: EN/AR page-count parity failed.`);
   assert.equal(item.en.book.teacherGuide.length, item.ar.book.teacherGuide.length, `${item.name}: EN/AR Teacher Guide parity failed.`);
@@ -204,10 +246,10 @@ assert.ok(!yunusEmreA2BookDataEn.title.toLowerCase().includes('prophet'), 'Yunus
 assert.ok(!yunusEmreA2BookDataAr.title.includes('الأنبياء'), 'Arabic Yunus Emre metadata must not place him under a prophet title.');
 assert.ok(!meccaA2BookDataEn.title.toLowerCase().includes('stories of the prophets'), 'Bilal/Mecca title must identify the actual subject instead of implying Bilal is a prophet.');
 
-console.log('A2 rollout Gold Standard contract: PASS');
+console.log('A2 rollout source-lock contract: PASS');
 console.log('- Abraham, Mecca/Bilal, Moses, and Yunus Emre checked in English + Arabic');
-console.log('- canonical story text/title/image/audio/timing fields preserved');
-console.log('- every hotspot reviewed; coordinates preserved; copy rewritten where needed');
+console.log('- canonical story text/title/image/audio/timing fields preserved, except the approved Yunus punctuation fix');
+console.log('- every hotspot keeps canonical geometry and uses a short same-chapter source phrase/extract');
 console.log('- chapter Word Notes >= 3; Vocabulary Challenge = 6 reviewed pairs');
 console.log('- Knowledge Check = 8; Review Challenge = 8; Final Challenge = 10');
 console.log('- Master Glossary = 12 + 12');
