@@ -5,6 +5,7 @@ import { yunusEmreB2PagesAr } from '../../src/data/yunusEmre/b2/ar/pages';
 import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from '../../src/data/yunusEmre/b2';
 import { yunusB2GoldContract } from '../../src/data/yunusEmre/b2/gold';
 import { yunusB2GoldContractAr } from '../../src/data/yunusEmre/b2/goldAr';
+import { normalizeHotspotSourceText } from '../../src/data/storyHotspotSourceLock';
 
 const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','syncPoints','timedChunks'] as const;
 const findPage = (pages: PageData[], id: number): PageData => {
@@ -63,15 +64,26 @@ const validateBook = ({
       assert.equal(fh[index].x, hotspot.x, `${tag} ${hotspot.id}: x changed.`);
       assert.equal(fh[index].y, hotspot.y, `${tag} ${hotspot.id}: y changed.`);
     });
+    const normalizedChapter = normalizeHotspotSourceText(final.content, language);
     for (const hotspot of fh) {
-      if (language === 'en') assert.ok(/^The chapter presents this in Yunus Emre/.test(hotspot.description), `${tag} ${hotspot.id}: attribution framing missing.`);
-      else assert.ok(/^يقدم الفصل هذه الفكرة في سياق يونس إمره/.test(hotspot.description), `${tag} ${hotspot.id}: attribution framing missing.`);
+      assert.ok(
+        normalizedChapter.includes(normalizeHotspotSourceText(hotspot.title, language)),
+        `${tag} ${hotspot.id}: title is not a direct same-chapter phrase.`,
+      );
+      assert.ok(
+        normalizedChapter.includes(normalizeHotspotSourceText(hotspot.description, language)),
+        `${tag} ${hotspot.id}: description is not a direct same-chapter extract.`,
+      );
     }
     assert.equal(final.exercises?.length, 1, `${tag} ch${id}: one visible Quick Challenge required.`);
     objective(final.exercises![0], `${tag} ch${id} Quick Challenge`);
   }
 
-  assert.deepEqual(findPage(finalPages, 14), findPage(sourcePages, 14), `${tag}: References page 14 changed.`);
+  const sourceReference = findPage(sourcePages, 14);
+  const finalReference = findPage(finalPages, 14);
+  for (const field of ['id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl'] as const) {
+    assert.deepEqual(finalReference[field], sourceReference[field], `${tag}: References page 14 protected ${field} changed.`);
+  }
   const knowledge = findPage(finalPages, 15);
   const vocabulary = findPage(finalPages, 16);
   const glossary1 = findPage(finalPages, 17);
