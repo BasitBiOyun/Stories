@@ -68,7 +68,11 @@ const stripArabicDiacritics = (text: string): string => text
   .replace(/ـ/g, '');
 
 const normalizeText = (text: string, language: StoryLanguage): string => {
-  let normalized = text.normalize('NFKC').toLowerCase();
+  let normalized = text
+    .replace(/\[\/?POEM\]/gi, ' ')
+    .replace(/\*\*/g, '')
+    .normalize('NFKC')
+    .toLowerCase();
   normalized = normalized.replace(/[’']s\b/g, '');
 
   if (language === 'ar') {
