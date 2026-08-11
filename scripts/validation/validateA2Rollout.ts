@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import type { BookData, PageData, TeacherGuideSection } from '../../src/types';
+import { highlightPhraseOccurs } from '../../src/lib/highlightTextMatch';
 
 import { abrahamA2PagesEn } from '../../src/data/abraham/a2/en/pages';
 import { abrahamA2PagesAr } from '../../src/data/abraham/a2/ar/pages';
@@ -22,7 +23,7 @@ import { yunusEmreA2BookDataEn, yunusEmreA2BookDataAr } from '../../src/data/yun
 import { yunusA2GoldConfig } from '../../src/data/yunusEmre/a2/gold';
 
 const protectedStoryFields = [
-  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl', 'animatedWords', 'syncPoints',
+  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl', 'syncPoints',
 ] as const;
 
 const learnerJargon = [
@@ -138,6 +139,18 @@ const validateEdition = ({
     finalized.vocabulary?.forEach((entry) => {
       assert.ok(entry.word.trim(), `${label}: chapter ${id} has an empty Word Notes word.`);
       assert.ok(entry.definition.trim(), `${label}: chapter ${id} has an empty definition.`);
+    });
+    finalized.vocabulary?.forEach((entry) => {
+      assert.ok(
+        highlightPhraseOccurs(finalized.content, entry.word, language),
+        `${label}: Word Notes item ${entry.word} is not grounded in chapter ${id}.`,
+      );
+    });
+    finalized.animatedWords?.forEach((word) => {
+      assert.ok(
+        highlightPhraseOccurs(finalized.content, word, language),
+        `${label}: animated highlight ${word} is not grounded in chapter ${id}.`,
+      );
     });
 
     const originalHotspots = canonical.hotspots || [];
