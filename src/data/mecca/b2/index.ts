@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   meccaB2PagesGoldEn,
   meccaB2TeacherGuideGoldEn,
@@ -19,14 +20,24 @@ import {
   meccaB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 
-const meccaB2PagesLockedEn = applyB2StoryLanguageLock(meccaB2PagesGoldEn, {
+export const meccaB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(meccaB2PagesGoldEn, {
   language: 'en',
   maxUniqueHighlights: 10,
 });
 
-const meccaB2PagesLockedAr = applyB2StoryLanguageLock(meccaB2PagesGoldAr, {
+export const meccaB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(meccaB2PagesGoldAr, {
   language: 'ar',
   maxUniqueHighlights: 10,
+});
+
+const meccaB2PagesLockedEn = applyHotspotSourceLock(meccaB2PagesBeforeHotspotSourceLockEn, {
+  language: 'en',
+  level: 'B2',
+});
+
+const meccaB2PagesLockedAr = applyHotspotSourceLock(meccaB2PagesBeforeHotspotSourceLockAr, {
+  language: 'ar',
+  level: 'B2',
 });
 
 export const meccaB2BookDataEn: BookData = {
