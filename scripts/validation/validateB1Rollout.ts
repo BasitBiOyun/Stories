@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import type { BookData, Exercise, PageData } from '../../src/types';
 import type { B1GoldPageConfig } from '../../src/data/b1GoldFactory';
+import { highlightPhraseOccurs } from '../../src/lib/highlightTextMatch';
 
 import { adamB1Pages } from '../../src/data/adam/b1/en/pages';
 import { adamB1PagesAr } from '../../src/data/adam/b1/ar/pages';
@@ -30,12 +31,9 @@ import { yunusEmreB1GoldConfig } from '../../src/data/yunusEmre/b1/gold';
 const protectedStoryFields = [
   'id',
   'type',
-  'title',
   'subtitle',
-  'content',
   'image',
   'audioUrl',
-  'animatedWords',
   'syncPoints',
   'timedChunks',
 ] as const;
@@ -103,6 +101,8 @@ const validateAnswerBalance = (exercises: Exercise[], label: string) => {
 };
 
 const validateCase = ({ label, canonical, book, config, minWordNotes = 3 }: Case) => {
+  const language: 'en' | 'ar' = label.endsWith(' AR') ? 'ar' : 'en';
+  const stripApprovedBold = (value: string) => value.replaceAll('**', '');
   assert.equal(book.level, 'B1', `${label}: level changed.`);
   assert.equal(book.pages.length, canonical.length, `${label}: page count changed.`);
   assert.deepEqual(
@@ -118,6 +118,8 @@ const validateCase = ({ label, canonical, book, config, minWordNotes = 3 }: Case
     for (const field of protectedStoryFields) {
       assert.deepEqual(final[field], source[field], `${label} chapter ${id}: protected field ${field} changed.`);
     }
+    assert.equal(final.title, stripApprovedBold(source.title), `${label} chapter ${id}: title changed beyond approved formatting cleanup.`);
+    assert.equal(final.content, stripApprovedBold(source.content), `${label} chapter ${id}: canonical prose changed beyond approved formatting cleanup.`);
 
     const sourceHotspots = source.hotspots ?? [];
     const finalHotspots = final.hotspots ?? [];
@@ -148,6 +150,12 @@ const validateCase = ({ label, canonical, book, config, minWordNotes = 3 }: Case
     vocabulary.forEach((entry) => {
       assert.ok(entry.word.trim(), `${label} chapter ${id}: empty vocabulary word.`);
       assert.ok(entry.definition.trim(), `${label} chapter ${id}: empty vocabulary definition.`);
+    });
+    vocabulary.forEach((entry) => {
+      assert.ok(highlightPhraseOccurs(final.content, entry.word, language), `${label} chapter ${id}: vocabulary ${entry.word} is not grounded in the chapter.`);
+    });
+    final.animatedWords?.forEach((word) => {
+      assert.ok(highlightPhraseOccurs(final.content, word, language), `${label} chapter ${id}: animated highlight ${word} is not grounded in the chapter.`);
     });
   }
 
