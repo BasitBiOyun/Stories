@@ -20,7 +20,18 @@ const applyVocabularyOverrides = (
   };
 });
 
-const correctedBasePagesEn = applyVocabularyOverrides(basePagesEn, {
+const fixApprovedObviousTextSlips = (pages: typeof basePagesEn) => pages.map((page) => {
+  if (page.type !== 'story' || page.id !== 7) return page;
+  return {
+    ...page,
+    content: (page.content || '').replace(
+      'Yunus replied, “My teacher” “I walked around the fields,',
+      'Yunus replied, “My teacher, I walked around the fields,',
+    ),
+  };
+});
+
+const correctedBasePagesEn = applyVocabularyOverrides(fixApprovedObviousTextSlips(basePagesEn), {
   5: {
     wound: { word: 'cuts', definition: 'Painful marks or injuries on the body.' },
   },
