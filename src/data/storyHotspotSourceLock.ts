@@ -143,8 +143,21 @@ const titleIsUsable = (
 
 const rawPhraseWords = (value: string): string[] => value.match(/[\p{L}\p{N}’'’-]+/gu) ?? [];
 
+const isGoodFallbackPhrase = (
+  phraseWords: string[],
+  sentence: string,
+  language: HotspotSourceLanguage,
+): boolean => {
+  if (!phraseWords.length) return false;
+  const stopwords = language === 'ar' ? AR_STOPWORDS : EN_STOPWORDS;
+  const normalized = phraseWords.map(word => normalizeHotspotSourceText(word, language));
+  if (stopwords.has(normalized[0]) || stopwords.has(normalized[normalized.length - 1])) return false;
+  if (phraseWords.length === 1 && /[’']s$/i.test(phraseWords[0])) return false;
+  if (!normalized.some(word => word && !stopwords.has(word))) return false;
+  return titleIsUsable(sentence, phraseWords.join(' '), language);
+};
+
 const fallbackTitle = (
-  content: string,
   requestedTitle: string,
   sentence: string,
   language: HotspotSourceLanguage,
@@ -152,22 +165,30 @@ const fallbackTitle = (
   const requestedWords = rawPhraseWords(requestedTitle);
   for (let size = Math.min(3, requestedWords.length); size >= 1; size -= 1) {
     for (let start = 0; start <= requestedWords.length - size; start += 1) {
-      const phrase = requestedWords.slice(start, start + size).join(' ');
-      if (titleIsUsable(content, phrase, language)) return phrase;
+      const phraseWords = requestedWords.slice(start, start + size);
+      if (isGoodFallbackPhrase(phraseWords, sentence, language)) return phraseWords.join(' ');
     }
   }
 
+  const stopwords = language === 'ar' ? AR_STOPWORDS : EN_STOPWORDS;
   const signal = significantWordSet(requestedTitle, language);
   const sentenceWords = rawPhraseWords(sentence);
   for (const word of sentenceWords) {
     const normalized = normalizeHotspotSourceText(word, language);
-    if (signal.has(normalized) && titleIsUsable(content, word, language)) return word;
+    if (
+      signal.has(normalized)
+      && !stopwords.has(normalized)
+      && !/[’']s$/i.test(word)
+      && titleIsUsable(sentence, word, language)
+    ) return word;
   }
 
-  const stopwords = language === 'ar' ? AR_STOPWORDS : EN_STOPWORDS;
   const useful = sentenceWords.find(word => {
     const normalized = normalizeHotspotSourceText(word, language);
-    return normalized && !stopwords.has(normalized) && !/^\d+$/.test(normalized);
+    return normalized
+      && !stopwords.has(normalized)
+      && !/^\d+$/.test(normalized)
+      && !/[’']s$/i.test(word);
   });
   return useful ?? sentenceWords[0] ?? requestedTitle;
 };
@@ -210,7 +231,7 @@ export const applyHotspotSourceLock = (
         const sourceSentence = ranked[0] ?? content;
         const sourceTitle = titleIsUsable(content, requestedTitle, options.language)
           ? requestedTitle
-          : fallbackTitle(content, requestedTitle, sourceSentence, options.language);
+          : fallbackTitle(requestedTitle, sourceSentence, options.language);
         usedDescriptions.add(normalizeHotspotSourceText(placeDescription, options.language));
         return { ...hotspot, title: sourceTitle, description: placeDescription };
       }
@@ -230,7 +251,7 @@ export const applyHotspotSourceLock = (
 
       const sourceTitle = titleIsUsable(content, currentTitle, options.language)
         ? currentTitle
-        : fallbackTitle(content, currentTitle, sourceDescription, options.language);
+        : fallbackTitle(currentTitle, sourceDescription, options.language);
 
       usedDescriptions.add(normalizeHotspotSourceText(sourceDescription, options.language));
       return { ...hotspot, title: sourceTitle, description: sourceDescription };
