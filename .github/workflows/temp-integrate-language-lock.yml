@@ -1,0 +1,78 @@
+name: TEMP Integrate Language Lock
+
+on:
+  push:
+    branches: [integration-work]
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore validated language-lock files
+        run: |
+          set -euo pipefail
+          git fetch origin recover-story-language-lock-zero
+          files=(
+            scripts/validation/validateStoryLanguageLock.ts
+            src/data/a2FinalStoryLanguageLock.ts
+            src/data/abraham/a2/index.ts
+            src/data/adam/a2/index.ts
+            src/data/adam/b1/index.ts
+            src/data/highlightSourceLock.ts
+            src/data/mecca/a2/index.ts
+            src/data/mecca/b1/index.ts
+            src/data/moses/a2/index.ts
+            src/data/moses/b1/rollout.ts
+            src/data/storyHotspotSourceLock.ts
+            src/data/stripUnsupportedMarkdown.ts
+            src/data/yunusEmre/a2/index.ts
+            src/data/yunusEmre/b1/index.ts
+            src/lib/highlightTextMatch.ts
+          )
+          for f in "${files[@]}"; do
+            git show origin/recover-story-language-lock-zero:"$f" > "$f"
+          done
+      - name: Merge Yunus B2 language lock with references fix
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/data/yunusEmre/b2/index.ts')
+          s = p.read_text()
+          s = s.replace("import { BookData } from '../../../types';", "import { BookData, PageData } from '../../../types';")
+          anchor = "export const yunusB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock"
+          helper = """const groundTransoxianaSurfaceForm = (pages: PageData[]): PageData[] => pages.map((page) => {\n  if (page.type !== 'story' || page.id !== 7) return page;\n  const from = 'مَا وَرَاءِ النَّهْرِ';\n  const to = 'وَمَا وَرَاءِ النَّهْرِ';\n  return {\n    ...page,\n    vocabulary: page.vocabulary?.map(entry => entry.word === from ? { ...entry, word: to } : entry),\n    animatedWords: page.animatedWords?.map(word => word === from ? to : word),\n  };\n});\n\n"""
+          if 'const groundTransoxianaSurfaceForm' not in s:
+              s = s.replace(anchor, helper + anchor)
+          old = """export const yunusB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(yunusB2GoldFinalArWithoutReferenceExercise, {\n  language: 'ar',\n  maxUniqueHighlights: 10,\n});"""
+          new = """export const yunusB2PagesBeforeHotspotSourceLockAr = groundTransoxianaSurfaceForm(applyB2StoryLanguageLock(yunusB2GoldFinalArWithoutReferenceExercise, {\n  language: 'ar',\n  maxUniqueHighlights: 10,\n}));"""
+          if old not in s:
+              raise SystemExit('expected Yunus B2 Arabic lock block not found')
+          s = s.replace(old, new)
+          p.write_text(s)
+          PY
+      - name: Remove generic keyword fallback at runtime
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/components/book/StoryPage.tsx')
+          s = p.read_text()
+          count = s.count("return t('nav.keyWordFallback');")
+          if count != 2:
+              raise SystemExit(f'expected 2 runtime fallback returns, found {count}')
+          s = s.replace("return t('nav.keyWordFallback');", "return '';")
+          p.write_text(s)
+          PY
+      - name: Commit integration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/validation/validateStoryLanguageLock.ts src/data src/lib/highlightTextMatch.ts src/components/book/StoryPage.tsx
+          git commit -m "integrate validated language lock with guide fixes"
+          git push origin HEAD:integration-work
