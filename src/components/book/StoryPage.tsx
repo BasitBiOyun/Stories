@@ -338,7 +338,7 @@ export const StoryPage = ({
         return v;
       }
     }
-    return t('nav.keyWordFallback');
+    return '';
   };
 
   const getArabicDefinition = (text: string) => {
@@ -386,7 +386,7 @@ export const StoryPage = ({
         return v;
       }
     }
-    return t('nav.keyWordFallback');
+    return '';
   };
 
   const mouseX = useMotionValue(0);

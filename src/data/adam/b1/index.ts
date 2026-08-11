@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { applyHighlightSurfaceForms } from '../../highlightSourceLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB1StudentGuideText, adamB1StudentGuideMetadata, adamB1StudentGuideSections } from './en/selfStudyGuide';
@@ -16,7 +17,10 @@ const adamB1PagesLockedEn = applyHotspotSourceLock(adamB1PagesGoldEn, {
     11: { 'h11-1': 'Raven', 'h11-2': 'Anger' },
   },
 });
-const adamB1PagesLockedAr = applyHotspotSourceLock(adamB1PagesGoldAr, { language: 'ar', level: 'B1' });
+const adamB1PagesLockedAr = applyHighlightSurfaceForms(
+  applyHotspotSourceLock(adamB1PagesGoldAr, { language: 'ar', level: 'B1' }),
+  'ar',
+);
 const adamB1GuidesEn = buildB1EvidenceGuides(adamB1PagesLockedEn, 'en');
 const adamB1GuidesAr = buildB1EvidenceGuides(adamB1PagesLockedAr, 'ar');
 

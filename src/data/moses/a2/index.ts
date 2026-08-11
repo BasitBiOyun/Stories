@@ -1,5 +1,5 @@
 import { BookData } from '../../../types';
-import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
+import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import {
   mosesA2PagesFinalAr,
   mosesA2PagesFinalEn,
@@ -17,8 +17,8 @@ import {
   mosesA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const mosesA2PagesLockedEn = applyA2HotspotSourceLock(mosesA2PagesFinalEn, 'musa', 'en');
-const mosesA2PagesLockedAr = applyA2HotspotSourceLock(mosesA2PagesFinalAr, 'musa', 'ar');
+const mosesA2PagesLockedEn = applyA2FinalStoryLanguageLock(mosesA2PagesFinalEn, 'musa', 'en');
+const mosesA2PagesLockedAr = applyA2FinalStoryLanguageLock(mosesA2PagesFinalAr, 'musa', 'ar');
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
