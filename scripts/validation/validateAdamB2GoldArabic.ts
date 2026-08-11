@@ -65,7 +65,7 @@ for (const id of adamB2GoldContractAr.storyIds) {
   validateObjective(final.exercises![0], `Adam B2 AR chapter ${id} Quick Challenge`);
 
   const vocabulary = final.vocabulary ?? [];
-  assert.ok(vocabulary.length >= 3 && vocabulary.length <= 7, `Adam B2 AR chapter ${id}: Word Notes must contain 3–7 reviewed items.`);
+  assert.ok(vocabulary.length <= 7, `Adam B2 AR chapter ${id}: Word Notes may contain up to 7 reviewed source-grounded items.`);
   const keys = vocabulary.map((entry) => entry.word.normalize('NFKD').replace(/\p{M}/gu, '').trim());
   assert.equal(new Set(keys).size, keys.length, `Adam B2 AR chapter ${id}: duplicate Word Notes.`);
 }

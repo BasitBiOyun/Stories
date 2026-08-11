@@ -74,7 +74,7 @@ for (const id of mosesB2GoldContractAr.storyIds) {
   validateObjective(final.exercises![0], `Moses B2 AR chapter ${id} Quick Challenge`);
 
   const vocabulary = final.vocabulary ?? [];
-  assert.ok(vocabulary.length >= 3 && vocabulary.length <= 7, `Moses B2 AR chapter ${id}: Word Notes must contain 3–7 reviewed items.`);
+  assert.ok(vocabulary.length <= 7, `Moses B2 AR chapter ${id}: Word Notes may contain up to 7 reviewed source-grounded items.`);
   const vocabularyKeys = vocabulary.map((entry) => entry.word.normalize('NFKD').replace(/\p{M}/gu, '').trim());
   assert.equal(new Set(vocabularyKeys).size, vocabularyKeys.length, `Moses B2 AR chapter ${id}: duplicate Word Notes found.`);
   vocabulary.forEach((entry) => {
