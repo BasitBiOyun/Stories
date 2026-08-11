@@ -3,6 +3,7 @@ import type { BookData } from '../../src/types';
 import { adamB1BookDataEn, adamB1BookDataAr } from '../../src/data/adam/b1';
 import { meccaB1BookDataEn, meccaB1BookDataAr } from '../../src/data/mecca/b1';
 import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from '../../src/data/yunusEmre/b1';
+import { normalizeHotspotSourceText } from '../../src/data/storyHotspotSourceLock';
 
 const normalize = (value: string, language: 'en' | 'ar'): string => {
   let result = value
@@ -27,16 +28,16 @@ const normalize = (value: string, language: 'en' | 'ar'): string => {
 
 const assertSourceGroundedHotspots = (book: BookData, language: 'en' | 'ar') => {
   for (const story of book.pages.filter(candidate => candidate.type === 'story')) {
-    const chapter = normalize(story.content, language);
+    const chapter = normalizeHotspotSourceText(story.content, language);
     for (const current of story.hotspots ?? []) {
       assert.ok(current.title.trim(), `${book.id} ${current.id}: hotspot title is empty.`);
       assert.ok(current.description.trim(), `${book.id} ${current.id}: hotspot description is empty.`);
       assert.ok(
-        chapter.includes(normalize(current.title, language)),
+        chapter.includes(normalizeHotspotSourceText(current.title, language)),
         `${book.id} ${current.id}: hotspot title is not a direct phrase from its own chapter.`,
       );
       assert.ok(
-        chapter.includes(normalize(current.description, language)),
+        chapter.includes(normalizeHotspotSourceText(current.description, language)),
         `${book.id} ${current.id}: hotspot description is not a direct extract from its own chapter.`,
       );
     }
