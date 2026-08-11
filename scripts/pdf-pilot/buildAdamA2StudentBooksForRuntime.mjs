@@ -6,6 +6,8 @@ const ROOT = process.cwd();
 const OUTPUT = path.resolve(ROOT, process.env.PUBLICATION_OUT || 'artifacts/runtime-publications');
 const WORK = path.join(OUTPUT, '.work');
 const TSX = path.join(ROOT, 'node_modules/.bin/tsx');
+const EN_PDF = 'Adam_A2_English_Student_Book_Gold.pdf';
+const AR_PDF = 'Adam_A2_Arabic_Student_Book_Gold.pdf';
 
 const run = (command, args, options = {}) => {
   const result = spawnSync(command, args, {
@@ -19,7 +21,13 @@ const run = (command, args, options = {}) => {
 
 const vivlio = (input, output) => run('vivliostyle', ['build', input, '--size', 'A4', '--output', output]);
 
-rmSync(OUTPUT, { recursive: true, force: true });
+// PUBLICATION_OUT may be a directory created/chowned by the container build.
+// Do not unlink the directory itself: its parent can be root-owned even when
+// the publication directory is writable by the Vivliostyle user.
+mkdirSync(OUTPUT, { recursive: true });
+rmSync(WORK, { recursive: true, force: true });
+rmSync(path.join(OUTPUT, EN_PDF), { force: true });
+rmSync(path.join(OUTPUT, AR_PDF), { force: true });
 mkdirSync(WORK, { recursive: true });
 
 console.log('[Adam A2 static PDFs] Validate learning-source structure');
@@ -68,8 +76,8 @@ const buildBook = (language, outputName) => {
   console.log(`[Adam A2 static PDFs] Ready: ${finalPdf}`);
 };
 
-buildBook('en', 'Adam_A2_English_Student_Book_Gold.pdf');
-buildBook('ar', 'Adam_A2_Arabic_Student_Book_Gold.pdf');
+buildBook('en', EN_PDF);
+buildBook('ar', AR_PDF);
 
 rmSync(WORK, { recursive: true, force: true });
 console.log('[Adam A2 static PDFs] PASS - two ready student books');
