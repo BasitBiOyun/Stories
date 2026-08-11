@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
 import {
   mosesA2PagesFinalAr,
   mosesA2PagesFinalEn,
@@ -16,12 +17,15 @@ import {
   mosesA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
+const mosesA2PagesLockedEn = applyA2HotspotSourceLock(mosesA2PagesFinalEn, 'musa', 'en');
+const mosesA2PagesLockedAr = applyA2HotspotSourceLock(mosesA2PagesFinalAr, 'musa', 'ar');
+
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: mosesA2PagesFinalEn,
+  pages: mosesA2PagesLockedEn,
   teacherGuide: mosesA2TeacherGuideFinalEn,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: mosesA2SelfStudyGuideFinalEn,
@@ -35,7 +39,7 @@ export const mosesA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: mosesA2PagesFinalAr,
+  pages: mosesA2PagesLockedAr,
   teacherGuide: mosesA2TeacherGuideFinalAr,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: mosesA2SelfStudyGuideFinalAr,
