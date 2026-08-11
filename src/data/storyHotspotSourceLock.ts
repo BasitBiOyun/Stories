@@ -45,9 +45,7 @@ export const normalizeHotspotSourceText = (
 ): string => {
   let text = value.normalize('NFKC').toLowerCase();
   if (language === 'ar') {
-    text = text
-      .replace(/\u064B\u0627/g, '')
-      .pipe?.(() => text) ?? text;
+    text = text.replace(/\u064B\u0627/g, '');
     text = stripArabicDiacritics(text)
       .replace(/[أإآٱ]/g, 'ا')
       .replace(/ى/g, 'ي')
