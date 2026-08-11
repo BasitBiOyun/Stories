@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   abrahamB2PagesGoldEn,
   abrahamB2TeacherGuideGoldEn,
@@ -19,14 +20,24 @@ import {
   abrahamB2SelfStudyGuideGoldAr,
 } from './goldAr';
 
-const abrahamB2PagesLockedEn = applyB2StoryLanguageLock(abrahamB2PagesGoldEn, {
+export const abrahamB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(abrahamB2PagesGoldEn, {
   language: 'en',
   maxUniqueHighlights: 10,
 });
 
-const abrahamB2PagesLockedAr = applyB2StoryLanguageLock(abrahamB2PagesGoldAr, {
+export const abrahamB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(abrahamB2PagesGoldAr, {
   language: 'ar',
   maxUniqueHighlights: 10,
+});
+
+const abrahamB2PagesLockedEn = applyHotspotSourceLock(abrahamB2PagesBeforeHotspotSourceLockEn, {
+  language: 'en',
+  level: 'B2',
+});
+
+const abrahamB2PagesLockedAr = applyHotspotSourceLock(abrahamB2PagesBeforeHotspotSourceLockAr, {
+  language: 'ar',
+  level: 'B2',
 });
 
 export const abrahamB2BookDataEn: BookData = {
