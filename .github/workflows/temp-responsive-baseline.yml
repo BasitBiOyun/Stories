@@ -10,7 +10,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,15 +18,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Inventory icon imports
-        run: |
-          node - <<'NODE'
-          const fs=require('fs'), path=require('path'); const out=new Set(), files=[];
-          const walk=d=>fs.readdirSync(d,{withFileTypes:true}).forEach(e=>{const p=path.join(d,e.name);e.isDirectory()?walk(p):/\.tsx?$/.test(e.name)&&files.push(p)}); walk('src');
-          for(const f of files){const s=fs.readFileSync(f,'utf8'); for(const m of s.matchAll(/import\s*\{([^}]*)\}\s*from\s*['\"]lucide-react['\"]/g)){for(const n of m[1].split(',').map(x=>x.trim()).filter(Boolean))out.add(n.split(/\s+as\s+/)[0]);}}
-          console.log('LUCIDE_SYMBOLS='+[...out].sort().join(','));
-          console.log('LUCIDE_FILES='+files.filter(f=>fs.readFileSync(f,'utf8').includes('lucide-react')).join(','));
-          NODE
       - name: Install browser audit dependency
         run: npm install --no-save --no-package-lock playwright@1.55.0
       - name: Start Vite
@@ -43,10 +34,9 @@ jobs:
           (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true}); let failed=false;
             for(const [width,height] of sizes){
               const page=await browser.newPage({viewport:{width,height}});
-              await page.goto('http://127.0.0.1:3000',{waitUntil:'domcontentloaded',timeout:15000});
-              await page.waitForTimeout(350);
+              await page.goto('http://127.0.0.1:3000',{waitUntil:'networkidle'});
               const input=page.locator('input[placeholder="Access Code"]');
-              if(await input.count()){await input.fill('stories_enar'); await page.locator('button[type="submit"]').click(); await page.waitForTimeout(350);}
+              if(await input.count()){await input.fill('stories_enar'); await page.locator('button[type="submit"]').click(); await page.waitForTimeout(500);}
               const m=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth,bw:document.body.scrollWidth,iw:innerWidth}));
               const overflow=Math.max(m.sw,m.bw)-m.cw;
               console.log(`HOME ${width}x${height} overflow=${overflow} metrics=${JSON.stringify(m)}`);
