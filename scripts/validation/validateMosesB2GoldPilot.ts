@@ -12,7 +12,6 @@ const protectedStoryFields = [
   'content',
   'image',
   'audioUrl',
-  'animatedWords',
   'syncPoints',
   'timedChunks',
 ] as const;
