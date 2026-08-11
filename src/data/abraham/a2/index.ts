@@ -1,5 +1,5 @@
 import { BookData } from '../../../types';
-import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
+import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import {
   abrahamA2PagesFinalAr,
   abrahamA2PagesFinalEn,
@@ -17,8 +17,8 @@ import {
   abrahamA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const abrahamA2PagesLockedEn = applyA2HotspotSourceLock(abrahamA2PagesFinalEn, 'ibrahim', 'en');
-const abrahamA2PagesLockedAr = applyA2HotspotSourceLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar');
+const abrahamA2PagesLockedEn = applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en');
+const abrahamA2PagesLockedAr = applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar');
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',

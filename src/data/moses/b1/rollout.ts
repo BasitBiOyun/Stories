@@ -1,3 +1,4 @@
+import type { PageData } from '../../../types';
 import { applyB1GoldPages, sanitizeB1TeacherGuide, type B1GoldPageConfig } from '../../b1GoldFactory';
 import { applyB1StoryLanguageLock } from '../../b1StoryLanguageLock';
 import { mosesB1PagesFinalEn, mosesB1TeacherGuideFinalEn, mosesB1GoldContract } from './goldFinal';
@@ -37,11 +38,29 @@ const titleOverridesAr = {
   13: { 'h13-1': 'انْشَقَّ', 'h13-2': 'فَانْطَبَقَ' },
 } as const;
 
-export const mosesB1PagesRolloutEn = applyB1StoryLanguageLock(mosesB1PagesFinalEn, {
+const groundReviewedEnglishVocabulary = (pages: PageData[]): PageData[] => pages.map((page) => {
+  if (page.type !== 'story') return page;
+  const replacements: Record<number, Record<string, string>> = {
+    7: { 'wait your turn': 'wait our turn' },
+    12: { 'keep secret': 'keep it secret' },
+  };
+  const pageReplacements = replacements[page.id];
+  if (!pageReplacements) return page;
+
+  return {
+    ...page,
+    vocabulary: page.vocabulary?.map((entry) => ({
+      ...entry,
+      word: pageReplacements[entry.word.toLowerCase()] ?? entry.word,
+    })),
+  };
+});
+
+export const mosesB1PagesRolloutEn = groundReviewedEnglishVocabulary(applyB1StoryLanguageLock(mosesB1PagesFinalEn, {
   language: 'en',
   titleOverrides: titleOverridesEn,
   maxUniqueHighlights: 8,
-});
+}));
 export const mosesB1TeacherGuideRolloutEn = mosesB1TeacherGuideFinalEn;
 
 const mosesB1PagesGoldAr = applyB1GoldPages({

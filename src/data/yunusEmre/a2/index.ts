@@ -1,5 +1,5 @@
 import { BookData } from '../../../types';
-import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
+import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import {
   yunusA2PagesFinalAr,
   yunusA2PagesFinalEn,
@@ -17,8 +17,8 @@ import {
   yunusA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const yunusA2PagesLockedEn = applyA2HotspotSourceLock(yunusA2PagesFinalEn, 'yunusEmre', 'en');
-const yunusA2PagesLockedAr = applyA2HotspotSourceLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar');
+const yunusA2PagesLockedEn = applyA2FinalStoryLanguageLock(yunusA2PagesFinalEn, 'yunusEmre', 'en');
+const yunusA2PagesLockedAr = applyA2FinalStoryLanguageLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar');
 
 export const yunusEmreA2BookDataEn: BookData = {
   id: 'yunusEmre-a2-en',

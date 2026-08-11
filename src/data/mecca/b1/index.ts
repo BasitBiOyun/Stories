@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { applyHighlightSurfaceForms } from '../../highlightSourceLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1StudentGuideSections, meccaB1StudentGuideText, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
@@ -18,7 +19,10 @@ const meccaB1PagesLockedEn = applyHotspotSourceLock(meccaB1PagesGoldEn, {
     13: { 'h13-1': 'Bilal' },
   },
 });
-const meccaB1PagesLockedAr = applyHotspotSourceLock(meccaB1PagesGoldAr, { language: 'ar', level: 'B1' });
+const meccaB1PagesLockedAr = applyHighlightSurfaceForms(
+  applyHotspotSourceLock(meccaB1PagesGoldAr, { language: 'ar', level: 'B1' }),
+  'ar',
+);
 const meccaB1GuidesEn = buildB1EvidenceGuides(meccaB1PagesLockedEn, 'en');
 const meccaB1GuidesAr = buildB1EvidenceGuides(meccaB1PagesLockedAr, 'ar');
 

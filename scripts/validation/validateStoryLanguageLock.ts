@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
+import { highlightPhraseOccurs } from '../../src/lib/highlightTextMatch';
 import type { BookData, PageData } from '../../src/types';
 import {
   legacyStoryLanguageBookKeys,
@@ -76,8 +77,6 @@ const normalizeText = (text: string, language: StoryLanguage): string => {
   normalized = normalized.replace(/[’']s\b/g, '');
 
   if (language === 'ar') {
-    // Arabic accusative indefinite case adds fathatan + alif to the same lexical word
-    // (for example رسولًا vs رسول). Remove only that case ending before diacritic stripping.
     normalized = normalized.replace(/\u064B\u0627/g, '');
     normalized = stripArabicDiacritics(normalized)
       .replace(/[أإآٱ]/g, 'ا')
@@ -126,26 +125,9 @@ const significantTokens = (text: string, language: StoryLanguage): string[] => (
   tokenize(text, language).filter(token => !isStopword(token, language) && !/^\d+$/.test(token))
 );
 
-const containsTokenSequence = (content: string, phrase: string, language: StoryLanguage): boolean => {
-  const contentTokens = significantTokens(content, language);
-  const phraseTokens = significantTokens(phrase, language);
-
-  if (!phraseTokens.length) return false;
-  if (phraseTokens.length === 1) return contentTokens.includes(phraseTokens[0]);
-
-  for (let start = 0; start <= contentTokens.length - phraseTokens.length; start += 1) {
-    let matches = true;
-    for (let offset = 0; offset < phraseTokens.length; offset += 1) {
-      if (contentTokens[start + offset] !== phraseTokens[offset]) {
-        matches = false;
-        break;
-      }
-    }
-    if (matches) return true;
-  }
-
-  return false;
-};
+const containsTokenSequence = (content: string, phrase: string, language: StoryLanguage): boolean => (
+  highlightPhraseOccurs(content, phrase, language)
+);
 
 const isDirectChapterExtract = (
   content: string,
@@ -166,6 +148,8 @@ const markerAppearsOnlyInHotspot = (content: string, hotspotText: string, langua
   });
 };
 
+const containsRawBoldMarkdown = (value: unknown): boolean => typeof value === 'string' && value.includes('**');
+
 const collectPageViolations = (
   bookKey: string,
   language: StoryLanguage,
@@ -178,6 +162,9 @@ const collectPageViolations = (
   const label = `${bookKey}:${language} page ${page.id}`;
   const content = page.content ?? '';
 
+  if (containsRawBoldMarkdown(page.title)) violations.push(`${label}: title contains unsupported raw ** markdown.`);
+  if (containsRawBoldMarkdown(content)) violations.push(`${label}: content contains unsupported raw ** markdown.`);
+
   for (const hotspot of page.hotspots ?? []) {
     const hotspotLabel = `${label} hotspot ${hotspot.id}`;
     const title = hotspot.title ?? '';
@@ -185,6 +172,9 @@ const collectPageViolations = (
 
     if (!title.trim()) violations.push(`${hotspotLabel}: title is empty.`);
     if (!description.trim()) violations.push(`${hotspotLabel}: description is empty.`);
+    if (containsRawBoldMarkdown(title) || containsRawBoldMarkdown(description)) {
+      violations.push(`${hotspotLabel}: contains unsupported raw ** markdown.`);
+    }
 
     const titleWordCount = normalizeText(title, language).split(' ').filter(Boolean).length;
     if (titleWordCount > MAX_HOTSPOT_TITLE_WORDS) {
@@ -232,6 +222,18 @@ const collectPageViolations = (
     }
     if (!containsTokenSequence(content, item.text, language)) {
       violations.push(`${label}: ${item.kind} "${item.text}" does not occur in this chapter.`);
+    }
+  }
+
+  for (const vocabulary of page.vocabulary ?? []) {
+    if (containsRawBoldMarkdown(vocabulary.word) || containsRawBoldMarkdown(vocabulary.definition)) {
+      violations.push(`${label}: vocabulary contains unsupported raw ** markdown.`);
+    }
+  }
+
+  for (const exercise of page.exercises ?? []) {
+    if (JSON.stringify(exercise).includes('**')) {
+      violations.push(`${label}: exercise ${exercise.id} contains unsupported raw ** markdown.`);
     }
   }
 

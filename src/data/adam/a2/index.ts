@@ -1,5 +1,5 @@
 import { BookData } from '../../../types';
-import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
+import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
 import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
@@ -8,8 +8,8 @@ import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } f
 import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr, adamA2StudentGuideTextAr } from './ar/selfStudyGuide';
 
-const adamA2PagesLockedEn = applyA2HotspotSourceLock(adamA2PagesQualityFinalized, 'adam', 'en');
-const adamA2PagesLockedAr = applyA2HotspotSourceLock(adamA2PagesArQualityFinalized, 'adam', 'ar');
+const adamA2PagesLockedEn = applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en');
+const adamA2PagesLockedAr = applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar');
 
 export const adamA2BookDataEn: BookData = {
   id: 'a2-prophets-en',

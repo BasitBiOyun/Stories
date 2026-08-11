@@ -1,7 +1,7 @@
 import type { PageData } from '../types';
 
 export type HotspotSourceLanguage = 'en' | 'ar';
-export type HotspotSourceLevel = 'B1' | 'B2';
+export type HotspotSourceLevel = 'A2' | 'B1' | 'B2';
 
 export interface HotspotSourceText {
   title?: string;
@@ -21,6 +21,7 @@ export interface HotspotSourceLockOptions {
 }
 
 const MAX_DESCRIPTION_WORDS: Record<HotspotSourceLevel, number> = {
+  A2: 26,
   B1: 34,
   B2: 42,
 };
@@ -97,15 +98,26 @@ const sourceSentences = (
   maxWords: number,
 ): string[] => {
   const cleaned = cleanStoryText(content);
-  const candidates = (cleaned.match(/[^.!?؟]+(?:[.!?؟]+[”"’']*|$)/gu) ?? [cleaned])
+  const sentences = (cleaned.match(/[^.!?؟]+(?:[.!?؟]+[”"’']*|$)/gu) ?? [cleaned])
     .map(sentence => sentence.trim())
     .filter(Boolean);
 
-  const short = candidates.filter(sentence => {
+  const expanded: string[] = [];
+  for (const sentence of sentences) {
+    expanded.push(sentence);
+    if (words(sentence, language).length > maxWords) {
+      for (const clause of sentence.split(/[,،;؛:]+/u).map(item => item.trim()).filter(Boolean)) {
+        if (clause !== sentence) expanded.push(clause);
+      }
+    }
+  }
+
+  const deduped = [...new Set(expanded)];
+  const short = deduped.filter(sentence => {
     const count = words(sentence, language).length;
     return count >= 2 && count <= maxWords;
   });
-  return short.length ? short : candidates;
+  return short.length ? short : sentences;
 };
 
 const significantWordSet = (
@@ -197,7 +209,7 @@ const fallbackTitle = (
 };
 
 /**
- * Strict B1/B2 hotspot gate.
+ * Strict A2/B1/B2 hotspot gate.
  *
  * Normal hotspot descriptions must be direct extracts from the same chapter.
  * Titles must be short phrases that occur in the same chapter. The only
