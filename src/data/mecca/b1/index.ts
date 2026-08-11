@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1StudentGuideSections, meccaB1StudentGuideText, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
 
@@ -7,15 +8,17 @@ import { meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1StudentGuideSectionsAr, meccaB1StudentGuideTextAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { meccaB1PagesGoldEn, meccaB1PagesGoldAr } from './gold';
 
-const meccaB1GuidesEn = buildB1EvidenceGuides(meccaB1PagesGoldEn, 'en');
-const meccaB1GuidesAr = buildB1EvidenceGuides(meccaB1PagesGoldAr, 'ar');
+const meccaB1PagesLockedEn = applyHotspotSourceLock(meccaB1PagesGoldEn, { language: 'en', level: 'B1' });
+const meccaB1PagesLockedAr = applyHotspotSourceLock(meccaB1PagesGoldAr, { language: 'ar', level: 'B1' });
+const meccaB1GuidesEn = buildB1EvidenceGuides(meccaB1PagesLockedEn, 'en');
+const meccaB1GuidesAr = buildB1EvidenceGuides(meccaB1PagesLockedAr, 'ar');
 
 export const meccaB1BookDataEn: BookData = {
   id: 'mecca-b1-en',
   title: 'Stories of the Prophets: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: meccaB1PagesGoldEn,
+  pages: meccaB1PagesLockedEn,
   teacherGuide: meccaB1GuidesEn.teacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadata,
   selfStudyGuide: meccaB1GuidesEn.selfStudyGuide,
@@ -29,7 +32,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: meccaB1PagesGoldAr,
+  pages: meccaB1PagesLockedAr,
   teacherGuide: meccaB1GuidesAr.teacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
   selfStudyGuide: meccaB1GuidesAr.selfStudyGuide,
