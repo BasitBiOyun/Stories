@@ -59,6 +59,7 @@ export const legacyStoryLanguageSnapshots: readonly LegacyStoryLanguageSnapshot[
  * satisfy the strict validator. During rollout we will promote A2, then B1, then B2.
  */
 export const lockedStoryLanguageBooks = new Set<string>([
+  'adam:A2',
 ]);
 
 export const legacyStoryLanguageBookKeys = new Set(
