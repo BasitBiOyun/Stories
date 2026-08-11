@@ -46,20 +46,21 @@ export const applyHighlightSurfaceForms = (
   const content = page.content ?? '';
 
   const vocabulary = page.vocabulary?.map((entry) => {
-    const normalizedEntry = normalizeHighlightText(entry.word, language);
-    const normalizedContent = normalizeHighlightText(content, language);
-    if (normalizedEntry && normalizedContent.includes(normalizedEntry)) return entry;
     if (!highlightPhraseOccurs(content, entry.word, language)) return entry;
     const surface = findSurfacePhrase(content, entry.word, language);
-    return surface ? { ...entry, word: surface } : entry;
+    if (!surface) return entry;
+    return normalizeHighlightText(surface, language) === normalizeHighlightText(entry.word, language)
+      ? entry
+      : { ...entry, word: surface };
   });
 
   const animatedWords = page.animatedWords?.map((word) => {
-    const normalizedWord = normalizeHighlightText(word, language);
-    const normalizedContent = normalizeHighlightText(content, language);
-    if (normalizedWord && normalizedContent.includes(normalizedWord)) return word;
     if (!highlightPhraseOccurs(content, word, language)) return word;
-    return findSurfacePhrase(content, word, language) ?? word;
+    const surface = findSurfacePhrase(content, word, language);
+    if (!surface) return word;
+    return normalizeHighlightText(surface, language) === normalizeHighlightText(word, language)
+      ? word
+      : surface;
   });
 
   return { ...page, vocabulary, animatedWords };
