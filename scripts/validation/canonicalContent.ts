@@ -33,10 +33,10 @@ const outputArgIndex = args.indexOf('--output');
 const outputPath = outputArgIndex >= 0 ? resolve(args[outputArgIndex + 1]) : defaultPath;
 
 /**
- * The story prose is locked. Three previously approved mechanical corrections are
- * intentionally normalized back to their baseline spelling only for hash comparison,
- * so the baseline remains strict without treating those approved typo/punctuation fixes
- * as a semantic rewrite.
+ * The story prose is locked. Previously approved mechanical corrections are
+ * intentionally normalized back to their baseline spelling/format only for
+ * comparison, so the canonical guard stays strict without treating those
+ * approved typo/punctuation/unsupported-markdown fixes as semantic rewrites.
  */
 const normalizeApprovedMechanicalFixesForBaseline = (
   storyId: string,
@@ -45,7 +45,13 @@ const normalizeApprovedMechanicalFixesForBaseline = (
   pageId: number,
   content: string,
 ): string => {
-  if (level !== 'A2' || language !== 'en') return content;
+  if (language !== 'en') return content;
+
+  if (storyId === 'yunusEmre' && level === 'B1' && pageId === 8) {
+    return content.replaceAll('Tawhid', '**Tawhid**');
+  }
+
+  if (level !== 'A2') return content;
 
   if (storyId === 'adam' && pageId === 7) {
     return content.replaceAll('They also had lots of children.', 'They had also lots of children.');
@@ -63,6 +69,19 @@ const normalizeApprovedMechanicalFixesForBaseline = (
   return content;
 };
 
+const normalizeApprovedMechanicalTitleForBaseline = (
+  storyId: string,
+  level: string,
+  language: 'en' | 'ar',
+  pageId: number,
+  title: string,
+): string => {
+  if (storyId === 'yunusEmre' && level === 'B1' && language === 'en' && pageId === 8) {
+    return title.replaceAll('Tawhid', '**Tawhid**');
+  }
+  return title;
+};
+
 const createBaseline = async (): Promise<CanonicalBaseline> => {
   const books: CanonicalBookRecord[] = [];
 
@@ -78,7 +97,13 @@ const createBaseline = async (): Promise<CanonicalBaseline> => {
           .map(page => ({
             id: page.id,
             type: page.type,
-            title: page.title,
+            title: normalizeApprovedMechanicalTitleForBaseline(
+              definition.storyId,
+              definition.level,
+              language,
+              page.id,
+              page.title,
+            ),
             subtitle: page.subtitle ?? null,
             contentHash: hash(normalizeApprovedMechanicalFixesForBaseline(
               definition.storyId,
