@@ -49,6 +49,34 @@ const preserveSavedWording = (pages: PageData[]): PageData[] => pages.map((page)
   };
 });
 
+const mosesB2SourceTitleOverridesEn = {
+  2: { 'h2-2': 'Seti I' },
+  14: { 'h14-1': 'Do not fear' },
+  18: { 'h18-1': 'Aaron' },
+  19: { 'h19-2': 'Bring it' },
+  23: { 'h23-1': 'Strike the sea', 'h23-2': 'extraordinary event', 'h23-3': 'parted waters' },
+} as const;
+
+const mosesB2SourceDescriptionOverridesEn = {
+  2: {
+    'h2-2': 'According to the sources, Seti I (I. Seti, approximately 1290-1279 BC) was the pharaoh who oppressed the Israelites.',
+  },
+  14: {
+    'h14-1': 'The old man comforted him: “Do not fear, you have escaped from the wrongdoers.”',
+  },
+  18: {
+    'h18-1': 'Aaron (Harun), who was the brother of Moses and the prophet sent to the Children of Israel, helped Moses (pbuh).',
+  },
+  19: {
+    'h19-2': 'The Pharaoh said, “Bring it, if you are honest!”',
+  },
+  23: {
+    'h23-1': 'Then We inspired Moses, saying: ‘Strike the sea with your stick.’',
+    'h23-2': 'He and his soldiers saw this extraordinary event as a sign of Pharaoh’s godlike power.',
+    'h23-3': 'They entered the parted waters, and when they were midway, Allah commanded the sea to return to its former state.',
+  },
+} as const;
+
 export const mosesB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(preserveSavedWording(mosesB2PagesGoldEn), {
   language: 'en',
   blockedHighlights: ['survive'],
@@ -63,6 +91,8 @@ export const mosesB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(mo
 const mosesB2PagesLockedEn = applyHotspotSourceLock(mosesB2PagesBeforeHotspotSourceLockEn, {
   language: 'en',
   level: 'B2',
+  titleOverrides: mosesB2SourceTitleOverridesEn,
+  descriptionOverrides: mosesB2SourceDescriptionOverridesEn,
 });
 
 const mosesB2PagesLockedAr = applyHotspotSourceLock(mosesB2PagesBeforeHotspotSourceLockAr, {
