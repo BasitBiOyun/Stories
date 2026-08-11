@@ -3,85 +3,119 @@ import path from 'node:path';
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 delete pkg.dependencies['lucide-react'];
-pkg.dependencies['@phosphor-icons/react'] = '^2.1.10';
-pkg.dependencies = Object.fromEntries(Object.entries(pkg.dependencies).sort(([a], [b]) => a.localeCompare(b)));
+delete pkg.dependencies['@phosphor-icons/react'];
+if (pkg.devDependencies) {
+  delete pkg.devDependencies['lucide-react'];
+  delete pkg.devDependencies['@phosphor-icons/react'];
+  delete pkg.devDependencies['@phosphor-icons/core'];
+}
+pkg.dependencies = Object.fromEntries(Object.entries(pkg.dependencies || {}).sort(([a], [b]) => a.localeCompare(b)));
 fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
 
-const registry = `/**
- * Semantic application icon registry.
- * The same action/concept resolves to the same Phosphor glyph everywhere.
- * Deep CSR imports keep the initial bundle tree-shakeable.
- */
-export { PersonArmsSpreadIcon as Accessibility } from '@phosphor-icons/react/dist/csr/PersonArmsSpread';
-export { WarningCircleIcon as AlertCircle } from '@phosphor-icons/react/dist/csr/WarningCircle';
-export { ArrowDownIcon as ArrowDown } from '@phosphor-icons/react/dist/csr/ArrowDown';
-export { ArrowsLeftRightIcon as ArrowLeftRight } from '@phosphor-icons/react/dist/csr/ArrowsLeftRight';
-export { ArrowRightIcon as ArrowRight } from '@phosphor-icons/react/dist/csr/ArrowRight';
-export { MedalIcon as Award, MedalIcon as Medal } from '@phosphor-icons/react/dist/csr/Medal';
-export { BookIcon as Book, BookIcon as BookIcon } from '@phosphor-icons/react/dist/csr/Book';
-export { BookBookmarkIcon as BookMarked } from '@phosphor-icons/react/dist/csr/BookBookmark';
-export { BookOpenIcon as BookOpen } from '@phosphor-icons/react/dist/csr/BookOpen';
-export { BookOpenTextIcon as BookOpenCheck } from '@phosphor-icons/react/dist/csr/BookOpenText';
-export { BrainIcon as BrainCircuit } from '@phosphor-icons/react/dist/csr/Brain';
-export { CheckIcon as Check } from '@phosphor-icons/react/dist/csr/Check';
-export { CheckCircleIcon as CheckCircle, CheckCircleIcon as CheckCircle2 } from '@phosphor-icons/react/dist/csr/CheckCircle';
-export { CaretLeftIcon as ChevronLeft } from '@phosphor-icons/react/dist/csr/CaretLeft';
-export { CaretRightIcon as ChevronRight } from '@phosphor-icons/react/dist/csr/CaretRight';
-export { CaretUpIcon as ChevronUp } from '@phosphor-icons/react/dist/csr/CaretUp';
-export { ClipboardTextIcon as ClipboardCheck, ClipboardTextIcon as ClipboardList } from '@phosphor-icons/react/dist/csr/ClipboardText';
-export { ClockIcon as Clock } from '@phosphor-icons/react/dist/csr/Clock';
-export { CompassIcon as Compass } from '@phosphor-icons/react/dist/csr/Compass';
-export { CrownIcon as Crown } from '@phosphor-icons/react/dist/csr/Crown';
-export { DownloadIcon as Download } from '@phosphor-icons/react/dist/csr/Download';
-export { EyeIcon as Eye } from '@phosphor-icons/react/dist/csr/Eye';
-export { EyeSlashIcon as EyeOff } from '@phosphor-icons/react/dist/csr/EyeSlash';
-export { FileTextIcon as FileText } from '@phosphor-icons/react/dist/csr/FileText';
-export { GlobeIcon as Globe, GlobeIcon as Globe2 } from '@phosphor-icons/react/dist/csr/Globe';
-export { GraduationCapIcon as GraduationCap, GraduationCapIcon as School } from '@phosphor-icons/react/dist/csr/GraduationCap';
-export { DotsSixVerticalIcon as GripVertical } from '@phosphor-icons/react/dist/csr/DotsSixVertical';
-export { HeadphonesIcon as Headphones } from '@phosphor-icons/react/dist/csr/Headphones';
-export { HeartIcon as Heart } from '@phosphor-icons/react/dist/csr/Heart';
-export { QuestionIcon as HelpCircle } from '@phosphor-icons/react/dist/csr/Question';
-export { HouseIcon as Home } from '@phosphor-icons/react/dist/csr/House';
-export { InfoIcon as Info } from '@phosphor-icons/react/dist/csr/Info';
-export { TranslateIcon as Languages } from '@phosphor-icons/react/dist/csr/Translate';
-export { StackIcon as Layers } from '@phosphor-icons/react/dist/csr/Stack';
-export { SquaresFourIcon as Layout } from '@phosphor-icons/react/dist/csr/SquaresFour';
-export { BooksIcon as Library } from '@phosphor-icons/react/dist/csr/Books';
-export { LightbulbIcon as Lightbulb } from '@phosphor-icons/react/dist/csr/Lightbulb';
-export { LinkIcon as Link } from '@phosphor-icons/react/dist/csr/Link';
-export { ListNumbersIcon as ListOrdered, ListNumbersIcon as Reorder } from '@phosphor-icons/react/dist/csr/ListNumbers';
-export { SpinnerGapIcon as LoaderCircle } from '@phosphor-icons/react/dist/csr/SpinnerGap';
-export { LockIcon as Lock } from '@phosphor-icons/react/dist/csr/Lock';
-export { LockKeyIcon as LockKeyhole } from '@phosphor-icons/react/dist/csr/LockKey';
-export { MapPinIcon as MapPin } from '@phosphor-icons/react/dist/csr/MapPin';
-export { ListIcon as Menu } from '@phosphor-icons/react/dist/csr/List';
-export { ChatTextIcon as MessageSquare } from '@phosphor-icons/react/dist/csr/ChatText';
-export { ArrowsOutCardinalIcon as Move } from '@phosphor-icons/react/dist/csr/ArrowsOutCardinal';
-export { PauseIcon as Pause } from '@phosphor-icons/react/dist/csr/Pause';
-export { PlayIcon as Play } from '@phosphor-icons/react/dist/csr/Play';
-export { RocketIcon as Rocket } from '@phosphor-icons/react/dist/csr/Rocket';
-export { ArrowCounterClockwiseIcon as RotateCcw } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise';
-export { ScalesIcon as Scale } from '@phosphor-icons/react/dist/csr/Scales';
-export { ScrollIcon as Scroll } from '@phosphor-icons/react/dist/csr/Scroll';
-export { MagnifyingGlassIcon as Search } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
-export { ShieldWarningIcon as ShieldAlert } from '@phosphor-icons/react/dist/csr/ShieldWarning';
-export { ShieldCheckIcon as ShieldCheck } from '@phosphor-icons/react/dist/csr/ShieldCheck';
-export { SparkleIcon as Sparkles } from '@phosphor-icons/react/dist/csr/Sparkle';
-export { StarIcon as Star } from '@phosphor-icons/react/dist/csr/Star';
-export { TargetIcon as Target } from '@phosphor-icons/react/dist/csr/Target';
-export { TrophyIcon as Trophy } from '@phosphor-icons/react/dist/csr/Trophy';
-export { TextTIcon as Type } from '@phosphor-icons/react/dist/csr/TextT';
-export { UsersIcon as Users } from '@phosphor-icons/react/dist/csr/Users';
-export { SpeakerHighIcon as Volume2 } from '@phosphor-icons/react/dist/csr/SpeakerHigh';
-export { SpeakerSlashIcon as VolumeX } from '@phosphor-icons/react/dist/csr/SpeakerSlash';
-export { XIcon as X } from '@phosphor-icons/react/dist/csr/X';
-export { XCircleIcon as XCircle } from '@phosphor-icons/react/dist/csr/XCircle';
-export { LightningIcon as Zap } from '@phosphor-icons/react/dist/csr/Lightning';
+const semanticToAsset = {
+  Accessibility: 'person-arms-spread',
+  AlertCircle: 'warning-circle',
+  ArrowDown: 'arrow-down',
+  ArrowLeftRight: 'arrows-left-right',
+  ArrowRight: 'arrow-right',
+  Award: 'medal',
+  Book: 'book',
+  BookIcon: 'book',
+  BookMarked: 'book-bookmark',
+  BookOpen: 'book-open',
+  BookOpenCheck: 'book-open-text',
+  BrainCircuit: 'brain',
+  Check: 'check',
+  CheckCircle: 'check-circle',
+  CheckCircle2: 'check-circle',
+  ChevronLeft: 'caret-left',
+  ChevronRight: 'caret-right',
+  ChevronUp: 'caret-up',
+  ClipboardCheck: 'clipboard-text',
+  ClipboardList: 'clipboard-text',
+  Clock: 'clock',
+  Compass: 'compass',
+  Crown: 'crown',
+  Download: 'download',
+  Eye: 'eye',
+  EyeOff: 'eye-slash',
+  FileText: 'file-text',
+  Globe: 'globe',
+  Globe2: 'globe',
+  GraduationCap: 'graduation-cap',
+  GripVertical: 'dots-six-vertical',
+  Headphones: 'headphones',
+  Heart: 'heart',
+  HelpCircle: 'question',
+  Home: 'house',
+  Info: 'info',
+  Languages: 'translate',
+  Layers: 'stack',
+  Layout: 'squares-four',
+  Library: 'books',
+  Lightbulb: 'lightbulb',
+  Link: 'link',
+  ListOrdered: 'list-numbers',
+  LoaderCircle: 'spinner-gap',
+  Lock: 'lock',
+  LockKeyhole: 'lock-key',
+  MapPin: 'map-pin',
+  Medal: 'medal',
+  Menu: 'list',
+  MessageSquare: 'chat-text',
+  Move: 'arrows-out-cardinal',
+  Pause: 'pause',
+  Pencil: 'pencil',
+  Play: 'play',
+  Reorder: 'list-numbers',
+  Rocket: 'rocket',
+  RotateCcw: 'arrow-counter-clockwise',
+  Scale: 'scales',
+  School: 'graduation-cap',
+  Scroll: 'scroll',
+  Search: 'magnifying-glass',
+  ShieldAlert: 'shield-warning',
+  ShieldCheck: 'shield-check',
+  Sparkles: 'sparkle',
+  Star: 'star',
+  Target: 'target',
+  Trophy: 'trophy',
+  Type: 'text-t',
+  Users: 'users',
+  Volume2: 'speaker-high',
+  VolumeX: 'speaker-slash',
+  X: 'x',
+  XCircle: 'x-circle',
+  Zap: 'lightning',
+};
 
-export const iconStrokeWidth = 2;
-`;
-fs.writeFileSync('src/components/ui/icons.ts', registry);
+const coreRoot = path.resolve('node_modules/@phosphor-icons/core/assets/regular');
+const uniqueAssets = [...new Set(Object.values(semanticToAsset))];
+const pascal = (value) => value.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+const bodies = new Map();
+for (const asset of uniqueAssets) {
+  const file = path.join(coreRoot, `${asset}-regular.svg`);
+  if (!fs.existsSync(file)) throw new Error(`Missing Phosphor Core asset: ${file}`);
+  const svg = fs.readFileSync(file, 'utf8');
+  const match = svg.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
+  if (!match) throw new Error(`Could not parse SVG body: ${file}`);
+  bodies.set(asset, match[1].replace(/>\s+</g, '><').trim());
+}
+
+let registry = `import React, { forwardRef } from 'react';\n\n`;
+registry += `/**\n * Semantic application icon registry generated from the official Phosphor Core\n * Regular SVG set (MIT). Only icons actually used by this application are embedded.\n * The same semantic action/concept resolves to the same glyph everywhere.\n */\n`;
+registry += `export type AppIconProps = React.SVGProps<SVGSVGElement> & {\n  size?: number | string;\n  color?: string;\n  mirrored?: boolean;\n  weight?: string;\n};\n\n`;
+registry += `const createPhosphorIcon = (displayName: string, body: string) => {\n  const Icon = forwardRef<SVGSVGElement, AppIconProps>(({ size = 24, color = 'currentColor', mirrored = false, style, weight: _weight, ...props }, ref) => (\n    <svg\n      ref={ref}\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 256 256\"\n      fill={color}\n      style={{ ...style, ...(mirrored ? { transform: 'scaleX(-1)' } : {}) }}\n      {...props}\n      dangerouslySetInnerHTML={{ __html: body }}\n    />\n  ));\n  Icon.displayName = displayName;\n  return Icon;\n};\n\n`;
+for (const asset of uniqueAssets) {
+  registry += `const Ph${pascal(asset)} = createPhosphorIcon('${pascal(asset)}', ${JSON.stringify(bodies.get(asset))});\n`;
+}
+registry += '\n';
+for (const [semantic, asset] of Object.entries(semanticToAsset)) {
+  registry += `export const ${semantic} = Ph${pascal(asset)};\n`;
+}
+registry += `\nexport const iconStrokeWidth = 2;\n`;
+fs.writeFileSync('src/components/ui/icons.tsx', registry);
+if (fs.existsSync('src/components/ui/icons.ts')) fs.rmSync('src/components/ui/icons.ts');
 
 const target = path.resolve('src/components/ui/icons');
 const files = [];
