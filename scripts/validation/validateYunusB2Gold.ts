@@ -6,7 +6,7 @@ import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from '../../src/data/yun
 import { yunusB2GoldContract } from '../../src/data/yunusEmre/b2/gold';
 import { yunusB2GoldContractAr } from '../../src/data/yunusEmre/b2/goldAr';
 
-const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','animatedWords','syncPoints','timedChunks'] as const;
+const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','syncPoints','timedChunks'] as const;
 const findPage = (pages: PageData[], id: number): PageData => {
   const page = pages.find((candidate) => candidate.id === id);
   assert.ok(page, `Yunus B2: page ${id} missing.`);

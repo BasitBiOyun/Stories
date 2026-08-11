@@ -4,7 +4,7 @@ import { meccaB2PagesAr } from '../../src/data/mecca/b2/ar/pages';
 import { meccaB2BookDataAr } from '../../src/data/mecca/b2';
 import { meccaB2GoldContractAr } from '../../src/data/mecca/b2/goldAr';
 
-const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','animatedWords','syncPoints','timedChunks'] as const;
+const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','syncPoints','timedChunks'] as const;
 const findPage = (pages: PageData[], id: number): PageData => {
   const page = pages.find((candidate) => candidate.id === id);
   assert.ok(page, `Mecca B2 AR: page ${id} missing.`);

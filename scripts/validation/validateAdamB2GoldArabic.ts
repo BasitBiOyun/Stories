@@ -5,7 +5,7 @@ import { adamB2BookDataAr } from '../../src/data/adam/b2';
 import { adamB2GoldContractAr } from '../../src/data/adam/b2/goldAr';
 
 const protectedStoryFields = [
-  'id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'animatedWords', 'syncPoints', 'timedChunks',
+  'id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'syncPoints', 'timedChunks',
 ] as const;
 
 const findPage = (pages: PageData[], id: number): PageData => {

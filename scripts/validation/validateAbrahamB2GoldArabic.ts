@@ -4,7 +4,7 @@ import { abrahamB2PagesAr } from '../../src/data/abraham/b2/ar/pages';
 import { abrahamB2BookDataAr } from '../../src/data/abraham/b2';
 import { abrahamB2GoldContractAr } from '../../src/data/abraham/b2/goldAr';
 
-const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','animatedWords','syncPoints','timedChunks'] as const;
+const protectedFields = ['id','type','title','subtitle','content','image','audioUrl','syncPoints','timedChunks'] as const;
 const findPage = (pages: PageData[], id: number): PageData => {
   const page = pages.find((candidate) => candidate.id === id);
   assert.ok(page, `Abraham B2 AR: page ${id} missing.`);
