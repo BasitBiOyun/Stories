@@ -91,12 +91,17 @@ const validateBookGuides = (bookKey: string, book: BookData, language: 'en' | 'a
     if (normalized) chapterLabels.add(normalized);
   });
 
-  const storyPageCount = book.pages.filter(page => page.type === 'story').length;
-  if (book.teacherGuide.length !== storyPageCount) {
-    errors.push(`${bookKey}: ${book.teacherGuide.length} teacher guide sections for ${storyPageCount} story pages.`);
+  // References/source-only pages can be typed as story for reader continuity but do not
+  // require a lesson. A guide section is required for every instructional story page,
+  // identified by the presence of its chapter exercise/Quick Challenge.
+  const instructionalStoryPageCount = book.pages.filter(
+    page => page.type === 'story' && (page.exercises?.length ?? 0) > 0,
+  ).length;
+  if (book.teacherGuide.length !== instructionalStoryPageCount) {
+    errors.push(`${bookKey}: ${book.teacherGuide.length} teacher guide sections for ${instructionalStoryPageCount} instructional story pages.`);
   }
-  if (book.selfStudyGuide.length !== storyPageCount) {
-    errors.push(`${bookKey}: ${book.selfStudyGuide.length} self-study sections for ${storyPageCount} story pages.`);
+  if (book.selfStudyGuide.length !== instructionalStoryPageCount) {
+    errors.push(`${bookKey}: ${book.selfStudyGuide.length} self-study sections for ${instructionalStoryPageCount} instructional story pages.`);
   }
 
   book.selfStudyGuide.forEach((section, index) => {
