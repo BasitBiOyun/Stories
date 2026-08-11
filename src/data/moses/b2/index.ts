@@ -1,5 +1,6 @@
 import type { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { mosesB2PagesGoldEn } from './goldLearning';
 import {
   mosesB2TeacherGuideFinalEn,
@@ -48,15 +49,25 @@ const preserveSavedWording = (pages: PageData[]): PageData[] => pages.map((page)
   };
 });
 
-const mosesB2PagesLockedEn = applyB2StoryLanguageLock(preserveSavedWording(mosesB2PagesGoldEn), {
+export const mosesB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(preserveSavedWording(mosesB2PagesGoldEn), {
   language: 'en',
   blockedHighlights: ['survive'],
   maxUniqueHighlights: 10,
 });
 
-const mosesB2PagesLockedAr = applyB2StoryLanguageLock(mosesB2PagesGoldAr, {
+export const mosesB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(mosesB2PagesGoldAr, {
   language: 'ar',
   maxUniqueHighlights: 10,
+});
+
+const mosesB2PagesLockedEn = applyHotspotSourceLock(mosesB2PagesBeforeHotspotSourceLockEn, {
+  language: 'en',
+  level: 'B2',
+});
+
+const mosesB2PagesLockedAr = applyHotspotSourceLock(mosesB2PagesBeforeHotspotSourceLockAr, {
+  language: 'ar',
+  level: 'B2',
 });
 
 export const mosesB2BookDataEn: BookData = {
