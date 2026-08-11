@@ -29,15 +29,21 @@ const normalizeOption = (value: unknown): string => {
   return String(value ?? '');
 };
 
+const optionLetters = (language: Language): string[] => language === 'ar'
+  ? ['أ', 'ب', 'ج', 'د']
+  : ['A', 'B', 'C', 'D'];
+
 const renderKnowledgeControls = (exercise: Exercise, language: Language): string => {
   const isArabic = language === 'ar';
+  const letters = optionLetters(language);
+
   if (exercise.type === 'true-false') {
     const labels = isArabic ? ['صحيح', 'خطأ'] : ['TRUE', 'FALSE'];
-    return `<div class="knowledge-options knowledge-options-tf">${labels.map((label) => `<span class="knowledge-option"><i></i>${escapeHtml(label)}</span>`).join('')}</div>`;
+    return `<div class="knowledge-options knowledge-options-tf">${labels.map((label, index) => `<span class="knowledge-option"><b>${escapeHtml(letters[index])}</b><span>${escapeHtml(label)}</span></span>`).join('')}</div>`;
   }
 
   if (exercise.type === 'multiple-choice') {
-    return `<div class="knowledge-options">${(exercise.options ?? []).map((option, index) => `<span class="knowledge-option"><i></i><b>${String.fromCharCode(65 + index)}</b>${escapeHtml(normalizeOption(option))}</span>`).join('')}</div>`;
+    return `<div class="knowledge-options">${(exercise.options ?? []).map((option, index) => `<span class="knowledge-option"><b>${escapeHtml(letters[index] ?? String(index + 1))}</b><span>${escapeHtml(normalizeOption(option))}</span></span>`).join('')}</div>`;
   }
 
   return '<div class="knowledge-writing-line"></div>';
@@ -89,9 +95,7 @@ const renderVocabularyChallenge = (page: PageData, language: Language): string =
     ? 'اكتب حرف المعنى الصحيح في المربع بجانب كل كلمة.'
     : 'Write the letter of the correct meaning in the box beside each word.';
   const pairs = page.vocabularyPairs ?? [];
-  const shuffledMeanings = meaningPermutation
-    .map((index) => pairs[index])
-    .filter(Boolean);
+  const shuffledMeanings = meaningPermutation.map((index) => pairs[index]).filter(Boolean);
   const wordLabels = isArabic ? ['١','٢','٣','٤','٥','٦'] : ['1','2','3','4','5','6'];
   const meaningLabels = isArabic ? ['أ','ب','ج','د','هـ','و'] : ['A','B','C','D','E','F'];
 
@@ -140,15 +144,8 @@ const renderDocument = (pages: PageData[], language: Language): string => {
 
   return `<!doctype html>
 <html lang="${language}" dir="${isArabic ? 'rtl' : 'ltr'}">
-<head>
-  <meta charset="utf-8" />
-  <title>Adam A2 Review Pages</title>
-  <link rel="stylesheet" href="a2-review.css" />
-</head>
-<body class="lang-${language}">
-  ${renderKnowledgeCheck(knowledge, language)}
-  ${renderVocabularyChallenge(vocabulary, language)}
-</body>
+<head><meta charset="utf-8" /><title>Adam A2 Review Pages</title><link rel="stylesheet" href="a2-review.css" /></head>
+<body class="lang-${language}">${renderKnowledgeCheck(knowledge, language)}${renderVocabularyChallenge(vocabulary, language)}</body>
 </html>`;
 };
 
@@ -171,10 +168,3 @@ await Promise.all([
 await copyFile(path.join(path.dirname(fileURLToPath(import.meta.url)), 'a2-review.css'), path.join(OUTPUT, 'a2-review.css'));
 await writeFile(path.join(OUTPUT, 'adam-a2-en-review.html'), renderDocument(adamA2BookDataEn.pages, 'en'));
 await writeFile(path.join(OUTPUT, 'adam-a2-ar-review.html'), renderDocument(adamA2BookDataAr.pages, 'ar'));
-await writeFile(path.join(OUTPUT, 'README.txt'), [
-  'Adam A2 review-page print pilot: Knowledge Check and Vocabulary Challenge.',
-  'The renderer reads effective application BookData so approved learning overlays and print use the same question/vocabulary content.',
-  'Knowledge Check supports mixed multiple-choice and true/false items without exposing correct answers.',
-  'Vocabulary meanings are deterministically reordered for a meaningful print matching task.',
-  'No canonical story, answer, audio, image reference, or synchronization data is modified by the renderer.',
-].join('\n'));
