@@ -56,7 +56,16 @@ export const yunusB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(yu
   maxUniqueHighlights: 10,
 });
 
-export const yunusB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(yunusB2PagesGoldFinalAr, {
+// Page 14 is the Arabic References page, matching English Page 14. It is not an
+// instructional chapter, so the legacy chapter exercise must not turn it into a
+// fourteenth lesson or create EN/AR guide asymmetry.
+const yunusB2GoldFinalArWithoutReferenceExercise = yunusB2PagesGoldFinalAr.map(page => (
+  page.id === 14 && page.type === 'story'
+    ? { ...page, exercises: undefined }
+    : page
+));
+
+export const yunusB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(yunusB2GoldFinalArWithoutReferenceExercise, {
   language: 'ar',
   maxUniqueHighlights: 10,
 });
