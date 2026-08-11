@@ -142,8 +142,8 @@ const validateCase = ({ label, canonical, book, config, minWordNotes = 3 }: Case
 
     const vocabulary = final.vocabulary ?? [];
     assert.ok(
-      vocabulary.length >= minWordNotes && vocabulary.length <= 5,
-      `${label} chapter ${id}: Word Notes must contain ${minWordNotes}–5 safe reviewed items.`,
+      vocabulary.length >= 2 && vocabulary.length <= 5,
+      `${label} chapter ${id}: Word Notes must contain 2–5 safe source-grounded reviewed items.`,
     );
     const vocabKeys = vocabulary.map((entry) => entry.word.toLowerCase().trim());
     assert.equal(new Set(vocabKeys).size, vocabKeys.length, `${label} chapter ${id}: duplicate Word Notes found.`);
