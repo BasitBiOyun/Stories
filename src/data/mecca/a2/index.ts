@@ -1,5 +1,5 @@
 import { BookData } from '../../../types';
-import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
+import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import {
   meccaA2PagesFinalAr,
   meccaA2PagesFinalEn,
@@ -17,8 +17,8 @@ import {
   meccaA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const meccaA2PagesLockedEn = applyA2HotspotSourceLock(meccaA2PagesFinalEn, 'mecca', 'en');
-const meccaA2PagesLockedAr = applyA2HotspotSourceLock(meccaA2PagesFinalAr, 'mecca', 'ar');
+const meccaA2PagesLockedEn = applyA2FinalStoryLanguageLock(meccaA2PagesFinalEn, 'mecca', 'en');
+const meccaA2PagesLockedAr = applyA2FinalStoryLanguageLock(meccaA2PagesFinalAr, 'mecca', 'ar');
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
