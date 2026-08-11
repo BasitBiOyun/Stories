@@ -8,7 +8,16 @@ import { meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1StudentGuideSectionsAr, meccaB1StudentGuideTextAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { meccaB1PagesGoldEn, meccaB1PagesGoldAr } from './gold';
 
-const meccaB1PagesLockedEn = applyHotspotSourceLock(meccaB1PagesGoldEn, { language: 'en', level: 'B1' });
+const meccaB1PagesLockedEn = applyHotspotSourceLock(meccaB1PagesGoldEn, {
+  language: 'en',
+  level: 'B1',
+  titleOverrides: {
+    7: { 'h7-1': 'Rich' },
+    8: { 'h8-2': 'Tribe' },
+    12: { 'h12-1': 'Quraysh' },
+    13: { 'h13-1': 'Bilal' },
+  },
+});
 const meccaB1PagesLockedAr = applyHotspotSourceLock(meccaB1PagesGoldAr, { language: 'ar', level: 'B1' });
 const meccaB1GuidesEn = buildB1EvidenceGuides(meccaB1PagesLockedEn, 'en');
 const meccaB1GuidesAr = buildB1EvidenceGuides(meccaB1PagesLockedAr, 'ar');
