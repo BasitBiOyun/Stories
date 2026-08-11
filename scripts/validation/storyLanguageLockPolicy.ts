@@ -61,6 +61,9 @@ export const legacyStoryLanguageSnapshots: readonly LegacyStoryLanguageSnapshot[
 export const lockedStoryLanguageBooks = new Set<string>([
   'adam:A2',
   'ibrahim:A2',
+  'musa:A2',
+  'mecca:A2',
+  'yunusEmre:A2',
 ]);
 
 export const legacyStoryLanguageBookKeys = new Set(
