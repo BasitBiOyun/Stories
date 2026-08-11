@@ -1,4 +1,4 @@
-import { BookData } from '../../../types';
+import { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB2PagesGoldFinalEn, yunusB2PagesGoldFinalAr } from './goldAttribution';
@@ -38,6 +38,17 @@ const yunusB2SourceDescriptionOverridesEn = {
   },
 } as const;
 
+const groundTransoxianaSurfaceForm = (pages: PageData[]): PageData[] => pages.map((page) => {
+  if (page.type !== 'story' || page.id !== 7) return page;
+  const from = 'مَا وَرَاءِ النَّهْرِ';
+  const to = 'وَمَا وَرَاءِ النَّهْرِ';
+  return {
+    ...page,
+    vocabulary: page.vocabulary?.map(entry => entry.word === from ? { ...entry, word: to } : entry),
+    animatedWords: page.animatedWords?.map(word => word === from ? to : word),
+  };
+});
+
 export const yunusB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(yunusB2PagesGoldFinalEn, {
   language: 'en',
   blockedHighlights: [
@@ -56,10 +67,10 @@ export const yunusB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(yu
   maxUniqueHighlights: 10,
 });
 
-export const yunusB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(yunusB2PagesGoldFinalAr, {
+export const yunusB2PagesBeforeHotspotSourceLockAr = groundTransoxianaSurfaceForm(applyB2StoryLanguageLock(yunusB2PagesGoldFinalAr, {
   language: 'ar',
   maxUniqueHighlights: 10,
-});
+}));
 
 const yunusB2PagesLockedEn = applyHotspotSourceLock(yunusB2PagesBeforeHotspotSourceLockEn, {
   language: 'en',
