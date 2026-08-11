@@ -9,11 +9,13 @@ export interface HotspotSourceText {
 }
 
 export type HotspotPlaceOverrides = Record<number, Record<string, HotspotSourceText>>;
+export type HotspotTitleOverrides = Record<number, Record<string, string>>;
 
 export interface HotspotSourceLockOptions {
   language: HotspotSourceLanguage;
   level: HotspotSourceLevel;
   placeOverrides?: HotspotPlaceOverrides;
+  titleOverrides?: HotspotTitleOverrides;
 }
 
 const MAX_DESCRIPTION_WORDS: Record<HotspotSourceLevel, number> = {
@@ -26,7 +28,7 @@ const MAX_TITLE_WORDS = 4;
 const EN_STOPWORDS = new Set([
   'a', 'an', 'and', 'as', 'at', 'be', 'been', 'being', 'but', 'by', 'for', 'from', 'had', 'has', 'have',
   'he', 'her', 'hers', 'him', 'his', 'i', 'in', 'into', 'is', 'it', 'its', 'of', 'on', 'or', 'our', 'she',
-  'so', 'that', 'the', 'their', 'them', 'they', 'this', 'to', 'was', 'we', 'were', 'with', 'you', 'your',
+  'so', 'that', 'the', 'their', 'them', 'they', 'this', 'to', 'was', 'we', 'were', 'while', 'with', 'you', 'your',
 ]);
 
 const AR_STOPWORDS = new Set([
@@ -112,15 +114,15 @@ const significantWordSet = (
   return new Set(words(value, language).filter(word => !stopwords.has(word) && !/^\d+$/.test(word)));
 };
 
-const rankedSourceSentences = (
+const bestSourceSentence = (
   content: string,
   title: string,
   description: string,
   language: HotspotSourceLanguage,
   maxWords: number,
-): string[] => {
+): string => {
   const sentences = sourceSentences(content, language, maxWords);
-  if (!sentences.length) return [cleanStoryText(content).split(/\s+/).slice(0, maxWords).join(' ')];
+  if (!sentences.length) return cleanStoryText(content).split(/\s+/).slice(0, maxWords).join(' ');
 
   const titleSignal = significantWordSet(title, language);
   const descriptionSignal = significantWordSet(description, language);
@@ -131,8 +133,7 @@ const rankedSourceSentences = (
       const descriptionHits = [...descriptionSignal].filter(word => sentenceWords.has(word)).length;
       return { sentence, index, score: titleHits * 5 + descriptionHits };
     })
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .map(item => item.sentence);
+    .sort((a, b) => b.score - a.score || a.index - b.index)[0]?.sentence ?? sentences[0];
 };
 
 const titleIsUsable = (
@@ -211,52 +212,55 @@ export const applyHotspotSourceLock = (
 ): PageData[] => {
   const maxWords = MAX_DESCRIPTION_WORDS[options.level];
   const placeOverrides = options.placeOverrides ?? {};
+  const titleOverrides = options.titleOverrides ?? {};
 
   return pages.map(page => {
     if (page.type !== 'story' || !page.hotspots?.length) return page;
 
-    const usedDescriptions = new Set<string>();
-    const hotspots = page.hotspots.map(hotspot => {
-      const placeOverride = placeOverrides[page.id]?.[hotspot.id];
-      const content = page.content ?? '';
-      const currentTitle = hotspot.title ?? '';
-      const currentDescription = hotspot.description ?? '';
+    return {
+      ...page,
+      hotspots: page.hotspots.map(hotspot => {
+        const placeOverride = placeOverrides[page.id]?.[hotspot.id];
+        const content = page.content ?? '';
+        const currentTitle = hotspot.title ?? '';
+        const requestedTitle = titleOverrides[page.id]?.[hotspot.id] ?? currentTitle;
+        const currentDescription = hotspot.description ?? '';
 
-      if (placeOverride) {
-        const placeDescription = words(placeOverride.description, options.language).length <= maxWords
-          ? placeOverride.description
-          : placeOverride.description.split(/\s+/).slice(0, maxWords).join(' ');
-        const requestedTitle = placeOverride.title ?? currentTitle;
-        const ranked = rankedSourceSentences(content, requestedTitle, currentDescription, options.language, maxWords);
-        const sourceSentence = ranked[0] ?? content;
+        if (placeOverride) {
+          const placeDescription = words(placeOverride.description, options.language).length <= maxWords
+            ? placeOverride.description
+            : placeOverride.description.split(/\s+/).slice(0, maxWords).join(' ');
+          const placeTitle = placeOverride.title ?? requestedTitle;
+          const sourceSentence = bestSourceSentence(
+            content,
+            placeTitle,
+            currentDescription,
+            options.language,
+            maxWords,
+          );
+          const sourceTitle = titleIsUsable(content, placeTitle, options.language)
+            ? placeTitle
+            : fallbackTitle(placeTitle, sourceSentence, options.language);
+          return { ...hotspot, title: sourceTitle, description: placeDescription };
+        }
+
+        const sourceDescription = directExtract(content, currentDescription, options.language)
+          && words(currentDescription, options.language).length <= maxWords
+          ? currentDescription
+          : bestSourceSentence(
+              content,
+              requestedTitle,
+              currentDescription,
+              options.language,
+              maxWords,
+            );
+
         const sourceTitle = titleIsUsable(content, requestedTitle, options.language)
           ? requestedTitle
-          : fallbackTitle(requestedTitle, sourceSentence, options.language);
-        usedDescriptions.add(normalizeHotspotSourceText(placeDescription, options.language));
-        return { ...hotspot, title: sourceTitle, description: placeDescription };
-      }
+          : fallbackTitle(requestedTitle, sourceDescription, options.language);
 
-      const currentKey = normalizeHotspotSourceText(currentDescription, options.language);
-      const currentIsUsable = directExtract(content, currentDescription, options.language)
-        && words(currentDescription, options.language).length <= maxWords
-        && !usedDescriptions.has(currentKey);
-
-      let sourceDescription = currentDescription;
-      if (!currentIsUsable) {
-        const ranked = rankedSourceSentences(content, currentTitle, currentDescription, options.language, maxWords);
-        sourceDescription = ranked.find(sentence => (
-          !usedDescriptions.has(normalizeHotspotSourceText(sentence, options.language))
-        )) ?? ranked[0] ?? currentDescription;
-      }
-
-      const sourceTitle = titleIsUsable(content, currentTitle, options.language)
-        ? currentTitle
-        : fallbackTitle(currentTitle, sourceDescription, options.language);
-
-      usedDescriptions.add(normalizeHotspotSourceText(sourceDescription, options.language));
-      return { ...hotspot, title: sourceTitle, description: sourceDescription };
-    });
-
-    return { ...page, hotspots };
+        return { ...hotspot, title: sourceTitle, description: sourceDescription };
+      }),
+    };
   });
 };
