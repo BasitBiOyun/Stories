@@ -35,6 +35,24 @@ const adamB2TitleOverridesAr = {
   3: { h3a: 'الخليفة', h3b: 'الأسماء كلها' },
 } as const;
 
+const adamB2SourceTitleOverridesEn = {
+  4: { h5b: 'power of knowledge' },
+  6: { h6a: 'the Garden', h6b: 'point of no return' },
+  9: { h9a: 'left Paradise' },
+  10: { h10b: 'descending upon Earth' },
+  13: { h13b: 'rebellious attitude' },
+  14: { h13a: 'tragic end' },
+  15: { h14b: 'daily bread' },
+  16: { h15a: 'his successor' },
+  17: { h18b: 'worldly life' },
+} as const;
+
+const adamB2SourceDescriptionOverridesEn = {
+  17: {
+    h18b: 'In fact, all the events that Adam (pbuh) and Eve experienced are like a summary of the adventures of their descendants in worldly life.',
+  },
+} as const;
+
 export const adamB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(adamB2PagesGoldEn, {
   language: 'en',
   titleOverrides: adamB2TitleOverridesEn,
@@ -50,6 +68,8 @@ export const adamB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(ada
 const adamB2PagesLockedEn = applyHotspotSourceLock(adamB2PagesBeforeHotspotSourceLockEn, {
   language: 'en',
   level: 'B2',
+  titleOverrides: adamB2SourceTitleOverridesEn,
+  descriptionOverrides: adamB2SourceDescriptionOverridesEn,
 });
 
 const adamB2PagesLockedAr = applyHotspotSourceLock(adamB2PagesBeforeHotspotSourceLockAr, {
