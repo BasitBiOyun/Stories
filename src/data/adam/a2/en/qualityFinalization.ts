@@ -112,7 +112,32 @@ const glossaryPart2: NonNullable<PageData['vocabulary']> = [
   { word: 'worldwide', definition: 'In many places around the world.' },
 ];
 
-export const adamA2PagesQualityFinalized: PageData[] = adamA2PagesForLearning.map((page) => {
+const fixApprovedObviousTextSlips = (page: PageData): PageData => {
+  if (page.type !== 'story') return page;
+
+  const replacements: Array<[string, string]> = page.id === 7
+    ? [['They had also lots of children.', 'They also had lots of children.']]
+    : page.id === 9
+      ? [['his brother dead body', "his brother's dead body"]]
+      : [];
+
+  if (!replacements.length) return page;
+
+  const replaceText = (value: string): string => replacements.reduce(
+    (text, [from, to]) => text.replaceAll(from, to),
+    value,
+  );
+
+  return {
+    ...page,
+    content: replaceText(page.content || ''),
+    timedChunks: page.timedChunks?.map((chunk) => ({ ...chunk, text: replaceText(chunk.text) })),
+  };
+};
+
+export const adamA2PagesQualityFinalized: PageData[] = adamA2PagesForLearning.map((rawPage) => {
+  const page = fixApprovedObviousTextSlips(rawPage);
+
   if (page.type === 'story' && page.id >= 1 && page.id <= 10) {
     const hotspots = page.hotspots?.map((hotspot) => {
       const replacement = adamA2HotspotsGoldEn[hotspot.id];
