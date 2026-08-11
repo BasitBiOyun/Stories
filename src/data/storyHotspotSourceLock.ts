@@ -43,7 +43,12 @@ export const normalizeHotspotSourceText = (
   value: string,
   language: HotspotSourceLanguage,
 ): string => {
-  let text = value.normalize('NFKC').toLowerCase();
+  let text = value
+    .replace(/\[\/?POEM\]/gi, ' ')
+    .replace(/\*\*/g, '')
+    .normalize('NFKC')
+    .toLowerCase();
+
   if (language === 'ar') {
     text = text.replace(/\u064B\u0627/g, '');
     text = stripArabicDiacritics(text)
@@ -53,6 +58,7 @@ export const normalizeHotspotSourceText = (
       .replace(/ئ/g, 'ي')
       .replace(/ة/g, 'ه');
   }
+
   return text
     .replace(/[’']/g, '')
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
@@ -86,10 +92,11 @@ const sourceSentences = (
   language: HotspotSourceLanguage,
   maxWords: number,
 ): string[] => {
-  const candidates = cleanStoryText(content)
-    .split(/(?<=[.!?؟])\s+/u)
+  const cleaned = cleanStoryText(content);
+  const candidates = (cleaned.match(/[^.!?؟]+(?:[.!?؟]+[”"’']*|$)/gu) ?? [cleaned])
     .map(sentence => sentence.trim())
     .filter(Boolean);
+
   const short = candidates.filter(sentence => {
     const count = words(sentence, language).length;
     return count >= 2 && count <= maxWords;
@@ -105,26 +112,27 @@ const significantWordSet = (
   return new Set(words(value, language).filter(word => !stopwords.has(word) && !/^\d+$/.test(word)));
 };
 
-const bestSourceSentence = (
+const rankedSourceSentences = (
   content: string,
   title: string,
   description: string,
   language: HotspotSourceLanguage,
   maxWords: number,
-): string => {
+): string[] => {
   const sentences = sourceSentences(content, language, maxWords);
-  if (!sentences.length) return cleanStoryText(content).split(/\s+/).slice(0, maxWords).join(' ');
+  if (!sentences.length) return [cleanStoryText(content).split(/\s+/).slice(0, maxWords).join(' ')];
 
   const titleSignal = significantWordSet(title, language);
   const descriptionSignal = significantWordSet(description, language);
-  const scored = sentences.map((sentence, index) => {
-    const sentenceWords = significantWordSet(sentence, language);
-    const titleHits = [...titleSignal].filter(word => sentenceWords.has(word)).length;
-    const descriptionHits = [...descriptionSignal].filter(word => sentenceWords.has(word)).length;
-    return { sentence, index, score: titleHits * 4 + descriptionHits };
-  });
-  scored.sort((a, b) => b.score - a.score || a.index - b.index);
-  return scored[0]?.sentence ?? sentences[0];
+  return sentences
+    .map((sentence, index) => {
+      const sentenceWords = significantWordSet(sentence, language);
+      const titleHits = [...titleSignal].filter(word => sentenceWords.has(word)).length;
+      const descriptionHits = [...descriptionSignal].filter(word => sentenceWords.has(word)).length;
+      return { sentence, index, score: titleHits * 5 + descriptionHits };
+    })
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .map(item => item.sentence);
 };
 
 const titleIsUsable = (
@@ -133,17 +141,35 @@ const titleIsUsable = (
   language: HotspotSourceLanguage,
 ): boolean => words(title, language).length <= MAX_TITLE_WORDS && directExtract(content, title, language);
 
+const rawPhraseWords = (value: string): string[] => value.match(/[\p{L}\p{N}’'’-]+/gu) ?? [];
+
 const fallbackTitle = (
+  content: string,
+  requestedTitle: string,
   sentence: string,
   language: HotspotSourceLanguage,
 ): string => {
-  const rawWords = sentence.match(/[\p{L}\p{N}’'’-]+/gu) ?? [];
+  const requestedWords = rawPhraseWords(requestedTitle);
+  for (let size = Math.min(3, requestedWords.length); size >= 1; size -= 1) {
+    for (let start = 0; start <= requestedWords.length - size; start += 1) {
+      const phrase = requestedWords.slice(start, start + size).join(' ');
+      if (titleIsUsable(content, phrase, language)) return phrase;
+    }
+  }
+
+  const signal = significantWordSet(requestedTitle, language);
+  const sentenceWords = rawPhraseWords(sentence);
+  for (const word of sentenceWords) {
+    const normalized = normalizeHotspotSourceText(word, language);
+    if (signal.has(normalized) && titleIsUsable(content, word, language)) return word;
+  }
+
   const stopwords = language === 'ar' ? AR_STOPWORDS : EN_STOPWORDS;
-  const useful = rawWords.filter(word => {
+  const useful = sentenceWords.find(word => {
     const normalized = normalizeHotspotSourceText(word, language);
     return normalized && !stopwords.has(normalized) && !/^\d+$/.test(normalized);
   });
-  return (useful.length ? useful : rawWords).slice(0, 3).join(' ');
+  return useful ?? sentenceWords[0] ?? requestedTitle;
 };
 
 /**
@@ -168,47 +194,48 @@ export const applyHotspotSourceLock = (
   return pages.map(page => {
     if (page.type !== 'story' || !page.hotspots?.length) return page;
 
-    return {
-      ...page,
-      hotspots: page.hotspots.map(hotspot => {
-        const placeOverride = placeOverrides[page.id]?.[hotspot.id];
-        const currentTitle = hotspot.title ?? '';
-        const currentDescription = hotspot.description ?? '';
+    const usedDescriptions = new Set<string>();
+    const hotspots = page.hotspots.map(hotspot => {
+      const placeOverride = placeOverrides[page.id]?.[hotspot.id];
+      const content = page.content ?? '';
+      const currentTitle = hotspot.title ?? '';
+      const currentDescription = hotspot.description ?? '';
 
-        if (placeOverride) {
-          const placeDescription = words(placeOverride.description, options.language).length <= maxWords
-            ? placeOverride.description
-            : placeOverride.description.split(/\s+/).slice(0, maxWords).join(' ');
-          const requestedTitle = placeOverride.title ?? currentTitle;
-          const sourceTitle = titleIsUsable(page.content ?? '', requestedTitle, options.language)
-            ? requestedTitle
-            : fallbackTitle(bestSourceSentence(
-                page.content ?? '',
-                requestedTitle,
-                currentDescription,
-                options.language,
-                maxWords,
-              ), options.language);
-          return { ...hotspot, title: sourceTitle, description: placeDescription };
-        }
+      if (placeOverride) {
+        const placeDescription = words(placeOverride.description, options.language).length <= maxWords
+          ? placeOverride.description
+          : placeOverride.description.split(/\s+/).slice(0, maxWords).join(' ');
+        const requestedTitle = placeOverride.title ?? currentTitle;
+        const ranked = rankedSourceSentences(content, requestedTitle, currentDescription, options.language, maxWords);
+        const sourceSentence = ranked[0] ?? content;
+        const sourceTitle = titleIsUsable(content, requestedTitle, options.language)
+          ? requestedTitle
+          : fallbackTitle(content, requestedTitle, sourceSentence, options.language);
+        usedDescriptions.add(normalizeHotspotSourceText(placeDescription, options.language));
+        return { ...hotspot, title: sourceTitle, description: placeDescription };
+      }
 
-        const sourceDescription = directExtract(page.content ?? '', currentDescription, options.language)
-          && words(currentDescription, options.language).length <= maxWords
-          ? currentDescription
-          : bestSourceSentence(
-              page.content ?? '',
-              currentTitle,
-              currentDescription,
-              options.language,
-              maxWords,
-            );
+      const currentKey = normalizeHotspotSourceText(currentDescription, options.language);
+      const currentIsUsable = directExtract(content, currentDescription, options.language)
+        && words(currentDescription, options.language).length <= maxWords
+        && !usedDescriptions.has(currentKey);
 
-        const sourceTitle = titleIsUsable(page.content ?? '', currentTitle, options.language)
-          ? currentTitle
-          : fallbackTitle(sourceDescription, options.language);
+      let sourceDescription = currentDescription;
+      if (!currentIsUsable) {
+        const ranked = rankedSourceSentences(content, currentTitle, currentDescription, options.language, maxWords);
+        sourceDescription = ranked.find(sentence => (
+          !usedDescriptions.has(normalizeHotspotSourceText(sentence, options.language))
+        )) ?? ranked[0] ?? currentDescription;
+      }
 
-        return { ...hotspot, title: sourceTitle, description: sourceDescription };
-      }),
-    };
+      const sourceTitle = titleIsUsable(content, currentTitle, options.language)
+        ? currentTitle
+        : fallbackTitle(content, currentTitle, sourceDescription, options.language);
+
+      usedDescriptions.add(normalizeHotspotSourceText(sourceDescription, options.language));
+      return { ...hotspot, title: sourceTitle, description: sourceDescription };
+    });
+
+    return { ...page, hotspots };
   });
 };
