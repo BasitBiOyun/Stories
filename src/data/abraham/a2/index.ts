@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
 import {
   abrahamA2PagesFinalAr,
   abrahamA2PagesFinalEn,
@@ -16,12 +17,15 @@ import {
   abrahamA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
+const abrahamA2PagesLockedEn = applyA2HotspotSourceLock(abrahamA2PagesFinalEn, 'ibrahim', 'en');
+const abrahamA2PagesLockedAr = applyA2HotspotSourceLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar');
+
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
   title: 'Stories of the Prophets: Abraham (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: abrahamA2PagesFinalEn,
+  pages: abrahamA2PagesLockedEn,
   teacherGuide: abrahamA2TeacherGuideFinalEn,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: abrahamA2SelfStudyGuideFinalEn,
@@ -35,7 +39,7 @@ export const abrahamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: abrahamA2PagesFinalAr,
+  pages: abrahamA2PagesLockedAr,
   teacherGuide: abrahamA2TeacherGuideFinalAr,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: abrahamA2SelfStudyGuideFinalAr,
