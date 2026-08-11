@@ -20,6 +20,12 @@ import {
   meccaB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 
+const meccaB2SourceTitleOverridesEn = {
+  7: { 'h7-2': 'social class division' },
+  13: { 'h13-2': 'new Muslim community' },
+  17: { 'h17-2': 'fair and peaceful place' },
+} as const;
+
 export const meccaB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(meccaB2PagesGoldEn, {
   language: 'en',
   maxUniqueHighlights: 10,
@@ -33,6 +39,7 @@ export const meccaB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(me
 const meccaB2PagesLockedEn = applyHotspotSourceLock(meccaB2PagesBeforeHotspotSourceLockEn, {
   language: 'en',
   level: 'B2',
+  titleOverrides: meccaB2SourceTitleOverridesEn,
 });
 
 const meccaB2PagesLockedAr = applyHotspotSourceLock(meccaB2PagesBeforeHotspotSourceLockAr, {
