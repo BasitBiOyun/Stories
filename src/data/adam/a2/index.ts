@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
 import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
 import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
@@ -7,12 +8,15 @@ import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } f
 import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr, adamA2StudentGuideTextAr } from './ar/selfStudyGuide';
 
+const adamA2PagesLockedEn = applyA2HotspotSourceLock(adamA2PagesQualityFinalized, 'adam', 'en');
+const adamA2PagesLockedAr = applyA2HotspotSourceLock(adamA2PagesArQualityFinalized, 'adam', 'ar');
+
 export const adamA2BookDataEn: BookData = {
   id: 'a2-prophets-en',
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: adamA2PagesQualityFinalized,
+  pages: adamA2PagesLockedEn,
   teacherGuide: adamA2TeacherGuideQualityFinalized,
   teacherGuideMetadata: adamA2TeacherGuideMetadata,
   selfStudyGuide: adamA2SelfStudyGuide,
@@ -25,7 +29,7 @@ export const adamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'A2',
   baseFontSize: 14,
-  pages: adamA2PagesArQualityFinalized,
+  pages: adamA2PagesLockedAr,
   teacherGuide: adamA2TeacherGuideArQualityFinalized,
   teacherGuideMetadata: adamA2TeacherGuideMetadataAr,
   selfStudyGuide: adamA2SelfStudyGuideAr,
