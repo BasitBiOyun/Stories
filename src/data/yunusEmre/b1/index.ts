@@ -8,7 +8,19 @@ import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
 
-const yunusB1PagesLockedEn = applyHotspotSourceLock(yunusEmreB1PagesGoldEn, { language: 'en', level: 'B1' });
+const yunusB1PagesLockedEn = applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
+  language: 'en',
+  level: 'B1',
+  titleOverrides: {
+    3: { 'h3-2': 'Anatolia' },
+    4: { 'h4-1': 'Anatolian Seljuk' },
+    6: { 'h6-1': 'Raids' },
+    7: { 'h7-1': 'Wise Sûfî', 'h7-2': 'Poetry' },
+    11: { 'h11-1': 'Intellect', 'h11-2': 'Death' },
+    12: { 'h12-2': 'Moral Principles' },
+    13: { 'h13-2': 'Patience' },
+  },
+});
 const yunusB1PagesLockedAr = applyHotspotSourceLock(yunusEmreB1PagesGoldAr, { language: 'ar', level: 'B1' });
 const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1PagesLockedEn, 'en');
 const yunusB1GuidesAr = buildB1EvidenceGuides(yunusB1PagesLockedAr, 'ar');
