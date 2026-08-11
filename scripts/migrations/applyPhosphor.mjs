@@ -10,82 +10,74 @@ fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
 const registry = `/**
  * Semantic application icon registry.
  * The same action/concept resolves to the same Phosphor glyph everywhere.
+ * Deep CSR imports keep the initial bundle tree-shakeable.
  */
-export {
-  PersonArmsSpreadIcon as Accessibility,
-  WarningCircleIcon as AlertCircle,
-  ArrowDownIcon as ArrowDown,
-  ArrowsLeftRightIcon as ArrowLeftRight,
-  ArrowRightIcon as ArrowRight,
-  MedalIcon as Award,
-  BookIcon as Book,
-  BookIcon as BookIcon,
-  BookBookmarkIcon as BookMarked,
-  BookOpenIcon as BookOpen,
-  BookOpenTextIcon as BookOpenCheck,
-  BrainIcon as BrainCircuit,
-  CheckIcon as Check,
-  CheckCircleIcon as CheckCircle,
-  CheckCircleIcon as CheckCircle2,
-  CaretLeftIcon as ChevronLeft,
-  CaretRightIcon as ChevronRight,
-  CaretUpIcon as ChevronUp,
-  ClipboardTextIcon as ClipboardCheck,
-  ClipboardTextIcon as ClipboardList,
-  ClockIcon as Clock,
-  CompassIcon as Compass,
-  CrownIcon as Crown,
-  DownloadIcon as Download,
-  EyeIcon as Eye,
-  EyeSlashIcon as EyeOff,
-  FileTextIcon as FileText,
-  GlobeIcon as Globe,
-  GlobeIcon as Globe2,
-  GraduationCapIcon as GraduationCap,
-  GraduationCapIcon as School,
-  DotsSixVerticalIcon as GripVertical,
-  HeadphonesIcon as Headphones,
-  HeartIcon as Heart,
-  QuestionIcon as HelpCircle,
-  HouseIcon as Home,
-  InfoIcon as Info,
-  TranslateIcon as Languages,
-  StackIcon as Layers,
-  SquaresFourIcon as Layout,
-  BooksIcon as Library,
-  LightbulbIcon as Lightbulb,
-  LinkIcon as Link,
-  ListNumbersIcon as ListOrdered,
-  SpinnerGapIcon as LoaderCircle,
-  LockIcon as Lock,
-  LockKeyIcon as LockKeyhole,
-  MapPinIcon as MapPin,
-  MedalIcon as Medal,
-  ListIcon as Menu,
-  ChatTextIcon as MessageSquare,
-  ArrowsOutCardinalIcon as Move,
-  PauseIcon as Pause,
-  PlayIcon as Play,
-  ListNumbersIcon as Reorder,
-  RocketIcon as Rocket,
-  ArrowCounterClockwiseIcon as RotateCcw,
-  ScalesIcon as Scale,
-  ScrollIcon as Scroll,
-  MagnifyingGlassIcon as Search,
-  ShieldWarningIcon as ShieldAlert,
-  ShieldCheckIcon as ShieldCheck,
-  SparkleIcon as Sparkles,
-  StarIcon as Star,
-  TargetIcon as Target,
-  TrophyIcon as Trophy,
-  TextTIcon as Type,
-  UsersIcon as Users,
-  SpeakerHighIcon as Volume2,
-  SpeakerSlashIcon as VolumeX,
-  XIcon as X,
-  XCircleIcon as XCircle,
-  LightningIcon as Zap,
-} from '@phosphor-icons/react';
+export { PersonArmsSpreadIcon as Accessibility } from '@phosphor-icons/react/dist/csr/PersonArmsSpread';
+export { WarningCircleIcon as AlertCircle } from '@phosphor-icons/react/dist/csr/WarningCircle';
+export { ArrowDownIcon as ArrowDown } from '@phosphor-icons/react/dist/csr/ArrowDown';
+export { ArrowsLeftRightIcon as ArrowLeftRight } from '@phosphor-icons/react/dist/csr/ArrowsLeftRight';
+export { ArrowRightIcon as ArrowRight } from '@phosphor-icons/react/dist/csr/ArrowRight';
+export { MedalIcon as Award, MedalIcon as Medal } from '@phosphor-icons/react/dist/csr/Medal';
+export { BookIcon as Book, BookIcon as BookIcon } from '@phosphor-icons/react/dist/csr/Book';
+export { BookBookmarkIcon as BookMarked } from '@phosphor-icons/react/dist/csr/BookBookmark';
+export { BookOpenIcon as BookOpen } from '@phosphor-icons/react/dist/csr/BookOpen';
+export { BookOpenTextIcon as BookOpenCheck } from '@phosphor-icons/react/dist/csr/BookOpenText';
+export { BrainIcon as BrainCircuit } from '@phosphor-icons/react/dist/csr/Brain';
+export { CheckIcon as Check } from '@phosphor-icons/react/dist/csr/Check';
+export { CheckCircleIcon as CheckCircle, CheckCircleIcon as CheckCircle2 } from '@phosphor-icons/react/dist/csr/CheckCircle';
+export { CaretLeftIcon as ChevronLeft } from '@phosphor-icons/react/dist/csr/CaretLeft';
+export { CaretRightIcon as ChevronRight } from '@phosphor-icons/react/dist/csr/CaretRight';
+export { CaretUpIcon as ChevronUp } from '@phosphor-icons/react/dist/csr/CaretUp';
+export { ClipboardTextIcon as ClipboardCheck, ClipboardTextIcon as ClipboardList } from '@phosphor-icons/react/dist/csr/ClipboardText';
+export { ClockIcon as Clock } from '@phosphor-icons/react/dist/csr/Clock';
+export { CompassIcon as Compass } from '@phosphor-icons/react/dist/csr/Compass';
+export { CrownIcon as Crown } from '@phosphor-icons/react/dist/csr/Crown';
+export { DownloadIcon as Download } from '@phosphor-icons/react/dist/csr/Download';
+export { EyeIcon as Eye } from '@phosphor-icons/react/dist/csr/Eye';
+export { EyeSlashIcon as EyeOff } from '@phosphor-icons/react/dist/csr/EyeSlash';
+export { FileTextIcon as FileText } from '@phosphor-icons/react/dist/csr/FileText';
+export { GlobeIcon as Globe, GlobeIcon as Globe2 } from '@phosphor-icons/react/dist/csr/Globe';
+export { GraduationCapIcon as GraduationCap, GraduationCapIcon as School } from '@phosphor-icons/react/dist/csr/GraduationCap';
+export { DotsSixVerticalIcon as GripVertical } from '@phosphor-icons/react/dist/csr/DotsSixVertical';
+export { HeadphonesIcon as Headphones } from '@phosphor-icons/react/dist/csr/Headphones';
+export { HeartIcon as Heart } from '@phosphor-icons/react/dist/csr/Heart';
+export { QuestionIcon as HelpCircle } from '@phosphor-icons/react/dist/csr/Question';
+export { HouseIcon as Home } from '@phosphor-icons/react/dist/csr/House';
+export { InfoIcon as Info } from '@phosphor-icons/react/dist/csr/Info';
+export { TranslateIcon as Languages } from '@phosphor-icons/react/dist/csr/Translate';
+export { StackIcon as Layers } from '@phosphor-icons/react/dist/csr/Stack';
+export { SquaresFourIcon as Layout } from '@phosphor-icons/react/dist/csr/SquaresFour';
+export { BooksIcon as Library } from '@phosphor-icons/react/dist/csr/Books';
+export { LightbulbIcon as Lightbulb } from '@phosphor-icons/react/dist/csr/Lightbulb';
+export { LinkIcon as Link } from '@phosphor-icons/react/dist/csr/Link';
+export { ListNumbersIcon as ListOrdered, ListNumbersIcon as Reorder } from '@phosphor-icons/react/dist/csr/ListNumbers';
+export { SpinnerGapIcon as LoaderCircle } from '@phosphor-icons/react/dist/csr/SpinnerGap';
+export { LockIcon as Lock } from '@phosphor-icons/react/dist/csr/Lock';
+export { LockKeyIcon as LockKeyhole } from '@phosphor-icons/react/dist/csr/LockKey';
+export { MapPinIcon as MapPin } from '@phosphor-icons/react/dist/csr/MapPin';
+export { ListIcon as Menu } from '@phosphor-icons/react/dist/csr/List';
+export { ChatTextIcon as MessageSquare } from '@phosphor-icons/react/dist/csr/ChatText';
+export { ArrowsOutCardinalIcon as Move } from '@phosphor-icons/react/dist/csr/ArrowsOutCardinal';
+export { PauseIcon as Pause } from '@phosphor-icons/react/dist/csr/Pause';
+export { PlayIcon as Play } from '@phosphor-icons/react/dist/csr/Play';
+export { RocketIcon as Rocket } from '@phosphor-icons/react/dist/csr/Rocket';
+export { ArrowCounterClockwiseIcon as RotateCcw } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise';
+export { ScalesIcon as Scale } from '@phosphor-icons/react/dist/csr/Scales';
+export { ScrollIcon as Scroll } from '@phosphor-icons/react/dist/csr/Scroll';
+export { MagnifyingGlassIcon as Search } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
+export { ShieldWarningIcon as ShieldAlert } from '@phosphor-icons/react/dist/csr/ShieldWarning';
+export { ShieldCheckIcon as ShieldCheck } from '@phosphor-icons/react/dist/csr/ShieldCheck';
+export { SparkleIcon as Sparkles } from '@phosphor-icons/react/dist/csr/Sparkle';
+export { StarIcon as Star } from '@phosphor-icons/react/dist/csr/Star';
+export { TargetIcon as Target } from '@phosphor-icons/react/dist/csr/Target';
+export { TrophyIcon as Trophy } from '@phosphor-icons/react/dist/csr/Trophy';
+export { TextTIcon as Type } from '@phosphor-icons/react/dist/csr/TextT';
+export { UsersIcon as Users } from '@phosphor-icons/react/dist/csr/Users';
+export { SpeakerHighIcon as Volume2 } from '@phosphor-icons/react/dist/csr/SpeakerHigh';
+export { SpeakerSlashIcon as VolumeX } from '@phosphor-icons/react/dist/csr/SpeakerSlash';
+export { XIcon as X } from '@phosphor-icons/react/dist/csr/X';
+export { XCircleIcon as XCircle } from '@phosphor-icons/react/dist/csr/XCircle';
+export { LightningIcon as Zap } from '@phosphor-icons/react/dist/csr/Lightning';
 
 export const iconStrokeWidth = 2;
 `;
