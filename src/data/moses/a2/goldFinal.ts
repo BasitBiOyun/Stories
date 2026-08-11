@@ -6,7 +6,7 @@ type VocabularyReplacement = { word: string; definition?: string };
 type VocabularyOverrides = Record<number, Record<string, VocabularyReplacement>>;
 
 const applyVocabularyOverrides = (
-  pages: ReturnType<typeof applyA2VocabularyGold>,
+  pages: typeof basePagesEn,
   overrides: VocabularyOverrides,
 ) => pages.map((page) => {
   const replacements = overrides[page.id];
@@ -20,10 +20,7 @@ const applyVocabularyOverrides = (
   };
 });
 
-const mosesA2PagesFinalBaseEn = applyA2VocabularyGold({ pages: basePagesEn, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'en' });
-const mosesA2PagesFinalBaseAr = applyA2VocabularyGold({ pages: basePagesAr, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'ar' });
-
-export const mosesA2PagesFinalEn = applyVocabularyOverrides(mosesA2PagesFinalBaseEn, {
+const correctedBasePagesEn = applyVocabularyOverrides(basePagesEn, {
   6: {
     mistake: { word: 'upset', definition: 'Very sad or worried because something bad happened.' },
   },
@@ -42,7 +39,7 @@ export const mosesA2PagesFinalEn = applyVocabularyOverrides(mosesA2PagesFinalBas
   },
 });
 
-export const mosesA2PagesFinalAr = applyVocabularyOverrides(mosesA2PagesFinalBaseAr, {
+const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   1: {
     'رَسُول': { word: 'رَسُولًا' },
     'ظَالِم': { word: 'ظَالِمًا' },
@@ -88,6 +85,9 @@ export const mosesA2PagesFinalAr = applyVocabularyOverrides(mosesA2PagesFinalBas
     'دُرُوس': { word: 'دُرُوسًا' },
   },
 });
+
+export const mosesA2PagesFinalEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'en' });
+export const mosesA2PagesFinalAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'ar' });
 
 export const mosesA2TeacherGuideFinalEn = buildA2TeacherGuide(mosesA2PagesFinalEn, mosesA2GoldConfig.storyIds, 'en');
 export const mosesA2TeacherGuideFinalAr = buildA2TeacherGuide(mosesA2PagesFinalAr, mosesA2GoldConfig.storyIds, 'ar');
