@@ -1,0 +1,53 @@
+name: TEMP Align B2 Derived Validator
+
+on:
+  push:
+    branches: [integration-work]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stop legacy B2 validators from freezing derived highlights
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          files = [
+              'scripts/validation/validateMosesB2GoldPilot.ts',
+              'scripts/validation/validateMosesB2GoldArabic.ts',
+              'scripts/validation/validateAdamB2Gold.ts',
+              'scripts/validation/validateAdamB2GoldArabic.ts',
+              'scripts/validation/validateAbrahamB2Gold.ts',
+              'scripts/validation/validateAbrahamB2GoldArabic.ts',
+              'scripts/validation/validateMeccaB2Gold.ts',
+              'scripts/validation/validateMeccaB2GoldArabic.ts',
+              'scripts/validation/validateYunusB2Gold.ts',
+          ]
+
+          changed = []
+          for name in files:
+              p = Path(name)
+              s = p.read_text()
+              old = s
+              s = s.replace("  'animatedWords',\n", '')
+              if s != old:
+                  p.write_text(s)
+                  changed.append(name)
+
+          if not changed:
+              raise SystemExit('no B2 validator contained legacy animatedWords protection')
+          print('updated:', *changed, sep='\n- ')
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/validation/validate*B2*.ts
+          git commit -m "align B2 validators with derived highlight lock"
+          git push origin HEAD:integration-work
