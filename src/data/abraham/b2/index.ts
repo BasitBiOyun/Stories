@@ -20,6 +20,16 @@ import {
   abrahamB2SelfStudyGuideGoldAr,
 } from './goldAr';
 
+const abrahamB2SourceTitleOverridesEn = {
+  9: { 'b2-hs-9-2': 'Creator’s command' },
+} as const;
+
+const abrahamB2SourceDescriptionOverridesEn = {
+  9: {
+    'b2-hs-9-2': 'He was astonished that these heavenly bodies were worshipped by people, while in fact all those stars, asteroids, the Sun, the Moon, etc., had been created; they appeared and disappeared at the Creator’s command.',
+  },
+} as const;
+
 export const abrahamB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(abrahamB2PagesGoldEn, {
   language: 'en',
   maxUniqueHighlights: 10,
@@ -33,6 +43,8 @@ export const abrahamB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(
 const abrahamB2PagesLockedEn = applyHotspotSourceLock(abrahamB2PagesBeforeHotspotSourceLockEn, {
   language: 'en',
   level: 'B2',
+  titleOverrides: abrahamB2SourceTitleOverridesEn,
+  descriptionOverrides: abrahamB2SourceDescriptionOverridesEn,
 });
 
 const abrahamB2PagesLockedAr = applyHotspotSourceLock(abrahamB2PagesBeforeHotspotSourceLockAr, {
