@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1StudentGuideText, abrahamB1StudentGuideMetadata, abrahamB1StudentGuideSections } from './en/selfstudyGuide';
 
@@ -7,15 +8,17 @@ import { abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1StudentGuideTextAr, abrahamB1StudentGuideMetadataAr, abrahamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
 import { abrahamB1PagesGoldEn, abrahamB1PagesGoldAr } from './gold';
 
-const abrahamB1GuidesEn = buildB1EvidenceGuides(abrahamB1PagesGoldEn, 'en');
-const abrahamB1GuidesAr = buildB1EvidenceGuides(abrahamB1PagesGoldAr, 'ar');
+const abrahamB1PagesLockedEn = applyHotspotSourceLock(abrahamB1PagesGoldEn, { language: 'en', level: 'B1' });
+const abrahamB1PagesLockedAr = applyHotspotSourceLock(abrahamB1PagesGoldAr, { language: 'ar', level: 'B1' });
+const abrahamB1GuidesEn = buildB1EvidenceGuides(abrahamB1PagesLockedEn, 'en');
+const abrahamB1GuidesAr = buildB1EvidenceGuides(abrahamB1PagesLockedAr, 'ar');
 
 export const abrahamB1BookDataEn: BookData = {
   id: 'b1-abraham-en',
   title: 'Stories of the Prophets: Abraham (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: abrahamB1PagesGoldEn,
+  pages: abrahamB1PagesLockedEn,
   teacherGuide: abrahamB1GuidesEn.teacherGuide,
   selfStudyGuide: abrahamB1GuidesEn.selfStudyGuide,
   studentGuideText: abrahamB1StudentGuideText,
@@ -29,7 +32,7 @@ export const abrahamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: abrahamB1PagesGoldAr,
+  pages: abrahamB1PagesLockedAr,
   teacherGuide: abrahamB1GuidesAr.teacherGuide,
   selfStudyGuide: abrahamB1GuidesAr.selfStudyGuide,
   studentGuideText: abrahamB1StudentGuideTextAr,
