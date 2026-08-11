@@ -28,6 +28,10 @@ export const VocabularyWord = ({
     isAbove: boolean;
   }>({ top: 0, left: 0, arrowOffset: 0, isAbove: true });
 
+  const normalizedDefinition = definition?.trim() ?? '';
+  const genericFallback = t('nav.keyWordFallback').trim();
+  const hasDefinition = Boolean(normalizedDefinition) && normalizedDefinition !== genericFallback;
+
   const updateCoords = () => {
     if (triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
@@ -73,7 +77,7 @@ export const VocabularyWord = ({
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && hasDefinition) {
       updateCoords();
       const timer = setTimeout(updateCoords, 10);
       window.addEventListener('resize', updateCoords);
@@ -84,7 +88,11 @@ export const VocabularyWord = ({
         window.removeEventListener('scroll', updateCoords, true);
       };
     }
-  }, [isOpen]);
+  }, [isOpen, hasDefinition]);
+
+  useEffect(() => {
+    if (!hasDefinition && isOpen) setIsOpen(false);
+  }, [hasDefinition, isOpen]);
 
   return (
     <span className="relative inline-block">
@@ -92,17 +100,20 @@ export const VocabularyWord = ({
         ref={triggerRef}
         onClick={(e) => {
           e.stopPropagation();
+          if (!hasDefinition) return;
           setIsOpen(!isOpen);
           if (!isOpen) trackWordClick(word);
         }}
         className={cn(
-          "cursor-help transition-colors",
+          "transition-colors",
+          hasDefinition ? "cursor-help" : "cursor-default",
           customStyle || "border-b-2 border-gold/40 hover:border-gold font-bold text-wood"
         )}
+        aria-disabled={!hasDefinition}
       >
         {word}
       </span>
-      {createPortal(
+      {hasDefinition && createPortal(
         <AnimatePresence>
           {isOpen && (
             <>
@@ -140,7 +151,7 @@ export const VocabularyWord = ({
                   "font-serif block leading-relaxed",
                   language !== 'ar' && "italic",
                   language === 'ar' ? "text-base sm:text-xl font-bold" : "text-xs sm:text-sm md:text-base"
-                )}>{definition}</span>
+                )}>{normalizedDefinition}</span>
 
                 {/* Dynamic arrow */}
                 <div 
