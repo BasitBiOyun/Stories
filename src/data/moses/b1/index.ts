@@ -11,7 +11,16 @@ import { mosesB1PagesRolloutEn, mosesB1PagesRolloutAr } from './rollout';
 import { mosesA2TeacherGuideMetadata } from '../a2/en/teacherGuide';
 import { mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from '../a2/en/selfStudyGuide';
 
-const mosesB1PagesLockedEn = applyHotspotSourceLock(mosesB1PagesRolloutEn, { language: 'en', level: 'B1' });
+const mosesB1PagesLockedEn = applyHotspotSourceLock(mosesB1PagesRolloutEn, {
+  language: 'en',
+  level: 'B1',
+  titleOverrides: {
+    4: { 'h4-1': 'Mother', 'h4-2': 'Queen Asiye' },
+    9: { 'h9-1': 'Voice' },
+    11: { 'h11-2': 'Staff' },
+    12: { 'h12-1': 'Night' },
+  },
+});
 const mosesB1PagesLockedAr = applyHotspotSourceLock(mosesB1PagesRolloutAr, { language: 'ar', level: 'B1' });
 const mosesB1GuidesEn = buildB1EvidenceGuides(mosesB1PagesLockedEn, 'en');
 const mosesB1GuidesAr = buildB1EvidenceGuides(mosesB1PagesLockedAr, 'ar');
