@@ -15,8 +15,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'curiosity', definition: 'A strong desire to know or learn something.' }
     ],
     hotspots: [
-      { id: 'h1', x: 30, y: 40, title: 'The Soil', description: 'Represents the humble origin of humanity, created from the earth.' },
-      { id: 'h2', x: 70, y: 20, title: 'The Light', description: 'Symbolizes Adam’s knowledge.' }
+      { id: 'h1', x: 30, y: 40, title: 'Soil', description: 'Allah created Adam from soil.' },
+      { id: 'h2', x: 70, y: 20, title: 'Earth', description: 'Allah created the sky and the earth.' }
     ],
     animatedWords: ['soil', 'sky', 'earth', 'dust'],
     syncPoints: [0, 18, 38, 60],
@@ -74,13 +74,13 @@ export const adamA2Pages: PageData[] = [
     vocabulary: [
       { word: 'respect', definition: 'A feeling of deep admiration for someone.' },
       { word: 'wiser', definition: 'Having or showing experience, knowledge, and good judgment.' },
-      { word: 'jealous', definition: 'Feeling or showing envy of someone or their achievements.' }
+      { word: 'clay', definition: 'Soft earth that can be shaped.' }
     ],
     hotspots: [
-      { id: 'h2-1', x: 40, y: 30, title: "Adam's Mind", description: "Allah gave Adam the ability to learn and think." },
-      { id: 'h2-2', x: 60, y: 50, title: "Angels", description: "The angels respected Adam because of his knowledge." }
+      { id: 'h2-1', x: 40, y: 30, title: 'Knowledge', description: 'Allah gave Adam knowledge and taught him to think.' },
+      { id: 'h2-2', x: 60, y: 50, title: 'Angels', description: 'The angels admired Adam and respected him.' }
     ],
-    animatedWords: ['knowledge', 'think', 'amazing', 'jealous'],
+    animatedWords: ['knowledge', 'think', 'amazing', 'understand'],
     exercises: [
       {
         id: 'ex2-1',
@@ -111,8 +111,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'creature', definition: 'An animal or person, especially as distinct from a human.' }
     ],
     hotspots: [
-      { id: 'h3-1', x: 25, y: 45, title: "Fire", description: "Iblis thought fire was better than soil." },
-      { id: 'h3-2', x: 75, y: 35, title: "Pride", description: "Arrogance made Iblis lose Allah's love." }
+      { id: 'h3-1', x: 25, y: 45, title: 'Fire', description: 'Iblis thought fire was better than soil.' },
+      { id: 'h3-2', x: 75, y: 35, title: 'Arrogant', description: 'Iblis was arrogant. He thought he was more important than Adam.' }
     ],
     animatedWords: ['fire', 'clay', 'arrogant'],
     exercises: [
@@ -145,8 +145,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'warning', definition: 'A statement or event that indicates a possible or impending danger.' }
     ],
     hotspots: [
-      { id: 'h4-1', x: 35, y: 40, title: "Eve (Hawwa)", description: "Allah created Eve so Adam would not be lonely." },
-      { id: 'h4-2', x: 65, y: 25, title: "The Tree", description: "Allah told them not to go near this one tree." }
+      { id: 'h4-1', x: 35, y: 40, title: 'Eve (Hawwa)', description: 'Allah gave him a wife. Her name was Eve (Hawwa).' },
+      { id: 'h4-2', x: 65, y: 25, title: 'Tree', description: 'HE told Adam and Eve not to go near one tree.' }
     ],
     exercises: [
       {
@@ -175,13 +175,13 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%205%20(1).mp3?alt=media&token=99c3f2f1-6939-4348-bdbf-ef1fd9611730',
     content: "When Adam and Eve were happy in Paradise, Iblis came near them and told them he was their friend. It was a big lie. He softly spoke to them: “If you eat from that one tree, you will never die.” \n\nAfter a while, Iblis finally made them believe his lie. They forgot Allah’s warning. Unfortunately, people are sometimes forgetful. \n\nAdam and Eve ate fruit from that banned tree. They made a mistake, but it wasn’t on purpose. They were very sad about their wrong action. They said sorry to Allah. They learned from their mistake and decided never to repeat it. They wanted Allah to excuse them. \n\nHowever, Iblis took an opposite direction. He never thought he was wrong, because he was arrogant. He believed that he was superior, smarter and more important than the human. Iblis’ character makes it hard to do the right thing and see the difference between good and bad.",
     vocabulary: [
-      { word: 'deception', definition: 'The action of deceiving someone.' },
-      { word: 'regret', definition: 'A feeling of sadness about a mistake.' },
+      { word: 'lie', definition: 'Something that is not true.' },
+      { word: 'mistake', definition: 'Something you do that is wrong.' },
       { word: 'superior', definition: 'Higher in rank, status, or quality.' }
     ],
     hotspots: [
-      { id: 'h5-1', x: 45, y: 35, title: "The Lie", description: "Iblis told a big lie to trick Adam and Eve." },
-      { id: 'h5-2', x: 55, y: 60, title: "Sorrow", description: "They felt very sad after making a mistake." }
+      { id: 'h5-1', x: 45, y: 35, title: 'Lie', description: 'Iblis told them he was their friend. It was a big lie.' },
+      { id: 'h5-2', x: 55, y: 60, title: 'Mistake', description: 'They made a mistake, but it wasn’t on purpose. They were very sad.' }
     ],
     animatedWords: ['on purpose'],
     exercises: [
@@ -214,8 +214,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'planet', definition: 'A celestial body moving in an orbit around a star.' }
     ],
     hotspots: [
-      { id: 'h6-1', x: 30, y: 50, title: "The Earth", description: "Adam and Eve became the rulers of the planet." },
-      { id: 'h6-2', x: 70, y: 40, title: "Farming", description: "They used the land to grow food and keep animals." }
+      { id: 'h6-1', x: 30, y: 50, title: 'Earth', description: 'Allah excused Adam and Eve and put them on earth to live there.' },
+      { id: 'h6-2', x: 70, y: 40, title: 'Land', description: 'They were using land to grow crops and keep animals.' }
     ],
     animatedWords: ['excused'],
     exercises: [
@@ -246,8 +246,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'enemy', definition: 'A person who is actively opposed or hostile to someone.' }
     ],
     hotspots: [
-      { id: 'h7-1', x: 40, y: 45, title: "Teaching", description: "Adam taught his children to be honest and kind." },
-      { id: 'h7-2', x: 60, y: 30, title: "Family", description: "Adam and Eve had many children on Earth." }
+      { id: 'h7-1', x: 40, y: 45, title: 'Messenger', description: 'Allah made Adam His first Messenger.' },
+      { id: 'h7-2', x: 60, y: 30, title: 'Children', description: 'Adam and Eve taught their children to behave well.' }
     ],
     exercises: [
       {
@@ -277,8 +277,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'offering', definition: 'A thing offered to Allah.' }
     ],
     hotspots: [
-      { id: 'h8-1', x: 35, y: 55, title: "Habil's Sheep", description: "Habil gave his best and healthiest sheep to Allah." },
-      { id: 'h8-2', x: 65, y: 45, title: "Qabil's Crops", description: "Qabil gave only a small part of his harvest." }
+      { id: 'h8-1', x: 35, y: 55, title: 'Sheep', description: 'Habil brought his best sheep as a gift for Allah.' },
+      { id: 'h8-2', x: 65, y: 45, title: 'Crops', description: 'Qabil brought just a handful of his crops.' }
     ],
     exercises: [
       {
@@ -316,8 +316,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'digging', definition: 'Break up and move earth with a tool or claws.' }
     ],
     hotspots: [
-      { id: 'h9-1', x: 50, y: 20, title: "The Crow", description: "A bird showed Qabil how to bury his brother." },
-      { id: 'h9-2', x: 40, y: 60, title: "Regret", description: "Qabil felt very bad and panicked after his action." }
+      { id: 'h9-1', x: 50, y: 20, title: 'Crow', description: 'The crow showed Qabil the way to put his brother dead body in the hole.' },
+      { id: 'h9-2', x: 40, y: 60, title: 'Panic', description: 'Soon, Qabil’s anger cooled and he felt so sad. But also he started to panic.' }
     ],
     exercises: [
       {
@@ -348,8 +348,8 @@ export const adamA2Pages: PageData[] = [
       { word: 'worldwide', definition: 'Extending or reaching throughout the world.' }
     ],
     hotspots: [
-      { id: 'h10-1', x: 45, y: 40, title: "Old Age", description: "Adam lived for many years and taught his family." },
-      { id: 'h10-2', x: 55, y: 30, title: "The Message", description: "His children spread the message of love and respect." }
+      { id: 'h10-1', x: 45, y: 40, title: 'Old', description: 'He got old over the years.' },
+      { id: 'h10-2', x: 55, y: 30, title: 'Message', description: 'His children and grandchildren spread his message worldwide.' }
     ],
     exercises: [
       {
