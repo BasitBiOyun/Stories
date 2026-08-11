@@ -8,7 +8,14 @@ import { adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamB1StudentGuideTextAr, adamB1StudentGuideMetadataAr, adamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
 import { adamB1PagesGoldEn, adamB1PagesGoldAr } from './gold';
 
-const adamB1PagesLockedEn = applyHotspotSourceLock(adamB1PagesGoldEn, { language: 'en', level: 'B1' });
+const adamB1PagesLockedEn = applyHotspotSourceLock(adamB1PagesGoldEn, {
+  language: 'en',
+  level: 'B1',
+  titleOverrides: {
+    10: { 'h10-1': 'Sheep', 'h10-2': 'Crops' },
+    11: { 'h11-1': 'Raven', 'h11-2': 'Anger' },
+  },
+});
 const adamB1PagesLockedAr = applyHotspotSourceLock(adamB1PagesGoldAr, { language: 'ar', level: 'B1' });
 const adamB1GuidesEn = buildB1EvidenceGuides(adamB1PagesLockedEn, 'en');
 const adamB1GuidesAr = buildB1EvidenceGuides(adamB1PagesLockedAr, 'ar');
