@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
 import {
   yunusA2PagesFinalAr,
   yunusA2PagesFinalEn,
@@ -16,12 +17,15 @@ import {
   yunusA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
+const yunusA2PagesLockedEn = applyA2HotspotSourceLock(yunusA2PagesFinalEn, 'yunusEmre', 'en');
+const yunusA2PagesLockedAr = applyA2HotspotSourceLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar');
+
 export const yunusEmreA2BookDataEn: BookData = {
   id: 'yunusEmre-a2-en',
   title: 'Yunus Emre: Faith, Character, and Poetry (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: yunusA2PagesFinalEn,
+  pages: yunusA2PagesLockedEn,
   teacherGuide: yunusA2TeacherGuideFinalEn,
   teacherGuideMetadata: yunusA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: yunusA2SelfStudyGuideFinalEn,
@@ -35,7 +39,7 @@ export const yunusEmreA2BookDataAr: BookData = {
   title: 'يونس إمره: الإيمان والأخلاق والشعر (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: yunusA2PagesFinalAr,
+  pages: yunusA2PagesLockedAr,
   teacherGuide: yunusA2TeacherGuideFinalAr,
   teacherGuideMetadata: yunusA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: yunusA2SelfStudyGuideFinalAr,
