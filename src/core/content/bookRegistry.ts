@@ -2,6 +2,7 @@ import type { Level } from '../../types';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
+import { finalizeBookPairForUi } from './uiBookFinalization';
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -26,7 +27,7 @@ const createDefinition = (
   collection,
   titles,
   storage: getStorageManifest(storyId, level),
-  load,
+  load: async () => finalizeBookPairForUi(await load()),
 });
 
 export const bookRegistry: readonly BookDefinition[] = [
