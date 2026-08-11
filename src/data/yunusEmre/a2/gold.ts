@@ -20,151 +20,82 @@ const config = {
 };
 
 export const yunusA2HotspotsGoldEn: A2HotspotMap = {
-  'h1-1': {
-    title: 'Simple Turkish',
-    description: 'Yunus Emre used simple Turkish, so many people could understand his poems and their moral lessons.',
-  },
-  'h1-2': {
-    title: 'Taptuk Emre',
-    description: 'Taptuk Emre was Yunus Emre’s teacher, and Yunus became his dervish student.',
-  },
-  'h2-1': {
-    title: 'Need for Allah',
-    description: 'The chapter says dervishes knew that they needed Allah in every part of life.',
-  },
-  'h2-2': {
-    title: 'Generosity',
-    description: 'Dervishes shared what they had with people in need and tried not to keep wealth in their hearts.',
-  },
-  'h3-1': {
-    title: 'A Difficult Path',
-    description: 'The chapter describes dervish life as a difficult path of honesty, patience, humility, generosity, and respect.',
-  },
-  'h3-2': {
-    title: 'A Disciplined Life',
-    description: 'Dervishes ate, spoke, and slept less and tried to spend their time on useful activities.',
-  },
-  'h4-1': {
-    title: 'Serving with Humility',
-    description: 'Taptuk Emre gave Yunus the job of collecting wood as part of his service and training.',
-  },
-  'h4-2': {
-    title: 'No Crooked Wood',
-    description: 'Yunus carefully chose straight wood and did not bring green or crooked pieces to the dervish house.',
-  },
-  'h5-1': {
-    title: 'Straight Wood',
-    description: 'Yunus chose the straightest pieces of wood with great care, even after years of hard work.',
-  },
-  'h5-2': {
-    title: 'A Lesson About the Heart',
-    description: 'The chapter compares straight wood with Yunus working to correct his own heart and ego.',
-  },
-  'h6-1': {
-    title: 'Honesty and Goodness',
-    description: 'Yunus used straight wood as a lesson about honesty, goodness, and becoming a better person.',
-  },
-  'h6-2': {
-    title: 'Learning from Nature',
-    description: 'The chapter says Yunus looked at nature and found lessons in trees, animals, rivers, and quiet places.',
-  },
-  'h7-1': {
-    title: 'A Single Daisy',
-    description: 'Yunus returned with only one daisy while the other students brought many flowers.',
-  },
-  'h7-2': {
-    title: 'Yunus’s Explanation',
-    description: 'Yunus said he did not cut the other flowers because he heard them remembering Allah.',
-  },
-  'h8-1': {
-    title: 'The Daisy in the Story',
-    description: 'In the story, the daisy says its time is ending and asks Yunus to pick it.',
-  },
-  'h8-2': {
-    title: 'Remember Allah and Work Well',
-    description: 'The final lesson is to remember Allah in daily life and to do every job carefully and well.',
-  },
+  'h1-1': { title: 'Simple Turkish', description: 'People could easily understand his poems because he wrote and said them in simple Turkish.' },
+  'h1-2': { title: 'Taptuk Emre', description: 'Yunus Emre became a dervish pupil of Taptuk Emre.' },
+  'h2-1': { title: 'Hearts and Eyes', description: 'Dervishes tried to find Allah everywhere not only with their eyes but also with their hearts.' },
+  'h2-2': { title: 'The Needy', description: 'They shared what they had with the needy.' },
+  'h3-1': { title: 'Path of Dervishhood', description: 'The path of dervishhood was a very difficult one.' },
+  'h3-2': { title: 'Useful Activities', description: 'They ate less, spoke less, slept less, and spent their time on useful activities.' },
+  'h4-1': { title: 'Wood-Cutting Duties', description: 'Taptuk then assigned Yunus to the wood-cutting duties at the dervish house.' },
+  'h4-2': { title: 'Crooked Wood', description: 'He never cut or brought green or crooked wood.' },
+  'h5-1': { title: 'Straightest Pieces', description: 'He chose the straightest pieces of wood with the greatest care.' },
+  'h5-2': { title: 'Heart and Ego', description: 'He is training and fixing his own heart and ego.' },
+  'h6-1': { title: 'Door of Honesty and Goodness', description: 'This place is a door of honesty and goodness.' },
+  'h6-2': { title: 'Nature', description: 'He looked at nature and found a lesson from everything in it.' },
+  'h7-1': { title: 'A Single Daisy', description: 'In the late afternoon, he returned with a single daisy.' },
+  'h7-2': { title: 'Name of Allah', description: 'Wherever I saw a flower, I heard that it was saying the name of Allah.' },
+  'h8-1': { title: 'My Time', description: 'My time is up now; I’m dried up and dying.' },
+  'h8-2': { title: 'Meaningful and Fruitful Life', description: 'This helps us live a meaningful and fruitful life.' },
 };
 
 export const yunusA2HotspotsGoldAr: A2HotspotMap = {
-  'h1-1': {
-    title: 'لغة تركية بسيطة',
-    description: 'استخدم يونس إمره لغة تركية بسيطة، فاستطاع كثير من الناس فهم أشعاره ودروسها الأخلاقية.',
-  },
-  'h1-2': {
-    title: 'طابطوق إمره',
-    description: 'كان طابطوق إمره معلّم يونس إمره، وأصبح يونس تلميذا له في طريق الدراويش.',
-  },
-  'h2-1': {
-    title: 'الحاجة إلى الله',
-    description: 'يقول الفصل إن الدراويش كانوا يعرفون حاجتهم إلى الله في كل جوانب حياتهم.',
-  },
-  'h2-2': {
-    title: 'الكرم',
-    description: 'شارك الدراويش ما عندهم مع المحتاجين وحاولوا ألا يجعلوا المال أهم ما في قلوبهم.',
-  },
-  'h3-1': {
-    title: 'طريق صعب',
-    description: 'يصف الفصل حياة الدرويش بأنها طريق يحتاج إلى الصدق والصبر والتواضع والكرم والاحترام.',
-  },
-  'h3-2': {
-    title: 'حياة منضبطة',
-    description: 'كان الدراويش يقللون من الطعام والكلام والنوم ويقضون وقتهم في أعمال نافعة.',
-  },
-  'h4-1': {
-    title: 'الخدمة بتواضع',
-    description: 'أعطى طابطوق إمره يونس مهمة جمع الحطب لتكون جزءا من خدمته وتدريبه.',
-  },
-  'h4-2': {
-    title: 'لا حطب أعوج',
-    description: 'كان يونس يختار الحطب المستقيم بعناية ولا يجلب الحطب الأخضر أو الأعوج إلى بيت الدراويش.',
-  },
-  'h5-1': {
-    title: 'الحطب المستقيم',
-    description: 'كان يونس يختار أكثر قطع الحطب استقامة بعناية كبيرة رغم سنوات العمل الطويلة.',
-  },
-  'h5-2': {
-    title: 'درس عن القلب',
-    description: 'يقارن الفصل بين الحطب المستقيم وبين عمل يونس على إصلاح قلبه ونفسه.',
-  },
-  'h6-1': {
-    title: 'الصدق والخير',
-    description: 'استخدم يونس صورة الحطب المستقيم لشرح الصدق والخير ومحاولة أن يصبح الإنسان أفضل.',
-  },
-  'h6-2': {
-    title: 'التعلم من الطبيعة',
-    description: 'يقول الفصل إن يونس نظر إلى الطبيعة ووجد دروسا في الأشجار والحيوانات والأنهار والأماكن الهادئة.',
-  },
-  'h7-1': {
-    title: 'زهرة أقحوان واحدة',
-    description: 'عاد يونس بزهرة واحدة فقط بينما عاد الطلاب الآخرون بزهور كثيرة.',
-  },
-  'h7-2': {
-    title: 'تفسير يونس',
-    description: 'قال يونس إنه لم يقطع الزهور الأخرى لأنه سمعها تذكر الله.',
-  },
-  'h8-1': {
-    title: 'الزهرة في القصة',
-    description: 'في القصة تقول الزهرة إن وقتها يوشك أن ينتهي وتطلب من يونس أن يقطفها.',
-  },
-  'h8-2': {
-    title: 'اذكر الله وأتقن عملك',
-    description: 'الدرس الأخير هو ذكر الله في الحياة اليومية والقيام بكل عمل بعناية وإتقان.',
-  },
+  'h1-1': { title: 'لُغَةٍ تُرْكِيَّةٍ بَسيطَةٍ', description: 'كانَ النّاسُ يَفْهَمونَ قَصائِدَهُ بِسُهولَةٍ، لِأَنَّهُ كانَ يَكْتُبُها وَيَقولُها بِلُغَةٍ تُرْكِيَّةٍ بَسيطَةٍ.' },
+  'h1-2': { title: 'تَابْتُوك إِمْرَه', description: 'أَصْبَحَ يونُس إِمْرَه تِلْميذًا دَرْوِيشًا عِنْدَ تَابْتُوك إِمْرَه.' },
+  'h2-1': { title: 'قُلوبِهِمْ', description: 'كانَ الدَّراويشُ يُحاوِلونَ أَنْ يَعْرِفوا اللهَ لا بِأَعْيُنِهِمْ فَقَطْ، بَلْ بِقُلوبِهِمْ أَيْضًا.' },
+  'h2-2': { title: 'الْمُحْتاجينَ', description: 'كانوا يُشارِكونَ ما عِنْدَهُمْ مَعَ الْمُحْتاجينَ.' },
+  'h3-1': { title: 'طَريقًا شاقًّا', description: 'كانَ طَريقُ الدَّراويشِ طَريقًا شاقًّا جِدًّا.' },
+  'h3-2': { title: 'أَعْمالٍ مُفيدَةٍ', description: 'كانوا يَقْضونَ وَقْتَهُمْ في أَعْمالٍ مُفيدَةٍ.' },
+  'h4-1': { title: 'الْحَطَبَ', description: 'فَطَلَبَ تابْتوك مِنْ يونُس أَنْ يَقْطَعَ الْحَطَبَ في دارِ الدَّراويشِ.' },
+  'h4-2': { title: 'الْحَطَبِ الْمُعْوَجِّ', description: 'لا يُمْكِنُ لِلْحَطَبِ الْمُعْوَجِّ أَنْ يَدْخُلَ دارَ الدَّراويشِ.' },
+  'h5-1': { title: 'اسْتِقامَةً', description: 'كانَ يونُس يَخْتارُ أَكْثَرَ قِطَعِ الْحَطَبِ اسْتِقامَةً بِعِنايَةٍ كَبيرَةٍ.' },
+  'h5-2': { title: 'قَلْبَهُ وَنَفْسَهُ', description: 'كانَ يُدَرِّبُ قَلْبَهُ وَنَفْسَهُ وَيُصْلِحُهُما.' },
+  'h6-1': { title: 'بابُ الصِّدْقِ وَالْخَيْرِ', description: 'هٰذا الْمَكانُ بابُ الصِّدْقِ وَالْخَيْرِ.' },
+  'h6-2': { title: 'الطَّبيعَةُ', description: 'كانَ يَنْظُرُ إِلى الطَّبيعَةِ وَيَتَعَلَّمُ دَرْسًا مِنْ كُلِّ شَيْءٍ فيها.' },
+  'h7-1': { title: 'زَهْرَةُ أُقْحُوانٍ واحِدَةٌ', description: 'عادَ وَمَعَهُ زَهْرَةُ أُقْحُوانٍ واحِدَةٌ.' },
+  'h7-2': { title: 'اسْمَ اللهِ', description: 'كُلَّما رَأَيْتُ زَهْرَةً، سَمِعْتُها تَذْكُرُ اسْمَ اللهِ.' },
+  'h8-1': { title: 'اِنْتَهى وَقْتي', description: 'لقد اِنْتَهى وَقْتي الآن؛ لقد يَبِسْتُ، وَأَنا قَريبَةٌ مِنَ الْمَوْتِ.' },
+  'h8-2': { title: 'حَياةً ذاتَ مَعْنًى', description: 'وَهٰذا يُساعِدُنا عَلى أَنْ نَعيشَ حَياةً ذاتَ مَعْنًى وَمُثْمِرَةً.' },
 };
 
-export const yunusA2PagesGoldEn = applyA2GoldPages({
+const applyAnimatedWordOverrides = (
+  pages: ReturnType<typeof applyA2GoldPages>,
+  overrides: Record<number, string[]>,
+) => pages.map((page) => overrides[page.id] ? { ...page, animatedWords: overrides[page.id] } : page);
+
+const yunusA2PagesGoldBaseEn = applyA2GoldPages({
   canonicalPages: yunusA2Pages,
   hotspotMap: yunusA2HotspotsGoldEn,
   config,
   language: 'en',
 });
 
-export const yunusA2PagesGoldAr = applyA2GoldPages({
+const yunusA2PagesGoldBaseAr = applyA2GoldPages({
   canonicalPages: yunusEmreA2PagesAr,
   hotspotMap: yunusA2HotspotsGoldAr,
   config,
   language: 'ar',
+});
+
+export const yunusA2PagesGoldEn = applyAnimatedWordOverrides(yunusA2PagesGoldBaseEn, {
+  1: ['poems', 'simple Turkish', 'passed away'],
+  2: ['the needy', 'forgave', 'sulky'],
+  3: ['path', 'training'],
+  4: ['assigned', 'ego', 'crooked'],
+  5: ['fixing', 'noticed'],
+  6: ['quiet', 'rivers'],
+  7: ['picked', 'whispered'],
+  8: ['meaningful', 'fruitful'],
+});
+
+export const yunusA2PagesGoldAr = applyAnimatedWordOverrides(yunusA2PagesGoldBaseAr, {
+  1: ['قَصائِدَهُ', 'بَسيطَةٍ', 'تُوُفِّيَ'],
+  2: ['الْمُحْتاجينَ', 'يَغْفِرونَ', 'عابِسِينَ'],
+  3: ['طَريقًا', 'تَدْريبَهُ'],
+  4: ['مُسْتَعِدًّا', 'الْهَدَفَ', 'مُعْوَجًّا'],
+  5: ['يُصْلِحُ', 'يُدَرِّبُ', 'لاحَظَ'],
+  6: ['التَّفَكُّرِ', 'أَعْمَقَ'],
+  7: ['قَطَفُوا', 'يَهْمِسونَ'],
+  8: ['مَعْنًى', 'مُثْمِرَةً'],
 });
 
 export const yunusA2TeacherGuideGoldEn = buildA2TeacherGuide(yunusA2PagesGoldEn, config.storyIds, 'en');
