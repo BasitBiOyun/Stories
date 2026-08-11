@@ -10,12 +10,14 @@ export interface HotspotSourceText {
 
 export type HotspotPlaceOverrides = Record<number, Record<string, HotspotSourceText>>;
 export type HotspotTitleOverrides = Record<number, Record<string, string>>;
+export type HotspotDescriptionOverrides = Record<number, Record<string, string>>;
 
 export interface HotspotSourceLockOptions {
   language: HotspotSourceLanguage;
   level: HotspotSourceLevel;
   placeOverrides?: HotspotPlaceOverrides;
   titleOverrides?: HotspotTitleOverrides;
+  descriptionOverrides?: HotspotDescriptionOverrides;
 }
 
 const MAX_DESCRIPTION_WORDS: Record<HotspotSourceLevel, number> = {
@@ -203,6 +205,9 @@ const fallbackTitle = (
  * explanation supplied through placeOverrides; this keeps the exception small,
  * reviewable and level-appropriate instead of reopening general paraphrasing.
  *
+ * `descriptionOverrides` may only select a reviewed direct extract that already
+ * exists in the same chapter; it cannot introduce new prose.
+ *
  * Canonical prose, vocabulary, animated words, exercises, media and timing data
  * are never changed by this function.
  */
@@ -213,6 +218,7 @@ export const applyHotspotSourceLock = (
   const maxWords = MAX_DESCRIPTION_WORDS[options.level];
   const placeOverrides = options.placeOverrides ?? {};
   const titleOverrides = options.titleOverrides ?? {};
+  const descriptionOverrides = options.descriptionOverrides ?? {};
 
   return pages.map(page => {
     if (page.type !== 'story' || !page.hotspots?.length) return page;
@@ -225,6 +231,7 @@ export const applyHotspotSourceLock = (
         const currentTitle = hotspot.title ?? '';
         const requestedTitle = titleOverrides[page.id]?.[hotspot.id] ?? currentTitle;
         const currentDescription = hotspot.description ?? '';
+        const requestedDescription = descriptionOverrides[page.id]?.[hotspot.id];
 
         if (placeOverride) {
           const placeDescription = words(placeOverride.description, options.language).length <= maxWords
@@ -244,16 +251,23 @@ export const applyHotspotSourceLock = (
           return { ...hotspot, title: sourceTitle, description: placeDescription };
         }
 
-        const sourceDescription = directExtract(content, currentDescription, options.language)
-          && words(currentDescription, options.language).length <= maxWords
-          ? currentDescription
-          : bestSourceSentence(
-              content,
-              requestedTitle,
-              currentDescription,
-              options.language,
-              maxWords,
-            );
+        const reviewedDescription = requestedDescription
+          && directExtract(content, requestedDescription, options.language)
+          && words(requestedDescription, options.language).length <= maxWords
+          ? requestedDescription
+          : undefined;
+
+        const sourceDescription = reviewedDescription
+          ?? (directExtract(content, currentDescription, options.language)
+            && words(currentDescription, options.language).length <= maxWords
+            ? currentDescription
+            : bestSourceSentence(
+                content,
+                requestedTitle,
+                currentDescription,
+                options.language,
+                maxWords,
+              ));
 
         const sourceTitle = titleIsUsable(content, requestedTitle, options.language)
           ? requestedTitle
