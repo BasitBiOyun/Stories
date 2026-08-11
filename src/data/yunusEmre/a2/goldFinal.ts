@@ -6,7 +6,7 @@ type VocabularyReplacement = { word: string; definition?: string };
 type VocabularyOverrides = Record<number, Record<string, VocabularyReplacement>>;
 
 const applyVocabularyOverrides = (
-  pages: ReturnType<typeof applyA2VocabularyGold>,
+  pages: typeof basePagesEn,
   overrides: VocabularyOverrides,
 ) => pages.map((page) => {
   const replacements = overrides[page.id];
@@ -20,10 +20,7 @@ const applyVocabularyOverrides = (
   };
 });
 
-const yunusA2PagesFinalBaseEn = applyA2VocabularyGold({ pages: basePagesEn, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'en' });
-const yunusA2PagesFinalBaseAr = applyA2VocabularyGold({ pages: basePagesAr, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'ar' });
-
-export const yunusA2PagesFinalEn = applyVocabularyOverrides(yunusA2PagesFinalBaseEn, {
+const correctedBasePagesEn = applyVocabularyOverrides(basePagesEn, {
   5: {
     wound: { word: 'cuts', definition: 'Painful marks or injuries on the body.' },
   },
@@ -32,7 +29,7 @@ export const yunusA2PagesFinalEn = applyVocabularyOverrides(yunusA2PagesFinalBas
   },
 });
 
-export const yunusA2PagesFinalAr = applyVocabularyOverrides(yunusA2PagesFinalBaseAr, {
+const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   1: {
     'شَاعِر': { word: 'الشُّعَراءِ', definition: 'أشخاص يكتبون القصائد.' },
     'أَخْلَاقِي': { word: 'أَخْلاقِيَّةً' },
@@ -68,6 +65,9 @@ export const yunusA2PagesFinalAr = applyVocabularyOverrides(yunusA2PagesFinalBas
     'يَبِسَتْ': { word: 'يَبِسْتُ', definition: 'جففت وفقدت الماء والحياة.' },
   },
 });
+
+export const yunusA2PagesFinalEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'en' });
+export const yunusA2PagesFinalAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'ar' });
 
 export const yunusA2TeacherGuideFinalEn = buildA2TeacherGuide(yunusA2PagesFinalEn, yunusA2GoldConfig.storyIds, 'en');
 export const yunusA2TeacherGuideFinalAr = buildA2TeacherGuide(yunusA2PagesFinalAr, yunusA2GoldConfig.storyIds, 'ar');
