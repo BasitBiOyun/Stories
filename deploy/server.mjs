@@ -22,6 +22,7 @@ const contentTypes = {
   '.ttf': 'font/ttf',
   '.mp3': 'audio/mpeg',
   '.mp4': 'video/mp4',
+  '.pdf': 'application/pdf',
 };
 
 const sendFile = (res, filePath) => {
@@ -43,7 +44,12 @@ const server = http.createServer((req, res) => {
     return sendFile(res, filePath);
   }
 
-  // SPA fallback for client-side routes.
+  if (urlPath.startsWith('/pdfs/')) {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end('PDF not found');
+    return;
+  }
+
   filePath = join(root, 'index.html');
   if (existsSync(filePath)) {
     return sendFile(res, filePath);
