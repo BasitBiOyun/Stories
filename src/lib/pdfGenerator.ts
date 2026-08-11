@@ -14,7 +14,28 @@ const loadPdfGenerator = (): Promise<PdfGeneratorModule> => {
   return modulePromise;
 };
 
+const STATIC_STUDENT_BOOKS: Partial<Record<string, string>> = {
+  'a2-prophets-en': 'Adam_A2_English_Student_Book_Gold.pdf',
+  'a2-prophets-ar': 'Adam_A2_Arabic_Student_Book_Gold.pdf',
+};
+
+const downloadStaticPdf = (fileName: string): void => {
+  const link = document.createElement('a');
+  link.href = `/pdfs/${encodeURIComponent(fileName)}`;
+  link.download = fileName;
+  link.rel = 'noopener';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+};
+
 export const generateBookPDF = async (book: BookData): Promise<void> => {
+  const staticFile = STATIC_STUDENT_BOOKS[book.id];
+  if (staticFile) {
+    downloadStaticPdf(staticFile);
+    return;
+  }
+
   const module = await loadPdfGenerator();
   await module.generateBookPDF(book);
 };
