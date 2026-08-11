@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyA2HotspotSourceLock } from '../../a2HotspotSourceLock';
 import {
   meccaA2PagesFinalAr,
   meccaA2PagesFinalEn,
@@ -16,12 +17,15 @@ import {
   meccaA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
+const meccaA2PagesLockedEn = applyA2HotspotSourceLock(meccaA2PagesFinalEn, 'mecca', 'en');
+const meccaA2PagesLockedAr = applyA2HotspotSourceLock(meccaA2PagesFinalAr, 'mecca', 'ar');
+
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: meccaA2PagesFinalEn,
+  pages: meccaA2PagesLockedEn,
   teacherGuide: meccaA2TeacherGuideFinalEn,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: meccaA2SelfStudyGuideFinalEn,
@@ -35,7 +39,7 @@ export const meccaA2BookDataAr: BookData = {
   title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: meccaA2PagesFinalAr,
+  pages: meccaA2PagesLockedAr,
   teacherGuide: meccaA2TeacherGuideFinalAr,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: meccaA2SelfStudyGuideFinalAr,
