@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { stripUnsupportedBoldMarkdown } from '../../stripUnsupportedMarkdown';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
 import { yunusB1StudentGuideSections, yunusB1StudentGuideText, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
@@ -8,7 +9,7 @@ import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
 
-const yunusB1PagesLockedEn = applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
+const yunusB1PagesLockedEn = stripUnsupportedBoldMarkdown(applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
   language: 'en',
   level: 'B1',
   titleOverrides: {
@@ -20,7 +21,7 @@ const yunusB1PagesLockedEn = applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
     12: { 'h12-2': 'Moral Principles' },
     13: { 'h13-2': 'Patience' },
   },
-});
+}));
 const yunusB1PagesLockedAr = applyHotspotSourceLock(yunusEmreB1PagesGoldAr, { language: 'ar', level: 'B1' });
 const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1PagesLockedEn, 'en');
 const yunusB1GuidesAr = buildB1EvidenceGuides(yunusB1PagesLockedAr, 'ar');
