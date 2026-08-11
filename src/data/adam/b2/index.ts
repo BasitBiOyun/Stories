@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   adamB2PagesGoldEn,
   adamB2TeacherGuideGoldEn,
@@ -34,16 +35,26 @@ const adamB2TitleOverridesAr = {
   3: { h3a: 'الخليفة', h3b: 'الأسماء كلها' },
 } as const;
 
-const adamB2PagesLockedEn = applyB2StoryLanguageLock(adamB2PagesGoldEn, {
+export const adamB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(adamB2PagesGoldEn, {
   language: 'en',
   titleOverrides: adamB2TitleOverridesEn,
   maxUniqueHighlights: 10,
 });
 
-const adamB2PagesLockedAr = applyB2StoryLanguageLock(adamB2PagesGoldAr, {
+export const adamB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(adamB2PagesGoldAr, {
   language: 'ar',
   titleOverrides: adamB2TitleOverridesAr,
   maxUniqueHighlights: 10,
+});
+
+const adamB2PagesLockedEn = applyHotspotSourceLock(adamB2PagesBeforeHotspotSourceLockEn, {
+  language: 'en',
+  level: 'B2',
+});
+
+const adamB2PagesLockedAr = applyHotspotSourceLock(adamB2PagesBeforeHotspotSourceLockAr, {
+  language: 'ar',
+  level: 'B2',
 });
 
 export const adamB2BookDataEn: BookData = {
