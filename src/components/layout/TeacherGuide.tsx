@@ -175,7 +175,7 @@ export const TeacherGuide = ({
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.plans')}</h3>
             <div className="space-y-6 sm:space-y-8">
               <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} A: {metadata?.implementationPlans?.optionA.title}</h4>
+                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} {language === 'ar' ? 'أ' : 'A'}: {metadata?.implementationPlans?.optionA.title}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-xs uppercase tracking-widest text-gold">
                   {metadata?.implementationPlans?.optionA.steps?.map((step, i) => (
                     <div key={i} className="space-y-1 bg-white/5 p-3 rounded-xl sm:bg-transparent sm:p-0 sm:space-y-2 sm:border-r sm:border-gold/10 sm:pr-4">
@@ -186,7 +186,7 @@ export const TeacherGuide = ({
                 </div>
               </div>
               <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} B: {metadata?.implementationPlans?.optionB.title}</h4>
+                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} {language === 'ar' ? 'ب' : 'B'}: {metadata?.implementationPlans?.optionB.title}</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                   {metadata?.implementationPlans?.optionB.lessons?.map((lesson, i) => (
                     <div key={i}>
@@ -201,7 +201,7 @@ export const TeacherGuide = ({
               </div>
               {metadata?.implementationPlans?.optionC && (
                 <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                  <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} C: {metadata?.implementationPlans?.optionC.title}</h4>
+                  <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} {language === 'ar' ? 'ج' : 'C'}: {metadata?.implementationPlans?.optionC.title}</h4>
                   {metadata?.implementationPlans?.optionC.steps && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 text-xs uppercase tracking-widest text-gold">
                       {metadata?.implementationPlans?.optionC.steps.map((step, i) => (
