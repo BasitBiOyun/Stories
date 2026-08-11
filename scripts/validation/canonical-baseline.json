@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T12:18:14.333Z",
+  "generatedAt": "2026-08-11T21:53:03.907Z",
   "books": [
     {
       "key": "adam:A2",
@@ -2264,7 +2264,7 @@
           "type": "story",
           "title": "The Baby in the Water",
           "subtitle": null,
-          "contentHash": "0b0600b27d9ba445d29c5e3106c951858a1881cfdcce9cd3b6b3d465478e2ce8",
+          "contentHash": "10d5d237ce1daaa53206f566c847a5cd036b29007aab087bf3543fa3e68a4ae9",
           "audioUrl": ""
         },
         {
