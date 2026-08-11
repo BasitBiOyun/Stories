@@ -13,9 +13,16 @@ import { adamA2SelfStudyGuideAr } from '../../src/data/adam/a2/ar/selfStudyGuide
 import { adamA2HotspotsGoldAr, adamA2HotspotsGoldEn } from '../../src/data/adam/a2/hotspotsGold';
 
 const protectedStoryFields = [
-  'id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl',
-  'animatedWords', 'syncPoints', 'timedChunks',
+  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl',
+  'animatedWords', 'syncPoints',
 ] as const;
+
+const applyApprovedAdamMechanicalFixes = (value: string, pageId: number, language: 'en' | 'ar'): string => {
+  if (language !== 'en') return value;
+  if (pageId === 7) return value.replaceAll('They had also lots of children.', 'They also had lots of children.');
+  if (pageId === 9) return value.replaceAll('his brother dead body', "his brother's dead body");
+  return value;
+};
 
 const normalized = (value: string): string => value
   .toLowerCase()
@@ -69,6 +76,22 @@ const validateLanguage = ({
       assert.deepEqual(learning[field], canonical[field], `${label}: learning overlay changed protected field ${field} on page ${id}.`);
       assert.deepEqual(finalized[field], canonical[field], `${label}: final quality layer changed protected field ${field} on page ${id}.`);
     }
+
+    assert.equal(learning.content, canonical.content, `${label}: learning overlay changed canonical content on page ${id}.`);
+    assert.deepEqual(learning.timedChunks, canonical.timedChunks, `${label}: learning overlay changed timed chunks on page ${id}.`);
+    assert.equal(
+      finalized.content,
+      applyApprovedAdamMechanicalFixes(canonical.content, id, language),
+      `${label}: finalized content differs from canonical text beyond approved mechanical fixes on page ${id}.`,
+    );
+    assert.deepEqual(
+      finalized.timedChunks,
+      canonical.timedChunks?.map(chunk => ({
+        ...chunk,
+        text: applyApprovedAdamMechanicalFixes(chunk.text, id, language),
+      })),
+      `${label}: finalized timed chunks differ beyond approved mechanical fixes on page ${id}.`,
+    );
 
     // Hotspot geometry remains canonical; only reviewed title/description copy may change.
     assert.deepEqual(learning.hotspots, canonical.hotspots, `${label}: learning overlay must not change canonical hotspot data before final review.`);
@@ -199,7 +222,8 @@ assert.equal(
 );
 
 console.log('Adam A2 English + Arabic finalized learning-material contract: PASS');
-console.log('- canonical story/chapter/image/audio/sync fields unchanged in both languages');
+console.log('- canonical story/chapter/image/audio/sync fields preserved in both languages');
+console.log('- only the approved Adam A2 mechanical prose/timing corrections are permitted');
 console.log('- every hotspot reviewed; ids and coordinates preserved');
 console.log('- 10 chapter Quick Challenges per language');
 console.log('- 8-question Knowledge Check per language');
