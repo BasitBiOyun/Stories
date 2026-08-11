@@ -27,8 +27,9 @@ const EN_STOPWORDS = new Set([
 ]);
 
 const AR_STOPWORDS = new Set([
-  'ان', 'او', 'الى', 'ام', 'اي', 'ايضا', 'بأن', 'بما', 'بل', 'ثم', 'ذلك', 'على', 'عن', 'عند', 'في', 'قد',
-  'كان', 'كانت', 'كما', 'كل', 'لا', 'لأن', 'لكن', 'ما', 'من', 'هو', 'هي', 'هذا', 'هذه', 'هناك', 'و', 'يا',
+  'ان', 'او', 'الي', 'الى', 'ام', 'اي', 'ايضا', 'بان', 'بأن', 'بما', 'بل', 'ثم', 'ذلك', 'علي', 'على', 'عن',
+  'عند', 'في', 'قد', 'كان', 'كانت', 'كما', 'كل', 'لا', 'لان', 'لأن', 'لكن', 'ما', 'من', 'هو', 'هي', 'هذا',
+  'هذه', 'هناك', 'و', 'يا',
 ]);
 
 const INTERPRETIVE_MARKERS: Record<StoryLanguage, readonly string[]> = {
@@ -90,8 +91,8 @@ const canonicalToken = (rawToken: string, language: StoryLanguage): string => {
   }
 
   if (token.length > 4 && token.endsWith('ies')) return `${token.slice(0, -3)}y`;
-  if (token.length > 4 && token.endsWith('es')) return token.slice(0, -2);
-  if (token.length > 3 && token.endsWith('s')) return token.slice(0, -1);
+  if (token.length > 4 && token.endsWith('es') && !token.endsWith('ses')) return token.slice(0, -2);
+  if (token.length > 4 && token.endsWith('s') && !token.endsWith('ss')) return token.slice(0, -1);
   return token;
 };
 
@@ -101,17 +102,17 @@ const tokenize = (text: string, language: StoryLanguage): string[] => {
   return normalized.split(' ').map(token => canonicalToken(token, language)).filter(Boolean);
 };
 
-const significantTokens = (text: string, language: StoryLanguage): string[] => {
-  const stopwords = language === 'ar' ? AR_STOPWORDS : EN_STOPWORDS;
-  return tokenize(text, language).filter(token => !stopwords.has(token) && !/^\d+$/.test(token));
-};
+const isStopword = (token: string, language: StoryLanguage): boolean => (
+  language === 'ar' ? AR_STOPWORDS.has(token) : EN_STOPWORDS.has(token)
+);
+
+const significantTokens = (text: string, language: StoryLanguage): string[] => (
+  tokenize(text, language).filter(token => !isStopword(token, language) && !/^\d+$/.test(token))
+);
 
 const containsTokenSequence = (content: string, phrase: string, language: StoryLanguage): boolean => {
-  const contentTokens = tokenize(content, language);
-  const phraseTokens = tokenize(phrase, language).filter(token => {
-    const stopwords = language === 'ar' ? AR_STOPWORDS : EN_STOPWORDS;
-    return !stopwords.has(token);
-  });
+  const contentTokens = significantTokens(content, language);
+  const phraseTokens = significantTokens(phrase, language);
 
   if (!phraseTokens.length) return false;
   if (phraseTokens.length === 1) return contentTokens.includes(phraseTokens[0]);
@@ -303,7 +304,7 @@ const main = async () => {
     }
 
     const pair = await definition.load();
-    const variants: readonly [StoryLanguage, BookData][] = [
+    const variants: Array<[StoryLanguage, BookData]> = [
       ['en', pair.en],
       ['ar', pair.ar],
     ];
