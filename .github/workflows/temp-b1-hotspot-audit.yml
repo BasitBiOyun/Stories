@@ -1,0 +1,30 @@
+name: TEMP B1 Hotspot Source Audit
+
+on:
+  push:
+    branches:
+      - story-language-lock-rollout
+    paths:
+      - '.github/workflows/temp-b1-hotspot-audit.yml'
+      - 'src/data/storyHotspotSourceLock.ts'
+      - 'src/data/**/b1/**'
+      - 'scripts/validation/tempB1HotspotSourceAudit.ts'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Audit B1 hotspot source lock
+        run: npx tsx scripts/validation/tempB1HotspotSourceAudit.ts
