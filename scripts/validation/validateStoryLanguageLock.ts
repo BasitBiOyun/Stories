@@ -42,17 +42,26 @@ const INTERPRETIVE_MARKERS: Record<StoryLanguage, readonly string[]> = {
   ],
 };
 
-const DESCRIPTION_RULES: Record<Level, { minCoverage: number; maxNovelTokens: number; maxWords: number }> = {
-  A2: { minCoverage: 0.82, maxNovelTokens: 2, maxWords: 26 },
-  B1: { minCoverage: 0.74, maxNovelTokens: 4, maxWords: 34 },
-  B2: { minCoverage: 0.66, maxNovelTokens: 7, maxWords: 42 },
+const MAX_HOTSPOT_DESCRIPTION_WORDS: Record<Level, number> = {
+  A2: 26,
+  B1: 34,
+  B2: 42,
 };
+
+const MAX_HOTSPOT_TITLE_WORDS = 4;
 
 const MAX_UNIQUE_HIGHLIGHTS: Record<Level, number> = {
   A2: 8,
   B1: 10,
   B2: 12,
 };
+
+/**
+ * Reviewed non-source hotspot descriptions are permitted only for short factual
+ * place-name clarifications. Add a key here only after editorial review.
+ * Format: storyId:level:language:pageId:hotspotId
+ */
+const REVIEWED_PLACE_HOTSPOT_EXCEPTIONS = new Set<string>();
 
 const stripArabicDiacritics = (text: string): string => text
   .replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
@@ -134,19 +143,14 @@ const containsTokenSequence = (content: string, phrase: string, language: StoryL
   return false;
 };
 
-const titleUsesOnlyChapterWords = (content: string, title: string, language: StoryLanguage): string[] => {
-  const contentSet = new Set(significantTokens(content, language));
-  const titleTokens = significantTokens(title, language);
-  return [...new Set(titleTokens.filter(token => !contentSet.has(token)))];
-};
-
-const descriptionSourceCoverage = (content: string, description: string, language: StoryLanguage) => {
-  const contentSet = new Set(significantTokens(content, language));
-  const descriptionTokens = significantTokens(description, language);
-  const novelTokens = [...new Set(descriptionTokens.filter(token => !contentSet.has(token)))];
-  const matchedCount = descriptionTokens.filter(token => contentSet.has(token)).length;
-  const coverage = descriptionTokens.length ? matchedCount / descriptionTokens.length : 0;
-  return { coverage, novelTokens, wordCount: tokenize(description, language).length };
+const isDirectChapterExtract = (
+  content: string,
+  candidate: string,
+  language: StoryLanguage,
+): boolean => {
+  const normalizedContent = normalizeText(content, language);
+  const normalizedCandidate = normalizeText(candidate, language);
+  return Boolean(normalizedCandidate) && normalizedContent.includes(normalizedCandidate);
 };
 
 const markerAppearsOnlyInHotspot = (content: string, hotspotText: string, language: StoryLanguage): string[] => {
@@ -169,32 +173,40 @@ const collectPageViolations = (
   const violations: string[] = [];
   const label = `${bookKey}:${language} page ${page.id}`;
   const content = page.content ?? '';
-  const rules = DESCRIPTION_RULES[level];
 
   for (const hotspot of page.hotspots ?? []) {
     const hotspotLabel = `${label} hotspot ${hotspot.id}`;
-    if (!hotspot.title?.trim()) violations.push(`${hotspotLabel}: title is empty.`);
-    if (!hotspot.description?.trim()) violations.push(`${hotspotLabel}: description is empty.`);
+    const title = hotspot.title ?? '';
+    const description = hotspot.description ?? '';
 
-    const missingTitleWords = titleUsesOnlyChapterWords(content, hotspot.title ?? '', language);
-    if (missingTitleWords.length) {
-      violations.push(`${hotspotLabel}: title uses word(s) not found in this chapter: ${missingTitleWords.join(', ')}.`);
+    if (!title.trim()) violations.push(`${hotspotLabel}: title is empty.`);
+    if (!description.trim()) violations.push(`${hotspotLabel}: description is empty.`);
+
+    const titleWordCount = normalizeText(title, language).split(' ').filter(Boolean).length;
+    if (titleWordCount > MAX_HOTSPOT_TITLE_WORDS) {
+      violations.push(`${hotspotLabel}: title has ${titleWordCount} words; maximum is ${MAX_HOTSPOT_TITLE_WORDS}.`);
+    }
+    if (title.trim() && !isDirectChapterExtract(content, title, language)) {
+      violations.push(`${hotspotLabel}: title is not a direct phrase from this chapter.`);
     }
 
-    const { coverage, novelTokens, wordCount } = descriptionSourceCoverage(content, hotspot.description ?? '', language);
-    if (coverage < rules.minCoverage || novelTokens.length > rules.maxNovelTokens) {
+    const placeExceptionKey = `${bookKey}:${language}:${page.id}:${hotspot.id}`;
+    const isReviewedPlaceException = REVIEWED_PLACE_HOTSPOT_EXCEPTIONS.has(placeExceptionKey);
+    if (description.trim() && !isReviewedPlaceException && !isDirectChapterExtract(content, description, language)) {
+      violations.push(`${hotspotLabel}: description is not a direct extract from this chapter.`);
+    }
+
+    const descriptionWordCount = normalizeText(description, language).split(' ').filter(Boolean).length;
+    if (descriptionWordCount > MAX_HOTSPOT_DESCRIPTION_WORDS[level]) {
       violations.push(
-        `${hotspotLabel}: description is too far from this chapter's wording `
-        + `(coverage ${(coverage * 100).toFixed(0)}%, novel: ${novelTokens.join(', ') || 'none'}).`,
+        `${hotspotLabel}: description has ${descriptionWordCount} words; `
+        + `${level} maximum is ${MAX_HOTSPOT_DESCRIPTION_WORDS[level]}.`,
       );
-    }
-    if (wordCount > rules.maxWords) {
-      violations.push(`${hotspotLabel}: description has ${wordCount} words; ${level} maximum is ${rules.maxWords}.`);
     }
 
     const unsupportedMarkers = markerAppearsOnlyInHotspot(
       content,
-      `${hotspot.title ?? ''} ${hotspot.description ?? ''}`,
+      `${title} ${description}`,
       language,
     );
     if (unsupportedMarkers.length) {
