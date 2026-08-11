@@ -52,23 +52,25 @@ const addArabicPrefixForms = (forms: Set<string>, value: string): void => {
     if (candidate.length >= 3) forms.add(candidate);
   };
 
-  if ((value.startsWith('و') || value.startsWith('ف')) && value.length > 4) add(value.slice(1));
-  // Future marker: سيدبران -> يدبران. This is a grammatical prefix, not a stem rewrite.
-  if (value.startsWith('س') && value.length > 4) add(value.slice(1));
-  if (value.startsWith('بال') && value.length > 5) {
+  // One-letter Arabic conjunction/preposition/future clitics may attach even
+  // to three-letter roots: فغضب, فخاف, بثمن, وفرح. Keep a three-letter minimum
+  // after stripping so this remains morphology-aware rather than a loose stemmer.
+  if ((value.startsWith('و') || value.startsWith('ف')) && value.length > 3) add(value.slice(1));
+  if (value.startsWith('س') && value.length > 3) add(value.slice(1));
+  if (value.startsWith('بال') && value.length > 4) {
     add(value.slice(1)); // بالكتاب -> الكتاب
-    add(value.slice(3)); // بالكتاب -> كتاب
+    add(value.slice(3)); // بالكتاب -> كتاب (only retained if >= 3 letters)
   }
-  if (value.startsWith('كال') && value.length > 5) {
+  if (value.startsWith('كال') && value.length > 4) {
     add(value.slice(1));
     add(value.slice(3));
   }
-  if (value.startsWith('لل') && value.length > 4) {
+  if (value.startsWith('لل') && value.length > 3) {
     add(`ال${value.slice(2)}`);
     add(value.slice(2));
   }
-  if (value.startsWith('ال') && value.length > 4) add(value.slice(2));
-  if ((value.startsWith('ب') || value.startsWith('ك') || value.startsWith('ل')) && value.length > 4) add(value.slice(1));
+  if (value.startsWith('ال') && value.length > 3) add(value.slice(2));
+  if ((value.startsWith('ب') || value.startsWith('ك') || value.startsWith('ل')) && value.length > 3) add(value.slice(1));
 };
 
 const ARABIC_PRONOUN_SUFFIXES = ['هما', 'هم', 'هن', 'ها', 'كم', 'كن', 'نا', 'ه', 'ك', 'ي'] as const;
