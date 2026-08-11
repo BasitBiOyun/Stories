@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import type { BookData, PageData, TeacherGuideSection } from '../../src/types';
 import { highlightPhraseOccurs } from '../../src/lib/highlightTextMatch';
+import { normalizeHotspotSourceText } from '../../src/data/storyHotspotSourceLock';
 
 import { abrahamA2PagesEn } from '../../src/data/abraham/a2/en/pages';
 import { abrahamA2PagesAr } from '../../src/data/abraham/a2/ar/pages';
@@ -57,7 +58,7 @@ const normalizeSource = (value: string, language: 'en' | 'ar'): string => {
 };
 
 const sourceContains = (content: string, excerpt: string, language: 'en' | 'ar'): boolean =>
-  normalizeSource(content, language).includes(normalizeSource(excerpt, language));
+  normalizeHotspotSourceText(content, language).includes(normalizeHotspotSourceText(excerpt, language));
 
 const applyApprovedYunusMechanicalFix = (value: string, storyName: string, pageId: number, language: 'en' | 'ar'): string => {
   if (storyName !== 'Yunus Emre' || language !== 'en' || pageId !== 7) return value;
