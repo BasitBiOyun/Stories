@@ -1,4 +1,5 @@
 import { BookData } from '../../../types';
+import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import {
   abrahamB2PagesGoldEn,
   abrahamB2TeacherGuideGoldEn,
@@ -18,12 +19,22 @@ import {
   abrahamB2SelfStudyGuideGoldAr,
 } from './goldAr';
 
+const abrahamB2PagesLockedEn = applyB2StoryLanguageLock(abrahamB2PagesGoldEn, {
+  language: 'en',
+  maxUniqueHighlights: 10,
+});
+
+const abrahamB2PagesLockedAr = applyB2StoryLanguageLock(abrahamB2PagesGoldAr, {
+  language: 'ar',
+  maxUniqueHighlights: 10,
+});
+
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: abrahamB2PagesGoldEn,
+  pages: abrahamB2PagesLockedEn,
   teacherGuide: abrahamB2TeacherGuideGoldEn,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldEn,
   studentGuideMetadata: abrahamB2StudentGuideMetadataGoldEn,
@@ -37,7 +48,7 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم (ع)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesGoldAr,
+  pages: abrahamB2PagesLockedAr,
   teacherGuide: abrahamB2TeacherGuideGoldAr,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldAr,
   studentGuideMetadata: abrahamB2StudentGuideMetadataGoldAr,
