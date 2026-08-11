@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB2PagesGoldFinalEn, yunusB2PagesGoldFinalAr } from './goldAttribution';
 import {
   yunusB2TeacherGuideGoldEn,
@@ -18,7 +19,7 @@ import {
   yunusB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 
-const yunusB2PagesLockedEn = applyB2StoryLanguageLock(yunusB2PagesGoldFinalEn, {
+export const yunusB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(yunusB2PagesGoldFinalEn, {
   language: 'en',
   blockedHighlights: [
     'relates to',
@@ -36,9 +37,19 @@ const yunusB2PagesLockedEn = applyB2StoryLanguageLock(yunusB2PagesGoldFinalEn, {
   maxUniqueHighlights: 10,
 });
 
-const yunusB2PagesLockedAr = applyB2StoryLanguageLock(yunusB2PagesGoldFinalAr, {
+export const yunusB2PagesBeforeHotspotSourceLockAr = applyB2StoryLanguageLock(yunusB2PagesGoldFinalAr, {
   language: 'ar',
   maxUniqueHighlights: 10,
+});
+
+const yunusB2PagesLockedEn = applyHotspotSourceLock(yunusB2PagesBeforeHotspotSourceLockEn, {
+  language: 'en',
+  level: 'B2',
+});
+
+const yunusB2PagesLockedAr = applyHotspotSourceLock(yunusB2PagesBeforeHotspotSourceLockAr, {
+  language: 'ar',
+  level: 'B2',
 });
 
 export const yunusEmreB2BookDataEn: BookData = {
