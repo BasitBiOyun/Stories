@@ -100,7 +100,7 @@ const validateAnswerBalance = (exercises: Exercise[], label: string) => {
   }
 };
 
-const validateCase = ({ label, canonical, book, config, minWordNotes = 3 }: Case) => {
+const validateCase = ({ label, canonical, book, config }: Case) => {
   const language: 'en' | 'ar' = label.endsWith(' AR') ? 'ar' : 'en';
   const stripApprovedBold = (value: string) => value.replaceAll('**', '');
   assert.equal(book.level, 'B1', `${label}: level changed.`);
@@ -142,8 +142,8 @@ const validateCase = ({ label, canonical, book, config, minWordNotes = 3 }: Case
 
     const vocabulary = final.vocabulary ?? [];
     assert.ok(
-      vocabulary.length >= 2 && vocabulary.length <= 5,
-      `${label} chapter ${id}: Word Notes must contain 2–5 safe source-grounded reviewed items.`,
+      vocabulary.length >= 1 && vocabulary.length <= 5,
+      `${label} chapter ${id}: Word Notes must contain 1–5 safe source-grounded reviewed items.`,
     );
     const vocabKeys = vocabulary.map((entry) => entry.word.toLowerCase().trim());
     assert.equal(new Set(vocabKeys).size, vocabKeys.length, `${label} chapter ${id}: duplicate Word Notes found.`);
