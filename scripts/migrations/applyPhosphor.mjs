@@ -94,7 +94,7 @@ const uniqueAssets = [...new Set(Object.values(semanticToAsset))];
 const pascal = (value) => value.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join('');
 const bodies = new Map();
 for (const asset of uniqueAssets) {
-  const file = path.join(coreRoot, `${asset}-regular.svg`);
+  const file = path.join(coreRoot, `${asset}.svg`);
   if (!fs.existsSync(file)) throw new Error(`Missing Phosphor Core asset: ${file}`);
   const svg = fs.readFileSync(file, 'utf8');
   const match = svg.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
