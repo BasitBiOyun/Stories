@@ -64,6 +64,7 @@ export const lockedStoryLanguageBooks = new Set<string>([
   'adam:B2',
   'ibrahim:A2',
   'ibrahim:B1',
+  'ibrahim:B2',
   'musa:A2',
   'musa:B1',
   'mecca:A2',
@@ -71,6 +72,7 @@ export const lockedStoryLanguageBooks = new Set<string>([
   'mecca:B2',
   'yunusEmre:A2',
   'yunusEmre:B1',
+  'yunusEmre:B2',
 ]);
 
 export const legacyStoryLanguageBookKeys = new Set(
