@@ -1,0 +1,17 @@
+/* Teacher/Self-Study overlays already expose the active collection through
+   their inline theme variables. Force the full-screen surface to use the
+   matching collection family instead of the shared default forest tone. */
+[class*="fixed"][class*="inset-0"][style*="--color-gold"][style*="#c2aa6b" i] {
+  --color-wood: #2a1b0e !important;
+  background-color: rgba(42, 27, 14, 0.98) !important;
+}
+
+[class*="fixed"][class*="inset-0"][style*="--color-gold"][style*="#10b981" i] {
+  --color-wood: #042416 !important;
+  background-color: rgba(4, 36, 22, 0.98) !important;
+}
+
+[class*="fixed"][class*="inset-0"][style*="--color-gold"][style*="#22d3ee" i] {
+  --color-wood: #0d1d2c !important;
+  background-color: rgba(13, 29, 44, 0.98) !important;
+}
