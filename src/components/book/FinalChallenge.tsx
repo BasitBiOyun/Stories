@@ -1,207 +1,213 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Trophy, Zap, RotateCcw, ArrowRight, CheckCircle2, XCircle, Medal, Target, Book as BookIcon } from '../ui/icons';
+import React from 'react';
+import { motion } from 'motion/react';
+import { Trophy, RotateCcw, ArrowRight, Medal, Target } from '../ui/icons';
 import { BookData, Exercise } from '../../types';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
+import { presentMultipleChoice } from '../../lib/exercisePresentation';
 
 interface FinalChallengeProps {
   bookData: BookData;
   onComplete?: () => void;
 }
 
-export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComplete }) => {
-  const [gameState, setGameState] = useState<'intro' | 'playing' | 'results'>('intro');
-  const [currentStep, setCurrentStep] = useState(0);
-  const [score, setScore] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<Record<number, any>>({});
-  const [shuffledQuestions, setShuffledQuestions] = useState<Exercise[]>([]);
-  const [isWrong, setIsWrong] = useState(false);
-  const { language, t, formatNumber, isRTL } = useLanguage();
-  const { setFinalScore } = useStoryProgress();
-
+const getTheme = (bookData: BookData) => {
   const isHistory = bookData.id.toLowerCase().includes('mecca') || bookData.id.toLowerCase().includes('history');
   const isTurkish = bookData.id.toLowerCase().includes('yunus');
 
-  // Approved books can provide an explicit ten-question Final Challenge on the
-  // final-challenge page. Prefer that stable set so the app and print edition
-  // use the same questions. Legacy books without a complete dedicated set keep
-  // the previous random-pool behaviour until their content is reviewed.
-  const dedicatedFinalQuestions = useMemo(() => {
-    const finalPage = bookData.pages.find(page => page.type === 'final-challenge');
+  if (isHistory) {
+    return {
+      accent: 'bg-emerald-600 hover:bg-emerald-700',
+      accentSolid: 'bg-emerald-600',
+      soft: 'bg-emerald-50 border-emerald-200',
+      border: 'border-emerald-200',
+      text: 'text-emerald-950',
+      subtext: 'text-emerald-700',
+      confetti: ['#059669', '#10B981', '#34D399'],
+    };
+  }
+
+  if (isTurkish) {
+    return {
+      accent: 'bg-sky-700 hover:bg-sky-800',
+      accentSolid: 'bg-sky-700',
+      soft: 'bg-sky-50 border-sky-200',
+      border: 'border-sky-200',
+      text: 'text-sky-950',
+      subtext: 'text-sky-700',
+      confetti: ['#0284C7', '#0EA5E9', '#38BDF8'],
+    };
+  }
+
+  return {
+    accent: 'bg-amber-600 hover:bg-amber-700',
+    accentSolid: 'bg-amber-600',
+    soft: 'bg-amber-50 border-amber-200',
+    border: 'border-amber-200',
+    text: 'text-amber-950',
+    subtext: 'text-amber-700',
+    confetti: ['#D97706', '#F59E0B', '#FCD34D'],
+  };
+};
+
+export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComplete }) => {
+  const { t, formatNumber, isRTL } = useLanguage();
+  const { setFinalScore } = useStoryProgress();
+  const theme = React.useMemo(() => getTheme(bookData), [bookData]);
+
+  const [gameState, setGameState] = React.useState<'intro' | 'playing' | 'results'>('intro');
+  const [questions, setQuestions] = React.useState<Exercise[]>([]);
+  const [currentStep, setCurrentStep] = React.useState(0);
+  const [score, setScore] = React.useState(0);
+  const [selectedAnswer, setSelectedAnswer] = React.useState<boolean | number | null>(null);
+  const [lastCorrect, setLastCorrect] = React.useState<boolean | null>(null);
+
+  const dedicatedFinalQuestions = React.useMemo(() => {
+    const finalPage = bookData.pages.find((page) => page.type === 'final-challenge');
     return (finalPage?.exercises ?? []).filter(
-      ex => ex.type === 'multiple-choice' || ex.type === 'true-false'
+      (exercise) => exercise.type === 'multiple-choice' || exercise.type === 'true-false'
     );
   }, [bookData]);
 
-  // Legacy fallback: extract all multiple-choice and true-false questions from the book.
-  const allQuestions = useMemo(() => {
-    const questions: Exercise[] = [];
-    bookData.pages.forEach(page => {
-      page.exercises?.forEach(ex => {
-        if (ex.type === 'multiple-choice' || ex.type === 'true-false') {
-          questions.push(ex);
+  const fallbackQuestions = React.useMemo(() => {
+    const collected: Exercise[] = [];
+    bookData.pages.forEach((page) => {
+      page.exercises?.forEach((exercise) => {
+        if (exercise.type === 'multiple-choice' || exercise.type === 'true-false') {
+          collected.push(exercise);
         }
       });
     });
-    return questions;
+    return collected;
   }, [bookData]);
 
   const startChallenge = () => {
     const selected = dedicatedFinalQuestions.length === 10
       ? [...dedicatedFinalQuestions]
-      : [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 10);
-    
-    if (selected.length === 0) {
-      setGameState('results');
+      : [...fallbackQuestions].slice(0, 10);
+
+    setQuestions(selected);
+    setCurrentStep(0);
+    setScore(0);
+    setSelectedAnswer(null);
+    setLastCorrect(null);
+    setGameState(selected.length ? 'playing' : 'results');
+  };
+
+  const currentQuestion = questions[currentStep];
+  const presentedOptions = React.useMemo(
+    () => currentQuestion?.type === 'multiple-choice' ? presentMultipleChoice(currentQuestion) : [],
+    [currentQuestion]
+  );
+
+  const handleAnswer = (answer: boolean | number) => {
+    if (!currentQuestion || selectedAnswer !== null) return;
+    const correct = answer === currentQuestion.correctAnswer;
+    setSelectedAnswer(answer);
+    setLastCorrect(correct);
+
+    if (correct) {
+      setScore((previous) => previous + 1);
+      confetti({
+        particleCount: 90,
+        spread: 65,
+        origin: { y: 0.65 },
+        colors: theme.confetti,
+      });
+    }
+  };
+
+  const goNext = () => {
+    if (!currentQuestion || selectedAnswer === null) return;
+
+    if (currentStep < questions.length - 1) {
+      setCurrentStep((previous) => previous + 1);
+      setSelectedAnswer(null);
+      setLastCorrect(null);
       return;
     }
 
-    setShuffledQuestions(selected);
-    setGameState('playing');
-    setCurrentStep(0);
-    setScore(0);
-    setUserAnswers({});
+    const percentage = Math.round((score / Math.max(questions.length, 1)) * 100);
+    setFinalScore(percentage);
+    setGameState('results');
   };
-
-  const handleAnswer = (answer: any) => {
-    const question = shuffledQuestions[currentStep];
-    const isCorrect = answer === question.correctAnswer;
-
-    if (isCorrect) {
-      setScore(s => s + 1);
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: isTurkish 
-          ? ['#0284C7', '#0EA5E9', '#38BDF8'] 
-          : isHistory 
-          ? ['#059669', '#10B981', '#34D399'] 
-          : ['#D97706', '#F59E0B', '#FCD34D']
-      });
-    } else {
-      setIsWrong(true);
-      setTimeout(() => setIsWrong(false), 500);
-    }
-
-    setUserAnswers(prev => ({ ...prev, [currentStep]: answer }));
-
-    setTimeout(() => {
-      if (currentStep < shuffledQuestions.length - 1) {
-        setCurrentStep(s => s + 1);
-      } else {
-        const finalPercentage = Math.round(((score + (isCorrect ? 1 : 0)) / shuffledQuestions.length) * 100);
-        setFinalScore(finalPercentage);
-        setGameState('results');
-      }
-    }, 1000);
-  };
-
-  const isA2 = bookData.level === 'A2';
 
   if (gameState === 'intro') {
     return (
-      <div className="h-full flex flex-col items-center justify-center text-center p-8 gap-8">
+      <div className="h-full min-h-0 overflow-y-auto flex flex-col items-center justify-center text-center px-5 py-8 sm:p-10 gap-6 sm:gap-8">
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className={cn(
-            "w-24 h-24 rounded-[2rem] text-white flex items-center justify-center shadow-2xl",
-            isHistory ? "bg-teal-600 shadow-teal-100" : isTurkish ? "bg-sky-600 shadow-sky-100" : "bg-amber-600 shadow-amber-200"
-          )}
+          className={cn('w-20 h-20 sm:w-24 sm:h-24 rounded-3xl text-white flex items-center justify-center shadow-xl', theme.accentSolid)}
         >
-          <Trophy size={48} />
+          <Trophy size={44} />
         </motion.div>
-        
-        <div className="max-w-md">
-          <h2 className={cn(
-            "text-2xl sm:text-3xl md:text-4xl font-black tracking-tight mb-2 sm:mb-4",
-            isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-          )}>{t('nav.finalChallenge')}</h2>
-          <p className="font-serif text-sm sm:text-base md:text-lg text-wood/70 leading-relaxed">
+
+        <div className="max-w-xl">
+          <h2 className={cn('font-display text-2xl sm:text-3xl md:text-4xl font-black tracking-tight', theme.text)}>
+            {t('nav.finalChallenge')}
+          </h2>
+          <p className="font-serif text-sm sm:text-base md:text-lg text-wood/65 mt-3 leading-relaxed">
             {t('nav.finalChallengeIntro')}
           </p>
         </div>
 
         <button
+          type="button"
           onClick={startChallenge}
-          className={cn(
-            "group relative px-12 py-5 text-white rounded-2xl font-display text-lg uppercase tracking-widest transition-all shadow-xl active:scale-95 flex items-center gap-3",
-            isHistory ? "bg-teal-600 hover:bg-teal-700 hover:shadow-teal-100" : isTurkish ? "bg-sky-600 hover:bg-sky-700 hover:shadow-sky-100" : "bg-amber-600 hover:bg-amber-700 hover:shadow-amber-200"
-          )}
+          className={cn('min-h-12 px-8 sm:px-10 rounded-xl text-white font-display text-xs sm:text-sm uppercase tracking-widest font-bold flex items-center gap-2 shadow-lg', theme.accent)}
         >
           {t('nav.startChallenge')}
-          <ArrowRight className={cn("group-hover:translate-x-1 transition-transform", isRTL && "rotate-180 group-hover:-translate-x-1")} />
+          <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
         </button>
       </div>
     );
   }
 
   if (gameState === 'results') {
-    const totalQuestions = shuffledQuestions.length || 1;
-    const percentage = Math.round((score / totalQuestions) * 100);
+    const total = Math.max(questions.length, 1);
+    const percentage = Math.round((score / total) * 100);
+
     return (
-      <div className="h-full flex flex-col items-center justify-center text-center p-8 gap-8">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="relative"
-        >
-          <div className={cn(
-            "w-32 h-32 rounded-full border-8 flex items-center justify-center",
-            isHistory ? "border-emerald-100" : isTurkish ? "border-sky-100" : "border-amber-100"
-          )}>
-            <span className={cn(
-              "text-4xl font-black",
-              isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-            )}>{formatNumber(percentage)}%</span>
+      <div className="h-full min-h-0 overflow-y-auto flex flex-col items-center justify-center text-center px-5 py-8 gap-6 sm:gap-8">
+        <div className="relative">
+          <div className={cn('w-28 h-28 sm:w-32 sm:h-32 rounded-full border-8 flex items-center justify-center', theme.soft)}>
+            <span className={cn('font-display text-3xl sm:text-4xl font-black', theme.text)}>{formatNumber(percentage)}%</span>
           </div>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.5, type: 'spring' }}
-            className={cn(
-              "absolute -top-2 -right-2 w-12 h-12 rounded-full text-white flex items-center justify-center shadow-lg",
-              isHistory ? "bg-emerald-500" : isTurkish ? "bg-sky-500" : "bg-amber-500"
-            )}
+            className={cn('absolute -top-2 -right-2 w-11 h-11 rounded-full text-white flex items-center justify-center shadow-md', theme.accentSolid)}
           >
-            <Medal fill="white" size={24} />
+            <Medal size={22} />
           </motion.div>
-        </motion.div>
+        </div>
 
         <div>
-          <h2 className={cn(
-            "text-3xl font-black tracking-tight mb-2",
-            isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-          )}>
+          <h2 className={cn('font-display text-2xl sm:text-3xl font-black', theme.text)}>
             {percentage === 100 ? t('nav.perfectScore') : percentage >= 70 ? t('nav.greatJob') : t('nav.keepPracticing')}
           </h2>
-          <p className="font-serif text-wood/60">
-            {t('nav.resultsSummary').replace('{score}', formatNumber(score)).replace('{total}', formatNumber(shuffledQuestions.length))}
+          <p className="font-serif text-sm sm:text-base text-wood/60 mt-2">
+            {t('nav.resultsSummary')
+              .replace('{score}', formatNumber(score))
+              .replace('{total}', formatNumber(questions.length))}
           </p>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
           <button
+            type="button"
             onClick={startChallenge}
-            className={cn(
-              "px-8 py-4 bg-white border-2 rounded-2xl font-display text-base uppercase tracking-widest transition-all flex items-center gap-2",
-              isHistory ? "border-teal-200 text-teal-600 hover:bg-teal-50" : isTurkish ? "border-sky-200 text-sky-600 hover:bg-sky-50" : "border-amber-200 text-amber-600 hover:bg-amber-50"
-            )}
+            className={cn('flex-1 min-h-12 rounded-xl border-2 bg-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', theme.border, theme.subtext)}
           >
-            <RotateCcw size={18} /> {t('nav.tryAgain')}
+            <RotateCcw size={16} /> {t('nav.tryAgain')}
           </button>
           <button
-            onClick={() => {
-              if (onComplete) onComplete();
-            }}
-            className={cn(
-              "px-8 py-4 text-white rounded-2xl font-display text-base uppercase tracking-widest transition-all shadow-lg",
-              isHistory ? "bg-teal-600 hover:bg-teal-700" : isTurkish ? "bg-sky-600 hover:bg-sky-700" : "bg-amber-600 hover:bg-amber-700"
-            )}
+            type="button"
+            onClick={onComplete}
+            className={cn('flex-1 min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold', theme.accent)}
           >
             {t('nav.finishJourney')}
           </button>
@@ -210,127 +216,120 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     );
   }
 
-  const currentQuestion = shuffledQuestions[currentStep];
-
   if (!currentQuestion) return null;
 
   return (
-    <div className={cn(
-      "h-full flex flex-col p-4 sm:p-6 md:p-8 transition-transform duration-100 overflow-y-auto custom-scrollbar",
-      isWrong && "animate-shake"
-    )}>
-      {/* Progress */}
-      <div className="flex items-center justify-between mb-6 sm:mb-10">
-        <div className="flex items-center gap-2.5 sm:gap-4">
-          <div className={cn(
-            "w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-black text-base sm:text-xl shadow-inner shrink-0",
-            isHistory ? "bg-emerald-100 text-teal-600" : isTurkish ? "bg-sky-100 text-sky-600" : "bg-amber-100 text-amber-600"
-          )}>
-            {formatNumber(currentStep + 1)}
+    <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 py-5 sm:p-8">
+      <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8 pb-4">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className={cn('w-10 h-10 sm:w-12 sm:h-12 rounded-xl border flex items-center justify-center font-display font-black shrink-0', theme.soft, theme.subtext)}>
+              {formatNumber(currentStep + 1)}
+            </span>
+            <div className="min-w-0">
+              <p className={cn('font-display text-[10px] uppercase tracking-widest font-black', theme.subtext)}>{t('nav.question')}</p>
+              <p className={cn('font-display text-sm sm:text-base font-bold', theme.text)}>
+                {formatNumber(currentStep + 1)} {t('nav.of')} {formatNumber(questions.length)}
+              </p>
+            </div>
           </div>
-          <div>
-            <p className={cn(
-              "text-[9px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-black leading-none mb-1 sm:mb-2",
-              isHistory ? "text-teal-500" : isTurkish ? "text-sky-500" : "text-amber-500"
-            )}>{t('nav.question')}</p>
-            <p className={cn(
-              "font-display text-sm sm:text-lg",
-              isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-            )}>{t('nav.step')} {formatNumber(currentStep + 1)} {t('nav.of')} {formatNumber(shuffledQuestions.length)}</p>
+          <div className={cn('px-3 py-2 rounded-xl border flex items-center gap-2 shrink-0', theme.soft)}>
+            <Target size={17} className={theme.subtext} />
+            <span className={cn('font-display text-sm font-black', theme.text)}>{formatNumber(score)}</span>
           </div>
         </div>
-        <div className={cn(
-          "flex items-center gap-2 sm:gap-3 px-3.5 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl border shadow-sm",
-          isHistory ? "bg-emerald-50 border-emerald-100" : isTurkish ? "bg-sky-50/80 border-sky-100" : "bg-amber-50 border-amber-100"
-        )}>
-          <Target className={cn("w-4 h-4 sm:w-5 sm:h-5", isHistory ? "text-teal-600" : isTurkish ? "text-sky-600" : "text-amber-600")} />
-          <span className={cn(
-            "text-sm sm:text-lg font-black tabular-nums",
-            isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-          )}>{t('nav.score')}: {formatNumber(score)}</span>
-        </div>
-      </div>
 
-      <div className="flex-1 flex flex-col justify-start py-2 sm:py-4 gap-6 sm:gap-10 max-w-3xl mx-auto w-full">
         <motion.h3
           key={currentQuestion.id}
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={cn(
-            "text-lg sm:text-2xl md:text-3xl font-black leading-snug text-center",
-            isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-          )}
+          className={cn('font-display text-xl sm:text-2xl md:text-3xl font-black leading-snug text-center', theme.text)}
         >
           {currentQuestion.question || currentQuestion.instructions}
         </motion.h3>
 
-        <div className="grid grid-cols-1 gap-3 sm:gap-4 w-full">
+        <div className="grid grid-cols-1 gap-3">
           {currentQuestion.type === 'true-false' ? (
-            [true, false].map((val) => (
-              <button
-                key={val.toString()}
-                onClick={() => handleAnswer(val)}
-                className={cn(
-                  "group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl border-2 transition-all flex items-center justify-between",
-                  userAnswers[currentStep] === val
-                    ? (val === currentQuestion.correctAnswer ? "border-emerald-500 bg-emerald-50" : "border-rose-500 bg-rose-50")
-                    : (isHistory ? "border-emerald-100 bg-white hover:border-emerald-400 hover:bg-emerald-50" : isTurkish ? "border-sky-100 bg-white hover:border-sky-450 hover:bg-sky-50" : "border-amber-100 bg-white hover:border-amber-400 hover:bg-amber-50")
-                )}
-              >
-                <span className={cn(
-                  "text-base sm:text-xl font-black uppercase tracking-widest",
-                  isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-                )}>{val ? t('nav.true') : t('nav.false')}</span>
-                <div className={cn(
-                  "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors",
-                  isHistory ? "bg-emerald-50 group-hover:bg-emerald-100" : isTurkish ? "bg-sky-50 group-hover:bg-sky-100" : "bg-amber-50 group-hover:bg-amber-100"
-                )}>
-                  <ArrowRight size={16} className={cn(isHistory ? "text-teal-400" : isTurkish ? "text-sky-400" : "text-amber-400", isRTL && "rotate-180")} />
-                </div>
-              </button>
-            ))
+            [true, false].map((value) => {
+              const selected = selectedAnswer === value;
+              const revealCorrect = selectedAnswer !== null && currentQuestion.correctAnswer === value;
+              const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
+
+              return (
+                <button
+                  type="button"
+                  key={String(value)}
+                  disabled={selectedAnswer !== null}
+                  onClick={() => handleAnswer(value)}
+                  className={cn(
+                    'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 font-display text-sm sm:text-lg font-black uppercase tracking-widest transition-colors',
+                    revealCorrect
+                      ? 'bg-emerald-500 border-emerald-500 text-white'
+                      : revealWrong
+                        ? 'bg-rose-500 border-rose-500 text-white'
+                        : `bg-white ${theme.border} ${theme.text}`
+                  )}
+                >
+                  {value ? t('nav.true') : t('nav.false')}
+                </button>
+              );
+            })
           ) : (
-            currentQuestion.options?.map((opt, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleAnswer(idx)}
-                className={cn(
-                  "group relative p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border-2 transition-all flex items-center gap-3 sm:gap-4 text-left",
-                  userAnswers[currentStep] === idx
-                    ? (idx === currentQuestion.correctAnswer ? "border-emerald-500 bg-emerald-50" : "border-rose-500 bg-rose-50")
-                    : (isHistory ? "border-emerald-100 bg-white hover:border-emerald-400 hover:bg-emerald-50" : isTurkish ? "border-sky-100 bg-white hover:border-sky-400 hover:bg-sky-50" : "border-amber-100 bg-white hover:border-amber-400 hover:bg-amber-50")
-                )}
-              >
-                <div className={cn(
-                  "w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center font-black text-xs sm:text-base shrink-0 transition-colors",
-                  isHistory ? "bg-emerald-50 text-teal-600 group-hover:bg-emerald-100" : isTurkish ? "bg-sky-50 text-sky-650 group-hover:bg-sky-100" : "bg-amber-50 text-amber-600 group-hover:bg-amber-100"
-                )}>
-                  {String.fromCharCode(65 + idx)}
-                </div>
-                <span className={cn(
-                  "flex-1 font-serif text-sm sm:text-base md:text-lg",
-                  isHistory ? "text-teal-900" : isTurkish ? "text-sky-950" : "text-amber-900"
-                )}>{opt}</span>
-              </button>
-            ))
+            presentedOptions.map((option, displayIndex) => {
+              const selected = selectedAnswer === option.originalIndex;
+              const revealCorrect = selectedAnswer !== null && option.originalIndex === currentQuestion.correctAnswer;
+              const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
+
+              return (
+                <button
+                  type="button"
+                  key={`${option.originalIndex}-${option.text}`}
+                  disabled={selectedAnswer !== null}
+                  onClick={() => handleAnswer(option.originalIndex)}
+                  className={cn(
+                    'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 py-3 flex items-center gap-4 text-start transition-colors',
+                    revealCorrect
+                      ? 'bg-emerald-500 border-emerald-500 text-white'
+                      : revealWrong
+                        ? 'bg-rose-500 border-rose-500 text-white'
+                        : `bg-white ${theme.border}`
+                  )}
+                >
+                  <span className={cn(
+                    'w-9 h-9 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm',
+                    revealCorrect || revealWrong ? 'bg-white/20 text-white' : `${theme.soft} ${theme.subtext}`
+                  )}>
+                    {String.fromCharCode(65 + displayIndex)}
+                  </span>
+                  <span className="font-serif text-sm sm:text-base md:text-lg font-semibold flex-1 leading-snug">{option.text}</span>
+                </button>
+              );
+            })
           )}
         </div>
-      </div>
 
-      <div className="mt-8 flex items-center justify-center gap-2">
-        {shuffledQuestions.map((_, idx) => (
-          <div
-            key={idx}
-            className={cn(
-              "h-1.5 rounded-full transition-all",
-              idx === currentStep 
-                ? (isHistory ? "w-8 bg-teal-600" : isTurkish ? "w-8 bg-sky-600" : "w-8 bg-amber-600") 
-                : idx < currentStep 
-                ? "w-4 bg-emerald-400" 
-                : (isHistory ? "w-4 bg-emerald-100" : isTurkish ? "w-4 bg-sky-100" : "w-4 bg-amber-100")
+        {selectedAnswer !== null && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={cn('rounded-2xl border-2 p-4 sm:p-5', lastCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200')}
+          >
+            <p className="font-serif text-sm sm:text-base text-wood/75 leading-relaxed">
+              {lastCorrect ? currentQuestion.feedback.correct : currentQuestion.feedback.incorrect}
+            </p>
+            {currentQuestion.explanation && (
+              <p className="font-serif text-sm sm:text-base text-wood/60 mt-2 leading-relaxed">{currentQuestion.explanation}</p>
             )}
-          />
-        ))}
+            <button
+              type="button"
+              onClick={goNext}
+              className={cn('w-full mt-4 min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', theme.accent)}
+            >
+              {currentStep < questions.length - 1 ? t('nav.nextQuestion') : t('nav.seeResults')}
+              <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+            </button>
+          </motion.div>
+        )}
       </div>
     </div>
   );
