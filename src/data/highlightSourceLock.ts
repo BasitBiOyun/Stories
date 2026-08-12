@@ -51,6 +51,18 @@ const formsIntersect = (left: string, right: string): boolean => {
   return [...leftForms].some((form) => rightForms.has(form));
 };
 
+// StoryPage uses this lighter Arabic normalization when deciding whether a
+// visible surface token is a vocabulary item. Mirror that key here so an
+// animated highlight is guaranteed to receive an exact reader-visible entry.
+const normalizeArabicReaderKey = (text: string): string => text
+  .replace(/[.,!?;:\"'“”‘’`()]/g, '')
+  .toLowerCase()
+  .trim()
+  .replace(/[\u064B-\u0652]/g, '')
+  .replace(/[أإآ]/g, 'ا')
+  .replace(/ة/g, 'ه')
+  .replace(/ى/g, 'ي');
+
 const resolveArabicSurfaceDefinition = (
   word: string,
   vocabulary: NonNullable<PageData['vocabulary']>,
@@ -73,19 +85,21 @@ const enrichArabicAnimatedDefinitions = (page: PageData): PageData => {
   if (page.type !== 'story' || !page.animatedWords?.length) return page;
 
   const vocabulary = [...(page.vocabulary ?? [])];
-  const exactVocabularyWords = new Set(
-    vocabulary.map((entry) => normalizeHighlightText(entry.word, 'ar'))
+  const readerKeys = new Set(
+    vocabulary
+      .map((entry) => normalizeArabicReaderKey(entry.word))
+      .filter(Boolean)
   );
 
   for (const animatedWord of page.animatedWords) {
-    const normalized = normalizeHighlightText(animatedWord, 'ar');
-    if (!normalized || exactVocabularyWords.has(normalized)) continue;
+    const readerKey = normalizeArabicReaderKey(animatedWord);
+    if (!readerKey || readerKeys.has(readerKey)) continue;
 
     const definition = resolveArabicSurfaceDefinition(animatedWord, vocabulary);
     if (!definition?.trim()) continue;
 
     vocabulary.push({ word: animatedWord, definition });
-    exactVocabularyWords.add(normalized);
+    readerKeys.add(readerKey);
   }
 
   return vocabulary.length === (page.vocabulary?.length ?? 0)
