@@ -15,3 +15,14 @@
   --color-wood: #0d1d2c !important;
   background-color: rgba(13, 29, 44, 0.98) !important;
 }
+
+/* Keep the main side drawer in the same collection color family as the
+   active story. Prophet books use the warm brown/amber family rather than
+   the old shared forest-green drawer. */
+[class*="fixed"][class*="inset-0"][class*="bg-[#14221a]/60"] {
+  background-color: rgba(42, 27, 14, 0.60) !important;
+}
+
+[class*="w-80"][class*="h-full"][class*="bg-[#14221a]/95"] {
+  background-color: rgba(42, 27, 14, 0.98) !important;
+}
