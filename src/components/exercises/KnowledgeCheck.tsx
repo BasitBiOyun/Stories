@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   GraduationCap,
@@ -96,13 +97,27 @@ const QuestionCard = ({
     [exercise]
   );
 
+  const openFeedbackFromCard = () => {
+    if (showResults && hasAnswer) onInfo();
+  };
+
   return (
     <motion.article
       layout
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
+      onClick={openFeedbackFromCard}
+      onKeyDown={(event) => {
+        if (showResults && hasAnswer && (event.key === 'Enter' || event.key === ' ')) {
+          event.preventDefault();
+          onInfo();
+        }
+      }}
+      role={showResults && hasAnswer ? 'button' : undefined}
+      tabIndex={showResults && hasAnswer ? 0 : undefined}
       className={cn(
         'rounded-2xl border-2 bg-white p-4 sm:p-5 shadow-sm flex flex-col gap-4 min-w-0',
+        showResults && hasAnswer && 'cursor-pointer',
         showResults && hasAnswer
           ? correct
             ? 'border-emerald-400 bg-emerald-50/60'
@@ -129,7 +144,10 @@ const QuestionCard = ({
         {showResults && hasAnswer && (
           <button
             type="button"
-            onClick={onInfo}
+            onClick={(event) => {
+              event.stopPropagation();
+              onInfo();
+            }}
             className={cn(
               'p-2 rounded-lg shrink-0 transition-colors',
               active ? `${theme.accentBg} text-white` : `${theme.softBg} ${theme.accentText}`
@@ -228,7 +246,7 @@ export const KnowledgeCheck = ({
   onReset,
   collectionId = 'prophets',
 }: Props) => {
-  const { t, formatNumber } = useLanguage();
+  const { t, formatNumber, isRTL } = useLanguage();
   const theme = themeFor(collectionId);
   const supportedExercises = React.useMemo(
     () => exercises.filter((exercise) => exercise.type === 'true-false' || exercise.type === 'multiple-choice'),
@@ -261,6 +279,9 @@ export const KnowledgeCheck = ({
     ? Math.round((correctCount / supportedExercises.length) * 100)
     : 0;
   const activeExercise = supportedExercises.find((exercise) => exercise.id === activeFeedback) ?? null;
+  const activeIsCorrect = activeExercise
+    ? isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
+    : false;
 
   const answerQuestion = (exercise: Exercise, answer: boolean | number) => {
     if (showResults) return;
@@ -276,6 +297,82 @@ export const KnowledgeCheck = ({
     setActiveFeedback(null);
     onReset?.();
   };
+
+  const feedbackOverlay = createPortal(
+    <AnimatePresence>
+      {showResults && activeExercise && (
+        <motion.div
+          key={activeExercise.id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[320] bg-black/45 backdrop-blur-[2px] flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveFeedback(null)}
+          dir={isRTL ? 'rtl' : 'ltr'}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+            onClick={(event) => event.stopPropagation()}
+            className={cn(
+              'w-full max-w-2xl max-h-[80vh] overflow-y-auto custom-scrollbar rounded-2xl sm:rounded-3xl bg-white border-2 shadow-2xl p-5 sm:p-7 md:p-8',
+              activeIsCorrect ? 'border-emerald-300' : 'border-rose-300'
+            )}
+          >
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className={cn(
+                'w-10 h-10 rounded-xl shrink-0 flex items-center justify-center',
+                activeIsCorrect ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'
+              )}>
+                {activeIsCorrect ? <CheckCircle2 size={22} /> : <XCircle size={22} />}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className={cn(
+                  'font-display text-xs sm:text-sm uppercase tracking-widest font-bold mb-1',
+                  activeIsCorrect ? 'text-emerald-700' : 'text-rose-700'
+                )}>
+                  {activeIsCorrect ? t('ex.correct') : t('ex.notQuite')}
+                </p>
+                <h4 className="font-display text-lg sm:text-xl md:text-2xl text-wood leading-snug">
+                  {activeExercise.question}
+                </h4>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveFeedback(null)}
+                className="p-1.5 rounded-lg text-wood/35 hover:text-wood/70 hover:bg-gray-100 transition-colors shrink-0"
+                aria-label="Close feedback"
+              >
+                <XCircle size={22} />
+              </button>
+            </div>
+
+            <div className="mt-5 sm:mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <div className={cn(
+                'rounded-xl sm:rounded-2xl border p-4 sm:p-5 font-serif text-sm sm:text-base leading-relaxed',
+                activeIsCorrect
+                  ? 'bg-emerald-50 border-emerald-100 text-emerald-950'
+                  : 'bg-rose-50 border-rose-100 text-rose-950'
+              )}>
+                {activeIsCorrect
+                  ? activeExercise.feedback.correct
+                  : activeExercise.feedback.incorrect}
+              </div>
+              <div className="rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-100 p-4 sm:p-5 font-serif text-sm sm:text-base text-wood/80 leading-relaxed">
+                <span className="block font-display text-[10px] sm:text-xs uppercase tracking-widest text-wood/40 mb-1.5">
+                  {t('ex.explanation')}
+                </span>
+                {activeExercise.explanation}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
 
   return (
     <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pr-1">
@@ -347,41 +444,7 @@ export const KnowledgeCheck = ({
           </button>
         )}
 
-        <AnimatePresence mode="wait">
-          {showResults && activeExercise && (
-            <motion.div
-              key={activeExercise.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              className={cn(
-                'rounded-2xl border-2 bg-white p-4 sm:p-5 shadow-sm',
-                isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
-                  ? 'border-emerald-200'
-                  : 'border-rose-200'
-              )}
-            >
-              <div className="flex items-start gap-3">
-                {isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
-                  ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={20} />
-                  : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={20} />}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 flex-1">
-                  <p className="font-serif text-sm sm:text-base text-wood/75 leading-relaxed">
-                    {isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
-                      ? activeExercise.feedback.correct
-                      : activeExercise.feedback.incorrect}
-                  </p>
-                  <div className="rounded-xl bg-gray-50 border border-gray-100 p-3 font-serif text-sm sm:text-base text-wood/75 leading-relaxed">
-                    <span className="block font-display text-[10px] uppercase tracking-widest text-wood/40 mb-1">{t('ex.explanation')}</span>
-                    {activeExercise.explanation}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {showResults && !activeExercise && (
+        {showResults && (
           <div className={cn(
             'rounded-2xl border-2 p-4 sm:p-5 flex items-center gap-4',
             percentage >= 70 ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'
@@ -391,7 +454,9 @@ export const KnowledgeCheck = ({
               <p className="font-display text-base sm:text-lg font-bold text-wood">
                 {formatNumber(correctCount)} / {formatNumber(supportedExercises.length)}
               </p>
-              <p className="font-serif text-sm text-wood/60">{t('ex.feedbackPanel')}</p>
+              <p className="font-serif text-sm text-wood/60">
+                {t('ex.feedbackHint').replace('{info}', 'ⓘ')}
+              </p>
             </div>
             {onReset && (
               <button type="button" onClick={reset} className="p-2.5 rounded-xl bg-white border border-gray-200 text-wood/60" aria-label={t('ex.tryAgain')}>
@@ -401,6 +466,7 @@ export const KnowledgeCheck = ({
           </div>
         )}
       </div>
+      {feedbackOverlay}
     </section>
   );
 };
