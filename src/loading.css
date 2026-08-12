@@ -1,0 +1,27 @@
+/* Book loading is intentionally opaque and branded so the browser/body gray
+   never flashes between the library and the reader. */
+[role="status"][aria-live="polite"] {
+  background-color: #14221a !important;
+  background-image:
+    radial-gradient(circle at 18% 18%, rgba(194, 170, 107, 0.18), transparent 30%),
+    radial-gradient(circle at 82% 78%, rgba(194, 170, 107, 0.12), transparent 34%),
+    linear-gradient(145deg, #14221a 0%, #192b20 52%, #101b15 100%) !important;
+  color: #c2aa6b;
+}
+
+[role="status"][aria-live="polite"]::after {
+  content: '';
+  position: absolute;
+  width: min(68vw, 30rem);
+  height: min(68vw, 30rem);
+  border-radius: 9999px;
+  border: 1px solid rgba(194, 170, 107, 0.08);
+  box-shadow: 0 0 0 2.5rem rgba(194, 170, 107, 0.025), 0 0 0 5rem rgba(194, 170, 107, 0.012);
+  pointer-events: none;
+}
+
+[role="status"][aria-live="polite"] > svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 14px rgba(194, 170, 107, 0.22));
+}
