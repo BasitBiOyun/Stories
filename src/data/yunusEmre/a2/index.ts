@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { applyYunusA2PoemCard } from './poemCard';
 import {
   yunusA2PagesFinalAr,
   yunusA2PagesFinalEn,
@@ -17,7 +18,9 @@ import {
   yunusA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const yunusA2PagesLockedEn = applyA2FinalStoryLanguageLock(yunusA2PagesFinalEn, 'yunusEmre', 'en');
+const yunusA2PagesLockedEn = applyYunusA2PoemCard(
+  applyA2FinalStoryLanguageLock(yunusA2PagesFinalEn, 'yunusEmre', 'en'),
+);
 const yunusA2PagesLockedAr = applyA2FinalStoryLanguageLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar');
 
 export const yunusEmreA2BookDataEn: BookData = {
