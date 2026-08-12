@@ -87,11 +87,13 @@ const applyReviewedCorrections = (
  *    A2 description length limit.
  * 3. For Arabic only, preserves reviewed highlight choices while storing the
  *    exact inflected/cliticized surface form that occurs in the chapter.
- * 4. Applies only explicitly reviewed surface corrections for useful targets
+ * 4. For Arabic A2, attaches only reviewed non-generic definitions to animated
+ *    surface forms when they would otherwise open without a meaning.
+ * 5. Applies only explicitly reviewed surface corrections for useful targets
  *    that cannot otherwise be highlighted from the locked prose.
  *
- * Canonical story prose, definitions, exercises, media, ids/order and timing
- * values are not changed here.
+ * Canonical story prose, exercises, media, ids/order and timing values are not
+ * changed here.
  */
 export const applyA2FinalStoryLanguageLock = (
   pages: PageData[],
@@ -100,6 +102,8 @@ export const applyA2FinalStoryLanguageLock = (
 ): PageData[] => {
   const reviewed = applyA2HotspotSourceLock(pages, storyId, language);
   const sourceLocked = applyHotspotSourceLock(reviewed, { language, level: 'A2' });
-  const surfaced = language === 'ar' ? applyHighlightSurfaceForms(sourceLocked, language) : sourceLocked;
+  const surfaced = language === 'ar'
+    ? applyHighlightSurfaceForms(sourceLocked, language, { enrichArabicDefinitions: true })
+    : sourceLocked;
   return applyReviewedCorrections(surfaced, storyId, language);
 };
