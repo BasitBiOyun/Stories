@@ -157,17 +157,23 @@ const PoemBlock = ({
   fontSize 
 }: { 
   english: string; 
-  turkish: string; 
+  turkish?: string; 
   fontSize: number;
 }) => {
+  const { isRTL } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
+  const hasOriginal = Boolean(turkish?.trim());
+  const displayedPoem = showOriginal && hasOriginal ? turkish! : english;
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      onClick={() => setShowOriginal(!showOriginal)}
-      className="my-6 w-auto p-4 md:py-4 md:pl-10 md:pr-16 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 cursor-pointer select-none"
+      onClick={() => hasOriginal && setShowOriginal(!showOriginal)}
+      className={cn(
+        "my-6 w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
+        hasOriginal ? "md:pl-10 md:pr-16 cursor-pointer" : "md:px-10"
+      )}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -176,21 +182,63 @@ const PoemBlock = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.98 }}
           transition={{ duration: 0.15 }}
-          className="font-serif italic leading-relaxed text-wood font-medium py-3 select-text selection:bg-gold/20"
+          dir={showOriginal ? 'ltr' : isRTL ? 'rtl' : 'ltr'}
+          className={cn(
+            "font-serif leading-relaxed text-wood font-medium py-3 select-text selection:bg-gold/20",
+            (!isRTL || showOriginal) && "italic"
+          )}
           style={{ 
             fontSize: `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)` 
           }}
         >
-          {(showOriginal ? turkish : english).split('\n').map((line, idx) => (
+          {displayedPoem.split('\n').map((line, idx) => (
             <div key={idx} className="my-1">{line.trim()}</div>
           ))}
         </motion.div>
       </AnimatePresence>
-      <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center">
-        <ArrowLeftRight size={16} />
-      </div>
+      {hasOriginal && (
+        <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center">
+          <ArrowLeftRight size={16} />
+        </div>
+      )}
     </motion.div>
   );
+};
+
+const normalizePoemLabel = (line: string) =>
+  line
+    .replace(/[\u064B-\u065F\u0670]/g, '')
+    .trim()
+    .toLowerCase();
+
+const parsePoem = (part: string) => {
+  const body = part
+    .replace(/^\[POEM\]\s*/i, '')
+    .replace(/\s*\[\/POEM\]$/i, '')
+    .trim();
+  const lines = body.split('\n');
+  const translationLabelIndex = lines.findIndex((line) => {
+    const label = normalizePoemLabel(line);
+    return label === 'english:' || label === 'arabic:' || label === 'العربية:';
+  });
+  const turkishLabelIndex = lines.findIndex((line) => {
+    const label = normalizePoemLabel(line);
+    return label === 'turkish:' || label === 'التركية:';
+  });
+
+  if (turkishLabelIndex >= 0) {
+    const translationStart = translationLabelIndex >= 0 ? translationLabelIndex + 1 : 0;
+    return {
+      translation: lines.slice(translationStart, turkishLabelIndex).join('\n').trim(),
+      original: lines.slice(turkishLabelIndex + 1).join('\n').trim(),
+    };
+  }
+
+  const translationStart = translationLabelIndex >= 0 ? translationLabelIndex + 1 : 0;
+  return {
+    translation: lines.slice(translationStart).join('\n').trim(),
+    original: undefined,
+  };
 };
 
 export const StoryPage = ({ 
@@ -503,15 +551,13 @@ export const StoryPage = ({
 
     return parts.map((part, partIdx) => {
       if (part.startsWith('[POEM]') && part.endsWith('[/POEM]')) {
-        const match = part.match(/\[POEM\]\s*English:\s*([\s\S]*?)\s*Turkish:\s*([\s\S]*?)\s*\[\/POEM\]/i);
-        if (match) {
-          const english = match[1].trim();
-          const turkish = match[2].trim();
+        const poem = parsePoem(part);
+        if (poem.translation) {
           return (
             <PoemBlock 
               key={`poem-${partIdx}`} 
-              english={english} 
-              turkish={turkish} 
+              english={poem.translation} 
+              turkish={poem.original} 
               fontSize={fontSize} 
             />
           );
