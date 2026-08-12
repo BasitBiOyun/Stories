@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, HelpCircle, ArrowRight, RotateCcw, MessageSquare, Users, GraduationCap } from './ui/icons';
-import { Exercise, ExerciseType } from '../types';
+import {
+  CheckCircle2,
+  XCircle,
+  HelpCircle,
+  ArrowRight,
+  RotateCcw,
+  MessageSquare,
+  Users,
+  GraduationCap,
+  Lightbulb,
+} from './ui/icons';
+import { Exercise } from '../types';
 import { cn } from '../lib/utils';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
+import {
+  presentMatchingMeanings,
+  presentMultipleChoice,
+  presentQuizOptions,
+} from '../lib/exercisePresentation';
 
 interface ExerciseModuleProps {
   exercise: Exercise;
@@ -13,888 +29,686 @@ interface ExerciseModuleProps {
   collectionId?: string;
 }
 
-export const ExerciseModule: React.FC<ExerciseModuleProps> = ({ 
-  exercise, 
-  onComplete, 
+const themeFor = (collectionId: string) => {
+  if (collectionId === 'history') {
+    return {
+      accentBg: 'bg-emerald-600',
+      accentHover: 'hover:bg-emerald-700',
+      accentText: 'text-emerald-700',
+      title: 'text-emerald-950',
+      softBg: 'bg-emerald-50',
+      softBorder: 'border-emerald-200',
+      selected: 'border-emerald-500 bg-emerald-50 text-emerald-900',
+    };
+  }
+  if (collectionId === 'turkish') {
+    return {
+      accentBg: 'bg-sky-700',
+      accentHover: 'hover:bg-sky-800',
+      accentText: 'text-sky-700',
+      title: 'text-sky-950',
+      softBg: 'bg-sky-50',
+      softBorder: 'border-sky-200',
+      selected: 'border-sky-500 bg-sky-50 text-sky-950',
+    };
+  }
+  return {
+    accentBg: 'bg-amber-600',
+    accentHover: 'hover:bg-amber-700',
+    accentText: 'text-amber-700',
+    title: 'text-amber-950',
+    softBg: 'bg-amber-50',
+    softBorder: 'border-amber-200',
+    selected: 'border-amber-500 bg-amber-50 text-amber-950',
+  };
+};
+
+const normalizeText = (value: unknown) => String(value ?? '').trim().toLocaleLowerCase();
+
+const sameUnorderedGroup = (left: string[] = [], right: string[] = []) => {
+  const a = left.map(normalizeText).sort();
+  const b = right.map(normalizeText).sort();
+  return a.length === b.length && a.every((value, index) => value === b[index]);
+};
+
+export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
+  exercise,
+  onComplete,
   onClose,
-  collectionId = 'prophets'
+  collectionId = 'prophets',
 }) => {
-  const [userAnswer, setUserAnswer] = useState<any>(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showHint, setShowHint] = useState(false);
-  const [quizStep, setQuizStep] = useState(1);
-  const [quizResults, setQuizResults] = useState<Record<number, boolean>>({});
-  const [quizFeedback, setQuizFeedback] = useState<string | null>(null);
-  const [quizAnswered, setQuizAnswered] = useState(false);
-  const [localSequence, setLocalSequence] = useState<string[]>([]);
-  const [shuffledSequencingItems, setShuffledSequencingItems] = useState<any[]>([]);
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  const [assignments, setAssignments] = useState<Record<string, string[]>>({});
-  const [isWrong, setIsWrong] = useState(false);
   const { language, t, formatNumber, isRTL } = useLanguage();
+  const theme = themeFor(collectionId);
+  const [userAnswer, setUserAnswer] = React.useState<any>(null);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [showHint, setShowHint] = React.useState(false);
+  const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
+  const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
+  const [localSequence, setLocalSequence] = React.useState<string[]>([]);
+  const [selectedDragItem, setSelectedDragItem] = React.useState<string | null>(null);
+  const [dragAssignments, setDragAssignments] = React.useState<Record<string, string[]>>({});
+  const [revealedItems, setRevealedItems] = React.useState<Set<number>>(new Set());
+  const [quizStep, setQuizStep] = React.useState(0);
+  const [quizScore, setQuizScore] = React.useState(0);
+  const [quizAnswered, setQuizAnswered] = React.useState(false);
+  const [quizWasCorrect, setQuizWasCorrect] = React.useState<boolean | null>(null);
 
-  const colTheme = React.useMemo(() => {
-    if (collectionId === 'history') {
-      return {
-        brand600: "bg-teal-600",
-        brand750: "bg-teal-700",
-        brand600Text: "text-teal-600",
-        brand700Text: "text-teal-700",
-        brand900Text: "text-[#064E3B]",
-        bgLight: "bg-emerald-50",
-        borderLight: "border-emerald-200",
-        borderDark: "border-emerald-500",
-        shadowColor: "hover:shadow-emerald-100",
-        hoverBorder: "hover:border-emerald-400 hover:bg-emerald-50/50",
-        selectedBorder: "border-emerald-500 bg-emerald-50 text-emerald-600",
-        groupBg: "border-emerald-100 bg-emerald-50/30",
-        groupBgHover: "border-emerald-400 bg-emerald-50/50 hover:bg-emerald-100/50",
-        badgeBg: "bg-emerald-100 text-teal-700",
-        titleCol: "text-emerald-900 border-emerald-200"
-      };
-    } else if (collectionId === 'turkish') {
-      return {
-        brand600: "bg-sky-700",
-        brand750: "bg-sky-850",
-        brand600Text: "text-sky-600",
-        brand700Text: "text-sky-700",
-        brand900Text: "text-sky-950",
-        bgLight: "bg-sky-50/80",
-        borderLight: "border-sky-100",
-        borderDark: "border-sky-500",
-        shadowColor: "hover:shadow-sky-100",
-        hoverBorder: "hover:border-sky-400 hover:bg-sky-50/50",
-        selectedBorder: "border-sky-500 bg-sky-50 text-sky-600",
-        groupBg: "border-sky-100 bg-sky-50/30",
-        groupBgHover: "border-sky-250 bg-sky-50/50 hover:bg-sky-100/50",
-        badgeBg: "bg-sky-100 text-sky-700",
-        titleCol: "text-sky-900 border-sky-100"
-      };
-    } else {
-      // Default (prophets)
-      return {
-        brand600: "bg-amber-600",
-        brand750: "bg-amber-700",
-        brand600Text: "text-amber-600",
-        brand700Text: "text-amber-700",
-        brand900Text: "text-amber-900",
-        bgLight: "bg-amber-50",
-        borderLight: "border-amber-200",
-        borderDark: "border-amber-500",
-        shadowColor: "hover:shadow-amber-200",
-        hoverBorder: "hover:border-amber-400 hover:bg-amber-50/50",
-        selectedBorder: "border-amber-500 bg-amber-50 text-amber-600",
-        groupBg: "border-amber-100 bg-amber-50/30",
-        groupBgHover: "border-amber-400 bg-amber-50/50 hover:bg-amber-100/50",
-        badgeBg: "bg-amber-100 text-amber-700",
-        titleCol: "text-amber-900 border-amber-200"
-      };
-    }
-  }, [collectionId]);
-
-  // Initialize shuffled items for sequencing
-  React.useEffect(() => {
-    if (exercise.type === 'sequencing' && exercise.sequencingItems) {
-      const items = [...exercise.sequencingItems];
-      // Simple shuffle
-      for (let i = items.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [items[i], items[j]] = [items[j], items[i]];
-      }
-      setShuffledSequencingItems(items);
-    }
+  const presentedMcOptions = React.useMemo(() => presentMultipleChoice(exercise), [exercise]);
+  const presentedMeanings = React.useMemo(() => presentMatchingMeanings(exercise), [exercise]);
+  const sequenceItems = React.useMemo(() => {
+    const items = exercise.sequencingItems ?? [];
+    if (items.length <= 1) return items;
+    return [...items.slice(1), items[0]];
   }, [exercise]);
 
-  const handleSubmit = (answer: any) => {
+  React.useEffect(() => {
+    setUserAnswer(null);
+    setIsSubmitted(false);
+    setShowHint(false);
+    setSelectedMatchingLeft(null);
+    setMatchingAssignments({});
+    setLocalSequence([]);
+    setSelectedDragItem(null);
+    setDragAssignments({});
+    setRevealedItems(new Set());
+    setQuizStep(0);
+    setQuizScore(0);
+    setQuizAnswered(false);
+    setQuizWasCorrect(null);
+  }, [exercise]);
+
+  React.useEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
+  const isCorrectAnswer = (answer: any) => {
+    if (exercise.type === 'matching') {
+      return (exercise.matchingPairs ?? []).every(
+        (pair) => matchingAssignments[pair.left] === pair.right
+      );
+    }
+    if (exercise.type === 'sequencing') {
+      return JSON.stringify(answer) === JSON.stringify(exercise.correctAnswer);
+    }
+    if (exercise.type === 'drag-drop') {
+      const correct = exercise.correctAnswer as Record<string, string[]>;
+      return Object.keys(correct ?? {}).every((group) =>
+        sameUnorderedGroup((answer ?? {})[group] ?? [], correct[group] ?? [])
+      );
+    }
+    if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') return true;
+    if (exercise.type === 'fill-blanks') {
+      return normalizeText(answer) === normalizeText(exercise.correctAnswer);
+    }
+    return answer === exercise.correctAnswer;
+  };
+
+  const submit = (answer: any = userAnswer) => {
     setUserAnswer(answer);
     setIsSubmitted(true);
-
-    // Dynamic Feedback
-    let isCorrect = false;
-    if (exercise.type === 'drag-drop') {
-      const user = answer as Record<string, string[]>;
-      const correct = exercise.correctAnswer as Record<string, string[]>;
-      isCorrect = Object.keys(correct).every(group => {
-        const userItems = (user[group] || []).map(i => i.trim().toLowerCase());
-        const correctItems = (correct[group] || []).map(i => i.trim().toLowerCase());
-        return userItems.length === correctItems.length && 
-               userItems.every(item => correctItems.includes(item));
-      });
-    } else if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') {
-      isCorrect = true;
-    } else {
-      isCorrect = JSON.stringify(answer) === JSON.stringify(exercise.correctAnswer);
-    }
-
-    if (isCorrect) {
+    if (isCorrectAnswer(answer)) {
       confetti({
-        particleCount: 150,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#D97706', '#F59E0B', '#FCD34D']
+        particleCount: 110,
+        spread: 65,
+        origin: { y: 0.65 },
+        colors: collectionId === 'history'
+          ? ['#059669', '#10B981', '#34D399']
+          : collectionId === 'turkish'
+            ? ['#0284C7', '#0EA5E9', '#38BDF8']
+            : ['#D97706', '#F59E0B', '#FCD34D'],
       });
-    } else {
-      setIsWrong(true);
-      setTimeout(() => setIsWrong(false), 500);
     }
   };
 
-  const handleQuizAnswer = (step: number, answer: string, isCorrect: boolean) => {
+  const retry = () => {
+    setIsSubmitted(false);
+    setShowHint(false);
+    if (exercise.type === 'matching') setSelectedMatchingLeft(null);
+    if (exercise.type === 'sequencing') setLocalSequence([]);
+  };
+
+  const selectMeaning = (meaning: string) => {
+    if (!selectedMatchingLeft || isSubmitted) return;
+    setMatchingAssignments((previous) => {
+      const next = { ...previous };
+      for (const [left, assignedMeaning] of Object.entries(next)) {
+        if (assignedMeaning === meaning) delete next[left];
+      }
+      next[selectedMatchingLeft] = meaning;
+      return next;
+    });
+    setSelectedMatchingLeft(null);
+  };
+
+  const assignDragItem = (groupName: string) => {
+    if (!selectedDragItem || isSubmitted) return;
+    setDragAssignments((previous) => {
+      const next: Record<string, string[]> = {};
+      for (const [group, items] of Object.entries(previous)) {
+        next[group] = items.filter((item) => item !== selectedDragItem);
+      }
+      next[groupName] = [...(next[groupName] ?? []), selectedDragItem];
+      setUserAnswer(next);
+      return next;
+    });
+    setSelectedDragItem(null);
+  };
+
+  const currentQuizQuestion = exercise.quizQuestions?.[quizStep];
+  const currentQuizOptions = React.useMemo(
+    () => currentQuizQuestion
+      ? presentQuizOptions(currentQuizQuestion, `${exercise.id}:${quizStep}`)
+      : [],
+    [currentQuizQuestion, exercise.id, quizStep]
+  );
+
+  const answerQuiz = (isCorrect: boolean) => {
     if (quizAnswered) return;
-    
-    setQuizResults(prev => ({ ...prev, [step]: isCorrect }));
     setQuizAnswered(true);
-    
+    setQuizWasCorrect(isCorrect);
     if (isCorrect) {
-      setQuizFeedback(t('nav.correctWellDone'));
-      confetti({
-        particleCount: 100,
-        spread: 60,
-        origin: { y: 0.7 },
-        colors: ['#D97706', '#F59E0B', '#FCD34D']
-      });
-    } else {
-      setQuizFeedback(`${t('nav.incorrect')} ${exercise.quizQuestions?.[step - 1]?.hint || ''}`);
+      setQuizScore((score) => score + 1);
+      confetti({ particleCount: 70, spread: 55, origin: { y: 0.7 } });
     }
   };
 
-  const handleNextQuizStep = () => {
-    setQuizAnswered(false);
-    setQuizFeedback(null);
-    const totalSteps = exercise.quizQuestions?.length || 7;
-    if (quizStep < totalSteps) {
-      setQuizStep(quizStep + 1);
+  const nextQuiz = () => {
+    const total = exercise.quizQuestions?.length ?? 0;
+    if (quizStep < total - 1) {
+      setQuizStep((step) => step + 1);
+      setQuizAnswered(false);
+      setQuizWasCorrect(null);
     } else {
       setIsSubmitted(true);
     }
   };
 
-  const getQuizHint = (step: number) => {
-    switch (step) {
-      case 1: return "Hint: Adam (AS) was made from the earth, not fire or light.";
-      case 2: return "Hint: This being was proud and thought fire was better than soil.";
-      case 3: return "Hint: Her name is very common and means 'living one'.";
-      case 4: return "Hint: There was only one thing they were told to avoid.";
-      case 5: return "Hint: One was a shepherd and the other was a farmer.";
-      case 6: return "Hint: Habil gave his best because he was sincere.";
-      case 7: return "Hint: All prophets taught us to worship only one God.";
-      default: return "";
-    }
-  };
-
-  const renderFeedback = () => {
-    if (!isSubmitted) return null;
-    
-    let isCorrect = false;
-    if (exercise.type === 'drag-drop') {
-      // Order-insensitive comparison for groups
-      const user = userAnswer as Record<string, string[]>;
-      const correct = exercise.correctAnswer as Record<string, string[]>;
-      
-      isCorrect = Object.keys(correct).every(group => {
-        const userItems = (user[group] || []).map(i => i.trim().toLowerCase());
-        const correctItems = (correct[group] || []).map(i => i.trim().toLowerCase());
-        return userItems.length === correctItems.length && 
-               userItems.every(item => correctItems.includes(item));
-      });
-    } else if (exercise.type === 'quiz-game') {
-      const correctCount = Object.values(quizResults).filter(Boolean).length;
-      const totalSteps = exercise.quizQuestions?.length || 7;
-      isCorrect = correctCount === totalSteps;
-    } else if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') {
-      isCorrect = true;
-    } else {
-      isCorrect = JSON.stringify(userAnswer) === JSON.stringify(exercise.correctAnswer);
-    }
-
-    if (exercise.type === 'quiz-game') {
-      const correctCount = Object.values(quizResults).filter(Boolean).length;
-      const totalSteps = exercise.quizQuestions?.length || 7;
+  const renderContent = () => {
+    if (exercise.type === 'true-false') {
       return (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className={cn("mt-4 sm:mt-6 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-2 bg-white shadow-xl", colTheme.borderLight)}
-        >
-          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-6 mb-4 sm:mb-8">
-            <div className={cn(
-              "w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-black text-lg sm:text-2xl shadow-lg shrink-0",
-              correctCount === totalSteps ? "bg-emerald-500 shadow-emerald-100" : `${colTheme.brand600} ${colTheme.shadowColor}`
-            )}>
-              {correctCount}/{totalSteps}
-            </div>
-            <div>
-              <h5 className={cn("font-display text-lg sm:text-2xl tracking-tight", colTheme.brand900Text)}>
-                {t('nav.challengeComplete')}
-              </h5>
-              <p className="font-serif italic text-xs sm:text-sm text-wood/60">
-                {t('nav.journeySummary')}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-2 sm:gap-3 mb-4 sm:mb-8 max-h-48 sm:max-h-64 overflow-y-auto custom-scrollbar p-1">
-            {Array.from({ length: totalSteps }, (_, i) => i + 1).map(s => (
-              <motion.div 
-                key={s} 
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: s * 0.1 }}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {[true, false].map((value) => {
+            const selected = userAnswer === value;
+            const revealCorrect = isSubmitted && exercise.correctAnswer === value;
+            const revealWrong = isSubmitted && selected && !revealCorrect;
+            return (
+              <button
+                key={String(value)}
+                type="button"
+                disabled={isSubmitted}
+                onClick={() => {
+                  setUserAnswer(value);
+                  submit(value);
+                }}
                 className={cn(
-                  "flex items-center justify-between p-2.5 sm:p-3 rounded-xl border",
-                  collectionId === 'history' 
-                    ? "bg-emerald-50/30 border-emerald-100" 
-                    : collectionId === 'turkish' 
-                    ? "bg-sky-50/30 border-sky-100" 
-                    : "bg-amber-50/50 border-amber-100"
+                  'min-h-14 sm:min-h-16 rounded-2xl border-2 font-display text-sm sm:text-lg md:text-xl font-black uppercase tracking-wider transition-colors',
+                  revealCorrect
+                    ? 'bg-emerald-500 border-emerald-500 text-white'
+                    : revealWrong
+                      ? 'bg-rose-500 border-rose-500 text-white'
+                      : selected
+                        ? `${theme.accentBg} border-transparent text-white`
+                        : `bg-white ${theme.softBorder} text-wood/65`
                 )}
               >
-                <span className="text-xs sm:text-sm font-bold text-wood/70">
-                  {t('nav.question')} {formatNumber(s)}
-                </span>
-                {quizResults[s] ? (
-                  <span className="text-xs sm:text-sm font-black text-emerald-600 flex items-center gap-1 uppercase tracking-widest">
-                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {t('nav.correct')}
-                  </span>
-                ) : (
-                  <span className="text-xs sm:text-sm font-black text-rose-600 flex items-center gap-1 uppercase tracking-widest">
-                    <XCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {t('nav.incorrect')}
-                  </span>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <button
-            onClick={onComplete}
-            className={cn(
-              "w-full py-3 sm:py-4 text-white rounded-xl sm:rounded-2xl font-display text-xs sm:text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95 cursor-pointer",
-              colTheme.brand600,
-              collectionId === 'history' 
-                ? "hover:bg-teal-700 hover:shadow-emerald-100/50" 
-                : collectionId === 'turkish' 
-                ? "hover:bg-sky-850 hover:shadow-sky-100/50" 
-                : "hover:bg-amber-700 hover:shadow-amber-200"
-            )}
-          >
-            {t('nav.finishContinue')}
-          </button>
-        </motion.div>
+                {value ? t('nav.true') : t('nav.false')}
+              </button>
+            );
+          })}
+        </div>
       );
     }
 
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className={cn(
-          "mt-4 sm:mt-6 p-3.5 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl border-2 flex flex-col gap-3 sm:gap-4 shadow-xl",
-          isCorrect ? "bg-emerald-50 border-emerald-200" : "bg-rose-50 border-rose-200"
-        )}
-      >
-        <div className="flex items-start gap-3 sm:gap-4">
-          <div className={cn(
-            "p-1.5 sm:p-2 rounded-xl shrink-0 mt-0.5",
-            isCorrect ? "bg-emerald-200 text-emerald-700" : "bg-rose-200 text-rose-700"
-          )}>
-            {isCorrect ? <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" /> : <XCircle className="w-5 h-5 sm:w-6 sm:h-6" />}
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className={cn(
-              "font-display text-base sm:text-xl tracking-tight mb-0.5 sm:mb-1",
-              isCorrect ? "text-emerald-900" : "text-rose-900"
-            )}>{isCorrect ? t('nav.correct') + '!' : t('nav.notQuite')}</p>
-            <p className={cn(
-              "font-serif text-xs sm:text-sm md:text-base opacity-80 leading-relaxed",
-              language === 'ar' ? "not-italic text-sm sm:text-base" : "italic"
-            )}>
-              {isCorrect ? exercise.feedback.correct : exercise.feedback.incorrect}
-            </p>
-          </div>
+    if (exercise.type === 'multiple-choice') {
+      return (
+        <div className="grid grid-cols-1 gap-3">
+          {presentedMcOptions.map((option, displayIndex) => {
+            const selected = userAnswer === option.originalIndex;
+            const revealCorrect = isSubmitted && option.originalIndex === exercise.correctAnswer;
+            const revealWrong = isSubmitted && selected && !revealCorrect;
+            return (
+              <button
+                key={`${option.originalIndex}-${option.text}`}
+                type="button"
+                disabled={isSubmitted}
+                onClick={() => {
+                  setUserAnswer(option.originalIndex);
+                  submit(option.originalIndex);
+                }}
+                className={cn(
+                  'w-full min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 py-3 flex items-center gap-4 text-start transition-colors',
+                  revealCorrect
+                    ? 'bg-emerald-500 border-emerald-500 text-white'
+                    : revealWrong
+                      ? 'bg-rose-500 border-rose-500 text-white'
+                      : selected
+                        ? theme.selected
+                        : `bg-white ${theme.softBorder}`
+                )}
+              >
+                <span className={cn(
+                  'w-9 h-9 rounded-full shrink-0 flex items-center justify-center font-display text-sm font-black',
+                  revealCorrect || revealWrong
+                    ? 'bg-white/20 text-white'
+                    : selected
+                      ? `${theme.accentBg} text-white`
+                      : `${theme.softBg} ${theme.accentText}`
+                )}>
+                  {String.fromCharCode(65 + displayIndex)}
+                </span>
+                <span className="font-serif text-sm sm:text-base md:text-lg font-semibold leading-snug flex-1">
+                  {option.text}
+                </span>
+              </button>
+            );
+          })}
         </div>
+      );
+    }
 
-        <div className={cn(
-          "p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border bg-white/50 text-xs sm:text-sm md:text-base leading-relaxed max-h-36 sm:max-h-48 overflow-y-auto custom-scrollbar",
-          language === 'ar' ? "not-italic text-xs sm:text-sm" : "italic",
-          isCorrect ? "border-emerald-100 text-emerald-900" : "border-rose-100 text-rose-900"
-        )}>
-          <span className="font-bold uppercase text-xs sm:text-sm block mb-1 opacity-60 tracking-widest">
-            {t('nav.explanation')}
-          </span>
-          {exercise.explanation}
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-1 sm:mt-2">
-          {!isCorrect && (
+    if (exercise.type === 'matching') {
+      const pairs = exercise.matchingPairs ?? [];
+      const assignedMeanings = new Set(Object.values(matchingAssignments));
+      const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
+      return (
+        <div className="space-y-5">
+          <p className="font-serif text-sm sm:text-base text-wood/55">
+            {t('nav.matchingInstructions')}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+            <div className="space-y-2.5">
+              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.accentText)}>
+                {language === 'ar' ? 'المفاهيم' : 'Concepts'}
+              </p>
+              {pairs.map((pair) => {
+                const selected = selectedMatchingLeft === pair.left;
+                const assigned = matchingAssignments[pair.left];
+                return (
+                  <button
+                    key={pair.left}
+                    type="button"
+                    disabled={isSubmitted}
+                    onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
+                    className={cn(
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-bold transition-colors flex items-center justify-between gap-3',
+                      selected ? theme.selected : `bg-white ${theme.softBorder}`
+                    )}
+                  >
+                    <span>{pair.left}</span>
+                    {assigned && <span className={cn('text-xs font-medium truncate max-w-[45%]', theme.accentText)}>✓ {assigned}</span>}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="space-y-2.5">
+              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.accentText)}>
+                {language === 'ar' ? 'المعاني' : 'Meanings'}
+              </p>
+              {presentedMeanings.map((meaning) => {
+                const used = assignedMeanings.has(meaning);
+                return (
+                  <button
+                    key={meaning}
+                    type="button"
+                    disabled={isSubmitted || !selectedMatchingLeft}
+                    onClick={() => selectMeaning(meaning)}
+                    className={cn(
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-medium transition-colors',
+                      used
+                        ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+                        : selectedMatchingLeft
+                          ? `bg-white ${theme.softBorder} hover:bg-gray-50`
+                          : 'bg-gray-50 border-gray-100 text-wood/45'
+                    )}
+                  >
+                    {meaning}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {!isSubmitted && (
             <button
-              onClick={() => {
-                setIsSubmitted(false);
-                setUserAnswer(null);
-                if (exercise.type === 'drag-drop') {
-                  setAssignments({});
-                  setSelectedItem(null);
-                }
-              }}
-              className="w-full sm:flex-1 flex items-center justify-center gap-2 bg-white border-2 border-rose-200 py-2.5 sm:py-3 rounded-xl shadow-sm hover:bg-rose-50 transition-all font-display text-xs sm:text-sm uppercase tracking-wider text-rose-600 cursor-pointer"
+              type="button"
+              disabled={!allAssigned}
+              onClick={() => submit(matchingAssignments)}
+              className={cn(
+                'w-full min-h-12 rounded-xl font-display text-xs sm:text-sm uppercase tracking-widest font-bold',
+                allAssigned ? `${theme.accentBg} ${theme.accentHover} text-white` : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              )}
             >
-              <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {t('nav.tryAgain')}
+              {t('nav.matchedThem')}
             </button>
           )}
-          <button
-            onClick={onComplete}
-            className={cn(
-              "w-full sm:flex-[2] flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-xl shadow-lg transition-all font-display text-xs sm:text-sm uppercase tracking-wider text-white cursor-pointer",
-              isCorrect ? "bg-emerald-600 hover:bg-emerald-700" : "bg-rose-600 hover:bg-rose-700"
-            )}
-          >
-            {t('nav.continue')} <ArrowRight className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isRTL && "rotate-180")} />
-          </button>
         </div>
-      </motion.div>
-    );
-  };
+      );
+    }
 
-  const renderExerciseContent = () => {
-    switch (exercise.type) {
-      case 'true-false':
-        return (
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-8">
-            {[true, false].map((val) => (
+    if (exercise.type === 'sequencing') {
+      return (
+        <div className="space-y-3">
+          <p className="font-serif text-sm sm:text-base text-wood/55">{t('nav.sequencingInstructions')}</p>
+          {sequenceItems.map((item) => {
+            const order = localSequence.indexOf(item.id);
+            return (
               <button
-                key={val.toString()}
+                key={item.id}
+                type="button"
                 disabled={isSubmitted}
-                onClick={() => handleSubmit(val)}
+                onClick={() => setLocalSequence((previous) =>
+                  previous.includes(item.id)
+                    ? previous.filter((id) => id !== item.id)
+                    : [...previous, item.id]
+                )}
                 className={cn(
-                  "p-4 sm:p-8 rounded-2xl sm:rounded-3xl border-2 transition-all text-base sm:text-2xl font-display uppercase tracking-widest flex flex-col items-center gap-2 sm:gap-4",
-                  userAnswer === val 
-                    ? (isSubmitted 
-                        ? (val === exercise.correctAnswer ? "border-emerald-500 bg-emerald-50 text-emerald-600" : "border-rose-500 bg-rose-50 text-rose-600")
-                        : `${colTheme.borderDark} ${colTheme.bgLight} ${colTheme.brand600Text}`)
-                    : `bg-white hover:bg-white text-wood/40 border-gray-100 ${colTheme.hoverBorder}`
+                  'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start flex items-center gap-4 font-serif text-sm sm:text-base font-semibold',
+                  order >= 0 ? theme.selected : `bg-white ${theme.softBorder}`
                 )}
               >
-                {val ? t('nav.true') : t('nav.false')}
-              </button>
-            ))}
-          </div>
-        );
-
-      case 'multiple-choice':
-        return (
-          <div className="flex flex-col gap-3 mt-8">
-            {exercise.options?.map((option, idx) => (
-              <button
-                key={idx}
-                disabled={isSubmitted}
-                onClick={() => handleSubmit(idx)}
-                className={cn(
-                  "p-4 rounded-xl border-2 text-left transition-all font-medium flex items-center gap-4",
-                  userAnswer === idx
-                    ? (idx === exercise.correctAnswer ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50")
-                    : `border-gray-200 ${colTheme.hoverBorder}`
-                )}
-              >
-                <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-bold shrink-0">
-                  {String.fromCharCode(65 + idx)}
+                <span className={cn(
+                  'w-8 h-8 rounded-full shrink-0 flex items-center justify-center font-display text-sm font-black',
+                  order >= 0 ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400'
+                )}>
+                  {order >= 0 ? formatNumber(order + 1) : '—'}
                 </span>
-                {option}
+                <span>{item.text}</span>
               </button>
-            ))}
-          </div>
-        );
+            );
+          })}
+          {!isSubmitted && (
+            <button
+              type="button"
+              disabled={localSequence.length !== sequenceItems.length}
+              onClick={() => submit(localSequence)}
+              className={cn(
+                'w-full min-h-12 rounded-xl font-display text-xs sm:text-sm uppercase tracking-widest font-bold',
+                localSequence.length === sequenceItems.length
+                  ? `${theme.accentBg} text-white`
+                  : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              )}
+            >
+              {localSequence.length === sequenceItems.length
+                ? t('nav.checkOrder')
+                : `${t('nav.selectAllEvents')} (${formatNumber(localSequence.length)}/${formatNumber(sequenceItems.length)})`}
+            </button>
+          )}
+        </div>
+      );
+    }
 
-      case 'matching':
-        return (
-          <div className="mt-8 space-y-4">
-            <p className={cn(
-              "text-sm text-gray-500 mb-4",
-              language === 'ar' ? "not-italic text-base" : "italic"
-            )}>
-              {t('nav.matchingInstructions')}
-            </p>
-            {exercise.matchingPairs?.map((pair, idx) => (
-              <div key={idx} className="flex items-center gap-4">
-                <div className={cn("flex-1 p-4 border-2 rounded-xl font-bold text-center", colTheme.bgLight, colTheme.borderLight)}>
-                  {pair.left}
-                </div>
-                <ArrowRight className={cn("w-6 h-6", colTheme.brand600Text, isRTL && "rotate-180")} />
-                <div className="flex-1 p-4 bg-white border-2 border-gray-200 rounded-xl font-medium text-center">
-                  {pair.right}
-                </div>
-              </div>
-            ))}
-            {!isSubmitted && (
-              <button
-                onClick={() => handleSubmit(null)}
-                className={cn(
-                  "w-full mt-4 text-white py-3 rounded-xl font-bold transition-all",
-                  colTheme.brand600,
-                  collectionId === 'history' ? "hover:bg-teal-700" : collectionId === 'turkish' ? "hover:bg-sky-800" : "hover:bg-amber-700"
-                )}
-              >
-                {t('nav.matchedThem')}
-              </button>
-            )}
-          </div>
-        );
-
-      case 'tap-reveal':
-        return (
-          <div className="mt-8">
-            {exercise.tapRevealItems?.map((item, idx) => (
-              <motion.button
-                key={idx}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setIsSubmitted(true)}
-                className={cn(
-                  "w-full p-8 rounded-2xl border-4 border-dashed relative overflow-hidden group bg-gradient-to-br",
-                  collectionId === 'history' 
-                    ? "from-emerald-50 to-teal-100/50 border-emerald-300" 
-                    : collectionId === 'turkish' 
-                    ? "from-sky-50 to-sky-100/50 border-sky-300" 
-                    : "from-amber-100 to-orange-100 border-amber-300"
-                )}
-              >
-                <AnimatePresence mode="wait">
-                  {!isSubmitted ? (
-                    <motion.div
-                      key="question"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="flex flex-col items-center gap-4"
-                    >
-                      <HelpCircle className={cn("w-12 h-12 animate-bounce", colTheme.brand600Text)} />
-                      <span className={cn("text-xl font-bold", colTheme.brand900Text)}>{item.question}</span>
-                      <span className={cn("text-sm font-medium uppercase tracking-widest", colTheme.brand600Text)}>
-                        {t('nav.tapToReveal')}
-                      </span>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="answer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className={cn("text-2xl font-bold", colTheme.brand900Text)}
-                    >
-                      {item.answer}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-            ))}
-          </div>
-        );
-
-      case 'reflection':
-        return (
-          <div className="mt-8 space-y-6">
-            {exercise.discussionPrompts?.map((prompt: any, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-white border-2 border-gray-100 shadow-sm">
-                <div className="flex items-center gap-2 mb-3">
-                  {prompt.mode === 'Individual' && <GraduationCap className="w-5 h-5 text-blue-500" />}
-                  {prompt.mode === 'Pair' && <MessageSquare className="w-5 h-5 text-green-500" />}
-                  {prompt.mode === 'Class' && <Users className="w-5 h-5 text-purple-500" />}
-                  <span className={cn(
-                    "text-sm font-bold uppercase tracking-wider",
-                    prompt.mode === 'Individual' ? "text-blue-600" :
-                    prompt.mode === 'Pair' ? "text-green-600" : "text-purple-600"
-                  )}>
-                    {prompt.mode === 'Individual' ? t('nav.individualMode') : prompt.mode === 'Pair' ? t('nav.pairMode') : t('nav.classMode')}
-                  </span>
-                </div>
-                <p className="text-lg font-medium text-gray-800">{prompt.question}</p>
-              </div>
-            ))}
-            {!isSubmitted && (
-              <button
-                onClick={() => handleSubmit(true)}
-                className="w-full bg-gray-800 text-white py-4 rounded-xl font-bold hover:bg-black transition-colors"
-              >
-                {t('nav.reflectedOnThese')}
-              </button>
-            )}
-          </div>
-        );
-
-      case 'sequencing':
-        const displayItems = shuffledSequencingItems.length > 0 ? shuffledSequencingItems : (exercise.sequencingItems || []);
-        return (
-          <div className="mt-8 space-y-2">
-            <p className={cn(
-              "text-sm text-gray-500 mb-4",
-              language === 'ar' ? "not-italic text-base" : "italic"
-            )}>
-              {t('nav.sequencingInstructions')} ({formatNumber(1)} {t('nav.of')} {formatNumber(exercise.sequencingItems?.length || 0)}).
-            </p>
-            {displayItems.map((item, idx) => {
-              const orderIdx = localSequence.indexOf(item.id);
-              return (
-                <button
-                  key={item.id}
-                  disabled={isSubmitted}
-                  onClick={() => {
-                    if (localSequence.includes(item.id)) {
-                      setLocalSequence(localSequence.filter(id => id !== item.id));
-                    } else {
-                      setLocalSequence([...localSequence, item.id]);
-                    }
-                  }}
-                  className={cn(
-                    "w-full p-4 rounded-xl border-2 text-left transition-all flex items-center gap-4",
-                    orderIdx !== -1 ? `${colTheme.borderDark} ${colTheme.bgLight}` : `border-gray-100 ${colTheme.hoverBorder}`
-                  )}
-                >
-                  <div className={cn(
-                    "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm",
-                    orderIdx !== -1 ? `${colTheme.brand600} text-white` : "bg-gray-100 text-gray-400"
-                  )}>
-                    {orderIdx !== -1 ? orderIdx + 1 : ''}
-                  </div>
-                  <span className="font-medium text-gray-800">{item.text}</span>
-                </button>
-              );
-            })}
-            {!isSubmitted && (
-              <button
-                onClick={() => handleSubmit(localSequence)}
-                disabled={localSequence.length !== exercise.sequencingItems?.length}
-                className={cn(
-                  "w-full mt-4 py-3 rounded-xl font-bold transition-all shadow-lg",
-                  localSequence.length === exercise.sequencingItems?.length
-                    ? `${colTheme.brand600} text-white hover:opacity-90`
-                    : "bg-gray-200 text-gray-400 cursor-not-allowed"
-                )}
-              >
-                {localSequence.length === exercise.sequencingItems?.length 
-                  ? t('nav.checkOrder')
-                  : `${t('nav.selectAllEvents')} (${formatNumber(localSequence.length)}/${formatNumber(exercise.sequencingItems?.length || 0)})`}
-              </button>
-            )}
-          </div>
-        );
-
-      case 'fill-blanks':
-        return (
-          <div className="mt-8 p-6 bg-white border-2 border-gray-100 rounded-2xl shadow-sm">
-            <div className="text-xl leading-loose text-gray-800 font-serif">
-              {exercise.fillBlanksText?.split('[blank]').map((part, idx, arr) => (
-                <React.Fragment key={idx}>
-                  {part}
-                  {idx < arr.length - 1 && (
-                    <input
-                      type="text"
-                      disabled={isSubmitted}
-                      placeholder="..."
-                      className={cn(
-                        "mx-2 px-3 py-1 border-b-2 outline-none w-32 text-center font-bold transition-all bg-transparent",
-                        collectionId === 'history' ? "border-emerald-300 focus:border-emerald-500" : collectionId === 'turkish' ? "border-sky-300 focus:border-sky-500" : "border-amber-300 focus:border-amber-500",
-                        isSubmitted && (userAnswer === exercise.correctAnswer ? "text-green-600 border-green-500" : "text-red-600 border-red-500")
-                      )}
-                      onChange={(e) => setUserAnswer(e.target.value)}
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-            {!isSubmitted && (
-              <button
-                onClick={() => setIsSubmitted(true)}
-                className={cn(
-                  "mt-8 w-full text-white py-3 rounded-xl font-bold transition-all",
-                  colTheme.brand600,
-                  collectionId === 'history' ? "hover:bg-teal-700" : collectionId === 'turkish' ? "hover:bg-sky-800" : "hover:bg-amber-700"
-                )}
-              >
-                {t('nav.check')}
-              </button>
-            )}
-          </div>
-        );
-
-      case 'drag-drop':
-        const handleItemClick = (item: string) => {
-          if (isSubmitted) return;
-          setSelectedItem(item === selectedItem ? null : item);
-        };
-
-        const handleGroupClick = (groupName: string) => {
-          if (isSubmitted || !selectedItem) return;
-          
-          // Remove from other groups first
-          const newAssignments = { ...assignments };
-          Object.keys(newAssignments).forEach(g => {
-            newAssignments[g] = (newAssignments[g] || []).filter(i => i !== selectedItem);
-          });
-          
-          // Add to new group
-          if (!newAssignments[groupName]) newAssignments[groupName] = [];
-          newAssignments[groupName].push(selectedItem);
-          
-          setAssignments(newAssignments);
-          setSelectedItem(null);
-          setUserAnswer(newAssignments);
-        };
-
-        const allItems = exercise.dragDropGroups?.flatMap(g => g.items) || [];
-        const assignedItems = Object.values(assignments).flat();
-        const unassignedItems = allItems.filter(i => !assignedItems.includes(i));
-
-        return (
-          <div className="mt-8 space-y-6">
-            <div className="space-y-2">
-              <p className="text-base font-bold text-gray-400 uppercase tracking-widest">
-                {t('nav.availableItems')}
-              </p>
-              <div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200 min-h-[80px]">
-                {unassignedItems.map((item, idx) => (
-                  <button
-                    key={idx}
+    if (exercise.type === 'fill-blanks') {
+      return (
+        <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-6 space-y-5">
+          <div className="font-serif text-base sm:text-lg leading-loose text-wood">
+            {(exercise.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
+              <React.Fragment key={index}>
+                {part}
+                {index < pieces.length - 1 && (
+                  <input
+                    type="text"
                     disabled={isSubmitted}
-                    onClick={() => handleItemClick(item)}
-                    className={cn(
-                      "px-4 py-2 bg-white border-2 rounded-lg font-bold text-sm shadow-sm transition-all",
-                      selectedItem === item ? `${colTheme.borderDark} ${colTheme.bgLight} scale-105 shadow-md` : `border-gray-200 ${colTheme.hoverBorder}`
-                    )}
-                  >
-                    {item}
-                  </button>
-                ))}
-                {unassignedItems.length === 0 && <p className="text-sm text-gray-400 italic w-full text-center">{t('nav.allItemsAssigned')}</p>}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {exercise.dragDropGroups?.map((group, idx) => (
-                <button
-                  key={idx}
-                  disabled={isSubmitted}
-                  onClick={() => handleGroupClick(group.group)}
-                  className={cn(
-                    "p-4 rounded-2xl border-2 min-h-[150px] transition-all text-left flex flex-col",
-                    selectedItem ? `${colTheme.groupBgHover} cursor-pointer` : colTheme.groupBg
-                  )}
-                >
-                  <h5 className={cn("text-base font-black uppercase tracking-widest mb-4 text-center w-full", colTheme.brand600Text)}>{group.group}</h5>
-                  <div className="flex flex-wrap gap-2">
-                    {(assignments[group.group] || []).map((item, i) => (
-                      <div
-                        key={i}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleItemClick(item);
-                        }}
-                        className={cn(
-                          "px-3 py-1 bg-white border rounded-lg text-base font-bold shadow-sm",
-                          selectedItem === item ? `${colTheme.borderDark} ${colTheme.bgLight}` : colTheme.borderLight
-                        )}
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {!isSubmitted && (
-              <div className="flex gap-3">
-                <button
-                  onClick={() => {
-                    setAssignments({});
-                    setSelectedItem(null);
-                    setUserAnswer(null);
-                  }}
-                  className="flex-1 bg-gray-100 text-gray-600 py-3 rounded-xl font-bold hover:bg-gray-200 transition-colors"
-                >
-                  {t('nav.reset')}
-                </button>
-                <button
-                  onClick={() => setIsSubmitted(true)}
-                  disabled={assignedItems.length < allItems.length}
-                  className={cn(
-                    "flex-[2] py-3 rounded-xl font-bold transition-colors",
-                    assignedItems.length < allItems.length 
-                      ? "bg-gray-200 text-gray-400 cursor-not-allowed" 
-                      : `${colTheme.brand600} text-white hover:opacity-90`
-                  )}
-                >
-                  {assignedItems.length < allItems.length 
-                    ? `${t('nav.assignAllItems')} (${formatNumber(assignedItems.length)}/${formatNumber(allItems.length)})`
-                    : t('nav.submitCategories')}
-                </button>
-              </div>
-            )}
+                    value={typeof userAnswer === 'string' ? userAnswer : ''}
+                    onChange={(event) => setUserAnswer(event.target.value)}
+                    className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.softBorder)}
+                  />
+                )}
+              </React.Fragment>
+            ))}
           </div>
-        );
+          {!isSubmitted && (
+            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', theme.accentBg)}>
+              {t('nav.check')}
+            </button>
+          )}
+        </div>
+      );
+    }
 
-      case 'quiz-game':
-        const currentQuizQuestion = exercise.quizQuestions?.[quizStep - 1];
-        const totalQuizSteps = exercise.quizQuestions?.length || 7;
-        return (
-          <div className="mt-8">
-            <div className="flex items-center justify-between mb-8">
-              {Array.from({ length: totalQuizSteps }, (_, i) => i + 1).map((s) => (
-                <div key={s} className="flex items-center">
-                  <div className={cn(
-                    "w-8 h-8 rounded-full flex items-center justify-center font-bold text-base transition-all",
-                    quizStep >= s ? `${colTheme.brand600} text-white` : "bg-gray-200 text-gray-400",
-                    quizResults[s] === false && "bg-red-500 text-white"
-                  )}>
-                    {s}
-                  </div>
-                  {s < totalQuizSteps && <div className={cn("w-4 md:w-8 h-1", quizStep > s ? colTheme.brand600 : "bg-gray-200")} />}
-                </div>
+    if (exercise.type === 'drag-drop') {
+      const allItems = exercise.dragDropGroups?.flatMap((group) => group.items) ?? [];
+      const assigned = Object.values(dragAssignments).flat();
+      const available = allItems.filter((item) => !assigned.includes(item));
+      const allAssigned = allItems.length > 0 && available.length === 0;
+      return (
+        <div className="space-y-5">
+          <div>
+            <p className="font-display text-xs uppercase tracking-widest text-wood/45 mb-2">{t('nav.availableItems')}</p>
+            <div className="min-h-20 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 p-3 flex flex-wrap gap-2">
+              {available.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  disabled={isSubmitted}
+                  onClick={() => setSelectedDragItem(selectedDragItem === item ? null : item)}
+                  className={cn('px-3 py-2 rounded-lg border-2 bg-white font-serif text-sm font-semibold', selectedDragItem === item ? theme.selected : 'border-gray-200')}
+                >
+                  {item}
+                </button>
               ))}
+              {!available.length && <span className="text-sm text-wood/40 m-auto">{t('nav.allItemsAssigned')}</span>}
             </div>
-            
-            {!isSubmitted ? (
-              <div className={cn("p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border-2 shadow-inner text-center relative overflow-hidden", colTheme.borderLight)}>
-                <h5 className={cn("text-lg sm:text-2xl font-black mb-2 sm:mb-4", colTheme.brand900Text)}>
-                  {t('nav.step')} {formatNumber(quizStep)}: {t('nav.journey')}
-                </h5>
-                <p className="text-xs sm:text-base text-gray-600 mb-4 sm:mb-8">
-                  {currentQuizQuestion?.question}
-                </p>
-                
-                <div className="grid grid-cols-1 gap-2.5 sm:gap-3">
-                  {currentQuizQuestion?.options.map(opt => (
-                    <button 
-                      key={opt.text} 
-                      disabled={quizAnswered} 
-                      onClick={() => handleQuizAnswer(quizStep, opt.text, opt.isCorrect)} 
-                      className={cn(
-                        "p-3 sm:p-4 rounded-xl border-2 font-bold text-xs sm:text-base transition-all", 
-                        quizAnswered && opt.isCorrect ? "border-green-500 bg-green-50" : `border-gray-100 ${colTheme.hoverBorder}`
-                      )}
-                    >
-                      {opt.text}
-                    </button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {exercise.dragDropGroups?.map((group) => (
+              <button
+                key={group.group}
+                type="button"
+                disabled={isSubmitted || !selectedDragItem}
+                onClick={() => assignDragItem(group.group)}
+                className={cn('rounded-2xl border-2 min-h-32 p-4 text-start', selectedDragItem ? theme.softBorder : 'border-gray-100 bg-gray-50')}
+              >
+                <h5 className={cn('font-display text-sm font-bold mb-3', theme.accentText)}>{group.group}</h5>
+                <div className="flex flex-wrap gap-2">
+                  {(dragAssignments[group.group] ?? []).map((item) => (
+                    <span key={item} className="px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 font-serif text-xs sm:text-sm">{item}</span>
                   ))}
                 </div>
+              </button>
+            ))}
+          </div>
+          {!isSubmitted && (
+            <button type="button" disabled={!allAssigned} onClick={() => submit(dragAssignments)} className={cn('w-full min-h-12 rounded-xl font-bold', allAssigned ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400')}>
+              {t('nav.check')}
+            </button>
+          )}
+        </div>
+      );
+    }
 
-                <AnimatePresence>
-                  {quizFeedback && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      className={cn(
-                        "mt-4 sm:mt-6 p-3 sm:p-4 border rounded-xl text-xs sm:text-sm font-medium",
-                        quizResults[quizStep] ? "bg-green-50 border-green-200 text-green-700" : "bg-red-50 border-red-200 text-red-700"
-                      )}
-                    >
-                      <div className="flex items-center gap-2">
-                        {quizResults[quizStep] ? <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" /> : <XCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />}
-                        {quizFeedback}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+    if (exercise.type === 'tap-reveal') {
+      const items = exercise.tapRevealItems ?? [];
+      return (
+        <div className="space-y-3">
+          {items.map((item, index) => {
+            const revealed = revealedItems.has(index);
+            return (
+              <button
+                key={`${item.question}-${index}`}
+                type="button"
+                onClick={() => setRevealedItems((previous) => new Set(previous).add(index))}
+                className={cn('w-full rounded-2xl border-2 p-5 sm:p-7 text-center min-h-28', theme.softBorder, theme.softBg)}
+              >
+                <p className="font-serif text-base sm:text-lg font-semibold text-wood">{revealed ? item.answer : item.question}</p>
+                {!revealed && <span className={cn('block mt-3 text-xs uppercase tracking-widest font-bold', theme.accentText)}>{t('nav.tapToReveal')}</span>}
+              </button>
+            );
+          })}
+          {!isSubmitted && revealedItems.size === items.length && (
+            <button type="button" onClick={() => submit(true)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', theme.accentBg)}>{t('nav.continue')}</button>
+          )}
+        </div>
+      );
+    }
 
-                {quizAnswered && (
-                  <button
-                    onClick={handleNextQuizStep}
-                    className={cn(
-                      "w-full mt-4 sm:mt-6 py-2.5 sm:py-3 text-white rounded-xl font-bold text-sm sm:text-base transition-all shadow-md flex items-center justify-center gap-2",
-                      colTheme.brand600,
-                      collectionId === 'history' ? "hover:bg-teal-700" : collectionId === 'turkish' ? "hover:bg-sky-850" : "hover:bg-amber-700"
-                    )}
-                  >
-                    {quizStep < totalQuizSteps ? t('nav.nextQuestion') : t('nav.seeResults')} <ArrowRight className={cn("w-4 h-4 sm:w-5 sm:h-5", isRTL && "rotate-180")} />
-                  </button>
-                )}
+    if (exercise.type === 'reflection') {
+      return (
+        <div className="space-y-4">
+          {exercise.discussionPrompts?.map((prompt, index) => (
+            <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
+              <div className="flex items-center gap-2 mb-2 text-wood/50">
+                {prompt.mode === 'Individual' ? <GraduationCap size={18} /> : prompt.mode === 'Pair' ? <MessageSquare size={18} /> : <Users size={18} />}
+                <span className="font-display text-xs uppercase tracking-widest">{prompt.mode}</span>
               </div>
-            ) : null}
+              <p className="font-serif text-sm sm:text-base md:text-lg font-semibold text-wood">{prompt.question}</p>
+            </div>
+          ))}
+          {!isSubmitted && (
+            <button type="button" onClick={() => submit(true)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', theme.accentBg)}>{t('nav.reflectedOnThese')}</button>
+          )}
+        </div>
+      );
+    }
+
+    if (exercise.type === 'quiz-game') {
+      const total = exercise.quizQuestions?.length ?? 0;
+      if (isSubmitted) {
+        return (
+          <div className="rounded-2xl bg-white border-2 border-gray-100 p-6 text-center">
+            <p className={cn('font-display text-3xl font-black', theme.title)}>{formatNumber(quizScore)}/{formatNumber(total)}</p>
+            <p className="font-serif text-sm text-wood/60 mt-2">{t('nav.challengeComplete')}</p>
           </div>
         );
+      }
+      if (!currentQuizQuestion) return null;
+      return (
+        <div className="space-y-5">
+          <div className="flex items-center justify-between gap-3">
+            <span className={cn('font-display text-xs uppercase tracking-widest', theme.accentText)}>{t('nav.question')} {formatNumber(quizStep + 1)} / {formatNumber(total)}</span>
+            <span className="font-display text-sm font-bold text-wood/50">{formatNumber(quizScore)} {t('ex.pts')}</span>
+          </div>
+          <p className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-wood leading-snug">{currentQuizQuestion.question}</p>
+          <div className="grid grid-cols-1 gap-3">
+            {currentQuizOptions.map((option, index) => (
+              <button
+                key={`${option.text}-${index}`}
+                type="button"
+                disabled={quizAnswered}
+                onClick={() => answerQuiz(option.isCorrect)}
+                className={cn(
+                  'min-h-14 rounded-xl border-2 p-3 text-start font-serif text-sm sm:text-base font-semibold',
+                  quizAnswered && option.isCorrect ? 'border-emerald-500 bg-emerald-50' : `bg-white ${theme.softBorder}`
+                )}
+              >
+                {option.text}
+              </button>
+            ))}
+          </div>
+          {quizAnswered && (
+            <div className={cn('rounded-xl border p-3 font-serif text-sm', quizWasCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800')}>
+              {quizWasCorrect ? t('nav.correctWellDone') : currentQuizQuestion.hint}
+            </div>
+          )}
+          {quizAnswered && (
+            <button type="button" onClick={nextQuiz} className={cn('w-full min-h-12 rounded-xl text-white font-bold flex items-center justify-center gap-2', theme.accentBg)}>
+              {quizStep < total - 1 ? t('nav.nextQuestion') : t('nav.seeResults')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+            </button>
+          )}
+        </div>
+      );
     }
+
+    return null;
   };
 
-  return (
+  const correct = isSubmitted && (exercise.type === 'quiz-game'
+    ? quizScore === (exercise.quizQuestions?.length ?? 0)
+    : isCorrectAnswer(userAnswer));
+
+  const dialog = (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm"
+      className={cn('fixed inset-0 z-[1000] bg-[#FDFBF7] flex flex-col', isRTL && 'font-arabic')}
+      dir={isRTL ? 'rtl' : 'ltr'}
+      role="dialog"
+      aria-modal="true"
+      aria-label={exercise.title || exercise.question || t('nav.interactiveChallenge')}
     >
-      <motion.div
-        initial={{ scale: 0.9, y: 20 }}
-        animate={{ scale: 1, y: 0 }}
-        className={cn(
-          "bg-[#FDFBF7] w-full max-w-4xl rounded-2xl sm:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh] border-4 sm:border-8 border-white/20 transition-transform duration-100",
-          isWrong && "animate-shake",
-          isRTL && "font-arabic"
-        )}
-        dir={isRTL ? 'rtl' : 'ltr'}
-      >
-        {/* Header */}
-        <div className={cn("p-3.5 sm:p-6 border-b flex items-center justify-between", colTheme.bgLight, colTheme.borderLight)}>
-          <div>
-            <h3 className={cn("text-base sm:text-2xl font-black tracking-tight", colTheme.brand900Text)}>{exercise.title}</h3>
-            <p className={cn("font-medium text-xs sm:text-sm", colTheme.brand700Text)}>{exercise.instructions}</p>
-          </div>
-          <button 
-            onClick={onClose}
-            className={cn("p-1.5 sm:p-2 rounded-full transition-colors shrink-0", collectionId === 'history' ? "hover:bg-teal-100" : collectionId === 'turkish' ? "hover:bg-sky-100" : "hover:bg-amber-100")}
-          >
-            <XCircle className={cn("w-6 h-6 sm:w-8 sm:h-8", collectionId === 'history' ? "text-teal-400" : collectionId === 'turkish' ? "text-sky-500" : "text-amber-500")} />
-          </button>
+      <header className={cn('shrink-0 border-b-2 px-4 sm:px-6 md:px-10 py-4 sm:py-5 flex items-start justify-between gap-4', theme.softBg, theme.softBorder)}>
+        <div className="min-w-0">
+          <p className={cn('font-display text-[10px] sm:text-xs uppercase tracking-[0.2em] font-black mb-1', theme.accentText)}>{t('nav.interactiveChallenge')}</p>
+          <h3 className={cn('font-display text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-tight', theme.title)}>{exercise.title}</h3>
+          {exercise.instructions && <p className={cn('font-serif text-xs sm:text-sm md:text-base mt-1', theme.accentText)}>{exercise.instructions}</p>}
         </div>
+        <button type="button" onClick={onClose} className={cn('p-2 rounded-full shrink-0 border-2 bg-white', theme.softBorder, theme.accentText)} aria-label={t('nav.close')}>
+          <XCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+        </button>
+      </header>
 
-        {/* Content */}
-        <div className="p-4 sm:p-8 overflow-y-auto">
-          <h4 className="text-sm sm:text-xl font-bold text-gray-900 leading-snug">
-            {exercise.question}
-          </h4>
+      <main className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-5 sm:py-8 space-y-6">
+          {exercise.question && exercise.type !== 'quiz-game' && (
+            <h4 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-wood leading-snug">{exercise.question}</h4>
+          )}
+          {renderContent()}
 
-          {renderExerciseContent()}
-          {renderFeedback()}
-        </div>
-
-        {/* Footer */}
-        <div className="p-4 bg-gray-50 border-t flex items-center justify-between">
-          <div className="flex gap-2">
-            {exercise.hints && (
-              <button
-                onClick={() => setShowHint(!showHint)}
-                className={cn("flex items-center gap-2 font-bold text-sm", colTheme.brand700Text, collectionId === 'history' ? "hover:text-teal-700" : collectionId === 'turkish' ? "hover:text-sky-700" : "hover:text-amber-700")}
+          <AnimatePresence mode="wait">
+            {isSubmitted && exercise.type !== 'quiz-game' && (
+              <motion.section
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={cn('rounded-2xl border-2 p-4 sm:p-6 space-y-4', correct ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200')}
               >
-                <HelpCircle className="w-4 h-4" /> {showHint ? t('nav.hideHint') : t('nav.needHint')}
-              </button>
+                <div className="flex items-start gap-3">
+                  {correct ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={22} />}
+                  <div className="flex-1 min-w-0">
+                    <p className={cn('font-display text-base sm:text-lg font-black', correct ? 'text-emerald-800' : 'text-rose-800')}>
+                      {correct ? `${t('nav.correct')}!` : t('nav.notQuite')}
+                    </p>
+                    <p className="font-serif text-sm sm:text-base text-wood/75 mt-1 leading-relaxed">
+                      {correct ? exercise.feedback.correct : exercise.feedback.incorrect}
+                    </p>
+                  </div>
+                </div>
+                {exercise.explanation && (
+                  <div className="rounded-xl bg-white/70 border border-black/5 p-3 sm:p-4 font-serif text-sm sm:text-base text-wood/75 leading-relaxed">
+                    <span className="block font-display text-[10px] uppercase tracking-widest text-wood/40 mb-1">{t('nav.explanation')}</span>
+                    {exercise.explanation}
+                  </div>
+                )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {!correct && (
+                    <button type="button" onClick={retry} className="min-h-12 rounded-xl bg-white border-2 border-rose-200 text-rose-700 font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2">
+                      <RotateCcw size={16} /> {t('nav.tryAgain')}
+                    </button>
+                  )}
+                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', correct ? 'bg-emerald-600' : 'bg-rose-600', !correct && 'sm:col-start-2')}>
+                    {t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+                  </button>
+                </div>
+              </motion.section>
             )}
-          </div>
-          {isSubmitted && (
-            <button
-              onClick={() => {
-                setIsSubmitted(false);
-                setUserAnswer(null);
-              }}
-              className="flex items-center gap-2 text-gray-500 font-bold text-sm hover:text-gray-700"
-            >
-              <RotateCcw className="w-4 h-4" /> {t('nav.reset')}
+          </AnimatePresence>
+
+          {isSubmitted && exercise.type === 'quiz-game' && (
+            <button type="button" onClick={onComplete} className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold', theme.accentBg)}>
+              {t('nav.continue')}
             </button>
           )}
         </div>
+      </main>
 
-        {/* Hint Tooltip */}
-        <AnimatePresence>
-          {showHint && exercise.hints && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className={cn(
-                "p-4 text-sm font-medium",
-                collectionId === 'history' ? "bg-emerald-100 text-teal-900" : collectionId === 'turkish' ? "bg-sky-100 text-sky-950" : "bg-amber-100 text-amber-900",
-                language === 'ar' ? "not-italic text-base" : "italic"
-              )}
-            >
-              💡 {t('nav.hint')} {exercise.hints[0]}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+      <footer className="shrink-0 border-t border-gray-200 bg-white px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between gap-3 safe-area-bottom">
+        <div>
+          {exercise.hints?.length ? (
+            <button type="button" onClick={() => setShowHint((value) => !value)} className={cn('flex items-center gap-2 font-display text-xs font-bold', theme.accentText)}>
+              <HelpCircle size={16} /> {showHint ? t('nav.hideHint') : t('nav.needHint')}
+            </button>
+          ) : null}
+        </div>
+        {showHint && exercise.hints?.length ? (
+          <p className="font-serif text-xs sm:text-sm text-wood/60 flex items-center gap-2 max-w-2xl text-end">
+            <Lightbulb size={15} className={theme.accentText} /> {exercise.hints[0]}
+          </p>
+        ) : null}
+      </footer>
     </motion.div>
   );
+
+  return typeof document === 'undefined' ? dialog : createPortal(dialog, document.body);
 };
