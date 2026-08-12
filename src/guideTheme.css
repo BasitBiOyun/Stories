@@ -42,11 +42,11 @@
 }
 
 [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"] {
-  width: min(84%, 58rem) !important;
-  max-width: calc(100% - 1rem) !important;
+  width: min(96%, 78rem) !important;
+  max-width: calc(100% - 0.5rem) !important;
   min-height: 0 !important;
   margin: 1rem auto !important;
-  padding: 1rem 3.75rem 1rem 1.5rem !important;
+  padding: 1rem 5.25rem 1rem 1.75rem !important;
   perspective: 900px;
 }
 
@@ -79,8 +79,8 @@
 
 @media (max-width: 767px) {
   [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"] {
-    width: 94% !important;
-    padding: 0.9rem 3.25rem 0.9rem 1.1rem !important;
+    width: 96% !important;
+    padding: 0.9rem 3.5rem 0.9rem 1.1rem !important;
   }
 
   [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"]
