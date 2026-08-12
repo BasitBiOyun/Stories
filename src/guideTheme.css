@@ -27,9 +27,9 @@
   background-color: rgba(42, 27, 14, 0.98) !important;
 }
 
-/* Yunus Emre poem cards: keep English/Turkish faces at the same stable size,
-   reduce the oversized typography, and preserve each source verse as one
-   visual line on tablet/desktop so the bilingual poems stay two lines. */
+/* Yunus Emre poem cards should read as quotations inside the story, not as
+   hero panels. Keep them centred, content-height, and slightly smaller than
+   the surrounding story text while preserving the bilingual turn effect. */
 @keyframes yunus-poem-soft-turn {
   from {
     opacity: 0.72;
@@ -42,18 +42,31 @@
 }
 
 [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"] {
-  min-height: clamp(13rem, 16vw, 16rem);
+  width: min(84%, 58rem) !important;
+  max-width: calc(100% - 1rem) !important;
+  min-height: 0 !important;
+  margin: 1rem auto !important;
+  padding: 1rem 3.75rem 1rem 1.5rem !important;
   perspective: 900px;
 }
 
 [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"]
   > [class*="font-serif"][class*="italic"] {
-  width: calc(100% - 4.75rem);
-  max-width: 100%;
-  font-size: clamp(0.95rem, 1.65vw, 1.75rem) !important;
-  line-height: 1.45 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: clamp(0.88rem, 1.1vw, 0.93em) !important;
+  line-height: 1.35 !important;
   animation: yunus-poem-soft-turn 220ms ease-out;
   transform-origin: center;
+}
+
+[class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"]
+  > [class*="font-serif"][class*="italic"]
+  > div {
+  margin-top: 0.15rem !important;
+  margin-bottom: 0.15rem !important;
 }
 
 @media (min-width: 768px) {
@@ -64,39 +77,14 @@
   }
 }
 
-/* Yunus Emre A2 / The Difficult Path: the seven poem lines remain canonical
-   story text, but are visually grouped into one restrained verse card. */
-div:has(img[alt="The Difficult Path"])
-  div:has(> p.mb-4:nth-child(11))
-  > p.mb-4:nth-child(n+3):nth-child(-n+9) {
-  margin-bottom: 0 !important;
-  padding: 0.2rem 1.25rem;
-  background: rgba(240, 249, 255, 0.68);
-  border-left: 3px solid rgba(14, 165, 233, 0.72);
-  border-right: 3px solid rgba(14, 165, 233, 0.72);
-  color: rgba(20, 38, 36, 0.94);
-  text-align: center;
-  font-style: italic;
-  font-size: clamp(0.9rem, 0.82rem + 0.35vw, 1.15rem) !important;
-  line-height: 1.55 !important;
-}
+@media (max-width: 767px) {
+  [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"] {
+    width: 94% !important;
+    padding: 0.9rem 3.25rem 0.9rem 1.1rem !important;
+  }
 
-div:has(img[alt="The Difficult Path"])
-  div:has(> p.mb-4:nth-child(11))
-  > p.mb-4:nth-child(3) {
-  padding-top: 1rem;
-  border-top: 1px solid rgba(14, 165, 233, 0.42);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-
-div:has(img[alt="The Difficult Path"])
-  div:has(> p.mb-4:nth-child(11))
-  > p.mb-4:nth-child(9) {
-  padding-bottom: 1rem;
-  margin-bottom: 1rem !important;
-  border-bottom: 1px solid rgba(14, 165, 233, 0.42);
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  box-shadow: 0 8px 18px rgba(14, 165, 233, 0.08);
+  [class*="border-sky-300/60"][class*="border-sky-400"][class*="page-texture"]
+    > [class*="font-serif"][class*="italic"] {
+    font-size: 0.92em !important;
+  }
 }
