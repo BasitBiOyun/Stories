@@ -5,6 +5,8 @@ import {
   normalizeHighlightText,
   type HighlightLanguage,
 } from '../lib/highlightTextMatch';
+import { arabicAnimatedDefinitions } from './fallbackVocab';
+import { arabicHighlightDefinitions } from './arabicHighlightDefinitions';
 
 const rawWordTokens = (value: string): string[] => (
   value.match(/[\p{L}\p{N}\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06EDـ’'’-]+/gu) ?? []
@@ -28,6 +30,38 @@ const findSurfacePhrase = (
   return undefined;
 };
 
+const normalizedArabicDefinitions = new Map<string, string>([
+  ...Object.entries(arabicAnimatedDefinitions).map(([word, definition]) => [
+    normalizeHighlightText(word, 'ar'),
+    definition,
+  ] as const),
+  ...Object.entries(arabicHighlightDefinitions),
+]);
+
+const enrichArabicAnimatedDefinitions = (page: PageData): PageData => {
+  if (page.type !== 'story' || !page.animatedWords?.length) return page;
+
+  const vocabulary = [...(page.vocabulary ?? [])];
+  const exactVocabularyWords = new Set(
+    vocabulary.map((entry) => normalizeHighlightText(entry.word, 'ar'))
+  );
+
+  for (const animatedWord of page.animatedWords) {
+    const normalized = normalizeHighlightText(animatedWord, 'ar');
+    if (!normalized || exactVocabularyWords.has(normalized)) continue;
+
+    const definition = normalizedArabicDefinitions.get(normalized);
+    if (!definition?.trim()) continue;
+
+    vocabulary.push({ word: animatedWord, definition });
+    exactVocabularyWords.add(normalized);
+  }
+
+  return vocabulary.length === (page.vocabulary?.length ?? 0)
+    ? page
+    : { ...page, vocabulary };
+};
+
 /**
  * Preserve reviewed vocabulary/animated-word choices while ensuring the stored
  * display key is a form that actually occurs in the chapter. This is especially
@@ -35,12 +69,14 @@ const findSurfacePhrase = (
  * clitic or pronoun suffix (for example فضول -> بفضول, أصل -> أصله).
  *
  * Definitions, selection intent, counts and canonical story prose are not
- * changed. Items with no defensible surface-form match are deliberately left
- * untouched so the validator can still report them for manual review.
+ * changed by the surface-form pass. A2 may additionally request definition
+ * enrichment: in that mode an animated surface form receives a vocabulary
+ * definition only when a reviewed, non-generic definition is already available.
  */
 export const applyHighlightSurfaceForms = (
   pages: PageData[],
   language: HighlightLanguage,
+  options: { enrichArabicDefinitions?: boolean } = {},
 ): PageData[] => pages.map((page) => {
   if (page.type !== 'story') return page;
   const content = page.content ?? '';
@@ -63,5 +99,8 @@ export const applyHighlightSurfaceForms = (
       : surface;
   });
 
-  return { ...page, vocabulary, animatedWords };
+  const surfaced = { ...page, vocabulary, animatedWords };
+  return language === 'ar' && options.enrichArabicDefinitions
+    ? enrichArabicAnimatedDefinitions(surfaced)
+    : surfaced;
 });
