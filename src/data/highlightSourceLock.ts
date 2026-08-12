@@ -1,5 +1,6 @@
 import type { PageData } from '../types';
 import {
+  arabicTokenForms,
   highlightPhraseOccurs,
   highlightTokenMatches,
   normalizeHighlightText,
@@ -38,6 +39,36 @@ const normalizedArabicDefinitions = new Map<string, string>([
   ...Object.entries(arabicHighlightDefinitions),
 ]);
 
+const formsIntersect = (left: string, right: string): boolean => {
+  const leftNormalized = normalizeHighlightText(left, 'ar');
+  const rightNormalized = normalizeHighlightText(right, 'ar');
+  if (!leftNormalized || !rightNormalized) return false;
+  if (leftNormalized === rightNormalized) return true;
+  if (leftNormalized.includes(' ') || rightNormalized.includes(' ')) return false;
+
+  const leftForms = arabicTokenForms(leftNormalized);
+  const rightForms = arabicTokenForms(rightNormalized);
+  return [...leftForms].some((form) => rightForms.has(form));
+};
+
+const resolveArabicSurfaceDefinition = (
+  word: string,
+  vocabulary: NonNullable<PageData['vocabulary']>,
+): string | undefined => {
+  const normalized = normalizeHighlightText(word, 'ar');
+  const exact = normalizedArabicDefinitions.get(normalized);
+  if (exact?.trim()) return exact;
+
+  const chapterLemma = vocabulary.find((entry) => formsIntersect(word, entry.word));
+  if (chapterLemma?.definition?.trim()) return chapterLemma.definition;
+
+  for (const [fallbackWord, definition] of normalizedArabicDefinitions.entries()) {
+    if (definition.trim() && formsIntersect(word, fallbackWord)) return definition;
+  }
+
+  return undefined;
+};
+
 const enrichArabicAnimatedDefinitions = (page: PageData): PageData => {
   if (page.type !== 'story' || !page.animatedWords?.length) return page;
 
@@ -50,7 +81,7 @@ const enrichArabicAnimatedDefinitions = (page: PageData): PageData => {
     const normalized = normalizeHighlightText(animatedWord, 'ar');
     if (!normalized || exactVocabularyWords.has(normalized)) continue;
 
-    const definition = normalizedArabicDefinitions.get(normalized);
+    const definition = resolveArabicSurfaceDefinition(animatedWord, vocabulary);
     if (!definition?.trim()) continue;
 
     vocabulary.push({ word: animatedWord, definition });
@@ -68,10 +99,10 @@ const enrichArabicAnimatedDefinitions = (page: PageData): PageData => {
  * useful in Arabic, where a reviewed lemma may appear in prose with a short
  * clitic or pronoun suffix (for example فضول -> بفضول, أصل -> أصله).
  *
- * Definitions, selection intent, counts and canonical story prose are not
- * changed by the surface-form pass. A2 may additionally request definition
- * enrichment: in that mode an animated surface form receives a vocabulary
- * definition only when a reviewed, non-generic definition is already available.
+ * The surface-form pass does not rewrite story prose. A2 may additionally ask
+ * for definition enrichment; in that mode a highlighted surface form receives
+ * a definition only when a real chapter-lemma or curated Arabic definition is
+ * available. No generic "keyword" fallback is invented.
  */
 export const applyHighlightSurfaceForms = (
   pages: PageData[],
