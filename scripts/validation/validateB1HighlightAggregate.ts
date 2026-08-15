@@ -31,16 +31,24 @@ const legacyCases: LegacyCase[] = [
   { label: 'Yunus Emre B1', enPages: yunusEmreB1PagesGoldEn, arPages: yunusEmreB1PagesGoldAr, config: yunusEmreB1GoldConfig },
 ];
 
+const wordsFor = (pages: PageData[], chapterId: number): string[] => (
+  pages.find((page) => page.type === 'story' && page.id === chapterId)?.vocabulary?.map((entry) => entry.word) ?? []
+);
+
 console.log('[B1 highlight aggregate] legacy pairing diagnostics');
 for (const current of legacyCases) {
   const differences: string[] = [];
   for (const chapterId of current.config.storyIds) {
-    const enCount = current.enPages.find((page) => page.type === 'story' && page.id === chapterId)?.vocabulary?.length ?? 0;
-    const arCount = current.arPages.find((page) => page.type === 'story' && page.id === chapterId)?.vocabulary?.length ?? 0;
-    if (enCount !== arCount) differences.push(`Ch${chapterId} EN=${enCount} AR=${arCount}`);
+    const enWords = wordsFor(current.enPages, chapterId);
+    const arWords = wordsFor(current.arPages, chapterId);
+    if (enWords.length !== arWords.length) {
+      differences.push(
+        `Ch${chapterId} EN=${enWords.length}[${enWords.join(' | ')}] AR=${arWords.length}[${arWords.join(' | ')}]`,
+      );
+    }
   }
   console.log(
-    `[B1 pairing diagnostic] ${current.label}: ${differences.length ? differences.join(' | ') : 'no count drift'}`,
+    `[B1 pairing diagnostic] ${current.label}: ${differences.length ? differences.join(' || ') : 'no count drift'}`,
   );
 }
 
