@@ -1,6 +1,6 @@
 import type { PageData } from '../../../types';
 
-const dervishVerseEnglish = `A dervish needs a wounded heart and eyes full of tears.
+export const dervishVerseEnglish = `A dervish needs a wounded heart and eyes full of tears.
 
 He needs to be as easy going as a sheep.
 
@@ -14,7 +14,7 @@ A dervish needs to be without any desires (selfless).
 
 You can’t be a dervish.`;
 
-const dervishVerseCard = `[POEM]
+export const dervishVerseCard = `[POEM]
 English:
 “A dervish needs a wounded heart and eyes full of tears.
 He needs to be as easy going as a sheep.
@@ -34,18 +34,12 @@ Derviş gönülsüz gerek
 Sen derviş olamazsın
 [/POEM]`;
 
-/**
- * Presentation-only A2 poem treatment. The locked story source remains intact;
- * the existing English verse is wrapped as the same bilingual poem card used
- * elsewhere in Yunus Emre, with the attested Turkish verse on the reverse.
- */
+/** Presentation-only UI card; locked story prose is not authored in this form. */
 export const applyYunusA2PoemCard = (pages: PageData[]): PageData[] => pages.map((page) => {
-  if (page.type !== 'story' || page.id !== 3 || !page.content?.includes(dervishVerseEnglish)) {
-    return page;
-  }
-
-  return {
-    ...page,
-    content: page.content.replace(dervishVerseEnglish, dervishVerseCard),
-  };
+  if (page.type !== 'story' || page.id !== 3 || !page.content?.includes(dervishVerseEnglish)) return page;
+  return { ...page, content: page.content.replace(dervishVerseEnglish, dervishVerseCard) };
 });
+
+/** Canonical guards can reverse the presentation wrapper before hashing story prose. */
+export const restoreYunusA2LockedPoemProse = (content: string): string =>
+  content.replace(dervishVerseCard, dervishVerseEnglish);
