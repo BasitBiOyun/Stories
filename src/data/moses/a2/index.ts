@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { sanitizeA2PlaceholderMedia } from '../../a2PlaceholderMedia';
 import {
   mosesA2HighlightConfig,
   mosesA2HighlightTargets,
@@ -111,7 +112,7 @@ export const mosesA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: mosesA2PagesLockedEn,
+  pages: sanitizeA2PlaceholderMedia(mosesA2PagesLockedEn),
   teacherGuide: mosesA2TeacherGuideFramedEn,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: mosesA2SelfStudyGuideFramedEn,
