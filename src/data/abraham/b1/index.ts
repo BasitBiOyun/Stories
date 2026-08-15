@@ -8,6 +8,7 @@ import { abrahamB1StudentGuideText, abrahamB1StudentGuideMetadata, abrahamB1Stud
 import { abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1StudentGuideTextAr, abrahamB1StudentGuideMetadataAr, abrahamB1StudentGuideSectionsAr } from './ar/selfStudyGuide';
 import { abrahamB1GoldConfig, abrahamB1PagesGoldEn, abrahamB1PagesGoldAr } from './gold';
+import { abrahamB1ExplicitHighlightTargets } from './highlights';
 
 const abrahamB1PagesLockedEn = applyHotspotSourceLock(abrahamB1PagesGoldEn, {
   language: 'en',
@@ -26,6 +27,7 @@ const abrahamB1HighlightStandard = applyB1HighlightStandard(abrahamB1PagesLocked
   storyIds: abrahamB1GoldConfig.storyIds,
   glossaryPageIds: abrahamB1GoldConfig.glossaryPageIds,
   vocabularyPageId: abrahamB1GoldConfig.vocabularyPageId,
+  explicitTargets: abrahamB1ExplicitHighlightTargets,
 });
 
 export const abrahamB1HighlightTargets = abrahamB1HighlightStandard.targets;
