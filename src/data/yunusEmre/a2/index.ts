@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
 import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { applyYunusA2PoemCard } from './poemCard';
 import { yunusA2GoldConfig } from './gold';
@@ -30,10 +31,20 @@ const yunusA2PagesLockedEn = applyYunusA2PoemCard(
     'en',
   ),
 );
-const yunusA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar'),
-  yunusA2HighlightConfig,
-  'ar',
+const yunusA2PagesLockedAr = applyA2HotspotCopyOverrides(
+  syncA2GlossariesFromStoryHighlights(
+    applyA2FinalStoryLanguageLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar'),
+    yunusA2HighlightConfig,
+    'ar',
+  ),
+  {
+    4: {
+      'h4-2': {
+        title: 'الْحَطَبُ الْمُعْوَجُّ',
+        description: 'لَمْ يَقْطَعْ يونُس وَلَمْ يُحْضِرْ أَبَدًا حَطَبًا أَخْضَرَ أَوْ مُعْوَجًّا.',
+      },
+    },
+  },
 );
 
 validateA2HighlightStandard(yunusA2PagesLockedEn, yunusA2PagesLockedAr, yunusA2HighlightTargets, yunusA2HighlightConfig);
