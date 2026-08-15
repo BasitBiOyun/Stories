@@ -1,7 +1,7 @@
 import { BookData, PageData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
-import { buildA2SelfStudyGuide } from '../../a2GoldFactory';
+import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyYunusA2PoemCard } from './poemCard';
 import {
@@ -175,8 +175,8 @@ validateA2HighlightStandard(yunusA2PagesLockedEn, yunusA2PagesLockedAr, yunusA2H
 
 const yunusA2TeacherGuideFramedEn = buildA2ChapterTeacherGuide(yunusA2PagesLockedEn, yunusA2StoryIds, 'en');
 const yunusA2TeacherGuideFramedAr = buildA2ChapterTeacherGuide(yunusA2PagesLockedAr, yunusA2StoryIds, 'ar');
-const yunusA2SelfStudyGuideFramedEn = buildA2SelfStudyGuide(yunusA2PagesLockedEn, yunusA2StoryIds, 'en');
-const yunusA2SelfStudyGuideFramedAr = buildA2SelfStudyGuide(yunusA2PagesLockedAr, yunusA2StoryIds, 'ar');
+const yunusA2SelfStudyGuideFramedEn = buildA2ChapterSelfStudyGuide(yunusA2PagesLockedEn, yunusA2StoryIds, 'en');
+const yunusA2SelfStudyGuideFramedAr = buildA2ChapterSelfStudyGuide(yunusA2PagesLockedAr, yunusA2StoryIds, 'ar');
 
 export const yunusEmreA2BookDataEn: BookData = {
   id: 'yunusEmre-a2-en',
