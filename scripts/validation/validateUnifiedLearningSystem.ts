@@ -39,8 +39,15 @@ const checkMediaPair = (en: BookData, ar: BookData, label: string) => {
 };
 
 const checkBook = async (definition: (typeof bookRegistry)[number]) => {
-  const pair = await definition.load();
   const label = `${definition.storyId}:${definition.level}`;
+  let pair;
+  try {
+    pair = await definition.load();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    fail(`${label} load/finalization failed: ${message}`);
+  }
+
   assert(pair.en.level === definition.level && pair.ar.level === definition.level, `${label} level mismatch.`);
 
   const enConfig = inferLearningSystemConfig(nonReferencePages(pair.en), pair.en.level);
