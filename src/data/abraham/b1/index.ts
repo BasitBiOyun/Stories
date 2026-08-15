@@ -1,6 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1StudentGuideText, abrahamB1StudentGuideMetadata, abrahamB1StudentGuideSections } from './en/selfstudyGuide';
@@ -31,17 +32,20 @@ const abrahamB1HighlightStandard = applyB1HighlightStandard(abrahamB1PagesLocked
 });
 
 export const abrahamB1HighlightTargets = abrahamB1HighlightStandard.targets;
-const abrahamB1PagesFinalEn = abrahamB1HighlightStandard.englishPages;
-const abrahamB1PagesFinalAr = abrahamB1HighlightStandard.arabicPages;
-const abrahamB1GuidesEn = buildB1EvidenceGuides(abrahamB1PagesFinalEn, 'en');
-const abrahamB1GuidesAr = buildB1EvidenceGuides(abrahamB1PagesFinalAr, 'ar');
+const abrahamB1Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: abrahamB1HighlightStandard.englishPages,
+  arabicPages: abrahamB1HighlightStandard.arabicPages,
+  config: { level: 'B1', ...abrahamB1GoldConfig },
+});
+const abrahamB1GuidesEn = buildB1EvidenceGuides(abrahamB1Parallel.englishPages, 'en');
+const abrahamB1GuidesAr = buildB1EvidenceGuides(abrahamB1Parallel.arabicPages, 'ar');
 
 export const abrahamB1BookDataEn: BookData = {
   id: 'b1-abraham-en',
   title: 'Stories of the Prophets: Abraham (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: abrahamB1PagesFinalEn,
+  pages: abrahamB1Parallel.englishPages,
   teacherGuide: abrahamB1GuidesEn.teacherGuide,
   selfStudyGuide: abrahamB1GuidesEn.selfStudyGuide,
   studentGuideText: abrahamB1StudentGuideText,
@@ -55,7 +59,7 @@ export const abrahamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: abrahamB1PagesFinalAr,
+  pages: abrahamB1Parallel.arabicPages,
   teacherGuide: abrahamB1GuidesAr.teacherGuide,
   selfStudyGuide: abrahamB1GuidesAr.selfStudyGuide,
   studentGuideText: abrahamB1StudentGuideTextAr,
