@@ -56,6 +56,22 @@ const englishFallbackDefinition = (word: string): string | undefined => {
     ))?.[1];
 };
 
+const englishVocabularyDefinitionForSurface = (
+  pages: PageData[],
+  word: string,
+): string | undefined => {
+  const normalized = normalizeHighlightText(word, 'en');
+  if (!normalized) return undefined;
+  for (const page of pages) {
+    if (page.type !== 'story') continue;
+    const entry = page.vocabulary?.find((candidate) => (
+      normalizeHighlightText(candidate.word, 'en') === normalized
+    ));
+    if (entry?.definition?.trim()) return entry.definition;
+  }
+  return undefined;
+};
+
 const arabicFallbackDefinition = (word: string): string | undefined => (
   arabicFallbackDefinitions.get(normalizeHighlightText(word, 'ar'))
 );
@@ -179,6 +195,7 @@ export const applyA2HighlightStandard = (
   config: A2HighlightStandardConfig,
 ): A2HighlightStandardResult => {
   const seenEnglishKeys = new Set<string>();
+  const seenArabicKeys = new Set<string>();
   const targets: Record<number, readonly A2CanonicalHighlightTarget[]> = {};
   const requiresExplicitArabicTargets = config.requireExplicitArabicTargets ?? Boolean(config.arabicOverrides);
 
@@ -194,6 +211,18 @@ export const applyA2HighlightStandard = (
       const key = normalizeHighlightText(word, 'en');
       if (key) seenEnglishKeys.add(key);
       chapterSelectedWords.push(word);
+    };
+    const reserveArabicTarget = (arWord: string, englishWord: string): boolean => {
+      const key = normalizeHighlightText(arWord, 'ar');
+      if (key && seenArabicKeys.has(key)) {
+        // The reader suppresses an exact Arabic target once it has already been
+        // highlighted on an earlier chapter. Suppress the paired English target
+        // too so bilingual visible counts remain equal instead of failing later.
+        remember(englishWord);
+        return false;
+      }
+      if (key) seenArabicKeys.add(key);
+      return true;
     };
 
     const enVocabulary = enPage.vocabulary ?? [];
@@ -219,6 +248,8 @@ export const applyA2HighlightStandard = (
       }
 
       const arWord = explicit?.word ?? positionalEntry!.word;
+      if (!reserveArabicTarget(arWord, entry.word)) return;
+
       const matchingEntry = explicit ? arabicVocabularyEntryForSurface(arPage, arWord) : positionalEntry;
       // Position is never allowed to choose the Arabic WORD once a book is mapped.
       // It may still provide the already-reviewed definition for the same legacy
@@ -257,8 +288,10 @@ export const applyA2HighlightStandard = (
       if (!arWord) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} has no pair for English highlight “${word}”.`);
       }
+      if (!reserveArabicTarget(arWord, word)) return;
 
-      const enDefinition = englishFallbackDefinition(word);
+      const enDefinition = englishFallbackDefinition(word)
+        ?? englishVocabularyDefinitionForSurface(englishPages, word);
       if (!enDefinition?.trim()) {
         fail(config.storyKey, `English Chapter ${chapterId} highlight “${word}” has no learner definition.`);
       }
