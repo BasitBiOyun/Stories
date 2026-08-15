@@ -120,11 +120,9 @@ const isSameVisibleEnglishTarget = (surface: string, selected: string): boolean 
   if (!surfaceNormalized || !selectedNormalized) return false;
   if (surfaceNormalized === selectedNormalized) return true;
 
-  // StoryPage accepts short English inflections (idol/idols, camel/camels,
-  // rope/ropes, etc.). Do not turn an inflected spelling that was already
-  // covered by a visible vocabulary target into a second canonical target.
-  return highlightPhraseMatches(surface, selected, 'en')
-    || highlightPhraseMatches(selected, surface, 'en');
+  // StoryPage lets a singular vocabulary target highlight its short inflected
+  // surface form on the same page (idol/idols, camel/camels, rope/ropes, etc.).
+  return highlightPhraseMatches(surface, selected, 'en');
 };
 
 /**
@@ -173,26 +171,32 @@ export const applyA2HighlightStandard = (
   arabicPages: PageData[],
   config: A2HighlightStandardConfig,
 ): A2HighlightStandardResult => {
-  const selectedEnglishWords: string[] = [];
-  const alreadySelected = (word: string): boolean => (
-    selectedEnglishWords.some((selected) => isSameVisibleEnglishTarget(word, selected))
-  );
-  const rememberSelected = (word: string): void => {
-    selectedEnglishWords.push(word);
-  };
+  // StoryPage suppresses an exact configured word once it appeared in an earlier
+  // page, while inflection matching happens only among candidates on the current
+  // page. Mirror those two rules separately here.
+  const seenEnglishKeys = new Set<string>();
   const targets: Record<number, readonly A2CanonicalHighlightTarget[]> = {};
 
   for (const chapterId of config.storyIds) {
     const enPage = storyPage(englishPages, chapterId, config.storyKey, 'en');
     const arPage = storyPage(arabicPages, chapterId, config.storyKey, 'ar');
     const chapterTargets: A2CanonicalHighlightTarget[] = [];
+    const chapterSelectedWords: string[] = [];
+    const alreadyCoveredOnChapter = (word: string): boolean => (
+      chapterSelectedWords.some((selected) => isSameVisibleEnglishTarget(word, selected))
+    );
+    const remember = (word: string): void => {
+      const key = normalizeHighlightText(word, 'en');
+      if (key) seenEnglishKeys.add(key);
+      chapterSelectedWords.push(word);
+    };
 
     const enVocabulary = enPage.vocabulary ?? [];
     const arVocabulary = arPage.vocabulary ?? [];
 
     enVocabulary.forEach((entry, index) => {
       const key = normalizeHighlightText(entry.word, 'en');
-      if (!key || alreadySelected(entry.word)) return;
+      if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(entry.word)) return;
       const explicit = overrideFor(config, chapterId, entry.word);
       const arEntry = arVocabulary[index];
       if (!explicit && !arEntry) {
@@ -209,7 +213,7 @@ export const applyA2HighlightStandard = (
         en: { ...entry },
         ar: { word: arWord, definition: arDefinition },
       });
-      rememberSelected(entry.word);
+      remember(entry.word);
     });
 
     const enAnimated = enPage.animatedWords ?? [];
@@ -217,7 +221,7 @@ export const applyA2HighlightStandard = (
 
     enAnimated.forEach((word, index) => {
       const key = normalizeHighlightText(word, 'en');
-      if (!key || alreadySelected(word)) return;
+      if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(word)) return;
 
       const explicit = overrideFor(config, chapterId, word);
       const arWord = explicit?.word ?? arAnimated[index];
@@ -241,7 +245,7 @@ export const applyA2HighlightStandard = (
         en: { word, definition: enDefinition },
         ar: { word: arWord, definition: arDefinition },
       });
-      rememberSelected(word);
+      remember(word);
     });
 
     targets[chapterId] = chapterTargets;
