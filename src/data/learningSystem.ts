@@ -1,9 +1,6 @@
 import type { Exercise, Level, PageData, QuizQuestion, TeacherGuideSection } from '../types';
 import { highlightPhraseMatches, highlightPhraseOccurs, normalizeHighlightText } from '../lib/highlightTextMatch';
-import { buildA2ChapterTeacherGuide } from './a2ChapterTeacherGuide';
-import { buildA2ChapterSelfStudyGuide } from './a2ChapterSelfStudyGuide';
-import { buildB1EvidenceGuides } from './b1GoldGuides';
-import { buildB2EvidenceGuides } from './b2GoldGuides';
+import { buildLearningGuides } from './learningGuideSystem';
 
 export type LearningLanguage = 'en' | 'ar';
 export type LearningExerciseType = 'multiple-choice' | 'true-false' | 'matching' | 'fill-blanks' | 'tap-reveal';
@@ -820,16 +817,8 @@ const buildGuides = (
   pages: PageData[],
   config: LearningSystemConfig,
   language: LearningLanguage,
-): { teacherGuide: TeacherGuideSection[]; selfStudyGuide: TeacherGuideSection[] } => {
-  if (config.level === 'A2') {
-    return {
-      teacherGuide: buildA2ChapterTeacherGuide(pages, config.storyIds, language),
-      selfStudyGuide: buildA2ChapterSelfStudyGuide(pages, config.storyIds, language),
-    };
-  }
-  if (config.level === 'B1') return buildB1EvidenceGuides(pages, language);
-  return buildB2EvidenceGuides({ effectivePages: pages, storyIds: config.storyIds, language });
-};
+): { teacherGuide: TeacherGuideSection[]; selfStudyGuide: TeacherGuideSection[] } =>
+  buildLearningGuides({ pages, storyIds: config.storyIds, level: config.level, language });
 
 export const runLearningSystem = ({
   englishPages,
