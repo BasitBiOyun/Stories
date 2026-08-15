@@ -34,12 +34,29 @@ const basePagesEn = rawBasePagesEn.map((page) => {
       }
     : pageWithoutLegacySync;
 
-  if (!pageWithVocabularyFix.animatedWords) return pageWithVocabularyFix;
-  if (pageWithVocabularyFix.id === 3) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'sets') };
-  if (pageWithVocabularyFix.id === 7) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'crazy') };
-  if (pageWithVocabularyFix.id === 9) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'rude') };
-  if (pageWithVocabularyFix.id === 10) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'rise') };
-  return pageWithVocabularyFix;
+  const pageWithDerivedFeedbackFix = pageWithVocabularyFix.id === 3
+    ? {
+        ...pageWithVocabularyFix,
+        exercises: pageWithVocabularyFix.exercises?.map((exercise) =>
+          exercise.id === 'q3'
+            ? {
+                ...exercise,
+                feedback: {
+                  ...exercise.feedback,
+                  incorrect: 'Not quite. The chapter says the star disappeared, so Abraham said he would not show respect to it.',
+                },
+              }
+            : exercise
+        ),
+      }
+    : pageWithVocabularyFix;
+
+  if (!pageWithDerivedFeedbackFix.animatedWords) return pageWithDerivedFeedbackFix;
+  if (pageWithDerivedFeedbackFix.id === 3) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'sets') };
+  if (pageWithDerivedFeedbackFix.id === 7) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'crazy') };
+  if (pageWithDerivedFeedbackFix.id === 9) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'rude') };
+  if (pageWithDerivedFeedbackFix.id === 10) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'rise') };
+  return pageWithDerivedFeedbackFix;
 });
 
 const vocabularyGoldEn = applyA2VocabularyGold({
