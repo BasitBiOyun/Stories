@@ -75,7 +75,7 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
     'هَمَسُوا': { word: 'يَهْمِسونَ' },
   },
   8: {
-    'دَنَا': { word: 'اِنْتَهى', definition: 'وَصَلَ إِلَى نِهَايَتِهِ.' },
+    'دَنَا': { word: 'قَريبَةٌ مِنَ الْمَوْتِ', definition: 'تَقْتَرِبُ مِنْ نِهَايَةِ الْحَيَاةِ.' },
     'يَبِسَتْ': { word: 'يَبِسْتُ', definition: 'جَفَّ وَفَقَدَ الْمَاءَ وَالْحَيَاةَ.' },
   },
 });
@@ -88,17 +88,75 @@ export const yunusA2HighlightConfig: A2HighlightStandardConfig = {
   storyIds: yunusA2GoldConfig.storyIds,
   glossaryPageIds: yunusA2GoldConfig.glossaryPageIds,
   arabicOverrides: {
+    1: {
+      poet: { word: 'الشُّعَراءِ' },
+      moral: { word: 'أَخْلاقِيَّةً' },
+      madrasa: { word: 'الْمَدْرَسَةِ' },
+      dervish: { word: 'دَرْوِيشًا' },
+      pupil: { word: 'تِلْميذًا' },
+      poems: { word: 'قَصائِدَهُ' },
+      'simple Turkish': { word: 'بِلُغَةٍ تُرْكِيَّةٍ بَسيطَةٍ' },
+      'passed away': { word: 'تُوُفِّيَ' },
+    },
+    2: {
+      witnessed: { word: 'يَشْهَدونَ' },
+      universe: { word: 'الْكَوْنِ' },
+      charity: { word: 'صَدَقَةً' },
+      'generous-hearted': { word: 'كِرامَ الْقُلوبِ' },
+      sulky: { word: 'عابِسِينَ' },
+      'the needy': { word: 'الْمُحْتاجينَ' },
+      forgave: { word: 'يَغْفِرونَ' },
+    },
+    3: {
+      honesty: { word: 'الصِّدْقِ' },
+      patience: { word: 'الصَّبْرِ' },
+      humility: { word: 'التَّواضُعِ' },
+      moderate: { word: 'مُعْتَدِلَةً' },
+      disciplined: { word: 'مُنَظَّمَةً' },
+      path: { word: 'طَريقًا' },
+      training: { word: 'تَدْريبَهُ' },
+    },
     4: {
+      condition: { word: 'شَرْطٍ' },
+      humble: { word: 'مُتَواضِعًا' },
+      serve: { word: 'خِدْمَةِ' },
+      ordinary: { word: 'عادِيَّةً' },
+      crooked: { word: 'مُعْوَجًّا' },
       assigned: { word: 'فَطَلَبَ' },
       ego: { word: 'النَّفْسِ' },
     },
     5: {
+      cuts: { word: 'جُروحًا' },
+      straightest: { word: 'اسْتِقامَةً' },
+      ego: { word: 'نَفْسُ' },
+      corrected: { word: 'إِصْلاحٍ' },
+      axe: { word: 'الْفَأْسَ' },
       fixing: { word: 'يُصْلِحُ' },
       noticed: { word: 'لاحَظَ' },
     },
     6: {
+      honesty: { word: 'الصِّدْقِ' },
+      goodness: { word: 'الْخَيْرِ' },
+      purer: { word: 'أَنْقى' },
+      creatures: { word: 'الْمَخْلوقاتِ' },
+      'deeper meaning': { word: 'مَعْنًى أَعْمَقَ' },
       quiet: { word: 'هادِئَةٌ' },
       rivers: { word: 'أَنْهارٌ' },
+    },
+    7: {
+      bunch: { word: 'باقَةِ' },
+      field: { word: 'الْحُقولِ' },
+      single: { word: 'واحِدَةٌ' },
+      daisy: { word: 'أُقْحُوانٍ' },
+      whispered: { word: 'يَهْمِسونَ' },
+      picked: { word: 'قَطَفُوا' },
+    },
+    8: {
+      dying: { word: 'قَريبَةٌ مِنَ الْمَوْتِ' },
+      'dried up': { word: 'يَبِسْتُ' },
+      meaningful: { word: 'ذاتَ مَعْنًى' },
+      fruitful: { word: 'مُثْمِرَةً' },
+      'daily lives': { word: 'حَياتِنا الْيَوْمِيَّةِ' },
     },
   },
 };
@@ -115,7 +173,7 @@ export const yunusA2TeacherGuideFinalAr = buildA2TeacherGuide(yunusA2PagesFinalA
 export const yunusA2SelfStudyGuideFinalEn = buildA2SelfStudyGuide(yunusA2PagesFinalEn, yunusA2GoldConfig.storyIds, 'en');
 export const yunusA2SelfStudyGuideFinalAr = buildA2SelfStudyGuide(yunusA2PagesFinalAr, yunusA2GoldConfig.storyIds, 'ar');
 export const yunusA2TeacherGuideMetadataFinalEn = buildA2TeacherGuideMetadata('Yunus Emre', yunusA2GoldConfig.storyIds.length, 'en');
-export const yunusA2TeacherGuideMetadataFinalAr = buildA2TeacherGuideMetadata('يونس إمره', yunusA2GoldConfig.storyIds.length, 'ar');
+export const yunusA2TeacherGuideMetadataFinalAr = buildA2TeacherGuideMetadata('قصة يونس إمره', yunusA2GoldConfig.storyIds.length, 'ar');
 export const yunusA2StudentGuideSectionsFinalEn = buildA2StudentGuideSections('en');
 export const yunusA2StudentGuideSectionsFinalAr = buildA2StudentGuideSections('ar');
 export const yunusA2StudentGuideMetadataFinalEn = buildA2StudentGuideMetadata('Yunus Emre', 'en');
