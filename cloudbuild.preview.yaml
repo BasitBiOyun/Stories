@@ -58,6 +58,11 @@ steps:
       - --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME
       - --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
 
+# A user-selected trigger service account requires an explicit user-owned log sink.
+# Cloud Logging satisfies that requirement without creating/managing a GCS bucket.
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 # Keep enough room for a cold PDF-producing build. Cached incremental builds
 # should be substantially shorter.
 timeout: 1200s
