@@ -22,13 +22,19 @@ import {
 
 const mosesA2StoryIds = Array.from({ length: 16 }, (_, index) => index + 1);
 
+const removeMisplacedChapterTwoHotspot = (pages: typeof mosesA2PagesFinalEn) => pages.map((page) => (
+  page.id === 2 && page.type === 'story'
+    ? { ...page, hotspots: (page.hotspots || []).filter((hotspot) => hotspot.id !== 'h2-3') }
+    : page
+));
+
 const mosesA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(mosesA2PagesFinalEn, 'musa', 'en'),
+  applyA2FinalStoryLanguageLock(removeMisplacedChapterTwoHotspot(mosesA2PagesFinalEn), 'musa', 'en'),
   mosesA2HighlightConfig,
   'en',
 );
 const mosesA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(mosesA2PagesFinalAr, 'musa', 'ar'),
+  applyA2FinalStoryLanguageLock(removeMisplacedChapterTwoHotspot(mosesA2PagesFinalAr), 'musa', 'ar'),
   mosesA2HighlightConfig,
   'ar',
 );
