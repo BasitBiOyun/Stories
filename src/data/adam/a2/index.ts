@@ -7,6 +7,9 @@ import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideTex
 import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } from './ar/qualityFinalization';
 import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr, adamA2StudentGuideTextAr } from './ar/selfStudyGuide';
+import { validateAdamA2HighlightContract } from './highlightValidation';
+
+validateAdamA2HighlightContract(adamA2PagesQualityFinalized, adamA2PagesArQualityFinalized);
 
 const adamA2PagesLockedEn = applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en');
 const adamA2PagesLockedAr = applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar');
