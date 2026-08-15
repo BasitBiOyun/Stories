@@ -22,7 +22,11 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
     },
   ],
   22: [
-    { en: 'sufficient', ar: 'كَافٍ' },
+    {
+      en: 'sufficient',
+      ar: 'حَسْبِيَ اللهُ',
+      arDefinition: 'تَعْبِيرٌ يَعْنِي أَنَّ اللهَ كَافِي الْعَبْدِ وَأَنَّهُ يَعْتَمِدُ عَلَيْهِ وَحْدَهُ.',
+    },
     {
       en: 'Miracle',
       ar: 'المعجزة',
