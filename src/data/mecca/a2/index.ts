@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { sanitizeA2PlaceholderMedia } from '../../a2PlaceholderMedia';
 import {
   meccaA2HighlightConfig,
   meccaA2HighlightTargets,
@@ -41,7 +42,7 @@ export const meccaA2BookDataEn: BookData = {
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: meccaA2PagesLockedEn,
+  pages: sanitizeA2PlaceholderMedia(meccaA2PagesLockedEn),
   teacherGuide: meccaA2TeacherGuideEn,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: meccaA2SelfStudyGuideEn,
