@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { sanitizeA2PlaceholderMedia } from '../../a2PlaceholderMedia';
 import { applyYunusA2PoemCard } from './poemCard';
 import {
   yunusA2HighlightConfig,
@@ -191,7 +192,7 @@ export const yunusEmreA2BookDataEn: BookData = {
   title: 'Yunus Emre: Faith, Character, and Poetry (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: yunusA2PagesLockedEn,
+  pages: sanitizeA2PlaceholderMedia(yunusA2PagesLockedEn),
   teacherGuide: yunusA2TeacherGuideFramedEn,
   teacherGuideMetadata: yunusA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: yunusA2SelfStudyGuideFramedEn,
