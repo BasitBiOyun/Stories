@@ -2,7 +2,6 @@ import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
 import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
-import { groundYunusB1Derived } from '../../b1DerivedGrounding';
 import { stripUnsupportedBoldMarkdown } from '../../stripUnsupportedMarkdown';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -12,7 +11,6 @@ import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { yunusEmreB1GoldConfig, yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
 import { yunusEmreB1ExplicitHighlightTargets } from './highlights';
-import { groundRemainingYunusB1Challenges } from './strictGrounding';
 
 const yunusB1PagesLockedEn = stripUnsupportedBoldMarkdown(applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
   language: 'en',
@@ -37,19 +35,10 @@ const yunusB1HighlightStandard = applyB1HighlightStandard(yunusB1PagesLockedEn, 
   explicitTargets: yunusEmreB1ExplicitHighlightTargets,
 });
 
-const groundedYunusB1En = groundRemainingYunusB1Challenges(
-  groundYunusB1Derived(yunusB1HighlightStandard.englishPages, 'en'),
-  'en',
-);
-const groundedYunusB1Ar = groundRemainingYunusB1Challenges(
-  groundYunusB1Derived(yunusB1HighlightStandard.arabicPages, 'ar'),
-  'ar',
-);
-
 export const yunusEmreB1HighlightTargets = yunusB1HighlightStandard.targets;
 const yunusB1Parallel = applySafeAdvancedParallelLearning({
-  englishPages: groundedYunusB1En,
-  arabicPages: groundedYunusB1Ar,
+  englishPages: yunusB1HighlightStandard.englishPages,
+  arabicPages: yunusB1HighlightStandard.arabicPages,
   config: { level: 'B1', ...yunusEmreB1GoldConfig },
 });
 const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1Parallel.englishPages, 'en');
