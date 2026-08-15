@@ -78,7 +78,7 @@ const prepareKnowledgeCheckPage = (pages: PageData[], language: 'en' | 'ar'): Pa
   page.id === abrahamB2Config.knowledgeCheckPageId
     ? {
         ...page,
-        type: 'quiz',
+        type: 'quiz' as const,
         title: language === 'ar' ? 'اختبار المعرفة — B2' : 'B2 Knowledge Check',
         content: '',
         audioUrl: '',
