@@ -1,18 +1,13 @@
 import assert from 'node:assert/strict';
 import type { BookData, PageData } from '../../src/types';
 import { highlightPhraseOccurs, normalizeHighlightText } from '../../src/lib/highlightTextMatch';
-
-import { adamB1BookDataEn, adamB1BookDataAr } from '../../src/data/adam/b1';
-import { adamB1GoldConfig } from '../../src/data/adam/b1/gold';
-import { abrahamB1BookDataEn, abrahamB1BookDataAr } from '../../src/data/abraham/b1';
-import { abrahamB1GoldConfig } from '../../src/data/abraham/b1/gold';
-import { mosesB1BookDataEn, mosesB1BookDataAr } from '../../src/data/moses/b1';
-import { mosesB1RolloutConfig } from '../../src/data/moses/b1/rollout';
-import { meccaB1BookDataEn, meccaB1BookDataAr } from '../../src/data/mecca/b1';
-import { meccaB1GoldConfig } from '../../src/data/mecca/b1/gold';
-import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from '../../src/data/yunusEmre/b1';
-import { yunusEmreB1GoldConfig } from '../../src/data/yunusEmre/b1/gold';
 import type { B1GoldPageConfig } from '../../src/data/b1GoldFactory';
+
+import { adamB1GoldConfig, adamB1PagesGoldEn, adamB1PagesGoldAr } from '../../src/data/adam/b1/gold';
+import { abrahamB1GoldConfig, abrahamB1PagesGoldEn, abrahamB1PagesGoldAr } from '../../src/data/abraham/b1/gold';
+import { mosesB1RolloutConfig, mosesB1PagesRolloutEn, mosesB1PagesRolloutAr } from '../../src/data/moses/b1/rollout';
+import { meccaB1GoldConfig, meccaB1PagesGoldEn, meccaB1PagesGoldAr } from '../../src/data/mecca/b1/gold';
+import { yunusEmreB1GoldConfig, yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from '../../src/data/yunusEmre/b1/gold';
 
 type Case = {
   label: string;
@@ -21,12 +16,51 @@ type Case = {
   config: B1GoldPageConfig;
 };
 
+type LegacyCase = {
+  label: string;
+  enPages: PageData[];
+  arPages: PageData[];
+  config: B1GoldPageConfig;
+};
+
+const legacyCases: LegacyCase[] = [
+  { label: 'Adam B1', enPages: adamB1PagesGoldEn, arPages: adamB1PagesGoldAr, config: adamB1GoldConfig },
+  { label: 'Abraham B1', enPages: abrahamB1PagesGoldEn, arPages: abrahamB1PagesGoldAr, config: abrahamB1GoldConfig },
+  { label: 'Moses B1', enPages: mosesB1PagesRolloutEn, arPages: mosesB1PagesRolloutAr, config: mosesB1RolloutConfig },
+  { label: 'Mecca B1', enPages: meccaB1PagesGoldEn, arPages: meccaB1PagesGoldAr, config: meccaB1GoldConfig },
+  { label: 'Yunus Emre B1', enPages: yunusEmreB1PagesGoldEn, arPages: yunusEmreB1PagesGoldAr, config: yunusEmreB1GoldConfig },
+];
+
+console.log('[B1 highlight aggregate] legacy pairing diagnostics');
+for (const current of legacyCases) {
+  const differences: string[] = [];
+  for (const chapterId of current.config.storyIds) {
+    const enCount = current.enPages.find((page) => page.type === 'story' && page.id === chapterId)?.vocabulary?.length ?? 0;
+    const arCount = current.arPages.find((page) => page.type === 'story' && page.id === chapterId)?.vocabulary?.length ?? 0;
+    if (enCount !== arCount) differences.push(`Ch${chapterId} EN=${enCount} AR=${arCount}`);
+  }
+  console.log(
+    `[B1 pairing diagnostic] ${current.label}: ${differences.length ? differences.join(' | ') : 'no count drift'}`,
+  );
+}
+
+// Load final books only after the diagnostics above have been printed. This way
+// an unsafe legacy chapter can fail fast without hiding the remaining books'
+// count drift from the build log.
+const [adam, abraham, moses, mecca, yunus] = await Promise.all([
+  import('../../src/data/adam/b1'),
+  import('../../src/data/abraham/b1'),
+  import('../../src/data/moses/b1'),
+  import('../../src/data/mecca/b1'),
+  import('../../src/data/yunusEmre/b1'),
+]);
+
 const cases: Case[] = [
-  { label: 'Adam B1', en: adamB1BookDataEn, ar: adamB1BookDataAr, config: adamB1GoldConfig },
-  { label: 'Abraham B1', en: abrahamB1BookDataEn, ar: abrahamB1BookDataAr, config: abrahamB1GoldConfig },
-  { label: 'Moses B1', en: mosesB1BookDataEn, ar: mosesB1BookDataAr, config: mosesB1RolloutConfig },
-  { label: 'Mecca B1', en: meccaB1BookDataEn, ar: meccaB1BookDataAr, config: meccaB1GoldConfig },
-  { label: 'Yunus Emre B1', en: yunusEmreB1BookDataEn, ar: yunusEmreB1BookDataAr, config: yunusEmreB1GoldConfig },
+  { label: 'Adam B1', en: adam.adamB1BookDataEn, ar: adam.adamB1BookDataAr, config: adamB1GoldConfig },
+  { label: 'Abraham B1', en: abraham.abrahamB1BookDataEn, ar: abraham.abrahamB1BookDataAr, config: abrahamB1GoldConfig },
+  { label: 'Moses B1', en: moses.mosesB1BookDataEn, ar: moses.mosesB1BookDataAr, config: mosesB1RolloutConfig },
+  { label: 'Mecca B1', en: mecca.meccaB1BookDataEn, ar: mecca.meccaB1BookDataAr, config: meccaB1GoldConfig },
+  { label: 'Yunus Emre B1', en: yunus.yunusEmreB1BookDataEn, ar: yunus.yunusEmreB1BookDataAr, config: yunusEmreB1GoldConfig },
 ];
 
 const page = (pages: PageData[], id: number, label: string): PageData => {
