@@ -23,6 +23,7 @@ const vocabularyGoldEn = applyA2VocabularyGold({
   language: 'en',
   chapterAdditions: {
     6: [{ word: 'axe', definition: 'A heavy tool used for cutting or breaking things.' }],
+    8: [{ word: 'trusted', definition: 'Believed that Allah would protect and help him.' }],
   },
 });
 
@@ -41,6 +42,9 @@ export const abrahamA2HighlightConfig: A2HighlightStandardConfig = {
   storyIds: abrahamA2GoldConfig.storyIds,
   glossaryPageIds: abrahamA2GoldConfig.glossaryPageIds,
   arabicOverrides: {
+    8: {
+      trusted: { word: 'يَثِقُ' },
+    },
     12: {
       planner: { word: 'الْمَاكِرِينَ' },
       die: { word: 'نَمُوتُ' },
