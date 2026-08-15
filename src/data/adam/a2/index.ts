@@ -1,45 +1,73 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
+import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
+import {
+  buildA2StudentGuideMetadata,
+  buildA2StudentGuideSections,
+  buildA2StudentGuideText,
+  buildA2TeacherGuideMetadata,
+  type A2GoldPageConfig,
+} from '../../a2GoldFactory';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
-import { sanitizeA2PlaceholderMedia } from '../../a2PlaceholderMedia';
-import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
-import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
-
-import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } from './ar/qualityFinalization';
-import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr, adamA2StudentGuideTextAr } from './ar/selfStudyGuide';
+import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { adamA2PagesQualityFinalized } from './en/qualityFinalization';
+import { adamA2PagesArQualityFinalized } from './ar/qualityFinalization';
 import { validateAdamA2HighlightContract } from './highlightValidation';
 
-validateAdamA2HighlightContract(adamA2PagesQualityFinalized, adamA2PagesArQualityFinalized);
-
-const adamGlossaryConfig = {
+const adamA2Config: A2GoldPageConfig = {
   storyIds: Array.from({ length: 10 }, (_, index) => index + 1),
-  glossaryPageIds: [14, 15] as [number, number],
+  knowledgeCheckPageId: 11,
+  reviewPageId: 13,
+  glossaryPageIds: [14, 15],
+  finalChallengePageId: 16,
 };
 
 const adamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
   applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en'),
-  adamGlossaryConfig,
+  { storyIds: adamA2Config.storyIds, glossaryPageIds: adamA2Config.glossaryPageIds },
   'en',
 );
 const adamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
   applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar'),
-  adamGlossaryConfig,
+  { storyIds: adamA2Config.storyIds, glossaryPageIds: adamA2Config.glossaryPageIds },
   'ar',
 );
+
+validateAdamA2HighlightContract(adamA2PagesLockedEn, adamA2PagesLockedAr);
+
+const adamA2Parallel = applyA2ParallelLearning({
+  englishPages: adamA2PagesLockedEn,
+  arabicPages: adamA2PagesLockedAr,
+  config: adamA2Config,
+});
+
+const adamA2TeacherGuideEn = buildA2ChapterTeacherGuide(adamA2Parallel.englishPages, adamA2Config.storyIds, 'en');
+const adamA2TeacherGuideAr = buildA2ChapterTeacherGuide(adamA2Parallel.arabicPages, adamA2Config.storyIds, 'ar');
+const adamA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(adamA2Parallel.englishPages, adamA2Config.storyIds, 'en');
+const adamA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(adamA2Parallel.arabicPages, adamA2Config.storyIds, 'ar');
+
+const adamA2TeacherGuideMetadataEn = buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en');
+const adamA2TeacherGuideMetadataAr = buildA2TeacherGuideMetadata('قصة النبي آدم', adamA2Config.storyIds.length, 'ar');
+const adamA2StudentGuideSectionsEn = buildA2StudentGuideSections('en');
+const adamA2StudentGuideSectionsAr = buildA2StudentGuideSections('ar');
+const adamA2StudentGuideMetadataEn = buildA2StudentGuideMetadata('Prophet Adam', 'en');
+const adamA2StudentGuideMetadataAr = buildA2StudentGuideMetadata('قصة النبي آدم', 'ar');
+const adamA2StudentGuideTextEn = buildA2StudentGuideText('Prophet Adam', 'en');
+const adamA2StudentGuideTextAr = buildA2StudentGuideText('قصة النبي آدم', 'ar');
 
 export const adamA2BookDataEn: BookData = {
   id: 'a2-prophets-en',
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: sanitizeA2PlaceholderMedia(adamA2PagesLockedEn),
-  teacherGuide: adamA2TeacherGuideQualityFinalized,
-  teacherGuideMetadata: adamA2TeacherGuideMetadata,
-  selfStudyGuide: adamA2SelfStudyGuide,
-  studentGuideSections: adamA2StudentGuideSections,
-  studentGuideText: adamA2StudentGuideText,
+  pages: adamA2Parallel.englishPages,
+  teacherGuide: adamA2TeacherGuideEn,
+  teacherGuideMetadata: adamA2TeacherGuideMetadataEn,
+  selfStudyGuide: adamA2SelfStudyGuideEn,
+  studentGuideSections: adamA2StudentGuideSectionsEn,
+  studentGuideMetadata: adamA2StudentGuideMetadataEn,
+  studentGuideText: adamA2StudentGuideTextEn,
 };
 
 export const adamA2BookDataAr: BookData = {
@@ -47,8 +75,8 @@ export const adamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'A2',
   baseFontSize: 14,
-  pages: adamA2PagesLockedAr,
-  teacherGuide: adamA2TeacherGuideArQualityFinalized,
+  pages: adamA2Parallel.arabicPages,
+  teacherGuide: adamA2TeacherGuideAr,
   teacherGuideMetadata: adamA2TeacherGuideMetadataAr,
   selfStudyGuide: adamA2SelfStudyGuideAr,
   studentGuideSections: adamA2StudentGuideSectionsAr,
