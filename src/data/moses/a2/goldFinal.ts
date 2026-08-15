@@ -54,8 +54,6 @@ const correctedBasePagesEn = removeVocabularyTargets(applyVocabularyOverrides(ba
     prepare: { word: 'prepared', definition: 'Got ready for something.' },
   },
 }), {
-  // English says “armpit”, while the locked Arabic prose says جَيْبِهِ (pocket/chest opening).
-  // It is therefore not a valid bilingual canonical learning target.
   12: ['armpit'],
 });
 
@@ -153,4 +151,15 @@ export const mosesA2HighlightTargets = standardized.targets;
 export const mosesA2PagesFinalEn = standardized.englishPages;
 export const mosesA2PagesFinalAr = standardized.arabicPages;
 
-export const mosesA2TeacherGuideFinalEn = buildA2TeacherGuide(abrahamA2PagesFinalEn as never, [] as never, 'en');
+export const mosesA2TeacherGuideFinalEn = buildA2TeacherGuide(mosesA2PagesFinalEn, mosesA2GoldConfig.storyIds, 'en');
+export const mosesA2TeacherGuideFinalAr = buildA2TeacherGuide(mosesA2PagesFinalAr, mosesA2GoldConfig.storyIds, 'ar');
+export const mosesA2SelfStudyGuideFinalEn = buildA2SelfStudyGuide(mosesA2PagesFinalEn, mosesA2GoldConfig.storyIds, 'en');
+export const mosesA2SelfStudyGuideFinalAr = buildA2SelfStudyGuide(mosesA2PagesFinalAr, mosesA2GoldConfig.storyIds, 'ar');
+export const mosesA2TeacherGuideMetadataFinalEn = buildA2TeacherGuideMetadata('Prophet Moses', mosesA2GoldConfig.storyIds.length, 'en');
+export const mosesA2TeacherGuideMetadataFinalAr = buildA2TeacherGuideMetadata('قصة النبي موسى', mosesA2GoldConfig.storyIds.length, 'ar');
+export const mosesA2StudentGuideSectionsFinalEn = buildA2StudentGuideSections('en');
+export const mosesA2StudentGuideSectionsFinalAr = buildA2StudentGuideSections('ar');
+export const mosesA2StudentGuideMetadataFinalEn = buildA2StudentGuideMetadata('Prophet Moses', 'en');
+export const mosesA2StudentGuideMetadataFinalAr = buildA2StudentGuideMetadata('قصة النبي موسى', 'ar');
+export const mosesA2StudentGuideTextFinalEn = buildA2StudentGuideText('Prophet Moses', 'en');
+export const mosesA2StudentGuideTextFinalAr = buildA2StudentGuideText('قصة النبي موسى', 'ar');
