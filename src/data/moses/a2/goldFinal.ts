@@ -1,4 +1,5 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
+import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
 import { mosesA2GoldConfig, mosesA2PagesGoldAr as basePagesAr, mosesA2PagesGoldEn as basePagesEn } from './gold';
 import { buildA2SelfStudyGuide, buildA2StudentGuideMetadata, buildA2StudentGuideSections, buildA2StudentGuideText, buildA2TeacherGuide, buildA2TeacherGuideMetadata } from '../../a2GoldFactory';
 
@@ -57,9 +58,6 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   5: {
     'حَافِظ': { word: 'الْحَافِظِينَ' },
   },
-  6: {
-    'خَطَأ': { word: 'الضَّعِيفُ', definition: 'شخص يحتاج إلى المساعدة والحماية.' },
-  },
   9: {
     'غَرِيب': { word: 'غَرِيبًا' },
     'عَمَل': { word: 'عَمَلًا' },
@@ -72,7 +70,7 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
     'عَرْش': { word: 'عَرْشِهِ' },
   },
   12: {
-    'مُعْجِزَة': { word: 'آيَاتِ', definition: 'علامات أعطاها الله لموسى لتظهر قدرته.' },
+    'مُعْجِزَة': { word: 'آيَاتِ', definition: 'عَلَامَاتٌ أَعْطَاهَا اللهُ لِمُوسَى لِتُظْهِرَ قُدْرَتَهُ.' },
   },
   13: {
     'مُتَكَبِّر': { word: 'مُتَكَبِّرًا' },
@@ -86,8 +84,45 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   },
 });
 
-export const mosesA2PagesFinalEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'en' });
-export const mosesA2PagesFinalAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'ar' });
+const vocabularyGoldEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'en' });
+const vocabularyGoldAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'ar' });
+
+export const mosesA2HighlightConfig: A2HighlightStandardConfig = {
+  storyKey: 'Moses',
+  storyIds: mosesA2GoldConfig.storyIds,
+  glossaryPageIds: mosesA2GoldConfig.glossaryPageIds,
+  arabicOverrides: {
+    6: {
+      upset: { word: 'بِحُزْنٍ شَدِيدٍ', definition: 'حَزِينٌ جِدًّا أَوْ قَلِقٌ لِأَنَّ شَيْئًا سَيِّئًا حَدَثَ.' },
+      forgive: { word: 'فَاغْفِرْ لِي', definition: 'أَنْ تَتَوَقَّفَ عَنِ الْغَضَبِ مِنْ شَخْصٍ بِسَبَبِ خَطَإٍ.' },
+      accidentally: { word: 'عَنْ غَيْرِ قَصْدٍ', definition: 'بِغَيْرِ تَخْطِيطٍ أَوْ قَصْدٍ.' },
+      'run away': { word: 'اُخْرُجْ مِنَ الْمَدِينَةِ', definition: 'أَنْ تَهْرُبَ أَوْ تُغَادِرَ بِسُرْعَةٍ.' },
+      dua: { word: 'فَدَعَا اللهَ', definition: 'دُعَاءٌ يَرْفَعُهُ الْإِنْسَانُ إِلَى اللهِ.' },
+    },
+    7: {
+      escaped: { word: 'هَرَبَ', definition: 'اِبْتَعَدَ عَنِ الْخَطَرِ.' },
+      guided: { word: 'هَدَاهُ', definition: 'أَرَاهُ الطَّرِيقَ الصَّحِيحَ.' },
+      well: { word: 'بِئْرًا', definition: 'حُفْرَةٌ عَمِيقَةٌ فِي الْأَرْضِ يُؤْخَذُ مِنْهَا الْمَاءُ.' },
+      penalty: { word: 'عُقُوبَةَ', definition: 'عِقَابٌ بِسَبَبِ فِعْلِ شَيْءٍ خَاطِئٍ.' },
+      thirsty: { word: 'عَطْشَانَ', definition: 'يَحْتَاجُ إِلَى الْمَاءِ وَيُرِيدُ أَنْ يَشْرَبَ.' },
+      Midian: { word: 'مَدْيَنَ', definition: 'أَرْضٌ قَدِيمَةٌ هَرَبَ إِلَيْهَا مُوسَى بَعْدَ أَنْ غَادَرَ مِصْرَ.' },
+      shepherds: { word: 'رُعَاةً', definition: 'أَشْخَاصٌ عَمَلُهُمْ رِعَايَةُ الْأَغْنَامِ.' },
+    },
+    8: {
+      sisters: { word: 'الْفَتَاتَيْنِ', definition: 'فَتَاتَانِ أَوِ امْرَأَتَانِ لَهُمَا الْوَالِدَانِ نَفْسُهُمَا.' },
+      turn: { word: 'دَوْرَنَا', definition: 'وَقْتٌ يَسْتَطِيعُ فِيهِ شَخْصٌ أَنْ يَفْعَلَ شَيْئًا بَعْدَ الِانْتِظَارِ.' },
+      early: { word: 'مُبَكِّرًا', definition: 'قَبْلَ الْوَقْتِ الْمُعْتَادِ.' },
+      help: { word: 'الْمُسَاعَدَةِ', definition: 'أَنْ تَجْعَلَ فِعْلَ شَيْءٍ أَسْهَلَ لِشَخْصٍ آخَرَ.' },
+      sheep: { word: 'غَنَمَهُمَا', definition: 'حَيَوَانَاتٌ ذَاتُ صُوفٍ تُرَبَّى لِلصُّوفِ أَوِ اللَّحْمِ.' },
+    },
+  },
+};
+
+const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, mosesA2HighlightConfig);
+
+export const mosesA2HighlightTargets = standardized.targets;
+export const mosesA2PagesFinalEn = standardized.englishPages;
+export const mosesA2PagesFinalAr = standardized.arabicPages;
 
 export const mosesA2TeacherGuideFinalEn = buildA2TeacherGuide(mosesA2PagesFinalEn, mosesA2GoldConfig.storyIds, 'en');
 export const mosesA2TeacherGuideFinalAr = buildA2TeacherGuide(mosesA2PagesFinalAr, mosesA2GoldConfig.storyIds, 'ar');
