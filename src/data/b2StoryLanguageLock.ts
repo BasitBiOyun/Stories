@@ -1,4 +1,5 @@
 import type { PageData } from '../types';
+import { highlightPhraseOccurs } from '../lib/highlightTextMatch';
 
 export type B2StoryLanguage = 'en' | 'ar';
 
@@ -88,17 +89,12 @@ const significantTokens = (text: string, language: B2StoryLanguage): string[] =>
   tokenize(text, language).filter(token => !isStopword(token, language) && !/^\d+$/.test(token))
 );
 
-const containsTokenSequence = (content: string, phrase: string, language: B2StoryLanguage): boolean => {
-  const contentTokens = significantTokens(content, language);
-  const phraseTokens = significantTokens(phrase, language);
-  if (!phraseTokens.length) return false;
-  if (phraseTokens.length === 1) return contentTokens.includes(phraseTokens[0]);
-
-  for (let start = 0; start <= contentTokens.length - phraseTokens.length; start += 1) {
-    if (phraseTokens.every((token, offset) => contentTokens[start + offset] === token)) return true;
-  }
-  return false;
-};
+// Highlight grounding must mirror StoryPage rather than use the older exact-token
+// matcher. This keeps correct inflected Arabic surfaces (prefixes/suffixes and
+// common morphology) from being discarded before the bilingual target lock runs.
+const containsTokenSequence = (content: string, phrase: string, language: B2StoryLanguage): boolean => (
+  highlightPhraseOccurs(content, phrase, language)
+);
 
 const titleIsGrounded = (content: string, title: string, language: B2StoryLanguage): boolean => {
   const contentSet = new Set(significantTokens(content, language));
