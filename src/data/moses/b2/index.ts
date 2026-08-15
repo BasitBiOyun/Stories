@@ -1,5 +1,7 @@
 import type { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyB2HighlightStandard } from '../../b2HighlightStandard';
+import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { mosesB2PagesGoldEn } from './goldLearning';
 import {
@@ -19,6 +21,7 @@ import {
   mosesB2StudentGuideTextFinalAr,
   mosesB2StudentGuideMetadataFinalAr,
 } from './goldGuideFinalAr';
+import { mosesB2ReviewedHighlightPairs } from './highlightPairs';
 
 /**
  * Chapter 4 canonical prose already uses the corrected wording
@@ -100,12 +103,29 @@ const mosesB2PagesLockedAr = applyHotspotSourceLock(mosesB2PagesBeforeHotspotSou
   level: 'B2',
 });
 
+const mosesB2HighlightStandard = applyB2HighlightStandard(mosesB2PagesLockedEn, mosesB2PagesLockedAr, {
+  storyKey: 'Moses',
+  storyIds: Array.from({ length: 24 }, (_, index) => index + 1),
+  glossaryPageIds: [27, 28],
+  vocabularyPageId: 26,
+  explicitTargets: resolveB2ReviewedPairs(
+    mosesB2PagesLockedEn,
+    mosesB2PagesLockedAr,
+    'Moses',
+    mosesB2ReviewedHighlightPairs,
+  ),
+});
+
+export const mosesB2HighlightTargets = mosesB2HighlightStandard.targets;
+const mosesB2PagesFinalEn = mosesB2HighlightStandard.englishPages;
+const mosesB2PagesFinalAr = mosesB2HighlightStandard.arabicPages;
+
 export const mosesB2BookDataEn: BookData = {
   id: 'moses-b2-en',
   title: 'Stories of the Prophets: Moses (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: mosesB2PagesLockedEn,
+  pages: mosesB2PagesFinalEn,
   teacherGuide: mosesB2TeacherGuideFinalEn,
   teacherGuideMetadata: mosesB2TeacherGuideMetadataFinalEn,
   selfStudyGuide: mosesB2SelfStudyGuideFinalEn,
@@ -119,7 +139,7 @@ export const mosesB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: mosesB2PagesLockedAr,
+  pages: mosesB2PagesFinalAr,
   teacherGuide: mosesB2TeacherGuideFinalAr,
   teacherGuideMetadata: mosesB2TeacherGuideMetadataFinalAr,
   selfStudyGuide: mosesB2SelfStudyGuideFinalAr,
