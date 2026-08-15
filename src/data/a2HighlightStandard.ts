@@ -134,13 +134,16 @@ export const applyA2HighlightStandard = (
     enVocabulary.forEach((entry, index) => {
       const key = normalizeHighlightText(entry.word, 'en');
       if (!key || seenEnglish.has(key)) return;
+      const explicit = overrideFor(config, chapterId, entry.word);
       const arEntry = arVocabulary[index];
-      if (!arEntry) {
+      if (!explicit && !arEntry) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} has no vocabulary pair for English target “${entry.word}”.`);
       }
-      const explicit = overrideFor(config, chapterId, entry.word);
-      const arWord = explicit?.word ?? arEntry.word;
-      const arDefinition = explicit?.definition ?? arEntry.definition;
+      const arWord = explicit?.word ?? arEntry!.word;
+      const arDefinition = explicit?.definition ?? arEntry?.definition;
+      if (!arDefinition?.trim()) {
+        fail(config.storyKey, `Arabic Chapter ${chapterId} target “${arWord}” has no learner definition for English target “${entry.word}”.`);
+      }
       chapterTargets.push({
         id: targetId(chapterId, entry.word),
         chapterId,
@@ -188,14 +191,12 @@ export const applyA2HighlightStandard = (
   const applyLanguage = (pages: PageData[], language: A2HighlightLanguage): PageData[] => {
     const storyIds = new Set(config.storyIds);
     const midpoint = Math.ceil(config.storyIds.length / 2);
-    const firstHalfIds = new Set(config.storyIds.slice(0, midpoint));
-    const secondHalfIds = new Set(config.storyIds.slice(midpoint));
     const firstGlossary = config.storyIds
-      .filter((id) => firstHalfIds.has(id))
+      .slice(0, midpoint)
       .flatMap((id) => targets[id] ?? [])
       .map((target) => ({ ...target[language] }));
     const secondGlossary = config.storyIds
-      .filter((id) => secondHalfIds.has(id))
+      .slice(midpoint)
       .flatMap((id) => targets[id] ?? [])
       .map((target) => ({ ...target[language] }));
 
