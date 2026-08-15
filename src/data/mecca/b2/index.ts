@@ -1,25 +1,32 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
+import { buildB2EvidenceGuides } from '../../b2GoldGuides';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   meccaB2PagesGoldEn,
-  meccaB2TeacherGuideGoldEn,
   meccaB2TeacherGuideMetadataGoldEn,
-  meccaB2SelfStudyGuideGoldEn,
   meccaB2StudentGuideSectionsGoldEn,
   meccaB2StudentGuideTextGoldEn,
   meccaB2StudentGuideMetadataGoldEn,
 } from './gold';
 import {
   meccaB2PagesGoldAr,
-  meccaB2TeacherGuideGoldAr,
   meccaB2TeacherGuideMetadataGoldAr,
-  meccaB2SelfStudyGuideGoldAr,
   meccaB2StudentGuideSectionsGoldAr,
   meccaB2StudentGuideTextGoldAr,
   meccaB2StudentGuideMetadataGoldAr,
 } from './goldAr';
+
+const meccaB2Config = {
+  level: 'B2' as const,
+  storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
+  knowledgeCheckPageId: 18,
+  reviewPageId: 19,
+  glossaryPageIds: [20, 21] as [number, number],
+  finalChallengePageId: 22,
+};
 
 const meccaB2SourceTitleOverridesEn = {
   7: { 'h7-2': 'social class division' },
@@ -50,23 +57,28 @@ const meccaB2PagesLockedAr = applyHotspotSourceLock(meccaB2PagesBeforeHotspotSou
 
 const meccaB2HighlightStandard = applyB2HighlightStandard(meccaB2PagesLockedEn, meccaB2PagesLockedAr, {
   storyKey: 'Mecca',
-  storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
-  glossaryPageIds: [20, 21],
+  storyIds: meccaB2Config.storyIds,
+  glossaryPageIds: meccaB2Config.glossaryPageIds,
 });
 
 export const meccaB2HighlightTargets = meccaB2HighlightStandard.targets;
-const meccaB2PagesFinalEn = meccaB2HighlightStandard.englishPages;
-const meccaB2PagesFinalAr = meccaB2HighlightStandard.arabicPages;
+const meccaB2Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: meccaB2HighlightStandard.englishPages,
+  arabicPages: meccaB2HighlightStandard.arabicPages,
+  config: meccaB2Config,
+});
+const meccaB2GuidesEn = buildB2EvidenceGuides({ effectivePages: meccaB2Parallel.englishPages, storyIds: meccaB2Config.storyIds, language: 'en' });
+const meccaB2GuidesAr = buildB2EvidenceGuides({ effectivePages: meccaB2Parallel.arabicPages, storyIds: meccaB2Config.storyIds, language: 'ar' });
 
 export const meccaB2BookDataEn: BookData = {
   id: 'mecca-b2-en',
   title: 'Stories of the Prophets: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: meccaB2PagesFinalEn,
-  teacherGuide: meccaB2TeacherGuideGoldEn,
+  pages: meccaB2Parallel.englishPages,
+  teacherGuide: meccaB2GuidesEn.teacherGuide,
   teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldEn,
-  selfStudyGuide: meccaB2SelfStudyGuideGoldEn,
+  selfStudyGuide: meccaB2GuidesEn.selfStudyGuide,
   studentGuideSections: meccaB2StudentGuideSectionsGoldEn,
   studentGuideText: meccaB2StudentGuideTextGoldEn,
   studentGuideMetadata: meccaB2StudentGuideMetadataGoldEn,
@@ -77,10 +89,10 @@ export const meccaB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: meccaB2PagesFinalAr,
-  teacherGuide: meccaB2TeacherGuideGoldAr,
+  pages: meccaB2Parallel.arabicPages,
+  teacherGuide: meccaB2GuidesAr.teacherGuide,
   teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldAr,
-  selfStudyGuide: meccaB2SelfStudyGuideGoldAr,
+  selfStudyGuide: meccaB2GuidesAr.selfStudyGuide,
   studentGuideSections: meccaB2StudentGuideSectionsGoldAr,
   studentGuideText: meccaB2StudentGuideTextGoldAr,
   studentGuideMetadata: meccaB2StudentGuideMetadataGoldAr,
