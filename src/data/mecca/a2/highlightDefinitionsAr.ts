@@ -1,15 +1,12 @@
 import type { A2ArabicDefinitionOverrides } from '../../a2ArabicDefinitionStandard';
 
 /**
- * The core Mecca A2 Arabic vocabulary definitions are already vocalized in the
- * source pages. These reviewed entries cover the extra reader-visible targets
- * that historically came from animatedWords so every canonical English target
- * has a matching vocalized Arabic tooltip definition.
+ * Reviewed definitions for Mecca A2 canonical highlights that do not inherit an
+ * exact vocalized definition from the Arabic vocabulary surface.
  */
 export const meccaA2HighlightDefinitionsAr: A2ArabicDefinitionOverrides = {
   1: {
-    Bilal: 'بِلَالُ بْنُ رَبَاحٍ، صَحَابِيٌّ شُجَاعٌ وَوَفِيٌّ، وَهُوَ أَوَّلُ مُؤَذِّنٍ فِي الْإِسْلَامِ.',
-    Muslim: 'شَخْصٌ يَتَّبِعُ دِينَ الْإِسْلَامِ وَيُؤْمِنُ بِاللهِ الْوَاحِدِ.',
+    free: 'شَخْصٌ لَيْسَ عَبْدًا وَلَا يَمْلِكُهُ أَحَدٌ وَلَهُ حُرِّيَّتُهُ.',
   },
   2: {
     Jahiliyyah: 'الْفَتْرَةُ الَّتِي كَانَتْ قَبْلَ الْإِسْلَامِ وَكَثُرَ فِيهَا الْجَهْلُ وَعِبَادَةُ الْأَصْنَامِ.',
@@ -38,6 +35,7 @@ export const meccaA2HighlightDefinitionsAr: A2ArabicDefinitionOverrides = {
     'free man': 'شَخْصٌ حُرٌّ لَا يَمْلِكُهُ أَحَدٌ وَلَهُ حُرِّيَّتُهُ.',
   },
   12: {
+    disrespect: 'أَنْ تُعَامِلَ شَخْصًا بِطَرِيقَةٍ سَيِّئَةٍ أَوْ مِنْ غَيْرِ احْتِرَامٍ.',
     prayer: 'عِبَادَةٌ يُؤَدِّيهَا الْمُسْلِمُ لِلهِ، وَخَاصَّةً الصَّلَاةُ.',
     'Farewell Sermon': 'خُطْبَةُ النَّبِيِّ مُحَمَّدٍ الْأَخِيرَةُ الَّتِي أَكَّدَ فِيهَا الْمُسَاوَاةَ بَيْنَ النَّاسِ.',
   },
