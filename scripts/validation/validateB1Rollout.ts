@@ -150,13 +150,9 @@ const validateCase = ({ label, canonical, book, config }: Case) => {
     vocabulary.forEach((entry) => {
       assert.ok(entry.word.trim(), `${label} chapter ${id}: empty vocabulary word.`);
       assert.ok(entry.definition.trim(), `${label} chapter ${id}: empty vocabulary definition.`);
-    });
-    vocabulary.forEach((entry) => {
       assert.ok(highlightPhraseOccurs(final.content, entry.word, language), `${label} chapter ${id}: vocabulary ${entry.word} is not grounded in the chapter.`);
     });
-    final.animatedWords?.forEach((word) => {
-      assert.ok(highlightPhraseOccurs(final.content, word, language), `${label} chapter ${id}: animated highlight ${word} is not grounded in the chapter.`);
-    });
+    assert.equal(final.animatedWords, undefined, `${label} chapter ${id}: legacy animatedWords must not remain at runtime.`);
   }
 
   const knowledge = findPage(book.pages, config.knowledgeCheckPageId, label);
@@ -185,15 +181,18 @@ const validateCase = ({ label, canonical, book, config }: Case) => {
     assert.equal(new Set(words).size, words.length, `${label}: Vocabulary in Context has duplicates.`);
   }
 
+  const midpoint = Math.ceil(config.storyIds.length / 2);
+  const glossaryStoryGroups = [config.storyIds.slice(0, midpoint), config.storyIds.slice(midpoint)];
   const glossaries = config.glossaryPageIds.map((id) => findPage(book.pages, id, label));
-  for (const glossary of glossaries) {
+  glossaries.forEach((glossary, index) => {
     const entries = glossary.vocabulary ?? [];
-    assert.ok(entries.length >= 18, `${label}: each Master Glossary part must contain at least 18 reviewed entries.`);
+    const expected = glossaryStoryGroups[index].flatMap((storyId) => (
+      findPage(book.pages, storyId, label).vocabulary ?? []
+    ));
+    assert.deepEqual(entries, expected, `${label}: ${glossary.title} must be derived exactly from final story highlights.`);
     const keys = entries.map((entry) => entry.word.toLowerCase().trim());
     assert.equal(new Set(keys).size, keys.length, `${label} ${glossary.title}: duplicate glossary entries found.`);
-  }
-  const glossaryCounts = glossaries.map((page) => page.vocabulary?.length ?? 0);
-  assert.ok(Math.abs(glossaryCounts[0] - glossaryCounts[1]) <= 6, `${label}: glossary sections are too unbalanced.`);
+  });
 
   assert.equal(book.teacherGuide.length, config.storyIds.length, `${label}: Teacher Guide must have one section per story chapter.`);
   assert.equal(book.selfStudyGuide.length, config.storyIds.length, `${label}: Self-Study Guide must have one section per story chapter.`);
@@ -220,5 +219,6 @@ console.log('- canonical story text/image/audio/timing and hotspot coordinates p
 console.log('- one chapter Quick Challenge per story chapter');
 console.log('- Knowledge Check = 8; Review Challenge = 8; Final Challenge = 10');
 console.log('- dedicated objective Final Challenge sets use stable chapter-grounded questions');
-console.log('- Master Glossary = two reviewed sections with at least 18 entries each');
+console.log('- Master Glossary = exact final story-highlight derivation in two sections');
+console.log('- runtime B1 story pages use vocabulary only; legacy animatedWords removed');
 console.log('- unsupported Teacher Guide worksheet/resource claims removed');
