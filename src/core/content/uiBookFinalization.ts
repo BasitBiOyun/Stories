@@ -6,10 +6,16 @@ import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { preparePairedLearningSources } from '../../data/learningSourcePairing';
 import { isLearningReferencePage, narrativeLearningPages } from '../../data/learningPageRoles';
 
-const inferRuntimeConfig = (book: BookData) => inferLearningSystemConfig(
-  narrativeLearningPages(book.pages),
-  book.level,
-);
+const inferRuntimeConfig = (book: BookData) => {
+  const pages = narrativeLearningPages(book.pages);
+  try {
+    return inferLearningSystemConfig(pages, book.level);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    const roles = pages.map(page => `${page.id}:${page.type}:${page.title}`).join(' | ');
+    throw new Error(`${message} Effective page roles: ${roles}`);
+  }
+};
 
 const addReferenceGuidance = (
   bundle: LearningGuideBundle,
