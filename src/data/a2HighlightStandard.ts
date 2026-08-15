@@ -107,6 +107,46 @@ const targetId = (chapterId: number, word: string): string => {
   return `ch${chapterId}-${slug}`;
 };
 
+const glossaryVocabulary = (
+  pages: PageData[],
+  storyIds: number[],
+): NonNullable<PageData['vocabulary']> => storyIds.flatMap((id) => (
+  pages.find((page) => page.type === 'story' && page.id === id)?.vocabulary ?? []
+)).map((entry) => ({ ...entry }));
+
+/**
+ * Rebuild glossary pages from the final reader-visible story highlights.
+ * Run this after source/surface locks so the glossary always mirrors the exact
+ * word forms and definitions that the learner can click in the story.
+ */
+export const syncA2GlossariesFromStoryHighlights = (
+  pages: PageData[],
+  config: Pick<A2HighlightStandardConfig, 'storyIds' | 'glossaryPageIds'>,
+  language: A2HighlightLanguage,
+): PageData[] => {
+  const midpoint = Math.ceil(config.storyIds.length / 2);
+  const glossaries = [
+    glossaryVocabulary(pages, config.storyIds.slice(0, midpoint)),
+    glossaryVocabulary(pages, config.storyIds.slice(midpoint)),
+  ];
+
+  return pages.map((page) => {
+    const glossaryIndex = config.glossaryPageIds.indexOf(page.id);
+    if (glossaryIndex === -1) return page;
+    return {
+      ...page,
+      content: language === 'ar'
+        ? glossaryIndex === 0
+          ? 'جَمِيعُ الْكَلِمَاتِ الْمُظَلَّلَةِ فِي النِّصْفِ الْأَوَّلِ مِنَ الْقِصَّةِ لِلْمُرَاجَعَةِ.'
+          : 'جَمِيعُ الْكَلِمَاتِ الْمُظَلَّلَةِ فِي النِّصْفِ الثَّانِي مِنَ الْقِصَّةِ لِلْمُرَاجَعَةِ.'
+        : glossaryIndex === 0
+          ? 'All highlighted words from the first half of the story for review.'
+          : 'All highlighted words from the second half of the story for review.',
+      vocabulary: glossaries[glossaryIndex],
+    };
+  });
+};
+
 /**
  * Consolidates the currently configured English A2 reader highlights into one
  * bilingual canonical target set. English is the only selection authority.
@@ -190,47 +230,15 @@ export const applyA2HighlightStandard = (
 
   const applyLanguage = (pages: PageData[], language: A2HighlightLanguage): PageData[] => {
     const storyIds = new Set(config.storyIds);
-    const midpoint = Math.ceil(config.storyIds.length / 2);
-    const firstGlossary = config.storyIds
-      .slice(0, midpoint)
-      .flatMap((id) => targets[id] ?? [])
-      .map((target) => ({ ...target[language] }));
-    const secondGlossary = config.storyIds
-      .slice(midpoint)
-      .flatMap((id) => targets[id] ?? [])
-      .map((target) => ({ ...target[language] }));
-
-    return pages.map((page) => {
-      if (page.type === 'story' && storyIds.has(page.id)) {
-        return {
-          ...page,
-          vocabulary: (targets[page.id] ?? []).map((target) => ({ ...target[language] })),
-          animatedWords: undefined,
-        };
-      }
-
-      if (page.id === config.glossaryPageIds[0]) {
-        return {
-          ...page,
-          content: language === 'ar'
-            ? 'جَمِيعُ الْكَلِمَاتِ الْمُظَلَّلَةِ فِي النِّصْفِ الْأَوَّلِ مِنَ الْقِصَّةِ لِلْمُرَاجَعَةِ.'
-            : 'All highlighted words from the first half of the story for review.',
-          vocabulary: firstGlossary,
-        };
-      }
-
-      if (page.id === config.glossaryPageIds[1]) {
-        return {
-          ...page,
-          content: language === 'ar'
-            ? 'جَمِيعُ الْكَلِمَاتِ الْمُظَلَّلَةِ فِي النِّصْفِ الثَّانِي مِنَ الْقِصَّةِ لِلْمُرَاجَعَةِ.'
-            : 'All highlighted words from the second half of the story for review.',
-          vocabulary: secondGlossary,
-        };
-      }
-
-      return page;
+    const standardized = pages.map((page) => {
+      if (page.type !== 'story' || !storyIds.has(page.id)) return page;
+      return {
+        ...page,
+        vocabulary: (targets[page.id] ?? []).map((target) => ({ ...target[language] })),
+        animatedWords: undefined,
+      };
     });
+    return syncA2GlossariesFromStoryHighlights(standardized, config, language);
   };
 
   return {
@@ -276,16 +284,34 @@ export const validateA2HighlightStandard = (
   }
 
   const midpoint = Math.ceil(config.storyIds.length / 2);
-  const expectedGlossaryCounts = [
-    config.storyIds.slice(0, midpoint).reduce((sum, id) => sum + (targets[id]?.length ?? 0), 0),
-    config.storyIds.slice(midpoint).reduce((sum, id) => sum + (targets[id]?.length ?? 0), 0),
+  const expectedGlossaries = [
+    glossaryVocabulary(englishPages, config.storyIds.slice(0, midpoint)),
+    glossaryVocabulary(englishPages, config.storyIds.slice(midpoint)),
+  ];
+  const expectedArabicGlossaries = [
+    glossaryVocabulary(arabicPages, config.storyIds.slice(0, midpoint)),
+    glossaryVocabulary(arabicPages, config.storyIds.slice(midpoint)),
   ];
 
   config.glossaryPageIds.forEach((pageId, index) => {
     const enGlossary = englishPages.find((page) => page.id === pageId)?.vocabulary ?? [];
     const arGlossary = arabicPages.find((page) => page.id === pageId)?.vocabulary ?? [];
-    if (enGlossary.length !== expectedGlossaryCounts[index] || arGlossary.length !== expectedGlossaryCounts[index]) {
+    const expectedEn = expectedGlossaries[index];
+    const expectedAr = expectedArabicGlossaries[index];
+    if (enGlossary.length !== expectedEn.length || arGlossary.length !== expectedAr.length) {
       fail(config.storyKey, `Glossary page ${pageId} is not synchronized with the canonical story highlights.`);
     }
+    expectedEn.forEach((entry, entryIndex) => {
+      const glossaryEntry = enGlossary[entryIndex];
+      if (!glossaryEntry || normalizeHighlightText(glossaryEntry.word, 'en') !== normalizeHighlightText(entry.word, 'en') || glossaryEntry.definition !== entry.definition) {
+        fail(config.storyKey, `English glossary page ${pageId} diverged from story highlight ${entry.word}.`);
+      }
+    });
+    expectedAr.forEach((entry, entryIndex) => {
+      const glossaryEntry = arGlossary[entryIndex];
+      if (!glossaryEntry || normalizeHighlightText(glossaryEntry.word, 'ar') !== normalizeHighlightText(entry.word, 'ar') || glossaryEntry.definition !== entry.definition) {
+        fail(config.storyKey, `Arabic glossary page ${pageId} diverged from a final story highlight.`);
+      }
+    });
   });
 };
