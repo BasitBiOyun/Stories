@@ -1,5 +1,5 @@
 import type { PageData } from '../types';
-import { highlightPhraseOccurs, normalizeHighlightText } from '../lib/highlightTextMatch';
+import { highlightPhraseMatches, highlightPhraseOccurs, normalizeHighlightText } from '../lib/highlightTextMatch';
 import { fallbackDefinitions, arabicAnimatedDefinitions } from './fallbackVocab';
 import { arabicHighlightDefinitions } from './arabicHighlightDefinitions';
 
@@ -114,6 +114,19 @@ const glossaryVocabulary = (
   pages.find((page) => page.type === 'story' && page.id === id)?.vocabulary ?? []
 )).map((entry) => ({ ...entry }));
 
+const isSameVisibleEnglishTarget = (surface: string, selected: string): boolean => {
+  const surfaceNormalized = normalizeHighlightText(surface, 'en');
+  const selectedNormalized = normalizeHighlightText(selected, 'en');
+  if (!surfaceNormalized || !selectedNormalized) return false;
+  if (surfaceNormalized === selectedNormalized) return true;
+
+  // StoryPage accepts short English inflections (idol/idols, camel/camels,
+  // rope/ropes, etc.). Do not turn an inflected spelling that was already
+  // covered by a visible vocabulary target into a second canonical target.
+  return highlightPhraseMatches(surface, selected, 'en')
+    || highlightPhraseMatches(selected, surface, 'en');
+};
+
 /**
  * Rebuild glossary pages from the final reader-visible story highlights.
  * Run this after source/surface locks so the glossary always mirrors the exact
@@ -160,7 +173,13 @@ export const applyA2HighlightStandard = (
   arabicPages: PageData[],
   config: A2HighlightStandardConfig,
 ): A2HighlightStandardResult => {
-  const seenEnglish = new Set<string>();
+  const selectedEnglishWords: string[] = [];
+  const alreadySelected = (word: string): boolean => (
+    selectedEnglishWords.some((selected) => isSameVisibleEnglishTarget(word, selected))
+  );
+  const rememberSelected = (word: string): void => {
+    selectedEnglishWords.push(word);
+  };
   const targets: Record<number, readonly A2CanonicalHighlightTarget[]> = {};
 
   for (const chapterId of config.storyIds) {
@@ -173,7 +192,7 @@ export const applyA2HighlightStandard = (
 
     enVocabulary.forEach((entry, index) => {
       const key = normalizeHighlightText(entry.word, 'en');
-      if (!key || seenEnglish.has(key)) return;
+      if (!key || alreadySelected(entry.word)) return;
       const explicit = overrideFor(config, chapterId, entry.word);
       const arEntry = arVocabulary[index];
       if (!explicit && !arEntry) {
@@ -190,7 +209,7 @@ export const applyA2HighlightStandard = (
         en: { ...entry },
         ar: { word: arWord, definition: arDefinition },
       });
-      seenEnglish.add(key);
+      rememberSelected(entry.word);
     });
 
     const enAnimated = enPage.animatedWords ?? [];
@@ -198,7 +217,7 @@ export const applyA2HighlightStandard = (
 
     enAnimated.forEach((word, index) => {
       const key = normalizeHighlightText(word, 'en');
-      if (!key || seenEnglish.has(key)) return;
+      if (!key || alreadySelected(word)) return;
 
       const explicit = overrideFor(config, chapterId, word);
       const arWord = explicit?.word ?? arAnimated[index];
@@ -222,7 +241,7 @@ export const applyA2HighlightStandard = (
         en: { word, definition: enDefinition },
         ar: { word: arWord, definition: arDefinition },
       });
-      seenEnglish.add(key);
+      rememberSelected(word);
     });
 
     targets[chapterId] = chapterTargets;
