@@ -152,7 +152,7 @@ const nearDuplicate = (left: string, right: string, language: Language): boolean
   if (leftTokens.size < 3 || rightTokens.size < 3) return false;
   const intersection = [...leftTokens].filter((token) => rightTokens.has(token)).length;
   const union = new Set([...leftTokens, ...rightTokens]).size;
-  return union > 0 && intersection / union >= 0.8;
+  return union > 0 && intersection / union >= 0.92;
 };
 
 const validateOptionSet = (
