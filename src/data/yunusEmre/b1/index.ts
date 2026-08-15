@@ -1,6 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { stripUnsupportedBoldMarkdown } from '../../stripUnsupportedMarkdown';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -35,17 +36,20 @@ const yunusB1HighlightStandard = applyB1HighlightStandard(yunusB1PagesLockedEn, 
 });
 
 export const yunusEmreB1HighlightTargets = yunusB1HighlightStandard.targets;
-const yunusB1PagesFinalEn = yunusB1HighlightStandard.englishPages;
-const yunusB1PagesFinalAr = yunusB1HighlightStandard.arabicPages;
-const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1PagesFinalEn, 'en');
-const yunusB1GuidesAr = buildB1EvidenceGuides(yunusB1PagesFinalAr, 'ar');
+const yunusB1Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: yunusB1HighlightStandard.englishPages,
+  arabicPages: yunusB1HighlightStandard.arabicPages,
+  config: { level: 'B1', ...yunusEmreB1GoldConfig },
+});
+const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1Parallel.englishPages, 'en');
+const yunusB1GuidesAr = buildB1EvidenceGuides(yunusB1Parallel.arabicPages, 'ar');
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
   title: 'Stories of the Prophets: Yunus Emre (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: yunusB1PagesFinalEn,
+  pages: yunusB1Parallel.englishPages,
   teacherGuide: yunusB1GuidesEn.teacherGuide,
   teacherGuideMetadata: yunusB1TeacherGuideMetadata,
   selfStudyGuide: yunusB1GuidesEn.selfStudyGuide,
@@ -59,7 +63,7 @@ export const yunusEmreB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: يونس إمره (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: yunusB1PagesFinalAr,
+  pages: yunusB1Parallel.arabicPages,
   teacherGuide: yunusB1GuidesAr.teacherGuide,
   teacherGuideMetadata: yunusEmreB1TeacherGuideMetadataAr,
   selfStudyGuide: yunusB1GuidesAr.selfStudyGuide,
