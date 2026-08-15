@@ -26,14 +26,9 @@ interface CanonicalBaseline {
   books: CanonicalBookRecord[];
 }
 
-type CanonicalStoryComparison = {
-  schemaVersion: 1;
-  books: Array<{
-    key: string;
-    language: 'en' | 'ar';
-    storyPages: Array<Omit<CanonicalPageRecord, 'audioUrl'>>;
-  }>;
-};
+type ComparablePage = Omit<CanonicalPageRecord, 'audioUrl'>;
+type ComparableBook = { key: string; language: 'en' | 'ar'; storyPages: ComparablePage[] };
+type CanonicalStoryComparison = { schemaVersion: 1; books: ComparableBook[] };
 
 const hash = (value: string): string => createHash('sha256').update(value, 'utf8').digest('hex');
 const defaultPath = resolve('scripts/validation/canonical-baseline.json');
@@ -50,26 +45,13 @@ const normalizeApprovedMechanicalFixesForBaseline = (
   content: string,
 ): string => {
   if (language !== 'en') return content;
-
-  if (storyId === 'yunusEmre' && level === 'B1' && pageId === 8) {
-    return content.replaceAll('Tawhid', '**Tawhid**');
-  }
-
+  if (storyId === 'yunusEmre' && level === 'B1' && pageId === 8) return content.replaceAll('Tawhid', '**Tawhid**');
   if (level !== 'A2') return content;
-
-  if (storyId === 'adam' && pageId === 7) {
-    return content.replaceAll('They also had lots of children.', 'They had also lots of children.');
-  }
-  if (storyId === 'adam' && pageId === 9) {
-    return content.replaceAll("his brother's dead body", 'his brother dead body');
-  }
+  if (storyId === 'adam' && pageId === 7) return content.replaceAll('They also had lots of children.', 'They had also lots of children.');
+  if (storyId === 'adam' && pageId === 9) return content.replaceAll("his brother's dead body", 'his brother dead body');
   if (storyId === 'yunusEmre' && pageId === 7) {
-    return content.replace(
-      'Yunus replied, “My teacher, I walked around the fields,',
-      'Yunus replied, “My teacher” “I walked around the fields,',
-    );
+    return content.replace('Yunus replied, “My teacher, I walked around the fields,', 'Yunus replied, “My teacher” “I walked around the fields,');
   }
-
   return content;
 };
 
@@ -79,19 +61,13 @@ const normalizeApprovedMechanicalTitleForBaseline = (
   language: 'en' | 'ar',
   pageId: number,
   title: string,
-): string => {
-  if (storyId === 'yunusEmre' && level === 'B1' && language === 'en' && pageId === 8) {
-    return title.replaceAll('Tawhid', '**Tawhid**');
-  }
-  return title;
-};
+): string => storyId === 'yunusEmre' && level === 'B1' && language === 'en' && pageId === 8
+  ? title.replaceAll('Tawhid', '**Tawhid**')
+  : title;
 
 const createBaseline = async (): Promise<CanonicalBaseline> => {
   const books: CanonicalBookRecord[] = [];
-
   for (const definition of bookRegistry) {
-    // Canonical validation deliberately reads the source/prepared book BEFORE
-    // Learning System/UI finalization. Runtime media has its own Storage audit.
     const pair = await definition.loadSource();
     for (const language of ['en', 'ar'] as const) {
       const book = pair[language];
@@ -103,40 +79,18 @@ const createBaseline = async (): Promise<CanonicalBaseline> => {
           .map(page => ({
             id: page.id,
             type: page.type,
-            title: normalizeApprovedMechanicalTitleForBaseline(
-              definition.storyId,
-              definition.level,
-              language,
-              page.id,
-              page.title,
-            ),
+            title: normalizeApprovedMechanicalTitleForBaseline(definition.storyId, definition.level, language, page.id, page.title),
             subtitle: page.subtitle ?? null,
-            contentHash: hash(normalizeApprovedMechanicalFixesForBaseline(
-              definition.storyId,
-              definition.level,
-              language,
-              page.id,
-              page.content,
-            )),
+            contentHash: hash(normalizeApprovedMechanicalFixesForBaseline(definition.storyId, definition.level, language, page.id, page.content)),
             audioUrl: page.audioUrl ?? null,
           })),
         audioStoragePaths: language === 'ar' ? definition.storage.arabicAudio?.paths ?? [] : [],
       });
     }
   }
-
-  return {
-    schemaVersion: 1,
-    generatedAt: new Date().toISOString(),
-    books,
-  };
+  return { schemaVersion: 1, generatedAt: new Date().toISOString(), books };
 };
 
-/**
- * Canonical comparison protects narrative chapter identity/order/title/subtitle
- * and prose only. Auxiliary References/Source pages, audio URLs and Storage
- * folder candidates are protected by their own page-role/media contracts.
- */
 const stableForComparison = (baseline: CanonicalBaseline): CanonicalStoryComparison => ({
   schemaVersion: baseline.schemaVersion,
   books: baseline.books.map(book => ({
@@ -148,24 +102,56 @@ const stableForComparison = (baseline: CanonicalBaseline): CanonicalStoryCompari
   })),
 });
 
+const reportFirstDifference = (approved: CanonicalStoryComparison, current: CanonicalStoryComparison) => {
+  if (approved.books.length !== current.books.length) {
+    console.error(`Canonical book count differs: approved=${approved.books.length}, current=${current.books.length}.`);
+    return;
+  }
+
+  for (let bookIndex = 0; bookIndex < approved.books.length; bookIndex += 1) {
+    const expectedBook = approved.books[bookIndex];
+    const actualBook = current.books[bookIndex];
+    if (expectedBook.key !== actualBook.key || expectedBook.language !== actualBook.language) {
+      console.error(`Canonical book identity/order differs at index ${bookIndex}: approved=${expectedBook.key}:${expectedBook.language}, current=${actualBook.key}:${actualBook.language}.`);
+      return;
+    }
+    if (expectedBook.storyPages.length !== actualBook.storyPages.length) {
+      console.error(`${expectedBook.key}:${expectedBook.language} narrative chapter count differs: approved=${expectedBook.storyPages.length}, current=${actualBook.storyPages.length}.`);
+      console.error(`Approved IDs: ${expectedBook.storyPages.map(page => page.id).join(',')}`);
+      console.error(`Current IDs: ${actualBook.storyPages.map(page => page.id).join(',')}`);
+      return;
+    }
+
+    for (let pageIndex = 0; pageIndex < expectedBook.storyPages.length; pageIndex += 1) {
+      const expectedPage = expectedBook.storyPages[pageIndex];
+      const actualPage = actualBook.storyPages[pageIndex];
+      for (const field of ['id', 'type', 'title', 'subtitle', 'contentHash'] as const) {
+        if (expectedPage[field] !== actualPage[field]) {
+          console.error(`${expectedBook.key}:${expectedBook.language} chapter slot ${pageIndex + 1} field ${field} differs.`);
+          console.error(`approved=${String(expectedPage[field])}`);
+          console.error(`current=${String(actualPage[field])}`);
+          return;
+        }
+      }
+    }
+  }
+};
+
 const main = async () => {
   const current = await createBaseline();
-
   if (writeMode || !existsSync(outputPath)) {
     writeFileSync(outputPath, `${JSON.stringify(current, null, 2)}\n`, 'utf8');
     console.log(`Canonical baseline written to ${outputPath}`);
-    if (!writeMode) {
-      console.warn('Baseline did not exist. Commit the generated file before enabling strict canonical validation.');
-    }
+    if (!writeMode) console.warn('Baseline did not exist. Commit the generated file before enabling strict canonical validation.');
     return;
   }
 
   const approved = JSON.parse(readFileSync(outputPath, 'utf8')) as CanonicalBaseline;
-  const currentComparable = JSON.stringify(stableForComparison(current), null, 2);
-  const approvedComparable = JSON.stringify(stableForComparison(approved), null, 2);
-
-  if (currentComparable !== approvedComparable) {
+  const currentStable = stableForComparison(current);
+  const approvedStable = stableForComparison(approved);
+  if (JSON.stringify(currentStable) !== JSON.stringify(approvedStable)) {
     console.error('Canonical narrative story prose or chapter identity/order changed.');
+    reportFirstDifference(approvedStable, currentStable);
     console.error('Technical learning/media refactors must not update the canonical story baseline.');
     process.exitCode = 1;
     return;
