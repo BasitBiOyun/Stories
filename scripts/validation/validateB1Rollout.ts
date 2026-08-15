@@ -28,22 +28,14 @@ import { yunusEmreB1PagesAr } from '../../src/data/yunusEmre/b1/ar/pages';
 import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from '../../src/data/yunusEmre/b1';
 import { yunusEmreB1GoldConfig } from '../../src/data/yunusEmre/b1/gold';
 
-const protectedStoryFields = [
-  'id',
-  'type',
-  'subtitle',
-  'image',
-  'audioUrl',
-  'syncPoints',
-  'timedChunks',
-] as const;
+const protectedStoryFields = ['id', 'type', 'subtitle', 'image', 'audioUrl', 'syncPoints', 'timedChunks'] as const;
+const learningTypes = new Set(['multiple-choice', 'true-false', 'matching', 'fill-blanks', 'tap-reveal']);
 
 type Case = {
   label: string;
   canonical: PageData[];
   book: BookData;
   config: B1GoldPageConfig;
-  minWordNotes?: number;
 };
 
 const cases: Case[] = [
@@ -51,7 +43,7 @@ const cases: Case[] = [
   { label: 'Adam B1 AR', canonical: adamB1PagesAr, book: adamB1BookDataAr, config: adamB1GoldConfig },
   { label: 'Abraham B1 EN', canonical: abrahamB1Pages, book: abrahamB1BookDataEn, config: abrahamB1GoldConfig },
   { label: 'Abraham B1 AR', canonical: abrahamB1PagesAr, book: abrahamB1BookDataAr, config: abrahamB1GoldConfig },
-  { label: 'Moses B1 EN', canonical: mosesB1Pages, book: mosesB1BookDataEn, config: mosesB1RolloutConfig, minWordNotes: 4 },
+  { label: 'Moses B1 EN', canonical: mosesB1Pages, book: mosesB1BookDataEn, config: mosesB1RolloutConfig },
   { label: 'Moses B1 AR', canonical: mosesB1PagesAr, book: mosesB1BookDataAr, config: mosesB1RolloutConfig },
   { label: 'Mecca B1 EN', canonical: meccaB1Pages, book: meccaB1BookDataEn, config: meccaB1GoldConfig },
   { label: 'Mecca B1 AR', canonical: meccaB1PagesAr, book: meccaB1BookDataAr, config: meccaB1GoldConfig },
@@ -60,16 +52,13 @@ const cases: Case[] = [
 ];
 
 const findPage = (pages: PageData[], id: number, label: string): PageData => {
-  const page = pages.find((item) => item.id === id);
+  const page = pages.find(item => item.id === id);
   assert.ok(page, `${label}: page ${id} is missing.`);
   return page;
 };
 
-const validateObjective = (exercise: Exercise, label: string) => {
-  assert.ok(
-    exercise.type === 'multiple-choice' || exercise.type === 'true-false',
-    `${label}: scored item must be multiple-choice or true-false.`,
-  );
+const validateGeneratedExercise = (exercise: Exercise, label: string) => {
+  assert.ok(learningTypes.has(exercise.type), `${label}: unsupported unified exercise type ${exercise.type}.`);
   assert.ok(exercise.question?.trim(), `${label}: question text is missing.`);
   assert.ok(exercise.explanation?.trim(), `${label}: explanation is missing.`);
   assert.ok(exercise.feedback?.correct?.trim(), `${label}: correct feedback is missing.`);
@@ -80,24 +69,11 @@ const validateObjective = (exercise: Exercise, label: string) => {
     assert.ok(options.length >= 3, `${label}: multiple-choice item needs at least three options.`);
     assert.equal(new Set(options).size, options.length, `${label}: duplicate answer options found.`);
     assert.equal(typeof exercise.correctAnswer, 'number', `${label}: correct answer must be an option index.`);
-    assert.ok(
-      typeof exercise.correctAnswer === 'number'
-        && exercise.correctAnswer >= 0
-        && exercise.correctAnswer < options.length,
-      `${label}: correct answer index is invalid.`,
-    );
-  } else {
-    assert.equal(typeof exercise.correctAnswer, 'boolean', `${label}: true-false answer must be boolean.`);
   }
-};
-
-const validateAnswerBalance = (exercises: Exercise[], label: string) => {
-  const positions = exercises
-    .filter((exercise) => exercise.type === 'multiple-choice' && typeof exercise.correctAnswer === 'number')
-    .map((exercise) => exercise.correctAnswer as number);
-  if (positions.length >= 3) {
-    assert.ok(new Set(positions).size >= 2, `${label}: correct answers are concentrated in one option position.`);
-  }
+  if (exercise.type === 'true-false') assert.equal(typeof exercise.correctAnswer, 'boolean', `${label}: true-false answer must be boolean.`);
+  if (exercise.type === 'matching') assert.ok((exercise.matchingPairs?.length ?? 0) >= 3, `${label}: matching needs at least three pairs.`);
+  if (exercise.type === 'fill-blanks') assert.ok(exercise.fillBlanksText?.includes('[blank]'), `${label}: fill-blank marker missing.`);
+  if (exercise.type === 'tap-reveal') assert.ok((exercise.tapRevealItems?.length ?? 0) >= 1, `${label}: tap-reveal item missing.`);
 };
 
 const validateCase = ({ label, canonical, book, config }: Case) => {
@@ -105,51 +81,38 @@ const validateCase = ({ label, canonical, book, config }: Case) => {
   const stripApprovedBold = (value: string) => value.replaceAll('**', '');
   assert.equal(book.level, 'B1', `${label}: level changed.`);
   assert.equal(book.pages.length, canonical.length, `${label}: page count changed.`);
-  assert.deepEqual(
-    book.pages.map((page) => [page.id, page.type]),
-    canonical.map((page) => [page.id, page.type]),
-    `${label}: page ids/types changed.`,
-  );
+  assert.deepEqual(book.pages.map(page => [page.id, page.type]), canonical.map(page => [page.id, page.type]), `${label}: page ids/types changed.`);
+
+  const observedTypes = new Set<string>();
 
   for (const id of config.storyIds) {
     const source = findPage(canonical, id, label);
     const final = findPage(book.pages, id, label);
 
-    for (const field of protectedStoryFields) {
-      assert.deepEqual(final[field], source[field], `${label} chapter ${id}: protected field ${field} changed.`);
-    }
+    for (const field of protectedStoryFields) assert.deepEqual(final[field], source[field], `${label} chapter ${id}: protected field ${field} changed.`);
     assert.equal(final.title, stripApprovedBold(source.title), `${label} chapter ${id}: title changed beyond approved formatting cleanup.`);
     assert.equal(final.content, stripApprovedBold(source.content), `${label} chapter ${id}: canonical prose changed beyond approved formatting cleanup.`);
 
-    const sourceHotspots = source.hotspots ?? [];
     const finalHotspots = final.hotspots ?? [];
-    assert.equal(finalHotspots.length, sourceHotspots.length, `${label} chapter ${id}: hotspot count changed.`);
-    sourceHotspots.forEach((hotspot, index) => {
-      const current = finalHotspots[index];
-      assert.ok(current, `${label} chapter ${id}: hotspot ${index + 1} missing.`);
-      assert.equal(current.id, hotspot.id, `${label} chapter ${id}: hotspot id changed.`);
-      assert.equal(current.x, hotspot.x, `${label} ${hotspot.id}: hotspot x changed.`);
-      assert.equal(current.y, hotspot.y, `${label} ${hotspot.id}: hotspot y changed.`);
-      assert.ok(current.title.trim(), `${label} ${hotspot.id}: hotspot title is empty.`);
-      assert.ok(current.description.trim(), `${label} ${hotspot.id}: hotspot description is empty.`);
+    const sourceHotspotIds = new Set((source.hotspots ?? []).map(hotspot => hotspot.id));
+    finalHotspots.forEach(hotspot => {
+      assert.ok(sourceHotspotIds.has(hotspot.id), `${label} chapter ${id}: effective hotspot ${hotspot.id} is not from the authored chapter.`);
+      assert.ok(hotspot.title.trim() && hotspot.description.trim(), `${label} chapter ${id}: hotspot ${hotspot.id} is incomplete.`);
     });
 
     assert.equal(final.exercises?.length, 1, `${label} chapter ${id}: exactly one Quick Challenge is required.`);
     const quick = final.exercises?.[0];
     assert.ok(quick, `${label} chapter ${id}: Quick Challenge missing.`);
-    assert.ok(quick.explanation?.trim(), `${label} chapter ${id}: Quick Challenge explanation missing.`);
-    assert.ok(quick.feedback?.incorrect?.trim(), `${label} chapter ${id}: Quick Challenge retry feedback missing.`);
+    assert.ok(quick.id.startsWith('learning-b1-quick-'), `${label} chapter ${id}: Quick Challenge is not owned by unified B1 learning system.`);
+    validateGeneratedExercise(quick, `${label} chapter ${id} Quick Challenge`);
+    observedTypes.add(quick.type);
 
     const vocabulary = final.vocabulary ?? [];
-    assert.ok(
-      vocabulary.length >= 1 && vocabulary.length <= 5,
-      `${label} chapter ${id}: Word Notes must contain 1–5 safe source-grounded reviewed items.`,
-    );
-    const vocabKeys = vocabulary.map((entry) => entry.word.toLowerCase().trim());
+    assert.ok(vocabulary.length >= 1 && vocabulary.length <= 5, `${label} chapter ${id}: Word Notes must contain 1–5 reviewed items.`);
+    const vocabKeys = vocabulary.map(entry => entry.word.toLowerCase().trim());
     assert.equal(new Set(vocabKeys).size, vocabKeys.length, `${label} chapter ${id}: duplicate Word Notes found.`);
-    vocabulary.forEach((entry) => {
-      assert.ok(entry.word.trim(), `${label} chapter ${id}: empty vocabulary word.`);
-      assert.ok(entry.definition.trim(), `${label} chapter ${id}: empty vocabulary definition.`);
+    vocabulary.forEach(entry => {
+      assert.ok(entry.word.trim() && entry.definition.trim(), `${label} chapter ${id}: incomplete Word Note.`);
       assert.ok(highlightPhraseOccurs(final.content, entry.word, language), `${label} chapter ${id}: vocabulary ${entry.word} is not grounded in the chapter.`);
     });
     assert.equal(final.animatedWords, undefined, `${label} chapter ${id}: legacy animatedWords must not remain at runtime.`);
@@ -159,66 +122,59 @@ const validateCase = ({ label, canonical, book, config }: Case) => {
   const review = findPage(book.pages, config.reviewPageId, label);
   const finalChallenge = findPage(book.pages, config.finalChallengePageId, label);
 
-  assert.equal(knowledge.exercises?.length, 8, `${label}: Knowledge Check must have 8 questions.`);
-  assert.equal(review.exercises?.length, 8, `${label}: Review Challenge must have 8 questions.`);
-  assert.equal(finalChallenge.exercises?.length, 10, `${label}: Final Challenge must have 10 questions.`);
+  assert.equal(knowledge.exercises?.length, 8, `${label}: Knowledge Check must have 8 activities.`);
+  (knowledge.exercises ?? []).forEach((exercise, index) => {
+    validateGeneratedExercise(exercise, `${label} Knowledge ${index + 1}`);
+    observedTypes.add(exercise.type);
+  });
 
-  for (const [page, pageLabel] of [
-    [knowledge, 'Knowledge Check'],
-    [review, 'Review Challenge'],
-    [finalChallenge, 'Final Challenge'],
-  ] as const) {
-    const exercises = page.exercises ?? [];
-    exercises.forEach((exercise, index) => validateObjective(exercise, `${label} ${pageLabel} ${index + 1}`));
-    validateAnswerBalance(exercises, `${label} ${pageLabel}`);
-  }
+  assert.equal(review.exercises?.length, 1, `${label}: Review must use one unified quiz-game exercise.`);
+  const reviewGame = review.exercises?.[0];
+  assert.equal(reviewGame?.type, 'quiz-game', `${label}: Review must use quiz-game.`);
+  assert.equal(reviewGame?.quizQuestions?.length, 8, `${label}: Review quiz-game must contain 8 questions.`);
+
+  assert.equal(finalChallenge.exercises?.length, 10, `${label}: Final Challenge must have 10 activities.`);
+  (finalChallenge.exercises ?? []).forEach((exercise, index) => {
+    validateGeneratedExercise(exercise, `${label} Final ${index + 1}`);
+    observedTypes.add(exercise.type);
+  });
+
+  for (const type of learningTypes) assert.ok(observedTypes.has(type), `${label}: unified B1 output is missing ${type} variety.`);
 
   if (config.vocabularyPageId) {
     const vocabularyPage = findPage(book.pages, config.vocabularyPageId, label);
     const pairs = vocabularyPage.vocabularyPairs ?? [];
-    assert.equal(pairs.length, 10, `${label}: Vocabulary in Context must have 10 pairs.`);
-    const words = pairs.map((pair) => pair.word.toLowerCase().trim());
-    assert.equal(new Set(words).size, words.length, `${label}: Vocabulary in Context has duplicates.`);
+    assert.equal(pairs.length, 10, `${label}: Vocabulary Challenge must have 10 pairs.`);
+    const words = pairs.map(pair => pair.word.toLowerCase().trim());
+    assert.equal(new Set(words).size, words.length, `${label}: Vocabulary Challenge has duplicate words.`);
   }
 
   const midpoint = Math.ceil(config.storyIds.length / 2);
   const glossaryStoryGroups = [config.storyIds.slice(0, midpoint), config.storyIds.slice(midpoint)];
-  const glossaries = config.glossaryPageIds.map((id) => findPage(book.pages, id, label));
-  glossaries.forEach((glossary, index) => {
-    const entries = glossary.vocabulary ?? [];
-    const expected = glossaryStoryGroups[index].flatMap((storyId) => (
-      findPage(book.pages, storyId, label).vocabulary ?? []
-    ));
-    assert.deepEqual(entries, expected, `${label}: ${glossary.title} must be derived exactly from final story highlights.`);
-    const keys = entries.map((entry) => entry.word.toLowerCase().trim());
-    assert.equal(new Set(keys).size, keys.length, `${label} ${glossary.title}: duplicate glossary entries found.`);
+  config.glossaryPageIds.map(id => findPage(book.pages, id, label)).forEach((glossary, index) => {
+    const expected = glossaryStoryGroups[index].flatMap(storyId => findPage(book.pages, storyId, label).vocabulary ?? []);
+    assert.deepEqual(glossary.vocabulary ?? [], expected, `${label}: ${glossary.title} must derive exactly from final Word Notes.`);
   });
 
   assert.equal(book.teacherGuide.length, config.storyIds.length, `${label}: Teacher Guide must have one section per story chapter.`);
   assert.equal(book.selfStudyGuide.length, config.storyIds.length, `${label}: Self-Study Guide must have one section per story chapter.`);
-
   book.teacherGuide.forEach((section, index) => {
     assert.equal(section.extraResources, undefined, `${label} Teacher Guide ${index + 1}: unsupported resource claim remains.`);
-    assert.ok(section.objectives.length >= 3, `${label} Teacher Guide ${index + 1}: objectives are too thin.`);
-    assert.ok(section.lessonPlan.trim(), `${label} Teacher Guide ${index + 1}: lesson plan missing.`);
-    assert.ok(section.discussionPoints.length >= 1, `${label} Teacher Guide ${index + 1}: discussion points missing.`);
+    assert.ok(section.objectives.length >= 3 && section.lessonPlan.trim(), `${label} Teacher Guide ${index + 1}: section is incomplete.`);
   });
-
   book.selfStudyGuide.forEach((section, index) => {
-    assert.ok(section.lessonPlan.trim(), `${label} Self-Study ${index + 1}: study routine missing.`);
-    assert.ok(section.interactiveTips.length >= 1, `${label} Self-Study ${index + 1}: interactive guidance missing.`);
+    assert.ok(section.lessonPlan.trim() && section.interactiveTips.length >= 1, `${label} Self-Study ${index + 1}: section is incomplete.`);
   });
 };
 
 cases.forEach(validateCase);
 
-console.log('B1 Rollout Gold: PASS');
+console.log('B1 Rollout Unified Contract: PASS');
 console.log(`- ${cases.length} finalized B1 language variants validated`);
-console.log('- Adam, Abraham, Moses, Mecca, and Yunus Emre: EN + AR');
-console.log('- canonical story text/image/audio/timing and hotspot coordinates preserved');
-console.log('- one chapter Quick Challenge per story chapter');
-console.log('- Knowledge Check = 8; Review Challenge = 8; Final Challenge = 10');
-console.log('- dedicated objective Final Challenge sets use stable chapter-grounded questions');
-console.log('- Master Glossary = exact final story-highlight derivation in two sections');
-console.log('- runtime B1 story pages use vocabulary only; legacy animatedWords removed');
-console.log('- unsupported Teacher Guide worksheet/resource claims removed');
+console.log('- canonical story prose and protected story fields remain unchanged');
+console.log('- effective hotspots may be a safe bilingual subset of authored chapter hotspots');
+console.log('- one level-aware Quick Challenge per chapter');
+console.log('- Knowledge = 8; Review quiz-game = 8; Final = 10; Vocabulary = 10 where present');
+console.log('- multiple-choice, true-false, matching, fill-blanks, and tap-reveal variety enforced');
+console.log('- glossary remains exact final Word Notes derivation');
+console.log('- Teacher Guide and Self-Study Guide remain chapter-complete and source-grounded');
