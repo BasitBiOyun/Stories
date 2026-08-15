@@ -3,7 +3,7 @@ import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { buildB2EvidenceGuides } from '../../b2GoldGuides';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   adamB2PagesGoldEn,
@@ -100,7 +100,7 @@ const adamB2HighlightStandard = applyB2HighlightStandard(adamB2PagesLockedEn, ad
 });
 
 export const adamB2HighlightTargets = adamB2HighlightStandard.targets;
-const adamB2Parallel = applyValidatedAdvancedParallelLearning({
+const adamB2Parallel = applySafeAdvancedParallelLearning({
   englishPages: adamB2HighlightStandard.englishPages,
   arabicPages: adamB2HighlightStandard.arabicPages,
   config: adamB2Config,
