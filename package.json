@@ -20,6 +20,7 @@
     "validate:guides": "tsx scripts/validation/validateGuides.ts",
     "validate:story-language-lock": "tsx scripts/validation/validateStoryLanguageLock.ts",
     "validate:learning-system": "tsx scripts/validation/validateUnifiedLearningSystem.ts",
+    "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
     "validate:a2-highlight-aggregate": "tsx scripts/validation/validateA2HighlightAggregate.ts",
     "validate:b1-highlight-aggregate": "tsx scripts/validation/validateB1HighlightAggregate.ts",
     "validate:b2-highlight-aggregate": "tsx scripts/validation/validateB2HighlightAggregate.ts",
