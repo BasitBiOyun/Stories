@@ -193,8 +193,8 @@ export const adamB1ExplicitHighlightTargets: Record<number, readonly B1ExplicitH
       ar: { word: 'غرابًا', definition: 'طَائِرٌ أَسْوَدُ كَبِيرٌ.' },
     },
     {
-      en: { word: 'regret', definition: 'A feeling of sadness about something wrong that happened.' },
-      ar: { word: 'بالندم', definition: 'شُعُورٌ بِالْحُزْنِ عَلَى شَيْءٍ خَاطِئٍ حَدَثَ.' },
+      en: { word: 'digging', definition: 'Making a hole in the ground by moving earth away.' },
+      ar: { word: 'يحفر', definition: 'يَصْنَعُ حُفْرَةً فِي الْأَرْضِ بِإِزَاحَةِ التُّرَابِ.' },
     },
     {
       en: { word: 'anger', definition: 'A strong feeling of being upset or mad.' },
