@@ -33,4 +33,22 @@ export const abrahamB1ExplicitHighlightTargets: Record<number, readonly B1Explic
       ar: { word: 'أدرك', definition: 'فَهِمَ شَيْئًا أَوْ أَدْرَكَهُ بِوُضُوحٍ.' },
     },
   ],
+  5: [
+    {
+      en: { word: 'furious', definition: 'Extremely angry.' },
+      ar: { word: 'فغَضِب', definition: 'شَعَرَ بِغَضَبٍ شَدِيدٍ جِدًّا.' },
+    },
+    {
+      en: { word: 'reconsider', definition: 'To think again about an idea, decision, or belief.' },
+      ar: { word: 'يُعيدوا النظر', definition: 'أَنْ يُفَكِّرُوا مَرَّةً أُخْرَى فِي فِكْرَةٍ أَوْ قَرَارٍ أَوْ مُعْتَقَدٍ.' },
+    },
+    {
+      en: { word: 'harm', definition: 'To hurt or damage someone or something.' },
+      ar: { word: 'ضرركم', definition: 'أَنْ يُلْحِقَ شَخْصٌ أَوْ شَيْءٌ الْأَذَى أَوِ الضَّرَرَ بِغَيْرِهِ.' },
+    },
+    {
+      en: { word: 'ignored', definition: 'Did not pay attention to someone or something.' },
+      ar: { word: 'تَجاهَلوه', definition: 'لَمْ يُعِيرُوهُ اهْتِمَامًا وَلَمْ يَسْتَجِيبُوا لَهُ.' },
+    },
+  ],
 };
