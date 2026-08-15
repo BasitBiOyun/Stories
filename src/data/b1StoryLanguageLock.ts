@@ -1,4 +1,5 @@
 import type { PageData } from '../types';
+import { highlightPhraseOccurs } from '../lib/highlightTextMatch';
 
 export type B1StoryLanguage = 'en' | 'ar';
 
@@ -200,8 +201,11 @@ const applyHighlightGrounding = (
   blocked: Set<string>,
   maxUniqueHighlights: number,
 ): PageData => {
+  // Use the exact same morphology-aware occurrence contract as StoryPage.
+  // This prevents valid B1 surfaces such as Arabic clitic/pronoun forms or
+  // English inflections from being removed before the canonical bilingual pass.
   const vocabulary = (page.vocabulary ?? []).filter(entry => (
-    containsTokenSequence(page.content, entry.word, language)
+    highlightPhraseOccurs(page.content, entry.word, language)
     && !blocked.has(normalizeText(entry.word, language))
   ));
 
@@ -216,7 +220,7 @@ const applyHighlightGrounding = (
   const animatedWords = (page.animatedWords ?? []).filter(word => {
     const key = normalizeText(word, language);
     if (!key || seen.has(key) || seen.size >= maxUniqueHighlights) return false;
-    if (blocked.has(key) || !containsTokenSequence(page.content, word, language)) return false;
+    if (blocked.has(key) || !highlightPhraseOccurs(page.content, word, language)) return false;
     seen.add(key);
     return true;
   });
