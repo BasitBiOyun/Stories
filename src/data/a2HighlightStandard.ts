@@ -30,9 +30,8 @@ export interface A2HighlightStandardConfig {
   glossaryPageIds: [number, number];
   arabicOverrides?: A2ArabicHighlightOverrides;
   /**
-   * Gold A2 books should set this after migration. It forbids the legacy
-   * position-based EN[index] -> AR[index] fallback and requires every selected
-   * English learning target to declare its exact Arabic story surface.
+   * Explicit opt-out/in for positional fallback. Once a book has an Arabic
+   * mapping table, strict explicit pairing is the default.
    */
   requireExplicitArabicTargets?: boolean;
 }
@@ -132,15 +131,9 @@ const isSameVisibleEnglishTarget = (surface: string, selected: string): boolean 
   const selectedNormalized = normalizeHighlightText(selected, 'en');
   if (!surfaceNormalized || !selectedNormalized) return false;
   if (surfaceNormalized === selectedNormalized) return true;
-
   return highlightPhraseMatches(surface, selected, 'en');
 };
 
-/**
- * Rebuild glossary pages from the final reader-visible story highlights.
- * Run this after source/surface locks so the glossary always mirrors the exact
- * word forms and definitions that the learner can click in the story.
- */
 export const syncA2GlossariesFromStoryHighlights = (
   pages: PageData[],
   config: Pick<A2HighlightStandardConfig, 'storyIds' | 'glossaryPageIds'>,
@@ -169,14 +162,6 @@ export const syncA2GlossariesFromStoryHighlights = (
   });
 };
 
-/**
- * Consolidates the currently configured English A2 reader highlights into one
- * bilingual canonical target set. English is the only selection authority.
- * Arabic contributes only the same target's surface form and learner definition.
- *
- * Legacy page.vocabulary / page.animatedWords are treated only as migration input.
- * The returned story pages contain one runtime source: page.vocabulary.
- */
 export const applyA2HighlightStandard = (
   englishPages: PageData[],
   arabicPages: PageData[],
@@ -184,6 +169,7 @@ export const applyA2HighlightStandard = (
 ): A2HighlightStandardResult => {
   const seenEnglishKeys = new Set<string>();
   const targets: Record<number, readonly A2CanonicalHighlightTarget[]> = {};
+  const requiresExplicitArabicTargets = config.requireExplicitArabicTargets ?? Boolean(config.arabicOverrides);
 
   for (const chapterId of config.storyIds) {
     const enPage = storyPage(englishPages, chapterId, config.storyKey, 'en');
@@ -207,7 +193,7 @@ export const applyA2HighlightStandard = (
       if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(entry.word)) return;
 
       const explicit = overrideFor(config, chapterId, entry.word);
-      if (config.requireExplicitArabicTargets && !explicit) {
+      if (requiresExplicitArabicTargets && !explicit) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} needs an explicit pair for English target “${entry.word}”.`);
       }
 
@@ -239,7 +225,7 @@ export const applyA2HighlightStandard = (
       if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(word)) return;
 
       const explicit = overrideFor(config, chapterId, word);
-      if (config.requireExplicitArabicTargets && !explicit) {
+      if (requiresExplicitArabicTargets && !explicit) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} needs an explicit pair for English highlight “${word}”.`);
       }
 
