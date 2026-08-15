@@ -2,26 +2,32 @@ import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
+import { buildB2EvidenceGuides } from '../../b2GoldGuides';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   abrahamB2PagesGoldEn,
-  abrahamB2TeacherGuideGoldEn,
   abrahamB2TeacherGuideMetadataGoldEn,
   abrahamB2StudentGuideMetadataGoldEn,
   abrahamB2StudentGuideSectionsGoldEn,
   abrahamB2StudentGuideTextGoldEn,
-  abrahamB2SelfStudyGuideGoldEn,
 } from './gold';
 import {
   abrahamB2PagesGoldAr,
-  abrahamB2TeacherGuideGoldAr,
   abrahamB2TeacherGuideMetadataGoldAr,
   abrahamB2StudentGuideMetadataGoldAr,
   abrahamB2StudentGuideSectionsGoldAr,
   abrahamB2StudentGuideTextGoldAr,
-  abrahamB2SelfStudyGuideGoldAr,
 } from './goldAr';
 import { abrahamB2ReviewedHighlightPairs } from './highlightPairs';
+
+const abrahamB2Config = {
+  level: 'B2' as const,
+  storyIds: Array.from({ length: 35 }, (_, index) => index + 1),
+  reviewPageId: 37,
+  glossaryPageIds: [38, 39] as [number, number],
+  finalChallengePageId: 40,
+};
 
 const abrahamB2SourceTitleOverridesEn = {
   9: { 'b2-hs-9-2': 'Creator’s command' },
@@ -57,8 +63,8 @@ const abrahamB2PagesLockedAr = applyHotspotSourceLock(abrahamB2PagesBeforeHotspo
 
 const abrahamB2HighlightStandard = applyB2HighlightStandard(abrahamB2PagesLockedEn, abrahamB2PagesLockedAr, {
   storyKey: 'Abraham',
-  storyIds: Array.from({ length: 35 }, (_, index) => index + 1),
-  glossaryPageIds: [38, 39],
+  storyIds: abrahamB2Config.storyIds,
+  glossaryPageIds: abrahamB2Config.glossaryPageIds,
   explicitTargets: resolveB2ReviewedPairs(
     abrahamB2PagesLockedEn,
     abrahamB2PagesLockedAr,
@@ -68,20 +74,25 @@ const abrahamB2HighlightStandard = applyB2HighlightStandard(abrahamB2PagesLocked
 });
 
 export const abrahamB2HighlightTargets = abrahamB2HighlightStandard.targets;
-const abrahamB2PagesFinalEn = abrahamB2HighlightStandard.englishPages;
-const abrahamB2PagesFinalAr = abrahamB2HighlightStandard.arabicPages;
+const abrahamB2Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: abrahamB2HighlightStandard.englishPages,
+  arabicPages: abrahamB2HighlightStandard.arabicPages,
+  config: abrahamB2Config,
+});
+const abrahamB2GuidesEn = buildB2EvidenceGuides({ effectivePages: abrahamB2Parallel.englishPages, storyIds: abrahamB2Config.storyIds, language: 'en' });
+const abrahamB2GuidesAr = buildB2EvidenceGuides({ effectivePages: abrahamB2Parallel.arabicPages, storyIds: abrahamB2Config.storyIds, language: 'ar' });
 
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: abrahamB2PagesFinalEn,
-  teacherGuide: abrahamB2TeacherGuideGoldEn,
+  pages: abrahamB2Parallel.englishPages,
+  teacherGuide: abrahamB2GuidesEn.teacherGuide,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldEn,
   studentGuideMetadata: abrahamB2StudentGuideMetadataGoldEn,
   studentGuideSections: abrahamB2StudentGuideSectionsGoldEn,
-  selfStudyGuide: abrahamB2SelfStudyGuideGoldEn,
+  selfStudyGuide: abrahamB2GuidesEn.selfStudyGuide,
   studentGuideText: abrahamB2StudentGuideTextGoldEn
 };
 
@@ -90,11 +101,11 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم (ع)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesFinalAr,
-  teacherGuide: abrahamB2TeacherGuideGoldAr,
+  pages: abrahamB2Parallel.arabicPages,
+  teacherGuide: abrahamB2GuidesAr.teacherGuide,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldAr,
   studentGuideMetadata: abrahamB2StudentGuideMetadataGoldAr,
   studentGuideSections: abrahamB2StudentGuideSectionsGoldAr,
-  selfStudyGuide: abrahamB2SelfStudyGuideGoldAr,
+  selfStudyGuide: abrahamB2GuidesAr.selfStudyGuide,
   studentGuideText: abrahamB2StudentGuideTextGoldAr
 };
