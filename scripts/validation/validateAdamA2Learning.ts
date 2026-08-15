@@ -11,10 +11,10 @@ import { adamA2PagesArForLearning } from '../../src/data/adam/a2/ar/learningMate
 import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } from '../../src/data/adam/a2/ar/qualityFinalization';
 import { adamA2SelfStudyGuideAr } from '../../src/data/adam/a2/ar/selfStudyGuide';
 import { adamA2HotspotsGoldAr, adamA2HotspotsGoldEn } from '../../src/data/adam/a2/hotspotsGold';
+import { getAdamA2ChapterHighlights } from '../../src/data/adam/a2/highlights';
 
 const protectedStoryFields = [
-  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl',
-  'animatedWords', 'syncPoints',
+  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl', 'syncPoints',
 ] as const;
 
 const applyApprovedAdamMechanicalFixes = (value: string, pageId: number, language: 'en' | 'ar'): string => {
@@ -77,6 +77,25 @@ const validateLanguage = ({
       assert.deepEqual(finalized[field], canonical[field], `${label}: final quality layer changed protected field ${field} on page ${id}.`);
     }
 
+    // animatedWords belong to the legacy source layer only. The learning overlay
+    // must preserve that source metadata, while the finalized runtime layer must
+    // deliberately replace it with the canonical bilingual vocabulary contract.
+    assert.deepEqual(
+      learning.animatedWords,
+      canonical.animatedWords,
+      `${label}: learning overlay changed legacy animatedWords on page ${id}.`,
+    );
+    assert.equal(
+      finalized.animatedWords,
+      undefined,
+      `${label}: finalized page ${id} must not expose legacy animatedWords.`,
+    );
+    assert.deepEqual(
+      finalized.vocabulary,
+      getAdamA2ChapterHighlights(id, language),
+      `${label}: finalized page ${id} does not use the canonical Adam A2 highlight contract.`,
+    );
+
     assert.equal(learning.content, canonical.content, `${label}: learning overlay changed canonical content on page ${id}.`);
     assert.deepEqual(learning.timedChunks, canonical.timedChunks, `${label}: learning overlay changed timed chunks on page ${id}.`);
     assert.equal(
@@ -86,7 +105,7 @@ const validateLanguage = ({
     );
     assert.deepEqual(
       finalized.timedChunks,
-      canonical.timedChunks?.map(chunk => ({
+      canonical.timedChunks?.map((chunk) => ({
         ...chunk,
         text: applyApprovedAdamMechanicalFixes(chunk.text, id, language),
       })),
@@ -152,10 +171,22 @@ const validateLanguage = ({
     `${label}: Final Challenge questions must be objective multiple-choice or true-false items.`,
   );
 
+  // Glossaries are no longer a fixed 12-word sample. They are a deterministic
+  // mirror of every final canonical story highlight, split Chapters 1–5 / 6–10.
   const glossaryPart1 = finalizedPages.find((page) => page.id === 14);
   const glossaryPart2 = finalizedPages.find((page) => page.id === 15);
-  assert.equal(glossaryPart1?.vocabulary?.length, 12, `${label}: Master Glossary Part 1 must contain 12 selected words.`);
-  assert.equal(glossaryPart2?.vocabulary?.length, 12, `${label}: Master Glossary Part 2 must contain 12 selected words.`);
+  const expectedGlossaryPart1 = [1, 2, 3, 4, 5].flatMap((id) => getAdamA2ChapterHighlights(id, language));
+  const expectedGlossaryPart2 = [6, 7, 8, 9, 10].flatMap((id) => getAdamA2ChapterHighlights(id, language));
+  assert.deepEqual(
+    glossaryPart1?.vocabulary,
+    expectedGlossaryPart1,
+    `${label}: Master Glossary Part 1 must mirror Chapters 1–5 canonical highlights.`,
+  );
+  assert.deepEqual(
+    glossaryPart2?.vocabulary,
+    expectedGlossaryPart2,
+    `${label}: Master Glossary Part 2 must mirror Chapters 6–10 canonical highlights.`,
+  );
   const secondHalfGlossary = new Set(glossaryPart2?.vocabulary?.map((entry) => normalized(entry.word)) ?? []);
   for (const requiredWord of requiredLateGlossaryWords) {
     assert.ok(secondHalfGlossary.has(normalized(requiredWord)), `${label}: Master Glossary Part 2 must include ${requiredWord}.`);
@@ -204,6 +235,7 @@ for (let id = 1; id <= 10; id += 1) {
   const ar = adamA2PagesArQualityFinalized.find((page) => page.id === id);
   assert.equal(en?.exercises?.length, ar?.exercises?.length, `EN–AR parity: chapter ${id} Quick Challenge count differs.`);
   assert.equal(en?.hotspots?.length, ar?.hotspots?.length, `EN–AR parity: chapter ${id} hotspot count differs.`);
+  assert.equal(en?.vocabulary?.length, ar?.vocabulary?.length, `EN–AR parity: chapter ${id} canonical highlight count differs.`);
 }
 assert.equal(
   adamA2PagesQualityFinalized.find((page) => page.id === 11)?.exercises?.length,
@@ -223,6 +255,8 @@ assert.equal(
 
 console.log('Adam A2 English + Arabic finalized learning-material contract: PASS');
 console.log('- canonical story/chapter/image/audio/sync fields preserved in both languages');
+console.log('- legacy animatedWords preserved only in source/learning overlay and removed from final runtime');
+console.log('- final story vocabulary exactly matches the canonical bilingual highlight contract');
 console.log('- only the approved Adam A2 mechanical prose/timing corrections are permitted');
 console.log('- every hotspot reviewed; ids and coordinates preserved');
 console.log('- 10 chapter Quick Challenges per language');
@@ -230,7 +264,7 @@ console.log('- 8-question Knowledge Check per language');
 console.log('- 6-pair Vocabulary Challenge per language');
 console.log('- 8-question Review Challenge per language');
 console.log('- 10-question Final Challenge per language');
-console.log('- reviewed A2 vocabulary and two-part Master Glossary per language');
+console.log('- two-part Master Glossary mirrors all canonical story highlights per language');
 console.log('- 10 chapter-aligned Teacher Guide sections per language');
 console.log('- 10 chapter-aligned Self-Study Guide sections per language');
-console.log('- EN–AR structure parity enforced without requiring literal translation');
+console.log('- EN–AR structure/highlight parity enforced without requiring literal translation');
