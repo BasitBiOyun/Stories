@@ -1,13 +1,13 @@
-import type { BookData, PageData } from '../../src/types';
+import type { BookData } from '../../src/types';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
 import { getLearningLevelPolicy } from '../../src/data/learningLevelPolicy';
 import { inferLearningSystemConfig } from '../../src/data/learningSystem';
+import { narrativeLearningPages } from '../../src/data/learningPageRoles';
 import { applyResolvedAssets, isValidAudioUrl, isValidImageUrl, parseChapterNumber } from '../../src/core/storage/storageAssetLoader';
 
 const fail = (message: string): never => { throw new Error(`[Unified Learning Validation] ${message}`); };
 const assert = (condition: unknown, message: string): asserts condition => { if (!condition) fail(message); };
-const isReferencePage = (page: PageData) => /^(references?|المراجع|مراجع)(?:\s*[—:-].*)?$/i.test(page.title.trim());
-const nonReferencePages = (book: BookData) => book.pages.filter(page => !isReferencePage(page));
+const nonReferencePages = (book: BookData) => narrativeLearningPages(book.pages);
 
 const forbiddenArabicUiTerms = /\b(?:Quick Challenge|Word Notes?|Review Challenge|Final Challenge|Knowledge Check|Teacher Guide|Self-Study Guide)\b/i;
 const containsForbiddenArabic = (value: unknown): boolean => {
