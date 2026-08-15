@@ -1,12 +1,9 @@
 import type { PageData } from '../types';
 import type { A2GoldPageConfig } from './a2GoldFactory';
 import { runLearningSystem } from './learningSystem';
+import { preparePairedLearningSources } from './learningSourcePairing';
 
-/**
- * Compatibility entrypoint for existing A2 books.
- * The actual exercise, assessment, parity, media and guide engine is the same
- * level-independent Learning System used by A2, B1 and B2.
- */
+/** Compatibility entrypoint. A2 uses the same Learning System as B1/B2. */
 export const applyValidatedA2ParallelLearning = ({
   englishPages,
   arabicPages,
@@ -16,9 +13,10 @@ export const applyValidatedA2ParallelLearning = ({
   arabicPages: PageData[];
   config: A2GoldPageConfig;
 }) => {
+  const paired = preparePairedLearningSources({ englishPages, arabicPages, storyIds: config.storyIds });
   const output = runLearningSystem({
-    englishPages,
-    arabicPages,
+    englishPages: paired.englishPages,
+    arabicPages: paired.arabicPages,
     config: {
       level: 'A2',
       storyIds: config.storyIds,
@@ -27,12 +25,7 @@ export const applyValidatedA2ParallelLearning = ({
       reviewPageId: config.reviewPageId,
       glossaryPageIds: config.glossaryPageIds,
       finalChallengePageId: config.finalChallengePageId,
-      knowledgeCount: 8,
-      vocabularyCount: 6,
-      reviewCount: 8,
-      finalCount: 10,
     },
   });
-
   return { englishPages: output.englishPages, arabicPages: output.arabicPages };
 };
