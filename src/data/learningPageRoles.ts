@@ -14,18 +14,21 @@ const roleTokens = (value: string): string[] => normalizeRoleText(value)
   .split(/[^\p{L}\p{N}]+/u)
   .filter(Boolean);
 
-/**
- * Reference/source pages are auxiliary book pages, never narrative chapters and
- * never substitutes for Knowledge Check. Arabic role words are matched as whole
- * tokens so "المراجعة" (review) can never be mistaken for "المراجع" (references).
- */
-export const isLearningReferencePage = (page: PageData): boolean => {
-  const title = normalizeRoleText(page.title);
+/** Multilingual title-level classifier shared by runtime, media and canonical gates. */
+export const isLearningReferenceTitle = (value: string): boolean => {
+  const title = normalizeRoleText(value);
   if (!title) return false;
   if (/\breferences?\b/.test(title) || /\bsources?\b/.test(title)) return true;
   const tokens = new Set(roleTokens(title));
   return tokens.has('المراجع') || tokens.has('المصادر') || tokens.has('مصادر') || tokens.has('مراجع');
 };
+
+/**
+ * Reference/source pages are auxiliary book pages, never narrative chapters and
+ * never substitutes for Knowledge Check. Arabic role words are matched as whole
+ * tokens so "المراجعة" (review) can never be mistaken for "المراجع" (references).
+ */
+export const isLearningReferencePage = (page: PageData): boolean => isLearningReferenceTitle(page.title);
 
 export const narrativeLearningPages = (pages: PageData[]): PageData[] =>
   pages.filter(page => !isLearningReferencePage(page));
