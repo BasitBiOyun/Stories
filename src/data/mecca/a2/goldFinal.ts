@@ -16,6 +16,18 @@ import { meccaA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import { meccaA2GoldConfig, meccaA2HotspotsGoldAr, meccaA2HotspotsGoldEn } from './gold';
 
 const canonicalEnForLearning = meccaA2Pages.map((page) => {
+  if (page.id === 14 && page.type === 'quiz') {
+    return {
+      ...page,
+      exercises: (page.exercises ?? []).map((exercise) => exercise.id === 'q6'
+        ? {
+            ...exercise,
+            explanation: 'The story says the Prophet (pbuh) chose Bilal to call people to prayer, and Bilal gave the first Adhan.',
+          }
+        : exercise),
+    };
+  }
+
   if (page.type !== 'story') return page;
 
   if (page.id === 1) {
