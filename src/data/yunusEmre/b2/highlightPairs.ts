@@ -27,6 +27,10 @@ export const yunusEmreB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
     { en: 'lens', ar: 'عَدَسَةِ' },
     { en: 'medium', ar: 'وَسِيلَةً' },
     { en: 'shaykhs', ar: 'الشُّيُوخُ' },
-    { en: 'Transoxiana', ar: 'وَمَا وَرَاءِ النَّهْرِ' },
+    {
+      en: 'Transoxiana',
+      ar: 'وَمَا وَرَاءِ النَّهْرِ',
+      arDefinition: 'مِنْطَقَةٌ تَارِيخِيَّةٌ فِي آسْيَا الْوُسْطَى، تَقَعُ بَيْنَ نَهْرَيْ جَيْحُونَ وَسَيْحُونَ.',
+    },
   ],
 };
