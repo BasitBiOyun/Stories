@@ -1,6 +1,9 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
+  abrahamA2HighlightConfig,
+  abrahamA2HighlightTargets,
   abrahamA2PagesFinalAr,
   abrahamA2PagesFinalEn,
   abrahamA2SelfStudyGuideFinalAr,
@@ -17,8 +20,18 @@ import {
   abrahamA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const abrahamA2PagesLockedEn = applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en');
-const abrahamA2PagesLockedAr = applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar');
+const abrahamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en'),
+  abrahamA2HighlightConfig,
+  'en',
+);
+const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar'),
+  abrahamA2HighlightConfig,
+  'ar',
+);
+
+validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abrahamA2HighlightTargets, abrahamA2HighlightConfig);
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
