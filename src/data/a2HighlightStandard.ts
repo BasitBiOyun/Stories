@@ -29,6 +29,12 @@ export interface A2HighlightStandardConfig {
   storyIds: number[];
   glossaryPageIds: [number, number];
   arabicOverrides?: A2ArabicHighlightOverrides;
+  /**
+   * Gold A2 books should set this after migration. It forbids the legacy
+   * position-based EN[index] -> AR[index] fallback and requires every selected
+   * English learning target to declare its exact Arabic story surface.
+   */
+  requireExplicitArabicTargets?: boolean;
 }
 
 export interface A2HighlightStandardResult {
@@ -89,6 +95,13 @@ const overrideFor = (
   return typeof match[1] === 'string' ? { word: match[1] } : match[1];
 };
 
+const arabicVocabularyEntryForSurface = (
+  page: PageData,
+  word: string,
+): HighlightText | undefined => page.vocabulary?.find((entry) => (
+  normalizeHighlightText(entry.word, 'ar') === normalizeHighlightText(word, 'ar')
+));
+
 const resolveArabicAnimatedDefinition = (
   word: string,
   page: PageData,
@@ -97,9 +110,7 @@ const resolveArabicAnimatedDefinition = (
   if (explicit?.trim()) return explicit;
   const direct = arabicFallbackDefinition(word);
   if (direct?.trim()) return direct;
-  const sameWord = page.vocabulary?.find((entry) => (
-    normalizeHighlightText(entry.word, 'ar') === normalizeHighlightText(word, 'ar')
-  ));
+  const sameWord = arabicVocabularyEntryForSurface(page, word);
   return sameWord?.definition?.trim() ? sameWord.definition : undefined;
 };
 
@@ -122,8 +133,6 @@ const isSameVisibleEnglishTarget = (surface: string, selected: string): boolean 
   if (!surfaceNormalized || !selectedNormalized) return false;
   if (surfaceNormalized === selectedNormalized) return true;
 
-  // StoryPage lets a singular vocabulary target highlight its short inflected
-  // surface form on the same page (idol/idols, camel/camels, rope/ropes, etc.).
   return highlightPhraseMatches(surface, selected, 'en');
 };
 
@@ -173,9 +182,6 @@ export const applyA2HighlightStandard = (
   arabicPages: PageData[],
   config: A2HighlightStandardConfig,
 ): A2HighlightStandardResult => {
-  // StoryPage suppresses an exact configured word once it appeared in an earlier
-  // page, while inflection matching happens only among candidates on the current
-  // page. Mirror those two rules separately here.
   const seenEnglishKeys = new Set<string>();
   const targets: Record<number, readonly A2CanonicalHighlightTarget[]> = {};
 
@@ -199,19 +205,23 @@ export const applyA2HighlightStandard = (
     enVocabulary.forEach((entry, index) => {
       const key = normalizeHighlightText(entry.word, 'en');
       if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(entry.word)) return;
+
       const explicit = overrideFor(config, chapterId, entry.word);
-      const arEntry = arVocabulary[index];
-      if (!explicit && !arEntry) {
+      if (config.requireExplicitArabicTargets && !explicit) {
+        fail(config.storyKey, `Arabic Chapter ${chapterId} needs an explicit pair for English target “${entry.word}”.`);
+      }
+
+      const positionalEntry = arVocabulary[index];
+      if (!explicit && !positionalEntry) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} has no vocabulary pair for English target “${entry.word}”.`);
       }
-      const arWord = explicit?.word ?? arEntry!.word;
-      // Some legacy Arabic migration inputs have a correct surface form but no
-      // learner definition. Do not fail before the reviewed definition lock gets
-      // a chance to bind the canonical English target to its vocalized Arabic
-      // definition. The sentinel deliberately has no Arabic diacritics, so the
-      // final Arabic definition contract will still fail if review coverage is
-      // actually missing.
-      const arDefinition = explicit?.definition ?? arEntry?.definition ?? PENDING_ARABIC_DEFINITION;
+
+      const arWord = explicit?.word ?? positionalEntry!.word;
+      const matchingEntry = explicit ? arabicVocabularyEntryForSurface(arPage, arWord) : positionalEntry;
+      const arDefinition = explicit?.definition
+        ?? matchingEntry?.definition
+        ?? PENDING_ARABIC_DEFINITION;
+
       chapterTargets.push({
         id: targetId(chapterId, entry.word),
         chapterId,
@@ -229,6 +239,10 @@ export const applyA2HighlightStandard = (
       if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(word)) return;
 
       const explicit = overrideFor(config, chapterId, word);
+      if (config.requireExplicitArabicTargets && !explicit) {
+        fail(config.storyKey, `Arabic Chapter ${chapterId} needs an explicit pair for English highlight “${word}”.`);
+      }
+
       const arWord = explicit?.word ?? arAnimated[index];
       if (!arWord) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} has no pair for English highlight “${word}”.`);
@@ -280,6 +294,8 @@ export const validateA2HighlightStandard = (
   targets: Record<number, readonly A2CanonicalHighlightTarget[]>,
   config: A2HighlightStandardConfig,
 ): void => {
+  const seenArabicRuntimeTargets = new Map<string, string>();
+
   for (const chapterId of config.storyIds) {
     const enPage = storyPage(englishPages, chapterId, config.storyKey, 'en');
     const arPage = storyPage(arabicPages, chapterId, config.storyKey, 'ar');
@@ -306,6 +322,17 @@ export const validateA2HighlightStandard = (
       if (!highlightPhraseOccurs(arPage.content ?? '', arEntry.word, 'ar')) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} target “${arEntry.word}” is not in the story prose.`);
       }
+
+      const runtimeArabicKey = arEntry.word.toLowerCase().trim();
+      const previousTarget = seenArabicRuntimeTargets.get(runtimeArabicKey);
+      if (runtimeArabicKey && previousTarget && previousTarget !== target.id) {
+        fail(
+          config.storyKey,
+          `Arabic target “${arEntry.word}” is reused by ${previousTarget} and ${target.id}; `
+          + 'the reader would hide one of them and EN/AR visible counts would diverge.',
+        );
+      }
+      if (runtimeArabicKey) seenArabicRuntimeTargets.set(runtimeArabicKey, target.id);
     });
   }
 
