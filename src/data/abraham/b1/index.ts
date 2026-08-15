@@ -1,7 +1,8 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
+import { groundAbrahamB1Derived } from '../../b1DerivedGrounding';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1StudentGuideText, abrahamB1StudentGuideMetadata, abrahamB1StudentGuideSections } from './en/selfstudyGuide';
@@ -32,9 +33,9 @@ const abrahamB1HighlightStandard = applyB1HighlightStandard(abrahamB1PagesLocked
 });
 
 export const abrahamB1HighlightTargets = abrahamB1HighlightStandard.targets;
-const abrahamB1Parallel = applyValidatedAdvancedParallelLearning({
-  englishPages: abrahamB1HighlightStandard.englishPages,
-  arabicPages: abrahamB1HighlightStandard.arabicPages,
+const abrahamB1Parallel = applySafeAdvancedParallelLearning({
+  englishPages: groundAbrahamB1Derived(abrahamB1HighlightStandard.englishPages, 'en'),
+  arabicPages: groundAbrahamB1Derived(abrahamB1HighlightStandard.arabicPages, 'ar'),
   config: { level: 'B1', ...abrahamB1GoldConfig },
 });
 const abrahamB1GuidesEn = buildB1EvidenceGuides(abrahamB1Parallel.englishPages, 'en');
