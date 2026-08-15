@@ -1,4 +1,5 @@
 import { bookRegistry } from '../../src/core/content/bookRegistry';
+import { narrativeLearningPages } from '../../src/data/learningPageRoles';
 import { applyResolvedAssets, isValidAudioUrl, isValidImageUrl, loadBookAssets } from '../../src/core/storage/storageAssetLoader';
 
 type AuditResult = { summary: string; contradictions: string[] };
@@ -9,7 +10,9 @@ const auditBook = async (definition: (typeof bookRegistry)[number]): Promise<Aud
     definition.load(),
     loadBookAssets(definition.storage),
   ]);
-  const storyIds = pair.en.pages.filter(page => page.type === 'story').map(page => page.id);
+  const storyIds = narrativeLearningPages(pair.en.pages)
+    .filter(page => page.type === 'story')
+    .map(page => page.id);
   const resolved = applyResolvedAssets(pair, assets);
   const arById = new Map(resolved.ar.pages.map(page => [page.id, page]));
   const contradictions: string[] = [];
