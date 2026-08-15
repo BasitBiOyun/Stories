@@ -20,6 +20,7 @@ import {
   abrahamB2StudentGuideTextGoldAr,
 } from './goldAr';
 import { abrahamB2ReviewedHighlightPairs } from './highlightPairs';
+import { groundRemainingAbrahamB2Challenges } from './strictGrounding';
 
 const abrahamB2Config = {
   level: 'B2' as const,
@@ -139,10 +140,13 @@ const abrahamB2StudentGuideTextRuntimeAr = abrahamB2StudentGuideTextGoldAr
   .replace('بعد الفصول السردية، أبقِ صفحة المراجع مرجعاً كما هي، وأكمل تحدي المراجعة المكون من 8 أسئلة، وراجع قسمي المعجم، ثم أنجز التحدي النهائي المكون من 10 أسئلة.', 'بعد الفصول السردية، أكمل اختبار المعرفة المكون من 8 أنشطة، ثم تحدي المراجعة المكون من 8 أسئلة، وراجع قسمي المعجم، ثم أنجز التحدي النهائي المكون من 10 أنشطة.')
   .replace('لا توجد صفحة Knowledge مستقلة في البنية المعتمدة، ولذلك لا نضيف صفحة جديدة.', 'حُفظت صفحة المراجع الأصلية في الأرشيف لتوحيد صفحات المراجع في كتب B2 لاحقاً.');
 
+const groundedAbrahamB2En = groundRemainingAbrahamB2Challenges(abrahamB2HighlightStandard.englishPages, 'en');
+const groundedAbrahamB2Ar = groundRemainingAbrahamB2Challenges(abrahamB2HighlightStandard.arabicPages, 'ar');
+
 export const abrahamB2HighlightTargets = abrahamB2HighlightStandard.targets;
 const abrahamB2Parallel = applySafeAdvancedParallelLearning({
-  englishPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.englishPages, 'en'),
-  arabicPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.arabicPages, 'ar'),
+  englishPages: prepareKnowledgeCheckPage(groundedAbrahamB2En, 'en'),
+  arabicPages: prepareKnowledgeCheckPage(groundedAbrahamB2Ar, 'ar'),
   config: abrahamB2Config,
 });
 const abrahamB2GuidesEn = buildB2EvidenceGuides({ effectivePages: abrahamB2Parallel.englishPages, storyIds: abrahamB2Config.storyIds, language: 'en' });
