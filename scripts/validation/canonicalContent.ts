@@ -3,6 +3,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
 import { isLearningReferenceTitle } from '../../src/data/learningPageRoles';
+import { restoreYunusA2LockedPoemProse } from '../../src/data/yunusEmre/a2/poemCard';
 
 interface CanonicalPageRecord {
   id: number;
@@ -42,8 +43,12 @@ const normalizeApprovedMechanicalFixesForBaseline = (
   level: string,
   language: 'en' | 'ar',
   pageId: number,
-  content: string,
+  rawContent: string,
 ): string => {
+  let content = rawContent;
+  if (storyId === 'yunusEmre' && level === 'A2' && language === 'en' && pageId === 3) {
+    content = restoreYunusA2LockedPoemProse(content);
+  }
   if (language !== 'en') return content;
   if (storyId === 'yunusEmre' && level === 'B1' && pageId === 8) return content.replaceAll('Tawhid', '**Tawhid**');
   if (level !== 'A2') return content;
