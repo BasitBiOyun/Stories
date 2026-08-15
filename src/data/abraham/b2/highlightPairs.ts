@@ -52,6 +52,14 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
       arDefinition: 'قَوِيٌّ وَوَاضِحٌ إِلَى دَرَجَةٍ لَا يُمْكِنُ إِبْطَالُهُ أَوْ رَدُّهُ.',
     },
   ],
+  30: [
+    {
+      en: 'abundant and flowing',
+      ar: 'الوَفْرَة والتَدَفُّق',
+      enDefinition: 'Present in a large amount and continuing to move freely like water.',
+      arDefinition: 'الْكَثْرَةُ وَالِاسْتِمْرَارُ فِي الْجَرَيَانِ وَالْحَرَكَةِ.',
+    },
+  ],
   32: [
     {
       en: 'sacrifice',
@@ -76,6 +84,20 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
       ar: 'لإقامة',
       enDefinition: 'To create, set up, or make something firm and lasting.',
       arDefinition: 'لِإِنْشَاءِ شَيْءٍ وَتَثْبِيتِهِ وَجَعْلِهِ قَائِمًا.',
+    },
+  ],
+  35: [
+    {
+      en: 'restorer',
+      ar: 'مُعِيدِ بِنَاءِ',
+      enDefinition: 'A person who repairs or rebuilds something so it can serve its original purpose again.',
+      arDefinition: 'شَخْصٌ يُعِيدُ بِنَاءَ شَيْءٍ أَوْ إِصْلَاحَهُ لِيَعُودَ إِلَى وَظِيفَتِهِ.',
+    },
+    {
+      en: 'corrupted',
+      ar: 'تَحَرَّفَ',
+      enDefinition: 'Changed from its correct form or made morally or structurally worse.',
+      arDefinition: 'تَغَيَّرَ عَنْ صُورَتِهِ الصَّحِيحَةِ وَانْحَرَفَ عَنْ أَصْلِهِ.',
     },
   ],
 };
