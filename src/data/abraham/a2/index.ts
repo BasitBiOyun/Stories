@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
 import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { abrahamA2GoldConfig } from './gold';
 import {
@@ -25,10 +26,20 @@ const abrahamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
   abrahamA2HighlightConfig,
   'en',
 );
-const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar'),
-  abrahamA2HighlightConfig,
-  'ar',
+const abrahamA2PagesLockedAr = applyA2HotspotCopyOverrides(
+  syncA2GlossariesFromStoryHighlights(
+    applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar'),
+    abrahamA2HighlightConfig,
+    'ar',
+  ),
+  {
+    1: {
+      h2: {
+        title: 'الأشياء الحجرية',
+        description: 'كَانَ النَّاسُ يَعْتَقِدُونَ أَنَّ هَذِهِ الْأَشْيَاءَ آلِهَتُهُمْ.',
+      },
+    },
+  },
 );
 
 validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abrahamA2HighlightTargets, abrahamA2HighlightConfig);
