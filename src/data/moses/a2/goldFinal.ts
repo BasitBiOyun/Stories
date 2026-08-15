@@ -36,7 +36,20 @@ const removeVocabularyTargets = (
   };
 });
 
-const correctedBasePagesEn = removeVocabularyTargets(applyVocabularyOverrides(basePagesEn, {
+const removeAnimatedTargets = (
+  pages: typeof basePagesEn,
+  removals: Record<number, string[]>,
+) => pages.map((page) => {
+  const removed = removals[page.id];
+  if (!removed?.length || !page.animatedWords) return page;
+  const removedSet = new Set(removed.map((word) => word.toLowerCase().trim()));
+  return {
+    ...page,
+    animatedWords: page.animatedWords.filter((word) => !removedSet.has(word.toLowerCase().trim())),
+  };
+});
+
+const correctedBasePagesEn = removeAnimatedTargets(removeVocabularyTargets(applyVocabularyOverrides(basePagesEn, {
   6: {
     mistake: { word: 'upset', definition: 'Very sad or worried because something bad happened.' },
   },
@@ -44,17 +57,15 @@ const correctedBasePagesEn = removeVocabularyTargets(applyVocabularyOverrides(ba
     escape: { word: 'escaped', definition: 'Got away from danger.' },
     'escape from': { word: 'thirsty', definition: 'Needing or wanting water.' },
   },
-  11: {
-    'take out': { word: 'chest', definition: 'The front part of the body below the neck.' },
-  },
-  12: {
-    'laugh at': { word: 'laughed', definition: 'Showed that something was funny.' },
-  },
   14: {
     prepare: { word: 'prepared', definition: 'Got ready for something.' },
   },
 }), {
+  11: ['power'],
   12: ['armpit'],
+}), {
+  4: ['queen'],
+  6: ['mistake', 'accident'],
 });
 
 const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
@@ -109,6 +120,44 @@ export const mosesA2HighlightConfig: A2HighlightStandardConfig = {
   storyIds: mosesA2GoldConfig.storyIds,
   glossaryPageIds: mosesA2GoldConfig.glossaryPageIds,
   arabicOverrides: {
+    1: {
+      Messenger: { word: 'رَسُولًا' },
+      cruel: { word: 'ظَالِمًا' },
+      ruler: { word: 'حَاكِمًا' },
+      believe: { word: 'يُؤْمِنْ' },
+      Egypt: { word: 'مِصْرَ' },
+      Pharaoh: { word: 'فِرْعَوْنُ' },
+      Allah: { word: 'اللهِ' },
+    },
+    2: {
+      dream: { word: 'حُلْمًا' },
+      magicians: { word: 'السَّحَرَةَ' },
+      heartless: { word: 'عَدِيمِي الرَّحْمَةِ' },
+      despotic: { word: 'المُسْتَبِدِّينَ' },
+      fire: { word: 'نارًا' },
+      soldiers: { word: 'جُنودِهِ' },
+    },
+    3: {
+      basket: { word: 'تَابُوتًا' },
+      protect: { word: 'سَيَحْفَظُهُ' },
+      worried: { word: 'قَلِقَةً' },
+      'carried it away': { word: 'فَحَمَلَهُ' },
+      'River Nile': { word: 'نَهْرِ النِّيلِ' },
+    },
+    4: {
+      palace: { word: 'قَصْرِ' },
+      'kind-hearted': { word: 'رَحِيمَةً' },
+      nurse: { word: 'مُرْضِعَةٍ' },
+      love: { word: 'حُبًّا' },
+    },
+    5: {
+      protector: { word: 'الْحَافِظِينَ' },
+      safe: { word: 'آمِنٍ' },
+      weak: { word: 'الضُّعَفَاءِ' },
+      'take care of': { word: 'لِتَرْعَى' },
+      mother: { word: 'أُمِّهِ' },
+      bazaar: { word: 'السُّوقِ' },
+    },
     6: {
       upset: { word: 'بِحُزْنٍ شَدِيدٍ' },
       forgive: { word: 'فَاغْفِرْ لِي' },
@@ -132,14 +181,66 @@ export const mosesA2HighlightConfig: A2HighlightStandardConfig = {
       help: { word: 'الْمُسَاعَدَةِ' },
       sheep: { word: 'غَنَمَهُمَا' },
     },
+    9: {
+      stranger: { word: 'غَرِيبًا' },
+      job: { word: 'عَمَلًا' },
+      married: { word: 'تَزَوَّجَ' },
+      'Şuayb': { word: 'شُعَيْبًا' },
+    },
+    10: {
+      silence: { word: 'الصَّمْتِ' },
+      'walking stick': { word: 'عَصَاكَ' },
+      hillside: { word: 'سَفْحِ التَّلِّ' },
+      'put down': { word: 'أَلْقِ' },
+      mountain: { word: 'الْجَبَلَ' },
+      fire: { word: 'نَارًا' },
+      voice: { word: 'نِدَاءً' },
+      snake: { word: 'ثُعْبَانٍ' },
+    },
     11: {
-      chest: { word: 'جَيْبِكَ' },
+      signs: { word: 'آيَاتٌ' },
+      prophet: { word: 'نَبِيًّا' },
+      throne: { word: 'عَرْشِهِ' },
+      'take out': { word: 'أَخْرِجْهَا' },
+      shining: { word: 'مُضِيئَةٌ' },
+      Harun: { word: 'هَارُونَ' },
     },
     12: {
-      laughed: { word: 'سَخِرَ' },
+      miracles: { word: 'آيَاتِ' },
+      universe: { word: 'الْعَالَمِينَ' },
+      magic: { word: 'سِحْرٍ' },
+      threw: { word: 'أَلْقَاهَا' },
+      'laugh at': { word: 'سَخِرَ' },
+      snake: { word: 'ثُعْبَانٍ' },
+      shining: { word: 'لَامِعَةً' },
+    },
+    13: {
+      ropes: { word: 'حِبَالًا' },
+      huge: { word: 'ضَخْمٍ' },
+      arrogant: { word: 'مُتَكَبِّرًا' },
+      magicians: { word: 'السَّحَرَةَ' },
+      believe: { word: 'نُؤْمِنُ' },
     },
     14: {
+      journey: { word: 'الرِّحْلَةِ' },
+      secret: { word: 'سِرِّيَّةِ' },
+      caravan: { word: 'قَافِلَتُهُمْ' },
+      'going away': { word: 'سَنُغَادِرُ' },
       prepared: { word: 'أَعَدَّ' },
+      night: { word: 'اللَّيْلِ' },
+    },
+    15: {
+      panicked: { word: 'فَخَافَ' },
+      parted: { word: 'فَانْشَقَّ' },
+      safely: { word: 'بِأَمَانٍ' },
+      'calm down': { word: 'اِهْدَؤُوا' },
+      caught: { word: 'لَحِقَ بِهِمْ' },
+      sea: { word: 'الْبَحْرُ' },
+    },
+    16: {
+      midway: { word: 'مُنْتَصَفِ' },
+      lessons: { word: 'دُرُوسًا' },
+      power: { word: 'الْقُدْرَةِ' },
     },
   },
 };
