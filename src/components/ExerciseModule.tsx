@@ -16,6 +16,7 @@ import { Exercise } from '../types';
 import { cn } from '../lib/utils';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
+import { highlightPhraseMatches } from '../lib/highlightTextMatch';
 import {
   presentMatchingMeanings,
   presentMultipleChoice,
@@ -153,7 +154,11 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     }
     if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') return true;
     if (exercise.type === 'fill-blanks') {
-      return normalizeText(answer) === normalizeText(exercise.correctAnswer);
+      const normalizedMatch = normalizeText(answer) === normalizeText(exercise.correctAnswer);
+      const morphologyMatch = typeof answer === 'string' && typeof exercise.correctAnswer === 'string'
+        ? highlightPhraseMatches(answer, exercise.correctAnswer, language === 'ar' ? 'ar' : 'en')
+        : false;
+      return normalizedMatch || morphologyMatch;
     }
     return answer === exercise.correctAnswer;
   };
