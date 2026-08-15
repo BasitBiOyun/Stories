@@ -5,7 +5,7 @@ import { abrahamA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import {
   abrahamA2GoldConfig,
   abrahamA2PagesGoldAr as basePagesAr,
-  abrahamA2PagesGoldEn as basePagesEn,
+  abrahamA2PagesGoldEn as rawBasePagesEn,
 } from './gold';
 import {
   buildA2SelfStudyGuide,
@@ -16,6 +16,15 @@ import {
   buildA2TeacherGuideMetadata,
 } from '../../a2GoldFactory';
 
+const basePagesEn = rawBasePagesEn.map((page) => {
+  if (page.type !== 'story' || !page.animatedWords) return page;
+  if (page.id === 3) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'sets') };
+  if (page.id === 7) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'crazy') };
+  if (page.id === 9) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'rude') };
+  if (page.id === 10) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'rise') };
+  return page;
+});
+
 const vocabularyGoldEn = applyA2VocabularyGold({
   pages: basePagesEn,
   storyIds: abrahamA2GoldConfig.storyIds,
@@ -24,6 +33,7 @@ const vocabularyGoldEn = applyA2VocabularyGold({
   chapterAdditions: {
     6: [{ word: 'axe', definition: 'A heavy tool used for cutting or breaking things.' }],
     8: [{ word: 'trusted', definition: 'Believed that Allah would protect and help him.' }],
+    10: [{ word: 'west', definition: 'The direction where the sun sets.' }],
   },
 });
 
@@ -42,12 +52,101 @@ export const abrahamA2HighlightConfig: A2HighlightStandardConfig = {
   storyIds: abrahamA2GoldConfig.storyIds,
   glossaryPageIds: abrahamA2GoldConfig.glossaryPageIds,
   arabicOverrides: {
+    1: {
+      Messenger: { word: 'رَسُولًا' },
+      worship: { word: 'يَعْبُدُونَهُ' },
+      Mesopotamia: { word: 'النَّهْرَيْنِ' },
+      kingdom: { word: 'مَمْلَكَةِ' },
+      silly: { word: 'سَخِيفٌ' },
+      special: { word: 'خَاصًّا' },
+    },
+    2: {
+      idol: { word: 'الْأَصْنَامَ' },
+      respect: { word: 'الِاحْتِرَامَ' },
+      ridiculous: { word: 'سَخِيفًا' },
+      presents: { word: 'الْهَدَايَا' },
+      'human-like': { word: 'يُشْبِهُ الْإِنْسَانَ' },
+    },
+    3: {
+      Creator: { word: 'الْخَالِقِ' },
+      search: { word: 'يَبْحَثُ' },
+      disappeared: { word: 'غَابَ' },
+      countryside: { word: 'الرِّيفِ' },
+      beautiful: { word: 'الْجَمِيلَةِ' },
+    },
+    4: {
+      creation: { word: 'مَخْلُوقًا' },
+      prayer: { word: 'دُعَاءَهُ' },
+      forehead: { word: 'جَبْهَتَهُ' },
+      shining: { word: 'سَاطِعَةً' },
+      angry: { word: 'فَغَضِبَ' },
+      against: { word: 'ضِدُّ' },
+    },
+    5: {
+      heals: { word: 'يَشْفِينِي' },
+      believe: { word: 'أُؤْمِنُ' },
+      power: { word: 'قُوَّةً' },
+    },
+    6: {
+      festival: { word: 'عِيدٌ' },
+      unbroken: { word: 'سَلِيمًا' },
+      axe: { word: 'فَأْسًا' },
+      jokingly: { word: 'مَازِحًا' },
+      hurried: { word: 'مُسْرِعًا' },
+    },
+    7: {
+      shocked: { word: 'فَصُدِمُوا' },
+      displeased: { word: 'فَلَمْ يَرْضَ' },
+      protect: { word: 'تَحْمِيَ' },
+      harm: { word: 'آذَيْتَ' },
+    },
     8: {
+      arrogant: { word: 'مُتَكَبِّرِينَ' },
+      catapult: { word: 'مَنْجَنِيقٍ' },
+      flames: { word: 'اللَّهَبِ' },
       trusted: { word: 'يَثِقُ' },
+      dangerous: { word: 'الْخَطَرِ' },
+    },
+    9: {
+      miracle: { word: 'الْمُعْجِزَةُ' },
+      amazed: { word: 'دُهِشَ' },
+      harmed: { word: 'أَذًى' },
+      cool: { word: 'بَارِدَةً' },
+    },
+    10: {
+      slaves: { word: 'عَبْدَيْنِ' },
+      ordinary: { word: 'عَادِيًّا' },
+      guards: { word: 'حُرَّاسَهُ' },
+      west: { word: 'الْمَغْرِبِ' },
+      ordered: { word: 'أَمَرَ' },
+    },
+    11: {
+      journey: { word: 'رِحْلَتَهُ' },
+      valley: { word: 'وَادٍ' },
+      tiring: { word: 'مُتْعِبَةً' },
+      lands: { word: 'أَرَاضٍ' },
+      arrived: { word: 'وَصَلُوا' },
     },
     12: {
+      blessings: { word: 'الْبَرَكَاتِ' },
+      fearlessly: { word: 'بِغَيْرِ خَوْفٍ' },
+      useless: { word: 'بِلَا فَائِدَةٍ' },
       planner: { word: 'الْمَاكِرِينَ' },
       die: { word: 'نَمُوتُ' },
+    },
+    13: {
+      desert: { word: 'الصَّحْرَاءِ' },
+      gift: { word: 'هَدِيَّةً' },
+      ground: { word: 'الْأَرْضِ' },
+      famous: { word: 'مَشْهُورًا' },
+      suddenly: { word: 'فَجْأَةً' },
+    },
+    14: {
+      mission: { word: 'مُهِمَّتُهُ' },
+      unique: { word: 'وَاحِدٌ' },
+      partner: { word: 'شَرِيكٌ' },
+      holy: { word: 'مُقَدَّسٍ' },
+      Muslims: { word: 'الْمُسْلِمِينَ' },
     },
   },
 };
