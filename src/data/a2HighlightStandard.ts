@@ -29,10 +29,6 @@ export interface A2HighlightStandardConfig {
   storyIds: number[];
   glossaryPageIds: [number, number];
   arabicOverrides?: A2ArabicHighlightOverrides;
-  /**
-   * Explicit opt-out/in for positional fallback. Once a book has an Arabic
-   * mapping table, strict explicit pairing is the default.
-   */
   requireExplicitArabicTargets?: boolean;
 }
 
@@ -115,8 +111,7 @@ const resolveArabicAnimatedDefinition = (
 
 const targetId = (chapterId: number, word: string): string => {
   const normalized = normalizeHighlightText(word, 'en') || word.toLowerCase().trim();
-  const slug = normalized.replace(/\s+/g, '-');
-  return `ch${chapterId}-${slug}`;
+  return `ch${chapterId}-${normalized.replace(/\s+/g, '-')}`;
 };
 
 const glossaryVocabulary = (
@@ -204,8 +199,12 @@ export const applyA2HighlightStandard = (
 
       const arWord = explicit?.word ?? positionalEntry!.word;
       const matchingEntry = explicit ? arabicVocabularyEntryForSurface(arPage, arWord) : positionalEntry;
+      // Position is never allowed to choose the Arabic WORD once a book is mapped.
+      // It may still provide the already-reviewed definition for the same legacy
+      // vocabulary slot; the final reviewed-definition lock validates/replaces it.
       const arDefinition = explicit?.definition
         ?? matchingEntry?.definition
+        ?? positionalEntry?.definition
         ?? PENDING_ARABIC_DEFINITION;
 
       chapterTargets.push({
