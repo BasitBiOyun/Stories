@@ -24,7 +24,7 @@ const glossaryPart1: NonNullable<PageData['vocabulary']> = [
   { word: 'creature', definition: 'A living thing created by Allah.' },
   { word: 'lonely', definition: 'Sad because you are alone.' },
   { word: 'warning', definition: 'Words that tell you about something you should be careful about.' },
-  { word: 'very sad', definition: 'Feeling sad because of something wrong you did.' },
+  { word: 'regret', definition: 'Feeling sad because of something wrong you did.' },
 ];
 
 const glossaryPart2: NonNullable<PageData['vocabulary']> = [
