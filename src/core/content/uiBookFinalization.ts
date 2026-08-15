@@ -3,6 +3,7 @@ import type { BookPair, Language } from './contracts';
 import { inferLearningSystemConfig, runLearningSystem } from '../../data/learningSystem';
 import { buildLearningGuideBundle, type LearningGuideBundle, type LearningGuideStructure } from '../../data/learningGuideSystem';
 import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
+import { preparePairedLearningSources } from '../../data/learningSourcePairing';
 
 const isReferencePage = (page: PageData): boolean => {
   const title = page.title.trim().toLocaleLowerCase();
@@ -84,11 +85,9 @@ const makeBook = (
 
 /**
  * Authoritative UI finalization for every registered A2/B1/B2 book.
- *
- * Book-specific modules prepare and lock their chapter data. From this point on,
- * one level-independent Learning System owns chapter activities, whole-book
- * assessments, EN/AR parity, and every guide. Level differences come only from
- * the shared Learning Level Policy.
+ * Book modules may prepare/lock chapter data, but one Learning System owns all
+ * effective activities, assessments and guides. Level differences come only
+ * from the shared Learning Level Policy.
  */
 export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
   if (pair.en.level !== pair.ar.level) {
@@ -117,9 +116,14 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
     throw new Error('[Book Finalization] EN/AR page-role contracts differ.');
   }
 
-  const learning = runLearningSystem({
+  const pairedSources = preparePairedLearningSources({
     englishPages: pair.en.pages,
     arabicPages: pair.ar.pages,
+    storyIds: config.storyIds,
+  });
+  const learning = runLearningSystem({
+    englishPages: pairedSources.englishPages,
+    arabicPages: pairedSources.arabicPages,
     config,
   });
   const structure = guideStructure(config);
