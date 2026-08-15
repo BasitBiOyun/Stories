@@ -17,12 +17,18 @@ import {
 } from '../../a2GoldFactory';
 
 const basePagesEn = rawBasePagesEn.map((page) => {
-  if (page.type !== 'story' || !page.animatedWords) return page;
-  if (page.id === 3) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'sets') };
-  if (page.id === 7) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'crazy') };
-  if (page.id === 9) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'rude') };
-  if (page.id === 10) return { ...page, animatedWords: page.animatedWords.filter((word) => word !== 'rise') };
-  return page;
+  if (page.type !== 'story') return page;
+
+  // Legacy audio-sync metadata from the old timestamp-following prototype is not used
+  // by the current reader. Strip it from the effective Abraham A2 English story data.
+  const { timedChunks: _timedChunks, syncPoints: _syncPoints, ...pageWithoutLegacySync } = page;
+
+  if (!pageWithoutLegacySync.animatedWords) return pageWithoutLegacySync;
+  if (pageWithoutLegacySync.id === 3) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'sets') };
+  if (pageWithoutLegacySync.id === 7) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'crazy') };
+  if (pageWithoutLegacySync.id === 9) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'rude') };
+  if (pageWithoutLegacySync.id === 10) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'rise') };
+  return pageWithoutLegacySync;
 });
 
 const vocabularyGoldEn = applyA2VocabularyGold({
