@@ -93,6 +93,52 @@ const prepareKnowledgeCheckPage = (pages: PageData[], language: 'en' | 'ar'): Pa
     : page
 ));
 
+const abrahamB2StudentGuideSectionsRuntimeEn = abrahamB2StudentGuideSectionsGoldEn.map((section) => {
+  if (section.title === '1. Canonical Sequence') {
+    return {
+      ...section,
+      text: 'Study the 35 narrative chapters in order. After Chapter 35, continue directly to the B2 Knowledge Check. The original References page is archived for future B2 reference standardization.',
+      points: ['35 story chapters', 'Knowledge Check after Chapter 35', 'References archived safely'],
+    };
+  }
+  if (section.title === '4. Review and Final') {
+    return {
+      ...section,
+      title: '4. Knowledge, Review, and Final',
+      text: 'After the narrative, complete the 8-activity Knowledge Check, the 8-question Review Challenge, both glossary sections, and the 10-activity Final Challenge.',
+      points: ['Knowledge: 8', 'Review: 8', 'Final: 10'],
+    };
+  }
+  return section;
+});
+
+const abrahamB2StudentGuideSectionsRuntimeAr = abrahamB2StudentGuideSectionsGoldAr.map((section) => {
+  if (section.title === '1. التسلسل المعتمد') {
+    return {
+      ...section,
+      text: 'ادرس الفصول السردية الخمسة والثلاثين بالترتيب. بعد الفصل 35 انتقل مباشرة إلى اختبار المعرفة B2. حُفظت صفحة المراجع الأصلية في الأرشيف لتوحيد صفحات المراجع في كتب B2 لاحقاً.',
+      points: ['35 فصلاً سردياً', 'اختبار المعرفة بعد الفصل 35', 'المراجع محفوظة في الأرشيف'],
+    };
+  }
+  if (section.title === '4. المراجعة والنهائي') {
+    return {
+      ...section,
+      title: '4. المعرفة والمراجعة والنهائي',
+      text: 'بعد الفصول السردية أكمل اختبار المعرفة المكون من 8 أنشطة، ثم مراجعة من 8 أسئلة، ثم قسمي المعجم، ثم التحدي النهائي المكون من 10 أنشطة.',
+      points: ['المعرفة: 8', 'المراجعة: 8', 'النهائي: 10'],
+    };
+  }
+  return section;
+});
+
+const abrahamB2StudentGuideTextRuntimeEn = abrahamB2StudentGuideTextGoldEn
+  .replace('After the narrative, keep the canonical References page as reference material, complete the 8-question Review Challenge, review both glossary sections, and finish with the 10-question Final Challenge.', 'After the narrative, complete the 8-activity Knowledge Check, then the 8-question Review Challenge, review both glossary sections, and finish with the 10-activity Final Challenge.')
+  .replace('There is no dedicated Knowledge Check page in this canonical book, so no new page is invented.', 'The original References page is archived safely for future B2 reference standardization.');
+
+const abrahamB2StudentGuideTextRuntimeAr = abrahamB2StudentGuideTextGoldAr
+  .replace('بعد الفصول السردية، أبقِ صفحة المراجع مرجعاً كما هي، وأكمل تحدي المراجعة المكون من 8 أسئلة، وراجع قسمي المعجم، ثم أنجز التحدي النهائي المكون من 10 أسئلة.', 'بعد الفصول السردية، أكمل اختبار المعرفة المكون من 8 أنشطة، ثم تحدي المراجعة المكون من 8 أسئلة، وراجع قسمي المعجم، ثم أنجز التحدي النهائي المكون من 10 أنشطة.')
+  .replace('لا توجد صفحة Knowledge مستقلة في البنية المعتمدة، ولذلك لا نضيف صفحة جديدة.', 'حُفظت صفحة المراجع الأصلية في الأرشيف لتوحيد صفحات المراجع في كتب B2 لاحقاً.');
+
 export const abrahamB2HighlightTargets = abrahamB2HighlightStandard.targets;
 const abrahamB2Parallel = applyValidatedAdvancedParallelLearning({
   englishPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.englishPages, 'en'),
@@ -109,11 +155,17 @@ export const abrahamB2BookDataEn: BookData = {
   baseFontSize: 12,
   pages: abrahamB2Parallel.englishPages,
   teacherGuide: abrahamB2GuidesEn.teacherGuide,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldEn,
-  studentGuideMetadata: abrahamB2StudentGuideMetadataGoldEn,
-  studentGuideSections: abrahamB2StudentGuideSectionsGoldEn,
+  teacherGuideMetadata: {
+    ...abrahamB2TeacherGuideMetadataGoldEn,
+    estimatedDuration: '35 chapter lessons plus Knowledge Check, review, and final assessment',
+  },
+  studentGuideMetadata: {
+    ...abrahamB2StudentGuideMetadataGoldEn,
+    estimatedStudyTime: '35 chapter sessions plus Knowledge Check, review, and final assessment',
+  },
+  studentGuideSections: abrahamB2StudentGuideSectionsRuntimeEn,
   selfStudyGuide: abrahamB2GuidesEn.selfStudyGuide,
-  studentGuideText: abrahamB2StudentGuideTextGoldEn
+  studentGuideText: abrahamB2StudentGuideTextRuntimeEn
 };
 
 export const abrahamB2BookDataAr: BookData = {
@@ -123,9 +175,15 @@ export const abrahamB2BookDataAr: BookData = {
   baseFontSize: 14,
   pages: abrahamB2Parallel.arabicPages,
   teacherGuide: abrahamB2GuidesAr.teacherGuide,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldAr,
-  studentGuideMetadata: abrahamB2StudentGuideMetadataGoldAr,
-  studentGuideSections: abrahamB2StudentGuideSectionsGoldAr,
+  teacherGuideMetadata: {
+    ...abrahamB2TeacherGuideMetadataGoldAr,
+    estimatedDuration: '35 حصة فصلية إضافة إلى اختبار المعرفة والمراجعة والتقييم النهائي',
+  },
+  studentGuideMetadata: {
+    ...abrahamB2StudentGuideMetadataGoldAr,
+    estimatedStudyTime: '35 جلسة فصلية إضافة إلى اختبار المعرفة والمراجعة والتقييم النهائي',
+  },
+  studentGuideSections: abrahamB2StudentGuideSectionsRuntimeAr,
   selfStudyGuide: abrahamB2GuidesAr.selfStudyGuide,
-  studentGuideText: abrahamB2StudentGuideTextGoldAr
+  studentGuideText: abrahamB2StudentGuideTextRuntimeAr
 };
