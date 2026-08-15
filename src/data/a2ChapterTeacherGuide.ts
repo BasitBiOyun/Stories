@@ -25,9 +25,6 @@ const buildEnglishSection = (page: PageData, chapterNumber: number): TeacherGuid
   const evidence = chapterEvidence(page);
   const words = evidence.words.join(', ');
   const hasSecondAnchor = Boolean(evidence.secondaryTitle && evidence.secondaryIdea);
-  const secondAnchor = hasSecondAnchor
-    ? `${evidence.secondaryTitle}: ${evidence.secondaryIdea}`
-    : evidence.quickQuestion || evidence.primaryIdea;
 
   return {
     chapter: `Chapter ${chapterNumber}: ${page.title}`,
@@ -44,7 +41,7 @@ const buildEnglishSection = (page: PageData, chapterNumber: number): TeacherGuid
         ? `Connect ${evidence.primaryTitle} and ${evidence.secondaryTitle} with one fact from the chapter.`
         : `Retell one important event from ${page.title} in one or two sentences.`,
     ],
-    pedagogy: `Teach ${page.title} through text evidence rather than extra background information. Start with ${evidence.primaryTitle}, ask learners to locate the sentence behind the hotspot, then use ${hasSecondAnchor ? evidence.secondaryTitle : 'the Quick Challenge'} as a second evidence check. Keep every factual explanation inside the chapter.` ,
+    pedagogy: `Teach ${page.title} through text evidence rather than extra background information. Start with ${evidence.primaryTitle}, ask learners to locate the sentence behind the hotspot, then use ${hasSecondAnchor ? evidence.secondaryTitle : 'the Quick Challenge'} as a second evidence check. Keep every factual explanation inside the chapter.`,
     grammarFocus: evidence.words.length >= 2
       ? `Choose one chapter sentence containing “${evidence.words[0]}” and another containing “${evidence.words[1]}”. Notice the verb form and word order already used in those sentences; use them as short speaking models rather than teaching a separate grammar topic.`
       : 'Use one short sentence from the chapter as a speaking model and notice its verb form and word order.',
