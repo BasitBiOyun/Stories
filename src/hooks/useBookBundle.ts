@@ -27,6 +27,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
 
   useEffect(() => {
     let cancelled = false;
+    setActiveBilingualBookPair(null);
     setPair(null);
     setError(null);
 
@@ -34,6 +35,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       setLoading(false);
       return () => {
         cancelled = true;
+        setActiveBilingualBookPair(null);
       };
     }
 
@@ -51,24 +53,24 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
     load()
       .then(loadedPair => {
         if (cancelled) return;
+        // Register before state publication so VocabularyWord sees the complete
+        // bilingual pair on its very first render for this book.
+        setActiveBilingualBookPair(loadedPair);
         setPair(loadedPair);
         setLoading(false);
       })
       .catch(reason => {
         if (cancelled) return;
+        setActiveBilingualBookPair(null);
         setError(reason instanceof Error ? reason : new Error(String(reason)));
         setLoading(false);
       });
 
     return () => {
       cancelled = true;
+      setActiveBilingualBookPair(null);
     };
   }, [definition]);
-
-  useEffect(() => {
-    setActiveBilingualBookPair(pair);
-    return () => setActiveBilingualBookPair(null);
-  }, [pair]);
 
   return { definition, pair, loading, error };
 };
