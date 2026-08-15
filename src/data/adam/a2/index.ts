@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
 import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
@@ -11,8 +12,21 @@ import { validateAdamA2HighlightContract } from './highlightValidation';
 
 validateAdamA2HighlightContract(adamA2PagesQualityFinalized, adamA2PagesArQualityFinalized);
 
-const adamA2PagesLockedEn = applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en');
-const adamA2PagesLockedAr = applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar');
+const adamGlossaryConfig = {
+  storyIds: Array.from({ length: 10 }, (_, index) => index + 1),
+  glossaryPageIds: [14, 15] as [number, number],
+};
+
+const adamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en'),
+  adamGlossaryConfig,
+  'en',
+);
+const adamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar'),
+  adamGlossaryConfig,
+  'ar',
+);
 
 export const adamA2BookDataEn: BookData = {
   id: 'a2-prophets-en',
@@ -41,5 +55,4 @@ export const adamA2BookDataAr: BookData = {
   studentGuideText: adamA2StudentGuideTextAr,
 };
 
-// For backward compatibility or default export
 export const adamA2BookData = adamA2BookDataEn;
