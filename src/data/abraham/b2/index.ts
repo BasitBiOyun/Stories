@@ -162,6 +162,11 @@ export const abrahamB2BookDataEn: BookData = {
   studentGuideMetadata: {
     ...abrahamB2StudentGuideMetadataGoldEn,
     estimatedStudyTime: '35 chapter sessions plus Knowledge Check, review, and final assessment',
+    recommendedUse: [
+      'One chapter per session.',
+      'Reread after weak or incorrect answers.',
+      'After Chapter 35, complete Knowledge Check 8, Review 8, both glossary sections, and Final 10.',
+    ],
   },
   studentGuideSections: abrahamB2StudentGuideSectionsRuntimeEn,
   selfStudyGuide: abrahamB2GuidesEn.selfStudyGuide,
@@ -182,6 +187,11 @@ export const abrahamB2BookDataAr: BookData = {
   studentGuideMetadata: {
     ...abrahamB2StudentGuideMetadataGoldAr,
     estimatedStudyTime: '35 جلسة فصلية إضافة إلى اختبار المعرفة والمراجعة والتقييم النهائي',
+    recommendedUse: [
+      'فصل واحد في كل جلسة.',
+      'أعد القراءة بعد الإجابات الضعيفة أو الخاطئة.',
+      'بعد الفصل 35 أكمل اختبار المعرفة 8، والمراجعة 8، وقسمي المعجم، والتحدي النهائي 10.',
+    ],
   },
   studentGuideSections: abrahamB2StudentGuideSectionsRuntimeAr,
   selfStudyGuide: abrahamB2GuidesAr.selfStudyGuide,
