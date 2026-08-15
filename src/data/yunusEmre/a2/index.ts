@@ -67,6 +67,14 @@ const englishDerivedReplacements: Array<[string, string]> = [
     'In the story, the wood is presented as a symbol of Yunus’s ego.',
   ],
   [
+    'He believed crookedness had no place in the teacher’s house.',
+    'The chapter says Yunus never brought crooked wood and said, “Crooked wood cannot go into the dervish house.”',
+  ],
+  [
+    'What does “straight wood” teach us about honesty?',
+    'According to the story, how is straight wood connected to Yunus’s training of his heart and ego?',
+  ],
+  [
     'Why did Yunus not pick many flowers?',
     'According to Yunus in the story, why did he not pick many flowers?',
   ],
