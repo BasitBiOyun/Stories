@@ -81,11 +81,20 @@ export const getActiveBilingualCounterpart = (
   const normalizedDefinition = definition.trim();
   if (!normalizedDefinition) return null;
 
-  const pair = activePairs.find((candidate) => {
-    const primary = candidate[language];
-    return primary.definition.trim() === normalizedDefinition
-      && sameVisibleTarget(word, primary.word, language);
-  });
+  const candidates = activePairs.filter((candidate) => (
+    candidate[language].definition.trim() === normalizedDefinition
+  ));
+  const normalizedSurface = normalizeHighlightText(word, language);
+
+  // Canonical surface wins. Morphology matching is only a fallback for the
+  // actual prose surface (plural, clitic, inflected form, etc.). This prevents
+  // a nearby Arabic form with the same learner definition from stealing a pair.
+  const exactPair = candidates.find((candidate) => (
+    normalizeHighlightText(candidate[language].word, language) === normalizedSurface
+  ));
+  const pair = exactPair ?? candidates.find((candidate) => (
+    sameVisibleTarget(word, candidate[language].word, language)
+  ));
   if (!pair) return null;
 
   if (language === 'ar') {
