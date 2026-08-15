@@ -37,7 +37,7 @@ export const applyA2ArabicDefinitionStandard = (
   definitions: A2ArabicDefinitionOverrides,
   config: A2HighlightStandardConfig,
 ): A2HighlightStandardResult => {
-  const targets = Object.fromEntries(config.storyIds.map((chapterId) => {
+  const targets: A2HighlightStandardResult['targets'] = Object.fromEntries(config.storyIds.map((chapterId) => {
     const chapterDefinitions = definitions[chapterId];
     const chapterTargets = (result.targets[chapterId] ?? []).map((target) => {
       const reviewed = findDefinition(chapterDefinitions, target.en.word);
