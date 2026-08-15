@@ -117,6 +117,15 @@ export const mosesA2HighlightConfig: A2HighlightStandardConfig = {
       help: { word: 'الْمُسَاعَدَةِ' },
       sheep: { word: 'غَنَمَهُمَا' },
     },
+    11: {
+      chest: { word: 'جَيْبِكَ' },
+    },
+    12: {
+      laughed: { word: 'سَخِرَ' },
+    },
+    14: {
+      prepared: { word: 'أَعَدَّ' },
+    },
   },
 };
 
