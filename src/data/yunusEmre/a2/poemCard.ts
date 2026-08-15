@@ -40,6 +40,10 @@ export const applyYunusA2PoemCard = (pages: PageData[]): PageData[] => pages.map
   return { ...page, content: page.content.replace(dervishVerseEnglish, dervishVerseCard) };
 });
 
-/** Canonical guards can reverse the presentation wrapper before hashing story prose. */
+/** Canonical guards can reverse the English presentation wrapper before hashing story prose. */
 export const restoreYunusA2LockedPoemProse = (content: string): string =>
   content.replace(dervishVerseCard, dervishVerseEnglish);
+
+/** Arabic Chapter 3 already contains the translated verse; these tags are UI-only markers. */
+export const restoreYunusA2ArabicPoemProse = (content: string): string =>
+  content.replace('[POEM]\n', '').replace('\n[/POEM]', '');
