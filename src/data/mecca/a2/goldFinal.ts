@@ -1,4 +1,5 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
+import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
 import {
   applyA2GoldPages,
   buildA2SelfStudyGuide,
@@ -66,19 +67,31 @@ const basePagesAr = applyA2GoldPages({
   language: 'ar',
 });
 
-export const meccaA2PagesFinalEn = applyA2VocabularyGold({
+const vocabularyGoldEn = applyA2VocabularyGold({
   pages: basePagesEn,
   storyIds: meccaA2GoldConfig.storyIds,
   vocabularyPageId: 15,
   language: 'en',
 });
 
-export const meccaA2PagesFinalAr = applyA2VocabularyGold({
+const vocabularyGoldAr = applyA2VocabularyGold({
   pages: basePagesAr,
   storyIds: meccaA2GoldConfig.storyIds,
   vocabularyPageId: 15,
   language: 'ar',
 });
+
+export const meccaA2HighlightConfig: A2HighlightStandardConfig = {
+  storyKey: 'Mecca',
+  storyIds: meccaA2GoldConfig.storyIds,
+  glossaryPageIds: meccaA2GoldConfig.glossaryPageIds,
+};
+
+const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, meccaA2HighlightConfig);
+
+export const meccaA2HighlightTargets = standardized.targets;
+export const meccaA2PagesFinalEn = standardized.englishPages;
+export const meccaA2PagesFinalAr = standardized.arabicPages;
 
 export const meccaA2TeacherGuideFinalEn = buildA2TeacherGuide(meccaA2PagesFinalEn, meccaA2GoldConfig.storyIds, 'en');
 export const meccaA2TeacherGuideFinalAr = buildA2TeacherGuide(meccaA2PagesFinalAr, meccaA2GoldConfig.storyIds, 'ar');
