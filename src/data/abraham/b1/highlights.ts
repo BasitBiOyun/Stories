@@ -51,4 +51,52 @@ export const abrahamB1ExplicitHighlightTargets: Record<number, readonly B1Explic
       ar: { word: 'تَجاهَلوه', definition: 'لَمْ يُعِيرُوهُ اهْتِمَامًا وَلَمْ يَسْتَجِيبُوا لَهُ.' },
     },
   ],
+  7: [
+    {
+      en: { word: 'smashed', definition: 'Broken violently into many pieces.' },
+      ar: { word: 'مَحْطُومة', definition: 'مَكْسُورَةٌ بِعُنْفٍ إِلَى قِطَعٍ كَثِيرَةٍ.' },
+    },
+    {
+      en: { word: 'forefathers', definition: 'Ancestors; people from earlier generations.' },
+      ar: { word: 'آباءهم', definition: 'الْأَجْدَادُ وَالنَّاسُ مِنْ أَجْيَالٍ سَابِقَةٍ.' },
+    },
+    {
+      en: { word: 'arrogant', definition: 'Too proud to accept the truth or admit a mistake.' },
+      ar: { word: 'مُتَكَبِّرين', definition: 'مُتَكَبِّرُونَ بِدَرَجَةٍ تَمْنَعُهُمْ مِنْ قَبُولِ الْحَقِّ أَوِ الِاعْتِرَافِ بِالْخَطَأِ.' },
+    },
+  ],
+  8: [
+    {
+      en: { word: 'approach', definition: 'To come near something or someone.' },
+      ar: { word: 'الاقتراب', definition: 'أَنْ تَصِيرَ قَرِيبًا مِنْ شَيْءٍ أَوْ شَخْصٍ.' },
+    },
+    {
+      en: { word: 'catapult', definition: 'A machine used in the past to throw heavy objects or people.' },
+      ar: { word: 'مَنْجَنِيق', definition: 'آلَةٌ اسْتُخْدِمَتْ قَدِيمًا لِرَمْيِ الْأَجْسَامِ الثَّقِيلَةِ أَوِ الْأَشْخَاصِ.' },
+    },
+  ],
+  9: [
+    {
+      en: { word: 'miracle', definition: 'A sign from Allah that cannot be explained by ordinary power.' },
+      ar: { word: 'المعجزة', definition: 'آيَةٌ مِنَ اللهِ لَا يُمْكِنُ تَفْسِيرُهَا بِالْقُدْرَاتِ الْعَادِيَّةِ.' },
+    },
+    {
+      en: { word: 'rage', definition: 'Very strong anger.' },
+      ar: { word: 'غضبهم', definition: 'غَضَبٌ شَدِيدٌ جِدًّا.' },
+    },
+  ],
+  13: [
+    {
+      en: { word: 'foundations', definition: 'The strong base under a building.' },
+      ar: { word: 'أساسات', definition: 'الْقَاعِدَةُ الْقَوِيَّةُ الَّتِي يَقُومُ عَلَيْهَا الْبِنَاءُ.' },
+    },
+    {
+      en: { word: 'Hajj', definition: 'The pilgrimage to Mecca, one of the main acts of worship in Islam.' },
+      ar: { word: 'الحجُّ', definition: 'زِيَارَةُ مَكَّةَ الْمُكَرَّمَةِ لِأَدَاءِ شَعَائِرَ مَعْلُومَةٍ، وَهِيَ مِنْ أَعْظَمِ عِبَادَاتِ الْإِسْلَامِ.' },
+    },
+    {
+      en: { word: 'Oneness', definition: 'The belief that Allah is One with no partner, rival, or helper.' },
+      ar: { word: 'وحدانية', definition: 'الْإِيمَانُ بِأَنَّ اللهَ وَاحِدٌ لَا شَرِيكَ لَهُ وَلَا نِدَّ وَلَا مُعِينَ.' },
+    },
+  ],
 };
