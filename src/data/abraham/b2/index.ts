@@ -40,8 +40,6 @@ const abrahamB2SourceDescriptionOverridesEn = {
   },
 } as const;
 
-export const adamB2ReferencesTemporarilyArchived = true;
-
 export const abrahamB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(abrahamB2PagesGoldEn, {
   language: 'en',
   maxUniqueHighlights: 10,
