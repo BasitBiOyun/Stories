@@ -8,6 +8,7 @@ import { mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGui
 import { mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { mosesB1StudentGuideSectionsAr, mosesB1StudentGuideTextAr, mosesB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { mosesB1PagesRolloutEn, mosesB1PagesRolloutAr, mosesB1RolloutConfig } from './rollout';
+import { mosesB1ExplicitHighlightTargets } from './highlights';
 
 import { mosesA2TeacherGuideMetadata } from '../a2/en/teacherGuide';
 import { mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from '../a2/en/selfStudyGuide';
@@ -29,6 +30,7 @@ const mosesB1HighlightStandard = applyB1HighlightStandard(mosesB1PagesLockedEn, 
   storyIds: mosesB1RolloutConfig.storyIds,
   glossaryPageIds: mosesB1RolloutConfig.glossaryPageIds,
   vocabularyPageId: mosesB1RolloutConfig.vocabularyPageId,
+  explicitTargets: mosesB1ExplicitHighlightTargets,
 });
 
 export const mosesB1HighlightTargets = mosesB1HighlightStandard.targets;
