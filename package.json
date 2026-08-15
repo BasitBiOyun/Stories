@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "prebuild": "npm run validate:story-language-lock",
+    "prebuild": "npm run validate:a2-highlight-aggregate && npm run validate:story-language-lock",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
@@ -19,6 +19,7 @@
     "validate:content": "tsx scripts/validation/validateContent.ts",
     "validate:guides": "tsx scripts/validation/validateGuides.ts",
     "validate:story-language-lock": "tsx scripts/validation/validateStoryLanguageLock.ts",
+    "validate:a2-highlight-aggregate": "tsx scripts/validation/validateA2HighlightAggregate.ts",
     "validate:adam-a2-learning": "tsx scripts/validation/validateAdamA2Learning.ts",
     "validate:a2-rollout": "tsx scripts/validation/validateA2Rollout.ts",
     "validate:b1-rollout": "tsx scripts/validation/validateB1Rollout.ts && tsx scripts/validation/validateB1Safety.ts",
