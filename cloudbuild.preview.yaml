@@ -1,0 +1,63 @@
+# Preview continuous deployment: GitHub preview branch -> Cloud Build -> Cloud Run.
+# The trigger should point at this file and match only the `preview` branch.
+# This uses Google Cloud build minutes, not GitHub Actions minutes.
+
+substitutions:
+  _REGION: us-west1
+  _AR_REPOSITORY: cloud-run-source-deploy
+  _IMAGE: stories-preview
+  _SERVICE: stories-preview
+
+steps:
+  # Pull the previous preview image so unchanged Docker layers can be reused.
+  - id: pull-cache
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - >-
+        docker pull
+        ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+        || true
+
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    env:
+      - DOCKER_BUILDKIT=1
+    args:
+      - build
+      - --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+      - --build-arg
+      - BUILDKIT_INLINE_CACHE=1
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+      - .
+
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - >-
+        docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
+        && docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
+      - --region=${_REGION}
+      - --platform=managed
+      - --quiet
+      - --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME
+      - --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
+
+# Keep enough room for a cold PDF-producing build. Cached incremental builds
+# should be substantially shorter.
+timeout: 1200s
