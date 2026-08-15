@@ -25,6 +25,15 @@ interface CanonicalBaseline {
   books: CanonicalBookRecord[];
 }
 
+type CanonicalStoryComparison = {
+  schemaVersion: 1;
+  books: Array<{
+    key: string;
+    language: 'en' | 'ar';
+    storyPages: Array<Omit<CanonicalPageRecord, 'audioUrl'>>;
+  }>;
+};
+
 const hash = (value: string): string => createHash('sha256').update(value, 'utf8').digest('hex');
 const defaultPath = resolve('scripts/validation/canonical-baseline.json');
 const args = process.argv.slice(2);
@@ -34,9 +43,7 @@ const outputPath = outputArgIndex >= 0 ? resolve(args[outputArgIndex + 1]) : def
 
 /**
  * The story prose is locked. Previously approved mechanical corrections are
- * intentionally normalized back to their baseline spelling/format only for
- * comparison, so the canonical guard stays strict without treating those
- * approved typo/punctuation/unsupported-markdown fixes as semantic rewrites.
+ * normalized back to their baseline form only for canonical comparison.
  */
 const normalizeApprovedMechanicalFixesForBaseline = (
   storyId: string,
@@ -86,7 +93,9 @@ const createBaseline = async (): Promise<CanonicalBaseline> => {
   const books: CanonicalBookRecord[] = [];
 
   for (const definition of bookRegistry) {
-    const pair = await definition.load();
+    // Canonical validation deliberately reads the source/prepared book BEFORE
+    // Learning System/UI finalization. Runtime media has its own Storage audit.
+    const pair = await definition.loadSource();
     for (const language of ['en', 'ar'] as const) {
       const book = pair[language];
       books.push({
@@ -126,9 +135,19 @@ const createBaseline = async (): Promise<CanonicalBaseline> => {
   };
 };
 
-const stableForComparison = (baseline: CanonicalBaseline): Omit<CanonicalBaseline, 'generatedAt'> => ({
+/**
+ * Canonical comparison protects story identity/order/title/subtitle/prose only.
+ * Audio URLs and Storage folder candidates are intentionally excluded because
+ * runtime media is reconciled and audited by the central media contract.
+ * Existing baseline files remain readable; no baseline rewrite is required.
+ */
+const stableForComparison = (baseline: CanonicalBaseline): CanonicalStoryComparison => ({
   schemaVersion: baseline.schemaVersion,
-  books: baseline.books,
+  books: baseline.books.map(book => ({
+    key: book.key,
+    language: book.language,
+    storyPages: book.storyPages.map(({ audioUrl: _audioUrl, ...story }) => story),
+  })),
 });
 
 const main = async () => {
@@ -148,13 +167,13 @@ const main = async () => {
   const approvedComparable = JSON.stringify(stableForComparison(approved), null, 2);
 
   if (currentComparable !== approvedComparable) {
-    console.error('Canonical story text, chapter identity/order, or audio references changed.');
-    console.error('Technical refactors must not update the canonical baseline.');
+    console.error('Canonical story prose or chapter identity/order changed.');
+    console.error('Technical learning/media refactors must not update the canonical story baseline.');
     process.exitCode = 1;
     return;
   }
 
-  console.log(`Canonical content verified across ${current.books.length} language-level books.`);
+  console.log(`Canonical story identity and prose verified across ${current.books.length} language-level books.`);
 };
 
 await main();
