@@ -76,6 +76,28 @@ const validateExerciseLogic = (english: Exercise, arabic: Exercise, label: strin
   ) {
     fail(`${label} correct-answer positions/values differ.`);
   }
+
+  if (english.type === 'matching') {
+    const englishPairs = english.matchingPairs || [];
+    const arabicPairs = arabic.matchingPairs || [];
+    if (englishPairs.length < 3 || arabicPairs.length < 3 || englishPairs.length !== arabicPairs.length) {
+      fail(`${label} matching-pair structures differ or contain fewer than three pairs.`);
+    }
+  }
+
+  if (english.type === 'tap-reveal') {
+    const englishItems = english.tapRevealItems || [];
+    const arabicItems = arabic.tapRevealItems || [];
+    if (!englishItems.length || englishItems.length !== arabicItems.length) {
+      fail(`${label} tap-reveal structures differ.`);
+    }
+  }
+
+  if (english.type === 'fill-blanks') {
+    if (!english.fillBlanksText?.includes('[blank]') || !arabic.fillBlanksText?.includes('[blank]')) {
+      fail(`${label} fill-blank sentence is missing in one language.`);
+    }
+  }
 };
 
 const correctOptionIndex = (question: QuizQuestion): number =>
@@ -86,11 +108,18 @@ const validateOutputLogic = (
   arabicPages: PageData[],
   config: A2GoldPageConfig,
 ): void => {
+  const quickTypes = new Set<string>();
+
   config.storyIds.forEach((chapterId) => {
     const english = requirePage(englishPages, chapterId, 'English').exercises?.[0];
     const arabic = requirePage(arabicPages, chapterId, 'Arabic').exercises?.[0];
     if (!english || !arabic) fail(`Chapter ${chapterId} Quick Challenge is missing.`);
     validateExerciseLogic(english, arabic, `Chapter ${chapterId} Quick Challenge`);
+    quickTypes.add(english.type);
+  });
+
+  ['matching', 'fill-blanks', 'tap-reveal'].forEach((type) => {
+    if (!quickTypes.has(type)) fail(`Quick Challenges do not include required activity type: ${type}.`);
   });
 
   const englishKnowledge = requirePage(englishPages, config.knowledgeCheckPageId, 'English').exercises || [];
@@ -130,8 +159,8 @@ const validateOutputLogic = (
  * Final bilingual guard for A2.
  *
  * English and Arabic use the same learning algorithm but remain grounded in
- * their own chapter data. This wrapper prevents either the source shape or the
- * generated exercise logic from silently drifting between languages.
+ * their own chapter data. This wrapper prevents either the source shape,
+ * generated exercise logic or activity-type variety from silently drifting.
  */
 export const applyValidatedA2ParallelLearning = ({
   englishPages,
