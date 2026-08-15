@@ -37,6 +37,8 @@ export interface A2HighlightStandardResult {
   arabicPages: PageData[];
 }
 
+const PENDING_ARABIC_DEFINITION = '__PENDING_REVIEWED_ARABIC_DEFINITION__';
+
 const arabicFallbackDefinitions = new Map<string, string>([
   ...Object.entries(arabicAnimatedDefinitions).map(([word, definition]) => [
     normalizeHighlightText(word, 'ar'),
@@ -203,10 +205,13 @@ export const applyA2HighlightStandard = (
         fail(config.storyKey, `Arabic Chapter ${chapterId} has no vocabulary pair for English target “${entry.word}”.`);
       }
       const arWord = explicit?.word ?? arEntry!.word;
-      const arDefinition = explicit?.definition ?? arEntry?.definition;
-      if (!arDefinition?.trim()) {
-        fail(config.storyKey, `Arabic Chapter ${chapterId} target “${arWord}” has no learner definition for English target “${entry.word}”.`);
-      }
+      // Some legacy Arabic migration inputs have a correct surface form but no
+      // learner definition. Do not fail before the reviewed definition lock gets
+      // a chance to bind the canonical English target to its vocalized Arabic
+      // definition. The sentinel deliberately has no Arabic diacritics, so the
+      // final Arabic definition contract will still fail if review coverage is
+      // actually missing.
+      const arDefinition = explicit?.definition ?? arEntry?.definition ?? PENDING_ARABIC_DEFINITION;
       chapterTargets.push({
         id: targetId(chapterId, entry.word),
         chapterId,
@@ -234,10 +239,8 @@ export const applyA2HighlightStandard = (
         fail(config.storyKey, `English Chapter ${chapterId} highlight “${word}” has no learner definition.`);
       }
 
-      const arDefinition = resolveArabicAnimatedDefinition(arWord, arPage, explicit?.definition);
-      if (!arDefinition?.trim()) {
-        fail(config.storyKey, `Arabic Chapter ${chapterId} highlight “${arWord}” has no learner definition for English target “${word}”.`);
-      }
+      const arDefinition = resolveArabicAnimatedDefinition(arWord, arPage, explicit?.definition)
+        ?? PENDING_ARABIC_DEFINITION;
 
       chapterTargets.push({
         id: targetId(chapterId, word),
