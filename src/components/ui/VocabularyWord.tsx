@@ -4,12 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
-import { adamA2HighlightTargets } from '../../data/adam/a2/highlights';
-
-const normalizePairSurface = (value: string) => value
-  .replace(/[.,!?;:\"'“”‘’`()،؛؟]/g, '')
-  .toLowerCase()
-  .trim();
+import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCards';
 
 export const VocabularyWord = ({ 
   word, 
@@ -38,22 +33,12 @@ export const VocabularyWord = ({
   const genericFallback = t('nav.keyWordFallback').trim();
   const hasDefinition = Boolean(normalizedDefinition) && normalizedDefinition !== genericFallback;
 
-  // Adam A2 Chapter 1 bilingual-card pilot. Matching both the canonical story
-  // surface and its exact reviewed definition keeps the pilot isolated to this
-  // chapter without creating a second translation source.
-  const bilingualPair = useMemo(() => {
-    const surface = normalizePairSurface(word);
-    return (adamA2HighlightTargets[1] ?? []).find((target) => {
-      const primary = language === 'ar' ? target.ar : target.en;
-      return normalizePairSurface(primary.word) === surface
-        && primary.definition.trim() === normalizedDefinition;
-    });
-  }, [word, normalizedDefinition, language]);
-
-  const pairedEntry = bilingualPair
-    ? (language === 'ar' ? bilingualPair.en : bilingualPair.ar)
-    : null;
-  const pairedLanguage = language === 'ar' ? 'en' : 'ar';
+  const pairedEntry = useMemo(() => getActiveBilingualCounterpart(
+    language === 'ar' ? 'ar' : 'en',
+    word,
+    normalizedDefinition,
+  ), [word, normalizedDefinition, language]);
+  const pairedLanguage = pairedEntry?.language ?? (language === 'ar' ? 'en' : 'ar');
 
   const updateCoords = () => {
     if (triggerRef.current) {
