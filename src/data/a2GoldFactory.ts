@@ -41,6 +41,42 @@ interface BankItem {
   chapterId?: number;
 }
 
+const quizQuestionToBankItem = (quizQuestion: QuizQuestion): BankItem | null => {
+  const question = quizQuestion.question?.trim();
+  const correctIndex = quizQuestion.options.findIndex((option) => option.isCorrect);
+  if (!question || correctIndex < 0) return null;
+
+  return {
+    exercise: {
+      id: `bank-${normalizeQuestion(question).slice(0, 48)}`,
+      type: 'multiple-choice',
+      question,
+      options: quizQuestion.options.map((option) => option.text),
+      correctAnswer: correctIndex,
+      feedback: { correct: '', incorrect: '' },
+    },
+  };
+};
+
+const collectPageObjectives = (
+  page: PageData | undefined,
+  bank: BankItem[],
+  chapterId?: number,
+): void => {
+  page?.exercises?.forEach((exercise) => {
+    if (isObjectiveExercise(exercise)) {
+      bank.push({ exercise, chapterId });
+    }
+
+    if (exercise.type === 'quiz-game') {
+      exercise.quizQuestions?.forEach((quizQuestion) => {
+        const item = quizQuestionToBankItem(quizQuestion);
+        if (item) bank.push(item);
+      });
+    }
+  });
+};
+
 const collectObjectiveBank = (
   pages: PageData[],
   config: A2GoldPageConfig,
@@ -48,13 +84,11 @@ const collectObjectiveBank = (
   const bank: BankItem[] = [];
 
   for (const id of config.storyIds) {
-    const page = pages.find((item) => item.id === id);
-    const exercise = page?.exercises?.find(isObjectiveExercise);
-    if (exercise) bank.push({ exercise, chapterId: id });
+    collectPageObjectives(pages.find((item) => item.id === id), bank, id);
   }
 
-  const knowledgePage = pages.find((item) => item.id === config.knowledgeCheckPageId);
-  knowledgePage?.exercises?.filter(isObjectiveExercise).forEach((exercise) => bank.push({ exercise }));
+  [config.knowledgeCheckPageId, config.reviewPageId, config.finalChallengePageId]
+    .forEach((pageId) => collectPageObjectives(pages.find((item) => item.id === pageId), bank));
 
   const seen = new Set<string>();
   return bank.filter(({ exercise }) => {
@@ -77,6 +111,49 @@ const pickEvenly = <T,>(items: T[], count: number): T[] => {
     picked.push(items[sourceIndex]);
   }
   return picked;
+};
+
+const bankItemKey = (item: BankItem): string => normalizeQuestion(item.exercise.question || '');
+
+const rotateBank = (items: BankItem[], offset: number): BankItem[] => {
+  if (!items.length) return [];
+  const normalizedOffset = ((offset % items.length) + items.length) % items.length;
+  return [...items.slice(normalizedOffset), ...items.slice(0, normalizedOffset)];
+};
+
+const selectAssessmentItems = (
+  items: BankItem[],
+  count: number,
+  usage: Map<string, number>,
+  offset = 0,
+): BankItem[] => {
+  const rotated = rotateBank(items, offset);
+  const selected: BankItem[] = [];
+  const selectedKeys = new Set<string>();
+
+  while (selected.length < count) {
+    const candidates = rotated.filter((item) => !selectedKeys.has(bankItemKey(item)));
+    if (!candidates.length) break;
+
+    const minimumUsage = Math.min(...candidates.map((item) => usage.get(bankItemKey(item)) || 0));
+    const leastUsed = candidates.filter((item) => (usage.get(bankItemKey(item)) || 0) === minimumUsage);
+    const needed = count - selected.length;
+    const picked = pickEvenly(leastUsed, Math.min(needed, leastUsed.length));
+
+    picked.forEach((item) => {
+      selected.push(item);
+      selectedKeys.add(bankItemKey(item));
+    });
+  }
+
+  return selected;
+};
+
+const markAssessmentUsage = (items: BankItem[], usage: Map<string, number>): void => {
+  items.forEach((item) => {
+    const key = bankItemKey(item);
+    usage.set(key, (usage.get(key) || 0) + 1);
+  });
 };
 
 const cloneObjective = (
@@ -233,9 +310,26 @@ export const applyA2GoldPages = ({
   if (objectiveBank.length < 10) {
     throw new Error(`A2 Gold requires at least 10 unique objective questions; found ${objectiveBank.length}.`);
   }
-  const knowledgeItems = pickEvenly(objectiveBank, 8);
-  const finalItems = pickEvenly([...objectiveBank].reverse(), 10);
-  const reviewItems = pickEvenly(objectiveBank, 8);
+
+  // Spread questions across the three assessment stages. A question is reused only
+  // after every less-used question has been considered, so repetition happens only
+  // when the authored source pool is too small to keep all 26 slots unique.
+  const assessmentUsage = new Map<string, number>();
+  const knowledgeItems = selectAssessmentItems(objectiveBank, 8, assessmentUsage, 0);
+  markAssessmentUsage(knowledgeItems, assessmentUsage);
+  const reviewItems = selectAssessmentItems(
+    objectiveBank,
+    8,
+    assessmentUsage,
+    Math.floor(objectiveBank.length / 3),
+  );
+  markAssessmentUsage(reviewItems, assessmentUsage);
+  const finalItems = selectAssessmentItems(
+    objectiveBank,
+    10,
+    assessmentUsage,
+    Math.floor((objectiveBank.length * 2) / 3),
+  );
 
   const midpoint = Math.ceil(storyPages.length / 2);
   const glossary1 = selectGlossary(storyPages, 0, midpoint, 12);
