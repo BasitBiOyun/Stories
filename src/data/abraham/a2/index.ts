@@ -1,8 +1,10 @@
-import { BookData, PageData } from '../../../types';
+import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { abrahamA2GoldConfig } from './gold';
 import {
   abrahamA2HighlightConfig,
   abrahamA2HighlightTargets,
@@ -18,32 +20,10 @@ import {
   abrahamA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const groundAbrahamA2EnglishDerivedAssessments = (pages: PageData[]): PageData[] => pages.map((page) => {
-  if (page.type === 'story' || !page.exercises?.length) return page;
-
-  return {
-    ...page,
-    exercises: page.exercises.map((exercise) =>
-      exercise.question === 'Abraham played with idols as if they were toys.'
-        ? {
-            ...exercise,
-            explanation: 'The chapter says Abraham played with the idols as toys, rode on their backs, and sometimes kicked them.',
-            feedback: {
-              ...exercise.feedback,
-              correct: 'Correct. The chapter says Abraham played with the idols as toys.',
-            },
-          }
-        : exercise
-    ),
-  };
-});
-
-const abrahamA2PagesLockedEn = groundAbrahamA2EnglishDerivedAssessments(
-  syncA2GlossariesFromStoryHighlights(
-    applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en'),
-    abrahamA2HighlightConfig,
-    'en',
-  ),
+const abrahamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en'),
+  abrahamA2HighlightConfig,
+  'en',
 );
 const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
   applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar'),
@@ -53,17 +33,23 @@ const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abrahamA2HighlightTargets, abrahamA2HighlightConfig);
 
-const abrahamA2TeacherGuideEn = buildA2ChapterTeacherGuide(abrahamA2PagesLockedEn, abrahamA2HighlightConfig.storyIds, 'en');
-const abrahamA2TeacherGuideAr = buildA2ChapterTeacherGuide(abrahamA2PagesLockedAr, abrahamA2HighlightConfig.storyIds, 'ar');
-const abrahamA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(abrahamA2PagesLockedEn, abrahamA2HighlightConfig.storyIds, 'en');
-const abrahamA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(abrahamA2PagesLockedAr, abrahamA2HighlightConfig.storyIds, 'ar');
+const abrahamA2Parallel = applyA2ParallelLearning({
+  englishPages: abrahamA2PagesLockedEn,
+  arabicPages: abrahamA2PagesLockedAr,
+  config: abrahamA2GoldConfig,
+});
+
+const abrahamA2TeacherGuideEn = buildA2ChapterTeacherGuide(abrahamA2Parallel.englishPages, abrahamA2HighlightConfig.storyIds, 'en');
+const abrahamA2TeacherGuideAr = buildA2ChapterTeacherGuide(abrahamA2Parallel.arabicPages, abrahamA2HighlightConfig.storyIds, 'ar');
+const abrahamA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(abrahamA2Parallel.englishPages, abrahamA2HighlightConfig.storyIds, 'en');
+const abrahamA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(abrahamA2Parallel.arabicPages, abrahamA2HighlightConfig.storyIds, 'ar');
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
   title: 'Stories of the Prophets: Abraham (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: abrahamA2PagesLockedEn,
+  pages: abrahamA2Parallel.englishPages,
   teacherGuide: abrahamA2TeacherGuideEn,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: abrahamA2SelfStudyGuideEn,
@@ -77,7 +63,7 @@ export const abrahamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: abrahamA2PagesLockedAr,
+  pages: abrahamA2Parallel.arabicPages,
   teacherGuide: abrahamA2TeacherGuideAr,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: abrahamA2SelfStudyGuideAr,
