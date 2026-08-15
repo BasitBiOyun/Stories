@@ -1,4 +1,4 @@
-import { BookData } from '../../../types';
+import { BookData, PageData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
@@ -18,10 +18,32 @@ import {
   abrahamA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const abrahamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en'),
-  abrahamA2HighlightConfig,
-  'en',
+const groundAbrahamA2EnglishDerivedAssessments = (pages: PageData[]): PageData[] => pages.map((page) => {
+  if (page.type === 'story' || !page.exercises?.length) return page;
+
+  return {
+    ...page,
+    exercises: page.exercises.map((exercise) =>
+      exercise.question === 'Abraham played with idols as if they were toys.'
+        ? {
+            ...exercise,
+            explanation: 'The chapter says Abraham played with the idols as toys, rode on their backs, and sometimes kicked them.',
+            feedback: {
+              ...exercise.feedback,
+              correct: 'Correct. The chapter says Abraham played with the idols as toys.',
+            },
+          }
+        : exercise
+    ),
+  };
+});
+
+const abrahamA2PagesLockedEn = groundAbrahamA2EnglishDerivedAssessments(
+  syncA2GlossariesFromStoryHighlights(
+    applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en'),
+    abrahamA2HighlightConfig,
+    'en',
+  ),
 );
 const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
   applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar'),
