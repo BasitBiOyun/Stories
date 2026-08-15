@@ -1,6 +1,9 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
+  meccaA2HighlightConfig,
+  meccaA2HighlightTargets,
   meccaA2PagesFinalAr,
   meccaA2PagesFinalEn,
   meccaA2SelfStudyGuideFinalAr,
@@ -17,8 +20,18 @@ import {
   meccaA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const meccaA2PagesLockedEn = applyA2FinalStoryLanguageLock(meccaA2PagesFinalEn, 'mecca', 'en');
-const meccaA2PagesLockedAr = applyA2FinalStoryLanguageLock(meccaA2PagesFinalAr, 'mecca', 'ar');
+const meccaA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(meccaA2PagesFinalEn, 'mecca', 'en'),
+  meccaA2HighlightConfig,
+  'en',
+);
+const meccaA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(meccaA2PagesFinalAr, 'mecca', 'ar'),
+  meccaA2HighlightConfig,
+  'ar',
+);
+
+validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2HighlightTargets, meccaA2HighlightConfig);
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
