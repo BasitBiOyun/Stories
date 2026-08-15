@@ -23,12 +23,23 @@ const basePagesEn = rawBasePagesEn.map((page) => {
   // by the current reader. Strip it from the effective Abraham A2 English story data.
   const { timedChunks: _timedChunks, syncPoints: _syncPoints, ...pageWithoutLegacySync } = page;
 
-  if (!pageWithoutLegacySync.animatedWords) return pageWithoutLegacySync;
-  if (pageWithoutLegacySync.id === 3) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'sets') };
-  if (pageWithoutLegacySync.id === 7) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'crazy') };
-  if (pageWithoutLegacySync.id === 9) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'rude') };
-  if (pageWithoutLegacySync.id === 10) return { ...pageWithoutLegacySync, animatedWords: pageWithoutLegacySync.animatedWords.filter((word) => word !== 'rise') };
-  return pageWithoutLegacySync;
+  const pageWithVocabularyFix = pageWithoutLegacySync.id === 5
+    ? {
+        ...pageWithoutLegacySync,
+        vocabulary: pageWithoutLegacySync.vocabulary?.map((entry) =>
+          entry.word.toLowerCase() === 'heals'
+            ? { ...entry, definition: 'Makes someone healthy again.' }
+            : entry
+        ),
+      }
+    : pageWithoutLegacySync;
+
+  if (!pageWithVocabularyFix.animatedWords) return pageWithVocabularyFix;
+  if (pageWithVocabularyFix.id === 3) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'sets') };
+  if (pageWithVocabularyFix.id === 7) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'crazy') };
+  if (pageWithVocabularyFix.id === 9) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'rude') };
+  if (pageWithVocabularyFix.id === 10) return { ...pageWithVocabularyFix, animatedWords: pageWithVocabularyFix.animatedWords.filter((word) => word !== 'rise') };
+  return pageWithVocabularyFix;
 });
 
 const vocabularyGoldEn = applyA2VocabularyGold({
