@@ -1,21 +1,15 @@
 import type { PageData } from '../types';
-import { normalizeHighlightText } from '../lib/highlightTextMatch';
 
 export interface PairedLearningSources {
   englishPages: PageData[];
   arabicPages: PageData[];
 }
 
-const sourceKey = (value: string, language: 'en' | 'ar') => normalizeHighlightText(value, language).trim();
-
 /**
- * Aligns only derived learning-source metadata; story prose is never changed.
- *
- * Hotspots are eligible only when the same hotspot ID exists in both languages.
- * Word Notes are paired by authored index. The effective source list is then
- * de-duplicated by BOTH English and Arabic visible labels across hotspots and
- * Word Notes. This guarantees that matching exercises select the same source
- * coordinates in both languages instead of independently dropping duplicates.
+ * Aligns only bilingual hotspot availability; story prose and visible Word Notes
+ * are never edited. Hotspots can feed assessments only when the same hotspot ID
+ * exists in both languages. Word Notes remain in their authored order/count so
+ * glossary/highlight contracts stay intact.
  */
 export const preparePairedLearningSources = ({
   englishPages,
@@ -46,46 +40,26 @@ export const preparePairedLearningSources = ({
     }
 
     const arabicHotspotsById = new Map((arabic.hotspots ?? []).map(hotspot => [hotspot.id, hotspot]));
-    const rawHotspotPairs = (english.hotspots ?? [])
+    const hotspotPairs = (english.hotspots ?? [])
       .map(englishHotspot => ({ english: englishHotspot, arabic: arabicHotspotsById.get(englishHotspot.id) }))
-      .filter((pair): pair is { english: NonNullable<PageData['hotspots']>[number]; arabic: NonNullable<PageData['hotspots']>[number] } => Boolean(pair.arabic));
+      .filter((pair): pair is {
+        english: NonNullable<PageData['hotspots']>[number];
+        arabic: NonNullable<PageData['hotspots']>[number];
+      } => Boolean(pair.arabic));
 
-    const seenEnglishLabels = new Set<string>();
-    const seenArabicLabels = new Set<string>();
-    const hotspotPairs = rawHotspotPairs.filter(pair => {
-      const englishKey = sourceKey(pair.english.title, 'en');
-      const arabicKey = sourceKey(pair.arabic.title, 'ar');
-      if (!englishKey || !arabicKey || seenEnglishLabels.has(englishKey) || seenArabicLabels.has(arabicKey)) return false;
-      seenEnglishLabels.add(englishKey);
-      seenArabicLabels.add(arabicKey);
-      return true;
-    });
-
-    const vocabularyPairs = englishVocabulary
-      .map((englishEntry, index) => ({ english: englishEntry, arabic: arabicVocabulary[index] }))
-      .filter(pair => Boolean(pair.arabic))
-      .filter(pair => {
-        const englishKey = sourceKey(pair.english.word, 'en');
-        const arabicKey = sourceKey(pair.arabic.word, 'ar');
-        if (!englishKey || !arabicKey || seenEnglishLabels.has(englishKey) || seenArabicLabels.has(arabicKey)) return false;
-        seenEnglishLabels.add(englishKey);
-        seenArabicLabels.add(arabicKey);
-        return true;
-      });
-
-    if (!hotspotPairs.length && !vocabularyPairs.length) {
-      throw new Error(`[Learning Source Pairing] Chapter ${id} has no distinct paired hotspot or Word Notes source.`);
+    if (!hotspotPairs.length && !englishVocabulary.length) {
+      throw new Error(`[Learning Source Pairing] Chapter ${id} has no paired hotspot or Word Notes source.`);
     }
 
     alignedEnglish.set(id, {
       ...english,
       hotspots: hotspotPairs.map(pair => pair.english),
-      vocabulary: vocabularyPairs.map(pair => pair.english),
+      vocabulary: englishVocabulary,
     });
     alignedArabic.set(id, {
       ...arabic,
       hotspots: hotspotPairs.map(pair => pair.arabic),
-      vocabulary: vocabularyPairs.map(pair => pair.arabic),
+      vocabulary: arabicVocabulary,
     });
   }
 
