@@ -1,9 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
+import { adamA2HighlightTargets } from '../../data/adam/a2/highlights';
+
+const normalizePairSurface = (value: string) => value
+  .replace(/[.,!?;:\"'“”‘’`()،؛؟]/g, '')
+  .toLowerCase()
+  .trim();
 
 export const VocabularyWord = ({ 
   word, 
@@ -31,6 +37,23 @@ export const VocabularyWord = ({
   const normalizedDefinition = definition?.trim() ?? '';
   const genericFallback = t('nav.keyWordFallback').trim();
   const hasDefinition = Boolean(normalizedDefinition) && normalizedDefinition !== genericFallback;
+
+  // Adam A2 Chapter 1 bilingual-card pilot. Matching both the canonical story
+  // surface and its exact reviewed definition keeps the pilot isolated to this
+  // chapter without creating a second translation source.
+  const bilingualPair = useMemo(() => {
+    const surface = normalizePairSurface(word);
+    return (adamA2HighlightTargets[1] ?? []).find((target) => {
+      const primary = language === 'ar' ? target.ar : target.en;
+      return normalizePairSurface(primary.word) === surface
+        && primary.definition.trim() === normalizedDefinition;
+    });
+  }, [word, normalizedDefinition, language]);
+
+  const pairedEntry = bilingualPair
+    ? (language === 'ar' ? bilingualPair.en : bilingualPair.ar)
+    : null;
+  const pairedLanguage = language === 'ar' ? 'en' : 'ar';
 
   const updateCoords = () => {
     if (triggerRef.current) {
@@ -152,6 +175,33 @@ export const VocabularyWord = ({
                   language !== 'ar' && "italic",
                   language === 'ar' ? "text-base sm:text-xl font-bold" : "text-xs sm:text-sm md:text-base"
                 )}>{normalizedDefinition}</span>
+
+                {pairedEntry && (
+                  <div
+                    dir={pairedLanguage === 'ar' ? 'rtl' : 'ltr'}
+                    lang={pairedLanguage}
+                    className={cn(
+                      "mt-3.5 sm:mt-4 pt-3.5 sm:pt-4 border-t border-gold/20",
+                      pairedLanguage === 'ar' ? "text-right" : "text-left"
+                    )}
+                  >
+                    <span className="font-display uppercase tracking-widest text-gold/70 text-[9px] sm:text-[10px] block mb-1.5">
+                      {pairedLanguage === 'ar' ? 'العربية' : 'English'}
+                    </span>
+                    <span className={cn(
+                      "font-serif font-bold text-gold block mb-1",
+                      pairedLanguage === 'ar' ? "text-lg sm:text-xl" : "text-sm sm:text-base"
+                    )}>
+                      {pairedEntry.word}
+                    </span>
+                    <span className={cn(
+                      "font-serif text-parchment/85 block leading-relaxed",
+                      pairedLanguage === 'ar' ? "text-base sm:text-lg" : "text-xs sm:text-sm md:text-base italic"
+                    )}>
+                      {pairedEntry.definition}
+                    </span>
+                  </div>
+                )}
 
                 {/* Dynamic arrow */}
                 <div 
