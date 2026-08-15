@@ -1,5 +1,7 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyB2HighlightStandard } from '../../b2HighlightStandard';
+import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   abrahamB2PagesGoldEn,
@@ -19,6 +21,7 @@ import {
   abrahamB2StudentGuideTextGoldAr,
   abrahamB2SelfStudyGuideGoldAr,
 } from './goldAr';
+import { abrahamB2ReviewedHighlightPairs } from './highlightPairs';
 
 const abrahamB2SourceTitleOverridesEn = {
   9: { 'b2-hs-9-2': 'Creator’s command' },
@@ -52,12 +55,28 @@ const abrahamB2PagesLockedAr = applyHotspotSourceLock(abrahamB2PagesBeforeHotspo
   level: 'B2',
 });
 
+const abrahamB2HighlightStandard = applyB2HighlightStandard(abrahamB2PagesLockedEn, abrahamB2PagesLockedAr, {
+  storyKey: 'Abraham',
+  storyIds: Array.from({ length: 35 }, (_, index) => index + 1),
+  glossaryPageIds: [38, 39],
+  explicitTargets: resolveB2ReviewedPairs(
+    abrahamB2PagesLockedEn,
+    abrahamB2PagesLockedAr,
+    'Abraham',
+    abrahamB2ReviewedHighlightPairs,
+  ),
+});
+
+export const abrahamB2HighlightTargets = abrahamB2HighlightStandard.targets;
+const abrahamB2PagesFinalEn = abrahamB2HighlightStandard.englishPages;
+const abrahamB2PagesFinalAr = abrahamB2HighlightStandard.arabicPages;
+
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: abrahamB2PagesLockedEn,
+  pages: abrahamB2PagesFinalEn,
   teacherGuide: abrahamB2TeacherGuideGoldEn,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldEn,
   studentGuideMetadata: abrahamB2StudentGuideMetadataGoldEn,
@@ -71,7 +90,7 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم (ع)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesLockedAr,
+  pages: abrahamB2PagesFinalAr,
   teacherGuide: abrahamB2TeacherGuideGoldAr,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataGoldAr,
   studentGuideMetadata: abrahamB2StudentGuideMetadataGoldAr,
