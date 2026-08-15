@@ -1,6 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
@@ -34,17 +35,20 @@ const mosesB1HighlightStandard = applyB1HighlightStandard(mosesB1PagesLockedEn, 
 });
 
 export const mosesB1HighlightTargets = mosesB1HighlightStandard.targets;
-const mosesB1PagesFinalEn = mosesB1HighlightStandard.englishPages;
-const mosesB1PagesFinalAr = mosesB1HighlightStandard.arabicPages;
-const mosesB1GuidesEn = buildB1EvidenceGuides(mosesB1PagesFinalEn, 'en');
-const mosesB1GuidesAr = buildB1EvidenceGuides(mosesB1PagesFinalAr, 'ar');
+const mosesB1Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: mosesB1HighlightStandard.englishPages,
+  arabicPages: mosesB1HighlightStandard.arabicPages,
+  config: { level: 'B1', ...mosesB1RolloutConfig },
+});
+const mosesB1GuidesEn = buildB1EvidenceGuides(mosesB1Parallel.englishPages, 'en');
+const mosesB1GuidesAr = buildB1EvidenceGuides(mosesB1Parallel.arabicPages, 'ar');
 
 export const mosesB1BookDataEn: BookData = {
   id: 'moses-b1-en',
   title: 'Stories of the Prophets: Moses (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: mosesB1PagesFinalEn,
+  pages: mosesB1Parallel.englishPages,
   teacherGuide: mosesB1GuidesEn.teacherGuide,
   teacherGuideMetadata: mosesB1TeacherGuideMetadata.targetLearners ? mosesB1TeacherGuideMetadata : mosesA2TeacherGuideMetadata,
   selfStudyGuide: mosesB1GuidesEn.selfStudyGuide,
@@ -58,7 +62,7 @@ export const mosesB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: mosesB1PagesFinalAr,
+  pages: mosesB1Parallel.arabicPages,
   teacherGuide: mosesB1GuidesAr.teacherGuide,
   teacherGuideMetadata: mosesB1TeacherGuideMetadataAr.targetLearners ? mosesB1TeacherGuideMetadataAr : mosesA2TeacherGuideMetadata,
   selfStudyGuide: mosesB1GuidesAr.selfStudyGuide,
