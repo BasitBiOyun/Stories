@@ -1,6 +1,9 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
+  mosesA2HighlightConfig,
+  mosesA2HighlightTargets,
   mosesA2PagesFinalAr,
   mosesA2PagesFinalEn,
   mosesA2SelfStudyGuideFinalAr,
@@ -17,8 +20,18 @@ import {
   mosesA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const mosesA2PagesLockedEn = applyA2FinalStoryLanguageLock(mosesA2PagesFinalEn, 'musa', 'en');
-const mosesA2PagesLockedAr = applyA2FinalStoryLanguageLock(mosesA2PagesFinalAr, 'musa', 'ar');
+const mosesA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(mosesA2PagesFinalEn, 'musa', 'en'),
+  mosesA2HighlightConfig,
+  'en',
+);
+const mosesA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(mosesA2PagesFinalAr, 'musa', 'ar'),
+  mosesA2HighlightConfig,
+  'ar',
+);
+
+validateA2HighlightStandard(mosesA2PagesLockedEn, mosesA2PagesLockedAr, mosesA2HighlightTargets, mosesA2HighlightConfig);
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
