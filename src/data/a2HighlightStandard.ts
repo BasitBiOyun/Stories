@@ -75,6 +75,20 @@ const storyPage = (
   return page;
 };
 
+const simpleEnglishInflectionEquivalent = (leftRaw: string, rightRaw: string): boolean => {
+  const left = normalizeHighlightText(leftRaw, 'en');
+  const right = normalizeHighlightText(rightRaw, 'en');
+  if (!left || !right || left.includes(' ') || right.includes(' ')) return false;
+
+  const singularPluralForms = (word: string): Set<string> => {
+    const forms = new Set<string>([word, `${word}s`, `${word}es`]);
+    if (word.endsWith('y') && word.length > 1) forms.add(`${word.slice(0, -1)}ies`);
+    return forms;
+  };
+
+  return singularPluralForms(left).has(right) || singularPluralForms(right).has(left);
+};
+
 const overrideFor = (
   config: A2HighlightStandardConfig,
   chapterId: number,
@@ -83,9 +97,11 @@ const overrideFor = (
   const chapterOverrides = config.arabicOverrides?.[chapterId];
   if (!chapterOverrides) return undefined;
   const normalized = normalizeHighlightText(englishWord, 'en');
-  const match = Object.entries(chapterOverrides).find(([candidate]) => (
-    normalizeHighlightText(candidate, 'en') === normalized
-  ));
+  const match = Object.entries(chapterOverrides).find(([candidate]) => {
+    const candidateNormalized = normalizeHighlightText(candidate, 'en');
+    return candidateNormalized === normalized
+      || simpleEnglishInflectionEquivalent(candidate, englishWord);
+  });
   if (!match) return undefined;
   return typeof match[1] === 'string' ? { word: match[1] } : match[1];
 };
@@ -187,6 +203,11 @@ export const applyA2HighlightStandard = (
       const key = normalizeHighlightText(entry.word, 'en');
       if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(entry.word)) return;
 
+      // A runtime highlight must be visible in the locked English prose. Legacy
+      // word-note phrases such as "take out" when the prose says "take it out"
+      // remain source metadata but are not promoted into an invisible highlight.
+      if (!highlightPhraseOccurs(enPage.content ?? '', entry.word, 'en')) return;
+
       const explicit = overrideFor(config, chapterId, entry.word);
       if (requiresExplicitArabicTargets && !explicit) {
         fail(config.storyKey, `Arabic Chapter ${chapterId} needs an explicit pair for English target “${entry.word}”.`);
@@ -222,10 +243,14 @@ export const applyA2HighlightStandard = (
     enAnimated.forEach((word, index) => {
       const key = normalizeHighlightText(word, 'en');
       if (!key || seenEnglishKeys.has(key) || alreadyCoveredOnChapter(word)) return;
+      if (!highlightPhraseOccurs(enPage.content ?? '', word, 'en')) return;
 
       const explicit = overrideFor(config, chapterId, word);
       if (requiresExplicitArabicTargets && !explicit) {
-        fail(config.storyKey, `Arabic Chapter ${chapterId} needs an explicit pair for English highlight “${word}”.`);
+        // Legacy animatedWords are not canonical learning targets by themselves.
+        // In a mapped bilingual A2 book they are promoted only when the reviewed
+        // EN→AR target map explicitly opts them in.
+        return;
       }
 
       const arWord = explicit?.word ?? arAnimated[index];
@@ -279,40 +304,53 @@ export const validateA2HighlightStandard = (
   targets: Record<number, readonly A2CanonicalHighlightTarget[]>,
   config: A2HighlightStandardConfig,
 ): void => {
+  const errors: string[] = [];
+  const record = (message: string): void => { errors.push(message); };
   const seenArabicRuntimeTargets = new Map<string, string>();
 
   for (const chapterId of config.storyIds) {
-    const enPage = storyPage(englishPages, chapterId, config.storyKey, 'en');
-    const arPage = storyPage(arabicPages, chapterId, config.storyKey, 'ar');
+    const enPage = englishPages.find((item) => item.type === 'story' && item.id === chapterId);
+    const arPage = arabicPages.find((item) => item.type === 'story' && item.id === chapterId);
+
+    if (!enPage) record(`Missing EN Chapter ${chapterId}.`);
+    if (!arPage) record(`Missing AR Chapter ${chapterId}.`);
+    if (!enPage || !arPage) continue;
+
     const expected = targets[chapterId] ?? [];
     const enVocabulary = enPage.vocabulary ?? [];
     const arVocabulary = arPage.vocabulary ?? [];
 
     if (enPage.animatedWords?.length || arPage.animatedWords?.length) {
-      fail(config.storyKey, `Chapter ${chapterId} still has legacy animatedWords after standardization.`);
+      record(`Chapter ${chapterId} still has legacy animatedWords after standardization.`);
     }
     if (enVocabulary.length !== expected.length || arVocabulary.length !== expected.length) {
-      fail(config.storyKey, `Chapter ${chapterId} EN/AR highlight counts diverged from the canonical target count.`);
+      record(
+        `Chapter ${chapterId} EN/AR highlight counts diverged from the canonical target count `
+        + `(EN ${enVocabulary.length}, AR ${arVocabulary.length}, canonical ${expected.length}).`,
+      );
     }
 
     expected.forEach((target, index) => {
       const enEntry = enVocabulary[index];
       const arEntry = arVocabulary[index];
-      if (!enEntry?.definition?.trim() || !arEntry?.definition?.trim()) {
-        fail(config.storyKey, `Chapter ${chapterId} target ${target.id} has an empty definition.`);
+      if (!enEntry || !arEntry) {
+        record(`Chapter ${chapterId} target ${target.id} is missing from the runtime EN/AR vocabulary.`);
+        return;
+      }
+      if (!enEntry.definition?.trim() || !arEntry.definition?.trim()) {
+        record(`Chapter ${chapterId} target ${target.id} has an empty definition.`);
       }
       if (!highlightPhraseOccurs(enPage.content ?? '', enEntry.word, 'en')) {
-        fail(config.storyKey, `English Chapter ${chapterId} target “${enEntry.word}” is not in the story prose.`);
+        record(`English Chapter ${chapterId} target “${enEntry.word}” is not in the story prose.`);
       }
       if (!highlightPhraseOccurs(arPage.content ?? '', arEntry.word, 'ar')) {
-        fail(config.storyKey, `Arabic Chapter ${chapterId} target “${arEntry.word}” is not in the story prose.`);
+        record(`Arabic Chapter ${chapterId} target “${arEntry.word}” is not in the story prose.`);
       }
 
-      const runtimeArabicKey = arEntry.word.toLowerCase().trim();
+      const runtimeArabicKey = normalizeHighlightText(arEntry.word, 'ar');
       const previousTarget = seenArabicRuntimeTargets.get(runtimeArabicKey);
       if (runtimeArabicKey && previousTarget && previousTarget !== target.id) {
-        fail(
-          config.storyKey,
+        record(
           `Arabic target “${arEntry.word}” is reused by ${previousTarget} and ${target.id}; `
           + 'the reader would hide one of them and EN/AR visible counts would diverge.',
         );
@@ -337,19 +375,27 @@ export const validateA2HighlightStandard = (
     const expectedEn = expectedGlossaries[index];
     const expectedAr = expectedArabicGlossaries[index];
     if (enGlossary.length !== expectedEn.length || arGlossary.length !== expectedAr.length) {
-      fail(config.storyKey, `Glossary page ${pageId} is not synchronized with the canonical story highlights.`);
+      record(`Glossary page ${pageId} is not synchronized with the canonical story highlights.`);
     }
     expectedEn.forEach((entry, entryIndex) => {
       const glossaryEntry = enGlossary[entryIndex];
-      if (!glossaryEntry || normalizeHighlightText(glossaryEntry.word, 'en') !== normalizeHighlightText(entry.word, 'en') || glossaryEntry.definition !== entry.definition) {
-        fail(config.storyKey, `English glossary page ${pageId} diverged from story highlight ${entry.word}.`);
+      if (!glossaryEntry
+        || normalizeHighlightText(glossaryEntry.word, 'en') !== normalizeHighlightText(entry.word, 'en')
+        || glossaryEntry.definition !== entry.definition) {
+        record(`English glossary page ${pageId} diverged from story highlight ${entry.word}.`);
       }
     });
     expectedAr.forEach((entry, entryIndex) => {
       const glossaryEntry = arGlossary[entryIndex];
-      if (!glossaryEntry || normalizeHighlightText(glossaryEntry.word, 'ar') !== normalizeHighlightText(entry.word, 'ar') || glossaryEntry.definition !== entry.definition) {
-        fail(config.storyKey, `Arabic glossary page ${pageId} diverged from a final story highlight.`);
+      if (!glossaryEntry
+        || normalizeHighlightText(glossaryEntry.word, 'ar') !== normalizeHighlightText(entry.word, 'ar')
+        || glossaryEntry.definition !== entry.definition) {
+        record(`Arabic glossary page ${pageId} diverged from a final story highlight.`);
       }
     });
   });
+
+  if (errors.length) {
+    fail(config.storyKey, `${errors.length} error(s):\n- ${errors.join('\n- ')}`);
+  }
 };
