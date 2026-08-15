@@ -3,6 +3,7 @@ import type { Level } from '../types';
 import { getBookDefinition } from '../core/content/bookRegistry';
 import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
+import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
 
 export interface BookBundleState {
   definition: BookDefinition | null;
@@ -63,6 +64,11 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       cancelled = true;
     };
   }, [definition]);
+
+  useEffect(() => {
+    setActiveBilingualBookPair(pair);
+    return () => setActiveBilingualBookPair(null);
+  }, [pair]);
 
   return { definition, pair, loading, error };
 };
