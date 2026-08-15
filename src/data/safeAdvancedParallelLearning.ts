@@ -1,4 +1,4 @@
-import type { Exercise, PageData } from '../types';
+import type { Exercise, PageData, QuizQuestion } from '../types';
 import { normalizeHighlightText } from '../lib/highlightTextMatch';
 import {
   applyValidatedAdvancedParallelLearning,
@@ -15,6 +15,8 @@ type SafeAdvancedParallelResult = {
   englishPages: PageData[];
   arabicPages: PageData[];
 };
+
+type Language = 'en' | 'ar';
 
 const storyPage = (pages: PageData[], id: number): PageData | undefined =>
   pages.find((page) => page.type === 'story' && page.id === id);
@@ -39,13 +41,20 @@ const validateSourceParity = (
       throw new Error(`[Advanced bilingual source parity] Chapter ${chapterId} is missing in one language.`);
     }
 
-    const enHotspots = en.hotspots?.length || 0;
-    const arHotspots = ar.hotspots?.length || 0;
-    if (enHotspots !== arHotspots) {
+    const enHotspots = en.hotspots ?? [];
+    const arHotspots = ar.hotspots ?? [];
+    if (enHotspots.length !== arHotspots.length) {
       throw new Error(
-        `[Advanced bilingual source parity] Chapter ${chapterId} hotspot counts differ (EN ${enHotspots}, AR ${arHotspots}).`,
+        `[Advanced bilingual source parity] Chapter ${chapterId} hotspot counts differ (EN ${enHotspots.length}, AR ${arHotspots.length}).`,
       );
     }
+    enHotspots.forEach((hotspot, index) => {
+      if (hotspot.id !== arHotspots[index]?.id) {
+        throw new Error(
+          `[Advanced bilingual source parity] Chapter ${chapterId} hotspot ${index + 1} IDs differ (EN ${hotspot.id}, AR ${arHotspots[index]?.id ?? 'missing'}).`,
+        );
+      }
+    });
 
     const enVocabulary = en.vocabulary?.length || 0;
     const arVocabulary = ar.vocabulary?.length || 0;
@@ -127,54 +136,68 @@ const stripDemoStoryMedia = (pages: PageData[]): PageData[] => pages.map((page) 
   return { ...page, image, audioUrl };
 });
 
-const extractChapterId = (question: string): number | undefined => {
-  const english = question.match(/\bChapter\s+(\d+)\b/i);
-  if (english) return Number(english[1]);
-  const arabic = question.match(/الفصل\s+(\d+)/u);
-  return arabic ? Number(arabic[1]) : undefined;
+const tokenSet = (value: string, language: Language): Set<string> => new Set(
+  normalizeHighlightText(value, language).split(' ').filter((token) => token.length > 2),
+);
+
+const nearDuplicate = (left: string, right: string, language: Language): boolean => {
+  const leftKey = normalizeHighlightText(left, language);
+  const rightKey = normalizeHighlightText(right, language);
+  if (!leftKey || !rightKey) return false;
+  if (leftKey === rightKey) return true;
+  if (leftKey.length >= 16 && rightKey.length >= 16 && (leftKey.includes(rightKey) || rightKey.includes(leftKey))) return true;
+
+  const leftTokens = tokenSet(left, language);
+  const rightTokens = tokenSet(right, language);
+  if (leftTokens.size < 3 || rightTokens.size < 3) return false;
+  const intersection = [...leftTokens].filter((token) => rightTokens.has(token)).length;
+  const union = new Set([...leftTokens, ...rightTokens]).size;
+  return union > 0 && intersection / union >= 0.8;
 };
 
-const isGeneratedEvidenceQuestion = (question: string): boolean =>
-  /Which detail is connected with|What does .* mean in Chapter|أي معلومة ترتبط بـ|ما معنى .* في الفصل/u.test(question);
-
-const validateGeneratedDistractors = (
-  pages: PageData[],
-  storyPages: PageData[],
-  language: 'en' | 'ar',
+const validateOptionSet = (
+  options: Array<{ text: string; isCorrect: boolean }>,
+  language: Language,
+  label: string,
 ): void => {
-  const validateExercise = (exercise: Exercise): void => {
-    if (exercise.type !== 'multiple-choice' || !exercise.options?.length || typeof exercise.correctAnswer !== 'number') return;
-    if (!exercise.question || !isGeneratedEvidenceQuestion(exercise.question)) return;
-    const chapterId = extractChapterId(exercise.question);
-    if (!chapterId) return;
-    const source = storyPage(storyPages, chapterId);
-    if (!source?.content) return;
-    const sourceKey = normalizeHighlightText(source.content, language);
+  const correct = options.filter((option) => option.isCorrect);
+  if (correct.length !== 1) {
+    throw new Error(`[Advanced distractor guard] ${label} must have exactly one correct option.`);
+  }
+  options.filter((option) => !option.isCorrect).forEach((option) => {
+    if (nearDuplicate(option.text, correct[0].text, language)) {
+      throw new Error(`[Advanced distractor guard] ${label} contains a distractor that is effectively the same as the correct answer.`);
+    }
+  });
+};
 
-    exercise.options.forEach((option, index) => {
-      if (index === exercise.correctAnswer) return;
-      const optionKey = normalizeHighlightText(option, language);
-      if (optionKey.length >= 18 && sourceKey.includes(optionKey)) {
-        throw new Error(
-          `[Advanced distractor guard] Chapter ${chapterId} has a wrong option that is directly supported by the same chapter.`,
-        );
-      }
+const validateQuizQuestion = (question: QuizQuestion, language: Language, label: string): void => {
+  validateOptionSet(question.options, language, label);
+};
+
+const validateGeneratedDistractors = (pages: PageData[], language: Language): void => {
+  pages.forEach((page) => page.exercises?.forEach((exercise, exerciseIndex) => {
+    if (exercise.type === 'multiple-choice' && exercise.options?.length && typeof exercise.correctAnswer === 'number') {
+      validateOptionSet(
+        exercise.options.map((text, index) => ({ text, isCorrect: index === exercise.correctAnswer })),
+        language,
+        `Page ${page.id} activity ${exerciseIndex + 1}`,
+      );
+    }
+    exercise.quizQuestions?.forEach((question, questionIndex) => {
+      validateQuizQuestion(question, language, `Page ${page.id} review question ${questionIndex + 1}`);
     });
-  };
-
-  pages.forEach((page) => page.exercises?.forEach((exercise) => {
-    validateExercise(exercise);
-    exercise.quizQuestions?.forEach(() => undefined);
   }));
 };
 
 /**
  * Hardened runtime wrapper for B1/B2 learning material.
  * - fails fast instead of silently truncating EN/AR hotspot or Word Notes mismatches;
+ * - verifies hotspot IDs stay aligned between languages;
  * - validates authored Quick Challenge structure before it can become an anchor;
  * - keeps Arabic generated UI copy fully Arabic;
  * - removes random/demo media from effective story/support pages;
- * - rejects generated distractors that are directly supported by the same chapter.
+ * - rejects duplicate or near-duplicate distractors in activities and review quizzes.
  * Story prose is never modified.
  */
 export const applySafeAdvancedParallelLearning = ({
@@ -188,8 +211,8 @@ export const applySafeAdvancedParallelLearning = ({
   const englishOutput = stripDemoStoryMedia(output.englishPages);
   const arabicOutput = stripDemoStoryMedia(cleanArabicDerivedCopy(output.arabicPages));
 
-  validateGeneratedDistractors(englishOutput, englishPages, 'en');
-  validateGeneratedDistractors(arabicOutput, arabicPages, 'ar');
+  validateGeneratedDistractors(englishOutput, 'en');
+  validateGeneratedDistractors(arabicOutput, 'ar');
 
   return { englishPages: englishOutput, arabicPages: arabicOutput };
 };
