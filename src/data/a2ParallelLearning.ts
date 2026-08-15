@@ -14,6 +14,24 @@ interface ParallelAnchor {
   arabic: Exercise;
 }
 
+interface ParallelExercisePair {
+  key: string;
+  chapterId: number;
+  english: Exercise;
+  arabic: Exercise;
+}
+
+type VariedExerciseType = 'multiple-choice' | 'true-false' | 'matching' | 'fill-blanks' | 'tap-reveal';
+type AnchorKind = 'h' | 'v';
+
+const QUICK_VARIANTS: VariedExerciseType[] = [
+  'tap-reveal',
+  'fill-blanks',
+  'matching',
+  'multiple-choice',
+  'true-false',
+];
+
 const insertAt = <T,>(items: T[], item: T, index: number): T[] => {
   const output = [...items];
   output.splice(Math.max(0, Math.min(index, output.length)), 0, item);
@@ -145,17 +163,13 @@ const buildParallelAnchors = (
       if (index < hotspotCount) {
         const english = buildHotspotExercise(englishPage, index, englishStoryPages, 'en');
         const arabic = buildHotspotExercise(arabicPage, index, arabicStoryPages, 'ar');
-        if (english && arabic) {
-          chapterAnchors.push({ key: `h:${chapterId}:${index}`, chapterId, english, arabic });
-        }
+        if (english && arabic) chapterAnchors.push({ key: `h:${chapterId}:${index}`, chapterId, english, arabic });
       }
 
       if (index < vocabularyCount) {
         const english = buildVocabularyExercise(englishPage, index, englishStoryPages, 'en');
         const arabic = buildVocabularyExercise(arabicPage, index, arabicStoryPages, 'ar');
-        if (english && arabic) {
-          chapterAnchors.push({ key: `v:${chapterId}:${index}`, chapterId, english, arabic });
-        }
+        if (english && arabic) chapterAnchors.push({ key: `v:${chapterId}:${index}`, chapterId, english, arabic });
       }
     }
 
@@ -171,6 +185,12 @@ const buildParallelAnchors = (
     });
   }
   return output;
+};
+
+const parseAnchorKey = (key: string): { kind: AnchorKind; chapterId: number; sourceIndex: number } | null => {
+  const [kind, chapter, source] = key.split(':');
+  if ((kind !== 'h' && kind !== 'v') || !Number.isFinite(Number(chapter)) || !Number.isFinite(Number(source))) return null;
+  return { kind, chapterId: Number(chapter), sourceIndex: Number(source) };
 };
 
 const rotate = <T,>(items: T[], offset: number): T[] => {
@@ -205,11 +225,246 @@ const selectStage = (
   return selected;
 };
 
-const cloneStageExercise = (
-  exercise: Exercise,
-  id: string,
-  title: string,
-): Exercise => ({ ...exercise, id, title });
+const cloneStageExercise = (exercise: Exercise, id: string, title: string): Exercise => ({ ...exercise, id, title });
+
+const findSentenceWithPhrase = (content: string, phrase: string): string | null => {
+  const phraseIndex = content.indexOf(phrase);
+  if (phraseIndex < 0) return null;
+
+  const before = content.slice(0, phraseIndex);
+  const after = content.slice(phraseIndex + phrase.length);
+  const boundary = /[.!?؟\n]/g;
+  let start = 0;
+  let match: RegExpExecArray | null;
+  while ((match = boundary.exec(before)) !== null) start = match.index + match[0].length;
+
+  const afterBoundary = after.search(/[.!?؟\n]/);
+  const end = afterBoundary >= 0
+    ? phraseIndex + phrase.length + afterBoundary + 1
+    : content.length;
+  return content.slice(start, end).trim();
+};
+
+const collectMatchingPairs = (
+  kind: AnchorKind,
+  chapterId: number,
+  sourceIndex: number,
+  storyPages: PageData[],
+): { left: string; right: string }[] => {
+  const chapter = storyPages.find((page) => page.id === chapterId);
+  if (!chapter) return [];
+  const orderedPages = [chapter, ...storyPages.filter((page) => page.id !== chapterId)];
+  const pairs: { left: string; right: string }[] = [];
+  const seen = new Set<string>();
+
+  orderedPages.forEach((page, pageOrder) => {
+    const raw = kind === 'h'
+      ? (page.hotspots || []).map((item) => ({ left: item.title, right: item.description }))
+      : (page.vocabulary || []).map((item) => ({ left: item.word, right: item.definition }));
+    const ordered = pageOrder === 0 ? rotate(raw, sourceIndex) : raw;
+    ordered.forEach((pair) => {
+      if (pairs.length >= 3) return;
+      const key = pair.left.trim();
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      pairs.push(pair);
+    });
+  });
+
+  return pairs.slice(0, 3);
+};
+
+const buildTapRevealVariant = (
+  kind: AnchorKind,
+  page: PageData,
+  sourceIndex: number,
+  language: A2GoldLanguage,
+): Exercise | null => {
+  const source = kind === 'h'
+    ? page.hotspots?.[sourceIndex]
+      ? { prompt: page.hotspots[sourceIndex].title, answer: page.hotspots[sourceIndex].description }
+      : null
+    : page.vocabulary?.[sourceIndex]
+      ? { prompt: page.vocabulary[sourceIndex].word, answer: page.vocabulary[sourceIndex].definition }
+      : null;
+  if (!source) return null;
+
+  return {
+    id: `parallel-tap-${page.id}-${sourceIndex}`,
+    type: 'tap-reveal',
+    title: language === 'ar' ? 'فكّر ثم اكشف' : 'Think, Then Reveal',
+    instructions: language === 'ar' ? 'فكّر في الإجابة أولًا، ثم اكشفها وقارنها بالفصل.' : 'Think of the answer first, then reveal it and compare it with the chapter.',
+    question: language === 'ar'
+      ? `ماذا يقول ${chapterLabel(page.id, language)} عن «${source.prompt}»؟`
+      : `What does ${chapterLabel(page.id, language)} say about “${source.prompt}”?`,
+    correctAnswer: source.answer,
+    explanation: source.answer,
+    feedback: {
+      correct: language === 'ar' ? 'جيد. قارن إجابتك بمعلومة الفصل.' : 'Good. Compare your answer with the chapter detail.',
+      incorrect: language === 'ar' ? 'ارجع إلى الفصل واقرأ المعلومة مرة أخرى.' : 'Return to the chapter and read the detail once more.',
+    },
+    tapRevealItems: [{ question: source.prompt, answer: source.answer }],
+  };
+};
+
+const buildFillBlankVariant = (
+  kind: AnchorKind,
+  page: PageData,
+  sourceIndex: number,
+  language: A2GoldLanguage,
+): Exercise | null => {
+  if (kind !== 'v') return null;
+  const entry = page.vocabulary?.[sourceIndex];
+  if (!entry) return null;
+  const sentence = findSentenceWithPhrase(page.content || '', entry.word);
+  if (!sentence || !sentence.includes(entry.word)) return null;
+
+  return {
+    id: `parallel-fill-${page.id}-${sourceIndex}`,
+    type: 'fill-blanks',
+    title: language === 'ar' ? 'أكمل من الفصل' : 'Complete from the Chapter',
+    instructions: language === 'ar' ? 'استخدم كلمة من Word Notes لإكمال الجملة كما وردت في الفصل.' : 'Use a Word Notes word to complete the sentence as it appears in the chapter.',
+    question: language === 'ar' ? 'ما الكلمة الناقصة؟' : 'Which word is missing?',
+    fillBlanksText: sentence.replace(entry.word, '[blank]'),
+    correctAnswer: entry.word,
+    explanation: `${entry.word}: ${entry.definition}`,
+    feedback: {
+      correct: language === 'ar' ? 'صحيح. هذه الكلمة موجودة في جملة الفصل.' : 'Correct. This word appears in the chapter sentence.',
+      incorrect: language === 'ar' ? `راجع Word Notes في ${chapterLabel(page.id, language)}.` : `Check the Word Notes in ${chapterLabel(page.id, language)}.`,
+    },
+  };
+};
+
+const buildMatchingVariant = (
+  kind: AnchorKind,
+  page: PageData,
+  sourceIndex: number,
+  storyPages: PageData[],
+  language: A2GoldLanguage,
+): Exercise | null => {
+  const pairs = collectMatchingPairs(kind, page.id, sourceIndex, storyPages);
+  if (pairs.length < 3) return null;
+  const correctAnswer = Object.fromEntries(pairs.map((pair) => [pair.left, pair.right]));
+
+  return {
+    id: `parallel-match-${page.id}-${sourceIndex}`,
+    type: 'matching',
+    title: language === 'ar' ? 'صل المعلومات' : 'Match the Information',
+    instructions: language === 'ar'
+      ? (kind === 'v' ? 'صل الكلمات بمعانيها في Word Notes.' : 'صل عناوين الفصول بالمعلومات الصحيحة.')
+      : (kind === 'v' ? 'Match the Word Notes words with their meanings.' : 'Match the chapter headings with the correct details.'),
+    question: language === 'ar' ? 'صل كل عنصر بالإجابة الصحيحة.' : 'Match each item with the correct answer.',
+    matchingPairs: pairs,
+    correctAnswer,
+    explanation: language === 'ar' ? 'جميع الأزواج مأخوذة من الفصول وWord Notes.' : 'All pairs come from the story chapters and Word Notes.',
+    feedback: {
+      correct: language === 'ar' ? 'صحيح. أكملت المطابقة.' : 'Correct. You completed the matching task.',
+      incorrect: language === 'ar' ? 'راجع الفصول أو Word Notes ثم حاول مرة أخرى.' : 'Check the chapters or Word Notes and try again.',
+    },
+  };
+};
+
+const buildTrueFalseVariant = (
+  kind: AnchorKind,
+  page: PageData,
+  sourceIndex: number,
+  storyPages: PageData[],
+  language: A2GoldLanguage,
+): Exercise | null => {
+  const isCorrect = (page.id + sourceIndex) % 2 === 0;
+  let prompt = '';
+  let correctDetail = '';
+  let falseDetail = '';
+
+  if (kind === 'h') {
+    const source = page.hotspots?.[sourceIndex];
+    if (!source) return null;
+    correctDetail = source.description;
+    falseDetail = storyPages
+      .flatMap((item) => item.hotspots || [])
+      .find((item) => item.description !== correctDetail)?.description || '';
+    prompt = source.title;
+  } else {
+    const source = page.vocabulary?.[sourceIndex];
+    if (!source) return null;
+    correctDetail = source.definition;
+    falseDetail = storyPages
+      .flatMap((item) => item.vocabulary || [])
+      .find((item) => item.definition !== correctDetail)?.definition || '';
+    prompt = source.word;
+  }
+
+  if (!falseDetail) return null;
+  const shownDetail = isCorrect ? correctDetail : falseDetail;
+  return {
+    id: `parallel-tf-${page.id}-${sourceIndex}`,
+    type: 'true-false',
+    title: language === 'ar' ? 'صحيح أم خطأ' : 'True or False',
+    instructions: language === 'ar' ? 'حدد هل العبارة توافق معلومات الفصل.' : 'Decide whether the statement matches the chapter information.',
+    question: language === 'ar'
+      ? `في ${chapterLabel(page.id, language)}، ترتبط «${prompt}» بهذه المعلومة: ${shownDetail}`
+      : `In ${chapterLabel(page.id, language)}, “${prompt}” is connected with this detail: ${shownDetail}`,
+    correctAnswer: isCorrect,
+    explanation: correctDetail,
+    feedback: {
+      correct: language === 'ar' ? 'صحيح. قارنت العبارة بمعلومة الفصل.' : 'Correct. You compared the statement with the chapter detail.',
+      incorrect: language === 'ar' ? 'ارجع إلى الفصل وابحث عن المعلومة الصحيحة.' : 'Return to the chapter and find the correct detail.',
+    },
+  };
+};
+
+const buildVariantExercise = (
+  anchor: ParallelAnchor,
+  storyPages: PageData[],
+  language: A2GoldLanguage,
+  desiredType: VariedExerciseType,
+): Exercise | null => {
+  const parsed = parseAnchorKey(anchor.key);
+  if (!parsed) return null;
+  const page = storyPages.find((item) => item.id === parsed.chapterId);
+  if (!page) return null;
+
+  if (desiredType === 'multiple-choice') return language === 'ar' ? anchor.arabic : anchor.english;
+  if (desiredType === 'tap-reveal') return buildTapRevealVariant(parsed.kind, page, parsed.sourceIndex, language);
+  if (desiredType === 'fill-blanks') return buildFillBlankVariant(parsed.kind, page, parsed.sourceIndex, language);
+  if (desiredType === 'matching') return buildMatchingVariant(parsed.kind, page, parsed.sourceIndex, storyPages, language);
+  return buildTrueFalseVariant(parsed.kind, page, parsed.sourceIndex, storyPages, language);
+};
+
+const buildVariantPair = (
+  anchor: ParallelAnchor,
+  englishStoryPages: PageData[],
+  arabicStoryPages: PageData[],
+  desiredType: VariedExerciseType,
+): ParallelExercisePair => {
+  const english = buildVariantExercise(anchor, englishStoryPages, 'en', desiredType);
+  const arabic = buildVariantExercise(anchor, arabicStoryPages, 'ar', desiredType);
+  if (!english || !arabic || english.type !== arabic.type) {
+    return { key: anchor.key, chapterId: anchor.chapterId, english: anchor.english, arabic: anchor.arabic };
+  }
+  return { key: anchor.key, chapterId: anchor.chapterId, english, arabic };
+};
+
+const buildStagePairs = (
+  anchors: ParallelAnchor[],
+  englishStoryPages: PageData[],
+  arabicStoryPages: PageData[],
+  offset = 0,
+): ParallelExercisePair[] => {
+  let vocabularySeen = 0;
+  let hotspotSeen = 0;
+  const vocabularyTypes: VariedExerciseType[] = ['fill-blanks', 'matching', 'tap-reveal', 'multiple-choice', 'true-false'];
+  const hotspotTypes: VariedExerciseType[] = ['tap-reveal', 'matching', 'true-false', 'multiple-choice'];
+
+  return anchors.map((anchor) => {
+    const parsed = parseAnchorKey(anchor.key);
+    if (!parsed) return { key: anchor.key, chapterId: anchor.chapterId, english: anchor.english, arabic: anchor.arabic };
+    const desired = parsed.kind === 'v'
+      ? vocabularyTypes[(vocabularySeen++ + offset) % vocabularyTypes.length]
+      : hotspotTypes[(hotspotSeen++ + offset) % hotspotTypes.length];
+    return buildVariantPair(anchor, englishStoryPages, arabicStoryPages, desired);
+  });
+};
 
 const toQuizQuestion = (exercise: Exercise, chapterId: number, language: A2GoldLanguage): QuizQuestion => {
   const correctIndex = typeof exercise.correctAnswer === 'number' ? exercise.correctAnswer : 0;
@@ -222,10 +477,7 @@ const toQuizQuestion = (exercise: Exercise, chapterId: number, language: A2GoldL
   };
 };
 
-const buildReviewQuiz = (
-  anchors: ParallelAnchor[],
-  language: A2GoldLanguage,
-): Exercise => ({
+const buildReviewQuiz = (anchors: ParallelAnchor[], language: A2GoldLanguage): Exercise => ({
   id: 'parallel-review-quiz',
   type: 'quiz-game',
   title: language === 'ar' ? 'تحدي المراجعة' : 'Review Challenge',
@@ -253,7 +505,6 @@ const buildVocabularyPairs = (
   storyIds: number[],
 ): { english: NonNullable<PageData['vocabularyPairs']>; arabic: NonNullable<PageData['vocabularyPairs']> } => {
   const candidates: Array<{
-    key: string;
     english: { word: string; meaning: string };
     arabic: { word: string; meaning: string };
   }> = [];
@@ -268,7 +519,6 @@ const buildVocabularyPairs = (
       const arabic = arabicPage.vocabulary?.[index];
       if (!english || !arabic) continue;
       candidates.push({
-        key: `v:${chapterId}:${index}`,
         english: { word: english.word, meaning: english.definition },
         arabic: { word: arabic.word, meaning: arabic.definition },
       });
@@ -300,10 +550,10 @@ const applyLanguagePages = ({
   vocabularyPageId,
   reviewPageId,
   finalChallengePageId,
-  quickAnchors,
-  knowledgeAnchors,
+  quickPairs,
+  knowledgePairs,
   reviewAnchors,
-  finalAnchors,
+  finalPairs,
   vocabularyPairs,
   language,
 }: {
@@ -313,10 +563,10 @@ const applyLanguagePages = ({
   vocabularyPageId: number;
   reviewPageId: number;
   finalChallengePageId: number;
-  quickAnchors: Map<number, ParallelAnchor>;
-  knowledgeAnchors: ParallelAnchor[];
+  quickPairs: Map<number, ParallelExercisePair>;
+  knowledgePairs: ParallelExercisePair[];
   reviewAnchors: ParallelAnchor[];
-  finalAnchors: ParallelAnchor[];
+  finalPairs: ParallelExercisePair[];
   vocabularyPairs: NonNullable<PageData['vocabularyPairs']>;
   language: A2GoldLanguage;
 }): PageData[] => {
@@ -324,9 +574,9 @@ const applyLanguagePages = ({
     const page = stripDemoStorySync(rawPage);
 
     if (storyIds.includes(page.id)) {
-      const anchor = quickAnchors.get(page.id);
-      if (!anchor) return page;
-      const source = language === 'ar' ? anchor.arabic : anchor.english;
+      const pair = quickPairs.get(page.id);
+      if (!pair) return page;
+      const source = language === 'ar' ? pair.arabic : pair.english;
       return {
         ...page,
         exercises: [cloneStageExercise(source, `parallel-quick-${page.id}`, language === 'ar' ? 'تحدي سريع' : 'Quick Challenge')],
@@ -337,10 +587,10 @@ const applyLanguagePages = ({
       return {
         ...page,
         content: language === 'ar'
-          ? 'راجع ثماني معلومات وكلمات من فصول الكتاب. ارجع إلى الفصل عندما تحتاج إلى مساعدة.'
-          : 'Review eight facts and words from the story chapters. Return to the chapter whenever you need help.',
-        exercises: knowledgeAnchors.map((anchor, index) => cloneStageExercise(
-          language === 'ar' ? anchor.arabic : anchor.english,
+          ? 'راجع ثماني معلومات وكلمات بأنواع مختلفة من الأنشطة. ارجع إلى الفصل عندما تحتاج إلى مساعدة.'
+          : 'Review eight facts and words through different activity types. Return to the chapter whenever you need help.',
+        exercises: knowledgePairs.map((pair, index) => cloneStageExercise(
+          language === 'ar' ? pair.arabic : pair.english,
           `parallel-kc-${index + 1}`,
           language === 'ar' ? `تحقق من الفهم ${index + 1}` : `Knowledge Check ${index + 1}`,
         )),
@@ -361,8 +611,8 @@ const applyLanguagePages = ({
       return {
         ...page,
         content: language === 'ar'
-          ? 'أكمل تحدي مراجعة من ثمانية أسئلة مبنية على الفصول.'
-          : 'Complete an eight-question Review Challenge built from the story chapters.',
+          ? 'أكمل تحدي مراجعة سريعًا من ثمانية أسئلة مبنية على الفصول.'
+          : 'Complete a fast eight-question Review Challenge built from the story chapters.',
         exercises: [buildReviewQuiz(reviewAnchors, language)],
       };
     }
@@ -371,10 +621,10 @@ const applyLanguagePages = ({
       return {
         ...page,
         content: language === 'ar'
-          ? 'اختبر تذكرك للقصة في عشرة أسئلة مختلفة مبنية على الفصول.'
-          : 'Check what you remember in ten different questions built from the story chapters.',
-        exercises: finalAnchors.map((anchor, index) => cloneStageExercise(
-          language === 'ar' ? anchor.arabic : anchor.english,
+          ? 'اختبر تذكرك للقصة في عشرة أنشطة متنوعة مبنية على الفصول.'
+          : 'Check what you remember in ten varied activities built from the story chapters.',
+        exercises: finalPairs.map((pair, index) => cloneStageExercise(
+          language === 'ar' ? pair.arabic : pair.english,
           `parallel-final-${index + 1}`,
           language === 'ar' ? `التحدي النهائي ${index + 1}` : `Final Challenge ${index + 1}`,
         )),
@@ -399,6 +649,7 @@ const validateParallelOutput = (
     return page;
   };
 
+  const quickTypes = new Set<string>();
   config.storyIds.forEach((id) => {
     const en = requirePage(englishPages, id, 'English');
     const ar = requirePage(arabicPages, id, 'Arabic');
@@ -408,6 +659,11 @@ const validateParallelOutput = (
     if (en.exercises?.[0].type !== ar.exercises?.[0].type) {
       throw new Error(`A2 parallel learning: Chapter ${id} Quick Challenge types do not match.`);
     }
+    if (en.exercises?.[0].type) quickTypes.add(en.exercises[0].type);
+  });
+
+  ['matching', 'fill-blanks', 'tap-reveal'].forEach((type) => {
+    if (!quickTypes.has(type)) throw new Error(`A2 parallel learning: Quick Challenges must include ${type}.`);
   });
 
   const englishKnowledge = requirePage(englishPages, config.knowledgeCheckPageId, 'English');
@@ -438,9 +694,9 @@ const validateParallelOutput = (
 
 /**
  * Builds the effective A2 learning layer for English and Arabic with one shared
- * algorithm. Each language reads only its own chapter hotspots and vocabulary,
- * while source coordinates are paired so both books receive the same learning
- * structure and assessment distribution.
+ * algorithm. Each language reads only its own chapter hotspots, Word Notes and
+ * story prose. Source coordinates stay paired, while activity types are varied
+ * in the same pattern in both languages.
  */
 export const applyA2ParallelLearning = ({
   englishPages,
@@ -459,17 +715,25 @@ export const applyA2ParallelLearning = ({
     throw new Error(`A2 parallel learning requires at least 26 paired chapter anchors; found ${anchors.length}.`);
   }
 
-  const quickAnchors = new Map<number, ParallelAnchor>();
+  const quickPairs = new Map<number, ParallelExercisePair>();
   config.storyIds.forEach((chapterId, index) => {
     const chapterAnchors = anchors.filter((anchor) => anchor.chapterId === chapterId);
     if (!chapterAnchors.length) throw new Error(`A2 parallel learning: no paired anchors for Chapter ${chapterId}.`);
-    quickAnchors.set(chapterId, chapterAnchors[index % chapterAnchors.length]);
+    const desiredType = QUICK_VARIANTS[index % QUICK_VARIANTS.length];
+    const preferred = desiredType === 'fill-blanks'
+      ? chapterAnchors.find((anchor) => anchor.key.startsWith('v:'))
+      : desiredType === 'tap-reveal' || desiredType === 'true-false'
+        ? chapterAnchors.find((anchor) => anchor.key.startsWith('h:')) || chapterAnchors[0]
+        : chapterAnchors[index % chapterAnchors.length];
+    quickPairs.set(chapterId, buildVariantPair(preferred || chapterAnchors[0], englishStoryPages, arabicStoryPages, desiredType));
   });
 
   const usedKeys = new Set<string>();
   const knowledgeAnchors = selectStage(anchors, 8, usedKeys, 0);
   const reviewAnchors = selectStage(anchors, 8, usedKeys, Math.floor(anchors.length / 3));
   const finalAnchors = selectStage(anchors, 10, usedKeys, Math.floor((anchors.length * 2) / 3));
+  const knowledgePairs = buildStagePairs(knowledgeAnchors, englishStoryPages, arabicStoryPages, 0);
+  const finalPairs = buildStagePairs(finalAnchors, englishStoryPages, arabicStoryPages, 2);
   const vocabulary = buildVocabularyPairs(englishStoryPages, arabicStoryPages, config.storyIds);
   const vocabularyPageId = config.knowledgeCheckPageId + 1;
 
@@ -481,10 +745,10 @@ export const applyA2ParallelLearning = ({
       vocabularyPageId,
       reviewPageId: config.reviewPageId,
       finalChallengePageId: config.finalChallengePageId,
-      quickAnchors,
-      knowledgeAnchors,
+      quickPairs,
+      knowledgePairs,
       reviewAnchors,
-      finalAnchors,
+      finalPairs,
       vocabularyPairs: vocabulary.english,
       language: 'en',
     }),
@@ -495,10 +759,10 @@ export const applyA2ParallelLearning = ({
       vocabularyPageId,
       reviewPageId: config.reviewPageId,
       finalChallengePageId: config.finalChallengePageId,
-      quickAnchors,
-      knowledgeAnchors,
+      quickPairs,
+      knowledgePairs,
       reviewAnchors,
-      finalAnchors,
+      finalPairs,
       vocabularyPairs: vocabulary.arabic,
       language: 'ar',
     }),
