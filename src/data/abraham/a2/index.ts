@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
   abrahamA2HighlightConfig,
@@ -14,8 +15,6 @@ import {
   abrahamA2StudentGuideSectionsFinalEn,
   abrahamA2StudentGuideTextFinalAr,
   abrahamA2StudentGuideTextFinalEn,
-  abrahamA2TeacherGuideFinalAr,
-  abrahamA2TeacherGuideFinalEn,
   abrahamA2TeacherGuideMetadataFinalAr,
   abrahamA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
@@ -33,13 +32,16 @@ const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abrahamA2HighlightTargets, abrahamA2HighlightConfig);
 
+const abrahamA2TeacherGuideEn = buildA2ChapterTeacherGuide(abrahamA2PagesLockedEn, abrahamA2HighlightConfig.storyIds, 'en');
+const abrahamA2TeacherGuideAr = buildA2ChapterTeacherGuide(abrahamA2PagesLockedAr, abrahamA2HighlightConfig.storyIds, 'ar');
+
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
   title: 'Stories of the Prophets: Abraham (A2)',
   level: 'A2',
   baseFontSize: 13,
   pages: abrahamA2PagesLockedEn,
-  teacherGuide: abrahamA2TeacherGuideFinalEn,
+  teacherGuide: abrahamA2TeacherGuideEn,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: abrahamA2SelfStudyGuideFinalEn,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalEn,
@@ -53,7 +55,7 @@ export const abrahamA2BookDataAr: BookData = {
   level: 'A2',
   baseFontSize: 14,
   pages: abrahamA2PagesLockedAr,
-  teacherGuide: abrahamA2TeacherGuideFinalAr,
+  teacherGuide: abrahamA2TeacherGuideAr,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: abrahamA2SelfStudyGuideFinalAr,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalAr,
