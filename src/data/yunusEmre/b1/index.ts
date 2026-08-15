@@ -1,7 +1,8 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
+import { groundYunusB1Derived } from '../../b1DerivedGrounding';
 import { stripUnsupportedBoldMarkdown } from '../../stripUnsupportedMarkdown';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -36,9 +37,9 @@ const yunusB1HighlightStandard = applyB1HighlightStandard(yunusB1PagesLockedEn, 
 });
 
 export const yunusEmreB1HighlightTargets = yunusB1HighlightStandard.targets;
-const yunusB1Parallel = applyValidatedAdvancedParallelLearning({
-  englishPages: yunusB1HighlightStandard.englishPages,
-  arabicPages: yunusB1HighlightStandard.arabicPages,
+const yunusB1Parallel = applySafeAdvancedParallelLearning({
+  englishPages: groundYunusB1Derived(yunusB1HighlightStandard.englishPages, 'en'),
+  arabicPages: groundYunusB1Derived(yunusB1HighlightStandard.arabicPages, 'ar'),
   config: { level: 'B1', ...yunusEmreB1GoldConfig },
 });
 const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1Parallel.englishPages, 'en');
