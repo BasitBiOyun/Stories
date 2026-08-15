@@ -2,26 +2,34 @@ import type { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
+import { buildB2EvidenceGuides } from '../../b2GoldGuides';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { mosesB2PagesGoldEn } from './goldLearning';
 import {
-  mosesB2TeacherGuideFinalEn,
   mosesB2TeacherGuideMetadataFinalEn,
-  mosesB2SelfStudyGuideFinalEn,
   mosesB2StudentGuideSectionsFinalEn,
   mosesB2StudentGuideTextFinalEn,
   mosesB2StudentGuideMetadataFinalEn,
 } from './goldGuideFinal';
 import { mosesB2PagesGoldAr } from './goldLearningAr';
 import {
-  mosesB2TeacherGuideFinalAr,
   mosesB2TeacherGuideMetadataFinalAr,
-  mosesB2SelfStudyGuideFinalAr,
   mosesB2StudentGuideSectionsFinalAr,
   mosesB2StudentGuideTextFinalAr,
   mosesB2StudentGuideMetadataFinalAr,
 } from './goldGuideFinalAr';
 import { mosesB2ReviewedHighlightPairs } from './highlightPairs';
+
+const mosesB2Config = {
+  level: 'B2' as const,
+  storyIds: Array.from({ length: 24 }, (_, index) => index + 1),
+  knowledgeCheckPageId: 25,
+  vocabularyPageId: 26,
+  glossaryPageIds: [27, 28] as [number, number],
+  reviewPageId: 29,
+  finalChallengePageId: 30,
+};
 
 /**
  * Chapter 4 canonical prose already uses the corrected wording
@@ -105,9 +113,9 @@ const mosesB2PagesLockedAr = applyHotspotSourceLock(mosesB2PagesBeforeHotspotSou
 
 const mosesB2HighlightStandard = applyB2HighlightStandard(mosesB2PagesLockedEn, mosesB2PagesLockedAr, {
   storyKey: 'Moses',
-  storyIds: Array.from({ length: 24 }, (_, index) => index + 1),
-  glossaryPageIds: [27, 28],
-  vocabularyPageId: 26,
+  storyIds: mosesB2Config.storyIds,
+  glossaryPageIds: mosesB2Config.glossaryPageIds,
+  vocabularyPageId: mosesB2Config.vocabularyPageId,
   explicitTargets: resolveB2ReviewedPairs(
     mosesB2PagesLockedEn,
     mosesB2PagesLockedAr,
@@ -117,18 +125,23 @@ const mosesB2HighlightStandard = applyB2HighlightStandard(mosesB2PagesLockedEn, 
 });
 
 export const mosesB2HighlightTargets = mosesB2HighlightStandard.targets;
-const mosesB2PagesFinalEn = mosesB2HighlightStandard.englishPages;
-const mosesB2PagesFinalAr = mosesB2HighlightStandard.arabicPages;
+const mosesB2Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: mosesB2HighlightStandard.englishPages,
+  arabicPages: mosesB2HighlightStandard.arabicPages,
+  config: mosesB2Config,
+});
+const mosesB2GuidesEn = buildB2EvidenceGuides({ effectivePages: mosesB2Parallel.englishPages, storyIds: mosesB2Config.storyIds, language: 'en' });
+const mosesB2GuidesAr = buildB2EvidenceGuides({ effectivePages: mosesB2Parallel.arabicPages, storyIds: mosesB2Config.storyIds, language: 'ar' });
 
 export const mosesB2BookDataEn: BookData = {
   id: 'moses-b2-en',
   title: 'Stories of the Prophets: Moses (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: mosesB2PagesFinalEn,
-  teacherGuide: mosesB2TeacherGuideFinalEn,
+  pages: mosesB2Parallel.englishPages,
+  teacherGuide: mosesB2GuidesEn.teacherGuide,
   teacherGuideMetadata: mosesB2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: mosesB2SelfStudyGuideFinalEn,
+  selfStudyGuide: mosesB2GuidesEn.selfStudyGuide,
   studentGuideSections: mosesB2StudentGuideSectionsFinalEn,
   studentGuideText: mosesB2StudentGuideTextFinalEn,
   studentGuideMetadata: mosesB2StudentGuideMetadataFinalEn,
@@ -139,10 +152,10 @@ export const mosesB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: mosesB2PagesFinalAr,
-  teacherGuide: mosesB2TeacherGuideFinalAr,
+  pages: mosesB2Parallel.arabicPages,
+  teacherGuide: mosesB2GuidesAr.teacherGuide,
   teacherGuideMetadata: mosesB2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: mosesB2SelfStudyGuideFinalAr,
+  selfStudyGuide: mosesB2GuidesAr.selfStudyGuide,
   studentGuideSections: mosesB2StudentGuideSectionsFinalAr,
   studentGuideText: mosesB2StudentGuideTextFinalAr,
   studentGuideMetadata: mosesB2StudentGuideMetadataFinalAr,
