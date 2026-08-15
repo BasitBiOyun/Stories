@@ -3,7 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
-import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { abrahamA2GoldConfig } from './gold';
 import {
   abrahamA2HighlightConfig,
@@ -33,7 +33,7 @@ const abrahamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abrahamA2HighlightTargets, abrahamA2HighlightConfig);
 
-const abrahamA2Parallel = applyA2ParallelLearning({
+const abrahamA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: abrahamA2PagesLockedEn,
   arabicPages: abrahamA2PagesLockedAr,
   config: abrahamA2GoldConfig,
