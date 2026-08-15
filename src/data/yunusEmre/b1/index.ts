@@ -9,6 +9,7 @@ import { yunusB1StudentGuideSections, yunusB1StudentGuideText, yunusB1StudentGui
 import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { yunusEmreB1GoldConfig, yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
+import { yunusEmreB1ExplicitHighlightTargets } from './highlights';
 
 const yunusB1PagesLockedEn = stripUnsupportedBoldMarkdown(applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
   language: 'en',
@@ -30,6 +31,7 @@ const yunusB1HighlightStandard = applyB1HighlightStandard(yunusB1PagesLockedEn, 
   storyIds: yunusEmreB1GoldConfig.storyIds,
   glossaryPageIds: yunusEmreB1GoldConfig.glossaryPageIds,
   vocabularyPageId: yunusEmreB1GoldConfig.vocabularyPageId,
+  explicitTargets: yunusEmreB1ExplicitHighlightTargets,
 });
 
 export const yunusEmreB1HighlightTargets = yunusB1HighlightStandard.targets;
