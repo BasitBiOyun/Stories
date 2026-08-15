@@ -9,19 +9,8 @@ import { mosesB1RolloutConfig, mosesB1PagesRolloutEn, mosesB1PagesRolloutAr } fr
 import { meccaB1GoldConfig, meccaB1PagesGoldEn, meccaB1PagesGoldAr } from '../../src/data/mecca/b1/gold';
 import { yunusEmreB1GoldConfig, yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from '../../src/data/yunusEmre/b1/gold';
 
-type Case = {
-  label: string;
-  en: BookData;
-  ar: BookData;
-  config: B1GoldPageConfig;
-};
-
-type LegacyCase = {
-  label: string;
-  enPages: PageData[];
-  arPages: PageData[];
-  config: B1GoldPageConfig;
-};
+type Case = { label: string; en: BookData; ar: BookData; config: B1GoldPageConfig };
+type LegacyCase = { label: string; enPages: PageData[]; arPages: PageData[]; config: B1GoldPageConfig };
 
 const legacyCases: LegacyCase[] = [
   { label: 'Adam B1', enPages: adamB1PagesGoldEn, arPages: adamB1PagesGoldAr, config: adamB1GoldConfig },
@@ -31,9 +20,8 @@ const legacyCases: LegacyCase[] = [
   { label: 'Yunus Emre B1', enPages: yunusEmreB1PagesGoldEn, arPages: yunusEmreB1PagesGoldAr, config: yunusEmreB1GoldConfig },
 ];
 
-const wordsFor = (pages: PageData[], chapterId: number): string[] => (
-  pages.find((page) => page.type === 'story' && page.id === chapterId)?.vocabulary?.map((entry) => entry.word) ?? []
-);
+const wordsFor = (pages: PageData[], chapterId: number): string[] =>
+  pages.find(page => page.type === 'story' && page.id === chapterId)?.vocabulary?.map(entry => entry.word) ?? [];
 
 console.log('[B1 highlight aggregate] legacy pairing diagnostics');
 for (const current of legacyCases) {
@@ -42,19 +30,12 @@ for (const current of legacyCases) {
     const enWords = wordsFor(current.enPages, chapterId);
     const arWords = wordsFor(current.arPages, chapterId);
     if (enWords.length !== arWords.length) {
-      differences.push(
-        `Ch${chapterId} EN=${enWords.length}[${enWords.join(' | ')}] AR=${arWords.length}[${arWords.join(' | ')}]`,
-      );
+      differences.push(`Ch${chapterId} EN=${enWords.length}[${enWords.join(' | ')}] AR=${arWords.length}[${arWords.join(' | ')}]`);
     }
   }
-  console.log(
-    `[B1 pairing diagnostic] ${current.label}: ${differences.length ? differences.join(' || ') : 'no count drift'}`,
-  );
+  console.log(`[B1 pairing diagnostic] ${current.label}: ${differences.length ? differences.join(' || ') : 'no count drift'}`);
 }
 
-// Load final books only after the diagnostics above have been printed. This way
-// an unsafe legacy chapter can fail fast without hiding the remaining books'
-// count drift from the build log.
 const [adam, abraham, moses, mecca, yunus] = await Promise.all([
   import('../../src/data/adam/b1'),
   import('../../src/data/abraham/b1'),
@@ -72,14 +53,30 @@ const cases: Case[] = [
 ];
 
 const page = (pages: PageData[], id: number, label: string): PageData => {
-  const found = pages.find((candidate) => candidate.id === id);
+  const found = pages.find(candidate => candidate.id === id);
   assert.ok(found, `${label}: page ${id} missing.`);
   return found;
 };
+const chapterVocabulary = (book: BookData, ids: number[]) => ids.flatMap(id => page(book.pages, id, book.id).vocabulary ?? []);
 
-const chapterVocabulary = (book: BookData, ids: number[]) => ids.flatMap((id) => (
-  page(book.pages, id, book.id).vocabulary ?? []
-));
+const validateVocabularySelection = (label: string, en: BookData, ar: BookData, config: B1GoldPageConfig) => {
+  if (!config.vocabularyPageId) return;
+  const allEn = chapterVocabulary(en, config.storyIds);
+  const allAr = chapterVocabulary(ar, config.storyIds);
+  assert.equal(allEn.length, allAr.length, `${label}: flattened EN/AR Word Notes counts differ.`);
+
+  const actualEn = page(en.pages, config.vocabularyPageId, `${label} EN vocabulary page`).vocabularyPairs ?? [];
+  const actualAr = page(ar.pages, config.vocabularyPageId, `${label} AR vocabulary page`).vocabularyPairs ?? [];
+  assert.equal(actualEn.length, 10, `${label}: B1 Vocabulary Challenge must contain 10 pairs.`);
+  assert.equal(actualAr.length, 10, `${label}: Arabic B1 Vocabulary Challenge must contain 10 pairs.`);
+
+  actualEn.forEach((selected, index) => {
+    const sourceIndex = allEn.findIndex(entry => entry.word === selected.word && entry.definition === selected.meaning);
+    assert.ok(sourceIndex >= 0, `${label}: EN selected vocabulary ${selected.word} is not from final Word Notes.`);
+    const pairedArabic = allAr[sourceIndex];
+    assert.deepEqual(actualAr[index], { word: pairedArabic.word, meaning: pairedArabic.definition }, `${label}: vocabulary pair ${index + 1} does not use the same EN/AR source coordinate.`);
+  });
+};
 
 const validateCase = ({ label, en, ar, config }: Case): void => {
   const seenEn = new Set<string>();
@@ -123,14 +120,7 @@ const validateCase = ({ label, en, ar, config }: Case): void => {
     assert.deepEqual(actualAr, expectedAr, `${label} AR glossary ${index + 1} is not derived from final highlights.`);
   });
 
-  if (config.vocabularyPageId) {
-    const expectedEn = chapterVocabulary(en, config.storyIds).slice(0, 10);
-    const expectedAr = chapterVocabulary(ar, config.storyIds).slice(0, 10);
-    const actualEn = page(en.pages, config.vocabularyPageId, `${label} EN vocabulary page`).vocabularyPairs ?? [];
-    const actualAr = page(ar.pages, config.vocabularyPageId, `${label} AR vocabulary page`).vocabularyPairs ?? [];
-    assert.deepEqual(actualEn, expectedEn.map((entry) => ({ word: entry.word, meaning: entry.definition })), `${label} EN vocabulary page drifted from final highlights.`);
-    assert.deepEqual(actualAr, expectedAr.map((entry) => ({ word: entry.word, meaning: entry.definition })), `${label} AR vocabulary page drifted from final highlights.`);
-  }
+  validateVocabularySelection(label, en, ar, config);
 };
 
 for (const current of cases) {
@@ -139,8 +129,7 @@ for (const current of cases) {
 }
 
 console.log(`B1 highlight aggregate: PASS ${cases.length}/${cases.length} books.`);
-console.log('- English is the sole canonical learning-target authority');
-console.log('- Arabic uses paired same-concept story surfaces with equal visible counts');
-console.log('- legacy animatedWords removed from B1 runtime story pages');
-console.log('- all targets are grounded in locked prose and have learner definitions');
-console.log('- Master Glossary and Vocabulary-in-Context pages derive from final highlights');
+console.log('- final EN/AR visible Word Notes remain chapter-grounded and count-aligned');
+console.log('- legacy animatedWords are removed from B1 runtime story pages');
+console.log('- Master Glossary derives from final visible Word Notes');
+console.log('- Vocabulary Challenge uses balanced selections from final Word Notes with the same EN/AR source coordinates');
