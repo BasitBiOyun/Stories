@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
+import { applyB1HighlightStandard } from '../../b1HighlightStandard';
 import { stripUnsupportedBoldMarkdown } from '../../stripUnsupportedMarkdown';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -7,7 +8,7 @@ import { yunusB1StudentGuideSections, yunusB1StudentGuideText, yunusB1StudentGui
 
 import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusEmreB1StudentGuideSectionsAr, yunusEmreB1StudentGuideTextAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
-import { yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
+import { yunusEmreB1GoldConfig, yunusEmreB1PagesGoldEn, yunusEmreB1PagesGoldAr } from './gold';
 
 const yunusB1PagesLockedEn = stripUnsupportedBoldMarkdown(applyHotspotSourceLock(yunusEmreB1PagesGoldEn, {
   language: 'en',
@@ -23,15 +24,26 @@ const yunusB1PagesLockedEn = stripUnsupportedBoldMarkdown(applyHotspotSourceLock
   },
 }));
 const yunusB1PagesLockedAr = applyHotspotSourceLock(yunusEmreB1PagesGoldAr, { language: 'ar', level: 'B1' });
-const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1PagesLockedEn, 'en');
-const yunusB1GuidesAr = buildB1EvidenceGuides(yunusB1PagesLockedAr, 'ar');
+
+const yunusB1HighlightStandard = applyB1HighlightStandard(yunusB1PagesLockedEn, yunusB1PagesLockedAr, {
+  storyKey: 'Yunus Emre',
+  storyIds: yunusEmreB1GoldConfig.storyIds,
+  glossaryPageIds: yunusEmreB1GoldConfig.glossaryPageIds,
+  vocabularyPageId: yunusEmreB1GoldConfig.vocabularyPageId,
+});
+
+export const yunusEmreB1HighlightTargets = yunusB1HighlightStandard.targets;
+const yunusB1PagesFinalEn = yunusB1HighlightStandard.englishPages;
+const yunusB1PagesFinalAr = yunusB1HighlightStandard.arabicPages;
+const yunusB1GuidesEn = buildB1EvidenceGuides(yunusB1PagesFinalEn, 'en');
+const yunusB1GuidesAr = buildB1EvidenceGuides(yunusB1PagesFinalAr, 'ar');
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
   title: 'Stories of the Prophets: Yunus Emre (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: yunusB1PagesLockedEn,
+  pages: yunusB1PagesFinalEn,
   teacherGuide: yunusB1GuidesEn.teacherGuide,
   teacherGuideMetadata: yunusB1TeacherGuideMetadata,
   selfStudyGuide: yunusB1GuidesEn.selfStudyGuide,
@@ -45,7 +57,7 @@ export const yunusEmreB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: يونس إمره (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: yunusB1PagesLockedAr,
+  pages: yunusB1PagesFinalAr,
   teacherGuide: yunusB1GuidesAr.teacherGuide,
   teacherGuideMetadata: yunusEmreB1TeacherGuideMetadataAr,
   selfStudyGuide: yunusB1GuidesAr.selfStudyGuide,
