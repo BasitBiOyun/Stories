@@ -3,8 +3,6 @@ import { highlightPhraseMatches, highlightPhraseOccurs, normalizeHighlightText }
 import { buildLearningGuides } from './learningGuideSystem';
 
 export type LearningLanguage = 'en' | 'ar';
-export type LearningExerciseType = 'multiple-choice' | 'true-false' | 'matching' | 'fill-blanks' | 'tap-reveal';
-
 export interface LearningSystemConfig {
   level: Level;
   storyIds: number[];
@@ -18,7 +16,6 @@ export interface LearningSystemConfig {
   reviewCount?: number;
   finalCount?: number;
 }
-
 export interface LearningSystemResult {
   englishPages: PageData[];
   arabicPages: PageData[];
@@ -28,826 +25,265 @@ export interface LearningSystemResult {
   arabicSelfStudyGuide: TeacherGuideSection[];
 }
 
-type AnchorKind = 'h' | 'v' | 's';
-
-type LearningAnchor = {
+type Kind = 'h' | 'v' | 's';
+type Variant = 'multiple-choice' | 'true-false' | 'matching' | 'fill-blanks' | 'tap-reveal';
+type Fact = { prompt: string; answer: string };
+type Anchor = {
   key: string;
-  kind: AnchorKind;
+  kind: Kind;
   chapterId: number;
   sourceIndex: number;
   english: Exercise;
   arabic: Exercise;
+  englishFact: Fact;
+  arabicFact: Fact;
 };
 
-type ExercisePair = LearningAnchor;
-type SourceFact = { prompt: string; answer: string };
-
-const QUICK_VARIANTS: LearningExerciseType[] = [
-  'tap-reveal',
-  'fill-blanks',
-  'matching',
-  'multiple-choice',
-  'true-false',
-];
-
-const defaultCounts = (config: LearningSystemConfig) => ({
-  knowledge: config.knowledgeCount ?? 8,
-  vocabulary: config.vocabularyCount ?? (config.level === 'A2' ? 6 : 10),
-  review: config.reviewCount ?? 8,
-  final: config.finalCount ?? 10,
+const QUICK: Variant[] = ['tap-reveal', 'fill-blanks', 'matching', 'multiple-choice', 'true-false'];
+const counts = (c: LearningSystemConfig) => ({
+  knowledge: c.knowledgeCount ?? 8,
+  vocabulary: c.vocabularyCount ?? (c.level === 'A2' ? 6 : 10),
+  review: c.reviewCount ?? 8,
+  final: c.finalCount ?? 10,
 });
-
-const label = (chapterId: number, language: LearningLanguage): string =>
-  language === 'ar' ? `الفصل ${chapterId}` : `Chapter ${chapterId}`;
-
-const insertAt = <T,>(items: T[], item: T, index: number): T[] => {
-  const output = [...items];
-  output.splice(Math.max(0, Math.min(index, output.length)), 0, item);
-  return output;
-};
-
-const uniqueStrings = (values: string[]): string[] => {
-  const seen = new Set<string>();
-  return values.filter((value) => {
-    const key = value.trim();
-    if (!key || seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-};
-
-const rotate = <T,>(items: T[], offset: number): T[] => {
-  if (!items.length) return [];
-  const normalized = ((offset % items.length) + items.length) % items.length;
-  return [...items.slice(normalized), ...items.slice(0, normalized)];
-};
-
-const pickEvenly = <T,>(items: T[], count: number): T[] => {
-  if (count <= 0) return [];
-  if (items.length <= count) return items.slice();
-  if (count === 1) return [items[0]];
-  const selected: T[] = [];
-  const used = new Set<number>();
-  for (let index = 0; index < count; index += 1) {
-    let sourceIndex = Math.round(index * (items.length - 1) / (count - 1));
-    while (used.has(sourceIndex) && sourceIndex + 1 < items.length) sourceIndex += 1;
-    used.add(sourceIndex);
-    selected.push(items[sourceIndex]);
-  }
-  return selected;
-};
-
-const storyPage = (pages: PageData[], chapterId: number): PageData | undefined =>
-  pages.find((page) => page.type === 'story' && page.id === chapterId);
-
-const requirePage = (pages: PageData[], id: number, language: string): PageData => {
-  const page = pages.find((item) => item.id === id);
-  if (!page) throw new Error(`[Learning System] ${language} page ${id} is missing.`);
+const chapterLabel = (id: number, lang: LearningLanguage) => lang === 'ar' ? `الفصل ${id}` : `Chapter ${id}`;
+const story = (pages: PageData[], id: number) => pages.find((p) => p.type === 'story' && p.id === id);
+const requirePage = (pages: PageData[], id: number, lang: string) => {
+  const page = pages.find((p) => p.id === id);
+  if (!page) throw new Error(`[Learning System] ${lang} page ${id} is missing.`);
   return page;
 };
-
-const sentences = (content: string): string[] =>
-  content
-    .replace(/\[POEM\][\s\S]*?\[\/POEM\]/g, ' ')
-    .split(/(?<=[.!?؟])\s+|\n+/u)
-    .map((value) => value.trim())
-    .filter((value) => value.length >= 24 && !/^KEY WORDS:/i.test(value));
-
-const pairedSentenceSlots = (english: PageData, arabic: PageData, max = 4): Array<[string, string]> => {
-  const en = sentences(english.content || '');
-  const ar = sentences(arabic.content || '');
-  const count = Math.min(max, en.length, ar.length);
-  if (!count) return [];
-  if (count === 1) return [[en[0], ar[0]]];
-  const result: Array<[string, string]> = [];
-  const usedEn = new Set<number>();
-  const usedAr = new Set<number>();
-  for (let slot = 0; slot < count; slot += 1) {
-    let enIndex = Math.round(slot * (en.length - 1) / (count - 1));
-    let arIndex = Math.round(slot * (ar.length - 1) / (count - 1));
-    while (usedEn.has(enIndex) && enIndex + 1 < en.length) enIndex += 1;
-    while (usedAr.has(arIndex) && arIndex + 1 < ar.length) arIndex += 1;
-    usedEn.add(enIndex);
-    usedAr.add(arIndex);
-    result.push([en[enIndex], ar[arIndex]]);
+const rotate = <T,>(a: T[], n: number) => a.length ? [...a.slice(((n % a.length) + a.length) % a.length), ...a.slice(0, ((n % a.length) + a.length) % a.length)] : [];
+const unique = (values: string[]) => {
+  const seen = new Set<string>();
+  return values.filter((v) => { const k = v.trim(); if (!k || seen.has(k)) return false; seen.add(k); return true; });
+};
+const insertAt = <T,>(items: T[], item: T, index: number) => { const out = [...items]; out.splice(index, 0, item); return out; };
+const pickEvenly = <T,>(items: T[], count: number): T[] => {
+  if (items.length <= count) return items.slice();
+  if (count <= 1) return count ? [items[0]] : [];
+  const out: T[] = []; const used = new Set<number>();
+  for (let i = 0; i < count; i += 1) {
+    let j = Math.round(i * (items.length - 1) / (count - 1));
+    while (used.has(j) && j + 1 < items.length) j += 1;
+    used.add(j); out.push(items[j]);
   }
-  return result;
+  return out;
 };
 
-const validateSourceParity = (
-  englishPages: PageData[],
-  arabicPages: PageData[],
-  config: LearningSystemConfig,
-): void => {
-  config.storyIds.forEach((chapterId) => {
-    const english = storyPage(englishPages, chapterId);
-    const arabic = storyPage(arabicPages, chapterId);
-    if (!english || !arabic) throw new Error(`[Learning System] Chapter ${chapterId} is missing in one language.`);
+const chapterSentences = (text: string) => text
+  .replace(/\[POEM\][\s\S]*?\[\/POEM\]/g, ' ')
+  .split(/(?<=[.!?؟])\s+|\n+/u)
+  .map((s) => s.trim())
+  .filter((s) => s.length >= 24 && !/^KEY WORDS:/i.test(s));
 
-    const enHotspots = english.hotspots ?? [];
-    const arHotspots = arabic.hotspots ?? [];
-    if (enHotspots.length !== arHotspots.length) {
-      throw new Error(`[Learning System] Chapter ${chapterId} hotspot counts differ: EN=${enHotspots.length}, AR=${arHotspots.length}.`);
-    }
-    enHotspots.forEach((hotspot, index) => {
-      if (hotspot.id !== arHotspots[index]?.id) {
-        throw new Error(`[Learning System] Chapter ${chapterId} hotspot ${index + 1} source IDs differ.`);
-      }
-    });
-
-    const enVocabulary = english.vocabulary ?? [];
-    const arVocabulary = arabic.vocabulary ?? [];
-    if (enVocabulary.length !== arVocabulary.length) {
-      throw new Error(`[Learning System] Chapter ${chapterId} Word Notes counts differ: EN=${enVocabulary.length}, AR=${arVocabulary.length}.`);
-    }
-
-    if (!enHotspots.length && !enVocabulary.length && !pairedSentenceSlots(english, arabic).length) {
-      throw new Error(`[Learning System] Chapter ${chapterId} has no usable paired source material.`);
-    }
-  });
-
-  [
-    config.knowledgeCheckPageId,
-    config.vocabularyPageId,
-    config.reviewPageId,
-    ...config.glossaryPageIds,
-    config.finalChallengePageId,
-  ].filter((id): id is number => typeof id === 'number').forEach((id) => {
-    requirePage(englishPages, id, 'English');
-    requirePage(arabicPages, id, 'Arabic');
-  });
+const sentencePairs = (en: PageData, ar: PageData, max = 4): Array<[string, string]> => {
+  const a = chapterSentences(en.content || ''); const b = chapterSentences(ar.content || '');
+  const n = Math.min(max, a.length, b.length); if (!n) return [];
+  if (n === 1) return [[a[0], b[0]]];
+  return Array.from({ length: n }, (_, i) => [
+    a[Math.round(i * (a.length - 1) / (n - 1))],
+    b[Math.round(i * (b.length - 1) / (n - 1))],
+  ]);
 };
 
-const hotspotExercise = (
-  page: PageData,
-  sourceIndex: number,
-  allStoryPages: PageData[],
-  language: LearningLanguage,
-): Exercise | null => {
-  const hotspot = page.hotspots?.[sourceIndex];
-  if (!hotspot) return null;
-  const distractors = uniqueStrings([
-    ...(page.hotspots ?? []).filter((_, index) => index !== sourceIndex).map((item) => item.description),
-    ...allStoryPages.filter((item) => item.id !== page.id).flatMap((item) => (item.hotspots ?? []).map((entry) => entry.description)),
-  ]).filter((value) => value !== hotspot.description).slice(0, 2);
-  if (distractors.length < 2) return null;
-  const correctIndex = (page.id + sourceIndex) % 3;
+const validateSources = (enPages: PageData[], arPages: PageData[], config: LearningSystemConfig) => {
+  for (const id of config.storyIds) {
+    const en = story(enPages, id); const ar = story(arPages, id);
+    if (!en || !ar) throw new Error(`[Learning System] Chapter ${id} is missing in one language.`);
+    const eh = en.hotspots || []; const ah = ar.hotspots || [];
+    if (eh.length !== ah.length) throw new Error(`[Learning System] Chapter ${id} hotspot counts differ: EN=${eh.length}, AR=${ah.length}.`);
+    eh.forEach((h, i) => { if (h.id !== ah[i]?.id) throw new Error(`[Learning System] Chapter ${id} hotspot ${i + 1} source IDs differ.`); });
+    if ((en.vocabulary?.length || 0) !== (ar.vocabulary?.length || 0)) throw new Error(`[Learning System] Chapter ${id} Word Notes counts differ.`);
+    if (!eh.length && !(en.vocabulary?.length) && !sentencePairs(en, ar).length) throw new Error(`[Learning System] Chapter ${id} has no usable paired source.`);
+  }
+  [config.knowledgeCheckPageId, config.vocabularyPageId, config.reviewPageId, ...config.glossaryPageIds, config.finalChallengePageId]
+    .filter((x): x is number => typeof x === 'number')
+    .forEach((id) => { requirePage(enPages, id, 'English'); requirePage(arPages, id, 'Arabic'); });
+};
+
+const distractors = (correct: string, values: string[]) => unique(values).filter((v) => v !== correct).slice(0, 2);
+const baseExercise = (page: PageData, fact: Fact, wrong: string[], index: number, lang: LearningLanguage, kind: Kind): Exercise | null => {
+  const ds = distractors(fact.answer, wrong); if (ds.length < 2) return null;
+  const correct = (page.id + index + (kind === 'v' ? 1 : kind === 's' ? 2 : 0)) % 3;
+  const q = kind === 'v'
+    ? (lang === 'ar' ? `ما معنى «${fact.prompt}» في ${chapterLabel(page.id, lang)}؟` : `What does “${fact.prompt}” mean in ${chapterLabel(page.id, lang)}?`)
+    : kind === 'h'
+      ? (lang === 'ar' ? `أي معلومة ترتبط بـ «${fact.prompt}» في ${chapterLabel(page.id, lang)}؟` : `Which detail matches “${fact.prompt}” in ${chapterLabel(page.id, lang)}?`)
+      : (lang === 'ar' ? `أي جملة وردت في ${chapterLabel(page.id, lang)}؟` : `Which sentence appears in ${chapterLabel(page.id, lang)}?`);
   return {
-    id: `learning-h-${page.id}-${sourceIndex}`,
-    type: 'multiple-choice',
-    title: language === 'ar' ? 'تفصيل من الفصل' : 'Chapter Detail',
-    instructions: language === 'ar' ? 'اختر المعلومة الموجودة في هذا الفصل.' : 'Choose the detail stated in this chapter.',
-    question: language === 'ar'
-      ? `أي معلومة ترتبط بـ «${hotspot.title}» في ${label(page.id, language)}؟`
-      : `Which detail matches “${hotspot.title}” in ${label(page.id, language)}?`,
-    options: insertAt(distractors, hotspot.description, correctIndex),
-    correctAnswer: correctIndex,
-    explanation: hotspot.description,
+    id: `learning-${kind}-${page.id}-${index}`, type: 'multiple-choice',
+    title: lang === 'ar' ? 'دليل من الفصل' : 'Chapter Evidence',
+    instructions: lang === 'ar' ? 'اختر الإجابة المدعومة بنص الفصل.' : 'Choose the answer supported by the chapter.',
+    question: q, options: insertAt(ds, fact.answer, correct), correctAnswer: correct, explanation: fact.answer,
     feedback: {
-      correct: language === 'ar' ? 'صحيح. هذه المعلومة موجودة في الفصل.' : 'Correct. This detail is stated in the chapter.',
-      incorrect: language === 'ar' ? `ارجع إلى ${label(page.id, language)} وابحث عن الدليل.` : `Return to ${label(page.id, language)} and find the evidence.`,
+      correct: lang === 'ar' ? 'صحيح. الإجابة مدعومة بالفصل.' : 'Correct. The answer is supported by the chapter.',
+      incorrect: lang === 'ar' ? `ارجع إلى ${chapterLabel(page.id, lang)} وابحث عن الدليل.` : `Return to ${chapterLabel(page.id, lang)} and find the evidence.`,
     },
   };
 };
 
-const vocabularyExercise = (
-  page: PageData,
-  sourceIndex: number,
-  allStoryPages: PageData[],
-  language: LearningLanguage,
-): Exercise | null => {
-  const entry = page.vocabulary?.[sourceIndex];
-  if (!entry) return null;
-  const distractors = uniqueStrings([
-    ...(page.vocabulary ?? []).filter((_, index) => index !== sourceIndex).map((item) => item.definition),
-    ...allStoryPages.filter((item) => item.id !== page.id).flatMap((item) => (item.vocabulary ?? []).map((item) => item.definition)),
-  ]).filter((value) => value !== entry.definition).slice(0, 2);
-  if (distractors.length < 2) return null;
-  const correctIndex = (page.id + sourceIndex + 1) % 3;
-  return {
-    id: `learning-v-${page.id}-${sourceIndex}`,
-    type: 'multiple-choice',
-    title: language === 'ar' ? 'معنى الكلمة' : 'Word Meaning',
-    instructions: language === 'ar' ? 'اختر المعنى المستخدم في الفصل.' : 'Choose the meaning used in the chapter.',
-    question: language === 'ar' ? `ما معنى «${entry.word}» في ${label(page.id, language)}؟` : `What does “${entry.word}” mean in ${label(page.id, language)}?`,
-    options: insertAt(distractors, entry.definition, correctIndex),
-    correctAnswer: correctIndex,
-    explanation: `${entry.word}: ${entry.definition}`,
-    feedback: {
-      correct: language === 'ar' ? 'صحيح. هذا هو معنى الكلمة في ملاحظات المفردات.' : 'Correct. This is the Word Notes meaning.',
-      incorrect: language === 'ar' ? `راجع ملاحظات المفردات في ${label(page.id, language)}.` : `Check the Word Notes in ${label(page.id, language)}.`,
-    },
-  };
-};
+const buildAnchors = (enPages: PageData[], arPages: PageData[], ids: number[]): Anchor[] => {
+  const allEnHotspots = enPages.flatMap((p) => (p.hotspots || []).map((h) => h.description));
+  const allArHotspots = arPages.flatMap((p) => (p.hotspots || []).map((h) => h.description));
+  const allEnDefs = enPages.flatMap((p) => (p.vocabulary || []).map((v) => v.definition));
+  const allArDefs = arPages.flatMap((p) => (p.vocabulary || []).map((v) => v.definition));
+  const allEnSentences = enPages.flatMap((p) => chapterSentences(p.content || '').slice(0, 2));
+  const allArSentences = arPages.flatMap((p) => chapterSentences(p.content || '').slice(0, 2));
+  const byChapter = new Map<number, Anchor[]>();
 
-const sentenceExercise = (
-  page: PageData,
-  sourceSentence: string,
-  sourceIndex: number,
-  allStoryPages: PageData[],
-  language: LearningLanguage,
-): Exercise | null => {
-  const distractors = uniqueStrings(
-    allStoryPages
-      .filter((item) => item.id !== page.id)
-      .flatMap((item) => sentences(item.content || '').slice(0, 2)),
-  ).filter((value) => value !== sourceSentence).slice(0, 2);
-  if (distractors.length < 2) return null;
-  const correctIndex = (page.id + sourceIndex + 2) % 3;
-  return {
-    id: `learning-s-${page.id}-${sourceIndex}`,
-    type: 'multiple-choice',
-    title: language === 'ar' ? 'دليل من الفصل' : 'Chapter Evidence',
-    instructions: language === 'ar' ? 'اختر الجملة التي وردت في هذا الفصل.' : 'Choose the sentence stated in this chapter.',
-    question: language === 'ar' ? `أي جملة وردت في ${label(page.id, language)}؟` : `Which sentence appears in ${label(page.id, language)}?`,
-    options: insertAt(distractors, sourceSentence, correctIndex),
-    correctAnswer: correctIndex,
-    explanation: sourceSentence,
-    feedback: {
-      correct: language === 'ar' ? 'صحيح. هذه الجملة مأخوذة من الفصل نفسه.' : 'Correct. This sentence comes from the chapter itself.',
-      incorrect: language === 'ar' ? `ارجع إلى ${label(page.id, language)} وابحث عن الجملة.` : `Return to ${label(page.id, language)} and find the sentence.`,
-    },
-  };
-};
-
-const buildAnchors = (
-  englishStoryPages: PageData[],
-  arabicStoryPages: PageData[],
-  storyIds: number[],
-): LearningAnchor[] => {
-  const byChapter = new Map<number, LearningAnchor[]>();
-
-  storyIds.forEach((chapterId) => {
-    const en = storyPage(englishStoryPages, chapterId);
-    const ar = storyPage(arabicStoryPages, chapterId);
-    if (!en || !ar) return;
-    const chapterAnchors: LearningAnchor[] = [];
-
-    (en.hotspots ?? []).forEach((_, sourceIndex) => {
-      const english = hotspotExercise(en, sourceIndex, englishStoryPages, 'en');
-      const arabic = hotspotExercise(ar, sourceIndex, arabicStoryPages, 'ar');
-      if (english && arabic) chapterAnchors.push({ key: `h:${chapterId}:${sourceIndex}`, kind: 'h', chapterId, sourceIndex, english, arabic });
+  for (const id of ids) {
+    const en = story(enPages, id)!; const ar = story(arPages, id)!; const a: Anchor[] = [];
+    (en.hotspots || []).forEach((h, i) => {
+      const ah = ar.hotspots?.[i]; if (!ah) return;
+      const ef = { prompt: h.title, answer: h.description }; const af = { prompt: ah.title, answer: ah.description };
+      const ee = baseExercise(en, ef, allEnHotspots, i, 'en', 'h'); const ae = baseExercise(ar, af, allArHotspots, i, 'ar', 'h');
+      if (ee && ae) a.push({ key: `h:${id}:${i}`, kind: 'h', chapterId: id, sourceIndex: i, english: ee, arabic: ae, englishFact: ef, arabicFact: af });
     });
-
-    (en.vocabulary ?? []).forEach((_, sourceIndex) => {
-      const english = vocabularyExercise(en, sourceIndex, englishStoryPages, 'en');
-      const arabic = vocabularyExercise(ar, sourceIndex, arabicStoryPages, 'ar');
-      if (english && arabic) chapterAnchors.push({ key: `v:${chapterId}:${sourceIndex}`, kind: 'v', chapterId, sourceIndex, english, arabic });
+    (en.vocabulary || []).forEach((v, i) => {
+      const av = ar.vocabulary?.[i]; if (!av) return;
+      const ef = { prompt: v.word, answer: v.definition }; const af = { prompt: av.word, answer: av.definition };
+      const ee = baseExercise(en, ef, allEnDefs, i, 'en', 'v'); const ae = baseExercise(ar, af, allArDefs, i, 'ar', 'v');
+      if (ee && ae) a.push({ key: `v:${id}:${i}`, kind: 'v', chapterId: id, sourceIndex: i, english: ee, arabic: ae, englishFact: ef, arabicFact: af });
     });
-
-    pairedSentenceSlots(en, ar).forEach(([enSentence, arSentence], sourceIndex) => {
-      const english = sentenceExercise(en, enSentence, sourceIndex, englishStoryPages, 'en');
-      const arabic = sentenceExercise(ar, arSentence, sourceIndex, arabicStoryPages, 'ar');
-      if (english && arabic) chapterAnchors.push({ key: `s:${chapterId}:${sourceIndex}`, kind: 's', chapterId, sourceIndex, english, arabic });
+    sentencePairs(en, ar).forEach(([es, as], i) => {
+      const ef = { prompt: en.title, answer: es }; const af = { prompt: ar.title, answer: as };
+      const ee = baseExercise(en, ef, allEnSentences, i, 'en', 's'); const ae = baseExercise(ar, af, allArSentences, i, 'ar', 's');
+      if (ee && ae) a.push({ key: `s:${id}:${i}`, kind: 's', chapterId: id, sourceIndex: i, english: ee, arabic: ae, englishFact: ef, arabicFact: af });
     });
-
-    if (!chapterAnchors.length) throw new Error(`[Learning System] No paired learning source for Chapter ${chapterId}.`);
-    byChapter.set(chapterId, chapterAnchors);
-  });
-
-  const output: LearningAnchor[] = [];
-  const max = Math.max(0, ...storyIds.map((id) => byChapter.get(id)?.length ?? 0));
-  for (let slot = 0; slot < max; slot += 1) {
-    storyIds.forEach((chapterId) => {
-      const anchor = byChapter.get(chapterId)?.[slot];
-      if (anchor) output.push(anchor);
-    });
+    if (!a.length) throw new Error(`[Learning System] No paired learning source for Chapter ${id}.`);
+    byChapter.set(id, a);
   }
-  return output;
+  const out: Anchor[] = []; const max = Math.max(...ids.map((id) => byChapter.get(id)?.length || 0));
+  for (let slot = 0; slot < max; slot += 1) ids.forEach((id) => { const x = byChapter.get(id)?.[slot]; if (x) out.push(x); });
+  return out;
 };
 
-const sourceFact = (anchor: LearningAnchor, page: PageData): SourceFact | null => {
-  if (anchor.kind === 'h') {
-    const hotspot = page.hotspots?.[anchor.sourceIndex];
-    return hotspot ? { prompt: hotspot.title, answer: hotspot.description } : null;
-  }
-  if (anchor.kind === 'v') {
-    const entry = page.vocabulary?.[anchor.sourceIndex];
-    return entry ? { prompt: entry.word, answer: entry.definition } : null;
-  }
-  const slot = pairedSentenceSlots(page, page)[anchor.sourceIndex]?.[0];
-  return slot ? { prompt: page.title, answer: slot } : null;
-};
-
-const findSentenceWithPhrase = (content: string, phrase: string, language: LearningLanguage): string | null => {
-  const values = sentences(content);
-  return values.find((sentence) => highlightPhraseOccurs(sentence, phrase, language)) ?? null;
-};
-
-const blankPhraseInSentence = (sentence: string, phrase: string, language: LearningLanguage): string | null => {
+const sentenceWith = (text: string, phrase: string, lang: LearningLanguage) => chapterSentences(text).find((s) => highlightPhraseOccurs(s, phrase, lang));
+const blank = (sentence: string, phrase: string, lang: LearningLanguage): string | null => {
   if (sentence.includes(phrase)) return sentence.replace(phrase, '[blank]');
-  const phraseTokenCount = normalizeHighlightText(phrase, language).split(' ').filter(Boolean).length;
-  if (!phraseTokenCount) return null;
+  const n = normalizeHighlightText(phrase, lang).split(' ').filter(Boolean).length; if (!n) return null;
   const tokens = sentence.split(/\s+/);
-  for (let index = 0; index <= tokens.length - phraseTokenCount; index += 1) {
-    const candidate = tokens.slice(index, index + phraseTokenCount).join(' ');
-    if (!highlightPhraseMatches(candidate, phrase, language)) continue;
-    const first = tokens[index];
-    const last = tokens[index + phraseTokenCount - 1];
-    const leading = first.match(/^[^\p{L}\p{N}]*/u)?.[0] ?? '';
-    const trailing = last.match(/[^\p{L}\p{N}]*$/u)?.[0] ?? '';
-    tokens.splice(index, phraseTokenCount, `${leading}[blank]${trailing}`);
-    return tokens.join(' ');
+  for (let i = 0; i <= tokens.length - n; i += 1) {
+    const candidate = tokens.slice(i, i + n).join(' '); if (!highlightPhraseMatches(candidate, phrase, lang)) continue;
+    const lead = tokens[i].match(/^[^\p{L}\p{N}]*/u)?.[0] || ''; const tail = tokens[i + n - 1].match(/[^\p{L}\p{N}]*$/u)?.[0] || '';
+    tokens.splice(i, n, `${lead}[blank]${tail}`); return tokens.join(' ');
   }
   return null;
 };
+const factFor = (a: Anchor, lang: LearningLanguage) => lang === 'ar' ? a.arabicFact : a.englishFact;
+const pageFor = (pages: PageData[], a: Anchor) => story(pages, a.chapterId)!;
 
-const chapterPairs = (anchor: LearningAnchor, page: PageData): { left: string; right: string }[] => {
-  const hotspotPairs = (page.hotspots ?? []).map((item) => ({ left: item.title, right: item.description }));
-  const vocabularyPairs = (page.vocabulary ?? []).map((item) => ({ left: item.word, right: item.definition }));
-  const preferred = anchor.kind === 'h' ? hotspotPairs : vocabularyPairs;
-  const secondary = anchor.kind === 'h' ? vocabularyPairs : hotspotPairs;
-  const ordered = [...rotate(preferred, anchor.sourceIndex), ...secondary];
-  const seen = new Set<string>();
-  const result: { left: string; right: string }[] = [];
-  for (const pair of ordered) {
-    const key = pair.left.trim();
-    if (!key || seen.has(key)) continue;
-    seen.add(key);
-    result.push(pair);
-    if (result.length === 3) break;
-  }
-  return result;
+const tap = (a: Anchor, p: PageData, lang: LearningLanguage): Exercise => {
+  const f = factFor(a, lang);
+  return { id: `learning-tap-${p.id}-${a.sourceIndex}`, type: 'tap-reveal', title: lang === 'ar' ? 'فكّر ثم اكشف' : 'Think, Then Reveal',
+    instructions: lang === 'ar' ? 'فكّر أولاً ثم اكشف الإجابة وقارنها بالفصل.' : 'Think first, then reveal the answer and compare it with the chapter.',
+    question: lang === 'ar' ? `ماذا يقول ${chapterLabel(p.id, lang)} عن «${f.prompt}»؟` : `What does ${chapterLabel(p.id, lang)} say about “${f.prompt}”?`,
+    correctAnswer: f.answer, explanation: f.answer, tapRevealItems: [{ question: f.prompt, answer: f.answer }],
+    feedback: { correct: lang === 'ar' ? 'جيد. قارن إجابتك بالنص.' : 'Good. Compare your answer with the text.', incorrect: lang === 'ar' ? 'ارجع إلى الفصل ثم حاول مرة أخرى.' : 'Return to the chapter and try again.' } };
+};
+const fill = (a: Anchor, p: PageData, lang: LearningLanguage): Exercise | null => {
+  if (a.kind !== 'v') return null; const v = p.vocabulary?.[a.sourceIndex]; if (!v) return null;
+  const s = sentenceWith(p.content || '', v.word, lang); if (!s) return null; const text = blank(s, v.word, lang); if (!text) return null;
+  return { id: `learning-fill-${p.id}-${a.sourceIndex}`, type: 'fill-blanks', title: lang === 'ar' ? 'أكمل من الفصل' : 'Complete from the Chapter',
+    instructions: lang === 'ar' ? 'استخدم كلمة من ملاحظات المفردات.' : 'Use a Word Notes word.', question: lang === 'ar' ? 'ما الكلمة الناقصة؟' : 'Which word is missing?',
+    fillBlanksText: text, correctAnswer: v.word, explanation: `${v.word}: ${v.definition}`,
+    feedback: { correct: lang === 'ar' ? 'صحيح.' : 'Correct.', incorrect: lang === 'ar' ? 'راجع الفصل وملاحظات المفردات.' : 'Check the chapter and Word Notes.' } };
+};
+const match = (a: Anchor, p: PageData, lang: LearningLanguage): Exercise | null => {
+  if (a.kind === 's') return null;
+  const hp = (p.hotspots || []).map((h) => ({ left: h.title, right: h.description })); const vp = (p.vocabulary || []).map((v) => ({ left: v.word, right: v.definition }));
+  const ordered = a.kind === 'h' ? [...rotate(hp, a.sourceIndex), ...vp] : [...rotate(vp, a.sourceIndex), ...hp];
+  const seen = new Set<string>(); const pairs = ordered.filter((x) => { if (!x.left.trim() || seen.has(x.left)) return false; seen.add(x.left); return true; }).slice(0, 3); if (pairs.length < 3) return null;
+  return { id: `learning-match-${p.id}-${a.sourceIndex}`, type: 'matching', title: lang === 'ar' ? 'صل المعلومات' : 'Match the Information',
+    instructions: lang === 'ar' ? 'صل كل كلمة أو فكرة بالمعلومة أو المعنى الصحيح.' : 'Match each key word or idea with its correct detail or meaning.', question: lang === 'ar' ? 'صل كل عنصر بالإجابة الصحيحة.' : 'Match each item with the correct answer.',
+    matchingPairs: pairs, correctAnswer: Object.fromEntries(pairs.map((x) => [x.left, x.right])), explanation: lang === 'ar' ? 'جميع الأزواج من هذا الفصل.' : 'All pairs come from this chapter.',
+    feedback: { correct: lang === 'ar' ? 'صحيح.' : 'Correct.', incorrect: lang === 'ar' ? 'راجع الفصل ثم حاول مرة أخرى.' : 'Check the chapter and try again.' } };
+};
+const tf = (a: Anchor, p: PageData, lang: LearningLanguage): Exercise => {
+  const f = factFor(a, lang); const positive = (p.id + a.sourceIndex) % 2 === 0;
+  return { id: `learning-tf-${p.id}-${a.sourceIndex}`, type: 'true-false', title: lang === 'ar' ? 'صحيح أم خطأ' : 'True or False',
+    instructions: lang === 'ar' ? 'قارن العبارة بالفصل.' : 'Compare the statement with the chapter.',
+    question: lang === 'ar' ? `${positive ? 'يذكر' : 'لا يذكر'} ${chapterLabel(p.id, lang)} هذه المعلومة: ${f.answer}` : `${chapterLabel(p.id, lang)} ${positive ? 'gives' : 'does not give'} this detail: ${f.answer}`,
+    correctAnswer: positive, explanation: f.answer, feedback: { correct: lang === 'ar' ? 'صحيح.' : 'Correct.', incorrect: lang === 'ar' ? 'ارجع إلى الفصل.' : 'Return to the chapter.' } };
+};
+const variant = (a: Anchor, pages: PageData[], lang: LearningLanguage, type: Variant): Exercise | null => {
+  const p = pageFor(pages, a); if (type === 'multiple-choice') return lang === 'ar' ? a.arabic : a.english; if (type === 'tap-reveal') return tap(a, p, lang); if (type === 'fill-blanks') return fill(a, p, lang); if (type === 'matching') return match(a, p, lang); return tf(a, p, lang);
+};
+const pairVariant = (a: Anchor, enPages: PageData[], arPages: PageData[], type: Variant): Anchor => {
+  const en = variant(a, enPages, 'en', type); const ar = variant(a, arPages, 'ar', type); return en && ar && en.type === ar.type ? { ...a, english: en, arabic: ar } : a;
+};
+const select = (anchors: Anchor[], n: number, used: Set<string>, offset: number) => {
+  const pool = rotate(anchors, offset).filter((a) => !used.has(a.key)); if (pool.length < n) throw new Error(`[Learning System] Needs ${n} unused anchors but only ${pool.length} remain.`);
+  const out = pickEvenly(pool, n); out.forEach((a) => used.add(a.key)); return out;
+};
+const stagePairs = (anchors: Anchor[], en: PageData[], ar: PageData[], offset: number) => {
+  let v = 0; let h = 0; let s = 0; const vt: Variant[] = ['fill-blanks', 'matching', 'tap-reveal', 'multiple-choice', 'true-false']; const ht: Variant[] = ['tap-reveal', 'matching', 'true-false', 'multiple-choice']; const st: Variant[] = ['multiple-choice', 'true-false', 'tap-reveal'];
+  return anchors.map((a) => pairVariant(a, en, ar, a.kind === 'v' ? vt[(v++ + offset) % vt.length] : a.kind === 'h' ? ht[(h++ + offset) % ht.length] : st[(s++ + offset) % st.length]));
 };
 
-const tapReveal = (anchor: LearningAnchor, page: PageData, language: LearningLanguage): Exercise | null => {
-  const source = sourceFact(anchor, page);
-  if (!source) return null;
-  return {
-    id: `learning-tap-${page.id}-${anchor.sourceIndex}`,
-    type: 'tap-reveal',
-    title: language === 'ar' ? 'فكّر ثم اكشف' : 'Think, Then Reveal',
-    instructions: language === 'ar' ? 'فكّر في الإجابة أولًا، ثم اكشفها وقارنها بالفصل.' : 'Think first, then reveal the answer and compare it with the chapter.',
-    question: language === 'ar' ? `ماذا يقول ${label(page.id, language)} عن «${source.prompt}»؟` : `What does ${label(page.id, language)} say about “${source.prompt}”?`,
-    correctAnswer: source.answer,
-    explanation: source.answer,
-    feedback: {
-      correct: language === 'ar' ? 'جيد. قارن إجابتك بمعلومة الفصل.' : 'Good. Compare your answer with the chapter detail.',
-      incorrect: language === 'ar' ? 'ارجع إلى الفصل واقرأ المعلومة مرة أخرى.' : 'Return to the chapter and read the detail again.',
-    },
-    tapRevealItems: [{ question: source.prompt, answer: source.answer }],
-  };
+const quizQuestion = (e: Exercise, id: number, lang: LearningLanguage): QuizQuestion => {
+  if (e.type === 'true-false' && typeof e.correctAnswer === 'boolean') return { question: e.question || '', options: lang === 'ar' ? [{ text: 'صحيح', isCorrect: e.correctAnswer }, { text: 'خطأ', isCorrect: !e.correctAnswer }] : [{ text: 'True', isCorrect: e.correctAnswer }, { text: 'False', isCorrect: !e.correctAnswer }], hint: lang === 'ar' ? `ارجع إلى ${chapterLabel(id, lang)}.` : `Return to ${chapterLabel(id, lang)}.` };
+  const correct = typeof e.correctAnswer === 'number' ? e.correctAnswer : 0; return { question: e.question || '', options: (e.options || []).map((text, i) => ({ text, isCorrect: i === correct })), hint: lang === 'ar' ? `ارجع إلى ${chapterLabel(id, lang)}.` : `Return to ${chapterLabel(id, lang)}.` };
 };
-
-const fillBlank = (anchor: LearningAnchor, page: PageData, language: LearningLanguage): Exercise | null => {
-  if (anchor.kind !== 'v') return null;
-  const entry = page.vocabulary?.[anchor.sourceIndex];
-  if (!entry) return null;
-  const sentence = findSentenceWithPhrase(page.content || '', entry.word, language);
-  if (!sentence) return null;
-  const fillBlanksText = blankPhraseInSentence(sentence, entry.word, language);
-  if (!fillBlanksText?.includes('[blank]')) return null;
-  return {
-    id: `learning-fill-${page.id}-${anchor.sourceIndex}`,
-    type: 'fill-blanks',
-    title: language === 'ar' ? 'أكمل من الفصل' : 'Complete from the Chapter',
-    instructions: language === 'ar' ? 'استخدم كلمة من ملاحظات المفردات لإكمال الجملة كما وردت في الفصل.' : 'Use a Word Notes word to complete the sentence as it appears in the chapter.',
-    question: language === 'ar' ? 'ما الكلمة الناقصة؟' : 'Which word is missing?',
-    fillBlanksText,
-    correctAnswer: entry.word,
-    explanation: `${entry.word}: ${entry.definition}`,
-    feedback: {
-      correct: language === 'ar' ? 'صحيح. هذه الكلمة موجودة في جملة الفصل.' : 'Correct. This word appears in the chapter sentence.',
-      incorrect: language === 'ar' ? `راجع ملاحظات المفردات في ${label(page.id, language)}.` : `Check the Word Notes in ${label(page.id, language)}.`,
-    },
-  };
-};
-
-const matching = (anchor: LearningAnchor, page: PageData, language: LearningLanguage): Exercise | null => {
-  if (anchor.kind === 's') return null;
-  const pairs = chapterPairs(anchor, page);
-  if (pairs.length < 3) return null;
-  return {
-    id: `learning-match-${page.id}-${anchor.sourceIndex}`,
-    type: 'matching',
-    title: language === 'ar' ? 'صل المعلومات' : 'Match the Information',
-    instructions: language === 'ar' ? 'صل كل كلمة أو فكرة من هذا الفصل بالمعلومة أو المعنى الصحيح.' : 'Match each key word or idea from this chapter with its correct detail or meaning.',
-    question: language === 'ar' ? 'صل كل عنصر بالإجابة الصحيحة.' : 'Match each item with the correct answer.',
-    matchingPairs: pairs,
-    correctAnswer: Object.fromEntries(pairs.map((pair) => [pair.left, pair.right])),
-    explanation: language === 'ar' ? `جميع الأزواج مأخوذة من ${label(page.id, language)} وملاحظات المفردات الخاصة به.` : `All pairs come from ${label(page.id, language)} and its Word Notes.`,
-    feedback: {
-      correct: language === 'ar' ? 'صحيح. أكملت المطابقة.' : 'Correct. You completed the matching task.',
-      incorrect: language === 'ar' ? `راجع ${label(page.id, language)} وملاحظات المفردات ثم حاول مرة أخرى.` : `Check ${label(page.id, language)} and its Word Notes, then try again.`,
-    },
-  };
-};
-
-const trueFalse = (anchor: LearningAnchor, page: PageData, language: LearningLanguage): Exercise | null => {
-  const source = sourceFact(anchor, page);
-  if (!source) return null;
-  const positive = (page.id + anchor.sourceIndex) % 2 === 0;
-  return {
-    id: `learning-tf-${page.id}-${anchor.sourceIndex}`,
-    type: 'true-false',
-    title: language === 'ar' ? 'صحيح أم خطأ' : 'True or False',
-    instructions: language === 'ar' ? 'قارن العبارة بالمعلومة الموجودة في الفصل.' : 'Compare the statement with the chapter information.',
-    question: language === 'ar'
-      ? positive
-        ? `يذكر ${label(page.id, language)} هذه المعلومة: ${source.answer}`
-        : `لا يذكر ${label(page.id, language)} هذه المعلومة: ${source.answer}`
-      : positive
-        ? `${label(page.id, language)} gives this detail: ${source.answer}`
-        : `${label(page.id, language)} does not give this detail: ${source.answer}`,
-    correctAnswer: positive,
-    explanation: source.answer,
-    feedback: {
-      correct: language === 'ar' ? 'صحيح. قارنت العبارة بمعلومة الفصل.' : 'Correct. You compared the statement with the chapter detail.',
-      incorrect: language === 'ar' ? 'ارجع إلى الفصل واقرأ المعلومة نفسها.' : 'Return to the chapter and read the exact detail again.',
-    },
-  };
-};
-
-const variant = (
-  anchor: LearningAnchor,
-  storyPages: PageData[],
-  language: LearningLanguage,
-  desired: LearningExerciseType,
-): Exercise | null => {
-  const page = storyPage(storyPages, anchor.chapterId);
-  if (!page) return null;
-  if (desired === 'multiple-choice') return language === 'ar' ? anchor.arabic : anchor.english;
-  if (desired === 'tap-reveal') return tapReveal(anchor, page, language);
-  if (desired === 'fill-blanks') return fillBlank(anchor, page, language);
-  if (desired === 'matching') return matching(anchor, page, language);
-  return trueFalse(anchor, page, language);
-};
-
-const pairVariant = (
-  anchor: LearningAnchor,
-  englishStoryPages: PageData[],
-  arabicStoryPages: PageData[],
-  desired: LearningExerciseType,
-): ExercisePair => {
-  const english = variant(anchor, englishStoryPages, 'en', desired);
-  const arabic = variant(anchor, arabicStoryPages, 'ar', desired);
-  if (!english || !arabic || english.type !== arabic.type) return { ...anchor };
-  return { ...anchor, english, arabic };
-};
-
-const selectStage = (
-  anchors: LearningAnchor[],
-  count: number,
-  usedKeys: Set<string>,
-  offset: number,
-): LearningAnchor[] => {
-  const pool = rotate(anchors, offset).filter((anchor) => !usedKeys.has(anchor.key));
-  if (pool.length < count) throw new Error(`[Learning System] Needs ${count} unused source anchors but only ${pool.length} remain.`);
-  const selected = pickEvenly(pool, count);
-  selected.forEach((anchor) => usedKeys.add(anchor.key));
-  return selected;
-};
-
-const stagePairs = (
-  anchors: LearningAnchor[],
-  englishStoryPages: PageData[],
-  arabicStoryPages: PageData[],
-  offset: number,
-): ExercisePair[] => {
-  let vocabularySeen = 0;
-  let hotspotSeen = 0;
-  let sentenceSeen = 0;
-  const vocabularyTypes: LearningExerciseType[] = ['fill-blanks', 'matching', 'tap-reveal', 'multiple-choice', 'true-false'];
-  const hotspotTypes: LearningExerciseType[] = ['tap-reveal', 'matching', 'true-false', 'multiple-choice'];
-  const sentenceTypes: LearningExerciseType[] = ['multiple-choice', 'true-false', 'tap-reveal'];
-  return anchors.map((anchor) => {
-    const desired = anchor.kind === 'v'
-      ? vocabularyTypes[(vocabularySeen++ + offset) % vocabularyTypes.length]
-      : anchor.kind === 'h'
-        ? hotspotTypes[(hotspotSeen++ + offset) % hotspotTypes.length]
-        : sentenceTypes[(sentenceSeen++ + offset) % sentenceTypes.length];
-    return pairVariant(anchor, englishStoryPages, arabicStoryPages, desired);
-  });
-};
-
-const toQuizQuestion = (exercise: Exercise, chapterId: number, language: LearningLanguage): QuizQuestion => {
-  if (exercise.type === 'true-false' && typeof exercise.correctAnswer === 'boolean') {
-    return {
-      question: exercise.question || '',
-      options: language === 'ar'
-        ? [{ text: 'صحيح', isCorrect: exercise.correctAnswer }, { text: 'خطأ', isCorrect: !exercise.correctAnswer }]
-        : [{ text: 'True', isCorrect: exercise.correctAnswer }, { text: 'False', isCorrect: !exercise.correctAnswer }],
-      hint: language === 'ar' ? `ارجع إلى ${label(chapterId, language)} وابحث عن الدليل.` : `Return to ${label(chapterId, language)} and find the evidence.`,
-    };
-  }
-  const correctIndex = typeof exercise.correctAnswer === 'number' ? exercise.correctAnswer : 0;
-  return {
-    question: exercise.question || '',
-    options: (exercise.options || []).map((text, index) => ({ text, isCorrect: index === correctIndex })),
-    hint: language === 'ar' ? `ارجع إلى ${label(chapterId, language)} وابحث عن الدليل.` : `Return to ${label(chapterId, language)} and find the evidence.`,
-  };
-};
-
-const reviewQuiz = (anchors: LearningAnchor[], language: LearningLanguage, level: Level): Exercise => ({
-  id: `learning-${level.toLowerCase()}-review`,
-  type: 'quiz-game',
-  title: language === 'ar' ? 'تحدي المراجعة' : 'Review Challenge',
-  instructions: language === 'ar' ? 'أجب عن الأسئلة ثم ارجع إلى الفصل إذا أخطأت.' : 'Answer the questions and return to the chapter after a mistake.',
-  question: language === 'ar' ? 'هل تستطيع ربط كل إجابة بدليل من الفصل؟' : 'Can you connect each answer with chapter evidence?',
-  correctAnswer: null,
-  explanation: language === 'ar' ? 'كل سؤال مبني على معلومات موجودة في فصول الكتاب.' : 'Every question comes from information in the story chapters.',
-  feedback: {
-    correct: language === 'ar' ? 'جيد. استخدمت معلومات الفصل.' : 'Good. You used the chapter information.',
-    incorrect: language === 'ar' ? 'ارجع إلى الفصل وابحث عن الدليل ثم حاول مرة أخرى.' : 'Return to the chapter, find the evidence, and try again.',
-  },
-  quizQuestions: anchors.map((anchor) => toQuizQuestion(language === 'ar' ? anchor.arabic : anchor.english, anchor.chapterId, language)),
+const review = (anchors: Anchor[], lang: LearningLanguage, level: Level): Exercise => ({
+  id: `learning-${level.toLowerCase()}-review`, type: 'quiz-game', title: lang === 'ar' ? 'تحدي المراجعة' : 'Review Challenge', instructions: lang === 'ar' ? 'أجب ثم ارجع إلى الفصل عند الخطأ.' : 'Answer and return to the chapter after a mistake.',
+  question: lang === 'ar' ? 'هل تستطيع ربط كل إجابة بدليل؟' : 'Can you connect each answer with evidence?', correctAnswer: null, explanation: lang === 'ar' ? 'كل سؤال مبني على الفصول.' : 'Every question is chapter-based.',
+  feedback: { correct: lang === 'ar' ? 'جيد.' : 'Good.', incorrect: lang === 'ar' ? 'ارجع إلى الفصل.' : 'Return to the chapter.' }, quizQuestions: anchors.map((a) => quizQuestion(lang === 'ar' ? a.arabic : a.english, a.chapterId, lang)),
 });
+const vocabPairs = (en: PageData[], ar: PageData[], ids: number[], n: number) => {
+  const pairs: Array<{ english: { word: string; meaning: string }; arabic: { word: string; meaning: string } }> = [];
+  ids.forEach((id) => { const ep = story(en, id)!; const ap = story(ar, id)!; (ep.vocabulary || []).forEach((x, i) => { const y = ap.vocabulary?.[i]; if (y) pairs.push({ english: { word: x.word, meaning: x.definition }, arabic: { word: y.word, meaning: y.definition } }); }); });
+  if (pairs.length < n) throw new Error(`[Learning System] Vocabulary Challenge needs ${n} paired Word Notes but only ${pairs.length} exist.`); const selected = pickEvenly(pairs, n); return { english: selected.map((x) => x.english), arabic: selected.map((x) => x.arabic) };
+};
 
-const buildVocabularyPairs = (
-  englishStoryPages: PageData[],
-  arabicStoryPages: PageData[],
-  storyIds: number[],
-  count: number,
-) => {
-  const candidates: Array<{ english: { word: string; meaning: string }; arabic: { word: string; meaning: string } }> = [];
-  storyIds.forEach((chapterId) => {
-    const en = storyPage(englishStoryPages, chapterId);
-    const ar = storyPage(arabicStoryPages, chapterId);
-    if (!en || !ar) return;
-    (en.vocabulary || []).forEach((entry, index) => {
-      const arabic = ar.vocabulary?.[index];
-      if (!arabic) return;
-      candidates.push({ english: { word: entry.word, meaning: entry.definition }, arabic: { word: arabic.word, meaning: arabic.definition } });
-    });
+const cleanArabic = (s: string) => s.replace(/وفقًا لـالفصل/g, 'وفقًا لما ورد في الفصل').replace(/Word Notes/g, 'ملاحظات المفردات').replace(/Quick Challenge/g, 'التحدي السريع');
+const cleanExercise = (e: Exercise): Exercise => ({ ...e, title: e.title ? cleanArabic(e.title) : e.title, instructions: e.instructions ? cleanArabic(e.instructions) : e.instructions, question: e.question ? cleanArabic(e.question) : e.question, explanation: e.explanation ? cleanArabic(e.explanation) : e.explanation,
+  feedback: { correct: cleanArabic(e.feedback.correct || ''), incorrect: cleanArabic(e.feedback.incorrect || '') }, matchingPairs: e.matchingPairs?.map((x) => ({ left: cleanArabic(x.left), right: cleanArabic(x.right) })), tapRevealItems: e.tapRevealItems?.map((x) => ({ question: cleanArabic(x.question), answer: cleanArabic(x.answer) })), quizQuestions: e.quizQuestions?.map((q) => ({ ...q, question: cleanArabic(q.question), hint: cleanArabic(q.hint), options: q.options.map((o) => ({ ...o, text: cleanArabic(o.text) })) })) });
+const stripDemoSync = (p: PageData): PageData => {
+  if (p.type !== 'story' || !p.timedChunks?.length) return p; const demo = p.timedChunks.length === 1 && p.timedChunks[0].start === 0 && p.timedChunks[0].end <= 5 && /(placeholder|تجريبي)/i.test(p.timedChunks[0].text || ''); if (!demo) return p; const { timedChunks: _t, syncPoints: _s, ...rest } = p; return rest;
+};
+const sanitizeMedia = (pages: PageData[]) => { const fallback = pages.find((p) => p.type === 'story' && p.image && !p.image.startsWith('https://picsum.photos/'))?.image || ''; return pages.map((p) => { const image = p.image?.startsWith('https://picsum.photos/') ? fallback : p.image; const audioUrl = p.audioUrl?.includes('soundhelix.com/examples/mp3/') ? '' : p.audioUrl; return image === p.image && audioUrl === p.audioUrl ? p : { ...p, image, audioUrl }; }); };
+const clone = (e: Exercise, id: string, title: string): Exercise => ({ ...e, id, title });
+
+const applyPages = (pages: PageData[], config: LearningSystemConfig, quick: Map<number, Anchor>, knowledge: Anchor[], reviewAnchors: Anchor[], final: Anchor[], vocabulary: NonNullable<PageData['vocabularyPairs']>, lang: LearningLanguage) => {
+  const c = counts(config); const out = pages.map((raw) => { const p = stripDemoSync(raw);
+    if (config.storyIds.includes(p.id)) { const a = quick.get(p.id); if (!a) return p; return { ...p, exercises: [clone(lang === 'ar' ? a.arabic : a.english, `learning-${config.level.toLowerCase()}-quick-${p.id}`, lang === 'ar' ? 'تحدي سريع' : 'Quick Challenge')] }; }
+    if (p.id === config.knowledgeCheckPageId) return { ...p, content: lang === 'ar' ? `راجع ${c.knowledge} أنشطة مبنية على الفصول.` : `Review ${c.knowledge} chapter-based activities.`, exercises: knowledge.map((a, i) => clone(lang === 'ar' ? a.arabic : a.english, `learning-${config.level.toLowerCase()}-knowledge-${i + 1}`, lang === 'ar' ? `تحقق من الفهم ${i + 1}` : `${config.level} Knowledge Check ${i + 1}`)) };
+    if (config.vocabularyPageId && p.id === config.vocabularyPageId) return { ...p, content: lang === 'ar' ? `صل ${c.vocabulary} كلمات بمعانيها.` : `Match ${c.vocabulary} chapter words with their meanings.`, vocabularyPairs: vocabulary };
+    if (p.id === config.reviewPageId) return { ...p, title: lang === 'ar' ? 'تحدي المراجعة' : `${config.level} Review Challenge`, content: lang === 'ar' ? `مراجعة من ${c.review} أسئلة.` : `${c.review}-question chapter review.`, exercises: [review(reviewAnchors, lang, config.level)] };
+    if (p.id === config.finalChallengePageId) return { ...p, title: lang === 'ar' ? 'التحدي النهائي' : `${config.level} Final Challenge`, content: lang === 'ar' ? `${c.final} أنشطة نهائية مبنية على الفصول.` : `${c.final} final chapter-based activities.`, exercises: final.map((a, i) => clone(lang === 'ar' ? a.arabic : a.english, `learning-${config.level.toLowerCase()}-final-${i + 1}`, lang === 'ar' ? `التحدي النهائي ${i + 1}` : `${config.level} Final Challenge ${i + 1}`)) };
+    return p;
   });
-  if (candidates.length < count) throw new Error(`[Learning System] Vocabulary Challenge needs ${count} paired Word Notes but only ${candidates.length} exist.`);
-  const selected = pickEvenly(candidates, count);
-  return { english: selected.map((item) => item.english), arabic: selected.map((item) => item.arabic) };
+  const cleaned = lang === 'ar' ? out.map((p) => ({ ...p, content: p.type === 'story' ? p.content : cleanArabic(p.content || ''), exercises: p.exercises?.map(cleanExercise) })) : out; return sanitizeMedia(cleaned);
 };
 
-const cleanArabicText = (value: string): string => value
-  .replace(/وفقًا لـالفصل/g, 'وفقًا لما ورد في الفصل')
-  .replace(/Word Notes/g, 'ملاحظات المفردات')
-  .replace(/Quick Challenge/g, 'التحدي السريع');
-
-const cleanArabicExercise = (exercise: Exercise): Exercise => ({
-  ...exercise,
-  title: exercise.title ? cleanArabicText(exercise.title) : exercise.title,
-  instructions: exercise.instructions ? cleanArabicText(exercise.instructions) : exercise.instructions,
-  question: exercise.question ? cleanArabicText(exercise.question) : exercise.question,
-  explanation: exercise.explanation ? cleanArabicText(exercise.explanation) : exercise.explanation,
-  feedback: {
-    correct: cleanArabicText(exercise.feedback.correct || ''),
-    incorrect: cleanArabicText(exercise.feedback.incorrect || ''),
-  },
-  matchingPairs: exercise.matchingPairs?.map((pair) => ({ left: cleanArabicText(pair.left), right: cleanArabicText(pair.right) })),
-  tapRevealItems: exercise.tapRevealItems?.map((item) => ({ question: cleanArabicText(item.question), answer: cleanArabicText(item.answer) })),
-  quizQuestions: exercise.quizQuestions?.map((question) => ({
-    ...question,
-    question: cleanArabicText(question.question),
-    hint: cleanArabicText(question.hint),
-    options: question.options.map((option) => ({ ...option, text: cleanArabicText(option.text) })),
-  })),
-});
-
-const stripDemoSync = (page: PageData): PageData => {
-  if (page.type !== 'story' || !page.timedChunks?.length) return page;
-  const demo = page.timedChunks.length === 1
-    && page.timedChunks[0].start === 0
-    && page.timedChunks[0].end <= 5
-    && /(placeholder|تجريبي)/i.test(page.timedChunks[0].text || '');
-  if (!demo) return page;
-  const { timedChunks: _timedChunks, syncPoints: _syncPoints, ...clean } = page;
-  return clean;
+const answerIndex = (q: QuizQuestion) => q.options.findIndex((o) => o.isCorrect);
+const validatePair = (en: Exercise, ar: Exercise, where: string) => {
+  if (en.type !== ar.type) throw new Error(`[Learning System] ${where} types differ.`); if ((en.options?.length || 0) !== (ar.options?.length || 0)) throw new Error(`[Learning System] ${where} option counts differ.`);
+  if (typeof en.correctAnswer !== typeof ar.correctAnswer) throw new Error(`[Learning System] ${where} answer shapes differ.`); if ((typeof en.correctAnswer === 'number' || typeof en.correctAnswer === 'boolean') && en.correctAnswer !== ar.correctAnswer) throw new Error(`[Learning System] ${where} correct answers differ.`);
+  if (en.type === 'matching' && ((en.matchingPairs?.length || 0) < 3 || en.matchingPairs?.length !== ar.matchingPairs?.length)) throw new Error(`[Learning System] ${where} matching differs.`);
+  if (en.type === 'fill-blanks' && (!en.fillBlanksText?.includes('[blank]') || !ar.fillBlanksText?.includes('[blank]'))) throw new Error(`[Learning System] ${where} fill-blank differs.`);
+  if (en.type === 'tap-reveal' && (!(en.tapRevealItems?.length) || en.tapRevealItems.length !== ar.tapRevealItems?.length)) throw new Error(`[Learning System] ${where} tap-reveal differs.`);
+};
+const normTokens = (s: string, lang: LearningLanguage) => new Set(normalizeHighlightText(s, lang).split(' ').filter((x) => x.length > 2));
+const near = (a: string, b: string, lang: LearningLanguage) => { const x = normalizeHighlightText(a, lang); const y = normalizeHighlightText(b, lang); if (!x || !y) return false; if (x === y || (x.length >= 16 && y.length >= 16 && (x.includes(y) || y.includes(x)))) return true; const A = normTokens(a, lang); const B = normTokens(b, lang); if (A.size < 3 || B.size < 3) return false; const inter = [...A].filter((t) => B.has(t)).length; return inter / new Set([...A, ...B]).size >= 0.9; };
+const validateDistractors = (pages: PageData[], lang: LearningLanguage) => pages.forEach((p) => p.exercises?.forEach((e, ei) => { if (!e.id?.startsWith('learning-')) return; const check = (opts: Array<{ text: string; isCorrect: boolean }>, where: string) => { const c = opts.filter((o) => o.isCorrect); if (c.length !== 1) throw new Error(`[Learning System] ${where} must have one correct option.`); opts.filter((o) => !o.isCorrect).forEach((o) => { if (near(o.text, c[0].text, lang)) throw new Error(`[Learning System] ${where} has a distractor too close to the answer.`); }); }; if (e.type === 'multiple-choice' && e.options && typeof e.correctAnswer === 'number') check(e.options.map((text, i) => ({ text, isCorrect: i === e.correctAnswer })), `Page ${p.id} activity ${ei + 1}`); e.quizQuestions?.forEach((q, qi) => check(q.options, `Page ${p.id} review ${qi + 1}`)); }));
+const validateOutput = (enPages: PageData[], arPages: PageData[], config: LearningSystemConfig) => {
+  const c = counts(config); const types = new Set<string>();
+  config.storyIds.forEach((id) => { const en = requirePage(enPages, id, 'English').exercises?.[0]; const ar = requirePage(arPages, id, 'Arabic').exercises?.[0]; if (!en || !ar) throw new Error(`[Learning System] Chapter ${id} Quick Challenge missing.`); validatePair(en, ar, `Chapter ${id} Quick Challenge`); types.add(en.type); });
+  if (config.storyIds.length >= 5) ['matching', 'fill-blanks', 'tap-reveal'].forEach((t) => { if (!types.has(t)) throw new Error(`[Learning System] Quick Challenges do not include ${t}.`); });
+  const ek = requirePage(enPages, config.knowledgeCheckPageId, 'English').exercises || []; const ak = requirePage(arPages, config.knowledgeCheckPageId, 'Arabic').exercises || []; if (ek.length !== c.knowledge || ak.length !== c.knowledge) throw new Error(`[Learning System] Knowledge Check must contain ${c.knowledge} activities.`); ek.forEach((e, i) => validatePair(e, ak[i], `Knowledge ${i + 1}`));
+  if (config.vocabularyPageId) { const ev = requirePage(enPages, config.vocabularyPageId, 'English').vocabularyPairs || []; const av = requirePage(arPages, config.vocabularyPageId, 'Arabic').vocabularyPairs || []; if (ev.length !== c.vocabulary || av.length !== c.vocabulary) throw new Error(`[Learning System] Vocabulary Challenge must contain ${c.vocabulary} pairs.`); }
+  const er = requirePage(enPages, config.reviewPageId, 'English').exercises?.[0]; const ar = requirePage(arPages, config.reviewPageId, 'Arabic').exercises?.[0]; if (er?.type !== 'quiz-game' || ar?.type !== 'quiz-game' || er.quizQuestions?.length !== c.review || ar.quizQuestions?.length !== c.review) throw new Error(`[Learning System] Review must contain ${c.review} questions.`); er.quizQuestions.forEach((q, i) => { const aq = ar.quizQuestions?.[i]; if (!aq || q.options.length !== aq.options.length || answerIndex(q) !== answerIndex(aq)) throw new Error(`[Learning System] Review ${i + 1} logic differs.`); });
+  const ef = requirePage(enPages, config.finalChallengePageId, 'English').exercises || []; const af = requirePage(arPages, config.finalChallengePageId, 'Arabic').exercises || []; if (ef.length !== c.final || af.length !== c.final) throw new Error(`[Learning System] Final must contain ${c.final} activities.`); ef.forEach((e, i) => validatePair(e, af[i], `Final ${i + 1}`)); validateDistractors(enPages, 'en'); validateDistractors(arPages, 'ar');
 };
 
-const sanitizeMedia = (pages: PageData[]): PageData[] => {
-  const fallbackImage = pages.find((page) => page.type === 'story' && page.image && !page.image.startsWith('https://picsum.photos/'))?.image || '';
-  return pages.map((page) => {
-    const image = page.image?.startsWith('https://picsum.photos/') ? fallbackImage : page.image;
-    const audioUrl = page.audioUrl?.includes('soundhelix.com/examples/mp3/') ? '' : page.audioUrl;
-    return image === page.image && audioUrl === page.audioUrl ? page : { ...page, image, audioUrl };
-  });
-};
-
-const clone = (exercise: Exercise, id: string, title: string): Exercise => ({ ...exercise, id, title });
-
-const applyPages = ({
-  pages,
-  config,
-  quickPairs,
-  knowledgePairs,
-  reviewAnchors,
-  finalPairs,
-  vocabPairs,
-  language,
-}: {
-  pages: PageData[];
-  config: LearningSystemConfig;
-  quickPairs: Map<number, ExercisePair>;
-  knowledgePairs: ExercisePair[];
-  reviewAnchors: LearningAnchor[];
-  finalPairs: ExercisePair[];
-  vocabPairs: NonNullable<PageData['vocabularyPairs']>;
-  language: LearningLanguage;
-}): PageData[] => {
-  const counts = defaultCounts(config);
-  const staged = pages.map((raw) => {
-    const page = stripDemoSync(raw);
-    if (config.storyIds.includes(page.id)) {
-      const pair = quickPairs.get(page.id);
-      if (!pair) return page;
-      const exercise = language === 'ar' ? pair.arabic : pair.english;
-      return { ...page, exercises: [clone(exercise, `learning-${config.level.toLowerCase()}-quick-${page.id}`, language === 'ar' ? 'تحدي سريع' : 'Quick Challenge')] };
-    }
-    if (page.id === config.knowledgeCheckPageId) {
-      return {
-        ...page,
-        content: language === 'ar' ? `راجع ${counts.knowledge} معلومات وكلمات بأنواع مختلفة من الأنشطة، وارجع إلى الفصل عند الحاجة.` : `Review ${counts.knowledge} facts and words through varied activities, returning to the chapter when needed.`,
-        exercises: knowledgePairs.map((pair, index) => clone(language === 'ar' ? pair.arabic : pair.english, `learning-${config.level.toLowerCase()}-knowledge-${index + 1}`, language === 'ar' ? `تحقق من الفهم ${index + 1}` : `${config.level} Knowledge Check ${index + 1}`)),
-      };
-    }
-    if (config.vocabularyPageId && page.id === config.vocabularyPageId) {
-      return {
-        ...page,
-        content: language === 'ar' ? `صل ${counts.vocabulary} كلمات مختارة من الفصول بمعانيها.` : `Match ${counts.vocabulary} selected chapter words with their meanings.`,
-        vocabularyPairs: vocabPairs,
-      };
-    }
-    if (page.id === config.reviewPageId) {
-      return {
-        ...page,
-        title: language === 'ar' ? 'تحدي المراجعة' : `${config.level} Review Challenge`,
-        content: language === 'ar' ? `أكمل مراجعة من ${counts.review} أسئلة مبنية على الفصول.` : `Complete a ${counts.review}-question review built from the story chapters.`,
-        exercises: [reviewQuiz(reviewAnchors, language, config.level)],
-      };
-    }
-    if (page.id === config.finalChallengePageId) {
-      return {
-        ...page,
-        title: language === 'ar' ? 'التحدي النهائي' : `${config.level} Final Challenge`,
-        content: language === 'ar' ? `اختبر فهمك في ${counts.final} أنشطة متنوعة مبنية على الفصول.` : `Check your understanding in ${counts.final} varied activities built from the story chapters.`,
-        exercises: finalPairs.map((pair, index) => clone(language === 'ar' ? pair.arabic : pair.english, `learning-${config.level.toLowerCase()}-final-${index + 1}`, language === 'ar' ? `التحدي النهائي ${index + 1}` : `${config.level} Final Challenge ${index + 1}`)),
-      };
-    }
-    return page;
-  });
-  const cleaned = language === 'ar'
-    ? staged.map((page) => ({ ...page, content: page.type === 'story' ? page.content : cleanArabicText(page.content || ''), exercises: page.exercises?.map(cleanArabicExercise) }))
-    : staged;
-  return sanitizeMedia(cleaned);
-};
-
-const correctOptionIndex = (question: QuizQuestion): number => question.options.findIndex((option) => option.isCorrect);
-
-const validateExercisePair = (english: Exercise, arabic: Exercise, context: string): void => {
-  if (english.type !== arabic.type) throw new Error(`[Learning System] ${context} types differ.`);
-  if ((english.options?.length || 0) !== (arabic.options?.length || 0)) throw new Error(`[Learning System] ${context} option counts differ.`);
-  if (typeof english.correctAnswer !== typeof arabic.correctAnswer) throw new Error(`[Learning System] ${context} answer shapes differ.`);
-  if ((typeof english.correctAnswer === 'number' || typeof english.correctAnswer === 'boolean') && english.correctAnswer !== arabic.correctAnswer) {
-    throw new Error(`[Learning System] ${context} correct answers differ.`);
-  }
-  if (english.type === 'matching') {
-    const en = english.matchingPairs || [];
-    const ar = arabic.matchingPairs || [];
-    if (en.length < 3 || en.length !== ar.length) throw new Error(`[Learning System] ${context} matching structures differ.`);
-  }
-  if (english.type === 'fill-blanks' && (!english.fillBlanksText?.includes('[blank]') || !arabic.fillBlanksText?.includes('[blank]'))) {
-    throw new Error(`[Learning System] ${context} fill-blank structure differs.`);
-  }
-  if (english.type === 'tap-reveal' && (!(english.tapRevealItems?.length) || english.tapRevealItems.length !== arabic.tapRevealItems?.length)) {
-    throw new Error(`[Learning System] ${context} tap-reveal structure differs.`);
-  }
-};
-
-const tokenSet = (value: string, language: LearningLanguage): Set<string> =>
-  new Set(normalizeHighlightText(value, language).split(' ').filter((token) => token.length > 2));
-
-const nearDuplicate = (left: string, right: string, language: LearningLanguage): boolean => {
-  const a = normalizeHighlightText(left, language);
-  const b = normalizeHighlightText(right, language);
-  if (!a || !b) return false;
-  if (a === b) return true;
-  if (a.length >= 16 && b.length >= 16 && (a.includes(b) || b.includes(a))) return true;
-  const at = tokenSet(left, language);
-  const bt = tokenSet(right, language);
-  if (at.size < 3 || bt.size < 3) return false;
-  const intersection = [...at].filter((token) => bt.has(token)).length;
-  const union = new Set([...at, ...bt]).size;
-  return union > 0 && intersection / union >= 0.9;
-};
-
-const validateDistractors = (pages: PageData[], language: LearningLanguage): void => {
-  const validateOptions = (options: Array<{ text: string; isCorrect: boolean }>, context: string) => {
-    const correct = options.filter((option) => option.isCorrect);
-    if (correct.length !== 1) throw new Error(`[Learning System] ${context} must have exactly one correct option.`);
-    options.filter((option) => !option.isCorrect).forEach((option) => {
-      if (nearDuplicate(option.text, correct[0].text, language)) throw new Error(`[Learning System] ${context} contains a distractor too close to the correct answer.`);
-    });
-  };
-  pages.forEach((page) => page.exercises?.forEach((exercise, exerciseIndex) => {
-    if (!exercise.id?.startsWith('learning-')) return;
-    if (exercise.type === 'multiple-choice' && exercise.options?.length && typeof exercise.correctAnswer === 'number') {
-      validateOptions(exercise.options.map((text, index) => ({ text, isCorrect: index === exercise.correctAnswer })), `Page ${page.id} activity ${exerciseIndex + 1}`);
-    }
-    exercise.quizQuestions?.forEach((question, questionIndex) => validateOptions(question.options, `Page ${page.id} review ${questionIndex + 1}`));
-  }));
-};
-
-const validateOutput = (englishPages: PageData[], arabicPages: PageData[], config: LearningSystemConfig): void => {
-  const counts = defaultCounts(config);
-  const quickTypes = new Set<string>();
-  config.storyIds.forEach((chapterId) => {
-    const en = requirePage(englishPages, chapterId, 'English').exercises?.[0];
-    const ar = requirePage(arabicPages, chapterId, 'Arabic').exercises?.[0];
-    if (!en || !ar) throw new Error(`[Learning System] Chapter ${chapterId} Quick Challenge is missing.`);
-    validateExercisePair(en, ar, `Chapter ${chapterId} Quick Challenge`);
-    quickTypes.add(en.type);
-  });
-  if (config.storyIds.length >= 5) {
-    ['matching', 'fill-blanks', 'tap-reveal'].forEach((type) => {
-      if (!quickTypes.has(type)) throw new Error(`[Learning System] Quick Challenges do not include ${type}.`);
-    });
-  }
-
-  const enKnowledge = requirePage(englishPages, config.knowledgeCheckPageId, 'English').exercises || [];
-  const arKnowledge = requirePage(arabicPages, config.knowledgeCheckPageId, 'Arabic').exercises || [];
-  if (enKnowledge.length !== counts.knowledge || arKnowledge.length !== counts.knowledge) throw new Error(`[Learning System] Knowledge Check must contain ${counts.knowledge} activities in both languages.`);
-  enKnowledge.forEach((exercise, index) => validateExercisePair(exercise, arKnowledge[index], `Knowledge Check ${index + 1}`));
-
-  if (config.vocabularyPageId) {
-    const enVocabulary = requirePage(englishPages, config.vocabularyPageId, 'English').vocabularyPairs || [];
-    const arVocabulary = requirePage(arabicPages, config.vocabularyPageId, 'Arabic').vocabularyPairs || [];
-    if (enVocabulary.length !== counts.vocabulary || arVocabulary.length !== counts.vocabulary) throw new Error(`[Learning System] Vocabulary Challenge must contain ${counts.vocabulary} pairs in both languages.`);
-  }
-
-  const enReview = requirePage(englishPages, config.reviewPageId, 'English').exercises?.[0];
-  const arReview = requirePage(arabicPages, config.reviewPageId, 'Arabic').exercises?.[0];
-  if (enReview?.type !== 'quiz-game' || arReview?.type !== 'quiz-game' || enReview.quizQuestions?.length !== counts.review || arReview.quizQuestions?.length !== counts.review) {
-    throw new Error(`[Learning System] Review Challenge must contain ${counts.review} questions in both languages.`);
-  }
-  enReview.quizQuestions.forEach((question, index) => {
-    const arabic = arReview.quizQuestions?.[index];
-    if (!arabic || question.options.length !== arabic.options.length || correctOptionIndex(question) !== correctOptionIndex(arabic)) {
-      throw new Error(`[Learning System] Review question ${index + 1} logic differs between languages.`);
-    }
-  });
-
-  const enFinal = requirePage(englishPages, config.finalChallengePageId, 'English').exercises || [];
-  const arFinal = requirePage(arabicPages, config.finalChallengePageId, 'Arabic').exercises || [];
-  if (enFinal.length !== counts.final || arFinal.length !== counts.final) throw new Error(`[Learning System] Final Challenge must contain ${counts.final} activities in both languages.`);
-  enFinal.forEach((exercise, index) => validateExercisePair(exercise, arFinal[index], `Final Challenge ${index + 1}`));
-
-  validateDistractors(englishPages, 'en');
-  validateDistractors(arabicPages, 'ar');
-};
-
-export const runLearningSystem = ({
-  englishPages,
-  arabicPages,
-  config,
-}: {
-  englishPages: PageData[];
-  arabicPages: PageData[];
-  config: LearningSystemConfig;
-}): LearningSystemResult => {
-  validateSourceParity(englishPages, arabicPages, config);
-  const englishStoryPages = config.storyIds.map((id) => storyPage(englishPages, id)).filter((page): page is PageData => Boolean(page));
-  const arabicStoryPages = config.storyIds.map((id) => storyPage(arabicPages, id)).filter((page): page is PageData => Boolean(page));
-  const anchors = buildAnchors(englishStoryPages, arabicStoryPages, config.storyIds);
-  const counts = defaultCounts(config);
-
-  const quickPairs = new Map<number, ExercisePair>();
-  const usedKeys = new Set<string>();
-  config.storyIds.forEach((chapterId, index) => {
-    const chapterAnchors = anchors.filter((anchor) => anchor.chapterId === chapterId);
-    if (!chapterAnchors.length) throw new Error(`[Learning System] Chapter ${chapterId} has no learning anchor.`);
-    const desired = QUICK_VARIANTS[index % QUICK_VARIANTS.length];
-    const preferred = desired === 'fill-blanks'
-      ? chapterAnchors.find((anchor) => anchor.kind === 'v')
-      : desired === 'matching'
-        ? chapterAnchors.find((anchor) => anchor.kind !== 's')
-        : desired === 'tap-reveal' || desired === 'true-false'
-          ? chapterAnchors.find((anchor) => anchor.kind === 'h') || chapterAnchors[0]
-          : chapterAnchors[index % chapterAnchors.length];
-    const chosen = preferred || chapterAnchors[0];
-    usedKeys.add(chosen.key);
-    quickPairs.set(chapterId, pairVariant(chosen, englishStoryPages, arabicStoryPages, desired));
-  });
-
-  const knowledgeAnchors = selectStage(anchors, counts.knowledge, usedKeys, 0);
-  const reviewAnchors = selectStage(anchors, counts.review, usedKeys, Math.floor(anchors.length / 3));
-  const finalAnchors = selectStage(anchors, counts.final, usedKeys, Math.floor(anchors.length * 2 / 3));
-  const knowledgePairs = stagePairs(knowledgeAnchors, englishStoryPages, arabicStoryPages, 0);
-  const finalPairs = stagePairs(finalAnchors, englishStoryPages, arabicStoryPages, 2);
-  const vocab = config.vocabularyPageId
-    ? buildVocabularyPairs(englishStoryPages, arabicStoryPages, config.storyIds, counts.vocabulary)
-    : { english: [], arabic: [] };
-
-  const output = {
-    englishPages: applyPages({ pages: englishPages, config, quickPairs, knowledgePairs, reviewAnchors, finalPairs, vocabPairs: vocab.english, language: 'en' }),
-    arabicPages: applyPages({ pages: arabicPages, config, quickPairs, knowledgePairs, reviewAnchors, finalPairs, vocabPairs: vocab.arabic, language: 'ar' }),
-  };
-
-  validateOutput(output.englishPages, output.arabicPages, config);
-  const englishGuides = buildLearningGuides({ pages: output.englishPages, storyIds: config.storyIds, level: config.level, language: 'en' });
-  const arabicGuides = buildLearningGuides({ pages: output.arabicPages, storyIds: config.storyIds, level: config.level, language: 'ar' });
-
-  return {
-    ...output,
-    englishTeacherGuide: englishGuides.teacherGuide,
-    arabicTeacherGuide: arabicGuides.teacherGuide,
-    englishSelfStudyGuide: englishGuides.selfStudyGuide,
-    arabicSelfStudyGuide: arabicGuides.selfStudyGuide,
-  };
+export const runLearningSystem = ({ englishPages, arabicPages, config }: { englishPages: PageData[]; arabicPages: PageData[]; config: LearningSystemConfig }): LearningSystemResult => {
+  validateSources(englishPages, arabicPages, config); const enStories = config.storyIds.map((id) => story(englishPages, id)!).filter(Boolean); const arStories = config.storyIds.map((id) => story(arabicPages, id)!).filter(Boolean); const anchors = buildAnchors(enStories, arStories, config.storyIds); const c = counts(config); const quick = new Map<number, Anchor>(); const used = new Set<string>();
+  config.storyIds.forEach((id, i) => { const list = anchors.filter((a) => a.chapterId === id); const type = QUICK[i % QUICK.length]; const preferred = type === 'fill-blanks' ? list.find((a) => a.kind === 'v') : type === 'matching' ? list.find((a) => a.kind !== 's') : type === 'tap-reveal' || type === 'true-false' ? list.find((a) => a.kind === 'h') || list[0] : list[i % list.length]; const a = preferred || list[0]; if (!a) throw new Error(`[Learning System] Chapter ${id} has no anchor.`); used.add(a.key); quick.set(id, pairVariant(a, enStories, arStories, type)); });
+  const knowledgeAnchors = select(anchors, c.knowledge, used, 0); const reviewAnchors = select(anchors, c.review, used, Math.floor(anchors.length / 3)); const finalAnchors = select(anchors, c.final, used, Math.floor(anchors.length * 2 / 3)); const knowledge = stagePairs(knowledgeAnchors, enStories, arStories, 0); const final = stagePairs(finalAnchors, enStories, arStories, 2); const vocabulary = config.vocabularyPageId ? vocabPairs(enStories, arStories, config.storyIds, c.vocabulary) : { english: [], arabic: [] };
+  const enOut = applyPages(englishPages, config, quick, knowledge, reviewAnchors, final, vocabulary.english, 'en'); const arOut = applyPages(arabicPages, config, quick, knowledge, reviewAnchors, final, vocabulary.arabic, 'ar'); validateOutput(enOut, arOut, config);
+  const enGuides = buildLearningGuides({ pages: enOut, storyIds: config.storyIds, level: config.level, language: 'en' }); const arGuides = buildLearningGuides({ pages: arOut, storyIds: config.storyIds, level: config.level, language: 'ar' });
+  return { englishPages: enOut, arabicPages: arOut, englishTeacherGuide: enGuides.teacherGuide, arabicTeacherGuide: arGuides.teacherGuide, englishSelfStudyGuide: enGuides.selfStudyGuide, arabicSelfStudyGuide: arGuides.selfStudyGuide };
 };
