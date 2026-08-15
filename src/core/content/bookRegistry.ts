@@ -10,6 +10,9 @@ export interface BookDefinition {
   collection: CollectionId;
   titles: BookDisplayTitles;
   storage: BookAssetManifest;
+  /** Canonical/prepared book data before the shared UI learning finalization layer. */
+  loadSource: () => Promise<BookPair>;
+  /** Effective UI book after the shared Learning System and guide finalization. */
   load: () => Promise<BookPair>;
 }
 
@@ -20,14 +23,15 @@ const createDefinition = (
   level: Level,
   collection: CollectionId,
   titles: BookDisplayTitles,
-  load: () => Promise<BookPair>,
+  loadSource: () => Promise<BookPair>,
 ): BookDefinition => ({
   storyId,
   level,
   collection,
   titles,
   storage: getStorageManifest(storyId, level),
-  load: async () => finalizeBookPairForUi(await load()),
+  loadSource,
+  load: async () => finalizeBookPairForUi(await loadSource()),
 });
 
 export const bookRegistry: readonly BookDefinition[] = [
@@ -150,6 +154,6 @@ export const getBookDefinition = (storyId: string, level: Level): BookDefinition
 export const isRegisteredStoryId = (value: string): value is StoryId =>
   bookRegistry.some(definition => definition.storyId === value);
 
-/** Preloads only the selected book chunk; it never imports all story content eagerly. */
+/** Preloads only the selected finalized UI book chunk; it never imports all story content eagerly. */
 export const preloadBook = (storyId: string, level: Level): Promise<BookPair> | null =>
   getBookDefinition(storyId, level)?.load() ?? null;
