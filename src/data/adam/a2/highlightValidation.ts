@@ -1,5 +1,5 @@
 import type { PageData } from '../../../types';
-import { highlightPhraseOccurs, normalizeHighlightText } from '../../../lib/highlightTextMatch';
+import { highlightPhraseMatches, highlightPhraseOccurs, normalizeHighlightText } from '../../../lib/highlightTextMatch';
 import { adamA2HighlightTargets, type AdamA2HighlightLanguage } from './highlights';
 
 const STORY_CHAPTERS = Array.from({ length: 10 }, (_, index) => index + 1);
@@ -7,6 +7,15 @@ const ARABIC_DIACRITIC = /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/;
 
 const fail = (message: string): never => {
   throw new Error(`[Adam A2 highlight contract] ${message}`);
+};
+
+const sameTargetSurface = (
+  actual: string,
+  expected: string,
+  language: AdamA2HighlightLanguage,
+): boolean => {
+  if (language === 'ar') return highlightPhraseMatches(actual, expected, 'ar');
+  return normalizeHighlightText(actual, language) === normalizeHighlightText(expected, language);
 };
 
 const validateLanguage = (
@@ -33,19 +42,16 @@ const validateLanguage = (
       const actual = vocabulary[index];
       if (!actual) fail(`Missing ${language.toUpperCase()} Chapter ${chapterId} target ${target.id}.`);
 
-      if (
-        normalizeHighlightText(actual.word, language)
-        !== normalizeHighlightText(expected.word, language)
-      ) {
-        fail(`${language.toUpperCase()} Chapter ${chapterId} target ${target.id} diverged from the canonical word.`);
+      if (!sameTargetSurface(actual.word, expected.word, language)) {
+        fail(`${language.toUpperCase()} Chapter ${chapterId} target ${target.id} diverged from the canonical word/concept.`);
       }
 
       if (actual.definition !== expected.definition) {
         fail(`${language.toUpperCase()} Chapter ${chapterId} target ${target.id} diverged from the canonical definition.`);
       }
 
-      if (!highlightPhraseOccurs(page.content ?? '', expected.word, language)) {
-        fail(`${language.toUpperCase()} Chapter ${chapterId} target ${target.id} does not occur in the chapter prose.`);
+      if (!highlightPhraseOccurs(page.content ?? '', actual.word, language)) {
+        fail(`${language.toUpperCase()} Chapter ${chapterId} target ${target.id} runtime surface form does not occur in the chapter prose.`);
       }
 
       if (!expected.definition.trim()) {
@@ -60,10 +66,10 @@ const validateLanguage = (
 };
 
 /**
- * Build/runtime guard for the Adam A2 pilot standard.
- * The bilingual target list is shared by construction; this guard additionally
- * prevents legacy animatedWords, missing prose matches, empty definitions and
- * accidental quality-layer overrides from silently reintroducing divergence.
+ * Build/runtime guard for the Adam A2 highlight standard.
+ * Arabic stores the exact cliticized/inflected surface form that appears in the
+ * chapter, so identity is checked with the same morphology matcher used by the
+ * reader rather than raw string equality.
  */
 export const validateAdamA2HighlightContract = (
   englishPages: PageData[],
@@ -73,7 +79,7 @@ export const validateAdamA2HighlightContract = (
     (adamA2HighlightTargets[chapterId] ?? []).map((target) => target.id)
   ));
   if (new Set(ids).size !== ids.length) {
-    fail('A target id is repeated across chapters; visible targets must remain chapter-unique in this pilot.');
+    fail('A target id is repeated across chapters; visible targets must remain chapter-unique in this standard.');
   }
 
   validateLanguage(englishPages, 'en');
