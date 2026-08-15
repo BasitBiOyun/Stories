@@ -3,7 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
-import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { applyYunusA2PoemCard } from './poemCard';
 import { yunusA2GoldConfig } from './gold';
 import {
@@ -38,7 +38,7 @@ const yunusA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(yunusA2PagesLockedEn, yunusA2PagesLockedAr, yunusA2HighlightTargets, yunusA2HighlightConfig);
 
-const yunusA2Parallel = applyA2ParallelLearning({
+const yunusA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: yunusA2PagesLockedEn,
   arabicPages: yunusA2PagesLockedAr,
   config: yunusA2GoldConfig,
