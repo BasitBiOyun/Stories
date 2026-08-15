@@ -1,7 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHighlightSurfaceForms } from '../../highlightSourceLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { meccaB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -34,7 +34,7 @@ const meccaB1HighlightStandard = applyB1HighlightStandard(meccaB1PagesLockedEn, 
 });
 
 export const meccaB1HighlightTargets = meccaB1HighlightStandard.targets;
-const meccaB1Parallel = applyValidatedAdvancedParallelLearning({
+const meccaB1Parallel = applySafeAdvancedParallelLearning({
   englishPages: meccaB1HighlightStandard.englishPages,
   arabicPages: meccaB1HighlightStandard.arabicPages,
   config: { level: 'B1', ...meccaB1GoldConfig },
