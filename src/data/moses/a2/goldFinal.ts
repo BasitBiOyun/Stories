@@ -1,5 +1,7 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
+import { mosesA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import { mosesA2GoldConfig, mosesA2PagesGoldAr as basePagesAr, mosesA2PagesGoldEn as basePagesEn } from './gold';
 import { buildA2SelfStudyGuide, buildA2StudentGuideMetadata, buildA2StudentGuideSections, buildA2StudentGuideText, buildA2TeacherGuide, buildA2TeacherGuideMetadata } from '../../a2GoldFactory';
 
@@ -93,32 +95,33 @@ export const mosesA2HighlightConfig: A2HighlightStandardConfig = {
   glossaryPageIds: mosesA2GoldConfig.glossaryPageIds,
   arabicOverrides: {
     6: {
-      upset: { word: 'بِحُزْنٍ شَدِيدٍ', definition: 'حَزِينٌ جِدًّا أَوْ قَلِقٌ لِأَنَّ شَيْئًا سَيِّئًا حَدَثَ.' },
-      forgive: { word: 'فَاغْفِرْ لِي', definition: 'أَنْ تَتَوَقَّفَ عَنِ الْغَضَبِ مِنْ شَخْصٍ بِسَبَبِ خَطَإٍ.' },
-      accidentally: { word: 'عَنْ غَيْرِ قَصْدٍ', definition: 'بِغَيْرِ تَخْطِيطٍ أَوْ قَصْدٍ.' },
-      'run away': { word: 'اُخْرُجْ مِنَ الْمَدِينَةِ', definition: 'أَنْ تَهْرُبَ أَوْ تُغَادِرَ بِسُرْعَةٍ.' },
-      dua: { word: 'فَدَعَا اللهَ', definition: 'دُعَاءٌ يَرْفَعُهُ الْإِنْسَانُ إِلَى اللهِ.' },
+      upset: { word: 'بِحُزْنٍ شَدِيدٍ' },
+      forgive: { word: 'فَاغْفِرْ لِي' },
+      accidentally: { word: 'عَنْ غَيْرِ قَصْدٍ' },
+      'run away': { word: 'اُخْرُجْ مِنَ الْمَدِينَةِ' },
+      dua: { word: 'فَدَعَا اللهَ' },
     },
     7: {
-      escaped: { word: 'هَرَبَ', definition: 'اِبْتَعَدَ عَنِ الْخَطَرِ.' },
-      guided: { word: 'هَدَاهُ', definition: 'أَرَاهُ الطَّرِيقَ الصَّحِيحَ.' },
-      well: { word: 'بِئْرًا', definition: 'حُفْرَةٌ عَمِيقَةٌ فِي الْأَرْضِ يُؤْخَذُ مِنْهَا الْمَاءُ.' },
-      penalty: { word: 'عُقُوبَةَ', definition: 'عِقَابٌ بِسَبَبِ فِعْلِ شَيْءٍ خَاطِئٍ.' },
-      thirsty: { word: 'عَطْشَانَ', definition: 'يَحْتَاجُ إِلَى الْمَاءِ وَيُرِيدُ أَنْ يَشْرَبَ.' },
-      Midian: { word: 'مَدْيَنَ', definition: 'أَرْضٌ قَدِيمَةٌ هَرَبَ إِلَيْهَا مُوسَى بَعْدَ أَنْ غَادَرَ مِصْرَ.' },
-      shepherds: { word: 'رُعَاةً', definition: 'أَشْخَاصٌ عَمَلُهُمْ رِعَايَةُ الْأَغْنَامِ.' },
+      escaped: { word: 'هَرَبَ' },
+      guided: { word: 'هَدَاهُ' },
+      well: { word: 'بِئْرًا' },
+      penalty: { word: 'عُقُوبَةَ' },
+      thirsty: { word: 'عَطْشَانَ' },
+      Midian: { word: 'مَدْيَنَ' },
+      shepherds: { word: 'رُعَاةً' },
     },
     8: {
-      sisters: { word: 'الْفَتَاتَيْنِ', definition: 'فَتَاتَانِ أَوِ امْرَأَتَانِ لَهُمَا الْوَالِدَانِ نَفْسُهُمَا.' },
-      turn: { word: 'دَوْرَنَا', definition: 'وَقْتٌ يَسْتَطِيعُ فِيهِ شَخْصٌ أَنْ يَفْعَلَ شَيْئًا بَعْدَ الِانْتِظَارِ.' },
-      early: { word: 'مُبَكِّرًا', definition: 'قَبْلَ الْوَقْتِ الْمُعْتَادِ.' },
-      help: { word: 'الْمُسَاعَدَةِ', definition: 'أَنْ تَجْعَلَ فِعْلَ شَيْءٍ أَسْهَلَ لِشَخْصٍ آخَرَ.' },
-      sheep: { word: 'غَنَمَهُمَا', definition: 'حَيَوَانَاتٌ ذَاتُ صُوفٍ تُرَبَّى لِلصُّوفِ أَوِ اللَّحْمِ.' },
+      sisters: { word: 'الْفَتَاتَيْنِ' },
+      turn: { word: 'دَوْرَنَا' },
+      early: { word: 'مُبَكِّرًا' },
+      help: { word: 'الْمُسَاعَدَةِ' },
+      sheep: { word: 'غَنَمَهُمَا' },
     },
   },
 };
 
-const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, mosesA2HighlightConfig);
+const selected = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, mosesA2HighlightConfig);
+const standardized = applyA2ArabicDefinitionStandard(selected, mosesA2HighlightDefinitionsAr, mosesA2HighlightConfig);
 
 export const mosesA2HighlightTargets = standardized.targets;
 export const mosesA2PagesFinalEn = standardized.englishPages;
