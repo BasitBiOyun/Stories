@@ -1,14 +1,13 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
+import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
   meccaA2HighlightConfig,
   meccaA2HighlightTargets,
   meccaA2PagesFinalAr,
   meccaA2PagesFinalEn,
-  meccaA2SelfStudyGuideFinalAr,
-  meccaA2SelfStudyGuideFinalEn,
   meccaA2StudentGuideMetadataFinalAr,
   meccaA2StudentGuideMetadataFinalEn,
   meccaA2StudentGuideSectionsFinalAr,
@@ -34,6 +33,8 @@ validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2H
 
 const meccaA2TeacherGuideEn = buildA2ChapterTeacherGuide(meccaA2PagesLockedEn, meccaA2HighlightConfig.storyIds, 'en');
 const meccaA2TeacherGuideAr = buildA2ChapterTeacherGuide(meccaA2PagesLockedAr, meccaA2HighlightConfig.storyIds, 'ar');
+const meccaA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(meccaA2PagesLockedEn, meccaA2HighlightConfig.storyIds, 'en');
+const meccaA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(meccaA2PagesLockedAr, meccaA2HighlightConfig.storyIds, 'ar');
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
@@ -43,7 +44,7 @@ export const meccaA2BookDataEn: BookData = {
   pages: meccaA2PagesLockedEn,
   teacherGuide: meccaA2TeacherGuideEn,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: meccaA2SelfStudyGuideFinalEn,
+  selfStudyGuide: meccaA2SelfStudyGuideEn,
   studentGuideSections: meccaA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: meccaA2StudentGuideMetadataFinalEn,
   studentGuideText: meccaA2StudentGuideTextFinalEn,
@@ -57,7 +58,7 @@ export const meccaA2BookDataAr: BookData = {
   pages: meccaA2PagesLockedAr,
   teacherGuide: meccaA2TeacherGuideAr,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: meccaA2SelfStudyGuideFinalAr,
+  selfStudyGuide: meccaA2SelfStudyGuideAr,
   studentGuideSections: meccaA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: meccaA2StudentGuideMetadataFinalAr,
   studentGuideText: meccaA2StudentGuideTextFinalAr,
