@@ -1,5 +1,7 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyB2HighlightStandard } from '../../b2HighlightStandard';
+import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   adamB2PagesGoldEn,
@@ -19,6 +21,7 @@ import {
   adamB2TeacherGuideMetadataGoldAr,
   adamB2StudentGuideMetadataGoldAr,
 } from './goldAr';
+import { adamB2ReviewedHighlightPairs } from './highlightPairs';
 
 const adamB2TitleOverridesEn = {
   2: { h2a: 'Humble Material', h2b: 'Different Lands' },
@@ -77,12 +80,28 @@ const adamB2PagesLockedAr = applyHotspotSourceLock(adamB2PagesBeforeHotspotSourc
   level: 'B2',
 });
 
+const adamB2HighlightStandard = applyB2HighlightStandard(adamB2PagesLockedEn, adamB2PagesLockedAr, {
+  storyKey: 'Adam',
+  storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
+  glossaryPageIds: [20, 21],
+  explicitTargets: resolveB2ReviewedPairs(
+    adamB2PagesLockedEn,
+    adamB2PagesLockedAr,
+    'Adam',
+    adamB2ReviewedHighlightPairs,
+  ),
+});
+
+export const adamB2HighlightTargets = adamB2HighlightStandard.targets;
+const adamB2PagesFinalEn = adamB2HighlightStandard.englishPages;
+const adamB2PagesFinalAr = adamB2HighlightStandard.arabicPages;
+
 export const adamB2BookDataEn: BookData = {
   id: 'b2-prophets-en',
   title: 'Stories of the Prophets: Adam (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: adamB2PagesLockedEn,
+  pages: adamB2PagesFinalEn,
   teacherGuide: adamB2TeacherGuideGoldEn,
   selfStudyGuide: adamB2SelfStudyGuideGoldEn,
   studentGuideText: adamB2StudentGuideTextGoldEn,
@@ -96,7 +115,7 @@ export const adamB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B2',
   baseFontSize: 14,
-  pages: adamB2PagesLockedAr,
+  pages: adamB2PagesFinalAr,
   teacherGuide: adamB2TeacherGuideGoldAr,
   selfStudyGuide: adamB2SelfStudyGuideGoldAr,
   studentGuideText: adamB2StudentGuideTextGoldAr,
