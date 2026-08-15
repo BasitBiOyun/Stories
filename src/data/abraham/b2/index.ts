@@ -3,7 +3,7 @@ import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { buildB2EvidenceGuides } from '../../b2GoldGuides';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   abrahamB2PagesGoldEn,
@@ -140,7 +140,7 @@ const abrahamB2StudentGuideTextRuntimeAr = abrahamB2StudentGuideTextGoldAr
   .replace('لا توجد صفحة Knowledge مستقلة في البنية المعتمدة، ولذلك لا نضيف صفحة جديدة.', 'حُفظت صفحة المراجع الأصلية في الأرشيف لتوحيد صفحات المراجع في كتب B2 لاحقاً.');
 
 export const abrahamB2HighlightTargets = abrahamB2HighlightStandard.targets;
-const abrahamB2Parallel = applyValidatedAdvancedParallelLearning({
+const abrahamB2Parallel = applySafeAdvancedParallelLearning({
   englishPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.englishPages, 'en'),
   arabicPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.arabicPages, 'ar'),
   config: abrahamB2Config,
