@@ -10,7 +10,7 @@ import {
   type A2GoldPageConfig,
 } from '../../a2GoldFactory';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
-import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { adamA2PagesQualityFinalized } from './en/qualityFinalization';
 import { adamA2PagesArQualityFinalized } from './ar/qualityFinalization';
 import { validateAdamA2HighlightContract } from './highlightValidation';
@@ -36,7 +36,7 @@ const adamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateAdamA2HighlightContract(adamA2PagesLockedEn, adamA2PagesLockedAr);
 
-const adamA2Parallel = applyA2ParallelLearning({
+const adamA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: adamA2PagesLockedEn,
   arabicPages: adamA2PagesLockedAr,
   config: adamA2Config,
