@@ -12,7 +12,6 @@ type ReviewedReplacement = { from: string; to: string };
 type ReviewedPageCorrections = {
   vocabulary?: ReviewedReplacement[];
   animatedWords?: ReviewedReplacement[];
-  removeAnimatedWords?: string[];
 };
 
 type ReviewedA2Corrections = Partial<Record<
@@ -28,14 +27,10 @@ type ReviewedA2Corrections = Partial<Record<
  *
  * Adam A2 is intentionally absent: its English and Arabic story highlights are
  * now owned by a single bilingual canonical target map with reviewed surface forms.
+ * Mecca A2 no longer needs an animated-word exception: the shared canonical A2
+ * layer now mirrors the reader's same-page singular/plural behavior directly.
  */
 const REVIEWED_A2_CORRECTIONS: ReviewedA2Corrections = {
-  'mecca:en': {
-    // "rope" in vocabulary already highlights the surface plural "ropes" in
-    // the reader. Keeping a second animated "ropes" entry would consume a ninth
-    // A2 highlight without adding a new learning target.
-    8: { removeAnimatedWords: ['ropes'] },
-  },
   'yunusEmre:ar': {
     8: { vocabulary: [{ from: 'الْحَيَاةُ الْيَوْمِيَّة', to: 'حَياتِنا الْيَوْمِيَّةِ' }] },
   },
@@ -63,12 +58,10 @@ const applyReviewedCorrections = (
       return replacement ? { ...entry, word: replacement.to } : entry;
     });
 
-    const animatedWords = page.animatedWords
-      ?.filter(word => !(correction.removeAnimatedWords ?? []).some(item => matches(word, item)))
-      .map((word) => {
-        const replacement = correction.animatedWords?.find(item => matches(word, item.from));
-        return replacement?.to ?? word;
-      });
+    const animatedWords = page.animatedWords?.map((word) => {
+      const replacement = correction.animatedWords?.find(item => matches(word, item.from));
+      return replacement?.to ?? word;
+    });
 
     return { ...page, vocabulary, animatedWords };
   });
