@@ -20,20 +20,33 @@ steps:
         ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
         || true
 
+  # Keep the GitHub Check Run useful even when Docker/BuildKit emits a very large
+  # log (Vivliostyle is especially noisy on a cold build). Capture the full build
+  # locally and publish only the diagnostic tail on failure.
   - id: build
     name: gcr.io/cloud-builders/docker
+    entrypoint: bash
     env:
       - DOCKER_BUILDKIT=1
     args:
-      - build
-      - --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-      - --build-arg
-      - BUILDKIT_INLINE_CACHE=1
-      - -t
-      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-      - -t
-      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-      - .
+      - -ceu
+      - |
+        set +e
+        docker build \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest \
+          . > /tmp/docker-build.log 2>&1
+        status=$$?
+        set -e
+        if [ "$$status" -ne 0 ]; then
+          echo "Docker build failed (exit $$status). Last 250 lines follow:"
+          tail -n 250 /tmp/docker-build.log
+          exit "$$status"
+        fi
+        echo "Docker build succeeded. Last 80 lines:"
+        tail -n 80 /tmp/docker-build.log
 
   - id: push
     name: gcr.io/cloud-builders/docker
