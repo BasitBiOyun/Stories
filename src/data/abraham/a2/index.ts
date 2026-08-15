@@ -1,14 +1,13 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
+import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
   abrahamA2HighlightConfig,
   abrahamA2HighlightTargets,
   abrahamA2PagesFinalAr,
   abrahamA2PagesFinalEn,
-  abrahamA2SelfStudyGuideFinalAr,
-  abrahamA2SelfStudyGuideFinalEn,
   abrahamA2StudentGuideMetadataFinalAr,
   abrahamA2StudentGuideMetadataFinalEn,
   abrahamA2StudentGuideSectionsFinalAr,
@@ -34,6 +33,8 @@ validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abra
 
 const abrahamA2TeacherGuideEn = buildA2ChapterTeacherGuide(abrahamA2PagesLockedEn, abrahamA2HighlightConfig.storyIds, 'en');
 const abrahamA2TeacherGuideAr = buildA2ChapterTeacherGuide(abrahamA2PagesLockedAr, abrahamA2HighlightConfig.storyIds, 'ar');
+const abrahamA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(abrahamA2PagesLockedEn, abrahamA2HighlightConfig.storyIds, 'en');
+const abrahamA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(abrahamA2PagesLockedAr, abrahamA2HighlightConfig.storyIds, 'ar');
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
@@ -43,7 +44,7 @@ export const abrahamA2BookDataEn: BookData = {
   pages: abrahamA2PagesLockedEn,
   teacherGuide: abrahamA2TeacherGuideEn,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: abrahamA2SelfStudyGuideFinalEn,
+  selfStudyGuide: abrahamA2SelfStudyGuideEn,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: abrahamA2StudentGuideMetadataFinalEn,
   studentGuideText: abrahamA2StudentGuideTextFinalEn,
@@ -57,7 +58,7 @@ export const abrahamA2BookDataAr: BookData = {
   pages: abrahamA2PagesLockedAr,
   teacherGuide: abrahamA2TeacherGuideAr,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: abrahamA2SelfStudyGuideFinalAr,
+  selfStudyGuide: abrahamA2SelfStudyGuideAr,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: abrahamA2StudentGuideMetadataFinalAr,
   studentGuideText: abrahamA2StudentGuideTextFinalAr,
