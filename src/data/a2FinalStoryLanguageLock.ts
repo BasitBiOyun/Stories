@@ -25,16 +25,11 @@ type ReviewedA2Corrections = Partial<Record<
  * learning target was selected correctly but its stored lemma/paraphrase cannot
  * be highlighted in the locked chapter text. The concept is retained; only the
  * display key is moved to wording that actually occurs in the chapter.
+ *
+ * Adam A2 is intentionally absent: its English and Arabic story highlights are
+ * now owned by a single bilingual canonical target map with reviewed surface forms.
  */
 const REVIEWED_A2_CORRECTIONS: ReviewedA2Corrections = {
-  'adam:en': {
-    5: { vocabulary: [{ from: 'regret', to: 'very sad' }] },
-  },
-  'adam:ar': {
-    4: { vocabulary: [{ from: 'تحذير', to: 'حَذَّرَ' }] },
-    5: { vocabulary: [{ from: 'ندم', to: 'حَزِنَا' }] },
-    9: { vocabulary: [{ from: 'يؤذي', to: 'أُؤْذِيَكَ' }] },
-  },
   'mecca:en': {
     // "rope" in vocabulary already highlights the surface plural "ropes" in
     // the reader. Keeping a second animated "ropes" entry would consume a ninth
