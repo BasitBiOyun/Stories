@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
 import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { meccaA2GoldConfig } from './gold';
 import {
@@ -25,10 +26,26 @@ const meccaA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
   meccaA2HighlightConfig,
   'en',
 );
-const meccaA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(meccaA2PagesFinalAr, 'mecca', 'ar'),
-  meccaA2HighlightConfig,
-  'ar',
+const meccaA2PagesLockedAr = applyA2HotspotCopyOverrides(
+  syncA2GlossariesFromStoryHighlights(
+    applyA2FinalStoryLanguageLock(meccaA2PagesFinalAr, 'mecca', 'ar'),
+    meccaA2HighlightConfig,
+    'ar',
+  ),
+  {
+    6: {
+      'h6-2': {
+        title: 'أَبُو بَكْرٍ',
+        description: 'كَانَ أَبُو بَكْرٍ رَجُلًا لَطِيفًا جِدًّا، وَكَانَ الْجَمِيعُ يَعْرِفُونَ أَنَّهُ كَانَ طَيِّبًا جِدًّا مَعَ الْعَبِيدِ.',
+      },
+    },
+    11: {
+      'h11-2': {
+        title: 'الْأَذَانُ الْأَوَّلُ',
+        description: 'بَعْدَ الْهِجْرَةِ، أَرَادَ الرَّسُولُ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ شَخْصًا يُنَادِي النَّاسَ إِلَى الصَّلاةِ، فَاخْتَارَ بِلالًا.',
+      },
+    },
+  },
 );
 
 validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2HighlightTargets, meccaA2HighlightConfig);
