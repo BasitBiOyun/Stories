@@ -3,7 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
-import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { meccaA2GoldConfig } from './gold';
 import {
   meccaA2HighlightConfig,
@@ -33,7 +33,7 @@ const meccaA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2HighlightTargets, meccaA2HighlightConfig);
 
-const meccaA2Parallel = applyA2ParallelLearning({
+const meccaA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: meccaA2PagesLockedEn,
   arabicPages: meccaA2PagesLockedAr,
   config: meccaA2GoldConfig,
