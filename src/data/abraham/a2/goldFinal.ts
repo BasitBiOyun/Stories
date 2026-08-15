@@ -1,5 +1,7 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
+import { abrahamA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import {
   abrahamA2GoldConfig,
   abrahamA2PagesGoldAr as basePagesAr,
@@ -38,9 +40,16 @@ export const abrahamA2HighlightConfig: A2HighlightStandardConfig = {
   storyKey: 'Abraham',
   storyIds: abrahamA2GoldConfig.storyIds,
   glossaryPageIds: abrahamA2GoldConfig.glossaryPageIds,
+  arabicOverrides: {
+    12: {
+      planner: { word: 'الْمَاكِرِينَ' },
+      die: { word: 'نَمُوتُ' },
+    },
+  },
 };
 
-const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, abrahamA2HighlightConfig);
+const selected = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, abrahamA2HighlightConfig);
+const standardized = applyA2ArabicDefinitionStandard(selected, abrahamA2HighlightDefinitionsAr, abrahamA2HighlightConfig);
 
 export const abrahamA2HighlightTargets = standardized.targets;
 export const abrahamA2PagesFinalEn = standardized.englishPages;
