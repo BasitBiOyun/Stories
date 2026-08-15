@@ -1,5 +1,7 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
+import { yunusA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import { yunusA2GoldConfig, yunusA2PagesGoldAr as basePagesAr, yunusA2PagesGoldEn as basePagesEn } from './gold';
 import { buildA2SelfStudyGuide, buildA2StudentGuideMetadata, buildA2StudentGuideSections, buildA2StudentGuideText, buildA2TeacherGuide, buildA2TeacherGuideMetadata } from '../../a2GoldFactory';
 
@@ -87,21 +89,22 @@ export const yunusA2HighlightConfig: A2HighlightStandardConfig = {
   glossaryPageIds: yunusA2GoldConfig.glossaryPageIds,
   arabicOverrides: {
     4: {
-      assigned: { word: 'فَطَلَبَ', definition: 'أَعْطَى شَخْصًا عَمَلًا أَوْ مُهِمَّةً مُحَدَّدَةً لِيَقُومَ بِهَا.' },
-      ego: { word: 'النَّفْسِ', definition: 'ذَاتُ الْإِنْسَانِ؛ وَهِيَ الْجُزْءُ الَّذِي قَدْ يَصِيرُ فَخُورًا أَوْ أَنَانِيًّا.' },
+      assigned: { word: 'فَطَلَبَ' },
+      ego: { word: 'النَّفْسِ' },
     },
     5: {
-      fixing: { word: 'يُصْلِحُ', definition: 'يُصَحِّحُ شَيْئًا أَوْ يَجْعَلُهُ أَفْضَلَ.' },
-      noticed: { word: 'لاحَظَ', definition: 'رَأَى شَيْئًا أَوِ انْتَبَهَ إِلَيْهِ.' },
+      fixing: { word: 'يُصْلِحُ' },
+      noticed: { word: 'لاحَظَ' },
     },
     6: {
-      quiet: { word: 'هادِئَةٌ', definition: 'لَا تُصْدِرُ ضَوْضَاءَ؛ سَاكِنَةٌ وَهَادِئَةٌ.' },
-      rivers: { word: 'أَنْهارٌ', definition: 'مَجَارِي مَاءٍ طَبِيعِيَّةٌ كَبِيرَةٌ تَجْرِي فِي الْأَرْضِ.' },
+      quiet: { word: 'هادِئَةٌ' },
+      rivers: { word: 'أَنْهارٌ' },
     },
   },
 };
 
-const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, yunusA2HighlightConfig);
+const selected = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, yunusA2HighlightConfig);
+const standardized = applyA2ArabicDefinitionStandard(selected, yunusA2HighlightDefinitionsAr, yunusA2HighlightConfig);
 
 export const yunusA2HighlightTargets = standardized.targets;
 export const yunusA2PagesFinalEn = standardized.englishPages;
