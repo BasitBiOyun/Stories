@@ -3,7 +3,7 @@ import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { buildB2EvidenceGuides } from '../../b2GoldGuides';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB2PagesGoldFinalEn, yunusB2PagesGoldFinalAr } from './goldAttribution';
 import {
@@ -118,7 +118,7 @@ const yunusB2HighlightStandard = applyB2HighlightStandard(yunusB2PagesLockedEn, 
 });
 
 export const yunusEmreB2HighlightTargets = yunusB2HighlightStandard.targets;
-const yunusB2Parallel = applyValidatedAdvancedParallelLearning({
+const yunusB2Parallel = applySafeAdvancedParallelLearning({
   englishPages: yunusB2HighlightStandard.englishPages,
   arabicPages: yunusB2HighlightStandard.arabicPages,
   config: yunusB2Config,
