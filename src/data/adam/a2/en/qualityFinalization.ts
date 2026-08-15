@@ -12,35 +12,10 @@ import { getAdamA2ChapterHighlights } from '../highlights';
  * ../highlights.ts so legacy vocabulary/animatedWords cannot diverge.
  */
 
-const glossaryPart1: NonNullable<PageData['vocabulary']> = [
-  { word: 'Messenger', definition: 'A person who brings a message from Allah.' },
-  { word: 'soil', definition: 'The earth where plants can grow.' },
-  { word: 'curiosity', definition: 'Wanting to know or learn something.' },
-  { word: 'respect', definition: 'A feeling that someone is important and should be treated well.' },
-  { word: 'wiser', definition: 'Knowing more and making better choices.' },
-  { word: 'knowledge', definition: 'Things that a person knows and understands.' },
-  { word: 'arrogant', definition: 'Thinking you are better or more important than other people.' },
-  { word: 'valuable', definition: 'Very useful or important.' },
-  { word: 'creature', definition: 'A living thing created by Allah.' },
-  { word: 'lonely', definition: 'Sad because you are alone.' },
-  { word: 'warning', definition: 'Words that tell you about something you should be careful about.' },
-  { word: 'regret', definition: 'Feeling sad because of something wrong you did.' },
-];
-
-const glossaryPart2: NonNullable<PageData['vocabulary']> = [
-  { word: 'crops', definition: 'Plants that people grow for food.' },
-  { word: 'rule', definition: 'To be in charge of a place or people.' },
-  { word: 'planet', definition: 'A large world in space, like Earth.' },
-  { word: 'honest', definition: 'Telling the truth and not cheating.' },
-  { word: 'behave', definition: 'To act in a particular way.' },
-  { word: 'enemy', definition: 'A person who wants to harm or oppose someone.' },
-  { word: 'shepherd', definition: 'A person who looks after sheep.' },
-  { word: 'farmer', definition: 'A person who grows crops or keeps animals on a farm.' },
-  { word: 'offering', definition: 'Something given to Allah.' },
-  { word: 'crow', definition: 'A large black bird.' },
-  { word: 'panic', definition: 'A sudden strong feeling of fear.' },
-  { word: 'worldwide', definition: 'In many places around the world.' },
-];
+const glossaryPart1: NonNullable<PageData['vocabulary']> = [1, 2, 3, 4, 5]
+  .flatMap((chapterId) => getAdamA2ChapterHighlights(chapterId, 'en'));
+const glossaryPart2: NonNullable<PageData['vocabulary']> = [6, 7, 8, 9, 10]
+  .flatMap((chapterId) => getAdamA2ChapterHighlights(chapterId, 'en'));
 
 const fixApprovedObviousTextSlips = (page: PageData): PageData => {
   if (page.type !== 'story') return page;
@@ -99,7 +74,7 @@ export const adamA2PagesQualityFinalized: PageData[] = adamA2PagesForLearning.ma
   if (page.id === 14) {
     return {
       ...page,
-      content: 'Selected key vocabulary from Chapters 1–5 for whole-book review.',
+      content: 'All highlighted words from Chapters 1–5 for whole-book review.',
       vocabulary: glossaryPart1,
     };
   }
@@ -107,7 +82,7 @@ export const adamA2PagesQualityFinalized: PageData[] = adamA2PagesForLearning.ma
   if (page.id === 15) {
     return {
       ...page,
-      content: 'Selected key vocabulary from Chapters 6–10 for whole-book review.',
+      content: 'All highlighted words from Chapters 6–10 for whole-book review.',
       vocabulary: glossaryPart2,
     };
   }
@@ -117,8 +92,6 @@ export const adamA2PagesQualityFinalized: PageData[] = adamA2PagesForLearning.ma
 
 export const adamA2TeacherGuideQualityFinalized: TeacherGuideSection[] = adamA2TeacherGuide.map((section) => ({
   ...section,
-  // Lesson plans already contain usable no-print activities. Do not claim that
-  // separate worksheets exist when the repository does not supply them.
   extraResources: undefined,
   ...(section.chapter.startsWith('Chapter 9:')
     ? {
