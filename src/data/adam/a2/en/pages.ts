@@ -56,7 +56,7 @@ export const adamA2Pages: PageData[] = [
         instructions: 'Decide if the statement is true or false.',
         question: 'Allah created Adam (pbuh) from fire.',
         correctAnswer: false,
-        explanation: 'Allah created Adam (pbuh)from soil (clay), while HE created Iblis from fire.',
+        explanation: 'Allah created Adam (pbuh) from soil (clay), while He created Iblis from fire.',
         feedback: {
           correct: 'Correct! Allah created Adam (pbuh) from the earth.',
           incorrect: 'Not quite. Remember, Allah shaped Adam (pbuh) from soil.'
@@ -382,7 +382,7 @@ export const adamA2Pages: PageData[] = [
         correctAnswer: false,
         feedback: {
           correct: 'Correct! Allah created Adam (pbuh) from soil.',
-          incorrect: 'Incorrect. Allah created Adam (pbuh) from soil, while HE created Iblis from fire.'
+          incorrect: 'Incorrect. Allah created Adam (pbuh) from soil, while He created Iblis from fire.'
         },
         explanation: 'Allah created Adam (pbuh) from the clay of the earth.'
       },
