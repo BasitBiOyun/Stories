@@ -2,7 +2,6 @@ import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
 import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
-import { groundAdamB1Derived } from '../../b1DerivedGrounding';
 import { applyHighlightSurfaceForms } from '../../highlightSourceLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -36,8 +35,8 @@ const adamB1HighlightStandard = applyB1HighlightStandard(adamB1PagesLockedEn, ad
 
 export const adamB1HighlightTargets = adamB1HighlightStandard.targets;
 const adamB1Parallel = applySafeAdvancedParallelLearning({
-  englishPages: groundAdamB1Derived(adamB1HighlightStandard.englishPages, 'en'),
-  arabicPages: groundAdamB1Derived(adamB1HighlightStandard.arabicPages, 'ar'),
+  englishPages: adamB1HighlightStandard.englishPages,
+  arabicPages: adamB1HighlightStandard.arabicPages,
   config: { level: 'B1', ...adamB1GoldConfig },
 });
 const adamB1GuidesEn = buildB1EvidenceGuides(adamB1Parallel.englishPages, 'en');
