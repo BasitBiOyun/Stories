@@ -1,4 +1,4 @@
-import { BookData } from '../../../types';
+import { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
@@ -24,6 +24,7 @@ import { abrahamB2ReviewedHighlightPairs } from './highlightPairs';
 const abrahamB2Config = {
   level: 'B2' as const,
   storyIds: Array.from({ length: 35 }, (_, index) => index + 1),
+  knowledgeCheckPageId: 36,
   reviewPageId: 37,
   glossaryPageIds: [38, 39] as [number, number],
   finalChallengePageId: 40,
@@ -38,6 +39,8 @@ const abrahamB2SourceDescriptionOverridesEn = {
     'b2-hs-9-2': 'He was astonished that these heavenly bodies were worshipped by people, while in fact all those stars, asteroids, the Sun, the Moon, etc., had been created; they appeared and disappeared at the Creator’s command.',
   },
 } as const;
+
+export const adamB2ReferencesTemporarilyArchived = true;
 
 export const abrahamB2PagesBeforeHotspotSourceLockEn = applyB2StoryLanguageLock(abrahamB2PagesGoldEn, {
   language: 'en',
@@ -73,10 +76,29 @@ const abrahamB2HighlightStandard = applyB2HighlightStandard(abrahamB2PagesLocked
   ),
 });
 
+const prepareKnowledgeCheckPage = (pages: PageData[], language: 'en' | 'ar'): PageData[] => pages.map((page) => (
+  page.id === abrahamB2Config.knowledgeCheckPageId
+    ? {
+        ...page,
+        type: 'quiz',
+        title: language === 'ar' ? 'اختبار المعرفة — B2' : 'B2 Knowledge Check',
+        content: '',
+        audioUrl: '',
+        vocabulary: undefined,
+        vocabularyPairs: undefined,
+        hotspots: undefined,
+        animatedWords: undefined,
+        syncPoints: undefined,
+        timedChunks: undefined,
+        exercises: undefined,
+      }
+    : page
+));
+
 export const abrahamB2HighlightTargets = abrahamB2HighlightStandard.targets;
 const abrahamB2Parallel = applyValidatedAdvancedParallelLearning({
-  englishPages: abrahamB2HighlightStandard.englishPages,
-  arabicPages: abrahamB2HighlightStandard.arabicPages,
+  englishPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.englishPages, 'en'),
+  arabicPages: prepareKnowledgeCheckPage(abrahamB2HighlightStandard.arabicPages, 'ar'),
   config: abrahamB2Config,
 });
 const abrahamB2GuidesEn = buildB2EvidenceGuides({ effectivePages: abrahamB2Parallel.englishPages, storyIds: abrahamB2Config.storyIds, language: 'en' });
