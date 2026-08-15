@@ -35,6 +35,9 @@ jobs:
       - name: Audit Firebase media coverage
         run: npm run audit:media
 
+      - name: Run full content and guide validation
+        run: npm run validate
+
       - name: Typecheck
         run: npm run typecheck
 
