@@ -1,7 +1,7 @@
 import { BookData, PageData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
-import { buildA2SelfStudyGuide } from '../../a2GoldFactory';
+import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
   mosesA2HighlightConfig,
@@ -103,8 +103,8 @@ validateA2HighlightStandard(mosesA2PagesLockedEn, mosesA2PagesLockedAr, mosesA2H
 
 const mosesA2TeacherGuideFramedEn = buildA2ChapterTeacherGuide(mosesA2PagesLockedEn, mosesA2StoryIds, 'en');
 const mosesA2TeacherGuideFramedAr = buildA2ChapterTeacherGuide(mosesA2PagesLockedAr, mosesA2StoryIds, 'ar');
-const mosesA2SelfStudyGuideFramedEn = buildA2SelfStudyGuide(mosesA2PagesLockedEn, mosesA2StoryIds, 'en');
-const mosesA2SelfStudyGuideFramedAr = buildA2SelfStudyGuide(mosesA2PagesLockedAr, mosesA2StoryIds, 'ar');
+const mosesA2SelfStudyGuideFramedEn = buildA2ChapterSelfStudyGuide(mosesA2PagesLockedEn, mosesA2StoryIds, 'en');
+const mosesA2SelfStudyGuideFramedAr = buildA2ChapterSelfStudyGuide(mosesA2PagesLockedAr, mosesA2StoryIds, 'ar');
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
