@@ -4,19 +4,10 @@ import { inferLearningSystemConfig, runLearningSystem } from '../../data/learnin
 import { buildLearningGuideBundle, type LearningGuideBundle, type LearningGuideStructure } from '../../data/learningGuideSystem';
 import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { preparePairedLearningSources } from '../../data/learningSourcePairing';
-
-const isReferencePage = (page: PageData): boolean => {
-  const title = page.title.trim().toLocaleLowerCase();
-  return title === 'references'
-    || title === 'reference'
-    || title === 'المراجع'
-    || title === 'مراجع'
-    || title.startsWith('references —')
-    || title.startsWith('المراجع —');
-};
+import { isLearningReferencePage, narrativeLearningPages } from '../../data/learningPageRoles';
 
 const inferRuntimeConfig = (book: BookData) => inferLearningSystemConfig(
-  book.pages.filter(page => !isReferencePage(page)),
+  narrativeLearningPages(book.pages),
   book.level,
 );
 
@@ -113,7 +104,7 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
     finalChallengePageId: arabicConfig.finalChallengePageId,
   });
   if (comparableEnglish !== comparableArabic) {
-    throw new Error('[Book Finalization] EN/AR page-role contracts differ.');
+    throw new Error(`[Book Finalization] EN/AR page-role contracts differ. EN=${comparableEnglish} AR=${comparableArabic}`);
   }
 
   const pairedSources = preparePairedLearningSources({
@@ -127,8 +118,8 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
     config,
   });
   const structure = guideStructure(config);
-  const englishReferences = pair.en.pages.filter(isReferencePage);
-  const arabicReferences = pair.ar.pages.filter(isReferencePage);
+  const englishReferences = pair.en.pages.filter(isLearningReferencePage);
+  const arabicReferences = pair.ar.pages.filter(isLearningReferencePage);
   if (englishReferences.length !== arabicReferences.length) {
     throw new Error(`[Book Finalization] Reference page counts differ: EN=${englishReferences.length}, AR=${arabicReferences.length}.`);
   }
