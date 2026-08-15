@@ -32,6 +32,9 @@ jobs:
       - name: Validate all registered books
         run: npm run validate:learning-system
 
+      - name: Audit Firebase media coverage
+        run: npm run audit:media
+
       - name: Typecheck
         run: npm run typecheck
 
