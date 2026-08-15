@@ -18,7 +18,7 @@ export const mosesA2FinalReviewExercises: Exercise[] = [
       { id: '2', text: 'Queen Asiye loves and takes care of baby Moses' },
       { id: '3', text: 'Moses escapes from Egypt and goes to Midian' },
       { id: '4', text: 'Allah speaks to Moses on the mountain' },
-      { id: '5', text: 'The sea opens and Moses saves his people' }
+      { id: '5', text: 'Allah makes a road in the sea, and Moses and his people walk safely through it' }
     ]
   },
   {
