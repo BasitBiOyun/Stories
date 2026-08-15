@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   meccaB2PagesGoldEn,
@@ -47,12 +48,22 @@ const meccaB2PagesLockedAr = applyHotspotSourceLock(meccaB2PagesBeforeHotspotSou
   level: 'B2',
 });
 
+const meccaB2HighlightStandard = applyB2HighlightStandard(meccaB2PagesLockedEn, meccaB2PagesLockedAr, {
+  storyKey: 'Mecca',
+  storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
+  glossaryPageIds: [20, 21],
+});
+
+export const meccaB2HighlightTargets = meccaB2HighlightStandard.targets;
+const meccaB2PagesFinalEn = meccaB2HighlightStandard.englishPages;
+const meccaB2PagesFinalAr = meccaB2HighlightStandard.arabicPages;
+
 export const meccaB2BookDataEn: BookData = {
   id: 'mecca-b2-en',
   title: 'Stories of the Prophets: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: meccaB2PagesLockedEn,
+  pages: meccaB2PagesFinalEn,
   teacherGuide: meccaB2TeacherGuideGoldEn,
   teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldEn,
   selfStudyGuide: meccaB2SelfStudyGuideGoldEn,
@@ -66,7 +77,7 @@ export const meccaB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: meccaB2PagesLockedAr,
+  pages: meccaB2PagesFinalAr,
   teacherGuide: meccaB2TeacherGuideGoldAr,
   teacherGuideMetadata: meccaB2TeacherGuideMetadataGoldAr,
   selfStudyGuide: meccaB2SelfStudyGuideGoldAr,
