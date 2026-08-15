@@ -63,7 +63,18 @@ const themeFor = (collectionId: string) => {
   };
 };
 
-const normalizeText = (value: unknown) => String(value ?? '').trim().toLocaleLowerCase();
+const normalizeText = (value: unknown) => String(value ?? '')
+  .trim()
+  .toLocaleLowerCase()
+  .normalize('NFKC')
+  .replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
+  .replace(/ـ/g, '')
+  .replace(/[أإآٱ]/g, 'ا')
+  .replace(/ى/g, 'ي')
+  .replace(/ؤ/g, 'و')
+  .replace(/ئ/g, 'ي')
+  .replace(/ة/g, 'ه')
+  .replace(/\s+/g, ' ');
 
 const sameUnorderedGroup = (left: string[] = [], right: string[] = []) => {
   const a = left.map(normalizeText).sort();
