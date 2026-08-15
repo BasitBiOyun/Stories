@@ -1,6 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHighlightSurfaceForms } from '../../highlightSourceLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { meccaB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -33,17 +34,20 @@ const meccaB1HighlightStandard = applyB1HighlightStandard(meccaB1PagesLockedEn, 
 });
 
 export const meccaB1HighlightTargets = meccaB1HighlightStandard.targets;
-const meccaB1PagesFinalEn = meccaB1HighlightStandard.englishPages;
-const meccaB1PagesFinalAr = meccaB1HighlightStandard.arabicPages;
-const meccaB1GuidesEn = buildB1EvidenceGuides(meccaB1PagesFinalEn, 'en');
-const meccaB1GuidesAr = buildB1EvidenceGuides(meccaB1PagesFinalAr, 'ar');
+const meccaB1Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: meccaB1HighlightStandard.englishPages,
+  arabicPages: meccaB1HighlightStandard.arabicPages,
+  config: { level: 'B1', ...meccaB1GoldConfig },
+});
+const meccaB1GuidesEn = buildB1EvidenceGuides(meccaB1Parallel.englishPages, 'en');
+const meccaB1GuidesAr = buildB1EvidenceGuides(meccaB1Parallel.arabicPages, 'ar');
 
 export const meccaB1BookDataEn: BookData = {
   id: 'mecca-b1-en',
   title: 'Stories of the Prophets: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: meccaB1PagesFinalEn,
+  pages: meccaB1Parallel.englishPages,
   teacherGuide: meccaB1GuidesEn.teacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadata,
   selfStudyGuide: meccaB1GuidesEn.selfStudyGuide,
@@ -57,7 +61,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: meccaB1PagesFinalAr,
+  pages: meccaB1Parallel.arabicPages,
   teacherGuide: meccaB1GuidesAr.teacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
   selfStudyGuide: meccaB1GuidesAr.selfStudyGuide,
