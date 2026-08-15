@@ -12,17 +12,13 @@ type B2HighlightCase = {
 };
 
 const page = (pages: PageData[], id: number, label: string): PageData => {
-  const found = pages.find((candidate) => candidate.id === id);
+  const found = pages.find(candidate => candidate.id === id);
   assert.ok(found, `${label}: page ${id} missing.`);
   return found;
 };
 
-const chapterVocabulary = (book: BookData, ids: number[]) => ids.flatMap((id) => (
-  page(book.pages, id, book.id).vocabulary ?? []
-));
+const chapterVocabulary = (book: BookData, ids: number[]) => ids.flatMap(id => page(book.pages, id, book.id).vocabulary ?? []);
 
-// Import final books dynamically so that each book's canonical B2 highlight
-// contract runs before the aggregate assertions below.
 const [adam, abraham, moses, mecca, yunus] = await Promise.all([
   import('../../src/data/adam/b2'),
   import('../../src/data/abraham/b2'),
@@ -32,46 +28,34 @@ const [adam, abraham, moses, mecca, yunus] = await Promise.all([
 ]);
 
 const cases: B2HighlightCase[] = [
-  {
-    label: 'Adam B2',
-    en: adam.adamB2BookDataEn,
-    ar: adam.adamB2BookDataAr,
-    storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
-    glossaryPageIds: [20, 21],
-  },
-  {
-    label: 'Abraham B2',
-    en: abraham.abrahamB2BookDataEn,
-    ar: abraham.abrahamB2BookDataAr,
-    storyIds: Array.from({ length: 35 }, (_, index) => index + 1),
-    glossaryPageIds: [38, 39],
-  },
-  {
-    label: 'Moses B2',
-    en: moses.mosesB2BookDataEn,
-    ar: moses.mosesB2BookDataAr,
-    storyIds: Array.from({ length: 24 }, (_, index) => index + 1),
-    glossaryPageIds: [27, 28],
-    vocabularyPageId: 26,
-  },
-  {
-    label: 'Mecca B2',
-    en: mecca.meccaB2BookDataEn,
-    ar: mecca.meccaB2BookDataAr,
-    storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
-    glossaryPageIds: [20, 21],
-  },
-  {
-    label: 'Yunus Emre B2',
-    en: yunus.yunusEmreB2BookDataEn,
-    ar: yunus.yunusEmreB2BookDataAr,
-    storyIds: Array.from({ length: 13 }, (_, index) => index + 1),
-    glossaryPageIds: [17, 18],
-    vocabularyPageId: 16,
-  },
+  { label: 'Adam B2', en: adam.adamB2BookDataEn, ar: adam.adamB2BookDataAr, storyIds: Array.from({ length: 17 }, (_, index) => index + 1), glossaryPageIds: [20, 21] },
+  { label: 'Abraham B2', en: abraham.abrahamB2BookDataEn, ar: abraham.abrahamB2BookDataAr, storyIds: Array.from({ length: 35 }, (_, index) => index + 1), glossaryPageIds: [38, 39] },
+  { label: 'Moses B2', en: moses.mosesB2BookDataEn, ar: moses.mosesB2BookDataAr, storyIds: Array.from({ length: 24 }, (_, index) => index + 1), glossaryPageIds: [27, 28], vocabularyPageId: 26 },
+  { label: 'Mecca B2', en: mecca.meccaB2BookDataEn, ar: mecca.meccaB2BookDataAr, storyIds: Array.from({ length: 17 }, (_, index) => index + 1), glossaryPageIds: [20, 21] },
+  { label: 'Yunus Emre B2', en: yunus.yunusEmreB2BookDataEn, ar: yunus.yunusEmreB2BookDataAr, storyIds: Array.from({ length: 13 }, (_, index) => index + 1), glossaryPageIds: [17, 18], vocabularyPageId: 16 },
 ];
 
-const validateCase = ({ label, en, ar, storyIds, glossaryPageIds, vocabularyPageId }: B2HighlightCase): void => {
+const validateVocabularySelection = (current: B2HighlightCase) => {
+  if (!current.vocabularyPageId) return;
+  const allEn = chapterVocabulary(current.en, current.storyIds);
+  const allAr = chapterVocabulary(current.ar, current.storyIds);
+  assert.equal(allEn.length, allAr.length, `${current.label}: flattened EN/AR Word Notes counts differ.`);
+
+  const actualEn = page(current.en.pages, current.vocabularyPageId, `${current.label} EN vocabulary page`).vocabularyPairs ?? [];
+  const actualAr = page(current.ar.pages, current.vocabularyPageId, `${current.label} AR vocabulary page`).vocabularyPairs ?? [];
+  assert.equal(actualEn.length, 10, `${current.label}: B2 Vocabulary Challenge must contain 10 pairs.`);
+  assert.equal(actualAr.length, 10, `${current.label}: Arabic B2 Vocabulary Challenge must contain 10 pairs.`);
+
+  actualEn.forEach((selected, index) => {
+    const sourceIndex = allEn.findIndex(entry => entry.word === selected.word && entry.definition === selected.meaning);
+    assert.ok(sourceIndex >= 0, `${current.label}: EN selected vocabulary ${selected.word} is not from final Word Notes.`);
+    const pairedArabic = allAr[sourceIndex];
+    assert.deepEqual(actualAr[index], { word: pairedArabic.word, meaning: pairedArabic.definition }, `${current.label}: vocabulary pair ${index + 1} does not use the same EN/AR source coordinate.`);
+  });
+};
+
+const validateCase = (current: B2HighlightCase): void => {
+  const { label, en, ar, storyIds, glossaryPageIds } = current;
   const seenEn = new Set<string>();
   const seenAr = new Set<string>();
 
@@ -119,22 +103,7 @@ const validateCase = ({ label, en, ar, storyIds, glossaryPageIds, vocabularyPage
     assert.deepEqual(actualAr, expectedAr, `${label} AR glossary ${index + 1} is not derived from final highlights.`);
   });
 
-  if (vocabularyPageId) {
-    const expectedEn = chapterVocabulary(en, storyIds).slice(0, 10);
-    const expectedAr = chapterVocabulary(ar, storyIds).slice(0, 10);
-    const actualEn = page(en.pages, vocabularyPageId, `${label} EN vocabulary page`).vocabularyPairs ?? [];
-    const actualAr = page(ar.pages, vocabularyPageId, `${label} AR vocabulary page`).vocabularyPairs ?? [];
-    assert.deepEqual(
-      actualEn,
-      expectedEn.map((entry) => ({ word: entry.word, meaning: entry.definition })),
-      `${label} EN Vocabulary-in-Context drifted from final highlights.`,
-    );
-    assert.deepEqual(
-      actualAr,
-      expectedAr.map((entry) => ({ word: entry.word, meaning: entry.definition })),
-      `${label} AR Vocabulary-in-Context drifted from final highlights.`,
-    );
-  }
+  validateVocabularySelection(current);
 };
 
 for (const current of cases) {
@@ -143,9 +112,7 @@ for (const current of cases) {
 }
 
 console.log(`B2 highlight aggregate: PASS ${cases.length}/${cases.length} books.`);
-console.log('- English is the sole canonical B2 learning-target authority');
-console.log('- Arabic uses reviewed same-concept surfaces from the locked Arabic story');
-console.log('- visible EN/AR target counts remain equal chapter by chapter');
+console.log('- final EN/AR visible Word Notes remain chapter-grounded and count-aligned');
 console.log('- legacy animatedWords are removed from B2 runtime story pages');
-console.log('- repeated runtime targets are suppressed consistently with the reader');
-console.log('- Master Glossary and Vocabulary-in-Context derive from final highlights');
+console.log('- Master Glossary derives from final visible Word Notes');
+console.log('- Vocabulary Challenge uses balanced selections from final Word Notes with the same EN/AR source coordinates');
