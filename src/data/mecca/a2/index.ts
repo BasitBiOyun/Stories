@@ -1,5 +1,6 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import {
   meccaA2HighlightConfig,
@@ -14,8 +15,6 @@ import {
   meccaA2StudentGuideSectionsFinalEn,
   meccaA2StudentGuideTextFinalAr,
   meccaA2StudentGuideTextFinalEn,
-  meccaA2TeacherGuideFinalAr,
-  meccaA2TeacherGuideFinalEn,
   meccaA2TeacherGuideMetadataFinalAr,
   meccaA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
@@ -33,13 +32,16 @@ const meccaA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2HighlightTargets, meccaA2HighlightConfig);
 
+const meccaA2TeacherGuideEn = buildA2ChapterTeacherGuide(meccaA2PagesLockedEn, meccaA2HighlightConfig.storyIds, 'en');
+const meccaA2TeacherGuideAr = buildA2ChapterTeacherGuide(meccaA2PagesLockedAr, meccaA2HighlightConfig.storyIds, 'ar');
+
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
   pages: meccaA2PagesLockedEn,
-  teacherGuide: meccaA2TeacherGuideFinalEn,
+  teacherGuide: meccaA2TeacherGuideEn,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: meccaA2SelfStudyGuideFinalEn,
   studentGuideSections: meccaA2StudentGuideSectionsFinalEn,
@@ -53,7 +55,7 @@ export const meccaA2BookDataAr: BookData = {
   level: 'A2',
   baseFontSize: 14,
   pages: meccaA2PagesLockedAr,
-  teacherGuide: meccaA2TeacherGuideFinalAr,
+  teacherGuide: meccaA2TeacherGuideAr,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: meccaA2SelfStudyGuideFinalAr,
   studentGuideSections: meccaA2StudentGuideSectionsFinalAr,
