@@ -1,6 +1,7 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
+import { sanitizeA2PlaceholderMedia } from '../../a2PlaceholderMedia';
 import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
 import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
@@ -33,7 +34,7 @@ export const adamA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: adamA2PagesLockedEn,
+  pages: sanitizeA2PlaceholderMedia(adamA2PagesLockedEn),
   teacherGuide: adamA2TeacherGuideQualityFinalized,
   teacherGuideMetadata: adamA2TeacherGuideMetadata,
   selfStudyGuide: adamA2SelfStudyGuide,
