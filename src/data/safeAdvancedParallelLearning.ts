@@ -1,5 +1,6 @@
 import type { PageData } from '../types';
 import { runLearningSystem, type LearningSystemConfig } from './learningSystem';
+import { preparePairedLearningSources } from './learningSourcePairing';
 
 type SafeAdvancedParallelInput = {
   englishPages: PageData[];
@@ -7,16 +8,17 @@ type SafeAdvancedParallelInput = {
   config: LearningSystemConfig;
 };
 
-/**
- * Compatibility entrypoint for existing B1/B2 books.
- * The actual exercise, assessment, parity, media and guide engine is the same
- * level-independent Learning System used by A2, B1 and B2.
- */
+/** Compatibility entrypoint. B1/B2 use the same Learning System as A2. */
 export const applySafeAdvancedParallelLearning = ({
   englishPages,
   arabicPages,
   config,
 }: SafeAdvancedParallelInput) => {
-  const output = runLearningSystem({ englishPages, arabicPages, config });
+  const paired = preparePairedLearningSources({ englishPages, arabicPages, storyIds: config.storyIds });
+  const output = runLearningSystem({
+    englishPages: paired.englishPages,
+    arabicPages: paired.arabicPages,
+    config,
+  });
   return { englishPages: output.englishPages, arabicPages: output.arabicPages };
 };
