@@ -1,6 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHighlightSurfaceForms } from '../../highlightSourceLock';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -33,17 +34,20 @@ const adamB1HighlightStandard = applyB1HighlightStandard(adamB1PagesLockedEn, ad
 });
 
 export const adamB1HighlightTargets = adamB1HighlightStandard.targets;
-const adamB1PagesFinalEn = adamB1HighlightStandard.englishPages;
-const adamB1PagesFinalAr = adamB1HighlightStandard.arabicPages;
-const adamB1GuidesEn = buildB1EvidenceGuides(adamB1PagesFinalEn, 'en');
-const adamB1GuidesAr = buildB1EvidenceGuides(adamB1PagesFinalAr, 'ar');
+const adamB1Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: adamB1HighlightStandard.englishPages,
+  arabicPages: adamB1HighlightStandard.arabicPages,
+  config: { level: 'B1', ...adamB1GoldConfig },
+});
+const adamB1GuidesEn = buildB1EvidenceGuides(adamB1Parallel.englishPages, 'en');
+const adamB1GuidesAr = buildB1EvidenceGuides(adamB1Parallel.arabicPages, 'ar');
 
 export const adamB1BookDataEn: BookData = {
   id: 'b1-prophets-en',
   title: 'Stories of the Prophets: Adam (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: adamB1PagesFinalEn,
+  pages: adamB1Parallel.englishPages,
   teacherGuide: adamB1GuidesEn.teacherGuide,
   selfStudyGuide: adamB1GuidesEn.selfStudyGuide,
   studentGuideText: adamB1StudentGuideText,
@@ -57,7 +61,7 @@ export const adamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B1',
   baseFontSize: 14,
-  pages: adamB1PagesFinalAr,
+  pages: adamB1Parallel.arabicPages,
   teacherGuide: adamB1GuidesAr.teacherGuide,
   selfStudyGuide: adamB1GuidesAr.selfStudyGuide,
   studentGuideText: adamB1StudentGuideTextAr,
