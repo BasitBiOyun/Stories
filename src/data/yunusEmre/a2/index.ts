@@ -1,7 +1,10 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
+import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyYunusA2PoemCard } from './poemCard';
 import {
+  yunusA2HighlightConfig,
+  yunusA2HighlightTargets,
   yunusA2PagesFinalAr,
   yunusA2PagesFinalEn,
   yunusA2SelfStudyGuideFinalAr,
@@ -19,9 +22,19 @@ import {
 } from './goldFinal';
 
 const yunusA2PagesLockedEn = applyYunusA2PoemCard(
-  applyA2FinalStoryLanguageLock(yunusA2PagesFinalEn, 'yunusEmre', 'en'),
+  syncA2GlossariesFromStoryHighlights(
+    applyA2FinalStoryLanguageLock(yunusA2PagesFinalEn, 'yunusEmre', 'en'),
+    yunusA2HighlightConfig,
+    'en',
+  ),
 );
-const yunusA2PagesLockedAr = applyA2FinalStoryLanguageLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar');
+const yunusA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
+  applyA2FinalStoryLanguageLock(yunusA2PagesFinalAr, 'yunusEmre', 'ar'),
+  yunusA2HighlightConfig,
+  'ar',
+);
+
+validateA2HighlightStandard(yunusA2PagesLockedEn, yunusA2PagesLockedAr, yunusA2HighlightTargets, yunusA2HighlightConfig);
 
 export const yunusEmreA2BookDataEn: BookData = {
   id: 'yunusEmre-a2-en',
