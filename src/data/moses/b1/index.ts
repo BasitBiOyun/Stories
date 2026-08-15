@@ -1,7 +1,7 @@
 import { BookData } from '../../../types';
 import { buildB1EvidenceGuides } from '../../b1GoldGuides';
 import { applyB1HighlightStandard } from '../../b1HighlightStandard';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
@@ -35,7 +35,7 @@ const mosesB1HighlightStandard = applyB1HighlightStandard(mosesB1PagesLockedEn, 
 });
 
 export const mosesB1HighlightTargets = mosesB1HighlightStandard.targets;
-const mosesB1Parallel = applyValidatedAdvancedParallelLearning({
+const mosesB1Parallel = applySafeAdvancedParallelLearning({
   englishPages: mosesB1HighlightStandard.englishPages,
   arabicPages: mosesB1HighlightStandard.arabicPages,
   config: { level: 'B1', ...mosesB1RolloutConfig },
