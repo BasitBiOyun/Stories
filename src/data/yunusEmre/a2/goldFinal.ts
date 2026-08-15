@@ -1,4 +1,5 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
+import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
 import { yunusA2GoldConfig, yunusA2PagesGoldAr as basePagesAr, yunusA2PagesGoldEn as basePagesEn } from './gold';
 import { buildA2SelfStudyGuide, buildA2StudentGuideMetadata, buildA2StudentGuideSections, buildA2StudentGuideText, buildA2TeacherGuide, buildA2TeacherGuideMetadata } from '../../a2GoldFactory';
 
@@ -42,7 +43,7 @@ const correctedBasePagesEn = applyVocabularyOverrides(fixApprovedObviousTextSlip
 
 const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   1: {
-    'شَاعِر': { word: 'الشُّعَراءِ', definition: 'أشخاص يكتبون القصائد.' },
+    'شَاعِر': { word: 'الشُّعَراءِ', definition: 'أَشْخَاصٌ يَكْتُبُونَ الْقَصَائِدَ.' },
     'أَخْلَاقِي': { word: 'أَخْلاقِيَّةً' },
     'دَرْوِيش': { word: 'دَرْوِيشًا' },
     'تِلْمِيذ': { word: 'تِلْميذًا' },
@@ -63,22 +64,48 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   },
   5: {
     'جُرُوح': { word: 'جُروحًا' },
-    'الْأَكْثَرُ اسْتِقَامَة': { word: 'اسْتِقامَةً', definition: 'أن يكون الشيء مستقيمًا وغير معوج.' },
-    'النَّفْس/الْأَنَا': { word: 'نَفْسُ', definition: 'الذات التي تحتاج إلى التدريب وترك الأنانية.' },
-    'مُصْلَح': { word: 'إِصْلاحٍ', definition: 'جعل الشيء أفضل وأكثر صحة.' },
+    'الْأَكْثَرُ اسْتِقَامَة': { word: 'اسْتِقامَةً', definition: 'أَنْ يَكُونَ الشَّيْءُ مُسْتَقِيمًا وَغَيْرَ مُعْوَجٍّ.' },
+    'النَّفْس/الْأَنَا': { word: 'نَفْسُ', definition: 'الذَّاتُ الَّتِي تَحْتَاجُ إِلَى التَّدْرِيبِ وَتَرْكِ الْأَنَانِيَّةِ.' },
+    'مُصْلَح': { word: 'إِصْلاحٍ', definition: 'جَعْلُ الشَّيْءِ أَفْضَلَ وَأَكْثَرَ صِحَّةً.' },
   },
   7: {
     'حَقْل': { word: 'الْحُقولِ' },
     'هَمَسُوا': { word: 'يَهْمِسونَ' },
   },
   8: {
-    'دَنَا': { word: 'اِنْتَهى', definition: 'وصل إلى نهايته.' },
-    'يَبِسَتْ': { word: 'يَبِسْتُ', definition: 'جففت وفقدت الماء والحياة.' },
+    'دَنَا': { word: 'اِنْتَهى', definition: 'وَصَلَ إِلَى نِهَايَتِهِ.' },
+    'يَبِسَتْ': { word: 'يَبِسْتُ', definition: 'جَفَّ وَفَقَدَ الْمَاءَ وَالْحَيَاةَ.' },
   },
 });
 
-export const yunusA2PagesFinalEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'en' });
-export const yunusA2PagesFinalAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'ar' });
+const vocabularyGoldEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'en' });
+const vocabularyGoldAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'ar' });
+
+export const yunusA2HighlightConfig: A2HighlightStandardConfig = {
+  storyKey: 'Yunus Emre',
+  storyIds: yunusA2GoldConfig.storyIds,
+  glossaryPageIds: yunusA2GoldConfig.glossaryPageIds,
+  arabicOverrides: {
+    4: {
+      assigned: { word: 'فَطَلَبَ', definition: 'أَعْطَى شَخْصًا عَمَلًا أَوْ مُهِمَّةً مُحَدَّدَةً لِيَقُومَ بِهَا.' },
+      ego: { word: 'النَّفْسِ', definition: 'ذَاتُ الْإِنْسَانِ؛ وَهِيَ الْجُزْءُ الَّذِي قَدْ يَصِيرُ فَخُورًا أَوْ أَنَانِيًّا.' },
+    },
+    5: {
+      fixing: { word: 'يُصْلِحُ', definition: 'يُصَحِّحُ شَيْئًا أَوْ يَجْعَلُهُ أَفْضَلَ.' },
+      noticed: { word: 'لاحَظَ', definition: 'رَأَى شَيْئًا أَوِ انْتَبَهَ إِلَيْهِ.' },
+    },
+    6: {
+      quiet: { word: 'هادِئَةٌ', definition: 'لَا تُصْدِرُ ضَوْضَاءَ؛ سَاكِنَةٌ وَهَادِئَةٌ.' },
+      rivers: { word: 'أَنْهارٌ', definition: 'مَجَارِي مَاءٍ طَبِيعِيَّةٌ كَبِيرَةٌ تَجْرِي فِي الْأَرْضِ.' },
+    },
+  },
+};
+
+const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, yunusA2HighlightConfig);
+
+export const yunusA2HighlightTargets = standardized.targets;
+export const yunusA2PagesFinalEn = standardized.englishPages;
+export const yunusA2PagesFinalAr = standardized.arabicPages;
 
 export const yunusA2TeacherGuideFinalEn = buildA2TeacherGuide(yunusA2PagesFinalEn, yunusA2GoldConfig.storyIds, 'en');
 export const yunusA2TeacherGuideFinalAr = buildA2TeacherGuide(yunusA2PagesFinalAr, yunusA2GoldConfig.storyIds, 'ar');
