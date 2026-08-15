@@ -15,4 +15,22 @@ export const abrahamB1ExplicitHighlightTargets: Record<number, readonly B1Explic
       ar: { word: 'الرِّيفُ', definition: 'الأَرْضُ الْوَاقِعَةُ خَارِجَ الْمَدِينَةِ، وَتَتَمَيَّزُ بِالْهُدُوءِ وَالِاتِّسَاعِ.' },
     },
   ],
+  4: [
+    {
+      en: { word: 'prostrated', definition: 'Put the forehead to the ground in worship and humility.' },
+      ar: { word: 'فسجد', definition: 'وَضَعَ جَبْهَتَهُ عَلَى الْأَرْضِ فِي الْعِبَادَةِ وَالتَّوَاضُعِ.' },
+    },
+    {
+      en: { word: 'guide', definition: 'To show the right path or lead in the right direction.' },
+      ar: { word: 'يَهْدِيَ', definition: 'أَنْ يُرْشِدَ شَخْصًا إِلَى الطَّرِيقِ الصَّحِيحِ.' },
+    },
+    {
+      en: { word: 'Messenger', definition: 'A person chosen by Allah to guide people to the truth.' },
+      ar: { word: 'رسوله', definition: 'شَخْصٌ اخْتَارَهُ اللهُ لِيُبَلِّغَ رِسَالَتَهُ وَيَهْدِيَ النَّاسَ إِلَى الْحَقِّ.' },
+    },
+    {
+      en: { word: 'recognized', definition: 'Understood or realized something clearly.' },
+      ar: { word: 'أدرك', definition: 'فَهِمَ شَيْئًا أَوْ أَدْرَكَهُ بِوُضُوحٍ.' },
+    },
+  ],
 };
