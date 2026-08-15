@@ -1,5 +1,6 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
 import {
   applyA2GoldPages,
   buildA2SelfStudyGuide,
@@ -11,6 +12,7 @@ import {
 } from '../../a2GoldFactory';
 import { meccaA2Pages } from './en/pages';
 import { meccaA2PagesAr } from './ar/pages';
+import { meccaA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import { meccaA2GoldConfig, meccaA2HotspotsGoldAr, meccaA2HotspotsGoldEn } from './gold';
 
 const canonicalEnForLearning = meccaA2Pages.map((page) => page.id === 8
@@ -87,7 +89,8 @@ export const meccaA2HighlightConfig: A2HighlightStandardConfig = {
   glossaryPageIds: meccaA2GoldConfig.glossaryPageIds,
 };
 
-const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, meccaA2HighlightConfig);
+const selected = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, meccaA2HighlightConfig);
+const standardized = applyA2ArabicDefinitionStandard(selected, meccaA2HighlightDefinitionsAr, meccaA2HighlightConfig);
 
 export const meccaA2HighlightTargets = standardized.targets;
 export const meccaA2PagesFinalEn = standardized.englishPages;
