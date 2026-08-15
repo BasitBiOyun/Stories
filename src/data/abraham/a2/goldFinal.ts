@@ -1,4 +1,5 @@
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
+import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
 import {
   abrahamA2GoldConfig,
   abrahamA2PagesGoldAr as basePagesAr,
@@ -13,7 +14,7 @@ import {
   buildA2TeacherGuideMetadata,
 } from '../../a2GoldFactory';
 
-export const abrahamA2PagesFinalEn = applyA2VocabularyGold({
+const vocabularyGoldEn = applyA2VocabularyGold({
   pages: basePagesEn,
   storyIds: abrahamA2GoldConfig.storyIds,
   vocabularyPageId: 16,
@@ -23,15 +24,27 @@ export const abrahamA2PagesFinalEn = applyA2VocabularyGold({
   },
 });
 
-export const abrahamA2PagesFinalAr = applyA2VocabularyGold({
+const vocabularyGoldAr = applyA2VocabularyGold({
   pages: basePagesAr,
   storyIds: abrahamA2GoldConfig.storyIds,
   vocabularyPageId: 16,
   language: 'ar',
   chapterAdditions: {
-    6: [{ word: 'فَأْس', definition: 'أداة قوية تُستعمل للقطع أو الكسر.' }],
+    6: [{ word: 'فَأْس', definition: 'أَدَاةٌ ثَقِيلَةٌ تُسْتَعْمَلُ لِلْقَطْعِ أَوِ التَّكْسِيرِ.' }],
   },
 });
+
+export const abrahamA2HighlightConfig: A2HighlightStandardConfig = {
+  storyKey: 'Abraham',
+  storyIds: abrahamA2GoldConfig.storyIds,
+  glossaryPageIds: abrahamA2GoldConfig.glossaryPageIds,
+};
+
+const standardized = applyA2HighlightStandard(vocabularyGoldEn, vocabularyGoldAr, abrahamA2HighlightConfig);
+
+export const abrahamA2HighlightTargets = standardized.targets;
+export const abrahamA2PagesFinalEn = standardized.englishPages;
+export const abrahamA2PagesFinalAr = standardized.arabicPages;
 
 export const abrahamA2TeacherGuideFinalEn = buildA2TeacherGuide(abrahamA2PagesFinalEn, abrahamA2GoldConfig.storyIds, 'en');
 export const abrahamA2TeacherGuideFinalAr = buildA2TeacherGuide(abrahamA2PagesFinalAr, abrahamA2GoldConfig.storyIds, 'ar');
