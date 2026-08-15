@@ -1,6 +1,7 @@
 import { BookData, PageData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { buildA2SelfStudyGuide, buildA2TeacherGuide } from '../../a2GoldFactory';
+import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
+import { buildA2SelfStudyGuide } from '../../a2GoldFactory';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyYunusA2PoemCard } from './poemCard';
 import {
@@ -172,8 +173,8 @@ const yunusA2PagesLockedAr = frameYunusA2DerivedAttributions(
 
 validateA2HighlightStandard(yunusA2PagesLockedEn, yunusA2PagesLockedAr, yunusA2HighlightTargets, yunusA2HighlightConfig);
 
-const yunusA2TeacherGuideFramedEn = buildA2TeacherGuide(yunusA2PagesLockedEn, yunusA2StoryIds, 'en');
-const yunusA2TeacherGuideFramedAr = buildA2TeacherGuide(yunusA2PagesLockedAr, yunusA2StoryIds, 'ar');
+const yunusA2TeacherGuideFramedEn = buildA2ChapterTeacherGuide(yunusA2PagesLockedEn, yunusA2StoryIds, 'en');
+const yunusA2TeacherGuideFramedAr = buildA2ChapterTeacherGuide(yunusA2PagesLockedAr, yunusA2StoryIds, 'ar');
 const yunusA2SelfStudyGuideFramedEn = buildA2SelfStudyGuide(yunusA2PagesLockedEn, yunusA2StoryIds, 'en');
 const yunusA2SelfStudyGuideFramedAr = buildA2SelfStudyGuide(yunusA2PagesLockedAr, yunusA2StoryIds, 'ar');
 
