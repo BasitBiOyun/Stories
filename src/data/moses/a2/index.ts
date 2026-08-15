@@ -3,7 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
-import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { mosesA2GoldConfig } from './gold';
 import {
   mosesA2HighlightConfig,
@@ -35,7 +35,7 @@ const mosesA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(mosesA2PagesLockedEn, mosesA2PagesLockedAr, mosesA2HighlightTargets, mosesA2HighlightConfig);
 
-const mosesA2Parallel = applyA2ParallelLearning({
+const mosesA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: mosesA2PagesLockedEn,
   arabicPages: mosesA2PagesLockedAr,
   config: mosesA2GoldConfig,
