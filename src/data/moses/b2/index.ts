@@ -3,7 +3,7 @@ import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { buildB2EvidenceGuides } from '../../b2GoldGuides';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { mosesB2PagesGoldEn } from './goldLearning';
 import {
@@ -125,7 +125,7 @@ const mosesB2HighlightStandard = applyB2HighlightStandard(mosesB2PagesLockedEn, 
 });
 
 export const mosesB2HighlightTargets = mosesB2HighlightStandard.targets;
-const mosesB2Parallel = applyValidatedAdvancedParallelLearning({
+const mosesB2Parallel = applySafeAdvancedParallelLearning({
   englishPages: mosesB2HighlightStandard.englishPages,
   arabicPages: mosesB2HighlightStandard.arabicPages,
   config: mosesB2Config,
