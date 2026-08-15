@@ -3,7 +3,8 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
-import { sanitizeA2PlaceholderMedia } from '../../a2PlaceholderMedia';
+import { applyA2ParallelLearning } from '../../a2ParallelLearning';
+import { meccaA2GoldConfig } from './gold';
 import {
   meccaA2HighlightConfig,
   meccaA2HighlightTargets,
@@ -32,17 +33,23 @@ const meccaA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
 
 validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2HighlightTargets, meccaA2HighlightConfig);
 
-const meccaA2TeacherGuideEn = buildA2ChapterTeacherGuide(meccaA2PagesLockedEn, meccaA2HighlightConfig.storyIds, 'en');
-const meccaA2TeacherGuideAr = buildA2ChapterTeacherGuide(meccaA2PagesLockedAr, meccaA2HighlightConfig.storyIds, 'ar');
-const meccaA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(meccaA2PagesLockedEn, meccaA2HighlightConfig.storyIds, 'en');
-const meccaA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(meccaA2PagesLockedAr, meccaA2HighlightConfig.storyIds, 'ar');
+const meccaA2Parallel = applyA2ParallelLearning({
+  englishPages: meccaA2PagesLockedEn,
+  arabicPages: meccaA2PagesLockedAr,
+  config: meccaA2GoldConfig,
+});
+
+const meccaA2TeacherGuideEn = buildA2ChapterTeacherGuide(meccaA2Parallel.englishPages, meccaA2HighlightConfig.storyIds, 'en');
+const meccaA2TeacherGuideAr = buildA2ChapterTeacherGuide(meccaA2Parallel.arabicPages, meccaA2HighlightConfig.storyIds, 'ar');
+const meccaA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(meccaA2Parallel.englishPages, meccaA2HighlightConfig.storyIds, 'en');
+const meccaA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(meccaA2Parallel.arabicPages, meccaA2HighlightConfig.storyIds, 'ar');
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: sanitizeA2PlaceholderMedia(meccaA2PagesLockedEn),
+  pages: meccaA2Parallel.englishPages,
   teacherGuide: meccaA2TeacherGuideEn,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalEn,
   selfStudyGuide: meccaA2SelfStudyGuideEn,
@@ -56,7 +63,7 @@ export const meccaA2BookDataAr: BookData = {
   title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: meccaA2PagesLockedAr,
+  pages: meccaA2Parallel.arabicPages,
   teacherGuide: meccaA2TeacherGuideAr,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalAr,
   selfStudyGuide: meccaA2SelfStudyGuideAr,
