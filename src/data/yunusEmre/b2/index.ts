@@ -1,5 +1,7 @@
 import { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
+import { applyB2HighlightStandard } from '../../b2HighlightStandard';
+import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB2PagesGoldFinalEn, yunusB2PagesGoldFinalAr } from './goldAttribution';
 import {
@@ -18,6 +20,7 @@ import {
   yunusB2StudentGuideTextGoldAr,
   yunusB2StudentGuideMetadataGoldAr,
 } from './goldAr';
+import { yunusEmreB2ReviewedHighlightPairs } from './highlightPairs';
 
 const yunusB2SourceTitleOverridesEn = {
   5: { 'h5-1': 'false retreat', 'h5-2': 'victory at Kösedağ' },
@@ -93,12 +96,29 @@ const yunusB2PagesLockedAr = applyHotspotSourceLock(yunusB2PagesBeforeHotspotSou
   level: 'B2',
 });
 
+const yunusB2HighlightStandard = applyB2HighlightStandard(yunusB2PagesLockedEn, yunusB2PagesLockedAr, {
+  storyKey: 'Yunus Emre',
+  storyIds: Array.from({ length: 13 }, (_, index) => index + 1),
+  glossaryPageIds: [17, 18],
+  vocabularyPageId: 16,
+  explicitTargets: resolveB2ReviewedPairs(
+    yunusB2PagesLockedEn,
+    yunusB2PagesLockedAr,
+    'Yunus Emre',
+    yunusEmreB2ReviewedHighlightPairs,
+  ),
+});
+
+export const yunusEmreB2HighlightTargets = yunusB2HighlightStandard.targets;
+const yunusB2PagesFinalEn = yunusB2HighlightStandard.englishPages;
+const yunusB2PagesFinalAr = yunusB2HighlightStandard.arabicPages;
+
 export const yunusEmreB2BookDataEn: BookData = {
   id: 'yunusEmre-b2-en',
   title: 'Stories of the Prophets: Yunus Emre (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: yunusB2PagesLockedEn,
+  pages: yunusB2PagesFinalEn,
   teacherGuide: yunusB2TeacherGuideGoldEn,
   teacherGuideMetadata: yunusB2TeacherGuideMetadataGoldEn,
   selfStudyGuide: yunusB2SelfStudyGuideGoldEn,
@@ -112,7 +132,7 @@ export const yunusEmreB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: يونس إمره (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: yunusB2PagesLockedAr,
+  pages: yunusB2PagesFinalAr,
   teacherGuide: yunusB2TeacherGuideGoldAr,
   teacherGuideMetadata: yunusB2TeacherGuideMetadataGoldAr,
   selfStudyGuide: yunusB2SelfStudyGuideGoldAr,
