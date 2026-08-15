@@ -4,6 +4,9 @@ import { extname, join, normalize } from 'node:path';
 
 const port = Number(process.env.PORT || 8080);
 const root = join(process.cwd(), 'dist');
+const gitSha = process.env.APP_GIT_SHA || 'unknown';
+const gitRef = process.env.APP_GIT_REF || 'unknown';
+const revision = process.env.K_REVISION || 'unknown';
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -31,12 +34,27 @@ const sendFile = (res, filePath) => {
     'Content-Type': contentTypes[ext] || 'application/octet-stream',
     'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=31536000, immutable',
     'X-Content-Type-Options': 'nosniff',
+    'X-Stories-Git-Sha': gitSha,
+    'X-Stories-Revision': revision,
   });
   createReadStream(filePath).pipe(res);
 };
 
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+
+  if (urlPath === '/__version') {
+    const payload = JSON.stringify({ gitSha, gitRef, revision });
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'X-Stories-Git-Sha': gitSha,
+      'X-Stories-Revision': revision,
+    });
+    res.end(payload);
+    return;
+  }
+
   const safePath = normalize(urlPath).replace(/^([.][.][/\\])+/, '');
   let filePath = join(root, safePath === '/' ? 'index.html' : safePath);
 
@@ -60,5 +78,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(`Stories app listening on port ${port}`);
+  console.log(`Stories app listening on port ${port} (${gitRef}@${gitSha}, revision ${revision})`);
 });
