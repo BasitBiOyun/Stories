@@ -2,7 +2,7 @@ import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { buildB2EvidenceGuides } from '../../b2GoldGuides';
-import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
+import { applySafeAdvancedParallelLearning } from '../../safeAdvancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   meccaB2PagesGoldEn,
@@ -62,7 +62,7 @@ const meccaB2HighlightStandard = applyB2HighlightStandard(meccaB2PagesLockedEn, 
 });
 
 export const meccaB2HighlightTargets = meccaB2HighlightStandard.targets;
-const meccaB2Parallel = applyValidatedAdvancedParallelLearning({
+const meccaB2Parallel = applySafeAdvancedParallelLearning({
   englishPages: meccaB2HighlightStandard.englishPages,
   arabicPages: meccaB2HighlightStandard.arabicPages,
   config: meccaB2Config,
