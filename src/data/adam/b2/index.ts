@@ -2,11 +2,11 @@ import { BookData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
+import { buildB2EvidenceGuides } from '../../b2GoldGuides';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import {
   adamB2PagesGoldEn,
-  adamB2TeacherGuideGoldEn,
-  adamB2SelfStudyGuideGoldEn,
   adamB2StudentGuideTextGoldEn,
   adamB2StudentGuideSectionsGoldEn,
   adamB2TeacherGuideMetadataGoldEn,
@@ -14,14 +14,21 @@ import {
 } from './gold';
 import {
   adamB2PagesGoldAr,
-  adamB2TeacherGuideGoldAr,
-  adamB2SelfStudyGuideGoldAr,
   adamB2StudentGuideTextGoldAr,
   adamB2StudentGuideSectionsGoldAr,
   adamB2TeacherGuideMetadataGoldAr,
   adamB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 import { adamB2ReviewedHighlightPairs } from './highlightPairs';
+
+const adamB2Config = {
+  level: 'B2' as const,
+  storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
+  knowledgeCheckPageId: 18,
+  reviewPageId: 19,
+  glossaryPageIds: [20, 21] as [number, number],
+  finalChallengePageId: 22,
+};
 
 const adamB2TitleOverridesEn = {
   2: { h2a: 'Humble Material', h2b: 'Different Lands' },
@@ -82,8 +89,8 @@ const adamB2PagesLockedAr = applyHotspotSourceLock(adamB2PagesBeforeHotspotSourc
 
 const adamB2HighlightStandard = applyB2HighlightStandard(adamB2PagesLockedEn, adamB2PagesLockedAr, {
   storyKey: 'Adam',
-  storyIds: Array.from({ length: 17 }, (_, index) => index + 1),
-  glossaryPageIds: [20, 21],
+  storyIds: adamB2Config.storyIds,
+  glossaryPageIds: adamB2Config.glossaryPageIds,
   explicitTargets: resolveB2ReviewedPairs(
     adamB2PagesLockedEn,
     adamB2PagesLockedAr,
@@ -93,17 +100,22 @@ const adamB2HighlightStandard = applyB2HighlightStandard(adamB2PagesLockedEn, ad
 });
 
 export const adamB2HighlightTargets = adamB2HighlightStandard.targets;
-const adamB2PagesFinalEn = adamB2HighlightStandard.englishPages;
-const adamB2PagesFinalAr = adamB2HighlightStandard.arabicPages;
+const adamB2Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: adamB2HighlightStandard.englishPages,
+  arabicPages: adamB2HighlightStandard.arabicPages,
+  config: adamB2Config,
+});
+const adamB2GuidesEn = buildB2EvidenceGuides({ effectivePages: adamB2Parallel.englishPages, storyIds: adamB2Config.storyIds, language: 'en' });
+const adamB2GuidesAr = buildB2EvidenceGuides({ effectivePages: adamB2Parallel.arabicPages, storyIds: adamB2Config.storyIds, language: 'ar' });
 
 export const adamB2BookDataEn: BookData = {
   id: 'b2-prophets-en',
   title: 'Stories of the Prophets: Adam (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: adamB2PagesFinalEn,
-  teacherGuide: adamB2TeacherGuideGoldEn,
-  selfStudyGuide: adamB2SelfStudyGuideGoldEn,
+  pages: adamB2Parallel.englishPages,
+  teacherGuide: adamB2GuidesEn.teacherGuide,
+  selfStudyGuide: adamB2GuidesEn.selfStudyGuide,
   studentGuideText: adamB2StudentGuideTextGoldEn,
   studentGuideSections: adamB2StudentGuideSectionsGoldEn,
   teacherGuideMetadata: adamB2TeacherGuideMetadataGoldEn,
@@ -115,9 +127,9 @@ export const adamB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B2',
   baseFontSize: 14,
-  pages: adamB2PagesFinalAr,
-  teacherGuide: adamB2TeacherGuideGoldAr,
-  selfStudyGuide: adamB2SelfStudyGuideGoldAr,
+  pages: adamB2Parallel.arabicPages,
+  teacherGuide: adamB2GuidesAr.teacherGuide,
+  selfStudyGuide: adamB2GuidesAr.selfStudyGuide,
   studentGuideText: adamB2StudentGuideTextGoldAr,
   studentGuideSections: adamB2StudentGuideSectionsGoldAr,
   teacherGuideMetadata: adamB2TeacherGuideMetadataGoldAr,
