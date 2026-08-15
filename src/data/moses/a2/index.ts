@@ -3,6 +3,7 @@ import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
 import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
+import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
 import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { mosesA2GoldConfig } from './gold';
 import {
@@ -33,10 +34,20 @@ const mosesA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
   mosesA2HighlightConfig,
   'en',
 );
-const mosesA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(removeMisplacedChapterTwoHotspot(mosesA2PagesFinalAr), 'musa', 'ar'),
-  mosesA2HighlightConfig,
-  'ar',
+const mosesA2PagesLockedAr = applyA2HotspotCopyOverrides(
+  syncA2GlossariesFromStoryHighlights(
+    applyA2FinalStoryLanguageLock(removeMisplacedChapterTwoHotspot(mosesA2PagesFinalAr), 'musa', 'ar'),
+    mosesA2HighlightConfig,
+    'ar',
+  ),
+  {
+    15: {
+      'h15-2': {
+        title: 'جُدْرَانُ الْمَاءِ',
+        description: 'سَارَ مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمُهُ بِأَمَانٍ بَيْنَ جُدْرَانٍ مِنَ الْمَاءِ.',
+      },
+    },
+  },
 );
 
 validateA2HighlightStandard(mosesA2PagesLockedEn, mosesA2PagesLockedAr, mosesA2HighlightTargets, mosesA2HighlightConfig);
