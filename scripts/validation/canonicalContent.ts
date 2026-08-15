@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
+import { isLearningReferenceTitle } from '../../src/data/learningPageRoles';
 
 interface CanonicalPageRecord {
   id: number;
@@ -41,10 +42,6 @@ const writeMode = args.includes('--write');
 const outputArgIndex = args.indexOf('--output');
 const outputPath = outputArgIndex >= 0 ? resolve(args[outputArgIndex + 1]) : defaultPath;
 
-/**
- * The story prose is locked. Previously approved mechanical corrections are
- * normalized back to their baseline form only for canonical comparison.
- */
 const normalizeApprovedMechanicalFixesForBaseline = (
   storyId: string,
   level: string,
@@ -136,17 +133,18 @@ const createBaseline = async (): Promise<CanonicalBaseline> => {
 };
 
 /**
- * Canonical comparison protects story identity/order/title/subtitle/prose only.
- * Audio URLs and Storage folder candidates are intentionally excluded because
- * runtime media is reconciled and audited by the central media contract.
- * Existing baseline files remain readable; no baseline rewrite is required.
+ * Canonical comparison protects narrative chapter identity/order/title/subtitle
+ * and prose only. Auxiliary References/Source pages, audio URLs and Storage
+ * folder candidates are protected by their own page-role/media contracts.
  */
 const stableForComparison = (baseline: CanonicalBaseline): CanonicalStoryComparison => ({
   schemaVersion: baseline.schemaVersion,
   books: baseline.books.map(book => ({
     key: book.key,
     language: book.language,
-    storyPages: book.storyPages.map(({ audioUrl: _audioUrl, ...story }) => story),
+    storyPages: book.storyPages
+      .filter(story => !isLearningReferenceTitle(story.title))
+      .map(({ audioUrl: _audioUrl, ...story }) => story),
   })),
 });
 
@@ -167,13 +165,13 @@ const main = async () => {
   const approvedComparable = JSON.stringify(stableForComparison(approved), null, 2);
 
   if (currentComparable !== approvedComparable) {
-    console.error('Canonical story prose or chapter identity/order changed.');
+    console.error('Canonical narrative story prose or chapter identity/order changed.');
     console.error('Technical learning/media refactors must not update the canonical story baseline.');
     process.exitCode = 1;
     return;
   }
 
-  console.log(`Canonical story identity and prose verified across ${current.books.length} language-level books.`);
+  console.log(`Canonical narrative story identity and prose verified across ${current.books.length} language-level books.`);
 };
 
 await main();
