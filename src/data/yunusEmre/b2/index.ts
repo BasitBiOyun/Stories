@@ -2,25 +2,33 @@ import { BookData, PageData } from '../../../types';
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
 import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
+import { buildB2EvidenceGuides } from '../../b2GoldGuides';
+import { applyValidatedAdvancedParallelLearning } from '../../advancedParallelLearning';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { yunusB2PagesGoldFinalEn, yunusB2PagesGoldFinalAr } from './goldAttribution';
 import {
-  yunusB2TeacherGuideGoldEn,
   yunusB2TeacherGuideMetadataGoldEn,
-  yunusB2SelfStudyGuideGoldEn,
   yunusB2StudentGuideSectionsGoldEn,
   yunusB2StudentGuideTextGoldEn,
   yunusB2StudentGuideMetadataGoldEn,
 } from './gold';
 import {
-  yunusB2TeacherGuideGoldAr,
   yunusB2TeacherGuideMetadataGoldAr,
-  yunusB2SelfStudyGuideGoldAr,
   yunusB2StudentGuideSectionsGoldAr,
   yunusB2StudentGuideTextGoldAr,
   yunusB2StudentGuideMetadataGoldAr,
 } from './goldAr';
 import { yunusEmreB2ReviewedHighlightPairs } from './highlightPairs';
+
+const yunusB2Config = {
+  level: 'B2' as const,
+  storyIds: Array.from({ length: 13 }, (_, index) => index + 1),
+  knowledgeCheckPageId: 15,
+  vocabularyPageId: 16,
+  glossaryPageIds: [17, 18] as [number, number],
+  reviewPageId: 19,
+  finalChallengePageId: 20,
+};
 
 const yunusB2SourceTitleOverridesEn = {
   5: { 'h5-1': 'false retreat', 'h5-2': 'victory at Kösedağ' },
@@ -98,9 +106,9 @@ const yunusB2PagesLockedAr = applyHotspotSourceLock(yunusB2PagesBeforeHotspotSou
 
 const yunusB2HighlightStandard = applyB2HighlightStandard(yunusB2PagesLockedEn, yunusB2PagesLockedAr, {
   storyKey: 'Yunus Emre',
-  storyIds: Array.from({ length: 13 }, (_, index) => index + 1),
-  glossaryPageIds: [17, 18],
-  vocabularyPageId: 16,
+  storyIds: yunusB2Config.storyIds,
+  glossaryPageIds: yunusB2Config.glossaryPageIds,
+  vocabularyPageId: yunusB2Config.vocabularyPageId,
   explicitTargets: resolveB2ReviewedPairs(
     yunusB2PagesLockedEn,
     yunusB2PagesLockedAr,
@@ -110,18 +118,23 @@ const yunusB2HighlightStandard = applyB2HighlightStandard(yunusB2PagesLockedEn, 
 });
 
 export const yunusEmreB2HighlightTargets = yunusB2HighlightStandard.targets;
-const yunusB2PagesFinalEn = yunusB2HighlightStandard.englishPages;
-const yunusB2PagesFinalAr = yunusB2HighlightStandard.arabicPages;
+const yunusB2Parallel = applyValidatedAdvancedParallelLearning({
+  englishPages: yunusB2HighlightStandard.englishPages,
+  arabicPages: yunusB2HighlightStandard.arabicPages,
+  config: yunusB2Config,
+});
+const yunusB2GuidesEn = buildB2EvidenceGuides({ effectivePages: yunusB2Parallel.englishPages, storyIds: yunusB2Config.storyIds, language: 'en' });
+const yunusB2GuidesAr = buildB2EvidenceGuides({ effectivePages: yunusB2Parallel.arabicPages, storyIds: yunusB2Config.storyIds, language: 'ar' });
 
 export const yunusEmreB2BookDataEn: BookData = {
   id: 'yunusEmre-b2-en',
   title: 'Stories of the Prophets: Yunus Emre (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: yunusB2PagesFinalEn,
-  teacherGuide: yunusB2TeacherGuideGoldEn,
+  pages: yunusB2Parallel.englishPages,
+  teacherGuide: yunusB2GuidesEn.teacherGuide,
   teacherGuideMetadata: yunusB2TeacherGuideMetadataGoldEn,
-  selfStudyGuide: yunusB2SelfStudyGuideGoldEn,
+  selfStudyGuide: yunusB2GuidesEn.selfStudyGuide,
   studentGuideSections: yunusB2StudentGuideSectionsGoldEn,
   studentGuideText: yunusB2StudentGuideTextGoldEn,
   studentGuideMetadata: yunusB2StudentGuideMetadataGoldEn,
@@ -132,10 +145,10 @@ export const yunusEmreB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: يونس إمره (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: yunusB2PagesFinalAr,
-  teacherGuide: yunusB2TeacherGuideGoldAr,
+  pages: yunusB2Parallel.arabicPages,
+  teacherGuide: yunusB2GuidesAr.teacherGuide,
   teacherGuideMetadata: yunusB2TeacherGuideMetadataGoldAr,
-  selfStudyGuide: yunusB2SelfStudyGuideGoldAr,
+  selfStudyGuide: yunusB2GuidesAr.selfStudyGuide,
   studentGuideSections: yunusB2StudentGuideSectionsGoldAr,
   studentGuideText: yunusB2StudentGuideTextGoldAr,
   studentGuideMetadata: yunusB2StudentGuideMetadataGoldAr,
