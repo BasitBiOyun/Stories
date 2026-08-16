@@ -1,48 +1,27 @@
 # Architecture
 
-## Objectives
+## Runtime
 
-- Preserve the current interface and reading flow.
-- Keep canonical chapter text and narration immutable.
-- Load only the selected story-level bundle.
-- Add books without adding story-specific React state or Firebase code.
-- Keep the current frontend-only deployment model.
+1. The UI selects a story and CEFR level.
+2. `bookRegistry` dynamically loads that level module.
+3. The book module starts from protected raw EN/AR pages.
+4. Source locks ground hotspots and Word Notes in same-chapter prose.
+5. A reviewed manual Learning Blueprint supplies objectives, evidence, authored assessments and guides.
+6. The level Blueprint system compiles Quick, Knowledge, Vocabulary (where present), Review, Glossary and Final surfaces with EN/AR parity.
+7. Storage manifests resolve published media without mutating canonical book data.
 
-## Runtime flow
+## Content boundary
 
-1. `HomePage` returns a story id and CEFR level.
-2. `useBookBundle` finds one entry in `bookRegistry`.
-3. The registry dynamically imports only that level module.
-4. `storageAssetLoader` resolves optional media from the compatibility manifest.
-5. Resolved media is applied to cloned view models; canonical `BookData` objects are never mutated.
-6. `App.tsx` renders the same existing reader components.
+Canonical story prose, chapter identity/order, approved references, narration and timing data are protected. Exercises, vocabulary support and guides are derived learning material, but every factual or interpretive claim must remain traceable to the relevant chapter.
 
-## Content layers
+## Shared learning system
 
-### Canonical layer
+A2, B1 and B2 use the same Blueprint compiler with level policies in `learningLevelPolicy.ts`. Manual authoring decides what is taught; the engine only validates and places reviewed material.
 
-Protected fields on story pages:
+## Deployment
 
-- page id and order
-- story page type
-- title and subtitle
-- chapter content
-- narration URL references
+The production artifact is a Vite build served by the Node runtime in `deploy/server.mjs` inside Cloud Run. The Docker build runs `npm run validate` before `npm run build`. The preview branch is deployed by Google Cloud Build using `cloudbuild.preview.yaml`.
 
-### Derived learning layer
+## Storage and future integrations
 
-Reviewable and replaceable without touching canonical text:
-
-- exercises and feedback
-- vocabulary definitions and activities
-- Quick Challenges and Final Challenges
-- teacher and self-study guides
-- achievement and summary presentation
-
-## Storage layer
-
-Storage manifests preserve all current folders as compatibility candidates. The resolver tries candidates in order, caches results, and returns chapter-number maps. No Storage migration is required for this refactor.
-
-## Future institutional integration
-
-Progress and identity are deliberately not coupled to Firebase Auth or Firestore. An EBA/e-Devlet adapter can be introduced later without changing the book content model.
+Firebase Storage remains the media source through compatibility manifests. Learner identity/progress is not coupled to the content model, so future institutional adapters can be added without rewriting books.

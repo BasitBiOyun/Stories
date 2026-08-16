@@ -21,17 +21,11 @@ const run = (command, args, options = {}) => {
 
 const vivlio = (input, output) => run('vivliostyle', ['build', input, '--size', 'A4', '--output', output]);
 
-// PUBLICATION_OUT may be a directory created/chowned by the container build.
-// Do not unlink the directory itself: its parent can be root-owned even when
-// the publication directory is writable by the Vivliostyle user.
 mkdirSync(OUTPUT, { recursive: true });
 rmSync(WORK, { recursive: true, force: true });
 rmSync(path.join(OUTPUT, EN_PDF), { force: true });
 rmSync(path.join(OUTPUT, AR_PDF), { force: true });
 mkdirSync(WORK, { recursive: true });
-
-console.log('[Adam A2 static PDFs] Validate learning-source structure');
-run(TSX, ['scripts/validation/validateAdamA2Learning.ts']);
 
 console.log('[Adam A2 static PDFs] Build shared HTML sources');
 run(TSX, ['scripts/pdf-pilot/buildA2FrontMatter.ts']);

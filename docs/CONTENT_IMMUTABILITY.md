@@ -1,28 +1,9 @@
-# Canonical Content Immutability Policy
+# Content Immutability
 
-The story texts, chapter boundaries, chapter order, and published audio files are canonical source material.
+Canonical story prose is protected source material.
 
-## Protected content
+During technical, UI, assessment, guide, highlight or publication work, do not silently rewrite story content, chapter identity/order, approved quotations/references, narration or timing data. Suspected language, historical or theological source errors are reported separately and changed only with explicit approval.
 
-The following must not be edited by architecture, performance, validation, UI, or maintenance work:
+Derived learning material may be replaced or improved, but every factual or interpretive claim must remain grounded in the corresponding chapter and language version.
 
-- Story prose in every language
-- Chapter titles, boundaries, ordering, and page-to-chapter relationships
-- Existing narration audio files and their published media content
-- Direct quotations and source references embedded in canonical story text
-
-## Allowed derived-content work
-
-The following may be reviewed and improved only in dedicated content-quality work:
-
-- Exercises and answer feedback
-- Vocabulary activities and definitions
-- Quick Challenges and Final Challenges
-- Teacher and self-study guide alignment
-- Achievement and summary presentation
-
-Any derived-content change must remain traceable to the unchanged canonical chapter text.
-
-## Automated guardrail
-
-Quality checks must compare protected source files and audio references against an approved baseline. A change to protected content requires an explicit, separately reviewed content-authority decision and must never be bundled into technical refactoring.
+The level Blueprint validators enforce protected story fields and same-chapter evidence/Word Note grounding.

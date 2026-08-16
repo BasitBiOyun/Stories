@@ -20,10 +20,7 @@
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
     "canonical:generate": "tsx scripts/validation/canonicalContent.ts --write",
     "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
-    "diagnose:b2-highlight-pairs": "tsx scripts/validation/diagnoseB2HighlightPairs.ts",
-    "pdf:adam-a2-gold": "node scripts/pdf-pilot/buildAdamA2EnglishGoldMaster.mjs",
-    "pdf:b1-sample": "tsx scripts/pdf-pilot/buildB1ChapterSample.ts",
-    "pdf:b2-sample": "tsx scripts/pdf-pilot/buildB2ChapterSample.ts"
+    "diagnose:b2-highlight-pairs": "tsx scripts/validation/diagnoseB2HighlightPairs.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
