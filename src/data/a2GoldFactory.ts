@@ -42,10 +42,19 @@ export const applyA2GoldPages = ({
   hotspotMap,
 });
 
-// These exports keep old source-map modules loadable while they are flattened.
-// Runtime book indexes never consume them; chapter guides come from blueprints.
-export const buildA2TeacherGuide = (): TeacherGuideSection[] => [];
-export const buildA2SelfStudyGuide = (): TeacherGuideSection[] => [];
+// Dead compatibility exports for the old source-map modules. They intentionally
+// return nothing; runtime Teacher/Self-Study guides come only from blueprints.
+export const buildA2TeacherGuide = (
+  _pages: PageData[],
+  _storyIds: number[],
+  _language: A2GoldLanguage,
+): TeacherGuideSection[] => [];
+
+export const buildA2SelfStudyGuide = (
+  _pages: PageData[],
+  _storyIds: number[],
+  _language: A2GoldLanguage,
+): TeacherGuideSection[] => [];
 
 export {
   buildA2TeacherGuideMetadata,
