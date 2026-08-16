@@ -2,11 +2,6 @@ import assert from 'node:assert/strict';
 import type { BookData, Exercise, PageData } from '../../src/types';
 import { highlightPhraseOccurs } from '../../src/lib/highlightTextMatch';
 
-import { meccaB1Pages } from '../../src/data/mecca/b1/en/pages';
-import { meccaB1PagesAr } from '../../src/data/mecca/b1/ar/pages';
-import { meccaB1BookDataEn, meccaB1BookDataAr } from '../../src/data/mecca/b1';
-import { meccaB1GoldConfig } from '../../src/data/mecca/b1/gold';
-
 import { yunusB1Pages } from '../../src/data/yunusEmre/b1/en/pages';
 import { yunusEmreB1PagesAr } from '../../src/data/yunusEmre/b1/ar/pages';
 import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from '../../src/data/yunusEmre/b1';
@@ -29,10 +24,8 @@ type Case = {
   config: LegacyConfig;
 };
 
-/** Temporary rollout contract for the two B1 books not yet migrated to Blueprint. */
+/** Temporary rollout contract for the last B1 book not yet migrated to Blueprint. */
 const cases: Case[] = [
-  { label: 'Mecca B1 EN', language: 'en', canonical: meccaB1Pages, book: meccaB1BookDataEn, config: meccaB1GoldConfig },
-  { label: 'Mecca B1 AR', language: 'ar', canonical: meccaB1PagesAr, book: meccaB1BookDataAr, config: meccaB1GoldConfig },
   { label: 'Yunus Emre B1 EN', language: 'en', canonical: yunusB1Pages, book: yunusEmreB1BookDataEn, config: yunusEmreB1GoldConfig },
   { label: 'Yunus Emre B1 AR', language: 'ar', canonical: yunusEmreB1PagesAr, book: yunusEmreB1BookDataAr, config: yunusEmreB1GoldConfig },
 ];
@@ -101,4 +94,4 @@ for (const current of cases) {
 
 console.log('B1 legacy rollout: PASS');
 console.log(`- ${cases.length} unmigrated B1 language variants checked`);
-console.log('- Adam, Moses, and Abraham B1 are intentionally excluded and covered by validateB1Blueprints.ts');
+console.log('- Adam, Moses, Abraham, and Mecca B1 are intentionally excluded and covered by validateB1Blueprints.ts');
