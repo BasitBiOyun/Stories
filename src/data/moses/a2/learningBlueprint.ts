@@ -93,8 +93,9 @@ const applyWholeBookStageCoverage = (chapters: LearningBlueprintChapter[]) => ch
   ...chapter,
   assessmentItems: chapter.assessmentItems.filter(item => {
     const stage = item.eligibleStages[0];
+    if (!stage) return false;
     if (stage === 'quick') return true;
-    return STAGE_CHAPTER_PLAN[stage]?.has(chapter.chapterId) ?? false;
+    return STAGE_CHAPTER_PLAN[stage].has(chapter.chapterId);
   }),
 }));
 
