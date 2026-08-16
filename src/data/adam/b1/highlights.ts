@@ -18,7 +18,7 @@ export const adamB1ExplicitHighlightTargets: Record<number, readonly B1ExplicitH
     },
     {
       en: { word: 'curiosity', definition: 'A strong desire to know or learn something.' },
-      ar: { word: 'فضول', definition: 'رَغْبَةٌ قَوِيَّةٌ فِي مَعْرِفَةِ شَيْءٍ أَوْ تَعَلُّمِهِ.' },
+      ar: { word: 'بفضول', definition: 'رَغْبَةٌ قَوِيَّةٌ فِي مَعْرِفَةِ شَيْءٍ أَوْ تَعَلُّمِهِ.' },
     },
     {
       en: { word: 'soil', definition: 'The earth or ground in which plants can grow.' },
