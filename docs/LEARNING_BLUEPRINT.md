@@ -22,6 +22,19 @@ For every chapter the blueprint author selects and writes:
 
 Every assessment item points to one evidence ID from the same chapter.
 
+## Interaction policy
+
+Exercise variety is intentional. A blueprint should use multiple-choice, true/false, matching and fill-blanks where they fit the learning point instead of collapsing assessment into one format.
+
+Tap-Reveal is the exception:
+
+- Tap-Reveal is reserved for Quick Challenge only.
+- A book may contain at most two Tap-Reveal activities.
+- Knowledge Check, Review and Final Challenge must never use Tap-Reveal.
+- Tap-Reveal is a light recall interaction, not a substitute for scored assessment.
+
+The blueprint contract enforces this rule when the authored blueprint is defined.
+
 ## Engine-owned behavior
 
 The shared engine handles:
@@ -47,6 +60,7 @@ A blueprint is rejected when:
 - EN/AR exercise structures or answer logic diverge,
 - stage capacity is insufficient,
 - Quick Challenge coverage is missing,
+- Tap-Reveal appears outside Quick Challenge or appears more than twice in a book,
 - Teacher Guide or Self-Study Guide content is incomplete.
 
 Canonical story prose is never rewritten by the blueprint compiler.
@@ -55,4 +69,4 @@ Canonical story prose is never rewritten by the blueprint compiler.
 
 Books migrate one at a time. Existing books continue through the current Learning System until a reviewed blueprint is supplied to their compatibility entrypoint.
 
-The first real migration target is Adam A2. Its blueprint should be authored chapter by chapter and only then wired into `applyValidatedA2ParallelLearning`.
+Adam A2 is the first migrated bilingual pilot. Its reviewed manual blueprint is wired into `applyValidatedA2ParallelLearning`; later books should follow the same authoring and validation contract.
