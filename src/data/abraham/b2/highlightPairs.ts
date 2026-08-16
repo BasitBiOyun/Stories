@@ -88,11 +88,13 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
     {
       en: 'Miracle',
       ar: 'المعجزة',
+      enDefinition: 'An extraordinary event that occurs by the power and command of Allah.',
       arDefinition: 'أَمْرٌ خَارِقٌ لِلْعَادَةِ يَقَعُ بِقُدْرَةِ اللهِ.',
     },
     {
       en: 'Despotic',
       ar: 'الطُّغَاةَ',
+      enDefinition: 'Using absolute power in a cruel, oppressive, or unjust way.',
       arDefinition: 'حُكَّامٌ مُتَسَلِّطُونَ يَسْتَعْمِلُونَ الْقُوَّةَ وَالظُّلْمَ.',
     },
   ],
@@ -144,11 +146,13 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
     {
       en: 'sacrifice',
       ar: 'تَضْحِيَةِ',
+      enDefinition: 'The act of giving up or offering something valuable in obedience to Allah.',
       arDefinition: 'تَقْدِيمُ شَيْءٍ ذِي قِيمَةٍ طَاعَةً لِلهِ وَابْتِغَاءً لِرِضَاهُ.',
     },
     {
       en: 'Faithful',
       ar: 'مؤْمِنٍ',
+      enDefinition: 'Firm in belief, trust, and obedience to Allah.',
       arDefinition: 'مُصَدِّقٌ بِاللهِ وَمُتَمَسِّكٌ بِإِيمَانِهِ وَطَاعَتِهِ.',
     },
   ],
