@@ -1,4 +1,4 @@
-import { defineLearningBlueprint, type LearningBlueprintChapter } from '../../learningBlueprint';
+import { defineLearningBlueprint, type BlueprintStage, type LearningBlueprintChapter } from '../../learningBlueprint';
 import { L, mc } from './blueprint/helpers';
 import { mosesA2Chapters01to04 } from './blueprint/chapters01to04';
 import { mosesA2Chapters05to08 } from './blueprint/chapters05to08';
@@ -78,16 +78,36 @@ const applyCrossChapterAssessmentDiversity = (chapters: LearningBlueprintChapter
   return chapter;
 });
 
-const chapters = applyCrossChapterAssessmentDiversity([
+const STAGE_CHAPTER_PLAN: Record<Exclude<BlueprintStage, 'quick'>, ReadonlySet<number>> = {
+  knowledge: new Set([1, 3, 5, 7, 10, 12, 14, 15]),
+  review: new Set([2, 4, 6, 8, 9, 11, 13, 16]),
+  final: new Set([1, 2, 4, 6, 8, 9, 11, 12, 15, 16]),
+};
+
+/**
+ * Moses A2 is longer than the ten-chapter pilot. Keep one Quick activity in
+ * every chapter, then explicitly distribute the whole-book stages so early
+ * chapters cannot crowd out the middle and ending of the story.
+ */
+const applyWholeBookStageCoverage = (chapters: LearningBlueprintChapter[]) => chapters.map(chapter => ({
+  ...chapter,
+  assessmentItems: chapter.assessmentItems.filter(item => {
+    const stage = item.eligibleStages[0];
+    if (stage === 'quick') return true;
+    return STAGE_CHAPTER_PLAN[stage]?.has(chapter.chapterId) ?? false;
+  }),
+}));
+
+const chapters = applyWholeBookStageCoverage(applyCrossChapterAssessmentDiversity([
   ...mosesA2Chapters01to04,
   ...mosesA2Chapters05to08,
   ...mosesA2Chapters09to12,
   ...mosesA2Chapters13to16,
-]);
+]));
 
 export const mosesA2LearningBlueprint = defineLearningBlueprint({
   id: 'moses-a2',
-  version: '1.0.1',
+  version: '1.0.2',
   storyId: 'moses',
   level: 'A2',
   status: 'pedagogy-reviewed',
@@ -96,8 +116,8 @@ export const mosesA2LearningBlueprint = defineLearningBlueprint({
     knowledgeCheck: {
       title: { en: 'Knowledge Check: Moses (pbuh)', ar: 'اختبار المعرفة: موسى عليه السلام' },
       content: {
-        en: 'Check eight different ideas from across the story. Each question targets a learning point that is not used in the Quick Challenges, Review, or Final Challenge.',
-        ar: 'تحقق من ثماني أفكار مختلفة من القصة. كل سؤال يقيس نقطة تعلم لا تتكرر في التحديات السريعة أو المراجعة أو التحدي النهائي.',
+        en: 'Check eight different ideas distributed across the whole story. Each question targets a learning point that is not used in the Quick Challenges, Review, or Final Challenge.',
+        ar: 'تحقق من ثماني أفكار موزعة على القصة كلها. كل سؤال يقيس نقطة تعلم لا تتكرر في التحديات السريعة أو المراجعة أو التحدي النهائي.',
       },
     },
     vocabularyChallenge: {
@@ -110,15 +130,15 @@ export const mosesA2LearningBlueprint = defineLearningBlueprint({
     review: {
       title: { en: 'Review Challenge', ar: 'تحدي المراجعة' },
       content: {
-        en: 'Review eight story ideas using questions that are different from the Quick and Knowledge stages.',
-        ar: 'راجع ثماني أفكار من القصة بأسئلة مختلفة عن مرحلتي التحدي السريع واختبار المعرفة.',
+        en: 'Review eight different story ideas from chapters not used in the Knowledge Check.',
+        ar: 'راجع ثماني أفكار مختلفة من فصول لا يستخدمها اختبار المعرفة.',
       },
     },
     finalChallenge: {
       title: { en: 'Final Challenge: Moses (pbuh)', ar: 'التحدي النهائي: موسى عليه السلام' },
       content: {
-        en: 'Complete ten final activities drawn from distinct story evidence. The final uses multiple-choice, true/false, matching, and fill-blanks without Tap-Reveal.',
-        ar: 'أكمل عشرة أنشطة نهائية مبنية على أدلة مختلفة من القصة. يستخدم التحدي النهائي الاختيار من متعدد والصحيح والخطأ والمطابقة وإكمال الفراغات دون أنشطة الكشف بالنقر.',
+        en: 'Complete ten final activities distributed across the beginning, middle, and end of the story. The final uses multiple-choice, true/false, matching, and fill-blanks without Tap-Reveal.',
+        ar: 'أكمل عشرة أنشطة نهائية موزعة على بداية القصة ووسطها ونهايتها. يستخدم التحدي النهائي الاختيار من متعدد والصحيح والخطأ والمطابقة وإكمال الفراغات دون أنشطة الكشف بالنقر.',
       },
     },
     glossary: [
