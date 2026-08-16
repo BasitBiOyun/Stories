@@ -6,12 +6,15 @@ import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
-import { presentMultipleChoice } from '../../lib/exercisePresentation';
+import { highlightPhraseMatches } from '../../lib/highlightTextMatch';
+import { presentMatchingMeanings, presentMultipleChoice } from '../../lib/exercisePresentation';
 
 interface FinalChallengeProps {
   bookData: BookData;
   onComplete?: () => void;
 }
+
+type FinalAnswer = boolean | number | string | Record<string, string> | null;
 
 const getTheme = (bookData: BookData) => {
   const isHistory = bookData.id.toLowerCase().includes('mecca') || bookData.id.toLowerCase().includes('history');
@@ -52,8 +55,27 @@ const getTheme = (bookData: BookData) => {
   };
 };
 
+const isSupportedFinalExercise = (exercise: Exercise) =>
+  exercise.type === 'multiple-choice'
+  || exercise.type === 'true-false'
+  || exercise.type === 'matching'
+  || exercise.type === 'fill-blanks';
+
+const normalizeText = (value: unknown) => String(value ?? '')
+  .trim()
+  .toLocaleLowerCase()
+  .normalize('NFKC')
+  .replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
+  .replace(/ـ/g, '')
+  .replace(/[أإآٱ]/g, 'ا')
+  .replace(/ى/g, 'ي')
+  .replace(/ؤ/g, 'و')
+  .replace(/ئ/g, 'ي')
+  .replace(/ة/g, 'ه')
+  .replace(/\s+/g, ' ');
+
 export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComplete }) => {
-  const { t, formatNumber, isRTL } = useLanguage();
+  const { t, formatNumber, isRTL, language } = useLanguage();
   const { setFinalScore } = useStoryProgress();
   const theme = React.useMemo(() => getTheme(bookData), [bookData]);
 
@@ -61,27 +83,34 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const [questions, setQuestions] = React.useState<Exercise[]>([]);
   const [currentStep, setCurrentStep] = React.useState(0);
   const [score, setScore] = React.useState(0);
-  const [selectedAnswer, setSelectedAnswer] = React.useState<boolean | number | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = React.useState<FinalAnswer>(null);
   const [lastCorrect, setLastCorrect] = React.useState<boolean | null>(null);
+  const [fillDraft, setFillDraft] = React.useState('');
+  const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
+  const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
 
   const dedicatedFinalQuestions = React.useMemo(() => {
     const finalPage = bookData.pages.find((page) => page.type === 'final-challenge');
-    return (finalPage?.exercises ?? []).filter(
-      (exercise) => exercise.type === 'multiple-choice' || exercise.type === 'true-false'
-    );
+    return (finalPage?.exercises ?? []).filter(isSupportedFinalExercise);
   }, [bookData]);
 
   const fallbackQuestions = React.useMemo(() => {
     const collected: Exercise[] = [];
     bookData.pages.forEach((page) => {
       page.exercises?.forEach((exercise) => {
-        if (exercise.type === 'multiple-choice' || exercise.type === 'true-false') {
-          collected.push(exercise);
-        }
+        if (isSupportedFinalExercise(exercise)) collected.push(exercise);
       });
     });
     return collected;
   }, [bookData]);
+
+  const resetQuestionState = () => {
+    setSelectedAnswer(null);
+    setLastCorrect(null);
+    setFillDraft('');
+    setSelectedMatchingLeft(null);
+    setMatchingAssignments({});
+  };
 
   const startChallenge = () => {
     const selected = dedicatedFinalQuestions.length === 10
@@ -91,8 +120,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setQuestions(selected);
     setCurrentStep(0);
     setScore(0);
-    setSelectedAnswer(null);
-    setLastCorrect(null);
+    resetQuestionState();
     setGameState(selected.length ? 'playing' : 'results');
   };
 
@@ -101,10 +129,32 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     () => currentQuestion?.type === 'multiple-choice' ? presentMultipleChoice(currentQuestion) : [],
     [currentQuestion]
   );
+  const presentedMeanings = React.useMemo(
+    () => currentQuestion?.type === 'matching' ? presentMatchingMeanings(currentQuestion) : [],
+    [currentQuestion]
+  );
 
-  const handleAnswer = (answer: boolean | number) => {
+  const isCorrectAnswer = (answer: Exclude<FinalAnswer, null>) => {
+    if (!currentQuestion) return false;
+    if (currentQuestion.type === 'matching') {
+      if (typeof answer !== 'object' || Array.isArray(answer)) return false;
+      return (currentQuestion.matchingPairs ?? []).every((pair) => answer[pair.left] === pair.right);
+    }
+    if (currentQuestion.type === 'fill-blanks') {
+      if (typeof answer !== 'string') return false;
+      const expected = currentQuestion.correctAnswer;
+      const normalizedMatch = normalizeText(answer) === normalizeText(expected);
+      const morphologyMatch = typeof expected === 'string'
+        ? highlightPhraseMatches(answer, expected, language === 'ar' ? 'ar' : 'en')
+        : false;
+      return normalizedMatch || morphologyMatch;
+    }
+    return answer === currentQuestion.correctAnswer;
+  };
+
+  const handleAnswer = (answer: Exclude<FinalAnswer, null>) => {
     if (!currentQuestion || selectedAnswer !== null) return;
-    const correct = answer === currentQuestion.correctAnswer;
+    const correct = isCorrectAnswer(answer);
     setSelectedAnswer(answer);
     setLastCorrect(correct);
 
@@ -119,13 +169,25 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     }
   };
 
+  const selectMeaning = (meaning: string) => {
+    if (!selectedMatchingLeft || selectedAnswer !== null) return;
+    setMatchingAssignments((previous) => {
+      const next = { ...previous };
+      for (const [left, assigned] of Object.entries(next)) {
+        if (assigned === meaning) delete next[left];
+      }
+      next[selectedMatchingLeft] = meaning;
+      return next;
+    });
+    setSelectedMatchingLeft(null);
+  };
+
   const goNext = () => {
     if (!currentQuestion || selectedAnswer === null) return;
 
     if (currentStep < questions.length - 1) {
       setCurrentStep((previous) => previous + 1);
-      setSelectedAnswer(null);
-      setLastCorrect(null);
+      resetQuestionState();
       return;
     }
 
@@ -218,6 +280,182 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
 
   if (!currentQuestion) return null;
 
+  const renderAnswerArea = () => {
+    if (currentQuestion.type === 'true-false') {
+      return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {[true, false].map((value) => {
+            const selected = selectedAnswer === value;
+            const revealCorrect = selectedAnswer !== null && currentQuestion.correctAnswer === value;
+            const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
+            return (
+              <button
+                type="button"
+                key={String(value)}
+                disabled={selectedAnswer !== null}
+                onClick={() => handleAnswer(value)}
+                className={cn(
+                  'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 font-display text-sm sm:text-lg font-black uppercase tracking-widest transition-colors',
+                  revealCorrect
+                    ? 'bg-emerald-500 border-emerald-500 text-white'
+                    : revealWrong
+                      ? 'bg-rose-500 border-rose-500 text-white'
+                      : `bg-white ${theme.border} ${theme.text}`
+                )}
+              >
+                {value ? t('nav.true') : t('nav.false')}
+              </button>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (currentQuestion.type === 'multiple-choice') {
+      return (
+        <div className="grid grid-cols-1 gap-3">
+          {presentedOptions.map((option, displayIndex) => {
+            const selected = selectedAnswer === option.originalIndex;
+            const revealCorrect = selectedAnswer !== null && option.originalIndex === currentQuestion.correctAnswer;
+            const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
+            return (
+              <button
+                type="button"
+                key={`${option.originalIndex}-${option.text}`}
+                disabled={selectedAnswer !== null}
+                onClick={() => handleAnswer(option.originalIndex)}
+                className={cn(
+                  'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 py-3 flex items-center gap-4 text-start transition-colors',
+                  revealCorrect
+                    ? 'bg-emerald-500 border-emerald-500 text-white'
+                    : revealWrong
+                      ? 'bg-rose-500 border-rose-500 text-white'
+                      : `bg-white ${theme.border}`
+                )}
+              >
+                <span className={cn(
+                  'w-9 h-9 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm',
+                  revealCorrect || revealWrong ? 'bg-white/20 text-white' : `${theme.soft} ${theme.subtext}`
+                )}>
+                  {String.fromCharCode(65 + displayIndex)}
+                </span>
+                <span className="font-serif text-sm sm:text-base md:text-lg font-semibold flex-1 leading-snug">{option.text}</span>
+              </button>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (currentQuestion.type === 'fill-blanks') {
+      return (
+        <div className={cn('rounded-2xl border-2 p-4 sm:p-6 space-y-5 bg-white', theme.border)}>
+          <div className="font-serif text-base sm:text-lg leading-loose text-wood">
+            {(currentQuestion.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
+              <React.Fragment key={`${currentQuestion.id}-part-${index}`}>
+                {part}
+                {index < pieces.length - 1 && (
+                  <input
+                    type="text"
+                    disabled={selectedAnswer !== null}
+                    value={fillDraft}
+                    onChange={(event) => setFillDraft(event.target.value)}
+                    className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.border)}
+                  />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+          {selectedAnswer === null && (
+            <button
+              type="button"
+              disabled={!fillDraft.trim()}
+              onClick={() => handleAnswer(fillDraft)}
+              className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
+            >
+              {t('nav.check')}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    if (currentQuestion.type === 'matching') {
+      const pairs = currentQuestion.matchingPairs ?? [];
+      const assignedMeanings = new Set(Object.values(matchingAssignments));
+      const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
+      return (
+        <div className="space-y-5">
+          <p className="font-serif text-sm sm:text-base text-wood/55">{t('nav.matchingInstructions')}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+            <div className="space-y-2.5">
+              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.subtext)}>
+                {language === 'ar' ? 'المفاهيم' : 'Concepts'}
+              </p>
+              {pairs.map((pair) => {
+                const selected = selectedMatchingLeft === pair.left;
+                const assigned = matchingAssignments[pair.left];
+                return (
+                  <button
+                    key={pair.left}
+                    type="button"
+                    disabled={selectedAnswer !== null}
+                    onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
+                    className={cn(
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-bold transition-colors flex items-center justify-between gap-3',
+                      selected ? `${theme.soft} ${theme.text}` : `bg-white ${theme.border}`
+                    )}
+                  >
+                    <span>{pair.left}</span>
+                    {assigned && <span className={cn('text-xs font-medium truncate max-w-[45%]', theme.subtext)}>✓ {assigned}</span>}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="space-y-2.5">
+              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.subtext)}>
+                {language === 'ar' ? 'المعاني' : 'Meanings'}
+              </p>
+              {presentedMeanings.map((meaning) => {
+                const used = assignedMeanings.has(meaning);
+                return (
+                  <button
+                    key={meaning}
+                    type="button"
+                    disabled={selectedAnswer !== null || !selectedMatchingLeft}
+                    onClick={() => selectMeaning(meaning)}
+                    className={cn(
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-medium transition-colors',
+                      used
+                        ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+                        : selectedMatchingLeft
+                          ? `bg-white ${theme.border}`
+                          : 'bg-gray-50 border-gray-100 text-wood/45'
+                    )}
+                  >
+                    {meaning}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {selectedAnswer === null && (
+            <button
+              type="button"
+              disabled={!allAssigned}
+              onClick={() => handleAnswer(matchingAssignments)}
+              className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
+            >
+              {t('nav.matchedThem')}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 py-5 sm:p-8">
       <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8 pb-4">
@@ -248,65 +486,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           {currentQuestion.question || currentQuestion.instructions}
         </motion.h3>
 
-        <div className="grid grid-cols-1 gap-3">
-          {currentQuestion.type === 'true-false' ? (
-            [true, false].map((value) => {
-              const selected = selectedAnswer === value;
-              const revealCorrect = selectedAnswer !== null && currentQuestion.correctAnswer === value;
-              const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
-
-              return (
-                <button
-                  type="button"
-                  key={String(value)}
-                  disabled={selectedAnswer !== null}
-                  onClick={() => handleAnswer(value)}
-                  className={cn(
-                    'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 font-display text-sm sm:text-lg font-black uppercase tracking-widest transition-colors',
-                    revealCorrect
-                      ? 'bg-emerald-500 border-emerald-500 text-white'
-                      : revealWrong
-                        ? 'bg-rose-500 border-rose-500 text-white'
-                        : `bg-white ${theme.border} ${theme.text}`
-                  )}
-                >
-                  {value ? t('nav.true') : t('nav.false')}
-                </button>
-              );
-            })
-          ) : (
-            presentedOptions.map((option, displayIndex) => {
-              const selected = selectedAnswer === option.originalIndex;
-              const revealCorrect = selectedAnswer !== null && option.originalIndex === currentQuestion.correctAnswer;
-              const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
-
-              return (
-                <button
-                  type="button"
-                  key={`${option.originalIndex}-${option.text}`}
-                  disabled={selectedAnswer !== null}
-                  onClick={() => handleAnswer(option.originalIndex)}
-                  className={cn(
-                    'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 py-3 flex items-center gap-4 text-start transition-colors',
-                    revealCorrect
-                      ? 'bg-emerald-500 border-emerald-500 text-white'
-                      : revealWrong
-                        ? 'bg-rose-500 border-rose-500 text-white'
-                        : `bg-white ${theme.border}`
-                  )}
-                >
-                  <span className={cn(
-                    'w-9 h-9 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm',
-                    revealCorrect || revealWrong ? 'bg-white/20 text-white' : `${theme.soft} ${theme.subtext}`
-                  )}>
-                    {String.fromCharCode(65 + displayIndex)}
-                  </span>
-                  <span className="font-serif text-sm sm:text-base md:text-lg font-semibold flex-1 leading-snug">{option.text}</span>
-                </button>
-              );
-            })
-          )}
-        </div>
+        {renderAnswerArea()}
 
         {selectedAnswer !== null && (
           <motion.div
