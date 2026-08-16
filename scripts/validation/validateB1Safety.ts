@@ -2,12 +2,10 @@ import assert from 'node:assert/strict';
 import type { BookData, Exercise } from '../../src/types';
 import { normalizeHighlightText } from '../../src/lib/highlightTextMatch';
 import { normalizeHotspotSourceText } from '../../src/data/storyHotspotSourceLock';
-import { meccaB1BookDataEn, meccaB1BookDataAr } from '../../src/data/mecca/b1';
 import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from '../../src/data/yunusEmre/b1';
 
-/** Temporary safety contract for B1 books not yet migrated to Blueprint. */
+/** Temporary safety contract for the last B1 book not yet migrated to Blueprint. */
 const cases = [
-  [meccaB1BookDataEn, 'en'], [meccaB1BookDataAr, 'ar'],
   [yunusEmreB1BookDataEn, 'en'], [yunusEmreB1BookDataAr, 'ar'],
 ] as const satisfies ReadonlyArray<readonly [BookData, 'en' | 'ar']>;
 
@@ -36,4 +34,4 @@ for (const [book, language] of cases) {
 
 console.log('B1 legacy safety: PASS');
 console.log(`- ${cases.length} unmigrated B1 language variants checked`);
-console.log('- Adam, Moses, and Abraham B1 are intentionally excluded because they are validated by validateB1Blueprints.ts');
+console.log('- Adam, Moses, Abraham, and Mecca B1 are intentionally excluded because they are validated by validateB1Blueprints.ts');
