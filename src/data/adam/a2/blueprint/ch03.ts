@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, guideBundle, matching, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, matching, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter03: LearningBlueprintChapter = {
   chapterId: 3,
@@ -64,9 +64,11 @@ export const adamA2Chapter03: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c3-final', learningPointId: 'adam-a2-c3-sent-away', eligibleStages: ['final'],
-      exercise: tap(
-        L('What did Allah tell Iblis after he continued saying he was right?', 'ماذا قال الله لإبليس بعدما استمر في القول إنه محق؟'),
-        L('Go away; you are far from My love and care.', 'اخرج من هنا؛ إنك بعيد عن محبتي ورحمتي.'),
+      exercise: fill(
+        L('Complete Allah’s command to Iblis from the chapter.', 'أكمل أمر الله لإبليس كما ورد في الفصل.'),
+        L('Go [blank]! You are far from My love and care.', 'اُخْرُجْ مِنْ [blank]! إِنَّكَ بَعِيدٌ جِدًّا عَنْ مَحَبَّتِي وَرَحْمَتِي.'),
+        L('away', 'هُنَا'),
+        L('Allah told Iblis to go away.', 'قال الله لإبليس أن يخرج من هنا.'),
       ),
     },
   ],
