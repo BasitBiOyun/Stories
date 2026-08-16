@@ -32,6 +32,13 @@ import { meccaB1LearningBlueprint } from '../../src/data/mecca/b1/learningBluepr
 import { meccaB1BlueprintConfig } from '../../src/data/mecca/b1/config';
 import { meccaB1HighlightTargets } from '../../src/data/mecca/b1/source';
 
+import { yunusB1Pages } from '../../src/data/yunusEmre/b1/en/pages';
+import { yunusEmreB1PagesAr } from '../../src/data/yunusEmre/b1/ar/pages';
+import { yunusEmreB1BookDataEn, yunusEmreB1BookDataAr } from '../../src/data/yunusEmre/b1';
+import { yunusEmreB1LearningBlueprint } from '../../src/data/yunusEmre/b1/learningBlueprint';
+import { yunusEmreB1BlueprintConfig } from '../../src/data/yunusEmre/b1/config';
+import { yunusEmreB1HighlightTargets } from '../../src/data/yunusEmre/b1/source';
+
 const protectedFields = ['id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'syncPoints', 'timedChunks'] as const;
 const scoredTypes = new Set(['multiple-choice', 'true-false', 'matching', 'fill-blanks']);
 
@@ -55,6 +62,7 @@ type BlueprintCase = {
   bookAr: BookData;
   targets: Record<number, readonly B1CanonicalHighlightTarget[]>;
   tapIds: string[];
+  allowBoldMarkerCleanup?: boolean;
 };
 
 const cases: BlueprintCase[] = [
@@ -78,12 +86,26 @@ const cases: BlueprintCase[] = [
     rawEn: meccaB1Pages, rawAr: meccaB1PagesAr, bookEn: meccaB1BookDataEn, bookAr: meccaB1BookDataAr,
     targets: meccaB1HighlightTargets, tapIds: ['mecca-b1-c10-quick', 'mecca-b1-c5-quick'],
   },
+  {
+    label: 'Yunus Emre B1', storyId: 'yunusEmre', blueprint: yunusEmreB1LearningBlueprint, config: yunusEmreB1BlueprintConfig,
+    rawEn: yunusB1Pages, rawAr: yunusEmreB1PagesAr, bookEn: yunusEmreB1BookDataEn, bookAr: yunusEmreB1BookDataAr,
+    targets: yunusEmreB1HighlightTargets, tapIds: ['yunus-b1-c10-quick', 'yunus-b1-c5-quick'], allowBoldMarkerCleanup: true,
+  },
 ];
 
 const page = (pages: PageData[], id: number, label: string): PageData => {
   const found = pages.find(candidate => candidate.id === id);
   assert.ok(found, `${label}: page ${id} is missing.`);
   return found;
+};
+
+const stripBoldMarkers = <T,>(value: T): T => {
+  if (typeof value === 'string') return value.replaceAll('**', '') as T;
+  if (Array.isArray(value)) return value.map(item => stripBoldMarkers(item)) as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, stripBoldMarkers(item)])) as T;
+  }
+  return value;
 };
 
 const validateExercise = (exercise: Exercise, label: string) => {
@@ -108,14 +130,18 @@ const validateLanguage = (
   outputPages: PageData[],
   language: 'en' | 'ar',
 ) => {
-  const { blueprint, config } = current;
+  const { blueprint, config, allowBoldMarkerCleanup } = current;
   assert.equal(outputPages.length, rawPages.length, `${label}: page count changed.`);
   assert.deepEqual(outputPages.map(item => [item.id, item.type]), rawPages.map(item => [item.id, item.type]), `${label}: page structure changed.`);
 
   for (const id of config.storyIds) {
     const raw = page(rawPages, id, `${label} raw`);
     const output = page(outputPages, id, label);
-    for (const field of protectedFields) assert.deepEqual(output[field], raw[field], `${label} Chapter ${id}: protected field ${field} changed.`);
+    for (const field of protectedFields) {
+      const rawValue = allowBoldMarkerCleanup ? stripBoldMarkers(raw[field]) : raw[field];
+      const outputValue = allowBoldMarkerCleanup ? stripBoldMarkers(output[field]) : output[field];
+      assert.deepEqual(outputValue, rawValue, `${label} Chapter ${id}: protected field ${field} changed.`);
+    }
     assert.equal(output.animatedWords, undefined, `${label} Chapter ${id}: legacy animatedWords remain.`);
     assert.equal(output.exercises?.length, 1, `${label} Chapter ${id}: exactly one Quick Challenge required.`);
     const quick = output.exercises?.[0];
@@ -229,7 +255,8 @@ for (const current of cases) {
 
 console.log('B1 Blueprint Contract: PASS');
 console.log(`- ${cases.length} migrated B1 books validated in both languages`);
+console.log('- all five B1 books use the reviewed Blueprint runtime');
 console.log('- one Quick per chapter; Knowledge 8; Review 8 (4 MC + 4 TF); Final 10 (4 scored interaction types)');
-console.log('- raw story prose and protected story fields unchanged');
+console.log('- raw protected story fields are preserved; Yunus Emre keeps its pre-existing runtime-only ** marker cleanup');
 console.log('- Tap-Reveal restricted to two Quick Challenges per migrated book');
 console.log('- Word Notes, glossaries, Teacher Guide and Self-Study Guide derive from the reviewed Blueprint path');
