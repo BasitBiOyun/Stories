@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, fill, guideBundle, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter07: LearningBlueprintChapter = {
   chapterId: 7,
@@ -62,9 +62,14 @@ export const adamA2Chapter07: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c7-final', learningPointId: 'adam-a2-c7-children', eligibleStages: ['final'],
-      exercise: tap(
+      exercise: mc(
         L('What does the chapter say about Adam and Eve’s family?', 'ماذا يقول الفصل عن أسرة آدم وحواء؟'),
-        L('They had many children.', 'رُزقا أولادًا كثيرين.'),
+        {
+          en: ['They had many children', 'They had no children', 'They had only one son'],
+          ar: ['رُزقا أولادًا كثيرين', 'لم يكن لهما أولاد', 'كان لهما ابن واحد فقط'],
+        },
+        0,
+        L('The chapter says Adam and Eve had many children.', 'يقول الفصل إن آدم وحواء رُزقا أولادًا كثيرين.'),
       ),
     },
   ],
