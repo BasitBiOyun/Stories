@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, fill, guideBundle, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter04: LearningBlueprintChapter = {
   chapterId: 4,
@@ -45,8 +45,13 @@ export const adamA2Chapter04: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c4-knowledge', learningPointId: 'adam-a2-c4-eve', eligibleStages: ['knowledge'],
-      exercise: tap(
+      exercise: mc(
         L('Why did Allah give Adam a wife in the chapter?', 'لماذا خلق الله لآدم زوجة في هذا الفصل؟'),
+        {
+          en: ['Adam felt lonely', 'Adam wanted to leave Paradise', 'The angels asked for a new person'],
+          ar: ['لأن آدم شعر بالوحدة', 'لأن آدم أراد مغادرة الجنة', 'لأن الملائكة طلبت شخصًا جديدًا'],
+        },
+        0,
         L('Adam felt lonely, so Allah gave him a wife named Eve.', 'شعر آدم بالوحدة فخلق الله له زوجة اسمها حواء.'),
       ),
     },
