@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, fill, guideBundle, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter02: LearningBlueprintChapter = {
   chapterId: 2,
@@ -42,9 +42,14 @@ export const adamA2Chapter02: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c2-knowledge', learningPointId: 'adam-a2-c2-respect-command', eligibleStages: ['knowledge'],
-      exercise: tap(
+      exercise: mc(
         L('What did Allah tell the angels to do after Adam was given life?', 'ماذا أمر الله الملائكة أن تفعل بعد نفخ الروح في آدم؟'),
-        L('Show respect to Adam.', 'أن يسجدوا لآدم تكريمًا واحترامًا.'),
+        {
+          en: ['Show respect to Adam', 'Leave Paradise', 'Collect soil from Earth'],
+          ar: ['أن يسجدوا لآدم تكريمًا واحترامًا', 'أن يغادروا الجنة', 'أن يجمعوا التراب من الأرض'],
+        },
+        0,
+        L('Allah told the angels to show respect to Adam.', 'أمر الله الملائكة أن يسجدوا لآدم تكريمًا واحترامًا.'),
       ),
     },
     {
