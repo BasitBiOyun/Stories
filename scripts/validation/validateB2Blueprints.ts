@@ -11,6 +11,13 @@ import { adamB2LearningBlueprint } from '../../src/data/adam/b2/learningBlueprin
 import { adamB2BlueprintConfig } from '../../src/data/adam/b2/config';
 import { adamB2HighlightTargets, adamB2SourcePagesEn, adamB2SourcePagesAr } from '../../src/data/adam/b2/source';
 
+import { mosesB2Pages } from '../../src/data/moses/b2/en/pages';
+import { pages as mosesB2PagesAr } from '../../src/data/moses/b2/ar/pages';
+import { mosesB2BookDataEn, mosesB2BookDataAr } from '../../src/data/moses/b2';
+import { mosesB2LearningBlueprint } from '../../src/data/moses/b2/learningBlueprint';
+import { mosesB2BlueprintConfig } from '../../src/data/moses/b2/config';
+import { mosesB2HighlightTargets, mosesB2SourcePagesEn, mosesB2SourcePagesAr } from '../../src/data/moses/b2/source';
+
 const protectedFields = ['id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'syncPoints', 'timedChunks'] as const;
 const scoredTypes = new Set(['multiple-choice', 'true-false', 'matching', 'fill-blanks']);
 
@@ -52,6 +59,20 @@ const cases: BlueprintCase[] = [
     bookAr: adamB2BookDataAr,
     targets: adamB2HighlightTargets,
     tapIds: ['adam-b2-c3-quick', 'adam-b2-c8-quick'],
+  },
+  {
+    label: 'Moses B2',
+    storyId: 'moses',
+    blueprint: mosesB2LearningBlueprint,
+    config: mosesB2BlueprintConfig,
+    rawEn: mosesB2Pages,
+    rawAr: mosesB2PagesAr,
+    sourceEn: mosesB2SourcePagesEn,
+    sourceAr: mosesB2SourcePagesAr,
+    bookEn: mosesB2BookDataEn,
+    bookAr: mosesB2BookDataAr,
+    targets: mosesB2HighlightTargets,
+    tapIds: ['moses-b2-c3-quick', 'moses-b2-c8-quick'],
   },
 ];
 
@@ -248,21 +269,34 @@ for (const current of cases) {
     assert.equal(enQuick?.type, arQuick?.type, `${label} Chapter ${id}: EN/AR Quick type parity changed.`);
   });
 
-  const treeQuick = blueprint.chapters.find(chapter => chapter.chapterId === 8)?.assessmentItems.find(item => item.id === 'adam-b2-c8-quick');
-  assert.ok(treeQuick, `${label}: Chapter 8 source-limit Quick missing.`);
-  assert.ok(/not describe|not tell|not identify/i.test(`${treeQuick.exercise.en.question} ${treeQuick.exercise.en.explanation}`), `${label}: Chapter 8 English tree source-limit safeguard missing.`);
-  assert.ok(/لا (يصف|يخبر|يحدد)/.test(`${treeQuick.exercise.ar.question} ${treeQuick.exercise.ar.explanation}`), `${label}: Chapter 8 Arabic tree source-limit safeguard missing.`);
+  if (storyId === 'adam') {
+    const treeQuick = blueprint.chapters.find(chapter => chapter.chapterId === 8)?.assessmentItems.find(item => item.id === 'adam-b2-c8-quick');
+    assert.ok(treeQuick, `${label}: Chapter 8 source-limit Quick missing.`);
+    assert.ok(/not describe|not tell|not identify/i.test(`${treeQuick.exercise.en.question} ${treeQuick.exercise.en.explanation}`), `${label}: Chapter 8 English tree source-limit safeguard missing.`);
+    assert.ok(/لا (يصف|يخبر|يحدد)/.test(`${treeQuick.exercise.ar.question} ${treeQuick.exercise.ar.explanation}`), `${label}: Chapter 8 Arabic tree source-limit safeguard missing.`);
 
-  const sourceItem = blueprint.chapters.find(chapter => chapter.chapterId === 12)?.assessmentItems.find(item => item.id === 'adam-b2-c12-knowledge');
-  assert.ok(sourceItem, `${label}: Chapter 12 source-discipline Knowledge item missing.`);
-  assert.ok(/names|details|wisdom|Qur/i.test(`${sourceItem.exercise.en.question} ${sourceItem.exercise.en.explanation}`), `${label}: Chapter 12 English source-discipline safeguard missing.`);
-  assert.ok(/الأسماء|التفاصيل|الحكمة|القرآن/.test(`${sourceItem.exercise.ar.question} ${sourceItem.exercise.ar.explanation}`), `${label}: Chapter 12 Arabic source-discipline safeguard missing.`);
+    const sourceItem = blueprint.chapters.find(chapter => chapter.chapterId === 12)?.assessmentItems.find(item => item.id === 'adam-b2-c12-knowledge');
+    assert.ok(sourceItem, `${label}: Chapter 12 source-discipline Knowledge item missing.`);
+    assert.ok(/names|details|wisdom|Qur/i.test(`${sourceItem.exercise.en.question} ${sourceItem.exercise.en.explanation}`), `${label}: Chapter 12 English source-discipline safeguard missing.`);
+    assert.ok(/الأسماء|التفاصيل|الحكمة|القرآن/.test(`${sourceItem.exercise.ar.question} ${sourceItem.exercise.ar.explanation}`), `${label}: Chapter 12 Arabic source-discipline safeguard missing.`);
+  }
+
+  if (storyId === 'moses') {
+    const chronology = blueprint.chapters.find(chapter => chapter.chapterId === 2)?.assessmentItems.find(item => item.eligibleStages.includes('review'));
+    assert.ok(chronology, `${label}: Chapter 2 historical-source Review item missing.`);
+    assert.ok(/probably|historical caution|unknown|exact date/i.test(`${chronology.exercise.en.question} ${chronology.exercise.en.explanation}`), `${label}: Chapter 2 English historical qualification missing.`);
+    assert.ok(/الأرجح|الحذر|غير معروف|التاريخ الدقيق/.test(`${chronology.exercise.ar.question} ${chronology.exercise.ar.explanation}`), `${label}: Chapter 2 Arabic historical qualification missing.`);
+
+    const savedChapter = page(sourceEn, 4, `${label} EN source`);
+    assert.ok(!(savedChapter.vocabulary ?? []).some(entry => normalizeHighlightText(entry.word, 'en') === 'survive'), `${label}: stale Chapter 4 survive Word Note remains.`);
+    assert.ok(highlightPhraseOccurs(savedChapter.content, 'he was miraculously saved', 'en'), `${label}: Chapter 4 canonical saved wording is missing.`);
+  }
 }
 
 console.log('B2 Blueprint Contract: PASS');
-console.log(`- ${cases.length} migrated B2 book validated in both languages`);
+console.log(`- ${cases.length} migrated B2 books validated in both languages`);
 console.log('- one Quick per chapter; Knowledge 8; Review 8 (4 MC + 4 TF); Final 10 (4 scored interaction types)');
 console.log('- raw story prose and protected story fields unchanged');
 console.log('- Tap-Reveal restricted to two Quick Challenges per migrated book');
 console.log('- B2 Teacher/Self-Study guides enforce evidence vs interpretation and 120–150 word analytical writing');
-console.log('- source-limit safeguards for unsupported details are preserved');
+console.log('- book-specific source-limit and historical-qualification safeguards are preserved');
