@@ -69,7 +69,7 @@ export const mosesA2Chapters05to08: LearningBlueprintChapter[] = [
     evidencePoints: [
       { id: 'moses-a2-c7-escape', focus: 'sequence', claim: L('Moses escaped from the soldiers and left Egypt.', 'هرب موسى من الجنود وغادر مصر.'), evidence: L('Moses escaped from the soldiers. He left Egypt', 'هَرَبَ مُوسَى مِنَ الْجُنُودِ. غَادَرَ مِصْرَ') },
       { id: 'moses-a2-c7-guided', focus: 'theme', claim: L('Allah guided Moses during his journey.', 'هدى الله موسى في رحلته.'), evidence: L('Allah guided him', 'هَدَاهُ اللهُ') },
-      { id: 'moses-a2-c7-midian', focus: 'direct', claim: L('Pharaoh was not the ruler in Midian.', 'لم يكن فرعون حاكمًا في مدين.'), evidence: L('The king of Egypt was not the ruler there', 'لَمْ يَكُنْ فِرْعَوْنُ هُوَ الْحَاكِمَ هُنَاكَ') },
+      { id: 'moses-a2-c7-midian', focus: 'direct', claim: L('Pharaoh was not the ruler in Midian.', 'لم يكن فرعون حاكمًا في مدين.'), evidence: L('The king of Egypt was not the ruler there', 'وَلَمْ يَكُنْ فِرْعَوْنُ هُوَ الْحَاكِمَ هُنَاكَ') },
       { id: 'moses-a2-c7-well', focus: 'sequence', claim: L('Moses found a well with shepherds while two girls sat far from the water.', 'وجد موسى بئرًا ورعاة بينما جلست فتاتان بعيدًا عن الماء.'), evidence: L('Soon, he found a well', 'وَسُرْعَانَ مَا وَجَدَ بِئْرًا') },
     ],
     vocabularyTargets: vocabularyTargetsFor(7),
