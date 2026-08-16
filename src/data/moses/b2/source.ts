@@ -46,6 +46,7 @@ const sourceDescriptionOverridesEn = {
 
 const languageLockedEn = applyB2StoryLanguageLock(preserveSavedWording(mosesB2Pages), {
   language: 'en',
+  blockedHighlights: ['survive'],
   maxUniqueHighlights: 10,
 });
 
