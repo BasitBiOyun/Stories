@@ -4,6 +4,12 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
   1: [
     { en: 'Idolatry', ar: 'يَعْبُدُونَ الْأَصْنَامَ' },
     { en: 'Messenger', ar: 'رَسُولٌ' },
+    {
+      en: 'Allah’s friend',
+      ar: 'خليلُ الله',
+      enDefinition: 'The unique title given to Abraham in the chapter, meaning a beloved and close friend of Allah.',
+      arDefinition: 'لَقَبٌ فَرِيدٌ لِإِبْرَاهِيمَ عَلَيْهِ السَّلَامُ يَدُلُّ عَلَى مَكَانَتِهِ وَقُرْبِهِ مِنَ اللهِ.',
+    },
     { en: 'fundamental figure', ar: 'الشَّخْصِيَّةُ الْأَسَاسِيَّةُ' },
   ],
   4: [
