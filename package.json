@@ -15,7 +15,7 @@
     "lint": "npm run typecheck",
     "validate:a2": "tsx scripts/validation/validateA2Blueprints.ts",
     "validate:b1": "tsx scripts/validation/validateB1Blueprints.ts",
-    "validate:b2": "tsx scripts/validation/validateMosesB2GoldPilot.ts && tsx scripts/validation/validateMosesB2StudentGuide.ts && tsx scripts/validation/validateMosesB2GoldArabic.ts && tsx scripts/validation/validateAdamB2Gold.ts && tsx scripts/validation/validateAdamB2GoldArabic.ts && tsx scripts/validation/validateAbrahamB2Gold.ts && tsx scripts/validation/validateAbrahamB2GoldArabic.ts && tsx scripts/validation/validateMeccaB2Gold.ts && tsx scripts/validation/validateMeccaB2GoldArabic.ts && tsx scripts/validation/validateYunusB2Gold.ts && tsx scripts/validation/validateB2GoldCrossBook.ts",
+    "validate:b2": "tsx scripts/validation/validateB2Blueprints.ts && tsx scripts/validation/validateMosesB2GoldPilot.ts && tsx scripts/validation/validateMosesB2StudentGuide.ts && tsx scripts/validation/validateMosesB2GoldArabic.ts && tsx scripts/validation/validateAbrahamB2Gold.ts && tsx scripts/validation/validateAbrahamB2GoldArabic.ts && tsx scripts/validation/validateMeccaB2Gold.ts && tsx scripts/validation/validateMeccaB2GoldArabic.ts && tsx scripts/validation/validateYunusB2Gold.ts && tsx scripts/validation/validateB2GoldCrossBook.ts",
     "validate": "npm run validate:a2 && npm run validate:b1 && npm run validate:b2 && npm run typecheck",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
     "canonical:generate": "tsx scripts/validation/canonicalContent.ts --write",
