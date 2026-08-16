@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, fill, guideBundle, matching, mc, tap, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, matching, mc, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter08: LearningBlueprintChapter = {
   chapterId: 8,
@@ -44,9 +44,14 @@ export const adamA2Chapter08: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c8-knowledge', learningPointId: 'adam-a2-c8-habil-offering', eligibleStages: ['knowledge'],
-      exercise: tap(
+      exercise: mc(
         L('What did Habil bring as his offering?', 'ماذا قدم هابيل قربانًا؟'),
-        L('His best and healthiest sheep.', 'أفضل وأصح خروف عنده.'),
+        {
+          en: ['His best and healthiest sheep', 'A handful of crops', 'A basket of fruit'],
+          ar: ['أفضل وأصح خروف عنده', 'قبضة من المحصول', 'سلة من الفاكهة'],
+        },
+        0,
+        L('Habil brought his best and healthiest sheep.', 'قدم هابيل أفضل وأصح خروف عنده.'),
       ),
     },
     {
