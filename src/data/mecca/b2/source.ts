@@ -1,9 +1,11 @@
 import { applyB2StoryLanguageLock } from '../../b2StoryLanguageLock';
 import { applyB2HighlightStandard } from '../../b2HighlightStandard';
+import { resolveB2ReviewedPairs } from '../../b2HighlightPairs';
 import { applyHotspotSourceLock } from '../../storyHotspotSourceLock';
 import { meccaB2Pages } from './en/pages';
 import { meccaB2PagesAr } from './ar/pages';
 import { meccaB2BlueprintConfig } from './config';
+import { meccaB2ReviewedHighlightPairs } from './highlightPairs';
 
 const sourceTitleOverridesEn = {
   7: { 'h7-2': 'social class division' },
@@ -36,6 +38,12 @@ const standardized = applyB2HighlightStandard(hotspotLockedEn, hotspotLockedAr, 
   storyKey: 'Mecca',
   storyIds: meccaB2BlueprintConfig.storyIds,
   glossaryPageIds: meccaB2BlueprintConfig.glossaryPageIds,
+  explicitTargets: resolveB2ReviewedPairs(
+    hotspotLockedEn,
+    hotspotLockedAr,
+    'Mecca',
+    meccaB2ReviewedHighlightPairs,
+  ),
 });
 
 export const meccaB2SourcePagesEn = standardized.englishPages;
