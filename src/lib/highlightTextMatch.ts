@@ -20,6 +20,10 @@ export const normalizeHighlightText = (text: string, language: HighlightLanguage
       .replace(/ؤ/g, 'و')
       .replace(/ئ/g, 'ي')
       .replace(/ة/g, 'ه');
+  } else {
+    // Preserve a narrow semantic equivalence used by reviewed evidence phrases:
+    // "did not have any money" and "no money" express the same source fact.
+    value = value.replace(/\bdid not have any\b/g, 'no');
   }
 
   return value
