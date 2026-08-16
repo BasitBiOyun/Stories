@@ -90,7 +90,7 @@ const blueprint = defineLearningBlueprint({
       ],
       vocabularyTargets: [{ id: 'c1-useful-word', en: { word: 'knowledge', definition: 'what a person knows' }, ar: { word: 'العلم', definition: 'ما يعرفه الإنسان' } }],
       assessmentItems: [
-        { id: 'c1-quick', learningPointId: 'c1-names', eligibleStages: ['quick'], exercise: { en: mc('en', 'What did Adam learn?', 'The names', 'A road', 'A palace'), ar: mc('ar', 'ماذا تعلّم آدم؟', 'الأسماء', 'طريقاً', 'قصراً') } },
+        { id: 'c1-quick', learningPointId: 'c1-names', eligibleStages: ['quick'], exercise: { en: tap('en', 'What did Adam learn?', 'The names'), ar: tap('ar', 'ماذا تعلّم آدم؟', 'الأسماء') } },
         { id: 'c1-knowledge', learningPointId: 'c1-angels', eligibleStages: ['knowledge'], exercise: { en: tf('en', 'The angels respected the knowledge.', true), ar: tf('ar', 'احترمت الملائكة العلم.', true) } },
         { id: 'c1-review', learningPointId: 'c1-useful', eligibleStages: ['review'], exercise: { en: mc('en', 'What does useful knowledge help people do?', 'Do good', 'Forget everything', 'Avoid learning'), ar: mc('ar', 'ماذا يساعد العلم النافع الناس على أن يفعلوا؟', 'فعل الخير', 'نسيان كل شيء', 'ترك التعلم') } },
       ],
@@ -107,7 +107,7 @@ const blueprint = defineLearningBlueprint({
       vocabularyTargets: [{ id: 'c2-warning-word', en: { word: 'warned', definition: 'told about a possible danger' }, ar: { word: 'حُذّر', definition: 'نُبّه إلى خطر محتمل' } }],
       assessmentItems: [
         { id: 'c2-quick', learningPointId: 'c2-paradise', eligibleStages: ['quick'], exercise: { en: fill('en', 'Where did Adam live?', 'Adam lived in [blank].', 'Paradise'), ar: fill('ar', 'أين عاش آدم؟', 'عاش آدم في [blank].', 'الجنة') } },
-        { id: 'c2-final', learningPointId: 'c2-warning', eligibleStages: ['final'], exercise: { en: tap('en', 'Who was Adam warned about?', 'Iblis'), ar: tap('ar', 'ممن حُذّر آدم؟', 'إبليس') } },
+        { id: 'c2-final', learningPointId: 'c2-warning', eligibleStages: ['final'], exercise: { en: mc('en', 'Who was Adam warned about?', 'Iblis', 'An angel', 'A farmer'), ar: mc('ar', 'ممن حُذّر آدم؟', 'إبليس', 'مَلَك', 'مزارع') } },
       ],
       teacherGuide: { en: guide('en'), ar: guide('ar') },
       selfStudyGuide: { en: guide('en'), ar: guide('ar') },
@@ -133,14 +133,17 @@ const output = runBlueprintAwareLearningSystem({ englishPages, arabicPages, conf
 const assert = (condition: unknown, message: string) => { if (!condition) throw new Error(`[Blueprint Infrastructure Test] ${message}`); };
 
 assert(output.englishPages.find(item => item.id === 1)?.exercises?.[0]?.id.startsWith('blueprint-'), 'Blueprint Quick Challenge was not compiled.');
+assert(output.englishPages.find(item => item.id === 1)?.exercises?.[0]?.type === 'tap-reveal', 'Quick Challenge should support the limited Tap-Reveal pattern.');
 assert(output.englishPages.find(item => item.id === 3)?.exercises?.length === 1, 'Knowledge Check count is wrong.');
 assert(output.englishPages.find(item => item.id === 4)?.vocabularyPairs?.[0]?.word === 'knowledge', 'Vocabulary Challenge did not use manual targets.');
 assert(output.englishPages.find(item => item.id === 6)?.vocabulary?.some(item => item.word === 'knowledge'), 'Glossary did not use manual vocabulary targets.');
 assert(output.englishPages.find(item => item.id === 5)?.exercises?.[0]?.quizQuestions?.length === 1, 'Review was not compiled from manual questions.');
 assert(output.englishPages.find(item => item.id === 8)?.exercises?.length === 1, 'Final Challenge count is wrong.');
+assert(output.englishPages.find(item => item.id === 8)?.exercises?.every(item => item.type !== 'tap-reveal'), 'Final Challenge must not contain Tap-Reveal.');
 assert(output.englishTeacherGuide[0]?.pedagogy.includes('manually selected evidence'), 'Manual teacher guide was not returned.');
 assert(output.arabicSelfStudyGuide[1]?.discussionPoints.length === 1, 'Arabic self-study guide was not returned.');
 assert(output.englishPages.find(item => item.id === 1)?.content === englishPages[0].content, 'Story prose changed during blueprint compilation.');
 
 console.log('Learning Blueprint infrastructure: PASS');
 console.log('Manual content path: evidence -> authored activity -> engine placement -> runtime pages/guides');
+console.log('Tap-Reveal policy: Quick Challenge only, maximum two per book');
