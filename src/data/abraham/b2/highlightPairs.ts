@@ -9,6 +9,20 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
   13: [
     { en: 'afflict', ar: 'يَمَسَّكَ' },
   ],
+  16: [
+    {
+      en: 'created me',
+      ar: 'خَلَقَنِي',
+      enDefinition: 'Brought me into existence.',
+      arDefinition: 'أَوْجَدَنِي وَخَلَقَنِي.',
+    },
+    {
+      en: 'heals me',
+      ar: 'يَشْفِينِ',
+      enDefinition: 'Restores me to health when I am ill.',
+      arDefinition: 'يَرُدُّ إِلَيَّ الصِّحَّةَ عِنْدَ الْمَرَضِ.',
+    },
+  ],
   21: [
     {
       en: 'Reaching',
