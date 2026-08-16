@@ -24,13 +24,13 @@ export const meccaB2TeacherGuideMetadataBlueprintEn: TeacherGuideMetadata = {
   targetLearners: 'CEFR B2 learners studying the historical, social, economic, and religious setting of Mecca.',
   assessmentEvidence: 'Evidence selection, systems reasoning, cause-effect, comparison, source-grounded interpretation, vocabulary in context, and 120–150 word analytical writing.',
   readingFramework: {
-    before: 'Preview the chapter title, image, and selected Word Notes without giving conclusions in advance.',
+    before: 'Preview the title, image, and selected Word Notes without giving conclusions in advance.',
     during: 'Read first for the main system or argument, then reread for evidence, cause-effect links, contrasts, and source boundaries.',
     after: 'Require an evidence-based explanation before reflection and return learners to the exact paragraph after weak or unsupported answers.',
   },
-  vocabularyApproach: 'Infer social, historical, economic, and religious terms from context, verify them with canonical Word Notes, and reuse them in text-grounded speaking and writing.',
-  grammarApproach: 'Use cause-effect, contrast, concession, reporting verbs, hedging, and evidence language to explain connected social systems precisely.',
-  speakingApproach: 'Ask learners to identify which sentence or event supports each analytical claim.',
+  vocabularyApproach: 'Infer historical, social, economic, and religious terms from context, verify them with canonical Word Notes, and reuse them in text-grounded speaking and writing.',
+  grammarApproach: 'Use cause-effect, contrast, concession, reporting verbs, hedging, and evidence language to explain connected systems precisely.',
+  speakingApproach: 'Require learners to identify the exact sentence or event supporting each analytical claim.',
   writingApproach: 'Use evidence → interpretation → qualification in a 120–150 word analytical paragraph.',
   differentiationNotes: 'Provide relationship maps and evidence frames for support; require two independently explained details from faster learners where available.',
   implementationPlans: {
@@ -40,7 +40,10 @@ export const meccaB2TeacherGuideMetadataBlueprintEn: TeacherGuideMetadata = {
   },
   sensitiveNotes: {
     title: 'Sensitive historical content',
-    text: 'When chapters discuss slavery, discrimination, oppression, boycott, or persecution, focus on systems, dignity, justice, and consequences. Do not amplify suffering beyond what is necessary to understand the chapter.',
+    notes: [
+      'When chapters discuss slavery, discrimination, oppression, boycott, or persecution, focus on systems, dignity, justice, and consequences.',
+      'Do not amplify suffering beyond what is necessary to understand the chapter.',
+    ],
   },
 };
 
@@ -51,11 +54,11 @@ export const meccaB2TeacherGuideMetadataBlueprintAr: TeacherGuideMetadata = {
   targetLearners: 'متعـلمو العربية في مستوى CEFR B2 الذين يدرسون السياق التاريخي والاجتماعي والاقتصادي والديني لمكة.',
   assessmentEvidence: 'اختيار الدليل، تحليل الأنظمة، السبب والنتيجة، المقارنة، التفسير المرتبط بالنص، المفردات في السياق، والكتابة التحليلية من 120–150 كلمة.',
   readingFramework: {
-    before: 'عاين عنوان الفصل والصورة وبعض Word Notes دون تقديم الاستنتاجات مسبقًا.',
+    before: 'عاين العنوان والصورة وبعض Word Notes دون تقديم الاستنتاجات مسبقًا.',
     during: 'اقرأ أولًا لفهم النظام أو الحجة الرئيسة، ثم أعد القراءة للدليل والسبب والنتيجة والمقارنة وحدود المصدر.',
     after: 'اطلب تفسيرًا مدعومًا بالدليل قبل التأمل، وأعد المتعلم إلى الفقرة الدقيقة بعد الإجابة الضعيفة أو غير المدعومة.',
   },
-  vocabularyApproach: 'استنتج المصطلحات الاجتماعية والتاريخية والاقتصادية والدينية من السياق ثم تحقق منها في Word Notes واستخدمها في كلام وكتابة مرتبطين بالنص.',
+  vocabularyApproach: 'استنتج المصطلحات التاريخية والاجتماعية والاقتصادية والدينية من السياق ثم تحقق منها في Word Notes واستخدمها في كلام وكتابة مرتبطين بالنص.',
   grammarApproach: 'استخدم السبب والنتيجة والمقارنة والاستدراك وأفعال القول والتحفظ ولغة الدليل لشرح الأنظمة المترابطة بدقة.',
   speakingApproach: 'اطلب من المتعلم تحديد الجملة أو الحدث الذي يدعم كل ادعاء تحليلي.',
   writingApproach: 'استخدم: دليل ← تفسير ← تقييد في فقرة تحليلية من 120–150 كلمة.',
@@ -67,7 +70,10 @@ export const meccaB2TeacherGuideMetadataBlueprintAr: TeacherGuideMetadata = {
   },
   sensitiveNotes: {
     title: 'محتوى تاريخي حساس',
-    text: 'عند مناقشة الرق والتمييز والظلم والمقاطعة والاضطهاد ركز على البنية والكرامة والعدالة والنتائج، ولا توسع وصف المعاناة أكثر مما يحتاجه فهم الفصل.',
+    notes: [
+      'عند مناقشة الرق والتمييز والظلم والمقاطعة والاضطهاد ركز على البنية والكرامة والعدالة والنتائج.',
+      'لا توسع وصف المعاناة أكثر مما يحتاجه فهم الفصل.',
+    ],
   },
 };
 
@@ -92,17 +98,21 @@ export const meccaB2StudentGuideTextBlueprintEn = `# Mecca B2 Self-Study Guide\n
 export const meccaB2StudentGuideTextBlueprintAr = `# دليل الدراسة الذاتية — مكة B2\n\nادرس هذه الفصول السبعة عشر المعتمدة بالترتيب:\n\n${chapterListAr}\n\nاقرأ أولًا لفهم النظام أو الحجة الرئيسة، ثم أعد القراءة لتحديد الدليل والروابط بين الجغرافيا والتجارة والطبقات والعقيدة والحماية والسلطة. أكمل Quick Challenge اعتمادًا على الفصل نفسه فقط. وفي الفصول الحساسة اشرح الظلم والتفاوت بالقدر اللازم لفهم النص دون تضخيم. في مستوى B2 اكتب 120–150 كلمة واشرح ما الذي يثبته كل دليل. بعد الفصل 17 أكمل المعرفة 8 والمراجعة 8 وقسمي المعجم والنهائي 10.`;
 
 export const meccaB2StudentGuideMetadataBlueprintEn: StudentGuideMetadata = {
-  title: 'Mecca B2 Self-Study Guide — Blueprint', level: 'B2', language: 'English', estimatedStudyTime: '17 chapter sessions plus Knowledge Check, review, and final assessment',
+  title: 'Mecca B2 Self-Study Guide — Blueprint',
+  level: 'B2',
+  language: 'English',
+  estimatedStudyTime: '17 chapter sessions plus Knowledge Check, review, and final assessment',
   whoIsThisFor: 'CEFR B2 learners studying the canonical Mecca unit independently.',
   learningGoals: ['Connect historical and social systems with textual evidence.', 'Analyse cause, contrast, power, inequality, and change.', 'Use B2 vocabulary in context.', 'Write 120–150 word evidence-based analytical responses.'],
-  successCriteria: ['I can support claims with chapter evidence.', 'I can explain relationships rather than list facts.', 'I can discuss sensitive history without sensationalizing it.', 'I can distinguish evidence from my own interpretation.'],
   recommendedUse: ['One chapter per session.', 'Reread after weak or incorrect answers.', 'After Chapter 17 complete Knowledge 8, Review 8, both glossaries, and Final 10.'],
 };
 
 export const meccaB2StudentGuideMetadataBlueprintAr: StudentGuideMetadata = {
-  title: 'دليل الدراسة الذاتية — مكة B2 — Blueprint', level: 'B2', language: 'Arabic', estimatedStudyTime: '17 جلسة فصلية إضافة إلى اختبار المعرفة والمراجعة والتقييم النهائي',
+  title: 'دليل الدراسة الذاتية — مكة B2 — Blueprint',
+  level: 'B2',
+  language: 'Arabic',
+  estimatedStudyTime: '17 جلسة فصلية إضافة إلى اختبار المعرفة والمراجعة والتقييم النهائي',
   whoIsThisFor: 'متعـلمو مستوى CEFR B2 الذين يدرسون وحدة مكة المعتمدة بصورة مستقلة.',
   learningGoals: ['ربط الأنظمة التاريخية والاجتماعية بالدليل النصي.', 'تحليل السبب والمقارنة والسلطة والتفاوت والتغير.', 'استخدام مفردات B2 في السياق.', 'كتابة استجابات تحليلية مدعومة بالدليل من 120–150 كلمة.'],
-  successCriteria: ['أدعم ادعاءاتي بدليل من الفصل.', 'أشرح العلاقات بدل سرد الحقائق.', 'أناقش التاريخ الحساس دون تضخيم.', 'أميز بين الدليل وتفسيري الشخصي.'],
   recommendedUse: ['فصل واحد في كل جلسة.', 'أعد القراءة بعد الإجابة الضعيفة أو الخاطئة.', 'بعد الفصل 17 أكمل المعرفة 8 والمراجعة 8 وقسمي المعجم والنهائي 10.'],
 };
