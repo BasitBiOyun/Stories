@@ -1,17 +1,9 @@
 import { BookData } from '../../../types';
 import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
-import {
-  adamB2StudentGuideTextGoldEn,
-  adamB2StudentGuideSectionsGoldEn,
-  adamB2TeacherGuideMetadataGoldEn,
-  adamB2StudentGuideMetadataGoldEn,
-} from './gold';
-import {
-  adamB2StudentGuideTextGoldAr,
-  adamB2StudentGuideSectionsGoldAr,
-  adamB2TeacherGuideMetadataGoldAr,
-  adamB2StudentGuideMetadataGoldAr,
-} from './goldAr';
+import { adamB2TeacherGuideMetadata } from './en/teacherGuide';
+import { adamB2StudentGuideSections, adamB2StudentGuideText, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
+import { adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { adamB2StudentGuideSectionsAr, adamB2StudentGuideTextAr, adamB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { adamB2LearningBlueprint } from './learningBlueprint';
 import { adamB2BlueprintConfig } from './config';
 import { adamB2HighlightTargets, adamB2SourcePagesAr, adamB2SourcePagesEn } from './source';
@@ -33,10 +25,10 @@ export const adamB2BookDataEn: BookData = {
   pages: adamB2Blueprint.englishPages,
   teacherGuide: adamB2Blueprint.englishTeacherGuide,
   selfStudyGuide: adamB2Blueprint.englishSelfStudyGuide,
-  studentGuideText: adamB2StudentGuideTextGoldEn,
-  studentGuideSections: adamB2StudentGuideSectionsGoldEn,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataGoldEn,
-  studentGuideMetadata: adamB2StudentGuideMetadataGoldEn,
+  studentGuideText: adamB2StudentGuideText,
+  studentGuideSections: adamB2StudentGuideSections,
+  teacherGuideMetadata: adamB2TeacherGuideMetadata,
+  studentGuideMetadata: adamB2StudentGuideMetadata,
 };
 
 export const adamB2BookDataAr: BookData = {
@@ -47,8 +39,8 @@ export const adamB2BookDataAr: BookData = {
   pages: adamB2Blueprint.arabicPages,
   teacherGuide: adamB2Blueprint.arabicTeacherGuide,
   selfStudyGuide: adamB2Blueprint.arabicSelfStudyGuide,
-  studentGuideText: adamB2StudentGuideTextGoldAr,
-  studentGuideSections: adamB2StudentGuideSectionsGoldAr,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataGoldAr,
-  studentGuideMetadata: adamB2StudentGuideMetadataGoldAr,
+  studentGuideText: adamB2StudentGuideTextAr,
+  studentGuideSections: adamB2StudentGuideSectionsAr,
+  teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
+  studentGuideMetadata: adamB2StudentGuideMetadataAr,
 };
