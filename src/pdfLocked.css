@@ -1,0 +1,22 @@
+button[data-pdf-locked="true"] {
+  opacity: 0.48 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  filter: grayscale(0.45);
+  position: relative;
+}
+
+button[data-pdf-locked="true"]::after {
+  content: attr(data-pdf-lock-label);
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 0.35rem;
+  padding: 0.1rem 0.38rem;
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  opacity: 0.9;
+}

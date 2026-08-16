@@ -1,6 +1,6 @@
 # Stories — Interactive Language and Values Library
 
-Stories is an English/Arabic A2, B1 and B2 interactive educational library for classroom and self-study use. It includes narration, visuals, Word Notes, exercises, Teacher Guides, Self-Study Guides and publication output.
+Stories is an English/Arabic A2, B1 and B2 interactive educational library for classroom and self-study use. It includes narration, visuals, Word Notes, exercises, Teacher Guides and Self-Study Guides.
 
 ## Canonical content rule
 
@@ -30,8 +30,7 @@ Level gates are also available separately as `validate:a2`, `validate:b1` and `v
 - `src/`: production application and book data
 - `src/data/*Blueprint*`: shared learning architecture
 - `scripts/validation/`: active validation and diagnostics
-- `scripts/pdf-pilot/`: active Adam A2 runtime publication pipeline; the historical folder name remains for compatibility
-- `docs/`: current architecture, authoring, quality and print standards
+- `docs/`: current architecture, authoring and quality standards
 - `deploy/`: Cloud Run runtime server
 - `Dockerfile`: validated production image build
 - `cloudbuild.preview.yaml`: `preview` branch Cloud Build -> Cloud Run deployment
@@ -45,6 +44,10 @@ Level gates are also available separately as `validate:a2`, `validate:b1` and `v
 5. Add the book to the appropriate level Blueprint validator.
 6. Run `npm run validate` and `npm run build`.
 
+## PDF status
+
+The previous PDF generation/publication implementation has been retired. PDF download controls remain visible in the application but are temporarily locked until a new publication system is designed from scratch.
+
 ## Preview deployment
 
-The `preview` branch is connected to Cloud Build through `cloudbuild.preview.yaml`. The Docker image runs the full repository validation gate before the Vite production build, then builds the currently embedded Adam A2 static student PDFs and deploys the resulting image to the `stories-preview` Cloud Run service.
+The `preview` branch is connected to Cloud Build through `cloudbuild.preview.yaml`. The Docker image runs the full repository validation gate before the Vite production build and deploys the resulting runtime image to the `stories-preview` Cloud Run service.
