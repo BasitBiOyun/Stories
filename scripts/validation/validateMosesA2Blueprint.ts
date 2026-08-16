@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import type { Exercise, PageData, QuizQuestion } from '../../src/types';
+import type { BlueprintStage } from '../../src/data/learningBlueprint';
 import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../src/data/moses/a2';
 import { mosesA2LearningBlueprint } from '../../src/data/moses/a2/learningBlueprint';
 import {
@@ -10,6 +11,12 @@ import {
 
 const storyIds = Array.from({ length: 16 }, (_, index) => index + 1);
 const MOSES_A2_CH11_AUDIO = 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F10_Chapter_11_The_Signs_of_Allah.mp3?alt=media&token=5ae1efb5-a3ed-4cd0-b6df-e0486199c964';
+const expectedStageChapters: Record<BlueprintStage, number[]> = {
+  quick: storyIds,
+  knowledge: [1, 3, 5, 7, 10, 12, 14, 15],
+  review: [2, 4, 6, 8, 9, 11, 13, 16],
+  final: [1, 2, 4, 6, 8, 9, 11, 12, 15, 16],
+};
 
 const page = (pages: PageData[], id: number) => {
   const value = pages.find(candidate => candidate.id === id);
@@ -48,14 +55,10 @@ const authoredQuestionsAr = new Set<string>();
 const tapItems: string[] = [];
 
 for (const chapter of mosesA2LearningBlueprint.chapters) {
-  assert.equal(chapter.evidencePoints.length, 4, `Chapter ${chapter.chapterId}: expected four manual learning points.`);
-  assert.equal(chapter.assessmentItems.length, 4, `Chapter ${chapter.chapterId}: expected four manual assessment items.`);
-  assert.deepEqual(
-    chapter.assessmentItems.map(item => item.eligibleStages[0]).sort(),
-    ['final', 'knowledge', 'quick', 'review'],
-    `Chapter ${chapter.chapterId}: must have one exclusive item for each stage.`,
-  );
+  assert.equal(chapter.evidencePoints.length, 4, `Chapter ${chapter.chapterId}: expected four manually selected learning points.`);
+  assert.ok(chapter.assessmentItems.length >= 2 && chapter.assessmentItems.length <= 3, `Chapter ${chapter.chapterId}: expected Quick plus one or two whole-book assessments.`);
   assert.ok(chapter.assessmentItems.every(item => item.eligibleStages.length === 1), `Chapter ${chapter.chapterId}: items must be stage-exclusive.`);
+  assert.equal(chapter.assessmentItems.filter(item => item.eligibleStages[0] === 'quick').length, 1, `Chapter ${chapter.chapterId}: exactly one Quick Challenge is required.`);
 
   const localEvidence = new Set(chapter.evidencePoints.map(point => point.id));
   assert.equal(localEvidence.size, 4, `Chapter ${chapter.chapterId}: learning points must be unique.`);
@@ -80,9 +83,19 @@ for (const chapter of mosesA2LearningBlueprint.chapters) {
   });
 }
 
-assert.equal(allEvidenceIds.size, 64, 'Moses A2 blueprint must contain 64 distinct learning points.');
-assert.equal(allAssessmentIds.size, 64, 'Moses A2 blueprint must contain 64 distinct assessment items.');
+assert.equal(allEvidenceIds.size, 64, 'Moses A2 blueprint must contain 64 distinct manually selected learning points.');
+assert.equal(allAssessmentIds.size, 42, 'Moses A2 should author exactly the 42 activities used at runtime.');
+assert.equal(authoredQuestionsEn.size, 42, 'English authored assessment questions must all be distinct.');
+assert.equal(authoredQuestionsAr.size, 42, 'Arabic authored assessment questions must all be distinct.');
 assert.deepEqual(tapItems.sort(), ['moses-a2-c10-quick', 'moses-a2-c3-quick'], 'Moses A2 must contain exactly two Quick-only Tap-Reveal activities.');
+
+for (const stage of ['quick', 'knowledge', 'review', 'final'] as BlueprintStage[]) {
+  const actual = mosesA2LearningBlueprint.chapters
+    .filter(chapter => chapter.assessmentItems.some(item => item.eligibleStages[0] === stage))
+    .map(chapter => chapter.chapterId);
+  assert.deepEqual(actual, expectedStageChapters[stage], `${stage}: chapter coverage differs from the reviewed whole-book plan.`);
+}
+assert.equal(new Set([...expectedStageChapters.knowledge, ...expectedStageChapters.review]).size, 16, 'Knowledge and Review together must cover all sixteen chapters.');
 
 for (const [label, book, source] of [
   ['EN', mosesA2BookDataEn, mosesA2PagesFinalEn],
@@ -189,8 +202,10 @@ for (const type of ['multiple-choice', 'true-false', 'matching', 'fill-blanks', 
 }
 
 console.log('Moses A2 manual bilingual blueprint: PASS');
-console.log('- 16 chapters / 64 distinct manual learning points / 64 stage-exclusive authored activities');
+console.log('- 16 chapters / 64 distinct manual learning points / 42 stage-exclusive authored assessments');
 console.log('- 42 non-repeated runtime assessment questions: 16 Quick + 8 Knowledge + 8 Review + 10 Final');
+console.log('- Knowledge and Review use complementary chapter sets and together cover all 16 chapters');
+console.log('- Final Challenge is distributed across the beginning, middle, and end of the story');
 console.log('- exactly two Tap-Reveal activities, both Quick-only; Final has no Tap-Reveal');
 console.log('- English/Arabic structures and answer logic are parallel while each language remains grounded in its own text');
 console.log('- reviewed Word Notes feed chapter vocabulary, Vocabulary Challenge, and full two-part glossary');
