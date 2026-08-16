@@ -1,62 +1,50 @@
 # Stories — Interactive Language and Values Library
 
-Stories is a frontend-first interactive educational library prepared for classroom and self-study use. It presents graded English and Arabic storybooks at A2, B1, and B2 levels with narration, visuals, vocabulary support, exercises, teacher guides, self-study guides, PDF export, and achievement feedback.
+Stories is an English/Arabic A2, B1 and B2 interactive educational library for classroom and self-study use. It includes narration, visuals, Word Notes, exercises, Teacher Guides, Self-Study Guides and publication output.
 
-The current delivery model does not require learner accounts or a database. Firebase Storage is used only for published media assets. Future institutional integrations such as EBA or e-Devlet are intentionally outside the current architecture.
+## Canonical content rule
 
-## Non-negotiable content rule
+Story prose, chapter identity/order, approved quotations/references, narration and timing data are protected source material. Technical or learning-system work must not silently rewrite them. See `docs/CONTENT_IMMUTABILITY.md`.
 
-Canonical story text, chapter titles and boundaries, chapter order, and published narration audio are protected. Technical refactors must not change them. Exercises, vocabulary activities, Quick Challenges, Final Challenges, guide alignment, and achievement presentation are derived learning materials and are reviewed separately.
+## Learning architecture
 
-See [`docs/CONTENT_IMMUTABILITY.md`](docs/CONTENT_IMMUTABILITY.md).
+All current story-level books use the same reviewed pipeline:
 
-## Requirements
+`raw story pages -> source locks -> manual Learning Blueprint -> shared Blueprint compiler -> runtime pages/guides`
 
-- Node.js 22
-- npm 10+
-- Access to the configured Firebase Storage project for media loading
+The Blueprint owns objectives, evidence, vocabulary targets, authored assessment items and guide pedagogy. The shared engine owns placement, counts, EN/AR parity and structural validation.
 
 ## Commands
 
 ```bash
 npm ci
 npm run dev
-npm run typecheck
 npm run validate
 npm run build
-npm run quality
 ```
 
-`npm run quality` is the single local gate used by the GitHub workflow. It verifies canonical content, content structure, guide structure, TypeScript, and the production build.
+Level gates are also available separately as `validate:a2`, `validate:b1` and `validate:b2`.
 
-## Architecture
+## Repository
 
-```text
-src/
-  core/
-    content/          Registry, contracts, exercise standards
-    storage/          Firebase Storage manifests and resolver
-  hooks/              Generic book-loading orchestration
-  data/               Canonical and derived book data
-  components/         Existing user-facing components
-scripts/
-  validation/         Automated content and guide checks
-docs/                 Authoring and architecture documentation
-```
+- `src/`: production application and book data
+- `src/data/*Blueprint*`: shared learning architecture
+- `scripts/validation/`: active validation and diagnostics
+- `scripts/pdf-pilot/`: active Adam A2 runtime publication pipeline; the historical folder name remains for compatibility
+- `docs/`: current architecture, authoring, quality and print standards
+- `deploy/`: Cloud Run runtime server
+- `Dockerfile`: validated production image build
+- `cloudbuild.preview.yaml`: `preview` branch Cloud Build -> Cloud Run deployment
 
-Each story-level module is loaded dynamically through the book registry. The application no longer needs story-specific imports, state variables, or Firebase fetch functions in `App.tsx`.
+## Adding a book
 
-## Adding a future book
+1. Add approved raw EN/AR story pages without rewriting canonical prose.
+2. Add source-lock/highlight configuration.
+3. Author a manual A2/B1/B2 Learning Blueprint from the actual story evidence.
+4. Register the book and media paths.
+5. Add the book to the appropriate level Blueprint validator.
+6. Run `npm run validate` and `npm run build`.
 
-1. Add the story pages, exercises, teacher guide, and self-study guide under `src/data/<story>/<level>/<language>/`.
-2. Keep the supplied chapter text exactly as approved.
-3. Add one lazy registry entry in `src/core/content/bookRegistry.ts`.
-4. Add existing Storage folder candidates in `src/core/storage/storageManifests.ts`.
-5. Run `npm run quality`.
-6. Submit exercise and guide quality changes separately from canonical text ingestion.
+## Preview deployment
 
-Detailed instructions are in [`docs/CONTENT_AUTHORING.md`](docs/CONTENT_AUTHORING.md).
-
-## Deployment
-
-The app is a Vite static frontend. No server process is required for the current version. Firebase web configuration is public client configuration; access control for media is governed by Firebase rules and project settings rather than secrecy of the client API key.
+The `preview` branch is connected to Cloud Build through `cloudbuild.preview.yaml`. The Docker image runs the full repository validation gate before the Vite production build, then builds the currently embedded Adam A2 static student PDFs and deploys the resulting image to the `stories-preview` Cloud Run service.

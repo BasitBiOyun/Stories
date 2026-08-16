@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
+RUN npm run validate && npm run build
 
 FROM ghcr.io/vivliostyle/cli:11.1.0 AS publication-build
 USER root
@@ -12,7 +12,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 WORKDIR /source
 ENTRYPOINT []
-RUN mkdir -p /app/publications /source/src/data /source/src/lib /source/scripts/validation /source/public
+RUN mkdir -p /app/publications /source/src/data /source/src/lib /source/public
 COPY --from=app-build /app/node_modules /source/node_modules
 COPY --from=app-build /app/package.json /source/package.json
 
@@ -24,7 +24,6 @@ COPY --from=app-build /app/src/lib/highlightTextMatch.ts /source/src/lib/highlig
 COPY --from=app-build /app/src/data/*.ts /source/src/data/
 COPY --from=app-build /app/src/data/adam /source/src/data/adam
 COPY --from=app-build /app/scripts/pdf-pilot /source/scripts/pdf-pilot
-COPY --from=app-build /app/scripts/validation/validateAdamA2Learning.ts /source/scripts/validation/validateAdamA2Learning.ts
 COPY --from=app-build /app/public/Arakom-Regular.ttf /source/public/Arakom-Regular.ttf
 COPY --from=app-build /app/public/Arakom-Bold.ttf /source/public/Arakom-Bold.ttf
 

@@ -1,59 +1,33 @@
 # Quality Checks
 
-One command runs the complete local structural gate:
+The repository-wide source gate is:
 
 ```bash
-npm run quality
+npm run validate
 ```
 
-## Canonical validation
+It runs the complete A2, B1 and B2 Blueprint validators followed by TypeScript typecheck.
 
-Hashes and identities of story pages are compared with `scripts/validation/canonical-baseline.json`. Technical work fails when story text, chapter identity/order, or narration references change.
+## Level validators
 
-## Content validation
+- `npm run validate:a2` — all five A2 books in EN/AR
+- `npm run validate:b1` — all five B1 books in EN/AR
+- `npm run validate:b2` — all five B2 books in EN/AR
 
-Checks include:
+The level validators enforce chapter counts, source protection, same-chapter evidence, Blueprint-owned Word Notes and Quick Challenges, stage counts, duplicate-learning-point guards, Tap-Reveal policy, EN/AR parity, guide timing/content and book-specific safeguards.
 
-- duplicate registry entries
-- missing or duplicate page ids
-- missing titles and invalid content types
-- invalid hotspot coordinates
-- duplicate exercise ids
-- missing answers or feedback
-- English/Arabic story-page alignment warnings
-- level-specific Final Challenge target warnings
+## Build
 
-## Guide validation
+`npm run build` creates the Vite production bundle. `npm run validate:bundle` is available after a build for the initial JavaScript budget check.
 
-Checks include:
+The Docker image runs `npm run validate && npm run build` before producing the runtime image. A failing Blueprint validator or typecheck therefore blocks Cloud Run deployment.
 
-- missing chapter labels
-- duplicate labels
-- missing objectives, lesson plans, or discussion prompts
-- guide/story page count differences
-- level metadata mismatches
+## Preview CI/CD
 
-Guide mismatches are initially reported as warnings so existing books continue to build. They will be resolved during the dedicated derived-content quality phase.
+There is no GitHub Actions quality workflow. Preview deployment is handled by the external Google Cloud Build trigger for the `preview` branch using `cloudbuild.preview.yaml`. Cloud Build builds the Docker image, pushes it to Artifact Registry and deploys `stories-preview` to Cloud Run.
 
-## Browser regression validation
+## Other active diagnostics
 
-The single GitHub workflow also runs the production build in Chromium and checks:
-
-- password gate behavior
-- all 15 story and CEFR-level combinations
-- English and Arabic switching
-- forward and backward page navigation
-- first-page narration availability and media response
-- existing standalone exercise pages
-- book PDF generation
-- teacher and self-study guide overlays and PDFs
-- mobile reader navigation
-- pixel comparison against the current `main` interface
-
-Books that do not yet contain a standalone exercise page are reported as derived-content warnings rather than technical runtime failures. The regression harness closes the contents overlay and continues with PDF and remaining checks. Those gaps belong to the later educational-quality phase.
-
-Screenshots, pixel diffs, and the machine-readable runtime report are retained as a GitHub Actions artifact for 14 days after each workflow run.
-
-## CI policy
-
-The repository uses one workflow file: `.github/workflows/quality.yml`. It runs installation, production dependency audit, canonical validation, content validation, guide validation, typecheck, production build, bundle budget, runtime checks, and visual regression evidence generation.
+- `npm run audit:media`
+- `npm run diagnose:b2-highlight-pairs`
+- `npm run canonical:generate` only when intentionally refreshing the canonical baseline
