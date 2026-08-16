@@ -1,9 +1,14 @@
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
+import {
+  buildA2StudentGuideMetadata,
+  buildA2StudentGuideSections,
+  buildA2StudentGuideText,
+  buildA2TeacherGuideMetadata,
+} from '../../a2BookSupport';
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
-import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
 import { mosesA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import { mosesA2GoldConfig, mosesA2PagesGoldAr as basePagesAr, mosesA2PagesGoldEn as basePagesEn } from './gold';
-import { buildA2SelfStudyGuide, buildA2StudentGuideMetadata, buildA2StudentGuideSections, buildA2StudentGuideText, buildA2TeacherGuide, buildA2TeacherGuideMetadata } from '../../a2GoldFactory';
 
 type VocabularyReplacement = { word: string; definition?: string };
 type VocabularyOverrides = Record<number, Record<string, VocabularyReplacement>>;
@@ -112,8 +117,18 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   },
 });
 
-const vocabularyGoldEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'en' });
-const vocabularyGoldAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: mosesA2GoldConfig.storyIds, vocabularyPageId: 18, language: 'ar' });
+const vocabularyGoldEn = applyA2VocabularyGold({
+  pages: correctedBasePagesEn,
+  storyIds: mosesA2GoldConfig.storyIds,
+  vocabularyPageId: mosesA2GoldConfig.vocabularyPageId,
+  language: 'en',
+});
+const vocabularyGoldAr = applyA2VocabularyGold({
+  pages: correctedBasePagesAr,
+  storyIds: mosesA2GoldConfig.storyIds,
+  vocabularyPageId: mosesA2GoldConfig.vocabularyPageId,
+  language: 'ar',
+});
 
 export const mosesA2HighlightConfig: A2HighlightStandardConfig = {
   storyKey: 'Moses',
@@ -252,10 +267,6 @@ export const mosesA2HighlightTargets = standardized.targets;
 export const mosesA2PagesFinalEn = standardized.englishPages;
 export const mosesA2PagesFinalAr = standardized.arabicPages;
 
-export const mosesA2TeacherGuideFinalEn = buildA2TeacherGuide(mosesA2PagesFinalEn, mosesA2GoldConfig.storyIds, 'en');
-export const mosesA2TeacherGuideFinalAr = buildA2TeacherGuide(mosesA2PagesFinalAr, mosesA2GoldConfig.storyIds, 'ar');
-export const mosesA2SelfStudyGuideFinalEn = buildA2SelfStudyGuide(mosesA2PagesFinalEn, mosesA2GoldConfig.storyIds, 'en');
-export const mosesA2SelfStudyGuideFinalAr = buildA2SelfStudyGuide(mosesA2PagesFinalAr, mosesA2GoldConfig.storyIds, 'ar');
 export const mosesA2TeacherGuideMetadataFinalEn = buildA2TeacherGuideMetadata('Prophet Moses', mosesA2GoldConfig.storyIds.length, 'en');
 export const mosesA2TeacherGuideMetadataFinalAr = buildA2TeacherGuideMetadata('قصة النبي موسى', mosesA2GoldConfig.storyIds.length, 'ar');
 export const mosesA2StudentGuideSectionsFinalEn = buildA2StudentGuideSections('en');
