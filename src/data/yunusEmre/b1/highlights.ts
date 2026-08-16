@@ -107,4 +107,26 @@ export const yunusEmreB1ExplicitHighlightTargets: Record<number, readonly B1Expl
       ar: { word: 'يَسْتَعِدَّ لِلرَّحِيلِ', definition: 'أَنْ يَبْدَأَ الِاسْتِعْدَادَ لِرِحْلَةٍ أَوْ مُغَادَرَةٍ.' },
     },
   ],
+  12: [
+    {
+      en: { word: 'morality', definition: 'Good behavior and right actions.' },
+      ar: { word: 'الْأَخْلاقُ', definition: 'مَجْمُوعَةُ السُّلوكِ الْحَسَنِ وَالْأَفْعالِ الصَّحِيحَةِ.' },
+    },
+    {
+      en: { word: 'honest', definition: 'Truthful and fair.' },
+      ar: { word: 'الصّادِقَةِ', definition: 'الَّتي تَتَّصِفُ بِالْحَقِّ وَالْعَدْلِ.' },
+    },
+    {
+      en: { word: 'gossiper', definition: 'A person who talks about others badly or unnecessarily.' },
+      ar: { word: 'النَّميمَةِ', definition: 'شَخْصٌ يَتَحَدَّثُ عَنِ الْآخَرِينَ بِسُوءٍ أَوْ بِدُونِ ضَرُورَةٍ.' },
+    },
+    {
+      en: { word: 'trust in Allah', definition: 'Relying on Allah’s plan and guidance.' },
+      ar: { word: 'التَّوَكُّلِ عَلى اللهِ', definition: 'الِاعْتِمادُ عَلى خُطَّةِ اللهِ وَهِدايَتِهِ.' },
+    },
+    {
+      en: { word: 'greed', definition: 'An intense and selfish desire for wealth or power.' },
+      ar: { word: 'الطَّمَعِ', definition: 'رَغْبَةٌ قَوِيَّةٌ وَأَنانِيَّةٌ في الْحُصولِ عَلى الْمَالِ أَوِ السُّلْطَةِ.' },
+    },
+  ],
 };
