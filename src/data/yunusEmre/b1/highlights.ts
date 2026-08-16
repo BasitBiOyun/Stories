@@ -27,6 +27,28 @@ export const yunusEmreB1ExplicitHighlightTargets: Record<number, readonly B1Expl
       ar: { word: 'اسْتَوْلَى', definition: 'سَيْطَرَ عَلَى مَكَانٍ بِالْقُوَّةِ.' },
     },
   ],
+  7: [
+    {
+      en: { word: 'trained', definition: 'Taught or prepared someone.' },
+      ar: { word: 'دَرَّبَ', definition: 'عَلَّمَ وَأَعَدَّ شَخْصًا لِإِتْقَانِ عَمَلٍ أَوْ مَعْرِفَةٍ.' },
+    },
+    {
+      en: { word: 'nomads', definition: 'People who move from place to place.' },
+      ar: { word: 'الْبَدْوِ', definition: 'أُنَاسٌ يَنْتَقِلُونَ مِنْ مَكَانٍ إِلَى آخَرَ لِلْعَيْشِ.' },
+    },
+    {
+      en: { word: 'respond', definition: 'To answer or react.' },
+      ar: { word: 'يَسْتَجِيبَ', definition: 'يُجِيبُ أَوْ يَتَفَاعَلُ مَعَ الْأَحْدَاثِ.' },
+    },
+    {
+      en: { word: 'shaykhs', definition: 'Spiritual teachers or leaders in Sûfîsm.' },
+      ar: { word: 'الشُّيُوخُ', definition: 'مُرَبُّونَ أَوْ قَادَةٌ رُوحِيُّونَ فِي التَّصَوُّفِ.' },
+    },
+    {
+      en: { word: 'Prophet’s Sunnah', definition: 'The sayings, actions, and approvals of the Prophet Muhammad.' },
+      ar: { word: 'سُنَّةِ النَّبِيِّ', definition: 'أَقْوَالُ النَّبِيِّ مُحَمَّدٍ وَأَفْعَالُهُ وَتَقْرِيرَاتُهُ.' },
+    },
+  ],
   8: [
     {
       en: { word: 'vivid', definition: 'Very clear, strong, and easy to imagine or feel.' },
