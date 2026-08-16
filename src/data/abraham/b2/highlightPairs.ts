@@ -1,10 +1,42 @@
 import type { B2ReviewedPairSpecs } from '../../b2HighlightPairs';
 
 export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
+  1: [
+    { en: 'Idolatry', ar: 'يَعْبُدُونَ الْأَصْنَامَ' },
+    { en: 'Messenger', ar: 'رَسُولٌ' },
+    { en: 'fundamental figure', ar: 'الشَّخْصِيَّةُ الْأَسَاسِيَّةُ' },
+  ],
   4: [
     { en: 'Prosperous', ar: 'مُزْدَهِرٌ' },
     { en: 'Agriculture', ar: 'زِرَاعَةٌ' },
     { en: 'Worshipped', ar: 'يَعْبُدُونَ الْأَصْنَامَ' },
+  ],
+  7: [
+    { en: 'Lifeless', ar: 'الْجَامِدَةُ' },
+    { en: 'Helpless', ar: 'عَاجِزٌ' },
+    { en: 'niche', ar: 'مِحْرَابٌ' },
+  ],
+  8: [
+    { en: 'Shocking', ar: 'الْمُدْهِشِ' },
+    {
+      en: 'certainty',
+      ar: 'الْمُوقِنِينَ',
+      enDefinition: 'A state of firm confidence without doubt.',
+      arDefinition: 'حَالَةُ الْيَقِينِ وَالْإِيمَانِ الثَّابِتِ الَّذِي لَا شَكَّ فِيهِ.',
+    },
+    { en: 'displaying', ar: 'إِظْهَارُ' },
+  ],
+  9: [
+    { en: 'erring', ar: 'ضَالٌّ' },
+  ],
+  10: [
+    {
+      en: 'heavenly bodies',
+      ar: 'الْأَجْرَامِ',
+      enDefinition: 'Natural objects in the sky, such as stars, planets, the sun, and the moon.',
+      arDefinition: 'الْأَجْرَامُ السَّمَاوِيَّةُ كَالنُّجُومِ وَالْكَوَاكِبِ وَالشَّمْسِ وَالْقَمَرِ.',
+    },
+    { en: 'Evidently', ar: 'بِوُضُوح' },
   ],
   13: [
     { en: 'afflict', ar: 'يَمَسَّكَ' },
@@ -64,6 +96,28 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
       ar: 'لا يُمكِن دَحْضُهُ',
       enDefinition: 'So clear or strong that it cannot reasonably be denied or disproved.',
       arDefinition: 'قَوِيٌّ وَوَاضِحٌ إِلَى دَرَجَةٍ لَا يُمْكِنُ إِبْطَالُهُ أَوْ رَدُّهُ.',
+    },
+  ],
+  27: [
+    {
+      en: 'advanced',
+      ar: 'مضى',
+      enDefinition: 'Moved forward or ahead in a purposeful way.',
+      arDefinition: 'تَقَدَّمَ وَوَاصَلَ السَّيْرَ إِلَى الْأَمَامِ.',
+    },
+  ],
+  29: [
+    {
+      en: 'seven times',
+      ar: 'سبع مرّات',
+      enDefinition: 'On seven separate occasions or repetitions.',
+      arDefinition: 'سَبْعَ مَرَّاتٍ مُتَتَالِيَةٍ أَوْ مُنْفَصِلَةٍ.',
+    },
+    {
+      en: 'searching for water',
+      ar: 'تبحَث عن الماء',
+      enDefinition: 'Looking carefully for a source of water.',
+      arDefinition: 'تَسْعَى وَتَفْتِشُ لِلْعُثُورِ عَلَى مَاءٍ.',
     },
   ],
   30: [
