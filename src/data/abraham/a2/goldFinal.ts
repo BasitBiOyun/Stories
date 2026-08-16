@@ -1,29 +1,25 @@
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
+import {
+  buildA2StudentGuideMetadata,
+  buildA2StudentGuideSections,
+  buildA2StudentGuideText,
+  buildA2TeacherGuideMetadata,
+} from '../../a2BookSupport';
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
-import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
 import { abrahamA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import {
   abrahamA2GoldConfig,
   abrahamA2PagesGoldAr as basePagesAr,
   abrahamA2PagesGoldEn as rawBasePagesEn,
 } from './gold';
-import {
-  buildA2SelfStudyGuide,
-  buildA2StudentGuideMetadata,
-  buildA2StudentGuideSections,
-  buildA2StudentGuideText,
-  buildA2TeacherGuide,
-  buildA2TeacherGuideMetadata,
-} from '../../a2GoldFactory';
 
 const basePagesEn = rawBasePagesEn.map((page) => {
   if (page.type !== 'story') return page;
 
-  // Legacy audio-sync metadata from the old timestamp-following prototype is not used
-  // by the current reader. Strip it from the effective Abraham A2 English story data.
+  // The current reader no longer uses the old timestamp-following prototype.
   const { timedChunks: _timedChunks, syncPoints: _syncPoints, ...pageWithoutLegacySync } = page;
-
-  const pageWithVocabularyFix = pageWithoutLegacySync.id === 5
+  const withVocabularyFix = pageWithoutLegacySync.id === 5
     ? {
         ...pageWithoutLegacySync,
         vocabulary: pageWithoutLegacySync.vocabulary?.map((entry) =>
@@ -34,35 +30,18 @@ const basePagesEn = rawBasePagesEn.map((page) => {
       }
     : pageWithoutLegacySync;
 
-  const pageWithDerivedFeedbackFix = pageWithVocabularyFix.id === 3
-    ? {
-        ...pageWithVocabularyFix,
-        exercises: pageWithVocabularyFix.exercises?.map((exercise) =>
-          exercise.id === 'q3'
-            ? {
-                ...exercise,
-                feedback: {
-                  ...exercise.feedback,
-                  incorrect: 'Not quite. The chapter says the star disappeared, so Abraham said he would not show respect to it.',
-                },
-              }
-            : exercise
-        ),
-      }
-    : pageWithVocabularyFix;
-
-  if (!pageWithDerivedFeedbackFix.animatedWords) return pageWithDerivedFeedbackFix;
-  if (pageWithDerivedFeedbackFix.id === 3) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'sets') };
-  if (pageWithDerivedFeedbackFix.id === 7) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'crazy') };
-  if (pageWithDerivedFeedbackFix.id === 9) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'rude') };
-  if (pageWithDerivedFeedbackFix.id === 10) return { ...pageWithDerivedFeedbackFix, animatedWords: pageWithDerivedFeedbackFix.animatedWords.filter((word) => word !== 'rise') };
-  return pageWithDerivedFeedbackFix;
+  if (!withVocabularyFix.animatedWords) return withVocabularyFix;
+  if (withVocabularyFix.id === 3) return { ...withVocabularyFix, animatedWords: withVocabularyFix.animatedWords.filter((word) => word !== 'sets') };
+  if (withVocabularyFix.id === 7) return { ...withVocabularyFix, animatedWords: withVocabularyFix.animatedWords.filter((word) => word !== 'crazy') };
+  if (withVocabularyFix.id === 9) return { ...withVocabularyFix, animatedWords: withVocabularyFix.animatedWords.filter((word) => word !== 'rude') };
+  if (withVocabularyFix.id === 10) return { ...withVocabularyFix, animatedWords: withVocabularyFix.animatedWords.filter((word) => word !== 'rise') };
+  return withVocabularyFix;
 });
 
 const vocabularyGoldEn = applyA2VocabularyGold({
   pages: basePagesEn,
   storyIds: abrahamA2GoldConfig.storyIds,
-  vocabularyPageId: 16,
+  vocabularyPageId: abrahamA2GoldConfig.vocabularyPageId,
   language: 'en',
   chapterAdditions: {
     6: [{ word: 'axe', definition: 'A heavy tool used for cutting or breaking things.' }],
@@ -74,7 +53,7 @@ const vocabularyGoldEn = applyA2VocabularyGold({
 const vocabularyGoldAr = applyA2VocabularyGold({
   pages: basePagesAr,
   storyIds: abrahamA2GoldConfig.storyIds,
-  vocabularyPageId: 16,
+  vocabularyPageId: abrahamA2GoldConfig.vocabularyPageId,
   language: 'ar',
   chapterAdditions: {
     6: [{ word: 'فَأْس', definition: 'أَدَاةٌ ثَقِيلَةٌ تُسْتَعْمَلُ لِلْقَطْعِ أَوِ التَّكْسِيرِ.' }],
@@ -192,10 +171,6 @@ export const abrahamA2HighlightTargets = standardized.targets;
 export const abrahamA2PagesFinalEn = standardized.englishPages;
 export const abrahamA2PagesFinalAr = standardized.arabicPages;
 
-export const abrahamA2TeacherGuideFinalEn = buildA2TeacherGuide(abrahamA2PagesFinalEn, abrahamA2GoldConfig.storyIds, 'en');
-export const abrahamA2TeacherGuideFinalAr = buildA2TeacherGuide(abrahamA2PagesFinalAr, abrahamA2GoldConfig.storyIds, 'ar');
-export const abrahamA2SelfStudyGuideFinalEn = buildA2SelfStudyGuide(abrahamA2PagesFinalEn, abrahamA2GoldConfig.storyIds, 'en');
-export const abrahamA2SelfStudyGuideFinalAr = buildA2SelfStudyGuide(abrahamA2PagesFinalAr, abrahamA2GoldConfig.storyIds, 'ar');
 export const abrahamA2TeacherGuideMetadataFinalEn = buildA2TeacherGuideMetadata('Prophet Abraham', abrahamA2GoldConfig.storyIds.length, 'en');
 export const abrahamA2TeacherGuideMetadataFinalAr = buildA2TeacherGuideMetadata('قصة النبي إبراهيم', abrahamA2GoldConfig.storyIds.length, 'ar');
 export const abrahamA2StudentGuideSectionsFinalEn = buildA2StudentGuideSections('en');
