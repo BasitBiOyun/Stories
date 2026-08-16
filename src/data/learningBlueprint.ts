@@ -110,7 +110,27 @@ export interface LearningBlueprint {
   wholeBook?: LearningBlueprintWholeBook;
 }
 
-/** Gives authored blueprints full type checking without changing their literal values. */
-export const defineLearningBlueprint = <T extends LearningBlueprint>(blueprint: T): T => blueprint;
+const validateBlueprintInteractionPolicy = (blueprint: LearningBlueprint) => {
+  const tapRevealItems = blueprint.chapters.flatMap(chapter =>
+    chapter.assessmentItems.filter(item => item.exercise.en.type === 'tap-reveal' || item.exercise.ar.type === 'tap-reveal')
+  );
+
+  for (const item of tapRevealItems) {
+    const quickOnly = item.eligibleStages.length === 1 && item.eligibleStages[0] === 'quick';
+    if (!quickOnly) {
+      throw new Error(`[Learning Blueprint] Tap-Reveal is reserved for Quick Challenge only: ${item.id}.`);
+    }
+  }
+
+  if (tapRevealItems.length > 2) {
+    throw new Error(`[Learning Blueprint] Tap-Reveal is intentionally rare: ${blueprint.id} has ${tapRevealItems.length}, maximum is 2 per book.`);
+  }
+};
+
+/** Gives authored blueprints full type checking and enforces the shared interaction policy. */
+export const defineLearningBlueprint = <T extends LearningBlueprint>(blueprint: T): T => {
+  validateBlueprintInteractionPolicy(blueprint);
+  return blueprint;
+};
 
 export const learningBlueprintKey = (storyId: string, level: Level) => `${storyId}:${level}`;
