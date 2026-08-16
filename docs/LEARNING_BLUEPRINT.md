@@ -35,6 +35,16 @@ Tap-Reveal is the exception:
 
 The blueprint contract enforces this rule when the authored blueprint is defined.
 
+## Question-diversity policy
+
+Assessment stages must not keep asking the same thing in different places.
+
+- One evidence/learning point may be assessed only once in the authored assessment path.
+- Quick, Knowledge, Review and Final should target different facts, relationships or ideas whenever the story provides enough material.
+- Rewording the same answer target does not count as a new question.
+- Exact and very near-duplicate EN/AR question wording is rejected automatically by the blueprint contract.
+- Semantic repetition that is not detectable from wording alone remains a manual authoring/review responsibility.
+
 ## Engine-owned behavior
 
 The shared engine handles:
@@ -57,7 +67,9 @@ A blueprint is rejected when:
 - an evidence excerpt cannot be found in the corresponding EN/AR chapter,
 - a vocabulary target does not occur in the corresponding chapter,
 - an assessment item points to evidence from another chapter,
+- the same learning point is assessed more than once,
 - EN/AR exercise structures or answer logic diverge,
+- exact or very near-duplicate question wording appears in the same book,
 - stage capacity is insufficient,
 - Quick Challenge coverage is missing,
 - Tap-Reveal appears outside Quick Challenge or appears more than twice in a book,
