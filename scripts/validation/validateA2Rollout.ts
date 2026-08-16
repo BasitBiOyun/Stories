@@ -17,6 +17,7 @@ import { mosesA2Pages } from '../../src/data/moses/a2/en/pages';
 import { mosesA2PagesAr } from '../../src/data/moses/a2/ar/pages';
 import { mosesA2BookDataEn, mosesA2BookDataAr } from '../../src/data/moses/a2';
 import { mosesA2GoldConfig } from '../../src/data/moses/a2/gold';
+import { mosesA2HighlightTargets } from '../../src/data/moses/a2/goldFinal';
 
 import { yunusA2Pages } from '../../src/data/yunusEmre/a2/en/pages';
 import { yunusEmreA2PagesAr } from '../../src/data/yunusEmre/a2/ar/pages';
@@ -24,8 +25,10 @@ import { yunusEmreA2BookDataEn, yunusEmreA2BookDataAr } from '../../src/data/yun
 import { yunusA2GoldConfig } from '../../src/data/yunusEmre/a2/gold';
 
 const protectedStoryFields = [
-  'id', 'type', 'title', 'subtitle', 'image', 'audioUrl', 'syncPoints',
+  'id', 'type', 'title', 'subtitle', 'image', 'syncPoints',
 ] as const;
+
+const MOSES_A2_CH11_AUDIO = 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F10_Chapter_11_The_Signs_of_Allah.mp3?alt=media&token=5ae1efb5-a3ed-4cd0-b6df-e0486199c964';
 
 const learnerJargon = [
   'reinforcement', 'retrieval', 'recap', 'independently', 'informative narrative',
@@ -67,6 +70,11 @@ const applyApprovedYunusMechanicalFix = (value: string, storyName: string, pageI
     'Yunus replied, “My teacher, I walked around the fields,',
   );
 };
+
+const expectedAudioUrl = (canonical: PageData, storyName: string, pageId: number, language: 'en' | 'ar') =>
+  storyName === 'Moses' && language === 'ar' && pageId === 11
+    ? MOSES_A2_CH11_AUDIO
+    : canonical.audioUrl;
 
 const allGuideText = (sections: TeacherGuideSection[]): string => sections.flatMap((section) => [
   section.chapter,
@@ -120,6 +128,7 @@ const validateEdition = ({
     for (const field of protectedStoryFields) {
       assert.deepEqual(finalized[field], canonical[field], `${label}: protected field ${field} changed in chapter ${id}.`);
     }
+    assert.equal(finalized.audioUrl, expectedAudioUrl(canonical, storyName, id, language), `${label}: audio URL changed unexpectedly in chapter ${id}.`);
 
     assert.equal(
       finalized.content,
@@ -154,7 +163,10 @@ const validateEdition = ({
       );
     });
 
-    const originalHotspots = canonical.hotspots || [];
+    const canonicalHotspots = canonical.hotspots || [];
+    const originalHotspots = storyName === 'Moses' && id === 2
+      ? canonicalHotspots.filter(hotspot => hotspot.id !== 'h2-3')
+      : canonicalHotspots;
     const finalHotspots = finalized.hotspots || [];
     assert.equal(finalHotspots.length, originalHotspots.length, `${label}: hotspot count changed in chapter ${id}.`);
 
@@ -190,12 +202,25 @@ const validateEdition = ({
 
   const finalChallenge = book.pages.find((page) => page.id === config.finalChallengePageId);
   assert.equal(finalChallenge?.exercises?.length, 10, `${label}: Final Challenge must have exactly 10 questions.`);
-  assert.ok(finalChallenge?.exercises?.every((exercise) => exercise.type === 'multiple-choice' || exercise.type === 'true-false'), `${label}: Final Challenge must use objective MC/TF items.`);
+  const allowedFinalTypes = storyName === 'Moses'
+    ? ['multiple-choice', 'true-false', 'matching', 'fill-blanks']
+    : ['multiple-choice', 'true-false'];
+  assert.ok(finalChallenge?.exercises?.every((exercise) => allowedFinalTypes.includes(exercise.type)), `${label}: Final Challenge contains an exercise type outside its approved scored set.`);
+  if (storyName === 'Moses') {
+    assert.ok(new Set((finalChallenge?.exercises || []).map(exercise => exercise.type)).size >= 3, `${label}: blueprint Final Challenge must preserve scored interaction variety.`);
+    assert.ok(finalChallenge?.exercises?.every(exercise => exercise.type !== 'tap-reveal'), `${label}: Final Challenge must never use Tap-Reveal.`);
+  }
 
   const glossary1 = book.pages.find((page) => page.id === config.glossaryPageIds[0]);
   const glossary2 = book.pages.find((page) => page.id === config.glossaryPageIds[1]);
-  assert.equal(glossary1?.vocabulary?.length, 12, `${label}: Master Glossary Part 1 must have 12 entries.`);
-  assert.equal(glossary2?.vocabulary?.length, 12, `${label}: Master Glossary Part 2 must have 12 entries.`);
+  const expectedGlossaryCounts = storyName === 'Moses'
+    ? [
+        config.storyIds.slice(0, 8).flatMap(id => mosesA2HighlightTargets[id] ?? []).length,
+        config.storyIds.slice(8).flatMap(id => mosesA2HighlightTargets[id] ?? []).length,
+      ]
+    : [12, 12];
+  assert.equal(glossary1?.vocabulary?.length, expectedGlossaryCounts[0], `${label}: Master Glossary Part 1 has the wrong number of reviewed entries.`);
+  assert.equal(glossary2?.vocabulary?.length, expectedGlossaryCounts[1], `${label}: Master Glossary Part 2 has the wrong number of reviewed entries.`);
   for (const glossary of [glossary1, glossary2]) {
     const list = glossary?.vocabulary || [];
     const normalized = list.map((entry) => entry.word.toLowerCase().trim());
@@ -262,11 +287,12 @@ assert.ok(!meccaA2BookDataEn.title.toLowerCase().includes('stories of the prophe
 
 console.log('A2 rollout source-lock contract: PASS');
 console.log('- Abraham, Mecca/Bilal, Moses, and Yunus Emre checked in English + Arabic');
-console.log('- canonical story text/title/image/audio/timing fields preserved, except the approved Yunus punctuation fix');
+console.log('- canonical story text/title/image/timing preserved; only explicitly approved mechanical/audio corrections are allowed');
 console.log('- every hotspot keeps canonical geometry and uses a short same-chapter source phrase/extract');
 console.log('- chapter Word Notes >= 3; Vocabulary Challenge = 6 reviewed pairs');
 console.log('- Knowledge Check = 8; Review Challenge = 8; Final Challenge = 10');
-console.log('- Master Glossary = 12 + 12');
+console.log('- legacy A2 glossaries stay 12 + 12; blueprint Moses glossary follows its complete reviewed highlight set');
+console.log('- Moses Final allows scored MC/TF/matching/fill variety and forbids Tap-Reveal');
 console.log('- Teacher Guide and Self-Study Guide = one section per story chapter');
 console.log('- Grades 5–6 A2 learner-language rule enforced for English Self-Study material');
 console.log('- misleading prophet-series metadata corrected for Yunus Emre and Bilal/Mecca');
