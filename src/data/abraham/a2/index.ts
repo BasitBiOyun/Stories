@@ -1,11 +1,10 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
-import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
 import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { abrahamA2GoldConfig } from './gold';
+import { abrahamA2LearningBlueprint } from './learningBlueprint';
 import {
   abrahamA2HighlightConfig,
   abrahamA2HighlightTargets,
@@ -48,12 +47,8 @@ const abrahamA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: abrahamA2PagesLockedEn,
   arabicPages: abrahamA2PagesLockedAr,
   config: abrahamA2GoldConfig,
+  blueprint: abrahamA2LearningBlueprint,
 });
-
-const abrahamA2TeacherGuideEn = buildA2ChapterTeacherGuide(abrahamA2Parallel.englishPages, abrahamA2HighlightConfig.storyIds, 'en');
-const abrahamA2TeacherGuideAr = buildA2ChapterTeacherGuide(abrahamA2Parallel.arabicPages, abrahamA2HighlightConfig.storyIds, 'ar');
-const abrahamA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(abrahamA2Parallel.englishPages, abrahamA2HighlightConfig.storyIds, 'en');
-const abrahamA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(abrahamA2Parallel.arabicPages, abrahamA2HighlightConfig.storyIds, 'ar');
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
@@ -61,9 +56,9 @@ export const abrahamA2BookDataEn: BookData = {
   level: 'A2',
   baseFontSize: 13,
   pages: abrahamA2Parallel.englishPages,
-  teacherGuide: abrahamA2TeacherGuideEn,
+  teacherGuide: abrahamA2Parallel.englishTeacherGuide,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: abrahamA2SelfStudyGuideEn,
+  selfStudyGuide: abrahamA2Parallel.englishSelfStudyGuide,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: abrahamA2StudentGuideMetadataFinalEn,
   studentGuideText: abrahamA2StudentGuideTextFinalEn,
@@ -75,9 +70,9 @@ export const abrahamA2BookDataAr: BookData = {
   level: 'A2',
   baseFontSize: 14,
   pages: abrahamA2Parallel.arabicPages,
-  teacherGuide: abrahamA2TeacherGuideAr,
+  teacherGuide: abrahamA2Parallel.arabicTeacherGuide,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: abrahamA2SelfStudyGuideAr,
+  selfStudyGuide: abrahamA2Parallel.arabicSelfStudyGuide,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: abrahamA2StudentGuideMetadataFinalAr,
   studentGuideText: abrahamA2StudentGuideTextFinalAr,
