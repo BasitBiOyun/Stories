@@ -2,7 +2,7 @@ import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
-import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
+import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
 import { abrahamA2GoldConfig } from './gold';
 import { abrahamA2LearningBlueprint } from './learningBlueprint';
 import {
@@ -43,10 +43,10 @@ const abrahamA2PagesLockedAr = applyA2HotspotCopyOverrides(
 
 validateA2HighlightStandard(abrahamA2PagesLockedEn, abrahamA2PagesLockedAr, abrahamA2HighlightTargets, abrahamA2HighlightConfig);
 
-const abrahamA2Parallel = applyValidatedA2ParallelLearning({
+const abrahamA2 = runA2BlueprintSystem({
   englishPages: abrahamA2PagesLockedEn,
   arabicPages: abrahamA2PagesLockedAr,
-  config: abrahamA2GoldConfig,
+  config: { ...abrahamA2GoldConfig, vocabularyPageId: 16 },
   blueprint: abrahamA2LearningBlueprint,
 });
 
@@ -55,10 +55,10 @@ export const abrahamA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Abraham (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: abrahamA2Parallel.englishPages,
-  teacherGuide: abrahamA2Parallel.englishTeacherGuide,
+  pages: abrahamA2.englishPages,
+  teacherGuide: abrahamA2.englishTeacherGuide,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: abrahamA2Parallel.englishSelfStudyGuide,
+  selfStudyGuide: abrahamA2.englishSelfStudyGuide,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: abrahamA2StudentGuideMetadataFinalEn,
   studentGuideText: abrahamA2StudentGuideTextFinalEn,
@@ -69,10 +69,10 @@ export const abrahamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: abrahamA2Parallel.arabicPages,
-  teacherGuide: abrahamA2Parallel.arabicTeacherGuide,
+  pages: abrahamA2.arabicPages,
+  teacherGuide: abrahamA2.arabicTeacherGuide,
   teacherGuideMetadata: abrahamA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: abrahamA2Parallel.arabicSelfStudyGuide,
+  selfStudyGuide: abrahamA2.arabicSelfStudyGuide,
   studentGuideSections: abrahamA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: abrahamA2StudentGuideMetadataFinalAr,
   studentGuideText: abrahamA2StudentGuideTextFinalAr,
