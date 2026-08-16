@@ -1,7 +1,5 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
-import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import {
   buildA2StudentGuideMetadata,
   buildA2StudentGuideSections,
@@ -14,6 +12,7 @@ import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard'
 import { adamA2PagesQualityFinalized } from './en/qualityFinalization';
 import { adamA2PagesArQualityFinalized } from './ar/qualityFinalization';
 import { validateAdamA2HighlightContract } from './highlightValidation';
+import { adamA2LearningBlueprint } from './learningBlueprint';
 
 const adamA2Config: A2GoldPageConfig = {
   storyIds: Array.from({ length: 10 }, (_, index) => index + 1),
@@ -40,12 +39,14 @@ const adamA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: adamA2PagesLockedEn,
   arabicPages: adamA2PagesLockedAr,
   config: adamA2Config,
+  blueprint: adamA2LearningBlueprint,
 });
 
-const adamA2TeacherGuideEn = buildA2ChapterTeacherGuide(adamA2Parallel.englishPages, adamA2Config.storyIds, 'en');
-const adamA2TeacherGuideAr = buildA2ChapterTeacherGuide(adamA2Parallel.arabicPages, adamA2Config.storyIds, 'ar');
-const adamA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(adamA2Parallel.englishPages, adamA2Config.storyIds, 'en');
-const adamA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(adamA2Parallel.arabicPages, adamA2Config.storyIds, 'ar');
+// Blueprint guides are canonical for Adam A2. Do not rebuild them from hotspots/Word Notes.
+const adamA2TeacherGuideEn = adamA2Parallel.englishTeacherGuide;
+const adamA2TeacherGuideAr = adamA2Parallel.arabicTeacherGuide;
+const adamA2SelfStudyGuideEn = adamA2Parallel.englishSelfStudyGuide;
+const adamA2SelfStudyGuideAr = adamA2Parallel.arabicSelfStudyGuide;
 
 const adamA2TeacherGuideMetadataEn = buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en');
 const adamA2TeacherGuideMetadataAr = buildA2TeacherGuideMetadata('قصة النبي آدم', adamA2Config.storyIds.length, 'ar');

@@ -27,7 +27,7 @@
     "validate:b2-highlight-aggregate": "tsx scripts/validation/validateB2HighlightAggregate.ts",
     "validate:bilingual-highlight-cards": "tsx scripts/validation/validateBilingualHighlightCards.ts",
     "diagnose:b2-highlight-pairs": "tsx scripts/validation/diagnoseB2HighlightPairs.ts",
-    "validate:adam-a2-learning": "tsx scripts/validation/validateAdamA2Learning.ts",
+    "validate:adam-a2-learning": "tsx scripts/validation/validateAdamA2Learning.ts && tsx scripts/validation/validateAdamA2Blueprint.ts",
     "validate:a2-rollout": "tsx scripts/validation/validateA2Rollout.ts",
     "validate:b1-rollout": "tsx scripts/validation/validateB1Rollout.ts && tsx scripts/validation/validateB1Safety.ts",
     "validate:b2-pilot": "tsx scripts/validation/validateMosesB2GoldPilot.ts && tsx scripts/validation/validateMosesB2StudentGuide.ts && tsx scripts/validation/validateMosesB2GoldArabic.ts",

@@ -72,7 +72,8 @@ const checkBook = async (definition: (typeof bookRegistry)[number]) => {
     assert(enPage.exercises?.length === 1 && arPage.exercises?.length === 1, `${label} chapter ${id} must have exactly one Quick Challenge.`);
     const enExercise = enPage.exercises[0];
     const arExercise = arPage.exercises[0];
-    assert(enExercise.id.startsWith(`learning-${definition.level.toLowerCase()}-quick-`), `${label} chapter ${id} does not use unified Quick Challenge.`);
+    const unifiedQuickId = enExercise.id.startsWith(`learning-${definition.level.toLowerCase()}-quick-`) || enExercise.id.startsWith('blueprint-');
+    assert(unifiedQuickId, `${label} chapter ${id} does not use unified/blueprint Quick Challenge.`);
     assert(enExercise.type === arExercise.type, `${label} chapter ${id} Quick Challenge types differ.`);
   }
 
