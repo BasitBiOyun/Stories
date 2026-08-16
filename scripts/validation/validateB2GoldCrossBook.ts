@@ -1,12 +1,9 @@
 import assert from 'node:assert/strict';
 import type { BookData, Exercise } from '../../src/types';
-import { meccaB2BookDataEn, meccaB2BookDataAr } from '../../src/data/mecca/b2';
 import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from '../../src/data/yunusEmre/b2';
 
 /** Temporary cross-book Gold contract for B2 books not yet migrated to Blueprint. */
 const books: { label: string; book: BookData }[] = [
-  { label: 'Mecca B2 EN', book: meccaB2BookDataEn },
-  { label: 'Mecca B2 AR', book: meccaB2BookDataAr },
   { label: 'Yunus Emre B2 EN', book: yunusEmreB2BookDataEn },
   { label: 'Yunus Emre B2 AR', book: yunusEmreB2BookDataAr },
 ];
@@ -52,7 +49,7 @@ for (const { label, book } of books) {
 
 console.log('B2 legacy Gold cross-book contract: PASS');
 console.log(`- ${books.length} unmigrated EN/AR B2 variants loaded`);
-console.log('- Adam, Moses, and Abraham B2 are excluded because they are validated by validateB2Blueprints.ts');
+console.log('- Adam, Moses, Abraham, and Mecca B2 are excluded because they are Blueprint-migrated');
 console.log('- objective items have evidence explanations');
 console.log('- correct and incorrect feedback are useful, not generic');
 console.log('- MC/TF answer structures are valid');
