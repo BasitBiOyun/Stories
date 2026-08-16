@@ -1,21 +1,13 @@
-import {
-  applyA2GoldPages,
-  buildA2SelfStudyGuide,
-  buildA2StudentGuideMetadata,
-  buildA2StudentGuideSections,
-  buildA2StudentGuideText,
-  buildA2TeacherGuide,
-  buildA2TeacherGuideMetadata,
-  type A2HotspotMap,
-} from '../../a2GoldFactory';
+import { applyA2SourceHotspots, type A2BookConfig, type A2HotspotMap } from '../../a2BookSupport';
 import { meccaA2Pages } from './en/pages';
 import { meccaA2PagesAr } from './ar/pages';
 
-const config = {
+export const meccaA2GoldConfig: A2BookConfig = {
   storyIds: Array.from({ length: 13 }, (_, index) => index + 1),
   knowledgeCheckPageId: 14,
+  vocabularyPageId: 15,
   reviewPageId: 16,
-  glossaryPageIds: [17, 18] as [number, number],
+  glossaryPageIds: [17, 18],
   finalChallengePageId: 19,
 };
 
@@ -77,19 +69,5 @@ export const meccaA2HotspotsGoldAr: A2HotspotMap = {
   'h13-2': { title: 'الْقَلْبُ وَالْأَعْمَالُ الصَّالِحَةُ', description: 'الْمُهِمُّ هُوَ الْقَلْبُ وَالْأَعْمَالُ الصَّالِحَةُ.' },
 };
 
-export const meccaA2PagesGoldEn = applyA2GoldPages({ canonicalPages: meccaA2Pages, hotspotMap: meccaA2HotspotsGoldEn, config, language: 'en' });
-export const meccaA2PagesGoldAr = applyA2GoldPages({ canonicalPages: meccaA2PagesAr, hotspotMap: meccaA2HotspotsGoldAr, config, language: 'ar' });
-
-export const meccaA2TeacherGuideGoldEn = buildA2TeacherGuide(meccaA2PagesGoldEn, config.storyIds, 'en');
-export const meccaA2TeacherGuideGoldAr = buildA2TeacherGuide(meccaA2PagesGoldAr, config.storyIds, 'ar');
-export const meccaA2SelfStudyGuideGoldEn = buildA2SelfStudyGuide(meccaA2PagesGoldEn, config.storyIds, 'en');
-export const meccaA2SelfStudyGuideGoldAr = buildA2SelfStudyGuide(meccaA2PagesGoldAr, config.storyIds, 'ar');
-export const meccaA2TeacherGuideMetadataGoldEn = buildA2TeacherGuideMetadata('Bilal ibn Rabah and Mecca', config.storyIds.length, 'en');
-export const meccaA2TeacherGuideMetadataGoldAr = buildA2TeacherGuideMetadata('بلال بن رباح ومكة', config.storyIds.length, 'ar');
-export const meccaA2StudentGuideSectionsGoldEn = buildA2StudentGuideSections('en');
-export const meccaA2StudentGuideSectionsGoldAr = buildA2StudentGuideSections('ar');
-export const meccaA2StudentGuideMetadataGoldEn = buildA2StudentGuideMetadata('Bilal ibn Rabah and Mecca', 'en');
-export const meccaA2StudentGuideMetadataGoldAr = buildA2StudentGuideMetadata('بلال بن رباح ومكة', 'ar');
-export const meccaA2StudentGuideTextGoldEn = buildA2StudentGuideText('Bilal ibn Rabah and Mecca', 'en');
-export const meccaA2StudentGuideTextGoldAr = buildA2StudentGuideText('بلال بن رباح ومكة', 'ar');
-export const meccaA2GoldConfig = config;
+export const meccaA2PagesGoldEn = applyA2SourceHotspots({ pages: meccaA2Pages, storyIds: meccaA2GoldConfig.storyIds, hotspotMap: meccaA2HotspotsGoldEn });
+export const meccaA2PagesGoldAr = applyA2SourceHotspots({ pages: meccaA2PagesAr, storyIds: meccaA2GoldConfig.storyIds, hotspotMap: meccaA2HotspotsGoldAr });
