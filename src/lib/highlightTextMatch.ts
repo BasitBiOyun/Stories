@@ -60,9 +60,12 @@ const addArabicPrefixForms = (forms: Set<string>, value: string): void => {
   // to three-letter roots: فغضب, فخاف, بثمن, وفرح. Keep a three-letter minimum
   // after stripping so this remains morphology-aware rather than a loose stemmer.
   if ((value.startsWith('و') || value.startsWith('ف')) && value.length > 3) add(value.slice(1));
-  // Short function word لم also takes attached conjunctions (ولم / فلم). Treat
-  // only this exact two-letter remainder as a safe exception to the 3-letter rule.
-  if (value === 'ولم' || value === 'فلم') forms.add('لم');
+  // Conjunctions also attach to a small closed set of two-letter function words.
+  // Treat only these exact remainders as safe exceptions to the 3-letter rule.
+  if (value.startsWith('و') || value.startsWith('ف')) {
+    const remainder = value.slice(1);
+    if (['لم', 'من', 'ما', 'لا'].includes(remainder)) forms.add(remainder);
+  }
   if (value.startsWith('س') && value.length > 3) add(value.slice(1));
   if (value.startsWith('بال') && value.length > 4) {
     add(value.slice(1)); // بالكتاب -> الكتاب
