@@ -33,4 +33,14 @@ export const yunusEmreB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
       arDefinition: 'مِنْطَقَةٌ تَارِيخِيَّةٌ فِي آسْيَا الْوُسْطَى، تَقَعُ بَيْنَ نَهْرَيْ جَيْحُونَ وَسَيْحُونَ.',
     },
   ],
+  13: [
+    { en: 'prominent', ar: 'بَارِزَةً' },
+    { en: 'lasting', ar: 'دَائِمًا' },
+    {
+      en: 'legacy',
+      ar: 'إِرْثًا',
+      enDefinition: 'The enduring influence, values, or works passed on to later generations.',
+    },
+    { en: 'anger', ar: 'الْغَضَبِ' },
+  ],
 };

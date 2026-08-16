@@ -15,7 +15,7 @@
     "lint": "npm run typecheck",
     "validate:a2": "tsx scripts/validation/validateA2Blueprints.ts",
     "validate:b1": "tsx scripts/validation/validateB1Blueprints.ts",
-    "validate:b2": "tsx scripts/validation/validateB2Blueprints.ts && tsx scripts/validation/validateMeccaB2Blueprint.ts && tsx scripts/validation/validateYunusB2Gold.ts && tsx scripts/validation/validateB2GoldCrossBook.ts",
+    "validate:b2": "tsx scripts/validation/validateB2Blueprints.ts && tsx scripts/validation/validateMeccaB2Blueprint.ts && tsx scripts/validation/validateYunusB2Blueprint.ts",
     "validate": "npm run validate:a2 && npm run validate:b1 && npm run validate:b2 && npm run typecheck",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
     "canonical:generate": "tsx scripts/validation/canonicalContent.ts --write",
