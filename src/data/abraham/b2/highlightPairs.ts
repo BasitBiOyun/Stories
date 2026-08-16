@@ -15,7 +15,11 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
   4: [
     { en: 'Prosperous', ar: 'مُزْدَهِرٌ' },
     { en: 'Agriculture', ar: 'زِرَاعَةٌ' },
-    { en: 'Worshipped', ar: 'يَعْبُدُونَ الْأَصْنَامَ' },
+    {
+      en: 'Worshipped',
+      ar: 'يَعْبُدُونَ الْأَصْنَامَ',
+      arDefinition: 'كَانُوا يَتَّخِذُونَ الْأَصْنَامَ مَعْبُودَاتٍ وَيَتَوَجَّهُونَ إِلَيْهَا بِالْعِبَادَةِ.',
+    },
   ],
   7: [
     { en: 'Lifeless', ar: 'الْجَامِدَةُ' },
