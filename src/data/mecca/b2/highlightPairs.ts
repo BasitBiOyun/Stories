@@ -16,6 +16,22 @@ export const meccaB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
     { en: 'truly', ar: 'حَقًّا' },
     { en: 'era', ar: 'عَصْرِ' },
   ],
+  4: [
+    {
+      en: 'Quraysh',
+      ar: 'قُرَيْشٍ',
+      enDefinition: 'The tribe that took over the administration of Mecca and the Ka’ba in the fifth century.',
+      arDefinition: 'الْقَبِيلَةُ الَّتِي انْتَقَلَتْ إِلَيْهَا إِدَارَةُ مَكَّةَ وَالْكَعْبَةِ فِي الْقَرْنِ الْخَامِسِ.',
+    },
+    { en: 'reconstruct', ar: 'لِيُعِيدَ بِنَاءَ' },
+    { en: 'pilgrimage', ar: 'حَجٍّ' },
+    {
+      en: 'agriculture',
+      ar: 'الزِّرَاعَةِ',
+      enDefinition: 'The cultivation of land and growing of crops for food or livelihood.',
+      arDefinition: 'زِرَاعَةُ الْأَرْضِ وَإِنْتَاجُ الْمَحَاصِيلِ لِلْمَعِيشَةِ.',
+    },
+  ],
   6: [
     { en: 'Silk Road', ar: 'طَرِيقُ الْحَرِيرِ' },
     { en: 'sacred months', ar: 'الْأَشْهُرُ الْحُرُمُ' },
