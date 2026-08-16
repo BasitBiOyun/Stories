@@ -18,6 +18,13 @@ import { mosesB1LearningBlueprint } from '../../src/data/moses/b1/learningBluepr
 import { mosesB1BlueprintConfig } from '../../src/data/moses/b1/config';
 import { mosesB1HighlightTargets } from '../../src/data/moses/b1/source';
 
+import { abrahamB1Pages } from '../../src/data/abraham/b1/en/pages';
+import { abrahamB1PagesAr } from '../../src/data/abraham/b1/ar/pages';
+import { abrahamB1BookDataEn, abrahamB1BookDataAr } from '../../src/data/abraham/b1';
+import { abrahamB1LearningBlueprint } from '../../src/data/abraham/b1/learningBlueprint';
+import { abrahamB1BlueprintConfig } from '../../src/data/abraham/b1/config';
+import { abrahamB1HighlightTargets } from '../../src/data/abraham/b1/source';
+
 const protectedFields = ['id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'syncPoints', 'timedChunks'] as const;
 const scoredTypes = new Set(['multiple-choice', 'true-false', 'matching', 'fill-blanks']);
 
@@ -64,6 +71,17 @@ const cases: BlueprintCase[] = [
     bookAr: mosesB1BookDataAr,
     targets: mosesB1HighlightTargets,
     tapIds: ['moses-b1-c12-quick', 'moses-b1-c3-quick'],
+  },
+  {
+    label: 'Abraham B1',
+    blueprint: abrahamB1LearningBlueprint,
+    config: abrahamB1BlueprintConfig,
+    rawEn: abrahamB1Pages,
+    rawAr: abrahamB1PagesAr,
+    bookEn: abrahamB1BookDataEn,
+    bookAr: abrahamB1BookDataAr,
+    targets: abrahamB1HighlightTargets,
+    tapIds: ['abraham-b1-c10-quick', 'abraham-b1-c5-quick'],
   },
 ];
 
