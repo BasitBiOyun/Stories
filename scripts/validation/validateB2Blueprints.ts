@@ -18,6 +18,13 @@ import { mosesB2LearningBlueprint } from '../../src/data/moses/b2/learningBluepr
 import { mosesB2BlueprintConfig } from '../../src/data/moses/b2/config';
 import { mosesB2HighlightTargets, mosesB2SourcePagesEn, mosesB2SourcePagesAr } from '../../src/data/moses/b2/source';
 
+import { abrahamB2Pages } from '../../src/data/abraham/b2/en/pages';
+import { abrahamB2PagesAr } from '../../src/data/abraham/b2/ar/pages';
+import { abrahamB2BookDataEn, abrahamB2BookDataAr } from '../../src/data/abraham/b2';
+import { abrahamB2LearningBlueprint } from '../../src/data/abraham/b2/learningBlueprint';
+import { abrahamB2BlueprintConfig } from '../../src/data/abraham/b2/config';
+import { abrahamB2HighlightTargets, abrahamB2SourcePagesEn, abrahamB2SourcePagesAr } from '../../src/data/abraham/b2/source';
+
 const protectedFields = ['id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'syncPoints', 'timedChunks'] as const;
 const scoredTypes = new Set(['multiple-choice', 'true-false', 'matching', 'fill-blanks']);
 
@@ -43,6 +50,7 @@ type BlueprintCase = {
   bookAr: BookData;
   targets: Record<number, readonly B2CanonicalHighlightTarget[]>;
   tapIds: string[];
+  runtimeTypeOverrides?: Partial<Record<number, PageData['type']>>;
 };
 
 const cases: BlueprintCase[] = [
@@ -73,6 +81,21 @@ const cases: BlueprintCase[] = [
     bookAr: mosesB2BookDataAr,
     targets: mosesB2HighlightTargets,
     tapIds: ['moses-b2-c3-quick', 'moses-b2-c8-quick'],
+  },
+  {
+    label: 'Abraham B2',
+    storyId: 'abraham',
+    blueprint: abrahamB2LearningBlueprint,
+    config: abrahamB2BlueprintConfig,
+    rawEn: abrahamB2Pages,
+    rawAr: abrahamB2PagesAr,
+    sourceEn: abrahamB2SourcePagesEn,
+    sourceAr: abrahamB2SourcePagesAr,
+    bookEn: abrahamB2BookDataEn,
+    bookAr: abrahamB2BookDataAr,
+    targets: abrahamB2HighlightTargets,
+    tapIds: ['abraham-b2-c8-quick', 'abraham-b2-c27-quick'],
+    runtimeTypeOverrides: { 36: 'quiz' },
   },
 ];
 
@@ -127,7 +150,8 @@ const validateLanguage = (
 ) => {
   const { blueprint, config } = current;
   assert.equal(outputPages.length, rawPages.length, `${label}: page count changed.`);
-  assert.deepEqual(outputPages.map(item => [item.id, item.type]), rawPages.map(item => [item.id, item.type]), `${label}: page structure changed.`);
+  const expectedStructure = rawPages.map(item => [item.id, current.runtimeTypeOverrides?.[item.id] ?? item.type]);
+  assert.deepEqual(outputPages.map(item => [item.id, item.type]), expectedStructure, `${label}: page structure changed outside approved runtime type overrides.`);
 
   for (const id of config.storyIds) {
     const raw = page(rawPages, id, `${label} raw`);
@@ -156,6 +180,7 @@ const validateLanguage = (
   }
 
   const knowledge = page(outputPages, config.knowledgeCheckPageId, label);
+  assert.equal(knowledge.type, 'quiz', `${label}: Knowledge Check page must be a quiz surface.`);
   assert.equal(knowledge.exercises?.length, 8, `${label}: Knowledge Check must contain 8 activities.`);
   (knowledge.exercises ?? []).forEach((exercise, index) => validateExercise(exercise, `${label} Knowledge ${index + 1}`));
 
@@ -291,6 +316,18 @@ for (const current of cases) {
     assert.ok(!(savedChapter.vocabulary ?? []).some(entry => normalizeHighlightText(entry.word, 'en') === 'survive'), `${label}: stale Chapter 4 survive Word Note remains.`);
     assert.ok(highlightPhraseOccurs(savedChapter.content, 'he was miraculously saved', 'en'), `${label}: Chapter 4 canonical saved wording is missing.`);
   }
+
+  if (storyId === 'abraham') {
+    const historicalCaution = blueprint.chapters.find(chapter => chapter.chapterId === 4)?.assessmentItems.find(item => item.eligibleStages.includes('quick'));
+    assert.ok(historicalCaution, `${label}: Chapter 4 historical-source Quick missing.`);
+    assert.ok(/completely certain|different ideas|some sources|is believed/i.test(`${historicalCaution.exercise.en.question} ${historicalCaution.exercise.en.explanation}`), `${label}: Chapter 4 English historical qualification missing.`);
+    assert.ok(/يقيني|آراء مختلفة|بعض المصادر|يُعتقد|يعتقد/.test(`${historicalCaution.exercise.ar.question} ${historicalCaution.exercise.ar.explanation}`), `${label}: Chapter 4 Arabic historical qualification missing.`);
+
+    assert.equal(page(bookEn.pages, 36, `${label} EN`).type, 'quiz', `${label}: EN raw References surface was not reused as Knowledge Check.`);
+    assert.equal(page(bookAr.pages, 36, `${label} AR`).type, 'quiz', `${label}: AR raw References surface was not reused as Knowledge Check.`);
+    assert.equal(page(rawEn, 36, `${label} EN raw`).type, 'story', `${label}: EN raw References page was edited.`);
+    assert.equal(page(rawAr, 36, `${label} AR raw`).type, 'story', `${label}: AR raw References page was edited.`);
+  }
 }
 
 console.log('B2 Blueprint Contract: PASS');
@@ -299,4 +336,4 @@ console.log('- one Quick per chapter; Knowledge 8; Review 8 (4 MC + 4 TF); Final
 console.log('- raw story prose and protected story fields unchanged');
 console.log('- Tap-Reveal restricted to two Quick Challenges per migrated book');
 console.log('- B2 Teacher/Self-Study guides enforce evidence vs interpretation and 120–150 word analytical writing');
-console.log('- book-specific source-limit and historical-qualification safeguards are preserved');
+console.log('- book-specific source-limit, historical-qualification, and approved page-surface safeguards are preserved');
