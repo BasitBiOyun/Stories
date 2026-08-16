@@ -1,21 +1,13 @@
-import {
-  applyA2GoldPages,
-  buildA2SelfStudyGuide,
-  buildA2StudentGuideMetadata,
-  buildA2StudentGuideSections,
-  buildA2StudentGuideText,
-  buildA2TeacherGuide,
-  buildA2TeacherGuideMetadata,
-  type A2HotspotMap,
-} from '../../a2GoldFactory';
-import { yunusA2Pages } from './en/pages';
+import { applyA2SourceHotspots, type A2BookConfig, type A2HotspotMap } from '../../a2BookSupport';
 import { yunusEmreA2PagesAr } from './ar/pages';
+import { yunusA2Pages } from './en/pages';
 
-const config = {
+export const yunusA2GoldConfig: A2BookConfig = {
   storyIds: Array.from({ length: 8 }, (_, index) => index + 1),
   knowledgeCheckPageId: 9,
+  vocabularyPageId: 10,
   reviewPageId: 13,
-  glossaryPageIds: [11, 12] as [number, number],
+  glossaryPageIds: [11, 12],
   finalChallengePageId: 14,
 };
 
@@ -58,25 +50,14 @@ export const yunusA2HotspotsGoldAr: A2HotspotMap = {
 };
 
 const applyAnimatedWordOverrides = (
-  pages: ReturnType<typeof applyA2GoldPages>,
+  pages: typeof yunusA2Pages,
   overrides: Record<number, string[]>,
 ) => pages.map((page) => overrides[page.id] ? { ...page, animatedWords: overrides[page.id] } : page);
 
-const yunusA2PagesGoldBaseEn = applyA2GoldPages({
-  canonicalPages: yunusA2Pages,
-  hotspotMap: yunusA2HotspotsGoldEn,
-  config,
-  language: 'en',
-});
+const baseEn = applyA2SourceHotspots({ pages: yunusA2Pages, storyIds: yunusA2GoldConfig.storyIds, hotspotMap: yunusA2HotspotsGoldEn });
+const baseAr = applyA2SourceHotspots({ pages: yunusEmreA2PagesAr, storyIds: yunusA2GoldConfig.storyIds, hotspotMap: yunusA2HotspotsGoldAr });
 
-const yunusA2PagesGoldBaseAr = applyA2GoldPages({
-  canonicalPages: yunusEmreA2PagesAr,
-  hotspotMap: yunusA2HotspotsGoldAr,
-  config,
-  language: 'ar',
-});
-
-export const yunusA2PagesGoldEn = applyAnimatedWordOverrides(yunusA2PagesGoldBaseEn, {
+export const yunusA2PagesGoldEn = applyAnimatedWordOverrides(baseEn, {
   1: ['poems', 'simple Turkish', 'passed away'],
   2: ['the needy', 'forgave', 'sulky'],
   3: ['path', 'training'],
@@ -87,7 +68,7 @@ export const yunusA2PagesGoldEn = applyAnimatedWordOverrides(yunusA2PagesGoldBas
   8: ['meaningful', 'fruitful'],
 });
 
-export const yunusA2PagesGoldAr = applyAnimatedWordOverrides(yunusA2PagesGoldBaseAr, {
+export const yunusA2PagesGoldAr = applyAnimatedWordOverrides(baseAr, {
   1: ['قَصائِدَهُ', 'بَسيطَةٍ', 'تُوُفِّيَ'],
   2: ['الْمُحْتاجينَ', 'يَغْفِرونَ', 'عابِسِينَ'],
   3: ['طَريقًا', 'تَدْريبَهُ'],
@@ -97,17 +78,3 @@ export const yunusA2PagesGoldAr = applyAnimatedWordOverrides(yunusA2PagesGoldBas
   7: ['قَطَفُوا', 'يَهْمِسونَ'],
   8: ['مَعْنًى', 'مُثْمِرَةً'],
 });
-
-export const yunusA2TeacherGuideGoldEn = buildA2TeacherGuide(yunusA2PagesGoldEn, config.storyIds, 'en');
-export const yunusA2TeacherGuideGoldAr = buildA2TeacherGuide(yunusA2PagesGoldAr, config.storyIds, 'ar');
-export const yunusA2SelfStudyGuideGoldEn = buildA2SelfStudyGuide(yunusA2PagesGoldEn, config.storyIds, 'en');
-export const yunusA2SelfStudyGuideGoldAr = buildA2SelfStudyGuide(yunusA2PagesGoldAr, config.storyIds, 'ar');
-export const yunusA2TeacherGuideMetadataGoldEn = buildA2TeacherGuideMetadata('Yunus Emre', config.storyIds.length, 'en');
-export const yunusA2TeacherGuideMetadataGoldAr = buildA2TeacherGuideMetadata('يونس إمره', config.storyIds.length, 'ar');
-export const yunusA2StudentGuideSectionsGoldEn = buildA2StudentGuideSections('en');
-export const yunusA2StudentGuideSectionsGoldAr = buildA2StudentGuideSections('ar');
-export const yunusA2StudentGuideMetadataGoldEn = buildA2StudentGuideMetadata('Yunus Emre', 'en');
-export const yunusA2StudentGuideMetadataGoldAr = buildA2StudentGuideMetadata('يونس إمره', 'ar');
-export const yunusA2StudentGuideTextGoldEn = buildA2StudentGuideText('Yunus Emre', 'en');
-export const yunusA2StudentGuideTextGoldAr = buildA2StudentGuideText('يونس إمره', 'ar');
-export const yunusA2GoldConfig = config;
