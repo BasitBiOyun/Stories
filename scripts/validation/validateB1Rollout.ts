@@ -7,11 +7,6 @@ import { abrahamB1PagesAr } from '../../src/data/abraham/b1/ar/pages';
 import { abrahamB1BookDataEn, abrahamB1BookDataAr } from '../../src/data/abraham/b1';
 import { abrahamB1GoldConfig } from '../../src/data/abraham/b1/gold';
 
-import { mosesB1Pages } from '../../src/data/moses/b1/en/pages';
-import { mosesB1PagesAr } from '../../src/data/moses/b1/ar/pages';
-import { mosesB1BookDataEn, mosesB1BookDataAr } from '../../src/data/moses/b1';
-import { mosesB1RolloutConfig } from '../../src/data/moses/b1/rollout';
-
 import { meccaB1Pages } from '../../src/data/mecca/b1/en/pages';
 import { meccaB1PagesAr } from '../../src/data/mecca/b1/ar/pages';
 import { meccaB1BookDataEn, meccaB1BookDataAr } from '../../src/data/mecca/b1';
@@ -39,12 +34,10 @@ type Case = {
   config: LegacyConfig;
 };
 
-/** Temporary rollout contract for the four B1 books not yet migrated to Blueprint. */
+/** Temporary rollout contract for the three B1 books not yet migrated to Blueprint. */
 const cases: Case[] = [
   { label: 'Abraham B1 EN', language: 'en', canonical: abrahamB1Pages, book: abrahamB1BookDataEn, config: abrahamB1GoldConfig },
   { label: 'Abraham B1 AR', language: 'ar', canonical: abrahamB1PagesAr, book: abrahamB1BookDataAr, config: abrahamB1GoldConfig },
-  { label: 'Moses B1 EN', language: 'en', canonical: mosesB1Pages, book: mosesB1BookDataEn, config: mosesB1RolloutConfig },
-  { label: 'Moses B1 AR', language: 'ar', canonical: mosesB1PagesAr, book: mosesB1BookDataAr, config: mosesB1RolloutConfig },
   { label: 'Mecca B1 EN', language: 'en', canonical: meccaB1Pages, book: meccaB1BookDataEn, config: meccaB1GoldConfig },
   { label: 'Mecca B1 AR', language: 'ar', canonical: meccaB1PagesAr, book: meccaB1BookDataAr, config: meccaB1GoldConfig },
   { label: 'Yunus Emre B1 EN', language: 'en', canonical: yunusB1Pages, book: yunusEmreB1BookDataEn, config: yunusEmreB1GoldConfig },
@@ -115,4 +108,4 @@ for (const current of cases) {
 
 console.log('B1 legacy rollout: PASS');
 console.log(`- ${cases.length} unmigrated B1 language variants checked`);
-console.log('- Adam B1 is intentionally excluded and covered by validateB1Blueprints.ts');
+console.log('- Adam and Moses B1 are intentionally excluded and covered by validateB1Blueprints.ts');
