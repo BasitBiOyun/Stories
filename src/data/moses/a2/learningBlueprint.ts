@@ -1,21 +1,97 @@
-import { defineLearningBlueprint } from '../../learningBlueprint';
+import { defineLearningBlueprint, type LearningBlueprintChapter } from '../../learningBlueprint';
+import { L, mc } from './blueprint/helpers';
 import { mosesA2Chapters01to04 } from './blueprint/chapters01to04';
 import { mosesA2Chapters05to08 } from './blueprint/chapters05to08';
 import { mosesA2Chapters09to12 } from './blueprint/chapters09to12';
 import { mosesA2Chapters13to16 } from './blueprint/chapters13to16';
 
+/**
+ * Final whole-book semantic pass.
+ *
+ * The Moses narrative intentionally repeats some signs in Chapters 10–13.
+ * The story keeps that repetition, but the assessment path should not keep
+ * asking the learner to identify the same stick/hand transformation again.
+ */
+const applyCrossChapterAssessmentDiversity = (chapters: LearningBlueprintChapter[]) => chapters.map((chapter) => {
+  if (chapter.chapterId === 12) {
+    return {
+      ...chapter,
+      objectives: [
+        L('Identify Moses’s message to Pharaoh and Pharaoh’s first reaction before the signs.', 'يحدد رسالة موسى لفرعون ورد فرعون الأول قبل ظهور الآيات.'),
+        L('Explain how Pharaoh later described the signs instead of believing.', 'يشرح كيف وصف فرعون الآيات بعد ذلك بدل الإيمان.'),
+      ],
+      evidencePoints: chapter.evidencePoints.map(point => point.id === 'moses-a2-c12-signs'
+        ? {
+            id: 'moses-a2-c12-crazy',
+            focus: 'character-action' as const,
+            claim: L('Before Moses showed the signs, Pharaoh thought Moses was crazy.', 'قبل أن يظهر موسى الآيات ظن فرعون أن موسى مجنون.'),
+            evidence: L('He thought Moses was crazy', 'وَظَنَّ أَنَّ مُوسَى مَجْنُونٌ'),
+          }
+        : point),
+      assessmentItems: chapter.assessmentItems.map(item => item.id === 'moses-a2-c12-quick'
+        ? {
+            ...item,
+            learningPointId: 'moses-a2-c12-crazy',
+            exercise: mc(
+              L('What did Pharaoh think about Moses before Moses showed the signs?', 'ماذا ظن فرعون بموسى قبل أن يظهر موسى الآيات؟'),
+              {
+                en: ['He thought Moses was crazy', 'He thought Moses was the king', 'He thought Moses was a shepherd from his army'],
+                ar: ['ظن أن موسى مجنون', 'ظن أن موسى هو الملك', 'ظن أن موسى راعٍ من جيشه'],
+              },
+              0,
+              L('The chapter says Pharaoh thought Moses was crazy before Moses showed the signs.', 'يقول الفصل إن فرعون ظن أن موسى مجنون قبل أن يظهر الآيات.'),
+            ),
+          }
+        : item),
+    };
+  }
+
+  if (chapter.chapterId === 13) {
+    return {
+      ...chapter,
+      evidencePoints: chapter.evidencePoints.map(point => point.id === 'moses-a2-c13-snake'
+        ? {
+            id: 'moses-a2-c13-swallowed',
+            focus: 'sequence' as const,
+            claim: L('The huge snake swallowed what the magicians had made.', 'ابتلع الثعبان الضخم ما صنعه السحرة.'),
+            evidence: L('His stick quickly ate all the snakes of the magicians', 'وَسُرْعَانَ مَا ابْتَلَعَتْ مَا صَنَعَهُ السَّحَرَةُ'),
+          }
+        : point),
+      assessmentItems: chapter.assessmentItems.map(item => item.id === 'moses-a2-c13-knowledge'
+        ? {
+            ...item,
+            learningPointId: 'moses-a2-c13-swallowed',
+            exercise: mc(
+              L('What happened to what the magicians had made?', 'ماذا حدث لما صنعه السحرة؟'),
+              {
+                en: ['The huge snake swallowed it', 'It opened the Red Sea', 'It became a palace'],
+                ar: ['ابتلعه الثعبان الضخم', 'فتح البحر الأحمر', 'تحول إلى قصر'],
+              },
+              0,
+              L('The chapter says the huge snake swallowed what the magicians had made.', 'يقول الفصل إن الثعبان الضخم ابتلع ما صنعه السحرة.'),
+            ),
+          }
+        : item),
+    };
+  }
+
+  return chapter;
+});
+
+const chapters = applyCrossChapterAssessmentDiversity([
+  ...mosesA2Chapters01to04,
+  ...mosesA2Chapters05to08,
+  ...mosesA2Chapters09to12,
+  ...mosesA2Chapters13to16,
+]);
+
 export const mosesA2LearningBlueprint = defineLearningBlueprint({
   id: 'moses-a2',
-  version: '1.0.0',
+  version: '1.0.1',
   storyId: 'moses',
   level: 'A2',
   status: 'pedagogy-reviewed',
-  chapters: [
-    ...mosesA2Chapters01to04,
-    ...mosesA2Chapters05to08,
-    ...mosesA2Chapters09to12,
-    ...mosesA2Chapters13to16,
-  ],
+  chapters,
   wholeBook: {
     knowledgeCheck: {
       title: { en: 'Knowledge Check: Moses (pbuh)', ar: 'اختبار المعرفة: موسى عليه السلام' },
