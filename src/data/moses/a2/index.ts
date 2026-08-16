@@ -2,7 +2,7 @@ import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
-import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
+import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
 import { mosesA2GoldConfig } from './gold';
 import { mosesA2LearningBlueprint } from './learningBlueprint';
 import {
@@ -57,10 +57,10 @@ const mosesA2PagesLockedAr = applyA2HotspotCopyOverrides(
 
 validateA2HighlightStandard(mosesA2PagesLockedEn, mosesA2PagesLockedAr, mosesA2HighlightTargets, mosesA2HighlightConfig);
 
-const mosesA2Parallel = applyValidatedA2ParallelLearning({
+const mosesA2 = runA2BlueprintSystem({
   englishPages: mosesA2PagesLockedEn,
   arabicPages: mosesA2PagesLockedAr,
-  config: mosesA2GoldConfig,
+  config: { ...mosesA2GoldConfig, vocabularyPageId: 18 },
   blueprint: mosesA2LearningBlueprint,
 });
 
@@ -69,10 +69,10 @@ export const mosesA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: mosesA2Parallel.englishPages,
-  teacherGuide: mosesA2Parallel.englishTeacherGuide,
+  pages: mosesA2.englishPages,
+  teacherGuide: mosesA2.englishTeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: mosesA2Parallel.englishSelfStudyGuide,
+  selfStudyGuide: mosesA2.englishSelfStudyGuide,
   studentGuideSections: mosesA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: mosesA2StudentGuideMetadataFinalEn,
   studentGuideText: mosesA2StudentGuideTextFinalEn,
@@ -83,10 +83,10 @@ export const mosesA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: mosesA2Parallel.arabicPages,
-  teacherGuide: mosesA2Parallel.arabicTeacherGuide,
+  pages: mosesA2.arabicPages,
+  teacherGuide: mosesA2.arabicTeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: mosesA2Parallel.arabicSelfStudyGuide,
+  selfStudyGuide: mosesA2.arabicSelfStudyGuide,
   studentGuideSections: mosesA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: mosesA2StudentGuideMetadataFinalAr,
   studentGuideText: mosesA2StudentGuideTextFinalAr,
