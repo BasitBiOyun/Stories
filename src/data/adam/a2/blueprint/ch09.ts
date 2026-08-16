@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, guideBundle, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, guideBundle, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter09: LearningBlueprintChapter = {
   chapterId: 9,
@@ -45,9 +45,14 @@ export const adamA2Chapter09: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c9-knowledge', learningPointId: 'adam-a2-c9-threat', eligibleStages: ['knowledge'],
-      exercise: tap(
+      exercise: mc(
         L('What did Qabil say to Habil when he was angry?', 'ماذا قال قابيل لهابيل عندما غضب؟'),
-        L('He said, “I will kill you.”', 'قال: «سأقتلك».'),
+        {
+          en: ['I will kill you', 'I will help you', 'I will leave the farm'],
+          ar: ['سأقتلك', 'سأساعدك', 'سأترك المزرعة'],
+        },
+        0,
+        L('Qabil said to Habil, “I will kill you.”', 'قال قابيل لهابيل: «سأقتلك».'),
       ),
     },
     {
@@ -60,9 +65,14 @@ export const adamA2Chapter09: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c9-final', learningPointId: 'adam-a2-c9-death', eligibleStages: ['final'],
-      exercise: tap(
+      exercise: mc(
         L('What happened after Qabil hit Habil with a stone?', 'ماذا حدث بعد أن ضرب قابيل هابيل بحجر؟'),
-        L('Habil died there.', 'مات هابيل هناك.'),
+        {
+          en: ['Habil died there', 'Habil became a farmer', 'Qabil left for Paradise'],
+          ar: ['مات هابيل هناك', 'أصبح هابيل مزارعًا', 'ذهب قابيل إلى الجنة'],
+        },
+        0,
+        L('The chapter says Habil died there.', 'يقول الفصل إن هابيل مات هناك.'),
       ),
     },
   ],
