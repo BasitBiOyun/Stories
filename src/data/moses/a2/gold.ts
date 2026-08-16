@@ -1,21 +1,13 @@
-import {
-  applyA2GoldPages,
-  buildA2SelfStudyGuide,
-  buildA2StudentGuideMetadata,
-  buildA2StudentGuideSections,
-  buildA2StudentGuideText,
-  buildA2TeacherGuide,
-  buildA2TeacherGuideMetadata,
-  type A2HotspotMap,
-} from '../../a2GoldFactory';
+import { applyA2SourceHotspots, type A2BookConfig, type A2HotspotMap } from '../../a2BookSupport';
 import { mosesA2Pages } from './en/pages';
 import { mosesA2PagesAr } from './ar/pages';
 
-const config = {
+export const mosesA2GoldConfig: A2BookConfig = {
   storyIds: Array.from({ length: 16 }, (_, index) => index + 1),
   knowledgeCheckPageId: 17,
+  vocabularyPageId: 18,
   reviewPageId: 21,
-  glossaryPageIds: [19, 20] as [number, number],
+  glossaryPageIds: [19, 20],
   finalChallengePageId: 22,
 };
 
@@ -90,34 +82,18 @@ export const mosesA2HotspotsGoldAr: A2HotspotMap = {
   'h16-2': { title: 'دُرُوسًا', description: 'قِصَّةُ مُوسَى تَحْمِلُ دُرُوسًا كَثِيرَةً. وَتُبَيِّنُ لَنَا أَنَّ اللهَ وَحْدَهُ صَاحِبُ الْقُدْرَةِ.' },
 };
 
-const applyAnimatedWordOverrides = (
-  pages: ReturnType<typeof applyA2GoldPages>,
-  overrides: Record<number, string[]>,
-) => pages.map((page) => overrides[page.id] ? { ...page, animatedWords: overrides[page.id] } : page);
+const applyAnimatedWordOverrides = (pages: typeof mosesA2Pages, overrides: Record<number, string[]>) =>
+  pages.map((page) => overrides[page.id] ? { ...page, animatedWords: overrides[page.id] } : page);
 
-const mosesA2PagesGoldBaseEn = applyA2GoldPages({ canonicalPages: mosesA2Pages, hotspotMap: mosesA2HotspotsGoldEn, config, language: 'en' });
-const mosesA2PagesGoldBaseAr = applyA2GoldPages({ canonicalPages: mosesA2PagesAr, hotspotMap: mosesA2HotspotsGoldAr, config, language: 'ar' });
+const baseEn = applyA2SourceHotspots({ pages: mosesA2Pages, storyIds: mosesA2GoldConfig.storyIds, hotspotMap: mosesA2HotspotsGoldEn });
+const baseAr = applyA2SourceHotspots({ pages: mosesA2PagesAr, storyIds: mosesA2GoldConfig.storyIds, hotspotMap: mosesA2HotspotsGoldAr });
 
-export const mosesA2PagesGoldEn = applyAnimatedWordOverrides(mosesA2PagesGoldBaseEn, {
+export const mosesA2PagesGoldEn = applyAnimatedWordOverrides(baseEn, {
   6: ['dua', 'forgive', 'accidentally'],
   7: ['Midian', 'well', 'shepherds'],
 });
 
-export const mosesA2PagesGoldAr = applyAnimatedWordOverrides(mosesA2PagesGoldBaseAr, {
+export const mosesA2PagesGoldAr = applyAnimatedWordOverrides(baseAr, {
   6: ['فَاغْفِرْ', 'غَيْرِ قَصْدٍ', 'يَقْتُلُوكَ'],
   8: ['الْفَتَاتَيْنِ', 'دَوْرَنَا', 'سَقَاهَا'],
 });
-
-export const mosesA2TeacherGuideGoldEn = buildA2TeacherGuide(mosesA2PagesGoldEn, config.storyIds, 'en');
-export const mosesA2TeacherGuideGoldAr = buildA2TeacherGuide(mosesA2PagesGoldAr, config.storyIds, 'ar');
-export const mosesA2SelfStudyGuideGoldEn = buildA2SelfStudyGuide(mosesA2PagesGoldEn, config.storyIds, 'en');
-export const mosesA2SelfStudyGuideGoldAr = buildA2SelfStudyGuide(mosesA2PagesGoldAr, config.storyIds, 'ar');
-export const mosesA2TeacherGuideMetadataGoldEn = buildA2TeacherGuideMetadata('Prophet Moses', config.storyIds.length, 'en');
-export const mosesA2TeacherGuideMetadataGoldAr = buildA2TeacherGuideMetadata('قصة النبي موسى', config.storyIds.length, 'ar');
-export const mosesA2StudentGuideSectionsGoldEn = buildA2StudentGuideSections('en');
-export const mosesA2StudentGuideSectionsGoldAr = buildA2StudentGuideSections('ar');
-export const mosesA2StudentGuideMetadataGoldEn = buildA2StudentGuideMetadata('Prophet Moses', 'en');
-export const mosesA2StudentGuideMetadataGoldAr = buildA2StudentGuideMetadata('قصة النبي موسى', 'ar');
-export const mosesA2StudentGuideTextGoldEn = buildA2StudentGuideText('Prophet Moses', 'en');
-export const mosesA2StudentGuideTextGoldAr = buildA2StudentGuideText('قصة النبي موسى', 'ar');
-export const mosesA2GoldConfig = config;
