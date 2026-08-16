@@ -5,7 +5,8 @@ import { adamB1PagesAr } from '../../src/data/adam/b1/ar/pages';
 import { adamB1BookDataEn, adamB1BookDataAr } from '../../src/data/adam/b1';
 import { adamB1LearningBlueprint } from '../../src/data/adam/b1/learningBlueprint';
 import { adamB1BlueprintConfig } from '../../src/data/adam/b1/config';
-import { highlightPhraseOccurs } from '../../src/lib/highlightTextMatch';
+import { adamB1HighlightTargets } from '../../src/data/adam/b1/source';
+import { highlightPhraseOccurs, normalizeHighlightText } from '../../src/lib/highlightTextMatch';
 
 const protectedFields = ['id', 'type', 'title', 'subtitle', 'content', 'image', 'audioUrl', 'syncPoints', 'timedChunks'] as const;
 const scoredTypes = new Set(['multiple-choice', 'true-false', 'matching', 'fill-blanks']);
@@ -37,26 +38,47 @@ assert.equal(adamB1LearningBlueprint.storyId, 'adam');
 assert.equal(adamB1LearningBlueprint.chapters.length, 12, 'Adam B1 Blueprint must contain 12 chapters.');
 assert.equal(allItems.length, 38, 'Adam B1 Blueprint must contain exactly 38 authored assessment items.');
 
-const stageCount = (stage: 'quick' | 'knowledge' | 'review' | 'final') => allItems.filter(item => item.eligibleStages.includes(stage)).length;
-assert.equal(stageCount('quick'), 12, 'Adam B1 Quick count must be 12.');
-assert.equal(stageCount('knowledge'), 8, 'Adam B1 Knowledge count must be 8.');
-assert.equal(stageCount('review'), 8, 'Adam B1 Review count must be 8.');
-assert.equal(stageCount('final'), 10, 'Adam B1 Final count must be 10.');
+const stageItems = (stage: 'quick' | 'knowledge' | 'review' | 'final') => allItems.filter(item => item.eligibleStages.includes(stage));
+assert.equal(stageItems('quick').length, 12, 'Adam B1 Quick count must be 12.');
+assert.equal(stageItems('knowledge').length, 8, 'Adam B1 Knowledge count must be 8.');
+assert.equal(stageItems('review').length, 8, 'Adam B1 Review count must be 8.');
+assert.equal(stageItems('final').length, 10, 'Adam B1 Final count must be 10.');
 
 const learningPoints = allItems.map(item => item.learningPointId);
 assert.equal(new Set(learningPoints).size, learningPoints.length, 'Adam B1 repeats an assessed learning point.');
+
 const taps = allItems.filter(item => item.exercise.en.type === 'tap-reveal');
 assert.deepEqual(taps.map(item => item.id).sort(), ['adam-b1-c10-quick', 'adam-b1-c5-quick'], 'Adam B1 Tap-Reveal policy changed.');
 taps.forEach(item => assert.deepEqual(item.eligibleStages, ['quick'], `${item.id}: Tap-Reveal must be Quick-only.`));
+
+const reviewTypes = stageItems('review').map(item => item.exercise.en.type);
+assert.equal(reviewTypes.filter(type => type === 'multiple-choice').length, 4, 'Adam B1 Review must contain 4 multiple-choice items.');
+assert.equal(reviewTypes.filter(type => type === 'true-false').length, 4, 'Adam B1 Review must contain 4 true-false items.');
+assert.equal(new Set(reviewTypes).size, 2, 'Adam B1 Review may only use MC and True/False before quiz-game conversion.');
+
+const finalAuthoredTypes = new Set(stageItems('final').map(item => item.exercise.en.type));
+assert.deepEqual([...finalAuthoredTypes].sort(), ['fill-blanks', 'matching', 'multiple-choice', 'true-false'], 'Adam B1 Final must preserve all four scored interaction types.');
 
 for (const chapter of adamB1LearningBlueprint.chapters) {
   const enSource = page(adamB1Pages, chapter.chapterId, 'Adam B1 EN source');
   const arSource = page(adamB1PagesAr, chapter.chapterId, 'Adam B1 AR source');
   assert.ok(chapter.objectives.length >= 2, `Chapter ${chapter.chapterId}: at least two objectives required.`);
   assert.equal(chapter.evidencePoints.length, chapter.assessmentItems.length, `Chapter ${chapter.chapterId}: every selected evidence point should be assessed exactly once.`);
+
   chapter.evidencePoints.forEach(point => {
     assert.ok(highlightPhraseOccurs(enSource.content, point.evidence.en, 'en'), `${point.id}: English evidence is not in raw story prose.`);
     assert.ok(highlightPhraseOccurs(arSource.content, point.evidence.ar, 'ar'), `${point.id}: Arabic evidence is not in raw story prose.`);
+  });
+
+  const canonicalTargets = adamB1HighlightTargets[chapter.chapterId] ?? [];
+  assert.equal(chapter.vocabularyTargets.length, canonicalTargets.length, `Chapter ${chapter.chapterId}: Blueprint/canonical Word Note count mismatch.`);
+  chapter.vocabularyTargets.forEach((target, index) => {
+    const canonical = canonicalTargets[index];
+    assert.ok(canonical, `Chapter ${chapter.chapterId}: missing canonical Word Note ${index + 1}.`);
+    assert.equal(normalizeHighlightText(target.en.word, 'en'), normalizeHighlightText(canonical.en.word, 'en'), `Chapter ${chapter.chapterId}: English Blueprint Word Note differs from canonical target.`);
+    assert.equal(normalizeHighlightText(target.ar.word, 'ar'), normalizeHighlightText(canonical.ar.word, 'ar'), `Chapter ${chapter.chapterId}: Arabic Blueprint Word Note differs from canonical target.`);
+    assert.equal(target.en.definition, canonical.en.definition, `Chapter ${chapter.chapterId}: English Word Note definition differs from canonical target.`);
+    assert.equal(target.ar.definition, canonical.ar.definition, `Chapter ${chapter.chapterId}: Arabic Word Note definition differs from canonical target.`);
   });
 }
 
@@ -73,6 +95,10 @@ const validateLanguage = (label: string, sourcePages: PageData[], outputPages: P
     const quick = output.exercises?.[0];
     assert.ok(quick?.id.startsWith('blueprint-adam-b1-quick-'), `${label} Chapter ${id}: Quick Challenge is not Blueprint-owned.`);
     validateExercise(quick, `${label} Chapter ${id} Quick`);
+
+    const blueprintChapter = adamB1LearningBlueprint.chapters.find(chapter => chapter.chapterId === id)!;
+    const expectedVocabulary = blueprintChapter.vocabularyTargets.map(target => ({ ...target[language] }));
+    assert.deepEqual(output.vocabulary ?? [], expectedVocabulary, `${label} Chapter ${id}: runtime Word Notes are not Blueprint-owned.`);
     (output.vocabulary ?? []).forEach(entry => {
       assert.ok(highlightPhraseOccurs(output.content, entry.word, language), `${label} Chapter ${id}: Word Note ${entry.word} is not in story prose.`);
     });
@@ -90,7 +116,7 @@ const validateLanguage = (label: string, sourcePages: PageData[], outputPages: P
   const final = page(outputPages, adamB1BlueprintConfig.finalChallengePageId, label);
   assert.equal(final.exercises?.length, 10, `${label}: Final Challenge must contain 10 activities.`);
   const finalTypes = new Set((final.exercises ?? []).map(exercise => exercise.type));
-  assert.ok(finalTypes.size >= 3, `${label}: Final Challenge must preserve at least three interaction types.`);
+  assert.deepEqual([...finalTypes].sort(), ['fill-blanks', 'matching', 'multiple-choice', 'true-false'], `${label}: Final Challenge interaction variety changed.`);
   (final.exercises ?? []).forEach((exercise, index) => {
     assert.ok(scoredTypes.has(exercise.type), `${label} Final ${index + 1}: unsupported Final type ${exercise.type}.`);
     validateExercise(exercise, `${label} Final ${index + 1}`);
@@ -114,7 +140,7 @@ assert.equal(adamB1BookDataAr.selfStudyGuide.length, 12, 'Adam B1 AR Self-Study 
 
 console.log('B1 Blueprint Contract: PASS');
 console.log('- Adam B1 EN/AR: 12 chapters, 38 unique assessment points');
-console.log('- Quick 12; Knowledge 8; Review 8; Final 10');
+console.log('- Quick 12; Knowledge 8; Review 8 (4 MC + 4 TF); Final 10 (4 scored interaction types)');
 console.log('- raw story prose and protected story fields unchanged');
 console.log('- Tap-Reveal restricted to two Quick Challenges');
 console.log('- Word Notes, glossaries, Teacher Guide and Self-Study Guide derive from the reviewed Blueprint path');
