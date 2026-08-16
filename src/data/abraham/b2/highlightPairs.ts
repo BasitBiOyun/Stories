@@ -69,11 +69,13 @@ export const abrahamB2ReviewedHighlightPairs: B2ReviewedPairSpecs = {
     {
       en: 'Reaching',
       ar: 'تبلُغ',
+      enDefinition: 'Extending or rising as far as a particular point or place.',
       arDefinition: 'تَصِلُ إِلَى نُقْطَةٍ أَوْ مَكَانٍ مُعَيَّنٍ.',
     },
     {
       en: 'Flames',
       ar: 'اللّهب',
+      enDefinition: 'The hot, glowing parts of a fire that rise and move in the air.',
       arDefinition: 'أَلْسِنَةُ النَّارِ الْمُتَوَهِّجَةُ وَالْحَارَّةُ.',
     },
   ],
