@@ -29,7 +29,7 @@ const countsFor = (config: LearningSystemConfig) => {
     final: config.finalCount ?? policy.finalCount,
   };
 };
-const localized = <T extends { en: unknown; ar: unknown }>(value: T, language: BlueprintLanguage) => value[language];
+const localized = <T,>(value: { en: T; ar: T }, language: BlueprintLanguage): T => value[language];
 const text = (value: unknown) => typeof value === 'string' ? value.trim() : '';
 
 const answerShape = (value: unknown) => Array.isArray(value) ? 'array' : value === null ? 'null' : typeof value;
