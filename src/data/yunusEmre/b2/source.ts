@@ -48,7 +48,7 @@ const needsEnglishAttribution = (word: string): boolean =>
   /vahdet-i vücut|true and only reality|absolute reality|initial unity|multiple existence|intellect|divine love|islamic mysticism|sufism|mystic|mystical|spiritual/i.test(word);
 
 const needsArabicAttribution = (word: string): boolean =>
-  /وحدة الوجود|الحقيقة|الوجود|العقل|الذهن|الكلي|الجزئي|الحب الالهي|التصوف|الصوفي|الصوفية|روحي|روحاني/.test(
+  /وحدة الوجود|الحقيقة|الوجود|العقل|الذهن|الكلي|الجزئي|الحب الالهي|التصوف|تصوف|الصوفي|الصوفية|صوفي|روحي|روحاني/.test(
     word.normalize('NFKD').replace(/\p{M}/gu, ''),
   );
 
