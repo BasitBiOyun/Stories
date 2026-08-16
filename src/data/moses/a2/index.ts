@@ -1,11 +1,10 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
-import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
 import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
 import { mosesA2GoldConfig } from './gold';
+import { mosesA2LearningBlueprint } from './learningBlueprint';
 import {
   mosesA2HighlightConfig,
   mosesA2HighlightTargets,
@@ -21,11 +20,17 @@ import {
   mosesA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
 
-const mosesA2StoryIds = Array.from({ length: 16 }, (_, index) => index + 1);
-
 const removeMisplacedChapterTwoHotspot = (pages: typeof mosesA2PagesFinalEn) => pages.map((page) => (
   page.id === 2 && page.type === 'story'
     ? { ...page, hotspots: (page.hotspots || []).filter((hotspot) => hotspot.id !== 'h2-3') }
+    : page
+));
+
+const MOSES_A2_CH11_AUDIO = 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F10_Chapter_11_The_Signs_of_Allah.mp3?alt=media&token=5ae1efb5-a3ed-4cd0-b6df-e0486199c964';
+
+const fixArabicChapterElevenAudio = (pages: typeof mosesA2PagesFinalAr) => pages.map((page) => (
+  page.id === 11 && page.type === 'story'
+    ? { ...page, audioUrl: MOSES_A2_CH11_AUDIO }
     : page
 ));
 
@@ -36,7 +41,7 @@ const mosesA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
 );
 const mosesA2PagesLockedAr = applyA2HotspotCopyOverrides(
   syncA2GlossariesFromStoryHighlights(
-    applyA2FinalStoryLanguageLock(removeMisplacedChapterTwoHotspot(mosesA2PagesFinalAr), 'musa', 'ar'),
+    applyA2FinalStoryLanguageLock(removeMisplacedChapterTwoHotspot(fixArabicChapterElevenAudio(mosesA2PagesFinalAr)), 'musa', 'ar'),
     mosesA2HighlightConfig,
     'ar',
   ),
@@ -56,12 +61,8 @@ const mosesA2Parallel = applyValidatedA2ParallelLearning({
   englishPages: mosesA2PagesLockedEn,
   arabicPages: mosesA2PagesLockedAr,
   config: mosesA2GoldConfig,
+  blueprint: mosesA2LearningBlueprint,
 });
-
-const mosesA2TeacherGuideFramedEn = buildA2ChapterTeacherGuide(mosesA2Parallel.englishPages, mosesA2StoryIds, 'en');
-const mosesA2TeacherGuideFramedAr = buildA2ChapterTeacherGuide(mosesA2Parallel.arabicPages, mosesA2StoryIds, 'ar');
-const mosesA2SelfStudyGuideFramedEn = buildA2ChapterSelfStudyGuide(mosesA2Parallel.englishPages, mosesA2StoryIds, 'en');
-const mosesA2SelfStudyGuideFramedAr = buildA2ChapterSelfStudyGuide(mosesA2Parallel.arabicPages, mosesA2StoryIds, 'ar');
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
@@ -69,9 +70,9 @@ export const mosesA2BookDataEn: BookData = {
   level: 'A2',
   baseFontSize: 13,
   pages: mosesA2Parallel.englishPages,
-  teacherGuide: mosesA2TeacherGuideFramedEn,
+  teacherGuide: mosesA2Parallel.englishTeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: mosesA2SelfStudyGuideFramedEn,
+  selfStudyGuide: mosesA2Parallel.englishSelfStudyGuide,
   studentGuideSections: mosesA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: mosesA2StudentGuideMetadataFinalEn,
   studentGuideText: mosesA2StudentGuideTextFinalEn,
@@ -83,9 +84,9 @@ export const mosesA2BookDataAr: BookData = {
   level: 'A2',
   baseFontSize: 14,
   pages: mosesA2Parallel.arabicPages,
-  teacherGuide: mosesA2TeacherGuideFramedAr,
+  teacherGuide: mosesA2Parallel.arabicTeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: mosesA2SelfStudyGuideFramedAr,
+  selfStudyGuide: mosesA2Parallel.arabicSelfStudyGuide,
   studentGuideSections: mosesA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: mosesA2StudentGuideMetadataFinalAr,
   studentGuideText: mosesA2StudentGuideTextFinalAr,
