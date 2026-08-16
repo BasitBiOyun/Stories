@@ -1,9 +1,14 @@
+import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
+import {
+  buildA2StudentGuideMetadata,
+  buildA2StudentGuideSections,
+  buildA2StudentGuideText,
+  buildA2TeacherGuideMetadata,
+} from '../../a2BookSupport';
 import { applyA2VocabularyGold } from '../../a2GoldVocabulary';
 import { applyA2HighlightStandard, type A2HighlightStandardConfig } from '../../a2HighlightStandard';
-import { applyA2ArabicDefinitionStandard } from '../../a2ArabicDefinitionStandard';
 import { yunusA2HighlightDefinitionsAr } from './highlightDefinitionsAr';
 import { yunusA2GoldConfig, yunusA2PagesGoldAr as basePagesAr, yunusA2PagesGoldEn as basePagesEn } from './gold';
-import { buildA2SelfStudyGuide, buildA2StudentGuideMetadata, buildA2StudentGuideSections, buildA2StudentGuideText, buildA2TeacherGuide, buildA2TeacherGuideMetadata } from '../../a2GoldFactory';
 
 type VocabularyReplacement = { word: string; definition?: string };
 type VocabularyOverrides = Record<number, Record<string, VocabularyReplacement>>;
@@ -80,8 +85,18 @@ const correctedBasePagesAr = applyVocabularyOverrides(basePagesAr, {
   },
 });
 
-const vocabularyGoldEn = applyA2VocabularyGold({ pages: correctedBasePagesEn, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'en' });
-const vocabularyGoldAr = applyA2VocabularyGold({ pages: correctedBasePagesAr, storyIds: yunusA2GoldConfig.storyIds, vocabularyPageId: 10, language: 'ar' });
+const vocabularyGoldEn = applyA2VocabularyGold({
+  pages: correctedBasePagesEn,
+  storyIds: yunusA2GoldConfig.storyIds,
+  vocabularyPageId: yunusA2GoldConfig.vocabularyPageId,
+  language: 'en',
+});
+const vocabularyGoldAr = applyA2VocabularyGold({
+  pages: correctedBasePagesAr,
+  storyIds: yunusA2GoldConfig.storyIds,
+  vocabularyPageId: yunusA2GoldConfig.vocabularyPageId,
+  language: 'ar',
+});
 
 export const yunusA2HighlightConfig: A2HighlightStandardConfig = {
   storyKey: 'Yunus Emre',
@@ -168,10 +183,6 @@ export const yunusA2HighlightTargets = standardized.targets;
 export const yunusA2PagesFinalEn = standardized.englishPages;
 export const yunusA2PagesFinalAr = standardized.arabicPages;
 
-export const yunusA2TeacherGuideFinalEn = buildA2TeacherGuide(yunusA2PagesFinalEn, yunusA2GoldConfig.storyIds, 'en');
-export const yunusA2TeacherGuideFinalAr = buildA2TeacherGuide(yunusA2PagesFinalAr, yunusA2GoldConfig.storyIds, 'ar');
-export const yunusA2SelfStudyGuideFinalEn = buildA2SelfStudyGuide(yunusA2PagesFinalEn, yunusA2GoldConfig.storyIds, 'en');
-export const yunusA2SelfStudyGuideFinalAr = buildA2SelfStudyGuide(yunusA2PagesFinalAr, yunusA2GoldConfig.storyIds, 'ar');
 export const yunusA2TeacherGuideMetadataFinalEn = buildA2TeacherGuideMetadata('Yunus Emre', yunusA2GoldConfig.storyIds.length, 'en');
 export const yunusA2TeacherGuideMetadataFinalAr = buildA2TeacherGuideMetadata('يونس إمره', yunusA2GoldConfig.storyIds.length, 'ar');
 export const yunusA2StudentGuideSectionsFinalEn = buildA2StudentGuideSections('en');
