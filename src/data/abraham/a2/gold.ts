@@ -1,21 +1,13 @@
-import {
-  applyA2GoldPages,
-  buildA2SelfStudyGuide,
-  buildA2StudentGuideMetadata,
-  buildA2StudentGuideSections,
-  buildA2StudentGuideText,
-  buildA2TeacherGuide,
-  buildA2TeacherGuideMetadata,
-  type A2HotspotMap,
-} from '../../a2GoldFactory';
-import { abrahamA2PagesEn } from './en/pages';
+import { applyA2SourceHotspots, type A2BookConfig, type A2HotspotMap } from '../../a2BookSupport';
 import { abrahamA2PagesAr } from './ar/pages';
+import { abrahamA2PagesEn } from './en/pages';
 
-const config = {
+export const abrahamA2GoldConfig: A2BookConfig = {
   storyIds: Array.from({ length: 14 }, (_, index) => index + 1),
   knowledgeCheckPageId: 15,
+  vocabularyPageId: 16,
   reviewPageId: 17,
-  glossaryPageIds: [18, 19] as [number, number],
+  glossaryPageIds: [18, 19],
   finalChallengePageId: 20,
 };
 
@@ -82,45 +74,18 @@ export const abrahamA2HotspotsGoldAr: A2HotspotMap = {
 };
 
 const applyAnimatedWordOverrides = (
-  pages: ReturnType<typeof applyA2GoldPages>,
+  pages: typeof abrahamA2PagesEn,
   overrides: Record<number, string[]>,
 ) => pages.map((page) => overrides[page.id] ? { ...page, animatedWords: overrides[page.id] } : page);
 
-const abrahamA2PagesGoldBaseEn = applyA2GoldPages({
-  canonicalPages: abrahamA2PagesEn,
-  hotspotMap: abrahamA2HotspotsGoldEn,
-  config,
-  language: 'en',
-});
+const baseEn = applyA2SourceHotspots({ pages: abrahamA2PagesEn, storyIds: abrahamA2GoldConfig.storyIds, hotspotMap: abrahamA2HotspotsGoldEn });
+const baseAr = applyA2SourceHotspots({ pages: abrahamA2PagesAr, storyIds: abrahamA2GoldConfig.storyIds, hotspotMap: abrahamA2HotspotsGoldAr });
 
-const abrahamA2PagesGoldBaseAr = applyA2GoldPages({
-  canonicalPages: abrahamA2PagesAr,
-  hotspotMap: abrahamA2HotspotsGoldAr,
-  config,
-  language: 'ar',
-});
-
-export const abrahamA2PagesGoldEn = applyAnimatedWordOverrides(abrahamA2PagesGoldBaseEn, {
+export const abrahamA2PagesGoldEn = applyAnimatedWordOverrides(baseEn, {
   8: ['trusted', 'dangerous'],
 });
 
-export const abrahamA2PagesGoldAr = applyAnimatedWordOverrides(abrahamA2PagesGoldBaseAr, {
+export const abrahamA2PagesGoldAr = applyAnimatedWordOverrides(baseAr, {
   8: ['يَثِقُ', 'الْخَطَرِ'],
   12: ['نَمُوتُ', 'رَكَضَتْ'],
 });
-
-export const abrahamA2TeacherGuideGoldEn = buildA2TeacherGuide(abrahamA2PagesGoldEn, config.storyIds, 'en');
-export const abrahamA2TeacherGuideGoldAr = buildA2TeacherGuide(abrahamA2PagesGoldAr, config.storyIds, 'ar');
-export const abrahamA2SelfStudyGuideGoldEn = buildA2SelfStudyGuide(abrahamA2PagesGoldEn, config.storyIds, 'en');
-export const abrahamA2SelfStudyGuideGoldAr = buildA2SelfStudyGuide(abrahamA2PagesGoldAr, config.storyIds, 'ar');
-
-export const abrahamA2TeacherGuideMetadataGoldEn = buildA2TeacherGuideMetadata('Prophet Abraham', config.storyIds.length, 'en');
-export const abrahamA2TeacherGuideMetadataGoldAr = buildA2TeacherGuideMetadata('قصة النبي إبراهيم', config.storyIds.length, 'ar');
-export const abrahamA2StudentGuideSectionsGoldEn = buildA2StudentGuideSections('en');
-export const abrahamA2StudentGuideSectionsGoldAr = buildA2StudentGuideSections('ar');
-export const abrahamA2StudentGuideMetadataGoldEn = buildA2StudentGuideMetadata('Prophet Abraham', 'en');
-export const abrahamA2StudentGuideMetadataGoldAr = buildA2StudentGuideMetadata('قصة النبي إبراهيم', 'ar');
-export const abrahamA2StudentGuideTextGoldEn = buildA2StudentGuideText('Prophet Abraham', 'en');
-export const abrahamA2StudentGuideTextGoldAr = buildA2StudentGuideText('قصة النبي إبراهيم', 'ar');
-
-export const abrahamA2GoldConfig = config;
