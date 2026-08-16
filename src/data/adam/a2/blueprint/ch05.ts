@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, guideBundle, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter05: LearningBlueprintChapter = {
   chapterId: 5,
@@ -41,9 +41,11 @@ export const adamA2Chapter05: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c5-knowledge', learningPointId: 'adam-a2-c5-never-die', eligibleStages: ['knowledge'],
-      exercise: tap(
-        L('What did Iblis say would happen if Adam and Eve ate from the tree?', 'ماذا قال إبليس إنّه سيحدث إذا أكل آدم وحواء من الشجرة؟'),
-        L('He said they would never die.', 'قال إنهما لن يموتا أبدًا.'),
+      exercise: fill(
+        L('Complete Iblis’s claim from the chapter.', 'أكمل كلام إبليس كما ورد في الفصل.'),
+        L('If you eat from that one tree, you will never [blank].', 'إِذا أَكَلْتُما مِنْ ثَمَرِ تِلْكَ الشَّجَرَةِ، فَلَنْ [blank] أَبَدًا.'),
+        L('die', 'تَموتا'),
+        L('Iblis told them they would never die.', 'قال إبليس إنهما لن يموتا أبدًا.'),
       ),
     },
     {
