@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import type { BookData, Exercise } from '../../src/types';
 import { abrahamB2BookDataEn, abrahamB2BookDataAr } from '../../src/data/abraham/b2';
-import { mosesB2BookDataEn, mosesB2BookDataAr } from '../../src/data/moses/b2';
 import { meccaB2BookDataEn, meccaB2BookDataAr } from '../../src/data/mecca/b2';
 import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from '../../src/data/yunusEmre/b2';
 
@@ -9,8 +8,6 @@ import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from '../../src/data/yun
 const books: { label: string; book: BookData }[] = [
   { label: 'Abraham B2 EN', book: abrahamB2BookDataEn },
   { label: 'Abraham B2 AR', book: abrahamB2BookDataAr },
-  { label: 'Moses B2 EN', book: mosesB2BookDataEn },
-  { label: 'Moses B2 AR', book: mosesB2BookDataAr },
   { label: 'Mecca B2 EN', book: meccaB2BookDataEn },
   { label: 'Mecca B2 AR', book: meccaB2BookDataAr },
   { label: 'Yunus Emre B2 EN', book: yunusEmreB2BookDataEn },
@@ -58,7 +55,7 @@ for (const { label, book } of books) {
 
 console.log('B2 legacy Gold cross-book contract: PASS');
 console.log(`- ${books.length} unmigrated EN/AR B2 variants loaded`);
-console.log('- Adam B2 is intentionally excluded because it is validated by validateB2Blueprints.ts');
+console.log('- Adam and Moses B2 are excluded because they are validated by validateB2Blueprints.ts');
 console.log('- objective items have evidence explanations');
 console.log('- correct and incorrect feedback are useful, not generic');
 console.log('- MC/TF answer structures are valid');
