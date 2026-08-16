@@ -1,14 +1,12 @@
 import assert from 'node:assert/strict';
 import type { BookData, Exercise } from '../../src/types';
-import { adamB2BookDataEn, adamB2BookDataAr } from '../../src/data/adam/b2';
 import { abrahamB2BookDataEn, abrahamB2BookDataAr } from '../../src/data/abraham/b2';
 import { mosesB2BookDataEn, mosesB2BookDataAr } from '../../src/data/moses/b2';
 import { meccaB2BookDataEn, meccaB2BookDataAr } from '../../src/data/mecca/b2';
 import { yunusEmreB2BookDataEn, yunusEmreB2BookDataAr } from '../../src/data/yunusEmre/b2';
 
+/** Temporary cross-book Gold contract for B2 books not yet migrated to Blueprint. */
 const books: { label: string; book: BookData }[] = [
-  { label: 'Adam B2 EN', book: adamB2BookDataEn },
-  { label: 'Adam B2 AR', book: adamB2BookDataAr },
   { label: 'Abraham B2 EN', book: abrahamB2BookDataEn },
   { label: 'Abraham B2 AR', book: abrahamB2BookDataAr },
   { label: 'Moses B2 EN', book: mosesB2BookDataEn },
@@ -58,8 +56,9 @@ for (const { label, book } of books) {
   assert.ok(objectiveCount >= 10, `${label}: effective book contains too few objective Gold items.`);
 }
 
-console.log('B2 Gold cross-book contract: PASS');
-console.log('- all 10 EN/AR B2 variants loaded');
+console.log('B2 legacy Gold cross-book contract: PASS');
+console.log(`- ${books.length} unmigrated EN/AR B2 variants loaded`);
+console.log('- Adam B2 is intentionally excluded because it is validated by validateB2Blueprints.ts');
 console.log('- objective items have evidence explanations');
 console.log('- correct and incorrect feedback are useful, not generic');
 console.log('- MC/TF answer structures are valid');
