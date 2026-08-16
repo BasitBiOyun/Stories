@@ -68,8 +68,8 @@ const addArabicPrefixForms = (forms: Set<string>, value: string): void => {
   }
   if (value.startsWith('س') && value.length > 3) add(value.slice(1));
   if (value.startsWith('بال') && value.length > 4) {
-    add(value.slice(1)); // بالكتاب -> الكتاب
-    add(value.slice(3)); // بالكتاب -> كتاب (only retained if >= 3 letters)
+    add(value.slice(1));
+    add(value.slice(3));
   }
   if (value.startsWith('كال') && value.length > 4) {
     add(value.slice(1));
@@ -108,12 +108,9 @@ export const arabicTokenForms = (raw: string): Set<string> => {
         forms.add(value.slice(0, -suffix.length));
       }
     }
-    // Some source files omit tanwin while keeping its supporting final alif
-    // (for example متكبرا). Treat that final alif as an inflectional surface form.
     if (value.endsWith('ا') && value.length > 4) forms.add(value.slice(0, -1));
   }
 
-  // Prefixes may become visible only after a suffix is removed.
   for (const value of [...forms]) addArabicPrefixForms(forms, value);
   return forms;
 };
@@ -145,6 +142,20 @@ export const highlightPhraseMatches = (
   return requestedTokens.every((token, index) => highlightTokenMatches(surfaceTokens[index], token, language));
 };
 
+const tokenSequenceOccurs = (
+  contentTokens: string[],
+  phraseTokens: string[],
+  language: HighlightLanguage,
+): boolean => {
+  for (let start = 0; start <= contentTokens.length - phraseTokens.length; start += 1) {
+    const matches = phraseTokens.every((token, offset) => (
+      highlightTokenMatches(contentTokens[start + offset], token, language)
+    ));
+    if (matches) return true;
+  }
+  return false;
+};
+
 export const highlightPhraseOccurs = (
   content: string,
   phrase: string,
@@ -154,11 +165,14 @@ export const highlightPhraseOccurs = (
   const phraseTokens = rawTokens(phrase, language);
   if (!phraseTokens.length) return false;
 
-  for (let start = 0; start <= contentTokens.length - phraseTokens.length; start += 1) {
-    const matches = phraseTokens.every((token, offset) => (
-      highlightTokenMatches(contentTokens[start + offset], token, language)
-    ));
-    if (matches) return true;
+  if (tokenSequenceOccurs(contentTokens, phraseTokens, language)) return true;
+
+  // Reviewed English evidence may include a sentence-initial definite article
+  // that the raw prose omits (or vice versa). Limit this tolerance to a leading
+  // "the" so semantic content words still have to match in order.
+  if (language === 'en' && phraseTokens[0] === 'the' && phraseTokens.length > 1) {
+    return tokenSequenceOccurs(contentTokens, phraseTokens.slice(1), language);
   }
+
   return false;
 };
