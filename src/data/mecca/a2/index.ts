@@ -1,11 +1,10 @@
 import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { buildA2ChapterTeacherGuide } from '../../a2ChapterTeacherGuide';
-import { buildA2ChapterSelfStudyGuide } from '../../a2ChapterSelfStudyGuide';
 import { syncA2GlossariesFromStoryHighlights, validateA2HighlightStandard } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
-import { applyValidatedA2ParallelLearning } from '../../a2ParallelLearningGuard';
+import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
 import { meccaA2GoldConfig } from './gold';
+import { meccaA2LearningBlueprint } from './learningBlueprint';
 import {
   meccaA2HighlightConfig,
   meccaA2HighlightTargets,
@@ -50,26 +49,22 @@ const meccaA2PagesLockedAr = applyA2HotspotCopyOverrides(
 
 validateA2HighlightStandard(meccaA2PagesLockedEn, meccaA2PagesLockedAr, meccaA2HighlightTargets, meccaA2HighlightConfig);
 
-const meccaA2Parallel = applyValidatedA2ParallelLearning({
+const meccaA2 = runA2BlueprintSystem({
   englishPages: meccaA2PagesLockedEn,
   arabicPages: meccaA2PagesLockedAr,
-  config: meccaA2GoldConfig,
+  config: { ...meccaA2GoldConfig, vocabularyPageId: 15 },
+  blueprint: meccaA2LearningBlueprint,
 });
-
-const meccaA2TeacherGuideEn = buildA2ChapterTeacherGuide(meccaA2Parallel.englishPages, meccaA2HighlightConfig.storyIds, 'en');
-const meccaA2TeacherGuideAr = buildA2ChapterTeacherGuide(meccaA2Parallel.arabicPages, meccaA2HighlightConfig.storyIds, 'ar');
-const meccaA2SelfStudyGuideEn = buildA2ChapterSelfStudyGuide(meccaA2Parallel.englishPages, meccaA2HighlightConfig.storyIds, 'en');
-const meccaA2SelfStudyGuideAr = buildA2ChapterSelfStudyGuide(meccaA2Parallel.arabicPages, meccaA2HighlightConfig.storyIds, 'ar');
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: meccaA2Parallel.englishPages,
-  teacherGuide: meccaA2TeacherGuideEn,
+  pages: meccaA2.englishPages,
+  teacherGuide: meccaA2.englishTeacherGuide,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalEn,
-  selfStudyGuide: meccaA2SelfStudyGuideEn,
+  selfStudyGuide: meccaA2.englishSelfStudyGuide,
   studentGuideSections: meccaA2StudentGuideSectionsFinalEn,
   studentGuideMetadata: meccaA2StudentGuideMetadataFinalEn,
   studentGuideText: meccaA2StudentGuideTextFinalEn,
@@ -80,10 +75,10 @@ export const meccaA2BookDataAr: BookData = {
   title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: meccaA2Parallel.arabicPages,
-  teacherGuide: meccaA2TeacherGuideAr,
+  pages: meccaA2.arabicPages,
+  teacherGuide: meccaA2.arabicTeacherGuide,
   teacherGuideMetadata: meccaA2TeacherGuideMetadataFinalAr,
-  selfStudyGuide: meccaA2SelfStudyGuideAr,
+  selfStudyGuide: meccaA2.arabicSelfStudyGuide,
   studentGuideSections: meccaA2StudentGuideSectionsFinalAr,
   studentGuideMetadata: meccaA2StudentGuideMetadataFinalAr,
   studentGuideText: meccaA2StudentGuideTextFinalAr,
