@@ -9,10 +9,9 @@ import {
 } from '../../a2BookSupport';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
-import { adamA2PagesQualityFinalized } from './en/qualityFinalization';
-import { adamA2PagesArQualityFinalized } from './ar/qualityFinalization';
 import { validateAdamA2HighlightContract } from './highlightValidation';
 import { adamA2LearningBlueprint } from './learningBlueprint';
+import { adamA2SourcePagesAr, adamA2SourcePagesEn } from './source';
 
 const adamA2Config: A2BookConfig = {
   storyIds: Array.from({ length: 10 }, (_, index) => index + 1),
@@ -24,12 +23,12 @@ const adamA2Config: A2BookConfig = {
 };
 
 const adamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en'),
+  applyA2FinalStoryLanguageLock(adamA2SourcePagesEn, 'adam', 'en'),
   { storyIds: adamA2Config.storyIds, glossaryPageIds: adamA2Config.glossaryPageIds },
   'en',
 );
 const adamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar'),
+  applyA2FinalStoryLanguageLock(adamA2SourcePagesAr, 'adam', 'ar'),
   { storyIds: adamA2Config.storyIds, glossaryPageIds: adamA2Config.glossaryPageIds },
   'ar',
 );
