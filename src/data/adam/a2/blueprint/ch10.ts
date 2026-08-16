@@ -1,5 +1,5 @@
 import type { LearningBlueprintChapter } from '../../../learningBlueprint';
-import { L, guideBundle, mc, tap, tf, vocabularyTargetsFor } from './helpers';
+import { L, fill, guideBundle, mc, tf, vocabularyTargetsFor } from './helpers';
 
 export const adamA2Chapter10: LearningBlueprintChapter = {
   chapterId: 10,
@@ -41,9 +41,11 @@ export const adamA2Chapter10: LearningBlueprintChapter = {
     },
     {
       id: 'adam-a2-c10-knowledge', learningPointId: 'adam-a2-c10-message-spread', eligibleStages: ['knowledge'],
-      exercise: tap(
-        L('Who spread Adam’s message worldwide?', 'من نشر رسالة آدم في كل العالم؟'),
-        L('His children and grandchildren.', 'أولاده وأحفاده.'),
+      exercise: fill(
+        L('Complete the sentence about how Adam’s message continued.', 'أكمل الجملة عن استمرار رسالة آدم.'),
+        L('His children and [blank] spread his message worldwide.', 'نَشَرَ أَوْلَادُهُ وَ[blank] رِسَالَتَهُ فِي كُلِّ الْعَالَمِ.'),
+        L('grandchildren', 'أَحْفَادُهُ'),
+        L('Adam’s children and grandchildren spread his message worldwide.', 'نشر أولاد آدم وأحفاده رسالته في كل العالم.'),
       ),
     },
     {
