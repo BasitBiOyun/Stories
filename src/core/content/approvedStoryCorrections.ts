@@ -25,7 +25,7 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
 
   // Adam B2
   { storyId: 'adam', level: 'B2', pageId: 1, from: 'provides us a uniquely key', to: 'provides us with a uniquely key' },
-  { storyId: 'adam', level: 'B2', pageId: 7, from: 'he felt his heart tighten and was filled with pain', to: 'he felt his heart tighten and become filled with pain' },
+  { storyId: 'adam', level: 'B2', pageId: 7, from: 'he felt his heart tighten and filled with pain', to: 'he felt his heart tighten and become filled with pain' },
   { storyId: 'adam', level: 'B2', pageId: 17, from: 'Satan, too acknowledges', to: 'Satan, too, acknowledges' },
   { storyId: 'adam', level: 'B2', pageId: 17, from: 'beacuse', to: 'because' },
 
