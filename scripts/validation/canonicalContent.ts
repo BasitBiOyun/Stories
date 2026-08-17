@@ -2,6 +2,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
+import type { StoryId } from '../../src/core/content/contracts';
+import { restoreApprovedEnglishStoryCorrectionsForBaseline } from '../../src/core/content/approvedStoryCorrections';
 import { isLearningReferenceTitle } from '../../src/data/learningPageRoles';
 import { restoreYunusA2ArabicPoemProse, restoreYunusA2LockedPoemProse } from '../../src/data/yunusEmre/a2/poemCard';
 
@@ -39,7 +41,7 @@ const outputArgIndex = args.indexOf('--output');
 const outputPath = outputArgIndex >= 0 ? resolve(args[outputArgIndex + 1]) : defaultPath;
 
 const normalizeApprovedMechanicalFixesForBaseline = (
-  storyId: string,
+  storyId: StoryId,
   level: string,
   language: 'en' | 'ar',
   pageId: number,
@@ -52,6 +54,9 @@ const normalizeApprovedMechanicalFixesForBaseline = (
       : restoreYunusA2ArabicPoemProse(content);
   }
   if (language !== 'en') return content;
+
+  content = restoreApprovedEnglishStoryCorrectionsForBaseline(storyId, level as 'A2' | 'B1' | 'B2', pageId, content);
+
   if (storyId === 'yunusEmre' && level === 'B1' && pageId === 8) return content.replaceAll('Tawhid', '**Tawhid**');
   if (level !== 'A2') return content;
   if (storyId === 'adam' && pageId === 7) return content.replaceAll('They also had lots of children.', 'They had also lots of children.');
