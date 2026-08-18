@@ -76,3 +76,5 @@ export const yunusA2FinalReviewExercisesAr: Exercise[] = [
     ]
   }
 ];
+
+export const exercises = yunusA2FinalReviewExercisesAr;
