@@ -20,6 +20,7 @@
     "validate": "node scripts/validation/runDeployChecks.mjs --checks-only",
     "validate:deploy": "node scripts/validation/runDeployChecks.mjs",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
+    "validate:structure": "tsx scripts/validation/validateLearningStructure.ts",
     "canonical:generate": "tsx scripts/validation/canonicalContent.ts --write",
     "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
     "diagnose:b2-highlight-pairs": "tsx scripts/validation/diagnoseB2HighlightPairs.ts"
