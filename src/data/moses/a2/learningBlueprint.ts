@@ -4,13 +4,13 @@ import { mosesA2Chapters01to04 } from './blueprint/chapters01to04';
 import { mosesA2Chapters05to08 } from './blueprint/chapters05to08';
 import { mosesA2Chapters09to12 } from './blueprint/chapters09to12';
 import { mosesA2Chapters13to16 } from './blueprint/chapters13to16';
+import { applyMosesA2FinalPedagogy } from './blueprint/finalPedagogy';
+import { upgradeMosesA2ChapterToGoldV2 } from './blueprint/goldV2';
 
 /**
- * Final whole-book semantic pass.
- *
- * The Moses narrative intentionally repeats some signs in Chapters 10–13.
- * The story keeps that repetition, but the assessment path should not keep
- * asking the learner to identify the same stick/hand transformation again.
+ * The signs intentionally recur in Chapters 10–13. Keep that narrative
+ * repetition, but prevent the supporting assessment pool from asking the same
+ * transformation in every stage.
  */
 const applyCrossChapterAssessmentDiversity = (chapters: LearningBlueprintChapter[]) => chapters.map((chapter) => {
   if (chapter.chapterId === 12) {
@@ -64,8 +64,8 @@ const applyCrossChapterAssessmentDiversity = (chapters: LearningBlueprintChapter
             exercise: mc(
               L('What happened to what the magicians had made?', 'ماذا حدث لما صنعه السحرة؟'),
               {
-                en: ['The huge snake swallowed it', 'It opened the Red Sea', 'It became a palace'],
-                ar: ['ابتلعه الثعبان الضخم', 'فتح البحر الأحمر', 'تحول إلى قصر'],
+                en: ['The huge snake swallowed it', 'It opened the sea', 'It became a palace'],
+                ar: ['ابتلعه الثعبان الضخم', 'فتح البحر', 'تحول إلى قصر'],
               },
               0,
               L('The chapter says the huge snake swallowed what the magicians had made.', 'يقول الفصل إن الثعبان الضخم ابتلع ما صنعه السحرة.'),
@@ -84,11 +84,6 @@ const STAGE_CHAPTER_PLAN: Record<Exclude<BlueprintStage, 'quick'>, ReadonlySet<n
   final: new Set([1, 2, 4, 6, 8, 9, 11, 12, 15, 16]),
 };
 
-/**
- * Moses A2 is longer than the ten-chapter pilot. Keep one Quick activity in
- * every chapter, then explicitly distribute the whole-book stages so early
- * chapters cannot crowd out the middle and ending of the story.
- */
 const applyWholeBookStageCoverage = (chapters: LearningBlueprintChapter[]) => chapters.map(chapter => ({
   ...chapter,
   assessmentItems: chapter.assessmentItems.filter(item => {
@@ -104,52 +99,54 @@ const chapters = applyWholeBookStageCoverage(applyCrossChapterAssessmentDiversit
   ...mosesA2Chapters05to08,
   ...mosesA2Chapters09to12,
   ...mosesA2Chapters13to16,
-]));
+]))
+  .map(upgradeMosesA2ChapterToGoldV2)
+  .map(applyMosesA2FinalPedagogy);
 
 export const mosesA2LearningBlueprint = defineLearningBlueprint({
   id: 'moses-a2',
-  version: '1.0.2',
+  version: '2.1.0',
   storyId: 'moses',
   level: 'A2',
   status: 'pedagogy-reviewed',
   chapters,
   wholeBook: {
     knowledgeCheck: {
-      title: { en: 'Knowledge Check: Moses (pbuh)', ar: 'اختبار المعرفة: موسى عليه السلام' },
+      title: { en: 'Moses A2 Knowledge Check', ar: 'اختبار الفهم — موسى A2' },
       content: {
-        en: 'Check eight different ideas distributed across the whole story. Each question targets a learning point that is not used in the Quick Challenges, Review, or Final Challenge.',
-        ar: 'تحقق من ثماني أفكار موزعة على القصة كلها. كل سؤال يقيس نقطة تعلم لا تتكرر في التحديات السريعة أو المراجعة أو التحدي النهائي.',
+        en: 'Use story evidence to answer eight questions from across the sixteen chapters. Each question checks a different important idea.',
+        ar: 'استخدم أدلة من القصة للإجابة عن ثمانية أسئلة من الفصول الستة عشر. يقيس كل سؤال فكرة مهمة مختلفة.',
       },
     },
     vocabularyChallenge: {
-      title: { en: 'Vocabulary Challenge', ar: 'تحدي المفردات' },
+      title: { en: 'Moses A2 Vocabulary Challenge', ar: 'تحدي المفردات — موسى A2' },
       content: {
-        en: 'Match six reviewed Word Notes from the story with their meanings.',
-        ar: 'صل ست كلمات مراجعة من ملاحظات المفردات بمعانيها.',
+        en: 'Match six carefully selected story words with their meanings in context.',
+        ar: 'صل ست كلمات منتقاة بعناية من القصة بمعانيها في السياق.',
       },
     },
     review: {
-      title: { en: 'Review Challenge', ar: 'تحدي المراجعة' },
+      title: { en: 'Moses A2 Retrieval Review', ar: 'مراجعة الاسترجاع — موسى A2' },
       content: {
-        en: 'Review eight different story ideas from chapters not used in the Knowledge Check.',
-        ar: 'راجع ثماني أفكار مختلفة من فصول لا يستخدمها اختبار المعرفة.',
+        en: 'Use sequencing, matching, reflection, and an eight-question retrieval game to reconnect the main story ideas before the Final Challenge.',
+        ar: 'استخدم ترتيب الأحداث والمطابقة والتأمل ولعبة استرجاع من ثمانية أسئلة لربط أفكار القصة الرئيسة قبل التحدي النهائي.',
       },
     },
     finalChallenge: {
-      title: { en: 'Final Challenge: Moses (pbuh)', ar: 'التحدي النهائي: موسى عليه السلام' },
+      title: { en: 'Moses A2 Final Challenge', ar: 'التحدي النهائي — موسى A2' },
       content: {
-        en: 'Complete ten final activities distributed across the beginning, middle, and end of the story. The final uses multiple-choice, true/false, matching, and fill-blanks without Tap-Reveal.',
-        ar: 'أكمل عشرة أنشطة نهائية موزعة على بداية القصة ووسطها ونهايتها. يستخدم التحدي النهائي الاختيار من متعدد والصحيح والخطأ والمطابقة وإكمال الفراغات دون أنشطة الكشف بالنقر.',
+        en: 'Complete ten final activities about causes, choices, responses, turning points, and lessons from the beginning, middle, and end of the story—not random details.',
+        ar: 'أكمل عشرة أنشطة نهائية عن الأسباب والاختيارات وردود الأفعال ونقاط التحول والدروس من بداية القصة ووسطها ونهايتها، لا التفاصيل العشوائية.',
       },
     },
     glossary: [
       {
-        title: { en: 'Master Glossary - Part 1', ar: 'القاموس الشامل - الجزء الأول' },
-        content: { en: 'Reviewed Word Notes from Chapters 1–8.', ar: 'ملاحظات المفردات المراجعة من الفصول 1–8.' },
+        title: { en: 'Moses A2 Master Glossary — Chapters 1–8', ar: 'المعجم الشامل — موسى A2 — الفصول 1–8' },
+        content: { en: 'All reviewed Word Notes from Chapters 1–8.', ar: 'جميع ملاحظات المفردات المراجعة من الفصول 1–8.' },
       },
       {
-        title: { en: 'Master Glossary - Part 2', ar: 'القاموس الشامل - الجزء الثاني' },
-        content: { en: 'Reviewed Word Notes from Chapters 9–16.', ar: 'ملاحظات المفردات المراجعة من الفصول 9–16.' },
+        title: { en: 'Moses A2 Master Glossary — Chapters 9–16', ar: 'المعجم الشامل — موسى A2 — الفصول 9–16' },
+        content: { en: 'All reviewed Word Notes from Chapters 9–16.', ar: 'جميع ملاحظات المفردات المراجعة من الفصول 9–16.' },
       },
     ],
   },
