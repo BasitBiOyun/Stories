@@ -1,6 +1,11 @@
 import { BookData } from '../../../types';
 import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
 import {
+  polishB1GuideSections,
+  sanitizeB1StudentGuideSections,
+  sanitizeB1StudentGuideText,
+} from '../../b1GuidePresentation';
+import {
   buildB1GoldStudentGuideMetadata,
   buildB1GoldStudentGuideSections,
   buildB1GoldStudentGuideText,
@@ -47,6 +52,14 @@ const pagesAr = applyB1CuratedVocabulary(
 
 const teacherMetadataEn = buildB1GoldTeacherGuideMetadata(meccaB1TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length);
 const teacherMetadataAr = buildB1GoldTeacherGuideMetadata(meccaB1TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length);
+const teacherGuideEn = polishB1GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
+const teacherGuideAr = polishB1GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
+const selfStudyGuideEn = polishB1GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
+const selfStudyGuideAr = polishB1GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
+const studentSectionsEn = sanitizeB1StudentGuideSections(buildB1GoldStudentGuideSections(story, 'en'));
+const studentSectionsAr = sanitizeB1StudentGuideSections(buildB1GoldStudentGuideSections(story, 'ar'));
+const studentTextEn = sanitizeB1StudentGuideText(buildB1GoldStudentGuideText(goldBlueprint, story, 'en'), 'en');
+const studentTextAr = sanitizeB1StudentGuideText(buildB1GoldStudentGuideText(goldBlueprint, story, 'ar'), 'ar');
 
 export const meccaB1GoldConfig = prepared.config;
 
@@ -56,11 +69,11 @@ export const meccaB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 13,
   pages: pagesEn,
-  teacherGuide: compiled.englishTeacherGuide,
+  teacherGuide: teacherGuideEn,
   teacherGuideMetadata: teacherMetadataEn,
-  selfStudyGuide: compiled.englishSelfStudyGuide,
-  studentGuideSections: buildB1GoldStudentGuideSections(story, 'en'),
-  studentGuideText: buildB1GoldStudentGuideText(goldBlueprint, story, 'en'),
+  selfStudyGuide: selfStudyGuideEn,
+  studentGuideSections: studentSectionsEn,
+  studentGuideText: studentTextEn,
   studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'en'),
 };
 
@@ -70,11 +83,11 @@ export const meccaB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: pagesAr,
-  teacherGuide: compiled.arabicTeacherGuide,
+  teacherGuide: teacherGuideAr,
   teacherGuideMetadata: teacherMetadataAr,
-  selfStudyGuide: compiled.arabicSelfStudyGuide,
-  studentGuideSections: buildB1GoldStudentGuideSections(story, 'ar'),
-  studentGuideText: buildB1GoldStudentGuideText(goldBlueprint, story, 'ar'),
+  selfStudyGuide: selfStudyGuideAr,
+  studentGuideSections: studentSectionsAr,
+  studentGuideText: studentTextAr,
   studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'ar'),
 };
 
