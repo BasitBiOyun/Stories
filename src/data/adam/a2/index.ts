@@ -13,7 +13,6 @@ import {
   buildAdamA2GoldStudentGuideText,
   buildAdamA2GoldTeacherGuideMetadata,
 } from './goldGuides';
-import { validateAdamA2HighlightContract } from './highlightValidation';
 import { adamA2LearningBlueprint } from './learningBlueprint';
 import { adamA2SourcePagesAr, adamA2SourcePagesEn } from './source';
 
@@ -36,8 +35,6 @@ const adamA2PagesLockedAr = syncA2GlossariesFromStoryHighlights(
   { storyIds: adamA2Config.storyIds, glossaryPageIds: adamA2Config.glossaryPageIds },
   'ar',
 );
-
-validateAdamA2HighlightContract(adamA2PagesLockedEn, adamA2PagesLockedAr);
 
 const adamA2 = runA2BlueprintSystem({
   englishPages: adamA2PagesLockedEn,

@@ -57,19 +57,16 @@ const quickByChapter: Record<number, QuickSpec> = {
   2: {
     exercise: namedQuick(
       L('Show Respect', 'إظهار الاحترام'),
-      mc(
-        L('What did Allah tell the angels to do after Adam was given life?', 'ماذا أمر الله الملائكة أن تفعل بعد أن أُعطي آدم الحياة؟'),
-        {
-          en: ['Show respect to Adam', 'Leave Paradise', 'Collect more soil'],
-          ar: ['أن يظهروا الاحترام لآدم', 'أن يغادروا الجنة', 'أن يجمعوا مزيدًا من التراب'],
-        },
-        0,
+      fill(
+        L('Complete what Allah told the angels to do.', 'أكمل ما أمر الله الملائكة أن تفعل.'),
+        L('Show [blank] to Adam.', 'أظهروا [blank] لآدم.'),
+        L('respect', 'الاحترام'),
         L('Allah told the angels to show respect to Adam.', 'أمر الله الملائكة أن يظهروا الاحترام لآدم.'),
       ),
     ),
     retry: L(
-      'Read the first command in Chapter 2 and find what the angels were told to do.',
-      'اقرأ الأمر الأول في الفصل الثاني وحدد ما طُلب من الملائكة أن يفعلوه.',
+      'Read the first command in Chapter 2. What did Allah tell the angels to show Adam?',
+      'اقرأ الأمر الأول في الفصل الثاني. ماذا أمر الله الملائكة أن يظهروا لآدم؟',
     ),
   },
   3: {
