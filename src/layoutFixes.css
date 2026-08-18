@@ -1,0 +1,21 @@
+/* Glossary: keep the compact desktop layout inside the page frame. */
+@media (min-width: 1024px) {
+  .lg\:-my-3 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .lg\:h-\[calc\(100\%\+1\.5rem\)\] {
+    height: 100% !important;
+  }
+}
+
+/* Story hotspots must always sit above the decorative image gradient. */
+.absolute.inset-0.pointer-events-none:has(.group\/hotspot) {
+  z-index: 20;
+}
+
+.group\/hotspot {
+  position: relative;
+  z-index: 30;
+}
