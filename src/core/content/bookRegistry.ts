@@ -1,5 +1,6 @@
 import type { Level } from '../../types';
 import { abrahamA2BookDataAr, abrahamA2BookDataEn } from '../../data/abraham/a2';
+import { meccaA2BookDataAr, meccaA2BookDataEn } from '../../data/mecca/a2';
 import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../data/moses/a2';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
@@ -110,10 +111,7 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('mecca', 'A2', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
-  }, async () => {
-    const module = await import('../../data/mecca/a2');
-    return { en: module.meccaA2BookDataEn, ar: module.meccaA2BookDataAr };
-  }),
+  }, async () => ({ en: meccaA2BookDataEn, ar: meccaA2BookDataAr }), true),
   createDefinition('mecca', 'B1', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
