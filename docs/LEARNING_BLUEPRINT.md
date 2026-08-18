@@ -26,6 +26,28 @@ The shared compiler validates evidence and vocabulary against story prose, enfor
 
 It must not invent a new factual claim, learning point, question, answer or guide idea.
 
+## Quality Contract v2
+
+The existing Blueprint architecture is not replaced. It is extended by the Ministry/Gold quality layer defined in:
+
+`docs/QUALITY_ALIGNMENT_STANDARD_V2.md`
+
+and implemented in:
+
+`src/data/learningQualityContract.ts`
+
+A legacy blueprint remains runtime-compatible while it omits `qualityContractVersion`.
+
+A book opts into the strict gate with:
+
+```ts
+qualityContractVersion: '2.0'
+```
+
+Once opted in, every chapter must provide a Learning Map with universal learning outcomes, TYMM and CEFR alignment, success criteria, language targets, linked evidence, assessment-quality metadata, authored diagnostic feedback and structured Teacher/Self-Study Guide fields. Incomplete v2 books are rejected by `defineLearningBlueprint`.
+
+This staged migration is deliberate: existing books continue to work, but no book can be called Gold/Ministry-ready until it has migrated to v2 and completed human review.
+
 ## Assessment rules
 
 - one learning point is assessed once only
@@ -35,6 +57,8 @@ It must not invent a new factual claim, learning point, question, answer or guid
 - Review contains 8 authored items and uses exactly 4 MC + 4 TF before quiz-game compilation
 - Final contains 10 scored items and preserves MC, TF, matching and fill-blanks variety
 - Vocabulary Challenge uses the level policy only when the book has that page
+
+For v2 books, additional integrity gates reject duplicate MC options, duplicate matching left/right values, invalid MC answer indices, missing `[blank]`, EN/AR exercise-type divergence, missing learning-outcome links and generic/unapproved feedback.
 
 ## Source safeguards
 
@@ -49,3 +73,5 @@ Book-specific validators add historical, religious, attribution and page-surface
 - `b2BlueprintSystem.ts`
 
 The machine-readable level counts and CEFR expectations live in `learningLevelPolicy.ts`.
+
+The durable alignment and Ministry/Gold acceptance rules live in `learningQualityContract.ts` and `docs/QUALITY_ALIGNMENT_STANDARD_V2.md`.
