@@ -13,7 +13,6 @@ const cleanCurriculumText = (value: string): string => value
     /TYMM\s+YD(?:AB|DB)\d+\s+(?:(?:supporting|primary)|(?:داعم|أساسي))\s*(?:\+\s*CEFR\s+B1)?\s*:\s*/gi,
     '',
   )
-  .replace(/\s{2,}/g, ' ')
   .trim();
 
 /**
