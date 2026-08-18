@@ -1,4 +1,11 @@
 import type { Exercise, Level, TeacherGuideSection } from '../types';
+import {
+  validateBlueprintV2QualityContract,
+  type BlueprintAssessmentQuality,
+  type BlueprintChapterLearningMap,
+  type BlueprintGuideQualityFields,
+  type QualityContractVersion,
+} from './learningQualityContract';
 
 export type BlueprintLanguage = 'en' | 'ar';
 export type BlueprintStage = 'quick' | 'knowledge' | 'review' | 'final';
@@ -29,6 +36,8 @@ export interface BlueprintEvidencePoint {
   claim: LocalizedText;
   /** Exact or near-exact chapter wording used by validators to prove that the learning point is story-grounded. */
   evidence: LocalizedText;
+  /** Required by the v2 quality contract; optional only while a legacy book remains on v1. */
+  learningOutcomeId?: string;
 }
 
 export interface BlueprintVocabularyTarget {
@@ -44,15 +53,19 @@ export interface BlueprintAssessmentItem {
   id: string;
   /** Must reference an evidence point in the same chapter. */
   learningPointId: string;
+  /** Required by the v2 quality contract; must match the linked evidence point. */
+  learningOutcomeId?: string;
   /** The engine may place this item only in these stages; it never invents new wording. */
   eligibleStages: BlueprintStage[];
   exercise: {
     en: BlueprintAuthoredExercise;
     ar: BlueprintAuthoredExercise;
   };
+  /** Required for v2: cognitive demand, purpose, success evidence, misconception targets and authored feedback. */
+  quality?: BlueprintAssessmentQuality;
 }
 
-export interface BlueprintGuideContent {
+export interface BlueprintGuideContent extends BlueprintGuideQualityFields {
   timing?: string;
   objectives?: string[];
   pedagogy: string;
@@ -77,6 +90,8 @@ export interface LearningBlueprintChapter {
   chapterId: number;
   /** Human-authored chapter outcomes. These become the guide objectives unless a guide overrides them. */
   objectives: LocalizedText[];
+  /** v2 constructive-alignment layer: universal outcomes + TYMM/CEFR + explicit language targets. */
+  learningMap?: BlueprintChapterLearningMap;
   /** Human-selected claims and chapter evidence. The engine is not allowed to derive new claims from prose. */
   evidencePoints: BlueprintEvidencePoint[];
   /** Human-selected Word Notes / glossary material. */
@@ -106,6 +121,11 @@ export interface LearningBlueprint {
   storyId: string;
   level: Level;
   status: BlueprintReviewStatus;
+  /**
+   * Legacy books omit this and remain runtime-compatible.
+   * Once set to 2.0, strict Ministry/Gold quality validation is mandatory.
+   */
+  qualityContractVersion?: QualityContractVersion;
   chapters: LearningBlueprintChapter[];
   wholeBook?: LearningBlueprintWholeBook;
 }
@@ -189,10 +209,14 @@ const validateBlueprintQuestionDiversity = (blueprint: LearningBlueprint) => {
   }
 };
 
-/** Gives authored blueprints full type checking and enforces the shared interaction and question-diversity policies. */
+/**
+ * Gives authored blueprints full type checking and enforces the shared interaction,
+ * question-diversity and (when opted in) v2 Ministry/Gold quality policies.
+ */
 export const defineLearningBlueprint = <T extends LearningBlueprint>(blueprint: T): T => {
   validateBlueprintInteractionPolicy(blueprint);
   validateBlueprintQuestionDiversity(blueprint);
+  validateBlueprintV2QualityContract(blueprint);
   return blueprint;
 };
 
