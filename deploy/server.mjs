@@ -40,6 +40,17 @@ const sendFile = (res, filePath) => {
   createReadStream(filePath).pipe(res);
 };
 
+const sendMissingAsset = (res) => {
+  res.writeHead(404, {
+    'Content-Type': 'text/plain; charset=utf-8',
+    'Cache-Control': 'no-store',
+    'X-Content-Type-Options': 'nosniff',
+    'X-Stories-Git-Sha': gitSha,
+    'X-Stories-Revision': revision,
+  });
+  res.end('Asset not found');
+};
+
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
 
@@ -60,6 +71,14 @@ const server = http.createServer((req, res) => {
 
   if (existsSync(filePath) && statSync(filePath).isFile()) {
     return sendFile(res, filePath);
+  }
+
+  // Never serve the SPA HTML fallback for a missing hashed Vite asset. A stale
+  // browser bundle may request a chunk from the previous Cloud Run revision;
+  // returning HTML for that request turns a recoverable 404 into a JS module
+  // MIME/fetch failure. Let the client detect the missing chunk and reload.
+  if (urlPath.startsWith('/assets/')) {
+    return sendMissingAsset(res);
   }
 
   if (urlPath.startsWith('/pdfs/')) {
