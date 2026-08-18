@@ -20,9 +20,9 @@ steps:
         ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
         || true
 
-  # Keep the GitHub Check Run useful even when Docker/BuildKit emits a very large
-  # log (Vivliostyle is especially noisy on a cold build). Capture the full build
-  # locally and publish only the diagnostic tail on failure.
+  # Docker runs the aggregate deploy checker. Every independent validation group,
+  # typecheck and Vite build is attempted before the checker exits non-zero.
+  # On failure, surface the complete aggregate report rather than only the first error.
   - id: build
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
@@ -41,12 +41,18 @@ steps:
         status=$$?
         set -e
         if [ "$$status" -ne 0 ]; then
-          echo "Docker build failed (exit $$status). Last 250 lines follow:"
-          tail -n 250 /tmp/docker-build.log
+          echo "Docker build failed (exit $$status)."
+          if grep -q "=== STORIES DEPLOY QUALITY REPORT ===" /tmp/docker-build.log; then
+            echo "Complete aggregated Stories quality report follows:"
+            sed -n '/=== STORIES DEPLOY QUALITY REPORT ===/,$p' /tmp/docker-build.log
+          else
+            echo "Aggregate report marker was not reached. Last 400 lines follow:"
+            tail -n 400 /tmp/docker-build.log
+          fi
           exit "$$status"
         fi
-        echo "Docker build succeeded. Last 80 lines:"
-        tail -n 80 /tmp/docker-build.log
+        echo "Docker build succeeded. Last 100 lines:"
+        tail -n 100 /tmp/docker-build.log
 
   - id: push
     name: gcr.io/cloud-builders/docker
@@ -76,6 +82,4 @@ steps:
 options:
   logging: CLOUD_LOGGING_ONLY
 
-# Keep enough room for a cold PDF-producing build. Cached incremental builds
-# should be substantially shorter.
 timeout: 1200s
