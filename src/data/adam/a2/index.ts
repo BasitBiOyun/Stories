@@ -1,4 +1,4 @@
-import { BookData } from '../../../types';
+import { BookData, PageData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import {
   buildA2StudentGuideMetadata,
@@ -43,8 +43,25 @@ const adamA2 = runA2BlueprintSystem({
   blueprint: adamA2LearningBlueprint,
 });
 
-const adamA2GoldPagesEn = applyAdamA2GoldVocabularyChallenge(adamA2.englishPages, adamA2LearningBlueprint, 'en');
-const adamA2GoldPagesAr = applyAdamA2GoldVocabularyChallenge(adamA2.arabicPages, adamA2LearningBlueprint, 'ar');
+const restoreReviewActivities = (generatedPages: PageData[], sourcePages: PageData[]): PageData[] => {
+  const sourceReview = sourcePages.find(page => page.id === adamA2Config.reviewPageId);
+  if (!sourceReview?.exercises?.length) return generatedPages;
+
+  return generatedPages.map(page => page.id === adamA2Config.reviewPageId
+    ? { ...page, exercises: sourceReview.exercises }
+    : page);
+};
+
+const adamA2GoldPagesEn = applyAdamA2GoldVocabularyChallenge(
+  restoreReviewActivities(adamA2.englishPages, adamA2PagesLockedEn),
+  adamA2LearningBlueprint,
+  'en',
+);
+const adamA2GoldPagesAr = applyAdamA2GoldVocabularyChallenge(
+  restoreReviewActivities(adamA2.arabicPages, adamA2PagesLockedAr),
+  adamA2LearningBlueprint,
+  'ar',
+);
 
 const adamA2TeacherGuideMetadataEn = buildAdamA2GoldTeacherGuideMetadata(
   buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en'),
