@@ -1,4 +1,5 @@
 import type { Exercise, Level, TeacherGuideSection } from '../types';
+import { validateBlueprintStudentLanguageLevel } from './learningLevelLanguageQuality';
 import {
   validateBlueprintV2QualityContract,
   type BlueprintAssessmentQuality,
@@ -211,11 +212,13 @@ const validateBlueprintQuestionDiversity = (blueprint: LearningBlueprint) => {
 
 /**
  * Gives authored blueprints full type checking and enforces the shared interaction,
- * question-diversity and (when opted in) v2 Ministry/Gold quality policies.
+ * question-diversity, level-appropriate student language and (when opted in) v2
+ * Ministry/Gold quality policies.
  */
 export const defineLearningBlueprint = <T extends LearningBlueprint>(blueprint: T): T => {
   validateBlueprintInteractionPolicy(blueprint);
   validateBlueprintQuestionDiversity(blueprint);
+  validateBlueprintStudentLanguageLevel(blueprint);
   validateBlueprintV2QualityContract(blueprint);
   return blueprint;
 };
