@@ -21,7 +21,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const [playingWord, setPlayingWord] = useState<string | null>(null);
   const [knownMap, setKnownMap] = useState<Record<string, KnownState>>({});
   const [filter, setFilter] = useState<FilterMode>('all');
-  const { language, t, formatNumber, isRTL } = useLanguage();
+  const { t, formatNumber, isRTL } = useLanguage();
 
   const colTheme = useMemo(() => {
     if (collectionId === 'history') {
@@ -111,7 +111,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     }
   }, [collectionId]);
 
-  // Load persisted known/unknown state
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY(bookData.id ?? 'default'));
@@ -179,7 +178,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     });
   }, [allVocabulary, searchTerm, filter, knownMap]);
 
-  // Reliable TTS with timeout fallback to reset stuck state
   const playWord = useCallback((word: string) => {
     if (!('speechSynthesis' in window)) return;
 
@@ -194,7 +192,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     utterance.onend = reset;
     utterance.onerror = reset;
 
-    // Fallback: some browsers never fire onend
     const timeout = setTimeout(reset, 3000);
     utterance.onend = () => { clearTimeout(timeout); reset(); };
 
@@ -226,86 +223,87 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   ];
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col gap-4 overflow-hidden">
-
-      {/* Header */}
-      <div className="shrink-0 flex flex-col gap-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className={cn("w-12 h-12 rounded-2xl text-white flex items-center justify-center shadow-lg", colTheme.brand600, colTheme.shadowBrand)}>
-              <BookOpenCheck size={24} />
+    <div className="flex-1 min-h-0 flex flex-col gap-2.5 overflow-hidden lg:-my-3 lg:h-[calc(100%+1.5rem)]">
+      <div className="shrink-0 flex flex-col gap-2.5">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2.5 lg:gap-6">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className={cn("w-10 h-10 rounded-xl text-white flex items-center justify-center shadow-md shrink-0", colTheme.brand600, colTheme.shadowBrand)}>
+              <BookOpenCheck size={20} />
             </div>
-            <div>
-              <h2 className={cn("text-4xl font-black tracking-tight", colTheme.text900)}>{t('nav.masterGlossary')}</h2>
-              <p className="font-serif text-lg italic text-wood/60">{t('nav.everyWordLearned')}</p>
+            <div className="min-w-0">
+              <h2 className={cn("text-2xl sm:text-3xl font-black tracking-tight leading-none", colTheme.text900)}>{t('nav.masterGlossary')}</h2>
+              <p className="font-serif text-sm sm:text-base italic text-wood/55 mt-0.5 truncate">{t('nav.everyWordLearned')}</p>
             </div>
           </div>
-          {knownCount > 0 && (
-            <button
-              onClick={resetProgress}
-              className={cn("flex items-center gap-1.5 px-3 py-2 text-xs rounded-xl transition-all", colTheme.brand600Text, `hover:${colTheme.text700} ${colTheme.bgLight}`)}
-              title={t('nav.reset')}
-            >
-              <RotateCcw size={13} />
-              {t('nav.reset')}
-            </button>
-          )}
+
+          <div className="flex items-center gap-2.5 lg:w-[42%] lg:min-w-[420px] lg:max-w-[620px]">
+            <div className={cn("flex-1 h-2 rounded-full overflow-hidden", colTheme.progressTrack)}>
+              <motion.div
+                className={cn("h-full rounded-full", colTheme.progressFill)}
+                initial={{ width: 0 }}
+                animate={{ width: `${progressPct}%` }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+              />
+            </div>
+            <span className={cn("text-xs sm:text-sm font-bold tabular-nums whitespace-nowrap", colTheme.text700)}>
+              {formatNumber(knownCount)}/{formatNumber(allVocabulary.length)} {t('nav.known')}
+            </span>
+            {knownCount > 0 && (
+              <button
+                onClick={resetProgress}
+                className={cn("p-2 rounded-lg transition-all shrink-0", colTheme.brand600Text, colTheme.bgLight)}
+                title={t('nav.reset')}
+                aria-label={t('nav.reset')}
+              >
+                <RotateCcw size={14} />
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Progress bar */}
-        <div className="flex items-center gap-3">
-          <div className={cn("flex-1 h-2.5 rounded-full overflow-hidden", colTheme.progressTrack)}>
-            <motion.div
-              className={cn("h-full rounded-full", colTheme.progressFill)}
-              initial={{ width: 0 }}
-              animate={{ width: `${progressPct}%` }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+        <div className="flex flex-col xl:flex-row xl:items-center gap-2">
+          <div className="relative flex-1 min-w-0">
+            <Search className={cn(
+              "absolute top-1/2 -translate-y-1/2 w-4 h-4",
+              isRTL ? "right-3.5" : "left-3.5",
+              colTheme.searchText
+            )} />
+            <input
+              type="text"
+              placeholder={t('nav.searchPlaceholder')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={cn(
+                "w-full py-2.5 bg-white/60 backdrop-blur-sm border-2 rounded-xl outline-none transition-all font-serif italic shadow-inner",
+                isRTL ? "pr-10 pl-3" : "pl-10 pr-3",
+                colTheme.searchBorder,
+                `focus:${colTheme.brand600Text.replace('text-', 'border-')}`,
+                colTheme.text900
+              )}
             />
           </div>
-          <span className={cn("text-sm font-bold tabular-nums min-w-[60px] text-right", colTheme.text700)}>
-            {formatNumber(knownCount)}/{formatNumber(allVocabulary.length)} {t('nav.known')}
-          </span>
-        </div>
 
-        {/* Search */}
-        <div className="relative">
-          <Search className={cn("absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5", colTheme.searchText)} />
-          <input
-            type="text"
-            placeholder={t('nav.searchPlaceholder')}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={cn(
-              "w-full pl-12 pr-4 py-3 bg-white/60 backdrop-blur-sm border-2 rounded-2xl outline-none transition-all font-serif italic shadow-inner",
-              colTheme.searchBorder,
-              `focus:${colTheme.brand600Text.replace('text-', 'border-')}`,
-              colTheme.text900
-            )}
-          />
-        </div>
-
-        {/* Filter tabs */}
-        <div className="flex gap-2 flex-wrap">
-          {filterOptions.map(opt => (
-            <button
-              key={opt.value}
-              onClick={() => setFilter(opt.value)}
-              className={cn(
-                "px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border",
-                filter === opt.value
-                  ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
-                  : cn("bg-white/50 border-amber-100 hover:border-amber-300", colTheme.text700, colTheme.borderLight)
-              )}
-            >
-              {opt.label}
-            </button>
-          ))}
+          <div className="flex gap-1.5 overflow-x-auto custom-scrollbar shrink-0 pb-0.5 xl:pb-0">
+            {filterOptions.map(opt => (
+              <button
+                key={opt.value}
+                onClick={() => setFilter(opt.value)}
+                className={cn(
+                  "px-3 py-2 rounded-xl text-xs font-semibold transition-all border whitespace-nowrap",
+                  filter === opt.value
+                    ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
+                    : cn("bg-white/50 hover:bg-white/80", colTheme.text700, colTheme.borderLight)
+                )}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Vocabulary cards */}
-      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-4 -mr-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4">
+      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2">
           <AnimatePresence mode="popLayout">
             {filteredVocab.map((v) => {
               const state: KnownState = knownMap[v.word] ?? 'unreviewed';
@@ -314,12 +312,12 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                 <motion.div
                   key={v.word}
                   layout
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.15 }}
                   className={cn(
-                    "group relative bg-white/40 backdrop-blur-sm border-2 rounded-2xl p-4 transition-all shadow-sm hover:shadow-md",
+                    "group relative bg-white/45 backdrop-blur-sm border-2 rounded-2xl p-3.5 transition-all shadow-sm hover:shadow-md",
                     state === 'known'
                       ? "border-green-200 bg-green-50/40"
                       : state === 'unknown'
@@ -327,61 +325,54 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                         : colTheme.cardBorder
                   )}
                 >
-                  <div className="flex items-start gap-3">
-                    {/* TTS button */}
+                  <div className="flex items-start gap-2.5">
                     <button
                       onClick={() => playWord(v.word)}
                       className={cn(
-                        "shrink-0 p-2.5 rounded-xl transition-all shadow-sm mt-0.5",
-                        playingWord === v.word
-                          ? colTheme.playingBg
-                          : colTheme.playIconBtn
+                        "shrink-0 p-2 rounded-lg transition-all shadow-sm mt-0.5",
+                        playingWord === v.word ? colTheme.playingBg : colTheme.playIconBtn
                       )}
+                      aria-label={v.word}
                     >
-                      <Volume2
-                        size={16}
-                        className={playingWord === v.word ? "animate-pulse" : ""}
-                      />
+                      <Volume2 size={15} className={playingWord === v.word ? "animate-pulse" : ""} />
                     </button>
 
-                    {/* Word content */}
                     <div className="flex-1 min-w-0">
-                      <h3 className={cn("text-2xl font-bold capitalize mb-2", colTheme.text900)}>{v.word}</h3>
-                      <p className="font-serif text-lg text-wood/70 leading-relaxed mb-3">
+                      <h3 className={cn("text-xl font-bold capitalize mb-1 leading-tight", colTheme.text900)}>{v.word}</h3>
+                      <p className="font-serif text-base text-wood/70 leading-snug">
                         {v.definition}
                       </p>
                       {v.example && (
-                        <p className={cn("font-serif italic text-base border-l-4 pl-4 leading-relaxed", colTheme.text700OpText, colTheme.borderL)}>
+                        <p className={cn("font-serif italic text-sm border-l-2 pl-2.5 leading-snug mt-2", colTheme.text700OpText, colTheme.borderL)}>
                           "{v.example}"
                         </p>
                       )}
                     </div>
 
-                    {/* Known / Unknown buttons */}
-                    <div className="shrink-0 flex flex-col gap-1.5 mt-0.5">
+                    <div className="shrink-0 flex flex-col gap-1 mt-0.5">
                       <button
                         onClick={() => markWord(v.word, state === 'known' ? 'unreviewed' : 'known')}
                         className={cn(
-                          "p-2 rounded-xl transition-all",
+                          "p-1.5 rounded-lg transition-all",
                           state === 'known'
                             ? "bg-green-500 text-white shadow-sm shadow-green-200"
                             : "bg-white/60 text-green-400 hover:bg-green-50 hover:text-green-600 border border-green-100"
                         )}
                         title={t('nav.iKnowThisWord')}
                       >
-                        <Check size={14} />
+                        <Check size={13} />
                       </button>
                       <button
                         onClick={() => markWord(v.word, state === 'unknown' ? 'unreviewed' : 'unknown')}
                         className={cn(
-                          "p-2 rounded-xl transition-all",
+                          "p-1.5 rounded-lg transition-all",
                           state === 'unknown'
                             ? "bg-red-400 text-white shadow-sm shadow-red-200"
                             : "bg-white/60 text-red-300 hover:bg-red-50 hover:text-red-500 border border-red-100"
                         )}
                         title={t('nav.needToReview')}
                       >
-                        <X size={14} />
+                        <X size={13} />
                       </button>
                     </div>
                   </div>
@@ -392,9 +383,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         </div>
 
         {filteredVocab.length === 0 && (
-          <div className="h-64 flex flex-col items-center justify-center text-center p-8">
-            <div className={cn("w-16 h-16 rounded-full flex items-center justify-center mb-4", colTheme.bgLight)}>
-              <Search className={cn("w-8 h-8", colTheme.searchText)} />
+          <div className="h-48 flex flex-col items-center justify-center text-center p-6">
+            <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-3", colTheme.bgLight)}>
+              <Search className={cn("w-6 h-6", colTheme.searchText)} />
             </div>
             <p className="font-serif italic text-wood/40">
               {searchTerm ? t('nav.noWordsFound') : t('nav.noWordsCategory')}
@@ -403,12 +394,11 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         )}
       </div>
 
-      {/* Footer tip */}
-      <div className={cn("shrink-0 p-4 rounded-2xl flex items-center gap-4 border", colTheme.footerBg)}>
-        <div className={cn("w-10 h-10 rounded-xl text-white flex items-center justify-center shrink-0", colTheme.footerIconBg)}>
-          <GraduationCap size={20} />
+      <div className={cn("shrink-0 px-3 py-2 rounded-xl flex items-center gap-2.5 border", colTheme.footerBg)}>
+        <div className={cn("w-8 h-8 rounded-lg text-white flex items-center justify-center shrink-0", colTheme.footerIconBg)}>
+          <GraduationCap size={16} />
         </div>
-        <p className={cn("text-sm font-serif italic", colTheme.footerText)}>
+        <p className={cn("text-xs sm:text-sm font-serif italic leading-snug", colTheme.footerText)}>
           {t('nav.glossaryTip')}
           {progressPct === 100
             ? ` ${t('nav.glossaryAmazing')}`
