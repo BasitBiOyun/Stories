@@ -1,4 +1,5 @@
 import { BookData, PageData } from '../../../types';
+import { finalizeA2TeacherGuideAlignment } from '../../a2TeacherGuideAlignment';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
@@ -88,12 +89,14 @@ const mosesA2GoldPagesAr = applyMosesA2GoldVocabularyChallenge(
   'ar',
 );
 
-const mosesA2TeacherGuideMetadataEn = buildMosesA2GoldTeacherGuideMetadata(
-  mosesA2TeacherGuideMetadataFinalEn,
+const mosesA2TeacherGuideMetadataEn = finalizeA2TeacherGuideAlignment(
+  buildMosesA2GoldTeacherGuideMetadata(mosesA2TeacherGuideMetadataFinalEn, 'en'),
+  'moses',
   'en',
 );
-const mosesA2TeacherGuideMetadataAr = buildMosesA2GoldTeacherGuideMetadata(
-  mosesA2TeacherGuideMetadataFinalAr,
+const mosesA2TeacherGuideMetadataAr = finalizeA2TeacherGuideAlignment(
+  buildMosesA2GoldTeacherGuideMetadata(mosesA2TeacherGuideMetadataFinalAr, 'ar'),
+  'moses',
   'ar',
 );
 const mosesA2StudentGuideSectionsEn = buildMosesA2GoldStudentGuideSections('en');
