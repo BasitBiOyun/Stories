@@ -11,6 +11,7 @@ import { adamA2Chapter08 } from './blueprint/ch08';
 import { adamA2Chapter09 } from './blueprint/ch09';
 import { adamA2Chapter10 } from './blueprint/ch10';
 import { upgradeAdamA2ChapterToGold } from './blueprint/gold';
+import { applyAdamA2GoldQuickChallenges } from './blueprint/goldQuickChallenges';
 
 const goldChapters = [
   adamA2Chapter01,
@@ -25,6 +26,7 @@ const goldChapters = [
   adamA2Chapter10,
 ]
   .map(upgradeAdamA2ChapterToGold)
+  .map(applyAdamA2GoldQuickChallenges)
   .map(applyAdamA2QuestionLanguageLock);
 
 export const adamA2LearningBlueprint = defineLearningBlueprint({
