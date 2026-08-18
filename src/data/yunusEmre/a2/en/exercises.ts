@@ -2,174 +2,77 @@ import { Exercise } from '../../../../types';
 
 export const yunusA2FinalReviewExercises: Exercise[] = [
   {
-    id: 'final-1',
+    id: 'yunus-a2-review-sequence',
     type: 'sequencing',
-    title: 'Yunus Emre’s Journey',
-    instructions: 'Put the events in the correct order.',
-    question: 'Order the main events of Yunus Emre’s story.',
+    title: 'Yunus Emre’s Learning Journey',
+    instructions: 'Put the main developments in the correct order.',
+    question: 'How does the story move from biography to daily-life lessons?',
     correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'The story begins with Yunus Emre as a poet, continues with his dervish training, woodcutting service, the lesson of straight wood, the daisy story, and ends with the message of a meaningful life.',
-    feedback: {
-      correct: 'Excellent! You understand the main journey of Yunus Emre.',
-      incorrect: 'Some events are not in the correct order. Read the chapters again and follow Yunus’s journey step by step.'
-    },
+    explanation: 'The book introduces Yunus as a poet and dervish, follows his disciplined training and service, develops the straight-wood lesson, then uses nature and the daisy story before ending with advice for daily life.',
+    feedback: { correct: 'Correct. You connected the main stages of Yunus’s learning journey.', incorrect: 'Begin with the poet/dervish introduction, then follow training, wood service, inner meaning, nature, and the final lesson.' },
     sequencingItems: [
-      { id: '1', text: 'Yunus Emre becomes known as a great Anatolian Turkish poet' },
-      { id: '2', text: 'Yunus becomes a dervish pupil of Taptuk Emre' },
-      { id: '3', text: 'Taptuk Emre gives Yunus the duty of collecting wood' },
-      { id: '4', text: 'Yunus always brings straight wood to the dervish house' },
-      { id: '5', text: 'Yunus returns from the field with a single daisy' },
-      { id: '6', text: 'The story teaches us to remember Allah and do every job well' }
+      { id: '1', text: 'Yunus is introduced as a poet who used simple Turkish and became Taptuk Emre’s pupil' },
+      { id: '2', text: 'The story explains the disciplined values and habits of dervish life' },
+      { id: '3', text: 'Taptuk gives Yunus the ordinary service of collecting wood' },
+      { id: '4', text: 'The wood work is explained as training the heart and ego' },
+      { id: '5', text: 'Yunus learns from nature and returns with a single daisy' },
+      { id: '6', text: 'The story ends with advice to remember Allah and do every job well' }
     ]
   },
   {
-    id: 'final-2',
-    type: 'drag-drop',
-    title: 'Good Dervish Values',
-    instructions: 'Drag the values into the correct group.',
-    question: 'Match the words with the correct category.',
-    correctAnswer: {
-      'GOOD VALUES': ['Honesty', 'Patience', 'Humility', 'Generosity'],
-      'BAD HABITS': ['Jealousy', 'Arrogance', 'Stinginess', 'Gossiping']
-    },
-    explanation: 'The story says dervishes followed honesty, patience, humility, and generosity. It also says they tried to leave bad habits like jealousy, arrogance, stinginess, and gossiping.',
-    feedback: {
-      correct: 'Correct! These values are central to the dervish life in the story.',
-      incorrect: 'Some words are in the wrong group. Think about which words describe good behavior and which words describe bad habits.'
-    },
-    dragDropGroups: [
-      { group: 'GOOD VALUES', items: ['Honesty', 'Patience', 'Humility', 'Generosity'] },
-      { group: 'BAD HABITS', items: ['Jealousy', 'Arrogance', 'Stinginess', 'Gossiping'] }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'Think About the Lesson',
-    instructions: 'Think about these questions and discuss them.',
-    question: 'What is the most important lesson you learned from Yunus Emre’s story?',
-    correctAnswer: null,
-    explanation: 'Students may mention remembering Allah, being honest, doing every job well, being humble, avoiding bad habits, or seeing lessons in nature.',
-    feedback: {
-      correct: 'Beautiful reflection! You connected the story with its deeper meaning.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'Why did Yunus never bring crooked wood to the dervish house?', mode: 'Individual' },
-      { question: 'What does “straight wood” teach us about honesty?', mode: 'Pair' },
-      { question: 'Why did Yunus return with only one daisy?', mode: 'Pair' },
-      { question: 'How can we remember Allah in our daily lives?', mode: 'Class' },
-      { question: 'Why should we do every job carefully and correctly?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'The Yunus Emre A2 Challenge',
-    instructions: 'Complete the 10-question challenge about the story.',
-    question: 'Are you ready for the final A2 challenge?',
-    correctAnswer: null,
-    explanation: 'This game reviews the main events, vocabulary, characters, symbols, and moral lessons of the A2 story of Yunus Emre.',
-    feedback: {
-      correct: 'Congratulations! You have mastered the A2 story of Yunus Emre!',
-      incorrect: 'Keep trying! Review the chapters and try again.'
-    },
-    hints: [
-      'Think about Yunus Emre as a poet and dervish',
-      'Remember Taptuk Emre and the woodcutting duty',
-      'Think about straight wood, the ego, and the single daisy'
+    id: 'yunus-a2-review-match',
+    type: 'matching',
+    title: 'Outer Action and Inner Meaning',
+    instructions: 'Match each story detail with the simple meaning attached to it in the chapters.',
+    question: 'What does each action or image teach?',
+    matchingPairs: [
+      { left: 'Simple Turkish', right: 'helped people understand the poems' },
+      { left: 'Sharing with the needy', right: 'showed generosity' },
+      { left: 'Straight wood', right: 'connected with honest and corrected character' },
+      { left: 'Looking at nature', right: 'helped Yunus find deeper lessons' }
     ],
+    correctAnswer: {
+      'Simple Turkish': 'helped people understand the poems',
+      'Sharing with the needy': 'showed generosity',
+      'Straight wood': 'connected with honest and corrected character',
+      'Looking at nature': 'helped Yunus find deeper lessons'
+    },
+    explanation: 'These matches connect visible details with the straightforward meanings stated in the story.',
+    feedback: { correct: 'Correct. You connected the story details with their chapter meanings.', incorrect: 'Check Chapters 1, 2, 5–6 and compare the visible action with the explanation given in the text.' }
+  },
+  {
+    id: 'yunus-a2-review-reflection',
+    type: 'reflection',
+    title: 'Work, Character, and Meaning',
+    instructions: 'Think from the story and give a short A2 response.',
+    question: 'How can an ordinary job become part of learning or self-improvement in Yunus Emre’s story?',
+    correctAnswer: null,
+    explanation: 'Woodcutting looked ordinary, but the story says it trained Yunus’s heart and ego and taught him to do the right thing carefully.',
+    feedback: { correct: 'Support your answer with the wood story and one final daily-life lesson.', incorrect: '' },
+    discussionPrompts: [
+      { question: 'What was Yunus’s ordinary duty?', mode: 'Individual' },
+      { question: 'What inner meaning did the story give to that work?', mode: 'Pair' },
+      { question: 'How does Chapter 8 turn that story into advice for daily life?', mode: 'Class' }
+    ]
+  },
+  {
+    id: 'yunus-a2-review-quiz',
+    type: 'quiz-game',
+    title: 'Yunus Emre A2 Retrieval Review',
+    instructions: 'Answer eight questions from across the story. Use the hint only when you need it.',
+    question: 'Can you reconnect the main ideas without rereading everything?',
+    correctAnswer: null,
+    explanation: 'The questions review language, values, discipline, service, simple symbolic meaning, nature, and daily-life lessons.',
+    feedback: { correct: 'Good retrieval. Keep connecting each answer to the chapter evidence.', incorrect: 'Use the hint to return to the relevant chapter idea, then try again.' },
     quizQuestions: [
-      {
-        question: 'Where was Yunus Emre born?',
-        options: [
-          { text: 'In Anatolia', isCorrect: true },
-          { text: 'In Egypt', isCorrect: false },
-          { text: 'In Mecca', isCorrect: false }
-        ],
-        hint: 'The first chapter says he was born in Anatolia.'
-      },
-      {
-        question: 'Why could people easily understand Yunus Emre’s poems?',
-        options: [
-          { text: 'Because he wrote them in very difficult language', isCorrect: false },
-          { text: 'Because he wrote them in simple Turkish', isCorrect: true },
-          { text: 'Because he wrote them only for teachers', isCorrect: false }
-        ],
-        hint: 'His language was simple and clear.'
-      },
-      {
-        question: 'Who was Yunus Emre’s teacher?',
-        options: [
-          { text: 'Mevlana', isCorrect: false },
-          { text: 'Sultan Alaeddin', isCorrect: false },
-          { text: 'Taptuk Emre', isCorrect: true }
-        ],
-        hint: 'Yunus became his dervish pupil.'
-      },
-      {
-        question: 'What did dervishes share with the needy?',
-        options: [
-          { text: 'All they had', isCorrect: true },
-          { text: 'Only poems', isCorrect: false },
-          { text: 'Only stones from the mountain', isCorrect: false }
-        ],
-        hint: 'Dervishes were generous-hearted and open-handed.'
-      },
-      {
-        question: 'Which word is a good dervish value?',
-        options: [
-          { text: 'Arrogance', isCorrect: false },
-          { text: 'Patience', isCorrect: true },
-          { text: 'Gossiping', isCorrect: false }
-        ],
-        hint: 'Dervishes followed honesty, patience, humility, and generosity.'
-      },
-      {
-        question: 'What duty did Taptuk Emre give to Yunus?',
-        options: [
-          { text: 'To collect flowers every day', isCorrect: false },
-          { text: 'To sell things in the city', isCorrect: false },
-          { text: 'To collect wood from the mountain', isCorrect: true }
-        ],
-        hint: 'There was a mountain behind the dervish house.'
-      },
-      {
-        question: 'What kind of wood did Yunus always bring?',
-        options: [
-          { text: 'Straight wood', isCorrect: true },
-          { text: 'Green and crooked wood', isCorrect: false },
-          { text: 'Wet wood from the river', isCorrect: false }
-        ],
-        hint: 'Yunus said crooked wood could not enter the dervish house.'
-      },
-      {
-        question: 'What does the wood symbolize in Chapter 5?',
-        options: [
-          { text: 'Only fire for cooking', isCorrect: false },
-          { text: 'Yunus’s ego and heart training', isCorrect: true },
-          { text: 'A gift for the king', isCorrect: false }
-        ],
-        hint: 'The chapter says the wood is like Yunus’s ego.'
-      },
-      {
-        question: 'What did Yunus bring back in the flower story?',
-        options: [
-          { text: 'A large bunch of roses', isCorrect: false },
-          { text: 'A basket of green wood', isCorrect: false },
-          { text: 'A single daisy', isCorrect: true }
-        ],
-        hint: 'Other dervishes made fun of him because he brought only one flower.'
-      },
-      {
-        question: 'What is one main lesson of the story?',
-        options: [
-          { text: 'We should remember Allah and do every job well', isCorrect: true },
-          { text: 'We should only care about fame', isCorrect: false },
-          { text: 'We should never help people', isCorrect: false }
-        ],
-        hint: 'The final chapter explains the main lesson of daily life.'
-      }
+      { question: 'Why could people understand Yunus Emre’s poems easily?', options: [{ text: 'He used simple Turkish', isCorrect: true }, { text: 'He wrote only for scholars', isCorrect: false }, { text: 'He avoided Turkish', isCorrect: false }], hint: 'Look at the language-result link in Chapter 1.' },
+      { question: 'What did dervishes do with wealth that was “in their hands”?', options: [{ text: 'They shared what they had with the needy', isCorrect: true }, { text: 'They kept everything for themselves', isCorrect: false }, { text: 'They used it only to travel', isCorrect: false }], hint: 'Use the wealth and charity paragraph in Chapter 2.' },
+      { question: 'What did “ate less, spoke less, slept less” show?', options: [{ text: 'A moderate and disciplined way of life', isCorrect: true }, { text: 'A plan to become famous poets', isCorrect: false }, { text: 'A rule against useful activities', isCorrect: false }], hint: 'Read the final paragraph before Yunus’s training is named.' },
+      { question: 'Why was collecting wood more than an ordinary chore in the story?', options: [{ text: 'It was part of training the ego and leaving bad behaviour', isCorrect: true }, { text: 'It was a way to become rich', isCorrect: false }, { text: 'It was preparation for a market job', isCorrect: false }], hint: 'Chapter 4 states the primary goal of the service.' },
+      { question: 'What simple inner meaning does Chapter 5 give the wood work?', options: [{ text: 'Training and fixing Yunus’s heart and ego', isCorrect: true }, { text: 'Building a new city', isCorrect: false }, { text: 'Winning a flower contest', isCorrect: false }], hint: 'Compare the outer work with what the text says happens “in fact”.' },
+      { question: 'What did Yunus learn to do in nature?', options: [{ text: 'Find lessons and deeper meaning in what he saw', isCorrect: true }, { text: 'Ignore everything except wood', isCorrect: false }, { text: 'Avoid quiet places', isCorrect: false }], hint: 'Use Chapter 6’s paragraph about trees, animals, rivers, and deeper meaning.' },
+      { question: 'Why did Yunus bring only one daisy?', options: [{ text: 'He said the other flowers were remembering Allah, so he could not cut them', isCorrect: true }, { text: 'There were no other flowers', isCorrect: false }, { text: 'Taptuk asked him to bring exactly one flower', isCorrect: false }], hint: 'The number matters because of Yunus’s reason, not because the field was empty.' },
+      { question: 'What final lesson connects the wood and flower stories with daily life?', options: [{ text: 'Remember Allah and do every job well and correctly', isCorrect: true }, { text: 'Only unusual jobs are important', isCorrect: false }, { text: 'Daily work has no deeper value', isCorrect: false }], hint: 'Use the final paragraph of Chapter 8.' }
     ]
   }
 ];
