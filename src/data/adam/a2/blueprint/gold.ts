@@ -570,19 +570,6 @@ const buildGuide = (
   };
 };
 
-const demandFor = (item: BlueprintAssessmentItem, chapter: LearningBlueprintChapter): BlueprintCognitiveDemandV2 => {
-  const point = chapter.evidencePoints.find(candidate => candidate.id === item.learningPointId);
-  switch (point?.focus) {
-    case 'sequence': return 'sequence';
-    case 'cause-result': return 'connect';
-    case 'comparison': return 'compare';
-    case 'inference': return 'infer';
-    case 'motivation': return 'infer';
-    case 'theme': return 'connect';
-    default: return item.id.endsWith('-quick') ? 'retrieve' : 'identify';
-  }
-};
-
 export const upgradeAdamA2ChapterToGold = (chapter: LearningBlueprintChapter): LearningBlueprintChapter => {
   const spec = specs[chapter.chapterId];
   if (!spec) throw new Error(`[Adam A2 Gold] Missing specification for Chapter ${chapter.chapterId}.`);
