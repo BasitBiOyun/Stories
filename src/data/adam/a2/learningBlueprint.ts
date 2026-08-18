@@ -1,4 +1,5 @@
 import { defineLearningBlueprint } from '../../learningBlueprint';
+import { applyAdamA2QuestionLanguageLock } from './blueprint/a2Language';
 import { adamA2Chapter01 } from './blueprint/ch01';
 import { adamA2Chapter02 } from './blueprint/ch02';
 import { adamA2Chapter03 } from './blueprint/ch03';
@@ -22,7 +23,9 @@ const goldChapters = [
   adamA2Chapter08,
   adamA2Chapter09,
   adamA2Chapter10,
-].map(upgradeAdamA2ChapterToGold);
+]
+  .map(upgradeAdamA2ChapterToGold)
+  .map(applyAdamA2QuestionLanguageLock);
 
 export const adamA2LearningBlueprint = defineLearningBlueprint({
   id: 'adam-a2',
