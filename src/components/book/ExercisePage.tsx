@@ -161,9 +161,10 @@ export const ExercisePage = ({
 
   // Remove audio for pages 11, 12, 13 (indices 10, 11, 12)
   const hideAudio = page.id === 11 || page.id === 12 || page.id === 13;
+  const showGenericHeader = page.type === 'sequencing' || page.type === 'game';
 
   return (
-    <div className="h-full relative flex flex-col">
+    <div className="h-full relative flex flex-col lg:-my-3 lg:h-[calc(100%+1.5rem)]">
       {/* Top Bar: Audio (Right) */}
       <div className="absolute top-0 right-0 z-50">
         {/* Fixed Audio Player - Top Right */}
@@ -254,21 +255,23 @@ export const ExercisePage = ({
           className="relative group h-full flex flex-col justify-center w-full min-h-0 flex-1"
         >
           <div className={cn(
-            "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-4 sm:p-6 md:p-8 shadow-xl h-full flex flex-col overflow-y-auto custom-scrollbar",
+            "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 shadow-xl h-full flex flex-col overflow-y-auto custom-scrollbar",
             colTheme.containerBorder
           )}>
-            <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6 shrink-0">
-              <div className={cn(
-                "w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-sm shrink-0",
-                colTheme.iconBg
-              )}>
-                <BrainCircuit className="w-4 h-4 sm:w-5 sm:h-5" />
+            {showGenericHeader && (
+              <div className="flex items-center gap-2 mb-2 sm:mb-3 shrink-0">
+                <div className={cn(
+                  "w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shadow-sm shrink-0",
+                  colTheme.iconBg
+                )}>
+                  <BrainCircuit className="w-4 h-4" />
+                </div>
+                <h4 className={cn(
+                  "font-display text-[10px] sm:text-xs uppercase tracking-[0.15em] font-black",
+                  colTheme.iconText
+                )}>{t('nav.interactiveChallenge')}</h4>
               </div>
-              <h4 className={cn(
-                "font-display text-xs sm:text-sm uppercase tracking-[0.15em] font-black",
-                colTheme.iconText
-              )}>{t('nav.interactiveChallenge')}</h4>
-            </div>
+            )}
             <div className="flex-1 min-h-0 flex flex-col h-full">
               {page.type === 'quiz' && page.exercises && (
                 <KnowledgeCheck 
@@ -282,7 +285,7 @@ export const ExercisePage = ({
               {page.type === 'sequencing' && page.sequencingItems && (
                 <div className="h-full flex flex-col">
                   <h3 className={cn(
-                    "font-display text-2xl sm:text-4xl lg:text-5xl text-wood tracking-tight mb-4 sm:mb-8 border-b-2 pb-3 sm:pb-5",
+                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-3 border-b-2 pb-3",
                     colTheme.quizSectionBorder
                   )}>
                     {page.title}
@@ -295,9 +298,9 @@ export const ExercisePage = ({
                 </div>
               )}
               {page.type === 'vocabulary-match' && page.vocabularyPairs && (
-                <div className="h-full flex flex-col">
+                <div className="h-full flex flex-col min-h-0">
                   <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-4 sm:mb-8 border-b-2 pb-4 sm:pb-6",
+                    "font-display text-2xl sm:text-3xl text-wood tracking-tight mb-3 border-b-2 pb-3 shrink-0",
                     colTheme.quizSectionBorder
                   )}>
                     {page.title}
@@ -308,7 +311,7 @@ export const ExercisePage = ({
               {page.type === 'game' && (
                 <div className="h-full flex flex-col">
                   <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-4 sm:mb-8 border-b-2 pb-4 sm:pb-6",
+                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-3 border-b-2 pb-3",
                     colTheme.quizSectionBorder
                   )}>
                     {page.title}
@@ -317,73 +320,75 @@ export const ExercisePage = ({
                 </div>
               )}
               {page.type === 'exercises' && page.exercises && (
-                <div className="space-y-6">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-4 sm:mb-6",
-                    colTheme.exerciseTitle
-                  )}>
-                    {page.title}
-                  </h3>
-                  <p className={cn(
-                    "text-sm sm:text-base md:text-xl text-wood/60 mb-6 sm:mb-10 leading-relaxed",
-                    language !== 'ar' && "italic"
-                  )}>{page.content}</p>
+                <div className="h-full min-h-0 flex flex-col">
+                  <div className="shrink-0 mb-4">
+                    <h3 className={cn(
+                      "font-display text-2xl sm:text-3xl text-wood tracking-tight mb-1",
+                      colTheme.exerciseTitle
+                    )}>
+                      {page.title}
+                    </h3>
+                    <p className={cn(
+                      "text-sm sm:text-base text-wood/60 leading-relaxed max-w-5xl",
+                      language !== 'ar' && "italic"
+                    )}>{page.content}</p>
+                  </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {page.exercises.map((ex, idx) => (
-                    <motion.button
-                      key={ex.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      onClick={() => setActiveExercise(ex)}
-                      className={cn(
-                        "p-4 rounded-2xl border-2 text-left flex items-center justify-between group transition-all",
-                        completedExercises.includes(ex.id)
-                          ? "bg-green-50 border-green-200"
-                          : cn("bg-white border-gray-100 hover:shadow-md", colTheme.exerciseBtnHover)
-                      )}
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={cn(
-                          "w-10 h-10 rounded-xl flex items-center justify-center font-bold",
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 content-start">
+                    {page.exercises.map((ex, idx) => (
+                      <motion.button
+                        key={ex.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        onClick={() => setActiveExercise(ex)}
+                        className={cn(
+                          "p-4 rounded-2xl border-2 text-left flex items-center justify-between group transition-all",
                           completedExercises.includes(ex.id)
-                            ? "bg-green-500 text-white"
-                            : colTheme.exerciseIdxBg
-                        )}>
-                          {completedExercises.includes(ex.id) ? <CheckCircle2 size={20} /> : idx + 1}
+                            ? "bg-green-50 border-green-200"
+                            : cn("bg-white border-gray-100 hover:shadow-md", colTheme.exerciseBtnHover)
+                        )}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className={cn(
+                            "w-10 h-10 rounded-xl flex items-center justify-center font-bold",
+                            completedExercises.includes(ex.id)
+                              ? "bg-green-500 text-white"
+                              : colTheme.exerciseIdxBg
+                          )}>
+                            {completedExercises.includes(ex.id) ? <CheckCircle2 size={20} /> : idx + 1}
+                          </div>
+                          <div>
+                            <p className={cn(
+                              "font-bold",
+                              completedExercises.includes(ex.id) ? "text-green-800" : "text-gray-900"
+                            )}>{ex.title}</p>
+                            <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">{t(`ex.type.${ex.type}`)}</p>
+                          </div>
                         </div>
-                        <div>
-                          <p className={cn(
-                            "font-bold",
-                            completedExercises.includes(ex.id) ? "text-green-800" : "text-gray-900"
-                          )}>{ex.title}</p>
-                          <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">{t(`ex.type.${ex.type}`)}</p>
-                        </div>
-                      </div>
-                      <ArrowRight className={cn(
-                        "w-5 h-5 transition-transform group-hover:translate-x-1",
-                        completedExercises.includes(ex.id) ? "text-green-400" : colTheme.exerciseArrowColor
-                      )} />
-                    </motion.button>
-                  ))}
-                </div>
+                        <ArrowRight className={cn(
+                          "w-5 h-5 transition-transform group-hover:translate-x-1",
+                          completedExercises.includes(ex.id) ? "text-green-400" : colTheme.exerciseArrowColor
+                        )} />
+                      </motion.button>
+                    ))}
+                  </div>
 
-                {completedExercises.length === page.exercises.length && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="mt-8 p-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl text-white text-center shadow-xl"
-                  >
-                    <h4 className="text-2xl font-black mb-2">{t('nav.masteryAchieved')}</h4>
-                    <p className="text-sm opacity-90 font-medium">{t('nav.masteryDesc')}</p>
-                  </motion.div>
-                )}
-              </div>
-            )}
+                  {completedExercises.length === page.exercises.length && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="mt-6 p-5 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl text-white text-center shadow-xl"
+                    >
+                      <h4 className="text-2xl font-black mb-1">{t('nav.masteryAchieved')}</h4>
+                      <p className="text-sm opacity-90 font-medium">{t('nav.masteryDesc')}</p>
+                    </motion.div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
 
       {/* Exercise Modal */}
       <AnimatePresence>
