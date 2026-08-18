@@ -1,144 +1,155 @@
 import { Exercise } from '../../../../types';
 
-export const abrahamA2ExercisesEn: Exercise[] = [
-  // Shared exercises could go here
-];
+export const abrahamA2ExercisesEn: Exercise[] = [];
 
 export const abrahamA2FinalReviewExercises: Exercise[] = [
   {
-    id: 'final-1',
+    id: 'abraham-a2-review-sequence',
     type: 'sequencing',
-    title: 'The Life of Abraham',
-    instructions: 'Put the events in the correct order.',
-    question: 'Order the story events.',
-    correctAnswer: ['1', '2', '3', '4', '5'],
-    explanation: 'The story follows the search for truth, the miracle of the fire, the journey to Mecca, the gift of Zamzam, and the building of the Ka’ba.',
+    title: 'Abraham’s Journey',
+    instructions: 'Put the major events in the correct order.',
+    question: 'How does the story move from Babylon to the Ka’ba?',
+    correctAnswer: ['1', '2', '3', '4', '5', '6'],
+    explanation: 'The story moves from questioning idol worship to the fire, the journey away from Babylon, Hagar’s search, Zamzam, and the building of the Ka’ba.',
     feedback: {
-      correct: 'Perfect! You have a great memory of Abraham’s journey.',
-      incorrect: 'Some events are in the wrong place. Remember his journey from Babylon to Mecca.'
+      correct: 'Correct. You connected the major turning points across the whole story.',
+      incorrect: 'Start with Abraham in Babylon. Then find the fire, the journey, the valley, Zamzam, and finally the Ka’ba.'
     },
     sequencingItems: [
-      { id: '1', text: 'Abraham looks at the stars, moon, and sun' },
-      { id: '2', text: 'Abraham stays safe in the big fire' },
-      { id: '3', text: 'Hagar and Ishmael arrive in the valley' },
-      { id: '4', text: 'Zamzam water comes out of the ground' },
-      { id: '5', text: 'Abraham and Ishmael build the Ka’ba' }
+      { id: '1', text: 'Abraham questions the worship of powerless objects' },
+      { id: '2', text: 'Allah makes the fire cool and safe for Abraham' },
+      { id: '3', text: 'Abraham leaves Babylon to carry the message to other lands' },
+      { id: '4', text: 'Hagar searches for food and water in the valley' },
+      { id: '5', text: 'Zamzam appears and more people come to the area' },
+      { id: '6', text: 'Abraham and Ishmael build the Ka’ba together' }
     ]
   },
   {
-    id: 'final-2',
-    type: 'drag-drop',
-    title: 'Qualities of Abraham',
-    instructions: 'Drag the items into the correct category.',
-    question: 'Categorize these items.',
+    id: 'abraham-a2-review-match',
+    type: 'matching',
+    title: 'People, Choices, and Results',
+    instructions: 'Match each person or group with the chapter-supported action or response.',
+    question: 'Who did what in the story?',
+    matchingPairs: [
+      { left: 'Abraham', right: 'challenged Nimrod with the sun' },
+      { left: 'People of Babylon', right: 'continued to reject the message after the miracle' },
+      { left: 'Hagar', right: 'trusted Allah and searched for water' },
+      { left: 'Ishmael', right: 'helped Abraham build the Ka’ba' }
+    ],
     correctAnswer: {
-      'QUALITIES OF ABRAHAM': ['Honesty', 'Courage', 'Trust in Allah'],
-      'BELIEFS IN BABYLON': ['Idols', 'Stars', 'Stone objects']
+      Abraham: 'challenged Nimrod with the sun',
+      'People of Babylon': 'continued to reject the message after the miracle',
+      Hagar: 'trusted Allah and searched for water',
+      Ishmael: 'helped Abraham build the Ka’ba'
     },
-    explanation: 'Abraham was honest and brave, while the people of Babylon wrongly worshipped objects like idols and stars.',
+    explanation: 'These four matches connect major characters with the choices and responses that move the story forward.',
     feedback: {
-      correct: 'Correct! You understood the contrast well.',
-      incorrect: 'Check your categories again.'
-    },
-    dragDropGroups: [
-      { group: 'QUALITIES OF ABRAHAM', items: ['Honesty', 'Courage', 'Trust in Allah'] },
-      { group: 'BELIEFS IN BABYLON', items: ['Idols', 'Stars', 'Stone objects'] }
-    ]
+      correct: 'Correct. Each match is supported by a different part of the story.',
+      incorrect: 'Check the Babylon argument, the response after the fire, the valley scene, and the final Ka’ba chapter.'
+    }
   },
   {
-    id: 'final-3',
+    id: 'abraham-a2-review-reflection',
     type: 'reflection',
-    title: 'Deep Thinking',
-    instructions: 'Think about these questions and discuss them.',
-    question: 'Why is it important to ask questions and think for yourself?',
+    title: 'Evidence and Reflection',
+    instructions: 'Think first from the story, then give a short A2 response.',
+    question: 'How does the story show that trust can be followed by action?',
     correctAnswer: null,
-    explanation: 'Asking questions helped Abraham find the truth about the one true Creator.',
+    explanation: 'Hagar trusted Allah, but she also searched and ran from hill to hill for food and water. Abraham also trusted Allah while continuing his mission.',
     feedback: {
-      correct: 'Excellent reflection!',
+      correct: 'Use one story event to support your idea.',
       incorrect: ''
     },
     discussionPrompts: [
-      { question: 'Why is it important to ask questions like Abraham did?', mode: 'Individual' },
-      { question: 'What does "trust in Allah" mean in Hagar’s story?', mode: 'Pair' },
-      { question: 'How does the Ka’ba bring people together today?', mode: 'Class' }
+      { question: 'What did Hagar believe, and what did she do next?', mode: 'Individual' },
+      { question: 'What changed in the fire, and what did not change in the people?', mode: 'Pair' },
+      { question: 'How does the final message connect with Abraham’s earlier questions about idols?', mode: 'Class' }
     ]
   },
   {
-    id: 'final-4',
+    id: 'abraham-a2-review-quiz',
     type: 'quiz-game',
-    title: 'The Prophet Abraham Challenge',
-    instructions: 'Complete the 7-step journey through the story.',
-    question: 'Are you ready for the final challenge?',
+    title: 'Abraham A2 Retrieval Review',
+    instructions: 'Answer eight questions from across the story. Use the hint only when you need it.',
+    question: 'Can you reconnect the main ideas without rereading everything?',
     correctAnswer: null,
-    explanation: 'This game covers the major milestones of Prophet Abraham’s life.',
+    explanation: 'The questions cover reasoning, sequence, cause-result, response, and the final message rather than random details.',
     feedback: {
-      correct: 'Congratulations! You are a master of the Story of Abraham (pbuh)!',
-      incorrect: 'Don’t give up! Review the story and try again.'
+      correct: 'Good retrieval. Keep connecting each answer with its chapter evidence.',
+      incorrect: 'Use the hint to return to the relevant chapter idea, then try again.'
     },
-    hints: ['Think about his search in the stars', 'Remember the miracle in the fire', 'Recall the valley and the water'],
     quizQuestions: [
       {
-        question: 'Where was Abraham (pbuh) born?',
+        question: 'What made Abraham question the stone objects in Chapter 1?',
         options: [
-          { text: 'Mecca', isCorrect: false },
-          { text: 'Babylon', isCorrect: true },
-          { text: 'Syria', isCorrect: false }
+          { text: 'They could not hear, talk, move, or understand', isCorrect: true },
+          { text: 'They were hidden in another city', isCorrect: false },
+          { text: 'They refused to give him presents', isCorrect: false }
         ],
-        hint: 'It was an ancient kingdom in Mesopotamia.'
+        hint: 'Focus on what Abraham noticed the objects could not do.'
       },
       {
-        question: 'What did Abraham’s father do?',
+        question: 'What repeated event helped Abraham reject the star and the moon?',
         options: [
-          { text: 'He was an idol maker', isCorrect: true },
-          { text: 'He was a shepherd', isCorrect: false },
-          { text: 'He was a king', isCorrect: false }
+          { text: 'They disappeared or went away', isCorrect: true },
+          { text: 'They spoke to him', isCorrect: false },
+          { text: 'They became stone objects', isCorrect: false }
         ],
-        hint: 'He made objects out of stone that people worshipped.'
+        hint: 'Compare the end of the star scene with the moon scene.'
       },
       {
-        question: 'What happened when Abraham was thrown into the fire?',
+        question: 'Why did Abraham leave the largest idol unbroken?',
         options: [
-          { text: 'The fire became cool and safe', isCorrect: true },
-          { text: 'Rain fell and stopped it', isCorrect: false },
-          { text: 'He escaped before falling', isCorrect: false }
+          { text: 'It was part of his plan to make the people think', isCorrect: true },
+          { text: 'He wanted to worship it later', isCorrect: false },
+          { text: 'He forgot to enter the idol house', isCorrect: false }
         ],
-        hint: 'It was a great miracle from Allah.'
+        hint: 'Remember where Abraham placed the axe.'
       },
       {
-        question: 'Who was the king who argued with Abraham?',
+        question: 'Why did Abraham stay calm while the huge fire was prepared?',
         options: [
-          { text: 'Pharaoh', isCorrect: false },
-          { text: 'Abu Jahl', isCorrect: false },
-          { text: 'Nimrod', isCorrect: true }
+          { text: 'He trusted Allah', isCorrect: true },
+          { text: 'The fire was not dangerous', isCorrect: false },
+          { text: 'Nimrod had already stopped the punishment', isCorrect: false }
         ],
-        hint: 'He claimed he could give life and death.'
+        hint: 'The chapter states the reason directly after describing the dangerous fire.'
       },
       {
-        question: 'What is the name of the special water in Mecca?',
+        question: 'What did the miracle change, and what did it not change?',
         options: [
-          { text: 'River Nile', isCorrect: false },
-          { text: 'Zamzam', isCorrect: true },
-          { text: 'Kawthar', isCorrect: false }
+          { text: 'The fire became safe, but the people still rejected Abraham', isCorrect: true },
+          { text: 'The people believed, but the fire stayed dangerous', isCorrect: false },
+          { text: 'Abraham left Babylon before the fire changed', isCorrect: false }
         ],
-        hint: 'It appeared under baby Ishmael’s feet.'
+        hint: 'Compare the fire with the people’s response afterward.'
       },
       {
-        question: 'Between which two hills did Hagar run?',
+        question: 'Why did Abraham leave Babylon?',
         options: [
-          { text: 'Uhud and Nur', isCorrect: false },
-          { text: 'Safa and Marwah', isCorrect: true },
-          { text: 'Arafat and Mina', isCorrect: false }
+          { text: 'To carry Allah’s message to other lands after people would not listen', isCorrect: true },
+          { text: 'To search for another king to worship', isCorrect: false },
+          { text: 'To bring the broken idols with him', isCorrect: false }
         ],
-        hint: 'Pilgrims still walk between them today.'
+        hint: 'Look at the reason given before the journey begins.'
       },
       {
-        question: 'What did Abraham and Ishmael build together?',
+        question: 'Which pair shows both trust and action in the valley?',
         options: [
-          { text: 'A palace', isCorrect: false },
-          { text: 'A big masjid', isCorrect: false },
-          { text: 'The Ka’ba', isCorrect: true }
+          { text: 'Hagar trusted Allah and searched for food and water', isCorrect: true },
+          { text: 'Hagar trusted Allah and stayed without doing anything', isCorrect: false },
+          { text: 'Hagar returned immediately to Babylon', isCorrect: false }
         ],
-        hint: 'It is the House of Allah in Mecca.'
+        hint: 'Use both paragraphs of Chapter 12.'
+      },
+      {
+        question: 'Which statement best connects the last chapter with the whole story?',
+        options: [
+          { text: 'The Ka’ba is built and the story ends with the message that Allah has no partner', isCorrect: true },
+          { text: 'The people of Babylon finally begin to worship Mardukh', isCorrect: false },
+          { text: 'Nimrod becomes the builder of the Ka’ba', isCorrect: false }
+        ],
+        hint: 'Use the building scene and the final quoted message together.'
       }
     ]
   }
