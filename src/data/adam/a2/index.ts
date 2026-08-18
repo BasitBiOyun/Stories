@@ -2,13 +2,17 @@ import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import {
   buildA2StudentGuideMetadata,
-  buildA2StudentGuideSections,
-  buildA2StudentGuideText,
   buildA2TeacherGuideMetadata,
   type A2BookConfig,
 } from '../../a2BookSupport';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
+import {
+  applyAdamA2GoldVocabularyChallenge,
+  buildAdamA2GoldStudentGuideSections,
+  buildAdamA2GoldStudentGuideText,
+  buildAdamA2GoldTeacherGuideMetadata,
+} from './goldGuides';
 import { validateAdamA2HighlightContract } from './highlightValidation';
 import { adamA2LearningBlueprint } from './learningBlueprint';
 import { adamA2SourcePagesAr, adamA2SourcePagesEn } from './source';
@@ -42,21 +46,30 @@ const adamA2 = runA2BlueprintSystem({
   blueprint: adamA2LearningBlueprint,
 });
 
-const adamA2TeacherGuideMetadataEn = buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en');
-const adamA2TeacherGuideMetadataAr = buildA2TeacherGuideMetadata('قصة النبي آدم', adamA2Config.storyIds.length, 'ar');
-const adamA2StudentGuideSectionsEn = buildA2StudentGuideSections('en');
-const adamA2StudentGuideSectionsAr = buildA2StudentGuideSections('ar');
+const adamA2GoldPagesEn = applyAdamA2GoldVocabularyChallenge(adamA2.englishPages, adamA2LearningBlueprint, 'en');
+const adamA2GoldPagesAr = applyAdamA2GoldVocabularyChallenge(adamA2.arabicPages, adamA2LearningBlueprint, 'ar');
+
+const adamA2TeacherGuideMetadataEn = buildAdamA2GoldTeacherGuideMetadata(
+  buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en'),
+  'en',
+);
+const adamA2TeacherGuideMetadataAr = buildAdamA2GoldTeacherGuideMetadata(
+  buildA2TeacherGuideMetadata('قصة النبي آدم', adamA2Config.storyIds.length, 'ar'),
+  'ar',
+);
+const adamA2StudentGuideSectionsEn = buildAdamA2GoldStudentGuideSections('en');
+const adamA2StudentGuideSectionsAr = buildAdamA2GoldStudentGuideSections('ar');
 const adamA2StudentGuideMetadataEn = buildA2StudentGuideMetadata('Prophet Adam', 'en');
 const adamA2StudentGuideMetadataAr = buildA2StudentGuideMetadata('قصة النبي آدم', 'ar');
-const adamA2StudentGuideTextEn = buildA2StudentGuideText('Prophet Adam', 'en');
-const adamA2StudentGuideTextAr = buildA2StudentGuideText('قصة النبي آدم', 'ar');
+const adamA2StudentGuideTextEn = buildAdamA2GoldStudentGuideText(adamA2LearningBlueprint, 'en');
+const adamA2StudentGuideTextAr = buildAdamA2GoldStudentGuideText(adamA2LearningBlueprint, 'ar');
 
 export const adamA2BookDataEn: BookData = {
   id: 'a2-prophets-en',
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: adamA2.englishPages,
+  pages: adamA2GoldPagesEn,
   teacherGuide: adamA2.englishTeacherGuide,
   teacherGuideMetadata: adamA2TeacherGuideMetadataEn,
   selfStudyGuide: adamA2.englishSelfStudyGuide,
@@ -70,7 +83,7 @@ export const adamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'A2',
   baseFontSize: 14,
-  pages: adamA2.arabicPages,
+  pages: adamA2GoldPagesAr,
   teacherGuide: adamA2.arabicTeacherGuide,
   teacherGuideMetadata: adamA2TeacherGuideMetadataAr,
   selfStudyGuide: adamA2.arabicSelfStudyGuide,
