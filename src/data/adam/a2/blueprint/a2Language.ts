@@ -59,12 +59,27 @@ const QUESTION_OVERRIDES: Record<string, LocalizedText> = {
   },
 };
 
+const OPTION_OVERRIDES: Record<string, { en: string[]; ar: string[] }> = {
+  'adam-a2-c5-review': {
+    en: [
+      'Adam and Eve learned; Iblis did not admit he was wrong',
+      'Adam and Eve said they were right; Iblis asked forgiveness',
+      'Everyone forgot the mistake and moved on',
+    ],
+    ar: [
+      'تعلم آدم وحواء؛ ولم يعترف إبليس بأنه مخطئ',
+      'قال آدم وحواء إنهما على صواب؛ وطلب إبليس المغفرة',
+      'نسي الجميع الخطأ وتابعوا حياتهم',
+    ],
+  },
+};
+
 /**
  * Student-facing A2 language lock.
  *
  * The cognitive target may require a simple comparison or cause/result link, but
  * the question itself must stay short, concrete and readable at A2. This layer
- * changes question wording only; evidence, answers and story text are untouched.
+ * changes student-facing wording only; evidence, answers and story text are untouched.
  */
 export const applyAdamA2QuestionLanguageLock = (
   chapter: LearningBlueprintChapter,
@@ -72,12 +87,21 @@ export const applyAdamA2QuestionLanguageLock = (
   ...chapter,
   assessmentItems: chapter.assessmentItems.map(item => {
     const wording = QUESTION_OVERRIDES[item.id];
-    if (!wording) return item;
+    const options = OPTION_OVERRIDES[item.id];
+    if (!wording && !options) return item;
     return {
       ...item,
       exercise: {
-        en: { ...item.exercise.en, question: wording.en },
-        ar: { ...item.exercise.ar, question: wording.ar },
+        en: {
+          ...item.exercise.en,
+          ...(wording ? { question: wording.en } : {}),
+          ...(options ? { options: options.en } : {}),
+        },
+        ar: {
+          ...item.exercise.ar,
+          ...(wording ? { question: wording.ar } : {}),
+          ...(options ? { options: options.ar } : {}),
+        },
       },
     };
   }),
