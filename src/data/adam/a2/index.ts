@@ -15,6 +15,7 @@ import {
 } from './goldGuides';
 import { adamA2LearningBlueprint } from './learningBlueprint';
 import { adamA2SourcePagesAr, adamA2SourcePagesEn } from './source';
+import { finalizeAdamA2TeacherGuideMetadata } from './teacherGuideFinal';
 
 const adamA2Config: A2BookConfig = {
   storyIds: Array.from({ length: 10 }, (_, index) => index + 1),
@@ -63,12 +64,18 @@ const adamA2GoldPagesAr = applyAdamA2GoldVocabularyChallenge(
   'ar',
 );
 
-const adamA2TeacherGuideMetadataEn = buildAdamA2GoldTeacherGuideMetadata(
-  buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en'),
+const adamA2TeacherGuideMetadataEn = finalizeAdamA2TeacherGuideMetadata(
+  buildAdamA2GoldTeacherGuideMetadata(
+    buildA2TeacherGuideMetadata('Prophet Adam', adamA2Config.storyIds.length, 'en'),
+    'en',
+  ),
   'en',
 );
-const adamA2TeacherGuideMetadataAr = buildAdamA2GoldTeacherGuideMetadata(
-  buildA2TeacherGuideMetadata('قصة النبي آدم', adamA2Config.storyIds.length, 'ar'),
+const adamA2TeacherGuideMetadataAr = finalizeAdamA2TeacherGuideMetadata(
+  buildAdamA2GoldTeacherGuideMetadata(
+    buildA2TeacherGuideMetadata('قصة النبي آدم', adamA2Config.storyIds.length, 'ar'),
+    'ar',
+  ),
   'ar',
 );
 const adamA2StudentGuideSectionsEn = buildAdamA2GoldStudentGuideSections('en');
