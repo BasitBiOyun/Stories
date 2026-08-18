@@ -1,4 +1,5 @@
 import { BookData, PageData } from '../../../types';
+import { finalizeA2TeacherGuideAlignment } from '../../a2TeacherGuideAlignment';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
@@ -74,8 +75,16 @@ const goldPagesAr = applyMeccaA2GoldVocabularyChallenge(
   'ar',
 );
 
-const teacherMetadataEn = buildMeccaA2GoldTeacherGuideMetadata(meccaA2TeacherGuideMetadataFinalEn, 'en');
-const teacherMetadataAr = buildMeccaA2GoldTeacherGuideMetadata(meccaA2TeacherGuideMetadataFinalAr, 'ar');
+const teacherMetadataEn = finalizeA2TeacherGuideAlignment(
+  buildMeccaA2GoldTeacherGuideMetadata(meccaA2TeacherGuideMetadataFinalEn, 'en'),
+  'mecca',
+  'en',
+);
+const teacherMetadataAr = finalizeA2TeacherGuideAlignment(
+  buildMeccaA2GoldTeacherGuideMetadata(meccaA2TeacherGuideMetadataFinalAr, 'ar'),
+  'mecca',
+  'ar',
+);
 const studentSectionsEn = buildMeccaA2GoldStudentGuideSections('en');
 const studentSectionsAr = buildMeccaA2GoldStudentGuideSections('ar');
 const studentTextEn = buildMeccaA2GoldStudentGuideText(meccaA2GoldLearningBlueprint, 'en');
