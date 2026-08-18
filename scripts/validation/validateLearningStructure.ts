@@ -3,6 +3,11 @@ import { abrahamA2BookDataAr, abrahamA2BookDataEn } from '../../src/data/abraham
 import { meccaA2BookDataAr, meccaA2BookDataEn } from '../../src/data/mecca/a2';
 import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../src/data/moses/a2';
 import { yunusEmreA2BookDataAr, yunusEmreA2BookDataEn } from '../../src/data/yunusEmre/a2';
+import { adamB1BookDataAr, adamB1BookDataEn, adamB1GoldConfig } from '../../src/data/adam/b1';
+import { abrahamB1BookDataAr, abrahamB1BookDataEn, abrahamB1GoldConfig } from '../../src/data/abraham/b1';
+import { meccaB1BookDataAr, meccaB1BookDataEn, meccaB1GoldConfig } from '../../src/data/mecca/b1';
+import { mosesB1BookDataAr, mosesB1BookDataEn, mosesB1GoldConfig } from '../../src/data/moses/b1';
+import { yunusEmreB1BookDataAr, yunusEmreB1BookDataEn, yunusEmreB1GoldConfig } from '../../src/data/yunusEmre/b1';
 import {
   validateLearningBookStructure,
   type LearningBookStructureConfig,
@@ -64,6 +69,16 @@ const migratedBooks = [
   { label: 'Mecca A2 AR', book: meccaA2BookDataAr, config: meccaA2Config },
   { label: 'Yunus Emre A2 EN', book: yunusEmreA2BookDataEn, config: yunusA2Config },
   { label: 'Yunus Emre A2 AR', book: yunusEmreA2BookDataAr, config: yunusA2Config },
+  { label: 'Adam B1 EN', book: adamB1BookDataEn, config: adamB1GoldConfig },
+  { label: 'Adam B1 AR', book: adamB1BookDataAr, config: adamB1GoldConfig },
+  { label: 'Abraham B1 EN', book: abrahamB1BookDataEn, config: abrahamB1GoldConfig },
+  { label: 'Abraham B1 AR', book: abrahamB1BookDataAr, config: abrahamB1GoldConfig },
+  { label: 'Moses B1 EN', book: mosesB1BookDataEn, config: mosesB1GoldConfig },
+  { label: 'Moses B1 AR', book: mosesB1BookDataAr, config: mosesB1GoldConfig },
+  { label: 'Mecca B1 EN', book: meccaB1BookDataEn, config: meccaB1GoldConfig },
+  { label: 'Mecca B1 AR', book: meccaB1BookDataAr, config: meccaB1GoldConfig },
+  { label: 'Yunus Emre B1 EN', book: yunusEmreB1BookDataEn, config: yunusEmreB1GoldConfig },
+  { label: 'Yunus Emre B1 AR', book: yunusEmreB1BookDataAr, config: yunusEmreB1GoldConfig },
 ];
 
 let failed = false;
