@@ -1,6 +1,11 @@
 import { BookData } from '../../../types';
 import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
 import {
+  polishB1GuideSections,
+  sanitizeB1StudentGuideSections,
+  sanitizeB1StudentGuideText,
+} from '../../b1GuidePresentation';
+import {
   buildB1GoldStudentGuideMetadata,
   buildB1GoldStudentGuideSections,
   buildB1GoldStudentGuideText,
@@ -57,12 +62,16 @@ const pagesAr = applyB1CuratedVocabulary(
 
 const teacherMetadataEn = buildB1GoldTeacherGuideMetadata(adamB1TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length);
 const teacherMetadataAr = buildB1GoldTeacherGuideMetadata(adamB1TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length);
-const studentSectionsEn = buildB1GoldStudentGuideSections(story, 'en');
-const studentSectionsAr = buildB1GoldStudentGuideSections(story, 'ar');
+const teacherGuideEn = polishB1GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
+const teacherGuideAr = polishB1GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
+const selfStudyGuideEn = polishB1GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
+const selfStudyGuideAr = polishB1GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
+const studentSectionsEn = sanitizeB1StudentGuideSections(buildB1GoldStudentGuideSections(story, 'en'));
+const studentSectionsAr = sanitizeB1StudentGuideSections(buildB1GoldStudentGuideSections(story, 'ar'));
 const studentMetadataEn = buildB1GoldStudentGuideMetadata(story, 'en');
 const studentMetadataAr = buildB1GoldStudentGuideMetadata(story, 'ar');
-const studentTextEn = buildB1GoldStudentGuideText(goldBlueprint, story, 'en');
-const studentTextAr = buildB1GoldStudentGuideText(goldBlueprint, story, 'ar');
+const studentTextEn = sanitizeB1StudentGuideText(buildB1GoldStudentGuideText(goldBlueprint, story, 'en'), 'en');
+const studentTextAr = sanitizeB1StudentGuideText(buildB1GoldStudentGuideText(goldBlueprint, story, 'ar'), 'ar');
 
 export const adamB1GoldConfig = prepared.config;
 
@@ -72,8 +81,8 @@ export const adamB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 12,
   pages: pagesEn,
-  teacherGuide: compiled.englishTeacherGuide,
-  selfStudyGuide: compiled.englishSelfStudyGuide,
+  teacherGuide: teacherGuideEn,
+  selfStudyGuide: selfStudyGuideEn,
   studentGuideText: studentTextEn,
   studentGuideSections: studentSectionsEn,
   teacherGuideMetadata: teacherMetadataEn,
@@ -86,8 +95,8 @@ export const adamB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: pagesAr,
-  teacherGuide: compiled.arabicTeacherGuide,
-  selfStudyGuide: compiled.arabicSelfStudyGuide,
+  teacherGuide: teacherGuideAr,
+  selfStudyGuide: selfStudyGuideAr,
   studentGuideText: studentTextAr,
   studentGuideSections: studentSectionsAr,
   teacherGuideMetadata: teacherMetadataAr,
