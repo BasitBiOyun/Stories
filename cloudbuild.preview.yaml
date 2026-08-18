@@ -1,6 +1,6 @@
 # Preview continuous deployment: GitHub preview branch -> Cloud Build -> Cloud Run.
 # The trigger should point at this file and match only the `preview` branch.
-# This uses Google Cloud build minutes, not GitHub Actions minutes.
+# Pedagogical validators are intentionally not deployment gates; preview is for human review.
 
 substitutions:
   _REGION: us-west1
@@ -9,7 +9,6 @@ substitutions:
   _SERVICE: stories-preview
 
 steps:
-  # Pull the previous preview image so unchanged Docker layers can be reused.
   - id: pull-cache
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
@@ -20,39 +19,20 @@ steps:
         ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
         || true
 
-  # Docker runs the aggregate deploy checker. Every independent validation group,
-  # typecheck and Vite build is attempted before the checker exits non-zero.
-  # On failure, surface the complete aggregate report rather than only the first error.
   - id: build
     name: gcr.io/cloud-builders/docker
-    entrypoint: bash
     env:
       - DOCKER_BUILDKIT=1
     args:
-      - -ceu
-      - |
-        set +e
-        docker build \
-          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest \
-          --build-arg BUILDKIT_INLINE_CACHE=1 \
-          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
-          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest \
-          . > /tmp/docker-build.log 2>&1
-        status=$$?
-        set -e
-        if [ "$$status" -ne 0 ]; then
-          echo "Docker build failed (exit $$status)."
-          if grep -q "=== STORIES DEPLOY QUALITY REPORT ===" /tmp/docker-build.log; then
-            echo "Complete aggregated Stories quality report follows:"
-            sed -n '/=== STORIES DEPLOY QUALITY REPORT ===/,$p' /tmp/docker-build.log
-          else
-            echo "Aggregate report marker was not reached. Last 400 lines follow:"
-            tail -n 400 /tmp/docker-build.log
-          fi
-          exit "$$status"
-        fi
-        echo "Docker build succeeded. Last 100 lines:"
-        tail -n 100 /tmp/docker-build.log
+      - build
+      - --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+      - --build-arg
+      - BUILDKIT_INLINE_CACHE=1
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+      - .
 
   - id: push
     name: gcr.io/cloud-builders/docker
@@ -77,8 +57,6 @@ steps:
       - --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME
       - --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
 
-# A user-selected trigger service account requires an explicit user-owned log sink.
-# Cloud Logging satisfies that requirement without creating/managing a GCS bucket.
 options:
   logging: CLOUD_LOGGING_ONLY
 
