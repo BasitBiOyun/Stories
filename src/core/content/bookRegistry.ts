@@ -25,6 +25,7 @@ const createDefinition = (
   collection: CollectionId,
   titles: BookDisplayTitles,
   loadSource: () => Promise<BookPair>,
+  preservePreparedLearning = false,
 ): BookDefinition => {
   const loadCorrectedSource = async (): Promise<BookPair> =>
     applyApprovedEnglishStoryCorrections(storyId, level, await loadSource());
@@ -36,7 +37,10 @@ const createDefinition = (
     titles,
     storage: getStorageManifest(storyId, level),
     loadSource: loadCorrectedSource,
-    load: async () => finalizeBookPairForUi(await loadCorrectedSource()),
+    load: async () => {
+      const corrected = await loadCorrectedSource();
+      return preservePreparedLearning ? corrected : finalizeBookPairForUi(corrected);
+    },
   };
 };
 
@@ -47,7 +51,7 @@ export const bookRegistry: readonly BookDefinition[] = [
   }, async () => {
     const module = await import('../../data/adam/a2');
     return { en: module.adamA2BookDataEn, ar: module.adamA2BookDataAr };
-  }),
+  }, true),
   createDefinition('adam', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Adam (B1)',
     ar: 'قصص الأنبياء: آدم (عليه السلام)',
