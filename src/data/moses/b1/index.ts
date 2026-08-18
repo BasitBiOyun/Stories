@@ -1,37 +1,67 @@
 import { BookData } from '../../../types';
 import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
+import {
+  buildB1GoldStudentGuideMetadata,
+  buildB1GoldStudentGuideSections,
+  buildB1GoldStudentGuideText,
+  buildB1GoldTeacherGuideMetadata,
+} from '../../b1GoldGuides';
+import { finalizeB1LearningBlueprint } from '../../b1GoldPedagogy';
+import { buildB1GoldReview } from '../../b1GoldReview';
+import { applyB1CuratedVocabulary, applyB1GoldReview, prepareB1GoldLearningStructure } from '../../b1GoldStructure';
 import { mosesB1TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesB1StudentGuideSections, mosesB1StudentGuideText, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesB1StudentGuideSectionsAr, mosesB1StudentGuideTextAr, mosesB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { mosesB1LearningBlueprint } from './learningBlueprint';
 import { mosesB1BlueprintConfig } from './config';
 import { mosesB1HighlightTargets, mosesB1SourcePagesAr, mosesB1SourcePagesEn } from './source';
 
-import { mosesA2TeacherGuideMetadata } from '../a2/en/teacherGuide';
-import { mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from '../a2/en/selfStudyGuide';
-
 export { mosesB1HighlightTargets };
 
-const mosesB1Blueprint = runB1BlueprintSystem({
+const story = 'moses' as const;
+const prepared = prepareB1GoldLearningStructure({
   englishPages: mosesB1SourcePagesEn,
   arabicPages: mosesB1SourcePagesAr,
   config: mosesB1BlueprintConfig,
-  blueprint: mosesB1LearningBlueprint,
 });
+const goldBlueprint = finalizeB1LearningBlueprint(mosesB1LearningBlueprint, story);
+const compiled = runB1BlueprintSystem({
+  englishPages: prepared.englishPages,
+  arabicPages: prepared.arabicPages,
+  config: prepared.config,
+  blueprint: goldBlueprint,
+});
+
+const curatedVocabulary = [
+  'dictatorial', 'heartless', 'accidentally', 'guided', 'spring',
+  'companion', 'arrogant', 'seized', 'enslave', 'visible',
+] as const;
+
+const pagesEn = applyB1CuratedVocabulary(
+  applyB1GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'en')),
+  goldBlueprint, prepared.config.vocabularyPageId, 'en', curatedVocabulary,
+);
+const pagesAr = applyB1CuratedVocabulary(
+  applyB1GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'ar')),
+  goldBlueprint, prepared.config.vocabularyPageId, 'ar', curatedVocabulary,
+);
+
+const teacherMetadataEn = buildB1GoldTeacherGuideMetadata(mosesB1TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length);
+const teacherMetadataAr = buildB1GoldTeacherGuideMetadata(mosesB1TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length);
+
+export const mosesB1GoldConfig = prepared.config;
 
 export const mosesB1BookDataEn: BookData = {
   id: 'moses-b1-en',
   title: 'Stories of the Prophets: Moses (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: mosesB1Blueprint.englishPages,
-  teacherGuide: mosesB1Blueprint.englishTeacherGuide,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadata.targetLearners ? mosesB1TeacherGuideMetadata : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesB1Blueprint.englishSelfStudyGuide,
-  studentGuideSections: mosesB1StudentGuideSections.length > 0 ? mosesB1StudentGuideSections : mosesA2StudentGuideSections,
-  studentGuideText: mosesB1StudentGuideText || mosesA2StudentGuideText,
-  studentGuideMetadata: mosesB1StudentGuideMetadata.whoIsThisFor ? mosesB1StudentGuideMetadata : mosesA2StudentGuideMetadata,
+  pages: pagesEn,
+  teacherGuide: compiled.englishTeacherGuide,
+  teacherGuideMetadata: teacherMetadataEn,
+  selfStudyGuide: compiled.englishSelfStudyGuide,
+  studentGuideSections: buildB1GoldStudentGuideSections(story, 'en'),
+  studentGuideText: buildB1GoldStudentGuideText(goldBlueprint, story, 'en'),
+  studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'en'),
 };
 
 export const mosesB1BookDataAr: BookData = {
@@ -39,13 +69,13 @@ export const mosesB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: mosesB1Blueprint.arabicPages,
-  teacherGuide: mosesB1Blueprint.arabicTeacherGuide,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadataAr.targetLearners ? mosesB1TeacherGuideMetadataAr : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesB1Blueprint.arabicSelfStudyGuide,
-  studentGuideSections: mosesB1StudentGuideSectionsAr.length > 0 ? mosesB1StudentGuideSectionsAr : mosesA2StudentGuideSections,
-  studentGuideText: mosesB1StudentGuideTextAr || mosesA2StudentGuideText,
-  studentGuideMetadata: mosesB1StudentGuideMetadataAr.whoIsThisFor ? mosesB1StudentGuideMetadataAr : mosesA2StudentGuideMetadata,
+  pages: pagesAr,
+  teacherGuide: compiled.arabicTeacherGuide,
+  teacherGuideMetadata: teacherMetadataAr,
+  selfStudyGuide: compiled.arabicSelfStudyGuide,
+  studentGuideSections: buildB1GoldStudentGuideSections(story, 'ar'),
+  studentGuideText: buildB1GoldStudentGuideText(goldBlueprint, story, 'ar'),
+  studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'ar'),
 };
 
 export const mosesB1BookData = mosesB1BookDataEn;
