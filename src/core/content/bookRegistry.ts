@@ -95,7 +95,7 @@ export const bookRegistry: readonly BookDefinition[] = [
   }, async () => {
     const module = await import('../../data/moses/a2');
     return { en: module.mosesA2BookDataEn, ar: module.mosesA2BookDataAr };
-  }),
+  }, true),
   createDefinition('musa', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Moses (B1)',
     ar: 'قصص الأنبياء: موسى (عليه السلام)',
