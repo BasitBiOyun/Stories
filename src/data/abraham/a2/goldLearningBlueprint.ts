@@ -1,11 +1,13 @@
 import { defineLearningBlueprint } from '../../learningBlueprint';
 import { applyAbrahamA2FinalPedagogy } from './blueprint/finalPedagogy';
 import { upgradeAbrahamA2ChapterToGoldV2 } from './blueprint/goldV2';
+import { applyAbrahamA2QuickStageLock } from './blueprint/quickStageLock';
 import { abrahamA2LearningBlueprint as baseBlueprint } from './learningBlueprint';
 
 const chapters = baseBlueprint.chapters
   .map(upgradeAbrahamA2ChapterToGoldV2)
-  .map(applyAbrahamA2FinalPedagogy);
+  .map(applyAbrahamA2FinalPedagogy)
+  .map(applyAbrahamA2QuickStageLock);
 
 export const abrahamA2GoldLearningBlueprint = defineLearningBlueprint({
   ...baseBlueprint,
