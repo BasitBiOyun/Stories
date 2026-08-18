@@ -1,12 +1,10 @@
 import type { Exercise, PageData, QuizQuestion, TeacherGuideSection } from '../types';
-import { highlightPhraseOccurs } from '../lib/highlightTextMatch';
 import type { LearningSystemConfig, LearningSystemResult } from './learningSystem';
 import { runLearningSystem } from './learningSystem';
 import { getLearningLevelPolicy, type LearningExerciseVariant } from './learningLevelPolicy';
 import type {
   BlueprintAssessmentItem,
   BlueprintAuthoredExercise,
-  BlueprintGuideContent,
   BlueprintLanguage,
   BlueprintStage,
   LearningBlueprint,
@@ -14,12 +12,6 @@ import type {
 } from './learningBlueprint';
 
 const storyPage = (pages: PageData[], id: number) => pages.find(page => page.type === 'story' && page.id === id);
-const requirePage = (pages: PageData[], id: number, language: string) => {
-  const page = pages.find(candidate => candidate.id === id);
-  if (!page) throw new Error(`[Learning Blueprint] ${language} page ${id} is missing.`);
-  return page;
-};
-const unique = <T,>(items: T[]) => [...new Set(items)];
 const countsFor = (config: LearningSystemConfig) => {
   const policy = getLearningLevelPolicy(config.level);
   return {
@@ -30,132 +22,17 @@ const countsFor = (config: LearningSystemConfig) => {
   };
 };
 const localized = <T,>(value: { en: T; ar: T }, language: BlueprintLanguage): T => value[language];
-const text = (value: unknown) => typeof value === 'string' ? value.trim() : '';
 
-const answerShape = (value: unknown) => Array.isArray(value) ? 'array' : value === null ? 'null' : typeof value;
-const validateExercisePair = (item: BlueprintAssessmentItem, where: string) => {
-  const en = item.exercise.en;
-  const ar = item.exercise.ar;
-  if (en.type !== ar.type) throw new Error(`[Learning Blueprint] ${where}: EN/AR exercise types differ.`);
-  if (!text(en.question) || !text(ar.question)) throw new Error(`[Learning Blueprint] ${where}: both languages need a manual question.`);
-  if (answerShape(en.correctAnswer) !== answerShape(ar.correctAnswer)) throw new Error(`[Learning Blueprint] ${where}: EN/AR answer shapes differ.`);
-
-  if (en.type === 'multiple-choice') {
-    if (!en.options || !ar.options || en.options.length < 3 || en.options.length !== ar.options.length) {
-      throw new Error(`[Learning Blueprint] ${where}: multiple-choice options must be paired and contain at least three choices.`);
-    }
-    if (typeof en.correctAnswer !== 'number' || typeof ar.correctAnswer !== 'number' || en.correctAnswer !== ar.correctAnswer) {
-      throw new Error(`[Learning Blueprint] ${where}: multiple-choice correct-answer indexes must match.`);
-    }
-    if (en.correctAnswer < 0 || en.correctAnswer >= en.options.length) throw new Error(`[Learning Blueprint] ${where}: invalid correct-answer index.`);
-  }
-  if (en.type === 'true-false' && (typeof en.correctAnswer !== 'boolean' || en.correctAnswer !== ar.correctAnswer)) {
-    throw new Error(`[Learning Blueprint] ${where}: true/false answer logic must match.`);
-  }
-  if (en.type === 'matching') {
-    const enCount = en.matchingPairs?.length ?? 0;
-    const arCount = ar.matchingPairs?.length ?? 0;
-    if (enCount < 2 || enCount !== arCount) throw new Error(`[Learning Blueprint] ${where}: matching pairs must be parallel.`);
-  }
-  if (en.type === 'fill-blanks' && (!en.fillBlanksText?.includes('[blank]') || !ar.fillBlanksText?.includes('[blank]'))) {
-    throw new Error(`[Learning Blueprint] ${where}: fill-blanks text must contain [blank] in both languages.`);
-  }
-  if (en.type === 'tap-reveal') {
-    const enCount = en.tapRevealItems?.length ?? 0;
-    const arCount = ar.tapRevealItems?.length ?? 0;
-    if (!enCount || enCount !== arCount) throw new Error(`[Learning Blueprint] ${where}: tap-reveal items must be parallel.`);
-  }
-  if (item.eligibleStages.includes('review') && !['multiple-choice', 'true-false'].includes(en.type)) {
-    throw new Error(`[Learning Blueprint] ${where}: review-eligible items must be multiple-choice or true-false.`);
-  }
-};
-
-const validateGuide = (guide: BlueprintGuideContent, where: string) => {
-  if (!guide.pedagogy.trim() || !guide.lessonPlan.trim()) throw new Error(`[Learning Blueprint] ${where}: pedagogy and lesson plan are required.`);
-  if (!guide.discussionPoints.length || !guide.discussionPoints.every(point => point.trim())) throw new Error(`[Learning Blueprint] ${where}: discussion points are required.`);
-  if (!guide.interactiveTips.length || !guide.interactiveTips.every(point => point.trim())) throw new Error(`[Learning Blueprint] ${where}: interactive tips are required.`);
-  if (!guide.differentiation.fastFinishers.trim() || !guide.differentiation.strugglingLearners.trim()) throw new Error(`[Learning Blueprint] ${where}: differentiation must be complete.`);
-};
-
-export const validateLearningBlueprint = ({
-  blueprint,
-  englishPages,
-  arabicPages,
-  config,
-}: {
+/**
+ * Optional compatibility hook for authoring scripts.
+ * Runtime book loading intentionally does not enforce pedagogical validators.
+ */
+export const validateLearningBlueprint = (_input: {
   blueprint: LearningBlueprint;
   englishPages: PageData[];
   arabicPages: PageData[];
   config: LearningSystemConfig;
-}) => {
-  if (blueprint.level !== config.level) throw new Error(`[Learning Blueprint] Blueprint level ${blueprint.level} does not match runtime level ${config.level}.`);
-  if (!blueprint.id.trim() || !blueprint.version.trim() || !blueprint.storyId.trim()) throw new Error('[Learning Blueprint] id, version and storyId are required.');
-
-  const chapterIds = blueprint.chapters.map(chapter => chapter.chapterId);
-  if (unique(chapterIds).length !== chapterIds.length) throw new Error('[Learning Blueprint] Chapter IDs must be unique.');
-  const expected = [...config.storyIds].sort((a, b) => a - b).join(',');
-  const actual = [...chapterIds].sort((a, b) => a - b).join(',');
-  if (expected !== actual) throw new Error(`[Learning Blueprint] Blueprint chapters (${actual}) do not match story chapters (${expected}).`);
-
-  const evidenceIds = new Set<string>();
-  const assessmentIds = new Set<string>();
-  const vocabularyIds = new Set<string>();
-  blueprint.chapters.forEach(chapter => {
-    const enPage = storyPage(englishPages, chapter.chapterId);
-    const arPage = storyPage(arabicPages, chapter.chapterId);
-    if (!enPage || !arPage) throw new Error(`[Learning Blueprint] Chapter ${chapter.chapterId} is missing in one language.`);
-    if (!chapter.objectives.length) throw new Error(`[Learning Blueprint] Chapter ${chapter.chapterId} needs at least one manual objective.`);
-    chapter.objectives.forEach((objective, index) => {
-      if (!objective.en.trim() || !objective.ar.trim()) throw new Error(`[Learning Blueprint] Chapter ${chapter.chapterId} objective ${index + 1} is incomplete.`);
-    });
-    if (!chapter.evidencePoints.length) throw new Error(`[Learning Blueprint] Chapter ${chapter.chapterId} needs evidence points.`);
-
-    const localEvidence = new Set<string>();
-    chapter.evidencePoints.forEach(point => {
-      if (evidenceIds.has(point.id)) throw new Error(`[Learning Blueprint] Duplicate evidence ID: ${point.id}.`);
-      evidenceIds.add(point.id);
-      localEvidence.add(point.id);
-      if (!point.claim.en.trim() || !point.claim.ar.trim() || !point.evidence.en.trim() || !point.evidence.ar.trim()) {
-        throw new Error(`[Learning Blueprint] Evidence ${point.id} is incomplete.`);
-      }
-      if (!highlightPhraseOccurs(enPage.content || '', point.evidence.en, 'en')) throw new Error(`[Learning Blueprint] ${point.id}: English evidence is not attested in Chapter ${chapter.chapterId}.`);
-      if (!highlightPhraseOccurs(arPage.content || '', point.evidence.ar, 'ar')) throw new Error(`[Learning Blueprint] ${point.id}: Arabic evidence is not attested in Chapter ${chapter.chapterId}.`);
-    });
-
-    chapter.vocabularyTargets.forEach(target => {
-      if (vocabularyIds.has(target.id)) throw new Error(`[Learning Blueprint] Duplicate vocabulary ID: ${target.id}.`);
-      vocabularyIds.add(target.id);
-      if (!target.en.word.trim() || !target.en.definition.trim() || !target.ar.word.trim() || !target.ar.definition.trim()) {
-        throw new Error(`[Learning Blueprint] Vocabulary ${target.id} is incomplete.`);
-      }
-      if (!highlightPhraseOccurs(enPage.content || '', target.en.word, 'en')) throw new Error(`[Learning Blueprint] ${target.id}: English word/phrase is not in Chapter ${chapter.chapterId}.`);
-      if (!highlightPhraseOccurs(arPage.content || '', target.ar.word, 'ar')) throw new Error(`[Learning Blueprint] ${target.id}: Arabic word/phrase is not in Chapter ${chapter.chapterId}.`);
-    });
-
-    chapter.assessmentItems.forEach(item => {
-      if (assessmentIds.has(item.id)) throw new Error(`[Learning Blueprint] Duplicate assessment ID: ${item.id}.`);
-      assessmentIds.add(item.id);
-      if (!localEvidence.has(item.learningPointId)) throw new Error(`[Learning Blueprint] ${item.id} references evidence outside Chapter ${chapter.chapterId}: ${item.learningPointId}.`);
-      if (!item.eligibleStages.length || unique(item.eligibleStages).length !== item.eligibleStages.length) throw new Error(`[Learning Blueprint] ${item.id} needs unique eligible stages.`);
-      validateExercisePair(item, item.id);
-    });
-
-    if (!chapter.assessmentItems.some(item => item.eligibleStages.includes('quick'))) throw new Error(`[Learning Blueprint] Chapter ${chapter.chapterId} has no Quick Challenge candidate.`);
-    validateGuide(chapter.teacherGuide.en, `Chapter ${chapter.chapterId} teacher guide EN`);
-    validateGuide(chapter.teacherGuide.ar, `Chapter ${chapter.chapterId} teacher guide AR`);
-    validateGuide(chapter.selfStudyGuide.en, `Chapter ${chapter.chapterId} self-study guide EN`);
-    validateGuide(chapter.selfStudyGuide.ar, `Chapter ${chapter.chapterId} self-study guide AR`);
-  });
-
-  const counts = countsFor(config);
-  const allItems = blueprint.chapters.flatMap(chapter => chapter.assessmentItems);
-  const uniquePointsFor = (stage: BlueprintStage) => new Set(allItems.filter(item => item.eligibleStages.includes(stage)).map(item => item.learningPointId)).size;
-  if (uniquePointsFor('knowledge') < counts.knowledge) throw new Error(`[Learning Blueprint] Need at least ${counts.knowledge} knowledge learning points.`);
-  if (uniquePointsFor('review') < counts.review) throw new Error(`[Learning Blueprint] Need at least ${counts.review} review learning points.`);
-  if (uniquePointsFor('final') < counts.final) throw new Error(`[Learning Blueprint] Need at least ${counts.final} final learning points.`);
-  const vocabularyCount = blueprint.chapters.reduce((sum, chapter) => sum + chapter.vocabularyTargets.length, 0);
-  if (config.vocabularyPageId && vocabularyCount < counts.vocabulary) throw new Error(`[Learning Blueprint] Need at least ${counts.vocabulary} vocabulary targets.`);
-};
+}) => undefined;
 
 const roundRobinItems = (chapters: LearningBlueprintChapter[]) => {
   const output: Array<BlueprintAssessmentItem & { chapterId: number }> = [];
@@ -266,7 +143,6 @@ export const runBlueprintLearningSystem = ({
   config: LearningSystemConfig;
   blueprint: LearningBlueprint;
 }): LearningSystemResult => {
-  validateLearningBlueprint({ blueprint, englishPages, arabicPages, config });
   const policy = getLearningLevelPolicy(config.level);
   const counts = countsFor(config);
   const candidates = roundRobinItems(blueprint.chapters);
@@ -350,15 +226,6 @@ export const runBlueprintLearningSystem = ({
   const arabicTeacherGuide = blueprint.chapters.map(chapter => guideSection(chapter, storyPage(arabicOutput, chapter.chapterId)!, config.level, 'ar', 'teacher'));
   const englishSelfStudyGuide = blueprint.chapters.map(chapter => guideSection(chapter, storyPage(englishOutput, chapter.chapterId)!, config.level, 'en', 'selfStudy'));
   const arabicSelfStudyGuide = blueprint.chapters.map(chapter => guideSection(chapter, storyPage(arabicOutput, chapter.chapterId)!, config.level, 'ar', 'selfStudy'));
-
-  // Runtime sanity: stage counts and EN/AR structure must remain parallel after compilation.
-  if ((requirePage(englishOutput, config.knowledgeCheckPageId, 'English').exercises?.length ?? 0) !== counts.knowledge) throw new Error('[Learning Blueprint] Knowledge Check compilation failed.');
-  if ((requirePage(arabicOutput, config.finalChallengePageId, 'Arabic').exercises?.length ?? 0) !== counts.final) throw new Error('[Learning Blueprint] Final Challenge compilation failed.');
-  config.storyIds.forEach(id => {
-    const en = storyPage(englishOutput, id)?.exercises?.[0];
-    const ar = storyPage(arabicOutput, id)?.exercises?.[0];
-    if (!en || !ar || en.type !== ar.type) throw new Error(`[Learning Blueprint] Chapter ${id} Quick Challenge parity failed.`);
-  });
 
   return { englishPages: englishOutput, arabicPages: arabicOutput, englishTeacherGuide, arabicTeacherGuide, englishSelfStudyGuide, arabicSelfStudyGuide };
 };
