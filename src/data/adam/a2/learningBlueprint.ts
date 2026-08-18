@@ -10,6 +10,7 @@ import { adamA2Chapter07 } from './blueprint/ch07';
 import { adamA2Chapter08 } from './blueprint/ch08';
 import { adamA2Chapter09 } from './blueprint/ch09';
 import { adamA2Chapter10 } from './blueprint/ch10';
+import { applyAdamA2FinalPedagogy } from './blueprint/finalPedagogy';
 import { upgradeAdamA2ChapterToGold } from './blueprint/gold';
 import { applyAdamA2GoldQuickChallenges } from './blueprint/goldQuickChallenges';
 
@@ -27,11 +28,12 @@ const goldChapters = [
 ]
   .map(upgradeAdamA2ChapterToGold)
   .map(applyAdamA2GoldQuickChallenges)
-  .map(applyAdamA2QuestionLanguageLock);
+  .map(applyAdamA2QuestionLanguageLock)
+  .map(applyAdamA2FinalPedagogy);
 
 export const adamA2LearningBlueprint = defineLearningBlueprint({
   id: 'adam-a2',
-  version: '2.0.0',
+  version: '2.1.0',
   storyId: 'adam',
   level: 'A2',
   status: 'pedagogy-reviewed',
@@ -41,29 +43,29 @@ export const adamA2LearningBlueprint = defineLearningBlueprint({
     knowledgeCheck: {
       title: { en: 'Adam A2 Knowledge Check', ar: 'اختبار الفهم — آدم A2' },
       content: {
-        en: 'Use evidence from across the story to answer eight questions. Each item measures a different Gold learning point.',
-        ar: 'استخدم أدلة من القصة للإجابة عن ثمانية أسئلة. يقيس كل سؤال نقطة تعلم مختلفة وفق معيار Gold.',
+        en: 'Use evidence from across the story to answer eight questions. Each item checks a different important story idea.',
+        ar: 'استخدم أدلة من القصة للإجابة عن ثمانية أسئلة. يقيس كل سؤال فكرة مهمة مختلفة من القصة.',
       },
     },
     vocabularyChallenge: {
       title: { en: 'Adam A2 Vocabulary Challenge', ar: 'تحدي المفردات — آدم A2' },
       content: {
-        en: 'Match six deliberately selected high-value story words with their contextual meanings.',
-        ar: 'صل ست كلمات عالية القيمة منتقاة يدويًا من القصة بمعانيها في السياق.',
+        en: 'Match six carefully selected story words with their meanings in context.',
+        ar: 'صل ست كلمات منتقاة بعناية من القصة بمعانيها في السياق.',
       },
     },
     review: {
       title: { en: 'Adam A2 Retrieval Review', ar: 'مراجعة الاسترجاع — آدم A2' },
       content: {
-        en: 'Retrieve eight different ideas from the story and use the hints to repair misunderstandings before the Final Challenge.',
-        ar: 'استرجع ثماني أفكار مختلفة من القصة واستخدم التلميحات لإصلاح سوء الفهم قبل التحدي النهائي.',
+        en: 'Recall eight different story ideas and use the hints to correct misunderstandings before the Final Challenge.',
+        ar: 'استرجع ثماني أفكار مختلفة من القصة واستخدم التلميحات لتصحيح سوء الفهم قبل التحدي النهائي.',
       },
     },
     finalChallenge: {
       title: { en: 'Adam A2 Final Challenge', ar: 'التحدي النهائي — آدم A2' },
       content: {
-        en: 'Complete ten final activities that sample the book’s central understanding, relationships, responsibilities, choices, and lessons—not trivia.',
-        ar: 'أكمل عشرة أنشطة نهائية تقيس الفهم المركزي والعلاقات والمسؤوليات والاختيارات والدروس في الكتاب، لا المعلومات الهامشية.',
+        en: 'Complete ten final activities about the story’s main ideas, relationships, responsibilities, choices, and lessons—not random details.',
+        ar: 'أكمل عشرة أنشطة نهائية عن الأفكار الرئيسة والعلاقات والمسؤوليات والاختيارات والدروس في القصة، لا التفاصيل العشوائية.',
       },
     },
     glossary: [
