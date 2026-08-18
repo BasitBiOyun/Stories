@@ -1,8 +1,4 @@
 import type { Level } from '../../types';
-import { abrahamA2BookDataAr, abrahamA2BookDataEn } from '../../data/abraham/a2';
-import { meccaA2BookDataAr, meccaA2BookDataEn } from '../../data/mecca/a2';
-import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../data/moses/a2';
-import { yunusEmreA2BookDataAr, yunusEmreA2BookDataEn } from '../../data/yunusEmre/a2';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
@@ -22,6 +18,38 @@ export interface BookDefinition {
 }
 
 const definitionKey = (storyId: StoryId, level: Level): string => `${storyId}:${level}`;
+
+type BookModule = Record<string, unknown> & {
+  default?: Record<string, unknown>;
+};
+
+/**
+ * Vite normally returns ESM named exports directly. Some deployed chunks can be
+ * wrapped by an interop layer, however, so prepared A2 books are resolved from
+ * either the module namespace or its default object. The import stays lazy: a
+ * broken book can fail its own load without taking down the application shell.
+ */
+const loadBookPairFromModule = async (
+  loader: () => Promise<unknown>,
+  englishExport: string,
+  arabicExport: string,
+  label: string,
+): Promise<BookPair> => {
+  const loaded = await loader();
+  const namespace = loaded && typeof loaded === 'object' ? loaded as BookModule : {};
+  const defaultNamespace = namespace.default && typeof namespace.default === 'object'
+    ? namespace.default
+    : {};
+
+  const en = (namespace[englishExport] ?? defaultNamespace[englishExport]) as BookPair['en'] | undefined;
+  const ar = (namespace[arabicExport] ?? defaultNamespace[arabicExport]) as BookPair['ar'] | undefined;
+
+  if (!en || !ar) {
+    throw new Error(`[Book Registry] ${label} module did not expose prepared EN/AR book data.`);
+  }
+
+  return { en, ar };
+};
 
 const createDefinition = (
   storyId: StoryId,
@@ -52,10 +80,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('adam', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Adam (A2)',
     ar: 'قصص الأنبياء: آدم (عليه السلام)',
-  }, async () => {
-    const module = await import('../../data/adam/a2');
-    return { en: module.adamA2BookDataEn, ar: module.adamA2BookDataAr };
-  }, true),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/adam/a2'),
+    'adamA2BookDataEn',
+    'adamA2BookDataAr',
+    'Adam A2',
+  ), true),
   createDefinition('adam', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Adam (B1)',
     ar: 'قصص الأنبياء: آدم (عليه السلام)',
@@ -74,7 +104,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('ibrahim', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Abraham (A2)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
-  }, async () => ({ en: abrahamA2BookDataEn, ar: abrahamA2BookDataAr }), true),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/abraham/a2'),
+    'abrahamA2BookDataEn',
+    'abrahamA2BookDataAr',
+    'Abraham A2',
+  ), true),
   createDefinition('ibrahim', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Abraham (B1)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
@@ -93,7 +128,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('musa', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Moses (A2)',
     ar: 'قصص الأنبياء: موسى (عليه السلام)',
-  }, async () => ({ en: mosesA2BookDataEn, ar: mosesA2BookDataAr }), true),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/moses/a2'),
+    'mosesA2BookDataEn',
+    'mosesA2BookDataAr',
+    'Moses A2',
+  ), true),
   createDefinition('musa', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Moses (B1)',
     ar: 'قصص الأنبياء: موسى (عليه السلام)',
@@ -112,7 +152,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('mecca', 'A2', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
-  }, async () => ({ en: meccaA2BookDataEn, ar: meccaA2BookDataAr }), true),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/mecca/a2'),
+    'meccaA2BookDataEn',
+    'meccaA2BookDataAr',
+    'Mecca A2',
+  ), true),
   createDefinition('mecca', 'B1', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
@@ -131,7 +176,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('yunusEmre', 'A2', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
-  }, async () => ({ en: yunusEmreA2BookDataEn, ar: yunusEmreA2BookDataAr }), true),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/yunusEmre/a2'),
+    'yunusEmreA2BookDataEn',
+    'yunusEmreA2BookDataAr',
+    'Yunus Emre A2',
+  ), true),
   createDefinition('yunusEmre', 'B1', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
