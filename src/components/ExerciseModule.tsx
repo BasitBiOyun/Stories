@@ -181,10 +181,15 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   };
 
   const retry = () => {
+    setUserAnswer(null);
     setIsSubmitted(false);
     setShowHint(false);
-    if (exercise.type === 'matching') setSelectedMatchingLeft(null);
-    if (exercise.type === 'sequencing') setLocalSequence([]);
+    setSelectedMatchingLeft(null);
+    setMatchingAssignments({});
+    setLocalSequence([]);
+    setSelectedDragItem(null);
+    setDragAssignments({});
+    setRevealedItems(new Set());
   };
 
   const selectMeaning = (meaning: string) => {
