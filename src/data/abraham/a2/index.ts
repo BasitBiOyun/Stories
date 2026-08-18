@@ -1,4 +1,5 @@
 import { BookData, PageData } from '../../../types';
+import { finalizeA2TeacherGuideAlignment } from '../../a2TeacherGuideAlignment';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
@@ -68,8 +69,16 @@ const abrahamA2GoldPagesAr = applyAbrahamA2GoldVocabularyChallenge(
   'ar',
 );
 
-const teacherMetadataEn = buildAbrahamA2GoldTeacherGuideMetadata(abrahamA2TeacherGuideMetadataFinalEn, 'en');
-const teacherMetadataAr = buildAbrahamA2GoldTeacherGuideMetadata(abrahamA2TeacherGuideMetadataFinalAr, 'ar');
+const teacherMetadataEn = finalizeA2TeacherGuideAlignment(
+  buildAbrahamA2GoldTeacherGuideMetadata(abrahamA2TeacherGuideMetadataFinalEn, 'en'),
+  'abraham',
+  'en',
+);
+const teacherMetadataAr = finalizeA2TeacherGuideAlignment(
+  buildAbrahamA2GoldTeacherGuideMetadata(abrahamA2TeacherGuideMetadataFinalAr, 'ar'),
+  'abraham',
+  'ar',
+);
 const studentSectionsEn = buildAbrahamA2GoldStudentGuideSections('en');
 const studentSectionsAr = buildAbrahamA2GoldStudentGuideSections('ar');
 const studentGuideTextEn = buildAbrahamA2GoldStudentGuideText(abrahamA2GoldLearningBlueprint, 'en');
