@@ -31,15 +31,15 @@ const overrides: Record<string, OverrideSpec> = {
   'adam-a2-c1-final': {
     learningPointId: 'adam-a2-c1-earth-role',
     exercise: mc(
-      T('What role did Allah say humans were going to have on Earth?', 'ما الدور الذي قال الله إن الإنسان سيقوم به في الأرض؟'),
+      T('What role does the chapter give humans on Earth?', 'ما الدور الذي يذكره الفصل للإنسان في الأرض؟'),
       {
         en: ['Be responsible for life on Earth', 'Live only in the sky', 'Stay away from all work'],
         ar: ['تحمل مسؤولية الحياة في الأرض', 'العيش في السماء فقط', 'الابتعاد عن كل عمل'],
       },
       0,
-      T('The chapter says the human was going to be the ruler on Earth, a role of responsibility.', 'يقول الفصل إن الإنسان سيكون خليفةً مسؤولًا في الأرض.'),
+      T('The chapter says the human is going to be the ruler on Earth, a role of responsibility.', 'يقول الفصل إن الإنسان سيكون خليفةً مسؤولًا في الأرض.'),
     ),
-    retry: T('Return to what Allah told the angels before Adam was created. What future role is named there?', 'ارجع إلى ما أخبر الله به الملائكة قبل خلق آدم. ما الدور المستقبلي المذكور؟'),
+    retry: T('Return to what Allah told the angels before Adam was created. What role is named there?', 'ارجع إلى ما أخبر الله به الملائكة قبل خلق آدم. ما الدور المذكور؟'),
     demand: 'identify',
   },
 
@@ -136,7 +136,20 @@ const overrides: Record<string, OverrideSpec> = {
     demand: 'explain',
   },
 
-  'adam-a2-c5-quick': { learningPointId: 'adam-a2-c5-never-die', demand: 'identify' },
+  'adam-a2-c5-quick': {
+    learningPointId: 'adam-a2-c5-never-die',
+    exercise: mc(
+      T('What did Iblis promise about the tree?', 'ماذا وعد إبليس بشأن الشجرة؟'),
+      {
+        en: ['If you eat from it, you will never die', 'If you eat from it, you will become hungry', 'If you eat from it, you will forget everything'],
+        ar: ['إذا أكلتما منها فلن تموتا أبدًا', 'إذا أكلتما منها فستجوعان', 'إذا أكلتما منها فستنسيان كل شيء'],
+      },
+      0,
+      T('Iblis said, “If you eat from that one tree, you will never die.”', 'قال إبليس: «إذا أكلتما من تلك الشجرة فلن تموتا أبدًا».'),
+    ),
+    retry: T('Find Iblis’s promise beginning with “If you eat…”. What result did he promise?', 'ابحث عن وعد إبليس الذي يبدأ بمعنى «إذا أكلتما...». ما النتيجة التي وعد بها؟'),
+    demand: 'identify',
+  },
   'adam-a2-c5-knowledge': {
     learningPointId: 'adam-a2-c5-not-purpose',
     exercise: tf(
