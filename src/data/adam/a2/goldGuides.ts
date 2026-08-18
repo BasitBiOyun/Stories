@@ -32,8 +32,8 @@ export const buildAdamA2GoldTeacherGuideMetadata = (
     assessmentEvidence: copy.assessment,
     assessmentOverview: {
       formative: language === 'en'
-        ? ['Chapter evidence questions', 'Quick Challenge', 'Teacher observation of evidence use', 'Exit ticket', 'Short transfer task', 'Learner self-check and repair']
-        : ['أسئلة الدليل في الفصل', 'التحدي السريع', 'ملاحظة المعلم لاستخدام الدليل', 'بطاقة الخروج', 'مهمة نقل قصيرة', 'الفحص الذاتي والإصلاح'],
+        ? ['Chapter evidence questions', 'Quick Challenge', 'Teacher observation of evidence use', 'Exit ticket', 'Short transfer task', 'Learner self-check and correction']
+        : ['أسئلة الدليل في الفصل', 'التحدي السريع', 'ملاحظة المعلم لاستخدام الدليل', 'بطاقة الخروج', 'مهمة نقل قصيرة', 'الفحص الذاتي والتصحيح'],
       summative: language === 'en'
         ? ['Knowledge Check', 'Whole-book Review', 'Curated Vocabulary Challenge', 'Final Challenge']
         : ['اختبار المعرفة', 'مراجعة الكتاب', 'تحدي المفردات المنتقى', 'التحدي النهائي'],
@@ -45,20 +45,20 @@ export const buildAdamA2GoldTeacherGuideMetadata = (
     },
     skillsFocus: language === 'en'
       ? {
-          reading: 'TYMM YDAB2 + CEFR A2: understand short narrative information, locate evidence, sequence events, and connect simple causes/results.',
+          reading: 'TYMM YDAB2 + CEFR A2: understand short narrative information, locate evidence, sequence events, compare clear details, and connect simple causes/results.',
           listening: 'Use narration as a second reception route: listen for the same chapter meaning, key words, and sequence already grounded in the written story.',
           speaking: 'TYMM YDAB3 supporting: give one or two clear A2 sentences and point to the supporting chapter idea.',
           writing: 'TYMM YDAB4 supporting: produce short text-supported sentences for comparison, sequence, advice, or cause/result.',
         }
       : {
-          reading: 'TYMM YDAB2 + CEFR A2: فهم معلومات سردية قصيرة وتحديد الدليل وترتيب الأحداث وربط السبب والنتيجة البسيطين.',
+          reading: 'TYMM YDAB2 + CEFR A2: فهم معلومات سردية قصيرة وتحديد الدليل وترتيب الأحداث ومقارنة التفاصيل الواضحة وربط السبب والنتيجة البسيطين.',
           listening: 'استخدم السرد الصوتي مسار استقبال ثانٍ للمعنى نفسه والكلمات الأساسية والتسلسل الموثق في النص المكتوب.',
           speaking: 'TYMM YDAB3 داعم: تقديم جملة أو جملتين واضحتين تناسبان A2 مع الإشارة إلى فكرة داعمة من الفصل.',
           writing: 'TYMM YDAB4 داعم: إنتاج جمل قصيرة مدعومة بالنص للمقارنة أو التسلسل أو النصيحة أو السبب والنتيجة.',
         },
     languageFocus: language === 'en'
-      ? ['Vocabulary in context, not isolated memorisation', 'Short because/but/so relationships', 'Past-event sequencing', 'Simple advice with should', 'Pronunciation of chapter key words in narration and speech']
-      : ['المفردات في السياق لا الحفظ المنفصل', 'علاقات قصيرة باستخدام لأن/لكن/لذلك', 'تسلسل أحداث الماضي', 'النصيحة البسيطة بمعنى يجب', 'نطق الكلمات الأساسية في السرد والكلام'],
+      ? ['Vocabulary in context, not isolated memorisation', 'because/but/so relationships', 'Simple Past and event sequencing', 'Comparatives and superlatives where the story supports them', 'First Conditional in Chapter 5', 'will/won’t for intention or refusal', 'Simple advice with should']
+      : ['المفردات في السياق لا الحفظ المنفصل', 'علاقات لأن/لكن/لذلك', 'الماضي وترتيب الأحداث', 'المقارنة والتفضيل عندما يدعمهما النص', 'الشرط الأول في الفصل الخامس', 'will/won’t للنية أو الرفض', 'النصيحة البسيطة باستخدام should'],
     valuesFocus: language === 'en'
       ? ['Knowledge linked to useful action', 'Learning from mistakes', 'Responsibility and care', 'Honesty and gratitude', 'Controlling anger and jealousy', 'Kindness and non-retaliation']
       : ['ربط العلم بالعمل النافع', 'التعلم من الأخطاء', 'المسؤولية والرعاية', 'الصدق والشكر', 'ضبط الغضب والحسد', 'اللطف وعدم الرد بالأذى'],
@@ -71,20 +71,20 @@ export const buildAdamA2GoldTeacherGuideMetadata = (
 export const buildAdamA2GoldStudentGuideSections = (language: BlueprintLanguage): StudentGuideSection[] => (
   language === 'en'
     ? [
-        { title: 'Study with a Purpose', icon: 'Target', text: 'Each chapter has two clear goals. Read to achieve those goals, not to memorise every sentence.', points: ['Read the goal before the chapter.', 'After reading, say what you can now do.'] },
-        { title: 'Find the Evidence', icon: 'Eye', text: 'Good answers come from the story. Train yourself to locate the sentence or detail that supports your answer.', points: ['Mark one supporting sentence.', 'Do not use outside information to answer a story question.'] },
+        { title: 'Study with a Purpose', icon: 'Target', text: 'Each chapter has two clear goals. Read to achieve those goals, not to memorise every sentence.', points: ['Read the goals before the chapter.', 'After reading, say what you can now do.'] },
+        { title: 'Find the Evidence', icon: 'Eye', text: 'Good answers come from the story. Find the sentence or detail that supports your answer.', points: ['Mark one supporting sentence.', 'Do not use outside information to answer a story question.'] },
         { title: 'Learn Words in Context', icon: 'Stars', text: 'Focus on the words that unlock the chapter meaning. Learn them inside the sentence where they are used.', points: ['Guess from context first.', 'Use the word in a new short sentence after checking its meaning.'] },
-        { title: 'Use Feedback to Repair', icon: 'Lightbulb', text: 'A wrong answer is followed by a repair direction. Use it to find what you misunderstood before trying again.', points: ['Read the retry prompt.', 'Return to the exact evidence, then answer again.'] },
-        { title: 'Say and Write What You Learned', icon: 'PenTool', text: 'Understanding is stronger when you can express it. Finish each chapter with a short speaking or writing transfer.', points: ['Use simple A2 language.', 'Keep every story fact accurate.'] },
-        { title: 'Check Yourself', icon: 'CheckCircle', text: 'Use the chapter self-checks to decide whether you are ready to move on or need a short repair round.', points: ['Answer without looking first.', 'If unsure, use the repair strategy instead of rereading everything.'] },
+        { title: 'Use Feedback and Try Again', icon: 'Lightbulb', text: 'If an answer is wrong, use the hint to find the sentence you need. Check what you misunderstood, then try again.', points: ['Read the retry hint.', 'Return to the sentence it points to, then answer again.'] },
+        { title: 'Say and Write What You Learned', icon: 'PenTool', text: 'Understanding is stronger when you can express it. Finish each chapter with a short speaking or writing task.', points: ['Use clear A2 language.', 'Keep every story fact accurate.'] },
+        { title: 'Check Yourself', icon: 'CheckCircle', text: 'Use the chapter self-checks to decide whether you are ready to move on or need another short practice round.', points: ['Answer without looking first.', 'If unsure, use the retry steps instead of rereading everything.'] },
       ]
     : [
-        { title: 'ادرس بهدف', icon: 'Target', text: 'لكل فصل هدفان واضحان. اقرأ لتحقيقهما لا لحفظ كل جملة.', points: ['اقرأ الهدف قبل الفصل.', 'بعد القراءة، قل ما الذي أصبحت قادرًا على فعله.'] },
-        { title: 'اعثر على الدليل', icon: 'Eye', text: 'الإجابة الجيدة تأتي من القصة. درّب نفسك على تحديد الجملة أو المعلومة التي تدعم إجابتك.', points: ['حدد جملة داعمة واحدة.', 'لا تستخدم معلومات خارجية للإجابة عن سؤال القصة.'] },
+        { title: 'ادرس بهدف', icon: 'Target', text: 'لكل فصل هدفان واضحان. اقرأ لتحقيقهما لا لحفظ كل جملة.', points: ['اقرأ هدفي الفصل قبل أن تبدأ.', 'بعد القراءة، قل ما الذي أصبحت قادرًا على فعله.'] },
+        { title: 'اعثر على الدليل', icon: 'Eye', text: 'الإجابة الجيدة تأتي من القصة. اعثر على الجملة أو المعلومة التي تدعم إجابتك.', points: ['حدد جملة داعمة واحدة.', 'لا تستخدم معلومات خارجية للإجابة عن سؤال القصة.'] },
         { title: 'تعلم الكلمات في السياق', icon: 'Stars', text: 'ركز على الكلمات التي تفتح معنى الفصل وتعلمها داخل الجملة التي وردت فيها.', points: ['خمّن المعنى من السياق أولًا.', 'بعد التحقق من المعنى، استخدم الكلمة في جملة قصيرة جديدة.'] },
-        { title: 'استخدم التغذية الراجعة للإصلاح', icon: 'Lightbulb', text: 'بعد الإجابة الخاطئة تحصل على توجيه للإصلاح. استخدمه لمعرفة ما الذي أسأت فهمه قبل المحاولة من جديد.', points: ['اقرأ توجيه إعادة المحاولة.', 'ارجع إلى الدليل المحدد ثم أجب من جديد.'] },
-        { title: 'تحدث واكتب عما تعلمته', icon: 'PenTool', text: 'يقوى الفهم عندما تستطيع التعبير عنه. اختم كل فصل بمهمة نقل قصيرة شفوية أو كتابية.', points: ['استخدم لغة بسيطة تناسب A2.', 'حافظ على دقة كل معلومة في القصة.'] },
-        { title: 'اختبر نفسك', icon: 'CheckCircle', text: 'استخدم فحوص الفصل الذاتية لتقرر هل أنت مستعد للانتقال أم تحتاج إلى جولة إصلاح قصيرة.', points: ['أجب أولًا دون النظر.', 'إذا ترددت، استخدم استراتيجية الإصلاح بدل إعادة قراءة كل شيء.'] },
+        { title: 'استخدم التغذية الراجعة وحاول من جديد', icon: 'Lightbulb', text: 'إذا كانت الإجابة خاطئة، استخدم التلميح للعثور على الجملة التي تحتاجها. تحقق مما فهمته خطأ ثم حاول من جديد.', points: ['اقرأ تلميح إعادة المحاولة.', 'ارجع إلى الجملة التي يشير إليها ثم أجب من جديد.'] },
+        { title: 'تحدث واكتب عما تعلمته', icon: 'PenTool', text: 'يقوى الفهم عندما تستطيع التعبير عنه. اختم كل فصل بمهمة قصيرة شفوية أو كتابية.', points: ['استخدم لغة واضحة تناسب A2.', 'حافظ على دقة كل معلومة في القصة.'] },
+        { title: 'اختبر نفسك', icon: 'CheckCircle', text: 'استخدم فحوص الفصل الذاتية لتقرر هل أنت مستعد للانتقال أم تحتاج إلى تدريب قصير آخر.', points: ['أجب أولًا دون النظر.', 'إذا ترددت، استخدم خطوات إعادة المحاولة بدل إعادة قراءة كل شيء.'] },
       ]
 );
 
@@ -95,8 +95,8 @@ export const buildAdamA2GoldStudentGuideText = (
   language: BlueprintLanguage,
 ): string => {
   const intro = language === 'en'
-    ? '# Prophet Adam A2 — Gold Self-Study Path\n\nUse this guide chapter by chapter. The goal is not to memorise the story. The goal is to understand it, find evidence, use useful English/Arabic language in context, repair mistakes, and show what you can do.'
-    : '# قصة النبي آدم A2 — مسار الدراسة الذاتية Gold\n\nاستخدم هذا الدليل فصلًا فصلًا. الهدف ليس حفظ القصة، بل فهمها وتحديد الدليل واستخدام اللغة المفيدة في السياق وإصلاح الأخطاء وإظهار ما تستطيع فعله.';
+    ? '# Prophet Adam A2 — Self-Study Path\n\nUse this guide chapter by chapter. Do not try to memorise the whole story. Understand the main ideas, find the supporting details, learn useful language in context, correct mistakes, and show what you can do.'
+    : '# قصة النبي آدم A2 — مسار الدراسة الذاتية\n\nاستخدم هذا الدليل فصلًا فصلًا. لا تحاول حفظ القصة كلها. افهم الأفكار الرئيسة، وحدد المعلومات الداعمة، وتعلم اللغة المفيدة في السياق، وصحح الأخطاء، وأظهر ما تستطيع فعله.';
 
   const chapterSections = blueprint.chapters.map((chapter) => {
     const guide = chapter.selfStudyGuide[language];
@@ -105,11 +105,11 @@ export const buildAdamA2GoldStudentGuideText = (
     const success = outcomes.flatMap(item => item.successCriteria.map(criterion => criterion[language]));
     const steps = guide.studySequence ?? [];
     const checks = guide.selfCheck ?? [];
-    const repair = guide.repairStrategy ?? [];
+    const retrySteps = guide.repairStrategy ?? [];
 
     const labels = language === 'en'
-      ? { goals: 'Goals', success: 'You are successful when…', path: 'Study Path', check: 'Self-Check', repair: 'If You Get Stuck', transfer: 'Transfer', reflection: 'Reflection' }
-      : { goals: 'الأهداف', success: 'تكون ناجحًا عندما…', path: 'مسار الدراسة', check: 'الفحص الذاتي', repair: 'إذا واجهت صعوبة', transfer: 'نقل التعلم', reflection: 'التأمل' };
+      ? { goals: 'Goals', success: 'You are successful when…', path: 'Study Path', check: 'Self-Check', retry: 'If You Get Stuck', use: 'Use What You Learned', reflection: 'Reflection' }
+      : { goals: 'الأهداف', success: 'تكون ناجحًا عندما…', path: 'مسار الدراسة', check: 'الفحص الذاتي', retry: 'إذا واجهت صعوبة', use: 'استخدم ما تعلمته', reflection: 'التأمل' };
 
     const chapterTitle = language === 'en' ? `## Chapter ${chapter.chapterId}` : `## الفصل ${chapter.chapterId}`;
     return [
@@ -122,9 +122,9 @@ export const buildAdamA2GoldStudentGuideText = (
       steps.map((step, index) => `${index + 1}. ${step}`).join('\n'),
       `### ${labels.check}`,
       bullets(checks),
-      `### ${labels.repair}`,
-      bullets(repair),
-      `### ${labels.transfer}`,
+      `### ${labels.retry}`,
+      bullets(retrySteps),
+      `### ${labels.use}`,
       guide.transferTask || '',
       `### ${labels.reflection}`,
       guide.reflectionPrompt || '',
@@ -149,10 +149,9 @@ export const applyAdamA2GoldVocabularyChallenge = (
   language: BlueprintLanguage,
 ): PageData[] => {
   const byId = new Map(blueprint.chapters.flatMap(chapter => chapter.vocabularyTargets).map(target => [target.id, target]));
-  const selected = ADAM_A2_GOLD_VOCABULARY_TARGET_IDS.map(id => {
+  const selected = ADAM_A2_GOLD_VOCABULARY_TARGET_IDS.flatMap(id => {
     const target = byId.get(id);
-    if (!target) throw new Error(`[Adam A2 Gold] Curated vocabulary target is missing: ${id}.`);
-    return target;
+    return target ? [target] : [];
   });
 
   return pages.map(page => page.id === 12
