@@ -1,4 +1,5 @@
 import type { Level } from '../../types';
+import { abrahamA2BookDataAr, abrahamA2BookDataEn } from '../../data/abraham/a2';
 import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../data/moses/a2';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
@@ -71,10 +72,7 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('ibrahim', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Abraham (A2)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
-  }, async () => {
-    const module = await import('../../data/abraham/a2');
-    return { en: module.abrahamA2BookDataEn, ar: module.abrahamA2BookDataAr };
-  }),
+  }, async () => ({ en: abrahamA2BookDataEn, ar: abrahamA2BookDataAr }), true),
   createDefinition('ibrahim', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Abraham (B1)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
