@@ -10,14 +10,13 @@ import {
   buildMosesA2GoldTeacherGuideMetadata,
 } from './goldGuides';
 import { mosesA2LearningBlueprint } from './learningBlueprint';
+import { buildMosesA2GoldStudentGuideText } from './studentGuideText';
 import {
   mosesA2HighlightConfig,
   mosesA2PagesFinalAr,
   mosesA2PagesFinalEn,
   mosesA2StudentGuideMetadataFinalAr,
   mosesA2StudentGuideMetadataFinalEn,
-  mosesA2StudentGuideTextFinalAr,
-  mosesA2StudentGuideTextFinalEn,
   mosesA2TeacherGuideMetadataFinalAr,
   mosesA2TeacherGuideMetadataFinalEn,
 } from './goldFinal';
@@ -99,6 +98,8 @@ const mosesA2TeacherGuideMetadataAr = buildMosesA2GoldTeacherGuideMetadata(
 );
 const mosesA2StudentGuideSectionsEn = buildMosesA2GoldStudentGuideSections('en');
 const mosesA2StudentGuideSectionsAr = buildMosesA2GoldStudentGuideSections('ar');
+const mosesA2StudentGuideTextEn = buildMosesA2GoldStudentGuideText(mosesA2LearningBlueprint, 'en');
+const mosesA2StudentGuideTextAr = buildMosesA2GoldStudentGuideText(mosesA2LearningBlueprint, 'ar');
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
@@ -111,7 +112,7 @@ export const mosesA2BookDataEn: BookData = {
   selfStudyGuide: mosesA2.englishSelfStudyGuide,
   studentGuideSections: mosesA2StudentGuideSectionsEn,
   studentGuideMetadata: mosesA2StudentGuideMetadataFinalEn,
-  studentGuideText: mosesA2StudentGuideTextFinalEn,
+  studentGuideText: mosesA2StudentGuideTextEn,
 };
 
 export const mosesA2BookDataAr: BookData = {
@@ -125,7 +126,7 @@ export const mosesA2BookDataAr: BookData = {
   selfStudyGuide: mosesA2.arabicSelfStudyGuide,
   studentGuideSections: mosesA2StudentGuideSectionsAr,
   studentGuideMetadata: mosesA2StudentGuideMetadataFinalAr,
-  studentGuideText: mosesA2StudentGuideTextFinalAr,
+  studentGuideText: mosesA2StudentGuideTextAr,
 };
 
 export const mosesA2BookData = mosesA2BookDataEn;
