@@ -1,4 +1,5 @@
 import { BookData, PageData } from '../../../types';
+import { finalizeA2TeacherGuideAlignment } from '../../a2TeacherGuideAlignment';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
 import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
@@ -71,8 +72,16 @@ const goldPagesAr = applyYunusA2GoldVocabularyChallenge(
   'ar',
 );
 
-const teacherMetadataEn = buildYunusA2GoldTeacherGuideMetadata(yunusA2TeacherGuideMetadataFinalEn, 'en');
-const teacherMetadataAr = buildYunusA2GoldTeacherGuideMetadata(yunusA2TeacherGuideMetadataFinalAr, 'ar');
+const teacherMetadataEn = finalizeA2TeacherGuideAlignment(
+  buildYunusA2GoldTeacherGuideMetadata(yunusA2TeacherGuideMetadataFinalEn, 'en'),
+  'yunusEmre',
+  'en',
+);
+const teacherMetadataAr = finalizeA2TeacherGuideAlignment(
+  buildYunusA2GoldTeacherGuideMetadata(yunusA2TeacherGuideMetadataFinalAr, 'ar'),
+  'yunusEmre',
+  'ar',
+);
 const studentSectionsEn = buildYunusA2GoldStudentGuideSections('en');
 const studentSectionsAr = buildYunusA2GoldStudentGuideSections('ar');
 const studentTextEn = buildYunusA2GoldStudentGuideText(yunusA2GoldLearningBlueprint, 'en');
