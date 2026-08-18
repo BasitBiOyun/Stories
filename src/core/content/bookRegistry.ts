@@ -2,6 +2,7 @@ import type { Level } from '../../types';
 import { abrahamA2BookDataAr, abrahamA2BookDataEn } from '../../data/abraham/a2';
 import { meccaA2BookDataAr, meccaA2BookDataEn } from '../../data/mecca/a2';
 import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../data/moses/a2';
+import { yunusEmreA2BookDataAr, yunusEmreA2BookDataEn } from '../../data/yunusEmre/a2';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
@@ -130,10 +131,7 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('yunusEmre', 'A2', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
-  }, async () => {
-    const module = await import('../../data/yunusEmre/a2');
-    return { en: module.yunusEmreA2BookDataEn, ar: module.yunusEmreA2BookDataAr };
-  }),
+  }, async () => ({ en: yunusEmreA2BookDataEn, ar: yunusEmreA2BookDataAr }), true),
   createDefinition('yunusEmre', 'B1', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
