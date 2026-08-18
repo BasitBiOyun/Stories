@@ -1,10 +1,9 @@
 FROM node:22-alpine AS app-build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --include=dev \
-  && npm ls @vitejs/plugin-react vite typescript tsx --depth=0
+RUN npm ci --include=dev
 COPY . .
-RUN npm run validate:deploy
+RUN npm run build
 
 FROM node:22-alpine AS runtime
 WORKDIR /app
