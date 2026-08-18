@@ -3,7 +3,7 @@ import type {
   LearningBlueprintChapter,
   LocalizedText,
 } from '../../../learningBlueprint';
-import { L, mc } from './helpers';
+import { L, fill, matching, mc, tap } from './helpers';
 
 type QuickSpec = {
   exercise: BlueprintAssessmentItem['exercise'];
@@ -12,114 +12,127 @@ type QuickSpec = {
 
 const namedQuick = (
   title: LocalizedText,
-  question: LocalizedText,
-  options: { en: string[]; ar: string[] },
-  correctAnswer: number,
-  explanation: LocalizedText,
-): BlueprintAssessmentItem['exercise'] => {
-  const exercise = mc(question, options, correctAnswer, explanation);
-  return {
-    en: {
-      ...exercise.en,
-      title: title.en,
-      instructions: 'Choose the best answer from the chapter.',
-    },
-    ar: {
-      ...exercise.ar,
-      title: title.ar,
-      instructions: 'اختر أفضل إجابة من الفصل.',
-    },
-  };
-};
+  exercise: BlueprintAssessmentItem['exercise'],
+): BlueprintAssessmentItem['exercise'] => ({
+  en: {
+    ...exercise.en,
+    title: title.en,
+  },
+  ar: {
+    ...exercise.ar,
+    title: title.ar,
+  },
+});
 
 const quickByChapter: Record<number, QuickSpec> = {
   1: {
     exercise: namedQuick(
-      L('The Story Begins', 'بداية القصة'),
-      L('What was Adam created from?', 'مِمَّ خُلق آدم؟'),
-      { en: ['Soil', 'Fire', 'Water'], ar: ['التراب', 'النار', 'الماء'] },
-      0,
-      L('The opening says Allah created Adam from soil.', 'تقول بداية الفصل إن الله خلق آدم من التراب.'),
+      L('Different Lands, Different Colors', 'أماكن مختلفة وألوان مختلفة'),
+      mc(
+        L('Why does the chapter say people have different skin colors?', 'لماذا يقول الفصل إن للناس ألوان بشرة مختلفة؟'),
+        {
+          en: [
+            'The soil came from different parts of Earth',
+            'The angels chose different colors',
+            'People changed colors later',
+          ],
+          ar: [
+            'جاء التراب من أماكن مختلفة من الأرض',
+            'اختارت الملائكة ألوانًا مختلفة',
+            'تغيرت ألوان الناس بعد ذلك',
+          ],
+        },
+        0,
+        L(
+          'The chapter connects soil collected from different parts of Earth with different human skin colors.',
+          'يربط الفصل التراب المأخوذ من أماكن مختلفة من الأرض باختلاف ألوان بشرة الناس.',
+        ),
+      ),
     ),
     retry: L(
-      'Read the first paragraph and find the words “created him from”.',
-      'اقرأ الفقرة الأولى وابحث عن العبارة التي تذكر ممَّ خُلق آدم.',
+      'Read the two sentences about soil from different parts of Earth. What result comes after that?',
+      'اقرأ الجملتين عن التراب من أماكن مختلفة من الأرض. ما النتيجة التي تأتي بعد ذلك؟',
     ),
   },
   2: {
     exercise: namedQuick(
-      L('Knowledge and Learning', 'العلم والتعلم'),
-      L('Which idea explains why Adam could learn and understand?', 'أي فكرة تشرح لماذا استطاع آدم أن يتعلم ويفهم؟'),
-      {
-        en: ['Knowledge and thinking', 'Fire and soil', 'Farming and animals'],
-        ar: ['العلم والتفكير', 'النار والتراب', 'الزراعة والحيوانات'],
-      },
-      0,
-      L('The chapter links Adam’s learning and understanding with the knowledge Allah gave him and with thinking.', 'يربط الفصل تعلم آدم وفهمه بالعلم الذي علّمه الله إياه وبالتفكير.'),
+      L('Show Respect', 'إظهار الاحترام'),
+      mc(
+        L('What did Allah tell the angels to do after Adam was given life?', 'ماذا أمر الله الملائكة أن تفعل بعد أن أُعطي آدم الحياة؟'),
+        {
+          en: ['Show respect to Adam', 'Leave Paradise', 'Collect more soil'],
+          ar: ['أن يظهروا الاحترام لآدم', 'أن يغادروا الجنة', 'أن يجمعوا مزيدًا من التراب'],
+        },
+        0,
+        L('Allah told the angels to show respect to Adam.', 'أمر الله الملائكة أن يظهروا الاحترام لآدم.'),
+      ),
     ),
     retry: L(
-      'Find the sentence with “knowledge” and “think”. What do these help Adam do?',
-      'ابحث عن الجملة التي فيها «العلم» و«التفكير». ماذا ساعدا آدم على أن يفعل؟',
+      'Read the first command in Chapter 2 and find what the angels were told to do.',
+      'اقرأ الأمر الأول في الفصل الثاني وحدد ما طُلب من الملائكة أن يفعلوه.',
     ),
   },
   3: {
     exercise: namedQuick(
-      L('Iblis’s Claim', 'ادعاء إبليس'),
-      L('Why did Iblis say he was better than Adam?', 'لماذا قال إبليس إنه أفضل من آدم؟'),
-      {
-        en: ['He compared fire with soil', 'He compared farming with animals', 'He compared Earth with Paradise'],
-        ar: ['قارن النار بالتراب', 'قارن الزراعة بالحيوانات', 'قارن الأرض بالجنة'],
-      },
-      0,
-      L('Iblis used the difference between fire and soil to claim that he was better.', 'استخدم إبليس الفرق بين النار والتراب ليقول إنه أفضل.'),
+      L('Fire and Soil', 'النار والتراب'),
+      matching(
+        L('Match Adam and Iblis with what the chapter says about their origin.', 'صل آدم وإبليس بما يذكره الفصل عن أصل كل واحد.'),
+        {
+          en: [['Iblis', 'fire'], ['Adam', 'soil']],
+          ar: [['إبليس', 'النار'], ['آدم', 'التراب']],
+        },
+        L('Iblis said he was created from fire and Adam was created from soil.', 'قال إبليس إنه خُلق من النار وإن آدم خُلق من التراب.'),
+      ),
     ),
     retry: L(
-      'Read Iblis’s answer and find the two materials he compares.',
-      'اقرأ جواب إبليس وحدد المادتين اللتين يقارن بينهما.',
+      'Read Iblis’s answer again and match each person with the material named in that sentence.',
+      'اقرأ جواب إبليس مرة أخرى وصل كل شخص بالمادة المذكورة في الجملة.',
     ),
   },
   4: {
     exercise: namedQuick(
-      L('The Rule in Paradise', 'التعليمات في الجنة'),
-      L('Which rule did Adam and Eve need to remember in Paradise?', 'أي تعليمات كان على آدم وحواء أن يتذكراها في الجنة؟'),
-      {
-        en: ['Stay away from one tree', 'Leave Paradise at once', 'Start farming there'],
-        ar: ['الابتعاد عن شجرة واحدة', 'مغادرة الجنة فورًا', 'البدء بالزراعة هناك'],
-      },
-      0,
-      L('Allah told Adam and Eve not to go near one tree.', 'قال الله لآدم وحواء ألا يقتربا من شجرة واحدة.'),
+      L('Adam and Eve', 'آدم وحواء'),
+      mc(
+        L('Why did Allah give Adam a wife?', 'لماذا أعطى الله آدم زوجة؟'),
+        {
+          en: ['Adam felt lonely', 'Adam wanted to leave Paradise', 'The angels asked for a new person'],
+          ar: ['لأن آدم شعر بالوحدة', 'لأن آدم أراد مغادرة الجنة', 'لأن الملائكة طلبت شخصًا جديدًا'],
+        },
+        0,
+        L('Adam felt lonely in Paradise, so Allah gave him a wife, Eve.', 'شعر آدم بالوحدة في الجنة، فأعطاه الله زوجته حواء.'),
+      ),
     ),
     retry: L(
-      'Read the final warning in Chapter 4. What must they stay away from?',
-      'اقرأ التحذير الأخير في الفصل الرابع. عمَّ كان عليهما أن يبتعدا؟',
+      'Read the sentence just before Eve is introduced. How was Adam feeling?',
+      'اقرأ الجملة التي تسبق ذكر حواء مباشرة. كيف كان يشعر آدم؟',
     ),
   },
   5: {
     exercise: namedQuick(
-      L('A Mistake', 'الخطأ'),
-      L('Did Adam and Eve plan to make the mistake?', 'هل خطط آدم وحواء للوقوع في الخطأ؟'),
-      {
-        en: ['No. It was not on purpose.', 'Yes. They planned it.', 'The chapter says they made no mistake.'],
-        ar: ['لا، لم يكن الخطأ مقصودًا.', 'نعم، خططا له.', 'يقول الفصل إنهما لم يخطئا.'],
-      },
-      0,
-      L('The chapter says Adam and Eve made a mistake, but it was not on purpose.', 'يقول الفصل إن آدم وحواء وقعا في الخطأ، لكنه لم يكن مقصودًا.'),
+      L('Iblis’s Lie', 'كذبة إبليس'),
+      mc(
+        L('What lie did Iblis tell Adam and Eve about the tree?', 'ما الكذبة التي قالها إبليس لآدم وحواء عن الشجرة؟'),
+        {
+          en: ['They would never die if they ate from it', 'They would become hungry if they ate from it', 'They would forget everything if they ate from it'],
+          ar: ['إنهما لن يموتا أبدًا إذا أكلا منها', 'إنهما سيجوعان إذا أكلا منها', 'إنهما سينسيان كل شيء إذا أكلا منها'],
+        },
+        0,
+        L('Iblis told Adam and Eve that they would never die if they ate from the tree.', 'قال إبليس لآدم وحواء إنهما لن يموتا أبدًا إذا أكلا من الشجرة.'),
+      ),
     ),
     retry: L(
-      'Find the words “not on purpose”. Did they plan the mistake?',
-      'ابحث عن معنى «لم يقصدا». هل خططا للخطأ؟',
+      'Find the sentence that begins with “If you eat from that one tree…”. What did Iblis promise?',
+      'ابحث عن الجملة التي تبدأ بمعنى «إذا أكلتما من تلك الشجرة...». ماذا وعدهما إبليس؟',
     ),
   },
   6: {
     exercise: namedQuick(
       L('A New Life on Earth', 'حياة جديدة في الأرض'),
-      L('What happened after Allah forgave Adam and Eve?', 'ماذا حدث بعد أن غفر الله لآدم وحواء؟'),
-      {
-        en: ['They began life on Earth', 'They went back to the tree', 'They stayed in Paradise'],
-        ar: ['بدآ الحياة في الأرض', 'عادا إلى الشجرة', 'بقيا في الجنة'],
-      },
-      0,
-      L('After forgiveness, Allah put Adam and Eve on Earth to live there.', 'بعد المغفرة أنزل الله آدم وحواء إلى الأرض ليعيشا فيها.'),
+      tap(
+        L('What happened after Allah forgave Adam and Eve?', 'ماذا حدث بعد أن غفر الله لآدم وحواء؟'),
+        L('They began life on Earth.', 'بدآ الحياة في الأرض.'),
+        L('After Allah forgave them, Adam and Eve began their life on Earth.', 'بعد أن غفر الله لهما، بدأ آدم وحواء حياتهما في الأرض.'),
+      ),
     ),
     retry: L(
       'Read the first sentence in Chapter 6 and follow the order: forgiveness, then what?',
@@ -129,99 +142,73 @@ const quickByChapter: Record<number, QuickSpec> = {
   7: {
     exercise: namedQuick(
       L('Adam’s Teaching', 'تعاليم آدم'),
-      L('Which list matches what Adam taught people?', 'أي قائمة تطابق ما علّمه آدم للناس؟'),
-      {
-        en: [
-          'Be honest, do good, stop bad, remember Allah',
-          'Grow crops, keep animals, build houses',
-          'Be jealous, stay angry, forget Allah',
-        ],
-        ar: [
-          'الصدق وفعل الخير ومنع الشر وذكر الله',
-          'زراعة المحاصيل وتربية الحيوانات وبناء البيوت',
-          'الحسد والبقاء غاضبين ونسيان الله',
-        ],
-      },
-      0,
-      L('The chapter says Adam taught people to be honest, do good, stop bad, and always remember Allah.', 'يقول الفصل إن آدم علّم الناس الصدق وفعل الخير ومنع الشر وذكر الله دائمًا.'),
+      fill(
+        L('Complete the sentence about what Adam taught.', 'أكمل الجملة عما علّمه آدم.'),
+        L('He started teaching people to be [blank], do good, stop bad and always remember Allah.', 'بدأ يعلم الناس أن يكونوا [blank]، ويفعلوا الخير، ويمنعوا الشر، ويذكروا الله دائمًا.'),
+        L('honest', 'صادقين'),
+        L('Adam taught people to be honest, do good, stop bad, and remember Allah.', 'علّم آدم الناس أن يكونوا صادقين ويفعلوا الخير ويمنعوا الشر ويذكروا الله.'),
+      ),
     ),
     retry: L(
-      'Find the sentence that begins “He started teaching people…” and read the whole list.',
-      'ابحث عن الجملة التي تبدأ بمعنى «بدأ يعلم الناس…» واقرأ القائمة كاملة.',
+      'Find the sentence that begins “He started teaching people…” and look at the first quality.',
+      'ابحث عن الجملة التي تبدأ بمعنى «بدأ يعلم الناس...»، وانظر إلى الصفة الأولى.',
     ),
   },
   8: {
     exercise: namedQuick(
       L('Habil and Qabil', 'هابيل وقابيل'),
-      L('Who cared for animals, and who worked with crops?', 'من كان يعتني بالحيوانات، ومن كان يعمل في الزراعة؟'),
-      {
-        en: [
-          'Habil cared for animals; Qabil worked with crops',
-          'Qabil cared for animals; Habil worked with crops',
-          'Both brothers cared only for animals',
-        ],
-        ar: [
-          'هابيل اعتنى بالحيوانات؛ وقابيل عمل في الزراعة',
-          'قابيل اعتنى بالحيوانات؛ وهابيل عمل في الزراعة',
-          'كلا الأخوين اعتنى بالحيوانات فقط',
-        ],
-      },
-      0,
-      L('Habil became a shepherd and cared for animals; Qabil was a farmer and worked with crops.', 'أصبح هابيل راعيًا يعتني بالحيوانات، وكان قابيل مزارعًا يعمل في الزراعة.'),
+      matching(
+        L('Match each brother with his work.', 'صل كل أخ بعمله.'),
+        {
+          en: [['Habil', 'shepherd'], ['Qabil', 'farmer']],
+          ar: [['هابيل', 'راعٍ'], ['قابيل', 'مزارع']],
+        },
+        L('Habil became a shepherd and Qabil became a farmer.', 'أصبح هابيل راعيًا وأصبح قابيل مزارعًا.'),
+      ),
     ),
     retry: L(
-      'Read the first paragraph. Who worked with animals, and who worked with crops?',
-      'اقرأ الفقرة الأولى. من عمل مع الحيوانات، ومن عمل في الزراعة؟',
+      'Read the first paragraph and match each brother with the job named there.',
+      'اقرأ الفقرة الأولى وصل كل أخ بالعمل المذكور له.',
     ),
   },
   9: {
     exercise: namedQuick(
       L('What Qabil Learned', 'ما الذي تعلمه قابيل'),
-      L('A crow is a bird. It dug the ground. What did Qabil learn?', 'الغراب طائر. حفر التراب. ماذا تعلم قابيل؟'),
-      {
-        en: ['How to bury his brother', 'How to grow crops', 'How to care for sheep'],
-        ar: ['كيف يدفن أخاه', 'كيف يزرع المحاصيل', 'كيف يعتني بالأغنام'],
-      },
-      0,
-      L('The crow’s digging showed Qabil how to bury his brother.', 'أظهر حفر الغراب لقابيل كيف يدفن أخاه.'),
+      mc(
+        L('A bird dug the ground. What did Qabil understand?', 'حفر طائر الأرض. ماذا فهم قابيل؟'),
+        {
+          en: ['How to bury his brother', 'How to grow crops', 'How to care for sheep'],
+          ar: ['كيف يدفن أخاه', 'كيف يزرع المحاصيل', 'كيف يعتني بالأغنام'],
+        },
+        0,
+        L('The bird’s action showed Qabil how to bury his brother.', 'أظهر فعل الطائر لقابيل كيف يدفن أخاه.'),
+      ),
     ),
     retry: L(
-      'The word “crow” means a bird here. Read what the bird did and what Qabil understood next.',
-      'الغراب طائر هنا. اقرأ ما فعله الطائر وما الذي فهمه قابيل بعد ذلك.',
+      'Do not focus on the name of the bird. Read what it did and what Qabil understood next.',
+      'لا تركز على اسم الطائر. اقرأ ما فعله وما الذي فهمه قابيل بعد ذلك.',
     ),
   },
   10: {
     exercise: namedQuick(
       L('The Main Lesson', 'الدرس الرئيس'),
-      L('What lesson does Chapter 10 give?', 'ما الدرس الذي يقدمه الفصل العاشر؟'),
-      {
-        en: [
-          'Stay away from jealousy and control anger',
-          'Keep jealousy and anger',
-          'Ignore kindness and good behaviour',
-        ],
-        ar: [
-          'الابتعاد عن الحسد والسيطرة على الغضب',
-          'التمسك بالحسد والغضب',
-          'تجاهل اللطف وحسن الخلق',
-        ],
-      },
-      0,
-      L('Chapter 10 says good people should stay away from jealousy and control their anger.', 'يقول الفصل العاشر إن الناس الصالحين يجب أن يبتعدوا عن الحسد ويسيطروا على غضبهم.'),
+      mc(
+        L('What lesson does Chapter 10 give about jealousy and anger?', 'ما الدرس الذي يقدمه الفصل العاشر عن الحسد والغضب؟'),
+        {
+          en: ['Stay away from jealousy and control anger', 'Keep jealousy and anger', 'Ignore kindness and good behaviour'],
+          ar: ['الابتعاد عن الحسد والسيطرة على الغضب', 'التمسك بالحسد والغضب', 'تجاهل اللطف وحسن الخلق'],
+        },
+        0,
+        L('Chapter 10 says good people should stay away from jealousy and control their anger.', 'يقول الفصل العاشر إن الناس الصالحين يجب أن يبتعدوا عن الحسد ويسيطروا على غضبهم.'),
+      ),
     ),
     retry: L(
-      'Find the sentence with “should”. Which two actions does it give?',
-      'ابحث عن الجملة التي فيها معنى «يجب». ما الفعلان اللذان تذكرهما؟',
+      'Find the sentence with “should”. Which two actions does the chapter give?',
+      'ابحث عن الجملة التي فيها معنى «يجب». ما الفعلان اللذان يذكرهما الفصل؟',
     ),
   },
 };
 
-/**
- * Replaces the chapter Quick Challenge after the Gold learning map has been built.
- * This keeps the same evidence/outcome link while making the student-facing task
- * A2-accessible, meaningful, and chapter-specific. The feedback contract is
- * updated at the same time so v2 validation still checks the exact runtime copy.
- */
 export const applyAdamA2GoldQuickChallenges = (
   chapter: LearningBlueprintChapter,
 ): LearningBlueprintChapter => {
