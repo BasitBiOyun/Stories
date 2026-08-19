@@ -3,24 +3,59 @@
 ## Runtime
 
 1. The UI selects a story and CEFR level.
-2. `bookRegistry` dynamically loads that level module.
-3. The book module starts from protected raw EN/AR pages.
-4. Source locks ground hotspots and Word Notes in same-chapter prose.
-5. A reviewed manual Learning Blueprint supplies objectives, evidence, authored assessments and guides.
-6. The level Blueprint system compiles Quick, Knowledge, Vocabulary (where present), Review, Glossary and Final surfaces with EN/AR parity.
-7. Storage manifests resolve published media without mutating canonical book data.
+2. `bookRegistry` loads that book module.
+3. The book module supplies approved story pages and manually authored learning material.
+4. Shared UI components render story pages, exercises, Teacher Guide and Self-Study Guide.
+5. Storage manifests resolve published media without rewriting book content.
 
 ## Content boundary
 
-Canonical story prose, chapter identity/order, approved references, narration and timing data are protected. Exercises, vocabulary support and guides are derived learning material, but every factual or interpretive claim must remain traceable to the relevant chapter.
+Canonical story prose, chapter identity/order, approved references, narration and timing data are protected.
 
-## Shared learning system
+Derived learning material is manually authored from the story:
 
-A2, B1 and B2 use the same Blueprint compiler with level policies in `learningLevelPolicy.ts`. Manual authoring decides what is taught; the engine only validates and places reviewed material.
+- Quick Challenges
+- Knowledge Check
+- Vocabulary Challenge
+- Retrieval Review
+- Final Challenge
+- Teacher Guide
+- Self-Study Guide
+
+The authoritative pedagogical rules are in `MANUAL_CONTENT_AUTHORING_STANDARD.md`.
+
+## Shared code boundary
+
+Shared code owns structure and presentation only. It may define or render:
+
+- page/navigation structure
+- supported interaction types
+- fixed activity/question counts
+- scoring behaviour
+- guide heading structure
+- technical UI behaviour
+
+Shared code must not decide or generate the learning point, question wording, answer, distractors, vocabulary importance, chapter pedagogy, misconceptions or guide prose.
+
+## Legacy migration
+
+Some current books still use older Blueprint/Gold compilation layers at runtime. They remain temporarily only because those books have not yet been flattened into direct authored files.
+
+These layers are migration debt. Do not extend them or use them for new authoring. As each book/level receives its final manual review, move the approved output into direct source files and remove that book’s Blueprint/Gold transforms.
+
+Target direction:
+
+`locked story + manual exercises + manual Teacher Guide + manual Self-Study Guide -> shared renderer`
+
+not:
+
+`story -> generator -> Gold transform -> quality transform -> override -> runtime`
 
 ## Deployment
 
-The production artifact is a Vite build served by the Node runtime in `deploy/server.mjs` inside Cloud Run. The Docker build runs `npm run validate` before `npm run build`. The preview branch is deployed by Google Cloud Build using `cloudbuild.preview.yaml`.
+The production artifact is a Vite build served by the Node runtime in `deploy/server.mjs` inside Cloud Run.
+
+Deployment checks are technical only: TypeScript, production build and bundle integrity. Pedagogical approval is a manual authoring/review decision.
 
 ## Storage and future integrations
 
