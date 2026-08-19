@@ -3,7 +3,6 @@ import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
 import { polishB2GuideSections } from '../../b2GuidePresentation';
 import {
   buildB2FriendlyStudentGuideSections,
-  buildB2FriendlyStudentGuideText,
   buildB2GoldStudentGuideMetadata,
   buildB2GoldTeacherGuideMetadata,
 } from '../../b2GoldGuides';
@@ -14,6 +13,8 @@ import {
   applyB2GoldReview,
   prepareB2GoldLearningStructure,
 } from '../../b2GoldStructure';
+import { buildB2StudentFriendlyGuideText } from '../../b2StudentFriendlyGuide';
+import { makeB2CurriculumVisible } from '../../b2TeacherCurriculumSurface';
 import { adamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamB2LearningBlueprint } from './learningBlueprint';
@@ -71,9 +72,12 @@ export const adamB2BookDataEn: BookData = {
   pages: pagesEn,
   teacherGuide: teacherGuideEn,
   selfStudyGuide: selfStudyGuideEn,
-  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'en'),
+  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'en'),
   studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
-  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(adamB2TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length),
+  teacherGuideMetadata: makeB2CurriculumVisible(
+    buildB2GoldTeacherGuideMetadata(adamB2TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length),
+    'en',
+  ),
   studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
 };
 
@@ -85,8 +89,11 @@ export const adamB2BookDataAr: BookData = {
   pages: pagesAr,
   teacherGuide: teacherGuideAr,
   selfStudyGuide: selfStudyGuideAr,
-  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'ar'),
+  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'ar'),
   studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
-  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(adamB2TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length),
+  teacherGuideMetadata: makeB2CurriculumVisible(
+    buildB2GoldTeacherGuideMetadata(adamB2TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length),
+    'ar',
+  ),
   studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
 };
