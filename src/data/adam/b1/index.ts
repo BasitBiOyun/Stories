@@ -1,14 +1,8 @@
 import { BookData } from '../../../types';
 import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
-import {
-  polishB1GuideSections,
-  sanitizeB1StudentGuideSections,
-  sanitizeB1StudentGuideText,
-} from '../../b1GuidePresentation';
+import { polishB1GuideSections } from '../../b1GuidePresentation';
 import {
   buildB1GoldStudentGuideMetadata,
-  buildB1GoldStudentGuideSections,
-  buildB1GoldStudentGuideText,
   buildB1GoldTeacherGuideMetadata,
 } from '../../b1GoldGuides';
 import { finalizeB1LearningBlueprint } from '../../b1GoldPedagogy';
@@ -18,6 +12,10 @@ import {
   applyB1GoldReview,
   prepareB1GoldLearningStructure,
 } from '../../b1GoldStructure';
+import {
+  buildB1FriendlyStudentGuideSections,
+  buildB1FriendlyStudentGuideText,
+} from '../../b1StudentFriendlyGuide';
 import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamB1LearningBlueprint } from './learningBlueprint';
@@ -66,12 +64,12 @@ const teacherGuideEn = polishB1GuideSections(compiled.englishTeacherGuide, goldB
 const teacherGuideAr = polishB1GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
 const selfStudyGuideEn = polishB1GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
 const selfStudyGuideAr = polishB1GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
-const studentSectionsEn = sanitizeB1StudentGuideSections(buildB1GoldStudentGuideSections(story, 'en'));
-const studentSectionsAr = sanitizeB1StudentGuideSections(buildB1GoldStudentGuideSections(story, 'ar'));
+const studentSectionsEn = buildB1FriendlyStudentGuideSections('en');
+const studentSectionsAr = buildB1FriendlyStudentGuideSections('ar');
 const studentMetadataEn = buildB1GoldStudentGuideMetadata(story, 'en');
 const studentMetadataAr = buildB1GoldStudentGuideMetadata(story, 'ar');
-const studentTextEn = sanitizeB1StudentGuideText(buildB1GoldStudentGuideText(goldBlueprint, story, 'en'), 'en');
-const studentTextAr = sanitizeB1StudentGuideText(buildB1GoldStudentGuideText(goldBlueprint, story, 'ar'), 'ar');
+const studentTextEn = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'en');
+const studentTextAr = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'ar');
 
 export const adamB1GoldConfig = prepared.config;
 
