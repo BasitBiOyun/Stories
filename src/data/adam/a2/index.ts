@@ -51,7 +51,7 @@ const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
 });
 
 export const adamA2BookDataEn: BookData = {
-  id: 'a2-prophets-en',
+  id: 'adam-a2-en',
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
@@ -65,7 +65,7 @@ export const adamA2BookDataEn: BookData = {
 };
 
 export const adamA2BookDataAr: BookData = {
-  id: 'a2-prophets-ar',
+  id: 'adam-a2-ar',
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'A2',
   baseFontSize: 14,
