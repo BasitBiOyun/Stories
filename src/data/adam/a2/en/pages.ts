@@ -1,6 +1,7 @@
 import { PageData } from '../../../../types';
-import { adamA2FinalReviewExercises } from './exercises';
 
+// Story, Word Notes, hotspots, media and page shells only.
+// All learning activities live in exercises.ts.
 export const adamA2Pages: PageData[] = [
   {
     id: 1,
@@ -47,21 +48,6 @@ export const adamA2Pages: PageData[] = [
       { start: 74.050, end: 78.125, text: "lands. So the children of Adam (pbuh) are" },
       { start: 78.142, end: 81.657, text: "white, red, black, and" },
       { start: 81.834, end: 82.834, text: "yellow in color." }
-    ],
-    exercises: [
-      {
-        id: 'ex1-1',
-        type: 'true-false',
-        title: 'Origin of Adam',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'Allah created Adam (pbuh) from fire.',
-        correctAnswer: false,
-        explanation: 'Allah created Adam (pbuh) from soil (clay), while He created Iblis from fire.',
-        feedback: {
-          correct: 'Correct! Allah created Adam (pbuh) from the earth.',
-          incorrect: 'Not quite. Remember, Allah shaped Adam (pbuh) from soil.'
-        }
-      }
     ]
   },
   {
@@ -80,23 +66,7 @@ export const adamA2Pages: PageData[] = [
       { id: 'h2-1', x: 40, y: 30, title: 'Knowledge', description: 'Allah gave Adam knowledge and taught him to think.' },
       { id: 'h2-2', x: 60, y: 50, title: 'Angels', description: 'The angels admired Adam and respected him.' }
     ],
-    animatedWords: ['knowledge', 'think', 'amazing', 'understand'],
-    exercises: [
-      {
-        id: 'ex2-1',
-        type: 'multiple-choice',
-        title: 'Respect for Adam (pbuh)',
-        instructions: 'Choose the correct answer.',
-        question: 'Who refused to show respect to Adam (pbuh)?',
-        options: ['The Angels', 'Iblis', 'The Animals'],
-        correctAnswer: 1,
-        explanation: 'While all the angels respected Adam (pbuh) as Allah commanded, Iblis refused because of his pride and jealousy.',
-        feedback: {
-          correct: 'Correct! Iblis was the only one who disobeyed.',
-          incorrect: 'Try again. Most creatures respected him, but one did not.'
-        }
-      }
-    ]
+    animatedWords: ['knowledge', 'think', 'amazing', 'understand']
   },
   {
     id: 3,
@@ -114,23 +84,7 @@ export const adamA2Pages: PageData[] = [
       { id: 'h3-1', x: 25, y: 45, title: 'Fire', description: 'Iblis thought fire was better than soil.' },
       { id: 'h3-2', x: 75, y: 35, title: 'Arrogant', description: 'Iblis was arrogant. He thought he was more important than Adam.' }
     ],
-    animatedWords: ['fire', 'clay', 'arrogant'],
-    exercises: [
-      {
-        id: 'ex3-1',
-        type: 'multiple-choice',
-        title: 'The Value of Knowledge',
-        instructions: 'Choose the best answer based on the story.',
-        question: 'Why was Adam more valuable than Iblis?',
-        options: ['He was stronger', 'He had knowledge', 'He lived longer'],
-        correctAnswer: 1,
-        explanation: 'Allah gave Adam knowledge and taught him to think, which made him more valuable than Iblis, who was only proud of his origin.',
-        feedback: {
-          correct: 'Excellent! Knowledge and the ability to learn are what made Adam special.',
-          incorrect: 'Think again. What did Allah give Adam that the angels and Iblis did not have?'
-        }
-      }
-    ]
+    animatedWords: ['fire', 'clay', 'arrogant']
   },
   {
     id: 4,
@@ -147,24 +101,6 @@ export const adamA2Pages: PageData[] = [
     hotspots: [
       { id: 'h4-1', x: 35, y: 40, title: 'Eve (Hawwa)', description: 'Allah gave him a wife. Her name was Eve (Hawwa).' },
       { id: 'h4-2', x: 65, y: 25, title: 'Tree', description: 'HE told Adam and Eve not to go near one tree.' }
-    ],
-    exercises: [
-      {
-        id: 'ex4-1',
-        type: 'tap-reveal',
-        title: 'The Divine Warning',
-        instructions: 'Tap to reveal the answer.',
-        question: 'What was the only warning Allah gave to Adam and Eve?',
-        correctAnswer: 'Not to go near one specific tree.',
-        explanation: 'Allah allowed them to enjoy everything in Paradise except for one tree.',
-        feedback: {
-          correct: 'Correct! This was a test of their obedience.',
-          incorrect: 'Try to remember what they were told to avoid.'
-        },
-        tapRevealItems: [
-          { question: 'The Warning', answer: 'Do not go near one specific tree.' }
-        ]
-      }
     ]
   },
   {
@@ -183,23 +119,7 @@ export const adamA2Pages: PageData[] = [
       { id: 'h5-1', x: 45, y: 35, title: 'Lie', description: 'Iblis told them he was their friend. It was a big lie.' },
       { id: 'h5-2', x: 55, y: 60, title: 'Mistake', description: 'They made a mistake, but it wasn’t on purpose. They were very sad.' }
     ],
-    animatedWords: ['on purpose'],
-    exercises: [
-      {
-        id: 'ex5-1',
-        type: 'multiple-choice',
-        title: 'The Lie of Iblis',
-        instructions: 'Choose the correct answer.',
-        question: 'What did Iblis tell Adam and Eve to trick them?',
-        options: ['They would become angels', 'They would never die', 'They would find gold'],
-        correctAnswer: 1,
-        explanation: 'Iblis lied and told them that if they ate from the forbidden tree, they would never die.',
-        feedback: {
-          correct: 'Correct! He used a big lie to deceive them.',
-          incorrect: 'Think about what Iblis promised them to make them eat the fruit.'
-        }
-      }
-    ]
+    animatedWords: ['on purpose']
   },
   {
     id: 6,
@@ -217,21 +137,7 @@ export const adamA2Pages: PageData[] = [
       { id: 'h6-1', x: 30, y: 50, title: 'Earth', description: 'Allah excused Adam and Eve and put them on earth to live there.' },
       { id: 'h6-2', x: 70, y: 40, title: 'Land', description: 'They were using land to grow crops and keep animals.' }
     ],
-    animatedWords: ['excused'],
-    exercises: [
-      {
-        id: 'p6-ex1',
-        type: 'fill-blanks',
-        title: 'The Warning',
-        instructions: 'Complete the sentence about the warning in Paradise.',
-        fillBlanksText: 'Allah told Adam and Eve: "You may eat anything in Paradise, but do not go near this [blank]."',
-        correctAnswer: 'tree',
-        feedback: {
-          correct: 'Exactly! They were warned about one specific tree.',
-          incorrect: 'Think about what was forbidden in the garden.'
-        }
-      }
-    ]
+    animatedWords: ['excused']
   },
   {
     id: 7,
@@ -239,7 +145,7 @@ export const adamA2Pages: PageData[] = [
     title: 'The First Messenger',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter7.png?alt=media&token=2cca3dac-2759-4016-824a-106d09ff0781',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter7.mp3?alt=media&token=38ea267e-8e50-4369-bad9-a2b925c4247a',
-    content: "Adam and Eve lived on earth many years. They had good and hard days. Some days brought them peace, some days were difficult. They had also lots of children. We are all one of their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis, because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
+    content: "Adam and Eve lived on earth many years. They had good and hard days. Some days brought them peace, some days were difficult. They also had lots of children. We are all one of their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis, because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
     vocabulary: [
       { word: 'honest', definition: 'Free of deceit and untruthfulness; sincere.' },
       { word: 'behave', definition: 'Act or conduct oneself in a specified way.' },
@@ -248,20 +154,6 @@ export const adamA2Pages: PageData[] = [
     hotspots: [
       { id: 'h7-1', x: 40, y: 45, title: 'Messenger', description: 'Allah made Adam His first Messenger.' },
       { id: 'h7-2', x: 60, y: 30, title: 'Children', description: 'Adam and Eve taught their children to behave well.' }
-    ],
-    exercises: [
-      {
-        id: 'p7-ex1',
-        type: 'multiple-choice',
-        title: 'The First Messenger',
-        question: 'Who was the first Messenger of Allah?',
-        options: ['Iblis', 'Habil', 'Adam (pbuh)'],
-        correctAnswer: 2,
-        feedback: {
-          correct: 'Correct! Adam (pbuh) was the first Messenger sent to guide humanity.',
-          incorrect: 'Try again. Think about who Allah chose to guide the first people.'
-        }
-      }
     ]
   },
   {
@@ -279,28 +171,6 @@ export const adamA2Pages: PageData[] = [
     hotspots: [
       { id: 'h8-1', x: 35, y: 55, title: 'Sheep', description: 'Habil brought his best sheep as a gift for Allah.' },
       { id: 'h8-2', x: 65, y: 45, title: 'Crops', description: 'Qabil brought just a handful of his crops.' }
-    ],
-    exercises: [
-      {
-        id: 'ex8-1',
-        type: 'drag-drop',
-        title: 'Brothers and Qualities',
-        instructions: 'Drag the traits to the correct brother.',
-        question: 'Match the characters to their traits.',
-        dragDropGroups: [
-          { group: 'Habil', items: ['Sincerity', 'Kindness'] },
-          { group: 'Qabil', items: ['Jealousy', 'Selfishness'] }
-        ],
-        correctAnswer: {
-          'Habil': ['Sincerity', 'Kindness'],
-          'Qabil': ['Jealousy', 'Selfishness']
-        },
-        explanation: 'Habil was sincere and gave his best, while Qabil was jealous and selfish.',
-        feedback: {
-          correct: 'Well done! You understand the difference between the two brothers.',
-          incorrect: 'Check the story again. Who was jealous?'
-        }
-      }
     ]
   },
   {
@@ -309,30 +179,15 @@ export const adamA2Pages: PageData[] = [
     title: 'The First Crime',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter9.png?alt=media&token=12a5e3e0-c1be-47c1-9a1d-0b64288ddf56',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter9.mp3?alt=media&token=25446a2e-d966-4fdc-9def-e7b43c8cf34c',
-    content: "Allah was pleased with Habil’s offering, because he gave from his heart. Qabil’s face became very dark with anger and said “I will kill you”. When Habil heard this, he said “I won’t fight back and harm you, you are my brother and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But also he started to panic. He said “I killed my brother, I did the worst thing in life, now I don’t know what I should do with his dead body.” Then, Allah sent a crow, it landed on the ground near Qabil and started digging it. The crow showed Qabil the way to put his brother dead body in the hole. Qabil cried and said “I am worse than this crow. I cannot hide my brother’s dead body.”",
+    content: "Allah was pleased with Habil’s offering, because he gave from his heart. Qabil’s face became very dark with anger and said “I will kill you”. When Habil heard this, he said “I won’t fight back and harm you, you are my brother and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But also he started to panic. He said “I killed my brother, I did the worst thing in life, now I don’t know what I should do with his dead body.” Then, Allah sent a crow, it landed on the ground near Qabil and started digging it. The crow showed Qabil the way to put his brother's dead body in the hole. Qabil cried and said “I am worse than this crow. I cannot hide my brother’s dead body.”",
     vocabulary: [
       { word: 'crow', definition: 'A large black bird.' },
       { word: 'panic', definition: 'Sudden uncontrollable fear or anxiety.' },
       { word: 'digging', definition: 'Break up and move earth with a tool or claws.' }
     ],
     hotspots: [
-      { id: 'h9-1', x: 50, y: 20, title: 'Crow', description: 'The crow showed Qabil the way to put his brother dead body in the hole.' },
+      { id: 'h9-1', x: 50, y: 20, title: 'Crow', description: "The crow showed Qabil the way to put his brother's dead body in the hole." },
       { id: 'h9-2', x: 40, y: 60, title: 'Panic', description: 'Soon, Qabil’s anger cooled and he felt so sad. But also he started to panic.' }
-    ],
-    exercises: [
-      {
-        id: 'ex9-1',
-        type: 'true-false',
-        title: 'The Crow\'s Lesson',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'Allah sent a crow to show Qabil how to bury his brother.',
-        correctAnswer: true,
-        explanation: 'Allah sent a crow that started digging the ground to teach Qabil how to bury the dead body.',
-        feedback: {
-          correct: 'Correct! Even a small bird was sent by Allah to teach a lesson.',
-          incorrect: 'Remember the bird that appeared after Qabil killed Habil.'
-        }
-      }
     ]
   },
   {
@@ -350,122 +205,28 @@ export const adamA2Pages: PageData[] = [
     hotspots: [
       { id: 'h10-1', x: 45, y: 40, title: 'Old', description: 'He got old over the years.' },
       { id: 'h10-2', x: 55, y: 30, title: 'Message', description: 'His children and grandchildren spread his message worldwide.' }
-    ],
-    exercises: [
-      {
-        id: 'ex10-1',
-        type: 'true-false',
-        title: 'Lessons from Adam (pbuh)',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'Adam (pbuh) taught his children to be honest and kind.',
-        correctAnswer: true,
-        explanation: 'As the first Messenger, Adam (pbuh) taught his children to behave well, be honest, and remember Allah.',
-        feedback: {
-          correct: 'Correct! He was a great teacher for his family.',
-          incorrect: 'Actually, he did teach them to be good and honest.'
-        }
-      }
     ]
   },
   {
     id: 11,
     type: 'quiz',
     title: 'Knowledge Check: Adam (pbuh)',
-    image: 'https://picsum.photos/seed/quiz-adam/1200/800',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    content: 'Test your understanding of the story of Adam (pbuh).',
-    exercises: [
-      {
-        id: 'q1',
-        type: 'true-false',
-        question: 'Allah created Adam (pbuh) from fire.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'Correct! Allah created Adam (pbuh) from soil.',
-          incorrect: 'Incorrect. Allah created Adam (pbuh) from soil, while He created Iblis from fire.'
-        },
-        explanation: 'Allah created Adam (pbuh) from the clay of the earth.'
-      },
-      {
-        id: 'q2',
-        type: 'true-false',
-        question: 'Iblis was arrogant and refused to respect Adam (pbuh).',
-        correctAnswer: true,
-        feedback: {
-          correct: 'Correct! Iblis thought he was better because he was made of fire.',
-          incorrect: 'Actually, Iblis refused to respect Adam (pbuh) because of his pride.'
-        },
-        explanation: 'Arrogance led Iblis to believe he was superior to Adam (pbuh).'
-      },
-      {
-        id: 'q3',
-        type: 'true-false',
-        question: 'Habil was a farmer and Qabil was a shepherd.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'Correct! Habil was a shepherd and Qabil was a farmer.',
-          incorrect: 'Actually, Habil kept animals (shepherd) and Qabil grew crops (farmer).'
-        },
-        explanation: 'Habil was the shepherd who offered his best sheep to Allah.'
-      },
-      {
-        id: 'q4',
-        type: 'true-false',
-        question: 'Allah taught Adam (pbuh) the names of all things.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'Correct! This showed the angels the high status of Adam (pbuh).',
-          incorrect: 'Actually, Allah did teach Adam (pbuh) the names of all things.'
-        },
-        explanation: 'Adam (pbuh) was given knowledge that even the angels did not have.'
-      },
-      {
-        id: 'q5',
-        type: 'true-false',
-        question: 'Adam (pbuh) and Hawwa lived in Paradise first.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'Correct! They lived in Paradise before being sent to Earth.',
-          incorrect: 'Actually, their journey began in Paradise.'
-        },
-        explanation: 'Paradise was their first home before the test on Earth.'
-      },
-      {
-        id: 'q6',
-        type: 'true-false',
-        question: "Qabil's offering was accepted by Allah.",
-        correctAnswer: false,
-        feedback: {
-          correct: 'Correct! Only Habil\'s offering was accepted because of his sincerity.',
-          incorrect: 'Actually, Qabil\'s offering was not accepted.'
-        },
-        explanation: 'Allah accepts from those who are sincere and pious.'
-      }
-    ]
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    content: 'Check your understanding of eight key ideas from the story.'
   },
   {
     id: 12,
     type: 'vocabulary-match',
     title: 'Vocabulary Challenge',
-    image: 'https://picsum.photos/seed/vocab-match/1200/800',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    content: 'Match the words from the story with their correct meanings.',
-    vocabularyPairs: [
-      { word: 'Messenger', meaning: 'A person carrying a divine message' },
-      { word: 'Arrogant', meaning: 'Thinking one is better than others' },
-      { word: 'Regret', meaning: 'Feeling sorry for a mistake' },
-      { word: 'Shepherd', meaning: 'A person who looks after sheep' },
-      { word: 'Offering', meaning: 'An act of giving something to Allah to have his pleasure' },
-      { word: 'Jealousy', meaning: 'Feeling unhappy because of others\' success' }
-    ]
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    content: 'Match six key words from the story with their meanings.'
   },
   {
     id: 13,
     type: 'exercises',
-    title: 'Final Review & Reflection',
+    title: 'Retrieval Review & Reflection',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    content: 'Complete these final exercises to master the lessons of Prophet Adam (pbuh).',
-    exercises: adamA2FinalReviewExercises
+    content: 'Use four different activities to retrieve, connect and reflect before the Final Challenge.'
   },
   {
     id: 14,
@@ -513,7 +274,7 @@ export const adamA2Pages: PageData[] = [
     id: 16,
     type: 'final-challenge',
     title: 'Final Challenge',
-    content: 'Test your knowledge of the entire story of Prophet Adam (pbuh).',
+    content: 'Show what you learned across the whole story with ten different scored activities.',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723'
   }
 ];
