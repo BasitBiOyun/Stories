@@ -1,6 +1,7 @@
 import { PageData } from '../../../../types';
-import { adamA2FinalReviewExercisesAr } from './exercises';
 
+// القصة، Word Notes، hotspots، الوسائط وهياكل الصفحات فقط.
+// جميع أنشطة التعلم موجودة في exercises.ts.
 export const adamA2PagesAr: PageData[] = [
   {
     id: 1,
@@ -18,22 +19,7 @@ export const adamA2PagesAr: PageData[] = [
       { id: 'h1', x: 30, y: 40, title: 'التُّرَاب', description: 'خَلَقَهُ اللهُ مِنَ التُّرَابِ.' },
       { id: 'h2', x: 70, y: 20, title: 'الْأَرْض', description: 'خَلَقَ اللهُ السَّمَاءَ وَالْأَرْضَ.' }
     ],
-    animatedWords: ['السَّمَاء', 'الْأَرْض', 'تُرَاب'],
-    exercises: [
-      {
-        id: 'ex1-1',
-        type: 'true-false',
-        title: 'أصل آدم',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'خلق آدم من نار.',
-        correctAnswer: false,
-        explanation: 'خلق آدم (عليه السلام) من تراب (طين)، بينما خلق إبليس من نار.',
-        feedback: {
-          correct: 'صحيح! خلق البشر من الأرض.',
-          incorrect: 'ليس تماماً. تذكر أن آدم صُور من التراب.'
-        }
-      }
-    ]
+    animatedWords: ['السَّمَاء', 'الْأَرْض', 'تُرَاب']
   },
   {
     id: 2,
@@ -51,23 +37,7 @@ export const adamA2PagesAr: PageData[] = [
       { id: 'h2-1', x: 40, y: 30, title: 'الْعِلْم', description: 'عَلَّمَ اللهُ آدَمَ الْعِلْمَ وَالتَّفْكِيرَ.' },
       { id: 'h2-2', x: 60, y: 50, title: 'الْمَلَائِكَة', description: 'فَرَأَتِ المَلائِكَةُ أَنَّ آدَمَ شَيْءٌ عَظيمٌ، فَأُعْجِبُوا بِهِ وَسَجَدُوا لَهُ تَكْريمًا.' }
     ],
-    animatedWords: ['الْعِلْمَ', 'التَّفْكِيرَ', 'عَظيمٌ', 'تَكْريمًا'],
-    exercises: [
-      {
-        id: 'ex2-1',
-        type: 'multiple-choice',
-        title: 'احترام آدم (عليه السلام)',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'من الذي رفض إظهار الاحترام لآدم (عليه السلام)؟',
-        options: ['الملائكة', 'إبليس', 'الحيوانات'],
-        correctAnswer: 1,
-        explanation: 'بينما احترمت جميع الملائكة آدم (عليه السلام) كما أمر الله، رفض إبليس بسبب كبريائه وحسده.',
-        feedback: {
-          correct: 'صحيح! إبليس كان الوحيد الذي عصى.',
-          incorrect: 'حاول مرة أخرى. معظم المخلوقات احترمته، لكن واحداً لم يفعل.'
-        }
-      }
-    ]
+    animatedWords: ['الْعِلْمَ', 'التَّفْكِيرَ', 'عَظيمٌ', 'تَكْريمًا']
   },
   {
     id: 3,
@@ -85,23 +55,7 @@ export const adamA2PagesAr: PageData[] = [
       { id: 'h3-1', x: 25, y: 45, title: 'النَّار', description: 'قَالَ إِبْلِيسُ: أَنَا أَفْضَلُ مِنْ آدَمَ. خَلَقْتَنِي مِنْ نَارٍ، وَخَلَقْتَ آدَمَ مِنْ طِينٍ.' },
       { id: 'h3-2', x: 75, y: 35, title: 'مُتَكَبِّرًا', description: 'إِبْلِيسُ كَانَ مُتَكَبِّرًا. كَانَ يَظُنُّ أَنَّهُ أَهَمُّ وَأَفْضَلُ مِنْ آدَمَ.' }
     ],
-    animatedWords: ['نَارٍ', 'طِينٍ', 'مُتَكَبِّرًا'],
-    exercises: [
-      {
-        id: 'ex3-1',
-        type: 'multiple-choice',
-        title: 'قيمة العلم',
-        instructions: 'اختر أفضل إجابة بناءً على القصة.',
-        question: 'لماذا كان آدم أكثر قيمة من إبليس؟',
-        options: ['كان أقوى', 'كان لديه علم', 'عاش لفترة أطول'],
-        correctAnswer: 1,
-        explanation: 'أعطى الله آدم العلم وعلمه التفكير، مما جعله أكثر قيمة من إبليس الذي كان يفتخر بأصله فقط.',
-        feedback: {
-          correct: 'ممتاز! العلم والقدرة على التعلم هما ما جعل آدم مميزاً.',
-          incorrect: 'فكر مرة أخرى. ماذا أعطى الله آدم ولم يكن لدى الملائكة وإبليس؟'
-        }
-      }
-    ]
+    animatedWords: ['نَارٍ', 'طِينٍ', 'مُتَكَبِّرًا']
   },
   {
     id: 4,
@@ -118,24 +72,6 @@ export const adamA2PagesAr: PageData[] = [
     hotspots: [
       { id: 'h4-1', x: 35, y: 40, title: 'حَوَّاء', description: 'فَخَلَقَ اللهُ لَهُ زَوْجَةً اسْمُهَا حَوَّاءُ.' },
       { id: 'h4-2', x: 65, y: 25, title: 'الشَّجَرَة', description: 'قَالَ اللهُ لَهُمَا: لَا تَقْرَبَا هَذِهِ الشَّجَرَةَ.' }
-    ],
-    exercises: [
-      {
-        id: 'ex4-1',
-        type: 'tap-reveal',
-        title: 'التحذير الإلهي',
-        instructions: 'اضغط للكشف عن الإجابة.',
-        question: 'ما هو التحذير الوحيد الذي وجهه الله لآدم وحواء؟',
-        correctAnswer: 'عدم الاقتراب من شجرة واحدة معينة.',
-        explanation: 'سمح الله لهما بالاستمتاع بكل شيء في الجنة إلا شجرة واحدة.',
-        feedback: {
-          correct: 'صحيح! كان هذا اختباراً لطاعتهما.',
-          incorrect: 'حاول أن تتذكر ما الذي طُلب منهما تجنبه.'
-        },
-        tapRevealItems: [
-          { question: 'التحذير', answer: 'عدم الاقتراب من شجرة واحدة معينة.' }
-        ]
-      }
     ]
   },
   {
@@ -155,23 +91,7 @@ export const adamA2PagesAr: PageData[] = [
       { id: 'h5-1', x: 45, y: 35, title: 'كَذِبًا', description: 'وَكانَ ذلِكَ كَذِبًا كَبيرًا.' },
       { id: 'h5-2', x: 55, y: 60, title: 'حَزِنَا', description: 'حَزِنَا كَثِيرًا وَطَلَبَا الْمَغْفِرَةَ مِنَ اللهِ.' }
     ],
-    animatedWords: ['يَقْصِدَا'],
-    exercises: [
-      {
-        id: 'ex5-1',
-        type: 'multiple-choice',
-        title: 'كذبة إبليس',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'ماذا قال إبليس لآدم وحواء ليخدعهما؟',
-        options: ['سيصبحان ملائكة', 'لن يموتا أبداً', 'سيجدان ذهباً'],
-        correctAnswer: 1,
-        explanation: 'كذب إبليس وأخبرهما أنهما إذا أكلا من الشجرة المحرمة، فلن يموتا أبداً.',
-        feedback: {
-          correct: 'صحيح! استخدم كذبة كبيرة ليخدعهما.',
-          incorrect: 'فكر فيما وعدهم به إبليس ليجعلهم يأكلون الفاكهة.'
-        }
-      }
-    ]
+    animatedWords: ['يَقْصِدَا']
   },
   {
     id: 6,
@@ -189,21 +109,7 @@ export const adamA2PagesAr: PageData[] = [
       { id: 'h6-1', x: 30, y: 50, title: 'الأَرْض', description: 'وَكانا حاكِمَيْنِ عَلَى هذِهِ الأَرْضِ.' },
       { id: 'h6-2', x: 70, y: 40, title: 'الزُّروع', description: 'وَكانا سَيَسْتَخْدِمانِ التُّرابَ لِزِراعَةِ الزُّروعِ وَتَرْبِيَةِ الحَيَواناتِ.' }
     ],
-    animatedWords: ['غَفَرَ'],
-    exercises: [
-      {
-        id: 'p6-ex1',
-        type: 'fill-blanks',
-        title: 'التحذير',
-        instructions: 'أكمل الجملة حول التحذير في الجنة.',
-        fillBlanksText: 'قال الله لآدم وحواء: "يمكنكما أكل أي شيء في الجنة، لكن لا تقتربا من هذه [blank]."',
-        correctAnswer: 'الشجرة',
-        feedback: {
-          correct: 'بالضبط! تم تحذيرهما من شجرة واحدة معينة.',
-          incorrect: 'فكر فيما كان محرماً في الجنة.'
-        }
-      }
-    ]
+    animatedWords: ['غَفَرَ']
   },
   {
     id: 7,
@@ -220,20 +126,6 @@ export const adamA2PagesAr: PageData[] = [
     hotspots: [
       { id: 'h7-1', x: 40, y: 45, title: 'رَسول', description: 'جَعَلَ اللهُ آدَمَ أَوَّلَ رَسولٍ لَهُ.' },
       { id: 'h7-2', x: 60, y: 30, title: 'أَوْلادًا', description: 'وَرُزِقا أَوْلادًا كَثيرينَ.' }
-    ],
-    exercises: [
-      {
-        id: 'p7-ex1',
-        type: 'multiple-choice',
-        title: 'أول رسول',
-        question: 'من كان أول رسول من الله؟',
-        options: ['إبليس', 'هابيل', 'آدم (عليه السلام)'],
-        correctAnswer: 2,
-        feedback: {
-          correct: 'صحيح! كان آدم (عليه السلام) أول رسول أُرسل لهداية البشرية.',
-          incorrect: 'حاول مرة أخرى. فكر فيمن اختاره الله لهداية الناس الأوائل.'
-        }
-      }
     ]
   },
   {
@@ -251,28 +143,6 @@ export const adamA2PagesAr: PageData[] = [
     hotspots: [
       { id: 'h8-1', x: 35, y: 55, title: 'خَرُوف', description: 'قَدَّمَ هَابِيلُ أَفْضَلَ وَأَصَحَّ خَرُوفٍ عِنْدَهُ هَدِيَّةً لِلهِ.' },
       { id: 'h8-2', x: 65, y: 45, title: 'النَّبَاتَات', description: 'أَصْبَحَ قَابِيلُ مُزَارِعًا، يَعْمَلُ فِي الْحَقْلِ وَيَزْرَعُ النَّبَاتَاتِ.' }
-    ],
-    exercises: [
-      {
-        id: 'ex8-1',
-        type: 'drag-drop',
-        title: 'الأخوة والصفات',
-        instructions: 'اسحب الصفات إلى الأخ الصحيح.',
-        question: 'طابق الشخصيات مع صفاتها.',
-        dragDropGroups: [
-          { group: 'هابيل', items: ['الإخلاص', 'اللطف'] },
-          { group: 'قابيل', items: ['الحسد', 'الأنانية'] }
-        ],
-        correctAnswer: {
-          'هابيل': ['الإخلاص', 'اللطف'],
-          'قابيل': ['الحسد', 'الأنانية']
-        },
-        explanation: 'كان هابيل مخلصاً وأعطى أفضل ما لديه، بينما كان قابيل حسوداً وأنانياً.',
-        feedback: {
-          correct: 'أحسنت! أنت تفهم الفرق بين الأخوين.',
-          incorrect: 'تحقق من القصة مرة أخرى. من كان حسوداً؟'
-        }
-      }
     ]
   },
   {
@@ -290,21 +160,6 @@ export const adamA2PagesAr: PageData[] = [
     hotspots: [
       { id: 'h9-1', x: 50, y: 20, title: 'الغُراب', description: 'فَفَهِمَ قابيلُ أَنَّ الغُرابَ يُعَلِّمُهُ كَيْفَ يَدْفِنُ جُثَّةَ أَخيهِ في حُفْرَةٍ.' },
       { id: 'h9-2', x: 40, y: 60, title: 'الْخَوْف', description: 'لَكِنَّهُ بَدَأَ يَشْعُرُ بِالْخَوْفِ وَيَضْطَرِبُ أَیْضًا.' }
-    ],
-    exercises: [
-      {
-        id: 'ex9-1',
-        type: 'true-false',
-        title: 'درس الغراب',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'أرسل الله غراباً ليري قابيل كيف يدفن أخاه.',
-        correctAnswer: true,
-        explanation: 'أرسل الله غراباً بدأ يحفر الأرض ليعلم قابيل كيف يدفن الجثة.',
-        feedback: {
-          correct: 'صحيح! حتى طائر صغير أرسله الله ليعلم درساً.',
-          incorrect: 'تذكر الطائر الذي ظهر بعد أن قتل قابيل هابيل.'
-        }
-      }
     ]
   },
   {
@@ -322,122 +177,28 @@ export const adamA2PagesAr: PageData[] = [
     hotspots: [
       { id: 'h10-1', x: 45, y: 40, title: 'عَجُوزًا', description: 'مَعَ مُرُورِ السِّنِينَ، أَصْبَحَ عَجُوزًا.' },
       { id: 'h10-2', x: 55, y: 30, title: 'الرِّسالَة', description: 'نَشَرَ أَوْلَادُهُ وَأَحْفَادُهُ رِسَالَتَهُ فِي كُلِّ الْعَالَمِ.' }
-    ],
-    exercises: [
-      {
-        id: 'ex10-1',
-        type: 'true-false',
-        title: 'دروس من آدم (عليه السلام)',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'علم آدم (عليه السلام) أطفاله أن يكونوا صادقين ولطفاء.',
-        correctAnswer: true,
-        explanation: 'كأول رسول، علم آدم (عليه السلام) أطفاله أن يتصرفوا بشكل جيد، ويكونوا صادقين، ويذكروا الله.',
-        feedback: {
-          correct: 'صحيh! كان معلماً عظيماً لعائلته.',
-          incorrect: 'في الواقع، لقد علمهم أن يكونوا صالحين وصادقين.'
-        }
-      }
     ]
   },
   {
     id: 11,
     type: 'quiz',
     title: 'اختبار المعرفة: آدم (عليه السلام)',
-    image: 'https://picsum.photos/seed/quiz-adam/1200/800',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    content: 'اختبر فهمك لقصة آدم (عليه السلام).',
-    exercises: [
-      {
-        id: 'q1',
-        type: 'true-false',
-        question: 'خلق آدم (عليه السلام) من نار.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'صحيح! خلق آدم (عليه السلام) من تراب.',
-          incorrect: 'خاطئ. خلق آدم (عليه السلام) من تراب، بينما خلق إبليس من نار.'
-        },
-        explanation: 'خلق الله آدم (عليه السلام) من طين الأرض.'
-      },
-      {
-        id: 'q2',
-        type: 'true-false',
-        question: 'كان إبليس متكبراً ورفض احترام آدم (عليه السلام).',
-        correctAnswer: true,
-        feedback: {
-          correct: 'صحيح! ظن إبليس أنه أفضل لأنه خلق من نار.',
-          incorrect: 'في الواقع، رفض إبليس احترام آدم (عليه السلام) بسبب كبريائه.'
-        },
-        explanation: 'أدى الكبرياء بإبليس إلى الاعتقاد بأنه متفوق على آدم (عليه السلام).'
-      },
-      {
-        id: 'q3',
-        type: 'true-false',
-        question: 'كان هابيل مزارعاً وقابيل راعياً.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'صحيح! كان هابيل راعياً وقابيل مزارعاً.',
-          incorrect: 'في الواقع، كان هابيل يربي الحيوانات (راعي) وقابيل يزرع المحاصيل (مزارع).'
-        },
-        explanation: 'كان هابيل هو الراعي الذي قدم أفضل خروف لديه لله.'
-      },
-      {
-        id: 'q4',
-        type: 'true-false',
-        question: 'عَلَّمَ اللهُ آدَمَ (عَلَيْهِ السَّلَامُ) أَسْمَاءَ كُلِّ شَيْءٍ.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'صحيح! هَذَا أَظْهَرَ لِلْمَلَائِكَةِ مَكَانَةَ آدَمَ (عَلَيْهِ السَّلَامُ) الْعَالِيَةَ.',
-          incorrect: 'فِي الْحَقِيقَةِ، عَلَّمَ اللهُ آدَمَ (عَلَيْهِ السَّلَامُ) أَسْمَاءَ كُلِّ شَيْءٍ.'
-        },
-        explanation: 'أُعْطِيَ آدَمُ (عَلَيْهِ السَّلَامُ) عِلْمًا لَمْ يَكُنْ عِنْدَ الْمَلَائِكَةِ.'
-      },
-      {
-        id: 'q5',
-        type: 'true-false',
-        question: 'عَاشَ آدَمُ (عَلَيْهِ السَّلَامُ) وَحَوَّاءُ فِي الْجَنَّةِ أَوَّلًا.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'صحيح! لَقَدْ عَاشَا فِي الْجَنَّةِ قَبْلَ أَنْ يَنْزِلَا إِلَى الْأَرْضِ.',
-          incorrect: 'فِي الْحَقِيقَةِ، بَدَأَتْ رِحْلَتُهُمَا فِي الْجَنَّةِ.'
-        },
-        explanation: 'كَانَتِ الْجَنَّةُ مَنْزِلَهُمَا الْأَوَّلَ قَبْلَ الِاخْتِبَارِ عَلَى الْأَرْضِ.'
-      },
-      {
-        id: 'q6',
-        type: 'true-false',
-        question: 'قَبِلَ اللهُ قُرْبَانَ قَابِيلَ.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'صحيح! قَبِلَ اللهُ قُرْبَانَ هَابِيلَ فَقَدْ بِسَبَبِ إِخْلَاصِهِ.',
-          incorrect: 'فِي الْحَقِيقَةِ، لَمْ يُتَقَبَّلْ قُرْبَانُ قَابِيلَ.'
-        },
-        explanation: 'يَتَقَبَّلُ اللهُ مِنَ الْمُتَّقِينَ الْمُخْلِصِينَ.'
-      }
-    ]
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    content: 'اختبر فهمك لثماني أفكار أساسية من القصة.'
   },
   {
     id: 12,
     type: 'vocabulary-match',
     title: 'تحدي المفردات',
-    image: 'https://picsum.photos/seed/vocab-match/1200/800',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    content: 'طابق الكلمات من القصة بمعانيها الصحيحة.',
-    vocabularyPairs: [
-      { word: 'رسول', meaning: 'شخص يحمل رسالة إلهية' },
-      { word: 'متكبر', meaning: 'التفكير بأن الشخص أفضل من الآخرين' },
-      { word: 'ندم', meaning: 'الشعور بالأسف حيال خطأ ما' },
-      { word: 'راعي', meaning: 'شخص يرعى الأغنام' },
-      { word: 'قربان', meaning: 'فعل إعطاء شيء لله لنيل رضاه' },
-      { word: 'حسد', meaning: 'الشعور بعدم السعادة بسبب نجاح الآخرين' }
-    ]
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    content: 'صل ست كلمات أساسية من القصة بمعانيها.'
   },
   {
     id: 13,
     type: 'exercises',
-    title: 'المراجعة النهائية والتأمل',
+    title: 'مراجعة الاسترجاع والتأمل',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    content: 'أكمل هذه التمارين النهائية لإتقان دروس النبي آدم (عليه السلام).',
-    exercises: adamA2FinalReviewExercisesAr
+    content: 'استخدم أربعة أنشطة مختلفة للاسترجاع والربط والتأمل قبل التحدي النهائي.'
   },
   {
     id: 14,
@@ -485,7 +246,7 @@ export const adamA2PagesAr: PageData[] = [
     id: 16,
     type: 'final-challenge',
     title: 'التحدي النهائي',
-    content: 'اختبر معرفتك بقصة النبي آدم (عليه السلام) كاملة.',
+    content: 'أظهر ما تعلمته من القصة كلها عبر عشرة أنشطة مختلفة قابلة للتقييم.',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723'
   }
 ];
