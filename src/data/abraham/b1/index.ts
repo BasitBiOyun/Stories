@@ -1,78 +1,54 @@
-import { BookData } from '../../../types';
-import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
-import { polishB1GuideSections } from '../../b1GuidePresentation';
+import type { BookData, PageData } from '../../../types';
+import { abrahamB1Pages } from './en/pages';
+import { abrahamB1PagesAr } from './ar/pages';
 import {
-  buildB1GoldStudentGuideMetadata,
-  buildB1GoldTeacherGuideMetadata,
-} from '../../b1GoldGuides';
-import { finalizeB1LearningBlueprint } from '../../b1GoldPedagogy';
-import { buildB1GoldReview } from '../../b1GoldReview';
-import { applyB1CuratedVocabulary, applyB1GoldReview, prepareB1GoldLearningStructure } from '../../b1GoldStructure';
+  abrahamB1FinalChallengeExercises,
+  abrahamB1FinalReviewExercises,
+  abrahamB1KnowledgeCheckExercises,
+  abrahamB1QuickChallenges,
+  abrahamB1VocabularyChallengePairs,
+} from './en/exercises';
 import {
-  buildB1FriendlyStudentGuideSections,
-  buildB1FriendlyStudentGuideText,
-} from '../../b1StudentFriendlyGuide';
-import { abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamB1LearningBlueprint } from './learningBlueprint';
-import { abrahamB1BlueprintConfig } from './config';
-import { abrahamB1HighlightTargets, abrahamB1SourcePagesAr, abrahamB1SourcePagesEn } from './source';
+  abrahamB1FinalChallengeExercisesAr,
+  abrahamB1FinalReviewExercisesAr,
+  abrahamB1KnowledgeCheckExercisesAr,
+  abrahamB1QuickChallengesAr,
+  abrahamB1VocabularyChallengePairsAr,
+} from './ar/exercises';
+import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
+import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
+import { abrahamB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
-export { abrahamB1HighlightTargets };
+const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-const story = 'abraham' as const;
-const prepared = prepareB1GoldLearningStructure({
-  englishPages: abrahamB1SourcePagesEn,
-  arabicPages: abrahamB1SourcePagesAr,
-  config: abrahamB1BlueprintConfig,
-});
-const goldBlueprint = finalizeB1LearningBlueprint(abrahamB1LearningBlueprint, story);
-const compiled = runB1BlueprintSystem({
-  englishPages: prepared.englishPages,
-  arabicPages: prepared.arabicPages,
-  config: prepared.config,
-  blueprint: goldBlueprint,
+const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB1QuickChallenges[page.id]] };
+  if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercises };
+  if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercises };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairs };
+  if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercises };
+  return page;
 });
 
-const curatedVocabulary = [
-  'Creator', 'idols', 'worshipped', 'guidance', 'Messenger',
-  'miracle', 'migration', 'patience', 'Zamzam', 'journey',
-] as const;
-
-const pagesEn = applyB1CuratedVocabulary(
-  applyB1GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'en')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'en', curatedVocabulary,
-);
-const pagesAr = applyB1CuratedVocabulary(
-  applyB1GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'ar')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'ar', curatedVocabulary,
-);
-
-const teacherMetadataEn = buildB1GoldTeacherGuideMetadata(abrahamB1TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length);
-const teacherMetadataAr = buildB1GoldTeacherGuideMetadata(abrahamB1TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length);
-const teacherGuideEn = polishB1GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
-const teacherGuideAr = polishB1GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
-const selfStudyGuideEn = polishB1GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
-const selfStudyGuideAr = polishB1GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
-const studentSectionsEn = buildB1FriendlyStudentGuideSections('en');
-const studentSectionsAr = buildB1FriendlyStudentGuideSections('ar');
-const studentTextEn = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'en');
-const studentTextAr = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'ar');
-
-export const abrahamB1GoldConfig = prepared.config;
+const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB1QuickChallengesAr[page.id]] };
+  if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesAr };
+  if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercisesAr };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsAr };
+  if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesAr };
+  return page;
+});
 
 export const abrahamB1BookDataEn: BookData = {
   id: 'b1-abraham-en',
   title: 'Stories of the Prophets: Abraham (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: pagesEn,
-  teacherGuide: teacherGuideEn,
-  selfStudyGuide: selfStudyGuideEn,
-  studentGuideText: studentTextEn,
-  studentGuideSections: studentSectionsEn,
-  teacherGuideMetadata: teacherMetadataEn,
-  studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'en'),
+  pages: buildEnglishPages(),
+  teacherGuide: abrahamB1TeacherGuideEn,
+  teacherGuideMetadata: abrahamB1TeacherGuideMetadata,
+  selfStudyGuide: abrahamB1SelfStudyGuideEn,
 };
 
 export const abrahamB1BookDataAr: BookData = {
@@ -80,13 +56,10 @@ export const abrahamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: pagesAr,
-  teacherGuide: teacherGuideAr,
-  selfStudyGuide: selfStudyGuideAr,
-  studentGuideText: studentTextAr,
-  studentGuideSections: studentSectionsAr,
-  teacherGuideMetadata: teacherMetadataAr,
-  studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'ar'),
+  pages: buildArabicPages(),
+  teacherGuide: abrahamB1TeacherGuideAr,
+  teacherGuideMetadata: abrahamB1TeacherGuideMetadataAr,
+  selfStudyGuide: abrahamB1SelfStudyGuideAr,
 };
 
 export const abrahamB1BookData = abrahamB1BookDataEn;
