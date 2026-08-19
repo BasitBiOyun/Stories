@@ -8,6 +8,11 @@ import { abrahamB1BookDataAr, abrahamB1BookDataEn, abrahamB1GoldConfig } from '.
 import { meccaB1BookDataAr, meccaB1BookDataEn, meccaB1GoldConfig } from '../../src/data/mecca/b1';
 import { mosesB1BookDataAr, mosesB1BookDataEn, mosesB1GoldConfig } from '../../src/data/moses/b1';
 import { yunusEmreB1BookDataAr, yunusEmreB1BookDataEn, yunusEmreB1GoldConfig } from '../../src/data/yunusEmre/b1';
+import { adamB2BookDataAr, adamB2BookDataEn, adamB2GoldConfig } from '../../src/data/adam/b2';
+import { abrahamB2BookDataAr, abrahamB2BookDataEn, abrahamB2GoldConfig } from '../../src/data/abraham/b2';
+import { meccaB2BookDataAr, meccaB2BookDataEn, meccaB2GoldConfig } from '../../src/data/mecca/b2';
+import { mosesB2BookDataAr, mosesB2BookDataEn, mosesB2GoldConfig } from '../../src/data/moses/b2';
+import { yunusEmreB2BookDataAr, yunusEmreB2BookDataEn, yunusEmreB2GoldConfig } from '../../src/data/yunusEmre/b2';
 import {
   validateLearningBookStructure,
   type LearningBookStructureConfig,
@@ -79,6 +84,16 @@ const migratedBooks = [
   { label: 'Mecca B1 AR', book: meccaB1BookDataAr, config: meccaB1GoldConfig },
   { label: 'Yunus Emre B1 EN', book: yunusEmreB1BookDataEn, config: yunusEmreB1GoldConfig },
   { label: 'Yunus Emre B1 AR', book: yunusEmreB1BookDataAr, config: yunusEmreB1GoldConfig },
+  { label: 'Adam B2 EN', book: adamB2BookDataEn, config: adamB2GoldConfig },
+  { label: 'Adam B2 AR', book: adamB2BookDataAr, config: adamB2GoldConfig },
+  { label: 'Abraham B2 EN', book: abrahamB2BookDataEn, config: abrahamB2GoldConfig },
+  { label: 'Abraham B2 AR', book: abrahamB2BookDataAr, config: abrahamB2GoldConfig },
+  { label: 'Moses B2 EN', book: mosesB2BookDataEn, config: mosesB2GoldConfig },
+  { label: 'Moses B2 AR', book: mosesB2BookDataAr, config: mosesB2GoldConfig },
+  { label: 'Mecca B2 EN', book: meccaB2BookDataEn, config: meccaB2GoldConfig },
+  { label: 'Mecca B2 AR', book: meccaB2BookDataAr, config: meccaB2GoldConfig },
+  { label: 'Yunus Emre B2 EN', book: yunusEmreB2BookDataEn, config: yunusEmreB2GoldConfig },
+  { label: 'Yunus Emre B2 AR', book: yunusEmreB2BookDataAr, config: yunusEmreB2GoldConfig },
 ];
 
 let failed = false;
