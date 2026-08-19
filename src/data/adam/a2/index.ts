@@ -32,27 +32,10 @@ import {
 
 const STORY_IDS = new Set(Array.from({ length: 10 }, (_, index) => index + 1));
 
-const preserveApprovedEnglishStoryFixes = (page: PageData): PageData => {
-  if (!STORY_IDS.has(page.id)) return page;
-  const replacements: Array<[string, string]> = page.id === 7
-    ? [['They had also lots of children.', 'They also had lots of children.']]
-    : page.id === 9
-      ? [['his brother dead body', "his brother's dead body"]]
-      : [];
-  if (!replacements.length) return page;
-  const replace = (value: string) => replacements.reduce((text, [from, to]) => text.replaceAll(from, to), value);
-  return {
-    ...page,
-    content: replace(page.content),
-    timedChunks: page.timedChunks?.map(chunk => ({ ...chunk, text: replace(chunk.text) })),
-  };
-};
-
-const buildEnglishPages = (): PageData[] => adamA2Pages.map(rawPage => {
-  const page = preserveApprovedEnglishStoryFixes(rawPage);
+const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
   if (STORY_IDS.has(page.id)) return { ...page, exercises: [adamA2QuickChallenges[page.id]] };
   if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercises };
-  if (page.id === 12) return { ...page, exercises: undefined, vocabularyPairs: adamA2VocabularyChallengePairs };
+  if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairs };
   if (page.id === 13) return { ...page, exercises: adamA2FinalReviewExercises };
   if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercises };
   return page;
@@ -61,7 +44,7 @@ const buildEnglishPages = (): PageData[] => adamA2Pages.map(rawPage => {
 const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) return { ...page, exercises: [adamA2QuickChallengesAr[page.id]] };
   if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercisesAr };
-  if (page.id === 12) return { ...page, exercises: undefined, vocabularyPairs: adamA2VocabularyChallengePairsAr };
+  if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairsAr };
   if (page.id === 13) return { ...page, exercises: adamA2FinalReviewExercisesAr };
   if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercisesAr };
   return page;
