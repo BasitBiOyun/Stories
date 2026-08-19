@@ -1,5 +1,5 @@
 import { defineLearningBlueprint } from '../../learningBlueprint';
-import { enforceYunusA2AssessmentIntegrity } from './blueprint/assessmentIntegrity';
+import { L, matching } from '../../a2BlueprintAuthoring';
 import { applyYunusA2FinalPedagogy } from './blueprint/finalPedagogy';
 import { upgradeYunusA2ChapterToGoldV2 } from './blueprint/goldV2';
 import { yunusA2LearningBlueprint as baseBlueprint } from './learningBlueprint';
@@ -7,13 +7,39 @@ import { yunusA2LearningBlueprint as baseBlueprint } from './learningBlueprint';
 const chapters = baseBlueprint.chapters
   .map(upgradeYunusA2ChapterToGoldV2)
   .map(applyYunusA2FinalPedagogy)
-  .map(enforceYunusA2AssessmentIntegrity);
+  .map((chapter) => {
+    if (chapter.chapterId !== 3) return chapter;
+
+    const exercise = matching(
+      L('Match the disciplined habits with how Chapter 3 describes them.', 'صل العادات المنضبطة بالطريقة التي يصفها بها الفصل الثالث.'),
+      {
+        en: [
+          ['Eating, speaking, and sleeping', 'less'],
+          ['Their time', 'spent on useful activities'],
+        ],
+        ar: [
+          ['الأكل والكلام والنوم', 'قليلًا'],
+          ['وقتهم', 'قضوه في أعمال مفيدة'],
+        ],
+      },
+      L(
+        'The chapter says dervishes ate less, spoke less, slept less, and spent their time on useful activities.',
+        'يقول الفصل إن الدراويش كانوا يأكلون ويتكلمون وينامون قليلًا ويقضون وقتهم في أعمال مفيدة.',
+      ),
+    );
+
+    return {
+      ...chapter,
+      assessmentItems: chapter.assessmentItems.map((item) => item.id === 'yunus-a2-c3-quick'
+        ? { ...item, exercise }
+        : item),
+    };
+  });
 
 export const yunusA2GoldLearningBlueprint = defineLearningBlueprint({
   ...baseBlueprint,
   version: '2.1.1',
   status: 'pedagogy-reviewed' as const,
-  qualityContractVersion: '2.0' as const,
   chapters,
   wholeBook: {
     knowledgeCheck: {
@@ -30,7 +56,7 @@ export const yunusA2GoldLearningBlueprint = defineLearningBlueprint({
     },
     finalChallenge: {
       title: { en: 'Yunus Emre A2 Final Challenge', ar: 'التحدي النهائي — يونس إمره A2' },
-      content: { en: 'Complete ten final activities about language, values, service, self-training, nature, and meaningful daily life—not random dates or trivia.', ar: 'أكمل عشرة أنشطة نهائية عن اللغة والقيم والخدمة وتدريب النفس والطبيعة والحياة اليومية ذات المعنى، لا التواريخ أو التفاصيل العشوائية.' },
+      content: { en: 'Complete ten final activities about language, values, service, self-training, nature, and meaningful daily life.', ar: 'أكمل عشرة أنشطة نهائية عن اللغة والقيم والخدمة وتدريب النفس والطبيعة والحياة اليومية ذات المعنى.' },
     },
     glossary: [
       { title: { en: 'Yunus Emre A2 Master Glossary — Chapters 1–4', ar: 'المعجم الشامل — يونس إمره A2 — الفصول 1–4' }, content: { en: 'All reviewed Word Notes from Chapters 1–4.', ar: 'جميع ملاحظات المفردات المراجعة من الفصول 1–4.' } },
