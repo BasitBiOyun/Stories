@@ -14,7 +14,7 @@ interface FinalChallengeProps {
   onComplete?: () => void;
 }
 
-type FinalAnswer = boolean | number | string | Record<string, string> | null;
+type FinalAnswer = boolean | number | string | string[] | Record<string, string> | null;
 
 const getTheme = (bookData: BookData) => {
   const isHistory = bookData.id.toLowerCase().includes('mecca') || bookData.id.toLowerCase().includes('history');
@@ -59,7 +59,8 @@ const isSupportedFinalExercise = (exercise: Exercise) =>
   exercise.type === 'multiple-choice'
   || exercise.type === 'true-false'
   || exercise.type === 'matching'
-  || exercise.type === 'fill-blanks';
+  || exercise.type === 'fill-blanks'
+  || exercise.type === 'sequencing';
 
 const normalizeText = (value: unknown) => String(value ?? '')
   .trim()
@@ -88,6 +89,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const [fillDraft, setFillDraft] = React.useState('');
   const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
   const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
+  const [sequenceDraft, setSequenceDraft] = React.useState<string[]>([]);
 
   const dedicatedFinalQuestions = React.useMemo(() => {
     const finalPage = bookData.pages.find((page) => page.type === 'final-challenge');
@@ -104,12 +106,23 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     return collected;
   }, [bookData]);
 
+  const currentQuestion = questions[currentStep];
+
+  React.useEffect(() => {
+    if (currentQuestion?.type === 'sequencing') {
+      setSequenceDraft([...(currentQuestion.sequencingItems ?? [])].map((item) => item.id).reverse());
+    } else {
+      setSequenceDraft([]);
+    }
+  }, [currentQuestion?.id]);
+
   const resetQuestionState = () => {
     setSelectedAnswer(null);
     setLastCorrect(null);
     setFillDraft('');
     setSelectedMatchingLeft(null);
     setMatchingAssignments({});
+    setSequenceDraft([]);
   };
 
   const startChallenge = () => {
@@ -124,7 +137,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setGameState(selected.length ? 'playing' : 'results');
   };
 
-  const currentQuestion = questions[currentStep];
   const presentedOptions = React.useMemo(
     () => currentQuestion?.type === 'multiple-choice' ? presentMultipleChoice(currentQuestion) : [],
     [currentQuestion]
@@ -139,6 +151,13 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     if (currentQuestion.type === 'matching') {
       if (typeof answer !== 'object' || Array.isArray(answer)) return false;
       return (currentQuestion.matchingPairs ?? []).every((pair) => answer[pair.left] === pair.right);
+    }
+    if (currentQuestion.type === 'sequencing') {
+      if (!Array.isArray(answer)) return false;
+      const expected = Array.isArray(currentQuestion.correctAnswer)
+        ? currentQuestion.correctAnswer.map(String)
+        : (currentQuestion.sequencingItems ?? []).map((item) => item.id);
+      return answer.length === expected.length && answer.every((id, index) => id === expected[index]);
     }
     if (currentQuestion.type === 'fill-blanks') {
       if (typeof answer !== 'string') return false;
@@ -180,6 +199,17 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       return next;
     });
     setSelectedMatchingLeft(null);
+  };
+
+  const moveSequenceItem = (index: number, delta: number) => {
+    if (selectedAnswer !== null) return;
+    setSequenceDraft((previous) => {
+      const target = index + delta;
+      if (target < 0 || target >= previous.length) return previous;
+      const next = [...previous];
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
   };
 
   const goNext = () => {
@@ -447,6 +477,53 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
               className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
             >
               {t('nav.matchedThem')}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    if (currentQuestion.type === 'sequencing') {
+      const itemMap = new Map((currentQuestion.sequencingItems ?? []).map((item) => [item.id, item.text]));
+      return (
+        <div className="space-y-4">
+          <p className="font-serif text-sm sm:text-base text-wood/55">
+            {language === 'ar' ? 'رتّب الأحداث باستخدام زري الأعلى والأسفل، ثم تحقق من الإجابة.' : 'Use the up and down buttons to put the events in order, then check your answer.'}
+          </p>
+          <div className="space-y-2.5">
+            {sequenceDraft.map((id, index) => (
+              <div key={id} className={cn('rounded-xl border-2 bg-white px-3 py-3 flex items-center gap-3', theme.border)}>
+                <span className={cn('w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-display text-sm font-black', theme.soft, theme.subtext)}>
+                  {formatNumber(index + 1)}
+                </span>
+                <span className="font-serif text-sm sm:text-base text-wood flex-1 leading-snug">{itemMap.get(id)}</span>
+                <div className="flex gap-1 shrink-0">
+                  <button
+                    type="button"
+                    disabled={selectedAnswer !== null || index === 0}
+                    onClick={() => moveSequenceItem(index, -1)}
+                    className={cn('w-9 h-9 rounded-lg border font-bold disabled:opacity-25', theme.border, theme.subtext)}
+                    aria-label={language === 'ar' ? 'تحريك إلى أعلى' : 'Move up'}
+                  >↑</button>
+                  <button
+                    type="button"
+                    disabled={selectedAnswer !== null || index === sequenceDraft.length - 1}
+                    onClick={() => moveSequenceItem(index, 1)}
+                    className={cn('w-9 h-9 rounded-lg border font-bold disabled:opacity-25', theme.border, theme.subtext)}
+                    aria-label={language === 'ar' ? 'تحريك إلى أسفل' : 'Move down'}
+                  >↓</button>
+                </div>
+              </div>
+            ))}
+          </div>
+          {selectedAnswer === null && (
+            <button
+              type="button"
+              disabled={!sequenceDraft.length}
+              onClick={() => handleAnswer(sequenceDraft)}
+              className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
+            >
+              {t('nav.check')}
             </button>
           )}
         </div>
