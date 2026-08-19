@@ -2,17 +2,33 @@
 
 Stories is an English/Arabic A2, B1 and B2 interactive educational library for classroom and self-study use. It includes narration, visuals, Word Notes, exercises, Teacher Guides and Self-Study Guides.
 
-## Canonical content rule
+## Content rule
 
-Story prose, chapter identity/order, approved quotations/references, narration and timing data are protected source material. Technical or learning-system work must not silently rewrite them. See `docs/CONTENT_IMMUTABILITY.md`.
+Story prose, chapter identity/order, approved quotations/references, narration and timing data are protected source material. Exercises and guides never authorize a silent story rewrite.
 
-## Learning architecture
+The single pedagogical authoring rulebook is:
 
-All current story-level books use the same reviewed pipeline:
+`docs/MANUAL_CONTENT_AUTHORING_STANDARD.md`
 
-`raw story pages -> source locks -> manual Learning Blueprint -> shared Blueprint compiler -> runtime pages/guides`
+Its core principle is simple:
 
-The Blueprint owns objectives, evidence, vocabulary targets, authored assessment items and guide pedagogy. The shared engine owns placement, counts, EN/AR parity and structural validation.
+**Structure by code. Learning content by hand.**
+
+Questions, answers, distractors, vocabulary selections, Teacher Guide prose and Self-Study Guide prose are written manually after reading the relevant story and chapter. Shared code may render and organize that content, but it must not generate or rewrite it.
+
+## Target content architecture
+
+Each book/level should have one obvious manually authored source for:
+
+- story pages
+- exercises and assessments
+- Teacher Guide
+- Self-Study Guide
+- metadata
+
+Approved material is locked and changed only by an intentional manual edit.
+
+Some existing books still pass through older Blueprint/Gold runtime layers. These are migration debt, not the authoring standard. They will be removed book by book as their final manual content is moved into direct authored files. Do not add new Gold, Blueprint, pedagogy-generator or quality-contract layers.
 
 ## Commands
 
@@ -23,26 +39,29 @@ npm run validate
 npm run build
 ```
 
-Level gates are also available separately as `validate:a2`, `validate:b1` and `validate:b2`.
+`npm run validate` is a technical check only. Pedagogical quality is reviewed manually.
 
 ## Repository
 
-- `src/`: production application and book data
-- `src/data/*Blueprint*`: shared learning architecture
-- `scripts/validation/`: active validation and diagnostics
-- `docs/`: current architecture, authoring and quality standards
-- `deploy/`: Cloud Run runtime server
-- `Dockerfile`: validated production image build
-- `cloudbuild.preview.yaml`: `preview` branch Cloud Build -> Cloud Run deployment
+- `src/` — application and book data
+- `public/` — static assets required by the app
+- `scripts/validation/` — technical build/media diagnostics only
+- `docs/MANUAL_CONTENT_AUTHORING_STANDARD.md` — single pedagogical authoring standard
+- `docs/GUIDE_VISUAL_STANDARD.md` — guide UI/PDF visual rules
+- `deploy/` — Cloud Run runtime server
+- `Dockerfile` and `cloudbuild.preview.yaml` — preview deployment
 
-## Adding a book
+## Adding or revising a book
 
-1. Add approved raw EN/AR story pages without rewriting canonical prose.
-2. Add source-lock/highlight configuration.
-3. Author a manual A2/B1/B2 Learning Blueprint from the actual story evidence.
-4. Register the book and media paths.
-5. Add the book to the appropriate level Blueprint validator.
-6. Run `npm run validate` and `npm run build`.
+1. Add or preserve the approved EN/AR story source without silently rewriting it.
+2. Read the complete story and each chapter manually.
+3. Manually author Quick Challenges, whole-book assessments and vocabulary support according to `MANUAL_CONTENT_AUTHORING_STANDARD.md`.
+4. Manually author every Teacher Guide and Self-Study Guide chapter.
+5. Register the book and media paths.
+6. Review English and Arabic independently against their own story source.
+7. Test the interactions in the UI.
+8. Run `npm run validate` and `npm run build` for technical integrity.
+9. Human-review and lock the finished book.
 
 ## PDF status
 
@@ -50,4 +69,4 @@ The previous PDF generation/publication implementation has been retired. PDF dow
 
 ## Preview deployment
 
-The `preview` branch is connected to Cloud Build through `cloudbuild.preview.yaml`. The Docker image runs the full repository validation gate before the Vite production build and deploys the resulting runtime image to the `stories-preview` Cloud Run service.
+The `preview` branch is connected to Cloud Build through `cloudbuild.preview.yaml`. Preview deployment builds the application and deploys it to the `stories-preview` Cloud Run service.
