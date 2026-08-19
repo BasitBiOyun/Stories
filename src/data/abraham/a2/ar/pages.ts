@@ -1,6 +1,7 @@
 import { PageData } from '../../../../types';
-import { abrahamA2FinalReviewExercisesAr } from './exercises';
 
+// Story, Word Notes, hotspots, media and page shells only.
+// All learning activities live in exercises.ts.
 export const abrahamA2PagesAr: PageData[] = [
   {
     id: 1,
@@ -18,26 +19,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h1', x: 25, y: 35, title: 'بابل', description: 'واحدة من أشهر المدن القديمة في بلاد ما بين النهرين.' },
       { id: 'h2', x: 65, y: 55, title: 'الأصنام', description: 'تماثيل اعتقد الناس خطأ أنها آلهة.' }
     ],
-    animatedWords: ['مملكة', 'سخيف', 'خَاصًّا'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q1',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'كان إبراهيم يعتقد أن الأشياء الحجرية يمكنها سماع الناس.',
-        correctAnswer: false,
-        explanation: 'كان إبراهيم ذكياً ورأى أن الأشياء الحجرية لا تأكل ولا تشرب ولا تتكلم ولا تسمع دعاءهم.',
-        feedback: {
-          correct: 'صحيح! كان يعلم أنها مجرد أحجار لا تملك نفعاً ولا ضراً.',
-          incorrect: 'في الواقع، اعتقد أن الأمر سخيف للغاية لأنها لا تستطيع السمع أو الكلام.'
-        }
-      }
-    ]
+    animatedWords: ['مملكة', 'سخيف', 'خَاصًّا']
   },
   {
     id: 2,
@@ -55,31 +37,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h3', x: 40, y: 60, title: 'صنع الأصنام', description: 'تماثيل صغيرة أو كبيرة مصنوعة من الطين والحجر.' },
       { id: 'h4', x: 30, y: 30, title: 'مردوخ', description: 'كان الناس يسمون هذا التمثال الكبير ملك آلهتهم.' }
     ],
-    animatedWords: ['الْهَدَايَا', 'الْإِنْسَانَ'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q2',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'لماذا ضحك إبراهيم من تمثال مردوخ؟',
-        options: [
-          'لأن والده قال إن أذنيه الكبيرتين تعنيان أنه ذكي للغاية',
-          'لأن التمثال كان ملوناً جداً',
-          'لأن التمثال كان صغيراً جداً'
-        ],
-        correctAnswer: 0,
-        explanation: 'ضحك إبراهيم لأن فكرة أن تمثالاً حجرياً يكون ذكياً بسبب أذنيه الكبيرتين كانت سخيفة ومضحكة بالنسبة له.',
-        feedback: {
-          correct: 'صحيح! لقد وجد هذا التفسير مضحكاً وسخيفاً جداً.',
-          incorrect: 'حاول مرة أخرى. تذكر ما قاله والده عن أذنيه الكبيرتين.'
-        }
-      }
-    ]
+    animatedWords: ['الْهَدَايَا', 'الْإِنْسَانَ']
   },
   {
     id: 3,
@@ -97,26 +55,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h5', x: 20, y: 20, title: 'النجم', description: 'نجم صغير يلمع في السماء ليلاً.' },
       { id: 'h6', x: 70, y: 15, title: 'القمر', description: 'جسم كبير يضيء السماء في الليل.' }
     ],
-    animatedWords: ['الريف', 'الجميلة', 'غاب'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q3',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'أدرك إبراهيم أن النجوم تختفي ولا يمكن أن تكون هي الله.',
-        correctAnswer: true,
-        explanation: 'قال إبراهيم إنه لن يتبع الذين يغيبون ويختفون.',
-        feedback: {
-          correct: 'صحيح! كان يعلم أن الله أبدي ولا يترك خلقه أبداً.',
-          incorrect: 'في الواقع، أدرك أن القمر لا يمكن أن يكون هو الله لأنه غاب.'
-        }
-      }
-    ]
+    animatedWords: ['الريف', 'الجميلة', 'غاب']
   },
   {
     id: 4,
@@ -134,31 +73,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h7', x: 50, y: 10, title: 'الشمس', description: 'نجم كبير حار جداً يعطينا النور في النهار.' },
       { id: 'h8', x: 45, y: 85, title: 'السجود', description: 'وضع الجبهة على الأرض عند الصلاة لله.' }
     ],
-    animatedWords: ['ساطعة', 'غضب', 'ضِدُّ'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q4',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'ما الذي استنتجه إبراهيم بشأن الله والشمس؟',
-        options: [
-          'الشمس هي نفسها القمر',
-          'الله خلق الشمس، لذا فإن الله هو الخالق',
-          'الشمس أكبر من الله'
-        ],
-        correctAnswer: 1,
-        explanation: 'أدرك إبراهيم أن الله هو خالق كل شيء، بما في ذلك الشمس.',
-        feedback: {
-          correct: 'بالضبط! المخلوق ليس هو الخالق.',
-          incorrect: 'حاول مرة أخرى. تذكر أن الشمس تغيب، أما الله فيبقى.'
-        }
-      }
-    ]
+    animatedWords: ['ساطعة', 'غضب', 'ضِدُّ']
   },
   {
     id: 5,
@@ -176,26 +91,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h9', x: 35, y: 50, title: 'الناس', description: 'الرجال والنساء الذين يعيشون معاً.' },
       { id: 'h10', x: 55, y: 70, title: 'الرزق', description: 'كل ما يعطيه الله لنا من طعام وشراب لنعيش.' }
     ],
-    animatedWords: [],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q5',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'توقف الناس في المملكة عن عبادة الأصنام بعد التحدث مع إبراهيم.',
-        correctAnswer: false,
-        explanation: 'قال الناس إنهم يعبدون الأصنام فقط لأن آباءهم فعلوا ذلك، ولم يستمعوا.',
-        feedback: {
-          correct: 'صحيح. كانوا عنيدين جداً.',
-          incorrect: 'في الواقع، رفضوا الاستماع وغضبوا.'
-        }
-      }
-    ]
+    animatedWords: []
   },
   {
     id: 6,
@@ -212,31 +108,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h11', x: 60, y: 40, title: 'الفأس', description: 'أداة حديدية قوية تستخدم لقطع الخشب أو كسر الحجر.' },
       { id: 'h12', x: 20, y: 70, title: 'القرابين', description: 'طعام كثير يضعه الناس للأصنام.' }
     ],
-    animatedWords: ['مَازِحًا', 'مُسْرِعًا'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q6',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'لماذا ترك إبراهيم الصنم الأكبر دون كسر؟',
-        options: [
-          'لأنه أراد أن يصلي له',
-          'لأنه كان ثقيلاً جداً ليُكسر',
-          'ليعلم الناس درساً عن معتقداتهم السخيفة'
-        ],
-        correctAnswer: 2,
-        explanation: 'بترك الفأس مع الصنم الكبير، خطط لجعل الناس يفكرون في معتقداتهم.',
-        feedback: {
-          correct: 'نعم! لقد كانت طريقة ذكية لجعلهم يفكرون.',
-          incorrect: 'لا، لقد فعل ذلك ليريهم أن الأصنام لا تستطيع فعل أي شيء.'
-        }
-      }
-    ]
+    animatedWords: ['مَازِحًا', 'مُسْرِعًا']
   },
   {
     id: 7,
@@ -254,26 +126,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h13', x: 45, y: 70, title: 'القطع', description: 'بقايا الأصنام الحجرية المكسورة.' },
       { id: 'h14', x: 25, y: 40, title: 'الاستجواب', description: 'سؤال الناس لإبراهيم عن كسر الأصنام.' }
     ],
-    animatedWords: ['آذيت', 'تعقلون'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q7',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'اعترف الناس بأن الأصنام الحجرية لا تستطيع الكلام.',
-        correctAnswer: true,
-        explanation: 'قالوا: \"لقد علمت ما هؤلاء ينطقون!\"، وهو ما أثبت حجة إبراهيم.',
-        feedback: {
-          correct: 'صحيح. لقد وقعوا في فخ كلماتهم الخاصة.',
-          incorrect: 'في الواقع، قالوا إن الأصنام لا تتكلم، ومع ذلك عبدوها.'
-        }
-      }
-    ]
+    animatedWords: ['آذيت', 'تعقلون']
   },
   {
     id: 8,
@@ -291,31 +144,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h15', x: 80, y: 60, title: 'الحطب', description: 'أكوام من الخشب جمعت لصنع نار ضخمة.' },
       { id: 'h16', x: 30, y: 75, title: 'المنجنيق', description: 'الآلة التي استخدمها الناس لإلقاء إبراهيم في النار.' }
     ],
-    animatedWords: ['الْخَجَلِ', 'الْخَطَرِ'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q8',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'لماذا ظل إبراهيم هادئاً بينما كان الناس يبنون النار؟',
-        options: [
-          'لأن أصدقاءه وعدوا بإنقاذه',
-          'لأنه توكل على الله تماماً',
-          'لأنه اعتقد أنها ليست ناراً حقيقية'
-        ],
-        correctAnswer: 1,
-        explanation: 'بقي إبراهيم هادئاً لأن كان لديه توكل كامل على الله.',
-        feedback: {
-          correct: 'نعم! التوكل على الله كان سر قوته.',
-          incorrect: 'لا، لقد كان إيمانه وتوكله على الله.'
-        }
-      }
-    ]
+    animatedWords: ['الْخَجَلِ', 'الْخَطَرِ']
   },
   {
     id: 9,
@@ -333,26 +162,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h17', x: 50, y: 50, title: 'المعجزة', description: 'أصبحت النار برداً بأمر الله.' },
       { id: 'h18', x: 40, y: 20, title: 'جبريل عليه السلام', description: 'جاء ليعرض المساعدة، لكن إبراهيم توكل على الله وحده.' }
     ],
-    animatedWords: ['بَارِدَةً', 'قُسَاةً'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q9',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'أصبحت النار حديقة باردة لإبراهيم.',
-        correctAnswer: true,
-        explanation: 'بأمر الله، غيرت النار طبيعتها من أجل النبي.',
-        feedback: {
-          correct: 'بالضبط! الله على كل شيء قدير.',
-          incorrect: 'في الواقع، تقول القصة إن النار تحولت إلى حديقة.'
-        }
-      }
-    ]
+    animatedWords: ['بَارِدَةً', 'قُسَاةً']
   },
   {
     id: 10,
@@ -370,31 +180,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h19', x: 20, y: 70, title: 'نمرود', description: 'الملك الذي ادعى السلطة على الحياة والموت.' },
       { id: 'h20', x: 80, y: 20, title: 'التحدي', description: 'تحدى إبراهيم الملك ليتحكم في الشمس.' }
     ],
-    animatedWords: ['المغرب', 'أمر'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q10',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'كيف أظهر إبراهيم أن نمرود ليس إلهاً؟',
-        options: [
-          'بتدمير قصره',
-          'بالهروب من خيله',
-          'بطلب جعل الشمس تشرق من المغرب'
-        ],
-        correctAnswer: 2,
-        explanation: 'نمرود يمكنه قتل الناس، لكنه لا يستطيع التحكم في حركة النجوم والشمس.',
-        feedback: {
-          correct: 'نعم! لقد كانت قدرة لا يملكها إلا الله.',
-          incorrect: 'لا، لقد استخدم مثال الشمس والمغرب.'
-        }
-      }
-    ]
+    animatedWords: ['المغرب', 'أمر']
   },
   {
     id: 11,
@@ -412,26 +198,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h21', x: 40, y: 75, title: 'السفر', description: 'كان السفر عبر الصحراء صعباً للغاية.' },
       { id: 'h22', x: 60, y: 85, title: 'الوادي', description: 'الوادي الهادئ الذي ستنمو فيه مكة.' }
     ],
-    animatedWords: ['أراضٍ', 'وصلوا'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q11',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'كان النبي لوط (عليه السلام) من القلائل الذين آمنوا بإبراهيم في بابل.',
-        correctAnswer: true,
-        explanation: 'في البداية، لم يُذكر هؤلاء الأشخاص فقط كأتباع في بابل.',
-        feedback: {
-          correct: 'صحيح. الإيمان يبدأ مع قلة من الشجعان.',
-          incorrect: 'في الواقع، تقول القصة إن رجلاً وامرأة فقط تبعوه هناك.'
-        }
-      }
-    ]
+    animatedWords: ['أراضٍ', 'وصلوا']
   },
   {
     id: 12,
@@ -449,31 +216,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h23', x: 30, y: 70, title: 'إيمان هاجر', description: 'توكلت على الله في الصحراء القافرة.' },
       { id: 'h24', x: 70, y: 90, title: 'حياة الصحراء', description: 'لم يكن هناك طعام أو ماء في الأفق.' }
     ],
-    animatedWords: ['الْمَاكِرِينَ', 'نموت'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q12',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'لماذا لم تخف هاجر من البقاء في الصحراء؟',
-        options: [
-          'لأنها علمت أن الله سيحميهم',
-          'لأنها كانت تملك حمول إبل من الطعام',
-          'لأن هناك مدينة بنيت بالفعل هناك'
-        ],
-        correctAnswer: 0,
-        explanation: 'كان لدى هاجر إيمان عميق وتوكل على حكمة الله.',
-        feedback: {
-          correct: 'نعم! توكل مطلق على الله.',
-          incorrect: 'لا، لم يتبقَ لديها طعام، لكن كان لديها توكل.'
-        }
-      }
-    ]
+    animatedWords: ['الْمَاكِرِينَ', 'نموت']
   },
   {
     id: 13,
@@ -491,26 +234,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h25', x: 50, y: 80, title: 'بئر زمزم', description: 'مصدر الماء المعجز الذي لا يزال يتدفق اليوم.' },
       { id: 'h26', x: 60, y: 70, title: 'مكة', description: 'المدينة التي نمت حول الماء المقدس.' }
     ],
-    animatedWords: ['مشهوراً', 'فجأة'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q13',
-        type: 'true-false',
-        title: 'تحقق سريع',
-        instructions: 'قرر ما إذا كانت العبارة صحيحة أم خاطئة.',
-        question: 'ظهر ماء زمزم لأن هاجر حفرت بئراً عميقاً.',
-        correctAnswer: false,
-        explanation: 'لقد كانت معجزة من الله، ظهرت تحت قدمي الطفل إسماعيل.',
-        feedback: {
-          correct: 'صحيح. لقد كانت معجزة إلهية.',
-          incorrect: 'في الواقع، ظهر فجأة كمعجزة دون أي حفر.'
-        }
-      }
-    ]
+    animatedWords: ['مشهوراً', 'فجأة']
   },
   {
     id: 14,
@@ -528,31 +252,7 @@ export const abrahamA2PagesAr: PageData[] = [
       { id: 'h27', x: 50, y: 40, title: 'الكعبة', description: 'أول بيت لله بُني في العالم.' },
       { id: 'h28', x: 40, y: 20, title: 'الحج', description: 'الرحلة المقدسة التي يقوم بها المسلمون لاتباع هذه الدروس.' }
     ],
-    animatedWords: ['انتهت', 'المسلمين'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "نص تجريبي للاستماع" }
-    ],
-    exercises: [
-      {
-        id: 'q14',
-        type: 'multiple-choice',
-        title: 'تحقق سريع',
-        instructions: 'اختر الإجابة الصحيحة.',
-        question: 'من الذي ساعد إبراهيم في بناء الكعبة؟',
-        options: [
-          'ملك بابل',
-          'الملك جبريل',
-          'ابنه إسماعيل'
-        ],
-        correctAnswer: 2,
-        explanation: 'عمل إبراهيم وابنه إسماعيل معاً لبناء البيت الحرام.',
-        feedback: {
-          correct: 'نعم! لقد بنوه معاً كفريق واحد.',
-          incorrect: 'لا، لقد كان ابنه إسماعيل هو الذي ساعده في بناء الجدران.'
-        }
-      }
-    ]
+    animatedWords: ['انتهت', 'المسلمين']
   },
   {
     id: 15,
@@ -560,75 +260,7 @@ export const abrahamA2PagesAr: PageData[] = [
     title: 'اختبار المعرفة: إبراهيم (عليه السلام)',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2FAbraham_a2_ch1.png?alt=media&token=5e040caa-6fbf-4bb4-840f-8fc15c0c8478',
     audioUrl: '',
-    content: 'اختبر فهمك للأحداث الرئيسية في حياة النبي إبراهيم (عليه السلام).',
-    exercises: [
-      {
-        id: 'kc1',
-        type: 'true-false',
-        question: 'وُلِد إبراهيم في مملكة مصر.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'صحيح! ولد في بابل في بلاد ما بين النهرين.',
-          incorrect: 'في الواقع، بدأت القصة في بابل وليس في مصر.'
-        },
-        explanation: 'كانت بابل هي مسقط رأسه.'
-      },
-      {
-        id: 'kc2',
-        type: 'true-false',
-        question: 'كان والد إبراهيم صانعاً للأصنام.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'صحيح! استخدم والده الحجر لصنع التماثيل التي كان يعبدها الناس.',
-          incorrect: 'خاطئ. كان والده في الواقع صانع أصنام.'
-        },
-        explanation: 'كان إبراهيم يراقب والده وهو ينحت الأصنام الحجرية وهو طفل.'
-      },
-      {
-        id: 'kc3',
-        type: 'true-false',
-        question: 'كان إبراهيم يلعب بالأصنام وكأنها ألعاب.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'صحيح! لقد أظهر لوالده أنها مجرد أشياء من خلال اللعب بها.',
-          incorrect: 'خاطئ. تخبرنا القصة أنه ركب على ظهورها ولعب بها.'
-        },
-        explanation: 'أراد أن يظهر أن الحجارة لا تملك أي قوة.'
-      },
-      {
-        id: 'kc4',
-        type: 'true-false',
-        question: 'الشمس هي خالقة العالم.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'صحيح! الشمس مخلوق وليست الخالق.',
-          incorrect: 'خاطئ. أدرك إبراهيم أن الشمس تغيب ولا يمكن أن تكون الإله الأزلي.'
-        },
-        explanation: 'الله هو خالق الشمس وكل شيء آخر.'
-      },
-      {
-        id: 'kc5',
-        type: 'true-false',
-        question: 'استطاع نمرود أن يجعل الشمس تشرق من المغرب.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'صحيح! لم يكن لنمرود مثل هذه القوة.',
-          incorrect: 'خاطئ. لم يستطع نمرود الرد على هذا التحدي.'
-        },
-        explanation: 'الله وحده هو الذي يتحكم في حركة الشمس والنجوم.'
-      },
-      {
-        id: 'kc6',
-        type: 'true-false',
-        question: 'بنى الكعبة إبراهيم وإسماعيل (عليهما السلام).',
-        correctAnswer: true,
-        feedback: {
-          correct: 'صحيح! بنى الأب والابن القواعد وجدران الكعبة معاً.',
-          incorrect: 'خاطئ. لقد عملا معاً لبناء بيت الله.'
-        },
-        explanation: 'لقد كان جهداً مشتركاً بين النبي إبراهيم وابنه.'
-      }
-    ]
+    content: 'اختبر فهمك للأحداث الرئيسية في حياة النبي إبراهيم (عليه السلام).'
   },
   {
     id: 16,
@@ -636,23 +268,14 @@ export const abrahamA2PagesAr: PageData[] = [
     title: 'تحدي المفردات',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch13.png?alt=media&token=d61931ab-8d9b-4d2e-a7cd-8341d1e6be76',
     audioUrl: '',
-    content: 'طابق الكلمات الهامة من القصة مع معانيها الصحيحة.',
-    vocabularyPairs: [
-      { word: 'رسول', meaning: 'شخص اختاره الله ليوصل هدايته' },
-      { word: 'متكبر', meaning: 'الاعتقاد بأنك أفضل أو أهم من الآخرين' },
-      { word: 'معجزة', meaning: 'حدث رائع من الله لا يمكن تفسيره بالمنطق' },
-      { word: 'عبادة', meaning: 'الحب والتقدير لله وحده' },
-      { word: 'صنم', meaning: 'تمثال يُعبد خطأً كإله' },
-      { word: 'احترام', meaning: 'شعور بالتقدير العميق لشخص ما' }
-    ]
+    content: 'طابق الكلمات الهامة من القصة مع معانيها الصحيحة.'
   },
   {
     id: 17,
     type: 'exercises',
     title: 'المراجعة النهائية والتأمل',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385',
-    content: 'أكمل هذه التمارين النهائية لإتقان دروس النبي إبراهيم (عليه السلام).',
-    exercises: abrahamA2FinalReviewExercisesAr
+    content: 'أكمل هذه التمارين النهائية لإتقان دروس النبي إبراهيم (عليه السلام).'
   },
   {
     id: 18,
