@@ -1,11 +1,13 @@
 import { defineLearningBlueprint } from '../../learningBlueprint';
+import { enforceYunusA2AssessmentIntegrity } from './blueprint/assessmentIntegrity';
 import { applyYunusA2FinalPedagogy } from './blueprint/finalPedagogy';
 import { upgradeYunusA2ChapterToGoldV2 } from './blueprint/goldV2';
 import { yunusA2LearningBlueprint as baseBlueprint } from './learningBlueprint';
 
 const chapters = baseBlueprint.chapters
   .map(upgradeYunusA2ChapterToGoldV2)
-  .map(applyYunusA2FinalPedagogy);
+  .map(applyYunusA2FinalPedagogy)
+  .map(enforceYunusA2AssessmentIntegrity);
 
 export const yunusA2GoldLearningBlueprint = defineLearningBlueprint({
   ...baseBlueprint,
