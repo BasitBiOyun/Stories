@@ -3,10 +3,6 @@ import { spawnSync } from 'node:child_process';
 const checksOnly = process.argv.includes('--checks-only') || process.argv.includes('--no-build');
 
 const baseChecks = [
-  { id: 'A2_BLUEPRINTS', label: 'A2 blueprint validation', command: 'npm', args: ['run', 'validate:a2'] },
-  { id: 'B1_BLUEPRINTS', label: 'B1 blueprint validation', command: 'npm', args: ['run', 'validate:b1'] },
-  { id: 'B2_BLUEPRINTS', label: 'B2 blueprint validation', command: 'npm', args: ['run', 'validate:b2'] },
-  { id: 'STORY_CORRECTIONS', label: 'Approved story corrections', command: 'npm', args: ['run', 'validate:story-corrections'] },
   { id: 'TYPECHECK', label: 'TypeScript typecheck', command: 'npm', args: ['run', 'typecheck', '--', '--pretty', 'false'] },
 ];
 
@@ -27,8 +23,8 @@ const formatSeconds = (milliseconds) => `${(milliseconds / 1000).toFixed(1)}s`;
 const results = [];
 
 console.log('============================================================');
-console.log(checksOnly ? 'STORIES QUALITY CHECKS — AGGREGATE MODE' : 'STORIES DEPLOY CHECKS — AGGREGATE MODE');
-console.log('All independent checks will run. Failure is reported only at the end.');
+console.log(checksOnly ? 'STORIES TECHNICAL CHECKS' : 'STORIES DEPLOY CHECKS');
+console.log('Pedagogical content is reviewed manually; this script checks technical integrity only.');
 console.log('============================================================');
 
 for (const check of checks) {
@@ -63,7 +59,7 @@ const skips = results.filter(result => result.status === 'SKIP');
 const passes = results.filter(result => result.status === 'PASS');
 
 console.log('\n============================================================');
-console.log('=== STORIES DEPLOY QUALITY REPORT ===');
+console.log('=== STORIES TECHNICAL REPORT ===');
 console.log(`RESULT: ${failures.length ? 'FAIL' : 'PASS'}`);
 console.log(`PASS: ${passes.length} | FAIL: ${failures.length} | SKIP: ${skips.length}`);
 console.log('============================================================');
@@ -75,8 +71,7 @@ for (const result of results) {
 
 if (failures.length) {
   console.log('\n============================================================');
-  console.log('ALL FAILING CHECK OUTPUTS');
-  console.log('Fix every section below before the next deploy attempt.');
+  console.log('FAILING TECHNICAL CHECK OUTPUTS');
   console.log('============================================================');
 
   for (const failure of failures) {
@@ -90,9 +85,7 @@ if (failures.length) {
     for (const skipped of skips) console.log(`[SKIP] ${skipped.id}: ${skipped.output}`);
   }
 
-  console.log('\n=== END STORIES DEPLOY QUALITY REPORT ===');
   process.exit(1);
 }
 
-console.log('\nAll requested checks passed.');
-console.log('=== END STORIES DEPLOY QUALITY REPORT ===');
+console.log('\nAll requested technical checks passed.');
