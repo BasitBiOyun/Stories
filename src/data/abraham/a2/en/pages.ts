@@ -1,6 +1,7 @@
 import { PageData } from '../../../../types';
-import { abrahamA2FinalReviewExercises } from './exercises';
 
+// Story, Word Notes, hotspots, media and page shells only.
+// All learning activities live in exercises.ts.
 export const abrahamA2PagesEn: PageData[] = [
   {
     id: 1,
@@ -18,26 +19,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h1', x: 25, y: 35, title: 'Babylon', description: 'One of the most famous cities of ancient Mesopotamia.' },
       { id: 'h2', x: 65, y: 55, title: 'The Idols', description: 'Statues that people wrongly believed were gods.' }
     ],
-    animatedWords: ['kingdom', 'silly', 'special'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q1',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'Abraham believed that the stone objects could hear people.',
-        correctAnswer: false,
-        explanation: 'Abraham was smart and saw that stone objects did not eat, drink, or talk.',
-        feedback: {
-          correct: 'Correct! He knew they were just stones.',
-          incorrect: 'Actually, he thought it was silly because they couldn\'t hear or speak.'
-        }
-      }
-    ]
+    animatedWords: ['kingdom', 'silly', 'special']
   },
   {
     id: 2,
@@ -55,31 +37,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h3', x: 40, y: 60, title: 'Idol Making', description: 'Abraham\'s father made these statues from stone.' },
       { id: 'h4', x: 30, y: 30, title: 'Mardukh', description: 'The people called this statue the king of their gods.' }
     ],
-    animatedWords: ['presents', 'human-like'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q2',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'Why did Abraham laugh at the statue of Mardukh?',
-        options: [
-          'Because his father said big ears meant it was smart',
-          'Because the statue was very small',
-          'Because the statue had no ears'
-        ],
-        correctAnswer: 0,
-        explanation: 'Abraham thought it was ridiculous that a stone object with big ears could be "smart".',
-        feedback: {
-          correct: 'Yes! He found the idea very funny.',
-          incorrect: 'Actually, it was because of the funny reason his father gave about the big ears.'
-        }
-      }
-    ]
+    animatedWords: ['presents', 'human-like']
   },
   {
     id: 3,
@@ -97,26 +55,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h5', x: 20, y: 20, title: 'The Star', description: 'A bright point of light in the night sky.' },
       { id: 'h6', x: 70, y: 15, title: 'The Moon', description: 'The large NATURAL object that shines in the sky at night.' }
     ],
-    animatedWords: ['countryside', 'beautiful', 'sets'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q3',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'Abraham realized that stars disappear and cannot be Allah.',
-        correctAnswer: true,
-        explanation: 'Abraham said he would not follow those that disappear.',
-        feedback: {
-          correct: 'Correct! He knew Allah is eternal and never leaves.',
-          incorrect: 'Actually, he realized the moon couldn\'t be Allah because it went away.'
-        }
-      }
-    ]
+    animatedWords: ['countryside', 'beautiful', 'sets']
   },
   {
     id: 4,
@@ -134,31 +73,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h7', x: 50, y: 10, title: 'The Sun', description: 'The bright star that gives light to the Earth.' },
       { id: 'h8', x: 45, y: 85, title: 'Sujud', description: 'Putting the forehead on the ground while speaking to Allah.' }
     ],
-    animatedWords: ['shining', 'angry', 'against'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q4',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'What did Abraham find about Allah and the sun?',
-        options: [
-          'The sun is the same as the moon',
-          'Allah made the sun, so Allah is the Creator',
-          'The sun is bigger than Allah'
-        ],
-        correctAnswer: 1,
-        explanation: 'Abraham realized that Allah is the Creator of everything, including the sun.',
-        feedback: {
-          correct: 'Exactly! Creation is not the Creator.',
-          incorrect: 'Try again. Remember, the sun sets, but Allah remains.'
-        }
-      }
-    ]
+    animatedWords: ['shining', 'angry', 'against']
   },
   {
     id: 5,
@@ -176,26 +91,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h9', x: 35, y: 50, title: 'The People', description: 'They followed their GRANDFATHERS…..' },
       { id: 'h10', x: 55, y: 70, title: 'Provisions', description: 'Only Allah provides food and drink.' }
     ],
-    animatedWords: [],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q5',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'The people in the kingdom stopped worshipping idols after talking to Abraham.',
-        correctAnswer: false,
-        explanation: 'The people said they only worshipped idols because their fathers did, and they wouldn\'t listen.',
-        feedback: {
-          correct: 'Correct. They were very stubborn.',
-          incorrect: 'Actually, they refused to listen and got angry.'
-        }
-      }
-    ]
+    animatedWords: []
   },
   {
     id: 6,
@@ -212,31 +108,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h11', x: 60, y: 40, title: 'The Axe', description: 'The tool Abraham used to break the stone statues.' },
       { id: 'h12', x: 20, y: 70, title: 'The Offerings', description: 'Food placed in front of statues that cannot eat.' }
     ],
-    animatedWords: ['jokingly', 'hurried'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q6',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'Why did Abraham leave the largest idol unbroken?',
-        options: [
-          'Because he wanted to pray to it',
-          'Because it was too heavy to break',
-          'To teach the people a lesson about their silly beliefs'
-        ],
-        correctAnswer: 2,
-        explanation: 'By leaving the axe with the big idol, he planned to make the people think about their beliefs.',
-        feedback: {
-          correct: 'Yes! It was a clever way to make them think.',
-          incorrect: 'No, he did it to show them that idols can\'t do anything.'
-        }
-      }
-    ]
+    animatedWords: ['jokingly', 'hurried']
   },
   {
     id: 7,
@@ -254,26 +126,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h13', x: 45, y: 70, title: 'The Pieces', description: 'The remains of the broken stone statues.' },
       { id: 'h14', x: 25, y: 40, title: 'Questioning', description: 'The people brought Abraham to explain what happened.' }
     ],
-    animatedWords: ['harm', 'crazy'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q7',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'The people accepted that the stone idols could not speak.',
-        correctAnswer: true,
-        explanation: 'They said, "You know that these objects don’t speak!", which proved Abraham\'s point.',
-        feedback: {
-          correct: 'Correct. They trapped themselves with their own words.',
-          incorrect: 'Actually, they said the idols don\'t speak, yet they worshipped them.'
-        }
-      }
-    ]
+    animatedWords: ['harm', 'crazy']
   },
   {
     id: 8,
@@ -291,31 +144,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h15', x: 80, y: 60, title: 'Firewood', description: 'Piles of wood collected to make a huge fire.' },
       { id: 'h16', x: 30, y: 75, title: 'The Catapult', description: 'The engine used to throw Abraham into the flames.' }
     ],
-    animatedWords: ['ashamed', 'dangerous'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q8',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'Why did Abraham stay calm while the people built the fire?',
-        options: [
-          'Because his friends promised to save him',
-          'Because he trusted Allah completely',
-          'Because he thought it wasn\'t real fire'
-        ],
-        correctAnswer: 1,
-        explanation: 'Abraham stayed calm because he had perfect trust in Allah.',
-        feedback: {
-          correct: 'Yes! Trust in Allah (Tawakkul) was his strength.',
-          incorrect: 'No, it was his faith and trust in Allah.'
-        }
-      }
-    ]
+    animatedWords: ['ashamed', 'dangerous']
   },
   {
     id: 9,
@@ -333,26 +162,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h17', x: 50, y: 50, title: 'The Miracle', description: 'The fire became cool by Allah\'s command.' },
       { id: 'h18', x: 40, y: 20, title: 'Angel Gabriel', description: 'He came to offer help, but Abraham relied only on Allah.' }
     ],
-    animatedWords: ['cool', 'rude'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q9',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'The fire became a cool garden for Abraham.',
-        correctAnswer: true,
-        explanation: 'By Allah\'s command, the fire changed its nature for the Prophet.',
-        feedback: {
-          correct: 'Exactly! Allah has power over everything.',
-          incorrect: 'Actually, the story says the fire turned into a garden.'
-        }
-      }
-    ]
+    animatedWords: ['cool', 'rude']
   },
   {
     id: 10,
@@ -370,31 +180,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h19', x: 20, y: 70, title: 'Nimrod', description: 'The king who said power over life and death.' },
       { id: 'h20', x: 80, y: 20, title: 'The Challenge', description: 'Abraham challenged the king to control the sun.' }
     ],
-    animatedWords: ['rise', 'ordered'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q10',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'How did Abraham show that Nimrod was not a god?',
-        options: [
-          'By destroying his palace',
-          'By healing patients',
-          'By asking him to make the sun rise from the west'
-        ],
-        correctAnswer: 2,
-        explanation: 'Nimrod could kill people, but he could not control the movement of the stars and sun.',
-        feedback: {
-          correct: 'Yes! It was a power only Allah holds.',
-          incorrect: 'No, he used the example of the sun and the west.'
-        }
-      }
-    ]
+    animatedWords: ['rise', 'ordered']
   },
   {
     id: 11,
@@ -412,26 +198,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h21', x: 40, y: 75, title: 'Travel', description: 'Traveling across the desert was very difficult.' },
       { id: 'h22', x: 60, y: 85, title: 'The Valley', description: 'The quiet valley where Mecca would grow.' }
     ],
-    animatedWords: ['lands', 'arrived'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q11',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'Prophet Lot (pbuh) was one of the few who believed in Abraham in Babylon.',
-        correctAnswer: true,
-        explanation: 'At first, only those two are mentioned as followers in Babylon.',
-        feedback: {
-          correct: 'Correct. Faith starts with a few brave people.',
-          incorrect: 'Actually, the story says only a man and a woman followed him there.'
-        }
-      }
-    ]
+    animatedWords: ['lands', 'arrived']
   },
   {
     id: 12,
@@ -449,31 +216,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h23', x: 30, y: 70, title: 'Hagar\'s Faith', description: 'She trusted Allah in the empty desert.' },
       { id: 'h24', x: 70, y: 90, title: 'Desert life', description: 'There was no food or water in sight.' }
     ],
-    animatedWords: ['planner', 'die'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q12',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'Why was Hagar not afraid to stay in the desert?',
-        options: [
-          'Because she knew Allah would protect them',
-          'Because she had many camel-loads of food',
-          'Because a city was already built there'
-        ],
-        correctAnswer: 0,
-        explanation: 'Hagar had deep faith (iman) and trust in Allah\'s wisdom.',
-        feedback: {
-          correct: 'Yes! Absolute trust in Allah.',
-          incorrect: 'No, she had no food left, but she had trust.'
-        }
-      }
-    ]
+    animatedWords: ['planner', 'die']
   },
   {
     id: 13,
@@ -491,26 +234,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h25', x: 50, y: 80, title: 'Zamzam Well', description: 'The miraculous water source that still flows today.' },
       { id: 'h26', x: 60, y: 70, title: 'Mecca', description: 'The city that grew around the holy water.' }
     ],
-    animatedWords: ['famous', 'suddenly'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q13',
-        type: 'true-false',
-        title: 'Quick Check',
-        instructions: 'Decide if the statement is true or false.',
-        question: 'The water of Zamzam appeared because Hagar dug a deep well.',
-        correctAnswer: false,
-        explanation: 'It was a miracle from Allah, appearing under baby Ishmael\'s feet.',
-        feedback: {
-          correct: 'Correct. It was a pure miracle from Allah.',
-          incorrect: 'Actually, it appeared suddenly without any digging.'
-        }
-      }
-    ]
+    animatedWords: ['famous', 'suddenly']
   },
   {
     id: 14,
@@ -528,31 +252,7 @@ export const abrahamA2PagesEn: PageData[] = [
       { id: 'h27', x: 50, y: 40, title: 'The Ka’ba', description: 'The first House of Allah built in the world.' },
       { id: 'h28', x: 40, y: 20, title: 'Hajj', description: 'The holy journey Muslims take to follow these lessons.' }
     ],
-    animatedWords: ['holy', 'Muslims'],
-    syncPoints: [0, 20, 40, 60],
-    timedChunks: [
-      { start: 0, end: 5, text: "Listening text placeholder" }
-    ],
-    exercises: [
-      {
-        id: 'q14',
-        type: 'multiple-choice',
-        title: 'Quick Check',
-        instructions: 'Choose the correct answer.',
-        question: 'Who helped Abraham build the Ka’ba?',
-        options: [
-          'The King of Babylon',
-          'Angel Gabriel',
-          'His son Ishmael'
-        ],
-        correctAnswer: 2,
-        explanation: 'Abraham and his son Ishmael worked together to build the sacred house.',
-        feedback: {
-          correct: 'Yes! They built it together as a team.',
-          incorrect: 'No, it was his son Ishmael who helped him build the walls.'
-        }
-      }
-    ]
+    animatedWords: ['holy', 'Muslims']
   },
   {
     id: 15,
@@ -560,75 +260,7 @@ export const abrahamA2PagesEn: PageData[] = [
     title: 'Knowledge Check: Abraham (pbuh)',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2FAbraham_a2_ch1.png?alt=media&token=5e040caa-6fbf-4bb4-840f-8fc15c0c8478',
     audioUrl: '',
-    content: 'Test your understanding of the major events in Prophet Abraham’s life.',
-    exercises: [
-      {
-        id: 'kc1',
-        type: 'true-false',
-        question: 'Abraham was born in Egypt.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'Correct! He was born in Babylon, Mesopotamia.',
-          incorrect: 'Actually, the story begins in Babylon, not Egypt.'
-        },
-        explanation: 'Babylon was his birthplace.'
-      },
-      {
-        id: 'kc2',
-        type: 'true-false',
-        question: "Abraham's father was an idol maker.",
-        correctAnswer: true,
-        feedback: {
-          correct: 'Correct! His father used stone to make statues that people worshipped.',
-          incorrect: 'Incorrect. His father was indeed an idol maker.'
-        },
-        explanation: 'Abraham watched his father carving stone idols as a child.'
-      },
-      {
-        id: 'kc3',
-        type: 'true-false',
-        question: 'Abraham played with idols as if they were toys.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'Correct! He showed his father that they were just objects by playing with them.',
-          incorrect: 'Incorrect. The story tells us he rode on their backs and played with them.'
-        },
-        explanation: 'He wanted to show that stones have no power.'
-      },
-      {
-        id: 'kc4',
-        type: 'true-false',
-        question: 'The sun is the creator of the world.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'Correct! The sun is a creation, not the Creator.',
-          incorrect: 'Incorrect. Abraham realized that the sun sets and cannot be the eternal God.'
-        },
-        explanation: 'Allah is the Creator of the sun and everything else.'
-      },
-      {
-        id: 'kc5',
-        type: 'true-false',
-        question: 'Nimrod could make the sun rise from the west.',
-        correctAnswer: false,
-        feedback: {
-          correct: 'Correct! Nimrod had no such power.',
-          incorrect: 'Incorrect. Nimrod could not answer this challenge.'
-        },
-        explanation: 'Only Allah controls the movement of the sun and the stars.'
-      },
-      {
-        id: 'kc6',
-        type: 'true-false',
-        question: 'The Ka’ba was built by Abraham and Ishmael.',
-        correctAnswer: true,
-        feedback: {
-          correct: 'Correct! Father and son built the base and walls of the Ka’ba together.',
-          incorrect: 'Incorrect. They worked together to build the House of Allah.'
-        },
-        explanation: 'It was a combined effort by Prophet Abraham and his son.'
-      }
-    ]
+    content: 'Test your understanding of the major events in Prophet Abraham’s life.'
   },
   {
     id: 16,
@@ -636,23 +268,14 @@ export const abrahamA2PagesEn: PageData[] = [
     title: 'Vocabulary Challenge',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch13.png?alt=media&token=d61931ab-8d9b-4d2e-a7cd-8341d1e6be76',
     audioUrl: '',
-    content: 'Match the important words from the story with their correct meanings.',
-    vocabularyPairs: [
-      { word: 'Messenger', meaning: 'A person chosen to deliver Allah\'s guidance' },
-      { word: 'Arrogant', meaning: 'Thinking you are better than others' },
-      { word: 'Miracle', meaning: 'A wonderful event that is against normal logic' },
-      { word: 'Worship', meaning: 'Love and care shown only to Allah' },
-      { word: 'Idol', meaning: 'A statue wrongly worshipped as a god' },
-      { word: 'Respect', meaning: 'A feeling of deep admiration for someone' }
-    ]
+    content: 'Match the important words from the story with their correct meanings.'
   },
   {
     id: 17,
     type: 'exercises',
     title: 'Final Review & Reflection',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385',
-    content: 'Complete these final exercises to master the lessons of Prophet Abraham (pbuh).',
-    exercises: abrahamA2FinalReviewExercises
+    content: 'Complete these final exercises to master the lessons of Prophet Abraham (pbuh).'
   },
   {
     id: 18,
