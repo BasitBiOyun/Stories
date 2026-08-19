@@ -1,34 +1,80 @@
 import { BookData } from '../../../types';
 import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
+import { polishB2GuideSections } from '../../b2GuidePresentation';
+import {
+  buildB2FriendlyStudentGuideSections,
+  buildB2FriendlyStudentGuideText,
+  buildB2GoldStudentGuideMetadata,
+  buildB2GoldTeacherGuideMetadata,
+} from '../../b2GoldGuides';
+import { finalizeB2LearningBlueprint } from '../../b2GoldPedagogy';
+import { buildB2GoldReview } from '../../b2GoldReview';
+import {
+  applyB2CuratedVocabulary,
+  applyB2GoldReview,
+  prepareB2GoldLearningStructure,
+} from '../../b2GoldStructure';
 import { adamB2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB2StudentGuideSections, adamB2StudentGuideText, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB2StudentGuideSectionsAr, adamB2StudentGuideTextAr, adamB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 import { adamB2LearningBlueprint } from './learningBlueprint';
 import { adamB2BlueprintConfig } from './config';
 import { adamB2HighlightTargets, adamB2SourcePagesAr, adamB2SourcePagesEn } from './source';
 
 export { adamB2HighlightTargets };
 
-const adamB2Blueprint = runB2BlueprintSystem({
+const story = 'adam' as const;
+const prepared = prepareB2GoldLearningStructure({
   englishPages: adamB2SourcePagesEn,
   arabicPages: adamB2SourcePagesAr,
   config: adamB2BlueprintConfig,
-  blueprint: adamB2LearningBlueprint,
 });
+const goldBlueprint = finalizeB2LearningBlueprint(adamB2LearningBlueprint, story);
+const compiled = runB2BlueprintSystem({
+  englishPages: prepared.englishPages,
+  arabicPages: prepared.arabicPages,
+  config: prepared.config,
+  blueprint: goldBlueprint,
+});
+
+const curatedVocabulary = [
+  'origin', 'intellect', 'superiority', 'arrogance', 'deception',
+  'repentance', 'sincerity', 'jealousy', 'consequence', 'responsibility',
+] as const;
+
+const pagesEn = applyB2CuratedVocabulary(
+  applyB2GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'en')),
+  goldBlueprint,
+  prepared.config.vocabularyPageId,
+  'en',
+  curatedVocabulary,
+);
+const pagesAr = applyB2CuratedVocabulary(
+  applyB2GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'ar')),
+  goldBlueprint,
+  prepared.config.vocabularyPageId,
+  'ar',
+  curatedVocabulary,
+);
+
+const teacherGuideEn = polishB2GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
+const teacherGuideAr = polishB2GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
+const selfStudyGuideEn = polishB2GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
+const selfStudyGuideAr = polishB2GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
+
+export const adamB2GoldConfig = prepared.config;
 
 export const adamB2BookDataEn: BookData = {
   id: 'b2-prophets-en',
   title: 'Stories of the Prophets: Adam (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: adamB2Blueprint.englishPages,
-  teacherGuide: adamB2Blueprint.englishTeacherGuide,
-  selfStudyGuide: adamB2Blueprint.englishSelfStudyGuide,
-  studentGuideText: adamB2StudentGuideText,
-  studentGuideSections: adamB2StudentGuideSections,
-  teacherGuideMetadata: adamB2TeacherGuideMetadata,
-  studentGuideMetadata: adamB2StudentGuideMetadata,
+  pages: pagesEn,
+  teacherGuide: teacherGuideEn,
+  selfStudyGuide: selfStudyGuideEn,
+  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'en'),
+  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
+  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(adamB2TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length),
+  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
 };
 
 export const adamB2BookDataAr: BookData = {
@@ -36,11 +82,11 @@ export const adamB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B2',
   baseFontSize: 14,
-  pages: adamB2Blueprint.arabicPages,
-  teacherGuide: adamB2Blueprint.arabicTeacherGuide,
-  selfStudyGuide: adamB2Blueprint.arabicSelfStudyGuide,
-  studentGuideText: adamB2StudentGuideTextAr,
-  studentGuideSections: adamB2StudentGuideSectionsAr,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
-  studentGuideMetadata: adamB2StudentGuideMetadataAr,
+  pages: pagesAr,
+  teacherGuide: teacherGuideAr,
+  selfStudyGuide: selfStudyGuideAr,
+  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'ar'),
+  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
+  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(adamB2TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length),
+  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
 };
