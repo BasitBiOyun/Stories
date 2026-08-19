@@ -82,19 +82,39 @@ export interface TeacherGuideSection {
   timing: string;
   objectives: string[];
   pedagogy: string;
+  priorKnowledge?: string[];
+  anticipatedMisconceptions?: string[];
   grammarFocus?: string;
   pronunciationFocus?: string;
+  beforeReading?: string[];
+  duringReading?: string[];
+  afterReading?: string[];
   lessonPlan: string;
   discussionPoints: string[];
+  interactiveTips: string[];
   differentiation: {
     fastFinishers: string;
     strugglingLearners: string;
   };
-  interactiveTips: string[];
+  formativeAssessment?: string[];
+  expectedResponses?: string[];
+  transferTask?: string;
+  teacherReflection?: string;
   assessmentTools?: {
     rubric?: string[];
     exitTicket?: string[];
   };
+  // Self-study-only heading fields. They are optional so the same simple
+  // chapter data shape can be rendered by both guide UIs without generators.
+  whatToNotice?: string[];
+  readListen?: string[];
+  findAnswerInStory?: string[];
+  vocabularyInContext?: string[];
+  quickChallengeGuide?: string;
+  wrongAnswerSupport?: string[];
+  selfCheck?: string[];
+  useWhatYouLearned?: string;
+  reflectionPrompt?: string;
   kinestheticActivities?: string[];
   globalCitizenship?: string[];
   extraResources?: {
