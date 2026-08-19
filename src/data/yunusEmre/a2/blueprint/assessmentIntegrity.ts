@@ -58,28 +58,30 @@ const assertMatchingIntegrity = (
   }
 };
 
+const synchronizeFeedbackContract = (item: BlueprintAssessmentItem): BlueprintAssessmentItem => {
+  if (!item.quality) return item;
+  return {
+    ...item,
+    quality: {
+      ...item.quality,
+      feedback: {
+        ...item.quality.feedback,
+        correct: L(item.exercise.en.feedback.correct, item.exercise.ar.feedback.correct),
+        incorrect: L(item.exercise.en.feedback.incorrect, item.exercise.ar.feedback.incorrect),
+      },
+    },
+  };
+};
+
 export const enforceYunusA2AssessmentIntegrity = (
   chapter: LearningBlueprintChapter,
 ): LearningBlueprintChapter => {
-  const assessmentItems = chapter.assessmentItems.map((item) => {
-    if (item.id !== 'yunus-a2-c3-quick') return item;
-
-    const exercise = chapter3Quick();
-    return {
-      ...item,
-      exercise,
-      quality: item.quality
-        ? {
-            ...item.quality,
-            feedback: {
-              ...item.quality.feedback,
-              correct: L(exercise.en.feedback.correct, exercise.ar.feedback.correct),
-              incorrect: L(exercise.en.feedback.incorrect, exercise.ar.feedback.incorrect),
-            },
-          }
-        : item.quality,
-    };
-  });
+  const assessmentItems = chapter.assessmentItems
+    .map((item) => {
+      if (item.id !== 'yunus-a2-c3-quick') return item;
+      return { ...item, exercise: chapter3Quick() };
+    })
+    .map(synchronizeFeedbackContract);
 
   assessmentItems.forEach((item) => {
     assertMatchingIntegrity(item.exercise.en, `${item.id} EN`);
