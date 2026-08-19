@@ -98,10 +98,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('adam', 'B2', 'prophets', {
     en: 'Stories of the Prophets: Adam (B2)',
     ar: 'قصص الأنبياء: آدم (عليه السلام)',
-  }, async () => {
-    const module = await import('../../data/adam/b2');
-    return { en: module.adamB2BookDataEn, ar: module.adamB2BookDataAr };
-  }),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/adam/b2'),
+    'adamB2BookDataEn',
+    'adamB2BookDataAr',
+    'Adam B2',
+  ), true),
 
   createDefinition('ibrahim', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Abraham (A2)',
@@ -124,10 +126,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('ibrahim', 'B2', 'prophets', {
     en: 'Stories of the Prophets: Abraham (B2)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
-  }, async () => {
-    const module = await import('../../data/abraham/b2');
-    return { en: module.abrahamB2BookDataEn, ar: module.abrahamB2BookDataAr };
-  }),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/abraham/b2'),
+    'abrahamB2BookDataEn',
+    'abrahamB2BookDataAr',
+    'Abraham B2',
+  ), true),
 
   createDefinition('musa', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Moses (A2)',
@@ -150,10 +154,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('musa', 'B2', 'prophets', {
     en: 'Stories of the Prophets: Moses (B2)',
     ar: 'قصص الأنبياء: موسى (عليه السلام)',
-  }, async () => {
-    const module = await import('../../data/moses/b2');
-    return { en: module.mosesB2BookDataEn, ar: module.mosesB2BookDataAr };
-  }),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/moses/b2'),
+    'mosesB2BookDataEn',
+    'mosesB2BookDataAr',
+    'Moses B2',
+  ), true),
 
   createDefinition('mecca', 'A2', 'history', {
     en: 'Islamic History & Civilization: Mecca',
@@ -176,10 +182,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('mecca', 'B2', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
-  }, async () => {
-    const module = await import('../../data/mecca/b2');
-    return { en: module.meccaB2BookDataEn, ar: module.meccaB2BookDataAr };
-  }),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/mecca/b2'),
+    'meccaB2BookDataEn',
+    'meccaB2BookDataAr',
+    'Mecca B2',
+  ), true),
 
   createDefinition('yunusEmre', 'A2', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
@@ -202,10 +210,12 @@ export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('yunusEmre', 'B2', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
-  }, async () => {
-    const module = await import('../../data/yunusEmre/b2');
-    return { en: module.yunusEmreB2BookDataEn, ar: module.yunusEmreB2BookDataAr };
-  }),
+  }, () => loadBookPairFromModule(
+    () => import('../../data/yunusEmre/b2'),
+    'yunusEmreB2BookDataEn',
+    'yunusEmreB2BookDataAr',
+    'Yunus Emre B2',
+  ), true),
 ] as const;
 
 const registryByKey = new Map(bookRegistry.map(definition => [definitionKey(definition.storyId, definition.level), definition]));
