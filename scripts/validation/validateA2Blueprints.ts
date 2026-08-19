@@ -51,6 +51,40 @@ const exerciseQuestions = (exercises: Exercise[] | undefined) => (exercises ?? [
   .map((exercise) => exercise.question?.trim() ?? '')
   .filter(Boolean);
 
+const validateExerciseIntegrity = (exercise: Exercise, label: string) => {
+  if (exercise.type === 'multiple-choice') {
+    const options = exercise.options ?? [];
+    assert.ok(options.length >= 2, `${label}: multiple-choice requires at least two options.`);
+    const normalizedOptions = options.map(normalize);
+    assert.equal(new Set(normalizedOptions).size, normalizedOptions.length, `${label}: multiple-choice options must be unique.`);
+    assert.ok(Number.isInteger(exercise.correctAnswer), `${label}: multiple-choice correctAnswer must be an integer index.`);
+    assert.ok(Number(exercise.correctAnswer) >= 0 && Number(exercise.correctAnswer) < options.length, `${label}: multiple-choice correctAnswer is out of range.`);
+  }
+
+  if (exercise.type === 'matching') {
+    const pairs = exercise.matchingPairs ?? [];
+    assert.ok(pairs.length >= 2, `${label}: matching requires at least two pairs.`);
+    const left = pairs.map(pair => normalize(pair.left));
+    const right = pairs.map(pair => normalize(pair.right));
+    assert.equal(new Set(left).size, left.length, `${label}: matching concepts on the left must be unique.`);
+    assert.equal(new Set(right).size, right.length, `${label}: matching answers on the right must be unique.`);
+  }
+
+  if (exercise.type === 'fill-blanks') {
+    assert.ok(exercise.fillBlanksText?.includes('[blank]'), `${label}: fill-blanks exercise must contain [blank].`);
+  }
+
+  if (exercise.type === 'quiz-game') {
+    (exercise.quizQuestions ?? []).forEach((question, index) => {
+      const options = question.options ?? [];
+      assert.ok(options.length >= 2, `${label}: quiz question ${index + 1} requires at least two options.`);
+      const normalizedOptions = options.map(option => normalize(option.text));
+      assert.equal(new Set(normalizedOptions).size, normalizedOptions.length, `${label}: quiz question ${index + 1} options must be unique.`);
+      assert.equal(options.filter(option => option.isCorrect).length, 1, `${label}: quiz question ${index + 1} must have exactly one correct option.`);
+    });
+  }
+};
+
 const validateEdition = (spec: A2BookSpec, book: BookData, language: 'en' | 'ar') => {
   assert.equal(book.level, 'A2', `${book.id}: level must be A2.`);
   assert.equal(book.teacherGuide.length, spec.storyIds.length, `${book.id}: Teacher Guide must have one manual blueprint section per chapter.`);
@@ -71,6 +105,7 @@ const validateEdition = (spec: A2BookSpec, book: BookData, language: 'en' | 'ar'
   assert.equal(knowledge.length, 8, `${book.id}: Knowledge Check must contain 8 authored questions.`);
   assert.ok(knowledge.every((exercise) => exercise.type !== 'tap-reveal'), `${book.id}: Knowledge Check cannot contain Tap-Reveal.`);
 
+  const reviewPage = page(book, spec.review);
   const review = reviewQuestions(book, spec.review);
 
   const finalExercises = page(book, spec.final).exercises ?? [];
@@ -78,8 +113,22 @@ const validateEdition = (spec: A2BookSpec, book: BookData, language: 'en' | 'ar'
   assert.ok(finalExercises.every((exercise) => ['multiple-choice', 'true-false', 'matching', 'fill-blanks'].includes(exercise.type)), `${book.id}: Final Challenge contains a non-scored or unsupported interaction.`);
   assert.ok(finalExercises.every((exercise) => exercise.type !== 'tap-reveal'), `${book.id}: Final Challenge cannot contain Tap-Reveal.`);
 
+  const allAssessmentExercises = [
+    ...quickExercises,
+    ...knowledge,
+    ...(reviewPage.exercises ?? []),
+    ...finalExercises,
+  ];
+  allAssessmentExercises.forEach((exercise, index) => {
+    validateExerciseIntegrity(exercise, `${book.id}: assessment ${index + 1}`);
+  });
+
   const vocabularyPairs = page(book, spec.vocabulary).vocabularyPairs ?? [];
   assert.equal(vocabularyPairs.length, 6, `${book.id}: Vocabulary Challenge must contain 6 reviewed pairs.`);
+  const vocabularyWords = vocabularyPairs.map(pair => normalize(pair.word));
+  const vocabularyMeanings = vocabularyPairs.map(pair => normalize(pair.meaning));
+  assert.equal(new Set(vocabularyWords).size, vocabularyWords.length, `${book.id}: Vocabulary Challenge words must be unique.`);
+  assert.equal(new Set(vocabularyMeanings).size, vocabularyMeanings.length, `${book.id}: Vocabulary Challenge meanings must be unique.`);
 
   spec.glossaries.forEach((id) => {
     const glossary = page(book, id).vocabulary ?? [];
@@ -109,8 +158,8 @@ for (const spec of specs) {
   validateEdition(spec, spec.ar, 'ar');
 
   assert.equal(spec.en.pages.length, spec.ar.pages.length, `${spec.name}: EN/AR page-count parity failed.`);
-  assert.equal(spec.en.teacherGuide.length, spec.ar.teacherGuide.length, `${spec.name}: EN/AR Teacher Guide parity failed.`);
-  assert.equal(spec.en.selfStudyGuide.length, spec.ar.selfStudyGuide.length, `${spec.name}: EN/AR Self-Study parity failed.`);
+  assert.equal(spec.en.teacherGuide.length, spec.ar.teacherGuide.length, `${spec.name}: Teacher Guide parity failed.`);
+  assert.equal(spec.en.selfStudyGuide.length, spec.ar.selfStudyGuide.length, `${spec.name}: Self-Study parity failed.`);
 
   for (const chapterId of spec.storyIds) {
     const enQuick = page(spec.en, chapterId).exercises?.[0];
@@ -122,6 +171,8 @@ for (const spec of specs) {
 console.log('A2 blueprint system: PASS');
 console.log('- Adam, Moses, Abraham, Bilal/Mecca, and Yunus Emre are blueprint-only');
 console.log('- Quick / Knowledge / Review / Final use distinct authored question wording');
+console.log('- Multiple-choice and matching answer sets are mechanically unambiguous');
+console.log('- Vocabulary Challenge words and meanings are unique');
 console.log('- Tap-Reveal is restricted to 1–2 Quick Challenges per book');
 console.log('- Knowledge = 8, Review = 8, Final = 10, Vocabulary = 6');
 console.log('- Teacher Guide and Self-Study Guide come from the same manual blueprint path');
