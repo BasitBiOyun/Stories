@@ -61,9 +61,25 @@ const assertMatchingIntegrity = (
 export const enforceYunusA2AssessmentIntegrity = (
   chapter: LearningBlueprintChapter,
 ): LearningBlueprintChapter => {
-  const assessmentItems = chapter.assessmentItems.map(item => item.id === 'yunus-a2-c3-quick'
-    ? { ...item, exercise: chapter3Quick() }
-    : item);
+  const assessmentItems = chapter.assessmentItems.map((item) => {
+    if (item.id !== 'yunus-a2-c3-quick') return item;
+
+    const exercise = chapter3Quick();
+    return {
+      ...item,
+      exercise,
+      quality: item.quality
+        ? {
+            ...item.quality,
+            feedback: {
+              ...item.quality.feedback,
+              correct: L(exercise.en.feedback.correct, exercise.ar.feedback.correct),
+              incorrect: L(exercise.en.feedback.incorrect, exercise.ar.feedback.incorrect),
+            },
+          }
+        : item.quality,
+    };
+  });
 
   assessmentItems.forEach((item) => {
     assertMatchingIntegrity(item.exercise.en, `${item.id} EN`);
