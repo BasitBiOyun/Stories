@@ -8,6 +8,14 @@ export interface PreparedB2GoldStructure {
   config: B2BlueprintConfig & { vocabularyPageId: number };
 }
 
+const learningIds = (config: B2BlueprintConfig): Set<number> => new Set<number>([
+  config.knowledgeCheckPageId,
+  config.reviewPageId,
+  ...config.glossaryPageIds,
+  config.finalChallengePageId,
+  ...(config.vocabularyPageId ? [config.vocabularyPageId] : []),
+]);
+
 const makeLearningPage = (
   id: number,
   type: PageType,
@@ -71,15 +79,11 @@ const normaliseLanguagePages = (
     return source ? { ...source, id: targetId, type } : makeLearningPage(targetId, type, language, image);
   };
 
-  const storyPages = pages.filter(page => page.type === 'story');
-  const knownLearningIds = new Set<number>([
-    config.knowledgeCheckPageId,
-    config.reviewPageId,
-    ...config.glossaryPageIds,
-    config.finalChallengePageId,
-    ...(config.vocabularyPageId ? [config.vocabularyPageId] : []),
-  ]);
-  const extraPages = pages.filter(page => page.type !== 'story' && !knownLearningIds.has(page.id));
+  const knownLearningIds = learningIds(config);
+  // Preserve every canonical/content page that is not one of the old learning pages.
+  // This includes story chapters and intentional appendices such as a References page,
+  // even when an appendix historically uses type='story'.
+  const preservedPages = pages.filter(page => !knownLearningIds.has(page.id));
 
   const learningPages: PageData[] = [
     findOrMake(config.knowledgeCheckPageId, target.knowledge, 'quiz'),
@@ -90,13 +94,14 @@ const normaliseLanguagePages = (
     findOrMake(config.finalChallengePageId, target.final, 'final-challenge'),
   ];
 
-  return [...storyPages, ...learningPages, ...extraPages].sort((a, b) => a.id - b.id);
+  return [...preservedPages, ...learningPages].sort((a, b) => a.id - b.id);
 };
 
 /**
  * Gives every reviewed B2 book the same visible learning-page order:
  * Knowledge → Vocabulary → Retrieval Review → Glossary I → Glossary II → Final.
- * Story chapter IDs, prose, media, audio, timed chunks and chapter order are never changed.
+ * Story chapter IDs, prose, media, audio, timed chunks, chapter order and
+ * intentional appendix/reference pages are never changed.
  */
 export const prepareB2GoldLearningStructure = ({
   englishPages,
@@ -107,7 +112,11 @@ export const prepareB2GoldLearningStructure = ({
   arabicPages: PageData[];
   config: B2BlueprintConfig;
 }): PreparedB2GoldStructure => {
-  const firstLearningId = Math.max(...config.storyIds) + 1;
+  const knownLearningIds = learningIds(config);
+  const preservedIds = [...englishPages, ...arabicPages]
+    .filter(page => !knownLearningIds.has(page.id))
+    .map(page => page.id);
+  const firstLearningId = Math.max(...config.storyIds, ...preservedIds) + 1;
   const target = {
     knowledge: firstLearningId,
     vocabulary: firstLearningId + 1,
