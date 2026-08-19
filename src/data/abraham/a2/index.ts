@@ -1,101 +1,54 @@
-import { BookData, PageData } from '../../../types';
-import { finalizeA2TeacherGuideAlignment } from '../../a2TeacherGuideAlignment';
-import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
-import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
-import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
-import { abrahamA2GoldConfig } from './gold';
+import type { BookData, PageData } from '../../../types';
+import { abrahamA2PagesEn } from './en/pages';
+import { abrahamA2PagesAr } from './ar/pages';
 import {
-  applyAbrahamA2GoldVocabularyChallenge,
-  buildAbrahamA2GoldStudentGuideSections,
-  buildAbrahamA2GoldTeacherGuideMetadata,
-} from './goldGuides';
-import { abrahamA2GoldLearningBlueprint } from './goldLearningBlueprint';
+  abrahamA2FinalChallengeExercises,
+  abrahamA2FinalReviewExercises,
+  abrahamA2KnowledgeCheckExercises,
+  abrahamA2QuickChallenges,
+  abrahamA2VocabularyChallengePairs,
+} from './en/exercises';
 import {
-  abrahamA2HighlightConfig,
-  abrahamA2PagesFinalAr,
-  abrahamA2PagesFinalEn,
-  abrahamA2StudentGuideMetadataFinalAr,
-  abrahamA2StudentGuideMetadataFinalEn,
-  abrahamA2TeacherGuideMetadataFinalAr,
-  abrahamA2TeacherGuideMetadataFinalEn,
-} from './goldFinal';
-import { buildAbrahamA2GoldStudentGuideText } from './studentGuideText';
+  abrahamA2FinalChallengeExercisesAr,
+  abrahamA2FinalReviewExercisesAr,
+  abrahamA2KnowledgeCheckExercisesAr,
+  abrahamA2QuickChallengesAr,
+  abrahamA2VocabularyChallengePairsAr,
+} from './ar/exercises';
+import { abrahamA2TeacherGuideEn, abrahamA2TeacherGuideMetadataEn } from './en/teacherGuide';
+import { abrahamA2TeacherGuideAr, abrahamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { abrahamA2SelfStudyGuideEn } from './en/selfStudyGuide';
+import { abrahamA2SelfStudyGuideAr } from './ar/selfStudyGuide';
 
-const abrahamA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(abrahamA2PagesFinalEn, 'ibrahim', 'en'),
-  abrahamA2HighlightConfig,
-  'en',
-);
-const abrahamA2PagesLockedAr = applyA2HotspotCopyOverrides(
-  syncA2GlossariesFromStoryHighlights(
-    applyA2FinalStoryLanguageLock(abrahamA2PagesFinalAr, 'ibrahim', 'ar'),
-    abrahamA2HighlightConfig,
-    'ar',
-  ),
-  {
-    1: {
-      h2: {
-        title: 'الأشياء الحجرية',
-        description: 'كَانَ النَّاسُ يَعْتَقِدُونَ أَنَّ هَذِهِ الْأَشْيَاءَ آلِهَتُهُمْ.',
-      },
-    },
-  },
-);
+const STORY_IDS = new Set(Array.from({ length: 14 }, (_, index) => index + 1));
 
-const abrahamA2 = runA2BlueprintSystem({
-  englishPages: abrahamA2PagesLockedEn,
-  arabicPages: abrahamA2PagesLockedAr,
-  config: abrahamA2GoldConfig,
-  blueprint: abrahamA2GoldLearningBlueprint,
+const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamA2QuickChallenges[page.id]] };
+  if (page.id === 15) return { ...page, exercises: abrahamA2KnowledgeCheckExercises };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamA2VocabularyChallengePairs };
+  if (page.id === 17) return { ...page, exercises: abrahamA2FinalReviewExercises };
+  if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercises };
+  return page;
 });
 
-const restoreReviewActivities = (generatedPages: PageData[], sourcePages: PageData[]): PageData[] => {
-  const sourceReview = sourcePages.find(page => page.id === abrahamA2GoldConfig.reviewPageId);
-  if (!sourceReview?.exercises?.length) return generatedPages;
-  return generatedPages.map(page => page.id === abrahamA2GoldConfig.reviewPageId
-    ? { ...page, exercises: sourceReview.exercises }
-    : page);
-};
-
-const abrahamA2GoldPagesEn = applyAbrahamA2GoldVocabularyChallenge(
-  restoreReviewActivities(abrahamA2.englishPages, abrahamA2PagesLockedEn),
-  abrahamA2GoldLearningBlueprint,
-  'en',
-);
-const abrahamA2GoldPagesAr = applyAbrahamA2GoldVocabularyChallenge(
-  restoreReviewActivities(abrahamA2.arabicPages, abrahamA2PagesLockedAr),
-  abrahamA2GoldLearningBlueprint,
-  'ar',
-);
-
-const teacherMetadataEn = finalizeA2TeacherGuideAlignment(
-  buildAbrahamA2GoldTeacherGuideMetadata(abrahamA2TeacherGuideMetadataFinalEn, 'en'),
-  'abraham',
-  'en',
-);
-const teacherMetadataAr = finalizeA2TeacherGuideAlignment(
-  buildAbrahamA2GoldTeacherGuideMetadata(abrahamA2TeacherGuideMetadataFinalAr, 'ar'),
-  'abraham',
-  'ar',
-);
-const studentSectionsEn = buildAbrahamA2GoldStudentGuideSections('en');
-const studentSectionsAr = buildAbrahamA2GoldStudentGuideSections('ar');
-const studentGuideTextEn = buildAbrahamA2GoldStudentGuideText(abrahamA2GoldLearningBlueprint, 'en');
-const studentGuideTextAr = buildAbrahamA2GoldStudentGuideText(abrahamA2GoldLearningBlueprint, 'ar');
+const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamA2QuickChallengesAr[page.id]] };
+  if (page.id === 15) return { ...page, exercises: abrahamA2KnowledgeCheckExercisesAr };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamA2VocabularyChallengePairsAr };
+  if (page.id === 17) return { ...page, exercises: abrahamA2FinalReviewExercisesAr };
+  if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesAr };
+  return page;
+});
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en',
   title: 'Stories of the Prophets: Abraham (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: abrahamA2GoldPagesEn,
-  teacherGuide: abrahamA2.englishTeacherGuide,
-  teacherGuideMetadata: teacherMetadataEn,
-  selfStudyGuide: abrahamA2.englishSelfStudyGuide,
-  studentGuideSections: studentSectionsEn,
-  studentGuideMetadata: abrahamA2StudentGuideMetadataFinalEn,
-  studentGuideText: studentGuideTextEn,
+  pages: buildEnglishPages(),
+  teacherGuide: abrahamA2TeacherGuideEn,
+  teacherGuideMetadata: abrahamA2TeacherGuideMetadataEn,
+  selfStudyGuide: abrahamA2SelfStudyGuideEn,
 };
 
 export const abrahamA2BookDataAr: BookData = {
@@ -103,13 +56,10 @@ export const abrahamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: abrahamA2GoldPagesAr,
-  teacherGuide: abrahamA2.arabicTeacherGuide,
-  teacherGuideMetadata: teacherMetadataAr,
-  selfStudyGuide: abrahamA2.arabicSelfStudyGuide,
-  studentGuideSections: studentSectionsAr,
-  studentGuideMetadata: abrahamA2StudentGuideMetadataFinalAr,
-  studentGuideText: studentGuideTextAr,
+  pages: buildArabicPages(),
+  teacherGuide: abrahamA2TeacherGuideAr,
+  teacherGuideMetadata: abrahamA2TeacherGuideMetadataAr,
+  selfStudyGuide: abrahamA2SelfStudyGuideAr,
 };
 
 export const abrahamA2BookData = abrahamA2BookDataEn;
