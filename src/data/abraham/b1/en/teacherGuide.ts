@@ -1,333 +1,247 @@
-import { TeacherGuideSection, TeacherGuideMetadata } from '../../../../types';
+import type { TeacherGuideMetadata, TeacherGuideSection } from '../../../../types';
 
 export const abrahamB1TeacherGuideMetadata: TeacherGuideMetadata = {
-  purpose: "The teaching approach should remain simple, supportive, interactive, and appropriate for B1 learners.",
-  approachDesc: "The teaching approach should remain simple, supportive, interactive, and appropriate for B1 learners.",
-  targetLearners: "High School Preparatory, 9th, and 10th-grade students. This level focuses on academic vocabulary, analytical reading, complex narrative structures, moral reasoning, and reflection on Prophet Abraham's search for truth, courage, trust, migration, sacrifice, and obedience.",
-  assessmentEvidence: "Analytical paragraphs on character motivation, cause-and-effect explanations, B1 connector use, reported speech, contrast structures, and participation in guided discussion or Socratic seminars. Evaluation focuses on the ability to understand the story sequence, explain moral lessons, use target vocabulary, and connect Prophet Abraham's example to real-life decisions.",
-  readingFramework: {
-    before: "Contextual brainstorming: Discuss truth, courage, false belief, trust, patience, and obedience. Preview academic vocabulary such as monotheism, idolatry, arrogance, migration, sacrifice, gratitude, and submission using the Master Glossary.",
-    during: "Analytical listening and reading: Identify cause and effect, contrast, character motivation, and shifts in tone from search and debate to trial, migration, family responsibility, and sacrifice. Pause to discuss how Prophet Abraham, Hagar, Ishmael, Nimrod, and the people respond to tests.",
-    after: "Moral synthesis: Debate how reason, courage, trust, patience, and obedience appear across the story. Students write a short reflection or analytical paragraph using B1 connectors and story evidence."
+  title: 'Prophet Abraham — B1 Teacher Guide',
+  level: 'B1',
+  targetAudience: 'High School Preparatory, Grade 9 and Grade 10',
+  purpose: 'Support evidence-based B1 reading, listening, speaking and writing through the story of Prophet Abraham.',
+  approachDesc: 'Chapter-specific guided reading with claim-evidence-explanation, language noticing, values-as-action and short transfer tasks.',
+  assessmentEvidence: 'Quick Challenges, whole-book assessments, evidence-based oral responses, short analytical writing, and chapter exit tickets.',
+  skillsFocus: {
+    reading: 'Identify main ideas, cause/result, comparison, motivation and text-supported inference.',
+    listening: 'Replay chapter audio for gist, key evidence and pronunciation noticing.',
+    speaking: 'Give short claims, support them with a chapter detail, and respond to a partner.',
+    writing: 'Produce connected B1 sentences using evidence and suitable connectors.'
   },
-  rubricTitle: "Master Rubric (B1 Level)",
-  rubricRows: [
-    {
-      criterion: "Vocabulary",
-      excellent: "Uses 8+ target academic or thematic words correctly in context, such as monotheism, idolatry, arrogance, miracle, migration, patience, sacrifice, and gratitude.",
-      good: "Uses 4-6 target words with minor errors and generally clear meaning.",
-      developing: "Uses mostly basic vocabulary and needs support with B1 thematic terms."
-    },
-    {
-      criterion: "Analysis",
-      excellent: "Deeply analyzes character motivation, cause and effect, and moral themes using evidence from the story.",
-      good: "Identifies main themes and gives some explanation, but may need more depth or evidence.",
-      developing: "Mostly retells events without explaining reasons, values, or character choices."
-    },
-    {
-      criterion: "Grammar",
-      excellent: "Uses B1 structures accurately, including cause-effect connectors, contrast clauses, sequencing, reported speech, and purpose language.",
-      good: "Uses some B1 structures with occasional errors that do not block meaning.",
-      developing: "Relies mostly on simple past/present sentences and needs sentence frames for complex ideas."
-    }
-  ],
-  implementationPlans: {
-    optionA: {
-      title: "Intensive Workshop (80m)",
-      steps: [
-        { time: "0-15m", activity: "Philosophical Warm-up: Discuss 'What is real truth?' and 'How can a person recognize false ideas?' Preview key vocabulary from the glossary." },
-        { time: "15-35m", activity: "Analytical Reading (Early Chapters): Focus on Babylon, idolatry, Prophet Abraham's reasoning, and the difference between Creator and creation." },
-        { time: "35-55m", activity: "Collaborative Discussion (Middle Chapters): Analyze the idol-breaking event, the people's anger, the fire miracle, and Prophet Abraham's trust in Allah." },
-        { time: "55-70m", activity: "Debate and Migration Focus: Examine Nimrod's claim, Abraham's response, and the decision to migrate for a higher mission." },
-        { time: "70-80m", activity: "Socratic Seminar and Exit Writing: Synthesize lessons from Hagar, Zamzam, the Ka'ba, sacrifice, and obedience." }
-      ]
-    },
-    optionB: {
-      title: "Standard Split (3 x 40m)",
-      lessons: [
-        {
-          title: "Lesson 1: Search for Truth & Rejection of Idols",
-          description: "Focus on Babylon, idol worship, Abraham's childhood observations, and his reasoning about the star, moon, sun, Creator, and creation."
-        },
-        {
-          title: "Lesson 2: Courage, Debate & The Fire Miracle",
-          description: "Focus on Abraham calling his father and people, breaking the idols, being questioned, the people's arrogance, and Allah making the fire cool and safe."
-        },
-        {
-          title: "Lesson 3: Migration, Trust, Zamzam & Obedience",
-          description: "Focus on Nimrod, migration, Hagar and Ishmael in the valley, Zamzam, the Ka'ba, sacrifice, obedience, and gratitude."
-        }
-      ]
-    }
-  },
-  homeConnection: {
-    title: "Family Discussion & Reflection",
-    items: [
-      "Discuss the meaning of Tawheed and why Prophet Abraham rejected idol worship.",
-      "Ask your family about a time when someone needed courage to say or do the right thing.",
-      "Share one B1 academic word from the unit, such as monotheism, arrogance, sacrifice, or gratitude, and explain it in your native language.",
-      "Talk about Hagar's effort and trust. How can families combine prayer, effort, and patience in difficult times?",
-      "Write a short family reflection: What does Prophet Abraham's story teach about obedience and trust in Allah?"
-    ]
-  },
-  globalCitizenship: {
-    title: "Global Citizenship & Values Bridge",
-    description: "The story of Prophet Abraham provides a profound foundation for discussing truth, tolerance, reason, and social responsibility on a global scale.",
-    themes: [
-      {
-        title: "Respect for Truth and Reason",
-        description: "Abraham’s journey illustrates the importance of observation, rational thinking, and challenging false or inherited beliefs in society."
-      },
-      {
-        title: "Courage against Injustice",
-        description: "Standing up respectfully but firmly against social norms that are wrong, showing how one individual can make a difference."
-      },
-      {
-        title: "Perseverance and Migration",
-        description: "Understanding the challenges of migration for a higher purpose, expanding empathy for people who must leave their homes."
-      }
-    ],
-    actions: [
-      "Encourage students to practice critical thinking when evaluating media and cultural traditions.",
-      "Discuss ways to show courage when speaking truth to friends or community playfully but firmly.",
-      "Promote respect, gratitude, and patience as universal virtues in both religious and secular contexts."
-    ]
-  },
-  valuesEducation: {
-    title: "Values Education Integration",
-    description: "Use B1-level reflection tasks to deeply embed the overarching moral lessons of Prophet Abraham.",
-    items: [
-      {
-        label: "Courage & Integrity:",
-        value: "The ability to speak what is true, even when facing significant social pressure or personal danger."
-      },
-      {
-        label: "Trust in Divine Will:",
-        value: "Relying securely on Allah during the hardest moments, such as facing the fire or settling in a barren valley."
-      },
-      {
-        label: "Action & Patience:",
-        value: "Hagar’s lesson of combining complete trust with active, sustained effort."
-      },
-      {
-        label: "Obedience & Sacrifice:",
-        value: "Being willing to give up attachments for a greater, divine purpose, without hesitation."
-      }
-    ]
-  },
-  sensitiveNotes: {
-    title: "Sensitive Handling Notes",
-    notes: [
-      "Ensure the distinction between questioning traditions respectfully and simple rebellion is made clear when discussing Abraham's challenge to his father.",
-      "The sacrifice of Ishmael is a deep test of faith; emphasize the lesson of spiritual submission and Allah's mercy rather than focusing on the physical nature of sacrifice.",
-      "Discuss idolatry not just as a historical event, but as a metaphor for anything placed above the truth (arrogance, materialism)."
-    ]
-  },
-  appendices: {
-    exitTicket: [
-      "List two ways Abraham used logic to explain his beliefs.",
-      "Write one sentence using a B1 contrast connector to describe the fire miracle."
-    ],
-    miniProject: {
-      title: "Values Mapping Poster",
-      desc: "Students create a visual map connecting Abraham's actions to specific values (e.g., Courage -> The Fire, Patience -> Hagar's Search) and present them."
-    },
-    reflectivePrompt: {
-      title: "Modern Application",
-      desc: "If Abraham observed our society today, what 'modern idols' (such as fame, money, or peer approval) might he challenge?"
-    },
-    sentenceFrames: [
-      "Abraham challenged his people because...",
-      "Although he was thrown into the fire,...",
-      "This teaches us that true courage is..."
-    ]
-  }
+  valuesFocus: ['truth-seeking', 'courage with reasons', 'perseverance', 'trust with effort', 'gratitude', 'responsibility'],
+  differentiationNotes: 'Support learners with evidence frames and reduced choices; extend fast finishers through comparison, inference and evidence selection.'
 };
 
-export const abrahamB1TeacherGuide: TeacherGuideSection[] = [
-  {
-    chapter: 'Truth, Idolatry & Abraham\'s Early Reasoning',
-    timing: '40 minutes',
-    objectives: [
-      'Analyze the environment of Babylon and explain why idol worship is presented as false belief.',
-      'Identify and use B1 vocabulary related to worship, idolatry, reasoning, Creator, and creation.',
-      'Explain Prophet Abraham\'s early rejection of idols using cause-and-effect language.'
-    ],
-    pedagogy: 'Critical Thinking & Guided Discovery. Suitable for High School Prep, 9th, and 10th-grade students. Encourage students to move beyond plot summary and explain the logic behind Abraham\'s rejection of idols.',
-    grammarFocus: 'Cause-and-effect structures: because, so, therefore, as a result. Contrast with but, however, and although.',
-    pronunciationFocus: 'Academic word stress in monotheism, idolatry, intelligent, Creator, creation, and worship. Practice clear final consonants in idol, temple, and path.',
-    lessonPlan: '1. Warm-up: Ask what a statue can and cannot do. 2. Visual Analysis: Examine Babylon, idols, temple, star, moon, and sun visuals. 3. Textual Analysis: Students identify Abraham\'s observations and conclusions. 4. Reasoning Chart: Object / What happened / Abraham\'s conclusion. 5. Sentence Practice: Students write cause-and-effect and contrast sentences about idols and created things.',
-    discussionPoints: [
-      'Why did Prophet Abraham question the beliefs of his society instead of simply following tradition?',
-      'How does the story distinguish between the Creator and creation?',
-      'Why is careful thinking important when people inherit ideas from their community?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write an analytical paragraph explaining how observation and reasoning led Abraham toward the truth.',
-      strugglingLearners: 'Complete a guided chart with sentence starters: "The idol cannot...", "The star disappeared, so...", "Allah is the Creator because..."'
-    },
-    interactiveTips: [
-      'Use idol/statue hotspots to reinforce the idea that human-made objects cannot hear, move, speak, or help.',
-      'Use star, moon, and sun hotspots to compare appearing and disappearing with the permanence of the Creator.',
-      'Replay audio for the sky-observation section and ask students to mark contrast words.'
-    ],
-    assessmentTools: {
-      rubric: ['Cause-and-Effect Explanation (1-5)', 'Vocabulary Integration (1-5)', 'Use of Story Evidence (1-5)'],
-      exitTicket: ['Write one sentence explaining why idols cannot be gods.', 'Write one contrast sentence about the sun, moon, or star.']
-    },
-    kinestheticActivities: ['"Can / Cannot Corners": Students move to different corners after hearing actions such as hear, move, create, disappear, guide, and explain whether idols, created things, or Allah can be connected to them.'],
-    globalCitizenship: ['Discuss how critical thinking helps people avoid harmful traditions, misinformation, and blind imitation.'],
-    extraResources: {
-      worksheets: ['Creator vs. Creation Reasoning Chart', 'B1 Cause-and-Effect Connectors Practice'],
-      links: [{ label: 'Placeholder: Monotheism and Critical Thinking Resource', url: '#' }]
-    }
-  },
-  {
-    chapter: 'Courage, Public Truth & The Fire Miracle',
-    timing: '40 minutes',
-    objectives: [
-      'Sequence the events from Abraham\'s call to his people through the fire miracle.',
-      'Analyze the people\'s emotional reactions, including anger, shame, arrogance, and refusal of truth.',
-      'Use past simple verbs and sequencing language to retell the idol-breaking event and the fire miracle.'
-    ],
-    pedagogy: 'Event Sequencing & Moral Analysis. Focus on courage, arrogance, public pressure, and trust in Allah rather than only the dramatic action of the fire.',
-    grammarFocus: 'Past simple narration and sequencing: first, then, after that, later, finally. Introduce reason clauses with because and result clauses with therefore.',
-    pronunciationFocus: 'Past tense endings in asked, trusted, looked, challenged, and destroyed. Stress in arrogant, miracle, punishment, and courage.',
-    lessonPlan: '1. Review: Students summarize Abraham\'s reasoning in two sentences. 2. Vocabulary Lead-in: arrogant, ashamed, furious, axe, miracle, trust. 3. Guided Reading: Focus on the call to the people, the broken idols, the questioning, and the fire. 4. Sequencing Task: Students arrange event cards in order. 5. Values Discussion: Why did the miracle not change arrogant hearts? 6. Mini Writing: Students write two sentences about courage and trust.',
-    discussionPoints: [
-      'Can a person be afraid and brave at the same time?',
-      'Why did the people feel ashamed but still refuse to accept the truth?',
-      'What does the fire miracle teach about trust in Allah during extreme difficulty?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short reflective paragraph titled "Courage Under Pressure" and connect it to Prophet Abraham\'s example.',
-      strugglingLearners: 'Match picture cards to event sentences before retelling the story orally with sentence frames.'
-    },
-    interactiveTips: [
-      'Use the biggest idol hotspot to discuss Abraham\'s logical answer and public demonstration.',
-      'Use the fire hotspot to emphasize safety, miracle, and trust rather than fear.',
-      'Encourage students to listen to the fire section and notice how narrative tension rises and resolves.'
-    ],
-    assessmentTools: {
-      rubric: ['Sequencing Accuracy (1-5)', 'Past Tense Use (1-5)', 'Moral Explanation (1-5)'],
-      exitTicket: ['Write one event from the story using past simple.', 'Explain one reason Abraham stayed calm.']
-    },
-    kinestheticActivities: ['"Human Timeline": Students each hold an event card and physically arrange themselves in the correct order from Abraham\'s call to the fire becoming cool and safe.'],
-    globalCitizenship: ['Discuss standing for truth respectfully when the majority disagrees and how courage can be peaceful rather than aggressive.'],
-    extraResources: {
-      worksheets: ['Fire Miracle Sequencing Cards', 'Past Simple Retelling Practice'],
-      links: [{ label: 'Placeholder: Courage and Moral Pressure Resource', url: '#' }]
-    }
-  },
-  {
-    chapter: 'Abraham and Nimrod: Logic, Power & Migration',
-    timing: '40 minutes',
-    objectives: [
-      'Explain Nimrod\'s claim and Abraham\'s response using B1 summary language.',
-      'Evaluate the difference between real power and arrogant display of control.',
-      'Discuss why Abraham migrated and how migration can be connected to mission, faith, and perseverance.'
-    ],
-    pedagogy: 'Debate Analysis & Ethical Reasoning. Students examine a short argument and identify why Abraham\'s response is simple, logical, and powerful.',
-    grammarFocus: 'Reported speech and summary language: Nimrod claimed that..., Abraham replied that..., The story shows that... Also practice although/however for contrast.',
-    pronunciationFocus: 'Clear contrast between life and death. Stress in ordinary, naturally, migration, argument, and response.',
-    lessonPlan: '1. Warm-up: Ask "What is real power?" 2. Reading/Listening: Focus on the Nimrod dialogue. 3. Debate Chart: Nimrod\'s claim / Abraham\'s answer / result. 4. Reported Speech Practice: Students rewrite direct speech as summary sentences. 5. Migration Discussion: Why did Abraham leave Babylon? 6. Exit Writing: Students write a short paragraph about power and truth.',
-    discussionPoints: [
-      'Why was Abraham\'s answer about the sun rising from the east stronger than Nimrod\'s claim?',
-      'What is the difference between authority, arrogance, and real power?',
-      'Why might a person leave home for a higher purpose or mission?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a dialogue extension between Abraham and Nimrod using respectful but firm argumentation.',
-      strugglingLearners: 'Use a three-column debate chart with cloze sentences: "Nimrod claimed that...", "Abraham answered that...", "Nimrod could not..."'
-    },
-    interactiveTips: [
-      'Use a king/debate hotspot to discuss arrogance and the limits of human power.',
-      'Use a migration route visual or placeholder map to help students see movement from Babylon to other lands.',
-      'Ask students to replay the dialogue section and mark the claim and response.'
-    ],
-    assessmentTools: {
-      rubric: ['Argument Analysis (1-5)', 'Reported Speech Accuracy (1-5)', 'Summary Clarity (1-5)'],
-      exitTicket: ['Summarize Nimrod\'s claim in reported speech.', 'Write one sentence explaining why Abraham migrated.']
-    },
-    kinestheticActivities: ['"Claim and Response": One side of the class holds claim cards; the other side holds response cards. Students match each claim with the strongest logical answer.'],
-    globalCitizenship: ['Discuss how respectful debate, evidence, and reasoning can help people challenge injustice and arrogance.'],
-    extraResources: {
-      worksheets: ['Nimrod Debate Analysis Chart', 'Reported Speech in Narrative Dialogue'],
-      links: [{ label: 'Placeholder: Debate Skills for B1 Learners', url: '#' }]
-    }
-  },
-  {
-    chapter: 'Hagar, Ishmael, Zamzam & Building a Sacred Community',
-    timing: '40 minutes',
-    objectives: [
-      'Identify the main events in the valley, including Hagar\'s search for water and the appearance of Zamzam.',
-      'Explain how trust in Allah and human effort work together in Hagar\'s actions.',
-      'Use purpose language to describe Abraham\'s prayer, Hagar\'s search, settlement in Mecca, and the building of the Ka\'ba.'
-    ],
-    pedagogy: 'Emotional Understanding & Values-Based Reflection. Students analyze Hagar\'s courage, effort, patience, and trust as central elements of the story, not as a secondary episode.',
-    grammarFocus: 'Purpose language with to / in order to / so that: Hagar ran to find water; Abraham prayed so that his family would be protected; people settled there because of the spring.',
-    pronunciationFocus: 'Stress in foundation, pilgrimage, gratitude, settlement, and protection. Practice place names: Safa, Marwa, Zamzam, Mecca, Ka\'ba.',
-    lessonPlan: '1. Warm-up: Ask what people need most in a desert. 2. Vocabulary Preview: valley, thirst, spring, blessing, sacred, foundation. 3. Guided Reading: Focus on Hagar and Ishmael in the valley. 4. Picture Sequence: valley, search, Zamzam, settlement, Ka\'ba. 5. Purpose Sentence Practice: Students write sentences with to and so that. 6. Values Reflection: How did Hagar show both effort and trust?',
-    discussionPoints: [
-      'Why is Hagar\'s running between the hills an example of both effort and trust?',
-      'What does Zamzam represent in the story?',
-      'How does a difficult valley become the beginning of a sacred community?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph explaining the relationship between trust, action, and gratitude in Hagar\'s story.',
-      strugglingLearners: 'Label a visual sequence with key words and complete sentence frames such as "Hagar ran to..." and "Zamzam appeared when..."'
-    },
-    interactiveTips: [
-      'Use the Safa and Marwa hotspot to explain effort, movement, and perseverance.',
-      'Use the Zamzam hotspot to discuss blessing, gratitude, and Allah\'s help.',
-      'Use the Ka\'ba hotspot to connect worship, unity, and Prophet Abraham\'s mission.'
-    ],
-    assessmentTools: {
-      rubric: ['Event Sequence (1-5)', 'Purpose Language (1-5)', 'Values Reflection (1-5)'],
-      exitTicket: ['Write one purpose sentence about Hagar.', 'Write one sentence explaining why Zamzam is important.']
-    },
-    kinestheticActivities: ['"Safa-Marwa Walk": Students walk between two classroom points labeled Safa and Marwa, then pause and say one sentence about effort, trust, or patience.'],
-    globalCitizenship: ['Discuss how patience, effort, and hope can help families and communities survive difficult conditions and build new beginnings.'],
-    extraResources: {
-      worksheets: ['Hagar\'s Effort and Trust Reflection Sheet', 'Purpose Clauses Practice'],
-      links: [{ label: 'Placeholder: Zamzam and Sacred Geography Resource', url: '#' }]
-    }
-  },
-  {
-    chapter: 'Sacrifice, Obedience & Final Moral Synthesis',
-    timing: '40 minutes',
-    objectives: [
-      'Analyze the sacrifice episode as a test of obedience, love, and submission to Allah.',
-      'Synthesize major themes from the whole story: truth, courage, trust, patience, gratitude, sacrifice, and obedience.',
-      'Produce a B1-level reflective paragraph using target vocabulary and connectors.'
-    ],
-    pedagogy: 'Socratic Seminar & Reflective Writing. Keep discussion respectful, age-appropriate, and focused on values, obedience, and trust rather than sensational detail.',
-    grammarFocus: 'Reflective and analytical sentence frames: This shows that..., This teaches us that..., Although..., Therefore..., In my opinion..., The most important lesson is...',
-    pronunciationFocus: 'Expressive reading of reflective sentences. Word stress in obedience, sacrifice, submission, gratitude, perseverance, and reflection.',
-    lessonPlan: '1. Review: Students list five major events from the story. 2. Guided Discussion: What tests did Abraham face? 3. Theme Sorting: Students sort events under truth, courage, trust, patience, gratitude, and obedience. 4. Final Reflection: Students choose one theme and write a paragraph using at least five target words. 5. Peer Share: Students read one sentence aloud and receive feedback.',
-    discussionPoints: [
-      'Why is obedience difficult when a test touches something a person loves deeply?',
-      'How does Prophet Abraham\'s life show trust in Allah across different situations?',
-      'Which value from the story is most needed in modern life: truth, courage, trust, patience, gratitude, or obedience? Why?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write an extended reflection comparing Abraham\'s courage before his people with his obedience during personal tests.',
-      strugglingLearners: 'Use a paragraph frame: "The most important lesson is... In the story,... This teaches me that..."'
-    },
-    interactiveTips: [
-      'Use final challenge or glossary hotspots to review key vocabulary before writing.',
-      'Encourage students to revisit earlier chapter hotspots and connect them to final themes.',
-      'Use audio replay for powerful sentences and ask students to practice reflective intonation.'
-    ],
-    assessmentTools: {
-      rubric: ['Theme Synthesis (1-5)', 'Vocabulary Use (1-5)', 'Paragraph Organization (1-5)', 'Personal Reflection (1-5)'],
-      exitTicket: ['Choose one value from the story and explain it in one sentence.', 'Write one way you can apply a lesson from Prophet Abraham\'s story in daily life.']
-    },
-    kinestheticActivities: ['"Theme Gallery Walk": Place theme posters around the room. Students add sticky notes with events from the story that match each theme.'],
-    globalCitizenship: ['Connect the story to universal values: integrity, responsible action, family care, perseverance, respect, and service to a higher purpose.'],
-    extraResources: {
-      worksheets: ['Final Moral Synthesis Paragraph Planner', 'Theme Sorting Cards: Prophet Abraham B1'],
-      links: [{ label: 'Placeholder: Reflective Writing Guide for B1 Learners', url: '#' }]
-    }
-  }
+const base = (section: TeacherGuideSection): TeacherGuideSection => section;
+
+export const abrahamB1TeacherGuideEn: TeacherGuideSection[] = [
+  base({
+    chapter: '1. Abraham in Babylon', timing: '35–40 minutes',
+    objectives: ['Identify what people in Babylon worshipped.', 'Explain with evidence why the idols are presented as powerless.', 'Use can/could and cannot/could not to describe ability.'],
+    pedagogy: 'Guided discovery: move from concrete observations to a supported conclusion rather than supplying the conclusion first.',
+    priorKnowledge: ['Learners can describe objects and basic abilities.', 'Learners know that a claim should be supported by a text detail.'],
+    anticipatedMisconceptions: ['Students may treat the chapter only as a list of old beliefs.', 'Students may say the idols were weak without citing what they could not do.'],
+    grammarFocus: 'can/cannot; could/could not; because for reason', pronunciationFocus: 'Babylon, idols, statues, worshipped; final consonants in talked/asked.',
+    beforeReading: ['Show the title and ask: What can a statue do by itself?', 'Predict two actions people may expect from something they worship.'],
+    duringReading: ['Underline what people do toward the statues.', 'Box every action the idols cannot perform.', 'Listen once and mark the sentence with the strongest contrast.'],
+    afterReading: ['Build a two-column People / Statues evidence chart.', 'Students give one claim + one quotation-level detail + one explanation.'],
+    lessonPlan: '5m predict; 8m read/listen; 8m evidence chart; 8m Quick Challenge and pair explanation; 6m written claim-evidence-explanation; 3m exit ticket.',
+    discussionPoints: ['Which detail is the strongest evidence that the statues cannot answer people?', 'Why is asking for help different from actually being able to give help?'],
+    interactiveTips: ['Use Chapter 1 Word Notes and hotspots only after learners first locate evidence in the prose.', 'Run the Quick Challenge after the evidence chart, not before reading.'],
+    differentiation: { strugglingLearners: 'Use: “The people ___. The statues could not ___. This shows ___.”', fastFinishers: 'Rank three pieces of evidence from strongest to weakest and justify the order.' },
+    formativeAssessment: ['Accurate People/Statues distinction', 'One evidence-backed oral explanation'], expectedResponses: ['People asked the statues for help and made wishes.', 'The statues could not eat, drink, talk, move, hear or understand.'],
+    transferTask: 'Choose an everyday claim and list one observable piece of evidence that would support or weaken it.', teacherReflection: 'Did students explain the inference, or only repeat the fact?'
+  }),
+  base({
+    chapter: '2. Abraham and His Father’s Idols', timing: '35–40 minutes',
+    objectives: ['Explain how Azer is connected with idol making.', 'Compare Azer’s claims about Mardukh with Abraham’s treatment of the statue.', 'Use reporting verbs accurately.'],
+    pedagogy: 'Contrast stated belief with observable action. Keep the focus on reasoning in the chapter rather than ridicule.',
+    priorKnowledge: ['Learners can identify speaker and action.', 'Learners met the idea of powerless idols in Chapter 1.'],
+    anticipatedMisconceptions: ['Students may assume Abraham’s laughter alone is the main evidence.', 'Students may confuse what Azer claims with what the narrator establishes as fact.'],
+    grammarFocus: 'asked, replied, told, said; reported content with that', pronunciationFocus: 'Azer, Mardukh, idol maker, knowledge.',
+    beforeReading: ['Ask: How can knowing who made an object affect a claim about its power?'],
+    duringReading: ['Mark what Azer says the idols are.', 'Mark what Abraham actually does with them.', 'Listen for the direct-speech reporting verbs.'],
+    afterReading: ['Compare claim vs action in two sentences.', 'Complete the Quick Challenge and explain why the correct answer matters.'],
+    lessonPlan: '5m recall Chapter 1; 10m read/listen; 8m claim/action table; 7m reporting-verb practice; 7m Quick Challenge + discussion; 3m exit.',
+    discussionPoints: ['How does seeing an idol being made affect Abraham’s reasoning?', 'Why is the Mardukh explanation unconvincing to Abraham?'],
+    interactiveTips: ['Use the Azer/Mardukh hotspots to locate the two sides of the contrast.'],
+    differentiation: { strugglingLearners: 'Frame: “Azer said ___. However, Abraham ___.”', fastFinishers: 'Rewrite two direct quotations as reported speech and explain the contrast.' },
+    formativeAssessment: ['Correct speaker attribution', 'Accurate contrast sentence'], expectedResponses: ['Azer made idols and called them gods.', 'Abraham treated the statues like objects/toys, so the claim of divine power is inconsistent.'],
+    transferTask: 'Write one sentence distinguishing what a person claims from what observable evidence shows.', teacherReflection: 'Did learners distinguish narrator evidence from a character’s belief?'
+  }),
+  base({
+    chapter: '3. Searching for the True Creator', timing: '35–40 minutes',
+    objectives: ['Explain what Abraham is searching for.', 'Identify the reasoning pattern in the star and moon episodes.', 'Use when/but/because to connect observation and conclusion.'],
+    pedagogy: 'Pattern finding: learners infer the repeated reasoning structure from two parallel events.',
+    priorKnowledge: ['Learners understand Creator vs created object from Chapters 1–2.'],
+    anticipatedMisconceptions: ['Students may retell star then moon without stating the common principle.', 'Students may say brightness is the reason for rejection.'],
+    grammarFocus: 'when + event; because + reason; but for contrast', pronunciationFocus: 'Creator, countryside, disappeared, faded.',
+    beforeReading: ['Predict what feature would make Abraham reject something as the Creator.'],
+    duringReading: ['Underline what happens to the star.', 'Underline what happens to the moon.', 'Circle the conclusion after each observation.'],
+    afterReading: ['State the shared pattern in one sentence.', 'Use the Tap & Reveal Quick Challenge only after answering from memory.'],
+    lessonPlan: '5m prediction; 10m read/listen; 8m parallel-event table; 7m language linking; 7m Quick Challenge + explanation; 3m exit.',
+    discussionPoints: ['What is the repeated evidence in both sky examples?', 'How does repeated evidence strengthen a conclusion?'],
+    interactiveTips: ['Use the sky hotspot to revisit the common pattern, not to introduce a new interpretation.'],
+    differentiation: { strugglingLearners: 'Frame: “When the ___ disappeared, Abraham understood ___.”', fastFinishers: 'Explain the reasoning pattern without naming the star or moon.' },
+    formativeAssessment: ['Shared-pattern statement', 'Correct cause/result connector'], expectedResponses: ['Both the star and moon disappear/fade.', 'Abraham concludes that something that disappears cannot be Allah.'],
+    transferTask: 'Give a non-religious example in which two observations support the same conclusion.', teacherReflection: 'Could students express the principle rather than only list events?'
+  }),
+  base({
+    chapter: '4. Abraham Receives Guidance', timing: '35–40 minutes',
+    objectives: ['Connect the setting sun with Abraham’s conclusion about creation.', 'Explain why guidance leads to responsibility in the chapter.', 'Summarize the father-son exchange accurately.'],
+    pedagogy: 'Cause-to-responsibility reading: track how an insight becomes prayer, mission and difficult communication.',
+    priorKnowledge: ['Learners know the star/moon pattern.'],
+    anticipatedMisconceptions: ['Students may say Abraham independently guarantees the right path rather than asks Allah for guidance.', 'Students may soften or exaggerate the father’s threat.'],
+    grammarFocus: 'if-clauses in the quoted prayer; should for responsibility', pronunciationFocus: 'prostrated, guidance, Messenger, recognized.',
+    beforeReading: ['Ask: What can happen after a person becomes convinced of an important truth?'],
+    duringReading: ['Number four stages: sun → prayer → Messenger → father.', 'Listen for the father’s response and record only what the text says.'],
+    afterReading: ['Explain why receiving guidance creates a new responsibility for Abraham.', 'Complete Quick Challenge and justify with two stages.'],
+    lessonPlan: '5m recall; 10m read/listen; 8m four-stage chain; 7m language focus; 7m Quick Challenge + pair answer; 3m exit.',
+    discussionPoints: ['Why does Abraham ask for guidance even after reaching a conclusion?', 'What does his first call to his father show about the difficulty of his mission?'],
+    interactiveTips: ['Use the guidance hotspot to revisit the prayer and mission link.'],
+    differentiation: { strugglingLearners: 'Provide the four stage labels to order.', fastFinishers: 'Write a short explanation using therefore and however.' },
+    formativeAssessment: ['Accurate four-stage chain', 'Text-faithful description of the father’s response'], expectedResponses: ['Abraham asks Allah to guide him.', 'His father becomes angry, threatens to stone him and tells him to leave.'],
+    transferTask: 'Describe one situation where learning something important creates responsibility to act carefully.', teacherReflection: 'Did learners keep inference grounded in the chapter?'
+  }),
+  base({
+    chapter: '5. Abraham Calls His People', timing: '35–40 minutes',
+    objectives: ['Compare inherited tradition with Abraham’s evidence.', 'Explain the food/drink/healing argument.', 'Use because/while/however to express contrast.'],
+    pedagogy: 'Evidence comparison: learners evaluate two different kinds of reasons presented in the dialogue.',
+    priorKnowledge: ['Learners can distinguish claim and evidence.'],
+    anticipatedMisconceptions: ['Students may treat “our fathers did it” as evidence that the idols have power.', 'Students may add miracles not mentioned in this chapter.'],
+    grammarFocus: 'because, while, however; present simple for general claims', pronunciationFocus: 'furious, reconsider, harm, heals.',
+    beforeReading: ['Ask: Is “people before us did it” the same as evidence that something works?'],
+    duringReading: ['Mark the people’s reason.', 'Mark Abraham’s examples of Allah’s care.', 'Listen for emotional response words.'],
+    afterReading: ['Compare inherited habit and observable provision.', 'Complete Quick Challenge, then write a two-sentence explanation.'],
+    lessonPlan: '5m question; 10m read/listen; 8m reason/evidence comparison; 7m connector practice; 7m Quick Challenge; 3m exit.',
+    discussionPoints: ['What kind of reason do the people give?', 'Why are food, drink and healing stronger examples in Abraham’s argument?'],
+    interactiveTips: ['Use only the existing public-call and people-response hotspots.'],
+    differentiation: { strugglingLearners: 'Frame: “They followed tradition because ___. Abraham argued that ___.”', fastFinishers: 'Evaluate which sentence in the chapter most strongly invites the people to reconsider.' },
+    formativeAssessment: ['Correct classification of tradition vs evidence', 'One supported comparison'], expectedResponses: ['The people say their fathers worshipped the idols.', 'Abraham points to Allah as the One who provides and heals.'],
+    transferTask: 'Give one example of a habit and one example of evidence; explain the difference.', teacherReflection: 'Did discussion stay with reasoning rather than mocking inherited practices?'
+  }),
+  base({
+    chapter: '6. Abraham Enters the Temple', timing: '35–40 minutes',
+    objectives: ['Sequence Abraham’s plan accurately.', 'Explain the purpose of the food question and the largest idol.', 'Use sequencing language in a short retelling.'],
+    pedagogy: 'Purposeful sequencing: every action is linked to the later public question rather than treated as isolated action.',
+    priorKnowledge: ['Learners know the people ignored Abraham’s public call.'],
+    anticipatedMisconceptions: ['Students may claim the largest idol actually broke the others.', 'Students may treat the food joke as unrelated detail.'],
+    grammarFocus: 'first, then, after that, until, finally', pronunciationFocus: 'temple, axe, ridiculous, celebration.',
+    beforeReading: ['Predict why someone making an argument might create a visible demonstration.'],
+    duringReading: ['Number the plan steps.', 'Underline the food question.', 'Circle what Abraham leaves unchanged.'],
+    afterReading: ['Sequence the four actions.', 'Explain how the last action prepares Chapter 7.'],
+    lessonPlan: '5m prediction; 10m read/listen; 8m sequence; 7m purpose discussion; 7m Quick Challenge; 3m exit.',
+    discussionPoints: ['Why mention the untouched food?', 'Why leave the largest statue with the axe?'],
+    interactiveTips: ['Use the axe and food hotspots after students identify those details in the prose.'],
+    differentiation: { strugglingLearners: 'Give four event cards to order.', fastFinishers: 'Add a purpose clause to each event: “He did this so that…” while keeping claims text-supported.' },
+    formativeAssessment: ['Correct event order', 'Reasonable, text-grounded purpose explanation'], expectedResponses: ['The food remains because idols cannot eat.', 'The largest idol and axe set up a question about whether idols can act.'],
+    transferTask: 'Write a four-step process using sequence words and one purpose clause.', teacherReflection: 'Did learners avoid treating Abraham’s later statement as a literal claim?'
+  }),
+  base({
+    chapter: '7. The Broken Idols', timing: '40 minutes',
+    objectives: ['Explain how Abraham uses the people’s own admission.', 'Distinguish recognizing an argument from accepting it.', 'Describe arrogance as an action shown in the chapter.'],
+    pedagogy: 'Dialogic reasoning and values-as-action: examine what speakers admit, then what they choose to do.',
+    priorKnowledge: ['Learners know the temple plan from Chapter 6.'],
+    anticipatedMisconceptions: ['Students may say the people immediately believe Abraham.', 'Students may define arrogance abstractly without linking it to refusal to admit error.'],
+    grammarFocus: 'question forms; even though/although for contrast', pronunciationFocus: 'smashed, forefathers, arrogant, protect.',
+    beforeReading: ['Recall why the largest idol was left with the axe.'],
+    duringReading: ['Highlight the people’s admission.', 'Highlight Abraham’s next question.', 'Mark the shift from shame to shouting.'],
+    afterReading: ['Build Admission → Reasoning → Choice chain.', 'Complete Quick Challenge and explain the role of arrogance.'],
+    lessonPlan: '5m recap; 12m read/listen; 8m dialogue chain; 7m contrast writing; 5m Quick Challenge; 3m exit.',
+    discussionPoints: ['Why is their own admission powerful evidence?', 'What action in the chapter shows arrogance most clearly?'],
+    interactiveTips: ['Use broken-idol and people hotspots to revisit evidence and response.'],
+    differentiation: { strugglingLearners: 'Frame: “They admitted ___. Abraham asked ___. However, they ___.”', fastFinishers: 'Explain how social pressure and forefathers may contribute to their refusal, without adding facts beyond the text.' },
+    formativeAssessment: ['Three-step dialogue chain', 'Accurate explanation of arrogance'], expectedResponses: ['They admit the idols cannot speak.', 'They feel shame but refuse to accept they are wrong and demand punishment.'],
+    transferTask: 'Describe a situation where a person can recognize evidence but still resist changing their view.', teacherReflection: 'Did learners separate evidence, emotion and decision?'
+  }),
+  base({
+    chapter: '8. Preparing the Great Fire', timing: '40 minutes',
+    objectives: ['Identify details that establish the severity of the danger.', 'Explain how Abraham’s calmness is linked to trust.', 'Contrast intended punishment with actual outcome.'],
+    pedagogy: 'Tension-and-resolution reading with careful evidence selection; avoid sensationalising the violence.',
+    priorKnowledge: ['Learners know why the people called for punishment.'],
+    anticipatedMisconceptions: ['Students may say Abraham knew exactly how Allah would save him.', 'Students may say the fire never became dangerous.'],
+    grammarFocus: 'although/even though; so…that for degree/result', pronunciationFocus: 'approach, catapult, flames, Gabriel.',
+    beforeReading: ['Ask learners to predict how a writer shows that a danger is extreme.'],
+    duringReading: ['Collect three danger details.', 'Underline the sentence explaining Abraham’s calmness.', 'Listen for the exact outcome of the fire.'],
+    afterReading: ['Contrast the people’s intention with the outcome.', 'Complete Quick Challenge and support the answer with one sentence.'],
+    lessonPlan: '5m prediction; 12m read/listen; 8m danger evidence; 7m contrast sentence; 5m Quick Challenge; 3m exit.',
+    discussionPoints: ['Which detail makes the danger clearest?', 'What does trust mean here if Abraham still faces the fire?'],
+    interactiveTips: ['Use the fire hotspot to reinforce “cool and safe”; do not add visual claims not in the prose.'],
+    differentiation: { strugglingLearners: 'Select from three provided evidence sentences.', fastFinishers: 'Write two contrast sentences: intended result vs actual result.' },
+    formativeAssessment: ['One accurate danger detail', 'One evidence-based trust explanation'], expectedResponses: ['The heat was too strong to approach and birds could not fly over it.', 'Abraham stayed calm because he trusted Allah; the fire became cool and safe.'],
+    transferTask: 'Write about facing a difficult task calmly while still taking the situation seriously.', teacherReflection: 'Did learners equate trust with certainty about the exact outcome?'
+  }),
+  base({
+    chapter: '9. The Miracle and Nimrod', timing: '40 minutes',
+    objectives: ['Summarize Nimrod’s claim and Abraham’s response.', 'Distinguish political control over people from power over creation.', 'Use reported speech to explain the debate.'],
+    pedagogy: 'Argument analysis: identify claim, demonstration, counter-challenge and unresolved arrogance.',
+    priorKnowledge: ['Learners know Abraham survives the fire unharmed.'],
+    anticipatedMisconceptions: ['Students may interpret releasing one prisoner as literally giving life.', 'Students may say the miracle immediately changes the people’s beliefs.'],
+    grammarFocus: 'reported speech: claimed that, replied that, asked whether', pronunciationFocus: 'miracle, rage, Nimrod, ordinary, response.',
+    beforeReading: ['Ask: What is the difference between having authority over people and controlling nature?'],
+    duringReading: ['Label Claim / Example / Counter-challenge.', 'Listen for the point where Nimrod cannot answer.'],
+    afterReading: ['Convert two direct quotations into reported speech.', 'Complete Quick Challenge and explain why the sunrise question changes the level of the debate.'],
+    lessonPlan: '5m warm-up; 12m read/listen; 8m argument chart; 7m reported speech; 5m Quick Challenge; 3m exit.',
+    discussionPoints: ['Why does the prisoner example not prove control over life itself?', 'Why is the sun challenge different?'],
+    interactiveTips: ['Use the Nimrod and sun hotspots to distinguish claim and counter-challenge.'],
+    differentiation: { strugglingLearners: 'Use a three-box chart: Nimrod said / Abraham asked / result.', fastFinishers: 'Write a 4-sentence neutral summary of the debate in reported speech.' },
+    formativeAssessment: ['Correct claim-response mapping', 'Reported-speech accuracy'], expectedResponses: ['Nimrod claims he can give life and death by killing one person and releasing another.', 'Abraham asks him to make the sun rise from the west; Nimrod cannot.'],
+    transferTask: 'Compare two kinds of “power” in everyday life: authority to decide and ability to control physical reality.', teacherReflection: 'Did learners analyse the logic rather than only memorise the final line?'
+  }),
+  base({
+    chapter: '10. Leaving Babylon', timing: '40 minutes',
+    objectives: ['Explain why Abraham leaves Babylon.', 'Identify Sarah and Lot’s significance in the chapter.', 'Trace how migration opens a new family and mission setting.'],
+    pedagogy: 'Cause/consequence and changing-setting analysis; migration is treated as mission continuation and responsibility.',
+    priorKnowledge: ['Learners know sustained opposition in Babylon.'],
+    anticipatedMisconceptions: ['Students may say Abraham leaves simply to escape.', 'Students may confuse the valley arrival with the earlier Syria/Palestine travel.'],
+    grammarFocus: 'therefore, so, in order to; past travel verbs', pronunciationFocus: 'faith, camelback, Palestine, valley, Ishmael.',
+    beforeReading: ['Ask: When can moving to a new place continue a goal rather than abandon it?'],
+    duringReading: ['Mark the stated reason for leaving.', 'Trace Babylon → Syria/Palestine → valley.', 'Identify new family details.'],
+    afterReading: ['Explain migration as cause + purpose.', 'Complete Quick Challenge and produce a three-stage route summary.'],
+    lessonPlan: '5m question; 12m read/listen; 8m route/purpose chart; 7m connector writing; 5m Quick Challenge; 3m exit.',
+    discussionPoints: ['Why are Sarah and Lot mentioned before the departure?', 'How does the chapter broaden Abraham’s responsibility?'],
+    interactiveTips: ['Use existing Leaving Babylon and Lonely Valley hotspots; do not invent a map if none is supplied.'],
+    differentiation: { strugglingLearners: 'Provide route names and have learners connect them with arrows and reasons.', fastFinishers: 'Explain how the setting change changes the kind of challenges in the story.' },
+    formativeAssessment: ['Correct reason for migration', 'Accurate route/family summary'], expectedResponses: ['Only Sarah and Lot shared his faith among those named.', 'He leaves because people will not listen and he wants to spread Allah’s message elsewhere.'],
+    transferTask: 'Write a cause-purpose sentence about changing strategy when one approach no longer works.', teacherReflection: 'Did learners avoid reducing migration to escape?'
+  }),
+  base({
+    chapter: '11. Hagar and Ishmael in the Valley', timing: '40 minutes',
+    objectives: ['Explain Hagar’s trust using her words.', 'Explain how her search shows active effort.', 'Connect sa’y with the chapter’s remembered action without losing the immediate story context.'],
+    pedagogy: 'Trust-as-action: pair emotional understanding with concrete evidence and avoid presenting Hagar as passive.',
+    priorKnowledge: ['Learners know why the family reaches the valley.'],
+    anticipatedMisconceptions: ['Students may say trust means waiting without action.', 'Students may focus on distance numbers as the chapter’s main learning.'],
+    grammarFocus: 'purpose clauses: to, so that; past continuous/simple for situation and action', pronunciationFocus: 'Hagar, Ishmael, Safa, Marwa, ritual, blessings.',
+    beforeReading: ['Ask: What would a family need first in a valley with no farming or water?'],
+    duringReading: ['Underline Hagar’s statement of trust.', 'Circle every action she takes when supplies run out.', 'Listen for why she moves between the hills.'],
+    afterReading: ['Build Trust + Effort → response chart.', 'Complete Quick Challenge and explain why both halves matter.'],
+    lessonPlan: '5m context; 12m read/listen; 8m trust/effort evidence; 7m purpose clauses; 5m Quick Challenge; 3m exit.',
+    discussionPoints: ['How can trust and effort strengthen rather than contradict each other?', 'Which action best shows perseverance?'],
+    interactiveTips: ['Use Hagar and Safa/Marwa hotspots only to reinforce the actions described.'],
+    differentiation: { strugglingLearners: 'Frame: “Hagar trusted ___. Therefore she did not ___. She ___ to find ___.”', fastFinishers: 'Write a short claim-evidence-explanation about trust as action.' },
+    formativeAssessment: ['One trust quotation/detail', 'One effort detail plus purpose'], expectedResponses: ['Hagar says Allah will protect them.', 'She repeatedly runs between Safa and Marwa searching for water and food.'],
+    transferTask: 'Name one goal that requires both confidence and repeated effort; explain the two parts.', teacherReflection: 'Did learners treat Hagar as an active agent in the chapter?'
+  }),
+  base({
+    chapter: '12. Zamzam and the City of Mecca', timing: '35–40 minutes',
+    objectives: ['Sequence the appearance and use of Zamzam.', 'Explain how water leads to settlement.', 'Use cause/result language to describe the growth of Mecca.'],
+    pedagogy: 'Cause-chain reading: move from immediate relief to longer-term settlement without adding unsupported history.',
+    priorKnowledge: ['Learners know Hagar is searching because supplies have run out.'],
+    anticipatedMisconceptions: ['Students may reverse the order and say people settled before Zamzam.', 'Students may treat “sacred” as meaning merely famous.'],
+    grammarFocus: 'because of, so, as a result; sequence verbs', pronunciationFocus: 'thirst, spring, sacred, Zamzam, Mecca.',
+    beforeReading: ['Predict what changes first if reliable water appears in a barren valley.'],
+    duringReading: ['Number water appears → Hagar collects it → family lives there → people settle → city grows.', 'Listen for the reason people come.'],
+    afterReading: ['Complete the cause-chain Quick Challenge.', 'Write two cause/result sentences.'],
+    lessonPlan: '5m prediction; 10m read/listen; 8m cause chain; 7m connector writing; 7m Quick Challenge + explanation; 3m exit.',
+    discussionPoints: ['Why can a water source change where people live?', 'How does the chapter move from one family’s need to a community beginning?'],
+    interactiveTips: ['Use Zamzam and Mecca hotspots after the sequence has been identified.'],
+    differentiation: { strugglingLearners: 'Give five event strips to order.', fastFinishers: 'Explain short-term and long-term consequences of Zamzam in separate sentences.' },
+    formativeAssessment: ['Correct cause chain', 'Accurate use of because/as a result'], expectedResponses: ['Water appears under Ishmael’s feet.', 'People later settle there because of the spring, and Mecca begins to grow.'],
+    transferTask: 'Explain one way a natural resource can influence settlement, using a general example.', teacherReflection: 'Did learners distinguish immediate outcome from longer-term consequence?'
+  }),
+  base({
+    chapter: '13. Building the Ka’ba', timing: '40 minutes',
+    objectives: ['Explain how Abraham and Ishmael cooperate in rebuilding the Ka’ba.', 'Connect the Ka’ba with the closing message of Tawheed.', 'Synthesize Abraham’s legacy across the story using evidence.'],
+    pedagogy: 'Synthesis and legacy: connect action, place and message while keeping claims within the chapter’s wording.',
+    priorKnowledge: ['Learners know how the valley becomes settled.', 'Learners can identify major themes from earlier chapters.'],
+    anticipatedMisconceptions: ['Students may say Abraham builds the Ka’ba alone.', 'Students may treat the building as separate from the closing message.'],
+    grammarFocus: 'relative clauses and synthesis connectors: which, therefore, finally', pronunciationFocus: 'foundations, Hajj, Oneness, descendants, peninsula.',
+    beforeReading: ['Ask: How can a physical place carry a message across generations?'],
+    duringReading: ['Mark what Abraham asks Ishmael to do.', 'Underline the sentence about the old foundations.', 'Box the final statement about Allah.'],
+    afterReading: ['Connect Builder(s) → Place → Purpose → Message.', 'Complete Quick Challenge and prepare one whole-book synthesis sentence.'],
+    lessonPlan: '5m question; 12m read/listen; 8m four-part synthesis; 7m Quick Challenge; 5m whole-book evidence sentence; 3m exit.',
+    discussionPoints: ['What does Ishmael’s response add to the building episode?', 'How does the final message connect back to Chapter 1?'],
+    interactiveTips: ['Use the Ka’ba and Tawheed hotspots for final synthesis.', 'Direct learners to whole-book assessments only after chapter evidence work is complete.'],
+    differentiation: { strugglingLearners: 'Frame: “Abraham and Ishmael ___. This place is connected with ___. The final message is ___.”', fastFinishers: 'Choose two earlier chapters and explain how they prepare the final idea of Tawheed.' },
+    formativeAssessment: ['Accurate builder/message connection', 'One cross-chapter synthesis with evidence'], expectedResponses: ['Abraham and Ishmael rebuild the Ka’ba on the old foundations.', 'The chapter closes with Allah’s Oneness and no partner, rival or helper.'],
+    transferTask: 'Write a short paragraph explaining how an action can leave a long-term legacy when later generations continue its meaning.', teacherReflection: 'Could students synthesize without inventing claims beyond the story?'
+  })
 ];
+
+// Backward-compatible export name for any non-runtime imports.
+export const abrahamB1TeacherGuide = abrahamB1TeacherGuideEn;
