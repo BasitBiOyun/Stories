@@ -16,8 +16,7 @@
     "validate": "node scripts/validation/runDeployChecks.mjs --checks-only",
     "validate:deploy": "node scripts/validation/runDeployChecks.mjs",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
-    "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
-    "diagnose:b2-highlight-pairs": "tsx scripts/validation/diagnoseB2HighlightPairs.ts"
+    "audit:media": "tsx scripts/validation/auditStorageMedia.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
