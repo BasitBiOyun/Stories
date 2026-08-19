@@ -11,7 +11,7 @@ const chapters = baseBlueprint.chapters
 
 export const yunusA2GoldLearningBlueprint = defineLearningBlueprint({
   ...baseBlueprint,
-  version: '2.1.0',
+  version: '2.1.1',
   status: 'pedagogy-reviewed' as const,
   qualityContractVersion: '2.0' as const,
   chapters,
