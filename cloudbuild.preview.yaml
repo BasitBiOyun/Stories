@@ -1,6 +1,5 @@
 # Preview continuous deployment: GitHub preview branch -> Cloud Build -> Cloud Run.
-# The trigger should point at this file and match only the `preview` branch.
-# Pedagogical validators are intentionally not deployment gates; preview is for human review.
+# Pedagogical content is reviewed manually. This pipeline builds and deploys the authored application.
 
 substitutions:
   _REGION: us-west1
