@@ -1,40 +1,82 @@
 import type { BookData } from '../../../types';
 import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
+import { polishB2GuideSections } from '../../b2GuidePresentation';
+import {
+  buildB2FriendlyStudentGuideSections,
+  buildB2FriendlyStudentGuideText,
+  buildB2GoldStudentGuideMetadata,
+  buildB2GoldTeacherGuideMetadata,
+} from '../../b2GoldGuides';
+import { finalizeB2LearningBlueprint } from '../../b2GoldPedagogy';
+import { buildB2GoldReview } from '../../b2GoldReview';
+import {
+  applyB2CuratedVocabulary,
+  applyB2GoldReview,
+  prepareB2GoldLearningStructure,
+} from '../../b2GoldStructure';
 import { mosesB2LearningBlueprint } from './learningBlueprint';
 import { mosesB2BlueprintConfig } from './config';
 import { mosesB2HighlightTargets, mosesB2SourcePagesAr, mosesB2SourcePagesEn } from './source';
 import {
-  mosesB2StudentGuideMetadataBlueprintAr,
-  mosesB2StudentGuideMetadataBlueprintEn,
-  mosesB2StudentGuideSectionsBlueprintAr,
-  mosesB2StudentGuideSectionsBlueprintEn,
-  mosesB2StudentGuideTextBlueprintAr,
-  mosesB2StudentGuideTextBlueprintEn,
   mosesB2TeacherGuideMetadataBlueprintAr,
   mosesB2TeacherGuideMetadataBlueprintEn,
 } from './support';
 
 export { mosesB2HighlightTargets };
 
-const mosesB2Blueprint = runB2BlueprintSystem({
+const story = 'moses' as const;
+const prepared = prepareB2GoldLearningStructure({
   englishPages: mosesB2SourcePagesEn,
   arabicPages: mosesB2SourcePagesAr,
   config: mosesB2BlueprintConfig,
-  blueprint: mosesB2LearningBlueprint,
 });
+const goldBlueprint = finalizeB2LearningBlueprint(mosesB2LearningBlueprint, story);
+const compiled = runB2BlueprintSystem({
+  englishPages: prepared.englishPages,
+  arabicPages: prepared.arabicPages,
+  config: prepared.config,
+  blueprint: goldBlueprint,
+});
+
+const curatedVocabulary = [
+  'oppression', 'manpower', 'authority', 'regret', 'guidance',
+  'miracle', 'arrogant', 'enslave', 'liberation', 'consequence',
+] as const;
+
+const pagesEn = applyB2CuratedVocabulary(
+  applyB2GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'en')),
+  goldBlueprint,
+  prepared.config.vocabularyPageId,
+  'en',
+  curatedVocabulary,
+);
+const pagesAr = applyB2CuratedVocabulary(
+  applyB2GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'ar')),
+  goldBlueprint,
+  prepared.config.vocabularyPageId,
+  'ar',
+  curatedVocabulary,
+);
+
+const teacherGuideEn = polishB2GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
+const teacherGuideAr = polishB2GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
+const selfStudyGuideEn = polishB2GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
+const selfStudyGuideAr = polishB2GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
+
+export const mosesB2GoldConfig = prepared.config;
 
 export const mosesB2BookDataEn: BookData = {
   id: 'moses-b2-en',
   title: 'Stories of the Prophets: Moses (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: mosesB2Blueprint.englishPages,
-  teacherGuide: mosesB2Blueprint.englishTeacherGuide,
-  teacherGuideMetadata: mosesB2TeacherGuideMetadataBlueprintEn,
-  selfStudyGuide: mosesB2Blueprint.englishSelfStudyGuide,
-  studentGuideSections: mosesB2StudentGuideSectionsBlueprintEn,
-  studentGuideText: mosesB2StudentGuideTextBlueprintEn,
-  studentGuideMetadata: mosesB2StudentGuideMetadataBlueprintEn,
+  pages: pagesEn,
+  teacherGuide: teacherGuideEn,
+  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(mosesB2TeacherGuideMetadataBlueprintEn, story, 'en', prepared.config.storyIds.length),
+  selfStudyGuide: selfStudyGuideEn,
+  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
+  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'en'),
+  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
 };
 
 export const mosesB2BookDataAr: BookData = {
@@ -42,13 +84,13 @@ export const mosesB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: mosesB2Blueprint.arabicPages,
-  teacherGuide: mosesB2Blueprint.arabicTeacherGuide,
-  teacherGuideMetadata: mosesB2TeacherGuideMetadataBlueprintAr,
-  selfStudyGuide: mosesB2Blueprint.arabicSelfStudyGuide,
-  studentGuideSections: mosesB2StudentGuideSectionsBlueprintAr,
-  studentGuideText: mosesB2StudentGuideTextBlueprintAr,
-  studentGuideMetadata: mosesB2StudentGuideMetadataBlueprintAr,
+  pages: pagesAr,
+  teacherGuide: teacherGuideAr,
+  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(mosesB2TeacherGuideMetadataBlueprintAr, story, 'ar', prepared.config.storyIds.length),
+  selfStudyGuide: selfStudyGuideAr,
+  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
+  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'ar'),
+  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
 };
 
 export const mosesB2BookData = mosesB2BookDataEn;
