@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
 import type { BookData, Exercise, PageData } from '../../src/types';
+import { validateBlueprintV2QualityContract } from '../../src/data/learningQualityContract';
 import { adamA2BookDataAr, adamA2BookDataEn } from '../../src/data/adam/a2';
 import { mosesA2BookDataAr, mosesA2BookDataEn } from '../../src/data/moses/a2';
 import { abrahamA2BookDataAr, abrahamA2BookDataEn } from '../../src/data/abraham/a2';
 import { meccaA2BookDataAr, meccaA2BookDataEn } from '../../src/data/mecca/a2';
 import { yunusEmreA2BookDataAr, yunusEmreA2BookDataEn } from '../../src/data/yunusEmre/a2';
+import { yunusA2GoldLearningBlueprint } from '../../src/data/yunusEmre/a2/goldLearningBlueprint';
 
 interface A2BookSpec {
   name: string;
@@ -153,6 +155,8 @@ const validateEdition = (spec: A2BookSpec, book: BookData, language: 'en' | 'ar'
   }
 };
 
+validateBlueprintV2QualityContract(yunusA2GoldLearningBlueprint);
+
 for (const spec of specs) {
   validateEdition(spec, spec.en, 'en');
   validateEdition(spec, spec.ar, 'ar');
@@ -169,6 +173,7 @@ for (const spec of specs) {
 }
 
 console.log('A2 blueprint system: PASS');
+console.log('- Yunus Emre A2 strict v2 quality contract: PASS');
 console.log('- Adam, Moses, Abraham, Bilal/Mecca, and Yunus Emre are blueprint-only');
 console.log('- Quick / Knowledge / Review / Final use distinct authored question wording');
 console.log('- Multiple-choice and matching answer sets are mechanically unambiguous');
