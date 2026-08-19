@@ -1,5 +1,19 @@
 import type { BookData } from '../../../types';
 import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
+import { polishB2GuideSections } from '../../b2GuidePresentation';
+import {
+  buildB2FriendlyStudentGuideSections,
+  buildB2FriendlyStudentGuideText,
+  buildB2GoldStudentGuideMetadata,
+  buildB2GoldTeacherGuideMetadata,
+} from '../../b2GoldGuides';
+import { finalizeB2LearningBlueprint } from '../../b2GoldPedagogy';
+import { buildB2GoldReview } from '../../b2GoldReview';
+import {
+  applyB2CuratedVocabulary,
+  applyB2GoldReview,
+  prepareB2GoldLearningStructure,
+} from '../../b2GoldStructure';
 import { abrahamB2LearningBlueprint } from './learningBlueprint';
 import { abrahamB2BlueprintConfig } from './config';
 import {
@@ -8,37 +22,65 @@ import {
   abrahamB2LearningPagesEn,
 } from './source';
 import {
-  abrahamB2StudentGuideMetadataBlueprintAr,
-  abrahamB2StudentGuideMetadataBlueprintEn,
-  abrahamB2StudentGuideSectionsBlueprintAr,
-  abrahamB2StudentGuideSectionsBlueprintEn,
-  abrahamB2StudentGuideTextBlueprintAr,
-  abrahamB2StudentGuideTextBlueprintEn,
   abrahamB2TeacherGuideMetadataBlueprintAr,
   abrahamB2TeacherGuideMetadataBlueprintEn,
 } from './support';
 
 export { abrahamB2HighlightTargets };
 
-const abrahamB2Blueprint = runB2BlueprintSystem({
+const story = 'abraham' as const;
+const prepared = prepareB2GoldLearningStructure({
   englishPages: abrahamB2LearningPagesEn,
   arabicPages: abrahamB2LearningPagesAr,
   config: abrahamB2BlueprintConfig,
-  blueprint: abrahamB2LearningBlueprint,
 });
+const goldBlueprint = finalizeB2LearningBlueprint(abrahamB2LearningBlueprint, story);
+const compiled = runB2BlueprintSystem({
+  englishPages: prepared.englishPages,
+  arabicPages: prepared.arabicPages,
+  config: prepared.config,
+  blueprint: goldBlueprint,
+});
+
+const curatedVocabulary = [
+  'monotheism', 'idolatry', 'hanif', 'guidance', 'miracle',
+  'migration', 'sacrifice', 'Zamzam', 'pilgrimage', 'legacy',
+] as const;
+
+const pagesEn = applyB2CuratedVocabulary(
+  applyB2GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'en')),
+  goldBlueprint,
+  prepared.config.vocabularyPageId,
+  'en',
+  curatedVocabulary,
+);
+const pagesAr = applyB2CuratedVocabulary(
+  applyB2GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'ar')),
+  goldBlueprint,
+  prepared.config.vocabularyPageId,
+  'ar',
+  curatedVocabulary,
+);
+
+const teacherGuideEn = polishB2GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
+const teacherGuideAr = polishB2GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
+const selfStudyGuideEn = polishB2GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
+const selfStudyGuideAr = polishB2GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
+
+export const abrahamB2GoldConfig = prepared.config;
 
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: abrahamB2Blueprint.englishPages,
-  teacherGuide: abrahamB2Blueprint.englishTeacherGuide,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadataBlueprintEn,
-  selfStudyGuide: abrahamB2Blueprint.englishSelfStudyGuide,
-  studentGuideSections: abrahamB2StudentGuideSectionsBlueprintEn,
-  studentGuideText: abrahamB2StudentGuideTextBlueprintEn,
-  studentGuideMetadata: abrahamB2StudentGuideMetadataBlueprintEn,
+  pages: pagesEn,
+  teacherGuide: teacherGuideEn,
+  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(abrahamB2TeacherGuideMetadataBlueprintEn, story, 'en', prepared.config.storyIds.length),
+  selfStudyGuide: selfStudyGuideEn,
+  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
+  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'en'),
+  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
 };
 
 export const abrahamB2BookDataAr: BookData = {
@@ -46,11 +88,11 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم (ع)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2Blueprint.arabicPages,
-  teacherGuide: abrahamB2Blueprint.arabicTeacherGuide,
-  teacherGuideMetadata: abrahamB2TeacherGuideMetadataBlueprintAr,
-  selfStudyGuide: abrahamB2Blueprint.arabicSelfStudyGuide,
-  studentGuideSections: abrahamB2StudentGuideSectionsBlueprintAr,
-  studentGuideText: abrahamB2StudentGuideTextBlueprintAr,
-  studentGuideMetadata: abrahamB2StudentGuideMetadataBlueprintAr,
+  pages: pagesAr,
+  teacherGuide: teacherGuideAr,
+  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(abrahamB2TeacherGuideMetadataBlueprintAr, story, 'ar', prepared.config.storyIds.length),
+  selfStudyGuide: selfStudyGuideAr,
+  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
+  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'ar'),
+  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
 };
