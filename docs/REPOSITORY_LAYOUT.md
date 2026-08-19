@@ -1,15 +1,43 @@
 # Repository Layout
 
-Production source is intentionally concentrated in a small set of top-level areas:
+Production source is concentrated in a small set of top-level areas:
 
-- `src/` — application, book registry, canonical/source layers and Learning Blueprints
-- `public/` — static assets required by the app/publication pipeline
-- `scripts/validation/` — active Blueprint, media, canonical and bundle checks
-- `scripts/pdf-pilot/` — active Adam A2 runtime publication builders; despite the historical folder name, the Docker image currently depends on this subset
-- `docs/` — current architecture, authoring, quality, storage and print standards
+- `src/` — application, book registry and book data
+- `public/` — static assets required by the app
+- `scripts/validation/` — technical build/media diagnostics only
+- `docs/MANUAL_CONTENT_AUTHORING_STANDARD.md` — single pedagogical authoring standard
+- `docs/GUIDE_VISUAL_STANDARD.md` — guide visual/UI rules
 - `deploy/` — Cloud Run server
 - `Dockerfile` and `cloudbuild.preview.yaml` — preview/production image and deployment pipeline
 
-Root-level story copies, migration reports, one-off comparison/alignment scripts, old Gold rollout files and internal pilot skill folders are not part of the application architecture and should not be reintroduced.
+## Target book layout
 
-Raw story source remains under each `src/data/<story>/<level>/<language>/` module. Reviewed source locks and manual `learningBlueprint.ts` files sit beside the corresponding book-level runtime entrypoint.
+The preferred book/level layout is direct and manually authored:
+
+```text
+src/data/<story>/<level>/
+  story.en.ts
+  story.ar.ts
+  exercises.en.ts
+  exercises.ar.ts
+  teacherGuide.en.ts
+  teacherGuide.ar.ts
+  selfStudyGuide.en.ts
+  selfStudyGuide.ar.ts
+  metadata.ts
+  index.ts
+```
+
+Equivalent grouping is acceptable when it improves readability, but each learning surface must have one obvious source of truth.
+
+## Legacy files
+
+Existing `learningBlueprint`, `gold`, `Gold*`, `finalPedagogy`, guide-polish and similar runtime files are legacy migration debt where a current book still imports them.
+
+Do not create new layers of this kind.
+
+When a story/level is manually reviewed, flatten its approved exercises and guides into direct authored files, update its `index.ts` to load those files directly, then delete the now-unused Blueprint/Gold files for that book.
+
+## Story protection
+
+Story source remains locked. Pedagogical cleanup must not rewrite story prose unless a separate explicit story correction is approved.
