@@ -3,7 +3,6 @@ import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
 import { polishB2GuideSections } from '../../b2GuidePresentation';
 import {
   buildB2FriendlyStudentGuideSections,
-  buildB2FriendlyStudentGuideText,
   buildB2GoldStudentGuideMetadata,
   buildB2GoldTeacherGuideMetadata,
 } from '../../b2GoldGuides';
@@ -14,6 +13,8 @@ import {
   applyB2GoldReview,
   prepareB2GoldLearningStructure,
 } from '../../b2GoldStructure';
+import { buildB2StudentFriendlyGuideText } from '../../b2StudentFriendlyGuide';
+import { makeB2CurriculumVisible } from '../../b2TeacherCurriculumSurface';
 import { yunusEmreB2LearningBlueprint } from './learningBlueprint';
 import { yunusEmreB2BlueprintConfig } from './config';
 import {
@@ -49,17 +50,11 @@ const curatedVocabulary = [
 
 const pagesEn = applyB2CuratedVocabulary(
   applyB2GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'en')),
-  goldBlueprint,
-  prepared.config.vocabularyPageId,
-  'en',
-  curatedVocabulary,
+  goldBlueprint, prepared.config.vocabularyPageId, 'en', curatedVocabulary,
 );
 const pagesAr = applyB2CuratedVocabulary(
   applyB2GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'ar')),
-  goldBlueprint,
-  prepared.config.vocabularyPageId,
-  'ar',
-  curatedVocabulary,
+  goldBlueprint, prepared.config.vocabularyPageId, 'ar', curatedVocabulary,
 );
 
 const teacherGuideEn = polishB2GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
@@ -76,10 +71,13 @@ export const yunusEmreB2BookDataEn: BookData = {
   baseFontSize: 13,
   pages: pagesEn,
   teacherGuide: teacherGuideEn,
-  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(yunusEmreB2TeacherGuideMetadataBlueprintEn, story, 'en', prepared.config.storyIds.length),
+  teacherGuideMetadata: makeB2CurriculumVisible(
+    buildB2GoldTeacherGuideMetadata(yunusEmreB2TeacherGuideMetadataBlueprintEn, story, 'en', prepared.config.storyIds.length),
+    'en',
+  ),
   selfStudyGuide: selfStudyGuideEn,
   studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
-  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'en'),
+  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'en'),
   studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
 };
 
@@ -90,10 +88,13 @@ export const yunusEmreB2BookDataAr: BookData = {
   baseFontSize: 14,
   pages: pagesAr,
   teacherGuide: teacherGuideAr,
-  teacherGuideMetadata: buildB2GoldTeacherGuideMetadata(yunusEmreB2TeacherGuideMetadataBlueprintAr, story, 'ar', prepared.config.storyIds.length),
+  teacherGuideMetadata: makeB2CurriculumVisible(
+    buildB2GoldTeacherGuideMetadata(yunusEmreB2TeacherGuideMetadataBlueprintAr, story, 'ar', prepared.config.storyIds.length),
+    'ar',
+  ),
   selfStudyGuide: selfStudyGuideAr,
   studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
-  studentGuideText: buildB2FriendlyStudentGuideText(goldBlueprint, story, 'ar'),
+  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'ar'),
   studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
 };
 
