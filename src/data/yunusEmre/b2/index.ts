@@ -1,101 +1,83 @@
-import type { BookData } from '../../../types';
-import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
-import { polishB2GuideSections } from '../../b2GuidePresentation';
+import type { BookData, Exercise, PageData } from '../../../types';
+import { yunusB2Pages } from './en/pages';
+import { yunusEmreB2PagesAr } from './ar/pages';
 import {
-  buildB2FriendlyStudentGuideSections,
-  buildB2GoldStudentGuideMetadata,
-  buildB2GoldTeacherGuideMetadata,
-} from '../../b2GoldGuides';
-import { finalizeB2LearningBlueprint } from '../../b2GoldPedagogy';
-import { buildB2GoldReview } from '../../b2GoldReview';
+  yunusB2QuickChallenges,
+  yunusB2KnowledgeCheckExercises,
+  yunusB2VocabularyChallengePairs,
+  yunusB2FinalReviewExercises,
+  yunusB2FinalChallengeExercises,
+} from './en/exercises';
 import {
-  applyB2CuratedVocabulary,
-  applyB2GoldReview,
-  prepareB2GoldLearningStructure,
-} from '../../b2GoldStructure';
-import { buildB2StudentFriendlyGuideText } from '../../b2StudentFriendlyGuide';
-import { makeB2CurriculumVisible } from '../../b2TeacherCurriculumSurface';
-import { yunusEmreB2LearningBlueprint } from './learningBlueprint';
-import { yunusEmreB2BlueprintConfig } from './config';
-import {
-  yunusEmreB2HighlightTargets,
-  yunusEmreB2SourcePagesAr,
-  yunusEmreB2SourcePagesEn,
-} from './source';
-import {
-  yunusEmreB2TeacherGuideMetadataBlueprintAr,
-  yunusEmreB2TeacherGuideMetadataBlueprintEn,
-} from './support';
+  yunusB2QuickChallengesAr,
+  yunusB2KnowledgeCheckExercisesAr,
+  yunusB2VocabularyChallengePairsAr,
+  yunusB2FinalReviewExercisesAr,
+  yunusB2FinalChallengeExercisesAr,
+} from './ar/exercises';
+import { yunusB2TeacherGuide, yunusB2TeacherGuideMetadata } from './en/teacherGuide';
+import { yunusB2SelfStudyGuide, yunusB2StudentGuideMetadata } from './en/selfStudyGuide';
+import { yunusEmreB2TeacherGuideAr, yunusEmreB2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { yunusEmreB2SelfStudyGuideAr, yunusEmreB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-export { yunusEmreB2HighlightTargets };
+const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-const story = 'yunusEmre' as const;
-const prepared = prepareB2GoldLearningStructure({
-  englishPages: yunusEmreB2SourcePagesEn,
-  arabicPages: yunusEmreB2SourcePagesAr,
-  config: yunusEmreB2BlueprintConfig,
-});
-const goldBlueprint = finalizeB2LearningBlueprint(yunusEmreB2LearningBlueprint, story);
-const compiled = runB2BlueprintSystem({
-  englishPages: prepared.englishPages,
-  arabicPages: prepared.arabicPages,
-  config: prepared.config,
-  blueprint: goldBlueprint,
+const buildPages = (
+  pages: PageData[],
+  quickChallenges: Record<number, Exercise>,
+  knowledgeCheck: Exercise[],
+  vocabularyPairs: { word: string; meaning: string }[],
+  review: Exercise[],
+  finalChallenge: Exercise[],
+): PageData[] => pages.map((page) => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+  if (page.id === 15) return { ...page, exercises: knowledgeCheck };
+  if (page.id === 16) return { ...page, vocabularyPairs };
+  if (page.id === 19) return { ...page, exercises: review };
+  if (page.id === 20) return { ...page, exercises: finalChallenge };
+  return page;
 });
 
-const curatedVocabulary = [
-  'mysticism', 'dervish', 'tekke', 'uprising', 'invasion',
-  'solidarity', 'Tawhid', 'humility', 'generosity', 'patience',
-] as const;
-
-const pagesEn = applyB2CuratedVocabulary(
-  applyB2GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'en')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'en', curatedVocabulary,
-);
-const pagesAr = applyB2CuratedVocabulary(
-  applyB2GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'ar')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'ar', curatedVocabulary,
+const englishPages = buildPages(
+  yunusB2Pages,
+  yunusB2QuickChallenges,
+  yunusB2KnowledgeCheckExercises,
+  yunusB2VocabularyChallengePairs,
+  yunusB2FinalReviewExercises,
+  yunusB2FinalChallengeExercises,
 );
 
-const teacherGuideEn = polishB2GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
-const teacherGuideAr = polishB2GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
-const selfStudyGuideEn = polishB2GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
-const selfStudyGuideAr = polishB2GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
-
-export const yunusEmreB2GoldConfig = prepared.config;
+const arabicPages = buildPages(
+  yunusEmreB2PagesAr,
+  yunusB2QuickChallengesAr,
+  yunusB2KnowledgeCheckExercisesAr,
+  yunusB2VocabularyChallengePairsAr,
+  yunusB2FinalReviewExercisesAr,
+  yunusB2FinalChallengeExercisesAr,
+);
 
 export const yunusEmreB2BookDataEn: BookData = {
   id: 'yunusEmre-b2-en',
-  title: 'Stories of the Prophets: Yunus Emre (B2)',
+  title: 'Yunus Emre: History, Poetry, and Moral Thought (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: pagesEn,
-  teacherGuide: teacherGuideEn,
-  teacherGuideMetadata: makeB2CurriculumVisible(
-    buildB2GoldTeacherGuideMetadata(yunusEmreB2TeacherGuideMetadataBlueprintEn, story, 'en', prepared.config.storyIds.length),
-    'en',
-  ),
-  selfStudyGuide: selfStudyGuideEn,
-  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
-  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'en'),
-  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
+  pages: englishPages,
+  teacherGuide: yunusB2TeacherGuide,
+  teacherGuideMetadata: yunusB2TeacherGuideMetadata,
+  selfStudyGuide: yunusB2SelfStudyGuide,
+  studentGuideMetadata: yunusB2StudentGuideMetadata,
 };
 
 export const yunusEmreB2BookDataAr: BookData = {
   id: 'yunusEmre-b2-ar',
-  title: 'قصص الأنبياء: يونس إمره (B2)',
+  title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: pagesAr,
-  teacherGuide: teacherGuideAr,
-  teacherGuideMetadata: makeB2CurriculumVisible(
-    buildB2GoldTeacherGuideMetadata(yunusEmreB2TeacherGuideMetadataBlueprintAr, story, 'ar', prepared.config.storyIds.length),
-    'ar',
-  ),
-  selfStudyGuide: selfStudyGuideAr,
-  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
-  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'ar'),
-  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
+  pages: arabicPages,
+  teacherGuide: yunusEmreB2TeacherGuideAr,
+  teacherGuideMetadata: yunusEmreB2TeacherGuideMetadataAr,
+  selfStudyGuide: yunusEmreB2SelfStudyGuideAr,
+  studentGuideMetadata: yunusEmreB2StudentGuideMetadataAr,
 };
 
 export const yunusEmreB2BookData = yunusEmreB2BookDataEn;
