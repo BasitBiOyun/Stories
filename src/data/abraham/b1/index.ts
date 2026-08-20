@@ -22,7 +22,37 @@ import { abrahamB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
+// Some legacy B1 page fallbacks point at Abraham B2 artwork. Storage resolution
+// should supply the reviewed B1 image; if it cannot, showing no image is safer
+// than silently crossing CEFR levels. Non-story shells reuse reviewed B1 story
+// artwork instead of picsum placeholders, which the shared media loader rejects.
+const prepareMediaFallbacks = (pages: PageData[]): PageData[] => {
+  const levelSafe = pages.map(page => {
+    if (!STORY_IDS.has(page.id)) return page;
+    const image = page.image ?? '';
+    return image.toLowerCase().includes('abraham_b2') ? { ...page, image: '' } : page;
+  });
+
+  const byId = new Map(levelSafe.map(page => [page.id, page]));
+  const shellImageSource: Record<number, number> = {
+    14: 1,
+    15: 8,
+    16: 12,
+    17: 13,
+    18: 13,
+  };
+
+  return levelSafe.map(page => {
+    const sourceId = shellImageSource[page.id];
+    if (!sourceId) return page;
+    return { ...page, image: byId.get(sourceId)?.image ?? '' };
+  });
+};
+
+const englishSourcePages = prepareMediaFallbacks(abrahamB1Pages);
+const arabicSourcePages = prepareMediaFallbacks(abrahamB1PagesAr);
+
+const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
   if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB1QuickChallenges[page.id]] };
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercises };
   if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercises };
@@ -31,7 +61,7 @@ const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
   return page;
 });
 
-const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
   if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB1QuickChallengesAr[page.id]] };
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesAr };
   if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercisesAr };
