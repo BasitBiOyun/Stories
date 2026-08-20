@@ -30,22 +30,61 @@ const decodedLower = (value = '') => {
   }
 };
 
+const hasWrongFallbackImage = (value = '') => {
+  const lower = decodedLower(value);
+  return lower.includes('/adam_b1/images/') || lower.includes('picsum.photos/seed/review-b1');
+};
+
+const sanitizePageImage = (page: PageData): PageData =>
+  hasWrongFallbackImage(page.image) ? { ...page, image: '' } : page;
+
 /**
- * Second-pass page-shell fixes only. Canonical story `content` is never changed.
- * Storage remains the preferred media source; known B1 image fallbacks are blanked
- * so a failed B2 Storage lookup cannot silently display the wrong CEFR asset.
+ * Final page-shell QA only. Canonical story `content` is never changed.
+ * Storage remains the preferred media source; known wrong-level/demo fallbacks are
+ * blanked so failed Storage lookup cannot silently show unrelated assets.
  */
 const reviewStoryPageShell = (page: PageData): PageData => {
-  if (page.type !== 'story') return page;
+  if (page.type !== 'story') return sanitizePageImage(page);
 
-  let reviewed: PageData = decodedLower(page.image).includes('/adam_b1/images/')
-    ? { ...page, image: '' }
-    : page;
+  let reviewed: PageData = sanitizePageImage(page);
   const isArabic = /[\u0600-\u06ff]/.test(page.title);
 
-  if (!isArabic && page.id === 3) {
-    reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'astonishment') };
+  if (!isArabic && page.id === 1) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: reviewed.vocabulary?.map(note =>
+        note.word.toLowerCase() === 'fabulous'
+          ? { ...note, definition: 'Extraordinary or remarkable; here describing the story’s striking character.' }
+          : note,
+      ),
+    };
   }
+
+  if (!isArabic && page.id === 2) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: reviewed.vocabulary?.map(note =>
+        note.word.toLowerCase() === 'species'
+          ? { ...note, definition: 'A group of living beings that share important biological characteristics.' }
+          : note,
+      ),
+    };
+  }
+
+  if (!isArabic && page.id === 3) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'astonishment'),
+    };
+  }
+
+  if (!isArabic && page.id === 4) {
+    reviewed = {
+      ...reviewed,
+      hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h5b'),
+    };
+  }
+
   if (isArabic && page.id === 10) {
     reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'المشاق') };
   }
@@ -53,16 +92,122 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'التبلد الكوني') };
   }
 
-  if (page.id !== 13) return reviewed;
+  if (page.id === 13) {
+    reviewed = {
+      ...reviewed,
+      title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
+      ...(isArabic
+        ? {
+            vocabulary: [
+              { word: 'موقف عدواني', definition: 'سلوك يتضمن التهديد أو استخدام القوة ضد الآخرين.' },
+              { word: 'طبيعة', definition: 'الصفات والميول التي تكون جزءا من الإنسان.' },
+              { word: 'السيطرة', definition: 'القدرة على ضبط الأفكار والمشاعر والتصرفات.' },
+            ],
+            hotspots: [
+              { id: 'h13a', x: 47, y: 50, title: 'اختيار هابيل السلمي', description: 'يرفض هابيل أن يرد على تهديد أخيه بالعنف ويترك الأمر لله.' },
+              { id: 'h13b', x: 78, y: 40, title: 'القدرة على الخير والشر', description: 'يذكر الفصل أن الإنسان قادر على الخير والشر وأن ضبط الرغبات مهم.' },
+            ],
+          }
+        : {
+            hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h13b'),
+            vocabulary: reviewed.vocabulary?.filter(note => ['rebellious', 'compassion'].includes(note.word.toLowerCase())),
+          }),
+    };
+  }
 
-  return {
-    ...reviewed,
-    title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
-    ...(isArabic ? {} : {
-      hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h13b'),
-      vocabulary: reviewed.vocabulary?.filter(note => ['rebellious', 'compassion'].includes(note.word.toLowerCase())),
-    }),
-  };
+  if (page.id === 14) {
+    reviewed = isArabic
+      ? {
+          ...reviewed,
+          vocabulary: [
+            { word: 'طوعت', definition: 'دفعت أو زيّنت له نفسه فعل الشيء.' },
+            { word: 'الخاسرين', definition: 'الذين خسروا بسبب أفعالهم ونتائجها.' },
+            { word: 'الذنب', definition: 'الشعور بأن الإنسان ارتكب فعلا خاطئا.' },
+          ],
+          hotspots: [
+            { id: 'h13a', x: 30, y: 50, title: 'الجريمة وعاقبتها', description: 'يقتل قابيل أخاه ثم يواجه الحزن والذنب وثقل ما فعل.' },
+            { id: 'h13b', x: 70, y: 40, title: 'درس الغرابين', description: 'يرى قابيل غرابين، فيدفن أحدهما الآخر، فيتعلم كيف يواري جثة أخيه.' },
+          ],
+        }
+      : {
+          ...reviewed,
+          hotspots: reviewed.hotspots?.map(hotspot =>
+            hotspot.id === 'h13b'
+              ? { ...hotspot, title: 'The Two Ravens', description: 'Qabil learns how burial works by observing two ravens.' }
+              : hotspot,
+          ),
+        };
+  }
+
+  if (page.id === 15) {
+    reviewed = isArabic
+      ? {
+          ...reviewed,
+          vocabulary: [
+            { word: 'الأسى', definition: 'حزن شديد وألم نفسي.' },
+            { word: 'يواري', definition: 'يستر أو يخفي؛ وهنا يقصد دفن الجسد في الأرض.' },
+            { word: 'نوازع', definition: 'دوافع أو ميول داخلية تؤثر في السلوك.' },
+          ],
+          hotspots: [
+            { id: 'h14a', x: 30, y: 50, title: 'ندم قابيل', description: 'يشعر قابيل بالخجل والذنب بعد أن يتعلم كيف يدفن أخاه.' },
+            { id: 'h14b', x: 70, y: 40, title: 'استمرار مسؤولية آدم', description: 'رغم حزنه، يدعو آدم لابنه ويواصل مسؤوليات الحياة والعمل.' },
+          ],
+        }
+      : {
+          ...reviewed,
+          vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'prophet'),
+          hotspots: reviewed.hotspots?.map(hotspot =>
+            hotspot.id === 'h14b'
+              ? { ...hotspot, title: 'Adam’s Continued Responsibility', description: 'Despite grief, Adam prays for his son and continues the responsibilities of daily life.' }
+              : hotspot,
+          ),
+        };
+  }
+
+  if (page.id === 16) {
+    reviewed = isArabic
+      ? {
+          ...reviewed,
+          vocabulary: [
+            { word: 'خليفة', definition: 'من يتولى مسؤولية أو دورا بعد شخص آخر.' },
+            { word: 'الإرث', definition: 'ما يتركه الإنسان من هداية أو أثر لمن بعده.' },
+            { word: 'العبادات', definition: 'الأعمال التي يتقرب بها الإنسان إلى الله.' },
+          ],
+          hotspots: [
+            { id: 'h15a', x: 30, y: 50, title: 'شيث خليفة لآدم', description: 'يعيّن آدم ابنه شيث خليفة له ويعلّمه ما يرتبط بالعبادة.' },
+            { id: 'h15b', x: 70, y: 40, title: 'استمرار الهداية', description: 'يخبر آدم أبناءه أن الأنبياء سيواصلون دعوة الناس إلى صراط الله المستقيم.' },
+          ],
+        }
+      : {
+          ...reviewed,
+          vocabulary: reviewed.vocabulary?.map(note => {
+            if (note.word.toLowerCase() === 'legacy') {
+              return { ...note, definition: 'Guidance, influence, or responsibility passed to later generations.' };
+            }
+            if (note.word.toLowerCase() === 'miracles') {
+              return { ...note, definition: 'Extraordinary signs associated with prophets in the story’s account.' };
+            }
+            return note;
+          }),
+        };
+  }
+
+  if (isArabic && page.id === 17) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: [
+        { word: 'سلطان', definition: 'قدرة أو سلطة على التأثير والسيطرة.' },
+        { word: 'المخلصين', definition: 'الذين يخلصون نيتهم لله ويتبعون هداه.' },
+        { word: 'الجوهر الحقيقي', definition: 'المعنى الأساسي والعميق لقيمة الإنسان.' },
+      ],
+      hotspots: [
+        { id: 'h18a', x: 30, y: 50, title: 'حدود سلطان الشيطان', description: 'يذكر الفصل أن الشيطان لا سلطان له على عباد الله المخلصين.' },
+        { id: 'h18b', x: 70, y: 40, title: 'سؤال قيمة الإنسان', description: 'تنتهي القصة بسؤال عن المصدر الحقيقي لقيمة الإنسان.' },
+      ],
+    };
+  }
+
+  return reviewed;
 };
 
 const buildPages = (
@@ -72,15 +217,52 @@ const buildPages = (
   vocabularyPairs: { word: string; meaning: string }[],
   review: Exercise[],
   finalChallenge: Exercise[],
-): PageData[] => pages.map((rawPage) => {
-  const page = reviewStoryPageShell(rawPage);
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
-  if (page.id === 18) return { ...page, exercises: knowledgeCheck };
-  if (page.id === 19) return { ...page, exercises: review };
-  if (page.id === 20) return { ...page, vocabularyPairs };
-  if (page.id === 22) return { ...page, exercises: finalChallenge };
-  return page;
-});
+): PageData[] => {
+  const isArabicBook = /[\u0600-\u06ff]/.test(pages.find(page => page.type === 'story')?.title ?? '');
+  const fullGlossary = pages
+    .filter(page => page.id === 20 || page.id === 21)
+    .flatMap(page => page.vocabulary ?? []);
+
+  return pages.map((rawPage): PageData => {
+    const page = reviewStoryPageShell(rawPage);
+
+    if (STORY_IDS.has(page.id)) {
+      return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+    }
+    if (page.id === 18) {
+      return { ...page, exercises: knowledgeCheck };
+    }
+    if (page.id === 19) {
+      return { ...page, exercises: review };
+    }
+    if (page.id === 20) {
+      return {
+        ...page,
+        type: 'vocabulary-match',
+        title: isArabicBook ? 'تحدي المفردات' : 'Vocabulary Challenge',
+        content: isArabicBook
+          ? 'صل الكلمات الأساسية من القصة بمعانيها الدقيقة.'
+          : 'Match key B2 words from the story with their meanings.',
+        vocabulary: undefined,
+        vocabularyPairs,
+      };
+    }
+    if (page.id === 21) {
+      return {
+        ...page,
+        title: isArabicBook ? 'القاموس الرئيسي' : 'Master Glossary',
+        content: isArabicBook
+          ? 'راجع المفردات الأساسية الواردة في القصة.'
+          : 'Review the key vocabulary used across the story.',
+        vocabulary: fullGlossary,
+      };
+    }
+    if (page.id === 22) {
+      return { ...page, exercises: finalChallenge };
+    }
+    return page;
+  });
+};
 
 const englishPages = buildPages(
   adamB2Pages,
