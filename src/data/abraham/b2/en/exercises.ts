@@ -1,169 +1,97 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+const feedback = { correct: 'Correct. Your answer is supported by the chapter.', incorrect: 'Not yet. Return to the chapter evidence and try again.' };
+const mc = (id:string,q:string,options:string[],answer:number,explanation:string):Exercise => ({id,type:'multiple-choice',title:'Quick Challenge',instructions:'Choose the best evidence-based answer.',question:q,options,correctAnswer:answer,explanation,feedback});
+const tf = (id:string,q:string,answer:boolean,explanation:string):Exercise => ({id,type:'true-false',title:'Quick Challenge',instructions:'Decide whether the claim is supported by the chapter.',question:q,correctAnswer:answer,explanation,feedback});
+const fill = (id:string,q:string,text:string,answer:string,explanation:string):Exercise => ({id,type:'fill-blanks',title:'Quick Challenge',instructions:'Complete the claim with the key story language.',question:q,fillBlanksText:text,correctAnswer:answer,explanation,feedback});
+
+export const abrahamB2QuickChallenges: Record<number, Exercise> = {
+1: mc('ab-b2-q1','Why is Abraham presented as a connecting figure in the opening chapter?',['His family line connects later prophetic traditions while he represents Tawheed','He ruled the three monotheistic communities politically','He wrote the scriptures of all later prophets'],0,'The chapter links Abraham to later prophetic lines through Ishmael and Isaac and presents him as a representative of Tawheed.'),
+2: mc('ab-b2-q2','What relationship does Chapter 2 build between Hanifism and reasoning?',['Reasoning can lead people to recognize Allah’s existence','Reasoning makes prophetic teaching unnecessary','Hanifism rejects moral conduct in favor of argument'],0,'The chapter explicitly connects human reasoning with recognizing Allah’s existence.'),
+3: tf('ab-b2-q3','Chapter 3 presents monotheistic continuity while also saying beliefs can become mixed with idolatry over time.',true,'The chapter combines continuity from Abraham with later corruption.'),
+4: {id:'ab-b2-q4',type:'tap-reveal',title:'Quick Challenge',instructions:'Reveal the source-reading rule.',question:'How should a B2 reader treat the chapter’s claims about Abraham’s birthplace and dates?',correctAnswer:true,explanation:'Preserve qualifications such as “different ideas,” “some sources,” and “is believed” rather than turning them into certainty.',feedback,tapRevealItems:[{question:'Evidence or certainty?',answer:'Evidence with explicit qualification: the chapter does not present every historical detail as certain.'}]},
+5: mc('ab-b2-q5','What is the most careful reading of the reports about Abraham’s birth and Nimrod?',['The chapter presents them as narrations or reports, not all as equally certain historical facts','Every detail is stated as independently verified history','The chapter denies any connection with Mesopotamia'],0,'The wording includes reports and alternative narrations, so B2 readers should preserve source status.'),
+6: mc('ab-b2-q6','What does young Abraham’s reaction to the statues reveal?',['He questions a contradiction between human-made objects and divine status','He wants to become a better idol maker','He accepts Mardukh after his father explains the statue'],0,'His reaction exposes the contradiction in treating a manufactured object as a god.'),
+7: tf('ab-b2-q7','Abraham’s criticism of idols develops from noticing their physical helplessness and the people’s dependence on them.',true,'The chapter stresses that the statues cannot hear, rise, harm, or benefit.'),
+8: mc('ab-b2-q8','Why does the setting of the planet matter in Abraham’s reasoning?',['It shows that a changing, disappearing object cannot be the eternal Creator','It proves darkness is stronger than light','It shows planets choose when to appear'],0,'The chapter uses disappearance as evidence of created dependence.'),
+9: mc('ab-b2-q9','What conclusion follows from the repeated star–moon–sun pattern?',['Created heavenly bodies are signs, not partners with the Creator','The largest visible object deserves worship','Different times of day require different gods'],0,'The repeated pattern redirects attention from created objects to their Creator.'),
+10: fill('ab-b2-q10','Complete the contrast.','The heavenly bodies are signs of Allah because they are created and [blank].','controlled','The chapter describes them as created, controlled, managed, and purposeful.'),
+11: mc('ab-b2-q11','How does Abraham answer threats linked to the people’s gods?',['He refuses to fear powerless partners and grounds security in guidance from Allah','He asks their gods for protection','He agrees that tradition is stronger than evidence'],0,'His reply contrasts fear of assigned partners with trust in Allah’s knowledge and guidance.'),
+12: mc('ab-b2-q12','What makes the conflict with Abraham’s father especially intense?',['His father both worships idols and makes and sells them','His father secretly accepts Tawheed','His father has never heard Abraham’s argument'],0,'The chapter makes the father’s livelihood and worship part of the conflict.'),
+13: mc('ab-b2-q13','What is distinctive about Abraham’s advice to his father?',['He combines affection, respectful address, reasons, and a warning','He humiliates him publicly','He refuses to explain his position'],0,'The chapter emphasizes wisdom and respectful reasoning before the father’s threat.'),
+14: tf('ab-b2-q14','After being threatened, Abraham abandons his public mission in order to avoid consequences.',false,'He remains determined and goes to debate the people despite the risk.'),
+15: mc('ab-b2-q15','What weakness in the idolaters’ justification does Abraham expose?',['They rely on inherited practice even while admitting the idols are lifeless','They provide evidence that the idols speak','They distinguish worship from tradition'],0,'Their central defense is that their forefathers worshipped the idols.'),
+16: mc('ab-b2-q16','Why does Abraham contrast the idols with the Lord of the Worlds?',['To compare passive objects with the One who creates, guides, feeds, heals, causes death and revives','To argue that idols perform only smaller miracles','To show that food offerings make idols powerful'],0,'The passage contrasts divine action and care with idol helplessness.'),
+17: mc('ab-b2-q17','Why does Abraham enter the empty temple during the celebration?',['He plans a practical demonstration of the idols’ inability to act','He wants to join the priests secretly','He is searching for stored food'],0,'The chapter presents the action as a deliberate demonstration.'),
+18: mc('ab-b2-q18','Why is the largest idol left unbroken with the axe?',['It sets up a public argument about whether idols can act or speak','It is considered more divine than the others','Abraham is unable to break it'],0,'The untouched idol becomes part of the later reasoning.'),
+19: mc('ab-b2-q19','What is Abraham doing when he tells the people to ask the largest idol?',['Using their own admission that idols cannot speak to expose the contradiction in worshipping them','Trying to transfer legal guilt to a statue','Claiming that the largest idol is alive'],0,'The question forces the people to acknowledge the idol’s inability.'),
+20: mc('ab-b2-q20','Why do the people move from argument to punishment?',['They recognize the weakness of their position but arrogance and authority replace evidence','They prove Abraham’s argument false','Abraham refuses any public discussion'],0,'The chapter explicitly connects their reaction with arrogance and tyrannical authority.'),
+21: mc('ab-b2-q21','What does the fire episode emphasize about power?',['The created fire obeys Allah’s command and becomes safe for Abraham','Abraham controls fire by his own ability','The crowd extinguishes the fire'],0,'The miracle reverses the intended punishment through Allah’s command.'),
+22: tf('ab-b2-q22','The miracle removes every social consequence immediately; no one remains afraid of the rulers afterward.',false,'The chapter says some people followed Abraham while others kept faith secret out of fear.'),
+23: mc('ab-b2-q23','What is wrong with Nimrod’s claim that freeing one prisoner and killing another proves power over life and death?',['Political control over prisoners is not the same as creating life or controlling death','It proves exactly the same power Abraham attributes to Allah','It shows the prisoners were immortal'],0,'Abraham’s argument distinguishes political authority from divine sovereignty.'),
+24: mc('ab-b2-q24','Why does Abraham shift the debate to the sun rising from the east?',['It tests Nimrod’s claim against a cosmic order he cannot control','It changes the subject to astronomy for no reason','It asks Nimrod to predict tomorrow’s weather'],0,'The challenge moves from manipulated human decisions to an order beyond royal control.'),
+25: mc('ab-b2-q25','What motivates Abraham’s emigration in the chapter?',['He leaves for the sake of his Lord after continued rejection and carries the call elsewhere','He abandons Tawheed','He is ordered by Nimrod to become governor of Egypt'],0,'The chapter explicitly frames emigration as for the sake of his Lord.'),
+26: mc('ab-b2-q26','What connects the journey to Mecca with Abraham’s larger mission?',['The new setting prepares a future center of monotheism linked with Ishmael','It ends Abraham’s family connection with prophecy','It is described as an accidental migration'],0,'The chapter places the move within a larger plan involving Mecca and Ishmael.'),
+27: mc('ab-b2-q27','What changes Hajar’s response when Abraham says Allah commanded the separation?',['Her anxiety becomes trust because she understands the action is not Abraham’s private decision','She decides the command must be ignored','She concludes that the valley already has water'],0,'Her words show trust after learning the source of the command.'),
+28: mc('ab-b2-q28','How does Abraham’s prayer frame the barren valley?',['As a place where worship, human attachment, provision, and gratitude may develop','As a place intended to remain permanently empty','As a military settlement'],0,'The prayer links the valley with worship, hearts turning toward the family, provision, and gratitude.'),
+29: mc('ab-b2-q29','Why is Hajar’s movement between Safa and Marwa important beyond the immediate search for water?',['Her active search becomes connected with the later ritual of sa‘y','It proves trust requires no action','It marks the route of Abraham’s escape from Nimrod'],0,'The chapter explicitly connects her search with sa‘y.'),
+30: mc('ab-b2-q30','What combination best explains the Zamzam episode and later settlement?',['Divine provision creates water, and the visible sign of water attracts the Jurham tribe','The tribe creates the spring before Hajar arrives','Abraham builds a city before any water appears'],0,'The chapter connects the miracle of water with the tribe noticing birds and settling nearby.'),
+31: mc('ab-b2-q31','What makes the dream a test rather than a private wish?',['Abraham understands it as a command and discusses it with Ishmael, who responds with patience','The dream promises political power','Ishmael does not know about it'],0,'The chapter presents command, consultation, and willing patience.'),
+32: mc('ab-b2-q32','What does the stopping of the sacrifice show about the test?',['The demanded proof is submission; Ishmael is spared after the vision is fulfilled','The purpose is Ishmael’s death itself','Abraham failed because the sacrifice did not occur'],0,'The text says the vision was fulfilled and a substitute was provided.'),
+33: mc('ab-b2-q33','How does the chapter connect sacrifice with the later building of the Ka‘ba?',['Both become parts of a continuing legacy of worship and submission involving Abraham’s family','They are unrelated episodes with no shared theme','The Ka‘ba replaces all earlier acts of worship'],0,'The chapter moves from the sacrifice tradition to reunion and preparation to build the House of Allah.'),
+34: mc('ab-b2-q34','What is significant about Abraham and Ishmael’s prayer while building?',['They ask Allah to accept their service even while performing the commanded work','They claim the work guarantees their status','They ask people to praise their construction skill'],0,'Their prayer combines action with humility and dependence on acceptance.'),
+35: mc('ab-b2-q35','Which synthesis best captures the final chapter’s presentation of Abraham’s legacy?',['Restoring the Ka‘ba, calling to pilgrimage, spreading Hanifism, and leaving a transregional prophetic legacy','Founding a hereditary kingdom in Mecca','Ending every later form of idolatry permanently'],0,'The final chapter connects place, pilgrimage, Tawheed, family transmission, and continuing guidance.'),
+};
+
+export const abrahamB2KnowledgeCheckExercises: Exercise[] = [
+mc('ab-b2-k1','Which contrast best organizes Abraham’s reasoning across the early chapters?',['Created things change and depend; the Creator does not','Large objects are more divine than small ones','Inherited beliefs need no evidence'],0,'The early argument repeatedly contrasts created dependence with divine permanence.'),
+mc('ab-b2-k2','Why must readers keep phrases such as “some sources” and “is believed” when discussing Chapter 4?',['They mark historical qualification and prevent overclaiming','They are decorative phrases with no meaning','They prove every report is false'],0,'B2 source fidelity requires preserving the text’s level of certainty.'),
+mc('ab-b2-k3','What pattern links Abraham’s conversations with his father and his wider society?',['He questions whether inherited worship has evidence and whether the objects can act','He avoids reasons and relies only on force','He accepts tradition privately but rejects it publicly'],0,'Across both settings he tests claims against evidence and capability.'),
+mc('ab-b2-k4','What changes after the public idol argument fails to persuade the leaders?',['The conflict shifts from reasoning to coercion and the fire punishment','Abraham becomes king','The people immediately abandon idolatry'],0,'Authority replaces argument when the leaders cannot answer the contradiction.'),
+mc('ab-b2-k5','What is the key weakness in Nimrod’s first response to Abraham?',['He confuses power over prisoners with divine power over life and death','He refuses to speak about authority','He agrees that only Allah controls life'],0,'The response relies on political choice rather than creation or resurrection.'),
+mc('ab-b2-k6','How do Hajar’s actions complicate a simplistic idea of trust?',['She trusts Allah while actively searching for water','She treats effort as a sign of weak faith','She waits without taking any action'],0,'The narrative combines reliance with sustained effort.'),
+mc('ab-b2-k7','What is the shared value in the desert episode and the sacrifice episode?',['Submission is paired with purposeful action rather than passivity','Family bonds are presented as irrelevant','Both episodes reject consultation'],0,'The family responds to divine command through trust and action.'),
+mc('ab-b2-k8','What does building the Ka‘ba add to the story’s final meaning?',['A lasting communal center links Abraham’s personal tests to a continuing public legacy of Tawheed','It turns Abraham’s mission into a private family memory','It ends the connection with pilgrimage'],0,'The construction and call to pilgrimage extend the mission beyond Abraham’s lifetime.'),
+];
+
+export const abrahamB2VocabularyChallengePairs = [
+{word:'Hanif',meaning:'A morally upright monotheist associated with Abraham’s path of Tawheed.'},
+{word:'idolatry',meaning:'Worship directed to idols or other created beings as divine.'},
+{word:'qualified claim',meaning:'A statement whose certainty is limited by wording such as “some sources” or “is believed”.'},
+{word:'reverted',meaning:'Returned to a former belief or position after briefly recognizing a contradiction.'},
+{word:'demonstrate',meaning:'Show a claim clearly through evidence, reasoning, or an example.'},
+{word:'sufficient',meaning:'Enough to meet a need; used in the story’s expression of trust in Allah.'},
+{word:'emigrate',meaning:'Leave one land to settle elsewhere, here for the sake of faith.'},
+{word:'barren',meaning:'Dry or unproductive, with little or no vegetation.'},
+{word:'forbearing',meaning:'Patient and self-controlled under difficulty.'},
+{word:'legacy',meaning:'A lasting influence, practice, or inheritance passed to later generations.'},
+];
 
 export const abrahamB2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'b2-abraham-final-1',
-    type: 'sequencing',
-    title: 'Chronological Narrative Analysis',
-    instructions: 'Arrange the pivotal moments of Prophet Abraham\'s story in their correct chronological sequence.',
-    question: 'Sequence the narrative milestones.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6', '7'],
-    explanation: 'The B2 narrative traces Abraham\'s path from rejecting idols in his youth, to questioning the heavens, exposing the idolaters through debate, surviving the fire miracle, refuting Nimrod, migrating, and finally completing his mission by building the Ka\'ba.',
-    feedback: {
-      correct: 'Excellent analytical skills! You have mastered the chronological flow of the B2 Abraham narrative.',
-      incorrect: 'Some milestones are misaligned. Think about the cause-and-effect progression from reasoning to final legacy.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Abraham observes idol worship in Babylon and concludes that lifeless objects cannot be gods' },
-      { id: '2', text: 'He analyzes the star, moon, and sun to conclude that only the Eternal Creator deserves worship' },
-      { id: '3', text: 'He smashes the temple idols and uses logical argumentation to expose his people\'s blind imitation' },
-      { id: '4', text: 'He is thrown into a blazing fire, which Allah transforms into coolness and safety due to his unshakeable faith' },
-      { id: '5', text: 'He confronts the tyrant Nimrod in a serious debate, decisively exposing Nimrod\'s arrogant, false claims' },
-      { id: '6', text: 'He leaves Hajar and Ishmael in a barren valley, demonstrating profound submission and leading to the miracle of Zamzam' },
-      { id: '7', text: 'He and Ishmael construct the Ka\'ba as a lasting sanctuary for Tawheed, completing his great mission' }
-    ]
-  },
-  {
-    id: 'b2-abraham-final-2',
-    type: 'drag-drop',
-    title: 'Ethical & Abstract Categorization',
-    instructions: 'Classify the following abstract attributes based on their role in the narrative of Prophet Abraham.',
-    question: 'Categorize the moral values and counter-values.',
-    correctAnswer: {
-      'HANIFISM (THE TRUE PATH)': ['Tawheed', 'Reasoning', 'Evidence-Based Faith', 'Sincere Trust', 'Submission'],
-      'IDOLATRY (THE FALSE PATH)': ['Blind Imitation', 'Arrogant Denial', 'Lifeless Worship', 'Tyrannical Claims', 'Ignorance']
-    },
-    explanation: 'The story sharply contrasts Hanifism\'s reasoning, submission, and Tawheed with idolatry\'s blind imitation, arrogance, and logical fallacies.',
-    feedback: {
-      correct: 'Correct! You have a clear understanding of the deep ethical and ideological framework at the B2 level.',
-      incorrect: 'Some concepts are misplaced. Evaluate whether each term represents the prophetic intellect or the societal ignorance.'
-    },
-    dragDropGroups: [
-      { group: 'HANIFISM (THE TRUE PATH)', items: ['Tawheed', 'Reasoning', 'Evidence-Based Faith', 'Sincere Trust', 'Submission'] },
-      { group: 'IDOLATRY (THE FALSE PATH)', items: ['Blind Imitation', 'Arrogant Denial', 'Lifeless Worship', 'Tyrannical Claims', 'Ignorance'] }
-    ]
-  },
-  {
-    id: 'b2-abraham-final-3',
-    type: 'reflection',
-    title: 'Philosophical Reflection & Debate',
-    instructions: 'Engage with these complex B2 themes and formulate your own sophisticated perspective.',
-    question: 'In what ways does Abraham (pbuh) utilize critical reasoning and debate to deconstruct the false authority of his society?',
-    correctAnswer: true,
-    explanation: 'Abraham repeatedly uses observable evidence, rhetorical questions (the broken idols), and logical absolute limits (the sun rising from the west against Nimrod) to dismantle false beliefs constructed by tradition and tyranny.',
-    feedback: {
-      correct: 'Insightful reflection! Masterful integration of the B2 themes.',
-      incorrect: 'Please reflect on the prompts above and ensure you are using evidence from the narrative.'
-    },
-    discussionPrompts: [
-      { question: 'Contrast Abraham\'s use of clear reasoning with Nimrod\'s reliance on authority.', mode: 'Individual' },
-      { question: 'Analyze why the springing up of Zamzam and the building of the Ka\'ba represent "trust in Allah" rather than mere passivity.', mode: 'Pair' },
-      { question: 'Discuss how the concept of Tawheed serves as the ultimate liberator from the worship of created entities (stars, tyrants, statues).', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'b2-abraham-final-4',
-    type: 'quiz-game',
-    title: 'Advanced Narrative Masterclass',
-    instructions: 'Navigate through the nuanced, complex layers of the B2 story in this final interactive challenge.',
-    question: 'Are you prepared to demonstrate comprehensive mastery of the B2 narrative theology and vocabulary?',
-    correctAnswer: null,
-    explanation: 'This high-level challenge evaluates your command of abstract vocabulary, theological concepts, and nuanced narrative details.',
-    feedback: {
-      correct: 'Outstanding! You have successfully completed the B2 Masterclass on Prophet Abraham (pbuh).',
-      incorrect: 'Review the narrative, focusing particularly on the philosophical debates and vocabulary in the earlier chapters.'
-    },
-    hints: [
-      'Focus on the relationship between Hanifism and Tawheed',
-      'Remember how logic dismantled both societal tradition and tyrannical authority',
-      'Reflect on the harmony of divine trust and immense human effort (Hajar)'
-    ],
-    quizQuestions: [
-      {
-        question: 'Abraham (pbuh) concluded that the stars, moon, and sun were divine beings because they provided light to the world.',
-        options: [
-          { text: 'True', isCorrect: false },
-          { text: 'False', isCorrect: true }
-        ],
-        hint: 'Consider the limitations of celestial bodies that set and disappear.'
-      },
-      {
-        question: 'What is the core meaning of Hanifism in the context of Prophet Abraham\'s (pbuh) story?',
-        options: [
-          { text: 'The pure monotheistic path based on sincere reasoning and complete submission to Allah.', isCorrect: true },
-          { text: 'The ancient Mesopotamian practice of worshipping the sun and the stars for guidance.', isCorrect: false },
-          { text: 'A political movement meant to overthrow King Nimrod and take control of Babylon.', isCorrect: false }
-        ],
-        hint: 'Consider the relationship between logic, reflection, and monotheism.'
-      },
-      {
-        question: 'How did Abraham (pbuh) logically demonstrate the helplessness of the idols in the temple?',
-        options: [
-          { text: 'He asked the priests to perform a miracle and bring the idols to life.', isCorrect: false },
-          { text: 'He completely destroyed every single statue in the temple without leaving any trace.', isCorrect: false },
-          { text: 'He smashed all the idols except the largest one and told the people to ask the remaining idol who did it.', isCorrect: true }
-        ],
-        hint: 'He wanted to mathematically prove that the idols could not even speak or defend themselves.'
-      },
-      {
-        question: 'When the idolaters threw Abraham (pbuh) into the blazing pit, Allah commanded the fire to become cool and safe, sparing him from any harm.',
-        options: [
-          { text: 'True', isCorrect: true },
-          { text: 'False', isCorrect: false }
-        ],
-        hint: 'Think about the miracle that turned a punishing a raging fire into a peaceful place.'
-      },
-      {
-        question: 'During their debate, what profound argument did Abraham (pbuh) use to completely silence King Nimrod?',
-        options: [
-          { text: 'He confidently challenged Nimrod to survive being thrown into the fire.', isCorrect: false },
-          { text: 'He challenged Nimrod to alter the cosmic order by making the sun rise from the west.', isCorrect: true },
-          { text: 'He proved that Nimrod\'s fortunetellers and astrologers had lied about the future.', isCorrect: false }
-        ],
-        hint: 'Abraham shifted the debate from earthly executions to absolute divine sovereignty over the universe.'
-      },
-      {
-        question: 'King Nimrod successfully proved his divine power by choosing which prisoner to execute and which one to free.',
-        options: [
-          { text: 'True', isCorrect: false },
-          { text: 'False', isCorrect: true }
-        ],
-        hint: 'Think about whether deciding someone\'s earthly fate is the same as true divine power over life and death.'
-      },
-      {
-        question: 'What does Hajar\'s exhaustive run between Safa and Marwa symbolize for believers?',
-        options: [
-          { text: 'The desperate abandonment of faith when confronted with an impossible situation.', isCorrect: false },
-          { text: 'The belief that sitting passively is the only way to wait for divine intervention.', isCorrect: false },
-          { text: 'The perfect harmony of deep reliance on Allah combined with intense human effort.', isCorrect: true }
-        ],
-        hint: 'She trusted Allah completely but still took active steps to find water.'
-      },
-      {
-        question: 'The miracle of the Zamzam well occurred when the angel Gabriel struck the dry ground in the desolate valley of Mecca.',
-        options: [
-          { text: 'True', isCorrect: true },
-          { text: 'False', isCorrect: false }
-        ],
-        hint: 'Consider the source of the abundant water that saved Hajar and Ishmael.'
-      },
-      {
-        question: 'What was the purpose of the deep insight where Abraham (pbuh) was commanded to sacrifice his son Ishmael?',
-        options: [
-          { text: 'To serve as the ultimate test of Abraham\'s unconditional love and absolute submission to Allah.', isCorrect: true },
-          { text: 'To punish Abraham for his brief moment of doubt during the challenging journey from Babylon.', isCorrect: false },
-          { text: 'To demonstrate to the Jurham tribe that Abraham possessed power over life and death.', isCorrect: false }
-        ],
-        hint: 'This monumental event is commemorated annually during the Celebration of Sacrifice.'
-      },
-      {
-        question: 'Abraham (pbuh) and Ishmael built the Ka\'ba primarily as an impenetrable fortress to protect their growing family from local tribes.',
-        options: [
-          { text: 'True', isCorrect: false },
-          { text: 'False', isCorrect: true }
-        ],
-        hint: 'Think about the spiritual significance of the Ka\'ba and why it was built as a center for Tawheed.'
-      }
-    ]
-  }
+{id:'ab-b2-r1',type:'sequencing',title:'Retrieval Review 1 — Turning Points',instructions:'Order the major turning points.',question:'Put the developments in narrative order.',correctAnswer:['a','b','c','d','e','f'],sequencingItems:[{id:'a',text:'Abraham questions created objects and inherited worship.'},{id:'b',text:'The idol demonstration becomes a public argument.'},{id:'c',text:'The leaders answer with the fire punishment.'},{id:'d',text:'Abraham challenges Nimrod’s claim to divine power.'},{id:'e',text:'Hajar and Ishmael settle in the Meccan valley and Zamzam appears.'},{id:'f',text:'Abraham and Ishmael build the Ka‘ba.'}],explanation:'The sequence reconnects intellectual, political, family, and legacy turning points.',feedback},
+{id:'ab-b2-r2',type:'matching',title:'Retrieval Review 2 — Claim and Evidence',instructions:'Match each analytical claim with its strongest evidence.',question:'Which evidence best supports each claim?',correctAnswer:{},matchingPairs:[{left:'Created things are not the Creator',right:'The star, moon, and sun appear and set.'},{left:'Political authority is not divine sovereignty',right:'Nimrod can decide a prisoner’s fate but cannot alter the sun’s course.'},{left:'Trust can include effort',right:'Hajar relies on Allah and repeatedly searches between Safa and Marwa.'},{left:'Legacy extends beyond one lifetime',right:'The Ka‘ba and pilgrimage continue as communal practices.'}],explanation:'Each pair asks for evidence selection rather than factual recall.',feedback},
+{id:'ab-b2-r3',type:'reflection',title:'Retrieval Review 3 — Evidence and Interpretation',instructions:'Use precise evidence and qualify your claim.',question:'Which episode best shows the difference between evidence-based conviction and inherited assumption? Defend your choice with two details and state one thing the episode does not prove.',correctAnswer:true,explanation:'A strong B2 response distinguishes textual evidence, interpretation, and limits.',feedback,discussionPrompts:[{question:'Compare the celestial-body argument with the public idol argument.',mode:'Pair'},{question:'Evaluate how authority affects people’s willingness to admit error.',mode:'Class'}]},
+{id:'ab-b2-r4',type:'quiz-game',title:'Retrieval Review 4 — Quiz Game',instructions:'Answer eight new retrieval questions.',question:'Reconnect ideas from across the story.',correctAnswer:null,explanation:'These questions use different micro-facts from the Knowledge Check.',feedback,quizQuestions:[
+{question:'Why is Varaka’s response to Bilal relevant to Chapter 3?',options:[{text:'It illustrates continuity of belief in the oneness of Allah.',isCorrect:true},{text:'It introduces idol worship into Hanifism.',isCorrect:false},{text:'It proves Varaka ruled the Hijaz.',isCorrect:false}],hint:'Focus on “Ahad, Ahad.”'},
+{question:'What makes Abraham’s treatment of his father rhetorically significant?',options:[{text:'He combines respectful address with a direct challenge to the belief.',isCorrect:true},{text:'He avoids the belief question entirely.',isCorrect:false},{text:'He uses political threats.',isCorrect:false}],hint:'Look at tone and reasoning together.'},
+{question:'Why does leaving the largest idol unbroken matter?',options:[{text:'It creates a test of the claim that idols possess agency.',isCorrect:true},{text:'It shows the idol is stronger.',isCorrect:false},{text:'It protects the temple.',isCorrect:false}],hint:'Think of the later public question.'},
+{question:'What social effect follows the fire miracle?',options:[{text:'Some people follow Abraham, while others hide belief because of fear.',isCorrect:true},{text:'Every ruler immediately converts.',isCorrect:false},{text:'Abraham stops preaching.',isCorrect:false}],hint:'The chapter gives more than one response.'},
+{question:'Why is Lot important in the migration section?',options:[{text:'He is identified as a believer in Abraham’s message and later a prophet.',isCorrect:true},{text:'He becomes Nimrod’s general.',isCorrect:false},{text:'He builds Zamzam.',isCorrect:false}],hint:'Recall who shares Abraham’s belief.'},
+{question:'What does Abraham do after leaving Hajar and Ishmael?',options:[{text:'He prays for the valley, worship, human affection, provision, and gratitude.',isCorrect:true},{text:'He asks the valley to remain empty.',isCorrect:false},{text:'He returns to Nimrod.',isCorrect:false}],hint:'Recall the prayer near Mecca.'},
+{question:'What draws Jurham toward the valley?',options:[{text:'Birds indicating the presence of water.',isCorrect:true},{text:'A royal road.',isCorrect:false},{text:'A military signal.',isCorrect:false}],hint:'The sign is visible from a distance.'},
+{question:'What attitude is expressed while Abraham and Ishmael build the Ka‘ba?',options:[{text:'They work and ask Allah to accept the service.',isCorrect:true},{text:'They claim guaranteed acceptance.',isCorrect:false},{text:'They refuse help from one another.',isCorrect:false}],hint:'Remember their prayer while building.'},
+]},
+];
+
+export const abrahamB2FinalChallengeExercises: Exercise[] = [
+mc('ab-b2-f1','Which statement best synthesizes the story’s treatment of reasoning?',['Observation and argument are repeatedly used to test claims while remaining grounded in guidance from Allah','Reasoning appears only once and is later rejected','Reasoning is presented as identical to political power'],0,'Across several episodes, claims are tested against evidence and limits.'),
+mc('ab-b2-f2','Which comparison is most accurate?',['The idolaters rely on inherited practice; Abraham repeatedly asks what the objects can actually do','Both sides reject tradition equally','Abraham argues that all inherited beliefs are automatically false'],0,'The critique targets unsupported inherited worship, not inheritance itself.'),
+mc('ab-b2-f3','Which interpretation best links the fire and Nimrod episodes?',['Both expose the limits of human coercion when it is treated as ultimate power','Both prove rulers have control over creation','Both are primarily about migration'],0,'The episodes contrast coercive authority with divine sovereignty.'),
+tf('ab-b2-f4','The story treats Hajar’s trust as passive waiting without purposeful action.',false,'She trusts Allah and repeatedly searches for water.'),
+tf('ab-b2-f5','The final chapters connect Abraham’s family experiences with communal practices that outlast him.',true,'Sa‘y, sacrifice, the Ka‘ba, and pilgrimage extend the family story into lasting practices.'),
+{id:'ab-b2-f6',type:'matching',title:'Final Challenge',instructions:'Match the episode to the analytical focus.',question:'Choose the strongest relationship.',correctAnswer:{},matchingPairs:[{left:'Celestial observation',right:'created change versus eternal Creator'},{left:'Nimrod debate',right:'political authority versus cosmic sovereignty'}],explanation:'The pairs test two distinct arguments.',feedback},
+{id:'ab-b2-f7',type:'matching',title:'Final Challenge',instructions:'Match action to value-in-action.',question:'Which action embodies each value?',correctAnswer:{},matchingPairs:[{left:'Hajar searches while trusting',right:'reliance with effort'},{left:'Abraham and Ishmael build and pray for acceptance',right:'service with humility'}],explanation:'Values are identified through actions in the narrative.',feedback},
+fill('ab-b2-f8','Complete the B2 source-reading rule.','A careful reader preserves words that [blank] a historical claim instead of turning it into certainty.','qualify','The story itself uses different levels of certainty.'),
+fill('ab-b2-f9','Complete the cause-and-consequence claim.','The public idol argument fails to change the rulers, so the conflict shifts from debate to [blank].','coercion','The leaders use chains, punishment, and the fire after the argumentative impasse.'),
+{id:'ab-b2-f10',type:'sequencing',title:'Final Challenge',instructions:'Order the legacy-building sequence.',question:'Put the final developments in order.',correctAnswer:['1','2','3','4'],sequencingItems:[{id:'1',text:'Hajar and Ishmael settle in the barren valley.'},{id:'2',text:'Zamzam provides water and settlement grows.'},{id:'3',text:'Abraham and Ishmael complete the test of sacrifice.'},{id:'4',text:'Father and son build the Ka‘ba and the story closes with Abraham’s legacy.'}],explanation:'The sequence synthesizes the Meccan arc without repeating the earlier review sequence.',feedback},
 ];
