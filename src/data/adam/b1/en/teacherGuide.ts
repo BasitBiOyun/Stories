@@ -1,174 +1,29 @@
-import { TeacherGuideSection, TeacherGuideMetadata } from '../../../../types';
+import type { TeacherGuideMetadata, TeacherGuideSection } from '../../../../types';
+
+// Manually authored chapter-by-chapter Teacher Guide for Adam B1.
+export const adamB1TeacherGuide: TeacherGuideSection[] = [
+  { chapter: 'Chapter 1: Introduction & The Creation', timing: '45 minutes', objectives: ['Identify how Adam is introduced.', 'Explain the idea of a ruler (khalifa) on earth.', 'Support one claim with exact chapter evidence.'], pedagogy: 'Evidence-first reading: establish who Adam is, then connect creation with human responsibility.', priorKnowledge: ['Students can use first, father, earth, responsibility, because.'], anticipatedMisconceptions: ['The chapter presents rulership as unlimited power.', 'The angels are described as enemies of Adam.'], grammarFocus: 'Present description versus past narrative.', pronunciationFocus: 'Messenger, ruler, curiosity, earth.', beforeReading: ['Ask what responsibility can mean when a person is trusted with something.'], duringReading: ['Underline the two descriptions of Adam.', 'Circle the sentence about a ruler on earth.'], afterReading: ['Give a claim-evidence explanation of the human role introduced here.'], lessonPlan: '5 min prediction; 12 min read/listen; 10 min evidence marking; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why does the chapter introduce responsibility immediately?', 'What does the text actually say about the angels’ reaction?'], interactiveTips: ['Use the soil hotspot only after students locate the creation sentence.', 'Run the Quick Challenge as the final check.'], differentiation: { strugglingLearners: 'Use: “Adam is… Allah says humans will…”', fastFinishers: 'Explain how the opening connects identity with responsibility in 4–5 sentences.' }, formativeAssessment: ['Check for one accurate claim and one exact supporting detail.'], expectedResponses: ['Adam is introduced as the first Messenger and father of humans; Allah says He will place a ruler on earth.'], transferTask: 'Name one small responsibility you have at school or home and explain what responsible action looks like.', teacherReflection: 'Did students distinguish responsibility from unrestricted power?' },
+  { chapter: 'Chapter 2: The Shaping of Adam', timing: '45 minutes', objectives: ['Explain the link between soil from different lands and human diversity.', 'Explain why intellect and knowledge matter in the chapter.', 'Use cause-result language accurately.'], pedagogy: 'Cause-result reading with attention to what the source explicitly connects.', priorKnowledge: ['Students know because, so, that is why.'], anticipatedMisconceptions: ['Skin color is presented as a measure of value.', 'Knowledge is described only as memorizing facts.'], grammarFocus: 'because, so, that is why; comparative more than.', pronunciationFocus: 'intellect, knowledge, diversity, respect.', beforeReading: ['Ask students to predict what “different lands” might connect with.'], duringReading: ['Mark the cause-result sentence about soil.', 'Underline what intellect allows Adam to do.'], afterReading: ['Write two cause-result sentences from the chapter.'], lessonPlan: '5 min activate; 12 min read/listen; 12 min evidence chain; 8 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['What does the chapter value more than material origin?', 'How does knowledge connect with responsibility?'], interactiveTips: ['Use the intellect hotspot after students find the evidence.', 'Use matching because two explicit relationships are being compared.'], differentiation: { strugglingLearners: 'Provide “Because…, …” and “…, so …” frames.', fastFinishers: 'Explain why diversity and knowledge should not be turned into a hierarchy of race or color.' }, formativeAssessment: ['Check one accurate cause-result pair.'], expectedResponses: ['Different soil is linked with different human skin colors; intellect is linked with learning and understanding.'], transferTask: 'Write one neutral example of a cause-result relationship from daily life.', teacherReflection: 'Did students avoid turning diversity into superiority?' },
+  { chapter: 'Chapter 3: Iblis’s Arrogance', timing: '50 minutes', objectives: ['Explain Iblis’s reasoning.', 'Identify why that reasoning is rejected by the story.', 'Connect arrogance with biased judgment.'], pedagogy: 'Reasoning analysis: separate Iblis’s claim from the narrator’s evaluation of that claim.', priorKnowledge: ['Students can compare two things and use while/however.'], anticipatedMisconceptions: ['The story agrees that fire is superior to soil.', 'The chapter says race or color determines greatness.'], grammarFocus: 'Comparison and contrast: better than, while, however.', pronunciationFocus: 'arrogant, superior, origin, clay.', beforeReading: ['Ask what makes a comparison fair or unfair.'], duringReading: ['Box Iblis’s direct claim.', 'Underline the sentences that reject his standard of superiority.'], afterReading: ['Write: claim → evidence → why the claim is flawed.'], lessonPlan: '5 min concept; 15 min read/listen; 12 min claim/evidence work; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['What does Iblis ignore when judging Adam?', 'Why is material origin a weak standard for human value in this chapter?'], interactiveTips: ['Use the pride hotspot to review after textual analysis.', 'Do not present hotspot wording as a replacement for story evidence.'], differentiation: { strugglingLearners: 'Use: “Iblis thinks… But the chapter says…”', fastFinishers: 'Explain how arrogance can create a biased comparison.' }, formativeAssessment: ['Listen for correct separation of Iblis’s view and the story’s message.'], expectedResponses: ['Iblis judges by fire versus soil; the story emphasizes Adam’s knowledge and rejects race, color, or group as sources of greatness.'], transferTask: 'Give a non-personal example of judging something by the wrong criterion.', teacherReflection: 'Did students keep character belief separate from authorial message?' },
+  { chapter: 'Chapter 4: The Expulsion of Iblis', timing: '45 minutes', objectives: ['Explain how Iblis responds after rejection.', 'Identify blame and enmity as consequences of continued arrogance.', 'Locate the warning given to Adam.'], pedagogy: 'Motivation-and-consequence reading focused on responsibility versus blame.', priorKnowledge: ['Students understand blame, enemy, warning.'], anticipatedMisconceptions: ['Iblis accepts responsibility after being sent away.', 'Adam is not warned about future danger.'], grammarFocus: 'because, so, wanted to, waited for a chance to.', pronunciationFocus: 'expulsion, enemy, kindness, warning.', beforeReading: ['Ask how blame can prevent learning from a mistake.'], duringReading: ['Mark what Iblis thinks caused his situation.', 'Find his intention toward Adam.', 'Underline the warning to Adam.'], afterReading: ['Explain the chain: pride → blame → hostility.'], lessonPlan: '5 min activate; 12 min read/listen; 10 min chain building; 10 min speaking; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why does blaming Adam keep Iblis from correction?', 'What practical purpose does the warning serve?'], interactiveTips: ['Use only visible story text and the Quick Challenge; do not invent external resources.'], differentiation: { strugglingLearners: 'Use three cards: blame, anger, warning.', fastFinishers: 'Write a short contrast between accountability and blame.' }, formativeAssessment: ['Collect one three-step cause chain.'], expectedResponses: ['Iblis continues to think he is right, blames Adam, becomes hostile, and seeks a chance to mislead him; Adam is warned.'], transferTask: 'Describe one healthy way to respond when feedback shows you were wrong.', teacherReflection: 'Could students explain motivation rather than only retell events?' },
+  { chapter: 'Chapter 5: Life in Paradise and the Warning', timing: '45 minutes', objectives: ['Describe companionship and blessings in Paradise.', 'Identify the one restriction.', 'Explain how deception begins through a false appearance and promise.'], pedagogy: 'Contrast reading: abundance and one clear boundary are set against deceptive persuasion.', priorKnowledge: ['Students know warning, restriction, friend, promise.'], anticipatedMisconceptions: ['The chapter says many things were forbidden.', 'Iblis approaches openly as an enemy.'], grammarFocus: 'only, if, would; reported promise.', pronunciationFocus: 'companionship, blessings, deception, pretending.', beforeReading: ['Ask why one clear boundary can matter even when many choices are available.'], duringReading: ['Circle the single restriction.', 'Mark the words showing Iblis’s false friendly appearance.', 'Underline the promise he makes.'], afterReading: ['Explain why the promise is deceptive without adding facts not in the chapter.'], lessonPlan: '5 min prediction; 12 min read/listen; 10 min evidence; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why is pretending to be a friend important to the deception?', 'What makes the restriction easy to state but difficult to follow?'], interactiveTips: ['Use the tree hotspot only after the rule is found in the story.'], differentiation: { strugglingLearners: 'Use: “The rule was… Iblis said…”', fastFinishers: 'Explain how a desirable promise can hide a harmful intention.' }, formativeAssessment: ['Check that students identify one restriction and one false promise.'], expectedResponses: ['They may enjoy Paradise but must not approach one tree; Iblis pretends friendship and promises they will never die.'], transferTask: 'Write a neutral example of checking a claim before trusting it.', teacherReflection: 'Did students separate what Iblis promised from what the story validates?' },
+  { chapter: 'Chapter 6: Satan’s Lies and Departure from Paradise', timing: '50 minutes', objectives: ['Sequence temptation and action.', 'Explain the emotional reaction after the act.', 'Identify how the chapter presents modesty as inborn.'], pedagogy: 'Action-consequence reading with careful attention to the text’s interpretation of modesty.', priorKnowledge: ['Students understand temptation, forbidden, shame, inborn.'], anticipatedMisconceptions: ['The chapter presents modesty as something learned later from society.', 'Adam and Eve feel no regret after the act.'], grammarFocus: 'event sequence: eventually, after, as soon as, therefore.', pronunciationFocus: 'forbidden, shame, modesty, inborn.', beforeReading: ['Predict what signals in a narrative show that a decision has consequences.'], duringReading: ['Number the deception, eating, emotional reaction, and covering.', 'Underline the sentence explaining why they cover themselves.'], afterReading: ['State one event and one interpreted consequence using evidence.'], lessonPlan: '5 min prediction; 15 min read/listen; 10 min sequence; 10 min evidence explanation; 7 min Tap & Reveal; 3 min exit.', discussionPoints: ['What changes immediately after the act?', 'Which part is event and which part is the chapter’s interpretation?'], interactiveTips: ['Use the single Tap & Reveal in this book only after students answer from the text.', 'Use the modesty hotspot as confirmation, not primary evidence.'], differentiation: { strugglingLearners: 'Use four event cards in order.', fastFinishers: 'Write a 5-sentence explanation distinguishing event from interpretation.' }, formativeAssessment: ['Check one correct sequence and one evidence-backed explanation.'], expectedResponses: ['They believe the lie, eat, feel sorrow/shame, and cover themselves; the chapter calls modesty an inborn human quality.'], transferTask: 'Give one example of pausing before acting when a promise sounds attractive.', teacherReflection: 'Did students distinguish narrative fact from interpretive statement?' },
+  { chapter: 'Chapter 7: Forgiveness and Repentance', timing: '50 minutes', objectives: ['Compare Adam and Eve’s response with Iblis’s response.', 'Explain repentance as learning and changed intention.', 'Connect forgiveness with continuing responsibility on earth.'], pedagogy: 'Contrast-and-growth reading: mistake is separated from the response to the mistake.', priorKnowledge: ['Students know regret, apologize, forgive, repeat.'], anticipatedMisconceptions: ['Repentance means only feeling sad.', 'Life on earth is described only as punishment with no responsibility.'], grammarFocus: 'contrast: on the other hand, while; decision language: decided never to.', pronunciationFocus: 'repentance, pardon, barrier, responsibility.', beforeReading: ['Ask what actions show that a person has learned from a mistake.'], duringReading: ['List Adam and Eve’s responses.', 'List Iblis’s response.', 'Mark what Allah gives them for life on earth.'], afterReading: ['Build a contrast table and a claim-evidence explanation.'], lessonPlan: '5 min activate; 15 min read/listen; 12 min contrast; 10 min speaking/writing; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why is admitting error necessary for learning in this chapter?', 'How does responsibility continue after forgiveness?'], interactiveTips: ['Use repentance/stewardship hotspots after evidence finding.'], differentiation: { strugglingLearners: 'Use “Adam and Eve… while Iblis…”', fastFinishers: 'Explain why changed intention makes repentance more than emotion.' }, formativeAssessment: ['Check one accurate contrast and one earth-responsibility detail.'], expectedResponses: ['Adam and Eve regret, apologize, learn, and intend not to repeat; Iblis refuses to admit error.'], transferTask: 'Write a four-step repair plan for a small everyday mistake: admit, apologize, correct, prevent repetition.', teacherReflection: 'Did students frame repentance as action and growth?' },
+  { chapter: 'Chapter 8: Struggle and Survival on Earth', timing: '45 minutes', objectives: ['Identify practical responsibilities on earth.', 'Compare Paradise with life requiring work and survival.', 'Explain how stewardship becomes visible action.'], pedagogy: 'Concrete action reading: abstract responsibility is translated into named tasks.', priorKnowledge: ['Students know crops, shelter, protect, survive.'], anticipatedMisconceptions: ['Stewardship is only a title.', 'The chapter says work on earth has no social or environmental dimension.'], grammarFocus: 'would + verb for repeated/expected responsibilities; had to for necessity.', pronunciationFocus: 'struggle, survive, shelter, descendants.', beforeReading: ['List three things humans need to survive and live responsibly.'], duringReading: ['Highlight verbs for food, shelter, nature, and care for others.', 'Mark had to statements.'], afterReading: ['Group responsibilities as self-care, environment, and care for others.'], lessonPlan: '5 min list; 12 min read/listen; 10 min classification; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Which responsibility is about more than survival?', 'How is helping the weak part of stewardship?'], interactiveTips: ['Use chapter hotspots after the action list is complete.'], differentiation: { strugglingLearners: 'Use three headings: survive, protect, help.', fastFinishers: 'Explain how practical work and moral responsibility overlap.' }, formativeAssessment: ['Collect one responsibility + evidence + category.'], expectedResponses: ['Humans grow food, keep animals, build shelter, protect nature, help the weak, and protect themselves.'], transferTask: 'Choose one environmental or helping action that can be done this week.', teacherReflection: 'Did students turn the abstract idea of stewardship into text-supported actions?' },
+  { chapter: 'Chapter 9: The First Messenger and Guidance', timing: '50 minutes', objectives: ['Explain when and why Adam becomes Messenger for a community.', 'Identify the repeated aims of guidance.', 'Connect remembrance with purpose in the chapter.'], pedagogy: 'Purpose reading: students trace what messengers teach and why the message continues.', priorKnowledge: ['Students know righteous, honest, sacred, purpose.'], anticipatedMisconceptions: ['The chapter says guidance is needed only once.', 'Adam teaches only ritual actions and not moral conduct.'], grammarFocus: 'purpose with to; repeated action with always/never.', pronunciationFocus: 'righteously, sacred, guidance, purpose.', beforeReading: ['Ask what a community needs from a moral teacher.'], duringReading: ['Underline the verbs describing Adam’s teaching.', 'Circle the repeated reason for sending messengers.', 'Mark the consequence of forgetting Allah as stated.'], afterReading: ['Summarize guidance in one purpose sentence and one consequence sentence.'], lessonPlan: '5 min activate; 15 min read/listen; 10 min evidence; 10 min summary; 7 min Quick Challenge; 3 min exit.', discussionPoints: ['How do doing good and remembering Allah connect in this chapter?', 'Why is guidance presented as continuing across generations?'], interactiveTips: ['Use the messenger/path hotspots only as review.'], differentiation: { strugglingLearners: 'Use: “Messengers teach people to… so that…”', fastFinishers: 'Explain how moral conduct and life purpose are linked in the chapter.' }, formativeAssessment: ['Check one complete purpose statement.'], expectedResponses: ['Adam teaches righteousness, honesty, good action, avoidance of evil, remembrance of Allah, and awareness of Iblis.'], transferTask: 'Write one short piece of guidance that includes both an action and a reason.', teacherReflection: 'Could students explain purpose rather than list facts?' },
+  { chapter: 'Chapter 10: The Two Sons', timing: '50 minutes', objectives: ['Compare Habil and Qabil without reducing them to labels.', 'Explain how the offerings reveal intention.', 'Connect sincerity with giving something valued.'], pedagogy: 'Character-through-evidence reading: infer traits from choices and offerings.', priorKnowledge: ['Students know shepherd, farmer, offering, sincerity, jealousy.'], anticipatedMisconceptions: ['Habil’s offering is accepted only because he is a shepherd.', 'The chapter says quantity alone determines sincerity.'], grammarFocus: 'contrast with while/but; relative descriptions.', pronunciationFocus: 'offering, sincerity, disagreement, shepherd.', beforeReading: ['Ask how an action can reveal intention.'], duringReading: ['Create two evidence columns for the brothers.', 'Underline the sentence explaining real goodness.'], afterReading: ['Write a claim about sincerity with one offering detail as evidence.'], lessonPlan: '5 min question; 15 min read/listen; 12 min evidence table; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['What makes Habil’s gift meaningful in the text?', 'How does jealousy affect the contrast between the brothers?'], interactiveTips: ['Use the offering hotspots after textual comparison.'], differentiation: { strugglingLearners: 'Use “Habil gives… Qabil gives…”', fastFinishers: 'Explain why sincerity is about intention expressed through action, not job or status.' }, formativeAssessment: ['Check one trait supported by a specific action.'], expectedResponses: ['Habil gives his best sheep; Qabil gives a low-value handful without care; the chapter links real goodness with giving what is best and loved.'], transferTask: 'Describe one non-material way to give your best effort to someone or a task.', teacherReflection: 'Did students infer from evidence rather than stereotype the characters?' },
+  { chapter: 'Chapter 11: The First Conflict and the Raven', timing: '50 minutes', objectives: ['Trace the escalation from anger to violence.', 'Explain Habil’s response to the threat.', 'Explain the raven’s practical teaching role.'], pedagogy: 'Escalation-and-consequence reading with emphasis on emotional control and evidence.', priorKnowledge: ['Students know threat, fight back, panic, bury, regret.'], anticipatedMisconceptions: ['Habil responds to the threat with equal violence.', 'The raven causes the killing.'], grammarFocus: 'direct speech and reported sequence; when/soon/then.', pronunciationFocus: 'raven, panic, regret, bury.', beforeReading: ['Ask what signs show a conflict is escalating.'], duringReading: ['Number threat, response, killing, panic, raven.', 'Underline Habil’s reason for not fighting back.'], afterReading: ['Explain one decision point where the outcome could have changed.'], lessonPlan: '5 min conflict vocabulary; 15 min read/listen; 10 min sequence; 10 min decision-point discussion; 7 min Quick Challenge; 3 min exit.', discussionPoints: ['How does uncontrolled anger narrow Qabil’s choices?', 'What exactly does the raven teach?'], interactiveTips: ['Use raven/anger hotspots after the sequence is reconstructed.'], differentiation: { strugglingLearners: 'Use five event cards and one sentence frame.', fastFinishers: 'Write a short explanation of how jealousy, anger, action, and regret form a chain.' }, formativeAssessment: ['Check sequence plus one cause/consequence link.'], expectedResponses: ['Habil refuses to harm his brother because he fears Allah; Qabil kills him, panics, and learns burial from a raven.'], transferTask: 'Write two practical steps for interrupting an argument before anger controls the next action.', teacherReflection: 'Did students discuss violence prevention without inventing details outside the story?' },
+  { chapter: 'Chapter 12: The Legacy of Adam', timing: '45 minutes', objectives: ['Summarize the final moral legacy without reducing it to one lesson.', 'Connect jealousy, anger, repentance, good action, and guidance.', 'Use evidence from earlier chapters to support the conclusion.'], pedagogy: 'Whole-book synthesis: final claims must be supported by more than one chapter.', priorKnowledge: ['Students remember the major contrasts and consequences.'], anticipatedMisconceptions: ['The legacy is only the story of the two sons.', 'The final chapter teaches that mistakes should be hidden.'], grammarFocus: 'summary language: overall, therefore, still, also.', pronunciationFocus: 'legacy, worldwide, admitting, guidance.', beforeReading: ['Recall three lessons from three different chapters.'], duringReading: ['Underline each final lesson named explicitly.', 'Connect each to an earlier event.'], afterReading: ['Write a short synthesis using two pieces of evidence.'], lessonPlan: '5 min retrieval; 12 min read/listen; 12 min cross-chapter links; 10 min synthesis; 5 min Quick Challenge; 1 min final reflection.', discussionPoints: ['Which earlier event best supports the warning about jealousy?', 'How does the book connect admitting mistakes with guidance?'], interactiveTips: ['Use the final hotspots only after cross-chapter evidence is found.', 'Move from Quick Challenge to later whole-book assessments without repeating the same micro-fact.'], differentiation: { strugglingLearners: 'Use a table: lesson / earlier chapter / evidence.', fastFinishers: 'Write 5–6 sentences showing how responsibility develops from Chapter 1 to Chapter 12.' }, formativeAssessment: ['Check that the final summary uses evidence from at least two chapters.'], expectedResponses: ['The legacy warns against jealousy and uncontrolled anger, encourages good action and repentance, and presents prophetic guidance as continuing help.'], transferTask: 'Choose one lesson and define a concrete action that would show it this week.', teacherReflection: 'Could students synthesize rather than simply retell the final chapter?' },
+];
 
 export const adamB1TeacherGuideMetadata: TeacherGuideMetadata = {
-  targetLearners: "High School Preparatory (Lise Hazırlık), 9th, and 10th-grade students. This level focuses on academic vocabulary, complex narrative structures, and philosophical reflection.",
-  assessmentEvidence: "Analytical essays on character motivation, complex grammar application (conditionals, passive voice), and participation in Socratic seminars. Evaluation focuses on the ability to synthesize moral lessons and apply them to global contexts.",
-  readingFramework: {
-    before: "Contextual brainstorming: Discuss the concept of 'stewardship' and 'human nature'. Preview academic vocabulary using the Master Glossary Part 1.",
-    during: "Analytical listening: Identify the shift in tone between Paradise and Earth. Pause to discuss the psychological state of characters during key decisions.",
-    after: "Moral synthesis: Debate the different reactions to mistakes (Adam vs. Iblis). Write a comparative analysis of Habil and Qabil's intentions."
-  },
-  rubricTitle: "Master Rubric (B1 Level)",
+  targetLearners: 'B1 secondary-school learners working with narrative, cause/result, comparison, inference, evidence, and values-as-action.',
+  assessmentEvidence: 'Use chapter Quick Challenges, evidence-based oral/written responses, the independent Knowledge Check, Retrieval Review, and Final Challenge. Look for accurate source use rather than unsupported abstraction.',
+  readingFramework: { before: 'Activate only the background needed for the chapter and preview a small number of meaning-bearing words.', during: 'Read/listen for gist first, then return for evidence, cause/result, motivation, contrast, and source-safe interpretation.', after: 'Require a short claim-evidence-explanation response and one realistic transfer or values-as-action task.' },
+  rubricTitle: 'Adam B1 Evidence & Communication Rubric',
   rubricRows: [
-    {
-      criterion: "Vocabulary",
-      excellent: "Uses 8+ academic words correctly in context.",
-      good: "Uses 4-5 academic words with minor errors.",
-      developing: "Uses mostly basic vocabulary."
-    },
-    {
-      criterion: "Analysis",
-      excellent: "Deeply analyzes character motives and themes.",
-      good: "Identifies main themes but lacks depth.",
-      developing: "Retells story without analytical insight."
-    },
-    {
-      criterion: "Grammar",
-      excellent: "Correct use of Conditionals and Passive Voice.",
-      good: "Occasional errors in complex structures.",
-      developing: "Limited to simple past/present tenses."
-    }
+    { criterion: 'Story Evidence', excellent: 'Uses precise chapter evidence and keeps claims within the source.', good: 'Uses relevant evidence with minor imprecision.', developing: 'Retells generally or adds unsupported claims.' },
+    { criterion: 'B1 Explanation', excellent: 'Explains cause, contrast, motivation, or consequence clearly.', good: 'Explains the main relationship with limited detail.', developing: 'Mostly lists facts without explaining relationships.' },
+    { criterion: 'Language Use', excellent: 'Uses clear B1 linking and story vocabulary accurately.', good: 'Communicates clearly with some language errors.', developing: 'Needs support to connect ideas.' },
   ],
-  implementationPlans: {
-    optionA: {
-      title: "Intensive Workshop (80m)",
-      steps: [
-        { time: "0-15m", activity: "Philosophical Warm-up: Discussing 'The Nature of Knowledge' and human potential." },
-        { time: "15-45m", activity: "Analytical Reading (Chapters 1-6): Focus on character psychology and the root of arrogance." },
-        { time: "45-65m", activity: "Collaborative Discussion (Chapters 7-12): Focus on ethics, consequences, and the raven's lesson." },
-        { time: "65-80m", activity: "Socratic Seminar: Synthesizing moral lessons and final reflective writing." }
-      ]
-    },
-    optionB: {
-      title: "Standard Split (2 x 40m)",
-      lessons: [
-        { 
-          title: "Lesson 1: The Origin & The Test", 
-          description: "Focus on academic vocabulary and the contrast between Adam's humility and Iblis's arrogance. Covers Chapters 1-6." 
-        },
-        { 
-          title: "Lesson 2: Life & Legacy", 
-          description: "Focus on repentance, stewardship, and conflict resolution themes. Covers Chapters 7-12 and Final Reflection." 
-        }
-      ]
-    }
-  },
-  homeConnection: {
-    title: "Family Discussion & Growth",
-    items: [
-      "Discuss the concept of 'Amanah' (Trust) with your family. How do we protect the environment as a family?",
-      "Ask your elders about a time they had to choose between arrogance and humility. What was the outcome?",
-      "Share one new academic word you learned today and explain its meaning in your native language.",
-      "Watch a documentary about human diversity and relate it to the 'soil of different lands' narrative.",
-      "Write a short 'Family Values' charter based on the lessons of sincerity and repentance."
-    ]
-  }
 };
-
-export const adamB1TeacherGuide: TeacherGuideSection[] = [
-  {
-    chapter: 'Creation & Divine Knowledge',
-    timing: '40 minutes',
-    objectives: [
-      'Analyze the philosophical significance of human intellect in the creation narrative.',
-      'Identify and utilize advanced vocabulary related to human diversity and stewardship.',
-      'Examine the concept of "Khalifa" (stewardship) from a global citizenship perspective.'
-    ],
-    pedagogy: 'Critical Thinking & Comparative Analysis. Suitable for High School Prep, 9th, and 10th-grade students. Encourage students to explore the ethical implications of knowledge.',
-    grammarFocus: 'Complex sentence structures, passive voice, and modal verbs of possibility.',
-    pronunciationFocus: 'Academic word stress (e.g., in-tel-lect, su-pe-ri-or-i-ty) and narrative intonation.',
-    lessonPlan: '1. Socratic Seminar: Discuss the responsibilities of being a "ruler" on Earth. 2. Textual Analysis: Identify how the narrative explains human diversity. 3. Debate: Knowledge vs. Origin—which defines value? 4. Vocabulary Workshop: Focus on abstract nouns and their usage in formal contexts.',
-    discussionPoints: [
-      'How does the narrative of common origin (Adam) address modern issues of racism?',
-      'In what ways does knowledge empower humanity to fulfill its role as stewards?'
-    ],
-    differentiation: {
-      fastFinishers: 'Compose an analytical essay on the intersection of divine knowledge and human free will.',
-      strugglingLearners: 'Summarize the interaction between Allah and the angels using a structured graphic organizer.'
-    },
-    interactiveTips: [
-      'Direct students to the "Divine Intellect" hotspot to discuss the cognitive leap that distinguishes humans.',
-      'Utilize the animated keywords to trigger classroom discussions on core themes.'
-    ],
-    assessmentTools: {
-      rubric: ['Analytical Depth (1-5)', 'Vocabulary Integration (1-5)', 'Argumentative Clarity (1-5)'],
-      exitTicket: ['Explain the concept of "Khalifa" in the context of environmental protection.', 'Why is arrogance described as a "barrier" to truth?']
-    },
-    kinestheticActivities: ['"The Stewardship Map": Students create a visual map of how they can protect their local environment.'],
-    globalCitizenship: ['Connecting the story to the UN Sustainable Development Goals (SDGs), specifically Life on Land and Reduced Inequalities.'],
-    extraResources: {
-      worksheets: ['Ethical Stewardship Analysis', 'Advanced Narrative Structures in B1 English'],
-      links: [{ label: 'Scholarly Article: The Concept of Man in Islamic Thought', url: '#' }]
-    }
-  },
-  {
-    chapter: 'The Fall & Repentance',
-    timing: '40 minutes',
-    objectives: [
-      'Contrast the psychological states of Adam and Iblis following their respective actions.',
-      'Evaluate the role of "shame" (haya) as an innate human characteristic.',
-      'Practice using third conditional structures to discuss hypothetical pasts.'
-    ],
-    pedagogy: 'Character Psychology & Moral Philosophy. Focus on the internal shift from Paradise to Earth.',
-    grammarFocus: 'Third Conditional: "If they hadn\'t eaten the fruit, they would have stayed in Paradise."',
-    pronunciationFocus: 'Expressive reading—conveying emotions like "shame", "regret", and "pardon".',
-    lessonPlan: '1. Comparative Chart: Adam\'s Repentance vs. Iblis\'s Arrogance. 2. Discussion: Is shame a positive or negative emotion in this context? 3. Writing Task: Write a letter from Adam to his children explaining the lesson of the tree. 4. Role-play: The dialogue between Adam and Allah regarding forgiveness.',
-    discussionPoints: [
-      'Why is admitting a mistake considered a sign of strength in this narrative?',
-      'How does arrogance prevent self-improvement?'
-    ],
-    differentiation: {
-      fastFinishers: 'Research the concept of "Fitra" (innate nature) and how it relates to the story.',
-      strugglingLearners: 'Identify all the "feeling" words in the text and categorize them as positive or negative.'
-    },
-    interactiveTips: [
-      'Use the "Innate Modesty" hotspot to discuss the sociological implications of clothing and privacy.',
-      'Encourage students to listen to the audio to catch the emotional nuances of the dialogue.'
-    ],
-    assessmentTools: {
-      rubric: ['Emotional Intelligence in Analysis (1-5)', 'Conditional Grammar Usage (1-5)'],
-      exitTicket: ['What is the "biggest barrier" to doing the right thing according to the text?', 'How did Adam\'s reaction differ from Iblis\'s?']
-    },
-    kinestheticActivities: ['"The Choice Path": Students walk a physical line in the classroom, choosing "Repentance" or "Arrogance" at a crossroad.'],
-    globalCitizenship: ['Discussing the universal human experience of making mistakes and the importance of restorative justice.'],
-    extraResources: {
-      worksheets: ['Psychological Profile: Adam vs Iblis', 'Conditional Tense Practice'],
-      links: [{ label: 'Video: The Power of Vulnerability and Admitting Mistakes', url: '#' }]
-    }
-  },
-  {
-    chapter: 'The Two Sons & The Raven',
-    timing: '40 minutes',
-    objectives: [
-      'Analyze the themes of jealousy and sincerity through the conflict of Habil and Qabil.',
-      'Interpret the symbolism of the raven as a divine teacher.',
-      'Synthesize the overall message of the story for a modern audience.'
-    ],
-    pedagogy: 'Symbolic Interpretation & Values Education. Focus on the internal motivation behind external actions.',
-    grammarFocus: 'Reporting verbs and direct/indirect speech in conflict narratives.',
-    pronunciationFocus: 'Vowel sounds in "raven", "panic", and "sincerity".',
-    lessonPlan: '1. Case Study: Why was one offering accepted and the other not? 2. Creative Writing: Write the story from the perspective of the raven. 3. Group Project: Create a "Guide to Controlling Anger" based on the story\'s conclusion. 4. Final Debate: Is jealousy an avoidable emotion?',
-    discussionPoints: [
-      'What does "giving from the heart" mean in a practical, modern sense?',
-      'How does the story of the raven highlight human limitations?'
-    ],
-    differentiation: {
-      fastFinishers: 'Analyze how this story has been reflected in world literature or art.',
-      strugglingLearners: 'Draw a storyboard of the conflict and the raven\'s arrival.'
-    },
-    interactiveTips: [
-      'Direct students to the "Raven\'s Lesson" hotspot to discuss the concept of learning from nature.',
-      'Use the "Eternal Message" hotspot to wrap up the entire unit.'
-    ],
-    assessmentTools: {
-      rubric: ['Symbolic Analysis (1-5)', 'Synthesis of Themes (1-5)', 'Oral Presentation (1-5)'],
-      exitTicket: ['What did Qabil realize when he saw the raven?', 'What is the "eternal message" of Adam\'s story?']
-    },
-    kinestheticActivities: ['"The Offering Circle": Students present "symbolic offerings" (ideas/values) to the class and explain their sincerity.'],
-    globalCitizenship: ['Conflict resolution and the prevention of violence in communities.'],
-    extraResources: {
-      worksheets: ['Symbolism in the Story of Adam', 'Conflict Resolution Guide'],
-      links: [{ label: 'Article: Nature as a Teacher in Ancient Narratives', url: '#' }]
-    }
-  }
-];
