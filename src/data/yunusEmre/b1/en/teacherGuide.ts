@@ -1,679 +1,81 @@
-import { TeacherGuideSection, TeacherGuideMetadata } from '../../../../types';
+import type { TeacherGuideMetadata, TeacherGuideSection } from '../../../../types';
 
+// Manually authored chapter-by-chapter Teacher Guide for Yunus Emre B1.
 export const yunusB1TeacherGuide: TeacherGuideSection[] = [
   {
-    chapter: 'Chapter 1: Yunus Emre and Sûfîsm',
-    timing: '45 minutes',
-    objectives: [
-      'Identify Yunus Emre as a Turkish poet and Sûfî from Anatolia.',
-      'Explain Sûfîsm in simple B1 language.',
-      'Distinguish between the outer and inner sides of Islamic life.',
-      'Use key vocabulary such as mysticism, morality, intentions, prejudice, and literary.'
-    ],
-    pedagogy: 'Use concept-based reading and guided simplification. Students should understand not only who Yunus Emre was, but also the moral and spiritual framework that shaped his poetry.',
-    grammarFocus: 'Defining relative clauses and explanation language: “A Sûfî is a person who...” “The outer part relates to...” “The inner side refers to...”',
-    pronunciationFocus: 'Word stress in “Anatolian”, “mysticism”, “morality”, “generously”, “literary”; careful pronunciation of Sûfî /ˈsuːfiː/.',
-    lessonPlan: '0–5 min: Warm-up: What makes a person spiritually mature? 5–12 min: Vocabulary preview. 12–24 min: Guided reading. 24–32 min: Outer/inner Islam T-chart. 32–39 min: Pair explanation: “A Sûfî is...” 39–45 min: Exit ticket.',
-    discussionPoints: [
-      'What is a Sûfî according to the chapter?',
-      'What is the difference between outer worship and inner morality?',
-      'Why is Yunus Emre important for Turkish literature?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short paragraph explaining how Sûfîsm connects worship, morality, and daily life.',
-      strugglingLearners: 'Use sentence frames: “A Sûfî is...” “The outer part is...” “The inner side is...”'
-    },
-    interactiveTips: [
-      'Use the Sûfîsm hotspot to define the central concept.',
-      'Use the moral principles hotspot to list examples of good behaviour.',
-      'Ask students to choose three Sûfî principles and give one daily-life example for each.'
-    ],
-    assessmentTools: {
-      rubric: ['Concept explanation', 'Vocabulary use', 'Text evidence', 'Participation'],
-      exitTicket: ['One sentence defining Sûfî', 'One example of inner morality']
-    },
-    kinestheticActivities: [
-      'Students stand on two sides of the room: “outer actions” and “inner intentions”; teacher reads examples and students choose a side.'
-    ],
-    globalCitizenship: [
-      'Discuss how moral principles such as patience, generosity, and kindness can improve any community.'
-    ],
-    extraResources: {
-      worksheets: ['Outer/inner Islam chart', 'Sûfî principles matching sheet', 'B1 vocabulary cards']
-    }
+    chapter: 'Chapter 1: Yunus Emre and Sûfîsm', timing: '45 minutes',
+    objectives: ['Explain who Yunus Emre was and define a Sûfî from the text.', 'Distinguish outer worship from inner intention and morality.', 'Support one moral principle with chapter evidence.'],
+    pedagogy: 'Evidence-first concept reading: students move from the chapter definition to examples, then explain the relationship between visible practice and inner character.',
+    priorKnowledge: ['Students know basic language for habits, values, and religious practice.'],
+    anticipatedMisconceptions: ['A Sûfî is only a poet.', 'The chapter says outward worship is unimportant.'],
+    grammarFocus: 'Definition and contrast: who, while, whereas, refers to.', pronunciationFocus: 'Sûfî, mysticism, morality, literary.',
+    beforeReading: ['Predict what “outer” and “inner” may mean in a way of life.'],
+    duringReading: ['Underline the definition of Sûfî and one sentence for each side.', 'Circle two moral actions.'],
+    afterReading: ['Give a claim-evidence explanation of one Sûfî principle.'],
+    lessonPlan: '5 min prediction; 12 min read/listen for gist and definitions; 10 min evidence marking; 10 min pair explanation; 5 min Quick Challenge; 3 min exit ticket.',
+    discussionPoints: ['How do outer actions and inner intentions support one another?', 'Which principle is shown through an action, not only a belief?'],
+    interactiveTips: ['Use the two chapter hotspots only after students find the same evidence in the story.', 'Run the Quick Challenge as a final concept check.'],
+    differentiation: { strugglingLearners: 'Use frames: “The outer side is… / The inner side is… / One moral action is…”', fastFinishers: 'Explain why giving without expecting a return is an example of inner morality becoming visible action.' },
+    formativeAssessment: ['Listen for an accurate definition and a text-based example.'], expectedResponses: ['A Sûfî seeks closeness to Allah through Islamic mysticism; the text joins worship with intention and morality.'],
+    transferTask: 'Choose one listed principle and describe one realistic action that would show it at school or home.', teacherReflection: 'Did students distinguish text evidence from their own examples?'
   },
   {
-    chapter: 'Chapter 2: His Language and Education',
-    timing: '45 minutes',
-    objectives: [
-      'Explain why Yunus Emre’s language was loved by people.',
-      'Recognize the value of simple but literary language.',
-      'Understand madrasa and tekke education in the chapter.',
-      'Use vocabulary such as style, complex, influence, era, and spiritual tutor.'
-    ],
-    pedagogy: 'Use language-awareness reading. Students compare simple, complex, and literary language and notice that clear language can still carry deep ideas.',
-    grammarFocus: 'Contrast with “not too... but also...” and “while”: “His style is not too simple, but not too complex either.”',
-    pronunciationFocus: 'Word stress in “education”, “complex”, “influence”, “historical”, “spiritual”; pronunciation of Hacı Bektaş-ı Veli and Mevlana.',
-    lessonPlan: '0–5 min: Review Chapter 1. 5–12 min: Vocabulary preview. 12–23 min: Guided reading. 23–31 min: Language/Education two-column note-taking. 31–38 min: Sentence practice with contrast. 38–45 min: Exit ticket and pair sharing.',
-    discussionPoints: [
-      'Why were Yunus Emre’s works popular?',
-      'How can language be simple but still valuable?',
-      'Where did Yunus Emre study besides madrasa?'
-    ],
-    differentiation: {
-      fastFinishers: 'Compare madrasa and tekke education in 5–6 sentences.',
-      strugglingLearners: 'Match words with meanings: plain, era, guidance, sheikh, influence.'
-    },
-    interactiveTips: [
-      'Use the simple language hotspot to discuss clarity.',
-      'Use the education hotspot to connect madrasa and tekke.',
-      'Ask students to rewrite one complex sentence in simpler English.'
-    ],
-    assessmentTools: {
-      rubric: ['Main idea', 'Comparison', 'Vocabulary accuracy', 'Sentence clarity'],
-      exitTicket: ['One reason people loved Yunus’s language', 'One place of education']
-    },
-    kinestheticActivities: [
-      'Students sort cards into “language”, “education”, and “historical people”.'
-    ],
-    globalCitizenship: [
-      'Discuss why speaking clearly can make knowledge accessible to more people.'
-    ],
-    extraResources: {
-      worksheets: ['Language and education chart', 'Contrast sentence worksheet', 'Vocabulary matching sheet']
-    }
+    chapter: 'Chapter 2: His Language and Education', timing: '45 minutes',
+    objectives: ['Explain why Yunus’s language reached many people.', 'Compare madrasa learning with tekke learning as presented.', 'Notice the source qualifier “Some sources say”.'],
+    pedagogy: 'Source-aware reading with comparison. Students separate what the chapter states directly from what historical sources are reported to say.',
+    priorKnowledge: ['Students can use because, while, and some sources say.'], anticipatedMisconceptions: ['The chapter proves every detail of Yunus’s education with certainty.', 'Simple language means low literary quality.'],
+    grammarFocus: 'Qualification and contrast: according to, some sources say, but, while.', pronunciationFocus: 'literary, influence, madrasa, sheikh.',
+    beforeReading: ['Ask whether clear language can still express difficult ideas.'], duringReading: ['Mark one sentence about style and one qualified historical claim.', 'Make a two-column madrasa/tekke evidence note.'], afterReading: ['Explain why clarity increased access without reducing literary value.'],
+    lessonPlan: '5 min question; 12 min read/listen; 10 min source-language noticing; 10 min comparison; 5 min Quick Challenge; 3 min exit.',
+    discussionPoints: ['Why were his works popular?', 'Why does “some sources say” matter?'], interactiveTips: ['Use the language and education hotspots to confirm evidence already found.', 'Ask students to paraphrase the qualified claim without making it stronger.'],
+    differentiation: { strugglingLearners: 'Provide “The story says… / Some sources say…” frames.', fastFinishers: 'Write a short claim-evidence explanation of how language and education both shaped Yunus’s influence.' },
+    formativeAssessment: ['Check that students preserve the qualifier when speaking or writing.'], expectedResponses: ['His works combined literary quality with plain language; some sources report madrasa study, while the tekke provided spiritual learning.'], transferTask: 'Rewrite one complex school instruction in clearer English without losing its meaning.', teacherReflection: 'Did students avoid turning a qualified source claim into certainty?'
   },
   {
-    chapter: 'Chapter 3: Tekkés and Anatolia',
-    timing: '50 minutes',
-    objectives: [
-      'Understand the social, artistic, and educational role of tekkes.',
-      'Identify the difficult historical background of 13th- and 14th-century Anatolia.',
-      'Explain how political and social problems affected people.',
-      'Use vocabulary such as community organizations, fine arts, revolts, invasion, and circumstances.'
-    ],
-    pedagogy: 'Use historical-context reading. B1 learners should connect cultural institutions with the difficult period in which Yunus Emre lived.',
-    grammarFocus: 'Past simple and passive awareness: “Tekkés were supported...” “Anatolia was affected...”',
-    pronunciationFocus: 'Word stress in “organization”, “community”, “invasion”, “circumstances”, “Anatolia”; pronunciation of tekke/tekkés.',
-    lessonPlan: '0–5 min: Warm-up: What can schools and community centers do for society? 5–12 min: Vocabulary preview. 12–25 min: Guided reading. 25–34 min: Tekkés vs hard times chart. 34–43 min: Cause-effect discussion. 43–50 min: Exit ticket.',
-    discussionPoints: [
-      'What roles did tekkes have in society?',
-      'Why were the 13th and 14th centuries difficult in Anatolia?',
-      'How can hard times affect poets and thinkers?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph titled “Why Tekkés Were Important”.',
-      strugglingLearners: 'Create a five-word historical vocabulary list and draw simple symbols for each word.'
-    },
-    interactiveTips: [
-      'Use the tekkés hotspot to review educational, social, and artistic roles.',
-      'Use the difficult times hotspot to summarize the historical setting.',
-      'Ask students to mark historical names and events in different colors.'
-    ],
-    assessmentTools: {
-      rubric: ['Historical context', 'Cause-effect understanding', 'Vocabulary use', 'Note-taking'],
-      exitTicket: ['One function of tekkés', 'One problem in Anatolia']
-    },
-    kinestheticActivities: [
-      'Students create a human concept map: tekke, poetry, society, Mongols, Seljuks, people.'
-    ],
-    globalCitizenship: [
-      'Discuss how cultural and educational institutions can support people during difficult times.'
-    ],
-    extraResources: {
-      worksheets: ['Tekkés role chart', 'Historical context timeline', 'Cause-effect worksheet']
-    }
+    chapter: 'Chapter 3: Tekkés and Anatolia', timing: '50 minutes', objectives: ['Explain three roles of tekkes.', 'Connect cultural institutions with the difficult historical setting.', 'Identify one cause and one social result in the chapter.'],
+    pedagogy: 'Institution-and-context reading: students first identify what tekkes did, then connect those functions with social need during instability.', priorKnowledge: ['Students know community, training, arts, revolt, invasion.'], anticipatedMisconceptions: ['Tekkés were only places of private worship.', 'The chapter says Yunus caused the political crisis.'],
+    grammarFocus: 'Not only… but also; past passive awareness.', pronunciationFocus: 'tekke, community, revolts, invasion, circumstances.', beforeReading: ['List functions a community institution can serve during difficult times.'], duringReading: ['Label evidence as spiritual, social, cultural, or historical.', 'Trace Babai revolts → Kösedağ → Mongol invasion.'], afterReading: ['Explain why a tekke could matter to both an individual and a community.'],
+    lessonPlan: '5 min activate; 15 min read/listen; 10 min classification; 10 min cause-effect chain; 7 min speaking; 3 min exit.', discussionPoints: ['Which tekke role is easiest to support with evidence?', 'How might social crisis increase the need for community support?'], interactiveTips: ['Use hotspots to review the tekke role and difficult setting.', 'Quick Challenge checks the three-role distinction.'], differentiation: { strugglingLearners: 'Give four labels: spiritual, social, cultural, historical.', fastFinishers: 'Write a 5-sentence explanation linking one tekke role with one historical pressure.' }, formativeAssessment: ['Collect one role + evidence pair.'], expectedResponses: ['Tekkés trained Sûfîs, helped and gathered people, and supported arts such as poetry.'], transferTask: 'Name one modern institution that serves more than one community function and compare it carefully.', teacherReflection: 'Did students keep historical inference separate from facts stated in the text?'
   },
   {
-    chapter: 'Chapter 4: The Babai Revolts',
-    timing: '50 minutes',
-    objectives: [
-      'Understand the decline of the Anatolian Seljuk social and economic structure.',
-      'Explain why migration and poor governance increased chaos.',
-      'Follow the main idea of the Babai revolts.',
-      'Use cause-effect language such as because, so, as a result, and therefore.'
-    ],
-    pedagogy: 'Use cause-effect historical reading. Students should see how leadership, migration, and social pressure can create unrest.',
-    grammarFocus: 'Cause-effect connectors: because, so, as a result, therefore, due to.',
-    pronunciationFocus: 'Word stress in “governance”, “economic”, “population”, “migration”, “rebellion”; names: Alaeddin, Giyaseddin Keyhüsrev.',
-    lessonPlan: '0–6 min: Review Anatolia background. 6–13 min: Vocabulary preview. 13–27 min: Guided reading. 27–36 min: Timeline: Alaeddin I, Giyaseddin Keyhüsrev II, migration, Turkmen unrest, revolt. 36–45 min: Cause-effect sentence writing. 45–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why did the Seljuk structure begin to decline?',
-      'How did migration change life in Anatolia?',
-      'Why did some Turkmen people follow spiritual leaders?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short explanation of the Babai revolts using at least three linking words.',
-      strugglingLearners: 'Complete frames: “The Seljuks declined because...” “Migration caused...” “The Turkmen people wanted...”'
-    },
-    interactiveTips: [
-      'Use the Seljuk Anatolia hotspot to review the political setting.',
-      'Use the Babai revolts hotspot to focus on unrest.',
-      'Ask students to identify one cause and one result from each paragraph.'
-    ],
-    assessmentTools: {
-      rubric: ['Timeline accuracy', 'Cause-effect language', 'Comprehension', 'Vocabulary'],
-      exitTicket: ['One cause of chaos', 'One result of poor governance']
-    },
-    kinestheticActivities: [
-      'Students hold event cards and arrange themselves into a chronological line.'
-    ],
-    globalCitizenship: [
-      'Discuss how good leadership and fair management can reduce social conflict.'
-    ],
-    extraResources: {
-      worksheets: ['Babai revolt timeline', 'Cause-effect connectors practice', 'Migration impact chart']
-    }
+    chapter: 'Chapter 4: The Babai Revolts', timing: '50 minutes', objectives: ['Compare Alaeddin I’s strong period with later decline.', 'Explain how poor governance and migration pressure worsened chaos.', 'Use cause-result language accurately.'], pedagogy: 'Historical cause-effect reading. The focus is not memorising rulers but explaining a supported chain of change.', priorKnowledge: ['Students can read dates and use because/as a result.'], anticipatedMisconceptions: ['Migration alone is presented as the only cause.', 'The chapter says the Mongol invasion happened because of Yunus.'], grammarFocus: 'because of, caused, led to, worsened.', pronunciationFocus: 'governance, migration, population, Alaeddin, Giyaseddin.', beforeReading: ['Predict what can change when a strong government becomes poorly managed.'], duringReading: ['Mark strength evidence, then decline evidence.', 'Underline the sentence linking failure to manage the situation with worsening chaos.'], afterReading: ['Build a three-step cause-result explanation.'], lessonPlan: '5 min predict; 15 min read/listen; 12 min evidence contrast; 10 min cause chain; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['What changed between the two reigns?', 'Why should we avoid reducing the crisis to one cause?'], interactiveTips: ['Use the political-setting hotspot after text marking.', 'Have pairs justify each arrow in their cause chain.'], differentiation: { strugglingLearners: 'Provide cause/result cards from the chapter.', fastFinishers: 'Explain how governance and population pressure interact rather than acting as separate facts.' }, formativeAssessment: ['Check one complete because/therefore statement.'], expectedResponses: ['Poor governance plus pressure from migration and population change worsened social and economic instability.'], transferTask: 'Describe a non-political school example where poor management can worsen an existing pressure.', teacherReflection: 'Were students explaining relationships rather than reciting dates?'
   },
   {
-    chapter: 'Chapter 5: Kösedağ and Destruction',
-    timing: '50 minutes',
-    objectives: [
-      'Understand the Battle of Kösedağ and its consequences.',
-      'Explain how Mongol attacks caused destruction and fear.',
-      'Identify emotional vocabulary related to sorrow, fear, and misery.',
-      'Write a short historical summary in chronological order.'
-    ],
-    pedagogy: 'Use chronological reading with emotional awareness. Students should understand the event and also notice the human consequences of war and invasion.',
-    grammarFocus: 'Sequencing with in 1242, finally, after that, following, because of this.',
-    pronunciationFocus: 'Place names: Erzurum, Kösedağ, Sivas, Kayseri, Erzincan; word stress in “captured”, “disaster”, “defeated”, “destruction”.',
-    lessonPlan: '0–5 min: Warm-up: What can happen after a major military defeat? 5–12 min: Vocabulary preview. 12–26 min: Guided reading. 26–35 min: Number the events. 35–44 min: Six-line historical summary. 44–50 min: Exit ticket.',
-    discussionPoints: [
-      'What happened in 1242 and 1243?',
-      'How did the Mongols defeat the Seljuks?',
-      'What kind of suffering did people experience?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short newspaper-style report about Kösedağ.',
-      strugglingLearners: 'Match places with events: Erzurum, Kösedağ, Sivas, Kayseri, Erzincan.'
-    },
-    interactiveTips: [
-      'Use the Kösedağ hotspot to identify the turning point.',
-      'Use the destruction hotspot to discuss consequences.',
-      'Ask students to underline dates and place names.'
-    ],
-    assessmentTools: {
-      rubric: ['Chronology', 'Historical summary', 'Vocabulary use', 'Empathy/reflection'],
-      exitTicket: ['One date from the chapter', 'One consequence of the battle']
-    },
-    kinestheticActivities: [
-      'Students make a floor timeline with city cards and event cards.'
-    ],
-    globalCitizenship: [
-      'Discuss why wars and invasions affect civilians, families, and culture.'
-    ],
-    extraResources: {
-      worksheets: ['Kösedağ timeline', 'Place-event matching', 'Historical summary frame']
-    }
+    chapter: 'Chapter 5: Kösedağ and Destruction', timing: '50 minutes', objectives: ['Sequence the revolt, Erzurum attack, and Kösedağ battle.', 'Explain why the battle was a turning point.', 'Recognise human consequences as well as military events.'], pedagogy: 'Chronological reading plus consequence analysis. Students identify what happened and what changed because of it.', priorKnowledge: ['Students understand revolt, capture, defeat, raid.'], anticipatedMisconceptions: ['The Babai revolt and Kösedağ are the same event.', 'The chapter presents the destruction only as a military statistic.'], grammarFocus: 'finally, after that, because of, thus.', pronunciationFocus: 'Kösedağ, Erzurum, Sivas, Kayseri, Erzincan.', beforeReading: ['Preview the places and ask what makes an event a turning point.'], duringReading: ['Number four key events.', 'Mark one military tactic and two consequences for cities/people.'], afterReading: ['Explain the turning point in two sentences.'], lessonPlan: '5 min map/place preview; 15 min read/listen; 10 min sequence; 10 min turning-point explanation; 7 min Quick Challenge; 3 min exit.', discussionPoints: ['Why did the revolt leave the Seljuks vulnerable?', 'What evidence shows Kösedağ changed more than one battle outcome?'], interactiveTips: ['Use the Kösedağ hotspot to locate the battle evidence.', 'Use sequencing only because order matters here.'], differentiation: { strugglingLearners: 'Give four event starters in order-independent cards.', fastFinishers: 'Write a short explanation connecting internal weakness with external attack.' }, formativeAssessment: ['Check chronology and one consequence statement.'], expectedResponses: ['The revolt weakened the state; Mongol attack followed; Kösedağ ended in Seljuk defeat and was followed by destructive raids.'], transferTask: 'Explain the difference between an event and its consequences using a familiar example.', teacherReflection: 'Did students include human consequences, not only battle facts?'
   },
   {
-    chapter: 'Chapter 6: Chaos in Anatolia',
-    timing: '50 minutes',
-    objectives: [
-      'Understand the political chaos after Mongol pressure.',
-      'Explain how taxes and dependency made people poorer.',
-      'Recognize the Ilkhanate as part of the historical background.',
-      'Use vocabulary such as dependent, officials, income, continuously, and administer.'
-    ],
-    pedagogy: 'Use contextual history reading. Students should connect big political changes with ordinary people’s daily difficulties.',
-    grammarFocus: 'Result clauses with “this made...” and “this led to...”: “The tax increased, and this made people poorer.”',
-    pronunciationFocus: 'Word stress in “dependent”, “officials”, “income”, “continuously”, “administer”, “Ilkhanate”.',
-    lessonPlan: '0–5 min: Review Kösedağ. 5–12 min: Vocabulary preview. 12–25 min: Guided reading. 25–35 min: Problem-result chart. 35–43 min: Four-sentence summary. 43–50 min: Exit ticket and class discussion.',
-    discussionPoints: [
-      'Why did Anatolia experience panic?',
-      'How did Mongol taxes affect the state and people?',
-      'What changed after 1308?'
-    ],
-    differentiation: {
-      fastFinishers: 'Explain how political chaos can prepare the ground for spiritual voices like Yunus Emre.',
-      strugglingLearners: 'Complete a chart with the words: tax, poor, Mongols, Ilkhanate, governors.'
-    },
-    interactiveTips: [
-      'Use the chaos hotspot to review the main problem.',
-      'Use the Ilkhanate pressure hotspot to connect politics and society.',
-      'Ask students to circle words that show pressure and poverty.'
-    ],
-    assessmentTools: {
-      rubric: ['Context understanding', 'Problem-result reasoning', 'Summary quality', 'Vocabulary'],
-      exitTicket: ['One reason people became poorer', 'One political change after 1308']
-    },
-    kinestheticActivities: [
-      'Students pass “tax tokens” from people to state to Mongols to visualize economic pressure.'
-    ],
-    globalCitizenship: [
-      'Discuss how unfair economic pressure can weaken both states and communities.'
-    ],
-    extraResources: {
-      worksheets: ['Problem-result chart', 'Vocabulary cloze', 'Political context summary frame']
-    }
+    chapter: 'Chapter 6: Chaos in Anatolia', timing: '50 minutes', objectives: ['Explain how military defeat became political and economic dependence.', 'Connect rising tribute with poverty.', 'Identify the shift to direct Ilkhanate control.'], pedagogy: 'Systems reading: students trace how violence, taxation, administration, and dependence reinforce one another.', priorKnowledge: ['Students know tax, income, dependent, governor.'], anticipatedMisconceptions: ['The agreement restored Seljuk independence.', '1308 is presented as the beginning of all Mongol pressure.'], grammarFocus: 'in time, continuously, after, directly attached to.', pronunciationFocus: 'dependent, income, administer, Ilkhanate.', beforeReading: ['Ask how a state can lose independence without disappearing immediately.'], duringReading: ['Mark evidence for human suffering, financial pressure, and political control.', 'Trace agreement → dependence → taxation → governors → direct attachment.'], afterReading: ['Write one system explanation using at least three links.'], lessonPlan: '5 min concept; 15 min read/listen; 12 min systems chain; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why did the agreement not end hardship?', 'How did political dependence affect ordinary people?'], interactiveTips: ['Use hotspots to review raids and Ilkhanate pressure.', 'Quick Challenge checks the tax/dependence relationship.'], differentiation: { strugglingLearners: 'Use arrows and five key terms.', fastFinishers: 'Explain how economic and political dependence can strengthen each other.' }, formativeAssessment: ['Ask each pair to justify one arrow with a sentence from the chapter.'], expectedResponses: ['Taxes increased, the state and people became poorer, Mongol officials gained control, and Anatolia was eventually attached to the Ilkhanate.'], transferTask: 'Create a neutral systems example where one problem produces a second problem that feeds back into the first.', teacherReflection: 'Could students explain dependence rather than merely define it?'
   },
   {
-    chapter: 'Chapter 7: Yunus as a Wise Dervish',
-    timing: '45 minutes',
-    objectives: [
-      'Understand how Yunus Emre appeared as a wise Sûfî/dervish in a difficult period.',
-      'Explain why poetry was an influential tool for him.',
-      'Connect Yunus’s Sûfîsm with the Qur’an and Sunnah.',
-      'Use vocabulary such as influential, nomads, popular Sûfîsm, identity, and inspired.'
-    ],
-    pedagogy: 'Use bridge reading between history and literature. Students connect Anatolia’s chaotic atmosphere with Yunus Emre’s spiritual and poetic response.',
-    grammarFocus: 'Purpose clauses with “to”: “He travelled to help people make sense of life.” “He used poetry to share his message.”',
-    pronunciationFocus: 'Word stress in “influential”, “identity”, “inspired”, “nomads”, “popular”; pronunciation of Qur’an and Sunnah.',
-    lessonPlan: '0–5 min: Review chaos in Anatolia. 5–12 min: Vocabulary preview. 12–24 min: Guided reading. 24–33 min: Four-question chart: What happened? Who came? What did Yunus do? What tool did he use? 33–40 min: Purpose sentence practice. 40–45 min: Exit ticket.',
-    discussionPoints: [
-      'Why did shaykhs come to Anatolia?',
-      'How did Yunus Emre help people make sense of life?',
-      'Why was poetry powerful in this context?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph titled “Poetry as a Tool in Hard Times”.',
-      strugglingLearners: 'Complete sentence frames about shaykhs, dervishes, Yunus, and poetry.'
-    },
-    interactiveTips: [
-      'Use the wise dervish hotspot to focus on Yunus’s role.',
-      'Use the poetry hotspot to discuss how ideas can be shared.',
-      'Ask students to identify the sentence that connects Yunus with the Qur’an and Sunnah.'
-    ],
-    assessmentTools: {
-      rubric: ['History-literature connection', 'Purpose language', 'Main idea', 'Participation'],
-      exitTicket: ['One reason poetry mattered', 'One source of Yunus’s Sûfîsm']
-    },
-    kinestheticActivities: [
-      'Students form small groups and create a “hard time / spiritual response” poster with key words.'
-    ],
-    globalCitizenship: [
-      'Discuss how art, poetry, and faith can help people during social crisis.'
-    ],
-    extraResources: {
-      worksheets: ['History-to-literature bridge chart', 'Purpose clause practice', 'Poetry as message worksheet']
-    }
+    chapter: 'Chapter 7: Yunus as a Wise Dervish', timing: '45 minutes', objectives: ['Explain why Yunus’s role becomes meaningful in the historical setting.', 'Identify poetry as his influential tool.', 'Name the foundations the chapter gives for his Sûfî understanding.'], pedagogy: 'Bridge reading from history to response. Students connect people’s search for meaning with Yunus’s travelling, Sûfî identity, and poetry.', priorKnowledge: ['Students remember the instability in Chapters 3–6.'], anticipatedMisconceptions: ['The story says Yunus ended the political conflict.', 'His Sûfî understanding is presented as separate from Qur’an and Sunnah.'], grammarFocus: 'to + purpose; respond to; be inspired by.', pronunciationFocus: 'dervish, influential, nomads, Qur’an, Sunnah.', beforeReading: ['Recall two pressures ordinary people faced.'], duringReading: ['Find who came to Anatolia, what dervishes did, and what Yunus used as his main tool.', 'Underline the source sentence naming Qur’an, Sunnah, and earlier Sûfîs.'], afterReading: ['Complete claim + evidence + explanation: “Poetry mattered because…”'], lessonPlan: '5 min retrieval; 12 min read/listen; 10 min evidence; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why can poetry communicate meaning during crisis?', 'What does the text claim—and not claim—about Yunus’s social role?'], interactiveTips: ['Use the poetry hotspot after students locate the sentence.', 'Tap & Reveal is used here once in the book because evidence recall fits the target.'], differentiation: { strugglingLearners: 'Use “People needed… Yunus responded by… The text says…”', fastFinishers: 'Compare the role of a community institution (tekke) with the role of a travelling poet.' }, formativeAssessment: ['Listen for a historical need + Yunus response + evidence chain.'], expectedResponses: ['People searched for meaning; Yunus travelled as a wise Sûfî and used poetry; the text roots his understanding in Qur’an, Sunnah, and earlier Sûfî experience.'], transferTask: 'Give one example of how art or language can help a community think during difficulty without claiming it solves the material problem.', teacherReflection: 'Did students avoid exaggerating poetry’s role?'
   },
   {
-    chapter: 'Chapter 8: Tawhid and Unity',
-    timing: '50 minutes',
-    objectives: [
-      'Understand tawhid as the Oneness of Allah.',
-      'Explain Yunus Emre’s idea that Allah is the true and only reality.',
-      'Recognize vahdet-i vücut as a key concept in the chapter.',
-      'Practice explaining abstract ideas in simple B1 English.'
-    ],
-    pedagogy: 'Use conceptual reading with careful simplification. Abstract spiritual ideas should be approached through definitions, examples, and paraphrase.',
-    grammarFocus: 'Definition and explanation structures: “Tawhid means...” “According to Yunus...” “This idea shows that...”',
-    pronunciationFocus: 'Word stress in “tawhid”, “Creator”, “existence”, “reality”, “absolute”; careful pronunciation of vahdet-i vücut.',
-    lessonPlan: '0–5 min: Quiet warm-up: What does unity mean? 5–13 min: Vocabulary/concept preview. 13–28 min: Slow guided reading. 28–37 min: Concept map: Tawhid, Creator, unity, existence, Allah. 37–45 min: Paraphrase Yunus’s quotation. 45–50 min: Exit ticket.',
-    discussionPoints: [
-      'What does tawhid mean?',
-      'Why is Allah described as the true and only reality?',
-      'How does Yunus’s poem express tawhid?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short explanation of tawhid using one quotation from Yunus.',
-      strugglingLearners: 'Match key concepts with definitions: tawhid, Creator, unity, existence.'
-    },
-    interactiveTips: [
-      'Use the tawhid hotspot to review the central concept.',
-      'Use the unity hotspot to discuss the relationship between creation and Creator.',
-      'Ask students to paraphrase the quotation in their own words.'
-    ],
-    assessmentTools: {
-      rubric: ['Concept understanding', 'Paraphrase quality', 'Vocabulary use', 'Respectful discussion'],
-      exitTicket: ['One definition of tawhid', 'One sentence explaining unity']
-    },
-    kinestheticActivities: [
-      'Students connect concept cards with string to form a “unity” web.'
-    ],
-    globalCitizenship: [
-      'Discuss how understanding unity can encourage respect, humility, and responsibility.'
-    ],
-    extraResources: {
-      worksheets: ['Tawhid concept map', 'Quotation paraphrase frame', 'Abstract vocabulary matching']
-    }
+    chapter: 'Chapter 8: Tawhid and Unity', timing: '50 minutes', objectives: ['Define tawhid from the chapter.', 'Explain the relationship between Creator, creation, and true reality as the text presents it.', 'Paraphrase the poem without adding claims.'], pedagogy: 'Careful conceptual reading. Abstract language is broken into claims and supporting sentences; students must stay within the chapter’s wording.', priorKnowledge: ['Students know source, existence, unity, connected.'], anticipatedMisconceptions: ['Tawhid means social unity only.', 'Students may turn a complex theological explanation into an unsupported personal claim.'], grammarFocus: 'means, according to, so, there is/are.', pronunciationFocus: 'tawhid, unity, existence, loyalty.', beforeReading: ['Ask students to distinguish a definition from an interpretation.'], duringReading: ['Box the direct definition of tawhid.', 'Underline two sentences explaining Allah as source/true reality.'], afterReading: ['Paraphrase the core idea using “According to the chapter…”.'], lessonPlan: '5 min concept prep; 15 min read/listen; 12 min claim/evidence marking; 10 min paraphrase; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Which sentence is a definition?', 'How can we paraphrase a theological idea without strengthening it?'], interactiveTips: ['Use hotspots for review, not as a substitute for story evidence.', 'Ask students to cite the exact phrase before explaining.'], differentiation: { strugglingLearners: 'Use “Tawhid means… / According to Yunus…”.', fastFinishers: 'Compare the definition sentence with the later explanation of true existence.' }, formativeAssessment: ['Check one accurate paraphrase.'], expectedResponses: ['Tawhid means the Oneness of Allah; the chapter presents Allah as the source of all things and the true reality.'], transferTask: 'Practice source-safe language by rewriting one strong statement as “According to the text…”.', teacherReflection: 'Did students keep interpretation traceable to evidence?'
   },
   {
-    chapter: 'Chapter 9: Allah’s Commands',
-    timing: '50 minutes',
-    objectives: [
-      'Understand Yunus Emre’s focus on Allah’s commands and worship.',
-      'Explain the relationship between love, unity, and moral life.',
-      'Identify the idea that loving the Creator leads to loving creation.',
-      'Use linking words to explain relationships between ideas.'
-    ],
-    pedagogy: 'Use values-and-concepts reading. Students connect belief, worship, love, and behaviour through guided mapping and discussion.',
-    grammarFocus: 'Linking ideas with “therefore”, “because”, “so”, “for this reason”, and “as a result”.',
-    pronunciationFocus: 'Word stress in “requirements”, “commands”, “relationship”, “foundation”, “harmony”.',
-    lessonPlan: '0–5 min: Review tawhid. 5–12 min: Vocabulary preview. 12–26 min: Guided reading. 26–36 min: Concept map: commands, prayer, love, Creator, created, unity. 36–45 min: Link sentence writing. 45–50 min: Exit ticket.',
-    discussionPoints: [
-      'What does Yunus say a Muslim should do?',
-      'Why is love important in Yunus Emre’s works?',
-      'How are love and unity connected?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph explaining “Those who love the Creator love the created.”',
-      strugglingLearners: 'Complete frames: “Love brings...” “A Muslim should...” “Those who love the Creator...”'
-    },
-    interactiveTips: [
-      'Use the Allah’s commands hotspot to review worship.',
-      'Use the love hotspot to connect emotion and morality.',
-      'Ask students to find one sentence about love and one sentence about unity.'
-    ],
-    assessmentTools: {
-      rubric: ['Concept connections', 'Linking words', 'Text evidence', 'Reflection'],
-      exitTicket: ['One command mentioned', 'One result of love']
-    },
-    kinestheticActivities: [
-      'Students build a chain of idea cards: Allah’s command → worship → love → unity → good behaviour.'
-    ],
-    globalCitizenship: [
-      'Discuss how love and respect for creation can reduce anger, conflict, and separation.'
-    ],
-    extraResources: {
-      worksheets: ['Love and unity concept map', 'Linking words practice', 'Quotation reflection card']
-    }
+    chapter: 'Chapter 9: Allah’s Commands', timing: '45 minutes', objectives: ['Identify the chapter’s link between worship and obedience.', 'Explain the Creator-created love relationship.', 'Use linking language to connect two ideas.'], pedagogy: 'Relationship reading: students identify two different strands—worship and love—and explain how the chapter places both inside moral/spiritual life.', priorKnowledge: ['Students know requirements, command, Creator, created.'], anticipatedMisconceptions: ['The poem says prayer is the only moral concern in the book.', 'Loving creation is presented as unrelated to loving the Creator.'], grammarFocus: 'those who…, and; in this way; as a result.', pronunciationFocus: 'requirements, Creator, creation.', beforeReading: ['Ask how a text can connect belief with action.'], duringReading: ['Mark the action named in the poem.', 'Underline the final two sentences about Creator and creation.'], afterReading: ['Explain the relationship using one linking word.'], lessonPlan: '5 min activate; 12 min read/listen; 10 min evidence; 10 min pair explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['What action does the poem name?', 'How does the final sentence expand the theme from worship to relationships?'], interactiveTips: ['Use command/love hotspots for evidence review.', 'Matching is used because two relationships must remain distinct.'], differentiation: { strugglingLearners: 'Use “Following Allah’s command includes… / Loving the Creator leads to…”.', fastFinishers: 'Explain how the chapter moves from theological language to practical action.' }, formativeAssessment: ['Check a two-part explanation.'], expectedResponses: ['The poem names following Allah’s command and five prayers; the chapter links love of Creator with love of created beings.'], transferTask: 'Write one neutral belief-to-action example from school values using because/therefore.', teacherReflection: 'Did learners keep the two strands distinct before connecting them?'
   },
   {
-    chapter: 'Chapter 10: The Heart and Love',
-    timing: '50 minutes',
-    objectives: [
-      'Understand the role of the heart in Yunus Emre’s philosophy.',
-      'Explain why breaking a heart is spiritually serious in the text.',
-      'Recognize the relationship between heart, truth, and understanding.',
-      'Use vocabulary such as absent, heartbreak, reveals, throne, and understanding.'
-    ],
-    pedagogy: 'Use moral reflection reading. Students move from comprehension to personal reflection on kindness, respect, and protecting hearts.',
-    grammarFocus: 'Conditional and advice language: “If love is absent...” “People should not...” “We must...”',
-    pronunciationFocus: 'Word stress in “absent”, “heartbreak”, “separation”, “reveals”, “understanding”; phrase stress in “the throne of the Lord”.',
-    lessonPlan: '0–5 min: Warm-up: What does it mean to break someone’s heart? 5–12 min: Vocabulary preview. 12–27 min: Guided reading. 27–36 min: Heart references chart. 36–44 min: Advice sentence writing. 44–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why is the heart important in Yunus Emre’s thought?',
-      'What does the poem about the heart teach?',
-      'How can people avoid breaking hearts in daily life?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short reflection titled “Do Not Break a Heart”.',
-      strugglingLearners: 'Match words with meanings: heart, love, anger, separation, understanding.'
-    },
-    interactiveTips: [
-      'Use the heart hotspot to review the central image.',
-      'Use the love hotspot to discuss positive behaviour.',
-      'Ask learners to turn the poem into two simple advice sentences.'
-    ],
-    assessmentTools: {
-      rubric: ['Moral interpretation', 'Advice language', 'Vocabulary use', 'Participation'],
-      exitTicket: ['One reason the heart matters', 'One advice sentence']
-    },
-    kinestheticActivities: [
-      'Students sort behaviour cards into “protects hearts” and “breaks hearts”.'
-    ],
-    globalCitizenship: [
-      'Discuss why respectful language and empathy matter in every community.'
-    ],
-    extraResources: {
-      worksheets: ['Heart image chart', 'Advice sentence frame', 'Good/bad behaviour sorting cards']
-    }
+    chapter: 'Chapter 10: The Heart and Love', timing: '50 minutes', objectives: ['Explain the contrast between love and separation.', 'Interpret the heart metaphor using story evidence.', 'Recognise that intellect is also valued.'], pedagogy: 'Metaphor-and-evidence reading. Students identify literal claims, figurative language, and the moral consequence drawn from the image of the heart.', priorKnowledge: ['Students know harmony, anger, reveal, intellect.'], anticipatedMisconceptions: ['The “throne” language should be read as a physical description.', 'The chapter values heart by rejecting intellect.'], grammarFocus: 'where…, for this reason, not only… but also.', pronunciationFocus: 'harmony, reveals, intellect, eternity.', beforeReading: ['Ask what a metaphor can communicate that a literal definition cannot.'], duringReading: ['Mark the love/absence contrast.', 'Underline the metaphor and the later sentence valuing intellect.'], afterReading: ['Explain why “breaking a heart” is morally serious in the chapter.'], lessonPlan: '5 min metaphor prep; 15 min read/listen; 10 min evidence classification; 10 min interpretation; 7 min Quick Challenge; 3 min exit.', discussionPoints: ['What does the heart represent here?', 'What evidence prevents us from saying Yunus rejects intellect?'], interactiveTips: ['Use heart/intellect hotspots after evidence classification.', 'Ask students to label one phrase “metaphor” and one “direct explanation”.'], differentiation: { strugglingLearners: 'Use “The heart represents… / This matters because…”.', fastFinishers: 'Explain how love, heart, and intellect form a three-part relationship.' }, formativeAssessment: ['Check whether interpretation cites a sentence or poem image.'], expectedResponses: ['Love brings unity; the heart is the center of love and understanding; intellect is also described positively.'], transferTask: 'Give one respectful action that protects another person’s feelings and explain which value it shows.', teacherReflection: 'Did students interpret metaphor without treating it as unsupported literal fact?'
   },
   {
-    chapter: 'Chapter 11: Intellect and Death',
-    timing: '50 minutes',
-    objectives: [
-      'Understand Yunus Emre’s emphasis on intellect and wisdom.',
-      'Explain why heart and intellect should support one another.',
-      'Recognize death as an advisor in Yunus’s poems.',
-      'Practice writing reflective sentences with should and must.'
-    ],
-    pedagogy: 'Use reflective reading. Students connect abstract themes—intellect, salvation, death, and meaningful life—to clear personal lessons.',
-    grammarFocus: 'Modal verbs for reflection and advice: should, must, need to, can.',
-    pronunciationFocus: 'Word stress in “intellect”, “salvation”, “advisor”, “meaningful”, “honest”; careful intonation for reflective sentences.',
-    lessonPlan: '0–5 min: Review heart and love. 5–12 min: Vocabulary preview. 12–27 min: Guided reading. 27–35 min: Divide the chapter: intellect / death. 35–44 min: Reflective should/must sentences. 44–50 min: Exit ticket.',
-    discussionPoints: [
-      'How does Yunus Emre describe intellect?',
-      'Why must heart and intellect support each other?',
-      'Why is death described as an advisor?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph about a meaningful and honest life.',
-      strugglingLearners: 'Complete frames: “Intellect helps...” “Death reminds...” “A person should...”'
-    },
-    interactiveTips: [
-      'Use the intellect hotspot to discuss wisdom.',
-      'Use the death hotspot to guide respectful reflection.',
-      'Ask students to identify one quotation and explain it simply.'
-    ],
-    assessmentTools: {
-      rubric: ['Theme understanding', 'Reflective language', 'Quotation explanation', 'Respectful tone'],
-      exitTicket: ['One sentence about intellect', 'One sentence about death as advisor']
-    },
-    kinestheticActivities: [
-      'Students form pairs: one card says “heart”, one says “intellect”; they create a joint advice sentence.'
-    ],
-    globalCitizenship: [
-      'Discuss how remembering life’s limits can help people choose honest and useful actions.'
-    ],
-    extraResources: {
-      worksheets: ['Intellect/death two-part chart', 'Modal advice worksheet', 'Reflection paragraph frame']
-    }
+    chapter: 'Chapter 11: Intellect and Death', timing: '50 minutes', objectives: ['Explain how heart and intellect support one another.', 'Explain death’s advisory role in the chapter.', 'Connect remembering mortality with meaningful and honest living.'], pedagogy: 'Cause-and-reflection reading. Students retrieve the heart/intellect idea, then follow the chapter’s explicit link from remembering death to moral life.', priorKnowledge: ['Students remember the positive treatment of intellect in Chapter 10.'], anticipatedMisconceptions: ['Remembering death is presented as hopelessness.', 'The chapter says intellect alone guarantees salvation.'], grammarFocus: 'for a person to…, must, as, whoever.', pronunciationFocus: 'salvation, wisdom, advisor, meaningful.', beforeReading: ['Recall one sentence from Chapter 10 about intellect.'], duringReading: ['Underline the sentence joining heart and intellect.', 'Mark the sentence explaining why death can advise.'], afterReading: ['Write a cause-result explanation without adding fear-based claims.'], lessonPlan: '5 min retrieval; 15 min read/listen; 10 min evidence; 10 min writing; 7 min Quick Challenge; 3 min exit.', discussionPoints: ['Why is death called an advisor?', 'How does this idea connect to honest living rather than despair?'], interactiveTips: ['Use the two hotspots to revisit intellect and death.', 'Ask students to distinguish the quoted source from the narrator’s explanation.'], differentiation: { strugglingLearners: 'Use “Remembering death can help a person… because…”.', fastFinishers: 'Compare the roles of heart, intellect, and death in guiding behaviour.' }, formativeAssessment: ['Check one evidence-linked cause-result sentence.'], expectedResponses: ['Heart and intellect should support each other; remembering death can guide a person toward a meaningful and honest life.'], transferTask: 'Write one time-management decision that reflects awareness that time is limited, without using fear language.', teacherReflection: 'Did students handle the sensitive topic with balance and source fidelity?'
   },
   {
-    chapter: 'Chapter 12: Morality and Good Habits',
-    timing: '50 minutes',
-    objectives: [
-      'Identify the good moral principles in Yunus Emre’s works.',
-      'Recognize bad habits that Yunus warned people against.',
-      'Understand his poetry as a moral guide.',
-      'Use vocabulary such as morality, humility, modesty, arrogant, greedy, and jealous.'
-    ],
-    pedagogy: 'Use values sorting and vocabulary-in-context. Students classify moral principles and harmful habits, then connect them to daily life.',
-    grammarFocus: 'Should/should not and gerund phrases: “People should avoid gossiping.” “We should practise humility.”',
-    pronunciationFocus: 'Word stress in “morality”, “humility”, “generosity”, “modesty”, “arrogant”, “jealous”.',
-    lessonPlan: '0–5 min: Warm-up: What is a good habit? 5–12 min: Vocabulary preview. 12–25 min: Guided reading. 25–35 min: Good habits / bad habits table. 35–44 min: Advice sentence writing. 44–50 min: Exit ticket.',
-    discussionPoints: [
-      'Which moral principles are important in Yunus Emre’s works?',
-      'Which bad habits should people avoid?',
-      'Why are Yunus’s poems described as a moral guide?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write ten advice sentences based on the chapter.',
-      strugglingLearners: 'Sort words into two groups: honesty, patience, greed, gossiping, humility, jealousy.'
-    },
-    interactiveTips: [
-      'Use the good habits hotspot to list values.',
-      'Use the bad habits hotspot to discuss warnings.',
-      'Ask students to choose one habit they want to improve.'
-    ],
-    assessmentTools: {
-      rubric: ['Values classification', 'Advice grammar', 'Vocabulary accuracy', 'Reflection'],
-      exitTicket: ['Two good habits', 'One bad habit to avoid']
-    },
-    kinestheticActivities: [
-      'Students physically sort vocabulary cards onto two posters: “good habits” and “bad habits”.'
-    ],
-    globalCitizenship: [
-      'Discuss how personal habits affect classroom, family, and society.'
-    ],
-    extraResources: {
-      worksheets: ['Good/bad habits sorting sheet', 'Advice sentence worksheet', 'Moral vocabulary cards']
-    }
+    chapter: 'Chapter 12: Morality and Good Habits', timing: '45 minutes', objectives: ['Classify virtues and harmful habits from the chapter.', 'Explain the greed-as-prison metaphor.', 'Turn one value into a concrete action.'], pedagogy: 'Values-as-action reading. Students move from vocabulary labels to behaviours and then to the poem’s metaphor of moral self-trapping.', priorKnowledge: ['Students know honesty, patience, humility, generosity, greed, gossip.'], anticipatedMisconceptions: ['Morality here means only avoiding bad habits.', 'Greed is described as a literal prison event.'], grammarFocus: 'should/should not; giving up; such as.', pronunciationFocus: 'morality, humility, generosity, jealousy, greed.', beforeReading: ['Sort two sample actions into helpful/harmful without naming abstract values yet.'], duringReading: ['Underline four virtues and four harmful habits.', 'Mark the prison metaphor.'], afterReading: ['Choose one virtue and describe a visible action that would show it.'], lessonPlan: '5 min action sort; 12 min read/listen; 10 min classification; 10 min metaphor explanation; 5 min Quick Challenge; 3 min exit.', discussionPoints: ['Why does morality require both building and giving up habits?', 'What does the prison image communicate about greed?'], interactiveTips: ['Use hotspots for moral principles.', 'Matching checks classification; follow with a spoken action example.'], differentiation: { strugglingLearners: 'Give a two-column virtues/harmful habits frame.', fastFinishers: 'Explain how one harmful habit can damage both the person and the community.' }, formativeAssessment: ['Ask for value + action + evidence.'], expectedResponses: ['The chapter promotes honesty, patience, humility, generosity and warns against arrogance, greed, gossip, selfishness, jealousy.'], transferTask: 'Choose one value and commit to one small observable action for the next school day.', teacherReflection: 'Were values expressed as actions rather than slogans?'
   },
   {
-    chapter: 'Chapter 13: A Moral Guide',
-    timing: '50 minutes',
-    objectives: [
-      'Review Yunus Emre’s warnings against greed, rage, arrogance, and gossiping.',
-      'Understand patience and modesty as central values.',
-      'Connect the final moral lessons with the whole storybook.',
-      'Write a final B1-level reflection paragraph.'
-    ],
-    pedagogy: 'Use whole-book synthesis and moral reflection. Students review the values of the storybook and express them in their own words.',
-    grammarFocus: 'Review of present simple for universal lessons and should/should not for moral advice.',
-    pronunciationFocus: 'Word stress in “patience”, “modesty”, “arrogance”, “gossiping”, “moral guide”; fluency practice for final reflections.',
-    lessonPlan: '0–5 min: Review previous chapter. 5–15 min: Guided reading of final chapter. 15–25 min: Underline every bad habit and good value. 25–35 min: Whole-book values map. 35–45 min: Final reflection paragraph: “What Yunus Emre Teaches Us”. 45–50 min: Pair sharing and exit ticket.',
-    discussionPoints: [
-      'What does Yunus Emre teach about greed?',
-      'Why are rage and arrogance dangerous?',
-      'Which value from the book is most important for you?'
-    ],
-    differentiation: {
-      fastFinishers: 'Prepare a short speech summarizing Yunus Emre’s moral message.',
-      strugglingLearners: 'Complete a final values chart with: patience, modesty, greed, rage, gossiping.'
-    },
-    interactiveTips: [
-      'Use the moral guide hotspot to review the whole book.',
-      'Use the final values hotspot to prepare for the final quiz.',
-      'Ask students to write one sentence beginning with “Yunus Emre teaches us that...”'
-    ],
-    assessmentTools: {
-      rubric: ['Whole-book synthesis', 'Reflection paragraph', 'Vocabulary recycling', 'Speaking participation'],
-      exitTicket: ['One final lesson', 'One value from Yunus Emre']
-    },
-    kinestheticActivities: [
-      'Students create a living values line from “harmful habit” to “good value” and explain their positions.'
-    ],
-    globalCitizenship: [
-      'Discuss how patience, modesty, and avoiding harmful speech can support peaceful communities.'
-    ],
-    extraResources: {
-      worksheets: ['Final values map', 'Reflection paragraph frame', 'B1 final review checklist']
-    }
-  }
+    chapter: 'Chapter 13: A Moral Guide', timing: '50 minutes', objectives: ['Explain how the patience and anger poems support the final moral message.', 'Identify Yunus’s two works named in the chapter.', 'Synthesize why the story presents him as a guide for later generations.'], pedagogy: 'Synthesis reading: students connect poem evidence with the book’s larger argument about character, language, and lasting guidance.', priorKnowledge: ['Students can retrieve the main historical and moral strands of the book.'], anticipatedMisconceptions: ['Patience means passive inaction.', 'The final chapter says only one work survives.', 'The story’s legacy claim is based on military or political power.'], grammarFocus: 'whoever, if, still, as a moral guide.', pronunciationFocus: 'patience, arrogance, Risâletü’n-Nushiye, Divan.', beforeReading: ['Recall one virtue and one harmful habit from Chapter 12.'], duringReading: ['Mark what the patience poems claim and what the anger poem warns against.', 'Circle the two work titles.'], afterReading: ['Write a 4-sentence synthesis: context → poetry → moral teaching → legacy.'], lessonPlan: '5 min retrieval; 15 min read/listen; 10 min poem evidence; 10 min synthesis; 7 min Quick Challenge; 3 min exit.', discussionPoints: ['How is patience presented as strength?', 'What makes moral poetry relevant beyond its original period?'], interactiveTips: ['Use the two hotspots for legacy review.', 'Finish with Quick Challenge, then preview that whole-book assessments will ask different relationships.'], differentiation: { strugglingLearners: 'Use four synthesis starters: “The period… / Yunus used… / He taught… / His legacy…”.', fastFinishers: 'Compare the prison image of greed with the upward image of patience.' }, formativeAssessment: ['Collect the four-sentence synthesis.'], expectedResponses: ['Patience is linked with lasting strength; rage is warned against; Risâletü’n-Nushiye and Divan are named; the poems remain moral guidance.'], transferTask: 'Choose patience or control of anger and write one concrete action that demonstrates it this week.', teacherReflection: 'Could students synthesize rather than repeat isolated facts?'
+  },
 ];
 
 export const yunusB1TeacherGuideMetadata: TeacherGuideMetadata = {
-  targetLearners: 'Primary: B1 English learners in middle school or high school. Secondary: learners studying Turkish-Islamic cultural heritage, values education, Sûfî concepts, and historical context through English.',
-  assessmentEvidence: 'Comprehension questions, vocabulary matching, concept maps, cause-effect charts, oral explanations, pair discussions, exit tickets, short summaries, reflection paragraphs, and final quiz results.',
-  readingFramework: {
-    before: 'Activate background knowledge with chapter titles, visuals, key vocabulary, and one guiding question. For historical chapters, preview dates, places, and names; for conceptual chapters, preview the central idea such as tawhid, heart, intellect, or morality.',
-    during: 'Read or listen in meaningful chunks. Pause for main idea, text evidence, vocabulary in context, and cause-effect relationships. Encourage students to underline definitions, dates, values, and quotations.',
-    after: 'Move from comprehension to production. Students complete a chart, discuss a question, write a short summary, paraphrase a quotation, or connect the value to daily life.'
-  },
-  vocabularyApproach: {
-    selection: 'Choose B1-level academic, historical, and values-based words such as mysticism, morality, influence, invasion, circumstances, dependent, guidance, tawhid, unity, intellect, humility, and modesty.',
-    method: 'Teach vocabulary through context, word families, matching, sentence frames, concept maps, opposites, and student-made examples. Avoid isolated memorization only.',
-    recycling: 'Recycle core themes across the book: Sûfîsm, historical hardship, poetry, tawhid, love, heart, intellect, death, morality, and good habits.'
-  },
-  grammarSequence: [
-    'Defining relative clauses for people and concepts: “A Sûfî is a person who...”',
-    'Past simple and passive awareness for historical events',
-    'Cause-effect connectors: because, so, as a result, therefore, due to',
-    'Purpose clauses with “to” for explaining actions and intentions',
-    'Linking words for abstract ideas: however, therefore, in this way, for this reason',
-    'Modal verbs should, must, need to, and can for reflection and moral advice',
-    'Present simple for universal lessons and moral principles'
-  ],
-  skillsFocus: {
-    reading: 'Students read chapter-length B1 texts and identify main ideas, details, causes, results, concepts, quotations, and moral lessons.',
-    listening: 'Students listen for gist first, then for key vocabulary, historical details, chapter structure, and pronunciation of names and concepts.',
-    speaking: 'Students explain concepts, discuss values, paraphrase quotations, compare good and bad habits, and present short reflections.',
-    writing: 'Students write cause-effect sentences, summaries, concept explanations, advice sentences, and final B1 reflection paragraphs.'
-  },
-  valuesFocus: [
-    'Love for Allah and loyalty to the Prophet Muhammad (pbuh)',
-    'Tawhid and unity',
-    'Sincerity of heart and moral intention',
-    'Patience during difficult times',
-    'Humility and modesty',
-    'Generosity and service without expecting return',
-    'Avoiding arrogance, greed, anger, envy, gossiping, and selfishness',
-    'Using poetry, language, and wisdom to guide society',
-    'Living a meaningful and honest life'
-  ],
-  classroomManagement: [
-    'Keep historical chapters organized with timelines and maps so students do not get lost in names and dates.',
-    'Break abstract concepts into short definitions, examples, and student paraphrases.',
-    'Use sentence frames before asking students to explain spiritual or moral ideas in English.',
-    'Balance teacher explanation with student activity: charts, sorting, pair retelling, concept mapping, and reflection writing.',
-    'Use Turkish briefly for difficult cultural terms when needed, then return to B1-level English production.',
-    'Maintain a respectful classroom tone when discussing religious concepts, death, and moral self-reflection.'
-  ],
-  globalCitizenship: {
-    title: 'Global Citizenship & Cultural Bridge',
-    description: 'Yunus Emre’s message is one of universal peace, heart-centered love, and service to humanity, bridging cultures and hearts.',
-    themes: [
-      { title: 'Universal Compassion:', description: 'Viewing all of creation with active love and kindness, because every creature is a temporal mirror reflecting the names of the Creator.' },
-      { title: 'Honesty and Integrity (Straight Wood):', description: 'Cultivating absolute honesty inside one’s thoughts and outer deeds, symbolizing that nothing crooked remains in the circle of truth.' },
-      { title: 'Cultural Cohesion & Fine Arts:', description: 'Employing simple, beautiful language and pure poetry as emotional healing and a force of unity in times of social unrest.' }
-    ],
-    actions: [
-      'How can simple, heartfelt literature or art help resolve conflicts and unite diverse groups in high school or society?',
-      'Explore the moral meaning of “crooked vs. straight wood,” and discuss why honesty in small, daily tasks builds strong character.',
-      'Reflect on the ethical responsibility of treating neighbors and classmates with equal respect to avoid causing any emotional harm.'
-    ]
-  },
-  valuesEducation: {
-    title: 'Values & Character Education',
-    description: 'Focus on heart-centered learning, purity of intention, and absolute humility.',
-    items: [
-      { label: 'Divine Love (Aşk)', value: 'Guiding all relations and moral actions through the light of loving Allah and His entire creation.' },
-      { label: 'Perfect Sincerity (Straight Wood)', value: 'Matching inner intentions completely with outer behavior to achieve unblemished honesty.' },
-      { label: 'Absolute Humility', value: 'Active service to others and subduing the arrogant ego (nafs) through continuous self-discipline.' },
-      { label: 'Guarding the Heart', value: 'Striving deeply to avoid backbiting, anger, or gossip that might break or hurt any human heart.' },
-      { label: 'Beautiful Patience', value: 'Accepting temporary worldly trials and poverty with content joy, peace, and deep gratitude.' }
-    ],
-    questions: [
-      'Why does Yunus teach that hurting another person’s heart renders our worship meaningless?',
-      'How can a person match their inner thoughts with their outer actions to achieve true honesty?',
-      'How can we train ourselves to overcome anger and arrogance when someone insults or opposes us?'
-    ]
-  },
-  sensitiveNotes: {
-    title: 'Sensitive Pedagogical Guidance',
-    notes: [
-      'Handle Sufi terms such as “dervish” and “tekké” carefully; explain them simply as a student and school of spiritual growth in historical Anatolia.',
-      'Present the metaphor of “straight wood” clearly; emphasize that inner honesty is the goal of self-discipline, not physical work alone.',
-      'Treat references to poverty and simplicity with care; explain that Yunus chose spiritual wealth of the heart over worldly riches.',
-      'Discuss the concept of “loving the created for the sake of the Creator” as a message of universal compassion and respect for all living things.',
-      'Guide discussions on the “ego” (nafs) with practical examples, showing that conquering bad habits is the highest form of self-control.'
-    ]
-  },
-  implementationPlans: {
-    optionA: {
-      title: 'Intensive Workshop (120 Minutes)',
-      steps: [
-        { time: '0–15 min', activity: 'Introduce Yunus Emre, Sûfîsm, and key vocabulary' },
-        { time: '15–35 min', activity: 'Read selected biography and education chapters' },
-        { time: '35–55 min', activity: 'Historical context: tekkés, Mongols, Kösedağ, and chaos in Anatolia' },
-        { time: '55–75 min', activity: 'Yunus as a wise dervish and poetry as response to hardship' },
-        { time: '75–95 min', activity: 'Concept focus: tawhid, love, heart, intellect' },
-        { time: '95–110 min', activity: 'Morality and good/bad habits sorting activity' },
-        { time: '110–120 min', activity: 'Final reflection paragraph and exit ticket' }
-      ]
-    },
-    optionB: {
-      title: 'Standard Split (6 x 45 Minutes)',
-      lessons: [
-        { title: 'Lesson 1', description: 'Chapters 1–2: Yunus Emre, Sûfîsm, language, and education' },
-        { title: 'Lesson 2', description: 'Chapters 3–4: Tekkés, Anatolia, and the Babai revolts' },
-        { title: 'Lesson 3', description: 'Chapters 5–6: Kösedağ, Mongol pressure, and chaos in Anatolia' },
-        { title: 'Lesson 4', description: 'Chapters 7–8: Yunus as a wise dervish and tawhid' },
-        { title: 'Lesson 5', description: 'Chapters 9–11: Allah’s commands, love, heart, intellect, and death' },
-        { title: 'Lesson 6', description: 'Chapters 12–13: Morality, good habits, final synthesis, and quiz' }
-      ]
-    },
-    optionC: {
-      title: 'Extended Project (13 Lessons)',
-      steps: [
-        { time: 'Lesson 1', activity: 'Chapter 1: Yunus Emre and Sûfîsm' },
-        { time: 'Lesson 2', activity: 'Chapter 2: His language and education' },
-        { time: 'Lesson 3', activity: 'Chapter 3: Tekkés and Anatolia' },
-        { time: 'Lesson 4', activity: 'Chapter 4: The Babai revolts' },
-        { time: 'Lesson 5', activity: 'Chapter 5: Kösedağ and destruction' },
-        { time: 'Lesson 6', activity: 'Chapter 6: Chaos in Anatolia' },
-        { time: 'Lesson 7', activity: 'Chapter 7: Yunus as a wise dervish' },
-        { time: 'Lesson 8', activity: 'Chapter 8: Tawhid and unity' },
-        { time: 'Lesson 9', activity: 'Chapter 9: Allah’s commands' },
-        { time: 'Lesson 10', activity: 'Chapter 10: The heart and love' },
-        { time: 'Lesson 11', activity: 'Chapter 11: Intellect and death' },
-        { time: 'Lesson 12', activity: 'Chapter 12: Morality and good habits' },
-        { time: 'Lesson 13', activity: 'Chapter 13: A moral guide and final review' }
-      ]
-    }
-  },
-  homeConnection: {
-    title: 'Home Connection',
-    items: [
-      'Ask students to explain one value from Yunus Emre to a family member in Turkish or simple English.',
-      'Give a short home task: write five sentences about one good habit they want to strengthen.',
-      'Ask students to choose one quotation or idea and paraphrase it in their own English.',
-      'Encourage students to observe one act of kindness during the week and describe it in B1 English.',
-      'Let students prepare a mini poster titled “What Yunus Emre Teaches Us”.'
-    ]
-  }
+  title: 'Yunus Emre B1 Teacher Guide', level: 'B1', estimatedDuration: '13 chapter lessons plus review',
+  purpose: 'Support evidence-based B1 reading, listening, speaking and writing through Yunus Emre’s historical setting, poetry, spiritual concepts and moral thought.',
+  approachDesc: 'Read the source first; locate evidence; explain relationships; then transfer supported values into concrete action.',
+  assessmentEvidence: 'Quick Challenges, 8-question Knowledge Check, 10-pair Vocabulary Challenge, four-part Retrieval Review with independent 8-question Quiz Game, and 10-item Final Challenge.',
+  readingFramework: { before: 'Activate only the background needed for the chapter.', during: 'Read/listen for gist, then mark claims, evidence, cause-result links, source qualifiers and key vocabulary.', after: 'Require a short evidence-based oral or written response and one realistic transfer when appropriate.' },
+  skillsFocus: { reading: 'Identify main ideas, relationships, claims, evidence and source qualification.', listening: 'Listen for gist, key relationships, names and repeated concepts while following the chapter text.', speaking: 'Explain cause/result, compare ideas, justify claims with evidence and discuss values respectfully.', writing: 'Produce B1 summaries, claim-evidence explanations, comparisons, cause-result sentences and short reflections.' },
+  valuesFocus: ['Patience shown through self-control in difficulty.', 'Generosity shown through giving without expecting a return.', 'Kindness shown through responding to harm without reproducing it.', 'Respect shown through protecting hearts and avoiding gossip or arrogance.', 'Honesty shown through meaningful and responsible daily choices.'],
+  sensitiveNotes: { title: 'Source fidelity and respectful discussion', notes: ['Keep theological explanations within the wording of the story.', 'Preserve qualifiers such as “some sources say”.', 'Discuss war, captivity and death without sensationalism.', 'Do not introduce metaphors, legends, worksheets or biographical details that are absent from this B1 book.'] }
 };
