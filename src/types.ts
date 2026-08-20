@@ -59,7 +59,7 @@ export interface PageData {
   subtitle?: string;
   content: string;
   exercises?: Exercise[];
-  image: string;
+  image?: string;
   audioUrl?: string;
   vocabulary?: { word: string; definition: string; example?: string }[];
   sequencingItems?: { id: string; text: string }[];
@@ -232,6 +232,8 @@ export interface StudentGuideMetadata {
   estimatedStudyTime?: string;
   learningGoals?: string[];
   recommendedUse?: string[];
+  audience?: string;
+  description?: string;
 }
 
 export interface BookData {
