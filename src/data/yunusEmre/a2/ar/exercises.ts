@@ -1,80 +1,64 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
 
-export const yunusA2FinalReviewExercisesAr: Exercise[] = [
-  {
-    id: 'yunus-a2-review-sequence',
-    type: 'sequencing',
-    title: 'رحلة تعلم يونس إمره',
-    instructions: 'ضع التطورات الرئيسة في الترتيب الصحيح.',
-    question: 'كيف تنتقل القصة من السيرة إلى دروس الحياة اليومية؟',
-    correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'يقدم الكتاب يونس شاعرًا ودرويشًا، ثم يتابع تدريبه المنضبط وخدمته ومعنى الحطب المستقيم، ثم الطبيعة وقصة الأقحوانة، ويختم بنصيحة للحياة اليومية.',
-    feedback: { correct: 'صحيح. لقد ربطت المراحل الرئيسة في رحلة تعلم يونس.', incorrect: 'ابدأ بتقديم الشاعر والدرويش ثم اتبع التدريب وخدمة الحطب والمعنى الداخلي والطبيعة والدرس الأخير.' },
-    sequencingItems: [
-      { id: '1', text: 'يُقدَّم يونس شاعرًا استخدم لغة تركية بسيطة وأصبح تلميذ تابتوك إمره' },
-      { id: '2', text: 'تشرح القصة قيم الدراويش وعادات حياتهم المنضبطة' },
-      { id: '3', text: 'يكلف تابتوك يونس بخدمة جمع الحطب' },
-      { id: '4', text: 'يُشرح العمل بالحطب بوصفه تدريبًا للقلب والنفس' },
-      { id: '5', text: 'يتعلم يونس من الطبيعة ويعود بأقحوانة واحدة' },
-      { id: '6', text: 'تختم القصة بنصيحة ذكر الله وإتقان كل عمل' }
-    ]
-  },
-  {
-    id: 'yunus-a2-review-match',
-    type: 'matching',
-    title: 'العمل الظاهر والمعنى البسيط',
-    instructions: 'صل كل تفصيل من القصة بالمعنى البسيط المرتبط به في الفصول.',
-    question: 'ماذا يعلم كل فعل أو صورة؟',
-    matchingPairs: [
-      { left: 'اللغة التركية البسيطة', right: 'ساعدت الناس على فهم القصائد' },
-      { left: 'المشاركة مع المحتاجين', right: 'أظهرت الكرم' },
-      { left: 'الحطب المستقيم', right: 'ارتبط بالخلق المستقيم والصادق' },
-      { left: 'النظر إلى الطبيعة', right: 'ساعد يونس على العثور على دروس أعمق' }
-    ],
-    correctAnswer: {
-      'اللغة التركية البسيطة': 'ساعدت الناس على فهم القصائد',
-      'المشاركة مع المحتاجين': 'أظهرت الكرم',
-      'الحطب المستقيم': 'ارتبط بالخلق المستقيم والصادق',
-      'النظر إلى الطبيعة': 'ساعد يونس على العثور على دروس أعمق'
-    },
-    explanation: 'تربط المطابقات التفاصيل الظاهرة بالمعاني المباشرة التي تذكرها القصة.',
-    feedback: { correct: 'صحيح. ربطت تفاصيل القصة بمعانيها في الفصول.', incorrect: 'راجع الفصول 1 و2 و5–6 وقارن الفعل الظاهر بالشرح الموجود في النص.' }
-  },
-  {
-    id: 'yunus-a2-review-reflection',
-    type: 'reflection',
-    title: 'العمل والخلق والمعنى',
-    instructions: 'فكر من القصة وقدم استجابة قصيرة تناسب A2.',
-    question: 'كيف يمكن أن يصبح العمل العادي جزءًا من التعلم أو تحسين النفس في قصة يونس إمره؟',
-    correctAnswer: null,
-    explanation: 'بدا جمع الحطب عملًا عاديًا، لكن القصة تقول إنه درب قلب يونس ونفسه وعلمه أن يعمل بعناية ويفعل الصواب.',
-    feedback: { correct: 'ادعم إجابتك بقصة الحطب ودرس واحد من الحياة اليومية في النهاية.', incorrect: '' },
-    discussionPrompts: [
-      { question: 'ما مهمة يونس العادية؟', mode: 'Individual' },
-      { question: 'ما المعنى الداخلي الذي أعطته القصة لهذا العمل؟', mode: 'Pair' },
-      { question: 'كيف يحول الفصل 8 هذه القصة إلى نصيحة للحياة اليومية؟', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'yunus-a2-review-quiz',
-    type: 'quiz-game',
-    title: 'مراجعة الاسترجاع — يونس إمره A2',
-    instructions: 'أجب عن ثمانية أسئلة من أنحاء القصة. استخدم التلميح عند الحاجة فقط.',
-    question: 'هل تستطيع إعادة ربط الأفكار الرئيسة دون إعادة قراءة كل شيء؟',
-    correctAnswer: null,
-    explanation: 'تراجع الأسئلة اللغة والقيم والانضباط والخدمة والمعنى الرمزي البسيط والطبيعة ودروس الحياة اليومية.',
-    feedback: { correct: 'استرجاع جيد. اربط كل إجابة بدليلها من الفصل.', incorrect: 'استخدم التلميح للعودة إلى فكرة الفصل المناسبة ثم حاول من جديد.' },
-    quizQuestions: [
-      { question: 'لماذا كان الناس يفهمون قصائد يونس إمره بسهولة؟', options: [{ text: 'استخدم لغة تركية بسيطة', isCorrect: true }, { text: 'كتب للعلماء فقط', isCorrect: false }, { text: 'تجنب اللغة التركية', isCorrect: false }], hint: 'انظر إلى علاقة اللغة والنتيجة في الفصل 1.' },
-      { question: 'ماذا فعل الدراويش بالمال الذي كان «في أيديهم»؟', options: [{ text: 'شاركوا ما عندهم مع المحتاجين', isCorrect: true }, { text: 'احتفظوا بكل شيء لأنفسهم', isCorrect: false }, { text: 'استخدموه للسفر فقط', isCorrect: false }], hint: 'استخدم فقرة المال والصدقة في الفصل 2.' },
-      { question: 'ماذا بين «أكلوا أقل وتكلموا أقل وناموا أقل»؟', options: [{ text: 'حياة معتدلة ومنضبطة', isCorrect: true }, { text: 'خطة ليصبحوا شعراء مشهورين', isCorrect: false }, { text: 'قاعدة تمنع الأعمال المفيدة', isCorrect: false }], hint: 'اقرأ الفقرة الأخيرة قبل ذكر تدريب يونس.' },
-      { question: 'لماذا كان جمع الحطب أكثر من عمل عادي في القصة؟', options: [{ text: 'كان جزءًا من تدريب النفس وترك السلوك السيئ', isCorrect: true }, { text: 'كان طريقة ليصبح غنيًا', isCorrect: false }, { text: 'كان استعدادًا للعمل في السوق', isCorrect: false }], hint: 'يذكر الفصل 4 الهدف الأساسي من الخدمة.' },
-      { question: 'ما المعنى الداخلي البسيط الذي يعطيه الفصل 5 للعمل بالحطب؟', options: [{ text: 'تدريب قلب يونس ونفسه وإصلاحهما', isCorrect: true }, { text: 'بناء مدينة جديدة', isCorrect: false }, { text: 'الفوز في مسابقة الأزهار', isCorrect: false }], hint: 'قارن العمل الظاهر بما يقول النص إنه يحدث «في الحقيقة».' },
-      { question: 'ماذا تعلم يونس أن يفعل في الطبيعة؟', options: [{ text: 'يجد دروسًا ومعنى أعمق فيما يراه', isCorrect: true }, { text: 'يتجاهل كل شيء إلا الحطب', isCorrect: false }, { text: 'يتجنب الأماكن الهادئة', isCorrect: false }], hint: 'استخدم فقرة الفصل 6 عن الأشجار والحيوانات والأنهار والمعنى الأعمق.' },
-      { question: 'لماذا أحضر يونس أقحوانة واحدة فقط؟', options: [{ text: 'قال إن الأزهار الأخرى تذكر اسم الله فلم يستطع قطعها', isCorrect: true }, { text: 'لم توجد أزهار أخرى', isCorrect: false }, { text: 'طلب منه تابتوك زهرة واحدة بالضبط', isCorrect: false }], hint: 'العدد مهم بسبب سبب يونس، لا لأن الحقل كان فارغًا.' },
-      { question: 'ما الدرس الأخير الذي يربط قصتي الحطب والزهرة بالحياة اليومية؟', options: [{ text: 'اذكر الله وأتقن كل عمل', isCorrect: true }, { text: 'الأعمال غير العادية فقط مهمة', isCorrect: false }, { text: 'العمل اليومي بلا قيمة أعمق', isCorrect: false }], hint: 'استخدم الفقرة الأخيرة من الفصل 8.' }
-    ]
-  }
+export const yunusA2QuickChallengesAr: Record<number, Exercise> = {
+  1:{id:'yunus-a2-quick-1-ar',type:'multiple-choice',title:'التركية البسيطة',instructions:'اختر الإجابة التي يدعمها الفصل الأول.',question:'لماذا كان الناس يفهمون قصائد يونس إمره بسهولة؟',options:['لأنه استخدم لغة تركية بسيطة','لأنه كتب للعلماء فقط','لأنه لم يستخدم التركية'],correctAnswer:0,explanation:'يربط الفصل مباشرة بين اللغة التركية البسيطة وسهولة الفهم.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفقرة الأولى وابحث عن العلاقة بين اللغة والفهم.'}},
+  2:{id:'yunus-a2-quick-2-ar',type:'tap-reveal',title:'المال في اليد',instructions:'أجب أولًا ثم اكشف الإجابة.',question:'ماذا كان الدراويش يفعلون بما عندهم؟',tapRevealItems:[{question:'ماذا كانوا يفعلون؟',answer:'كانوا يشاركون ما عندهم مع المحتاجين.'}],correctAnswer:'كانوا يشاركون ما عندهم مع المحتاجين.',explanation:'تصف القصة المال بأنه في أيديهم للعطاء لا في قلوبهم.',feedback:{correct:'صحيح.',incorrect:'ابحث عن الجملة التي تذكر المحتاجين.'}},
+  3:{id:'yunus-a2-quick-3-ar',type:'matching',title:'حياة منضبطة',instructions:'صل العادة بفكرتها في الفصل.',question:'كيف وصف الفصل حياة الدراويش اليومية؟',matchingPairs:[{left:'الأكل والكلام والنوم',right:'قليل'},{left:'الوقت',right:'في أعمال مفيدة'}],correctAnswer:{'الأكل والكلام والنوم':'قليل','الوقت':'في أعمال مفيدة'},explanation:'يصف الفصل حياة معتدلة ومنضبطة.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفقرة التي تأتي بعد القصيدة.'}},
+  4:{id:'yunus-a2-quick-4-ar',type:'multiple-choice',title:'خدمة تبدو عادية',instructions:'اختر الهدف المذكور في الفصل الرابع.',question:'لماذا يمكن أن يكون عمل عادي مثل جمع الحطب مهمًا في دار الدراويش؟',options:['لإصلاح النفس وترك العادات السيئة','لجعل يونس غنيًا','لجعل يونس مشهورًا'],correctAnswer:0,explanation:'يذكر الفصل أن الهدف هو إصلاح النفس وترك العادات السيئة.',feedback:{correct:'صحيح.',incorrect:'ابحث عن الجملة التي تتحدث عن الأعمال العادية.'}},
+  5:{id:'yunus-a2-quick-5-ar',type:'multiple-choice',title:'الحطب والقلب',instructions:'اختر المعنى الداخلي المذكور في الفصل الخامس.',question:'ما الذي كان يونس يدربه في الحقيقة أثناء عمله بالحطب؟',options:['قلبه ونفسه','مهارته في بيع الحطب','سرعته في الجبل'],correctAnswer:0,explanation:'يقول الفصل إنه كان يدرب قلبه ونفسه ويصلحهما.',feedback:{correct:'صحيح.',incorrect:'قارن العمل الظاهر بما يحدث في الحقيقة.'}},
+  6:{id:'yunus-a2-quick-6-ar',type:'true-false',title:'التعلم من الطبيعة',instructions:'حدد صحة الجملة.',question:'نظر يونس إلى الطبيعة ووجد فيها دروسًا ومعاني أعمق.',correctAnswer:true,explanation:'يعرض الفصل الأشجار والحيوانات والأنهار والجبال الهادئة بوصفها مواضع للتفكر والتعلم.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفقرتين الأخيرتين.'}},
+  7:{id:'yunus-a2-quick-7-ar',type:'multiple-choice',title:'أقحوانة واحدة',instructions:'اختر سبب يونس.',question:'لماذا عاد يونس بأقحوانة واحدة فقط؟',options:['قال إن الأزهار الأخرى كانت تذكر اسم الله فلم يستطع قطعها','لم توجد أزهار أخرى','طلب تابتوك زهرة واحدة بالضبط'],correctAnswer:0,explanation:'قال يونس إنه سمع الأزهار تذكر اسم الله فلم يقطعها.',feedback:{correct:'صحيح.',incorrect:'استخدم جواب يونس لتابتوك.'}},
+  8:{id:'yunus-a2-quick-8-ar',type:'matching',title:'درس الحياة اليومية',instructions:'صل النصيحة بالفعل.',question:'ماذا يطلب الفصل الأخير من القارئ؟',matchingPairs:[{left:'القلب',right:'يذكر الله'},{left:'العمل',right:'يُنجز جيدًا وبصورة صحيحة'}],correctAnswer:{'القلب':'يذكر الله','العمل':'يُنجز جيدًا وبصورة صحيحة'},explanation:'تجمع الفقرة الأخيرة بين ذكر الله وإتقان العمل اليومي.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفقرة الأخيرة.'}}
+};
+
+export const yunusA2KnowledgeCheckExercisesAr: Exercise[] = [
+  {id:'yunus-a2-kc-1-ar',type:'multiple-choice',title:'الرحلات',instructions:'اختر الأماكن المذكورة في الفصل الأول.',question:'إلى أي مكانين خارج الأناضول تذكر القصة أن يونس سافر؟',options:['سوريا وأذربيجان','مصر وإسبانيا','الهند والصين'],correctAnswer:0,explanation:'يذكر الفصل سوريا وأذربيجان.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفقرة الأخيرة من الفصل الأول.'}},
+  {id:'yunus-a2-kc-2-ar',type:'multiple-choice',title:'لماذا سموا أنفسهم فقراء؟',instructions:'اختر أفضل تفسير من الفصل الثاني.',question:'لماذا كان الدرويش الغني يستطيع أن يسمي نفسه فقيرًا؟',options:['لأنه يعرف حاجته إلى الله ولا يجعل المال في قلبه','لأنه فقد كل ماله','لأنه لا يجوز له مساعدة أحد'],correctAnswer:0,explanation:'يربط النص الحاجة إلى الله بعدم تعلق القلب بالمال.',feedback:{correct:'صحيح.',incorrect:'راجع الجمل التي تجمع بين الغنى والفقر والقلب واليد.'}},
+  {id:'yunus-a2-kc-3-ar',type:'multiple-choice',title:'قيم الدراويش',instructions:'اختر المجموعة المذكورة في الفصل الثالث.',question:'ما القيم التي يذكرها أول الفصل الثالث؟',options:['الصدق والصبر والتواضع والكرم والاحترام والثقة بالله','السرعة والمنافسة والمال','الصمت والسفر والتجارة'],correctAnswer:0,explanation:'هذه القيم مذكورة في الجملة الأولى.',feedback:{correct:'صحيح.',incorrect:'اقرأ أول جملة في الفصل الثالث.'}},
+  {id:'yunus-a2-kc-4-ar',type:'true-false',title:'الشرط الأول',instructions:'حدد صحة الجملة.',question:'كان على الطالب في دار تابتوك أن يكون متواضعًا ومستعدًا لخدمة الناس والمخلوقات.',correctAnswer:true,explanation:'يذكر الفصل هذا بوصفه الشرط الأول.',feedback:{correct:'صحيح.',incorrect:'راجع افتتاح الفصل الرابع.'}},
+  {id:'yunus-a2-kc-5-ar',type:'multiple-choice',title:'سنوات الخدمة',instructions:'اختر العدد المذكور في الفصل الخامس.',question:'كم سنة تقول القصة إن يونس خدم تابتوك بهذه الطريقة؟',options:['أربعون سنة','أربع سنوات','أربع عشرة سنة'],correctAnswer:0,explanation:'يذكر الفصل أربعين سنة بالضبط.',feedback:{correct:'صحيح.',incorrect:'ابحث عن الفقرة التي يلاحظ فيها تابتوك الحطب.'}},
+  {id:'yunus-a2-kc-6-ar',type:'multiple-choice',title:'الجبال',instructions:'اختر الوصف المدعوم من الفصل السادس.',question:'لماذا كانت الجبال مناسبة للتفكر الهادئ؟',options:['لأنها هادئة وبعيدة عن الناس','لأنها أسواق مزدحمة','لأنها خالية من المخلوقات'],correctAnswer:0,explanation:'يصف الفصل الجبال بأنها هادئة وبعيدة عن الناس.',feedback:{correct:'صحيح.',incorrect:'استخدم الفقرة الأخيرة من الفصل السادس.'}},
+  {id:'yunus-a2-kc-7-ar',type:'true-false',title:'الدراويش الآخرون',instructions:'حدد صحة الجملة.',question:'سخر بعض الدراويش من يونس عندما عاد بأقحوانة واحدة.',correctAnswer:true,explanation:'يذكر الفصل أنهم سخروا منه وهمسوا فيما بينهم.',feedback:{correct:'صحيح.',incorrect:'اقرأ الفقرة بعد عودة يونس.'}},
+  {id:'yunus-a2-kc-8-ar',type:'multiple-choice',title:'كلام الأقحوانة',instructions:'اختر ما تقوله الأقحوانة في الفصل الثامن.',question:'لماذا قالت الأقحوانة إن يونس يستطيع قطفها؟',options:['لأن وقتها انتهى وهي يابسة وقريبة من الموت','لأنها تريد جائزة تابتوك','لأنها الزهرة الوحيدة في الحقل'],correctAnswer:0,explanation:'تقول إن وقتها انتهى وإنها يابسة وقريبة من الموت.',feedback:{correct:'صحيح.',incorrect:'اقرأ الاقتباس في بداية الفصل الثامن.'}}
 ];
 
+export const yunusA2VocabularyChallengePairsAr = [
+  {word:'الْمَدْرَسَةِ',meaning:'مكان تقليدي للدراسة والتعلم'},
+  {word:'صَدَقَةً',meaning:'مساعدة أو مال أو شيء يُعطى للمحتاجين'},
+  {word:'التَّواضُعِ',meaning:'ألا يظن الإنسان أنه أفضل من الآخرين'},
+  {word:'مُعْوَجًّا',meaning:'غير مستقيم أو منحنٍ'},
+  {word:'نَفْسُ',meaning:'الذات التي قد تميل إلى الكبر أو الأنانية'},
+  {word:'مُثْمِرَةً',meaning:'نافعة وتنتج نتائج طيبة'}
+];
+
+export const yunusA2FinalReviewExercisesAr: Exercise[] = [
+  {id:'yunus-a2-review-sequence-ar',type:'sequencing',title:'رحلة تعلم يونس',instructions:'رتب التطورات الرئيسة.',question:'كيف تنتقل القصة من السيرة إلى درس الحياة اليومية؟',sequencingItems:[{id:'1',text:'يُقدَّم يونس شاعرًا وتلميذًا لتابتوك'},{id:'2',text:'تُشرح حياة الدرويش الصعبة والمنضبطة'},{id:'3',text:'يُكلف يونس بجمع الحطب'},{id:'4',text:'يصبح العمل بالحطب تدريبًا للقلب والنفس'},{id:'5',text:'تعطي الطبيعة والأقحوانة معنى أعمق للتعلم'},{id:'6',text:'تختم القصة بنصيحة للحياة اليومية'}],correctAnswer:['1','2','3','4','5','6'],explanation:'هذا هو التسلسل العام للكتاب.',feedback:{correct:'صحيح.',incorrect:'ابدأ بالسيرة ثم التدريب والخدمة والطبيعة والدرس الختامي.'}},
+  {id:'yunus-a2-review-match-ar',type:'matching',title:'الفعل والمعنى',instructions:'صل كل تفصيل بمعناه في الفصل.',question:'ماذا يبين كل تفصيل؟',matchingPairs:[{left:'القصائد الأخلاقية',right:'تحمل دروسًا مهمة للثقافة'},{left:'ترك الحسد والأنانية',right:'تغيير العادات السيئة'},{left:'اختيار الحطب المستقيم بعناية',right:'إتقان الخدمة العادية'},{left:'دروس ومحادثات دار الدراويش',right:'ساعدت يونس أيضًا على التعلم'}],correctAnswer:{'القصائد الأخلاقية':'تحمل دروسًا مهمة للثقافة','ترك الحسد والأنانية':'تغيير العادات السيئة','اختيار الحطب المستقيم بعناية':'إتقان الخدمة العادية','دروس ومحادثات دار الدراويش':'ساعدت يونس أيضًا على التعلم'},explanation:'تسترجع المطابقة علاقات مختلفة من الفصول.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفصول 1 و2 و5 و6.'}},
+  {id:'yunus-a2-review-reflection-ar',type:'reflection',title:'العمل والخلق',instructions:'أجب بإجابة قصيرة من مستوى A2 مع مثال من القصة.',question:'كيف يمكن لعمل عادي أن يساعد الإنسان على التحسن في هذه القصة؟',correctAnswer:null,explanation:'يُعرض جمع الحطب كخدمة عادية تدرب قلب يونس وسلوكه.',feedback:{correct:'استخدم قصة الحطب ودرسًا واضحًا.',incorrect:''},discussionPrompts:[{question:'ما العمل الذي قام به يونس؟',mode:'Individual'},{question:'ماذا كان يدرب هذا العمل؟',mode:'Pair'},{question:'بأي درس يومي يمكن ربطه؟',mode:'Class'}]},
+  {id:'yunus-a2-review-quiz-ar',type:'quiz-game',title:'اختبار الاسترجاع',instructions:'أجب عن ثمانية أسئلة جديدة من القصة.',question:'هل تستطيع ربط التفاصيل المهمة دون تكرار اختبار الفهم؟',correctAnswer:null,explanation:'تسترجع الأسئلة تفاصيل مختلفة من الكتاب.',feedback:{correct:'استرجاع جيد.',incorrect:'استخدم التلميح ثم عد إلى الفصل.'},quizQuestions:[
+    {question:'ما نوع الدروس التي حملتها قصائد يونس؟',options:[{text:'دروس أخلاقية مهمة',isCorrect:true},{text:'نصائح تجارية فقط',isCorrect:false},{text:'اتجاهات سفر فقط',isCorrect:false}],hint:'الفصل الأول.'},
+    {question:'أي عادة حاول الدراويش تركها؟',options:[{text:'الحسد',isCorrect:true},{text:'اللطف',isCorrect:false},{text:'الكرم',isCorrect:false}],hint:'آخر الفصل الثاني.'},
+    {question:'كيف وصف الفصل الثالث طريق الدراويش؟',options:[{text:'شاق جدًا',isCorrect:true},{text:'سهل بلا جهد',isCorrect:false},{text:'خاص بالشعراء فقط',isCorrect:false}],hint:'قبل القصيدة.'},
+    {question:'أي حطب رفض يونس قطعه أو إحضاره؟',options:[{text:'الحطب الأخضر أو المعوج',isCorrect:true},{text:'الحطب الجاف المستقيم',isCorrect:false},{text:'كل الحطب',isCorrect:false}],hint:'آخر الفصل الرابع.'},
+    {question:'ماذا سأل تابتوك بعد ملاحظته حطب يونس؟',options:[{text:'ألا يوجد حطب معوج في الجبل؟',isCorrect:true},{text:'لماذا تكتب الشعر؟',isCorrect:false},{text:'لماذا تركت الأناضول؟',isCorrect:false}],hint:'آخر الفصل الخامس.'},
+    {question:'ما الذي ساعد يونس على التعلم إلى جانب الطبيعة؟',options:[{text:'الدروس والمحادثات في دار الدراويش',isCorrect:true},{text:'مسابقة في السوق',isCorrect:false},{text:'مدرسة ملكية خارج البلاد',isCorrect:false}],hint:'وسط الفصل السادس.'},
+    {question:'ماذا وعد تابتوك صاحب أجمل باقة؟',options:[{text:'هدية',isCorrect:true},{text:'بيتًا جديدًا',isCorrect:false},{text:'مالًا للسفر',isCorrect:false}],hint:'افتتاح الفصل السابع.'},
+    {question:'بماذا يجب أن تمتلئ قلوبنا في الحياة اليومية؟',options:[{text:'بحب الله',isCorrect:true},{text:'بالفخر بالنفس',isCorrect:false},{text:'بالخوف من العمل العادي',isCorrect:false}],hint:'الفقرة الأخيرة.'}
+  ]}
+];
+
+export const yunusA2FinalChallengeExercisesAr: Exercise[] = [
+  {id:'yunus-a2-final-1-ar',type:'multiple-choice',title:'الميلاد',instructions:'اختر الحقيقة المذكورة في الفصل الأول.',question:'متى وأين ولد يونس إمره؟',options:['عام 1240 في الأناضول','عام 1320 في سوريا','عام 1273 في أذربيجان'],correctAnswer:0,explanation:'يذكر الفصل عام 1240 في الأناضول.',feedback:{correct:'صحيح.',incorrect:'راجع الجمل الافتتاحية.'}},
+  {id:'yunus-a2-final-2-ar',type:'multiple-choice',title:'حسن المعاملة',instructions:'اختر السلوك المذكور في الفصل الثاني.',question:'كيف حاول الدراويش معاملة الآخرين؟',options:['بالغفران والتسامح','بتجنب الجميع','بمقابلة اللطف بالحسد'],correctAnswer:0,explanation:'الغفران والتسامح مذكوران بوضوح.',feedback:{correct:'صحيح.',incorrect:'استخدم الفقرة الثانية من الفصل الثاني.'}},
+  {id:'yunus-a2-final-3-ar',type:'multiple-choice',title:'وقت مفيد',instructions:'اختر الوصف الأفضل من الفصل الثالث.',question:'فيمَ كان الدراويش يقضون وقتهم؟',options:['في أعمال مفيدة','في جمع المال','في النوم طوال اليوم'],correctAnswer:0,explanation:'يذكر الفصل أنهم يقضون وقتهم في أعمال مفيدة.',feedback:{correct:'صحيح.',incorrect:'ارجع إلى الفقرة بعد القصيدة.'}},
+  {id:'yunus-a2-final-4-ar',type:'true-false',title:'عمل عادي',instructions:'حدد صحة الجملة.',question:'تقول القصة إن بعض الأعمال العادية قد يكون هدفها إصلاح النفس وترك العادات السيئة.',correctAnswer:true,explanation:'هذا هو الهدف المذكور للخدمة.',feedback:{correct:'صحيح.',incorrect:'راجع منتصف الفصل الرابع.'}},
+  {id:'yunus-a2-final-5-ar',type:'true-false',title:'أن يصبح أفضل',instructions:'حدد صحة الجملة.',question:'يقول الفصل السادس إن قطع الحطب في الطبيعة ساعد يونس على أن يصبح إنسانًا أفضل.',correctAnswer:true,explanation:'يذكر الفصل ذلك مباشرة.',feedback:{correct:'صحيح.',incorrect:'ابحث عن الجملة بعد ذكر الدروس والمحادثات.'}},
+  {id:'yunus-a2-final-6-ar',type:'matching',title:'الأداة والعمل الداخلي',instructions:'صل تفصيل الفصل الخامس بمعناه.',question:'ماذا يحدث في العمل الظاهر والعمل الداخلي؟',matchingPairs:[{left:'الفأس',right:'تقطع الحطب'},{left:'التدريب الداخلي',right:'يصلح جزءًا سيئًا من النفس'}],correctAnswer:{'الفأس':'تقطع الحطب','التدريب الداخلي':'يصلح جزءًا سيئًا من النفس'},explanation:'يربط الفصل استخدام الفأس بإصلاح النفس.',feedback:{correct:'صحيح.',incorrect:'قارن الفعل الجسدي بالشرح الداخلي.'}},
+  {id:'yunus-a2-final-7-ar',type:'matching',title:'الحقل والأقحوانة',instructions:'صل التفصيل بالسبب.',question:'ماذا عاش يونس في الحقل؟',matchingPairs:[{left:'الأزهار الأخرى',right:'سمعها تذكر اسم الله'},{left:'الأقحوانة الواحدة',right:'هي التي عاد بها في النهاية'}],correctAnswer:{'الأزهار الأخرى':'سمعها تذكر اسم الله','الأقحوانة الواحدة':'هي التي عاد بها في النهاية'},explanation:'يفسر التفصيلان النتيجة غير المعتادة لمهمة الزهور.',feedback:{correct:'صحيح.',incorrect:'استخدم جواب يونس لتابتوك.'}},
+  {id:'yunus-a2-final-8-ar',type:'fill-blanks',title:'حياة ذات معنى',instructions:'أكمل الجملة بكلمة القصة.',question:'إتقان كل عمل يساعدنا على أن نعيش حياة ___.',fillBlanksText:'إتقان كل عمل يساعدنا على أن نعيش حياة [[ذات معنى]].',correctAnswer:['ذات معنى'],explanation:'تستخدم الفقرة الأخيرة عبارة حياة ذات معنى ومثمرة.',feedback:{correct:'صحيح.',incorrect:'انظر إلى الجملة الأخيرة.'}},
+  {id:'yunus-a2-final-9-ar',type:'fill-blanks',title:'التعليم',instructions:'أكمل الجملة بكلمة القصة.',question:'قبل أن يسير في طريق الدراويش أكمل يونس تعليمه في ___.',fillBlanksText:'قبل أن يسير في طريق الدراويش أكمل يونس تعليمه في [[المدرسة]].',correctAnswer:['المدرسة'],explanation:'يذكر الفصل الأول تعليمه في المدرسة.',feedback:{correct:'صحيح.',incorrect:'استخدم الفقرة الثانية من الفصل الأول.'}},
+  {id:'yunus-a2-final-10-ar',type:'sequencing',title:'من الخدمة إلى الدرس',instructions:'رتب السلسلة.',question:'كيف تتطور قصة الحطب؟',sequencingItems:[{id:'1',text:'يكلف تابتوك يونس بخدمة'},{id:'2',text:'يحمل يونس الحطب المختار بعناية مرارًا'},{id:'3',text:'يدرب العمل قلبه ونفسه'},{id:'4',text:'تتحول الخدمة إلى درس للحياة اليومية'}],correctAnswer:['1','2','3','4'],explanation:'ينتقل التسلسل من التكليف إلى التكرار ثم التغيير الداخلي والدرس العام.',feedback:{correct:'صحيح.',incorrect:'اتبع الفصول 4 و5 و8 بالترتيب.'}}
+];
+
+// Compatibility alias used only by old imports until the direct index is in place.
 export const exercises = yunusA2FinalReviewExercisesAr;
