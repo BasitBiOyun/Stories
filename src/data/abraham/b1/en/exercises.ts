@@ -151,11 +151,11 @@ export const abrahamB1KnowledgeCheckExercises: Exercise[] = [
     feedback: { correct: 'Correct.', incorrect: 'Compare what the people intend with what actually happens to Abraham.' }
   },
   {
-    id: 'abraham-b1-kc-6', type: 'multiple-choice', title: 'Power in the Nimrod Debate', instructions: 'Choose the best interpretation.',
-    question: 'What does Abraham’s sunrise challenge reveal about Nimrod’s claim?',
-    options: ['Nimrod can control people but not the order of creation', 'Nimrod has the same power as Allah', 'Nimrod refuses because the sun already rises from the west'], correctAnswer: 0,
-    explanation: 'Abraham distinguishes political control over people from power over creation itself.',
-    feedback: { correct: 'Correct.', incorrect: 'Ask what Nimrod can command and what he cannot command.' }
+    id: 'abraham-b1-kc-6', type: 'multiple-choice', title: 'Authority and Life', instructions: 'Evaluate Nimrod’s prisoner example from Chapter 9.',
+    question: 'Why does Nimrod’s example with the two prisoners fail to prove that he gives life in the same sense Abraham attributes to Allah?',
+    options: ['He only decides whether people are killed or released; he does not create life itself', 'His guards refuse to obey his orders', 'The second prisoner had already left Babylon'], correctAnswer: 0,
+    explanation: 'The scene shows political authority over prisoners, not control over life or creation itself.',
+    feedback: { correct: 'Correct.', incorrect: 'Separate a ruler’s decision over prisoners from the power to create or control life.' }
   },
   {
     id: 'abraham-b1-kc-7', type: 'multiple-choice', title: 'Migration and Responsibility', instructions: 'Choose the explanation supported by Chapters 10–11.',
@@ -238,14 +238,14 @@ export const abrahamB1FinalReviewExercises: Exercise[] = [
     feedback: { correct: 'Strong retrieval.', incorrect: 'Return to the relevant chapter and identify the evidence before trying again.' },
     quizQuestions: [
       {
-        question: 'What does Abraham watching his father make idols add to his criticism of idol worship?',
-        options: [{ text: 'It shows the objects are made by human hands', isCorrect: true }, { text: 'It proves the idols created Azer', isCorrect: false }, { text: 'It shows only children could see them', isCorrect: false }],
-        hint: 'Think about maker and made object.'
+        question: 'Which created things, besides statues, did people in Babylon worship?',
+        options: [{ text: 'The stars, the moon, and the sun', isCorrect: true }, { text: 'Only rivers and mountains', isCorrect: false }, { text: 'Only the king of Babylon', isCorrect: false }],
+        hint: 'Use the opening paragraph of Chapter 1.'
       },
       {
-        question: 'Why does Abraham ask Allah for guidance after observing the sun?',
-        options: [{ text: 'He recognizes his dependence on Allah for the right path', isCorrect: true }, { text: 'He decides the sun is divine', isCorrect: false }, { text: 'He wants to return to idol worship', isCorrect: false }],
-        hint: 'Use Abraham’s prayer in Chapter 4.'
+        question: 'What does Abraham do after he enters the countryside and finds a cave?',
+        options: [{ text: 'He sits and thinks about Allah before looking at the sky', isCorrect: true }, { text: 'He builds a new temple there', isCorrect: false }, { text: 'He meets Nimrod there', isCorrect: false }],
+        hint: 'Use the beginning of the night scene in Chapter 3.'
       },
       {
         question: 'Why does Abraham mention food, drink, and healing when speaking to his people?',
@@ -268,14 +268,14 @@ export const abrahamB1FinalReviewExercises: Exercise[] = [
         hint: 'The chapter names only one woman and one man.'
       },
       {
-        question: 'What makes Hagar’s statement before Abraham leaves important?',
-        options: [{ text: 'She understands that he is obeying Allah and expresses trust in Allah’s protection', isCorrect: true }, { text: 'She believes the valley already has farms', isCorrect: false }, { text: 'She plans to return immediately to Babylon', isCorrect: false }],
-        hint: 'Use her words about Allah’s protection.'
+        question: 'What does Abraham ask Allah to give his family so that they may give thanks?',
+        options: [{ text: 'Blessings', isCorrect: true }, { text: 'A new group of idols', isCorrect: false }, { text: 'A royal palace', isCorrect: false }],
+        hint: 'Use Abraham’s prayer at the beginning of Chapter 11.'
       },
       {
-        question: 'Why do more people settle in the valley after Zamzam appears?',
-        options: [{ text: 'Reliable water makes life possible there', isCorrect: true }, { text: 'Nimrod orders them to move', isCorrect: false }, { text: 'The old Babylonian temple is moved there', isCorrect: false }],
-        hint: 'Think about what a desert settlement needs.'
+        question: 'How does Abraham remain connected to Mecca after people begin settling there?',
+        options: [{ text: 'He visits Mecca several times to see his family', isCorrect: true }, { text: 'He sends Nimrod to govern the city', isCorrect: false }, { text: 'He never returns to the valley', isCorrect: false }],
+        hint: 'Use the final sentence of Chapter 12.'
       }
     ]
   }
@@ -283,82 +283,88 @@ export const abrahamB1FinalReviewExercises: Exercise[] = [
 
 export const abrahamB1FinalChallengeExercises: Exercise[] = [
   {
-    id: 'abraham-b1-final-1', type: 'multiple-choice', title: 'From Observation to Principle', instructions: 'Choose the best synthesis.',
-    question: 'What principle links Abraham’s rejection of idols with his rejection of the star, moon, and sun?',
-    options: ['What is created, limited, or dependent cannot be the Creator', 'Whatever is visible must be worshipped', 'Only large objects can have power'], correctAnswer: 0,
-    explanation: 'Across the opening chapters, Abraham distinguishes the Creator from things that are made, powerless, changing, or disappearing.',
-    feedback: { correct: 'Correct.', incorrect: 'Compare the limits of the statues with the limits of the heavenly bodies.' }
+    id: 'abraham-b1-final-1', type: 'multiple-choice', title: 'A Public System of Worship', instructions: 'Choose the interpretation best supported by Chapter 1.',
+    question: 'What do the large house of worship and the people’s repeated bowing, crying, begging, and asking for help suggest about idol worship in Babylon?',
+    options: ['It was an established communal practice supported by shared spaces and repeated actions', 'It was only a private habit inside Abraham’s family', 'It happened only once during a temporary celebration'], correctAnswer: 0,
+    explanation: 'The chapter presents idol worship as a public and organized part of community life, not an isolated personal action.',
+    feedback: { correct: 'Correct.', incorrect: 'Use the description of the large house of worship and what people regularly did there.' }
   },
   {
-    id: 'abraham-b1-final-2', type: 'multiple-choice', title: 'Courage and Communication', instructions: 'Choose the answer best supported by the story.',
-    question: 'Which description best fits Abraham’s way of challenging false belief?',
-    options: ['He combines direct speech, questions, comparisons, and public evidence', 'He avoids giving reasons and only leaves silently', 'He accepts every tradition to avoid disagreement'], correctAnswer: 0,
-    explanation: 'The story repeatedly shows Abraham using reasons and questions before and during public opposition.',
-    feedback: { correct: 'Correct.', incorrect: 'Think across the conversations with his father, his people, and Nimrod.' }
+    id: 'abraham-b1-final-2', type: 'multiple-choice', title: 'Perseverance in Communication', instructions: 'Choose the interpretation best supported by Chapter 5.',
+    question: 'What does Abraham’s response to the people’s anger show about the way he communicates his message?',
+    options: ['He continues giving reasons and asks them to reconsider even when they become furious', 'He immediately stops explaining his position to avoid disagreement', 'He accepts their inherited practice but disagrees only in private'], correctAnswer: 0,
+    explanation: 'The chapter says Abraham does not give up; he continues giving reasons and wants the people to reconsider their beliefs.',
+    feedback: { correct: 'Correct.', incorrect: 'Follow the dialogue after the people become furious.' }
   },
   {
-    id: 'abraham-b1-final-3', type: 'multiple-choice', title: 'Trust as Action', instructions: 'Choose the best comparison.',
-    question: 'What do Abraham before the fire and Hagar in the valley have in common?',
-    options: ['Both trust Allah while still facing the concrete demands of their situation', 'Both avoid every difficult situation', 'Both depend on idols for protection'], correctAnswer: 0,
-    explanation: 'Abraham remains steadfast under danger, while Hagar trusts Allah and actively searches for help.',
-    feedback: { correct: 'Correct.', incorrect: 'Compare trust in Chapter 8 with trust and effort in Chapter 11.' }
+    id: 'abraham-b1-final-3', type: 'multiple-choice', title: 'Family and Future Mission', instructions: 'Choose the answer supported by Chapter 10.',
+    question: 'Why is Abraham’s prayer for a child connected with his wider mission?',
+    options: ['He hopes his child can teach people about Allah', 'He wants a child mainly to restore his status in Babylon', 'He expects the child to end his travels and keep the message private'], correctAnswer: 0,
+    explanation: 'The chapter explicitly says Abraham asks for a child so that the child can teach people about Allah.',
+    feedback: { correct: 'Correct.', incorrect: 'Find the sentence explaining why Abraham asks Allah for a child.' }
   },
   {
-    id: 'abraham-b1-final-4', type: 'true-false', title: 'Recognition Is Not Acceptance', instructions: 'Decide whether this synthesis is correct.',
-    question: 'The people’s shame after Abraham’s argument shows that recognizing a strong argument does not always mean accepting it.', correctAnswer: true,
-    explanation: 'They recognize the force of Abraham’s point but arrogance leads them to reject the truth and demand punishment.',
-    feedback: { correct: 'Correct.', incorrect: 'Return to the people’s reaction after they admit the idols cannot speak.' }
+    id: 'abraham-b1-final-4', type: 'true-false', title: 'Forefathers and Resistance', instructions: 'Decide whether the statement is supported by Chapter 7.',
+    question: 'One reason the people resist admitting Abraham is right is that doing so would also mean admitting their forefathers were wrong.', correctAnswer: true,
+    explanation: 'The chapter directly connects their refusal with the difficulty of accepting that their forefathers had also been wrong.',
+    feedback: { correct: 'Correct.', incorrect: 'Read the sentences immediately before the people begin shouting for punishment.' }
   },
   {
-    id: 'abraham-b1-final-5', type: 'true-false', title: 'Migration and Mission', instructions: 'Decide whether the statement is supported.',
-    question: 'Leaving Babylon is presented as the end of Abraham’s public mission.', correctAnswer: false,
-    explanation: 'He leaves specifically to spread Allah’s message in other lands; the mission continues in a new setting.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the reason given for Abraham’s departure.' }
+    id: 'abraham-b1-final-5', type: 'true-false', title: 'Hajj and Memory', instructions: 'Decide whether the statement agrees with Chapter 13.',
+    question: 'The story says Hajj reminds Muslims about events connected with Abraham and his family.', correctAnswer: true,
+    explanation: 'Chapter 13 states that Hajj reminds Muslims of many events connected with Abraham and his family.',
+    feedback: { correct: 'Correct.', incorrect: 'Find the sentence about Hajj after the Ka’ba is rebuilt.' }
   },
   {
-    id: 'abraham-b1-final-6', type: 'matching', title: 'Cause and Consequence', instructions: 'Match each cause with its consequence.',
-    question: 'Which consequences follow these story events?',
+    id: 'abraham-b1-final-6', type: 'matching', title: 'Evidence and Interpretation', instructions: 'Match each detail with what it shows in the story.',
+    question: 'What does each piece of evidence help the reader understand?',
     matchingPairs: [
-      { left: 'The people admit the idols cannot speak', right: 'Abraham questions why they worship them' },
-      { left: 'Zamzam provides water', right: 'more people settle in the valley' }
+      { left: 'Birds could not fly over the flames', right: 'shows how extreme the heat was' },
+      { left: 'The people were shocked by the miracle but their anger remained', right: 'shows that amazement did not end their opposition' }
     ],
-    correctAnswer: { 'The people admit the idols cannot speak': 'Abraham questions why they worship them', 'Zamzam provides water': 'more people settle in the valley' },
-    explanation: 'Both pairs require following an explicit cause-and-result relationship.',
-    feedback: { correct: 'Correct.', incorrect: 'Use Chapters 7 and 12 and follow what happens immediately afterward.' }
+    correctAnswer: {
+      'Birds could not fly over the flames': 'shows how extreme the heat was',
+      'The people were shocked by the miracle but their anger remained': 'shows that amazement did not end their opposition'
+    },
+    explanation: 'The first detail establishes physical danger; the second separates surprise at the miracle from a change of belief.',
+    feedback: { correct: 'Correct.', incorrect: 'Use the danger details in Chapter 8 and the opening reaction in Chapter 9.' }
   },
   {
-    id: 'abraham-b1-final-7', type: 'matching', title: 'Speaker and Purpose', instructions: 'Match the statement with its purpose in the narrative.',
-    question: 'What is each statement doing?',
+    id: 'abraham-b1-final-7', type: 'matching', title: 'Action and Continuity', instructions: 'Match each action with the later meaning or result stated in the story.',
+    question: 'How do these actions continue beyond the immediate moment?',
     matchingPairs: [
-      { left: '“Can you make the sun rise from the west?”', right: 'tests the limits of Nimrod’s claimed power' },
-      { left: '“Allah will surely protect us.”', right: 'expresses Hagar’s trust in the valley' }
+      { left: 'Hagar runs between the two hills seven times', right: 'is remembered as sa’y in Hajj and Umrah' },
+      { left: 'Abraham and Ishmael find the old foundations', right: 'they build the Ka’ba on the earlier base' }
     ],
-    correctAnswer: { '“Can you make the sun rise from the west?”': 'tests the limits of Nimrod’s claimed power', '“Allah will surely protect us.”': 'expresses Hagar’s trust in the valley' },
-    explanation: 'One statement challenges human arrogance; the other expresses reliance on Allah.',
-    feedback: { correct: 'Correct.', incorrect: 'Identify the speaker and situation for each line.' }
+    correctAnswer: {
+      'Hagar runs between the two hills seven times': 'is remembered as sa’y in Hajj and Umrah',
+      'Abraham and Ishmael find the old foundations': 'they build the Ka’ba on the earlier base'
+    },
+    explanation: 'The story links Hagar’s repeated search with sa’y and links the new construction with the earlier foundations.',
+    feedback: { correct: 'Correct.', incorrect: 'Use the later part of Chapter 11 and the second paragraph of Chapter 13.' }
   },
   {
-    id: 'abraham-b1-final-8', type: 'fill-blanks', title: 'A Reason for Opposition', instructions: 'Complete the sentence with the key idea from Chapter 7.',
-    question: 'Complete the explanation.', fillBlanksText: 'The people knew Abraham’s argument was strong, but their [blank] kept them from admitting they were wrong.',
-    correctAnswer: 'arrogance', explanation: 'The chapter explicitly says they were too arrogant to accept the truth and admit they were wrong.',
-    feedback: { correct: 'Correct.', incorrect: 'Look for the word describing pride that blocks acceptance of truth.' }
+    id: 'abraham-b1-final-8', type: 'fill-blanks', title: 'Azer’s Claim', instructions: 'Complete the key word from Chapter 2.',
+    question: 'Complete Azer’s explanation about Mardukh.', fillBlanksText: 'Azer said Mardukh’s big ears showed his deep [blank].', correctAnswer: 'knowledge',
+    explanation: 'Azer describes the statue’s large ears as a sign of “deep knowledge.”',
+    feedback: { correct: 'Correct.', incorrect: 'Return to Azer’s final explanation about Mardukh’s ears.' }
   },
   {
-    id: 'abraham-b1-final-9', type: 'fill-blanks', title: 'A Lasting Message', instructions: 'Complete the sentence from the story’s closing idea.',
-    question: 'Complete the statement.', fillBlanksText: 'Abraham’s descendants carried the message of the [blank] of Allah.', correctAnswer: 'Oneness',
-    explanation: 'The final chapter names the Oneness of Allah as the message carried through Abraham’s descendants.',
-    feedback: { correct: 'Correct.', incorrect: 'Use the final paragraph of Chapter 13.' }
+    id: 'abraham-b1-final-9', type: 'fill-blanks', title: 'The Aim of the Public Call', instructions: 'Complete the meaningful action word from Chapter 5.',
+    question: 'Complete the sentence.', fillBlanksText: 'Abraham wanted the people to [blank] their beliefs.', correctAnswer: 'reconsider',
+    explanation: 'The chapter says Abraham wanted the people to reconsider their beliefs even though they ignored him.',
+    feedback: { correct: 'Correct.', incorrect: 'Look at the sentence just before the people ignore Abraham.' }
   },
   {
-    id: 'abraham-b1-final-10', type: 'sequencing', title: 'The Valley Becomes a Sacred Centre', instructions: 'Put the developments in their logical and narrative order.',
-    question: 'How does the final part of the story move from hardship to lasting worship?',
+    id: 'abraham-b1-final-10', type: 'sequencing', title: 'From Babylon to the Valley', instructions: 'Put the migration developments in story order.',
+    question: 'How does Chapter 10 move from Babylon to the new family setting?',
     sequencingItems: [
-      { id: '1', text: 'Hagar and Ishmael face scarcity in the valley' },
-      { id: '2', text: 'Hagar searches between Safa and Marwa' },
-      { id: '3', text: 'Zamzam appears and supports settlement' },
-      { id: '4', text: 'Abraham and Ishmael rebuild the Ka’ba' }
+      { id: '1', text: 'Abraham decides to leave Babylon' },
+      { id: '2', text: 'He travels through Syria and Palestine' },
+      { id: '3', text: 'Hagar gives birth to Ishmael' },
+      { id: '4', text: 'The family reaches the valley near Safa and Marwa' }
     ],
-    correctAnswer: ['1', '2', '3', '4'], explanation: 'The sequence links hardship, effort, provision, community, and worship without reducing the story to isolated facts.',
-    feedback: { correct: 'Correct.', incorrect: 'Trace Chapters 11–13 in order.' }
+    correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter moves from departure, through travel and the birth of Ishmael, to the family’s arrival in the valley.',
+    feedback: { correct: 'Correct.', incorrect: 'Trace Chapter 10 from the reason for leaving Babylon to the final valley scene.' }
   }
 ];
