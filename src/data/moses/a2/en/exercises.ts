@@ -1,154 +1,71 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+// Single manual source of truth for every English Moses A2 learning activity.
+
+export const mosesA2QuickChallenges: Record<number, Exercise> = {
+  1: { id: 'moses-a2-quick-1', type: 'matching', title: 'Power and Belief', instructions: 'Match each group with what Chapter 1 says.', question: 'How were Pharaoh and the Children of Israel different?', matchingPairs: [{ left: 'Pharaoh', right: 'claimed to be a god and treated people cruelly' }, { left: 'Children of Israel', right: 'believed in one Allah' }], correctAnswer: { Pharaoh: 'claimed to be a god and treated people cruelly', 'Children of Israel': 'believed in one Allah' }, explanation: 'Chapter 1 contrasts Pharaoh’s claim and cruelty with the Children of Israel’s belief in one Allah.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentences about Pharaoh’s belief and the Children of Israel.' } },
+  2: { id: 'moses-a2-quick-2', type: 'multiple-choice', title: 'Fear and a Cruel Order', instructions: 'Choose the cause-result pair from Chapter 2.', question: 'What happened after the magicians explained Pharaoh’s dream?', options: ['Pharaoh ordered the baby boys of the Children of Israel to be killed', 'Pharaoh freed the Children of Israel', 'Pharaoh left Egypt'], correctAnswer: 0, explanation: 'The dream explanation increased Pharaoh’s fear, and he gave a cruel order.', feedback: { correct: 'Correct.', incorrect: 'Look at Pharaoh’s order after he speaks with the magicians.' } },
+  3: { id: 'moses-a2-quick-3', type: 'tap-reveal', title: 'Trust in a Hard Moment', instructions: 'Answer first, then reveal.', question: 'What did Moses’s mother do after asking Allah for help?', tapRevealItems: [{ question: 'Her action', answer: 'She put baby Moses in a basket and placed it in the Nile as Allah instructed.' }], correctAnswer: 'She put baby Moses in a basket and placed it in the Nile as Allah instructed.', explanation: 'The chapter connects her worry with trust and action.', feedback: { correct: 'Correct.', incorrect: 'Return to Allah’s instruction to Moses’s mother.' } },
+  4: { id: 'moses-a2-quick-4', type: 'multiple-choice', title: 'Queen Asiye’s Choice', instructions: 'Choose the answer supported by Chapter 4.', question: 'What shows that Queen Asiye was different from her husband?', options: ['She believed in Allah and wanted to care for baby Moses', 'She ordered the soldiers to search the houses', 'She wanted the basket thrown back into the river'], correctAnswer: 0, explanation: 'The chapter describes Asiye as believing, good and kind-hearted.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentences describing Queen Asiye.' } },
+  5: { id: 'moses-a2-quick-5', type: 'sequencing', title: 'Back to His Mother', instructions: 'Put the events in order.', question: 'How did baby Moses return to his mother?', sequencingItems: [{ id: '1', text: 'Moses’s sister knew a woman who could nurse the baby' }, { id: '2', text: 'She brought her mother to the palace' }, { id: '3', text: 'Moses’s mother cared for him again' }], correctAnswer: ['1', '2', '3'], explanation: 'Moses’s sister helped bring their mother to the palace, and Moses returned to his mother’s care.', feedback: { correct: 'Correct.', incorrect: 'Follow the transition from Chapter 4 into Chapter 5.' } },
+  6: { id: 'moses-a2-quick-6', type: 'matching', title: 'Mistake and Response', instructions: 'Match what happened with Moses’s response.', question: 'What did Moses do after the accidental death?', matchingPairs: [{ left: 'The mistake', right: 'Moses accidentally caused a man’s death' }, { left: 'Moses’s response', right: 'he was sorry and asked Allah to forgive him' }], correctAnswer: { 'The mistake': 'Moses accidentally caused a man’s death', 'Moses’s response': 'he was sorry and asked Allah to forgive him' }, explanation: 'The chapter emphasizes both the accidental act and Moses’s immediate regret and dua.', feedback: { correct: 'Correct.', incorrect: 'Separate what happened from what Moses did afterward.' } },
+  7: { id: 'moses-a2-quick-7', type: 'multiple-choice', title: 'Why Midian?', instructions: 'Choose the reason supported by Chapter 7.', question: 'Why was Midian safer for Moses than Egypt?', options: ['The king of Egypt was not the ruler there', 'There were no people in Midian', 'Pharaoh had already forgiven Moses'], correctAnswer: 0, explanation: 'The story directly says the king of Egypt was not the ruler in Midian.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence explaining who did not rule Midian.' } },
+  8: { id: 'moses-a2-quick-8', type: 'multiple-choice', title: 'Helping at the Well', instructions: 'Choose what Moses noticed and did.', question: 'Why did Moses water the sisters’ sheep?', options: ['He understood that they needed help', 'He wanted to buy their sheep', 'He was working for Pharaoh'], correctAnswer: 0, explanation: 'Moses saw their difficulty and helped them without waiting for a reward.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentence before Moses takes their sheep to the water.' } },
+  9: { id: 'moses-a2-quick-9', type: 'multiple-choice', title: 'A New Start', instructions: 'Choose why Moses accepted Şuayb’s offer.', question: 'Why did Moses accept the job in Midian?', options: ['He was a stranger and needed a job and a house', 'He wanted to become ruler of Midian', 'He wanted to return to Pharaoh’s palace'], correctAnswer: 0, explanation: 'The chapter states that Moses was a stranger and needed work and a home.', feedback: { correct: 'Correct.', incorrect: 'Look at the two needs named after Şuayb offered the job.' } },
+  10: { id: 'moses-a2-quick-10', type: 'sequencing', title: 'On the Mountain', instructions: 'Put the events in order.', question: 'What happened after Moses saw the fire?', sequencingItems: [{ id: '1', text: 'Moses climbed the mountain' }, { id: '2', text: 'Allah spoke to Moses' }, { id: '3', text: 'Moses put down his walking stick' }, { id: '4', text: 'The stick became a big snake' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter moves from the fire to Allah’s call and then to the sign of the walking stick.', feedback: { correct: 'Correct.', incorrect: 'Follow the mountain scene one action at a time.' } },
+  11: { id: 'moses-a2-quick-11', type: 'matching', title: 'Message and Companion', instructions: 'Match each detail with its role.', question: 'What did Allah give Moses for his mission?', matchingPairs: [{ left: 'The shining hand', right: 'a sign of Allah’s power' }, { left: 'Harun', right: 'Moses’s brother who went with him to the palace' }], correctAnswer: { 'The shining hand': 'a sign of Allah’s power', Harun: 'Moses’s brother who went with him to the palace' }, explanation: 'Chapter 11 introduces another sign and shows Harun accompanying Moses.', feedback: { correct: 'Correct.', incorrect: 'Find what happened to Moses’s hand and who went with him.' } },
+  12: { id: 'moses-a2-quick-12', type: 'true-false', title: 'Miracle or Magic?', instructions: 'Decide whether the statement agrees with Chapter 12.', question: 'Pharaoh accepted Moses’s signs as miracles from Allah.', correctAnswer: false, explanation: 'Pharaoh called them magic and said his magicians could do the same.', feedback: { correct: 'Correct.', incorrect: 'Reread Pharaoh’s final words in Chapter 12.' } },
+  13: { id: 'moses-a2-quick-13', type: 'matching', title: 'Two Responses', instructions: 'Match each group with its response.', question: 'How did the magicians and Pharaoh respond differently?', matchingPairs: [{ left: 'The magicians', right: 'believed in the Lord of Moses and Harun' }, { left: 'Pharaoh', right: 'remained arrogant and continued to harm the believers' }], correctAnswer: { 'The magicians': 'believed in the Lord of Moses and Harun', Pharaoh: 'remained arrogant and continued to harm the believers' }, explanation: 'The same event led to belief from the magicians and continued rejection from Pharaoh.', feedback: { correct: 'Correct.', incorrect: 'Compare the magicians’ words with Pharaoh’s response.' } },
+  14: { id: 'moses-a2-quick-14', type: 'multiple-choice', title: 'A Secret Journey', instructions: 'Choose why the group had to move carefully.', question: 'Why did Moses tell his people to leave Egypt secretly at night?', options: ['They were escaping Pharaoh’s oppression and army', 'They wanted to visit Midian for one day', 'They were looking for a new market'], correctAnswer: 0, explanation: 'Allah told Moses to travel with his people at night, away from Pharaoh’s oppression.', feedback: { correct: 'Correct.', incorrect: 'Connect Allah’s instruction with the danger from Pharaoh.' } },
+  15: { id: 'moses-a2-quick-15', type: 'multiple-choice', title: 'No Way Out?', instructions: 'Choose what changed the situation.', question: 'What did Allah tell Moses to do when the sea was in front and Pharaoh’s army was behind?', options: ['Hit the sea with his stick', 'Return to Pharaoh', 'Climb a mountain'], correctAnswer: 0, explanation: 'Moses hit the sea with his stick, and Allah made a road through the sea.', feedback: { correct: 'Correct.', incorrect: 'Find Allah’s command in the middle of Chapter 15.' } },
+  16: { id: 'moses-a2-quick-16', type: 'true-false', title: 'The Final Lesson', instructions: 'Decide whether the statement agrees with the ending.', question: 'The ending teaches that no person can own another person and that only Allah has power over us.', correctAnswer: true, explanation: 'These two lessons are stated directly at the end of Chapter 16.', feedback: { correct: 'Correct.', incorrect: 'Read the final two sentences of the story.' } },
+};
+
+export const mosesA2KnowledgeCheckExercises: Exercise[] = [
+  { id: 'moses-a2-kc-1', type: 'multiple-choice', title: 'Pharaoh’s Rule', instructions: 'Choose the best answer.', question: 'Why did Pharaoh treat the Children of Israel badly in Chapter 1?', options: ['He feared their large number and losing control', 'They refused to work in Midian', 'They had taken his palace'], correctAnswer: 0, explanation: 'The story says Pharaoh feared the large group could take control of his kingdom.', feedback: { correct: 'Correct.', incorrect: 'Return to the end of Chapter 1.' } },
+  { id: 'moses-a2-kc-2', type: 'multiple-choice', title: 'The Basket', instructions: 'Choose the answer supported by Chapters 3–5.', question: 'How did Moses return to his mother after the basket reached the palace?', options: ['His sister suggested a woman who was actually their mother', 'Pharaoh carried him back to the river', 'The magicians found his family'], correctAnswer: 0, explanation: 'Moses’s sister led the palace to his own mother as a nurse.', feedback: { correct: 'Correct.', incorrect: 'Connect the end of Chapter 4 with Chapter 5.' } },
+  { id: 'moses-a2-kc-3', type: 'true-false', title: 'After the Bazaar', instructions: 'Decide whether the statement is true or false.', question: 'Moses was proud of what happened in the bazaar and did not ask for forgiveness.', correctAnswer: false, explanation: 'He was upset, sorry and asked Allah to forgive him.', feedback: { correct: 'Correct.', incorrect: 'Reread Moses’s dua in Chapter 6.' } },
+  { id: 'moses-a2-kc-4', type: 'multiple-choice', title: 'Life in Midian', instructions: 'Choose the correct summary.', question: 'What happened after Moses helped the two sisters?', options: ['Their father Şuayb invited him, offered him work, and Moses later married one sister', 'Moses became king of Midian', 'Moses immediately returned to Egypt alone'], correctAnswer: 0, explanation: 'Chapters 8–9 show help leading to an invitation, work and a new family life.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 8 and 9 together.' } },
+  { id: 'moses-a2-kc-5', type: 'multiple-choice', title: 'Allah’s Call', instructions: 'Choose the pair supported by Chapters 10–11.', question: 'Which two signs are shown to Moses?', options: ['His walking stick becomes a snake and his hand shines', 'The Nile dries and the palace disappears', 'His sheep speak and the mountain moves'], correctAnswer: 0, explanation: 'The walking stick and shining hand are the two signs described.', feedback: { correct: 'Correct.', incorrect: 'Review the end of Chapter 10 and start of Chapter 11.' } },
+  { id: 'moses-a2-kc-6', type: 'multiple-choice', title: 'The Magicians', instructions: 'Choose what changed after Moses’s sign.', question: 'What did the magicians do after Moses’s huge snake overcame their snakes?', options: ['They believed in the Lord of Moses and Harun', 'They arrested Moses', 'They left for Midian'], correctAnswer: 0, explanation: 'The magicians bowed and declared belief.', feedback: { correct: 'Correct.', incorrect: 'Find their shouted words in Chapter 13.' } },
+  { id: 'moses-a2-kc-7', type: 'true-false', title: 'Leaving Egypt', instructions: 'Decide whether the statement is true or false.', question: 'Moses and his people left Egypt at night and arrived at the sea while Pharaoh prepared his army.', correctAnswer: true, explanation: 'Chapter 14 gives this sequence directly.', feedback: { correct: 'Correct.', incorrect: 'Reread the final part of Chapter 14.' } },
+  { id: 'moses-a2-kc-8', type: 'multiple-choice', title: 'Across the Sea', instructions: 'Choose the best summary of the ending.', question: 'What happened at the sea?', options: ['Allah opened a road for Moses’s people, then closed the sea over Pharaoh’s forces', 'Pharaoh opened the sea and saved everyone', 'Moses’s people returned to Egypt before crossing'], correctAnswer: 0, explanation: 'Chapters 15–16 show the safe crossing and the closing of the sea afterward.', feedback: { correct: 'Correct.', incorrect: 'Review the crossing and what happened after Pharaoh entered.' } },
+];
+
+export const mosesA2VocabularyChallengePairs = [
+  { word: 'cruel', meaning: 'very unkind and causing pain to others' },
+  { word: 'protect', meaning: 'to keep someone safe from danger' },
+  { word: 'forgive', meaning: 'to stop being angry about a mistake' },
+  { word: 'guided', meaning: 'shown the right way' },
+  { word: 'stranger', meaning: 'a person who is new or not known in a place' },
+  { word: 'parted', meaning: 'opened or separated into parts' },
+];
 
 export const mosesA2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'final-1',
-    type: 'sequencing',
-    title: 'Moses’s Journey',
-    instructions: 'Put the main events in the correct order.',
-    question: 'How did Moses’s journey develop?',
-    correctAnswer: ['1', '2', '3', '4', '5'],
-    explanation: 'The story moves from the Nile and palace to Midian, then to Moses’s mission and the safe crossing of the sea.',
-    feedback: {
-      correct: 'Correct. You followed the main turning points across the whole story.',
-      incorrect: 'Start with baby Moses, then follow where he lived, travelled, received his mission, and finally led his people.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Baby Moses is placed in a basket on the River Nile' },
-      { id: '2', text: 'Moses grows up safely in Pharaoh’s house' },
-      { id: '3', text: 'Moses leaves Egypt and begins a new life in Midian' },
-      { id: '4', text: 'Allah speaks to Moses and sends him with a message to Pharaoh' },
-      { id: '5', text: 'Moses and his people walk safely through the opened sea' }
-    ]
-  },
-  {
-    id: 'final-2',
-    type: 'matching',
-    title: 'People and Actions',
-    instructions: 'Match each person or group with the action supported by the story.',
-    question: 'Who did what in the story?',
-    correctAnswer: {
-      'Moses’s mother': 'trusted Allah and placed baby Moses in the basket',
-      'Queen Asiye': 'cared for baby Moses in the palace',
-      'Moses': 'helped the two sisters at the well',
-      'The magicians': 'believed in the Lord of Moses and Harun'
-    },
-    explanation: 'Each match connects a person or group with an important action from a different part of the story.',
-    feedback: {
-      correct: 'Correct. You connected four people or groups with the actions that define their part in the story.',
-      incorrect: 'Think about four different places: the Nile, the palace, the well in Midian, and the magicians’ meeting.'
-    },
-    matchingPairs: [
-      { left: 'Moses’s mother', right: 'trusted Allah and placed baby Moses in the basket' },
-      { left: 'Queen Asiye', right: 'cared for baby Moses in the palace' },
-      { left: 'Moses', right: 'helped the two sisters at the well' },
-      { left: 'The magicians', right: 'believed in the Lord of Moses and Harun' }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'Evidence and Lessons',
-    instructions: 'Think about the story and support each answer with a chapter detail.',
-    question: 'What can we learn from the choices and responses in Moses’s story?',
-    correctAnswer: null,
-    explanation: 'Good reflection stays connected to the story: trust in difficult moments, helping people in need, and responding to truth are shown through clear events.',
-    feedback: {
-      correct: 'Good reflection. Keep your answer connected to a clear story event.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'What detail shows Moses’s mother trusted Allah even when she was worried?', mode: 'Individual' },
-      { question: 'What does Moses do when he sees that the two sisters need help?', mode: 'Pair' },
-      { question: 'How are the magicians’ response and Pharaoh’s response different after the signs?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'Moses A2 Retrieval Challenge',
-    instructions: 'Answer eight questions from different parts of the story.',
-    question: 'Can you retrieve the key ideas without rereading everything?',
-    correctAnswer: null,
-    explanation: 'The eight questions revisit important people, decisions, places, and turning points from across the story.',
-    feedback: {
-      correct: 'Well done. You retrieved the main story ideas across the whole book.',
-      incorrect: 'Use the hint to return to the right part of the story, then try again.'
-    },
-    hints: ['Think about the Nile and palace', 'Remember Midian', 'Remember the signs and the sea'],
-    quizQuestions: [
-      {
-        question: 'Who followed the basket after Moses’s mother put it in the river?',
-        options: [
-          { text: 'Moses’s sister', isCorrect: true },
-          { text: 'A magician', isCorrect: false },
-          { text: 'Pharaoh', isCorrect: false }
-        ],
-        hint: 'His mother asked a member of the family to watch where the basket went.'
-      },
-      {
-        question: 'What did Queen Asiye ask her servants to find for baby Moses?',
-        options: [
-          { text: 'A nurse', isCorrect: true },
-          { text: 'A soldier', isCorrect: false },
-          { text: 'A magician', isCorrect: false }
-        ],
-        hint: 'The baby needed someone to feed and care for him.'
-      },
-      {
-        question: 'Why did Moses leave Egypt after the bazaar incident?',
-        options: [
-          { text: 'Pharaoh’s soldiers were looking for him', isCorrect: true },
-          { text: 'He wanted to become a magician', isCorrect: false },
-          { text: 'The River Nile became dry', isCorrect: false }
-        ],
-        hint: 'A man warned Moses about danger in the city.'
-      },
-      {
-        question: 'What did Moses find when he reached Midian tired and thirsty?',
-        options: [
-          { text: 'A well with shepherds nearby', isCorrect: true },
-          { text: 'Pharaoh’s palace', isCorrect: false },
-          { text: 'A road through the sea', isCorrect: false }
-        ],
-        hint: 'He was looking for water.'
-      },
-      {
-        question: 'Why did Moses accept Şuayb’s job offer?',
-        options: [
-          { text: 'He was a stranger and needed a job and a house', isCorrect: true },
-          { text: 'He wanted to rule Midian', isCorrect: false },
-          { text: 'He wanted to join Pharaoh’s army', isCorrect: false }
-        ],
-        hint: 'Think about what Moses needed after arriving in a new place.'
-      },
-      {
-        question: 'Which two signs did Moses show in Pharaoh’s palace?',
-        options: [
-          { text: 'The stick became a snake and his hand shone white', isCorrect: true },
-          { text: 'The Nile disappeared and the palace moved', isCorrect: false },
-          { text: 'A basket flew and a well opened', isCorrect: false }
-        ],
-        hint: 'One sign involved his walking stick and the other involved his hand.'
-      },
-      {
-        question: 'What did the magicians say after seeing Moses’s sign?',
-        options: [
-          { text: 'We believe in the Lord of Moses and Harun', isCorrect: true },
-          { text: 'Pharaoh opened the sea', isCorrect: false },
-          { text: 'We will return to Midian', isCorrect: false }
-        ],
-        hint: 'Their response changed after they saw what happened.'
-      },
-      {
-        question: 'What was in front of Moses’s people when Pharaoh’s army was behind them?',
-        options: [
-          { text: 'The sea', isCorrect: true },
-          { text: 'The palace', isCorrect: false },
-          { text: 'The well', isCorrect: false }
-        ],
-        hint: 'They thought there was no place to escape.'
-      }
-    ]
-  }
+  { id: 'moses-a2-review-sequence', type: 'sequencing', title: 'From the Nile to Freedom', instructions: 'Put the main stages in order.', question: 'How does Moses’s story develop?', sequencingItems: [{ id: '1', text: 'Baby Moses travels on the Nile and reaches the palace' }, { id: '2', text: 'Moses leaves Egypt and reaches Midian' }, { id: '3', text: 'Allah calls Moses and gives him signs' }, { id: '4', text: 'Moses faces Pharaoh and the magicians' }, { id: '5', text: 'Moses leads his people away from Egypt' }, { id: '6', text: 'Allah opens the sea for them' }], correctAnswer: ['1', '2', '3', '4', '5', '6'], explanation: 'These are the major stages of the whole story.', feedback: { correct: 'Correct.', incorrect: 'Follow Moses from childhood to Midian, his mission, and the sea.' } },
+  { id: 'moses-a2-review-match', type: 'matching', title: 'People and Choices', instructions: 'Match each person or group with an important choice.', question: 'Who did what?', matchingPairs: [{ left: 'Moses’s mother', right: 'trusted Allah and placed the basket in the Nile' }, { left: 'Queen Asiye', right: 'chose to care for baby Moses' }, { left: 'Moses', right: 'helped the sisters at the well' }, { left: 'The magicians', right: 'accepted the truth after seeing the sign' }], correctAnswer: { 'Moses’s mother': 'trusted Allah and placed the basket in the Nile', 'Queen Asiye': 'chose to care for baby Moses', Moses: 'helped the sisters at the well', 'The magicians': 'accepted the truth after seeing the sign' }, explanation: 'Each action comes from a different part of the story.', feedback: { correct: 'Correct.', incorrect: 'Think about the Nile, palace, well and magician scene.' } },
+  { id: 'moses-a2-review-reflect', type: 'reflection', title: 'Choices and Values', instructions: 'Use a story detail in each answer.', question: 'What do the characters’ actions show?', correctAnswer: null, discussionPrompts: [{ question: 'How did Moses show responsibility after his mistake?', mode: 'Individual' }, { question: 'What action shows kindness in Midian?', mode: 'Pair' }, { question: 'How did the magicians and Pharaoh respond differently to the same sign?', mode: 'Class' }], explanation: 'Strong answers point to a clear event and a simple lesson.', feedback: { correct: 'Good. Keep your answer tied to the story.', incorrect: '' } },
+  { id: 'moses-a2-review-quiz', type: 'quiz-game', title: 'Moses A2 Retrieval Quiz', instructions: 'Answer eight questions from across the story.', question: 'Can you retrieve key ideas from memory?', correctAnswer: null, explanation: 'These questions revisit important details not used as the main Knowledge Check micro-facts.', feedback: { correct: 'Well done.', incorrect: 'Use the hint and return to the relevant chapter.' }, hints: ['Think about family, Midian, the palace and the journey'], quizQuestions: [
+    { question: 'Who followed the basket along the river?', options: [{ text: 'Moses’s sister', isCorrect: true }, { text: 'Queen Asiye', isCorrect: false }, { text: 'A magician', isCorrect: false }], hint: 'Moses’s mother asked someone in the family to follow it.' },
+    { question: 'What did Queen Asiye ask her servants to find?', options: [{ text: 'A nurse for the baby', isCorrect: true }, { text: 'A new king', isCorrect: false }, { text: 'A shepherd', isCorrect: false }], hint: 'The baby needed care and feeding.' },
+    { question: 'Who warned Moses that the king’s soldiers were looking for him?', options: [{ text: 'A friend', isCorrect: true }, { text: 'Şuayb', isCorrect: false }, { text: 'A magician', isCorrect: false }], hint: 'The warning came after the bazaar incident.' },
+    { question: 'What did Moses find when he reached Midian tired and thirsty?', options: [{ text: 'A well', isCorrect: true }, { text: 'A palace', isCorrect: false }, { text: 'The sea', isCorrect: false }], hint: 'He was looking for water.' },
+    { question: 'How long did Moses live in Midian before deciding to return to Egypt?', options: [{ text: 'Ten years', isCorrect: true }, { text: 'One day', isCorrect: false }, { text: 'Forty years', isCorrect: false }], hint: 'The number is stated at the end of Chapter 9.' },
+    { question: 'Who went with Moses to the palace in Chapter 11?', options: [{ text: 'His brother Harun', isCorrect: true }, { text: 'His sister', isCorrect: false }, { text: 'Şuayb', isCorrect: false }], hint: 'He was Moses’s brother.' },
+    { question: 'What objects did Pharaoh’s magicians put on the ground?', options: [{ text: 'Sticks and ropes', isCorrect: true }, { text: 'Baskets and cups', isCorrect: false }, { text: 'Books and lamps', isCorrect: false }], hint: 'They seemed to move like snakes.' },
+    { question: 'Why did the caravan move slowly when leaving Egypt?', options: [{ text: 'There were many old people and children', isCorrect: true }, { text: 'They had no leader', isCorrect: false }, { text: 'They were waiting for Pharaoh', isCorrect: false }], hint: 'Think about who could not walk fast.' },
+  ] },
+];
+
+export const mosesA2FinalChallengeExercises: Exercise[] = [
+  { id: 'moses-a2-final-1', type: 'multiple-choice', title: 'Fear and Injustice', instructions: 'Choose the best answer.', question: 'What important relationship is shown near the start of the story?', options: ['Pharaoh’s fear leads him to treat the Children of Israel cruelly', 'The Children of Israel ask Pharaoh to become a prophet', 'Queen Asiye orders the soldiers to hurt families'], correctAnswer: 0, explanation: 'The story directly connects Pharaoh’s fear with his cruel treatment.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 1–2.' } },
+  { id: 'moses-a2-final-2', type: 'multiple-choice', title: 'Trust and Action', instructions: 'Choose the best example.', question: 'Which action best shows trust together with action?', options: ['Moses’s mother follows Allah’s instruction and places the basket in the Nile', 'Pharaoh laughs at the signs', 'The soldiers search the houses'], correctAnswer: 0, explanation: 'Moses’s mother is worried but acts according to Allah’s instruction.', feedback: { correct: 'Correct.', incorrect: 'Return to Chapter 3.' } },
+  { id: 'moses-a2-final-3', type: 'multiple-choice', title: 'Helping Others', instructions: 'Choose what Moses did in Midian.', question: 'What action shows Moses helping people he did not know?', options: ['He watered the sisters’ sheep', 'He took Pharaoh’s throne', 'He hid the magicians’ ropes'], correctAnswer: 0, explanation: 'Moses helped the sisters at the well before knowing their family.', feedback: { correct: 'Correct.', incorrect: 'Review Chapter 8.' } },
+  { id: 'moses-a2-final-4', type: 'true-false', title: 'Responsibility', instructions: 'Decide whether the statement is true or false.', question: 'After the accidental death, Moses felt sorry and asked Allah for forgiveness.', correctAnswer: true, explanation: 'This is Moses’s response in Chapter 6.', feedback: { correct: 'Correct.', incorrect: 'Return to Moses’s dua.' } },
+  { id: 'moses-a2-final-5', type: 'true-false', title: 'Pharaoh’s Response', instructions: 'Decide whether the statement is true or false.', question: 'After the magicians believed, Pharaoh also accepted the message of Moses.', correctAnswer: false, explanation: 'Pharaoh remained arrogant and continued to harm Moses and his people.', feedback: { correct: 'Correct.', incorrect: 'Review the end of Chapter 13.' } },
+  { id: 'moses-a2-final-6', type: 'matching', title: 'Places and Events', instructions: 'Match each place with what happened there.', question: 'Where did these events happen?', matchingPairs: [{ left: 'Midian', right: 'Moses helped two sisters and began a new life' }, { left: 'The mountain', right: 'Allah spoke to Moses and his stick became a snake' }], correctAnswer: { Midian: 'Moses helped two sisters and began a new life', 'The mountain': 'Allah spoke to Moses and his stick became a snake' }, explanation: 'The locations mark two major stages in Moses’s journey.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 7–10.' } },
+  { id: 'moses-a2-final-7', type: 'matching', title: 'Signs and Meaning', instructions: 'Match each sign with what the story says.', question: 'What happened in each sign?', matchingPairs: [{ left: 'Walking stick', right: 'became a big snake' }, { left: 'Moses’s hand', right: 'became shining' }], correctAnswer: { 'Walking stick': 'became a big snake', 'Moses’s hand': 'became shining' }, explanation: 'These are the two signs described before Moses confronts Pharaoh.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 10–12.' } },
+  { id: 'moses-a2-final-8', type: 'fill-blank', title: 'Leaving Egypt', instructions: 'Complete the sentence with the story word.', question: 'Moses told his people to leave Egypt at ______.', correctAnswer: 'night', explanation: 'Allah told Moses to travel with his people at night.', feedback: { correct: 'Correct.', incorrect: 'Look at Chapter 14.' } },
+  { id: 'moses-a2-final-9', type: 'fill-blank', title: 'The Sea', instructions: 'Complete the sentence with the story word.', question: 'When Moses hit the sea with his stick, the sea ______.', correctAnswer: 'parted', explanation: 'The sea parted and a road appeared between walls of water.', feedback: { correct: 'Correct.', incorrect: 'Return to Chapter 15.' } },
+  { id: 'moses-a2-final-10', type: 'sequencing', title: 'The Escape', instructions: 'Put the final events in order.', question: 'What happened at the end of the story?', sequencingItems: [{ id: '1', text: 'Moses and his people reached the sea' }, { id: '2', text: 'Allah made a road through the sea' }, { id: '3', text: 'Moses and his people crossed safely' }, { id: '4', text: 'Pharaoh’s forces entered the sea' }, { id: '5', text: 'Allah closed the sea over them' }], correctAnswer: ['1', '2', '3', '4', '5'], explanation: 'The ending moves from danger to rescue, then to Pharaoh’s defeat.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 15–16 in order.' } },
 ];
