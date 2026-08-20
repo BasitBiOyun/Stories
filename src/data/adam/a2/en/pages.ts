@@ -12,8 +12,8 @@ export const adamA2Pages: PageData[] = [
     content: "Adam (pbuh) is the first messenger of Allah and the father of all humans. Allah created him from soil and cared about him very much because he was the first human. We are the grandchildren of Adam (pbuh), so we can learn many lessons from this fantastic story. \n\nAllah created the sky and the earth. After that, he told the angels that he was going to create a human. He said, ''The human is going to become the ruler on earth. The ruler is going to live on earth for many years.'' Angels got surprised. They began waiting with curiosity. \n\nThen Allah's angels collected soil from different parts of the earth, and Allah shaped Adam. Because of this, humans have different skin colors. \n\nProphet Muhammad (pbuh) said that Allah created Adam (pbuh) from a handful of dust from different lands. So the children of Adam (pbuh) are white, red, black, and yellow in color.",
     vocabulary: [
       { word: 'Messenger', definition: 'A person who carries a message from Allah.' },
-      { word: 'soil', definition: 'The top layer of earth in which plants grow.' },
-      { word: 'curiosity', definition: 'A strong desire to know or learn something.' }
+      { word: 'soil', definition: 'Earth in which plants can grow.' },
+      { word: 'curiosity', definition: 'Wanting to know or learn something.' }
     ],
     hotspots: [
       { id: 'h1', x: 30, y: 40, title: 'Soil', description: 'Allah created Adam from soil.' },
@@ -58,8 +58,8 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter2.mp3?alt=media&token=1e1580e8-16b3-4957-8f44-0f06bed5ec21',
     content: "Allah told His angels “After I have created Adam and given him life, show respect to him.” Adam could learn and understand. He was wiser than the angels, because Allah gave Adam knowledge and taught him to think. He learned more than angels knew. \n\nAll the angels thought that Adam was amazing. They all admired him and respected him. But Iblis didn’t think so. Iblis thought Adam was an unimportant creature created from clay.",
     vocabulary: [
-      { word: 'respect', definition: 'A feeling of deep admiration for someone.' },
-      { word: 'wiser', definition: 'Having or showing experience, knowledge, and good judgment.' },
+      { word: 'respect', definition: 'Treating someone as important and worthy of care.' },
+      { word: 'wiser', definition: 'Knowing more and making better decisions.' },
       { word: 'clay', definition: 'Soft earth that can be shaped.' }
     ],
     hotspots: [
@@ -76,9 +76,9 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%203%20(1).mp3?alt=media&token=cd9880b6-62a1-4810-9ded-7054952d9039',
     content: "Then Allah asked Iblis “Why didn’t you respect Adam?” Iblis said “I am better than Adam. You created me from fire, and You created Adam from soil.” \n\nIblis was arrogant. He thought he was more important and more valuable than Adam. He came from the fire and believed his origin was better. He thought little and was wrong about Adam. Iblis couldn’t see that Adam had perfect knowledge and it was for the good of every creature of Allah. This knowledge made Adam more valuable. \n\nFor Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great, because with this knowledge human can do good and stop bad. \n\nBut Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis “Go away! You are far from My love and care.” \n\nAdam was now in Paradise.",
     vocabulary: [
-      { word: 'arrogant', definition: 'Having an exaggerated sense of one\'s own importance or abilities.' },
-      { word: 'valuable', definition: 'Extremely useful or important.' },
-      { word: 'creature', definition: 'An animal or person, especially as distinct from a human.' }
+      { word: 'arrogant', definition: 'Thinking you are better or more important than others.' },
+      { word: 'valuable', definition: 'Very useful or important.' },
+      { word: 'creature', definition: 'A living being created by Allah.' }
     ],
     hotspots: [
       { id: 'h3-1', x: 25, y: 45, title: 'Fire', description: 'Iblis thought fire was better than soil.' },
@@ -94,9 +94,9 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter4.mp3?alt=media&token=f914c90b-6fe7-4cbc-881d-a92f77495bc3',
     content: "Iblis got angry with Adam and hated him. He didn’t want Allah to be nice with Adam. Iblis thought because of Adam, Allah put him far from His love. He waited for a chance. He wanted Adam to lose Allah's love, just like himself. Allah told Adam to be careful about Iblis. \n\nThen, Adam started to feel lonely in Paradise. So, Allah gave him a wife. Her name was Eve (Hawwa). They started to live together in Paradise. It was more wonderful than we can imagine. All the gifts in paradise were for them. But Allah had only one warning. HE told Adam and Eve not to go near one tree.",
     vocabulary: [
-      { word: 'lonely', definition: 'Sad because one has no friends or company.' },
-      { word: 'wonderful', definition: 'Inspiring delight, pleasure, or admiration.' },
-      { word: 'warning', definition: 'A statement or event that indicates a possible or impending danger.' }
+      { word: 'lonely', definition: 'Sad because you are alone.' },
+      { word: 'wonderful', definition: 'Very good and enjoyable.' },
+      { word: 'warning', definition: 'A message about danger or something to avoid.' }
     ],
     hotspots: [
       { id: 'h4-1', x: 35, y: 40, title: 'Eve (Hawwa)', description: 'Allah gave him a wife. Her name was Eve (Hawwa).' },
@@ -113,7 +113,7 @@ export const adamA2Pages: PageData[] = [
     vocabulary: [
       { word: 'lie', definition: 'Something that is not true.' },
       { word: 'mistake', definition: 'Something you do that is wrong.' },
-      { word: 'superior', definition: 'Higher in rank, status, or quality.' }
+      { word: 'superior', definition: 'Better or higher than someone or something.' }
     ],
     hotspots: [
       { id: 'h5-1', x: 45, y: 35, title: 'Lie', description: 'Iblis told them he was their friend. It was a big lie.' },
@@ -129,9 +129,9 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%206%20(1).mp3?alt=media&token=4b5d3fa6-dc2d-41d3-89cf-5a361e34aeba',
     content: "Allah excused Adam and Eve and put them on earth to live there. Allah taught and gave them everything to rule on earth. They were the rulers of the planet earth. They were going to direct and make everything better on the planet. They were using land to grow crops and keep animals. They were going to build buildings for housing, protect the nature and help the weak. \n\nBut Iblis also followed Adam and Eve on earth. He was still around. He wanted people not to remember Allah in their daily lives.",
     vocabulary: [
-      { word: 'crops', definition: 'A cultivated plant that is grown as food.' },
-      { word: 'rule', definition: 'To exercise ultimate power or authority over an area.' },
-      { word: 'planet', definition: 'A celestial body moving in an orbit around a star.' }
+      { word: 'crops', definition: 'Plants grown for food.' },
+      { word: 'rule', definition: 'To lead or manage a place.' },
+      { word: 'planet', definition: 'A large round object in space, such as Earth.' }
     ],
     hotspots: [
       { id: 'h6-1', x: 30, y: 50, title: 'Earth', description: 'Allah excused Adam and Eve and put them on earth to live there.' },
@@ -147,9 +147,9 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter7.mp3?alt=media&token=38ea267e-8e50-4369-bad9-a2b925c4247a',
     content: "Adam and Eve lived on earth many years. They had good and hard days. Some days brought them peace, some days were difficult. They also had lots of children. We are all one of their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis, because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
     vocabulary: [
-      { word: 'honest', definition: 'Free of deceit and untruthfulness; sincere.' },
-      { word: 'behave', definition: 'Act or conduct oneself in a specified way.' },
-      { word: 'enemy', definition: 'A person who is actively opposed or hostile to someone.' }
+      { word: 'honest', definition: 'Telling the truth and not cheating.' },
+      { word: 'behave', definition: 'To act in a particular way.' },
+      { word: 'enemy', definition: 'A person who wants to harm or oppose someone.' }
     ],
     hotspots: [
       { id: 'h7-1', x: 40, y: 45, title: 'Messenger', description: 'Allah made Adam His first Messenger.' },
@@ -164,9 +164,9 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%208%20(1).mp3?alt=media&token=ef8be57b-54c9-4332-a754-d525086a80d9',
     content: "Adam (pbuh) and Eve had two sons, Habil and Qabil. They were very different. Habil was kind, gentle and loved taking care of animals. Qabil was mostly jealous. When they grew up, Habil became a shepherd. He kept cows, sheep and other animals. Qabil was a farmer, he worked on the farm and grew crops. \n\nOne day they were in a serious disagreement. To solve the problem they had to offer an offering to Allah. Habil brought his best and healtiest sheep as a gift for Allah, but Qabil brought just a handful of his crops. It wasn’t very valuable. Qabil didn’t care to please Allah and his father Adam (pbuh). Real goodness is giving the best and the most loved.",
     vocabulary: [
-      { word: 'shepherd', definition: 'A person who tends and rears sheep.' },
-      { word: 'farmer', definition: 'A person who owns or manages a farm.' },
-      { word: 'offering', definition: 'A thing offered to Allah.' }
+      { word: 'shepherd', definition: 'A person who looks after sheep.' },
+      { word: 'farmer', definition: 'A person who grows crops or keeps animals on a farm.' },
+      { word: 'offering', definition: 'Something given to Allah.' }
     ],
     hotspots: [
       { id: 'h8-1', x: 35, y: 55, title: 'Sheep', description: 'Habil brought his best sheep as a gift for Allah.' },
@@ -182,8 +182,8 @@ export const adamA2Pages: PageData[] = [
     content: "Allah was pleased with Habil’s offering, because he gave from his heart. Qabil’s face became very dark with anger and said “I will kill you”. When Habil heard this, he said “I won’t fight back and harm you, you are my brother and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But also he started to panic. He said “I killed my brother, I did the worst thing in life, now I don’t know what I should do with his dead body.” Then, Allah sent a crow, it landed on the ground near Qabil and started digging it. The crow showed Qabil the way to put his brother's dead body in the hole. Qabil cried and said “I am worse than this crow. I cannot hide my brother’s dead body.”",
     vocabulary: [
       { word: 'crow', definition: 'A large black bird.' },
-      { word: 'panic', definition: 'Sudden uncontrollable fear or anxiety.' },
-      { word: 'digging', definition: 'Break up and move earth with a tool or claws.' }
+      { word: 'panic', definition: 'A sudden strong feeling of fear.' },
+      { word: 'digging', definition: 'Making a hole by moving earth.' }
     ],
     hotspots: [
       { id: 'h9-1', x: 50, y: 20, title: 'Crow', description: "The crow showed Qabil the way to put his brother's dead body in the hole." },
@@ -198,9 +198,9 @@ export const adamA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter10.mp3?alt=media&token=13905754-598c-4330-935f-9c845af1072f',
     content: "He left far away. Adam (pbuh) became very sad. He lost both of his sons on the same day. The story tells us that good people should stay away from jealousy and control their anger. \n\nAdam was a Messenger of Allah and a father of his another children. He had to continue his life. He got old over the years. His children and grandchildren spread his message worldwide. This message still advises people to love and respect Allah. It tells them to be well-behaved and kind to others. \n\nAllah never leaves people alone. The stories of His messengers help us to live an honest life.",
     vocabulary: [
-      { word: 'jealousy', definition: 'The state or feeling of being jealous.' },
-      { word: 'story', definition: 'A description of past events.' },
-      { word: 'worldwide', definition: 'Extending or reaching throughout the world.' }
+      { word: 'jealousy', definition: 'Feeling unhappy because someone has something you want.' },
+      { word: 'story', definition: 'A description of events.' },
+      { word: 'worldwide', definition: 'In many places around the world.' }
     ],
     hotspots: [
       { id: 'h10-1', x: 45, y: 40, title: 'Old', description: 'He got old over the years.' },
@@ -236,17 +236,17 @@ export const adamA2Pages: PageData[] = [
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
       { word: 'Messenger', definition: 'A person who carries a message from Allah.' },
-      { word: 'soil', definition: 'The top layer of earth in which plants grow.' },
-      { word: 'curiosity', definition: 'A strong desire to know or learn something.' },
-      { word: 'respect', definition: 'A feeling of deep admiration for someone.' },
-      { word: 'wiser', definition: 'Having or showing experience, knowledge, and good judgment.' },
-      { word: 'jealous', definition: 'Feeling or showing envy of someone or their achievements.' },
-      { word: 'arrogant', definition: 'Having an exaggerated sense of one\'s own importance or abilities.' },
-      { word: 'valuable', definition: 'Extremely useful or important.' },
-      { word: 'creature', definition: 'Any living thing created by Allah.' },
-      { word: 'lonely', definition: 'Sad because one has no friends or company.' },
-      { word: 'wonderful', definition: 'Inspiring delight, pleasure, or admiration.' },
-      { word: 'warning', definition: 'A statement or event that indicates a possible or impending danger.' }
+      { word: 'soil', definition: 'Earth in which plants can grow.' },
+      { word: 'curiosity', definition: 'Wanting to know or learn something.' },
+      { word: 'respect', definition: 'Treating someone as important and worthy of care.' },
+      { word: 'wiser', definition: 'Knowing more and making better decisions.' },
+      { word: 'jealous', definition: 'Feeling unhappy because someone has something you want.' },
+      { word: 'arrogant', definition: 'Thinking you are better or more important than others.' },
+      { word: 'valuable', definition: 'Very useful or important.' },
+      { word: 'creature', definition: 'A living being created by Allah.' },
+      { word: 'lonely', definition: 'Sad because you are alone.' },
+      { word: 'wonderful', definition: 'Very good and enjoyable.' },
+      { word: 'warning', definition: 'A message about danger or something to avoid.' }
     ]
   },
   {
@@ -256,18 +256,18 @@ export const adamA2Pages: PageData[] = [
     content: 'A complete list of vocabulary from the second half of the story.',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
-      { word: 'dishonesty', definition: 'The action of not telling the truth.' },
-      { word: 'regret', definition: 'A feeling of sadness about a mistake.' },
-      { word: 'superior', definition: 'Higher in rank, status, or quality.' },
-      { word: 'crops', definition: 'A cultivated plant that is grown as food.' },
-      { word: 'rule', definition: 'To exercise ultimate power or authority over an area.' },
-      { word: 'planet', definition: 'A celestial body moving in an orbit around a star.' },
-      { word: 'honest', definition: 'Free of deceit and untruthfulness; sincere.' },
-      { word: 'behave', definition: 'Act or conduct oneself in a specified way.' },
-      { word: 'enemy', definition: 'A person who is actively opposed or hostile to someone.' },
-      { word: 'shepherd', definition: 'A person who tends and rears sheep.' },
-      { word: 'farmer', definition: 'A person who owns or manages a farm.' },
-      { word: 'offering', definition: 'A thing offered to Allah.' }
+      { word: 'dishonesty', definition: 'Not telling the truth.' },
+      { word: 'regret', definition: 'Feeling sorry about a mistake.' },
+      { word: 'superior', definition: 'Better or higher than someone or something.' },
+      { word: 'crops', definition: 'Plants grown for food.' },
+      { word: 'rule', definition: 'To lead or manage a place.' },
+      { word: 'planet', definition: 'A large round object in space, such as Earth.' },
+      { word: 'honest', definition: 'Telling the truth and not cheating.' },
+      { word: 'behave', definition: 'To act in a particular way.' },
+      { word: 'enemy', definition: 'A person who wants to harm or oppose someone.' },
+      { word: 'shepherd', definition: 'A person who looks after sheep.' },
+      { word: 'farmer', definition: 'A person who grows crops or keeps animals on a farm.' },
+      { word: 'offering', definition: 'Something given to Allah.' }
     ]
   },
   {
