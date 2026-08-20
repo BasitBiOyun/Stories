@@ -1,146 +1,76 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+// Manual source of truth for Adam B2 English learning activities.
+
+export const adamB2QuickChallenges: Record<number, Exercise> = {
+  1: { id: 'adam-b2-qc-1', type: 'multiple-choice', title: 'How the Story Is Framed', instructions: 'Choose the interpretation best supported by the introduction.', question: 'How does Chapter 1 frame earthly human life?', options: ['As a morally neutral sequence of events', 'As a field in which good and evil stand in continuing contrast', 'As a conflict between human beings and Allah'], correctAnswer: 1, explanation: 'The final paragraph explicitly presents earthly life as a scene of contrast between good and evil.', feedback: { correct: 'Correct.', incorrect: 'Return to the final sentence of the introduction and identify the larger pattern it names.' } },
+  2: { id: 'adam-b2-qc-2', type: 'true-false', title: 'One Origin, Human Diversity', instructions: 'Decide whether the statement accurately represents the chapter.', question: 'The chapter uses the shared origin in soil to argue that differences in colour do not create human superiority.', correctAnswer: true, explanation: 'The text moves from diverse soil to the conclusion that people share one origin and have no superiority based on colour.', feedback: { correct: 'Correct.', incorrect: 'Compare the hadith about different lands with the conclusion that follows it.' } },
+  3: { id: 'adam-b2-qc-3', type: 'matching', title: 'Knowledge and Human Capacity', instructions: 'Match each textual idea with the role the chapter gives it.', question: 'How does Chapter 3 connect knowledge with human capacity?', matchingPairs: [{ left: 'Learning the names', right: 'capacity for language, reasoning, culture, and civilization' }, { left: 'The angels admit their limits', right: 'knowledge is shown as a gift rather than self-created superiority' }], correctAnswer: { 'Learning the names': 'capacity for language, reasoning, culture, and civilization', 'The angels admit their limits': 'knowledge is shown as a gift rather than self-created superiority' }, explanation: 'The chapter interprets the names as foundational human capacities while preserving the idea that knowledge is taught by Allah.', feedback: { correct: 'Correct.', incorrect: 'Reread the Qur’anic dialogue and the interpretive paragraph that follows it.' } },
+  4: { id: 'adam-b2-qc-4', type: 'multiple-choice', title: 'Two Kinds of Knowledge', instructions: 'Choose the strongest synthesis.', question: 'Why does the chapter say worldly knowledge and revelation complete one another?', options: ['One supports life in the world while the other explains duty, guidance, and divine order', 'They are identical and serve exactly the same purpose', 'Revelation replaces the need for learning about the world'], correctAnswer: 0, explanation: 'The text gives the two forms of knowledge complementary functions rather than presenting them as alternatives.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence beginning “These two types of knowledge are not alternatives…”' } },
+  5: { id: 'adam-b2-qc-5', type: 'multiple-choice', title: 'The Error in Iblis’s Comparison', instructions: 'Choose the best analysis of Iblis’s reasoning.', question: 'What is fundamentally wrong with Iblis’s claim of superiority in this chapter?', options: ['He reduces value to material origin and ignores knowledge, obedience, and the common human origin', 'He mistakenly believes Adam was created from fire', 'He argues that the angels should worship Adam'], correctAnswer: 0, explanation: 'The chapter contrasts Iblis’s material comparison with Adam’s knowledge and the rejection of superiority based on origin.', feedback: { correct: 'Correct.', incorrect: 'Compare Iblis’s fire/clay argument with the final sentence about race, colour, and ethnicity.' } },
+  6: { id: 'adam-b2-qc-6', type: 'sequencing', title: 'Command, Rebellion, Threat', instructions: 'Put the chapter’s conflict in logical order.', question: 'How does the chapter move from Adam’s life in Paradise to Satan’s declared opposition?', sequencingItems: [{ id: '1', text: 'Adam and his wife are allowed to live in the Garden with one prohibition' }, { id: '2', text: 'Satan is identified as an outcast after challenging the command' }, { id: '3', text: 'Satan asks for time until the appointed day' }, { id: '4', text: 'He declares that he will try to deceive human beings' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter establishes the human test and then the long-term threat that will surround it.', feedback: { correct: 'Correct.', incorrect: 'Trace the quoted passages from A’raf and Sâd in the order they appear.' } },
+  7: { id: 'adam-b2-qc-7', type: 'multiple-choice', title: 'How Deception Works', instructions: 'Choose the best explanation.', question: 'What makes Satan’s strategy effective in Chapter 7?', options: ['He openly announces that he is lying', 'He exploits human forgetfulness, weak determination, desire for immortality, and the appearance of sincere advice', 'He forces Adam and Eve physically to eat'], correctAnswer: 1, explanation: 'The text presents deception as gradual persuasion that works through vulnerability and a false claim of friendship.', feedback: { correct: 'Correct.', incorrect: 'Identify the human weaknesses and the promise Satan uses in the chapter.' } },
+  8: { id: 'adam-b2-qc-8', type: 'tap-reveal', title: 'Evidence of Inborn Modesty', instructions: 'Answer first from the text, then reveal the evidence.', question: 'What does the immediate attempt to cover themselves show according to Chapter 8?', tapRevealItems: [{ question: 'Text-based inference', answer: 'The chapter presents modesty or shame (hayâ) as an inborn feature of human nature.' }], correctAnswer: 'The chapter presents modesty or shame (hayâ) as an inborn feature of human nature.', explanation: 'Their immediate action is explicitly connected to the chapter’s statement that hayâ is inborn.', feedback: { correct: 'Correct.', incorrect: 'Return to the paragraph explaining why they hurried to cover themselves.' } },
+  9: { id: 'adam-b2-qc-9', type: 'matching', title: 'Repentance as a Process', instructions: 'Match each response with what it shows.', question: 'How does Chapter 9 define moral recovery?', matchingPairs: [{ left: 'Recognizing the wrong', right: 'the person searches for fault within the self rather than protecting pride' }, { left: 'Turning immediately to Allah', right: 'repentance becomes an active change of direction' }], correctAnswer: { 'Recognizing the wrong': 'the person searches for fault within the self rather than protecting pride', 'Turning immediately to Allah': 'repentance becomes an active change of direction' }, explanation: 'The chapter links honoured humanity with self-recognition, responsibility, and immediate return.', feedback: { correct: 'Correct.', incorrect: 'Reread the final two sentences and identify the actions required after error.' } },
+  10: { id: 'adam-b2-qc-10', type: 'true-false', title: 'Descent and Vicegerency', instructions: 'Decide whether the interpretation is supported.', question: 'Chapter 10 presents descent to Earth only as humiliation and explicitly denies any honourable purpose.', correctAnswer: false, explanation: 'The chapter says the opposite: the experience is a cornerstone of vicegerency and the descent is an honourable settlement.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence contrasting dishonour or humiliation with honourable settlement.' } },
+  11: { id: 'adam-b2-qc-11', type: 'multiple-choice', title: 'Meaning and Earthly Work', instructions: 'Choose the best synthesis.', question: 'How does the chapter connect remembering Allah with Adam’s work on Earth?', options: ['Guidance gives meaning and purpose while stewardship requires cultivating, constructing, populating, and raising future generations', 'Remembering Allah removes the need for practical work', 'Earthly work is presented as unrelated to moral struggle'], correctAnswer: 0, explanation: 'The text joins spiritual orientation with concrete responsibilities of living and building on Earth.', feedback: { correct: 'Correct.', incorrect: 'Compare the paragraphs about meaning and purpose with the final paragraph about Adam’s tasks.' } },
+  12: { id: 'adam-b2-qc-12', type: 'multiple-choice', title: 'What the Offerings Reveal', instructions: 'Choose the strongest interpretation.', question: 'Why is the contrast between Habil’s and Qabil’s offerings important?', options: ['It turns the conflict into a lesson about sincerity and God-conscious intention rather than occupation or material status', 'It proves cattle are always more valuable than crops', 'It shows that age determines whose action is accepted'], correctAnswer: 0, explanation: 'The narrative emphasizes the quality and sincerity of the offering, and the Qur’anic quotation focuses on the God-fearing.', feedback: { correct: 'Correct.', incorrect: 'Compare the quality of the two offerings and the statement in Maide 27.' } },
+  13: { id: 'adam-b2-qc-13', type: 'multiple-choice', title: 'Strength Without Aggression', instructions: 'Choose the interpretation best supported by Habil’s response.', question: 'What does Habil’s refusal to answer violence with violence demonstrate?', options: ['Passivity without moral reasoning', 'Self-control, fear of Allah, compassion, and refusal to let Qabil’s threat determine his own conduct', 'Agreement that Qabil is right'], correctAnswer: 1, explanation: 'The chapter contrasts Habil’s self-control and compassion with Qabil’s jealousy, selfishness, and disobedience.', feedback: { correct: 'Correct.', incorrect: 'Reread Habil’s quoted response and the character comparison that follows it.' } },
+  14: { id: 'adam-b2-qc-14', type: 'sequencing', title: 'Violence, Guilt, Learning', instructions: 'Put the causal sequence in order.', question: 'How does Chapter 14 move from hatred to the burial lesson?', sequencingItems: [{ id: '1', text: 'Qabil’s hatred overcomes the brotherly appeal' }, { id: '2', text: 'He kills Habil' }, { id: '3', text: 'He carries the body while guilt and exhaustion grow' }, { id: '4', text: 'A raven demonstrates burial' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The sequence shows a consequence chain: uncontrolled inner vice becomes violence, then burden, then humiliating recognition of ignorance.', feedback: { correct: 'Correct.', incorrect: 'Follow the story from the failed brotherly appeal to the two ravens.' } },
+  15: { id: 'adam-b2-qc-15', type: 'multiple-choice', title: 'Regret and Its Limits', instructions: 'Choose the most careful reading.', question: 'What does Chapter 15 emphasize beyond Qabil’s feeling of regret?', options: ['The broader consequences of choosing evil and the need for guidance to prefer truth and goodness', 'That regret automatically erases every consequence', 'That Adam abandons ordinary responsibilities after the loss'], correctAnswer: 0, explanation: 'The chapter uses Qabil’s regret to reflect on jealousy, consequence, revelation, and Adam’s continued responsibility.', feedback: { correct: 'Correct.', incorrect: 'Read the paragraph beginning “What is essentially being described here…”' } },
+  16: { id: 'adam-b2-qc-16', type: 'matching', title: 'A Prophetic Legacy', instructions: 'Match each final action with its meaning in the chapter.', question: 'How does Adam prepare later generations before his death?', matchingPairs: [{ left: 'Appoints Seth as successor', right: 'guidance is entrusted to continue after Adam' }, { left: 'Warns about Iblis and future prophets', right: 'later generations receive both a warning and a promise of continuing guidance' }], correctAnswer: { 'Appoints Seth as successor': 'guidance is entrusted to continue after Adam', 'Warns about Iblis and future prophets': 'later generations receive both a warning and a promise of continuing guidance' }, explanation: 'The chapter presents legacy as transmission of worship, warning, and the single call of future prophets.', feedback: { correct: 'Correct.', incorrect: 'Reread what Adam teaches Seth and what he tells his children before death.' } },
+  17: { id: 'adam-b2-qc-17', type: 'multiple-choice', title: 'Where Human Value Lies', instructions: 'Choose the synthesis that best reflects the final chapter.', question: 'What conclusion does the chapter invite about Satan’s power and human value?', options: ['Satan has unlimited authority and human choices have little importance', 'Satan’s influence depends on human weakness, while sincere guidance, moral care, and knowledge shape human value', 'Human value is determined by material origin'], correctAnswer: 1, explanation: 'The final chapter limits Satan’s authority and returns to the book’s central question about the source of human value.', feedback: { correct: 'Correct.', incorrect: 'Connect the quotation about sincere servants with the final question about human value.' } },
+};
+
+export const adamB2KnowledgeCheckExercises: Exercise[] = [
+  { id: 'adam-b2-kc-1', type: 'multiple-choice', title: 'Creation Accounts', instructions: 'Choose the best explanation.', question: 'How does the book explain the different terms earth, water, and clay?', options: ['As contradictory creation accounts', 'As terms describing composition and stages of mud', 'As names of different human ancestors'], correctAnswer: 1, explanation: 'Chapter 2 explicitly says the terms describe composition and stages of mud.', feedback: { correct: 'Correct.', incorrect: 'Review the opening paragraph of Chapter 2.' } },
+  { id: 'adam-b2-kc-2', type: 'true-false', title: 'Knowledge as Gift', instructions: 'Decide whether the statement is supported.', question: 'The angels’ admission that they know only what Allah taught them reinforces the idea that knowledge is received as a gift.', correctAnswer: true, explanation: 'Their response directly acknowledges the source and limit of their knowledge.', feedback: { correct: 'Correct.', incorrect: 'Return to the dialogue in Baqarah 31–33.' } },
+  { id: 'adam-b2-kc-3', type: 'multiple-choice', title: 'Prostration', instructions: 'Choose the most precise explanation.', question: 'How does Chapter 5 explain the angels’ prostration to Adam?', options: ['As worship of Adam', 'As obedience to Allah expressing respect and admiration for Adam', 'As fear of Adam’s physical strength'], correctAnswer: 1, explanation: 'The chapter explicitly distinguishes respect and obedience from worship.', feedback: { correct: 'Correct.', incorrect: 'Review the first paragraph of Chapter 5.' } },
+  { id: 'adam-b2-kc-4', type: 'multiple-choice', title: 'The Prohibition', instructions: 'Choose the correct description.', question: 'What condition accompanies Adam and Eve’s life in the Garden?', options: ['They may eat freely but must not approach one tree', 'They must avoid every tree', 'They are told to leave immediately'], correctAnswer: 0, explanation: 'A’raf 19 is quoted with one specific prohibition.', feedback: { correct: 'Correct.', incorrect: 'Review the direct command in Chapter 6.' } },
+  { id: 'adam-b2-kc-5', type: 'true-false', title: 'The Tree', instructions: 'Decide whether the statement is supported.', question: 'The book states that the Qur’an does not identify what kind of tree was forbidden.', correctAnswer: true, explanation: 'Chapter 8 explicitly says the tree is not described in the Qur’an.', feedback: { correct: 'Correct.', incorrect: 'Read the final paragraph of Chapter 8.' } },
+  { id: 'adam-b2-kc-6', type: 'multiple-choice', title: 'Prophethood on Earth', instructions: 'Choose the best answer.', question: 'According to Chapter 9, when was Adam given prophethood?', options: ['Before the incident in Paradise', 'After descent, when a human community had emerged', 'Only at the moment of his death'], correctAnswer: 1, explanation: 'The chapter says prophethood came after descent when a community emerged.', feedback: { correct: 'Correct.', incorrect: 'Review the second paragraph of Chapter 9.' } },
+  { id: 'adam-b2-kc-7', type: 'multiple-choice', title: 'Earthly Responsibility', instructions: 'Choose the best answer.', question: 'Which set of activities does Chapter 11 connect with Adam’s earthly responsibility?', options: ['Cultivate, construct, populate, and raise children who improve the world', 'Avoid work and wait for return to Paradise', 'Pursue wealth without moral guidance'], correctAnswer: 0, explanation: 'The final paragraph lists these responsibilities.', feedback: { correct: 'Correct.', incorrect: 'Return to the verbs in the final paragraph of Chapter 11.' } },
+  { id: 'adam-b2-kc-8', type: 'true-false', title: 'Qur’anic Source Limits', instructions: 'Decide whether the statement is supported.', question: 'Chapter 12 notes that the Qur’an tells the story of Adam’s two sons without naming them and without reproducing all details found elsewhere.', correctAnswer: true, explanation: 'The chapter explicitly marks these source limits before focusing on the story’s wisdom.', feedback: { correct: 'Correct.', incorrect: 'Review the paragraph comparing the Qur’anic narration with other details.' } },
+];
+
+export const adamB2VocabularyChallengePairs = [
+  { word: 'vicegerency', meaning: 'responsible stewardship or delegated human duty on Earth' },
+  { word: 'revelation', meaning: 'divine guidance communicated to human beings through prophets' },
+  { word: 'arrogance', meaning: 'an inflated sense of superiority that resists truth or rightful authority' },
+  { word: 'deception', meaning: 'causing someone to accept a false appearance or claim as true' },
+  { word: 'repentance', meaning: 'recognizing wrongdoing, regretting it, and turning back toward what is right' },
+  { word: 'humiliation', meaning: 'a condition of being lowered in dignity or made to feel dishonoured' },
+  { word: 'sincerity', meaning: 'genuine intention without pretence, manipulation, or hidden dishonesty' },
+  { word: 'compassion', meaning: 'concern for another person’s suffering joined with a wish not to harm them' },
+  { word: 'consequence', meaning: 'a result that follows from a choice, action, or condition' },
+  { word: 'legacy', meaning: 'guidance, influence, or responsibility passed to later generations' },
+];
 
 export const adamB2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'b2-final-1',
-    type: 'sequencing',
-    title: 'Thematic Progression Analysis',
-    instructions: 'Arrange the pivotal narrative developments of Prophet Adam\'s life in their correct chronological and thematic sequence.',
-    question: 'Sequence the narrative milestones.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'The narrative arc transitions from the initial divine proclamation and the bestowal of intellect, through the trial of arrogance and the test of obedience in Paradise, culminating in the establishment of human vicegerency and the subsequent earthly struggle.',
-    feedback: {
-      correct: 'Exceptional analytical mastery! You have accurately reconstructed the complex narrative flow of the B2 text.',
-      incorrect: 'Some milestones are misaligned. Consider the causal links between divine knowledge, the test of pride, and the eventual transition to Earth.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Allah proclaims the creation of a vicegerent (Khalifa) and bestows comprehensive knowledge upon Adam.' },
-      { id: '2', text: 'The angels acknowledge Adam\'s intellectual superiority, while Iblis manifests material arrogance.' },
-      { id: '3', text: 'Adam and Eve are granted residence in Paradise with a singular prohibition as a test of their determination.' },
-      { id: '4', text: 'Satanic deception exploits human vulnerability, leading to the transgression and the realization of shame.' },
-      { id: '5', text: 'Sincere repentance and divine pardon facilitate the transition to Earth as an honorable settlement.' },
-      { id: '6', text: 'The earthly struggle begins, marked by the first conflict between Habil and Qabil and the establishment of prophetic guidance.' }
-    ]
-  },
-  {
-    id: 'b2-final-2',
-    type: 'drag-drop',
-    title: 'Ethical and Philosophical Categorization',
-    instructions: 'Classify the following conceptual attributes based on their role and manifestation within the B2 narrative framework.',
-    question: 'Categorize the moral and immoral attributes.',
-    correctAnswer: {
-      'PROPHETIC VIRTUES (THE PATH OF GUIDANCE)': ['Intellectual Humility', 'Sincere Repentance', 'Vicegerency (Stewardship)', 'Peaceful Resolution'],
-      'SATANIC VICES (THE PATH OF DECEPTION)': ['Material Arrogance', 'Destructive Jealousy', 'Deliberate Trick', 'Persistent Opposition']
-    },
-    explanation: 'The B2 narrative deeply explores the contrast between the humility and accountability of the Prophetic path and the pride and resentment of the Satanic path.',
-    feedback: {
-      correct: 'Correct! You have a profound understanding of the ethical dualism presented in the story.',
-      incorrect: 'Some concepts are misplaced. Reflect on which attributes are associated with the "spirit of evil" and which with "divine guidance".'
-    },
-    dragDropGroups: [
-      { group: 'PROPHETIC VIRTUES (THE PATH OF GUIDANCE)', items: ['Intellectual Humility', 'Sincere Repentance', 'Vicegerency (Stewardship)', 'Peaceful Resolution'] },
-      { group: 'SATANIC VICES (THE PATH OF DECEPTION)', items: ['Material Arrogance', 'Destructive Jealousy', 'Deliberate Trick', 'Persistent Opposition'] }
-    ]
-  },
-  {
-    id: 'b2-final-3',
-    type: 'reflection',
-    title: 'Reflection Based on Philosophy and Existence',
-    instructions: 'Engage with these profound themes and formulate a nuanced perspective based on the B2 narrative.',
-    question: 'How does the B2 text redefine the relationship between knowledge, responsibility, and human value?',
-    correctAnswer: true,
-    explanation: 'The story posits that human value is intrinsically linked to the capacity for knowledge and the responsibility of stewardship, rather than material origins.',
-    feedback: {
-      correct: 'Profound reflection! You have captured the essence of the B2 level philosophical inquiries.',
-      incorrect: 'Please reflect on the prompts above.'
-    },
-    discussionPrompts: [
-      { question: 'Analyze the role of "forgetfulness" in the human condition as depicted in the narrative of the forbidden tree.', mode: 'Individual' },
-      { question: 'Discuss the implications of "vicegerency" (Khalifa) as a mandate for environmental and social stewardship in the modern world.', mode: 'Pair' },
-      { question: 'Evaluate the psychological transition from "internal harmony" to "shame" following the transgression.', mode: 'Class' }
-    ]
-  },
-  {
-  id: 'b2-final-4',
-  type: 'quiz-game',
-  title: 'B2 Narrative Masterclass',
-  instructions: 'Navigate through the sophisticated layers of the B2 narrative in this final interactive challenge.',
-  question: 'Are you prepared to demonstrate your comprehensive mastery of the B2 level content?',
-  correctAnswer: null,
-  explanation: 'This challenge evaluates your grasp of advanced vocabulary, complex themes, and detailed narrative nuances.',
-  feedback: {
-    correct: 'Outstanding! You have successfully navigated the B2 Masterclass on Prophet Adam (pbuh).',
-    incorrect: 'Continue to delve into the philosophical depths of the story. Mastery is a journey of constant reflection.'
-  },
-  hints: [
-    'Consider the distinction between "revelation" and "worldly knowledge"',
-    'Reflect on the symbolic significance of the raven',
-    'Think about the "twofold nature" of humanity'
-  ],
-  quizQuestions: [
-    {
-      question: 'According to the B2 text, what does the "breathing of Allah\'s spirit" into Adam signify?',
-      options: [
-        { text: 'The gift of life and a special status among creation', isCorrect: true },
-        { text: 'A change in Adam\'s physical form only', isCorrect: false },
-        { text: 'His departure from Paradise to the earth', isCorrect: false }
-      ],
-      hint: 'Consider the limitations of mere material clay without the divine spirit.'
-    },
-    {
-      question: 'How does the B2 narrative describe the relationship between "revelation" and "worldly knowledge"?',
-      options: [
-        { text: 'They stand in conflict with one another', isCorrect: false },
-        { text: 'Worldly knowledge is more valuable than revelation', isCorrect: false },
-        { text: 'They complete each other in human life and guidance', isCorrect: true }
-      ],
-      hint: 'Are they alternatives or do they complete each other?'
-    },
-    {
-      question: 'What was the underlying cause of Iblis\'s failure to recognize Adam\'s value?',
-      options: [
-        { text: 'He feared Adam\'s physical power', isCorrect: false },
-        { text: 'He judged by material origin instead of true merit', isCorrect: true },
-        { text: 'He did not understand the command itself', isCorrect: false }
-      ],
-      hint: 'What did Iblis focus on when he said "I am better than he"?'
-    },
-    {
-      question: 'What does the "sense of shame" (haya) reveal about human nature according to the text?',
-      options: [
-        { text: 'It developed later through social customs', isCorrect: false },
-        { text: 'It is an inborn quality within human nature', isCorrect: true },
-        { text: 'It appeared only as a result of punishment', isCorrect: false }
-      ],
-      hint: 'Is modesty natural or learned?'
-    },
-    {
-      question: 'How is Adam\'s descent to Earth characterized in the B2 narrative?',
-      options: [
-        { text: 'As a dishonourable fall with no higher purpose', isCorrect: false },
-        { text: 'As an ordinary event without spiritual meaning', isCorrect: false },
-        { text: 'As an honourable settlement linked to human duty', isCorrect: true }
-      ],
-      hint: 'Did it imply dishonor or a respected settlement?'
-    },
-    {
-      question: 'What is the primary lesson derived from the conflict between Habil and Qabil?',
-      options: [
-        { text: 'Sincerity matters, and jealousy can destroy a person', isCorrect: true },
-        { text: 'Strength decides who is right in a conflict', isCorrect: false },
-        { text: 'Life in the fields is better than life with animals', isCorrect: false }
-      ],
-      hint: 'Why was one offering accepted and the other rejected?'
-    },
-    {
-      question: 'What did the raven\'s actions demonstrate to Qabil?',
-      options: [
-        { text: 'How to survive alone in nature', isCorrect: false },
-        { text: 'That prosperity would follow his actions', isCorrect: false },
-        { text: 'How to bury the body and face his own limitation', isCorrect: true }
-      ],
-      hint: 'What did Qabil realize when he saw the raven?'
-    }
-  ]
-}
+  { id: 'adam-b2-review-sequence', type: 'sequencing', title: 'The Narrative Arc', instructions: 'Arrange the six major phases of the book.', question: 'How does the story progress from creation to continuing human guidance?', sequencingItems: [{ id: '1', text: 'Adam is created and given knowledge' }, { id: '2', text: 'Iblis rejects the command through arrogance' }, { id: '3', text: 'Adam and Eve face deception and the forbidden tree' }, { id: '4', text: 'They repent and begin life on Earth' }, { id: '5', text: 'The Habil-Qabil conflict shows the consequences of jealousy and violence' }, { id: '6', text: 'Adam leaves a legacy of warning and continuing prophetic guidance' }], correctAnswer: ['1', '2', '3', '4', '5', '6'], explanation: 'This retrieves the book’s large narrative structure rather than a single chapter fact.', feedback: { correct: 'Correct.', incorrect: 'Think in six broad phases: creation, arrogance, test, repentance, family conflict, legacy.' } },
+  { id: 'adam-b2-review-match', type: 'matching', title: 'Evidence and Interpretation', instructions: 'Match each piece of evidence with the interpretation it supports.', question: 'Which interpretation is best supported by each detail?', matchingPairs: [{ left: 'Different soils, one human origin', right: 'material difference does not justify human superiority' }, { left: 'Adam admits error while Iblis persists', right: 'moral recovery depends on responsibility rather than pride' }, { left: 'The raven demonstrates burial', right: 'human beings can be confronted with their limits and learn after wrongdoing' }], correctAnswer: { 'Different soils, one human origin': 'material difference does not justify human superiority', 'Adam admits error while Iblis persists': 'moral recovery depends on responsibility rather than pride', 'The raven demonstrates burial': 'human beings can be confronted with their limits and learn after wrongdoing' }, explanation: 'The matching task reconnects evidence with higher-level claims across distant chapters.', feedback: { correct: 'Correct.', incorrect: 'Return to Chapters 2, 9, and 14 and separate what happens from what it supports.' } },
+  { id: 'adam-b2-review-reflection', type: 'reflection', title: 'Knowledge as Responsibility', instructions: 'Use at least two story moments before giving your own view.', question: 'How does the book turn knowledge from a privilege into a responsibility?', correctAnswer: true, explanation: 'Possible evidence includes the names taught to Adam, the two kinds of knowledge, vicegerency, guidance on Earth, and the responsibility to teach later generations.', feedback: { correct: 'Strong reflection.', incorrect: 'Begin with two concrete pieces of evidence from different chapters, then explain their connection.' }, discussionPrompts: [{ question: 'What is the difference between having knowledge and using it responsibly?', mode: 'Individual' }, { question: 'How do humility and knowledge support one another in the story?', mode: 'Pair' }, { question: 'Which chapter most clearly shows that moral knowledge must become action?', mode: 'Class' }] },
+  { id: 'adam-b2-review-quiz', type: 'quiz-game', title: 'Connections Across Adam’s Story', instructions: 'Answer eight new retrieval questions. Focus on relationships and implications.', question: 'Can you reconnect evidence across the whole book?', correctAnswer: null, explanation: 'The quiz checks cause, contrast, qualification, and synthesis without repeating the Knowledge Check.', feedback: { correct: 'Correct.', incorrect: 'Return to the relevant chapter and locate the evidence before trying again.' }, quizQuestions: [
+    { question: 'What does the text’s interpretation of “the names” suggest about later human civilization?', options: [{ text: 'Language, reasoning, science, technology, and culture are connected to the capacity to learn', isCorrect: true }, { text: 'Civilization develops without knowledge', isCorrect: false }, { text: 'Only angels can develop culture', isCorrect: false }], hint: 'Think beyond the literal list of names to the interpretation in Chapter 3.' },
+    { question: 'Why is Iblis’s arrogance more than a simple disagreement?', options: [{ text: 'It turns a material comparison into refusal of a divine command and a continuing anti-human stance', isCorrect: true }, { text: 'It is only a debate about physical science', isCorrect: false }, { text: 'It ends immediately without later consequences', isCorrect: false }], hint: 'Connect Chapters 4–6 and the final chapter.' },
+    { question: 'What is the strongest contrast between Satan’s promise in Paradise and Adam’s later repentance?', options: [{ text: 'Deception hides the truth; repentance requires honest recognition of it', isCorrect: true }, { text: 'Both depend on refusing responsibility', isCorrect: false }, { text: 'Both are presented as forms of pride', isCorrect: false }], hint: 'Compare the false “sincere advisor” with Adam’s admission of wrong.' },
+    { question: 'Why does Chapter 10 call the Paradise experience a cornerstone of vicegerency?', options: [{ text: 'It teaches the reality of moral choice, Satanic opposition, and the need to follow guidance on Earth', isCorrect: true }, { text: 'It teaches that human beings should avoid all earthly work', isCorrect: false }, { text: 'It removes the need for future guidance', isCorrect: false }], hint: 'Focus on what Adam, Eve, and their descendants are meant to learn.' },
+    { question: 'What relationship connects Chapter 11’s practical work with Chapter 3’s gift of knowledge?', options: [{ text: 'Knowledge becomes meaningful through responsible cultivation and improvement of earthly life', isCorrect: true }, { text: 'Knowledge and practical work are treated as opposites', isCorrect: false }, { text: 'Practical work replaces moral responsibility', isCorrect: false }], hint: 'Link capacity with stewardship.' },
+    { question: 'Why is Habil’s response to threat important to the book’s view of human nature?', options: [{ text: 'It shows that the capacity for evil does not remove the capacity for self-control, compassion, and obedience', isCorrect: true }, { text: 'It proves humans cannot resist anger', isCorrect: false }, { text: 'It shows violence is the only realistic response to conflict', isCorrect: false }], hint: 'Chapter 13 explicitly discusses humanity’s twofold potential.' },
+    { question: 'What does Qabil’s encounter with the raven add to the theme of human value?', options: [{ text: 'Even after wrongdoing, the story preserves the dignity of the dead while exposing the murderer’s limitation', isCorrect: true }, { text: 'It shows burial is merely a technical trick with no moral meaning', isCorrect: false }, { text: 'It makes Qabil’s action acceptable', isCorrect: false }], hint: 'Notice why the chapter says the lesson is sent “as a mercy”.' },
+    { question: 'How does Adam’s final legacy answer Satan’s long-term challenge?', options: [{ text: 'By passing on warning, worship, and confidence that prophets will continue to guide humanity', isCorrect: true }, { text: 'By claiming Satan will disappear from earthly life', isCorrect: false }, { text: 'By telling later generations to rely only on material power', isCorrect: false }], hint: 'Connect Chapter 16 with the warning in Chapter 17.' },
+  ] },
+];
+
+export const adamB2FinalChallengeExercises: Exercise[] = [
+  { id: 'adam-b2-final-1', type: 'multiple-choice', title: 'Final Challenge 1', instructions: 'Choose the best supported synthesis.', question: 'Across the early chapters, which combination most clearly explains the text’s basis for human dignity?', options: ['Material origin, physical strength, and ancestry', 'Knowledge, moral capacity, and entrusted responsibility', 'Freedom from every weakness or mistake'], correctAnswer: 1, explanation: 'The text repeatedly contrasts humble material origin with knowledge, moral capacity, and vicegerency.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 2–5 rather than relying on one isolated detail.' } },
+  { id: 'adam-b2-final-2', type: 'multiple-choice', title: 'Final Challenge 2', instructions: 'Choose the best analytical answer.', question: 'What makes Adam’s response after wrongdoing fundamentally different from Iblis’s response after disobedience?', options: ['Adam recognizes fault and turns back, while Iblis protects pride and continues opposition', 'Adam denies responsibility while Iblis repents', 'Both respond in exactly the same way'], correctAnswer: 0, explanation: 'The narrative turns responsibility versus pride into a central moral contrast.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 5, 8, and 9.' } },
+  { id: 'adam-b2-final-3', type: 'multiple-choice', title: 'Final Challenge 3', instructions: 'Choose the most careful conclusion.', question: 'What does the Habil-Qabil episode contribute to the book’s larger good-versus-evil framework?', options: ['It shows how sincerity and self-control can be opposed by jealousy that grows into violence', 'It proves occupation determines moral worth', 'It suggests family relationships remove moral choice'], correctAnswer: 0, explanation: 'The episode converts the book’s larger moral contrast into a human family conflict shaped by intention and choice.', feedback: { correct: 'Correct.', incorrect: 'Use Chapters 12–15 as one connected case study.' } },
+  { id: 'adam-b2-final-4', type: 'true-false', title: 'Final Challenge 4', instructions: 'Decide whether the statement is supported.', question: 'The book treats reported locations of Adam’s descent as identical in certainty to the Qur’anic claim that he descended to Earth.', correctAnswer: false, explanation: 'Chapter 10 introduces different reported locations through hadith reports; the existence of several reports requires a qualified claim about location.', feedback: { correct: 'Correct.', incorrect: 'Notice the wording “There are many hadiths…” and the different locations that follow.' } },
+  { id: 'adam-b2-final-5', type: 'true-false', title: 'Final Challenge 5', instructions: 'Decide whether the statement accurately synthesizes the ending.', question: 'The final chapters present guidance as continuing beyond Adam through teaching, succession, and later prophets.', correctAnswer: true, explanation: 'Adam teaches his descendants, appoints Seth, and tells them that prophets will continue to guide humanity.', feedback: { correct: 'Correct.', incorrect: 'Review Chapter 16 and connect its legacy to Chapter 17.' } },
+  { id: 'adam-b2-final-6', type: 'matching', title: 'Final Challenge 6', instructions: 'Match each inner disposition with the action it produces in the story.', question: 'How do inner states become outward choices?', matchingPairs: [{ left: 'Arrogant superiority', right: 'Iblis refuses the command' }, { left: 'Sincere regret', right: 'Adam turns back and seeks forgiveness' }, { left: 'Destructive jealousy', right: 'Qabil moves from resentment to murder' }], correctAnswer: { 'Arrogant superiority': 'Iblis refuses the command', 'Sincere regret': 'Adam turns back and seeks forgiveness', 'Destructive jealousy': 'Qabil moves from resentment to murder' }, explanation: 'The narrative repeatedly links moral disposition with action and consequence.', feedback: { correct: 'Correct.', incorrect: 'Trace one inner state at a time to its later action.' } },
+  { id: 'adam-b2-final-7', type: 'matching', title: 'Final Challenge 7', instructions: 'Match the concept with its role in the whole-book argument.', question: 'Which role does each concept play?', matchingPairs: [{ left: 'Worldly knowledge', right: 'supports human life, learning, culture, and practical development' }, { left: 'Revelation', right: 'guides human duty, moral direction, and relationship with the Creator' }, { left: 'Vicegerency', right: 'turns human capacity into accountable stewardship on Earth' }], correctAnswer: { 'Worldly knowledge': 'supports human life, learning, culture, and practical development', Revelation: 'guides human duty, moral direction, and relationship with the Creator', Vicegerency: 'turns human capacity into accountable stewardship on Earth' }, explanation: 'The book treats these ideas as connected rather than isolated.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 3–4 and 10–11.' } },
+  { id: 'adam-b2-final-8', type: 'fill-blanks', title: 'Final Challenge 8', instructions: 'Complete the analytical sentence with the key story term.', question: 'Which term names the human responsibility that connects knowledge with responsible life on Earth?', fillBlanksText: 'The book presents human [blank] as an entrusted responsibility to inhabit, cultivate, and improve earthly life under guidance.', correctAnswer: 'vicegerency', explanation: 'Vicegerency is repeatedly connected with responsibility rather than status alone.', feedback: { correct: 'Correct.', incorrect: 'Look for the term used for Adam’s representative or steward role.' } },
+  { id: 'adam-b2-final-9', type: 'fill-blanks', title: 'Final Challenge 9', instructions: 'Complete the cause-and-consequence statement.', question: 'Which emotion is identified as the destructive starting point of Qabil’s moral collapse?', fillBlanksText: 'In the later family story, uncontrolled [blank] defeats brotherly love and compassion and develops into destructive action.', correctAnswer: 'jealousy', explanation: 'Chapter 15 explicitly identifies jealousy as the source from which this evil choice arises.', feedback: { correct: 'Correct.', incorrect: 'Return to the paragraph explaining the consequences of choosing evil.' } },
+  { id: 'adam-b2-final-10', type: 'sequencing', title: 'Final Challenge 10', instructions: 'Arrange this moral process in the order the book repeatedly supports.', question: 'How does responsible recovery from error develop?', sequencingItems: [{ id: '1', text: 'Recognize the wrong honestly' }, { id: '2', text: 'Direct blame inward rather than protecting pride' }, { id: '3', text: 'Turn back and seek forgiveness or guidance' }, { id: '4', text: 'Resume responsible action with the lesson learned' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'Adam’s response after error provides the clearest model, and later chapters contrast it with refusal, jealousy, and regret without repair.', feedback: { correct: 'Correct.', incorrect: 'Use Adam’s repentance as the model and compare it with Iblis and Qabil.' } },
 ];
