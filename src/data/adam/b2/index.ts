@@ -22,6 +22,39 @@ import { adamB2SelfStudyGuideAr, adamB2StudentGuideMetadataAr } from './ar/selfS
 
 const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
 
+const decodedLower = (value = '') => {
+  try {
+    return decodeURIComponent(value).toLowerCase();
+  } catch {
+    return value.toLowerCase();
+  }
+};
+
+/**
+ * Second-pass page-shell fixes only. Canonical story `content` is never changed.
+ * Storage remains the preferred media source; known B1 image fallbacks are blanked
+ * so a failed B2 Storage lookup cannot silently display the wrong CEFR asset.
+ */
+const reviewStoryPageShell = (page: PageData): PageData => {
+  if (page.type !== 'story') return page;
+
+  const reviewed: PageData = decodedLower(page.image).includes('/adam_b1/images/')
+    ? { ...page, image: '' }
+    : page;
+
+  if (page.id !== 13) return reviewed;
+
+  const isArabic = /[\u0600-\u06ff]/.test(page.title);
+  return {
+    ...reviewed,
+    title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
+    hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h13b'),
+    ...(isArabic ? {} : {
+      vocabulary: reviewed.vocabulary?.filter(note => ['rebellious', 'compassion'].includes(note.word.toLowerCase())),
+    }),
+  };
+};
+
 const buildPages = (
   pages: PageData[],
   quickChallenges: Record<number, Exercise>,
@@ -29,7 +62,8 @@ const buildPages = (
   vocabularyPairs: { word: string; meaning: string }[],
   review: Exercise[],
   finalChallenge: Exercise[],
-): PageData[] => pages.map((page) => {
+): PageData[] => pages.map((rawPage) => {
+  const page = reviewStoryPageShell(rawPage);
   if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
   if (page.id === 18) return { ...page, exercises: knowledgeCheck };
   if (page.id === 19) return { ...page, exercises: review };
