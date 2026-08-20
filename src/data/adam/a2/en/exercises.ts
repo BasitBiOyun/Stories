@@ -86,9 +86,11 @@ export const adamA2QuickChallenges: Record<number, Exercise> = {
 
 export const adamA2KnowledgeCheckExercises: Exercise[] = [
   {
-    id: 'adam-a2-kc-1', type: 'multiple-choice', title: 'Creation', instructions: 'Choose the fact stated in Chapter 1.',
-    question: 'What did Allah create Adam from?', options: ['Soil', 'Fire', 'Water'], correctAnswer: 0,
-    explanation: 'Chapter 1 states that Allah created Adam from soil.', feedback: { correct: 'Correct.', incorrect: 'Return to the opening paragraph and find the material used to create Adam.' }
+    id: 'adam-a2-kc-1', type: 'multiple-choice', title: 'A Role on Earth', instructions: 'Choose the role stated in Chapter 1.',
+    question: 'What role did Allah say the human would have on Earth?',
+    options: ['A ruler on Earth', 'An angel in the sky', 'A shepherd in Paradise'], correctAnswer: 0,
+    explanation: 'Chapter 1 says that the human was going to become the ruler on Earth.',
+    feedback: { correct: 'Correct. You recalled the role announced for life on Earth.', incorrect: 'Return to the sentence about what the human was going to become on Earth.' }
   },
   {
     id: 'adam-a2-kc-2', type: 'true-false', title: 'Knowledge and Thinking', instructions: 'Decide whether the statement agrees with Chapter 2.',
@@ -156,21 +158,21 @@ export const adamA2FinalReviewExercises: Exercise[] = [
     feedback: { correct: 'Good. You rebuilt the main sequence.', incorrect: 'Use the chapter order and place one stage at a time.' }
   },
   {
-    id: 'adam-a2-review-2', type: 'matching', title: 'Evidence and Lesson', instructions: 'Match each story detail with the idea it helps show.', question: 'What larger idea does each detail support?',
+    id: 'adam-a2-review-2', type: 'matching', title: 'Evidence and Lesson', instructions: 'Match each story detail with the simple idea it shows.', question: 'What does each detail help us understand?',
     matchingPairs: [
-      { left: 'Soil came from different parts of Earth', right: 'human diversity' },
-      { left: 'Adam and Eve decided not to repeat their mistake', right: 'learning and repair' },
-      { left: 'Habil gave his best offering', right: 'giving one’s best' },
-      { left: 'People should stay away from jealousy and control anger', right: 'self-control' }
+      { left: 'Soil came from different parts of Earth', right: 'people can be different' },
+      { left: 'Adam and Eve decided not to repeat their mistake', right: 'learn from mistakes' },
+      { left: 'Habil gave his best offering', right: 'give your best' },
+      { left: 'People should stay away from jealousy and control anger', right: 'control yourself' }
     ],
     correctAnswer: {
-      'Soil came from different parts of Earth': 'human diversity',
-      'Adam and Eve decided not to repeat their mistake': 'learning and repair',
-      'Habil gave his best offering': 'giving one’s best',
-      'People should stay away from jealousy and control anger': 'self-control'
+      'Soil came from different parts of Earth': 'people can be different',
+      'Adam and Eve decided not to repeat their mistake': 'learn from mistakes',
+      'Habil gave his best offering': 'give your best',
+      'People should stay away from jealousy and control anger': 'control yourself'
     },
-    explanation: 'The learner now connects evidence to a broader lesson instead of simply recalling who did what.',
-    feedback: { correct: 'Correct. You connected story evidence with its meaning.', incorrect: 'Read each detail first, then ask what lesson the chapter connects to it.' }
+    explanation: 'The learner connects each story detail with a clear A2 lesson instead of only recalling who did what.',
+    feedback: { correct: 'Correct. You connected each story detail with its meaning.', incorrect: 'Read each detail first, then choose the short lesson it shows.' }
   },
   {
     id: 'adam-a2-review-3', type: 'reflection', title: 'Use a Story Lesson', instructions: 'Start with a lesson that really appears in the story, then add one short personal example.',
