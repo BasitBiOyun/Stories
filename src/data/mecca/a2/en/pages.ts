@@ -67,7 +67,7 @@ In the evening, his job was to bring food and wine to his master. His master was
     type: 'story',
     title: 'A New Message',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5-clean.png?alt=media&token=56aa7a00-7ad1-4d2a-844c-351a72517da0',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F04_Chapter_5_A_New_Message.mp3?alt=media&token=be177f14-9655-4a2a-844c-351a72517da0',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F04_Chapter_5_A_New_Message.mp3?alt=media&token=be177f14-9655-4a2a-8797-60455716e29a',
     content: `Umayya liked Bilal because he was an obedient and hardworking servant. Bilal had to work very hard to please his master and protect himself from his master’s anger.
 
 Bilal thought he would be a slave forever. He did not have any money to pay for his freedom. He also had no power to protect himself from bad behaviour.
