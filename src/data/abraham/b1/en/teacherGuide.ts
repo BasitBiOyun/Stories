@@ -117,7 +117,7 @@ export const abrahamB1TeacherGuideEn: TeacherGuideSection[] = [
     afterReading: ['Sequence the four actions.', 'Explain how the last action prepares Chapter 7.'],
     lessonPlan: '5m prediction; 10m read/listen; 8m sequence; 7m purpose discussion; 7m Quick Challenge; 3m exit.',
     discussionPoints: ['Why mention the untouched food?', 'Why leave the largest statue with the axe?'],
-    interactiveTips: ['Use the axe and food hotspots after students identify those details in the prose.'],
+    interactiveTips: ['Use the Empty Town and Food Before Idols hotspots after students identify those details in the prose.'],
     differentiation: { strugglingLearners: 'Give four event cards to order.', fastFinishers: 'Add a purpose clause to each event: “He did this so that…” while keeping claims text-supported.' },
     formativeAssessment: ['Correct event order', 'Reasonable, text-grounded purpose explanation'], expectedResponses: ['The food remains because idols cannot eat.', 'The largest idol and axe set up a question about whether idols can act.'],
     transferTask: 'Write a four-step process using sequence words and one purpose clause.', teacherReflection: 'Did learners avoid treating Abraham’s later statement as a literal claim?'
@@ -134,7 +134,7 @@ export const abrahamB1TeacherGuideEn: TeacherGuideSection[] = [
     afterReading: ['Build Admission → Reasoning → Choice chain.', 'Complete Quick Challenge and explain the role of arrogance.'],
     lessonPlan: '5m recap; 12m read/listen; 8m dialogue chain; 7m contrast writing; 5m Quick Challenge; 3m exit.',
     discussionPoints: ['Why is their own admission powerful evidence?', 'What action in the chapter shows arrogance most clearly?'],
-    interactiveTips: ['Use broken-idol and people hotspots to revisit evidence and response.'],
+    interactiveTips: ['Use Broken Idols and Public Questioning to revisit the evidence, dialogue and response.'],
     differentiation: { strugglingLearners: 'Frame: “They admitted ___. Abraham asked ___. However, they ___.”', fastFinishers: 'Explain how social pressure and forefathers may contribute to their refusal, without adding facts beyond the text.' },
     formativeAssessment: ['Three-step dialogue chain', 'Accurate explanation of arrogance'], expectedResponses: ['They admit the idols cannot speak.', 'They feel shame but refuse to accept they are wrong and demand punishment.'],
     transferTask: 'Describe a situation where a person can recognize evidence but still resist changing their view.', teacherReflection: 'Did learners separate evidence, emotion and decision?'
