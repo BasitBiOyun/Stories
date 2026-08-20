@@ -1,195 +1,72 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+// Manual source of truth for Yunus Emre B1 English learning activities.
+
+export const yunusB1QuickChallenges: Record<number, Exercise> = {
+  1: { id: 'yunus-b1-qc-1', type: 'matching', title: 'Outer Actions, Inner Character', instructions: 'Match each side of Sûfî life with the chapter evidence.', question: 'How does Chapter 1 distinguish outward practice from inward character?', matchingPairs: [{ left: 'Outer side', right: 'acts of worship performed by the body' }, { left: 'Inner side', right: 'intentions of the heart and morality' }], correctAnswer: { 'Outer side': 'acts of worship performed by the body', 'Inner side': 'intentions of the heart and morality' }, explanation: 'The chapter presents Sûfî life as combining visible worship with inward intention and morality.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentence that contrasts the outer and inner sides of Islam.' } },
+  2: { id: 'yunus-b1-qc-2', type: 'multiple-choice', title: 'Why His Language Reached People', instructions: 'Choose the best explanation.', question: 'Why could Yunus Emre’s works be both literary and widely understood?', options: ['They combined strong literary quality with clear, plain language', 'They avoided moral ideas and used only everyday jokes', 'They were written only for scholars who knew Persian'], correctAnswer: 0, explanation: 'The chapter says his works were popular because literary quality and understandable language appeared together.', feedback: { correct: 'Correct.', incorrect: 'Connect the words literary quality, simple language, and understand.' } },
+  3: { id: 'yunus-b1-qc-3', type: 'matching', title: 'More Than a School', instructions: 'Match each role of the tekke with its evidence.', question: 'Why were tekkes important in the chapter?', matchingPairs: [{ left: 'Spiritual role', right: 'Sûfî training under a guide' }, { left: 'Social role', right: 'helping people and bringing communities together' }, { left: 'Cultural role', right: 'supporting fine arts, especially poetry' }], correctAnswer: { 'Spiritual role': 'Sûfî training under a guide', 'Social role': 'helping people and bringing communities together', 'Cultural role': 'supporting fine arts, especially poetry' }, explanation: 'The tekke is presented as a spiritual, social, and cultural institution.', feedback: { correct: 'Correct.', incorrect: 'Look for the three different functions described before the historical crisis.' } },
+  4: { id: 'yunus-b1-qc-4', type: 'multiple-choice', title: 'From Strength to Instability', instructions: 'Choose the best cause-and-result explanation.', question: 'What does Chapter 4 suggest changed after Alaeddin I’s strong rule?', options: ['Poor governance and unmanaged migration contributed to social and economic decline', 'The Seljuks became stronger because migration ended', 'The Mongols immediately left Central Asia and Anatolia'], correctAnswer: 0, explanation: 'The chapter connects poor governance and the pressure of migration with worsening social and economic chaos.', feedback: { correct: 'Correct.', incorrect: 'Compare the period under Alaeddin I with the problems under Giyaseddin Keyhüsrev II.' } },
+  5: { id: 'yunus-b1-qc-5', type: 'sequencing', title: 'Escalation to Kösedağ', instructions: 'Put the developments in order.', question: 'How did unrest grow into a larger military disaster?', sequencingItems: [{ id: '1', text: 'Turkmen groups revolt after serious social and economic problems' }, { id: '2', text: 'Seljuk forces suppress the revolt with difficulty' }, { id: '3', text: 'Mongols attack Erzurum' }, { id: '4', text: 'Seljuks and Mongols clash at Kösedağ' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter moves from internal unrest to Mongol attack and then the decisive defeat at Kösedağ.', feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from the Turkmen revolt to the 1243 battle.' } },
+  6: { id: 'yunus-b1-qc-6', type: 'multiple-choice', title: 'Dependence Has a Cost', instructions: 'Choose the strongest inference.', question: 'Why did Mongol control deepen hardship even after an agreement was made?', options: ['Growing taxes and political dependence made both the state and ordinary people poorer', 'The agreement removed all taxes and restored full Seljuk independence', 'The Mongols stopped appointing governors and left Anatolia'], correctAnswer: 0, explanation: 'The chapter links increasing tribute, weakened independence, and poverty.', feedback: { correct: 'Correct.', incorrect: 'Find what happened to state income and political control after the agreement.' } },
+  7: { id: 'yunus-b1-qc-7', type: 'tap-reveal', title: 'Poetry as a Response', instructions: 'Answer first, then reveal the evidence.', question: 'What made Yunus Emre’s poetry especially meaningful in this historical setting?', tapRevealItems: [{ question: 'Evidence-based answer', answer: 'People were trying to make sense of life during chaos, and Yunus used his Sûfî identity and poetry to respond to that need.' }], correctAnswer: 'People were trying to make sense of life during chaos, and Yunus used his Sûfî identity and poetry to respond to that need.', explanation: 'The chapter directly connects social crisis with Yunus’s role as a travelling wise dervish and poet.', feedback: { correct: 'Correct.', incorrect: 'Reread the paragraph beginning with Yunus appearing in this environment.' } },
+  8: { id: 'yunus-b1-qc-8', type: 'multiple-choice', title: 'Understanding Tawhid', instructions: 'Choose the best explanation supported by the chapter.', question: 'How does the chapter connect tawhid with Yunus Emre’s view of reality?', options: ['Allah is the source of all things and the only true reality', 'Every created thing exists independently from Allah', 'Tawhid is presented only as a historical battle'], correctAnswer: 0, explanation: 'The chapter defines tawhid as the Oneness of Allah and presents Allah as the source and true reality.', feedback: { correct: 'Correct.', incorrect: 'Review the sentences defining tawhid and the unity of existence.' } },
+  9: { id: 'yunus-b1-qc-9', type: 'matching', title: 'Worship and Love', instructions: 'Match the idea with the chapter’s explanation.', question: 'How are belief, worship, and love connected?', matchingPairs: [{ left: 'Following Allah’s command', right: 'includes performing the five daily prayers' }, { left: 'Loving the Creator', right: 'leads to love for created beings' }], correctAnswer: { 'Following Allah’s command': 'includes performing the five daily prayers', 'Loving the Creator': 'leads to love for created beings' }, explanation: 'The chapter joins obedience in worship with a wider ethic of love.', feedback: { correct: 'Correct.', incorrect: 'Read the poem about prayer and the final sentence about Creator and creation.' } },
+  10: { id: 'yunus-b1-qc-10', type: 'multiple-choice', title: 'Why Breaking a Heart Matters', instructions: 'Choose the best explanation.', question: 'Why does Yunus Emre describe breaking a heart as extremely serious?', options: ['The heart is presented as the center of love and a place connected with divine presence', 'The heart is valuable only because it creates wealth', 'The chapter says intellect has no value at all'], correctAnswer: 0, explanation: 'The chapter calls the heart the throne of the Lord and the center of love and understanding.', feedback: { correct: 'Correct.', incorrect: 'Use the poem and the sentence explaining the heart as the eye that sees truth.' } },
+  11: { id: 'yunus-b1-qc-11', type: 'multiple-choice', title: 'Remembering Death', instructions: 'Choose the strongest cause-and-result explanation.', question: 'What result does the chapter connect with remembering death?', options: ['It can guide a person toward a meaningful and honest life', 'It makes heart and intellect unnecessary', 'It encourages a person to value fame more strongly'], correctAnswer: 0, explanation: 'Death is described as an advisor that helps people live with honesty and meaning.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence explaining death’s advisory role.' } },
+  12: { id: 'yunus-b1-qc-12', type: 'matching', title: 'Moral Direction', instructions: 'Match each moral direction with an example.', question: 'How does Yunus distinguish habits to build from habits to leave?', matchingPairs: [{ left: 'Build', right: 'patience, honesty, humility, generosity' }, { left: 'Leave', right: 'greed, arrogance, gossip, jealousy' }], correctAnswer: { Build: 'patience, honesty, humility, generosity', Leave: 'greed, arrogance, gossip, jealousy' }, explanation: 'The chapter presents morality as both developing good habits and giving up destructive ones.', feedback: { correct: 'Correct.', incorrect: 'Separate the virtues from the habits Yunus warns against.' } },
+  13: { id: 'yunus-b1-qc-13', type: 'multiple-choice', title: 'A Legacy That Still Acts', instructions: 'Choose the best conclusion.', question: 'Why does the final chapter describe Yunus Emre as a moral guide for later generations?', options: ['His poems turn values such as patience and control of anger into memorable guidance', 'His main legacy is military strategy', 'His works reject moral advice and focus only on court life'], correctAnswer: 0, explanation: 'The chapter closes by showing how his verses continue to teach patience, faith, and restraint.', feedback: { correct: 'Correct.', incorrect: 'Look at the poems on patience and anger and the closing judgment about his legacy.' } },
+};
+
+export const yunusB1KnowledgeCheckExercises: Exercise[] = [
+  { id: 'yunus-b1-kc-1', type: 'multiple-choice', title: 'Sûfî Life', instructions: 'Choose the best summary.', question: 'Which description best reflects Chapter 1?', options: ['Sûfî life joins worship, inner intention, moral improvement, and reduced attachment to worldly status', 'Sûfî life is defined only by poetry technique', 'Sûfî life requires avoiding generosity and patience'], correctAnswer: 0, explanation: 'Chapter 1 connects worship, intention, morality, generosity, patience, and freedom from worldly attachment.', feedback: { correct: 'Correct.', incorrect: 'Review the moral principles listed after the outer/inner distinction.' } },
+  { id: 'yunus-b1-kc-2', type: 'multiple-choice', title: 'Two Kinds of Education', instructions: 'Choose the best answer.', question: 'What does the story suggest about Yunus Emre’s education?', options: ['Some sources describe madrasa learning alongside spiritual study in a tekke', 'The story says he refused all formal and spiritual learning', 'The story says he learned only military strategy'], correctAnswer: 0, explanation: 'The chapter carefully says some sources report madrasa education, while the tekke provided spiritual and moral learning.', feedback: { correct: 'Correct.', incorrect: 'Notice the phrase some sources say and the contrast between madrasa and tekke.' } },
+  { id: 'yunus-b1-kc-3', type: 'true-false', title: 'Historical Pressure', instructions: 'Decide whether the statement is supported.', question: 'The story connects the weakening of Anatolia with both internal unrest and Mongol pressure.', correctAnswer: true, explanation: 'The Babai revolts, Kösedağ defeat, invasion, taxation, and political dependence are presented as connected pressures.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 3–6 as one historical chain.' } },
+  { id: 'yunus-b1-kc-4', type: 'multiple-choice', title: 'A Cultural Response', instructions: 'Choose the best inference.', question: 'Why could tekkes and Sûfî voices become especially important during social chaos?', options: ['They offered community support, spiritual training, and cultural meaning when people were struggling', 'They replaced all political institutions and armies', 'They caused the Mongol invasion'], correctAnswer: 0, explanation: 'The text presents tekkes as social and spiritual institutions and Yunus as a voice responding to people’s search for meaning.', feedback: { correct: 'Correct.', incorrect: 'Connect Chapter 3 with Chapter 7.' } },
+  { id: 'yunus-b1-kc-5', type: 'multiple-choice', title: 'Poetry and Source', instructions: 'Choose the best answer.', question: 'What foundations does Chapter 7 give for Yunus Emre’s Sûfî understanding?', options: ['The Qur’an, the Prophet’s Sunnah, and earlier Muslim Sûfî experience', 'Only Mongol political law', 'Only Seljuk tax records'], correctAnswer: 0, explanation: 'The chapter names these religious and spiritual foundations directly.', feedback: { correct: 'Correct.', incorrect: 'Read the final paragraph of Chapter 7.' } },
+  { id: 'yunus-b1-kc-6', type: 'multiple-choice', title: 'Love and the Heart', instructions: 'Choose the best connection.', question: 'How do Chapters 9–10 develop the idea of love?', options: ['Love links Creator and creation, and the heart becomes the center where love and understanding are located', 'Love is treated as separate from morality and belief', 'Love is described mainly as a way to gain status'], correctAnswer: 0, explanation: 'The chapters move from love of Creator and creation to the heart as the center of love and understanding.', feedback: { correct: 'Correct.', incorrect: 'Read the final lines of Chapter 9 and the opening of Chapter 10 together.' } },
+  { id: 'yunus-b1-kc-7', type: 'true-false', title: 'Heart and Intellect', instructions: 'Decide whether the statement is supported.', question: 'The story presents heart and intellect as supporting one another rather than as enemies.', correctAnswer: true, explanation: 'Chapter 10 values intellect, and Chapter 11 explicitly says heart and intellect must support one another for salvation.', feedback: { correct: 'Correct.', incorrect: 'Review the transition from Chapter 10 to Chapter 11.' } },
+  { id: 'yunus-b1-kc-8', type: 'multiple-choice', title: 'Moral Legacy', instructions: 'Choose the best conclusion.', question: 'What makes Yunus Emre’s poems function as a moral guide in the final chapters?', options: ['They encourage virtues and warn against destructive habits through memorable images and advice', 'They avoid questions of character and daily life', 'They focus only on dates and battles'], correctAnswer: 0, explanation: 'Greed, patience, anger, humility, and honesty are treated as practical moral concerns.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 12–13 and the poems used there.' } },
+];
+
+export const yunusB1VocabularyChallengePairs = [
+  { word: 'biases', meaning: 'unfair opinions that affect how people are judged' },
+  { word: 'plain', meaning: 'clear and not unnecessarily difficult' },
+  { word: 'revolts', meaning: 'organized rebellions against authority' },
+  { word: 'governance', meaning: 'the way a state or community is managed' },
+  { word: 'captive', meaning: 'held as a prisoner and not free to leave' },
+  { word: 'dependent', meaning: 'unable to act fully without another power or source' },
+  { word: 'vivid', meaning: 'strong, clear, and easy to imagine or feel' },
+  { word: 'intellect', meaning: 'the ability to think, reason, and understand' },
+  { word: 'salvation', meaning: 'the state of being spiritually saved' },
+  { word: 'greed', meaning: 'an excessive selfish desire for wealth or gain' },
+];
 
 export const yunusB1FinalReviewExercises: Exercise[] = [
-  {
-    id: 'final-1',
-    type: 'sequencing',
-    title: 'Yunus Emre in His Time',
-    instructions: 'Put the events and ideas in the correct order.',
-    question: 'Order the main historical and spiritual flow of the B1 story.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6', '7'],
-    explanation: 'The B1 story first introduces Yunus Emre and Sûfîsm, then explains his education and the difficult historical background of Anatolia. After this, it presents Yunus as a wise dervish and focuses on tawhid, love, heart, intellect, death, morality, and his lasting moral legacy.',
-    feedback: {
-      correct: 'Excellent! You followed both the historical and spiritual development of the story.',
-      incorrect: 'Some events are not in the correct order. Review the chapters and follow the movement from historical context to moral teaching.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Yunus Emre is introduced as a Turkish poet and Sûfî from Anatolia' },
-      { id: '2', text: 'His simple but literary language and education are explained' },
-      { id: '3', text: 'Tekkés and the difficult situation in Anatolia are described' },
-      { id: '4', text: 'The Babai revolts, Kösedağ, and Mongol destruction create chaos' },
-      { id: '5', text: 'Yunus appears as a wise dervish and uses poetry as his tool' },
-      { id: '6', text: 'His ideas about tawhid, love, heart, intellect, and death are presented' },
-      { id: '7', text: 'The story ends by showing Yunus Emre as a lasting moral guide' }
-    ]
-  },
-  {
-    id: 'final-2',
-    type: 'drag-drop',
-    title: 'Historical Context and Spiritual Response',
-    instructions: 'Drag each item into the correct group.',
-    question: 'Which items belong to the historical context and which belong to Yunus Emre’s spiritual response?',
-    correctAnswer: {
-      'HISTORICAL CONTEXT': ['Babai revolts', 'Kösedağ defeat', 'Mongol invasion', 'Economic and social chaos'],
-      'SPIRITUAL RESPONSE': ['Popular Sûfîsm', 'Poetry as a tool', 'Love for Allah', 'Moral guidance']
-    },
-    explanation: 'The text explains the difficult historical conditions of Anatolia and then shows how Yunus Emre responded to these hard times through Sûfîsm, poetry, love, and morality.',
-    feedback: {
-      correct: 'Correct! You separated historical events from Yunus Emre’s spiritual and moral response.',
-      incorrect: 'Some items are in the wrong group. Think about whether the item is a historical event or a spiritual/moral idea.'
-    },
-    dragDropGroups: [
-      { group: 'HISTORICAL CONTEXT', items: ['Babai revolts', 'Kösedağ defeat', 'Mongol invasion', 'Economic and social chaos'] },
-      { group: 'SPIRITUAL RESPONSE', items: ['Popular Sûfîsm', 'Poetry as a tool', 'Love for Allah', 'Moral guidance'] }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'Historical Thinking and Moral Reflection',
-    instructions: 'Think about the questions and discuss them with a partner or class.',
-    question: 'How did the difficult historical period of Anatolia make Yunus Emre’s message more meaningful?',
-    correctAnswer: null,
-    explanation: 'Students may explain that war, invasion, poverty, fear, and chaos made people search for meaning. Yunus Emre responded to this situation with poetry, Sûfîsm, love for Allah, unity, patience, and moral guidance.',
-    feedback: {
-      correct: 'Strong reflection! You connected historical conditions with Yunus Emre’s spiritual message.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'Why were tekkés important during difficult times in Anatolia?', mode: 'Pair' },
-      { question: 'How did Yunus Emre use poetry as a tool?', mode: 'Individual' },
-      { question: 'Why are love and tawhid connected in Yunus Emre’s thought?', mode: 'Pair' },
-      { question: 'Why does the story describe the heart as the center of love and understanding?', mode: 'Class' },
-      { question: 'How can remembering death help people live better lives?', mode: 'Class' },
-      { question: 'Which moral value in the story is most needed in today’s world? Why?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'The Yunus Emre B1 Challenge',
-    instructions: 'Complete the 12-question challenge about the B1 story.',
-    question: 'Are you ready for the final B1 challenge?',
-    correctAnswer: null,
-    explanation: 'This game reviews the historical background, vocabulary, key concepts, moral values, and spiritual lessons of the B1 story of Yunus Emre.',
-    feedback: {
-      correct: 'Congratulations! You have mastered the B1 story of Yunus Emre!',
-      incorrect: 'Keep trying! Review the chapters and focus on the historical background, key concepts, and values.'
-    },
-    hints: [
-      'Think about Sûfîsm, tekkés, and Yunus Emre’s education',
-      'Remember the Babai revolts, Kösedağ, and Mongol pressure',
-      'Review tawhid, love, heart, intellect, death, and morality'
-    ],
-    quizQuestions: [
-      {
-        question: 'How does the text describe a Sûfî?',
-        options: [
-          { text: 'A person who aims to get closer to Allah by following Islamic mysticism', isCorrect: true },
-          { text: 'A person who only studies military history', isCorrect: false },
-          { text: 'A ruler who collects taxes from Anatolia', isCorrect: false }
-        ],
-        hint: 'Chapter 1 defines Sûfî in relation to Allah and Islamic mysticism.'
-      },
-      {
-        question: 'Why were Yunus Emre’s works popular among people?',
-        options: [
-          { text: 'Because he wrote only for government officials', isCorrect: false },
-          { text: 'Because his works combined literary quality with simple language', isCorrect: true },
-          { text: 'Because he wrote them in a completely foreign language', isCorrect: false }
-        ],
-        hint: 'Chapter 2 explains his style and language.'
-      },
-      {
-        question: 'What were tekkés besides places of Sûfî training?',
-        options: [
-          { text: 'Only military castles', isCorrect: false },
-          { text: 'Only trade markets', isCorrect: false },
-          { text: 'Community organizations that helped people and supported fine arts', isCorrect: true }
-        ],
-        hint: 'Chapter 3 explains the social and artistic role of tekkés.'
-      },
-      {
-        question: 'What caused serious political, economic, and social problems in Anatolia?',
-        options: [
-          { text: 'The Babai revolts, Kösedağ defeat, and Mongol invasion', isCorrect: true },
-          { text: 'Yunus Emre’s poetry', isCorrect: false },
-          { text: 'The building of the Ka’ba', isCorrect: false }
-        ],
-        hint: 'The early historical chapters describe these problems.'
-      },
-      {
-        question: 'What happened at Kösedağ in 1243?',
-        options: [
-          { text: 'The Seljuks defeated the Mongols easily', isCorrect: false },
-          { text: 'The Mongols defeated the Seljuks', isCorrect: true },
-          { text: 'Yunus Emre became a sultan', isCorrect: false }
-        ],
-        hint: 'Chapter 5 describes the clash at Kösedağ.'
-      },
-      {
-        question: 'How did Yunus Emre respond to people’s search for meaning in hard times?',
-        options: [
-          { text: 'By becoming a trader on the Silk Road', isCorrect: false },
-          { text: 'By joining the Mongol army', isCorrect: false },
-          { text: 'Through his Sûfî identity and poetry', isCorrect: true }
-        ],
-        hint: 'Chapter 7 says poetry was his most influential tool.'
-      },
-      {
-        question: 'What does tawhid mean in the story?',
-        options: [
-          { text: 'The Oneness of Allah', isCorrect: true },
-          { text: 'A battle tactic', isCorrect: false },
-          { text: 'A type of tax', isCorrect: false }
-        ],
-        hint: 'Chapter 8 directly explains tawhid.'
-      },
-      {
-        question: 'According to Yunus Emre, what is the only true reality?',
-        options: [
-          { text: 'Worldly fame', isCorrect: false },
-          { text: 'Allah', isCorrect: true },
-          { text: 'Human wealth', isCorrect: false }
-        ],
-        hint: 'The chapter about tawhid and unity explains this idea.'
-      },
-      {
-        question: 'What does love bring according to the text?',
-        options: [
-          { text: 'Anger and separation', isCorrect: false },
-          { text: 'Only worldly status', isCorrect: false },
-          { text: 'Unity and harmony', isCorrect: true }
-        ],
-        hint: 'Chapter 10 connects love with unity and harmony.'
-      },
-      {
-        question: 'How is the heart described in Yunus Emre’s philosophy?',
-        options: [
-          { text: 'The center of love and the eye that sees the truth', isCorrect: true },
-          { text: 'A place for pride and anger', isCorrect: false },
-          { text: 'A symbol of trade and money', isCorrect: false }
-        ],
-        hint: 'Chapter 10 focuses on the heart.'
-      },
-      {
-        question: 'Why is death important in Yunus Emre’s poems?',
-        options: [
-          { text: 'Because it teaches people to ignore morality', isCorrect: false },
-          { text: 'Because it is a good advisor for living a meaningful and honest life', isCorrect: true },
-          { text: 'Because it removes the need for patience', isCorrect: false }
-        ],
-        hint: 'Chapter 11 says death is the best advisor for humanity.'
-      },
-      {
-        question: 'Which group contains only bad habits warned against in the story?',
-        options: [
-          { text: 'Honesty, patience, humility', isCorrect: false },
-          { text: 'Generosity, respect, trust in Allah', isCorrect: false },
-          { text: 'Arrogance, stinginess, greed, gossiping', isCorrect: true }
-        ],
-        hint: 'Chapter 12 lists bad habits to avoid.'
-      }
-    ]
-  }
+  { id: 'yunus-b1-review-sequence', type: 'sequencing', title: 'History, Response, Teaching', instructions: 'Put the main developments in order.', question: 'How does the book move from historical background to Yunus Emre’s moral legacy?', sequencingItems: [{ id: '1', text: 'Yunus is introduced as a poet and Sûfî whose language reaches ordinary people' }, { id: '2', text: 'Tekkés and the weakening of Anatolia establish the social setting' }, { id: '3', text: 'Revolts, Kösedağ, raids, taxes, and Mongol control deepen the crisis' }, { id: '4', text: 'Yunus appears as a travelling wise dervish who uses poetry' }, { id: '5', text: 'The story develops tawhid, love, heart, intellect, death, and morality' }, { id: '6', text: 'The final chapter presents his poetry as guidance for future generations' }], correctAnswer: ['1', '2', '3', '4', '5', '6'], explanation: 'The narrative deliberately moves from person and period to response, ideas, and legacy.', feedback: { correct: 'Correct.', incorrect: 'Trace the book’s larger movement rather than individual dates.' } },
+  { id: 'yunus-b1-review-match', type: 'matching', title: 'Ideas and Their Function', instructions: 'Match each idea with its role in the story.', question: 'What function does each idea have?', matchingPairs: [{ left: 'Tekke', right: 'community, cultural, and spiritual support' }, { left: 'Poetry', right: 'a tool for responding to people’s search for meaning' }, { left: 'Heart', right: 'center of love and understanding' }, { left: 'Death', right: 'an advisor that can guide honest living' }], correctAnswer: { Tekke: 'community, cultural, and spiritual support', Poetry: 'a tool for responding to people’s search for meaning', Heart: 'center of love and understanding', Death: 'an advisor that can guide honest living' }, explanation: 'These ideas connect institutions, expression, inner life, and moral reflection.', feedback: { correct: 'Correct.', incorrect: 'Return to Chapters 3, 7, 10, and 11.' } },
+  { id: 'yunus-b1-review-reflection', type: 'reflection', title: 'From Crisis to Character', instructions: 'Use evidence from at least two chapters.', question: 'Which part of Yunus Emre’s message seems most directly shaped by the needs of people living through instability, and why?', correctAnswer: null, explanation: 'Strong responses should connect a historical need—fear, poverty, disorder, loss of meaning—with a text-supported response such as community, poetry, patience, love, or moral self-control.', feedback: { correct: 'Good evidence-based reflection.', incorrect: '' }, discussionPrompts: [{ question: 'Which historical detail best explains why people needed moral or spiritual guidance?', mode: 'Pair' }, { question: 'Which teaching could be turned into a concrete action today?', mode: 'Individual' }] },
+  { id: 'yunus-b1-review-quiz', type: 'quiz-game', title: 'Retrieval Quiz Game', instructions: 'Answer 8 new questions without returning to the Knowledge Check first.', question: 'Can you reconnect the book’s historical, literary, and moral ideas?', correctAnswer: null, explanation: 'This quiz retrieves relationships and evidence that are different from the Knowledge Check items.', feedback: { correct: 'Strong retrieval.', incorrect: 'Use the hint to return to the relevant chapter.' }, quizQuestions: [
+    { question: 'Which feature best explains why Yunus’s simple Turkish still had literary importance?', options: [{ text: 'It made important ideas accessible while helping develop literary Turkish', isCorrect: true }, { text: 'It removed all spiritual meaning from poetry', isCorrect: false }, { text: 'It copied only court Persian', isCorrect: false }], hint: 'Chapter 1 links simple Turkish with literary development.' },
+    { question: 'Why is Kösedağ a turning point in the historical section?', options: [{ text: 'The defeat opened the way to deeper Mongol domination and destruction', isCorrect: true }, { text: 'It restored complete Seljuk independence', isCorrect: false }, { text: 'It ended migration into Anatolia', isCorrect: false }], hint: 'Review Chapters 5–6.' },
+    { question: 'What contrast appears between political power and Yunus’s influence?', options: [{ text: 'Political structures weaken while poetry and moral guidance continue to reach people', isCorrect: true }, { text: 'Yunus becomes the Seljuk sultan', isCorrect: false }, { text: 'Poetry disappears when Mongol control begins', isCorrect: false }], hint: 'Connect the historical chapters with Chapter 7.' },
+    { question: 'Why is the phrase “love brings unity and harmony” important?', options: [{ text: 'It explains love as a social and spiritual force against separation', isCorrect: true }, { text: 'It presents love as a form of tax', isCorrect: false }, { text: 'It says love replaces prayer', isCorrect: false }], hint: 'Chapter 10 contrasts love with anger and separation.' },
+    { question: 'What does the story imply when heart and intellect must support one another?', options: [{ text: 'Sound spiritual life needs both inner feeling and thoughtful understanding', isCorrect: true }, { text: 'Only emotion matters', isCorrect: false }, { text: 'Only abstract reasoning matters', isCorrect: false }], hint: 'Read the end of Chapter 10 and start of Chapter 11 together.' },
+    { question: 'Why is greed described as a prison?', options: [{ text: 'The image shows how a bad habit can trap a person morally', isCorrect: true }, { text: 'The poem describes a real Seljuk prison', isCorrect: false }, { text: 'Greed is praised as a useful skill', isCorrect: false }], hint: 'Chapter 12 uses a metaphor.' },
+    { question: 'What do the patience verses add to the final chapter?', options: [{ text: 'They show patience as active strength linked with lasting success', isCorrect: true }, { text: 'They say patience means doing nothing', isCorrect: false }, { text: 'They reject all moral effort', isCorrect: false }], hint: 'Look at the images of a lasting kingdom and rising upward.' },
+    { question: 'Which statement best captures the book’s overall design?', options: [{ text: 'Historical crisis provides context for understanding why Yunus’s poetry and moral thought mattered', isCorrect: true }, { text: 'The historical chapters are unrelated to the spiritual chapters', isCorrect: false }, { text: 'The book is mainly a list of dates and rulers', isCorrect: false }], hint: 'Think about why Chapters 3–7 are placed before the main teaching chapters.' },
+  ] },
+];
+
+export const yunusB1FinalChallengeExercises: Exercise[] = [
+  { id: 'yunus-b1-final-1', type: 'multiple-choice', title: 'Clarity with Depth', instructions: 'Choose the best explanation.', question: 'What best explains Yunus Emre’s lasting literary reach?', options: ['He combined accessible Turkish with important moral and spiritual ideas', 'He wrote only for rulers in a technical court language', 'He avoided questions of morality'], correctAnswer: 0, explanation: 'The story repeatedly connects clarity, literary quality, and moral influence.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 1–2.' } },
+  { id: 'yunus-b1-final-2', type: 'multiple-choice', title: 'Historical Chain', instructions: 'Choose the best supported chain.', question: 'Which sequence best explains the worsening crisis in Anatolia?', options: ['Poor governance and unrest → Kösedağ defeat → raids and tribute → deeper Mongol control', 'Strong government → peace → no migration → Seljuk expansion', 'Poetry → revolt → Mongol retreat → economic growth'], correctAnswer: 0, explanation: 'Chapters 4–6 build this cause-and-consequence chain.', feedback: { correct: 'Correct.', incorrect: 'Review the historical sequence rather than isolated events.' } },
+  { id: 'yunus-b1-final-3', type: 'multiple-choice', title: 'A Response to Hard Times', instructions: 'Choose the best inference.', question: 'Why is Yunus’s role as a travelling dervish important to the story’s argument?', options: ['It shows a spiritual and poetic response emerging within a society searching for meaning', 'It shows that he became a Mongol governor', 'It shows that he stopped writing poetry'], correctAnswer: 0, explanation: 'Chapter 7 directly connects social need, Sûfî identity, travel, and poetry.', feedback: { correct: 'Correct.', incorrect: 'Return to Chapter 7.' } },
+  { id: 'yunus-b1-final-4', type: 'true-false', title: 'Source Caution', instructions: 'Decide whether the statement is supported.', question: 'The story states with absolute certainty that every detail of Yunus Emre’s formal education is known.', correctAnswer: false, explanation: 'Chapter 2 uses qualified language: “Some sources say” he received a good madrasa education.', feedback: { correct: 'Correct.', incorrect: 'Notice how the source claim is qualified.' } },
+  { id: 'yunus-b1-final-5', type: 'true-false', title: 'Love and Separation', instructions: 'Decide whether the statement is supported.', question: 'The story presents love as a force for unity and describes its absence as connected with anger and separation.', correctAnswer: true, explanation: 'This contrast appears explicitly in Chapter 10.', feedback: { correct: 'Correct.', incorrect: 'Review the first paragraph of Chapter 10.' } },
+  { id: 'yunus-b1-final-6', type: 'matching', title: 'Concept and Evidence', instructions: 'Match each concept with the strongest evidence.', question: 'Which evidence best supports each concept?', matchingPairs: [{ left: 'Tawhid', right: 'Allah is presented as the One and the source of all things' }, { left: 'Moral discipline', right: 'people are urged to leave greed, arrogance, gossip, and jealousy' }], correctAnswer: { Tawhid: 'Allah is presented as the One and the source of all things', 'Moral discipline': 'people are urged to leave greed, arrogance, gossip, and jealousy' }, explanation: 'The pairs come from different parts of the story and test concept-to-evidence links.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 8 and 12.' } },
+  { id: 'yunus-b1-final-7', type: 'matching', title: 'Institution and Contribution', instructions: 'Match each element with its contribution.', question: 'How do these two parts of Yunus’s world support people differently?', matchingPairs: [{ left: 'Tekke', right: 'provides training, community support, and a cultural setting' }, { left: 'Poetry', right: 'communicates meaning and moral guidance beyond the institution' }], correctAnswer: { Tekke: 'provides training, community support, and a cultural setting', Poetry: 'communicates meaning and moral guidance beyond the institution' }, explanation: 'The book presents institutions and expression as complementary forms of support.', feedback: { correct: 'Correct.', incorrect: 'Connect Chapters 3 and 7.' } },
+  { id: 'yunus-b1-final-8', type: 'fill-blanks', title: 'Heart and Intellect', instructions: 'Complete the sentence with the two key words.', question: 'Complete the relationship described in Chapters 10–11.', fillBlanksText: 'For spiritual salvation, the ___ and the ___ should support one another.', correctAnswer: ['heart', 'intellect'], explanation: 'Chapter 11 explicitly connects heart and intellect.', feedback: { correct: 'Correct.', incorrect: 'Review the opening sentence of Chapter 11.' } },
+  { id: 'yunus-b1-final-9', type: 'fill-blanks', title: 'Death as Guidance', instructions: 'Complete the idea with the word used in the chapter.', question: 'What role does death play in Yunus’s moral thinking?', fillBlanksText: 'Death is described as an ___ that can help a person live a meaningful and honest life.', correctAnswer: ['advisor'], explanation: 'The chapter calls death the best advisor for humanity.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence that explains death’s role.' } },
+  { id: 'yunus-b1-final-10', type: 'sequencing', title: 'From Context to Legacy', instructions: 'Put the four stages in the book’s logical order.', question: 'How does the story build its overall argument?', sequencingItems: [{ id: '1', text: 'Introduce Yunus, his language, and Sûfî framework' }, { id: '2', text: 'Show the political and social crisis of Anatolia' }, { id: '3', text: 'Present Yunus’s poetic and spiritual response' }, { id: '4', text: 'Develop his moral teachings and lasting legacy' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The book’s structure moves from identity to context, response, teaching, and legacy.', feedback: { correct: 'Correct.', incorrect: 'Think about the four major sections of the story.' } },
 ];
