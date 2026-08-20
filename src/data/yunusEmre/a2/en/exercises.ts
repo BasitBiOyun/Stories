@@ -1,78 +1,61 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+export const yunusA2QuickChallenges: Record<number, Exercise> = {
+  1: { id:'yunus-a2-quick-1', type:'multiple-choice', title:'Simple Turkish', instructions:'Choose the answer supported by Chapter 1.', question:'Why could many people understand Yunus Emre’s poems easily?', options:['He used simple Turkish','He wrote only for scholars','He used no Turkish'], correctAnswer:0, explanation:'The chapter directly connects simple Turkish with easy understanding.', feedback:{correct:'Correct.',incorrect:'Return to the first paragraph and find the language-result link.'}},
+  2: { id:'yunus-a2-quick-2', type:'tap-reveal', title:'Wealth in the Hand', instructions:'Answer first, then reveal.', question:'What did dervishes do with what they had?', tapRevealItems:[{question:'What did they do?',answer:'They shared what they had with the needy.'}], correctAnswer:'They shared what they had with the needy.', explanation:'Their wealth was described as being in their hands to give, not in their hearts.', feedback:{correct:'Correct.',incorrect:'Find the sentence about the needy.'}},
+  3: { id:'yunus-a2-quick-3', type:'matching', title:'A Disciplined Life', instructions:'Match the habit with the chapter idea.', question:'How did the chapter describe dervish daily life?', matchingPairs:[{left:'Eat, speak and sleep',right:'less'},{left:'Time',right:'spent on useful activities'}], correctAnswer:{'Eat, speak and sleep':'less','Time':'spent on useful activities'}, explanation:'The chapter describes a moderate, disciplined life.', feedback:{correct:'Correct.',incorrect:'Reread the paragraph after the poem.'}},
+  4: { id:'yunus-a2-quick-4', type:'multiple-choice', title:'An Ordinary Service', instructions:'Choose the purpose stated in Chapter 4.', question:'Why could an ordinary job such as wood-cutting be important in the dervish house?', options:['It could help break the ego and leave bad behaviours','It could make Yunus rich','It could make him famous'], correctAnswer:0, explanation:'The chapter says the primary goal of such service is to break the ego and give up bad behaviours.', feedback:{correct:'Correct.',incorrect:'Find the sentence after “Some works look ordinary”.'}},
+  5: { id:'yunus-a2-quick-5', type:'multiple-choice', title:'Wood and the Heart', instructions:'Choose the inner meaning stated in Chapter 5.', question:'What was Yunus really training while he worked carefully with the wood?', options:['His heart and ego','His ability to sell wood','His speed in the mountains'], correctAnswer:0, explanation:'The chapter says he was training and fixing his own heart and ego.', feedback:{correct:'Correct.',incorrect:'Compare the outer work with what the text says was happening “in fact”.'}},
+  6: { id:'yunus-a2-quick-6', type:'true-false', title:'Learning from Nature', instructions:'Decide whether the statement agrees with Chapter 6.', question:'Yunus looked at nature and found lessons and deeper meaning in it.', correctAnswer:true, explanation:'Trees, animals, rivers and quiet mountain life are presented as sources of reflection and learning.', feedback:{correct:'Correct.',incorrect:'Reread the final two paragraphs.'}},
+  7: { id:'yunus-a2-quick-7', type:'multiple-choice', title:'A Single Daisy', instructions:'Choose Yunus’s reason.', question:'Why did Yunus return with only one daisy?', options:['He said the other flowers were remembering Allah, so he could not cut them','There were no other flowers','Taptuk ordered him to bring exactly one'], correctAnswer:0, explanation:'Yunus says he heard the flowers remembering Allah and did not cut them.', feedback:{correct:'Correct.',incorrect:'Use Yunus’s reply to Taptuk.'}},
+  8: { id:'yunus-a2-quick-8', type:'matching', title:'Daily-Life Lesson', instructions:'Match the final advice with its action.', question:'What does the final chapter ask the reader to do?', matchingPairs:[{left:'Heart',right:'remember Allah'},{left:'Work',right:'do every job well and correctly'}], correctAnswer:{Heart:'remember Allah',Work:'do every job well and correctly'}, explanation:'The closing paragraph joins remembrance with careful daily work.', feedback:{correct:'Correct.',incorrect:'Return to the final paragraph.'}}
+};
+
+export const yunusA2KnowledgeCheckExercises: Exercise[] = [
+  { id:'yunus-a2-kc-1', type:'multiple-choice', title:'Travels', instructions:'Choose the places named in Chapter 1.', question:'Which places outside Anatolia does the chapter say Yunus travelled to?', options:['Syria and Azerbaijan','Egypt and Spain','India and China'], correctAnswer:0, explanation:'The chapter names Syria and Azerbaijan.', feedback:{correct:'Correct.',incorrect:'Look at the final paragraph of Chapter 1.'}},
+  { id:'yunus-a2-kc-2', type:'multiple-choice', title:'Calling Themselves Poor', instructions:'Choose the best explanation from Chapter 2.', question:'Why could wealthy dervishes still call themselves poor?', options:['They knew they needed Allah and did not keep wealth in their hearts','They had lost all their money','They were not allowed to help anyone'], correctAnswer:0, explanation:'The text connects spiritual need for Allah with not attaching the heart to wealth.', feedback:{correct:'Correct.',incorrect:'Reread the sentences about being rich, poor, heart and hands.'}},
+  { id:'yunus-a2-kc-3', type:'multiple-choice', title:'Dervish Values', instructions:'Choose the group stated in Chapter 3.', question:'Which values are named at the start of Chapter 3?', options:['Honesty, patience, humility, generosity, respect and trust in Allah','Speed, competition and wealth','Silence, travel and business'], correctAnswer:0, explanation:'These values open Chapter 3.', feedback:{correct:'Correct.',incorrect:'Read the first sentence of Chapter 3.'}},
+  { id:'yunus-a2-kc-4', type:'true-false', title:'First Condition', instructions:'Decide whether the statement agrees with Chapter 4.', question:'A student in Taptuk Emre’s dervish house had to be humble and willing to serve others and creation.', correctAnswer:true, explanation:'This is stated as the first condition for a student.', feedback:{correct:'Correct.',incorrect:'Read the opening paragraph of Chapter 4.'}},
+  { id:'yunus-a2-kc-5', type:'multiple-choice', title:'Years of Service', instructions:'Choose the number given in Chapter 5.', question:'How long does the chapter say Yunus served Taptuk Emre in this way?', options:['Forty years','Four years','Fourteen years'], correctAnswer:0, explanation:'The chapter says exactly forty years.', feedback:{correct:'Correct.',incorrect:'Find the paragraph where Taptuk notices the wood.'}},
+  { id:'yunus-a2-kc-6', type:'multiple-choice', title:'The Mountains', instructions:'Choose the description supported by Chapter 6.', question:'Why were the mountains useful for quiet reflection?', options:['They were quiet and far from people','They were crowded markets','They had no living things'], correctAnswer:0, explanation:'The chapter describes the mountains as quiet and far from people.', feedback:{correct:'Correct.',incorrect:'Use the final paragraph of Chapter 6.'}},
+  { id:'yunus-a2-kc-7', type:'true-false', title:'Other Dervishes', instructions:'Decide whether the statement agrees with Chapter 7.', question:'Some dervishes made fun of Yunus when he returned with one daisy.', correctAnswer:true, explanation:'The chapter says they whispered and made fun of him.', feedback:{correct:'Correct.',incorrect:'Read the paragraph after Yunus returns.'}},
+  { id:'yunus-a2-kc-8', type:'multiple-choice', title:'The Daisy Speaks', instructions:'Choose what the daisy says in Chapter 8.', question:'Why does the daisy say Yunus may pick it?', options:['Its time is up; it is dried up and dying','It wants to win Taptuk’s prize','It is the only flower in the field'], correctAnswer:0, explanation:'The daisy says its time is up and it is dried up and dying.', feedback:{correct:'Correct.',incorrect:'Read the quotation at the start of Chapter 8.'}}
+];
+
+export const yunusA2VocabularyChallengePairs = [
+  { word:'madrasa', meaning:'A traditional school for study and learning' },
+  { word:'charity', meaning:'Help, money or things given to people in need' },
+  { word:'humility', meaning:'Not thinking you are better than other people' },
+  { word:'crooked', meaning:'Not straight; bent' },
+  { word:'ego', meaning:'The self that can become proud or selfish' },
+  { word:'fruitful', meaning:'Useful and producing good results' }
+];
 
 export const yunusA2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'yunus-a2-review-sequence',
-    type: 'sequencing',
-    title: 'Yunus Emre’s Learning Journey',
-    instructions: 'Put the main developments in the correct order.',
-    question: 'How does the story move from biography to daily-life lessons?',
-    correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'The book introduces Yunus as a poet and dervish, follows his disciplined training and service, develops the straight-wood lesson, then uses nature and the daisy story before ending with advice for daily life.',
-    feedback: { correct: 'Correct. You connected the main stages of Yunus’s learning journey.', incorrect: 'Begin with the poet/dervish introduction, then follow training, wood service, inner meaning, nature, and the final lesson.' },
-    sequencingItems: [
-      { id: '1', text: 'Yunus is introduced as a poet who used simple Turkish and became Taptuk Emre’s pupil' },
-      { id: '2', text: 'The story explains the disciplined values and habits of dervish life' },
-      { id: '3', text: 'Taptuk gives Yunus the ordinary service of collecting wood' },
-      { id: '4', text: 'The wood work is explained as training the heart and ego' },
-      { id: '5', text: 'Yunus learns from nature and returns with a single daisy' },
-      { id: '6', text: 'The story ends with advice to remember Allah and do every job well' }
-    ]
-  },
-  {
-    id: 'yunus-a2-review-match',
-    type: 'matching',
-    title: 'Outer Action and Inner Meaning',
-    instructions: 'Match each story detail with the simple meaning attached to it in the chapters.',
-    question: 'What does each action or image teach?',
-    matchingPairs: [
-      { left: 'Simple Turkish', right: 'helped people understand the poems' },
-      { left: 'Sharing with the needy', right: 'showed generosity' },
-      { left: 'Straight wood', right: 'connected with honest and corrected character' },
-      { left: 'Looking at nature', right: 'helped Yunus find deeper lessons' }
-    ],
-    correctAnswer: {
-      'Simple Turkish': 'helped people understand the poems',
-      'Sharing with the needy': 'showed generosity',
-      'Straight wood': 'connected with honest and corrected character',
-      'Looking at nature': 'helped Yunus find deeper lessons'
-    },
-    explanation: 'These matches connect visible details with the straightforward meanings stated in the story.',
-    feedback: { correct: 'Correct. You connected the story details with their chapter meanings.', incorrect: 'Check Chapters 1, 2, 5–6 and compare the visible action with the explanation given in the text.' }
-  },
-  {
-    id: 'yunus-a2-review-reflection',
-    type: 'reflection',
-    title: 'Work, Character, and Meaning',
-    instructions: 'Think from the story and give a short A2 response.',
-    question: 'How can an ordinary job become part of learning or self-improvement in Yunus Emre’s story?',
-    correctAnswer: null,
-    explanation: 'Woodcutting looked ordinary, but the story says it trained Yunus’s heart and ego and taught him to do the right thing carefully.',
-    feedback: { correct: 'Support your answer with the wood story and one final daily-life lesson.', incorrect: '' },
-    discussionPrompts: [
-      { question: 'What was Yunus’s ordinary duty?', mode: 'Individual' },
-      { question: 'What inner meaning did the story give to that work?', mode: 'Pair' },
-      { question: 'How does Chapter 8 turn that story into advice for daily life?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'yunus-a2-review-quiz',
-    type: 'quiz-game',
-    title: 'Yunus Emre A2 Retrieval Review',
-    instructions: 'Answer eight questions from across the story. Use the hint only when you need it.',
-    question: 'Can you reconnect the main ideas without rereading everything?',
-    correctAnswer: null,
-    explanation: 'The questions review language, values, discipline, service, simple symbolic meaning, nature, and daily-life lessons.',
-    feedback: { correct: 'Good retrieval. Keep connecting each answer to the chapter evidence.', incorrect: 'Use the hint to return to the relevant chapter idea, then try again.' },
-    quizQuestions: [
-      { question: 'Why could people understand Yunus Emre’s poems easily?', options: [{ text: 'He used simple Turkish', isCorrect: true }, { text: 'He wrote only for scholars', isCorrect: false }, { text: 'He avoided Turkish', isCorrect: false }], hint: 'Look at the language-result link in Chapter 1.' },
-      { question: 'What did dervishes do with wealth that was “in their hands”?', options: [{ text: 'They shared what they had with the needy', isCorrect: true }, { text: 'They kept everything for themselves', isCorrect: false }, { text: 'They used it only to travel', isCorrect: false }], hint: 'Use the wealth and charity paragraph in Chapter 2.' },
-      { question: 'What did “ate less, spoke less, slept less” show?', options: [{ text: 'A moderate and disciplined way of life', isCorrect: true }, { text: 'A plan to become famous poets', isCorrect: false }, { text: 'A rule against useful activities', isCorrect: false }], hint: 'Read the final paragraph before Yunus’s training is named.' },
-      { question: 'Why was collecting wood more than an ordinary chore in the story?', options: [{ text: 'It was part of training the ego and leaving bad behaviour', isCorrect: true }, { text: 'It was a way to become rich', isCorrect: false }, { text: 'It was preparation for a market job', isCorrect: false }], hint: 'Chapter 4 states the primary goal of the service.' },
-      { question: 'What simple inner meaning does Chapter 5 give the wood work?', options: [{ text: 'Training and fixing Yunus’s heart and ego', isCorrect: true }, { text: 'Building a new city', isCorrect: false }, { text: 'Winning a flower contest', isCorrect: false }], hint: 'Compare the outer work with what the text says happens “in fact”.' },
-      { question: 'What did Yunus learn to do in nature?', options: [{ text: 'Find lessons and deeper meaning in what he saw', isCorrect: true }, { text: 'Ignore everything except wood', isCorrect: false }, { text: 'Avoid quiet places', isCorrect: false }], hint: 'Use Chapter 6’s paragraph about trees, animals, rivers, and deeper meaning.' },
-      { question: 'Why did Yunus bring only one daisy?', options: [{ text: 'He said the other flowers were remembering Allah, so he could not cut them', isCorrect: true }, { text: 'There were no other flowers', isCorrect: false }, { text: 'Taptuk asked him to bring exactly one flower', isCorrect: false }], hint: 'The number matters because of Yunus’s reason, not because the field was empty.' },
-      { question: 'What final lesson connects the wood and flower stories with daily life?', options: [{ text: 'Remember Allah and do every job well and correctly', isCorrect: true }, { text: 'Only unusual jobs are important', isCorrect: false }, { text: 'Daily work has no deeper value', isCorrect: false }], hint: 'Use the final paragraph of Chapter 8.' }
-    ]
-  }
+  { id:'yunus-a2-review-sequence', type:'sequencing', title:'Yunus Emre’s Learning Journey', instructions:'Put the major developments in order.', question:'How does the story move from biography to daily-life lessons?', sequencingItems:[{id:'1',text:'Yunus is introduced as a poet and Taptuk Emre’s pupil'},{id:'2',text:'The difficult and disciplined dervish path is explained'},{id:'3',text:'Yunus is given the service of collecting wood'},{id:'4',text:'The wood work becomes training for his heart and ego'},{id:'5',text:'Nature and the daisy deepen his learning'},{id:'6',text:'The story ends with advice for daily life'}], correctAnswer:['1','2','3','4','5','6'], explanation:'This is the book’s main progression.', feedback:{correct:'Correct.',incorrect:'Begin with the biography, then follow training, service, nature and the closing lesson.'}},
+  { id:'yunus-a2-review-match', type:'matching', title:'Action and Meaning', instructions:'Match each detail with its chapter meaning.', question:'What does each detail show?', matchingPairs:[{left:'Moral poems',right:'carry lessons important to culture'},{left:'Leaving jealousy and selfishness',right:'changing bad habits'},{left:'Straight pieces chosen carefully',right:'care in ordinary service'},{left:'Dervish-house lessons and talks',right:'also helped Yunus learn'}], correctAnswer:{'Moral poems':'carry lessons important to culture','Leaving jealousy and selfishness':'changing bad habits','Straight pieces chosen carefully':'care in ordinary service','Dervish-house lessons and talks':'also helped Yunus learn'}, explanation:'The matches retrieve four different chapter relationships.', feedback:{correct:'Correct.',incorrect:'Return to Chapters 1, 2, 5 and 6.'}},
+  { id:'yunus-a2-review-reflection', type:'reflection', title:'Work and Character', instructions:'Give a short A2 answer with one story example.', question:'How can an ordinary job help a person improve in this story?', correctAnswer:null, explanation:'Woodcutting is presented as ordinary service that also trains Yunus’s heart and behaviour.', feedback:{correct:'Use the wood story and one clear lesson.',incorrect:''}, discussionPrompts:[{question:'What job did Yunus do?',mode:'Individual'},{question:'What did the job train?',mode:'Pair'},{question:'What daily-life lesson can you connect to it?',mode:'Class'}]},
+  { id:'yunus-a2-review-quiz', type:'quiz-game', title:'Yunus Emre A2 Retrieval Quiz', instructions:'Answer eight new questions from across the story.', question:'Can you reconnect important details without repeating the Knowledge Check?', correctAnswer:null, explanation:'These questions retrieve different details from the whole book.', feedback:{correct:'Good retrieval.',incorrect:'Use the hint and return to the named chapter.'}, quizQuestions:[
+    {question:'What kind of lessons did Yunus Emre’s poems contain?',options:[{text:'Important moral lessons',isCorrect:true},{text:'Only business advice',isCorrect:false},{text:'Only travel directions',isCorrect:false}],hint:'Chapter 1, first paragraph.'},
+    {question:'Which habit is one the dervishes tried to leave?',options:[{text:'Jealousy',isCorrect:true},{text:'Kindness',isCorrect:false},{text:'Generosity',isCorrect:false}],hint:'Chapter 2, final sentence.'},
+    {question:'How does Chapter 3 describe the path of dervishhood?',options:[{text:'Very difficult',isCorrect:true},{text:'Easy and effortless',isCorrect:false},{text:'Only for poets',isCorrect:false}],hint:'Look before the poem.'},
+    {question:'What kind of wood did Yunus refuse to cut or bring?',options:[{text:'Green or crooked wood',isCorrect:true},{text:'Dry straight wood',isCorrect:false},{text:'All wood',isCorrect:false}],hint:'Chapter 4, final paragraph.'},
+    {question:'What question did Taptuk ask after noticing Yunus’s wood?',options:[{text:'Is there no crooked wood in the mountains?',isCorrect:true},{text:'Why do you write poems?',isCorrect:false},{text:'Why did you leave Anatolia?',isCorrect:false}],hint:'End of Chapter 5.'},
+    {question:'Besides nature, what also helped Yunus with his learning?',options:[{text:'Lessons and talks at the dervish house',isCorrect:true},{text:'A market competition',isCorrect:false},{text:'A royal school abroad',isCorrect:false}],hint:'Middle of Chapter 6.'},
+    {question:'What did Taptuk promise to the student with the most beautiful bunch?',options:[{text:'A gift',isCorrect:true},{text:'A new house',isCorrect:false},{text:'Money for travel',isCorrect:false}],hint:'Opening of Chapter 7.'},
+    {question:'What should fill our hearts during daily life according to Chapter 8?',options:[{text:'Love for Allah',isCorrect:true},{text:'Pride in ourselves',isCorrect:false},{text:'Fear of ordinary work',isCorrect:false}],hint:'Closing paragraph.'}
+  ]}
+];
+
+export const yunusA2FinalChallengeExercises: Exercise[] = [
+  { id:'yunus-a2-final-1', type:'multiple-choice', title:'Birth', instructions:'Choose the fact stated in Chapter 1.', question:'When and where was Yunus Emre born?', options:['In 1240 in Anatolia','In 1320 in Syria','In 1273 in Azerbaijan'], correctAnswer:0, explanation:'The chapter says 1240 in Anatolia.', feedback:{correct:'Correct.',incorrect:'Check the opening sentences.'}},
+  { id:'yunus-a2-final-2', type:'multiple-choice', title:'Kind Character', instructions:'Choose the behaviour stated in Chapter 2.', question:'How did dervishes try to treat other people?', options:['They forgave and tolerated them','They avoided everyone','They answered kindness with jealousy'], correctAnswer:0, explanation:'Forgiveness and tolerance are stated directly.', feedback:{correct:'Correct.',incorrect:'Use the second paragraph of Chapter 2.'}},
+  { id:'yunus-a2-final-3', type:'multiple-choice', title:'Useful Time', instructions:'Choose the best description from Chapter 3.', question:'What did dervishes do with much of their time?', options:['They spent it on useful activities','They spent it collecting wealth','They slept all day'], correctAnswer:0, explanation:'The chapter says they spent their time on useful activities.', feedback:{correct:'Correct.',incorrect:'Return to the paragraph after the poem.'}},
+  { id:'yunus-a2-final-4', type:'true-false', title:'Ordinary Work', instructions:'Decide whether the statement agrees with Chapter 4.', question:'The story says some ordinary-looking work can have the goal of breaking the ego and leaving bad behaviour.', correctAnswer:true, explanation:'This is the stated purpose of the service.', feedback:{correct:'Correct.',incorrect:'Reread the middle paragraph.'}},
+  { id:'yunus-a2-final-5', type:'true-false', title:'Becoming Better', instructions:'Decide whether the statement agrees with Chapter 6.', question:'The chapter says woodcutting in nature helped Yunus become a better person.', correctAnswer:true, explanation:'The chapter states this directly.', feedback:{correct:'Correct.',incorrect:'Find the sentence after the dervish-house lessons and talks.'}},
+  { id:'yunus-a2-final-6', type:'matching', title:'Tool and Inner Work', instructions:'Match the Chapter 5 detail with its meaning.', question:'What happens in the outer work and the inner work?', matchingPairs:[{left:'Axe',right:'cuts wood'},{left:'Inner training',right:'fixes a bad part of himself'}], correctAnswer:{Axe:'cuts wood','Inner training':'fixes a bad part of himself'}, explanation:'Chapter 5 connects each use of the axe with correcting himself.', feedback:{correct:'Correct.',incorrect:'Compare the physical action and the inner explanation.'}},
+  { id:'yunus-a2-final-7', type:'matching', title:'Field and Daisy', instructions:'Match the Chapter 7 detail with the reason.', question:'What did Yunus experience in the field?', matchingPairs:[{left:'Other flowers',right:'he heard them saying the name of Allah'},{left:'Single daisy',right:'the one he finally brought back'}], correctAnswer:{'Other flowers':'he heard them saying the name of Allah','Single daisy':'the one he finally brought back'}, explanation:'These two details explain the unusual result of the flower task.', feedback:{correct:'Correct.',incorrect:'Use Yunus’s answer to Taptuk.'}},
+  { id:'yunus-a2-final-8', type:'fill-blanks', title:'Meaningful Life', instructions:'Complete the sentence with the story word.', question:'Doing every job well helps us live a ___ life.', fillBlanksText:'Doing every job well helps us live a [[meaningful]] life.', correctAnswer:['meaningful'], explanation:'The closing paragraph uses “meaningful and fruitful life”.', feedback:{correct:'Correct.',incorrect:'Look at the final sentence.'}},
+  { id:'yunus-a2-final-9', type:'fill-blanks', title:'Education', instructions:'Complete the sentence with the story word.', question:'Before following the way of the dervishes, Yunus completed his ___ education.', fillBlanksText:'Before following the way of the dervishes, Yunus completed his [[madrasa]] education.', correctAnswer:['madrasa'], explanation:'Chapter 1 names his madrasa education.', feedback:{correct:'Correct.',incorrect:'Use the second paragraph of Chapter 1.'}},
+  { id:'yunus-a2-final-10', type:'sequencing', title:'From Service to Lesson', instructions:'Put the chain in order.', question:'How does the wood story develop?', sequencingItems:[{id:'1',text:'Taptuk gives Yunus a service duty'},{id:'2',text:'Yunus repeatedly carries carefully chosen wood'},{id:'3',text:'The work trains his heart and ego'},{id:'4',text:'The story turns the service into a daily-life lesson'}], correctAnswer:['1','2','3','4'], explanation:'The sequence moves from assigned action to repeated practice, inner change and general lesson.', feedback:{correct:'Correct.',incorrect:'Follow Chapters 4, 5 and 8 in order.'}}
 ];
