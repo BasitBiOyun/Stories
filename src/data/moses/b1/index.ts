@@ -41,13 +41,13 @@ const buildPages = (
 const englishPages = buildPages(mosesB1Pages, mosesB1QuickChallenges, mosesB1KnowledgeCheckExercises, mosesB1VocabularyChallengePairs, mosesB1FinalReviewExercises, mosesB1FinalChallengeExercises);
 const arabicPages = buildPages(mosesB1PagesAr, mosesB1QuickChallengesAr, mosesB1KnowledgeCheckExercisesAr, mosesB1VocabularyChallengePairsAr, mosesB1FinalReviewExercisesAr, mosesB1FinalChallengeExercisesAr);
 
-export const mosesB1En: BookData = {
+export const mosesB1BookDataEn: BookData = {
   id: 'moses-b1-en', level: 'B1', title: 'The Story of Prophet Moses (pbuh)', pages: englishPages,
   teacherGuide: mosesB1TeacherGuide, selfStudyGuide: mosesB1SelfStudyGuide,
   teacherGuideMetadata: mosesB1TeacherGuideMetadata, studentGuideMetadata: mosesB1StudentGuideMetadata, baseFontSize: 13,
 };
 
-export const mosesB1Ar: BookData = {
+export const mosesB1BookDataAr: BookData = {
   id: 'moses-b1-ar', level: 'B1', title: 'قصة النبي موسى عليه السلام', pages: arabicPages,
   teacherGuide: mosesB1TeacherGuideAr, selfStudyGuide: mosesB1SelfStudyGuideAr,
   teacherGuideMetadata: mosesB1TeacherGuideMetadataAr, studentGuideMetadata: mosesB1StudentGuideMetadataAr, baseFontSize: 14,
