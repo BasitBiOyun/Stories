@@ -1,78 +1,68 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+// المصدر اليدوي الوحيد لجميع أنشطة التعلّم العربية في Mecca A2.
+
+export const meccaA2QuickChallengesAr: Record<number, Exercise> = {
+  1: { id: 'mecca-a2-ar-quick-1', type: 'matching', title: 'مكانة بلال', instructions: 'صل كل فكرة بما يقوله الفصل.', question: 'لماذا قصة بلال مهمة؟', matchingPairs: [{ left: 'الأذان', right: 'كان بلال أول من أقامه في تاريخ الإسلام' }, { left: 'قيمة الإنسان', right: 'لون البشرة أو العبودية لا يجعل الإنسان أقل قيمة' }], correctAnswer: { 'الأذان': 'كان بلال أول من أقامه في تاريخ الإسلام', 'قيمة الإنسان': 'لون البشرة أو العبودية لا يجعل الإنسان أقل قيمة' }, explanation: 'يقدم الفصل دور بلال التاريخي ودرس قيمة الإنسان.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى بداية الفصل ونهايته.' } },
+  2: { id: 'mecca-a2-ar-quick-2', type: 'multiple-choice', title: 'الغني والفقير', instructions: 'اختر أفضل تلخيص.', question: 'ما الفرق غير العادل الذي يصفه الفصل الثاني؟', options: ['عاش الأغنياء في رفاهية بينما عاش كثير من الفقراء في حاجة', 'كان لدى الجميع المال نفسه', 'كان الفقراء أقوى من الأغنياء'], correctAnswer: 0, explanation: 'يقارن الفصل بين رفاهية الأغنياء وحاجة الفقراء.', feedback: { correct: 'صحيح.', incorrect: 'اقرأ الفقرة التي تقارن الأغنياء بالفقراء.' } },
+  3: { id: 'mecca-a2-ar-quick-3', type: 'true-false', title: 'القوة في مكة', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'كان أمية رجلًا غنيًا قويًا وأراد أن تتوقف رسالة الإسلام.', correctAnswer: true, explanation: 'يصف الفصل أمية بأنه من أغنى وأقوى قادة مكة ومن أعداء الإسلام.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل الثالث.' } },
+  4: { id: 'mecca-a2-ar-quick-4', type: 'matching', title: 'العمل والمعاملة', instructions: 'صل كل جانب من حياة بلال بدليل الفصل.', question: 'ما الذي جعل حياة بلال صعبة؟', matchingPairs: [{ left: 'العمل', right: 'كان يرعى الجمال ويعمل تحت الشمس الحارة' }, { left: 'المعاملة', right: 'كان أهل البيت يسيئون إليه ولا يحترمونه' }], correctAnswer: { 'العمل': 'كان يرعى الجمال ويعمل تحت الشمس الحارة', 'المعاملة': 'كان أهل البيت يسيئون إليه ولا يحترمونه' }, explanation: 'يظهر الفصل العمل الشاق والمعاملة غير المحترمة معًا.', feedback: { correct: 'صحيح.', incorrect: 'فرّق بين عمل بلال وطريقة معاملته.' } },
+  5: { id: 'mecca-a2-ar-quick-5', type: 'tap-reveal', title: 'رسالة جديدة', instructions: 'أجب أولًا ثم اكشف الإجابة.', question: 'ما الفكرتان الاجتماعيتان في الرسالة الجديدة اللتان كانتا مهمتين لبلال؟', tapRevealItems: [{ question: 'فكرتان', answer: 'أن يعامل الناس بالعدل والمساواة.' }], correctAnswer: 'أن يعامل الناس بالعدل والمساواة.', explanation: 'كان بلال قليل القوة والحرية، بينما علمت الرسالة العدل والمساواة.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى نهاية الفصل الخامس.' } },
+  6: { id: 'mecca-a2-ar-quick-6', type: 'sequencing', title: 'زيارة سرية', instructions: 'ضع الأحداث في ترتيبها الصحيح.', question: 'كيف وصل بلال إلى أبي بكر وبدأ يتعلم؟', sequencingItems: [{ id: '1', text: 'خرج بلال من غرفته سرًا' }, { id: '2', text: 'سار في طريق خفي' }, { id: '3', text: 'طرق باب أبي بكر' }, { id: '4', text: 'سأل عن الدين الجديد' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'يعرض الفصل رحلة الليل بترتيب واضح.', feedback: { correct: 'صحيح.', incorrect: 'تتبع بلال من غرفته إلى بيت أبي بكر.' } },
+  7: { id: 'mecca-a2-ar-quick-7', type: 'multiple-choice', title: 'اختيار صعب', instructions: 'اختر السبب الذي يدعمه الفصل.', question: 'لماذا دخل بلال في الإسلام مع أنه توقع الصعوبة؟', options: ['لأنه آمن أن دين الله هو الحق', 'لأن أمية وعده بحياة سهلة', 'لأنه أراد أن يصبح غنيًا'], correctAnswer: 0, explanation: 'توقع بلال الصعوبة لكنه آمن أن الدين حق.', feedback: { correct: 'صحيح.', incorrect: 'راجع ما فكر فيه بلال ليلًا.' } },
+  8: { id: 'mecca-a2-ar-quick-8', type: 'true-false', title: 'الثبات تحت الضغط', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'وافق بلال على مدح الأصنام لكي يحرره أمية.', correctAnswer: false, explanation: 'رفض بلال واستمر يقول إن الله واحد.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى جواب بلال في نهاية الفصل.' } },
+  9: { id: 'mecca-a2-ar-quick-9', type: 'multiple-choice', title: 'سؤال عن العدل', instructions: 'اختر ما سأل عنه أبو بكر.', question: 'ماذا سأل أبو بكر أمية عن بلال؟', options: ['هل الإيمان بالله الواحد جريمة؟', 'هل يستطيع بلال بيع مزيد من الجمال؟', 'هل يريد بلال السفر للتجارة؟'], correctAnswer: 0, explanation: 'سأل أبو بكر عن الظلم في معاقبة بلال بسبب إيمانه.', feedback: { correct: 'صحيح.', incorrect: 'ابحث عن سؤال أبي بكر في الفصل التاسع.' } },
+  10: { id: 'mecca-a2-ar-quick-10', type: 'matching', title: 'الشراء والحرية', instructions: 'صل الفعل بالنتيجة.', question: 'ما الذي تغير لبلال؟', matchingPairs: [{ left: 'اشترى أبو بكر بلالًا', right: 'أُنقذ بلال من أمية' }, { left: 'حرر أبو بكر بلالًا', right: 'أصبح بلال حرًا يعبد الله' }], correctAnswer: { 'اشترى أبو بكر بلالًا': 'أُنقذ بلال من أمية', 'حرر أبو بكر بلالًا': 'أصبح بلال حرًا يعبد الله' }, explanation: 'كان الشراء خطوة الإنقاذ، ثم غيّر التحرير حياة بلال.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل العاشر.' } },
+  11: { id: 'mecca-a2-ar-quick-11', type: 'multiple-choice', title: 'الأذان الأول', instructions: 'اختر الإجابة التي يدعمها الفصل.', question: 'ماذا حدث بعد الهجرة؟', options: ['اختار النبي ﷺ بلالًا لينادي الناس إلى الصلاة', 'اختار أمية بلالًا لقيادة قافلة', 'عاد بلال إلى العبودية'], correctAnswer: 0, explanation: 'بعد الهجرة اختير بلال للنداء إلى الصلاة.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفقرة الوسطى من الفصل الحادي عشر.' } },
+  12: { id: 'mecca-a2-ar-quick-12', type: 'matching', title: 'أذان الصبح والمساواة', instructions: 'صل كل فكرة بتفصيلها.', question: 'ما الفكرتان اللتان يجمعهما الفصل؟', matchingPairs: [{ left: 'أذان الصبح', right: 'أضاف بلال معنى «الصلاة خير من النوم»' }, { left: 'خطبة الوداع', right: 'لا يجوز احتقار الناس بسبب لون بشرتهم' }], correctAnswer: { 'أذان الصبح': 'أضاف بلال معنى «الصلاة خير من النوم»', 'خطبة الوداع': 'لا يجوز احتقار الناس بسبب لون بشرتهم' }, explanation: 'يجمع الفصل بين تفصيل في الأذان وتعليم واضح عن المساواة.', feedback: { correct: 'صحيح.', incorrect: 'استخدم دليلًا من بداية الفصل ودليلًا من نهايته.' } },
+  13: { id: 'mecca-a2-ar-quick-13', type: 'multiple-choice', title: 'ما الذي يهم؟', instructions: 'اختر الدرس الأخير في الفصل.', question: 'بحسب الفصل الثالث عشر، ما الذي يهم في قيمة الإنسان؟', options: ['القلب والأعمال الصالحة', 'لون البشرة والجنسية', 'المال والقوة الاجتماعية'], correctAnswer: 0, explanation: 'ينتهي الفصل بأن القلب والعمل الصالح هما المهمان.', feedback: { correct: 'صحيح.', incorrect: 'اقرأ الجملة الأخيرة مرة أخرى.' } },
+};
+
+export const meccaA2KnowledgeCheckExercisesAr: Exercise[] = [
+  { id: 'mecca-a2-ar-kc-1', type: 'multiple-choice', title: 'بداية بلال', instructions: 'اختر أفضل إجابة.', question: 'أي وصف لحياة بلال الأولى تدعمه القصة؟', options: ['ولد في مكة في العبودية', 'ولد تاجرًا غنيًا', 'ولد في المدينة بعد الهجرة'], correctAnswer: 0, explanation: 'يذكر الفصل الأول أنه ولد في مكة وكان أبواه من العبيد.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الأول.' } },
+  { id: 'mecca-a2-ar-kc-2', type: 'true-false', title: 'الجاهلية', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'يصف الفصل الثاني مجتمعًا فيه سلام وعدالة ومساواة اقتصادية كاملة.', correctAnswer: false, explanation: 'يصف الفصل غياب السلام والعدل ووجود فجوة بين الأغنياء والفقراء.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الثاني.' } },
+  { id: 'mecca-a2-ar-kc-3', type: 'multiple-choice', title: 'بلال وأبو بكر', instructions: 'اختر أفضل تلخيص.', question: 'لماذا ذهب بلال إلى أبي بكر؟', options: ['ليتعلم ويسأل عن الرسالة الجديدة', 'ليشتري طعامًا لأمية', 'ليقترض مالًا للتجارة'], correctAnswer: 0, explanation: 'زار بلال أبا بكر سرًا ليسأله عن الدين الجديد.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل السادس.' } },
+  { id: 'mecca-a2-ar-kc-4', type: 'true-false', title: 'قرار بلال', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'دخل بلال في الإسلام لأنه ظن أن حياته ستصبح سهلة فورًا.', correctAnswer: false, explanation: 'كان يعرف أن الحياة ستصبح صعبة لكنه آمن بالحق.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل السابع.' } },
+  { id: 'mecca-a2-ar-kc-5', type: 'multiple-choice', title: 'عمل أبي بكر', instructions: 'اختر النتيجة الصحيحة.', question: 'ماذا فعل أبو بكر بعد أن اشترى بلالًا؟', options: ['حرره', 'أعاده إلى أمية', 'أبقاه عبدًا'], correctAnswer: 0, explanation: 'اشترى أبو بكر بلالًا ثم حرره.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل العاشر.' } },
+  { id: 'mecca-a2-ar-kc-6', type: 'multiple-choice', title: 'بعد مكة', instructions: 'اختر الحدث الذي يدعمه الفصل.', question: 'ما التغير المهم الذي حدث بعد انتقال المسلمين إلى المدينة؟', options: ['اختير بلال لينادي الناس إلى الصلاة', 'عاد بلال خادمًا عند أمية', 'ترك بلال الإسلام'], correctAnswer: 0, explanation: 'اختار النبي ﷺ بلالًا للنداء إلى الصلاة بعد الهجرة.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الحادي عشر.' } },
+  { id: 'mecca-a2-ar-kc-7', type: 'true-false', title: 'تعليم المساواة', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'تقول القصة إن احتقار الناس بسبب لون بشرتهم خطأ.', correctAnswer: true, explanation: 'يذكر الفصل الثاني عشر هذا المعنى بوضوح.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل الثاني عشر.' } },
+  { id: 'mecca-a2-ar-kc-8', type: 'multiple-choice', title: 'حياة بلال بعد الوفاة', instructions: 'اختر ما تقوله القصة.', question: 'ماذا فعل بلال حين لم يستطع البقاء في المدينة بعد وفاة النبي ﷺ؟', options: ['طلب أن يغادر ثم ذهب إلى دمشق', 'عاد إلى بيت أمية', 'أصبح حاكم مكة'], correctAnswer: 0, explanation: 'يذكر الفصل الثالث عشر أنه طلب المغادرة ثم ذهب إلى دمشق.', feedback: { correct: 'صحيح.', incorrect: 'راجع وسط الفصل الثالث عشر.' } },
+];
+
+export const meccaA2VocabularyChallengePairsAr = [
+  { word: 'عَدَالَةٌ', meaning: 'معاملة الناس بالإنصاف' },
+  { word: 'الْحُرِّيَّةُ', meaning: 'ألا يكون الإنسان عبدًا أو أسيرًا' },
+  { word: 'سِرًّا', meaning: 'بطريقة خفية لا يراها الناس' },
+  { word: 'رَفَضَ', meaning: 'قال لا ولم يوافق' },
+  { word: 'أَنْقَذَ', meaning: 'خلّص شخصًا من خطر أو أذى' },
+  { word: 'مُحْتَرَمٌ', meaning: 'له كرامة ويعامل بتقدير' },
+];
 
 export const meccaA2FinalReviewExercisesAr: Exercise[] = [
-  {
-    id: 'mecca-a2-review-sequence',
-    type: 'sequencing',
-    title: 'رحلة بلال',
-    instructions: 'ضع الأحداث الرئيسة في الترتيب الصحيح.',
-    question: 'كيف تنتقل قصة بلال من العبودية إلى دور عام محترم؟',
-    correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'تنتقل القصة من حياة بلال الشاقة والرسالة الجديدة إلى أسئلته وقراره وحريته والهجرة ودوره في الأذان.',
-    feedback: { correct: 'صحيح. لقد ربطت نقاط التحول الرئيسة في قصة بلال.', incorrect: 'ابدأ بحياة بلال عند أمية، ثم ابحث عن الرسالة الجديدة وأبي بكر وقبول الإسلام والحرية والأذان.' },
-    sequencingItems: [
-      { id: '1', text: 'يعيش بلال عبدًا عند أمية في مكة' },
-      { id: '2', text: 'يسمع بلال رسالة العبادة والعدل والمساواة' },
-      { id: '3', text: 'يزور بلال أبا بكر سرًا ويسأله عن الدين الجديد' },
-      { id: '4', text: 'يدخل بلال في الإسلام رغم توقعه الصعوبة' },
-      { id: '5', text: 'يشتري أبو بكر بلالًا ويحرره' },
-      { id: '6', text: 'بعد الهجرة يُختار بلال لينادي الناس إلى الصلاة' }
-    ]
-  },
-  {
-    id: 'mecca-a2-review-match',
-    type: 'matching',
-    title: 'الأشخاص وردود الأفعال',
-    instructions: 'صل كل شخص أو مجموعة بالفعل أو الرد الذي تدعمه القصة.',
-    question: 'من فعل ماذا؟',
-    matchingPairs: [
-      { left: 'بلال', right: 'دخل في الإسلام وثبت على إيمانه' },
-      { left: 'أبو بكر', right: 'سأل عن الظلم وحرر بلالًا' },
-      { left: 'أمية', right: 'استخدم قوته للضغط على بلال' },
-      { left: 'النبي محمد ﷺ', right: 'علّم عبادة الله والمساواة' }
-    ],
-    correctAnswer: {
-      'بلال': 'دخل في الإسلام وثبت على إيمانه',
-      'أبو بكر': 'سأل عن الظلم وحرر بلالًا',
-      'أمية': 'استخدم قوته للضغط على بلال',
-      'النبي محمد ﷺ': 'علّم عبادة الله والمساواة'
-    },
-    explanation: 'تربط المطابقات الشخصيات الرئيسة بالاختيارات والتعاليم التي تشكل قصة بلال.',
-    feedback: { correct: 'صحيح. كل مطابقة يدعمها جزء مختلف من القصة.', incorrect: 'راجع الرسالة الجديدة وقرار بلال وإنقاذ أبي بكر ورد أمية.' }
-  },
-  {
-    id: 'mecca-a2-review-reflection',
-    type: 'reflection',
-    title: 'المساواة والحرية والاختيار',
-    instructions: 'فكر من القصة وقدم استجابة قصيرة تناسب A2.',
-    question: 'كيف تتحدى قصة بلال فكرة أن القوة الاجتماعية تحدد قيمة الإنسان؟',
-    correctAnswer: null,
-    explanation: 'يبدأ بلال القصة عبدًا ضعيفًا في مجتمع غير متساو، لكن القصة تكرر أن لون البشرة أو الجنسية أو المكانة أو الماضي لا يحدد قيمة الإنسان.',
-    feedback: { correct: 'استخدم حدثًا واحدًا ودرسًا نهائيًا واحدًا من القصة لدعم فكرتك.', incorrect: '' },
-    discussionPrompts: [
-      { question: 'كيف كان المجتمع ينظر إلى بلال في البداية؟', mode: 'Individual' },
-      { question: 'ما الاختيار الذي اتخذه أبو بكر بعد شراء بلال؟', mode: 'Pair' },
-      { question: 'كيف يجيب الفصل 13 عن عدم المساواة المذكور في الفصل 2؟', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'mecca-a2-review-quiz',
-    type: 'quiz-game',
-    title: 'مراجعة الاسترجاع — بلال ومكة A2',
-    instructions: 'أجب عن ثمانية أسئلة من أنحاء القصة. استخدم التلميح عند الحاجة فقط.',
-    question: 'هل تستطيع إعادة ربط الأفكار الرئيسة دون إعادة قراءة كل شيء؟',
-    correctAnswer: null,
-    explanation: 'تراجع الأسئلة المقارنة الاجتماعية والاختيار والحرية وردود الأفعال والمساواة بدل التفاصيل المؤذية أو العشوائية.',
-    feedback: { correct: 'استرجاع جيد. اربط كل إجابة بدليلها من الفصل.', incorrect: 'استخدم التلميح للعودة إلى الفكرة المناسبة ثم حاول من جديد.' },
-    quizQuestions: [
-      { question: 'ما المقارنة الاجتماعية التي يؤكدها الفصل 2؟', options: [{ text: 'عاش الأغنياء في رفاهية بينما عاش كثير من الفقراء في حاجة', isCorrect: true }, { text: 'كان للجميع المال والقوة نفسيهما', isCorrect: false }, { text: 'كان الفقراء يديرون تجارة مكة', isCorrect: false }], hint: 'قارن فقرتي الأغنياء والفقراء.' },
-      { question: 'لماذا كانت الرسالة الجديدة مهمة لوضع بلال؟', options: [{ text: 'علّمت عبادة الله وأن الناس يجب أن يكونوا عادلين ومتساوين', isCorrect: true }, { text: 'قالت إن السادة الأغنياء دائمًا على حق', isCorrect: false }, { text: 'قالت إن العبودية تحدد قيمة الإنسان', isCorrect: false }], hint: 'استخدم تعليمي الفصل 5 معًا.' },
-      { question: 'لماذا زار بلال أبا بكر سرًا؟', options: [{ text: 'أراد إجابات عن الدين الجديد دون أن يراه أحد', isCorrect: true }, { text: 'أراد بيع الجمال ليلًا', isCorrect: false }, { text: 'أراد جمع المال الإضافي الظالم', isCorrect: false }], hint: 'اربط الطريق الخفي بالأسئلة التي طرحها.' },
-      { question: 'ما الذي يجعل قرار بلال في الفصل 7 ذا معنى؟', options: [{ text: 'توقع الصعوبة لكنه دخل في الإسلام لأنه آمن بأنه الحق', isCorrect: true }, { text: 'توقع حياة سهلة وغنية', isCorrect: false }, { text: 'طلب منه أمية أن يصبح مسلمًا', isCorrect: false }], hint: 'قارن ما توقعه بلال بما آمن به.' },
-      { question: 'ماذا دل تكرار بلال «الله واحد»؟', options: [{ text: 'رفض تغيير إيمانه تحت الضغط', isCorrect: true }, { text: 'وافق على عبادة الأصنام', isCorrect: false }, { text: 'أراد العودة إلى سوق العبيد', isCorrect: false }], hint: 'ركز على طلب أمية وجواب بلال.' },
-      { question: 'ما النتيجة المهمة لشراء أبي بكر بلالًا؟', options: [{ text: 'حرره بدل أن يبقيه عبدًا', isCorrect: true }, { text: 'باعه مرة أخرى لأمية', isCorrect: false }, { text: 'طلب منه دفع الثمن', isCorrect: false }], hint: 'النتيجة أهم من عدد قطع الذهب.' },
-      { question: 'كيف يربط الفصل 11 حياة بلال السابقة بالأذان الأول؟', options: [{ text: 'يربط شجاعته وإعلانه الإيمان بدوره في النداء إلى الصلاة', isCorrect: true }, { text: 'جعلته رعاية الجمال أغنى رجل', isCorrect: false }, { text: 'اختاره أمية للأذان', isCorrect: false }], hint: 'اقرأ الفقرة التي تشرح لماذا كان الدور جديرًا ببلال.' },
-      { question: 'ما الدرس النهائي عن قيمة الإنسان في الفصل 13؟', options: [{ text: 'لون البشرة أو الجنسية أو الماضي لا يحدد القيمة؛ المهم القلب والأعمال الصالحة', isCorrect: true }, { text: 'الجنسية تحدد من هو أفضل', isCorrect: false }, { text: 'القوة الاجتماعية وحدها تعطي الإنسان قيمة', isCorrect: false }], hint: 'استخدم الفقرتين الأولى والأخيرة من الفصل 13 معًا.' }
-    ]
-  }
+  { id: 'mecca-a2-ar-review-sequence', type: 'sequencing', title: 'رحلة بلال', instructions: 'ضع الأحداث الرئيسة في الترتيب الصحيح.', question: 'كيف تنتقل قصة بلال من العبودية إلى دور عام محترم؟', sequencingItems: [{ id: '1', text: 'يعيش بلال عبدًا عند أمية في مكة' }, { id: '2', text: 'يسمع رسالة العبادة والعدل والمساواة' }, { id: '3', text: 'يزور أبا بكر سرًا ويسأل عن الدين' }, { id: '4', text: 'يدخل في الإسلام رغم توقع الصعوبة' }, { id: '5', text: 'يشتريه أبو بكر ويحرره' }, { id: '6', text: 'بعد الهجرة يُختار للنداء إلى الصلاة' }], correctAnswer: ['1','2','3','4','5','6'], explanation: 'تتبع القصة نقاط التحول الكبرى بهذا الترتيب.', feedback: { correct: 'صحيح.', incorrect: 'ابدأ بحياة بلال عند أمية ثم اتبع التغيرات الرئيسة.' } },
+  { id: 'mecca-a2-ar-review-match', type: 'matching', title: 'الأشخاص والأفعال', instructions: 'صل كل شخص بالفعل الذي تدعمه القصة.', question: 'من فعل ماذا؟', matchingPairs: [{ left: 'بلال', right: 'ثبت على إيمانه رغم الضغط' }, { left: 'أبو بكر', right: 'سأل عن الظلم وحرر بلالًا' }, { left: 'أمية', right: 'استخدم قوته للضغط على بلال' }, { left: 'النبي محمد ﷺ', right: 'علّم عبادة الله والمساواة' }], correctAnswer: { 'بلال': 'ثبت على إيمانه رغم الضغط', 'أبو بكر': 'سأل عن الظلم وحرر بلالًا', 'أمية': 'استخدم قوته للضغط على بلال', 'النبي محمد ﷺ': 'علّم عبادة الله والمساواة' }, explanation: 'تربط المطابقة الشخصيات باختياراتها أو تعليمها.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصول 5–10.' } },
+  { id: 'mecca-a2-ar-review-reflection', type: 'reflection', title: 'المساواة والحرية', instructions: 'أجب بجمل قصيرة من القصة.', question: 'كيف تبين قصة بلال أن القوة الاجتماعية لا تحدد قيمة الإنسان؟', correctAnswer: null, explanation: 'بدأ بلال عبدًا ضعيفًا، لكن القصة تؤكد أن المكانة ولون البشرة لا يحددان القيمة.', feedback: { correct: 'استخدم حدثًا ودرسًا من القصة.', incorrect: '' }, discussionPrompts: [{ question: 'كيف نظر المجتمع إلى بلال في البداية؟', mode: 'Individual' }, { question: 'ماذا فعل أبو بكر بعد شراء بلال؟', mode: 'Pair' }, { question: 'كيف يجيب الفصل 13 عن عدم المساواة؟', mode: 'Class' }] },
+  { id: 'mecca-a2-ar-review-quiz', type: 'quiz-game', title: 'مراجعة الاسترجاع — بلال ومكة A2', instructions: 'أجب عن ثمانية أسئلة من أنحاء القصة.', question: 'هل تستطيع إعادة ربط الأفكار الرئيسة؟', correctAnswer: null, explanation: 'تراجع الأسئلة أفكارًا مهمة جديدة بدل تكرار أسئلة فحص المعرفة.', feedback: { correct: 'جيد. اربط الإجابة بدليلها.', incorrect: 'استخدم التلميح ثم حاول مرة أخرى.' }, quizQuestions: [
+    { question: 'ماذا فعل المال الإضافي الظالم بالفجوة بين الغني والفقير؟', options: [{ text: 'زاد غنى الأغنياء وفقر الفقراء', isCorrect: true }, { text: 'جعل الجميع متساوين', isCorrect: false }, { text: 'أوقف التجارة', isCorrect: false }], hint: 'راجع نهاية الفصل الثاني.' },
+    { question: 'ماذا يظهر الفصل الرابع عن الاحترام؟', options: [{ text: 'كان بلال يعمل بجد ومع ذلك لم يعامل باحترام', isCorrect: true }, { text: 'جعل العمل أهل البيت لطفاء', isCorrect: false }, { text: 'لم يكن بلال يعمل', isCorrect: false }], hint: 'قارن العمل بالمعاملة.' },
+    { question: 'لماذا استخدم بلال طريقًا خفيًا؟', options: [{ text: 'حتى لا يراه أحد في زيارته', isCorrect: true }, { text: 'ليبحث عن سوق', isCorrect: false }, { text: 'ليسافر إلى المدينة', isCorrect: false }], hint: 'راجع الفصل السادس.' },
+    { question: 'ماذا أراد أمية من بلال في الفصل الثامن؟', options: [{ text: 'أن يعبد الأصنام ويتكلم عنها بخير', isCorrect: true }, { text: 'أن يؤذن للصلاة', isCorrect: false }, { text: 'أن يزور أبا بكر', isCorrect: false }], hint: 'ركز على طلب أمية.' },
+    { question: 'ما الذي تحداه سؤال أبي بكر في الفصل التاسع؟', options: [{ text: 'معاقبة بلال بسبب إيمانه بالله الواحد', isCorrect: true }, { text: 'ثمن الجمال', isCorrect: false }, { text: 'عدد تجار مكة', isCorrect: false }], hint: 'ابحث عن كلمة جريمة.' },
+    { question: 'لماذا دور بلال العام في الفصل 11 مهم في القصة؟', options: [{ text: 'الرجل الذي كان بلا قوة أصبح صاحب مهمة عامة محترمة', isCorrect: true }, { text: 'أصبح سيدًا غنيًا', isCorrect: false }, { text: 'عاد إلى أمية', isCorrect: false }], hint: 'اربط الفصل الأول بالفصل 11.' },
+    { question: 'بماذا تربط القصة خطبة الوداع؟', options: [{ text: 'المساواة ورفض التمييز بلون البشرة', isCorrect: true }, { text: 'ثمن الحرية', isCorrect: false }, { text: 'أسواق العبيد', isCorrect: false }], hint: 'راجع نهاية الفصل 12.' },
+    { question: 'ما الفعل الذي يظهر حزن بلال بعد وفاة النبي ﷺ؟', options: [{ text: 'لم يستطع الاستمرار في الأذان وطلب مغادرة المدينة', isCorrect: true }, { text: 'فتح متجرًا', isCorrect: false }, { text: 'عاد إلى عبادة الأصنام', isCorrect: false }], hint: 'راجع وسط الفصل 13.' }
+  ] },
+];
+
+export const meccaA2FinalChallengeExercisesAr: Exercise[] = [
+  { id: 'mecca-a2-ar-final-1', type: 'multiple-choice', title: 'الوضع الاجتماعي', instructions: 'اختر أفضل إجابة.', question: 'لماذا كانت قوة بلال قليلة في بداية القصة؟', options: ['ولد في العبودية داخل مجتمع غير متساو', 'كان أغنى قائد في مكة', 'اختار أن يعيش وحده في المدينة'], correctAnswer: 0, explanation: 'تربط الفصول الأولى العبودية بالنظام الاجتماعي غير العادل.', feedback: { correct: 'صحيح.', incorrect: 'اربط الفصول 1–3.' } },
+  { id: 'mecca-a2-ar-final-2', type: 'multiple-choice', title: 'معنى الرسالة', instructions: 'اختر أفضل إجابة.', question: 'لماذا كان تعليم العدل والمساواة مهمًا في قصة بلال؟', options: ['لأنه تحدى المعاملة غير العادلة للضعفاء', 'لأنه أعطى السادة قوة أكبر', 'لأنه جعل المال أساس القيمة'], correctAnswer: 0, explanation: 'تعارض هذا التعليم مع قلة حرية بلال واحترامه.', feedback: { correct: 'صحيح.', incorrect: 'اربط الفصلين 4 و5.' } },
+  { id: 'mecca-a2-ar-final-3', type: 'multiple-choice', title: 'الشجاعة والإيمان', instructions: 'اختر أفضل إجابة.', question: 'أي فعل يوضح شجاعة بلال؟', options: ['ثبت على إيمانه حين ضغط عليه أمية', 'حاول أن يصبح تاجرًا', 'توقف عن السؤال عن الدين'], correctAnswer: 0, explanation: 'ثبت بلال على إيمانه تحت الضغط.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين 7 و8.' } },
+  { id: 'mecca-a2-ar-final-4', type: 'true-false', title: 'الحرية', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'بعد أن اشترى أبو بكر بلالًا أبقاه عبدًا عنده.', correctAnswer: false, explanation: 'حرر أبو بكر بلالًا.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل العاشر.' } },
+  { id: 'mecca-a2-ar-final-5', type: 'true-false', title: 'قيمة الإنسان', instructions: 'حدد هل العبارة صحيحة أم خاطئة.', question: 'تقول نهاية القصة إن لون البشرة والجنسية والماضي هي الأشياء الأساسية التي تحدد قيمة الإنسان.', correctAnswer: false, explanation: 'تقول النهاية إن القلب والأعمال الصالحة هي المهمة.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل 13.' } },
+  { id: 'mecca-a2-ar-final-6', type: 'matching', title: 'نقاط التحول', instructions: 'صل كل حدث بنتيجته.', question: 'ماذا تغير بعد كل نقطة تحول؟', matchingPairs: [{ left: 'زار بلال أبا بكر', right: 'تعلم أكثر عن الدين الجديد' }, { left: 'اشترى أبو بكر بلالًا', right: 'أُنقذ بلال وأصبح حرًا' }], correctAnswer: { 'زار بلال أبا بكر': 'تعلم أكثر عن الدين الجديد', 'اشترى أبو بكر بلالًا': 'أُنقذ بلال وأصبح حرًا' }, explanation: 'غير الحدثان فهم بلال ثم حاله الاجتماعي.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين 6 و10.' } },
+  { id: 'mecca-a2-ar-final-7', type: 'matching', title: 'تعاليم عامة', instructions: 'صل الحدث بمعناه.', question: 'ماذا يظهر كل حدث متأخر في القصة؟', matchingPairs: [{ left: 'أقام بلال الأذان', right: 'صار له دور عام محترم بعد العبودية' }, { left: 'تعليم خطبة الوداع', right: 'لا يحكم على الناس بلون البشرة' }], correctAnswer: { 'أقام بلال الأذان': 'صار له دور عام محترم بعد العبودية', 'تعليم خطبة الوداع': 'لا يحكم على الناس بلون البشرة' }, explanation: 'تربط الفصول المتأخرة دور بلال برسالة المساواة.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين 11 و12.' } },
+  { id: 'mecca-a2-ar-final-8', type: 'fill-blanks', title: 'بحث سري', instructions: 'أكمل الجملة بكلمة القصة.', question: 'خرج بلال من غرفته ______ حتى لا يراه أحد.', fillBlanksText: 'خرج بلال من غرفته [سرًا] حتى لا يراه أحد.', correctAnswer: 'سرًا', explanation: 'تصف القصة الزيارة بأنها سرية.', feedback: { correct: 'صحيح.', incorrect: 'راجع وصف خروجه في الفصل السادس.' } },
+  { id: 'mecca-a2-ar-final-9', type: 'fill-blanks', title: 'الإنقاذ', instructions: 'أكمل الجملة بكلمة مناسبة من القصة.', question: 'اشترى أبو بكر بلالًا ثم ______ من يد سيده.', fillBlanksText: 'اشترى أبو بكر بلالًا ثم [أنقذه] من يد سيده.', correctAnswer: 'أنقذه', explanation: 'الإنقاذ هو نتيجة شراء أبي بكر لبلال.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل العاشر.' } },
+  { id: 'mecca-a2-ar-final-10', type: 'sequencing', title: 'من السؤال إلى الحرية', instructions: 'رتب الأحداث الأربعة.', question: 'كيف حدث التغير المركزي في القصة؟', sequencingItems: [{ id: '1', text: 'يسمع بلال الرسالة الجديدة' }, { id: '2', text: 'يسأل أبا بكر' }, { id: '3', text: 'يدخل في الإسلام' }, { id: '4', text: 'يشتريه أبو بكر ويحرره' }], correctAnswer: ['1','2','3','4'], explanation: 'تتحرك القصة من السماع إلى التعلم ثم الاختيار فالحرية.', feedback: { correct: 'صحيح.', incorrect: 'اتبع الفصول 5–10.' } },
 ];
