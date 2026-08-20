@@ -1,6 +1,48 @@
 import type { PageData } from '../../../../types';
 import { abrahamB2Pages as lockedAbrahamB2Pages } from './lockedStorySource';
 
+const refineStorySupport = (page: PageData): PageData => {
+  if (page.id === 1) {
+    return {
+      ...page,
+      hotspots: page.hotspots?.map(hotspot => hotspot.id === 'b2-hs-1-2'
+        ? { ...hotspot, description: 'Abraham is presented as a fundamental figure in Judaism, Christianity, and Islam.' }
+        : hotspot),
+    };
+  }
+
+  if (page.id === 4) {
+    return {
+      ...page,
+      hotspots: page.hotspots?.map(hotspot => hotspot.id === 'b2-hs-4-1'
+        ? { ...hotspot, description: "Islamic sources present Azer as Nimrod's idol maker." }
+        : hotspot),
+    };
+  }
+
+  if (page.id === 5) {
+    return {
+      ...page,
+      hotspots: page.hotspots?.map(hotspot => {
+        if (hotspot.id === 'b2-hs-5-1') return { ...hotspot, description: "In one report, Nimrod's astrologers predict that a child will threaten his reign." };
+        if (hotspot.id === 'b2-hs-5-2') return { ...hotspot, description: 'The chapter reports that Azer hid his pregnant wife in a cave.' };
+        return hotspot;
+      }),
+    };
+  }
+
+  if (page.id === 10) {
+    return {
+      ...page,
+      vocabulary: page.vocabulary?.map(item => item.word === 'Bodies'
+        ? { ...item, definition: 'Celestial bodies such as stars, planets, the sun, and the moon.' }
+        : item),
+    };
+  }
+
+  return page;
+};
+
 const cleanShell = (page: PageData): PageData => {
   const {
     exercises: _exercises,
@@ -31,6 +73,7 @@ const cleanShell = (page: PageData): PageData => {
       type: 'exercises',
       title: 'B2 Retrieval Review',
       content: 'Retrieve, reconnect, and use evidence from across the complete story.',
+      image: '',
     };
   }
 
@@ -40,6 +83,7 @@ const cleanShell = (page: PageData): PageData => {
       type: 'vocabulary-match',
       title: 'B2 Vocabulary Challenge',
       content: 'Match ten meaning-bearing story terms with their precise meanings.',
+      image: '',
       vocabulary: undefined,
       animatedWords: undefined,
     };
@@ -50,6 +94,7 @@ const cleanShell = (page: PageData): PageData => {
       ...base,
       type: 'glossary',
       title: 'B2 Story Glossary',
+      image: '',
     };
   }
 
@@ -59,10 +104,11 @@ const cleanShell = (page: PageData): PageData => {
       type: 'final-challenge',
       title: 'Final Challenge',
       content: 'Demonstrate whole-book B2 mastery through analysis, evidence, comparison, and synthesis.',
+      image: '',
     };
   }
 
-  return base;
+  return page.type === 'story' ? refineStorySupport(base) : base;
 };
 
 // Canonical story prose lives unchanged in lockedStorySource.ts.
