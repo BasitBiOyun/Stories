@@ -1,180 +1,170 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+const feedback = {
+  correct: 'Correct. Your answer is supported by the story evidence.',
+  incorrect: 'Not yet. Return to the relevant chapter, find the evidence, and try again.',
+};
+
+const mc = (id: string, question: string, options: string[], correctAnswer: number, explanation: string, title = 'Quick Challenge'): Exercise => ({
+  id, type: 'multiple-choice', title, instructions: 'Choose the best evidence-based answer.', question, options, correctAnswer, explanation, feedback,
+});
+const tf = (id: string, question: string, correctAnswer: boolean, explanation: string, title = 'Quick Challenge'): Exercise => ({
+  id, type: 'true-false', title, instructions: 'Decide whether the claim is supported by the chapter.', question, correctAnswer, explanation, feedback,
+});
+const fill = (id: string, question: string, fillBlanksText: string, correctAnswer: string, explanation: string, title = 'Quick Challenge'): Exercise => ({
+  id, type: 'fill-blanks', title, instructions: 'Complete the claim with the key story language.', question, fillBlanksText, correctAnswer, explanation, feedback,
+});
+const matching = (id: string, question: string, pairs: { left: string; right: string }[], explanation: string, title = 'Quick Challenge'): Exercise => ({
+  id, type: 'matching', title, instructions: 'Match each idea with the evidence or meaning that best fits it.', question, matchingPairs: pairs, correctAnswer: Object.fromEntries(pairs.map(pair => [pair.left, pair.right])), explanation, feedback,
+});
+
+export const mosesB2QuickChallenges: Record<number, Exercise> = {
+  1: mc('mo-b2-q1', 'How does the opening chapter explain the beginning of political pressure on the Israelites?', ['Rapid population growth led rulers to fear they could become a powerful group', 'The Israelites asked to rule Egypt immediately', 'The Nile stopped supporting Egyptian agriculture'], 0, 'The chapter moves from settlement and rapid population growth to rulers seeing the community as a political danger.'),
+  2: tf('mo-b2-q2', 'The chapter presents the exact date of the Exodus and the identity of the drowned Pharaoh as completely certain.', false, 'The story uses cautious language such as “probably” and explicitly says the exact date of the Exodus is unknown.'),
+  3: mc('mo-b2-q3', 'Why does the chapter connect control of the Nile with political authority?', ['Large irrigation, transport, and agricultural projects required administration and vast manpower', 'The Nile removed the need for workers', 'Only religious ceremonies depended on the river'], 0, 'The Nile is presented as economically vital, while large projects around it required both administration and human labor.'),
+  4: matching('mo-b2-q4', 'How does the chapter frame Moses’s story through water?', [
+    { left: 'Nile', right: 'Moses is carried toward the palace and survives' },
+    { left: 'Red Sea', right: 'Moses and his people are later saved from Pharaoh' },
+  ], 'The chapter deliberately links Moses’s early survival in water with the later salvation of his people at the Red Sea.'),
+  5: fill('mo-b2-q5', 'Complete the chapter’s political description.', 'Pharaoh ruled Egypt with [blank] power.', 'absolute', 'The chapter characterizes Pharaoh as a tyrant whose rule over people is absolute.'),
+  6: mc('mo-b2-q6', 'Why does Pharaoh modify the policy of killing Israelite boys?', ['The policy begins reducing the manpower needed for heavy work', 'He abandons political control completely', 'The priests tell him the vision was meaningless'], 0, 'The chapter says economic advisers warn that the killings are shrinking the labor force, leading to an alternating policy.'),
+  7: tf('mo-b2-q7', 'Queen Asiye is presented as sharing Pharaoh’s disbelief and cruelty without any difference.', false, 'The chapter describes her as a secret believer and emphasizes her compassion toward the baby.'),
+  8: {
+    id: 'mo-b2-q8', type: 'tap-reveal', title: 'Quick Challenge', instructions: 'Reveal the timeline check.',
+    question: 'Had Moses already received his prophetic mission during his inner conflict as a young man in the palace?',
+    correctAnswer: true,
+    explanation: 'No. The chapter explicitly says that the prophetic mission had not yet been given to him. This timeline limit matters when interpreting his actions.',
+    feedback,
+    tapRevealItems: [{ question: 'Timeline evidence', answer: 'He had not yet been given the prophetic mission.' }],
+  },
+  9: matching('mo-b2-q9', 'How does the chapter distinguish intention from consequence in the Egyptian’s death?', [
+    { left: 'Moses’s intervention', right: 'An angry attempt to stop a conflict' },
+    { left: 'The Egyptian’s death', right: 'An unintended consequence' },
+  ], 'The story describes the death as unintentional and then shows Moses immediately turning to Allah for forgiveness.'),
+  10: fill('mo-b2-q10', 'Complete Moses’s judgment when the same man seeks help again.', 'Moses tells him, “You are a plain [blank].”', 'troublemaker', 'The repeated dispute makes Moses recognize a recurring pattern rather than an isolated incident.'),
+  11: mc('mo-b2-q11', 'Why is Midian a strategically meaningful destination for Moses?', ['It is an inhabited region outside Pharaoh’s rule', 'It is Pharaoh’s military capital', 'It is inside the palace grounds'], 0, 'The chapter presents Midian as a practical destination beyond Pharaoh’s political control.'),
+  12: tf('mo-b2-q12', 'The two women can water their animals before the male shepherds without difficulty.', false, 'The chapter says they must wait until the male shepherds leave with their flocks.'),
+  13: matching('mo-b2-q13', 'Match Moses’s words at the well with what happens next.', [
+    { left: 'Offer', right: 'He says he will water the sheep for the women' },
+    { left: 'Action', right: 'He actually waters their sheep' },
+  ], 'The story immediately connects the offer of service with completed action.'),
+  14: fill('mo-b2-q14', 'Complete the qualities linked to the work decision in Midian.', 'The household needed someone [blank].', 'reliable and strong', 'The chapter links Moses’s suitability for work with reliability and strength.'),
+  15: mc('mo-b2-q15', 'Why does Moses initially approach the distant fire near Sinai?', ['To seek warmth for his family and possible guidance for the route', 'To challenge an army', 'To leave his family behind'], 0, 'His first purpose is practical: warmth and help finding the way.'),
+  16: tf('mo-b2-q16', 'The staff and the shining white hand are presented together as two great signs given to Moses.', true, 'The chapter presents the transformed staff and shining hand together before the mission toward Pharaoh.'),
+  17: matching('mo-b2-q17', 'What continuity does the chapter emphasize in Moses’s religious lineage?', [
+    { left: 'Moses', right: 'Monotheism' },
+    { left: 'Jacob and Abrahamic lineage', right: 'The same prophetic tradition of belief in one God' },
+  ], 'The chapter places Moses within the Abrahamic prophetic line and presents his religion as monotheism.'),
+  18: fill('mo-b2-q18', 'Complete Moses’s central request to Pharaoh.', '“I want you to send the [blank] with me.”', 'Children of Israel', 'The demand for release turns the encounter into a conflict over lordship, freedom, and Pharaoh’s claim to human ownership.'),
+  19: mc('mo-b2-q19', 'Why does Pharaoh repeatedly bring up Moses’s palace upbringing and past action?', ['To threaten him and weaken his position in the dialogue', 'To appoint him as the next Pharaoh', 'To ask Moses for forgiveness'], 0, 'The chapter explicitly interprets Pharaoh’s use of Moses’s past as rhetorical pressure and threat.'),
+  20: tf('mo-b2-q20', 'The story presents the magicians’ moving ropes and staffs as the same kind of genuine miracle as Moses’s sign.', false, 'Their display is explicitly described as illusion, while Moses’s sign is treated differently.'),
+  21: matching('mo-b2-q21', 'What does the contest reveal about the two displays?', [
+    { left: 'Magicians’ snake-like forms', right: 'They are exposed as false illusion' },
+    { left: 'Moses’s transformed staff', right: 'It consumes the false snake forms' },
+  ], 'The contest breaks the apparent equivalence between illusion and the sign given to Moses.'),
+  22: fill('mo-b2-q22', 'Complete the physical situation at the Red Sea.', 'The Red Sea was in front of the Israelites and Pharaoh’s [blank] was behind them.', 'army', 'The geography and pursuit create an apparently impossible physical trap before the sea parts.'),
+  23: mc('mo-b2-q23', 'How does Pharaoh publicly reinterpret the opened sea?', ['He claims the sea opened at his own command', 'He admits that Moses controls the sea', 'He says the sea never opened'], 0, 'Even at the sea, Pharaoh tries to absorb the extraordinary event into his own claim of power.'),
+  24: tf('mo-b2-q24', 'The final chapter presents Moses’s forty days on Mount Tur, receiving the Torah, and returning to find calf worship among his people.', true, 'The chapter contrasts receiving divine guidance with renewed disobedience among the people.'),
+};
+
+export const mosesB2KnowledgeCheckExercises: Exercise[] = [
+  mc('mo-b2-k1', 'Why must a B2 summary of the early historical chapters preserve words such as “sources,” “probably,” and “unknown”?', ['They mark different levels of certainty and prevent overclaiming', 'They prove the whole account is false', 'They are decorative words with no effect on meaning'], 0, 'The story distinguishes sourced claims, probability, and explicit uncertainty.', 'Knowledge Check'),
+  mc('mo-b2-k2', 'What does the repeated use of forced labor reveal about Pharaoh’s political system?', ['Economic projects and political control depend partly on exploiting vulnerable manpower', 'The projects remove the need for political authority', 'The Israelites control the state administration'], 0, 'Across the historical context, labor, infrastructure, and oppression are connected.', 'Knowledge Check'),
+  mc('mo-b2-k3', 'What makes Moses’s repentance after the accidental death more than an emotional reaction?', ['He later commits himself not to be a helper for wrongdoing', 'He denies that anything happened', 'He decides that every conflict must be ignored'], 0, 'The narrative connects forgiveness with a future moral commitment.', 'Knowledge Check'),
+  mc('mo-b2-k4', 'Which detail best supports the inference that Moses puts others’ needs before his own at the well?', ['Only after helping does he realize he has not drunk water', 'He asks the women to serve him first', 'He refuses to help while tired'], 0, 'The sequence places service before recognition of his own thirst.', 'Knowledge Check'),
+  mc('mo-b2-k5', 'How does the story interpret Moses’s long period as a shepherd in Midian?', ['As spiritual preparation for the prophetic mission', 'As a meaningless delay', 'As a permanent abandonment of his people'], 0, 'The Midian years are explicitly given preparatory meaning.', 'Knowledge Check'),
+  mc('mo-b2-k6', 'What responsibility follows the two signs at the sacred valley?', ['Moses is sent toward Pharaoh and his chiefs', 'Moses must hide the signs permanently', 'Moses must remain on the mountain'], 0, 'Receiving the signs is linked immediately with public prophetic responsibility.', 'Knowledge Check'),
+  mc('mo-b2-k7', 'Why does the dialogue with Pharaoh move toward a display of signs?', ['Verbal discussion fails and Pharaoh shifts to open threat', 'Pharaoh accepts the message immediately', 'Moses decides argument is unnecessary from the beginning'], 0, 'The chapter marks failed discussion and the threat of imprisonment as the turning point.', 'Knowledge Check'),
+  mc('mo-b2-k8', 'What most clearly contrasts with the Israelites’ panic when they are trapped at the sea?', ['Moses’s confidence that Allah will guide them to safety', 'Moses’s plan to surrender', 'A second Egyptian army arriving to help'], 0, 'Moses expresses trust before the physical route through the sea appears.', 'Knowledge Check'),
+];
+
+export const mosesB2VocabularyChallengePairs = [
+  { word: 'despotism', meaning: 'Cruel or oppressive use of absolute political power.' },
+  { word: 'manpower', meaning: 'The human labor available or required to carry out work.' },
+  { word: 'salvation', meaning: 'Deliverance from danger, destruction, or oppression.' },
+  { word: 'tyrant', meaning: 'A ruler who uses power cruelly and unjustly.' },
+  { word: 'repentance', meaning: 'Turning away from wrongdoing with regret and a commitment to change.' },
+  { word: 'inhabited', meaning: 'Having people living in a place.' },
+  { word: 'prophetic mission', meaning: 'The responsibility and message entrusted to a prophet.' },
+  { word: 'monotheism', meaning: 'Belief in and worship of one God.' },
+  { word: 'illusion', meaning: 'An appearance that seems real but does not represent the underlying reality.' },
+  { word: 'Exodus', meaning: 'The departure of the Children of Israel from Egypt under Moses’s leadership.' },
+];
 
 export const mosesB2FinalReviewExercises: Exercise[] = [
   {
-    id: 'final-1',
-    type: 'sequencing',
-    title: 'The Journey of Moses',
-    instructions: 'Put the major events of the B2 narrative in the correct chronological order.',
-    question: 'Sequence the high-level historical events of the story.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6', '7'],
-    explanation: 'The B2 narrative traces the full circle: from Pharaoh’s initial decree and Moses’s hidden childhood/youth, through his years of training in Midian, to his ultimate return as a Prophet, resulting in the magicians’ belief, the Exodus, and the drowning of the tyrant.',
-    feedback: {
-      correct: 'Stellar work! You have perfectly sequenced the deep biographical arc of Prophet Moses (pbuh).',
-      incorrect: 'A few milestones are misplaced. Think about the sequence from the initial Nile basket to the final return and parting of the sea.'
-    },
+    id: 'mo-b2-r1', type: 'sequencing', title: 'Retrieval Review 1 — Turning Points',
+    instructions: 'Put the major turning points in narrative order.', question: 'How does the story move from oppression to responsibility after liberation?',
     sequencingItems: [
-      { id: '1', text: 'Pharaoh commands the systematic killing of Israelite newborn boys due to a vision of fire from Jerusalem.' },
-      { id: '2', text: 'Moses’s mother places him in a basket on the River Nile, leading to his adoption by Queen Asiye.' },
-      { id: '3', text: 'Moses grows up as a prince but possesses a deep sense of justice for the oppressed Israelites.' },
-      { id: '4', text: 'Following an accidental killing, Moses receives a warning, flees to Midian, and works ten years for Prophet Shu’ayb.' },
-      { id: '5', text: 'Allah calls Moses by name at the sacred valley of Tuwa (Mount Sinai), granting him the staff and the white hand.' },
-      { id: '6', text: 'Moses returns with his brother Harun (Aaron); the elite magicians recognize the divine signs and declare their belief.' },
-      { id: '7', text: 'The Exodus takes place, culminating in the parting of the Red Sea and the absolute drowning of Pharaoh’s forces.' }
-    ]
-  },
-  {
-    id: 'final-2',
-    type: 'drag-drop',
-    title: 'B2 Character Roles & Virtues',
-    instructions: 'Drag the descriptive active traits, status labels, and moral postures into the correct character group.',
-    question: 'Match the behavioral profiles to the appropriate characters in the B2 text.',
-    correctAnswer: {
-      'MOSES': ['Generous helper', 'Humble in mistake', 'Relies on Allah’s guidance'],
-      'PHARAOH': ['Arrogant tyrant', 'Oppressive dictator', 'Power-hungry ruler'],
-      'THE MAGICIANS': ['Elite scholars', 'Sincere truth-seekers', 'Courageous believers'],
-      'QUEEN ASIYE': ['Secret believer', 'Compassionate protector', 'Brave maternal figure']
-    },
-    explanation: 'Moses displays humility and helper behavior. Pharaoh represents the peak of pride and tyranny. The magicians represent intellectual scholars transforming into courageous believers. Queen Asiye represents silent faith and protective mercy.',
-    feedback: {
-      correct: 'Excellent pairing! You understand the complex psychological and moral dimensions of the B2 character profiles.',
-      incorrect: 'Some characteristics are unmatched. Re-evaluate how each character’s status and actions are presented.'
-    },
-    dragDropGroups: [
-      { group: 'MOSES', items: ['Generous helper', 'Humble in mistake', 'Relies on Allah’s guidance'] },
-      { group: 'PHARAOH', items: ['Arrogant tyrant', 'Oppressive dictator', 'Power-hungry ruler'] },
-      { group: 'THE MAGICIANS', items: ['Elite scholars', 'Sincere truth-seekers', 'Courageous believers'] },
-      { group: 'QUEEN ASIYE', items: ['Secret believer', 'Compassionate protector', 'Brave maternal figure'] }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'Intellectual & Theological Reflection',
-    instructions: 'Contemplate these advanced questions and engage in high-level analytical discussion.',
-    question: 'How does the B2 story of Prophet Moses (pbuh) analyze the nature of absolute power, faith, and liberation?',
-    correctAnswer: null,
-    explanation: 'Reflective responses should target themes of power blind spots, humility built during shepherding, or how true faith liberates a person from the fear of physical punishment.',
-    feedback: {
-      correct: 'Inspiring interpretation! Your insights show a mature grasp of the thematic, literary, and ethical lessons of the narrative.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'Why did Pharaoh’s elite intellectual magicians embrace belief almost instantly, while Pharaoh remained blind despite his absolute political status?', mode: 'Individual' },
-      { question: 'What does Moses’s decade as a humble shepherd in Midian teach us about the preparation and shift in character required for genuine leadership?', mode: 'Pair' },
-      { question: 'How does the contrast between Pharaoh’s magician-led illusions and Allah’s actual miracles redefine our understanding of reality and truth in society?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'The Prophet Moses B2 Mastery Challenge',
-    instructions: 'Examine your knowledge with this comprehensive 10-question challenge designed to test academic comprehension at the upper-intermediate level.',
-    question: 'Are you prepared to demonstrate complete mastery of the B2 Prophet Moses (pbuh) narrative?',
-    correctAnswer: null,
-    explanation: 'This interactive quiz validates comprehension of the historical, theological, linguistic, and character aspects of the B2 curriculum.',
-    feedback: {
-      correct: 'Phenomenal achievement! You have achieved complete mastery of the B2 Story of Prophet Moses (pbuh)! Your comprehension of the text is exemplary.',
-      incorrect: 'Return to the chapters to review specific vocabulary, historical connections, and character motivations, then attempt the challenge again.'
-    },
-    hints: [
-      'Recall Pharaoh’s economic policy adjustments regarding the alternate-year baby killings.',
-      'Reflect on the exact reasons why the magicians capitulated.',
-      'Recall Moses’s statements of trust when facing the sea.'
+      { id: 'a', text: 'Political fear contributes to oppression of the Israelites.' },
+      { id: 'b', text: 'Baby Moses survives the Nile journey and grows up in the palace.' },
+      { id: 'c', text: 'After the accidental death, Moses leaves Egypt for Midian.' },
+      { id: 'd', text: 'At Sinai, Moses receives signs and a mission toward Pharaoh.' },
+      { id: 'e', text: 'The magicians recognize the sign and declare belief.' },
+      { id: 'f', text: 'The Israelites cross the sea and Pharaoh’s forces drown.' },
+      { id: 'g', text: 'Moses later receives the Torah while his people face new tests.' },
     ],
+    correctAnswer: ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
+    explanation: 'The sequence reconnects political oppression, personal formation, prophetic mission, liberation, and post-liberation responsibility.', feedback,
+  },
+  matching('mo-b2-r2', 'Match each analytical claim with the strongest story evidence.', [
+    { left: 'Political power can depend on labor control', right: 'Nile projects require vast manpower and Israelites are forced into heavy work' },
+    { left: 'Repentance includes future conduct', right: 'Moses says he will not be a helper for criminals' },
+    { left: 'Trust does not erase practical action', right: 'Moses travels to Midian and later approaches the fire seeking warmth and direction' },
+    { left: 'Expert recognition weakens Pharaoh’s public narrative', right: 'The elite magicians recognize the sign and believe' },
+  ], 'These pairs reconnect evidence from different stages of the story with broader B2 claims.', 'Retrieval Review 2 — Claim and Evidence'),
+  {
+    id: 'mo-b2-r3', type: 'reflection', title: 'Retrieval Review 3 — Reflection', instructions: 'Use story evidence, not general opinion.',
+    question: 'Across the story, how does Moses’s leadership develop through responsibility, service, trust, and confrontation with power?', correctAnswer: null,
+    explanation: 'A strong response can connect the accidental death and repentance, service in Midian, prophetic responsibility, and confidence at the sea while distinguishing evidence from interpretation.', feedback,
+    discussionPrompts: [
+      { question: 'Which event most clearly changes Moses’s understanding of responsibility? Defend your choice with evidence.', mode: 'Individual' },
+      { question: 'Compare Pharaoh’s use of power with Moses’s use of responsibility in two different chapters.', mode: 'Pair' },
+      { question: 'Why does the story continue with new moral tests after physical liberation?', mode: 'Class' },
+    ],
+  },
+  {
+    id: 'mo-b2-r4', type: 'quiz-game', title: 'Retrieval Review 4 — Quiz Game', instructions: 'Answer eight new retrieval questions.',
+    question: 'Can you reconnect important ideas from across the book?', correctAnswer: null,
+    explanation: 'This quiz retrieves different evidence from the Knowledge Check and Final Challenge.', feedback,
     quizQuestions: [
-      {
-        question: 'What led to Pharaoh’s initial decree of babe killings?',
-        options: [
-          { text: 'A vision of fire from Jerusalem destroying Egyptian houses but sparing the Israelites', isCorrect: true },
-          { text: 'A famine that hit Egypt due to overpopulation', isCorrect: false },
-          { text: 'A direct challenge from neighboring empires', isCorrect: false }
-        ],
-        hint: 'Pharaoh called advisors to interpret his dream of flames.'
-      },
-      {
-        question: 'Why did Pharaoh’s economic advisors suggest alternating the killings of Israelite baby boys?',
-        options: [
-          { text: 'Because of a loss of manual labor and manpower needed for heavy Egyptian projects', isCorrect: true },
-          { text: 'Because of a shift in the astrological calendar', isCorrect: false },
-          { text: 'Because of pressure from surrounding kingdoms demanding mercy', isCorrect: false }
-        ],
-        hint: 'The Israelites performed most of the hard labor in the kingdom.'
-      },
-      {
-        question: 'Why did Queen Asiye desire to keep baby Moses as her own in the palace?',
-        options: [
-          { text: 'She was sterile, longed for a child, and viewed the baby as a potential "ray of light"', isCorrect: true },
-          { text: 'She wanted to use him to claim political power from her husband', isCorrect: false },
-          { text: 'She recognized him instantly as a future prophet of the Israelites', isCorrect: false }
-        ],
-        hint: 'Her maternal compassion was combined with a biological challenge.'
-      },
-      {
-        question: 'In Moses’s youth, what was the primary source of his inner conflict?',
-        options: [
-          { text: 'Balancing his luxurious palace upbringing with his moral opposition to the oppression of his original people', isCorrect: true },
-          { text: 'Choosing which of the Egyptian gods to worship at court', isCorrect: false },
-          { text: 'Struggling to learn the complex magical arts of the priests', isCorrect: false }
-        ],
-        hint: 'He knew he was originally an Israelite raised as a Prince.'
-      },
-      {
-        question: 'Why did the young man of faith warning Moses urge him to leave Egypt after the accidental killing?',
-        options: [
-          { text: 'Because political chiefs were taking counsel to impose the death penalty on him', isCorrect: true },
-          { text: 'Because a great sandstorm was about to destroy the bazzar', isCorrect: false },
-          { text: 'Because the Children of Israel had decided to stay forever', isCorrect: false }
-        ],
-        hint: 'The man arrived from the farthest part of the city with urgent news.'
-      },
-      {
-        question: 'What key lessons did Moses cultivate during his ten-year shepherd tenure in Midian?',
-        options: [
-          { text: 'Humility, patience, responsibility, and deep spiritual preparation away from luxury', isCorrect: true },
-          { text: 'Advanced combat tactics and survival training against desert beasts', isCorrect: false },
-          { text: 'Trade routes, wealth building, and pastoral accounting methods', isCorrect: false }
-        ],
-        hint: 'This hidden period of transition trained his character before his prophet mission.'
-      },
-      {
-        question: 'Why did Allah query Moses about the staff in his hand at Mount Sinai before transforming it?',
-        options: [
-          { text: 'To concentrate his attention on the ordinary staff so he would fully grasp the miraculous change', isCorrect: true },
-          { text: 'Because He wanted Moses to throw it away and never use it again', isCorrect: false },
-          { text: 'To test whether Moses could identify simple wood from the mountain', isCorrect: false }
-        ],
-        hint: 'Preparing a person’s focus is essential before demonstrating a divine sign.'
-      },
-      {
-        question: 'Why was the magicians’ declaration of belief considered a devastating moral defeat for Pharaoh?',
-        options: [
-          { text: 'Because they were elite intellectual scholars of Egypt whose recognition of a miracle proved Pharaoh and his magic false', isCorrect: true },
-          { text: 'Because they had paid Pharaoh large sums of money in taxes', isCorrect: false },
-          { text: 'Because court entertainment programs had to be suspended permanently', isCorrect: false }
-        ],
-        hint: 'In ancient Egypt, magic was linked to high science, religion, and the state.'
-      },
-      {
-        question: 'How did the magicians respond when Pharaoh threatened them with mutilation and death?',
-        options: [
-          { text: 'They stood firm, stating they would not choose safety over the clear Truth that had reached them', isCorrect: true },
-          { text: 'They tearfully begged for forgiveness and reverted to trickery', isCorrect: false },
-          { text: 'They escaped to Midian under the cover of darkness', isCorrect: false }
-        ],
-        hint: 'Faith had entered their hearts, rendering physical threats powerless.'
-      },
-      {
-        question: 'What is the absolute final theological lesson presented at the parting of the Red Sea?',
-        options: [
-          { text: 'That worldly status, wealth, and armies cannot defend an oppressor against the absolute justice of Allah', isCorrect: true },
-          { text: 'That the Red Sea undergoes rapid and predictable low tide shifts', isCorrect: false },
-          { text: 'That prophets must always carry wooden staffs for safety on sandy beaches', isCorrect: false }
-        ],
-        hint: 'The story’s conclusion balances human pride against ultimate reality.'
-      }
-    ]
-  }
+      { question: 'What does the Nile represent in the political-economic background of Egypt?', options: [{ text: 'A life-giving resource whose control supports agriculture, transport, and authority', isCorrect: true }, { text: 'A river with no role in political organization', isCorrect: false }, { text: 'Only a boundary between Egypt and Midian', isCorrect: false }], hint: 'Think beyond water itself to infrastructure and administration.' },
+      { question: 'Why is Asiye’s position inside the palace especially significant?', options: [{ text: 'Compassion and secret belief exist within the household of the tyrant', isCorrect: true }, { text: 'She commands the killing policy', isCorrect: false }, { text: 'She is presented as a magician', isCorrect: false }], hint: 'Compare her response with Pharaoh’s environment.' },
+      { question: 'What does Moses’s choice of Midian show about the escape?', options: [{ text: 'He seeks a realistic place outside Pharaoh’s rule while remaining vulnerable', isCorrect: true }, { text: 'He returns directly to the palace', isCorrect: false }, { text: 'He already controls an army there', isCorrect: false }], hint: 'The destination is inhabited but politically outside Pharaoh’s control.' },
+      { question: 'Why is the ordinary staff described before its transformation?', options: [{ text: 'The familiar object becomes the focus before the sign changes its meaning', isCorrect: true }, { text: 'The staff has no later importance', isCorrect: false }, { text: 'Moses plans to sell it', isCorrect: false }], hint: 'Notice the movement from ordinary use to sign.' },
+      { question: 'What conflict is exposed when Pharaoh calls the Israelites his slaves?', options: [{ text: 'Pharaoh claims ownership over people whom Moses asks to release under Allah’s lordship', isCorrect: true }, { text: 'Moses asks to become Pharaoh’s adviser', isCorrect: false }, { text: 'The Israelites ask to remain enslaved', isCorrect: false }], hint: 'The debate concerns freedom and lordship.' },
+      { question: 'Why do Pharaoh’s advisers want a public contest with magicians?', options: [{ text: 'They hope to reduce the public impact of Moses’s signs', isCorrect: true }, { text: 'They want to strengthen Moses’s message', isCorrect: false }, { text: 'They plan to end all public attention', isCorrect: false }], hint: 'Think about control of public interpretation.' },
+      { question: 'Why is the magicians’ belief a major political defeat for Pharaoh?', options: [{ text: 'They are presented as elite experts capable of recognizing the difference between illusion and the sign', isCorrect: true }, { text: 'They are foreign soldiers', isCorrect: false }, { text: 'They own the Nile canals', isCorrect: false }], hint: 'Their expertise matters.' },
+      { question: 'What new problem immediately shows that liberation does not end the story’s moral tests?', options: [{ text: 'The people encounter idol worship and later fall into calf worship', isCorrect: true }, { text: 'They return to slavery voluntarily', isCorrect: false }, { text: 'Moses abandons guidance', isCorrect: false }], hint: 'Physical rescue is followed by questions of belief and responsibility.' },
+    ],
+  },
 ];
 
-export const exercises = mosesB2FinalReviewExercises;
+export const mosesB2FinalChallengeExercises: Exercise[] = [
+  mc('mo-b2-f1', 'Which synthesis best explains the political background of the story?', ['Fear of a growing community, labor demands, and concentrated authority combine to produce oppression', 'The Israelites already control Egypt and oppress Pharaoh', 'Political conflict begins only after the Red Sea'], 0, 'The early chapters connect demographic fear, manpower, infrastructure, and authoritarian control.', 'Final Challenge'),
+  mc('mo-b2-f2', 'What does Moses’s experience in Midian contribute to the later mission?', ['A period of service, responsibility, and spiritual preparation before confrontation with Pharaoh', 'A permanent withdrawal from responsibility', 'Military control of the region'], 0, 'Midian functions as formation rather than narrative delay.', 'Final Challenge'),
+  mc('mo-b2-f3', 'Why is Pharaoh’s reaction to the contest intellectually significant?', ['He resists even after specialists recognize that Moses’s sign is not ordinary illusion', 'He accepts the specialists’ judgment immediately', 'He proves the staff is a stage trick'], 0, 'The story contrasts expert recognition with Pharaoh’s continued political resistance.', 'Final Challenge'),
+  tf('mo-b2-f4', 'The story consistently distinguishes historical qualification from certainty, so “probably” should not be rewritten as “certainly.”', true, 'B2 source fidelity requires preserving the story’s own degree of certainty.', 'Final Challenge'),
+  tf('mo-b2-f5', 'At the Red Sea, Moses’s confidence appears only after the physical path through the water is already visible.', false, 'His trust and reassurance come before the sea opens, which is central to the contrast with the people’s panic.', 'Final Challenge'),
+  matching('mo-b2-f6', 'Match the character with the action that best demonstrates a value in the story.', [
+    { left: 'Asiye', right: 'Uses compassion and persuasion to protect the baby inside a violent political environment' },
+    { left: 'Moses at the well', right: 'Helps others despite his own exhaustion and thirst' },
+  ], 'The actions make compassion and service visible rather than treating values as labels.', 'Final Challenge'),
+  matching('mo-b2-f7', 'Match the conflict with its deeper issue.', [
+    { left: 'Moses asks for the Israelites’ release', right: 'Freedom and lordship versus Pharaoh’s claim of ownership' },
+    { left: 'The contest with the magicians', right: 'Truth and expert recognition versus managed public illusion' },
+  ], 'Both conflicts involve more than isolated events: they challenge Pharaoh’s political interpretation of reality.', 'Final Challenge'),
+  fill('mo-b2-f8', 'Complete the moral commitment after repentance.', 'Moses says he will never again be a helper for [blank].', 'criminals', 'The statement turns repentance into a commitment about future conduct.', 'Final Challenge'),
+  fill('mo-b2-f9', 'Complete the description of Moses’s preparation in Midian.', 'The ten years are described as a period of spiritual preparation for [blank].', 'prophethood', 'The story explicitly gives the long shepherd period a preparatory function.', 'Final Challenge'),
+  {
+    id: 'mo-b2-f10', type: 'sequencing', title: 'Final Challenge', instructions: 'Order the final movement from confrontation to continuing responsibility.',
+    question: 'Put these developments in order.', sequencingItems: [
+      { id: 'a', text: 'Moses and Aaron confront Pharaoh.' },
+      { id: 'b', text: 'The magicians recognize the sign and believe.' },
+      { id: 'c', text: 'The Israelites leave Egypt and reach the sea.' },
+      { id: 'd', text: 'The sea opens for escape and later closes over Pharaoh’s forces.' },
+      { id: 'e', text: 'Moses receives the Torah while his people face new tests of obedience.' },
+    ],
+    correctAnswer: ['a', 'b', 'c', 'd', 'e'], explanation: 'The sequence shows that liberation is followed by continuing guidance and responsibility.', feedback,
+  },
+];
