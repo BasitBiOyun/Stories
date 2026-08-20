@@ -1,80 +1,53 @@
-import type { BookData } from '../../../types';
-import { runB2BlueprintSystem } from '../../b2BlueprintSystem';
-import { polishB2GuideSections } from '../../b2GuidePresentation';
+import type { BookData, Exercise, PageData } from '../../../types';
+import { meccaB2Pages } from './en/pages';
 import {
-  buildB2FriendlyStudentGuideSections,
-  buildB2GoldStudentGuideMetadata,
-  buildB2GoldTeacherGuideMetadata,
-} from '../../b2GoldGuides';
-import { finalizeB2LearningBlueprint } from '../../b2GoldPedagogy';
-import { buildB2GoldReview } from '../../b2GoldReview';
+  meccaB2QuickChallenges,
+  meccaB2KnowledgeCheckExercises,
+  meccaB2VocabularyChallengePairs,
+  meccaB2FinalReviewExercises,
+  meccaB2FinalChallengeExercises,
+} from './en/exercises';
+import { meccaB2TeacherGuide, meccaB2TeacherGuideMetadata } from './en/teacherGuide';
+import { meccaB2SelfStudyGuide, meccaB2StudentGuideMetadata } from './en/selfStudyGuide';
+import { meccaB2PagesAr } from './ar/pages';
 import {
-  applyB2CuratedVocabulary,
-  applyB2GoldReview,
-  prepareB2GoldLearningStructure,
-} from '../../b2GoldStructure';
-import { buildB2StudentFriendlyGuideText } from '../../b2StudentFriendlyGuide';
-import { makeB2CurriculumVisible } from '../../b2TeacherCurriculumSurface';
-import { meccaB2LearningBlueprint } from './learningBlueprint';
-import { meccaB2BlueprintConfig } from './config';
-import { meccaB2HighlightTargets, meccaB2SourcePagesAr, meccaB2SourcePagesEn } from './source';
-import {
-  meccaB2TeacherGuideMetadataBlueprintAr,
-  meccaB2TeacherGuideMetadataBlueprintEn,
-} from './support';
+  meccaB2QuickChallengesAr,
+  meccaB2KnowledgeCheckExercisesAr,
+  meccaB2VocabularyChallengePairsAr,
+  meccaB2FinalReviewExercisesAr,
+  meccaB2FinalChallengeExercisesAr,
+} from './ar/exercises';
+import { meccaB2TeacherGuideAr, meccaB2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { meccaB2SelfStudyGuideAr, meccaB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-export { meccaB2HighlightTargets };
+const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
 
-const story = 'mecca' as const;
-const prepared = prepareB2GoldLearningStructure({
-  englishPages: meccaB2SourcePagesEn,
-  arabicPages: meccaB2SourcePagesAr,
-  config: meccaB2BlueprintConfig,
+const attachLearning = (
+  pages: PageData[],
+  quickChallenges: Record<number, Exercise>,
+  knowledgeCheck: Exercise[],
+  vocabularyPairs: { word: string; meaning: string }[],
+  review: Exercise[],
+  finalChallenge: Exercise[],
+): PageData[] => pages.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, type: 'story', exercises: [quickChallenges[page.id]] };
+  if (page.id === 18) return { ...page, type: 'quiz', exercises: knowledgeCheck };
+  if (page.id === 19) return { ...page, type: 'exercises', exercises: review };
+  if (page.id === 20) return { ...page, type: 'vocabulary-match', vocabularyPairs };
+  if (page.id === 22) return { ...page, type: 'final-challenge', exercises: finalChallenge };
+  return page;
 });
-const goldBlueprint = finalizeB2LearningBlueprint(meccaB2LearningBlueprint, story);
-const compiled = runB2BlueprintSystem({
-  englishPages: prepared.englishPages,
-  arabicPages: prepared.arabicPages,
-  config: prepared.config,
-  blueprint: goldBlueprint,
-});
-
-const curatedVocabulary = [
-  'Jahiliyyah', 'peninsula', 'caravan', 'pilgrimage', 'usury',
-  'prestige', 'tribe', 'slavery', 'monotheism', 'revelation',
-] as const;
-
-const pagesEn = applyB2CuratedVocabulary(
-  applyB2GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'en')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'en', curatedVocabulary,
-);
-const pagesAr = applyB2CuratedVocabulary(
-  applyB2GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB2GoldReview(story, 'ar')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'ar', curatedVocabulary,
-);
-
-const teacherGuideEn = polishB2GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
-const teacherGuideAr = polishB2GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
-const selfStudyGuideEn = polishB2GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
-const selfStudyGuideAr = polishB2GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
-
-export const meccaB2GoldConfig = prepared.config;
 
 export const meccaB2BookDataEn: BookData = {
   id: 'mecca-b2-en',
   title: 'Stories of the Prophets: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: pagesEn,
-  teacherGuide: teacherGuideEn,
-  teacherGuideMetadata: makeB2CurriculumVisible(
-    buildB2GoldTeacherGuideMetadata(meccaB2TeacherGuideMetadataBlueprintEn, story, 'en', prepared.config.storyIds.length),
-    'en',
-  ),
-  selfStudyGuide: selfStudyGuideEn,
-  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'en'),
-  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'en'),
-  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'en'),
+  pages: attachLearning(meccaB2Pages, meccaB2QuickChallenges, meccaB2KnowledgeCheckExercises, meccaB2VocabularyChallengePairs, meccaB2FinalReviewExercises, meccaB2FinalChallengeExercises),
+  teacherGuide: meccaB2TeacherGuide,
+  teacherGuideMetadata: meccaB2TeacherGuideMetadata,
+  selfStudyGuide: meccaB2SelfStudyGuide,
+  studentGuideMetadata: meccaB2StudentGuideMetadata,
 };
 
 export const meccaB2BookDataAr: BookData = {
@@ -82,16 +55,11 @@ export const meccaB2BookDataAr: BookData = {
   title: 'قصص الأنبياء: مكة المكرمة (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: pagesAr,
-  teacherGuide: teacherGuideAr,
-  teacherGuideMetadata: makeB2CurriculumVisible(
-    buildB2GoldTeacherGuideMetadata(meccaB2TeacherGuideMetadataBlueprintAr, story, 'ar', prepared.config.storyIds.length),
-    'ar',
-  ),
-  selfStudyGuide: selfStudyGuideAr,
-  studentGuideSections: buildB2FriendlyStudentGuideSections(story, 'ar'),
-  studentGuideText: buildB2StudentFriendlyGuideText(goldBlueprint, story, 'ar'),
-  studentGuideMetadata: buildB2GoldStudentGuideMetadata(story, 'ar'),
+  pages: attachLearning(meccaB2PagesAr, meccaB2QuickChallengesAr, meccaB2KnowledgeCheckExercisesAr, meccaB2VocabularyChallengePairsAr, meccaB2FinalReviewExercisesAr, meccaB2FinalChallengeExercisesAr),
+  teacherGuide: meccaB2TeacherGuideAr,
+  teacherGuideMetadata: meccaB2TeacherGuideMetadataAr,
+  selfStudyGuide: meccaB2SelfStudyGuideAr,
+  studentGuideMetadata: meccaB2StudentGuideMetadataAr,
 };
 
 export const meccaB2BookData = meccaB2BookDataEn;
