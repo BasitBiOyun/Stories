@@ -1,4 +1,4 @@
-import type { BookData, PageData } from '../../../types';
+import type { BookData, Exercise, PageData } from '../../../types';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1PagesAr } from './ar/pages';
 import {
@@ -22,20 +22,13 @@ import { mosesB1SelfStudyGuideAr, mosesB1StudentGuideMetadataAr } from './ar/sel
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-function attachLearning(
-  pages: PageData[],
-  quickChallenges: Record<number, PageData['exercises'] extends (infer _T)[] ? never : never>,
-): PageData[] {
-  return pages;
-}
-
 const buildPages = (
   pages: PageData[],
-  quickChallenges: Record<number, any>,
-  knowledgeCheck: any[],
+  quickChallenges: Record<number, Exercise>,
+  knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
-  review: any[],
-  finalChallenge: any[],
+  review: Exercise[],
+  finalChallenge: Exercise[],
 ): PageData[] => pages.map((page) => {
   if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
   if (page.id === 14) return { ...page, exercises: knowledgeCheck };
