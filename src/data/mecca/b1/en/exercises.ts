@@ -1,196 +1,77 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+const tf = (id: string, question: string, answer: boolean, explanation: string): Exercise => ({ id, type: 'true-false', question, correctAnswer: answer, explanation, feedback: { correct: 'Correct. The story supports this answer.', incorrect: 'Check the chapter evidence and try again.' } });
+const mc = (id: string, question: string, options: string[], answer: number, explanation: string): Exercise => ({ id, type: 'multiple-choice', question, options, correctAnswer: answer, explanation, feedback: { correct: 'Correct. Your answer matches the story evidence.', incorrect: 'Return to the relevant chapter and compare the choices with the text.' } });
+
+export const meccaB1QuickChallenges: Record<number, Exercise> = {
+  1: mc('qc-1', 'What best explains why Chapter 1 presents Mecca as socially unequal?', ['A central government protected every group equally.', 'Rich merchants held power while poor and weak people were often treated badly.', 'Most people lived outside tribal society.'], 1, 'The chapter links merchant power with the suffering of poor and weak people.'),
+  2: mc('qc-2', 'Why is Mecca central to the chapter’s explanation of Jahiliyyah and Islam?', ['It is presented only as a trading city.', 'It is the location of the Ka’ba, the Qiblah and the beginning of Prophet Muhammad’s call.', 'It had the strongest central government in Arabia.'], 1, 'The chapter connects Mecca with the Ka’ba, Qiblah, the Prophet’s life and the beginning of revelation.'),
+  3: { id: 'qc-3', type: 'tap-reveal', title: 'From Valley to Settlement', instructions: 'Tap to reveal the cause-and-result chain.', question: 'How did a place with no population begin to grow?', correctAnswer: 'Zamzam made settlement possible, the Jurhumites settled there, Abraham and Ishmael rebuilt the Ka’ba, and pilgrimage helped Mecca grow.', explanation: 'The chapter presents water, settlement, the Ka’ba and pilgrimage as connected developments.', feedback: { correct: 'Correct.', incorrect: 'Review the sequence from Zamzam to pilgrimage.' }, tapRevealItems: [{ question: 'Cause-and-result chain', answer: 'Zamzam → settlement → rebuilding of the Ka’ba → pilgrimage → growth of Mecca' }] },
+  4: mc('qc-4', 'Which connection best explains Mecca’s growing dependence on trade?', ['Dry land limited farming, so people earned money through trade.', 'Quraysh banned agriculture throughout Arabia.', 'Pilgrimage ended when trade began.'], 0, 'The chapter directly links the dry land with reliance on trade.'),
+  5: mc('qc-5', 'How did Hashim’s agreements and the sacred months support the same larger development?', ['Both made travel and exchange safer.', 'Both ended pilgrimage to Mecca.', 'Both reduced contact with other regions.'], 0, 'Trade agreements improved merchant safety, while sacred months reduced fighting and helped travel and pilgrimage.'),
+  6: tf('qc-6', 'Pilgrimage activity and trade fairs strengthened one another economically in Mecca.', true, 'The chapter says pilgrimage-season activity helped business and large fairs grow.'),
+  7: mc('qc-7', 'What does the chapter suggest about debt and social power?', ['High interest could keep poor borrowers in difficulty while wealthy lenders gained more power.', 'Debt usually made poor people wealthier than merchants.', 'Tribal status had no relationship to economic inequality.'], 0, 'Usury, debt and elite wealth are presented as connected parts of the social gap.'),
+  8: mc('qc-8', 'Why could loyalty to a tribe become morally difficult?', ['People were expected to support the tribe even when it did something wrong.', 'Tribes asked people to ignore family names.', 'Tribal membership prevented all forms of protection.'], 0, 'The chapter explicitly says a person was expected to protect and honor the tribe even when it acted wrongly.'),
+  9: mc('qc-9', 'Which comparison is supported by Chapter 9?', ['All women had the same social position.', 'A person’s treatment could vary greatly with wealth and status, while slavery exposed another severe inequality.', 'Poetry had no public role.'], 1, 'The chapter contrasts rich and poor women and describes harsh conditions of slavery.'),
+  10: mc('qc-10', 'What contradiction does the chapter identify in Meccan religious life?', ['People rejected Allah as Creator but followed no other beliefs.', 'Many believed in Allah as Creator yet also worshipped idols as intermediaries.', 'Pilgrimage had no religious meaning.'], 1, 'The text says many acknowledged Allah as Creator while also worshipping idols.'),
+  11: mc('qc-11', 'Why does Chapter 11 connect religion with politics and economics?', ['Because beliefs can change how a community lives and therefore challenge existing power.', 'Because religion was presented as unrelated to society.', 'Because all leaders accepted the Quran immediately.'], 0, 'The chapter explicitly says beliefs shape life and helps explain why powerful groups resisted Islam.'),
+  12: mc('qc-12', 'Which change most directly threatened an existing Quraysh economic practice?', ['The Quran forbade usury and permitted honest trade.', 'Islam required every merchant to stop trading.', 'Pilgrimage was completely abolished.'], 0, 'The chapter contrasts unfair usury with honest trade and support for the poor.'),
+  13: mc('qc-13', 'What change in the opposition is most important in Chapter 13?', ['Mockery developed into violent persecution and an organized boycott.', 'Opposition became only a private disagreement.', 'Poor Muslims gained stronger tribal protection.'], 0, 'The chapter moves from ridicule to violence and then to social and economic pressure.'),
+  14: mc('qc-14', 'Why did some Meccan leaders see idol worship as more than a religious custom?', ['It was also connected to wealth, influence and social power.', 'It prevented trade and pilgrimage.', 'It removed tribal loyalty from society.'], 0, 'The chapter explicitly links the idols with money, trade and influence.'),
+  15: mc('qc-15', 'What alternative form of unity does the final chapter contrast with tribal pressure?', ['Unity based only on wealth.', 'Unity based on justice, mercy and belief in one Allah.', 'Unity based on forcing everyone to keep old customs.'], 1, 'The chapter contrasts coercive tribal loyalty with a moral unity based on justice, mercy and faith.')
+};
+
+export const meccaB1KnowledgeCheckExercises: Exercise[] = [
+  mc('kc-1', 'Which feature best explains why Mecca became a major trading center?', ['Its position on important routes together with agreements that supported safer travel', 'A large agricultural surplus', 'A central imperial navy'], 0, 'Chapters 4–5 connect location, dry land, routes and agreements to Mecca’s trade growth.'),
+  mc('kc-2', 'How did the sacred months affect Meccan life?', ['They created a safer period for worship, travel and exchange.', 'They stopped all pilgrimage.', 'They were months when trade agreements were cancelled.'], 0, 'Reduced fighting supported travel, worship and commercial activity.'),
+  mc('kc-3', 'What is the strongest evidence that social inequality was structural rather than accidental?', ['Usury, debt, slavery and weak protection repeatedly favored powerful groups.', 'A single merchant once acted unfairly.', 'Poets sometimes criticized enemies.'], 0, 'Several chapters show repeated systems that disadvantaged weaker people.'),
+  mc('kc-4', 'Why was tribal membership especially important in the desert society described?', ['It provided identity and practical protection for life and property.', 'It guaranteed equal wealth.', 'It replaced all religious beliefs.'], 0, 'The chapter says people outside tribal protection faced serious danger.'),
+  mc('kc-5', 'What role did poets play beyond entertainment?', ['They preserved tribal memory and influenced public reputation.', 'They collected zakat.', 'They controlled caravan routes.'], 0, 'Poets are compared with the media because they carried praise, criticism and history.'),
+  mc('kc-6', 'What did the Hanifs represent within the religious landscape?', ['A continuing connection to Abrahamic monotheism.', 'A merchant guild.', 'A group that promoted idol worship.'], 0, 'The chapter says Hanifs followed the old religion of Abraham.'),
+  mc('kc-7', 'Why did many wealthy Quraysh leaders see Islam as a danger?', ['It challenged religious practices, unfair economic systems and social prestige at the same time.', 'It asked them to abandon Mecca immediately.', 'It supported usury and idol worship.'], 0, 'Chapters 11–14 repeatedly connect resistance with religion, wealth, status and power.'),
+  mc('kc-8', 'What principle does Chapter 15 use to contrast Islam with Jahiliyyah?', ['Human worth should not depend on wealth, gender, background or social power.', 'Only tribal status determines dignity.', 'Economic success is the highest measure of a person.'], 0, 'The final chapter explicitly presents justice, mercy and equal human value as the contrast.')
+];
+
+export const meccaB1VocabularyChallengePairs = [
+  { word: 'Jahiliyyah', meaning: 'a pre-Islamic condition of religious and social ignorance and disorder' },
+  { word: 'pilgrimage', meaning: 'a religious journey to a sacred place' },
+  { word: 'merchant', meaning: 'a person who buys and sells goods' },
+  { word: 'usury', meaning: 'unfair extra money demanded on a loan' },
+  { word: 'debt', meaning: 'money that a person owes and must repay' },
+  { word: 'tribal loyalty', meaning: 'strong support for one’s tribe, sometimes even when it acts wrongly' },
+  { word: 'Hanif', meaning: 'a person who followed the monotheistic religion of Abraham' },
+  { word: 'prestige', meaning: 'high respect and social status' },
+  { word: 'boycott', meaning: 'organized refusal to trade or deal with a group in order to pressure it' },
+  { word: 'mercy', meaning: 'kindness and compassion shown to others' }
+];
+
+const reviewQuiz: Exercise = { id: 'rr-quiz', type: 'quiz-game', title: 'Retrieval Quiz', instructions: 'Answer eight questions without relying on the Knowledge Check.', question: 'Reconnect causes, contrasts and consequences across the story.', correctAnswer: null, explanation: 'This quiz uses different evidence relationships from the Knowledge Check.', feedback: { correct: 'Good retrieval.', incorrect: 'Revisit the relevant chapter evidence.' }, quizQuestions: [
+  { question: 'What helped turn a dry valley into a settled pilgrimage center?', options: [{ text: 'Zamzam, settlement and the rebuilding of the Ka’ba', isCorrect: true }, { text: 'A new central government', isCorrect: false }, { text: 'Large farms', isCorrect: false }], hint: 'Think about Chapter 3.' },
+  { question: 'Why could pilgrimage season strengthen commerce?', options: [{ text: 'Visitors and fairs brought people together for exchange', isCorrect: true }, { text: 'It closed the trade routes', isCorrect: false }, { text: 'It banned markets', isCorrect: false }], hint: 'Connect Chapters 5 and 6.' },
+  { question: 'Which example best shows vulnerability without strong protection?', options: [{ text: 'Orphans, slaves and people outside powerful tribal networks', isCorrect: true }, { text: 'Only wealthy caravan leaders', isCorrect: false }, { text: 'Foreign empires alone', isCorrect: false }], hint: 'Recall Chapters 7–9.' },
+  { question: 'Why is the description of poets as “media” meaningful?', options: [{ text: 'They carried memory, praise and criticism through society', isCorrect: true }, { text: 'They printed newspapers', isCorrect: false }, { text: 'They controlled religious law', isCorrect: false }], hint: 'Think about social communication.' },
+  { question: 'What does the coexistence of belief in Allah and idol worship show?', options: [{ text: 'Religious belief could contain a major contradiction', isCorrect: true }, { text: 'No one believed in Allah', isCorrect: false }, { text: 'Everyone was a Hanif', isCorrect: false }], hint: 'Review Chapter 10.' },
+  { question: 'What made Islam a social as well as religious challenge to elites?', options: [{ text: 'It questioned unjust economic and status systems as well as idol worship', isCorrect: true }, { text: 'It promoted higher usury', isCorrect: false }, { text: 'It strengthened every old hierarchy', isCorrect: false }], hint: 'Connect Chapters 11–12.' },
+  { question: 'Why did persecution fall especially heavily on some early Muslims?', options: [{ text: 'They lacked powerful social protection', isCorrect: true }, { text: 'They controlled most trade', isCorrect: false }, { text: 'They led the Quraysh council', isCorrect: false }], hint: 'Recall Bilal and Chapter 13.' },
+  { question: 'What does the boycott reveal about the methods of opposition?', options: [{ text: 'Economic and social pressure were used together', isCorrect: true }, { text: 'Opposition remained only verbal', isCorrect: false }, { text: 'Leaders stopped caring about influence', isCorrect: false }], hint: 'Connect Chapters 13–14.' }
+] };
 
 export const meccaB1FinalReviewExercises: Exercise[] = [
-  {
-    id: 'final-1',
-    type: 'sequencing',
-    title: 'From Mecca to the Message of Islam',
-    instructions: 'Put the events and developments in the correct order.',
-    question: 'Order the main ideas from the B1 story of Mecca and the Age of Ignorance.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6', '7'],
-    explanation: 'The story begins with Mecca and Jahiliyyah, then explains the growth of Mecca, trade, social problems, religious life, the coming of Islam, and finally the opposition of Quraysh leaders.',
-    feedback: {
-      correct: 'Excellent! You understand the historical flow of Mecca before Islam.',
-      incorrect: 'Some items are not in the correct order. Review the chapter titles and timeline again.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Mecca is introduced as the city where Islam was born' },
-      { id: '2', text: 'The Age of Ignorance is described as a time without justice and peace' },
-      { id: '3', text: 'Abraham (AS), Ishmael (AS), Zamzam, and the Ka’ba are connected to the beginning of Mecca' },
-      { id: '4', text: 'Mecca grows into a wealthy trade city through routes, caravans, fairs, and sacred months' },
-      { id: '5', text: 'Social problems appear clearly: usury, poverty, tribal pride, slavery, and unfair treatment' },
-      { id: '6', text: 'Religious life is dominated by idols, while a few Hanifs follow the religion of Abraham (AS)' },
-      { id: '7', text: 'Islam begins in Mecca and Quraysh leaders oppose it because it threatens their power' }
-    ]
-  },
-  {
-    id: 'final-2',
-    type: 'drag-drop',
-    title: 'Meccan Society: Groups and Roles',
-    instructions: 'Drag each description into the correct group.',
-    question: 'Match the groups with their roles in Meccan society.',
-    correctAnswer: {
-      'QURAYSH LEADERS': ['Controlled trade and wealth', 'Feared losing power', 'Opposed Islam strongly'],
-      'WEAK AND POOR PEOPLE': ['Suffered under unfair systems', 'Often had little protection', 'Were treated badly by powerful people'],
-      'HANIFS AND EARLY BELIEVERS': ['Believed in one Allah', 'Rejected idolatry', 'Sought truth and justice']
-    },
-    explanation: 'The Quraysh leaders protected their economic and social position. Weak people suffered in the unfair system. Hanifs and early believers were connected to tawhid and justice.',
-    feedback: {
-      correct: 'Correct! You can identify the main social groups and their roles.',
-      incorrect: 'Some descriptions are in the wrong group. Think about power, poverty, belief, and opposition.'
-    },
-    dragDropGroups: [
-      { group: 'QURAYSH LEADERS', items: ['Controlled trade and wealth', 'Feared losing power', 'Opposed Islam strongly'] },
-      { group: 'WEAK AND POOR PEOPLE', items: ['Suffered under unfair systems', 'Often had little protection', 'Were treated badly by powerful people'] },
-      { group: 'HANIFS AND EARLY BELIEVERS', items: ['Believed in one Allah', 'Rejected idolatry', 'Sought truth and justice'] }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'Deeper Thinking: Why Did Mecca Resist Islam?',
-    instructions: 'Think about the questions and discuss them with a partner or class.',
-    question: 'Why did the powerful leaders of Mecca oppose Islam?',
-    correctAnswer: null,
-    explanation: 'Students may mention that Islam threatened their idols, trade, usury, social power, tribal prestige, and unfair class system. They may also explain that Islam called people to one Allah, justice, mercy, and dignity.',
-    feedback: {
-      correct: 'Strong reflection! You connected belief, economy, and power.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'Why was Mecca called the Republic of Merchants?', mode: 'Individual' },
-      { question: 'How did trade make Quraysh leaders powerful?', mode: 'Pair' },
-      { question: 'Why did Islam’s message of tawhid challenge idol worship?', mode: 'Pair' },
-      { question: 'How did Islam protect the poor, the weak, and the oppressed?', mode: 'Class' },
-      { question: 'What can modern societies learn from the problems of Jahiliyyah?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'Mecca Before Islam B1 Challenge',
-    instructions: 'Complete the 12-question challenge about Mecca and the Age of Ignorance.',
-    question: 'Are you ready for the final B1 challenge?',
-    correctAnswer: null,
-    explanation: 'This game reviews the historical setting, vocabulary, social structure, religious life, and main lessons of the B1 Mecca story.',
-    feedback: {
-      correct: 'Congratulations! You have mastered the B1 story of Mecca before Islam!',
-      incorrect: 'Keep trying! Review the chapters and focus on causes, results, and key values.'
-    },
-    hints: [
-      'Think about Mecca, Jahiliyyah, trade, and the Ka’ba',
-      'Remember the social problems: usury, poverty, slavery, and tribal pride',
-      'Think about why Quraysh leaders opposed Islam'
-    ],
-    quizQuestions: [
-      {
-        question: 'Why was the pre-Islamic period called the Age of Ignorance?',
-        options: [
-          { text: 'Because people had no animals or markets', isCorrect: false },
-          { text: 'Because people did not truly know Allah and lacked justice and peace', isCorrect: true },
-          { text: 'Because Mecca was not on any trade route', isCorrect: false }
-        ],
-        hint: 'Jahiliyyah is connected to religious and moral disorder, not simply lack of information.'
-      },
-      {
-        question: 'What made Mecca a holy city in Islam?',
-        options: [
-          { text: 'The Holy Ka’ba is located there', isCorrect: true },
-          { text: 'It was the capital of the Byzantine Empire', isCorrect: false },
-          { text: 'It had many rivers and farms', isCorrect: false }
-        ],
-        hint: 'Muslims face this sacred place during salah.'
-      },
-      {
-        question: 'What happened after Zamzam water was discovered?',
-        options: [
-          { text: 'The Quraysh left Mecca forever', isCorrect: false },
-          { text: 'The sacred months ended', isCorrect: false },
-          { text: 'People began to settle in Mecca', isCorrect: true }
-        ],
-        hint: 'Water made settlement possible in a dry valley.'
-      },
-      {
-        question: 'Why did trade become very important in Mecca?',
-        options: [
-          { text: 'Because the land around Mecca was not suitable for farming', isCorrect: true },
-          { text: 'Because all people in Mecca were farmers', isCorrect: false },
-          { text: 'Because Mecca had a large navy', isCorrect: false }
-        ],
-        hint: 'The text describes Mecca as a dry place where crops did not grow easily.'
-      },
-      {
-        question: 'Which months helped create a safer atmosphere for worship and trade?',
-        options: [
-          { text: 'The winter months only', isCorrect: false },
-          { text: 'The four sacred months', isCorrect: true },
-          { text: 'The Roman festival months', isCorrect: false }
-        ],
-        hint: 'During these months, fighting was avoided.'
-      },
-      {
-        question: 'What was usury in Mecca?',
-        options: [
-          { text: 'A type of poetry contest', isCorrect: false },
-          { text: 'A pilgrimage ritual', isCorrect: false },
-          { text: 'Unfair extra money charged on borrowed money', isCorrect: true }
-        ],
-        hint: 'It made the rich richer and the poor poorer.'
-      },
-      {
-        question: 'Why were sons highly valued in tribal life?',
-        options: [
-          { text: 'Because they increased a tribe’s fighting strength and protection', isCorrect: true },
-          { text: 'Because daughters could not live in Mecca', isCorrect: false },
-          { text: 'Because trade was forbidden for men', isCorrect: false }
-        ],
-        hint: 'In desert tribal life, physical strength and protection were very important.'
-      },
-      {
-        question: 'What role did poets have in the Age of Ignorance?',
-        options: [
-          { text: 'They only built caravans', isCorrect: false },
-          { text: 'They acted like the media of the time', isCorrect: true },
-          { text: 'They controlled the Ka’ba', isCorrect: false }
-        ],
-        hint: 'Poets praised tribes, criticized enemies, and kept tribal memory alive.'
-      },
-      {
-        question: 'What did many people in Mecca worship before Islam?',
-        options: [
-          { text: 'Only the sun', isCorrect: false },
-          { text: 'Only angels', isCorrect: false },
-          { text: 'Idols kept in and around the Ka’ba', isCorrect: true }
-        ],
-        hint: 'The text mentions 360 idols including Lat, Manat, and Uzza.'
-      },
-      {
-        question: 'Who were the Hanifs?',
-        options: [
-          { text: 'People who followed the old religion of Abraham (AS)', isCorrect: true },
-          { text: 'Merchants from China', isCorrect: false },
-          { text: 'Magicians who served the Quraysh', isCorrect: false }
-        ],
-        hint: 'They were connected to Abrahamic monotheism.'
-      },
-      {
-        question: 'Why did Quraysh leaders oppose Islam?',
-        options: [
-          { text: 'Because Islam supported their idols and usury', isCorrect: false },
-          { text: 'Because Islam threatened their power, wealth, and unfair social order', isCorrect: true },
-          { text: 'Because Islam stopped all honest trade', isCorrect: false }
-        ],
-        hint: 'Think about economics, religion, and leadership.'
-      },
-      {
-        question: 'What happened during the boycott between 617 and 620?',
-        options: [
-          { text: 'Muslims and their supporters faced social and economic pressure', isCorrect: false },
-          { text: 'All Quraysh leaders immediately became Muslim', isCorrect: false },
-          { text: 'Muslims and their supporters faced hunger and isolation', isCorrect: true }
-        ],
-        hint: 'The boycott caused serious suffering and hunger.'
-      }
-    ]
-  }
+  { id: 'rr-seq', type: 'sequencing', title: 'From Settlement to Opposition', instructions: 'Put the developments in order.', question: 'Sequence the major historical developments.', correctAnswer: ['1','2','3','4','5'], explanation: 'This sequence reconnects the story’s long historical arc.', feedback: { correct: 'Correct sequence.', incorrect: 'Use the chapter order as evidence.' }, sequencingItems: [{ id:'1', text:'Zamzam and settlement help Mecca grow' }, { id:'2', text:'The Ka’ba and trade routes support pilgrimage and commerce' }, { id:'3', text:'Economic and social inequalities become deeply established' }, { id:'4', text:'Islam begins and challenges belief and social practice' }, { id:'5', text:'Opposition develops into persecution and boycott' }] },
+  { id: 'rr-match', type: 'matching', title: 'System and Consequence', instructions: 'Match each feature with its consequence.', question: 'How did different systems shape life in Mecca?', correctAnswer: null, explanation: 'The pairs connect institutions to consequences rather than repeat isolated facts.', feedback: { correct: 'Correct matching.', incorrect: 'Think in cause-and-result terms.' }, matchingPairs: [{ left:'Trade agreements', right:'Safer long-distance merchant travel' }, { left:'Usury', right:'Deeper debt and inequality' }, { left:'Tribal protection', right:'Security tied to group membership' }, { left:'Boycott', right:'Hunger and social isolation' }] },
+  { id: 'rr-reflect', type: 'reflection', title: 'Power and Responsibility', instructions: 'Use evidence from at least two chapters.', question: 'How can economic, social and religious power reinforce one another?', correctAnswer: null, explanation: 'A strong B1 answer links a claim to two concrete examples and explains the relationship.', feedback: { correct: 'Strong evidence-based reflection.', incorrect: '' }, discussionPrompts: [{ question:'Use one example from trade/wealth and one from religious or tribal life.', mode:'Pair' }, { question:'Which reform in the story most directly protects vulnerable people?', mode:'Class' }] },
+  reviewQuiz
+];
+
+export const meccaB1FinalChallengeExercises: Exercise[] = [
+  mc('fc-1', 'Which development best explains why Mecca could become wealthy despite its dry environment?', ['Regional trade supported by routes and agreements', 'Large-scale farming', 'A river-based economy'], 0, 'Trade compensated for the limits of farming.'),
+  mc('fc-2', 'Which statement best captures the role of tribe in the story?', ['It offered protection but could also pressure people to support wrong actions.', 'It had no effect on safety.', 'It was only an economic club.'], 0, 'Tribal life brought both protection and strong social pressure.'),
+  mc('fc-3', 'Why did the message of Islam threaten several elite interests at once?', ['It challenged idol worship, usury, unequal status and unchecked power.', 'It ended all honest trade.', 'It demanded stronger tribal inequality.'], 0, 'The later chapters connect opposition to religious, economic and social interests.'),
+  tf('fc-4', 'Chapter 9 presents social status as uniform: women and enslaved people experienced the same level of power and protection.', false, 'The chapter stresses major differences based on wealth, gender and slavery.'),
+  tf('fc-5', 'The story presents justice and mercy as central parts of the contrast between Islam and Jahiliyyah.', true, 'This contrast is explicit in Chapter 15.'),
+  { id:'fc-6', type:'matching', question:'Match each concept to its story meaning.', correctAnswer:null, explanation:'These concepts come from different parts of the story.', feedback:{ correct:'Correct.', incorrect:'Check the story context.' }, matchingPairs:[{ left:'Hanif', right:'Follower of Abrahamic monotheism' }, { left:'Prestige', right:'Social respect connected to status and influence' }] },
+  { id:'fc-7', type:'matching', question:'Match each action with its social effect.', correctAnswer:null, explanation:'The task tests relationships rather than isolated definitions.', feedback:{ correct:'Correct.', incorrect:'Review cause and effect.' }, matchingPairs:[{ left:'Charging usury', right:'Widening the gap between rich and poor' }, { left:'Organizing a boycott', right:'Creating economic and social pressure' }] },
+  { id:'fc-8', type:'fill-blanks', question:'Complete the idea from the trade chapters.', fillBlanksText:'Because farming was difficult in the dry valley, Mecca depended heavily on _____.', correctAnswer:'trade', explanation:'Trade became central because agriculture was limited.', feedback:{ correct:'Correct.', incorrect:'Look at Chapter 4.' } },
+  { id:'fc-9', type:'fill-blanks', question:'Complete the principle from the final chapter.', fillBlanksText:'Islam called people to unity based on justice, _____, and belief in one Allah.', correctAnswer:'mercy', explanation:'Chapter 15 names justice and mercy together.', feedback:{ correct:'Correct.', incorrect:'Review the final chapter.' } },
+  { id:'fc-10', type:'sequencing', question:'Put the opposition stages in order.', correctAnswer:['1','2','3'], explanation:'Chapter 13 shows escalation.', feedback:{ correct:'Correct.', incorrect:'Review how opposition developed.' }, sequencingItems:[{ id:'1', text:'Leaders mock the message' }, { id:'2', text:'Opposition becomes violent' }, { id:'3', text:'A social and economic boycott is organized' }] }
 ];
