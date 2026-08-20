@@ -38,13 +38,23 @@ const decodedLower = (value = '') => {
 const reviewStoryPageShell = (page: PageData): PageData => {
   if (page.type !== 'story') return page;
 
-  const reviewed: PageData = decodedLower(page.image).includes('/adam_b1/images/')
+  let reviewed: PageData = decodedLower(page.image).includes('/adam_b1/images/')
     ? { ...page, image: '' }
     : page;
+  const isArabic = /[\u0600-\u06ff]/.test(page.title);
+
+  if (!isArabic && page.id === 3) {
+    reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'astonishment') };
+  }
+  if (isArabic && page.id === 10) {
+    reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'المشاق') };
+  }
+  if (isArabic && page.id === 11) {
+    reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'التبلد الكوني') };
+  }
 
   if (page.id !== 13) return reviewed;
 
-  const isArabic = /[\u0600-\u06ff]/.test(page.title);
   return {
     ...reviewed,
     title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
