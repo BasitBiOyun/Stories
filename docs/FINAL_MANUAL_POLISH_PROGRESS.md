@@ -7,7 +7,7 @@ This tracker records the final manual book-by-book polish on `preview`.
 - [x] Moses A2 — COMPLETE
 - [x] Moses B1 — COMPLETE
 - [x] Moses B2 — COMPLETE
-- [ ] Mecca A2 — PENDING
+- [x] Mecca A2 — COMPLETE
 - [ ] Mecca B1 — PENDING
 - [ ] Mecca B2 — PENDING
 - [ ] Yunus Emre A2 — PENDING
@@ -97,3 +97,30 @@ This tracker records the final manual book-by-book polish on `preview`.
   - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
 - Scope verification: compare from review base `fa5173f694482be184a4a65bdb064d654ca8e568` to completion HEAD `5d8cb925be7ab9b256a97f4d27fce55124717039` showed only the two Moses B2 exercise files listed above changed.
 - CI/status: GitHub returned no combined status checks for completion HEAD `5d8cb925be7ab9b256a97f4d27fce55124717039`; therefore CI is not recorded as passed.
+
+## Mecca A2 — COMPLETE
+
+- Review base `preview` HEAD: `eea5c0efe392ba04f5cf483ae8b13bd4df1dceb8`.
+- Content/support completion HEAD before this tracker commit: `02ff69da23e351fade96e5f3c1314d6185a77503`.
+- Chapters read manually: 13 EN + 13 AR.
+- Reviewed: canonical EN/AR story chapters; 13 Quick Challenges per language; 8-item Knowledge Check per language; 6-pair Vocabulary Challenge per language; four-part Retrieval Review per language with 8-question Quiz Game; 10-item mixed-format Final Challenge per language; 13 Teacher Guide sections per language; 13 Self-Study Guide sections per language; Mecca A2 index/runtime assembly and media references.
+- Changed files:
+  - `src/data/mecca/a2/en/knowledgeCheck.ts`
+  - `src/data/mecca/a2/ar/knowledgeCheck.ts`
+  - `src/data/mecca/a2/index.ts`
+- Main corrections:
+  - Replaced the runtime Knowledge Check source in both languages with a separate manually authored 8-item set because the previous Knowledge Check repeated Quick Challenge micro-facts across Chapters 1, 6, 7, 10, 11 and 12.
+  - The new Knowledge sets test separate foundational details: slave-market/Abyssinia context, Bilal’s evening work, lack of money for freedom, Umayya’s coercive treatment, the rock seen by Abu Bakr, the five-piece-of-gold price, the meaning of the Hijrah, and Bilal’s later move to Damascus.
+  - Preserved exactly one Quick Challenge per chapter, one Tap & Reveal in the book, six Vocabulary pairs, four Retrieval Review activities with an eight-question Quiz Game, and the 10-item Final format of 3 MC + 2 T/F + 2 Matching + 2 Fill in Blank + 1 Sequencing.
+  - Review remains retrieval/connection and Final remains a broader independent demonstration rather than a copy of Knowledge.
+  - Teacher Guide and Self-Study Guide were already chapter-specific, evidence-led, TYMM-balanced and values-as-action oriented, so they were not rewritten merely to create changes.
+  - Locked-source note: Arabic Chapter 2 contains the canonical form `فَيْضًا` for the unfair extra-money term. Because story prose is locked, this was recorded as a source-text issue only and was not edited.
+- Runtime/media check:
+  - `src/data/mecca/a2/index.ts` attaches the prepared Quick, new manual Knowledge, Vocabulary, Review and Final sets to the correct page IDs for EN and AR.
+  - Existing Mecca A2 page media use the A2 image/audio paths; no story/media field was changed in this pass.
+- Canonical story lock verification:
+  - EN `src/data/mecca/a2/en/pages.ts` SHA before/after: `18587f8dbce6fca9151ae342d929ab73357e941d` — unchanged.
+  - AR `src/data/mecca/a2/ar/pages.ts` SHA before/after: `035e8b80fcf5135e8c413358b31af2d93505c604` — unchanged.
+  - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
+- Scope verification: compare from review base `eea5c0efe392ba04f5cf483ae8b13bd4df1dceb8` to completion HEAD `02ff69da23e351fade96e5f3c1314d6185a77503` showed only the two new Mecca A2 Knowledge files and `src/data/mecca/a2/index.ts` changed.
+- CI/status: GitHub returned no combined status checks for completion HEAD `02ff69da23e351fade96e5f3c1314d6185a77503`; therefore CI is not recorded as passed.
