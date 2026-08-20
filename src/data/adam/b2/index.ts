@@ -60,6 +60,17 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
+  if (isArabic && page.id === 1) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: reviewed.vocabulary?.map(note =>
+        note.word === 'عجيب'
+          ? { ...note, definition: 'غير مألوف ولافت في وصف القصة.' }
+          : note,
+      ),
+    };
+  }
+
   if (!isArabic && page.id === 2) {
     reviewed = {
       ...reviewed,
@@ -71,6 +82,17 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
+  if (isArabic && page.id === 2) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: [
+        { word: 'خليط', definition: 'مزيج يتكوّن من أكثر من مادة، مثل الماء والتراب.' },
+        { word: 'أول أب', definition: 'أول أصل بشري تنحدر منه الأجيال اللاحقة.' },
+        { word: 'نوع بشري مستقل', definition: 'نوع بشري يقدمه الفصل بوصفه متميزا في أصل خلقه.' },
+      ],
+    };
+  }
+
   if (!isArabic && page.id === 3) {
     reviewed = {
       ...reviewed,
@@ -78,10 +100,40 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
+  if (isArabic && page.id === 3) {
+    reviewed = {
+      ...reviewed,
+      vocabulary: reviewed.vocabulary?.map(note => {
+        if (note.word === 'الخليفة') {
+          return { ...note, definition: 'من توكل إليه مسؤولية عمارة الأرض ورعايتها في سياق الفصل.' };
+        }
+        if (note.word === 'الأسماء') {
+          return { ...note, definition: 'الأسماء التي علّمها الله لآدم، ويربطها الفصل بقدرات التعلم واللغة والمعرفة.' };
+        }
+        return note;
+      }),
+    };
+  }
+
   if (!isArabic && page.id === 4) {
     reviewed = {
       ...reviewed,
       hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h5b'),
+    };
+  }
+
+  if (isArabic && page.id === 7) {
+    reviewed = {
+      ...reviewed,
+      hotspots: reviewed.hotspots?.map(hotspot =>
+        hotspot.id === 'h7a'
+          ? {
+              ...hotspot,
+              title: 'الوسوسة واستغلال الضعف',
+              description: 'يستغل إبليس النسيان وضعف العزم والرغبة في الخلود ليقنع آدم وحواء.',
+            }
+          : hotspot,
+      ),
     };
   }
 
