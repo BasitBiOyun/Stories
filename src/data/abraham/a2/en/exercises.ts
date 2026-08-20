@@ -109,44 +109,44 @@ export const abrahamA2QuickChallenges: Record<number, Exercise> = {
 
 export const abrahamA2KnowledgeCheckExercises: Exercise[] = [
   {
-    id: 'abraham-a2-kc-1', type: 'multiple-choice', title: 'Abraham’s First Observation', instructions: 'Choose the answer supported by Chapter 1.',
-    question: 'What first made Abraham doubt the stone objects?', options: ['They could not eat, drink, talk, move, hear, or understand', 'They were kept outside the town', 'They were smaller than the people'], correctAnswer: 0,
-    explanation: 'Abraham noticed that the objects had none of the abilities people expected from a god.', feedback: { correct: 'Correct.', incorrect: 'Return to the final sentences of Chapter 1.' }
+    id: 'abraham-a2-kc-1', type: 'multiple-choice', title: 'Abraham’s Father', instructions: 'Choose the answer supported by Chapter 2.',
+    question: 'What work did Abraham’s father do?', options: ['He made idols from stone', 'He guarded the king', 'He grew food near the valley'], correctAnswer: 0,
+    explanation: 'Chapter 2 says Abraham’s father was an idol maker who made idols from stone.', feedback: { correct: 'Correct.', incorrect: 'Return to the first sentence of Chapter 2.' }
   },
   {
-    id: 'abraham-a2-kc-2', type: 'multiple-choice', title: 'Looking at the Sky', instructions: 'Choose what Abraham learned from the star and moon scenes.',
-    question: 'What idea connects the star and the moon in Chapter 3?', options: ['Both went away, so Abraham rejected them as Allah', 'Both spoke to Abraham', 'Both stayed in the sky forever'], correctAnswer: 0,
-    explanation: 'Both disappeared or went away, which helped Abraham understand that they could not be Allah.', feedback: { correct: 'Correct.', incorrect: 'Compare what happens at the end of both sky examples.' }
+    id: 'abraham-a2-kc-2', type: 'multiple-choice', title: 'A New Responsibility', instructions: 'Choose what happened after Abraham prayed for guidance in Chapter 4.',
+    question: 'After Allah answered Abraham’s prayer and made him a Messenger, what did Abraham have to do?', options: ['Guide his people', 'Build a palace in Babylon', 'Stop speaking to everyone'], correctAnswer: 0,
+    explanation: 'The chapter says that after Allah made him His Messenger, Abraham had to guide his people.', feedback: { correct: 'Correct.', incorrect: 'Read the sentences immediately after Allah answers Abraham’s prayer.' }
   },
   {
-    id: 'abraham-a2-kc-3', type: 'true-false', title: 'The People’s Reason', instructions: 'Decide whether the statement agrees with Chapter 5.',
-    question: 'The people defended idol worship by saying that their fathers had done the same.', correctAnswer: true,
-    explanation: 'They gave tradition, not the idols’ real power, as their reason.', feedback: { correct: 'Correct.', incorrect: 'Reread the people’s direct answer to Abraham.' }
+    id: 'abraham-a2-kc-3', type: 'multiple-choice', title: 'Allah’s Care', instructions: 'Choose the examples Abraham gives in Chapter 5.',
+    question: 'Which things does Abraham say Allah does for him?', options: ['Gives food and drink and heals him when he is sick', 'Makes stone idols speak', 'Gives him a throne in Babylon'], correctAnswer: 0,
+    explanation: 'Abraham says Allah gives him food and drink and heals him when he is sick.', feedback: { correct: 'Correct.', incorrect: 'Return to Abraham’s final speech in Chapter 5.' }
   },
   {
-    id: 'abraham-a2-kc-4', type: 'multiple-choice', title: 'The Broken Idols', instructions: 'Choose the purpose of Abraham’s plan.',
-    question: 'What was Abraham trying to make the people think about by leaving the largest idol with the axe?', options: ['Whether their idols could really act or protect themselves', 'Whether the festival was long enough', 'Whether the food in the idol house was cold'], correctAnswer: 0,
-    explanation: 'The plan prepared the question that exposed the idols’ inability to act.', feedback: { correct: 'Correct.', incorrect: 'Connect Chapter 6 with the questioning scene in Chapter 7.' }
+    id: 'abraham-a2-kc-4', type: 'true-false', title: 'The Empty Town', instructions: 'Decide whether the statement agrees with Chapter 6.',
+    question: 'Abraham entered the idol house after the people had gone outside the town for a festival.', correctAnswer: true,
+    explanation: 'The festival took the people outside the town, and Abraham waited until the town was empty.', feedback: { correct: 'Correct.', incorrect: 'Reread the first paragraph of Chapter 6 and follow the order of events.' }
   },
   {
-    id: 'abraham-a2-kc-5', type: 'true-false', title: 'After the Fire', instructions: 'Decide whether the statement agrees with Chapter 9.',
-    question: 'Seeing Abraham safe in the fire made all the people accept his message.', correctAnswer: false,
-    explanation: 'The people were amazed, but the chapter says they did not change their minds.', feedback: { correct: 'Correct.', incorrect: 'Read the final two sentences of Chapter 9.' }
+    id: 'abraham-a2-kc-5', type: 'multiple-choice', title: 'The Catapult', instructions: 'Choose the detail stated in Chapter 8.',
+    question: 'What machine did the people use to throw Abraham into the fire?', options: ['A catapult', 'A wagon', 'A crane'], correctAnswer: 0,
+    explanation: 'Chapter 8 names the machine as a catapult.', feedback: { correct: 'Correct.', incorrect: 'Look at the final sentences of Chapter 8.' }
   },
   {
-    id: 'abraham-a2-kc-6', type: 'multiple-choice', title: 'Nimrod’s Claim', instructions: 'Choose how Abraham answered Nimrod’s claim to great power.',
-    question: 'What did Abraham ask Nimrod to do?', options: ['Make the sun rise from the west', 'Build a larger idol', 'Travel from Babylon to Palestine'], correctAnswer: 0,
-    explanation: 'Abraham challenged Nimrod to make the sun rise from the west.', feedback: { correct: 'Correct.', incorrect: 'Return to Abraham’s final sentence in Chapter 10.' }
+    id: 'abraham-a2-kc-6', type: 'multiple-choice', title: 'Before the Fire Became Cool', instructions: 'Choose who came to Abraham in Chapter 9.',
+    question: 'Who came to Abraham and asked whether he wished for anything?', options: ['Angel Gabriel', 'Nimrod', 'Lot'], correctAnswer: 0,
+    explanation: 'Chapter 9 says Angel Gabriel came to Abraham and asked whether he wished for anything.', feedback: { correct: 'Correct.', incorrect: 'Return to the opening sentences of Chapter 9.' }
   },
   {
-    id: 'abraham-a2-kc-7', type: 'multiple-choice', title: 'The Valley', instructions: 'Choose the best description of Hagar in Chapter 12.',
-    question: 'Which answer shows both Hagar’s trust and her effort?', options: ['She trusted Allah and searched for food and water', 'She trusted Allah and did nothing', 'She left Ishmael and returned to Babylon'], correctAnswer: 0,
-    explanation: 'The chapter shows trust first and active searching afterward.', feedback: { correct: 'Correct.', incorrect: 'Use one detail from each paragraph of Chapter 12.' }
+    id: 'abraham-a2-kc-7', type: 'multiple-choice', title: 'Zamzam Appears', instructions: 'Choose the place stated in Chapter 13.',
+    question: 'Where did the water come out of the ground?', options: ['Under Ishmael’s feet', 'Beside Nimrod’s palace', 'Inside the idol house'], correctAnswer: 0,
+    explanation: 'The chapter says water came out of the ground under Ishmael’s feet.', feedback: { correct: 'Correct.', incorrect: 'Read the opening of Chapter 13.' }
   },
   {
-    id: 'abraham-a2-kc-8', type: 'multiple-choice', title: 'The Closing Chapter', instructions: 'Choose the pair supported by Chapter 14.',
-    question: 'Which two ideas belong together in the final chapter?', options: ['Abraham and Ishmael build the Ka’ba; the story closes with Allah having no partner', 'Nimrod builds Mecca; the people return to idol worship', 'Hagar builds the Ka’ba; Abraham stays in Babylon'], correctAnswer: 0,
-    explanation: 'Chapter 14 joins the Ka’ba building with the final message that Allah is unique and has no partner.', feedback: { correct: 'Correct.', incorrect: 'Use the building paragraph and the final message together.' }
+    id: 'abraham-a2-kc-8', type: 'multiple-choice', title: 'Hajj and Memory', instructions: 'Choose what Chapter 14 says.',
+    question: 'What does the story say Hajj helps people remember?', options: ['Abraham and his family’s story', 'The Babylon festival', 'Nimrod’s guards'], correctAnswer: 0,
+    explanation: 'Chapter 14 says Hajj makes people remember Abraham and his family’s story.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence about Hajj in Chapter 14.' }
   }
 ];
 
