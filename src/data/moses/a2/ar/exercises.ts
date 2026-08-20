@@ -1,156 +1,71 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
 
-export const mosesA2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'final-1',
-    type: 'sequencing',
-    title: 'رحلة موسى عليه السلام',
-    instructions: 'ضع الأحداث الرئيسة في الترتيب الصحيح.',
-    question: 'كيف تطورت رحلة موسى عليه السلام؟',
-    correctAnswer: ['1', '2', '3', '4', '5'],
-    explanation: 'تنتقل القصة من النيل والقصر إلى مدين، ثم إلى رسالة موسى وعبور البحر بأمان.',
-    feedback: {
-      correct: 'صحيح. تتبعت نقاط التحول الرئيسة في القصة كلها.',
-      incorrect: 'ابدأ بالطفل موسى، ثم تتبع أين عاش وسافر، ومتى تلقى رسالته، وكيف قاد قومه في النهاية.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'يوضع الطفل موسى في تابوت في نهر النيل' },
-      { id: '2', text: 'ينشأ موسى بأمان في بيت فرعون' },
-      { id: '3', text: 'يغادر موسى مصر ويبدأ حياة جديدة في مدين' },
-      { id: '4', text: 'يكلم الله موسى ويرسله برسالة إلى فرعون' },
-      { id: '5', text: 'يسير موسى وقومه بأمان في الطريق الذي فتحه الله في البحر' }
-    ]
-  },
-  {
-    id: 'final-2',
-    type: 'matching',
-    title: 'الأشخاص والأفعال',
-    instructions: 'صل كل شخص أو مجموعة بالفعل الذي تدعمه القصة.',
-    question: 'من فعل ماذا في القصة؟',
-    correctAnswer: {
-      'أم موسى': 'وثقت بالله ووضعت الطفل موسى في التابوت',
-      'الملكة آسية': 'اعتنت بالطفل موسى في القصر',
-      'موسى': 'ساعد الفتاتين عند البئر',
-      'السحرة': 'آمنوا برب موسى وهارون'
-    },
-    explanation: 'يربط كل تطابق شخصًا أو مجموعة بفعل مهم من جزء مختلف من القصة.',
-    feedback: {
-      correct: 'صحيح. ربطت أربعة أشخاص أو مجموعات بالأفعال التي تحدد دورهم في القصة.',
-      incorrect: 'فكر في أربعة أماكن أو مواقف: النيل، القصر، بئر مدين، وموقف السحرة.'
-    },
-    matchingPairs: [
-      { left: 'أم موسى', right: 'وثقت بالله ووضعت الطفل موسى في التابوت' },
-      { left: 'الملكة آسية', right: 'اعتنت بالطفل موسى في القصر' },
-      { left: 'موسى', right: 'ساعد الفتاتين عند البئر' },
-      { left: 'السحرة', right: 'آمنوا برب موسى وهارون' }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'الدليل والدروس',
-    instructions: 'فكر في القصة وادعم كل إجابة بتفصيل من الفصل المناسب.',
-    question: 'ماذا نتعلم من الاختيارات وردود الأفعال في قصة موسى؟',
-    correctAnswer: null,
-    explanation: 'يرتبط التأمل الجيد بالقصة نفسها: الثقة في المواقف الصعبة، ومساعدة المحتاج، والاستجابة للحق تظهر في أحداث واضحة.',
-    feedback: {
-      correct: 'تأمل جيد. اربط إجابتك دائمًا بحدث واضح من القصة.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'ما التفصيل الذي يبين أن أم موسى وثقت بالله رغم قلقها؟', mode: 'Individual' },
-      { question: 'ماذا فعل موسى عندما أدرك أن الفتاتين بحاجة إلى المساعدة؟', mode: 'Pair' },
-      { question: 'كيف اختلف رد السحرة عن رد فرعون بعد ظهور الآيات؟', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'تحدي الاسترجاع — موسى A2',
-    instructions: 'أجب عن ثمانية أسئلة من أجزاء مختلفة من القصة.',
-    question: 'هل تستطيع استرجاع الأفكار المهمة دون إعادة قراءة كل شيء؟',
-    correctAnswer: null,
-    explanation: 'تراجع الأسئلة الثمانية أشخاصًا وقرارات وأماكن ونقاط تحول مهمة من القصة كلها.',
-    feedback: {
-      correct: 'أحسنت. استرجعت الأفكار الرئيسة من أجزاء مختلفة من الكتاب.',
-      incorrect: 'استخدم التلميح للعودة إلى الجزء المناسب من القصة، ثم حاول من جديد.'
-    },
-    hints: ['فكر في النيل والقصر', 'تذكر مدين', 'تذكر الآيات والبحر'],
-    quizQuestions: [
-      {
-        question: 'من تابع التابوت بعد أن وضعته أم موسى في النهر؟',
-        options: [
-          { text: 'أخت موسى', isCorrect: true },
-          { text: 'أحد السحرة', isCorrect: false },
-          { text: 'فرعون', isCorrect: false }
-        ],
-        hint: 'طلبت أمه من شخص من الأسرة أن يراقب أين يذهب التابوت.'
-      },
-      {
-        question: 'ماذا طلبت الملكة آسية من خدمها أن يجدوا للطفل موسى؟',
-        options: [
-          { text: 'مرضعة', isCorrect: true },
-          { text: 'جنديًا', isCorrect: false },
-          { text: 'ساحرًا', isCorrect: false }
-        ],
-        hint: 'كان الطفل بحاجة إلى من يطعمه ويعتني به.'
-      },
-      {
-        question: 'لماذا غادر موسى مصر بعد حادثة السوق؟',
-        options: [
-          { text: 'لأن جنود فرعون كانوا يبحثون عنه', isCorrect: true },
-          { text: 'لأنه أراد أن يصبح ساحرًا', isCorrect: false },
-          { text: 'لأن نهر النيل جف', isCorrect: false }
-        ],
-        hint: 'حذره رجل من خطر في المدينة.'
-      },
-      {
-        question: 'ماذا وجد موسى عندما وصل إلى مدين وهو متعب وعطشان؟',
-        options: [
-          { text: 'بئرًا وبالقرب منها رعاة', isCorrect: true },
-          { text: 'قصر فرعون', isCorrect: false },
-          { text: 'طريقًا في البحر', isCorrect: false }
-        ],
-        hint: 'كان يبحث عن الماء.'
-      },
-      {
-        question: 'لماذا قبل موسى عرض العمل من شعيب؟',
-        options: [
-          { text: 'كان غريبًا ويحتاج إلى عمل وبيت', isCorrect: true },
-          { text: 'أراد أن يحكم مدين', isCorrect: false },
-          { text: 'أراد الانضمام إلى جيش فرعون', isCorrect: false }
-        ],
-        hint: 'فكر فيما كان يحتاجه موسى بعد وصوله إلى مكان جديد.'
-      },
-      {
-        question: 'ما الآيتان اللتان أظهرهما موسى في قصر فرعون؟',
-        options: [
-          { text: 'تحولت العصا إلى ثعبان وصارت يده بيضاء مضيئة', isCorrect: true },
-          { text: 'اختفى النيل وتحرك القصر', isCorrect: false },
-          { text: 'طار التابوت وانفتحت بئر', isCorrect: false }
-        ],
-        hint: 'إحدى الآيتين كانت في عصاه والأخرى في يده.'
-      },
-      {
-        question: 'ماذا قال السحرة بعد أن رأوا آية موسى؟',
-        options: [
-          { text: 'نؤمن برب موسى وهارون', isCorrect: true },
-          { text: 'فرعون هو الذي فتح البحر', isCorrect: false },
-          { text: 'سنعود إلى مدين', isCorrect: false }
-        ],
-        hint: 'تغير موقفهم بعد أن رأوا ما حدث.'
-      },
-      {
-        question: 'ماذا كان أمام قوم موسى عندما كان جيش فرعون خلفهم؟',
-        options: [
-          { text: 'البحر', isCorrect: true },
-          { text: 'القصر', isCorrect: false },
-          { text: 'البئر', isCorrect: false }
-        ],
-        hint: 'ظنوا أنه لا يوجد مكان للهروب.'
-      }
-    ]
-  }
+// المصدر اليدوي الوحيد لجميع أنشطة موسى A2 بالعربية.
+
+export const mosesA2QuickChallengesAr: Record<number, Exercise> = {
+  1: { id: 'moses-a2-ar-quick-1', type: 'matching', title: 'القوة والإيمان', instructions: 'صِل كل طرف بما تقوله القصة عنه.', question: 'كيف اختلف فرعون وبنو إسرائيل؟', matchingPairs: [{ left: 'فرعون', right: 'ادعى الألوهية وظلم الناس' }, { left: 'بنو إسرائيل', right: 'آمنوا بالله الواحد' }], correctAnswer: { فرعون: 'ادعى الألوهية وظلم الناس', 'بنو إسرائيل': 'آمنوا بالله الواحد' }, explanation: 'يقابل الفصل بين ادعاء فرعون وظلمه وإيمان بني إسرائيل بالله الواحد.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى وصف فرعون وإيمان بني إسرائيل في الفصل الأول.' } },
+  2: { id: 'moses-a2-ar-quick-2', type: 'multiple-choice', title: 'الخوف والأمر الظالم', instructions: 'اختر النتيجة الصحيحة.', question: 'ماذا فعل فرعون بعد تفسير السحرة لحلمه؟', options: ['أمر بقتل أطفال بني إسرائيل الذكور', 'أطلق سراح بني إسرائيل', 'غادر مصر'], correctAnswer: 0, explanation: 'أدى خوف فرعون إلى أمر ظالم.', feedback: { correct: 'صحيح.', incorrect: 'اقرأ أمر فرعون بعد تفسير الحلم.' } },
+  3: { id: 'moses-a2-ar-quick-3', type: 'tap-reveal', title: 'الثقة في وقت صعب', instructions: 'أجب أولًا ثم اكشف الإجابة.', question: 'ماذا فعلت أم موسى بعد أن طلبت العون من الله؟', tapRevealItems: [{ question: 'فعل أم موسى', answer: 'وضعت موسى في تابوت وألقته في النيل كما أمرها الله.' }], correctAnswer: 'وضعت موسى في تابوت وألقته في النيل كما أمرها الله.', explanation: 'يجمع الفصل بين القلق والثقة والعمل.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى أمر الله لأم موسى.' } },
+  4: { id: 'moses-a2-ar-quick-4', type: 'multiple-choice', title: 'اختيار آسية', instructions: 'اختر الإجابة التي يدعمها الفصل.', question: 'ما الذي يبين أن آسية كانت مختلفة عن زوجها؟', options: ['آمنت بالله وأرادت رعاية الطفل موسى', 'أمرت الجنود بتفتيش البيوت', 'أعادت التابوت إلى النهر'], correctAnswer: 0, explanation: 'يصفها الفصل بأنها مؤمنة ورحيمة.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى وصف آسية في الفصل الرابع.' } },
+  5: { id: 'moses-a2-ar-quick-5', type: 'sequencing', title: 'العودة إلى الأم', instructions: 'رتب الأحداث.', question: 'كيف عاد موسى إلى رعاية أمه؟', sequencingItems: [{ id: '1', text: 'اقترحت أخته امرأة ترضع الطفل' }, { id: '2', text: 'أحضرت أخته أمها إلى القصر' }, { id: '3', text: 'عادت أم موسى إلى رعايته' }], correctAnswer: ['1','2','3'], explanation: 'كانت أخته سببًا في عودة أمه إليه.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل الرابع وبداية الخامس.' } },
+  6: { id: 'moses-a2-ar-quick-6', type: 'matching', title: 'الخطأ والاستجابة', instructions: 'صِل الحدث باستجابة موسى.', question: 'ماذا فعل موسى بعد الحادثة؟', matchingPairs: [{ left: 'الخطأ', right: 'تسبب موسى في موت الرجل عن غير قصد' }, { left: 'استجابة موسى', right: 'حزن وطلب المغفرة من الله' }], correctAnswer: { الخطأ: 'تسبب موسى في موت الرجل عن غير قصد', 'استجابة موسى': 'حزن وطلب المغفرة من الله' }, explanation: 'يركز الفصل على الخطأ غير المقصود والتوبة بعده.', feedback: { correct: 'صحيح.', incorrect: 'افصل بين ما حدث وما فعله موسى بعده.' } },
+  7: { id: 'moses-a2-ar-quick-7', type: 'multiple-choice', title: 'لماذا مدين؟', instructions: 'اختر السبب الصحيح.', question: 'لماذا كانت مدين أكثر أمانًا لموسى من مصر؟', options: ['لم يكن ملك مصر حاكمًا فيها', 'لم يكن فيها أحد', 'كان فرعون قد سامحه'], correctAnswer: 0, explanation: 'تنص القصة على أن ملك مصر لم يكن يحكم مدين.', feedback: { correct: 'صحيح.', incorrect: 'ابحث عن الجملة التي تشرح من لا يحكم مدين.' } },
+  8: { id: 'moses-a2-ar-quick-8', type: 'multiple-choice', title: 'المساعدة عند البئر', instructions: 'اختر ما فعله موسى.', question: 'لماذا سقى موسى غنم الفتاتين؟', options: ['فهم أنهما تحتاجان إلى المساعدة', 'أراد شراء الغنم', 'كان يعمل لفرعون'], correctAnswer: 0, explanation: 'لاحظ حاجتهما وساعدهما.', feedback: { correct: 'صحيح.', incorrect: 'راجع ما فهمه موسى قبل أن يسقي الغنم.' } },
+  9: { id: 'moses-a2-ar-quick-9', type: 'multiple-choice', title: 'بداية جديدة', instructions: 'اختر السبب الصحيح.', question: 'لماذا قبل موسى عمل شعيب؟', options: ['كان غريبًا ويحتاج إلى عمل وبيت', 'أراد أن يحكم مدين', 'أراد العودة إلى قصر فرعون'], correctAnswer: 0, explanation: 'تذكر القصة حاجته إلى العمل والبيت.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل التاسع.' } },
+  10: { id: 'moses-a2-ar-quick-10', type: 'sequencing', title: 'على الجبل', instructions: 'رتب الأحداث.', question: 'ماذا حدث بعد أن رأى موسى النار؟', sequencingItems: [{ id: '1', text: 'صعد موسى الجبل' }, { id: '2', text: 'كلمه الله' }, { id: '3', text: 'ألقى عصاه' }, { id: '4', text: 'صارت العصا ثعبانًا كبيرًا' }], correctAnswer: ['1','2','3','4'], explanation: 'ينتقل المشهد من النار إلى النداء ثم إلى آية العصا.', feedback: { correct: 'صحيح.', incorrect: 'اتبع أحداث الفصل العاشر بالترتيب.' } },
+  11: { id: 'moses-a2-ar-quick-11', type: 'matching', title: 'الآية والرفيق', instructions: 'صِل كل عنصر بدوره.', question: 'ماذا أعطى الله موسى في مهمته؟', matchingPairs: [{ left: 'اليد المضيئة', right: 'آية من آيات قدرة الله' }, { left: 'هارون', right: 'أخو موسى الذي ذهب معه إلى القصر' }], correctAnswer: { 'اليد المضيئة': 'آية من آيات قدرة الله', هارون: 'أخو موسى الذي ذهب معه إلى القصر' }, explanation: 'يعرض الفصل آية أخرى ومرافقة هارون لموسى.', feedback: { correct: 'صحيح.', incorrect: 'راجع ما حدث ليد موسى ومن ذهب معه.' } },
+  12: { id: 'moses-a2-ar-quick-12', type: 'true-false', title: 'معجزة أم سحر؟', instructions: 'حدد صحة الجملة.', question: 'قبل فرعون آيات موسى على أنها معجزات من الله.', correctAnswer: false, explanation: 'قال فرعون إنها سحر.', feedback: { correct: 'صحيح.', incorrect: 'اقرأ كلام فرعون في نهاية الفصل الثاني عشر.' } },
+  13: { id: 'moses-a2-ar-quick-13', type: 'matching', title: 'استجابتان مختلفتان', instructions: 'صِل كل طرف باستجابته.', question: 'كيف اختلف السحرة وفرعون؟', matchingPairs: [{ left: 'السحرة', right: 'آمنوا برب موسى وهارون' }, { left: 'فرعون', right: 'بقي متكبرًا واستمر في الأذى' }], correctAnswer: { السحرة: 'آمنوا برب موسى وهارون', فرعون: 'بقي متكبرًا واستمر في الأذى' }, explanation: 'أدى المشهد نفسه إلى الإيمان عند السحرة والرفض عند فرعون.', feedback: { correct: 'صحيح.', incorrect: 'قارن كلام السحرة برد فرعون.' } },
+  14: { id: 'moses-a2-ar-quick-14', type: 'multiple-choice', title: 'رحلة سرية', instructions: 'اختر السبب الصحيح.', question: 'لماذا طلب موسى من قومه الخروج ليلًا بسرية؟', options: ['كانوا يهربون من ظلم فرعون وجيشه', 'كانوا يزورون مدين يومًا واحدًا', 'كانوا يبحثون عن سوق'], correctAnswer: 0, explanation: 'كان الخروج بأمر الله هربًا من الظلم.', feedback: { correct: 'صحيح.', incorrect: 'اربط أمر الله بالخطر من فرعون.' } },
+  15: { id: 'moses-a2-ar-quick-15', type: 'multiple-choice', title: 'لا طريق للهروب؟', instructions: 'اختر ما أمر الله به موسى.', question: 'ماذا أمر الله موسى عندما كان البحر أمامهم والجيش خلفهم؟', options: ['أن يضرب البحر بعصاه', 'أن يعود إلى فرعون', 'أن يصعد الجبل'], correctAnswer: 0, explanation: 'ضرب موسى البحر ففتح الله لهم طريقًا.', feedback: { correct: 'صحيح.', incorrect: 'راجع أمر الله في الفصل الخامس عشر.' } },
+  16: { id: 'moses-a2-ar-quick-16', type: 'true-false', title: 'الدرس الأخير', instructions: 'حدد صحة الجملة.', question: 'تعلمنا النهاية أن الإنسان لا يملك إنسانًا آخر وأن القدرة لله وحده.', correctAnswer: true, explanation: 'يذكر الفصل الأخير هذين الدرسين صراحة.', feedback: { correct: 'صحيح.', incorrect: 'اقرأ آخر جملتين من القصة.' } },
+};
+
+export const mosesA2KnowledgeCheckExercisesAr: Exercise[] = [
+  { id: 'moses-a2-ar-kc-1', type: 'multiple-choice', title: 'حكم فرعون', instructions: 'اختر الإجابة الصحيحة.', question: 'لماذا أساء فرعون معاملة بني إسرائيل في بداية القصة؟', options: ['خاف من كثرتهم ومن فقدان السيطرة', 'رفضوا العمل في مدين', 'أخذوا قصره'], correctAnswer: 0, explanation: 'ربطت القصة خوفه بظلمه.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل الأول.' } },
+  { id: 'moses-a2-ar-kc-2', type: 'multiple-choice', title: 'التابوت والقصر', instructions: 'اختر الإجابة الصحيحة.', question: 'كيف عاد موسى إلى أمه بعد وصول التابوت إلى القصر؟', options: ['اقترحت أخته امرأة كانت في الحقيقة أمه', 'أعاده فرعون إلى النهر', 'وجد السحرة أسرته'], correctAnswer: 0, explanation: 'دلّت أخته أهل القصر على أمه لتكون مرضعته.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين الرابع والخامس.' } },
+  { id: 'moses-a2-ar-kc-3', type: 'true-false', title: 'بعد حادثة السوق', instructions: 'حدد صحة الجملة.', question: 'افتخر موسى بما حدث في السوق ولم يطلب المغفرة.', correctAnswer: false, explanation: 'حزن وطلب المغفرة من الله.', feedback: { correct: 'صحيح.', incorrect: 'راجع دعاء موسى في الفصل السادس.' } },
+  { id: 'moses-a2-ar-kc-4', type: 'multiple-choice', title: 'الحياة في مدين', instructions: 'اختر الملخص الصحيح.', question: 'ماذا حدث بعد أن ساعد موسى الفتاتين؟', options: ['دعاه شعيب وعرض عليه العمل ثم تزوج موسى إحدى ابنتيه', 'صار موسى ملك مدين', 'عاد موسى فورًا إلى مصر وحده'], correctAnswer: 0, explanation: 'تعرض الفصول 8–9 انتقاله إلى حياة جديدة في مدين.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين الثامن والتاسع.' } },
+  { id: 'moses-a2-ar-kc-5', type: 'multiple-choice', title: 'آيات الله', instructions: 'اختر الزوج الصحيح.', question: 'ما الآيتان اللتان أراهما الله لموسى؟', options: ['صارت العصا ثعبانًا وأصبحت يده مضيئة', 'جف النيل واختفى القصر', 'تكلمت الغنم وتحرك الجبل'], correctAnswer: 0, explanation: 'تذكر القصة آية العصا واليد.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين العاشر والحادي عشر.' } },
+  { id: 'moses-a2-ar-kc-6', type: 'multiple-choice', title: 'السحرة', instructions: 'اختر ما حدث.', question: 'ماذا فعل السحرة بعد أن غلبت آية موسى ما عندهم؟', options: ['آمنوا برب موسى وهارون', 'قبضوا على موسى', 'ذهبوا إلى مدين'], correctAnswer: 0, explanation: 'سجد السحرة وأعلنوا الإيمان.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الثالث عشر.' } },
+  { id: 'moses-a2-ar-kc-7', type: 'true-false', title: 'الخروج من مصر', instructions: 'حدد صحة الجملة.', question: 'خرج موسى وقومه ليلًا ووصلوا إلى البحر بينما كان فرعون يجهز جيشه.', correctAnswer: true, explanation: 'هذا هو تسلسل الفصل الرابع عشر.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل الرابع عشر.' } },
+  { id: 'moses-a2-ar-kc-8', type: 'multiple-choice', title: 'عبور البحر', instructions: 'اختر أفضل ملخص.', question: 'ماذا حدث عند البحر؟', options: ['فتح الله طريقًا لقوم موسى ثم أغلق البحر على فرعون وجنوده', 'فتح فرعون البحر وأنقذ الجميع', 'عاد قوم موسى إلى مصر قبل العبور'], correctAnswer: 0, explanation: 'تعرض الفصول 15–16 النجاة ثم نهاية فرعون.', feedback: { correct: 'صحيح.', incorrect: 'راجع العبور وما حدث بعد دخول جيش فرعون.' } },
 ];
 
-export const exercises = mosesA2FinalReviewExercises;
+export const mosesA2VocabularyChallengePairsAr = [
+  { word: 'ظَالِمًا', meaning: 'غير عادل ويعامل الآخرين بقسوة' },
+  { word: 'سَيَحْفَظُهُ', meaning: 'سيحميه من الخطر' },
+  { word: 'فَاغْفِرْ لِي', meaning: 'طلب الصفح عن الخطأ' },
+  { word: 'هَدَاهُ', meaning: 'أرشده إلى الطريق الصحيح' },
+  { word: 'غَرِيبًا', meaning: 'شخص جديد لا يعرفه أهل المكان' },
+  { word: 'انْفَلَقَ', meaning: 'انفتح وانقسم إلى أجزاء' },
+];
+
+export const mosesA2FinalReviewExercisesAr: Exercise[] = [
+  { id: 'moses-a2-ar-review-sequence', type: 'sequencing', title: 'من النيل إلى النجاة', instructions: 'رتب المراحل الرئيسة.', question: 'كيف تطورت قصة موسى؟', sequencingItems: [{ id: '1', text: 'وصل الطفل موسى إلى القصر عبر النيل' }, { id: '2', text: 'غادر موسى مصر ووصل إلى مدين' }, { id: '3', text: 'كلم الله موسى وأعطاه الآيات' }, { id: '4', text: 'واجه موسى فرعون والسحرة' }, { id: '5', text: 'قاد موسى قومه خارج مصر' }, { id: '6', text: 'فتح الله لهم البحر' }], correctAnswer: ['1','2','3','4','5','6'], explanation: 'هذه هي المراحل الكبرى للقصة.', feedback: { correct: 'صحيح.', incorrect: 'تتبع حياة موسى من الطفولة إلى البحر.' } },
+  { id: 'moses-a2-ar-review-match', type: 'matching', title: 'الأشخاص والاختيارات', instructions: 'صِل كل شخص بالفعل المهم.', question: 'من فعل ماذا؟', matchingPairs: [{ left: 'أم موسى', right: 'وثقت بالله ووضعت التابوت في النيل' }, { left: 'آسية', right: 'اختارت رعاية الطفل موسى' }, { left: 'موسى', right: 'ساعد الفتاتين عند البئر' }, { left: 'السحرة', right: 'قبلوا الحق بعد رؤية الآية' }], correctAnswer: { 'أم موسى': 'وثقت بالله ووضعت التابوت في النيل', آسية: 'اختارت رعاية الطفل موسى', موسى: 'ساعد الفتاتين عند البئر', السحرة: 'قبلوا الحق بعد رؤية الآية' }, explanation: 'كل فعل من جزء مختلف من القصة.', feedback: { correct: 'صحيح.', incorrect: 'فكر في النيل والقصر والبئر ومشهد السحرة.' } },
+  { id: 'moses-a2-ar-review-reflect', type: 'reflection', title: 'الاختيارات والقيم', instructions: 'استخدم دليلًا من القصة.', question: 'ماذا تبين أفعال الشخصيات؟', correctAnswer: null, discussionPrompts: [{ question: 'كيف تحمل موسى المسؤولية بعد خطئه؟', mode: 'Individual' }, { question: 'ما الفعل الذي يبين الرحمة في مدين؟', mode: 'Pair' }, { question: 'كيف اختلف السحرة وفرعون في الاستجابة للآية نفسها؟', mode: 'Class' }], explanation: 'الإجابة الجيدة ترتبط بحدث واضح.', feedback: { correct: 'جيد.', incorrect: '' } },
+  { id: 'moses-a2-ar-review-quiz', type: 'quiz-game', title: 'مراجعة موسى A2', instructions: 'أجب عن ثمانية أسئلة.', question: 'هل تتذكر أفكارًا مهمة من القصة؟', correctAnswer: null, explanation: 'تراجع الأسئلة تفاصيل مهمة مختلفة عن أسئلة الفهم الرئيسة.', feedback: { correct: 'أحسنت.', incorrect: 'استخدم التلميح ثم ارجع إلى الفصل.' }, hints: ['فكر في الأسرة ومدين والقصر والرحلة'], quizQuestions: [
+    { question: 'من تتبع التابوت في النهر؟', options: [{ text: 'أخت موسى', isCorrect: true }, { text: 'آسية', isCorrect: false }, { text: 'أحد السحرة', isCorrect: false }], hint: 'طلبت أم موسى من شخص من الأسرة أن يتبعه.' },
+    { question: 'ماذا طلبت آسية من خدمها أن يجدوا؟', options: [{ text: 'مرضعة للطفل', isCorrect: true }, { text: 'ملكًا جديدًا', isCorrect: false }, { text: 'راعيًا', isCorrect: false }], hint: 'كان الطفل يحتاج إلى الرعاية.' },
+    { question: 'من حذر موسى من جنود الملك؟', options: [{ text: 'صديق له', isCorrect: true }, { text: 'شعيب', isCorrect: false }, { text: 'ساحر', isCorrect: false }], hint: 'جاء التحذير بعد حادثة السوق.' },
+    { question: 'ماذا وجد موسى في مدين عندما كان عطشان؟', options: [{ text: 'بئرًا', isCorrect: true }, { text: 'قصرًا', isCorrect: false }, { text: 'البحر', isCorrect: false }], hint: 'كان يبحث عن الماء.' },
+    { question: 'كم سنة عاش موسى في مدين قبل العودة إلى مصر؟', options: [{ text: 'عشر سنوات', isCorrect: true }, { text: 'يومًا واحدًا', isCorrect: false }, { text: 'أربعين سنة', isCorrect: false }], hint: 'ورد العدد في نهاية الفصل التاسع.' },
+    { question: 'من ذهب مع موسى إلى القصر؟', options: [{ text: 'أخوه هارون', isCorrect: true }, { text: 'أخته', isCorrect: false }, { text: 'شعيب', isCorrect: false }], hint: 'كان أخا موسى.' },
+    { question: 'ماذا وضع سحرة فرعون على الأرض؟', options: [{ text: 'العصي والحبال', isCorrect: true }, { text: 'التوابيت والكؤوس', isCorrect: false }, { text: 'الكتب والمصابيح', isCorrect: false }], hint: 'بدت كأنها تتحرك مثل الثعابين.' },
+    { question: 'لماذا تحركت القافلة ببطء عند الخروج؟', options: [{ text: 'لوجود كبار السن والأطفال', isCorrect: true }, { text: 'لعدم وجود قائد', isCorrect: false }, { text: 'لأنهم انتظروا فرعون', isCorrect: false }], hint: 'فكر في من لم يستطع المشي بسرعة.' },
+  ] },
+];
+
+export const mosesA2FinalChallengeExercisesAr: Exercise[] = [
+  { id: 'moses-a2-ar-final-1', type: 'multiple-choice', title: 'الخوف والظلم', instructions: 'اختر الإجابة الصحيحة.', question: 'ما العلاقة المهمة في بداية القصة؟', options: ['قاد خوف فرعون إلى ظلم بني إسرائيل', 'طلب بنو إسرائيل من فرعون أن يصبح نبيًا', 'أمرت آسية الجنود بإيذاء الأسر'], correctAnswer: 0, explanation: 'تربط القصة الخوف بالظلم.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين الأول والثاني.' } },
+  { id: 'moses-a2-ar-final-2', type: 'multiple-choice', title: 'الثقة والعمل', instructions: 'اختر أفضل مثال.', question: 'أي فعل يبين الثقة مع العمل؟', options: ['اتبعت أم موسى أمر الله ووضعت التابوت في النيل', 'سخر فرعون من الآيات', 'فتش الجنود البيوت'], correctAnswer: 0, explanation: 'كانت أم موسى قلقة لكنها عملت بأمر الله.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الثالث.' } },
+  { id: 'moses-a2-ar-final-3', type: 'multiple-choice', title: 'مساعدة الآخرين', instructions: 'اختر الفعل الصحيح.', question: 'ما الفعل الذي يبين مساعدة موسى لغريبين في مدين؟', options: ['سقى غنم الفتاتين', 'أخذ عرش فرعون', 'أخفى حبال السحرة'], correctAnswer: 0, explanation: 'ساعد الفتاتين عند البئر.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الثامن.' } },
+  { id: 'moses-a2-ar-final-4', type: 'true-false', title: 'تحمل المسؤولية', instructions: 'حدد صحة الجملة.', question: 'بعد الحادثة غير المقصودة حزن موسى وطلب المغفرة من الله.', correctAnswer: true, explanation: 'هذه استجابة موسى في الفصل السادس.', feedback: { correct: 'صحيح.', incorrect: 'راجع دعاء موسى.' } },
+  { id: 'moses-a2-ar-final-5', type: 'true-false', title: 'رد فرعون', instructions: 'حدد صحة الجملة.', question: 'بعد إيمان السحرة آمن فرعون أيضًا برسالة موسى.', correctAnswer: false, explanation: 'بقي فرعون متكبرًا واستمر في الأذى.', feedback: { correct: 'صحيح.', incorrect: 'راجع نهاية الفصل الثالث عشر.' } },
+  { id: 'moses-a2-ar-final-6', type: 'matching', title: 'الأماكن والأحداث', instructions: 'صِل المكان بالحدث.', question: 'أين حدث كل أمر؟', matchingPairs: [{ left: 'مدين', right: 'ساعد موسى فتاتين وبدأ حياة جديدة' }, { left: 'الجبل', right: 'كلم الله موسى وصارت عصاه ثعبانًا' }], correctAnswer: { مدين: 'ساعد موسى فتاتين وبدأ حياة جديدة', الجبل: 'كلم الله موسى وصارت عصاه ثعبانًا' }, explanation: 'يمثل المكانان مرحلتين مهمتين.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصول 7–10.' } },
+  { id: 'moses-a2-ar-final-7', type: 'matching', title: 'الآيات', instructions: 'صِل كل آية بما حدث.', question: 'ماذا حدث في كل آية؟', matchingPairs: [{ left: 'العصا', right: 'صارت ثعبانًا كبيرًا' }, { left: 'يد موسى', right: 'صارت مضيئة' }], correctAnswer: { العصا: 'صارت ثعبانًا كبيرًا', 'يد موسى': 'صارت مضيئة' }, explanation: 'هاتان الآيتان وردتا قبل مواجهة فرعون.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصول 10–12.' } },
+  { id: 'moses-a2-ar-final-8', type: 'fill-blank', title: 'الخروج من مصر', instructions: 'أكمل بالكلمة المناسبة.', question: 'طلب موسى من قومه أن يخرجوا من مصر في ______.', correctAnswer: 'الليل', explanation: 'أمر الله موسى أن يسري بقومه ليلًا.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الرابع عشر.' } },
+  { id: 'moses-a2-ar-final-9', type: 'fill-blank', title: 'البحر', instructions: 'أكمل بالكلمة المناسبة.', question: 'عندما ضرب موسى البحر بعصاه ______ البحر.', correctAnswer: 'انفلق', explanation: 'انفلق البحر وظهر الطريق.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصل الخامس عشر.' } },
+  { id: 'moses-a2-ar-final-10', type: 'sequencing', title: 'النجاة', instructions: 'رتب أحداث النهاية.', question: 'ماذا حدث في نهاية القصة؟', sequencingItems: [{ id: '1', text: 'وصل موسى وقومه إلى البحر' }, { id: '2', text: 'فتح الله لهم طريقًا في البحر' }, { id: '3', text: 'عبروا بأمان' }, { id: '4', text: 'دخل فرعون وجنوده البحر' }, { id: '5', text: 'أغلق الله البحر عليهم' }], correctAnswer: ['1','2','3','4','5'], explanation: 'تنتقل النهاية من الخطر إلى النجاة ثم نهاية فرعون.', feedback: { correct: 'صحيح.', incorrect: 'راجع الفصلين 15–16 بالترتيب.' } },
+];
