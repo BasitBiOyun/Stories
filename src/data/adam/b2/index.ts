@@ -48,8 +48,8 @@ const reviewStoryPageShell = (page: PageData): PageData => {
   return {
     ...reviewed,
     title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
-    hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h13b'),
     ...(isArabic ? {} : {
+      hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h13b'),
       vocabulary: reviewed.vocabulary?.filter(note => ['rebellious', 'compassion'].includes(note.word.toLowerCase())),
     }),
   };
