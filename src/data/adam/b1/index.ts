@@ -1,90 +1,71 @@
-import { BookData } from '../../../types';
-import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
-import { polishB1GuideSections } from '../../b1GuidePresentation';
+import type { BookData, Exercise, PageData } from '../../../types';
+import { adamB1Pages } from './en/pages';
+import { adamB1PagesAr } from './ar/pages';
 import {
-  buildB1GoldStudentGuideMetadata,
-  buildB1GoldTeacherGuideMetadata,
-} from '../../b1GoldGuides';
-import { finalizeB1LearningBlueprint } from '../../b1GoldPedagogy';
-import { buildB1GoldReview } from '../../b1GoldReview';
+  adamB1QuickChallenges,
+  adamB1KnowledgeCheckExercises,
+  adamB1VocabularyChallengePairs,
+  adamB1FinalReviewExercises,
+  adamB1FinalChallengeExercises,
+} from './en/exercises';
 import {
-  applyB1CuratedVocabulary,
-  applyB1GoldReview,
-  prepareB1GoldLearningStructure,
-} from '../../b1GoldStructure';
-import {
-  buildB1FriendlyStudentGuideSections,
-  buildB1FriendlyStudentGuideText,
-} from '../../b1StudentFriendlyGuide';
-import { adamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB1LearningBlueprint } from './learningBlueprint';
-import { adamB1BlueprintConfig } from './config';
-import { adamB1SourcePagesAr, adamB1SourcePagesEn, adamB1HighlightTargets } from './source';
+  adamB1QuickChallengesAr,
+  adamB1KnowledgeCheckExercisesAr,
+  adamB1VocabularyChallengePairsAr,
+  adamB1FinalReviewExercisesAr,
+  adamB1FinalChallengeExercisesAr,
+} from './ar/exercises';
+import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
+import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
+import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { adamB1SelfStudyGuideAr, adamB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-export { adamB1HighlightTargets };
+const STORY_IDS = new Set(Array.from({ length: 12 }, (_, index) => index + 1));
 
-const story = 'adam' as const;
-const prepared = prepareB1GoldLearningStructure({
-  englishPages: adamB1SourcePagesEn,
-  arabicPages: adamB1SourcePagesAr,
-  config: adamB1BlueprintConfig,
+const buildPages = (
+  pages: PageData[],
+  quickChallenges: Record<number, Exercise>,
+  knowledgeCheck: Exercise[],
+  vocabularyPairs: { word: string; meaning: string }[],
+  review: Exercise[],
+  finalChallenge: Exercise[],
+): PageData[] => pages.map((page) => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+  if (page.id === 13) return { ...page, exercises: knowledgeCheck };
+  if (page.id === 14) return { ...page, exercises: review };
+  if (page.id === 15) return { ...page, vocabularyPairs };
+  if (page.id === 17) return { ...page, exercises: finalChallenge };
+  return page;
 });
-const goldBlueprint = finalizeB1LearningBlueprint(adamB1LearningBlueprint, story);
-const compiled = runB1BlueprintSystem({
-  englishPages: prepared.englishPages,
-  arabicPages: prepared.arabicPages,
-  config: prepared.config,
-  blueprint: goldBlueprint,
-});
 
-const curatedVocabulary = [
-  'knowledge', 'intellect', 'arrogant', 'origin', 'deception',
-  'repentance', 'sincerity', 'jealousy', 'regret', 'responsibility',
-] as const;
-
-const pagesEn = applyB1CuratedVocabulary(
-  applyB1GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'en')),
-  goldBlueprint,
-  prepared.config.vocabularyPageId,
-  'en',
-  curatedVocabulary,
-);
-const pagesAr = applyB1CuratedVocabulary(
-  applyB1GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'ar')),
-  goldBlueprint,
-  prepared.config.vocabularyPageId,
-  'ar',
-  curatedVocabulary,
+const englishPages = buildPages(
+  adamB1Pages,
+  adamB1QuickChallenges,
+  adamB1KnowledgeCheckExercises,
+  adamB1VocabularyChallengePairs,
+  adamB1FinalReviewExercises,
+  adamB1FinalChallengeExercises,
 );
 
-const teacherMetadataEn = buildB1GoldTeacherGuideMetadata(adamB1TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length);
-const teacherMetadataAr = buildB1GoldTeacherGuideMetadata(adamB1TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length);
-const teacherGuideEn = polishB1GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
-const teacherGuideAr = polishB1GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
-const selfStudyGuideEn = polishB1GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
-const selfStudyGuideAr = polishB1GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
-const studentSectionsEn = buildB1FriendlyStudentGuideSections('en');
-const studentSectionsAr = buildB1FriendlyStudentGuideSections('ar');
-const studentMetadataEn = buildB1GoldStudentGuideMetadata(story, 'en');
-const studentMetadataAr = buildB1GoldStudentGuideMetadata(story, 'ar');
-const studentTextEn = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'en');
-const studentTextAr = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'ar');
-
-export const adamB1GoldConfig = prepared.config;
+const arabicPages = buildPages(
+  adamB1PagesAr,
+  adamB1QuickChallengesAr,
+  adamB1KnowledgeCheckExercisesAr,
+  adamB1VocabularyChallengePairsAr,
+  adamB1FinalReviewExercisesAr,
+  adamB1FinalChallengeExercisesAr,
+);
 
 export const adamB1BookDataEn: BookData = {
   id: 'b1-prophets-en',
   title: 'Stories of the Prophets: Adam (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: pagesEn,
-  teacherGuide: teacherGuideEn,
-  selfStudyGuide: selfStudyGuideEn,
-  studentGuideText: studentTextEn,
-  studentGuideSections: studentSectionsEn,
-  teacherGuideMetadata: teacherMetadataEn,
-  studentGuideMetadata: studentMetadataEn,
+  pages: englishPages,
+  teacherGuide: adamB1TeacherGuide,
+  teacherGuideMetadata: adamB1TeacherGuideMetadata,
+  selfStudyGuide: adamB1SelfStudyGuide,
+  studentGuideMetadata: adamB1StudentGuideMetadata,
 };
 
 export const adamB1BookDataAr: BookData = {
@@ -92,11 +73,11 @@ export const adamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم (عليه السلام)',
   level: 'B1',
   baseFontSize: 14,
-  pages: pagesAr,
-  teacherGuide: teacherGuideAr,
-  selfStudyGuide: selfStudyGuideAr,
-  studentGuideText: studentTextAr,
-  studentGuideSections: studentSectionsAr,
-  teacherGuideMetadata: teacherMetadataAr,
-  studentGuideMetadata: studentMetadataAr,
+  pages: arabicPages,
+  teacherGuide: adamB1TeacherGuideAr,
+  teacherGuideMetadata: adamB1TeacherGuideMetadataAr,
+  selfStudyGuide: adamB1SelfStudyGuideAr,
+  studentGuideMetadata: adamB1StudentGuideMetadataAr,
 };
+
+export const adamB1BookData = adamB1BookDataEn;
