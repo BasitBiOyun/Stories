@@ -6,7 +6,7 @@ This tracker records the final manual book-by-book polish on `preview`.
 
 - [x] Moses A2 — COMPLETE
 - [x] Moses B1 — COMPLETE
-- [ ] Moses B2 — PENDING
+- [x] Moses B2 — COMPLETE
 - [ ] Mecca A2 — PENDING
 - [ ] Mecca B1 — PENDING
 - [ ] Mecca B2 — PENDING
@@ -69,3 +69,31 @@ This tracker records the final manual book-by-book polish on `preview`.
   - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
 - Scope verification: compare from review base `5b7f7116308a8cdc4c0f4bc66cc504ef05e7189a` to completion HEAD `28c5b7d82590ff1c31d8e428bad48c7fdf61592e` showed only the two Moses B1 exercise files listed above changed.
 - CI/status: no CI/status result was available from the connector for completion HEAD `28c5b7d82590ff1c31d8e428bad48c7fdf61592e`; therefore CI is not recorded as passed.
+
+## Moses B2 — COMPLETE
+
+- Review base `preview` HEAD: `fa5173f694482be184a4a65bdb064d654ca8e568`.
+- Content/support completion HEAD before this tracker commit: `5d8cb925be7ab9b256a97f4d27fce55124717039`.
+- Chapters read manually: 24 EN + 24 AR.
+- Reviewed: canonical EN/AR story chapters; 24 Quick Challenges per language; 8-item Knowledge Check per language; 10-pair Vocabulary Challenge per language; four-part Retrieval Review per language including the 8-question Quiz Game; 10-item Final Challenge per language; chapter-specific Teacher Guide and Self-Study Guide coverage; Moses B2 runtime page shells and index attachment.
+- Changed files:
+  - `src/data/moses/b2/en/exercises.ts`
+  - `src/data/moses/b2/ar/exercises.ts`
+- Main corrections:
+  - Fixed a real answer-key contradiction in Chapter 8 in both languages. The Quick Challenge asks whether Moses had already received the prophetic mission while he was a young man in the palace; the canonical chapter explicitly says he had not yet received it, while the prepared exercise incorrectly stored `correctAnswer: true`. Both EN and AR answer keys are now `false`.
+  - Preserved the approved B2 architecture: 24 chapter Quick Challenges, 8 Knowledge items, 10 vocabulary pairs, four Retrieval Review activities with an 8-question Quiz Game, and 10 Final Challenge items.
+  - Verified Quick remains chapter comprehension, Knowledge focuses whole-book analytical understanding/source qualification, Review reconnects claims/evidence, and Final emphasizes synthesis, values-in-action, qualification and sequencing without unnecessary structural redesign.
+  - Source-fidelity wording such as `according to the sources`, `probably` and `unknown` remains explicitly protected in B2 learning tasks; uncertain historical claims are not promoted to certainty.
+  - Teacher/Self-Study materials remain chapter-specific and evidence-led, with reading/listening plus spoken/written B2 output and targeted wrong-answer recovery rather than generic rereading.
+- Runtime/media check:
+  - `src/data/moses/b2/en/pages.ts` and `ar/pages.ts` deliberately strip legacy embedded exercises/vocabulary payloads from the locked source before runtime assembly.
+  - `src/data/moses/b2/index.ts` attaches the manually prepared EN/AR Quick, Knowledge, Vocabulary, Review and Final sources to the correct B2 page IDs and attaches the corresponding Teacher and Self-Study guides.
+  - Locked source still contains legacy `picsum.photos` references, but no canonical source/media field was edited in this pass; runtime page assembly remains separate from the manual learning layer.
+- Canonical story lock verification:
+  - EN `src/data/moses/b2/en/pages.ts` SHA before/after: `56236b9d71d3424e07a3ef7bd63184c6d7a1e028` — unchanged.
+  - AR `src/data/moses/b2/ar/pages.ts` SHA before/after: `42c9e2c41bf8d10849dbd58108aa89bf8f6f783a` — unchanged.
+  - EN canonical `storySource.ts` SHA: `cf775cc18eb038560cb7fac084b3210a9251804c` — unchanged.
+  - AR canonical `storySource.ts` SHA: `f6cab51a4b82458b222f607a465cdee8164b9aaa` — unchanged.
+  - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
+- Scope verification: compare from review base `fa5173f694482be184a4a65bdb064d654ca8e568` to completion HEAD `5d8cb925be7ab9b256a97f4d27fce55124717039` showed only the two Moses B2 exercise files listed above changed.
+- CI/status: GitHub returned no combined status checks for completion HEAD `5d8cb925be7ab9b256a97f4d27fce55124717039`; therefore CI is not recorded as passed.
