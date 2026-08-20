@@ -1,176 +1,72 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+// Manual source of truth for Moses B1 English learning activities.
+
+export const mosesB1QuickChallenges: Record<number, Exercise> = {
+  1: { id: 'moses-b1-qc-1', type: 'matching', title: 'Fear, Belief and Power', instructions: 'Match each idea with the evidence from Chapter 1.', question: 'How does the chapter explain Pharaoh’s conflict with the Children of Israel?', matchingPairs: [{ left: 'Pharaoh', right: 'claimed divine status and feared losing control' }, { left: 'Children of Israel', right: 'believed in one Allah and rejected Pharaoh’s claim' }], correctAnswer: { Pharaoh: 'claimed divine status and feared losing control', 'Children of Israel': 'believed in one Allah and rejected Pharaoh’s claim' }, explanation: 'The conflict grows from different beliefs and Pharaoh’s fear of losing political control.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentences about belief and Pharaoh’s fear.' } },
+  2: { id: 'moses-b1-qc-2', type: 'multiple-choice', title: 'Fear Becomes Violence', instructions: 'Choose the best cause-and-result explanation.', question: 'Why did the dream lead to a cruel order?', options: ['Pharaoh accepted the interpretation as a threat to his rule and ordered newborn boys killed', 'The advisors persuaded Pharaoh to leave Egypt', 'The dream showed that the Children of Israel wanted to become magicians'], correctAnswer: 0, explanation: 'The dream interpretation intensified Pharaoh’s fear and led directly to violence.', feedback: { correct: 'Correct.', incorrect: 'Connect the advisors’ interpretation with Pharaoh’s next command.' } },
+  3: { id: 'moses-b1-qc-3', type: 'tap-reveal', title: 'Trust Becomes Action', instructions: 'Answer first, then reveal.', question: 'What shows that Moses’s mother did more than simply feel afraid?', tapRevealItems: [{ question: 'Evidence from the chapter', answer: 'She followed Allah’s guidance, placed Moses in a basket, and trusted the river journey to His protection.' }], correctAnswer: 'She followed Allah’s guidance, placed Moses in a basket, and trusted the river journey to His protection.', explanation: 'The chapter links fear, trust, and a difficult action.', feedback: { correct: 'Correct.', incorrect: 'Return to what she did after praying for help.' } },
+  4: { id: 'moses-b1-qc-4', type: 'multiple-choice', title: 'Protection Inside the Palace', instructions: 'Choose the best inference.', question: 'Why is Moses’s return to his mother especially significant?', options: ['He is protected inside the same palace connected with the threat against him', 'Pharaoh learns that Moses will later become a prophet', 'Moses immediately leaves the palace for Midian'], correctAnswer: 0, explanation: 'The chapter presents an unexpected form of protection: Moses is returned to his mother while growing safely in the palace.', feedback: { correct: 'Correct.', incorrect: 'Think about where Moses was raised and who was able to care for him.' } },
+  5: { id: 'moses-b1-qc-5', type: 'matching', title: 'Mistake and Responsibility', instructions: 'Match the event with Moses’s response.', question: 'How does the chapter distinguish an accidental act from the response to it?', matchingPairs: [{ left: 'The event', right: 'Moses accidentally caused the Egyptian’s death' }, { left: 'The response', right: 'he regretted the act and asked Allah for forgiveness' }], correctAnswer: { 'The event': 'Moses accidentally caused the Egyptian’s death', 'The response': 'he regretted the act and asked Allah for forgiveness' }, explanation: 'The story does not present the death as intentional; it emphasizes regret and repentance.', feedback: { correct: 'Correct.', incorrect: 'Separate what happened from what Moses chose to do afterward.' } },
+  6: { id: 'moses-b1-qc-6', type: 'multiple-choice', title: 'Why Midian Matters', instructions: 'Choose the best explanation.', question: 'Why does reaching Midian change Moses’s situation?', options: ['He is outside Pharaoh’s rule and finds a new place where he can seek safety', 'He becomes ruler of Midian immediately', 'Pharaoh’s soldiers are waiting for him there'], correctAnswer: 0, explanation: 'The chapter explicitly says Pharaoh was not the ruler in Midian.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence about who did not rule Midian.' } },
+  7: { id: 'moses-b1-qc-7', type: 'multiple-choice', title: 'Reading a Need', instructions: 'Choose the evidence-based inference.', question: 'What motivates Moses to help the two sisters?', options: ['He recognizes that they must wait because their father is old and they lack help', 'He wants payment before helping them', 'He is ordered by Pharaoh to work at the spring'], correctAnswer: 0, explanation: 'Moses listens to their situation and acts because he understands their need.', feedback: { correct: 'Correct.', incorrect: 'Reread their explanation before Moses waters the sheep.' } },
+  8: { id: 'moses-b1-qc-8', type: 'sequencing', title: 'A New Life and a New Journey', instructions: 'Put the developments in order.', question: 'How does Moses’s life in Midian lead toward his return to Egypt?', sequencingItems: [{ id: '1', text: 'Şuayb invites Moses to the house' }, { id: '2', text: 'Moses accepts work because he needs a home and job' }, { id: '3', text: 'Moses marries and lives in Midian for about ten years' }, { id: '4', text: 'He travels toward Egypt with his family and sees a fire' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter moves from settlement in Midian to the journey that leads to the mountain encounter.', feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from the invitation to the winter journey.' } },
+  9: { id: 'moses-b1-qc-9', type: 'matching', title: 'Signs and Mission', instructions: 'Match each sign with what it demonstrates in the chapter.', question: 'How do the signs prepare Moses for his mission?', matchingPairs: [{ left: 'The staff', right: 'turns into a large snake as a sign of Allah’s power' }, { left: 'The hand', right: 'shines without harm as another sign' }], correctAnswer: { 'The staff': 'turns into a large snake as a sign of Allah’s power', 'The hand': 'shines without harm as another sign' }, explanation: 'The signs are given for Moses to take to Pharaoh as evidence of his mission.', feedback: { correct: 'Correct.', incorrect: 'Review the two signs described on the mountain.' } },
+  10: { id: 'moses-b1-qc-10', type: 'true-false', title: 'Reason and Refusal', instructions: 'Decide whether the statement is supported.', question: 'Moses first explains his message to Pharaoh, but Pharaoh continues to refuse even before the signs change his mind.', correctAnswer: true, explanation: 'Moses speaks and tries to convince Pharaoh, yet Pharaoh continues refusing and later mocks the signs.', feedback: { correct: 'Correct.', incorrect: 'Reread what happens before Moses displays the miracles.' } },
+  11: { id: 'moses-b1-qc-11', type: 'matching', title: 'Two Responses to One Sign', instructions: 'Match each group with its response.', question: 'What contrast does the chapter create after Moses’s staff overcomes the magicians’ display?', matchingPairs: [{ left: 'The magicians', right: 'recognize the miracle and believe in the Lord of Moses and Harun' }, { left: 'Pharaoh', right: 'remains arrogant and continues harming the believers' }], correctAnswer: { 'The magicians': 'recognize the miracle and believe in the Lord of Moses and Harun', Pharaoh: 'remains arrogant and continues harming the believers' }, explanation: 'The same event leads to belief for the magicians but continued rejection from Pharaoh.', feedback: { correct: 'Correct.', incorrect: 'Compare the magicians’ declaration with Pharaoh’s next action.' } },
+  12: { id: 'moses-b1-qc-12', type: 'multiple-choice', title: 'Fear at the Sea', instructions: 'Choose the best evidence of leadership.', question: 'How does Moses respond when his people panic between the sea and Pharaoh’s army?', options: ['He tells them to calm down because Allah is with them and will show a way to safety', 'He tells them to surrender to Pharaoh', 'He leaves the group and returns to Midian'], correctAnswer: 0, explanation: 'Moses responds to fear with reassurance grounded in trust in Allah.', feedback: { correct: 'Correct.', incorrect: 'Find Moses’s words after the people panic.' } },
+  13: { id: 'moses-b1-qc-13', type: 'multiple-choice', title: 'The Ending and Its Meaning', instructions: 'Choose the conclusion most closely supported by Chapter 13.', question: 'What does Pharaoh’s claim that the sea opened at his order reveal?', options: ['His arrogance continues even when the event should challenge his claim to power', 'He finally understands that he has no power', 'He decides to protect Moses’s people'], correctAnswer: 0, explanation: 'Pharaoh interprets the opened sea through his own arrogance, just before his power collapses.', feedback: { correct: 'Correct.', incorrect: 'Compare Pharaoh’s claim with what the chapter says Allah actually did.' } },
+};
+
+export const mosesB1KnowledgeCheckExercises: Exercise[] = [
+  { id: 'moses-b1-kc-1', type: 'multiple-choice', title: 'Pharaoh’s Fear', instructions: 'Choose the best explanation.', question: 'What combination best explains Pharaoh’s hostility in Chapter 1?', options: ['He rejected the Israelites’ belief and feared losing control of his kingdom', 'He wanted them to move to Midian for trade', 'He believed they were loyal supporters of his rule'], correctAnswer: 0, explanation: 'Belief, power, and fear of losing control are all stated in the chapter.', feedback: { correct: 'Correct.', incorrect: 'Review the final half of Chapter 1.' } },
+  { id: 'moses-b1-kc-2', type: 'multiple-choice', title: 'Moses Returns to His Mother', instructions: 'Choose the chain supported by Chapters 3–4.', question: 'How does Moses return to his mother’s care?', options: ['His sister follows the basket, suggests a nurse, and brings their own mother to the palace', 'Pharaoh sends the baby back to the river', 'The palace servants take Moses directly to Midian'], correctAnswer: 0, explanation: 'Moses’s sister connects the palace with their mother, who becomes the baby’s nurse.', feedback: { correct: 'Correct.', incorrect: 'Connect the basket story with the search for a nurse.' } },
+  { id: 'moses-b1-kc-3', type: 'true-false', title: 'The Bazaar', instructions: 'Decide whether the statement is true or false.', question: 'The story presents Moses’s killing of the Egyptian as deliberate and planned.', correctAnswer: false, explanation: 'The text explicitly says the death happened accidentally and Moses immediately regretted it.', feedback: { correct: 'Correct.', incorrect: 'Look at the words accidentally and on purpose.' } },
+  { id: 'moses-b1-kc-4', type: 'multiple-choice', title: 'From Flight to Stability', instructions: 'Choose the best summary.', question: 'How does Moses move from danger in Egypt to stability in Midian?', options: ['He escapes Pharaoh’s soldiers, helps the sisters, accepts work, and later forms a family', 'He defeats Pharaoh’s army before reaching Midian', 'He hides in the Egyptian palace for ten years'], correctAnswer: 0, explanation: 'Chapters 6–8 show a connected movement from escape to service, work, and family life.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 6–8 as one sequence.' } },
+  { id: 'moses-b1-kc-5', type: 'multiple-choice', title: 'The Mission', instructions: 'Choose the best answer.', question: 'What changes on the mountain in Chapter 9?', options: ['Moses receives Allah’s call, signs, and a mission to confront Pharaoh', 'Moses decides never to return to Egypt', 'Moses becomes one of Pharaoh’s advisors'], correctAnswer: 0, explanation: 'The chapter marks the transition from Moses’s private journey to his prophetic mission.', feedback: { correct: 'Correct.', incorrect: 'Find what Allah tells Moses to do with the signs.' } },
+  { id: 'moses-b1-kc-6', type: 'multiple-choice', title: 'The Magicians’ Decision', instructions: 'Choose the best inference from Chapter 11.', question: 'Why is the magicians’ reaction important?', options: ['As experts in magic, they recognize that what they witnessed is not ordinary magic and respond with belief', 'They secretly help Pharaoh prepare another trick', 'They refuse to look at Moses’s staff'], correctAnswer: 0, explanation: 'Their expertise makes their immediate recognition and belief a meaningful contrast to Pharaoh’s refusal.', feedback: { correct: 'Correct.', incorrect: 'Think about what the magicians knew and what they did after the staff overcame their display.' } },
+  { id: 'moses-b1-kc-7', type: 'true-false', title: 'Leaving Egypt', instructions: 'Decide whether the statement is true or false.', question: 'The group’s slow movement is connected to the presence of children and old people in the caravan.', correctAnswer: true, explanation: 'Chapter 12 explicitly explains why the caravan could not move quickly.', feedback: { correct: 'Correct.', incorrect: 'Reread why the caravan moved slowly.' } },
+  { id: 'moses-b1-kc-8', type: 'multiple-choice', title: 'Power at the Red Sea', instructions: 'Choose the best conclusion from the ending.', question: 'How does the sea episode challenge Pharaoh’s claim to power?', options: ['The path is opened by Allah for Moses’s people and closes over Pharaoh’s army despite Pharaoh claiming credit', 'Pharaoh controls the sea and safely leads both groups across', 'The sea remains closed and nobody crosses'], correctAnswer: 0, explanation: 'The ending contrasts Pharaoh’s boast with the chapter’s repeated statement that Allah controls the outcome.', feedback: { correct: 'Correct.', incorrect: 'Compare Pharaoh’s words with the narrator’s explanation of the miracle.' } },
+];
+
+export const mosesB1VocabularyChallengePairs = [
+  { word: 'dictatorial', meaning: 'using political power in a strict and unfair way' },
+  { word: 'heartless', meaning: 'showing no pity or kindness toward suffering' },
+  { word: 'accidentally', meaning: 'happening without intention or planning' },
+  { word: 'quarrelsome', meaning: 'often ready to argue or fight with others' },
+  { word: 'guided', meaning: 'shown a safe or correct way forward' },
+  { word: 'companion', meaning: 'a person who accompanies and supports another' },
+  { word: 'convince', meaning: 'to cause someone to accept an idea through reasons or evidence' },
+  { word: 'arrogant', meaning: 'having an exaggerated sense of one’s own importance or power' },
+  { word: 'seized', meaning: 'caught or trapped by force' },
+  { word: 'parted', meaning: 'opened or separated into two sides' },
+];
 
 export const mosesB1FinalReviewExercises: Exercise[] = [
-  {
-    id: 'final-1',
-    type: 'sequencing',
-    title: 'The Journey of Moses',
-    instructions: 'Put the events in the correct order.',
-    question: 'Order the main events of the story.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'The story begins with Pharaoh’s fear, continues with Moses’s birth and escape, then his prophethood, the miracles, and finally the crossing of the Red Sea.',
-    feedback: {
-      correct: 'Excellent! You understand the full journey of Prophet Moses (pbuh).',
-      incorrect: 'Some events are not in the correct order. Read the story timeline again.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Pharaoh fears the Children of Israel and orders newborn boys to be killed' },
-      { id: '2', text: 'Moses’s mother places baby Moses in a basket in the River Nile' },
-      { id: '3', text: 'The palace servants find baby Moses and Queen Asiye loves and decides to protect him' },
-      { id: '4', text: 'Moses escapes from Egypt and begins a simple life in Midian' },
-      { id: '5', text: 'Allah speaks to Moses on the mountain and gives him signs' },
-      { id: '6', text: 'Allah opens the Red Sea and Pharaoh drowns with his army' }
-    ]
-  },
-  {
-    id: 'final-2',
-    type: 'drag-drop',
-    title: 'Character Traits',
-    instructions: 'Drag the traits into the correct character group.',
-    question: 'Match the traits with the correct characters.',
-    correctAnswer: {
-      'MOSES': ['Helpful', 'Regretful', 'Trusting Allah'],
-      'PHARAOH': ['Arrogant', 'Cruel', 'Dictatorial'],
-      'QUEEN ASIYE': ['Kind-hearted', 'Courageous', 'Merciful']
-    },
-    explanation: 'Moses is shown as helpful and repentant. Pharaoh is cruel and arrogant. Queen Asiye is kind-hearted and brave.',
-    feedback: {
-      correct: 'Correct! You matched the character traits very well.',
-      incorrect: 'Some traits are in the wrong group. Think about each character’s actions.'
-    },
-    dragDropGroups: [
-      { group: 'MOSES', items: ['Helpful', 'Regretful', 'Trusting Allah'] },
-      { group: 'PHARAOH', items: ['Arrogant', 'Cruel', 'Dictatorial'] },
-      { group: 'QUEEN ASIYE', items: ['Kind-hearted', 'Courageous', 'Merciful'] }
-    ]
-  },
-  {
-    id: 'final-3',
-    type: 'reflection',
-    title: 'Deep Thinking',
-    instructions: 'Think about these questions and discuss them.',
-    question: 'What is the most important lesson of the story of Prophet Moses (pbuh)?',
-    correctAnswer: null,
-    explanation: 'Students may mention trust in Allah, justice, courage, helping the weak, asking for forgiveness, or resisting oppression.',
-    feedback: {
-      correct: 'Great reflection! You connected the story to its deeper message.',
-      incorrect: ''
-    },
-    discussionPrompts: [
-      { question: 'Why was Pharaoh’s arrogance dangerous?', mode: 'Individual' },
-      { question: 'What can we learn from Moses helping the two sisters?', mode: 'Pair' },
-      { question: 'How does the story teach us to trust Allah in difficult times?', mode: 'Class' },
-      { question: 'Why is it wrong for one human being to enslave another human being?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'final-4',
-    type: 'quiz-game',
-    title: 'The Prophet Moses B1 Challenge',
-    instructions: 'Complete the 10-question challenge about the story.',
-    question: 'Are you ready for the final B1 challenge?',
-    correctAnswer: null,
-    explanation: 'This game reviews the main events, vocabulary, characters, and moral lessons of the B1 story of Prophet Moses (pbuh).',
-    feedback: {
-      correct: 'Congratulations! You have mastered the B1 Story of Prophet Moses (pbuh)!',
-      incorrect: 'Keep trying! Review the chapters and try again.'
-    },
-    hints: [
-      'Think about Pharaoh’s fear and dream',
-      'Remember the River Nile and Queen Asiye',
-      'Think about Midian, the mountain, and the Red Sea'
-    ],
-    quizQuestions: [
-      {
-        question: 'Why was Pharaoh afraid of the Children of Israel?',
-        options: [
-          { text: 'Because they were larger than the Egyptians and might take control of his kingdom', isCorrect: true },
-          { text: 'Because they wanted to leave Egypt immediately', isCorrect: false },
-          { text: 'Because they were magicians', isCorrect: false }
-        ],
-        hint: 'Pharaoh feared losing control of his kingdom.'
-      },
-      {
-        question: 'What did Pharaoh see in his dream?',
-        options: [
-          { text: 'A fire coming from Jerusalem', isCorrect: true },
-          { text: 'A snake in his palace', isCorrect: false },
-          { text: 'A basket in the River Nile', isCorrect: false }
-        ],
-        hint: 'The dream involved fire and the houses of Egyptians.'
-      },
-      {
-        question: 'Where did Moses’s mother put baby Moses?',
-        options: [
-          { text: 'In a basket in the River Nile', isCorrect: true },
-          { text: 'In a cave near Midian', isCorrect: false },
-          { text: 'In the palace garden', isCorrect: false }
-        ],
-        hint: 'The waters carried the basket away.'
-      },
-      {
-        question: 'Who found the basket with baby Moses near the palace?',
-        options: [
-          { text: 'The palace servants', isCorrect: true },
-          { text: 'The magicians', isCorrect: false },
-          { text: 'The shepherds of Midian', isCorrect: false }
-        ],
-        hint: 'They took the basket to the Pharaoh and Queen Asiye.'
-      },
-      {
-        question: 'What did Moses do after killing the Egyptian by accident?',
-        options: [
-          { text: 'He prayed to Allah for forgiveness', isCorrect: true },
-          { text: 'He became proud of himself', isCorrect: false },
-          { text: 'He went to Pharaoh for a reward', isCorrect: false }
-        ],
-        hint: 'Moses regretted his mistake and turned to Allah.'
-      },
-      {
-        question: 'Why did Moses escape from Egypt?',
-        options: [
-          { text: 'Pharaoh’s soldiers were looking for him', isCorrect: true },
-          { text: 'He wanted to become a magician', isCorrect: false },
-          { text: 'He wanted to rule Midian', isCorrect: false }
-        ],
-        hint: 'A friend warned Moses to run away from the city.'
-      },
-      {
-        question: 'How did Moses help the two sisters in Midian?',
-        options: [
-          { text: 'He watered their sheep at the spring', isCorrect: true },
-          { text: 'He built them a palace', isCorrect: false },
-          { text: 'He gave them gold', isCorrect: false }
-        ],
-        hint: 'They were waiting because the other sheepmen were using the water.'
-      },
-      {
-        question: 'What happened to Moses’s staff on the mountain?',
-        options: [
-          { text: 'It turned into a big snake', isCorrect: true },
-          { text: 'It turned into fire', isCorrect: false },
-          { text: 'It broke into pieces', isCorrect: false }
-        ],
-        hint: 'This was one of the signs of Allah’s power.'
-      },
-      {
-        question: 'What did the magicians do after witnessing the miracle?',
-        options: [
-          { text: 'They believed in the Lord of Moses and Harun', isCorrect: true },
-          { text: 'They laughed at Moses', isCorrect: false },
-          { text: 'They ran away to Midian', isCorrect: false }
-        ],
-        hint: 'They understood that the miracle was not ordinary magic.'
-      },
-      {
-        question: 'What is one main lesson of the story?',
-        options: [
-          { text: 'Only Allah has true power over human beings', isCorrect: true },
-          { text: 'Cruel rulers always win', isCorrect: false },
-          { text: 'People should never help strangers', isCorrect: false }
-        ],
-        hint: 'The ending of the story explains the final lesson clearly.'
-      }
-    ]
-  }
+  { id: 'moses-b1-review-sequence', type: 'sequencing', title: 'From Threat to Freedom', instructions: 'Put the major turning points in order.', question: 'How does Moses’s journey develop across the book?', sequencingItems: [{ id: '1', text: 'Baby Moses reaches Pharaoh’s palace by the Nile' }, { id: '2', text: 'Moses leaves Egypt after the bazaar incident' }, { id: '3', text: 'Moses builds a life in Midian' }, { id: '4', text: 'Allah calls Moses and gives him signs' }, { id: '5', text: 'Moses and Harun confront Pharaoh' }, { id: '6', text: 'Moses leads his people to the Red Sea and across it' }], correctAnswer: ['1', '2', '3', '4', '5', '6'], explanation: 'These stages connect Moses’s early protection, exile, mission, confrontation, and leadership.', feedback: { correct: 'Correct.', incorrect: 'Trace Moses’s location and role from Egypt to Midian and back to Egypt.' } },
+  { id: 'moses-b1-review-match', type: 'matching', title: 'Choices Reveal Character', instructions: 'Match each person or group with a revealing choice.', question: 'Which action best shows each character or group?', matchingPairs: [{ left: 'Moses’s mother', right: 'acts on guidance despite intense fear' }, { left: 'Queen Asiye', right: 'chooses compassion toward the baby' }, { left: 'The magicians', right: 'change their position after recognizing the miracle' }, { left: 'Pharaoh', right: 'continues claiming power despite repeated evidence' }], correctAnswer: { 'Moses’s mother': 'acts on guidance despite intense fear', 'Queen Asiye': 'chooses compassion toward the baby', 'The magicians': 'change their position after recognizing the miracle', Pharaoh: 'continues claiming power despite repeated evidence' }, explanation: 'The story often reveals values through decisions made under pressure.', feedback: { correct: 'Correct.', incorrect: 'Think about the defining action of each person or group.' } },
+  { id: 'moses-b1-review-reflection', type: 'reflection', title: 'Evidence and Leadership', instructions: 'Use evidence from at least two chapters.', question: 'How does Moses’s way of responding to difficult situations change from the bazaar episode to the Red Sea?', correctAnswer: null, explanation: 'A strong answer may contrast his regret and vulnerability after the bazaar with his later reassurance and leadership at the sea, while grounding both in turning to Allah.', feedback: { correct: 'Use chapter evidence.', incorrect: '' }, discussionPrompts: [{ question: 'Which moment best shows Moses learning from difficulty?', mode: 'Pair' }, { question: 'What evidence shows leadership rather than simple confidence?', mode: 'Class' }] },
+  { id: 'moses-b1-review-quiz', type: 'quiz-game', title: 'Retrieval Review Quiz', instructions: 'Answer eight new questions without returning to the earlier Knowledge Check.', question: 'Can you reconnect important ideas from across the story?', correctAnswer: null, explanation: 'This quiz retrieves relationships and causes rather than repeating the Knowledge Check.', feedback: { correct: 'Strong retrieval.', incorrect: 'Return to the relevant chapter and find evidence.' }, quizQuestions: [
+    { question: 'What makes Queen Asiye’s role a contrast to Pharaoh’s?', options: [{ text: 'She responds to vulnerability with care while Pharaoh responds to fear with violence', isCorrect: true }, { text: 'She also orders the newborn boys killed', isCorrect: false }, { text: 'She refuses to let Moses enter the palace', isCorrect: false }], hint: 'Compare their choices around the baby.' },
+    { question: 'What does the second bazaar conflict help Moses realize about the Israelite man?', options: [{ text: 'He is quarrelsome and repeatedly becomes involved in fights', isCorrect: true }, { text: 'He is one of Pharaoh’s magicians', isCorrect: false }, { text: 'He is Şuayb’s son', isCorrect: false }], hint: 'Look at Moses’s judgment of the repeated conflict.' },
+    { question: 'Why does helping the sisters become a turning point for Moses?', options: [{ text: 'It connects him with Şuayb’s household and a stable new life', isCorrect: true }, { text: 'It allows him to return immediately to Pharaoh’s court', isCorrect: false }, { text: 'It makes him ruler of Midian', isCorrect: false }], hint: 'Follow what happens after the sisters return home.' },
+    { question: 'What is the relationship between the signs on the mountain and the palace confrontation?', options: [{ text: 'The signs are given to Moses for the mission he later carries to Pharaoh', isCorrect: true }, { text: 'The signs are unrelated private events', isCorrect: false }, { text: 'Pharaoh gives the signs to Moses', isCorrect: false }], hint: 'Remember Allah’s instruction about showing the signs.' },
+    { question: 'Why does Pharaoh call the signs magic?', options: [{ text: 'He refuses Moses’s message and tries to explain away the evidence', isCorrect: true }, { text: 'He immediately believes Moses is a prophet', isCorrect: false }, { text: 'He has never seen magicians before', isCorrect: false }], hint: 'Connect refusal with his response to the miracles.' },
+    { question: 'What makes the magicians’ response different from Pharaoh’s?', options: [{ text: 'They revise their judgment after seeing evidence; Pharaoh remains arrogant', isCorrect: true }, { text: 'They refuse to watch the event', isCorrect: false }, { text: 'They order Moses to leave Egypt', isCorrect: false }], hint: 'Compare the two responses after the staff overcomes the display.' },
+    { question: 'Why does the caravan’s composition matter in Chapter 12?', options: [{ text: 'Children and old people make the group move more slowly while Pharaoh pursues them', isCorrect: true }, { text: 'Only soldiers are travelling', isCorrect: false }, { text: 'The group travels faster because everyone is young', isCorrect: false }], hint: 'Find the explanation for the slow movement.' },
+    { question: 'What irony appears in Pharaoh’s final claim?', options: [{ text: 'He claims the sea opened at his order even though the story presents it as Allah’s miracle', isCorrect: true }, { text: 'He admits he has no authority at all', isCorrect: false }, { text: 'He refuses to enter the opened path', isCorrect: false }], hint: 'Compare his words with the narrator’s explanation.' },
+  ] },
+];
+
+export const mosesB1FinalChallengeExercises: Exercise[] = [
+  { id: 'moses-b1-final-1', type: 'multiple-choice', title: 'Fear and Rule', instructions: 'Choose the best answer.', question: 'Which pattern best describes Pharaoh’s rule at the beginning of the story?', options: ['Fear of losing control leads him to use oppressive power', 'Compassion leads him to protect the Israelites', 'Uncertainty leads him to leave Egypt'], correctAnswer: 0, explanation: 'Chapter 1 links fear of losing control with harsh treatment.', feedback: { correct: 'Correct.', incorrect: 'Connect Pharaoh’s fear to his political actions.' } },
+  { id: 'moses-b1-final-2', type: 'multiple-choice', title: 'Protection and Agency', instructions: 'Choose the best interpretation.', question: 'What common idea connects Moses’s mother, his sister, and Queen Asiye in the early chapters?', options: ['Each takes a concrete action that contributes to protecting Moses', 'Each serves as one of Pharaoh’s soldiers', 'Each tries to send Moses to Midian'], correctAnswer: 0, explanation: 'Protection in these chapters is shown through several people taking different actions.', feedback: { correct: 'Correct.', incorrect: 'Review what each woman actually does.' } },
+  { id: 'moses-b1-final-3', type: 'multiple-choice', title: 'A Changed Role', instructions: 'Choose the best answer.', question: 'Which event most clearly marks Moses’s change from a man returning to Egypt into a messenger with a public mission?', options: ['Allah’s call and signs on the mountain', 'The first bazaar fight', 'The sisters returning home early'], correctAnswer: 0, explanation: 'Chapter 9 explicitly states that Moses becomes a messenger and is sent to Pharaoh.', feedback: { correct: 'Correct.', incorrect: 'Find the chapter where the mission is given.' } },
+  { id: 'moses-b1-final-4', type: 'true-false', title: 'Repentance', instructions: 'Decide whether the statement is supported.', question: 'Moses’s response to the accidental death shows that the story distinguishes making a mistake from refusing responsibility for it.', correctAnswer: true, explanation: 'He regrets what happened, names the wrong, and asks for forgiveness.', feedback: { correct: 'Correct.', incorrect: 'Reread Moses’s prayer after the accident.' } },
+  { id: 'moses-b1-final-5', type: 'true-false', title: 'Evidence and Arrogance', instructions: 'Decide whether the statement is supported.', question: 'Pharaoh and the magicians react in the same way after Moses’s staff overcomes the apparent snakes.', correctAnswer: false, explanation: 'The magicians believe, while Pharaoh remains arrogant and hostile.', feedback: { correct: 'Correct.', incorrect: 'Compare their actions immediately after the event.' } },
+  { id: 'moses-b1-final-6', type: 'matching', title: 'Cause and Consequence', instructions: 'Match each cause with its consequence.', question: 'Which consequences follow these events?', matchingPairs: [{ left: 'A friend warns Moses about the soldiers', right: 'Moses leaves Egypt and reaches Midian' }, { left: 'The sisters tell their father about Moses’s help', right: 'Moses is invited to their home and offered work' }], correctAnswer: { 'A friend warns Moses about the soldiers': 'Moses leaves Egypt and reaches Midian', 'The sisters tell their father about Moses’s help': 'Moses is invited to their home and offered work' }, explanation: 'Both moments show one event opening the next stage of Moses’s life.', feedback: { correct: 'Correct.', incorrect: 'Trace what happens immediately after each cause.' } },
+  { id: 'moses-b1-final-7', type: 'matching', title: 'Claim and Evidence', instructions: 'Match each claim with the strongest story evidence.', question: 'Which evidence best supports each claim?', matchingPairs: [{ left: 'Moses acts to help vulnerable people', right: 'he waters the sisters’ sheep when he sees their difficulty' }, { left: 'Pharaoh’s arrogance survives repeated warnings', right: 'he claims the opened sea is the result of his own order' }], correctAnswer: { 'Moses acts to help vulnerable people': 'he waters the sisters’ sheep when he sees their difficulty', 'Pharaoh’s arrogance survives repeated warnings': 'he claims the opened sea is the result of his own order' }, explanation: 'B1 reading requires linking a claim with a specific piece of evidence.', feedback: { correct: 'Correct.', incorrect: 'Choose the action that directly proves each claim.' } },
+  { id: 'moses-b1-final-8', type: 'fill-blanks', title: 'At the Sea', instructions: 'Complete the sentence with the key story word.', question: 'Complete the sentence.', fillBlanksText: 'When the people panicked, Moses told them that Allah was with them and would show them the way to _____.', correctAnswer: 'safety', explanation: 'Chapter 12 uses safety to describe the way Allah will show them.', feedback: { correct: 'Correct.', incorrect: 'Look at Moses’s reassurance beside the Red Sea.' } },
+  { id: 'moses-b1-final-9', type: 'fill-blanks', title: 'Pharaoh’s Attitude', instructions: 'Complete the sentence with the key adjective.', question: 'Complete the sentence.', fillBlanksText: 'Even after the magicians believed, Pharaoh remained _____ and continued to trouble Moses and his people.', correctAnswer: 'arrogant', explanation: 'The chapter directly identifies arrogance as part of Pharaoh’s refusal.', feedback: { correct: 'Correct.', incorrect: 'Find the adjective used for Pharaoh after the magicians believe.' } },
+  { id: 'moses-b1-final-10', type: 'sequencing', title: 'The Final Escape', instructions: 'Put the final events in order.', question: 'How does the escape from Egypt reach its conclusion?', sequencingItems: [{ id: '1', text: 'Moses and his people leave Egypt secretly at night' }, { id: '2', text: 'Pharaoh’s army catches up near the Red Sea' }, { id: '3', text: 'Allah makes a path through the sea' }, { id: '4', text: 'Moses’s people cross safely' }, { id: '5', text: 'The sea closes over Pharaoh and his army' }], correctAnswer: ['1', '2', '3', '4', '5'], explanation: 'These events form the final cause-and-sequence chain of the story.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 12–13 in order.' } },
 ];
