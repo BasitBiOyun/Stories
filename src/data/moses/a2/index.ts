@@ -1,121 +1,55 @@
-import { BookData, PageData } from '../../../types';
-import { finalizeA2TeacherGuideAlignment } from '../../a2TeacherGuideAlignment';
-import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
-import { syncA2GlossariesFromStoryHighlights } from '../../a2HighlightStandard';
-import { applyA2HotspotCopyOverrides } from '../../a2HotspotCopyOverrides';
-import { runA2BlueprintSystem } from '../../a2BlueprintSystem';
-import { mosesA2GoldConfig } from './gold';
+import type { BookData, PageData } from '../../../types';
+import { mosesA2Pages as mosesA2PagesEn } from './en/pages';
+import { mosesA2PagesAr } from './ar/pages';
 import {
-  applyMosesA2GoldVocabularyChallenge,
-  buildMosesA2GoldStudentGuideSections,
-  buildMosesA2GoldTeacherGuideMetadata,
-} from './goldGuides';
-import { mosesA2LearningBlueprint } from './learningBlueprint';
-import { buildMosesA2GoldStudentGuideText } from './studentGuideText';
+  mosesA2FinalChallengeExercises,
+  mosesA2FinalReviewExercises,
+  mosesA2KnowledgeCheckExercises,
+  mosesA2QuickChallenges,
+  mosesA2VocabularyChallengePairs,
+} from './en/exercises';
 import {
-  mosesA2HighlightConfig,
-  mosesA2PagesFinalAr,
-  mosesA2PagesFinalEn,
-  mosesA2StudentGuideMetadataFinalAr,
-  mosesA2StudentGuideMetadataFinalEn,
-  mosesA2TeacherGuideMetadataFinalAr,
-  mosesA2TeacherGuideMetadataFinalEn,
-} from './goldFinal';
+  mosesA2FinalChallengeExercisesAr,
+  mosesA2FinalReviewExercisesAr,
+  mosesA2KnowledgeCheckExercisesAr,
+  mosesA2QuickChallengesAr,
+  mosesA2VocabularyChallengePairsAr,
+} from './ar/exercises';
+import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
+import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { mosesA2SelfStudyGuide, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
+import { selfStudyGuide as mosesA2SelfStudyGuideAr, mosesA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-/** Chapter 2 originally contained a third hotspot copied from Chapter 1 context. */
-const keepTwoChapterTwoHotspots = (pages: typeof mosesA2PagesFinalEn) => pages.map((page) => (
-  page.id === 2 && page.type === 'story'
-    ? { ...page, hotspots: (page.hotspots || []).filter((hotspot) => hotspot.id !== 'h2-3') }
-    : page
-));
+const STORY_IDS = new Set(Array.from({ length: 16 }, (_, index) => index + 1));
 
-const MOSES_A2_CH11_AUDIO = 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F10_Chapter_11_The_Signs_of_Allah.mp3?alt=media&token=5ae1efb5-a3ed-4cd0-b6df-e0486199c964';
-
-const fixArabicChapterElevenAudio = (pages: typeof mosesA2PagesFinalAr) => pages.map((page) => (
-  page.id === 11 && page.type === 'story'
-    ? { ...page, audioUrl: MOSES_A2_CH11_AUDIO }
-    : page
-));
-
-const mosesA2PagesLockedEn = syncA2GlossariesFromStoryHighlights(
-  applyA2FinalStoryLanguageLock(keepTwoChapterTwoHotspots(mosesA2PagesFinalEn), 'musa', 'en'),
-  mosesA2HighlightConfig,
-  'en',
-);
-const mosesA2PagesLockedAr = applyA2HotspotCopyOverrides(
-  syncA2GlossariesFromStoryHighlights(
-    applyA2FinalStoryLanguageLock(keepTwoChapterTwoHotspots(fixArabicChapterElevenAudio(mosesA2PagesFinalAr)), 'musa', 'ar'),
-    mosesA2HighlightConfig,
-    'ar',
-  ),
-  {
-    15: {
-      'h15-2': {
-        title: 'جُدْرَانُ الْمَاءِ',
-        description: 'سَارَ مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمُهُ بِأَمَانٍ بَيْنَ جُدْرَانٍ مِنَ الْمَاءِ.',
-      },
-    },
-  },
-);
-
-const mosesA2 = runA2BlueprintSystem({
-  englishPages: mosesA2PagesLockedEn,
-  arabicPages: mosesA2PagesLockedAr,
-  config: mosesA2GoldConfig,
-  blueprint: mosesA2LearningBlueprint,
+const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: [mosesA2QuickChallenges[page.id]] };
+  if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercises };
+  if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairs };
+  if (page.id === 21) return { ...page, exercises: mosesA2FinalReviewExercises };
+  if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercises };
+  return page;
 });
 
-/**
- * Blueprint generation owns Knowledge/Final/Quick, but Retrieval Review deliberately
- * keeps the four authored rich activities (sequence, match, reflection, quiz game).
- */
-const restoreReviewActivities = (generatedPages: PageData[], sourcePages: PageData[]): PageData[] => {
-  const sourceReview = sourcePages.find(page => page.id === mosesA2GoldConfig.reviewPageId);
-  if (!sourceReview?.exercises?.length) return generatedPages;
-
-  return generatedPages.map(page => page.id === mosesA2GoldConfig.reviewPageId
-    ? { ...page, exercises: sourceReview.exercises }
-    : page);
-};
-
-const mosesA2GoldPagesEn = applyMosesA2GoldVocabularyChallenge(
-  restoreReviewActivities(mosesA2.englishPages, mosesA2PagesLockedEn),
-  mosesA2LearningBlueprint,
-  'en',
-);
-const mosesA2GoldPagesAr = applyMosesA2GoldVocabularyChallenge(
-  restoreReviewActivities(mosesA2.arabicPages, mosesA2PagesLockedAr),
-  mosesA2LearningBlueprint,
-  'ar',
-);
-
-const mosesA2TeacherGuideMetadataEn = finalizeA2TeacherGuideAlignment(
-  buildMosesA2GoldTeacherGuideMetadata(mosesA2TeacherGuideMetadataFinalEn, 'en'),
-  'moses',
-  'en',
-);
-const mosesA2TeacherGuideMetadataAr = finalizeA2TeacherGuideAlignment(
-  buildMosesA2GoldTeacherGuideMetadata(mosesA2TeacherGuideMetadataFinalAr, 'ar'),
-  'moses',
-  'ar',
-);
-const mosesA2StudentGuideSectionsEn = buildMosesA2GoldStudentGuideSections('en');
-const mosesA2StudentGuideSectionsAr = buildMosesA2GoldStudentGuideSections('ar');
-const mosesA2StudentGuideTextEn = buildMosesA2GoldStudentGuideText(mosesA2LearningBlueprint, 'en');
-const mosesA2StudentGuideTextAr = buildMosesA2GoldStudentGuideText(mosesA2LearningBlueprint, 'ar');
+const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(page => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: [mosesA2QuickChallengesAr[page.id]] };
+  if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercisesAr };
+  if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairsAr };
+  if (page.id === 21) return { ...page, exercises: mosesA2FinalReviewExercisesAr };
+  if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesAr };
+  return page;
+});
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: mosesA2GoldPagesEn,
-  teacherGuide: mosesA2.englishTeacherGuide,
-  teacherGuideMetadata: mosesA2TeacherGuideMetadataEn,
-  selfStudyGuide: mosesA2.englishSelfStudyGuide,
-  studentGuideSections: mosesA2StudentGuideSectionsEn,
-  studentGuideMetadata: mosesA2StudentGuideMetadataFinalEn,
-  studentGuideText: mosesA2StudentGuideTextEn,
+  pages: buildEnglishPages(),
+  teacherGuide: mosesA2TeacherGuide,
+  teacherGuideMetadata: mosesA2TeacherGuideMetadata,
+  selfStudyGuide: mosesA2SelfStudyGuide,
+  studentGuideMetadata: mosesA2StudentGuideMetadata,
 };
 
 export const mosesA2BookDataAr: BookData = {
@@ -123,13 +57,11 @@ export const mosesA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى (عليه السلام) (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: mosesA2GoldPagesAr,
-  teacherGuide: mosesA2.arabicTeacherGuide,
+  pages: buildArabicPages(),
+  teacherGuide: mosesA2TeacherGuideAr,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataAr,
-  selfStudyGuide: mosesA2.arabicSelfStudyGuide,
-  studentGuideSections: mosesA2StudentGuideSectionsAr,
-  studentGuideMetadata: mosesA2StudentGuideMetadataFinalAr,
-  studentGuideText: mosesA2StudentGuideTextAr,
+  selfStudyGuide: mosesA2SelfStudyGuideAr,
+  studentGuideMetadata: mosesA2StudentGuideMetadataAr,
 };
 
 export const mosesA2BookData = mosesA2BookDataEn;
