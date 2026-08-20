@@ -5,7 +5,7 @@ This tracker records the final manual book-by-book polish on `preview`.
 ## Queue
 
 - [x] Moses A2 — COMPLETE
-- [ ] Moses B1 — PENDING
+- [x] Moses B1 — COMPLETE
 - [ ] Moses B2 — PENDING
 - [ ] Mecca A2 — PENDING
 - [ ] Mecca B1 — PENDING
@@ -42,3 +42,30 @@ This tracker records the final manual book-by-book polish on `preview`.
   - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
 - Scope verification: compare from the review base to the completion HEAD showed only the three Moses A2 files listed above changed.
 - CI/status: GitHub returned no combined status checks for completion HEAD `67f5fc1e38a87a2bb352df35d160f96f28316d97`; therefore CI is not recorded as passed.
+
+## Moses B1 — COMPLETE
+
+- Review base `preview` HEAD: `5b7f7116308a8cdc4c0f4bc66cc504ef05e7189a`.
+- Content/support completion HEAD before this tracker commit: `28c5b7d82590ff1c31d8e428bad48c7fdf61592e`.
+- Chapters read manually: 13 EN + 13 AR.
+- Reviewed: canonical EN/AR story chapters; 13 Quick Challenges per language; 8-item Knowledge Check per language; 10-pair Vocabulary Challenge per language; four-part Retrieval Review per language including the 8-question Quiz Game; 10-item mixed-format Final Challenge per language; chapter-specific Teacher Guide and Self-Study Guide coverage; Moses B1 index attachment; storage manifest and central media reconciliation behavior.
+- Changed files:
+  - `src/data/moses/b1/en/exercises.ts`
+  - `src/data/moses/b1/ar/exercises.ts`
+- Main corrections:
+  - Rebuilt the EN and AR Knowledge Checks because the previous set repeated Quick Challenge micro-facts across most chapters.
+  - New Knowledge items now test separate foundational details from Chapters 2, 3, 4, 6, 8, 10, 12 and 13 while leaving Quick Challenges in their chapter-comprehension role.
+  - Preserved the existing B1 architecture: 13 chapter Quick Challenges, 8 Knowledge items, 10 vocabulary pairs, four Retrieval Review activities with an 8-question Quiz Game, and the existing 10-item Final Challenge format.
+  - Kept Review focused on retrieval/connection and Final focused on broader interpretation, evidence, cause/consequence and synthesis. No generator or blueprint rewrite was introduced.
+  - EN/AR pedagogical parity was preserved without forcing literal translation; the Arabic Knowledge set follows its own canonical wording and source details.
+  - Teacher and Self-Study materials were checked for chapter specificity, evidence guidance, listening/reading/speaking/writing balance and wrong-answer redirection. No broad guide rewrite was required in this pass.
+- Runtime/media check:
+  - `src/data/moses/b1/index.ts` attaches the manual EN/AR Quick, Knowledge, Vocabulary, Review and Final sources directly to the prepared pages.
+  - The Moses B1 storage manifest points first to `Moses/b1/images`, B1 English audio and separate B1 Arabic-audio folders.
+  - Central `applyResolvedAssets` rejects `picsum.photos`, prefers resolved B1 images, shares the resolved image between EN/AR, resolves narration separately, forbids EN audio reuse for AR, and blocks cross-level audio fallback. This protects legacy page references that still contain A2 or placeholder media URLs without changing canonical page files.
+- Canonical story lock verification:
+  - EN `src/data/moses/b1/en/pages.ts` SHA before/after: `e838f9a679fceeca34e064f7ee5c12bdc4431926` — unchanged.
+  - AR `src/data/moses/b1/ar/pages.ts` SHA before/after: `b8e66e195c8e7d0317575dd9e85bc93269671b1f` — unchanged.
+  - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
+- Scope verification: compare from review base `5b7f7116308a8cdc4c0f4bc66cc504ef05e7189a` to completion HEAD `28c5b7d82590ff1c31d8e428bad48c7fdf61592e` showed only the two Moses B1 exercise files listed above changed.
+- CI/status: no CI/status result was available from the connector for completion HEAD `28c5b7d82590ff1c31d8e428bad48c7fdf61592e`; therefore CI is not recorded as passed.
