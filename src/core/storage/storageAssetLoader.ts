@@ -88,6 +88,12 @@ const decodedPath = (value: string) => {
   }
 };
 
+const levelFromAssetUrl = (value?: string): 'a2' | 'b1' | 'b2' | null => {
+  if (!value) return null;
+  const match = decodedPath(value).match(/(?:^|[\s/_-])(a2|b1|b2)(?=$|[\s/_.-])/i);
+  return match ? match[1].toLowerCase() as 'a2' | 'b1' | 'b2' : null;
+};
+
 export const isValidImageUrl = (value?: string): boolean => {
   if (!value) return false;
   const decoded = decodedPath(value);
@@ -127,14 +133,20 @@ const reconciledAudio = (
   resolved: Record<number, string>,
   forbiddenUrl = '',
 ): string => {
-  const candidate = isValidAudioUrl(resolved[pageId])
-    ? resolved[pageId]
-    : isValidAudioUrl(source?.audioUrl)
-      ? source!.audioUrl!
-      : '';
-  if (!candidate) return '';
-  if (forbiddenUrl && candidate === forbiddenUrl) return '';
-  return candidate;
+  if (isValidAudioUrl(resolved[pageId])) return resolved[pageId];
+
+  const fallback = isValidAudioUrl(source?.audioUrl) ? source!.audioUrl! : '';
+  if (!fallback) return '';
+  if (forbiddenUrl && fallback === forbiddenUrl) return '';
+
+  // A legacy fallback must never cross CEFR levels. This protects books whose
+  // old Arabic page data still points at an A2 English recording while the
+  // Storage resolver is expected to supply the correct B1/B2 narration.
+  const fallbackLevel = levelFromAssetUrl(fallback);
+  const referenceLevel = levelFromAssetUrl(forbiddenUrl);
+  if (fallbackLevel && referenceLevel && fallbackLevel !== referenceLevel) return '';
+
+  return fallback;
 };
 
 const reconcilePagePair = (
