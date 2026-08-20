@@ -42,29 +42,20 @@ jobs:
               i = 0
               while i < len(lines):
                   line = lines[i]
-                  # pages.ts must not depend on exercise sources after cleanup.
                   if "from './exercises'" in line:
                       i += 1
                       continue
-
                   m = re.match(r'^    ([A-Za-z_][A-Za-z0-9_]*)\s*:', line)
                   if m and m.group(1) in targets:
-                      # Single-line property: remove just that line.
                       tail = line.split(':', 1)[1]
-                      opens = tail.count('[') + tail.count('{') + tail.count('(')
-                      closes = tail.count(']') + tail.count('}') + tail.count(')')
-                      balance = opens - closes
+                      balance = tail.count('[') + tail.count('{') + tail.count('(') - tail.count(']') - tail.count('}') - tail.count(')')
                       i += 1
-                      # Multi-line property: skip until its bracket/brace/paren balance closes.
                       while balance > 0 and i < len(lines):
                           cur = lines[i]
-                          # Good enough for these authored data literals: delimiters in strings do not
-                          # occur in the structural payload lines at indentation depth 4.
                           balance += cur.count('[') + cur.count('{') + cur.count('(')
                           balance -= cur.count(']') + cur.count('}') + cur.count(')')
                           i += 1
                       continue
-
                   out.append(line)
                   i += 1
               return ''.join(out)
@@ -74,19 +65,15 @@ jobs:
               before_content = content_lines(before)
               if len(before_content) != 17:
                   raise SystemExit(f'{path}: expected exactly 17 canonical story content lines, found {len(before_content)}')
-
               after = strip_payloads(before)
               after_content = content_lines(after)
               if before_content != after_content:
                   raise SystemExit(f'{path}: canonical story content changed; refusing cleanup')
-
-              # Required legacy payload keys/imports must be physically absent.
               for key in targets:
                   if re.search(rf'^    {re.escape(key)}\s*:', after, flags=re.M):
                       raise SystemExit(f'{path}: legacy key still present: {key}')
               if "from './exercises'" in after:
                   raise SystemExit(f'{path}: exercise import still present')
-
               path.write_text(after, encoding='utf-8')
               digest = hashlib.sha256(''.join(before_content).encode('utf-8')).hexdigest()
               print(f'{path}: cleaned; canonical content SHA256={digest}')
@@ -108,10 +95,8 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
       - name: Typecheck
         run: npm run typecheck
-
       - name: Build
         run: npm run build
 
@@ -138,3 +123,4 @@ jobs:
           git diff --cached --check
           git commit -m 'Complete Adam B2 manual content cleanup'
           git push origin HEAD:preview
+# retrigger via ref update
