@@ -4,17 +4,17 @@ import { meccaA2PagesAr } from './ar/pages';
 import {
   meccaA2FinalChallengeExercises,
   meccaA2FinalReviewExercises,
-  meccaA2KnowledgeCheckExercises,
   meccaA2QuickChallenges,
   meccaA2VocabularyChallengePairs,
 } from './en/exercises';
+import { meccaA2KnowledgeCheckExercises } from './en/knowledgeCheck';
 import {
   meccaA2FinalChallengeExercisesAr,
   meccaA2FinalReviewExercisesAr,
-  meccaA2KnowledgeCheckExercisesAr,
   meccaA2QuickChallengesAr,
   meccaA2VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { meccaA2KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
