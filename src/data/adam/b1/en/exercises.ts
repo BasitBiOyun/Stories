@@ -1,142 +1,71 @@
-import { Exercise } from '../../../../types';
+import type { Exercise } from '../../../../types';
+
+// Manual source of truth for Adam B1 English learning activities.
+
+export const adamB1QuickChallenges: Record<number, Exercise> = {
+  1: { id: 'adam-b1-qc-1', type: 'multiple-choice', title: 'A Role on Earth', instructions: 'Choose the best answer from the chapter.', question: 'What does Allah say He will place on earth?', options: ['A ruler (khalifa)', 'A second group of angels', 'A city without people'], correctAnswer: 0, explanation: 'The chapter says Allah decided to place a ruler (halîfe) on earth.', feedback: { correct: 'Correct.', incorrect: 'Reread the final paragraph and find the word ruler.' } },
+  2: { id: 'adam-b1-qc-2', type: 'matching', title: 'Gift and Purpose', instructions: 'Match each gift with the result described in the chapter.', question: 'How does Chapter 2 connect Adam’s gifts with human life?', matchingPairs: [{ left: 'Soil from different lands', right: 'different human skin colors' }, { left: 'Life and intellect', right: 'learning and understanding' }], correctAnswer: { 'Soil from different lands': 'different human skin colors', 'Life and intellect': 'learning and understanding' }, explanation: 'The chapter links different soil with human diversity and intellect with learning.', feedback: { correct: 'Correct.', incorrect: 'Find the two cause-result statements in Chapter 2.' } },
+  3: { id: 'adam-b1-qc-3', type: 'multiple-choice', title: 'The Error in Iblis’s Reasoning', instructions: 'Choose the strongest explanation.', question: 'Why is Iblis’s judgment presented as wrong?', options: ['He judges value by material origin and ignores the knowledge given to Adam', 'He believes Adam was created from fire', 'He thinks the angels know more than Allah'], correctAnswer: 0, explanation: 'Iblis treats fire as proof of superiority, while the chapter emphasizes Adam’s knowledge and rejects race, color, or group as sources of greatness.', feedback: { correct: 'Correct.', incorrect: 'Compare Iblis’s claim about fire with the final sentences of the chapter.' } },
+  4: { id: 'adam-b1-qc-4', type: 'true-false', title: 'Blame Instead of Responsibility', instructions: 'Decide whether the statement is supported.', question: 'After being sent away, Iblis blamed Adam and looked for a chance to lead him away from Allah’s kindness.', correctAnswer: true, explanation: 'The chapter says Iblis became angry with Adam, blamed him, and waited for a chance to keep him away from Allah’s kindness.', feedback: { correct: 'Correct.', incorrect: 'Reread what Iblis thought after Allah told him to go away.' } },
+  5: { id: 'adam-b1-qc-5', type: 'multiple-choice', title: 'A Friendly Appearance', instructions: 'Choose the best description of Iblis’s strategy.', question: 'How does Iblis approach Adam and Eve in Paradise?', options: ['He pretends to be a friend and makes a false promise', 'He openly says that he wants to harm them', 'He tells them to stay away from the tree'], correctAnswer: 0, explanation: 'He approaches as if he were a friend and whispers that eating from the tree would prevent death.', feedback: { correct: 'Correct.', incorrect: 'Find the words pretending and whispered.' } },
+  6: { id: 'adam-b1-qc-6', type: 'tap-reveal', title: 'What Their Reaction Shows', instructions: 'Answer from the chapter first, then reveal the evidence.', question: 'What does Adam and Eve’s immediate attempt to cover themselves show in the chapter?', tapRevealItems: [{ question: 'Evidence-based answer', answer: 'The chapter presents modesty or shame (haya) as an inborn human quality.' }], correctAnswer: 'The chapter presents modesty or shame (haya) as an inborn human quality.', explanation: 'After eating from the tree, they immediately try to cover themselves; the text connects this reaction with inborn modesty.', feedback: { correct: 'Correct.', incorrect: 'Return to the final sentence about why they hurried to cover themselves.' } },
+  7: { id: 'adam-b1-qc-7', type: 'matching', title: 'Two Responses to Wrongdoing', instructions: 'Match each character with the response described.', question: 'How does the story contrast Adam with Iblis?', matchingPairs: [{ left: 'Adam and Eve', right: 'regret, apology, learning, and a decision not to repeat the mistake' }, { left: 'Iblis', right: 'refusal to admit he was wrong because of arrogance' }], correctAnswer: { 'Adam and Eve': 'regret, apology, learning, and a decision not to repeat the mistake', Iblis: 'refusal to admit he was wrong because of arrogance' }, explanation: 'Chapter 7 makes repentance and arrogance opposite paths.', feedback: { correct: 'Correct.', incorrect: 'Compare the first and third paragraphs of the chapter.' } },
+  8: { id: 'adam-b1-qc-8', type: 'multiple-choice', title: 'Stewardship Becomes Work', instructions: 'Choose the best summary.', question: 'What does life as a ruler or steward on earth require in Chapter 8?', options: ['Work, protection of nature, care for the weak, and survival', 'Avoiding all work because Paradise continues on earth', 'Living alone without responsibility for others'], correctAnswer: 0, explanation: 'The chapter gives concrete responsibilities: growing crops, keeping animals, building shelter, protecting nature, helping the weak, and working to survive.', feedback: { correct: 'Correct.', incorrect: 'Reread the first two paragraphs and list the actions.' } },
+  9: { id: 'adam-b1-qc-9', type: 'multiple-choice', title: 'Guidance Has a Purpose', instructions: 'Choose the best cause-and-purpose explanation.', question: 'Why are messengers and sacred texts sent according to the chapter?', options: ['To remind people of Allah, right conduct, and life’s purpose', 'To teach only farming and building skills', 'To make every community identical'], correctAnswer: 0, explanation: 'The chapter connects guidance with remembering Allah, doing good, avoiding evil, and keeping life’s meaning and purpose.', feedback: { correct: 'Correct.', incorrect: 'Look at the repeated idea of remembering Allah.' } },
+  10: { id: 'adam-b1-qc-10', type: 'matching', title: 'The Offering Shows Intention', instructions: 'Match each brother with the evidence from his offering.', question: 'What do the two offerings reveal?', matchingPairs: [{ left: 'Habil', right: 'gives his best and healthiest sheep' }, { left: 'Qabil', right: 'gives a low-value handful of crops without care' }], correctAnswer: { Habil: 'gives his best and healthiest sheep', Qabil: 'gives a low-value handful of crops without care' }, explanation: 'The contrast prepares the chapter’s lesson that real goodness means giving what is best and loved.', feedback: { correct: 'Correct.', incorrect: 'Compare the quality and intention of the two gifts.' } },
+  11: { id: 'adam-b1-qc-11', type: 'sequencing', title: 'From Anger to Regret', instructions: 'Put the events in order.', question: 'How does Qabil’s anger develop into regret?', sequencingItems: [{ id: '1', text: 'Habil’s offering is accepted' }, { id: '2', text: 'Qabil threatens and kills Habil' }, { id: '3', text: 'Qabil’s anger cools and he panics about the body' }, { id: '4', text: 'A raven shows him how to bury the dead' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter shows a clear chain from jealousy and anger to violence, panic, and the raven’s lesson.', feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from the accepted offering to the raven.' } },
+  12: { id: 'adam-b1-qc-12', type: 'multiple-choice', title: 'A Living Legacy', instructions: 'Choose the best conclusion.', question: 'What lesson does the final chapter carry forward from Adam’s family story?', options: ['Control jealousy and anger, admit mistakes, do good, and turn back to Allah', 'Hide every mistake and blame someone else', 'Strength and status are the main measures of goodness'], correctAnswer: 0, explanation: 'The final chapter gathers the story’s lessons about jealousy, anger, goodness, admitting mistakes, and returning to Allah.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentences describing the message that still guides people.' } },
+};
+
+export const adamB1KnowledgeCheckExercises: Exercise[] = [
+  { id: 'adam-b1-kc-1', type: 'multiple-choice', title: 'Adam’s Place in the Story', instructions: 'Choose the best answer.', question: 'How is Adam introduced at the beginning of the book?', options: ['As the first Messenger and father of all humans', 'As one of Qabil’s sons', 'As a ruler who lived after many other messengers'], correctAnswer: 0, explanation: 'The opening sentence gives both descriptions.', feedback: { correct: 'Correct.', incorrect: 'Return to the first sentence of Chapter 1.' } },
+  { id: 'adam-b1-kc-2', type: 'true-false', title: 'Knowledge and Respect', instructions: 'Decide whether the statement is supported.', question: 'Chapter 2 presents knowledge and intellect as important gifts given to Adam for learning and understanding.', correctAnswer: true, explanation: 'The text connects life, intellect, learning, understanding, and knowledge.', feedback: { correct: 'Correct.', incorrect: 'Review the second paragraph of Chapter 2.' } },
+  { id: 'adam-b1-kc-3', type: 'multiple-choice', title: 'The Warning', instructions: 'Choose the best answer.', question: 'What warning does Adam receive after Iblis is sent away?', options: ['Iblis is his enemy and Adam should be careful', 'The angels are his enemies', 'He must never live on earth'], correctAnswer: 0, explanation: 'Allah tells Adam that Iblis is his enemy and warns him to be careful.', feedback: { correct: 'Correct.', incorrect: 'Reread the end of Chapter 4.' } },
+  { id: 'adam-b1-kc-4', type: 'multiple-choice', title: 'The False Promise', instructions: 'Choose the best answer.', question: 'What does Iblis promise if Adam and Eve eat from the tree?', options: ['They will never die', 'They will return to soil immediately', 'They will gain more knowledge than Allah gave them'], correctAnswer: 0, explanation: 'The false promise is that eating from the tree would mean they never die.', feedback: { correct: 'Correct.', incorrect: 'Review Iblis’s whisper in Chapter 5.' } },
+  { id: 'adam-b1-kc-5', type: 'true-false', title: 'Repentance', instructions: 'Decide whether the statement is supported.', question: 'Adam and Eve are described as regretting their action, apologizing, learning from it, and asking for pardon.', correctAnswer: true, explanation: 'These actions form the chapter’s description of repentance.', feedback: { correct: 'Correct.', incorrect: 'Review the opening of Chapter 7.' } },
+  { id: 'adam-b1-kc-6', type: 'multiple-choice', title: 'Earthly Responsibility', instructions: 'Choose the best answer.', question: 'Which activity is explicitly part of human responsibility on earth?', options: ['Protecting nature and helping the weak', 'Destroying the land to prove strength', 'Ignoring shelter and food'], correctAnswer: 0, explanation: 'Chapter 8 names protecting nature and helping the weak among the responsibilities.', feedback: { correct: 'Correct.', incorrect: 'Return to the first paragraph of Chapter 8.' } },
+  { id: 'adam-b1-kc-7', type: 'multiple-choice', title: 'The Messenger’s Work', instructions: 'Choose the best description.', question: 'What does Adam teach as the first Messenger?', options: ['Live righteously, act honestly, do good, avoid evil, and remember Allah', 'Seek status through ancestry', 'Use anger to solve disagreement'], correctAnswer: 0, explanation: 'Chapter 9 gives these ideas as the core of his teaching.', feedback: { correct: 'Correct.', incorrect: 'Review the first paragraph of Chapter 9.' } },
+  { id: 'adam-b1-kc-8', type: 'true-false', title: 'Habil’s Choice', instructions: 'Decide whether the statement is supported.', question: 'When Qabil threatens him, Habil says he will not fight back and harm his brother because he fears Allah.', correctAnswer: true, explanation: 'Habil’s answer is stated directly in Chapter 11.', feedback: { correct: 'Correct.', incorrect: 'Reread Habil’s response to the threat.' } },
+];
+
+export const adamB1VocabularyChallengePairs = [
+  { word: 'intellect', meaning: 'the ability to reason, learn, and understand' },
+  { word: 'arrogant', meaning: 'believing oneself more important or valuable than others' },
+  { word: 'origin', meaning: 'the point or material from which something begins' },
+  { word: 'deception', meaning: 'making someone believe something that is not true' },
+  { word: 'repentance', meaning: 'sincere regret followed by turning back from a wrong action' },
+  { word: 'barrier', meaning: 'something that blocks progress or understanding' },
+  { word: 'stewardship', meaning: 'responsible care and management of what has been entrusted to someone' },
+  { word: 'sincerity', meaning: 'honest intention without pretending or deceit' },
+  { word: 'regret', meaning: 'sadness about a wrong or harmful action' },
+  { word: 'legacy', meaning: 'an influence or message passed on to later generations' },
+];
 
 export const adamB1FinalReviewExercises: Exercise[] = [
-  {
-    id: 'b1-final-1',
-    type: 'sequencing',
-    title: 'Chronological Narrative Analysis',
-    instructions: 'Arrange the pivotal moments of Prophet Adam\'s life in their correct chronological sequence.',
-    question: 'Sequence the narrative milestones.',
-    correctAnswer: ['1', '2', '3', '4', '5', '6'],
-    explanation: 'The narrative progresses from creation and the granting of knowledge, through the trial of arrogance, the test in Paradise, and finally the establishment of human stewardship on Earth.',
-    feedback: {
-      correct: 'Excellent analytical skills! You have mastered the chronological flow of the B1 narrative.',
-      incorrect: 'Some milestones are misaligned. Consider the cause-and-effect relationship between the events.'
-    },
-    sequencingItems: [
-      { id: '1', text: 'Allah bestows superior knowledge and intellect upon Adam' },
-      { id: '2', text: 'Iblis refuses the divine command due to material arrogance' },
-      { id: '3', text: 'Adam and Hawwa are granted residence in Paradise with one restriction' },
-      { id: '4', text: 'The deception by Iblis leads to the transgression at the tree' },
-      { id: '5', text: 'Sincere repentance and divine forgiveness follow the mistake' },
-      { id: '6', text: 'Establishment of human vicegerency (Khalifa) and stewardship on Earth' }
-    ]
-  },
-  {
-    id: 'b1-final-2',
-    type: 'drag-drop',
-    title: 'Ethical Categorization',
-    instructions: 'Classify the following concepts based on their role in the narrative of Prophet Adam.',
-    question: 'Categorize the moral and immoral attributes.',
-    correctAnswer: {
-      'VIRTUES (PROPHETIC PATH)': ['Humility', 'Repentance', 'Sincerity', 'Stewardship'],
-      'VICES (PATH OF IBLIS)': ['Arrogance', 'Jealousy', 'Deception', 'Insistent Opposition']
-    },
-    explanation: 'The story contrasts the humility and repentance of Adam with the arrogance and jealousy of Iblis.',
-    feedback: {
-      correct: 'Correct! You have a clear understanding of the ethical framework presented in the story.',
-      incorrect: 'Some concepts are misplaced. Reflect on which attributes led to growth and which led to expulsion.'
-    },
-    dragDropGroups: [
-      { group: 'VIRTUES (PROPHETIC PATH)', items: ['Humility', 'Repentance', 'Sincerity', 'Stewardship'] },
-      { group: 'VICES (PATH OF IBLIS)', items: ['Arrogance', 'Jealousy', 'Deception', 'Insistent Opposition'] }
-    ]
-  },
-  {
-    id: 'b1-final-3',
-    type: 'reflection',
-    title: 'Philosophical Reflection',
-    instructions: 'Engage with these complex themes and formulate your own perspective.',
-    question: 'How does the concept of "intellect" redefine the criteria for superiority in the story?',
-    correctAnswer: true,
-    explanation: 'The story teaches that true value is derived from knowledge and character, not from material origin or race.',
-    feedback: {
-      correct: 'Insightful reflection! These are the core lessons for high school students.',
-      incorrect: 'Please reflect on the prompts above.'
-    },
-    discussionPrompts: [
-      { question: 'In what ways does arrogance act as a barrier to objective truth?', mode: 'Individual' },
-      { question: 'Analyze the psychological impact of "shame" as described after the fall.', mode: 'Pair' },
-      { question: 'Discuss the responsibilities of being a "ruler" (Khalifa) on Earth today.', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'b1-final-4',
-    type: 'quiz-game',
-    title: 'Narrative Masterclass',
-    instructions: 'Navigate through the complex layers of the story in this final interactive challenge.',
-    question: 'Are you prepared to demonstrate your mastery of the B1 level content?',
-    correctAnswer: null,
-    explanation: 'This challenge evaluates your understanding of vocabulary, themes, and narrative details.',
-    feedback: {
-      correct: 'Outstanding! You have successfully completed the B1 Masterclass on Prophet Adam (pbuh).',
-      incorrect: 'Keep exploring the depths of the story. Sincerity leads to mastery.'
-    },
-    hints: ['Focus on the spiritual significance of the soil', 'Remember the difference between a mistake and insistent opposition', 'Consider the legacy of the two brothers'],
-    quizQuestions: [
-      {
-        question: 'What does the diversity of soil used in Adam\'s creation symbolize?',
-        options: [
-          { text: 'The physical strength of humans', isCorrect: false },
-          { text: 'The diversity and common origin of humanity', isCorrect: true },
-          { text: 'The different types of plants on Earth', isCorrect: false }
-        ],
-        hint: 'Consider the limitations of seeing skin color differences instead of universal diversity.'
-      },
-      {
-        question: 'Why was it a mistake for Iblis to think fire is superior to clay?',
-        options: [
-          { text: 'Because fire is actually weaker than soil', isCorrect: false },
-          { text: 'Because it ignored the value of divine knowledge and intellect', isCorrect: true },
-          { text: 'Because he was not actually made of fire', isCorrect: false }
-        ],
-        hint: 'Consider what Allah gave Adam that Iblis ignored.'
-      },
-      {
-        question: 'What is the primary function of the "Khalifa" (ruler) on Earth?',
-        options: [
-          { text: 'To rule with absolute power', isCorrect: false },
-          { text: 'To act as a steward and maintain goodness on the planet', isCorrect: true },
-          { text: 'To build as many cities as possible', isCorrect: false }
-        ],
-        hint: 'Look for the word "stewardship" or "responsibility".'
-      },
-      {
-        question: 'How does the story describe the "sense of shame" (haya)?',
-        options: [
-          { text: 'As a learned behavior from society', isCorrect: false },
-          { text: 'As an inborn human nature (fitra)', isCorrect: true },
-          { text: 'As a punishment from the angels', isCorrect: false }
-        ],
-        hint: 'Is modesty something we are born with or something we learn?'
-      },
-      {
-        question: 'What was the key difference between Adam\'s mistake and Iblis\'s insistent opposition?',
-        options: [
-          { text: 'Adam repented sincerely while Iblis remained arrogant', isCorrect: true },
-          { text: 'Iblis was tricked, but Adam was not', isCorrect: false },
-          { text: 'Adam\'s mistake was more harmful to the world', isCorrect: false }
-        ],
-        hint: 'Compare "I am sorry" with "I am better".'
-      },
-      {
-        question: 'Why was Habil\'s offering accepted by Allah?',
-        options: [
-          { text: 'Because he was a shepherd', isCorrect: false },
-          { text: 'Because he gave his best with a sincere heart', isCorrect: true },
-          { text: 'Because he gave more than Qabil', isCorrect: false }
-        ],
-        hint: 'Focus on the quality and intention of the gift.'
-      },
-      {
-        question: 'What did the raven represent in the conflict between the brothers?',
-        options: [
-          { text: 'A divine sign teaching humility and practical knowledge', isCorrect: true },
-          { text: 'A bad omen for the future of humanity', isCorrect: false },
-          { text: 'A companion for Qabil in his journey', isCorrect: false }
-        ],
-        hint: 'What did the raven show Qabil that he didn\'t know?'
-      }
-    ]
-  }
+  { id: 'adam-b1-review-sequence', type: 'sequencing', title: 'Creation, Test, Earth, Legacy', instructions: 'Put the major stages in order.', question: 'How does the whole story develop?', sequencingItems: [{ id: '1', text: 'Adam is created and given knowledge' }, { id: '2', text: 'Iblis rejects the command because of arrogance' }, { id: '3', text: 'Adam and Eve face the test in Paradise' }, { id: '4', text: 'They repent and begin responsible life on earth' }, { id: '5', text: 'Adam teaches guidance as the first Messenger' }, { id: '6', text: 'The conflict of Habil and Qabil adds a lesson about jealousy and anger' }], correctAnswer: ['1', '2', '3', '4', '5', '6'], explanation: 'The sequence reconnects the book’s major phases rather than testing one small detail.', feedback: { correct: 'Correct.', incorrect: 'Think in large story stages: creation, arrogance, test, repentance, guidance, family conflict.' } },
+  { id: 'adam-b1-review-match', type: 'matching', title: 'Choice and Consequence', instructions: 'Match the choice with the consequence shown in the story.', question: 'Which consequence follows each choice?', matchingPairs: [{ left: 'Iblis protects his pride', right: 'he refuses responsibility and continues opposition' }, { left: 'Adam admits his mistake', right: 'he learns, repents, and receives pardon' }, { left: 'Qabil follows jealousy and anger', right: 'violence is followed by panic and regret' }], correctAnswer: { 'Iblis protects his pride': 'he refuses responsibility and continues opposition', 'Adam admits his mistake': 'he learns, repents, and receives pardon', 'Qabil follows jealousy and anger': 'violence is followed by panic and regret' }, explanation: 'The book repeatedly connects inner choices with later actions and consequences.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 4, 7, and 11.' } },
+  { id: 'adam-b1-review-reflection', type: 'reflection', title: 'Responsibility in Daily Life', instructions: 'Use story evidence before giving your own example.', question: 'Which part of stewardship on earth can be turned into a realistic action today?', correctAnswer: true, explanation: 'Chapter 8 names practical responsibilities such as caring for nature and helping the weak.', feedback: { correct: 'Good reflection.', incorrect: 'Begin with one action actually named in Chapter 8.' }, discussionPrompts: [{ question: 'How can protecting nature become a small daily action?', mode: 'Individual' }, { question: 'Why does admitting a mistake require responsibility rather than weakness?', mode: 'Pair' }, { question: 'How can jealousy become harmful if it is not controlled?', mode: 'Class' }] },
+  { id: 'adam-b1-review-quiz', type: 'quiz-game', title: 'Connections Across the Story', instructions: 'Answer eight new questions that reconnect ideas across chapters.', question: 'Can you explain relationships, not only isolated facts?', correctAnswer: null, explanation: 'The quiz checks cause, contrast, purpose, and values across the book.', feedback: { correct: 'Correct.', incorrect: 'Return to the relevant chapter and find evidence.' }, quizQuestions: [
+    { question: 'What common mistake links Iblis in Chapter 3 with Qabil later in the story?', options: [{ text: 'Allowing a negative inner attitude to shape harmful judgment or action', isCorrect: true }, { text: 'Giving the best thing they own', isCorrect: false }, { text: 'Admitting wrongdoing immediately', isCorrect: false }], hint: 'Compare arrogance with jealousy.' },
+    { question: 'Why is Adam’s knowledge important beyond simply knowing more facts?', options: [{ text: 'It supports learning, understanding, and responsibility for good on earth', isCorrect: true }, { text: 'It proves material origin determines value', isCorrect: false }, { text: 'It removes the need for moral choices', isCorrect: false }], hint: 'Connect Chapters 2 and 8.' },
+    { question: 'What makes Iblis’s approach in Paradise deceptive?', options: [{ text: 'He appears friendly while hiding an intention to mislead', isCorrect: true }, { text: 'He clearly states that he is their enemy', isCorrect: false }, { text: 'He repeats Allah’s warning accurately', isCorrect: false }], hint: 'Remember pretending and whispering.' },
+    { question: 'How does life on earth differ from Paradise in the narrative?', options: [{ text: 'It requires sustained work, survival, protection, and responsibility', isCorrect: true }, { text: 'It removes every difficulty', isCorrect: false }, { text: 'It ends human responsibility', isCorrect: false }], hint: 'Review Chapter 8.' },
+    { question: 'Why does the story place Adam’s messenger role after the move to earth?', options: [{ text: 'Guidance becomes part of human community life and responsibility', isCorrect: true }, { text: 'The story says no guidance is needed on earth', isCorrect: false }, { text: 'Adam stops teaching his children', isCorrect: false }], hint: 'Connect community, teaching, and remembrance.' },
+    { question: 'What does Habil’s offering show that Qabil’s does not?', options: [{ text: 'Sincere care expressed through giving something valued', isCorrect: true }, { text: 'A desire to avoid all responsibility', isCorrect: false }, { text: 'Anger toward Adam', isCorrect: false }], hint: 'Think about best and healthiest.' },
+    { question: 'Why is the raven important after Qabil’s crime?', options: [{ text: 'It shows that a person can still learn a practical lesson even after a terrible action', isCorrect: true }, { text: 'It causes the brothers’ disagreement', isCorrect: false }, { text: 'It accepts Habil’s offering', isCorrect: false }], hint: 'What did Qabil not know how to do?' },
+    { question: 'Which statement best connects the first and last chapters?', options: [{ text: 'Human life is introduced with responsibility and ends with guidance about how to carry that responsibility', isCorrect: true }, { text: 'The book begins and ends by praising ancestry as superiority', isCorrect: false }, { text: 'The final chapter rejects the idea of learning from mistakes', isCorrect: false }], hint: 'Think about ruler/khalifa and the final legacy.' },
+  ] },
+];
+
+export const adamB1FinalChallengeExercises: Exercise[] = [
+  { id: 'adam-b1-final-1', type: 'multiple-choice', title: 'Value Beyond Origin', instructions: 'Choose the best supported conclusion.', question: 'Which contrast best explains the story’s criticism of Iblis’s idea of superiority?', options: ['Iblis focuses on material origin while the story emphasizes knowledge, character, and obedience', 'Iblis has less physical strength than Adam', 'The angels are made from soil'], correctAnswer: 0, explanation: 'Chapters 2–3 contrast knowledge and moral value with Iblis’s material comparison.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 2 and 3.' } },
+  { id: 'adam-b1-final-2', type: 'multiple-choice', title: 'A Test of Trust', instructions: 'Choose the best explanation.', question: 'Why is Iblis’s false promise dangerous in the Paradise episode?', options: ['It makes a forbidden action sound like a path to something desirable', 'It openly repeats the warning', 'It asks Adam and Eve to leave the tree alone'], correctAnswer: 0, explanation: 'The deception turns the forbidden tree into a false promise of never dying.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 5–6.' } },
+  { id: 'adam-b1-final-3', type: 'multiple-choice', title: 'Guidance and Purpose', instructions: 'Choose the best synthesis.', question: 'How does Adam’s role as Messenger connect with the wider theme of responsibility?', options: ['He teaches people how to live rightly, remember Allah, and resist misleading choices', 'He teaches that ancestry removes the need for moral action', 'He tells people to ignore Iblis because he is harmless'], correctAnswer: 0, explanation: 'Chapter 9 turns responsibility into guidance for a growing community.', feedback: { correct: 'Correct.', incorrect: 'Return to Adam’s teaching in Chapter 9.' } },
+  { id: 'adam-b1-final-4', type: 'true-false', title: 'Arrogance and Correction', instructions: 'Decide whether the statement is supported.', question: 'The story presents arrogance as something that can block a person from admitting error and correcting behavior.', correctAnswer: true, explanation: 'This is explicit in the contrast between Adam’s repentance and Iblis’s refusal.', feedback: { correct: 'Correct.', incorrect: 'Review Chapter 7.' } },
+  { id: 'adam-b1-final-5', type: 'true-false', title: 'Earth as Pure Punishment', instructions: 'Decide whether the statement is supported.', question: 'The story describes life on earth only as punishment, with no role, work, teaching, or responsibility.', correctAnswer: false, explanation: 'Chapters 7–9 give Adam and Eve responsibilities, work, stewardship, family life, and guidance on earth.', feedback: { correct: 'Correct.', incorrect: 'Review the move from Chapter 7 to Chapter 9.' } },
+  { id: 'adam-b1-final-6', type: 'matching', title: 'Inner Quality and Visible Action', instructions: 'Match each inner quality with the action that shows it.', question: 'How do inner attitudes become visible in the story?', matchingPairs: [{ left: 'Sincerity', right: 'Habil offers what he values' }, { left: 'Arrogance', right: 'Iblis refuses to admit he is wrong' }], correctAnswer: { Sincerity: 'Habil offers what he values', Arrogance: 'Iblis refuses to admit he is wrong' }, explanation: 'The story shows values through choices, not only through labels.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 7 and 10.' } },
+  { id: 'adam-b1-final-7', type: 'matching', title: 'Responsibility in Two Forms', instructions: 'Match each responsibility with its evidence.', question: 'How is responsibility expressed on earth?', matchingPairs: [{ left: 'Practical stewardship', right: 'grow crops, build shelter, protect nature, help the weak' }, { left: 'Moral guidance', right: 'teach people to do good, avoid evil, and remember Allah' }], correctAnswer: { 'Practical stewardship': 'grow crops, build shelter, protect nature, help the weak', 'Moral guidance': 'teach people to do good, avoid evil, and remember Allah' }, explanation: 'Chapters 8–9 present practical and moral responsibility together.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 8 and 9.' } },
+  { id: 'adam-b1-final-8', type: 'fill-blanks', title: 'The Opposite of Pride', instructions: 'Complete the sentence with the key word.', question: 'Which response opens the way to learning from a mistake?', fillBlanksText: 'Adam and Eve show sincere ___ after recognizing their wrong action.', correctAnswer: ['repentance'], explanation: 'Chapter 7 centers on repentance, apology, learning, and pardon.', feedback: { correct: 'Correct.', incorrect: 'Review the title and first paragraph of Chapter 7.' } },
+  { id: 'adam-b1-final-9', type: 'fill-blanks', title: 'A Destructive Emotion', instructions: 'Complete the sentence with the key word.', question: 'Which emotion does the final family story warn people to control?', fillBlanksText: 'The conflict of Habil and Qabil shows how uncontrolled ___ can contribute to anger and violence.', correctAnswer: ['jealousy'], explanation: 'Qabil is described as jealous, and the final chapter explicitly warns against jealousy and uncontrolled anger.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 10–12.' } },
+  { id: 'adam-b1-final-10', type: 'sequencing', title: 'A Pattern of Moral Learning', instructions: 'Put the four stages in the logical order shown by Adam’s response.', question: 'How does the story present constructive response to wrongdoing?', sequencingItems: [{ id: '1', text: 'Recognize that an action was wrong' }, { id: '2', text: 'Feel regret and admit the mistake' }, { id: '3', text: 'Ask for pardon and learn from the mistake' }, { id: '4', text: 'Choose not to repeat it and continue with responsibility' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'Chapter 7 presents repentance as recognition, regret, apology, learning, and changed intention.', feedback: { correct: 'Correct.', incorrect: 'Trace Adam and Eve’s response in Chapter 7.' } },
 ];
