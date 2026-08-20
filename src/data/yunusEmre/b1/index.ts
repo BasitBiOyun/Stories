@@ -1,78 +1,56 @@
-import { BookData } from '../../../types';
-import { runB1BlueprintSystem } from '../../b1BlueprintSystem';
-import { polishB1GuideSections } from '../../b1GuidePresentation';
+import type { BookData, Exercise, PageData } from '../../../types';
+import { yunusB1Pages } from './en/pages';
+import { yunusEmreB1PagesAr } from './ar/pages';
 import {
-  buildB1GoldStudentGuideMetadata,
-  buildB1GoldTeacherGuideMetadata,
-} from '../../b1GoldGuides';
-import { finalizeB1LearningBlueprint } from '../../b1GoldPedagogy';
-import { buildB1GoldReview } from '../../b1GoldReview';
-import { applyB1CuratedVocabulary, applyB1GoldReview, prepareB1GoldLearningStructure } from '../../b1GoldStructure';
+  yunusB1QuickChallenges,
+  yunusB1KnowledgeCheckExercises,
+  yunusB1VocabularyChallengePairs,
+  yunusB1FinalReviewExercises,
+  yunusB1FinalChallengeExercises,
+} from './en/exercises';
 import {
-  buildB1FriendlyStudentGuideSections,
-  buildB1FriendlyStudentGuideText,
-} from '../../b1StudentFriendlyGuide';
-import { yunusB1TeacherGuideMetadata } from './en/teacherGuide';
-import { yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { yunusEmreB1LearningBlueprint } from './learningBlueprint';
-import { yunusEmreB1BlueprintConfig } from './config';
-import { yunusEmreB1HighlightTargets, yunusEmreB1SourcePagesAr, yunusEmreB1SourcePagesEn } from './source';
+  yunusB1QuickChallengesAr,
+  yunusB1KnowledgeCheckExercisesAr,
+  yunusB1VocabularyChallengePairsAr,
+  yunusB1FinalReviewExercisesAr,
+  yunusB1FinalChallengeExercisesAr,
+} from './ar/exercises';
+import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
+import { yunusB1SelfStudyGuide, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
+import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { yunusEmreB1SelfStudyGuideAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-export { yunusEmreB1HighlightTargets };
+const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-const story = 'yunusEmre' as const;
-const prepared = prepareB1GoldLearningStructure({
-  englishPages: yunusEmreB1SourcePagesEn,
-  arabicPages: yunusEmreB1SourcePagesAr,
-  config: yunusEmreB1BlueprintConfig,
+const buildPages = (
+  pages: PageData[],
+  quickChallenges: Record<number, Exercise>,
+  knowledgeCheck: Exercise[],
+  vocabularyPairs: { word: string; meaning: string }[],
+  review: Exercise[],
+  finalChallenge: Exercise[],
+): PageData[] => pages.map((page) => {
+  if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+  if (page.id === 14) return { ...page, exercises: knowledgeCheck };
+  if (page.id === 15) return { ...page, vocabularyPairs };
+  if (page.id === 18) return { ...page, exercises: review };
+  if (page.id === 19) return { ...page, exercises: finalChallenge };
+  return page;
 });
-const goldBlueprint = finalizeB1LearningBlueprint(yunusEmreB1LearningBlueprint, story);
-const compiled = runB1BlueprintSystem({
-  englishPages: prepared.englishPages,
-  arabicPages: prepared.arabicPages,
-  config: prepared.config,
-  blueprint: goldBlueprint,
-});
 
-const curatedVocabulary = [
-  'mysticism', 'destruction', 'comfort', 'harmony', 'dervish',
-  'humility', 'generosity', 'patience', 'greed', 'arrogance',
-] as const;
-
-const pagesEn = applyB1CuratedVocabulary(
-  applyB1GoldReview(compiled.englishPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'en')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'en', curatedVocabulary,
-);
-const pagesAr = applyB1CuratedVocabulary(
-  applyB1GoldReview(compiled.arabicPages, prepared.config.reviewPageId, buildB1GoldReview(story, 'ar')),
-  goldBlueprint, prepared.config.vocabularyPageId, 'ar', curatedVocabulary,
-);
-
-const teacherMetadataEn = buildB1GoldTeacherGuideMetadata(yunusB1TeacherGuideMetadata, story, 'en', prepared.config.storyIds.length);
-const teacherMetadataAr = buildB1GoldTeacherGuideMetadata(yunusEmreB1TeacherGuideMetadataAr, story, 'ar', prepared.config.storyIds.length);
-const teacherGuideEn = polishB1GuideSections(compiled.englishTeacherGuide, goldBlueprint, 'en', 'teacher');
-const teacherGuideAr = polishB1GuideSections(compiled.arabicTeacherGuide, goldBlueprint, 'ar', 'teacher');
-const selfStudyGuideEn = polishB1GuideSections(compiled.englishSelfStudyGuide, goldBlueprint, 'en', 'self');
-const selfStudyGuideAr = polishB1GuideSections(compiled.arabicSelfStudyGuide, goldBlueprint, 'ar', 'self');
-const studentSectionsEn = buildB1FriendlyStudentGuideSections('en');
-const studentSectionsAr = buildB1FriendlyStudentGuideSections('ar');
-const studentTextEn = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'en');
-const studentTextAr = buildB1FriendlyStudentGuideText(goldBlueprint, story, 'ar');
-
-export const yunusEmreB1GoldConfig = prepared.config;
+const englishPages = buildPages(yunusB1Pages, yunusB1QuickChallenges, yunusB1KnowledgeCheckExercises, yunusB1VocabularyChallengePairs, yunusB1FinalReviewExercises, yunusB1FinalChallengeExercises);
+const arabicPages = buildPages(yunusEmreB1PagesAr, yunusB1QuickChallengesAr, yunusB1KnowledgeCheckExercisesAr, yunusB1VocabularyChallengePairsAr, yunusB1FinalReviewExercisesAr, yunusB1FinalChallengeExercisesAr);
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
   title: 'Yunus Emre: History, Poetry, and Moral Thought (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: pagesEn,
-  teacherGuide: teacherGuideEn,
-  teacherGuideMetadata: teacherMetadataEn,
-  selfStudyGuide: selfStudyGuideEn,
-  studentGuideSections: studentSectionsEn,
-  studentGuideText: studentTextEn,
-  studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'en'),
+  pages: englishPages,
+  teacherGuide: yunusB1TeacherGuide,
+  teacherGuideMetadata: yunusB1TeacherGuideMetadata,
+  selfStudyGuide: yunusB1SelfStudyGuide,
+  studentGuideMetadata: yunusB1StudentGuideMetadata,
 };
 
 export const yunusEmreB1BookDataAr: BookData = {
@@ -80,13 +58,11 @@ export const yunusEmreB1BookDataAr: BookData = {
   title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: pagesAr,
-  teacherGuide: teacherGuideAr,
-  teacherGuideMetadata: teacherMetadataAr,
-  selfStudyGuide: selfStudyGuideAr,
-  studentGuideSections: studentSectionsAr,
-  studentGuideText: studentTextAr,
-  studentGuideMetadata: buildB1GoldStudentGuideMetadata(story, 'ar'),
+  pages: arabicPages,
+  teacherGuide: yunusEmreB1TeacherGuideAr,
+  teacherGuideMetadata: yunusEmreB1TeacherGuideMetadataAr,
+  selfStudyGuide: yunusEmreB1SelfStudyGuideAr,
+  studentGuideMetadata: yunusEmreB1StudentGuideMetadataAr,
 };
 
 export const yunusEmreB1BookData = yunusEmreB1BookDataEn;
