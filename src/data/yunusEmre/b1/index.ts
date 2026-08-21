@@ -3,18 +3,18 @@ import { yunusB1Pages } from './en/pages';
 import { yunusEmreB1PagesAr } from './ar/pages';
 import {
   yunusB1QuickChallenges,
-  yunusB1KnowledgeCheckExercises,
   yunusB1VocabularyChallengePairs,
   yunusB1FinalReviewExercises,
   yunusB1FinalChallengeExercises,
 } from './en/exercises';
 import {
   yunusB1QuickChallengesAr,
-  yunusB1KnowledgeCheckExercisesAr,
   yunusB1VocabularyChallengePairsAr,
   yunusB1FinalReviewExercisesAr,
   yunusB1FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
+import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
 import { yunusB1SelfStudyGuide, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -38,8 +38,8 @@ const buildPages = (
   return page;
 });
 
-const englishPages = buildPages(yunusB1Pages, yunusB1QuickChallenges, yunusB1KnowledgeCheckExercises, yunusB1VocabularyChallengePairs, yunusB1FinalReviewExercises, yunusB1FinalChallengeExercises);
-const arabicPages = buildPages(yunusEmreB1PagesAr, yunusB1QuickChallengesAr, yunusB1KnowledgeCheckExercisesAr, yunusB1VocabularyChallengePairsAr, yunusB1FinalReviewExercisesAr, yunusB1FinalChallengeExercisesAr);
+const englishPages = buildPages(yunusB1Pages, yunusB1QuickChallenges, yunusB1ManualKnowledgeCheckExercises, yunusB1VocabularyChallengePairs, yunusB1FinalReviewExercises, yunusB1FinalChallengeExercises);
+const arabicPages = buildPages(yunusEmreB1PagesAr, yunusB1QuickChallengesAr, yunusB1ManualKnowledgeCheckExercisesAr, yunusB1VocabularyChallengePairsAr, yunusB1FinalReviewExercisesAr, yunusB1FinalChallengeExercisesAr);
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
