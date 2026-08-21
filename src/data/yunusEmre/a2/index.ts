@@ -14,6 +14,7 @@ import {
   yunusA2FinalReviewExercisesAr,
 } from './ar/exercises';
 import { yunusA2LanguageFocusExercises } from './en/languageFocus';
+import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusA2ManualFinalChallengeExercises } from './en/finalChallenge';
 import { yunusA2ManualFinalChallengeExercisesAr } from './ar/finalChallenge';
 import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
@@ -40,7 +41,14 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
 });
 
 const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [yunusA2QuickChallengesAr[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = yunusA2LanguageFocusExercisesAr[page.id];
+    return {
+      ...page,
+      exercises: [yunusA2QuickChallengesAr[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercisesAr };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairsAr };
   if (page.id === 13) return { ...page, exercises: yunusA2FinalReviewExercisesAr };
