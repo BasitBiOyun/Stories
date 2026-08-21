@@ -12,7 +12,16 @@ interface ApprovedStoryCorrection {
 const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   // Adam A2
   { storyId: 'adam', level: 'A2', pageId: 3, from: 'because with this knowledge human can do good and stop bad.', to: 'because with this knowledge humans can do good and stop bad.' },
+  { storyId: 'adam', level: 'A2', pageId: 4, from: 'He didn’t want Allah to be nice with Adam.', to: 'He didn’t want Allah to be nice to Adam.' },
+  { storyId: 'adam', level: 'A2', pageId: 4, from: 'Iblis thought because of Adam, Allah put him far from His love.', to: 'Iblis thought Allah put him far from His love because of Adam.' },
+  { storyId: 'adam', level: 'A2', pageId: 4, from: 'HE told Adam and Eve not to go near one tree.', to: 'He told Adam and Eve not to go near one tree.' },
+  { storyId: 'adam', level: 'A2', pageId: 6, from: 'protect the nature', to: 'protect nature' },
+  { storyId: 'adam', level: 'A2', pageId: 7, from: 'Adam and Eve lived on earth many years.', to: 'Adam and Eve lived on earth for many years.' },
+  { storyId: 'adam', level: 'A2', pageId: 7, from: 'We are all one of their children.', to: 'We are all their children.' },
+  { storyId: 'adam', level: 'A2', pageId: 8, from: 'Qabil was a farmer, he worked on the farm and grew crops.', to: 'Qabil was a farmer. He worked on the farm and grew crops.' },
   { storyId: 'adam', level: 'A2', pageId: 8, from: 'healtiest', to: 'healthiest' },
+  { storyId: 'adam', level: 'A2', pageId: 9, from: 'Qabil’s face became very dark with anger and said “I will kill you”.', to: 'Qabil became very angry and said, “I will kill you.”' },
+  { storyId: 'adam', level: 'A2', pageId: 10, from: 'a father of his another children', to: 'the father of his other children' },
 
   // Adam B1
   { storyId: 'adam', level: 'B1', pageId: 3, from: 'fire was superior than clay.', to: 'fire was superior to clay.' },
@@ -30,14 +39,20 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'adam', level: 'B2', pageId: 17, from: 'beacuse', to: 'because' },
 
   // Abraham A2
-  { storyId: 'ibrahim', level: 'A2', pageId: 7, from: 'It was this god there, the biggest one broke all the stones.', to: 'It was this god there—the biggest one—that broke all the stones.' },
+  { storyId: 'ibrahim', level: 'A2', pageId: 2, from: 'It has big ears. His ears are bigger than ours.', to: 'It has big ears. Its ears are bigger than ours.' },
+  { storyId: 'ibrahim', level: 'A2', pageId: 3, from: 'In a nearby mountain, he found a cave.', to: 'On a nearby mountain, he found a cave.' },
+  { storyId: 'ibrahim', level: 'A2', pageId: 4, from: 'It is bigger and bright.', to: 'It is bigger and brighter.' },
+  { storyId: 'ibrahim', level: 'A2', pageId: 7, from: 'It was this god there, the biggest one broke all the stones.', to: 'The biggest god over there broke all the stones.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 8, from: 'He placed him on a catapult.', to: 'They placed him on a catapult.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 9, from: 'they did not change their mind.', to: 'they did not change their minds.' },
+  { storyId: 'ibrahim', level: 'A2', pageId: 12, from: 'But it was useless, there was no water', to: 'But it was useless. There was no water' },
 
   // Moses A2
+  { storyId: 'musa', level: 'A2', pageId: 1, from: 'The king feared that this crowd took control of his kingdom.', to: 'The king feared that this crowd would take control of his kingdom.' },
   { storyId: 'musa', level: 'A2', pageId: 2, from: 'it did not harm any Children of Israel.', to: 'it did not harm any of the Children of Israel.' },
   { storyId: 'musa', level: 'A2', pageId: 5, from: 'the king was not god.', to: 'the king was not a god.' },
   { storyId: 'musa', level: 'A2', pageId: 12, from: 'He got out his arm.', to: 'He pulled his arm out.' },
+  { storyId: 'musa', level: 'A2', pageId: 16, from: 'The story of Moses (pbuh) has many lessons to learn.', to: 'The story of Moses (pbuh) has many lessons for us to learn.' },
 
   // Moses B1
   { storyId: 'musa', level: 'B1', pageId: 4, from: 'baby Moses was in her mother’s arms again.', to: 'baby Moses was in his mother’s arms again.' },
@@ -49,7 +64,14 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'musa', level: 'B2', pageId: 18, from: 'Are you not that Moses who we took from the Nile', to: 'Are you not that Moses whom we took from the Nile' },
   { storyId: 'musa', level: 'B2', pageId: 18, from: 'upon who our charity and wealth were showered?', to: 'upon whom our charity and wealth were showered?' },
 
+  // Mecca A2
+  { storyId: 'mecca', level: 'A2', pageId: 1, from: 'Bilal ibn Rabah was one of the first seven people that openly said he was a Muslim in Mecca.', to: 'Bilal ibn Rabah was one of the first seven people to say openly that he was a Muslim in Mecca.' },
+
   // Yunus Emre A2
+  { storyId: 'yunusEmre', level: 'A2', pageId: 1, from: 'Dervishes practised to be a good person with moral values under the guidance of a teacher at dervish houses.', to: 'Dervishes practised being good people with moral values under the guidance of a teacher at dervish houses.' },
+  { storyId: 'yunusEmre', level: 'A2', pageId: 2, from: 'they forgave and tolerated the others.', to: 'they forgave and tolerated others.' },
+  { storyId: 'yunusEmre', level: 'A2', pageId: 4, from: 'willing to serve the others and the creation.', to: 'willing to serve others and all creation.' },
+  { storyId: 'yunusEmre', level: 'A2', pageId: 5, from: 'One day he asked the following question to Yunus:', to: 'One day he asked Yunus the following question:' },
   { storyId: 'yunusEmre', level: 'A2', pageId: 7, from: 'the most beautiful bunch of flowers. All the dervishes', to: 'the most beautiful bunch of flowers.” All the dervishes' },
   { storyId: 'yunusEmre', level: 'A2', pageId: 7, from: 'Yunus replied, “My teacher” “I walked around the fields', to: 'Yunus replied, “My teacher, I walked around the fields' },
   { storyId: 'yunusEmre', level: 'A2', pageId: 8, from: '‘Come, dervish Yunus.', to: '“Come, dervish Yunus.' },
@@ -64,8 +86,8 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'yunusEmre', level: 'B2', pageId: 10, from: 'destroying Allah’s house, Yunus says:', to: 'destroying Allah’s house. Yunus says:' },
 ] as const;
 
-if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 33) {
-  throw new Error(`[Approved Story Corrections] Expected 33 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
+if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 54) {
+  throw new Error(`[Approved Story Corrections] Expected 54 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
 }
 
 const rulesFor = (storyId: StoryId, level: Level, pageId: number) =>
@@ -94,7 +116,7 @@ const correctEnglishPage = (storyId: StoryId, level: Level, page: PageData): Pag
   return content === page.content ? page : { ...page, content };
 };
 
-/** Applies only the 33 user-approved English prose corrections from the August 2026 audit. */
+/** Applies only the user-approved English prose corrections from the August 2026 audit. */
 export const applyApprovedEnglishStoryCorrections = (
   storyId: StoryId,
   level: Level,
