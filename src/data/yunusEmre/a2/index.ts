@@ -41,7 +41,12 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
   }
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercises };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairs };
-  if (page.id === 13) return { ...page, title: 'Language Review', exercises: yunusA2LanguageReviewExercises };
+  if (page.id === 13) return {
+    ...page,
+    title: 'Language Review',
+    content: 'Review and use the grammar patterns and language functions from all eight chapters.',
+    exercises: yunusA2LanguageReviewExercises,
+  };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercises };
   return page;
 });
@@ -59,7 +64,12 @@ const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
   }
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercisesAr };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairsAr };
-  if (page.id === 13) return { ...page, title: 'مراجعة اللغة', exercises: yunusA2LanguageReviewExercisesAr };
+  if (page.id === 13) return {
+    ...page,
+    title: 'مراجعة اللغة',
+    content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الثمانية.',
+    exercises: yunusA2LanguageReviewExercisesAr,
+  };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercisesAr };
   return page;
 });
