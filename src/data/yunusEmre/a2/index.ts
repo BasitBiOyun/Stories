@@ -6,15 +6,15 @@ import {
   yunusA2KnowledgeCheckExercises,
   yunusA2VocabularyChallengePairs,
   yunusA2FinalReviewExercises,
-  yunusA2FinalChallengeExercises,
 } from './en/exercises';
 import {
   yunusA2QuickChallengesAr,
   yunusA2KnowledgeCheckExercisesAr,
   yunusA2VocabularyChallengePairsAr,
   yunusA2FinalReviewExercisesAr,
-  yunusA2FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { yunusA2ManualFinalChallengeExercises } from './en/finalChallenge';
+import { yunusA2ManualFinalChallengeExercisesAr } from './ar/finalChallenge';
 import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
 import { teacherGuide as yunusA2TeacherGuideAr, teacherGuideMetadata as yunusA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusA2SelfStudyGuide } from './en/selfStudyGuide';
@@ -27,7 +27,7 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercises };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairs };
   if (page.id === 13) return { ...page, exercises: yunusA2FinalReviewExercises };
-  if (page.id === 14) return { ...page, exercises: yunusA2FinalChallengeExercises };
+  if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercises };
   return page;
 });
 
@@ -36,7 +36,7 @@ const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercisesAr };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairsAr };
   if (page.id === 13) return { ...page, exercises: yunusA2FinalReviewExercisesAr };
-  if (page.id === 14) return { ...page, exercises: yunusA2FinalChallengeExercisesAr };
+  if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercisesAr };
   return page;
 });
 
