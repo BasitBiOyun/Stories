@@ -11,7 +11,7 @@ This tracker records the final manual book-by-book polish on `preview`.
 - [x] Mecca B1 — COMPLETE
 - [x] Mecca B2 — COMPLETE
 - [x] Yunus Emre A2 — COMPLETE
-- [ ] Yunus Emre B1 — PENDING
+- [x] Yunus Emre B1 — COMPLETE
 - [ ] Yunus Emre B2 — PENDING
 
 ## Moses A2 — COMPLETE
@@ -80,3 +80,22 @@ This tracker records the final manual book-by-book polish on `preview`.
 - Canonical story lock verification: EN `src/data/yunusEmre/a2/en/pages.ts` SHA `93423ebcddbc765dac0c2a2b99f9a4295a5a12df`; AR `src/data/yunusEmre/a2/ar/pages.ts` SHA `ed5c4a7989b75f61d0dc4416e649ffb3468ce22d` — unchanged during this pass. No canonical story `content`, chapter title, order or boundary was edited.
 - Scope verification: compare `4be84d78...82dea10d` shows exactly three changed files, all inside `src/data/yunusEmre/a2/`.
 - CI/status: no verified CI/status result was available; therefore CI is not recorded as passed.
+
+## Yunus Emre B1 — COMPLETE
+
+- Review base `preview` HEAD: `5af61e7f25bca0778169c0155dac7ae1744cda5c`.
+- Content/support completion HEAD before this tracker commit: `f18c6ca3e4461ab3adeb39af0d7c5568e6bf744d`.
+- Chapters read manually: 13 EN + 13 AR.
+- Reviewed: all canonical EN/AR story chapters; one Quick Challenge per chapter; 8-item Knowledge Check per language; 10-item Vocabulary Challenge; four-part Retrieval Review including 8-question Quiz Game; 10-item Final Challenge; Teacher Guide and Self-Study Guide chapter coverage; runtime/index attachment and media references.
+- Main correction: the runtime Knowledge Check heavily repeated Quick Challenge micro-facts, including outer/inner Sûfî life, tekke functions, the historical crisis, Creator/creation love, heart/intellect, and moral habits. Replaced it with separate manually authored EN/AR 8-item Knowledge sets using different foundational evidence: approximate life dates, Taptuk Emre as spiritual tutor, Alaeddin I's Mediterranean/Black Sea navy, the Mongol false-retreat/circling tactic at Kösedağ, direct Ilkhanate attachment in 1308, shaykhs arriving from Turkestan/Khorasan/Iran, Yunus's description of intellect as a light from Allah existing since eternity, and the named works `Risâletü’n-Nushiye` and `Divan`.
+- Quick/Review/Final architecture was preserved. The existing Review continues to retrieve relationships and synthesis; the Final remains a separate mixed-format demonstration rather than another Knowledge set.
+- Teacher Guide and Self-Study Guide were already manually chapter-specific, source-aware, evidence-led, and integrated reading/listening/speaking/writing with targeted wrong-answer return points; they were not cosmetically rewritten.
+- Media/runtime note: canonical `pages.ts` still contains legacy `picsum.photos` references for later story/support pages. No verified production image mapping for those placeholders was found in this pass, so the locked canonical page files were not altered or guessed. Audio references remain B1 paths; no cross-level audio edit was introduced.
+- Changed files:
+  - `src/data/yunusEmre/b1/en/knowledgeCheck.ts`
+  - `src/data/yunusEmre/b1/ar/knowledgeCheck.ts`
+  - `src/data/yunusEmre/b1/index.ts`
+- Runtime check: page 14 now uses the dedicated manual EN/AR Knowledge files. Quick, Vocabulary, Review, Final, Teacher Guide and Self-Study attachments remain intact.
+- Canonical story lock verification: EN `src/data/yunusEmre/b1/en/pages.ts` blob SHA `e86ac62d1b00ab9adc7a5341ef6d181636cce253`; AR `src/data/yunusEmre/b1/ar/pages.ts` blob SHA `c481e1a6306aafc001031eaecbd6c7971d5254f7` — unchanged during this pass. No canonical story `content`, chapter title, order or boundary was edited.
+- Scope verification: compare `5af61e7f...f18c6ca3` shows exactly three changed files, all inside `src/data/yunusEmre/b1/`.
+- CI/status: GitHub returned no status checks for completion HEAD; therefore CI is not recorded as passed.
