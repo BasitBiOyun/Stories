@@ -63,13 +63,13 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
     question: 'What different meanings do needs, must, can’t and less express?',
     matchingPairs: [
       { left: 'A dervish needs a wounded heart', right: 'describes a need' },
-      { left: 'He must be patient with people', right: 'states a strong requirement' },
+      { left: 'He must be tongueless when people make fun of him', right: 'states a strong requirement' },
       { left: 'You can’t be a dervish', right: 'says something is not possible' },
       { left: 'They ate, spoke and slept less', right: 'describes smaller amounts in a disciplined routine' },
     ],
     correctAnswer: {
       'A dervish needs a wounded heart': 'describes a need',
-      'He must be patient with people': 'states a strong requirement',
+      'He must be tongueless when people make fun of him': 'states a strong requirement',
       'You can’t be a dervish': 'says something is not possible',
       'They ate, spoke and slept less': 'describes smaller amounts in a disciplined routine',
     },
@@ -109,7 +109,7 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
     title: 'Appearance and Reality',
     instructions: 'Complete the sentence with the contrast word used to move from first impression to deeper meaning.',
     question: 'Which word shows that the deeper reality is different from the first impression?',
-    fillBlanksText: 'It looks like Yunus is only working with wood, [blank] in fact he is training and fixing his heart and ego.',
+    fillBlanksText: 'It looks like Yunus is working with wood to fix crooked pieces, [blank] in fact he is training and fixing his own heart and ego.',
     correctAnswer: 'but',
     explanation: '“But” creates the contrast at the centre of Chapter 5: the work looks physical on the outside, but it also has an inner meaning.',
     feedback: {
