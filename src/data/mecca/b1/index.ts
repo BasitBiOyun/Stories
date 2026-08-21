@@ -3,20 +3,20 @@ import { meccaB1Pages } from './en/pages';
 import {
   meccaB1FinalChallengeExercises,
   meccaB1FinalReviewExercises,
-  meccaB1KnowledgeCheckExercises,
   meccaB1QuickChallenges,
   meccaB1VocabularyChallengePairs,
 } from './en/exercises';
+import { meccaB1KnowledgeCheckExercises } from './en/knowledgeCheck';
 import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1SelfStudyGuide, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { pages as meccaB1PagesAr } from './ar/pages';
 import {
   meccaB1FinalChallengeExercisesAr,
   meccaB1FinalReviewExercisesAr,
-  meccaB1KnowledgeCheckExercisesAr,
   meccaB1QuickChallengesAr,
   meccaB1VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { meccaB1KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
