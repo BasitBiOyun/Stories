@@ -5,20 +5,20 @@ import {
   yunusA2QuickChallenges,
   yunusA2KnowledgeCheckExercises,
   yunusA2VocabularyChallengePairs,
-  yunusA2FinalReviewExercises,
 } from './en/exercises';
 import {
   yunusA2QuickChallengesAr,
   yunusA2KnowledgeCheckExercisesAr,
   yunusA2VocabularyChallengePairsAr,
-  yunusA2FinalReviewExercisesAr,
 } from './ar/exercises';
 import { yunusA2LanguageFocusExercises } from './en/languageFocus';
 import { yunusA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
+import { yunusA2LanguageReviewExercises } from './en/languageReview';
 import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
+import { yunusA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { yunusA2ManualFinalChallengeExercises } from './en/finalChallenge';
 import { yunusA2ManualFinalChallengeExercisesAr } from './ar/finalChallenge';
 import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
@@ -41,7 +41,7 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
   }
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercises };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairs };
-  if (page.id === 13) return { ...page, exercises: yunusA2FinalReviewExercises };
+  if (page.id === 13) return { ...page, title: 'Language Review', exercises: yunusA2LanguageReviewExercises };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercises };
   return page;
 });
@@ -59,7 +59,7 @@ const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
   }
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercisesAr };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairsAr };
-  if (page.id === 13) return { ...page, exercises: yunusA2FinalReviewExercisesAr };
+  if (page.id === 13) return { ...page, title: 'مراجعة اللغة', exercises: yunusA2LanguageReviewExercisesAr };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercisesAr };
   return page;
 });
