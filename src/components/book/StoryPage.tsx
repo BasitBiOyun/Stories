@@ -799,6 +799,107 @@ export const StoryPage = ({
 
   const isAudioLocked = false;
 
+  const renderLanguageFocusPanel = (mobile = false) => {
+    const exercises = page.languageFocusExercises ?? [];
+    if (!exercises.length) return null;
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={cn('w-full shrink-0', mobile ? '' : 'mt-4')}
+      >
+        <div className={cn(
+          'rounded-2xl border shadow-sm p-4 sm:p-5',
+          collectionId === 'history'
+            ? 'bg-emerald-50/55 border-emerald-200'
+            : collectionId === 'turkish'
+            ? 'bg-cyan-50/65 border-cyan-200'
+            : 'bg-amber-50/60 border-amber-200'
+        )}>
+          <div className={cn('flex items-center gap-3 mb-4', mobile && 'justify-center text-center')}>
+            <div className={cn(
+              'w-11 h-11 rounded-xl flex items-center justify-center shadow-inner shrink-0',
+              collectionId === 'history'
+                ? 'bg-emerald-100 text-emerald-700'
+                : collectionId === 'turkish'
+                ? 'bg-cyan-100 text-cyan-700'
+                : 'bg-amber-100 text-amber-700'
+            )}>
+              <BookIcon size={22} />
+            </div>
+            <div>
+              <h4 className={cn(
+                'font-black text-lg sm:text-xl',
+                collectionId === 'history'
+                  ? 'text-emerald-950'
+                  : collectionId === 'turkish'
+                  ? 'text-sky-950'
+                  : 'text-amber-950'
+              )}>
+                Language Focus
+              </h4>
+              <p className={cn(
+                'text-xs sm:text-sm font-medium',
+                collectionId === 'history'
+                  ? 'text-emerald-900/55'
+                  : collectionId === 'turkish'
+                  ? 'text-sky-950/55'
+                  : 'text-amber-900/55'
+              )}>
+                Notice it. Connect it. Use it.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {exercises.map((exercise, index) => {
+              const completed = completedExercises.includes(exercise.id);
+              return (
+                <button
+                  key={exercise.id}
+                  type="button"
+                  onClick={() => setActiveExercise(exercise)}
+                  className={cn(
+                    'rounded-xl border-2 p-3.5 text-left transition-all active:scale-[0.99] min-h-24',
+                    completed
+                      ? 'bg-green-50 border-green-300'
+                      : collectionId === 'history'
+                      ? 'bg-white border-emerald-100 hover:border-emerald-400 hover:shadow-md'
+                      : collectionId === 'turkish'
+                      ? 'bg-white border-cyan-100 hover:border-cyan-400 hover:shadow-md'
+                      : 'bg-white border-amber-100 hover:border-amber-400 hover:shadow-md'
+                  )}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className={cn(
+                      'w-7 h-7 rounded-lg shrink-0 flex items-center justify-center text-xs font-black',
+                      completed
+                        ? 'bg-green-500 text-white'
+                        : collectionId === 'history'
+                        ? 'bg-emerald-100 text-emerald-700'
+                        : collectionId === 'turkish'
+                        ? 'bg-cyan-100 text-cyan-700'
+                        : 'bg-amber-100 text-amber-700'
+                    )}>
+                      {completed ? '✓' : formatNumber(index + 1)}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block font-bold text-sm sm:text-base text-wood leading-tight">{exercise.title}</span>
+                      {exercise.instructions && (
+                        <span className="block mt-1 text-[11px] sm:text-xs text-wood/55 leading-snug">{exercise.instructions}</span>
+                      )}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
     <div className="h-full flex flex-col relative overflow-hidden min-h-0">
       {/* Top Bar with Audio and Title Info */}
@@ -1057,6 +1158,8 @@ export const StoryPage = ({
               </div>
             </div>
           )}
+
+          {renderLanguageFocusPanel(true)}
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
@@ -1171,6 +1274,8 @@ export const StoryPage = ({
               </div>
             </motion.div>
           )}
+
+          {renderLanguageFocusPanel()}
         </div>
       </div>
 
