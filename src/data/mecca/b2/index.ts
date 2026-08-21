@@ -2,21 +2,21 @@ import type { BookData, Exercise, PageData, TeacherGuideMetadata } from '../../.
 import { meccaB2Pages } from './en/pages';
 import {
   meccaB2QuickChallenges,
-  meccaB2KnowledgeCheckExercises,
   meccaB2VocabularyChallengePairs,
   meccaB2FinalReviewExercises,
   meccaB2FinalChallengeExercises,
 } from './en/exercises';
+import { meccaB2ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
 import { meccaB2TeacherGuide, meccaB2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB2SelfStudyGuide, meccaB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { meccaB2PagesAr } from './ar/pages';
 import {
   meccaB2QuickChallengesAr,
-  meccaB2KnowledgeCheckExercisesAr,
   meccaB2VocabularyChallengePairsAr,
   meccaB2FinalReviewExercisesAr,
   meccaB2FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { meccaB2ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { meccaB2TeacherGuideAr, meccaB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB2SelfStudyGuideAr, meccaB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
@@ -123,7 +123,7 @@ export const meccaB2BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: attachLearning(meccaB2Pages, meccaB2QuickChallenges, meccaB2KnowledgeCheckExercises, meccaB2VocabularyChallengePairs, meccaB2FinalReviewExercises, meccaB2FinalChallengeExercises),
+  pages: attachLearning(meccaB2Pages, meccaB2QuickChallenges, meccaB2ManualKnowledgeCheckExercises, meccaB2VocabularyChallengePairs, meccaB2FinalReviewExercises, meccaB2FinalChallengeExercises),
   teacherGuide: meccaB2TeacherGuide,
   teacherGuideMetadata: teacherMetadataEn,
   selfStudyGuide: meccaB2SelfStudyGuide,
@@ -135,7 +135,7 @@ export const meccaB2BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: attachLearning(meccaB2PagesAr, meccaB2QuickChallengesAr, meccaB2KnowledgeCheckExercisesAr, meccaB2VocabularyChallengePairsAr, meccaB2FinalReviewExercisesAr, meccaB2FinalChallengeExercisesAr),
+  pages: attachLearning(meccaB2PagesAr, meccaB2QuickChallengesAr, meccaB2ManualKnowledgeCheckExercisesAr, meccaB2VocabularyChallengePairsAr, meccaB2FinalReviewExercisesAr, meccaB2FinalChallengeExercisesAr),
   teacherGuide: meccaB2TeacherGuideAr,
   teacherGuideMetadata: teacherMetadataAr,
   selfStudyGuide: meccaB2SelfStudyGuideAr,
