@@ -140,4 +140,72 @@ export const yunusA2LanguageFocusExercises: Record<number, Exercise[]> = {
       ],
     },
   ],
+  3: [
+    {
+      id: 'yunus-a2-language-3-need-must-cant',
+      type: 'matching',
+      title: 'Needs, Must and Can’t',
+      instructions: 'Match each sentence from Chapter 3 with the meaning it expresses.',
+      question: 'What job do needs, must and can’t do in the poem?',
+      matchingPairs: [
+        { left: 'A dervish needs a wounded heart', right: 'describes something necessary' },
+        { left: 'He needs to be as easy going as a sheep', right: 'describes a quality that is needed' },
+        { left: 'He must be tongueless when people make fun of him', right: 'states a strong requirement' },
+        { left: 'You can’t be a dervish', right: 'says something is not possible' },
+      ],
+      correctAnswer: {
+        'A dervish needs a wounded heart': 'describes something necessary',
+        'He needs to be as easy going as a sheep': 'describes a quality that is needed',
+        'He must be tongueless when people make fun of him': 'states a strong requirement',
+        'You can’t be a dervish': 'says something is not possible',
+      },
+      explanation: 'The poem uses different forms for different purposes: “needs” identifies what is necessary, “must” gives a strong requirement, and “can’t” says that something is not possible.',
+      feedback: {
+        correct: 'Correct. You connected each form with its meaning in the poem.',
+        incorrect: 'Read the poem again and ask whether each sentence describes a need, a strong requirement, or something impossible.',
+      },
+    },
+    {
+      id: 'yunus-a2-language-3-living-with-less',
+      type: 'matching',
+      title: 'Living with Less',
+      instructions: 'Match each Chapter 3 phrase with the part of daily life it describes.',
+      question: 'How does the chapter use “less” to describe a moderate and disciplined life?',
+      matchingPairs: [
+        { left: 'ate less', right: 'food' },
+        { left: 'spoke less', right: 'speech' },
+        { left: 'slept less', right: 'sleep' },
+        { left: 'spent their time on useful activities', right: 'time' },
+      ],
+      correctAnswer: {
+        'ate less': 'food',
+        'spoke less': 'speech',
+        'slept less': 'sleep',
+        'spent their time on useful activities': 'time',
+      },
+      explanation: 'The repeated “less” pattern shows smaller amounts of eating, speaking and sleeping. The final phrase adds the positive side of discipline: using time for useful activities.',
+      feedback: {
+        correct: 'Good. You saw how the repeated pattern builds the idea of a moderate life.',
+        incorrect: 'Look at the final paragraph and connect each action with the part of daily life it controls.',
+      },
+    },
+    {
+      id: 'yunus-a2-language-3-difficult-path',
+      type: 'reflection',
+      title: 'Say It: The Difficult Path',
+      instructions: 'Use the language of Chapter 3 to explain the dervish path in three short sentences.',
+      question: 'Can you combine a need, a strong requirement and one disciplined habit?',
+      correctAnswer: null,
+      explanation: 'A strong A2 response reuses the chapter’s own language functions rather than memorising a grammar rule.',
+      feedback: {
+        correct: 'Use one sentence with needs, one with must, and one about the disciplined way of life.',
+        incorrect: '',
+      },
+      discussionPrompts: [
+        { question: 'Sentence 1 — State a need: “A dervish needs ...”', mode: 'Individual' },
+        { question: 'Sentence 2 — State a strong requirement: “He must ...”', mode: 'Individual' },
+        { question: 'Sentence 3 — Describe the lifestyle: “Dervishes ate/spoke/slept less and ...”', mode: 'Pair' },
+      ],
+    },
+  ],
 };
