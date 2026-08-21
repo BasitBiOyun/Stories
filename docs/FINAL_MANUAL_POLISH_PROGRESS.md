@@ -12,7 +12,7 @@ This tracker records the final manual book-by-book polish on `preview`.
 - [x] Mecca B2 — COMPLETE
 - [x] Yunus Emre A2 — COMPLETE
 - [x] Yunus Emre B1 — COMPLETE
-- [ ] Yunus Emre B2 — PENDING
+- [x] Yunus Emre B2 — COMPLETE
 
 ## Moses A2 — COMPLETE
 
@@ -98,4 +98,23 @@ This tracker records the final manual book-by-book polish on `preview`.
 - Runtime check: page 14 now uses the dedicated manual EN/AR Knowledge files. Quick, Vocabulary, Review, Final, Teacher Guide and Self-Study attachments remain intact.
 - Canonical story lock verification: EN `src/data/yunusEmre/b1/en/pages.ts` blob SHA `e86ac62d1b00ab9adc7a5341ef6d181636cce253`; AR `src/data/yunusEmre/b1/ar/pages.ts` blob SHA `c481e1a6306aafc001031eaecbd6c7971d5254f7` — unchanged during this pass. No canonical story `content`, chapter title, order or boundary was edited.
 - Scope verification: compare `5af61e7f...f18c6ca3` shows exactly three changed files, all inside `src/data/yunusEmre/b1/`.
+- CI/status: GitHub returned no status checks for completion HEAD; therefore CI is not recorded as passed.
+
+## Yunus Emre B2 — COMPLETE
+
+- Review base `preview` HEAD: `9bb0cf986d7c80b23255f2bcc8350aabce191e3b`.
+- Content/support completion HEAD before this tracker commit: `bf2dedac30fea56a6605519ac7a7eda68669a941`.
+- Chapters read manually: 13 EN + 13 AR.
+- Reviewed: all canonical EN/AR story chapters; one Quick Challenge per chapter; 8-item Knowledge Check per language; 10-item Vocabulary Challenge; four-part Retrieval Review including 8-question Quiz Game; 10-item Final Challenge; Teacher Guide and Self-Study Guide chapter coverage; runtime/index attachment and media references.
+- Main correction: the runtime EN/AR Knowledge Check repeated the same core micro-facts already measured by Quick Challenges across almost the entire book: literary/Sûfî identity, historical crisis chain, tekke roles, wise-dervish response, tawhid, love, heart/intellect, and moral legacy. Replaced it with separate manually authored 8-item EN/AR Knowledge sets using distinct story evidence: Sûfî conduct toward evil/worldly status, source-qualified life dates, Alaeddin I's Mediterranean/Black Sea navy, Baba İshak as a follower of Baba İlyas, Kösedağ's location about 80 km northeast of Sivas, the Ottoman state still being a small principality, the Qur’an/Sunnah/earlier Sûfî foundations of Yunus's understanding, and the universal intellect guiding pious conduct.
+- Source fidelity was preserved: the life-date item keeps the chapter's “widely accepted view” / `وفقاً للرأي السائد` qualification rather than converting it into unqualified certainty.
+- Quick/Review/Final architecture was preserved. Teacher Guide and Self-Study Guide were already chapter-specific, evidence-led, source-aware, and naturally integrated reading/listening/speaking/writing; no cosmetic rewrite was made.
+- Media/runtime note: canonical B2 `pages.ts` files still contain legacy `picsum.photos` story/support image references. Because the story/page source is locked and no verified replacement mapping was established in this pass, those references were recorded rather than guessed or edited. EN and AR audio URLs remain within the Yunus B2 paths; no cross-level audio edit was introduced.
+- Changed files:
+  - `src/data/yunusEmre/b2/en/knowledgeCheck.ts`
+  - `src/data/yunusEmre/b2/ar/knowledgeCheck.ts`
+  - `src/data/yunusEmre/b2/index.ts`
+- Runtime check: page 15 now uses the dedicated manual EN/AR Knowledge files; Quick, Vocabulary, Review, Final, Teacher Guide and Self-Study attachments remain intact.
+- Canonical story lock verification: EN `src/data/yunusEmre/b2/en/pages.ts` blob SHA `376e282c6f3f3ce35f3a2245dbc6cb4e76798d15`; AR `src/data/yunusEmre/b2/ar/pages.ts` blob SHA `f05dd3473c009144f1ce28d719600de380b73ccb` — unchanged during this pass. No canonical story `content`, chapter title, order or boundary was edited.
+- Scope verification: compare `9bb0cf98...bf2dedac` shows exactly three changed files, all inside `src/data/yunusEmre/b2/`.
 - CI/status: GitHub returned no status checks for completion HEAD; therefore CI is not recorded as passed.
