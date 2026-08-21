@@ -208,4 +208,70 @@ export const yunusA2LanguageFocusExercises: Record<number, Exercise[]> = {
       ],
     },
   ],
+  4: [
+    {
+      id: 'yunus-a2-language-4-service-language',
+      type: 'matching',
+      title: 'Ready to Serve',
+      instructions: 'Match each Chapter 4 expression with the job it does in the story.',
+      question: 'How does the chapter express a requirement, willingness, a promise and a request?',
+      matchingPairs: [
+        { left: 'to be humble', right: 'describes a required quality' },
+        { left: 'to be willing to serve others', right: 'shows readiness to help' },
+        { left: 'I will do whatever service you ask of me', right: 'makes a promise or commitment' },
+        { left: 'Taptuk asked Yunus to collect wood', right: 'reports a request or instruction' },
+      ],
+      correctAnswer: {
+        'to be humble': 'describes a required quality',
+        'to be willing to serve others': 'shows readiness to help',
+        'I will do whatever service you ask of me': 'makes a promise or commitment',
+        'Taptuk asked Yunus to collect wood': 'reports a request or instruction',
+      },
+      explanation: 'Chapter 4 uses different language for different social purposes: describing a condition, showing willingness, making a promise and reporting what someone asked another person to do.',
+      feedback: {
+        correct: 'Good. You connected each service expression with its communicative function.',
+        incorrect: 'Read the first two paragraphs again and ask whether each phrase describes a quality, readiness, a promise or a request.',
+      },
+    },
+    {
+      id: 'yunus-a2-language-4-frequency-routine',
+      type: 'matching',
+      title: 'Every Day, Never, Always',
+      instructions: 'Match each time expression with what it tells us about Yunus’s routine.',
+      question: 'How do every day, never and always make Yunus’s repeated behaviour clear?',
+      matchingPairs: [
+        { left: 'Every day, Yunus carried wood on his back', right: 'a regular daily action' },
+        { left: 'He never cut or brought green or crooked wood', right: 'an action that did not happen at any time' },
+        { left: 'He always said, “Crooked wood cannot go into the dervish house”', right: 'a repeated statement or habit' },
+      ],
+      correctAnswer: {
+        'Every day, Yunus carried wood on his back': 'a regular daily action',
+        'He never cut or brought green or crooked wood': 'an action that did not happen at any time',
+        'He always said, “Crooked wood cannot go into the dervish house”': 'a repeated statement or habit',
+      },
+      explanation: 'The final paragraph uses clear frequency language to build Yunus’s routine: “every day” for a daily habit, “never” for zero frequency and “always” for something repeated consistently.',
+      feedback: {
+        correct: 'Correct. You used the frequency words to understand the routine, not just the individual actions.',
+        incorrect: 'Focus on every day, never and always in the final paragraph and decide how often each action happened.',
+      },
+    },
+    {
+      id: 'yunus-a2-language-4-service-routine',
+      type: 'reflection',
+      title: 'Say It: Service and Routine',
+      instructions: 'Use Chapter 4 language to describe Yunus’s attitude and daily service in three short sentences.',
+      question: 'Can you combine willingness, a promise and a repeated routine?',
+      correctAnswer: null,
+      explanation: 'A strong A2 response moves from language noticed in the chapter to a short spoken description of Yunus’s behaviour.',
+      feedback: {
+        correct: 'Use one sentence about willingness, one about his promise, and one about his daily routine.',
+        incorrect: '',
+      },
+      discussionPrompts: [
+        { question: 'Sentence 1 — Describe readiness: “Yunus was willing to ...”', mode: 'Individual' },
+        { question: 'Sentence 2 — Report his promise: “He said, ‘I will ...’”', mode: 'Individual' },
+        { question: 'Sentence 3 — Describe the routine: “Every day he ..., but he never ...”', mode: 'Pair' },
+      ],
+    },
+  ],
 };
