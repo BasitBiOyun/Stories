@@ -86,8 +86,8 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'yunusEmre', level: 'B2', pageId: 10, from: 'destroying Allah’s house, Yunus says:', to: 'destroying Allah’s house. Yunus says:' },
 ] as const;
 
-if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 54) {
-  throw new Error(`[Approved Story Corrections] Expected 54 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
+if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 53) {
+  throw new Error(`[Approved Story Corrections] Expected 53 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
 }
 
 const rulesFor = (storyId: StoryId, level: Level, pageId: number) =>
