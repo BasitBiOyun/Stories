@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "branch": "preview",
+  "scope": {
+    "level": "A2",
+    "languages": ["en", "ar"],
+    "mode": "manual-chapter-review"
+  },
+  "rules": {
+    "oneChapterPerRun": true,
+    "readBothLanguageTextsBeforeAuthoring": true,
+    "noFixedExerciseTemplate": true,
+    "deriveLanguageFocusFromActualChapterLanguage": true,
+    "tymmAndLevelAlignmentRequired": true,
+    "preserveCanonicalStoryProse": true,
+    "resumePartialWorkBeforeStartingNextChapter": true
+  },
+  "inventory": {
+    "totalStoryChapters": 61,
+    "books": {
+      "yunusEmre": 8,
+      "adam": 10,
+      "mecca": 13,
+      "moses": 16,
+      "abraham": 14
+    }
+  },
+  "completed": {
+    "yunusEmre": [1, 2],
+    "adam": [],
+    "mecca": [],
+    "moses": [],
+    "abraham": []
+  },
+  "current": {
+    "book": "yunusEmre",
+    "chapter": 3,
+    "status": "pending",
+    "phase": "read-source",
+    "notes": ""
+  },
+  "lastCompleted": {
+    "book": "yunusEmre",
+    "chapter": 2
+  },
+  "remainingStoryChapters": 59,
+  "updatedAt": "2026-08-22T00:47:00+03:00"
+}
