@@ -71,4 +71,63 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       ],
     },
   ],
+  8: [
+    {
+      id: 'yunus-a2-language-8-advice-necessity-result',
+      type: 'matching',
+      title: 'Advice, Necessity and Result',
+      instructions: 'Match each Chapter 8 expression with the job it does in the closing lesson.',
+      question: 'How does the final chapter move from Yunus’s message to advice, strong necessity and a positive result?',
+      matchingPairs: [
+        { left: 'Yunus tells us to always remember Allah', right: 'reports the message or advice Yunus gives' },
+        { left: 'We must always do our best', right: 'expresses strong necessity' },
+        { left: 'We should do every job well and correctly', right: 'gives advice about the right way to act' },
+        { left: 'This helps us live a meaningful and fruitful life', right: 'shows a positive result' },
+      ],
+      correctAnswer: {
+        'Yunus tells us to always remember Allah': 'reports the message or advice Yunus gives',
+        'We must always do our best': 'expresses strong necessity',
+        'We should do every job well and correctly': 'gives advice about the right way to act',
+        'This helps us live a meaningful and fruitful life': 'shows a positive result',
+      },
+      explanation: 'The final chapter uses several language functions together: “tells us to” reports advice, “must” gives strong necessity, “should” recommends the right action, and “helps us” introduces a positive result.',
+      feedback: {
+        correct: 'Correct. You distinguished advice, strong necessity and result in the closing lesson.',
+        incorrect: 'Read the final paragraph and ask what each expression does: report advice, show necessity, recommend an action, or show a result.',
+      },
+    },
+    {
+      id: 'yunus-a2-language-8-so-result',
+      type: 'fill-blanks',
+      title: 'From Reason to Result',
+      instructions: 'Complete the Chapter 8 sentence with the linking word that connects the reason to the advice.',
+      question: 'Which word links “Every job is important” to what we should do as a result?',
+      fillBlanksText: 'Every job is important, [blank] we should do it well and correctly for the love of Allah.',
+      correctAnswer: 'so',
+      explanation: '“So” connects a reason or fact with its result here: every job is important → we should do it well and correctly.',
+      feedback: {
+        correct: 'Correct. “So” shows the result that follows from the idea before it.',
+        incorrect: 'Read the two ideas as reason and result: every job is important → what should we do because of that?',
+      },
+    },
+    {
+      id: 'yunus-a2-language-8-daily-life-message',
+      type: 'reflection',
+      title: 'Say It: A Meaningful Daily Life',
+      instructions: 'Use the final chapter’s language to give four short pieces of advice for daily life.',
+      question: 'Can you apply Yunus’s closing lesson to your own daily actions using tells us to, must, should and helps us?',
+      correctAnswer: null,
+      explanation: 'A strong A2 response transfers the chapter’s language from the story to a simple personal message about everyday behaviour.',
+      feedback: {
+        correct: 'Use the sentence starters to turn the chapter’s language into clear daily-life advice.',
+        incorrect: '',
+      },
+      discussionPrompts: [
+        { question: 'Sentence 1 — Report the message: “Yunus tells us to ...”', mode: 'Individual' },
+        { question: 'Sentence 2 — State a strong responsibility: “We must ...”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give practical advice: “We should ... because/so ...”', mode: 'Pair' },
+        { question: 'Sentence 4 — State the result: “This helps us ...”', mode: 'Pair' },
+      ],
+    },
+  ],
 };
