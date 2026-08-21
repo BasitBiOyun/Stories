@@ -15,6 +15,8 @@ import {
   adamA2QuickChallengesAr,
   adamA2VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { adamA2LanguageFocusExercises } from './en/languageFocus';
+import { adamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import {
@@ -33,7 +35,14 @@ import {
 const STORY_IDS = new Set(Array.from({ length: 10 }, (_, index) => index + 1));
 
 const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [adamA2QuickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = adamA2LanguageFocusExercises[page.id];
+    return {
+      ...page,
+      exercises: [adamA2QuickChallenges[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercises };
   if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairs };
   if (page.id === 13) return { ...page, exercises: adamA2FinalReviewExercises };
@@ -42,7 +51,14 @@ const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
 });
 
 const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [adamA2QuickChallengesAr[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = adamA2LanguageFocusExercisesAr[page.id];
+    return {
+      ...page,
+      exercises: [adamA2QuickChallengesAr[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercisesAr };
   if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairsAr };
   if (page.id === 13) return { ...page, exercises: adamA2FinalReviewExercisesAr };
