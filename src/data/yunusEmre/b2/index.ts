@@ -3,18 +3,18 @@ import { yunusB2Pages } from './en/pages';
 import { yunusEmreB2PagesAr } from './ar/pages';
 import {
   yunusB2QuickChallenges,
-  yunusB2KnowledgeCheckExercises,
   yunusB2VocabularyChallengePairs,
   yunusB2FinalReviewExercises,
   yunusB2FinalChallengeExercises,
 } from './en/exercises';
 import {
   yunusB2QuickChallengesAr,
-  yunusB2KnowledgeCheckExercisesAr,
   yunusB2VocabularyChallengePairsAr,
   yunusB2FinalReviewExercisesAr,
   yunusB2FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { yunusB2ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
+import { yunusB2ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB2TeacherGuide, yunusB2TeacherGuideMetadata } from './en/teacherGuide';
 import { yunusB2SelfStudyGuide, yunusB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { yunusEmreB2TeacherGuideAr, yunusEmreB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -41,7 +41,7 @@ const buildPages = (
 const englishPages = buildPages(
   yunusB2Pages,
   yunusB2QuickChallenges,
-  yunusB2KnowledgeCheckExercises,
+  yunusB2ManualKnowledgeCheckExercises,
   yunusB2VocabularyChallengePairs,
   yunusB2FinalReviewExercises,
   yunusB2FinalChallengeExercises,
@@ -50,7 +50,7 @@ const englishPages = buildPages(
 const arabicPages = buildPages(
   yunusEmreB2PagesAr,
   yunusB2QuickChallengesAr,
-  yunusB2KnowledgeCheckExercisesAr,
+  yunusB2ManualKnowledgeCheckExercisesAr,
   yunusB2VocabularyChallengePairsAr,
   yunusB2FinalReviewExercisesAr,
   yunusB2FinalChallengeExercisesAr,
