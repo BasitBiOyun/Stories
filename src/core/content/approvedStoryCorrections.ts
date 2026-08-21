@@ -29,13 +29,28 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'adam', level: 'A2', pageId: 10, from: 'a father of his another children', to: 'the father of his other children' },
 
   // Adam B1
+  { storyId: 'adam', level: 'B1', pageId: 1, from: 'HE told the angels that HE was going to create a human.', to: 'He told the angels that He was going to create a human.' },
+  { storyId: 'adam', level: 'B1', pageId: 2, from: 'Later, HE taught him full knowledge for the goodness on earth.', to: 'Later, He taught him full knowledge for the goodness on earth.' },
+  { storyId: 'adam', level: 'B1', pageId: 3, from: 'Iblis was arrogant, he thought he was more important and more valuable than Adam (pbuh), because he believed his origin was superior.', to: 'Iblis was arrogant. He thought he was more important and more valuable than Adam (pbuh) because he believed his origin was superior.' },
   { storyId: 'adam', level: 'B1', pageId: 3, from: 'fire was superior than clay.', to: 'fire was superior to clay.' },
+  { storyId: 'adam', level: 'B1', pageId: 4, from: 'He didn’t want Allah to be nice with Adam (pbuh).', to: 'He didn’t want Allah to be nice to Adam (pbuh).' },
+  { storyId: 'adam', level: 'B1', pageId: 4, from: 'He thought because of Adam (pbuh), Allah put him far from His help.', to: 'He thought Allah put him far from His help because of Adam (pbuh).' },
+  { storyId: 'adam', level: 'B1', pageId: 4, from: 'Allah said to Adam (pbuh), Iblis was his enemy and told him to be careful about Iblis.', to: 'Allah told Adam (pbuh) that Iblis was his enemy and told him to be careful about Iblis.' },
+  { storyId: 'adam', level: 'B1', pageId: 5, from: 'He whispered to them if they ate from that one tree, they would never die.', to: 'He whispered to them that if they ate from that one tree, they would never die.' },
   { storyId: 'adam', level: 'B1', pageId: 6, from: 'because sense of shame (hayâ) is', to: 'because a sense of shame (hayâ) is' },
   { storyId: 'adam', level: 'B1', pageId: 7, from: 'the biggest barrier to act the right way', to: 'the biggest barrier to acting the right way' },
+  { storyId: 'adam', level: 'B1', pageId: 7, from: 'see between right and wrong, good and bad.', to: 'distinguish between right and wrong, good and bad.' },
+  { storyId: 'adam', level: 'B1', pageId: 8, from: 'protect the nature', to: 'protect nature' },
+  { storyId: 'adam', level: 'B1', pageId: 8, from: 'and protect from the wild.', to: 'and protect themselves from the wild.' },
   { storyId: 'adam', level: 'B1', pageId: 9, from: 'Allah never stopped sending messengers and sacred texts to remind Himself.', to: 'Allah never stopped sending messengers and sacred texts to remind people of Him.' },
+  { storyId: 'adam', level: 'B1', pageId: 10, from: 'Qabil was a farmer, he worked on the farm and grew crops.', to: 'Qabil was a farmer. He worked on the farm and grew crops.' },
   { storyId: 'adam', level: 'B1', pageId: 10, from: 'healtiest', to: 'healthiest' },
+  { storyId: 'adam', level: 'B1', pageId: 11, from: 'Qabil’s face became very dark with anger and said, “I will kill you.”', to: 'Qabil became very angry and said, “I will kill you.”' },
+  { storyId: 'adam', level: 'B1', pageId: 11, from: 'I won’t fight back and harm you, you are my brother and I fear Allah.', to: 'I won’t fight back or harm you. You are my brother, and I fear Allah.' },
   { storyId: 'adam', level: 'B1', pageId: 11, from: 'his brother dead body', to: "his brother's dead body" },
   { storyId: 'adam', level: 'B1', pageId: 11, from: 'I don’t know what I should do with his dead body.', to: 'I don’t know what I should do with his dead body.”' },
+  { storyId: 'adam', level: 'B1', pageId: 12, from: 'a father of his another children', to: 'the father of his other children' },
+  { storyId: 'adam', level: 'B1', pageId: 12, from: 'turn away from Satan’s tricks, jealousy, to do good and avoid evil.', to: 'turn away from Satan’s tricks and jealousy, do good, and avoid evil.' },
 
   // Adam B2
   { storyId: 'adam', level: 'B2', pageId: 1, from: 'provides us a uniquely key', to: 'provides us with a uniquely key' },
@@ -53,6 +68,10 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'ibrahim', level: 'A2', pageId: 9, from: 'they did not change their mind.', to: 'they did not change their minds.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 12, from: 'But it was useless, there was no water', to: 'But it was useless. There was no water' },
 
+  // Abraham B1
+  { storyId: 'ibrahim', level: 'B1', pageId: 3, from: 'In a nearby mountain, he found a cave, sat there, and started thinking about Allah.', to: 'On a nearby mountain, he found a cave, sat there, and started thinking about Allah.' },
+  { storyId: 'ibrahim', level: 'B1', pageId: 7, from: 'ask that statue, if it can speak!', to: 'ask that statue if it can speak!' },
+
   // Moses A2
   { storyId: 'musa', level: 'A2', pageId: 1, from: 'The king feared that this crowd took control of his kingdom.', to: 'The king feared that this crowd would take control of his kingdom.' },
   { storyId: 'musa', level: 'A2', pageId: 2, from: 'it did not harm any Children of Israel.', to: 'it did not harm any of the Children of Israel.' },
@@ -61,8 +80,15 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'musa', level: 'A2', pageId: 16, from: 'The story of Moses (pbuh) has many lessons to learn.', to: 'The story of Moses (pbuh) has many lessons for us to learn.' },
 
   // Moses B1
+  { storyId: 'musa', level: 'B1', pageId: 1, from: 'He did not believe in Allah and saw himself as the god.', to: 'He did not believe in Allah and saw himself as a god.' },
   { storyId: 'musa', level: 'B1', pageId: 4, from: 'baby Moses was in her mother’s arms again.', to: 'baby Moses was in his mother’s arms again.' },
+  { storyId: 'musa', level: 'B1', pageId: 5, from: 'He prayed to Allah : “ Forgive me!', to: 'He prayed to Allah: “Forgive me!' },
+  { storyId: 'musa', level: 'B1', pageId: 5, from: 'This is of Satan’s doing” ( Surah Kasas: 15,16) Allah pardoned him', to: 'This is of Satan’s doing.” (Surah Kasas: 15–16) Allah pardoned him' },
+  { storyId: 'musa', level: 'B1', pageId: 6, from: 'Moses was tired and thirsty, he was looking for water.', to: 'Moses was tired and thirsty. He was looking for water.' },
   { storyId: 'musa', level: 'B1', pageId: 10, from: 'When he got out his arm, it was shining white!', to: 'When he pulled his arm out, it was shining white!' },
+  { storyId: 'musa', level: 'B1', pageId: 12, from: 'When the Pharaoh noticed they left the land,', to: 'When the Pharaoh noticed that they had left the land,' },
+  { storyId: 'musa', level: 'B1', pageId: 13, from: 'when they were midway, Allah ordered the sea to close, the sea closed over them and they drowned.', to: 'when they were midway, Allah ordered the sea to close. The sea closed over them, and they drowned.' },
+  { storyId: 'musa', level: 'B1', pageId: 13, from: 'The story of Moses (pbuh) has many lessons to learn.', to: 'The story of Moses (pbuh) has many lessons for us to learn.' },
 
   // Moses B2
   { storyId: 'musa', level: 'B2', pageId: 5, from: 'He oppressed the Children of Israel (known as the offspring of Prophet Jacob (Ya’kub (pbuh)).', to: 'He oppressed the Children of Israel, known as the offspring of Prophet Jacob (Ya’kub) (pbuh).' },
@@ -83,7 +109,12 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'yunusEmre', level: 'A2', pageId: 8, from: '‘Come, dervish Yunus.', to: '“Come, dervish Yunus.' },
 
   // Yunus Emre B1
+  { storyId: 'yunusEmre', level: 'B1', pageId: 1, from: 'Sûfî is a person who aims to get closer to Allah by following Islamic mysticism.', to: 'A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism.' },
+  { storyId: 'yunusEmre', level: 'B1', pageId: 2, from: 'It is not too simple, but also not too complex either.', to: 'It is neither too simple nor too complex.' },
+  { storyId: 'yunusEmre', level: 'B1', pageId: 7, from: 'These shaykhs trained dervishes on their teachings.', to: 'These shaykhs trained dervishes in their teachings.' },
   { storyId: 'yunusEmre', level: 'B1', pageId: 8, from: 'Creator is the true and only reality.', to: 'The Creator is the true and only reality.' },
+  { storyId: 'yunusEmre', level: 'B1', pageId: 12, from: 'bad habits like being arrogant, stingy, greedy, gossiper, selfish, or jealous.', to: 'bad habits like being arrogant, stingy, greedy, selfish, or jealous, and gossiping.' },
+  { storyId: 'yunusEmre', level: 'B1', pageId: 13, from: 'In another verse he talks about “patience”, he says:', to: 'In another verse, he talks about “patience” and says:' },
 
   // Yunus Emre B2
   { storyId: 'yunusEmre', level: 'B2', pageId: 2, from: 'tekkes were not just an institution that offers Sûfî training but they were also important civil society organizations', to: 'tekkes were not just institutions that offered Sûfî training; they were also important civil society organizations' },
@@ -92,8 +123,8 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'yunusEmre', level: 'B2', pageId: 10, from: 'destroying Allah’s house, Yunus says:', to: 'destroying Allah’s house. Yunus says:' },
 ] as const;
 
-if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 59) {
-  throw new Error(`[Approved Story Corrections] Expected 59 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
+if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 88) {
+  throw new Error(`[Approved Story Corrections] Expected 88 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
 }
 
 const rulesFor = (storyId: StoryId, level: Level, pageId: number) =>
