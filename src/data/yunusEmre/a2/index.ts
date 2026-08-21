@@ -13,6 +13,7 @@ import {
   yunusA2VocabularyChallengePairsAr,
   yunusA2FinalReviewExercisesAr,
 } from './ar/exercises';
+import { yunusA2LanguageFocusExercises } from './en/languageFocus';
 import { yunusA2ManualFinalChallengeExercises } from './en/finalChallenge';
 import { yunusA2ManualFinalChallengeExercisesAr } from './ar/finalChallenge';
 import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
@@ -23,7 +24,14 @@ import { yunusEmreA2SelfStudyGuideAr } from './ar/selfStudyGuide';
 const STORY_IDS = new Set(Array.from({ length: 8 }, (_, index) => index + 1));
 
 const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [yunusA2QuickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = yunusA2LanguageFocusExercises[page.id];
+    return {
+      ...page,
+      exercises: [yunusA2QuickChallenges[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 9) return { ...page, exercises: yunusA2KnowledgeCheckExercises };
   if (page.id === 10) return { ...page, vocabularyPairs: yunusA2VocabularyChallengePairs };
   if (page.id === 13) return { ...page, exercises: yunusA2FinalReviewExercises };
