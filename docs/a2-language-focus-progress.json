@@ -26,7 +26,7 @@
     }
   },
   "completed": {
-    "yunusEmre": [1, 2, 3, 4, 5],
+    "yunusEmre": [1, 2, 3, 4, 5, 6],
     "adam": [],
     "mecca": [],
     "moses": [],
@@ -34,15 +34,15 @@
   },
   "current": {
     "book": "yunusEmre",
-    "chapter": 6,
+    "chapter": 7,
     "status": "pending",
     "phase": "read-source",
     "notes": ""
   },
   "lastCompleted": {
     "book": "yunusEmre",
-    "chapter": 5
+    "chapter": 6
   },
-  "remainingStoryChapters": 56,
-  "updatedAt": "2026-08-22T00:57:00+03:00"
+  "remainingStoryChapters": 55,
+  "updatedAt": "2026-08-22T01:00:00+03:00"
 }
