@@ -15,8 +15,10 @@ import {
 } from './ar/exercises';
 import { yunusA2LanguageFocusExercises } from './en/languageFocus';
 import { yunusA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
+import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
 import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
+import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
 import { yunusA2ManualFinalChallengeExercises } from './en/finalChallenge';
 import { yunusA2ManualFinalChallengeExercisesAr } from './ar/finalChallenge';
 import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
@@ -28,7 +30,9 @@ const STORY_IDS = new Set(Array.from({ length: 8 }, (_, index) => index + 1));
 
 const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = yunusA2LanguageFocusExercises[page.id] ?? yunusA2LanguageFocusExercisesPart2[page.id];
+    const languageFocusExercises = yunusA2LanguageFocusExercises[page.id]
+      ?? yunusA2LanguageFocusExercisesPart2[page.id]
+      ?? yunusA2LanguageFocusExercisesPart3[page.id];
     return {
       ...page,
       exercises: [yunusA2QuickChallenges[page.id]],
@@ -44,7 +48,9 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
 
 const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = yunusA2LanguageFocusExercisesAr[page.id] ?? yunusA2LanguageFocusExercisesArPart2[page.id];
+    const languageFocusExercises = yunusA2LanguageFocusExercisesAr[page.id]
+      ?? yunusA2LanguageFocusExercisesArPart2[page.id]
+      ?? yunusA2LanguageFocusExercisesArPart3[page.id];
     return {
       ...page,
       exercises: [yunusA2QuickChallengesAr[page.id]],
