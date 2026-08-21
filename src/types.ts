@@ -59,6 +59,7 @@ export interface PageData {
   subtitle?: string;
   content: string;
   exercises?: Exercise[];
+  languageFocusExercises?: Exercise[];
   image?: string;
   audioUrl?: string;
   vocabulary?: { word: string; definition: string; example?: string }[];
