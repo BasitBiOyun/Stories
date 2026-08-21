@@ -53,8 +53,17 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'adam', level: 'B1', pageId: 12, from: 'turn away from Satan’s tricks, jealousy, to do good and avoid evil.', to: 'turn away from Satan’s tricks and jealousy, do good, and avoid evil.' },
 
   // Adam B2
-  { storyId: 'adam', level: 'B2', pageId: 1, from: 'provides us a uniquely key', to: 'provides us with a uniquely key' },
+  { storyId: 'adam', level: 'B2', pageId: 1, from: 'reality from which many lessons and morals we can take.', to: 'reality from which we can take many lessons and morals.' },
+  { storyId: 'adam', level: 'B2', pageId: 1, from: 'The tale provides us a uniquely key and deeply philosophical understanding of life.', to: 'The tale provides us with a unique and deeply philosophical understanding of life.' },
+  { storyId: 'adam', level: 'B2', pageId: 3, from: 'Allah’s spirit into Adam (pbuh) distinguishes him from the rest of the creatures, too.', to: 'Breathing Allah’s spirit into Adam (pbuh) distinguishes him from the rest of the creatures, too.' },
+  { storyId: 'adam', level: 'B2', pageId: 4, from: 'mankind to maintain his worldly life', to: 'mankind to maintain its worldly life' },
   { storyId: 'adam', level: 'B2', pageId: 7, from: 'he felt his heart tighten and filled with pain', to: 'he felt his heart tighten and become filled with pain' },
+  { storyId: 'adam', level: 'B2', pageId: 10, from: 'the story of humankind and his struggle against Satan on Earth.', to: 'the story of humankind and its struggle against Satan on Earth.' },
+  { storyId: 'adam', level: 'B2', pageId: 13, from: 'but also he did not want his brother to be hurt.', to: 'but he also did not want his brother to be hurt.' },
+  { storyId: 'adam', level: 'B2', pageId: 15, from: 'What is essentially being described here are the consequences of choosing evil. It arises from jealousy,', to: 'What is essentially being described here are the consequences of choosing evil. They arise from jealousy,' },
+  { storyId: 'adam', level: 'B2', pageId: 15, from: 'Adam (pbuh) was fully in pain by the loss of his two sons.', to: 'Adam (pbuh) was deeply pained by the loss of his two sons.' },
+  { storyId: 'adam', level: 'B2', pageId: 16, from: 'warned them by telling his own experience with Satan and of how Satan had tempted Qabil', to: 'warned them by telling them about his own experience with Satan and how Satan had tempted Qabil' },
+  { storyId: 'adam', level: 'B2', pageId: 16, from: 'Adam (pbuh) encouraged his children that Allah would not leave man alone on Earth,', to: 'Adam (pbuh) told his children that Allah would not leave man alone on Earth,' },
   { storyId: 'adam', level: 'B2', pageId: 17, from: 'Satan, too acknowledges', to: 'Satan, too, acknowledges' },
   { storyId: 'adam', level: 'B2', pageId: 17, from: 'beacuse', to: 'because' },
 
@@ -91,10 +100,16 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'musa', level: 'B1', pageId: 13, from: 'The story of Moses (pbuh) has many lessons to learn.', to: 'The story of Moses (pbuh) has many lessons for us to learn.' },
 
   // Moses B2
+  { storyId: 'musa', level: 'B2', pageId: 1, from: 'Prophet Jacob (Ya’kub (pbuh))', to: 'Prophet Jacob (Ya’kub) (pbuh)' },
+  { storyId: 'musa', level: 'B2', pageId: 1, from: 'around 1700 BC (BC: Before Christ (Milâttan Önce), the Israelites settled', to: 'around 1700 BC (BC: Before Christ [Milâttan Önce]), the Israelites settled' },
+  { storyId: 'musa', level: 'B2', pageId: 1, from: 'the Copts (Copts (Kıpti): ancient Egyptian people),', to: 'the Copts (Kıpti: ancient Egyptian people),' },
+  { storyId: 'musa', level: 'B2', pageId: 4, from: 'Coptic Language (Kıptîce): The language spoken by the ancient people of Egypt) The journey', to: 'Coptic Language (Kıptîce): The language spoken by the ancient people of Egypt). The journey' },
   { storyId: 'musa', level: 'B2', pageId: 5, from: 'He oppressed the Children of Israel (known as the offspring of Prophet Jacob (Ya’kub (pbuh)).', to: 'He oppressed the Children of Israel, known as the offspring of Prophet Jacob (Ya’kub) (pbuh).' },
   { storyId: 'musa', level: 'B2', pageId: 8, from: 'Allah gave Moses with perfect health, strength, wisdom, and knowledge.', to: 'Allah gave Moses perfect health, strength, wisdom, and knowledge.' },
+  { storyId: 'musa', level: 'B2', pageId: 15, from: 'for my sheep.”Allah asked', to: 'for my sheep.” Allah asked' },
+  { storyId: 'musa', level: 'B2', pageId: 16, from: 'This miracle of staff, together with the miracle of the white hand given to Prophet Moses, were two great miracles.', to: 'The staff and the white hand were two great miracles given to Prophet Moses.' },
   { storyId: 'musa', level: 'B2', pageId: 18, from: 'Are you not that Moses who we took from the Nile', to: 'Are you not that Moses whom we took from the Nile' },
-  { storyId: 'musa', level: 'B2', pageId: 18, from: 'upon who our charity and wealth were showered?', to: 'upon whom our charity and wealth were showered?' },
+  { storyId: 'musa', level: 'B2', pageId: 18, from: 'upon who our charity and wealth were showered?', to: 'upon whom our charity and wealth were showered?”' },
 
   // Mecca A2
   { storyId: 'mecca', level: 'A2', pageId: 1, from: 'Bilal ibn Rabah was one of the first seven people that openly said he was a Muslim in Mecca.', to: 'Bilal ibn Rabah was one of the first seven people to say openly that he was a Muslim in Mecca.' },
@@ -117,14 +132,23 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'yunusEmre', level: 'B1', pageId: 13, from: 'In another verse he talks about “patience”, he says:', to: 'In another verse, he talks about “patience” and says:' },
 
   // Yunus Emre B2
+  { storyId: 'yunusEmre', level: 'B2', pageId: 1, from: 'Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism.', to: 'A Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 2, from: 'For, his style is neither so simple nor so complex.', to: 'His style is neither so simple nor so complex.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 2, from: 'Thus, his works have both literary value and are easy to understand.', to: 'Thus, his works both have literary value and are easy to understand.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 2, from: 'However, his education was not limited to madrasas, he also studied both divine love and morals at the tekke,', to: 'However, his education was not limited to madrasas; he also studied both divine love and morals at the tekke,' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 2, from: 'under the guidance of a sheikh, spiritual tutor.', to: 'under the guidance of a sheikh, a spiritual tutor.' },
   { storyId: 'yunusEmre', level: 'B2', pageId: 2, from: 'tekkes were not just an institution that offers Sûfî training but they were also important civil society organizations', to: 'tekkes were not just institutions that offered Sûfî training; they were also important civil society organizations' },
   { storyId: 'yunusEmre', level: 'B2', pageId: 4, from: 'lives of people in Anatolia were totally turned upside down.', to: 'the lives of people in Anatolia were totally turned upside down.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 6, from: 'the Seljuks became a dependent state of the Mongols.', to: 'the Seljuk state became dependent on the Mongols.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 6, from: 'as if they were Mongols’ civil officials.', to: 'as if they were civil officials of the Mongols.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 7, from: 'These shaykhs raised dervishes on their teachings;', to: 'These shaykhs trained dervishes in their teachings;' },
   { storyId: 'yunusEmre', level: 'B2', pageId: 8, from: 'Creator is the true and only reality.', to: 'The Creator is the true and only reality.' },
+  { storyId: 'yunusEmre', level: 'B2', pageId: 9, from: 'The ultimate purpose of humanity is to reach the unity, Allah.', to: 'The ultimate purpose of humanity is to reach unity with Allah.' },
   { storyId: 'yunusEmre', level: 'B2', pageId: 10, from: 'destroying Allah’s house, Yunus says:', to: 'destroying Allah’s house. Yunus says:' },
 ] as const;
 
-if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 88) {
-  throw new Error(`[Approved Story Corrections] Expected 88 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
+if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 112) {
+  throw new Error(`[Approved Story Corrections] Expected 112 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
 }
 
 const rulesFor = (storyId: StoryId, level: Level, pageId: number) =>
