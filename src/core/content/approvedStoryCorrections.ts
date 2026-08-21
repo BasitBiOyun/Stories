@@ -21,6 +21,11 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'adam', level: 'A2', pageId: 8, from: 'Qabil was a farmer, he worked on the farm and grew crops.', to: 'Qabil was a farmer. He worked on the farm and grew crops.' },
   { storyId: 'adam', level: 'A2', pageId: 8, from: 'healtiest', to: 'healthiest' },
   { storyId: 'adam', level: 'A2', pageId: 9, from: 'Qabil’s face became very dark with anger and said “I will kill you”.', to: 'Qabil became very angry and said, “I will kill you.”' },
+  { storyId: 'adam', level: 'A2', pageId: 9, from: 'When Habil heard this, he said “I won’t fight back and harm you, you are my brother and I fear Allah.”', to: 'When Habil heard this, he said, “I won’t fight back or harm you. You are my brother, and I fear Allah.”' },
+  { storyId: 'adam', level: 'A2', pageId: 9, from: 'But also he started to panic.', to: 'But he also started to panic.' },
+  { storyId: 'adam', level: 'A2', pageId: 9, from: 'He said “I killed my brother, I did the worst thing in life, now I don’t know what I should do with his dead body.”', to: 'He said, “I killed my brother. I did the worst thing in life. Now I don’t know what I should do with his dead body.”' },
+  { storyId: 'adam', level: 'A2', pageId: 9, from: 'Then, Allah sent a crow, it landed on the ground near Qabil and started digging it.', to: 'Then, Allah sent a crow. It landed on the ground near Qabil and started digging the ground.' },
+  { storyId: 'adam', level: 'A2', pageId: 9, from: 'Qabil cried and said “I am worse than this crow. I cannot hide my brother’s dead body.”', to: 'Qabil cried and said, “I am worse than this crow. I cannot hide my brother’s dead body.”' },
   { storyId: 'adam', level: 'A2', pageId: 10, from: 'a father of his another children', to: 'the father of his other children' },
 
   // Adam B1
@@ -43,6 +48,7 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'ibrahim', level: 'A2', pageId: 3, from: 'In a nearby mountain, he found a cave.', to: 'On a nearby mountain, he found a cave.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 4, from: 'It is bigger and bright.', to: 'It is bigger and brighter.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 7, from: 'It was this god there, the biggest one broke all the stones.', to: 'The biggest god over there broke all the stones.' },
+  { storyId: 'ibrahim', level: 'A2', pageId: 7, from: 'Ask it, if it can speak!', to: 'Ask it if it can speak!' },
   { storyId: 'ibrahim', level: 'A2', pageId: 8, from: 'He placed him on a catapult.', to: 'They placed him on a catapult.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 9, from: 'they did not change their mind.', to: 'they did not change their minds.' },
   { storyId: 'ibrahim', level: 'A2', pageId: 12, from: 'But it was useless, there was no water', to: 'But it was useless. There was no water' },
@@ -86,8 +92,8 @@ const APPROVED_ENGLISH_STORY_CORRECTIONS: readonly ApprovedStoryCorrection[] = [
   { storyId: 'yunusEmre', level: 'B2', pageId: 10, from: 'destroying Allah’s house, Yunus says:', to: 'destroying Allah’s house. Yunus says:' },
 ] as const;
 
-if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 53) {
-  throw new Error(`[Approved Story Corrections] Expected 53 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
+if (APPROVED_ENGLISH_STORY_CORRECTIONS.length !== 59) {
+  throw new Error(`[Approved Story Corrections] Expected 59 corrections, found ${APPROVED_ENGLISH_STORY_CORRECTIONS.length}.`);
 }
 
 const rulesFor = (storyId: StoryId, level: Level, pageId: number) =>
