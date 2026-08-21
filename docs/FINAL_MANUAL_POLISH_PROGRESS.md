@@ -9,7 +9,7 @@ This tracker records the final manual book-by-book polish on `preview`.
 - [x] Moses B2 — COMPLETE
 - [x] Mecca A2 — COMPLETE
 - [x] Mecca B1 — COMPLETE
-- [ ] Mecca B2 — PENDING
+- [x] Mecca B2 — COMPLETE
 - [ ] Yunus Emre A2 — PENDING
 - [ ] Yunus Emre B1 — PENDING
 - [ ] Yunus Emre B2 — PENDING
@@ -76,3 +76,31 @@ This tracker records the final manual book-by-book polish on `preview`.
   - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
 - Scope verification: this pass wrote only the two new Mecca B1 Knowledge files and `src/data/mecca/b1/index.ts` before this tracker update.
 - CI/status: no combined CI/status result was available from the connector for completion HEAD `dd15d229453dc49fed336d48b05177fdb1d674aa`; therefore CI is not recorded as passed.
+
+## Mecca B2 — COMPLETE
+
+- Review base `preview` HEAD: `a0a2357d78fc3919390209e0b8e0c8fd31d54130`.
+- Content/support completion HEAD before this tracker commit: `f9b59ee0c4bd151fb57d438277c312092c598e0b`.
+- Chapters read manually: 17 EN + 17 AR.
+- Reviewed: canonical EN/AR story chapters; 17 Quick Challenges per language; Knowledge Check; 10-pair Vocabulary Challenge; four-part Retrieval Review with 8-question Quiz Game; 10-item Final Challenge; Teacher Guide and Self-Study Guide chapter coverage; index/runtime attachment and page media references.
+- Changed files:
+  - `src/data/mecca/b2/en/knowledgeCheck.ts`
+  - `src/data/mecca/b2/ar/knowledgeCheck.ts`
+  - `src/data/mecca/b2/index.ts`
+- Main corrections:
+  - The previous Knowledge Check repeated the conceptual core of many Quick Challenges, especially the imperial-context opening, definition of Jahiliyyah, Mecca’s sacred/geographical development, Hilfü’l-Fudûl, women’s status, elite opposition, persecution and the final dignity contrast.
+  - Replaced the runtime Knowledge Check with separate manually authored 8-item EN/AR sets using different foundational evidence: caravan scale and trade destinations, drinking/gambling as contributors to debt, Muhammad’s age at Hilfü’l-Fudûl, the reason male children were especially valued in tribal society, concrete functions of slavery as an economic institution, omen-seeking in religious life, and the Quranic trade/usury distinction.
+  - Preserved all existing B2 Quick, Vocabulary, Review and Final structures. Review remains retrieval/synthesis and Final remains a separate broad mixed-format assessment.
+  - EN/AR pedagogical parity is role-based; each language uses its own canonical source wording and does not depend on literal translation matching.
+  - Teacher Guide and Self-Study Guide are already chapter-specific and evidence-led. They integrate reading, supplied-audio listening, speaking/discussion and analytical writing while explicitly distinguishing evidence, inference and qualification; no cosmetic rewrite was made.
+- Runtime/media check:
+  - `src/data/mecca/b2/index.ts` now attaches the dedicated manual EN/AR Knowledge files to page 18 and leaves Quick, Review, Vocabulary and Final attachments unchanged.
+  - Story image/audio URLs remain Mecca B2-specific. Legacy `picsum.photos` images exist only on non-story shell pages inside the locked source; canonical story/media fields were not edited during this pass.
+- Canonical story lock verification:
+  - EN `src/data/mecca/b2/en/pages.ts` SHA: `d26139d87d2920692e5f9d7761dbd7b5499106fd` — unchanged.
+  - AR `src/data/mecca/b2/ar/pages.ts` SHA: `4170716af096915a5cb2ee2de3371ce650b3e5b8` — unchanged.
+  - EN `src/data/mecca/b2/en/storySource.ts` SHA: `bc0db6018cbf735a983ea2ae3097a86ac3e77e74` — unchanged.
+  - AR `src/data/mecca/b2/ar/storySource.ts` SHA: `f53e99f292ee81d471963192578a6afa2dfd7f53` — unchanged.
+  - No canonical story `content`, chapter title, chapter order or chapter boundary was edited.
+- Scope verification: compare from review base to completion HEAD shows exactly three changed files: the two new Mecca B2 Knowledge files and `src/data/mecca/b2/index.ts`.
+- CI/status: no combined CI/status result was available from the connector for completion HEAD `f9b59ee0c4bd151fb57d438277c312092c598e0b`; therefore CI is not recorded as passed.
