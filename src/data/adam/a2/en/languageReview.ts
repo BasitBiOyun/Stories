@@ -147,14 +147,14 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     matchingPairs: [
       { left: 'Habil became a shepherd', right: 'change into a role or job' },
       { left: 'Qabil was a farmer', right: 'past role or state' },
-      { left: 'best and healthiest sheep', right: 'superlative quality' },
-      { left: 'had to choose an offering', right: 'past necessity or obligation' },
+      { left: 'his best and healthiest sheep', right: 'superlative quality' },
+      { left: 'They had to offer an offering', right: 'past necessity or obligation' },
     ],
     correctAnswer: {
       'Habil became a shepherd': 'change into a role or job',
       'Qabil was a farmer': 'past role or state',
-      'best and healthiest sheep': 'superlative quality',
-      'had to choose an offering': 'past necessity or obligation',
+      'his best and healthiest sheep': 'superlative quality',
+      'They had to offer an offering': 'past necessity or obligation',
     },
     explanation: 'Chapter 8 uses role language, superlatives and past obligation to describe the brothers and their choices.',
     feedback: { correct: 'Good. You distinguished role, state, quality and obligation.', incorrect: 'Focus on became, was, best/healthiest and had to.' },
