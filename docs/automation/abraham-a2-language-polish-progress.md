@@ -1,75 +1,69 @@
 # Abraham A2 Language Polish Progress
 
-phase: LANGUAGE_FOCUS_COMPLETE
-nextTask: START_EXERCISE_SYSTEM_AUDIT_ON_NEXT_RUN
+phase: COMPLETE
+nextTask: NONE
 
-## Completed chapters
+## Completion status
 - Chapters 1–14 English Language Focus: COMPLETE
 - Chapters 1–14 Arabic Language Focus: COMPLETE
-- Minimal chapter Language Focus wiring in `src/data/abraham/a2/index.ts`: COMPLETE through Chapter 14 via the Part11 fallback
+- English exercise-system audit: COMPLETE
+- Arabic exercise-system audit: COMPLETE
+- English cumulative Language Review: COMPLETE
+- Arabic cumulative Language Review: COMPLETE
+- English Final Challenge architecture: COMPLETE
+- Arabic Final Challenge architecture: COMPLETE
+- Active preview wiring: COMPLETE
 
-## Chapter 14 English decisions
-- Read the full Chapter 14 English story and the current Quick Challenge before authoring.
-- Kept the Quick Challenge focused on the final story content: Abraham and Ishmael building the Ka’ba together and the closing message that Allah is unique and has no partner.
-- Language Focus deliberately does not ask learners to retrieve or repeat those two Quick Challenge answers.
-- Language Focus targets are grounded in Chapter 14 language:
-  - `During that time` for locating events inside a period
-  - `several times` for repeated past action
-  - `to + verb` for purpose
-  - `ask + person + to + verb` for a task/request
-  - `will + verb` for future action and willingness/promise
-  - `for sure` for certainty
-  - `after + past event` for sequence
-  - `still + present verb` for continuation to the present
-  - `one of + plural group` for identifying one member of a larger group
-- Productive work asks learners to create a new shared-task situation using Chapter 14 language rather than retelling the Ka’ba scene or the final message.
+## Phase 2 work completed
+- Audited the active Abraham A2 Quick Challenges, Knowledge Check, Vocabulary Challenge, old Final Review, Final Challenge, and page wiring in English and Arabic.
+- Confirmed Knowledge Check remains 8 items and Vocabulary Challenge remains 6 pairs.
+- Confirmed the Final Challenge already uses the required A2 distribution: 3 multiple-choice + 2 true/false + 2 matching + 2 fill-blanks + 1 sequencing.
+- Preserved the strong Knowledge Check, vocabulary set, and most Quick/Final items rather than changing content for its own sake.
+- Replaced the old story-retrieval Final Review role with a dedicated cumulative Language Review page in both languages.
+- The Language Review now consolidates grammar patterns and communicative functions from across all fourteen Language Focus chapters and ends with meaningful productive transfer.
+- English and Arabic Language Reviews were authored independently; the Arabic version follows Arabic chapter language rather than mechanically translating English patterns.
+- Added active polished exercise-system wrappers in both languages so targeted improvements can override weak items without rewriting the legacy source file.
+- Strengthened undersized matching tasks in Quick Challenge Chapters 1, 9 and 12 in both languages.
+- Strengthened the two undersized matching items in the Final Challenge (items 6 and 7) in both languages while preserving the locked 10-item format distribution.
+- Kept Final Challenge as whole-story mastery and Language Review as grammar/function consolidation, eliminating the old role overlap.
+- Preserved literal `[blank]` syntax in all new fill-blank activities.
+- Story prose was not changed.
 
-## Chapter 14 Arabic decisions
-- Read the full Arabic Chapter 14 independently and designed its Language Focus from the Arabic text rather than translating the English activities.
-- Language Focus targets are grounded in the Arabic chapter:
-  - `في ذلك الوقت` for locating an event in time
-  - `كان + مضارع` with `عدة مرات` for repeated past action
-  - `لِـ + فعل/مصدر` for purpose
-  - `أمر + شخص + أن + فعل` for assigning a task/command
-  - `سوف/سـ + مضارع` for future action and willingness
-  - `بالتأكيد` for certainty
-  - `بعد أن + فعل ماضٍ` for sequence
-  - `لا يزال + مضارع` for continuation to the present
-  - `منهم` for identifying one person from a larger group
-- Productive work uses Arabic-native frames for time, purpose, task, future commitment, certainty and continuation rather than translated English sentence frames.
+## Files added
+- `src/data/abraham/a2/en/languageReview.ts`
+- `src/data/abraham/a2/ar/languageReview.ts`
+- `src/data/abraham/a2/en/exerciseSystem.ts`
+- `src/data/abraham/a2/ar/exerciseSystem.ts`
 
-## Quality/alignment decisions
-- Preserved the chapter-specific, function-first architecture used in completed Adam A2, Yunus Emre A2 and Abraham Chapters 1–13.
-- Used contextual noticing, meaning/function matching, controlled interpretation, and short meaningful production rather than isolated grammar-rule drilling.
-- English and Arabic were authored independently from their own story texts.
-- No rigid template or blueprint was used.
-- No new TYMM lookup was necessary in this run because Chapter 14 remained within the already established A2 contextual/function-first alignment.
+## Files updated
+- `src/data/abraham/a2/index.ts`
+- `docs/automation/abraham-a2-language-polish-progress.md`
 
-## Files changed in this run
-- `src/data/abraham/a2/en/languageFocusPart11.ts` — created with Chapter 14 English Language Focus
-- `src/data/abraham/a2/ar/languageFocusPart11.ts` — created with Chapter 14 Arabic Language Focus
-- `src/data/abraham/a2/index.ts` — added Part11 imports/fallbacks so Chapter 14 Language Focus renders in English and Arabic
-- `docs/automation/abraham-a2-language-polish-progress.md` — updated to the hard phase handoff
+## Important pedagogical decisions
+- Quick Challenge remains chapter comprehension/retrieval.
+- Language Focus remains chapter-specific grammar/function/use.
+- Language Review is cumulative language consolidation, not a story quiz.
+- Final Challenge remains a separate whole-story mixed-format mastery assessment.
+- Productive Language Review tasks transfer the target language to new A2 situations rather than asking learners to retell the story.
+- Matching tasks now avoid trivial two-pair interaction where the activity benefits from a fuller contrast.
 
 ## Validation
-- Re-fetched the Chapter 14 English Language Focus from `preview` and confirmed four activities are present and grounded in Chapter 14 language.
-- Re-fetched the Chapter 14 Arabic Language Focus from `preview` and confirmed four activities are present and independently grounded in the Arabic text.
-- Re-fetched `src/data/abraham/a2/index.ts` and confirmed the Part11 fallback is active in both English and Arabic builders.
-- Chapter 14 Quick Challenges were read in both languages and the Language Focus does not duplicate their building/final-message comprehension task.
-- Current wiring commit before this checkpoint update: `e1d2d90bc07459968acb537152af37e813a2190e`.
-- Story prose was not changed.
-- Knowledge Check, Vocabulary Challenge, Final Review/Language Review, Final Challenge, Teacher Guide and Self Study Guide were not modified in this run.
-- No executable typecheck/build runner is available through the connected GitHub file actions in this run, so no build/typecheck pass is claimed.
+- Re-fetched `src/data/abraham/a2/index.ts` from `preview` and confirmed English and Arabic use the polished exercise-system exports.
+- Confirmed page 17 is actively retitled and wired as `Language Review` / `مراجعة اللغة` with the new cumulative review arrays.
+- Confirmed page 20 remains wired to the separate polished Final Challenge arrays.
+- Confirmed all fourteen chapter Language Focus fallback imports remain intact.
+- Corrected one Arabic-review draft pattern during final validation so Chapter 10 uses source-native direct imperative forms (`اقتُلوا / أطلِقوا / انظر`) instead of mirroring English `let` language.
+- Preview HEAD immediately before this checkpoint update: `8cd3804b9204b5c40d13d2054f2ef4678a823010`.
+- No executable typecheck/build runner is exposed through the connected GitHub file actions used in this run, so no typecheck/build pass is claimed.
 
-## Commits
-- Chapter 14 English Language Focus: `e8142fcfcd9c08553272579e910c072620f13823`
-- Chapter 14 Arabic Language Focus: `4fea247c8ee6f292262710c72625277d96de9b2b`
-- Chapter 14 wiring: `e1d2d90bc07459968acb537152af37e813a2190e`
-
-## Next task
-- START_EXERCISE_SYSTEM_AUDIT_ON_NEXT_RUN
-- The next run may enter Phase 2 and audit the remaining Abraham A2 English and Arabic exercise system, then build the dedicated cumulative Language Review and separate Final Challenge architecture.
-- Do not perform any Phase 2 work in the run that completed Chapter 14.
+## Phase 2 commits
+- English Language Review: `087ccb601d14e24a14f2cef40d8e54037900f05c`
+- Arabic Language Review initial: `4243307a2caeb77b9a9b8edacb66b1f3473fa15e`
+- English polished exercise system: `426bbd3e939e79c6792ae9419e80fb31c2155e28`
+- Arabic polished exercise system: `4d73da9babac02236a7922f9930359073fedbf00`
+- Active index wiring: `9451945c737077d9ea877b12b976296e27a46550`
+- Arabic source-native review correction: `8cd3804b9204b5c40d13d2054f2ef4678a823010`
 
 ## Unresolved issues
-- None for Chapter 14 Language Focus.
+- None identified in the Abraham A2 exercise architecture during this pass.
+- Build/typecheck remains unverified only because no executable runner was available through the connected GitHub actions in this run.
