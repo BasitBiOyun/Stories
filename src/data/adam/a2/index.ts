@@ -19,10 +19,12 @@ import { adamA2LanguageFocusExercises } from './en/languageFocus';
 import { adamA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { adamA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
 import { adamA2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
+import { adamA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
 import { adamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { adamA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
 import { adamA2LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
+import { adamA2LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
 import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import {
@@ -45,7 +47,8 @@ const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
     const languageFocusExercises = adamA2LanguageFocusExercises[page.id]
       ?? adamA2LanguageFocusExercisesPart2[page.id]
       ?? adamA2LanguageFocusExercisesPart3[page.id]
-      ?? adamA2LanguageFocusExercisesPart4[page.id];
+      ?? adamA2LanguageFocusExercisesPart4[page.id]
+      ?? adamA2LanguageFocusExercisesPart5[page.id];
     return {
       ...page,
       exercises: [adamA2QuickChallenges[page.id]],
@@ -64,7 +67,8 @@ const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
     const languageFocusExercises = adamA2LanguageFocusExercisesAr[page.id]
       ?? adamA2LanguageFocusExercisesArPart2[page.id]
       ?? adamA2LanguageFocusExercisesArPart3[page.id]
-      ?? adamA2LanguageFocusExercisesArPart4[page.id];
+      ?? adamA2LanguageFocusExercisesArPart4[page.id]
+      ?? adamA2LanguageFocusExercisesArPart5[page.id];
     return {
       ...page,
       exercises: [adamA2QuickChallengesAr[page.id]],
