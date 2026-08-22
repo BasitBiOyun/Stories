@@ -17,8 +17,10 @@ import {
 } from './ar/exercises';
 import { abrahamA2LanguageFocusExercises } from './en/languageFocus';
 import { abrahamA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
+import { abrahamA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
 import { abrahamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
+import { abrahamA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
 import { abrahamA2TeacherGuideEn, abrahamA2TeacherGuideMetadataEn } from './en/teacherGuide';
 import { abrahamA2TeacherGuideAr, abrahamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamA2SelfStudyGuideEn } from './en/selfStudyGuide';
@@ -29,7 +31,8 @@ const STORY_IDS = new Set(Array.from({ length: 14 }, (_, index) => index + 1));
 const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercises[page.id]
-      ?? abrahamA2LanguageFocusExercisesPart2[page.id];
+      ?? abrahamA2LanguageFocusExercisesPart2[page.id]
+      ?? abrahamA2LanguageFocusExercisesPart3[page.id];
     return {
       ...page,
       exercises: [abrahamA2QuickChallenges[page.id]],
@@ -46,7 +49,8 @@ const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
 const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercisesAr[page.id]
-      ?? abrahamA2LanguageFocusExercisesArPart2[page.id];
+      ?? abrahamA2LanguageFocusExercisesArPart2[page.id]
+      ?? abrahamA2LanguageFocusExercisesArPart3[page.id];
     return {
       ...page,
       exercises: [abrahamA2QuickChallengesAr[page.id]],
