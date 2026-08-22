@@ -1,85 +1,103 @@
 # Adam A2 Language Polish Progress
 
-phase: LANGUAGE_FOCUS_COMPLETE
-nextTask: START_EXERCISE_SYSTEM_AUDIT_ON_NEXT_RUN
+phase: COMPLETE
+nextTask: NONE
 
 ## Current status
 
-- Chapter 1 — English: COMPLETE
-- Chapter 1 — Arabic: COMPLETE
-- Chapter 2 — English: COMPLETE
-- Chapter 2 — Arabic: COMPLETE
-- Chapter 3 — English: COMPLETE
-- Chapter 3 — Arabic: COMPLETE
-- Chapter 4 — English: COMPLETE
-- Chapter 4 — Arabic: COMPLETE
-- Chapter 5 — English: COMPLETE
-- Chapter 5 — Arabic: COMPLETE
-- Chapter 6 — English: COMPLETE
-- Chapter 6 — Arabic: COMPLETE
-- Chapter 7 — English: COMPLETE
-- Chapter 7 — Arabic: COMPLETE
-- Chapter 8 — English: COMPLETE
-- Chapter 8 — Arabic: COMPLETE
-- Chapter 9 — English: COMPLETE
-- Chapter 9 — Arabic: COMPLETE
-- Chapter 10 — English: COMPLETE
-- Chapter 10 — Arabic: COMPLETE
+- Chapters 1-10 English Language Focus: COMPLETE
+- Chapters 1-10 Arabic Language Focus: COMPLETE
+- English Quick Challenge audit: COMPLETE
+- Arabic Quick Challenge audit: COMPLETE
+- English Knowledge Check audit: COMPLETE
+- Arabic Knowledge Check audit: COMPLETE
+- Vocabulary Challenge audit: COMPLETE
+- English Language Review: COMPLETE
+- Arabic Language Review: COMPLETE
+- English Final Challenge audit: COMPLETE
+- Arabic Final Challenge audit: COMPLETE
+- Active page wiring: COMPLETE
 
-All Adam A2 story chapters now have manually authored Language Focus in both English and Arabic. Per the hard phase-handoff rule, no exercise-system audit was started in the run that completed Chapter 10.
+Adam A2 now follows the same end-of-book architecture established for Yunus Emre A2:
 
-## Files changed in the latest run
+- Chapter Quick Challenge = comprehension/retrieval
+- Chapter Language Focus = chapter-specific grammar/function/use
+- Language Review = cumulative grammar/function consolidation across all ten chapters with meaningful production
+- Final Challenge = separate whole-story mastery assessment
 
-- `src/data/adam/a2/en/languageFocusPart9.ts` — Chapter 10 English Language Focus added manually from the full English Chapter 10 text.
-- `src/data/adam/a2/ar/languageFocusPart9.ts` — Chapter 10 Arabic Language Focus added manually from the full Arabic Chapter 10 text.
-- `src/data/adam/a2/index.ts` — minimal wiring added so Chapter 10 loads from Part 9 while Chapters 1-9 keep their existing Language Focus files.
-- `docs/automation/adam-a2-language-polish-progress.md` — Phase 1 marked complete and handoff prepared for the next run.
+## Phase 2 changes
 
-No story prose, Quick Challenge, Knowledge Check, Vocabulary Challenge, Final Review, Final Challenge, Teacher Guide or Self Study Guide content was edited in this run.
+### Active exercise-system polish
 
-## Chapter 10 pedagogical decisions
+Created:
+- `src/data/adam/a2/en/exerciseSystem.ts`
+- `src/data/adam/a2/ar/exerciseSystem.ts`
 
-### English
-- Chapter 10 Quick Challenge already checks who spread Adam’s message worldwide, so Language Focus does not repeat that comprehension question.
-- `should + verb` is used for advice and expected behaviour: staying away from jealousy and controlling anger.
-- `tell + person + to + verb` is used as functional guidance language.
-- `had to + verb` is used for past necessity/responsibility in `He had to continue his life`.
-- `became/got + adjective` and completed past verbs are contrasted to notice change of state versus past events.
-- `still` is used to show continuation into the present.
-- `help + person + to + verb` is used to express positive support/result.
-- The final production transfers advice, past responsibility, change over time and positive support into familiar A2 situations.
+These files preserve already-strong legacy activities and override only justified weak points:
 
-### Arabic
-- The Arabic Language Focus was authored directly from the Arabic Chapter 10 text rather than translated from English.
-- `يجب أن + فعل` is used for direct advice, while `تدعو ... إلى` is used for guidance toward a value or behaviour.
-- `كان عليه أن + فعل` is used for past duty/necessity.
-- `كان + صفة` describes a past state, while `أصبح + صفة` shows change over time.
-- `ما زالت ... إلى اليوم` is used to notice continuation up to the present.
-- `تساعد + شخص + على أن + فعل` is used to express positive support or effect.
-- The final production uses natural Arabic starters for advice, past duty, change and support rather than mirroring English forms.
+- Quick Challenge 3 in both languages was expanded from a two-pair origin match into a four-part comprehension/retrieval task covering origin, Iblis's mistake and useful knowledge.
+- Quick Challenge 8 in both languages was expanded from a two-pair offering match into a four-part task covering both brothers' work and offerings.
+- Knowledge Check 4 in both languages was rewritten as a false statement so the true/false set is not mechanically all true.
+- Existing six-word Vocabulary Challenges were retained because no technical or pedagogical defect justified rewriting them.
+
+### Language Review
+
+Created:
+- `src/data/adam/a2/en/languageReview.ts`
+- `src/data/adam/a2/ar/languageReview.ts`
+
+Each version contains ten cumulative tasks aligned with the actual chapter Language Focus progression. English and Arabic were authored separately from their own language-focus systems rather than mechanically translated. The review covers plans and sequence, ability and teaching, comparison and reason, intention/warning/change, condition/decision/contrast, purpose/responsibility, teaching and narrative time, role/quality/obligation, intention/refusal/problem solving, and final productive transfer.
+
+All fill-blank tasks use literal `[blank]` syntax with scalar string answers.
+
+### Final Challenge
+
+The existing Final Challenge in both languages was audited and retained rather than rewritten unnecessarily. It already follows the locked A2 distribution:
+
+- 3 multiple choice
+- 2 true/false
+- 2 matching
+- 2 fill blanks
+- 1 sequencing
+
+It remains the whole-story mastery assessment and is now clearly separated from Language Review in active wiring.
+
+### Wiring
+
+Updated:
+- `src/data/adam/a2/index.ts`
+
+Active wiring now uses the polished Quick Challenges, Knowledge Check and Vocabulary aliases, the new cumulative Language Review on page 13, and the existing audited Final Challenge on page 16. Page 13 is overridden at runtime as `Language Review` / `مراجعة اللغة` with language-review-specific explanatory copy.
+
+The old Final Review exports remain only in the legacy source file and are no longer active in Adam A2 page wiring.
 
 ## Validation performed
 
-- Read the full Chapter 10 English story text.
-- Read the full Chapter 10 Arabic story text.
-- Read Chapter 10 English and Arabic Quick Challenges before authoring to prevent comprehension duplication.
-- Reused the established Adam/Yunus A2 Language Focus architecture: contextual noticing, language function, controlled contextual work, and short meaningful production.
-- Confirmed the `preview` branch head before implementation: `0605caf939a3167df32eea827ede0951579f5397`.
-- Re-checked the branch head before index wiring.
-- Compared `0605caf939a3167df32eea827ede0951579f5397` to implementation head `d726a627f40397f24eb663fcbb7534d7f5440894`.
-- The implementation diff contains only two new Chapter 10 Language Focus files and minimal `index.ts` wiring.
-- Story prose files were not edited.
-- No remaining exercise-system audit was started.
-- No automated typecheck/build or CI pass is claimed in this run.
+- Read the Phase 1 checkpoint and confirmed the hard handoff state `LANGUAGE_FOCUS_COMPLETE` before starting Phase 2.
+- Audited current English and Arabic Quick Challenges, Knowledge Checks, Vocabulary Challenge and Final Challenge exports.
+- Compared the active architecture with Yunus Emre A2 Language Review.
+- Confirmed the existing English Final Challenge uses the locked 10-question distribution.
+- Confirmed the existing Arabic Final Challenge uses the same locked 10-question distribution.
+- Re-checked Chapter 8 English and Arabic Language Focus and aligned Language Review wording with the exact active structures (`They had to offer an offering` / `كان يجب عليهما أن يقدّما قربانًا`).
+- Compared Phase 1 completion head `3e438ec8083e98e52afb2960c0fd477a986b0461` with Phase 2 implementation head `c5d962c95921a6a5503e5a83b76049463da6a932`.
+- The Phase 2 implementation diff contains only five Adam A2 exercise/wiring files before this checkpoint commit: two exercise-system files, two Language Review files and `index.ts`.
+- Story prose files were not changed.
+- No GitHub Actions workflow run exists for implementation head `c5d962c95921a6a5503e5a83b76049463da6a932`; therefore no automated build/typecheck pass is claimed.
+
+## Important decisions
+
+- Did not rewrite strong existing Final Challenge questions merely to create churn.
+- Removed Final Review from active architecture instead of maintaining two overlapping whole-story review layers.
+- Kept Language Review focused on grammar/function/use, not comprehension retrieval.
+- Kept Final Challenge focused on whole-story mastery.
+- Used separate English and Arabic cumulative language systems.
+- Did not change story prose, Teacher Guide or Self Study Guide.
 
 ## Commit
 
-Implementation head before this checkpoint commit: `d726a627f40397f24eb663fcbb7534d7f5440894`
-
-## Exact next task
-
-On the NEXT run only, start Phase 2 by changing the checkpoint phase to `EXERCISE_SYSTEM`. Audit Adam A2 English and Arabic Quick Challenges, Knowledge Check, Vocabulary Challenge, current Final Review/Final Challenge files and active wiring. Fix justified technical and pedagogical issues without changing story prose. Then build the dedicated cumulative Language Review and separate whole-story Final Challenge architecture at the Yunus Emre A2 quality standard. If Phase 2 does not finish in one run, record exact partial progress and resume it on the following run.
+Phase 2 implementation head before this checkpoint commit: `c5d962c95921a6a5503e5a83b76049463da6a932`
 
 ## Unresolved issues
 
-- None identified for Chapter 10 Language Focus in this run.
+- No content or wiring issue remains in the requested Adam A2 scope.
+- No automated CI/typecheck result is available for the final implementation head.
