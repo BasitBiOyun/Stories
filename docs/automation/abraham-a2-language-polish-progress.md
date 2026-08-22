@@ -2,51 +2,56 @@
 
 phase: LANGUAGE_FOCUS
 
-## Completed in this run
+## Completed chapters
 - Chapter 1 English Language Focus: COMPLETE
 - Chapter 1 Arabic Language Focus: COMPLETE
+- Chapter 2 English Language Focus: COMPLETE
+- Chapter 2 Arabic Language Focus: COMPLETE
 - Minimal chapter Language Focus wiring in `src/data/abraham/a2/index.ts`: COMPLETE
 
-## English decisions
-- Read the full Chapter 1 story text and its current Quick Challenge before authoring.
-- Kept Quick Challenge as comprehension/retrieval and did not duplicate its people-vs-stone-object answer task.
-- Language Focus targets are grounded in Chapter 1 language:
-  - past biography/story chunks (`was born`, `named`, `grew up`, `made`)
-  - `did not + base verb` for negative past facts/actions
-  - `could not + base verb` for lack of ability
-  - `look/looked like + noun` for similar appearance
-  - short productive contrast between the people's belief and Abraham's observation
+## Chapter 2 English decisions
+- Read the full Chapter 2 English story and its current Quick Challenge before authoring.
+- Kept Quick Challenge focused on comprehension of the father’s Mardukh explanation; Language Focus does not ask the same comprehension question again.
+- Language Focus targets are grounded in Chapter 2 language:
+  - `used to + base verb`, `sometimes`, and `One day` to distinguish repeated past habits from specific story events
+  - `Why ...?`, `What is ...?`, identification statements, and `because ...` for asking and explaining
+  - `tell + person + not to + base verb` for reporting a negative instruction
+  - `bigger than` for a simple comparison, integrated into a short productive speaking/writing task
+- Productive task requires learners to ask, compare and explain rather than reproduce the Quick Challenge answer.
 
-## Arabic decisions
-- Read the full Arabic Chapter 1 independently rather than translating the English Language Focus.
-- Language Focus targets are grounded in the Arabic text:
-  - `كان/كانوا` for past states, feelings, beliefs and repeated actions
-  - `لم` patterns for past negation and lack of ability
-  - chapter-specific past narrative verbs (`وُلِدَ`, `سَمَّاهُ`, `جَعَلَهُ`, `ظَنَّ`, `رَأَى`)
-  - short productive contrast between the people's belief and Ibrahim's observation
+## Chapter 2 Arabic decisions
+- Read the full Arabic Chapter 2 independently and designed the Arabic Language Focus from its own forms rather than translating the English activities mechanically.
+- Language Focus targets are grounded in the Arabic chapter:
+  - `كان + الفعل المضارع` for repeated past habits/actions contrasted with `في يوم من الأيام` for a specific event
+  - `لماذا ...؟`, `ما هذا ...؟`, `إنه ...`, and `لأنّ ...` for asking, identifying and explaining
+  - `قال لابنه ألّا + فعل` for reporting a negative instruction/prohibition
+  - `أكبر من` for comparison, integrated into a short productive dialogue task
+- Productive task asks the learner to use a question, comparison and reason without repeating the Quick Challenge answer.
 
-## Files changed
-- `src/data/abraham/a2/en/languageFocus.ts` — created; Chapter 1 only
-- `src/data/abraham/a2/ar/languageFocus.ts` — created; Chapter 1 only
-- `src/data/abraham/a2/index.ts` — imports/wires chapter Language Focus without changing story prose or other exercise layers
-- `docs/automation/abraham-a2-language-polish-progress.md` — created
+## Quality/alignment decisions
+- Compared Chapter 2 design with the completed Adam A2 chapter-specific Language Focus architecture on `preview` while keeping Abraham-specific targets.
+- Checked the current official Türkiye Yüzyılı Maarif Modeli A2 English programme entry and retained a contextual, function-first sequence: notice chapter language, identify communicative function, reconstruct controlled language, then use it meaningfully.
+- No rigid template or blueprint was used to generate the chapter activities.
+
+## Files changed in this run
+- `src/data/abraham/a2/en/languageFocus.ts` — added Chapter 2 only
+- `src/data/abraham/a2/ar/languageFocus.ts` — added Chapter 2 only
+- `docs/automation/abraham-a2-language-polish-progress.md` — updated
 
 ## Validation
-- Confirmed Abraham A2 contains 14 story chapters from the active `preview` index.
-- Confirmed Chapter 1 English and Arabic source text was read from the current `preview` branch.
-- Confirmed Chapter 1 English and Arabic Quick Challenges were read before authoring.
-- Compared the approach with the completed Adam A2 chapter-specific EN/AR Language Focus quality standard.
+- Confirmed the active `preview` index already wires any chapter-specific entries from the English and Arabic Language Focus records, so no new index change was necessary for Chapter 2.
+- Re-fetched the English and Arabic Chapter 2 Language Focus blocks after writing and confirmed both are present on `preview`.
 - Story prose was not changed.
-- Knowledge Check, Vocabulary Challenge, Final Review/Language Review, Final Challenge, Teacher Guide and Self Study Guide were not modified in this run.
-- The index wiring preserves Quick Challenge as `exercises` and adds Language Focus only when a chapter-specific entry exists.
+- Quick Challenge, Knowledge Check, Vocabulary Challenge, Final Review/Language Review, Final Challenge, Teacher Guide and Self Study Guide were not modified in this run.
 - No executable typecheck/build runner is available through the connected GitHub file actions in this run, so no build/typecheck pass is claimed.
 
 ## Commit
-- Language Focus/wiring head before this checkpoint: `449fbaa04091bf266b124a86543449ba63b8d518`
+- Chapter 2 English Language Focus commit: `d981f46a44d33727160f34e27fb394ede4d1f1c1`
+- Chapter 2 Arabic Language Focus/content head before this checkpoint: `d270a2c4777a03d595abe6e3493d9fd091261b4b`
 
 ## Next task
-- Chapter 2 only: read the full English and Arabic Chapter 2 texts and their Quick Challenges, then manually author Chapter 2 Language Focus in both languages.
-- Do not start Chapter 3 in the same run.
+- Chapter 3 only: read the full English and Arabic Chapter 3 texts and their Quick Challenges, then manually author Chapter 3 Language Focus in both languages.
+- Do not start Chapter 4 in the same run.
 
 ## Unresolved issues
-- None for Chapter 1.
+- None for Chapter 2.
