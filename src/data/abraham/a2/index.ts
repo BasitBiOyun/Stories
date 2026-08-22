@@ -2,19 +2,19 @@ import type { BookData, PageData } from '../../../types';
 import { abrahamA2PagesEn } from './en/pages';
 import { abrahamA2PagesAr } from './ar/pages';
 import {
-  abrahamA2FinalChallengeExercises,
-  abrahamA2FinalReviewExercises,
-  abrahamA2KnowledgeCheckExercises,
-  abrahamA2QuickChallenges,
-  abrahamA2VocabularyChallengePairs,
-} from './en/exercises';
+  abrahamA2FinalChallengeExercisesPolished,
+  abrahamA2KnowledgeCheckExercisesPolished,
+  abrahamA2QuickChallengesPolished,
+  abrahamA2VocabularyChallengePairsPolished,
+} from './en/exerciseSystem';
 import {
-  abrahamA2FinalChallengeExercisesAr,
-  abrahamA2FinalReviewExercisesAr,
-  abrahamA2KnowledgeCheckExercisesAr,
-  abrahamA2QuickChallengesAr,
-  abrahamA2VocabularyChallengePairsAr,
-} from './ar/exercises';
+  abrahamA2FinalChallengeExercisesArPolished,
+  abrahamA2KnowledgeCheckExercisesArPolished,
+  abrahamA2QuickChallengesArPolished,
+  abrahamA2VocabularyChallengePairsArPolished,
+} from './ar/exerciseSystem';
+import { abrahamA2LanguageReviewExercises } from './en/languageReview';
+import { abrahamA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { abrahamA2LanguageFocusExercises } from './en/languageFocus';
 import { abrahamA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { abrahamA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
@@ -59,14 +59,19 @@ const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
       ?? abrahamA2LanguageFocusExercisesPart11[page.id];
     return {
       ...page,
-      exercises: [abrahamA2QuickChallenges[page.id]],
+      exercises: [abrahamA2QuickChallengesPolished[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 15) return { ...page, exercises: abrahamA2KnowledgeCheckExercises };
-  if (page.id === 16) return { ...page, vocabularyPairs: abrahamA2VocabularyChallengePairs };
-  if (page.id === 17) return { ...page, exercises: abrahamA2FinalReviewExercises };
-  if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercises };
+  if (page.id === 15) return { ...page, exercises: abrahamA2KnowledgeCheckExercisesPolished };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamA2VocabularyChallengePairsPolished };
+  if (page.id === 17) return {
+    ...page,
+    title: 'Language Review',
+    content: 'Review and use the grammar patterns and language functions from all fourteen chapters.',
+    exercises: abrahamA2LanguageReviewExercises,
+  };
+  if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesPolished };
   return page;
 });
 
@@ -85,14 +90,19 @@ const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(page => {
       ?? abrahamA2LanguageFocusExercisesArPart11[page.id];
     return {
       ...page,
-      exercises: [abrahamA2QuickChallengesAr[page.id]],
+      exercises: [abrahamA2QuickChallengesArPolished[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 15) return { ...page, exercises: abrahamA2KnowledgeCheckExercisesAr };
-  if (page.id === 16) return { ...page, vocabularyPairs: abrahamA2VocabularyChallengePairsAr };
-  if (page.id === 17) return { ...page, exercises: abrahamA2FinalReviewExercisesAr };
-  if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesAr };
+  if (page.id === 15) return { ...page, exercises: abrahamA2KnowledgeCheckExercisesArPolished };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamA2VocabularyChallengePairsArPolished };
+  if (page.id === 17) return {
+    ...page,
+    title: 'مراجعة اللغة',
+    content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الأربعة عشر.',
+    exercises: abrahamA2LanguageReviewExercisesAr,
+  };
+  if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesArPolished };
   return page;
 });
 
