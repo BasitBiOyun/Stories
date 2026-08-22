@@ -23,6 +23,7 @@ import { adamA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
 import { adamA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
 import { adamA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
 import { adamA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
+import { adamA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
 import { adamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { adamA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
@@ -31,6 +32,7 @@ import { adamA2LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
 import { adamA2LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6';
 import { adamA2LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
 import { adamA2LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
+import { adamA2LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
 import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import {
@@ -57,7 +59,8 @@ const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
       ?? adamA2LanguageFocusExercisesPart5[page.id]
       ?? adamA2LanguageFocusExercisesPart6[page.id]
       ?? adamA2LanguageFocusExercisesPart7[page.id]
-      ?? adamA2LanguageFocusExercisesPart8[page.id];
+      ?? adamA2LanguageFocusExercisesPart8[page.id]
+      ?? adamA2LanguageFocusExercisesPart9[page.id];
     return {
       ...page,
       exercises: [adamA2QuickChallenges[page.id]],
@@ -80,7 +83,8 @@ const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
       ?? adamA2LanguageFocusExercisesArPart5[page.id]
       ?? adamA2LanguageFocusExercisesArPart6[page.id]
       ?? adamA2LanguageFocusExercisesArPart7[page.id]
-      ?? adamA2LanguageFocusExercisesArPart8[page.id];
+      ?? adamA2LanguageFocusExercisesArPart8[page.id]
+      ?? adamA2LanguageFocusExercisesArPart9[page.id];
     return {
       ...page,
       exercises: [adamA2QuickChallengesAr[page.id]],
