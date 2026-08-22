@@ -24,6 +24,7 @@ import { abrahamA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
 import { abrahamA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
 import { abrahamA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
 import { abrahamA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
+import { abrahamA2LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
 import { abrahamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { abrahamA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
@@ -33,6 +34,7 @@ import { abrahamA2LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6'
 import { abrahamA2LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
 import { abrahamA2LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
 import { abrahamA2LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
+import { abrahamA2LanguageFocusExercisesArPart10 } from './ar/languageFocusPart10';
 import { abrahamA2TeacherGuideEn, abrahamA2TeacherGuideMetadataEn } from './en/teacherGuide';
 import { abrahamA2TeacherGuideAr, abrahamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamA2SelfStudyGuideEn } from './en/selfStudyGuide';
@@ -50,7 +52,8 @@ const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
       ?? abrahamA2LanguageFocusExercisesPart6[page.id]
       ?? abrahamA2LanguageFocusExercisesPart7[page.id]
       ?? abrahamA2LanguageFocusExercisesPart8[page.id]
-      ?? abrahamA2LanguageFocusExercisesPart9[page.id];
+      ?? abrahamA2LanguageFocusExercisesPart9[page.id]
+      ?? abrahamA2LanguageFocusExercisesPart10[page.id];
     return {
       ...page,
       exercises: [abrahamA2QuickChallenges[page.id]],
@@ -74,7 +77,8 @@ const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(page => {
       ?? abrahamA2LanguageFocusExercisesArPart6[page.id]
       ?? abrahamA2LanguageFocusExercisesArPart7[page.id]
       ?? abrahamA2LanguageFocusExercisesArPart8[page.id]
-      ?? abrahamA2LanguageFocusExercisesArPart9[page.id];
+      ?? abrahamA2LanguageFocusExercisesArPart9[page.id]
+      ?? abrahamA2LanguageFocusExercisesArPart10[page.id];
     return {
       ...page,
       exercises: [abrahamA2QuickChallengesAr[page.id]],
