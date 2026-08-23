@@ -14,6 +14,7 @@ import { meccaA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
 import { meccaA2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
 import { meccaA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
 import { meccaA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
+import { meccaA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
 import {
   meccaA2FinalChallengeExercisesAr,
   meccaA2FinalReviewExercisesAr,
@@ -27,6 +28,7 @@ import { meccaA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
 import { meccaA2LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
 import { meccaA2LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
 import { meccaA2LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6';
+import { meccaA2LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
 import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
@@ -36,7 +38,7 @@ const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
 const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocus = meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
+    const languageFocus = meccaA2LanguageFocusExercisesPart7[page.id] ?? meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
     return {
       ...page,
       exercises: [meccaA2QuickChallenges[page.id], ...languageFocus],
@@ -51,7 +53,7 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
 
 const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocus = meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
+    const languageFocus = meccaA2LanguageFocusExercisesArPart7[page.id] ?? meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
     return {
       ...page,
       exercises: [meccaA2QuickChallengesAr[page.id], ...languageFocus],
