@@ -19,6 +19,7 @@ import { meccaA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
 import { meccaA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
 import { meccaA2LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
 import { meccaA2LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
+import { meccaA2LanguageFocusExercisesPart12 } from './en/languageFocusPart12';
 import {
   meccaA2FinalChallengeExercisesAr,
   meccaA2FinalReviewExercisesAr,
@@ -37,6 +38,7 @@ import { meccaA2LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
 import { meccaA2LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
 import { meccaA2LanguageFocusExercisesArPart10 } from './ar/languageFocusPart10';
 import { meccaA2LanguageFocusExercisesArPart11 } from './ar/languageFocusPart11';
+import { meccaA2LanguageFocusExercisesArPart12 } from './ar/languageFocusPart12';
 import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
@@ -46,7 +48,7 @@ const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
 const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocus = meccaA2LanguageFocusExercisesPart11[page.id] ?? meccaA2LanguageFocusExercisesPart10[page.id] ?? meccaA2LanguageFocusExercisesPart9[page.id] ?? meccaA2LanguageFocusExercisesPart8[page.id] ?? meccaA2LanguageFocusExercisesPart7[page.id] ?? meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
+    const languageFocus = meccaA2LanguageFocusExercisesPart12[page.id] ?? meccaA2LanguageFocusExercisesPart11[page.id] ?? meccaA2LanguageFocusExercisesPart10[page.id] ?? meccaA2LanguageFocusExercisesPart9[page.id] ?? meccaA2LanguageFocusExercisesPart8[page.id] ?? meccaA2LanguageFocusExercisesPart7[page.id] ?? meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
     return {
       ...page,
       exercises: [meccaA2QuickChallenges[page.id], ...languageFocus],
@@ -61,7 +63,7 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
 
 const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocus = meccaA2LanguageFocusExercisesArPart11[page.id] ?? meccaA2LanguageFocusExercisesArPart10[page.id] ?? meccaA2LanguageFocusExercisesArPart9[page.id] ?? meccaA2LanguageFocusExercisesArPart8[page.id] ?? meccaA2LanguageFocusExercisesArPart7[page.id] ?? meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
+    const languageFocus = meccaA2LanguageFocusExercisesArPart12[page.id] ?? meccaA2LanguageFocusExercisesArPart11[page.id] ?? meccaA2LanguageFocusExercisesArPart10[page.id] ?? meccaA2LanguageFocusExercisesArPart9[page.id] ?? meccaA2LanguageFocusExercisesArPart8[page.id] ?? meccaA2LanguageFocusExercisesArPart7[page.id] ?? meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
     return {
       ...page,
       exercises: [meccaA2QuickChallengesAr[page.id], ...languageFocus],
