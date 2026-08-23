@@ -20,11 +20,13 @@ import { mosesA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { mosesA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
 import { mosesA2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
 import { mosesA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
+import { mosesA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
 import { mosesA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { mosesA2LanguageFocusExercisesPart2Ar } from './ar/languageFocusPart2';
 import { mosesA2LanguageFocusExercisesPart3Ar } from './ar/languageFocusPart3';
 import { mosesA2LanguageFocusExercisesPart4Ar } from './ar/languageFocusPart4';
 import { mosesA2LanguageFocusExercisesPart5Ar } from './ar/languageFocusPart5';
+import { mosesA2LanguageFocusExercisesPart6Ar } from './ar/languageFocusPart6';
 import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { mosesA2SelfStudyGuide, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
@@ -114,7 +116,7 @@ const polishArabicSupport = (page: PageData): PageData => {
 const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
   const page = polishEnglishSupport(sourcePage);
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id];
+    const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id] ?? mosesA2LanguageFocusExercisesPart6[page.id];
     return {
       ...page,
       exercises: [mosesA2QuickChallenges[page.id]],
@@ -131,7 +133,7 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
 const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(sourcePage => {
   const page = polishArabicSupport(sourcePage);
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id];
+    const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id] ?? mosesA2LanguageFocusExercisesPart6Ar[page.id];
     return {
       ...page,
       exercises: [mosesA2QuickChallengesAr[page.id]],
