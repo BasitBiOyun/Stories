@@ -8,57 +8,64 @@ bookPath: `src/data/mecca/a2/`
 - Chapter 1 Arabic Language Focus: COMPLETE
 - Chapter 2 English Language Focus: COMPLETE
 - Chapter 2 Arabic Language Focus: COMPLETE
+- Chapter 3 English Language Focus: COMPLETE
+- Chapter 3 Arabic Language Focus: COMPLETE
 
-## Chapter 2 English decisions
-- Read the full Chapter 2 English story and its Quick Challenge before authoring.
-- Kept Quick Challenge focused on the rich/poor inequality described by the chapter.
-- Language Focus instead targets language genuinely present in Chapter 2:
-  - `was called + name` for naming something in the past
-  - `there was / there was no` for past existence and conditions
-  - `was + noun phrase` for describing a place in the past
-  - `a lot of + noun` and `many + plural noun` for quantity
-  - `but` for contrast
-  - `between A and B` for two sides of a difference/comparison
-  - `lent + thing + to + person` for lending
-  - `wanted + noun` for desired return
-  - `because of this` for result
-  - `became + comparative adjective` for change over time
-- Productive work asks learners to describe an imaginary past community using condition, contrast and result language rather than retelling the Quick Challenge answer.
+## Chapter 3 English decisions
+- Read the full Chapter 3 English story and its Quick Challenge before authoring.
+- Kept Quick Challenge focused on the comprehension claim that Umayya was rich/powerful and wanted Islam's message to stop.
+- Language Focus instead targets language genuinely present in Chapter 3:
+  - `were getting + comparative adjective` for continuing change (`poorer / richer`)
+  - `the most + adjective` for comparison with a whole group
+  - `one of the + superlative + plural noun` for placing one person inside a top group
+  - `were + adjective` for general past conditions
+  - `was a center for + -ing` for the function of a place
+  - `from + place` and `especially` for origin and emphasis
+  - `became + noun phrase` for change of role/state
+  - `when + past clause` for time/background
+  - `started + -ing` for the beginning of an activity
+  - `wanted + person/thing + to + verb` for a desired result
+- Productive work asks learners to describe an imaginary changing city using place, comparison, time and intention language instead of retelling the Quick Challenge answer.
 
-## Chapter 2 Arabic decisions
-- Read the full Arabic Chapter 2 independently and authored from its own wording rather than translating the English activities.
+## Chapter 3 Arabic decisions
+- Read the full Arabic Chapter 3 independently and authored from its actual Arabic wording rather than translating English activities.
 - Language Focus targets:
-  - `كان/كانت + تُسمّى` for naming something in the past
-  - `كانت هناك + اسم` for past existence
-  - `لم يكن هناك + اسم` for negating past existence
-  - `كان/كانت + اسم أو صفة` for describing a past place/state
-  - `كثير/الكثير من` for quantity
-  - `لكن` for contrast
-  - `بين ... و...` for two sides of a difference
-  - `كان + فعل مضارع` for repeated/habitual activity in the past
-  - `يُقرض + شخص + مال` and `يطلب + شيء` for lending/requesting
-  - adjective-after-noun description in `المال الإضافي الظالم`
-- Productive work uses Arabic-native frames to describe an imaginary past town with existence, quantity, contrast and repeated activity.
+  - `كان + فعل مضارع` with `يزداد` for continuing change in the past
+  - `الأقوى` and `من أغنى ... وأكثرهم ...` for comparison/superlative meaning
+  - `كانت + صفة` for a general past condition
+  - `كانت ... مركزًا لـ + مصدر` for the function of a place
+  - `من + مكان` and `خاصةً` for origin and emphasis
+  - `أصبح + اسم/صفة` for change of role/state
+  - `عندما + جملة` for time/background
+  - `بدأ + فعل مضارع` for beginning an activity
+  - `أراد + أن + فعل` for desire/intended result
+- During validation, source wording was rechecked and the Arabic activity was corrected to match the canonical text exactly: `بدأ ... يدعو إلى الإسلام` and `أراد أمية أن يمنع هذه الرسالة`.
+- Productive work uses Arabic-native frames to describe an imaginary changing city rather than reproduce the chapter's comprehension answer.
 
 ## Files changed in this run
-- `src/data/mecca/a2/en/languageFocus.ts` — added Chapter 2 English Language Focus
-- `src/data/mecca/a2/ar/languageFocus.ts` — added Chapter 2 Arabic Language Focus
+- `src/data/mecca/a2/en/languageFocusPart2.ts` — created with Chapter 3 English Language Focus
+- `src/data/mecca/a2/ar/languageFocusPart2.ts` — created with Chapter 3 Arabic Language Focus and source-alignment correction
+- `src/data/mecca/a2/index.ts` — added book-local Part2 fallback wiring for Chapter 3 in both languages
 - `docs/automation/bilal-a2-language-polish-progress.md` — updated
 
 ## Validation
 - Exact book directory remains `src/data/mecca/a2/`.
-- Chapter 2 English and Arabic story prose was read and was not changed.
-- Chapter 2 English and Arabic Quick Challenges were read; Language Focus does not simply repeat their rich/poor comprehension question.
-- `src/data/mecca/a2/index.ts` was re-fetched and still wires story pages through `meccaA2LanguageFocusExercises[page.id]` / `meccaA2LanguageFocusExercisesAr[page.id]`, so Chapter 2 renders without a new shared/global change.
-- English Language Focus commit: `ea3708ea3c2e9de25c1cd87bb0537d1e0fcb70f9`.
-- Arabic Language Focus commit: `0a4e58977d75ef33d2af96d02118a623182b7722`.
-- English Language Focus was re-fetched from `preview` after writing.
+- Chapter 3 English and Arabic full story texts were read; story prose was not changed.
+- Chapter 3 English and Arabic Quick Challenges were read; Language Focus does not simply repeat their Umayya comprehension statement.
+- Arabic canonical wording was re-fetched directly from `src/data/mecca/a2/ar/pages.ts` and the authored activity was corrected to match it.
+- English Chapter 3 Language Focus was re-fetched from `preview` and contains four chapter-grounded activities.
+- Arabic Chapter 3 Language Focus was re-fetched from `preview` and contains four independently authored chapter-grounded activities.
+- `src/data/mecca/a2/index.ts` was re-fetched from `preview`; Part2 fallback wiring is active in both English and Arabic while Chapters 1–2 continue to fall back to the original Language Focus maps.
+- English Chapter 3 Language Focus commit: `38a2fe228394fbf5a61949501d2ee8e60187db32`.
+- Arabic Chapter 3 initial commit: `ea938a65aa9dcc435f38a3be337849ae265d1884`.
+- Active wiring commit: `0d923659f8f419390d69eaf49b1c0678b8369b39`.
+- Arabic source-alignment correction commit: `4c46c9b82930f5ee8be33c1345d1862672257661`.
 - No Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide content was modified.
 - No build/typecheck pass is claimed in this run.
 
 ## Next task
-- Chapter 3 only: read the full English and Arabic Chapter 3 texts and Quick Challenges, then manually author Chapter 3 Language Focus in both languages.
-- Do not start Chapter 4 in the same run.
+- Chapter 4 only: read the full English and Arabic Chapter 4 texts and Quick Challenges, then manually author Chapter 4 Language Focus in both languages.
+- Do not start Chapter 5 in the same run.
 
 ## Unresolved issues
-- None identified for Chapter 2.
+- None identified for Chapter 3.
