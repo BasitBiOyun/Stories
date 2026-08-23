@@ -8,6 +8,7 @@ import {
   meccaA2VocabularyChallengePairs,
 } from './en/exercises';
 import { meccaA2KnowledgeCheckExercises } from './en/knowledgeCheck';
+import { meccaA2LanguageFocusExercises } from './en/languageFocus';
 import {
   meccaA2FinalChallengeExercisesAr,
   meccaA2FinalReviewExercisesAr,
@@ -15,6 +16,7 @@ import {
   meccaA2VocabularyChallengePairsAr,
 } from './ar/exercises';
 import { meccaA2KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
+import { meccaA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
@@ -23,7 +25,12 @@ import { meccaA2SelfStudyGuideAr, meccaA2StudentGuideMetadataAr } from './ar/sel
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
 const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [meccaA2QuickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    return {
+      ...page,
+      exercises: [meccaA2QuickChallenges[page.id], ...(meccaA2LanguageFocusExercises[page.id] ?? [])],
+    };
+  }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercises };
   if (page.id === 15) return { ...page, vocabularyPairs: meccaA2VocabularyChallengePairs };
   if (page.id === 16) return { ...page, exercises: meccaA2FinalReviewExercises };
@@ -32,7 +39,12 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
 });
 
 const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [meccaA2QuickChallengesAr[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    return {
+      ...page,
+      exercises: [meccaA2QuickChallengesAr[page.id], ...(meccaA2LanguageFocusExercisesAr[page.id] ?? [])],
+    };
+  }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercisesAr };
   if (page.id === 15) return { ...page, vocabularyPairs: meccaA2VocabularyChallengePairsAr };
   if (page.id === 16) return { ...page, exercises: meccaA2FinalReviewExercisesAr };
