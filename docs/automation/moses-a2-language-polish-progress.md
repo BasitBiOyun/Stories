@@ -3,10 +3,8 @@
 phase: LANGUAGE_FOCUS
 
 ## Completed chapters
-- Chapters 1–9 English Language Focus: COMPLETE
-- Chapters 1–9 Arabic Language Focus: COMPLETE
-- Chapter 10 English Language Focus: AUTHORED, WIRING PENDING
-- Chapter 10 Arabic Language Focus: AUTHORED, WIRING PENDING
+- Chapters 1–10 English Language Focus: COMPLETE
+- Chapters 1–10 Arabic Language Focus: COMPLETE
 - Chapters 11–16: PENDING
 
 ## Chapter 10 English decisions
@@ -21,28 +19,29 @@ phase: LANGUAGE_FOCUS
 - Productive transfer asks learners to use these Arabic-native frames in a new everyday cold-evening situation.
 
 ## Files changed in this run
-- `src/data/moses/a2/en/languageFocusPart7.ts` — created with Chapter 10 English Language Focus.
-- `src/data/moses/a2/ar/languageFocusPart7.ts` — created with Chapter 10 Arabic Language Focus.
-- `docs/automation/moses-a2-language-polish-progress.md` — updated.
+- `src/data/moses/a2/index.ts` — added Moses-A2-local Part7 imports and active English/Arabic fallback wiring for Chapter 10.
+- `docs/automation/moses-a2-language-polish-progress.md` — updated to mark Chapter 10 complete.
 
 ## Validation
-- Full Chapter 10 English and Arabic story texts were read from `preview`.
-- English and Arabic Chapter 10 Quick Challenges were read; both are sequencing activities and the new Language Focus does not duplicate that comprehension task.
-- Chapter 10 content was authored independently in English and Arabic from the respective source texts.
+- Re-fetched `src/data/moses/a2/en/languageFocusPart7.ts` from current `preview`; Chapter 10 English Language Focus is present.
+- Re-fetched `src/data/moses/a2/ar/languageFocusPart7.ts` from current `preview`; Chapter 10 Arabic Language Focus is present.
+- Re-fetched `src/data/moses/a2/index.ts` after the wiring commit and confirmed both Part7 imports are present.
+- Confirmed the English story-page fallback chain now includes `mosesA2LanguageFocusExercisesPart7[page.id]`.
+- Confirmed the Arabic story-page fallback chain now includes `mosesA2LanguageFocusExercisesPart7Ar[page.id]`.
 - Story prose was not changed.
 - Knowledge Check, Vocabulary Challenge, Language Review/Final Review, Final Challenge, Teacher Guide and Self Study Guide were not modified.
-- No typecheck/build/CI pass is claimed.
+- No typecheck/build/CI pass is claimed because no executable runner was available in this run.
 
-## Commits in this run
+## Commits
 - Chapter 10 English Language Focus file: `761ed36a9ee6219ee885626ad53c294fea005104`
 - Chapter 10 Arabic Language Focus file: `5c8a5fbedc06c6f083068bbc3ff0bb778d9b4a12`
+- Chapter 10 active wiring: `4a94bae534e186920acf21f4c744d0b7fd6cf14c`
 
 ## Exact next task
-- Resume Chapter 10 only.
-- Re-fetch `src/data/moses/a2/index.ts` and both Part7 files from current `preview`.
-- Add Moses-A2-local Part7 imports and fallback wiring for English and Arabic Chapter 10, without changing any shared/global file or unrelated book.
-- Re-fetch the index and both Part7 files to validate active rendering.
-- Only after wiring is confirmed, mark Chapter 10 COMPLETE. Do not start Chapter 11 in that same run because Chapter 10 began this run as partial/incomplete.
+- Chapter 11 only.
+- Read the full English and Arabic Chapter 11 story texts and their current Quick Challenges.
+- Manually author Chapter 11 Language Focus in both languages from their respective texts.
+- Do not start Chapter 12 in the same run.
 
 ## Unresolved issues
-- Chapter 10 Language Focus content exists in both languages but is not yet wired into `src/data/moses/a2/index.ts`; therefore Chapter 10 is intentionally marked partial, not complete.
+- None for Chapter 10.
