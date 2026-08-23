@@ -3,11 +3,11 @@ import { meccaA2Pages as meccaA2PagesEn } from './en/pages';
 import { meccaA2PagesAr } from './ar/pages';
 import {
   meccaA2FinalChallengeExercises,
-  meccaA2FinalReviewExercises,
   meccaA2QuickChallenges,
   meccaA2VocabularyChallengePairs,
 } from './en/exercises';
 import { meccaA2KnowledgeCheckExercises } from './en/knowledgeCheck';
+import { meccaA2LanguageReviewExercises } from './en/languageReview';
 import { meccaA2LanguageFocusExercises } from './en/languageFocus';
 import { meccaA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { meccaA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
@@ -22,11 +22,11 @@ import { meccaA2LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
 import { meccaA2LanguageFocusExercisesPart12 } from './en/languageFocusPart12';
 import {
   meccaA2FinalChallengeExercisesAr,
-  meccaA2FinalReviewExercisesAr,
   meccaA2QuickChallengesAr,
   meccaA2VocabularyChallengePairsAr,
 } from './ar/exercises';
 import { meccaA2KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
+import { meccaA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { meccaA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { meccaA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { meccaA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
@@ -56,7 +56,12 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
   }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercises };
   if (page.id === 15) return { ...page, vocabularyPairs: meccaA2VocabularyChallengePairs };
-  if (page.id === 16) return { ...page, exercises: meccaA2FinalReviewExercises };
+  if (page.id === 16) return {
+    ...page,
+    title: 'Language Review',
+    content: 'Review and use the grammar patterns and language functions from all thirteen chapters.',
+    exercises: meccaA2LanguageReviewExercises,
+  };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercises };
   return page;
 });
@@ -71,7 +76,12 @@ const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
   }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercisesAr };
   if (page.id === 15) return { ...page, vocabularyPairs: meccaA2VocabularyChallengePairsAr };
-  if (page.id === 16) return { ...page, exercises: meccaA2FinalReviewExercisesAr };
+  if (page.id === 16) return {
+    ...page,
+    title: 'مراجعة اللغة',
+    content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الثلاثة عشر.',
+    exercises: meccaA2LanguageReviewExercisesAr,
+  };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercisesAr };
   return page;
 });
