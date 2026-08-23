@@ -1,70 +1,72 @@
 # Bilal / Mecca A2 Language Polish Progress
 
-phase: LANGUAGE_FOCUS_COMPLETE
-nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
+phase: LANGUAGE_REVIEW_COMPLETE
+nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
 bookPath: `src/data/mecca/a2/`
 
-## Completed chapters
+## Completed work
 - Chapters 1–13 English Language Focus: COMPLETE
 - Chapters 1–13 Arabic Language Focus: COMPLETE
+- English cumulative Language Review: COMPLETE
+- Arabic cumulative Language Review: COMPLETE
 
-## Chapter 13 English decisions
-- Read the full Chapter 13 English story and its Quick Challenge before authoring.
-- Quick Challenge already asks for the chapter’s final lesson about what matters in human value, so Language Focus does not retest that comprehension point.
-- Chapter-grounded English Language Focus targets:
-  - `no + noun + is better than ...` and `not better than` for rejecting unfair superiority
-  - `because of + noun` for giving a reason
-  - `the only way to ... is to ...` for explaining one necessary path
-  - `too + adjective + to + verb` for a condition/feeling that prevents an action
-  - `start + -ing` for the beginning of an action
-  - `when` for connecting an action to its time/situation
-  - `could not + verb` for past inability
-  - `ask + person + to + verb` for a request
-  - `allow + person + to + verb` for permission
-  - `it is + adjective + to + verb` for evaluating behavior
-  - `what matters is ...` for identifying what is important
-- Productive work transfers comparison, reason, request/permission and evaluation language to a new school/club/family/team situation rather than retelling Chapter 13.
+## Language Review architecture
+- Replaced the old page-16 Final Review role in active runtime wiring with a dedicated cumulative Language Review in both languages.
+- Language Review consolidates grammar patterns and communicative functions taught across Chapters 1–13 rather than retesting story comprehension.
+- English and Arabic reviews were authored independently from their own chapter Language Focus systems.
+- Both reviews include recognition/function work, controlled use, sequencing, and a final meaningful transfer task.
+- Whole-story comprehension remains reserved for Final Challenge.
 
-## Chapter 13 Arabic decisions
-- Read the full Arabic Chapter 13 independently and authored its Language Focus from the Arabic text rather than translating the English activities.
-- Quick Challenge already asks what determines human value; Language Focus instead develops the Arabic structures used around comparison, reason, feeling, permission and evaluation.
-- Chapter-grounded Arabic Language Focus targets:
-  - `لا فضل لـ... على...` for rejecting superiority
-  - `بسبب + اسم` for giving a reason
-  - `الطريق الوحيد لـ... هو أن...` for expressing one necessary path
-  - `كان + صفة` for a past state/feeling
-  - `كان + فعل مضارع` for a repeated/ongoing past action
-  - `عندما` for time/situation
-  - `لم يقدر أن + فعل` for past inability
-  - `سأل + شخص + أن يسمح` for asking permission
-  - `سمح لـ + شخص + بـ...` for giving permission
-  - `ليس من العدل + مصدر` for evaluating behavior
-  - `المهم هو...` for identifying what is important
-- Productive work uses Arabic-native frames in a new everyday fairness/permission situation and does not retell the chapter.
+## Main English review coverage
+- past identity/background: `was/were`, `was born in`, `there was/were`
+- change: `became + adjective`
+- thought/belief/feeling/decision: `thought about`, `thought that`, `felt`, `decided to`
+- reason/contrast/result: `because`, `because of`, `but`, `because of this/so`
+- necessity/purpose/intention: `had to`, `must`, `to + verb`, `wanted to`
+- request/command/permission/refusal: `tell`, `ask`, `allow`, `refuse`
+- condition-result: `if + present, will + verb`
+- comparison/evaluation: comparatives, `too ... to`, `it is wrong/unfair to ...`
+- time/habit/beginning: `when`, `after`, `started to/-ing`, `used to`
+- productive transfer to a new school/family/club/team context
 
-## Files changed in this run
-- `src/data/mecca/a2/en/languageFocusPart12.ts` — created with Chapter 13 English Language Focus
-- `src/data/mecca/a2/ar/languageFocusPart12.ts` — created with Chapter 13 Arabic Language Focus
-- `src/data/mecca/a2/index.ts` — added Part12 imports/fallback wiring so Chapter 13 Language Focus renders in both languages
-- `docs/automation/bilal-a2-language-polish-progress.md` — updated to the hard handoff state
+## Main Arabic review coverage
+- past identity/background: `كان/كانت`, `وُلِدَ في`, `كانت هناك/لم يكن هناك`
+- change: `أصبح/صار`
+- thought/belief/feeling/decision: `فكّر في`, `ظنّ/اعتقد أن`, `شعر بـ`, `قرّر أن`
+- reason/contrast/result: `لأنّ`, `بسبب`, `لكن`, `لذلك/فـ`
+- necessity/purpose/intention: `كان على ... أن`, `يجب أن`, `لِـ + فعل`, `أراد أن`
+- command/request/permission/refusal: `أمر`, `طلب من`, `سمح لـ`, `رفض أن`
+- condition-result: `إذا ... سوف/سـ ...`
+- comparison/evaluation: `أفضل من`, `لا فضل لـ... على...`, `لم يقدر أن`, `ليس من العدل`
+- time/habit/beginning: `عندما`, `بعد أن`, `بدأ + مضارع`, `كان + مضارع`
+- productive transfer to a new everyday context
+
+## Files added in this run
+- `src/data/mecca/a2/en/languageReview.ts`
+- `src/data/mecca/a2/ar/languageReview.ts`
+
+## Files updated in this run
+- `src/data/mecca/a2/index.ts`
+- `docs/automation/bilal-a2-language-polish-progress.md`
+
+## Commits
+- English Language Review: `ef646fb5d84e3d1148aa4aea57c7650a71c314dc`
+- Arabic Language Review: `eda4e9fa0262ebcecfaf9593916cb1ba50bfbe3c`
+- Active Language Review wiring: `9886e503b2ddcaeb2dbcf6d19f9f8e2182c77133`
 
 ## Validation
-- Exact book directory remains `src/data/mecca/a2/`.
-- Full Chapter 13 English story was read from `src/data/mecca/a2/en/pages.ts`; story prose was not changed.
-- Full Chapter 13 Arabic story was read from `src/data/mecca/a2/ar/pages.ts`; story prose was not changed.
-- English and Arabic Chapter 13 Quick Challenges were read; the new Language Focus does not duplicate their comprehension question.
-- English Chapter 13 Language Focus was re-fetched from `preview` and contains four chapter-grounded activities.
-- Arabic Chapter 13 Language Focus was re-fetched from `preview` and contains four independently authored chapter-grounded activities.
-- `src/data/mecca/a2/index.ts` was re-fetched from `preview`; Part12 fallback wiring is active in English and Arabic while all earlier Language Focus fallbacks remain intact.
-- English Chapter 13 Language Focus commit: `93fbfb7c3468074e84abf538cf5788f1e3511760`.
-- Arabic Chapter 13 Language Focus commit: `37e88145b044c6af8798c7f16670975790f87a22`.
-- Active wiring commit before this checkpoint update: `0bb009efb0f4d0cf29c9fe73f5336f34604f9051`.
-- No Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide content was modified in this run.
-- No build/typecheck pass is claimed in this run.
+- Re-fetched both new Language Review files from `preview` and confirmed their exports exist.
+- Re-fetched `src/data/mecca/a2/index.ts` from `preview` and confirmed page 16 is now titled `Language Review` / `مراجعة اللغة` and uses the new EN/AR cumulative review arrays.
+- Confirmed Final Challenge remains separately wired on page 19 and was not modified in this run.
+- Confirmed Chapters 1–13 Language Focus fallback wiring remains intact.
+- Story prose was not changed.
+- Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge, Teacher Guide and Self Study Guide content were not audited or rewritten in this run.
+- No executable build/typecheck runner was available through the connected GitHub file actions used here, so no build/typecheck pass is claimed.
 
 ## Next task
-- On the NEXT run only, build/review the cumulative English and Arabic Language Review from the actual Language Focus taught across Chapters 1–13.
-- Do not audit Quick Challenges, Knowledge Check, Vocabulary Challenge or Final Challenge in that Language Review run.
+- On the NEXT run only, enter Phase 3: audit Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and book-local exercise wiring in English and Arabic.
+- Fix justified issues only while preserving the role separation between Quick Challenge, Language Focus, Language Review and Final Challenge.
+- If Phase 3 completes, set phase: COMPLETE.
 
 ## Unresolved issues
-- None identified for Chapter 13.
+- None identified in the Language Review layer.
