@@ -15,6 +15,8 @@ import {
   mosesA2QuickChallengesAr,
   mosesA2VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { mosesA2LanguageFocusExercises } from './en/languageFocus';
+import { mosesA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { mosesA2SelfStudyGuide, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
@@ -103,7 +105,14 @@ const polishArabicSupport = (page: PageData): PageData => {
 
 const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
   const page = polishEnglishSupport(sourcePage);
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [mosesA2QuickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = mosesA2LanguageFocusExercises[page.id];
+    return {
+      ...page,
+      exercises: [mosesA2QuickChallenges[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercises };
   if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairs };
   if (page.id === 21) return { ...page, exercises: mosesA2FinalReviewExercises };
@@ -113,7 +122,14 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
 
 const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(sourcePage => {
   const page = polishArabicSupport(sourcePage);
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [mosesA2QuickChallengesAr[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id];
+    return {
+      ...page,
+      exercises: [mosesA2QuickChallengesAr[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercisesAr };
   if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairsAr };
   if (page.id === 21) return { ...page, exercises: mosesA2FinalReviewExercisesAr };
