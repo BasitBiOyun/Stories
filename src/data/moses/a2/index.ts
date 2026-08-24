@@ -2,17 +2,17 @@ import type { BookData, PageData } from '../../../types';
 import { mosesA2Pages as mosesA2PagesEn } from './en/pages';
 import { mosesA2PagesAr } from './ar/pages';
 import {
-  mosesA2FinalChallengeExercises,
-  mosesA2KnowledgeCheckExercises,
-  mosesA2QuickChallenges,
-  mosesA2VocabularyChallengePairs,
-} from './en/exercises';
+  mosesA2FinalChallengeExercisesPolished,
+  mosesA2KnowledgeCheckExercisesPolished,
+  mosesA2QuickChallengesPolished,
+  mosesA2VocabularyChallengePairsPolished,
+} from './en/exerciseSystem';
 import {
-  mosesA2FinalChallengeExercisesAr,
-  mosesA2KnowledgeCheckExercisesAr,
-  mosesA2QuickChallengesAr,
-  mosesA2VocabularyChallengePairsAr,
-} from './ar/exercises';
+  mosesA2FinalChallengeExercisesArPolished,
+  mosesA2KnowledgeCheckExercisesArPolished,
+  mosesA2QuickChallengesArPolished,
+  mosesA2VocabularyChallengePairsArPolished,
+} from './ar/exerciseSystem';
 import { mosesA2LanguageReviewExercises } from './en/languageReview';
 import { mosesA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { mosesA2LanguageFocusExercises } from './en/languageFocus';
@@ -129,19 +129,19 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
     const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id] ?? mosesA2LanguageFocusExercisesPart6[page.id] ?? mosesA2LanguageFocusExercisesPart7[page.id] ?? mosesA2LanguageFocusExercisesPart8[page.id] ?? mosesA2LanguageFocusExercisesPart9[page.id] ?? mosesA2LanguageFocusExercisesPart10[page.id] ?? mosesA2LanguageFocusExercisesPart11[page.id];
     return {
       ...page,
-      exercises: [mosesA2QuickChallenges[page.id]],
+      exercises: [mosesA2QuickChallengesPolished[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercises };
-  if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairs };
+  if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercisesPolished };
+  if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairsPolished };
   if (page.id === 21) return {
     ...page,
     title: 'Language Review',
     content: 'Review and use the grammar patterns and language functions from all sixteen chapters.',
     exercises: mosesA2LanguageReviewExercises,
   };
-  if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercises };
+  if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesPolished };
   return page;
 });
 
@@ -151,19 +151,19 @@ const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(sourcePage => {
     const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id] ?? mosesA2LanguageFocusExercisesPart6Ar[page.id] ?? mosesA2LanguageFocusExercisesPart7Ar[page.id] ?? mosesA2LanguageFocusExercisesPart8Ar[page.id] ?? mosesA2LanguageFocusExercisesPart9Ar[page.id] ?? mosesA2LanguageFocusExercisesPart10Ar[page.id] ?? mosesA2LanguageFocusExercisesPart11Ar[page.id];
     return {
       ...page,
-      exercises: [mosesA2QuickChallengesAr[page.id]],
+      exercises: [mosesA2QuickChallengesArPolished[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercisesAr };
-  if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairsAr };
+  if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercisesArPolished };
+  if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairsArPolished };
   if (page.id === 21) return {
     ...page,
     title: 'مراجعة اللغة',
     content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الستة عشر.',
     exercises: mosesA2LanguageReviewExercisesAr,
   };
-  if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesAr };
+  if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesArPolished };
   return page;
 });
 
