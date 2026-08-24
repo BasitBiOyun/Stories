@@ -3,18 +3,18 @@ import { mosesA2Pages as mosesA2PagesEn } from './en/pages';
 import { mosesA2PagesAr } from './ar/pages';
 import {
   mosesA2FinalChallengeExercises,
-  mosesA2FinalReviewExercises,
   mosesA2KnowledgeCheckExercises,
   mosesA2QuickChallenges,
   mosesA2VocabularyChallengePairs,
 } from './en/exercises';
 import {
   mosesA2FinalChallengeExercisesAr,
-  mosesA2FinalReviewExercisesAr,
   mosesA2KnowledgeCheckExercisesAr,
   mosesA2QuickChallengesAr,
   mosesA2VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { mosesA2LanguageReviewExercises } from './en/languageReview';
+import { mosesA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { mosesA2LanguageFocusExercises } from './en/languageFocus';
 import { mosesA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { mosesA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
@@ -135,7 +135,12 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
   }
   if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercises };
   if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairs };
-  if (page.id === 21) return { ...page, exercises: mosesA2FinalReviewExercises };
+  if (page.id === 21) return {
+    ...page,
+    title: 'Language Review',
+    content: 'Review and use the grammar patterns and language functions from all sixteen chapters.',
+    exercises: mosesA2LanguageReviewExercises,
+  };
   if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercises };
   return page;
 });
@@ -152,7 +157,12 @@ const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(sourcePage => {
   }
   if (page.id === 17) return { ...page, exercises: mosesA2KnowledgeCheckExercisesAr };
   if (page.id === 18) return { ...page, vocabularyPairs: mosesA2VocabularyChallengePairsAr };
-  if (page.id === 21) return { ...page, exercises: mosesA2FinalReviewExercisesAr };
+  if (page.id === 21) return {
+    ...page,
+    title: 'مراجعة اللغة',
+    content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الستة عشر.',
+    exercises: mosesA2LanguageReviewExercisesAr,
+  };
   if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesAr };
   return page;
 });
