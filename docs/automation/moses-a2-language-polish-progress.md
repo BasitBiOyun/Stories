@@ -3,50 +3,47 @@
 phase: LANGUAGE_FOCUS
 
 ## Completed chapters
-- Chapters 1–14 English Language Focus: COMPLETE
-- Chapters 1–14 Arabic Language Focus: COMPLETE
-- Chapters 15–16: PENDING
+- Chapters 1–15 English Language Focus: COMPLETE
+- Chapters 1–15 Arabic Language Focus: COMPLETE
+- Chapter 16: PENDING
 
-## Chapter 14 English decisions
-- Read the full Chapter 14 English story and its current Quick Challenge before authoring.
-- The Quick Challenge already asks why Moses’s people had to leave Egypt secretly at night, so Language Focus does not retest that comprehension reason.
-- Language Focus targets come directly from Chapter 14 language: direct imperatives, `get ready for + noun`, planned departure language, `must + verb` for obligation/necessity, `will + verb` for future action, time expressions such as `at night`, `could not + verb` for past inability, adverbs such as `quickly/slowly`, and `when + past event` to connect events in time.
-- Productive transfer uses a new class/family trip situation so learners apply instruction, obligation, planning, time and movement language without retelling the night journey.
+## Chapter 15 English decisions
+- Read the full English Chapter 15 story and its current Quick Challenge before authoring.
+- The Quick Challenge already asks what Allah told Moses to do at the sea, so Language Focus does not retest the `Hit the sea with his stick` comprehension answer.
+- Language Focus targets are grounded in the chapter language: `in front of / behind` for position, `Calm down!` as a direct imperative, `will + verb` for reassurance/future help, completed past change, `became + noun phrase` for a new state, `could + verb` for past ability, `make + object` for creation/result, `go to + place`, `in + place`, `between + plural noun`, and adverbial manner with `safely`.
+- Productive transfer uses a new everyday route/safety situation rather than retelling the sea scene.
 
-## Chapter 14 Arabic decisions
-- Read the full Arabic Chapter 14 independently and designed its Language Focus from the Arabic wording rather than translating the English activities.
-- The Arabic Quick Challenge already asks why the group left secretly at night, so Language Focus instead targets the Arabic language system of the chapter: plural/direct imperatives such as `عاملوهم / اخرج / استعدوا`, `استعدّ لـ`, `دعا + شخص`, future with `سـ + فعل مضارع`, obligation with `على + شخص + أن + فعل`, necessity with `يجب أن + فعل`, `لم يستطع + ...` for past inability, manner/speed with `بسرعة / ببطء`, and `عندما + فعل ماض` for time connection.
-- Productive work uses an Arabic-native travel-planning situation rather than retelling the story scene.
+## Chapter 15 Arabic decisions
+- Read the full Arabic Chapter 15 independently and designed its Language Focus from the Arabic wording rather than translating the English activities.
+- The Arabic Quick Challenge already asks about the command to strike the sea, so Language Focus instead targets the Arabic language system around the scene: `أمام / خلف + ضمير` for position, the imperative `اهدؤوا`, future reassurance with `سـ + فعل مضارع`, direct command plus instrument with `بـ`, completed change with past verbs, `أصبح + خبر` for a new state, location with `في`, movement with a past verb, manner with `بأمان`, and position with `بين + اسم جمع`.
+- Productive work uses an Arabic-native route/safety situation instead of story retelling.
 
 ## Files changed in this run
-- `src/data/moses/a2/en/languageFocusPart10.ts` — added Chapter 14 English Language Focus.
-- `src/data/moses/a2/ar/languageFocusPart10.ts` — added Chapter 14 Arabic Language Focus.
+- `src/data/moses/a2/en/languageFocusPart11.ts` — created with Chapter 15 English Language Focus.
+- `src/data/moses/a2/ar/languageFocusPart11.ts` — created with Chapter 15 Arabic Language Focus.
+- `src/data/moses/a2/index.ts` — added Part11 imports and English/Arabic fallback wiring.
 - `docs/automation/moses-a2-language-polish-progress.md` — updated.
 
-## Wiring
-- No new `index.ts` edit was needed in this run.
-- The existing active Part10 fallback wiring in `src/data/moses/a2/index.ts` already resolves any page id present in `mosesA2LanguageFocusExercisesPart10` / `mosesA2LanguageFocusExercisesPart10Ar`, so adding page id 14 to those records makes Chapter 14 active without a shared or additional wiring change.
-
 ## Validation
-- Re-fetched the full Chapter 14 English and Arabic story texts from `preview` before authoring.
-- Read the current English and Arabic Chapter 14 Quick Challenges and confirmed Language Focus does not duplicate their secrecy/escape comprehension question.
-- Re-fetched `src/data/moses/a2/en/languageFocusPart10.ts` after the write and confirmed four Chapter 14 English activities are present.
-- Re-fetched `src/data/moses/a2/ar/languageFocusPart10.ts` after the write and confirmed four independently authored Arabic activities are present.
-- Re-fetched `src/data/moses/a2/index.ts` and confirmed Part10 imports are already active for both languages.
+- Re-fetched the full English and Arabic Chapter 15 story texts from `preview` before authoring.
+- Read the current English and Arabic Chapter 15 Quick Challenges and confirmed Language Focus does not duplicate the command-to-strike-the-sea comprehension question.
+- Re-fetched `src/data/moses/a2/en/languageFocusPart11.ts` after creation and confirmed four Chapter 15 English activities are present.
+- Re-fetched `src/data/moses/a2/ar/languageFocusPart11.ts` after creation and confirmed four independently authored Arabic activities are present.
+- Re-fetched `src/data/moses/a2/index.ts` and confirmed Part11 imports and fallback wiring are active for both English and Arabic builders.
 - Story prose was not changed.
 - Quick Challenge source content, Knowledge Check, Vocabulary Challenge, Language Review/Final Review, Final Challenge, Teacher Guide and Self Study Guide were not modified.
 - No typecheck/build/CI pass is claimed because no executable runner was available through the connected GitHub file actions in this run.
 
 ## Commits
-- Chapter 14 English Language Focus: `8941b971bebec05c304f88453e5188c93c21d6cc`
-- Chapter 14 Arabic Language Focus: `23dfcaa5adec8148891b55d77b497f0a17728532`
-- Current preview commit after the content writes: `23dfcaa5adec8148891b55d77b497f0a17728532`
+- Chapter 15 English Language Focus: `1f821aa3e977251db955dd6731d84dc05fa8c923`
+- Chapter 15 Arabic Language Focus: `b9f11bcf592f8fdd2aa0ac3c6a373f5c573fd873`
+- Chapter 15 active wiring: `c4e2486e077c5079fb018c612092b72946dfeae2`
 
 ## Exact next task
-- Chapter 15 only.
-- Read the full English and Arabic Chapter 15 story texts and their current Quick Challenges.
-- Manually author Chapter 15 Language Focus in both languages from their respective texts.
-- Do not start Chapter 16 in the same run.
+- Chapter 16 only.
+- Read the full English and Arabic Chapter 16 story texts and their current Quick Challenges.
+- Manually author Chapter 16 Language Focus in both languages from their respective texts.
+- Because Chapter 16 is the final story chapter, after completing and verifying it set `phase: LANGUAGE_FOCUS_COMPLETE` and `nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN`, then STOP. Do not build Language Review in the same run.
 
 ## Unresolved issues
-- None identified for Chapter 14.
+- None identified for Chapter 15.
