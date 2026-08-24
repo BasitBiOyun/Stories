@@ -1,53 +1,56 @@
 # Moses A2 Language Polish Progress
 
-phase: LANGUAGE_FOCUS_COMPLETE
-nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
+phase: LANGUAGE_REVIEW_COMPLETE
+nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
 
-## Completed chapters
+## Completed components
 - Chapters 1–16 English Language Focus: COMPLETE
 - Chapters 1–16 Arabic Language Focus: COMPLETE
+- English cumulative Language Review: COMPLETE
+- Arabic cumulative Language Review: COMPLETE
+- Active page 21 Language Review wiring in English and Arabic: COMPLETE
 
-## Chapter 16 English decisions
-- Read the full Chapter 16 English story and its current Quick Challenge before authoring.
-- The Quick Challenge already asks learners to confirm the final lesson directly, so Language Focus does not retest that comprehension answer.
-- Chapter 16 Language Focus instead targets language grounded in the text: `behind` and `in the middle of` for position, `when + clause` for event time, `in the end` for final result, `say to + person` for introducing direct speech, the imperative `Look!`, `tell + object + to + verb` for reporting an instruction/claim, past result language, and lesson frames such as `The story tells us that...`, `It shows that...`, `no one can + verb`, and `only + person/thing + has...`.
-- Productive transfer asks learners to use these frames in a new everyday story rather than retelling Pharaoh's final scene.
+## Language Review decisions
+- Replaced the old page-21 Final Review role with a dedicated cumulative Language Review layer.
+- Language Review consolidates grammar patterns and communicative functions taught across the sixteen chapter Language Focus sections rather than retesting story comprehension.
+- English review recycles past/background action, reason/result, sequence, ability/inability, necessity, intention/decision/purpose, future/time, commands and reported instructions, change/state, place/movement, questions/comparison, and short narrative organisation.
+- Arabic review was authored independently from Arabic chapter language and recycles `كان + فعل مضارع`, `لأن / لذلك`, sequencing, `استطاع / لم يستطع`, `يستطيع / لا يستطيع`, `يجب أن`, `بحاجة إلى`, `أراد أن`, `قرر أن`, purpose with `لـ`, future with `سـ / سوف`, direct imperatives, `أخبر ... أن`, `أمر ... أن`, `قال لـ`, change with `أصبح / تحول إلى / جعل / زاد`, place/movement, question and comparison patterns.
+- Both reviews end with meaningful productive transfer to a new everyday situation rather than retelling Moses's story.
+- Literal `[blank]` syntax is preserved in the fill-blank activity.
+- Quick Challenge, Knowledge Check, Vocabulary Challenge and Final Challenge content were not audited or rewritten in this run.
+- Story prose was not changed.
 
-## Chapter 16 Arabic decisions
-- Read the full Arabic Chapter 16 independently and designed its Language Focus from the Arabic wording rather than translating the English activities.
-- The Arabic Quick Challenge already states the final lesson, so Language Focus focuses on the language system around the scene and lesson expression instead of asking for that answer again.
-- Targets include `من وراء + ضمير`, `في وسط + مكان`, `عندما + جملة`, `في النهاية`, `قال لـ + شخص`, the imperative `انظروا`, `أمر + مفعول به + أن + فعل`, past-result language, and lesson frames such as `القصة تحمل دروسًا`, `تخبرنا أن`, `تبيّن لنا أن`, and `وحده + صاحب...` for restriction/exclusivity.
-- Productive transfer uses a new Arabic everyday story with place/time, reported speech, result and a simple lesson.
+## Files added in this run
+- `src/data/moses/a2/en/languageReview.ts`
+- `src/data/moses/a2/ar/languageReview.ts`
 
-## Files changed in this run
-- `src/data/moses/a2/en/languageFocusPart11.ts` — added Chapter 16 English Language Focus.
-- `src/data/moses/a2/ar/languageFocusPart11.ts` — added Chapter 16 Arabic Language Focus.
-- `docs/automation/moses-a2-language-polish-progress.md` — updated for the hard phase handoff.
+## Files updated in this run
+- `src/data/moses/a2/index.ts`
+- `docs/automation/moses-a2-language-polish-progress.md`
 
 ## Wiring
-- No `src/data/moses/a2/index.ts` edit was required in this run.
-- Existing Part11 imports/fallbacks already attach both English and Arabic Chapter 16 Language Focus arrays automatically by page id.
+- Page 21 English title/content is now `Language Review` and uses `mosesA2LanguageReviewExercises`.
+- Page 21 Arabic title/content is now `مراجعة اللغة` and uses `mosesA2LanguageReviewExercisesAr`.
+- Old Final Review exports are no longer imported or attached by the active Moses A2 index.
+- Page 22 remains the separate Final Challenge and was not modified in this phase.
 
-## Validation
-- Read the full current English Chapter 16 story from `preview`.
-- Read the full current Arabic Chapter 16 story from `preview` independently.
-- Read the current English and Arabic Chapter 16 Quick Challenges and confirmed Language Focus does not duplicate their final-lesson comprehension check.
-- Re-fetched `src/data/moses/a2/en/languageFocusPart11.ts` after update and confirmed Chapter 16 activities are present.
-- Re-fetched `src/data/moses/a2/ar/languageFocusPart11.ts` after update and confirmed the independently authored Arabic Chapter 16 activities are present.
-- Re-fetched `src/data/moses/a2/index.ts` during this run and confirmed Part11 is already included in both English and Arabic Language Focus fallback chains.
-- Story prose was not changed.
-- Quick Challenge source content, Knowledge Check, Vocabulary Challenge, Language Review/Final Review, Final Challenge, Teacher Guide and Self Study Guide were not modified.
+## Validation performed
+- Re-fetched the English Language Review from `preview` and confirmed 10 cumulative activities are present, including matching, fill-blank, sequencing and productive reflection.
+- Re-fetched the Arabic Language Review from `preview` and confirmed the independently authored cumulative review is present.
+- Re-fetched `src/data/moses/a2/index.ts` after concurrent-safe writes and confirmed the new Language Review imports are active.
+- Story prose and other books were not changed.
 - No typecheck/build/CI pass is claimed because no executable runner was available through the connected GitHub file actions in this run.
 
 ## Commits
-- Chapter 16 English Language Focus: `31b06896956421cc3e93fcaec32543e1a7013ec5`
-- Chapter 16 Arabic Language Focus: `9095464a0afefbfcccec2caf763dbeeca56ec1b0`
+- English Language Review: `e3891ad73ac5c1532da59f00a5e4146c850fb286`
+- Arabic Language Review: `290db23ee110acf997cd61b25f9cbeb57ec7af12`
+- Active Language Review wiring: `79cc10f363c5aea79b7a656f32ade2fee8fa8bbd`
 
 ## Exact next task
-- BUILD LANGUAGE REVIEW ONLY in the next run.
-- Use the actual Language Focus taught across Chapters 1–16 to create cumulative English and Arabic Language Reviews.
-- Do not audit or modify Quick Challenges, Knowledge Check, Vocabulary Challenge or Final Challenge in that run.
-- When Language Review is complete, set `phase: LANGUAGE_REVIEW_COMPLETE` and `nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN`, then STOP.
+- Run PHASE 3 only: audit Moses A2 English and Arabic Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and active Moses-A2-local wiring.
+- Preserve role separation: Quick Challenge = chapter comprehension, Language Focus = chapter-specific language use, Language Review = cumulative grammar/function consolidation, Final Challenge = independent whole-story mastery.
+- Fix only justified Moses-A2-local issues. Do not change story prose.
 
 ## Unresolved issues
-- None identified for Chapter 16 or the active Chapter 16 Language Focus wiring.
+- None identified in the Language Review layer.
+- Build/typecheck remains unverified only because no executable runner was available in this run.
