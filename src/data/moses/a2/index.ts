@@ -25,6 +25,7 @@ import { mosesA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
 import { mosesA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
 import { mosesA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
 import { mosesA2LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
+import { mosesA2LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
 import { mosesA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { mosesA2LanguageFocusExercisesPart2Ar } from './ar/languageFocusPart2';
 import { mosesA2LanguageFocusExercisesPart3Ar } from './ar/languageFocusPart3';
@@ -35,6 +36,7 @@ import { mosesA2LanguageFocusExercisesPart7Ar } from './ar/languageFocusPart7';
 import { mosesA2LanguageFocusExercisesPart8Ar } from './ar/languageFocusPart8';
 import { mosesA2LanguageFocusExercisesPart9Ar } from './ar/languageFocusPart9';
 import { mosesA2LanguageFocusExercisesPart10Ar } from './ar/languageFocusPart10';
+import { mosesA2LanguageFocusExercisesPart11Ar } from './ar/languageFocusPart11';
 import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { mosesA2SelfStudyGuide, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
@@ -124,7 +126,7 @@ const polishArabicSupport = (page: PageData): PageData => {
 const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
   const page = polishEnglishSupport(sourcePage);
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id] ?? mosesA2LanguageFocusExercisesPart6[page.id] ?? mosesA2LanguageFocusExercisesPart7[page.id] ?? mosesA2LanguageFocusExercisesPart8[page.id] ?? mosesA2LanguageFocusExercisesPart9[page.id] ?? mosesA2LanguageFocusExercisesPart10[page.id];
+    const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id] ?? mosesA2LanguageFocusExercisesPart6[page.id] ?? mosesA2LanguageFocusExercisesPart7[page.id] ?? mosesA2LanguageFocusExercisesPart8[page.id] ?? mosesA2LanguageFocusExercisesPart9[page.id] ?? mosesA2LanguageFocusExercisesPart10[page.id] ?? mosesA2LanguageFocusExercisesPart11[page.id];
     return {
       ...page,
       exercises: [mosesA2QuickChallenges[page.id]],
@@ -141,7 +143,7 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(sourcePage => {
 const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(sourcePage => {
   const page = polishArabicSupport(sourcePage);
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id] ?? mosesA2LanguageFocusExercisesPart6Ar[page.id] ?? mosesA2LanguageFocusExercisesPart7Ar[page.id] ?? mosesA2LanguageFocusExercisesPart8Ar[page.id] ?? mosesA2LanguageFocusExercisesPart9Ar[page.id] ?? mosesA2LanguageFocusExercisesPart10Ar[page.id];
+    const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id] ?? mosesA2LanguageFocusExercisesPart6Ar[page.id] ?? mosesA2LanguageFocusExercisesPart7Ar[page.id] ?? mosesA2LanguageFocusExercisesPart8Ar[page.id] ?? mosesA2LanguageFocusExercisesPart9Ar[page.id] ?? mosesA2LanguageFocusExercisesPart10Ar[page.id] ?? mosesA2LanguageFocusExercisesPart11Ar[page.id];
     return {
       ...page,
       exercises: [mosesA2QuickChallengesAr[page.id]],
