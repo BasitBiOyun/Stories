@@ -1,9 +1,9 @@
 import type { Exercise } from '../../../../types';
 
 /**
- * Adam B2 Chapter 1 Language Focus.
- * Manually authored from the English introduction and kept separate from the
- * Quick Challenge, which already tests the chapter's good-vs-evil framing.
+ * Adam B2 Language Focus.
+ * Manually authored from each English chapter and kept separate from the
+ * Quick Challenge comprehension layer.
  */
 export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
@@ -90,6 +90,93 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         { question: 'Focus — Include one passive sentence where the event or subject deserves the main focus.', mode: 'Individual' },
         { question: 'Contrast — Use “not ... but ...” or “rather than” to refine one idea.', mode: 'Individual' },
         { question: 'Representation — If appropriate, use “is portrayed/presented as ...” without turning interpretation into an unqualified fact.', mode: 'Pair' },
+      ],
+    },
+  ],
+  2: [
+    {
+      id: 'adam-b2-language-2-discourse-chain',
+      type: 'matching',
+      title: 'Follow the Explanatory Chain',
+      instructions: 'Match each Chapter 2 expression with the role it plays in the explanation.',
+      question: 'How does the chapter move from evidence to explanation and conclusion?',
+      matchingPairs: [
+        { left: 'using different terms', right: 'introduces variation that the next sentence explains' },
+        { left: 'which is a mixture of water and soil', right: 'adds a defining explanation inside the sentence' },
+        { left: 'As an example', right: 'moves from a general explanation to specific supporting evidence' },
+        { left: 'Therefore', right: 'signals a conclusion drawn from the preceding evidence' },
+      ],
+      correctAnswer: {
+        'using different terms': 'introduces variation that the next sentence explains',
+        'which is a mixture of water and soil': 'adds a defining explanation inside the sentence',
+        'As an example': 'moves from a general explanation to specific supporting evidence',
+        'Therefore': 'signals a conclusion drawn from the preceding evidence',
+      },
+      explanation: 'The chapter is organised as an explanatory sequence: variation is introduced, clarified, supported with evidence, and followed by an explicit conclusion.',
+      feedback: {
+        correct: 'Correct. You identified how the paragraph develops rather than treating each sentence as isolated.',
+        incorrect: 'Ask whether the phrase introduces variation, defines a term, gives evidence, or draws a conclusion.',
+      },
+    },
+    {
+      id: 'adam-b2-language-2-focus-relations',
+      type: 'matching',
+      title: 'Choose Focus and Relationship',
+      instructions: 'Match each form from Chapter 2 with the meaning or information focus it creates.',
+      question: 'What work do passive forms and clause links do in the chapter?',
+      matchingPairs: [
+        { left: 'Adam was created', right: 'foregrounds Adam and the creation event rather than the agent' },
+        { left: 'These different expressions are used', right: 'foregrounds the expressions and their explanatory function' },
+        { left: 'the material from which Adam was created', right: 'links the material directly to its role in the creation description' },
+        { left: 'no superiority ... due to the difference in their colors', right: 'marks a reason or basis for a claim that the text rejects' },
+      ],
+      correctAnswer: {
+        'Adam was created': 'foregrounds Adam and the creation event rather than the agent',
+        'These different expressions are used': 'foregrounds the expressions and their explanatory function',
+        'the material from which Adam was created': 'links the material directly to its role in the creation description',
+        'no superiority ... due to the difference in their colors': 'marks a reason or basis for a claim that the text rejects',
+      },
+      explanation: 'At B2, grammar is not only form. Passive voice controls information focus, while relative and causal links show how ideas depend on one another.',
+      feedback: {
+        correct: 'Good. You connected form with focus and logical relationship.',
+        incorrect: 'Look at what each structure makes central and what relationship it creates between the ideas.',
+      },
+    },
+    {
+      id: 'adam-b2-language-2-synthesis',
+      type: 'multiple-choice',
+      title: 'Compress Without Losing the Logic',
+      instructions: 'Choose the sentence that best preserves the chapter’s explanatory structure without merely copying it.',
+      question: 'Which reformulation most accurately combines the opening ideas of Chapter 2?',
+      options: [
+        'The Qur’anic terms earth, water and clay are presented as different descriptions of the material and stages involved in mud, and the chapter supports this explanation with a specific verse.',
+        'The chapter presents earth, water and clay as three unrelated and contradictory accounts of Adam’s creation.',
+        'The chapter says the different terms are unimportant because only one of them has any meaning.',
+      ],
+      correctAnswer: 0,
+      explanation: 'The first option preserves the progression from varied terminology to explanation and supporting example without changing the chapter’s claim.',
+      feedback: {
+        correct: 'Correct. The reformulation keeps the evidence–explanation relationship intact.',
+        incorrect: 'Preserve both the relationship among the terms and the role of the supporting verse.',
+      },
+    },
+    {
+      id: 'adam-b2-language-2-production',
+      type: 'reflection',
+      title: 'Build an Evidence-to-Conclusion Paragraph',
+      instructions: 'Write or say a 5–7 sentence B2 paragraph explaining a concept that can be described in more than one way. Use at least four Chapter 2 resources: a defining relative clause, one passive form for information focus, an example marker, and a result/conclusion marker such as “therefore” or “so”. Do not repeat the Quick Challenge conclusion about human equality.',
+      question: 'Can you organise explanation, evidence and conclusion as one coherent piece of discourse?',
+      correctAnswer: null,
+      explanation: 'A strong response introduces the concept, clarifies the relation among its descriptions, gives concrete evidence or an example, and signals the conclusion explicitly.',
+      feedback: {
+        correct: 'Keep the paragraph connected: each sentence should prepare, support or conclude the next idea.',
+        incorrect: '',
+      },
+      discussionPrompts: [
+        { question: 'Definition — Add a relative clause with “which” or “from which” to clarify one term.', mode: 'Individual' },
+        { question: 'Focus — Use one passive form only where the process or object deserves main focus.', mode: 'Individual' },
+        { question: 'Evidence — Introduce one supporting detail with “For example” or “As an example”.', mode: 'Individual' },
+        { question: 'Conclusion — End with “Therefore”, “So”, or an equivalent marker that genuinely follows from your evidence.', mode: 'Pair' },
       ],
     },
   ],
