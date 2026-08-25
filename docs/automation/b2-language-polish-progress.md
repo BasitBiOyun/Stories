@@ -2,83 +2,81 @@
 
 currentBook: Adam B2
 phase: LANGUAGE_FOCUS
-nextChapter: 6
+nextChapter: 7
 completedBooks: []
 
 ## Adam B2 chapter count
 - Story chapters: 17
 
 ## Completed chapters
-- Chapters 1–5 English Language Focus: COMPLETE
-- Chapters 1–5 Arabic Language Focus: COMPLETE
+- Chapters 1–6 English Language Focus: COMPLETE
+- Chapters 1–6 Arabic Language Focus: COMPLETE
 
-## Chapter 5 English decisions
-- Read the full English Chapter 5 story and the active English Quick Challenge before authoring.
-- Kept Language Focus separate from the Quick Challenge. The Quick Challenge already asks what the angels' prostration signifies, so Language Focus does not retest that answer.
-- Targets are grounded in Chapter 5 discourse:
-  - clarification/definition with `which is...`
-  - restatement with `in other words...`
-  - specification with `that is...`
-  - scope extension with `All kinds of ... are included in this`
-  - causal explanation with `because`
-  - contrastive viewpoint shift with `On the other hand`
-  - counter-evidence with `yet`
-  - hidden-to-visible development in `unapparent arrogance came to the surface`
-- Reformulation work preserves the chapter's reasoning about how an origin-based superiority claim is constructed and challenged without simply repeating the Quick Challenge.
-- Productive work asks learners to expose and challenge a weak criterion in a 6–8 sentence B2 argument using clarification, cause and contrast.
+## Chapter 6 English decisions
+- Read the full English Chapter 6 story and the active English Quick Challenge before authoring.
+- Kept Language Focus separate from the active sequencing Quick Challenge, which already asks learners to order the movement from life in Paradise to Satan's declared opposition.
+- Chapter-specific B2 targets are grounded in the actual English text:
+  - permission/state with `inhabit the Garden`
+  - broad permission with `eat whatever you wish`
+  - prohibition/boundary with `do not approach this tree`
+  - time-limited request for permission with `allow me until...`
+  - contrastive framing with `While Satan... Adam ... took a path completely different...`
+  - discourse progression with `Then I will...`
+  - parallel spatial phrasing: `from before ... behind ... right ... left`
+  - repeated future forms as declared determination/stance rather than future time alone
+- Productive work asks for a 7–9 sentence contrast between two diverging paths using boundary language, `while`, future intention and parallelism without retelling the Quick Challenge sequence.
 
-## Chapter 5 Arabic decisions
-- Read the full Arabic Chapter 5 independently and used the active Arabic Quick Challenge as a boundary. The Arabic Quick Challenge already analyses the flaw in Iblis's comparison, so Language Focus does not duplicate that comprehension task.
-- Arabic activities were authored from Arabic-native discourse resources rather than translated from English:
-  - clarification with `وهو...`
-  - reference restatement/specification with `أي...`
-  - scope extension with `وتدخل في ذلك...`
-  - causal explanation with `لأن`
-  - viewpoint shift with `ومن جهة أخرى`
-  - counter-argument with `ولكن`
-  - development from hidden to visible with `كان خفيا ... ظهر`
-- Productive work asks learners to discuss an insufficient criterion in a coherent Arabic argument using clarification, causality, transition and counter-positioning.
+## Chapter 6 Arabic decisions
+- Read the full Arabic Chapter 6 independently and used the active Arabic sequencing Quick Challenge as a boundary.
+- Arabic activities were authored from Arabic-native structures rather than translated from English categories:
+  - الأمر والإباحة: `اسكن` / `فكلا من حيث شئتما`
+  - النهي والحد: `ولا تقربا هذه الشجرة`
+  - طلب الإمهال المقيد: `فأنظرني إلى يوم...`
+  - المقابلة بـ`بينما` مع `سلك ... طريقا مختلفا تماما`
+  - التدرج بـ`ثم`
+  - التوازي التركيبي في `من بين أيديهم ومن خلفهم وعن أيمانهم وعن شمائلهم`
+  - صيغ التوكيد المستقبلية مثل `لأقعدن / لآتينهم / لأغوينهم` بوصفها دالة على العزم والموقف
+- Productive work asks for a coherent Arabic contrast between two paths using permission/boundary language, `بينما`, emphatic future intention and parallel structure.
 
 ## TYMM / B2 alignment
-- Chapter 5 follows the established B2 sequence: contextual noticing/discovery -> analysis of discourse function -> contextual reformulation -> coherent production.
-- The focus is not isolated grammar manipulation. Learners analyse how clarification, cause, contrast and information development construct an argument across sentences.
-- English and Arabic have equivalent B2 cognitive demand but use structures native to their own chapter texts.
+- Chapter 6 follows contextual noticing/discovery -> discourse-function analysis -> contextual selection/interpretation -> coherent production.
+- The work operates above isolated sentence transformation by analysing modality, contrast, stance and parallel organisation across the passage.
+- English and Arabic have equivalent B2 cognitive demand while using language-native structures from their own source texts.
 
 ## Files added in this run
-- `src/data/adam/b2/en/languageFocusBaseCh1to4.ts` — immutable copy of the previously active English Chapters 1–4 Language Focus blob, preserving prior work exactly.
-- `src/data/adam/b2/ar/languageFocusBaseCh1to4.ts` — immutable copy of the previously active Arabic Chapters 1–4 Language Focus blob, preserving prior work exactly.
-- `src/data/adam/b2/en/languageFocusChapter5.ts` — Chapter 5 English Language Focus, four activities.
-- `src/data/adam/b2/ar/languageFocusChapter5.ts` — Chapter 5 Arabic Language Focus, four independently authored activities.
+- `src/data/adam/b2/en/languageFocusChapter6.ts`
+- `src/data/adam/b2/ar/languageFocusChapter6.ts`
 
 ## Files updated in this run
-- `src/data/adam/b2/en/languageFocus.ts` — now assembles preserved Chapters 1–4 plus Chapter 5.
-- `src/data/adam/b2/ar/languageFocus.ts` — now assembles preserved Arabic Chapters 1–4 plus Chapter 5.
-- `docs/automation/b2-language-polish-progress.md` — advanced checkpoint to Chapter 6.
+- `src/data/adam/b2/en/languageFocus.ts` — now assembles Chapters 1–6 English Language Focus.
+- `src/data/adam/b2/ar/languageFocus.ts` — now assembles Chapters 1–6 Arabic Language Focus.
+- `docs/automation/b2-language-polish-progress.md` — advanced checkpoint to Chapter 7.
 
 ## Active wiring
-- `src/data/adam/b2/index.ts` continues importing `adamB2LanguageFocusExercises` and `adamB2LanguageFocusExercisesAr`; no index change was needed because the same exported record names are preserved by the new assembly wrappers.
+- `src/data/adam/b2/index.ts` continues importing `adamB2LanguageFocusExercises` and `adamB2LanguageFocusExercisesAr`; no index change was needed.
 - The existing story-page wiring therefore continues to attach Language Focus separately from Quick Challenge.
 
 ## Validation performed
-- Re-fetched English Chapter 5 Language Focus from `preview` and confirmed four activities are present.
-- Re-fetched Arabic Chapter 5 Language Focus from `preview` and confirmed four independently authored Arabic activities are present.
-- Confirmed the English source expressions are grounded in the actual Chapter 5 English story.
-- Confirmed the Arabic source expressions are grounded in the actual Chapter 5 Arabic story.
-- Confirmed Language Focus does not duplicate the active English or Arabic Quick Challenge role.
-- Preserved the previous Chapters 1–4 Language Focus byte-for-byte by referencing their existing blobs in `languageFocusBaseCh1to4.ts` before replacing the active wrapper files.
+- Re-fetched `src/data/adam/b2/en/languageFocusChapter6.ts` from `preview` and confirmed four English activities are present.
+- Re-fetched `src/data/adam/b2/ar/languageFocusChapter6.ts` from `preview` and confirmed four independently authored Arabic activities are present.
+- Confirmed the English source expressions are grounded in the actual Chapter 6 English story.
+- Confirmed the Arabic source expressions are grounded in the actual Chapter 6 Arabic story.
+- Read the active English and Arabic Chapter 6 Quick Challenges and confirmed Language Focus does not duplicate their sequencing role.
 - Story prose was not changed.
 - Knowledge Check, Vocabulary Challenge, Language Review/Final Review, Final Challenge, Teacher Guide and Self Study Guide were not modified.
 - No executable typecheck/build/CI runner was available through the connected GitHub actions used in this run, so no typecheck/build/CI pass is claimed.
 
 ## Commits
-- Chapters 1–4 commits remain recorded in prior history.
-- Chapter 5 English + Arabic Language Focus and active assembly wiring: `6adf78315490dc49a91788f4503816f6949062ba`
+- Chapter 6 English Language Focus: `70a2ea833c7fe1f324e33ee3b28c004ab3580f0f`
+- Chapter 6 Arabic Language Focus: `d0e351eaadd4694beee70d698a696a599b228de3`
+- English active wiring: `a87556813fc619f7bb23f6c5c7a39fb1d4153eed`
+- Arabic active wiring: `1b47aa32a3119e45b1a932249b0670fa83213b3c`
 
 ## Next task
-- Adam B2 Chapter 6 only.
-- Read the full English and Arabic Chapter 6 texts and their active Quick Challenges, then manually author Chapter 6 Language Focus in both languages.
-- Do not start Chapter 7 in the same run.
+- Adam B2 Chapter 7 only.
+- Read the full English and Arabic Chapter 7 texts and their active Quick Challenges, then manually author Chapter 7 Language Focus in both languages.
+- Do not start Chapter 8 in the same run.
 
 ## Unresolved issues
-- None identified for Adam B2 Chapter 5 Language Focus.
+- None identified for Adam B2 Chapter 6 Language Focus.
 - Build/typecheck remains unverified only because no executable runner was available through the connected GitHub actions.
