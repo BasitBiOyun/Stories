@@ -97,4 +97,93 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       ],
     },
   ],
+  2: [
+    {
+      id: 'adam-b1-language-2-cause-and-result',
+      type: 'matching',
+      title: 'Building Cause and Result',
+      instructions: 'Match each Chapter 2 connector with the relationship it creates.',
+      question: 'How does the chapter turn one idea into a reason or result without using separate, disconnected sentences?',
+      matchingPairs: [
+        { left: 'That’s why humans have different skin colors.', right: 'points back to a reason already given' },
+        { left: '..., so the children of Adam are ...', right: 'introduces a result that follows from the previous clause' },
+        { left: 'from a handful of dust from different lands', right: 'adds source/origin detail inside the same idea' },
+      ],
+      correctAnswer: {
+        'That’s why humans have different skin colors.': 'points back to a reason already given',
+        '..., so the children of Adam are ...': 'introduces a result that follows from the previous clause',
+        'from a handful of dust from different lands': 'adds source/origin detail inside the same idea',
+      },
+      explanation: 'Chapter 2 uses “that’s why” and “so” to make cause-result relationships explicit, while repeated “from” phrases add origin details without breaking the sentence apart.',
+      feedback: {
+        correct: 'Good. You identified how the chapter links reasons, results, and origin details.',
+        incorrect: 'Ask whether the expression points backward to a reason, forward to a result, or adds where something came from.',
+      },
+    },
+    {
+      id: 'adam-b1-language-2-report-and-command',
+      type: 'matching',
+      title: 'Reporting and Giving a Command',
+      instructions: 'Match each form with its communicative job in Chapter 2.',
+      question: 'How does the chapter move from reporting a statement to quoting an instruction?',
+      matchingPairs: [
+        { left: 'Prophet Muhammad said that ...', right: 'reports information from a named speaker' },
+        { left: 'Allah told His angels ...', right: 'introduces words directed to specific listeners' },
+        { left: 'After I have created Adam and given him life and knowledge, ...', right: 'sets a condition in time that must be completed before the next action' },
+        { left: 'show respect to him', right: 'gives a direct instruction' },
+      ],
+      correctAnswer: {
+        'Prophet Muhammad said that ...': 'reports information from a named speaker',
+        'Allah told His angels ...': 'introduces words directed to specific listeners',
+        'After I have created Adam and given him life and knowledge, ...': 'sets a condition in time that must be completed before the next action',
+        'show respect to him': 'gives a direct instruction',
+      },
+      explanation: 'The chapter combines reported speech with direct quotation. Inside the quotation, “after” establishes the earlier action and the imperative gives the instruction that follows.',
+      feedback: {
+        correct: 'Correct. You tracked both the reporting frame and the instruction inside it.',
+        incorrect: 'Separate the speaker-reporting frame from the exact instruction inside the quotation.',
+      },
+    },
+    {
+      id: 'adam-b1-language-2-purpose-sequence-comparison',
+      type: 'matching',
+      title: 'Purpose, Sequence, and Comparison',
+      instructions: 'Match the Chapter 2 pattern with the relationship it expresses.',
+      question: 'How does the second paragraph explain purpose, move the story forward, and compare amounts?',
+      matchingPairs: [
+        { left: 'life and intellect to learn and understand', right: 'expresses the purpose connected with what was given' },
+        { left: 'Later, He taught him ...', right: 'moves the account to a subsequent stage' },
+        { left: 'more knowledge than angels', right: 'compares the amount or degree of knowledge' },
+      ],
+      correctAnswer: {
+        'life and intellect to learn and understand': 'expresses the purpose connected with what was given',
+        'Later, He taught him ...': 'moves the account to a subsequent stage',
+        'more knowledge than angels': 'compares the amount or degree of knowledge',
+      },
+      explanation: 'The infinitive can express purpose, “later” organizes the sequence, and “more ... than” creates a comparative relationship. Together they make the paragraph more connected and precise.',
+      feedback: {
+        correct: 'Good. You identified three different relationships built by short language patterns.',
+        incorrect: 'Ask: why was something given, when did the next step happen, and what two things are being compared?',
+      },
+    },
+    {
+      id: 'adam-b1-language-2-connected-explanation',
+      type: 'reflection',
+      title: 'Build a Connected Explanation',
+      instructions: 'Write or say four connected sentences about a new learning situation. Use at least three Chapter 2 patterns without retelling the chapter.',
+      question: 'Can you explain a reason and result, report what someone said, show purpose, and make a comparison in one short coherent response?',
+      correctAnswer: null,
+      explanation: 'For example, you can introduce what a teacher said, explain why a learner received a tool, use “so” or “that’s why” for the result, and finish with a “more ... than” comparison.',
+      feedback: {
+        correct: 'Keep the ideas connected so each sentence develops the same situation.',
+        incorrect: '',
+      },
+      discussionPrompts: [
+        { question: 'Sentence 1 — Report information with “said that” or “told ...”.', mode: 'Individual' },
+        { question: 'Sentence 2 — Give a reason and result using “so” or “that’s why”.', mode: 'Individual' },
+        { question: 'Sentence 3 — Express purpose with “to + verb”.', mode: 'Individual' },
+        { question: 'Sentence 4 — Add a comparison with “more ... than”.', mode: 'Pair' },
+      ],
+    },
+  ],
 };
