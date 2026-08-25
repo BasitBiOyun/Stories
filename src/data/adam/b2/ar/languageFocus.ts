@@ -5,6 +5,7 @@ import { adamB2LanguageFocusChapter6Ar } from './languageFocusChapter6';
 import { adamB2LanguageFocusChapter7Ar } from './languageFocusChapter7';
 import { adamB2LanguageFocusChapter8Ar } from './languageFocusChapter8';
 import { adamB2LanguageFocusChapter9Ar } from './languageFocusChapter9';
+import { adamB2LanguageFocusChapter10Ar } from './languageFocusChapter10';
 
 /** التجميع النشط للتركيز اللغوي العربي في آدم B2 من مجموعات الفصول المصاغة يدويا. */
 export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
@@ -14,4 +15,5 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
   ...adamB2LanguageFocusChapter7Ar,
   ...adamB2LanguageFocusChapter8Ar,
   ...adamB2LanguageFocusChapter9Ar,
+  ...adamB2LanguageFocusChapter10Ar,
 };
