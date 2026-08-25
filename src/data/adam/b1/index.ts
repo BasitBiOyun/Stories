@@ -22,6 +22,7 @@ import { adamB1LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
 import { adamB1LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
 import { adamB1LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
 import { adamB1LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
+import { adamB1LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
 import { adamB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamB1LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { adamB1LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
@@ -29,6 +30,7 @@ import { adamB1LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
 import { adamB1LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
 import { adamB1LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6';
 import { adamB1LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
+import { adamB1LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
 import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -44,6 +46,7 @@ const englishLanguageFocus = {
   ...adamB1LanguageFocusExercisesPart5,
   ...adamB1LanguageFocusExercisesPart6,
   ...adamB1LanguageFocusExercisesPart7,
+  ...adamB1LanguageFocusExercisesPart8,
 };
 
 const arabicLanguageFocus = {
@@ -54,6 +57,7 @@ const arabicLanguageFocus = {
   ...adamB1LanguageFocusExercisesArPart5,
   ...adamB1LanguageFocusExercisesArPart6,
   ...adamB1LanguageFocusExercisesArPart7,
+  ...adamB1LanguageFocusExercisesArPart8,
 };
 
 const buildPages = (
