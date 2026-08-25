@@ -15,6 +15,8 @@ import {
   adamB2FinalReviewExercisesAr,
   adamB2FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { adamB2LanguageFocusExercises } from './en/languageFocus';
+import { adamB2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -279,7 +281,14 @@ const buildPages = (
     const page = reviewStoryPageShell(rawPage);
 
     if (STORY_IDS.has(page.id)) {
-      return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+      const languageFocusExercises = isArabicBook
+        ? adamB2LanguageFocusExercisesAr[page.id]
+        : adamB2LanguageFocusExercises[page.id];
+      return {
+        ...page,
+        exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
+        ...(languageFocusExercises ? { languageFocusExercises } : {}),
+      };
     }
     if (page.id === 18) {
       return { ...page, exercises: knowledgeCheck };
