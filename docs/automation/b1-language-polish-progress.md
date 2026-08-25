@@ -4,60 +4,60 @@ currentBook: Adam B1
 bookPath: `src/data/adam/b1`
 phase: LANGUAGE_FOCUS
 storyChapterCount: 12
-nextChapter: 9
-nextTask: READ_ADAM_B1_CHAPTER_9_EN_AR_AND_BUILD_LANGUAGE_FOCUS
+nextChapter: 10
+nextTask: READ_ADAM_B1_CHAPTER_10_EN_AR_AND_BUILD_LANGUAGE_FOCUS
 
 ## Completed chapters
-- Adam B1 Chapters 1–8 English Language Focus: COMPLETE
-- Adam B1 Chapters 1–8 Arabic Language Focus: COMPLETE
-- Adam B1 local runtime wiring for available Language Focus chapters: COMPLETE through Chapter 8
+- Adam B1 Chapters 1–9 English Language Focus: COMPLETE
+- Adam B1 Chapters 1–9 Arabic Language Focus: COMPLETE
+- Adam B1 local runtime wiring for available Language Focus chapters: COMPLETE through Chapter 9
 
-## Chapter 8 English pedagogical targets
-- `would + verb` to express expected future actions viewed from an earlier point in the narrative.
-- `had to + verb` to express necessity in a past situation.
-- `to + verb` in `to survive` / `to keep themselves alive` to express purpose.
-- `In addition` to add a related responsibility or difficulty.
-- `with + noun` in `with clothes and weapons` to express means/tools.
-- `because + clause` to explain motive or cause.
-- `for + period` to express duration.
-- `both ... and ...` / coordinated contrast in `good and difficult times` to present contrasting experiences within one life period.
-- Short connected B1 production combining expected role, necessity, purpose, addition, means, cause and duration in a new context.
+## Chapter 9 English pedagogical targets
+- `At that time` to locate a situation at a particular stage in the past.
+- `After ... when ...` to connect a later event with a time clause.
+- `became + noun/complement` to show a change of role or state.
+- `never stopped + -ing` to show continuation over time.
+- `start + -ing` and `teach + person + to + verb` for beginning and directing instruction.
+- `to + verb` after an action to express purpose.
+- `want to + verb` and `make + person + base verb` for intention and influence.
+- Short coherent B1 production combining time, role change, teaching, purpose, continuation and a general-result if-clause in a new context.
 
-## Chapter 8 Arabic pedagogical targets
-- السين مع المضارع في `سيزرعان` / `سيربيان` للتعبير عن أفعال متوقعة في المستقبل من داخل سياق السرد.
-- `كان عليه أن + فعل` للتعبير عن ضرورة في موقف ماضٍ.
-- `من أجل + مصدر` في `من أجل البقاء` للتعبير عن الغرض.
-- `كما` لإضافة ضرورة مرتبطة بما قبلها.
-- الباء في `بالملابس والأسلحة` لبيان الوسيلة أو الأداة.
-- اللام مع الفعل في `ليبعد الناس` لبيان الغرض أو المقصد.
-- `لسنوات طويلة` لبيان المدة.
-- `أيام جيدة وسيئة` لتقديم خبرتين متقابلتين داخل وصف واحد للحياة.
-- إنتاج عربي B1 قصير مترابط يربط الدور المتوقع والضرورة والغرض والإضافة والوسيلة والسبب في سياق جديد.
+## Chapter 9 Arabic pedagogical targets
+- `في ذلك الوقت` لتحديد مرحلة معينة في الماضي.
+- `بعد ... عندما ...` لربط حدث لاحق بجملة زمنية.
+- `أصبح + خبر` لبيان تغير في الحال أو الدور.
+- `استمر في + مصدر/فعل` لبيان استمرار الفعل.
+- `بدأ + فعل` لبيان بداية فعل مستمر أو متكرر.
+- `علّم + شخصاً + شيئاً/أن...` للتعبير عن توجيه الآخرين.
+- `على + ضمير + أن + فعل` للتعبير عن ضرورة أو توجيه.
+- اللام مع الفعل لبيان الغرض.
+- `طلب من... أن...` للتوجيه المباشر.
+- إنتاج عربي B1 قصير مترابط يربط الزمن والدور الجديد وبداية التوجيه والضرورة والغرض في سياق جديد.
 
 ## Quick Challenge separation
-- Chapter 8 Quick Challenge was read in both languages before authoring.
-- The Quick Challenge directly tests the content-level responsibilities of life on earth: work, protection of nature, care for the weak and survival.
-- The Language Focus does not ask learners to retrieve or list those responsibilities. It analyzes how the chapter expresses expected future action, past necessity, purpose, addition, means, cause, duration and contrast, then transfers those relationships to a new situation.
+- Chapter 9 Quick Challenge was read in both languages before authoring.
+- The Quick Challenge directly asks why messengers and sacred texts are sent and tests the content-level purpose of guidance.
+- The Language Focus does not ask learners to retrieve that answer. It focuses on how the chapter organizes time, marks role change and continuation, expresses teaching/direction and purpose, and transfers those patterns to a new situation.
 
 ## Files changed in latest run
-- `src/data/adam/b1/en/languageFocusPart7.ts` — created with four manually authored Chapter 8 English Language Focus activities.
-- `src/data/adam/b1/ar/languageFocusPart7.ts` — created with four independently authored Chapter 8 Arabic Language Focus activities.
-- `src/data/adam/b1/index.ts` — added Part7 imports/merging so Chapter 8 Language Focus renders in English and Arabic.
-- `docs/automation/b1-language-polish-progress.md` — advanced checkpoint to Chapter 9.
+- `src/data/adam/b1/en/languageFocusPart8.ts` — created with four manually authored Chapter 9 English Language Focus activities.
+- `src/data/adam/b1/ar/languageFocusPart8.ts` — created with four independently authored Chapter 9 Arabic Language Focus activities.
+- `src/data/adam/b1/index.ts` — added Part8 imports/merging so Chapter 9 Language Focus renders in English and Arabic.
+- `docs/automation/b1-language-polish-progress.md` — advanced checkpoint to Chapter 10.
 
 ## Latest commits
-- Chapter 8 English Language Focus: `20bac43dd3773c47886590991900358cb40f49df`
-- Chapter 8 Arabic Language Focus: `4f3a1958930e74651e033ed43ac1555b6a3a8ffc`
-- Chapter 8 local wiring: `cfb86b0aa49feedf635fffc19cb3ad11775de615`
+- Chapter 9 English Language Focus: `5e0088b9db79c39163ef2a259342d8718b7e98df`
+- Chapter 9 Arabic Language Focus: `8b6a7fb3dc7a1a0f260ec77230dd59395e6ce898`
+- Chapter 9 local wiring: `8a548d5e01d6726f7625ee0458cc4c5293c42937`
 
 ## Validation actually performed
-- Read the full Adam B1 Chapter 8 English story text and full Arabic Chapter 8 story text from `preview` before authoring.
-- Read the existing Chapter 8 Quick Challenge in both languages and kept Language Focus distinct from its comprehension role.
+- Read the full Adam B1 Chapter 9 English story text and full Arabic Chapter 9 story text from `preview` before authoring.
+- Read the existing Chapter 9 Quick Challenge in both languages and kept Language Focus distinct from its comprehension role.
 - Re-fetched both new Language Focus files from `preview` after creation and confirmed four activities are present in each language.
-- Re-fetched the active Adam B1 index after the concurrent-safe wiring write and confirmed Part7 is imported and merged for English and Arabic.
+- Re-fetched the active Adam B1 index after the concurrent-safe wiring write and confirmed Part8 is imported and merged for English and Arabic.
 - Story prose was not changed.
 - No A2, B2, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide files were changed.
 - No executable typecheck/build/CI runner was available through the connected GitHub file actions used in this run, so no typecheck/build/CI pass is claimed.
 
 ## Unresolved issues
-- None for Adam B1 Chapter 8.
+- None for Adam B1 Chapter 9.
