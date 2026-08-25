@@ -16,13 +16,25 @@ import {
   adamB1FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { adamB1LanguageFocusExercises } from './en/languageFocus';
+import { adamB1LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { adamB1LanguageFocusExercisesAr } from './ar/languageFocus';
+import { adamB1LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamB1SelfStudyGuideAr, adamB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 12 }, (_, index) => index + 1));
+
+const englishLanguageFocus = {
+  ...adamB1LanguageFocusExercises,
+  ...adamB1LanguageFocusExercisesPart2,
+};
+
+const arabicLanguageFocus = {
+  ...adamB1LanguageFocusExercisesAr,
+  ...adamB1LanguageFocusExercisesArPart2,
+};
 
 const buildPages = (
   pages: PageData[],
@@ -51,7 +63,7 @@ const buildPages = (
 const englishPages = buildPages(
   adamB1Pages,
   adamB1QuickChallenges,
-  adamB1LanguageFocusExercises,
+  englishLanguageFocus,
   adamB1KnowledgeCheckExercises,
   adamB1VocabularyChallengePairs,
   adamB1FinalReviewExercises,
@@ -61,7 +73,7 @@ const englishPages = buildPages(
 const arabicPages = buildPages(
   adamB1PagesAr,
   adamB1QuickChallengesAr,
-  adamB1LanguageFocusExercisesAr,
+  arabicLanguageFocus,
   adamB1KnowledgeCheckExercisesAr,
   adamB1VocabularyChallengePairsAr,
   adamB1FinalReviewExercisesAr,
