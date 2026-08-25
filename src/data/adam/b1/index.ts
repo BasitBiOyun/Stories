@@ -5,14 +5,12 @@ import {
   adamB1QuickChallenges,
   adamB1KnowledgeCheckExercises,
   adamB1VocabularyChallengePairs,
-  adamB1FinalReviewExercises,
   adamB1FinalChallengeExercises,
 } from './en/exercises';
 import {
   adamB1QuickChallengesAr,
   adamB1KnowledgeCheckExercisesAr,
   adamB1VocabularyChallengePairsAr,
-  adamB1FinalReviewExercisesAr,
   adamB1FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { adamB1LanguageFocusExercises } from './en/languageFocus';
@@ -26,6 +24,7 @@ import { adamB1LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
 import { adamB1LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
 import { adamB1LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
 import { adamB1LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
+import { adamB1LanguageReviewExercises } from './en/languageReview';
 import { adamB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamB1LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
 import { adamB1LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
@@ -37,6 +36,7 @@ import { adamB1LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
 import { adamB1LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
 import { adamB1LanguageFocusExercisesArPart10 } from './ar/languageFocusPart10';
 import { adamB1LanguageFocusExercisesArPart11 } from './ar/languageFocusPart11';
+import { adamB1LanguageReviewExercisesAr } from './ar/languageReview';
 import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -78,8 +78,9 @@ const buildPages = (
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
-  review: Exercise[],
+  languageReview: Exercise[],
   finalChallenge: Exercise[],
+  language: 'en' | 'ar',
 ): PageData[] => pages.map((page) => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = languageFocus[page.id];
@@ -90,7 +91,16 @@ const buildPages = (
     };
   }
   if (page.id === 13) return { ...page, exercises: knowledgeCheck };
-  if (page.id === 14) return { ...page, exercises: review };
+  if (page.id === 14) {
+    return {
+      ...page,
+      title: language === 'ar' ? 'مراجعة اللغة B1' : 'B1 Language Review',
+      content: language === 'ar'
+        ? 'راجع التراكيب والوظائف اللغوية التي تعلمتها عبر الفصول، ثم استخدمها في سياقات جديدة مترابطة.'
+        : 'Consolidate grammar, discourse relationships, and communicative functions from across the chapters, then use them in new connected contexts.',
+      exercises: languageReview,
+    };
+  }
   if (page.id === 15) return { ...page, vocabularyPairs };
   if (page.id === 17) return { ...page, exercises: finalChallenge };
   return page;
@@ -102,8 +112,9 @@ const englishPages = buildPages(
   englishLanguageFocus,
   adamB1KnowledgeCheckExercises,
   adamB1VocabularyChallengePairs,
-  adamB1FinalReviewExercises,
+  adamB1LanguageReviewExercises,
   adamB1FinalChallengeExercises,
+  'en',
 );
 
 const arabicPages = buildPages(
@@ -112,8 +123,9 @@ const arabicPages = buildPages(
   arabicLanguageFocus,
   adamB1KnowledgeCheckExercisesAr,
   adamB1VocabularyChallengePairsAr,
-  adamB1FinalReviewExercisesAr,
+  adamB1LanguageReviewExercisesAr,
   adamB1FinalChallengeExercisesAr,
+  'ar',
 );
 
 export const adamB1BookDataEn: BookData = {
