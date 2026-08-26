@@ -15,6 +15,8 @@ import {
   abrahamB2QuickChallengesAr,
   abrahamB2VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { abrahamB2LanguageFocusExercises } from './en/languageFocus';
+import { abrahamB2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamB2TeacherGuideEn, abrahamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB2TeacherGuideAr, abrahamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB2SelfStudyGuideEn } from './en/selfStudyGuide';
@@ -23,7 +25,14 @@ import { abrahamB2SelfStudyGuideAr } from './ar/selfStudyGuide';
 const STORY_IDS = new Set(Array.from({ length: 35 }, (_, index) => index + 1));
 
 const attachEnglishLearning = (pages: PageData[]): PageData[] => pages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB2QuickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = abrahamB2LanguageFocusExercises[page.id];
+    return {
+      ...page,
+      exercises: [abrahamB2QuickChallenges[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercises };
   if (page.id === 37) return { ...page, exercises: abrahamB2FinalReviewExercises };
   if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairs };
@@ -32,7 +41,14 @@ const attachEnglishLearning = (pages: PageData[]): PageData[] => pages.map(page 
 });
 
 const attachArabicLearning = (pages: PageData[]): PageData[] => pages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB2QuickChallengesAr[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = abrahamB2LanguageFocusExercisesAr[page.id];
+    return {
+      ...page,
+      exercises: [abrahamB2QuickChallengesAr[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercisesAr };
   if (page.id === 37) return { ...page, exercises: abrahamB2FinalReviewExercisesAr };
   if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairsAr };
