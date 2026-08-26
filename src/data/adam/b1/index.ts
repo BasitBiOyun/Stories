@@ -2,17 +2,17 @@ import type { BookData, Exercise, PageData } from '../../../types';
 import { adamB1Pages } from './en/pages';
 import { adamB1PagesAr } from './ar/pages';
 import {
-  adamB1QuickChallenges,
-  adamB1KnowledgeCheckExercises,
-  adamB1VocabularyChallengePairs,
-  adamB1FinalChallengeExercises,
-} from './en/exercises';
+  adamB1PolishedQuickChallenges,
+  adamB1PolishedKnowledgeCheckExercises,
+  adamB1PolishedVocabularyChallengePairs,
+  adamB1PolishedFinalChallengeExercises,
+} from './en/exerciseSystem';
 import {
-  adamB1QuickChallengesAr,
-  adamB1KnowledgeCheckExercisesAr,
-  adamB1VocabularyChallengePairsAr,
-  adamB1FinalChallengeExercisesAr,
-} from './ar/exercises';
+  adamB1PolishedQuickChallengesAr,
+  adamB1PolishedKnowledgeCheckExercisesAr,
+  adamB1PolishedVocabularyChallengePairsAr,
+  adamB1PolishedFinalChallengeExercisesAr,
+} from './ar/exerciseSystem';
 import { adamB1LanguageFocusExercises } from './en/languageFocus';
 import { adamB1LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { adamB1LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
@@ -108,23 +108,23 @@ const buildPages = (
 
 const englishPages = buildPages(
   adamB1Pages,
-  adamB1QuickChallenges,
+  adamB1PolishedQuickChallenges,
   englishLanguageFocus,
-  adamB1KnowledgeCheckExercises,
-  adamB1VocabularyChallengePairs,
+  adamB1PolishedKnowledgeCheckExercises,
+  adamB1PolishedVocabularyChallengePairs,
   adamB1LanguageReviewExercises,
-  adamB1FinalChallengeExercises,
+  adamB1PolishedFinalChallengeExercises,
   'en',
 );
 
 const arabicPages = buildPages(
   adamB1PagesAr,
-  adamB1QuickChallengesAr,
+  adamB1PolishedQuickChallengesAr,
   arabicLanguageFocus,
-  adamB1KnowledgeCheckExercisesAr,
-  adamB1VocabularyChallengePairsAr,
+  adamB1PolishedKnowledgeCheckExercisesAr,
+  adamB1PolishedVocabularyChallengePairsAr,
   adamB1LanguageReviewExercisesAr,
-  adamB1FinalChallengeExercisesAr,
+  adamB1PolishedFinalChallengeExercisesAr,
   'ar',
 );
 
