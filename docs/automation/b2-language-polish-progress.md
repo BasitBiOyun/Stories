@@ -2,68 +2,69 @@
 
 currentBook: Abraham B2
 phase: LANGUAGE_FOCUS
-nextTask: CHAPTER_8_LANGUAGE_FOCUS
+nextTask: CHAPTER_9_LANGUAGE_FOCUS
 completedBooks:
 - Adam B2
 
 ## Abraham B2 progress
 - Story chapters: 35
 - Current book path: `src/data/abraham/b2`
-- English Language Focus completed: Chapters 1–7
-- Arabic Language Focus completed: Chapters 1–7
-- Next chapter: Chapter 8
+- English Language Focus completed: Chapters 1–8
+- Arabic Language Focus completed: Chapters 1–8
+- Next chapter: Chapter 9
 
-## Abraham B2 Chapter 7 English decisions
-- Read the full English Chapter 7 story and active Quick Challenge before authoring.
-- Quick Challenge already tests the factual contrast that the statues are lifeless, silent and helpless while people still beg them for help; Language Focus does not retest that comprehension point.
+## Abraham B2 Chapter 8 English decisions
+- Read the full English Chapter 8 story and active Quick Challenge before authoring.
+- Quick Challenge already tests why the setting/disappearance of the planet matters in Abraham’s reasoning; Language Focus therefore does not ask learners to retrieve that conclusion.
 - English Language Focus targets:
-  - reasoning progression from observation → concrete evidence → evaluation → contradiction
-  - contextual meanings of `could`: plausibility/conceivability in `how ... could` versus actual ability/capacity in `could not get back up`, `could harm or benefit`, and hearing
-  - embedded childhood background through the relative clause `who used to go to the temple with his father when he was a child`
-  - viewpoint contrast through `as if those lifeless idols were capable of hearing their prayers`
-  - attitude development through `At first ... but later ...`
-- Productive transfer asks for an 8–10 sentence non-story paragraph in which evidence leads to evaluation, modal meanings remain distinct, a relative clause embeds background, `as if` exposes a reality/appearance gap, and the viewpoint changes over time.
+  - external expectation and pressure through `wanted him to become...` and `wanted his son to...`
+  - narrowing with `only` and persistence/contrast through `yet ... never stopped...`
+  - evaluative relative clause `which made things even worse`
+  - purpose/intended result in `that he might be one of those with certainty`
+  - temporal reasoning chain `When the night fell...` → observation → `But when it set...` → evaluative conclusion
+- Productive transfer asks for an 8–10 sentence non-story paragraph where pressure is contrasted with persistence, an action has an intended result, and change over time becomes evidence for an evaluation.
 
-## Abraham B2 Chapter 7 Arabic decisions
-- Read the full Arabic Chapter 7 independently and its active Quick Challenge before authoring.
+## Abraham B2 Chapter 8 Arabic decisions
+- Read the Arabic Chapter 8 independently and its active Quick Challenge before authoring.
 - Arabic Language Focus was authored from the Arabic wording rather than translated from English.
 - Arabic-native targets:
-  - الاستدلال عبر `أدرك أنّ...` ثم الدليل بـ`إذا...` ثم التقييم بـ`كان من المستحيل فهم كيف...`
-  - distinction between plausibility with `كيف يمكن...` and actual ability with `لا تستطيع` / `قادرة على`
-  - صلة الموصول as embedded background in `الذي كان يذهب إلى المعبد...`
-  - viewpoint and unreal comparison through `وكأنّ...`
-  - attitude development through `في البداية... لكن لاحقًا...`
-- Productive transfer requires an 8–10 sentence Arabic argument paragraph that moves from observation to evidence and evaluation, distinguishes possibility from ability, embeds background with a relative clause, uses `وكأنّ` to reveal contradiction, and shows a genuine change in viewpoint.
+  - expectation through `كان والده يريد أن...` and future framing with `عندما يكبر`
+  - restriction through `لم يكن يريد... إلا أن...`
+  - contrast/persistence through `لكن ... لم يتوقف أبدًا...`
+  - evaluative result through `مما جعل الأمر أسوأ`
+  - purpose/intended outcome in `وليكون من الموقنين`
+  - temporal reasoning through `فلما أظلم...` → observation → `فلما أفل...` → judgement
+- Productive transfer requires an 8–10 sentence Arabic analytical paragraph using pressure, contrast, evaluation, purpose and a temporal evidence chain.
 
-## Files added for Chapter 7
-- `src/data/abraham/b2/en/languageFocusChapter7.ts`
-- `src/data/abraham/b2/ar/languageFocusChapter7.ts`
+## Files added for Chapter 8
+- `src/data/abraham/b2/en/languageFocusChapter8.ts`
+- `src/data/abraham/b2/ar/languageFocusChapter8.ts`
 
-## Files updated for Chapter 7
+## Files updated for Chapter 8
 - `src/data/abraham/b2/en/languageFocus.ts`
 - `src/data/abraham/b2/ar/languageFocus.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
-## Abraham B2 Chapter 7 commits
-- English Chapter 7 Language Focus: `20c6ce16045bd31509cde6f4851de707c115f53e`
-- Arabic Chapter 7 Language Focus: `74e4a2bada90be49d239023add71e754a84843c8`
-- English aggregator wiring: `1c6d72da62da43a58e227c4e3d003a02d3d178ad`
-- Arabic aggregator wiring: `2b01086c50c926e3c6c0a84bb5f963bb37c71a6c`
+## Abraham B2 Chapter 8 commits
+- English Chapter 8 Language Focus: `43c016447a0f8d1804291c7c2881cac461d98c89`
+- Arabic Chapter 8 Language Focus: `321855c451bf62ed9113a816127f0330285142e4`
+- English aggregator wiring: `d6b1f0eb837f4cfd665993fab40a08cb97e30bd6`
+- Arabic aggregator wiring: `537c73f8238ac512251c07b359829e0da040b007`
 
 ## Validation actually performed
-- Read current Chapter 7 English and Arabic canonical story text from `preview` without modifying story prose.
-- Read both active Chapter 7 Quick Challenges before authoring.
-- Confirmed the new Language Focus does not duplicate the Quick Challenge’s idol-capability comprehension role.
+- Read the full English Chapter 8 source text and the Arabic Chapter 8 source independently without modifying canonical story prose.
+- Read both active Chapter 8 Quick Challenges before authoring.
+- Confirmed Language Focus does not duplicate the Quick Challenge’s planet-setting comprehension answer.
 - Added four English B2 activities and four independently authored Arabic B2 activities.
-- Re-fetched the target paths before creation to confirm the Chapter 7 files did not already exist.
-- Re-fetched current book-local aggregator SHAs immediately before each wiring write and preserved existing Chapters 1–6.
+- Re-fetched target paths before creation to confirm the Chapter 8 files did not already exist.
+- Re-fetched both current book-local aggregator SHAs immediately before wiring writes and preserved Chapters 1–7.
 - No Knowledge Check, Retrieval Review, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide files were modified.
 - No B1/A2, other B2 book or shared/global file was edited.
 - No executable typecheck/build/CI runner was used, so no typecheck/build/CI pass is claimed.
 
 ## Exact next run
-- Chapter 8 only: read the full Abraham B2 English and Arabic Chapter 8 story texts and active Quick Challenges independently, then author Chapter 8 Language Focus in both languages.
-- Do not start Chapter 9 in the same run.
+- Chapter 9 only: read the full Abraham B2 English and Arabic Chapter 9 story texts and active Quick Challenges independently, then author Chapter 9 Language Focus in both languages.
+- Do not start Chapter 10 in the same run.
 
 ## Unresolved issues
-- None identified for Abraham B2 Chapter 7.
+- None identified for Abraham B2 Chapter 8.
