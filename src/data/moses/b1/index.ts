@@ -16,13 +16,25 @@ import {
   mosesB1FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { mosesB1LanguageFocusExercises } from './en/languageFocus';
+import { mosesB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
 import { mosesB1LanguageFocusExercisesAr } from './ar/languageFocus';
+import { mosesB1LanguageFocusChapter3Ar } from './ar/languageFocusChapter3';
 import { mosesB1TeacherGuide, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1SelfStudyGuide, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { mosesB1SelfStudyGuideAr, mosesB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+
+const englishLanguageFocus = {
+  ...mosesB1LanguageFocusExercises,
+  ...mosesB1LanguageFocusChapter3,
+};
+
+const arabicLanguageFocus = {
+  ...mosesB1LanguageFocusExercisesAr,
+  ...mosesB1LanguageFocusChapter3Ar,
+};
 
 const buildPages = (
   pages: PageData[],
@@ -51,7 +63,7 @@ const buildPages = (
 const englishPages = buildPages(
   mosesB1Pages,
   mosesB1QuickChallenges,
-  mosesB1LanguageFocusExercises,
+  englishLanguageFocus,
   mosesB1KnowledgeCheckExercises,
   mosesB1VocabularyChallengePairs,
   mosesB1FinalReviewExercises,
@@ -60,7 +72,7 @@ const englishPages = buildPages(
 const arabicPages = buildPages(
   mosesB1PagesAr,
   mosesB1QuickChallengesAr,
-  mosesB1LanguageFocusExercisesAr,
+  arabicLanguageFocus,
   mosesB1KnowledgeCheckExercisesAr,
   mosesB1VocabularyChallengePairsAr,
   mosesB1FinalReviewExercisesAr,
