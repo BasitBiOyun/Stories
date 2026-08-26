@@ -29,6 +29,8 @@ import { abrahamB1LanguageFocusChapter7 } from './en/languageFocusChapter7';
 import { abrahamB1LanguageFocusChapter7Ar } from './ar/languageFocusChapter7';
 import { abrahamB1LanguageFocusChapter8 } from './en/languageFocusChapter8';
 import { abrahamB1LanguageFocusChapter8Ar } from './ar/languageFocusChapter8';
+import { abrahamB1LanguageFocusChapter9 } from './en/languageFocusChapter9';
+import { abrahamB1LanguageFocusChapter9Ar } from './ar/languageFocusChapter9';
 import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
@@ -72,7 +74,7 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
       ...page,
       exercises: [
         abrahamB1QuickChallenges[page.id],
-        ...(abrahamB1LanguageFocusChapter8[page.id] ?? abrahamB1LanguageFocusChapter7[page.id] ?? abrahamB1LanguageFocusChapter6[page.id] ?? abrahamB1LanguageFocusChapter5[page.id] ?? abrahamB1LanguageFocusChapter4[page.id] ?? abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id] ?? []),
+        ...(abrahamB1LanguageFocusChapter9[page.id] ?? abrahamB1LanguageFocusChapter8[page.id] ?? abrahamB1LanguageFocusChapter7[page.id] ?? abrahamB1LanguageFocusChapter6[page.id] ?? abrahamB1LanguageFocusChapter5[page.id] ?? abrahamB1LanguageFocusChapter4[page.id] ?? abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id] ?? []),
       ].filter(Boolean),
     };
   }
@@ -89,7 +91,7 @@ const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
       ...page,
       exercises: [
         abrahamB1QuickChallengesAr[page.id],
-        ...(abrahamB1LanguageFocusChapter8Ar[page.id] ?? abrahamB1LanguageFocusChapter7Ar[page.id] ?? abrahamB1LanguageFocusChapter6Ar[page.id] ?? abrahamB1LanguageFocusChapter5Ar[page.id] ?? abrahamB1LanguageFocusChapter4Ar[page.id] ?? abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id] ?? []),
+        ...(abrahamB1LanguageFocusChapter9Ar[page.id] ?? abrahamB1LanguageFocusChapter8Ar[page.id] ?? abrahamB1LanguageFocusChapter7Ar[page.id] ?? abrahamB1LanguageFocusChapter6Ar[page.id] ?? abrahamB1LanguageFocusChapter5Ar[page.id] ?? abrahamB1LanguageFocusChapter4Ar[page.id] ?? abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id] ?? []),
       ].filter(Boolean),
     };
   }
