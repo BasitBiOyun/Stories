@@ -13,6 +13,7 @@ import { abrahamB2LanguageFocusChapter11 } from './languageFocusChapter11';
 import { abrahamB2LanguageFocusChapter12 } from './languageFocusChapter12';
 import { abrahamB2LanguageFocusChapter13 } from './languageFocusChapter13';
 import { abrahamB2LanguageFocusChapter14 } from './languageFocusChapter14';
+import { abrahamB2LanguageFocusChapter15 } from './languageFocusChapter15';
 
 /** Active Abraham B2 English Language Focus assembled from manually authored chapter sets. */
 export const abrahamB2LanguageFocusExercises: Record<number, Exercise[]> = {
@@ -30,4 +31,5 @@ export const abrahamB2LanguageFocusExercises: Record<number, Exercise[]> = {
   ...abrahamB2LanguageFocusChapter12,
   ...abrahamB2LanguageFocusChapter13,
   ...abrahamB2LanguageFocusChapter14,
+  ...abrahamB2LanguageFocusChapter15,
 };
