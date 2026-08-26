@@ -15,6 +15,8 @@ import {
   mosesB1FinalReviewExercisesAr,
   mosesB1FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { mosesB1LanguageFocusExercises } from './en/languageFocus';
+import { mosesB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { mosesB1TeacherGuide, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1SelfStudyGuide, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -25,12 +27,20 @@ const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const buildPages = (
   pages: PageData[],
   quickChallenges: Record<number, Exercise>,
+  languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
   review: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => pages.map((page) => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = languageFocus[page.id];
+    return {
+      ...page,
+      exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 14) return { ...page, exercises: knowledgeCheck };
   if (page.id === 15) return { ...page, vocabularyPairs };
   if (page.id === 18) return { ...page, exercises: review };
@@ -38,8 +48,24 @@ const buildPages = (
   return page;
 });
 
-const englishPages = buildPages(mosesB1Pages, mosesB1QuickChallenges, mosesB1KnowledgeCheckExercises, mosesB1VocabularyChallengePairs, mosesB1FinalReviewExercises, mosesB1FinalChallengeExercises);
-const arabicPages = buildPages(mosesB1PagesAr, mosesB1QuickChallengesAr, mosesB1KnowledgeCheckExercisesAr, mosesB1VocabularyChallengePairsAr, mosesB1FinalReviewExercisesAr, mosesB1FinalChallengeExercisesAr);
+const englishPages = buildPages(
+  mosesB1Pages,
+  mosesB1QuickChallenges,
+  mosesB1LanguageFocusExercises,
+  mosesB1KnowledgeCheckExercises,
+  mosesB1VocabularyChallengePairs,
+  mosesB1FinalReviewExercises,
+  mosesB1FinalChallengeExercises,
+);
+const arabicPages = buildPages(
+  mosesB1PagesAr,
+  mosesB1QuickChallengesAr,
+  mosesB1LanguageFocusExercisesAr,
+  mosesB1KnowledgeCheckExercisesAr,
+  mosesB1VocabularyChallengePairsAr,
+  mosesB1FinalReviewExercisesAr,
+  mosesB1FinalChallengeExercisesAr,
+);
 
 export const mosesB1BookDataEn: BookData = {
   id: 'moses-b1-en', level: 'B1', title: 'The Story of Prophet Moses (pbuh)', pages: englishPages,
