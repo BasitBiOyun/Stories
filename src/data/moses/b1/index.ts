@@ -18,9 +18,11 @@ import {
 import { mosesB1LanguageFocusExercises } from './en/languageFocus';
 import { mosesB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
 import { mosesB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
+import { mosesB1LanguageFocusChapter5 } from './en/languageFocusChapter5';
 import { mosesB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { mosesB1LanguageFocusChapter3Ar } from './ar/languageFocusChapter3';
 import { mosesB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
+import { mosesB1LanguageFocusChapter5Ar } from './ar/languageFocusChapter5';
 import { mosesB1TeacherGuide, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1SelfStudyGuide, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -32,12 +34,14 @@ const englishLanguageFocus = {
   ...mosesB1LanguageFocusExercises,
   ...mosesB1LanguageFocusChapter3,
   ...mosesB1LanguageFocusChapter4,
+  ...mosesB1LanguageFocusChapter5,
 };
 
 const arabicLanguageFocus = {
   ...mosesB1LanguageFocusExercisesAr,
   ...mosesB1LanguageFocusChapter3Ar,
   ...mosesB1LanguageFocusChapter4Ar,
+  ...mosesB1LanguageFocusChapter5Ar,
 };
 
 const buildPages = (
