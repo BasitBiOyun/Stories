@@ -17,6 +17,8 @@ import {
 } from './ar/exercises';
 import { abrahamB1LanguageFocusExercises } from './en/languageFocus';
 import { abrahamB1LanguageFocusExercisesAr } from './ar/languageFocus';
+import { abrahamB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
+import { abrahamB1LanguageFocusChapter3Ar } from './ar/languageFocusChapter3';
 import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
@@ -60,7 +62,7 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
       ...page,
       exercises: [
         abrahamB1QuickChallenges[page.id],
-        ...(abrahamB1LanguageFocusExercises[page.id] ?? []),
+        ...(abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id] ?? []),
       ].filter(Boolean),
     };
   }
@@ -77,7 +79,7 @@ const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
       ...page,
       exercises: [
         abrahamB1QuickChallengesAr[page.id],
-        ...(abrahamB1LanguageFocusExercisesAr[page.id] ?? []),
+        ...(abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id] ?? []),
       ].filter(Boolean),
     };
   }
