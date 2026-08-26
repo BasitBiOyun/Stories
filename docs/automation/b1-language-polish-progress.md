@@ -1,13 +1,14 @@
 # B1 Language Polish Progress
 
-currentBook: Abraham B1
-bookPath: `src/data/abraham/b1`
-phase: BOOK_COMPLETE
+currentBook: Moses B1
+bookPath: `src/data/moses/b1`
+phase: LANGUAGE_FOCUS
 storyChapterCount: 13
+nextChapter: 1
 completedBooks:
 - Adam B1
 - Abraham B1
-nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN
+nextTask: COMPLETE_MOSES_B1_CHAPTER_1_LANGUAGE_FOCUS
 
 ## Completed books
 ### Adam B1
@@ -44,33 +45,30 @@ nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN
 - Added book-local polished exercise-system wrappers and wired the active book to them.
 - Teacher Guide and Self Study Guide were not changed because no current-book-local technical wiring defect required it.
 
+## Moses B1 initialization
+- Initialized Moses B1 as the current active B1 book.
+- Story chapter count verified from `src/data/moses/b1/index.ts`: 13.
+- No Moses B1 chapter content was modified in this initialization run.
+- No A2, B2, shared/global, Teacher Guide, Self Study Guide, assessment or story prose files were modified.
+
 ## Files changed in this run
-- `src/data/abraham/b1/en/exerciseSystem.ts` — added polished English assessment wrapper.
-- `src/data/abraham/b1/ar/exerciseSystem.ts` — added polished Arabic assessment wrapper.
-- `src/data/abraham/b1/index.ts` — wired Quick Challenge, Knowledge Check, Vocabulary and Final Challenge to the polished book-local exports while preserving Language Focus and Language Review wiring.
-- `docs/automation/b1-language-polish-progress.md` — marked Abraham B1 complete and advanced the pipeline handoff.
+- `docs/automation/b1-language-polish-progress.md` — advanced the pipeline from completed Abraham B1 to Moses B1 Chapter 1.
 
 ## Validation actually performed
-- Read the checkpoint and entered only Phase 3.
-- Reviewed the active English and Arabic Quick Challenges, 8-item Knowledge Checks, 10-pair Vocabulary Challenges, Final Challenge structure and current index wiring.
-- Confirmed B1 policy requirements from `docs/MANUAL_CONTENT_AUTHORING_STANDARD.md`: 1 Quick Challenge/chapter, 8 Knowledge Check items, 10 Vocabulary pairs, and Final Challenge distribution 3 MC + 2 T/F + 2 Matching + 2 Fill + 1 Sequencing.
-- Re-fetched both new exercise-system files from `preview` after creation and confirmed the intended overrides are present.
-- Re-fetched `src/data/abraham/b1/index.ts` immediately before the write and again afterward; active English and Arabic pages use the polished exercise-system exports.
-- Confirmed story pages still attach Quick Challenge through `exercises` and Language Focus separately through `languageFocusExercises`.
-- Confirmed page 14 remains Knowledge Check, page 15 remains Language Review, page 16 remains Vocabulary, and page 18 remains Final Challenge.
-- Story prose was not changed.
-- No A2, B2, shared/global, Teacher Guide or Self Study Guide files were modified.
+- Read the checkpoint and confirmed Abraham B1 started this run in `BOOK_COMPLETE`.
+- Read `src/data/moses/b1/index.ts` from `preview` and confirmed `STORY_IDS` contains Chapters 1–13.
+- Re-fetched the checkpoint immediately before updating it.
+- Did not process Moses B1 Chapter 1 in this run, per next-book handoff rule.
 - No executable build/typecheck/CI runner was used, so no build/typecheck/CI pass is claimed.
 
-## Commits
-- English polished exercise system: `c3f4b2ed1ca6132cce69b97e9abb3e04bec1edf4`
-- Arabic polished exercise system: `78574befb612c944e78e9f454bb07c5ff8b84f29`
-- Active polished wiring: `1f92b42a3650de01046fa86012d8964e86593f32`
-
 ## Exact next run
-- Start the next incomplete B1 book only: Moses B1 (`src/data/moses/b1`).
-- Initialize Moses B1 as `currentBook` with `phase: LANGUAGE_FOCUS`, identify its story chapter count from the current repo, and STOP without processing Chapter 1 in the same run if initialization is necessary.
+- Work on Moses B1 Chapter 1 only.
+- Read the full English and Arabic Chapter 1 story texts independently.
+- Read the existing Chapter 1 Quick Challenges in both languages.
+- Author Chapter 1 English and Arabic Language Focus from the actual chapter language.
+- Add only minimal Moses-B1-local wiring required to display Chapter 1 Language Focus.
+- Do not start Chapter 2 in the same run.
 
 ## Unresolved issues
-- None identified in the Abraham B1 exercise architecture during this pass.
+- None identified during Moses B1 initialization.
 - Build/typecheck remains unverified because no executable runner was used.
