@@ -2,66 +2,66 @@
 
 currentBook: Abraham B2
 phase: LANGUAGE_FOCUS
-nextTask: CHAPTER_12_LANGUAGE_FOCUS
+nextTask: CHAPTER_13_LANGUAGE_FOCUS
 completedBooks:
 - Adam B2
 
 ## Abraham B2 progress
 - Story chapters: 35
 - Current book path: `src/data/abraham/b2`
-- English Language Focus completed: Chapters 1–11
-- Arabic Language Focus completed: Chapters 1–11
-- Next chapter: Chapter 12
+- English Language Focus completed: Chapters 1–12
+- Arabic Language Focus completed: Chapters 1–12
+- Next chapter: Chapter 13
 
-## Abraham B2 Chapter 11 English decisions
-- Read the full English Chapter 11 story and active Quick Challenge before authoring.
-- Quick Challenge already tests a content claim about blindly following ancestral tradition; Language Focus therefore does not retest that answer.
+## Abraham B2 Chapter 12 English decisions
+- Read the full English Chapter 12 story and active Quick Challenge before authoring.
+- Quick Challenge already tests the father's angry reaction to Abraham's advice; Language Focus therefore does not retest that comprehension answer.
 - English Language Focus targets:
-  - rhetorical questions as argumentative moves: challenge, reconsideration, burden reversal, and evaluative comparison
-  - exception/qualification through `unless my Lord wills it`, preserving the main stance while marking a narrow condition
-  - evidence/authority language in `no authority` and `present evidence to prove...`
-  - distinction between explicit textual absence and later inference in `these arguments are not told...` versus `It is understood from Abraham's statement... that...`
-  - productive transfer: an 8–10 sentence non-story disagreement using rhetorical questions, a narrow `unless` exception, evidence/authority language, an explicitly marked inference, and a final comparison of support
+  - stance development through `paid no heed`, `As a true believer`, `In doing so`, and the belief statement that explains the response
+  - direct speech as discourse action: challenge, inherited-practice justification, credibility testing, and positive reframing
+  - expanding/intensifying contrast in `not only ... but ... as well`, where the second clause adds deeper involvement rather than replacing the first
+  - productive transfer: an 8–10 sentence non-story paragraph using viewpoint framing, an `In doing so` interpretation link, functional dialogue, and `not only ... but also ...` expansion
 
-## Abraham B2 Chapter 11 Arabic decisions
-- Read the full Arabic Chapter 11 independently and its active Quick Challenge before authoring.
+## Abraham B2 Chapter 12 Arabic decisions
+- Read the full Arabic Chapter 12 independently and its active Quick Challenge before authoring.
 - Arabic Language Focus was authored from the Arabic wording rather than translated from English.
 - Arabic-native targets:
-  - الاستفهام الحجاجي in `أتحاجّونني`, `أفلا تتذكّرون`, `وكيف أخاف`, and `فأي الفريقين أحق بالأمن`
-  - الاستثناء والتقييد in `إلا أن يشاء ربي شيئًا`
-  - لغة الحجة/السلطان in `ما لم ينزل به عليكم سلطانًا` and `تقديم الأدلة لإثبات صحة معتقداتهم`
-  - explicit distinction between absence in the presented verses and inference through `عدم ذكر هذه الحجج...` versus `ويتبيّن من قول إبراهيم... أن...`
-  - productive transfer: an 8–10 sentence Arabic argument using two rhetorical questions, a limited exception, evidence language, an explicitly marked inference, and a final comparative judgement
+  - موقف واستدراك through `لم يلتفت ... بل عبّر` and viewpoint framing with `بوصفه مؤمنًا حقًّا`
+  - discourse interpretation through `بذلك أعلن اعتقاده` and exclusivity in `بيد الله وحده`
+  - reported command plus semantic intensification in `أمرهم بأن يرفضوا ... رفضًا قاطعًا`
+  - argumentative dialogue through `ما هذه التماثيل...`, inherited-practice justification, alternative question with `أم`, and corrective reframing with `بل`
+  - productive transfer: an 8–10 sentence Arabic paragraph using `لم... بل...`, `بذلك`, a reported directive, an argumentative question, and `لم يكن... فحسب، بل... أيضًا`
 
-## Files added for Chapter 11
-- `src/data/abraham/b2/en/languageFocusChapter11.ts`
-- `src/data/abraham/b2/ar/languageFocusChapter11.ts`
+## Files added for Chapter 12
+- `src/data/abraham/b2/en/languageFocusChapter12.ts`
+- `src/data/abraham/b2/ar/languageFocusChapter12.ts`
 
-## Files updated for Chapter 11
+## Files updated for Chapter 12
 - `src/data/abraham/b2/en/languageFocus.ts`
 - `src/data/abraham/b2/ar/languageFocus.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
-## Abraham B2 Chapter 11 commits
-- English Chapter 11 Language Focus: `0fa13e78ee06c6124cdbf5939db5f05db41fa6a4`
-- Arabic Chapter 11 Language Focus: `88b69badcddd52e74b33d02cc7ed6fcacb4e0c45`
-- English aggregator wiring: `44919e517c02c78046fdb16d2c688854754d5cd6`
-- Arabic aggregator wiring: `736f8a4281a1e7dca26a4fa2f01c40a8ea4205dc`
+## Abraham B2 Chapter 12 commits
+- English Chapter 12 Language Focus: `03554600ebe9b56e8b63ea4c0fb511824f489c8c`
+- Arabic Chapter 12 Language Focus: `7ec9d2c1fbff1425fac869ebdf7529bb2fc5edd2`
+- English aggregator wiring: `d93bbc8afbef2af79391de9d479f7efdfb61bf3a`
+- Arabic aggregator wiring: `63877690ec58d50a73c50d2627578dd93d344bfd`
 
 ## Validation actually performed
-- Read the full English Chapter 11 source and the Arabic Chapter 11 source independently without modifying canonical story prose.
-- Read both active Chapter 11 Quick Challenges before authoring.
-- Confirmed Language Focus does not duplicate the Quick Challenge's ancestral-tradition comprehension task.
+- Read the full English Chapter 12 source and the Arabic Chapter 12 source independently without modifying canonical story prose.
+- Read both active Chapter 12 Quick Challenges before authoring.
+- Confirmed Language Focus does not duplicate the Quick Challenge's father-reaction comprehension task.
 - Added four English B2 activities and four independently authored Arabic B2 activities.
-- Re-fetched both new Chapter 11 files from `preview` after creation.
-- Re-fetched both current book-local aggregator SHAs immediately before wiring writes and preserved Chapters 1–10.
+- Re-fetched both new Chapter 12 files from `preview` after creation.
+- Re-fetched both current book-local aggregator SHAs immediately before wiring writes and preserved Chapters 1–11.
+- Re-fetched both aggregators after writing and confirmed Chapter 12 is actively assembled in English and Arabic.
 - No Knowledge Check, Retrieval Review, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide files were modified.
 - No B1/A2, other B2 book or shared/global file was edited.
 - No executable typecheck/build/CI runner was used, so no typecheck/build/CI pass is claimed.
 
 ## Exact next run
-- Chapter 12 only: read the full Abraham B2 English and Arabic Chapter 12 story texts and active Quick Challenges independently, then author Chapter 12 Language Focus in both languages.
-- Do not start Chapter 13 in the same run.
+- Chapter 13 only: read the full Abraham B2 English and Arabic Chapter 13 story texts and active Quick Challenges independently, then author Chapter 13 Language Focus in both languages.
+- Do not start Chapter 14 in the same run.
 
 ## Unresolved issues
-- None identified for Abraham B2 Chapter 11.
+- None identified for Abraham B2 Chapter 12.
