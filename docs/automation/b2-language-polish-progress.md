@@ -1,67 +1,72 @@
 # B2 Language Polish Progress
 
 currentBook: Adam B2
-phase: LANGUAGE_REVIEW_COMPLETE
-nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
-completedBooks: []
+phase: BOOK_COMPLETE
+nextTask: START_NEXT_B2_BOOK_ON_NEXT_RUN
+completedBooks:
+- Adam B2
 
 ## Adam B2 chapter count
 - Story chapters: 17
 
-## Completed phases
+## Adam B2 completion status
 - Chapters 1–17 English Language Focus: COMPLETE
 - Chapters 1–17 Arabic Language Focus: COMPLETE
 - English cumulative Language Review: COMPLETE
 - Arabic cumulative Language Review: COMPLETE
-- Active Language Review wiring: COMPLETE
+- English final exercise-system audit: COMPLETE
+- Arabic final exercise-system audit: COMPLETE
+- Active book-local wiring: COMPLETE
+- Final Challenge role separation: COMPLETE
 
-## Language Review decisions
-- Replaced the old active Final Review role on page 19 with a dedicated cumulative `Language Review` / `مراجعة اللغة` layer.
-- Language Review does NOT retest whole-story comprehension; Final Challenge remains the separate whole-story mastery layer on page 22.
-- English review contains 8 cumulative B2 activities covering source attribution and reporting distance, qualification and scope, concession/reframing, cause versus appearance, viewpoint/modality, coherent discourse sequencing, condition/consequence and an 8–10 sentence transfer task.
-- Arabic review also contains 8 cumulative B2 activities, authored independently around Arabic-native discourse resources: direct attribution vs `رُوي` / `يُقال`, scope and exception, `قد يبدو` / `يمكن فهمه`, الاستدراك وإعادة التأطير, الحصر والسبب, الزمن والضرورة والاحتمال, الشرط والنتيجة, and an 8–10 sentence transfer task.
-- English and Arabic reviews were designed from their own completed Chapter 1–17 Language Focus sets rather than mechanically translated from one another.
-- Productive tasks use non-story contexts so learners transfer B2 language resources instead of retelling Adam’s story.
-- Source-fidelity principles were preserved: reporting and qualification language is explicitly practised as a distinction between direct attribution, reported information, circulating claims and limits of knowledge.
+## Final exercise audit
+- Audited the active English and Arabic Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and Adam-B2-local wiring.
+- Preserved Knowledge Check in both languages because no answer-key, source-fidelity or role-separation issue justified rewriting it.
+- Preserved Vocabulary Challenge in both languages because the active terms and definitions remain appropriate for the B2 support layer.
+- Preserved the existing Final Challenge format/count architecture rather than importing A2/B1 rules.
+- Strengthened undersized two-pair matching Quick Challenges in Chapters 3, 9 and 16 to three meaningful relations in both English and Arabic.
+- Replaced Final Challenge item 8 in both languages: the previous item asked for a single introductory term (`Unseen` / `غيبية`), which was too narrow for whole-book B2 mastery. The new fill-blank requires a whole-book synthesis connecting freedom of choice, moral consequence and accountability/responsibility.
+- Preserved Final Challenge items 1–7, 9 and 10 because they already operate at suitable whole-book analytical/synthesis level and maintain clear separation from Language Review.
+- Preserved source qualification in the existing Final Challenge source-certainty item; no report was upgraded into an unqualified fact.
+- Story prose was not changed.
+- Teacher Guide and Self Study Guide were not changed because no Adam-B2-local technical wiring defect required it.
 
-## Files added in this run
-- `src/data/adam/b2/en/languageReview.ts`
-- `src/data/adam/b2/ar/languageReview.ts`
-
-## Files updated in this run
-- `src/data/adam/b2/index.ts`
-- `docs/automation/b2-language-polish-progress.md`
-
-## Active architecture after this run
+## Active architecture
 - Story chapter Quick Challenge = chapter comprehension/retrieval.
 - Story chapter Language Focus = chapter-specific grammar/discourse/function/use.
 - Page 18 = Knowledge Check.
 - Page 19 = cumulative Language Review.
 - Page 20 = Vocabulary Challenge.
 - Page 21 = Master Glossary.
-- Page 22 = separate Final Challenge.
+- Page 22 = independent whole-story Final Challenge.
+
+## Files added in final audit
+- `src/data/adam/b2/en/exerciseSystem.ts`
+- `src/data/adam/b2/ar/exerciseSystem.ts`
+- `src/data/adam/b2/activeExerciseSystem.ts`
+
+## Files updated in final audit
+- `src/data/adam/b2/en/languageFocus.ts` — activates the Adam-B2-local polished exercise compatibility layer before page assembly.
+- `docs/automation/b2-language-polish-progress.md`
+
+## Final-audit commits
+- English polished exercise system: `ee3ea9b598dd135a36179a9f51f8ee49757585fc`
+- Arabic polished exercise system: `ac1858e8cbbc2668c0ac17ce810b76906a237b4a`
+- Book-local polished activation: `5864b7614490731dc901e35cf0e90f52b6df6187`
+- Active loading bridge: `fbd3d67f487d42868a8167d3a5a649ca4ce9b0a0`
 
 ## Validation performed
-- Re-fetched the English Language Review from `preview` and confirmed 8 cumulative activities are present.
-- Re-fetched the Arabic Language Review from `preview` and confirmed the Arabic-native cumulative activity set is present.
-- Re-fetched `src/data/adam/b2/index.ts` and confirmed page 19 is retitled/wired as `Language Review` / `مراجعة اللغة` and uses the new EN/AR review exports.
-- Confirmed page 22 remains wired to the existing separate Final Challenge arrays.
-- Confirmed no shared/global file was edited.
-- Story prose was not changed.
-- Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge, Teacher Guide and Self Study Guide were not audited or rewritten in this run.
+- Re-fetched both EN/AR polished exercise-system files from `preview` and confirmed the Chapter 3/9/16 Quick Challenge overrides and Final Challenge 8 replacement are present.
+- Re-fetched `src/data/adam/b2/activeExerciseSystem.ts` and confirmed it applies only Adam B2 EN/AR Quick Challenge and Final Challenge overrides.
+- Re-fetched `src/data/adam/b2/en/languageFocus.ts` and confirmed the book-local activation module loads before the index assembles pages.
+- Existing index wiring still keeps Language Review on page 19 and Final Challenge on page 22.
+- No A2/B1 or shared/global file was edited.
 - No executable typecheck/build/CI runner was exposed through the connected GitHub file actions, so no typecheck/build/CI pass is claimed.
 
-## Commits
-- English Language Review: `9f2135a2f56d9f55e7563a1b622c8223afcc382e`
-- Arabic Language Review: `579b22126bf9fb0542f3fd0f77a49484675e0ac4`
-- Active Language Review wiring: `5d9d021b6332da6cd72436b7cc6fdade0fba95f8`
-
 ## Next task
-- START A LATER RUN with Adam B2 still as currentBook and phase `LANGUAGE_REVIEW_COMPLETE`.
-- Enter PHASE 3 only: audit Adam B2 Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and current book-local wiring.
-- Preserve Language Review as cumulative language/discourse consolidation and Final Challenge as independent whole-story mastery.
-- Do not change story prose.
+- On the next run, select Abraham B2 as the next incomplete B2 book in the fixed order.
+- Set `currentBook: Abraham B2`, determine its current story chapter count from `preview`, initialize `phase: LANGUAGE_FOCUS`, and do not process two books in one run.
 
 ## Unresolved issues
-- None identified in the Adam B2 Language Review layer during this run.
+- None identified in the Adam B2 exercise architecture during this pass.
 - Build/typecheck remains unverified only because no executable runner was available through the connected GitHub actions.
