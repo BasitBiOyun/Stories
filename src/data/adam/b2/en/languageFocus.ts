@@ -9,6 +9,7 @@ import { adamB2LanguageFocusChapter10 } from './languageFocusChapter10';
 import { adamB2LanguageFocusChapter11 } from './languageFocusChapter11';
 import { adamB2LanguageFocusChapter12 } from './languageFocusChapter12';
 import { adamB2LanguageFocusChapter13 } from './languageFocusChapter13';
+import { adamB2LanguageFocusChapter14 } from './languageFocusChapter14';
 
 /** Active Adam B2 English Language Focus assembled from manually authored chapter sets. */
 export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
@@ -22,4 +23,5 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
   ...adamB2LanguageFocusChapter11,
   ...adamB2LanguageFocusChapter12,
   ...adamB2LanguageFocusChapter13,
+  ...adamB2LanguageFocusChapter14,
 };
