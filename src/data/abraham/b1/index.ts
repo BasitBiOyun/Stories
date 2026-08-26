@@ -33,6 +33,8 @@ import { abrahamB1LanguageFocusChapter9 } from './en/languageFocusChapter9';
 import { abrahamB1LanguageFocusChapter9Ar } from './ar/languageFocusChapter9';
 import { abrahamB1LanguageFocusChapter10 } from './en/languageFocusChapter10';
 import { abrahamB1LanguageFocusChapter10Ar } from './ar/languageFocusChapter10';
+import { abrahamB1LanguageFocusChapter11 } from './en/languageFocusChapter11';
+import { abrahamB1LanguageFocusChapter11Ar } from './ar/languageFocusChapter11';
 import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
@@ -72,7 +74,7 @@ const arabicSourcePages = prepareMediaFallbacks(abrahamB1PagesAr);
 
 const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = abrahamB1LanguageFocusChapter10[page.id] ?? abrahamB1LanguageFocusChapter9[page.id] ?? abrahamB1LanguageFocusChapter8[page.id] ?? abrahamB1LanguageFocusChapter7[page.id] ?? abrahamB1LanguageFocusChapter6[page.id] ?? abrahamB1LanguageFocusChapter5[page.id] ?? abrahamB1LanguageFocusChapter4[page.id] ?? abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id];
+    const languageFocusExercises = abrahamB1LanguageFocusChapter11[page.id] ?? abrahamB1LanguageFocusChapter10[page.id] ?? abrahamB1LanguageFocusChapter9[page.id] ?? abrahamB1LanguageFocusChapter8[page.id] ?? abrahamB1LanguageFocusChapter7[page.id] ?? abrahamB1LanguageFocusChapter6[page.id] ?? abrahamB1LanguageFocusChapter5[page.id] ?? abrahamB1LanguageFocusChapter4[page.id] ?? abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id];
     return {
       ...page,
       exercises: abrahamB1QuickChallenges[page.id] ? [abrahamB1QuickChallenges[page.id]] : [],
@@ -88,7 +90,7 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
 
 const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = abrahamB1LanguageFocusChapter10Ar[page.id] ?? abrahamB1LanguageFocusChapter9Ar[page.id] ?? abrahamB1LanguageFocusChapter8Ar[page.id] ?? abrahamB1LanguageFocusChapter7Ar[page.id] ?? abrahamB1LanguageFocusChapter6Ar[page.id] ?? abrahamB1LanguageFocusChapter5Ar[page.id] ?? abrahamB1LanguageFocusChapter4Ar[page.id] ?? abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id];
+    const languageFocusExercises = abrahamB1LanguageFocusChapter11Ar[page.id] ?? abrahamB1LanguageFocusChapter10Ar[page.id] ?? abrahamB1LanguageFocusChapter9Ar[page.id] ?? abrahamB1LanguageFocusChapter8Ar[page.id] ?? abrahamB1LanguageFocusChapter7Ar[page.id] ?? abrahamB1LanguageFocusChapter6Ar[page.id] ?? abrahamB1LanguageFocusChapter5Ar[page.id] ?? abrahamB1LanguageFocusChapter4Ar[page.id] ?? abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id];
     return {
       ...page,
       exercises: abrahamB1QuickChallengesAr[page.id] ? [abrahamB1QuickChallengesAr[page.id]] : [],
