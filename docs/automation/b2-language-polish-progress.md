@@ -2,16 +2,16 @@
 
 currentBook: Abraham B2
 phase: LANGUAGE_FOCUS
-nextTask: CHAPTER_4_LANGUAGE_FOCUS
+nextTask: CHAPTER_5_LANGUAGE_FOCUS
 completedBooks:
 - Adam B2
 
 ## Abraham B2 progress
 - Story chapters: 35
 - Current book path: `src/data/abraham/b2`
-- English Language Focus completed: Chapters 1–3
-- Arabic Language Focus completed: Chapters 1–3
-- Next chapter: Chapter 4
+- English Language Focus completed: Chapters 1–4
+- Arabic Language Focus completed: Chapters 1–4
+- Next chapter: Chapter 5
 
 ## Abraham B2 Chapter 1 English decisions
 - Read the full English Chapter 1 story and the active Quick Challenge before authoring.
@@ -34,58 +34,70 @@ completedBooks:
 ## Abraham B2 Chapter 3 English decisions
 - Read the full English Chapter 3 story and the active Quick Challenge before authoring.
 - Kept the Quick Challenge focused on monotheistic continuity together with later corruption; Language Focus does not ask learners to retrieve that answer.
-- Language Focus is grounded in the chapter’s own discourse:
-  - `In fact` for foregrounding/strengthening the opening claim
-  - `However, later on` for a clear discourse turn from earlier state to later development
-  - `like Judaism and Christianity` for comparative framing
-  - `which was the least corrupted religion at that time` for a relative-clause evaluation whose scope is explicitly limited by time
-  - `When...`, `while...`, `At that moment`, and `Hearing...` for layered temporal relations in the Varaka–Bilal episode
-  - `not only... but also...` as the productive extension pattern used to widen a concluding point
-- Productive work asks for an 8–10 sentence non-story paragraph that combines continuity, contrast, temporal layering, a context-limited relative-clause evaluation and additive extension.
-- Source fidelity: the wording `the least corrupted religion at that time` is treated as the chapter’s time-bounded presentation, not expanded into a timeless universal claim.
+- Language Focus is grounded in the chapter’s own discourse: `In fact`, `However, later on`, comparison, time-limited relative-clause evaluation, layered temporal relations, and `not only... but also...` for productive extension.
+- Productive work asks for an 8–10 sentence non-story paragraph using these relations coherently.
+- Source fidelity: `the least corrupted religion at that time` remains explicitly time-bounded.
 
 ## Abraham B2 Chapter 3 Arabic decisions
 - Read the full Arabic Chapter 3 independently and designed the Arabic Language Focus from its own wording rather than translating the English set.
-- Kept the Arabic Quick Challenge focused on continuity with later mixing/corruption; Language Focus targets the Arabic discourse forms that carry the explanation.
-- Arabic-native targets include:
-  - `في الحقيقة` for strengthening/foregrounding
-  - `ولكن لاحقًا` for signalling a later contrasting development
-  - `وكما حدث لليهودية والمسيحية` for comparative framing
-  - `التي كانت أقلَّ الأديان تحريفًا في ذلك الوقت` as a صلة/relative structure containing a time-limited evaluation
-  - `عندما...`, `بينما...`, `في تلك اللحظة`, and `وعندما سمع...` for separating temporal frame, ongoing background, focal moment and response
-  - `لا... فقط، بل... أيضًا` for widening a concluding idea in productive work
-- Productive work requires an 8–10 sentence Arabic paragraph organised through genuine discourse relations rather than isolated grammar insertion.
-- Source fidelity: the evaluation about Christianity is explicitly kept within the chapter’s `في ذلك الوقت` time boundary.
+- Arabic-native targets: `في الحقيقة`, `ولكن لاحقًا`, comparative framing, time-limited صلة, `عندما / بينما / في تلك اللحظة`, and `لا... فقط، بل... أيضًا`.
+- Productive work requires an 8–10 sentence Arabic paragraph organised through genuine discourse relations.
+- Source fidelity: the evaluation remains bounded by `في ذلك الوقت`.
 
-## Files added for Chapter 3
-- `src/data/abraham/b2/en/languageFocusChapter3.ts`
-- `src/data/abraham/b2/ar/languageFocusChapter3.ts`
+## Abraham B2 Chapter 4 English decisions
+- Read the full English Chapter 4 story and the active Quick Challenge before authoring.
+- The Quick Challenge already tests the source-reading rule for birthplace and dates, so Language Focus does not ask learners to retrieve which location/date is correct.
+- English Language Focus targets:
+  - `Some sources say that...` for attribution to limited source evidence
+  - `Most generally speaking, we can say that...` for cautious synthesis across alternatives
+  - passive belief framing in `is believed to have lived...`
+  - `Some sources suggest that...` for tentative source-based claims
+  - an earlier state with `had existed` followed by change in `but it had been forgotten over time`
+  - parallel subgroup framing with `some people...; still others...` to avoid overgeneralisation
+- Productive work asks for an 8–10 sentence historical paragraph outside the story that distinguishes evidence, cautious synthesis and unresolved uncertainty.
+- Source fidelity is central: qualified historical claims remain qualified rather than being converted into certainties.
 
-## Files updated for Chapter 3
+## Abraham B2 Chapter 4 Arabic decisions
+- Read the full Arabic Chapter 4 independently and designed the Arabic Language Focus from its own wording rather than translating the English activities.
+- The Arabic Quick Challenge already tests how to preserve `آراء مختلفة / بعض المصادر / يُعتقد`, so Language Focus trains the discourse forms rather than retesting the historical answer.
+- Arabic-native targets:
+  - `بعض المصادر تقول إن...` for attributed claims
+  - `وبشكل عام يمكننا القول إن...` for cautious synthesis
+  - `تاريخيًّا يُعتقد أن...` for historical belief/estimate
+  - `وتشير بعض المصادر إلى أن...` for tentative source-based indication
+  - `كان... موجودًا... لكنه نُسي مع مرور الزمن` for earlier state → later change
+  - `كان بعضهم... بينما كان آخرون...` for parallel social variation without overgeneralisation
+- Productive work requires an 8–10 sentence Arabic historical overview with explicit source status, cautious synthesis, temporal change and group contrast.
+- Source fidelity: the exercise set preserves uncertainty and does not turn the chapter’s location/date possibilities into fixed fact.
+
+## Files added for Chapter 4
+- `src/data/abraham/b2/en/languageFocusChapter4.ts`
+- `src/data/abraham/b2/ar/languageFocusChapter4.ts`
+
+## Files updated for Chapter 4
 - `src/data/abraham/b2/en/languageFocus.ts`
 - `src/data/abraham/b2/ar/languageFocus.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
-## Abraham B2 Chapter 3 commits
-- English Chapter 3 Language Focus: `57e779a04544b7f54e7d2506e187e0eb563b7c56`
-- Arabic Chapter 3 Language Focus: `c85a7de773f4fe2bef7806564475bb0b2ec50fed`
-- English aggregator wiring: `335b5800c208e8121d9ed70663e238485179585a`
-- Arabic aggregator wiring: `cfd7dbb8696733edbd57563cada65fa2aee5b070`
+## Abraham B2 Chapter 4 commits
+- English Chapter 4 Language Focus: `ab65c2c594ada6ceb462e63c5c4326deca4ec938`
+- Arabic Chapter 4 Language Focus: `8f534b50c512f32efe094f13105bc79a88751d28`
+- English aggregator wiring: `d5f3cddd2e0e1a4b11ceec7ec40863b32719684d`
+- Arabic aggregator wiring: `eee9c5ed8f40b4d81e24c4b4d56d44b6431f22b9`
 
 ## Current validation
-- Re-fetched the English Chapter 3 Language Focus from `preview` and confirmed four B2 activities are present.
-- Re-fetched the Arabic Chapter 3 Language Focus from `preview` and confirmed four independently authored Arabic activities are present.
-- English and Arabic Chapter 3 activities are grounded in their own language texts and do not mechanically mirror grammar categories.
-- Chapter 3 active Quick Challenges were read before authoring; the new Language Focus does not duplicate the continuity/corruption comprehension claim.
-- Existing Abraham B2 index wiring already attaches the language-specific Language Focus aggregators to story pages through `languageFocusExercises`; only the book-local aggregators required updating.
+- Re-fetched the English Chapter 4 Language Focus from `preview` and confirmed four B2 activities are present.
+- Re-fetched the Arabic Chapter 4 Language Focus from `preview` and confirmed four independently authored Arabic activities are present.
+- Re-fetched both book-local Language Focus aggregators and confirmed Chapter 4 is actively included in English and Arabic.
+- Chapter 4 active Quick Challenges were read before authoring; the new Language Focus does not duplicate their source-reading comprehension role.
 - Story prose was not changed.
 - Knowledge Check, Retrieval Review, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide and Self Study Guide were not modified.
 - No B1/A2 or shared/global file was edited.
 - No executable typecheck/build/CI runner was used, so no typecheck/build/CI pass is claimed.
 
 ## Next task
-- Chapter 4 only: read the full Abraham B2 English and Arabic Chapter 4 story texts and their active Quick Challenges independently, then author Chapter 4 Language Focus in both languages.
-- Do not start Chapter 5 in the same run.
+- Chapter 5 only: read the full Abraham B2 English and Arabic Chapter 5 story texts and their active Quick Challenges independently, then author Chapter 5 Language Focus in both languages.
+- Do not start Chapter 6 in the same run.
 
 ## Unresolved issues
-- None identified for Abraham B2 Chapter 3.
+- None identified for Abraham B2 Chapter 4.
