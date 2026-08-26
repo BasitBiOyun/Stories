@@ -1,61 +1,67 @@
 # B2 Language Polish Progress
 
 currentBook: Adam B2
-phase: LANGUAGE_FOCUS_COMPLETE
-nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
+phase: LANGUAGE_REVIEW_COMPLETE
+nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
 completedBooks: []
 
 ## Adam B2 chapter count
 - Story chapters: 17
 
-## Completed chapters
+## Completed phases
 - Chapters 1–17 English Language Focus: COMPLETE
 - Chapters 1–17 Arabic Language Focus: COMPLETE
+- English cumulative Language Review: COMPLETE
+- Arabic cumulative Language Review: COMPLETE
+- Active Language Review wiring: COMPLETE
 
-## Chapter 17 status
-- English Language Focus: COMPLETE
-- Arabic Language Focus: COMPLETE
-- Active EN/AR Language Focus assembly: COMPLETE
-- Quick Challenge boundary checked: COMPLETE
-- Story prose changed: NO
-- Other assessment layers changed: NO
+## Language Review decisions
+- Replaced the old active Final Review role on page 19 with a dedicated cumulative `Language Review` / `مراجعة اللغة` layer.
+- Language Review does NOT retest whole-story comprehension; Final Challenge remains the separate whole-story mastery layer on page 22.
+- English review contains 8 cumulative B2 activities covering source attribution and reporting distance, qualification and scope, concession/reframing, cause versus appearance, viewpoint/modality, coherent discourse sequencing, condition/consequence and an 8–10 sentence transfer task.
+- Arabic review also contains 8 cumulative B2 activities, authored independently around Arabic-native discourse resources: direct attribution vs `رُوي` / `يُقال`, scope and exception, `قد يبدو` / `يمكن فهمه`, الاستدراك وإعادة التأطير, الحصر والسبب, الزمن والضرورة والاحتمال, الشرط والنتيجة, and an 8–10 sentence transfer task.
+- English and Arabic reviews were designed from their own completed Chapter 1–17 Language Focus sets rather than mechanically translated from one another.
+- Productive tasks use non-story contexts so learners transfer B2 language resources instead of retelling Adam’s story.
+- Source-fidelity principles were preserved: reporting and qualification language is explicitly practised as a distinction between direct attribution, reported information, circulating claims and limits of knowledge.
 
-## Chapter 17 Language Focus decisions
-- English targets: scope and exception through broad claims narrowed by `except`, concessive acknowledgement followed by `but rather` reframing, cause-versus-appearance through `it is ... that makes ... look ...`, and clarification through `In fact`.
-- Arabic targets: العموم والاستثناء عبر `إلا`, الإقرار ثم إعادة توجيه التركيز عبر `مع كونه...` والاستدراك, الحصر والسبب عبر `الذي يقويه هو...`, and clarification through `وفي الحقيقة`.
-- English and Arabic were authored independently from their own Chapter 17 texts.
-- Both productive tasks require an 8–10 sentence B2 argument about a non-story situation, with controlled scope, genuine concession/reframing, an explicit cause for apparent power, and a logically emerging open question.
-- Language Focus does not duplicate the active Quick Challenge, which already assesses the chapter-level synthesis about Satan’s limited authority and the sources of human value.
-- The quoted Qur’anic scope/exception relationships were preserved as presented in the chapter; no qualification/certainty wording was broadened into new claims.
+## Files added in this run
+- `src/data/adam/b2/en/languageReview.ts`
+- `src/data/adam/b2/ar/languageReview.ts`
 
-## Files added
-- `src/data/adam/b2/en/languageFocusChapter17.ts`
-- `src/data/adam/b2/ar/languageFocusChapter17.ts`
-
-## Files updated
-- `src/data/adam/b2/en/languageFocus.ts`
-- `src/data/adam/b2/ar/languageFocus.ts`
+## Files updated in this run
+- `src/data/adam/b2/index.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
+## Active architecture after this run
+- Story chapter Quick Challenge = chapter comprehension/retrieval.
+- Story chapter Language Focus = chapter-specific grammar/discourse/function/use.
+- Page 18 = Knowledge Check.
+- Page 19 = cumulative Language Review.
+- Page 20 = Vocabulary Challenge.
+- Page 21 = Master Glossary.
+- Page 22 = separate Final Challenge.
+
 ## Validation performed
-- Read the full English and Arabic Chapter 17 story texts from the active `preview` branch.
-- Read the active English and Arabic Chapter 17 Quick Challenges and confirmed they already assess the final synthesis about Satan’s influence and human value, so Language Focus was kept on grammar/discourse/function instead.
-- Re-fetched both Chapter 17 Language Focus files and confirmed four activities in each language.
-- Re-fetched both active Language Focus assemblers and confirmed Chapter 17 imports/spreads are active.
-- Confirmed no shared/global file change was required.
-- No executable typecheck/build/CI runner was available through the connected GitHub file actions, so no typecheck/build/CI pass is claimed.
+- Re-fetched the English Language Review from `preview` and confirmed 8 cumulative activities are present.
+- Re-fetched the Arabic Language Review from `preview` and confirmed the Arabic-native cumulative activity set is present.
+- Re-fetched `src/data/adam/b2/index.ts` and confirmed page 19 is retitled/wired as `Language Review` / `مراجعة اللغة` and uses the new EN/AR review exports.
+- Confirmed page 22 remains wired to the existing separate Final Challenge arrays.
+- Confirmed no shared/global file was edited.
+- Story prose was not changed.
+- Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge, Teacher Guide and Self Study Guide were not audited or rewritten in this run.
+- No executable typecheck/build/CI runner was exposed through the connected GitHub file actions, so no typecheck/build/CI pass is claimed.
 
 ## Commits
-- Chapter 17 English Language Focus: `6b12780968176e2bb15d466398d66a3667c47cca`
-- Chapter 17 Arabic Language Focus: `717f3ea4b9b4b7a163de27d09a1f98d86e934307`
-- English active wiring: `5f50b2397f857b2f715a1b74c887a1f4e8447d17`
-- Arabic active wiring: `a0f230fcce92f0da4bd6b895674accc4989a77d6`
+- English Language Review: `9f2135a2f56d9f55e7563a1b622c8223afcc382e`
+- Arabic Language Review: `579b22126bf9fb0542f3fd0f77a49484675e0ac4`
+- Active Language Review wiring: `5d9d021b6332da6cd72436b7cc6fdade0fba95f8`
 
 ## Next task
-- START A LATER RUN with Adam B2 still as currentBook and phase `LANGUAGE_FOCUS_COMPLETE`.
-- Build/review ONLY the cumulative English and Arabic Language Review from the completed Chapters 1–17 Language Focus sets.
-- Do NOT audit Quick Challenges, Knowledge Check, Vocabulary or Final Challenge in that Language Review run.
+- START A LATER RUN with Adam B2 still as currentBook and phase `LANGUAGE_REVIEW_COMPLETE`.
+- Enter PHASE 3 only: audit Adam B2 Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and current book-local wiring.
+- Preserve Language Review as cumulative language/discourse consolidation and Final Challenge as independent whole-story mastery.
+- Do not change story prose.
 
 ## Unresolved issues
-- None identified for Adam B2 Chapter 17 Language Focus.
+- None identified in the Adam B2 Language Review layer during this run.
 - Build/typecheck remains unverified only because no executable runner was available through the connected GitHub actions.
