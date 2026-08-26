@@ -15,6 +15,8 @@ import {
   abrahamB1QuickChallengesAr,
   abrahamB1VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { abrahamB1LanguageFocusExercises } from './en/languageFocus';
+import { abrahamB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
@@ -53,7 +55,15 @@ const englishSourcePages = prepareMediaFallbacks(abrahamB1Pages);
 const arabicSourcePages = prepareMediaFallbacks(abrahamB1PagesAr);
 
 const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB1QuickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    return {
+      ...page,
+      exercises: [
+        abrahamB1QuickChallenges[page.id],
+        ...(abrahamB1LanguageFocusExercises[page.id] ?? []),
+      ].filter(Boolean),
+    };
+  }
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercises };
   if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercises };
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairs };
@@ -62,7 +72,15 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
 });
 
 const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: [abrahamB1QuickChallengesAr[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    return {
+      ...page,
+      exercises: [
+        abrahamB1QuickChallengesAr[page.id],
+        ...(abrahamB1LanguageFocusExercisesAr[page.id] ?? []),
+      ].filter(Boolean),
+    };
+  }
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesAr };
   if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercisesAr };
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsAr };
