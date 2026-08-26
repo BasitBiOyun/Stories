@@ -2,64 +2,82 @@
 
 currentBook: Adam B1
 bookPath: `src/data/adam/b1`
-phase: LANGUAGE_FOCUS_COMPLETE
+phase: LANGUAGE_REVIEW_COMPLETE
 storyChapterCount: 12
 nextChapter: NONE
-nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
+nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
 
-## Completed chapters
+## Completion status
 - Adam B1 Chapters 1–12 English Language Focus: COMPLETE
 - Adam B1 Chapters 1–12 Arabic Language Focus: COMPLETE
 - Adam B1 local runtime wiring for all chapter Language Focus activities: COMPLETE
+- Adam B1 English cumulative Language Review: COMPLETE
+- Adam B1 Arabic cumulative Language Review: COMPLETE
+- Adam B1 Language Review page wiring: COMPLETE
 
-## Chapter 12 English pedagogical targets
-- `suggests that + clause` to report an interpretation rather than state it as a direct fact.
-- `should + verb` for recommended conduct.
-- `As a/an + role, ... had to + verb` to frame a past responsibility through role/context.
-- `over the years` to mark gradual development through time.
-- `still + present verb` to show that an influence or message continues into the present.
-- `never + past verb` to express that something did not happen at any time.
-- Parallel infinitive/verb structures to organise several connected aims or directions.
-- `the importance of + -ing` to turn actions into general principles.
-- Short coherent B1 production linking past responsibility, development, continuing influence, and a present recommendation.
+## Language Review design — English
+The cumulative review was built from language/functions already taught across the twelve chapter Language Focus sections rather than from story-comprehension facts. It consolidates:
+- source voice vs past narration
+- `after` sequencing, `began/started to`, and future-from-the-past with `was going to / would`
+- reported viewpoints with `thought/believed that`
+- interpretation with `suggests that`
+- intention/decision with `decided/wanted to`
+- reported guidance/warning with `told/warned + person + to`
+- reason/result/contrast with `because`, `because of`, `so`, `that's why`, `therefore`, `but`, `however`, `on the other hand`
+- result/effect with `which made ...`
+- responsibility and necessity with `had to`
+- purpose with `to + verb`
+- successful action with `managed to`
+- inability with `couldn't/cannot`
+- comparison with `better/more ... than`
+- role-based responsibility with `As a + role, ... had to ...`
+- general principles with `the importance of + -ing`
+- recommendation with `should + verb`
+- paragraph-level sequencing/change/continuity with `after`, `over time`, `later`, `still`
+- a final five-sentence productive transfer task combining time, viewpoint, cause/result, responsibility/ability and recommendation in one new coherent situation.
 
-## Chapter 12 Arabic pedagogical targets
-- `على + شخص + أن + فعل` للتعبير عن واجب أو توجيه.
-- `كان على + شخص + أن + فعل` للتعبير عن ضرورة أو مسؤولية في الماضي.
-- `مع مرور السنين` لبيان تغير أو تطور تدريجي عبر الزمن.
-- `لا يزال/لا تزال + مضارع` للتعبير عن الاستمرار إلى الحاضر.
-- النفي مع `أبدًا` لتأكيد أن الفعل لم يحدث في أي وقت.
-- الربط بالواو بين أفعال ماضية متصلة في تطور واحد.
-- `إلى + مصدر` في تراكيب متوازية لتنظيم أكثر من اتجاه أو هدف.
-- `بأهمية + مصدر` لتحويل الفعل إلى مبدأ عام.
-- إنتاج عربي B1 قصير مترابط ينتقل من مسؤولية ماضية إلى تطور ثم أثر مستمر وتوجيه حاضر.
+## Language Review design — Arabic
+The Arabic review was authored independently from Arabic Language Focus work rather than translated from English. It consolidates Arabic-native B1 patterns/functions including:
+- المضارع عند عرض المصدر مقابل الماضي في السرد
+- `بعد أن + فعل ماضٍ` للترتيب
+- `كان ... سيـ + فعل` للمستقبل من منظور ماضٍ
+- `بدأ/بدأت + فعل` لبداية الفعل أو العملية
+- `ظن/اعتقد أن` لنقل الرأي
+- `قرر/أراد أن + فعل` للقرار والنية
+- `أخبر/حذّر + شخصًا + أن ...` لنقل الخبر أو التوجيه
+- `لأن/بسبب` للسبب، و`لذلك/ولهذا السبب/فـ` للنتيجة
+- `لكن/مع ذلك/من ناحية أخرى` للتباين
+- `مما جعل ...` للأثر أو النتيجة
+- `كان على + شخص + أن + فعل` للمسؤولية الماضية
+- `لـ/لكي + فعل` للغاية
+- `تمكّن من/استطاع أن` للقدرة والنجاح، و`لم يستطع/لا يستطيع أن` للعجز
+- `مع مرور الوقت` و`لا يزال` للتطور والاستمرار
+- `أفضل/أكثر ... من` للمقارنة
+- `بأهمية + مصدر` للمبدأ العام
+- `على + شخص + أن + فعل` للتوجيه
+- إنتاج ختامي عربي من خمس جمل مترابطة في موقف جديد يجمع الزمن والرأي والسبب والنتيجة والمسؤولية والتوجيه.
 
-## Quick Challenge separation
-- Chapter 12 Quick Challenge was read in both languages before authoring.
-- The Quick Challenge already asks learners to identify the broad lesson carried forward from Adam's family story.
-- The Language Focus does not ask learners to repeat that lesson. It focuses on how the chapter linguistically expresses interpretation, recommendation, responsibility, time development, continuity, and parallel organisation, then transfers those patterns to new situations.
+## Files changed in this run
+- `src/data/adam/b1/en/languageReview.ts` — created with 8 cumulative B1 Language Review activities.
+- `src/data/adam/b1/ar/languageReview.ts` — created with 8 independently authored Arabic cumulative Language Review activities.
+- `src/data/adam/b1/index.ts` — replaced the active page-14 Retrieval Review wiring with the new English/Arabic Language Review arrays and retitled page 14 at runtime as `B1 Language Review` / `مراجعة اللغة B1`.
+- `docs/automation/b1-language-polish-progress.md` — moved Adam B1 to LANGUAGE_REVIEW_COMPLETE.
 
-## Files changed in latest run
-- `src/data/adam/b1/en/languageFocusPart11.ts` — created with four manually authored Chapter 12 English Language Focus activities.
-- `src/data/adam/b1/ar/languageFocusPart11.ts` — created with four independently authored Chapter 12 Arabic Language Focus activities.
-- `src/data/adam/b1/index.ts` — added Part11 imports/merging so Chapter 12 Language Focus renders in English and Arabic.
-- `docs/automation/b1-language-polish-progress.md` — moved Adam B1 to LANGUAGE_FOCUS_COMPLETE.
-
-## Latest commits
-- Chapter 12 English Language Focus: `85d1040ac840003830978b8d13af120292fc16da`
-- Chapter 12 Arabic Language Focus: `4c0a47bf6e44f96b7ca9cee30031b82a9aa9124e`
-- Chapter 12 local wiring: `e719ee2396ec6881bedc5aab39c3888aaec198ca`
+## Commits
+- English cumulative Language Review: `9244818b536604e172bb67967db13aa3a0e13cec`
+- Arabic cumulative Language Review: `d9ba091e031ea5c418b1c7b336b1ab168dbac04b`
+- Active Language Review wiring: `f882dda1a0f79fc2d2adca2015fea6fa4aa7ab88`
 
 ## Validation actually performed
-- Read the full Adam B1 Chapter 12 English story text and full Arabic Chapter 12 story text from `preview` before authoring.
-- Read the existing Chapter 12 Quick Challenge in both languages and kept Language Focus distinct from its whole-story lesson-summary role.
-- Re-fetched the new English Chapter 12 Language Focus from `preview` and confirmed four activities are present and grounded in Chapter 12 language.
-- Re-fetched the new Arabic Chapter 12 Language Focus from `preview` and confirmed four independently authored activities are present and grounded in the Arabic text.
-- Re-fetched `src/data/adam/b1/index.ts` after the concurrent-safe wiring write and confirmed Part11 is imported and merged for English and Arabic.
+- Re-read the active Adam B1 chapter Language Focus architecture and the existing page-14 review wiring before authoring.
+- Re-fetched `src/data/adam/b1/en/languageReview.ts` from `preview` after creation and confirmed 8 cumulative activities are present, including matching, sequencing, fill-blank and connected productive transfer.
+- Re-fetched `src/data/adam/b1/ar/languageReview.ts` from `preview` after creation and confirmed the Arabic set is independently authored around Arabic-native patterns/functions rather than mechanically mirroring English forms.
+- Re-fetched `src/data/adam/b1/index.ts` after the concurrent-safe write and confirmed page 14 now uses the new Language Review arrays in both languages and that Final Challenge remains separately wired to page 17.
+- Existing Knowledge Check, Vocabulary Challenge and Final Challenge source content was not modified in this run.
 - Story prose was not changed.
-- No A2, B2, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide files were changed.
+- No A2, B2, shared/global, Teacher Guide or Self Study Guide files were changed.
 - No executable typecheck/build/CI runner was available through the connected GitHub file actions used in this run, so no typecheck/build/CI pass is claimed.
 
 ## Unresolved issues
-- None for Adam B1 Chapter 12 Language Focus.
-- Next run must build ONLY the cumulative Adam B1 English and Arabic Language Review, then stop.
+- None identified in the Adam B1 Language Review architecture during this run.
+- Next run must perform ONLY the Adam B1 final exercise audit + Final Challenge/book-local cleanup, then stop.
