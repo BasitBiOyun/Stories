@@ -2,17 +2,17 @@ import type { BookData, PageData } from '../../../types';
 import { abrahamB1Pages } from './en/pages';
 import { abrahamB1PagesAr } from './ar/pages';
 import {
-  abrahamB1FinalChallengeExercises,
-  abrahamB1KnowledgeCheckExercises,
-  abrahamB1QuickChallenges,
-  abrahamB1VocabularyChallengePairs,
-} from './en/exercises';
+  abrahamB1FinalChallengeExercisesPolished,
+  abrahamB1KnowledgeCheckExercisesPolished,
+  abrahamB1QuickChallengesPolished,
+  abrahamB1VocabularyChallengePairsPolished,
+} from './en/exerciseSystem';
 import {
-  abrahamB1FinalChallengeExercisesAr,
-  abrahamB1KnowledgeCheckExercisesAr,
-  abrahamB1QuickChallengesAr,
-  abrahamB1VocabularyChallengePairsAr,
-} from './ar/exercises';
+  abrahamB1FinalChallengeExercisesArPolished,
+  abrahamB1KnowledgeCheckExercisesArPolished,
+  abrahamB1QuickChallengesArPolished,
+  abrahamB1VocabularyChallengePairsArPolished,
+} from './ar/exerciseSystem';
 import { abrahamB1LanguageFocusExercises } from './en/languageFocus';
 import { abrahamB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
@@ -81,19 +81,19 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
     const languageFocusExercises = abrahamB1LanguageFocusChapter13[page.id] ?? abrahamB1LanguageFocusChapter12[page.id] ?? abrahamB1LanguageFocusChapter11[page.id] ?? abrahamB1LanguageFocusChapter10[page.id] ?? abrahamB1LanguageFocusChapter9[page.id] ?? abrahamB1LanguageFocusChapter8[page.id] ?? abrahamB1LanguageFocusChapter7[page.id] ?? abrahamB1LanguageFocusChapter6[page.id] ?? abrahamB1LanguageFocusChapter5[page.id] ?? abrahamB1LanguageFocusChapter4[page.id] ?? abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id];
     return {
       ...page,
-      exercises: abrahamB1QuickChallenges[page.id] ? [abrahamB1QuickChallenges[page.id]] : [],
+      exercises: abrahamB1QuickChallengesPolished[page.id] ? [abrahamB1QuickChallengesPolished[page.id]] : [],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercises };
+  if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesPolished };
   if (page.id === 15) return {
     ...page,
     title: 'B1 Language Review',
     content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.',
     exercises: abrahamB1LanguageReviewExercises,
   };
-  if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairs };
-  if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercises };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsPolished };
+  if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesPolished };
   return page;
 });
 
@@ -102,19 +102,19 @@ const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
     const languageFocusExercises = abrahamB1LanguageFocusChapter13Ar[page.id] ?? abrahamB1LanguageFocusChapter12Ar[page.id] ?? abrahamB1LanguageFocusChapter11Ar[page.id] ?? abrahamB1LanguageFocusChapter10Ar[page.id] ?? abrahamB1LanguageFocusChapter9Ar[page.id] ?? abrahamB1LanguageFocusChapter8Ar[page.id] ?? abrahamB1LanguageFocusChapter7Ar[page.id] ?? abrahamB1LanguageFocusChapter6Ar[page.id] ?? abrahamB1LanguageFocusChapter5Ar[page.id] ?? abrahamB1LanguageFocusChapter4Ar[page.id] ?? abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id];
     return {
       ...page,
-      exercises: abrahamB1QuickChallengesAr[page.id] ? [abrahamB1QuickChallengesAr[page.id]] : [],
+      exercises: abrahamB1QuickChallengesArPolished[page.id] ? [abrahamB1QuickChallengesArPolished[page.id]] : [],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesAr };
+  if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesArPolished };
   if (page.id === 15) return {
     ...page,
     title: 'مراجعة اللغة B1',
     content: 'راجع واستخدم التراكيب والعلاقات الخطابية والوظائف التواصلية التي تطورت عبر الفصول الثلاثة عشر.',
     exercises: abrahamB1LanguageReviewExercisesAr,
   };
-  if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsAr };
-  if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesAr };
+  if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsArPolished };
+  if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesArPolished };
   return page;
 });
 
