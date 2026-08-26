@@ -5,18 +5,18 @@ import {
   adamB2QuickChallenges,
   adamB2KnowledgeCheckExercises,
   adamB2VocabularyChallengePairs,
-  adamB2FinalReviewExercises,
   adamB2FinalChallengeExercises,
 } from './en/exercises';
 import {
   adamB2QuickChallengesAr,
   adamB2KnowledgeCheckExercisesAr,
   adamB2VocabularyChallengePairsAr,
-  adamB2FinalReviewExercisesAr,
   adamB2FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { adamB2LanguageFocusExercises } from './en/languageFocus';
 import { adamB2LanguageFocusExercisesAr } from './ar/languageFocus';
+import { adamB2LanguageReviewExercises } from './en/languageReview';
+import { adamB2LanguageReviewExercisesAr } from './ar/languageReview';
 import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -294,7 +294,14 @@ const buildPages = (
       return { ...page, exercises: knowledgeCheck };
     }
     if (page.id === 19) {
-      return { ...page, exercises: review };
+      return {
+        ...page,
+        title: isArabicBook ? 'مراجعة اللغة' : 'Language Review',
+        content: isArabicBook
+          ? 'راجع أدوات اللغة والخطاب التي تعلمتها عبر الفصول، ثم استخدمها في مواقف جديدة.'
+          : 'Review the grammar, stance and discourse tools developed across the chapters, then use them in new contexts.',
+        exercises: review,
+      };
     }
     if (page.id === 20) {
       return {
@@ -330,7 +337,7 @@ const englishPages = buildPages(
   adamB2QuickChallenges,
   adamB2KnowledgeCheckExercises,
   adamB2VocabularyChallengePairs,
-  adamB2FinalReviewExercises,
+  adamB2LanguageReviewExercises,
   adamB2FinalChallengeExercises,
 );
 
@@ -339,7 +346,7 @@ const arabicPages = buildPages(
   adamB2QuickChallengesAr,
   adamB2KnowledgeCheckExercisesAr,
   adamB2VocabularyChallengePairsAr,
-  adamB2FinalReviewExercisesAr,
+  adamB2LanguageReviewExercisesAr,
   adamB2FinalChallengeExercisesAr,
 );
 
