@@ -3,14 +3,12 @@ import { abrahamB1Pages } from './en/pages';
 import { abrahamB1PagesAr } from './ar/pages';
 import {
   abrahamB1FinalChallengeExercises,
-  abrahamB1FinalReviewExercises,
   abrahamB1KnowledgeCheckExercises,
   abrahamB1QuickChallenges,
   abrahamB1VocabularyChallengePairs,
 } from './en/exercises';
 import {
   abrahamB1FinalChallengeExercisesAr,
-  abrahamB1FinalReviewExercisesAr,
   abrahamB1KnowledgeCheckExercisesAr,
   abrahamB1QuickChallengesAr,
   abrahamB1VocabularyChallengePairsAr,
@@ -39,6 +37,8 @@ import { abrahamB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
 import { abrahamB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
 import { abrahamB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
 import { abrahamB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
+import { abrahamB1LanguageReviewExercises } from './en/languageReview';
+import { abrahamB1LanguageReviewExercisesAr } from './ar/languageReview';
 import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
@@ -86,7 +86,12 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
     };
   }
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercises };
-  if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercises };
+  if (page.id === 15) return {
+    ...page,
+    title: 'B1 Language Review',
+    content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.',
+    exercises: abrahamB1LanguageReviewExercises,
+  };
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairs };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercises };
   return page;
@@ -102,7 +107,12 @@ const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
     };
   }
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesAr };
-  if (page.id === 15) return { ...page, exercises: abrahamB1FinalReviewExercisesAr };
+  if (page.id === 15) return {
+    ...page,
+    title: 'مراجعة اللغة B1',
+    content: 'راجع واستخدم التراكيب والعلاقات الخطابية والوظائف التواصلية التي تطورت عبر الفصول الثلاثة عشر.',
+    exercises: abrahamB1LanguageReviewExercisesAr,
+  };
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsAr };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesAr };
   return page;
