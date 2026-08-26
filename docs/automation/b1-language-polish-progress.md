@@ -4,10 +4,10 @@ currentBook: Abraham B1
 bookPath: `src/data/abraham/b1`
 phase: LANGUAGE_FOCUS
 storyChapterCount: 13
-nextChapter: 4
+nextChapter: 5
 completedBooks:
 - Adam B1
-nextTask: COMPLETE_ABRAHAM_B1_CHAPTER_4_LANGUAGE_FOCUS
+nextTask: COMPLETE_ABRAHAM_B1_CHAPTER_5_LANGUAGE_FOCUS
 
 ## Completed books
 ### Adam B1
@@ -36,48 +36,58 @@ nextTask: COMPLETE_ABRAHAM_B1_CHAPTER_4_LANGUAGE_FOCUS
 - Arabic Language Focus: COMPLETE
 - Active book-local wiring: COMPLETE
 
+### Chapter 4
+- English Language Focus: COMPLETE
+- Arabic Language Focus: COMPLETE
+- Active book-local wiring: COMPLETE
+
 #### English pedagogical targets
-- Concession, continuation, viewpoint shift, and contrast through `although`, `still`, `on the other hand`, and `but when ...`.
-- Purpose and narrative sequencing through `to + verb`, linked action chains, `then`, and `when ... understood ...`.
-- Reasoning language: `Could this be ...?` → `because ...` → reported conclusion with `understood that ...`.
-- Productive transfer: four connected B1 sentences that compare viewpoints, organise purpose/sequence, test a possibility, and reach a reasoned conclusion.
-- The Chapter 3 Quick Challenge already tests the shared feature of the star and moon that leads Abraham to reject them; Language Focus deliberately avoids retesting that comprehension point.
+- Time and evidence-to-result organisation through `until sunrise`, `when ...`, and a stated conclusion after new evidence.
+- Conditional consequence through `If ... doesn’t/do not ... , ... will ...`, distinguishing a feared consequence from a threat.
+- Responsibility and reason through `should ... because ...`.
+- Role/purpose through `chose him to be ...`.
+- Direct imperatives in dialogue: `Follow me`, `Stop ...`, `Leave ...`.
+- Productive transfer: four connected B1 sentences combining realisation/time, responsibility + reason, an imperative, and a realistic condition-result response.
+- Chapter 4 Quick Challenge already tests the story-level transition from receiving guidance to beginning the mission; Language Focus deliberately avoids retesting that comprehension point.
 
 #### Arabic pedagogical targets
-- Arabic-native contrast and viewpoint organisation with `رغم ... فإنّ`, `ما زال`, `من ناحية أخرى`, and `ولكن`.
-- Purpose, sequence, and result through `لـ`, `فـ`, `ثم`, and `فلما ... أدرك ...`.
-- Reasoning language through `هل يمكن أن ...؟`, `لأن ...`, and `أدرك أن ...`.
-- Productive transfer: four connected Arabic B1 sentences moving from contrast/viewpoint to purpose/sequence, possibility, reason, and conclusion.
-- Arabic was authored independently from the Arabic chapter rather than translated from the English activity set.
+- Arabic-native time and result organisation with `حتى`, `لمّا`, `عندما`, and result `فـ`.
+- Negative condition and future consequence with `إن لم ... فسـ ...`, contrasting a feared result with a threat.
+- Responsibility and reason through `يجب أن ... لأن ...`.
+- Role/purpose through `اختاره ليكون رسوله`.
+- Direct imperatives from the Arabic dialogue: `اتبعني`, `توقف`, `ارحل`.
+- Productive transfer: a four-sentence Arabic B1 scene combining time/realisation, duty + reason, an imperative, and condition + consequence.
+- Arabic was authored independently from the Arabic chapter rather than mechanically translated from the English activities.
 
 ## Files changed in this run
-- `src/data/abraham/b1/en/languageFocusChapter3.ts` — added Chapter 3 English Language Focus.
-- `src/data/abraham/b1/ar/languageFocusChapter3.ts` — added Chapter 3 Arabic Language Focus; corrected duplicate matching keys by distinguishing star and moon contexts.
-- `src/data/abraham/b1/index.ts` — wired the Chapter 3 book-local Language Focus files while preserving Chapters 1–2 fallback wiring.
-- `docs/automation/b1-language-polish-progress.md` — advanced checkpoint to Chapter 4.
+- `src/data/abraham/b1/en/languageFocusChapter4.ts` — added Chapter 4 English Language Focus.
+- `src/data/abraham/b1/ar/languageFocusChapter4.ts` — added Chapter 4 Arabic Language Focus.
+- `src/data/abraham/b1/index.ts` — wired the Chapter 4 book-local Language Focus files while preserving Chapters 1–3 fallback wiring.
+- `docs/automation/b1-language-polish-progress.md` — advanced checkpoint to Chapter 5.
 
 ## Validation actually performed
-- Read the full Chapter 3 English story text from `src/data/abraham/b1/en/pages.ts`.
-- Read the full Chapter 3 Arabic story text independently from `src/data/abraham/b1/ar/pages.ts`.
-- Read both existing Chapter 3 Quick Challenges before authoring.
-- Confirmed Chapter 3 work focuses on language relationships and reasoning rather than duplicating the Quick Challenge comprehension target.
-- Re-fetched and corrected the Arabic Chapter 3 matching activity so every matching key is unique.
+- Read the full Chapter 4 English story text from `src/data/abraham/b1/en/pages.ts`.
+- Read the full Chapter 4 Arabic story text independently from `src/data/abraham/b1/ar/pages.ts`.
+- Read both existing Chapter 4 Quick Challenges before authoring.
+- Confirmed Chapter 4 Language Focus targets language relationships/functions rather than duplicating the Quick Challenge comprehension target.
+- Re-fetched both newly created Language Focus files from `preview` and confirmed four activities are present in each language.
+- Re-fetched `src/data/abraham/b1/index.ts` and confirmed Chapter 4 takes priority while Chapters 1–3 remain preserved through the existing fallback chain.
 - Story prose was not changed.
 - No A2, B2, shared/global, Teacher Guide, Self Study Guide, Knowledge Check, Vocabulary Challenge, Language Review, or Final Challenge files were modified.
+- No executable build/typecheck/CI runner was used in this run, so no build/typecheck/CI pass is claimed.
 
 ## Commits
-- Chapter 3 English Language Focus: `3f41b57db0c712d104a4dfbbe1d0bac044a773a2`
-- Chapter 3 Arabic Language Focus initial: `7f5d0e922a9d4e39c5de298f67081d90761f10df`
-- Chapter 3 Arabic matching-key correction: `e96f303f56b4e89327f7fc1c06f82dbdd840e901`
-- Chapter 3 active wiring: `46e6776e9b8e574d1390fce4b359218c79f7d544`
+- Chapter 4 English Language Focus: `cb588d587de3bbed766100fab3fce07a3b1c41b3`
+- Chapter 4 Arabic Language Focus: `ea52ede08273ec2065a7b83dba473fd2a283c560`
+- Chapter 4 active wiring: `47eab746238b946a1ba0e87fec279275de5359b2`
 
 ## Exact next run
-- Work on Abraham B1 Chapter 4 only.
-- Read the full English and Arabic Chapter 4 texts independently.
-- Read the existing Chapter 4 Quick Challenges in both languages.
-- Author Chapter 4 English and Arabic Language Focus only.
-- Do not start Chapter 5 in the same run.
+- Work on Abraham B1 Chapter 5 only.
+- Read the full English and Arabic Chapter 5 texts independently.
+- Read the existing Chapter 5 Quick Challenges in both languages.
+- Author Chapter 5 English and Arabic Language Focus only.
+- Do not start Chapter 6 in the same run.
 
 ## Unresolved issues
-- None identified for Chapter 3.
+- None identified for Chapter 4.
 - Build/typecheck remains unverified because no executable runner was used in this run.
