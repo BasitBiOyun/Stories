@@ -17,6 +17,7 @@ import { meccaB1LanguageFocusChapter9 } from './en/languageFocusChapter9';
 import { meccaB1LanguageFocusChapter10 } from './en/languageFocusChapter10';
 import { meccaB1LanguageFocusChapter11 } from './en/languageFocusChapter11';
 import { meccaB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
+import { meccaB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
 import { meccaB1KnowledgeCheckExercises } from './en/knowledgeCheck';
 import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1SelfStudyGuide, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
@@ -38,6 +39,7 @@ import { meccaB1LanguageFocusChapter9Ar } from './ar/languageFocusChapter9';
 import { meccaB1LanguageFocusChapter10Ar } from './ar/languageFocusChapter10';
 import { meccaB1LanguageFocusChapter11Ar } from './ar/languageFocusChapter11';
 import { meccaB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
+import { meccaB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
 import { meccaB1KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
@@ -54,6 +56,7 @@ const englishLanguageFocus = {
   ...meccaB1LanguageFocusChapter10,
   ...meccaB1LanguageFocusChapter11,
   ...meccaB1LanguageFocusChapter12,
+  ...meccaB1LanguageFocusChapter13,
 };
 
 const arabicLanguageFocus = {
@@ -68,6 +71,7 @@ const arabicLanguageFocus = {
   ...meccaB1LanguageFocusChapter10Ar,
   ...meccaB1LanguageFocusChapter11Ar,
   ...meccaB1LanguageFocusChapter12Ar,
+  ...meccaB1LanguageFocusChapter13Ar,
 };
 
 const attachLearning = (
