@@ -2,17 +2,17 @@ import type { BookData, PageData } from '../../../types';
 import { abrahamB2Pages } from './en/pages';
 import { abrahamB2PagesAr } from './ar/pages';
 import {
-  abrahamB2FinalChallengeExercises,
-  abrahamB2KnowledgeCheckExercises,
-  abrahamB2QuickChallenges,
-  abrahamB2VocabularyChallengePairs,
-} from './en/exercises';
+  abrahamB2FinalChallengeExercisesPolished,
+  abrahamB2KnowledgeCheckExercisesPolished,
+  abrahamB2QuickChallengesPolished,
+  abrahamB2VocabularyChallengePairsPolished,
+} from './en/exerciseSystem';
 import {
-  abrahamB2FinalChallengeExercisesAr,
-  abrahamB2KnowledgeCheckExercisesAr,
-  abrahamB2QuickChallengesAr,
-  abrahamB2VocabularyChallengePairsAr,
-} from './ar/exercises';
+  abrahamB2FinalChallengeExercisesArPolished,
+  abrahamB2KnowledgeCheckExercisesArPolished,
+  abrahamB2QuickChallengesArPolished,
+  abrahamB2VocabularyChallengePairsArPolished,
+} from './ar/exerciseSystem';
 import { abrahamB2LanguageFocusExercises } from './en/languageFocus';
 import { abrahamB2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamB2LanguageReviewExercises } from './en/languageReview';
@@ -29,11 +29,11 @@ const attachEnglishLearning = (pages: PageData[]): PageData[] => pages.map(page 
     const languageFocusExercises = abrahamB2LanguageFocusExercises[page.id];
     return {
       ...page,
-      exercises: [abrahamB2QuickChallenges[page.id]],
+      exercises: [abrahamB2QuickChallengesPolished[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercises };
+  if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercisesPolished };
   if (page.id === 37) {
     return {
       ...page,
@@ -42,8 +42,8 @@ const attachEnglishLearning = (pages: PageData[]): PageData[] => pages.map(page 
       exercises: abrahamB2LanguageReviewExercises,
     };
   }
-  if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairs };
-  if (page.id === 40) return { ...page, exercises: abrahamB2FinalChallengeExercises };
+  if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairsPolished };
+  if (page.id === 40) return { ...page, exercises: abrahamB2FinalChallengeExercisesPolished };
   return page;
 });
 
@@ -52,11 +52,11 @@ const attachArabicLearning = (pages: PageData[]): PageData[] => pages.map(page =
     const languageFocusExercises = abrahamB2LanguageFocusExercisesAr[page.id];
     return {
       ...page,
-      exercises: [abrahamB2QuickChallengesAr[page.id]],
+      exercises: [abrahamB2QuickChallengesArPolished[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercisesAr };
+  if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercisesArPolished };
   if (page.id === 37) {
     return {
       ...page,
@@ -65,8 +65,8 @@ const attachArabicLearning = (pages: PageData[]): PageData[] => pages.map(page =
       exercises: abrahamB2LanguageReviewExercisesAr,
     };
   }
-  if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairsAr };
-  if (page.id === 40) return { ...page, exercises: abrahamB2FinalChallengeExercisesAr };
+  if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairsArPolished };
+  if (page.id === 40) return { ...page, exercises: abrahamB2FinalChallengeExercisesArPolished };
   return page;
 });
 
