@@ -6,6 +6,7 @@ import {
   meccaB1QuickChallenges,
   meccaB1VocabularyChallengePairs,
 } from './en/exercises';
+import { meccaB1LanguageFocusExercises } from './en/languageFocus';
 import { meccaB1KnowledgeCheckExercises } from './en/knowledgeCheck';
 import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1SelfStudyGuide, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
@@ -16,6 +17,7 @@ import {
   meccaB1QuickChallengesAr,
   meccaB1VocabularyChallengePairsAr,
 } from './ar/exercises';
+import { meccaB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { meccaB1KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
@@ -23,13 +25,19 @@ import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/sel
 const attachLearning = (
   sourcePages: PageData[],
   quickChallenges: Record<number, Exercise>,
+  languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
   review: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => sourcePages.map((page) => {
   if (page.type === 'story' && quickChallenges[page.id]) {
-    return { ...page, exercises: [quickChallenges[page.id]] };
+    const languageFocusExercises = languageFocus[page.id];
+    return {
+      ...page,
+      exercises: [quickChallenges[page.id]],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
   }
   if (page.id === 16) return { ...page, type: 'quiz', exercises: knowledgeCheck };
   if (page.id === 17) return { ...page, type: 'exercises', exercises: review };
@@ -43,7 +51,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1FinalReviewExercises, meccaB1FinalChallengeExercises),
+  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, meccaB1LanguageFocusExercises, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1FinalReviewExercises, meccaB1FinalChallengeExercises),
   teacherGuide: meccaB1TeacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadata,
   selfStudyGuide: meccaB1SelfStudyGuide,
@@ -55,7 +63,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1FinalReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
+  pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, meccaB1LanguageFocusExercisesAr, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1FinalReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
   teacherGuide: meccaB1TeacherGuideAr,
   teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
   selfStudyGuide: meccaB1SelfStudyGuideAr,
