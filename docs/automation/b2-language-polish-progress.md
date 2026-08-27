@@ -2,74 +2,77 @@
 
 currentBook: Abraham B2
 phase: LANGUAGE_FOCUS
-nextTask: CHAPTER_32_LANGUAGE_FOCUS
+nextTask: CHAPTER_33_LANGUAGE_FOCUS
 completedBooks:
 - Adam B2
 
 ## Abraham B2 progress
 - Story chapters: 35
 - Current book path: `src/data/abraham/b2`
-- English Language Focus completed: Chapters 1–31
-- Arabic Language Focus completed: Chapters 1–31
-- Next chapter: Chapter 32
+- English Language Focus completed: Chapters 1–32
+- Arabic Language Focus completed: Chapters 1–32
+- Next chapter: Chapter 33
 
-## Abraham B2 Chapter 31 English decisions
-- Read the full English Chapter 31 story text and active Quick Challenge before authoring.
-- Quick Challenge already tests why the dream is a test rather than a private wish, so Language Focus does not retest that comprehension point.
+## Abraham B2 Chapter 32 English decisions
+- Read the full English Chapter 32 story text and active Quick Challenge before authoring.
+- Quick Challenge already asks for the concrete reward/substitution outcome, so Language Focus does not retest that retrieval point.
 - English Language Focus targets:
-  - life-stage progression through `grew up among them`, `Growing up...`, and `when he was old enough...`
-  - turning-point framing through `Abraham had a dream...`
-  - distinction between dream, understood command, consultation and response
-  - direct-speech functions: disclosure → consultation → command framing → future commitment
-  - qualified future commitment through `you shall find me ... of the patient` with dependence on Allah’s will
-  - productive transfer: 8–10 sentence non-story consultation under pressure, keeping obligation, consultation and personal choice distinct
+  - critical timing through `when...`, immediate action, and `was about to` for an event on the verge of happening
+  - interruption/reversal through `A voice stopped Abraham`
+  - interpretation of action through `You have indeed fulfilled the vision` and `That verily was a clear test`
+  - explicit consequence linking through `Because of this`
+  - distinction between what happened, what the event demonstrated, and the later consequence attributed by the chapter
+  - limiting/reframing language (`only`, `rather than`, `not... but...`) to prevent overstatement
+  - productive transfer: an 8–10 sentence non-story turning-point evaluation using timing, imminent action, reversal, interpretation, consequence and a final meaning boundary
 
-## Abraham B2 Chapter 31 Arabic decisions
-- Read the full Arabic Chapter 31 independently and its active Arabic Quick Challenge before authoring.
+## Abraham B2 Chapter 32 Arabic decisions
+- Read the full Arabic Chapter 32 independently and its active Arabic Quick Challenge before authoring.
 - Arabic Language Focus was authored from Arabic-native wording rather than translated from English.
 - Arabic-native targets:
-  - تطور المرحلة الحياتية في `نشأ إسماعيل بينهم` و`بعد أن كبر...` و`فلما بلغ معه السعي`
-  - نقطة التحول في `رأى إبراهيم في المنام...`
-  - الفصل بين الرؤيا وفهم التكليف والمشاورة والجواب
-  - وظائف الحوار في `إني أرى...` → `فانظر ماذا ترى` → `افعل ما تؤمر` → `ستجدني إن شاء الله من الصابرين`
-  - الالتزام المستقبلي المقيّد بالتفويض وعدم ادعاء التحكم الكامل بالمستقبل
-  - productive transfer: فقرة عربية من 8–10 جمل تميز بين التكليف والمشاورة والاختيار الشخصي
+  - بناء الذروة بـ`فلما أسلما` ثم الانتقال إلى الفعل
+  - الفعل الوشيك في `على وشك أن تقترب`
+  - قطع النتيجة المتوقعة في `أوقف صوتٌ إبراهيم`
+  - تحقق الاستجابة في `قد صدقت الرؤيا`
+  - تفسير الحدث في `إن هذا لهو البلاء المبين`
+  - الربط السببي والنتيجة بـ`ولذلك`
+  - الحد من المبالغة باستعمال `فقط` و`بل` و`لم يكن... بل...`
+  - productive transfer: فقرة عربية من 8–10 جمل تميز بين وقوع الحدث وما يكشفه أو يثبتُه
 
 ## Source-fidelity / qualification decisions
 - Canonical English and Arabic story prose was not changed.
-- The dream is preserved as the source event, Abraham’s understanding of command is kept distinct, and Ishmael’s response is not rewritten as the origin of the command.
-- `God willing / إن شاء الله` remains part of the future commitment and is not flattened into absolute certainty.
-- English and Arabic activities were authored independently from each language’s own chapter wording.
+- The test is not rewritten as requiring Ishmael's death; the chapter's interruption and explicit description of the event as a test remain distinct from the animal substitution.
+- The later leadership/prophetic-lineage consequence is presented only as the chapter presents it, not generalized beyond the source wording.
+- English and Arabic activities were authored independently from each language's own chapter wording.
 
-## Files added for Chapter 31
-- `src/data/abraham/b2/en/languageFocusChapter31.ts`
-- `src/data/abraham/b2/ar/languageFocusChapter31.ts`
+## Files added for Chapter 32
+- `src/data/abraham/b2/en/languageFocusChapter32.ts`
+- `src/data/abraham/b2/ar/languageFocusChapter32.ts`
 
-## Files updated for Chapter 31
+## Files updated for Chapter 32
 - `src/data/abraham/b2/en/languageFocus.ts`
 - `src/data/abraham/b2/ar/languageFocus.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
-## Abraham B2 Chapter 31 commits
-- English Chapter 31 Language Focus: `7b622d39efea68362c086ec128dc8f8f57c0274f`
-- Arabic Chapter 31 Language Focus: `d3023f1e90dfb05c08f34bf5f109dc8b1f4bc7ee`
-- English aggregator wiring: `e6b129df686023e149f9b4e68a1c4de85471e8f6`
-- Arabic aggregator wiring: `e72a7c691d61da65a7ee00937427b9015f0a1247`
+## Abraham B2 Chapter 32 commits
+- English Chapter 32 Language Focus: `6bb6a61835e740340368280a140c65027ee7c892`
+- Arabic Chapter 32 Language Focus: `d2080a737de50bddc0aca94e52f12db147daa08f`
+- English aggregator wiring: `8fd1ac2da1e11080b165db30976a16f5b489829a`
+- Arabic aggregator wiring: `943ec01764aa09a947e587a833f6e10c507cfcc9`
 
 ## Validation actually performed
-- Read the full English Chapter 31 source without modifying canonical prose.
-- Read the full Arabic Chapter 31 source independently without modifying canonical prose.
-- Read the active English and Arabic Chapter 31 Quick Challenges before authoring.
+- Read the full English Chapter 32 source without modifying canonical prose.
+- Read the full Arabic Chapter 32 source independently without modifying canonical prose.
+- Read the active English and Arabic Chapter 32 Quick Challenges before authoring.
 - Added four English B2 activities and four independently authored Arabic B2 activities.
-- Re-fetched both new Chapter 31 Language Focus files after creation.
-- Wired Chapter 31 into both active book-local Language Focus aggregators while preserving Chapters 1–30.
+- Re-fetched both new Chapter 32 Language Focus files after creation.
+- Re-fetched both active Language Focus aggregators after wiring and confirmed Chapter 32 is included while Chapters 1–31 remain present.
 - No Knowledge Check, Retrieval Review, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide files were modified.
 - No B1/A2, other B2 book or shared/global file was edited.
 - No executable typecheck/build/CI runner was used, so no typecheck/build/CI pass is claimed.
 
 ## Exact next run
-- Chapter 32 only: read the full Abraham B2 English and Arabic Chapter 32 story texts and active Quick Challenges independently, then author Chapter 32 Language Focus in both languages.
-- Do not start Chapter 33 in the same run.
+- Chapter 33 only: read the full Abraham B2 English and Arabic Chapter 33 story texts and active Quick Challenges independently, then author Chapter 33 Language Focus in both languages.
+- Do not start Chapter 34 in the same run.
 
 ## Unresolved issues
-- None identified for Abraham B2 Chapter 31.
+- None identified for Abraham B2 Chapter 32.
