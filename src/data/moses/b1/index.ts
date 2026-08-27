@@ -5,14 +5,12 @@ import {
   mosesB1QuickChallenges,
   mosesB1KnowledgeCheckExercises,
   mosesB1VocabularyChallengePairs,
-  mosesB1FinalReviewExercises,
   mosesB1FinalChallengeExercises,
 } from './en/exercises';
 import {
   mosesB1QuickChallengesAr,
   mosesB1KnowledgeCheckExercisesAr,
   mosesB1VocabularyChallengePairsAr,
-  mosesB1FinalReviewExercisesAr,
   mosesB1FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { mosesB1LanguageFocusExercises } from './en/languageFocus';
@@ -27,6 +25,7 @@ import { mosesB1LanguageFocusChapter10 } from './en/languageFocusChapter10';
 import { mosesB1LanguageFocusChapter11 } from './en/languageFocusChapter11';
 import { mosesB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
 import { mosesB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
+import { mosesB1LanguageReviewExercises } from './en/languageReview';
 import { mosesB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { mosesB1LanguageFocusChapter3Ar } from './ar/languageFocusChapter3';
 import { mosesB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
@@ -39,6 +38,7 @@ import { mosesB1LanguageFocusChapter10Ar } from './ar/languageFocusChapter10';
 import { mosesB1LanguageFocusChapter11Ar } from './ar/languageFocusChapter11';
 import { mosesB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
 import { mosesB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
+import { mosesB1LanguageReviewExercisesAr } from './ar/languageReview';
 import { mosesB1TeacherGuide, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1SelfStudyGuide, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -82,8 +82,9 @@ const buildPages = (
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
-  review: Exercise[],
+  languageReview: Exercise[],
   finalChallenge: Exercise[],
+  language: 'en' | 'ar',
 ): PageData[] => pages.map((page) => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = languageFocus[page.id];
@@ -95,7 +96,16 @@ const buildPages = (
   }
   if (page.id === 14) return { ...page, exercises: knowledgeCheck };
   if (page.id === 15) return { ...page, vocabularyPairs };
-  if (page.id === 18) return { ...page, exercises: review };
+  if (page.id === 18) {
+    return {
+      ...page,
+      title: language === 'ar' ? 'مراجعة اللغة B1' : 'B1 Language Review',
+      content: language === 'ar'
+        ? 'راجع التراكيب والعلاقات والوظائف اللغوية التي تعلمتها عبر الفصول، ثم استخدمها في سياقات جديدة مترابطة.'
+        : 'Consolidate grammar, discourse relationships and communicative functions from across the chapters, then use them in new connected contexts.',
+      exercises: languageReview,
+    };
+  }
   if (page.id === 19) return { ...page, exercises: finalChallenge };
   return page;
 });
@@ -106,8 +116,9 @@ const englishPages = buildPages(
   englishLanguageFocus,
   mosesB1KnowledgeCheckExercises,
   mosesB1VocabularyChallengePairs,
-  mosesB1FinalReviewExercises,
+  mosesB1LanguageReviewExercises,
   mosesB1FinalChallengeExercises,
+  'en',
 );
 const arabicPages = buildPages(
   mosesB1PagesAr,
@@ -115,8 +126,9 @@ const arabicPages = buildPages(
   arabicLanguageFocus,
   mosesB1KnowledgeCheckExercisesAr,
   mosesB1VocabularyChallengePairsAr,
-  mosesB1FinalReviewExercisesAr,
+  mosesB1LanguageReviewExercisesAr,
   mosesB1FinalChallengeExercisesAr,
+  'ar',
 );
 
 export const mosesB1BookDataEn: BookData = {
