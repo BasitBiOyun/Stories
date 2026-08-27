@@ -2,13 +2,13 @@
 
 currentBook: Moses B1
 bookPath: `src/data/moses/b1`
-phase: LANGUAGE_FOCUS_COMPLETE
+phase: LANGUAGE_REVIEW_COMPLETE
 storyChapterCount: 13
 nextChapter: NONE
 completedBooks:
 - Adam B1
 - Abraham B1
-nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
+nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
 
 ## Completed books
 ### Adam B1
@@ -31,63 +31,68 @@ nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
 - Active polished exercise-system wiring: COMPLETE
 - Story prose unchanged.
 
-## Moses B1 progress
-### Chapters 1–13
-- English Language Focus: COMPLETE
-- Arabic Language Focus: COMPLETE
-- Active book-local wiring: COMPLETE
+## Current book — Moses B1
+### Language Focus
+- Chapters 1–13 English Language Focus: COMPLETE
+- Chapters 1–13 Arabic Language Focus: COMPLETE
+- Active story-page `languageFocusExercises` wiring: COMPLETE
 
-### Chapter 13 English pedagogical targets
-- Direct command through `Hit the sea with your stick!`.
-- Triggering time relation through `When the stick touched the waters of the sea...`.
-- Command → event → practical result through the sea parting and a path becoming available.
-- Final time → reported order → change → consequence sequence through `when they were midway`, `ordered the sea to close`, `the sea closed`, and `they drowned`.
-- Shift from narrative to interpretation through `The story of Moses has many lessons to learn` and `It again reminds us that...`.
-- Purpose through `sent prophets to show...` / `came to teach...`.
-- Recurring situation-result meaning through `when we pray to Him, He always guides us...`.
-- Productive transfer: five connected non-story B1 sentences moving from instruction and sequence to consequence, purpose, and a general lesson.
-- Chapter 13 Quick Challenge already tests what Pharaoh's claim about the sea reveals about his arrogance; Language Focus therefore does not retest that interpretation.
+### Cumulative Language Review
+- English Language Review: COMPLETE
+- Arabic Language Review: COMPLETE
+- Active Language Review page: page 18 in both languages
+- Final Challenge remains separate on page 19
 
-### Chapter 13 Arabic pedagogical targets
-- Direct imperative through `اِضرِبْ البحر بعصاك`.
-- Narrative timing through `ولمّا لمست العصا ماء البحر` and `وعندما وصلوا إلى وسط البحر`.
-- Command → event → result through `انشقّ البحر` and `جعل الله لهم طريقًا في البحر`.
-- Reported command and consequence through `أمر الله البحر أن يعود كما كان` → `فانطبق` → `فغرقوا`.
-- Shift from narration to general meaning through `في قصة موسى دروس كثيرة` and `فهي تذكّرنا أنّ...`.
-- Purpose through لام التعليل in `ليهدوا الناس`.
-- Recurring condition-result relationship through `وإذا دعوناه، هدانا...`.
-- Productive transfer: five connected Arabic B1 sentences using command, `لمّا/عندما`, result with `فـ`, purpose with لام التعليل, and a general lesson.
-- Arabic activities were designed independently from the Arabic chapter rather than mechanically translated from English.
+### English Language Review design
+The cumulative review synthesizes language functions actually taught across the thirteen chapter Language Focus sections without retesting story comprehension:
+- historical/time framing and narrative movement through `At that time`, `After`, `while`, past-progressive background and `Suddenly`
+- reported voice, direct imperatives, `will`, and `be going to` for prediction, decision, reassurance and expected/planned action
+- reason, result, contrast and purpose through `because`, `so / that's why`, `but / however`, `to + verb`, and `in order to`
+- obligation, inability, successful action and persistence through `must / should`, `could not`, `managed to`, and `kept / continued`
+- connected decision → action → result → purpose discourse
+- scene building through progressive background, `when`, relative-clause description and passive focus
+- final productive transfer requiring six connected non-story B1 sentences with deliberate language selection
+
+### Arabic Language Review design
+The Arabic review was authored independently from the Arabic Language Focus set rather than translated from English. It synthesizes:
+- الزمن والخلفية through `في ذلك الوقت`, `كان + مضارع`, `بعد أن`, and `فجأة`
+- نقل الكلام والأمر والمستقبل through `قال / روى / أخبر`, فعل الأمر, `سـ`, and `يريد أن`
+- السبب والنتيجة والتباين والغاية through `لأنّ`, `لذلك / فـ`, `لكنّ`, and لام التعليل / `لكي`
+- الوجوب والعجز والاستمرار والقرار through `عليكم أن / لا ينبغي أن`, `لم يستطع أن`, `ظلّ / بقي + مضارع`, and `أراد / قرّر أن`
+- connected مرحلة سابقة → قرار → فعل → نتيجة → غاية discourse
+- scene building through `كان + مضارع`, `عندما / لمّا`, Arabic descriptive clauses and passive focus
+- final productive transfer requiring six connected Arabic B1 sentences in a new non-story context
 
 ## Files changed in this run
-- `src/data/moses/b1/en/languageFocusChapter13.ts` — added Chapter 13 English Language Focus.
-- `src/data/moses/b1/ar/languageFocusChapter13.ts` — added Chapter 13 Arabic Language Focus.
-- `src/data/moses/b1/index.ts` — merged Chapter 13 into the active English and Arabic Language Focus maps while preserving Chapters 1–12 and separate `languageFocusExercises` UI wiring.
-- `docs/automation/b1-language-polish-progress.md` — marked Moses B1 Language Focus phase complete and set the next run to Language Review only.
+- `src/data/moses/b1/en/languageReview.ts` — added the cumulative English Language Review with 8 activities.
+- `src/data/moses/b1/ar/languageReview.ts` — added the independently authored cumulative Arabic Language Review with 8 activities.
+- `src/data/moses/b1/index.ts` — wired page 18 to the new EN/AR Language Review sets and labeled the page `B1 Language Review` / `مراجعة اللغة B1`; preserved story Language Focus wiring and separate Final Challenge page 19.
+- `docs/automation/b1-language-polish-progress.md` — advanced Moses B1 to `LANGUAGE_REVIEW_COMPLETE`.
 
 ## Validation actually performed
-- Read the full English Chapter 13 story from `src/data/moses/b1/en/pages.ts`.
-- Read the full Arabic Chapter 13 story independently from `src/data/moses/b1/ar/pages.ts`.
-- Read the existing English and Arabic Chapter 13 Quick Challenges before authoring.
-- Confirmed the Quick Challenges test Pharaoh's continuing arrogance, while Language Focus targets command, timing, result, purpose, narrative-to-lesson transition, and connected production.
-- Re-fetched both new Chapter 13 Language Focus files from `preview` and confirmed four activities are present in each language.
-- Re-fetched `src/data/moses/b1/index.ts` after the wiring write and confirmed Chapter 13 is merged into both active maps while Chapters 1–12 remain preserved.
-- Confirmed active story pages still place Quick Challenge in `exercises` and Language Focus in `languageFocusExercises`.
+- Confirmed the run started from `phase: LANGUAGE_FOCUS_COMPLETE`.
+- Reviewed the completed Moses B1 Language Focus architecture and representative chapter Language Focus files spanning early, middle and late chapters in English and Arabic.
+- Confirmed the cumulative review uses structures/functions present in the completed chapter Language Focus set and does not ask learners to recall Moses story facts.
+- Re-fetched both new Language Review files from `preview` after creation.
+- Re-fetched `src/data/moses/b1/index.ts` after the wiring write and confirmed both new imports are active.
+- Confirmed story pages still keep Quick Challenge in `exercises` and Language Focus in `languageFocusExercises`.
+- Confirmed page 18 now loads the cumulative Language Review in both languages and page 19 remains the separate Final Challenge.
 - Story prose was not changed.
-- No A2, B2, shared/global, Teacher Guide, Self Study Guide, Knowledge Check, Vocabulary Challenge, Language Review or Final Challenge files were modified.
+- No A2, B2, shared/global, Teacher Guide, Self Study Guide, Quick Challenge, Knowledge Check, Vocabulary Challenge or Final Challenge content was edited in this run.
 - No executable build/typecheck/CI runner was used, so no build/typecheck/CI pass is claimed.
 
 ## Commits
-- Chapter 13 English Language Focus: `b588c6abb8d7c87f787c57d9234dfdc6a959e6f5`
-- Chapter 13 Arabic Language Focus: `b5e8a80bb307675b6d449d3696292db77da27ef3`
-- Chapter 13 active wiring: `d38014a12cfa5ab1b2656eb80a00069ab970ddef`
+- English Language Review: `75a58401461c2921adf03395eed16d4e98f4ad13`
+- Arabic Language Review: `05cb3bd417553f0fd3c5c83ad9f78c4c30a1ace8`
+- Active Language Review wiring: `8bec9c17d6e371bdef98d1cc4bb07bbd398c2258`
 
 ## Exact next run
-- Build/review ONLY the cumulative Moses B1 Language Review in English and Arabic.
-- Synthesize structures/functions actually taught across Chapters 1–13.
-- Do not audit Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge, Teacher Guide or Self Study Guide in that run.
-- When Language Review is complete, set `phase: LANGUAGE_REVIEW_COMPLETE` and `nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN`.
+- Enter Phase 3 for Moses B1 only.
+- Audit Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and active book-local wiring in English and Arabic.
+- Keep Language Review and Final Challenge clearly separate.
+- Fix only justified book-local issues; do not change story prose or guide files unless a Moses-B1-local technical blocker directly requires it.
+- If final audit completes, set `phase: BOOK_COMPLETE`, add Moses B1 to `completedBooks`, set `nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN`, and STOP without starting Mecca/Bilal B1 in the same run.
 
 ## Unresolved issues
-- None identified for Moses B1 Chapter 13 Language Focus.
+- None identified in the Moses B1 Language Review architecture during this run.
 - Build/typecheck remains unverified because no executable runner was used.
