@@ -2,17 +2,17 @@ import type { BookData, Exercise, PageData } from '../../../types';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1PagesAr } from './ar/pages';
 import {
-  mosesB1QuickChallenges,
-  mosesB1KnowledgeCheckExercises,
-  mosesB1VocabularyChallengePairs,
-  mosesB1FinalChallengeExercises,
-} from './en/exercises';
+  mosesB1PolishedQuickChallenges,
+  mosesB1PolishedKnowledgeCheckExercises,
+  mosesB1PolishedVocabularyChallengePairs,
+  mosesB1PolishedFinalChallengeExercises,
+} from './en/exerciseSystem';
 import {
-  mosesB1QuickChallengesAr,
-  mosesB1KnowledgeCheckExercisesAr,
-  mosesB1VocabularyChallengePairsAr,
-  mosesB1FinalChallengeExercisesAr,
-} from './ar/exercises';
+  mosesB1PolishedQuickChallengesAr,
+  mosesB1PolishedKnowledgeCheckExercisesAr,
+  mosesB1PolishedVocabularyChallengePairsAr,
+  mosesB1PolishedFinalChallengeExercisesAr,
+} from './ar/exerciseSystem';
 import { mosesB1LanguageFocusExercises } from './en/languageFocus';
 import { mosesB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
 import { mosesB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
@@ -112,22 +112,22 @@ const buildPages = (
 
 const englishPages = buildPages(
   mosesB1Pages,
-  mosesB1QuickChallenges,
+  mosesB1PolishedQuickChallenges,
   englishLanguageFocus,
-  mosesB1KnowledgeCheckExercises,
-  mosesB1VocabularyChallengePairs,
+  mosesB1PolishedKnowledgeCheckExercises,
+  mosesB1PolishedVocabularyChallengePairs,
   mosesB1LanguageReviewExercises,
-  mosesB1FinalChallengeExercises,
+  mosesB1PolishedFinalChallengeExercises,
   'en',
 );
 const arabicPages = buildPages(
   mosesB1PagesAr,
-  mosesB1QuickChallengesAr,
+  mosesB1PolishedQuickChallengesAr,
   arabicLanguageFocus,
-  mosesB1KnowledgeCheckExercisesAr,
-  mosesB1VocabularyChallengePairsAr,
+  mosesB1PolishedKnowledgeCheckExercisesAr,
+  mosesB1PolishedVocabularyChallengePairsAr,
   mosesB1LanguageReviewExercisesAr,
-  mosesB1FinalChallengeExercisesAr,
+  mosesB1PolishedFinalChallengeExercisesAr,
   'ar',
 );
 
