@@ -16,6 +16,7 @@ import { abrahamB2LanguageFocusChapter14Ar } from './languageFocusChapter14';
 import { abrahamB2LanguageFocusChapter15Ar } from './languageFocusChapter15';
 import { abrahamB2LanguageFocusChapter16Ar } from './languageFocusChapter16';
 import { abrahamB2LanguageFocusChapter17Ar } from './languageFocusChapter17';
+import { abrahamB2LanguageFocusChapter18Ar } from './languageFocusChapter18';
 
 /** تمارين التركيز اللغوي النشطة في إبراهيم B2، مجمعة من مجموعات الفصول المؤلفة يدويًا. */
 export const abrahamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
@@ -36,4 +37,5 @@ export const abrahamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
   ...abrahamB2LanguageFocusChapter15Ar,
   ...abrahamB2LanguageFocusChapter16Ar,
   ...abrahamB2LanguageFocusChapter17Ar,
+  ...abrahamB2LanguageFocusChapter18Ar,
 };
