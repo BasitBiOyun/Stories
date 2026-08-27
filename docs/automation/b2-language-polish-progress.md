@@ -2,77 +2,79 @@
 
 currentBook: Abraham B2
 phase: LANGUAGE_FOCUS
-nextTask: CHAPTER_30_LANGUAGE_FOCUS
+nextTask: CHAPTER_31_LANGUAGE_FOCUS
 completedBooks:
 - Adam B2
 
 ## Abraham B2 progress
 - Story chapters: 35
 - Current book path: `src/data/abraham/b2`
-- English Language Focus completed: Chapters 1–29
-- Arabic Language Focus completed: Chapters 1–29
-- Next chapter: Chapter 30
+- English Language Focus completed: Chapters 1–30
+- Arabic Language Focus completed: Chapters 1–30
+- Next chapter: Chapter 31
 
-## Abraham B2 Chapter 29 English decisions
-- Read the full English Chapter 29 story text and its active Quick Challenge before authoring.
-- The Quick Challenge already tests the lasting significance of Hajar running between Safa and Marwa; Language Focus does not retest that comprehension point.
+## Abraham B2 Chapter 30 English decisions
+- Read the full English Chapter 30 story text and its active Quick Challenge before authoring.
+- The Quick Challenge already tests how Zamzam appears; Language Focus does not retest that comprehension point.
 - English Language Focus targets:
-  - source attribution through `Ibn Abbas ... said`
-  - internal possibility through `Maybe ...`, kept distinct from confirmed fact
-  - trigger and narrative sequencing through `When...`, `Leaving...`, `Then...`, and `but still...`
-  - reduced participial background through `Leaving Ishmael under a tree...`
-  - movement from narrated event to explicit comparison through `is directly comparable to...`
-  - later interpretive connection through `was later symbolized...`
-  - productive transfer: an 8–10 sentence non-story paragraph moving from attributed report through tentative possibility and coherent action sequence to a clearly marked later interpretation
+  - rapid event → immediate result through `... and water immediately flowed out`
+  - purpose through `to stop it from spreading`
+  - future-in-view through `which this boy and his father will build`
+  - continuing present relevance through `is flowing to this day`
+  - limited later-time progression through `Not long after that`
+  - past-perfect background through `They had seen...`
+  - evidence → strong inference through `the unusual sight of a bird... which could only mean the presence of water`
+  - productive transfer: an 8–10 sentence non-story paragraph linking event, purpose, time shifts, observable evidence and clearly marked inference
 
-## Abraham B2 Chapter 29 Arabic decisions
-- Read the full Arabic Chapter 29 independently and its active Arabic Quick Challenge before authoring.
+## Abraham B2 Chapter 30 Arabic decisions
+- Read the full Arabic Chapter 30 independently and its active Arabic Quick Challenge before authoring.
 - Arabic Language Focus was authored from Arabic-native wording rather than translated from English.
 - Arabic-native targets:
-  - إسناد الرواية بـ`قال ابن عباس... ومن الرواة الكبار للحديث`
-  - الاحتمال الداخلي بـ`لعلّ هناك قافلة تمرّ` من غير تحويله إلى خبر مؤكد
-  - بناء التعاقب بـ`عندما`, والفاء, و`ثم`, والاستدراك بـ`لكن`
-  - نقل السرد من الفعل إلى المقارنة بـ`كان بحث هاجر... مشابهًا تمامًا...`
-  - الإشارة إلى الدلالة اللاحقة بـ`وقد أصبح جهدها فيما بعد رمزًا...`
-  - productive transfer: فقرة عربية من 8–10 جمل تبدأ بمصدر منسوب، ثم احتمال وتسلسل أفعال ونتيجة مخالفة للتوقع، وتنتهي بتفسير أو دلالة لاحقة واضحة
+  - النتيجة المباشرة بالفاء في `ضرب... فانفجر فورًا`
+  - الغاية بـ`لتمنع انتشاره`
+  - المستقبل بـ`سيبنيه`
+  - الاستمرار بـ`ما زال يجري إلى اليوم`
+  - الانتقال الزمني بـ`بعد ذلك بزمن غير طويل`
+  - الخلفية السابقة بـ`وقد رأوا`
+  - الانتقال من العلامة إلى الاستنتاج بـ`وكان ذلك يدلّ على وجود الماء`
+  - productive transfer: فقرة عربية من 8–10 جمل تفصل بين الحدث والغاية والتحولات الزمنية والعلامة المرصودة والاستنتاج المبني عليها
 
 ## Source-fidelity / qualification decisions
 - Canonical English and Arabic story prose was not changed.
-- Language Focus does not ask learners to retrieve the lasting ritual significance of Hajar's running because the Quick Challenge already measures that point.
-- `Maybe there is a caravan...` / `لعلّ هناك قافلة...` remains a possibility, not a confirmed event.
-- The later comparison/symbolization layer is kept distinct from the immediate narrated search rather than collapsed into the event itself.
+- Language Focus does not ask learners to retrieve how Zamzam appeared because the Quick Challenge already measures that event.
+- The bird remains the observed sign; the presence of water remains an inference drawn from that sign rather than something directly observed in the sentence.
+- Future building, continuing present relevance, and earlier evidence are kept as distinct time layers.
 - English and Arabic activities were authored independently from each language's own chapter wording.
 
-## Files added for Chapter 29
-- `src/data/abraham/b2/en/languageFocusChapter29.ts`
-- `src/data/abraham/b2/ar/languageFocusChapter29.ts`
+## Files added for Chapter 30
+- `src/data/abraham/b2/en/languageFocusChapter30.ts`
+- `src/data/abraham/b2/ar/languageFocusChapter30.ts`
 
-## Files updated for Chapter 29
+## Files updated for Chapter 30
 - `src/data/abraham/b2/en/languageFocus.ts`
 - `src/data/abraham/b2/ar/languageFocus.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
-## Abraham B2 Chapter 29 commits
-- English Chapter 29 Language Focus: `a00a73d4c9c24cfbcb3c3e42c8ea1b932daf01eb`
-- Arabic Chapter 29 Language Focus: `9b7bc171e6e8c8a89ab7e51376c759c92432e75d`
-- English aggregator wiring: `d4da9e6c9e70413b7fb0c89e9f841300c617e2f1`
-- Arabic aggregator wiring: `03dca58c17d594eeec462faee3fd655985270255`
-- Preview HEAD before checkpoint write: `03dca58c17d594eeec462faee3fd655985270255`
+## Abraham B2 Chapter 30 commits
+- English Chapter 30 Language Focus: `24dbc4a5c81f6cb21e753f7334eb974d52804d5c`
+- Arabic Chapter 30 Language Focus: `e4174837aff74314b2d96b55ff8b0407d5a47875`
+- English aggregator wiring: `8fd791e24940e20efe83aee7e6a478d05a2e2200`
+- Arabic aggregator wiring: `ab77f452edcf5c3ac71f56c465da760345aaf120`
 
 ## Validation actually performed
-- Read the full English Chapter 29 source from the locked canonical story source without modifying it.
-- Read the full Arabic Chapter 29 source independently from the locked canonical story source without modifying it.
-- Read the active English and Arabic Chapter 29 Quick Challenges before authoring.
+- Read the full English Chapter 30 source from the locked canonical story source without modifying it.
+- Read the full Arabic Chapter 30 source independently from the locked canonical story source without modifying it.
+- Read the active English and Arabic Chapter 30 Quick Challenges before authoring.
 - Added four English B2 activities and four independently authored Arabic B2 activities.
-- Re-fetched both newly created Language Focus files after creation.
-- Re-fetched both target aggregators after wiring and confirmed Chapter 29 import/spread is active while Chapters 1–28 remain preserved.
+- Re-fetched both newly created Chapter 30 Language Focus files after creation.
+- Re-fetched both target aggregators after wiring and confirmed Chapter 30 import/spread is active while Chapters 1–29 remain preserved.
 - No Knowledge Check, Retrieval Review, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide or Self Study Guide files were modified.
 - No B1/A2, other B2 book or shared/global file was edited.
 - No executable typecheck/build/CI runner was used, so no typecheck/build/CI pass is claimed.
 
 ## Exact next run
-- Chapter 30 only: read the full Abraham B2 English and Arabic Chapter 30 story texts and active Quick Challenges independently, then author Chapter 30 Language Focus in both languages.
-- Do not start Chapter 31 in the same run.
+- Chapter 31 only: read the full Abraham B2 English and Arabic Chapter 31 story texts and active Quick Challenges independently, then author Chapter 31 Language Focus in both languages.
+- Do not start Chapter 32 in the same run.
 
 ## Unresolved issues
-- None identified for Abraham B2 Chapter 29.
+- None identified for Abraham B2 Chapter 30.
