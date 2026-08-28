@@ -2,7 +2,6 @@ import type { BookData, Exercise, PageData } from '../../../types';
 import { meccaB1Pages } from './en/pages';
 import {
   meccaB1FinalChallengeExercises,
-  meccaB1FinalReviewExercises,
   meccaB1QuickChallenges,
   meccaB1VocabularyChallengePairs,
 } from './en/exercises';
@@ -20,13 +19,13 @@ import { meccaB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
 import { meccaB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
 import { meccaB1LanguageFocusChapter14 } from './en/languageFocusChapter14';
 import { meccaB1LanguageFocusChapter15 } from './en/languageFocusChapter15';
+import { meccaB1LanguageReviewExercises } from './en/languageReview';
 import { meccaB1KnowledgeCheckExercises } from './en/knowledgeCheck';
 import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB1SelfStudyGuide, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { pages as meccaB1PagesAr } from './ar/pages';
 import {
   meccaB1FinalChallengeExercisesAr,
-  meccaB1FinalReviewExercisesAr,
   meccaB1QuickChallengesAr,
   meccaB1VocabularyChallengePairsAr,
 } from './ar/exercises';
@@ -44,6 +43,7 @@ import { meccaB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
 import { meccaB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
 import { meccaB1LanguageFocusChapter14Ar } from './ar/languageFocusChapter14';
 import { meccaB1LanguageFocusChapter15Ar } from './ar/languageFocusChapter15';
+import { meccaB1LanguageReviewExercisesAr } from './ar/languageReview';
 import { meccaB1KnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
@@ -111,7 +111,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1FinalReviewExercises, meccaB1FinalChallengeExercises),
+  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises),
   teacherGuide: meccaB1TeacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadata,
   selfStudyGuide: meccaB1SelfStudyGuide,
@@ -123,7 +123,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1FinalReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
+  pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
   teacherGuide: meccaB1TeacherGuideAr,
   teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
   selfStudyGuide: meccaB1SelfStudyGuideAr,
