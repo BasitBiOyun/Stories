@@ -30,7 +30,7 @@ export const meccaB1LanguageFocusChapter14: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'Continuing an Action and Resisting Change',
       instructions: 'Match each form with its function in the paragraph.',
-      question: 'How does the chapter contrast continued دعوتة with refusal to change?',
+      question: 'How does the chapter contrast a continued call for change with refusal to change?',
       matchingPairs: [
         { left: 'continued to ask people to stop worshipping idols', right: 'shows that an action continued despite pressure' },
         { left: 'did not want to change', right: 'expresses refusal or lack of willingness' },
