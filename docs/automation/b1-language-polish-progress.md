@@ -4,13 +4,13 @@ currentBook: Yunus Emre B1
 bookPath: `src/data/yunusEmre/b1`
 phase: LANGUAGE_FOCUS
 storyChapterCount: 13
-nextChapter: 4
+nextChapter: 5
 completedBooks:
 - Adam B1
 - Abraham B1
 - Moses B1
 - Mecca/Bilal B1
-nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_4_LANGUAGE_FOCUS_ON_NEXT_RUN
+nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_5_LANGUAGE_FOCUS_ON_NEXT_RUN
 
 ## Completed books
 - Adam B1: COMPLETE under the new Language Focus architecture.
@@ -28,102 +28,101 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_4_LANGUAGE_FOCUS_ON_NEXT_RUN
 - Chapter 3: COMPLETE
   - EN Language Focus: COMPLETE
   - AR Language Focus: COMPLETE
-- Chapters 4–13: not yet processed under this Language Focus pass.
+- Chapter 4: COMPLETE
+  - EN Language Focus: COMPLETE
+  - AR Language Focus: COMPLETE
+- Chapters 5–13: not yet processed under this Language Focus pass.
 
 ## Chapter 1 pedagogical targets/functions
 ### English
-- Definition and characteristic aim with `a person who...` and `aims to...`.
-- Method/means with `by + -ing`.
-- Parallel moral-principle listing with repeated `-ing` forms.
-- Negative/limiting meaning with `without + -ing` and `not + -ing`.
-- Adding a second identity with `in addition to being...`.
-- Identifying information with a relative clause (`which he used`).
-- Contribution/result with `helped develop...` and reputation with `is known as...`.
-- Short connected B1 production combining definition, method, parallel principles, contribution, and reputation.
+- Definition/aim with `a person who...` and `aims to...`.
+- Method with `by + -ing`.
+- Parallel moral-principle listing, negative/limiting meaning with `without + -ing` and `not + -ing`.
+- Addition, relative-clause identification, contribution/result, and reputation.
+- Short connected B1 production.
 
 ### Arabic
-- Native definition and aim patterns: `هو الشخص الذي...` and `يسعى إلى...`.
-- Means/path with `بـ + مصدر` as used in `باتباع...`.
-- Parallel nominal patterns in the moral list: `السعي / التحلي / العطاء / فعل الخير / عدم إعطاء...`.
-- Natural exclusion/negative meanings with `دون / بلا / عدم`.
-- Adding identity with `بالإضافة إلى كونه...`.
-- Early-group description with `من أوائل من...` and identification with `الذي/التي...`.
-- Contribution and reputation with `ساعد في...` and `يعرف بأنه...`.
-- Short connected Arabic B1 production using these relationships naturally rather than translating English grammar labels.
+- `هو الشخص الذي...`, `يسعى إلى...`, and `بـ + مصدر`.
+- Parallel nominal moral patterns with `دون / بلا / عدم`.
+- Addition with `بالإضافة إلى كونه...`, identification with `الذي/التي...`, contribution with `ساعد في...`, reputation with `يعرف بأنه...`.
+- Short connected Arabic B1 production.
 
 ## Chapter 2 pedagogical targets/functions
 ### English
-- Cause/reason with `due to + noun phrase` and causal explanation in context.
-- Balanced evaluation with `not too... but also not too... either`.
-- Combining qualities with `combine... with...`.
-- Enabling effect with `help + object + verb`.
-- Continuing influence with `still`.
-- Historical/evidential stance with `According to historical sources...`, `Some sources say that...`, and approximate dating with `around...`.
-- Shared-time comparison with `the same era as...`.
-- Adding a second learning context with `But ... also...`.
-- Explaining a place/function through a relative clause (`which was a place where...`) and passive focus (`was taught`).
-- Guidance/authority with `under the guidance of...`.
-- Short connected B1 production combining balanced evaluation, cause/effect, cautious source reporting, and two learning/experience contexts.
+- Cause/reason, balanced evaluation, combining qualities, enabling effect, and continuing influence.
+- Historical/evidential stance with `According to...`, `Some sources say...`, and approximate dating.
+- Connecting two learning contexts, relative clauses, passive focus, and guidance.
+- Short connected evidence-aware B1 production.
 
 ### Arabic
-- السبب بـ`بسبب...`.
-- التقييم المتوازن بـ`ليس... وليس... أيضًا`.
-- الجمع بين ميزتين بـ`تجمع بين... و...`.
-- بيان التسهيل والأثر بـ`تساعد... على...`، والاستمرار بـ`لا تزال...`.
-- الإسناد إلى المصادر بـ`وفقًا للمصادر التاريخية...` و`تذكر بعض المصادر أن...`.
-- التقريب الزمني بـ`حوالي...` وربط الأشخاص في زمن مشترك بـ`العصر نفسه الذي...`.
-- إضافة مسار تعلم ثانٍ بـ`ولكنه... أيضًا` دون إلغاء الأول.
-- وصف التكية ووظيفتها بجملة `وهي مكان...`، وبيان الإرشاد بـ`تحت إرشاد...`.
-- إنتاج عربي B1 قصير ومترابط يجمع التقييم والسبب والأثر والحذر في نقل المصدر ومسارين للتعلم بصورة طبيعية مستقلة عن تصنيفات الإنجليزية.
+- `بسبب...`, `ليس... وليس... أيضًا`, `تجمع بين... و...`, `تساعد... على...`, `لا تزال...`.
+- `وفقًا للمصادر...`, `تذكر بعض المصادر أن...`, approximate time, and shared-era description.
+- `ولكنه... أيضًا`, place description, and `تحت إرشاد...`.
+- Short connected Arabic B1 production.
 
 ## Chapter 3 pedagogical targets/functions
 ### English
-- Broadening a description with `not only ... also...` and adding information with `furthermore` and `too`.
-- Highlighting one example within a wider category with `especially`.
-- Adding descriptive information about a person with a `who` clause.
-- Showing an ongoing past background with `while ... were still being felt` and placing a completed event inside it with `took place`.
-- Cause/result through `weakened by...`, `caused...`, and `because of...`.
-- Ongoing human response with `were struggling to cope with...`.
-- Short connected B1 production that moves from expanded description to time overlap, cause, consequence, and response.
+- Addition/emphasis with `not only... also...`, `furthermore`, `too`, `especially`, and a `who` clause.
+- Ongoing past background with `while ... were still being felt` plus a completed event.
+- Cause/result with `weakened by...`, `caused...`, `because of...`, and ongoing response with `struggling to cope with...`.
+- Short connected B1 production.
 
 ### Arabic
-- توسيع الوصف بـ`لم تكن... فقط، بل كانت أيضًا...`.
-- إضافة معلومة بـ`علاوة على ذلك` و`أيضًا`، وإبراز مثال بـ`لا سيما`.
-- إضافة وصف للشخص بجملة فعلية بعد الاسم كما في `شاعرًا عظيمًا تلقى تدريبه...`.
-- بناء خلفية ماضية مستمرة بـ`بينما كانت... لا تزال...` ثم إدخال حدث مكتمل بـ`وقعت...`.
-- السبب والنتيجة بـ`بسبب...` و`تسبب في...` ثم تجميع الظروف في سبب أوسع.
-- وصف الاستجابة المستمرة بـ`كان الناس يكافحون من أجل التعامل مع...`.
-- إنتاج عربي B1 قصير ومترابط ينتقل من الوصف والإضافة إلى التزامن ثم السبب والنتيجة والاستجابة.
+- `لم تكن... فقط، بل كانت أيضًا...`, `علاوة على ذلك`, `أيضًا`, `لا سيما`.
+- Past overlap with `بينما كانت... لا تزال...` plus `وقعت...`.
+- Cause/result with `بسبب...`, `تسبب في...`, and response with `يكافحون من أجل التعامل مع...`.
+- Short connected Arabic B1 production.
+
+## Chapter 4 pedagogical targets/functions
+### English
+- Conditional perspective with `If we take a closer look..., we can better understand...`.
+- Place identification with a `where` clause.
+- Evaluating an earlier high point with strong comparative/superlative language, then signalling reversal with `however`.
+- Change over time with `began to decline`.
+- Cause/result chain with `because of...`, `caused ... to migrate`, a `which` result clause, and `failure to manage ... worsened...`.
+- Reconstructing short connected discourse rather than recalling isolated historical facts.
+- Five-to-six-sentence production moving from perspective to earlier strength, contrast, cause, effect, and later change.
+
+### Arabic
+- Native conditional relationship with `إذا نظرنا... يمكننا أن نفهم...`.
+- Place description with `وهي الأرض التي...`.
+- Evaluative comparison with `أقوى / ألمع / أكبر`, then contrast with `ومع ذلك` and reason with `بسبب...`.
+- Change with `بدأت ... في التراجع`.
+- Cause/result development with `تسبب... في...`, `وهذا غيّر...`, and `أدى فشل... في إدارة... إلى تفاقم...`.
+- Reconstructing a coherent Arabic explanation rather than translating English grammar categories.
+- Five-to-six-sentence Arabic production connecting condition, evaluation, contrast, cause, change, and result.
 
 ## Files changed in this run
-- `src/data/yunusEmre/b1/en/languageFocus.ts` — added Chapter 3 EN Language Focus.
-- `src/data/yunusEmre/b1/ar/languageFocus.ts` — added Chapter 3 AR Language Focus.
+- `src/data/yunusEmre/b1/en/languageFocusChapter4.ts` — Chapter 4 EN Language Focus.
+- `src/data/yunusEmre/b1/ar/languageFocusChapter4.ts` — Chapter 4 AR Language Focus.
+- `src/data/yunusEmre/b1/index.ts` — current-book-local wiring that merges Chapter 4 into the existing EN/AR chapter-key Language Focus maps.
 - `docs/automation/b1-language-polish-progress.md`
 
 ## Validation actually performed
-- Re-read the checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 3`.
-- Read the full English Chapter 3 story text from `src/data/yunusEmre/b1/en/pages.ts`.
-- Read the full Arabic Chapter 3 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`.
-- Read the English and Arabic Chapter 3 Quick Challenges and avoided duplicating their direct spiritual/social/cultural role-matching task.
-- Inspected the existing Yunus Emre B1 Language Focus architecture for renderer conventions.
-- Re-fetched each target Language Focus file immediately before its write and used the current `preview` blob SHA.
-- Re-fetched and verified the updated Chapter 3 English and Arabic Language Focus sections from `preview` after writing.
-- Re-read `src/data/yunusEmre/b1/index.ts` and confirmed active chapter-key wiring already attaches `languageFocusExercises`, so no `index.ts` edit was required.
+- Re-read the checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 4`.
+- Read the full English Chapter 4 story text from `src/data/yunusEmre/b1/en/pages.ts`.
+- Read the full Arabic Chapter 4 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`.
+- Read the English and Arabic Chapter 4 Quick Challenges and avoided simply repeating their direct strength-to-instability cause/result comprehension question.
+- Inspected the existing Yunus Emre B1 Language Focus architecture and renderer-compatible exercise types.
+- Confirmed the new Chapter 4 target files did not exist on `preview` immediately before creation.
+- Re-fetched `src/data/yunusEmre/b1/index.ts` immediately before its write and used the current `preview` blob SHA.
+- Re-fetched and verified both new Chapter 4 Language Focus files from `preview` after creation.
+- Re-fetched and verified `index.ts` after wiring; Chapter 1–3 maps remain preserved and Chapter 4 is added through book-local merged maps.
 - Re-fetched this checkpoint immediately before its write.
 - Story prose was not edited.
 - No A2, B2, completed B1 book, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide, or Self Study Guide file was modified.
 - Build/typecheck/CI was not run.
 
 ## Current commit SHA available before checkpoint write
-- `ee87ff4119ab103d550d8f019a806f1abe855255`
+- `1538be34edee89b0431637ad509be279eeb832aa`
 
 ## Exact next run
-- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 4`.
-- Work on Chapter 4 only.
-- Read the full English and Arabic Chapter 4 story text independently and both Quick Challenges.
-- Build only Chapter 4 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
-- Update this checkpoint and stop without starting Chapter 5.
+- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 5`.
+- Work on Chapter 5 only.
+- Read the full English and Arabic Chapter 5 story text independently and both Quick Challenges.
+- Build only Chapter 5 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
+- Update this checkpoint and stop without starting Chapter 6.
 
 ## Unresolved issues
-- No Chapter 3 blocker identified.
+- Locked Arabic Chapter 4 prose contains `ازداد عدد السلطان التركمان في الأناضول`. This appears linguistically anomalous in context and may be intended to refer to the Turkmen population, but story prose is locked, so it was not edited. Review manually outside this pipeline if desired.
 - Build/typecheck remains unverified.
