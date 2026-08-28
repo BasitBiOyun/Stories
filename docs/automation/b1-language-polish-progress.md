@@ -2,15 +2,14 @@
 
 currentBook: Yunus Emre B1
 bookPath: `src/data/yunusEmre/b1`
-phase: LANGUAGE_FOCUS
+phase: LANGUAGE_FOCUS_COMPLETE
 storyChapterCount: 13
-nextChapter: 13
 completedBooks:
 - Adam B1
 - Abraham B1
 - Moses B1
 - Mecca/Bilal B1
-nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_13_LANGUAGE_FOCUS_ON_NEXT_RUN
+nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
 
 ## Completed books
 - Adam B1: COMPLETE under the new Language Focus architecture.
@@ -31,7 +30,7 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_13_LANGUAGE_FOCUS_ON_NEXT_RUN
 - Chapter 10: COMPLETE — EN COMPLETE, AR COMPLETE
 - Chapter 11: COMPLETE — EN COMPLETE, AR COMPLETE
 - Chapter 12: COMPLETE — EN COMPLETE, AR COMPLETE
-- Chapter 13: not yet processed under this Language Focus pass.
+- Chapter 13: COMPLETE — EN COMPLETE, AR COMPLETE
 
 ## Cumulative pedagogical targets/functions retained for later Language Review
 ### Chapter 1
@@ -70,37 +69,39 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_13_LANGUAGE_FOCUS_ON_NEXT_RUN
 ### Chapter 12
 - EN: definition through action with `is about + -ing`; examples with `such as`; means/basis with `with these principles`; guidance with `teach someone to...`; avoidance with `avoid...`; balanced dual role with `not only... but also...`; five-to-six-sentence production defining a value and turning it into action.
 - AR: native definition with `تعني التخلّي عن...`; examples with `مثل...`; means/basis with `من خلال هذه المبادئ`; guidance with `يعلّم ... أن ...`; avoidance with `يبتعد عن...`; balanced role with `ليست ... فقط، بل هي أيضاً ...`; five-to-six-sentence connected production.
+### Chapter 13
+- EN: group-to-future-result with `those who ... will ...`; generalisation with `whoever ...`; condition with `if ...`; impersonal necessity with `one must ...`; discourse transition with `in the following verse ...`; five-sentence principle → generalisation → consequence → related warning/example → guidance production.
+- AR: native generalisation/result with `مَنْ ... سيـ...` and `مَنْ ... يـ...`; condition with `إذا كان ...`; necessity with `فلا بدّ من ...`; discourse transition with `وفي البيت التالي ...`; five-sentence connected production from principle to result and guidance.
 
 ## Files changed in this run
-- `src/data/yunusEmre/b1/en/languageFocusChapter12.ts` — Chapter 12 EN Language Focus.
-- `src/data/yunusEmre/b1/ar/languageFocusChapter12.ts` — Chapter 12 AR Language Focus.
-- `src/data/yunusEmre/b1/index.ts` — current-book-local wiring adding Chapter 12 to the existing EN/AR Language Focus maps while preserving Chapters 1–11.
+- `src/data/yunusEmre/b1/en/languageFocusChapter13.ts` — Chapter 13 EN Language Focus.
+- `src/data/yunusEmre/b1/ar/languageFocusChapter13.ts` — Chapter 13 AR Language Focus.
+- `src/data/yunusEmre/b1/index.ts` — current-book-local wiring adding Chapter 13 to the existing EN/AR Language Focus maps while preserving Chapters 1–12.
 - `docs/automation/b1-language-polish-progress.md`
 
 ## Validation actually performed
-- Re-read this checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 12`.
-- Read the full English Chapter 12 story text from `src/data/yunusEmre/b1/en/pages.ts`, including the prose definition of morality, examples of virtues and harmful habits, the `not only... but also...` description of poetry, and the greed poem.
-- Read the full Arabic Chapter 12 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`, including native structures `تعني التخلّي عن`, `مثل`, `من خلال`, `يعلّم ... أن`, `يبتعد عن`, and `ليست ... فقط، بل هي أيضاً ...`, plus the Arabic greed poem.
-- Read the English and Arabic Chapter 12 Quick Challenges. Both already assess which habits should be built versus left, so Language Focus avoids repeating that comprehension task and instead works on how definition, examples, guidance, avoidance, and balanced roles are expressed.
-- Inspected completed Chapter 11 EN/AR Language Focus for renderer-compatible exercise architecture only.
-- Confirmed both Chapter 12 Language Focus target files were absent on `preview` immediately before their respective creations.
+- Re-read this checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 13`.
+- Read the full English Chapter 13 story material from `src/data/yunusEmre/b1/en/pages.ts`, including both patience passages, the warning about rage/arrogance, and the closing works list.
+- Read the full Arabic Chapter 13 story material independently from `src/data/yunusEmre/b1/ar/pages.ts`, including `مَنْ رُزِقَ الصَّبْرَ سَيَبْلُغُ...`, the second patience passage, `مَنْ يَمْلَأُ الْغَضَبُ قَلْبَهُ...`, `إِذَا كَانَ ... فَلَا بُدَّ مِنْ...`, and the closing works list.
+- Read the English and Arabic Chapter 13 Quick Challenges. Both already assess why the final chapter presents Yunus Emre as a moral guide, so Language Focus avoids repeating that comprehension judgment and instead works on generalisation, condition/result, necessity, discourse transition, and connected transfer.
+- Inspected completed Chapter 12 EN/AR Language Focus only for renderer-compatible exercise architecture.
+- Confirmed both Chapter 13 Language Focus target files were absent on `preview` immediately before their respective creations.
 - Re-fetched `src/data/yunusEmre/b1/index.ts` immediately before its write and used the current `preview` blob SHA.
-- Re-fetched and verified both new Chapter 12 Language Focus files after creation.
-- Re-fetched and verified `index.ts` after wiring; Chapters 1–11 remain preserved and Chapter 12 is present in both language maps.
+- Re-fetched and verified both new Chapter 13 Language Focus files after creation.
+- Re-fetched and verified `index.ts` after wiring; Chapters 1–12 remain preserved and Chapter 13 is present in both language maps.
 - Re-fetched this checkpoint immediately before its write and used the current `preview` blob SHA.
 - Story prose was not edited.
 - No A2, B2, completed B1 book, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide, or Self Study Guide file was modified.
 - Build/typecheck/CI was not run.
 
 ## Current commit SHA available before checkpoint write
-- `4bfb815bac5c13cd0eb6a601a0b1b7ee08e1c22a`
+- `d1e91dd18f9e770cf464d0962dae3b31ae19693f`
 
 ## Exact next run
-- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 13`.
-- Work on Chapter 13 only.
-- Read the full English and Arabic Chapter 13 story text independently and both Quick Challenges.
-- Build only Chapter 13 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
-- Because Chapter 13 is the final story chapter, if both languages are completed set `phase: LANGUAGE_FOCUS_COMPLETE`, `nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN`, and STOP without starting Language Review in that run.
+- Start only if this checkpoint still says `currentBook: Yunus Emre B1` and `phase: LANGUAGE_FOCUS_COMPLETE`.
+- Build/review only the cumulative English and Arabic Language Review for Yunus Emre B1 from the completed Chapter 1–13 Language Focus set.
+- Do not audit Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge, Teacher Guide, or Self Study Guide in that run.
+- When both cumulative Language Reviews are complete, set `phase: LANGUAGE_REVIEW_COMPLETE`, `nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN`, and STOP.
 
 ## Unresolved issues
 - Locked Arabic Chapter 4 prose contains `ازداد عدد السلطان التركمان في الأناضول`. This appears linguistically anomalous in context and may be intended to refer to the Turkmen population, but story prose is locked, so it was not edited. Review manually outside this pipeline if desired.
