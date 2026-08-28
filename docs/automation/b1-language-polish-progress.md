@@ -4,13 +4,13 @@ currentBook: Yunus Emre B1
 bookPath: `src/data/yunusEmre/b1`
 phase: LANGUAGE_FOCUS
 storyChapterCount: 13
-nextChapter: 3
+nextChapter: 4
 completedBooks:
 - Adam B1
 - Abraham B1
 - Moses B1
 - Mecca/Bilal B1
-nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_3_LANGUAGE_FOCUS_ON_NEXT_RUN
+nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_4_LANGUAGE_FOCUS_ON_NEXT_RUN
 
 ## Completed books
 - Adam B1: COMPLETE under the new Language Focus architecture.
@@ -25,7 +25,10 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_3_LANGUAGE_FOCUS_ON_NEXT_RUN
 - Chapter 2: COMPLETE
   - EN Language Focus: COMPLETE
   - AR Language Focus: COMPLETE
-- Chapters 3–13: not yet processed under this Language Focus pass.
+- Chapter 3: COMPLETE
+  - EN Language Focus: COMPLETE
+  - AR Language Focus: COMPLETE
+- Chapters 4–13: not yet processed under this Language Focus pass.
 
 ## Chapter 1 pedagogical targets/functions
 ### English
@@ -73,35 +76,54 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_3_LANGUAGE_FOCUS_ON_NEXT_RUN
 - وصف التكية ووظيفتها بجملة `وهي مكان...`، وبيان الإرشاد بـ`تحت إرشاد...`.
 - إنتاج عربي B1 قصير ومترابط يجمع التقييم والسبب والأثر والحذر في نقل المصدر ومسارين للتعلم بصورة طبيعية مستقلة عن تصنيفات الإنجليزية.
 
+## Chapter 3 pedagogical targets/functions
+### English
+- Broadening a description with `not only ... also...` and adding information with `furthermore` and `too`.
+- Highlighting one example within a wider category with `especially`.
+- Adding descriptive information about a person with a `who` clause.
+- Showing an ongoing past background with `while ... were still being felt` and placing a completed event inside it with `took place`.
+- Cause/result through `weakened by...`, `caused...`, and `because of...`.
+- Ongoing human response with `were struggling to cope with...`.
+- Short connected B1 production that moves from expanded description to time overlap, cause, consequence, and response.
+
+### Arabic
+- توسيع الوصف بـ`لم تكن... فقط، بل كانت أيضًا...`.
+- إضافة معلومة بـ`علاوة على ذلك` و`أيضًا`، وإبراز مثال بـ`لا سيما`.
+- إضافة وصف للشخص بجملة فعلية بعد الاسم كما في `شاعرًا عظيمًا تلقى تدريبه...`.
+- بناء خلفية ماضية مستمرة بـ`بينما كانت... لا تزال...` ثم إدخال حدث مكتمل بـ`وقعت...`.
+- السبب والنتيجة بـ`بسبب...` و`تسبب في...` ثم تجميع الظروف في سبب أوسع.
+- وصف الاستجابة المستمرة بـ`كان الناس يكافحون من أجل التعامل مع...`.
+- إنتاج عربي B1 قصير ومترابط ينتقل من الوصف والإضافة إلى التزامن ثم السبب والنتيجة والاستجابة.
+
 ## Files changed in this run
-- `src/data/yunusEmre/b1/en/languageFocus.ts` — added Chapter 2 EN Language Focus.
-- `src/data/yunusEmre/b1/ar/languageFocus.ts` — added Chapter 2 AR Language Focus.
+- `src/data/yunusEmre/b1/en/languageFocus.ts` — added Chapter 3 EN Language Focus.
+- `src/data/yunusEmre/b1/ar/languageFocus.ts` — added Chapter 3 AR Language Focus.
 - `docs/automation/b1-language-polish-progress.md`
 
 ## Validation actually performed
-- Re-read the checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 2`.
-- Read the full English Chapter 2 story text from `src/data/yunusEmre/b1/en/pages.ts`.
-- Read the full Arabic Chapter 2 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`.
-- Read the English and Arabic Chapter 2 Quick Challenges and avoided turning Language Focus into another question about why Yunus Emre's language was widely understood.
-- Inspected the existing Yunus Emre B1 Chapter 1 Language Focus architecture and active `index.ts` wiring only as needed for conventions.
-- Confirmed `index.ts` already attaches `languageFocusExercises` by chapter key, so no Chapter 2 wiring edit was required.
+- Re-read the checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 3`.
+- Read the full English Chapter 3 story text from `src/data/yunusEmre/b1/en/pages.ts`.
+- Read the full Arabic Chapter 3 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`.
+- Read the English and Arabic Chapter 3 Quick Challenges and avoided duplicating their direct spiritual/social/cultural role-matching task.
+- Inspected the existing Yunus Emre B1 Language Focus architecture for renderer conventions.
 - Re-fetched each target Language Focus file immediately before its write and used the current `preview` blob SHA.
-- Re-fetched and verified both updated Chapter 2 Language Focus sections from `preview` after writing.
+- Re-fetched and verified the updated Chapter 3 English and Arabic Language Focus sections from `preview` after writing.
+- Re-read `src/data/yunusEmre/b1/index.ts` and confirmed active chapter-key wiring already attaches `languageFocusExercises`, so no `index.ts` edit was required.
 - Re-fetched this checkpoint immediately before its write.
 - Story prose was not edited.
 - No A2, B2, completed B1 book, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide, or Self Study Guide file was modified.
 - Build/typecheck/CI was not run.
 
 ## Current commit SHA available before checkpoint write
-- `c0f90039cbe7ece0334622ebe749bac1e334f6c4`
+- `ee87ff4119ab103d550d8f019a806f1abe855255`
 
 ## Exact next run
-- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 3`.
-- Work on Chapter 3 only.
-- Read the full English and Arabic Chapter 3 story text independently and both Quick Challenges.
-- Build only Chapter 3 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
-- Update this checkpoint and stop without starting Chapter 4.
+- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 4`.
+- Work on Chapter 4 only.
+- Read the full English and Arabic Chapter 4 story text independently and both Quick Challenges.
+- Build only Chapter 4 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
+- Update this checkpoint and stop without starting Chapter 5.
 
 ## Unresolved issues
-- No Chapter 2 blocker identified.
+- No Chapter 3 blocker identified.
 - Build/typecheck remains unverified.
