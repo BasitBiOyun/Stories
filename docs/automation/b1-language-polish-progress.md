@@ -2,7 +2,7 @@
 
 currentBook: Yunus Emre B1
 bookPath: `src/data/yunusEmre/b1`
-phase: BOOK_COMPLETE
+phase: COMPLETE
 storyChapterCount: 13
 completedBooks:
 - Adam B1
@@ -10,7 +10,7 @@ completedBooks:
 - Moses B1
 - Mecca/Bilal B1
 - Yunus Emre B1
-nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN
+nextTask: NONE
 
 ## Completed books
 - Adam B1: COMPLETE under the new Language Focus architecture.
@@ -29,7 +29,7 @@ nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN
 - Final Challenge audit: EN COMPLETE, AR COMPLETE.
 - Active book-local wiring/stale export cleanup: COMPLETE.
 
-## Phase 3 work completed in this run
+## Phase 3 work completed in the prior run
 ### Quick Challenges
 - Strengthened the undersized Chapter 1 matching task in both languages from two pairs to three meaningful dimensions: outward practice, inward intention/character, and moral direction.
 - Replaced the two-pair Chapter 9 matching task with a relationship-focused multiple-choice item that asks learners to connect worship with love rather than perform a trivial two-item match.
@@ -52,29 +52,19 @@ nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN
 - Re-checked `index.ts`: story pages 1-13 use Quick Challenges plus Language Focus, page 14 uses manual Knowledge Check, page 15 uses Vocabulary Challenge pairs, page 18 uses Language Review, and page 19 uses Final Challenge.
 - No shared/global file, story prose, guide, A2/B2 file, or other B1 book was modified.
 
-## Files changed in this run
-- `src/data/yunusEmre/b1/en/exercises.ts`
-- `src/data/yunusEmre/b1/ar/exercises.ts`
+## Files changed in this completion run
 - `docs/automation/b1-language-polish-progress.md`
 
 ## Validation actually performed
-- Re-read this checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: FINAL_AUDIT`.
-- Inspected the current active EN and AR exercise source files before editing.
-- Re-fetched `src/data/yunusEmre/b1/en/exercises.ts` immediately before writing and used the current `preview` blob SHA.
-- Re-fetched the updated English exercise file and confirmed the active Quick/Vocabulary/Final exports remain present while stale inactive Knowledge Check/Final Review exports are gone.
-- Re-fetched `src/data/yunusEmre/b1/ar/exercises.ts` immediately before writing and used the current `preview` blob SHA.
-- Re-fetched the updated Arabic exercise file and confirmed the active Quick/Vocabulary/Final exports remain present while stale inactive Knowledge Check/Final Review exports are gone.
-- Re-fetched `src/data/yunusEmre/b1/index.ts` after cleanup and confirmed its imports still match the retained exercise exports and page attachments remain correct.
+- Re-read this checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: BOOK_COMPLETE`.
+- Confirmed all five books in the fixed B1 order are present in `completedBooks` and individually marked COMPLETE under the new Language Focus architecture.
 - Re-fetched this checkpoint immediately before writing and used the current `preview` blob SHA.
+- No book files were changed in this run.
 - Build/typecheck/CI was not run.
 
-## Current commit SHA available before checkpoint write
-- `95b57a4f366eea8b0cbeeea8a8c2bb2f58d0b2f2`
-
 ## Exact next run
-- Start only if this checkpoint still says `phase: BOOK_COMPLETE`.
-- All five books in the fixed B1 order are now present in `completedBooks`.
-- Per pipeline handoff rules, set `phase: COMPLETE`, set `nextTask: NONE`, make no book-file changes, and stop.
+- None. Pipeline is complete.
+- If this checkpoint still says `phase: COMPLETE`, make no further repository changes.
 
 ## Unresolved issues
 - Locked Arabic Chapter 4 prose contains `ازداد عدد السلطان التركمان في الأناضول`. This appears linguistically anomalous in context and may be intended to refer to the Turkmen population, but story prose is locked, so it was not edited. Review manually outside this pipeline if desired.
