@@ -4,13 +4,13 @@ currentBook: Yunus Emre B1
 bookPath: `src/data/yunusEmre/b1`
 phase: LANGUAGE_FOCUS
 storyChapterCount: 13
-nextChapter: 10
+nextChapter: 11
 completedBooks:
 - Adam B1
 - Abraham B1
 - Moses B1
 - Mecca/Bilal B1
-nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_10_LANGUAGE_FOCUS_ON_NEXT_RUN
+nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_11_LANGUAGE_FOCUS_ON_NEXT_RUN
 
 ## Completed books
 - Adam B1: COMPLETE under the new Language Focus architecture.
@@ -28,7 +28,8 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_10_LANGUAGE_FOCUS_ON_NEXT_RUN
 - Chapter 7: COMPLETE — EN COMPLETE, AR COMPLETE
 - Chapter 8: COMPLETE — EN COMPLETE, AR COMPLETE
 - Chapter 9: COMPLETE — EN COMPLETE, AR COMPLETE
-- Chapters 10–13: not yet processed under this Language Focus pass.
+- Chapter 10: COMPLETE — EN COMPLETE, AR COMPLETE
+- Chapters 11–13: not yet processed under this Language Focus pass.
 
 ## Chapter 1 pedagogical targets/functions
 ### English
@@ -120,36 +121,48 @@ nextTask: BUILD_YUNUS_EMRE_B1_CHAPTER_10_LANGUAGE_FOCUS_ON_NEXT_RUN
 - General obligation with `كل من... يجب أن...`; balanced general relationship with `من...، ومن... أيضاً...`.
 - Five-to-six-sentence Arabic production moving from result to goal, purpose, responsibility, and a parallel relationship independently of the English grammar framing.
 
+## Chapter 10 pedagogical targets/functions
+### English
+- Situation/result with `where ... is absent, ... arise`; clarification with `that is, ...`; reasoned consequence with `For this reason, ...`.
+- Interpretive description with `describe ... as ...`; noun explanation with `the ... that ...`.
+- Balanced addition with `not only ... but also ...`; continuity from past to present with `has existed since/for ...`.
+- Five-to-six-sentence connected production explaining why a value matters without retelling Chapter 10.
+### Arabic
+- Native situation/result with `عندما يغيب ... تظهر ...`; clarification with `أي ...`; reasoned consequence with `ولهذا السبب ...`.
+- Interpretive description with `وصف ... بأنه ...`; place/relative relation with `المكان الذي ... فيه`.
+- Balanced addition with `لا ... فقط بل ... أيضاً`; continuity with `موجود منذ ...`.
+- Five-to-six-sentence Arabic production explaining a value and its continuing importance independently of the English grammar framing.
+
 ## Files changed in this run
-- `src/data/yunusEmre/b1/en/languageFocusChapter9.ts` — Chapter 9 EN Language Focus.
-- `src/data/yunusEmre/b1/ar/languageFocusChapter9.ts` — Chapter 9 AR Language Focus.
-- `src/data/yunusEmre/b1/index.ts` — current-book-local wiring adding Chapter 9 to the existing EN/AR Language Focus maps while preserving Chapters 1–8.
+- `src/data/yunusEmre/b1/en/languageFocusChapter10.ts` — Chapter 10 EN Language Focus.
+- `src/data/yunusEmre/b1/ar/languageFocusChapter10.ts` — Chapter 10 AR Language Focus.
+- `src/data/yunusEmre/b1/index.ts` — current-book-local wiring adding Chapter 10 to the existing EN/AR Language Focus maps while preserving Chapters 1–9.
 - `docs/automation/b1-language-polish-progress.md`
 
 ## Validation actually performed
-- Re-read the checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 9`.
-- Read the full English Chapter 9 story text from `src/data/yunusEmre/b1/en/pages.ts`.
-- Read the full Arabic Chapter 9 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`, including the Arabic poem wording with `كل من... يجب أن...`.
-- Read the English and Arabic Chapter 9 Quick Challenges. Both already assess the content relationship between following Allah’s command/prayer and love of Creator/creation, so Language Focus avoids turning those ideas into another comprehension quiz.
-- Inspected completed Chapter 8 EN/AR Language Focus only for renderer-compatible architecture.
-- Confirmed both Chapter 9 target files were absent on `preview` immediately before creation.
+- Re-read the checkpoint from `preview` at run start and confirmed `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 10`.
+- Read the full English Chapter 10 story text from `src/data/yunusEmre/b1/en/pages.ts`.
+- Read the full Arabic Chapter 10 story text independently from `src/data/yunusEmre/b1/ar/pages.ts`.
+- Read the English and Arabic Chapter 10 Quick Challenges. Both already assess why breaking a heart is serious, so Language Focus avoids repeating that comprehension target.
+- Inspected completed Chapter 9 EN/AR Language Focus only for renderer-compatible architecture.
+- Confirmed both Chapter 10 target files were absent on `preview` immediately before creation.
 - Re-fetched `src/data/yunusEmre/b1/index.ts` immediately before its write and used the current `preview` blob SHA.
-- Re-fetched and verified both Chapter 9 Language Focus files after creation.
-- Re-fetched and verified `index.ts` after wiring; Chapters 1–8 remain preserved and Chapter 9 is present in both language maps.
+- Re-fetched and verified both Chapter 10 Language Focus files after creation.
+- Re-fetched and verified `index.ts` after wiring; Chapters 1–9 remain preserved and Chapter 10 is present in both language maps.
 - Re-fetched this checkpoint immediately before its write and used the current `preview` blob SHA.
 - Story prose was not edited.
 - No A2, B2, completed B1 book, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide, or Self Study Guide file was modified.
 - Build/typecheck/CI was not run.
 
 ## Current commit SHA available before checkpoint write
-- `e06ca24ee8935c0b4406cfcf17458f67b7666cc0`
+- `92ddda70684dd3569b5180ad91d0d53e47d96f2b`
 
 ## Exact next run
-- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 10`.
-- Work on Chapter 10 only.
-- Read the full English and Arabic Chapter 10 story text independently and both Quick Challenges.
-- Build only Chapter 10 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
-- Update this checkpoint and stop without starting Chapter 11.
+- Start only if this checkpoint still says `currentBook: Yunus Emre B1`, `phase: LANGUAGE_FOCUS`, `nextChapter: 11`.
+- Work on Chapter 11 only.
+- Read the full English and Arabic Chapter 11 story text independently and both Quick Challenges.
+- Build only Chapter 11 English and Arabic Language Focus plus minimal Yunus Emre B1-local wiring if genuinely required.
+- Update this checkpoint and stop without starting Chapter 12.
 
 ## Unresolved issues
 - Locked Arabic Chapter 4 prose contains `ازداد عدد السلطان التركمان في الأناضول`. This appears linguistically anomalous in context and may be intended to refer to the Turkmen population, but story prose is locked, so it was not edited. Review manually outside this pipeline if desired.
