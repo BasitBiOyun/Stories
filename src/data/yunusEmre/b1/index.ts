@@ -4,13 +4,11 @@ import { yunusEmreB1PagesAr } from './ar/pages';
 import {
   yunusB1QuickChallenges,
   yunusB1VocabularyChallengePairs,
-  yunusB1FinalReviewExercises,
   yunusB1FinalChallengeExercises,
 } from './en/exercises';
 import {
   yunusB1QuickChallengesAr,
   yunusB1VocabularyChallengePairsAr,
-  yunusB1FinalReviewExercisesAr,
   yunusB1FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { yunusB1LanguageFocusExercises } from './en/languageFocus';
@@ -35,6 +33,8 @@ import { yunusB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
 import { yunusB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
 import { yunusB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
 import { yunusB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
+import { yunusB1LanguageReviewExercises } from './en/languageReview';
+import { yunusB1LanguageReviewExercisesAr } from './ar/languageReview';
 import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
 import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -99,7 +99,7 @@ const englishPages = buildPages(
   englishLanguageFocus,
   yunusB1ManualKnowledgeCheckExercises,
   yunusB1VocabularyChallengePairs,
-  yunusB1FinalReviewExercises,
+  yunusB1LanguageReviewExercises,
   yunusB1FinalChallengeExercises,
 );
 const arabicPages = buildPages(
@@ -108,7 +108,7 @@ const arabicPages = buildPages(
   arabicLanguageFocus,
   yunusB1ManualKnowledgeCheckExercisesAr,
   yunusB1VocabularyChallengePairsAr,
-  yunusB1FinalReviewExercisesAr,
+  yunusB1LanguageReviewExercisesAr,
   yunusB1FinalChallengeExercisesAr,
 );
 
