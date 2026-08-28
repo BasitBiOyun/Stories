@@ -13,6 +13,8 @@ import {
   yunusB1FinalReviewExercisesAr,
   yunusB1FinalChallengeExercisesAr,
 } from './ar/exercises';
+import { yunusB1LanguageFocusExercises } from './en/languageFocus';
+import { yunusB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
 import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -25,12 +27,17 @@ const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const buildPages = (
   pages: PageData[],
   quickChallenges: Record<number, Exercise>,
+  languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
   review: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => pages.map((page) => {
-  if (STORY_IDS.has(page.id)) return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [] };
+  if (STORY_IDS.has(page.id)) return {
+    ...page,
+    exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
+    languageFocusExercises: languageFocus[page.id] ?? [],
+  };
   if (page.id === 14) return { ...page, exercises: knowledgeCheck };
   if (page.id === 15) return { ...page, vocabularyPairs };
   if (page.id === 18) return { ...page, exercises: review };
@@ -38,8 +45,24 @@ const buildPages = (
   return page;
 });
 
-const englishPages = buildPages(yunusB1Pages, yunusB1QuickChallenges, yunusB1ManualKnowledgeCheckExercises, yunusB1VocabularyChallengePairs, yunusB1FinalReviewExercises, yunusB1FinalChallengeExercises);
-const arabicPages = buildPages(yunusEmreB1PagesAr, yunusB1QuickChallengesAr, yunusB1ManualKnowledgeCheckExercisesAr, yunusB1VocabularyChallengePairsAr, yunusB1FinalReviewExercisesAr, yunusB1FinalChallengeExercisesAr);
+const englishPages = buildPages(
+  yunusB1Pages,
+  yunusB1QuickChallenges,
+  yunusB1LanguageFocusExercises,
+  yunusB1ManualKnowledgeCheckExercises,
+  yunusB1VocabularyChallengePairs,
+  yunusB1FinalReviewExercises,
+  yunusB1FinalChallengeExercises,
+);
+const arabicPages = buildPages(
+  yunusEmreB1PagesAr,
+  yunusB1QuickChallengesAr,
+  yunusB1LanguageFocusExercisesAr,
+  yunusB1ManualKnowledgeCheckExercisesAr,
+  yunusB1VocabularyChallengePairsAr,
+  yunusB1FinalReviewExercisesAr,
+  yunusB1FinalChallengeExercisesAr,
+);
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
