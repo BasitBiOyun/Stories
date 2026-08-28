@@ -15,6 +15,8 @@ import {
 } from './ar/exercises';
 import { yunusB1LanguageFocusExercises } from './en/languageFocus';
 import { yunusB1LanguageFocusExercisesAr } from './ar/languageFocus';
+import { yunusB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
+import { yunusB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
 import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
 import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -23,6 +25,16 @@ import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './
 import { yunusEmreB1SelfStudyGuideAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+
+const englishLanguageFocus: Record<number, Exercise[]> = {
+  ...yunusB1LanguageFocusExercises,
+  4: yunusB1LanguageFocusChapter4,
+};
+
+const arabicLanguageFocus: Record<number, Exercise[]> = {
+  ...yunusB1LanguageFocusExercisesAr,
+  4: yunusB1LanguageFocusChapter4Ar,
+};
 
 const buildPages = (
   pages: PageData[],
@@ -48,7 +60,7 @@ const buildPages = (
 const englishPages = buildPages(
   yunusB1Pages,
   yunusB1QuickChallenges,
-  yunusB1LanguageFocusExercises,
+  englishLanguageFocus,
   yunusB1ManualKnowledgeCheckExercises,
   yunusB1VocabularyChallengePairs,
   yunusB1FinalReviewExercises,
@@ -57,7 +69,7 @@ const englishPages = buildPages(
 const arabicPages = buildPages(
   yunusEmreB1PagesAr,
   yunusB1QuickChallengesAr,
-  yunusB1LanguageFocusExercisesAr,
+  arabicLanguageFocus,
   yunusB1ManualKnowledgeCheckExercisesAr,
   yunusB1VocabularyChallengePairsAr,
   yunusB1FinalReviewExercisesAr,
