@@ -17,6 +17,8 @@ import { yunusB1LanguageFocusExercises } from './en/languageFocus';
 import { yunusB1LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
 import { yunusB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
+import { yunusB1LanguageFocusChapter5 } from './en/languageFocusChapter5';
+import { yunusB1LanguageFocusChapter5Ar } from './ar/languageFocusChapter5';
 import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
 import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -29,11 +31,13 @@ const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const englishLanguageFocus: Record<number, Exercise[]> = {
   ...yunusB1LanguageFocusExercises,
   4: yunusB1LanguageFocusChapter4,
+  5: yunusB1LanguageFocusChapter5,
 };
 
 const arabicLanguageFocus: Record<number, Exercise[]> = {
   ...yunusB1LanguageFocusExercisesAr,
   4: yunusB1LanguageFocusChapter4Ar,
+  5: yunusB1LanguageFocusChapter5Ar,
 };
 
 const buildPages = (
