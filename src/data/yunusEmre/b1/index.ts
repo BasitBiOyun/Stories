@@ -23,6 +23,8 @@ import { yunusB1LanguageFocusChapter6 } from './en/languageFocusChapter6';
 import { yunusB1LanguageFocusChapter6Ar } from './ar/languageFocusChapter6';
 import { yunusB1LanguageFocusChapter7 } from './en/languageFocusChapter7';
 import { yunusB1LanguageFocusChapter7Ar } from './ar/languageFocusChapter7';
+import { yunusB1LanguageFocusChapter8 } from './en/languageFocusChapter8';
+import { yunusB1LanguageFocusChapter8Ar } from './ar/languageFocusChapter8';
 import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
 import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
@@ -38,6 +40,7 @@ const englishLanguageFocus: Record<number, Exercise[]> = {
   5: yunusB1LanguageFocusChapter5,
   6: yunusB1LanguageFocusChapter6,
   7: yunusB1LanguageFocusChapter7,
+  8: yunusB1LanguageFocusChapter8,
 };
 
 const arabicLanguageFocus: Record<number, Exercise[]> = {
@@ -46,6 +49,7 @@ const arabicLanguageFocus: Record<number, Exercise[]> = {
   5: yunusB1LanguageFocusChapter5Ar,
   6: yunusB1LanguageFocusChapter6Ar,
   7: yunusB1LanguageFocusChapter7Ar,
+  8: yunusB1LanguageFocusChapter8Ar,
 };
 
 const buildPages = (
