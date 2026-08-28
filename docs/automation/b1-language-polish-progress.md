@@ -2,14 +2,14 @@
 
 currentBook: Mecca/Bilal B1
 bookPath: `src/data/mecca/b1`
-phase: LANGUAGE_FOCUS_COMPLETE
+phase: LANGUAGE_REVIEW_COMPLETE
 storyChapterCount: 15
 nextChapter: NONE
 completedBooks:
 - Adam B1
 - Abraham B1
 - Moses B1
-nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
+nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN
 
 ## Completed books
 ### Adam B1
@@ -43,71 +43,64 @@ nextTask: BUILD_LANGUAGE_REVIEW_ON_NEXT_RUN
 - Story prose unchanged.
 
 ## Current book — Mecca/Bilal B1
-### Chapters 1–15
-- English Language Focus: COMPLETE
-- Arabic Language Focus: COMPLETE
-- Active book-local wiring: COMPLETE via `page.languageFocusExercises`.
-- Language Review: NOT STARTED under this phase.
-- Final audit: NOT STARTED under this phase.
+### Language Focus
+- Chapters 1–15 English Language Focus: COMPLETE
+- Chapters 1–15 Arabic Language Focus: COMPLETE
+- Active book-local chapter wiring: COMPLETE via `page.languageFocusExercises`.
 
-### Chapter 15 English pedagogical targets
-- Degree → consequence through `so ... that` in the description of tribal loyalty and limited choice.
-- Possible consequence through `If ... could ...` when describing loss of protection.
-- Prevention through `prevent + person + from + -ing` in attempts to stop conversion.
-- Reported viewpoint through `said + clause`, keeping a group’s claim distinct from the narrator’s interpretation.
-- Contrast of claim and interpretation through `In reality`.
-- Foundation/principle through `based on justice, mercy, and belief...`.
-- Reported guidance through `told people to be...`.
-- Rejection of unequal value through negative `make + object + adjective`.
-- Definition + contrast + reason through `means`, `the opposite`, and `because`.
-- Productive transfer: five to six connected non-story B1 sentences combining pressure, possible consequence, prevention, reported claim, contrast and a fairer alternative.
-- Chapter 15 Quick Challenge already tests the alternative unity based on justice, mercy and belief in one Allah; Language Focus therefore trains the language used to express pressure, consequence, viewpoint, contrast and equality rather than retesting that answer.
+### Cumulative Language Review
+- English Language Review: COMPLETE.
+- Arabic Language Review: COMPLETE.
+- Active page: 17 in both language books.
+- Final audit: NOT STARTED in this phase.
 
-### Chapter 15 Arabic pedagogical targets
-- Purpose/prevention through `لمنع ... من + مصدر/فعل`.
-- Cause and consequence through `بسبب` and `بسبب ذلك`.
-- Reported viewpoint through `قال ... إنّ`.
-- Contrastive reinterpretation through `في الواقع`.
-- Foundation/principle through `تقوم على`.
-- Change + purpose through `فجاء الإسلام ليعلن...`.
-- Negation and exception through `لا ... إلا` in the equality statement.
-- Contrast and reason through `بينما` and `لأنه`.
-- Productive transfer: five to six connected Arabic B1 sentences combining prevention, cause/result, reported viewpoint, contrast, a fairer alternative and justification.
-- Arabic activities were authored independently from the Arabic chapter rather than mechanically translated from English.
+### English Language Review design
+- Reviews cause/result, contrast, purpose and simultaneous-action relationships in new contexts rather than retelling the story.
+- Reviews passive information focus, reported viewpoint/prediction, degree → consequence, prevention and contrastive reinterpretation.
+- Requires reconstruction of a short cause → decision → purpose → result explanation.
+- Requires learners to distinguish reported viewpoint from narrator assertion.
+- Ends with 5–7 connected spoken/written sentences in a non-story context using several functions from the completed Language Focus set.
+
+### Arabic Language Review design
+- Designed independently from Arabic forms/functions taught across the completed Arabic Language Focus set.
+- Reviews `لذلك`, `مع أن`, `لكي`, `بينما`, passive information focus, `قال ... إن`, degree → result, `منع ... من`, and `في الواقع` in new contexts.
+- Requires reconstruction of a coherent Arabic cause → decision → purpose → result paragraph.
+- Requires distinction between reported viewpoint and direct narrator assertion.
+- Ends with 5–7 connected Arabic sentences in a non-story context combining cause/result, purpose, reported viewpoint and contrast, with optional change/prevention/possibility/obligation language.
 
 ## Files changed in this run
-- `src/data/mecca/b1/en/languageFocusChapter15.ts` — added Chapter 15 English Language Focus.
-- `src/data/mecca/b1/ar/languageFocusChapter15.ts` — added Chapter 15 Arabic Language Focus.
-- `src/data/mecca/b1/index.ts` — wired Chapter 15 EN/AR sets through the merged Language Focus maps while preserving Chapters 1–14.
-- `docs/automation/b1-language-polish-progress.md` — closed Phase 1 for Mecca/Bilal B1 and advanced to Language Review for the next run.
+- `src/data/mecca/b1/en/languageReview.ts` — added cumulative English B1 Language Review.
+- `src/data/mecca/b1/ar/languageReview.ts` — added independently authored cumulative Arabic B1 Language Review.
+- `src/data/mecca/b1/index.ts` — page 17 now loads the new EN/AR Language Review sets instead of the legacy story-retrieval review arrays.
+- `docs/automation/b1-language-polish-progress.md` — advanced Mecca/Bilal B1 to `LANGUAGE_REVIEW_COMPLETE`.
 
 ## Commits
-- English Chapter 15 Language Focus: `eccb214c3f225871f3f6802b521c2836c7a32d78`
-- Arabic Chapter 15 Language Focus: `c7b30d18dbb28906d84bb6a3f4026c1e281ecaa0`
-- Chapter 15 active wiring: `fe089c666e46ed50289d4945f75d8cb941d04c81`
-- Preview HEAD immediately before checkpoint write: `fe089c666e46ed50289d4945f75d8cb941d04c81`
+- English Language Review: `13507ab015665b964ce4f02a041f878722940b56`
+- Arabic Language Review: `d39c3a48853a52f99b61bc4ecbc3433402aadb8f`
+- Active Language Review wiring: `61124d26d5495c20e1f116ac1f748f60e00bde01`
+- Preview HEAD immediately before checkpoint write: `61124d26d5495c20e1f116ac1f748f60e00bde01`
 
 ## Validation actually performed
-- Read the full Chapter 15 English story text from `src/data/mecca/b1/en/pages.ts`.
-- Read the full Chapter 15 Arabic story text independently from `src/data/mecca/b1/ar/pages.ts`.
-- Read the active English and Arabic Chapter 15 Quick Challenges before authoring.
-- Confirmed the Quick Challenge tests the final chapter’s alternative model of unity, while Language Focus targets pressure, condition/consequence, prevention, reported viewpoint, contrast, equality and justification.
-- Confirmed both Chapter 15 Language Focus files did not exist on `preview` before creation.
-- Re-fetched both new Chapter 15 Language Focus files after creation and confirmed four activities in each language.
+- Read the checkpoint and confirmed this run started in `LANGUAGE_FOCUS_COMPLETE` for Mecca/Bilal B1.
+- Read the existing English and Arabic legacy review arrays and confirmed they were primarily story-retrieval/retelling rather than cumulative language consolidation.
+- Reviewed the completed chapter-level Language Focus targets recorded across the Mecca/Bilal B1 pipeline before selecting cumulative functions.
+- Confirmed `src/data/mecca/b1/en/languageReview.ts` and `src/data/mecca/b1/ar/languageReview.ts` did not exist before creation.
+- Re-fetched both new review files after creation.
 - Re-fetched `src/data/mecca/b1/index.ts` immediately before the wiring write and again after the write.
-- Confirmed Chapter 15 English and Arabic sets are merged into the active Language Focus maps and exposed through `page.languageFocusExercises`.
-- Confirmed Chapters 1–14 Language Focus wiring remains intact.
+- Confirmed page 17 receives `meccaB1LanguageReviewExercises` in English and `meccaB1LanguageReviewExercisesAr` in Arabic.
+- Confirmed Quick Challenge, Language Focus, Knowledge Check, Vocabulary Challenge and Final Challenge wiring remains separate.
 - Story prose was not changed.
-- No A2, B2, shared/global, Knowledge Check, Vocabulary Challenge, Language Review, Final Challenge, Teacher Guide, or Self Study Guide file was modified.
+- No A2, B2, shared/global, Quick Challenge, Knowledge Check, Vocabulary Challenge, Final Challenge, Teacher Guide or Self Study Guide file was modified.
 - No executable build/typecheck/CI runner was used, so no build/typecheck/CI pass is claimed.
 
 ## Exact next run
-- Start only if this checkpoint still says `phase: LANGUAGE_FOCUS_COMPLETE` or `LANGUAGE_REVIEW` for Mecca/Bilal B1.
-- Build/review only the cumulative Mecca/Bilal B1 Language Review in English and Arabic.
-- Use only structures/functions genuinely taught across Chapters 1–15 Language Focus.
-- Do not audit Quick Challenges, Knowledge Check, Vocabulary Challenge or Final Challenge in that run.
-- When the cumulative Language Review is complete in both languages, set `phase: LANGUAGE_REVIEW_COMPLETE` and `nextTask: START_FINAL_EXERCISE_AUDIT_ON_NEXT_RUN`, then stop.
+- Start only if this checkpoint still says `phase: LANGUAGE_REVIEW_COMPLETE` or `FINAL_AUDIT` for Mecca/Bilal B1.
+- Audit only Mecca/Bilal B1 English and Arabic Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and active book-local wiring.
+- Check answer correctness, distractors, repeated micro-facts, trivial matching, T/F balance, renderer syntax, stale/duplicate book-local exports, wording, attachment/wiring and assessment-role overlap.
+- Preserve Language Focus and Language Review as separate language-learning layers.
+- Do not edit story prose, A2/B2, shared/global files, Teacher Guide or Self Study Guide unless a current-book-local technical blocker is found.
+- If fully complete, set `phase: BOOK_COMPLETE`, add Mecca/Bilal B1 to `completedBooks`, set `nextTask: START_NEXT_B1_BOOK_ON_NEXT_RUN`, and stop without starting Yunus Emre B1.
 
 ## Unresolved issues
-- None identified for Mecca/Bilal B1 Chapter 15.
+- No pedagogical blocker identified for the cumulative Language Review.
 - Build/typecheck remains unverified because no executable runner was used.
