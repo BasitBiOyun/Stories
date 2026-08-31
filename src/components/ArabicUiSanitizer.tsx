@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const REPLACEMENTS: Array<[RegExp, string]> = [
   [/Professional Teacher Guide/gi, 'دليل المعلم المهني'],
-  [/Student(?:'s)? Self-Study Guide/gi, 'دليل الدراسة الذاتية للطالب'],
+  [/Student(?:'s|’s)? Self[- ]Study Guide/gi, 'دليل الدراسة الذاتية للطالب'],
   [/Self[- ]Study Guide/gi, 'دليل الدراسة الذاتية'],
   [/Tap\s*&\s*Reveal/gi, 'اضغط واكشف'],
   [/Tap\s+and\s+Reveal/gi, 'اضغط واكشف'],
@@ -19,7 +19,14 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   [/Individual Mode/gi, 'وضع فردي'],
   [/Pair Mode/gi, 'وضع ثنائي'],
   [/Class Mode/gi, 'وضع صفي'],
+  [/Access Required/gi, 'يلزم رمز الدخول'],
+  [/Please enter the access code provided to you to unlock the application\./gi, 'يرجى إدخال رمز الدخول المقدم لك لفتح التطبيق.'],
+  [/Access Code/gi, 'رمز الدخول'],
+  [/Unlock App/gi, 'فتح التطبيق'],
+  [/Show password/gi, 'إظهار كلمة المرور'],
+  [/Hide password/gi, 'إخفاء كلمة المرور'],
   [/Incorrect password! Please try again\./gi, 'كلمة المرور غير صحيحة. حاول مرة أخرى.'],
+  [/Interactive E-Book Series/gi, 'سلسلة الكتب الإلكترونية التفاعلية'],
 ];
 
 const localize = (value: string) => REPLACEMENTS.reduce(
