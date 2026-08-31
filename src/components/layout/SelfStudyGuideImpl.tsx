@@ -23,6 +23,31 @@ const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => (
   <GuideIcon name={name && iconNameMap[name] ? iconNameMap[name] : 'book'} className={className} />
 );
 
+const localizeArabicUiText = (value: string) => value
+  .replace(/Tap\s*&\s*Reveal/gi, 'اضغط واكشف')
+  .replace(/Tap\s+and\s+Reveal/gi, 'اضغط واكشف')
+  .replace(/Language Focus/gi, 'التركيز اللغوي')
+  .replace(/Language Review/gi, 'مراجعة اللغة')
+  .replace(/Quick Challenge/gi, 'التحدي السريع')
+  .replace(/Knowledge Check/gi, 'اختبار المعرفة')
+  .replace(/Final Challenge/gi, 'التحدي النهائي')
+  .replace(/Retrieval Review/gi, 'مراجعة الاسترجاع')
+  .replace(/Teacher Guide/gi, 'دليل المعلم')
+  .replace(/Self Study Guide/gi, 'دليل الدراسة الذاتية')
+  .replace(/Chapter Support/gi, 'دعم الفصول')
+  .replace(/Full Guide/gi, 'الدليل الكامل');
+
+const localizeArabicDeep = <T,>(value: T): T => {
+  if (typeof value === 'string') return localizeArabicUiText(value) as T;
+  if (Array.isArray(value)) return value.map(item => localizeArabicDeep(item)) as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, localizeArabicDeep(item)])
+    ) as T;
+  }
+  return value;
+};
+
 const listBlock = (title: string, items?: string[]) => {
   if (!items?.length) return null;
   return (
@@ -76,6 +101,16 @@ export const SelfStudyGuide = ({
   const isTurkish = collectionId === 'turkish';
   const isAr = language === 'ar';
 
+  if (isAr) {
+    title = title ? localizeArabicUiText(title) : title;
+    subtitle = subtitle ? localizeArabicUiText(subtitle) : subtitle;
+    footerText = footerText ? localizeArabicUiText(footerText) : footerText;
+    content = localizeArabicDeep(content);
+    studentGuideText = localizeArabicUiText(studentGuideText);
+    studentGuideSections = localizeArabicDeep(studentGuideSections);
+    metadata = localizeArabicDeep(metadata);
+  }
+
   const displayTitle = title || t('nav.studentSelfStudyGuide');
   const displaySubtitle = subtitle || t('nav.reflectionPractice');
   const displayFooter = footerText || t('nav.interactiveEbookSeries');
@@ -108,7 +143,7 @@ export const SelfStudyGuide = ({
           ? React.cloneElement(section.icon as React.ReactElement<{ className?: string }>, { className: 'w-5 h-5' })
           : iconFor('FileText', 'w-5 h-5')
     })),
-    ...(studentGuideText ? [{ id: 'full-guide', label: t('ssg.fullGuide') || 'Full Guide', icon: iconFor('FileText', 'w-5 h-5') }] : [])
+    ...(studentGuideText ? [{ id: 'full-guide', label: isAr ? 'الدليل الكامل' : (t('ssg.fullGuide') || 'Full Guide'), icon: iconFor('FileText', 'w-5 h-5') }] : [])
   ];
 
   React.useEffect(() => {
@@ -124,8 +159,8 @@ export const SelfStudyGuide = ({
 
     const labels = isAr ? {
       goals: 'أهداف الفصل', notice: 'ما الذي ألاحظه؟', read: 'اقرأ / استمع', find: 'اعثر على الجواب في القصة',
-      vocab: 'المفردات في السياق', quick: 'Quick Challenge', wrong: 'إذا أخطأت', check: 'اختبر نفسك',
-      use: 'استخدم ما تعلمته', reflection: 'تأمل', grammar: 'تركيز لغوي', pronunciation: 'النطق'
+      vocab: 'المفردات في السياق', quick: 'التحدي السريع', wrong: 'إذا أخطأت', check: 'اختبر نفسك',
+      use: 'استخدم ما تعلمته', reflection: 'تأمل', grammar: 'التركيز اللغوي', pronunciation: 'النطق'
     } : {
       goals: 'Chapter Goals', notice: 'What to Notice', read: 'Read / Listen', find: 'Find the Answer in the Story',
       vocab: 'Vocabulary in Context', quick: 'Quick Challenge', wrong: 'If You Get It Wrong', check: 'Check Yourself',
