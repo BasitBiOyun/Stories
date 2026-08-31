@@ -1,38 +1,78 @@
 import type { BookData, Exercise, PageData, TeacherGuideMetadata } from '../../../types';
 import { meccaB2Pages } from './en/pages';
 import {
-  meccaB2QuickChallenges,
-  meccaB2VocabularyChallengePairs,
-  meccaB2FinalReviewExercises,
-  meccaB2FinalChallengeExercises,
-} from './en/exercises';
+  meccaB2QuickChallengesPolished,
+  meccaB2VocabularyChallengePairsPolished,
+  meccaB2FinalChallengeExercisesPolished,
+} from './en/exerciseSystem';
 import { meccaB2ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
+import { meccaB2LanguageFocusExercises } from './en/languageFocus';
+import { meccaB2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
+import { meccaB2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
+import { meccaB2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
+import { meccaB2LanguageReviewExercises } from './en/languageReview';
 import { meccaB2TeacherGuide, meccaB2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB2SelfStudyGuide, meccaB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { meccaB2PagesAr } from './ar/pages';
 import {
-  meccaB2QuickChallengesAr,
-  meccaB2VocabularyChallengePairsAr,
-  meccaB2FinalReviewExercisesAr,
-  meccaB2FinalChallengeExercisesAr,
-} from './ar/exercises';
+  meccaB2QuickChallengesArPolished,
+  meccaB2VocabularyChallengePairsArPolished,
+  meccaB2FinalChallengeExercisesArPolished,
+} from './ar/exerciseSystem';
 import { meccaB2ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
+import { meccaB2LanguageFocusExercisesAr } from './ar/languageFocus';
+import { meccaB2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
+import { meccaB2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
+import { meccaB2LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
+import { meccaB2LanguageReviewExercisesAr } from './ar/languageReview';
 import { meccaB2TeacherGuideAr, meccaB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB2SelfStudyGuideAr, meccaB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
 
+const englishLanguageFocus: Record<number, Exercise[]> = {
+  ...meccaB2LanguageFocusExercises,
+  ...meccaB2LanguageFocusExercisesPart2,
+  ...meccaB2LanguageFocusExercisesPart3,
+  ...meccaB2LanguageFocusExercisesPart4,
+};
+
+const arabicLanguageFocus: Record<number, Exercise[]> = {
+  ...meccaB2LanguageFocusExercisesAr,
+  ...meccaB2LanguageFocusExercisesArPart2,
+  ...meccaB2LanguageFocusExercisesArPart3,
+  ...meccaB2LanguageFocusExercisesArPart4,
+};
+
 const attachLearning = (
   pages: PageData[],
   quickChallenges: Record<number, Exercise>,
+  languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
   vocabularyPairs: { word: string; meaning: string }[],
-  review: Exercise[],
+  languageReview: Exercise[],
   finalChallenge: Exercise[],
+  language: 'en' | 'ar',
 ): PageData[] => pages.map(page => {
-  if (STORY_IDS.has(page.id)) return { ...page, type: 'story', exercises: [quickChallenges[page.id]] };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = languageFocus[page.id];
+    return {
+      ...page,
+      type: 'story',
+      exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
   if (page.id === 18) return { ...page, type: 'quiz', exercises: knowledgeCheck };
-  if (page.id === 19) return { ...page, type: 'exercises', exercises: review };
+  if (page.id === 19) return {
+    ...page,
+    type: 'exercises',
+    title: language === 'ar' ? 'مراجعة اللغة B2' : 'B2 Language Review',
+    content: language === 'ar'
+      ? 'راجع واستعمل صيغ التقييد والسبب والنتيجة والمقابلة والشرط وتركيز المعلومة والعلاقات الخطابية التي تطورت عبر الفصول السبعة عشر.'
+      : 'Review and use the qualification, cause-result, contrast, condition, information-focus and discourse patterns developed across all seventeen chapters.',
+    exercises: languageReview,
+  };
   if (page.id === 20) return { ...page, type: 'vocabulary-match', vocabularyPairs };
   if (page.id === 22) return { ...page, type: 'final-challenge', exercises: finalChallenge };
   return page;
@@ -109,7 +149,7 @@ const teacherMetadataAr: TeacherGuideMetadata = {
       { label: 'الكرامة', value: 'لا تربط قيمة الإنسان بالثروة أو النوع أو الرق أو الحماية القبلية.' },
       { label: 'النزاهة', value: 'التزم بحدود المصدر ولا تقوِّ الادعاء لمجرد التأثير.' }
     ],
-    questions: ['ما الفعل الذي يجعل هذه القيمة ظاهرة؟', 'أي دليل من الفصل يدعم هذا الفعل؟'],
+    questions: ['ما الفعل الذي يجعل هذه القيمة ظاهرة؟', 'أي دليل من الفصل يدعم ذلك الفعل؟'],
     actions: ['سمِّ آلية الظلم.', 'حدد الأكثر تعرضاً للضرر.', 'اختر استجابة متناسبة ومحترمة.']
   },
   homeConnection: {
@@ -123,7 +163,16 @@ export const meccaB2BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: attachLearning(meccaB2Pages, meccaB2QuickChallenges, meccaB2ManualKnowledgeCheckExercises, meccaB2VocabularyChallengePairs, meccaB2FinalReviewExercises, meccaB2FinalChallengeExercises),
+  pages: attachLearning(
+    meccaB2Pages,
+    meccaB2QuickChallengesPolished,
+    englishLanguageFocus,
+    meccaB2ManualKnowledgeCheckExercises,
+    meccaB2VocabularyChallengePairsPolished,
+    meccaB2LanguageReviewExercises,
+    meccaB2FinalChallengeExercisesPolished,
+    'en',
+  ),
   teacherGuide: meccaB2TeacherGuide,
   teacherGuideMetadata: teacherMetadataEn,
   selfStudyGuide: meccaB2SelfStudyGuide,
@@ -135,7 +184,16 @@ export const meccaB2BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: attachLearning(meccaB2PagesAr, meccaB2QuickChallengesAr, meccaB2ManualKnowledgeCheckExercisesAr, meccaB2VocabularyChallengePairsAr, meccaB2FinalReviewExercisesAr, meccaB2FinalChallengeExercisesAr),
+  pages: attachLearning(
+    meccaB2PagesAr,
+    meccaB2QuickChallengesArPolished,
+    arabicLanguageFocus,
+    meccaB2ManualKnowledgeCheckExercisesAr,
+    meccaB2VocabularyChallengePairsArPolished,
+    meccaB2LanguageReviewExercisesAr,
+    meccaB2FinalChallengeExercisesArPolished,
+    'ar',
+  ),
   teacherGuide: meccaB2TeacherGuideAr,
   teacherGuideMetadata: teacherMetadataAr,
   selfStudyGuide: meccaB2SelfStudyGuideAr,
