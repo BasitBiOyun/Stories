@@ -19,6 +19,8 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   [/Individual Mode/gi, 'وضع فردي'],
   [/Pair Mode/gi, 'وضع ثنائي'],
   [/Class Mode/gi, 'وضع صفي'],
+  [/Language selection/gi, 'اختيار اللغة'],
+  [/Use English/gi, 'استخدام الإنجليزية'],
   [/Access Required/gi, 'يلزم رمز الدخول'],
   [/Please enter the access code provided to you to unlock the application\./gi, 'يرجى إدخال رمز الدخول المقدم لك لفتح التطبيق.'],
   [/Access Code/gi, 'رمز الدخول'],
