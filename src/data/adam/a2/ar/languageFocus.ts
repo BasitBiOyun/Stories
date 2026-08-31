@@ -1,7 +1,7 @@
 import type { Exercise } from '../../../../types';
 
 /**
- * أنشطة Language Focus عربية تُكتب يدويًا بعد قراءة نص الفصل العربي نفسه.
+ * أنشطة التركيز اللغوي عربية تُكتب يدويًا بعد قراءة نص الفصل العربي نفسه.
  * لا تُترجم ميكانيكيًا من الإنجليزية ولا تُولَّد من قالب ثابت.
  */
 export const adamA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
@@ -80,7 +80,7 @@ export const adamA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-a2-ar-language-1-retell',
       type: 'reflection',
       title: 'قُلْها: أعد سرد بداية القصة',
-      instructions: 'أعد سرد الأحداث في ثلاث أو أربع جمل قصيرة من مستوى A2. استعمل جملًا كاملة ونمطين على الأقل من هذا Language Focus.',
+      instructions: 'أعد سرد الأحداث في ثلاث أو أربع جمل قصيرة من مستوى A2. استعمل جملًا كاملة ونمطين على الأقل من هذا التركيز اللغوي.',
       question: 'هل تستطيع أن تشرح ما حدث وما الذي أُعلن أنه سيحدث بعد ذلك؟',
       correctAnswer: null,
       explanation: 'الإجابة الجيدة تستخدم فعلًا ماضيًا لسرد حدث انتهى، وصيغة مستقبل بـ «سـ»، ورابطًا بسيطًا مثل «ثم» أو «لذلك».',
