@@ -1,64 +1,84 @@
 # B2 Language Polish Progress
 
-currentBook: Abraham B2
+currentBook: Moses B2
+bookPath: `src/data/moses/b2`
 phase: BOOK_COMPLETE
-nextTask: START_NEXT_B2_BOOK_ON_NEXT_RUN
+storyChapterCount: 24
 completedBooks:
 - Adam B2
 - Abraham B2
+- Moses B2
+nextTask: START_NEXT_B2_BOOK_ON_NEXT_RUN
 
-## Abraham B2 completion status
-- Story chapters: 35
-- Current book path: `src/data/abraham/b2`
-- English Language Focus: COMPLETE (Chapters 1–35)
-- Arabic Language Focus: COMPLETE (Chapters 1–35)
-- English cumulative Language Review: COMPLETE
-- Arabic cumulative Language Review: COMPLETE
-- English final exercise audit: COMPLETE
-- Arabic final exercise audit: COMPLETE
-- Active book-local wiring: COMPLETE
-- Story prose: UNCHANGED
+## Completed books
+- Adam B2: COMPLETE under the new B2 Language Focus architecture.
+- Abraham B2: COMPLETE under the new B2 Language Focus architecture.
+- Moses B2: COMPLETE under the new B2 Language Focus architecture.
 
-## Final audit findings
-- Audited active English and Arabic Quick Challenges, Knowledge Check, Vocabulary Challenge, Final Challenge and `src/data/abraham/b2/index.ts` wiring.
-- Quick Challenges remain chapter comprehension/retrieval; no answer-key or qualification issue justified broad rewriting.
-- Knowledge Check remains an 8-item whole-book knowledge layer and is distinct from Language Review and Final Challenge.
-- Vocabulary Challenge remains a 10-pair B2 support layer; no definition issue justified rewriting.
-- Final Challenge retains its existing 10-item format distribution: 3 multiple-choice + 2 true/false + 2 matching + 2 fill-blanks + 1 sequencing.
-- Balanced Final Challenge true/false answers by replacing item 4 with a supported true synthesis statement while preserving the chapter’s attribution that human sacrifice is associated with idolaters in the narrative.
-- Expanded Final Challenge matching items 6 and 7 from two pairs to three cross-chapter analytical connections in both English and Arabic.
-- Replaced shallow micro-recall Final Challenge fill-blanks 8 and 9 with B2 whole-story synthesis: authority versus examinable evidence, and family submission developing into continuing legacy.
-- Preserved Final Challenge items 1–3, 5 and 10 because they already require broad cross-chapter synthesis or sequencing rather than duplicating a single Quick Challenge fact.
-- Language Review remains separately wired on page 37 and Final Challenge on page 40.
-- Legacy `abrahamB2FinalReviewExercises` / `abrahamB2FinalReviewExercisesAr` exports were retained in the old source files but remain inactive. They were not deleted because removing them from the large legacy exercise files offered no runtime benefit and would create unnecessary edit risk; the active index no longer imports or wires them.
+## Moses B2 completion status
+- Chapters 1–24 English Language Focus: COMPLETE.
+- Chapters 1–24 Arabic Language Focus: COMPLETE.
+- English cumulative Language Review: COMPLETE.
+- Arabic cumulative Language Review: COMPLETE.
+- Quick Challenge audit: COMPLETE.
+- Knowledge Check audit: COMPLETE.
+- Vocabulary Challenge audit: COMPLETE.
+- Final Challenge audit: COMPLETE.
+- Active book-local wiring: COMPLETE.
+- Story prose: UNCHANGED.
 
-## Files added in final audit
-- `src/data/abraham/b2/en/exerciseSystem.ts`
-- `src/data/abraham/b2/ar/exerciseSystem.ts`
+## Moses B2 pedagogical decisions
+- Language Focus was authored manually after reading the full English and Arabic story sources and the active Quick Challenges.
+- English and Arabic were designed independently from their own chapter language rather than mechanically translated.
+- B2 Language Focus emphasizes contextual grammaring and discourse use: source attribution and degrees of certainty, cause/purpose/result, passive information focus, comparison and analogy, concession and correction, condition and commitment, rhetorical pressure, evidence versus interpretation, public framing, cohesion and synthesis.
+- Productive tasks move beyond isolated sentences where the chapter supports it and ask for short coherent analytical paragraphs or equivalent written responses.
+- Cumulative Language Review is a language/discourse consolidation layer, not a story-comprehension retest.
+- Final Challenge remains an independent whole-story mastery assessment with the existing 10-item policy distribution.
 
-## Files updated in final audit
-- `src/data/abraham/b2/index.ts`
+## Final exercise audit
+- Existing 24 Quick Challenges were retained because they already provide focused chapter comprehension/retrieval and generally avoid duplicating the new Language Focus role.
+- Existing 8-item Knowledge Check was retained because it already requires broad B2 evidence-based understanding and qualification.
+- Existing 10-pair Vocabulary Challenge was retained because the set is unique, story-grounded and appropriately broad.
+- Existing Retrieval Review on page 29 was replaced at active runtime by the dedicated B2 Language Review. The legacy export remains in `exercises.ts` only for locked story-source compatibility and is not the active page-29 learning layer.
+- Final Challenge items 1–5 and 10 were retained.
+- Final Challenge matching items 6–7 were expanded from two-pair micro tasks into four-way cross-chapter synthesis tasks.
+- Final Challenge fill items 8–9 were replaced with broader synthesis of political authority and continuing guidance after liberation.
+- Final Challenge still contains exactly 3 multiple-choice, 2 true/false, 2 matching, 2 fill-blanks and 1 sequencing activity.
+
+## Files added
+- `src/data/moses/b2/en/languageFocus.ts`
+- `src/data/moses/b2/en/languageFocusPart2.ts`
+- `src/data/moses/b2/en/languageFocusPart3.ts`
+- `src/data/moses/b2/en/languageFocusPart4.ts`
+- `src/data/moses/b2/ar/languageFocus.ts`
+- `src/data/moses/b2/ar/languageFocusPart2.ts`
+- `src/data/moses/b2/ar/languageFocusPart3.ts`
+- `src/data/moses/b2/ar/languageFocusPart4.ts`
+- `src/data/moses/b2/en/languageReview.ts`
+- `src/data/moses/b2/ar/languageReview.ts`
+- `src/data/moses/b2/en/exerciseSystem.ts`
+- `src/data/moses/b2/ar/exerciseSystem.ts`
+
+## Files updated
+- `src/data/moses/b2/index.ts`
 - `docs/automation/b2-language-polish-progress.md`
 
-## Final audit commits before checkpoint update
-- English polished exercise system: `5dc43356217d1fe8abcdb0bfa856cb96b9d48bc9`
-- Arabic polished exercise system: `055c7551fbfc57718377359fcfe5468fd379095a`
-- Active polished wiring: `54a4d4c9fea9196a2aea083c3c97e704551d26ec`
-
 ## Validation actually performed
-- Confirmed this run started from `phase: LANGUAGE_REVIEW_COMPLETE`.
-- Re-fetched the English polished exercise-system wrapper from `preview` and confirmed Final Challenge overrides 4, 6, 7, 8 and 9 are present.
-- Re-fetched the Arabic polished exercise-system wrapper from `preview` and confirmed the equivalent independently authored Arabic overrides are present.
-- Re-fetched `src/data/abraham/b2/index.ts` after wiring and confirmed story pages still use Quick Challenge + separate `languageFocusExercises`, page 36 uses Knowledge Check, page 37 uses Language Review, page 38 uses Vocabulary Challenge and page 40 uses the polished Final Challenge.
-- No canonical English or Arabic story prose was changed.
-- No Teacher Guide or Self Study Guide file was changed because no book-local technical wiring defect required it.
-- No A2/B1 files, other B2 books or shared/global files were edited.
-- No executable build/typecheck/CI runner was used, so no build/typecheck/CI pass is claimed.
+- Confirmed the Moses B2 runtime contains 24 story chapters.
+- Read the full English story source across Chapters 1–24 and the active English Quick Challenges.
+- Read the Arabic story source independently across Chapters 1–24 and the active Arabic Quick Challenges.
+- Verified every Language Focus record has Chapters 1–24 and unique exercise IDs.
+- Verified fill-blank activities use the renderer-supported literal `[blank]` marker with one answer field per activity.
+- Verified page 29 is wired as cumulative Language Review and page 30 remains Final Challenge.
+- Verified story pages keep Quick Challenge in `exercises` and Language Focus separately in `languageFocusExercises`.
+- Canonical `storySource.ts` files were not edited.
+- An isolated TypeScript 5.8.3 compile of the newly authored Language Focus, Language Review, exercise-system wrappers and updated index passed locally with compatible project type stubs.
+- Full repository `npm run build`, repository-wide typecheck and Cloud deployment were not run from this environment and are not claimed as passed.
 
 ## Exact next run
-- Start Moses B2 only.
-- Set `currentBook: Moses B2`, `phase: LANGUAGE_FOCUS`, identify its story chapter count from the current repo, set the first incomplete chapter, and stop after handoff initialization if needed.
-- Do not process Abraham B2 again unless a later explicit defect is discovered.
+- Start Mecca/Bilal B2 only.
+- Do not process Moses B2 again unless an explicit defect is found.
 
 ## Unresolved issues
-- Build/typecheck remains unverified because no executable runner was used in this run.
+- Full repository build/CI and Cloud preview deployment remain unverified in this run.
+- Arabic Reflection UI still displays the internal mode label `Individual` in English because that is a shared renderer behavior. This is a pre-existing global UI issue and was not changed in this book-local pass.
