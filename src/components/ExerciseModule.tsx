@@ -572,7 +572,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
               <div className="flex items-center gap-2 mb-2 text-wood/50">
                 {prompt.mode === 'Individual' ? <GraduationCap size={18} /> : prompt.mode === 'Pair' ? <MessageSquare size={18} /> : <Users size={18} />}
-                <span className="font-display text-xs uppercase tracking-widest">{prompt.mode}</span>
+                <span className="font-display text-xs uppercase tracking-widest">{language === 'ar' ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
               </div>
               <p className="font-serif text-sm sm:text-base md:text-lg font-semibold text-wood">{prompt.question}</p>
             </div>
