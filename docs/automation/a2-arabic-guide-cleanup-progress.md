@@ -2,27 +2,30 @@
 
 phase: CLEANUP
 currentBook: Adam A2
-status: PARTIAL
+status: COMPLETE
 
 ## Files inspected
 - `src/data/adam/a2/ar/teacherGuide.ts`
 - `src/data/adam/a2/ar/selfStudyGuide.ts`
 
-## Completed this run
-- `src/data/adam/a2/ar/teacherGuide.ts` cleaned and committed.
-- User-visible English assessment/interface labels were replaced with natural Arabic, including Quick Challenge, Knowledge Check, Retrieval Review, Vocabulary Challenge, Review Quiz, Final Challenge, Tap & Reveal, hotspot, Review and Final references.
-- English grammar labels used as explanatory prose were localized, including Simple Past and First Conditional.
-- Necessary English target-language examples and forms were intentionally retained where they are the object of English learning, including example sentences, vocabulary/pronunciation targets, connectors such as because/but/so, and forms such as should, will/won’t and be going to.
+## Completed
+- Adam A2 Arabic Teacher Guide cleaned.
+- Adam A2 Arabic Self-Study Guide cleaned.
+- User-visible English assessment/interface labels and explanatory grammar labels were replaced with natural Arabic.
+- Re-inspected both Adam A2 Arabic guide files after cleanup; no unintended `Quick Challenge` label remains.
 
-## Remaining work in current book
-- Clean `src/data/adam/a2/ar/selfStudyGuide.ts` using the same rule set.
-- Re-inspect both Adam A2 Arabic guide files after the Self-Study Guide cleanup, then mark Adam A2 COMPLETE if no unintended English prose remains.
+## English intentionally retained
+- English target-language examples, quoted model sentences, vocabulary/pronunciation targets, connectors and forms that learners are explicitly studying were kept where pedagogically necessary.
+- Technical identifiers, TypeScript property names, icons, CEFR/TYMM codes and internal values were not changed.
 
 ## Files changed
 - `src/data/adam/a2/ar/teacherGuide.ts`
+- `src/data/adam/a2/ar/selfStudyGuide.ts`
 - `docs/automation/a2-arabic-guide-cleanup-progress.md`
 
-## Commit
-- Teacher Guide commit: `d92b85cc33b7f32eab8cf75c50304de33a55c4c8`
+## Commits
+- Teacher Guide: `d92b85cc33b7f32eab8cf75c50304de33a55c4c8`
+- Self-Study Guide: `74610aa6496f8acf108ccf4841c84e416a3449e8`
 
-nextTask: RESUME_ADAM_A2_SELF_STUDY_GUIDE
+nextBook: Abraham A2
+nextTask: START_ABRAHAM_A2_ON_NEXT_RUN
