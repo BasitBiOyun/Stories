@@ -3,47 +3,38 @@
 level: B2
 phase: CLEANUP
 currentBook: Adam B2
-status: READY
+status: COMPLETE
 filesInspected:
-- src/data/yunusEmre/b1/ar/teacherGuide.ts
-- src/data/yunusEmre/b1/ar/selfStudyGuide.ts
+- src/data/adam/b2/ar/teacherGuide.ts
+- src/data/adam/b2/ar/selfStudyGuide.ts
 englishExpressionsFound:
-- `Quick Challenge` in Teacher Guide chapter 1 lesson plan and interactive tip.
-- `Quick Challenge` in Teacher Guide chapter 3 interactive tip.
-- `Quick Challenge` in Teacher Guide chapter 6 interactive tip.
-- `Tap & Reveal` in Teacher Guide chapter 7 lesson plan and interactive tip.
-- `Quick Challenge` in Teacher Guide chapter 13 interactive tip.
-- `Quick Challenges` and `Quiz Game` in Teacher Guide assessment metadata.
-- `Quick Challenge` in Self-Study Guide chapter 1 lesson plan.
-- `Tap & Reveal` in Self-Study Guide chapter 7 interactive tip.
-- `rage` in Self-Study Guide chapter 13 vocabulary explanation.
-- `Quick Challenge` in Self-Study Guide recommended-use metadata.
+- `Tap & Reveal` in Teacher Guide chapter 8 after-reading guidance.
+- `Tap & Reveal` in Teacher Guide chapter 8 lesson plan.
+- `Arabic` in Self-Study Guide user-visible language metadata.
+- `Tap & Reveal` in Self-Study Guide chapter 8 interactive tip.
 arabicReplacementsMade:
-- `Quick Challenge` → `التحدي السريع` where used as visible prose.
-- `Quick Challenges` → `التحديات السريعة`.
-- `Tap & Reveal` → `نشاط «اضغط واكشف»`.
-- `Quiz Game` → `لعبة اختبار`.
-- `rage` → `سخط قوي` within the Arabic vocabulary explanation.
+- `Tap & Reveal` → `نشاط «اضغط واكشف»` in visible Arabic guidance.
+- `language: 'Arabic'` → `language: 'العربية'` in user-visible metadata.
 filesChanged:
-- src/data/yunusEmre/b1/ar/teacherGuide.ts
-- src/data/yunusEmre/b1/ar/selfStudyGuide.ts
+- src/data/adam/b2/ar/teacherGuide.ts
+- src/data/adam/b2/ar/selfStudyGuide.ts
 - docs/automation/b1-b2-arabic-guide-cleanup-progress.md
 commitSHA:
-- teacher guide: e0246d84a65bc793f07cb8f7fc569573754bbf7a
-- self-study guide: 7b1d148332bf252694b79473b9a2a1cf791d2ed5
-nextBook: Adam B2
-nextTask: START_B2_ON_NEXT_RUN
+- teacher guide: fc03d26ebeaa9cbd5853fee519209346aa6d3912
+- self-study guide: 0ea90992e32a6719dd0f76d844f8cfbca9c6e3b2
+nextBook: Abraham B2
+nextTask: START_ABRAHAM_B2_ON_NEXT_RUN
 intentionallyRetainedEnglish:
 - Technical TypeScript identifiers and property names.
-- CEFR codes B1/B2 where used as level codes.
+- CEFR code B2 where used as a level code.
 completedBooks:
 - Adam B1
 - Abraham B1
 - Moses B1
 - Mecca/Bilal B1
 - Yunus Emre B1
+- Adam B2
 notes:
-- All five B1 Arabic guide cleanups are complete.
-- No B2 guide file was edited in this run; B2 begins with Adam B2 on the next run.
-- No story prose, exercises, English files, shared/global files, or A2 files were modified.
+- Adam B2 Arabic Teacher Guide and Self-Study Guide cleanup is complete.
+- No story prose, exercises, English files, shared/global files, A2 files, or other B2 books were modified.
 - No build, typecheck, or CI run was performed.
