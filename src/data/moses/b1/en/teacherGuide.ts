@@ -213,12 +213,12 @@ export const mosesB1TeacherGuideMetadata: TeacherGuideMetadata = {
     writing: 'TYMM YDAB4: produce short connected paragraphs using chapter-derived vocabulary and language relationships.',
   },
   valuesFocus: [
-    'D6 Dürüstlük — distinguish what the text says from interpretation and take responsibility for mistakes.',
-    'D10 Mütevazılık — remain open to evidence instead of acting through arrogance.',
-    'D12 Sabır — manage difficulty through steady and active effort.',
-    'D14 Saygı — discuss people, beliefs and disagreement without humiliation.',
-    'D16 Sorumluluk — accept consequences and act to protect safety and dignity.',
-    'D20 Yardımseverlik — respond to real need through respectful help.',
+    'D6 Honesty — distinguish what the text says from interpretation and take responsibility for mistakes.',
+    'D10 Humility — remain open to evidence instead of acting through arrogance.',
+    'D12 Patience — manage difficulty through steady and active effort.',
+    'D14 Respect — discuss people, beliefs and disagreement without humiliation.',
+    'D16 Responsibility — accept consequences and act to protect safety and dignity.',
+    'D20 Helpfulness — respond to real need through respectful help.',
     `Use a value only where the chapter gives concrete support; see ${TYMM_VALUES}.`,
   ],
   languageFocus: [

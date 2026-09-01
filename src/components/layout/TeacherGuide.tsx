@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
-import { TeacherGuideSection, Level } from '../../types';
+import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export const TeacherGuide = ({ 
@@ -33,6 +33,7 @@ export const TeacherGuide = ({
   subtitle,
   footerText,
   content = [],
+  pages = [],
   metadata,
   bookId,
   level,
@@ -44,6 +45,7 @@ export const TeacherGuide = ({
   subtitle?: string;
   footerText?: string;
   content?: TeacherGuideSection[];
+  pages?: PageData[];
   metadata?: import('../../types').TeacherGuideMetadata;
   bookId?: string;
   level?: Level;
@@ -194,6 +196,37 @@ const assessmentProfile = (() => {
 
   return (isArabicGuide ? ar : en)[assessmentLevel];
 })();
+
+
+  const teacherGuideGlossary = React.useMemo(() => {
+    const entries = new Map<string, { word: string; definition: string; example?: string }>();
+
+    pages.forEach((page) => {
+      (page.vocabulary || []).forEach((item) => {
+        const word = item.word?.trim();
+        const definition = item.definition?.trim();
+        if (!word || !definition) return;
+        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+        if (!entries.has(key)) {
+entries.set(key, { word, definition, example: item.example?.trim() || undefined });
+        }
+      });
+
+      (page.vocabularyPairs || []).forEach((item) => {
+        const word = item.word?.trim();
+        const definition = item.meaning?.trim();
+        if (!word || !definition) return;
+        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+        if (!entries.has(key)) {
+entries.set(key, { word, definition });
+        }
+      });
+    });
+
+    return Array.from(entries.values()).sort((a, b) =>
+      a.word.localeCompare(b.word, isArabicGuide ? 'ar' : 'en')
+    );
+  }, [pages, isArabicGuide]);
 
   const tabs = [
     { id: 'overview', label: `${formatNumber(1)}. ${t('tg.overview')}`, icon: <BookOpen size={24} /> },
@@ -1333,38 +1366,6 @@ const assessmentProfile = (() => {
         const fallbackReflectiveTitle = isAbraham ? 'Patience and Trust' : isMoses ? 'Trusting Allah in Difficult Times' : isMecca ? 'Ethical Economics & Character' : isYunus ? 'Guarding and Polishing the Heart' : t('tg.reflectiveWritingPrompt');
         const fallbackReflectiveDesc = isAbraham ? 'Hagar placed her trust in Allah in the desert. Write about a time when you had to be patient, hopeful, and trust things would work out.' : isMoses ? 'Moses’s mother placed him in a basket on the Nile, trusting Allah’s protection. Write about a time when you had to trust and be calm during a hard situation.' : isMecca ? 'Meccan society had high trade wealth but low ethical care for the poor, orphans, and widows. Write about a time you noticed that real richness and success come from helping others rather than just hoarding wealth.' : isYunus ? 'Yunus Emre taught that the heart is the "throne of the Lord," and hurting another person\'s feelings ruins any good deed. Write about a time when you had to control your anger, be patient, or speak kindly to save a sibling or classmate\'s heart.' : t('tg.reflectiveWritingDesc');
 
-        const fallbackSentenceFrames = isAbraham ? [
-          'Prophet Abraham (AS) searched for the Creator because...',
-          'The fire became cool and safe for Abraham by Allah’s command.',
-          'Hagar showed deep patience in the empty valley when she...',
-          'Allah blessed the family with the miraculous spring of Zamzam water.',
-          'The key moral lesson of this story is...'
-        ] : isMoses ? [
-          'Prophet Moses (AS) fled to Midian because...',
-          'Prophet Moses (AS) helped the two sisters water their...',
-          'Allah spoke to Moses at the sacred mountain of...',
-          'With Allah’s command, Prophet Moses (AS) used his staff to...',
-          'The biggest lesson from Moses’s life is...'
-        ] : isMecca ? [
-          'Mecca grew as a major center of pilgrimage and trade because...',
-          'The Prophet Muhammad (pbuh) challenged tribal pride by teaching...',
-          'The Farewell Sermon declared that all human beings are equal because...',
-          'We can support vulnerable and marginalized communities today by...',
-          'The spiritual and social lessons from Meccan history show us...'
-        ] : isYunus ? [
-          'Yunus Emre served his spiritual teacher Taptuk Emre for many years with...',
-          'According to Yunus Emre, the heart is the center of love because...',
-          'He wrote his deep Sufi poems in incredibly simple and beautiful language to...',
-          'To overcome pride, arrogance, greed, and anger, we must train our...',
-          'True sincerity and inner morality mean that our inner intentions must match our...'
-        ] : [
-          t('tg.sentence1'),
-          t('tg.sentence2'),
-          t('tg.sentence3'),
-          t('tg.sentence4'),
-          t('tg.sentence5')
-        ];
-
         return (
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.appendices')}</h3>
@@ -1399,16 +1400,31 @@ const assessmentProfile = (() => {
                   {appendicesData?.reflectivePrompt?.desc || fallbackReflectiveDesc}
                 </p>
               </div>
-              <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">
-                  {isAbraham || isMoses || isMecca || isYunus ? 'Sentence Frames' : t('tg.glossary')}
-                </h4>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 font-serif text-white text-xs sm:text-base">
-                  {(appendicesData?.sentenceFrames || fallbackSentenceFrames).map((item, i) => (
-                    <li key={i}>• {item}</li>
-                  ))}
-                </ul>
+    <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">
+        <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">{t('tg.glossary')}</h4>
+        {teacherGuideGlossary.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+            {teacherGuideGlossary.map((entry, i) => (
+              <div key={`${entry.word}-${i}`} className="bg-white/5 border border-gold/10 rounded-xl p-3 sm:p-4">
+                <div className="font-display text-sm sm:text-base text-gold mb-1">{entry.word}</div>
+                <p className="font-serif text-xs sm:text-sm text-white leading-relaxed">{entry.definition}</p>
+                {entry.example && (
+                  <p className={cn(
+                    "font-serif text-[11px] sm:text-xs text-parchment/50 mt-2 leading-relaxed",
+                    language !== 'ar' && "italic"
+                  )}>{entry.example}</p>
+                )}
               </div>
+            ))}
+          </div>
+        ) : (
+          <p className="font-serif text-xs sm:text-sm text-parchment/60 leading-relaxed">
+            {language === 'ar'
+              ? 'لا توجد مفردات مصدرية متاحة لهذا الكتاب في بيانات الصفحات الحالية.'
+              : 'No source glossary entries are available for this book in the current page data.'}
+          </p>
+        )}
+      </div>
             </div>
           </div>
         );
