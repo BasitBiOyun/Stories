@@ -1,0 +1,209 @@
+name: Fix Teacher Guide Values and Glossary
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.event.head_commit.message != 'Localize Teacher Guide values and source glossary'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Localize TYMM value names and source glossary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path('src/data')
+          value_map = {
+              1: ('Adalet', 'Justice', 'العدل'),
+              2: ('Aile Bütünlüğü', 'Family Integrity', 'تماسك الأسرة'),
+              3: ('Çalışkanlık', 'Diligence', 'الاجتهاد'),
+              4: ('Dostluk', 'Friendship', 'الصداقة'),
+              5: ('Duyarlılık', 'Sensitivity', 'الحساسية'),
+              6: ('Dürüstlük', 'Honesty', 'الصدق'),
+              7: ('Estetik', 'Aesthetics', 'الجماليات'),
+              8: ('Mahremiyet', 'Privacy', 'الخصوصية'),
+              9: ('Merhamet', 'Compassion', 'الرحمة'),
+              10: ('Mütevazılık', 'Humility', 'التواضع'),
+              11: ('Özgürlük', 'Freedom', 'الحرية'),
+              12: ('Sabır', 'Patience', 'الصبر'),
+              13: ('Sağlıklı Yaşam', 'Healthy Living', 'الحياة الصحية'),
+              14: ('Saygı', 'Respect', 'الاحترام'),
+              15: ('Sevgi', 'Love', 'المحبة'),
+              16: ('Sorumluluk', 'Responsibility', 'المسؤولية'),
+              17: ('Tasarruf', 'Thrift', 'الترشيد'),
+              18: ('Temizlik', 'Cleanliness', 'النظافة'),
+              19: ('Vatanseverlik', 'Patriotism', 'حب الوطن'),
+              20: ('Yardımseverlik', 'Helpfulness', 'مساعدة الآخرين'),
+          }
+
+          changed_values = []
+          for path in root.rglob('teacherGuide.ts'):
+              parts = set(path.parts)
+              lang = 'ar' if 'ar' in parts else 'en' if 'en' in parts else None
+              if not lang:
+                  continue
+              text = path.read_text(encoding='utf-8')
+              original = text
+              for code, (tr, en, ar) in value_map.items():
+                  target = ar if lang == 'ar' else en
+                  text = text.replace(f'D{code} {tr}', f'D{code} {target}')
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed_values.append(str(path))
+
+          tg = Path('src/components/layout/TeacherGuide.tsx')
+          text = tg.read_text(encoding='utf-8')
+
+          old_import = "import { TeacherGuideSection, Level } from '../../types';"
+          new_import = "import { TeacherGuideSection, Level, PageData } from '../../types';"
+          if old_import not in text:
+              raise SystemExit('TeacherGuide type import anchor not found')
+          text = text.replace(old_import, new_import, 1)
+
+          old_props = "  content = [],\n  metadata,"
+          new_props = "  content = [],\n  pages = [],\n  metadata,"
+          if old_props not in text:
+              raise SystemExit('TeacherGuide props anchor not found')
+          text = text.replace(old_props, new_props, 1)
+
+          old_type = "  content?: TeacherGuideSection[];\n  metadata?: import('../../types').TeacherGuideMetadata;"
+          new_type = "  content?: TeacherGuideSection[];\n  pages?: PageData[];\n  metadata?: import('../../types').TeacherGuideMetadata;"
+          if old_type not in text:
+              raise SystemExit('TeacherGuide prop type anchor not found')
+          text = text.replace(old_type, new_type, 1)
+
+          glossary_code = r'''
+  const teacherGuideGlossary = React.useMemo(() => {
+    const entries = new Map<string, { word: string; definition: string; example?: string }>();
+
+    pages.forEach((page) => {
+      (page.vocabulary || []).forEach((item) => {
+        const word = item.word?.trim();
+        const definition = item.definition?.trim();
+        if (!word || !definition) return;
+        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+        if (!entries.has(key)) {
+          entries.set(key, { word, definition, example: item.example?.trim() || undefined });
+        }
+      });
+
+      (page.vocabularyPairs || []).forEach((item) => {
+        const word = item.word?.trim();
+        const definition = item.meaning?.trim();
+        if (!word || !definition) return;
+        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+        if (!entries.has(key)) {
+          entries.set(key, { word, definition });
+        }
+      });
+    });
+
+    return Array.from(entries.values()).sort((a, b) =>
+      a.word.localeCompare(b.word, isArabicGuide ? 'ar' : 'en')
+    );
+  }, [pages, isArabicGuide]);
+
+'''
+          tabs_anchor = "  const tabs = ["
+          if tabs_anchor not in text:
+              raise SystemExit('TeacherGuide tabs anchor not found')
+          text = text.replace(tabs_anchor, glossary_code + tabs_anchor, 1)
+
+          text, removed = re.subn(
+              r"\n\s*const fallbackSentenceFrames = isAbraham \? \[.*?\n\s*\];\n",
+              "\n",
+              text,
+              count=1,
+              flags=re.S,
+          )
+          if removed != 1:
+              raise SystemExit(f'Expected one fallbackSentenceFrames block, removed {removed}')
+
+          old_glossary_pattern = re.compile(
+              r'''              <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">\n\s*<h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">\n\s*\{isAbraham \|\| isMoses \|\| isMecca \|\| isYunus \? 'Sentence Frames' : t\('tg\.glossary'\)\}\n\s*</h4>\n\s*<ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 font-serif text-white text-xs sm:text-base">\n\s*\{\(appendicesData\?\.sentenceFrames \|\| fallbackSentenceFrames\)\.map\(\(item, i\) => \(\n\s*<li key=\{i\}>• \{item\}</li>\n\s*\)\)\}\n\s*</ul>\n\s*</div>''',
+              re.S,
+          )
+
+          new_glossary = r'''              <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">
+                <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">{t('tg.glossary')}</h4>
+                {teacherGuideGlossary.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                    {teacherGuideGlossary.map((entry, i) => (
+                      <div key={`${entry.word}-${i}`} className="bg-white/5 border border-gold/10 rounded-xl p-3 sm:p-4">
+                        <div className="font-display text-sm sm:text-base text-gold mb-1">{entry.word}</div>
+                        <p className="font-serif text-xs sm:text-sm text-white leading-relaxed">{entry.definition}</p>
+                        {entry.example && (
+                          <p className={cn(
+                            "font-serif text-[11px] sm:text-xs text-parchment/50 mt-2 leading-relaxed",
+                            language !== 'ar' && "italic"
+                          )}>{entry.example}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="font-serif text-xs sm:text-sm text-parchment/60 leading-relaxed">
+                    {language === 'ar'
+                      ? 'لا توجد مفردات مصدرية متاحة لهذا الكتاب في بيانات الصفحات الحالية.'
+                      : 'No source glossary entries are available for this book in the current page data.'}
+                  </p>
+                )}
+              </div>'''
+
+          text, replaced = old_glossary_pattern.subn(new_glossary, text, count=1)
+          if replaced != 1:
+              raise SystemExit(f'Expected one old glossary/sentence-frame block, replaced {replaced}')
+
+          tg.write_text(text, encoding='utf-8')
+
+          app = Path('src/App.tsx')
+          app_text = app.read_text(encoding='utf-8')
+          app_anchor = "        content={currentBook?.teacherGuide || []}\n        metadata={currentBook?.teacherGuideMetadata}"
+          app_replacement = "        content={currentBook?.teacherGuide || []}\n        pages={currentBook?.pages || []}\n        metadata={currentBook?.teacherGuideMetadata}"
+          if app_anchor not in app_text:
+              raise SystemExit('App TeacherGuide anchor not found')
+          app_text = app_text.replace(app_anchor, app_replacement, 1)
+          app.write_text(app_text, encoding='utf-8')
+
+          print(f'Localized value names in {len(changed_values)} Teacher Guide files')
+          print('Updated TeacherGuide glossary to use page vocabulary data')
+          print('Passed current book pages into TeacherGuide')
+          PY
+
+      - name: Verify no Turkish coded value names remain in Teacher Guide data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          names = ['Adalet','Aile Bütünlüğü','Çalışkanlık','Dostluk','Duyarlılık','Dürüstlük','Estetik','Mahremiyet','Merhamet','Mütevazılık','Özgürlük','Sabır','Sağlıklı Yaşam','Saygı','Sevgi','Sorumluluk','Tasarruf','Temizlik','Vatanseverlik','Yardımseverlik']
+          bad = []
+          for path in Path('src/data').rglob('teacherGuide.ts'):
+              text = path.read_text(encoding='utf-8')
+              for i, name in enumerate(names, start=1):
+                  if f'D{i} {name}' in text:
+                      bad.append(f'{path}: D{i} {name}')
+          if bad:
+              raise SystemExit('\n'.join(bad))
+          PY
+
+      - name: Build check
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/layout/TeacherGuide.tsx src/App.tsx src/data
+          git diff --cached --quiet && exit 0
+          git commit -m "Localize Teacher Guide values and source glossary"
+          git push origin main
