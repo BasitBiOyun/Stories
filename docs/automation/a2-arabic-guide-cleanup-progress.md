@@ -1,31 +1,37 @@
 # A2 Arabic Guide Cleanup Progress
 
 phase: CLEANUP
-currentBook: Adam A2
+currentBook: Abraham A2
 status: COMPLETE
 
-## Files inspected
-- `src/data/adam/a2/ar/teacherGuide.ts`
-- `src/data/adam/a2/ar/selfStudyGuide.ts`
+## Completed books
+- Adam A2
+- Abraham A2
 
-## Completed
-- Adam A2 Arabic Teacher Guide cleaned.
-- Adam A2 Arabic Self-Study Guide cleaned.
-- User-visible English assessment/interface labels and explanatory grammar labels were replaced with natural Arabic.
-- Re-inspected both Adam A2 Arabic guide files after cleanup; no unintended `Quick Challenge` label remains.
+## Files inspected this run
+- `src/data/abraham/a2/ar/teacherGuide.ts`
+- `src/data/abraham/a2/ar/selfStudyGuide.ts`
 
-## English intentionally retained
-- English target-language examples, quoted model sentences, vocabulary/pronunciation targets, connectors and forms that learners are explicitly studying were kept where pedagogically necessary.
-- Technical identifiers, TypeScript property names, icons, CEFR/TYMM codes and internal values were not changed.
+## English expressions found
+- `Tap & Reveal` in Chapter 3 Teacher Guide.
+- `Tap & Reveal` in Chapter 3 Self-Study Guide.
 
-## Files changed
-- `src/data/adam/a2/ar/teacherGuide.ts`
-- `src/data/adam/a2/ar/selfStudyGuide.ts`
+## Arabic replacements made
+- Teacher Guide: `Tap & Reveal` → `ميزة الكشف عن الإجابة` within the surrounding Arabic instruction.
+- Self-Study Guide: `Tap & Reveal` → `ميزة الكشف عن الإجابة` within the surrounding Arabic instruction.
+
+## Files changed this run
+- `src/data/abraham/a2/ar/teacherGuide.ts`
+- `src/data/abraham/a2/ar/selfStudyGuide.ts`
 - `docs/automation/a2-arabic-guide-cleanup-progress.md`
 
 ## Commits
-- Teacher Guide: `d92b85cc33b7f32eab8cf75c50304de33a55c4c8`
-- Self-Study Guide: `74610aa6496f8acf108ccf4841c84e416a3449e8`
+- Abraham Teacher Guide: `97246dbac38ce8421ae79397a477ddfa219e65c0`
+- Abraham Self-Study Guide: `4ee722e370cecce4918364fc3e96628736cbd4d7`
 
-nextBook: Abraham A2
-nextTask: START_ABRAHAM_A2_ON_NEXT_RUN
+## English intentionally retained
+- No user-visible English prose was intentionally retained in the Abraham A2 guide content inspected this run.
+- Technical identifiers, TypeScript property names, icons, CEFR/TYMM codes and internal values remain unchanged.
+
+nextBook: Moses A2
+nextTask: START_MOSES_A2_ON_NEXT_RUN
