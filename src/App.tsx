@@ -963,6 +963,7 @@ const AppContent = () => {
         content={currentBook?.teacherGuide || []}
         metadata={currentBook?.teacherGuideMetadata}
         bookId={currentBook?.id}
+        level={currentLevel || undefined}
         collectionId={currentCollection || 'prophets'}
       />
 
