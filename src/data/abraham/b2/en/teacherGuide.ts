@@ -1,5 +1,8 @@
 import type { TeacherGuideMetadata, TeacherGuideSection } from '../../../../types';
 
+const TYMM_FOREIGN = 'https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri';
+const TYMM_VALUES = 'https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cercevesi';
+
 type ChapterPlan = {
   chapter: string;
   focus: string;
@@ -48,48 +51,128 @@ const plans: ChapterPlan[] = [
 {chapter:'35. The Legacy of Abraham',focus:'synthesise how place, pilgrimage, family transmission, and Hanifism form the final legacy',evidence:'restoring the Ka‘ba, call to pilgrimage, Ishmael in Hijaz, Isaac in Palestine, continuing guidance',misconception:'the chapter does not claim Abraham’s work permanently eliminated later idolatry',language:'Use synthesis: taken together, across the story, the final chapter connects.',discussion:'Which two parts of the legacy are institutional and which are transmitted through people?',valueAction:'legacy through action — students define one practice that can carry a value beyond a single event'},
 ];
 
-const makeSection = (p: ChapterPlan): TeacherGuideSection => ({
-  chapter: p.chapter,
-  timing: '40–45 minutes',
-  objectives: [
-    `Analyse and explain: ${p.focus}.`,
-    `Select precise textual evidence, especially ${p.evidence}.`,
-    'Give a B2 claim with evidence, explanation, and an appropriate qualification where the source is uncertain.',
-    `Demonstrate a value through action: ${p.valueAction}.`,
-  ],
-  pedagogy: `Use a read/listen → evidence selection → pair explanation → short analytical writing cycle. Keep interpretation traceable to the chapter. Value work must be demonstrated through an action, not reduced to a slogan: ${p.valueAction}.`,
-  priorKnowledge: ['Recall the previous chapter’s main turning point.', 'Distinguish direct textual evidence from inference.'],
-  anticipatedMisconceptions: [p.misconception],
-  grammarFocus: p.language,
-  pronunciationFocus: 'Rehearse the chapter’s key Word Notes and proper names; then read one evidence sentence aloud with stress on the words carrying the claim.',
-  beforeReading: [`Prediction: What evidence might help us ${p.focus}?`, 'Preview only the Word Notes needed for comprehension.'],
-  duringReading: [`Listen once for gist, then read to locate ${p.evidence}.`, 'Mark E for direct evidence and I for an inference; preserve source hedges exactly.'],
-  afterReading: [`Answer: ${p.discussion}`, 'Write a 3–4 sentence claim–evidence–explanation response.'],
-  lessonPlan: `0–5 min: activate prior knowledge. 5–12 min: first listen/read for gist. 12–22 min: close reading and evidence marking. 22–30 min: pair explanation and challenge. 30–38 min: analytical response. 38–45 min: Quick Challenge, correction from evidence, and exit ticket.`,
-  discussionPoints: [p.discussion, `What is the strongest evidence for today’s focus: ${p.evidence}?`, 'What claim would go beyond what this chapter can prove?'],
-  interactiveTips: ['Use the chapter audio for a first-listen gist task.', 'Use only the Word Notes/hotspots actually visible on this chapter page.', 'Run the chapter Quick Challenge after evidence discussion, not before reading.'],
-  differentiation: {
-    strugglingLearners: 'Provide the frame: “The chapter states ___. This supports ___. However, it does not prove ___.” Let the learner point to the evidence before speaking.',
-    fastFinishers: `Write 120–150 words evaluating ${p.discussion} Include two details and one qualification or counter-reading.`,
-  },
-  formativeAssessment: ['Accuracy of selected evidence', 'Difference between evidence and inference', 'Quality of explanation and source qualification', 'Quick Challenge correction using the text'],
-  expectedResponses: [`Students should refer to ${p.evidence}.`, `A strong response should explain ${p.focus} without strengthening the source claim.`, `For values, students should describe the concrete action: ${p.valueAction}.`],
-  transferTask: `Transfer the chapter method to a new claim: state the claim, identify evidence, qualify it, then propose one real action connected with ${p.valueAction}.`,
-  teacherReflection: 'Could students justify their interpretation with evidence? Did any prompt accidentally turn a qualified source claim into certainty? Did the value appear as observable action?',
-});
+const languageFocusByChapter: Record<number, string> = {
+  1: 'Source framing and definition/reformulation; addition; active vs passive information focus.',
+  2: 'Definition chains and relative clauses; cautious stance such as “we may say”; reformulation; cause → result → conclusion.',
+  3: 'Discourse movement and contrast; layered time relations; time-limited evaluation in relative clauses; additive expansion.',
+  4: 'Source attribution and hedging: “some sources say”, “is believed”, “suggest”; cautious synthesis; prior state and social variation.',
+  5: 'Future-in-the-past; alternate narration/source shift; result cohesion; supporting relative clauses.',
+  6: 'Time and background layering; reported question/statement/directive; analogy and comparison.',
+  7: 'Observation → evidence → evaluation; contextual meanings of could for plausibility vs ability; relative background; as if; stance change.',
+  8: 'Expectation and persistence; evaluative relative clause; intended result with might; temporal evidence chain.',
+  9: 'Condition → future consequence; development of stance; passive information focus; corrective contrast and created status.',
+  10: 'Passive status/control/purpose; however contrast; first/second organisation; rejection followed by reframing.',
+  11: 'Rhetorical questions; exception with unless; evidence, absence of evidence and explicit inference.',
+  12: 'Stance framing and action interpretation; direct-speech functions; not only … but also expansion.',
+  13: 'Purpose and interpersonal strategy; parallel negatives; evidence → invitation → warning → concern.',
+  14: 'Conditional threat vs future commitment; hope/probability stance; analogy as reasoning; inquiry purpose.',
+  15: 'Rhetorical observable tests; evidence vs inherited tradition; exclusivity, defining relatives and testable claims.',
+  16: 'Dialogue reframing; cumulative relative-clause chain; exception; local stance marking.',
+  17: 'Resistance → decision → purpose; future-in-the-past; until/then/past-perfect sequencing; rhetorical testing.',
+  18: 'Rhetorical challenge plus reason; exception; past-perfect completion and purpose; narrative → sourced quotation.',
+  19: 'Direct challenge → corrective contrast → conditional test → admission; self-correction/reversal; purpose.',
+  20: 'Strong inference with must; recognition vs refusal; narrowed options; collective decision; passive authority.',
+  21: 'Appearance/effect reversal; cause and restriction; passive event focus; change of state; as-if comparison.',
+  22: 'Duration → result; turning point; past-perfect prior result; consequence vs motive; contrast and reaction focus.',
+  23: 'Reported stance; passive/modal focus; compressed background; past-perfect cause chain; parallel claims.',
+  24: 'Argument escalation and result; expected effect with would; simultaneity, concession, limitation and general → specific reference.',
+  25: 'Realisation → decision → movement; future-in-the-past; recurring action with wherever; past-perfect background.',
+  26: 'Parallel lineage contrast; reported instruction vs future plan; still-background; until as journey endpoint.',
+  27: 'Accumulated absence; question → confirmation → reason; corrective not … but; past-perfect cause; spatial endpoint.',
+  28: 'Purpose chains; had to for obligation; “that is” clarification; relative background; long-term time/reference cohesion.',
+  29: 'Source/narrative voice separation; possibility vs fact; trigger/background/sequence; later interpretation.',
+  30: 'Action → immediate result; purpose; future/current/past time perspectives; observed evidence vs inference.',
+  31: 'Growth/life-stage background; turning point; command/source framing; dialogue as disclosure, consultation and commitment.',
+  32: 'When plus imminent “was about to”; interruption; test → fulfilment → evaluation → consequence; limiting correction.',
+  33: 'Historical time frame; “in fact” clarification; while contrast; time-bound scope; future-in-the-past later plan.',
+  34: 'Present relevance of a prior command; will for commitment; no longer for limitation/adaptation; parallel ongoing action; imperative as respectful request.',
+  35: 'Limiting an overstrong claim; evidence → qualified interpretation; not just scope; coexistence; recurring condition; present-perfect continuity.',
+};
+
+const makeSection = (p: ChapterPlan): TeacherGuideSection => {
+  const chapterNumber = Number.parseInt(p.chapter, 10);
+  const activeLanguageFocus = languageFocusByChapter[chapterNumber] ?? p.language;
+
+  return {
+    chapter: p.chapter,
+    timing: '40–45 minutes',
+    objectives: [
+      `Analyse and explain: ${p.focus}.`,
+      `Select precise textual evidence, especially ${p.evidence}.`,
+      'Give a B2 claim with evidence, explanation, and an appropriate qualification where the source is uncertain.',
+      `Use the chapter’s actual Language Focus to control a B2 discourse relationship: ${activeLanguageFocus}`,
+      `Demonstrate a value through action: ${p.valueAction}.`,
+    ],
+    pedagogy: `Use a meaning → evidence → Language Focus → production cycle. Learners first understand the chapter through listening/viewing and reading, then verify claims against the text, complete/repair the Quick Challenge, notice how the chapter’s own language organises meaning, and reuse selected patterns in connected B2 speech or writing. Keep interpretation traceable to the chapter. Value work must be demonstrated through an action, not reduced to a slogan: ${p.valueAction}.`,
+    priorKnowledge: ['Recall the previous chapter’s main turning point.', 'Distinguish direct textual evidence from inference and source-framed interpretation.'],
+    anticipatedMisconceptions: [p.misconception],
+    grammarFocus: `Chapter Language Focus: ${activeLanguageFocus}`,
+    pronunciationFocus: 'Rehearse the chapter’s key Word Notes and proper names; then read one evidence sentence aloud with stress and pausing that preserve its stance, contrast or qualification.',
+    beforeReading: [`Prediction: What evidence might help us ${p.focus}?`, 'Preview only the Word Notes needed for comprehension.'],
+    duringReading: [`Listen once for gist, then read to locate ${p.evidence}.`, 'Mark E for direct evidence and I for inference; preserve source attribution, scope and hedges exactly.'],
+    afterReading: [
+      `Discuss: ${p.discussion}`,
+      'Complete the chapter Quick Challenge and repair any incorrect answer by returning to the exact evidence.',
+      `Open the chapter Language Focus. Guide learners to notice the communicative/discourse job of: ${activeLanguageFocus}`,
+      'Complete the Language Focus activity, then produce an 8–10 sentence or 100–140-word non-story B2 response using at least two of the target relationships naturally.',
+    ],
+    lessonPlan: '0–5 min: activate prior knowledge. 5–12: first listen/read for gist. 12–22: close reading and evidence marking. 22–28: pair explanation/discussion. 28–32: Quick Challenge and evidence repair. 32–38: chapter Language Focus guided noticing/practice. 38–44: connected B2 speaking/writing transfer. 44–45: exit ticket.',
+    discussionPoints: [p.discussion, `What is the strongest evidence for today’s focus: ${p.evidence}?`, 'Which wording in the chapter limits, qualifies, attributes, contrasts or strengthens a claim?', 'What claim would go beyond what this chapter can prove?'],
+    interactiveTips: ['Use the chapter audio for a first-listen gist task.', 'Use only the Word Notes/hotspots actually visible on this chapter page.', 'Run the Quick Challenge after evidence work, then open the actual chapter Language Focus.', 'Do not replace the page’s Language Focus with a generic grammar worksheet.'],
+    differentiation: {
+      strugglingLearners: `Provide the frame “The chapter states ___. This supports ___. However, it does not prove ___.” Then offer two selected Language Focus patterns from: ${activeLanguageFocus}`,
+      fastFinishers: `Write 120–150 words evaluating “${p.discussion}” Include two details, one qualification/counter-reading and at least two chapter Language Focus relationships.`,
+    },
+    formativeAssessment: ['Accuracy of selected evidence', 'Difference between evidence, inference and attributed/source-limited claim', 'Accurate communicative use of the chapter Language Focus', 'Quality of connected B2 explanation and qualification', 'Quick Challenge correction using the text'],
+    expectedResponses: [`Students should refer to ${p.evidence}.`, `A strong response should explain ${p.focus} without strengthening the source claim.`, `Language should show controlled use of: ${activeLanguageFocus}`, `For values, students should describe the concrete action: ${p.valueAction}.`],
+    transferTask: `Transfer the chapter method to a new claim: state the claim, identify evidence, qualify its scope, use at least two relationships from the chapter Language Focus, then propose one real action connected with ${p.valueAction}.`,
+    teacherReflection: 'Could students justify their interpretation with evidence? Did they preserve source status and scope? Did Language Focus improve how they communicated meaning rather than become a detached grammar drill? Did the value appear as observable action?',
+  };
+};
 
 export const abrahamB2TeacherGuideEn: TeacherGuideSection[] = plans.map(makeSection);
 
 export const abrahamB2TeacherGuideMetadata: TeacherGuideMetadata = {
   title: 'Prophet Abraham B2 — Teacher Guide',
+  subtitle: 'TYMM-aligned, evidence-based chapter guidance with integrated English Language Focus',
   level: 'B2',
-  purpose: 'A chapter-specific guide for evidence-based reading, listening, speaking, analytical writing, source qualification, and values-as-action across the complete 35-chapter story.',
-  skillsFocus: {
-    reading: 'close reading, evidence selection, inference, qualification, synthesis',
-    listening: 'gist listening, evidence listening, pronunciation and replay for verification',
-    speaking: 'pair reasoning, respectful challenge, evidence-based discussion',
-    writing: 'claim–evidence–explanation, comparison, evaluation, qualified synthesis',
+  estimatedDuration: '35 lessons, about 40–45 minutes per story chapter',
+  targetAudience: 'Upper-secondary and other B2 English learners using the 35-chapter Prophet Abraham story.',
+  targetLearners: 'Learners who can follow extended narrative and exposition, compare evidence, distinguish source status from inference, qualify claims, and produce connected analytical B2 speech and writing.',
+  purpose: 'A chapter-specific guide for evidence-based reading, listening, speaking, analytical writing, source qualification, integrated Language Focus, and values-as-action across the complete 35-chapter story.',
+  approachDesc: `Use a TYMM-compatible receptive-to-productive route. Learners construct meaning through listening/viewing and reading (YDAB1–YDAB2), verify interpretation with direct evidence and the Quick Challenge, use the chapter’s actual Language Focus as an integrated supporting-skill stage, then transform that language into connected speaking and writing (YDAB3–YDAB4). Grammar, vocabulary and pronunciation support communication and meaning-making; they are not detached drills. See ${TYMM_FOREIGN}.`,
+  assessmentEvidence: 'Chapter evidence tasks, Quick Challenges, Language Focus performance, analytical speaking/writing transfer, exit tickets, B2 Language Review, Knowledge Check, Vocabulary Challenge and Final Challenge.',
+  assessmentOverview: {
+    formative: ['Evidence and source-status checks', 'Quick Challenge plus evidence repair', 'Guided chapter Language Focus', 'Connected B2 speaking/writing transfer', 'Exit tickets and peer/teacher feedback'],
+    summative: ['Whole-book Knowledge Check', 'Vocabulary Challenge', 'B2 Language Review', 'Final Challenge and cross-chapter synthesis'],
   },
-  valuesFocus: ['intellectual honesty', 'respectful dialogue', 'moral courage', 'trust combined with effort', 'perseverance', 'humility in service'],
-  differentiationNotes: 'Support learners with evidence frames and text-location cues; extend stronger learners through counter-reading, source qualification, and cross-chapter synthesis.',
+  readingFramework: {
+    before: 'Activate only relevant prior knowledge and establish a purposeful inquiry question without pre-teaching the interpretation.',
+    during: 'Listen/read for meaning first, then track direct evidence, source attribution, stance, contrast, cause, scope, time, inference and synthesis as required by the chapter.',
+    after: 'Complete/repair the Quick Challenge, work through the exact chapter Language Focus, then require a connected B2 transfer in a new context so language supports analysis and communication.',
+  },
+  vocabularyApproach: {
+    selection: 'Prioritise the chapter Word Notes and vocabulary required for evidence, source status, argument or Language Focus.',
+    method: 'Infer from context, word formation and discourse before direct explanation where feasible.',
+    recycling: 'Recycle target words in evidence discussion, Language Focus transfer, exit tickets and later synthesis.',
+  },
+  grammarApproach: 'Use only the active chapter-specific Language Focus already attached to the student page. At B2, teach grammar as discourse control: source framing, stance, qualification, information focus, condition, cause, contrast, time perspective, argument organisation and synthesis. Learners notice the relationship in the chapter, practise it, then use it in a new connected response. Do not substitute an unrelated generic grammar sequence.',
+  grammarSequence: Object.entries(languageFocusByChapter).map(([chapter, focus]) => `Ch${chapter}: ${focus}`),
+  skillsFocus: {
+    reading: 'TYMM YDAB2: close reading, evidence selection, source/stance interpretation, inference, comparison, qualification and cross-paragraph synthesis.',
+    listening: 'TYMM YDAB1: gist listening followed by targeted replay for evidence, source cues, discourse markers, stress and pronunciation.',
+    speaking: 'TYMM YDAB3: evidence-based discussion, respectful challenge, qualification, comparison and sustained B2 explanation using chapter language.',
+    writing: 'TYMM YDAB4: plan, draft and improve connected analytical writing with claim–evidence–explanation, source qualification, counter-reading and synthesis.',
+  },
+  valuesFocus: [
+    'D6 Dürüstlük — preserve evidence, source attribution, uncertainty and scope instead of overstating a claim',
+    'D10 Mütevazılık — remain open to correction and distinguish conviction from arrogance',
+    'D12 Sabır — sustain purposeful effort when persuasion, search or service is difficult',
+    'D14 Saygı — challenge beliefs and arguments without humiliating people or caricaturing traditions',
+    'D16 Sorumluluk — connect knowledge, family care, mission, consultation and shared tasks with responsible action',
+    'D20 Yardımseverlik — recognise protection, cooperation, provision and service as concrete actions',
+    `Use values only where the chapter’s events provide real support, and integrate them into learning activity rather than a detached moral lecture. See ${TYMM_VALUES}.`,
+  ],
+  languageFocus: ['All 35 story chapters have active English Language Focus authored from that chapter’s text.', 'Use Language Focus only after meaning and evidence are established and the Quick Challenge is completed/repaired.', 'At B2, foreground communicative and discourse function rather than asking learners merely to name grammar.', 'Finish each Language Focus stage with a connected non-story transfer so learners select and use the language autonomously.'],
+  differentiationNotes: 'Preserve the same evidence and discourse target while reducing linguistic load for support. Extend stronger learners through source comparison, qualification, counter-reading, discourse control and cross-chapter synthesis rather than unrelated factual expansion.',
 };
