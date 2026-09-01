@@ -1,38 +1,40 @@
 # A2 Arabic Guide Cleanup Progress
 
 phase: CLEANUP
-currentBook: Moses A2
+currentBook: Mecca/Bilal A2
 status: COMPLETE
 
 ## Completed books
 - Adam A2
 - Abraham A2
 - Moses A2
+- Mecca/Bilal A2
 
 ## Files inspected this run
-- `src/data/moses/a2/ar/teacherGuide.ts`
-- `src/data/moses/a2/ar/selfStudyGuide.ts`
+- `src/data/mecca/a2/ar/teacherGuide.ts`
+- `src/data/mecca/a2/ar/selfStudyGuide.ts`
 
 ## English expressions found
-- `Tap & Reveal` in Chapter 3 Self-Study Guide.
-- `Retrieval Review` in Chapter 16 Self-Study Guide.
-- `Final Challenge` in Chapter 16 Self-Study Guide.
+- `Quick Challenge` in user-visible Teacher Guide instructions.
+- `Quick Challenge` in user-visible Self-Study Guide objectives and lesson plan.
 
 ## Arabic replacements made
-- Self-Study Guide: `Tap & Reveal` → `كشف الإجابة` in the surrounding Arabic instruction.
-- Self-Study Guide: `Retrieval Review` → `المراجعة الاسترجاعية`.
-- Self-Study Guide: `Final Challenge` → `التحدي النهائي`.
+- Teacher Guide: `Quick Challenge` → `التحدي السريع` in after-reading, lesson-plan and interactive-tip text.
+- Self-Study Guide: `Quick Challenge` → `التحدي السريع` in objectives and lesson-plan text.
 
 ## Files changed this run
-- `src/data/moses/a2/ar/selfStudyGuide.ts`
+- `src/data/mecca/a2/ar/teacherGuide.ts`
+- `src/data/mecca/a2/ar/selfStudyGuide.ts`
 - `docs/automation/a2-arabic-guide-cleanup-progress.md`
 
 ## Commits
-- Moses Self-Study Guide: `3854161f15b930542a8b74aec77fa451ecdcdb55`
+- Mecca/Bilal Self-Study Guide: `7894c7923fab8130597d9160baa7ddf95adc200b`
+- Mecca/Bilal Teacher Guide: `b41745d6e2ffff2c42871ee09e9f3ca0f34c28ee`
 
 ## English intentionally retained
-- No user-visible English prose was intentionally retained in the Moses A2 guide content inspected this run.
-- Technical identifiers, TypeScript property names, `language: 'Arabic'`, icons, CEFR/TYMM codes and internal values remain unchanged.
+- No user-visible English prose was intentionally retained in the Mecca/Bilal A2 guide content inspected this run.
+- Technical identifiers and TypeScript property names remain unchanged.
+- CEFR level code `A2`, TYMM code and references to learning English remain unchanged where they are intentional metadata or educational context.
 
-nextBook: Mecca/Bilal A2
-nextTask: START_MECCA_BILAL_A2_ON_NEXT_RUN
+nextBook: Yunus Emre A2
+nextTask: START_YUNUS_EMRE_A2_ON_NEXT_RUN
