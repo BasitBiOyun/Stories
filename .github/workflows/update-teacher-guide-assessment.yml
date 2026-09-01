@@ -1,0 +1,222 @@
+name: Update Teacher Guide Assessment
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.event.head_commit.message != 'Standardize Teacher Guide assessment evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Standardize assessment and learning evidence
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          tg = Path('src/components/layout/TeacherGuide.tsx')
+          text = tg.read_text(encoding='utf-8')
+
+          text = text.replace(
+              "import { TeacherGuideSection } from '../../types';",
+              "import { TeacherGuideSection, Level } from '../../types';",
+              1,
+          )
+
+          text = text.replace(
+              "  metadata,\n  bookId,\n  collectionId\n}: {",
+              "  metadata,\n  bookId,\n  level,\n  collectionId\n}: {",
+              1,
+          )
+          text = text.replace(
+              "  metadata?: import('../../types').TeacherGuideMetadata;\n  bookId?: string;\n  collectionId?: string;",
+              "  metadata?: import('../../types').TeacherGuideMetadata;\n  bookId?: string;\n  level?: Level;\n  collectionId?: string;",
+              1,
+          )
+
+          marker = "  const isYunus = bookId?.toLowerCase().includes('yunus');\n"
+          if marker not in text:
+              raise SystemExit('TeacherGuide level marker not found')
+
+          profile = r'''  const assessmentLevel: Level = level || 'A2';
+  const isArabicGuide = language === 'ar';
+
+  const assessmentProfile = (() => {
+    if (isArabicGuide) {
+      if (assessmentLevel === 'B2') {
+        return {
+          evidenceLabel: 'أدلة التعلّم',
+          formativeLabel: 'الاستخدام التكويني',
+          description: 'تُجمع أدلة متعددة طوال عملية التعلّم، لا في نهايتها فقط. يُتابَع فهم المتعلم للنص، ودقة استخدام اللغة، وقدرته على التحليل والاستدلال والنقل إلى مواقف جديدة، مع تغذية راجعة واضحة وفرص للمراجعة والتحسين.',
+          evidenceItems: [
+            'تحليل نصي أو مناقشة تستند إلى شواهد واضحة من القصة.',
+            'إنتاج شفهي أو كتابي ممتد يبيّن التنظيم والدقة والمرونة اللغوية.',
+            'مهام أداء أو تطبيق تنقل الفكرة إلى سياق جديد أو موقف أخلاقي مختلف.',
+            'ملاحظة المعلم باستخدام قائمة تحقق أو مقياس تقدير أثناء التفاعل والعمل الجماعي.',
+            'تقييم ذاتي وتقييم أقران يتبعه تعديل ملموس في المنتج أو الأداء.'
+          ],
+          rubricTitle: 'مقياس التقييم التكويني للمستوى B2',
+          rubricRows: [
+            { criterion: 'الفهم النقدي والاستدلال بالنص', excellent: 'يفسر الأفكار والعلاقات بعمق ويستند إلى شواهد دقيقة وملائمة من النص.', good: 'يفهم الأفكار الرئيسة ويستخدم بعض الشواهد المناسبة مع تفسير مقبول.', developing: 'يعيد المعلومات غالباً دون تحليل كافٍ أو يحتاج دعماً لاختيار الشواهد.' },
+            { criterion: 'الدقة والثراء اللغوي', excellent: 'يستخدم مفردات وتراكيب متنوعة ودقيقة بمرونة مع أخطاء قليلة لا تعيق المعنى.', good: 'يستخدم نطاقاً مناسباً من اللغة مع بعض الأخطاء التي لا تمنع الفهم.', developing: 'يعتمد على لغة محدودة أو متكررة وتؤثر الأخطاء أحياناً في وضوح المعنى.' },
+            { criterion: 'الحجاج والتنظيم', excellent: 'ينظم الأفكار بوضوح ويربط بينها منطقياً ويدعم رأيه بأسباب وأمثلة مقنعة.', good: 'يقدم رأياً منظماً نسبياً مع روابط وأسباب مفهومة.', developing: 'يقدم أفكاراً متفرقة أو يحتاج إلى دعم لتنظيم الرأي وتبريره.' },
+            { criterion: 'التحليل والنقل', excellent: 'يربط القيم والأفكار بمواقف جديدة ويقارن ويستنتج بصورة مستقلة وواعية.', good: 'يُجري روابط مناسبة ويقدم تفسيراً أو تطبيقاً بسيطاً في سياق جديد.', developing: 'يحتاج إلى أسئلة موجهة للانتقال من الفهم المباشر إلى التحليل أو التطبيق.' },
+            { criterion: 'الاستقلالية والاستفادة من التغذية الراجعة', excellent: 'يقيّم عمله بصدق ويستخدم تغذية المعلم والأقران لإجراء تحسينات واضحة ومستقلة.', good: 'يستجيب للتغذية الراجعة ويجري بعض التحسينات المناسبة.', developing: 'يحتاج إلى متابعة مباشرة لتحديد نقاط التحسين وتطبيق التغذية الراجعة.' }
+          ]
+        };
+      }
+
+      if (assessmentLevel === 'B1') {
+        return {
+          evidenceLabel: 'أدلة التعلّم',
+          formativeLabel: 'الاستخدام التكويني',
+          description: 'يُقاس تقدّم المتعلم من خلال أدلة قصيرة ومتنوعة أثناء الدرس: فهم النص، إعادة الصياغة، استخدام المفردات والتراكيب، التعبير الشفهي والكتابي، والتأمل في القيم. تُستخدم النتائج لتقديم تغذية راجعة وتعديل الدعم قبل المهمة التالية.',
+          evidenceItems: [
+            'أسئلة فهم تتطلب تحديد الفكرة الرئيسة والتفاصيل والعلاقات بين الأحداث.',
+            'إعادة سرد أو تلخيص قصير باستخدام مفردات وتراكيب المستوى المستهدفة.',
+            'مهمة شفوية أو كتابية تفسر سبباً أو نتيجة أو دافعاً أو قيمة في القصة.',
+            'ملاحظة مشاركة المتعلم وتعاونه باستخدام قائمة تحقق بسيطة.',
+            'تذكرة خروج أو تقييم ذاتي/تقييم أقران قصير يحدد نقطة قوة وخطوة تالية.'
+          ],
+          rubricTitle: 'مقياس التقييم التكويني للمستوى B1',
+          rubricRows: [
+            { criterion: 'الفهم واستخدام الدليل', excellent: 'يحدد الفكرة الرئيسة والتفاصيل المهمة ويشرح العلاقات مع دليل مناسب من النص.', good: 'يفهم الفكرة الرئيسة ومعظم التفاصيل ويقدم دليلاً أو مثالاً بسيطاً.', developing: 'يفهم أجزاء من النص لكنه يحتاج دعماً لربط التفاصيل أو الاستدلال بها.' },
+            { criterion: 'المفردات والتراكيب', excellent: 'يستخدم مفردات القصة والتراكيب المستهدفة بدقة جيدة وفي جمل مترابطة.', good: 'يستخدم مفردات مناسبة وتراكيب مفهومة مع بعض الأخطاء.', developing: 'يعتمد على مفردات محدودة أو يحتاج إلى قوالب لغوية لإكمال المهمة.' },
+            { criterion: 'التعبير الشفهي والكتابي', excellent: 'يعبر عن أفكاره بوضوح في فقرة أو حديث قصير منظم ومفهوم.', good: 'ينتج عدة جمل مترابطة توصل المعنى المطلوب.', developing: 'ينتج جملاً قصيرة متفرقة ويحتاج دعماً في الربط والتنظيم.' },
+            { criterion: 'التفسير والتأمل', excellent: 'يفسر دوافع الشخصيات أو النتائج أو القيم ويقدم سبباً واضحاً لرأيه.', good: 'يقدم تفسيراً بسيطاً أو رأياً مناسباً مع سبب واحد.', developing: 'يذكر رأياً أو معلومة مباشرة دون تفسير كافٍ إلا مع التوجيه.' },
+            { criterion: 'المشاركة والمراجعة', excellent: 'يشارك بفاعلية ويستفيد من التغذية الراجعة لتحسين إجابته أو منتجه.', good: 'يشارك بصورة مناسبة ويجري تحسيناً بسيطاً بعد التغذية الراجعة.', developing: 'يحتاج إلى تشجيع أو دعم مستمر للمشاركة والمراجعة.' }
+          ]
+        };
+      }
+
+      return {
+        evidenceLabel: 'أدلة التعلّم',
+        formativeLabel: 'الاستخدام التكويني',
+        description: 'يُتابَع تقدّم المتعلم في المستوى A2 من خلال مهام قصيرة وواضحة ومنخفضة الضغط أثناء الدرس. يركز التقييم على فهم المعنى الأساسي، واستخدام الكلمات والتراكيب المألوفة، وإنتاج جمل بسيطة، والمشاركة، مع تغذية راجعة فورية وفرصة للمحاولة مرة أخرى.',
+        evidenceItems: [
+          'أسئلة فهم قصيرة، اختيار من متعدد، صواب/خطأ، وترتيب أحداث.',
+          'استخدام 3–5 كلمات مستهدفة في جمل أو إجابات موجهة.',
+          'إعادة سرد شفهي قصير أو كتابة 2–4 جمل عن حدث أو قيمة في القصة.',
+          'ملاحظة المعلم للمشاركة وإكمال المهمة باستخدام قائمة تحقق بسيطة.',
+          'تذكرة خروج وتقييم ذاتي بسيط مثل: أستطيع / أحتاج إلى مزيد من التدريب.'
+        ],
+        rubricTitle: 'مقياس التقييم التكويني للمستوى A2',
+        rubricRows: [
+          { criterion: 'الفهم الأساسي', excellent: 'يفهم الفكرة الرئيسة ويرتب الأحداث ويجيب عن معظم الأسئلة القصيرة بصورة مستقلة.', good: 'يفهم الفكرة الرئيسة ويجيب عن الأسئلة الأساسية مع دعم محدود.', developing: 'يحتاج إلى صور أو إعادة قراءة أو أسئلة موجهة لفهم الأحداث الأساسية.' },
+          { criterion: 'المفردات', excellent: 'يستخدم عدة كلمات مستهدفة بصورة صحيحة في جمل بسيطة.', good: 'يستخدم بعض الكلمات المستهدفة بصورة مفهومة مع أخطاء بسيطة.', developing: 'يتعرف على بعض الكلمات لكنه يحتاج إلى بنك كلمات أو نموذج لاستخدامها.' },
+          { criterion: 'الإنتاج اللغوي', excellent: 'ينتج جملاً بسيطة واضحة ومرتبة شفهياً أو كتابياً باستخدام اللغة المستهدفة.', good: 'ينتج جملاً قصيرة مفهومة مع بعض الأخطاء.', developing: 'يحتاج إلى بدايات جمل أو نموذج لإنتاج إجابة كاملة.' },
+          { criterion: 'إنجاز المهمة والمشاركة', excellent: 'يكمل المهمة ويشارك بصورة مناسبة ومستقرة مع زملائه.', good: 'يكمل معظم المهمة ويشارك عند التشجيع.', developing: 'يحتاج إلى دعم متكرر لبدء المهمة أو الاستمرار فيها.' },
+          { criterion: 'التأمل البسيط', excellent: 'يذكر درساً أو قيمة من القصة ويعطي مثالاً بسيطاً من حياته أو المدرسة.', good: 'يذكر درساً أو قيمة مناسبة بجملة بسيطة.', developing: 'يحتاج إلى سؤال موجه أو خيارات جاهزة للتعبير عن الدرس أو القيمة.' }
+        ]
+      };
+    }
+
+    if (assessmentLevel === 'B2') {
+      return {
+        evidenceLabel: 'Learning Evidence',
+        formativeLabel: 'Formative Use',
+        description: 'Collect multiple forms of evidence throughout learning, not only at the end. Track textual comprehension, linguistic precision, analysis, argumentation, transfer to new contexts, and the learner’s response to feedback. Use the evidence to adjust instruction and allow revision.',
+        evidenceItems: [
+          'Text-based analysis or discussion supported with precise evidence from the story.',
+          'Extended speaking or writing showing organization, accuracy, range, and control.',
+          'Performance or transfer tasks that apply an idea or value to a new context.',
+          'Teacher observation with a checklist or rating scale during interaction and collaborative work.',
+          'Self- and peer-assessment followed by a visible revision or improvement.'
+        ],
+        rubricTitle: 'B2 Formative Assessment Rubric',
+        rubricRows: [
+          { criterion: 'Critical Comprehension & Textual Evidence', excellent: 'Interprets ideas and relationships insightfully and supports claims with precise, relevant textual evidence.', good: 'Understands main ideas and uses some appropriate evidence with reasonable explanation.', developing: 'Mostly restates information or needs support to select and explain evidence.' },
+          { criterion: 'Language Range & Precision', excellent: 'Uses varied vocabulary and structures accurately and flexibly; minor errors do not affect meaning.', good: 'Uses an appropriate range of language with some errors that do not block communication.', developing: 'Relies on limited or repetitive language; errors sometimes reduce clarity.' },
+          { criterion: 'Argumentation & Organization', excellent: 'Develops a clear position, links ideas logically, and supports points with convincing reasons and examples.', good: 'Presents a generally organized position with understandable links and reasons.', developing: 'Presents disconnected ideas or needs support to organize and justify a viewpoint.' },
+          { criterion: 'Analysis & Transfer', excellent: 'Makes independent comparisons, inferences, and meaningful connections to new situations or ethical contexts.', good: 'Makes relevant connections and gives a reasonable interpretation or application.', developing: 'Needs guiding questions to move beyond literal understanding toward analysis or application.' },
+          { criterion: 'Independent Learning & Feedback', excellent: 'Evaluates own work honestly and uses teacher/peer feedback to make clear, independent improvements.', good: 'Responds to feedback and makes some appropriate improvements.', developing: 'Needs direct guidance to identify improvements and act on feedback.' }
+        ]
+      };
+    }
+
+    if (assessmentLevel === 'B1') {
+      return {
+        evidenceLabel: 'Learning Evidence',
+        formativeLabel: 'Formative Use',
+        description: 'Use varied, low-stakes evidence during the learning process: comprehension, retelling, vocabulary and structure use, short spoken/written production, interpretation, and reflection. Use results to give specific feedback and adjust support before the next task.',
+        evidenceItems: [
+          'Comprehension tasks identifying main ideas, details, sequence, cause, and consequence.',
+          'Short retelling or summary using target vocabulary and structures.',
+          'A spoken or written task explaining a motive, result, value, or personal interpretation.',
+          'Teacher observation of participation and collaboration using a simple checklist.',
+          'Exit ticket plus brief self- or peer-assessment identifying one strength and one next step.'
+        ],
+        rubricTitle: 'B1 Formative Assessment Rubric',
+        rubricRows: [
+          { criterion: 'Comprehension & Use of Evidence', excellent: 'Identifies main ideas and important details, explains relationships, and uses relevant evidence from the text.', good: 'Understands the main idea and most details and gives a simple supporting example.', developing: 'Understands parts of the text but needs support to connect or use details as evidence.' },
+          { criterion: 'Vocabulary & Language Control', excellent: 'Uses story vocabulary and target structures accurately in connected sentences.', good: 'Uses appropriate vocabulary and understandable structures with some errors.', developing: 'Uses limited vocabulary or needs sentence frames to complete the task.' },
+          { criterion: 'Spoken/Written Production', excellent: 'Expresses ideas clearly in an organized short paragraph or sustained short response.', good: 'Produces several connected sentences that communicate the required meaning.', developing: 'Produces short isolated sentences and needs support with linking and organization.' },
+          { criterion: 'Interpretation & Reflection', excellent: 'Explains motives, consequences, or values and gives a clear reason for a viewpoint.', good: 'Gives a relevant simple interpretation or opinion with one reason.', developing: 'States a direct fact or opinion but needs prompting to explain it.' },
+          { criterion: 'Participation & Revision', excellent: 'Participates actively and uses feedback to improve an answer or product.', good: 'Participates appropriately and makes a simple improvement after feedback.', developing: 'Needs repeated encouragement or support to participate and revise.' }
+        ]
+      };
+    }
+
+    return {
+      evidenceLabel: 'Learning Evidence',
+      formativeLabel: 'Formative Use',
+      description: 'At A2, monitor progress through short, clear, low-pressure tasks during the lesson. Focus on basic comprehension, familiar vocabulary and structures, simple spoken/written production, task completion, and reflection. Give immediate feedback and allow another attempt when useful.',
+      evidenceItems: [
+        'Short comprehension checks such as multiple choice, true/false, matching, and sequencing.',
+        'Use of 3–5 target words in guided answers or simple sentences.',
+        'A brief oral retelling or 2–4 sentence written response about an event or value.',
+        'Teacher observation of participation and task completion with a simple checklist.',
+        'An exit ticket and simple self-assessment such as I can / I need more practice.'
+      ],
+      rubricTitle: 'A2 Formative Assessment Rubric',
+      rubricRows: [
+        { criterion: 'Basic Comprehension', excellent: 'Understands the main idea, sequences events, and answers most short questions independently.', good: 'Understands the main idea and answers basic questions with limited support.', developing: 'Needs visuals, rereading, or guided questions to understand the main events.' },
+        { criterion: 'Vocabulary', excellent: 'Uses several target words correctly in simple sentences.', good: 'Uses some target words understandably with minor errors.', developing: 'Recognizes some words but needs a word bank or model to use them.' },
+        { criterion: 'Language Production', excellent: 'Produces clear, ordered simple sentences orally or in writing using target language.', good: 'Produces short understandable sentences with some errors.', developing: 'Needs sentence starters or a model to produce a complete response.' },
+        { criterion: 'Task Completion & Participation', excellent: 'Completes the task and participates appropriately and consistently with peers.', good: 'Completes most of the task and participates when encouraged.', developing: 'Needs repeated support to begin or continue the task.' },
+        { criterion: 'Simple Reflection', excellent: 'States a lesson or value from the story and gives a simple personal or school-life example.', good: 'States a relevant lesson or value in a simple sentence.', developing: 'Needs a prompt or choices to express the lesson or value.' }
+      ]
+    };
+  })();
+'''
+          if 'const assessmentProfile = (() =>' not in text:
+              text = text.replace(marker, marker + '\n' + profile, 1)
+
+          replacements = {
+              "                  {metadata?.assessmentEvidence}\n": "                  {assessmentProfile.description}\n",
+              "<ClipboardList size={16} /> {t('tg.assessmentEvidence')}</h4>": "<ClipboardList size={16} /> {assessmentProfile.evidenceLabel}</h4>",
+              "<CheckCircle size={16} /> {t('tg.lookFor')}</h4>": "<CheckCircle size={16} /> {assessmentProfile.formativeLabel}</h4>",
+              "                  <li>• {t('tg.lookFor1')}</li>\n                  <li>• {t('tg.lookFor2')}</li>\n                  <li>• {t('tg.lookFor3')}</li>\n                  <li>• {t('tg.lookFor4')}</li>\n": "                  {assessmentProfile.evidenceItems.map((item, i) => <li key={i}>• {item}</li>)}\n",
+              "{metadata?.rubricTitle}": "{assessmentProfile.rubricTitle}",
+              "{metadata?.rubricRows?.map((row, i) => (": "{assessmentProfile.rubricRows.map((row, i) => (",
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Expected TeacherGuide assessment fragment not found: {old[:80]}')
+              text = text.replace(old, new, 1)
+
+          tg.write_text(text, encoding='utf-8')
+
+          app = Path('src/App.tsx')
+          app_text = app.read_text(encoding='utf-8')
+          old = "        metadata={currentBook?.teacherGuideMetadata}\n        bookId={currentBook?.id}\n        collectionId={currentCollection || 'prophets'}"
+          new = "        metadata={currentBook?.teacherGuideMetadata}\n        bookId={currentBook?.id}\n        level={currentLevel || undefined}\n        collectionId={currentCollection || 'prophets'}"
+          if old not in app_text:
+              raise SystemExit('TeacherGuide App props block not found')
+          app_text = app_text.replace(old, new, 1)
+          app.write_text(app_text, encoding='utf-8')
+          PY
+      - name: Commit change
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/layout/TeacherGuide.tsx src/App.tsx
+          git diff --cached --quiet && exit 0
+          git commit -m "Standardize Teacher Guide assessment evidence"
+          git push origin main
