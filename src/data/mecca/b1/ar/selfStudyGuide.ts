@@ -19,7 +19,7 @@ export const meccaB1SelfStudyGuideAr: TeacherGuideSection[] = [
 ];
 
 export const meccaB1StudentGuideMetadataAr: StudentGuideMetadata = {
-  title:'دليل الدراسة الذاتية: مكة B1', level:'B1', language:'Arabic', estimatedStudyTime:'20–30 دقيقة لكل فصل', whoIsThisFor:'متعلمو المستوى B1 الذين يدرسون قصة مكة بصورة مستقلة.',
+  title:'دليل الدراسة الذاتية: مكة B1', level:'B1', language:'العربية', estimatedStudyTime:'20–30 دقيقة لكل فصل', whoIsThisFor:'متعلمو المستوى B1 الذين يدرسون قصة مكة بصورة مستقلة.',
   learningGoals:['العثور على الدليل في القصة','شرح السبب والمقارنة والدافع','استخدام المفردات في السياق','العودة إلى الدليل بعد الخطأ','ربط القيم بالأفعال'],
   recommendedUse:['اقرأ للفهم أولاً','استمع للصوت المتاح','حدد الدليل قبل الإجابة','أكمل التحدي السريع','استخدم دعم الخطأ ثم حاول ثانية','اكتب مهمة نقل أو تأمل قصيرة']
 };
