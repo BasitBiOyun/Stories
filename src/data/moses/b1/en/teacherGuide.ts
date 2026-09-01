@@ -1,646 +1,231 @@
 import { TeacherGuideSection, TeacherGuideMetadata } from '../../../../types';
 
-export const mosesB1TeacherGuide: TeacherGuideSection[] = [
+const TYMM_FOREIGN = 'https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri';
+const TYMM_VALUES = 'https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cercevesi';
+
+type ChapterPlan = {
+  chapter: string;
+  timing: string;
+  focus: string;
+  evidence: string;
+  misconception: string;
+  languageSupport: string;
+  discussion: string;
+  valueAction: string;
+};
+
+const plans: ChapterPlan[] = [
   {
     chapter: 'Chapter 1: The Pharaoh’s Fear',
     timing: '45 minutes',
-    objectives: [
-      'Identify the historical and social setting of the story: Egypt, Pharaoh, and the Children of Israel.',
-      'Explain why Pharaoh feared the Children of Israel.',
-      'Use B1-level vocabulary such as dictatorial, ancestor, harsh, despotic, and vision.',
-      'Write a short cause-and-effect sentence about Pharaoh’s fear and oppression.'
-    ],
-    pedagogy: 'Use historical-context reading and values-based discussion. At B1 level, students should move beyond “what happened” and explain why Pharaoh acted cruelly.',
-    grammarFocus: 'Cause and effect with “because”, “so”, and “that’s why”: “Pharaoh feared the Israelites, so he treated them harshly.”',
-    pronunciationFocus: 'Word stress in “dictatorial”, “ancestor”, “Israelites”, “despotic”; pronunciation of Pharaoh /ˈfeərəʊ/',
-    lessonPlan: '0–5 min: Warm-up: What makes a ruler just or unjust? 5–10 min: Visual prediction and title analysis. 10–17 min: Vocabulary preview. 17–27 min: Guided reading/listening. 27–34 min: Cause-effect chart: fear → oppression. 34–40 min: Pair discussion. 40–45 min: Exit ticket.',
-    discussionPoints: [
-      'Why did Pharaoh fear the Children of Israel?',
-      'How did Pharaoh use his power unfairly?',
-      'What is the connection between fear and oppression?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short paragraph comparing a just ruler and Pharaoh.',
-      strugglingLearners: 'Complete sentence frames: “Pharaoh was afraid because...” “He was harsh to...”'
-    },
-    interactiveTips: [
-      'Use the Pharaoh hotspot to discuss oppressive power.',
-      'Use the Children of Israel hotspot to identify the oppressed group.',
-      'Ask students to highlight sentences showing Pharaoh’s fear.'
-    ],
-    assessmentTools: {
-      rubric: ['Context understanding', 'Vocabulary use', 'Cause-effect explanation', 'Participation'],
-      exitTicket: ['One reason Pharaoh feared the Israelites', 'One word describing Pharaoh']
-    },
-    kinestheticActivities: [
-      'Students stand on a “power line” from fair to unfair and place Pharaoh’s actions on the line.'
-    ],
-    globalCitizenship: [
-      'Discuss why leaders must protect people instead of using fear to control them.'
-    ],
-    extraResources: {
-      worksheets: ['Cause-and-effect chart', 'Ruler adjective worksheet', 'B1 vocabulary matching sheet']
-    }
+    focus: 'explain why Pharaoh feared the Children of Israel and how fear became oppression',
+    evidence: 'Pharaoh sees himself as a god, fears a larger group taking control, treats the Children of Israel harshly and forces them into dangerous work',
+    misconception: 'the chapter does not present Pharaoh’s fear as a justification for oppression or his power as proof that he is right',
+    languageSupport: 'cause and result with because, so and that’s why; simple relative clause with which; past simple for historical narration',
+    discussion: 'How does fear become unfair action in this chapter?',
+    valueAction: 'justice — identify one fair action a person with power can take instead of controlling others through fear',
   },
   {
     chapter: 'Chapter 2: The Pharaoh’s Dream',
     timing: '45 minutes',
-    objectives: [
-      'Understand Pharaoh’s dream and its interpretation.',
-      'Explain how the dream led to a cruel decision.',
-      'Identify Moses’s mother’s emotional situation.',
-      'Use past simple and past continuous to describe events.'
-    ],
-    pedagogy: 'Use cause-and-effect reading with emotional awareness. Students should connect the public event of the dream with the private fear of Moses’s mother.',
-    grammarFocus: 'Past simple and past continuous: “Pharaoh was sleeping when he saw a dream.” “Moses’s mother was praying for help.”',
-    pronunciationFocus: 'Stress in “advisor”, “magician”, “newborn”, “frightened”; /h/ in heartless',
-    lessonPlan: '0–5 min: Review Chapter 1. 5–10 min: Dream prediction. 10–17 min: Vocabulary focus. 17–27 min: Guided reading. 27–34 min: Event chain activity. 34–40 min: Emotion mapping for Moses’s mother. 40–45 min: Exit ticket.',
-    discussionPoints: [
-      'What did Pharaoh see in his dream?',
-      'How did the advisors explain it?',
-      'Why was Moses’s mother unable to sleep?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write five sentences using “because” and “so” to explain the chapter.',
-      strugglingLearners: 'Put event cards in order: dream, advisors, order, soldiers, mother’s prayer.'
-    },
-    interactiveTips: [
-      'Pause after the advisors’ interpretation and ask students to predict Pharaoh’s action.',
-      'Use the dream hotspot to support visual comprehension.',
-      'Review heartless and frightened with example sentences.'
-    ],
-    assessmentTools: {
-      rubric: ['Sequencing', 'Cause-effect reasoning', 'Emotion vocabulary', 'Reading comprehension'],
-      exitTicket: ['One event from the dream', 'One feeling of Moses’s mother']
-    },
-    kinestheticActivities: [
-      'Students create a human chain of events from dream to mother’s prayer.'
-    ],
-    globalCitizenship: [
-      'Discuss why fear should not be used as an excuse for violence or injustice.'
-    ],
-    extraResources: {
-      worksheets: ['Dream event chain', 'Emotion vocabulary worksheet', 'Past continuous practice']
-    }
+    focus: 'connect the reported dream, the advisors’ interpretation, Pharaoh’s order and Moses’s mother’s fear',
+    evidence: 'Ibn Abbas is named as the source of the dream account, the advisors predict a boy will be born, Pharaoh orders newborn boys killed and Moses’s mother prays for help',
+    misconception: 'the dream account and advisors’ prediction must remain source-framed; the teacher should not strengthen them into independent historical certainty',
+    languageSupport: 'reported source framing; will for prediction in direct speech; when for time; so...that and unable to for degree/result; could for past possibility',
+    discussion: 'Which words show what was reported, predicted and actually done?',
+    valueAction: 'responsible judgement — distinguish a report or prediction from an action that someone chooses to take',
   },
   {
     chapter: 'Chapter 3: A Baby in the River',
     timing: '45 minutes',
-    objectives: [
-      'Follow the movement of the basket from Moses’s mother to Pharaoh’s palace.',
-      'Explain how Allah protected Moses through the River Nile and Queen Asiye.',
-      'Use vocabulary such as shelter, ashore, servants, and kind-hearted.',
-      'Write a short summary of the chapter in chronological order.'
-    ],
-    pedagogy: 'Use guided visualization and symbolic movement. Students should see the river not only as a setting but also as part of Allah’s protection.',
-    grammarFocus: 'Passive voice awareness: “The basket was carried away by the waters.” “The basket was brought ashore.”',
-    pronunciationFocus: 'Stress in “shelter”, “ashore”, “servants”, “kind-hearted”; /ʃ/ in shelter',
-    lessonPlan: '0–5 min: Warm-up: What can water carry? 5–10 min: Visual prediction. 10–17 min: Vocabulary preview. 17–28 min: Guided reading/listening. 28–35 min: Basket journey map. 35–41 min: Summary writing. 41–45 min: Exit ticket.',
-    discussionPoints: [
-      'How did Moses’s mother show trust in Allah?',
-      'How did the basket reach the palace?',
-      'Why was Queen Asiye important?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write the chapter from Moses’s sister’s point of view.',
-      strugglingLearners: 'Label a simple picture: basket, river, palace, Queen Asiye.'
-    },
-    interactiveTips: [
-      'Use the basket hotspot to follow the central object of the chapter.',
-      'Use Queen Asiye’s hotspot to discuss mercy and protection.',
-      'Ask students to identify passive sentences if they can.'
-    ],
-    assessmentTools: {
-      rubric: ['Chronological summary', 'Vocabulary use', 'Main idea', 'Reflection'],
-      exitTicket: ['One place the basket went', 'One reason Queen Asiye is important']
-    },
-    kinestheticActivities: [
-      'Students pass a symbolic “basket” across the classroom and say each step of the journey.'
-    ],
-    globalCitizenship: [
-      'Discuss how children need protection during times of danger.'
-    ],
-    extraResources: {
-      worksheets: ['Basket journey map', 'Passive voice noticing sheet', 'Summary frame']
-    }
+    focus: 'trace the basket from Moses’s mother to the palace and explain how action, worry and trust work together',
+    evidence: 'the mother follows the instruction, the basket is carried by the waters, the sister follows it and Queen Asiye decides to care for Moses',
+    misconception: 'trust is not passive in the chapter; Moses’s mother takes concrete steps and the teacher should not add details beyond the text',
+    languageSupport: 'imperatives in quoted instruction; passive awareness with was carried away; when/while for simultaneous and sequential events; will for Asiye’s intention; relative clauses with who',
+    discussion: 'Which actions in the chapter show both human effort and protection?',
+    valueAction: 'trust with action — pair a hope with one responsible practical step',
   },
   {
     chapter: 'Chapter 4: Back to His Mother',
     timing: '45 minutes',
-    objectives: [
-      'Explain how Moses returned to his mother.',
-      'Analyze Queen Asiye’s courage and goodness.',
-      'Describe Moses’s identity and connection to the Children of Israel.',
-      'Use relative clauses with “who” and “that” in simple character descriptions.'
-    ],
-    pedagogy: 'Use character analysis and identity reflection. Students should recognize protection, courage, family, and identity as linked themes.',
-    grammarFocus: 'Relative clauses: “Queen Asiye was a woman who believed in Allah.” “Moses was a young man who helped weak people.”',
-    pronunciationFocus: 'Stress in “Protector”, “courage”, “originally”, “palace”; /dʒ/ in courage',
-    lessonPlan: '0–5 min: Review basket journey. 5–12 min: Vocabulary preview. 12–24 min: Guided reading. 24–31 min: Character trait chart. 31–38 min: Relative clause practice. 38–43 min: Values reflection. 43–45 min: Exit ticket.',
-    discussionPoints: [
-      'How did Allah send Moses back to his mother?',
-      'Why do people remember Queen Asiye?',
-      'Why did Moses feel close to the Children of Israel?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph about Queen Asiye using at least two relative clauses.',
-      strugglingLearners: 'Complete sentence frames: “Queen Asiye was a woman who...” “Moses was a young man who...”'
-    },
-    interactiveTips: [
-      'Use character hotspots to compare Moses’s mother and Queen Asiye.',
-      'Review “Allah is the Best Protector” as a key value sentence.',
-      'Ask students to underline sentences about Moses’s character.'
-    ],
-    assessmentTools: {
-      rubric: ['Character analysis', 'Relative clause use', 'Comprehension', 'Values reflection'],
-      exitTicket: ['One sentence with “who”', 'One trait of Queen Asiye']
-    },
-    kinestheticActivities: [
-      'Students hold character cards and adjective cards, then match them physically.'
-    ],
-    globalCitizenship: [
-      'Discuss why courage sometimes means protecting someone weaker than yourself.'
-    ],
-    extraResources: {
-      worksheets: ['Character trait chart', 'Relative clause practice', 'Courage reflection card']
-    }
+    focus: 'connect Moses’s return to his mother, Asiye’s courage and Moses’s growth and identity',
+    evidence: 'Moses’s sister brings his mother as nurse, Asiye raises him with love, Moses grows up safely and feels close to the Children of Israel',
+    misconception: 'the chapter covers many years; the return to his mother and Moses’s later young-adult identity should not be taught as one immediate event',
+    languageSupport: 'relative clauses with who/that; because for reason; grew up/became for development; was willing to for disposition; past simple and present simple contrast',
+    discussion: 'How do family, protection and identity connect across this chapter?',
+    valueAction: 'care and courage — describe one concrete action that protects another person’s dignity or safety',
   },
   {
     chapter: 'Chapter 5: A Mistake in the Bazaar',
     timing: '50 minutes',
-    objectives: [
-      'Understand that Moses killed the Egyptian by accident, not on purpose.',
-      'Analyze Moses’s regret, dua, and request for forgiveness.',
-      'Distinguish between peaceable and quarrelsome behavior.',
-      'Use contrast structures such as “while”, “whereas”, and “but”.'
-    ],
-    pedagogy: 'Use careful moral reasoning. Keep the focus on regret, responsibility, forgiveness, and conflict management.',
-    grammarFocus: 'Contrast clauses: “One man was Egyptian, while the other was from the Children of Israel.” “The Israelite was quarrelsome, not peaceable.”',
-    pronunciationFocus: 'Stress in “accident”, “purpose”, “pardoned”, “quarrelsome”, “peaceable”',
-    lessonPlan: '0–5 min: Warm-up: What should we do after a mistake? 5–12 min: Vocabulary preview. 12–25 min: Guided reading. 25–32 min: Mistake vs purpose chart. 32–39 min: Character behavior analysis. 39–46 min: Conflict-resolution discussion. 46–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why was Moses upset after the accident?',
-      'What did Moses do after the mistake?',
-      'What is the difference between a quarrelsome person and a peaceable person?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write advice to the quarrelsome man using should/should not.',
-      strugglingLearners: 'Sort vocabulary into two groups: peaceful words and conflict words.'
-    },
-    interactiveTips: [
-      'Use the bazaar hotspot to explain the repeated conflict.',
-      'Use vocabulary support for “by accident” and “on purpose”.',
-      'Ask students to find the dua sentence in the text.'
-    ],
-    assessmentTools: {
-      rubric: ['Moral reasoning', 'Vocabulary accuracy', 'Contrast language', 'Participation'],
-      exitTicket: ['One sentence using “while”', 'One lesson about mistakes']
-    },
-    kinestheticActivities: [
-      'Students physically sort situation cards into “by accident” and “on purpose”.'
-    ],
-    globalCitizenship: [
-      'Discuss peaceful conflict resolution and taking responsibility after mistakes.'
-    ],
-    extraResources: {
-      worksheets: ['Mistake vs purpose T-chart', 'Conflict resolution worksheet', 'Contrast sentence practice']
-    }
+    focus: 'distinguish accident from intention and analyse remorse, forgiveness and repeated conflict',
+    evidence: 'Moses accidentally causes the Egyptian’s death, says he did not do it on purpose, asks forgiveness and later recognises the Israelite as quarrelsome',
+    misconception: 'the death is explicitly presented as accidental, not a planned killing; the teacher should not turn the scene into justification for violence',
+    languageSupport: 'while/whereas for contrast and background; accidentally vs on purpose; present perfect inside the quoted dua; because for reason; be going to in a near-future question',
+    discussion: 'What is the difference between taking responsibility for a mistake and intending harm?',
+    valueAction: 'responsibility — name a safe sequence after a serious mistake: stop, tell the truth, seek help and repair what can be repaired',
   },
   {
     chapter: 'Chapter 6: Escape from Egypt',
     timing: '45 minutes',
-    objectives: [
-      'Follow Moses’s escape route from Egypt to Midian.',
-      'Explain how Allah guided Moses during danger.',
-      'Identify the new setting and characters at the spring.',
-      'Use prepositions and journey language accurately.'
-    ],
-    pedagogy: 'Use map-based reading and journey sequencing. Students should connect physical movement with spiritual guidance.',
-    grammarFocus: 'Prepositions and movement phrases: “from Egypt to Midian”, “far from the spring”, “near the water”, “between Egypt and Syria”.',
-    pronunciationFocus: 'Stress in “punishment”, “escaped”, “guided”, “Midian”, “cattle”; /g/ in guided',
-    lessonPlan: '0–5 min: Review why Moses had to leave. 5–10 min: Map prediction. 10–17 min: Vocabulary preview. 17–28 min: Guided reading/listening. 28–35 min: Journey map task. 35–41 min: Preposition practice. 41–45 min: Exit ticket.',
-    discussionPoints: [
-      'Why did Moses escape from Egypt?',
-      'How did Allah guide Moses?',
-      'What did Moses see when he arrived in Midian?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a travel diary entry from Moses’s point of view.',
-      strugglingLearners: 'Label a route map with Egypt, Midian, spring, and shepherds.'
-    },
-    interactiveTips: [
-      'Use the Midian hotspot to mark the change in setting.',
-      'Use the spring hotspot to introduce the helping scene.',
-      'Ask students to trace the journey with their finger on a map.'
-    ],
-    assessmentTools: {
-      rubric: ['Journey sequencing', 'Preposition use', 'Vocabulary', 'Comprehension'],
-      exitTicket: ['One place Moses reached', 'One preposition phrase from the chapter']
-    },
-    kinestheticActivities: [
-      'Create classroom stations: Egypt, desert, Midian, spring. Students move and retell the journey.'
-    ],
-    globalCitizenship: [
-      'Discuss why people sometimes have to leave unsafe places and need guidance.'
-    ],
-    extraResources: {
-      worksheets: ['Journey map worksheet', 'Preposition practice', 'Travel diary frame']
-    }
+    focus: 'follow Moses from danger in Egypt to Midian and interpret the new setting through movement, safety and need',
+    evidence: 'a friend warns Moses, soldiers are looking for him, he leaves Egypt, Allah guides him, he reaches Midian and finds the two sisters far from the spring',
+    misconception: 'Moses is not described as completely alone or without guidance; the chapter explicitly states that Allah guided him',
+    languageSupport: 'be going to for imminent threat; imperatives in warning; journey prepositions from/to/near/far from/between; relative clauses with which/where/who; why questions',
+    discussion: 'How does the description of place show the movement from danger to a new problem?',
+    valueAction: 'seeking safety responsibly — identify when leaving danger and asking for guidance is the responsible choice',
   },
   {
     chapter: 'Chapter 7: The Two Sisters',
     timing: '45 minutes',
-    objectives: [
-      'Understand why the two sisters were waiting near the spring.',
-      'Explain Moses’s helpful action and what it shows about his character.',
-      'Identify Prophet Şuayb (pbuh) and the setting of Midian.',
-      'Use modal language such as “have to” and “had to”.'
-    ],
-    pedagogy: 'Use dialogue reading and social responsibility reflection. Students should notice patience, need, service, and dignity.',
-    grammarFocus: 'Obligation with “have to / had to”: “They had to wait their turn.” “They had to take the sheep themselves.”',
-    pronunciationFocus: '/ʃ/ sound in sheep, shepherds, Şuayb; stress in “patient”, “messenger”, “Aqaba”',
-    lessonPlan: '0–5 min: Warm-up: When do people need help? 5–12 min: Vocabulary preview. 12–24 min: Dialogue reading/listening. 24–31 min: Role-play. 31–37 min: Obligation sentence practice. 37–42 min: Values discussion. 42–45 min: Exit ticket.',
-    discussionPoints: [
-      'Why did the sisters have to wait?',
-      'How did Moses help them?',
-      'What does this action show about Moses’s character?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short dialogue between Moses and the sisters using “have to”.',
-      strugglingLearners: 'Complete: “The sisters had to...” “Moses helped them by...”'
-    },
-    interactiveTips: [
-      'Use the sisters hotspot to discuss patience and need.',
-      'Use the helping hotspot to connect action and character.',
-      'Ask students to perform the dialogue with simple gestures.'
-    ],
-    assessmentTools: {
-      rubric: ['Dialogue comprehension', 'Modal use', 'Speaking effort', 'Values understanding'],
-      exitTicket: ['One sentence with “had to”', 'One value from Moses’s action']
-    },
-    kinestheticActivities: [
-      'Students act out waiting, asking, helping, watering sheep, and returning home early.'
-    ],
-    globalCitizenship: [
-      'Discuss how small acts of service can protect dignity and support vulnerable people.'
-    ],
-    extraResources: {
-      worksheets: ['Dialogue completion sheet', 'Have to / had to practice', 'Helping others reflection card']
-    }
+    focus: 'explain why the sisters have to wait and what Moses’s help reveals about patience, need and service',
+    evidence: 'their father is old, there are no young men at home, they have to wait their turn, Moses waters the sheep and they return early',
+    misconception: 'the sisters are not presented as passive or lazy; they already carry responsibility and are waiting because of the situation at the water',
+    languageSupport: 'have to/had to for obligation; cannot for inability; until for an endpoint; ourselves for reflexive emphasis; when for time; because/that’s why for reason',
+    discussion: 'Which details show that Moses’s help answers a real need rather than replacing the sisters’ responsibility?',
+    valueAction: 'helpfulness — offer support that responds to a real need without humiliating the person receiving it',
   },
   {
     chapter: 'Chapter 8: A Simple Life in Midian',
-    timing: '50 minutes',
-    objectives: [
-      'Understand Moses’s life with Prophet Şuayb’s family.',
-      'Explain why Moses accepted the job and stayed in Midian.',
-      'Identify the transition from Midian back toward Egypt.',
-      'Use time expressions such as later, after, while, and after living.'
-    ],
-    pedagogy: 'Use life-transition reading. Students analyze how Moses moves from danger to stability, then from stability to mission.',
-    grammarFocus: 'Time clauses and sequencing: “After living in Midian for about ten years...” “While he was staying with them...”',
-    pronunciationFocus: 'Stress in “offered”, “urgently”, “guidance”, “valley”, “hillside”',
-    lessonPlan: '0–5 min: Review the two sisters. 5–12 min: Vocabulary preview. 12–25 min: Guided reading. 25–33 min: Two-part summary: life in Midian / journey to Egypt. 33–40 min: Sequencing language practice. 40–47 min: Prediction: What will happen at the fire? 47–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why did Şuayb (pbuh) invite Moses?',
-      'Why did Moses urgently need a job and a house?',
-      'What change begins at the end of the chapter?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a paragraph titled “A Simple Life with Patience”.',
-      strugglingLearners: 'Complete a timeline: job, marriage, ten years, journey, fire.'
-    },
-    interactiveTips: [
-      'Use the new home hotspot to discuss stability and honest work.',
-      'Use the fire hotspot to create suspense for the next chapter.',
-      'Ask students to divide the chapter into two sections.'
-    ],
-    assessmentTools: {
-      rubric: ['Sequencing', 'Summary writing', 'Vocabulary use', 'Prediction'],
-      exitTicket: ['One time expression', 'One prediction about the fire']
-    },
-    kinestheticActivities: [
-      'Students arrange event cards on a floor timeline from Midian life to the fire on the hillside.'
-    ],
-    globalCitizenship: [
-      'Discuss the value of honest work, family support, and patience in difficult periods.'
-    ],
-    extraResources: {
-      worksheets: ['Timeline worksheet', 'Time expression practice', 'Prediction card']
-    }
+    timing: '45–50 minutes',
+    focus: 'trace the transition from gratitude and work in Midian to marriage, ten years of stability and the return journey to Egypt',
+    evidence: 'Şuayb invites Moses, offers him work, Moses accepts because he needs work and housing, later marries, then decides to return and sees a fire during the journey',
+    misconception: 'the chapter does not present Moses as only receiving help; he contributes through work and then makes a new decision after years of stability',
+    languageSupport: 'would like to for polite intention; because for reason; while for concurrent background; after + -ing for sequence; decide to; past continuous/background description; suddenly; let me + verb',
+    discussion: 'How does the chapter show movement from need to contribution and then to a new decision?',
+    valueAction: 'gratitude through contribution — identify one useful way to respond after receiving help',
   },
   {
     chapter: 'Chapter 9: The Voice on the Mountain',
-    timing: '50 minutes',
-    objectives: [
-      'Understand the sacred moment when Allah spoke to Moses.',
-      'Identify the signs given to Moses: staff and shining hand.',
-      'Explain Moses’s mission to warn Pharaoh and guide him to Allah.',
-      'Use reported commands and purpose clauses.'
-    ],
-    pedagogy: 'Use respectful sacred-story reading with focused comprehension. Slow down the reading and give time for reflection.',
-    grammarFocus: 'Reported commands and infinitive of purpose: “Allah told Moses to put down his staff.” “Allah told Moses to go to Egypt to warn Pharaoh.”',
-    pronunciationFocus: 'Stress in “thundering”, “guidance”, “prophet”, “shining”; /θ/ in thundering',
-    lessonPlan: '0–5 min: Quiet warm-up. 5–12 min: Vocabulary preview. 12–27 min: Guided reading/listening. 27–35 min: Signs identification chart. 35–42 min: Reported command practice. 42–47 min: Mission reflection. 47–50 min: Exit ticket.',
-    discussionPoints: [
-      'What did Allah say to Moses?',
-      'What signs did Allah give Moses?',
-      'Why was Moses sent back to Egypt?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write five reported commands from the chapter.',
-      strugglingLearners: 'Match signs with descriptions: staff → snake, hand → shining.'
-    },
-    interactiveTips: [
-      'Use the voice hotspot to focus on Allah’s message.',
-      'Use the signs hotspot to separate the two miracles.',
-      'Ask students to identify command sentences in the text.'
-    ],
-    assessmentTools: {
-      rubric: ['Sacred moment comprehension', 'Reported command use', 'Vocabulary', 'Reflection'],
-      exitTicket: ['One sign of Allah', 'One purpose sentence']
-    },
-    kinestheticActivities: [
-      'Students silently mime the sequence: climb, hear, put down staff, see snake, show hand, head to Egypt.'
-    ],
-    globalCitizenship: [
-      'Discuss respectful listening when studying sacred narratives from different traditions.'
-    ],
-    extraResources: {
-      worksheets: ['Signs chart', 'Reported commands worksheet', 'Mission reflection sheet']
-    }
+    timing: '45–50 minutes',
+    focus: 'identify the signs given to Moses and explain the mission that follows the revelation',
+    evidence: 'Allah speaks to Moses, commands him to put down the staff and show his hand, identifies the signs and sends him to Pharaoh with a message',
+    misconception: 'the signs are given by Allah; they are not independent powers belonging to Moses, and no external sacred detail should be added',
+    languageSupport: 'reported commands with told + object + to; imperatives in direct speech; infinitive of purpose; turned into for change; after/upon this for sequence; warn + object + to',
+    discussion: 'How do the commands, signs and mission connect in the chapter?',
+    valueAction: 'responsible listening — repeat an important instruction accurately before acting on it',
   },
   {
     chapter: 'Chapter 10: The King’s Magicians',
     timing: '50 minutes',
-    objectives: [
-      'Understand Moses and Harun’s visit to Pharaoh.',
-      'Explain why logical discussion did not convince Pharaoh.',
-      'Identify the miracles Moses displayed before the king.',
-      'Use contrast and result language to describe Pharaoh’s reaction.'
-    ],
-    pedagogy: 'Use reasoning and evidence-based reading. Students should analyze how Pharaoh responds to reason and signs.',
-    grammarFocus: 'Result and contrast: “Moses explained the truth, but Pharaoh refused.” “Therefore, Moses displayed the miracles.”',
-    pronunciationFocus: 'Stress in “companion”, “convince”, “logical”, “display”, “universe”',
-    lessonPlan: '0–5 min: Review Moses’s mission. 5–12 min: Vocabulary preview. 12–25 min: Guided reading/listening. 25–33 min: Problem-solution chart. 33–40 min: Contrast/result sentence writing. 40–47 min: Discussion: Why did Pharaoh refuse? 47–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why did Moses take Harun with him?',
-      'Why did logical discussions not work with Pharaoh?',
-      'What miracles did Moses display?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short paragraph explaining Pharaoh’s refusal using but, so, and therefore.',
-      strugglingLearners: 'Circle the two miracles: staff into snake and shining hand.'
-    },
-    interactiveTips: [
-      'Use Harun’s hotspot to discuss companionship and support.',
-      'Use the palace hotspot to discuss the setting of power.',
-      'Ask students to mark Pharaoh’s reaction in the text.'
-    ],
-    assessmentTools: {
-      rubric: ['Comprehension', 'Reasoning', 'Linking words', 'Vocabulary'],
-      exitTicket: ['One contrast sentence', 'One miracle Moses displayed']
-    },
-    kinestheticActivities: [
-      'Students form a “reason wall”: one side gives logical reasons, the other side shows Pharaoh’s refusal.'
-    ],
-    globalCitizenship: [
-      'Discuss why some people reject truth even when they see evidence.'
-    ],
-    extraResources: {
-      worksheets: ['Problem-solution chart', 'Linking words practice', 'Miracle identification sheet']
-    }
+    focus: 'analyse Moses and Harun’s attempt to communicate with Pharaoh and the shift from explanation to displaying the signs',
+    evidence: 'Moses takes Harun as companion, explains his message, Pharaoh refuses, Moses realises discussion will not work and displays the staff and shining hand',
+    misconception: 'the text says Pharaoh thinks Moses has lost his mind and later laughs; the teacher should not add a different debate or claims not present here',
+    languageSupport: 'past continuous for palace background; explain that; after + -ing; kept + -ing; had no choice but to; in order to for purpose; but/therefore for contrast and result',
+    discussion: 'What changes in Moses’s approach after Pharaoh keeps refusing?',
+    valueAction: 'clear communication — explain a position calmly, notice whether communication is working and choose a non-harmful next step',
   },
   {
     chapter: 'Chapter 11: The Miracle of the Staff',
     timing: '50 minutes',
-    objectives: [
-      'Sequence the contest between Moses and the magicians.',
-      'Explain why the magicians believed after witnessing the miracle.',
-      'Analyze Pharaoh’s arrogance and continued refusal.',
-      'Use time clauses with once, when, and after.'
-    ],
-    pedagogy: 'Use turning-point analysis. Students should understand the contrast between the magicians’ acceptance and Pharaoh’s arrogance.',
-    grammarFocus: 'Time clauses: “Once the ropes fell to the ground...” “When they witnessed the miracle...” “After they saw the truth...”',
-    pronunciationFocus: 'Stress in “witnessed”, “frightened”, “arrogant”, “miracle”; /h/ in huge and Harun',
-    lessonPlan: '0–5 min: Warm-up: What is a turning point? 5–12 min: Vocabulary preview. 12–26 min: Guided reading. 26–34 min: Contest sequencing. 34–41 min: Time clause sentence practice. 41–47 min: Belief vs arrogance discussion. 47–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why did Moses get frightened at first?',
-      'What did the magicians witness?',
-      'Why did the magicians believe while Pharaoh refused?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write the scene from the viewpoint of one magician.',
-      strugglingLearners: 'Order three events: ropes moved, staff became huge snake, magicians believed.'
-    },
-    interactiveTips: [
-      'Use the staff hotspot to show the miracle clearly.',
-      'Use the magicians hotspot to discuss recognizing truth.',
-      'Pause after “We believe...” and ask what changed in the story.'
-    ],
-    assessmentTools: {
-      rubric: ['Sequencing', 'Turning-point understanding', 'Grammar use', 'Values reflection'],
-      exitTicket: ['One sentence with “when”', 'One reason the magicians believed']
-    },
-    kinestheticActivities: [
-      'Students create a freeze-frame tableau for each stage of the contest.'
-    ],
-    globalCitizenship: [
-      'Discuss courage to accept truth even when it is dangerous or unpopular.'
-    ],
-    extraResources: {
-      worksheets: ['Contest sequencing sheet', 'Time clause practice', 'Belief vs arrogance chart']
-    }
+    focus: 'sequence the contest and compare the magicians’ response with Pharaoh’s continued refusal',
+    evidence: 'the ropes and sticks look like snakes, Moses becomes frightened, his staff becomes a huge snake, the magicians witness the miracle and believe while Pharaoh still refuses',
+    misconception: 'the chapter distinguishes the appearance of the magicians’ ropes from the miracle of Moses’s staff; do not flatten both into the same kind of event',
+    languageSupport: 'once/when for time; looked like for appearance; relative clause with who witnessed; still for continuation; because for reason; continued to + verb for repeated action',
+    discussion: 'Why do the magicians change their position while Pharaoh does not?',
+    valueAction: 'intellectual humility — state one example of changing your view when strong evidence appears',
   },
   {
     chapter: 'Chapter 12: The Red Sea',
     timing: '50 minutes',
-    objectives: [
-      'Understand the night journey and the danger at the Red Sea.',
-      'Explain the contrast between panic and trust.',
-      'Analyze Moses’s calming statement to his people.',
-      'Use modal verbs and future meaning to discuss danger and safety.'
-    ],
-    pedagogy: 'Use tension-building reading and emotional contrast. Students should notice how fear changes when trust in Allah is present.',
-    grammarFocus: 'Modals and future meaning: “They could not walk fast.” “Allah will show us the way to safety.”',
-    pronunciationFocus: 'Stress in “servants”, “caravan”, “panicked”, “seized”; phrase stress in “catch up with”',
-    lessonPlan: '0–5 min: Review Pharaoh’s continued oppression. 5–12 min: Vocabulary preview. 12–25 min: Guided reading/listening. 25–33 min: Danger map: sea in front, army behind. 33–40 min: Panic vs trust chart. 40–47 min: Speaking task: calm a frightened group. 47–50 min: Exit ticket.',
-    discussionPoints: [
-      'Why did Moses and his people leave at night?',
-      'Why did the people panic at the Red Sea?',
-      'How did Moses show trust in Allah?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a short paragraph comparing panic and trust.',
-      strugglingLearners: 'Draw the scene and label: Red Sea, army, Moses, people.'
-    },
-    interactiveTips: [
-      'Use the Red Sea hotspot to visualize the trap.',
-      'Use the night journey hotspot to discuss secrecy and danger.',
-      'Ask students to repeat Moses’s calming sentence aloud.'
-    ],
-    assessmentTools: {
-      rubric: ['Scene understanding', 'Emotion vocabulary', 'Speaking effort', 'Reflection'],
-      exitTicket: ['One sentence about panic', 'One sentence about trust']
-    },
-    kinestheticActivities: [
-      'Students form a physical scene: sea in front, army behind, people in the middle.'
-    ],
-    globalCitizenship: [
-      'Discuss how calm leadership can help frightened communities.'
-    ],
-    extraResources: {
-      worksheets: ['Panic vs trust chart', 'Danger map worksheet', 'Modal verbs practice']
-    }
+    focus: 'follow the secret night departure, the slow caravan, Pharaoh’s pursuit and the contrast between panic and trust at the sea',
+    evidence: 'Moses is told to travel at night, tells people to keep the plan secret, the old and children cannot walk fast, Pharaoh catches up and Moses tells the people Allah will show the way to safety',
+    misconception: 'the chapter ends with the group trapped/seized; the sea has not yet opened in this chapter',
+    languageSupport: 'must/should for obligation and advice; will for future reassurance; could not for past inability; that’s why for result; managed to/catch up with; when for sequence',
+    discussion: 'How does Moses respond differently from the people when the danger becomes immediate?',
+    valueAction: 'calm leadership — give one short, truthful and calming instruction in a stressful but safe classroom scenario',
   },
   {
     chapter: 'Chapter 13: The Cruel King Drowns',
     timing: '50 minutes',
-    objectives: [
-      'Understand the miracle of the Red Sea opening and Pharaoh’s drowning.',
-      'Explain the final moral lessons of the story.',
-      'Review the complete story timeline.',
-      'Write a final B1-level reflection paragraph.'
-    ],
-    pedagogy: 'Use whole-story synthesis and final moral reflection. Students should connect the ending to justice, freedom, guidance, and Allah’s power.',
-    grammarFocus: 'Present simple for universal lessons and past simple for retelling: “Allah guides people.” “The sea parted.”',
-    pronunciationFocus: 'Stress in “trapped”, “parted”, “midway”, “enslave”, “visible”; /v/ in visible',
-    lessonPlan: '0–5 min: Review the Red Sea problem. 5–17 min: Guided reading/listening. 17–25 min: Miracle visualization. 25–33 min: Whole-story timeline. 33–42 min: Final reflection writing. 42–47 min: Pair sharing. 47–50 min: Exit ticket.',
-    discussionPoints: [
-      'How did Allah save Moses and his people?',
-      'What did Pharaoh wrongly claim?',
-      'What are the final lessons of the story?'
-    ],
-    differentiation: {
-      fastFinishers: 'Write a final reflection titled “Only Allah Has True Power”.',
-      strugglingLearners: 'Complete sentence frames: “The sea...” “Pharaoh...” “The lesson is...”'
-    },
-    interactiveTips: [
-      'Use the path-through-the-sea hotspot to review the miracle.',
-      'Use the final lesson hotspot to discuss freedom and guidance.',
-      'Ask students to underline final lesson sentences in the text.'
-    ],
-    assessmentTools: {
-      rubric: ['Whole-story comprehension', 'Timeline accuracy', 'Reflection quality', 'Vocabulary use'],
-      exitTicket: ['One final lesson', 'One event from the story timeline']
-    },
-    kinestheticActivities: [
-      'Students create a living timeline from Pharaoh’s fear to the Red Sea miracle.'
-    ],
-    globalCitizenship: [
-      'Discuss why enslavement, oppression, and arrogance are wrong in every age.'
-    ],
-    extraResources: {
-      worksheets: ['Whole-story timeline', 'Final reflection paragraph frame', 'B1 vocabulary review sheet']
-    }
-  }
+    focus: 'synthesise the sea miracle, Pharaoh’s false claim, his drowning and the story’s final lessons about freedom, guidance and power',
+    evidence: 'the sea parts after Allah commands Moses to strike it, the people cross safely, Pharaoh claims the sea opened at his order, the sea closes over the army and the chapter states final lessons',
+    misconception: 'Moses does not open the sea by independent power and Pharaoh’s claim is presented as false; final universal claims must be reported exactly as the source frames them',
+    languageSupport: 'when for sequence; passive/result awareness with were trapped/was opened only where supported; present simple for stated general lessons; can/cannot for ability; past simple for final retelling',
+    discussion: 'Which final events directly answer the story’s earlier themes of oppression and guidance?',
+    valueAction: 'freedom with responsibility — name one action that protects another person’s dignity and freedom',
+  },
 ];
 
-export const mosesB1TeacherGuideMetadata: TeacherGuideMetadata = {
-  targetLearners: 'Primary: Turkish middle school or early high school students studying English around CEFR B1. Secondary: Other intermediate learners using values-based Islamic story content.',
-  assessmentEvidence: 'Participation in discussion, B1 vocabulary use, comprehension answers, cause-and-effect explanations, story sequencing, oral retelling, role-play performance, paragraph writing, reflection tasks, quiz results, and exit tickets.',
-  readingFramework: {
-    before: 'Use the chapter title, image, and key vocabulary to activate background knowledge. Ask students to predict not only what may happen, but also why it may happen. Pre-teach 5–7 important B1 words without overloading learners.',
-    during: 'Read or listen in meaningful chunks. Pause for gist, detail, inference, and values questions. Encourage students to mark causes, results, emotions, and turning points. Use pair discussion before whole-class answers.',
-    after: 'Ask students to summarize the chapter, identify the moral lesson, review vocabulary in context, and complete one short speaking or writing task. Use exit tickets to check comprehension and reflection.'
-  },
-  rubricTitle: 'Master Rubric for The Story of Prophet Moses (pbuh) - B1 Level',
-  rubricRows: [
-    {
-      criterion: 'Vocabulary',
-      excellent: 'Uses several B1 story words accurately in original sentences.',
-      good: 'Uses some B1 words correctly with minor errors.',
-      developing: 'Recognizes key words but needs support to use them.'
-    },
-    {
-      criterion: 'Comprehension',
-      excellent: 'Explains main events, details, causes, and results clearly.',
-      good: 'Understands main events and some supporting details.',
-      developing: 'Understands the general idea but needs support with details.'
-    },
-    {
-      criterion: 'Grammar',
-      excellent: 'Uses target B1 structures such as cause-effect, contrast, sequencing, and relative clauses with good control.',
-      good: 'Uses target structures with some mistakes.',
-      developing: 'Uses simple sentences and needs sentence frames.'
-    },
-    {
-      criterion: 'Speaking',
-      excellent: 'Expresses ideas clearly, gives reasons, and participates confidently.',
-      good: 'Participates and gives simple explanations.',
-      developing: 'Needs prompting and support to speak.'
-    },
-    {
-      criterion: 'Writing',
-      excellent: 'Writes clear summaries or reflections with logical order and relevant vocabulary.',
-      good: 'Writes understandable short paragraphs with some errors.',
-      developing: 'Writes basic sentences and needs a writing frame.'
-    },
-    {
-      criterion: 'Reflection',
-      excellent: 'Connects the story to values such as trust, justice, courage, forgiveness, and guidance.',
-      good: 'Identifies a simple moral lesson from the story.',
-      developing: 'Needs prompting to explain a value or lesson.'
-    },
-    {
-      criterion: 'Participation',
-      excellent: 'Joins actively, respectfully, and supports group work.',
-      good: 'Participates when prompted.',
-      developing: 'Rarely participates or needs confidence support.'
-    }
+const makeSection = (p: ChapterPlan): TeacherGuideSection => ({
+  chapter: p.chapter,
+  timing: p.timing,
+  objectives: [
+    `Explain the chapter focus: ${p.focus}.`,
+    `Support one interpretation with direct evidence, especially: ${p.evidence}.`,
+    `Use contextual B1 language from the chapter: ${p.languageSupport}.`,
+    `Turn the chapter value into an observable action: ${p.valueAction}.`,
   ],
-  implementationPlans: {
-    optionA: {
-      title: 'Intensive Workshop (90 Minutes)',
-      steps: [
-        { time: '0–10 min', activity: 'Warm-up, story background, and title prediction' },
-        { time: '10–25 min', activity: 'Guided reading of selected key chapters: Pharaoh’s fear, baby Moses, Midian, mountain, Red Sea' },
-        { time: '25–40 min', activity: 'Vocabulary and hotspot exploration' },
-        { time: '40–55 min', activity: 'Cause-effect and sequencing activity' },
-        { time: '55–70 min', activity: 'Character comparison: Moses, Pharaoh, Queen Asiye, magicians' },
-        { time: '70–85 min', activity: 'Final reflection writing or speaking task' },
-        { time: '85–90 min', activity: 'Exit ticket and review plan' }
-      ]
-    },
-    optionB: {
-      title: 'Standard Split (5 x 40 Minutes)',
-      lessons: [
-        { title: 'Lesson 1', description: 'Pharaoh’s fear, dream, oppression, and Moses’s birth' },
-        { title: 'Lesson 2', description: 'River Nile, Queen Asiye, Moses’s return to his mother, and early identity' },
-        { title: 'Lesson 3', description: 'Bazaar mistake, forgiveness, escape from Egypt, and arrival in Midian' },
-        { title: 'Lesson 4', description: 'The two sisters, Prophet Şuayb, simple life in Midian, and the mountain event' },
-        { title: 'Lesson 5', description: 'Moses and Harun before Pharaoh, the magicians, the Red Sea, and final lessons' }
-      ]
-    },
-    optionC: {
-      title: 'Extended Project (10–13 Lessons)',
-      steps: [
-        { time: 'Lesson 1', activity: 'Historical setting: Egypt, Pharaoh, and the Children of Israel' },
-        { time: 'Lesson 2', activity: 'The dream, oppression, and Moses’s mother’s fear' },
-        { time: 'Lesson 3', activity: 'The basket, River Nile, Queen Asiye, and Allah’s protection' },
-        { time: 'Lesson 4', activity: 'Back to his mother, identity, courage, and protection' },
-        { time: 'Lesson 5', activity: 'The bazaar mistake, regret, dua, and forgiveness' },
-        { time: 'Lesson 6', activity: 'Escape from Egypt and journey mapping to Midian' },
-        { time: 'Lesson 7', activity: 'The two sisters, service, patience, and Prophet Şuayb' },
-        { time: 'Lesson 8', activity: 'A simple life in Midian and the journey back to Egypt' },
-        { time: 'Lesson 9', activity: 'The voice on the mountain, signs, and prophethood' },
-        { time: 'Lesson 10', activity: 'Moses, Harun, Pharaoh, logic, and miracles' },
-        { time: 'Lesson 11', activity: 'The magicians, belief, and Pharaoh’s arrogance' },
-        { time: 'Lesson 12', activity: 'The Red Sea, panic, trust, and the final miracle' },
-        { time: 'Lesson 13', activity: 'Final review, oral retelling, vocabulary challenge, and reflection project' }
-      ]
-    }
+  pedagogy: `Use a TYMM-compatible meaning → evidence → language noticing → production route. Learners first listen/read for meaning, then return to the exact chapter evidence, complete the existing page exercise, notice useful B1 language already present in the story, and reuse selected patterns in connected speaking or writing. Do not invent a separate Language Focus resource.`,
+  priorKnowledge: ['Recall the previous chapter’s turning point.', 'Distinguish a direct story fact from an inference or interpretation.'],
+  anticipatedMisconceptions: [p.misconception],
+  grammarFocus: `Contextual language support from the current chapter: ${p.languageSupport}.`,
+  pronunciationFocus: 'Use the chapter Word Notes and proper names. Rehearse one evidence sentence with clear stress, pausing and connected speech appropriate to B1.',
+  beforeReading: [`Prediction: What evidence might help us ${p.focus}?`, 'Preview only the vocabulary needed for comprehension.'],
+  duringReading: [`Listen/read first for gist, then locate: ${p.evidence}.`, 'Mark one cause, contrast, time link, command, description or other language relationship that helps the chapter meaning.'],
+  afterReading: [
+    `Discuss: ${p.discussion}`,
+    'Complete the exercise that actually appears on the chapter page and correct any wrong answer by returning to the text.',
+    `Guide a short noticing stage using: ${p.languageSupport}.`,
+    'Finish with a 5–8 sentence or short B1 speaking/writing transfer in a new non-story context using one or two selected patterns naturally.',
+  ],
+  lessonPlan: '0–5 min: activate prior knowledge. 5–12: listen/read for gist. 12–23: close reading and evidence. 23–30: pair discussion. 30–34: existing chapter exercise and repair. 34–40: contextual language noticing/practice. 40–47: B1 speaking/writing transfer. Final minutes: exit ticket.',
+  discussionPoints: [p.discussion, `What is the strongest evidence: ${p.evidence}?`, 'Which part is directly stated and which part is your interpretation?'],
+  interactiveTips: ['Use only the audio, Word Notes/vocabulary, hotspots and exercise that actually exist on the current page.', 'Do not direct learners to a separate Language Focus because no student-facing Moses B1 Language Focus currently exists.', 'Use hotspots to return to evidence rather than introduce extra history or doctrine.'],
+  differentiation: {
+    strugglingLearners: `Provide two sentence frames and select only one relationship from: ${p.languageSupport}. Keep the same meaning/evidence target.`,
+    fastFinishers: `Write 90–120 words answering “${p.discussion}” with two textual details and at least two natural links from the chapter language support.`,
   },
-  homeConnection: {
-    title: 'Home Connection',
-    items: [
-      'Ask students to retell one chapter to a family member in Turkish or English.',
-      'Encourage students to listen again to one key chapter at home.',
-      'Give short vocabulary tasks using B1 words from the chapter.',
-      'Ask students to write a 5-sentence summary after selected chapters.',
-      'Invite students to discuss one value with family: trust, justice, courage, forgiveness, patience, or guidance.',
-      'Encourage students to prepare a short oral retelling of the Red Sea miracle.',
-      'Use homework to recycle language and values, not to overload learners.'
-    ]
-  }
+  formativeAssessment: ['Accuracy of chapter evidence', 'Comprehension of cause/sequence/contrast or character motivation', 'Appropriate use of contextual B1 language', 'Connected speaking/writing', 'Correction of the existing page exercise from evidence'],
+  expectedResponses: [`A sound response should refer to ${p.evidence}.`, `It should explain ${p.focus} without adding unsupported information.`, `The value response should describe the concrete action: ${p.valueAction}.`],
+  transferTask: `Use the chapter method in a new context: state a point, give a reason or example, use one or two patterns from ${p.languageSupport}, then describe one action linked to ${p.valueAction}.`,
+  teacherReflection: 'Did learners build meaning before language analysis? Could they justify interpretations with the actual text? Did the language work support communication rather than become a detached grammar lesson?',
+});
+
+export const mosesB1TeacherGuide: TeacherGuideSection[] = plans.map(makeSection);
+
+export const mosesB1TeacherGuideMetadata: TeacherGuideMetadata = {
+  title: 'Teacher Guide — Prophet Moses (B1)',
+  subtitle: 'TYMM-aligned, chapter-specific guidance based on the current 13-chapter student text',
+  level: 'B1',
+  estimatedDuration: '13 lessons, about 45–50 minutes per story chapter',
+  targetAudience: 'Turkish middle-school/early high-school and other CEFR B1 English learners using the current Prophet Moses story.',
+  targetLearners: 'Learners who can follow connected narrative, identify direct evidence, explain cause and sequence, compare character responses and produce short connected B1 speech and writing.',
+  purpose: 'Align teaching with the current 13 story chapters, their audio, vocabulary, hotspots and exercises while integrating TYMM receptive/productive skills, contextual language support and values-as-action.',
+  approachDesc: `Follow the TYMM receptive-to-productive cycle: listening/viewing and reading for meaning (YDAB1–YDAB2), contextual noticing of grammar/vocabulary/pronunciation as supporting skills, then connected speaking and writing (YDAB3–YDAB4). Supporting language serves communication and meaning rather than functioning as a detached grammar syllabus. See ${TYMM_FOREIGN}.`,
+  assessmentEvidence: 'Gist/detail responses, evidence selection, existing chapter exercises, contextual language use, pair speaking, short B1 writing, exit tickets and the existing final review tasks.',
+  assessmentOverview: {
+    formative: ['Gist and evidence checks', 'Existing chapter exercise plus evidence repair', 'Contextual language noticing', 'Short connected speaking/writing', 'Exit tickets and teacher feedback'],
+    summative: ['Existing final review exercises and a supported whole-story B1 synthesis/retelling'],
+  },
+  readingFramework: {
+    before: 'Activate relevant prior knowledge and set one purposeful prediction without pre-teaching the interpretation.',
+    during: 'Listen/read for gist first, then return to direct evidence, cause, sequence, contrast, source framing, character motivation and language relationships.',
+    after: 'Complete the actual page exercise, notice useful language already present in the chapter, and finish with a connected B1 transfer task.',
+  },
+  vocabularyApproach: { selection: 'Prioritise the current page vocabulary/Word Notes and words needed for comprehension or transfer.', method: 'Infer from context before direct explanation where possible.', recycling: 'Reuse vocabulary in evidence discussion, contextual language practice, exit tickets and later retelling.' },
+  grammarApproach: 'There is currently no separate student-facing Moses B1 Language Focus source. Therefore, teach only contextual language structures that are actually present in the current chapter text. Do not tell learners to open a nonexistent Language Focus and do not replace the source with an unrelated grammar sequence.',
+  grammarSequence: plans.map((p, index) => `Ch${index + 1}: ${p.languageSupport}`),
+  skillsFocus: {
+    reading: 'TYMM YDAB2: identify direct evidence, follow connected narrative, infer simple motives and understand cause, contrast and sequence.',
+    listening: 'TYMM YDAB1: listen for gist, then revisit targeted details and language relationships.',
+    speaking: 'TYMM YDAB3: explain evidence, retell, compare, give reasons and respond in connected B1 turns.',
+    writing: 'TYMM YDAB4: produce short connected paragraphs using chapter-derived vocabulary and language relationships.',
+  },
+  valuesFocus: [
+    'D6 Dürüstlük — distinguish what the text says from interpretation and take responsibility for mistakes.',
+    'D10 Mütevazılık — remain open to evidence instead of acting through arrogance.',
+    'D12 Sabır — manage difficulty through steady and active effort.',
+    'D14 Saygı — discuss people, beliefs and disagreement without humiliation.',
+    'D16 Sorumluluk — accept consequences and act to protect safety and dignity.',
+    'D20 Yardımseverlik — respond to real need through respectful help.',
+    `Use a value only where the chapter gives concrete support; see ${TYMM_VALUES}.`,
+  ],
+  languageFocus: [
+    'Source status: no separate student-facing Language Focus exists in src/data/moses/b1/en.',
+    'Teacher-side language support must come from structures actually present in each current English chapter.',
+    'Do not ask learners to open or complete a Language Focus until such a source is genuinely added.',
+    'If a student-facing Language Focus is added later, re-audit all 13 chapter targets and link the guide to the new source.',
+  ],
+  differentiationNotes: 'Reduce output length and language choices while preserving the same evidence target. Extend stronger B1 learners through clearer reasons, comparison, paragraph cohesion and source-aware interpretation rather than unrelated B2 grammar or extra historical claims.',
 };
