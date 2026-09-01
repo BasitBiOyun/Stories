@@ -2,28 +2,29 @@
 
 level: B2
 phase: CLEANUP
-currentBook: Adam B2
+currentBook: Abraham B2
 status: COMPLETE
 filesInspected:
-- src/data/adam/b2/ar/teacherGuide.ts
-- src/data/adam/b2/ar/selfStudyGuide.ts
+- src/data/abraham/b2/ar/teacherGuide.ts
+- src/data/abraham/b2/ar/selfStudyGuide.ts
 englishExpressionsFound:
-- `Tap & Reveal` in Teacher Guide chapter 8 after-reading guidance.
-- `Tap & Reveal` in Teacher Guide chapter 8 lesson plan.
-- `Arabic` in Self-Study Guide user-visible language metadata.
-- `Tap & Reveal` in Self-Study Guide chapter 8 interactive tip.
+- `Word Notes` in Teacher Guide pronunciation guidance.
+- `E` / `I` evidence-inference labels in Teacher Guide during-reading guidance.
+- `Word Notes` in Teacher Guide interactive tips.
+- `Word Notes` in Self-Study Guide lesson plan.
+- `Word Notes` in Self-Study Guide interactive tips.
 arabicReplacementsMade:
-- `Tap & Reveal` → `نشاط «اضغط واكشف»` in visible Arabic guidance.
-- `language: 'Arabic'` → `language: 'العربية'` in user-visible metadata.
+- `Word Notes` → `ملاحظات الكلمات` in user-visible Arabic guidance.
+- `E` / `I` → `د` / `ا` for `الدليل` / `الاستنتاج` in the user-visible evidence-inference instruction.
 filesChanged:
-- src/data/adam/b2/ar/teacherGuide.ts
-- src/data/adam/b2/ar/selfStudyGuide.ts
+- src/data/abraham/b2/ar/teacherGuide.ts
+- src/data/abraham/b2/ar/selfStudyGuide.ts
 - docs/automation/b1-b2-arabic-guide-cleanup-progress.md
 commitSHA:
-- teacher guide: fc03d26ebeaa9cbd5853fee519209346aa6d3912
-- self-study guide: 0ea90992e32a6719dd0f76d844f8cfbca9c6e3b2
-nextBook: Abraham B2
-nextTask: START_ABRAHAM_B2_ON_NEXT_RUN
+- teacher guide: 773e47779edee81738c6f5342d3fb6687628d4b5
+- self-study guide: 5095a4b14fb78f1be0e44137ec88ce5833f93bf4
+nextBook: Moses B2
+nextTask: START_MOSES_B2_ON_NEXT_RUN
 intentionallyRetainedEnglish:
 - Technical TypeScript identifiers and property names.
 - CEFR code B2 where used as a level code.
@@ -34,7 +35,8 @@ completedBooks:
 - Mecca/Bilal B1
 - Yunus Emre B1
 - Adam B2
+- Abraham B2
 notes:
-- Adam B2 Arabic Teacher Guide and Self-Study Guide cleanup is complete.
-- No story prose, exercises, English files, shared/global files, A2 files, or other B2 books were modified.
+- Abraham B2 Arabic Teacher Guide and Self-Study Guide cleanup is complete.
+- No story prose, exercises, English files, shared/global files, A2 files, B1 files, or other B2 books were modified.
 - No build, typecheck, or CI run was performed.
