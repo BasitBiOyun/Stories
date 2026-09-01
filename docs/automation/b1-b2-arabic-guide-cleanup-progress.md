@@ -1,22 +1,26 @@
 # B1/B2 Arabic Guide Cleanup Progress
 
 level: B2
-phase: CLEANUP
-currentBook: Mecca/Bilal B2
+phase: COMPLETE
+currentBook: Yunus Emre B2
 status: COMPLETE
 filesInspected:
-- src/data/mecca/b2/ar/teacherGuide.ts
-- src/data/mecca/b2/ar/selfStudyGuide.ts
+- src/data/yunusEmre/b2/ar/teacherGuide.ts
+- src/data/yunusEmre/b2/ar/selfStudyGuide.ts
 englishExpressionsFound:
-- None in user-visible Arabic prose.
+- Tap & Reveal
 arabicReplacementsMade:
-- None required.
+- Tap & Reveal → نشاط «اضغط واكشف»
 filesChanged:
+- src/data/yunusEmre/b2/ar/teacherGuide.ts
+- src/data/yunusEmre/b2/ar/selfStudyGuide.ts
 - docs/automation/b1-b2-arabic-guide-cleanup-progress.md
 commitSHA:
+- teacherGuide: 71caaa475638c535050cc15e097c1cef22118345
+- selfStudyGuide: 7a80b453595fb43f44f6be1cb6146bd2c9c3d705
 - checkpoint: pending from this update
-nextBook: Yunus Emre B2
-nextTask: START_YUNUS_EMRE_B2_ON_NEXT_RUN
+nextBook: NONE
+nextTask: NONE
 intentionallyRetainedEnglish:
 - Technical TypeScript identifiers and property names.
 - CEFR code B2 where used as a level code.
@@ -30,9 +34,9 @@ completedBooks:
 - Abraham B2
 - Moses B2
 - Mecca/Bilal B2
+- Yunus Emre B2
 notes:
-- Mecca/Bilal B2 Arabic Teacher Guide and Self-Study Guide cleanup is complete.
-- No user-visible English words or phrases requiring localization were found in either guide.
-- No guide file changes were necessary.
-- No story prose, exercises, English files, shared/global files, A2 files, B1 files, or other B2 books were modified.
+- Yunus Emre B2 Arabic Teacher Guide and Self-Study Guide cleanup is complete.
+- All five B1 books and all five B2 books are now complete.
+- No story prose, exercises, Language Focus, Language Review, English files, shared/global files, A2 files, or other book directories were modified in this run.
 - No build, typecheck, or CI run was performed.
