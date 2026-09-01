@@ -82,37 +82,38 @@ jobs:
           text = text.replace(old_type, new_type, 1)
 
           glossary_code = r'''
-  const teacherGuideGlossary = React.useMemo(() => {
-    const entries = new Map<string, { word: string; definition: string; example?: string }>();
+            const teacherGuideGlossary = React.useMemo(() => {
+              const entries = new Map<string, { word: string; definition: string; example?: string }>();
 
-    pages.forEach((page) => {
-      (page.vocabulary || []).forEach((item) => {
-        const word = item.word?.trim();
-        const definition = item.definition?.trim();
-        if (!word || !definition) return;
-        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
-        if (!entries.has(key)) {
-          entries.set(key, { word, definition, example: item.example?.trim() || undefined });
-        }
-      });
+              pages.forEach((page) => {
+                (page.vocabulary || []).forEach((item) => {
+                  const word = item.word?.trim();
+                  const definition = item.definition?.trim();
+                  if (!word || !definition) return;
+                  const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+                  if (!entries.has(key)) {
+                    entries.set(key, { word, definition, example: item.example?.trim() || undefined });
+                  }
+                });
 
-      (page.vocabularyPairs || []).forEach((item) => {
-        const word = item.word?.trim();
-        const definition = item.meaning?.trim();
-        if (!word || !definition) return;
-        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
-        if (!entries.has(key)) {
-          entries.set(key, { word, definition });
-        }
-      });
-    });
+                (page.vocabularyPairs || []).forEach((item) => {
+                  const word = item.word?.trim();
+                  const definition = item.meaning?.trim();
+                  if (!word || !definition) return;
+                  const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+                  if (!entries.has(key)) {
+                    entries.set(key, { word, definition });
+                  }
+                });
+              });
 
-    return Array.from(entries.values()).sort((a, b) =>
-      a.word.localeCompare(b.word, isArabicGuide ? 'ar' : 'en')
-    );
-  }, [pages, isArabicGuide]);
+              return Array.from(entries.values()).sort((a, b) =>
+                a.word.localeCompare(b.word, isArabicGuide ? 'ar' : 'en')
+              );
+            }, [pages, isArabicGuide]);
 
-'''
+          '''
+          glossary_code = '\n'.join(line[10:] if line.startswith('          ') else line for line in glossary_code.splitlines()) + '\n'
           tabs_anchor = "  const tabs = ["
           if tabs_anchor not in text:
               raise SystemExit('TeacherGuide tabs anchor not found')
@@ -134,30 +135,31 @@ jobs:
           )
 
           new_glossary = r'''              <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">{t('tg.glossary')}</h4>
-                {teacherGuideGlossary.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                    {teacherGuideGlossary.map((entry, i) => (
-                      <div key={`${entry.word}-${i}`} className="bg-white/5 border border-gold/10 rounded-xl p-3 sm:p-4">
-                        <div className="font-display text-sm sm:text-base text-gold mb-1">{entry.word}</div>
-                        <p className="font-serif text-xs sm:text-sm text-white leading-relaxed">{entry.definition}</p>
-                        {entry.example && (
-                          <p className={cn(
-                            "font-serif text-[11px] sm:text-xs text-parchment/50 mt-2 leading-relaxed",
-                            language !== 'ar' && "italic"
-                          )}>{entry.example}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="font-serif text-xs sm:text-sm text-parchment/60 leading-relaxed">
-                    {language === 'ar'
-                      ? 'لا توجد مفردات مصدرية متاحة لهذا الكتاب في بيانات الصفحات الحالية.'
-                      : 'No source glossary entries are available for this book in the current page data.'}
-                  </p>
-                )}
-              </div>'''
+                            <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">{t('tg.glossary')}</h4>
+                            {teacherGuideGlossary.length > 0 ? (
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                                {teacherGuideGlossary.map((entry, i) => (
+                                  <div key={`${entry.word}-${i}`} className="bg-white/5 border border-gold/10 rounded-xl p-3 sm:p-4">
+                                    <div className="font-display text-sm sm:text-base text-gold mb-1">{entry.word}</div>
+                                    <p className="font-serif text-xs sm:text-sm text-white leading-relaxed">{entry.definition}</p>
+                                    {entry.example && (
+                                      <p className={cn(
+                                        "font-serif text-[11px] sm:text-xs text-parchment/50 mt-2 leading-relaxed",
+                                        language !== 'ar' && "italic"
+                                      )}>{entry.example}</p>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <p className="font-serif text-xs sm:text-sm text-parchment/60 leading-relaxed">
+                                {language === 'ar'
+                                  ? 'لا توجد مفردات مصدرية متاحة لهذا الكتاب في بيانات الصفحات الحالية.'
+                                  : 'No source glossary entries are available for this book in the current page data.'}
+                              </p>
+                            )}
+                          </div>'''
+          new_glossary = '\n'.join(line[10:] if line.startswith('          ') else line for line in new_glossary.splitlines())
 
           text, replaced = old_glossary_pattern.subn(new_glossary, text, count=1)
           if replaced != 1:
