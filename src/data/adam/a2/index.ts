@@ -7,7 +7,8 @@ import { adamA2FullGuideText } from './en/fullGuideText';
 
 import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } from './ar/qualityFinalization';
 import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr, adamA2StudentGuideTextAr } from './ar/selfStudyGuide';
+import { adamA2SelfStudyGuideAr, adamA2StudentGuideSectionsAr, adamA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { adamA2FullGuideTextAr } from './ar/fullGuideText';
 
 const adamA2PagesLockedEn = applyA2FinalStoryLanguageLock(adamA2PagesQualityFinalized, 'adam', 'en');
 const adamA2PagesLockedAr = applyA2FinalStoryLanguageLock(adamA2PagesArQualityFinalized, 'adam', 'ar');
@@ -36,7 +37,7 @@ export const adamA2BookDataAr: BookData = {
   selfStudyGuide: adamA2SelfStudyGuideAr,
   studentGuideSections: adamA2StudentGuideSectionsAr,
   studentGuideMetadata: adamA2StudentGuideMetadataAr,
-  studentGuideText: adamA2StudentGuideTextAr,
+  studentGuideText: adamA2FullGuideTextAr,
 };
 
 // For backward compatibility or default export
