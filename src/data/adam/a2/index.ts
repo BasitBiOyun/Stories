@@ -2,7 +2,8 @@ import { BookData } from '../../../types';
 import { applyA2FinalStoryLanguageLock } from '../../a2FinalStoryLanguageLock';
 import { adamA2PagesQualityFinalized, adamA2TeacherGuideQualityFinalized } from './en/qualityFinalization';
 import { adamA2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamA2SelfStudyGuide, adamA2StudentGuideSections, adamA2StudentGuideText } from './en/selfStudyGuide';
+import { adamA2SelfStudyGuide, adamA2StudentGuideSections } from './en/selfStudyGuide';
+import { adamA2FullGuideText } from './en/fullGuideText';
 
 import { adamA2PagesArQualityFinalized, adamA2TeacherGuideArQualityFinalized } from './ar/qualityFinalization';
 import { adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -21,7 +22,7 @@ export const adamA2BookDataEn: BookData = {
   teacherGuideMetadata: adamA2TeacherGuideMetadata,
   selfStudyGuide: adamA2SelfStudyGuide,
   studentGuideSections: adamA2StudentGuideSections,
-  studentGuideText: adamA2StudentGuideText,
+  studentGuideText: adamA2FullGuideText,
 };
 
 export const adamA2BookDataAr: BookData = {
