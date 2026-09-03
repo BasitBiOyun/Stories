@@ -5,6 +5,7 @@ import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
 import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
 import { localizeTeacherGuideTymmValues } from '../data/localizeTeacherGuideTymmValues';
+import { normalizeTeacherGuideLessonTiming } from '../data/normalizeTeacherGuideLessonTiming';
 
 export interface BookBundleState {
   definition: BookDefinition | null;
@@ -49,7 +50,8 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       ]);
       const loadedAssets = await storageModule.loadBookAssets(definition.storage);
       const resolvedPair = storageModule.applyResolvedAssets(loadedPair, loadedAssets);
-      return localizeTeacherGuideTymmValues(resolvedPair);
+      const localizedPair = localizeTeacherGuideTymmValues(resolvedPair);
+      return normalizeTeacherGuideLessonTiming(localizedPair);
     };
 
     load()
