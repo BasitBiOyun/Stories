@@ -20,10 +20,10 @@ import {
   Link as LinkIcon,
   Award,
   Download
-} from '../ui/icons';
+} from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
-import { TeacherGuideSection } from '../../types';
+import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export const TeacherGuide = ({ 
@@ -33,8 +33,10 @@ export const TeacherGuide = ({
   subtitle,
   footerText,
   content = [],
+  pages = [],
   metadata,
   bookId,
+  level,
   collectionId
 }: { 
   isOpen: boolean; 
@@ -43,8 +45,10 @@ export const TeacherGuide = ({
   subtitle?: string;
   footerText?: string;
   content?: TeacherGuideSection[];
+  pages?: PageData[];
   metadata?: import('../../types').TeacherGuideMetadata;
   bookId?: string;
+  level?: Level;
   collectionId?: string;
 }) => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -59,24 +63,188 @@ export const TeacherGuide = ({
   const isMecca = bookId?.toLowerCase().includes('mecca') || bookId?.toLowerCase().includes('mekke');
   const isYunus = bookId?.toLowerCase().includes('yunus');
 
+
+const assessmentLevel: Level = level || 'A2';
+const isArabicGuide = language === 'ar';
+
+const assessmentProfile = (() => {
+  const en = {
+    A2: {
+      evidenceLabel: 'Learning Evidence',
+      formativeLabel: 'Formative Use',
+      description: 'Use short, varied, low-pressure evidence throughout the lesson. Focus on basic comprehension, familiar vocabulary and structures, simple spoken or written production, task completion, and reflection. Give immediate feedback and allow another attempt when useful.',
+      evidenceItems: [
+        'Short comprehension checks: multiple choice, true/false, matching, and sequencing.',
+        'Use of 3–5 target words in guided answers or simple sentences.',
+        'A brief oral retelling or a 2–4 sentence written response.',
+        'Teacher observation of participation and task completion with a simple checklist.',
+        'Exit ticket plus simple self-assessment: I can / I need more practice.'
+      ],
+      rubricTitle: 'A2 Formative Assessment Rubric',
+      rubricRows: [
+        { criterion: 'Basic Comprehension', excellent: 'Understands the main idea, sequences events, and answers most short questions independently.', good: 'Understands the main idea and answers basic questions with limited support.', developing: 'Needs visuals, rereading, or guided questions to understand the main events.' },
+        { criterion: 'Vocabulary', excellent: 'Uses several target words correctly in simple sentences.', good: 'Uses some target words understandably with minor errors.', developing: 'Recognizes some words but needs a word bank or model to use them.' },
+        { criterion: 'Language Production', excellent: 'Produces clear, ordered simple sentences orally or in writing.', good: 'Produces short understandable sentences with some errors.', developing: 'Needs sentence starters or a model to produce a complete response.' },
+        { criterion: 'Task Completion & Participation', excellent: 'Completes the task and participates appropriately and consistently.', good: 'Completes most of the task and participates when encouraged.', developing: 'Needs repeated support to begin or continue the task.' },
+        { criterion: 'Simple Reflection', excellent: 'States a lesson or value and gives a simple personal or school-life example.', good: 'States a relevant lesson or value in a simple sentence.', developing: 'Needs a prompt or choices to express the lesson or value.' }
+      ]
+    },
+    B1: {
+      evidenceLabel: 'Learning Evidence',
+      formativeLabel: 'Formative Use',
+      description: 'Collect varied evidence during learning: comprehension, retelling, vocabulary and structure use, short spoken or written production, interpretation, and reflection. Use results to give specific feedback and adjust support before the next task.',
+      evidenceItems: [
+        'Comprehension tasks covering main ideas, details, sequence, cause, and consequence.',
+        'Short retelling or summary using target vocabulary and structures.',
+        'A spoken or written task explaining a motive, result, value, or interpretation.',
+        'Teacher observation of participation and collaboration with a checklist.',
+        'Exit ticket plus brief self- or peer-assessment with one strength and one next step.'
+      ],
+      rubricTitle: 'B1 Formative Assessment Rubric',
+      rubricRows: [
+        { criterion: 'Comprehension & Evidence', excellent: 'Explains main ideas and key relationships and supports answers with relevant details from the text.', good: 'Understands the main idea and most details and gives a simple supporting example.', developing: 'Understands parts of the text but needs support to connect or use details as evidence.' },
+        { criterion: 'Vocabulary & Language Control', excellent: 'Uses story vocabulary and target structures accurately in connected sentences.', good: 'Uses appropriate vocabulary and understandable structures with some errors.', developing: 'Uses limited vocabulary or needs sentence frames to complete the task.' },
+        { criterion: 'Spoken/Written Production', excellent: 'Expresses ideas clearly in an organized short paragraph or sustained response.', good: 'Produces several connected sentences that communicate the required meaning.', developing: 'Produces short isolated sentences and needs support with linking and organization.' },
+        { criterion: 'Interpretation & Reflection', excellent: 'Explains motives, consequences, or values and gives a clear reason for a viewpoint.', good: 'Gives a relevant interpretation or opinion with one reason.', developing: 'States a fact or opinion but needs prompting to explain it.' },
+        { criterion: 'Participation & Revision', excellent: 'Participates actively and uses feedback to improve an answer or product.', good: 'Participates appropriately and makes a simple improvement after feedback.', developing: 'Needs repeated encouragement or support to participate and revise.' }
+      ]
+    },
+    B2: {
+      evidenceLabel: 'Learning Evidence',
+      formativeLabel: 'Formative Use',
+      description: 'Collect multiple forms of evidence throughout learning, not only at the end. Track textual comprehension, linguistic precision, analysis, argumentation, transfer to new contexts, and response to feedback. Use the evidence to adjust instruction and allow revision.',
+      evidenceItems: [
+        'Text-based analysis or discussion supported with precise evidence from the story.',
+        'Extended speaking or writing showing organization, accuracy, range, and control.',
+        'Performance or transfer tasks that apply an idea or value to a new context.',
+        'Teacher observation with a checklist or rating scale during collaborative work.',
+        'Self- and peer-assessment followed by a visible revision or improvement.'
+      ],
+      rubricTitle: 'B2 Formative Assessment Rubric',
+      rubricRows: [
+        { criterion: 'Critical Comprehension & Textual Evidence', excellent: 'Interprets ideas and relationships insightfully and supports claims with precise textual evidence.', good: 'Understands main ideas and uses appropriate evidence with reasonable explanation.', developing: 'Mostly restates information or needs support to select and explain evidence.' },
+        { criterion: 'Language Range & Precision', excellent: 'Uses varied vocabulary and structures accurately and flexibly; minor errors do not affect meaning.', good: 'Uses an appropriate range of language with some errors that do not block communication.', developing: 'Relies on limited or repetitive language; errors sometimes reduce clarity.' },
+        { criterion: 'Argumentation & Organization', excellent: 'Develops a clear position, links ideas logically, and supports points with convincing reasons and examples.', good: 'Presents a generally organized position with understandable links and reasons.', developing: 'Presents disconnected ideas or needs support to organize and justify a viewpoint.' },
+        { criterion: 'Analysis & Transfer', excellent: 'Makes independent comparisons, inferences, and meaningful connections to new situations.', good: 'Makes relevant connections and gives a reasonable interpretation or application.', developing: 'Needs guiding questions to move beyond literal understanding toward analysis or application.' },
+        { criterion: 'Independent Learning & Feedback', excellent: 'Evaluates own work and uses teacher or peer feedback to make clear independent improvements.', good: 'Responds to feedback and makes some appropriate improvements.', developing: 'Needs direct guidance to identify improvements and act on feedback.' }
+      ]
+    }
+  };
+
+  const ar = {
+    A2: {
+      evidenceLabel: 'أدلة التعلّم',
+      formativeLabel: 'الاستخدام التكويني',
+      description: 'يُتابَع تقدّم المتعلم من خلال مهام قصيرة ومتنوعة ومنخفضة الضغط أثناء الدرس. يركز التقييم على الفهم الأساسي، والمفردات والتراكيب المألوفة، وإنتاج جمل بسيطة، وإنجاز المهمة، والتأمل، مع تغذية راجعة فورية وفرصة للمحاولة مرة أخرى.',
+      evidenceItems: [
+        'أسئلة فهم قصيرة: اختيار من متعدد، صواب أو خطأ، مطابقة، وترتيب أحداث.',
+        'استخدام 3–5 كلمات مستهدفة في إجابات موجهة أو جمل بسيطة.',
+        'إعادة سرد شفهي قصير أو كتابة 2–4 جمل.',
+        'ملاحظة المعلم للمشاركة وإنجاز المهمة باستخدام قائمة تحقق بسيطة.',
+        'تذكرة خروج مع تقييم ذاتي بسيط: أستطيع / أحتاج إلى مزيد من التدريب.'
+      ],
+      rubricTitle: 'مقياس التقييم التكويني للمستوى A2',
+      rubricRows: [
+        { criterion: 'الفهم الأساسي', excellent: 'يفهم الفكرة الرئيسة ويرتب الأحداث ويجيب عن معظم الأسئلة القصيرة بصورة مستقلة.', good: 'يفهم الفكرة الرئيسة ويجيب عن الأسئلة الأساسية مع دعم محدود.', developing: 'يحتاج إلى صور أو إعادة قراءة أو أسئلة موجهة لفهم الأحداث الأساسية.' },
+        { criterion: 'المفردات', excellent: 'يستخدم عدة كلمات مستهدفة بصورة صحيحة في جمل بسيطة.', good: 'يستخدم بعض الكلمات المستهدفة بصورة مفهومة مع أخطاء بسيطة.', developing: 'يتعرف على بعض الكلمات لكنه يحتاج إلى بنك كلمات أو نموذج لاستخدامها.' },
+        { criterion: 'الإنتاج اللغوي', excellent: 'ينتج جملاً بسيطة واضحة ومرتبة شفهياً أو كتابياً.', good: 'ينتج جملاً قصيرة مفهومة مع بعض الأخطاء.', developing: 'يحتاج إلى بدايات جمل أو نموذج لإنتاج إجابة كاملة.' },
+        { criterion: 'إنجاز المهمة والمشاركة', excellent: 'يكمل المهمة ويشارك بصورة مناسبة ومستقرة.', good: 'يكمل معظم المهمة ويشارك عند التشجيع.', developing: 'يحتاج إلى دعم متكرر لبدء المهمة أو الاستمرار فيها.' },
+        { criterion: 'التأمل البسيط', excellent: 'يذكر درساً أو قيمة ويعطي مثالاً بسيطاً من حياته أو المدرسة.', good: 'يذكر درساً أو قيمة مناسبة بجملة بسيطة.', developing: 'يحتاج إلى سؤال موجه أو خيارات للتعبير عن الدرس أو القيمة.' }
+      ]
+    },
+    B1: {
+      evidenceLabel: 'أدلة التعلّم',
+      formativeLabel: 'الاستخدام التكويني',
+      description: 'يُقاس تقدّم المتعلم من خلال أدلة متنوعة أثناء التعلم: فهم النص، وإعادة السرد، واستخدام المفردات والتراكيب، والإنتاج الشفهي والكتابي القصير، والتفسير والتأمل. تُستخدم النتائج لتقديم تغذية راجعة وتعديل الدعم قبل المهمة التالية.',
+      evidenceItems: [
+        'مهام فهم تشمل الفكرة الرئيسة والتفاصيل والتسلسل والسبب والنتيجة.',
+        'إعادة سرد أو تلخيص قصير باستخدام مفردات وتراكيب المستوى.',
+        'مهمة شفوية أو كتابية تفسر دافعاً أو نتيجة أو قيمة أو رأياً.',
+        'ملاحظة مشاركة المتعلم وتعاونه باستخدام قائمة تحقق.',
+        'تذكرة خروج مع تقييم ذاتي أو تقييم أقران يحدد نقطة قوة وخطوة تالية.'
+      ],
+      rubricTitle: 'مقياس التقييم التكويني للمستوى B1',
+      rubricRows: [
+        { criterion: 'الفهم واستخدام الدليل', excellent: 'يفسر الفكرة الرئيسة والعلاقات المهمة ويستند إلى تفاصيل مناسبة من النص.', good: 'يفهم الفكرة الرئيسة ومعظم التفاصيل ويقدم مثالاً داعماً بسيطاً.', developing: 'يفهم أجزاء من النص لكنه يحتاج دعماً لربط التفاصيل أو استخدامها كدليل.' },
+        { criterion: 'المفردات والتراكيب', excellent: 'يستخدم مفردات القصة والتراكيب المستهدفة بدقة في جمل مترابطة.', good: 'يستخدم مفردات مناسبة وتراكيب مفهومة مع بعض الأخطاء.', developing: 'يعتمد على مفردات محدودة أو يحتاج إلى قوالب لغوية لإكمال المهمة.' },
+        { criterion: 'التعبير الشفهي والكتابي', excellent: 'يعبر عن أفكاره بوضوح في فقرة أو استجابة قصيرة منظمة.', good: 'ينتج عدة جمل مترابطة توصل المعنى المطلوب.', developing: 'ينتج جملاً قصيرة متفرقة ويحتاج دعماً في الربط والتنظيم.' },
+        { criterion: 'التفسير والتأمل', excellent: 'يفسر الدوافع أو النتائج أو القيم ويقدم سبباً واضحاً لرأيه.', good: 'يقدم تفسيراً أو رأياً مناسباً مع سبب واحد.', developing: 'يذكر حقيقة أو رأياً دون تفسير كافٍ إلا مع التوجيه.' },
+        { criterion: 'المشاركة والمراجعة', excellent: 'يشارك بفاعلية ويستخدم التغذية الراجعة لتحسين إجابته أو منتجه.', good: 'يشارك بصورة مناسبة ويجري تحسيناً بسيطاً بعد التغذية الراجعة.', developing: 'يحتاج إلى تشجيع أو دعم مستمر للمشاركة والمراجعة.' }
+      ]
+    },
+    B2: {
+      evidenceLabel: 'أدلة التعلّم',
+      formativeLabel: 'الاستخدام التكويني',
+      description: 'تُجمع أدلة متعددة طوال عملية التعلم، لا في نهايتها فقط. يُتابَع فهم النص ودقة استخدام اللغة والتحليل والحجاج والنقل إلى سياقات جديدة والاستفادة من التغذية الراجعة، ثم تُستخدم النتائج لتعديل التدريس وإتاحة المراجعة والتحسين.',
+      evidenceItems: [
+        'تحليل نصي أو مناقشة تستند إلى شواهد دقيقة من القصة.',
+        'إنتاج شفهي أو كتابي ممتد يبيّن التنظيم والدقة والثراء اللغوي.',
+        'مهمة أداء أو نقل تطبق فكرة أو قيمة في سياق جديد.',
+        'ملاحظة المعلم باستخدام قائمة تحقق أو مقياس تقدير أثناء العمل التعاوني.',
+        'تقييم ذاتي وتقييم أقران يتبعه تعديل واضح في المنتج أو الأداء.'
+      ],
+      rubricTitle: 'مقياس التقييم التكويني للمستوى B2',
+      rubricRows: [
+        { criterion: 'الفهم النقدي والاستدلال بالنص', excellent: 'يفسر الأفكار والعلاقات بعمق ويستند إلى شواهد دقيقة وملائمة من النص.', good: 'يفهم الأفكار الرئيسة ويستخدم شواهد مناسبة مع تفسير مقبول.', developing: 'يعيد المعلومات غالباً أو يحتاج دعماً لاختيار الشواهد وتفسيرها.' },
+        { criterion: 'الدقة والثراء اللغوي', excellent: 'يستخدم مفردات وتراكيب متنوعة ودقيقة بمرونة مع أخطاء قليلة لا تعيق المعنى.', good: 'يستخدم نطاقاً مناسباً من اللغة مع بعض الأخطاء التي لا تمنع الفهم.', developing: 'يعتمد على لغة محدودة أو متكررة وتؤثر الأخطاء أحياناً في الوضوح.' },
+        { criterion: 'الحجاج والتنظيم', excellent: 'ينظم موقفه بوضوح ويربط الأفكار منطقياً ويدعمها بأسباب وأمثلة مقنعة.', good: 'يقدم موقفاً منظماً نسبياً مع روابط وأسباب مفهومة.', developing: 'يقدم أفكاراً متفرقة أو يحتاج إلى دعم لتنظيم الرأي وتبريره.' },
+        { criterion: 'التحليل والنقل', excellent: 'يقارن ويستنتج بصورة مستقلة ويربط الأفكار بمواقف أو سياقات جديدة.', good: 'يجري روابط مناسبة ويقدم تفسيراً أو تطبيقاً معقولاً.', developing: 'يحتاج إلى أسئلة موجهة للانتقال من الفهم المباشر إلى التحليل أو التطبيق.' },
+        { criterion: 'الاستقلالية والتغذية الراجعة', excellent: 'يقيّم عمله ويستخدم تغذية المعلم أو الأقران لإجراء تحسينات واضحة ومستقلة.', good: 'يستجيب للتغذية الراجعة ويجري بعض التحسينات المناسبة.', developing: 'يحتاج إلى متابعة مباشرة لتحديد التحسينات وتطبيق التغذية الراجعة.' }
+      ]
+    }
+  };
+
+  return (isArabicGuide ? ar : en)[assessmentLevel];
+})();
+
+
+  const teacherGuideGlossary = React.useMemo(() => {
+    const entries = new Map<string, { word: string; definition: string; example?: string }>();
+
+    pages.forEach((page) => {
+      (page.vocabulary || []).forEach((item) => {
+        const word = item.word?.trim();
+        const definition = item.definition?.trim();
+        if (!word || !definition) return;
+        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+        if (!entries.has(key)) {
+entries.set(key, { word, definition, example: item.example?.trim() || undefined });
+        }
+      });
+
+      (page.vocabularyPairs || []).forEach((item) => {
+        const word = item.word?.trim();
+        const definition = item.meaning?.trim();
+        if (!word || !definition) return;
+        const key = word.toLocaleLowerCase(isArabicGuide ? 'ar' : 'en');
+        if (!entries.has(key)) {
+entries.set(key, { word, definition });
+        }
+      });
+    });
+
+    return Array.from(entries.values()).sort((a, b) =>
+      a.word.localeCompare(b.word, isArabicGuide ? 'ar' : 'en')
+    );
+  }, [pages, isArabicGuide]);
+
   const tabs = [
     { id: 'overview', label: `${formatNumber(1)}. ${t('tg.overview')}`, icon: <BookOpen size={24} /> },
     { id: 'curriculum', label: `${formatNumber(2)}. ${t('tg.curriculum')}`, icon: <Layout size={24} /> },
     { id: 'approach', label: `${formatNumber(3)}. ${t('tg.approach')}`, icon: <Lightbulb size={24} /> },
-    { id: 'plans', label: `${formatNumber(4)}. ${t('tg.plans')}`, icon: <ClipboardList size={24} /> },
-    { id: 'framework', label: `${formatNumber(5)}. ${t('tg.framework')}`, icon: <MessageSquare size={24} /> },
-    { id: 'chapters', label: `${formatNumber(6)}. ${t('tg.chapters')}`, icon: <BookIcon size={24} /> },
-    { id: 'management', label: `${formatNumber(7)}. ${t('tg.management')}`, icon: <Users size={24} /> },
-    { id: 'differentiation', label: `${formatNumber(8)}. ${t('tg.differentiation')}`, icon: <Users size={24} /> },
-    { id: 'assessment', label: `${formatNumber(9)}. ${t('tg.assessment')}`, icon: <Award size={24} /> },
-    { id: 'kinesthetic', label: `${formatNumber(10)}. ${t('tg.kinesthetic')}`, icon: <Move size={24} /> },
-    { id: 'global', label: `${formatNumber(11)}. ${t('tg.global')}`, icon: <Globe size={24} /> },
-    { id: 'values', label: `${formatNumber(12)}. ${t('tg.values')}`, icon: <Heart size={24} /> },
-    { id: 'sensitive', label: `${formatNumber(13)}. ${t('tg.sensitive')}`, icon: <ShieldAlert size={24} /> },
-    { id: 'tips', label: `${formatNumber(14)}. ${t('tg.tips')}`, icon: <MessageSquare size={24} /> },
-    { id: 'home', label: `${formatNumber(15)}. ${t('tg.home')}`, icon: <Home size={24} /> },
-    { id: 'checklist', label: `${formatNumber(16)}. ${t('tg.checklist')}`, icon: <CheckCircle size={24} /> },
-    { id: 'appendices', label: `${formatNumber(17)}. ${t('tg.appendices')}`, icon: <FileText size={24} /> },
+    { id: 'framework', label: `${formatNumber(4)}. ${t('tg.framework')}`, icon: <MessageSquare size={24} /> },
+    { id: 'chapters', label: `${formatNumber(5)}. ${t('tg.chapters')}`, icon: <BookIcon size={24} /> },
+    { id: 'management', label: `${formatNumber(6)}. ${t('tg.management')}`, icon: <Users size={24} /> },
+    { id: 'differentiation', label: `${formatNumber(7)}. ${t('tg.differentiation')}`, icon: <Users size={24} /> },
+    { id: 'assessment', label: `${formatNumber(8)}. ${t('tg.assessment')}`, icon: <Award size={24} /> },
+    { id: 'kinesthetic', label: `${formatNumber(9)}. ${t('tg.kinesthetic')}`, icon: <Move size={24} /> },
+    { id: 'global', label: `${formatNumber(10)}. ${t('tg.global')}`, icon: <Globe size={24} /> },
+    { id: 'values', label: `${formatNumber(11)}. ${t('tg.values')}`, icon: <Heart size={24} /> },
+    { id: 'sensitive', label: `${formatNumber(12)}. ${t('tg.sensitive')}`, icon: <ShieldAlert size={24} /> },
+    { id: 'tips', label: `${formatNumber(13)}. ${t('tg.tips')}`, icon: <MessageSquare size={24} /> },
+    { id: 'home', label: `${formatNumber(14)}. ${t('tg.home')}`, icon: <Home size={24} /> },
+    { id: 'checklist', label: `${formatNumber(15)}. ${t('tg.checklist')}`, icon: <CheckCircle size={24} /> },
+    { id: 'appendices', label: `${formatNumber(16)}. ${t('tg.appendices')}`, icon: <FileText size={24} /> },
   ];
 
   React.useEffect(() => {
@@ -175,7 +343,7 @@ export const TeacherGuide = ({
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.plans')}</h3>
             <div className="space-y-6 sm:space-y-8">
               <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} {language === 'ar' ? 'أ' : 'A'}: {metadata?.implementationPlans?.optionA.title}</h4>
+                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} A: {metadata?.implementationPlans?.optionA.title}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-xs uppercase tracking-widest text-gold">
                   {metadata?.implementationPlans?.optionA.steps?.map((step, i) => (
                     <div key={i} className="space-y-1 bg-white/5 p-3 rounded-xl sm:bg-transparent sm:p-0 sm:space-y-2 sm:border-r sm:border-gold/10 sm:pr-4">
@@ -186,7 +354,7 @@ export const TeacherGuide = ({
                 </div>
               </div>
               <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} {language === 'ar' ? 'ب' : 'B'}: {metadata?.implementationPlans?.optionB.title}</h4>
+                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} B: {metadata?.implementationPlans?.optionB.title}</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                   {metadata?.implementationPlans?.optionB.lessons?.map((lesson, i) => (
                     <div key={i}>
@@ -201,7 +369,7 @@ export const TeacherGuide = ({
               </div>
               {metadata?.implementationPlans?.optionC && (
                 <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                  <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} {language === 'ar' ? 'ج' : 'C'}: {metadata?.implementationPlans?.optionC.title}</h4>
+                  <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} C: {metadata?.implementationPlans?.optionC.title}</h4>
                   {metadata?.implementationPlans?.optionC.steps && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 text-xs uppercase tracking-widest text-gold">
                       {metadata?.implementationPlans?.optionC.steps.map((step, i) => (
@@ -484,24 +652,21 @@ export const TeacherGuide = ({
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
               <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border border-gold/10 hover:bg-gold/5 transition-colors">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase mb-3 sm:mb-4 flex items-center gap-2"><ClipboardList size={16} /> {t('tg.assessmentEvidence')}</h4>
+                <h4 className="font-display text-gold text-xs sm:text-sm uppercase mb-3 sm:mb-4 flex items-center gap-2"><ClipboardList size={16} /> {assessmentProfile.evidenceLabel}</h4>
                 <div className="font-serif text-white text-xs sm:text-base leading-relaxed">
-                  {metadata?.assessmentEvidence}
+                  {assessmentProfile.description}
                 </div>
               </div>
               <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border border-gold/10 hover:bg-gold/5 transition-colors">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase mb-3 sm:mb-4 flex items-center gap-2"><CheckCircle size={16} /> {t('tg.lookFor')}</h4>
+                <h4 className="font-display text-gold text-xs sm:text-sm uppercase mb-3 sm:mb-4 flex items-center gap-2"><CheckCircle size={16} /> {assessmentProfile.formativeLabel}</h4>
                 <ul className="space-y-2 font-serif text-white text-xs sm:text-sm leading-relaxed">
-                  <li>• {t('tg.lookFor1')}</li>
-                  <li>• {t('tg.lookFor2')}</li>
-                  <li>• {t('tg.lookFor3')}</li>
-                  <li>• {t('tg.lookFor4')}</li>
+                  {assessmentProfile.evidenceItems.map((item, i) => <li key={i}>• {item}</li>)}
                 </ul>
               </div>
             </div>
 
             <div className="bg-gold/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-              <h4 className="font-display text-lg sm:text-2xl text-gold mb-4 sm:mb-6">{metadata?.rubricTitle}</h4>
+              <h4 className="font-display text-lg sm:text-2xl text-gold mb-4 sm:mb-6">{assessmentProfile.rubricTitle}</h4>
               <div className="overflow-x-auto -mx-2 px-2">
                 <table className="w-full text-left font-serif text-xs sm:text-sm text-white min-w-[500px]">
                   <thead>
@@ -513,7 +678,7 @@ export const TeacherGuide = ({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gold/10">
-                    {metadata?.rubricRows?.map((row, i) => (
+                    {assessmentProfile.rubricRows.map((row, i) => (
                       <tr key={i}>
                         <td className="py-3 sm:py-6 font-bold text-parchment text-xs sm:text-base">{row.criterion}</td>
                         <td className="py-3 sm:py-6 pr-2 sm:pr-4">{row.excellent}</td>
@@ -1201,38 +1366,6 @@ export const TeacherGuide = ({
         const fallbackReflectiveTitle = isAbraham ? 'Patience and Trust' : isMoses ? 'Trusting Allah in Difficult Times' : isMecca ? 'Ethical Economics & Character' : isYunus ? 'Guarding and Polishing the Heart' : t('tg.reflectiveWritingPrompt');
         const fallbackReflectiveDesc = isAbraham ? 'Hagar placed her trust in Allah in the desert. Write about a time when you had to be patient, hopeful, and trust things would work out.' : isMoses ? 'Moses’s mother placed him in a basket on the Nile, trusting Allah’s protection. Write about a time when you had to trust and be calm during a hard situation.' : isMecca ? 'Meccan society had high trade wealth but low ethical care for the poor, orphans, and widows. Write about a time you noticed that real richness and success come from helping others rather than just hoarding wealth.' : isYunus ? 'Yunus Emre taught that the heart is the "throne of the Lord," and hurting another person\'s feelings ruins any good deed. Write about a time when you had to control your anger, be patient, or speak kindly to save a sibling or classmate\'s heart.' : t('tg.reflectiveWritingDesc');
 
-        const fallbackSentenceFrames = isAbraham ? [
-          'Prophet Abraham (AS) searched for the Creator because...',
-          'The fire became cool and safe for Abraham by Allah’s command.',
-          'Hagar showed deep patience in the empty valley when she...',
-          'Allah blessed the family with the miraculous spring of Zamzam water.',
-          'The key moral lesson of this story is...'
-        ] : isMoses ? [
-          'Prophet Moses (AS) fled to Midian because...',
-          'Prophet Moses (AS) helped the two sisters water their...',
-          'Allah spoke to Moses at the sacred mountain of...',
-          'With Allah’s command, Prophet Moses (AS) used his staff to...',
-          'The biggest lesson from Moses’s life is...'
-        ] : isMecca ? [
-          'Mecca grew as a major center of pilgrimage and trade because...',
-          'The Prophet Muhammad (pbuh) challenged tribal pride by teaching...',
-          'The Farewell Sermon declared that all human beings are equal because...',
-          'We can support vulnerable and marginalized communities today by...',
-          'The spiritual and social lessons from Meccan history show us...'
-        ] : isYunus ? [
-          'Yunus Emre served his spiritual teacher Taptuk Emre for many years with...',
-          'According to Yunus Emre, the heart is the center of love because...',
-          'He wrote his deep Sufi poems in incredibly simple and beautiful language to...',
-          'To overcome pride, arrogance, greed, and anger, we must train our...',
-          'True sincerity and inner morality mean that our inner intentions must match our...'
-        ] : [
-          t('tg.sentence1'),
-          t('tg.sentence2'),
-          t('tg.sentence3'),
-          t('tg.sentence4'),
-          t('tg.sentence5')
-        ];
-
         return (
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.appendices')}</h3>
@@ -1267,16 +1400,31 @@ export const TeacherGuide = ({
                   {appendicesData?.reflectivePrompt?.desc || fallbackReflectiveDesc}
                 </p>
               </div>
-              <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">
-                  {isAbraham || isMoses || isMecca || isYunus ? 'Sentence Frames' : t('tg.glossary')}
-                </h4>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 font-serif text-white text-xs sm:text-base">
-                  {(appendicesData?.sentenceFrames || fallbackSentenceFrames).map((item, i) => (
-                    <li key={i}>• {item}</li>
-                  ))}
-                </ul>
+    <div className="bg-gold/5 p-4 sm:p-8 rounded-2xl border border-gold/10 col-span-full">
+        <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">{t('tg.glossary')}</h4>
+        {teacherGuideGlossary.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+            {teacherGuideGlossary.map((entry, i) => (
+              <div key={`${entry.word}-${i}`} className="bg-white/5 border border-gold/10 rounded-xl p-3 sm:p-4">
+                <div className="font-display text-sm sm:text-base text-gold mb-1">{entry.word}</div>
+                <p className="font-serif text-xs sm:text-sm text-white leading-relaxed">{entry.definition}</p>
+                {entry.example && (
+                  <p className={cn(
+                    "font-serif text-[11px] sm:text-xs text-parchment/50 mt-2 leading-relaxed",
+                    language !== 'ar' && "italic"
+                  )}>{entry.example}</p>
+                )}
               </div>
+            ))}
+          </div>
+        ) : (
+          <p className="font-serif text-xs sm:text-sm text-parchment/60 leading-relaxed">
+            {language === 'ar'
+              ? 'لا توجد مفردات مصدرية متاحة لهذا الكتاب في بيانات الصفحات الحالية.'
+              : 'No source glossary entries are available for this book in the current page data.'}
+          </p>
+        )}
+      </div>
             </div>
           </div>
         );
