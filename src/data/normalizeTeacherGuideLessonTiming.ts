@@ -29,7 +29,7 @@ const DOUBLE_LESSON_CHAPTERS: Record<SupportedLevel, Partial<Record<Exclude<Stor
     // Adam B2 mixes shorter analytical chapters with denser source/interpretation chapters.
     adam: new Set([7, 8, 10, 12, 14, 15, 17]),
     // Abraham B2 chapters were authored as roughly one-period units (previously 40–45 min).
-    abraham: new Set(),
+    abraham: new Set<number>(),
     // These B2 guides were authored as 50+ minute units; they should not be compressed into 40 minutes.
     moses: rangeSet(24),
     mecca: rangeSet(17),
