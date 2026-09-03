@@ -1,11 +1,13 @@
 import { BookData } from '../../../types';
 import { mosesA2Pages } from './en/pages';
 import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesA2SelfStudyGuide, mosesA2StudentGuideSections, mosesA2StudentGuideText, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
+import { mosesA2StudentGuideSections, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
+import { mosesA2SelfStudyGuideCustomEn, mosesA2FullGuideTextCustomEn } from './en/selfStudyGuideCustom';
 
 import { mosesA2PagesAr } from './ar/pages';
 import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesA2SelfStudyGuideAr, mosesA2StudentGuideSectionsAr, mosesA2StudentGuideTextAr, mosesA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { mosesA2StudentGuideSectionsAr, mosesA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { mosesA2SelfStudyGuideCustomAr, mosesA2FullGuideTextCustomAr } from './ar/selfStudyGuideCustom';
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
@@ -15,9 +17,9 @@ export const mosesA2BookDataEn: BookData = {
   pages: mosesA2Pages,
   teacherGuide: mosesA2TeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesA2SelfStudyGuide,
+  selfStudyGuide: mosesA2SelfStudyGuideCustomEn,
   studentGuideSections: mosesA2StudentGuideSections,
-  studentGuideText: mosesA2StudentGuideText,
+  studentGuideText: mosesA2FullGuideTextCustomEn,
   studentGuideMetadata: mosesA2StudentGuideMetadata,
 };
 
@@ -29,9 +31,9 @@ export const mosesA2BookDataAr: BookData = {
   pages: mosesA2PagesAr.length > 0 ? mosesA2PagesAr : mosesA2Pages,
   teacherGuide: mosesA2TeacherGuideAr.length > 0 ? mosesA2TeacherGuideAr : mosesA2TeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataAr.targetLearners ? mosesA2TeacherGuideMetadataAr : mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesA2SelfStudyGuideAr.length > 0 ? mosesA2SelfStudyGuideAr : mosesA2SelfStudyGuide,
+  selfStudyGuide: mosesA2SelfStudyGuideCustomAr,
   studentGuideSections: mosesA2StudentGuideSectionsAr.length > 0 ? mosesA2StudentGuideSectionsAr : mosesA2StudentGuideSections,
-  studentGuideText: mosesA2StudentGuideTextAr || mosesA2StudentGuideText,
+  studentGuideText: mosesA2FullGuideTextCustomAr,
   studentGuideMetadata: mosesA2StudentGuideMetadataAr.whoIsThisFor ? mosesA2StudentGuideMetadataAr : mosesA2StudentGuideMetadata,
 };
 
