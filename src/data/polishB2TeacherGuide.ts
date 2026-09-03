@@ -87,8 +87,15 @@ const polishBook = (book: BookData, isArabic: boolean): BookData => {
       }
     : book.teacherGuideMetadata;
 
-  const polished = { ...book, teacherGuide, teacherGuideMetadata: metadata };
-  return isArabic ? deepReplaceArabicTerms(polished) : polished;
+  if (!isArabic) {
+    return { ...book, teacherGuide, teacherGuideMetadata: metadata };
+  }
+
+  return {
+    ...book,
+    teacherGuide: deepReplaceArabicTerms(teacherGuide),
+    teacherGuideMetadata: metadata ? deepReplaceArabicTerms(metadata) : metadata,
+  };
 };
 
 export const polishReviewedB2TeacherGuide = (pair: BookPair): BookPair => ({
