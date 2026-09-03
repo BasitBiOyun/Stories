@@ -961,8 +961,10 @@ const AppContent = () => {
         isOpen={isTeacherGuideOpen} 
         onClose={() => setIsTeacherGuideOpen(false)} 
         content={currentBook?.teacherGuide || []}
+        pages={currentBook?.pages || []}
         metadata={currentBook?.teacherGuideMetadata}
         bookId={currentBook?.id}
+        level={currentLevel || undefined}
         collectionId={currentCollection || 'prophets'}
       />
 
