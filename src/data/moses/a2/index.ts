@@ -39,8 +39,18 @@ import { mosesA2LanguageFocusExercisesPart10Ar } from './ar/languageFocusPart10'
 import { mosesA2LanguageFocusExercisesPart11Ar } from './ar/languageFocusPart11';
 import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesA2SelfStudyGuide, mosesA2StudentGuideMetadata } from './en/selfStudyGuide';
-import { selfStudyGuide as mosesA2SelfStudyGuideAr, mosesA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import {
+  mosesA2SelfStudyGuidePreview as mosesA2SelfStudyGuide,
+  mosesA2StudentGuideMetadataPreview as mosesA2StudentGuideMetadata,
+  mosesA2StudentGuideSectionsPreview as mosesA2StudentGuideSections,
+  mosesA2StudentGuideTextPreview as mosesA2StudentGuideText,
+} from './en/selfStudyGuidePreview';
+import {
+  mosesA2SelfStudyGuidePreviewAr as mosesA2SelfStudyGuideAr,
+  mosesA2StudentGuideMetadataPreviewAr as mosesA2StudentGuideMetadataAr,
+  mosesA2StudentGuideSectionsPreviewAr as mosesA2StudentGuideSectionsAr,
+  mosesA2StudentGuideTextPreviewAr as mosesA2StudentGuideTextAr,
+} from './ar/selfStudyGuidePreview';
 
 const STORY_IDS = new Set(Array.from({ length: 16 }, (_, index) => index + 1));
 
@@ -176,7 +186,9 @@ export const mosesA2BookDataEn: BookData = {
   teacherGuide: mosesA2TeacherGuide,
   teacherGuideMetadata: mosesA2TeacherGuideMetadata,
   selfStudyGuide: mosesA2SelfStudyGuide,
+  studentGuideSections: mosesA2StudentGuideSections,
   studentGuideMetadata: mosesA2StudentGuideMetadata,
+  studentGuideText: mosesA2StudentGuideText,
 };
 
 export const mosesA2BookDataAr: BookData = {
@@ -188,7 +200,9 @@ export const mosesA2BookDataAr: BookData = {
   teacherGuide: mosesA2TeacherGuideAr,
   teacherGuideMetadata: mosesA2TeacherGuideMetadataAr,
   selfStudyGuide: mosesA2SelfStudyGuideAr,
+  studentGuideSections: mosesA2StudentGuideSectionsAr,
   studentGuideMetadata: mosesA2StudentGuideMetadataAr,
+  studentGuideText: mosesA2StudentGuideTextAr,
 };
 
 export const mosesA2BookData = mosesA2BookDataEn;

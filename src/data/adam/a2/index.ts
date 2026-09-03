@@ -35,18 +35,18 @@ import { adamA2LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
 import { adamA2LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
 import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
+import { adamA2SelfStudyGuide } from './en/selfStudyGuide';
 import {
-  adamA2SelfStudyGuide,
-  adamA2StudentGuideMetadata,
-  adamA2StudentGuideSections,
-  adamA2StudentGuideText,
-} from './en/selfStudyGuide';
+  adamA2StudentGuideMetadataPreview as adamA2StudentGuideMetadata,
+  adamA2StudentGuideSectionsPreview as adamA2StudentGuideSections,
+  adamA2StudentGuideTextPreview as adamA2StudentGuideText,
+} from './en/studentGuidePreview';
+import { adamA2SelfStudyGuideAr } from './ar/selfStudyGuide';
 import {
-  adamA2SelfStudyGuideAr,
-  adamA2StudentGuideMetadataAr,
-  adamA2StudentGuideSectionsAr,
-  adamA2StudentGuideTextAr,
-} from './ar/selfStudyGuide';
+  adamA2StudentGuideMetadataPreviewAr as adamA2StudentGuideMetadataAr,
+  adamA2StudentGuideSectionsPreviewAr as adamA2StudentGuideSectionsAr,
+  adamA2StudentGuideTextPreviewAr as adamA2StudentGuideTextAr,
+} from './ar/studentGuidePreview';
 
 const STORY_IDS = new Set(Array.from({ length: 10 }, (_, index) => index + 1));
 
