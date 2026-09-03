@@ -10,11 +10,13 @@ const LazySelfStudyGuide = React.lazy(async () => {
 });
 
 /**
- * Keep the large self-study guide UI and react-markdown out of the initial app bundle.
+ * Keep the large self-study guide UI out of the initial app bundle.
  * The implementation is loaded only when the guide is actually rendered.
+ * Full Guide is intentionally disabled globally; chapter support and the
+ * student-facing study sections remain the canonical self-study surfaces.
  */
 export const SelfStudyGuide = (props: SelfStudyGuideProps) => (
   <React.Suspense fallback={null}>
-    <LazySelfStudyGuide {...props} />
+    <LazySelfStudyGuide {...props} studentGuideText="" />
   </React.Suspense>
 );
