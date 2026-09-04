@@ -2,17 +2,17 @@ import type { BookData, PageData } from '../../../types';
 import { adamA2Pages } from './en/pages';
 import { adamA2PagesAr } from './ar/pages';
 import {
-  adamA2FinalChallengeExercisesPolished,
-  adamA2KnowledgeCheckExercisesPolished,
-  adamA2QuickChallengesPolished,
-  adamA2VocabularyChallengePairsPolished,
-} from './en/exerciseSystem';
+  adamA2FinalChallengeExercises,
+  adamA2KnowledgeCheckExercises,
+  adamA2QuickChallenges,
+  adamA2VocabularyChallengePairs,
+} from './en/exercises';
 import {
-  adamA2FinalChallengeExercisesArPolished,
-  adamA2KnowledgeCheckExercisesArPolished,
-  adamA2QuickChallengesArPolished,
-  adamA2VocabularyChallengePairsArPolished,
-} from './ar/exerciseSystem';
+  adamA2FinalChallengeExercisesAr,
+  adamA2KnowledgeCheckExercisesAr,
+  adamA2QuickChallengesAr,
+  adamA2VocabularyChallengePairsAr,
+} from './ar/exercises';
 import { adamA2LanguageReviewExercises } from './en/languageReview';
 import { adamA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { adamA2LanguageFocusExercises } from './en/languageFocus';
@@ -63,19 +63,19 @@ const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
       ?? adamA2LanguageFocusExercisesPart9[page.id];
     return {
       ...page,
-      exercises: [adamA2QuickChallengesPolished[page.id]],
+      exercises: [adamA2QuickChallenges[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercisesPolished };
-  if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairsPolished };
+  if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercises };
+  if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairs };
   if (page.id === 13) return {
     ...page,
     title: 'Language Review',
     content: 'Review and use the grammar patterns and language functions from all ten chapters.',
     exercises: adamA2LanguageReviewExercises,
   };
-  if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercisesPolished };
+  if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercises };
   return page;
 });
 
@@ -92,19 +92,19 @@ const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
       ?? adamA2LanguageFocusExercisesArPart9[page.id];
     return {
       ...page,
-      exercises: [adamA2QuickChallengesArPolished[page.id]],
+      exercises: [adamA2QuickChallengesAr[page.id]],
       ...(languageFocusExercises ? { languageFocusExercises } : {}),
     };
   }
-  if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercisesArPolished };
-  if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairsArPolished };
+  if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercisesAr };
+  if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairsAr };
   if (page.id === 13) return {
     ...page,
     title: 'مراجعة اللغة',
     content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول العشرة.',
     exercises: adamA2LanguageReviewExercisesAr,
   };
-  if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercisesArPolished };
+  if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercisesAr };
   return page;
 });
 
