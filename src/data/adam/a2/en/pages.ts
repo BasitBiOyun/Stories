@@ -9,7 +9,7 @@ export const adamA2Pages: PageData[] = [
     title: 'Opening & The Creation',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_ch1.png?alt=media&token=ca08c6ed-5540-4dc8-b880-7de3d943ce9c',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%201%20(1).mp3?alt=media&token=09559d75-7a75-414f-a910-3933daa696f9',
-    content: "Adam (pbuh) is the first messenger of Allah and the father of all humans. Allah created him from soil and cared about him very much because he was the first human. We are the grandchildren of Adam (pbuh), so we can learn many lessons from this fantastic story. \n\nAllah created the sky and the earth. After that, he told the angels that he was going to create a human. He said, ''The human is going to become the ruler on earth. The ruler is going to live on earth for many years.'' Angels got surprised. They began waiting with curiosity. \n\nThen Allah's angels collected soil from different parts of the earth, and Allah shaped Adam. Because of this, humans have different skin colors. \n\nProphet Muhammad (pbuh) said that Allah created Adam (pbuh) from a handful of dust from different lands. So the children of Adam (pbuh) are white, red, black, and yellow in color.",
+    content: "Adam (pbuh) is the first messenger of Allah and the father of all humans. Allah created him from soil and cared about him very much because he was the first human. We are the grandchildren of Adam (pbuh), so we can learn many lessons from this fantastic story. \n\nAllah created the sky and the earth. After that, he told the angels that he was going to create a human. He said, “The human is going to become the ruler on earth. The ruler is going to live on earth for many years.” Angels got surprised. They began waiting with curiosity. \n\nThen Allah's angels collected soil from different parts of the earth, and Allah shaped Adam. Because of this, humans have different skin colors. \n\nProphet Muhammad (pbuh) said that Allah created Adam (pbuh) from a handful of dust from different lands. So the children of Adam (pbuh) are white, red, black, and yellow in color.",
     vocabulary: [
       { word: 'Messenger', definition: 'A person who carries a message from Allah.' },
       { word: 'soil', definition: 'Earth in which plants can grow.' },
@@ -56,7 +56,7 @@ export const adamA2Pages: PageData[] = [
     title: 'Knowledge and Respect',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter2.png?alt=media&token=649ddbc9-ea42-4fe9-9a58-09ce1d27191a',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter2.mp3?alt=media&token=1e1580e8-16b3-4957-8f44-0f06bed5ec21',
-    content: "Allah told His angels “After I have created Adam and given him life, show respect to him.” Adam could learn and understand. He was wiser than the angels, because Allah gave Adam knowledge and taught him to think. He learned more than angels knew. \n\nAll the angels thought that Adam was amazing. They all admired him and respected him. But Iblis didn’t think so. Iblis thought Adam was an unimportant creature created from clay.",
+    content: "Allah told His angels, “After I have created Adam and given him life, show respect to him.” Adam could learn and understand. He was wiser than the angels, because Allah gave Adam knowledge and taught him to think. He learned more than the angels knew. \n\nAll the angels thought that Adam was amazing. They all admired him and respected him. But Iblis didn’t think so. Iblis thought Adam was an unimportant creature created from clay.",
     vocabulary: [
       { word: 'respect', definition: 'Treating someone as important and worthy of care.' },
       { word: 'wiser', definition: 'Knowing more and making better decisions.' },
@@ -74,7 +74,7 @@ export const adamA2Pages: PageData[] = [
     title: "Iblis's Arrogance",
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter3.png?alt=media&token=47e43312-d51a-45a8-9349-7f2f097d37a2',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%203%20(1).mp3?alt=media&token=cd9880b6-62a1-4810-9ded-7054952d9039',
-    content: "Then Allah asked Iblis “Why didn’t you respect Adam?” Iblis said “I am better than Adam. You created me from fire, and You created Adam from soil.” \n\nIblis was arrogant. He thought he was more important and more valuable than Adam. He came from the fire and believed his origin was better. He thought little and was wrong about Adam. Iblis couldn’t see that Adam had perfect knowledge and it was for the good of every creature of Allah. This knowledge made Adam more valuable. \n\nFor Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great, because with this knowledge human can do good and stop bad. \n\nBut Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis “Go away! You are far from My love and care.” \n\nAdam was now in Paradise.",
+    content: "Then Allah asked Iblis, “Why didn’t you respect Adam?” Iblis said, “I am better than Adam. You created me from fire, and You created Adam from soil.” \n\nIblis was arrogant. He thought he was more important and more valuable than Adam. He came from the fire and believed his origin was better. He thought little and was wrong about Adam. Iblis couldn’t see that Adam had perfect knowledge and it was for the good of every creature of Allah. This knowledge made Adam more valuable. \n\nFor Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great, because with this knowledge, humans can do good and stop bad. \n\nBut Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis, “Go away! You are far from My love and care.” \n\nAdam was now in Paradise.",
     vocabulary: [
       { word: 'arrogant', definition: 'Thinking you are better or more important than others.' },
       { word: 'valuable', definition: 'Very useful or important.' },
@@ -92,7 +92,7 @@ export const adamA2Pages: PageData[] = [
     title: 'Paradise and the Warning',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter4.png?alt=media&token=1d8c7a12-f7d4-4b4b-8435-43e353ae29ff',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter4.mp3?alt=media&token=f914c90b-6fe7-4cbc-881d-a92f77495bc3',
-    content: "Iblis got angry with Adam and hated him. He didn’t want Allah to be nice with Adam. Iblis thought because of Adam, Allah put him far from His love. He waited for a chance. He wanted Adam to lose Allah's love, just like himself. Allah told Adam to be careful about Iblis. \n\nThen, Adam started to feel lonely in Paradise. So, Allah gave him a wife. Her name was Eve (Hawwa). They started to live together in Paradise. It was more wonderful than we can imagine. All the gifts in paradise were for them. But Allah had only one warning. HE told Adam and Eve not to go near one tree.",
+    content: "Iblis got angry with Adam and hated him. He didn’t want Allah to be nice with Adam. Iblis thought that because of Adam, Allah put him far from His love. He waited for a chance. He wanted Adam to lose Allah's love, just like himself. Allah told Adam to be careful about Iblis. \n\nThen, Adam started to feel lonely in Paradise. So, Allah gave him a wife. Her name was Eve (Hawwa). They started to live together in Paradise. It was more wonderful than we can imagine. All the gifts in Paradise were for them. But Allah had only one warning. He told Adam and Eve not to go near one tree.",
     vocabulary: [
       { word: 'lonely', definition: 'Sad because you are alone.' },
       { word: 'wonderful', definition: 'Very good and enjoyable.' },
@@ -100,7 +100,7 @@ export const adamA2Pages: PageData[] = [
     ],
     hotspots: [
       { id: 'h4-1', x: 35, y: 40, title: 'Eve (Hawwa)', description: 'Allah gave him a wife. Her name was Eve (Hawwa).' },
-      { id: 'h4-2', x: 65, y: 25, title: 'Tree', description: 'HE told Adam and Eve not to go near one tree.' }
+      { id: 'h4-2', x: 65, y: 25, title: 'Tree', description: 'He told Adam and Eve not to go near one tree.' }
     ]
   },
   {
@@ -127,7 +127,7 @@ export const adamA2Pages: PageData[] = [
     title: 'Life on Earth',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter6.png?alt=media&token=98ad5740-e8d4-4413-8b73-b4b53e959d2d',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%206%20(1).mp3?alt=media&token=4b5d3fa6-dc2d-41d3-89cf-5a361e34aeba',
-    content: "Allah excused Adam and Eve and put them on earth to live there. Allah taught and gave them everything to rule on earth. They were the rulers of the planet earth. They were going to direct and make everything better on the planet. They were using land to grow crops and keep animals. They were going to build buildings for housing, protect the nature and help the weak. \n\nBut Iblis also followed Adam and Eve on earth. He was still around. He wanted people not to remember Allah in their daily lives.",
+    content: "Allah excused Adam and Eve and put them on earth to live there. Allah taught them and gave them everything to rule on earth. They were the rulers of the planet earth. They were going to direct and make everything better on the planet. They were using land to grow crops and keep animals. They were going to build buildings for housing, protect nature and help the weak. \n\nBut Iblis also followed Adam and Eve on earth. He was still around. He wanted people not to remember Allah in their daily lives.",
     vocabulary: [
       { word: 'crops', definition: 'Plants grown for food.' },
       { word: 'rule', definition: 'To lead or manage a place.' },
@@ -145,7 +145,7 @@ export const adamA2Pages: PageData[] = [
     title: 'The First Messenger',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter7.png?alt=media&token=2cca3dac-2759-4016-824a-106d09ff0781',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter7.mp3?alt=media&token=38ea267e-8e50-4369-bad9-a2b925c4247a',
-    content: "Adam and Eve lived on earth many years. They had good and hard days. Some days brought them peace, some days were difficult. They also had lots of children. We are all one of their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis, because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
+    content: "Adam and Eve lived on earth for many years. They had good and hard days. Some days brought them peace, some days were difficult. They also had lots of children. We are all their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis, because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
     vocabulary: [
       { word: 'honest', definition: 'Telling the truth and not cheating.' },
       { word: 'behave', definition: 'To act in a particular way.' },
@@ -162,7 +162,7 @@ export const adamA2Pages: PageData[] = [
     title: 'Story of Habil and Qabil',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter8.png?alt=media&token=4a3d55b6-fba5-4d1b-ac6d-368ea81562f6',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%208%20(1).mp3?alt=media&token=ef8be57b-54c9-4332-a754-d525086a80d9',
-    content: "Adam (pbuh) and Eve had two sons, Habil and Qabil. They were very different. Habil was kind, gentle and loved taking care of animals. Qabil was mostly jealous. When they grew up, Habil became a shepherd. He kept cows, sheep and other animals. Qabil was a farmer, he worked on the farm and grew crops. \n\nOne day they were in a serious disagreement. To solve the problem they had to offer an offering to Allah. Habil brought his best and healtiest sheep as a gift for Allah, but Qabil brought just a handful of his crops. It wasn’t very valuable. Qabil didn’t care to please Allah and his father Adam (pbuh). Real goodness is giving the best and the most loved.",
+    content: "Adam (pbuh) and Eve had two sons, Habil and Qabil. They were very different. Habil was kind, gentle and loved taking care of animals. Qabil was mostly jealous. When they grew up, Habil became a shepherd. He kept cows, sheep and other animals. Qabil was a farmer. He worked on the farm and grew crops. \n\nOne day, they were in a serious disagreement. To solve the problem, they had to offer an offering to Allah. Habil brought his best and healthiest sheep as a gift for Allah, but Qabil brought just a handful of his crops. It wasn’t very valuable. Qabil didn’t care to please Allah and his father Adam (pbuh). Real goodness is giving the best and the most loved.",
     vocabulary: [
       { word: 'shepherd', definition: 'A person who looks after sheep.' },
       { word: 'farmer', definition: 'A person who grows crops or keeps animals on a farm.' },
@@ -179,7 +179,7 @@ export const adamA2Pages: PageData[] = [
     title: 'The First Crime',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter9.png?alt=media&token=12a5e3e0-c1be-47c1-9a1d-0b64288ddf56',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter9.mp3?alt=media&token=25446a2e-d966-4fdc-9def-e7b43c8cf34c',
-    content: "Allah was pleased with Habil’s offering, because he gave from his heart. Qabil’s face became very dark with anger and said “I will kill you”. When Habil heard this, he said “I won’t fight back and harm you, you are my brother and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But also he started to panic. He said “I killed my brother, I did the worst thing in life, now I don’t know what I should do with his dead body.” Then, Allah sent a crow, it landed on the ground near Qabil and started digging it. The crow showed Qabil the way to put his brother's dead body in the hole. Qabil cried and said “I am worse than this crow. I cannot hide my brother’s dead body.”",
+    content: "Allah was pleased with Habil’s offering, because he gave from his heart. Qabil’s face became very dark with anger, and he said, “I will kill you.” When Habil heard this, he said, “I won’t fight back and harm you. You are my brother, and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But he also started to panic. He said, “I killed my brother. I did the worst thing in life. Now I don’t know what I should do with his dead body.” Then, Allah sent a crow. It landed on the ground near Qabil and started digging it. The crow showed Qabil the way to put his brother's dead body in the hole. Qabil cried and said, “I am worse than this crow. I cannot hide my brother’s dead body.”",
     vocabulary: [
       { word: 'crow', definition: 'A large black bird.' },
       { word: 'panic', definition: 'A sudden strong feeling of fear.' },
@@ -187,7 +187,7 @@ export const adamA2Pages: PageData[] = [
     ],
     hotspots: [
       { id: 'h9-1', x: 50, y: 20, title: 'Crow', description: "The crow showed Qabil the way to put his brother's dead body in the hole." },
-      { id: 'h9-2', x: 40, y: 60, title: 'Panic', description: 'Soon, Qabil’s anger cooled and he felt so sad. But also he started to panic.' }
+      { id: 'h9-2', x: 40, y: 60, title: 'Panic', description: 'Soon, Qabil’s anger cooled and he felt so sad. But he also started to panic.' }
     ]
   },
   {
@@ -196,7 +196,7 @@ export const adamA2Pages: PageData[] = [
     title: 'The Story of Adam (pbuh)',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter10.png?alt=media&token=97c7a607-186e-439b-9f2d-8d4c9b11bd7f',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter10.mp3?alt=media&token=13905754-598c-4330-935f-9c845af1072f',
-    content: "He left far away. Adam (pbuh) became very sad. He lost both of his sons on the same day. The story tells us that good people should stay away from jealousy and control their anger. \n\nAdam was a Messenger of Allah and a father of his another children. He had to continue his life. He got old over the years. His children and grandchildren spread his message worldwide. This message still advises people to love and respect Allah. It tells them to be well-behaved and kind to others. \n\nAllah never leaves people alone. The stories of His messengers help us to live an honest life.",
+    content: "He left far away. Adam (pbuh) became very sad. He lost both of his sons on the same day. The story tells us that good people should stay away from jealousy and control their anger. \n\nAdam was a Messenger of Allah and the father of his other children. He had to continue his life. He got old over the years. His children and grandchildren spread his message worldwide. This message still advises people to love and respect Allah. It tells them to be well-behaved and kind to others. \n\nAllah never leaves people alone. The stories of His messengers help us to live an honest life.",
     vocabulary: [
       { word: 'jealousy', definition: 'Feeling unhappy because someone has something you want.' },
       { word: 'story', definition: 'A description of events.' },
