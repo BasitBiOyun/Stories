@@ -345,9 +345,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          <p className="font-serif text-sm sm:text-base text-wood/55">
-            {t('nav.matchingInstructions')}
-          </p>
+          <p className="font-serif text-sm sm:text-base text-wood/55">{t('nav.matchingInstructions')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <div className="space-y-2.5">
               <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.accentText)}>
@@ -727,13 +725,16 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                     {exercise.explanation}
                   </div>
                 )}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className={cn(
+                  'grid grid-cols-1 gap-3 w-full',
+                  correct ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
+                )}>
                   {!correct && (
                     <button type="button" onClick={retry} className="min-h-12 rounded-xl bg-white border-2 border-rose-200 text-rose-700 font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2">
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
                   )}
-                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', correct ? 'bg-emerald-600' : 'bg-rose-600', !correct && 'sm:col-start-2')}>
+                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', correct ? 'bg-emerald-600' : 'bg-rose-600')}>
                     {t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
                   </button>
                 </div>
