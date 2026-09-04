@@ -112,19 +112,19 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       instructions: 'Match each expression with what it shows in the story.',
       question: 'How does Chapter 9 describe anger, sadness and panic as the situation changes?',
       matchingPairs: [
-        { left: 'his face became very dark with anger', right: 'uses became to show a change of state' },
+        { left: 'Qabil became very angry', right: 'uses became + adjective to show a change of state' },
         { left: 'Qabil’s anger cooled', right: 'shows that a strong feeling became weaker' },
         { left: 'he felt so sad', right: 'uses felt + adjective to describe an emotion' },
         { left: 'he started to panic', right: 'uses started to + verb to show the beginning of a new reaction' },
       ],
       correctAnswer: {
-        'his face became very dark with anger': 'uses became to show a change of state',
+        'Qabil became very angry': 'uses became + adjective to show a change of state',
         'Qabil’s anger cooled': 'shows that a strong feeling became weaker',
         'he felt so sad': 'uses felt + adjective to describe an emotion',
         'he started to panic': 'uses started to + verb to show the beginning of a new reaction',
       },
-      explanation: 'The chapter uses “became”, “felt + adjective” and “started to + verb” to show changing states and reactions instead of only naming events.',
-      feedback: { correct: 'Good. You noticed how the language shows emotional change over time.', incorrect: 'Focus on the verbs became, felt and started to. Each one tells us something different about a state or reaction.' },
+      explanation: 'The chapter uses “became + adjective”, “felt + adjective” and “started to + verb” to show changing states and reactions instead of only naming events.',
+      feedback: { correct: 'Good. You noticed how the language shows emotional change over time.', incorrect: 'Focus on became, felt and started to. Each one tells us something different about a state or reaction.' },
     },
     {
       id: 'adam-a2-language-9-problem-solution',
