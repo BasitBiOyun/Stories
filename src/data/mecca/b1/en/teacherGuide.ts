@@ -264,7 +264,7 @@ export const meccaB1TeacherGuide: TeacherGuideSection[] = [
     priorKnowledge: ['Chapter 8 protection systems; Chapter 12 resistance motives.'],
     anticipatedMisconceptions: ['Bilal’s suffering is evidence of vulnerability, not material for dramatic performance.'],
     grammarFocus: 'At first; but when; went further; whenever/often for repeated past; order + person + to; those without; purpose.',
-    pronunciationFocus: 'Mark escalation through at first / but when / went further; keep threats in calm reported narration.'],
+    pronunciationFocus: 'Mark escalation through at first / but when / went further; keep threats in calm reported narration.',
     beforeReading: ['Define escalation as a change in severity, not simply a longer list of events.'],
     duringReading: ['Lesson 1: mark mockery, violence and boycott as separate stages.', 'Identify evidence linking weak protection with greater vulnerability.', 'Lesson 2: locate repeated-past and reported-order forms without performing the threats.'],
     afterReading: ['Lesson 1: Quick Challenge with an escalation timeline and calm evidence exit.', 'Lesson 2: retrieval, Language Focus, then a connected B1 explanation of escalation and vulnerability.', 'Finish with one safe action supporting someone facing unfair exclusion.'],
