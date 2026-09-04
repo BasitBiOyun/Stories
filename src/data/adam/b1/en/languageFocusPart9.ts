@@ -17,13 +17,13 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
         { left: 'The children grew up to be strong and healthy young adults.', right: 'shows development from childhood to a later state' },
         { left: 'When they grew up, Habil became a shepherd.', right: 'uses a time clause and “became” to introduce a new role' },
         { left: 'He kept cows, sheep and other animals.', right: 'describes regular work connected with Habil’s role' },
-        { left: 'Qabil was a farmer; he worked on the farm and grew crops.', right: 'adds connected actions that explain what a role involved' },
+        { left: 'Qabil was a farmer. He worked on the farm and grew crops.', right: 'adds connected actions that explain what a role involved' },
       ],
       correctAnswer: {
         'The children grew up to be strong and healthy young adults.': 'shows development from childhood to a later state',
         'When they grew up, Habil became a shepherd.': 'uses a time clause and “became” to introduce a new role',
         'He kept cows, sheep and other animals.': 'describes regular work connected with Habil’s role',
-        'Qabil was a farmer; he worked on the farm and grew crops.': 'adds connected actions that explain what a role involved',
+        'Qabil was a farmer. He worked on the farm and grew crops.': 'adds connected actions that explain what a role involved',
       },
       explanation: 'Chapter 10 moves from childhood to adulthood, then links each brother with a role and the repeated work connected with that role. These patterns are useful when describing how a person develops and what their work involves.',
       feedback: {
@@ -40,19 +40,19 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       matchingPairs: [
         { left: 'To solve the problem, they had to offer an offering to Allah.', right: 'combines purpose with a past obligation' },
         { left: 'Habil brought his best and healthiest sheep, but Qabil brought just a handful of his crops.', right: 'uses “but” to contrast two choices in one sentence' },
-        { left: 'Qabil didn’t care to please Allah and his father.', right: 'uses a negative verb pattern to show lack of concern or intention' },
+        { left: 'Qabil didn’t care about pleasing Allah and his father Adam (pbuh).', right: 'uses “care about + -ing” in the negative to show lack of concern' },
         { left: 'However, real goodness is giving out the best and the most loved.', right: 'uses “however” to shift from the example to a contrasting general principle' },
       ],
       correctAnswer: {
         'To solve the problem, they had to offer an offering to Allah.': 'combines purpose with a past obligation',
         'Habil brought his best and healthiest sheep, but Qabil brought just a handful of his crops.': 'uses “but” to contrast two choices in one sentence',
-        'Qabil didn’t care to please Allah and his father.': 'uses a negative verb pattern to show lack of concern or intention',
+        'Qabil didn’t care about pleasing Allah and his father Adam (pbuh).': 'uses “care about + -ing” in the negative to show lack of concern',
         'However, real goodness is giving out the best and the most loved.': 'uses “however” to shift from the example to a contrasting general principle',
       },
-      explanation: 'The chapter does more than list events: it explains why an action was required, contrasts two responses, and then moves from the specific situation to a general idea.',
+      explanation: 'The chapter does more than list events: it explains why an action was required, contrasts two responses, uses “didn’t care about + -ing” to show lack of concern, and then moves from the specific situation to a general idea.',
       feedback: {
-        correct: 'Good. You identified purpose, obligation, contrast, and the move to a general principle.',
-        incorrect: 'Look for the infinitive of purpose, “had to”, the contrast markers “but/however”, and the negative pattern after “didn’t care”.',
+        correct: 'Good. You identified purpose, obligation, contrast, lack of concern, and the move to a general principle.',
+        incorrect: 'Look for the infinitive of purpose, “had to”, the contrast markers “but/however”, and the negative “didn’t care about + -ing” pattern.',
       },
     },
     {
@@ -80,7 +80,7 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       instructions: 'Write or say four connected B1 sentences about two people who respond differently to the same task. Use at least four Chapter 10 patterns.',
       question: 'Can you use the chapter’s language to show development or role, purpose, obligation, contrasting actions, and a general principle in a new situation?',
       correctAnswer: null,
-      explanation: 'A strong response may use “when ... grew up”, “became ...”, “to + verb” for purpose, “had to ...”, “but/while/however” for contrast, “didn’t care to ...”, and a pattern such as “real responsibility is + -ing ...” to express a general principle.',
+      explanation: 'A strong response may use “when ... grew up”, “became ...”, “to + verb” for purpose, “had to ...”, “but/while/however” for contrast, “didn’t care about + -ing”, and a pattern such as “real responsibility is + -ing ...” to express a general principle.',
       feedback: {
         correct: 'Keep the four sentences connected so the contrast grows naturally from the shared task.',
         incorrect: '',
