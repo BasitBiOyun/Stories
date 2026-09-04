@@ -28,7 +28,7 @@ Current known preview base before this tracker: `89d1ca59830e4641aa85bf7d7c1ce46
 
 ### Mandatory checklist — complete every item before marking the book COMPLETE
 
-- [ ] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
+- [x] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
 - [ ] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
 - [ ] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
 - [ ] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
@@ -47,6 +47,13 @@ Current known preview base before this tracker: `89d1ca59830e4641aa85bf7d7c1ce46
 - [ ] 17. Check EN/AR pedagogical parity and language consistency without forcing literal translation.
 - [ ] 18. Re-read changed files for obvious syntax/wiring errors and confirm no unrelated book/branch was modified.
 - [ ] 19. Commit all necessary changes to `preview`, update this checklist, mark the book COMPLETE, then move immediately to the next unchecked book if execution time remains.
+
+### Current handoff
+
+- Checklist item 1 is complete: all 14 EN and AR story chapters, boundaries, titles, and current media mappings were inspected. Story chapter images consistently point to Abraham A2 chapter assets (`abraham_a2_ch1` through `abraham_a2_ch14`; chapter 1 uses the same asset with capitalization in the filename), and story audio remains within the Abraham A2 audio path.
+- Checklist item 2 is the exact next action. Confirmed EN prose fixes include `HE was always with him` in Ch8, the singular subject error `He placed him on a catapult` after plural `People ... tied` in Ch8, `more angry` in Ch10, plus punctuation/wording errors already visible in earlier chapters. Preserve story meaning and A2 level.
+- Confirmed AR accidental embedded headings must be removed from story `content`: Ch8 ends with `## اَللهُ يُنْقِذُ إِبْرَاهِيمَ`; Ch9 ends with `## إِبْرَاهِيمُ وَنُمْرُودُ`; Ch10 ends with `## إِبْرَاهِيمُ يُغَادِرُ بَابِلَ`; Ch11 ends with `## هَاجَرُ وَإِسْمَاعِيلُ فِي الْوَادِي`; Ch12 ends with `## مَاءُ زَمْزَمَ`; Ch13 ends with `## الْكَعْبَةُ وَرِسَالَةُ إِبْرَاهِيمَ`.
+- Do not start hotspot correction until item 2 prose is corrected, because hotspot descriptions must match the final chapter sentences verbatim.
 
 ### Work already reported in the first run
 
