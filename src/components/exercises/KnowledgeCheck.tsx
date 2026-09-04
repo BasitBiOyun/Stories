@@ -5,7 +5,6 @@ import {
   GraduationCap,
   CheckCircle2,
   XCircle,
-  Sparkles,
   Info,
   RotateCcw,
   Trophy,
@@ -116,7 +115,7 @@ const QuestionCard = ({
       role={showResults && hasAnswer ? 'button' : undefined}
       tabIndex={showResults && hasAnswer ? 0 : undefined}
       className={cn(
-        'rounded-2xl border-2 bg-white p-4 sm:p-5 shadow-sm flex flex-col gap-4 min-w-0',
+        'rounded-2xl border-2 bg-white p-4 sm:p-5 shadow-sm flex flex-col gap-4 min-w-0 self-start w-full',
         showResults && hasAnswer && 'cursor-pointer',
         showResults && hasAnswer
           ? correct
@@ -161,7 +160,7 @@ const QuestionCard = ({
       </div>
 
       {exercise.type === 'true-false' && (
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-auto">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
           {[true, false].map((value) => {
             const selected = answer === value;
             const revealCorrect = showResults && exercise.correctAnswer === value;
@@ -191,7 +190,7 @@ const QuestionCard = ({
       )}
 
       {exercise.type === 'multiple-choice' && (
-        <div className="grid grid-cols-1 gap-2.5 mt-auto">
+        <div className="grid grid-cols-1 gap-2.5">
           {presentedOptions.map((option, displayIndex) => {
             const selected = answer === option.originalIndex;
             const revealCorrect = showResults && option.originalIndex === exercise.correctAnswer;
@@ -447,7 +446,7 @@ export const KnowledgeCheck = ({
           </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
           {supportedExercises.map((exercise, index) => (
             <QuestionCard
               key={exercise.id}
@@ -475,7 +474,7 @@ export const KnowledgeCheck = ({
                 : 'bg-gray-100 text-gray-400 cursor-not-allowed'
             )}
           >
-            <Sparkles size={16} /> {t('ex.seeResults')}
+            <CheckCircle2 size={16} /> {t('ex.seeResults')}
           </button>
         )}
 
