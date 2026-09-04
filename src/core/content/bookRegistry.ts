@@ -3,7 +3,6 @@ import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contr
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
 import { finalizeBookPairForUi } from './uiBookFinalization';
-import { applyApprovedEnglishStoryCorrections } from './approvedStoryCorrections';
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -58,23 +57,18 @@ const createDefinition = (
   titles: BookDisplayTitles,
   loadSource: () => Promise<BookPair>,
   preservePreparedLearning = false,
-): BookDefinition => {
-  const loadCorrectedSource = async (): Promise<BookPair> =>
-    applyApprovedEnglishStoryCorrections(storyId, level, await loadSource());
-
-  return {
-    storyId,
-    level,
-    collection,
-    titles,
-    storage: getStorageManifest(storyId, level),
-    loadSource: loadCorrectedSource,
-    load: async () => {
-      const corrected = await loadCorrectedSource();
-      return preservePreparedLearning ? corrected : finalizeBookPairForUi(corrected);
-    },
-  };
-};
+): BookDefinition => ({
+  storyId,
+  level,
+  collection,
+  titles,
+  storage: getStorageManifest(storyId, level),
+  loadSource,
+  load: async () => {
+    const source = await loadSource();
+    return preservePreparedLearning ? source : finalizeBookPairForUi(source);
+  },
+});
 
 export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('adam', 'A2', 'prophets', {
