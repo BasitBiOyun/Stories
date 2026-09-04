@@ -2,17 +2,17 @@ import type { BookData, Exercise, PageData } from '../../../types';
 import { adamB1Pages } from './en/pages';
 import { adamB1PagesAr } from './ar/pages';
 import {
-  adamB1PolishedQuickChallenges,
-  adamB1PolishedKnowledgeCheckExercises,
-  adamB1PolishedVocabularyChallengePairs,
-  adamB1PolishedFinalChallengeExercises,
-} from './en/exerciseSystem';
+  adamB1QuickChallenges,
+  adamB1KnowledgeCheckExercises,
+  adamB1VocabularyChallengePairs,
+  adamB1FinalChallengeExercises,
+} from './en/exercises';
 import {
-  adamB1PolishedQuickChallengesAr,
-  adamB1PolishedKnowledgeCheckExercisesAr,
-  adamB1PolishedVocabularyChallengePairsAr,
-  adamB1PolishedFinalChallengeExercisesAr,
-} from './ar/exerciseSystem';
+  adamB1QuickChallengesAr,
+  adamB1KnowledgeCheckExercisesAr,
+  adamB1VocabularyChallengePairsAr,
+  adamB1FinalChallengeExercisesAr,
+} from './ar/exercises';
 import { adamB1LanguageFocusExercises } from './en/languageFocus';
 import { adamB1LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
 import { adamB1LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
@@ -80,7 +80,6 @@ const buildPages = (
   vocabularyPairs: { word: string; meaning: string }[],
   languageReview: Exercise[],
   finalChallenge: Exercise[],
-  language: 'en' | 'ar',
 ): PageData[] => pages.map((page) => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = languageFocus[page.id];
@@ -91,41 +90,30 @@ const buildPages = (
     };
   }
   if (page.id === 13) return { ...page, exercises: knowledgeCheck };
-  if (page.id === 14) {
-    return {
-      ...page,
-      title: language === 'ar' ? 'مراجعة اللغة B1' : 'B1 Language Review',
-      content: language === 'ar'
-        ? 'راجع التراكيب والوظائف اللغوية التي تعلمتها عبر الفصول، ثم استخدمها في سياقات جديدة مترابطة.'
-        : 'Consolidate grammar, discourse relationships, and communicative functions from across the chapters, then use them in new connected contexts.',
-      exercises: languageReview,
-    };
-  }
+  if (page.id === 14) return { ...page, exercises: languageReview };
   if (page.id === 15) return { ...page, vocabularyPairs };
-  if (page.id === 17) return { ...page, exercises: finalChallenge };
+  if (page.id === 18) return { ...page, exercises: finalChallenge };
   return page;
 });
 
 const englishPages = buildPages(
   adamB1Pages,
-  adamB1PolishedQuickChallenges,
+  adamB1QuickChallenges,
   englishLanguageFocus,
-  adamB1PolishedKnowledgeCheckExercises,
-  adamB1PolishedVocabularyChallengePairs,
+  adamB1KnowledgeCheckExercises,
+  adamB1VocabularyChallengePairs,
   adamB1LanguageReviewExercises,
-  adamB1PolishedFinalChallengeExercises,
-  'en',
+  adamB1FinalChallengeExercises,
 );
 
 const arabicPages = buildPages(
   adamB1PagesAr,
-  adamB1PolishedQuickChallengesAr,
+  adamB1QuickChallengesAr,
   arabicLanguageFocus,
-  adamB1PolishedKnowledgeCheckExercisesAr,
-  adamB1PolishedVocabularyChallengePairsAr,
+  adamB1KnowledgeCheckExercisesAr,
+  adamB1VocabularyChallengePairsAr,
   adamB1LanguageReviewExercisesAr,
-  adamB1PolishedFinalChallengeExercisesAr,
-  'ar',
+  adamB1FinalChallengeExercisesAr,
 );
 
 export const adamB1BookDataEn: BookData = {
