@@ -1,5 +1,4 @@
 import type { Exercise } from '../../../../types';
-import '../activeExerciseSystem';
 import { adamB2LanguageFocusExercises as adamB2LanguageFocusBaseCh1to4 } from './languageFocusBaseCh1to4';
 import { adamB2LanguageFocusChapter5 } from './languageFocusChapter5';
 import { adamB2LanguageFocusChapter6 } from './languageFocusChapter6';
