@@ -185,7 +185,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     setPlayingWord(word);
 
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = 'en-US';
+    utterance.lang = isRTL ? 'ar-SA' : 'en-US';
     utterance.rate = 0.85;
 
     const reset = () => setPlayingWord(null);
@@ -196,7 +196,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     utterance.onend = () => { clearTimeout(timeout); reset(); };
 
     window.speechSynthesis.speak(utterance);
-  }, []);
+  }, [isRTL]);
 
   const markWord = useCallback((word: string, state: KnownState) => {
     setKnownMap(prev => {
