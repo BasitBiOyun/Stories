@@ -273,9 +273,15 @@ const buildPages = (
   finalChallenge: Exercise[],
 ): PageData[] => {
   const isArabicBook = /[\u0600-\u06ff]/.test(pages.find(page => page.type === 'story')?.title ?? '');
-  const fullGlossary = pages
-    .filter(page => page.id === 20 || page.id === 21)
-    .flatMap(page => page.vocabulary ?? []);
+  const fullGlossary = Array.from(
+    new Map(
+      pages
+        .filter(page => STORY_IDS.has(page.id))
+        .map(reviewStoryPageShell)
+        .flatMap(page => page.vocabulary ?? [])
+        .map(note => [note.word.toLowerCase(), note] as const),
+    ).values(),
+  );
 
   return pages.map((rawPage): PageData => {
     const page = reviewStoryPageShell(rawPage);
@@ -291,7 +297,14 @@ const buildPages = (
       };
     }
     if (page.id === 18) {
-      return { ...page, exercises: knowledgeCheck };
+      return {
+        ...page,
+        title: isArabicBook ? 'فحص المعرفة' : 'Knowledge Check',
+        content: isArabicBook
+          ? 'أجب عن ثمانية أسئلة للتحقق من فهمك لأهم الأدلة والأفكار في قصة آدم.'
+          : 'Answer eight questions to check your understanding of the key evidence and ideas across Adam’s story.',
+        exercises: knowledgeCheck,
+      };
     }
     if (page.id === 19) {
       return {
@@ -320,8 +333,8 @@ const buildPages = (
         ...page,
         title: isArabicBook ? 'القاموس الرئيسي' : 'Master Glossary',
         content: isArabicBook
-          ? 'راجع المفردات الأساسية الواردة في القصة.'
-          : 'Review the key vocabulary used across the story.',
+          ? 'راجع المفردات الأساسية الواردة في الفصول السبعة عشر.'
+          : 'Review the active Word Notes from all seventeen chapters.',
         vocabulary: fullGlossary,
       };
     }
