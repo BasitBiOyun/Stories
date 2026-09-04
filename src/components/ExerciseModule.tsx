@@ -104,6 +104,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const [quizScore, setQuizScore] = React.useState(0);
   const [quizAnswered, setQuizAnswered] = React.useState(false);
   const [quizWasCorrect, setQuizWasCorrect] = React.useState<boolean | null>(null);
+  const [reflectionResponse, setReflectionResponse] = React.useState('');
+
+  const reflectionNeedsWriting = exercise.type === 'reflection' && (
+    /\bwrite\b/i.test(exercise.instructions ?? '')
+    || (exercise.instructions ?? '').includes('كتابة')
+  );
 
   const presentedMcOptions = React.useMemo(() => presentMultipleChoice(exercise), [exercise]);
   const presentedMeanings = React.useMemo(() => presentMatchingMeanings(exercise), [exercise]);
@@ -127,6 +133,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setQuizScore(0);
     setQuizAnswered(false);
     setQuizWasCorrect(null);
+    setReflectionResponse('');
   }, [exercise]);
 
   React.useEffect(() => {
@@ -190,6 +197,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setSelectedDragItem(null);
     setDragAssignments({});
     setRevealedItems(new Set());
+    setReflectionResponse('');
   };
 
   const selectMeaning = (meaning: string) => {
@@ -568,6 +576,21 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     if (exercise.type === 'reflection') {
       return (
         <div className="space-y-4">
+          {reflectionNeedsWriting && (
+            <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-5">
+              <textarea
+                rows={5}
+                disabled={isSubmitted}
+                value={reflectionResponse}
+                onChange={(event) => setReflectionResponse(event.target.value)}
+                placeholder={language === 'ar' ? 'اكتب إجابتك القصيرة هنا...' : 'Write your short response here...'}
+                className={cn(
+                  'w-full resize-y rounded-xl border-2 bg-white px-4 py-3 font-serif text-sm sm:text-base leading-relaxed text-wood outline-none',
+                  theme.softBorder
+                )}
+              />
+            </div>
+          )}
           {exercise.discussionPrompts?.map((prompt, index) => (
             <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
               <div className="flex items-center gap-2 mb-2 text-wood/50">
@@ -578,7 +601,19 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             </div>
           ))}
           {!isSubmitted && (
-            <button type="button" onClick={() => submit(true)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', theme.accentBg)}>{t('nav.reflectedOnThese')}</button>
+            <button
+              type="button"
+              disabled={reflectionNeedsWriting && !reflectionResponse.trim()}
+              onClick={() => submit(reflectionNeedsWriting ? reflectionResponse : true)}
+              className={cn(
+                'w-full min-h-12 rounded-xl font-bold',
+                reflectionNeedsWriting && !reflectionResponse.trim()
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : `${theme.accentBg} text-white`
+              )}
+            >
+              {t('nav.reflectedOnThese')}
+            </button>
           )}
         </div>
       );
