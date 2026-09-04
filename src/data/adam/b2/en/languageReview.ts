@@ -151,10 +151,10 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
     id: 'adam-b2-language-review-8-transfer',
     type: 'reflection',
     title: 'B2 Transfer: Build a Qualified Argument',
-    instructions: 'Write or say one coherent 8–10 sentence paragraph about a non-story issue such as a school rule, a technology claim, a sports debate or a social trend.',
-    question: 'Can you use the book’s language resources to build a nuanced argument rather than simply state an opinion?',
+    instructions: 'Write one coherent 8–10 sentence B2 paragraph about a non-story issue such as a school rule, a technology claim, a sports debate or a social trend.',
+    question: 'Write an 8–10 sentence paragraph that uses the book’s language resources to build a nuanced argument rather than simply state an opinion.',
     correctAnswer: null,
-    explanation: 'The aim is cumulative transfer: source control, concession, stance, cause, condition, cohesion and a qualified conclusion.',
+    explanation: 'The aim is cumulative written transfer: source control, concession, stance, cause, condition, cohesion and a qualified conclusion.',
     feedback: {
       correct: 'Use the language features as tools for meaning and coherence.',
       incorrect: '',
