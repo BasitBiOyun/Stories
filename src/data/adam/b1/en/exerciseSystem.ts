@@ -13,14 +13,14 @@ export const adamB1PolishedQuickChallenges: Record<number, Exercise> = {
     matchingPairs: [
       { left: 'Soil from different lands', right: 'different human skin colors' },
       { left: 'Life and intellect', right: 'learning and understanding' },
-      { left: 'Full knowledge', right: 'goodness and responsibility on earth' },
+      { left: 'Full knowledge', right: 'goodness on earth' },
     ],
     correctAnswer: {
       'Soil from different lands': 'different human skin colors',
       'Life and intellect': 'learning and understanding',
-      'Full knowledge': 'goodness and responsibility on earth',
+      'Full knowledge': 'goodness on earth',
     },
-    explanation: 'The chapter connects varied soil with human diversity, intellect with learning, and knowledge with goodness and responsibility on earth.',
+    explanation: 'The chapter connects varied soil with human diversity, intellect with learning, and knowledge with goodness on earth.',
   },
 };
 
