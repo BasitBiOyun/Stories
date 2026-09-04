@@ -1,6 +1,6 @@
 import type { Exercise } from '../../../../types';
 
-/** Chapter 15 only — authored from the English story text, not from the Arabic version. */
+/** Chapter 15 only — authored from the active corrected English story text. */
 export const adamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
   15: [
     {
@@ -21,29 +21,23 @@ export const adamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
         'to show him': 'states the purpose of the raven’s action',
         'how he might cover the corpse of his brother': 'embeds the method while “might” presents a possible way forward',
       },
-      explanation: 'The quotation builds a compact information chain: action → added detail → purpose → possible method. The modal “might” belongs inside the embedded how-clause and does not weaken the fact that the raven is sent.',
-      feedback: {
-        correct: 'Correct. You tracked several clause relationships inside one sentence instead of reading each phrase in isolation.',
-        incorrect: 'Separate the main action, the relative clause, the purpose phrase, and the embedded how-clause.',
-      },
+      explanation: 'The quotation builds a compact chain: action → added detail → purpose → possible method.',
+      feedback: { correct: 'Correct.', incorrect: 'Separate the main action, relative clause, purpose phrase and embedded how-clause.' },
     },
     {
       id: 'adam-b2-language-15-interpretive-framing',
       type: 'multiple-choice',
       title: 'Separate Narrative from Interpretation',
-      instructions: 'Choose the strongest analysis of the wording.',
-      question: 'What is the discourse function of “What is essentially being described here are the consequences of choosing evil”?',
+      instructions: 'Choose the strongest analysis of the active story wording.',
+      question: 'What is the discourse function of “What is essentially described here is the consequence of choosing evil”?',
       options: [
         'It signals that the paragraph is moving from narrated events to an interpretation of their wider significance.',
-        'It introduces a new event that happened after the burial.',
-        'It reports a direct quotation from the Qur’an and therefore carries the same source status as the verse above.',
+        'It introduces a new event that happens after the burial.',
+        'It reports a direct Qur’anic quotation and therefore has the same source status as the verse above.',
       ],
       correctAnswer: 0,
-      explanation: 'The expression “What is essentially being described here...” is metadiscursive framing. It tells the reader that the writer is now interpreting the narrative rather than continuing the event sequence or quoting scripture.',
-      feedback: {
-        correct: 'Correct. The phrase marks a shift in discourse level: event → interpretation.',
-        incorrect: 'Ask whether the sentence narrates an action, quotes a source, or comments on what the previous events mean.',
-      },
+      explanation: 'The phrase is metadiscursive framing: it marks a shift from event narration to interpretation of the event’s wider meaning.',
+      feedback: { correct: 'Correct.', incorrect: 'Ask whether the sentence narrates an action, quotes a source, or comments on what the previous events mean.' },
     },
     {
       id: 'adam-b2-language-15-characterisation',
@@ -63,27 +57,21 @@ export const adamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
         'the type of person dominated by evil': 'uses a reduced passive description to characterise a person by what controls him',
         'while Habil represents the righteous person': 'uses “while” to set two contrasting character types against each other',
       },
-      explanation: 'The paragraph moves beyond naming qualities. It links cause, parallel choices, compact passive characterisation, and contrast to build an analytical comparison.',
-      feedback: {
-        correct: 'Correct. You identified how grammar helps the paragraph analyse character rather than merely list traits.',
-        incorrect: 'Look for four different jobs: explaining an effect, aligning two choices, compressing a description, and contrasting two people.',
-      },
+      explanation: 'The paragraph links cause, parallel choices, compact characterisation and contrast to build an analysis rather than a list of traits.',
+      feedback: { correct: 'Correct.', incorrect: 'Look for four jobs: explaining an effect, aligning choices, compressing description and contrasting characters.' },
     },
     {
       id: 'adam-b2-language-15-production',
       type: 'reflection',
       title: 'Write an Event-to-Interpretation Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which an event leads to a wider interpretation about human behaviour. Include one purpose structure such as “to show...”, one embedded how-clause such as “how someone might...”, one interpretive frame such as “What is essentially being shown here is...”, one relative clause that explains a cause or effect, and one contrast with “while”. Keep factual description and interpretation clearly separate. Do not retell Chapter 15.',
+      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which an event leads to a wider interpretation about human behaviour. Include one purpose structure, one embedded how-clause, the frame “What is essentially described here is...”, one explanatory relative clause and one contrast with “while”. Keep factual description and interpretation clearly separate.',
       question: 'Can you move from a concrete event to a careful interpretation while using clause structure to organise the argument?',
       correctAnswer: null,
-      explanation: 'A strong B2 response should make the discourse shift visible: describe what happened first, then mark the move into interpretation, explain a cause or effect, and contrast two responses without confusing interpretation with fact.',
-      feedback: {
-        correct: 'Keep the event sentences factual, make the interpretive frame explicit, and ensure each relative or purpose clause adds a real relationship rather than extra decoration.',
-        incorrect: '',
-      },
+      explanation: 'A strong response describes what happened first, explicitly marks the move into interpretation, explains a cause or effect and contrasts two responses without confusing interpretation with fact.',
+      feedback: { correct: 'Keep event sentences factual and make the interpretive shift explicit.', incorrect: '' },
       discussionPrompts: [
         { question: 'Event — What concrete action or incident happens first?', mode: 'Individual' },
-        { question: 'Purpose — What action is done to show, prevent, or teach something?', mode: 'Individual' },
+        { question: 'Purpose — What action is done to show, prevent or teach something?', mode: 'Individual' },
         { question: 'Interpretation — Which sentence clearly marks the move from event to meaning?', mode: 'Pair' },
         { question: 'Contrast — Which two responses or character types will “while” compare?', mode: 'Pair' },
       ],
