@@ -103,7 +103,7 @@ export const adamA2QuickChallenges: Record<number, Exercise> = {
     instructions: 'Decide whether the statement agrees with Chapter 9.',
     question: 'Habil said that he would fight back and harm Qabil.', correctAnswer: false,
     explanation: 'Habil said that he would not fight back or harm Qabil.',
-    feedback: { correct: 'Correct.', incorrect: 'Read Habil’s reply and focus on “I won’t fight back and harm you”.' }
+    feedback: { correct: 'Correct.', incorrect: 'Read Habil’s reply and focus on “I won’t fight back or harm you”.' }
   },
   10: {
     id: 'adam-a2-quick-10', type: 'multiple-choice', title: 'The Message Continues',
