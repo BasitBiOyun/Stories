@@ -153,12 +153,12 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       matchingPairs: [
         { left: 'life and intellect to learn and understand', right: 'expresses the purpose connected with what was given' },
         { left: 'Later, He taught him ...', right: 'moves the account to a subsequent stage' },
-        { left: 'more knowledge than angels', right: 'compares the amount or degree of knowledge' },
+        { left: 'more knowledge than the angels', right: 'compares the amount or degree of knowledge' },
       ],
       correctAnswer: {
         'life and intellect to learn and understand': 'expresses the purpose connected with what was given',
         'Later, He taught him ...': 'moves the account to a subsequent stage',
-        'more knowledge than angels': 'compares the amount or degree of knowledge',
+        'more knowledge than the angels': 'compares the amount or degree of knowledge',
       },
       explanation: 'The infinitive can express purpose, “later” organizes the sequence, and “more ... than” creates a comparative relationship. Together they make the paragraph more connected and precise.',
       feedback: {
