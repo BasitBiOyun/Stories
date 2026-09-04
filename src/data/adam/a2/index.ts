@@ -13,54 +13,42 @@ import {
   adamA2QuickChallengesAr,
   adamA2VocabularyChallengePairsAr,
 } from './ar/exercises';
-import { adamA2LanguageReviewExercises } from './en/languageReview';
-import { adamA2LanguageReviewExercisesAr } from './ar/languageReview';
 import { adamA2LanguageFocusExercises } from './en/languageFocus';
 import { adamA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { adamA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
-import { adamA2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
-import { adamA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
-import { adamA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
-import { adamA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
-import { adamA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
-import { adamA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
+import { adamA2LanguageFocusExercisesPart3, adamA2LanguageReviewExercises } from './en/languageFocusPart3';
 import { adamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
-import { adamA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
-import { adamA2LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
-import { adamA2LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
-import { adamA2LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6';
-import { adamA2LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
-import { adamA2LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
-import { adamA2LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
+import { adamA2LanguageFocusExercisesArPart3, adamA2LanguageReviewExercisesAr } from './ar/languageFocusPart3';
 import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamA2SelfStudyGuide } from './en/selfStudyGuide';
 import {
-  adamA2StudentGuideMetadataPreview as adamA2StudentGuideMetadata,
-  adamA2StudentGuideSectionsPreview as adamA2StudentGuideSections,
-  adamA2StudentGuideTextPreview as adamA2StudentGuideText,
-} from './en/studentGuidePreview';
-import { adamA2SelfStudyGuideAr } from './ar/selfStudyGuide';
+  adamA2SelfStudyGuide,
+  adamA2StudentGuideMetadata,
+  adamA2StudentGuideSections,
+  adamA2StudentGuideText,
+} from './en/selfStudyGuide';
 import {
-  adamA2StudentGuideMetadataPreviewAr as adamA2StudentGuideMetadataAr,
-  adamA2StudentGuideSectionsPreviewAr as adamA2StudentGuideSectionsAr,
-  adamA2StudentGuideTextPreviewAr as adamA2StudentGuideTextAr,
-} from './ar/studentGuidePreview';
+  adamA2SelfStudyGuideAr,
+  adamA2StudentGuideMetadataAr,
+  adamA2StudentGuideSectionsAr,
+  adamA2StudentGuideTextAr,
+} from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 10 }, (_, index) => index + 1));
 
+const getEnglishLanguageFocus = (pageId: number) =>
+  adamA2LanguageFocusExercises[pageId]
+  ?? adamA2LanguageFocusExercisesPart2[pageId]
+  ?? adamA2LanguageFocusExercisesPart3[pageId];
+
+const getArabicLanguageFocus = (pageId: number) =>
+  adamA2LanguageFocusExercisesAr[pageId]
+  ?? adamA2LanguageFocusExercisesArPart2[pageId]
+  ?? adamA2LanguageFocusExercisesArPart3[pageId];
+
 const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = adamA2LanguageFocusExercises[page.id]
-      ?? adamA2LanguageFocusExercisesPart2[page.id]
-      ?? adamA2LanguageFocusExercisesPart3[page.id]
-      ?? adamA2LanguageFocusExercisesPart4[page.id]
-      ?? adamA2LanguageFocusExercisesPart5[page.id]
-      ?? adamA2LanguageFocusExercisesPart6[page.id]
-      ?? adamA2LanguageFocusExercisesPart7[page.id]
-      ?? adamA2LanguageFocusExercisesPart8[page.id]
-      ?? adamA2LanguageFocusExercisesPart9[page.id];
+    const languageFocusExercises = getEnglishLanguageFocus(page.id);
     return {
       ...page,
       exercises: [adamA2QuickChallenges[page.id]],
@@ -69,27 +57,14 @@ const buildEnglishPages = (): PageData[] => adamA2Pages.map(page => {
   }
   if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercises };
   if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairs };
-  if (page.id === 13) return {
-    ...page,
-    title: 'Language Review',
-    content: 'Review and use the grammar patterns and language functions from all ten chapters.',
-    exercises: adamA2LanguageReviewExercises,
-  };
+  if (page.id === 13) return { ...page, exercises: adamA2LanguageReviewExercises };
   if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercises };
   return page;
 });
 
 const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = adamA2LanguageFocusExercisesAr[page.id]
-      ?? adamA2LanguageFocusExercisesArPart2[page.id]
-      ?? adamA2LanguageFocusExercisesArPart3[page.id]
-      ?? adamA2LanguageFocusExercisesArPart4[page.id]
-      ?? adamA2LanguageFocusExercisesArPart5[page.id]
-      ?? adamA2LanguageFocusExercisesArPart6[page.id]
-      ?? adamA2LanguageFocusExercisesArPart7[page.id]
-      ?? adamA2LanguageFocusExercisesArPart8[page.id]
-      ?? adamA2LanguageFocusExercisesArPart9[page.id];
+    const languageFocusExercises = getArabicLanguageFocus(page.id);
     return {
       ...page,
       exercises: [adamA2QuickChallengesAr[page.id]],
@@ -98,12 +73,7 @@ const buildArabicPages = (): PageData[] => adamA2PagesAr.map(page => {
   }
   if (page.id === 11) return { ...page, exercises: adamA2KnowledgeCheckExercisesAr };
   if (page.id === 12) return { ...page, vocabularyPairs: adamA2VocabularyChallengePairsAr };
-  if (page.id === 13) return {
-    ...page,
-    title: 'مراجعة اللغة',
-    content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول العشرة.',
-    exercises: adamA2LanguageReviewExercisesAr,
-  };
+  if (page.id === 13) return { ...page, exercises: adamA2LanguageReviewExercisesAr };
   if (page.id === 16) return { ...page, exercises: adamA2FinalChallengeExercisesAr };
   return page;
 });

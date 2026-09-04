@@ -1,14 +1,10 @@
-import type { TeacherGuideSection } from '../../../../types';
+import type { StudentGuideMetadata, StudentGuideSection, TeacherGuideSection } from '../../../../types';
 
 export const adamA2SelfStudyGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 1 — Opening & The Creation',
     timing: '15–20 minutes',
-    objectives: [
-      'Find how Adam was created and the human role on Earth stated in the chapter.',
-      'Follow the opening sequence and explain the soil-from-different-places → different-skin-colours connection.',
-      'Use one Chapter 1 Language Focus pattern in a short new sentence.'
-    ],
+    objectives: ['Find how Adam was created and the human role on Earth stated in the chapter.', 'Follow the opening sequence and explain the soil-from-different-places → different-skin-colours connection.', 'Use one Chapter 1 Language Focus pattern in a short new sentence.'],
     pedagogy: 'Understand the story first, then return to evidence, Quick Challenge and Language Focus. Keep the value transfer separate from the story fact.',
     grammarFocus: 'Simple Past; be going to; sequence, reason and result linkers such as Then, because and Because of this.',
     pronunciationFocus: 'messenger, soil, curiosity, created; practise one short audio sentence with clear word stress.',
@@ -25,204 +21,283 @@ export const adamA2SelfStudyGuide: TeacherGuideSection[] = [
     discussionPoints: ['What is the opening’s main event?', 'Which two sentences create the cause-result link?'],
     interactiveTips: ['Use the Soil/Earth hotspots only to return to real evidence.', 'Open Language Focus only after the basic story meaning is clear.'],
     differentiation: { fastFinishers: 'Retell four events using a past form, be going to and two linkers.', strugglingLearners: 'Use “Adam was created from ___.”, “Then…”, and “Because of this…”.' },
-    assessmentTools: { exitTicket: ['Retell one event and connect it with Then, because or so.'] }
+    assessmentTools: { exitTicket: ['Retell one event and connect it with Then, because or so.'] },
   },
   {
-    chapter: 'Chapter 2 — Knowledge and Respect',
-    timing: '15–20 minutes',
+    chapter: 'Chapter 2 — Knowledge and Respect', timing: '15–20 minutes',
     objectives: ['Find why Adam could learn and understand.', 'Compare the angels’ reaction with Iblis’s reaction.', 'Use ability, comparison or reason/contrast language from Chapter 2 Language Focus.'],
-    pedagogy: 'Use evidence from both sides before making a comparison. Respect is connected to observable response, not to a label alone.',
-    grammarFocus: 'could; taught + person + to; comparatives; because; thought; but.',
-    pronunciationFocus: 'knowledge, respect, understand, wiser, thought; repeat one comparison sentence from the audio.',
-    whatToNotice: ['what Allah gave Adam', 'what Adam could do', 'the angels’ reaction', 'Iblis’s different opinion'],
-    readListen: ['Listen for knowledge and learning.', 'Reread and mark one piece of evidence for each reaction.'],
-    findAnswerInStory: ['For comparison questions, find both the angels’ sentence and Iblis’s sentence.'],
-    vocabularyInContext: ['Use wiser inside the comparison sentence.', 'Use respect in a short phrase such as show respect.'],
-    quickChallengeGuide: 'Complete the missing word in the command to the angels before looking back.',
-    wrongAnswerSupport: ['Return to the first quoted command.', 'Then check both reactions before making a contrast.'],
-    selfCheck: ['Can I explain what helped Adam learn?', 'Can I compare the reactions?', 'Can I use could, a comparison, because or but?'],
-    useWhatYouLearned: 'Give one school example of showing respect while disagreeing.',
-    reflectionPrompt: 'Which action in the chapter is the clearest evidence of respect?',
-    lessonPlan: '1. Listen/read for knowledge. 2. Mark the two reactions. 3. Quick Challenge. 4. Repair if needed. 5. Complete Chapter 2 Language Focus. 6. Produce one contrast and one reason sentence.',
-    discussionPoints: ['What helped Adam learn?', 'How were the two reactions different?'],
-    interactiveTips: ['Use the Knowledge/Angels hotspots for evidence.', 'Keep the short production tied to the actual Language Focus.'],
-    differentiation: { fastFinishers: 'Write four connected sentences using could, a comparison, because and but.', strugglingLearners: 'Use “Adam could…”, “He was… than…”, and “The angels…, but Iblis…”.' },
-    assessmentTools: { exitTicket: ['Complete: “The angels thought…, but Iblis thought…”.'] }
+    pedagogy: 'Use evidence from both sides before making a comparison. Respect is connected to observable response, not to a label alone.', grammarFocus: 'could; taught + person + to; comparatives; because; thought; but.', pronunciationFocus: 'knowledge, respect, understand, wiser, thought; repeat one comparison sentence from the audio.',
+    whatToNotice: ['what Allah gave Adam', 'what Adam could do', 'the angels’ reaction', 'Iblis’s different opinion'], readListen: ['Listen for knowledge and learning.', 'Reread and mark one piece of evidence for each reaction.'], findAnswerInStory: ['For comparison questions, find both the angels’ sentence and Iblis’s sentence.'], vocabularyInContext: ['Use wiser inside the comparison sentence.', 'Use respect in a short phrase such as show respect.'], quickChallengeGuide: 'Complete the missing word in the command to the angels before looking back.', wrongAnswerSupport: ['Return to the first quoted command.', 'Then check both reactions before making a contrast.'], selfCheck: ['Can I explain what helped Adam learn?', 'Can I compare the reactions?', 'Can I use could, a comparison, because or but?'], useWhatYouLearned: 'Give one school example of showing respect while disagreeing.', reflectionPrompt: 'Which action in the chapter is the clearest evidence of respect?', lessonPlan: '1. Listen/read for knowledge. 2. Mark the two reactions. 3. Quick Challenge. 4. Repair if needed. 5. Complete Chapter 2 Language Focus. 6. Produce one contrast and one reason sentence.', discussionPoints: ['What helped Adam learn?', 'How were the two reactions different?'], interactiveTips: ['Use the Knowledge/Angels hotspots for evidence.', 'Keep the short production tied to the actual Language Focus.'], differentiation: { fastFinishers: 'Write four connected sentences using could, a comparison, because and but.', strugglingLearners: 'Use “Adam could…”, “He was… than…”, and “The angels…, but Iblis…”.' }, assessmentTools: { exitTicket: ['Complete: “The angels thought…, but Iblis thought…”.'] },
   },
   {
-    chapter: 'Chapter 3 — Pride, Origin and Real Value',
-    timing: '15–20 minutes',
-    objectives: ['Find why Iblis said he was better.', 'Separate Iblis’s judgement from the chapter’s message about useful knowledge.', 'Use comparison/reporting/reason language from Chapter 3 Language Focus.'],
-    pedagogy: 'Separate a character claim from the chapter-supported message. The active Quick Challenge checks four relationships, not only fire and soil.',
-    grammarFocus: 'comparatives; said/thought/believed; make + object + adjective; can; because.',
-    pronunciationFocus: 'arrogant, valuable, believed, creature; pause clearly after a reporting verb.',
-    whatToNotice: ['Iblis’s origin', 'Adam’s origin', 'Iblis’s mistake in judging value', 'what useful knowledge helps people do'],
-    readListen: ['Listen first for Iblis’s own claim.', 'Reread and mark claim versus chapter message with two different signs.'],
-    findAnswerInStory: ['Use the useful-knowledge/value sentences when the question asks for the chapter’s message.'],
-    vocabularyInContext: ['Learn arrogant and valuable from their own story sentences.', 'Keep useful knowledge connected to the action it enables.'],
-    quickChallengeGuide: 'Match all four active items: Iblis → fire, Adam → soil, Iblis’s mistake → thinking origin made him better, useful knowledge → helping people do good and stop bad.',
-    wrongAnswerSupport: ['Ask “Who says this?” before choosing.', 'Return separately to the origin sentences and the useful-knowledge sentence.'],
-    selfCheck: ['Can I state Iblis’s idea without presenting it as the lesson?', 'Can I explain the useful-knowledge point?', 'Can I use one comparison or reporting pattern?'],
-    useWhatYouLearned: 'Give one simple example of using knowledge helpfully.',
-    reflectionPrompt: 'Why is “who says this?” important in this chapter?',
-    lessonPlan: '1. Listen for the claim. 2. Separate claim and message. 3. Do the four-part Quick Challenge. 4. Repair from the exact evidence. 5. Complete Chapter 3 Language Focus. 6. Produce an “Iblis thought…, but…” explanation.',
-    discussionPoints: ['What did Iblis believe?', 'What does the chapter say useful knowledge can do?'],
-    interactiveTips: ['Use the Fire/Arrogant hotspots as evidence cues.', 'Do not reduce the active Quick Challenge to only the two origins.'],
-    differentiation: { fastFinishers: 'Write four connected sentences using thought/believed, a comparison, but and because.', strugglingLearners: 'Use two boxes: Iblis thought / The chapter says.' },
-    assessmentTools: { exitTicket: ['Finish: “Iblis believed…, but useful knowledge…”.'] }
+    chapter: 'Chapter 3 — Pride, Origin and Real Value', timing: '15–20 minutes', objectives: ['Find why Iblis said he was better.', 'Separate Iblis’s judgement from the chapter’s message about useful knowledge.', 'Use comparison/reporting/reason language from Chapter 3 Language Focus.'], pedagogy: 'Separate a character claim from the chapter-supported message. The active Quick Challenge checks four relationships, not only fire and soil.', grammarFocus: 'comparatives; said/thought/believed; make + object + adjective; can; because.', pronunciationFocus: 'arrogant, valuable, believed, creature; pause clearly after a reporting verb.', whatToNotice: ['Iblis’s origin', 'Adam’s origin', 'Iblis’s mistake in judging value', 'what useful knowledge helps people do'], readListen: ['Listen first for Iblis’s own claim.', 'Reread and mark claim versus chapter message with two different signs.'], findAnswerInStory: ['Use the useful-knowledge/value sentences when the question asks for the chapter’s message.'], vocabularyInContext: ['Learn arrogant and valuable from their own story sentences.', 'Keep useful knowledge connected to the action it enables.'], quickChallengeGuide: 'Match all four active items: Iblis → fire, Adam → soil, Iblis’s mistake → thinking origin made him better, useful knowledge → helping people do good and stop bad.', wrongAnswerSupport: ['Ask “Who says this?” before choosing.', 'Return separately to the origin sentences and the useful-knowledge sentence.'], selfCheck: ['Can I state Iblis’s idea without presenting it as the lesson?', 'Can I explain the useful-knowledge point?', 'Can I use one comparison or reporting pattern?'], useWhatYouLearned: 'Give one simple example of using knowledge helpfully.', reflectionPrompt: 'Why is “who says this?” important in this chapter?', lessonPlan: '1. Listen for the claim. 2. Separate claim and message. 3. Do the four-part Quick Challenge. 4. Repair from the exact evidence. 5. Complete Chapter 3 Language Focus. 6. Produce an “Iblis thought…, but…” explanation.', discussionPoints: ['What did Iblis believe?', 'What does the chapter say useful knowledge can do?'], interactiveTips: ['Use the Fire/Arrogant hotspots as evidence cues.', 'Do not reduce the active Quick Challenge to only the two origins.'], differentiation: { fastFinishers: 'Write four connected sentences using thought/believed, a comparison, but and because.', strugglingLearners: 'Use two boxes: Iblis thought / The chapter says.' }, assessmentTools: { exitTicket: ['Finish: “Iblis believed…, but useful knowledge…”.'] },
   },
   {
-    chapter: 'Chapter 4 — Adam, Eve and the Warnings',
-    timing: '15–20 minutes',
-    objectives: ['Connect Adam’s loneliness with Eve.', 'Keep the warning about Iblis separate from the tree prohibition.', 'Use wants, warning/prohibition and beginning language from Chapter 4 Language Focus.'],
-    pedagogy: 'Classify the two warnings before producing language. Meaning comes before grammar practice.',
-    grammarFocus: 'want + person + to; tell + person + to/not to; started to; comparison/contrast.',
-    pronunciationFocus: 'lonely, warning, wanted, careful; practise weak to in one short phrase.',
-    whatToNotice: ['what Iblis wanted', 'why Eve is introduced', 'the warning about Iblis', 'the separate warning about one tree'],
-    readListen: ['Listen once for the chapter’s two parts.', 'Reread and place each warning in its own box.'],
-    findAnswerInStory: ['For “Why Eve?” use the sentence immediately before her introduction.', 'For a warning question, first decide which warning is being asked about.'],
-    vocabularyInContext: ['Use lonely from Adam’s situation.', 'Connect warning to the exact instruction that follows.'],
-    quickChallengeGuide: 'Answer why Allah gave Adam a wife; do not answer with one of the warnings.',
-    wrongAnswerSupport: ['Return to the sentence before Eve is introduced.', 'Keep the two warning sentences separate.'],
-    selfCheck: ['Can I explain loneliness → Eve?', 'Can I name the two warnings separately?', 'Can I use wanted, told or started to?'],
-    useWhatYouLearned: 'Give one clear and kind everyday warning.',
-    reflectionPrompt: 'What helped you keep the two warnings apart?',
-    lessonPlan: '1. Listen/read. 2. Find the cause-result link. 3. Separate the warnings. 4. Quick Challenge. 5. Repair if needed. 6. Complete Chapter 4 Language Focus. 7. Produce one safe warning sentence.',
-    discussionPoints: ['Why is Eve introduced?', 'How are the two warnings different?'],
-    interactiveTips: ['Use the Eve/Tree hotspots.', 'Use the exact warning sentence before paraphrasing.'],
-    differentiation: { fastFinishers: 'Write four sentences using wanted…to, started to, told…to and told…not to.', strugglingLearners: 'Use the same four frames with story vocabulary.' },
-    assessmentTools: { exitTicket: ['Write one sentence with told…not to.'] }
+    chapter: 'Chapter 4 — Adam, Eve and the Warnings', timing: '15–20 minutes', objectives: ['Connect Adam’s loneliness with Eve.', 'Keep the warning about Iblis separate from the tree prohibition.', 'Use wants, warning/prohibition and beginning language from Chapter 4 Language Focus.'], pedagogy: 'Classify the two warnings before producing language. Meaning comes before grammar practice.', grammarFocus: 'want + person + to; tell + person + to/not to; started to; comparison/contrast.', pronunciationFocus: 'lonely, warning, wanted, careful; practise weak to in one short phrase.', whatToNotice: ['what Iblis wanted', 'why Eve is introduced', 'the warning about Iblis', 'the separate warning about one tree'], readListen: ['Listen once for the chapter’s two parts.', 'Reread and place each warning in its own box.'], findAnswerInStory: ['For “Why Eve?” use the sentence immediately before her introduction.', 'For a warning question, first decide which warning is being asked about.'], vocabularyInContext: ['Use lonely from Adam’s situation.', 'Connect warning to the exact instruction that follows.'], quickChallengeGuide: 'Answer why Allah gave Adam a wife; do not answer with one of the warnings.', wrongAnswerSupport: ['Return to the sentence before Eve is introduced.', 'Keep the two warning sentences separate.'], selfCheck: ['Can I explain loneliness → Eve?', 'Can I name the two warnings separately?', 'Can I use wanted, told or started to?'], useWhatYouLearned: 'Give one clear and kind everyday warning.', reflectionPrompt: 'What helped you keep the two warnings apart?', lessonPlan: '1. Listen/read. 2. Find the cause-result link. 3. Separate the warnings. 4. Quick Challenge. 5. Repair if needed. 6. Complete Chapter 4 Language Focus. 7. Produce one safe warning sentence.', discussionPoints: ['Why is Eve introduced?', 'How are the two warnings different?'], interactiveTips: ['Use the Eve/Tree hotspots.', 'Use the exact warning sentence before paraphrasing.'], differentiation: { fastFinishers: 'Write four sentences using wanted…to, started to, told…to and told…not to.', strugglingLearners: 'Use the same four frames with story vocabulary.' }, assessmentTools: { exitTicket: ['Write one sentence with told…not to.'] },
   },
   {
-    chapter: 'Chapter 5 — The Mistake, Regret and Repair',
-    timing: '15–20 minutes',
-    objectives: ['Follow lie → forgotten warning → mistake → regret → learning → decision.', 'Compare Adam and Eve’s response with Iblis’s response.', 'Use condition/result and mistake-response language from Chapter 5 Language Focus.'],
-    pedagogy: 'Treat Iblis’s conditional as a quoted promise, not narrator fact. Use the repair sequence as evidence of learning.',
-    grammarFocus: 'if + present → will + verb; made a mistake; wasn’t on purpose; learned from; decided never to; but/because.',
-    pronunciationFocus: 'mistake, purpose, decided, repeat; chunk the condition and result as two clear parts.',
-    whatToNotice: ['Iblis’s false promise', 'not on purpose', 'the repair actions', 'Iblis’s contrasting response'],
-    readListen: ['Listen first for the promise.', 'Reread and build the response sequence.'],
-    findAnswerInStory: ['Use the paragraph after the mistake for repair actions.', 'Use the final paragraph for Iblis’s different response.'],
-    vocabularyInContext: ['Use mistake and on purpose as a contrast.', 'Connect regret to the actions that follow.'],
-    quickChallengeGuide: 'Recall the exact result Iblis promised in the “If you eat…” sentence.',
-    wrongAnswerSupport: ['Use the hint to find one sentence.', 'Correct the fact before explaining why the first answer was wrong.'],
-    selfCheck: ['Can I put the events in order?', 'Can I name two repair actions?', 'Can I use an if/will or decision pattern?'],
-    useWhatYouLearned: 'Finish: “After a mistake, I can ___.” with a realistic action.',
-    reflectionPrompt: 'Why is learning from a mistake different from only feeling bad?',
-    lessonPlan: '1. Find the lie. 2. Build the sequence. 3. Quick Challenge. 4. Repair if needed. 5. Complete Chapter 5 Language Focus. 6. Compare the two responses. 7. Write one personal repair action.',
-    discussionPoints: ['What did Iblis promise?', 'What shows learning and repair?'],
-    interactiveTips: ['Use the Lie/Mistake hotspots.', 'Treat a wrong exercise answer as a chance to find, correct and retry.'],
-    differentiation: { fastFinishers: 'Write the sequence with first/then/after that and add one if/will sentence.', strugglingLearners: 'Use mistake → sorry → learned → decided plus one simple frame.' },
-    assessmentTools: { exitTicket: ['Name two things Adam and Eve did after the mistake.'] }
+    chapter: 'Chapter 5 — The Mistake, Regret and Repair', timing: '15–20 minutes', objectives: ['Follow lie → forgotten warning → mistake → regret → learning → decision.', 'Compare Adam and Eve’s response with Iblis’s response.', 'Use condition/result and mistake-response language from Chapter 5 Language Focus.'], pedagogy: 'Treat Iblis’s conditional as a quoted promise, not narrator fact. Use the repair sequence as evidence of learning.', grammarFocus: 'if + present → will + verb; made a mistake; wasn’t on purpose; learned from; decided never to; but/because.', pronunciationFocus: 'mistake, purpose, decided, repeat; chunk the condition and result as two clear parts.', whatToNotice: ['Iblis’s false promise', 'not on purpose', 'the repair actions', 'Iblis’s contrasting response'], readListen: ['Listen first for the promise.', 'Reread and build the response sequence.'], findAnswerInStory: ['Use the paragraph after the mistake for repair actions.', 'Use the final paragraph for Iblis’s different response.'], vocabularyInContext: ['Use mistake and on purpose as a contrast.', 'Connect regret to the actions that follow.'], quickChallengeGuide: 'Recall the exact result Iblis promised in the “If you eat…” sentence.', wrongAnswerSupport: ['Use the hint to find one sentence.', 'Correct the fact before explaining why the first answer was wrong.'], selfCheck: ['Can I put the events in order?', 'Can I name two repair actions?', 'Can I use an if/will or decision pattern?'], useWhatYouLearned: 'Finish: “After a mistake, I can ___.” with a realistic action.', reflectionPrompt: 'Why is learning from a mistake different from only feeling bad?', lessonPlan: '1. Find the lie. 2. Build the sequence. 3. Quick Challenge. 4. Repair if needed. 5. Complete Chapter 5 Language Focus. 6. Compare the two responses. 7. Write one personal repair action.', discussionPoints: ['What did Iblis promise?', 'What shows learning and repair?'], interactiveTips: ['Use the Lie/Mistake hotspots.', 'Treat a wrong exercise answer as a chance to find, correct and retry.'], differentiation: { fastFinishers: 'Write the sequence with first/then/after that and add one if/will sentence.', strugglingLearners: 'Use mistake → sorry → learned → decided plus one simple frame.' }, assessmentTools: { exitTicket: ['Name two things Adam and Eve did after the mistake.'] },
   },
   {
-    chapter: 'Chapter 6 — Life and Responsibility on Earth',
-    timing: '15–20 minutes',
-    objectives: ['Find what happened after forgiveness.', 'Identify the work and responsibilities stated for life on Earth.', 'Use plan, purpose and intention language from Chapter 6 Language Focus.'],
-    pedagogy: 'Move from stated evidence to one realistic personal action. Keep Iblis’s intention separate from human responsibilities.',
-    grammarFocus: 'were going to + verb; to + verb for purpose; want + person + not to + verb.',
-    pronunciationFocus: 'crops, protect, nature, weak; stress the action verbs in one responsibility sentence.',
-    whatToNotice: ['forgiveness before life on Earth', 'work with land and animals', 'build/protect/help responsibilities', 'Iblis’s continuing aim'],
-    readListen: ['Listen for the move to Earth.', 'Reread and mark work/care actions with verbs.'],
-    findAnswerInStory: ['For responsibility questions, use only the action list in the story.'],
-    vocabularyInContext: ['Learn crops from the farming sentence.', 'Learn protect and weak from the responsibility phrase.'],
-    quickChallengeGuide: 'This is the book’s Tap & Reveal Quick Challenge. Answer what happened after forgiveness before tapping.',
-    wrongAnswerSupport: ['Use the first sentence for sequence.', 'Use the responsibility list for work/care questions.'],
-    selfCheck: ['Can I name two work activities?', 'Can I name two care responsibilities?', 'Can I use a plan/purpose pattern from Language Focus?'],
-    useWhatYouLearned: 'Choose protect nature or help the weak and state one realistic action you can do.',
-    reflectionPrompt: 'Which stated responsibility can most easily become a student action?',
-    lessonPlan: '1. Answer Tap & Reveal from memory. 2. Listen/read for work and care. 3. Sort the actions. 4. Complete Chapter 6 Language Focus. 5. Give one evidence-based responsibility sentence. 6. Add one clearly personal action.',
-    discussionPoints: ['Which responsibilities are stated?', 'How can one become a realistic student action?'],
-    interactiveTips: ['Keep story evidence and personal transfer in separate sentences.', 'Do not invent extra responsibilities during evidence work.'],
-    differentiation: { fastFinishers: 'Write three planned-responsibility sentences and add purpose.', strugglingLearners: 'Use grow, keep, build, protect and help with “They were going to…”.' },
-    assessmentTools: { exitTicket: ['Write one story responsibility and one purpose sentence.'] }
+    chapter: 'Chapter 6 — Life and Responsibility on Earth', timing: '15–20 minutes', objectives: ['Find what happened after forgiveness.', 'Identify the work and responsibilities stated for life on Earth.', 'Use plan, purpose and intention language from Chapter 6 Language Focus.'], pedagogy: 'Move from stated evidence to one realistic personal action. Keep Iblis’s intention separate from human responsibilities.', grammarFocus: 'were going to + verb; to + verb for purpose; want + person + not to + verb.', pronunciationFocus: 'crops, protect, nature, weak; stress the action verbs in one responsibility sentence.', whatToNotice: ['forgiveness before life on Earth', 'work with land and animals', 'build/protect/help responsibilities', 'Iblis’s continuing aim'], readListen: ['Listen for the move to Earth.', 'Reread and mark work/care actions with verbs.'], findAnswerInStory: ['For responsibility questions, use only the action list in the story.'], vocabularyInContext: ['Learn crops from the farming sentence.', 'Learn protect and weak from the responsibility phrase.'], quickChallengeGuide: 'This is the book’s Tap & Reveal Quick Challenge. Answer what happened after forgiveness before tapping.', wrongAnswerSupport: ['Use the first sentence for sequence.', 'Use the responsibility list for work/care questions.'], selfCheck: ['Can I name two work activities?', 'Can I name two care responsibilities?', 'Can I use a plan/purpose pattern from Language Focus?'], useWhatYouLearned: 'Choose protect nature or help the weak and state one realistic action you can do.', reflectionPrompt: 'Which stated responsibility can most easily become a student action?', lessonPlan: '1. Answer Tap & Reveal from memory. 2. Listen/read for work and care. 3. Sort the actions. 4. Complete Chapter 6 Language Focus. 5. Give one evidence-based responsibility sentence. 6. Add one clearly personal action.', discussionPoints: ['Which responsibilities are stated?', 'How can one become a realistic student action?'], interactiveTips: ['Keep story evidence and personal transfer in separate sentences.', 'Do not invent extra responsibilities during evidence work.'], differentiation: { fastFinishers: 'Write three planned-responsibility sentences and add purpose.', strugglingLearners: 'Use grow, keep, build, protect and help with “They were going to…”.' }, assessmentTools: { exitTicket: ['Write one story responsibility and one purpose sentence.'] },
   },
   {
-    chapter: 'Chapter 7 — The First Messenger and Guidance',
-    timing: '15–20 minutes',
-    objectives: ['Connect Adam’s Messenger role with what he taught.', 'Identify family guidance and the warning reason.', 'Use teaching, warning, reason/contrast and story-time language from Chapter 7 Language Focus.'],
-    pedagogy: 'Read for what the role means in action. The chapter Language Focus is about guidance, warning, reason/contrast and sequence, not a separate should lesson.',
-    grammarFocus: 'teach + person + to; warn + person + against; want to make people + verb; because; not X, but Y; Then/After.',
-    pronunciationFocus: 'messenger, honest, behave, enemy, remember; stress the action verbs in the teaching list.',
-    whatToNotice: ['Adam’s named role', 'the teaching list', 'family guidance', 'the warning about Iblis', 'the move to later messengers'],
-    readListen: ['Listen for the teaching list.', 'Reread and mark teaching, warning and time expressions.'],
-    findAnswerInStory: ['Use the Messenger sentence for the role.', 'Use the teaching list/family paragraph for guidance questions.'],
-    vocabularyInContext: ['Use honest and behave inside the teaching sentences.', 'Use enemy inside the warning reason.'],
-    quickChallengeGuide: 'Complete the first quality in Adam’s teaching list from memory.',
-    wrongAnswerSupport: ['Find “He started teaching people…” and check the first item.', 'Move to the family paragraph for the warning reason.'],
-    selfCheck: ['Can I name Adam’s role?', 'Can I name two teachings?', 'Can I use teach/warn/because/not…but in a short sentence?'],
-    useWhatYouLearned: 'Give one kind piece of guidance and a simple reason.',
-    reflectionPrompt: 'How does a role become visible through actions in this chapter?',
-    lessonPlan: '1. Listen for guidance. 2. Reread the role and family paragraph. 3. Quick Challenge. 4. Complete Chapter 7 Language Focus: teaching/warning, reason/contrast and sequence. 5. Give one short positive guidance example. 6. Self-check with evidence.',
-    discussionPoints: ['What did Adam teach?', 'Why did Adam and Eve warn their children?'],
-    interactiveTips: ['Use the Messenger/Children hotspots.', 'Use only guidance stated in the chapter before personal transfer.'],
-    differentiation: { fastFinishers: 'Write four guidance sentences using teach, warn, because and not…but.', strugglingLearners: 'Use “They taught…to…”, “They warned…because…”, and “not…, but…”.' },
-    assessmentTools: { exitTicket: ['Write one because sentence and one not…but sentence.'] }
+    chapter: 'Chapter 7 — The First Messenger and Guidance', timing: '15–20 minutes', objectives: ['Connect Adam’s Messenger role with what he taught.', 'Identify family guidance and the warning reason.', 'Use teaching, warning, reason/contrast and story-time language from Chapter 7 Language Focus.'], pedagogy: 'Read for what the role means in action. The chapter Language Focus is about guidance, warning, reason/contrast and sequence, not a separate should lesson.', grammarFocus: 'teach + person + to; warn + person + against; want to make people + verb; because; not X, but Y; Then/After.', pronunciationFocus: 'messenger, honest, behave, enemy, remember; stress the action verbs in the teaching list.', whatToNotice: ['Adam’s named role', 'the teaching list', 'family guidance', 'the warning about Iblis', 'the move to later messengers'], readListen: ['Listen for the teaching list.', 'Reread and mark teaching, warning and time expressions.'], findAnswerInStory: ['Use the Messenger sentence for the role.', 'Use the teaching list/family paragraph for guidance questions.'], vocabularyInContext: ['Use honest and behave inside the teaching sentences.', 'Use enemy inside the warning reason.'], quickChallengeGuide: 'Complete the first quality in Adam’s teaching list from memory.', wrongAnswerSupport: ['Find “He started teaching people…” and check the first item.', 'Move to the family paragraph for the warning reason.'], selfCheck: ['Can I name Adam’s role?', 'Can I name two teachings?', 'Can I use teach/warn/because/not…but in a short sentence?'], useWhatYouLearned: 'Give one kind piece of guidance and a simple reason.', reflectionPrompt: 'How does a role become visible through actions in this chapter?', lessonPlan: '1. Listen for guidance. 2. Reread the role and family paragraph. 3. Quick Challenge. 4. Complete Chapter 7 Language Focus: teaching/warning, reason/contrast and sequence. 5. Give one short positive guidance example. 6. Self-check with evidence.', discussionPoints: ['What did Adam teach?', 'Why did Adam and Eve warn their children?'], interactiveTips: ['Use the Messenger/Children hotspots.', 'Use only guidance stated in the chapter before personal transfer.'], differentiation: { fastFinishers: 'Write four guidance sentences using teach, warn, because and not…but.', strugglingLearners: 'Use “They taught…to…”, “They warned…because…”, and “not…, but…”.' }, assessmentTools: { exitTicket: ['Write one because sentence and one not…but sentence.'] },
   },
   {
-    chapter: 'Chapter 8 — Habil, Qabil and Giving One’s Best',
-    timing: '15–20 minutes',
-    objectives: ['Compare the brothers fairly using character, work and offering.', 'Explain the stated lesson after the offerings.', 'Use role, necessity, quality and contrast language from Chapter 8 Language Focus.'],
-    pedagogy: 'Compare like with like so job type is never treated as moral value. The active Quick Challenge checks both jobs and offerings.',
-    grammarFocus: 'be + adjective; became + role; to + verb for purpose; had to; best/healthiest; but.',
-    pronunciationFocus: 'Habil, Qabil, shepherd, farmer, offering, healthiest; practise contrastive stress around but.',
-    whatToNotice: ['each brother’s character', 'each brother’s job', 'each offering', 'the final real-goodness statement'],
-    readListen: ['Listen for differences without judging them.', 'Reread using three rows: character / work / offering.'],
-    findAnswerInStory: ['Use the first paragraph for jobs.', 'Use the second paragraph for offerings and the final lesson.'],
-    vocabularyInContext: ['Learn shepherd and farmer from the work sentences.', 'Learn offering from what each brother brings.'],
-    quickChallengeGuide: 'Match all four active items: Habil’s job, Qabil’s job, Habil’s offering and Qabil’s offering.',
-    wrongAnswerSupport: ['Check whether you mixed a job with an offering.', 'Return to the correct row of the comparison table and retry.'],
-    selfCheck: ['Can I compare the same category with the same category?', 'Can I state the final lesson?', 'Can I use became, had to, best/healthiest or but?'],
-    useWhatYouLearned: 'Name one task where doing your best means care and effort rather than superiority.',
-    reflectionPrompt: 'How did the comparison table prevent category mixing?',
-    lessonPlan: '1. Listen/read for differences. 2. Fill the three-row comparison. 3. Do the four-item Quick Challenge. 4. Repair if needed. 5. Complete Chapter 8 Language Focus. 6. Produce a short evidence-based comparison. 7. Add one personal “do my best” example.',
-    discussionPoints: ['Which differences are stated?', 'What does the offering contrast teach?'],
-    interactiveTips: ['Use the Sheep/Crops hotspots.', 'Do not treat shepherd/farmer as good/bad labels.'],
-    differentiation: { fastFinishers: 'Write four sentences using description, became, had to and contrast.', strugglingLearners: 'Use the headings character / work / offering and one sentence frame for each.' },
-    assessmentTools: { exitTicket: ['State the chapter’s real-goodness lesson in simple words.'] }
+    chapter: 'Chapter 8 — Habil, Qabil and Giving One’s Best', timing: '15–20 minutes', objectives: ['Compare the brothers fairly using character, work and offering.', 'Explain the stated lesson after the offerings.', 'Use role, necessity, quality and contrast language from Chapter 8 Language Focus.'], pedagogy: 'Compare like with like so job type is never treated as moral value. The active Quick Challenge checks both jobs and offerings.', grammarFocus: 'be + adjective; became + role; to + verb for purpose; had to; best/healthiest; but.', pronunciationFocus: 'Habil, Qabil, shepherd, farmer, offering, healthiest; practise contrastive stress around but.', whatToNotice: ['each brother’s character', 'each brother’s job', 'each offering', 'the final real-goodness statement'], readListen: ['Listen for differences without judging them.', 'Reread using three rows: character / work / offering.'], findAnswerInStory: ['Use the first paragraph for jobs.', 'Use the second paragraph for offerings and the final lesson.'], vocabularyInContext: ['Learn shepherd and farmer from the work sentences.', 'Learn offering from what each brother brings.'], quickChallengeGuide: 'Match all four active items: Habil’s job, Qabil’s job, Habil’s offering and Qabil’s offering.', wrongAnswerSupport: ['Check whether you mixed a job with an offering.', 'Return to the correct row of the comparison table and retry.'], selfCheck: ['Can I compare the same category with the same category?', 'Can I state the final lesson?', 'Can I use became, had to, best/healthiest or but?'], useWhatYouLearned: 'Name one task where doing your best means care and effort rather than superiority.', reflectionPrompt: 'How did the comparison table prevent category mixing?', lessonPlan: '1. Listen/read for differences. 2. Fill the three-row comparison. 3. Do the four-item Quick Challenge. 4. Repair if needed. 5. Complete Chapter 8 Language Focus. 6. Produce a short evidence-based comparison. 7. Add one personal “do my best” example.', discussionPoints: ['Which differences are stated?', 'What does the offering contrast teach?'], interactiveTips: ['Use the Sheep/Crops hotspots.', 'Do not treat shepherd/farmer as good/bad labels.'], differentiation: { fastFinishers: 'Write four sentences using description, became, had to and contrast.', strugglingLearners: 'Use the headings character / work / offering and one sentence frame for each.' }, assessmentTools: { exitTicket: ['State the chapter’s real-goodness lesson in simple words.'] },
   },
   {
-    chapter: 'Chapter 9 — Anger, Non-Retaliation and the Crow',
-    timing: '15–20 minutes',
-    objectives: ['Identify Habil’s refusal to retaliate.', 'Follow the consequence sequence and explain the crow’s action.', 'Use will/won’t, changing-feeling and problem-solving language from Chapter 9 Language Focus.'],
-    pedagogy: 'Handle the scene calmly and without graphic detail. Focus on intention/refusal, emotional change, consequence and safe problem solving.',
-    grammarFocus: 'will/won’t; became/felt/started to; I don’t know what I should do; cannot + verb.',
-    pronunciationFocus: 'anger, harm, panic, crow, should; hear and repeat the contrast between will and won’t.',
-    whatToNotice: ['Qabil’s threat', 'Habil’s refusal', 'what happened after anger took control', 'Qabil’s later feelings', 'what the crow did'],
-    readListen: ['Listen once without stopping at the violent event.', 'Reread for intention/refusal and the later consequence sequence.'],
-    findAnswerInStory: ['Use Habil’s quoted reply for non-retaliation.', 'Use the second paragraph for the crow and later feelings.'],
-    vocabularyInContext: ['Use panic and digging in the second paragraph.', 'Use harm inside Habil’s refusal.'],
-    quickChallengeGuide: 'Decide whether Habil said he would fight back and harm Qabil; focus on the negative response.',
-    wrongAnswerSupport: ['Find Habil’s exact reply.', 'For the crow, follow only the action stated in the story.'],
-    selfCheck: ['Can I distinguish will and won’t?', 'Can I retell the sequence calmly?', 'Can I use a safe should/problem-solving sentence?'],
-    useWhatYouLearned: 'Name one safe action when anger rises: pause, move away, speak calmly or ask a trusted adult for help.',
-    reflectionPrompt: 'Which choice shows the clearest difference between controlled and uncontrolled reaction?',
-    lessonPlan: '1. Listen/read calmly. 2. Mark threat and refusal. 3. Quick Challenge. 4. Follow the consequence/crow sequence. 5. Complete Chapter 9 Language Focus. 6. Give one safe problem-solving example.',
-    discussionPoints: ['What did Habil refuse to do?', 'What changed after Qabil’s anger cooled?', 'What did the crow show?'],
-    interactiveTips: ['Use the Crow/Panic hotspots.', 'Do not add violent or burial detail beyond the story.'],
-    differentiation: { fastFinishers: 'Retell four steps and add one will/won’t and one should sentence.', strugglingLearners: 'Use four event cards plus “I won’t…” and “What should I do?”.' },
-    assessmentTools: { exitTicket: ['Write one safe “What should I do?” situation and a helpful response.'] }
+    chapter: 'Chapter 9 — Anger, Non-Retaliation and the Crow', timing: '15–20 minutes', objectives: ['Identify Habil’s refusal to retaliate.', 'Follow the consequence sequence and explain the crow’s action.', 'Use will/won’t, changing-feeling and problem-solving language from Chapter 9 Language Focus.'], pedagogy: 'Handle the scene calmly and without graphic detail. Focus on intention/refusal, emotional change, consequence and safe problem solving.', grammarFocus: 'will/won’t; became/felt/started to; I don’t know what I should do; cannot + verb.', pronunciationFocus: 'anger, harm, panic, crow, should; hear and repeat the contrast between will and won’t.', whatToNotice: ['Qabil’s threat', 'Habil’s refusal', 'what happened after anger took control', 'Qabil’s later feelings', 'what the crow did'], readListen: ['Listen once without stopping at the violent event.', 'Reread for intention/refusal and the later consequence sequence.'], findAnswerInStory: ['Use Habil’s quoted reply for non-retaliation.', 'Use the second paragraph for the crow and later feelings.'], vocabularyInContext: ['Use panic and digging in the second paragraph.', 'Use harm inside Habil’s refusal.'], quickChallengeGuide: 'Decide whether Habil said he would fight back and harm Qabil; focus on the negative response.', wrongAnswerSupport: ['Find Habil’s exact reply.', 'For the crow, follow only the action stated in the story.'], selfCheck: ['Can I distinguish will and won’t?', 'Can I retell the sequence calmly?', 'Can I use a safe should/problem-solving sentence?'], useWhatYouLearned: 'Name one safe action when anger rises: pause, move away, speak calmly or ask a trusted adult for help.', reflectionPrompt: 'Which choice shows the clearest difference between controlled and uncontrolled reaction?', lessonPlan: '1. Listen/read calmly. 2. Mark threat and refusal. 3. Quick Challenge. 4. Follow the consequence/crow sequence. 5. Complete Chapter 9 Language Focus. 6. Give one safe problem-solving example.', discussionPoints: ['What did Habil refuse to do?', 'What changed after Qabil’s anger cooled?', 'What did the crow show?'], interactiveTips: ['Use the Crow/Panic hotspots.', 'Do not add violent or burial detail beyond the story.'], differentiation: { fastFinishers: 'Retell four steps and add one will/won’t and one should sentence.', strugglingLearners: 'Use four event cards plus “I won’t…” and “What should I do?”.' }, assessmentTools: { exitTicket: ['Write one safe “What should I do?” situation and a helpful response.'] },
   },
   {
-    chapter: 'Chapter 10 — Final Lessons and Continuing Message',
-    timing: '15–20 minutes',
-    objectives: ['Find the explicit lessons about jealousy, anger, behaviour and kindness.', 'Explain how Adam’s message continued.', 'Use advice, past necessity, change/continuation and guidance language from Chapter 10 Language Focus.'],
-    pedagogy: 'Use the ending as synthesis. Evidence comes first; Language Focus turns the explicit advice and continuation ideas into short A2 production.',
-    grammarFocus: 'should; had to; became/got; still; tell/help + person + to.',
-    pronunciationFocus: 'jealousy, worldwide, message, kind, should; practise one explicit advice sentence from the audio.',
-    whatToNotice: ['advice about jealousy', 'advice about anger', 'how the message continued', 'behaviour and kindness', 'the final honest-life idea'],
-    readListen: ['Listen for advice and continuation.', 'Reread and link one final lesson with one earlier event.'],
-    findAnswerInStory: ['Use the first paragraph for jealousy/anger.', 'Use the second paragraph for children/grandchildren and continuing message.'],
-    vocabularyInContext: ['Use jealousy inside stay away from jealousy.', 'Use worldwide in the sentence about the continuing message.'],
-    quickChallengeGuide: 'Recall who spread Adam’s message after him; answer with the people named in the chapter.',
-    wrongAnswerSupport: ['Find the sentence containing children and grandchildren.', 'For a lesson question, return to the exact advice sentence first.'],
-    selfCheck: ['Can I name two final lessons?', 'Can I explain how the message continued?', 'Can I use two Chapter 10 Language Focus patterns?'],
-    useWhatYouLearned: 'Choose kindness or self-control and write one specific action you can practise this week.',
-    reflectionPrompt: 'Which final lesson became clearer when you connected it with an earlier event?',
-    lessonPlan: '1. Listen/read for advice and continuation. 2. Do the Quick Challenge. 3. Mark final lessons. 4. Complete Chapter 10 Language Focus. 5. Link one lesson to earlier evidence. 6. Write two short transfer sentences. 7. After Chapter 10, continue in the real order: Knowledge Check → Vocabulary Challenge → Language Review → Master Glossary Parts 1–2 → Final Challenge.',
-    discussionPoints: ['Which final lesson has earlier evidence?', 'How did the message continue?'],
-    interactiveTips: ['Use the Old/Message hotspots.', 'Do not skip directly to Final Challenge; use the real review sequence first.'],
-    differentiation: { fastFinishers: 'Write four “The story teaches…” sentences with different evidence and two Language Focus patterns.', strugglingLearners: 'Match one advice statement to one earlier event and use one sentence frame.' },
-    assessmentTools: { exitTicket: ['Write one final lesson and one supporting event.'] }
-  }
+    chapter: 'Chapter 10 — Final Lessons and Continuing Message', timing: '15–20 minutes', objectives: ['Find the explicit lessons about jealousy, anger, behaviour and kindness.', 'Explain how Adam’s message continued.', 'Use advice, past necessity, change/continuation and guidance language from Chapter 10 Language Focus.'], pedagogy: 'Use the ending as synthesis. Evidence comes first; Language Focus turns the explicit advice and continuation ideas into short A2 production.', grammarFocus: 'should; had to; became/got; still; tell/help + person + to.', pronunciationFocus: 'jealousy, worldwide, message, kind, should; practise one explicit advice sentence from the audio.', whatToNotice: ['advice about jealousy', 'advice about anger', 'how the message continued', 'behaviour and kindness', 'the final honest-life idea'], readListen: ['Listen for advice and continuation.', 'Reread and link one final lesson with one earlier event.'], findAnswerInStory: ['Use the first paragraph for jealousy/anger.', 'Use the second paragraph for children/grandchildren and continuing message.'], vocabularyInContext: ['Use jealousy inside stay away from jealousy.', 'Use worldwide in the sentence about the continuing message.'], quickChallengeGuide: 'Recall who spread Adam’s message after him; answer with the people named in the chapter.', wrongAnswerSupport: ['Find the sentence containing children and grandchildren.', 'For a lesson question, return to the exact advice sentence first.'], selfCheck: ['Can I name two final lessons?', 'Can I explain how the message continued?', 'Can I use two Chapter 10 Language Focus patterns?'], useWhatYouLearned: 'Choose kindness or self-control and write one specific action you can practise this week.', reflectionPrompt: 'Which final lesson became clearer when you connected it with an earlier event?', lessonPlan: '1. Listen/read for advice and continuation. 2. Do the Quick Challenge. 3. Mark final lessons. 4. Complete Chapter 10 Language Focus. 5. Link one lesson to earlier evidence. 6. Write two short transfer sentences. 7. After Chapter 10, continue in the real order: Knowledge Check → Vocabulary Challenge → Language Review → Master Glossary Parts 1–2 → Final Challenge.', discussionPoints: ['Which final lesson has earlier evidence?', 'How did the message continue?'], interactiveTips: ['Use the Old/Message hotspots.', 'Do not skip directly to Final Challenge; use the real review sequence first.'], differentiation: { fastFinishers: 'Write four “The story teaches…” sentences with different evidence and two Language Focus patterns.', strugglingLearners: 'Match one advice statement to one earlier event and use one sentence frame.' }, assessmentTools: { exitTicket: ['Write one final lesson and one supporting event.'] },
+  },
 ];
+
+export const adamA2StudentGuideSections: StudentGuideSection[] = [
+  { title: '1. Start With a Goal', icon: 'Target', text: 'Choose one small goal before you open a chapter. A clear goal helps you notice what you are learning, not only what page you finished.', points: ['Understand the main idea', 'Learn 3–5 source words', 'Use one Language Focus pattern', 'Repair one mistake', 'Choose one value/action'] },
+  { title: '2. Preview the Chapter', icon: 'Eye', text: 'Look at the title, image and real hotspots before reading. Make one simple prediction, then check it against the story.', points: ['Use only features on the page', 'Predict one idea', 'Do not guess every detail'] },
+  { title: '3. Listen for Meaning', icon: 'Ear', text: 'Listen once for the main idea, a second time while following the text, and replay only a short difficult part when needed.', points: ['First: main idea', 'Second: follow the text', 'Third: repeat one short sentence'] },
+  { title: '4. Read and Find Evidence', icon: 'BookOpen', text: 'Read in short parts and find the sentence that supports your answer. A2 self-study means learning to return to evidence instead of guessing.', points: ['What happened?', 'Why?', 'What happened next?', 'Which sentence proves it?'] },
+  { title: '5. Use Language Focus', icon: 'Compass', text: 'After you understand the chapter, open the real Language Focus on that page. Notice the story example, understand its meaning, then make one short sentence of your own.', points: ['Notice', 'Understand', 'Use', 'Keep grammar connected to meaning'] },
+  { title: '6. Build Vocabulary', icon: 'BookOpen', text: 'Choose only 3–5 words from the current chapter. Learn them in the sentence where they appear, then reuse one or two.', points: ['Guess from context', 'Check Word Notes', 'Say the word', 'Use it in a short sentence'] },
+  { title: '7. Quick Challenge and Repair', icon: 'CheckCircle', text: 'Try the real Quick Challenge before reading feedback. If you are wrong, use the hint, find the supporting sentence and try again.', points: ['Try', 'Check', 'Find proof', 'Repair', 'Try again'] },
+  { title: '8. Say or Write', icon: 'PenTool', text: 'Finish each chapter with 2–4 simple spoken or written sentences. Keep story facts and your own example separate.', points: ['One fact', 'One source word', 'One Language Focus sentence', 'One short reflection'] },
+  { title: '9. Need More Help?', icon: 'HelpCircle', text: 'Change the strategy, not the learning goal.', points: ['Use the image or a real hotspot', 'Listen again', 'Read only 2–3 lines', 'Choose three words', 'Use a sentence frame'] },
+  { title: '10. Ready for a Challenge?', icon: 'Stars', text: 'Deepen the same learning instead of simply doing more work.', points: ['Write 3–5 connected sentences', 'Retell with sequence words', 'Use two source words', 'Explain one answer with evidence'] },
+  { title: '11. Values in Action', icon: 'Heart', text: 'A value becomes meaningful when it is connected to an observable action.', points: ['Respect: respond politely', 'Humility: accept correction', 'Honesty: admit and repair a mistake', 'Responsibility: care for people and nature', 'Self-control: choose a safe response to anger'] },
+  { title: '12. Review and Final', icon: 'Clock', text: 'After Chapter 10, move through the real review pages in order and use mistakes to decide what to revisit.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Language Review', 'Master Glossary Parts 1–2', 'Final Challenge'] },
+];
+
+export const adamA2StudentGuideMetadata: StudentGuideMetadata = {
+  whoIsThisFor: 'A2 learners studying the Prophet Adam interactive story independently or with light support.',
+  title: 'Self-Study Guide — Prophet Adam (A2)', subtitle: 'Understand • Notice • Use • Check • Repair • Reflect', level: 'A2', language: 'English', estimatedStudyTime: '15–20 minutes per story chapter plus final review',
+  learningGoals: ['Understand the ten story chapters', 'Use listening and reading together', 'Learn source vocabulary in context', 'Use the real Language Focus on each chapter', 'Find evidence and repair mistakes', 'Produce short A2 speaking/writing', 'Connect values with practical actions'],
+  recommendedUse: ['One chapter per session', 'Chapter Support for exact chapter guidance', 'Quick Challenge before feedback', 'Language Focus after meaning is clear', 'Final review after Chapter 10'],
+};
+
+export const adamA2StudentGuideText = `# A2 Self-Study Guide — Prophet Adam
+
+This guide follows the **10 real story chapters** and the real support already inside the preview book: chapter audio, hotspots, Word Notes, Quick Challenges, Language Focus, Knowledge Check, Vocabulary Challenge, Language Review, Master Glossary and Final Challenge.
+
+The study rule is:
+
+**understand → notice → use → check → repair → reflect**
+
+---
+
+## 1. Start With One Small Goal
+
+Before each chapter choose one goal:
+- understand the main idea,
+- learn 3–5 chapter words,
+- use one Language Focus pattern,
+- repair one mistake by yourself,
+- or connect one story value with one real action.
+
+**My goal today: __________**
+
+At the end:
+
+**My next step: __________**
+
+---
+
+## 2. The Chapter Study Cycle
+
+1. Look at the title, image and real hotspots.
+2. Predict one idea.
+3. Listen once for the main idea.
+4. Read 2–4 lines at a time.
+5. Choose 3–5 source words.
+6. Complete the real Quick Challenge.
+7. If needed, find the answer sentence and repair your answer.
+8. Open the real Language Focus and notice one pattern from the chapter.
+9. Say or write 2–4 simple sentences.
+10. Check what you can do and choose your next step.
+
+Do not translate every word. Do not open feedback before trying. Do not add information that is not in the story.
+
+---
+
+## 3. Listening
+
+**First listening — gist:** Who is this about? What happens? What is the important problem, change or choice?
+
+**Second listening — follow the text:** Notice repeated words, 3–5 vocabulary items and one useful sentence pattern.
+
+**Third listening — pronunciation:** Repeat one short sentence clearly. One sentence is enough.
+
+---
+
+## 4. Reading and Evidence
+
+After a short part ask:
+- What happened?
+- Why?
+- What happened next?
+- Which sentence gives me the answer?
+
+Use this repair routine:
+
+**Try → Check → Find proof → Repair → Try again**
+
+A corrected answer is evidence of learning.
+
+---
+
+## 5. Language Focus
+
+The preview book contains a real Language Focus for the story chapters. Use it **after** you understand the story meaning.
+
+1. **Notice** the example.
+2. **Understand** what it means in that chapter.
+3. **Use** the same pattern in one short new sentence.
+
+Do not turn Language Focus into a long grammar list.
+
+---
+
+## 6. Ten-Chapter Self-Study Map
+
+### Chapter 1 — Opening & The Creation
+**Study:** creation, the human role on Earth and the cause-result link in the text.  
+**Language:** Simple Past and future meaning with *be going to*.  
+**Check:** answer the Quick Challenge, then explain the evidence without adding a new idea.  
+**Action:** speak respectfully about human differences.
+
+### Chapter 2 — Knowledge and Respect
+**Study:** knowledge, learning and the different reactions of the angels and Iblis.  
+**Language:** *because* for reason and *but* for contrast.  
+**Check:** use evidence from both sides of the comparison.  
+**Action:** show respect when learning or disagreeing.
+
+### Chapter 3 — Pride, Origin and Real Value
+**Study:** separate Iblis's claim from the chapter's message about useful knowledge.  
+**Language:** *better / more valuable + because*.  
+**Check:** ask who says the idea before using it as evidence.  
+**Action:** accept correction and use knowledge for good action.
+
+### Chapter 4 — Adam, Eve and the Warnings
+**Study:** loneliness, companionship and the two different warnings.  
+**Language:** warning language and *told … not to*.  
+**Check:** keep the warning about Iblis separate from the warning about the tree.  
+**Action:** listen carefully when two instructions are different.
+
+### Chapter 5 — The Mistake, Regret and Repair
+**Study:** lie → mistake → regret → repair and the different response of Iblis.  
+**Language:** First Conditional in the lie and Simple Past for the event sequence.  
+**Check:** identify the promised result, then trace the repair actions.  
+**Action:** admit a mistake, seek help and correct what you can.
+
+### Chapter 6 — Life and Responsibility on Earth
+**Study:** work, care and responsibilities named in the story.  
+**Language:** Simple Past and planned future actions.  
+**Check:** separate responsibilities stated in the story from your own example.  
+**Action:** protect nature or help someone who needs support.
+
+### Chapter 7 — The First Messenger and Guidance
+**Study:** what Adam taught and how guidance appears in action.  
+**Language:** *should* for simple advice and *teach + person + to*.  
+**Check:** name the role and two teachings with evidence.  
+**Action:** choose one honest, respectful or kind behaviour.
+
+### Chapter 8 — Habil, Qabil and Giving One's Best
+**Study:** compare character, work and offering without mixing the categories.  
+**Language:** *better / best / healthiest* and *but*.  
+**Check:** use the correct row of the comparison: character, work or offering.  
+**Action:** give your best through care and effort, not superiority.
+
+### Chapter 9 — Anger, Non-Retaliation and the Crow
+**Study:** threat, refusal to retaliate, consequence and the crow's action.  
+**Language:** *will / won't* and Simple Past sequence.  
+**Check:** focus on Habil's exact reply and retell calmly without graphic detail.  
+**Action:** pause, move away, speak calmly or ask a trusted adult for help when anger rises.
+
+### Chapter 10 — Final Lessons and Continuing Message
+**Study:** the explicit advice about jealousy, anger, kindness and honest living.  
+**Language:** *should + base verb* for advice.  
+**Check:** connect one final lesson with an earlier story event.  
+**Action:** choose one specific habit of kindness or self-control.
+
+---
+
+## 7. Vocabulary
+
+Choose only 3–5 words in one session. Read the source definition, find the word in the chapter, say it aloud and use it in one short sentence. Review it again later in the Vocabulary Challenge or Master Glossary.
+
+---
+
+## 8. Need More Help?
+
+Use a smaller step:
+- a real hotspot,
+- one short replay,
+- 2–3 lines of text,
+- three key words,
+- a sentence frame,
+- the exact sentence connected to the Quick Challenge.
+
+---
+
+## 9. Ready for a Challenge?
+
+Choose one:
+- write 3–5 connected sentences,
+- retell with *first, then, after that, finally*,
+- use two source words in one paragraph,
+- explain an answer with evidence,
+- make one new Language Focus sentence,
+- connect one value with one realistic action.
+
+---
+
+## 10. Chapter Self-Check
+
+After each story chapter:
+- [ ] I can tell the main idea.
+- [ ] I can use 3–5 chapter words.
+- [ ] I completed the real Quick Challenge.
+- [ ] I found evidence for my answer.
+- [ ] I repaired a wrong answer if needed.
+- [ ] I can understand or use one Language Focus pattern.
+- [ ] I can say or write 2–4 simple sentences.
+- [ ] I can name one value and one action.
+- [ ] I know my next step.
+
+---
+
+## 11. Review After Chapter 10
+
+Use the actual preview-book sequence:
+
+### Knowledge Check
+Answer the eight key-idea questions. Repair mistakes from the story.
+
+### Vocabulary Challenge
+Match six key source words with their meanings.
+
+### Language Review
+Review and use language patterns from all ten chapters. Treat this as language practice, not story retelling.
+
+### Master Glossary — Parts 1 and 2
+Review source vocabulary from both halves of the story.
+
+### Final Challenge
+Complete the ten different scored activities only after the review pages. When you finish, choose one final next-learning goal.
+
+---
+
+## 12. Final Learning Check
+
+At the end, try to say:
+- I understand the main events of the ten chapters.
+- I can listen and read for meaning.
+- I can find evidence instead of guessing.
+- I can use important story vocabulary.
+- I can use simple language patterns from the real Language Focus.
+- I can learn from feedback and repair mistakes.
+- I can connect a story-supported value with a real action.
+- I can choose what I need to study next.
+`;
