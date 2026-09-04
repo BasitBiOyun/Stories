@@ -2,9 +2,6 @@ import { PageData } from '../../../../types';
 import { adamB2Pages as adamB2PagesBase } from './pagesBase';
 import { adamB2EnStoryReplacementsPart1, adamB2EnStoryTitlesPart1 } from './storyCorrectionsPart1';
 import { adamB2EnStoryReplacementsPart2, adamB2EnStoryTitlesPart2 } from './storyCorrectionsPart2';
-import { normalizeAdamB2TeacherGuideValueLabels } from './teacherGuideValueLabels';
-
-normalizeAdamB2TeacherGuideValueLabels();
 
 const replacements: Record<number, [string, string][]> = {
   ...adamB2EnStoryReplacementsPart1,
