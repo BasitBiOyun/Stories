@@ -252,15 +252,33 @@ export const KnowledgeCheck = ({
     () => exercises.filter((exercise) => exercise.type === 'true-false' || exercise.type === 'multiple-choice'),
     [exercises]
   );
+  const storageKey = React.useMemo(
+    () => `knowledge-check:${supportedExercises.map((exercise) => exercise.id).join('|')}`,
+    [supportedExercises]
+  );
   const [localAnswers, setLocalAnswers] = React.useState<Record<string, AnswerValue>>({});
   const [showResults, setShowResults] = React.useState(false);
   const [activeFeedback, setActiveFeedback] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    setLocalAnswers({});
+    let restored: Record<string, AnswerValue> = {};
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = window.localStorage.getItem(storageKey);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+            restored = parsed as Record<string, AnswerValue>;
+          }
+        }
+      } catch {
+        // Ignore unavailable or malformed local storage and start clean.
+      }
+    }
+    setLocalAnswers(restored);
     setShowResults(false);
     setActiveFeedback(null);
-  }, [title, exercises]);
+  }, [storageKey]);
 
   const answerFor = React.useCallback((exercise: Exercise): AnswerValue => {
     if (Object.prototype.hasOwnProperty.call(localAnswers, exercise.id)) {
@@ -285,7 +303,17 @@ export const KnowledgeCheck = ({
 
   const answerQuestion = (exercise: Exercise, answer: boolean | number) => {
     if (showResults) return;
-    setLocalAnswers((previous) => ({ ...previous, [exercise.id]: answer }));
+    setLocalAnswers((previous) => {
+      const next = { ...previous, [exercise.id]: answer };
+      if (typeof window !== 'undefined') {
+        try {
+          window.localStorage.setItem(storageKey, JSON.stringify(next));
+        } catch {
+          // Keep the in-memory answer even when local storage is unavailable.
+        }
+      }
+      return next;
+    });
     if (exercise.type === 'true-false' && typeof answer === 'boolean') {
       handleAnswer(exercise.id, answer);
     }
@@ -295,6 +323,13 @@ export const KnowledgeCheck = ({
     setLocalAnswers({});
     setShowResults(false);
     setActiveFeedback(null);
+    if (typeof window !== 'undefined') {
+      try {
+        window.localStorage.removeItem(storageKey);
+      } catch {
+        // Ignore unavailable local storage.
+      }
+    }
     onReset?.();
   };
 
