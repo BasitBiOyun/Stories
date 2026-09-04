@@ -199,7 +199,7 @@ Do not turn Language Focus into a long grammar list.
 
 ### Chapter 7 — The First Messenger and Guidance
 **Study:** what Adam taught and how guidance appears in action.  
-**Language:** *should* for simple advice and *teach + person + to*.  
+**Language:** *teach + person + to*, warning language, *because*, *not ... but ...*, and simple time sequencing.  
 **Check:** name the role and two teachings with evidence.  
 **Action:** choose one honest, respectful or kind behaviour.
 
