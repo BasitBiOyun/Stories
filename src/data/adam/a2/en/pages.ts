@@ -224,15 +224,15 @@ export const adamA2Pages: PageData[] = [
   {
     id: 13,
     type: 'exercises',
-    title: 'Retrieval Review & Reflection',
+    title: 'Language Review',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    content: 'Use four different activities to retrieve, connect and reflect before the Final Challenge.'
+    content: 'Review and use the grammar patterns and language functions from all ten chapters.'
   },
   {
     id: 14,
     type: 'glossary',
     title: 'Master Glossary - Part 1',
-    content: 'A complete list of vocabulary from the first half of the story.',
+    content: 'A complete list of the Word Notes from Chapters 1–5.',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
       { word: 'Messenger', definition: 'A person who carries a message from Allah.' },
@@ -240,25 +240,25 @@ export const adamA2Pages: PageData[] = [
       { word: 'curiosity', definition: 'Wanting to know or learn something.' },
       { word: 'respect', definition: 'Treating someone as important and worthy of care.' },
       { word: 'wiser', definition: 'Knowing more and making better decisions.' },
-      { word: 'jealous', definition: 'Feeling unhappy because someone has something you want.' },
+      { word: 'clay', definition: 'Soft earth that can be shaped.' },
       { word: 'arrogant', definition: 'Thinking you are better or more important than others.' },
       { word: 'valuable', definition: 'Very useful or important.' },
       { word: 'creature', definition: 'A living being created by Allah.' },
       { word: 'lonely', definition: 'Sad because you are alone.' },
       { word: 'wonderful', definition: 'Very good and enjoyable.' },
-      { word: 'warning', definition: 'A message about danger or something to avoid.' }
+      { word: 'warning', definition: 'A message about danger or something to avoid.' },
+      { word: 'lie', definition: 'Something that is not true.' },
+      { word: 'mistake', definition: 'Something you do that is wrong.' },
+      { word: 'superior', definition: 'Better or higher than someone or something.' }
     ]
   },
   {
     id: 15,
     type: 'glossary',
     title: 'Master Glossary - Part 2',
-    content: 'A complete list of vocabulary from the second half of the story.',
+    content: 'A complete list of the Word Notes from Chapters 6–10.',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
-      { word: 'dishonesty', definition: 'Not telling the truth.' },
-      { word: 'regret', definition: 'Feeling sorry about a mistake.' },
-      { word: 'superior', definition: 'Better or higher than someone or something.' },
       { word: 'crops', definition: 'Plants grown for food.' },
       { word: 'rule', definition: 'To lead or manage a place.' },
       { word: 'planet', definition: 'A large round object in space, such as Earth.' },
@@ -267,7 +267,13 @@ export const adamA2Pages: PageData[] = [
       { word: 'enemy', definition: 'A person who wants to harm or oppose someone.' },
       { word: 'shepherd', definition: 'A person who looks after sheep.' },
       { word: 'farmer', definition: 'A person who grows crops or keeps animals on a farm.' },
-      { word: 'offering', definition: 'Something given to Allah.' }
+      { word: 'offering', definition: 'Something given to Allah.' },
+      { word: 'crow', definition: 'A large black bird.' },
+      { word: 'panic', definition: 'A sudden strong feeling of fear.' },
+      { word: 'digging', definition: 'Making a hole by moving earth.' },
+      { word: 'jealousy', definition: 'Feeling unhappy because someone has something you want.' },
+      { word: 'story', definition: 'A description of events.' },
+      { word: 'worldwide', definition: 'In many places around the world.' }
     ]
   },
   {
