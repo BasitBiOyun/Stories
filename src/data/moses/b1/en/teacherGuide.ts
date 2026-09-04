@@ -177,7 +177,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Replay the warning and ask learners to raise NOW/NEXT cards.', 'Use the map/image only to confirm movement stated in the story.', 'Pause before the well questions to signal a new scene and new problem.'],
     differentiation: {
       strugglingLearners: 'Provide “They are __. They are going to __. Leave __. After __, he...” frames.',
-      fastFinishers: 'Write seven connected sentences moving from current danger to a new setting and two observation questions.'],
+      fastFinishers: 'Write seven connected sentences moving from current danger to a new setting and two observation questions.',
     },
     formativeAssessment: ['Distinguishes current from expected danger.', 'Explains why Midian matters.', 'Uses movement and question language coherently.'],
     expectedResponses: ['Moses leaves because of an immediate threat, reaches relative safety outside Pharaoh’s rule and then begins observing a new social situation at the well.'],
@@ -237,7 +237,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Use a long horizontal timeline rather than many isolated event cards.', 'Replay the sentence containing decided to and the sentence beginning the sudden event.', 'Keep the fire as the next turning point described by the source; do not add speculation.'],
     differentiation: {
       strugglingLearners: 'Provide a five-step frame: because → for ten years → decided to → while travelling → suddenly.',
-      fastFinishers: 'Write a seven-sentence narrative showing one long stable stage followed by a carefully signalled pivot.'],
+      fastFinishers: 'Write a seven-sentence narrative showing one long stable stage followed by a carefully signalled pivot.',
     },
     formativeAssessment: ['Explains the long period accurately.', 'Uses duration and decision language.', 'Distinguishes background from sudden event.'],
     expectedResponses: ['Moses accepts a needed opportunity, builds a life in Midian, decides to return after a long period, and a sudden fire becomes the next turning point.'],
@@ -267,7 +267,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Use separate visual cards for Command / Action / Result.', 'Stop the audio at the mission sentence to mark a new phase.', 'Do not imitate or dramatise miraculous actions; keep attention on source wording and function.'],
     differentiation: {
       strugglingLearners: 'Provide one completed command-action-result example and sentence frames for the second; rehearse the mission orally before writing.',
-      fastFinishers: 'Write two parallel sign chains and a separate reported-mission paragraph, then explain why they should not be collapsed.'],
+      fastFinishers: 'Write two parallel sign chains and a separate reported-mission paragraph, then explain why they should not be collapsed.',
     },
     formativeAssessment: ['Builds both evidence chains accurately.', 'Separates sign from mission.', 'Uses reported instruction and role-change language.'],
     expectedResponses: ['The encounter gives Moses two signs, direct instructions and a mission; the chapter then marks a change in role and movement toward Egypt.'],
@@ -297,7 +297,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Use a three-step card set: Tried / Realized / Changed approach.', 'Replay the sentence containing had no choice but to.', 'Keep ridicule as reported reaction rather than performing it.'],
     differentiation: {
       strugglingLearners: 'Use “After trying __, he realized __. He had no choice but to __ in order to __.”',
-      fastFinishers: 'Write a six-sentence neutral strategy-change paragraph and identify the evidence that justifies the change.'],
+      fastFinishers: 'Write a six-sentence neutral strategy-change paragraph and identify the evidence that justifies the change.',
     },
     formativeAssessment: ['Maintains correct sequence.', 'Explains why the approach changes.', 'Uses necessity and purpose language coherently.'],
     expectedResponses: ['Moses first reasons with Pharaoh, recognises the refusal is continuing, then displays the signs; Pharaoh and his advisors still respond with mockery.'],
@@ -327,7 +327,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Use two persistent labels on screen/board: APPEARANCE / STORY CLAIM.', 'Replay the response sentences separately after the event.', 'Do not dramatise the miracle or punishment; keep focus on wording and response.'],
     differentiation: {
       strugglingLearners: 'Provide a two-column evidence table and the frame “X looked like __, but Y turned into __. The magicians __, while Pharaoh still __.”',
-      fastFinishers: 'Write a seven-sentence evidence-response comparison using looked like, turned into, still, because and continued to.'],
+      fastFinishers: 'Write a seven-sentence evidence-response comparison using looked like, turned into, still, because and continued to.',
     },
     formativeAssessment: ['Preserves the appearance/story-claim distinction.', 'Compares responses accurately.', 'Uses persistence markers in context.'],
     expectedResponses: ['The magicians change their judgment after witnessing the event, whereas Pharaoh continues to refuse and act harshly.'],
@@ -357,7 +357,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Use arrows from limitation to speed to pursuit.', 'Replay the reassurance with a calm reading model.', 'Avoid pursuit role-play; analyse the sequence through the text.'],
     differentiation: {
       strugglingLearners: 'Provide “They could not __. That’s why __. When __, Moses said __ will __.”',
-      fastFinishers: 'Design a six-sentence inclusive group plan using obligation, limitation, result, time and reassurance.'],
+      fastFinishers: 'Design a six-sentence inclusive group plan using obligation, limitation, result, time and reassurance.',
     },
     formativeAssessment: ['Explains limitation without blame.', 'Builds the sequence accurately.', 'Uses future reassurance meaningfully.'],
     expectedResponses: ['The caravan moves slowly because some members cannot move quickly; after Pharaoh catches up and panic grows, Moses responds with calm reassurance and future-oriented guidance.'],
@@ -387,7 +387,7 @@ export const mosesB1TeacherGuide: TeacherGuideSection[] = [
     interactiveTips: ['Use numbered event cards but keep drowning off-stage and non-graphic.', 'Mark Pharaoh’s speech with a speaker label before discussing its truth status.', 'Use the final paragraph as the sole basis for the explicit general lesson.'],
     differentiation: {
       strugglingLearners: 'Provide event cards in near-correct order and a frame: “Pharaoh claimed __, but the chapter says __. This reminds us that __.”',
-      fastFinishers: 'Write an eight-sentence final synthesis separating event, character claim, consequence and explicit lesson with source-safe wording.'],
+      fastFinishers: 'Write an eight-sentence final synthesis separating event, character claim, consequence and explicit lesson with source-safe wording.',
     },
     formativeAssessment: ['Orders the events correctly.', 'Attributes Pharaoh’s claim correctly.', 'Signals the shift from narrative to interpretation.', 'Uses lesson language without adding unsupported facts.'],
     expectedResponses: ['Pharaoh claims credit for the opened sea, pursues the group and is overtaken when the sea closes; the chapter then explicitly draws lessons rejecting enslavement and abusive power.'],
