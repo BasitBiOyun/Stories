@@ -1,9 +1,8 @@
 import type { Exercise } from '../../../../types';
 
 /**
- * Manually authored, chapter-specific Language Focus work.
- * Each chapter is read before authoring; activities practise language that is
- * genuinely visible and useful in that chapter instead of repeating comprehension.
+ * Canonical Adam A2 English Language Focus, Chapters 1–4.
+ * Activities stay grounded in language that is genuinely visible in each chapter.
  */
 export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
@@ -85,10 +84,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you explain what happened and what Allah announced would happen next?',
       correctAnswer: null,
       explanation: 'A strong A2 response uses past verbs for finished events, a “going to” chunk for the announced future, and simple linkers such as “After that” or “Then”.',
-      feedback: {
-        correct: 'Use accurate Chapter 1 language to organise the story clearly.',
-        incorrect: '',
-      },
+      feedback: { correct: 'Use accurate Chapter 1 language to organise the story clearly.', incorrect: '' },
       discussionPrompts: [
         { question: 'Sentence 1 — Start with a finished event: “Allah created ...”', mode: 'Individual' },
         { question: 'Sentence 2 — Move the story forward: “After that, He told the angels ...”', mode: 'Individual' },
@@ -117,10 +113,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
         'He learned more': 'describes a result of learning',
       },
       explanation: 'Chapter 2 uses “could + verb” for ability, “taught + person + to + verb” for teaching, and “learned” for what Adam gained through that learning.',
-      feedback: {
-        correct: 'Good. You connected each learning chunk with its function.',
-        incorrect: 'Reread the first paragraph and look for “could”, “taught” and “learned”.',
-      },
+      feedback: { correct: 'Good. You connected each learning chunk with its function.', incorrect: 'Reread the first paragraph and look for “could”, “taught” and “learned”.' },
     },
     {
       id: 'adam-a2-language-2-comparing-knowledge',
@@ -141,10 +134,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
         'more than': 'quantity comparison',
       },
       explanation: 'The chapter uses “wiser than” to compare a quality and “more than” to compare how much was known or learned.',
-      feedback: {
-        correct: 'Correct. You identified two different ways the chapter makes comparisons.',
-        incorrect: 'Look again at the sentences containing “wiser than” and “more than”.',
-      },
+      feedback: { correct: 'Correct. You identified two different ways the chapter makes comparisons.', incorrect: 'Look again at the sentences containing “wiser than” and “more than”.' },
     },
     {
       id: 'adam-a2-language-2-reason-and-contrast',
@@ -165,10 +155,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
         'Iblis thought Adam was an unimportant creature': 'reports a different opinion',
       },
       explanation: 'Chapter 2 uses “because” to explain why, “thought (that)” to report an opinion, and “but” to place Iblis’s view in contrast with the angels’ view.',
-      feedback: {
-        correct: 'Good. You identified reason, reported opinion and contrast.',
-        incorrect: 'Read the final sentences again and ask: reason, opinion or contrast?',
-      },
+      feedback: { correct: 'Good. You identified reason, reported opinion and contrast.', incorrect: 'Read the final sentences again and ask: reason, opinion or contrast?' },
     },
     {
       id: 'adam-a2-language-2-explain-two-views',
@@ -178,15 +165,174 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you explain Adam’s ability and the different views of the angels and Iblis?',
       correctAnswer: null,
       explanation: 'A strong response combines ability, comparison, reason and contrast: what Adam could do, why he was wiser, what the angels thought, and what Iblis thought instead.',
-      feedback: {
-        correct: 'Use accurate Chapter 2 language to connect ability, reason and contrasting opinions.',
-        incorrect: '',
-      },
+      feedback: { correct: 'Use accurate Chapter 2 language to connect ability, reason and contrasting opinions.', incorrect: '' },
       discussionPrompts: [
         { question: 'Sentence 1 — Describe ability: “Adam could ... and ...”', mode: 'Individual' },
         { question: 'Sentence 2 — Compare: “He was wiser than ... because ...”', mode: 'Individual' },
         { question: 'Sentence 3 — Report one opinion: “The angels thought that ...”', mode: 'Individual' },
         { question: 'Sentence 4 — Contrast it: “But Iblis thought ...”', mode: 'Pair' },
+      ],
+    },
+  ],
+  3: [
+    {
+      id: 'adam-a2-language-3-comparing-value',
+      type: 'matching',
+      title: 'Comparing Importance and Value',
+      instructions: 'Match each Chapter 3 comparison with what it compares.',
+      question: 'How does the chapter use comparative language to show Iblis’s judgement and the value of knowledge?',
+      matchingPairs: [
+        { left: 'better than Adam', right: 'compares two people in Iblis’s judgement' },
+        { left: 'more important than Adam', right: 'compares importance' },
+        { left: 'more valuable than Adam', right: 'compares value' },
+        { left: 'made Adam more valuable', right: 'shows a change in value' },
+      ],
+      correctAnswer: {
+        'better than Adam': 'compares two people in Iblis’s judgement',
+        'more important than Adam': 'compares importance',
+        'more valuable than Adam': 'compares value',
+        'made Adam more valuable': 'shows a change in value',
+      },
+      explanation: 'Chapter 3 repeatedly uses comparative forms such as “better than”, “more important than” and “more valuable”. It later uses “made Adam more valuable” to explain how useful knowledge changes the judgement of value.',
+      feedback: { correct: 'Good. You identified comparison and change in value as two different language jobs.', incorrect: 'Return to the paragraphs about Iblis’s judgement and useful knowledge. Look for “than” and “more valuable”.' },
+    },
+    {
+      id: 'adam-a2-language-3-reporting-beliefs',
+      type: 'matching',
+      title: 'What Someone Thinks and Believes',
+      instructions: 'Match each Chapter 3 chunk with the job it does.',
+      question: 'How does the chapter report Iblis’s ideas without presenting them as facts?',
+      matchingPairs: [
+        { left: 'Iblis said, “I am better than Adam.”', right: 'reports his own words' },
+        { left: 'He thought he was more important', right: 'reports a thought or opinion' },
+        { left: 'He believed his origin was better', right: 'reports a belief' },
+        { left: 'Iblis couldn’t see that Adam had perfect knowledge', right: 'shows that he failed to understand something' },
+      ],
+      correctAnswer: {
+        'Iblis said, “I am better than Adam.”': 'reports his own words',
+        'He thought he was more important': 'reports a thought or opinion',
+        'He believed his origin was better': 'reports a belief',
+        'Iblis couldn’t see that Adam had perfect knowledge': 'shows that he failed to understand something',
+      },
+      explanation: 'The chapter separates a person’s view from the narrator’s message through verbs such as “said”, “thought” and “believed”. “Couldn’t see that ...” adds the idea that Iblis failed to understand an important truth.',
+      feedback: { correct: 'Correct. You connected speaking, thinking, believing and failing to understand with their functions.', incorrect: 'Read each sentence and ask: Is he speaking, thinking, believing, or failing to understand?' },
+    },
+    {
+      id: 'adam-a2-language-3-cause-result',
+      type: 'matching',
+      title: 'Cause, Result and Ability',
+      instructions: 'Match each Chapter 3 pattern with the meaning relationship it creates.',
+      question: 'How does the chapter explain why useful knowledge matters?',
+      matchingPairs: [
+        { left: 'This knowledge made Adam more valuable', right: 'shows a result or change' },
+        { left: 'Useful knowledge makes people great', right: 'shows what something can cause' },
+        { left: 'because with this knowledge humans can do good', right: 'gives a reason' },
+        { left: 'humans can do good and stop bad', right: 'describes ability or possibility' },
+      ],
+      correctAnswer: {
+        'This knowledge made Adam more valuable': 'shows a result or change',
+        'Useful knowledge makes people great': 'shows what something can cause',
+        'because with this knowledge humans can do good': 'gives a reason',
+        'humans can do good and stop bad': 'describes ability or possibility',
+      },
+      explanation: 'The chapter uses “make + object + adjective” for a result, “because” for a reason, and “can + verb” for what useful knowledge enables people to do.',
+      feedback: { correct: 'Good. You followed the chapter from cause to result and then to ability.', incorrect: 'Look for “made/makes”, “because” and “can” and decide what job each form does.' },
+    },
+    {
+      id: 'adam-a2-language-3-explain-the-mistake',
+      type: 'reflection',
+      title: 'Say It: Explain the Wrong Judgement',
+      instructions: 'Give three or four short A2 sentences using Chapter 3 language. Explain the judgement, the mistake and the value of useful knowledge.',
+      question: 'Can you explain what Iblis believed and why the chapter says useful knowledge is more important?',
+      correctAnswer: null,
+      explanation: 'A strong A2 response reports Iblis’s belief, uses one comparison, contrasts it with the chapter’s message, and gives a reason or result connected to useful knowledge.',
+      feedback: { correct: 'Use Chapter 3 language to report a belief, compare ideas, and explain a reason or result.', incorrect: '' },
+      discussionPrompts: [
+        { question: 'Sentence 1 — Report a belief: “Iblis thought/believed that ...”', mode: 'Individual' },
+        { question: 'Sentence 2 — Add his comparison: “He thought he was ... than Adam.”', mode: 'Individual' },
+        { question: 'Sentence 3 — Contrast the message: “But useful knowledge ...”', mode: 'Individual' },
+        { question: 'Sentence 4 — Give a reason or result with “because”, “can”, or “made”.', mode: 'Pair' },
+      ],
+    },
+  ],
+  4: [
+    {
+      id: 'adam-a2-language-4-wants-plans',
+      type: 'matching',
+      title: 'Wants, Plans and Other People',
+      instructions: 'Match each Chapter 4 sentence with the language job it does.',
+      question: 'How does the chapter describe what Iblis wanted or did not want another person to experience?',
+      matchingPairs: [
+        { left: 'He didn’t want Allah to be nice to Adam', right: 'says what he did not want another person to do' },
+        { left: 'He wanted Adam to lose Allah’s love', right: 'says what he wanted another person to experience' },
+        { left: 'He waited for a chance', right: 'describes waiting for an opportunity' },
+        { left: 'just like himself', right: 'connects Adam’s possible situation with Iblis’s own situation' },
+      ],
+      correctAnswer: {
+        'He didn’t want Allah to be nice to Adam': 'says what he did not want another person to do',
+        'He wanted Adam to lose Allah’s love': 'says what he wanted another person to experience',
+        'He waited for a chance': 'describes waiting for an opportunity',
+        'just like himself': 'connects Adam’s possible situation with Iblis’s own situation',
+      },
+      explanation: 'Chapter 4 uses “want + person + to + verb” to describe what Iblis wanted another person to do or experience. The negative form “didn’t want ... to ...” gives the opposite meaning.',
+      feedback: { correct: 'Good. You identified desire, negative desire, opportunity and comparison.', incorrect: 'Return to the first paragraph and look closely at “didn’t want ... to ...”, “wanted Adam to ...”, “chance” and “just like”.' },
+    },
+    {
+      id: 'adam-a2-language-4-telling-warning',
+      type: 'matching',
+      title: 'Telling Someone What to Do — or Not Do',
+      instructions: 'Match each Chapter 4 pattern with its communicative function.',
+      question: 'How does the chapter give a warning and a prohibition?',
+      matchingPairs: [
+        { left: 'Allah told Adam to be careful about Iblis', right: 'tells someone to do something' },
+        { left: 'Allah told Adam and Eve not to go near one tree', right: 'tells someone not to do something' },
+        { left: 'tell + person + to + verb', right: 'pattern for an instruction or advice' },
+        { left: 'tell + person + not to + verb', right: 'pattern for a negative instruction or warning' },
+      ],
+      correctAnswer: {
+        'Allah told Adam to be careful about Iblis': 'tells someone to do something',
+        'Allah told Adam and Eve not to go near one tree': 'tells someone not to do something',
+        'tell + person + to + verb': 'pattern for an instruction or advice',
+        'tell + person + not to + verb': 'pattern for a negative instruction or warning',
+      },
+      explanation: 'The chapter gives both a positive warning and a negative instruction. “Told + person + to ...” asks for an action; adding “not” before “to” tells the person to avoid an action.',
+      feedback: { correct: 'Correct. You separated positive and negative instructions.', incorrect: 'Compare the sentence about being careful with the sentence about the tree. Look for “to” and “not to”.' },
+    },
+    {
+      id: 'adam-a2-language-4-beginnings-comparison',
+      type: 'matching',
+      title: 'New Situations and Comparison',
+      instructions: 'Match each Chapter 4 expression with what it adds to the story.',
+      question: 'How does the chapter show that a new feeling or situation begins and describe Paradise?',
+      matchingPairs: [
+        { left: 'Adam started to feel lonely', right: 'shows the beginning of a feeling' },
+        { left: 'They started to live together', right: 'shows the beginning of a new situation' },
+        { left: 'more wonderful than we can imagine', right: 'makes a comparison about how wonderful Paradise was' },
+        { left: 'But Allah had only one warning', right: 'introduces a contrast after the positive description' },
+      ],
+      correctAnswer: {
+        'Adam started to feel lonely': 'shows the beginning of a feeling',
+        'They started to live together': 'shows the beginning of a new situation',
+        'more wonderful than we can imagine': 'makes a comparison about how wonderful Paradise was',
+        'But Allah had only one warning': 'introduces a contrast after the positive description',
+      },
+      explanation: '“Started to + verb” marks the beginning of a feeling or action. “More ... than ...” makes a comparison, while “but” changes direction and introduces the warning.',
+      feedback: { correct: 'Good. You followed the move from a new situation to description and then contrast.', incorrect: 'Look for “started to”, “more ... than” and “but” in the second paragraph.' },
+    },
+    {
+      id: 'adam-a2-language-4-give-a-warning',
+      type: 'reflection',
+      title: 'Say It: Give a Clear Warning',
+      instructions: 'Write or say three or four short A2 sentences using Chapter 4 language. Describe a situation, a change and a warning.',
+      question: 'Can you use the chapter’s language to explain what someone wants and then give clear advice or a warning?',
+      correctAnswer: null,
+      explanation: 'A strong A2 response uses one “want + person + to” idea, one “started to” sentence, and a positive or negative instruction with “tell + person + (not) to”.',
+      feedback: { correct: 'Use the sentence starters to connect desire, change and warning clearly.', incorrect: '' },
+      discussionPrompts: [
+        { question: 'Sentence 1 — Desire: “He wanted ... to ...” or “He didn’t want ... to ...”', mode: 'Individual' },
+        { question: 'Sentence 2 — New situation: “... started to ...”', mode: 'Individual' },
+        { question: 'Sentence 3 — Advice: “... told ... to ...”', mode: 'Pair' },
+        { question: 'Sentence 4 — Warning: “... told ... not to ...”', mode: 'Pair' },
       ],
     },
   ],
