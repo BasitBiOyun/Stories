@@ -182,65 +182,6 @@ export const adamA2VocabularyChallengePairs = [
   { word: 'jealousy', meaning: 'Feeling unhappy because of what another person has or achieves' }
 ];
 
-export const adamA2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'adam-a2-review-1', type: 'sequencing', title: 'Rebuild the Story', instructions: 'Put the main stages in story order.', question: 'Order the five stages.',
-    sequencingItems: [
-      { id: '1', text: 'Adam is created and receives knowledge' },
-      { id: '2', text: 'Iblis refuses to respect Adam' },
-      { id: '3', text: 'Adam and Eve live in Paradise' },
-      { id: '4', text: 'They make a mistake, learn from it and begin life on Earth' },
-      { id: '5', text: 'The story moves to Adam’s family and its later lessons' }
-    ],
-    correctAnswer: ['1', '2', '3', '4', '5'], explanation: 'This activity retrieves the structure of the whole story rather than one isolated fact.',
-    feedback: { correct: 'Good. You rebuilt the main sequence.', incorrect: 'Use the chapter order and place one stage at a time.' }
-  },
-  {
-    id: 'adam-a2-review-2', type: 'matching', title: 'Evidence and Lesson', instructions: 'Match each story detail with the simple idea it shows.', question: 'What does each detail help us understand?',
-    matchingPairs: [
-      { left: 'Soil came from different parts of Earth', right: 'people can be different' },
-      { left: 'Adam and Eve decided not to repeat their mistake', right: 'learn from mistakes' },
-      { left: 'Habil gave his best offering', right: 'give your best' },
-      { left: 'People should stay away from jealousy and control anger', right: 'control yourself' }
-    ],
-    correctAnswer: {
-      'Soil came from different parts of Earth': 'people can be different',
-      'Adam and Eve decided not to repeat their mistake': 'learn from mistakes',
-      'Habil gave his best offering': 'give your best',
-      'People should stay away from jealousy and control anger': 'control yourself'
-    },
-    explanation: 'The learner connects each story detail with a clear A2 lesson instead of only recalling who did what.',
-    feedback: { correct: 'Correct. You connected each story detail with its meaning.', incorrect: 'Read each detail first, then choose the short lesson it shows.' }
-  },
-  {
-    id: 'adam-a2-review-3', type: 'reflection', title: 'Use a Story Lesson', instructions: 'Start with a lesson that really appears in the story, then add one short personal example.',
-    question: 'Which lesson from the story could help a student in daily life?', correctAnswer: null,
-    explanation: 'A strong reflection identifies a real story lesson and connects it with a realistic action.',
-    feedback: { correct: 'Use one accurate story detail to support your idea.', incorrect: 'Choose a lesson that is stated or clearly shown in the story before adding your example.' },
-    discussionPrompts: [
-      { question: 'How can useful knowledge help a person do good?', mode: 'Individual' },
-      { question: 'What can a person do after making a mistake?', mode: 'Pair' },
-      { question: 'What is one calm way to manage anger or jealousy?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'adam-a2-review-4', type: 'quiz-game', title: 'Retrieval Quiz', instructions: 'Answer eight different questions from memory. Use a hint only when needed.', question: 'Can you retrieve eight ideas before the Final Challenge?', correctAnswer: null,
-    explanation: 'These prompts target different details from the Knowledge Check and Final Challenge.',
-    feedback: { correct: 'Good retrieval.', incorrect: 'Use the hint, locate the exact detail, then try again.' },
-    hints: ['Use chapter titles to locate the idea.', 'Find the exact sentence before changing an answer.'],
-    quizQuestions: [
-      { question: 'How did the angels wait after hearing about the new human?', options: [{ text: 'With curiosity', isCorrect: true }, { text: 'With fear', isCorrect: false }, { text: 'Without interest', isCorrect: false }], hint: 'Chapter 1 describes how they waited.' },
-      { question: 'How did Iblis describe Adam in Chapter 2?', options: [{ text: 'As an unimportant creature created from clay', isCorrect: true }, { text: 'As amazing and worthy of respect', isCorrect: false }, { text: 'As someone wiser whom he wanted to follow', isCorrect: false }], hint: 'Look at the final sentence of Chapter 2.' },
-      { question: 'What did Allah tell Adam to do about Iblis?', options: [{ text: 'Be careful about Iblis', isCorrect: true }, { text: 'Trust Iblis as a friend', isCorrect: false }, { text: 'Forget the warning about Iblis', isCorrect: false }], hint: 'Use the warning in the first paragraph of Chapter 4, not the tree warning.' },
-      { question: 'What did Iblis falsely say about himself to Adam and Eve?', options: [{ text: 'He was their friend', isCorrect: true }, { text: 'He had accepted that he was wrong', isCorrect: false }, { text: 'He wanted them to remember the warning', isCorrect: false }], hint: 'Chapter 5 calls this a big lie.' },
-      { question: 'Does the story say Adam and Eve made their mistake on purpose?', options: [{ text: 'No', isCorrect: true }, { text: 'Yes', isCorrect: false }, { text: 'The story says nothing about this', isCorrect: false }], hint: 'Find the words “on purpose”.' },
-      { question: 'What did Allah give Adam and Eve for life on Earth?', options: [{ text: 'What they needed to manage life on Earth', isCorrect: true }, { text: 'A way to return to the tree', isCorrect: false }, { text: 'A life with no work or responsibility', isCorrect: false }], hint: 'Read the first part of Chapter 6 before the list of activities.' },
-      { question: 'What role did Allah give Adam in Chapter 7?', options: [{ text: 'The first Messenger', isCorrect: true }, { text: 'The first farmer', isCorrect: false }, { text: 'The first shepherd', isCorrect: false }], hint: 'Find the sentence naming Adam’s role.' },
-      { question: 'What happened to Qabil after his anger cooled?', options: [{ text: 'He felt sad and started to panic', isCorrect: true }, { text: 'He became proud of what happened', isCorrect: false }, { text: 'He immediately forgot his brother', isCorrect: false }], hint: 'Read the beginning of the second paragraph in Chapter 9.' }
-    ]
-  }
-];
-
 // Locked Final distribution:
 // 3 multiple choice + 2 true/false + 2 matching + 2 fill blanks + 1 sequencing.
 export const adamA2FinalChallengeExercises: Exercise[] = [
