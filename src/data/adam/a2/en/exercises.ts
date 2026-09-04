@@ -20,13 +20,28 @@ export const adamA2QuickChallenges: Record<number, Exercise> = {
     feedback: { correct: 'Correct.', incorrect: 'Find the first command to the angels in Chapter 2.' }
   },
   3: {
-    id: 'adam-a2-quick-3', type: 'matching', title: 'Fire and Soil',
-    instructions: 'Match each person with the material named in Chapter 3.',
-    question: 'Which origin does the chapter name for Adam and Iblis?',
-    matchingPairs: [{ left: 'Iblis', right: 'fire' }, { left: 'Adam', right: 'soil' }],
-    correctAnswer: { Iblis: 'fire', Adam: 'soil' },
-    explanation: 'Iblis said that he was created from fire and Adam from soil.',
-    feedback: { correct: 'Correct.', incorrect: 'Reread Iblis’s answer and match each person with the material he names.' }
+    id: 'adam-a2-quick-3',
+    type: 'matching',
+    title: 'Origin, Knowledge and Value',
+    instructions: 'Match each Chapter 3 idea with the detail that completes it.',
+    question: 'How does Chapter 3 contrast origin with what truly makes a person valuable?',
+    matchingPairs: [
+      { left: "Iblis's origin", right: 'fire' },
+      { left: "Adam's origin", right: 'soil' },
+      { left: "Iblis's mistake", right: 'thinking his origin made him better' },
+      { left: 'Useful knowledge', right: 'helps people do good and stop bad' },
+    ],
+    correctAnswer: {
+      "Iblis's origin": 'fire',
+      "Adam's origin": 'soil',
+      "Iblis's mistake": 'thinking his origin made him better',
+      'Useful knowledge': 'helps people do good and stop bad',
+    },
+    explanation: 'The chapter names fire and soil, but its main contrast is between pride in origin and the value of useful knowledge.',
+    feedback: {
+      correct: 'Correct. You connected the details with the chapter’s central contrast.',
+      incorrect: 'Separate the two origins from the lesson about pride and useful knowledge.',
+    },
   },
   4: {
     id: 'adam-a2-quick-4', type: 'multiple-choice', title: 'Adam and Eve',
@@ -60,13 +75,28 @@ export const adamA2QuickChallenges: Record<number, Exercise> = {
     feedback: { correct: 'Correct.', incorrect: 'Find the sentence beginning “He started teaching…” and look at the first quality.' }
   },
   8: {
-    id: 'adam-a2-quick-8', type: 'matching', title: 'The Two Offerings',
-    instructions: 'Match each brother with the offering described in Chapter 8.',
-    question: 'What did each brother bring?',
-    matchingPairs: [{ left: 'Habil', right: 'his best and healthiest sheep' }, { left: 'Qabil', right: 'a handful of his crops' }],
-    correctAnswer: { Habil: 'his best and healthiest sheep', Qabil: 'a handful of his crops' },
-    explanation: 'The chapter contrasts the quality of the two offerings.',
-    feedback: { correct: 'Correct.', incorrect: 'Reread the two sentences describing what Habil and Qabil brought.' }
+    id: 'adam-a2-quick-8',
+    type: 'matching',
+    title: 'The Two Brothers and Their Offerings',
+    instructions: 'Match each Chapter 8 detail with the correct brother or idea.',
+    question: 'What work and offering does the chapter connect with each brother?',
+    matchingPairs: [
+      { left: "Habil's work", right: 'shepherd' },
+      { left: "Qabil's work", right: 'farmer' },
+      { left: "Habil's offering", right: 'his best and healthiest sheep' },
+      { left: "Qabil's offering", right: 'a handful of his crops' },
+    ],
+    correctAnswer: {
+      "Habil's work": 'shepherd',
+      "Qabil's work": 'farmer',
+      "Habil's offering": 'his best and healthiest sheep',
+      "Qabil's offering": 'a handful of his crops',
+    },
+    explanation: 'The chapter introduces each brother’s work and then contrasts what each one chose to offer.',
+    feedback: {
+      correct: 'Correct. You connected both jobs and both offerings accurately.',
+      incorrect: 'Reread Chapter 8 from the brothers’ jobs to the two offerings.',
+    },
   },
   9: {
     id: 'adam-a2-quick-9', type: 'true-false', title: 'Habil’s Response',
@@ -105,9 +135,17 @@ export const adamA2KnowledgeCheckExercises: Exercise[] = [
     feedback: { correct: 'Correct. You used the chapter’s stated purpose of useful knowledge.', incorrect: 'Find the sentence beginning “But useful knowledge…” and read what people can do with it.' }
   },
   {
-    id: 'adam-a2-kc-4', type: 'true-false', title: 'The Tree Warning', instructions: 'Decide whether the statement agrees with Chapter 4.',
-    question: 'Adam and Eve were told not to go near one tree.', correctAnswer: true,
-    explanation: 'The chapter states one specific warning about one tree.', feedback: { correct: 'Correct.', incorrect: 'Reread the final warning in Chapter 4.' }
+    id: 'adam-a2-kc-4',
+    type: 'true-false',
+    title: 'The Tree Warning',
+    instructions: 'Decide whether the statement agrees with Chapter 4.',
+    question: 'Adam and Eve were free to go near every tree in Paradise.',
+    correctAnswer: false,
+    explanation: 'Chapter 4 gives one clear exception: they were told not to go near one tree.',
+    feedback: {
+      correct: 'Correct. You noticed the one restriction in the chapter.',
+      incorrect: 'Reread the final warning in Chapter 4 and look for the one exception.',
+    },
   },
   {
     id: 'adam-a2-kc-5', type: 'multiple-choice', title: 'After the Mistake', instructions: 'Choose the response described in Chapter 5.',
