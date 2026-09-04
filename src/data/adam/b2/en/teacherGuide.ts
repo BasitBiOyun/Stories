@@ -54,14 +54,14 @@ export const adamB2TeacherGuideMetadata: TeacherGuideMetadata = {
     writing: 'TYMM YDAB4: produce coherent B2 paragraphs using source-aware attribution, logical relationships, qualification and chapter-derived language resources.',
   },
   valuesFocus: [
-    'D14 Saygı — reject superiority based on origin, colour or group and discuss difference respectfully.',
-    'D16 Sorumluluk — connect knowledge, vicegerency, repair and daily action with responsibility.',
-    'D6 Dürüstlük — admit error, preserve source boundaries and state only what evidence supports.',
-    'D10 Mütevazılık — contrast humility, learning and repentance with arrogance.',
-    'D5 Duyarlılık — notice consequences, human dignity, nature and the needs of others.',
-    'D20 Yardımseverlik — connect guidance, care and transmission of useful knowledge with action.',
-    'D12 Sabır — analyse self-control and measured response under pressure.',
-    'D9 Merhamet — examine compassion, non-harm and dignity without graphic elaboration.',
+    'D14 Respect — reject superiority based on origin, colour or group and discuss difference respectfully.',
+    'D16 Responsibility — connect knowledge, vicegerency, repair and daily action with responsibility.',
+    'D6 Honesty — admit error, preserve source boundaries and state only what evidence supports.',
+    'D10 Humility — contrast humility, learning and repentance with arrogance.',
+    'D5 Sensitivity — notice consequences, human dignity, nature and the needs of others.',
+    'D20 Helpfulness — connect guidance, care and transmission of useful knowledge with action.',
+    'D12 Patience — analyse self-control and measured response under pressure.',
+    'D9 Compassion — examine compassion, non-harm and dignity without graphic elaboration.',
   ],
   languageFocus: [
     'Every story chapter has an active Language Focus authored from that chapter’s current story wording and should be used after basic comprehension is secure.',
@@ -84,7 +84,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 1: Introduction', timing: '45 minutes',
     objectives: ['Analyse how the introduction frames the story and earthly life.', 'Distinguish source-grounding, representation and interpretation.', 'Use source, passive focus, correction and contrast in a connected B2 explanation.'],
-    pedagogy: 'Evidence-first framing. Establish what the introduction says before interpretation; connect respectful non-superiority language with D14 Saygı.',
+    pedagogy: 'Evidence-first framing. Establish what the introduction says before interpretation; connect respectful non-superiority language with D14 Respect.',
     priorKnowledge: ['Students can identify main idea, evidence and basic active/passive differences.'],
     anticipatedMisconceptions: ['Treating Satan as a rival to Allah rather than an enemy of Adam/humanity in the text.', 'Treating every interpretive statement as an unqualified source fact.'],
     grammarFocus: 'Active Language Focus: Based on/According to; passive focus; is portrayed/presented as; rather; rather than; contrast between.',
@@ -121,7 +121,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 3: The Vicegerent & The Gift of Knowledge', timing: '45 minutes',
     objectives: ['Distinguish quotation from interpretation of the names.', 'Connect knowledge with responsibility without turning possibility into certainty.', 'Use purpose, necessity and graded interpretive stance.'],
-    pedagogy: 'Label direct text, explanation, inference and possibility. Link honest qualification with D6 Dürüstlük and responsibility with D16 Sorumluluk.',
+    pedagogy: 'Label direct text, explanation, inference and possibility. Link honest qualification with D6 Honesty and responsibility with D16 Responsibility.',
     priorKnowledge: ['Students can distinguish direct evidence from commentary.'],
     anticipatedMisconceptions: ['Treating an interpretation of the names as an exhaustive literal list.', 'Treating could/may as certainty.'],
     grammarFocus: 'Active Language Focus: To be ...; needed/had to; then; shows; signifies; points to the breadth of ...; could for qualified possibility.',
@@ -139,7 +139,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 4: Knowledge, Revelation & Iblis’s Refusal', timing: '45 minutes',
     objectives: ['Compare the functions of worldly knowledge and revelation.', 'Explain why the chapter presents them as complementary.', 'Use corrective contrast and necessity to build a complementarity argument.'],
-    pedagogy: 'Comparison before evaluation. Reject a false either/or relationship and connect responsible knowledge use with D16 Sorumluluk.',
+    pedagogy: 'Comparison before evaluation. Reject a false either/or relationship and connect responsible knowledge use with D16 Responsibility.',
     priorKnowledge: ['Students know the gift-of-knowledge episode and basic contrast markers.'],
     anticipatedMisconceptions: ['Treating worldly knowledge and revelation as alternatives.', 'Assuming contrast automatically means contradiction.'],
     grammarFocus: 'Active Language Focus: however; which is revelation; not ... but rather ...; both; necessary/essential + function.',
@@ -154,7 +154,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 5: Angels’ Prostration & Iblis’s Arrogance — Part 2', timing: '45 minutes',
     objectives: ['Explain the prostration as obedience to Allah and respect for Adam.', 'Analyse the weakness in Iblis’s material-origin criterion.', 'Use clarification, cause and contrast to challenge a weak criterion.'],
-    pedagogy: 'Separate action, reason and evaluation. Connect humility with D10 Mütevazılık and respect with D14 Saygı.',
+    pedagogy: 'Separate action, reason and evaluation. Connect humility with D10 Humility and respect with D14 Respect.',
     priorKnowledge: ['Students know the command and Iblis’s fire/clay comparison.'], anticipatedMisconceptions: ['Treating the prostration as worship of Adam.', 'Treating Iblis’s criterion as the narrator’s standard.'],
     grammarFocus: 'Active Language Focus: which is / in other words / that is; because; on the other hand; yet; argument against a weak criterion.', pronunciationFocus: 'obedience, inability, unapparent, ethnicity',
     beforeReading: ['Ask how a criterion can distort a judgment even when the facts are visible.'], duringReading: ['Find the sentence denying worship.', 'Trace cause and contrast in the criticism of Iblis’s claim.'],
@@ -187,7 +187,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 8: Realization, Modesty & Source Limits', timing: '45 minutes',
     objectives: ['Infer what immediate covering signifies according to the chapter.', 'Separate explicit text, interpretation and source limits.', 'Use response, correction and attribution language accurately.'],
-    pedagogy: 'Move evidence → interpretation → source limit. Connect source honesty with D6 Dürüstlük.', priorKnowledge: ['Students know the eating episode and can identify direct quotation.'], anticipatedMisconceptions: ['Inventing the type of tree.', 'Treating attributed scholarly interpretation as Qur’anic wording.'],
+    pedagogy: 'Move evidence → interpretation → source limit. Connect source honesty with D6 Honesty.', priorKnowledge: ['Students know the eating episode and can identify direct quotation.'], anticipatedMisconceptions: ['Inventing the type of tree.', 'Treating attributed scholarly interpretation as Qur’anic wording.'],
     grammarFocus: 'Active Language Focus: when/result; began; dialogue response; no ... but ... correction; “not described”; “according to Islamic scholars”.', pronunciationFocus: 'deception, evident, hayâ, forgiveness',
     beforeReading: ['Ask how an immediate action can support an inference when the text itself explains it.'], duringReading: ['Mark the covering action and the sentence interpreting hayâ.', 'Mark what the Qur’an does not specify and what is attributed to scholars.'],
     afterReading: ['Answer before revealing the Tap & Reveal evidence.', 'Open Chapter 8 Language Focus and classify explicit / not specified / attributed interpretation.', 'Write a 6–8 sentence known–not stated–interpreted paragraph.'],
@@ -196,7 +196,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 9: Repentance & Prophethood', timing: '45–50 minutes',
     objectives: ['Analyse repentance as recognition, return and renewed direction.', 'Distinguish vulnerability from required response.', 'Use conditional consequence and obligation language.'],
-    pedagogy: 'Contrast feeling with action. Connect admission with D6 Dürüstlük and humility with D10 Mütevazılık.', priorKnowledge: ['Students know Adam’s immediate reaction in Chapter 8.'], anticipatedMisconceptions: ['Treating regret alone as completed repentance.', 'Treating “must” as a description of what always happens.'],
+    pedagogy: 'Contrast feeling with action. Connect admission with D6 Honesty and humility with D10 Humility.', priorKnowledge: ['Students know Adam’s immediate reaction in Chapter 8.'], anticipatedMisconceptions: ['Treating regret alone as completed repentance.', 'Treating “must” as a description of what always happens.'],
     grammarFocus: 'Active Language Focus: “deeply regretted”; immediate response; cause/result; unless + consequence; “humans are capable of ...” versus must.', pronunciationFocus: 'repentance, pardoned, prophethood, acknowledgment',
     beforeReading: ['Ask what has to change after a person recognises a mistake.'], duringReading: ['Mark recognition, outward return, result and later guidance.', 'Identify conditional consequence and obligation language.'],
     afterReading: ['Complete the three-stage matching Quick Challenge.', 'Open Chapter 9 Language Focus and analyse vulnerability, condition, result and obligation.', 'Write an 8–10 sentence responsibility-and-recovery paragraph ending with changed action.'],
@@ -214,7 +214,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 11: Life and Responsibility on Earth', timing: '45 minutes',
     objectives: ['Analyse how accumulating necessities define earthly responsibility.', 'Connect spiritual orientation with practical stewardship.', 'Use time pressure, necessity, priority and consequence.'],
-    pedagogy: 'Turn abstract stewardship into a discourse of necessary actions. Connect responsibility with D16 Sorumluluk.', priorKnowledge: ['Students know vicegerency and basic necessity language.'], anticipatedMisconceptions: ['Reducing stewardship to personal survival.', 'Treating repeated “had to” as meaningless repetition.'],
+    pedagogy: 'Turn abstract stewardship into a discourse of necessary actions. Connect responsibility with D16 Responsibility.', priorKnowledge: ['Students know vicegerency and basic necessity language.'], anticipatedMisconceptions: ['Reducing stewardship to personal survival.', 'Treating repeated “had to” as meaningless repetition.'],
     grammarFocus: 'Active Language Focus: no sooner ... than ...; repeated had to; above all; contrast; means for wider consequence.', pronunciationFocus: 'conflict, displacement, continuous, cultivate',
     beforeReading: ['Ask how language can make responsibilities feel cumulative.'], duringReading: ['Mark compressed time, repeated necessity and priority.', 'Trace practical work and moral struggle.'],
     afterReading: ['Complete the synthesis Quick Challenge.', 'Open Chapter 11 Language Focus and analyse time, necessity, priority and consequence.', 'Write an 8–10 sentence responsibility paragraph and choose one realistic action.'],
@@ -232,7 +232,7 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
   {
     chapter: 'Chapter 13: Habil’s Response & Human Moral Capacity', timing: '45 minutes',
     objectives: ['Analyse Habil’s non-aggressive response without equating it with passivity.', 'Distinguish human possibility from inevitability.', 'Use concession, modality, advice and condition-consequence.'],
-    pedagogy: 'Choice under pressure. Analyse action-based self-control and compassion, connecting D12 Sabır and D9 Merhamet with evidence.', priorKnowledge: ['Students know the threat and basic modal/conditional language.'], anticipatedMisconceptions: ['Assuming harmful tendencies make self-control impossible.', 'Romanticising danger rather than analysing the text.'],
+    pedagogy: 'Choice under pressure. Analyse action-based self-control and compassion, connecting D12 Patience and D9 Compassion with evidence.', priorKnowledge: ['Students know the threat and basic modal/conditional language.'], anticipatedMisconceptions: ['Assuming harmful tendencies make self-control impossible.', 'Romanticising danger rather than analysing the text.'],
     grammarFocus: 'Active Language Focus: although/however; may/can; purpose; advice; if-condition and consequence.', pronunciationFocus: 'rebellious, compassion, consequence, concession',
     beforeReading: ['Ask what moral strength can look like under pressure.'], duringReading: ['Mark concession and modal possibility.', 'Trace purpose, advice, condition and consequence in Habil’s speech.'],
     afterReading: ['Complete the Quick Challenge with claim-evidence-explanation.', 'Open Chapter 13 Language Focus and analyse concession, stance and consequence.', 'Write an 8–10 sentence measured conflict-response paragraph.'],
@@ -273,7 +273,8 @@ export const adamB2TeacherGuide: TeacherGuideSection[] = [
     beforeReading: ['Predict the final answer to the question of human value using evidence from at least two earlier chapters.'], duringReading: ['Mark universal claims and their exceptions.', 'Underline concession/reframing and cause-versus-appearance language.'],
     afterReading: ['Complete the final Quick Challenge with three pieces of evidence.', 'Open Chapter 17 Language Focus and write an 8–10 sentence qualified synthesis ending in a genuine open question.', 'Then continue through the book-ending sequence in this exact order: Knowledge Check → Language Review → Vocabulary Challenge → Master Glossary → Final Challenge.'],
     lessonPlan: '5 min retrieval; 14 min read/listen; 8 min scope/evidence map; 5 min Quick Challenge; 12 min Language Focus; 6 min final synthesis. Complete the post-book pages separately after the story lesson.',
-    discussionPoints: ['How does “except” change the scope of a broad claim?', 'What human conditions does the chapter present as increasing apparent influence?'], interactiveTips: ['Require story evidence before philosophical reflection.', 'Use the final Language Focus as preparation for the ordered post-book review sequence.'],
+    discussionPoints: ['How does “except” change the scope of a broad claim?', 'What human conditions does the chapter present as increasing apparent influence?'],
+    interactiveTips: ['Require story evidence before philosophical reflection.', 'Use the final Language Focus as preparation for the ordered post-book review sequence.'],
     differentiation: { strugglingLearners: 'Choose evidence from early, middle and late chapters and use scope/concession frames.', fastFinishers: 'Rank three pieces of evidence by strength and justify the ranking.' }, formativeAssessment: ['Claim + three pieces of evidence + qualification + Language Focus synthesis.'], expectedResponses: ['The final chapter limits Satan’s authority and locates human value in guided knowledge, moral responsibility, repentance, self-control and responsible action rather than origin.'], transferTask: 'Write a source-bounded definition of human responsibility using only ideas supported by the book.', teacherReflection: 'Did the final discussion synthesize evidence rather than repeat isolated facts?', assessmentTools: exit('Write one qualified whole-book claim and name the next post-book page: Knowledge Check.'),
   },
 ];
