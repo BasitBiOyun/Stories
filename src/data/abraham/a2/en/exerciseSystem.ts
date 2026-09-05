@@ -1,9 +1,7 @@
 import type { Exercise } from '../../../../types';
 import {
   abrahamA2FinalChallengeExercises,
-  abrahamA2KnowledgeCheckExercises,
   abrahamA2QuickChallenges,
-  abrahamA2VocabularyChallengePairs,
 } from './exercises';
 
 /** Active polished Abraham A2 English exercise system. */
@@ -23,6 +21,13 @@ export const abrahamA2QuickChallengesPolished: Record<number, Exercise> = {
     },
     explanation: 'The chapter contrasts what people asked from the objects with the objects’ complete lack of human abilities.',
     feedback: { correct: 'Correct. You rebuilt the contrast from four details.', incorrect: 'Return to the final sentences and separate what people did from what the objects could not do.' },
+  },
+  6: {
+    id: 'abraham-a2-quick-6', type: 'multiple-choice', title: 'The Largest Idol', instructions: 'Choose the action stated in Chapter 6.',
+    question: 'What did Abraham do after breaking the smaller stone gods?',
+    options: ['He left the largest one unbroken and placed the axe around its neck', 'He carried the largest idol home', 'He waited inside the idol house for the people'], correctAnswer: 0,
+    explanation: 'Chapter 6 directly says that Abraham left the largest one unbroken and placed the axe around its neck.',
+    feedback: { correct: 'Correct.', incorrect: 'Reread the final three sentences of Chapter 6.' },
   },
   9: {
     id: 'abraham-a2-quick-9', type: 'matching', title: 'Miracle and Response',
@@ -52,8 +57,94 @@ export const abrahamA2QuickChallengesPolished: Record<number, Exercise> = {
   },
 };
 
-export const abrahamA2KnowledgeCheckExercisesPolished: Exercise[] = abrahamA2KnowledgeCheckExercises;
-export const abrahamA2VocabularyChallengePairsPolished = abrahamA2VocabularyChallengePairs;
+export const abrahamA2KnowledgeCheckExercisesPolished: Exercise[] = [
+  {
+    id: 'abraham-a2-kc-1', type: 'multiple-choice', title: 'From Idols to the Sky', instructions: 'Choose the sequence that matches Chapters 1–3.',
+    question: 'Which sequence correctly follows Abraham’s early questioning?',
+    options: [
+      'He notices that stone objects are powerless, questions the idols his father makes, then observes that the star and moon disappear',
+      'He becomes king, builds a palace, then travels to Mecca',
+      'He sees Zamzam, meets Nimrod, then returns to the idol house',
+    ],
+    correctAnswer: 0,
+    explanation: 'Chapters 1–3 move from powerless stone objects, to Abraham questioning the idols made by his father, to his observations of the star and moon.',
+    feedback: { correct: 'Correct.', incorrect: 'Trace the first three chapters in order: stone objects, his father’s idols, then the night sky.' },
+  },
+  {
+    id: 'abraham-a2-kc-2', type: 'true-false', title: 'Guidance and Care', instructions: 'Decide whether the statement agrees with Chapters 4–5.',
+    question: 'After becoming a Messenger, Abraham tried to guide his people and explained that Allah gives him food and drink and heals him when he is sick.',
+    correctAnswer: true,
+    explanation: 'Chapter 4 gives Abraham the responsibility to guide his people, and Chapter 5 records his examples of Allah’s care.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Abraham’s new responsibility in Chapter 4 and his speech in Chapter 5.' },
+  },
+  {
+    id: 'abraham-a2-kc-3', type: 'multiple-choice', title: 'The Idol House', instructions: 'Choose the answer supported by Chapters 6–7.',
+    question: 'What happened after Abraham broke the stone gods?',
+    options: [
+      'He left the largest idol unbroken, and later the people admitted that the idols could not speak',
+      'The largest idol spoke and told the people what happened',
+      'The people immediately accepted Abraham’s message without questioning him',
+    ],
+    correctAnswer: 0,
+    explanation: 'Chapter 6 leaves the largest idol unbroken; Chapter 7 shows the people themselves saying that the objects do not speak.',
+    feedback: { correct: 'Correct.', incorrect: 'Connect the ending of Chapter 6 with the questioning scene in Chapter 7.' },
+  },
+  {
+    id: 'abraham-a2-kc-4', type: 'true-false', title: 'Fire and Miracle', instructions: 'Decide whether the statement agrees with Chapters 8–9.',
+    question: 'The people prepared a dangerously hot fire, but Allah made it cool and safe for Abraham; even after the miracle, the people remained against him.',
+    correctAnswer: true,
+    explanation: 'Chapter 8 describes the dangerous fire, and Chapter 9 describes Abraham’s safety and the people’s unchanged position.',
+    feedback: { correct: 'Correct.', incorrect: 'Compare the danger in Chapter 8 with the miracle and reaction in Chapter 9.' },
+  },
+  {
+    id: 'abraham-a2-kc-5', type: 'multiple-choice', title: 'Nimrod’s Challenge', instructions: 'Choose the detail stated in Chapter 10.',
+    question: 'What challenge could Nimrod not meet?',
+    options: ['Making the sun rise from the west', 'Making the moon disappear', 'Finding the road to Babylon'],
+    correctAnswer: 0,
+    explanation: 'Abraham challenged Nimrod to make the sun rise from the west, and Nimrod could not do it.',
+    feedback: { correct: 'Correct.', incorrect: 'Return to Abraham’s final question in Chapter 10.' },
+  },
+  {
+    id: 'abraham-a2-kc-6', type: 'multiple-choice', title: 'Leaving Babylon', instructions: 'Choose the answer supported by Chapter 11.',
+    question: 'Why did Abraham leave Babylon, and where did the journey eventually take his family?',
+    options: [
+      'He left to carry Allah’s message to other lands, and the journey eventually reached a quiet valley near Safa and Marwah',
+      'He left to become a king, and the journey ended at Nimrod’s palace',
+      'He left to find new idols, and the journey ended at the old idol house',
+    ],
+    correctAnswer: 0,
+    explanation: 'Chapter 11 connects Abraham’s decision to carry the message with the long journey that eventually reaches the valley near Safa and Marwah.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the reason for leaving Babylon and the final destination named in Chapter 11.' },
+  },
+  {
+    id: 'abraham-a2-kc-7', type: 'true-false', title: 'Hagar, Ishmael and Zamzam', instructions: 'Decide whether the statement agrees with Chapters 12–13.',
+    question: 'Hagar trusted Allah and searched for food and water; later, water appeared under Ishmael’s feet and more people came to the area because of it.',
+    correctAnswer: true,
+    explanation: 'Chapter 12 shows Hagar’s trust and effort, while Chapter 13 tells how Zamzam appeared and drew people to the area.',
+    feedback: { correct: 'Correct.', incorrect: 'Follow Hagar’s actions in Chapter 12 and the results of the water in Chapter 13.' },
+  },
+  {
+    id: 'abraham-a2-kc-8', type: 'multiple-choice', title: 'The Ka’ba and the Message', instructions: 'Choose the answer supported by Chapter 14.',
+    question: 'Which statement brings together the main ideas of the final chapter?',
+    options: [
+      'Abraham and Ishmael build the Ka’ba, Hajj recalls Abraham and his family, and the closing message says Allah has no partner',
+      'Abraham builds a palace, Hajj remembers Nimrod, and the closing message praises the idols',
+      'Ishmael returns to Babylon, Hajj ends, and the Ka’ba is forgotten',
+    ],
+    correctAnswer: 0,
+    explanation: 'Chapter 14 joins the building of the Ka’ba, the continuing practice of Hajj, and the final message about Allah’s uniqueness.',
+    feedback: { correct: 'Correct.', incorrect: 'Use the building paragraph, the Hajj sentence, and the closing message.' },
+  },
+];
+
+export const abrahamA2VocabularyChallengePairsPolished = [
+  { word: 'Idol', meaning: 'A statue or object that people wrongly worship as a god' },
+  { word: 'Creator', meaning: 'The one who made everything' },
+  { word: 'Arrogant', meaning: 'Thinking you are better or more important than others' },
+  { word: 'Miracle', meaning: 'An extraordinary event from Allah beyond normal human power' },
+  { word: 'Valley', meaning: 'A low area of land between hills or mountains' },
+  { word: 'Mission', meaning: 'An important job or task given to someone' },
+];
 
 export const abrahamA2FinalChallengeExercisesPolished: Exercise[] = abrahamA2FinalChallengeExercises.map(exercise => {
   if (exercise.id === 'abraham-a2-final-6') {
