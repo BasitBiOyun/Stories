@@ -1,86 +1,9 @@
 import type { Exercise } from '../../../../types';
-
-/** Manually authored Moses A2 Language Focus — Chapter 8 onward. */
 export const mosesA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
   8: [
-    {
-      id: 'moses-a2-language-8-question-ability',
-      type: 'matching',
-      title: 'Questions and Ability',
-      instructions: 'Match each Chapter 8 expression with the meaning or function it adds.',
-      question: 'How does the chapter ask about an action and explain that someone is not able to do something?',
-      matchingPairs: [
-        { left: 'Why aren’t you taking your sheep to drink water?', right: 'asks for the reason for an action that is not happening now' },
-        { left: 'He cannot come with us.', right: 'expresses present inability' },
-        { left: 'Why + negative present continuous?', right: 'asks why an expected action is not happening' },
-        { left: 'cannot + base verb', right: 'means someone is not able to do an action' },
-      ],
-      correctAnswer: {
-        'Why aren’t you taking your sheep to drink water?': 'asks for the reason for an action that is not happening now',
-        'He cannot come with us.': 'expresses present inability',
-        'Why + negative present continuous?': 'asks why an expected action is not happening',
-        'cannot + base verb': 'means someone is not able to do an action',
-      },
-      explanation: 'The direct question uses a negative present continuous form to ask about an action expected now. “Cannot + base verb” expresses inability.',
-      feedback: { correct: 'Correct. You separated the question form from the language of ability.', incorrect: 'Look at what Moses asks the sisters, then at what they say their father cannot do.' },
-    },
-    {
-      id: 'moses-a2-language-8-purpose-result',
-      type: 'matching',
-      title: 'Purpose and Result',
-      instructions: 'Match each expression with its function in the sisters’ explanation.',
-      question: 'How do the sisters explain why they do the work and what happens because of their situation?',
-      matchingPairs: [
-        { left: 'There are no young men in our house to help us.', right: 'uses to + verb to show purpose' },
-        { left: 'So, we take the sheep to the water.', right: 'shows a result or action that follows from the situation' },
-        { left: 'There are no + plural noun', right: 'says that nobody or nothing of that kind is present' },
-        { left: 'so + clause', right: 'connects a situation with what happens next' },
-      ],
-      correctAnswer: {
-        'There are no young men in our house to help us.': 'uses to + verb to show purpose',
-        'So, we take the sheep to the water.': 'shows a result or action that follows from the situation',
-        'There are no + plural noun': 'says that nobody or nothing of that kind is present',
-        'so + clause': 'connects a situation with what happens next',
-      },
-      explanation: '“To + verb” can show purpose, “there are no ...” describes absence, and “so” introduces a result or next action.',
-      feedback: { correct: 'Correct. You identified absence, purpose and result.', incorrect: 'Find the sentence about who is not in the house, then the action that follows because of this situation.' },
-    },
-    {
-      id: 'moses-a2-language-8-time-waiting',
-      type: 'matching',
-      title: 'Waiting and Time',
-      instructions: 'Match each Chapter 8 phrase with the time meaning it gives.',
-      question: 'How does the chapter talk about waiting and coming home earlier than usual?',
-      matchingPairs: [
-        { left: 'We wait for our turn.', right: 'describes waiting until it is your time to act' },
-        { left: 'When the sisters came home early, their father asked ...', right: 'uses when to connect one past event with another' },
-        { left: 'You came home very early!', right: 'says the action happened before the usual time' },
-        { left: 'We did not wait for the other shepherds to leave the well.', right: 'uses wait for + person + to + verb to describe the event being waited for' },
-      ],
-      correctAnswer: {
-        'We wait for our turn.': 'describes waiting until it is your time to act',
-        'When the sisters came home early, their father asked ...': 'uses when to connect one past event with another',
-        'You came home very early!': 'says the action happened before the usual time',
-        'We did not wait for the other shepherds to leave the well.': 'uses wait for + person + to + verb to describe the event being waited for',
-      },
-      explanation: 'The chapter uses “wait for”, “when”, and “early” to organize time and expectations. “Wait for + person + to + verb” tells which event someone is waiting for.',
-      feedback: { correct: 'Correct. You followed the language of turns, waiting and earlier-than-usual time.', incorrect: 'Notice which phrases tell whose turn it is, when something happened, and what event someone waited for.' },
-    },
-    {
-      id: 'moses-a2-language-8-production',
-      type: 'reflection',
-      title: 'Use It: Explain a Shared Task',
-      instructions: 'Imagine a safe everyday situation at home, school or a community event. Write or say four short sentences using at least three Chapter 8 language frames.',
-      question: 'Can you ask about a missing action, explain an ability problem, give a result, and describe waiting or timing?',
-      correctAnswer: null,
-      explanation: 'A strong A2 response can use “Why aren’t you ...?”, “cannot + verb”, “There are no ... to ...”, “so ...”, “wait for ...”, “when ...”, or “early”.',
-      feedback: { correct: 'Use the Chapter 8 language in a new shared-task situation instead of retelling the well scene.', incorrect: '' },
-      discussionPrompts: [
-        { question: 'Question — Ask why one expected action is not happening now.', mode: 'Pair' },
-        { question: 'Ability — Explain one thing a person cannot do.', mode: 'Individual' },
-        { question: 'Result — Add a sentence with “so”.', mode: 'Individual' },
-        { question: 'Time — Add one sentence with “wait for”, “when”, or “early”.', mode: 'Individual' },
-      ],
-    },
+    { id:'moses-a2-language-8-question-ability', type:'matching', title:'Questions and Ability', instructions:'Match each pattern with its job.', question:'How does Chapter 8 ask about an action and express inability?', matchingPairs:[{left:'Why aren’t you taking your sheep to drink water?',right:'asks why an expected action is not happening now'},{left:'He cannot come with us.',right:'present inability'},{left:'Why + negative present continuous?',right:'question about a missing current action'},{left:'cannot + base verb',right:'not able to do something'}], correctAnswer:{'Why aren’t you taking your sheep to drink water?':'asks why an expected action is not happening now','He cannot come with us.':'present inability','Why + negative present continuous?':'question about a missing current action','cannot + base verb':'not able to do something'}, explanation:'The chapter uses a negative present-continuous question and cannot for inability.', feedback:{correct:'Correct.',incorrect:'Separate the question form from inability.'} },
+    { id:'moses-a2-language-8-purpose-result', type:'fill-blanks', title:'Situation and Result', instructions:'Complete the result connector.', question:'Which word links the situation to the next action?', fillBlanksText:'There are no young men in our house to help us. [blank], we take the sheep to the water.', correctAnswer:'So', explanation:'So introduces the result or action that follows from a situation.', feedback:{correct:'Correct.',incorrect:'Use the result connector from the chapter.'} },
+    { id:'moses-a2-language-8-time-waiting', type:'multiple-choice', title:'Waiting for an Event', instructions:'Choose the correct pattern.', question:'Which sentence correctly uses wait for + person + to + verb?', options:['We did not wait for the other shepherds to leave the well.','We did not wait the other shepherds leave the well.','We did not wait for the other shepherds leaving to the well.'], correctAnswer:0, explanation:'Use wait for + person + to + base verb.', feedback:{correct:'Correct.',incorrect:'Use wait for + person + to + verb.'} },
+    { id:'moses-a2-language-8-production', type:'reflection', title:'Use It: Explain a Shared Task', instructions:'Create a safe everyday situation using Chapter 8 patterns.', question:'Can you ask about a missing action, explain inability, give a result and describe waiting?', correctAnswer:null, explanation:'Use Why aren’t you...?, cannot, There are no..., so, wait for, when or early.', feedback:{correct:'Keep the example new and clear.',incorrect:''}, discussionPrompts:[{question:'Ask one Why aren’t you...? question.',mode:'Pair'},{question:'Explain one thing someone cannot do.',mode:'Individual'},{question:'Add a result with so.',mode:'Individual'},{question:'Add wait for, when or early.',mode:'Individual'}] },
   ],
 };
