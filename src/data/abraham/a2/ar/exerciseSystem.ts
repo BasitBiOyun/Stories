@@ -1,9 +1,7 @@
 import type { Exercise } from '../../../../types';
 import {
   abrahamA2FinalChallengeExercisesAr,
-  abrahamA2KnowledgeCheckExercisesAr,
   abrahamA2QuickChallengesAr,
-  abrahamA2VocabularyChallengePairsAr,
 } from './exercises';
 
 /** نظام الأنشطة العربي المصقول والفعّال لإبراهيم A2. */
@@ -23,6 +21,13 @@ export const abrahamA2QuickChallengesArPolished: Record<number, Exercise> = {
     },
     explanation: 'يقابل الفصل بين ما يطلبه الناس من الأشياء وبين عجز هذه الأشياء.',
     feedback: { correct: 'صحيح. أعدت بناء التناقض من أربعة تفاصيل.', incorrect: 'ارجع إلى الجمل الأخيرة وافصل بين فعل الناس وما لا تستطيع الأشياء فعله.' },
+  },
+  6: {
+    id: 'abraham-a2-quick-6-ar', type: 'multiple-choice', title: 'الصنم الأكبر', instructions: 'اختر الفعل المذكور مباشرة في الفصل السادس.',
+    question: 'ماذا فعل إبراهيم بعد أن حطم الأصنام الحجرية الأخرى؟',
+    options: ['ترك أكبرها سليمًا ووضع الفأس على عنقه', 'حمل الصنم الأكبر إلى بيته', 'انتظر الناس داخل بيت الأصنام'], correctAnswer: 0,
+    explanation: 'يذكر الفصل السادس مباشرة أن إبراهيم ترك أكبر الأصنام سليمًا ثم وضع الفأس على عنقه.',
+    feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى الجمل الأخيرة من الفصل السادس.' },
   },
   9: {
     id: 'abraham-a2-quick-9-ar', type: 'matching', title: 'المعجزة ورد الفعل',
@@ -52,8 +57,94 @@ export const abrahamA2QuickChallengesArPolished: Record<number, Exercise> = {
   },
 };
 
-export const abrahamA2KnowledgeCheckExercisesArPolished: Exercise[] = abrahamA2KnowledgeCheckExercisesAr;
-export const abrahamA2VocabularyChallengePairsArPolished = abrahamA2VocabularyChallengePairsAr;
+export const abrahamA2KnowledgeCheckExercisesArPolished: Exercise[] = [
+  {
+    id: 'abraham-a2-kc-1-ar', type: 'multiple-choice', title: 'من الأصنام إلى السماء', instructions: 'اختر التسلسل الذي يوافق الفصول 1–3.',
+    question: 'أي تسلسل يتبع بدايات تفكير إبراهيم بصورة صحيحة؟',
+    options: [
+      'لاحظ عجز الأشياء الحجرية، وسأل عن الأصنام التي يصنعها أبوه، ثم رأى أن الكوكب والقمر يغيبان',
+      'صار ملكًا، وبنى قصرًا، ثم سافر إلى مكة',
+      'رأى زمزم، ثم قابل نمرودًا، ثم عاد إلى بيت الأصنام',
+    ],
+    correctAnswer: 0,
+    explanation: 'تنتقل الفصول الثلاثة الأولى من ملاحظة عجز الأشياء الحجرية إلى أسئلة إبراهيم عن الأصنام، ثم إلى ملاحظته للكوكب والقمر.',
+    feedback: { correct: 'صحيح.', incorrect: 'اتبع الفصول الثلاثة بالترتيب: الأشياء الحجرية، أصنام أبيه، ثم مشهد السماء.' },
+  },
+  {
+    id: 'abraham-a2-kc-2-ar', type: 'true-false', title: 'الهداية والرعاية', instructions: 'حدد هل العبارة توافق الفصلين 4–5.',
+    question: 'بعد أن جعله الله رسولًا، حاول إبراهيم هداية قومه، وبيّن لهم أن الله يعطيه الطعام والشراب ويشفيه إذا مرض.',
+    correctAnswer: true,
+    explanation: 'يعرض الفصل الرابع مسؤولية إبراهيم في الهداية، ويعرض الفصل الخامس أمثلته على رعاية الله له.',
+    feedback: { correct: 'صحيح.', incorrect: 'راجع مسؤولية إبراهيم في الفصل الرابع وكلامه لقومه في الفصل الخامس.' },
+  },
+  {
+    id: 'abraham-a2-kc-3-ar', type: 'multiple-choice', title: 'بيت الأصنام', instructions: 'اختر الإجابة التي يدعمها الفصلان 6–7.',
+    question: 'ماذا حدث بعد أن حطم إبراهيم الأصنام الحجرية؟',
+    options: [
+      'ترك الصنم الأكبر سليمًا، ثم اعترف الناس لاحقًا بأن الأصنام لا تتكلم',
+      'تكلم الصنم الأكبر وأخبر الناس بما حدث',
+      'قبل الناس رسالة إبراهيم مباشرة دون أن يسألوه',
+    ],
+    correctAnswer: 0,
+    explanation: 'ينتهي الفصل السادس بترك الصنم الأكبر سليمًا، وفي الفصل السابع يقول الناس بأنفسهم إن هذه الأشياء لا تتكلم.',
+    feedback: { correct: 'صحيح.', incorrect: 'اربط نهاية الفصل السادس بمشهد السؤال في الفصل السابع.' },
+  },
+  {
+    id: 'abraham-a2-kc-4-ar', type: 'true-false', title: 'النار والمعجزة', instructions: 'حدد هل العبارة توافق الفصلين 8–9.',
+    question: 'أعد الناس نارًا شديدة الخطورة، لكن الله جعلها باردة وآمنة على إبراهيم، ومع ذلك بقي الناس ضده بعد المعجزة.',
+    correctAnswer: true,
+    explanation: 'يصف الفصل الثامن خطر النار، ويصف الفصل التاسع نجاة إبراهيم وبقاء موقف الناس كما هو.',
+    feedback: { correct: 'صحيح.', incorrect: 'قارن خطر النار في الفصل الثامن بالمعجزة ورد الناس في الفصل التاسع.' },
+  },
+  {
+    id: 'abraham-a2-kc-5-ar', type: 'multiple-choice', title: 'تحدي نمرود', instructions: 'اختر التفصيل المذكور في الفصل العاشر.',
+    question: 'أي تحدٍّ لم يستطع نمرود أن يفعله؟',
+    options: ['أن يأتي بالشمس من المغرب', 'أن يجعل القمر يغيب', 'أن يجد طريق بابل'],
+    correctAnswer: 0,
+    explanation: 'تحدى إبراهيم نمرود أن يأتي بالشمس من المغرب، ولم يستطع نمرود ذلك.',
+    feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى سؤال إبراهيم الأخير في الفصل العاشر.' },
+  },
+  {
+    id: 'abraham-a2-kc-6-ar', type: 'multiple-choice', title: 'مغادرة بابل', instructions: 'اختر الإجابة التي يدعمها الفصل الحادي عشر.',
+    question: 'لماذا غادر إبراهيم بابل، وإلى أين وصلت الرحلة بأسرته في نهاية الفصل؟',
+    options: [
+      'غادر ليبلغ رسالة الله في أراض أخرى، ووصلت الرحلة في النهاية إلى واد هادئ قرب الصفا والمروة',
+      'غادر ليصبح ملكًا، وانتهت الرحلة عند قصر نمرود',
+      'غادر ليبحث عن أصنام جديدة، وانتهت الرحلة في بيت الأصنام القديم',
+    ],
+    correctAnswer: 0,
+    explanation: 'يربط الفصل الحادي عشر قرار مغادرة بابل بتبليغ الرسالة، ثم ينتهي بوصول الأسرة إلى الوادي قرب الصفا والمروة.',
+    feedback: { correct: 'صحيح.', incorrect: 'راجع سبب مغادرة بابل والمكان الذي وصلوا إليه في نهاية الفصل.' },
+  },
+  {
+    id: 'abraham-a2-kc-7-ar', type: 'true-false', title: 'هاجر وإسماعيل وزمزم', instructions: 'حدد هل العبارة توافق الفصلين 12–13.',
+    question: 'توكلت هاجر على الله وبحثت عن الطعام والماء، ثم خرج الماء من تحت قدمي إسماعيل وجاء مزيد من الناس إلى المكان بسبب الماء.',
+    correctAnswer: true,
+    explanation: 'يعرض الفصل الثاني عشر توكل هاجر وسعيها، ويعرض الفصل الثالث عشر ظهور زمزم وقدوم الناس إلى المكان.',
+    feedback: { correct: 'صحيح.', incorrect: 'اتبع أفعال هاجر في الفصل 12 ثم نتائج ظهور الماء في الفصل 13.' },
+  },
+  {
+    id: 'abraham-a2-kc-8-ar', type: 'multiple-choice', title: 'الكعبة والرسالة', instructions: 'اختر الإجابة التي يدعمها الفصل الرابع عشر.',
+    question: 'أي عبارة تجمع الأفكار الرئيسة في الفصل الأخير؟',
+    options: [
+      'يبني إبراهيم وإسماعيل الكعبة، ويذكّر الحج بقصة إبراهيم وأسرته، وتؤكد الرسالة الأخيرة أن الله لا شريك له',
+      'يبني إبراهيم قصرًا، ويذكّر الحج بنمرود، وتمتدح الرسالة الأخيرة الأصنام',
+      'يعود إسماعيل إلى بابل، وينتهي الحج، وتُنسى الكعبة',
+    ],
+    correctAnswer: 0,
+    explanation: 'يجمع الفصل الرابع عشر بين بناء الكعبة واستمرار الحج والرسالة الختامية عن وحدانية الله.',
+    feedback: { correct: 'صحيح.', incorrect: 'راجع فقرة البناء، وجملة الحج، والرسالة الختامية.' },
+  },
+];
+
+export const abrahamA2VocabularyChallengePairsArPolished = [
+  { word: 'صنم', meaning: 'تمثال أو شيء يعبده الناس خطأً كإله' },
+  { word: 'الخالق', meaning: 'الذي خلق كل شيء' },
+  { word: 'متكبر', meaning: 'من يظن أنه أفضل أو أهم من غيره' },
+  { word: 'معجزة', meaning: 'حدث خارق من الله يفوق القدرة البشرية العادية' },
+  { word: 'واد', meaning: 'أرض منخفضة بين تلال أو جبال' },
+  { word: 'مهمة', meaning: 'عمل مهم يُطلب من شخص أن يقوم به' },
+];
 
 export const abrahamA2FinalChallengeExercisesArPolished: Exercise[] = abrahamA2FinalChallengeExercisesAr.map(exercise => {
   if (exercise.id === 'abraham-a2-final-6-ar') {
