@@ -38,12 +38,12 @@ Abraham A2 completed the previous 19-item version of this quality workflow. The 
 - [x] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
 - [x] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
 - [x] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
-- [ ] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
-- [ ] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
-- [ ] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
-- [ ] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
-- [ ] 11. Audit EN+AR Language Review for varied exercise types and cumulative language practice; avoid matching-heavy sets.
-- [ ] 12. Audit EN+AR Final Challenge for whole-story coverage, answer correctness, variety and clear separation from Language Review.
+- [x] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
+- [x] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
+- [x] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
+- [x] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
+- [x] 11. Audit EN+AR Language Review for varied exercise types and cumulative language practice; avoid matching-heavy sets.
+- [x] 12. Audit EN+AR Final Challenge for whole-story coverage, answer correctness, variety and clear separation from Language Review.
 - [ ] 13. Audit EN Teacher Guide chapter by chapter. Chapter Support and all chapter guidance must be genuinely chapter-specific, not generic/copy-paste. Preserve TYMM codes already used; visible English value names must be English.
 - [ ] 14. Audit AR Teacher Guide chapter by chapter for the same chapter specificity and natural Arabic-language consistency.
 - [ ] 15. Audit EN Self-Study Guide chapter by chapter; guidance must point the learner to useful chapter-specific evidence, language and study actions rather than generic advice.
@@ -53,15 +53,21 @@ Abraham A2 completed the previous 19-item version of this quality workflow. The 
 
 ### Current handoff
 
-- Items 1–6 are complete. Item 7 is the first unchecked item and Block B is Items 7–12.
+- Items 1–12 are complete. Block C is Items 13–18 and Item 13 is now the first unchecked item.
 - Item 1: all 16 English and all 16 Arabic Moses A2 story chapters were read from the canonical page sources. Chapter boundaries, titles, page IDs 1–16, and story/media fields were checked in both languages.
 - Item 2: both canonical story sources were re-read for obvious spelling/capitalization/punctuation/grammar problems and accidental embedded headings/markup. No broad prose rewrite was justified; meaning, A2 level, and intended vocabulary were preserved.
 - Item 3: English has exactly two hotspots in each of Chapters 1–16 and every active description is a verbatim sentence from its own English chapter. The old `polishEnglishSupport` runtime override in `src/data/moses/a2/index.ts` was removed so canonical page data is now authoritative. Commit: `ef84302df2f8e52a06c8082bda2d5bb327f6f9b3`.
 - Item 4: Arabic had many paraphrased hotspot descriptions. All 16 chapters were canonicalized to exactly two hotspot descriptions taken verbatim from the same Arabic chapter. The old `polishArabicSupport` runtime override was removed. Canonical Arabic hotspot commit: `b7b1aa16d8cc85cd70e6b7b14a029214fa32e17a`.
 - Item 5: chapter audio mappings 1–16 in both languages point to the Moses A2 audio sequence and chapter numbers align. Images 1–8 and 10–16 point to Moses A2 chapter assets. Chapter 9 intentionally retains the same existing scene image in EN and AR; repository search found the same image used for the Midian/new-life scene elsewhere and no repository-backed `moses_a2_ch9.png` replacement, so no unsupported media path/token was invented.
 - Item 6: all English Language Focus chapters 1–16 were audited across `languageFocus.ts` and Parts 2–11. Every chapter has four chapter-specific A2 activities with exactly one matching activity and three varied non-matching activities drawn from multiple-choice, fill-blanks, sequencing and reflection/production. No rewrite was needed.
-- Canonical runtime cleanup: `src/data/moses/a2/index.ts` now reads EN/AR canonical pages directly; no hotspot correction layer remains.
-- Next task: Item 7 — audit all Arabic Language Focus chapters 1–16 under the same variety rule, then continue sequentially through Items 8–12.
+- Item 7: all Arabic Language Focus chapters 1–16 were rebuilt where necessary from the existing Arabic chapter-grounded language. Every chapter now has four A2 activities with at most one matching task; the remaining activities use multiple-choice, fill-blanks, sequencing and/or reflection. Arabic wording was kept independent and natural rather than copied literally from English. Commits span `a37751d229c66380acaa0b8a439b222fb9867c69` through `645a9e030cb844686e560cb56fa61f7be61f29bf`.
+- Item 8: all 16 EN and 16 AR Quick Challenges were audited against their own chapters. The active polished systems keep the existing chapter-specific direct-comprehension tasks, with targeted polished overrides for Chapters 1, 6, 11 and 13 in both languages; answers and feedback remain aligned with the chapter events.
+- Item 9: EN+AR Knowledge Check was rebuilt as eight chronological whole-book checks covering Chapters 1–16 in paired chapter groups: 1–2, 3–4, 5–6, 7–8, 9–10, 11–12, 13–14 and 15–16. Each language uses the same assessment intent without forcing literal translation. EN commit: `b458918cc12aa3ded14349430e4e68ea3e927919`; AR commit: `177058ba0b17cb6b9293891d8042541b6df6b792`.
+- Item 10: Vocabulary Challenge was rechecked for story grounding. English visible vocabulary entries are now capitalized (`Cruel`, `Protect`, `Forgive`, `Guided`, `Stranger`, `Parted`); Arabic keeps natural forms. These active lists are exported from the EN/AR exercise systems.
+- Item 11: both Language Reviews were rebuilt from matching-heavy sets into ten cumulative A2 language activities with balanced variety: 2 matching, 2 multiple-choice, 2 fill-blanks, 1 drag-drop, 1 true-false, 1 sequencing and 1 reflection. They practise reusable language functions rather than retesting whole-story comprehension. EN commit: `9b5cdbde4e2935bfe167fe41059244d25bc29dde`; AR commit: `f61bba186b9570e1e23e54944ef29807c9957a2d`.
+- Item 12: EN+AR Final Challenge was rebuilt as ten whole-story comprehension tasks explicitly covering Chapters 1–16. Each side now uses 4 multiple-choice, 2 true-false, 1 matching, 2 sequencing and 1 fill-blanks activity, and remains distinct from Language Review grammar practice. Active definitions are in the EN/AR exercise-system commits above.
+- Canonical runtime cleanup from Block A remains in place: `src/data/moses/a2/index.ts` reads EN/AR canonical pages directly; no hotspot correction layer remains.
+- Next task: Item 13 — audit the English Teacher Guide chapter by chapter, then continue sequentially through Items 14–18 and close Moses A2.
 
 ## Fixed hourly execution model — 6 + 6 + 6
 
