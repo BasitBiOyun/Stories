@@ -30,9 +30,9 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 - [x] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
 - [x] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
 - [x] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
-- [ ] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
-- [ ] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
-- [ ] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
+- [x] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
+- [x] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
+- [x] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
 - [ ] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
 - [ ] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
 - [ ] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
@@ -48,12 +48,15 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 
 ### Current handoff
 
-- Items 1–4 are complete. Item 5 is now the first unchecked item.
-- Item 2: the earlier English obvious-language corrections remain in place. Arabic story prose received the final obvious-error cleanup required for this pass: the six accidental next-chapter `## ...` headings embedded in Ch8–13 story `content` were removed, and a few clear orthographic forms were normalized without changing story meaning or CEFR level. Arabic content/hotspot commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
-- Item 3: all 14 English story chapters were re-read for hotspot source fidelity. Each chapter has exactly 2 hotspots (28 total). Ch10 `h20`, which was a truncated non-verbatim quotation, was replaced with the exact chapter sentence `Can you make the sun rise from the west?`. English hotspot commit: `b85ca27ffdc880f40d71ff5658cd09744b4df787`.
-- Item 4: all 14 Arabic story chapters have exactly 2 hotspots (28 total). Every Arabic hotspot description was replaced/re-verified as a verbatim sentence from its own chapter after the prose cleanup. The same Arabic commit is `0de37b259c3860eb52736c3f5f044771c071bbeb`.
-- Next task: Item 5 — verify all Abraham A2 EN+AR chapter image/media mappings against the correct story and A2 level. Do not begin Item 6 until Item 5 is genuinely complete.
-- Language Focus work remains partial from earlier work: EN+AR Chapters 1–3, 6 and 7 were edited but must be re-verified under Items 6–7; Ch4–5 and Ch8–14 remain pending there.
+- Items 1–7 are complete. Item 8 is now the first unchecked item.
+- Item 2: English obvious-language corrections remain in place. Arabic Ch8–13 accidental embedded next-chapter headings were removed and clear orthographic errors normalized without changing meaning or level. Content/hotspot commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
+- Item 3: all 14 English chapters have exactly 2 chapter-sourced hotspot descriptions. Ch10 `h20` was repaired to an exact sentence from the chapter. Commit: `b85ca27ffdc880f40d71ff5658cd09744b4df787`.
+- Item 4: all 14 Arabic chapters have exactly 2 verbatim chapter-sourced hotspot descriptions. Commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
+- Item 5: all 14 EN and all 14 AR story pages were rechecked. Images and audio remain under the Abraham A2 media paths and correspond to the correct chapter/level; no media system or fallback was added.
+- Item 6: all EN Language Focus chapters 1–14 were rechecked. Ch1–3, Ch6 and Ch7 already met the variety standard. Ch4–5 and Ch8–14 were revised so each 4-activity set has exactly one matching activity plus varied chapter-specific multiple-choice, fill-blanks, drag-drop, sequencing and/or reflection work.
+- Item 7: all AR Language Focus chapters 1–14 were rechecked from the Arabic chapter language. Ch1–3, Ch6 and Ch7 already met the standard. Ch4–5 and Ch8–14 were revised independently in Arabic so each 4-activity set has exactly one matching activity plus varied Arabic-appropriate activity types.
+- Latest Language Focus content commit before this tracker update: `7e3bd83c03b66a468239875bb723816b2263064d`.
+- Next task: Item 8 — audit every EN+AR Quick Challenge for chapter-specific comprehension, answer correctness and sensible wording.
 
 ## Worker rules
 
