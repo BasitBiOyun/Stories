@@ -178,7 +178,7 @@ export const abrahamA2PagesEn: PageData[] = [
     ],
     hotspots: [
       { id: 'h19', x: 20, y: 70, title: 'Nimrod', description: 'Nimrod was the King of Babylon.' },
-      { id: 'h20', x: 80, y: 20, title: 'The Challenge', description: 'Abraham (pbuh) said, “Allah makes the sun rise in the east.' }
+      { id: 'h20', x: 80, y: 20, title: 'The Challenge', description: 'Can you make the sun rise from the west?' }
     ],
     animatedWords: ['rise', 'ordered']
   },
