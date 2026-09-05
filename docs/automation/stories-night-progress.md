@@ -24,8 +24,6 @@ This file is the persistent handoff for the hourly Stories cleanup worker on `pr
 
 **Abraham A2**
 
-Current known preview base before this tracker: `89d1ca59830e4641aa85bf7d7c1ce46e3f5efa89`.
-
 ### Mandatory checklist — complete every item before marking the book COMPLETE
 
 - [x] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
@@ -40,7 +38,7 @@ Current known preview base before this tracker: `89d1ca59830e4641aa85bf7d7c1ce46
 - [ ] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
 - [ ] 11. Audit EN+AR Language Review for varied exercise types and cumulative language practice; avoid matching-heavy sets.
 - [ ] 12. Audit EN+AR Final Challenge for whole-story coverage, answer correctness, variety and clear separation from Language Review.
-- [ ] 13. Audit EN Teacher Guide chapter by chapter. Chapter Support and all chapter guidance must be genuinely chapter-specific, not generic/copy-paste. Preserve TYMM codes already used; visible English value names must be English (for example, if a source uses `D14`, show an English value label rather than `Sorumluluk`).
+- [ ] 13. Audit EN Teacher Guide chapter by chapter. Chapter Support and all chapter guidance must be genuinely chapter-specific, not generic/copy-paste. Preserve TYMM codes already used; visible English value names must be English.
 - [ ] 14. Audit AR Teacher Guide chapter by chapter for the same chapter specificity and natural Arabic-language consistency.
 - [ ] 15. Audit EN Self-Study Guide chapter by chapter; guidance must point the learner to useful chapter-specific evidence, language and study actions rather than generic advice.
 - [ ] 16. Audit AR Self-Study Guide chapter by chapter with the same requirement.
@@ -50,15 +48,12 @@ Current known preview base before this tracker: `89d1ca59830e4641aa85bf7d7c1ce46
 
 ### Current handoff
 
-- Checklist item 1 is complete: all 14 EN and AR story chapters, boundaries, titles, and current media mappings were inspected. Story chapter images consistently point to Abraham A2 chapter assets (`abraham_a2_ch1` through `abraham_a2_ch14`; chapter 1 uses the same asset with capitalization in the filename), and story audio remains within the Abraham A2 audio path.
-- Checklist item 2 remains the exact next action. A fresh full prose audit confirmed the following EN fixes in `src/data/abraham/a2/en/pages.ts`: Ch3 `World` should be lowercase `world`; Ch3 `In a nearby mountain` should be `On a nearby mountain`; Ch4 `bigger and bright` should be `bigger and brighter`; Ch5 `very sad for his father` should be `very sad about his father`; Ch5 `Your gods have no power to do these` needs grammatical completion such as `do these things`; Ch7 punctuation around reported questions/statements needs normalization, and `It was this god there, the biggest one broke all the stones` is grammatically broken; Ch8 `HE was always with him` must be `He was always with him`; Ch8 `He placed him on a catapult` has the wrong singular subject after plural `People ... tied` and must be `They placed him on a catapult`; Ch9 `made the people amazed` should be `amazed the people`; Ch9 `change their mind` should be `change their minds`; Ch10 `more angry` must be `angrier`; Ch10 `I let the second slave live, let him go` needs sentence/punctuation repair; Ch11 spelling is inconsistent (`traveled` / `travelled`) and should be normalized within the chapter; Ch12 comma splice `But it was useless, there was no water...` must be repaired. Preserve A2 meaning and vocabulary.
-- Confirmed AR accidental embedded headings must be removed from story `content`: Ch8 ends with `## اَللهُ يُنْقِذُ إِبْرَاهِيمَ`; Ch9 ends with `## إِبْرَاهِيمُ وَنُمْرُودُ`; Ch10 ends with the next chapter heading; Ch11 ends with `## هَاجَرُ وَإِسْمَاعِيلُ فِي الْوَادِي`; Ch12 ends with `## مَاءُ زَمْزَمَ`; Ch13 ends with `## الْكَعْبَةُ وَرِسَالَةُ إِبْرَاهِيمَ`. Remove only these accidental headings, not legitimate prose.
-- Do not start hotspot correction until item 2 prose is corrected, because hotspot descriptions must match the final chapter sentences verbatim.
-
-### Work already reported in the first run
-
-- Language Focus work was started in EN+AR for Chapters 1–3, 6 and 7. These chapters must still be re-verified against checklist items 6 and 7 before those items can be ticked globally.
-- Remaining Language Focus chapters and all other checklist categories are still pending until explicitly checked above.
+- Item 1 is complete.
+- Item 2 is still the first unchecked item. EN prose corrections have now been applied across the identified chapters in `src/data/abraham/a2/en/pages.ts`: Ch3 `world`/`On a nearby mountain`; Ch4 `bigger and brighter`; Ch5 `sad about` and `do these things`; Ch7 reported-speech/punctuation and broken biggest-idol sentence; Ch8 `He` and plural `They placed`; Ch9 `amazed the people`/`their minds`; Ch10 punctuation plus `angrier`; Ch11 spelling normalized to `travelled`; Ch12 comma splice repaired. Commit: `0f67369592b256140dbae81d86dca928d6b3d433`.
+- EN hotspots were also rewritten in that commit so all 14 story chapters still have exactly 2 and descriptions are sourced from chapter prose. Before item 3 can be ticked, re-verify Ch10 h20 specifically and replace it if necessary with an unquestionably complete verbatim sentence (for example the full sentence `Of course, Nimrod couldn’t do this; only Allah can make the sun rise from the east.`). Then re-read all 28 descriptions against final EN prose.
+- Item 2 is NOT complete because AR prose still needs the known accidental embedded headings removed from Ch8–13 and a final obvious-language pass. Confirmed headings to remove: Ch8 `## اَللهُ يُنْقِذُ إِبْرَاهِيمَ`; Ch9 `## إِبْرَاهِيمُ وَنُمْرُودُ`; Ch10 next-chapter heading; Ch11 `## هَاجَرُ وَإِسْمَاعِيلُ فِي الْوَادِي`; Ch12 `## مَاءُ زَمْزَمَ`; Ch13 `## الْكَعْبَةُ وَرِسَالَةُ إِبْرَاهِيمَ`. Remove only these accidental headings, not legitimate prose.
+- Do not tick item 2 until AR prose is corrected. After item 2, finish/re-verify EN hotspot item 3, then AR hotspot item 4.
+- Language Focus work from the first run remains partial: EN+AR Chapters 1–3, 6 and 7 were edited but must be re-verified; Ch4–5 and Ch8–14 plus all later checklist categories remain pending.
 
 ## Worker rules
 
