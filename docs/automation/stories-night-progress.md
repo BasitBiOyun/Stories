@@ -43,12 +43,12 @@ Abraham A2 completed the previous 19-item version of this quality workflow. The 
 
 ### Mandatory checklist — fixed 18-item standard for every remaining book
 
-- [ ] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
-- [ ] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings incorrectly embedded inside story prose.
-- [ ] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
-- [ ] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
-- [ ] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
-- [ ] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
+- [x] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
+- [x] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings incorrectly embedded inside story prose.
+- [x] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
+- [x] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
+- [x] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
+- [x] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
 - [ ] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
 - [ ] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
 - [ ] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
@@ -64,9 +64,12 @@ Abraham A2 completed the previous 19-item version of this quality workflow. The 
 
 ### Current handoff
 
-- Moses A2 is complete at 18/18.
-- Mecca/Bilal A2 is now the active book.
-- Do not begin Mecca/Bilal A2 content in the Moses Block C run. The next scheduled run starts with Item 1 and owns Items 1–6.
+- Items 1–6 are complete. Item 7 is now the first unchecked item.
+- Items 1–2: all 13 EN+AR story chapters, chapter boundaries and titles were inspected. English Chapter 1 received the obvious agreement correction `people who ... they were Muslims`; English Chapter 2 received the missing article in `the One and Only Allah`. No broad prose rewrite or meaning change was made. Arabic story prose was preserved where a wording change was not unquestionably grammatical/orthographic.
+- Items 3–4: all 13 EN and all 13 AR story chapters now have exactly two hotspot descriptions in the canonical `pages.ts` files, and every description is one verbatim sentence from that same chapter. Previous summary/paraphrase hotspot wording was removed rather than hidden behind a runtime correction layer. EN canonical hotspot/prose commit: `a6b1835045db3c34f39b7b5ae0472791c26c4379`; AR canonical hotspot commit: `fd1b93ccab019810e90b9f4c98396a9d4c5a54ee`.
+- Item 5: EN and AR use the same 13 chapter-specific `mecca/a2/images/mecca_a2_ch1...ch13` image mapping and the corresponding `mecca/a2/audio/00_Chapter_1...12_Chapter_13` audio mapping. Story media remains on the Mecca A2 paths; no new media or fallback system was introduced.
+- Item 6: all 13 English Language Focus chapters were rebuilt where needed so each four-activity set has exactly one matching activity plus varied chapter-specific A2 work using multiple-choice, fill-blanks, sequencing and/or reflection. The language functions stay tied to each chapter rather than duplicating Quick Challenge comprehension. Updated files: `languageFocus.ts` and `languageFocusPart2.ts` through `languageFocusPart12.ts`.
+- Next task: Item 7 — audit/rebuild Arabic Language Focus across Chapters 1–13 under the same variety rule from the Arabic chapter language, then continue through Items 8–12 in Block B.
 
 ## Fixed hourly execution model — 6 + 6 + 6
 
