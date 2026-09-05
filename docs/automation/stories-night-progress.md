@@ -5,8 +5,8 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 ## Queue
 
 - [x] Adam A2 — reference standard, DO NOT EDIT
-- [ ] Abraham A2 — IN PROGRESS
-- [ ] Moses A2
+- [x] Abraham A2 — COMPLETE
+- [ ] Moses A2 — IN PROGRESS
 - [ ] Mecca/Bilal A2
 - [ ] Yunus Emre A2
 - [ ] Adam B1
@@ -20,50 +20,45 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 - [ ] Mecca/Bilal B2
 - [ ] Yunus Emre B2
 
+## Recently completed
+
+### Abraham A2 — COMPLETE (19/19)
+
+- Item 17: EN/AR pedagogical parity was rechecked across all 14 chapters. Both languages cover the same story progression, two source-grounded hotspots per chapter, chapter-specific Language Focus, aligned Quick Challenge/Knowledge/Vocabulary/Language Review/Final Challenge purposes, 14 chapter Teacher Guide sections and 14 chapter Self-Study sections. Arabic remains independently natural rather than being forced into literal English structures.
+- Item 18: changed Abraham A2 files and `src/data/abraham/a2/index.ts` wiring were re-read for obvious syntax/import/wiring problems. All referenced EN/AR files used by the index are present. A comparison from partial Abraham commit `89d1ca59830e4641aa85bf7d7c1ce46e3f5efa89` to the final pre-close state showed changes only under `src/data/abraham/a2/**` plus this tracker; no unrelated book was modified. No GitHub commit status checks are configured, so no build/typecheck/CI success is claimed.
+- Item 19: all necessary Abraham A2 content changes were committed to `preview`; the book is marked COMPLETE and the tracker has moved to Moses A2.
+
 ## Current book
 
-**Abraham A2**
+**Moses A2**
 
 ### Mandatory checklist — complete every item before marking the book COMPLETE
 
-- [x] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
-- [x] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
-- [x] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
-- [x] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
-- [x] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
-- [x] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
-- [x] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
-- [x] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
-- [x] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
-- [x] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
-- [x] 11. Audit EN+AR Language Review for varied exercise types and cumulative language practice; avoid matching-heavy sets.
-- [x] 12. Audit EN+AR Final Challenge for whole-story coverage, answer correctness, variety and clear separation from Language Review.
-- [x] 13. Audit EN Teacher Guide chapter by chapter. Chapter Support and all chapter guidance must be genuinely chapter-specific, not generic/copy-paste. Preserve TYMM codes already used; visible English value names must be English.
-- [x] 14. Audit AR Teacher Guide chapter by chapter for the same chapter specificity and natural Arabic-language consistency.
-- [x] 15. Audit EN Self-Study Guide chapter by chapter; guidance must point the learner to useful chapter-specific evidence, language and study actions rather than generic advice.
-- [x] 16. Audit AR Self-Study Guide chapter by chapter with the same requirement.
+- [ ] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
+- [ ] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
+- [ ] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
+- [ ] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
+- [ ] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
+- [ ] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
+- [ ] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
+- [ ] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
+- [ ] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
+- [ ] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
+- [ ] 11. Audit EN+AR Language Review for varied exercise types and cumulative language practice; avoid matching-heavy sets.
+- [ ] 12. Audit EN+AR Final Challenge for whole-story coverage, answer correctness, variety and clear separation from Language Review.
+- [ ] 13. Audit EN Teacher Guide chapter by chapter. Chapter Support and all chapter guidance must be genuinely chapter-specific, not generic/copy-paste. Preserve TYMM codes already used; visible English value names must be English.
+- [ ] 14. Audit AR Teacher Guide chapter by chapter for the same chapter specificity and natural Arabic-language consistency.
+- [ ] 15. Audit EN Self-Study Guide chapter by chapter; guidance must point the learner to useful chapter-specific evidence, language and study actions rather than generic advice.
+- [ ] 16. Audit AR Self-Study Guide chapter by chapter with the same requirement.
 - [ ] 17. Check EN/AR pedagogical parity and language consistency without forcing literal translation.
 - [ ] 18. Re-read changed files for obvious syntax/wiring errors and confirm no unrelated book/branch was modified.
 - [ ] 19. Commit all necessary changes to `preview`, update this checklist, mark the book COMPLETE, then move immediately to the next unchecked book if execution time remains.
 
 ### Current handoff
 
-- Items 1–16 are complete. Item 17 is now the first unchecked item.
-- Item 2: English obvious-language corrections remain in place. Arabic Ch8–13 accidental embedded next-chapter headings were removed and clear orthographic errors normalized without changing meaning or level. Content/hotspot commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
-- Item 3: all 14 English chapters have exactly 2 chapter-sourced hotspot descriptions. Ch10 `h20` was repaired to an exact sentence from the chapter. Commit: `b85ca27ffdc880f40d71ff5658cd09744b4df787`.
-- Item 4: all 14 Arabic chapters have exactly 2 verbatim chapter-sourced hotspot descriptions. Commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
-- Item 5: all 14 EN and all 14 AR story pages were rechecked. Images and audio remain under the Abraham A2 media paths and correspond to the correct chapter/level; no media system or fallback was added.
-- Items 6–7: all EN+AR Language Focus chapters 1–14 were rechecked and revised where needed. Every 4-activity chapter set now has exactly one matching activity plus varied chapter-specific activity types.
-- Item 8: all 14 EN and all 14 AR Quick Challenges were audited against their own chapters. Chapter 6 was changed from an inferred motive question to a directly evidenced action question about the largest idol and axe. EN commit: `06f6f2ef86b96709838d3e59a45f39034d27992e`; AR commit: `9e14fc9c6c79e53297f1914683dad2039c68db6a`.
-- Item 9: EN+AR Knowledge Check was rebuilt as 8 whole-book questions covering Chapters 1–14 in chronological groups, with 5 multiple-choice and 3 true-false cards in each language.
-- Item 10: EN+AR Vocabulary Challenge was rechecked against story vocabulary. The six English visible terms are explicitly capitalized (`Idol`, `Creator`, `Arrogant`, `Miracle`, `Valley`, `Mission`); Arabic keeps natural script forms.
-- Item 11: both Language Reviews were rebuilt into 10 cumulative activities with a balanced distribution: 2 matching, 2 multiple-choice, 2 fill-blanks, 1 drag-drop, 1 sequencing, 1 true-false and 1 reflection. EN commit: `87bdc6779ffc4d6831dd7efebec11aff0aa8b0de`; AR commit: `1d25294c0f81d4807370a18b57fd5c197fbf4588`.
-- Item 12: the active EN+AR Final Challenges were rebuilt as 10 varied whole-story tasks covering Chapters 1–14 and kept distinct from Language Review. EN commit: `021232730ea323964f98c2fca000bea556f20a80`; AR commit: `024a2b78236b8ca1ba3a0346ea4325d3e311090b`.
-- Item 13: the English Teacher Guide was audited chapter by chapter. All 14 chapters have distinct objectives, misconceptions, language/pronunciation work, reading stages, discussion, differentiation, formative assessment, transfer and reflection. Visible TYMM value names are English (`D6 Honesty`, `D10 Humility`, `D12 Patience`, `D16 Responsibility`, `D20 Helpfulness`, `D14 Respect`). No rewrite was needed.
-- Item 14: the Arabic Teacher Guide was audited across all 14 chapters. Each chapter has its own objectives, misconceptions, Arabic language focus, pronunciation work, before/during/after reading steps, discussion, differentiation, assessment and transfer task. The metadata values are consistently Arabic (`D6 الصدق`, `D10 التواضع`, `D12 الصبر`, `D16 المسؤولية`, `D20 مساعدة الآخرين`, `D14 الاحترام`), with no English/Turkish value-label mixing. No structural rewrite was needed.
-- Item 15: the English Self-Study Guide was reworked chapter by chapter so every section directs the learner to concrete chapter evidence, a specific listening/reading action, the active Quick Challenge and a useful self-check/transfer action. Chapter 6 was explicitly realigned to the current direct-evidence Quick Challenge: leave the largest idol unbroken and place the axe around its neck, rather than asking the learner to infer motive. Commit: `3298480e81ad552d2e1af8f1454c3a4c0c0a8e64`.
-- Item 16: the Arabic Self-Study Guide received the same chapter-by-chapter audit and independent Arabic rewrite. It now follows the Arabic evidence and active Arabic Quick Challenges naturally; Chapter 6 is likewise aligned to the directly stated final actions rather than an inferred motive. Commit: `a4b02c0c2d2976c5f37fae42965541ae09cfddeb`.
-- Next task: Item 17 — compare EN and AR pedagogy/activity intent chapter by chapter for parity and language consistency without forcing literal translation, then run Item 18 syntax/wiring review and Item 19 completion/queue handoff.
+- Abraham A2 is complete at 19/19.
+- Moses A2 is now the active book.
+- Next task: Item 1 — inspect every Moses A2 EN+AR story chapter, chapter boundary, title and media mapping before making broader edits.
 
 ## Worker rules
 
