@@ -33,9 +33,9 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 - [x] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
 - [x] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
 - [x] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
-- [ ] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
-- [ ] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
-- [ ] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
+- [x] 8. Audit EN+AR Quick Challenges for chapter-specific comprehension, answer correctness and sensible task wording.
+- [x] 9. Audit EN+AR Knowledge Check for whole-book coverage, answer correctness and unnecessary repetition.
+- [x] 10. Audit EN+AR Vocabulary Challenge for sensible story-grounded vocabulary; English visible vocabulary words must begin with a capital letter.
 - [ ] 11. Audit EN+AR Language Review for varied exercise types and cumulative language practice; avoid matching-heavy sets.
 - [ ] 12. Audit EN+AR Final Challenge for whole-story coverage, answer correctness, variety and clear separation from Language Review.
 - [ ] 13. Audit EN Teacher Guide chapter by chapter. Chapter Support and all chapter guidance must be genuinely chapter-specific, not generic/copy-paste. Preserve TYMM codes already used; visible English value names must be English.
@@ -48,15 +48,17 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 
 ### Current handoff
 
-- Items 1–7 are complete. Item 8 is now the first unchecked item.
+- Items 1–10 are complete. Item 11 is now the first unchecked item.
 - Item 2: English obvious-language corrections remain in place. Arabic Ch8–13 accidental embedded next-chapter headings were removed and clear orthographic errors normalized without changing meaning or level. Content/hotspot commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
 - Item 3: all 14 English chapters have exactly 2 chapter-sourced hotspot descriptions. Ch10 `h20` was repaired to an exact sentence from the chapter. Commit: `b85ca27ffdc880f40d71ff5658cd09744b4df787`.
 - Item 4: all 14 Arabic chapters have exactly 2 verbatim chapter-sourced hotspot descriptions. Commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
 - Item 5: all 14 EN and all 14 AR story pages were rechecked. Images and audio remain under the Abraham A2 media paths and correspond to the correct chapter/level; no media system or fallback was added.
 - Item 6: all EN Language Focus chapters 1–14 were rechecked. Ch1–3, Ch6 and Ch7 already met the variety standard. Ch4–5 and Ch8–14 were revised so each 4-activity set has exactly one matching activity plus varied chapter-specific multiple-choice, fill-blanks, drag-drop, sequencing and/or reflection work.
 - Item 7: all AR Language Focus chapters 1–14 were rechecked from the Arabic chapter language. Ch1–3, Ch6 and Ch7 already met the standard. Ch4–5 and Ch8–14 were revised independently in Arabic so each 4-activity set has exactly one matching activity plus varied Arabic-appropriate activity types.
-- Latest Language Focus content commit before this tracker update: `7e3bd83c03b66a468239875bb723816b2263064d`.
-- Next task: Item 8 — audit every EN+AR Quick Challenge for chapter-specific comprehension, answer correctness and sensible wording.
+- Item 8: all 14 EN and all 14 AR Quick Challenges were audited against their own chapters. Answers and wording are chapter-specific. Chapter 6 was changed from an inferred motive question to a directly evidenced action question: Abraham leaves the largest idol unbroken and places the axe around its neck. EN exercise-system commit: `06f6f2ef86b96709838d3e59a45f39034d27992e`; AR exercise-system commit: `9e14fc9c6c79e53297f1914683dad2039c68db6a`.
+- Item 9: EN+AR Knowledge Check was rebuilt as 8 whole-book questions covering Chapters 1–14 in chronological groups rather than concentrating on isolated chapters. Each language now uses 5 multiple-choice and 3 true-false cards, with answer keys and explanations checked against the story. Same EN/AR commits as Item 8.
+- Item 10: EN+AR Vocabulary Challenge was rechecked against story vocabulary. The six English visible terms are now explicitly capitalized in the active source (`Idol`, `Creator`, `Arrogant`, `Miracle`, `Valley`, `Mission`); Arabic keeps natural script forms. Meanings remain grounded in Abraham A2. Same EN/AR commits as Item 8.
+- Next task: Item 11 — audit and diversify EN+AR Language Review without making it matching-heavy, then proceed to Item 12 Final Challenge and Item 13 English Teacher Guide.
 
 ## Worker rules
 
