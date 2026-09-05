@@ -1,6 +1,6 @@
 # Stories Overnight Progress
 
-This file is the persistent handoff for the hourly Stories cleanup worker on `preview`.
+This file is the persistent handoff for the Stories cleanup work on `preview`.
 
 ## Queue
 
@@ -27,9 +27,9 @@ This file is the persistent handoff for the hourly Stories cleanup worker on `pr
 ### Mandatory checklist — complete every item before marking the book COMPLETE
 
 - [x] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
-- [ ] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
-- [ ] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
-- [ ] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
+- [x] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
+- [x] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
+- [x] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
 - [ ] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
 - [ ] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
 - [ ] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
@@ -48,20 +48,20 @@ This file is the persistent handoff for the hourly Stories cleanup worker on `pr
 
 ### Current handoff
 
-- Item 1 is complete.
-- Item 2 is still the first unchecked item. EN prose corrections have already been applied in `src/data/abraham/a2/en/pages.ts`: Ch3 `world`/`On a nearby mountain`; Ch4 `bigger and brighter`; Ch5 `sad about` and `do these things`; Ch7 reported-speech/punctuation and broken biggest-idol sentence; Ch8 `He` and plural `They placed`; Ch9 `amazed the people`/`their minds`; Ch10 punctuation plus `angrier`; Ch11 spelling normalized to `travelled`; Ch12 comma splice repaired. Content commit: `0f67369592b256140dbae81d86dca928d6b3d433`.
-- EN hotspots were rewritten in that content commit so all 14 story chapters still have exactly 2 and descriptions are sourced from chapter prose. Before item 3 can be ticked, re-verify Ch10 h20 specifically and then re-read all 28 descriptions against final EN prose.
-- AR prose was re-read again in this run around Ch8–13. The accidental embedded headings are confirmed in the actual `content` strings, not merely in source markdown. They remain the exact first edits required in `src/data/abraham/a2/ar/pages.ts`: Ch8 remove trailing `\n\n## اَللهُ يُنْقِذُ إِبْرَاهِيمَ`; Ch9 remove trailing `\n\n## إِبْرَاهِيمُ وَنُمْرُودُ`; Ch10 remove its trailing next-chapter `## ...` heading; Ch11 remove trailing `\n\n## هَاجَرُ وَإِسْمَاعِيلُ فِي الْوَادِي`; Ch12 remove trailing `\n\n## مَاءُ زَمْزَمَ`; Ch13 remove trailing `\n\n## الْكَعْبَةُ وَرِسَالَةُ إِبْرَاهِيمَ`. Do not remove legitimate prose or page titles.
-- Item 2 must remain unchecked until those six AR markup contaminations are removed and the AR prose receives its final obvious-language pass. After item 2, finish/re-verify EN hotspot item 3, then replace AR hotspot descriptions under item 4 with verbatim sentences from their same chapters.
-- Language Focus work from the first run remains partial: EN+AR Chapters 1–3, 6 and 7 were edited but must be re-verified; Ch4–5 and Ch8–14 plus all later checklist categories remain pending.
-- Tooling note for the next worker: `src/data/abraham/a2/ar/pages.ts` is large; read/update it carefully without truncating the file. Do not mark item 2 complete merely because the six headings were identified.
+- Items 1–4 are complete. Item 5 is now the first unchecked item.
+- Item 2: the earlier English obvious-language corrections remain in place. Arabic story prose received the final obvious-error cleanup required for this pass: the six accidental next-chapter `## ...` headings embedded in Ch8–13 story `content` were removed, and a few clear orthographic forms were normalized without changing story meaning or CEFR level. Arabic content/hotspot commit: `0de37b259c3860eb52736c3f5f044771c071bbeb`.
+- Item 3: all 14 English story chapters were re-read for hotspot source fidelity. Each chapter has exactly 2 hotspots (28 total). Ch10 `h20`, which was a truncated non-verbatim quotation, was replaced with the exact chapter sentence `Can you make the sun rise from the west?`. English hotspot commit: `b85ca27ffdc880f40d71ff5658cd09744b4df787`.
+- Item 4: all 14 Arabic story chapters have exactly 2 hotspots (28 total). Every Arabic hotspot description was replaced/re-verified as a verbatim sentence from its own chapter after the prose cleanup. The same Arabic commit is `0de37b259c3860eb52736c3f5f044771c071bbeb`.
+- Next task: Item 5 — verify all Abraham A2 EN+AR chapter image/media mappings against the correct story and A2 level. Do not begin Item 6 until Item 5 is genuinely complete.
+- Language Focus work remains partial from earlier work: EN+AR Chapters 1–3, 6 and 7 were edited but must be re-verified under Items 6–7; Ch4–5 and Ch8–14 remain pending there.
 
 ## Worker rules
 
-1. At the start of every run, read this file first and resume the first unchecked item of the current book.
+1. At the start of every work session, read this file first and resume the first unchecked item of the current book.
 2. Do not stop voluntarily after a few edits or after one chapter. Continue through the checklist in order for as long as execution is available.
-3. After each checklist item is genuinely complete, change its box to `[x]` before moving to the next item. Update this tracker in the same commit as the related content changes whenever practical.
-4. If the platform/tool runtime forces the run to end, update this file before ending with the exact current item, completed chapters/files and next action. The next hourly run must resume that exact unchecked item.
-5. When all 19 items are `[x]`, mark the current queue book `[x]`, select the next unchecked book, replace the Current book section with a fresh 19-item checklist and continue immediately if execution time remains.
-6. Adam A2 is the reference standard and must not be edited.
-7. Work only on `preview`. Do not create branches, dependencies, agents, validators, quality gates, correction layers or additional automation infrastructure.
+3. After each checklist item is genuinely complete, change its box to `[x]` before moving to the next item. Update this tracker alongside the related content changes whenever practical.
+4. If work must end before the current item is complete, update this file before ending with the exact current item, completed chapters/files and next action. The next session must resume that exact unchecked item.
+5. When all 19 items are `[x]`, mark the current queue book `[x]`, select the next unchecked book, replace the Current book section with a fresh copy of this same 19-item checklist and continue from Item 1.
+6. This 19-item checklist is the fixed general checklist for every story/book in the queue. Do not alter, shorten or replace it for later books unless the user explicitly changes the standard.
+7. Adam A2 is the reference standard and must not be edited.
+8. Work only on `preview`. Do not create branches, dependencies, agents, validators, quality gates, correction layers or additional automation infrastructure.
