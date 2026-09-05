@@ -1,4 +1,5 @@
 import type { TeacherGuideSection, StudentGuideMetadata } from '../../../../types';
+import { meccaA2TeacherGuide } from './teacherGuide';
 
 type SelfPlan = {
   chapter: string;
@@ -25,25 +26,29 @@ const selfPlans: SelfPlan[] = [
   { chapter: 'Chapter 13: Everyone Is Equal', notice: 'Notice how the ending combines Bilal’s grief with the final lesson about human value.', evidence: 'Find why Bilal leaves Medina, where he goes, and the final sentence about what matters.', words: 'skin color, nationality, allowed, Damascus, matters', use: 'Write a four-sentence summary ending with the story’s main lesson.', reflect: 'What personal action can show that nationality, skin colour, or past do not decide a person’s worth?' },
 ];
 
-export const meccaA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map((p) => ({
-  chapter: p.chapter,
-  timing: '20 minutes',
-  objectives: ['Understand the chapter’s main event or idea.', 'Find direct evidence in the story.', 'Use key A2 vocabulary in a short response.', 'Complete the Quick Challenge and check the reason for the answer.'],
-  pedagogy: 'Independent evidence-first study using only the chapter text, audio, Word Notes, hotspots, and prepared exercise.',
-  lessonPlan: 'Read once for meaning; listen while following the text; read again to mark evidence; complete the Quick Challenge; write a short response; self-check.',
-  discussionPoints: [p.reflect],
-  interactiveTips: ['Replay the chapter audio once while following the exact text.', 'Use hotspots only to return to evidence already present in the chapter.'],
-  differentiation: { strugglingLearners: 'Read one paragraph at a time and use a two-part frame: “The story says ____. This means ____.”', fastFinishers: p.use },
-  whatToNotice: [p.notice],
-  readListen: ['Read the chapter once silently.', 'Play the chapter audio and follow the same sentences with your eyes.'],
-  findAnswerInStory: [p.evidence],
-  vocabularyInContext: [p.words, 'Choose two words and make a new A2 sentence for each without changing their meaning.'],
-  quickChallengeGuide: 'Answer before checking feedback. Then point to the sentence or event that proves your answer.',
-  wrongAnswerSupport: ['Do not guess again immediately.', 'Return to the named chapter evidence, reread the relevant sentence, and then try once more.'],
-  selfCheck: ['Can I explain the main idea in one or two simple sentences?', 'Can I point to evidence in the story?', 'Can I use two key words correctly?'],
-  useWhatYouLearned: p.use,
-  reflectionPrompt: p.reflect,
-}));
+export const meccaA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map((p, index) => {
+  const teacher = meccaA2TeacherGuide[index];
+  return {
+    chapter: p.chapter,
+    timing: '20 minutes',
+    objectives: ['Understand the chapter’s main event or idea.', 'Find direct evidence in the story.', 'Use key A2 vocabulary in a short response.', 'Complete the Quick Challenge, then use the real chapter Language Focus before producing a short response.'],
+    pedagogy: 'Independent evidence-first study using only the chapter text, audio, Word Notes, hotspots, Quick Challenge and active chapter Language Focus.',
+    grammarFocus: teacher?.grammarFocus,
+    lessonPlan: 'Read once for meaning; listen while following the text; read again to mark evidence; complete the Quick Challenge; open the chapter Language Focus and practise its target patterns; write a short response; self-check.',
+    discussionPoints: [p.reflect],
+    interactiveTips: ['Replay the chapter audio once while following the exact text.', 'Use hotspots only to return to evidence already present in the chapter.', 'Use Language Focus only after the chapter meaning and Quick Challenge are clear.'],
+    differentiation: { strugglingLearners: 'Read one paragraph at a time and use a two-part frame: “The story says ____. This means ____.” Then complete only the core Language Focus items before producing one sentence.', fastFinishers: p.use },
+    whatToNotice: [p.notice, teacher?.grammarFocus ? `Language Focus: ${teacher.grammarFocus}` : 'Notice one useful language pattern from the active chapter Language Focus.'],
+    readListen: ['Read the chapter once silently.', 'Play the chapter audio and follow the same sentences with your eyes.'],
+    findAnswerInStory: [p.evidence],
+    vocabularyInContext: [p.words, 'Choose two words and make a new A2 sentence for each without changing their meaning.'],
+    quickChallengeGuide: 'Answer before checking feedback. Then point to the sentence or event that proves your answer before opening Language Focus.',
+    wrongAnswerSupport: ['Do not guess again immediately.', 'Return to the named chapter evidence, reread the relevant sentence, and then try once more.'],
+    selfCheck: ['Can I explain the main idea in one or two simple sentences?', 'Can I point to evidence in the story?', 'Can I use two key words correctly?', 'Can I understand or use one pattern from this chapter’s Language Focus?'],
+    useWhatYouLearned: p.use,
+    reflectionPrompt: p.reflect,
+  };
+});
 
 export const meccaA2StudentGuideMetadata: StudentGuideMetadata = {
   title: 'Mecca A2 — Self-Study Guide',
@@ -51,6 +56,6 @@ export const meccaA2StudentGuideMetadata: StudentGuideMetadata = {
   language: 'English',
   estimatedStudyTime: 'About 20 minutes per chapter',
   whoIsThisFor: 'A2 learners studying the Bilal ibn Rabah story independently.',
-  learningGoals: ['Read and listen for clear evidence.', 'Build useful A2 vocabulary.', 'Explain story events in short sentences.', 'Turn values such as justice and equality into concrete actions.'],
-  recommendedUse: ['Study one chapter at a time.', 'Answer before checking feedback.', 'Return to the story whenever an answer is uncertain.'],
+  learningGoals: ['Read and listen for clear evidence.', 'Build useful A2 vocabulary.', 'Use the active chapter Language Focus after comprehension.', 'Explain story events in short sentences.', 'Turn values such as justice and equality into concrete actions.'],
+  recommendedUse: ['Study one chapter at a time.', 'Answer the Quick Challenge before checking feedback.', 'Use Language Focus after comprehension.', 'Return to the story whenever an answer is uncertain.'],
 };
