@@ -22,22 +22,20 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 
 ## Recently completed
 
-### Abraham A2 — COMPLETE (19/19)
+### Abraham A2 — COMPLETE
 
-- Item 17: EN/AR pedagogical parity was rechecked across all 14 chapters. Both languages cover the same story progression, two source-grounded hotspots per chapter, chapter-specific Language Focus, aligned Quick Challenge/Knowledge/Vocabulary/Language Review/Final Challenge purposes, 14 chapter Teacher Guide sections and 14 chapter Self-Study sections. Arabic remains independently natural rather than being forced into literal English structures.
-- Item 18: changed Abraham A2 files and `src/data/abraham/a2/index.ts` wiring were re-read for obvious syntax/import/wiring problems. All referenced EN/AR files used by the index are present. A comparison from partial Abraham commit `89d1ca59830e4641aa85bf7d7c1ce46e3f5efa89` to the final pre-close state showed changes only under `src/data/abraham/a2/**` plus this tracker; no unrelated book was modified. No GitHub commit status checks are configured, so no build/typecheck/CI success is claimed.
-- Item 19: all necessary Abraham A2 content changes were committed to `preview`; the book is marked COMPLETE and the tracker has moved to Moses A2.
+Abraham A2 completed the previous 19-item version of this quality workflow. The new fixed workflow below preserves every substantive check by merging the former final syntax/wiring review and commit/closeout step into a single final item.
 
 ## Current book
 
 **Moses A2**
 
-### Mandatory checklist — complete every item before marking the book COMPLETE
+### Mandatory checklist — fixed 18-item standard for every remaining book
 
 - [ ] 1. Read and inspect every EN+AR story chapter, chapter boundary, title and current media mapping.
-- [ ] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings that were incorrectly embedded inside story prose.
-- [ ] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction.
-- [ ] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction.
+- [ ] 2. Correct only obvious EN+AR spelling, capitalization, punctuation and grammatical errors in story prose; preserve meaning, CEFR level and intended vocabulary. Remove accidental markup/headings incorrectly embedded inside story prose.
+- [ ] 3. Verify EN hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same EN chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
+- [ ] 4. Verify AR hotspots: exactly 2 per story chapter; every hotspot description must be a verbatim sentence from that same AR chapter after any prose correction. Put the final wording in canonical story source files rather than runtime correction layers.
 - [ ] 5. Verify chapter image/media mapping is for the correct story and CEFR level; do not introduce new media systems.
 - [ ] 6. Complete EN Language Focus for every chapter. If a chapter has 3 or 4 activities, at most 1 may be matching; other activities must use suitable varied existing exercise types and remain chapter-specific.
 - [ ] 7. Complete AR Language Focus for every chapter under the same variety rule, designed from the Arabic chapter rather than mechanically translated from English.
@@ -51,22 +49,42 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 - [ ] 15. Audit EN Self-Study Guide chapter by chapter; guidance must point the learner to useful chapter-specific evidence, language and study actions rather than generic advice.
 - [ ] 16. Audit AR Self-Study Guide chapter by chapter with the same requirement.
 - [ ] 17. Check EN/AR pedagogical parity and language consistency without forcing literal translation.
-- [ ] 18. Re-read changed files for obvious syntax/wiring errors and confirm no unrelated book/branch was modified.
-- [ ] 19. Commit all necessary changes to `preview`, update this checklist, mark the book COMPLETE, then move immediately to the next unchecked book if execution time remains.
+- [ ] 18. Final QA & Closeout: re-read all changed files for obvious syntax/import/export/wiring errors; confirm no unrelated book or branch was modified; make any necessary final corrections; commit all necessary changes to `preview`; update this tracker; mark the book COMPLETE; initialize the next unchecked book with a fresh copy of this same 18-item checklist. Do not claim build/typecheck/CI passed unless it was actually run and passed.
 
 ### Current handoff
 
-- Abraham A2 is complete at 19/19.
-- Moses A2 is now the active book.
-- Next task: Item 1 — inspect every Moses A2 EN+AR story chapter, chapter boundary, title and media mapping before making broader edits.
+- Adam A2 and Abraham A2 are complete.
+- Moses A2 is the active book.
+- First hourly block is Items 1–6.
+
+## Fixed hourly execution model — 6 + 6 + 6
+
+Each scheduled run owns one six-item block for the active book:
+
+- Block A: Items 1–6
+- Block B: Items 7–12
+- Block C: Items 13–18
+
+A normal book therefore finishes in exactly three hourly runs. After Block C completes, initialize the next unchecked book but leave its Item 1 for the next scheduled run.
+
+If a platform/tool limit forces a run to end before its six-item block is complete, record the exact unfinished item and resume it first on the next run. Never skip unfinished items merely because the clock advanced. The hourly schedule is a restart/checkpoint mechanism, not a reason to stop early or idle after a few edits.
+
+## Level and TYMM rules
+
+- A2, B1 and B2 are not interchangeable templates. Preserve each book's intended CEFR level and language complexity.
+- For B1 and B2, Language Focus, assessment wording, productive tasks, Teacher Guide and Self-Study work must be designed at that level's own linguistic and cognitive demand rather than copied or simplified from A2.
+- Use the relevant Türkiye Yüzyılı Maarif Modeli (TYMM) foreign-language skill framing and the TYMM codes already present in the book where applicable. Do not invent or renumber TYMM codes merely to create consistency.
+- English and Arabic should have pedagogical parity, but Arabic must remain natural Arabic rather than a literal translation of English structures.
 
 ## Worker rules
 
-1. At the start of every work session, read this file first and resume the first unchecked item of the current book.
-2. Do not stop voluntarily after a few edits or after one chapter. Continue through the checklist in order for as long as execution is available.
-3. After each checklist item is genuinely complete, change its box to `[x]` before moving to the next item. Update this tracker alongside the related content changes whenever practical.
-4. If work must end before the current item is complete, update this file before ending with the exact current item, completed chapters/files and next action. The next session must resume that exact unchecked item.
-5. When all 19 items are `[x]`, mark the current queue book `[x]`, select the next unchecked book, replace the Current book section with a fresh copy of this same 19-item checklist and continue from Item 1.
-6. This 19-item checklist is the fixed general checklist for every story/book in the queue. Do not alter, shorten or replace it for later books unless the user explicitly changes the standard.
-7. Adam A2 is the reference standard and must not be edited.
-8. Work only on `preview`. Do not create branches, dependencies, agents, validators, quality gates, correction layers or additional automation infrastructure.
+1. At the start of every run, read this file first and identify the active book and first unchecked item.
+2. Work only in `BasitBiOyun/Stories` on `preview`.
+3. Complete the current six-item block sequentially. Do not voluntarily stop after one chapter, one file, one edit, or one commit while actionable work remains in the block.
+4. Mark an item `[x]` only after it is genuinely complete. Keep exact handoff notes when an item is partially complete.
+5. Do not begin a later block while an earlier item remains unchecked.
+6. After Block C finishes, mark the current book COMPLETE and initialize the next book, but do not start that next book's content until the following scheduled run.
+7. This 18-item checklist is the fixed general checklist for every remaining story/book unless the user explicitly changes the standard.
+8. Adam A2 is the reference standard and must not be edited. Abraham A2 is complete and must not be reopened unless the user explicitly requests it.
+9. Do not create branches, dependencies, agents, validators, quality gates, correction layers, generators, or additional automation infrastructure. Prefer canonical content files and simple wiring.
+10. End every run with a concise report: active book, items completed this run, current checklist count, latest preview commit SHA, and exact next unchecked item.
