@@ -1,135 +1,170 @@
 import type { Exercise } from '../../../../types';
-import {
-  meccaA2FinalChallengeExercises,
-  meccaA2QuickChallenges,
-  meccaA2VocabularyChallengePairs,
-} from './exercises';
-import { meccaA2KnowledgeCheckExercises } from './knowledgeCheck';
+import { meccaA2QuickChallenges } from './exercises';
 
 /** Active polished Bilal / Mecca A2 English exercise system. */
 export const meccaA2QuickChallengesPolished: Record<number, Exercise> = {
   ...meccaA2QuickChallenges,
-  1: {
-    id: 'mecca-a2-quick-1', type: 'matching', title: 'Bilal’s Place',
-    instructions: 'Match each Chapter 1 idea with the detail that supports it.',
-    question: 'What does Chapter 1 establish about Bilal and his story?',
-    matchingPairs: [
-      { left: 'Beginning', right: 'Bilal was born in Mecca into slavery' },
-      { left: 'Historic role', right: 'Bilal became the first person to call the Adhan in Islamic history' },
-      { left: 'Human value', right: 'skin color or slavery does not make a person less valuable' },
-    ],
-    correctAnswer: {
-      Beginning: 'Bilal was born in Mecca into slavery',
-      'Historic role': 'Bilal became the first person to call the Adhan in Islamic history',
-      'Human value': 'skin color or slavery does not make a person less valuable',
-    },
-    explanation: 'Chapter 1 connects Bilal’s difficult beginning with his later historic role and the lesson about human value.',
-    feedback: { correct: 'Correct.', incorrect: 'Use the opening and closing ideas of Chapter 1.' },
-  },
-  4: {
-    id: 'mecca-a2-quick-4', type: 'matching', title: 'Work and Treatment',
-    instructions: 'Match each part of Bilal’s daily life with the chapter evidence.',
-    question: 'What made Bilal’s daily life difficult?',
-    matchingPairs: [
-      { left: 'Daytime work', right: 'he cared for camels under the hot sun' },
-      { left: 'Evening duty', right: 'he brought food and wine to his master' },
-      { left: 'Treatment', right: 'the family was rude and did not respect him' },
-    ],
-    correctAnswer: {
-      'Daytime work': 'he cared for camels under the hot sun',
-      'Evening duty': 'he brought food and wine to his master',
-      Treatment: 'the family was rude and did not respect him',
-    },
-    explanation: 'The chapter shows hard work, evening duties and disrespect together.',
-    feedback: { correct: 'Correct.', incorrect: 'Separate Bilal’s work from the way the family treated him.' },
-  },
-  10: {
-    id: 'mecca-a2-quick-10', type: 'matching', title: 'Bought and Freed',
-    instructions: 'Match each Chapter 10 event with the correct detail or result.',
-    question: 'How did Bilal’s situation change?',
-    matchingPairs: [
-      { left: 'The price', right: 'Umayya accepted five pieces of gold' },
-      { left: 'Abu Bakr bought Bilal', right: 'Bilal was rescued from Umayya' },
-      { left: 'Abu Bakr freed Bilal', right: 'Bilal was no longer a slave' },
-    ],
-    correctAnswer: {
-      'The price': 'Umayya accepted five pieces of gold',
-      'Abu Bakr bought Bilal': 'Bilal was rescued from Umayya',
-      'Abu Bakr freed Bilal': 'Bilal was no longer a slave',
-    },
-    explanation: 'The chapter moves from the agreed price to rescue and then freedom.',
-    feedback: { correct: 'Correct.', incorrect: 'Follow the sale and what Abu Bakr did immediately after it.' },
-  },
-  12: {
-    id: 'mecca-a2-quick-12', type: 'matching', title: 'Adhan and Equality',
-    instructions: 'Match each Chapter 12 idea with its detail.',
-    question: 'What does Chapter 12 connect?',
-    matchingPairs: [
-      { left: 'Morning Adhan', right: 'Bilal added “Prayer is better than sleep”' },
-      { left: 'Farewell Sermon', right: 'people should not be disrespected because of skin color' },
-      { left: 'Equality', right: 'a person’s race does not make that person better than another' },
-    ],
-    correctAnswer: {
-      'Morning Adhan': 'Bilal added “Prayer is better than sleep”',
-      'Farewell Sermon': 'people should not be disrespected because of skin color',
-      Equality: 'a person’s race does not make that person better than another',
-    },
-    explanation: 'The chapter connects a detail about the Adhan with a wider teaching about equality.',
-    feedback: { correct: 'Correct.', incorrect: 'Use the Adhan detail and the equality teaching near the end of the chapter.' },
-  },
 };
 
-export const meccaA2KnowledgeCheckExercisesPolished: Exercise[] = meccaA2KnowledgeCheckExercises;
-export const meccaA2VocabularyChallengePairsPolished = meccaA2VocabularyChallengePairs;
+export const meccaA2KnowledgeCheckExercisesPolished: Exercise[] = [
+  {
+    id: 'mecca-a2-kc-1', type: 'multiple-choice', title: 'Beginning and Society', instructions: 'Choose the answer supported by Chapters 1–2.',
+    question: 'Which statement correctly joins Bilal’s beginning with the society around him?',
+    options: ['Bilal was born into slavery in Mecca, where the story describes a large gap between rich and poor', 'Bilal was born a rich merchant in a society with equal wealth', 'Bilal was born in Medina after the Hijrah'], correctAnswer: 0,
+    explanation: 'Chapter 1 introduces Bilal’s birth into slavery; Chapter 2 describes inequality between rich and poor.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Bilal’s beginning and the social contrast in Chapters 1–2.' },
+  },
+  {
+    id: 'mecca-a2-kc-2', type: 'true-false', title: 'Power and Daily Life', instructions: 'Decide whether the statement agrees with Chapters 3–4.',
+    question: 'Umayya was a rich and powerful leader, and Bilal worked hard while being treated without respect in his household.',
+    correctAnswer: true,
+    explanation: 'Chapters 3–4 connect Umayya’s social power with Bilal’s difficult daily work and treatment.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Umayya’s position and Bilal’s daily life.' },
+  },
+  {
+    id: 'mecca-a2-kc-3', type: 'multiple-choice', title: 'Message and Questions', instructions: 'Choose the answer supported by Chapters 5–6.',
+    question: 'What happened after Bilal heard the new message about worship, fairness and equality?',
+    options: ['He thought about it and secretly went to Abu Bakr to ask questions', 'He immediately became a rich leader', 'He stopped thinking about religion'], correctAnswer: 0,
+    explanation: 'Chapter 5 introduces the message; Chapter 6 shows Bilal thinking and visiting Abu Bakr secretly.',
+    feedback: { correct: 'Correct.', incorrect: 'Follow the story from hearing the message to the secret visit.' },
+  },
+  {
+    id: 'mecca-a2-kc-4', type: 'true-false', title: 'Decision and Pressure', instructions: 'Decide whether the statement agrees with Chapters 7–8.',
+    question: 'Bilal accepted Islam even though he expected difficulty, and he later refused to praise the idols under pressure.',
+    correctAnswer: true,
+    explanation: 'Chapter 7 gives Bilal’s decision; Chapter 8 shows his refusal under pressure.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Bilal’s decision and his response to Umayya.' },
+  },
+  {
+    id: 'mecca-a2-kc-5', type: 'multiple-choice', title: 'Justice and Freedom', instructions: 'Choose the answer supported by Chapters 9–10.',
+    question: 'How did Abu Bakr respond to Bilal’s situation?',
+    options: ['He questioned the injustice, negotiated with Umayya, bought Bilal and freed him', 'He told Bilal to return to the idols', 'He asked Bilal to work for Umayya longer'], correctAnswer: 0,
+    explanation: 'Chapters 9–10 move from Abu Bakr’s challenge to the purchase and Bilal’s freedom.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Abu Bakr’s questions and what he did after the agreement.' },
+  },
+  {
+    id: 'mecca-a2-kc-6', type: 'multiple-choice', title: 'A Public Role', instructions: 'Choose the event supported by Chapter 11.',
+    question: 'What new responsibility did Bilal receive after the Hijrah?',
+    options: ['He was chosen to call people to prayer', 'He became Umayya’s servant again', 'He led a trade caravan'], correctAnswer: 0,
+    explanation: 'Chapter 11 describes Bilal’s respected role in the Adhan.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the Adhan section of Chapter 11.' },
+  },
+  {
+    id: 'mecca-a2-kc-7', type: 'true-false', title: 'Adhan and Equality', instructions: 'Decide whether the statement agrees with Chapter 12.',
+    question: 'Chapter 12 connects a detail about the morning Adhan with a teaching that people should not be disrespected because of skin color.',
+    correctAnswer: true,
+    explanation: 'Both ideas are stated in Chapter 12.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the opening and closing parts of Chapter 12.' },
+  },
+  {
+    id: 'mecca-a2-kc-8', type: 'multiple-choice', title: 'Later Life and Final Lesson', instructions: 'Choose the answer supported by Chapter 13.',
+    question: 'Which ending detail is supported by the final chapter?',
+    options: ['Bilal found Medina too painful after the Prophet’s death, later left, and the chapter closes by stressing heart and good actions', 'Bilal returned to Umayya and slavery', 'Bilal became ruler of Mecca'], correctAnswer: 0,
+    explanation: 'Chapter 13 describes Bilal’s grief, departure and the final lesson about human value.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the final chapter’s events and closing message.' },
+  },
+];
 
-export const meccaA2FinalChallengeExercisesPolished: Exercise[] = meccaA2FinalChallengeExercises.map(exercise => {
-  if (exercise.id === 'mecca-a2-final-4') {
-    return {
-      id: 'mecca-a2-final-4', type: 'true-false', title: 'A Changed Place in Society',
-      instructions: 'Decide whether the statement is true or false.',
-      question: 'Across the story, Bilal moves from being controlled by a master to having a respected public role.',
-      correctAnswer: true,
-      explanation: 'Bilal begins in slavery and later becomes trusted with the public duty of calling people to prayer.',
-      feedback: { correct: 'Correct.', incorrect: 'Connect Bilal’s position in Chapters 1–4 with his role in Chapter 11.' },
-    };
-  }
-  if (exercise.id === 'mecca-a2-final-6') {
-    return {
-      id: 'mecca-a2-final-6', type: 'matching', title: 'Turning Points',
-      instructions: 'Match each turning point with its result.',
-      question: 'What changed after each important action?',
-      matchingPairs: [
-        { left: 'Bilal hears the new message', right: 'he begins thinking about a different way to understand faith and human value' },
-        { left: 'Bilal visits Abu Bakr', right: 'he learns more and asks questions about the new religion' },
-        { left: 'Abu Bakr buys and frees Bilal', right: 'Bilal leaves slavery and can live as a free believer' },
-      ],
-      correctAnswer: {
-        'Bilal hears the new message': 'he begins thinking about a different way to understand faith and human value',
-        'Bilal visits Abu Bakr': 'he learns more and asks questions about the new religion',
-        'Abu Bakr buys and frees Bilal': 'Bilal leaves slavery and can live as a free believer',
-      },
-      explanation: 'These turning points change Bilal’s understanding, decision-making and social condition.',
-      feedback: { correct: 'Correct.', incorrect: 'Follow the story from hearing, to learning, to freedom.' },
-    };
-  }
-  if (exercise.id === 'mecca-a2-final-7') {
-    return {
-      id: 'mecca-a2-final-7', type: 'matching', title: 'Later Story and Meaning',
-      instructions: 'Match each later event with what it shows in the wider story.',
-      question: 'What does each event add to Bilal’s story?',
-      matchingPairs: [
-        { left: 'Bilal gives the Adhan', right: 'a man once treated as powerless now has a trusted public duty' },
-        { left: 'Farewell Sermon teaching', right: 'people should not be judged as better or worse because of race or skin color' },
-        { left: 'Bilal leaves Medina later', right: 'the story also shows his deep personal sadness after the Prophet’s death' },
-      ],
-      correctAnswer: {
-        'Bilal gives the Adhan': 'a man once treated as powerless now has a trusted public duty',
-        'Farewell Sermon teaching': 'people should not be judged as better or worse because of race or skin color',
-        'Bilal leaves Medina later': 'the story also shows his deep personal sadness after the Prophet’s death',
-      },
-      explanation: 'The final chapters connect public responsibility, equality and Bilal’s personal response to loss.',
-      feedback: { correct: 'Correct.', incorrect: 'Use Chapters 11–13 and match each event with its wider meaning.' },
-    };
-  }
-  return exercise;
-});
+export const meccaA2VocabularyChallengePairsPolished = [
+  { word: 'Justice', meaning: 'Fair treatment of people' },
+  { word: 'Freedom', meaning: 'The state of not being a slave or prisoner' },
+  { word: 'Secretly', meaning: 'In a hidden way' },
+  { word: 'Refused', meaning: 'Said no and did not agree to do something' },
+  { word: 'Rescued', meaning: 'Saved from danger or harm' },
+  { word: 'Respected', meaning: 'Honored and treated as important' },
+];
+
+export const meccaA2FinalChallengeExercisesPolished: Exercise[] = [
+  {
+    id: 'mecca-a2-final-1', type: 'multiple-choice', title: 'Bilal and Mecca', instructions: 'Choose the answer supported by Chapters 1–2.',
+    question: 'What contrast is established at the start of the book?',
+    options: ['Bilal has little social power while Mecca has strong divisions between rich and poor', 'Bilal begins as the richest man in a fully equal society', 'Bilal begins in Medina after the Hijrah'], correctAnswer: 0,
+    explanation: 'The opening chapters establish Bilal’s position and the unequal society around him.',
+    feedback: { correct: 'Correct.', incorrect: 'Use Chapters 1–2.' },
+  },
+  {
+    id: 'mecca-a2-final-2', type: 'true-false', title: 'Umayya and Bilal', instructions: 'Decide whether the statement agrees with Chapters 3–4.',
+    question: 'Umayya had wealth and influence, while Bilal’s daily life included hard work and disrespect.',
+    correctAnswer: true,
+    explanation: 'This contrast is developed in Chapters 3–4.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the power and daily-life chapters.' },
+  },
+  {
+    id: 'mecca-a2-final-3', type: 'sequencing', title: 'From Hearing to Decision', instructions: 'Put the Chapters 5–7 developments in order.',
+    question: 'How does Bilal move from hearing the message to choosing Islam?',
+    sequencingItems: [
+      { id: '1', text: 'Bilal hears ideas about worship, fairness and equality' },
+      { id: '2', text: 'Bilal thinks deeply about the message' },
+      { id: '3', text: 'Bilal secretly visits Abu Bakr and asks questions' },
+      { id: '4', text: 'Bilal accepts Islam despite expecting difficulty' },
+    ],
+    correctAnswer: ['1', '2', '3', '4'],
+    explanation: 'Chapters 5–7 develop hearing, reflection, learning and decision in order.',
+    feedback: { correct: 'Correct.', incorrect: 'Follow Chapters 5, 6 and 7.' },
+  },
+  {
+    id: 'mecca-a2-final-4', type: 'multiple-choice', title: 'Under Pressure', instructions: 'Choose the answer supported by Chapter 8.',
+    question: 'What did Bilal do when Umayya tried to make him praise the idols?',
+    options: ['He refused and continued to say that Allah is One', 'He agreed immediately', 'He asked to return to his old belief'], correctAnswer: 0,
+    explanation: 'Chapter 8 presents Bilal’s refusal under pressure.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Bilal’s final answer in Chapter 8.' },
+  },
+  {
+    id: 'mecca-a2-final-5', type: 'matching', title: 'Justice, Rescue and Freedom', instructions: 'Match each action from Chapters 9–10 with its result.',
+    question: 'How do Abu Bakr’s actions change the situation?',
+    matchingPairs: [
+      { left: 'Abu Bakr questions Umayya', right: 'the injustice of punishing Bilal for belief is challenged' },
+      { left: 'Abu Bakr buys Bilal', right: 'Bilal is rescued from Umayya' },
+      { left: 'Abu Bakr frees Bilal', right: 'Bilal is no longer a slave' },
+    ],
+    correctAnswer: {
+      'Abu Bakr questions Umayya': 'the injustice of punishing Bilal for belief is challenged',
+      'Abu Bakr buys Bilal': 'Bilal is rescued from Umayya',
+      'Abu Bakr frees Bilal': 'Bilal is no longer a slave',
+    },
+    explanation: 'The two chapters move from challenging injustice to rescue and freedom.',
+    feedback: { correct: 'Correct.', incorrect: 'Use Chapters 9–10.' },
+  },
+  {
+    id: 'mecca-a2-final-6', type: 'true-false', title: 'A Changed Role', instructions: 'Decide whether the statement agrees with Chapter 11.',
+    question: 'After the Hijrah, Bilal’s story includes a respected public responsibility: calling people to prayer.',
+    correctAnswer: true,
+    explanation: 'Chapter 11 describes Bilal’s role in the Adhan.',
+    feedback: { correct: 'Correct.', incorrect: 'Review Chapter 11.' },
+  },
+  {
+    id: 'mecca-a2-final-7', type: 'multiple-choice', title: 'Equality Teaching', instructions: 'Choose the answer supported by Chapter 12.',
+    question: 'Which idea matches the equality teaching in the chapter?',
+    options: ['Skin color does not make one person better than another', 'Wealth makes one person more valuable', 'Only social leaders deserve respect'], correctAnswer: 0,
+    explanation: 'Chapter 12 explicitly rejects judging human value by skin color.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the Farewell Sermon section.' },
+  },
+  {
+    id: 'mecca-a2-final-8', type: 'fill-blanks', title: 'The Final Lesson', instructions: 'Complete the key word from the final chapter’s lesson.',
+    question: 'Complete the sentence.', fillBlanksText: 'What matters is the heart and good [blank].', correctAnswer: 'actions',
+    explanation: 'Chapter 13 closes by focusing on the heart and good actions.',
+    feedback: { correct: 'Correct.', incorrect: 'Return to the final sentence of Chapter 13.' },
+  },
+  {
+    id: 'mecca-a2-final-9', type: 'multiple-choice', title: 'Bilal’s Later Life', instructions: 'Choose the detail supported by Chapter 13.',
+    question: 'What happened after Bilal found it too painful to remain in Medina?',
+    options: ['He asked to leave and later went to Damascus', 'He returned to Umayya’s house', 'He stopped believing'], correctAnswer: 0,
+    explanation: 'The final chapter describes his departure and later life.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the middle of Chapter 13.' },
+  },
+  {
+    id: 'mecca-a2-final-10', type: 'sequencing', title: 'Whole-Story Turning Points', instructions: 'Put the major turning points in story order.',
+    question: 'Which order best represents Bilal’s story?',
+    sequencingItems: [
+      { id: '1', text: 'Bilal lives in slavery in unequal Mecca' },
+      { id: '2', text: 'Bilal hears the new message and seeks answers' },
+      { id: '3', text: 'Bilal accepts Islam and remains firm under pressure' },
+      { id: '4', text: 'Abu Bakr buys and frees Bilal' },
+      { id: '5', text: 'Bilal receives the public role of calling people to prayer' },
+      { id: '6', text: 'The final chapters connect equality, grief and the value of good actions' },
+    ],
+    correctAnswer: ['1', '2', '3', '4', '5', '6'],
+    explanation: 'These anchors cover the full progression from Chapters 1–13.',
+    feedback: { correct: 'Correct.', incorrect: 'Use the opening, decision, freedom, Adhan and final chapters as anchors.' },
+  },
+];
