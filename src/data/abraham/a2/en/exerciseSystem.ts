@@ -1,8 +1,5 @@
 import type { Exercise } from '../../../../types';
-import {
-  abrahamA2FinalChallengeExercises,
-  abrahamA2QuickChallenges,
-} from './exercises';
+import { abrahamA2QuickChallenges } from './exercises';
 
 /** Active polished Abraham A2 English exercise system. */
 export const abrahamA2QuickChallengesPolished: Record<number, Exercise> = {
@@ -146,42 +143,102 @@ export const abrahamA2VocabularyChallengePairsPolished = [
   { word: 'Mission', meaning: 'An important job or task given to someone' },
 ];
 
-export const abrahamA2FinalChallengeExercisesPolished: Exercise[] = abrahamA2FinalChallengeExercises.map(exercise => {
-  if (exercise.id === 'abraham-a2-final-6') {
-    return {
-      id: 'abraham-a2-final-6', type: 'matching', title: 'Journey, Need and Purpose', instructions: 'Match each later-story action with its reason or purpose.',
-      question: 'Why do these actions happen?',
-      matchingPairs: [
-        { left: 'Abraham leaves Babylon', right: 'carry the message to other lands' },
-        { left: 'Hagar searches', right: 'find food and water for her child' },
-        { left: 'Hagar runs from hill to hill', right: 'continue looking when the valley has no supplies' },
-      ],
-      correctAnswer: {
-        'Abraham leaves Babylon': 'carry the message to other lands',
-        'Hagar searches': 'find food and water for her child',
-        'Hagar runs from hill to hill': 'continue looking when the valley has no supplies',
-      },
-      explanation: 'The later chapters repeatedly connect purposeful action with a difficult situation.',
-      feedback: { correct: 'Correct.', incorrect: 'Use the stated reasons in Chapters 11–12.' },
-    };
-  }
-  if (exercise.id === 'abraham-a2-final-7') {
-    return {
-      id: 'abraham-a2-final-7', type: 'matching', title: 'From Water to Community', instructions: 'Match each development with the next result named in the story.',
-      question: 'How does the valley develop after Zamzam appears?',
-      matchingPairs: [
-        { left: 'Zamzam water', right: 'makes life possible in the valley' },
-        { left: 'The water source', right: 'draws more people to the area' },
-        { left: 'The growing settlement', right: 'becomes the city called Mecca' },
-      ],
-      correctAnswer: {
-        'Zamzam water': 'makes life possible in the valley',
-        'The water source': 'draws more people to the area',
-        'The growing settlement': 'becomes the city called Mecca',
-      },
-      explanation: 'Chapter 13 links water, settlement and the growth of Mecca in a clear cause-result chain.',
-      feedback: { correct: 'Correct.', incorrect: 'Follow Chapter 13 from the appearance of water to the arrival of people and then the city.' },
-    };
-  }
-  return exercise;
-});
+export const abrahamA2FinalChallengeExercisesPolished: Exercise[] = [
+  {
+    id: 'abraham-a2-final-1', type: 'multiple-choice', title: 'Powerless Objects', instructions: 'Choose the conclusion supported by Chapters 1–2.',
+    question: 'Which observation best supports Abraham’s rejection of the stone gods?',
+    options: ['They depended on people and could not act for themselves', 'They lived far from Babylon', 'They were made only during festivals'],
+    correctAnswer: 0,
+    explanation: 'The opening chapters show that people make and handle the objects while the objects cannot hear, speak, move, or help.',
+    feedback: { correct: 'Correct.', incorrect: 'Combine the evidence from the first two chapters.' },
+  },
+  {
+    id: 'abraham-a2-final-2', type: 'multiple-choice', title: 'From Sky to Creator', instructions: 'Choose the best whole-idea answer from Chapters 3–4.',
+    question: 'What larger idea does Abraham reach after watching the star, moon, and sun?',
+    options: ['Things that appear and disappear are creation; Allah is the Creator', 'The brightest object must be Allah', 'Only the moon can guide people'],
+    correctAnswer: 0,
+    explanation: 'The sky scenes lead Abraham to distinguish creation from the Creator.',
+    feedback: { correct: 'Correct.', incorrect: 'Connect the observations in Chapters 3 and 4.' },
+  },
+  {
+    id: 'abraham-a2-final-3', type: 'true-false', title: 'Message and Plan', instructions: 'Decide whether the statement is supported by Chapters 5–6.',
+    question: 'The people defended their practice by saying their fathers had done the same, and Abraham later made a plan involving the stone gods.',
+    correctAnswer: true,
+    explanation: 'Chapter 5 gives the people’s tradition-based reason, and Chapter 6 begins Abraham’s plan with the idols.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the people’s answer in Chapter 5 and Abraham’s plan in Chapter 6.' },
+  },
+  {
+    id: 'abraham-a2-final-4', type: 'multiple-choice', title: 'Admission and Punishment', instructions: 'Choose the cause-result connection supported by Chapters 7–8.',
+    question: 'What happens after the people admit that the idols cannot speak?',
+    options: ['They remain arrogant and prepare a huge fire to punish Abraham', 'They immediately leave Babylon with him', 'They ask him to build the Ka’ba'],
+    correctAnswer: 0,
+    explanation: 'The questioning scene exposes the idols’ weakness, but the people refuse the point and move toward punishment.',
+    feedback: { correct: 'Correct.', incorrect: 'Follow the end of Chapter 7 into Chapter 8.' },
+  },
+  {
+    id: 'abraham-a2-final-5', type: 'true-false', title: 'Miracle and Limits of Power', instructions: 'Decide whether the statement is supported by Chapters 9–10.',
+    question: 'The fire became cool and safe for Abraham, and later Nimrod could not make the sun rise from the west.',
+    correctAnswer: true,
+    explanation: 'Chapter 9 records Abraham’s safety in the fire, and Chapter 10 ends with Nimrod unable to meet Abraham’s sun challenge.',
+    feedback: { correct: 'Correct.', incorrect: 'Review the miracle in Chapter 9 and the final challenge in Chapter 10.' },
+  },
+  {
+    id: 'abraham-a2-final-6', type: 'matching', title: 'Journey, Need and Purpose', instructions: 'Match each action from Chapters 11–12 with its reason or purpose.',
+    question: 'Why do these actions happen?',
+    matchingPairs: [
+      { left: 'Abraham leaves Babylon', right: 'carry the message to other lands' },
+      { left: 'The family travels to the valley', right: 'follow the journey Allah asks Abraham to make' },
+      { left: 'Hagar searches', right: 'look for food and water for her child' },
+    ],
+    correctAnswer: {
+      'Abraham leaves Babylon': 'carry the message to other lands',
+      'The family travels to the valley': 'follow the journey Allah asks Abraham to make',
+      'Hagar searches': 'look for food and water for her child',
+    },
+    explanation: 'The journey chapters connect movement and effort with clear purposes and needs.',
+    feedback: { correct: 'Correct.', incorrect: 'Use the stated purposes in Chapters 11–12.' },
+  },
+  {
+    id: 'abraham-a2-final-7', type: 'sequencing', title: 'From Zamzam to Mecca', instructions: 'Put the Chapter 13 developments in story order.',
+    question: 'How does the valley change after the water appears?',
+    sequencingItems: [
+      { id: '1', text: 'Water comes out under Ishmael’s feet' },
+      { id: '2', text: 'Hagar drinks and gives water to Ishmael' },
+      { id: '3', text: 'More people come because of the water' },
+      { id: '4', text: 'They build a city called Mecca' },
+    ],
+    correctAnswer: ['1', '2', '3', '4'],
+    explanation: 'Chapter 13 moves from the appearance of Zamzam to Hagar’s response, the arrival of people, and the growth of Mecca.',
+    feedback: { correct: 'Correct.', incorrect: 'Follow Chapter 13 from the water to Hagar, then the people, then the city.' },
+  },
+  {
+    id: 'abraham-a2-final-8', type: 'fill-blanks', title: 'The Final Message', instructions: 'Complete the key word from the closing message in Chapter 14.',
+    question: 'Complete the statement.',
+    fillBlanksText: 'Allah is unique in every way. He has no [blank].',
+    correctAnswer: 'partner',
+    explanation: 'The closing message says that Allah has no partner, rival, or helper.',
+    feedback: { correct: 'Correct.', incorrect: 'Return to the final quoted message of Chapter 14.' },
+  },
+  {
+    id: 'abraham-a2-final-9', type: 'multiple-choice', title: 'A Shared Task', instructions: 'Choose the detail stated in Chapter 14.',
+    question: 'What important task do Abraham and Ishmael do together?',
+    options: ['They build the Ka’ba', 'They build Nimrod’s palace', 'They make stone idols'],
+    correctAnswer: 0,
+    explanation: 'Chapter 14 says Ishmael helps Abraham build the House of Allah, the Ka’ba.',
+    feedback: { correct: 'Correct.', incorrect: 'Return to the building scene in Chapter 14.' },
+  },
+  {
+    id: 'abraham-a2-final-10', type: 'sequencing', title: 'Whole-Story Turning Points', instructions: 'Put these major turning points in story order.',
+    question: 'Which order best represents the whole Abraham A2 story?',
+    sequencingItems: [
+      { id: '1', text: 'Abraham questions powerless stone objects' },
+      { id: '2', text: 'Abraham leaves the largest idol unbroken after breaking the others' },
+      { id: '3', text: 'Allah makes the fire cool and safe for Abraham' },
+      { id: '4', text: 'Abraham leaves Babylon and travels to other lands' },
+      { id: '5', text: 'Abraham and Ishmael build the Ka’ba' },
+    ],
+    correctAnswer: ['1', '2', '3', '4', '5'],
+    explanation: 'These anchors move from the opening idol scenes through the fire and journey to the final building chapter.',
+    feedback: { correct: 'Correct.', incorrect: 'Use Chapters 1, 6, 9, 11, and 14 as anchors.' },
+  },
+];
