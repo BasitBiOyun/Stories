@@ -1,125 +1,69 @@
 import type { Exercise } from '../../../../types';
-import {
-  mosesA2FinalChallengeExercises,
-  mosesA2KnowledgeCheckExercises,
-  mosesA2QuickChallenges,
-  mosesA2VocabularyChallengePairs,
-} from './exercises';
+import { mosesA2QuickChallenges } from './exercises';
 
 /** Active polished Moses A2 English exercise system. */
 export const mosesA2QuickChallengesPolished: Record<number, Exercise> = {
   ...mosesA2QuickChallenges,
   1: {
-    id: 'moses-a2-quick-1', type: 'matching', title: 'Power and Belief',
-    instructions: 'Match each Chapter 1 detail with the correct idea.', question: 'What contrast does Chapter 1 build?',
+    id: 'moses-a2-quick-1', type: 'matching', title: 'Power and Belief', instructions: 'Match each Chapter 1 detail with the correct idea.', question: 'What contrast does Chapter 1 build?',
     matchingPairs: [
       { left: 'Pharaoh’s claim', right: 'he said that he was a god' },
       { left: 'Pharaoh’s rule', right: 'he treated people cruelly' },
       { left: 'The Children of Israel', right: 'believed in one Allah' },
       { left: 'Their situation', right: 'they lived under Pharaoh’s oppression' },
     ],
-    correctAnswer: {
-      'Pharaoh’s claim': 'he said that he was a god',
-      'Pharaoh’s rule': 'he treated people cruelly',
-      'The Children of Israel': 'believed in one Allah',
-      'Their situation': 'they lived under Pharaoh’s oppression',
-    },
-    explanation: 'Chapter 1 contrasts Pharaoh’s false claim and cruel rule with the belief and difficult situation of the Children of Israel.',
-    feedback: { correct: 'Correct. You rebuilt the chapter’s central contrast.', incorrect: 'Separate Pharaoh’s claim and actions from the belief and situation of the Children of Israel.' },
+    correctAnswer: { 'Pharaoh’s claim': 'he said that he was a god', 'Pharaoh’s rule': 'he treated people cruelly', 'The Children of Israel': 'believed in one Allah', 'Their situation': 'they lived under Pharaoh’s oppression' },
+    explanation: 'Chapter 1 contrasts Pharaoh’s false claim and cruel rule with the belief and difficult situation of the Children of Israel.', feedback: { correct: 'Correct.', incorrect: 'Separate Pharaoh’s claim and actions from the belief and situation of the Children of Israel.' },
   },
   6: {
-    id: 'moses-a2-quick-6', type: 'matching', title: 'Mistake, Feeling and Prayer',
-    instructions: 'Match each Chapter 6 detail with what happened.', question: 'How did Moses respond to the accidental death?',
-    matchingPairs: [
-      { left: 'The accident', right: 'Moses caused a man’s death without intending it' },
-      { left: 'His feeling', right: 'he was deeply sorry' },
-      { left: 'His prayer', right: 'he asked Allah to forgive him' },
-    ],
-    correctAnswer: {
-      'The accident': 'Moses caused a man’s death without intending it',
-      'His feeling': 'he was deeply sorry',
-      'His prayer': 'he asked Allah to forgive him',
-    },
-    explanation: 'The chapter separates the unintended act from Moses’s regret and his request for forgiveness.',
-    feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from the accident to Moses’s feeling and then his prayer.' },
+    id: 'moses-a2-quick-6', type: 'matching', title: 'Mistake, Feeling and Prayer', instructions: 'Match each Chapter 6 detail with what happened.', question: 'How did Moses respond to the accidental death?',
+    matchingPairs: [{ left: 'The accident', right: 'Moses caused a man’s death without intending it' }, { left: 'His feeling', right: 'he was deeply sorry' }, { left: 'His prayer', right: 'he asked Allah to forgive him' }],
+    correctAnswer: { 'The accident': 'Moses caused a man’s death without intending it', 'His feeling': 'he was deeply sorry', 'His prayer': 'he asked Allah to forgive him' },
+    explanation: 'The chapter separates the unintended act from Moses’s regret and request for forgiveness.', feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from the accident to Moses’s feeling and prayer.' },
   },
   11: {
-    id: 'moses-a2-quick-11', type: 'matching', title: 'Signs, Companion and Mission',
-    instructions: 'Match each Chapter 11 detail with its role.', question: 'What prepared Moses for the mission?',
-    matchingPairs: [
-      { left: 'The shining hand', right: 'a sign of Allah’s power' },
-      { left: 'Harun', right: 'Moses’s brother and companion' },
-      { left: 'The palace', right: 'the place Moses and Harun went to deliver the message' },
-      { left: 'The message', right: 'Allah is the most powerful' },
-    ],
-    correctAnswer: {
-      'The shining hand': 'a sign of Allah’s power',
-      Harun: 'Moses’s brother and companion',
-      'The palace': 'the place Moses and Harun went to deliver the message',
-      'The message': 'Allah is the most powerful',
-    },
-    explanation: 'Chapter 11 brings together a sign, a companion, a destination and the message Moses must deliver.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the sign, who went with Moses, where they went and what message they carried.' },
+    id: 'moses-a2-quick-11', type: 'matching', title: 'Signs, Companion and Mission', instructions: 'Match each Chapter 11 detail with its role.', question: 'What prepared Moses for the mission?',
+    matchingPairs: [{ left: 'The shining hand', right: 'a sign of Allah’s power' }, { left: 'Harun', right: 'Moses’s brother and companion' }, { left: 'The palace', right: 'the place Moses and Harun went to deliver the message' }, { left: 'The message', right: 'Allah is the most powerful' }],
+    correctAnswer: { 'The shining hand': 'a sign of Allah’s power', Harun: 'Moses’s brother and companion', 'The palace': 'the place Moses and Harun went to deliver the message', 'The message': 'Allah is the most powerful' },
+    explanation: 'Chapter 11 brings together a sign, a companion, a destination and the message Moses must deliver.', feedback: { correct: 'Correct.', incorrect: 'Find the sign, companion, destination and message.' },
   },
   13: {
-    id: 'moses-a2-quick-13', type: 'matching', title: 'The Sign and Two Responses',
-    instructions: 'Match each Chapter 13 detail with what happened.', question: 'How did the great sign lead to different responses?',
-    matchingPairs: [
-      { left: 'Moses’s stick', right: 'became a huge snake' },
-      { left: 'The huge snake', right: 'swallowed what the magicians had made' },
-      { left: 'The magicians', right: 'believed in the Lord of Moses and Harun' },
-      { left: 'Pharaoh', right: 'remained arrogant and continued to harm the believers' },
-    ],
-    correctAnswer: {
-      'Moses’s stick': 'became a huge snake',
-      'The huge snake': 'swallowed what the magicians had made',
-      'The magicians': 'believed in the Lord of Moses and Harun',
-      Pharaoh: 'remained arrogant and continued to harm the believers',
-    },
-    explanation: 'The chapter connects the sign with belief from the magicians and continued rejection from Pharaoh.',
-    feedback: { correct: 'Correct.', incorrect: 'Follow the scene from the stick to the snake, then compare the magicians with Pharaoh.' },
+    id: 'moses-a2-quick-13', type: 'matching', title: 'The Sign and Two Responses', instructions: 'Match each Chapter 13 detail with what happened.', question: 'How did the sign lead to different responses?',
+    matchingPairs: [{ left: 'Moses’s stick', right: 'became a huge snake' }, { left: 'The huge snake', right: 'swallowed what the magicians had made' }, { left: 'The magicians', right: 'believed in the Lord of Moses and Harun' }, { left: 'Pharaoh', right: 'remained arrogant and continued to harm the believers' }],
+    correctAnswer: { 'Moses’s stick': 'became a huge snake', 'The huge snake': 'swallowed what the magicians had made', 'The magicians': 'believed in the Lord of Moses and Harun', Pharaoh: 'remained arrogant and continued to harm the believers' },
+    explanation: 'The chapter connects the sign with belief from the magicians and continued rejection from Pharaoh.', feedback: { correct: 'Correct.', incorrect: 'Follow the scene from the stick to the two responses.' },
   },
 };
 
-export const mosesA2KnowledgeCheckExercisesPolished: Exercise[] = mosesA2KnowledgeCheckExercises;
-export const mosesA2VocabularyChallengePairsPolished = mosesA2VocabularyChallengePairs;
+export const mosesA2KnowledgeCheckExercisesPolished: Exercise[] = [
+  { id: 'moses-a2-kc-1', type: 'multiple-choice', title: 'Pharaoh and the Dream', instructions: 'Choose the connection supported by Chapters 1–2.', question: 'What connects Pharaoh’s rule with his response to the dream?', options: ['Fear and cruelty lead him to oppress the Children of Israel and give a cruel order', 'He becomes kind and frees everyone', 'He leaves Egypt for Midian'], correctAnswer: 0, explanation: 'Chapters 1–2 show Pharaoh’s cruel rule and the fear that leads to his order.', feedback: { correct: 'Correct.', incorrect: 'Compare Pharaoh’s character in Chapter 1 with his order in Chapter 2.' } },
+  { id: 'moses-a2-kc-2', type: 'true-false', title: 'The Nile and the Palace', instructions: 'Decide whether the statement agrees with Chapters 3–4.', question: 'Moses’s mother follows Allah’s instruction, and the basket later reaches the palace where Asiye wants to care for him.', correctAnswer: true, explanation: 'Chapters 3–4 connect the Nile journey with Asiye’s care.', feedback: { correct: 'Correct.', incorrect: 'Follow the basket from the mother to the palace.' } },
+  { id: 'moses-a2-kc-3', type: 'multiple-choice', title: 'Growing Up and a Mistake', instructions: 'Choose the answer supported by Chapters 5–6.', question: 'Which statement is correct?', options: ['Moses grows into a strong young man who helps the weak, then deeply regrets an accidental death', 'Moses becomes Pharaoh’s soldier', 'Moses leaves Egypt before growing up'], correctAnswer: 0, explanation: 'Chapters 5–6 connect his character with the accidental event and regret.', feedback: { correct: 'Correct.', incorrect: 'Review Moses as a young man and his response after the accident.' } },
+  { id: 'moses-a2-kc-4', type: 'true-false', title: 'Midian and the Well', instructions: 'Decide whether the statement agrees with Chapters 7–8.', question: 'Moses reaches Midian tired and thirsty, finds water, and helps two sisters at the well.', correctAnswer: true, explanation: 'The two chapters move from arrival and need to the helping scene.', feedback: { correct: 'Correct.', incorrect: 'Review the arrival in Midian and the well scene.' } },
+  { id: 'moses-a2-kc-5', type: 'multiple-choice', title: 'A New Life and the Call', instructions: 'Choose the connection supported by Chapters 9–10.', question: 'What happens after Moses builds a life in Midian?', options: ['He later returns toward Egypt and Allah speaks to him on the mountain', 'He becomes king of Midian', 'He stays at the well forever'], correctAnswer: 0, explanation: 'Chapter 9 ends with the return decision; Chapter 10 brings the mountain call.', feedback: { correct: 'Correct.', incorrect: 'Connect the end of Chapter 9 with Chapter 10.' } },
+  { id: 'moses-a2-kc-6', type: 'multiple-choice', title: 'Mission and Signs', instructions: 'Choose the answer supported by Chapters 11–12.', question: 'What do Moses and Harun do at the palace?', options: ['Deliver Allah’s message and show signs', 'Ask Pharaoh for work in Midian', 'Build a boat'], correctAnswer: 0, explanation: 'Chapters 11–12 prepare and present the mission before Pharaoh.', feedback: { correct: 'Correct.', incorrect: 'Review the mission and the signs shown at the palace.' } },
+  { id: 'moses-a2-kc-7', type: 'true-false', title: 'Magicians and Departure', instructions: 'Decide whether the statement agrees with Chapters 13–14.', question: 'The magicians believe after seeing the sign, but Pharaoh remains arrogant, and Moses later leads his people out at night.', correctAnswer: true, explanation: 'These chapters connect belief, continued rejection and the secret departure.', feedback: { correct: 'Correct.', incorrect: 'Compare the end of Chapter 13 with the departure in Chapter 14.' } },
+  { id: 'moses-a2-kc-8', type: 'multiple-choice', title: 'The Sea and the Ending', instructions: 'Choose the answer supported by Chapters 15–16.', question: 'How does the final escape develop?', options: ['Allah opens a path through the sea for Moses’s people, and Pharaoh’s pursuit ends in the sea', 'Moses returns to the palace', 'The group travels back to Midian'], correctAnswer: 0, explanation: 'Chapters 15–16 complete the escape through the sea.', feedback: { correct: 'Correct.', incorrect: 'Follow the path through the sea and the pursuit behind them.' } },
+];
 
-export const mosesA2FinalChallengeExercisesPolished: Exercise[] = mosesA2FinalChallengeExercises.map(exercise => {
-  if (exercise.id === 'moses-a2-final-6') {
-    return {
-      id: 'moses-a2-final-6', type: 'matching', title: 'Stages and Purposes', instructions: 'Match each stage with its main role in the story.',
-      question: 'What was happening in each stage?',
-      matchingPairs: [
-        { left: 'Midian', right: 'Moses found a new life away from Pharaoh’s rule' },
-        { left: 'Return to Egypt', right: 'Moses carried Allah’s message back toward Pharaoh' },
-        { left: 'The palace', right: 'Moses and Harun delivered the message and showed the signs' },
-      ],
-      correctAnswer: {
-        Midian: 'Moses found a new life away from Pharaoh’s rule',
-        'Return to Egypt': 'Moses carried Allah’s message back toward Pharaoh',
-        'The palace': 'Moses and Harun delivered the message and showed the signs',
-      },
-      explanation: 'These stages move Moses from safety in Midian into the mission he was given for Egypt.',
-      feedback: { correct: 'Correct.', incorrect: 'Think about what Midian gave Moses, why he returned, and what happened at the palace.' },
-    };
-  }
-  if (exercise.id === 'moses-a2-final-7') {
-    return {
-      id: 'moses-a2-final-7', type: 'matching', title: 'Need and Response', instructions: 'Match each problem or need with Moses’s response.',
-      question: 'How did Moses act in different journeys?',
-      matchingPairs: [
-        { left: 'He was tired and thirsty in Midian', right: 'he looked for water' },
-        { left: 'The two sisters needed help at the well', right: 'he watered their sheep' },
-        { left: 'His family was cold on the return journey', right: 'he went toward the fire' },
-      ],
-      correctAnswer: {
-        'He was tired and thirsty in Midian': 'he looked for water',
-        'The two sisters needed help at the well': 'he watered their sheep',
-        'His family was cold on the return journey': 'he went toward the fire',
-      },
-      explanation: 'Across the journey episodes, Moses notices a need and takes a practical next step.',
-      feedback: { correct: 'Correct.', incorrect: 'Review the well scene and the cold return journey.' },
-    };
-  }
-  return exercise;
-});
+export const mosesA2VocabularyChallengePairsPolished = [
+  { word: 'Cruel', meaning: 'Very unkind and causing pain to others' },
+  { word: 'Protect', meaning: 'To keep someone safe from danger' },
+  { word: 'Forgive', meaning: 'To stop being angry about a mistake' },
+  { word: 'Guided', meaning: 'Shown the right way' },
+  { word: 'Stranger', meaning: 'A person who is new or not known in a place' },
+  { word: 'Parted', meaning: 'Opened or separated into parts' },
+];
+
+export const mosesA2FinalChallengeExercisesPolished: Exercise[] = [
+  { id: 'moses-a2-final-1', type: 'multiple-choice', title: 'Oppression and Danger', instructions: 'Choose the connection supported by Chapters 1–2.', question: 'Why does danger increase for the Children of Israel?', options: ['Pharaoh’s fear strengthens his cruel rule and leads to a new order', 'Moses becomes king', 'Asiye leaves Egypt'], correctAnswer: 0, explanation: 'The opening chapters connect Pharaoh’s fear with oppression and the cruel order.', feedback: { correct: 'Correct.', incorrect: 'Use Chapters 1–2.' } },
+  { id: 'moses-a2-final-2', type: 'multiple-choice', title: 'Trust and Care', instructions: 'Choose the connection supported by Chapters 3–4.', question: 'Which pair best connects the two chapters?', options: ['Moses’s mother follows Allah’s instruction, and Asiye later chooses to care for the baby', 'Pharaoh goes to Midian, and Moses becomes a magician', 'Harun finds the basket and returns it'], correctAnswer: 0, explanation: 'The Nile journey leads into the palace care scene.', feedback: { correct: 'Correct.', incorrect: 'Follow baby Moses from his mother to Asiye.' } },
+  { id: 'moses-a2-final-3', type: 'true-false', title: 'Character and Regret', instructions: 'Decide whether the statement agrees with Chapters 5–6.', question: 'Moses is described as ready to help weak people, and after the accidental death he feels regret and asks Allah for forgiveness.', correctAnswer: true, explanation: 'Both details are stated across Chapters 5–6.', feedback: { correct: 'Correct.', incorrect: 'Review Moses’s character and his response after the accident.' } },
+  { id: 'moses-a2-final-4', type: 'matching', title: 'Midian: Need, Help and New Life', instructions: 'Match each stage from Chapters 7–9 with its role.', question: 'How does Midian change Moses’s situation?', matchingPairs: [{ left: 'Arrival', right: 'Moses is tired and looks for water' }, { left: 'The well', right: 'Moses helps the two sisters' }, { left: 'Şuayb’s home', right: 'Moses receives work and begins a new life' }], correctAnswer: { Arrival: 'Moses is tired and looks for water', 'The well': 'Moses helps the two sisters', 'Şuayb’s home': 'Moses receives work and begins a new life' }, explanation: 'Chapters 7–9 move from need to helping and then to a stable new life.', feedback: { correct: 'Correct.', incorrect: 'Follow the three Midian stages.' } },
+  { id: 'moses-a2-final-5', type: 'sequencing', title: 'The Call and the Mission', instructions: 'Put the Chapters 10–11 events in order.', question: 'How does Moses move from the mountain scene toward the mission?', sequencingItems: [{ id: '1', text: 'Moses sees the fire' }, { id: '2', text: 'Allah speaks to Moses' }, { id: '3', text: 'Moses receives signs' }, { id: '4', text: 'Harun goes with Moses toward the palace' }], correctAnswer: ['1','2','3','4'], explanation: 'The call and signs prepare Moses for the mission.', feedback: { correct: 'Correct.', incorrect: 'Use Chapters 10–11.' } },
+  { id: 'moses-a2-final-6', type: 'multiple-choice', title: 'Pharaoh and the Magicians', instructions: 'Choose the comparison supported by Chapters 12–13.', question: 'How do Pharaoh and the magicians respond differently?', options: ['Pharaoh rejects the signs, while the magicians later believe', 'Both immediately believe', 'Both leave for Midian'], correctAnswer: 0, explanation: 'The palace confrontation develops into two opposite responses.', feedback: { correct: 'Correct.', incorrect: 'Compare Chapters 12 and 13.' } },
+  { id: 'moses-a2-final-7', type: 'true-false', title: 'Leaving Egypt', instructions: 'Decide whether the statement agrees with Chapter 14.', question: 'Moses leads his people out of Egypt secretly at night because Pharaoh’s oppression and army remain a danger.', correctAnswer: true, explanation: 'Chapter 14 presents the departure as an escape from continuing oppression.', feedback: { correct: 'Correct.', incorrect: 'Review why and when they leave.' } },
+  { id: 'moses-a2-final-8', type: 'fill-blanks', title: 'The Road Through the Sea', instructions: 'Complete the key word from Chapter 15.', question: 'Complete the sentence.', fillBlanksText: 'Allah opened a [blank] through the sea for Moses and his people.', correctAnswer: 'road', explanation: 'Chapter 15 describes a road through the sea.', feedback: { correct: 'Correct.', incorrect: 'Return to the sea-opening scene.' } },
+  { id: 'moses-a2-final-9', type: 'multiple-choice', title: 'Pharaoh’s Last Claim', instructions: 'Choose the detail stated in Chapter 16.', question: 'What false claim does Pharaoh make before following the open path?', options: ['He claims that he told the sea to open', 'He says Moses rules Egypt', 'He says the magicians opened it'], correctAnswer: 0, explanation: 'Chapter 16 records Pharaoh’s claim before the pursuit continues.', feedback: { correct: 'Correct.', incorrect: 'Read Pharaoh’s words near the start of Chapter 16.' } },
+  { id: 'moses-a2-final-10', type: 'sequencing', title: 'Whole-Story Turning Points', instructions: 'Put these turning points in story order.', question: 'Which order best represents the whole Moses A2 story?', sequencingItems: [{ id: '1', text: 'Baby Moses reaches the palace' }, { id: '2', text: 'Moses leaves Egypt and reaches Midian' }, { id: '3', text: 'Allah calls Moses and gives him signs' }, { id: '4', text: 'Moses and Harun face Pharaoh' }, { id: '5', text: 'Moses leads his people out of Egypt' }, { id: '6', text: 'The sea opens and the final pursuit ends' }], correctAnswer: ['1','2','3','4','5','6'], explanation: 'These anchors cover the story from infancy to the final escape.', feedback: { correct: 'Correct.', incorrect: 'Use the main stages of the whole book.' } },
+];
