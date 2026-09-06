@@ -2,6 +2,16 @@
 
 This file is the persistent handoff for the Stories cleanup work on `preview`.
 
+## Architecture simplification handoff
+
+- [x] Adam A2 — already canonical; do not edit.
+- [x] Yunus Emre A2 — already canonical; do not edit.
+- [x] Abraham A2 — architecture-only migration complete. EN: 18 → 7 files. AR: 18 → 7 files. Active Quick Challenges, Knowledge Check, Vocabulary Challenge, Language Review and Final Challenge are consolidated in each language's `exercises.ts`; Student Guide preview exports are consolidated into `selfStudyGuide.ts`; Language Focus is consolidated into `languageFocus.ts`, `languageFocus2.ts`, `languageFocus3.ts`; `index.ts` is wiring only. Story `pages.ts` and Teacher Guide blobs remained unchanged. Architecture migration SHA before this tracker handoff: `05feb6d748f1c4a0b516131b4cd240dda92dc798`.
+- [ ] Moses A2 — next A2 architecture target.
+- [ ] Mecca/Bilal A2 — after Moses A2.
+
+Do not use the legacy content-quality queue below to decide whether an A2 book has already received the architecture simplification. The architecture handoff above is authoritative for the current max-7-file migration.
+
 ## Queue
 
 - [x] Adam A2 — reference standard, DO NOT EDIT
