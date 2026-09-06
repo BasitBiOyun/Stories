@@ -45,7 +45,7 @@ One night, Abraham left his home to take a walk in the countryside. In a nearby 
     [{ id: 'h3-1', x: 30, y: 40, title: 'The Cave', description: 'A quiet place where Abraham thought deeply about Allah and creation.' }, { id: 'h3-2', x: 65, y: 30, title: 'The Sky', description: 'The star and moon helped Abraham explain that created things cannot be the Creator.' }]
   ),
   story(4, 'Abraham Receives Guidance',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch4.png?alt=media&token=22749671-396f-422b-ae63-07b5600ba29d',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2_ch4.png?alt=media&token=22749671-396f-422b-ae63-07b5600ba29d',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F03_Chapter_4_Abraham_Receives_Guidance.mp3?alt=media&token=5a474dc4-f8f5-4825-994a-999eda876bc3',
     `Abraham stayed until sunrise, and when he saw the bright sun, he wondered, “Could this be Allah? It is bigger.”
 
@@ -58,14 +58,14 @@ Prophet Abraham (pbuh) went home and told his father, “O my father, follow me:
     [{ id: 'h4-1', x: 30, y: 40, title: 'Sunrise', description: 'The sun completes Abraham’s observations about created things that appear and disappear.' }, { id: 'h4-2', x: 65, y: 30, title: 'Guidance', description: 'Abraham asks Allah to show him the right way and then begins his mission.' }]
   ),
   story(5, 'Abraham Calls His People',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch5.png?alt=media&token=5586429e-02db-4e3a-be26-bef94c4fb5c8',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2_ch5.png?alt=media&token=5586429e-02db-4e3a-be26-bef94c4fb5c8',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F04_Chapter_5_Abraham_Calls_His_People.mp3?alt=media&token=ad50e9bb-e402-4ab7-864d-d79a91724b6f',
     `Abraham (pbuh) was very sad for his father. Then, he went to the people of the kingdom and tried to show them the right way: “O people! I have turned my face towards Allah. I do not worship your idols because Allah is the one and only true God!” People got furious when they heard him. Abraham (pbuh) said to them, “Why do you worship these statues? They have no power to help or harm you.” People replied, “We saw our fathers worship them; because of this, we do the same.” Abraham (pbuh) did not give up and told them, “My Allah gives me food and drink when I need them, and heals me when I am sick. Your statues have no power to do these.” He wanted them to reconsider their beliefs. They ignored him, though.`,
     [{ word: 'furious', definition: 'Extremely angry.' }, { word: 'reconsider', definition: 'To think again about an idea, decision, or belief.' }, { word: 'harm', definition: 'To hurt or damage someone or something.' }],
     [{ id: 'h5-1', x: 30, y: 40, title: 'Public Call', description: 'Abraham openly invited his people to worship Allah alone.' }, { id: 'h5-2', x: 65, y: 30, title: 'People’s Response', description: 'The people became angry because Abraham challenged their old traditional beliefs.' }]
   ),
   story(6, 'Abraham Enters the Temple',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch6.png?alt=media&token=85c7636d-1681-41f2-938d-a67a357e8ffa',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2_ch6.png?alt=media&token=85c7636d-1681-41f2-938d-a67a357e8ffa',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F05_Chapter_6_Abraham_Enters_the_Temple.mp3?alt=media&token=3dc1c09b-1e7e-4e3e-b105-d4c621020d2d',
     `Prophet Abraham (pbuh) decided to show them the foolishness of their beliefs. He made a plan to destroy all their idols, but he did not tell anyone what he was going to do. There was a big celebration soon. All the people usually went outside of town, so he got an axe and waited until the whole town was empty. He went into the big temple and saw all the statues standing there. There were plates of food in front of them, and Abraham (pbuh) jokingly asked them, “Why don’t you eat the food? It is getting cold.” Offering food to these statues was so ridiculous.
 
@@ -74,7 +74,7 @@ Abraham (pbuh) began to break the idols, one after another, until they were all 
     [{ id: 'h6-1', x: 30, y: 40, title: 'Empty Town', description: 'The celebration left the town empty, giving Abraham the chance to act.' }, { id: 'h6-2', x: 65, y: 30, title: 'Food Before Idols', description: 'The untouched food showed that the idols could not even eat.' }]
   ),
   story(7, 'The Broken Idols',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch7.png?alt=media&token=3e535d5b-1e3c-4cd3-88e3-33b95447f33f',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2_ch7.png?alt=media&token=3e535d5b-1e3c-4cd3-88e3-33b95447f33f',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F06_Chapter_7_The_Broken_Idols.mp3?alt=media&token=83d27022-9e27-4678-8ce7-38e04622dc4f',
     `The next day, when people went to the temple to pray to their idols, they were shocked to see all the statues were broken into many pieces. They all gathered around the smashed idols. They wondered and tried to find out who did this. “We heard a young man speaking against our gods,” they remembered. “His name was Abraham.” They found Abraham (pbuh) and brought him into the temple. They asked him, “Did you harm our gods in this way?” Abraham (pbuh) calmly replied, “It was this statue there, the biggest of them all; ask that statue, if it can speak!”
 
@@ -172,3 +172,30 @@ Over the years, Ishmael’s children had children; one of them was Muhammad, the
   ] },
   { id: 18, type: 'final-challenge', title: 'B1 Final Challenge', image: 'https://picsum.photos/seed/final-abraham-b1/1200/800', content: 'Demonstrate B1-level understanding across the complete story.' },
 ];
+
+const ABRAHAM_B1_STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+
+const prepareAbrahamB1MediaFallbacks = (pages: PageData[]): PageData[] => {
+  const levelSafe = pages.map(page => {
+    if (!ABRAHAM_B1_STORY_IDS.has(page.id)) return page;
+    const image = page.image ?? '';
+    return image.toLowerCase().includes('abraham_b2') ? { ...page, image: '' } : page;
+  });
+
+  const byId = new Map(levelSafe.map(page => [page.id, page]));
+  const shellImageSource: Record<number, number> = {
+    14: 1,
+    15: 8,
+    16: 12,
+    17: 13,
+    18: 13,
+  };
+
+  return levelSafe.map(page => {
+    const sourceId = shellImageSource[page.id];
+    if (!sourceId) return page;
+    return { ...page, image: byId.get(sourceId)?.image ?? '' };
+  });
+};
+
+export const abrahamB1PreparedPages = prepareAbrahamB1MediaFallbacks(abrahamB1Pages);
