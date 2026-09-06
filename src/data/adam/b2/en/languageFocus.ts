@@ -2,32 +2,10 @@ import type { Exercise } from '../../../../types';
 import { adamB2LanguageFocusExercises as adamB2LanguageFocusBaseCh1to4 } from './languageFocusBaseCh1to4';
 import { adamB2LanguageFocusChapter5 } from './languageFocusChapter5';
 import { adamB2LanguageFocusChapter6 } from './languageFocusChapter6';
-import { adamB2LanguageFocusChapter7 } from './languageFocusChapter7';
-import { adamB2LanguageFocusChapter8 } from './languageFocusChapter8';
-import { adamB2LanguageFocusChapter9 } from './languageFocusChapter9';
-import { adamB2LanguageFocusChapter10 } from './languageFocusChapter10';
-import { adamB2LanguageFocusChapter11 } from './languageFocusChapter11';
-import { adamB2LanguageFocusChapter12 } from './languageFocusChapter12';
-import { adamB2LanguageFocusChapter13 } from './languageFocusChapter13';
-import { adamB2LanguageFocusChapter14 } from './languageFocusChapter14';
-import { adamB2LanguageFocusChapter15 } from './languageFocusChapter15';
-import { adamB2LanguageFocusChapter16 } from './languageFocusChapter16';
-import { adamB2LanguageFocusChapter17 } from './languageFocusChapter17';
 
-/** Active Adam B2 English Language Focus assembled from manually authored chapter sets. */
+/** Adam B2 English Language Focus — Chapters 1–6. */
 export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
   ...adamB2LanguageFocusBaseCh1to4,
   ...adamB2LanguageFocusChapter5,
   ...adamB2LanguageFocusChapter6,
-  ...adamB2LanguageFocusChapter7,
-  ...adamB2LanguageFocusChapter8,
-  ...adamB2LanguageFocusChapter9,
-  ...adamB2LanguageFocusChapter10,
-  ...adamB2LanguageFocusChapter11,
-  ...adamB2LanguageFocusChapter12,
-  ...adamB2LanguageFocusChapter13,
-  ...adamB2LanguageFocusChapter14,
-  ...adamB2LanguageFocusChapter15,
-  ...adamB2LanguageFocusChapter16,
-  ...adamB2LanguageFocusChapter17,
 };
