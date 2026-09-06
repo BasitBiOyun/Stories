@@ -6,37 +6,45 @@ import {
   adamB1KnowledgeCheckExercises,
   adamB1VocabularyChallengePairs,
   adamB1FinalChallengeExercises,
+  adamB1LanguageReviewExercises,
 } from './en/exercises';
 import {
   adamB1QuickChallengesAr,
   adamB1KnowledgeCheckExercisesAr,
   adamB1VocabularyChallengePairsAr,
   adamB1FinalChallengeExercisesAr,
+  adamB1LanguageReviewExercisesAr,
 } from './ar/exercises';
 import { adamB1LanguageFocusExercises } from './en/languageFocus';
-import { adamB1LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { adamB1LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
-import { adamB1LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
-import { adamB1LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
-import { adamB1LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
-import { adamB1LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
-import { adamB1LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
-import { adamB1LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
-import { adamB1LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
-import { adamB1LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
-import { adamB1LanguageReviewExercises } from './en/languageReview';
+import {
+  adamB1LanguageFocusExercisesPart2,
+  adamB1LanguageFocusExercisesPart3,
+  adamB1LanguageFocusExercisesPart4,
+  adamB1LanguageFocusExercisesPart5,
+  adamB1LanguageFocusExercisesPart6,
+} from './en/languageFocus2';
+import {
+  adamB1LanguageFocusExercisesPart7,
+  adamB1LanguageFocusExercisesPart8,
+  adamB1LanguageFocusExercisesPart9,
+  adamB1LanguageFocusExercisesPart10,
+  adamB1LanguageFocusExercisesPart11,
+} from './en/languageFocus3';
 import { adamB1LanguageFocusExercisesAr } from './ar/languageFocus';
-import { adamB1LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
-import { adamB1LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
-import { adamB1LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
-import { adamB1LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
-import { adamB1LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6';
-import { adamB1LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
-import { adamB1LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
-import { adamB1LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
-import { adamB1LanguageFocusExercisesArPart10 } from './ar/languageFocusPart10';
-import { adamB1LanguageFocusExercisesArPart11 } from './ar/languageFocusPart11';
-import { adamB1LanguageReviewExercisesAr } from './ar/languageReview';
+import {
+  adamB1LanguageFocusExercisesArPart2,
+  adamB1LanguageFocusExercisesArPart3,
+  adamB1LanguageFocusExercisesArPart4,
+  adamB1LanguageFocusExercisesArPart5,
+  adamB1LanguageFocusExercisesArPart6,
+} from './ar/languageFocus2';
+import {
+  adamB1LanguageFocusExercisesArPart7,
+  adamB1LanguageFocusExercisesArPart8,
+  adamB1LanguageFocusExercisesArPart9,
+  adamB1LanguageFocusExercisesArPart10,
+  adamB1LanguageFocusExercisesArPart11,
+} from './ar/languageFocus3';
 import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
