@@ -1,16 +1,35 @@
 import type { Exercise } from '../../../../types';
-import { adamB2LanguageFocusChapter7Ar } from './languageFocusChapter7';
-import { adamB2LanguageFocusChapter8Ar } from './languageFocusChapter8';
-import { adamB2LanguageFocusChapter9Ar } from './languageFocusChapter9';
 import { adamB2LanguageFocusChapter10Ar } from './languageFocusChapter10';
 import { adamB2LanguageFocusChapter11Ar } from './languageFocusChapter11';
 import { adamB2LanguageFocusChapter12Ar } from './languageFocusChapter12';
 
-/** Arabic Language Focus — Chapters 7–12. */
 export const adamB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
-  ...adamB2LanguageFocusChapter7Ar,
-  ...adamB2LanguageFocusChapter8Ar,
-  ...adamB2LanguageFocusChapter9Ar,
+  7: [
+    {
+      id: 'adam-b2-language-7-ar-general-tendency',
+      type: 'matching',
+      title: 'من الحالة الفردية إلى الطبيعة البشرية',
+      instructions: 'صل كل تعبير بوظيفته في بناء معنى الفقرة.',
+      question: 'كيف ينتقل الفصل من حال آدم (عليه السلام) إلى وصف أوسع لقابلية الإنسان للضعف؟',
+      matchingPairs: [
+        { left: 'الإنسان يميل إلى النسيان', right: 'يعرض النسيان بوصفه ميلا بشريا متكررا لا حادثة منفردة' },
+        { left: 'فقلبه يتقلب', right: 'يصف تغير الحالة الداخلية بوصفه أمرا قابلا للتبدل' },
+        { left: 'وعزمه يضعف', right: 'يبين أن الإرادة قد تفقد قوتها تدريجيا' },
+        { left: 'فاستغل الشيطان بشرية آدم', right: 'يربط الضعف الإنساني العام بفعل خداع محدد داخل السرد' },
+      ],
+      correctAnswer: {
+        'الإنسان يميل إلى النسيان': 'يعرض النسيان بوصفه ميلا بشريا متكررا لا حادثة منفردة',
+        'فقلبه يتقلب': 'يصف تغير الحالة الداخلية بوصفه أمرا قابلا للتبدل',
+        'وعزمه يضعف': 'يبين أن الإرادة قد تفقد قوتها تدريجيا',
+        'فاستغل الشيطان بشرية آدم': 'يربط الضعف الإنساني العام بفعل خداع محدد داخل السرد',
+      },
+      explanation: 'يستعمل النص صيغا خبرية عامة لوصف خصائص بشرية متكررة، ثم يحولها إلى سبب يمكن استغلاله في حدث محدد من القصة.',
+      feedback: {
+        correct: 'صحيح. ميزت بين التعميم الإنساني وبين تطبيقه على الحدث الخاص.',
+        incorrect: 'اسأل: أي العبارات تصف الإنسان عموما، وأيها يبين كيف استغل هذا الوصف داخل السرد؟',
+      },
+    },
+  ],
   ...adamB2LanguageFocusChapter10Ar,
   ...adamB2LanguageFocusChapter11Ar,
   ...adamB2LanguageFocusChapter12Ar,
