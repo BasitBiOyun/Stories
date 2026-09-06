@@ -46,3 +46,54 @@ export const meccaB1FinalChallengeExercises: Exercise[] = [
   { id:'fc-9', type:'fill-blanks', question:'Complete the cross-chapter social connection.', fillBlanksText:'People without strong tribal protection were more _____ to persecution when opposition became violent.', correctAnswer:'vulnerable', explanation:'The story links weak social protection with greater exposure to persecution.', feedback:{ correct:'Correct.', incorrect:'Connect the chapters on tribal protection and persecution.' } },
   { id:'fc-10', type:'sequencing', question:'Put the wider development of opposition in order.', correctAnswer:['1','2','3','4'], explanation:'The later chapters move from challenge to verbal opposition, violence and organized pressure.', feedback:{ correct:'Correct.', incorrect:'Review the development across the later chapters.' }, sequencingItems:[{ id:'1', text:'Islam challenges established beliefs and social interests' }, { id:'2', text:'Leaders mock and reject the message' }, { id:'3', text:'Opposition becomes violent' }, { id:'4', text:'A social and economic boycott is organized' }] }
 ];
+
+export const meccaB1KnowledgeCheckExercises: Exercise[] = [
+  mc('kc-1', 'What political condition shaped Arabian society before Islam?', ['There was no central government, so tribes formed the basis of society.', 'A single emperor directly governed every tribe.', 'Merchant councils had already replaced tribes across Arabia.'], 0, 'Chapter 1 states that Arabia had no central government and that tribes were the basis of society.'),
+  mc('kc-2', 'Which event marks the end of the Jahiliyyah period in Chapter 2?', ['The arrival of the Jurhumites in Mecca', 'The first Quranic revelation beginning in 610 CE', 'The start of the sacred months'], 1, 'The chapter says the era ended when the first revelation of the Quran began in 610 CE.'),
+  mc('kc-3', 'What did Ishmael learn from the Jurhumites after they settled in Mecca?', ['Byzantine law', 'Caravan accounting', 'Arabic'], 2, 'Chapter 3 explicitly says Ishmael learned Arabic from the Jurhumites.'),
+  mc('kc-4', 'Which sequence of political control is supported by Chapter 4?', ['Khuza’a defeated Jurhum, and Quraysh later took control in the 5th century.', 'Quraysh defeated Byzantium before Jurhum arrived.', 'Jurhum replaced Quraysh after Islam began.'], 0, 'The chapter describes Khuza’a taking control from Jurhum and Quraysh taking over later in the 5th century.'),
+  mc('kc-5', 'Which set contains only trade fairs named in Chapter 6?', ['Safa, Marwa and Arafat', 'Ukaz, Majannah and Dhul-Majaz', 'Byzantium, Yemen and Iraq'], 1, 'Ukaz, Majannah and Dhul-Majaz are the three fairs named in the chapter.'),
+  mc('kc-6', 'What public role did poetry play in Chapter 9?', ['It replaced trade agreements between tribes.', 'It was used mainly to calculate debts.', 'It preserved tribal history, praised tribes and criticized enemies.'], 2, 'The chapter compares poets to the media because poetry carried memory, praise and criticism.'),
+  mc('kc-7', 'Which detail shows the scale of idol worship described in Chapter 10?', ['There were 360 idols, including Lat, Manat and Uzza.', 'Only three idols existed in all of Arabia.', 'Idols were kept only outside Mecca.'], 0, 'Chapter 10 states that there were 360 idols and names Lat, Manat and Uzza among them.'),
+  mc('kc-8', 'How long does Chapter 11 say Prophet Muhammad taught in Mecca?', ['5 years', '13 years', '25 years'], 1, 'The chapter says Prophet Muhammad taught in Mecca for 13 years.'),
+];
+
+export const meccaB1LanguageReviewExercises: Exercise[] = [
+  {
+    id: 'mecca-b1-language-review-1', type: 'quiz-game', title: 'Choose the Relationship', instructions: 'Choose the form that best expresses the intended relationship in each new context.', question: 'Select language for cause, result, contrast, purpose and simultaneous action.', correctAnswer: null, explanation: 'The task reviews how familiar connectors and patterns shape relationships between ideas.', feedback: { correct: 'Good choice.', incorrect: 'Read both clauses and decide what relationship the speaker needs.' },
+    quizQuestions: [
+      { question: 'The region had very little rain, _____ farmers stored water carefully.', options: [{ text: 'so', isCorrect: true }, { text: 'although', isCorrect: false }, { text: 'while', isCorrect: false }], hint: 'The second clause is a result of the first.' },
+      { question: '_____ the road was difficult, the traders continued their journey.', options: [{ text: 'Although', isCorrect: true }, { text: 'Because', isCorrect: false }, { text: 'In order to', isCorrect: false }], hint: 'The two ideas contrast.' },
+      { question: 'The council changed the schedule _____ make the market safer for visitors.', options: [{ text: 'in order to', isCorrect: true }, { text: 'because of', isCorrect: false }, { text: 'however', isCorrect: false }], hint: 'The second part gives the purpose.' },
+      { question: 'Some people prepared the stalls _____ others organized the entrance.', options: [{ text: 'while', isCorrect: true }, { text: 'therefore', isCorrect: false }, { text: 'because', isCorrect: false }], hint: 'Two actions happen in parallel.' },
+    ],
+  },
+  {
+    id: 'mecca-b1-language-review-2', type: 'matching', title: 'Form and Communicative Job', instructions: 'Match each sentence with what it is doing in the message.', question: 'How do these familiar B1 patterns organize meaning?',
+    matchingPairs: [
+      { left: 'The old rule was replaced by a safer system.', right: 'focuses on the change rather than the person who made it' },
+      { left: 'Residents said that the new route would save time.', right: 'reports a group’s viewpoint or prediction' },
+      { left: 'The policy was so strict that many families left.', right: 'shows degree leading to a consequence' },
+      { left: 'The organizers prevented cars from entering the square.', right: 'expresses stopping an action' },
+      { left: 'In reality, the change benefited only a small group.', right: 'reinterprets or challenges an earlier claim' },
+    ],
+    correctAnswer: {
+      'The old rule was replaced by a safer system.': 'focuses on the change rather than the person who made it',
+      'Residents said that the new route would save time.': 'reports a group’s viewpoint or prediction',
+      'The policy was so strict that many families left.': 'shows degree leading to a consequence',
+      'The organizers prevented cars from entering the square.': 'expresses stopping an action',
+      'In reality, the change benefited only a small group.': 'reinterprets or challenges an earlier claim',
+    },
+    explanation: 'The book repeatedly uses these patterns to manage viewpoint, change, consequence, prevention and contrast.', feedback: { correct: 'Correct.', incorrect: 'Focus on the communicative purpose of the whole sentence.' },
+  },
+  {
+    id: 'mecca-b1-language-review-3', type: 'sequencing', title: 'Build a Coherent Explanation', instructions: 'Put the sentences in the order that creates the clearest short explanation.', question: 'Reconstruct a cause → action → purpose → result paragraph.',
+    sequencingItems: [{ id: '1', text: 'The neighbourhood had become difficult for pedestrians because traffic had increased.' }, { id: '2', text: 'For this reason, the council decided to close one street to cars on weekends.' }, { id: '3', text: 'The change was introduced in order to make the centre safer and easier to walk through.' }, { id: '4', text: 'As a result, more families began spending time there.' }],
+    correctAnswer: ['1', '2', '3', '4'], explanation: 'A coherent B1 explanation can move from situation and cause to decision, purpose and result.', feedback: { correct: 'Coherent sequence.', incorrect: 'Find the situation first, then the response, its purpose and its result.' },
+  },
+  { id: 'mecca-b1-language-review-4', type: 'multiple-choice', title: 'Viewpoint or Narrator?', instructions: 'Choose the version that keeps another person’s claim separate from the writer’s own statement.', question: 'Which sentence reports a viewpoint most clearly?', options: ['Several shopkeepers said that the new rule would damage business.', 'The new rule definitely damaged business because everyone knew it.', 'The shopkeepers damaged the rule while business said it.'], correctAnswer: 0, explanation: '`said that ... would ...` clearly marks the idea as the shopkeepers’ reported viewpoint rather than an unquestioned fact.', feedback: { correct: 'Correct.', incorrect: 'Choose the sentence that clearly attributes the claim to a source.' } },
+  { id: 'mecca-b1-language-review-5', type: 'fill-blanks', title: 'Select the Connector', instructions: 'Complete the sentence with one connector that creates the intended contrast.', question: 'Complete the short argument.', fillBlanksText: 'The project created new jobs. _____, some residents worried that rents would rise.', correctAnswer: 'However', explanation: '`However` introduces a contrasting concern after a positive result.', feedback: { correct: 'Correct.', incorrect: 'The second sentence contrasts with the first rather than explaining its cause.' } },
+  { id: 'mecca-b1-language-review-6', type: 'reflection', title: 'Connected B1 Production', instructions: 'Speak or write 5–7 connected sentences about a change in a town, school or community. Do not retell the story.', question: 'Explain a situation, why a change was needed, what people did, one contrasting viewpoint, and the result.', correctAnswer: null, explanation: 'A strong response combines several language functions from the book in a coherent new context.', feedback: { correct: 'Strong connected production.', incorrect: '' }, discussionPrompts: [
+      { question: 'Include at least one clear cause/result link and one purpose expression.', mode: 'Individual' }, { question: 'Report what one group said or believed, then add a contrasting or corrective viewpoint.', mode: 'Pair' }, { question: 'If natural, use one form for change, prevention, obligation or possible consequence.', mode: 'Class' },
+    ] },
+];
