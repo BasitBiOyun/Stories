@@ -14,11 +14,11 @@ import {
   adamA2VocabularyChallengePairsAr,
 } from './ar/exercises';
 import { adamA2LanguageFocusExercises } from './en/languageFocus';
-import { adamA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { adamA2LanguageFocusExercisesPart3, adamA2LanguageReviewExercises } from './en/languageFocusPart3';
+import { adamA2LanguageFocusExercisesPart2 } from './en/languageFocus2';
+import { adamA2LanguageFocusExercisesPart3, adamA2LanguageReviewExercises } from './en/languageFocus3';
 import { adamA2LanguageFocusExercisesAr } from './ar/languageFocus';
-import { adamA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
-import { adamA2LanguageFocusExercisesArPart3, adamA2LanguageReviewExercisesAr } from './ar/languageFocusPart3';
+import { adamA2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
+import { adamA2LanguageFocusExercisesArPart3, adamA2LanguageReviewExercisesAr } from './ar/languageFocus3';
 import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import {
