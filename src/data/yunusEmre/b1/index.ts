@@ -5,38 +5,46 @@ import {
   yunusB1QuickChallenges,
   yunusB1VocabularyChallengePairs,
   yunusB1FinalChallengeExercises,
+  yunusB1ManualKnowledgeCheckExercises,
+  yunusB1LanguageReviewExercises,
 } from './en/exercises';
 import {
   yunusB1QuickChallengesAr,
   yunusB1VocabularyChallengePairsAr,
   yunusB1FinalChallengeExercisesAr,
+  yunusB1ManualKnowledgeCheckExercisesAr,
+  yunusB1LanguageReviewExercisesAr,
 } from './ar/exercises';
 import { yunusB1LanguageFocusExercises } from './en/languageFocus';
 import { yunusB1LanguageFocusExercisesAr } from './ar/languageFocus';
-import { yunusB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
-import { yunusB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
-import { yunusB1LanguageFocusChapter5 } from './en/languageFocusChapter5';
-import { yunusB1LanguageFocusChapter5Ar } from './ar/languageFocusChapter5';
-import { yunusB1LanguageFocusChapter6 } from './en/languageFocusChapter6';
-import { yunusB1LanguageFocusChapter6Ar } from './ar/languageFocusChapter6';
-import { yunusB1LanguageFocusChapter7 } from './en/languageFocusChapter7';
-import { yunusB1LanguageFocusChapter7Ar } from './ar/languageFocusChapter7';
-import { yunusB1LanguageFocusChapter8 } from './en/languageFocusChapter8';
-import { yunusB1LanguageFocusChapter8Ar } from './ar/languageFocusChapter8';
-import { yunusB1LanguageFocusChapter9 } from './en/languageFocusChapter9';
-import { yunusB1LanguageFocusChapter9Ar } from './ar/languageFocusChapter9';
-import { yunusB1LanguageFocusChapter10 } from './en/languageFocusChapter10';
-import { yunusB1LanguageFocusChapter10Ar } from './ar/languageFocusChapter10';
-import { yunusB1LanguageFocusChapter11 } from './en/languageFocusChapter11';
-import { yunusB1LanguageFocusChapter11Ar } from './ar/languageFocusChapter11';
-import { yunusB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
-import { yunusB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
-import { yunusB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
-import { yunusB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
-import { yunusB1LanguageReviewExercises } from './en/languageReview';
-import { yunusB1LanguageReviewExercisesAr } from './ar/languageReview';
-import { yunusB1ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
-import { yunusB1ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
+import {
+  yunusB1LanguageFocusChapter4,
+  yunusB1LanguageFocusChapter5,
+  yunusB1LanguageFocusChapter6,
+  yunusB1LanguageFocusChapter7,
+  yunusB1LanguageFocusChapter8,
+} from './en/languageFocus2';
+import {
+  yunusB1LanguageFocusChapter4Ar,
+  yunusB1LanguageFocusChapter5Ar,
+  yunusB1LanguageFocusChapter6Ar,
+  yunusB1LanguageFocusChapter7Ar,
+  yunusB1LanguageFocusChapter8Ar,
+} from './ar/languageFocus2';
+import {
+  yunusB1LanguageFocusChapter9,
+  yunusB1LanguageFocusChapter10,
+  yunusB1LanguageFocusChapter11,
+  yunusB1LanguageFocusChapter12,
+  yunusB1LanguageFocusChapter13,
+} from './en/languageFocus3';
+import {
+  yunusB1LanguageFocusChapter9Ar,
+  yunusB1LanguageFocusChapter10Ar,
+  yunusB1LanguageFocusChapter11Ar,
+  yunusB1LanguageFocusChapter12Ar,
+  yunusB1LanguageFocusChapter13Ar,
+} from './ar/languageFocus3';
 import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
 import { yunusB1SelfStudyGuide, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
