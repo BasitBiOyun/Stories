@@ -1,48 +1,56 @@
-import type { BookData, Exercise, PageData } from '../../../types';
+import type { BookData, PageData } from '../../../types';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1PagesAr } from './ar/pages';
 import {
-  mosesB1PolishedQuickChallenges,
-  mosesB1PolishedKnowledgeCheckExercises,
-  mosesB1PolishedVocabularyChallengePairs,
   mosesB1PolishedFinalChallengeExercises,
-} from './en/exerciseSystem';
+  mosesB1PolishedKnowledgeCheckExercises,
+  mosesB1PolishedQuickChallenges,
+  mosesB1PolishedVocabularyChallengePairs,
+  mosesB1LanguageReviewExercises,
+} from './en/exercises';
 import {
-  mosesB1PolishedQuickChallengesAr,
-  mosesB1PolishedKnowledgeCheckExercisesAr,
-  mosesB1PolishedVocabularyChallengePairsAr,
   mosesB1PolishedFinalChallengeExercisesAr,
-} from './ar/exerciseSystem';
+  mosesB1PolishedKnowledgeCheckExercisesAr,
+  mosesB1PolishedQuickChallengesAr,
+  mosesB1PolishedVocabularyChallengePairsAr,
+  mosesB1LanguageReviewExercisesAr,
+} from './ar/exercises';
 import { mosesB1LanguageFocusExercises } from './en/languageFocus';
-import { mosesB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
-import { mosesB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
-import { mosesB1LanguageFocusChapter5 } from './en/languageFocusChapter5';
-import { mosesB1LanguageFocusChapter6 } from './en/languageFocusChapter6';
-import { mosesB1LanguageFocusChapter7 } from './en/languageFocusChapter7';
-import { mosesB1LanguageFocusChapter8 } from './en/languageFocusChapter8';
-import { mosesB1LanguageFocusChapter9 } from './en/languageFocusChapter9';
-import { mosesB1LanguageFocusChapter10 } from './en/languageFocusChapter10';
-import { mosesB1LanguageFocusChapter11 } from './en/languageFocusChapter11';
-import { mosesB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
-import { mosesB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
-import { mosesB1LanguageReviewExercises } from './en/languageReview';
 import { mosesB1LanguageFocusExercisesAr } from './ar/languageFocus';
-import { mosesB1LanguageFocusChapter3Ar } from './ar/languageFocusChapter3';
-import { mosesB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
-import { mosesB1LanguageFocusChapter5Ar } from './ar/languageFocusChapter5';
-import { mosesB1LanguageFocusChapter6Ar } from './ar/languageFocusChapter6';
-import { mosesB1LanguageFocusChapter7Ar } from './ar/languageFocusChapter7';
-import { mosesB1LanguageFocusChapter8Ar } from './ar/languageFocusChapter8';
-import { mosesB1LanguageFocusChapter9Ar } from './ar/languageFocusChapter9';
-import { mosesB1LanguageFocusChapter10Ar } from './ar/languageFocusChapter10';
-import { mosesB1LanguageFocusChapter11Ar } from './ar/languageFocusChapter11';
-import { mosesB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
-import { mosesB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
-import { mosesB1LanguageReviewExercisesAr } from './ar/languageReview';
-import { mosesB1TeacherGuide, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesB1SelfStudyGuide, mosesB1StudentGuideMetadata } from './en/selfStudyGuide';
+import {
+  mosesB1LanguageFocusChapter3,
+  mosesB1LanguageFocusChapter4,
+  mosesB1LanguageFocusChapter5,
+  mosesB1LanguageFocusChapter6,
+  mosesB1LanguageFocusChapter7,
+  mosesB1LanguageFocusChapter8,
+} from './en/languageFocus2';
+import {
+  mosesB1LanguageFocusChapter9,
+  mosesB1LanguageFocusChapter10,
+  mosesB1LanguageFocusChapter11,
+  mosesB1LanguageFocusChapter12,
+  mosesB1LanguageFocusChapter13,
+} from './en/languageFocus3';
+import {
+  mosesB1LanguageFocusChapter3Ar,
+  mosesB1LanguageFocusChapter4Ar,
+  mosesB1LanguageFocusChapter5Ar,
+  mosesB1LanguageFocusChapter6Ar,
+  mosesB1LanguageFocusChapter7Ar,
+  mosesB1LanguageFocusChapter8Ar,
+} from './ar/languageFocus2';
+import {
+  mosesB1LanguageFocusChapter9Ar,
+  mosesB1LanguageFocusChapter10Ar,
+  mosesB1LanguageFocusChapter11Ar,
+  mosesB1LanguageFocusChapter12Ar,
+  mosesB1LanguageFocusChapter13Ar,
+} from './ar/languageFocus3';
+import { mosesB1TeacherGuideEn, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesB1SelfStudyGuideAr, mosesB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { mosesB1SelfStudyGuideEn } from './en/selfStudyGuide';
+import { mosesB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
@@ -76,69 +84,56 @@ const arabicLanguageFocus = {
   ...mosesB1LanguageFocusChapter13Ar,
 };
 
-const buildPages = (
-  pages: PageData[],
-  quickChallenges: Record<number, Exercise>,
-  languageFocus: Record<number, Exercise[]>,
-  knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
-  languageReview: Exercise[],
-  finalChallenge: Exercise[],
-  language: 'en' | 'ar',
-): PageData[] => pages.map((page) => {
+const buildEnglishPages = (): PageData[] => mosesB1Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = languageFocus[page.id];
     return {
       ...page,
-      exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
-      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+      exercises: mosesB1PolishedQuickChallenges[page.id] ? [mosesB1PolishedQuickChallenges[page.id]] : [],
+      ...(englishLanguageFocus[page.id] ? { languageFocusExercises: englishLanguageFocus[page.id] } : {}),
     };
   }
-  if (page.id === 14) return { ...page, exercises: knowledgeCheck };
-  if (page.id === 15) return { ...page, vocabularyPairs };
-  if (page.id === 18) {
-    return {
-      ...page,
-      title: language === 'ar' ? 'مراجعة اللغة B1' : 'B1 Language Review',
-      content: language === 'ar'
-        ? 'راجع التراكيب والعلاقات والوظائف اللغوية التي تعلمتها عبر الفصول، ثم استخدمها في سياقات جديدة مترابطة.'
-        : 'Consolidate grammar, discourse relationships and communicative functions from across the chapters, then use them in new connected contexts.',
-      exercises: languageReview,
-    };
-  }
-  if (page.id === 19) return { ...page, exercises: finalChallenge };
+  if (page.id === 14) return { ...page, exercises: mosesB1PolishedKnowledgeCheckExercises };
+  if (page.id === 15) return { ...page, vocabularyPairs: mosesB1PolishedVocabularyChallengePairs };
+  if (page.id === 18) return { ...page, title: 'B1 Language Review', content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.', exercises: mosesB1LanguageReviewExercises };
+  if (page.id === 19) return { ...page, exercises: mosesB1PolishedFinalChallengeExercises };
   return page;
 });
 
-const englishPages = buildPages(
-  mosesB1Pages,
-  mosesB1PolishedQuickChallenges,
-  englishLanguageFocus,
-  mosesB1PolishedKnowledgeCheckExercises,
-  mosesB1PolishedVocabularyChallengePairs,
-  mosesB1LanguageReviewExercises,
-  mosesB1PolishedFinalChallengeExercises,
-  'en',
-);
-const arabicPages = buildPages(
-  mosesB1PagesAr,
-  mosesB1PolishedQuickChallengesAr,
-  arabicLanguageFocus,
-  mosesB1PolishedKnowledgeCheckExercisesAr,
-  mosesB1PolishedVocabularyChallengePairsAr,
-  mosesB1LanguageReviewExercisesAr,
-  mosesB1PolishedFinalChallengeExercisesAr,
-  'ar',
-);
+const buildArabicPages = (): PageData[] => mosesB1PagesAr.map(page => {
+  if (STORY_IDS.has(page.id)) {
+    return {
+      ...page,
+      exercises: mosesB1PolishedQuickChallengesAr[page.id] ? [mosesB1PolishedQuickChallengesAr[page.id]] : [],
+      ...(arabicLanguageFocus[page.id] ? { languageFocusExercises: arabicLanguageFocus[page.id] } : {}),
+    };
+  }
+  if (page.id === 14) return { ...page, exercises: mosesB1PolishedKnowledgeCheckExercisesAr };
+  if (page.id === 15) return { ...page, vocabularyPairs: mosesB1PolishedVocabularyChallengePairsAr };
+  if (page.id === 18) return { ...page, title: 'مراجعة اللغة B1', content: 'راجع واستخدم التراكيب والعلاقات الخطابية والوظائف التواصلية التي تطورت عبر الفصول الثلاثة عشر.', exercises: mosesB1LanguageReviewExercisesAr };
+  if (page.id === 19) return { ...page, exercises: mosesB1PolishedFinalChallengeExercisesAr };
+  return page;
+});
 
 export const mosesB1BookDataEn: BookData = {
-  id: 'moses-b1-en', level: 'B1', title: 'The Story of Prophet Moses (pbuh)', pages: englishPages,
-  teacherGuide: mosesB1TeacherGuide, selfStudyGuide: mosesB1SelfStudyGuide,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadata, studentGuideMetadata: mosesB1StudentGuideMetadata, baseFontSize: 13,
+  id: 'b1-moses-en',
+  title: 'Stories of the Prophets: Moses (B1)',
+  level: 'B1',
+  baseFontSize: 12,
+  pages: buildEnglishPages(),
+  teacherGuide: mosesB1TeacherGuideEn,
+  teacherGuideMetadata: mosesB1TeacherGuideMetadata,
+  selfStudyGuide: mosesB1SelfStudyGuideEn,
 };
 
 export const mosesB1BookDataAr: BookData = {
-  id: 'moses-b1-ar', level: 'B1', title: 'قصة النبي موسى عليه السلام', pages: arabicPages,
-  teacherGuide: mosesB1TeacherGuideAr, selfStudyGuide: mosesB1SelfStudyGuideAr,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadataAr, studentGuideMetadata: mosesB1StudentGuideMetadataAr, baseFontSize: 14,
+  id: 'b1-moses-ar',
+  title: 'قصص الأنبياء: موسى (عليه السلام) (B1)',
+  level: 'B1',
+  baseFontSize: 14,
+  pages: buildArabicPages(),
+  teacherGuide: mosesB1TeacherGuideAr,
+  teacherGuideMetadata: mosesB1TeacherGuideMetadataAr,
+  selfStudyGuide: mosesB1SelfStudyGuideAr,
 };
+
+export const mosesB1BookData = mosesB1BookDataEn;
