@@ -13,8 +13,8 @@ This file is the persistent handoff for the current architecture-only simplifica
 - [x] Abraham B1 — complete, EN 20 → 7, AR 20 → 7. Closeout SHA: `3880385a103cb249e573c0dfd866420f0a682657`.
 - [x] Moses B1 — complete, EN 18 → 7, AR 18 → 7. Migration SHA: `bda7a0f56c0b41b6729b527e582ed35e15b9a671`.
 - [x] Mecca/Bilal B1 — verified already canonical on current `preview`: EN has exactly 7 canonical files and AR has exactly 7 canonical files (`pages.ts`, `exercises.ts`, `teacherGuide.ts`, `selfStudyGuide.ts`, `languageFocus.ts`, `languageFocus2.ts`, `languageFocus3.ts`). `index.ts` imports only canonical files and assembles the existing BookData/learning wiring. No story, exercise, guide, hotspot, media, CEFR, TYMM or pedagogical content was changed in this verification run. Verified against pre-run `preview` HEAD `9d3a10821a0b8577534f4ca919674144e925fde0`.
-- [ ] Yunus Emre B1 — next architecture target.
-- [ ] Abraham B2.
+- [x] Yunus Emre B1 — architecture-only migration complete. EN: 19 → 7 files. AR: 19 → 7 files. Manual Knowledge Check and Language Review content is consolidated into each language's `exercises.ts`; Chapter 4–8 Language Focus is consolidated into `languageFocus2.ts`; Chapter 9–13 Language Focus is consolidated into `languageFocus3.ts`; base `languageFocus.ts`, `pages.ts`, Teacher Guide and Self-Study Guide were not edited. `index.ts` imports only canonical files and preserves the existing BookData assembly behavior. Legacy source removal closeout SHA: `0633ea62108aa0b1ff5e9f96da5af25297ddb319`.
+- [ ] Abraham B2 — next architecture target.
 - [ ] Moses B2.
 - [ ] Mecca/Bilal B2.
 - [ ] Yunus Emre B2.
