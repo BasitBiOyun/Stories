@@ -14,15 +14,29 @@ import {
   adamB2FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { adamB2LanguageFocusExercises } from './en/languageFocus';
+import { adamB2LanguageFocusExercisesPart2 } from './en/languageFocus2';
+import { adamB2LanguageFocusExercisesPart3, adamB2LanguageReviewExercises } from './en/languageFocus3';
 import { adamB2LanguageFocusExercisesAr } from './ar/languageFocus';
-import { adamB2LanguageReviewExercises } from './en/languageReview';
-import { adamB2LanguageReviewExercisesAr } from './ar/languageReview';
+import { adamB2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
+import { adamB2LanguageFocusExercisesArPart3, adamB2LanguageReviewExercisesAr } from './ar/languageFocus3';
 import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamB2SelfStudyGuideAr, adamB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
+
+const englishLanguageFocus: Record<number, Exercise[]> = {
+  ...adamB2LanguageFocusExercises,
+  ...adamB2LanguageFocusExercisesPart2,
+  ...adamB2LanguageFocusExercisesPart3,
+};
+
+const arabicLanguageFocus: Record<number, Exercise[]> = {
+  ...adamB2LanguageFocusExercisesAr,
+  ...adamB2LanguageFocusExercisesArPart2,
+  ...adamB2LanguageFocusExercisesArPart3,
+};
 
 const decodedLower = (value = '') => {
   try {
@@ -273,6 +287,7 @@ const buildPages = (
   finalChallenge: Exercise[],
 ): PageData[] => {
   const isArabicBook = /[\u0600-\u06ff]/.test(pages.find(page => page.type === 'story')?.title ?? '');
+  const languageFocus = isArabicBook ? arabicLanguageFocus : englishLanguageFocus;
   const fullGlossary = Array.from(
     new Map(
       pages
@@ -287,9 +302,7 @@ const buildPages = (
     const page = reviewStoryPageShell(rawPage);
 
     if (STORY_IDS.has(page.id)) {
-      const languageFocusExercises = isArabicBook
-        ? adamB2LanguageFocusExercisesAr[page.id]
-        : adamB2LanguageFocusExercises[page.id];
+      const languageFocusExercises = languageFocus[page.id];
       return {
         ...page,
         exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
