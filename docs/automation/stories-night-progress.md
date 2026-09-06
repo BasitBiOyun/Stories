@@ -9,6 +9,8 @@ This file is the persistent handoff for the Stories cleanup work on `preview`.
 - [x] Abraham A2 — architecture-only migration complete. EN: 18 → 7 files. AR: 18 → 7 files. Active Quick Challenges, Knowledge Check, Vocabulary Challenge, Language Review and Final Challenge are consolidated in each language's `exercises.ts`; Student Guide preview exports are consolidated into `selfStudyGuide.ts`; Language Focus is consolidated into `languageFocus.ts`, `languageFocus2.ts`, `languageFocus3.ts`; `index.ts` is wiring only. Story `pages.ts` and Teacher Guide blobs remained unchanged. Architecture migration SHA before this tracker handoff: `05feb6d748f1c4a0b516131b4cd240dda92dc798`.
 - [ ] Moses A2 — next A2 architecture target.
 - [ ] Mecca/Bilal A2 — after Moses A2.
+- [x] Adam B1 — architecture-only migration complete. EN: 16 → 7 files. AR: 16 → 7 files. Active Language Review content is consolidated into each language's `exercises.ts`; Language Focus Part2–Part6 is consolidated into `languageFocus2.ts`; Part7–Part11 is consolidated into `languageFocus3.ts`; base `languageFocus.ts`, `pages.ts`, Teacher Guide and Self-Study Guide blobs remained unchanged; `index.ts` now imports only canonical files and preserves the existing BookData assembly behavior. Architecture migration SHA before this tracker handoff: `a1b919fb9a09449e23103704b903ea04425bf6fe`.
+- [ ] Abraham B1 — next B1/B2 architecture target.
 
 Do not use the legacy content-quality queue below to decide whether an A2 book has already received the architecture simplification. The architecture handoff above is authoritative for the current max-7-file migration.
 
