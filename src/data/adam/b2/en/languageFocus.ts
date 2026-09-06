@@ -391,6 +391,12 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         correct: 'Keep the logic visible: clarify → give the reason → shift perspective → challenge the criterion.',
         incorrect: '',
       },
+      discussionPrompts: [
+        { question: 'Clarify — Define one key term with “which is”, “in other words” or “that is”.', mode: 'Individual' },
+        { question: 'Reason — Use “because” to make the basis of the claim explicit.', mode: 'Individual' },
+        { question: 'Shift — Use “on the other hand” only when you genuinely introduce a contrasting perspective.', mode: 'Individual' },
+        { question: 'Challenge — Use “yet”, “however” or an equivalent marker to introduce evidence against the weak criterion.', mode: 'Pair' },
+      ],
     },
   ],
   6: [
@@ -472,6 +478,12 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         correct: 'Keep the discourse structure visible: boundary → contrast → declared intention → parallel development.',
         incorrect: '',
       },
+      discussionPrompts: [
+        { question: 'Boundary — State clearly what is permitted, required or prohibited in the situation.', mode: 'Individual' },
+        { question: 'Contrast — Use “while” to place two developing paths side by side.', mode: 'Individual' },
+        { question: 'Stance — Use future forms to show a speaker’s firm intention or commitment.', mode: 'Individual' },
+        { question: 'Parallelism — Repeat a grammatical pattern to make one part of the argument feel systematic or cumulative.', mode: 'Pair' },
+      ],
     },
   ]
 };
