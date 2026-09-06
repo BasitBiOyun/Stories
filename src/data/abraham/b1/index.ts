@@ -6,79 +6,87 @@ import {
   abrahamB1KnowledgeCheckExercisesPolished,
   abrahamB1QuickChallengesPolished,
   abrahamB1VocabularyChallengePairsPolished,
-} from './en/exerciseSystem';
+  abrahamB1LanguageReviewExercises,
+} from './en/exercises';
 import {
   abrahamB1FinalChallengeExercisesArPolished,
   abrahamB1KnowledgeCheckExercisesArPolished,
   abrahamB1QuickChallengesArPolished,
   abrahamB1VocabularyChallengePairsArPolished,
-} from './ar/exerciseSystem';
+  abrahamB1LanguageReviewExercisesAr,
+} from './ar/exercises';
 import { abrahamB1LanguageFocusExercises } from './en/languageFocus';
+import {
+  abrahamB1LanguageFocusChapter3,
+  abrahamB1LanguageFocusChapter4,
+  abrahamB1LanguageFocusChapter5,
+  abrahamB1LanguageFocusChapter6,
+  abrahamB1LanguageFocusChapter7,
+  abrahamB1LanguageFocusChapter8,
+} from './en/languageFocus2';
+import {
+  abrahamB1LanguageFocusChapter9,
+  abrahamB1LanguageFocusChapter10,
+  abrahamB1LanguageFocusChapter11,
+  abrahamB1LanguageFocusChapter12,
+  abrahamB1LanguageFocusChapter13,
+} from './en/languageFocus3';
 import { abrahamB1LanguageFocusExercisesAr } from './ar/languageFocus';
-import { abrahamB1LanguageFocusChapter3 } from './en/languageFocusChapter3';
-import { abrahamB1LanguageFocusChapter3Ar } from './ar/languageFocusChapter3';
-import { abrahamB1LanguageFocusChapter4 } from './en/languageFocusChapter4';
-import { abrahamB1LanguageFocusChapter4Ar } from './ar/languageFocusChapter4';
-import { abrahamB1LanguageFocusChapter5 } from './en/languageFocusChapter5';
-import { abrahamB1LanguageFocusChapter5Ar } from './ar/languageFocusChapter5';
-import { abrahamB1LanguageFocusChapter6 } from './en/languageFocusChapter6';
-import { abrahamB1LanguageFocusChapter6Ar } from './ar/languageFocusChapter6';
-import { abrahamB1LanguageFocusChapter7 } from './en/languageFocusChapter7';
-import { abrahamB1LanguageFocusChapter7Ar } from './ar/languageFocusChapter7';
-import { abrahamB1LanguageFocusChapter8 } from './en/languageFocusChapter8';
-import { abrahamB1LanguageFocusChapter8Ar } from './ar/languageFocusChapter8';
-import { abrahamB1LanguageFocusChapter9 } from './en/languageFocusChapter9';
-import { abrahamB1LanguageFocusChapter9Ar } from './ar/languageFocusChapter9';
-import { abrahamB1LanguageFocusChapter10 } from './en/languageFocusChapter10';
-import { abrahamB1LanguageFocusChapter10Ar } from './ar/languageFocusChapter10';
-import { abrahamB1LanguageFocusChapter11 } from './en/languageFocusChapter11';
-import { abrahamB1LanguageFocusChapter11Ar } from './ar/languageFocusChapter11';
-import { abrahamB1LanguageFocusChapter12 } from './en/languageFocusChapter12';
-import { abrahamB1LanguageFocusChapter12Ar } from './ar/languageFocusChapter12';
-import { abrahamB1LanguageFocusChapter13 } from './en/languageFocusChapter13';
-import { abrahamB1LanguageFocusChapter13Ar } from './ar/languageFocusChapter13';
-import { abrahamB1LanguageReviewExercises } from './en/languageReview';
-import { abrahamB1LanguageReviewExercisesAr } from './ar/languageReview';
+import {
+  abrahamB1LanguageFocusChapter3Ar,
+  abrahamB1LanguageFocusChapter4Ar,
+  abrahamB1LanguageFocusChapter5Ar,
+  abrahamB1LanguageFocusChapter6Ar,
+  abrahamB1LanguageFocusChapter7Ar,
+  abrahamB1LanguageFocusChapter8Ar,
+} from './ar/languageFocus2';
+import {
+  abrahamB1LanguageFocusChapter9Ar,
+  abrahamB1LanguageFocusChapter10Ar,
+  abrahamB1LanguageFocusChapter11Ar,
+  abrahamB1LanguageFocusChapter12Ar,
+  abrahamB1LanguageFocusChapter13Ar,
+} from './ar/languageFocus3';
 import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamB1SelfStudyGuideEn } from './en/selfstudyGuide';
+import { abrahamB1SelfStudyGuideEn } from './en/selfStudyGuide';
 import { abrahamB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-// Some legacy B1 page fallbacks point at Abraham B2 artwork. Storage resolution
-// should supply the reviewed B1 image; if it cannot, showing no image is safer
-// than silently crossing CEFR levels. Non-story shells reuse reviewed B1 story
-// artwork instead of picsum placeholders, which the shared media loader rejects.
-const prepareMediaFallbacks = (pages: PageData[]): PageData[] => {
-  const levelSafe = pages.map(page => {
-    if (!STORY_IDS.has(page.id)) return page;
-    const image = page.image ?? '';
-    return image.toLowerCase().includes('abraham_b2') ? { ...page, image: '' } : page;
-  });
-
-  const byId = new Map(levelSafe.map(page => [page.id, page]));
-  const shellImageSource: Record<number, number> = {
-    14: 1,
-    15: 8,
-    16: 12,
-    17: 13,
-    18: 13,
-  };
-
-  return levelSafe.map(page => {
-    const sourceId = shellImageSource[page.id];
-    if (!sourceId) return page;
-    return { ...page, image: byId.get(sourceId)?.image ?? '' };
-  });
+const englishLanguageFocus = {
+  ...abrahamB1LanguageFocusExercises,
+  ...abrahamB1LanguageFocusChapter3,
+  ...abrahamB1LanguageFocusChapter4,
+  ...abrahamB1LanguageFocusChapter5,
+  ...abrahamB1LanguageFocusChapter6,
+  ...abrahamB1LanguageFocusChapter7,
+  ...abrahamB1LanguageFocusChapter8,
+  ...abrahamB1LanguageFocusChapter9,
+  ...abrahamB1LanguageFocusChapter10,
+  ...abrahamB1LanguageFocusChapter11,
+  ...abrahamB1LanguageFocusChapter12,
+  ...abrahamB1LanguageFocusChapter13,
 };
 
-const englishSourcePages = prepareMediaFallbacks(abrahamB1Pages);
-const arabicSourcePages = prepareMediaFallbacks(abrahamB1PagesAr);
+const arabicLanguageFocus = {
+  ...abrahamB1LanguageFocusExercisesAr,
+  ...abrahamB1LanguageFocusChapter3Ar,
+  ...abrahamB1LanguageFocusChapter4Ar,
+  ...abrahamB1LanguageFocusChapter5Ar,
+  ...abrahamB1LanguageFocusChapter6Ar,
+  ...abrahamB1LanguageFocusChapter7Ar,
+  ...abrahamB1LanguageFocusChapter8Ar,
+  ...abrahamB1LanguageFocusChapter9Ar,
+  ...abrahamB1LanguageFocusChapter10Ar,
+  ...abrahamB1LanguageFocusChapter11Ar,
+  ...abrahamB1LanguageFocusChapter12Ar,
+  ...abrahamB1LanguageFocusChapter13Ar,
+};
 
-const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
+const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = abrahamB1LanguageFocusChapter13[page.id] ?? abrahamB1LanguageFocusChapter12[page.id] ?? abrahamB1LanguageFocusChapter11[page.id] ?? abrahamB1LanguageFocusChapter10[page.id] ?? abrahamB1LanguageFocusChapter9[page.id] ?? abrahamB1LanguageFocusChapter8[page.id] ?? abrahamB1LanguageFocusChapter7[page.id] ?? abrahamB1LanguageFocusChapter6[page.id] ?? abrahamB1LanguageFocusChapter5[page.id] ?? abrahamB1LanguageFocusChapter4[page.id] ?? abrahamB1LanguageFocusChapter3[page.id] ?? abrahamB1LanguageFocusExercises[page.id];
+    const languageFocusExercises = englishLanguageFocus[page.id];
     return {
       ...page,
       exercises: abrahamB1QuickChallengesPolished[page.id] ? [abrahamB1QuickChallengesPolished[page.id]] : [],
@@ -97,9 +105,9 @@ const buildEnglishPages = (): PageData[] => englishSourcePages.map(page => {
   return page;
 });
 
-const buildArabicPages = (): PageData[] => arabicSourcePages.map(page => {
+const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
-    const languageFocusExercises = abrahamB1LanguageFocusChapter13Ar[page.id] ?? abrahamB1LanguageFocusChapter12Ar[page.id] ?? abrahamB1LanguageFocusChapter11Ar[page.id] ?? abrahamB1LanguageFocusChapter10Ar[page.id] ?? abrahamB1LanguageFocusChapter9Ar[page.id] ?? abrahamB1LanguageFocusChapter8Ar[page.id] ?? abrahamB1LanguageFocusChapter7Ar[page.id] ?? abrahamB1LanguageFocusChapter6Ar[page.id] ?? abrahamB1LanguageFocusChapter5Ar[page.id] ?? abrahamB1LanguageFocusChapter4Ar[page.id] ?? abrahamB1LanguageFocusChapter3Ar[page.id] ?? abrahamB1LanguageFocusExercisesAr[page.id];
+    const languageFocusExercises = arabicLanguageFocus[page.id];
     return {
       ...page,
       exercises: abrahamB1QuickChallengesArPolished[page.id] ? [abrahamB1QuickChallengesArPolished[page.id]] : [],
