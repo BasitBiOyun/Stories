@@ -54,18 +54,48 @@ const hasWrongFallbackImage = (value = '') => {
 const sanitizePageImage = (page: PageData): PageData =>
   hasWrongFallbackImage(page.image) ? { ...page, image: '' } : page;
 
+const englishStoryCorrections: Record<number, [string, string][]> = {
+  2: [['Adam (pbuh) was not evolved from any other living being', 'Adam (pbuh) did not evolve from any other living being']],
+  4: [['(Sâd: 76)\"', '(Sâd: 76)']],
+  5: [['that is race, colour, or ethnicity', 'that is, race, colour, or ethnicity']],
+  10: [['story of humankind and his struggle', 'story of humankind and its struggle']],
+  15: [['What is essentially being described here are the consequences of choosing evil.', 'What is essentially being described here is the consequence of choosing evil.']],
+  17: [
+    ['Satan, too acknowledges', 'Satan, too, acknowledges'],
+    ['beacuse', 'because'],
+    ['caharacter', 'character'],
+    ['“ He (Satan) said,', '“He (Satan) said,'],
+    ['“ HE (Allah) said,', '“He (Allah) said,'],
+  ],
+};
+
+const arabicStoryCorrections: Record<number, [string, string][]> = {
+  9: [['“ فتلقى آدم من ربه كلمات', '“فتلقى آدم من ربه كلمات']],
+};
+
+const applyStoryContentCorrections = (page: PageData): PageData => {
+  if (page.type !== 'story' || !page.content) return page;
+  const isArabic = /[\u0600-\u06ff]/.test(page.title);
+  const replacements = (isArabic ? arabicStoryCorrections : englishStoryCorrections)[page.id] ?? [];
+  let content = page.content;
+  for (const [from, to] of replacements) content = content.replace(from, to);
+  return content === page.content ? page : { ...page, content };
+};
+
 /**
- * Final page-shell QA only. Canonical story `content` is never changed.
+ * Final page-shell QA only. Canonical story content is preserved except for the
+ * already-active typo/grammar corrections that previously lived in wrapper files.
  * Storage remains the preferred media source; known wrong-level/demo fallbacks are
  * blanked so failed Storage lookup cannot silently show unrelated assets.
  */
-const reviewStoryPageShell = (page: PageData): PageData => {
-  if (page.type !== 'story') return sanitizePageImage(page);
+const reviewStoryPageShell = (rawPage: PageData): PageData => {
+  const correctedPage = applyStoryContentCorrections(rawPage);
+  if (correctedPage.type !== 'story') return sanitizePageImage(correctedPage);
 
-  let reviewed: PageData = sanitizePageImage(page);
-  const isArabic = /[\u0600-\u06ff]/.test(page.title);
+  let reviewed: PageData = sanitizePageImage(correctedPage);
+  const isArabic = /[\u0600-\u06ff]/.test(correctedPage.title);
 
-  if (!isArabic && page.id === 1) {
+  if (!isArabic && correctedPage.id === 1) {
     reviewed = {
       ...reviewed,
       vocabulary: reviewed.vocabulary?.map(note =>
@@ -76,7 +106,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (isArabic && page.id === 1) {
+  if (isArabic && correctedPage.id === 1) {
     reviewed = {
       ...reviewed,
       vocabulary: reviewed.vocabulary?.map(note =>
@@ -87,7 +117,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (!isArabic && page.id === 2) {
+  if (!isArabic && correctedPage.id === 2) {
     reviewed = {
       ...reviewed,
       vocabulary: reviewed.vocabulary?.map(note =>
@@ -98,7 +128,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (isArabic && page.id === 2) {
+  if (isArabic && correctedPage.id === 2) {
     reviewed = {
       ...reviewed,
       vocabulary: [
@@ -109,14 +139,14 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (!isArabic && page.id === 3) {
+  if (!isArabic && correctedPage.id === 3) {
     reviewed = {
       ...reviewed,
       vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'astonishment'),
     };
   }
 
-  if (isArabic && page.id === 3) {
+  if (isArabic && correctedPage.id === 3) {
     reviewed = {
       ...reviewed,
       vocabulary: reviewed.vocabulary?.map(note => {
@@ -131,14 +161,14 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (!isArabic && page.id === 4) {
+  if (!isArabic && correctedPage.id === 4) {
     reviewed = {
       ...reviewed,
       hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h5b'),
     };
   }
 
-  if (isArabic && page.id === 7) {
+  if (isArabic && correctedPage.id === 7) {
     reviewed = {
       ...reviewed,
       hotspots: reviewed.hotspots?.map(hotspot =>
@@ -153,14 +183,14 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (isArabic && page.id === 10) {
+  if (isArabic && correctedPage.id === 10) {
     reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'المشاق') };
   }
-  if (isArabic && page.id === 11) {
+  if (isArabic && correctedPage.id === 11) {
     reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'التبلد الكوني') };
   }
 
-  if (page.id === 13) {
+  if (correctedPage.id === 13) {
     reviewed = {
       ...reviewed,
       title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
@@ -183,7 +213,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
     };
   }
 
-  if (page.id === 14) {
+  if (correctedPage.id === 14) {
     reviewed = isArabic
       ? {
           ...reviewed,
@@ -207,7 +237,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
         };
   }
 
-  if (page.id === 15) {
+  if (correctedPage.id === 15) {
     reviewed = isArabic
       ? {
           ...reviewed,
@@ -232,7 +262,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
         };
   }
 
-  if (page.id === 16) {
+  if (correctedPage.id === 16) {
     reviewed = isArabic
       ? {
           ...reviewed,
@@ -260,7 +290,7 @@ const reviewStoryPageShell = (page: PageData): PageData => {
         };
   }
 
-  if (isArabic && page.id === 17) {
+  if (isArabic && correctedPage.id === 17) {
     reviewed = {
       ...reviewed,
       vocabulary: [
