@@ -5,22 +5,22 @@ import {
   yunusA2QuickChallenges,
   yunusA2KnowledgeCheckExercises,
   yunusA2VocabularyChallengePairs,
+  yunusA2LanguageReviewExercises,
+  yunusA2ManualFinalChallengeExercises,
 } from './en/exercises';
 import {
   yunusA2QuickChallengesAr,
   yunusA2KnowledgeCheckExercisesAr,
   yunusA2VocabularyChallengePairsAr,
+  yunusA2LanguageReviewExercisesAr,
+  yunusA2ManualFinalChallengeExercisesAr,
 } from './ar/exercises';
 import { yunusA2LanguageFocusExercises } from './en/languageFocus';
-import { yunusA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
-import { yunusA2LanguageReviewExercises } from './en/languageReview';
+import { yunusA2LanguageFocusExercisesPart2 } from './en/languageFocus2';
+import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocus3';
 import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
-import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
-import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
-import { yunusA2LanguageReviewExercisesAr } from './ar/languageReview';
-import { yunusA2ManualFinalChallengeExercises } from './en/finalChallenge';
-import { yunusA2ManualFinalChallengeExercisesAr } from './ar/finalChallenge';
+import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
+import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocus3';
 import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
 import { teacherGuide as yunusA2TeacherGuideAr, teacherGuideMetadata as yunusA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { yunusA2SelfStudyGuide } from './en/selfStudyGuide';
