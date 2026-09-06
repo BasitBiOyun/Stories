@@ -6,39 +6,47 @@ import {
   meccaA2KnowledgeCheckExercisesPolished,
   meccaA2QuickChallengesPolished,
   meccaA2VocabularyChallengePairsPolished,
-} from './en/exerciseSystem';
-import { meccaA2LanguageReviewExercises } from './en/languageReview';
+  meccaA2LanguageReviewExercises,
+} from './en/exercises';
 import { meccaA2LanguageFocusExercises } from './en/languageFocus';
-import { meccaA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { meccaA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
-import { meccaA2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
-import { meccaA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
-import { meccaA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
-import { meccaA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
-import { meccaA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
-import { meccaA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
-import { meccaA2LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
-import { meccaA2LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
-import { meccaA2LanguageFocusExercisesPart12 } from './en/languageFocusPart12';
+import {
+  meccaA2LanguageFocusExercisesPart2,
+  meccaA2LanguageFocusExercisesPart3,
+  meccaA2LanguageFocusExercisesPart4,
+  meccaA2LanguageFocusExercisesPart5,
+  meccaA2LanguageFocusExercisesPart6,
+} from './en/languageFocus2';
+import {
+  meccaA2LanguageFocusExercisesPart7,
+  meccaA2LanguageFocusExercisesPart8,
+  meccaA2LanguageFocusExercisesPart9,
+  meccaA2LanguageFocusExercisesPart10,
+  meccaA2LanguageFocusExercisesPart11,
+  meccaA2LanguageFocusExercisesPart12,
+} from './en/languageFocus3';
 import {
   meccaA2FinalChallengeExercisesArPolished,
   meccaA2KnowledgeCheckExercisesArPolished,
   meccaA2QuickChallengesArPolished,
   meccaA2VocabularyChallengePairsArPolished,
-} from './ar/exerciseSystem';
-import { meccaA2LanguageReviewExercisesAr } from './ar/languageReview';
+  meccaA2LanguageReviewExercisesAr,
+} from './ar/exercises';
 import { meccaA2LanguageFocusExercisesAr } from './ar/languageFocus';
-import { meccaA2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
-import { meccaA2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
-import { meccaA2LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
-import { meccaA2LanguageFocusExercisesArPart5 } from './ar/languageFocusPart5';
-import { meccaA2LanguageFocusExercisesArPart6 } from './ar/languageFocusPart6';
-import { meccaA2LanguageFocusExercisesArPart7 } from './ar/languageFocusPart7';
-import { meccaA2LanguageFocusExercisesArPart8 } from './ar/languageFocusPart8';
-import { meccaA2LanguageFocusExercisesArPart9 } from './ar/languageFocusPart9';
-import { meccaA2LanguageFocusExercisesArPart10 } from './ar/languageFocusPart10';
-import { meccaA2LanguageFocusExercisesArPart11 } from './ar/languageFocusPart11';
-import { meccaA2LanguageFocusExercisesArPart12 } from './ar/languageFocusPart12';
+import {
+  meccaA2LanguageFocusExercisesArPart2,
+  meccaA2LanguageFocusExercisesArPart3,
+  meccaA2LanguageFocusExercisesArPart4,
+  meccaA2LanguageFocusExercisesArPart5,
+  meccaA2LanguageFocusExercisesArPart6,
+} from './ar/languageFocus2';
+import {
+  meccaA2LanguageFocusExercisesArPart7,
+  meccaA2LanguageFocusExercisesArPart8,
+  meccaA2LanguageFocusExercisesArPart9,
+  meccaA2LanguageFocusExercisesArPart10,
+  meccaA2LanguageFocusExercisesArPart11,
+  meccaA2LanguageFocusExercisesArPart12,
+} from './ar/languageFocus3';
 import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
