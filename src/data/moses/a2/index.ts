@@ -6,37 +6,45 @@ import {
   mosesA2KnowledgeCheckExercisesPolished,
   mosesA2QuickChallengesPolished,
   mosesA2VocabularyChallengePairsPolished,
-} from './en/exerciseSystem';
+  mosesA2LanguageReviewExercises,
+} from './en/exercises';
 import {
   mosesA2FinalChallengeExercisesArPolished,
   mosesA2KnowledgeCheckExercisesArPolished,
   mosesA2QuickChallengesArPolished,
   mosesA2VocabularyChallengePairsArPolished,
-} from './ar/exerciseSystem';
-import { mosesA2LanguageReviewExercises } from './en/languageReview';
-import { mosesA2LanguageReviewExercisesAr } from './ar/languageReview';
+  mosesA2LanguageReviewExercisesAr,
+} from './ar/exercises';
 import { mosesA2LanguageFocusExercises } from './en/languageFocus';
-import { mosesA2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { mosesA2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
-import { mosesA2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
-import { mosesA2LanguageFocusExercisesPart5 } from './en/languageFocusPart5';
-import { mosesA2LanguageFocusExercisesPart6 } from './en/languageFocusPart6';
-import { mosesA2LanguageFocusExercisesPart7 } from './en/languageFocusPart7';
-import { mosesA2LanguageFocusExercisesPart8 } from './en/languageFocusPart8';
-import { mosesA2LanguageFocusExercisesPart9 } from './en/languageFocusPart9';
-import { mosesA2LanguageFocusExercisesPart10 } from './en/languageFocusPart10';
-import { mosesA2LanguageFocusExercisesPart11 } from './en/languageFocusPart11';
+import {
+  mosesA2LanguageFocusExercisesPart2,
+  mosesA2LanguageFocusExercisesPart3,
+  mosesA2LanguageFocusExercisesPart4,
+  mosesA2LanguageFocusExercisesPart5,
+  mosesA2LanguageFocusExercisesPart6,
+} from './en/languageFocus2';
+import {
+  mosesA2LanguageFocusExercisesPart7,
+  mosesA2LanguageFocusExercisesPart8,
+  mosesA2LanguageFocusExercisesPart9,
+  mosesA2LanguageFocusExercisesPart10,
+  mosesA2LanguageFocusExercisesPart11,
+} from './en/languageFocus3';
 import { mosesA2LanguageFocusExercisesAr } from './ar/languageFocus';
-import { mosesA2LanguageFocusExercisesPart2Ar } from './ar/languageFocusPart2';
-import { mosesA2LanguageFocusExercisesPart3Ar } from './ar/languageFocusPart3';
-import { mosesA2LanguageFocusExercisesPart4Ar } from './ar/languageFocusPart4';
-import { mosesA2LanguageFocusExercisesPart5Ar } from './ar/languageFocusPart5';
-import { mosesA2LanguageFocusExercisesPart6Ar } from './ar/languageFocusPart6';
-import { mosesA2LanguageFocusExercisesPart7Ar } from './ar/languageFocusPart7';
-import { mosesA2LanguageFocusExercisesPart8Ar } from './ar/languageFocusPart8';
-import { mosesA2LanguageFocusExercisesPart9Ar } from './ar/languageFocusPart9';
-import { mosesA2LanguageFocusExercisesPart10Ar } from './ar/languageFocusPart10';
-import { mosesA2LanguageFocusExercisesPart11Ar } from './ar/languageFocusPart11';
+import {
+  mosesA2LanguageFocusExercisesPart2Ar,
+  mosesA2LanguageFocusExercisesPart3Ar,
+  mosesA2LanguageFocusExercisesPart4Ar,
+  mosesA2LanguageFocusExercisesPart5Ar,
+  mosesA2LanguageFocusExercisesPart6Ar,
+} from './ar/languageFocus2';
+import {
+  mosesA2LanguageFocusExercisesPart7Ar,
+  mosesA2LanguageFocusExercisesPart8Ar,
+  mosesA2LanguageFocusExercisesPart9Ar,
+  mosesA2LanguageFocusExercisesPart10Ar,
+  mosesA2LanguageFocusExercisesPart11Ar,
+} from './ar/languageFocus3';
 import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import {
@@ -44,13 +52,13 @@ import {
   mosesA2StudentGuideMetadataPreview as mosesA2StudentGuideMetadata,
   mosesA2StudentGuideSectionsPreview as mosesA2StudentGuideSections,
   mosesA2StudentGuideTextPreview as mosesA2StudentGuideText,
-} from './en/selfStudyGuidePreview';
+} from './en/selfStudyGuide';
 import {
   mosesA2SelfStudyGuidePreviewAr as mosesA2SelfStudyGuideAr,
   mosesA2StudentGuideMetadataPreviewAr as mosesA2StudentGuideMetadataAr,
   mosesA2StudentGuideSectionsPreviewAr as mosesA2StudentGuideSectionsAr,
   mosesA2StudentGuideTextPreviewAr as mosesA2StudentGuideTextAr,
-} from './ar/selfStudyGuidePreview';
+} from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 16 }, (_, index) => index + 1));
 
