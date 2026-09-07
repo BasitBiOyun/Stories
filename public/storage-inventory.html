@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mecca B2 Storage Inventory</title>
+  <title>Abraham B2 Storage Inventory</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 24px; color: #13202b; }
     h1 { margin-bottom: 6px; }
@@ -22,9 +22,9 @@
   </style>
 </head>
 <body>
-  <h1>Mecca B2 — Firebase Storage Inventory</h1>
+  <h1>Abraham B2 — Firebase Storage Inventory</h1>
   <div class="note">Temporary, read-only diagnostic page. It only lists Firebase Storage objects and resolves their download URLs. It never writes, renames, uploads or deletes files.</div>
-  <button id="scan">Scan Mecca B2</button>
+  <button id="scan">Scan Abraham B2</button>
   <button id="copy" disabled>Copy JSON</button>
   <div id="status" class="status">Ready.</div>
   <div id="summary"></div>
@@ -49,11 +49,11 @@
 
     const storage = getStorage(initializeApp(firebaseConfig));
     const folders = {
-      images: ['mecca/b2/images', 'Mecca/b2/images', 'mecca/mecca_b2/images', 'Mecca/mecca_b2/images'],
-      englishAudio: ['mecca/b2/audio', 'Mecca/b2/audio', 'mecca/mecca_b2/audio', 'Mecca/mecca_b2/audio'],
-      arabicAudio: ['mecca/b2/audio/arabic_audio', 'Mecca/b2/audio/arabic_audio', 'mecca/mecca_b2/audio/arabic_audio', 'Mecca/mecca_b2/audio/arabic_audio']
+      images: ['Abraham/abraham_b2/images', 'abraham/abraham_b2/images', 'Abraham/b2/images'],
+      englishAudio: ['Abraham/abraham_b2/audio', 'abraham/abraham_b2/audio', 'Abraham/b2/audio'],
+      arabicAudio: ['Abraham/abraham_b2/audio/arabic_audio', 'abraham/abraham_b2/audio/arabic_audio', 'Abraham/b2/audio/arabic_audio']
     };
-    const expectedCount = 17;
+    const expectedCount = 35;
     const imageExt = /\.(png|jpe?g|webp|avif|gif)$/i;
     const audioExt = /\.(mp3|m4a|aac|wav|ogg|opus|mpeg)$/i;
 
@@ -126,7 +126,7 @@
         }
         latestManifest = {
           generatedAt: new Date().toISOString(),
-          book: { storyId: 'mecca', level: 'B2', expectedChapters: Array.from({ length: expectedCount }, (_, i) => i + 1) },
+          book: { storyId: 'ibrahim', level: 'B2', expectedChapters: Array.from({ length: expectedCount }, (_, i) => i + 1) },
           configuredFolders: folders,
           chapters,
           diagnostics: {
