@@ -3,36 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Abraham B2 Storage Inventory</title>
+  <title>Stories A2 + B1 Storage Inventory</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 24px; color: #13202b; }
     h1 { margin-bottom: 6px; }
-    .note { color: #52606d; margin-bottom: 20px; }
+    .note { color: #52606d; margin-bottom: 18px; max-width: 900px; }
     button { padding: 10px 14px; border: 0; border-radius: 8px; background: #0e7490; color: white; font-weight: 700; cursor: pointer; margin-right: 8px; }
     button:disabled { opacity: .5; cursor: default; }
     .status { margin: 16px 0; font-weight: 700; }
     table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
     th, td { border: 1px solid #d8dee4; padding: 8px; vertical-align: top; text-align: left; }
     th { background: #f3f7f9; }
-    code { white-space: pre-wrap; overflow-wrap: anywhere; }
     .ok { color: #166534; font-weight: 700; }
     .bad { color: #b91c1c; font-weight: 700; }
-    details { margin-top: 16px; }
-    pre { background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 10px; overflow: auto; max-height: 520px; }
+    details { margin-top: 18px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 10px; overflow: auto; max-height: 600px; }
   </style>
 </head>
 <body>
-  <h1>Abraham B2 — Firebase Storage Inventory</h1>
-  <div class="note">Temporary, read-only diagnostic page. It only lists Firebase Storage objects and resolves their download URLs. It never writes, renames, uploads or deletes files.</div>
-  <button id="scan">Scan Abraham B2</button>
-  <button id="copy" disabled>Copy JSON</button>
+  <h1>A2 + B1 — Firebase Storage Inventory</h1>
+  <div class="note">Read-only scan for the ten remaining books. It lists Firebase Storage objects and resolves download URLs. It never writes, renames, uploads, or deletes anything.</div>
+  <button id="scan">Scan all 10 books</button>
+  <button id="copy" disabled>Copy combined JSON</button>
   <div id="status" class="status">Ready.</div>
-  <div id="summary"></div>
   <table>
-    <thead><tr><th>Chapter</th><th>Image</th><th>English audio</th><th>Arabic audio</th></tr></thead>
+    <thead><tr><th>Book</th><th>Chapters</th><th>Images</th><th>EN audio</th><th>AR audio</th><th>Diagnostics</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
-  <details><summary>Full JSON manifest</summary><pre id="json">Run the scan first.</pre></details>
+  <details open><summary>Combined JSON</summary><pre id="json">Run the scan first.</pre></details>
 
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js';
@@ -48,12 +46,89 @@
     };
 
     const storage = getStorage(initializeApp(firebaseConfig));
-    const folders = {
-      images: ['Abraham/abraham_b2/images', 'abraham/abraham_b2/images', 'Abraham/b2/images'],
-      englishAudio: ['Abraham/abraham_b2/audio', 'abraham/abraham_b2/audio', 'Abraham/b2/audio'],
-      arabicAudio: ['Abraham/abraham_b2/audio/arabic_audio', 'abraham/abraham_b2/audio/arabic_audio', 'Abraham/b2/audio/arabic_audio']
-    };
-    const expectedCount = 35;
+    const books = [
+      {
+        storyId: 'adam', level: 'A2', expectedCount: 10,
+        folders: {
+          images: ['Adam_A2/images', 'adam_a2/images', 'Adam/A2/images'],
+          englishAudio: ['Adam_A2/audio', 'Adam_A2', 'adam_a2/audio'],
+          arabicAudio: ['Adam_A2/Adam_a2_arabic_audio', 'Adam_A2/audio/arabic_audio', 'adam_a2/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'ibrahim', level: 'A2', expectedCount: 14,
+        folders: {
+          images: ['Abraham/abraham_a2/images', 'abraham/abraham_a2/images', 'Abraham/a2/images'],
+          englishAudio: ['Abraham/abraham_a2/audio', 'abraham/abraham_a2/audio', 'Abraham/a2/audio'],
+          arabicAudio: ['Abraham/abraham_a2/audio/arabic_audio', 'abraham/abraham_a2/audio/arabic_audio', 'Abraham/a2/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'musa', level: 'A2', expectedCount: 16,
+        folders: {
+          images: ['Moses/a2/images', 'Moses/moses_a2/images', 'moses/a2/images', 'moses/moses_a2/images'],
+          englishAudio: ['Moses/a2/audio', 'Moses/moses_a2/audio', 'moses/a2/audio', 'moses/moses_a2/audio'],
+          arabicAudio: ['Moses/a2/audio/arabic_audio', 'Moses/moses_a2/audio/arabic_audio', 'moses/a2/audio/arabic_audio', 'moses/moses_a2/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'mecca', level: 'A2', expectedCount: 13,
+        folders: {
+          images: ['mecca/a2/images', 'Mecca/a2/images', 'mecca/mecca_a2/images', 'Mecca/mecca_a2/images'],
+          englishAudio: ['mecca/a2/audio', 'Mecca/a2/audio', 'mecca/mecca_a2/audio', 'Mecca/mecca_a2/audio'],
+          arabicAudio: ['mecca/a2/audio/arabic_audio', 'Mecca/a2/audio/arabic_audio', 'mecca/mecca_a2/audio/arabic_audio', 'Mecca/mecca_a2/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'yunusEmre', level: 'A2', expectedCount: 8,
+        folders: {
+          images: ['Yunus/a2/images', 'yunus/a2/images', 'Yunus/yunus_a2/images', 'yunus/yunus_a2/images', 'YunusEmre/a2/images', 'YunusEmre/yunusemre_a2/images', 'Yunus_Emre/a2/images', 'Yunus_Emre/yunusemre_a2/images', 'yunusEmre/a2/images', 'yunusEmre/yunusemre_a2/images'],
+          englishAudio: ['yunus/a2/audio', 'Yunus/a2/audio', 'Yunus/yunus_a2/audio', 'YunusEmre/a2/audio', 'yunusEmre/a2/audio'],
+          arabicAudio: ['yunus/a2/audio/arabic_audio', 'Yunus/a2/audio/arabic_audio', 'Yunus/yunus_a2/audio/arabic_audio', 'YunusEmre/a2/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'adam', level: 'B1', expectedCount: 12,
+        folders: {
+          images: ['adam_b1/images', 'Adam_B1/images', 'Adam/adam_b1/images'],
+          englishAudio: ['adam_b1/audio', 'Adam_B1/audio'],
+          arabicAudio: ['adam_b1/audio/arabic_audio', 'Adam_B1/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'ibrahim', level: 'B1', expectedCount: 13,
+        folders: {
+          images: ['Abraham/abraham_b1/images', 'abraham/abraham_b1/images', 'Abraham/b1/images'],
+          englishAudio: ['Abraham/abraham_b1/audio', 'abraham/abraham_b1/audio', 'Abraham/b1/audio'],
+          arabicAudio: ['Abraham/abraham_b1/audio/arabic_audio', 'abraham/abraham_b1/audio/arabic_audio', 'Abraham/b1/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'musa', level: 'B1', expectedCount: 13,
+        folders: {
+          images: ['Moses/b1/images', 'Moses/moses_b1/images', 'moses/b1/images', 'moses/moses_b1/images'],
+          englishAudio: ['Moses/b1/audio', 'Moses/moses_b1/audio', 'moses/b1/audio', 'moses/moses_b1/audio'],
+          arabicAudio: ['Moses/b1/audio/arabic_audio', 'Moses/moses_b1/audio/arabic_audio', 'moses/b1/audio/arabic_audio', 'moses/moses_b1/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'mecca', level: 'B1', expectedCount: 15,
+        folders: {
+          images: ['mecca/b1/images', 'Mecca/b1/images', 'mecca/mecca_b1/images', 'Mecca/mecca_b1/images'],
+          englishAudio: ['mecca/b1/audio', 'Mecca/b1/audio', 'mecca/mecca_b1/audio', 'Mecca/mecca_b1/audio'],
+          arabicAudio: ['mecca/b1/audio/arabic_audio', 'Mecca/b1/audio/arabic_audio', 'mecca/mecca_b1/audio/arabic_audio', 'Mecca/mecca_b1/audio/arabic_audio']
+        }
+      },
+      {
+        storyId: 'yunusEmre', level: 'B1', expectedCount: 13,
+        folders: {
+          images: ['Yunus/b1/images', 'yunus/b1/images', 'Yunus/yunus_b1/images', 'yunus/yunus_b1/images', 'YunusEmre/b1/images', 'YunusEmre/yunusemre_b1/images'],
+          englishAudio: ['yunus/b1/audio', 'Yunus/b1/audio', 'Yunus/yunus_b1/audio', 'YunusEmre/b1/audio', 'yunusEmre/b1/audio'],
+          arabicAudio: ['yunus/b1/audio/arabic_audio', 'Yunus/b1/audio/arabic_audio', 'Yunus/yunus_b1/audio/arabic_audio', 'YunusEmre/b1/audio/arabic_audio']
+        }
+      }
+    ];
+
     const imageExt = /\.(png|jpe?g|webp|avif|gif)$/i;
     const audioExt = /\.(mp3|m4a|aac|wav|ogg|opus|mpeg)$/i;
 
@@ -68,21 +143,21 @@
       return numeric ? Number.parseInt(numeric[1], 10) : null;
     }
 
-    async function scanRole(role, candidateFolders, kind) {
+    async function scanRole(role, candidateFolders, kind, expectedCount) {
       const selected = {};
       const candidates = {};
       const unavailableFolders = [];
       const unresolvedFiles = [];
       const ext = kind === 'image' ? imageExt : audioExt;
-      for (let priority = 0; priority < candidateFolders.length; priority++) {
+      for (let priority = 0; priority < candidateFolders.length; priority += 1) {
         const folder = candidateFolders[priority];
         let listing;
         try { listing = await listAll(ref(storage, folder)); }
         catch (error) { unavailableFolders.push({ folder, error: String(error?.message ?? error) }); continue; }
-        const items = [...listing.items].filter(item => ext.test(item.name)).sort((a,b) => a.name.localeCompare(b.name));
+        const items = [...listing.items].filter(item => ext.test(item.name)).sort((a, b) => a.name.localeCompare(b.name));
         for (const item of items) {
           const chapter = parseChapterNumber(item.name);
-          if (chapter == null) continue;
+          if (chapter == null || chapter < 1 || chapter > expectedCount) continue;
           let downloadUrl = '';
           try { downloadUrl = await getDownloadURL(item); }
           catch (error) { unresolvedFiles.push({ fullPath: item.fullPath, error: String(error?.message ?? error) }); continue; }
@@ -94,69 +169,85 @@
       return { selected, candidates, unavailableFolders, unresolvedFiles };
     }
 
-    function cell(asset, count) {
-      if (!asset) return '<span class="bad">MISSING</span>';
-      const extra = count > 1 ? `<div class="bad">${count} candidates</div>` : '<div class="ok">1 selected</div>';
-      return `${extra}<code>${asset.fullPath}</code><br><a href="${asset.downloadUrl}" target="_blank" rel="noreferrer">open</a>`;
+    async function scanBook(book) {
+      const [images, englishAudio, arabicAudio] = await Promise.all([
+        scanRole('image', book.folders.images, 'image', book.expectedCount),
+        scanRole('englishAudio', book.folders.englishAudio, 'audio', book.expectedCount),
+        scanRole('arabicAudio', book.folders.arabicAudio, 'audio', book.expectedCount)
+      ]);
+      const chapters = Array.from({ length: book.expectedCount }, (_, i) => {
+        const chapter = i + 1;
+        return {
+          chapter,
+          image: images.selected[chapter] ?? null,
+          englishAudio: englishAudio.selected[chapter] ?? null,
+          arabicAudio: arabicAudio.selected[chapter] ?? null
+        };
+      });
+      return {
+        book: { storyId: book.storyId, level: book.level, expectedChapters: chapters.map(x => x.chapter) },
+        configuredFolders: book.folders,
+        chapters,
+        diagnostics: {
+          missing: {
+            images: chapters.filter(x => !x.image).map(x => x.chapter),
+            englishAudio: chapters.filter(x => !x.englishAudio).map(x => x.chapter),
+            arabicAudio: chapters.filter(x => !x.arabicAudio).map(x => x.chapter)
+          },
+          duplicateCandidates: {
+            images: Object.entries(images.candidates).filter(([, v]) => v.length > 1),
+            englishAudio: Object.entries(englishAudio.candidates).filter(([, v]) => v.length > 1),
+            arabicAudio: Object.entries(arabicAudio.candidates).filter(([, v]) => v.length > 1)
+          },
+          sameEnglishArabicAudio: chapters.filter(x => x.englishAudio?.downloadUrl && x.englishAudio.downloadUrl === x.arabicAudio?.downloadUrl).map(x => x.chapter),
+          unavailableFolders: { images: images.unavailableFolders, englishAudio: englishAudio.unavailableFolders, arabicAudio: arabicAudio.unavailableFolders },
+          unresolvedFiles: { images: images.unresolvedFiles, englishAudio: englishAudio.unresolvedFiles, arabicAudio: arabicAudio.unresolvedFiles }
+        }
+      };
     }
 
-    let latestManifest = null;
     const scanButton = document.getElementById('scan');
     const copyButton = document.getElementById('copy');
     const status = document.getElementById('status');
     const rows = document.getElementById('rows');
     const json = document.getElementById('json');
-    const summary = document.getElementById('summary');
+    let latestManifest = null;
 
     scanButton.addEventListener('click', async () => {
-      scanButton.disabled = true; copyButton.disabled = true; status.textContent = 'Scanning Firebase Storage…'; rows.innerHTML = ''; summary.innerHTML = '';
+      scanButton.disabled = true;
+      copyButton.disabled = true;
+      rows.innerHTML = '';
+      json.textContent = 'Scanning…';
+      const results = [];
       try {
-        const [images, englishAudio, arabicAudio] = await Promise.all([
-          scanRole('image', folders.images, 'image'),
-          scanRole('englishAudio', folders.englishAudio, 'audio'),
-          scanRole('arabicAudio', folders.arabicAudio, 'audio')
-        ]);
-        const chapters = [];
-        for (let chapter = 1; chapter <= expectedCount; chapter++) {
-          const row = { chapter, image: images.selected[chapter] ?? null, englishAudio: englishAudio.selected[chapter] ?? null, arabicAudio: arabicAudio.selected[chapter] ?? null };
-          chapters.push(row);
+        for (let i = 0; i < books.length; i += 1) {
+          const book = books[i];
+          status.textContent = `Scanning ${i + 1}/10: ${book.storyId} ${book.level}…`;
+          const result = await scanBook(book);
+          results.push(result);
+          const missing = result.diagnostics.missing;
+          const duplicateCount = Object.values(result.diagnostics.duplicateCandidates).reduce((sum, list) => sum + list.length, 0);
+          const problemCount = missing.images.length + missing.englishAudio.length + missing.arabicAudio.length + duplicateCount + result.diagnostics.sameEnglishArabicAudio.length;
           const tr = document.createElement('tr');
-          tr.innerHTML = `<td><strong>${chapter}</strong></td><td>${cell(row.image, images.candidates[chapter]?.length ?? 0)}</td><td>${cell(row.englishAudio, englishAudio.candidates[chapter]?.length ?? 0)}</td><td>${cell(row.arabicAudio, arabicAudio.candidates[chapter]?.length ?? 0)}</td>`;
+          tr.innerHTML = `<td><strong>${book.storyId} ${book.level}</strong></td><td>${book.expectedCount}</td><td>${book.expectedCount - missing.images.length}/${book.expectedCount}</td><td>${book.expectedCount - missing.englishAudio.length}/${book.expectedCount}</td><td>${book.expectedCount - missing.arabicAudio.length}/${book.expectedCount}</td><td class="${problemCount ? 'bad' : 'ok'}">${problemCount ? `${problemCount} issue(s)` : 'clean'}</td>`;
           rows.appendChild(tr);
         }
-        latestManifest = {
-          generatedAt: new Date().toISOString(),
-          book: { storyId: 'ibrahim', level: 'B2', expectedChapters: Array.from({ length: expectedCount }, (_, i) => i + 1) },
-          configuredFolders: folders,
-          chapters,
-          diagnostics: {
-            missing: {
-              images: chapters.filter(x => !x.image).map(x => x.chapter),
-              englishAudio: chapters.filter(x => !x.englishAudio).map(x => x.chapter),
-              arabicAudio: chapters.filter(x => !x.arabicAudio).map(x => x.chapter)
-            },
-            duplicateCandidates: {
-              images: Object.entries(images.candidates).filter(([,v]) => v.length > 1),
-              englishAudio: Object.entries(englishAudio.candidates).filter(([,v]) => v.length > 1),
-              arabicAudio: Object.entries(arabicAudio.candidates).filter(([,v]) => v.length > 1)
-            },
-            sameEnglishArabicAudio: chapters.filter(x => x.englishAudio?.downloadUrl && x.englishAudio.downloadUrl === x.arabicAudio?.downloadUrl).map(x => x.chapter),
-            unavailableFolders: { images: images.unavailableFolders, englishAudio: englishAudio.unavailableFolders, arabicAudio: arabicAudio.unavailableFolders },
-            unresolvedFiles: { images: images.unresolvedFiles, englishAudio: englishAudio.unresolvedFiles, arabicAudio: arabicAudio.unresolvedFiles }
-          }
-        };
-        const missing = latestManifest.diagnostics.missing;
-        summary.innerHTML = `<strong>Images:</strong> ${expectedCount - missing.images.length}/${expectedCount} &nbsp; <strong>EN audio:</strong> ${expectedCount - missing.englishAudio.length}/${expectedCount} &nbsp; <strong>AR audio:</strong> ${expectedCount - missing.arabicAudio.length}/${expectedCount}`;
+        latestManifest = { generatedAt: new Date().toISOString(), books: results };
         json.textContent = JSON.stringify(latestManifest, null, 2);
-        status.textContent = 'Scan complete.'; copyButton.disabled = false;
-      } catch (error) { status.textContent = `Scan failed: ${String(error?.message ?? error)}`; }
-      finally { scanButton.disabled = false; }
+        status.textContent = 'All 10 books scanned.';
+        copyButton.disabled = false;
+      } catch (error) {
+        status.textContent = `Scan failed: ${String(error?.message ?? error)}`;
+        json.textContent = JSON.stringify({ generatedAt: new Date().toISOString(), partialBooks: results, error: String(error?.message ?? error) }, null, 2);
+      } finally {
+        scanButton.disabled = false;
+      }
     });
 
     copyButton.addEventListener('click', async () => {
       if (!latestManifest) return;
       await navigator.clipboard.writeText(JSON.stringify(latestManifest, null, 2));
-      status.textContent = 'JSON copied to clipboard.';
+      status.textContent = 'Combined JSON copied to clipboard.';
     });
   </script>
 </body>
