@@ -1,32 +1,49 @@
 import type { BookData, Exercise, PageData, TeacherGuideMetadata } from '../../../types';
-import { meccaB2Pages } from './en/pages';
+
+import { meccaB2Pages as rawMeccaB2Pages } from './en/pages';
 import {
-  meccaB2QuickChallengesPolished,
-  meccaB2VocabularyChallengePairsPolished,
-  meccaB2FinalChallengeExercisesPolished,
-} from './en/exerciseSystem';
-import { meccaB2ManualKnowledgeCheckExercises } from './en/knowledgeCheck';
+  meccaB2QuickChallenges,
+  meccaB2VocabularyChallengePairs,
+  meccaB2FinalChallengeExercises,
+} from './en/exercises';
 import { meccaB2LanguageFocusExercises } from './en/languageFocus';
-import { meccaB2LanguageFocusExercisesPart2 } from './en/languageFocusPart2';
-import { meccaB2LanguageFocusExercisesPart3 } from './en/languageFocusPart3';
-import { meccaB2LanguageFocusExercisesPart4 } from './en/languageFocusPart4';
-import { meccaB2LanguageReviewExercises } from './en/languageReview';
+import { meccaB2LanguageFocusExercisesPart2 } from './en/languageFocus2';
+import {
+  meccaB2LanguageFocusExercisesPart3,
+  meccaB2LanguageFocusExercisesPart4,
+  meccaB2LanguageReviewExercises,
+} from './en/languageFocus3';
 import { meccaB2TeacherGuide, meccaB2TeacherGuideMetadata } from './en/teacherGuide';
 import { meccaB2SelfStudyGuide, meccaB2StudentGuideMetadata } from './en/selfStudyGuide';
-import { meccaB2PagesAr } from './ar/pages';
+
+import { meccaB2PagesAr as rawMeccaB2PagesAr } from './ar/pages';
 import {
-  meccaB2QuickChallengesArPolished,
-  meccaB2VocabularyChallengePairsArPolished,
-  meccaB2FinalChallengeExercisesArPolished,
-} from './ar/exerciseSystem';
-import { meccaB2ManualKnowledgeCheckExercisesAr } from './ar/knowledgeCheck';
+  meccaB2QuickChallengesAr,
+  meccaB2VocabularyChallengePairsAr,
+  meccaB2FinalChallengeExercisesAr,
+} from './ar/exercises';
 import { meccaB2LanguageFocusExercisesAr } from './ar/languageFocus';
-import { meccaB2LanguageFocusExercisesArPart2 } from './ar/languageFocusPart2';
-import { meccaB2LanguageFocusExercisesArPart3 } from './ar/languageFocusPart3';
-import { meccaB2LanguageFocusExercisesArPart4 } from './ar/languageFocusPart4';
-import { meccaB2LanguageReviewExercisesAr } from './ar/languageReview';
+import { meccaB2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
+import {
+  meccaB2LanguageFocusExercisesArPart3,
+  meccaB2LanguageFocusExercisesArPart4,
+  meccaB2LanguageReviewExercisesAr,
+} from './ar/languageFocus3';
 import { meccaB2TeacherGuideAr, meccaB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB2SelfStudyGuideAr, meccaB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+
+const cleanPage = (page: PageData): PageData => {
+  const clean: PageData = { ...page };
+  delete clean.exercises;
+  delete clean.sequencingItems;
+  delete clean.vocabularyPairs;
+  delete clean.syncPoints;
+  delete clean.timedChunks;
+  return clean;
+};
+
+const meccaB2Pages = rawMeccaB2Pages.map(cleanPage);
+const meccaB2PagesAr = rawMeccaB2PagesAr.map(cleanPage);
 
 const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
 
@@ -43,6 +60,202 @@ const arabicLanguageFocus: Record<number, Exercise[]> = {
   ...meccaB2LanguageFocusExercisesArPart3,
   ...meccaB2LanguageFocusExercisesArPart4,
 };
+
+const knowledgeFeedbackEn = {
+  correct: 'Correct. Your answer is supported by the story evidence.',
+  incorrect: 'Not yet. Return to the relevant chapter, find the evidence, and try again.',
+};
+
+const knowledgeMcEn = (
+  id: string,
+  question: string,
+  options: string[],
+  correctAnswer: number,
+  explanation: string,
+): Exercise => ({
+  id,
+  type: 'multiple-choice',
+  title: 'Knowledge Check',
+  instructions: 'Choose the best answer supported by the story.',
+  question,
+  options,
+  correctAnswer,
+  explanation,
+  feedback: knowledgeFeedbackEn,
+});
+
+const meccaB2ManualKnowledgeCheckExercises: Exercise[] = [
+  knowledgeMcEn(
+    'me-b2-mk1',
+    'What detail does the book use to show the scale of Quraysh long-distance trade?',
+    ['The annual summer and winter caravans could include up to 2,500 camels', 'Every caravan consisted of exactly ten camels', 'Trade was limited to goods carried by individual travelers'],
+    0,
+    'Chapter 5 says the annual summer and winter journeys could use caravans numbering up to 2,500 camels, illustrating the scale of organized trade.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk2',
+    'Which pair correctly reflects two destinations or connections in Quraysh trade?',
+    ['Egypt was an important caravan destination, while Abyssinia was connected by sea', 'Constantinople was the only destination and sea trade did not exist', 'All trade remained inside the Arabian Peninsula'],
+    0,
+    'Chapter 5 identifies Egypt as an important destination and describes maritime trade relations with Abyssinia.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk3',
+    'Besides high lending rates, what behaviors does the social-class chapter say also pushed people into debt?',
+    ['Drinking and gambling', 'Pilgrimage and prayer', 'Poetry and genealogy'],
+    0,
+    'Chapter 7 adds that widespread drinking and gambling were among the reasons people repeatedly fell into debt.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk4',
+    'How old was Prophet Muhammad (as) when he attended the meeting connected with Hilfü’l-Fudûl?',
+    ['Twenty years old', 'Forty years old', 'Fifty-two years old'],
+    0,
+    'Chapter 8 states that Prophet Muhammad (as) was twenty years old when he attended the meeting that formed Hilfü’l-Fudûl.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk5',
+    'Why did the chapter say many tribes placed special value on having male children?',
+    ['Physical fighting strength and the resulting tribal protection and prestige were highly valued', 'Only sons were allowed to participate in trade fairs', 'Male children were required for pilgrimage'],
+    0,
+    'Chapter 10 connects the value placed on sons with physical strength, fighting capacity, tribal protection and respect among tribes.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk6',
+    'Which statement is directly supported by the chapter on slavery?',
+    ['Slaves were treated as economic property and could also serve as displays of wealth or protection in war', 'Slavery had no economic role in Mecca', 'Slaves were described as the city’s most politically powerful class'],
+    0,
+    'Chapter 11 describes slavery as an economic institution and says enslaved people were used for labor, personal service, displays of wealth and protection in war.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk7',
+    'Which practice does the religious-life chapter describe alongside pilgrimage and idol worship?',
+    ['People sought omens before taking action', 'People rejected every form of pilgrimage', 'Soothsayers were forbidden from making predictions'],
+    0,
+    'Chapter 12 says superstitious beliefs were widespread and that people sought omens before doing things.'
+  ),
+  knowledgeMcEn(
+    'me-b2-mk8',
+    'What economic distinction does the Quraysh-and-power chapter say the Quran introduced?',
+    ['Trade is lawful while usury is unlawful', 'Both trade and usury are unlawful', 'Usury is lawful while trade is unlawful'],
+    0,
+    'Chapter 14 contrasts the Quraysh view of usury with the Quranic distinction that trade is lawful and usury is unlawful.'
+  ),
+];
+
+const knowledgeFeedbackAr = {
+  correct: 'صحيح. إجابتك مدعومة بدليل من القصة.',
+  incorrect: 'ليس بعد. ارجع إلى الفصل المناسب، وابحث عن الدليل، ثم حاول مرة أخرى.',
+};
+
+const knowledgeMcAr = (
+  id: string,
+  question: string,
+  options: string[],
+  correctAnswer: number,
+  explanation: string,
+): Exercise => ({
+  id,
+  type: 'multiple-choice',
+  title: 'اختبار المعرفة',
+  instructions: 'اختر أفضل إجابة مدعومة بالقصة.',
+  question,
+  options,
+  correctAnswer,
+  explanation,
+  feedback: knowledgeFeedbackAr,
+});
+
+const meccaB2ManualKnowledgeCheckExercisesAr: Exercise[] = [
+  knowledgeMcAr(
+    'me-b2-ar-mk1',
+    'ما التفصيل الذي يستخدمه الكتاب لإظهار ضخامة تجارة قريش البعيدة؟',
+    ['كان عدد جمال قوافل رحلتي الصيف والشتاء السنويتين يصل إلى 2500 جمل', 'كانت كل قافلة تتكون من عشرة جمال فقط', 'اقتصرت التجارة على بضائع يحملها أفراد منفردون'],
+    0,
+    'يذكر الفصل الخامس أن قوافل رحلتي الصيف والشتاء السنويتين كانت قد تصل إلى 2500 جمل، وهو دليل على حجم التجارة المنظمة.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk2',
+    'أي زوج يعكس بصورة صحيحة اثنتين من صلات قريش التجارية؟',
+    ['كانت مصر وجهة مهمة للقوافل، وكانت الحبشة مرتبطة بالتجارة البحرية', 'كانت القسطنطينية الوجهة الوحيدة ولم توجد تجارة بحرية', 'بقيت كل التجارة داخل شبه الجزيرة العربية'],
+    0,
+    'يذكر الفصل الخامس مصر بوصفها وجهة مهمة، كما يذكر علاقات قريش التجارية البحرية مع الحبشة.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk3',
+    'إلى جانب فوائد الديون المرتفعة، ما السلوكان اللذان يذكر الفصل أنهما أسهما أيضاً في وقوع الناس في الديون؟',
+    ['شرب الخمر والقمار', 'الحج والصلاة', 'الشعر وحفظ الأنساب'],
+    0,
+    'يضيف الفصل السابع أن شيوع شرب الخمر والقمار كان من أسباب وقوع الناس المتكرر في الديون.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk4',
+    'كم كان عمر النبي محمد (ص) عندما حضر الاجتماع المرتبط بحلف الفضول؟',
+    ['عشرون عاماً', 'أربعون عاماً', 'اثنان وخمسون عاماً'],
+    0,
+    'يذكر الفصل الثامن أن النبي محمد (ص) كان في العشرين من عمره عندما حضر الاجتماع الذي ارتبط بتأسيس حلف الفضول.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk5',
+    'لماذا كان كثير من القبائل يعلقون أهمية خاصة على كثرة الأبناء الذكور بحسب الفصل؟',
+    ['لأن القوة البدنية والقدرة القتالية وما يرتبط بهما من حماية ومكانة قبلية كانت ذات قيمة كبيرة', 'لأن الذكور وحدهم كانوا يسمح لهم بدخول الأسواق', 'لأن الحج كان يشترط وجود أبناء ذكور'],
+    0,
+    'يربط الفصل العاشر تفضيل الأبناء الذكور بالقوة البدنية والقتال والحماية القبلية والمكانة بين القبائل.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk6',
+    'أي عبارة يدعمها مباشرة فصل الرق؟',
+    ['عومل الرقيق كملكية اقتصادية، واستُخدموا أيضاً في الخدمة والعمل وإظهار الثراء والحماية في الحرب', 'لم يكن للرق أي دور اقتصادي في مكة', 'كان الرقيق أقوى طبقة سياسية في المدينة'],
+    0,
+    'يصف الفصل الحادي عشر الرق بوصفه مؤسسة اقتصادية ويذكر استخدام الرقيق في العمل والخدمة وإظهار الثراء والحماية في أوقات الحرب.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk7',
+    'ما الممارسة التي يذكرها فصل الحياة الدينية إلى جانب الحج وعبادة الأصنام؟',
+    ['كان الناس يلتمسون الطيرة أو العلامات قبل الإقدام على الأمور', 'كان الناس يرفضون الحج كله', 'كان الكهان ممنوعين من التنبؤ بالمستقبل'],
+    0,
+    'يذكر الفصل الثاني عشر شيوع المعتقدات الخرافية وأن الناس كانوا يلتمسون العلامات قبل الإقدام على أفعالهم.'
+  ),
+  knowledgeMcAr(
+    'me-b2-ar-mk8',
+    'ما التمييز الاقتصادي الذي يقول فصل قريش والسلطة إن القرآن قرره؟',
+    ['التجارة حلال والربا حرام', 'التجارة والربا كلاهما حرام', 'الربا حلال والتجارة حرام'],
+    0,
+    'يذكر الفصل الرابع عشر أن القرآن ميّز بين التجارة والربا، فاعتبر التجارة حلالاً والربا حراماً.'
+  ),
+];
+
+const finalFeedbackEn={
+  correct:'Correct. Your answer synthesizes evidence from across the book.',
+  incorrect:'Not yet. Reconnect the relevant chapters and distinguish the relationship being tested.'
+};
+
+const finalReplacementEn: Record<string, Exercise> = {
+  'me-b2-f6': { id:'me-b2-f6',type:'matching',title:'Final Challenge',instructions:'Match each institution with the broader role it plays in the book.',question:'How do different institutions create, protect, or challenge power?',matchingPairs:[{left:'Sacred months',right:'Create safer movement that supports pilgrimage and fairs'},{left:'Tribal protection',right:'Provides security but can pressure individual conformity'},{left:'Hilfü’l-Fudûl',right:'Organizes practical resistance to injustice against vulnerable people'},{left:'Poetry as tribal media',right:'Shapes public memory, praise, blame and group identity'}],correctAnswer:{'Sacred months':'Create safer movement that supports pilgrimage and fairs','Tribal protection':'Provides security but can pressure individual conformity','Hilfü’l-Fudûl':'Organizes practical resistance to injustice against vulnerable people','Poetry as tribal media':'Shapes public memory, praise, blame and group identity'},explanation:'The book compares institutions that create security, social pressure, justice and cultural influence rather than treating power as only political office.',feedback: finalFeedbackEn },
+  'me-b2-f7': { id:'me-b2-f7',type:'matching',title:'Final Challenge',instructions:'Match each group with the evidence that most carefully qualifies a broad claim.',question:'Which evidence prevents one-dimensional descriptions of Meccan society?',matchingPairs:[{left:'Women before Islam',right:'Experiences varied by tribe and social status, although many lower-status women were severely disadvantaged'},{left:'Pre-Islamic Arabs',right:'Hospitality and Hilfü’l-Fudûl existed alongside serious injustice and tribal competition'},{left:'Quraysh leaders',right:'Prominence depended on status and the existing order, not simply identical levels of wealth'},{left:'Early Muslims',right:'Many vulnerable people joined despite strong pressure from established elites'}],correctAnswer:{'Women before Islam':'Experiences varied by tribe and social status, although many lower-status women were severely disadvantaged','Pre-Islamic Arabs':'Hospitality and Hilfü’l-Fudûl existed alongside serious injustice and tribal competition','Quraysh leaders':'Prominence depended on status and the existing order, not simply identical levels of wealth','Early Muslims':'Many vulnerable people joined despite strong pressure from established elites'},explanation:'B2 mastery requires qualified claims that preserve variation, contradiction and social position.',feedback: finalFeedbackEn },
+  'me-b2-f8': { id:'me-b2-f8',type:'fill-blanks',title:'Final Challenge',instructions:'Complete the whole-book synthesis with the key concept.',question:'Complete the systems relationship.',fillBlanksText:'Across the book, sacred prestige, trade wealth, tribal protection and political [blank] repeatedly reinforce one another.',correctAnswer:'authority',explanation:'The later chapters make authority a central link between economic prestige, religious status and political leadership.',feedback: finalFeedbackEn },
+  'me-b2-f9': { id:'me-b2-f9',type:'fill-blanks',title:'Final Challenge',instructions:'Complete the concluding synthesis with the chapter’s own ethical language.',question:'Complete the broader meaning of Jahiliyyah.',fillBlanksText:'The conclusion treats Jahiliyyah not only as a past era but as a recurring culture shaped by human [blank], oppression and unequal worth.',correctAnswer:'arrogance',explanation:'The final chapter explicitly extends Jahiliyyah beyond one period and connects it with human arrogance, oppression and moral disorder.',feedback: finalFeedbackEn }
+};
+
+const finalFeedbackAr={
+  correct:'صحيح. إجابتك تولّف أدلة من فصول متعددة.',
+  incorrect:'ليس بعد. أعد وصل الفصول ذات الصلة وحدد العلاقة التي يختبرها السؤال.'
+};
+
+const finalReplacementAr: Record<string, Exercise> = {
+  'me-b2-ar-f6': { id:'me-b2-ar-f6',type:'matching',title:'التحدي النهائي',instructions:'طابق كل مؤسسة بالدور الأوسع الذي تؤديه في الكتاب.',question:'كيف تنشئ المؤسسات المختلفة القوة أو تحميها أو تتحداها؟',matchingPairs:[{left:'الأشهر الحرم',right:'توفر حركة أكثر أمناً تدعم الحج والأسواق'},{left:'الحماية القبلية',right:'تمنح أمناً لكنها قد تضغط على الفرد ليتوافق مع الجماعة'},{left:'حلف الفضول',right:'ينظم مقاومة عملية للظلم دفاعاً عن الفئات الضعيفة'},{left:'الشعر بوصفه إعلاماً قبلياً',right:'يشكل الذاكرة العامة والمدح والذم وهوية الجماعة'}],correctAnswer:{'الأشهر الحرم':'توفر حركة أكثر أمناً تدعم الحج والأسواق','الحماية القبلية':'تمنح أمناً لكنها قد تضغط على الفرد ليتوافق مع الجماعة','حلف الفضول':'ينظم مقاومة عملية للظلم دفاعاً عن الفئات الضعيفة','الشعر بوصفه إعلاماً قبلياً':'يشكل الذاكرة العامة والمدح والذم وهوية الجماعة'},explanation:'يقارن الكتاب بين مؤسسات تنتج الأمن والضغط الاجتماعي والعدالة والتأثير الثقافي، فلا يحصر القوة في السلطة السياسية فقط.',feedback: finalFeedbackAr },
+  'me-b2-ar-f7': { id:'me-b2-ar-f7',type:'matching',title:'التحدي النهائي',instructions:'طابق كل مجموعة بالدليل الذي يقيّد الحكم العام بدقة.',question:'أي أدلة تمنع وصف المجتمع المكي بصورة أحادية؟',matchingPairs:[{left:'النساء قبل الإسلام',right:'اختلفت التجارب بحسب القبيلة والمكانة، مع معاناة شديدة لدى كثير من نساء الطبقات الأدنى'},{left:'العرب قبل الإسلام',right:'وجدت الضيافة وحلف الفضول إلى جانب ظلم شديد ومنافسة قبلية'},{left:'قادة قريش',right:'ارتبطت مكانتهم بالنظام القائم والموقع الاجتماعي لا بدرجة واحدة من الثراء'},{left:'المسلمون الأوائل',right:'انضم كثير من الضعفاء رغم الضغط القوي من النخبة القائمة'}],correctAnswer:{'النساء قبل الإسلام':'اختلفت التجارب بحسب القبيلة والمكانة، مع معاناة شديدة لدى كثير من نساء الطبقات الأدنى','العرب قبل الإسلام':'وجدت الضيافة وحلف الفضول إلى جانب ظلم شديد ومنافسة قبلية','قادة قريش':'ارتبطت مكانتهم بالنظام القائم والموقع الاجتماعي لا بدرجة واحدة من الثراء','المسلمون الأوائل':'انضم كثير من الضعفاء رغم الضغط القوي من النخبة القائمة'},explanation:'إتقان B2 يتطلب أحكاماً مقيدة تحفظ الاختلاف والتناقض والموقع الاجتماعي.',feedback: finalFeedbackAr },
+  'me-b2-ar-f8': { id:'me-b2-ar-f8',type:'fill-blanks',title:'التحدي النهائي',instructions:'أكمل التوليف العام بالمفهوم المفتاحي.',question:'أكمل علاقة الأنظمة في الكتاب.',fillBlanksText:'عبر الكتاب، تتعاضد المكانة المقدسة والثروة التجارية والحماية القبلية و[blank] السياسية مراراً.',correctAnswer:'السلطة',explanation:'تجعل الفصول المتأخرة السلطة حلقة تربط المكانة الاقتصادية والدينية بالقيادة السياسية.',feedback: finalFeedbackAr },
+  'me-b2-ar-f9': { id:'me-b2-ar-f9',type:'fill-blanks',title:'التحدي النهائي',instructions:'أكمل الخلاصة بلغة الفصل الأخلاقية.',question:'أكمل المعنى الأوسع للجاهلية.',fillBlanksText:'يعامل الختام الجاهلية لا بوصفها عصراً ماضياً فقط، بل ثقافة متكررة يشكلها [blank] الإنساني والظلم وانتقاص قيمة الإنسان.',correctAnswer:'الكبر',explanation:'يوسع الفصل الأخير مفهوم الجاهلية ويصلها بالكبر الإنساني والظلم والاضطراب الأخلاقي.',feedback: finalFeedbackAr }
+};
+
+const meccaB2QuickChallengesPolished = meccaB2QuickChallenges;
+const meccaB2VocabularyChallengePairsPolished = meccaB2VocabularyChallengePairs;
+const meccaB2FinalChallengeExercisesPolished = meccaB2FinalChallengeExercises.map(exercise => finalReplacementEn[exercise.id] ?? exercise);
+
+const meccaB2QuickChallengesArPolished = meccaB2QuickChallengesAr;
+const meccaB2VocabularyChallengePairsArPolished = meccaB2VocabularyChallengePairsAr;
+const meccaB2FinalChallengeExercisesArPolished = meccaB2FinalChallengeExercisesAr.map(exercise => finalReplacementAr[exercise.id] ?? exercise);
 
 const attachLearning = (
   pages: PageData[],
