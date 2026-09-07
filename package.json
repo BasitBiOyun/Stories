@@ -16,7 +16,8 @@
     "validate": "node scripts/validation/runDeployChecks.mjs --checks-only",
     "validate:deploy": "node scripts/validation/runDeployChecks.mjs",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
-    "audit:media": "tsx scripts/validation/auditStorageMedia.ts"
+    "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
+    "inventory:storage": "tsx scripts/validation/exportStorageInventory.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
@@ -37,8 +38,6 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.4",
-    "autoprefixer": "^10.4.21",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "google-auth-library": "^10.9.0",
