@@ -1,4 +1,4 @@
-name: One-off Mecca A2 cleanup
+name: One-off Adam B2 canonical finalization
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  cleanup:
+  finalize:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout preview
@@ -28,8 +28,237 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Apply Mecca A2 cleanup
-        run: node scripts/oneoff_mecca_a2_cleanup.mjs
+      - name: Finalize Adam B2 canonical sources
+        shell: bash
+        run: |
+          cat > /tmp/finalize-adam-b2.ts <<'TS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { pathToFileURL } from 'node:url';
+
+          const root = process.cwd();
+          const p = (...parts: string[]) => path.join(root, ...parts);
+          const enPagesPath = p('src/data/adam/b2/en/pages.ts');
+          const arPagesPath = p('src/data/adam/b2/ar/pages.ts');
+          const enExercisesPath = p('src/data/adam/b2/en/exercises.ts');
+          const arExercisesPath = p('src/data/adam/b2/ar/exercises.ts');
+          const enLf3Path = p('src/data/adam/b2/en/languageFocus3.ts');
+          const arLf3Path = p('src/data/adam/b2/ar/languageFocus3.ts');
+          const indexPath = p('src/data/adam/b2/index.ts');
+
+          const prepareLegacyPagesForImport = (file: string, symbol: string) => {
+            let source = fs.readFileSync(file, 'utf8');
+            source = source.replace(new RegExp(`\\n?import \\{ ${symbol} \\} from './exercises';\\n?`), '\n');
+            source = source.replace(new RegExp(`exercises:\\s*${symbol}`), 'exercises: []');
+            fs.writeFileSync(file, source);
+          };
+
+          // The legacy page shells referenced review exports that were already moved.
+          // Remove only those stale imports in the working tree so we can evaluate the
+          // CURRENT runtime result before replacing pages.ts with its canonical data.
+          prepareLegacyPagesForImport(enPagesPath, 'adamB2FinalReviewExercises');
+          prepareLegacyPagesForImport(arPagesPath, 'adamB2FinalReviewExercisesAr');
+
+          const indexModule = await import(`${pathToFileURL(indexPath).href}?snapshot=${Date.now()}`);
+          const enLf3Module = await import(`${pathToFileURL(enLf3Path).href}?review=${Date.now()}`);
+          const arLf3Module = await import(`${pathToFileURL(arLf3Path).href}?review=${Date.now()}`);
+
+          const activeEnPages = indexModule.adamB2BookDataEn.pages;
+          const activeArPages = indexModule.adamB2BookDataAr.pages;
+          const activeEnReview = enLf3Module.adamB2LanguageReviewExercises;
+          const activeArReview = arLf3Module.adamB2LanguageReviewExercisesAr;
+
+          if (!Array.isArray(activeEnPages) || activeEnPages.length !== 22) throw new Error('Unexpected Adam B2 EN page count');
+          if (!Array.isArray(activeArPages) || activeArPages.length !== 22) throw new Error('Unexpected Adam B2 AR page count');
+          if (!Array.isArray(activeEnReview) || activeEnReview.length === 0) throw new Error('Missing active EN Language Review');
+          if (!Array.isArray(activeArReview) || activeArReview.length === 0) throw new Error('Missing active AR Language Review');
+
+          const canonicalPageShells = (pages: any[]) => pages.map((page) => {
+            const clean = structuredClone(page);
+            delete clean.exercises;
+            delete clean.languageFocusExercises;
+            delete clean.vocabularyPairs;
+            return clean;
+          });
+
+          const writePages = (file: string, exportName: string, pages: any[]) => {
+            const output = `import type { PageData } from '../../../../types';\n\n// Canonical Adam B2 page data. Learning activities are wired from exercises.ts / languageFocus*.ts.\nexport const ${exportName}: PageData[] = ${JSON.stringify(canonicalPageShells(pages), null, 2)};\n`;
+            fs.writeFileSync(file, output);
+          };
+
+          writePages(enPagesPath, 'adamB2Pages', activeEnPages);
+          writePages(arPagesPath, 'adamB2PagesAr', activeArPages);
+
+          const replaceReviewExport = (file: string, reviewName: string, finalName: string, value: any[]) => {
+            let source = fs.readFileSync(file, 'utf8');
+            const start = source.indexOf(`export const ${reviewName}: Exercise[] =`);
+            const end = source.indexOf(`export const ${finalName}: Exercise[] =`, start);
+            if (start < 0 || end < 0) throw new Error(`Cannot locate ${reviewName} in ${file}`);
+            const replacement = `export const ${reviewName}: Exercise[] = ${JSON.stringify(value, null, 2)};\n\n`;
+            source = source.slice(0, start) + replacement + source.slice(end);
+            fs.writeFileSync(file, source);
+          };
+
+          // Preserve the exact review that the app was actually rendering, then make
+          // exercises.ts its single canonical home.
+          replaceReviewExport(enExercisesPath, 'adamB2LanguageReviewExercises', 'adamB2FinalChallengeExercises', activeEnReview);
+          replaceReviewExport(arExercisesPath, 'adamB2LanguageReviewExercisesAr', 'adamB2FinalChallengeExercisesAr', activeArReview);
+
+          const removeReviewFromLf3 = (file: string, exportName: string, headerOld: string, headerNew: string) => {
+            let source = fs.readFileSync(file, 'utf8');
+            const exportPos = source.indexOf(`export const ${exportName}: Exercise[] =`);
+            if (exportPos < 0) throw new Error(`Cannot locate ${exportName} in ${file}`);
+            const commentPos = source.lastIndexOf('/**', exportPos);
+            if (commentPos < 0) throw new Error(`Cannot locate review comment in ${file}`);
+            source = source.slice(0, commentPos).trimEnd() + '\n';
+            source = source.replace(headerOld, headerNew);
+            fs.writeFileSync(file, source);
+          };
+
+          removeReviewFromLf3(
+            enLf3Path,
+            'adamB2LanguageReviewExercises',
+            '/** Adam B2 English Language Focus — Chapters 13–17, plus Language Review. */',
+            '/** Adam B2 English Language Focus — Chapters 13–17. */',
+          );
+          removeReviewFromLf3(
+            arLf3Path,
+            'adamB2LanguageReviewExercisesAr',
+            '/** التركيز اللغوي العربي لآدم B2 — الفصول 13–17، مع المراجعة اللغوية. */',
+            '/** التركيز اللغوي العربي لآدم B2 — الفصول 13–17. */',
+          );
+
+          const indexSource = `import type { BookData, Exercise, PageData } from '../../../types';
+          import { adamB2Pages } from './en/pages';
+          import { adamB2PagesAr } from './ar/pages';
+          import {
+            adamB2QuickChallenges,
+            adamB2KnowledgeCheckExercises,
+            adamB2VocabularyChallengePairs,
+            adamB2LanguageReviewExercises,
+            adamB2FinalChallengeExercises,
+          } from './en/exercises';
+          import {
+            adamB2QuickChallengesAr,
+            adamB2KnowledgeCheckExercisesAr,
+            adamB2VocabularyChallengePairsAr,
+            adamB2LanguageReviewExercisesAr,
+            adamB2FinalChallengeExercisesAr,
+          } from './ar/exercises';
+          import { adamB2LanguageFocusExercises } from './en/languageFocus';
+          import { adamB2LanguageFocusExercisesPart2 } from './en/languageFocus2';
+          import { adamB2LanguageFocusExercisesPart3 } from './en/languageFocus3';
+          import { adamB2LanguageFocusExercisesAr } from './ar/languageFocus';
+          import { adamB2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
+          import { adamB2LanguageFocusExercisesArPart3 } from './ar/languageFocus3';
+          import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
+          import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
+          import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
+          import { adamB2SelfStudyGuideAr, adamB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+
+          const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
+
+          const englishLanguageFocus: Record<number, Exercise[]> = {
+            ...adamB2LanguageFocusExercises,
+            ...adamB2LanguageFocusExercisesPart2,
+            ...adamB2LanguageFocusExercisesPart3,
+          };
+
+          const arabicLanguageFocus: Record<number, Exercise[]> = {
+            ...adamB2LanguageFocusExercisesAr,
+            ...adamB2LanguageFocusExercisesArPart2,
+            ...adamB2LanguageFocusExercisesArPart3,
+          };
+
+          const wirePages = (
+            pages: PageData[],
+            quickChallenges: Record<number, Exercise>,
+            languageFocus: Record<number, Exercise[]>,
+            knowledgeCheck: Exercise[],
+            vocabularyPairs: { word: string; meaning: string }[],
+            languageReview: Exercise[],
+            finalChallenge: Exercise[],
+          ): PageData[] => pages.map((page) => {
+            if (STORY_IDS.has(page.id)) {
+              const quick = quickChallenges[page.id];
+              const focus = languageFocus[page.id];
+              return {
+                ...page,
+                ...(quick ? { exercises: [quick] } : {}),
+                ...(focus ? { languageFocusExercises: focus } : {}),
+              };
+            }
+            if (page.id === 18) return { ...page, exercises: knowledgeCheck };
+            if (page.id === 19) return { ...page, exercises: languageReview };
+            if (page.id === 20) return { ...page, vocabularyPairs };
+            if (page.id === 22) return { ...page, exercises: finalChallenge };
+            return page;
+          });
+
+          export const adamB2BookDataEn: BookData = {
+            id: 'b2-prophets-en',
+            title: 'Stories of the Prophets: Adam (B2)',
+            level: 'B2',
+            baseFontSize: 12,
+            pages: wirePages(
+              adamB2Pages,
+              adamB2QuickChallenges,
+              englishLanguageFocus,
+              adamB2KnowledgeCheckExercises,
+              adamB2VocabularyChallengePairs,
+              adamB2LanguageReviewExercises,
+              adamB2FinalChallengeExercises,
+            ),
+            teacherGuide: adamB2TeacherGuide,
+            teacherGuideMetadata: adamB2TeacherGuideMetadata,
+            selfStudyGuide: adamB2SelfStudyGuide,
+            studentGuideMetadata: adamB2StudentGuideMetadata,
+          };
+
+          export const adamB2BookDataAr: BookData = {
+            id: 'b2-prophets-ar',
+            title: 'قصص الأنبياء: آدم (عليه السلام)',
+            level: 'B2',
+            baseFontSize: 14,
+            pages: wirePages(
+              adamB2PagesAr,
+              adamB2QuickChallengesAr,
+              arabicLanguageFocus,
+              adamB2KnowledgeCheckExercisesAr,
+              adamB2VocabularyChallengePairsAr,
+              adamB2LanguageReviewExercisesAr,
+              adamB2FinalChallengeExercisesAr,
+            ),
+            teacherGuide: adamB2TeacherGuideAr,
+            teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
+            selfStudyGuide: adamB2SelfStudyGuideAr,
+            studentGuideMetadata: adamB2StudentGuideMetadataAr,
+          };
+
+          export const adamB2BookData = adamB2BookDataEn;
+          `;
+          fs.writeFileSync(indexPath, indexSource);
+
+          const allowed = new Set(['pages.ts', 'exercises.ts', 'teacherGuide.ts', 'selfStudyGuide.ts', 'languageFocus.ts', 'languageFocus2.ts', 'languageFocus3.ts']);
+          for (const lang of ['en', 'ar']) {
+            const dir = p('src/data/adam/b2', lang);
+            const files = fs.readdirSync(dir).sort();
+            if (files.length > 7 || files.some((file) => !allowed.has(file))) {
+              throw new Error(`Adam B2 ${lang} canonical file contract failed: ${files.join(', ')}`);
+            }
+          }
+
+          const finalIndex = fs.readFileSync(indexPath, 'utf8');
+          for (const forbidden of ['reviewStoryPageShell', 'sanitizePageImage', 'applyStoryContentCorrections', 'StoryCorrections', 'pagesBase']) {
+            if (finalIndex.includes(forbidden)) throw new Error(`Forbidden index mutation remains: ${forbidden}`);
+          }
+          if (fs.readFileSync(enLf3Path, 'utf8').includes('adamB2LanguageReviewExercises')) throw new Error('EN review still duplicated in languageFocus3');
+          if (fs.readFileSync(arLf3Path, 'utf8').includes('adamB2LanguageReviewExercisesAr')) throw new Error('AR review still duplicated in languageFocus3');
+          if (!fs.readFileSync(enExercisesPath, 'utf8').includes('adamB2LanguageReviewExercises')) throw new Error('EN review missing from exercises.ts');
+          if (!fs.readFileSync(arExercisesPath, 'utf8').includes('adamB2LanguageReviewExercisesAr')) throw new Error('AR review missing from exercises.ts');
+          TS
+
+          npx tsx /tmp/finalize-adam-b2.ts
 
       - name: Typecheck
         run: npm run typecheck
@@ -37,16 +266,28 @@ jobs:
       - name: Production build
         run: npm run build
 
+      - name: Verify canonical Adam B2 tree
+        run: |
+          test "$(find src/data/adam/b2/en -maxdepth 1 -type f | wc -l)" -le 7
+          test "$(find src/data/adam/b2/ar -maxdepth 1 -type f | wc -l)" -le 7
+          ! grep -q 'adamB2LanguageReviewExercises' src/data/adam/b2/en/languageFocus3.ts
+          ! grep -q 'adamB2LanguageReviewExercisesAr' src/data/adam/b2/ar/languageFocus3.ts
+          ! grep -Eq 'reviewStoryPageShell|sanitizePageImage|applyStoryContentCorrections|StoryCorrections|pagesBase' src/data/adam/b2/index.ts
+
       - name: Remove one-off tooling
         run: |
           rm -f scripts/oneoff_mecca_a2_cleanup.mjs
           rm -f .github/workflows/oneoff-mecca-a2-cleanup.yml
 
-      - name: Commit completed Mecca A2
+      - name: Commit finalized Adam B2
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- src/data/mecca/a2/en/pages.ts src/data/mecca/a2/ar/pages.ts src/data/mecca/a2/en/teacherGuide.ts src/data/mecca/a2/ar/teacherGuide.ts docs/BOOK_QA_PROGRESS.md
-          git add -u -- src/data/mecca/a2 scripts/oneoff_mecca_a2_cleanup.mjs .github/workflows/oneoff-mecca-a2-cleanup.yml
-          git commit -m 'Complete Mecca A2 manual QA'
+          git add -- src/data/adam/b2/en/pages.ts src/data/adam/b2/ar/pages.ts
+          git add -- src/data/adam/b2/en/exercises.ts src/data/adam/b2/ar/exercises.ts
+          git add -- src/data/adam/b2/en/languageFocus3.ts src/data/adam/b2/ar/languageFocus3.ts
+          git add -- src/data/adam/b2/index.ts
+          git add -u -- scripts/oneoff_mecca_a2_cleanup.mjs .github/workflows/oneoff-mecca-a2-cleanup.yml
+          git commit -m 'Finalize Adam B2 canonical content wiring'
+          git pull --rebase origin preview
           git push origin HEAD:preview
