@@ -47,7 +47,7 @@ import {
   mosesB1LanguageFocusChapter12Ar,
   mosesB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { mosesB1TeacherGuideEn, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
+import { mosesB1TeacherGuide as mosesB1TeacherGuideEn, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { mosesB1SelfStudyGuideEn } from './en/selfStudyGuide';
 import { mosesB1SelfStudyGuideAr } from './ar/selfStudyGuide';
