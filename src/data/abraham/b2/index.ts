@@ -873,7 +873,7 @@ const canonicalVocabulary: Record<number, readonly VocabSeed[]> = {
     v('companion', 'صحابة النبي', 'A person who lived with and supported Prophet Muhammad.', 'من لقي النبي محمد وآمن به وصحبه.'),
     v('narrated many hadiths', 'الرواة الكبار للحديث', 'Reported a large number of transmitted sayings and accounts.', 'نقل عددًا كبيرًا من الأحاديث والروايات.'),
     v('Safa', 'جبل الصفا', 'One of the two hills between which Hajar searched for help.', 'أحد الجبلين اللذين سعت هاجر بينهما طلبًا للماء.'),
-    v('patient search', 'البحث المثابر', 'A persistent effort continued despite hardship.', 'سعي مستمر بصبر رغم المشقة.'),
+    v('patient search', 'بحث هاجر المثابر', 'A persistent effort continued despite hardship.', 'سعي مستمر بصبر رغم المشقة.'),
     v('pilgrimage', 'الحج', 'A religious journey to a sacred place.', 'رحلة دينية إلى مكان مقدس.'),
   ],
   30: [
