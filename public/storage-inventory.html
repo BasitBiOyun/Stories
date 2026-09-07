@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yunus Emre B2 Storage Inventory</title>
+  <title>Adam B2 Storage Inventory</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 24px; color: #13202b; }
     h1 { margin-bottom: 6px; }
@@ -22,27 +22,17 @@
   </style>
 </head>
 <body>
-  <h1>Yunus Emre B2 — Firebase Storage Inventory</h1>
+  <h1>Adam B2 — Firebase Storage Inventory</h1>
   <div class="note">Temporary, read-only diagnostic page. It only lists Firebase Storage objects and resolves their download URLs. It never writes, renames, uploads or deletes files.</div>
-  <button id="scan">Scan Yunus B2</button>
+  <button id="scan">Scan Adam B2</button>
   <button id="copy" disabled>Copy JSON</button>
   <div id="status" class="status">Ready.</div>
   <div id="summary"></div>
   <table>
-    <thead>
-      <tr>
-        <th>Chapter</th>
-        <th>Image</th>
-        <th>English audio</th>
-        <th>Arabic audio</th>
-      </tr>
-    </thead>
+    <thead><tr><th>Chapter</th><th>Image</th><th>English audio</th><th>Arabic audio</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
-  <details>
-    <summary>Full JSON manifest</summary>
-    <pre id="json">Run the scan first.</pre>
-  </details>
+  <details><summary>Full JSON manifest</summary><pre id="json">Run the scan first.</pre></details>
 
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js';
@@ -58,13 +48,12 @@
     };
 
     const storage = getStorage(initializeApp(firebaseConfig));
-
     const folders = {
-      images: ['yunus/b2/images', 'Yunus/b2/images', 'Yunus/yunus_b2/images', 'yunus/yunus_b2/images', 'YunusEmre/b2/images', 'YunusEmre/yunusemre_b2/images'],
-      englishAudio: ['yunus/b2/audio', 'Yunus/b2/audio', 'Yunus/yunus_b2/audio', 'YunusEmre/b2/audio', 'yunusEmre/b2/audio'],
-      arabicAudio: ['yunus/b2/audio/arabic_audio', 'Yunus/b2/audio/arabic_audio', 'Yunus/yunus_b2/audio/arabic_audio', 'YunusEmre/b2/audio/arabic_audio']
+      images: ['adam_b2/images', 'Adam_B2/images', 'Adam/adam_b2/images'],
+      englishAudio: ['adam_b2/audio', 'Adam_B2/audio'],
+      arabicAudio: ['adam_b2/audio/arabic_audio', 'Adam_B2/audio/arabic_audio']
     };
-
+    const expectedCount = 17;
     const imageExt = /\.(png|jpe?g|webp|avif|gif)$/i;
     const audioExt = /\.(mp3|m4a|aac|wav|ogg|opus|mpeg)$/i;
 
@@ -85,28 +74,18 @@
       const unavailableFolders = [];
       const unresolvedFiles = [];
       const ext = kind === 'image' ? imageExt : audioExt;
-
       for (let priority = 0; priority < candidateFolders.length; priority++) {
         const folder = candidateFolders[priority];
         let listing;
-        try {
-          listing = await listAll(ref(storage, folder));
-        } catch (error) {
-          unavailableFolders.push({ folder, error: String(error?.message ?? error) });
-          continue;
-        }
-
-        const items = [...listing.items].filter(item => ext.test(item.name)).sort((a, b) => a.name.localeCompare(b.name));
+        try { listing = await listAll(ref(storage, folder)); }
+        catch (error) { unavailableFolders.push({ folder, error: String(error?.message ?? error) }); continue; }
+        const items = [...listing.items].filter(item => ext.test(item.name)).sort((a,b) => a.name.localeCompare(b.name));
         for (const item of items) {
           const chapter = parseChapterNumber(item.name);
           if (chapter == null) continue;
           let downloadUrl = '';
-          try {
-            downloadUrl = await getDownloadURL(item);
-          } catch (error) {
-            unresolvedFiles.push({ fullPath: item.fullPath, error: String(error?.message ?? error) });
-            continue;
-          }
+          try { downloadUrl = await getDownloadURL(item); }
+          catch (error) { unresolvedFiles.push({ fullPath: item.fullPath, error: String(error?.message ?? error) }); continue; }
           const asset = { role, chapter, priority, folder, name: item.name, fullPath: item.fullPath, downloadUrl };
           (candidates[chapter] ??= []).push(asset);
           if (!selected[chapter]) selected[chapter] = asset;
@@ -130,41 +109,24 @@
     const summary = document.getElementById('summary');
 
     scanButton.addEventListener('click', async () => {
-      scanButton.disabled = true;
-      copyButton.disabled = true;
-      status.textContent = 'Scanning Firebase Storage…';
-      rows.innerHTML = '';
-      summary.innerHTML = '';
-
+      scanButton.disabled = true; copyButton.disabled = true; status.textContent = 'Scanning Firebase Storage…'; rows.innerHTML = ''; summary.innerHTML = '';
       try {
         const [images, englishAudio, arabicAudio] = await Promise.all([
           scanRole('image', folders.images, 'image'),
           scanRole('englishAudio', folders.englishAudio, 'audio'),
           scanRole('arabicAudio', folders.arabicAudio, 'audio')
         ]);
-
         const chapters = [];
-        for (let chapter = 1; chapter <= 13; chapter++) {
-          const row = {
-            chapter,
-            image: images.selected[chapter] ?? null,
-            englishAudio: englishAudio.selected[chapter] ?? null,
-            arabicAudio: arabicAudio.selected[chapter] ?? null
-          };
+        for (let chapter = 1; chapter <= expectedCount; chapter++) {
+          const row = { chapter, image: images.selected[chapter] ?? null, englishAudio: englishAudio.selected[chapter] ?? null, arabicAudio: arabicAudio.selected[chapter] ?? null };
           chapters.push(row);
           const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td><strong>${chapter}</strong></td>
-            <td>${cell(row.image, images.candidates[chapter]?.length ?? 0)}</td>
-            <td>${cell(row.englishAudio, englishAudio.candidates[chapter]?.length ?? 0)}</td>
-            <td>${cell(row.arabicAudio, arabicAudio.candidates[chapter]?.length ?? 0)}</td>
-          `;
+          tr.innerHTML = `<td><strong>${chapter}</strong></td><td>${cell(row.image, images.candidates[chapter]?.length ?? 0)}</td><td>${cell(row.englishAudio, englishAudio.candidates[chapter]?.length ?? 0)}</td><td>${cell(row.arabicAudio, arabicAudio.candidates[chapter]?.length ?? 0)}</td>`;
           rows.appendChild(tr);
         }
-
         latestManifest = {
           generatedAt: new Date().toISOString(),
-          book: { storyId: 'yunusEmre', level: 'B2', expectedChapters: Array.from({ length: 13 }, (_, i) => i + 1) },
+          book: { storyId: 'adam', level: 'B2', expectedChapters: Array.from({ length: expectedCount }, (_, i) => i + 1) },
           configuredFolders: folders,
           chapters,
           diagnostics: {
@@ -174,34 +136,21 @@
               arabicAudio: chapters.filter(x => !x.arabicAudio).map(x => x.chapter)
             },
             duplicateCandidates: {
-              images: Object.entries(images.candidates).filter(([, v]) => v.length > 1),
-              englishAudio: Object.entries(englishAudio.candidates).filter(([, v]) => v.length > 1),
-              arabicAudio: Object.entries(arabicAudio.candidates).filter(([, v]) => v.length > 1)
+              images: Object.entries(images.candidates).filter(([,v]) => v.length > 1),
+              englishAudio: Object.entries(englishAudio.candidates).filter(([,v]) => v.length > 1),
+              arabicAudio: Object.entries(arabicAudio.candidates).filter(([,v]) => v.length > 1)
             },
             sameEnglishArabicAudio: chapters.filter(x => x.englishAudio?.downloadUrl && x.englishAudio.downloadUrl === x.arabicAudio?.downloadUrl).map(x => x.chapter),
-            unavailableFolders: {
-              images: images.unavailableFolders,
-              englishAudio: englishAudio.unavailableFolders,
-              arabicAudio: arabicAudio.unavailableFolders
-            },
-            unresolvedFiles: {
-              images: images.unresolvedFiles,
-              englishAudio: englishAudio.unresolvedFiles,
-              arabicAudio: arabicAudio.unresolvedFiles
-            }
+            unavailableFolders: { images: images.unavailableFolders, englishAudio: englishAudio.unavailableFolders, arabicAudio: arabicAudio.unavailableFolders },
+            unresolvedFiles: { images: images.unresolvedFiles, englishAudio: englishAudio.unresolvedFiles, arabicAudio: arabicAudio.unresolvedFiles }
           }
         };
-
         const missing = latestManifest.diagnostics.missing;
-        summary.innerHTML = `<strong>Images:</strong> ${13 - missing.images.length}/13 &nbsp; <strong>EN audio:</strong> ${13 - missing.englishAudio.length}/13 &nbsp; <strong>AR audio:</strong> ${13 - missing.arabicAudio.length}/13`;
+        summary.innerHTML = `<strong>Images:</strong> ${expectedCount - missing.images.length}/${expectedCount} &nbsp; <strong>EN audio:</strong> ${expectedCount - missing.englishAudio.length}/${expectedCount} &nbsp; <strong>AR audio:</strong> ${expectedCount - missing.arabicAudio.length}/${expectedCount}`;
         json.textContent = JSON.stringify(latestManifest, null, 2);
-        status.textContent = 'Scan complete.';
-        copyButton.disabled = false;
-      } catch (error) {
-        status.textContent = `Scan failed: ${String(error?.message ?? error)}`;
-      } finally {
-        scanButton.disabled = false;
-      }
+        status.textContent = 'Scan complete.'; copyButton.disabled = false;
+      } catch (error) { status.textContent = `Scan failed: ${String(error?.message ?? error)}`; }
+      finally { scanButton.disabled = false; }
     });
 
     copyButton.addEventListener('click', async () => {
