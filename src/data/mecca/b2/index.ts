@@ -41,6 +41,16 @@ const VOCAB_INDEXES: Record<number, number[]> = {
   13:[0,1,2,3,4], 14:[0,1,2,3,4], 15:[0,1,2,3,4], 16:[0,1,2,3,4], 17:[0,1,2,3,4],
 };
 
+const EN_WORD_OVERRIDES: Record<number, Record<string, string>> = {
+  1:{ superpower:'superpowers' },
+  5:{ caravan:'caravans', boost:'boosting', merchant:'merchants' },
+  6:{ 'trade festival':'trade festivals' },
+  7:{ capitalist:'capitalists' },
+  8:{ orphan:'orphans' },
+  10:{ ancestor:'ancestors' },
+  12:{ Hanif:'Hanifs', mediator:'mediators', omen:'omens' },
+};
+
 const HOTSPOT_COORDS: Record<number, [number, number, number, number]> = {
   1:[24,38,73,62], 2:[29,65,74,34], 3:[23,58,69,31], 4:[31,36,76,64], 5:[22,67,67,39],
   6:[27,32,72,68], 7:[25,55,78,35], 8:[32,70,70,42], 9:[21,43,75,66], 10:[30,29,69,61],
@@ -130,9 +140,12 @@ const standardizePage = (page: PageData, language: 'en' | 'ar'): PageData => {
   const vocabulary = indexes
     .map(index => page.vocabulary?.[index])
     .filter((item): item is NonNullable<PageData['vocabulary']>[number] => Boolean(item))
-    .map(item => language === 'en' && EN_DEFINITION_OVERRIDES[item.word]
-      ? { ...item, definition: EN_DEFINITION_OVERRIDES[item.word] }
-      : item);
+    .map(item => {
+      if (language !== 'en') return item;
+      const definition = EN_DEFINITION_OVERRIDES[item.word] ?? item.definition;
+      const word = EN_WORD_OVERRIDES[page.id]?.[item.word] ?? item.word;
+      return { ...item, word, definition };
+    });
 
   const c = HOTSPOT_COORDS[page.id];
   const hotspots = (page.hotspots ?? []).slice(0, 2).map((hotspot, index) => ({
