@@ -1,20 +1,8 @@
 import type { BookData, Exercise, PageData } from '../../../types';
 import { adamB2Pages } from './en/pages';
 import { adamB2PagesAr } from './ar/pages';
-import {
-  adamB2QuickChallenges,
-  adamB2KnowledgeCheckExercises,
-  adamB2VocabularyChallengePairs,
-  adamB2LanguageReviewExercises,
-  adamB2FinalChallengeExercises,
-} from './en/exercises';
-import {
-  adamB2QuickChallengesAr,
-  adamB2KnowledgeCheckExercisesAr,
-  adamB2VocabularyChallengePairsAr,
-  adamB2LanguageReviewExercisesAr,
-  adamB2FinalChallengeExercisesAr,
-} from './ar/exercises';
+import { adamB2QuickChallenges, adamB2KnowledgeCheckExercises, adamB2VocabularyChallengePairs, adamB2LanguageReviewExercises, adamB2FinalChallengeExercises } from './en/exercises';
+import { adamB2QuickChallengesAr, adamB2KnowledgeCheckExercisesAr, adamB2VocabularyChallengePairsAr, adamB2LanguageReviewExercisesAr, adamB2FinalChallengeExercisesAr } from './ar/exercises';
 import { adamB2LanguageFocusExercises } from './en/languageFocus';
 import { adamB2LanguageFocusExercisesPart2 } from './en/languageFocus2';
 import { adamB2LanguageFocusExercisesPart3 } from './en/languageFocus3';
@@ -26,404 +14,61 @@ import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudy
 import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { adamB2SelfStudyGuideAr, adamB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
-
-const englishLanguageFocus: Record<number, Exercise[]> = {
-  ...adamB2LanguageFocusExercises,
-  ...adamB2LanguageFocusExercisesPart2,
-  ...adamB2LanguageFocusExercisesPart3,
+const STORY_IDS = new Set(Array.from({ length: 17 }, (_, i) => i + 1));
+const B='https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/';
+const IMG=['','','','','','', '2c7f06f0-1c7b-4f72-bbdc-220aebe0f3eb','888f74ef-8ab1-4399-b94f-499f280488d9','b1edc4c5-1feb-41b7-8c59-3919406cd8a4','02398d91-13a7-4809-b9a5-7e7d10e9b6c0','ccb788e1-98ea-43fc-9397-aecc67ff8d34','c520bb71-bf37-4f3e-a7fd-752ee62d8125','ea7397e9-5206-4dec-80ae-4f5fae82309d','ed61f9d6-f850-4a84-9f2f-acb6a00fc6a3','4399b928-a16f-4bdd-a697-b274b27d32c2','b599808a-3de8-4dc1-a9e0-ad6067e1903b','7a5a94a7-cbb8-458b-b865-f7281e454742','fb1cf4bc-7a18-4dab-8cde-2eab06c1ff0a'];
+const ENA=['','0b8932e8-d415-4e1b-846d-5b43c5e6c8a5','a7ec7e2d-f33f-41c3-b6c8-5816abceea1a','0dcc80e8-706d-4b22-85bd-2c269180bd8b','c077f30d-5f0e-4030-a373-069abf985246','88331cdd-99ae-459f-a260-5b3f2351635f','6abb93df-41c0-4d46-81a4-bf52e53ff672','802716e0-1e3e-4f5f-99a4-a481ac28491c','7350d4c8-c0f2-4474-8c59-3919406cd8a4','81c54390-7d2e-4d99-9d10-6935c85a3bbe','be3bea4e-5ae6-488c-9a07-46e885b5d89c','2d3f4f6a-09fd-4706-bfab-b2f4b2287cd9','ecfdfa30-32b7-485c-bdf4-957a49eae96a','faef98f2-8ab5-4d08-85be-e2e9f1ae33a3','f976eee6-6b6d-4aa5-9b81-79a43cb62a61','8488bff3-a880-47ab-ba15-98e03a50b37d','f6e0a555-131a-43b3-84fc-3ef6af30ba97','260216c5-5979-433c-8ac7-a42db758c207'];
+const ARN=['','B2- CHAPTER 1.mp3','b2 adem chapter 2 .mp3','b2 adem chapter 3 .mp3','b2 adem chapter 4 .mp3','b2 adem chapter 5 .mp3','B2 CHAPTER 6.mp3','B2 CHAPTER  7.mp3','B2 CHAPTER 8.mp3','b2 adem chapter 9 .mp3','B2 CHAPTER 10.mp3','b2 adem chapter 11 .mp3','B2 CHAPTER 12.mp3','b2 adem chapter 13 .mp3','B2 CHAPTER 14.mp3','b2 adem chapter 15 .mp3','b2 adem chapter 16.mp3','b2 adem chapter 17.mp3'];
+const ART=['','9ed4b211-ca29-4d8e-9cdb-429e76aa391a','c6079ab5-7ff0-48a2-aae2-ee764fca9afc','1ad4d729-b50c-4e51-b64d-ae32a4d478c3','c0e4b74e-8cd4-4ba5-8cda-16bf36c03232','cb4d9bfc-4212-41bf-a920-f81e77404fd7','0f5e9802-c6cd-49fb-9437-9283c82bcc45','d257d2ee-bafb-4474-8077-8c648d799781','2097dea4-275d-453d-940f-9a60a259af01','f2f26743-770f-4ee2-82c5-38de27cf96e6','fee0a987-8f83-47cb-b01f-791bfcbd6ded','a7a3c26e-2c49-4692-8a91-0511d26db58f','db385b68-b9a7-41ae-8084-b8bb3e33c48b','9a4a1da7-ff38-4101-a860-aafc51697b18','0e4703fd-1112-4fe1-aa87-a6938ed18328','a5660972-2677-4143-a8cb-f52fcc187228','fec33b31-4a9d-4efb-8bc2-991a0c28e017','19090a8b-6faa-4fbe-9f07-3a002c26e7bd'];
+const C:number[][]=[[],[28,36,72,58],[34,63,68,34],[25,52,74,42],[38,32,66,65],[22,44,77,56],[31,68,70,30],[26,35,73,62],[36,57,64,28],[24,64,76,38],[33,31,69,67],[27,48,75,70],[40,66,62,34],[23,30,78,54],[35,69,67,40],[29,43,71,65],[37,34,63,71],[25,60,74,32]];
+type Pair=[string,string,string,string];
+const P:Record<number,Pair[]>={
+1:[['miraculous','Beyond ordinary natural processes through divine power.','معجز','خارق للمألوف ويُنسب إلى قدرة إلهية.'],['fabulous','Remarkable or extraordinary in character.','عجيبا','لافت وغير مألوف في طبيعته.'],['philosophical','Concerned with basic questions of knowledge and existence.','فلسفيا','متصل بأسئلة عميقة عن المعرفة والوجود.'],['Unseen','Reality beyond direct human perception.','غيبية','أمور لا تدركها الحواس مباشرة.'],['contrast','A clear difference between opposing ideas.','يتناقض','يظهر اختلافا واضحا بين أمرين متقابلين.']],
+2:[['composition','The materials or elements that form something.','مكونات','العناصر التي يتكون منها شيء ما.'],['mixture','A whole formed by combining different substances.','خليط','مزيج ناتج عن اجتماع مواد مختلفة.'],['superiority','The state of being regarded as higher or better.','فضل','تفوق أو مزية على غيره في سياق المقارنة.'],['ancestor','A person from whom later generations descend.','أول أب','الأصل البشري الذي تنحدر منه أجيال لاحقة.'],['species','A distinct biological group of living beings.','نوع بشري مستقل','مجموعة بشرية متميزة في أصل خلقها.']],
+3:[['representative','A person entrusted with responsibility on behalf of another.','خليفة','من يتحمل مسؤولية موكولة إليه في الأرض.'],['extraordinary','Very unusual or remarkable.','الاستثنائية','غير عادية ومتميزة عن المألوف.'],['fundamental','Basic and essential to a larger structure.','الأساس','القاعدة التي يقوم عليها شيء آخر.'],['civilization','An organized society with developed culture and knowledge.','الحضارة','نظام إنساني متطور في الثقافة والمعرفة.'],['intelligence','The ability to learn, reason, and use knowledge.','العقل','قدرة الإنسان على الفهم والتفكير والاستدلال.']],
+4:[['offspring','A person’s children and later descendants.','ذريته','الأبناء والأحفاد والأجيال اللاحقة.'],['revelation','Divine knowledge communicated through prophets.','الوحي','معرفة يبلّغها الله إلى الأنبياء.'],['essential','Absolutely necessary for an important purpose.','ضروري','لا غنى عنه لتحقيق غرض مهم.'],['privilege','A special honour or advantage.','الامتياز','ميزة أو مكانة خاصة ممنوحة لشخص.'],['arrogant','Showing an exaggerated sense of superiority.','استكبر','تعالى ورأى نفسه أفضل من غيره.']],
+5:[['inability','The condition of being unable to do something.','بعجزها','إقرار بعدم القدرة أو قصور العلم.'],['obedience','Willing compliance with a command or authority.','طاعة','الامتثال لأمر أو سلطة مشروعة.'],['admiration','Respect and approval for someone’s qualities.','التقدير','احترام قيمة شخص أو صفة فيه.'],['arrogance','Excessive pride or assumed superiority.','كبر','شعور متضخم بالتفوق على الآخرين.'],['ethnicity','Identity linked to shared cultural or ancestral background.','الانتماء العرقي','ارتباط بجماعة تشترك في أصل أو ثقافة.']],
+6:[['respectful','Showing due reverence and respect.','اتقوا','الالتزام بخشية الله وطاعته.'],['inhabit','To live in or occupy a place.','اسكن','أقم في مكان واتخذه موطنا.'],['wrongdoers','People who violate a moral or religious command.','الظالمين','من يتجاوزون الحق أو الأمر المشروع.'],['outcast','Someone rejected and excluded from a group.','رجيم','مطرود ومبعد عن الرحمة.'],['deceive','To mislead someone into believing something false.','لأغوينهم','لأضلنهم وأصرفنهم عن الطريق الصحيح.']],
+7:[['determination','Firmness of purpose in following a decision.','عزمه','ثبات الإرادة على قرار أو هدف.'],['whispered','Spoke softly; here, a subtle attempt to influence.','فوسوس','ألقى أفكارا خفية بقصد التأثير.'],['immortals','Beings believed to live forever.','الخالدين','الذين لا يلحقهم موت أو فناء.'],['sincere','Honest and genuine in intention.','مخلص','صادق النية بعيد عن الخداع.'],['preoccupied','Absorbed repeatedly in a particular thought.','منشغلين','مستغرقين في التفكير في أمر معين.']],
+8:[['deception','The act of making something false appear true.','بغرور','بخداع يجعل الباطل يبدو مقبولا.'],['evident','Clearly visible or understandable.','ظهرت','أصبحت واضحة بعد أن كانت مستورة.'],['unclad','Without clothing or covering.','عاريان','من غير لباس أو ستر.'],['hayâ','A moral sense of modesty and shame.','الحياء','خلق يدفع إلى الستر وتجنب القبيح.'],['forbidden','Not permitted because it has been prohibited.','المحرمة','الممنوعة بأمر واضح.']],
+9:[['regretted','Felt deep sorrow about a past action.','ندم','شعور عميق بالأسف على فعل سابق.'],['mercy','Compassion and forgiveness shown to someone.','رحمة','عطف ومغفرة وإحسان.'],['repentance','Sincere regret followed by returning to what is right.','توبته','رجوع صادق عن الخطأ إلى الصواب.'],['prophethood','The divinely appointed role of a prophet.','النبوة','مهمة إلهية لهداية الناس بالوحي.'],['honoured','Regarded as having dignity and respected status.','مكرّما','ذا كرامة ومكانة محترمة.']],
+10:[['innocence','A state of moral purity.','براءتهما','حالة من الصفاء وعدم التلوث بالخطأ.'],['cornerstone','A basic part on which something depends.','ركنا أساسيا','جزء جوهري يقوم عليه أمر أكبر.'],['vicegerency','Responsibility for stewardship and entrusted duties on Earth.','خلافتهما','مسؤولية العمارة والقيام بالأمانة في الأرض.'],['humiliation','The experience of being stripped of dignity.','الإذلال','إهانة تسلب الإنسان كرامته.'],['pilgrimage','A religious journey to a spiritually important place.','الحج','قصد الأماكن المقدسة لأداء شعائر معلومة.']],
+11:[['conflict','A serious struggle between opposing forces.','الصراع','مواجهة قوية بين جهتين متعارضتين.'],['struggle','A sustained effort to overcome difficulty.','الكفاح','جهد مستمر لتجاوز مشقة أو مقاومة.'],['guidance','Direction toward the right course of action.','هدى','إرشاد إلى الطريق الصحيح.'],['cultivate','To prepare and use land for growing crops.','يزرعها','يهيئ الأرض وينبت فيها المحاصيل.'],['populate','To establish or increase a population in a place.','يعمرها','يبني الأرض وينمي الحياة فيها.']],
+12:[['blisses','Experiences of deep happiness or joy.','أفراح','أحوال أو أحداث تبعث سعادة كبيرة.'],['conflict','A serious disagreement or struggle.','نزاع','خلاف شديد بين طرفين.'],['sacrifice','An offering given for a religious purpose.','قربانا','ما يقدم تقربا إلى الله.'],['insincerity','Lack of genuine intention or honesty.','عدم إخلاصه','غياب صدق النية في العمل.'],['pious','Deeply committed to religious faith and conduct.','تقواه','التزامه بطاعة الله والخشية منه.']],
+13:[['aggressive','Ready to use hostility or force.','عدوانيا','ميالا إلى التهديد أو استعمال العنف.'],['potential','The capacity to develop a quality or behaviour.','القدرة','إمكان فعل شيء أو تطوير صفة.'],['moderate','Kept within reasonable rather than extreme limits.','الاعتدال','البقاء بعيدا عن الإفراط والتفريط.'],['disobedient','Refusing to follow a command or authority.','عاصيا','مخالفا للأمر وغير ممتثل له.'],['compassion','Concern for another person’s suffering.','رحمة','تعاطف يدفع إلى تجنب إيذاء الآخر.']],
+14:[['familial','Relating to family relationships.','روابط الأسرة','العلاقات التي تجمع أفراد العائلة.'],['criminal','Relating to a serious unlawful act.','جريمة','فعل خطير مخالف للحق.'],['corpse','The body of a person who has died.','جثة','جسد الإنسان بعد موته.'],['guilt','A sense of responsibility for wrongdoing.','الذنب','شعور أو حالة مرتبطة بارتكاب الخطأ.'],['victorious','Having won a contest or struggle.','الغالب','الذي انتصر في مواجهة.']],
+15:[['regret','Sorrow about an action already taken.','النادمين','الذين يشعرون بالأسف على ما فعلوا.'],['guilt','Responsibility or remorse for wrongdoing.','الذنب','مسؤولية أو شعور ناتج عن فعل خاطئ.'],['consequences','Results produced by an action or decision.','عاقبة','النتيجة التي تترتب على فعل.'],['jealousy','Resentment caused by another person’s advantage or happiness.','الحسد','تمني زوال نعمة أو تضايق من خير عند غيره.'],['righteous','Morally good and committed to what is right.','الصالح','المستقيم المحب للخير.']],
+16:[['successor','A person who takes over another’s role.','خليفة','من يتولى مسؤولية بعد شخص آخر.'],['scrolls','Written texts on rolled sheets or similar material.','صحف','نصوص مكتوبة أنزلت للهداية.'],['miracles','Extraordinary signs associated with divine power.','معجزات','آيات خارقة للعادة تؤيد الأنبياء.'],['legacy','Guidance or influence passed to later generations.','الإرث','ما يتركه الإنسان لمن بعده من هداية وأثر.'],['peace','A state of calm and freedom from fear.','السلام','حالة من الطمأنينة والسكون.']],
+17:[['mislead','To cause someone to follow a wrong idea or path.','إضلاله','صرفه عن الطريق الصحيح.'],['sincere servants','People genuinely devoted to Allah.','المخلصين','الذين أخلصوا نيتهم لله.'],['authority','Power or right to control or influence.','سلطان','قدرة أو سلطة على التأثير.'],['descendants','People who come from an earlier ancestor.','ذريتهما','الأجيال التي جاءت من آدم وحواء.'],['value','The importance or worth given to someone.','قيمة','القدر أو المكانة التي يستحقها الإنسان.']]
 };
-
-const arabicLanguageFocus: Record<number, Exercise[]> = {
-  ...adamB2LanguageFocusExercisesAr,
-  ...adamB2LanguageFocusExercisesArPart2,
-  ...adamB2LanguageFocusExercisesArPart3,
-};
-
-const decodedLower = (value = '') => {
-  try {
-    return decodeURIComponent(value).toLowerCase();
-  } catch {
-    return value.toLowerCase();
-  }
-};
-
-const hasWrongFallbackImage = (value = '') => {
-  const lower = decodedLower(value);
-  return lower.includes('/adam_b1/images/') || lower.includes('picsum.photos/seed/review-b1');
-};
-
-const sanitizePageImage = (page: PageData): PageData =>
-  hasWrongFallbackImage(page.image) ? { ...page, image: '' } : page;
-
-const englishStoryCorrections: Record<number, [string, string][]> = {
-  2: [['Adam (pbuh) was not evolved from any other living being', 'Adam (pbuh) did not evolve from any other living being']],
-  4: [['(Sâd: 76)\"', '(Sâd: 76)']],
-  5: [['that is race, colour, or ethnicity', 'that is, race, colour, or ethnicity']],
-  10: [['story of humankind and his struggle', 'story of humankind and its struggle']],
-  15: [['What is essentially being described here are the consequences of choosing evil.', 'What is essentially being described here is the consequence of choosing evil.']],
-  17: [
-    ['Satan, too acknowledges', 'Satan, too, acknowledges'],
-    ['beacuse', 'because'],
-    ['caharacter', 'character'],
-    ['“ He (Satan) said,', '“He (Satan) said,'],
-    ['“ HE (Allah) said,', '“He (Allah) said,'],
-  ],
-};
-
-const arabicStoryCorrections: Record<number, [string, string][]> = {
-  9: [['“ فتلقى آدم من ربه كلمات', '“فتلقى آدم من ربه كلمات']],
-};
-
-const applyStoryContentCorrections = (page: PageData): PageData => {
-  if (page.type !== 'story' || !page.content) return page;
-  const isArabic = /[\u0600-\u06ff]/.test(page.title);
-  const replacements = (isArabic ? arabicStoryCorrections : englishStoryCorrections)[page.id] ?? [];
-  let content = page.content;
-  for (const [from, to] of replacements) content = content.replace(from, to);
-  return content === page.content ? page : { ...page, content };
-};
-
-const reviewStoryPageShell = (rawPage: PageData): PageData => {
-  const correctedPage = applyStoryContentCorrections(rawPage);
-  if (correctedPage.type !== 'story') return sanitizePageImage(correctedPage);
-
-  let reviewed: PageData = sanitizePageImage(correctedPage);
-  const isArabic = /[\u0600-\u06ff]/.test(correctedPage.title);
-
-  if (!isArabic && correctedPage.id === 1) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: reviewed.vocabulary?.map(note =>
-        note.word.toLowerCase() === 'fabulous'
-          ? { ...note, definition: 'Extraordinary or remarkable; here describing the story’s striking character.' }
-          : note,
-      ),
-    };
-  }
-
-  if (isArabic && correctedPage.id === 1) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: reviewed.vocabulary?.map(note =>
-        note.word === 'عجيب'
-          ? { ...note, definition: 'غير مألوف ولافت في وصف القصة.' }
-          : note,
-      ),
-    };
-  }
-
-  if (!isArabic && correctedPage.id === 2) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: reviewed.vocabulary?.map(note =>
-        note.word.toLowerCase() === 'species'
-          ? { ...note, definition: 'A group of living beings that share important biological characteristics.' }
-          : note,
-      ),
-    };
-  }
-
-  if (isArabic && correctedPage.id === 2) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: [
-        { word: 'خليط', definition: 'مزيج يتكوّن من أكثر من مادة، مثل الماء والتراب.' },
-        { word: 'أول أب', definition: 'أول أصل بشري تنحدر منه الأجيال اللاحقة.' },
-        { word: 'نوع بشري مستقل', definition: 'نوع بشري يقدمه الفصل بوصفه متميزا في أصل خلقه.' },
-      ],
-    };
-  }
-
-  if (!isArabic && correctedPage.id === 3) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'astonishment'),
-    };
-  }
-
-  if (isArabic && correctedPage.id === 3) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: reviewed.vocabulary?.map(note => {
-        if (note.word === 'الخليفة') {
-          return { ...note, definition: 'من توكل إليه مسؤولية عمارة الأرض ورعايتها في سياق الفصل.' };
-        }
-        if (note.word === 'الأسماء') {
-          return { ...note, definition: 'الأسماء التي علّمها الله لآدم، ويربطها الفصل بقدرات التعلم واللغة والمعرفة.' };
-        }
-        return note;
-      }),
-    };
-  }
-
-  if (!isArabic && correctedPage.id === 4) {
-    reviewed = {
-      ...reviewed,
-      hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h5b'),
-    };
-  }
-
-  if (isArabic && correctedPage.id === 7) {
-    reviewed = {
-      ...reviewed,
-      hotspots: reviewed.hotspots?.map(hotspot =>
-        hotspot.id === 'h7a'
-          ? {
-              ...hotspot,
-              title: 'الوسوسة واستغلال الضعف',
-              description: 'يستغل إبليس النسيان وضعف العزم والرغبة في الخلود ليقنع آدم وحواء.',
-            }
-          : hotspot,
-      ),
-    };
-  }
-
-  if (isArabic && correctedPage.id === 10) {
-    reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'المشاق') };
-  }
-  if (isArabic && correctedPage.id === 11) {
-    reviewed = { ...reviewed, vocabulary: reviewed.vocabulary?.filter(note => note.word !== 'التبلد الكوني') };
-  }
-
-  if (correctedPage.id === 13) {
-    reviewed = {
-      ...reviewed,
-      title: isArabic ? 'رد هابيل والقدرة الأخلاقية' : 'Habil’s Response & Human Moral Capacity',
-      ...(isArabic
-        ? {
-            vocabulary: [
-              { word: 'موقف عدواني', definition: 'سلوك يتضمن التهديد أو استخدام القوة ضد الآخرين.' },
-              { word: 'طبيعة', definition: 'الصفات والميول التي تكون جزءا من الإنسان.' },
-              { word: 'السيطرة', definition: 'القدرة على ضبط الأفكار والمشاعر والتصرفات.' },
-            ],
-            hotspots: [
-              { id: 'h13a', x: 47, y: 50, title: 'اختيار هابيل السلمي', description: 'يرفض هابيل أن يرد على تهديد أخيه بالعنف ويترك الأمر لله.' },
-              { id: 'h13b', x: 78, y: 40, title: 'القدرة على الخير والشر', description: 'يذكر الفصل أن الإنسان قادر على الخير والشر وأن ضبط الرغبات مهم.' },
-            ],
-          }
-        : {
-            hotspots: reviewed.hotspots?.filter(hotspot => hotspot.id !== 'h13b'),
-            vocabulary: reviewed.vocabulary?.filter(note => ['rebellious', 'compassion'].includes(note.word.toLowerCase())),
-          }),
-    };
-  }
-
-  if (correctedPage.id === 14) {
-    reviewed = isArabic
-      ? {
-          ...reviewed,
-          vocabulary: [
-            { word: 'طوعت', definition: 'دفعت أو زيّنت له نفسه فعل الشيء.' },
-            { word: 'الخاسرين', definition: 'الذين خسروا بسبب أفعالهم ونتائجها.' },
-            { word: 'الذنب', definition: 'الشعور بأن الإنسان ارتكب فعلا خاطئا.' },
-          ],
-          hotspots: [
-            { id: 'h13a', x: 30, y: 50, title: 'الجريمة وعاقبتها', description: 'يقتل قابيل أخاه ثم يواجه الحزن والذنب وثقل ما فعل.' },
-            { id: 'h13b', x: 70, y: 40, title: 'درس الغرابين', description: 'يرى قابيل غرابين، فيدفن أحدهما الآخر، فيتعلم كيف يواري جثة أخيه.' },
-          ],
-        }
-      : {
-          ...reviewed,
-          hotspots: reviewed.hotspots?.map(hotspot =>
-            hotspot.id === 'h13b'
-              ? { ...hotspot, title: 'The Two Ravens', description: 'Qabil learns how burial works by observing two ravens.' }
-              : hotspot,
-          ),
-        };
-  }
-
-  if (correctedPage.id === 15) {
-    reviewed = isArabic
-      ? {
-          ...reviewed,
-          vocabulary: [
-            { word: 'الأسى', definition: 'حزن شديد وألم نفسي.' },
-            { word: 'يواري', definition: 'يستر أو يخفي؛ وهنا يقصد دفن الجسد في الأرض.' },
-            { word: 'نوازع', definition: 'دوافع أو ميول داخلية تؤثر في السلوك.' },
-          ],
-          hotspots: [
-            { id: 'h14a', x: 30, y: 50, title: 'ندم قابيل', description: 'يشعر قابيل بالخجل والذنب بعد أن يتعلم كيف يدفن أخاه.' },
-            { id: 'h14b', x: 70, y: 40, title: 'استمرار مسؤولية آدم', description: 'رغم حزنه، يدعو آدم لابنه ويواصل مسؤوليات الحياة والعمل.' },
-          ],
-        }
-      : {
-          ...reviewed,
-          vocabulary: reviewed.vocabulary?.filter(note => note.word.toLowerCase() !== 'prophet'),
-          hotspots: reviewed.hotspots?.map(hotspot =>
-            hotspot.id === 'h14b'
-              ? { ...hotspot, title: 'Adam’s Continued Responsibility', description: 'Despite grief, Adam prays for his son and continues the responsibilities of daily life.' }
-              : hotspot,
-          ),
-        };
-  }
-
-  if (correctedPage.id === 16) {
-    reviewed = isArabic
-      ? {
-          ...reviewed,
-          vocabulary: [
-            { word: 'خليفة', definition: 'من يتولى مسؤولية أو دورا بعد شخص آخر.' },
-            { word: 'الإرث', definition: 'ما يتركه الإنسان من هداية أو أثر لمن بعده.' },
-            { word: 'العبادات', definition: 'الأعمال التي يتقرب بها الإنسان إلى الله.' },
-          ],
-          hotspots: [
-            { id: 'h15a', x: 30, y: 50, title: 'شيث خليفة لآدم', description: 'يعيّن آدم ابنه شيث خليفة له ويعلّمه ما يرتبط بالعبادة.' },
-            { id: 'h15b', x: 70, y: 40, title: 'استمرار الهداية', description: 'يخبر آدم أبناءه أن الأنبياء سيواصلون دعوة الناس إلى صراط الله المستقيم.' },
-          ],
-        }
-      : {
-          ...reviewed,
-          vocabulary: reviewed.vocabulary?.map(note => {
-            if (note.word.toLowerCase() === 'legacy') {
-              return { ...note, definition: 'Guidance, influence, or responsibility passed to later generations.' };
-            }
-            if (note.word.toLowerCase() === 'miracles') {
-              return { ...note, definition: 'Extraordinary signs associated with prophets in the story’s account.' };
-            }
-            return note;
-          }),
-        };
-  }
-
-  if (isArabic && correctedPage.id === 17) {
-    reviewed = {
-      ...reviewed,
-      vocabulary: [
-        { word: 'سلطان', definition: 'قدرة أو سلطة على التأثير والسيطرة.' },
-        { word: 'المخلصين', definition: 'الذين يخلصون نيتهم لله ويتبعون هداه.' },
-        { word: 'الجوهر الحقيقي', definition: 'المعنى الأساسي والعميق لقيمة الإنسان.' },
-      ],
-      hotspots: [
-        { id: 'h18a', x: 30, y: 50, title: 'حدود سلطان الشيطان', description: 'يذكر الفصل أن الشيطان لا سلطان له على عباد الله المخلصين.' },
-        { id: 'h18b', x: 70, y: 40, title: 'سؤال قيمة الإنسان', description: 'تنتهي القصة بسؤال عن المصدر الحقيقي لقيمة الإنسان.' },
-      ],
-    };
-  }
-
-  return reviewed;
-};
-
-const buildPages = (
-  pages: PageData[],
-  quickChallenges: Record<number, Exercise>,
-  knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
-  review: Exercise[],
-  finalChallenge: Exercise[],
-): PageData[] => {
-  const isArabicBook = /[\u0600-\u06ff]/.test(pages.find(page => page.type === 'story')?.title ?? '');
-  const languageFocus = isArabicBook ? arabicLanguageFocus : englishLanguageFocus;
-  const fullGlossary = Array.from(
-    new Map(
-      pages
-        .filter(page => STORY_IDS.has(page.id))
-        .map(reviewStoryPageShell)
-        .flatMap(page => page.vocabulary ?? [])
-        .map(note => [note.word.toLowerCase(), note] as const),
-    ).values(),
-  );
-
-  return pages.map((rawPage): PageData => {
-    const page = reviewStoryPageShell(rawPage);
-
-    if (STORY_IDS.has(page.id)) {
-      const languageFocusExercises = languageFocus[page.id];
-      return {
-        ...page,
-        exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
-        ...(languageFocusExercises ? { languageFocusExercises } : {}),
-      };
-    }
-    if (page.id === 18) {
-      return {
-        ...page,
-        title: isArabicBook ? 'فحص المعرفة' : 'Knowledge Check',
-        content: isArabicBook
-          ? 'أجب عن ثمانية أسئلة للتحقق من فهمك لأهم الأدلة والأفكار في قصة آدم.'
-          : 'Answer eight questions to check your understanding of the key evidence and ideas across Adam’s story.',
-        exercises: knowledgeCheck,
-      };
-    }
-    if (page.id === 19) {
-      return {
-        ...page,
-        title: isArabicBook ? 'مراجعة اللغة' : 'Language Review',
-        content: isArabicBook
-          ? 'راجع أدوات اللغة والخطاب التي تعلمتها عبر الفصول، ثم استخدمها في مواقف جديدة.'
-          : 'Review the grammar, stance and discourse tools developed across the chapters, then use them in new contexts.',
-        exercises: review,
-      };
-    }
-    if (page.id === 20) {
-      return {
-        ...page,
-        type: 'vocabulary-match',
-        title: isArabicBook ? 'تحدي المفردات' : 'Vocabulary Challenge',
-        content: isArabicBook
-          ? 'صل الكلمات الأساسية من القصة بمعانيها الدقيقة.'
-          : 'Match key B2 words from the story with their meanings.',
-        vocabulary: undefined,
-        vocabularyPairs,
-      };
-    }
-    if (page.id === 21) {
-      return {
-        ...page,
-        title: isArabicBook ? 'القاموس الرئيسي' : 'Master Glossary',
-        content: isArabicBook
-          ? 'راجع المفردات الأساسية الواردة في الفصول السبعة عشر.'
-          : 'Review the active Word Notes from all seventeen chapters.',
-        vocabulary: fullGlossary,
-      };
-    }
-    if (page.id === 22) {
-      return { ...page, exercises: finalChallenge };
-    }
-    return page;
-  });
-};
-
-const englishPages = buildPages(
-  adamB2Pages,
-  adamB2QuickChallenges,
-  adamB2KnowledgeCheckExercises,
-  adamB2VocabularyChallengePairs,
-  adamB2LanguageReviewExercises,
-  adamB2FinalChallengeExercises,
-);
-
-const arabicPages = buildPages(
-  adamB2PagesAr,
-  adamB2QuickChallengesAr,
-  adamB2KnowledgeCheckExercisesAr,
-  adamB2VocabularyChallengePairsAr,
-  adamB2LanguageReviewExercisesAr,
-  adamB2FinalChallengeExercisesAr,
-);
-
-export const adamB2BookDataEn: BookData = {
-  id: 'b2-prophets-en',
-  title: 'Stories of the Prophets: Adam (B2)',
-  level: 'B2',
-  baseFontSize: 12,
-  pages: englishPages,
-  teacherGuide: adamB2TeacherGuide,
-  teacherGuideMetadata: adamB2TeacherGuideMetadata,
-  selfStudyGuide: adamB2SelfStudyGuide,
-  studentGuideMetadata: adamB2StudentGuideMetadata,
-};
-
-export const adamB2BookDataAr: BookData = {
-  id: 'b2-prophets-ar',
-  title: 'قصص الأنبياء: آدم (عليه السلام)',
-  level: 'B2',
-  baseFontSize: 14,
-  pages: arabicPages,
-  teacherGuide: adamB2TeacherGuideAr,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
-  selfStudyGuide: adamB2SelfStudyGuideAr,
-  studentGuideMetadata: adamB2StudentGuideMetadataAr,
-};
-
-export const adamB2BookData = adamB2BookDataEn;
+const enLF:Record<number,Exercise[]>={...adamB2LanguageFocusExercises,...adamB2LanguageFocusExercisesPart2,...adamB2LanguageFocusExercisesPart3};
+const arLF:Record<number,Exercise[]>={...adamB2LanguageFocusExercisesAr,...adamB2LanguageFocusExercisesArPart2,...adamB2LanguageFocusExercisesArPart3};
+const img=(n:number)=>n<6?'':`${B}adam_b2%2Fimages%2Fadam_b2_chapter${n}.png?alt=media&token=${IMG[n]}`;
+const enAudio=(n:number)=>`${B}adam_b2%2Faudio%2Fadam_b2_ch${n}.mp3?alt=media&token=${ENA[n]}`;
+const arAudio=(n:number)=>`${B}adam_b2%2Faudio%2Farabic_audio%2F${encodeURIComponent(ARN[n])}?alt=media&token=${ART[n]}`;
+const enFix:Record<number,[string,string][]>= {2:[['Adam (pbuh) was not evolved from any other living being','Adam (pbuh) did not evolve from any other living being']],4:[['(Sâd: 76)"','(Sâd: 76)']],5:[['that is race, colour, or ethnicity','that is, race, colour, or ethnicity']],10:[['story of humankind and his struggle','story of humankind and its struggle']],15:[['What is essentially being described here are the consequences of choosing evil.','What is essentially being described here is the consequence of choosing evil.']],17:[['Satan, too acknowledges','Satan, too, acknowledges'],['beacuse','because'],['caharacter','character'],['“ He (Satan) said,','“He (Satan) said,'],['“ HE (Allah) said,','“He (Allah) said,'],['Each character in this Qur’anic story leave behind','Each character in this Qur’anic story leaves behind']]};
+const arFix:Record<number,[string,string][]>= {9:[['“ فتلقى آدم من ربه كلمات','“فتلقى آدم من ربه كلمات']]};
+function standardize(page:PageData,isAr:boolean):PageData{
+ if(!STORY_IDS.has(page.id)) return {...page,image:''};
+ let content=page.content??''; for(const [a,b] of (isAr?arFix:enFix)[page.id]??[]) content=content.replace(a,b);
+ const pairs=P[page.id]??[]; const vocabulary=pairs.map(p=>isAr?{word:p[2],definition:p[3]}:{word:p[0],definition:p[1]});
+ const old=(page.hotspots??[]).slice(0,2); const cc=C[page.id];
+ const hotspots=[0,1].map(i=>{const h=old[i]??{id:`h${page.id}${i?'b':'a'}`,x:0,y:0,title:isAr?'معلومة من الفصل':'Chapter Insight',description:''}; return {...h,id:`h${page.id}${i?'b':'a'}`,x:cc[i*2],y:cc[i*2+1]};});
+ if(page.id===13){hotspots[0]={...hotspots[0],title:isAr?'اختيار هابيل السلمي':'Habil Refuses Violence',description:isAr?'يرفض هابيل الرد على تهديد أخيه بالعنف.':'Habil refuses to answer his brother’s threat with violence.'};hotspots[1]={...hotspots[1],title:isAr?'القدرة الأخلاقية':'Human Moral Capacity',description:isAr?'يؤكد الفصل قدرة الإنسان على الخير والشر وضرورة ضبط الرغبات.':'The chapter stresses human capacity for good and evil and the need for self-control.'};}
+ return {...page,title:page.id===13?(isAr?'رد هابيل والقدرة الأخلاقية':'Habil’s Response & Human Moral Capacity'):page.title,image:img(page.id),audioUrl:isAr?arAudio(page.id):enAudio(page.id),content,vocabulary,hotspots,animatedWords:undefined};
+}
+function build(pages:PageData[],isAr:boolean,quick:Record<number,Exercise>,knowledge:Exercise[],pairs:{word:string;meaning:string}[],review:Exercise[],final:Exercise[]):PageData[]{
+ const lf=isAr?arLF:enLF; const normalized=pages.map(p=>standardize(p,isAr));
+ const glossary=Array.from(new Map(normalized.filter(p=>STORY_IDS.has(p.id)).flatMap(p=>p.vocabulary??[]).map(v=>[v.word.toLowerCase(),v] as const)).values());
+ return normalized.map(page=>{if(STORY_IDS.has(page.id))return{...page,exercises:quick[page.id]?[quick[page.id]]:[],...(lf[page.id]?{languageFocusExercises:lf[page.id]}:{})};
+ if(page.id===18)return{...page,image:'',title:isAr?'فحص المعرفة':'Knowledge Check',content:isAr?'أجب عن ثمانية أسئلة للتحقق من فهم أهم أفكار قصة آدم.':'Answer eight questions to check your understanding of the key ideas across Adam’s story.',exercises:knowledge};
+ if(page.id===19)return{...page,image:'',title:isAr?'مراجعة اللغة':'Language Review',content:isAr?'راجع أدوات اللغة والخطاب التي تعلمتها عبر الفصول.':'Review the grammar, stance and discourse tools developed across the chapters.',exercises:review};
+ if(page.id===20)return{...page,image:'',type:'vocabulary-match',title:isAr?'تحدي المفردات':'Vocabulary Challenge',content:isAr?'صل الكلمات الأساسية بمعانيها الدقيقة.':'Match key B2 words from the story with their meanings.',vocabulary:undefined,vocabularyPairs:pairs};
+ if(page.id===21)return{...page,image:'',title:isAr?'القاموس الرئيسي':'Master Glossary',content:isAr?'راجع المفردات الأساسية الواردة في الفصول السبعة عشر.':'Review the active Word Notes from all seventeen chapters.',vocabulary:glossary};
+ if(page.id===22)return{...page,image:'',exercises:final}; return {...page,image:''};});
+}
+const englishPages=build(adamB2Pages,false,adamB2QuickChallenges,adamB2KnowledgeCheckExercises,adamB2VocabularyChallengePairs,adamB2LanguageReviewExercises,adamB2FinalChallengeExercises);
+const arabicPages=build(adamB2PagesAr,true,adamB2QuickChallengesAr,adamB2KnowledgeCheckExercisesAr,adamB2VocabularyChallengePairsAr,adamB2LanguageReviewExercisesAr,adamB2FinalChallengeExercisesAr);
+export const adamB2BookDataEn:BookData={id:'b2-prophets-en',title:'Stories of the Prophets: Adam (B2)',level:'B2',baseFontSize:12,pages:englishPages,teacherGuide:adamB2TeacherGuide,teacherGuideMetadata:adamB2TeacherGuideMetadata,selfStudyGuide:adamB2SelfStudyGuide,studentGuideMetadata:adamB2StudentGuideMetadata};
+export const adamB2BookDataAr:BookData={id:'b2-prophets-ar',title:'قصص الأنبياء: آدم (عليه السلام)',level:'B2',baseFontSize:14,pages:arabicPages,teacherGuide:adamB2TeacherGuideAr,teacherGuideMetadata:adamB2TeacherGuideMetadataAr,selfStudyGuide:adamB2SelfStudyGuideAr,studentGuideMetadata:adamB2StudentGuideMetadataAr};
+export const adamB2BookData=adamB2BookDataEn;
