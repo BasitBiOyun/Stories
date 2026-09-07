@@ -30,7 +30,7 @@ In addition to his standing as a Sûfî, Yunus Emre was one of the Turkish poets
 
 According to historical accounts, he was a contemporary of famous figures such as Hacı Bektaş-ı Veli, Mevlana Celaleddin-i Rumi, and Saru Saltuk. As to the widely accepted view, he was born in 1240–41 and died in 1320–21. He is considered the founder of Turkish Sûfî literature.
 
-Some sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas, he also studied both divine love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh, spiritual tutor.
+Some sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas. He also studied both divine love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).
 
 At that time, tekkes were not just an institution that offers Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time.`,
     vocabulary: [
@@ -47,7 +47,7 @@ At that time, tekkes were not just an institution that offers Sûfî training bu
   {
     id: 3,
     type: 'story',
-    title: 'Tekkés and Difficult Times',
+    title: 'Tekkes and Difficult Times',
     image: 'https://picsum.photos/seed/yunus-b2-chapter3/1200/800',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F02_Chapter_3_Tekk%C3%A9s_and_Difficult_Times.mp3?alt=media&token=ab8a1aef-6f3b-472d-9cdf-27afba737acf',
     content: `Besides, they were leading institutions in the field of the fine arts, particularly poetry. Many of the great masters of Turkish poetry were trained in tekkes. Yunus Emre was also one of the great masters of poetry who had been trained under his sheikh, Taptuk Emre.
@@ -185,7 +185,7 @@ As a result of creation, the initial unity disintegrated and multiple existence 
     title: 'Unity and Love',
     image: 'https://picsum.photos/seed/yunus-b2-chapter9/1200/800',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F08_Chapter_9_Unity_and_Love.mp3?alt=media&token=f82c740d-efa7-4e38-b440-24dab3468a80',
-    content: `In this sense, everything which is created is a reflection; the only thing that truly exists is Allah. The ultimate purpose of humanity is to reach the unity, Allah.
+    content: `In this sense, everything which is created is a reflection; the only thing that truly exists is Allah. The ultimate purpose of humanity is to reach unity with Allah.
 
 His words remind us of Allah’s commands for achieving this unity.
 
@@ -221,7 +221,7 @@ The purpose of love is to reach Allah and achieve unity in His presence. From th
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F09_Chapter_10_The_Heart_and_Intellect.mp3?alt=media&token=c9c90510-fe86-4b60-a07d-f4602c404ac5',
     content: `Therefore, for Yunus Emre the love and the oneness of Allah are the values at the foundation of moral behavior.
 
-In Yunus Emre’s philosophy, heart is the center of love. It is “the throne of the Lord,” that is, the place where Allah manifests Himself. For this reason, he described breaking a heart as destroying Allah’s house, Yunus says:
+In Yunus Emre’s philosophy, heart is the center of love. It is “the throne of the Lord,” that is, the place where Allah manifests Himself. For this reason, he described breaking a heart as destroying Allah’s house. Yunus says:
 
 [POEM]
 English:
@@ -234,7 +234,7 @@ Gönül Çalab’ın tahtı, Çalap gönüle baktı.
 
 In his view, purity of the heart is essential for the proper performance of acts of worship. At the same time, the heart is the eye that perceives the truth and the center of understanding.
 
-Yunus Emre emphasizes not only heart but also intellect as a value, describing it as “a light from Allah that has existed since eternity.” According to him, there are three types of intellect: the practical reason, which enables a person to understand how the world works and sustain worldly life;`,
+Yunus Emre emphasizes not only heart but also intellect as a value, describing it as “a light from Allah that has existed since eternity.” According to him, there are three types of intellect: the practical reason, which enables a person to understand how the world works and sustain worldly life; the limited intellect, which teaches a person about the order of the hereafter; and the universal intellect, which guides one to behave with piety.`,
     vocabulary: [
       { word: 'manifests', definition: 'shows or reveals itself' },
       { word: 'perceives', definition: 'understands or notices something' },
@@ -251,7 +251,7 @@ Yunus Emre emphasizes not only heart but also intellect as a value, describing i
     title: 'Salvation and Death',
     image: 'https://picsum.photos/seed/yunus-b2-chapter11/1200/800',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F10_Chapter_11_Salvation_and_Death.mp3?alt=media&token=0cf0a108-c961-480a-bed1-f16979702959',
-    content: `the limited intellect, which teaches a person about the order of the hereafter; and the universal intellect, which guides one to behave with piety. His understanding of unity is also evident in the relationship between the heart and reason; he emphasizes that for a person to reach salvation, heart and reason must support one another.
+    content: `His understanding of unity is also evident in the relationship between the heart and reason; he emphasizes that for a person to reach salvation, heart and reason must support one another.
 
 Yunus says:
 
