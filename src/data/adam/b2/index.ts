@@ -5,20 +5,22 @@ import {
   adamB2QuickChallenges,
   adamB2KnowledgeCheckExercises,
   adamB2VocabularyChallengePairs,
+  adamB2LanguageReviewExercises,
   adamB2FinalChallengeExercises,
 } from './en/exercises';
 import {
   adamB2QuickChallengesAr,
   adamB2KnowledgeCheckExercisesAr,
   adamB2VocabularyChallengePairsAr,
+  adamB2LanguageReviewExercisesAr,
   adamB2FinalChallengeExercisesAr,
 } from './ar/exercises';
 import { adamB2LanguageFocusExercises } from './en/languageFocus';
 import { adamB2LanguageFocusExercisesPart2 } from './en/languageFocus2';
-import { adamB2LanguageFocusExercisesPart3, adamB2LanguageReviewExercises } from './en/languageFocus3';
+import { adamB2LanguageFocusExercisesPart3 } from './en/languageFocus3';
 import { adamB2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamB2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
-import { adamB2LanguageFocusExercisesArPart3, adamB2LanguageReviewExercisesAr } from './ar/languageFocus3';
+import { adamB2LanguageFocusExercisesArPart3 } from './ar/languageFocus3';
 import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
 import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
@@ -82,12 +84,6 @@ const applyStoryContentCorrections = (page: PageData): PageData => {
   return content === page.content ? page : { ...page, content };
 };
 
-/**
- * Final page-shell QA only. Canonical story content is preserved except for the
- * already-active typo/grammar corrections that previously lived in wrapper files.
- * Storage remains the preferred media source; known wrong-level/demo fallbacks are
- * blanked so failed Storage lookup cannot silently show unrelated assets.
- */
 const reviewStoryPageShell = (rawPage: PageData): PageData => {
   const correctedPage = applyStoryContentCorrections(rawPage);
   if (correctedPage.type !== 'story') return sanitizePageImage(correctedPage);
