@@ -32,20 +32,132 @@ import {
 import { meccaB2TeacherGuideAr, meccaB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB2SelfStudyGuideAr, meccaB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
-const cleanPage = (page: PageData): PageData => {
+const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
+
+const VOCAB_INDEXES: Record<number, number[]> = {
+  1:[0,1,2,3,4,6], 2:[0,1,2,3,4,9], 3:[0,1,2,3,4], 4:[0,1,2,4,5],
+  5:[0,1,2,3,4,5], 6:[0,1,2,3,4,5], 7:[0,1,2,3,4,6], 8:[0,1,2,3,8,9],
+  9:[1,2,3,5,7,8], 10:[0,1,2,3,4,6], 11:[0,1,2,4,5,6], 12:[0,1,2,3,4],
+  13:[0,1,2,3,4], 14:[0,1,2,3,4], 15:[0,1,2,3,4], 16:[0,1,2,3,4], 17:[0,1,2,3,4],
+};
+
+const HOTSPOT_COORDS: Record<number, [number, number, number, number]> = {
+  1:[24,38,73,62], 2:[29,65,74,34], 3:[23,58,69,31], 4:[31,36,76,64], 5:[22,67,67,39],
+  6:[27,32,72,68], 7:[25,55,78,35], 8:[32,70,70,42], 9:[21,43,75,66], 10:[30,29,69,61],
+  11:[26,64,77,37], 12:[23,35,71,70], 13:[33,57,76,30], 14:[20,69,68,41], 15:[28,40,74,65],
+  16:[24,61,79,33], 17:[31,34,70,68],
+};
+
+const AR_AUDIO_TOKENS = [
+  '',
+  '7800a9c7-4fb1-46f7-9638-0276a9011741','eb3ccf54-8ba9-482c-be0c-0a1f7a1eacb9','565da269-5ac5-4d83-bedb-281ea2b319b6',
+  '7bc0b87c-af57-4d8f-8f39-06cbb277939d','8724e808-5bab-400a-8ddf-c3d24c6e703b','7048862f-00d4-4f58-8231-4afa70b6a14d',
+  '9f472831-3175-4de7-99c3-59210aeebf9b','de4790a0-ce6b-436b-94c4-35c07ce72ed3','e69f95e7-083d-4017-948f-3647326d5cd0',
+  'ab69d8e9-fa8d-401c-8f7c-ef2570564aac','0ae22f49-f359-43d6-a062-eb7a21011748','d2d8c492-ded9-4696-b522-097430f563e7',
+  'b15bdd69-fc40-45d8-9b64-a8c0b6b93420','d5d29f6a-ea98-4eee-b15f-bf22eeae35e1','05707d6d-373f-4f08-a0e9-dfdbc3ba917e',
+  '13c6024b-137f-4af2-84d3-966a8a84ad16','02204468-c6d4-48a4-b511-7a03162f2148',
+];
+
+const EN_DEFINITION_OVERRIDES: Record<string, string> = {
+  superpower:'A state with enough political, military, and economic influence to shape events far beyond its own borders.',
+  rivalry:'Sustained competition between powers seeking greater influence, advantage, or control.',
+  'political unity':'The condition in which separate groups operate under a shared political authority or governing structure.',
+  revelation:'Divine guidance communicated by Allah to a prophet.',
+  conquest:'The acquisition of control over a territory through military force.',
+  barbarism:'A condition characterized by severe violence, cruelty, and the breakdown of civilized restraint.',
+  oppressed:'Subjected to persistent unjust treatment or control by a more powerful person or group.',
+  'moral decline':'A deterioration in the ethical standards and conduct expected within a society.',
+  civilized:'Organized according to developed social institutions, norms, and forms of public order.',
+  reconstruct:'To build or form something again after it has been damaged, lost, or altered.',
+  pilgrimage:'A journey made to a sacred place for religious purposes.',
+  idolatry:'The religious practice of worshipping idols or treating them as objects of devotion.',
+  extensive:'Large in scale, range, or degree.',
+  usury:'The practice of lending money on exploitative or religiously prohibited interest terms.',
+  aristocracy:'A socially dominant upper class whose status is based on wealth, lineage, or inherited influence.',
+  capitalist:'A person who owns or controls capital and uses it to generate profit.',
+  defenseless:'Lacking sufficient means, power, or protection to resist harm or exploitation.',
+  righteous:'Morally upright and committed to justice or correct conduct.',
+  humiliation:'A state of being made to feel degraded or stripped of dignity.',
+  institution:'An established social, economic, religious, or political structure with an organized role in society.',
+  tribalism:'Strong loyalty to one’s tribe that can override broader principles of fairness or universal justice.',
+  mediator:'A person or intermediary positioned between two parties to facilitate contact or influence.',
+  interconnected:'Linked so that changes in one area affect or depend on developments in another.',
+  authority:'The recognized power or right to command, decide, or govern.',
+  prestigious:'Associated with high social respect, influence, or status.',
+  prophethood:'The divinely appointed mission and status of a prophet.',
+  radical:'Producing or involving fundamental change to an existing system or structure.',
+  exploitation:'The unfair use of people, labor, or resources for another party’s advantage.',
+  boycott:'An organized refusal of social or economic relations used to exert pressure on a person or group.',
+  starvation:'Severe deprivation caused by an extreme or prolonged lack of food.',
+  hostility:'Strong and active opposition, often involving resentment or aggression.',
+  'tribal fanaticism':'Extreme loyalty to tribal identity that suppresses independent judgment and can justify injustice.',
+  stateless:'Lacking the recognized protection and legal belonging normally provided by a political community or state.',
+  oppression:'Systematic cruel or unjust treatment imposed by those with greater power.',
+  immorality:'Conduct that violates accepted moral principles or ethical standards.',
+  'human honor':'The inherent dignity and moral worth that belongs to every human being.',
+  arrogance:'An exaggerated sense of superiority that leads a person to undervalue others.',
+};
+
+const EN_FIXES: Record<number, [string, string][]> = {
+  2:[["widely did not have justice, order, and peace", "did not widely have justice, order, and peace"]],
+  3:[["Medina, He (pbuh) said", "Medina, he (pbuh) said"]],
+  7:[["Due to the big money ownership in the hands of certain individuals", "Due to the concentration of money in the hands of certain individuals"]],
+  11:[["poets praised conflict rather than peace and war instead of peace", "poets praised conflict and war rather than peace"]],
+  15:[["Because they knew that the Prophet’s call to monotheism", "They knew that the Prophet’s call to monotheism"]],
+  17:[["a more fair and peaceful place", "a fairer and more peaceful place"],["not only a past time", "not only a past era"]],
+};
+
+const storageUrl = (path: string, token: string) =>
+  `https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/${encodeURIComponent(path)}?alt=media&token=${token}`;
+
+const fixText = (text: string, fixes?: [string, string][]) =>
+  (fixes ?? []).reduce((value, [from, to]) => value.replace(from, to), text);
+
+const standardizePage = (page: PageData, language: 'en' | 'ar'): PageData => {
   const clean: PageData = { ...page };
   delete clean.exercises;
   delete clean.sequencingItems;
   delete clean.vocabularyPairs;
   delete clean.syncPoints;
   delete clean.timedChunks;
-  return clean;
+
+  if (!STORY_IDS.has(page.id)) {
+    if (typeof clean.image === 'string' && clean.image.includes('picsum.photos')) clean.image = '';
+    return clean;
+  }
+
+  const indexes = VOCAB_INDEXES[page.id] ?? [];
+  const vocabulary = indexes
+    .map(index => page.vocabulary?.[index])
+    .filter((item): item is NonNullable<PageData['vocabulary']>[number] => Boolean(item))
+    .map(item => language === 'en' && EN_DEFINITION_OVERRIDES[item.word]
+      ? { ...item, definition: EN_DEFINITION_OVERRIDES[item.word] }
+      : item);
+
+  const c = HOTSPOT_COORDS[page.id];
+  const hotspots = (page.hotspots ?? []).slice(0, 2).map((hotspot, index) => ({
+    ...hotspot,
+    id: `h${page.id}-${index + 1}`,
+    x: c[index * 2],
+    y: c[index * 2 + 1],
+  }));
+
+  const englishPage = rawMeccaB2Pages.find(candidate => candidate.id === page.id);
+  return {
+    ...clean,
+    image: englishPage?.image ?? clean.image,
+    audioUrl: language === 'ar'
+      ? storageUrl(`mecca/b2/audio/arabic_audio/B2 CHAPTER ${page.id}.mp3`, AR_AUDIO_TOKENS[page.id])
+      : englishPage?.audioUrl ?? clean.audioUrl,
+    content: language === 'en' ? fixText(clean.content ?? '', EN_FIXES[page.id]) : clean.content,
+    vocabulary,
+    hotspots,
+    animatedWords: undefined,
+  };
 };
 
-const meccaB2Pages = rawMeccaB2Pages.map(cleanPage);
-const meccaB2PagesAr = rawMeccaB2PagesAr.map(cleanPage);
-
-const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
+const meccaB2Pages = rawMeccaB2Pages.map(page => standardizePage(page, 'en'));
+const meccaB2PagesAr = rawMeccaB2PagesAr.map(page => standardizePage(page, 'ar'));
 
 const englishLanguageFocus: Record<number, Exercise[]> = {
   ...meccaB2LanguageFocusExercises,
@@ -85,62 +197,14 @@ const knowledgeMcEn = (
 });
 
 const meccaB2ManualKnowledgeCheckExercises: Exercise[] = [
-  knowledgeMcEn(
-    'me-b2-mk1',
-    'What detail does the book use to show the scale of Quraysh long-distance trade?',
-    ['The annual summer and winter caravans could include up to 2,500 camels', 'Every caravan consisted of exactly ten camels', 'Trade was limited to goods carried by individual travelers'],
-    0,
-    'Chapter 5 says the annual summer and winter journeys could use caravans numbering up to 2,500 camels, illustrating the scale of organized trade.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk2',
-    'Which pair correctly reflects two destinations or connections in Quraysh trade?',
-    ['Egypt was an important caravan destination, while Abyssinia was connected by sea', 'Constantinople was the only destination and sea trade did not exist', 'All trade remained inside the Arabian Peninsula'],
-    0,
-    'Chapter 5 identifies Egypt as an important destination and describes maritime trade relations with Abyssinia.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk3',
-    'Besides high lending rates, what behaviors does the social-class chapter say also pushed people into debt?',
-    ['Drinking and gambling', 'Pilgrimage and prayer', 'Poetry and genealogy'],
-    0,
-    'Chapter 7 adds that widespread drinking and gambling were among the reasons people repeatedly fell into debt.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk4',
-    'How old was Prophet Muhammad (as) when he attended the meeting connected with Hilfü’l-Fudûl?',
-    ['Twenty years old', 'Forty years old', 'Fifty-two years old'],
-    0,
-    'Chapter 8 states that Prophet Muhammad (as) was twenty years old when he attended the meeting that formed Hilfü’l-Fudûl.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk5',
-    'Why did the chapter say many tribes placed special value on having male children?',
-    ['Physical fighting strength and the resulting tribal protection and prestige were highly valued', 'Only sons were allowed to participate in trade fairs', 'Male children were required for pilgrimage'],
-    0,
-    'Chapter 10 connects the value placed on sons with physical strength, fighting capacity, tribal protection and respect among tribes.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk6',
-    'Which statement is directly supported by the chapter on slavery?',
-    ['Slaves were treated as economic property and could also serve as displays of wealth or protection in war', 'Slavery had no economic role in Mecca', 'Slaves were described as the city’s most politically powerful class'],
-    0,
-    'Chapter 11 describes slavery as an economic institution and says enslaved people were used for labor, personal service, displays of wealth and protection in war.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk7',
-    'Which practice does the religious-life chapter describe alongside pilgrimage and idol worship?',
-    ['People sought omens before taking action', 'People rejected every form of pilgrimage', 'Soothsayers were forbidden from making predictions'],
-    0,
-    'Chapter 12 says superstitious beliefs were widespread and that people sought omens before doing things.'
-  ),
-  knowledgeMcEn(
-    'me-b2-mk8',
-    'What economic distinction does the Quraysh-and-power chapter say the Quran introduced?',
-    ['Trade is lawful while usury is unlawful', 'Both trade and usury are unlawful', 'Usury is lawful while trade is unlawful'],
-    0,
-    'Chapter 14 contrasts the Quraysh view of usury with the Quranic distinction that trade is lawful and usury is unlawful.'
-  ),
+  knowledgeMcEn('me-b2-mk1','What detail does the book use to show the scale of Quraysh long-distance trade?',['The annual summer and winter caravans could include up to 2,500 camels','Every caravan consisted of exactly ten camels','Trade was limited to goods carried by individual travelers'],0,'Chapter 5 says the annual summer and winter journeys could use caravans numbering up to 2,500 camels, illustrating the scale of organized trade.'),
+  knowledgeMcEn('me-b2-mk2','Which pair correctly reflects two destinations or connections in Quraysh trade?',['Egypt was an important caravan destination, while Abyssinia was connected by sea','Constantinople was the only destination and sea trade did not exist','All trade remained inside the Arabian Peninsula'],0,'Chapter 5 identifies Egypt as an important destination and describes maritime trade relations with Abyssinia.'),
+  knowledgeMcEn('me-b2-mk3','Besides high lending rates, what behaviors does the social-class chapter say also pushed people into debt?',['Drinking and gambling','Pilgrimage and prayer','Poetry and genealogy'],0,'Chapter 7 adds that widespread drinking and gambling were among the reasons people repeatedly fell into debt.'),
+  knowledgeMcEn('me-b2-mk4','How old was Prophet Muhammad (as) when he attended the meeting connected with Hilfü’l-Fudûl?',['Twenty years old','Forty years old','Fifty-two years old'],0,'Chapter 8 states that Prophet Muhammad (as) was twenty years old when he attended the meeting that formed Hilfü’l-Fudûl.'),
+  knowledgeMcEn('me-b2-mk5','Why did the chapter say many tribes placed special value on having male children?',['Physical fighting strength and the resulting tribal protection and prestige were highly valued','Only sons were allowed to participate in trade fairs','Male children were required for pilgrimage'],0,'Chapter 10 connects the value placed on sons with physical strength, fighting capacity, tribal protection and respect among tribes.'),
+  knowledgeMcEn('me-b2-mk6','Which statement is directly supported by the chapter on slavery?',['Slaves were treated as economic property and could also serve as displays of wealth or protection in war','Slavery had no economic role in Mecca','Slaves were described as the city’s most politically powerful class'],0,'Chapter 11 describes slavery as an economic institution and says enslaved people were used for labor, personal service, displays of wealth and protection in war.'),
+  knowledgeMcEn('me-b2-mk7','Which practice does the religious-life chapter describe alongside pilgrimage and idol worship?',['People sought omens before taking action','People rejected every form of pilgrimage','Soothsayers were forbidden from making predictions'],0,'Chapter 12 says superstitious beliefs were widespread and that people sought omens before doing things.'),
+  knowledgeMcEn('me-b2-mk8','What economic distinction does the Quraysh-and-power chapter say the Quran introduced?',['Trade is lawful while usury is unlawful','Both trade and usury are unlawful','Usury is lawful while trade is unlawful'],0,'Chapter 14 contrasts the Quraysh view of usury with the Quranic distinction that trade is lawful and usury is unlawful.'),
 ];
 
 const knowledgeFeedbackAr = {
@@ -167,62 +231,14 @@ const knowledgeMcAr = (
 });
 
 const meccaB2ManualKnowledgeCheckExercisesAr: Exercise[] = [
-  knowledgeMcAr(
-    'me-b2-ar-mk1',
-    'ما التفصيل الذي يستخدمه الكتاب لإظهار ضخامة تجارة قريش البعيدة؟',
-    ['كان عدد جمال قوافل رحلتي الصيف والشتاء السنويتين يصل إلى 2500 جمل', 'كانت كل قافلة تتكون من عشرة جمال فقط', 'اقتصرت التجارة على بضائع يحملها أفراد منفردون'],
-    0,
-    'يذكر الفصل الخامس أن قوافل رحلتي الصيف والشتاء السنويتين كانت قد تصل إلى 2500 جمل، وهو دليل على حجم التجارة المنظمة.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk2',
-    'أي زوج يعكس بصورة صحيحة اثنتين من صلات قريش التجارية؟',
-    ['كانت مصر وجهة مهمة للقوافل، وكانت الحبشة مرتبطة بالتجارة البحرية', 'كانت القسطنطينية الوجهة الوحيدة ولم توجد تجارة بحرية', 'بقيت كل التجارة داخل شبه الجزيرة العربية'],
-    0,
-    'يذكر الفصل الخامس مصر بوصفها وجهة مهمة، كما يذكر علاقات قريش التجارية البحرية مع الحبشة.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk3',
-    'إلى جانب فوائد الديون المرتفعة، ما السلوكان اللذان يذكر الفصل أنهما أسهما أيضاً في وقوع الناس في الديون؟',
-    ['شرب الخمر والقمار', 'الحج والصلاة', 'الشعر وحفظ الأنساب'],
-    0,
-    'يضيف الفصل السابع أن شيوع شرب الخمر والقمار كان من أسباب وقوع الناس المتكرر في الديون.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk4',
-    'كم كان عمر النبي محمد (ص) عندما حضر الاجتماع المرتبط بحلف الفضول؟',
-    ['عشرون عاماً', 'أربعون عاماً', 'اثنان وخمسون عاماً'],
-    0,
-    'يذكر الفصل الثامن أن النبي محمد (ص) كان في العشرين من عمره عندما حضر الاجتماع الذي ارتبط بتأسيس حلف الفضول.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk5',
-    'لماذا كان كثير من القبائل يعلقون أهمية خاصة على كثرة الأبناء الذكور بحسب الفصل؟',
-    ['لأن القوة البدنية والقدرة القتالية وما يرتبط بهما من حماية ومكانة قبلية كانت ذات قيمة كبيرة', 'لأن الذكور وحدهم كانوا يسمح لهم بدخول الأسواق', 'لأن الحج كان يشترط وجود أبناء ذكور'],
-    0,
-    'يربط الفصل العاشر تفضيل الأبناء الذكور بالقوة البدنية والقتال والحماية القبلية والمكانة بين القبائل.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk6',
-    'أي عبارة يدعمها مباشرة فصل الرق؟',
-    ['عومل الرقيق كملكية اقتصادية، واستُخدموا أيضاً في الخدمة والعمل وإظهار الثراء والحماية في الحرب', 'لم يكن للرق أي دور اقتصادي في مكة', 'كان الرقيق أقوى طبقة سياسية في المدينة'],
-    0,
-    'يصف الفصل الحادي عشر الرق بوصفه مؤسسة اقتصادية ويذكر استخدام الرقيق في العمل والخدمة وإظهار الثراء والحماية في أوقات الحرب.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk7',
-    'ما الممارسة التي يذكرها فصل الحياة الدينية إلى جانب الحج وعبادة الأصنام؟',
-    ['كان الناس يلتمسون الطيرة أو العلامات قبل الإقدام على الأمور', 'كان الناس يرفضون الحج كله', 'كان الكهان ممنوعين من التنبؤ بالمستقبل'],
-    0,
-    'يذكر الفصل الثاني عشر شيوع المعتقدات الخرافية وأن الناس كانوا يلتمسون العلامات قبل الإقدام على أفعالهم.'
-  ),
-  knowledgeMcAr(
-    'me-b2-ar-mk8',
-    'ما التمييز الاقتصادي الذي يقول فصل قريش والسلطة إن القرآن قرره؟',
-    ['التجارة حلال والربا حرام', 'التجارة والربا كلاهما حرام', 'الربا حلال والتجارة حرام'],
-    0,
-    'يذكر الفصل الرابع عشر أن القرآن ميّز بين التجارة والربا، فاعتبر التجارة حلالاً والربا حراماً.'
-  ),
+  knowledgeMcAr('me-b2-ar-mk1','ما التفصيل الذي يستخدمه الكتاب لإظهار ضخامة تجارة قريش البعيدة؟',['كان عدد جمال قوافل رحلتي الصيف والشتاء السنويتين يصل إلى 2500 جمل','كانت كل قافلة تتكون من عشرة جمال فقط','اقتصرت التجارة على بضائع يحملها أفراد منفردون'],0,'يذكر الفصل الخامس أن قوافل رحلتي الصيف والشتاء السنويتين كانت قد تصل إلى 2500 جمل، وهو دليل على حجم التجارة المنظمة.'),
+  knowledgeMcAr('me-b2-ar-mk2','أي زوج يعكس بصورة صحيحة اثنتين من صلات قريش التجارية؟',['كانت مصر وجهة مهمة للقوافل، وكانت الحبشة مرتبطة بالتجارة البحرية','كانت القسطنطينية الوجهة الوحيدة ولم توجد تجارة بحرية','بقيت كل التجارة داخل شبه الجزيرة العربية'],0,'يذكر الفصل الخامس مصر بوصفها وجهة مهمة، كما يذكر علاقات قريش التجارية البحرية مع الحبشة.'),
+  knowledgeMcAr('me-b2-ar-mk3','إلى جانب فوائد الديون المرتفعة، ما السلوكان اللذان يذكر الفصل أنهما أسهما أيضاً في وقوع الناس في الديون؟',['شرب الخمر والقمار','الحج والصلاة','الشعر وحفظ الأنساب'],0,'يضيف الفصل السابع أن شيوع شرب الخمر والقمار كان من أسباب وقوع الناس المتكرر في الديون.'),
+  knowledgeMcAr('me-b2-ar-mk4','كم كان عمر النبي محمد (ص) عندما حضر الاجتماع المرتبط بحلف الفضول؟',['عشرون عاماً','أربعون عاماً','اثنان وخمسون عاماً'],0,'يذكر الفصل الثامن أن النبي محمد (ص) كان في العشرين من عمره عندما حضر الاجتماع الذي ارتبط بتأسيس حلف الفضول.'),
+  knowledgeMcAr('me-b2-ar-mk5','لماذا كان كثير من القبائل يعلقون أهمية خاصة على كثرة الأبناء الذكور بحسب الفصل؟',['لأن القوة البدنية والقدرة القتالية وما يرتبط بهما من حماية ومكانة قبلية كانت ذات قيمة كبيرة','لأن الذكور وحدهم كانوا يسمح لهم بدخول الأسواق','لأن الحج كان يشترط وجود أبناء ذكور'],0,'يربط الفصل العاشر تفضيل الأبناء الذكور بالقوة البدنية والقتال والحماية القبلية والمكانة بين القبائل.'),
+  knowledgeMcAr('me-b2-ar-mk6','أي عبارة يدعمها مباشرة فصل الرق؟',['عومل الرقيق كملكية اقتصادية، واستُخدموا أيضاً في الخدمة والعمل وإظهار الثراء والحماية في الحرب','لم يكن للرق أي دور اقتصادي في مكة','كان الرقيق أقوى طبقة سياسية في المدينة'],0,'يصف الفصل الحادي عشر الرق بوصفه مؤسسة اقتصادية ويذكر استخدام الرقيق في العمل والخدمة وإظهار الثراء والحماية في أوقات الحرب.'),
+  knowledgeMcAr('me-b2-ar-mk7','ما الممارسة التي يذكرها فصل الحياة الدينية إلى جانب الحج وعبادة الأصنام؟',['كان الناس يلتمسون الطيرة أو العلامات قبل الإقدام على الأمور','كان الناس يرفضون الحج كله','كان الكهان ممنوعين من التنبؤ بالمستقبل'],0,'يذكر الفصل الثاني عشر شيوع المعتقدات الخرافية وأن الناس كانوا يلتمسون العلامات قبل الإقدام على أفعالهم.'),
+  knowledgeMcAr('me-b2-ar-mk8','ما التمييز الاقتصادي الذي يقول فصل قريش والسلطة إن القرآن قرره؟',['التجارة حلال والربا حرام','التجارة والربا كلاهما حرام','الربا حلال والتجارة حرام'],0,'يذكر الفصل الرابع عشر أن القرآن ميّز بين التجارة والربا، فاعتبر التجارة حلالاً والربا حراماً.'),
 ];
 
 const finalFeedbackEn={
