@@ -8,251 +8,203 @@ export const adamA2PagesAr: PageData[] = [
     type: 'story',
     title: 'الافتتاحية والخلق',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_ch1.png?alt=media&token=ca08c6ed-5540-4dc8-b880-7de3d943ce9c',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch1.mpeg?alt=media&token=8d0fedae-0255-4eac-b960-f9f7de300c0e',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%201.mp3?alt=media&token=5ec30f4b-abcc-44f4-9b33-1cc0b69ed8c2',
     content: "آدَمُ (عَلَيْهِ السَّلَامُ)، هُوَ أَوَّلُ نَبِيٍّ أَرْسَلَهُ اللهُ وَأَبُو الْبَشَر كُلِّهِمْ. خَلَقَهُ اللهُ مِنَ التُّرَابِ، أَكْرَمَهُ اللهُ وَأَعْطاهُ قَدْرًا عَظيمًا، لِأَنَّهُ الْإِنْسَانُ الْأَوَّلُ. نَحْنُ أَحْفَادُ آدَمَ (عَلَيْهِ السَّلَامُ). لِذَلِكَ، نَسْتَطِيعُ أَنْ نَتَعَلَّمَ دُرُوسًا كَثِيرَةً مِنْ هَذِهِ الْقِصَّةِ الرَّائِعَةِ.\n\nخَلَقَ اللهُ السَّمَاءَ وَالْأَرْضَ. ثُمَّ قَالَ لِلْمَلَائِكَةِ إِنَّهُ سَيَخْلُقُ إِنْسَانًا. قَالَ: \"سَيَكُونُ الْإِنْسَانُ خَلِيفَةً (مَسْؤُولًا) فِي الْأَرْضِ. سَيَعِيشُ هَذَا الْإِنْسَانُ سَنَوَاتٍ طَوِيلَةً فِي الْأَرْضِ\". تَعَجَّبَتِ الْمَلَائِكَةُ، وَانْتَظَرُوا بِفُضُولٍ.\n\nثُمَّ أَحْضَرَتْ مَلَائِكَةُ اللهِ تُرَابًا مِنْ أَمَاكِنَ مُخْتَلِفَةٍ مِنَ الْأَرْضِ، وَصَوَّرَ اللهُ آدَمَ. لِهَذَا السَّبَبِ، لِلنَّاسِ أَلْوَانُ بَشَرَةٍ مُخْتَلِفَةٌ.\n\nقَالَ النَّبِيُّ مُحَمَّدٌ (صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ) إِنَّ اللهَ خَلَقَ آدَمَ مِنْ قَبْضَةِ تُرَابٍ؛ لِذَلِكَ أَوْلَادُ آدَمَ أَلْوَانُهُمْ أَبْيَضُ، وَأَحْمَرُ، وَأَسْوَدُ، وَأَصْفَرُ.",
     vocabulary: [
       { word: 'نَبِيٍّ', definition: 'شخص يرسله الله إلى الناس برسالة.' },
       { word: 'تُرَاب', definition: 'الأرض التي تنمو فيها النباتات.' },
-      { word: 'فُضُول', definition: 'الرغبة في معرفة شيء أو تعلمه.' }
+      { word: 'فُضُولٍ', definition: 'الرغبة في معرفة شيء أو تعلمه.' },
+      { word: 'أَحْفَادُ', definition: 'أبناء الأبناء أو البنات.' },
     ],
     hotspots: [
-      { id: 'h1', x: 30, y: 40, title: 'التُّرَاب', description: 'خَلَقَهُ اللهُ مِنَ التُّرَابِ.' },
-      { id: 'h2', x: 70, y: 20, title: 'الْأَرْض', description: 'خَلَقَ اللهُ السَّمَاءَ وَالْأَرْضَ.' }
+      { id: 'adam-a2-ar-h1a', x: 30, y: 40, title: 'التُّرَاب', description: 'خَلَقَ اللهُ آدَمَ مِنَ التُّرَابِ.' },
+      { id: 'adam-a2-ar-h1b', x: 70, y: 20, title: 'الْأَرْض', description: 'خَلَقَ اللهُ السَّمَاءَ وَالْأَرْضَ.' },
     ],
-    animatedWords: ['السَّمَاء', 'الْأَرْض', 'تُرَاب']
   },
   {
     id: 2,
     type: 'story',
     title: 'العلم والاحترام',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter2.png?alt=media&token=649ddbc9-ea42-4fe9-9a58-09ce1d27191a',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch2.mpeg?alt=media&token=00c97ca4-405a-4db3-89f6-86c5a1bfe7e2',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter2.mp3?alt=media&token=5b8b81af-8598-40b4-b2b1-00ec103d155f',
     content: "قَالَ اللهُ لِلْمَلَائِكَةِ: \"إِذا خَلَقْتُ آدَمَ وَنَفَخْتُ فيهِ الرُّوحَ، فَاسْجُدوا لَهُ تَكْريمًا وَاحْتِرامًا.\" كَانَ آدَمُ يَتَعَلَّمُ وَيَفْهَمُ. كَانَ أَكْثَرَ عِلْمًا وَذَكَاءً مِنَ الْمَلَائِكَةِ، لِأَنَّ اللهَ عَلَّمَ آدَمَ الْعِلْمَ وَالتَّفْكِيرَ. تَعَلَّمَ أَكْثَرَ مِمَّا تَعْرِفُهُ الْمَلَائِكَةُ.\n\nفَرَأَتِ المَلائِكَةُ أَنَّ آدَمَ شَيْءٌ عَظيمٌ، فَأُعْجِبُوا بِهِ وَسَجَدُوا لَهُ تَكْريمًا. لَكِنَّ إِبْلِيسَ لَمْ يَفْعَلْ ذَلِكَ؛ إِبْلِيسُ يَرَى أَنَّ آدَمَ شَخْصٌ غَيْرُ مُهِمٍّ، لِأَنَّهُ خُلِقَ مِنَ التُّرَاب.",
     vocabulary: [
       { word: 'وَاحْتِرامًا', definition: 'معاملة شخص بتقدير واهتمام.' },
-      { word: 'ذَكَاءً', definition: 'القدرة على الفهم والتعلم واتخاذ قرار جيد.' },
-      { word: 'تَكْريمًا', definition: 'إظهار الاحترام والتقدير لشخص.' }
+      { word: 'الْعِلْمَ', definition: 'ما يعرفه الإنسان ويفهمه.' },
+      { word: 'فَأُعْجِبُوا', definition: 'أحبوه واحترموه كثيرًا.' },
+      { word: 'التُّرَاب', definition: 'أرض لينة يمكن أن تتشكل.' },
     ],
     hotspots: [
-      { id: 'h2-1', x: 40, y: 30, title: 'الْعِلْم', description: 'عَلَّمَ اللهُ آدَمَ الْعِلْمَ وَالتَّفْكِيرَ.' },
-      { id: 'h2-2', x: 60, y: 50, title: 'الْمَلَائِكَة', description: 'فَرَأَتِ المَلائِكَةُ أَنَّ آدَمَ شَيْءٌ عَظيمٌ، فَأُعْجِبُوا بِهِ وَسَجَدُوا لَهُ تَكْريمًا.' }
+      { id: 'adam-a2-ar-h2a', x: 40, y: 30, title: 'الْعِلْم', description: 'عَلَّمَ اللهُ آدَمَ الْعِلْمَ وَالتَّفْكِيرَ.' },
+      { id: 'adam-a2-ar-h2b', x: 60, y: 50, title: 'الْمَلَائِكَة', description: 'أُعْجِبَتِ الْمَلَائِكَةُ بِآدَمَ وَاحْتَرَمَتْهُ.' },
     ],
-    animatedWords: ['الْعِلْمَ', 'التَّفْكِيرَ', 'عَظيمٌ', 'تَكْريمًا']
   },
   {
     id: 3,
     type: 'story',
     title: 'كبرياء إبليس',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter3.png?alt=media&token=47e43312-d51a-45a8-9349-7f2f097d37a2',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch3.mpeg?alt=media&token=99fc6603-b78b-46bd-ba68-6bbd5a67f7e5',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter3.mp3?alt=media&token=317c7f79-5eae-4a6e-9726-96118abf36f1',
     content: "سَأَلَ اللهُ إِبْلِيسَ: \"لِمَاذَا لَمْ تَحْتَرِمْ آدَمَ؟\" قَالَ إِبْلِيسُ: \"أَنَا أَفْضَلُ مِنْ آدَمَ. خَلَقْتَنِي مِنْ نَارٍ، وَخَلَقْتَ آدَمَ مِنْ طِينٍ.\" \n\nإِبْلِيسُ كَانَ مُتَكَبِّرًا. كَانَ يَظُنُّ أَنَّهُ أَهَمُّ وَأَفْضَلُ مِنْ آدَمَ. كَانَ مَخْلُوقًا مِنَ النَّارِ، وَكَانَ يُؤْمِنُ أَنَّ أَصْلَهُ أَفْضَلُ. كَانَ يُفَكِّرُ بِشَكْلٍ خَاطِئٍ عَنْ آدَمَ. لَمْ يَكُنْ إِبْلِيسُ يَرَى أَنَّ آدَمَ كَانَ يَمْلِكُ عِلْمًا مُهِمًّا، وَأَنَّ هَذَا الْعِلْمَ نَافِعٌ لِكُلِّ مَخْلُوقَاتِ اللهِ. هَذَا الْعِلْمُ جَعَلَ آدَمَ أَكْثَرَ قِيمَةً. \n\nعِنْدَ اللهِ، التُّرَابُ أَوِ النَّارُ لَا يَجْعَلُ أَحَدًا كَرِيمًا. وَلَكِنَّ الْعِلْمَ النَّافِعَ يَرْفَعُ الإِنْسَانَ، لِأَنَّ الإِنْسَانَ بِهَذَا الْعِلْمِ يَسْتَطِيعُ أَنْ يَفْعَلَ الْخَيْرَ وَيَمْنَعَ الشَّرَّ. \n\nوَلَكِنَّ إِبْلِيسَ اسْتَمَرَّ يَقُولُ إِنَّهُ مُحِقٌّ، وَإِنَّ الْخَالِقَ غَيْرُ مُحِقٍّ. فَقَالَ اللهُ لِإِبْلِيسَ: «اُخْرُجْ مِنْ هُنَا! إِنَّكَ بَعِيدٌ جِدًّا عَنْ مَحَبَّتِي وَرَحْمَتِي». \n\nوَكَانَ آدَمُ الآنَ فِي الْجَنَّةِ.",
     vocabulary: [
-      { word: 'مُتَكَبِّرًا', definition: 'شخص يظن أنه أفضل أو أهم من الآخرين.' },
-      { word: 'قِيمَةً', definition: 'مهم أو مفيد جدا.' },
-      { word: 'مَخْلُوقًا', definition: 'كائن حي خلقه الله.' }
+      { word: 'مُتَكَبِّرًا', definition: 'يظن أنه أفضل أو أهم من الآخرين.' },
+      { word: 'قِيمَةً', definition: 'مهم أو مفيد جدًا.' },
+      { word: 'مَخْلُوقَاتِ', definition: 'كائنات خلقها الله.' },
+      { word: 'أَصْلَهُ', definition: 'المكان أو المادة التي جاء منها الشيء.' },
     ],
     hotspots: [
-      { id: 'h3-1', x: 25, y: 45, title: 'النَّار', description: 'قَالَ إِبْلِيسُ: أَنَا أَفْضَلُ مِنْ آدَمَ. خَلَقْتَنِي مِنْ نَارٍ، وَخَلَقْتَ آدَمَ مِنْ طِينٍ.' },
-      { id: 'h3-2', x: 75, y: 35, title: 'مُتَكَبِّرًا', description: 'إِبْلِيسُ كَانَ مُتَكَبِّرًا. كَانَ يَظُنُّ أَنَّهُ أَهَمُّ وَأَفْضَلُ مِنْ آدَمَ.' }
+      { id: 'adam-a2-ar-h3a', x: 25, y: 45, title: 'النَّار وَالطِّين', description: 'قَارَنَ إِبْلِيسُ النَّارَ بِالطِّينِ الَّذِي خُلِقَ مِنْهُ آدَمُ.' },
+      { id: 'adam-a2-ar-h3b', x: 75, y: 35, title: 'الْكِبْر', description: 'ظَنَّ إِبْلِيسُ أَنَّهُ أَفْضَلُ مِنْ آدَمَ.' },
     ],
-    animatedWords: ['نَارٍ', 'طِينٍ', 'مُتَكَبِّرًا']
   },
   {
     id: 4,
     type: 'story',
     title: 'الجنة والتحذير',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter4.png?alt=media&token=1d8c7a12-f7d4-4b4b-8435-43e353ae29ff',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch4.mpeg?alt=media&token=49e6855f-ce0b-42ce-a65e-d88dc6593365',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%204.mp3?alt=media&token=55b1cc99-c979-4610-8874-4ef16ab91884',
     content: "كَانَ إِبْلِيسُ غَاضِبًا مِنْ آدَمَ وَيَكْرَهُهُ كَثِيرًا. لَمْ يُرِدْ أَنْ يُعَامِلَ اللهُ آدَمَ بِلُطْفٍ. ظَنَّ إِبْلِيسُ أَنَّ آدَمَ هُوَ السَّبَبُ فِي غَضَبِ اللهِ عَلَيْهِ. لِذَلِكَ، خَطَّطَ لِإِبْعَادِ آدَمَ عَنْ رَحْمَةِ اللهِ. حَذَّرَ اللهُ آدَمَ مِنْ إِبْلِيسَ وَقَالَ لَهُ أَنْ يَكُونَ حَذِرًا. \n\nبَعْدَ ذَلِكَ، شَعَرَ آدَمُ بِالْوَحْدَةِ فِي الْجَنَّةِ. فَخَلَقَ اللهُ لَهُ زَوْجَةً اسْمُهَا حَوَّاءُ. عَاشَا مَعًا فِي الْجَنَّةِ، وَكَانَتِ الْجَنَّةُ مَكَانًا رَائِعًا جِدًّا. كَانَ فِيهَا كُلُّ شَيْءٍ يُحِبَّانِهِ. لَكِنَّ اللهَ مَنَعَهُمَا مِنْ شَجَرَةٍ وَاحِدَةٍ فَقَطْ. قَالَ اللهُ لَهُمَا: \"لَا تَقْرَبَا هَذِهِ الشَّجَرَةَ\".",
     vocabulary: [
       { word: 'بِالْوَحْدَةِ', definition: 'حزين لأنه وحده.' },
-      { word: 'رَائِعًا', definition: 'جميل جدا ومفرح.' },
-      { word: 'حَذَّرَ', definition: 'نبه شخصا إلى خطر أو شيء يجب تجنبه.' }
+      { word: 'رَائِعًا', definition: 'جميل جدًا ومفرح.' },
+      { word: 'حَذَّرَ', definition: 'نبه شخصًا إلى خطر أو شيء يجب تجنبه.' },
+      { word: 'زَوْجَةً', definition: 'امرأة متزوجة.' },
     ],
     hotspots: [
-      { id: 'h4-1', x: 35, y: 40, title: 'حَوَّاء', description: 'فَخَلَقَ اللهُ لَهُ زَوْجَةً اسْمُهَا حَوَّاءُ.' },
-      { id: 'h4-2', x: 65, y: 25, title: 'الشَّجَرَة', description: 'قَالَ اللهُ لَهُمَا: لَا تَقْرَبَا هَذِهِ الشَّجَرَةَ.' }
-    ]
+      { id: 'adam-a2-ar-h4a', x: 35, y: 40, title: 'حَوَّاء', description: 'خَلَقَ اللهُ لِآدَمَ زَوْجَةً اسْمُهَا حَوَّاءُ.' },
+      { id: 'adam-a2-ar-h4b', x: 65, y: 25, title: 'الشَّجَرَة', description: 'حَذَّرَ اللهُ آدَمَ وَحَوَّاءَ مِنَ الاقْتِرَابِ مِنْ شَجَرَةٍ وَاحِدَةٍ.' },
+    ],
   },
   {
     id: 5,
     type: 'story',
     title: 'الخداع والندم',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter5.png?alt=media&token=76cd56fb-6403-4eed-9d22-2125689e9ab1',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch5.mpeg?alt=media&token=e6b07ba9-8c2d-4e9f-8c8e-0fa6da48661d',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%205.mp3?alt=media&token=d560fb16-f880-4f65-99d8-75eed863e013',
     content: "وَبَيْنَما كانَ آدَمُ وَحَوّاءُ يَعِيشانِ سَعيدَيْنِ في الجَنَّةِ، اقْتَرَبَ إِبْليسُ مِنْهُما وَقالَ إِنَّهُ صَديقُهُما. وَكانَ ذلِكَ كَذِبًا كَبيرًا. ثُمَّ قالَ لَهُما بِلُطْفٍ: \"إِذا أَكَلْتُما مِنْ ثَمَرِ تِلْكَ الشَّجَرَةِ، فَلَنْ تَموتا أَبَدًا.\" \n\nوَبَعْدَ مُدَّةٍ، أَقْنَعَهُما إِبْليسُ بِكَذِبِهِ. فَنَسِيَا تَحْذيرَ اللهِ. وَمَعَ الأَسَفِ، فَإِنَّ الإِنْسانَ أَحْيانًا يَكونُ نَسِيًّا. \n\nأَكَلَ آدَمُ وَحَوَّاءُ مِنْ تِلْكَ الشَّجَرَةِ المُحَرَّمَةِ. وَقَعَا فِي الْخَطَأِ، لَكِنَّهُمَا لَمْ يَقْصِدَا عِصْيَانَ اللهِ. حَزِنَا كَثِيرًا وَطَلَبَا الْمَغْفِرَةَ مِنَ اللهِ. تَعَلَّمَا مِنَ الْخَطَأِ. وَقَرَّرا أَنْ لا يُكَرِّراهُ أَبَدًا. وَسَأَلَا اللهَ أَنْ يَغْفِرَ لَهُما. \n\nوَلَكِنَّ إِبْليسَ سَلَكَ طَريقًا مُخالِفًا تَمامًا. فَلِأَنَّهُ كانَ مُتَكَبِّرًا، لَمْ يَعْتَرِفْ أَبَدًا بِأَنَّهُ مُخْطِئٌ. وَكانَ يَظُنُّ أَنَّهُ أَفْضَلُ مِنَ الإِنْسانِ، وَأَذْكى وَأَهَمُّ. وَكانَتْ صِفاتُ إِبْليسَ تَجْعَلُ فِعْلَ الخَيْرِ صَعْبًا عَلَيْهِ، وَتَمْنَعُهُ مِنْ أَنْ يَرى الفَرْقَ بَيْنَ الحَقِّ وَالباطِلِ.",
     vocabulary: [
-      { word: 'بِكَذِبِهِ', definition: 'قول شيء غير صحيح لخداع شخص.' },
-      { word: 'حَزِنَا', definition: 'شعرا بالأسف والحزن.' },
-      { word: 'تَحْذيرَ', definition: 'تنبيه إلى خطر أو شيء يجب تجنبه.' },
-      { word: 'مُتَكَبِّرًا', definition: 'شخص يظن أنه أفضل أو أهم من الآخرين.' }
+      { word: 'كَذِبًا', definition: 'قول غير صحيح.' },
+      { word: 'الْخَطَأِ', definition: 'شيء يفعله الشخص بشكل غير صحيح.' },
+      { word: 'نَسِيًّا', definition: 'ينسى الأشياء كثيرًا.' },
+      { word: 'أَفْضَلُ', definition: 'أعلى أو أحسن من شخص أو شيء آخر.' },
     ],
     hotspots: [
-      { id: 'h5-1', x: 45, y: 35, title: 'كَذِبًا', description: 'وَكانَ ذلِكَ كَذِبًا كَبيرًا.' },
-      { id: 'h5-2', x: 55, y: 60, title: 'حَزِنَا', description: 'حَزِنَا كَثِيرًا وَطَلَبَا الْمَغْفِرَةَ مِنَ اللهِ.' }
+      { id: 'adam-a2-ar-h5a', x: 45, y: 35, title: 'الْكَذِب', description: 'قَالَ إِبْلِيسُ لِآدَمَ وَحَوَّاءَ كَذِبًا عَنِ الشَّجَرَةِ.' },
+      { id: 'adam-a2-ar-h5b', x: 55, y: 60, title: 'الْخَطَأ', description: 'وَقَعَ آدَمُ وَحَوَّاءُ فِي الْخَطَأِ وَطَلَبَا الْمَغْفِرَةَ.' },
     ],
-    animatedWords: ['يَقْصِدَا']
   },
   {
     id: 6,
     type: 'story',
     title: 'الحياة على الأرض',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter6.png?alt=media&token=98ad5740-e8d4-4413-8b73-b4b53e959d2d',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch6.mpeg?alt=media&token=b893878b-4c34-4dd6-bed1-2a83c4155748',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%206.mp3?alt=media&token=4e5777e9-2d30-4b79-9e04-8cbefaad1e17',
     content: "ثُمَّ غَفَرَ اللهُ لِآدَمَ وَحَوّاءَ، وَأَنْزَلَهُما إِلى الأَرْضِ لِيَعِيشا فيها. وَعَلَّمَهُما اللهُ كُلَّ شَيْءٍ يَحْتاجانِ إِلَيْهِ لِإِدارَةِ الأَرْضِ، وَأَعْطاهُما ما يَلْزَمُهُما. وَكانا حاكِمَيْنِ عَلَى هذِهِ الأَرْضِ. وَكانا سَيُدَبِّرانِ شُؤونَها وَيُصْلِحانِها. وَكانا سَيَسْتَخْدِمانِ التُّرابَ لِزِراعَةِ الزُّروعِ وَتَرْبِيَةِ الحَيَواناتِ. وَكانا سَيَبْنِيانِ البُيوتَ لِلسَّكَنِ، وَيَحافِظانِ عَلَى الطَّبيعَةِ، وَيُساعِدانِ الضُّعَفاءَ.\n\nلَكِنَّ إِبْلِيسَ تَبِعَهُمَا إِلَى الْأَرْضِ أَيْضًا. أَرَادَ إِبْلِيسُ أَنْ يَنْسَى النَّاسُ رَبَّهُمْ.\n\nوَلَكِنَّ إِبْليسَ تَبِعَ آدَمَ وَحَوّاءَ إِلى الأَرْضِ أَيْضًا. وَكانَ ما زالَ قَريبًا مِنْهُما. وَكانَ يُريدُ أَنْ يَنْسى النّاسُ اللهَ في حَياتِهِمُ اليَوْمِيَّةِ.",
     vocabulary: [
       { word: 'الزُّروعِ', definition: 'نباتات تُزرع للغذاء.' },
       { word: 'لِإِدارَةِ', definition: 'قيادة مكان وتنظيم شؤونه.' },
-      { word: 'الأَرْضِ', definition: 'العالم الذي نعيش عليه.' }
+      { word: 'الأَرْضِ', definition: 'العالم الذي نعيش عليه.' },
+      { word: 'الضُّعَفاءَ', definition: 'أشخاص ليسوا أقوياء ويحتاجون إلى المساعدة.' },
     ],
     hotspots: [
-      { id: 'h6-1', x: 30, y: 50, title: 'الأَرْض', description: 'وَكانا حاكِمَيْنِ عَلَى هذِهِ الأَرْضِ.' },
-      { id: 'h6-2', x: 70, y: 40, title: 'الزُّروع', description: 'وَكانا سَيَسْتَخْدِمانِ التُّرابَ لِزِراعَةِ الزُّروعِ وَتَرْبِيَةِ الحَيَواناتِ.' }
+      { id: 'adam-a2-ar-h6a', x: 30, y: 50, title: 'الأَرْض', description: 'بَدَأَ آدَمُ وَحَوَّاءُ حَيَاتَهُمَا عَلَى الأَرْضِ.' },
+      { id: 'adam-a2-ar-h6b', x: 70, y: 40, title: 'الْعَمَل', description: 'زَرَعَا الزُّرُوعَ وَرَبَّيَا الْحَيَوَانَاتِ وَسَاعَدَا الضُّعَفَاءَ.' },
     ],
-    animatedWords: ['غَفَرَ']
   },
   {
     id: 7,
     type: 'story',
     title: 'أول رسول',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter7.png?alt=media&token=2cca3dac-2759-4016-824a-106d09ff0781',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch7.mpeg?alt=media&token=289f1c8d-3bf8-4946-88dd-f0fa5df02779',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%207.mp3?alt=media&token=2919c4c7-020a-4d13-8a16-11f1ba1e6846',
     content: "وَعاشَ آدَمُ وَحَوّاءُ سِنينَ طَويلَةً في الأَرْضِ. وَمَرَّتْ عَلَيْهِما أَيّامٌ سَعيدَةٌ وَأَيّامٌ صَعْبَةٌ. فَبَعْضُ الأَيّامِ كانَتْ تَجْلِبُ لَهُما السَّكينَةَ، وَبَعْضُها كانَ شَديدًا. وَرُزِقا أَوْلادًا كَثيرينَ. وَنَحْنُ كُلُّنا مِنْ أَوْلادِهِما. ثُمَّ جَعَلَ اللهُ آدَمَ أَوَّلَ رَسولٍ لَهُ. وَكانَ أَوَّلَ رَسولٍ في الإِسْلامِ. فَبَدَأَ يُعَلِّمُ النَّاسَ أَنْ يَكُونُوا صَادِقِينَ، وَأَنْ يَفْعَلُوا الْخَيْرَ، وَأَنْ يَمْنَعُوا الشَّرَّ وَأَنْ يَذْكُرُوا اللهَ دَائِمًا. \n\nوَقَدْ عَلَّمَ آدَمُ (عليه السَّلامُ) وَحَوّاءُ أَوْلادَهُما أَنْ يُحْسِنوا إِلى النّاسِ مِنْ أَجْلِ مَحَبَّةِ اللهِ، وَأَنْ يَشْكُروا اللهَ عَلَى عَوْنِهِ وَنِعَمِهِ. وَحَذَّراهُمْ أَيْضًا مِنْ إِبْليسَ، لِأَنَّ إِبْليسَ لَيْسَ صَديقًا لَهُمْ بَلْ هُوَ عَدُوٌّ. \n\nوَبَعْدَ وَفاةِ آدَمَ (عليه السَّلامُ)، أَرْسَلَ اللهُ أَنْبِياءَ كَثيرينَ. وَكانوا يُعَلِّمونَ النّاسَ الحَقَّ وَالباطِلَ، وَيُعَلِّمونَهُمْ كَيْفَ يَبْتَعِدونَ عَنْ إِبْليسَ. وَسارَ جَميعُ الأَنْبِياءِ عَلَى الطَّريقِ نَفْسِهِ. وَكانوا يُريدونَ أَنْ يَذْكُرَ النّاسُ اللهَ دائمًا.",
     vocabulary: [
       { word: 'صَادِقِينَ', definition: 'يقولون الحقيقة ولا يخدعون.' },
       { word: 'يُحْسِنوا', definition: 'يفعلوا الخير ويعاملوا الآخرين بلطف.' },
-      { word: 'عَدُوٌّ', definition: 'شخص يريد الضرر أو يعارض شخصا آخر.' }
+      { word: 'عَدُوٌّ', definition: 'شخص يريد الضرر أو يعارض شخصًا آخر.' },
+      { word: 'أَنْبِياءَ', definition: 'أشخاص أرسلهم الله برسالته.' },
     ],
     hotspots: [
-      { id: 'h7-1', x: 40, y: 45, title: 'رَسول', description: 'جَعَلَ اللهُ آدَمَ أَوَّلَ رَسولٍ لَهُ.' },
-      { id: 'h7-2', x: 60, y: 30, title: 'أَوْلادًا', description: 'وَرُزِقا أَوْلادًا كَثيرينَ.' }
-    ]
+      { id: 'adam-a2-ar-h7a', x: 40, y: 45, title: 'رَسول', description: 'جَعَلَ اللهُ آدَمَ أَوَّلَ رَسولٍ لَهُ.' },
+      { id: 'adam-a2-ar-h7b', x: 60, y: 30, title: 'التَّعْلِيم', description: 'عَلَّمَ آدَمُ وَحَوَّاءُ أَوْلادَهُمَا الْخَيْرَ وَذِكْرَ اللهِ.' },
+    ],
   },
   {
     id: 8,
     type: 'story',
     title: 'قصة هابيل وقابيل',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter8.png?alt=media&token=4a3d55b6-fba5-4d1b-ac6d-368ea81562f6',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch8.mpeg?alt=media&token=d95ca7d8-aabc-4dd4-b0ea-ded37490eb74',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%208.mp3?alt=media&token=706c8087-a987-4388-a2a2-e8cc09950717',
     content: "كَانَ لِآدَمَ (عَلَيْهِ السَّلَامُ) وَحَوَّاءَ ابْنَانِ اسْمُهُمَا هَابِيلُ وَقَابِيلُ. كَانَا مُخْتَلِفَيْنِ جِدًّا كُلُّ وَاحِدٍ عَنِ الْآخَرِ. كَانَ هَابِيلُ لَطِيفًا وَطَيِّبًا، وَكَانَ يُحِبُّ الِاعْتِنَاءَ بِالْحَيَوَانَاتِ. أَمَّا قَابِيلُ فَكَانَ حَسُودًا غَالِبًا. لَمَّا كَبِرَا، أَصْبَحَ هَابِيلُ رَاعِيًا. كَانَ يُرَبِّي الْأَبْقَارَ، وَالْأَغْنَامَ، وَحَيَوَانَاتٍ أُخْرَى. وَأَصْبَحَ قَابِيلُ مُزَارِعًا، يَعْمَلُ فِي الْحَقْلِ وَيَزْرَعُ النَّبَاتَاتِ. فِي يَوْمٍ مِنَ الْأَيَّامِ، حَدَثَ بَيْنَهُمَا خِلَافٌ كَبِيرٌ. وَلِحَلِّ هَذِهِ الْمُشْكِلَةِ، كَانَ يَجِبُ عَلَيْهِمَا أَنْ يُقَدِّمَا قُرْبَانًا (هَدِيَّةً) لِلهِ. قَدَّمَ هَابِيلُ أَفْضَلَ وَأَصَحَّ خَرُوفٍ عِنْدَهُ هَدِيَّةً لِلهِ. لَكِنَّ قَابِيلَ أَحْضَرَ قَبْضَةً فَقَطْ مِنْ مَحْصُولِهِ. وَلَمْ يَكُنْ هَذَا ذَا قِيمَةٍ. لَمْ يَهْتَمَّ قَابِيلُ بِإِرْضَاءِ اللهِ وَلَا أَبِيهِ آدَمَ (عَلَيْهِ السَّلَامُ). إِنَّ الْخَيْرَ الْحَقِيقِيَّ هُوَ أَنْ نُعْطِيَ أَفْضَلَ وَأَحَبَّ مَا نَمْلِكُ.",
     vocabulary: [
       { word: 'رَاعِيًا', definition: 'شخص يعتني بالغنم.' },
       { word: 'مُزَارِعًا', definition: 'شخص يزرع المحاصيل أو يعتني بالحيوانات في مزرعة.' },
-      { word: 'قُرْبَانًا', definition: 'شيء يُقدَّم لله.' }
+      { word: 'قُرْبَانًا', definition: 'شيء يُقدَّم لله.' },
+      { word: 'حَسُودًا', definition: 'حزين لأن شخصًا آخر يملك شيئًا يريده.' },
     ],
     hotspots: [
-      { id: 'h8-1', x: 35, y: 55, title: 'خَرُوف', description: 'قَدَّمَ هَابِيلُ أَفْضَلَ وَأَصَحَّ خَرُوفٍ عِنْدَهُ هَدِيَّةً لِلهِ.' },
-      { id: 'h8-2', x: 65, y: 45, title: 'النَّبَاتَات', description: 'أَصْبَحَ قَابِيلُ مُزَارِعًا، يَعْمَلُ فِي الْحَقْلِ وَيَزْرَعُ النَّبَاتَاتِ.' }
-    ]
+      { id: 'adam-a2-ar-h8a', x: 35, y: 55, title: 'هَابِيل', description: 'كَانَ هَابِيلُ يَرْعَى الْحَيَوَانَاتِ وَقَدَّمَ أَفْضَلَ خَرُوفٍ.' },
+      { id: 'adam-a2-ar-h8b', x: 65, y: 45, title: 'قَابِيل', description: 'كَانَ قَابِيلُ مُزَارِعًا وَقَدَّمَ بَعْضَ مَحْصُولِهِ.' },
+    ],
   },
   {
     id: 9,
     type: 'story',
     title: 'الجريمة الأولى',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter9.png?alt=media&token=12a5e3e0-c1be-47c1-9a1d-0b64288ddf56',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch9.mpeg?alt=media&token=4c0d7ec9-23e8-4aa8-86bf-9f487ca7605f',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%209.mp3?alt=media&token=16ad7c93-a13c-4a16-aa88-9b3ebd36fe34',
     content: "قَبِلَ اللهُ قُرْبَانَ هَابِيلَ لِأَنَّهُ أَعْطَاهُ مِنْ قَلْبِهِ. اِسْوَدَّ وَجْهُ قَابِيلَ مِنَ الْغَضَبِ، وَقَالَ: \"سَأَقْتُلُكَ\". عِنْدَمَا سَمِعَ هَابِيلُ ذَلِكَ، قَالَ: \"لَنْ أَرُدَّ عَلَيْكَ وَلَنْ أُؤْذِيَكَ، أَنْتَ أَخِي وَأَنَا أَخَافُ اللهَ.\" بَدَأَ قَابِيلُ يَتَشَاجَرُ مَعَ أَخِيهِ، وَضَرَبَهُ بِحَجَرٍ، فَمَاتَ هَابِيلُ هُنَاكَ. \n\nبَعْدَ وَقْتٍ قَصِيرٍ، هَدَأَ غَضَبُ قَابِيلَ وَحَزِنَ كَثِيرًا. لَكِنَّهُ بَدَأَ يَشْعُرُ بِالْخَوْفِ وَيَضْطَرِبُ أَیْضًا. قَالَ: \"قَتَلْتُ أَخِي، فَعَلْتُ أَسْوَأَ شَيْءٍ فِي الْحَيَاةِ، وَالْآنَ لَا أَعْرِفُ مَاذَا أَفْعَلُ بِجُثَّتِهِ\". ثُمَّ أَرْسَلَ اللهُ غُرَابًا. نَزَلَ الْغُرَابُ عَلَى الْأَرْضِ بِجَانِبِ قَابِيلَ وَبَدَأَ يَحْفِرُ التُّرَابَ. فَفَهِمَ قابيلُ أَنَّ الغُرابَ يُعَلِّمُهُ كَيْفَ يَدْفِنُ جُثَّةَ أَخيهِ في حُفْرَةٍ. فَبَكى قابيلُ وَقالَ: \"يا وَيْلي! أَنَا أَسْوَأُ مِنْ هَذَا الْغُرَابِ! لَا أَسْتَطِيعُ أَنْ أُخْفِيَ جُثَّةَ أَخِي\".",
     vocabulary: [
       { word: 'غُرَابًا', definition: 'طائر أسود كبير.' },
       { word: 'يَضْطَرِبُ', definition: 'يشعر بخوف وقلق شديدين.' },
-      { word: 'يَحْفِرُ', definition: 'يصنع حفرة بتحريك التراب.' }
+      { word: 'يَحْفِرُ', definition: 'يصنع حفرة بتحريك التراب.' },
+      { word: 'أُؤْذِيَكَ', definition: 'أسبب لك ضررًا أو ألمًا.' },
     ],
     hotspots: [
-      { id: 'h9-1', x: 50, y: 20, title: 'الغُراب', description: 'فَفَهِمَ قابيلُ أَنَّ الغُرابَ يُعَلِّمُهُ كَيْفَ يَدْفِنُ جُثَّةَ أَخيهِ في حُفْرَةٍ.' },
-      { id: 'h9-2', x: 40, y: 60, title: 'الْخَوْف', description: 'لَكِنَّهُ بَدَأَ يَشْعُرُ بِالْخَوْفِ وَيَضْطَرِبُ أَیْضًا.' }
-    ]
+      { id: 'adam-a2-ar-h9a', x: 50, y: 20, title: 'الغُراب', description: 'عَلَّمَ الغُرابُ قَابِيلَ كَيْفَ يَدْفِنُ جُثَّةَ أَخِيهِ.' },
+      { id: 'adam-a2-ar-h9b', x: 40, y: 60, title: 'الْخَوْف', description: 'شَعَرَ قَابِيلُ بِالْخَوْفِ بَعْدَ مَوْتِ أَخِيهِ.' },
+    ],
   },
   {
     id: 10,
     type: 'story',
     title: 'قصة آدم (عليه السلام)',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter10.png?alt=media&token=97c7a607-186e-439b-9f2d-8d4c9b11bd7f',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2FAdam_A2_arabic_ch10.mpeg?alt=media&token=32db5306-1fc9-4f4a-b149-f534c24b0112',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam_a2_arabic_audio%2Fchapter%2010.mp3?alt=media&token=e1555bb2-216e-42d7-bdd0-be1345772903',
     content: "ذَهَبَ قَابِيلُ بَعِيدًا. كَانَ آدَمُ (عَلَيْهِ السَّلَامُ) حَزِينًا جِدًّا. لَقَدْ فَقَدَ ابْنَيْهِ فِي يَوْمٍ وَاحِدٍ. تُعَلِّمُنَا هَذِهِ الْقِصَّةُ أَنَّ النَّاسَ الصَّالِحِينَ يَجِبُ أَنْ يَبْتَعِدُوا عَنِ الْحَسَدِ وَأَنْ يُسَيْطِرُوا عَلَى غَضَبِهِمْ.\n\nكَانَ آدَمُ رَسُولَ اللهِ وَأَبًا لِباقي أَوْلادِهِ. وَكانَ عَلَيْهِ أَنْ يُواصِلَ حَياتَهُ. مَعَ مُرُورِ السِّنِينَ، أَصْبَحَ عَجُوزًا. نَشَرَ أَوْلَادُهُ وَأَحْفَادُهُ رِسَالَتَهُ فِي كُلِّ الْعَالَمِ. وَما زالَتْ هذِهِ الرِّسالَةُ إِلى اليَوْمِ تَدْعو النّاسَ إِلى مَحَبَّةِ اللهِ وَاحْتِرامِهِ، وَتَدْعوهمْ أَيْضًا إِلى حُسْنِ الخُلُقِ وَاللُّطْفِ مَعَ الآخَرينَ.\n\nوَإِنَّ قِصَصَ الأَنْبِياءِ تُساعِدُنا عَلَى أَنْ نَعيشَ حَياةً صَالِحَةً.",
     vocabulary: [
-      { word: 'الْحَسَدِ', definition: 'الحزن لأن شخصا آخر يملك شيئا تريده.' },
+      { word: 'الْحَسَدِ', definition: 'الحزن لأن شخصًا آخر يملك شيئًا تريده.' },
       { word: 'الْقِصَّةُ', definition: 'أحداث تُروى بترتيب.' },
-      { word: 'الْعَالَمِ', definition: 'كل البلدان والناس في الأرض.' }
+      { word: 'فِي كُلِّ الْعَالَمِ', definition: 'في أماكن كثيرة حول العالم.' },
+      { word: 'رِسَالَتَهُ', definition: 'فكرة مهمة تُنقل إلى الآخرين.' },
     ],
     hotspots: [
-      { id: 'h10-1', x: 45, y: 40, title: 'عَجُوزًا', description: 'مَعَ مُرُورِ السِّنِينَ، أَصْبَحَ عَجُوزًا.' },
-      { id: 'h10-2', x: 55, y: 30, title: 'الرِّسالَة', description: 'نَشَرَ أَوْلَادُهُ وَأَحْفَادُهُ رِسَالَتَهُ فِي كُلِّ الْعَالَمِ.' }
-    ]
+      { id: 'adam-a2-ar-h10a', x: 45, y: 40, title: 'أُسْرَةُ آدَم', description: 'وَاصَلَ آدَمُ حَيَاتَهُ مَعَ بَاقِي أَوْلَادِهِ.' },
+      { id: 'adam-a2-ar-h10b', x: 55, y: 30, title: 'الرِّسالَة', description: 'نَشَرَ أَوْلَادُهُ وَأَحْفَادُهُ رِسَالَتَهُ فِي كُلِّ الْعَالَمِ.' },
+    ],
   },
+  { id: 11, type: 'quiz', title: 'اختبار المعرفة: آدم (عليه السلام)', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'اختبر فهمك لثماني أفكار أساسية من القصة.' },
+  { id: 12, type: 'vocabulary-match', title: 'تحدي المفردات', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'صل ست كلمات أساسية من القصة بمعانيها.' },
+  { id: 13, type: 'exercises', title: 'مراجعة اللغة', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول العشرة.' },
   {
-    id: 11,
-    type: 'quiz',
-    title: 'اختبار المعرفة: آدم (عليه السلام)',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    content: 'اختبر فهمك لثماني أفكار أساسية من القصة.'
-  },
-  {
-    id: 12,
-    type: 'vocabulary-match',
-    title: 'تحدي المفردات',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    content: 'صل ست كلمات أساسية من القصة بمعانيها.'
-  },
-  {
-    id: 13,
-    type: 'exercises',
-    title: 'مراجعة اللغة',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول العشرة.'
-  },
-  {
-    id: 14,
-    type: 'glossary',
-    title: 'المعجم الشامل - الجزء الأول',
-    content: 'قائمة كاملة بملاحظات الكلمات من الفصول 1–5.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    id: 14, type: 'glossary', title: 'المعجم الشامل - الجزء الأول', content: 'قائمة كاملة بملاحظات الكلمات من الفصول 1–5.', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
-      { word: 'نَبِيٍّ', definition: 'شخص يرسله الله إلى الناس برسالة.' },
-      { word: 'تُرَاب', definition: 'الأرض التي تنمو فيها النباتات.' },
-      { word: 'فُضُول', definition: 'الرغبة في معرفة شيء أو تعلمه.' },
-      { word: 'وَاحْتِرامًا', definition: 'معاملة شخص بتقدير واهتمام.' },
-      { word: 'ذَكَاءً', definition: 'القدرة على الفهم والتعلم واتخاذ قرار جيد.' },
-      { word: 'تَكْريمًا', definition: 'إظهار الاحترام والتقدير لشخص.' },
-      { word: 'مُتَكَبِّرًا', definition: 'شخص يظن أنه أفضل أو أهم من الآخرين.' },
-      { word: 'قِيمَةً', definition: 'مهم أو مفيد جدا.' },
-      { word: 'مَخْلُوقًا', definition: 'كائن حي خلقه الله.' },
-      { word: 'بِالْوَحْدَةِ', definition: 'حزين لأنه وحده.' },
-      { word: 'رَائِعًا', definition: 'جميل جدا ومفرح.' },
-      { word: 'حَذَّرَ', definition: 'نبه شخصا إلى خطر أو شيء يجب تجنبه.' },
-      { word: 'بِكَذِبِهِ', definition: 'قول شيء غير صحيح لخداع شخص.' },
-      { word: 'حَزِنَا', definition: 'شعرا بالأسف والحزن.' },
-      { word: 'تَحْذيرَ', definition: 'تنبيه إلى خطر أو شيء يجب تجنبه.' }
+      { word: 'نَبِيٍّ', definition: 'شخص يرسله الله إلى الناس برسالة.' }, { word: 'تُرَاب', definition: 'الأرض التي تنمو فيها النباتات.' }, { word: 'فُضُولٍ', definition: 'الرغبة في معرفة شيء أو تعلمه.' }, { word: 'أَحْفَادُ', definition: 'أبناء الأبناء أو البنات.' },
+      { word: 'وَاحْتِرامًا', definition: 'معاملة شخص بتقدير واهتمام.' }, { word: 'الْعِلْمَ', definition: 'ما يعرفه الإنسان ويفهمه.' }, { word: 'فَأُعْجِبُوا', definition: 'أحبوه واحترموه كثيرًا.' }, { word: 'التُّرَاب', definition: 'أرض لينة يمكن أن تتشكل.' },
+      { word: 'مُتَكَبِّرًا', definition: 'يظن أنه أفضل أو أهم من الآخرين.' }, { word: 'قِيمَةً', definition: 'مهم أو مفيد جدًا.' }, { word: 'مَخْلُوقَاتِ', definition: 'كائنات خلقها الله.' }, { word: 'أَصْلَهُ', definition: 'المكان أو المادة التي جاء منها الشيء.' },
+      { word: 'بِالْوَحْدَةِ', definition: 'حزين لأنه وحده.' }, { word: 'رَائِعًا', definition: 'جميل جدًا ومفرح.' }, { word: 'حَذَّرَ', definition: 'نبه شخصًا إلى خطر أو شيء يجب تجنبه.' }, { word: 'زَوْجَةً', definition: 'امرأة متزوجة.' },
+      { word: 'كَذِبًا', definition: 'قول غير صحيح.' }, { word: 'الْخَطَأِ', definition: 'شيء يفعله الشخص بشكل غير صحيح.' }, { word: 'نَسِيًّا', definition: 'ينسى الأشياء كثيرًا.' }, { word: 'أَفْضَلُ', definition: 'أعلى أو أحسن من شخص أو شيء آخر.' },
     ]
   },
   {
-    id: 15,
-    type: 'glossary',
-    title: 'المعجم الشامل - الجزء الثاني',
-    content: 'قائمة كاملة بملاحظات الكلمات من الفصول 6–10.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    id: 15, type: 'glossary', title: 'المعجم الشامل - الجزء الثاني', content: 'قائمة كاملة بملاحظات الكلمات من الفصول 6–10.', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
-      { word: 'الزُّروعِ', definition: 'نباتات تُزرع للغذاء.' },
-      { word: 'لِإِدارَةِ', definition: 'قيادة مكان وتنظيم شؤونه.' },
-      { word: 'الأَرْضِ', definition: 'العالم الذي نعيش عليه.' },
-      { word: 'صَادِقِينَ', definition: 'يقولون الحقيقة ولا يخدعون.' },
-      { word: 'يُحْسِنوا', definition: 'يفعلوا الخير ويعاملوا الآخرين بلطف.' },
-      { word: 'عَدُوٌّ', definition: 'شخص يريد الضرر أو يعارض شخصا آخر.' },
-      { word: 'رَاعِيًا', definition: 'شخص يعتني بالغنم.' },
-      { word: 'مُزَارِعًا', definition: 'شخص يزرع المحاصيل أو يعتني بالحيوانات في مزرعة.' },
-      { word: 'قُرْبَانًا', definition: 'شيء يُقدَّم لله.' },
-      { word: 'غُرَابًا', definition: 'طائر أسود كبير.' },
-      { word: 'يَضْطَرِبُ', definition: 'يشعر بخوف وقلق شديدين.' },
-      { word: 'يَحْفِرُ', definition: 'يصنع حفرة بتحريك التراب.' },
-      { word: 'الْحَسَدِ', definition: 'الحزن لأن شخصا آخر يملك شيئا تريده.' },
-      { word: 'الْقِصَّةُ', definition: 'أحداث تُروى بترتيب.' },
-      { word: 'الْعَالَمِ', definition: 'كل البلدان والناس في الأرض.' }
+      { word: 'الزُّروعِ', definition: 'نباتات تُزرع للغذاء.' }, { word: 'لِإِدارَةِ', definition: 'قيادة مكان وتنظيم شؤونه.' }, { word: 'الأَرْضِ', definition: 'العالم الذي نعيش عليه.' }, { word: 'الضُّعَفاءَ', definition: 'أشخاص ليسوا أقوياء ويحتاجون إلى المساعدة.' },
+      { word: 'صَادِقِينَ', definition: 'يقولون الحقيقة ولا يخدعون.' }, { word: 'يُحْسِنوا', definition: 'يفعلوا الخير ويعاملوا الآخرين بلطف.' }, { word: 'عَدُوٌّ', definition: 'شخص يريد الضرر أو يعارض شخصًا آخر.' }, { word: 'أَنْبِياءَ', definition: 'أشخاص أرسلهم الله برسالته.' },
+      { word: 'رَاعِيًا', definition: 'شخص يعتني بالغنم.' }, { word: 'مُزَارِعًا', definition: 'شخص يزرع المحاصيل أو يعتني بالحيوانات في مزرعة.' }, { word: 'قُرْبَانًا', definition: 'شيء يُقدَّم لله.' }, { word: 'حَسُودًا', definition: 'حزين لأن شخصًا آخر يملك شيئًا يريده.' },
+      { word: 'غُرَابًا', definition: 'طائر أسود كبير.' }, { word: 'يَضْطَرِبُ', definition: 'يشعر بخوف وقلق شديدين.' }, { word: 'يَحْفِرُ', definition: 'يصنع حفرة بتحريك التراب.' }, { word: 'أُؤْذِيَكَ', definition: 'أسبب لك ضررًا أو ألمًا.' },
+      { word: 'الْحَسَدِ', definition: 'الحزن لأن شخصًا آخر يملك شيئًا تريده.' }, { word: 'الْقِصَّةُ', definition: 'أحداث تُروى بترتيب.' }, { word: 'فِي كُلِّ الْعَالَمِ', definition: 'في أماكن كثيرة حول العالم.' }, { word: 'رِسَالَتَهُ', definition: 'فكرة مهمة تُنقل إلى الآخرين.' },
     ]
   },
-  {
-    id: 16,
-    type: 'final-challenge',
-    title: 'التحدي النهائي',
-    content: 'أظهر ما تعلمته من القصة كلها عبر عشرة أنشطة مختلفة قابلة للتقييم.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723'
-  }
+  { id: 16, type: 'final-challenge', title: 'التحدي النهائي', content: 'أظهر ما تعلمته من القصة كلها عبر عشرة أنشطة مختلفة قابلة للتقييم.', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723' },
 ];
