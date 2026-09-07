@@ -1,0 +1,120 @@
+name: Temporary B2 content consolidation
+
+on:
+  push:
+    branches: [preview]
+    paths:
+      - scripts/consolidateB2StoryFiles.mjs
+      - .github/workflows/temporary-b2-consolidation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    if: github.event.head_commit.message == 'Run B2 content consolidation migration'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview
+        uses: actions/checkout@v4
+        with:
+          ref: preview
+          fetch-depth: 0
+
+      - name: Use Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Apply migration safety patch
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path('scripts/consolidateB2StoryFiles.mjs')
+          s = p.read_text()
+
+          old = """  const imported = importLocalNames(allImports);
+          const processed = makeBodiesShareScope([
+            { name: sourceName, body: sourceBody },
+            { name: 'pages.ts wrapper', body: wrapperBody },
+          ], imported);"""
+          new = """  const importedLocals = importLocalNames(allImports);
+          const processed = makeBodiesShareScope([
+            { name: sourceName, body: sourceBody },
+            { name: 'pages.ts wrapper', body: wrapperBody },
+          ], importedLocals);"""
+          if old not in s:
+              raise SystemExit('Expected mergePages patch point not found')
+          s = s.replace(old, new, 1)
+
+          marker = 'function consolidateLanguageFocus(dir) {'
+          helper = r'''function orderModulesForSameFile(modules) {
+            const owner = new Map();
+            for (const module of modules) {
+              for (const name of exportedNames(module.body)) owner.set(name, module.name);
+            }
+            const dependencies = new Map(modules.map((module) => [module.name, new Set()]));
+            for (const module of modules) {
+              for (const item of module.lfImports || []) {
+                for (const spec of parseNamedSpecifiers(item.clause)) {
+                  const dependencyOwner = owner.get(spec.imported);
+                  if (dependencyOwner && dependencyOwner !== module.name) dependencies.get(module.name).add(dependencyOwner);
+                }
+              }
+            }
+
+            const pending = [...modules];
+            const ordered = [];
+            const done = new Set();
+            while (pending.length) {
+              const index = pending.findIndex((module) => [...dependencies.get(module.name)].every((name) => done.has(name)));
+              if (index < 0) throw new Error(`Circular same-file language-focus dependency: ${pending.map((module) => module.name).join(', ')}`);
+              const [module] = pending.splice(index, 1);
+              ordered.push(module);
+              done.add(module.name);
+            }
+            return ordered;
+          }
+
+          '''
+          if marker not in s:
+              raise SystemExit('Expected language-focus patch point not found')
+          s = s.replace(marker, helper + marker, 1)
+
+          old_group = '    const groupModules = groups[groupIndex];'
+          new_group = '    const groupModules = orderModulesForSameFile(groups[groupIndex]);'
+          if old_group not in s:
+              raise SystemExit('Expected group ordering patch point not found')
+          s = s.replace(old_group, new_group, 1)
+
+          p.write_text(s)
+          PY
+          node --check scripts/consolidateB2StoryFiles.mjs
+
+      - name: Consolidate B2 data files
+        run: node scripts/consolidateB2StoryFiles.mjs
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate diff
+        run: git diff --check
+
+      - name: Commit consolidated files
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/abraham/b2 src/data/moses/b2 src/data/mecca/b2 src/data/yunusEmre/b2 scripts/consolidateB2StoryFiles.mjs
+          git diff --cached --quiet && exit 0
+          git commit -m "Consolidate four B2 story data packages"
+          git push origin HEAD:preview
