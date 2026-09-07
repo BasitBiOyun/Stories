@@ -49,7 +49,7 @@ import {
 } from './ar/languageFocus3';
 import { mosesB1TeacherGuide as mosesB1TeacherGuideEn, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
 import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesB1SelfStudyGuideEn } from './en/selfStudyGuide';
+import { mosesB1SelfStudyGuide as mosesB1SelfStudyGuideEn } from './en/selfStudyGuide';
 import { mosesB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
