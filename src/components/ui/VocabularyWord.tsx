@@ -40,6 +40,38 @@ export const VocabularyWord = ({
   ), [word, normalizedDefinition, language]);
   const pairedLanguage = pairedEntry?.language ?? (language === 'ar' ? 'en' : 'ar');
 
+  const highlightStyle = useMemo(() => {
+    if (collectionId === 'turkish') {
+      return 'text-sky-700 border-b-2 border-cyan-500/60 hover:border-cyan-600 font-bold transition-colors';
+    }
+    return customStyle || 'border-b-2 border-gold/40 hover:border-gold font-bold text-wood';
+  }, [collectionId, customStyle]);
+
+  const tooltipTheme = useMemo(() => {
+    if (collectionId === 'turkish') {
+      return {
+        border: 'border-cyan-300/30',
+        accent: 'text-cyan-300',
+        accentSoft: 'text-cyan-300/70',
+        divider: 'border-cyan-300/20',
+      };
+    }
+    if (collectionId === 'history') {
+      return {
+        border: 'border-emerald-300/30',
+        accent: 'text-emerald-300',
+        accentSoft: 'text-emerald-300/70',
+        divider: 'border-emerald-300/20',
+      };
+    }
+    return {
+      border: 'border-gold/20',
+      accent: 'text-gold',
+      accentSoft: 'text-gold/70',
+      divider: 'border-gold/20',
+    };
+  }, [collectionId]);
+
   const updateCoords = () => {
     if (triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
@@ -55,7 +87,6 @@ export const VocabularyWord = ({
 
       const triggerCenterX = rect.left + rect.width / 2;
 
-      // Clamp left so tooltip stays strictly inside viewport margins (12px)
       const halfWidth = tooltipWidth / 2;
       const minLeft = 12 + halfWidth;
       const maxLeft = viewportWidth - 12 - halfWidth;
@@ -64,10 +95,8 @@ export const VocabularyWord = ({
       if (clampedLeft < minLeft) clampedLeft = minLeft;
       if (clampedLeft > maxLeft) clampedLeft = maxLeft;
 
-      // Arrow position relative to center of tooltip box
       const arrowOffset = triggerCenterX - clampedLeft;
 
-      // Check space above vs below
       const spaceAbove = rect.top;
       const isAbove = spaceAbove >= tooltipHeight + 16 || spaceAbove >= viewportHeight - rect.bottom;
 
@@ -115,7 +144,7 @@ export const VocabularyWord = ({
         className={cn(
           "transition-colors",
           hasDefinition ? "cursor-help" : "cursor-default",
-          customStyle || "border-b-2 border-gold/40 hover:border-gold font-bold text-wood"
+          highlightStyle
         )}
         aria-disabled={!hasDefinition}
       >
@@ -144,13 +173,15 @@ export const VocabularyWord = ({
                 }}
                 className={cn(
                   "w-[calc(100vw-2rem)] max-w-xs sm:max-w-sm md:max-w-md p-3.5 sm:p-5",
-                  "bg-wood text-parchment rounded-xl shadow-2xl border border-gold/20",
+                  "bg-wood text-parchment rounded-xl shadow-2xl border",
+                  tooltipTheme.border,
                   language === 'ar' ? "text-right" : "text-left"
                 )}
                 onClick={(e) => e.stopPropagation()}
               >
                 <span className={cn(
-                  "font-display uppercase tracking-widest text-gold mb-1 sm:mb-2 block",
+                  "font-display uppercase tracking-widest mb-1 sm:mb-2 block",
+                  tooltipTheme.accent,
                   language === 'ar' ? "text-sm sm:text-base" : "text-[10px] sm:text-[11px]"
                 )}>
                   {t('nav.meaning')}
@@ -166,15 +197,20 @@ export const VocabularyWord = ({
                     dir={pairedLanguage === 'ar' ? 'rtl' : 'ltr'}
                     lang={pairedLanguage}
                     className={cn(
-                      "mt-3.5 sm:mt-4 pt-3.5 sm:pt-4 border-t border-gold/20",
+                      "mt-3.5 sm:mt-4 pt-3.5 sm:pt-4 border-t",
+                      tooltipTheme.divider,
                       pairedLanguage === 'ar' ? "text-right" : "text-left"
                     )}
                   >
-                    <span className="font-display uppercase tracking-widest text-gold/70 text-[9px] sm:text-[10px] block mb-1.5">
+                    <span className={cn(
+                      "font-display uppercase tracking-widest text-[9px] sm:text-[10px] block mb-1.5",
+                      tooltipTheme.accentSoft
+                    )}>
                       {pairedLanguage === 'ar' ? 'العربية' : 'English'}
                     </span>
                     <span className={cn(
-                      "font-serif font-bold text-gold block mb-1",
+                      "font-serif font-bold block mb-1",
+                      tooltipTheme.accent,
                       pairedLanguage === 'ar' ? "text-lg sm:text-xl" : "text-sm sm:text-base"
                     )}>
                       {pairedEntry.word}
@@ -188,7 +224,6 @@ export const VocabularyWord = ({
                   </div>
                 )}
 
-                {/* Dynamic arrow */}
                 <div 
                   style={{
                     left: `calc(50% + ${coords.arrowOffset}px)`
