@@ -29,7 +29,7 @@ const yunusB2ManualKnowledgeCheckExercises: Exercise[] = [
   knowledgeMcEn('yu-b2-mk5','What geographical detail does Chapter 5 give for the Battle of Kösedağ?',['It took place about 80 km northeast of Sivas.','It took place on the Mediterranean coast.','It took place inside Erzurum in late 1242.'],0,'The story places Kösedağ about 80 km northeast of Sivas; the Erzurum attack is a separate earlier event.'),
   knowledgeMcEn('yu-b2-mk6','How is the Ottoman state described during the period of fragmented Anatolian principalities in Chapter 6?',['It was still a small principality.','It already ruled all of Anatolia.','It had become the administrative centre of the Ilkhanate.'],0,'Chapter 6 explicitly notes that the Ottoman state was still a small principality at that time.'),
   knowledgeMcEn('yu-b2-mk7','Which foundations does Chapter 7 explicitly name for Yunus Emre’s understanding of Sûfîsm?',['The Qur’an, the Sunnah, and the thoughts and experiences of earlier Muslim Sûfîs.','Only the political practices of the Seljuk court.','Only the oral traditions of nomadic tribes.'],0,'The chapter names the Qur’an and Sunnah together with the thoughts and experiences of Muslim Sûfîs who lived before Yunus.'),
-  knowledgeMcEn('yu-b2-mk8','In the three-part account of intellect completed across Chapters 10–11, what is the role of universal intellect?',['It guides a person to behave with piety.','It explains only how to sustain worldly life.','It removes the need for the heart in the path to salvation.'],0,'Chapter 11 states that universal intellect guides a person toward pious conduct; practical reason is the form associated with understanding and sustaining worldly life.'),
+  knowledgeMcEn('yu-b2-mk8','In the three-part account of intellect in Chapter 10, what is the role of universal intellect?',['It guides a person to behave with piety.','It explains only how to sustain worldly life.','It removes the need for the heart in the path to salvation.'],0,'Chapter 10 states that universal intellect guides a person toward pious conduct; practical reason is the form associated with understanding and sustaining worldly life.'),
 ];
 
 const knowledgeFeedbackAr = {
@@ -47,7 +47,7 @@ const yunusB2ManualKnowledgeCheckExercisesAr: Exercise[] = [
   knowledgeMcAr('yu-b2-ar-mk5','ما التفصيل الجغرافي الذي يقدمه الفصل الخامس عن موقع معركة كوسه داغ؟',['وقعت على بعد نحو 80 كم شمال شرقي سيفاس.','وقعت على ساحل البحر المتوسط.','وقعت داخل أرضروم في أواخر 1242.'],0,'يضع النص كوسه داغ على بعد 80 كم شمال شرقي سيفاس، أما هجوم أرضروم فهو حدث سابق منفصل.'),
   knowledgeMcAr('yu-b2-ar-mk6','كيف يصف الفصل السادس الدولة العثمانية في زمن ظهور الإمارات الأناضولية الصغيرة؟',['كانت لا تزال إمارة صغيرة.','كانت قد حكمت الأناضول كلها بالفعل.','كانت مركز الإدارة الإيلخانية.'],0,'يقول الفصل صراحة إن الدولة العثمانية كانت في ذلك الوقت لا تزال إمارة صغيرة.'),
   knowledgeMcAr('yu-b2-ar-mk7','ما المصادر التي يذكرها الفصل السابع صراحة كأساس لفهم يونس إمره للتصوف؟',['القرآن والسنة وأفكار الصوفيين المسلمين السابقين وتجاربهم.','الممارسات السياسية للبلاط السلجوقي فقط.','التقاليد الشفوية للقبائل الرحل فقط.'],0,'ينص الفصل على القرآن والسنة، إضافة إلى أفكار الصوفيين المسلمين الذين سبقوه وتجاربهم.'),
-  knowledgeMcAr('yu-b2-ar-mk8','في عرض أنواع العقل الثلاثة الذي يكتمل بين الفصلين 10 و11، ما وظيفة العقل الكلي؟',['يهدي الإنسان إلى التصرف بالتقوى.','يشرح فقط كيفية تدبير الحياة الدنيوية.','يلغي حاجة الإنسان إلى القلب في طريق النجاة.'],0,'يذكر الفصل 11 أن العقل الكلي يهدي المرء إلى التصرف بالتقوى، بينما يرتبط العقل العملي بفهم العالم وتدبير الحياة الدنيوية.'),
+  knowledgeMcAr('yu-b2-ar-mk8','في عرض أنواع العقل الثلاثة في الفصل 10، ما وظيفة العقل الكلي؟',['يهدي الإنسان إلى التصرف بالتقوى.','يشرح فقط كيفية تدبير الحياة الدنيوية.','يلغي حاجة الإنسان إلى القلب في طريق النجاة.'],0,'يذكر الفصل 10 أن العقل الكلي يهدي المرء إلى التصرف بالتقوى، بينما يرتبط العقل العملي بفهم العالم وتدبير الحياة الدنيوية.'),
 ];
 
 const finalFeedbackEn={correct:'Correct. The synthesis is supported across the book.',incorrect:'Not yet. Reconnect the relevant chapters and try again.'};
@@ -73,6 +73,118 @@ const yunusB2QuickChallengesArPolished = yunusB2QuickChallengesAr;
 const yunusB2VocabularyChallengePairsArPolished = yunusB2VocabularyChallengePairsAr;
 const yunusB2FinalChallengeExercisesArPolished: Exercise[] = yunusB2FinalChallengeExercisesAr.map(exercise => finalReplacementAr[exercise.id] ?? exercise);
 
+type StoryVocabulary = NonNullable<PageData['vocabulary']>;
+
+const yunusB2CanonicalVocabularyEn: Record<number, StoryVocabulary> = {
+  1: [
+    { word: 'Islamic mysticism', definition: 'a spiritual tradition within Islam focused on inner purification and closeness to Allah' },
+    { word: 'crucial', definition: 'extremely important to the development or outcome of something' },
+  ],
+  2: [
+    { word: 'contemporary', definition: 'living or existing during the same historical period' },
+    { word: 'solidarity', definition: 'unity and mutual support among members of a community' },
+  ],
+  3: [
+    { word: 'fine arts', definition: 'creative arts valued for aesthetic expression, such as poetry' },
+    { word: 'coincided', definition: 'happened during the same period as another event or condition' },
+  ],
+  4: [
+    { word: 'decline', definition: 'a gradual process of becoming weaker or less effective' },
+    { word: 'nomadic', definition: 'living by moving from place to place rather than settling permanently' },
+  ],
+  5: [
+    { word: 'false retreat and circling tactic', definition: 'a military strategy that uses a planned withdrawal to draw an enemy into encirclement' },
+    { word: 'captive', definition: 'a person taken and held by force, especially after conflict' },
+  ],
+  6: [
+    { word: 'dependent state', definition: 'a state whose political freedom is limited by a stronger power' },
+    { word: 'relief', definition: 'assistance that reduces hardship, pressure, or suffering' },
+  ],
+  7: [
+    { word: 'medium', definition: 'a means or form through which ideas are communicated' },
+    { word: 'Sunnah', definition: 'the Prophet Muhammad’s sayings, actions, and approvals used as guidance in Islam' },
+  ],
+  8: [
+    { word: 'tawhid', definition: 'the belief in the absolute Oneness of Allah' },
+    { word: 'manifestations', definition: 'visible or recognizable expressions of an underlying reality' },
+  ],
+  9: [
+    { word: 'harmony', definition: 'a condition in which people or ideas exist together in peaceful agreement' },
+    { word: 'core', definition: 'the central and most essential part of an idea or system' },
+  ],
+  10: [
+    { word: 'manifests', definition: 'becomes visible, evident, or expressed' },
+    { word: 'intellect', definition: 'the capacity for reason and understanding, described here as a spiritual and moral faculty' },
+  ],
+  11: [
+    { word: 'piety', definition: 'religious and moral conduct shaped by awareness of Allah and commitment to what is right' },
+    { word: 'salvation', definition: 'spiritual deliverance or being saved from a harmful moral or spiritual state' },
+  ],
+  12: [
+    { word: 'greed', definition: 'an excessive desire to gain or possess more than one needs' },
+    { word: 'humility', definition: 'the quality of avoiding pride and not considering oneself superior to others' },
+  ],
+  13: [
+    { word: 'legacy', definition: 'a lasting influence or contribution passed on to later generations' },
+    { word: 'arrogance', definition: 'an attitude of excessive pride or superiority toward others' },
+  ],
+};
+
+const yunusB2CanonicalVocabularyAr: Record<number, StoryVocabulary> = {
+  1: [
+    { word: 'التَّصَوُّفِ الْإِسْلَامِيِّ', definition: 'طريق روحي وأخلاقي داخل الإسلام يركز على تزكية الباطن والقرب من الله.' },
+    { word: 'مِحْوَرِيًّا', definition: 'بصورة أساسية شديدة التأثير في تطور أمر أو نتيجته.' },
+  ],
+  2: [
+    { word: 'مُعَاصِرًا', definition: 'عاش أو وُجد في الفترة التاريخية نفسها.' },
+    { word: 'التَّضَامُنَ', definition: 'وحدة أفراد المجتمع ودعم بعضهم بعضًا.' },
+  ],
+  3: [
+    { word: 'الْفُنُونِ الْجَمِيلَةِ', definition: 'فنون إبداعية تقوم على التعبير الجمالي، مثل الشعر.' },
+    { word: 'تَزَامَنَ', definition: 'حدث في الفترة نفسها التي حدث فيها أمر آخر.' },
+  ],
+  4: [
+    { word: 'التَّدَهْوُرِ', definition: 'عملية تدريجية يصبح فيها الوضع أضعف أو أقل استقرارًا.' },
+    { word: 'الرُّحَّلُ', definition: 'جماعات تنتقل من مكان إلى آخر ولا تستقر بصورة دائمة.' },
+  ],
+  5: [
+    { word: 'خُطَّةَ الانْسِحَابِ الْكَاذِبِ وَالتَّطْوِيقِ', definition: 'استراتيجية عسكرية تقوم على التراجع المخطط لجذب الخصم ثم تطويقه.' },
+    { word: 'أَسْرَى', definition: 'أشخاص أُخذوا واحتُجزوا بالقوة، ولا سيما بعد القتال.' },
+  ],
+  6: [
+    { word: 'دَوْلَةً تَابِعَةً', definition: 'دولة تكون حريتها السياسية محدودة بسبب خضوعها لقوة أقوى.' },
+    { word: 'التَّخْفِيفِ', definition: 'مساعدة أو إجراء يقلل المشقة أو الضغط أو المعاناة.' },
+  ],
+  7: [
+    { word: 'وَسِيلَةً', definition: 'أداة أو طريقة تُنقل من خلالها الأفكار والمعاني.' },
+    { word: 'السُّنَّةِ', definition: 'أقوال النبي محمد وأفعاله وتقريراته التي تُتخذ هديًا في الإسلام.' },
+  ],
+  8: [
+    { word: 'التَّوْحِيدِ', definition: 'الإيمان بوحدانية الله المطلقة.' },
+    { word: 'مَظَاهِرَ', definition: 'صور أو تعبيرات يظهر من خلالها معنى أو حقيقة كامنة.' },
+  ],
+  9: [
+    { word: 'الانْسِجَامَ', definition: 'حالة من التوافق والتعايش دون نزاع.' },
+    { word: 'جَوْهَرِ', definition: 'الجزء المركزي والأكثر أهمية في فكرة أو نظام.' },
+  ],
+  10: [
+    { word: 'يَتَجَلَّى', definition: 'يظهر أو يصبح واضحًا في صورة يمكن إدراكها.' },
+    { word: 'الْعَقْلِ', definition: 'ملكة الفهم والاستدلال، ويعرضها الفصل بوصفها قدرة ذات بعد أخلاقي وروحي.' },
+  ],
+  11: [
+    { word: 'التَّقْوَى', definition: 'سلوك ديني وأخلاقي يقوم على مراقبة الله والالتزام بما هو صواب.' },
+    { word: 'النَّجَاةَ', definition: 'الخلاص الروحي أو التحرر من حالة أخلاقية أو روحية ضارة.' },
+  ],
+  12: [
+    { word: 'الطَّمَعِ', definition: 'رغبة مفرطة في امتلاك أو تحصيل أكثر مما يحتاجه الإنسان.' },
+    { word: 'التَّوَاضُعِ', definition: 'ترك الكبر وعدم النظر إلى النفس على أنها أعلى من الآخرين.' },
+  ],
+  13: [
+    { word: 'إِرْثًا', definition: 'أثر أو إسهام باقٍ ينتقل إلى الأجيال اللاحقة.' },
+    { word: 'الْكِبْرِ', definition: 'شعور مفرط بالتفوق يدفع إلى التعالي على الآخرين.' },
+  ],
+};
+
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const englishLanguageFocus: Record<number, Exercise[]> = { ...yunusB2LanguageFocusExercises, ...yunusB2LanguageFocusExercisesPart2, ...yunusB2LanguageFocusExercisesPart3, ...yunusB2LanguageFocusExercisesPart4 };
 const arabicLanguageFocus: Record<number, Exercise[]> = { ...yunusB2LanguageFocusExercisesAr, ...yunusB2LanguageFocusExercisesArPart2, ...yunusB2LanguageFocusExercisesArPart3, ...yunusB2LanguageFocusExercisesArPart4 };
@@ -80,7 +192,14 @@ const arabicLanguageFocus: Record<number, Exercise[]> = { ...yunusB2LanguageFocu
 const buildPages = (pages: PageData[], quickChallenges: Record<number, Exercise>, languageFocus: Record<number, Exercise[]>, knowledgeCheck: Exercise[], vocabularyPairs: { word: string; meaning: string }[], languageReview: Exercise[], finalChallenge: Exercise[], language: 'en' | 'ar'): PageData[] => pages.map((page) => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = languageFocus[page.id];
-    return { ...page, exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [], ...(languageFocusExercises ? { languageFocusExercises } : {}) };
+    const canonicalVocabulary = language === 'ar' ? yunusB2CanonicalVocabularyAr[page.id] : yunusB2CanonicalVocabularyEn[page.id];
+    return {
+      ...page,
+      animatedWords: undefined,
+      vocabulary: canonicalVocabulary ?? page.vocabulary,
+      exercises: quickChallenges[page.id] ? [quickChallenges[page.id]] : [],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
   }
   if (page.id === 15) return { ...page, exercises: knowledgeCheck };
   if (page.id === 16) return { ...page, vocabularyPairs };
