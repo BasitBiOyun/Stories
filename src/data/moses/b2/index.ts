@@ -93,6 +93,13 @@ const V: Record<number, VocabPair[]> = {
     ['seize','To take hold of someone suddenly and forcefully.','يَبْطِشَ','الإمساك بشخص أو مهاجمته بقوة وبشكل مفاجئ.'],
     ['do right','To act in a morally correct and constructive way.','الْمُصْلِحِينَ','العمل بما هو صحيح والسعي إلى الإصلاح.'],
   ],
+  11: [
+    ['taking counsel','Discussing a serious matter collectively before making a decision.','يَأْتَمِرُونَ','التشاور في أمر مهم قبل اتخاذ قرار.'],
+    ['Zalimeen','A Qur’anic term used here for people characterized by wrongdoing and oppression.','الظَّالِمِينَ','الذين يتصفون بالظلم والعدوان على حقوق الآخرين.'],
+    ['inhabited','Occupied by people who live permanently or regularly in a place.','مَأْهُولَةٍ','مكان يسكنه الناس بصورة دائمة أو منتظمة.'],
+    ['companion','A person who accompanies another during a journey or period of life.','رَفِيقٌ','شخص يرافق غيره في سفر أو مرحلة من الحياة.'],
+    ['pursuit','The act of following someone closely in order to catch them.','الْمُطَارَدَةِ','ملاحقة شخص عن قرب بقصد الوصول إليه أو الإمساك به.'],
+  ],
   13: [
     ['harmonious','Characterized by peaceful, balanced, and cooperative relationships.','مُتَنَاغِمَةٍ','متصفة بعلاقات سلمية ومتوازنة ومتعاونة.'],
     ['in person','By meeting or speaking with someone directly rather than through another person.','بِنَفْسِهِ','بالمقابلة المباشرة دون وسيط.'],
@@ -144,7 +151,7 @@ const V: Record<number, VocabPair[]> = {
     ['inherit','To receive or take possession of something left by others.','وَأَوْرَثْنَاهَا','تلقي ما تركه آخرون والانتقال إلى امتلاكه.'],
   ],
   23: [
-    ['guide','To lead someone toward the correct direction or course of action.','سَيَهْدِينِ','إرشاد شخص إلى الاتجاه أو الطريق الصحيح.'],
+    ['extraordinary','Far beyond what is ordinary or normally expected.','الْخَارِقَ','متجاوز للمألوف أو لما يُتوقع عادة.'],
     ['inspired','Received or conveyed guidance understood as coming from a divine source.','أَوْحَيْنَا','تلقي أو إيصال هداية مصدرها إلهي.'],
     ['drowned','Died because water prevented normal breathing.','أَغْرَقْنَا','ماتوا في الماء بسبب تعذر التنفس.'],
     ['miracle','An extraordinary event understood as a sign of divine power.','الْمُعْجِزَةَ','حدث خارق يُفهم بوصفه دليلاً على القدرة الإلهية.'],
