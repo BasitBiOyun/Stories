@@ -8,7 +8,8 @@ const IMG=['','','','','','', '2c7f06f0-1c7b-4f72-bbdc-220aebe0f3eb','888f74ef-8
 const AUD=['','0b8932e8-d415-4e1b-846d-5b43c5e6c8a5','a7ec7e2d-f33f-41c3-b6c8-5816abceea1a','0dcc80e8-706d-4b22-85bd-2c269180bd8b','c077f30d-5f0e-4030-a373-069abf985246','88331cdd-99ae-459f-a260-5b3f2351635f','6abb93df-41c0-4d46-81a4-bf52e53ff672','802716e0-1e3e-4f5f-99a4-a481ac28491c','7350d4c8-c0f2-4474-8c59-3919406cd8a4','81c54390-7d2e-4d99-9d10-6935c85a3bbe','be3bea4e-5ae6-488c-9a07-46e885b5d89c','2d3f4f6a-09fd-4706-bfab-b2f4b2287cd9','ecfdfa30-32b7-485c-bdf4-957a49eae96a','faef98f2-8ab5-4d08-85be-e2e9f1ae33a3','f976eee6-6b6d-4aa5-9b81-79a43cb62a61','8488bff3-a880-47ab-ba15-98e03a50b37d','f6e0a555-131a-43b3-84fc-3ef6af30ba97','260216c5-5979-433c-8ac7-a42db758c207'];
 const img=(n:number)=>n<6?'':`${B}adam_b2%2Fimages%2Fadam_b2_chapter${n}.png?alt=media&token=${IMG[n]}`;
 const aud=(n:number)=>`${B}adam_b2%2Faudio%2Fadam_b2_ch${n}.mp3?alt=media&token=${AUD[n]}`;
-const S=(id:number,title:string,content:string,vocabulary:{word:string;definition:string}[],hotspots:NonNullable<PageData['hotspots']>):PageData=>({id,type:'story',title,image:img(id),audioUrl:aud(id),content,vocabulary,hotspots});
+const clean=(content:string)=>content.replace(/^\/\/ anchor-[^\n]*(?:\n|$)/gm,'');
+const S=(id:number,title:string,content:string,vocabulary:{word:string;definition:string}[],hotspots:NonNullable<PageData['hotspots']>):PageData=>({id,type:'story',title,image:img(id),audioUrl:aud(id),content:clean(content),vocabulary,hotspots});
 const V=(...x:[string,string][])=>x.map(([word,definition])=>({word,definition}));
 const H=(...x:[string,number,number,string,string][])=>x.map(([id,x,y,title,description])=>({id,x,y,title,description}));
 const LF:Record<number,Exercise[]>={...adamB2LanguageFocusExercises,...adamB2LanguageFocusExercisesPart2,...adamB2LanguageFocusExercisesPart3};
