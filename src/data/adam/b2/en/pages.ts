@@ -1,18 +1,4 @@
-import type { Exercise, PageData } from '../../../../types';
-import { adamB2QuickChallenges, adamB2KnowledgeCheckExercises, adamB2VocabularyChallengePairs, adamB2LanguageReviewExercises, adamB2FinalChallengeExercises } from './exercises';
-import { adamB2LanguageFocusExercises } from './languageFocus';
-import { adamB2LanguageFocusExercisesPart2 } from './languageFocus2';
-import { adamB2LanguageFocusExercisesPart3 } from './languageFocus3';
-
-const B = 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/';
-const IMG = ['', '', '', '', '', '', '2c7f06f0-1c7b-4f72-bbdc-220aebe0f3eb', '888f74ef-8ab1-4399-b94f-499f280488d9', 'b1edc4c5-1feb-41b7-8c59-3919406cd8a4', '02398d91-13a7-4809-b9a5-7e7d10e9b6c0', 'ccb788e1-98ea-43fc-9397-aecc67ff8d34', 'c520bb71-bf37-4f3e-a7fd-752ee62d8125', 'ea7397e9-5206-4dec-80ae-4f5fae82309d', 'ed61f9d6-f850-4a84-9f2f-acb6a00fc6a3', '4399b928-a16f-4bdd-a697-b274b27d32c2', 'b599808a-3de8-4dc1-a9e0-ad6067e1903b', '7a5a94a7-cbb8-458b-b865-f7281e454742', 'fb1cf4bc-7a18-4dab-8cde-2eab06c1ff0a'];
-const AUD = ['', '0b8932e8-d415-4e1b-846d-5b43c5e6c8a5', 'a7ec7e2d-f33f-41c3-b6c8-5816abceea1a', '0dcc80e8-706d-4b22-85bd-2c269180bd8b', 'c077f30d-5f0e-4030-a373-069abf985246', '88331cdd-99ae-459f-a260-5b3f2351635f', '6abb93df-41c0-4d46-81a4-bf52e53ff672', '802716e0-1e3e-4f5f-99a4-a481ac28491c', '7350d4c8-c0f2-4474-8c59-3919406cd8a4', '81c54390-7d2e-4d99-9d10-6935c85a3bbe', 'be3bea4e-5ae6-488c-9a07-46e885b5d89c', '2d3f4f6a-09fd-4706-bfab-b2f4b2287cd9', 'ecfdfa30-32b7-485c-bdf4-957a49eae96a', 'faef98f2-8ab5-4d08-85be-e2e9f1ae33a3', 'f976eee6-6b6d-4aa5-9b81-79a43cb62a61', '8488bff3-a880-47ab-ba15-98e03a50b37d', 'f6e0a555-131a-43b3-84fc-3ef6af30ba97', '260216c5-5979-433c-8ac7-a42db758c207'];
-const img = (n: number) => n < 6 ? '' : `${B}adam_b2%2Fimages%2Fadam_b2_chapter${n}.png?alt=media&token=${IMG[n]}`;
-const audio = (n: number) => `${B}adam_b2%2Faudio%2Fadam_b2_ch${n}.mp3?alt=media&token=${AUD[n]}`;
-const V = (...items: [string, string][]) => items.map(([word, definition]) => ({ word, definition }));
-const H = (...items: [string, number, number, string, string][]) => items.map(([id, x, y, title, description]) => ({ id, x, y, title, description }));
-const S = (id: number, title: string, content: string, vocabulary: { word: string; definition: string }[], hotspots: NonNullable<PageData['hotspots']>): PageData => ({ id, type: 'story', title, image: img(id), audioUrl: audio(id), content, vocabulary, hotspots });
-
+//__EN_HEADER__
 const storyPages: PageData[] = [
 //__EN_1_4__
 //__EN_5_8__
@@ -23,19 +9,4 @@ const storyPages: PageData[] = [
 //__EN_16__
 //__EN_17__
 ];
-
-const languageFocus: Record<number, Exercise[]> = { ...adamB2LanguageFocusExercises, ...adamB2LanguageFocusExercisesPart2, ...adamB2LanguageFocusExercisesPart3 };
-for (const page of storyPages) {
-  page.exercises = adamB2QuickChallenges[page.id] ? [adamB2QuickChallenges[page.id]] : [];
-  if (languageFocus[page.id]) page.languageFocusExercises = languageFocus[page.id];
-}
-const glossary = Array.from(new Map(storyPages.flatMap(page => page.vocabulary ?? []).map(item => [item.word.toLowerCase(), item] as const)).values());
-
-export const adamB2Pages: PageData[] = [
-  ...storyPages,
-  { id: 18, type: 'quiz', title: 'Knowledge Check', image: '', content: 'Answer eight questions to check your understanding of the key ideas across Adam’s story.', exercises: adamB2KnowledgeCheckExercises },
-  { id: 19, type: 'exercises', title: 'Language Review', image: '', content: 'Review the grammar, stance and discourse tools developed across the chapters.', exercises: adamB2LanguageReviewExercises },
-  { id: 20, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: '', content: 'Match key B2 words from the story with their meanings.', vocabularyPairs: adamB2VocabularyChallengePairs },
-  { id: 21, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review the active Word Notes from all seventeen chapters.', vocabulary: glossary },
-  { id: 22, type: 'final-challenge', title: 'B2 Final Challenge', image: '', content: 'Complete the final challenge to demonstrate your mastery of Adam’s story.', exercises: adamB2FinalChallengeExercises },
-];
+//__EN_TAIL__
