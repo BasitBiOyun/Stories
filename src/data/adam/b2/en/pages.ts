@@ -17,8 +17,11 @@ const storyPages: PageData[] = [
 //__EN_1_4__
 //__EN_5_8__
 //__EN_9_12__
-//__EN_13_15__
-//__EN_16_17__
+//__EN_13__
+//__EN_14__
+//__EN_15__
+//__EN_16__
+//__EN_17__
 ];
 
 const languageFocus: Record<number, Exercise[]> = { ...adamB2LanguageFocusExercises, ...adamB2LanguageFocusExercisesPart2, ...adamB2LanguageFocusExercisesPart3 };
