@@ -69,7 +69,7 @@ export const adamB2Pages:PageData[]=[
 //__CH16_A__
 // anchor-16c
 // anchor-16d
-//__CH16_B__
+Before his death, Adam (pbuh) encouraged his children that Allah would not leave man alone on Earth, but would send His prophets to guide them. The prophets would have different names and miracles, but they would be united in one thing: the call to follow Allah’s straight path. This was Adam (pbuh)’s legacy to his children. Adam (pbuh) finished speaking and closed his eyes. Then the angels entered his room and surrounded him. When he recognized the Angel of Death among them, his heart filled with peace.`,V(['successor','A person who takes over another’s role.'],['scrolls','Written texts on rolled sheets or similar material.'],['miracles','Extraordinary signs associated with divine power.'],['legacy','Guidance or influence passed to later generations.'],['peace','A state of calm and freedom from fear.']),H(['h16a',37,34,'Seth’s Successorship','Adam appoints Seth as his successor and teaches him acts of worship.'],['h16b',63,71,'Adam’s Legacy','Adam leaves his children the call to follow Allah’s straight path.'])),
 // anchor-16e
 // anchor-16f
 // anchor-17a
