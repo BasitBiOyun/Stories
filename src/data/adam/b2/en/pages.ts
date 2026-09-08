@@ -50,7 +50,7 @@ export const adamB2Pages:PageData[]=[
 //__CH14_A__
 // anchor-14c
 // anchor-14d
-//__CH14_B1__
+When Habil had not appeared for some time, Adam (pbuh) began to search for him but found no trace of his beloved son. He asked Qabil about Habil's location. Qabil arrogantly replied that he was not his brother's keeper nor his protector. From these words, his father understood that Habil was dead, and Adam (pbuh) was filled with grief. Meanwhile, Qabil did not know what to do with his brother's corpse. He carried it on his back, wandering from place to place trying to hide it.
 // anchor-14e
 // anchor-14f
 //__CH14_B2__
