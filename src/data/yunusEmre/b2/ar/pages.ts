@@ -54,7 +54,22 @@ const rawYunusEmreB2PagesAr: PageData[] = [
 //__C16__
 // c16b
 // c17a
-//__C17__
+
+Sümer, Faruk. "Kösedağ Savaşı," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/kosedag-savasi.
+
+Tatcı, Mustafa. "Yûnus Emre," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/yunus-emre.
+
+Yazıcı, Tahsin. "Derviş," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/dervis.
+
+Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerler," I. Ulusal Yunus Emre Sempozyumu, Karaman, 2010, s. 101-116.`,
+    vocabulary: [], hotspots: [],
+  },
+  { id: 15, type: 'quiz', title: 'اختبار المعرفة: يونس إمره B2', image: '', audioUrl: '', content: 'اختبر فهم الكتاب بثمانية أسئلة قائمة على الدليل.' },
+  { id: 16, type: 'vocabulary-match', title: 'تحدي المفردات B2', image: '', audioUrl: '', content: 'طابق عشر كلمات محورية بمعانيها في سياق القصة.' },
+  { id: 17, type: 'glossary', title: 'المعجم الشامل — الجزء الأول', image: '', content: 'راجع مفردات الفصول الأولى من Word Notes.', vocabulary: [] },
+  { id: 18, type: 'glossary', title: 'المعجم الشامل — الجزء الثاني', image: '', content: 'راجع مفردات الفصول الأخيرة من Word Notes.', vocabulary: [] },
+  { id: 19, type: 'exercises', title: 'المراجعة الاسترجاعية', image: '', content: 'أكمل التسلسل والمطابقة والتأمل ولعبة الأسئلة ذات الثمانية بنود.' },
+  { id: 20, type: 'final-challenge', title: 'التحدي النهائي: يونس إمره B2', image: '', content: 'أكمل التحدي النهائي ذي العشرة بنود عبر الكتاب كله.' },
 // c17b
 ];
 
