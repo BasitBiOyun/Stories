@@ -19,6 +19,7 @@ export const adamB2Pages:PageData[]=[
 //__PART_2__
 //__PART_3__
 //__PART_4__
+//__PART_5__
 ];
 
 const glossary=Array.from(new Map(adamB2Pages.flatMap(p=>p.vocabulary??[]).map(v=>[v.word.toLowerCase(),v] as const)).values());
