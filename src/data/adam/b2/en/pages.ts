@@ -58,7 +58,10 @@ export const adamB2Pages:PageData[]=[
 // anchor-14h
 // anchor-15a
 // anchor-15b
-//__CH15_A__
+S(15,'Qabil’s Regret & Adam (pbuh)’s Advice',`Qabil was in an extremely sorry state, as told in the Holy Qur’an: “Thereupon Allah sent a raven who began to dig at the earth to show him how he might cover the corpse of his brother. So seeing he cried: ‘Woe unto me! Was I unable even to be like this raven and find a way to cover the corpse of my brother?’ Then he became full of regret at his doing.” (Maide: 31)
+
+Witnessing this, Qabil was overcome with shame and guilt. “Woe unto me!” he exclaimed. “I was unable to do what this raven has done, that is to hide my brother's corpse.” Qabil then buried his brother. This was also the first burial of man.
+
 // anchor-15c
 // anchor-15d
 //__CH15_B__
