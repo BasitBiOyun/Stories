@@ -53,7 +53,7 @@ export const adamB2Pages:PageData[]=[
 //__CH14_B1__
 // anchor-14e
 // anchor-14f
-//__CH14_B2__
+His anger had now lessened, and his heart was burdened with guilt. He was getting tired under the burden of the corpse. It also started to have a stench. As a mercy, and to show that the highness of a human had to be preserved even after death, Allah sent two ravens that began fighting. At the end of the battling, one of the ravens died. The victorious bird used its beak and claws to dig a hole in the ground, rolled its victim into it, and covered it with sand.`,V(['familial','Relating to family relationships.'],['criminal','Relating to a serious unlawful act.'],['corpse','The body of a person who has died.'],['guilt','A sense of responsibility for wrongdoing.'],['victorious','Having won a contest or struggle.']),H(['h14a',35,69,'The Crime and Its Consequence','Qabil kills his brother and faces the weight of guilt.'],['h14b',67,40,'The Two Ravens','Qabil learns how burial works by observing two ravens.'])),
 // anchor-14g
 // anchor-14h
 // anchor-15a
