@@ -1,7 +1,12 @@
-import { PageData } from '../../../../types';
-import { meccaB2FinalReviewExercises } from './exercises';
+import type { Exercise, PageData, TeacherGuideMetadata } from '../../../../types';
+import { meccaB2QuickChallenges, meccaB2VocabularyChallengePairs, meccaB2FinalChallengeExercises, meccaB2FinalReviewExercises } from './exercises';
+import { meccaB2LanguageFocusExercises } from './languageFocus';
+import { meccaB2LanguageFocusExercisesPart2 } from './languageFocus2';
+import { meccaB2LanguageFocusExercisesPart3, meccaB2LanguageFocusExercisesPart4, meccaB2LanguageReviewExercises } from './languageFocus3';
+import { meccaB2TeacherGuideMetadata } from './teacherGuide';
 
-export const meccaB2Pages: PageData[] = [
+const rawMeccaB2Pages: PageData[] = [
+// r01a
   {
     id: 1,
     type: 'story',
@@ -78,6 +83,8 @@ To understand Jahiliyyah, it is necessary to describe Mecca. Mecca is in the wes
     ],
     hotspots: [
       { id: 'h2-1', x: 34, y: 44, title: "Jahiliyyah", description: "This period is called the Age of Ignorance because people did not truly know Allah and widely did not have justice, order, and peace both in their personal and social lives." },
+// r01b
+// r02a
       { id: 'h2-2', x: 68, y: 50, title: "Peninsula", description: "This piece of land is called a peninsula because water surrounds it on three sides: the south, west, and east." }
     ],
     animatedWords: ["Jahiliyyah", "barbarism", "oppressed", "moral decline", "peninsula", "truly", "era", "sided with", "upper class", "civilized"],
@@ -157,7 +164,8 @@ Then a new tribe, the Khuza’a (Huzâa), came to Mecca, defeated the Jurhumites
 Since the surroundings of the city were not suitable for agriculture, people tried to make a living with trade.
 
 In the period when Islam came, the Byzantine and Sassanid empires, which were the two most powerful states in the region, had trade with Arabia in both the northern and southern regions.
-
+// r02b
+// r03a
 India also played a very important role in Arabia's trade. There were many products made in India, Indonesia, and China.`,
     vocabulary: [
       { word: "offspring", definition: "A child or descendant." },
@@ -238,6 +246,8 @@ In addition to these, many caravans left Mecca at almost every time of the year.
     id: 6,
     type: 'story',
     title: "Sacred Months and Trade",
+// r03b
+// r04a
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch6-clean.png?alt=media&token=910919c7-b2e6-4c4b-a6e7-0511c73eeaaa',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F05_Chapter_6_Sacred_Months_and_Trade.mp3?alt=media&token=242dadf2-33f1-446e-aa11-8aee2dc422ce',
     content: `During this period, the Silk Road—the most important of the eastern trade routes that connected the Indian Ocean to the Mediterranean—became unusable in the 6th century CE due to the wars between the Byzantine and Sassanid empires. This made the Red Sea route and the overland route through Arabia highly important.
@@ -318,6 +328,8 @@ There was a huge gap between the rich and the poor even in the most basic human 
         options: ["The rich became richer and the poor became poorer", "All people became equal", "Trade completely stopped"],
         correctAnswer: 0,
         explanation: "The chapter explains that usury was part of a system that made the rich richer and the poor poorer.",
+// r04b
+// r05a
         feedback: {
           correct: 'Correct. You understood the social effect of usury.',
           incorrect: 'Not quite. Focus on how money lending affected society.'
@@ -398,6 +410,8 @@ Tribes were the basis of Arab society.`,
       { word: "abandon", definition: "To give up or leave completely." },
       { word: "hesitation", definition: "A pause or delay due to uncertainty." },
       { word: "bet on", definition: "To wager or gamble on an outcome." }
+// r05b
+// r06a
     ],
     hotspots: [
       { id: 'h9-1', x: 34, y: 44, title: "Generosity", description: "The Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests." },
@@ -478,6 +492,8 @@ When news of the birth of a daughter was given to them, people in the Age of Ign
     title: "Slavery, Poets and Media",
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch11-clean.png?alt=media&token=463b4569-1c7e-401c-95ce-8c82fdad0be8',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F10_Chapter_11_Slavery%2C_Poets_and_Media.mp3?alt=media&token=05ecbabc-1d76-4ba2-9605-8e61e949263c',
+// r06b
+// r07a
     content: `“And when one of them is given news of a female baby, his face darkens, and he can’t breathe with grief. He hides from the people because of the bad news given to him. Shall he keep it in humiliation, or bury it in the dust? Evil is the decision they make.”
 
 Slavery was an economic institution in Mecca. Slaves, both male and female, were the most miserable class in society. They were bought and sold like animals. They were employed in various tasks as well as for people’s personal service. They were a show of wealth. They also acted as a weapon to protect their owner in times of war. White slaves brought from the regions of Damascus and Iraq were more expensive than black slaves brought from Africa because they served better and were skilled workers.
@@ -558,6 +574,8 @@ Superstitious beliefs also dominated Arab life. Pre-Islamic Arabs thought the go
       }
     ]
   },
+// r07b
+// r08a
   {
     id: 13,
     type: 'story',
@@ -638,6 +656,8 @@ Maintaining their leadership position was of vital importance to the leaders of 
         correctAnswer: 0,
         explanation: "The chapter states that many of the first Muslims were the poor and the slaves.",
         feedback: {
+// r08b
+// r09a
           correct: 'Correct. You answered according to the chapter text.',
           incorrect: 'Not quite. Look at the opening paragraph of the chapter.'
         }
@@ -718,6 +738,8 @@ As mentioned above, one of the characteristics of Arab society was tribal fanati
         id: 'ex16-1',
         type: 'multiple-choice',
         title: "Hostility and Tribal Fanaticism",
+// r09b
+// r10a
         instructions: 'Choose the correct answer according to the chapter.',
         question: "Why was tribal fanaticism a barrier for the new religion?",
         options: ["Because a person could be left unprotected if they stepped outside the tribe’s views", "Because tribes had no influence", "Because everyone could freely choose without pressure"],
@@ -798,6 +820,8 @@ The dreadful situation in the twenty-first century reminds us of the dark period
         question: 'Prior to Islamic reform, the Meccan tribal systems (hilf) provided robust and equal legal protection for all foreign traders and slaves.',
         correctAnswer: false,
         explanation: 'Pagan Meccan tribal systems only protected those with strong tribal affiliations, leaving foreign merchants and slaves unprotected.',
+// r10b
+// r11a
         feedback: {
           correct: 'Correct! Injustice of this system prompted key alliances like Hilf al-Fudul.',
           incorrect: 'Actually, the system was highly unequal and favored elite tribal members.'
@@ -878,6 +902,8 @@ The dreadful situation in the twenty-first century reminds us of the dark period
       { word: 'pilgrimage', definition: 'A religious journey to a sacred sanctuary or temple; a key source of prestige for Mecca.' }
     ]
   },
+// r11b
+// r12a
   {
     id: 21,
     type: 'glossary',
@@ -989,3 +1015,176 @@ The dreadful situation in the twenty-first century reminds us of the dark period
     ]
   }
 ];
+// r12b
+
+// t01a
+const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
+export const meccaB2VocabIndexes: Record<number, number[]> = {
+  1:[0,1,2,3,4,6], 2:[0,1,2,3,4,9], 3:[0,1,2,3,4], 4:[0,1,2,4,5],
+  5:[0,1,2,3,4,5], 6:[0,1,2,3,4,5], 7:[0,1,2,3,4,6], 8:[0,1,2,3,8,9],
+  9:[1,2,3,5,7,8], 10:[0,1,2,3,4,6], 11:[0,1,2,4,5,6], 12:[0,1,2,3,4],
+  13:[0,1,2,3,4], 14:[0,1,2,3,4], 15:[0,1,2,3,4], 16:[0,1,2,3,4], 17:[0,1,2,3,4],
+};
+const EN_WORD_OVERRIDES: Record<number, Record<string, string>> = {
+  1:{ superpower:'superpowers' },
+  5:{ caravan:'caravans', boost:'boosting', merchant:'merchants' },
+  6:{ 'trade festival':'trade festivals' },
+  7:{ capitalist:'capitalists' },
+  8:{ orphan:'orphans' },
+  10:{ ancestor:'ancestors' },
+  12:{ Hanif:'Hanifs', mediator:'mediators', omen:'omens' },
+};
+export const meccaB2HotspotCoords: Record<number, [number, number, number, number]> = {
+  1:[24,38,73,62], 2:[29,65,74,34], 3:[23,58,69,31], 4:[31,36,76,64], 5:[22,67,67,39],
+  6:[27,32,72,68], 7:[25,55,78,35], 8:[32,70,70,42], 9:[21,43,75,66], 10:[30,29,69,61],
+  11:[26,64,77,37], 12:[23,35,71,70], 13:[33,57,76,30], 14:[20,69,68,41], 15:[28,40,74,65],
+  16:[24,61,79,33], 17:[31,34,70,68],
+};
+const EN_DEFINITION_OVERRIDES: Record<string, string> = {
+  superpower:'A state with enough political, military, and economic influence to shape events far beyond its own borders.',
+  rivalry:'Sustained competition between powers seeking greater influence, advantage, or control.',
+  'political unity':'The condition in which separate groups operate under a shared political authority or governing structure.',
+  revelation:'Divine guidance communicated by Allah to a prophet.',
+  conquest:'The acquisition of control over a territory through military force.',
+  barbarism:'A condition characterized by severe violence, cruelty, and the breakdown of civilized restraint.',
+  oppressed:'Subjected to persistent unjust treatment or control by a more powerful person or group.',
+  'moral decline':'A deterioration in the ethical standards and conduct expected within a society.',
+  civilized:'Organized according to developed social institutions, norms, and forms of public order.',
+  reconstruct:'To build or form something again after it has been damaged, lost, or altered.',
+  pilgrimage:'A journey made to a sacred place for religious purposes.',
+  idolatry:'The religious practice of worshipping idols or treating them as objects of devotion.',
+  extensive:'Large in scale, range, or degree.',
+  usury:'The practice of lending money on exploitative or religiously prohibited interest terms.',
+  aristocracy:'A socially dominant upper class whose status is based on wealth, lineage, or inherited influence.',
+  capitalist:'A person who owns or controls capital and uses it to generate profit.',
+  defenseless:'Lacking sufficient means, power, or protection to resist harm or exploitation.',
+  righteous:'Morally upright and committed to justice or correct conduct.',
+  humiliation:'A state of being made to feel degraded or stripped of dignity.',
+  institution:'An established social, economic, religious, or political structure with an organized role in society.',
+  tribalism:'Strong loyalty to one’s tribe that can override broader principles of fairness or universal justice.',
+  mediator:'A person or intermediary positioned between two parties to facilitate contact or influence.',
+  interconnected:'Linked so that changes in one area affect or depend on developments in another.',
+  authority:'The recognized power or right to command, decide, or govern.',
+  prestigious:'Associated with high social respect, influence, or status.',
+  prophethood:'The divinely appointed mission and status of a prophet.',
+  radical:'Producing or involving fundamental change to an existing system or structure.',
+  exploitation:'The unfair use of people, labor, or resources for another party’s advantage.',
+  boycott:'An organized refusal of social or economic relations used to exert pressure on a person or group.',
+  starvation:'Severe deprivation caused by an extreme or prolonged lack of food.',
+  hostility:'Strong and active opposition, often involving resentment or aggression.',
+  'tribal fanaticism':'Extreme loyalty to tribal identity that suppresses independent judgment and can justify injustice.',
+  stateless:'Lacking the recognized protection and legal belonging normally provided by a political community or state.',
+  oppression:'Systematic cruel or unjust treatment imposed by those with greater power.',
+  immorality:'Conduct that violates accepted moral principles or ethical standards.',
+  'human honor':'The inherent dignity and moral worth that belongs to every human being.',
+  arrogance:'An exaggerated sense of superiority that leads a person to undervalue others.',
+};
+const EN_FIXES: Record<number, [string, string][]> = {
+  2:[["widely did not have justice, order, and peace", "did not widely have justice, order, and peace"]],
+  3:[["Medina, He (pbuh) said", "Medina, he (pbuh) said"]],
+  7:[["Due to the big money ownership in the hands of certain individuals", "Due to the concentration of money in the hands of certain individuals"]],
+  11:[["poets praised conflict rather than peace and war instead of peace", "poets praised conflict and war rather than peace"]],
+  15:[["Because they knew that the Prophet’s call to monotheism", "They knew that the Prophet’s call to monotheism"]],
+  17:[["a more fair and peaceful place", "a fairer and more peaceful place"],["not only a past time", "not only a past era"]],
+};
+const fixText=(text:string,fixes?:[string,string][]) => (fixes??[]).reduce((value,[from,to])=>value.replace(from,to),text);
+const standardizeEnglishPage=(page:PageData):PageData=>{
+  const clean:PageData={...page};
+  delete clean.exercises; delete clean.sequencingItems; delete clean.vocabularyPairs; delete clean.syncPoints; delete clean.timedChunks;
+  if(!STORY_IDS.has(page.id)){
+    if(typeof clean.image==='string'&&clean.image.includes('picsum.photos')) clean.image='';
+    return clean;
+  }
+  const vocabulary=(meccaB2VocabIndexes[page.id]??[]).map(index=>page.vocabulary?.[index]).filter((item):item is NonNullable<PageData['vocabulary']>[number]=>Boolean(item)).map(item=>({
+    ...item,
+    word:EN_WORD_OVERRIDES[page.id]?.[item.word]??item.word,
+    definition:EN_DEFINITION_OVERRIDES[item.word]??item.definition,
+  }));
+  const c=meccaB2HotspotCoords[page.id];
+  const hotspots=(page.hotspots??[]).slice(0,2).map((hotspot,index)=>({...hotspot,id:`h${page.id}-${index+1}`,x:c[index*2],y:c[index*2+1]}));
+  return {...clean,content:fixText(clean.content??'',EN_FIXES[page.id]),vocabulary,hotspots,animatedWords:undefined};
+};
+const standardizedMeccaB2Pages=rawMeccaB2Pages.map(standardizeEnglishPage);
+const englishLanguageFocus:Record<number,Exercise[]>={...meccaB2LanguageFocusExercises,...meccaB2LanguageFocusExercisesPart2,...meccaB2LanguageFocusExercisesPart3,...meccaB2LanguageFocusExercisesPart4};
+// t01b
+// t02a
+const knowledgeFeedbackEn={correct:'Correct. Your answer is supported by the story evidence.',incorrect:'Not yet. Return to the relevant chapter, find the evidence, and try again.'};
+const knowledgeMcEn=(id:string,question:string,options:string[],correctAnswer:number,explanation:string):Exercise=>({id,type:'multiple-choice',title:'Knowledge Check',instructions:'Choose the best answer supported by the story.',question,options,correctAnswer,explanation,feedback:knowledgeFeedbackEn});
+const meccaB2ManualKnowledgeCheckExercises:Exercise[]=[
+  knowledgeMcEn('me-b2-mk1','What detail does the book use to show the scale of Quraysh long-distance trade?',['The annual summer and winter caravans could include up to 2,500 camels','Every caravan consisted of exactly ten camels','Trade was limited to goods carried by individual travelers'],0,'Chapter 5 says the annual summer and winter journeys could use caravans numbering up to 2,500 camels, illustrating the scale of organized trade.'),
+  knowledgeMcEn('me-b2-mk2','Which pair correctly reflects two destinations or connections in Quraysh trade?',['Egypt was an important caravan destination, while Abyssinia was connected by sea','Constantinople was the only destination and sea trade did not exist','All trade remained inside the Arabian Peninsula'],0,'Chapter 5 identifies Egypt as an important destination and describes maritime trade relations with Abyssinia.'),
+  knowledgeMcEn('me-b2-mk3','Besides high lending rates, what behaviors does the social-class chapter say also pushed people into debt?',['Drinking and gambling','Pilgrimage and prayer','Poetry and genealogy'],0,'Chapter 7 adds that widespread drinking and gambling were among the reasons people repeatedly fell into debt.'),
+  knowledgeMcEn('me-b2-mk4','How old was Prophet Muhammad (as) when he attended the meeting connected with Hilfü’l-Fudûl?',['Twenty years old','Forty years old','Fifty-two years old'],0,'Chapter 8 states that Prophet Muhammad (as) was twenty years old when he attended the meeting that formed Hilfü’l-Fudûl.'),
+  knowledgeMcEn('me-b2-mk5','Why did the chapter say many tribes placed special value on having male children?',['Physical fighting strength and the resulting tribal protection and prestige were highly valued','Only sons were allowed to participate in trade fairs','Male children were required for pilgrimage'],0,'Chapter 10 connects the value placed on sons with physical strength, fighting capacity, tribal protection and respect among tribes.'),
+  knowledgeMcEn('me-b2-mk6','Which statement is directly supported by the chapter on slavery?',['Slaves were treated as economic property and could also serve as displays of wealth or protection in war','Slavery had no economic role in Mecca','Slaves were described as the city’s most politically powerful class'],0,'Chapter 11 describes slavery as an economic institution and says enslaved people were used for labor, personal service, displays of wealth and protection in war.'),
+  knowledgeMcEn('me-b2-mk7','Which practice does the religious-life chapter describe alongside pilgrimage and idol worship?',['People sought omens before taking action','People rejected every form of pilgrimage','Soothsayers were forbidden from making predictions'],0,'Chapter 12 says superstitious beliefs were widespread and that people sought omens before doing things.'),
+  knowledgeMcEn('me-b2-mk8','What economic distinction does the Quraysh-and-power chapter say the Quran introduced?',['Trade is lawful while usury is unlawful','Both trade and usury are unlawful','Usury is lawful while trade is unlawful'],0,'Chapter 14 contrasts the Quraysh view of usury with the Quranic distinction that trade is lawful and usury is unlawful.'),
+];
+const finalFeedbackEn={correct:'Correct. Your answer synthesizes evidence from across the book.',incorrect:'Not yet. Reconnect the relevant chapters and distinguish the relationship being tested.'};
+const finalReplacementEn:Record<string,Exercise>={
+  'me-b2-f6':{id:'me-b2-f6',type:'matching',title:'Final Challenge',instructions:'Match each institution with the broader role it plays in the book.',question:'How do different institutions create, protect, or challenge power?',matchingPairs:[{left:'Sacred months',right:'Create safer movement that supports pilgrimage and fairs'},{left:'Tribal protection',right:'Provides security but can pressure individual conformity'},{left:'Hilfü’l-Fudûl',right:'Organizes practical resistance to injustice against vulnerable people'},{left:'Poetry as tribal media',right:'Shapes public memory, praise, blame and group identity'}],correctAnswer:{'Sacred months':'Create safer movement that supports pilgrimage and fairs','Tribal protection':'Provides security but can pressure individual conformity','Hilfü’l-Fudûl':'Organizes practical resistance to injustice against vulnerable people','Poetry as tribal media':'Shapes public memory, praise, blame and group identity'},explanation:'The book compares institutions that create security, social pressure, justice and cultural influence rather than treating power as only political office.',feedback:finalFeedbackEn},
+  'me-b2-f7':{id:'me-b2-f7',type:'matching',title:'Final Challenge',instructions:'Match each group with the evidence that most carefully qualifies a broad claim.',question:'Which evidence prevents one-dimensional descriptions of Meccan society?',matchingPairs:[{left:'Women before Islam',right:'Experiences varied by tribe and social status, although many lower-status women were severely disadvantaged'},{left:'Pre-Islamic Arabs',right:'Hospitality and Hilfü’l-Fudûl existed alongside serious injustice and tribal competition'},{left:'Quraysh leaders',right:'Prominence depended on status and the existing order, not simply identical levels of wealth'},{left:'Early Muslims',right:'Many vulnerable people joined despite strong pressure from established elites'}],correctAnswer:{'Women before Islam':'Experiences varied by tribe and social status, although many lower-status women were severely disadvantaged','Pre-Islamic Arabs':'Hospitality and Hilfü’l-Fudûl existed alongside serious injustice and tribal competition','Quraysh leaders':'Prominence depended on status and the existing order, not simply identical levels of wealth','Early Muslims':'Many vulnerable people joined despite strong pressure from established elites'},explanation:'B2 mastery requires qualified claims that preserve variation, contradiction and social position.',feedback:finalFeedbackEn},
+  'me-b2-f8':{id:'me-b2-f8',type:'fill-blanks',title:'Final Challenge',instructions:'Complete the whole-book synthesis with the key concept.',question:'Complete the systems relationship.',fillBlanksText:'Across the book, sacred prestige, trade wealth, tribal protection and political [blank] repeatedly reinforce one another.',correctAnswer:'authority',explanation:'The later chapters make authority a central link between economic prestige, religious status and political leadership.',feedback:finalFeedbackEn},
+  'me-b2-f9':{id:'me-b2-f9',type:'fill-blanks',title:'Final Challenge',instructions:'Complete the concluding synthesis with the chapter’s own ethical language.',question:'Complete the broader meaning of Jahiliyyah.',fillBlanksText:'The conclusion treats Jahiliyyah not only as a past era but as a recurring culture shaped by human [blank], oppression and unequal worth.',correctAnswer:'arrogance',explanation:'The final chapter explicitly extends Jahiliyyah beyond one period and connects it with human arrogance, oppression and moral disorder.',feedback:finalFeedbackEn}
+};
+const meccaB2FinalChallengeExercisesPolished=meccaB2FinalChallengeExercises.map(exercise=>finalReplacementEn[exercise.id]??exercise);
+// t02b
+// t03a
+const attachEnglishLearning=(pages:PageData[]):PageData[]=>pages.map(page=>{
+  if(STORY_IDS.has(page.id)){
+    const languageFocusExercises=englishLanguageFocus[page.id];
+    return {...page,type:'story',exercises:meccaB2QuickChallenges[page.id]?[meccaB2QuickChallenges[page.id]]:[],...(languageFocusExercises?{languageFocusExercises}:{})};
+  }
+  if(page.id===18) return {...page,type:'quiz',exercises:meccaB2ManualKnowledgeCheckExercises};
+  if(page.id===19) return {...page,type:'exercises',title:'B2 Language Review',content:'Review and use the qualification, cause-result, contrast, condition, information-focus and discourse patterns developed across all seventeen chapters.',exercises:meccaB2LanguageReviewExercises};
+  if(page.id===20) return {...page,type:'vocabulary-match',vocabularyPairs:meccaB2VocabularyChallengePairs};
+  if(page.id===22) return {...page,type:'final-challenge',exercises:meccaB2FinalChallengeExercisesPolished};
+  return page;
+});
+export const meccaB2Pages:PageData[]=attachEnglishLearning(standardizedMeccaB2Pages);
+export const meccaB2TeacherGuideMetadataPolished:TeacherGuideMetadata={
+  ...meccaB2TeacherGuideMetadata,
+  targetLearners:'B2 learners ready to analyse historical relationships, qualify claims, and defend interpretations with evidence.',
+  approachDesc:'Read and listen for evidence first; analyse causes, systems and qualifications second; produce claim-evidence-explanation responses third.',
+  readingFramework:{
+    before:'Predict one relationship from the title and image, but mark it as unproven until the chapter supplies evidence.',
+    during:'Track direct facts, cause-effect links, contrasts and qualification words. Use the supplied audio to verify wording rather than inventing context.',
+    after:'Complete the Quick Challenge, identify the exact supporting evidence, then produce a short analytical or transfer response.'
+  },
+  globalCitizenship:{
+    title:'Justice, dignity and responsible belonging',
+    description:'Use the Mecca chapters to examine fair economic conduct, protection of vulnerable people, accurate representation of beliefs, and group loyalty that does not excuse injustice.',
+    themes:[
+      {title:'Economic fairness',description:'Evaluate financial systems by their effects on people with less power.'},
+      {title:'Human dignity',description:'Connect the story’s treatment of weak, poor, enslaved and socially disadvantaged people with equal human worth.'},
+      {title:'Responsible belonging',description:'Distinguish supportive community ties from tribal pressure that suppresses moral choice.'}
+    ],
+    actions:[
+      'Challenge an unfair transaction with evidence and respectful procedure rather than humiliation.',
+      'Use qualified language when describing another group’s beliefs or social conditions.',
+      'Support a person facing exclusion without turning the response into status competition.'
+    ]
+  },
+  valuesEducation:{
+    title:'Values as action',
+    description:'Values are demonstrated through observable choices linked to chapter evidence.',
+    items:[
+      {label:'Justice',value:'Move from recognizing unfairness to a fair, nonviolent response, as the Hilfü’l-Fudûl chapter illustrates.'},
+      {label:'Dignity',value:'Refuse to rank human worth by wealth, gender, freedom status or tribal protection.'},
+      {label:'Integrity',value:'Keep interpretations inside the limits of the source instead of exaggerating for effect.'}
+    ],
+    questions:['What action would make this value visible?','Which chapter evidence supports that action?'],
+    actions:['Name the unfair mechanism.','Identify who is most vulnerable.','Choose a proportionate, respectful corrective action.']
+  },
+  homeConnection:{
+    title:'Evidence conversation at home',
+    items:['Choose one chapter claim and explain its evidence in two minutes.','Ask a family member for an alternative interpretation, then check whether the story supports it.']
+  }
+};
+// t03b
+// t04a
+//__T04__
+// t04b
+// t05a
+//__T05__
+// t05b
