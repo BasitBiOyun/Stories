@@ -51,7 +51,26 @@ const rawYunusEmreB2PagesAr: PageData[] = [
 //__C15__
 // c15b
 // c16a
-//__C16__
+    ],
+    hotspots: [{ id: 'h13-1', x: 30, y: 41, title: 'قيمة في الفعل', description: 'تدعو الأبيات إلى الصبر وإلى ترك الغضب والكبر.' }, { id: 'h13-2', x: 68, y: 70, title: 'الإرث', description: 'تجمع الخاتمة بين القيمة الأدبية للكتابات ودورها دليلاً أخلاقياً للأجيال.' }],
+  },
+  {
+    id: 14, type: 'story', title: 'الْمَصَادِرُ وَالْمَرَاجِعُ', image: '', audioUrl: '',
+    content: `Bulduk, Üçler. "Yunus Emre Çağında Anadolu’nun Siyasal ve Sosyal Durumu," DTCF Dergisi Yunus Emre Özel Sayısı, 2021, s. 57-67.
+
+Gürer, Banu. "Yunus Emre," Türk Maarif Ansiklopedisi, https://turkmaarifansiklopedisi.org.tr/yunus-emre.
+
+Kara, Mustafa. "Tekke," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/tekke.
+
+Ocak, Ahmet Yaşar. "Babaîlik," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/babailik.
+
+Ocak, Ahmet Yaşar. Babaîler İsyanı, Dergah Yayınları, İstanbul, 2011.
+
+Öngören, Reşat. "Sufi," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/sufi.
+
+Sevim, Ali. "Keyhüsrev II," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keyhusrev-ii.
+
+Sümer, Faruk. "Keykubad I," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keykubad-i.
 // c16b
 // c17a
 //__C17__
