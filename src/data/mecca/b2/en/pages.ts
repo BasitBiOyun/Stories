@@ -42,7 +42,6 @@ const rawMeccaB2Pages: PageData[] = [
 // r12a
 //__R12__
 // r12b
-];
 
 // t01a
 //__T01__
