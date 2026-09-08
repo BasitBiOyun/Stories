@@ -6,34 +6,47 @@ import { meccaB2LanguageFocusExercisesArPart3, meccaB2LanguageFocusExercisesArPa
 import { meccaB2TeacherGuideMetadataAr } from './teacherGuide';
 
 const rawMeccaB2PagesAr: PageData[] = [
-//__AR01__
-//__AR02__
-//__AR03__
-//__AR04__
-//__AR05__
-//__AR06__
-//__AR07__
-//__AR08__
-//__AR09__
-//__AR10__
-//__AR11__
-//__AR12__
-//__AR13__
-//__AR14__
-//__AR15__
-//__AR16__
-//__AR17__
-//__AR18__
-//__AR19__
-//__AR20__
-//__AR21__
-//__AR22__
-//__AR23__
-//__AR24__
-//__AR25__
-//__AR26__
+// c01a
+//__C01__
+// c01b
+
+// c02a
+//__C02__
+// c02b
+
+// c03a
+//__C03__
+// c03b
+
+// c04a
+//__C04__
+// c04b
+
+// c05a
+//__C05__
+// c05b
+
+// c06a
+//__C06__
+// c06b
+
+// c07a
+//__C07__
+// c07b
+
+// c08a
+//__C08__
+// c08b
+
+// c09a
+//__C09__
+// c09b
+
+// c10a
+//__C10__
+// c10b
 ];
 
-//__AT01__
-//__AT02__
-//__AT03__
+// taila
+//__TAIL__
+// tailb
