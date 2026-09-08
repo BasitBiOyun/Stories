@@ -13,73 +13,19 @@ const V=(...x:[string,string][])=>x.map(([word,definition])=>({word,definition})
 const H=(...x:[string,number,number,string,string][])=>x.map(([id,x,y,title,description])=>({id,x,y,title,description}));
 const LF:Record<number,Exercise[]>={...adamB2LanguageFocusExercises,...adamB2LanguageFocusExercisesPart2,...adamB2LanguageFocusExercisesPart3};
 export const adamB2Pages:PageData[]=[
-// anchor-1a
-// anchor-1b
-// anchor-1c
-// anchor-1d
 //__CH1_4__
-// anchor-1e
-// anchor-1f
-// anchor-1g
-// anchor-1h
-// anchor-2a
-// anchor-2b
-// anchor-2c
-// anchor-2d
 //__CH5_8__
-// anchor-2e
-// anchor-2f
-// anchor-2g
-// anchor-2h
-// anchor-3a
-// anchor-3b
-// anchor-3c
-// anchor-3d
 //__CH9_12__
-// anchor-3e
-// anchor-3f
-// anchor-3g
-// anchor-3h
-// anchor-13a
-// anchor-13b
 //__CH13__
-// anchor-13c
-// anchor-13d
-// anchor-14a
-// anchor-14b
 //__CH14_A__
-// anchor-14c
-// anchor-14d
 //__CH14_B1__
-// anchor-14e
-// anchor-14f
 //__CH14_B2__
-// anchor-14g
-// anchor-14h
-// anchor-15a
-// anchor-15b
 //__CH15_A__
-// anchor-15c
-// anchor-15d
 //__CH15_B__
-// anchor-15e
-// anchor-15f
-// anchor-16a
-// anchor-16b
 //__CH16_A__
-// anchor-16c
-// anchor-16d
 //__CH16_B__
-// anchor-16e
-// anchor-16f
-// anchor-17a
-// anchor-17b
 //__CH17_A__
-// anchor-17c
-// anchor-17d
 //__CH17_B__
-// anchor-17e
-// anchor-17f
 ];
 const glossary=Array.from(new Map(adamB2Pages.flatMap(p=>p.vocabulary??[]).map(v=>[v.word.toLowerCase(),v] as const)).values());
 for(const page of adamB2Pages){page.exercises=adamB2QuickChallenges[page.id]?[adamB2QuickChallenges[page.id]]:[];if(LF[page.id])page.languageFocusExercises=LF[page.id];}
