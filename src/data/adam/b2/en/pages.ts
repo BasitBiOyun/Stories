@@ -66,7 +66,7 @@ export const adamB2Pages:PageData[]=[
 // anchor-15f
 // anchor-16a
 // anchor-16b
-//__CH16_A__
+S(16,'Adam (pbuh)’s Successor & Death',`At the same time, he was a prophet advising his children and grandchildren, telling them about Allah and calling them to believe in Him. He told them about Iblis and warned them by telling his own experience with Satan and of how Satan had tempted Qabil to kill his brother. Years and years passed, Adam (pbuh) grew old and his children spread all over the Earth. It was narrated that when Adam (pbuh)’s death drew near, he appointed his son Seth to be his successor and taught him the hours of the day and night with their appropriate acts of worship. Prophet Muhammad (pbuh) said: “Allah sent down 104 scrolls, of which 50 were sent down to Seth.”
 // anchor-16c
 // anchor-16d
 //__CH16_B__
