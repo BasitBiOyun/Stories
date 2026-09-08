@@ -47,7 +47,12 @@ export const adamB2Pages:PageData[]=[
 // anchor-13d
 // anchor-14a
 // anchor-14b
-//__CH14_A__
+S(14,'The First Murder & Burial',`This brotherly request did nothing to lessen the hatred in Qabil's heart, nor did he show fear of Allah's punishment. Even familial considerations were given up. Qabil hit his brother with a stone, killing him instantly. This was the first death and the first criminal act committed by man on Earth.
+
+Surah Maide concludes the story with Qabil’s tragic end:
+
+“At last his evil soul drove him (Qabil) to the murder of his brother, and he killed him, by which he himself became one of the losers.” (Maide: 30)
+
 // anchor-14c
 // anchor-14d
 //__CH14_B1__
