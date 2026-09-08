@@ -3,7 +3,6 @@ import { adamB2QuickChallenges, adamB2KnowledgeCheckExercises, adamB2VocabularyC
 import { adamB2LanguageFocusExercises } from './languageFocus';
 import { adamB2LanguageFocusExercisesPart2 } from './languageFocus2';
 import { adamB2LanguageFocusExercisesPart3 } from './languageFocus3';
-
 const B='https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/';
 const IMG=['','','','','','', '2c7f06f0-1c7b-4f72-bbdc-220aebe0f3eb','888f74ef-8ab1-4399-b94f-499f280488d9','b1edc4c5-1feb-41b7-8c59-3919406cd8a4','02398d91-13a7-4809-b9a5-7e7d10e9b6c0','ccb788e1-98ea-43fc-9397-aecc67ff8d34','c520bb71-bf37-4f3e-a7fd-752ee62d8125','ea7397e9-5206-4dec-80ae-4f5fae82309d','ed61f9d6-f850-4a84-9f2f-acb6a00fc6a3','4399b928-a16f-4bdd-a697-b274b27d32c2','b599808a-3de8-4dc1-a9e0-ad6067e1903b','7a5a94a7-cbb8-458b-b865-f7281e454742','fb1cf4bc-7a18-4dab-8cde-2eab06c1ff0a'];
 const AUD=['','0b8932e8-d415-4e1b-846d-5b43c5e6c8a5','a7ec7e2d-f33f-41c3-b6c8-5816abceea1a','0dcc80e8-706d-4b22-85bd-2c269180bd8b','c077f30d-5f0e-4030-a373-069abf985246','88331cdd-99ae-459f-a260-5b3f2351635f','6abb93df-41c0-4d46-81a4-bf52e53ff672','802716e0-1e3e-4f5f-99a4-a481ac28491c','7350d4c8-c0f2-4474-8c59-3919406cd8a4','81c54390-7d2e-4d99-9d10-6935c85a3bbe','be3bea4e-5ae6-488c-9a07-46e885b5d89c','2d3f4f6a-09fd-4706-bfab-b2f4b2287cd9','ecfdfa30-32b7-485c-bdf4-957a49eae96a','faef98f2-8ab5-4d08-85be-e2e9f1ae33a3','f976eee6-6b6d-4aa5-9b81-79a43cb62a61','8488bff3-a880-47ab-ba15-98e03a50b37d','f6e0a555-131a-43b3-84fc-3ef6af30ba97','260216c5-5979-433c-8ac7-a42db758c207'];
@@ -13,23 +12,38 @@ const S=(id:number,title:string,content:string,vocabulary:{word:string;definitio
 const V=(...x:[string,string][])=>x.map(([word,definition])=>({word,definition}));
 const H=(...x:[string,number,number,string,string][])=>x.map(([id,x,y,title,description])=>({id,x,y,title,description}));
 const LF:Record<number,Exercise[]>={...adamB2LanguageFocusExercises,...adamB2LanguageFocusExercisesPart2,...adamB2LanguageFocusExercisesPart3};
-
 export const adamB2Pages:PageData[]=[
 //__PART_1__
-//__PART_2__
+S(5,'Angels’ Prostration & Iblis’s Arrogance — Part II',`Angels admitted their inability and realized that Adam (pbuh) was the creature who knew what they did not know and that his capacity to learn was his most honourable quality. Adam (pbuh)’s knowledge included knowledge of the Creator, which is faith or Islam, as well as the knowledge he would need to inhabit and master the earth. All kinds of worldly knowledge are included in this. The prostration of angels to Adam (pbuh) is not a prostration of worship, because such prostration is solely to and for Allah. Angels’ prostration means obedience to Allah to show respect and admiration to Adam (pbuh), because the unique knowledge given to Adam (pbuh) is different from the knowledge of the angels that never changes.
+
+On the other hand, Iblis’ arrogance came from his belief that his origin was superior to Adam (pbuh)’s. Satan’s—in other words, Iblis’—unapparent arrogance came to the surface when Adam (pbuh) appeared on the scene. He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud.`,V(['inability','The condition of being unable to do something.'],['obedience','Willing compliance with a command or authority.'],['admiration','Respect and approval for someone’s qualities.'],['arrogance','Excessive pride or assumed superiority.'],['ethnicity','Identity linked to shared cultural or ancestral background.']),H(['h5a',22,44,'Knowledge and Obedience','The angels acknowledge their limits and obey Allah.'],['h5b',77,56,'False Superiority','The chapter rejects superiority based on material origin.'])),
+S(6,'The Command to Paradise',`Allah said: “O Mankind! Be respectful to your Lord, Who created you from a single person (Adam) and from Him (Adam) He created his wife (Eve), and from them both He created many men and women.” (Nisâ: 1)
+
+Adam (pbuh) was now in Paradise and not alone; he had his wife with him.
+
+Allah spoke to Adam (pbuh) in A’raf, verse 19: “And you, Adam, inhabit the Garden, you and your wife, and eat whatever you wish; but do not approach this tree, for fear that you become wrongdoers.”
+
+The tale went on. While Satan reached the point of no return by challenging his Creator, Adam (pbuh) took a path completely different from him. Surah A’raf, verses 16-17: “Satan said, ‘Because You have put me in error, I will surely sit in wait for them (Adam’s children) on Your Straight Path. Then I will come to them from before them, and from behind them, and from their right, and from their left; and you will not find most of them grateful to You.’”
+
+The tale is unfolding through the verses 77-82 in Surah Sâd: Allah said, “Then get out of here! You (Satan) are an outcast! And My curse will be upon you until the Day of Judgment.” He said, “Lord, allow me until the Day they are raised up.” He said, “You are one of those allowed, until the Day of the Time Appointed.” He said, “By Your majesty, I will deceive them all.”`,V(['respectful','Showing due reverence and respect.'],['inhabit','To live in or occupy a place.'],['wrongdoers','People who violate a moral or religious command.'],['outcast','Someone rejected and excluded from a group.'],['deceive','To mislead someone into believing something false.']),H(['h6a',31,68,'Life in Paradise','Adam and his wife receive permission with a clear boundary.'],['h6b',70,30,'Satan’s Vow','Satan declares his intention to mislead humanity.'])),
+S(7,'The Whisper of Deception',`Adam (pbuh) and Eve understood that they were forbidden to eat the fruit of that tree. Adam (pbuh) was, however, a human being, and man tends to forget. His heart changes, and his determination weakens. On the other hand, Satan would seek a way to remove Adam (pbuh) from mercy, because he thought of Adam (pbuh) as the cause of his expulsion from Allah's mercy. He took advantage of Adam (pbuh)’s humanity to manipulate him. He started to whisper to them day after day, trying to persuade both:
+
+“But Satan whispered to them (Adam and Eve), to expose what was hidden of their nakedness. He said, ‘Your Lord has only forbidden you this tree, lest you become angels, or become immortals.’” (A’raf: 20) And he swore to them, “I am a sincere advisor to you.” (A’raf: 21) Upon Satan’s promise that he was their true friend, Adam (pbuh) started to ask himself: “What will happen if I eat from this tree? It might truly be the Tree of Immortality.” His dream was to live forever in the pure innocence of Paradise. Years went by, and Adam (pbuh) and Eve were preoccupied with thoughts of that tree. Then one day, they decided to eat of its fruit. They forgot that Allah had warned them not to approach it and that Iblis was their bitter enemy. Adam (pbuh) stretched out his hand, picked one of the fruits, and offered it to Eve. They both ate of the forbidden tree. As soon as Adam (pbuh) had finished eating, he felt his heart tighten and filled with pain, sadness, and shame. The surrounding atmosphere changed, and the internal harmony ceased.`,V(['determination','Firmness of purpose in following a decision.'],['whispered','Spoke softly; here, a subtle attempt to influence.'],['immortals','Beings believed to live forever.'],['sincere','Honest and genuine in intention.'],['preoccupied','Absorbed repeatedly in a particular thought.']),H(['h7a',26,35,'Weakening Determination','Satan exploits forgetfulness through repeated whispers.'],['h7b',73,62,'The Forbidden Tree','Adam and Eve eventually eat from the tree.'])),
+S(8,'The Realization & Repentance',`“So he (Satan) made them (Adam (pbuh) and Eve) fall through deception. And when they tasted the tree, their nakedness became evident to them, and they began covering themselves with the leaves of the Garden. And their Lord called out to them, ‘Did I not forbid you from this tree, and say to you that Satan is a clear enemy to you?’” (A’raf: 22)
+
+When they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, so they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, because the sense of shame (hayâ) is inborn human nature and nakedness is against creation.
+
+Adam (pbuh) bowed down, crying, “Forgiveness! Forgiveness!” so Allah asked, “Are you running away from Me?” Adam (pbuh) replied, “No, my Lord, but I am shy of You.”
+
+After Adam (pbuh) and Eve were placed in Paradise, they enjoyed Allah's blessings as they pleased. Allah warned them not to approach the forbidden tree. This tree is not described in the Holy Qur'an. It is only mentioned that Satan deceived Adam (pbuh) and Eve. According to Islamic scholars, this incident happened while Adam (pbuh) was in Paradise—that is, before he became a prophet.`,V(['deception','The act of making something false appear true.'],['evident','Clearly visible or understandable.'],['unclad','Without clothing or covering.'],['hayâ','A moral sense of modesty and shame.'],['forbidden','Not permitted because it has been prohibited.']),H(['h8a',36,57,'Recognition and Modesty','They become aware of their nakedness and cover themselves.'],['h8b',64,28,'Turning Back to Allah','Adam responds with shame and asks for forgiveness.'])),
 //__PART_3__
 //__PART_4__
 ];
-
 const glossary=Array.from(new Map(adamB2Pages.flatMap(p=>p.vocabulary??[]).map(v=>[v.word.toLowerCase(),v] as const)).values());
-for(const page of adamB2Pages){
-  page.exercises=adamB2QuickChallenges[page.id]?[adamB2QuickChallenges[page.id]]:[];
-  if(LF[page.id]) page.languageFocusExercises=LF[page.id];
-}
+for(const page of adamB2Pages){page.exercises=adamB2QuickChallenges[page.id]?[adamB2QuickChallenges[page.id]]:[];if(LF[page.id])page.languageFocusExercises=LF[page.id];}
 adamB2Pages.push(
-  {id:18,type:'quiz',title:'Knowledge Check',image:'',content:'Answer eight questions to check your understanding of the key ideas across Adam’s story.',exercises:adamB2KnowledgeCheckExercises},
-  {id:19,type:'exercises',title:'Language Review',image:'',content:'Review the grammar, stance and discourse tools developed across the chapters.',exercises:adamB2LanguageReviewExercises},
-  {id:20,type:'vocabulary-match',title:'Vocabulary Challenge',image:'',content:'Match key B2 words from the story with their meanings.',vocabularyPairs:adamB2VocabularyChallengePairs},
-  {id:21,type:'glossary',title:'Master Glossary',image:'',content:'Review the active Word Notes from all seventeen chapters.',vocabulary:glossary},
-  {id:22,type:'final-challenge',title:'B2 Final Challenge',image:'',content:'Complete the final challenge to demonstrate your mastery of Adam’s story.',exercises:adamB2FinalChallengeExercises},
-);
+{id:18,type:'quiz',title:'Knowledge Check',image:'',content:'Answer eight questions to check your understanding of the key ideas across Adam’s story.',exercises:adamB2KnowledgeCheckExercises},
+{id:19,type:'exercises',title:'Language Review',image:'',content:'Review the grammar, stance and discourse tools developed across the chapters.',exercises:adamB2LanguageReviewExercises},
+{id:20,type:'vocabulary-match',title:'Vocabulary Challenge',image:'',content:'Match key B2 words from the story with their meanings.',vocabularyPairs:adamB2VocabularyChallengePairs},
+{id:21,type:'glossary',title:'Master Glossary',image:'',content:'Review the active Word Notes from all seventeen chapters.',vocabulary:glossary},
+{id:22,type:'final-challenge',title:'B2 Final Challenge',image:'',content:'Complete the final challenge to demonstrate your mastery of Adam’s story.',exercises:adamB2FinalChallengeExercises});
