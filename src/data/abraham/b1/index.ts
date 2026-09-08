@@ -181,7 +181,7 @@ const englishVocabulary: Record<number, VocabularyEntry[]> = {
   13: [
     { word: 'foundations', definition: 'The strong base under a building.' },
     { word: 'construct', definition: 'To build something.' },
-    { word: 'races', definition: 'Groups of people understood as having shared physical ancestry.' },
+    { word: 'races', definition: 'Groups of people with different backgrounds or physical traits.' },
     { word: 'Oneness', definition: 'The belief that Allah is One and has no partner.' },
   ],
 };
@@ -239,7 +239,7 @@ const arabicVocabulary: Record<number, VocabularyEntry[]> = {
     { word: 'المعجزة', definition: 'آية من الله تتجاوز القدرة البشرية العادية.' },
     { word: 'غضبهم', definition: 'غضب شديد جدًا.' },
     { word: 'حُرّاسه', definition: 'أشخاص مهمتهم حماية شخص أو مكان.' },
-    { word: 'عاديًّا', definition: 'طبيعي وغير غير مألوف أو مميز.' },
+    { word: 'عاديًّا', definition: 'طبيعي وغير مألوف أو مميز.' },
   ],
   10: [
     { word: 'إيمانه', definition: 'تصديقه وثقته بالله.' },
@@ -262,7 +262,7 @@ const arabicVocabulary: Record<number, VocabularyEntry[]> = {
   13: [
     { word: 'أساسات', definition: 'القاعدة القوية التي يقوم عليها البناء.' },
     { word: 'تَشْيِيد', definition: 'بناء شيء وإقامته.' },
-    { word: 'الأجناس', definition: 'مجموعات من الناس تُفهم على أساس أصول جسدية مشتركة.' },
+    { word: 'الأجناس', definition: 'مجموعات من الناس تختلف في الخلفيات أو الصفات الجسدية.' },
     { word: 'وحدانية', definition: 'الإيمان بأن الله واحد لا شريك له.' },
   ],
 };
