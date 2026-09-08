@@ -47,24 +47,39 @@ export const adamB2Pages:PageData[]=[
 // anchor-13d
 // anchor-14a
 // anchor-14b
-//__CH14__
+//__CH14_A__
 // anchor-14c
 // anchor-14d
+//__CH14_B1__
+// anchor-14e
+// anchor-14f
+//__CH14_B2__
+// anchor-14g
+// anchor-14h
 // anchor-15a
 // anchor-15b
-//__CH15__
+//__CH15_A__
 // anchor-15c
 // anchor-15d
+//__CH15_B__
+// anchor-15e
+// anchor-15f
 // anchor-16a
 // anchor-16b
-//__CH16__
+//__CH16_A__
 // anchor-16c
 // anchor-16d
+//__CH16_B__
+// anchor-16e
+// anchor-16f
 // anchor-17a
 // anchor-17b
-//__CH17__
+//__CH17_A__
 // anchor-17c
 // anchor-17d
+//__CH17_B__
+// anchor-17e
+// anchor-17f
 ];
 const glossary=Array.from(new Map(adamB2Pages.flatMap(p=>p.vocabulary??[]).map(v=>[v.word.toLowerCase(),v] as const)).values());
 for(const page of adamB2Pages){page.exercises=adamB2QuickChallenges[page.id]?[adamB2QuickChallenges[page.id]]:[];if(LF[page.id])page.languageFocusExercises=LF[page.id];}
