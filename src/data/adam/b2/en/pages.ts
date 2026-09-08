@@ -74,7 +74,13 @@ export const adamB2Pages:PageData[]=[
 // anchor-16f
 // anchor-17a
 // anchor-17b
-//__CH17_A__
+S(17,'The Challenge of Satan & Human Value',`In Surah Hijr 39-42 Allah declares that for those who act in accordance with the Qur’an, Satan’s challenge has no meaning. Satan, too, acknowledges this fact.
+
+“He (Satan) said, “My Lord, because You have put me in error, I will surely make (disobedience) attractive to them on earth, and I will mislead them all.
+ “Except for Your sincere servants among them.”
+“He (Allah) said, “This is a right way with Me.”
+ “Over My servants you have no authority, except for the sinners who follow you.”
+
 // anchor-17c
 // anchor-17d
 //__CH17_B__
