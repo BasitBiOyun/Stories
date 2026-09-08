@@ -27,7 +27,26 @@ const rawYunusEmreB2PagesAr: PageData[] = [
 //__C07__
 // c07b
 // c08a
-//__C08__
+      { word: 'صِفَاتِهِ', definition: 'الخصائص أو المعاني التي تُنسب إلى ذات أو شخص.' },
+    ],
+    hotspots: [{ id: 'h8-1', x: 25, y: 62, title: 'التوحيد', description: 'يعرّف الفصل التوحيد بوحدانية الله المطلقة.' }, { id: 'h8-2', x: 72, y: 37, title: 'الإسناد', description: 'يستخدم النص عبارات وفقاً ليونس ومن هذا المنظور عند شرح وحدة الوجود.' }],
+  },
+  {
+    id: 9, type: 'story', title: 'الْوَحْدَةُ وَالْمَحَبَّةُ', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch9.png?alt=media&token=23640c7b-6222-4764-8592-4ff56e258111',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2Farabic_audio%2Fb2%20chapter%209.mp3?alt=media&token=3df1a082-c6b9-4b21-add8-840d70748549',
+    content: `وَبِهَذَا الْمَعْنَى، فَإِنَّ كُلَّ مَا خُلِقَ هُوَ انْعِكَاسٌ، وَالشَّيْءُ الْوَحِيدُ الَّذِي يُوجَدُ حَقًّا هُوَ اللَّهُ. وَالْغَايَةُ النِّهَائِيَّةُ لِلْإِنْسَانِيَّةِ هِيَ الْوُصُولُ إِلَى الْوَحْدَةِ، أَيْ اللَّهِ.
+
+وَتُذَكِّرُنَا كَلِمَاتُهُ بِأَوَامِرِ اللَّهِ مِنْ أَجْلِ تَحْقِيقِ هَذِهِ الْوَحْدَةِ.
+
+يَقُولُ يُونُسُ:
+
+[POEM]
+الْعَرَبِيَّةُ:
+"كُلُّ مَنْ يَقُولُ إِنَّهُ مُسْلِمٌ يَنْبَغِي لَهُ أَنْ يَعْرِفَ شُرُوطَ الْإِسْلَامِ،
+وَيَنْبَغِي لَهُ أَنْ يَتَّبِعَ أَمْرَ اللَّهِ وَيُؤَدِّيَ الصَّلَوَاتِ الْخَمْسَ"
+التُّرْكِيَّةُ:
+Müslümanım diyen kişi şartı nedir bilse gerek
+Tanrı'nın buyruğun tutup beş vakit namaz kılsa gerek
 // c08b
 // c09a
 //__C09__
