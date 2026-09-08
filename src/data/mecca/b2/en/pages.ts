@@ -6,55 +6,56 @@ import { meccaB2LanguageFocusExercisesPart3, meccaB2LanguageFocusExercisesPart4,
 import { meccaB2TeacherGuideMetadata } from './teacherGuide';
 
 const rawMeccaB2Pages: PageData[] = [
-// me-raw-1a
-// me-raw-1b
-//__RAW_1__
-// me-raw-1c
-// me-raw-1d
-// me-raw-2a
-// me-raw-2b
-//__RAW_2__
-// me-raw-2c
-// me-raw-2d
-// me-raw-3a
-// me-raw-3b
-//__RAW_3__
-// me-raw-3c
-// me-raw-3d
-// me-raw-4a
-// me-raw-4b
-//__RAW_4__
-// me-raw-4c
-// me-raw-4d
-// me-raw-5a
-// me-raw-5b
-//__RAW_5__
-// me-raw-5c
-// me-raw-5d
-// me-raw-6a
-// me-raw-6b
-//__RAW_6__
-// me-raw-6c
-// me-raw-6d
+// r01a
+//__R01__
+// r01b
+// r02a
+//__R02__
+// r02b
+// r03a
+//__R03__
+// r03b
+// r04a
+//__R04__
+// r04b
+// r05a
+//__R05__
+// r05b
+// r06a
+//__R06__
+// r06b
+// r07a
+//__R07__
+// r07b
+// r08a
+//__R08__
+// r08b
+// r09a
+//__R09__
+// r09b
+// r10a
+//__R10__
+// r10b
+// r11a
+//__R11__
+// r11b
+// r12a
+//__R12__
+// r12b
 ];
 
-// me-tail-1a
-// me-tail-1b
-//__TAIL_1__
-// me-tail-1c
-// me-tail-1d
-// me-tail-2a
-// me-tail-2b
-//__TAIL_2__
-// me-tail-2c
-// me-tail-2d
-// me-tail-3a
-// me-tail-3b
-//__TAIL_3__
-// me-tail-3c
-// me-tail-3d
-// me-tail-4a
-// me-tail-4b
-//__TAIL_4__
-// me-tail-4c
-// me-tail-4d
+// t01a
+//__T01__
+// t01b
+// t02a
+//__T02__
+// t02b
+// t03a
+//__T03__
+// t03b
+// t04a
+//__T04__
+// t04b
+// t05a
+//__T05__
+// t05b
