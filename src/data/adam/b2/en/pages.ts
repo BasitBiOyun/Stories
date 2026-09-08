@@ -48,8 +48,6 @@ export const adamB2Pages:PageData[]=[
 // anchor-14a
 // anchor-14b
 //__CH14_A__
-// anchor-14c
-// anchor-14d
 //__CH14_B1__
 // anchor-14e
 // anchor-14f
