@@ -45,7 +45,26 @@ const rawYunusEmreB2PagesAr: PageData[] = [
 //__C13__
 // c13b
 // c14a
-//__C14__
+      { word: 'الْأَخْلَاقُ', definition: 'مبادئ ومعايير تتعلق بالصواب والخطأ في السلوك.' },
+      { word: 'النَّفْسِ الْحَيَوَانِيَّةِ', definition: 'النفس الدنيا التي يربطها الفصل بالرغبات غير المنضبطة والسلوك غير الأخلاقي.' },
+      { word: 'الْحَيَاةِ الصَّالِحَةِ', definition: 'حياة تقوم على السلوك الأخلاقي الصالح.' },
+      { word: 'الصِّفَاتِ السَّلْبِيَّةِ', definition: 'صفات ضارة في الشخصية أو السلوك.' },
+      { word: 'دَلِيلٌ أَخْلَاقِيٌّ', definition: 'ما يقدم إرشادًا بشأن السلوك الصحيح والصفات الأخلاقية.' },
+    ],
+    hotspots: [{ id: 'h12-1', x: 36, y: 69, title: 'فضائل', description: 'يسرد الفصل الصدق والصبر والتواضع والكرم والاحترام والتوكل والحياء.' }, { id: 'h12-2', x: 75, y: 45, title: 'عادات مرفوضة', description: 'يحذر من الكبر والغضب والبخل والطمع والحسد والغيبة والبهتان.' }],
+  },
+  {
+    id: 13, type: 'story', title: 'إِرْثٌ دَائِمٌ', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch13.png?alt=media&token=d10621fc-a38e-4292-917d-6696c4458de1',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2Farabic_audio%2Fb2%20chapter%2013.mp3?alt=media&token=0d1f60df-d8dc-4b71-8008-9c99c7f42e93',
+    content: `يَقُولُ يُونُسُ إِمْرَه:
+
+[POEM]
+العربية:
+«مَن يَتَحَلَّى بِالصَّبْرِ يَرْتَفِعُ إِلَى السَّمَاوَاتِ،
+فَفِي الصَّبْرِ تَكْمُنُ كُلُّ أَنْوَاعِ الْمَهَارَاتِ»
+التركية:
+Sabır kimdeyise ol arşa süner
+Ki sabr içinde bulınur dürlü hüner
 // c14b
 // c15a
 //__C15__
