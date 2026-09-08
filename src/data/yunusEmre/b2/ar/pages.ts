@@ -62,5 +62,36 @@ const rawYunusEmreB2PagesAr: PageData[] = [
 //__T01__
 // t01b
 // t02a
-//__T02__
+const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+const arabicLanguageFocus: Record<number, Exercise[]> = {
+  ...yunusB2LanguageFocusExercisesAr,
+  ...yunusB2LanguageFocusExercisesArPart2,
+  ...yunusB2LanguageFocusExercisesArPart3,
+  ...yunusB2LanguageFocusExercisesArPart4,
+};
+const cleanContent = (content = '') => content.replace(/^\/\/ c\d+[ab]\s*(?:\n|$)/gm, '');
+
+export const yunusEmreB2PagesAr: PageData[] = rawYunusEmreB2PagesAr.map(page => {
+  const clean = { ...page, content: cleanContent(page.content ?? '') };
+  if (STORY_IDS.has(page.id)) {
+    const languageFocusExercises = arabicLanguageFocus[page.id];
+    return {
+      ...clean,
+      exercises: yunusB2QuickChallengesAr[page.id] ? [yunusB2QuickChallengesAr[page.id]] : [],
+      ...(languageFocusExercises ? { languageFocusExercises } : {}),
+    };
+  }
+  if (page.id === 15) return { ...clean, exercises: yunusB2ManualKnowledgeCheckExercisesAr };
+  if (page.id === 16) return { ...clean, vocabularyPairs: yunusB2VocabularyChallengePairsAr };
+  if (page.id === 19) return {
+    ...clean,
+    title: 'مراجعة اللغة B2',
+    content: 'راجع واستعمل لغة نسبة المصادر والسبب والنتيجة والاستدراك والمقارنة والتفسير والضرورة والإمكان التي تطورت عبر الفصول الثلاثة عشر.',
+    exercises: yunusB2LanguageReviewExercisesAr,
+  };
+  if (page.id === 20) return { ...clean, exercises: yunusB2FinalChallengeExercisesArPolished };
+  return clean;
+});
+
+export const pages: PageData[] = yunusEmreB2PagesAr;
 // t02b
