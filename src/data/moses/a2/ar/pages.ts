@@ -4,34 +4,48 @@ import type { PageData } from '../../../../types';
 export const mosesA2PagesAr: PageData[] = [
   {
     id: 1, type: 'story', title: 'فرعون الظالم',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch1.png?alt=media&token=f99e899c-ac38-489e-8356-05373ce89bf2',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=86149c07-3da4-400f-b755-4dd029b47d31',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch1.png?alt=media&token=2d3e91e6-5956-4625-804b-3425c7bca502',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%201.mp3?alt=media&token=9a898f77-7aba-4ff1-8217-28657bf5389e',
     content: `كَانَ مُوسَى عَلَيْهِ السَّلَامُ رَسُولًا عَظِيمًا مِنْ رُسُلِ اللهِ. عَاشَ فِي مِصْرَ مُنْذُ أَكْثَرَ مِنْ ثَلَاثَةِ آلَافِ عَامٍ. كَانَ فِرْعَوْنُ مَلِكَ مِصْرَ. وَكَانَ حَاكِمًا ظَالِمًا وَقَاسِيًا. لَمْ يُؤْمِنْ بِاللهِ. كَانَ يَعْتَقِدُ أَنَّهُ إِلٰهٌ.
 
 وَكَانَ فِي مِصْرَ قَوْمٌ كَثِيرُونَ يُسَمَّوْنَ بَنِي إِسْرَائِيلَ. كَانُوا أَحْفَادَ يَعْقُوبَ وَيُوسُفَ عَلَيْهِمَا السَّلَامُ. كَانُوا يُؤْمِنُونَ بِإِلٰهٍ وَاحِدٍ، مِثْلَ جَدِّهِمُ الْأَكْبَرِ، النَّبِيِّ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ. لِذٰلِكَ، لَمْ يَعْتَقِدُوا أَنَّ فِرْعَوْنَ إِلٰهٌ.
 
 كَانَ بَنُو إِسْرَائِيلَ أَكْثَرَ عَدَدًا مِنَ الْمِصْرِيِّينَ. خَافَ فِرْعَوْنُ مِنْ أَنْ يَسْتَوْلُوا عَلَى مَمْلَكَتِهِ. وَبِسَبَبِ خَوْفِهِ، كَانَ فَظًّا مَعَ بَنِي إِسْرَائِيلَ. جَعَلَ حَيَاتَهُمْ صَعْبَةً. وَأَجْبَرَهُمْ عَلَى الْقِيَامِ بِأَعْمَالٍ خَطِرَةٍ دُونَ أَجْرٍ.`,
-    vocabulary: [{ word: 'رَسُولًا', definition: 'شخص يختاره الله ليبلغ رسالته.' }, { word: 'ظَالِمًا', definition: 'غير عادل ويعامل الآخرين بقسوة.' }, { word: 'حَاكِمًا', definition: 'شخص يملك السلطة للتحكم في البلاد.' }, { word: 'يُؤْمِنْ', definition: 'يصدق ويعتقد بوجود الله ووحدانيته.' }],
-    hotspots: [{ id: 'h1-1', x: 30, y: 40, title: 'فرعون', description: 'كَانَ فِرْعَوْنُ مَلِكَ مِصْرَ.' }, { id: 'h1-2', x: 70, y: 45, title: 'بنو إسرائيل', description: 'كَانُوا أَحْفَادَ يَعْقُوبَ وَيُوسُفَ عَلَيْهِمَا السَّلَامُ.' }],
-    animatedWords: ['رَسُولًا', 'فِرْعَوْنُ', 'ظَالِمًا', 'يُؤْمِنُونَ'],
+    vocabulary: [
+      { word: 'رَسُولًا', definition: 'شخص يختاره الله ليبلغ رسالته.' },
+      { word: 'قَاسِيًا', definition: 'شديدًا وغير رحيم مع الآخرين.' },
+      { word: 'حَاكِمًا', definition: 'شخص يحكم بلدًا أو قومًا.' },
+      { word: 'يُؤْمِنْ', definition: 'يصدق ويعتقد أن الشيء حق.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h1a', x: 30, y: 40, title: 'فرعون', description: 'كان فرعون ملك مصر وعامل بني إسرائيل بقسوة.' },
+      { id: 'moses-a2-ar-h1b', x: 70, y: 45, title: 'بنو إسرائيل', description: 'كانوا يؤمنون بإله واحد ولم يعتقدوا أن فرعون إله.' },
+    ],
   },
   {
     id: 2, type: 'story', title: 'حُلْمُ فِرْعَوْن',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch2.png?alt=media&token=a43a387a-d9ed-4ffb-b1e0-5608175adb5f',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F01_Chapter_2_The_King%E2%80%99s_Dream.mp3?alt=media&token=e1641854-6ed5-4250-ae66-6801e159e3aa',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch2.png?alt=media&token=593d804d-010a-4849-928e-47a64d57e741',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%202.mp3?alt=media&token=245fe0a6-52cb-4c15-83f8-eeaee0d3846e',
     content: `مَرَّتِ السَّنَواتُ، وَتَوَالَى عَلَى حُكْمِ مِصْرَ العَديدُ مِنَ المُلوكِ المُسْتَبِدِّينَ. وَفِي أَحَدِ الأَيّامِ، رَأَى فِرْعَوْنُ حُلْمًا. فَقَدْ رَأى فِي رُؤْيَاهُ نارًا. كانَتِ النّارُ قادِمَةً مِنَ القُدْسِ، وَأَحْرَقَتْ بُيوتَ المِصْرِيِّينَ. لٰكِنَّها لَمْ تَمَسَّ أَحَدًا مِنْ بَنِي إِسْرائِيلَ.
 
 اِسْتَيْقَظَ فِرْعَوْنُ، فَاسْتَدْعَى مُساعِدِيهِ وَالسَّحَرَةَ، وَسَأَلَهُمْ عَنْ تَفْسِيرِ الحُلْمِ. فَقالُوا: "سَيُولَدُ صَبِيٌّ مِنْ بَنِي إِسْرائِيلَ، وَسَيَقْتُلُ المِصْرِيِّينَ".
 
 ثُمَّ قالَ فِرْعَوْنُ لِجُنودِهِ: «اُقْتُلُوا جَمِيعَ أَطْفالِ بَنِي إِسْرائِيلَ الذُّكُورِ». دَخَلَ جُنودُهُ المَنازِلَ، وَفَتَّشُوا الغُرَفَ. وَعِنْدَما وَجَدُوا أَطْفالًا ذُكورًا، قَتَلُوهُمْ. بَكَتْ جَمِيعُ الأُمَّهاتِ وَالْآباءِ وَالأَخَواتِ، لٰكِنَّ الجُنودَ لَمْ يُبْدُوا أَيَّ رَحْمَةٍ. كانُوا قُسَاةً وَعَدِيمِي الرَّحْمَةِ.`,
-    vocabulary: [{ word: 'حُلْمًا', definition: 'رؤية يراها الشخص أثناء نومه.' }, { word: 'سَحَرَة', definition: 'أشخاص يقومون بأعمال السحر والخداع.' }, { word: 'عَدِيمِي الرَّحْمَة', definition: 'قساة القلوب لا يشعرون بالشفقة.' }, { word: 'المُسْتَبِدِّينَ', definition: 'حكام يستخدمون القوة بظلم وقسوة.' }],
-    hotspots: [{ id: 'h2-1', x: 35, y: 35, title: 'الرؤيا والنار', description: 'كانَتِ النّارُ قادِمَةً مِنَ القُدْسِ، وَأَحْرَقَتْ بُيوتَ المِصْرِيِّينَ.' }, { id: 'h2-2', x: 65, y: 50, title: 'الجنود القساة', description: 'دَخَلَ جُنودُهُ المَنازِلَ، وَفَتَّشُوا الغُرَفَ.' }],
-    animatedWords: ['حُلْمًا', 'نارًا', 'جُنودِهِ', 'قُسَاةً'],
+    vocabulary: [
+      { word: 'حُلْمًا', definition: 'رؤية يراها الشخص أثناء النوم.' },
+      { word: 'السَّحَرَةَ', definition: 'أشخاص يقومون بأعمال السحر.' },
+      { word: 'عَدِيمِي الرَّحْمَةِ', definition: 'قساة لا يشعرون بالشفقة.' },
+      { word: 'المُسْتَبِدِّينَ', definition: 'حكام يستخدمون القوة بظلم.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h2a', x: 35, y: 35, title: 'الحلم', description: 'رأى فرعون نارًا قادمة من القدس في حلمه.' },
+      { id: 'moses-a2-ar-h2b', x: 65, y: 50, title: 'الجنود', description: 'أمر فرعون جنوده بالبحث عن أطفال بني إسرائيل.' },
+    ],
   },
   {
     id: 3, type: 'story', title: 'طفل في تابوت صغير',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch3.png?alt=media&token=21def104-dfd6-4757-9514-cd523e143b74',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F02_Chapter_3_A_Baby_in_a_Basket.mp3?alt=media&token=17b97fd0-3596-4136-9b8d-225121370ede',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch3.png?alt=media&token=187ca24c-104b-48e2-8f6f-ed7c522c7c3f',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%203.mp3?alt=media&token=d65599a0-6a0b-4ecc-944c-b21cc87ec773',
     content: `وُلِدَ مُوسَى فِي تِلْكَ السَّنَةِ. كانَتْ أُمُّهُ تَخافُ أَنْ يَعْثُرَ الجُنودُ عَلَى طِفْلِها. لِذٰلِكَ، لَمْ تَسْتَطِعِ النَّوْمَ لَيْلًا. لَمْ تَكُنْ تَعْرِفُ مَاذَا تَفْعَلُ، فَطَلَبَتِ العَوْنَ مِنَ اللهِ.
 
 فَأَوْحَى اللهُ إِلَى أُمِّ مُوسَى: "خُذِي تَابُوتًا صَغيرًا. ضَعِي طِفْلَكِ فِي التَّابوتِ. فَأَلْقِي التَّابوتَ في نَهْرِ النِّيلِ. إِنَّ اللهَ سَيَحْفَظُهُ".
@@ -39,14 +53,21 @@ export const mosesA2PagesAr: PageData[] = [
 وَضَعَتْ أُمُّ مُوسَى الطِّفْلَ مُوسَى فِي تابوتٍ صَغيرٍ، وَأَخَذَتِ التَّابوتَ إِلَى النَّهْرِ. وَضَعَتِ التَّابوتَ فِي الماءِ، فَحَمَلَهُ الماءُ بَعيدًا.
 
 كانَتْ أُمُّ مُوسَى قَلِقَةً جِدًّا، وَأَخْبَرَتِ ابْنَتَها أَنْ تَتْبَعَ التَّابوتَ. كانَتْ أُمُّ مُوسَى حَزينَةً جِدًّا، لٰكِنَّها عَرَفَتْ أَنَّ اللهَ أَرْحَمُ بِطِفْلِها مِنْها. فَاللهُ خَيْرُ الحافِظينَ.`,
-    vocabulary: [{ word: 'تَابُوتًا', definition: 'صندوق خشبي صغير يوضع فيه الرضيع.' }, { word: 'سَيَحْفَظُهُ', definition: 'سيحميه ويصونه من الأذى والمخاطر.' }, { word: 'قَلِقَة', definition: 'تشعر بالخوف وعدم الاطمئنان.' }, { word: 'حَمَلَهُ', definition: 'نقله الماء وجعله يسير معه.' }],
-    hotspots: [{ id: 'h3-1', x: 45, y: 50, title: 'التابوت الصغير', description: 'وَضَعَتْ أُمُّ مُوسَى الطِّفْلَ مُوسَى فِي تابوتٍ صَغيرٍ، وَأَخَذَتِ التَّابوتَ إِلَى النَّهْرِ.' }, { id: 'h3-2', x: 65, y: 35, title: 'نهر النيل', description: 'وَضَعَتِ التَّابوتَ فِي الماءِ، فَحَمَلَهُ الماءُ بَعيدًا.' }],
-    animatedWords: ['تَابُوتًا', 'النِّيلِ', 'سَيَحْفَظُ', 'قَلِقَةً'],
+    vocabulary: [
+      { word: 'تَابُوتًا', definition: 'صندوق صغير يوضع فيه الطفل.' },
+      { word: 'سَيَحْفَظُهُ', definition: 'سيحميه من الخطر.' },
+      { word: 'قَلِقَةً', definition: 'تشعر بالخوف وعدم الاطمئنان.' },
+      { word: 'فَحَمَلَهُ الماءُ بَعيدًا', definition: 'نقله الماء إلى مكان آخر.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h3a', x: 45, y: 50, title: 'التابوت الصغير', description: 'وضعت أم موسى الطفل في تابوت صغير.' },
+      { id: 'moses-a2-ar-h3b', x: 65, y: 35, title: 'نهر النيل', description: 'حمل الماء التابوت بعيدًا.' },
+    ],
   },
   {
     id: 4, type: 'story', title: 'حب آسية',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch4.png?alt=media&token=33da4990-e1dc-4178-86af-c60ef110df98',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F03_Chapter_4_The_Queen%E2%80%99s_Love.mp3?alt=media&token=a6f7f0e0-dd80-4079-aac0-21cae70d199b',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch4.png?alt=media&token=d9db9929-97b6-43fb-9d23-8e91af4a5add',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%204.mp3?alt=media&token=6813399c-7dd2-4202-bb21-aa52e56c378b',
     content: `أَمَرَ اللهُ الماءَ أَنْ يَحْمِلَ الطِّفْلَ بِرِفْقٍ. وَسُرعانَ ما وَصَلَ التّابوتُ إِلَى شاطِئِ النَّهْرِ. كانَ قَريبًا مِنْ قَصْرِ فِرْعَوْنَ.
 
 رَأَى خَدَمُ القَصْرِ التّابوتَ, وَأَخَذُوهُ إِلَى فِرْعَوْنَ وَآسِيَة. رَأَتْ آسيةُ الطِّفْلَ, فَوَضَعَ اللهُ فِي قَلْبِها حُبًّا كَبيرًا لَهُ.
@@ -54,14 +75,21 @@ export const mosesA2PagesAr: PageData[] = [
 كانَتْ آسيةُ مُخْتَلِفَةً عَنْ زَوْجِها. كانَتْ تُؤْمِنُ بِاللهِ، وَكانَتْ طَيِّبَةَ القَلْبِ وَرَحِيمَةً. قالَتْ لِفِرْعَوْنَ: "سَآخُذُهُ إِلَى القَصْرِ وَأَعْتَنِي بِهِ". فَوافَقَ فِرْعَوْنُ.
 
 قالَتْ آسيةُ لِخَدَمِها: "اِبْحَثُوا عَنْ مُرْضِعَةٍ لِلطِّفْلِ." رَأَتْ أُخْتُ مُوسَى كُلَّ شَيْءٍ، فَأَسْرَعَتْ إِلَى آسِية، وَقالَتْ: "أَعْرِفُ امْرَأَةً طَيِّبَةً. تَعيشُ فِي الجِوارِ. سَتَكونُ مُرْضِعَةً جَيِّدَةً لِلطِّفْلِ".`,
-    vocabulary: [{ word: 'قَصْرِ', definition: 'بيت كبير وضخم يعيش فيه الملوك.' }, { word: 'رَحِيمَةً', definition: 'لينة وذات قلب طيب تحب الخير.' }, { word: 'مُرْضِعَةٍ', definition: 'امرأة تغذي الطفل الرضيع وتعتني به.' }],
-    hotspots: [{ id: 'h4-1', x: 35, y: 45, title: 'الملكة آسية', description: 'رَأَتْ آسيةُ الطِّفْلَ, فَوَضَعَ اللهُ فِي قَلْبِها حُبًّا كَبيرًا لَهُ.' }, { id: 'h4-2', x: 70, y: 40, title: 'قصر فرعون', description: 'كانَ قَريبًا مِنْ قَصْرِ فِرْعَوْنَ.' }],
-    animatedWords: ['قَصْرِ', 'آسِيَة', 'حُبًّا', 'مُرْضِعَةٍ'],
+    vocabulary: [
+      { word: 'قَصْرِ', definition: 'بيت كبير يعيش فيه الملك أو الملكة.' },
+      { word: 'طَيِّبَةَ القَلْبِ', definition: 'رحيمة ومهتمة بالآخرين.' },
+      { word: 'مُرْضِعَةٍ', definition: 'امرأة تغذي الطفل وتعتني به.' },
+      { word: 'حُبًّا', definition: 'شعور قوي بالمودة والاهتمام.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h4a', x: 35, y: 45, title: 'آسية', description: 'شعرت آسية بحب كبير للطفل موسى.' },
+      { id: 'moses-a2-ar-h4b', x: 70, y: 40, title: 'القصر', description: 'وصل التابوت إلى مكان قريب من قصر فرعون.' },
+    ],
   },
   {
     id: 5, type: 'story', title: 'العودة إلى أمه',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch5.png?alt=media&token=974efc28-866c-46d3-b281-5d30d3d69971',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F04_Chapter_5_Back_to_His_Mother.mp3?alt=media&token=15475f17-3959-45b2-b125-5a6df1fa3081',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch5.png?alt=media&token=2cf7f637-79ed-4103-8499-7878d985ad97',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%205.mp3?alt=media&token=d006ee99-544f-44d3-a8d7-c4ff8e5431cc',
     content: `أَحْضَرَتْ أُخْتُ مُوسَى أُمَّهُ إِلَى الْقَصْرِ لِتَرْعَى الطِّفْلَ. فَرَدَّ اللهُ مُوسَى إِلَى أُمِّهِ، وَعَادَ الطِّفْلُ مُوسَى إِلَى حِضْنِ أُمِّهِ مَرَّةً أُخْرَى. وَاعْتَنَتْ أُمُّهُ بِالطِّفْلِ مُوسَى. وَاللهُ خَيْرُ الْحَافِظِينَ.
 
 وَكَانَتْ آسِيَةُ تُحِبُّ مُوسَى حُبًّا شَدِيدًا. نَشَأَ مُوسَى فِي مَكَانٍ آمِنٍ، فِي بَيْتِ فِرْعَوْنَ. كَانَ يُحِبُّ اللهَ دَائِمًا. وَكَانَ يَعْلَمُ أَنَّ فِرْعَوْنَ لَيْسَ إِلٰهًا.
@@ -69,27 +97,41 @@ export const mosesA2PagesAr: PageData[] = [
 مَرَّتِ السَّنَوَاتُ، وَأَصْبَحَ مُوسَى شَابًّا قَوِيًّا. كَانَ دَائِمًا مُسْتَعِدًّا لِمُسَاعَدَةِ الضُّعَفَاءِ. وَكَانَ يُحِبُّ بَنِي إِسْرَائِيلَ، لِأَنَّ أُمَّهُ كَانَتْ مِنْ بَنِي إِسْرَائِيلَ.
 
 ذَاتَ يَوْمٍ، كَانَ يَمْشِي فِي السُّوقِ. رَأَى رَجُلَيْنِ يَتَخَاصَمَانِ. كَانَ أَحَدُهُمَا مِصْرِيًّا.`,
-    vocabulary: [{ word: 'الْحَافِظِينَ', definition: 'من يحمي غيره ويصونه من الأخطار.' }, { word: 'آمِنٍ', definition: 'مكان هادئ لا خوف فيه ولا خطر.' }, { word: 'الضُّعَفَاءِ', definition: 'الناس الذين يحتاجون للمساعدة والحماية.' }, { word: 'يَتَخَاصَمَان', definition: 'يتشاجران ويختلفان بشدة.' }],
-    hotspots: [{ id: 'h5-1', x: 35, y: 45, title: 'حضن الأم', description: 'فَرَدَّ اللهُ مُوسَى إِلَى أُمِّهِ، وَعَادَ الطِّفْلُ مُوسَى إِلَى حِضْنِ أُمِّهِ مَرَّةً أُخْرَى.' }, { id: 'h5-2', x: 65, y: 40, title: 'السوق والمشاجرة', description: 'رَأَى رَجُلَيْنِ يَتَخَاصَمَانِ.' }],
-    animatedWords: ['أُمِّهِ', 'آمِنٍ', 'الضُّعَفَاءِ', 'السُّوقِ'],
+    vocabulary: [
+      { word: 'لِتَرْعَى', definition: 'لتعتني بالطفل وتحميه.' },
+      { word: 'الْحَافِظِينَ', definition: 'من يحمي غيره من الخطر.' },
+      { word: 'آمِنٍ', definition: 'بعيد عن الخطر والخوف.' },
+      { word: 'الضُّعَفَاءِ', definition: 'أشخاص يحتاجون إلى المساعدة.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h5a', x: 35, y: 45, title: 'العودة إلى الأم', description: 'رد الله موسى إلى أمه.' },
+      { id: 'moses-a2-ar-h5b', x: 65, y: 40, title: 'السوق', description: 'بعد سنوات رأى موسى رجلين يتخاصمان في السوق.' },
+    ],
   },
   {
     id: 6, type: 'story', title: 'خطأ في السوق',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch6.png?alt=media&token=aba25348-fba0-4851-91b2-83817ee836d8',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F05_Chapter_6_A_Mistake_in_the_Bazaar.mp3?alt=media&token=18471d3d-d4b2-4962-921d-f3ba0590396d',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch6.png?alt=media&token=d5cfe23d-7b58-4028-898a-8cc730345eaa',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%206.mp3?alt=media&token=5b2c5be3-506b-4364-ac9f-8a8e86fdd239',
     content: `كَانَ الرَّجُلُ الْآخَرُ مِنْ بَنِي إِسْرَائِيلَ. وَفَجْأَةً، صَرَخَ الرَّجُلُ الضَّعِيفُ مِنْ بَنِي إِسْرَائِيلَ: "النَّجْدَةَ!". فَأَسْرَعَ مُوسَى لِمُسَاعَدَتِهِ، فَضَرَبَ الْمِصْرِيَّ ضَرْبَةً وَاحِدَةً، فَمَاتَ الرَّجُلُ.
 
 شَعَرَ مُوسَى بِحُزْنٍ شَدِيدٍ، لِأَنَّهُ تَسَبَّبَ في مَوْتِ رَجُلٍ عَنْ غَيْرِ قَصْدٍ. فَدَعَا اللهَ وَقَالَ: "رَبِّ، إِنِّي ظَلَمْتُ نَفْسِي، فَاغْفِرْ لِي". فَغَفَرَ اللهُ لَهُ.
 
 وَبَعْدَ ذٰلِكَ، جَاءَ رَجُلٌ مِنَ الْمَدِينَةِ مُسْرِعًا، وَقَالَ لِمُوسَى: "يَا مُوسَى، إِنَّ جُنُودَ فِرْعَوْنَ يَبْحَثُونَ عَنْكَ. لَقَدْ قَتَلْتَ مِصْرِيًّا، وَالْآنَ يُرِيدُونَ أَنْ يَقْبِضُوا عَلَيْكَ. اُخْرُجْ مِنَ الْمَدِينَةِ، إِنَّهُمْ يُرِيدُونَ أَنْ يَقْتُلُوكَ".`,
-    vocabulary: [{ word: 'بِحُزْنٍ شَدِيدٍ', definition: 'شعور شديد بالحزن والقلق بعد أمر سيئ.' }, { word: 'فَاغْفِرْ لِي', definition: 'سامحني واعفُ عن خطئي.' }, { word: 'عَنْ غَيْرِ قَصْدٍ', definition: 'بغير تعمد أو إرادة.' }, { word: 'اُخْرُجْ مِنَ الْمَدِينَةِ', definition: 'غادر المكان سريعًا لتبتعد عن الخطر.' }],
-    hotspots: [{ id: 'h6-1', x: 45, y: 40, title: 'الندم والدعاء', description: 'شَعَرَ مُوسَى بِحُزْنٍ شَدِيدٍ، لِأَنَّهُ تَسَبَّبَ في مَوْتِ رَجُلٍ عَنْ غَيْرِ قَصْدٍ.' }, { id: 'h6-2', x: 70, y: 50, title: 'تحذير الرجل', description: 'يَا مُوسَى، إِنَّ جُنُودَ فِرْعَوْنَ يَبْحَثُونَ عَنْكَ.' }],
-    animatedWords: ['فَاغْفِرْ', 'غَيْرِ قَصْدٍ', 'يَقْتُلُوكَ'],
+    vocabulary: [
+      { word: 'بِحُزْنٍ شَدِيدٍ', definition: 'بشعور قوي بالحزن والقلق.' },
+      { word: 'عَنْ غَيْرِ قَصْدٍ', definition: 'من غير تعمد.' },
+      { word: 'فَاغْفِرْ لِي', definition: 'سامحني على خطئي.' },
+      { word: 'اُخْرُجْ مِنَ الْمَدِينَةِ', definition: 'غادر المكان سريعًا لتنجو من الخطر.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h6a', x: 45, y: 40, title: 'الخطأ', description: 'حزن موسى لأنه تسبب في موت رجل عن غير قصد.' },
+      { id: 'moses-a2-ar-h6b', x: 70, y: 50, title: 'التحذير', description: 'حذر رجل موسى من أن جنود فرعون يبحثون عنه.' },
+    ],
   },
   {
     id: 7, type: 'story', title: 'الهروب إلى مدين',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch7.png?alt=media&token=c7ef087d-0cce-4405-bf64-5a2d43ce617a',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F06_Chapter_7_Escape_to_Midian.mp3?alt=media&token=3d9e6d96-5a6c-4f3c-ad67-ca510ea37a8d',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch7.png?alt=media&token=7965513d-54b5-4614-b1d2-b91531ce52e3',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%207.mp3?alt=media&token=2f43e3bf-dda3-4f08-8f6b-c223aba369df',
     content: `كَانَ مُوسَى يَعْلَمُ أَنَّ عُقُوبَةَ قَتْلِ مِصْرِيٍّ هِيَ الْمَوْتُ. هَرَبَ مُوسَى مِنَ الْجُنُودِ. غَادَرَ مِصْرَ، وَسَافَرَ لِفَتْرَةٍ طَوِيلَةٍ. لَمْ يَكُنْ وَحْدَهُ، فَقَدْ هَدَاهُ اللهُ.
 
 بَعْدَ عِدَّةِ أَيَّامٍ، وَصَلَ إِلَى مَدْيَنَ. كَانَتْ مَدْيَنُ قَرِيبَةً مِنْ مِصْرَ، وَلَمْ يَكُنْ فِرْعَوْنُ هُوَ الْحَاكِمَ هُنَاكَ.
@@ -99,14 +141,21 @@ export const mosesA2PagesAr: PageData[] = [
 كَانَتِ الْفَتَاتَانِ جَالِسَتَيْنِ بَعِيدًا عَنِ الْمَاءِ. كَانَ مَعَهُمَا أَغْنَامٌ أَيْضًا، لٰكِنَّهُمَا لَمْ تَقْتَرِبَا مِنَ الْبِئْرِ.
 
 سَأَلَ مُوسَى الْفَتَاتَيْنِ: "لِمَاذَا تَجْلِسَانِ بَعِيدًا عَنِ الْبِئْرِ؟"`,
-    vocabulary: [{ word: 'هَرَبَ', definition: 'ابتعد عن الخطر.' }, { word: 'هَدَاهُ', definition: 'أرشده ودله على الطريق الآمن.' }, { word: 'بِئْرًا', definition: 'حفرة عميقة في الأرض يستخرج منها الماء.' }, { word: 'عُقُوبَةَ', definition: 'جزاء يفرض على من يفعل سوءًا.' }, { word: 'عَطْشَانَ', definition: 'يحتاج إلى الماء ويريد الشرب.' }],
-    hotspots: [{ id: 'h7-1', x: 35, y: 45, title: 'أرض مدين', description: 'بَعْدَ عِدَّةِ أَيَّامٍ، وَصَلَ إِلَى مَدْيَنَ.' }, { id: 'h7-2', x: 65, y: 55, title: 'بئر مدين', description: 'وَسُرْعَانَ مَا وَجَدَ بِئْرًا.' }],
-    animatedWords: ['عُقُوبَةَ', 'هَدَاهُ', 'بِئْرًا', 'رُعَاةً'],
+    vocabulary: [
+      { word: 'هَرَبَ', definition: 'ابتعد عن الخطر.' },
+      { word: 'هَدَاهُ', definition: 'أرشده إلى الطريق الصحيح.' },
+      { word: 'بِئْرًا', definition: 'حفرة عميقة يستخرج منها الماء.' },
+      { word: 'عَطْشَانَ', definition: 'يحتاج إلى الماء ويريد الشرب.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h7a', x: 35, y: 45, title: 'مدين', description: 'بعد عدة أيام وصل موسى إلى مدين.' },
+      { id: 'moses-a2-ar-h7b', x: 65, y: 55, title: 'البئر', description: 'وجد موسى بئرًا حيث كان الرعاة يسقون حيواناتهم.' },
+    ],
   },
   {
     id: 8, type: 'story', title: 'الأختان',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch8.png?alt=media&token=71a0334e-b085-4ef4-879c-e54255b21614',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F07_Chapter_8_The_Two_Sisters.mp3?alt=media&token=eaa13512-cfc6-4383-91dc-fe9c08af4b62',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%208.mp3?alt=media&token=009569d8-40ec-434c-8779-6c2d76215246',
     content: `سَأَلَ مُوسَى الْفَتَاتَيْنِ: "لِمَاذَا لَا تَأْخُذَانِ غَنَمَكُمَا لِتَشْرَبَ؟"
 
 قَالَتِ الْفَتَاتَانِ: "أَبُونَا شَيْخٌ كَبِيرٌ. لَا يَسْتَطِيعُ أَنْ يَأْتِيَ مَعَنَا. وَلَا يُوجَدُ شُبَّانٌ فِي بَيْتِنَا لِيُسَاعِدُونَا. لِذٰلِكَ، نَحْنُ نَأْخُذُ الْغَنَمَ إِلَى الْمَاءِ، وَنَنْتَظِرُ دَوْرَنَا".
@@ -116,14 +165,21 @@ export const mosesA2PagesAr: PageData[] = [
 عِنْدَمَا عَادَتِ الْفَتَاتَانِ إِلَى الْبَيْتِ مُبَكِّرًا، سَأَلَ أَبُوهُمَا: "مَاذَا حَدَثَ؟ لَقَدْ عُدْتُمَا إِلَى الْبَيْتِ مُبَكِّرًا جِدًّا!"
 
 قَالَتِ الْفَتَاتَانِ: "سَاعَدَنَا شَابٌّ فِي سَقْيِ غَنَمِنَا. لَمْ نَنْتَظِرْ حَتَّى يَذْهَبَ الرُّعَاةُ الْآخَرُونَ عَنِ الْبِئْرِ".`,
-    vocabulary: [{ word: 'شَيْخٌ كَبِير', definition: 'رجل طاعن في السن لم يعد قوي البنية.' }, { word: 'دَوْرَنَا', definition: 'الوقت المحدد لكل شخص للقيام بفعل ما.' }, { word: 'مُبَكِّرًا', definition: 'قبل الوقت المعتاد أو المألوف.' }],
-    hotspots: [{ id: 'h8-1', x: 35, y: 50, title: 'الأختان والوالد', description: 'وَلَا يُوجَدُ شُبَّانٌ فِي بَيْتِنَا لِيُسَاعِدُونَا.' }, { id: 'h8-2', x: 65, y: 40, title: 'مساعدة موسى', description: 'فَأَخَذَ غَنَمَهُمَا إِلَى الْمَاءِ وَسَقَاهَا.' }],
-    animatedWords: ['الْأُخْتَانِ', 'دَوْرَنَا', 'سَقَاهَا', 'مُبَكِّرًا'],
+    vocabulary: [
+      { word: 'أَبُونَا', definition: 'والدنا.' },
+      { word: 'دَوْرَنَا', definition: 'الوقت الذي يأتي فيه حقنا في العمل.' },
+      { word: 'الْمُسَاعَدَةِ', definition: 'تقديم العون لشخص آخر.' },
+      { word: 'مُبَكِّرًا', definition: 'قبل الوقت المعتاد.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h8a', x: 35, y: 50, title: 'الأختان', description: 'انتظرت الفتاتان لأن أباهما كبير ولم يكن في البيت شاب يساعدهما.' },
+      { id: 'moses-a2-ar-h8b', x: 65, y: 40, title: 'مساعدة الآخرين', description: 'أخذ موسى غنمهما إلى الماء وسقاها.' },
+    ],
   },
   {
     id: 9, type: 'story', title: 'حياة جديدة',
-    image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=1200',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F08_Chapter_9_A_New_Life.mp3?alt=media&token=6322f455-6aa3-4281-9843-3c5d2c7edd3e',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch9.png?alt=media&token=7fafa80c-ff5b-4fcd-b2b5-ef2bcc16f1e3',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%209.mp3?alt=media&token=120baab5-70ea-496e-8a27-d664867ebf6d',
     content: `كَانَ وَالِدُ هَاتَيْنِ الْفَتَاتَيْنِ هُوَ النَّبِيَّ شُعَيْبًا عَلَيْهِ السَّلَامُ. وَكَانَ شُعَيْبٌ عَلَيْهِ السَّلَامُ رَسُولًا مِنْ رُسُلِ اللهِ فِي مَدْيَنَ. وَكَانَ قَدْ تَقَدَّمَ بِهِ الْعُمْرُ، لِذٰلِكَ لَمْ يَكُنْ قَادِرًا عَلَى مُسَاعَدَةِ بَنَاتِهِ.
 
 فَقَالَ شُعَيْبٌ عَلَيْهِ السَّلَامُ لِإِحْدَى بَنَاتِهِ: "اِذْهَبِي، وَنَادِي الشَّابَّ. أُرِيدُ أَنْ أَشْكُرَهُ عَلَى عَمَلِهِ".
@@ -131,14 +187,21 @@ export const mosesA2PagesAr: PageData[] = [
 جَاءَ مُوسَى إِلَى الْبَيْتِ، وَتَنَاوَلَ الطَّعَامَ مَعَ وَالِدِ الْفَتَاتَيْنِ. عَرَضَ شُعَيْبٌ عَلَيْهِ السَّلَامُ عَلَى مُوسَى عَمَلًا. وَقَبِلَ مُوسَى الْعَمَلَ، لِأَنَّهُ كَانَ غَرِيبًا فِي مَدْيَنَ، وَكَانَ بِحَاجَةٍ إِلَى عَمَلٍ وَبَيْتٍ.
 
 وَبَدَأَ مُوسَى يُقِيمُ مَعَ الْعَائِلَةِ، وَسَاعَدَهُمْ فِي عَمَلِهِمْ. وَبَعْدَ ذٰلِكَ، تَزَوَّجَ إِحْدَى الْفَتَاتَيْنِ. وَعَاشُوا حَيَاةً سَعِيدَةً. وَبَعْدَ عَشْرِ سَنَوَاتٍ، قَرَّرَ مُوسَى الْعَوْدَةَ إِلَى مِصْرَ.`,
-    vocabulary: [{ word: 'غَرِيبًا', definition: 'شخص ليس من أهل هذا المكان.' }, { word: 'عَمَلًا', definition: 'وظيفة أو مجهود يبذله الشخص مقابل أجر.' }, { word: 'تَزَوَّجَ', definition: 'ارتبط بامرأة لبناء أسرة صالحة.' }],
-    hotspots: [{ id: 'h9-1', x: 35, y: 45, title: 'النبي شعيب', description: 'وَكَانَ شُعَيْبٌ عَلَيْهِ السَّلَامُ رَسُولًا مِنْ رُسُلِ اللهِ فِي مَدْيَنَ.' }, { id: 'h9-2', x: 65, y: 45, title: 'حياة جديدة', description: 'وَبَعْدَ ذٰلِكَ، تَزَوَّجَ إِحْدَى الْفَتَاتَيْنِ.' }],
-    animatedWords: ['شُعَيْبًا', 'غَرِيبًا', 'عَمَلًا', 'تَزَوَّجَ'],
+    vocabulary: [
+      { word: 'غَرِيبًا', definition: 'شخص ليس من أهل المكان.' },
+      { word: 'عَمَلًا', definition: 'وظيفة أو عمل يقوم به الشخص.' },
+      { word: 'تَزَوَّجَ', definition: 'صار زوجًا وبنى أسرة.' },
+      { word: 'الْعَائِلَةِ', definition: 'أشخاص تربطهم صلة عائلية.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h9a', x: 35, y: 45, title: 'النبي شعيب', description: 'عرض شعيب على موسى عملًا في مدين.' },
+      { id: 'moses-a2-ar-h9b', x: 65, y: 45, title: 'حياة جديدة', description: 'أقام موسى مع العائلة ثم تزوج إحدى الفتاتين.' },
+    ],
   },
   {
     id: 10, type: 'story', title: 'النداء على الجبل',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch10.png?alt=media&token=51e45d24-8ec6-4cae-9a64-7eae18da8e8d',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F09_Chapter_10_The_Voice_on_the_Mountain.mp3?alt=media&token=8c42577a-cc5a-42d3-8c61-32710db819f3',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch10.png?alt=media&token=1443b29a-01ad-46ba-9d5f-1beb55c1fe92',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2010.mp3?alt=media&token=206d3c6b-9c82-40d3-94f5-0cd82d09d0e8',
     content: `أَخَذَ مُوسَى عَائِلَتَهُ، وَبَدَأُوا رِحْلَتَهُمْ إِلَى مِصْرَ. سَارُوا مَسَافَةً طَوِيلَةً. كَانَ الشِّتَاءُ، وَلَمْ يَكُنْ هُنَاكَ أَحَدٌ فِي الطَّرِيقِ. بَدَأَ الظَّلَامُ يَحِلُّ، وَاشْتَدَّ الْبَرْدُ. كَانُوا فِي وَادٍ بَيْنَ الْجِبَالِ.
 
 فَجْأَةً, رَأَى مُوسَى نَارًا عَلَى سَفْحِ التَّلِّ، فَقَالَ لِعَائِلَتِهِ: "اِنْتَظِرُوا هُنَا. سَآتِي بِبَعْضِ النَّارِ لِنَتَدَفَّأَ".
@@ -146,14 +209,21 @@ export const mosesA2PagesAr: PageData[] = [
 صَعِدَ مُوسَى الْجَبَلَ. وَكَانَ الظَّلَامُ قَدْ حَلَّ بِالْفِعْلِ. وَكَانَ الْمَكَانُ هَادِئًا جِدًّا. وَفِي وَسَطِ الصَّمْتِ، سَمِعَ نِدَاءً: "يَا مُوسَى، إِنِّي أَنَا اللهُ. لَقَدِ اخْتَرْتُكَ. فَاسْتَمِعْ إِلَيَّ. لَا إِلٰهَ إِلَّا أَنَا".
 
 ثُمَّ قَالَ اللهُ لِمُوسَى: "أَلْقِ عَصَاكَ!". فَأَلْقَى مُوسَى عَصَاهُ عَلَى الْأَرْضِ، فَتَحَوَّلَتْ إِلَى ثُعْبَانٍ كَبِيرٍ.`,
-    vocabulary: [{ word: 'صَمْت', definition: 'هدوء تام وخلو المكان من أي صوت.' }, { word: 'عَصَاكَ', definition: 'قطعة خشبية يتوكأ عليها الراعي.' }, { word: 'سَفْحِ التَّلِّ', definition: 'المنطقة المنحدرة أسفل الجبل.' }, { word: 'ثُعْبَان', definition: 'حيوان زاحف طويل وقوي الحركة.' }],
-    hotspots: [{ id: 'h10-1', x: 35, y: 35, title: 'الجبل', description: 'صَعِدَ مُوسَى الْجَبَلَ.' }, { id: 'h10-2', x: 65, y: 50, title: 'العصا', description: 'فَأَلْقَى مُوسَى عَصَاهُ عَلَى الْأَرْضِ، فَتَحَوَّلَتْ إِلَى ثُعْبَانٍ كَبِيرٍ.' }],
-    animatedWords: ['الْجِبَالِ', 'نَارًا', 'نِدَاءً', 'ثُعْبَانٍ'],
+    vocabulary: [
+      { word: 'سَفْحِ التَّلِّ', definition: 'الجانب المنحدر من التل.' },
+      { word: 'الصَّمْتِ', definition: 'الهدوء التام من غير صوت.' },
+      { word: 'عَصَاكَ', definition: 'عصا تساعد الشخص في المشي.' },
+      { word: 'ثُعْبَانٍ', definition: 'حيوان طويل بلا أرجل.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h10a', x: 35, y: 35, title: 'النار', description: 'رأى موسى نارًا على سفح التل وصعد الجبل.' },
+      { id: 'moses-a2-ar-h10b', x: 65, y: 50, title: 'العصا', description: 'ألقى موسى عصاه فتحولت إلى ثعبان.' },
+    ],
   },
   {
     id: 11, type: 'story', title: 'آيات الله',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch11.png?alt=media&token=07ceaf2d-cb4b-495a-8a23-b00101d1c53e',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F10_Chapter_11_The_Signs_of_Allah.mp3?alt=media&token=5ae1efb5-a3ed-4cd0-b6df-e0486199c964',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch11.png?alt=media&token=aebfa27e-5009-418b-85f7-79f30afdbf4d',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2011.mp3?alt=media&token=d007187b-72d7-4a22-8ea6-a82ab27e12ad',
     content: `تَكَلَّمَ اللهُ مَعَ مُوسَى مَرَّةً أُخْرَى، وَقَالَ لَهُ: "أَدْخِلْ يَدَكَ فِي جَيْبِكَ، ثُمَّ أَخْرِجْهَا".
 
 فَأَدْخَلَ مُوسَى يَدَهُ فِي جَيْبِهِ، ثُمَّ أَخْرَجَهَا، فَإِذَا هِيَ بَيْضَاءُ مُضِيئَةٌ.
@@ -163,14 +233,21 @@ export const mosesA2PagesAr: PageData[] = [
 بَعْدَ هٰذِهِ الرِّسَالَةِ مِنَ اللهِ، اِخْتَارَ اللهُ مُوسَى، وَجَعَلَهُ نَبِيًّا وَرَسُولًا. ذَهَبَ مُوسَى عَلَيْهِ السَّلَامُ إِلَى مِصْرَ، وَالْتَقَى بِفِرْعَوْنَ وَمُسَاعِدِيهِ، لٰكِنَّهُمْ لَمْ يُؤْمِنُوا بِاللهِ.
 
 أَخَذَ مُوسَى عَلَيْهِ السَّلَامُ أَخَاهُ هَارُونَ عَلَيْهِ السَّلَامُ مَعَهُ، وَذَهَبَ إِلَى الْقَصْرِ لِتَبْلِيغِ رِسَالَةِ اللهِ. كَانَ فِرْعَوْنُ جَالِسًا عَلَى عَرْشِهِ، وَكَانَ مُسَاعِدُوهُ وَجُنُودُهُ وَاقِفِينَ حَوْلَهُ.`,
-    vocabulary: [{ word: 'آيَاتٌ', definition: 'معجزات وعلامات تثبت صدق النبوة.' }, { word: 'مُضِيئَةٌ', definition: 'تلمع وتنشر النور والضياء.' }, { word: 'نَبِيًّا', definition: 'إنسان يوحى إليه من الله ليبلغ الناس.' }, { word: 'عَرْشِهِ', definition: 'كرسي ضخم يجلس عليه الملك لحكم البلاد.' }],
-    hotspots: [{ id: 'h11-1', x: 40, y: 35, title: 'اليد البيضاء', description: 'فَأَدْخَلَ مُوسَى يَدَهُ فِي جَيْبِهِ، ثُمَّ أَخْرَجَهَا، فَإِذَا هِيَ بَيْضَاءُ مُضِيئَةٌ.' }, { id: 'h11-2', x: 65, y: 50, title: 'هارون عليه السلام', description: 'أَخَذَ مُوسَى عَلَيْهِ السَّلَامُ أَخَاهُ هَارُونَ عَلَيْهِ السَّلَامُ مَعَهُ، وَذَهَبَ إِلَى الْقَصْرِ لِتَبْلِيغِ رِسَالَةِ اللهِ.' }],
-    animatedWords: ['بَيْضَاءُ', 'آيَاتٌ', 'نَبِيًّا', 'عَرْشِهِ'],
+    vocabulary: [
+      { word: 'آيَاتٌ', definition: 'علامات خاصة تدل على قدرة الله.' },
+      { word: 'مُضِيئَةٌ', definition: 'تعطي نورًا واضحًا.' },
+      { word: 'نَبِيًّا', definition: 'شخص يختاره الله لهداية الناس.' },
+      { word: 'عَرْشِهِ', definition: 'كرسي خاص يجلس عليه الملك.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h11a', x: 40, y: 35, title: 'اليد المضيئة', description: 'أخرج موسى يده فإذا هي بيضاء مضيئة.' },
+      { id: 'moses-a2-ar-h11b', x: 65, y: 50, title: 'هارون', description: 'أخذ موسى أخاه هارون معه لتبليغ رسالة الله.' },
+    ],
   },
   {
     id: 12, type: 'story', title: 'سحرة فرعون',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch12.png?alt=media&token=e164dd2b-bc30-4509-b2b0-bf5b060fc813',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F11_Chapter_12_The_King%E2%80%99s_Magicians.mp3?alt=media&token=77d3642b-84a5-464c-99e9-7ecefc33c4a8',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch12.png?alt=media&token=2029ca53-5abc-4afe-a117-1d41273cadf0',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2012.mp3?alt=media&token=8a5eb80e-2942-40f9-ae97-e5b0da828c36',
     content: `أَخْبَرَ مُوسَى عَلَيْهِ السَّلَامُ فِرْعَوْنَ عَنِ اللهِ. فَقَالَ لَهُ: "إِنِّي رَسُولٌ مِنْ رَبِّ الْعَالَمِينَ".
 
 اِسْتَمَعَ فِرْعَوْنُ إِلَى مُوسَى عَلَيْهِ السَّلَامُ، وَظَنَّ أَنَّ مُوسَى مَجْنُونٌ. فَقَرَّرَ مُوسَى عَلَيْهِ السَّلَامُ أَنْ يُظْهِرَ آيَاتِ اللهِ.
@@ -180,14 +257,21 @@ export const mosesA2PagesAr: PageData[] = [
 كَانَتْ هٰذِهِ آيَاتٍ مِنَ اللهِ. أَعْطَاهَا اللهُ لِمُوسَى عَلَيْهِ السَّلَامُ لِيُسَاعِدَهُ بِهَا.
 
 سَخِرَ فِرْعَوْنُ وَمُسَاعِدُوهُ مِنْ مُوسَى وَرِسَالَتِهِ. وَقَالَ فِرْعَوْنُ لِمُوسَى عَلَيْهِ السَّلَامُ: "هٰذَا مُجَرَّدُ سِحْرٍ. كُلُّ سَحَرَتِي يَسْتَطِيعُونَ فِعْلَ هٰذَا".`,
-    vocabulary: [{ word: 'آيَاتِ', definition: 'عَلَامَاتٌ أَعْطَاهَا اللهُ لِمُوسَى لِتُظْهِرَ قُدْرَتَهُ.' }, { word: 'الْعَالَمِين', definition: 'كل ما خلق الله من الإنس والكون.' }, { word: 'سِحْر', definition: 'خداع بصري وتخييل لا يغير حقيقة الأشياء.' }, { word: 'سَخِرَ', definition: 'استهزأ بالشيء وجعله مادة للضحك.' }],
-    hotspots: [{ id: 'h12-1', x: 35, y: 45, title: 'الثعبان', description: 'فَتَحَوَّلَتِ الْعَصَا إِلَى ثُعْبَانٍ كَبِيرٍ!' }, { id: 'h12-2', x: 65, y: 35, title: 'سخرية فرعون', description: 'سَخِرَ فِرْعَوْنُ وَمُسَاعِدُوهُ مِنْ مُوسَى وَرِسَالَتِهِ.' }],
-    animatedWords: ['مَجْنُونٌ', 'ثُعْبَانٍ', 'لَامِعَةً', 'سِحْرٌ'],
+    vocabulary: [
+      { word: 'آيَاتِ', definition: 'علامات ومعجزات من الله.' },
+      { word: 'الْعَالَمِينَ', definition: 'كل ما خلقه الله.' },
+      { word: 'سِحْرٍ', definition: 'خداع يبدو كأنه شيء غير ممكن.' },
+      { word: 'سَخِرَ', definition: 'استهزأ وضحك على شخص.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h12a', x: 35, y: 45, title: 'الثعبان الكبير', description: 'تحولت عصا موسى إلى ثعبان كبير.' },
+      { id: 'moses-a2-ar-h12b', x: 65, y: 35, title: 'رد فرعون', description: 'سخر فرعون ومساعدوه من موسى وقالوا إن الآيات سحر.' },
+    ],
   },
   {
     id: 13, type: 'story', title: 'إيمان السحرة',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch13.png?alt=media&token=12f5f233-5c30-49a9-98d3-6f765eefb7e2',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F12_Chapter_13_The_Magicians_Believe.mp3?alt=media&token=e84eed96-898a-460c-ac54-d2b965a98df9',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch13.png?alt=media&token=8a25b7b6-53de-4fe1-88ce-d0a1c4612726',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2013.mp3?alt=media&token=4c05fb61-863b-4693-a5a8-3e8d820dd464',
     content: `دَعَا فِرْعَوْنُ السَّحَرَةَ إِلَى الْقَصْرِ. جَاءَ السَّحَرَةُ وَعِصِيُّهُمْ فِي أَيْدِيهِمْ، وَكَانَ بَعْضُهُمْ يَحْمِلُ حِبَالًا. فَوَضَعُوا الْعِصِيَّ وَالْحِبَالَ عَلَى الْأَرْضِ، فَبَدَتْ كَأَنَّهَا تَسْعَى.
 
 ثُمَّ قَالَ اللهُ لِمُوسَى عَلَيْهِ السَّلَامُ: "أَلْقِ عَصَاكَ!". فَأَلْقَى مُوسَى عَلَيْهِ السَّلَامُ عَصَاهُ، فَتَحَوَّلَتْ إِلَى ثُعْبَانٍ ضَخْمٍ، وَسُرْعَانَ مَا ابْتَلَعَتْ مَا صَنَعَهُ السَّحَرَةُ.
@@ -195,14 +279,21 @@ export const mosesA2PagesAr: PageData[] = [
 فَسَجَدَ السَّحَرَةُ لِلهِ، وَصَرَخُوا: "نَحْنُ نُؤْمِنُ بِرَبِّ مُوسَى وَهَارُونَ!"
 
 أَمَّا فِرْعَوْنُ فَلَمْ يُؤْمِنْ بِاللهِ، لِأَنَّهُ كَانَ مُتَكَبِّرًا. وَلَمْ يُحِبَّ هٰؤُلَاءِ النَّاسَ لِأَنَّهُمْ آمَنُوا بِاللهِ. فَاسْتَمِرَّ فِي إِيذَاءِ مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمِهِ لَيْلًا وَنَهَارًا.`,
-    vocabulary: [{ word: 'حِبَال', definition: 'خيوط سميكة وقوية تستخدم للسحر التخييلي.' }, { word: 'ضَخْم', definition: 'كبير جدًا في الحجم والقوة.' }, { word: 'مُتَكَبِّرًا', definition: 'من يرى نفسه فوق الناس ويرفض الحق.' }],
-    hotspots: [{ id: 'h13-1', x: 35, y: 40, title: 'الثعبان الضخم', description: 'فَأَلْقَى مُوسَى عَلَيْهِ السَّلَامُ عَصَاهُ، فَتَحَوَّلَتْ إِلَى ثُعْبَانٍ ضَخْمٍ، وَسُرْعَانَ مَا ابْتَلَعَتْ مَا صَنَعَهُ السَّحَرَةُ.' }, { id: 'h13-2', x: 70, y: 50, title: 'تكبر فرعون', description: 'أَمَّا فِرْعَوْنُ فَلَمْ يُؤْمِنْ بِاللهِ، لِأَنَّهُ كَانَ مُتَكَبِّرًا.' }],
-    animatedWords: ['السَّحَرَةَ', 'حِبَالًا', 'ثُعْبَانٍ', 'نُؤْمِنُ'],
+    vocabulary: [
+      { word: 'حِبَالًا', definition: 'خيوط سميكة وقوية.' },
+      { word: 'ضَخْمٍ', definition: 'كبير جدًا.' },
+      { word: 'نُؤْمِنُ', definition: 'نصدق ونقبل أن الشيء حق.' },
+      { word: 'مُتَكَبِّرًا', definition: 'يرى نفسه أفضل من غيره.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h13a', x: 35, y: 40, title: 'الثعبان الضخم', description: 'تحولت عصا موسى إلى ثعبان ضخم وابتلعت ما صنعه السحرة.' },
+      { id: 'moses-a2-ar-h13b', x: 70, y: 50, title: 'إيمان السحرة', description: 'سجد السحرة لله وقالوا إنهم يؤمنون برب موسى وهارون.' },
+    ],
   },
   {
     id: 14, type: 'story', title: 'الرحلة الليلية',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch14.png?alt=media&token=eb429e6c-40bf-49e1-b875-f895b1fb61c4',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F13_Chapter_14_The_Night_Journey.mp3?alt=media&token=1e167a38-bb2e-45be-a1d9-6e7928312553',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch14.png?alt=media&token=6704d42a-c001-4a1f-ac39-428fbfbfca89',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2014.mp3?alt=media&token=10c4227f-42e7-42d9-b3ee-cdb6871377a5',
     content: `فَقَالَ فِرْعَوْنُ لِأَتْبَاعِهِ وَجُنُودِهِ: "عَامِلُوهُمْ بِقَسْوَةٍ!". فَازْدَادَتْ حَيَاتُهُمْ صُعُوبَةً.
 
 فَاسْتَغَاثَ مُوسَى عَلَيْهِ السَّلَامُ بِاللهِ. فَقَالَ اللهُ لَهُ: "اُخْرُجْ بِقَوْمِكَ لَيْلًا".
@@ -212,14 +303,21 @@ export const mosesA2PagesAr: PageData[] = [
 غَادَرُوا مِصْرَ فِي اللَّيْلِ. كَانَتْ هُنَاكَ مَجْمُوعَةٌ كَبِيرَةٌ تَضُمُّ كَثِيرًا مِنْ كِبَارِ السِّنِّ وَالْأَطْفَالِ. لَمْ يَسْتَطِعِ الْأَطْفَالُ وَكِبَارُ السِّنِّ الْمَشْيَ بِسُرْعَةٍ، وَتَعِبُوا بِسُرْعَةٍ كَبِيرَةٍ. تَحَرَّكَتْ قَافِلَتُهُمْ بِبُطْءٍ.
 
 عِنْدَمَا أَشْرَقَتِ الشَّمْسُ، وَصَلُوا إِلَى الْبَحْرِ. وَأَعَدَّ فِرْعَوْنُ جَيْشَهُ الضَّخْمَ.`,
-    vocabulary: [{ word: 'رِحْلَة', definition: 'مسيرة طويلة من مكان لآخر.' }, { word: 'سِرِّيَّة', definition: 'إخفاء الخبر عن الآخرين لضمان السلامة.' }, { word: 'قَافِلَتُهُمْ', definition: 'جماعة من المسافرين يسيرون معًا.' }, { word: 'جَيْشَهُ', definition: 'مجموعة منظمة من الجنود المسلحين.' }],
-    hotspots: [{ id: 'h14-1', x: 35, y: 45, title: 'الخروج ليلًا', description: 'غَادَرُوا مِصْرَ فِي اللَّيْلِ.' }, { id: 'h14-2', x: 65, y: 55, title: 'مسير القافلة', description: 'تَحَرَّكَتْ قَافِلَتُهُمْ بِبُطْءٍ.' }],
-    animatedWords: ['رِّحْلَةِ', 'سِرِّيَّةِ', 'قَافِلَتُهُمْ', 'الْبَحْرِ'],
+    vocabulary: [
+      { word: 'لِلرِّحْلَةِ', definition: 'لسفر من مكان إلى آخر.' },
+      { word: 'سِرِّيَّةِ', definition: 'إخفاء الأمر عن الآخرين.' },
+      { word: 'قَافِلَتُهُمْ', definition: 'جماعة من الناس تسافر معًا.' },
+      { word: 'جَيْشَهُ', definition: 'مجموعة منظمة من الجنود.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h14a', x: 35, y: 45, title: 'الرحلة الليلية', description: 'غادر موسى وقومه مصر سرًا في الليل.' },
+      { id: 'moses-a2-ar-h14b', x: 65, y: 55, title: 'القافلة', description: 'تحركت القافلة الكبيرة ببطء نحو البحر.' },
+    ],
   },
   {
     id: 15, type: 'story', title: 'انشقاق البحر',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch15.png?alt=media&token=4471e687-f83e-42fe-943e-44aedbb3432a',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F14_Chapter_15_The_Sea_Opens.mp3?alt=media&token=74db905f-e53a-4e4e-afa9-8e26fb3adea1',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch15.png?alt=media&token=83ae6fff-230a-45d0-98ca-ae36450286e0',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2015.mp3?alt=media&token=1975bc59-2b1b-4504-8348-377a5f145d6a',
     content: `رَأَى مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمُهُ فِرْعَوْنَ وَجُنُودَهُ يُلَاحِقُونَهُمْ، فَخَافَ قَوْمُهُ كَثِيرًا. لٰكِنَّ مُوسَى عَلَيْهِ السَّلَامُ قَالَ: "اِهْدَؤُوا! إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ".
 
 وَسُرْعَانَ مَا لَحِقَ بِهِمْ فِرْعَوْنُ وَجُنُودُهُ. كَانَ الْبَحْرُ أَمَامَهُمْ، وَكَانَ فِرْعَوْنُ وَجَيْشُهُ خَلْفَهُمْ. لَمْ يَكُنْ لَدَيْهِمْ مَكَانٌ لِلْهَرَبِ، لٰكِنَّ اللهَ كَانَ مَعَهُمْ.
@@ -227,22 +325,36 @@ export const mosesA2PagesAr: PageData[] = [
 فَقَالَ اللهُ لِمُوسَى عَلَيْهِ السَّلَامُ: "اِضْرِبِ الْبَحْرَ بِعَصَاكَ!". فَضَرَبَ مُوسَى الْبَحْرَ بِعَصَاهُ، فَانْشَقَّ الْبَحْرُ. وَأَصْبَحَتِ الْأَمْوَاجُ جُدْرَانًا عَالِيَةً، وَرَأَوُا الْأَرْضَ الْيَابِسَةَ.
 
 فَفَتَحَ اللهُ لَهُمْ طَرِيقًا فِي الْبَحْرِ، وَسَارَ مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمُهُ بِأَمَانٍ بَيْنَ جُدْرَانٍ مِنَ الْمَاءِ.`,
-    vocabulary: [{ word: 'يُلَاحِقُونَهُمْ', definition: 'يتبعونهم بسرعة للإمساك بهم.' }, { word: 'اِنْشَقَّ', definition: 'انفصل وتفرق وصار ممرات يابسة.' }, { word: 'بِأَمَانٍ', definition: 'من غير خوف أو غرق.' }],
-    hotspots: [{ id: 'h15-1', x: 35, y: 45, title: 'ضرب البحر', description: 'فَضَرَبَ مُوسَى الْبَحْرَ بِعَصَاهُ، فَانْشَقَّ الْبَحْرُ.' }, { id: 'h15-2', x: 65, y: 50, title: 'جُدْرَانُ الْمَاءِ', description: 'فَفَتَحَ اللهُ لَهُمْ طَرِيقًا فِي الْبَحْرِ، وَسَارَ مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمُهُ بِأَمَانٍ بَيْنَ جُدْرَانٍ مِنَ الْمَاءِ.' }],
-    animatedWords: ['خَافَ', 'سَيَهْدِينِ', 'عَصَاكَ', 'جُدْرَانًا'],
+    vocabulary: [
+      { word: 'فَخَافَ', definition: 'شعر بالخوف الشديد.' },
+      { word: 'فَانْشَقَّ', definition: 'انفتح وانفصل إلى أجزاء.' },
+      { word: 'بِأَمَانٍ', definition: 'من غير خطر أو أذى.' },
+      { word: 'جُدْرَانًا', definition: 'حواجز عالية على الجانبين.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h15a', x: 35, y: 45, title: 'انشقاق البحر', description: 'ضرب موسى البحر بعصاه فانشق البحر.' },
+      { id: 'moses-a2-ar-h15b', x: 65, y: 50, title: 'جدران الماء', description: 'سار موسى وقومه بأمان بين جدران من الماء.' },
+    ],
   },
   {
     id: 16, type: 'story', title: 'غرق فرعون',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch16.png?alt=media&token=0606d5d9-2880-49b0-bf3b-2e49568c84b7',
-    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F15_Chapter_16_The_Cruel_King_Died_in_the_Water.mp3?alt=media&token=b1653a25-5f53-4198-b895-579247eae4ec',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch16.png?alt=media&token=57b9bfca-b512-46ec-adb1-c9ed1cb30e47',
+    audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2016.mp3?alt=media&token=326191c4-0856-421e-a578-621848290541',
     content: `كَانَ فِرْعَوْنُ وَجُنُودُهُ قَرِيبِينَ جِدًّا مِنْ وَرَائِهِمْ. وَرَأَوْا هُمْ أَيْضًا الطَّرِيقَ فِي وَسَطِ الْبَحْرِ. فَقَالَ فِرْعَوْنُ لِجُنُودِهِ: "اُنْظُرُوا! لَقَدْ أَمَرْتُ الْبَحْرَ أَنْ يَنْفَلِقَ، فَانْفَلَقَ".
 
 دَخَلُوا فِي الْمَاءِ. وَعِنْدَمَا وَصَلُوا إِلَى مُنْتَصَفِ الطَّرِيقِ، أَغْلَقَ اللهُ الْبَحْرَ عَلَيْهِمْ. وَفِي النِّهَايَةِ، مَاتُوا فِي الْمَاءِ.
 
 قِصَّةُ مُوسَى عَلَيْهِ السَّلَامُ تَحْمِلُ دُرُوسًا كَثِيرَةً. فَهِيَ تُخْبِرُنَا أَنَّ النَّاسَ لَيْسُوا مِلْكًا لِأَحَدٍ. وَتُبَيِّنُ لَنَا أَنَّ اللهَ وَحْدَهُ صَاحِبُ الْقُدْرَةِ وَالسُّلْطَانِ.`,
-    vocabulary: [{ word: 'مُنْتَصَف', definition: 'وسط الطريق أو المسافة بالتساوي.' }, { word: 'دُرُوسًا', definition: 'عبر وفوائد نستخلصها من القصص.' }, { word: 'سُلْطَان', definition: 'قوة وحكم مطلق وقدرة تامة لله.' }],
-    hotspots: [{ id: 'h16-1', x: 40, y: 45, title: 'انطباق البحر', description: 'وَعِنْدَمَا وَصَلُوا إِلَى مُنْتَصَفِ الطَّرِيقِ، أَغْلَقَ اللهُ الْبَحْرَ عَلَيْهِمْ.' }, { id: 'h16-2', x: 65, y: 50, title: 'العبرة والدرس', description: 'وَتُبَيِّنُ لَنَا أَنَّ اللهَ وَحْدَهُ صَاحِبُ الْقُدْرَةِ وَالسُّلْطَانِ.' }],
-    animatedWords: ['مُنْتَصَفِ', 'أَغْلَقَ', 'دُرُوسًا', 'الْقُدْرَةِ'],
+    vocabulary: [
+      { word: 'مُنْتَصَفِ', definition: 'وسط الطريق أو المسافة.' },
+      { word: 'دُرُوسًا', definition: 'أشياء مهمة نتعلمها.' },
+      { word: 'الْقُدْرَةِ', definition: 'القوة على فعل شيء أو التحكم فيه.' },
+      { word: 'الْبَحْرِ', definition: 'مساحة كبيرة جدًا من الماء المالح.' },
+    ],
+    hotspots: [
+      { id: 'moses-a2-ar-h16a', x: 40, y: 45, title: 'انطباق البحر', description: 'عندما وصل فرعون وجنوده إلى منتصف الطريق أغلق الله البحر عليهم.' },
+      { id: 'moses-a2-ar-h16b', x: 65, y: 50, title: 'الدرس', description: 'تعلم القصة أن الله وحده صاحب القدرة الحقيقية على الناس.' },
+    ],
   },
   { id: 17, type: 'quiz', title: 'اختبار المعرفة: موسى عليه السلام', image: 'https://picsum.photos/seed/quiz-moses-a2/1200/800', audioUrl: '', content: 'اختبر فهمك وحفظك لقصة النبي موسى عليه السلام الجميلة.' },
   { id: 18, type: 'vocabulary-match', title: 'تحدي المفردات', image: 'https://picsum.photos/seed/vocab-moses-a2/1200/800', audioUrl: '', content: 'صل الكلمات من القصة بالمعاني الصحيحة لها لتختبر مفرداتك.' },
