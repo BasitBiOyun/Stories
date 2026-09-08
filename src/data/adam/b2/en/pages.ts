@@ -77,7 +77,9 @@ export const adamB2Pages:PageData[]=[
 //__CH17_A__
 // anchor-17c
 // anchor-17d
-//__CH17_B__
+Learning about Adam (pbuh)’s tale is to know the origin of humanity. Besides, to recognize Adam (pbuh) is to know the source of knowledge and the setting in which humanity came into being. The Holy Qur’an not so much constantly talks about Satan’s anti-God position (although he is unquestionably a rebel against Allah and surely personifies this disobedient character) but rather underlies his anti-human attitude which constantly attempts to tempt man to turn from his natural-established “straight” course. Satan alone is not strong; it is only man's weakness and lack of morals and carefulness that make Satan look so strong.
+In fact, all the events that Adam (pbuh) and Eve experienced are like a summary of the adventures of their descendants in worldly life.
+Each character in this Qur’anic story leaves behind a deterrent tale for humanity raising a key direct question: Where should man truly find his sense of value?”`,V(['mislead','To cause someone to follow a wrong idea or path.'],['sincere servants','People genuinely devoted to Allah.'],['authority','Power or right to control or influence.'],['descendants','People who come from an earlier ancestor.'],['value','The importance or worth given to someone.']),H(['h17a',25,60,'Satan’s Limited Authority','Satan acknowledges that he has no authority over sincere servants.'],['h17b',74,32,'Human Value','The chapter asks where human beings should find their true sense of value.'])),
 // anchor-17e
 // anchor-17f
 ];
