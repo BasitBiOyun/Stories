@@ -61,7 +61,7 @@ export const adamB2Pages:PageData[]=[
 //__CH15_A__
 // anchor-15c
 // anchor-15d
-//__CH15_B__
+What is essentially being described here is the consequence of choosing evil. It arises from jealousy, which defeats the feelings of love and compassion of brotherhood. This story provides an example illustrating that with the guidance of revelation (vâhiy), choosing the truth over falsehood and goodness over evil will purify human nature from evils. In this example, Qabil represents the type of person dominated by evil, while Habil represents the righteous person who has love for goodness and kindness. Adam (pbuh) was fully in pain by the loss of his two sons. One was dead, the other was won over by Satan. Adam (pbuh) prayed for his son and turned to worldly matters, because he had to work hard for his daily bread.`,V(['regret','Sorrow about an action already taken.'],['falsehood','Something untrue or opposed to truth.'],['consequence','A result produced by an action or decision.'],['jealousy','Resentment caused by another person’s advantage or happiness.'],['righteous','Morally good and committed to what is right.']),H(['h15a',29,43,'Qabil’s Regret','Qabil becomes regretful after the crime and burial.'],['h15b',71,65,'Adam’s Continued Responsibility','Despite grief, Adam prays for his son and continues the responsibilities of daily life.'])),
 // anchor-15e
 // anchor-15f
 // anchor-16a
