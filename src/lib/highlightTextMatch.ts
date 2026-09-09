@@ -15,8 +15,6 @@ export const normalizeHighlightText = (text: string, language: HighlightLanguage
     .toLowerCase());
 
   if (language === 'ar') {
-    // Remove the accusative tanwin + supporting alif before stripping diacritics.
-    value = value.replace(/\u064B\u0627/g, '');
     value = stripArabicDiacritics(value)
       .replace(/[أإآٱ]/g, 'ا')
       .replace(/ى/g, 'ي')
