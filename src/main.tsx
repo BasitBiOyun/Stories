@@ -6,6 +6,7 @@ import './loading.css';
 import './guideTheme.css';
 import './pdfLocked.css';
 import './layoutFixes.css';
+import './arabicTypography.css';
 import './lib/pdfDownloadLock';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { FullscreenButton } from './components/ui/FullscreenButton';
