@@ -13,33 +13,43 @@ const rawAbrahamB2Pages: PageData[] = [
 // c01a
 //__C01__
 // c01b
+
 // c02a
 //__C02__
 // c02b
+
 // c03a
 //__C03__
 // c03b
+
 // c04a
 //__C04__
 // c04b
+
 // c05a
 //__C05__
 // c05b
+
 // c06a
 //__C06__
 // c06b
+
 // c07a
 //__C07__
 // c07b
+
 // c08a
 //__C08__
 // c08b
+
 // c09a
 //__C09__
 // c09b
+
 // c10a
 //__C10__
 // c10b
+
 // c11a
 //__C11__
 // c11b
@@ -130,3 +140,6 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
 // t02a
 //__T02__
 // t02b
+// t03a
+//__T03__
+// t03b
