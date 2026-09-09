@@ -131,6 +131,19 @@ export const arabicTokenForms = (raw: string): Set<string> => {
   return forms;
 };
 
+const requestedArabicForms = (raw: string): Set<string> => {
+  const normalized = normalizeHighlightText(raw, 'ar');
+  const forms = new Set<string>();
+  if (!normalized || normalized.includes(' ')) return forms;
+  forms.add(normalized);
+
+  // Canonical vocabulary sometimes keeps the orthographic support alif while
+  // the prose omits it. Allow only this spelling-level relaxation on the
+  // requested side; clitic/suffix reduction remains surface-only.
+  if (normalized.endsWith('ا') && normalized.length > 4) forms.add(normalized.slice(0, -1));
+  return forms;
+};
+
 export const highlightTokenMatches = (
   surfaceRaw: string,
   requestedRaw: string,
@@ -154,8 +167,12 @@ export const highlightTokenMatches = (
     return true;
   }
 
+  // Morphological relaxation is intentionally one-way: prose may carry an
+  // attached Arabic clitic/suffix while the configured vocabulary keeps the
+  // lemma. This also prevents dedupe from collapsing distinct configured
+  // entries such as الرِّبَا and رِبًا into one item.
   const surfaceForms = arabicTokenForms(surface);
-  const requestedForms = arabicTokenForms(requested);
+  const requestedForms = requestedArabicForms(requested);
   return [...requestedForms].some(form => surfaceForms.has(form));
 };
 
