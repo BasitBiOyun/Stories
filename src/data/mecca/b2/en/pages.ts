@@ -12,11 +12,11 @@ const sourceMeccaB2Pages: PageData[] = [
     title: 'A City and an Age',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch1-clean.png?alt=media&token=e4c627c6-6f73-4990-85a0-67a7327ac3dc',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=ac745550-639e-4e1f-84fb-31fda7bcfd0c',
-    content: `One of the most important developments of the Middle Ages (Middle Ages span between the fall of the Roman Empire in 476 CE and the conquest of Constantinople in 1453 by the Ottoman Turks) was the rise of Islam. Islam was born in the city of Mecca in the 7th century.
+    content: `One of the most important developments of the Middle Ages (The Middle Ages span from the fall of the Roman Empire in 476 CE to the conquest of Constantinople in 1453 by the Ottoman Turks) was the rise of Islam. Islam was born in the city of Mecca in the 7th century.
 
 Two superpowers of the time were the Christian Romano-Byzantine Empire (395 CE–1453 CE) with its capital city Constantinople (which we now call Istanbul) and the Persians ruled by the Zoroastrian Sassanids (223 CE–651 CE). At that time, the Arabs were neighbors on the southeastern boundaries of the Byzantine Empire. They were also the neighbors of the Sassanids in the east.
 
-The rivalry between these two superpowers exhausted both sides. On the other side, because the Arabs lived in tribes, there was no political unity on the Arabian Peninsula.
+The rivalry between these two superpowers exhausted both sides. On the other hand, because the Arabs lived in tribes, there was no political unity on the Arabian Peninsula.
 
 After describing the broad background of the time, take a closer look at the city and the era in which Prophet Muhammad (pbuh) lived and Islam rose.
 
@@ -43,11 +43,11 @@ The Age of Ignorance is the pre-Islamic era in the Arabian Peninsula that covers
     title: 'Jahiliyyah and Mecca',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch2-clean.png?alt=media&token=ddc0d6e6-8369-46af-9b59-cfd241d6c19c',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F01_Chapter_2_Jahiliyyah_and_Mecca.mp3?alt=media&token=31b63252-8882-46a8-b789-d810b5945494',
-    content: `The term is used to describe the beliefs and behaviors of the Arabs before the Islamic era. The meaning of "ignorance" is not the lack of science or the lack of knowledge. This period is called the Age of Ignorance because people did not truly know Allah and widely did not have justice, order, and peace both in their personal and social lives. They always sided with the powerful and the upper class. The oppressed, the weak and the poor were living a life of misery.
+    content: `The term is used to describe the beliefs and behaviors of the Arabs before the Islamic era. The meaning of "ignorance" is not the lack of science or the lack of knowledge. This period is called the Age of Ignorance because people did not truly know Allah and lacked justice, order, and peace in both their personal and social lives. They always sided with the powerful and the upper class. The oppressed, the weak and the poor were living a life of misery.
 
 The Quran points to the ignorance and barbarism of the pre-Islamic era, as well as the violence, hatred, bloodshed, and other moral decline that dominated the lives of the pagan community.
 
-The Jahiliyyah is the “age of barbarism.” In fact, the Prophet described Islam as the opposite of barbarism. An ignorant person is wild, a slave to their desires, follows their animalistic feelings, brutal and aggressive; in other words, a “barbarian.” The opposite of this is a civilized person. Although the word “jahiliyyah” essentially describes the pre-Islamic period of the Arabs, the Prophet (as) did not view it as a period of the past. On the contrary, he believed it could arise again at any moment and warned people against it.
+The Jahiliyyah is the “age of barbarism.” In fact, the Prophet described Islam as the opposite of barbarism. An ignorant person is wild, is a slave to their desires, follows their animalistic feelings, and is brutal and aggressive; in other words, a “barbarian.” The opposite of this is a civilized person. Although the word “jahiliyyah” essentially describes the pre-Islamic period of the Arabs, the Prophet (as) did not view it as a period of the past. On the contrary, he believed it could arise again at any moment and warned people against it.
 
 To understand Jahiliyyah, it is necessary to describe Mecca. Mecca is in the western part of the Arabian Peninsula. This piece of land is called a peninsula because water surrounds it on three sides: the south, west, and east. (The Arabian/Persian Gulf (Basra Körfezi) is in the east, the Indian Ocean is in the south, and the Red Sea is in the west.)`,
     vocabulary: [
@@ -75,7 +75,7 @@ To understand Jahiliyyah, it is necessary to describe Mecca. Mecca is in the wes
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F02_Chapter_3_The_Holy_City.mp3?alt=media&token=c4c83d65-5191-426b-9cb3-f81504080779',
     content: `Mecca is the holy city of Islam. Allah chose this city to be the location of His House, the Holy Ka’ba. (See Âl-i Imran, 96.) It was also in this city that the last Prophet, Muhammad (pbuh), was born and spent 52 years of his life; 40 years of his life in this city before his prophethood and almost 13 years after it. And here he began to spread the message of Islam.
 
-The Qiblah is also located in the city, which is the direction towards which Muslims face while they are performing their daily prayers, salah.
+The Qiblah is the direction Muslims face while performing their daily prayers, salah.
 
 Prophet Muhammad (pbuh) loved this city so much that while leaving Mecca during his migration to Medina, He (pbuh) said: "I love you more than any other city. Had my people not forced me to leave, I would never have left you." (Sunan al-Tirmidhi, 3925).
 
@@ -104,9 +104,9 @@ When Prophet Abraham (as) brought his son Ishmael and his wife Hagar to the city
 
 Then a new tribe, the Khuza’a (Huzâa), came to Mecca, defeated the Jurhumites, and established their rule over the city. During the rule of this tribe, people forgot the religion of Abraham (as) (monotheism) and spread idolatry throughout the city. In the 5th century, the administration of Mecca and the Ka’ba passed to the Quraysh tribe. Pre-Islamic Mecca was administered by a council of mostly wealthy merchants.
 
-Since the surroundings of the city were not suitable for agriculture, people tried to make a living with trade.
+Since the surroundings of the city were not suitable for agriculture, people tried to make a living through trade.
 
-In the period when Islam came, the Byzantine and Sassanid empires, which were the two most powerful states in the region, had trade with Arabia in both the northern and southern regions.
+In the period when Islam came, the Byzantine and Sassanid empires, which were the two most powerful states in the region, traded with Arabia in both the northern and southern regions.
 India also played a very important role in Arabia's trade. There were many products made in India, Indonesia, and China.`,
     vocabulary: [
       { word: 'offspring', definition: 'A child or descendant.' },
@@ -129,7 +129,7 @@ India also played a very important role in Arabia's trade. There were many produ
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F04_Chapter_5_Mecca_as_a_Trade_Center.mp3?alt=media&token=5daf39d9-8b4f-42ca-bce6-523e06230d54',
     content: `Tribes from Yemen brought these products to the coast of Yemen and they organized caravans to transport them to Iraq, Syria, Palestine, and Egypt.
 
-Mecca began to develop into a trade center from the early 6th century CE (Common Era: Milattan Sonra). Hashim ibn Abd Manaf, the great-grandfather of Muhammad (as), played a key role in boosting the economy of Mecca. He, along with the leaders of the Quraysh tribe, made trade deals with some tribes and nations, and they were given permission to travel freely. These agreements also allowed Quraysh merchants to enter Byzantium, Yemen, Iraq, and Abyssinia (Ethiopia). The summer and winter journeys described in the Holy Quran were organized once a year with large caravans (see, Surah Quraysh: 1-4). These caravans numbered up to 2,500 camels.
+Mecca began to develop into a trade center from the early 6th century CE (Common Era: Milattan Sonra). Hashim ibn Abd Manaf, the great-grandfather of Muhammad (as), played a key role in boosting the economy of Mecca. He, along with the leaders of the Quraysh tribe, made trade deals with some tribes and nations, and they were given permission to travel freely. These agreements also allowed Quraysh merchants to enter Byzantium, Yemen, Iraq, and Abyssinia (Ethiopia). The summer and winter journeys described in the Holy Quran were organized once a year with large caravans (see Surah Quraysh: 1-4). These caravans numbered up to 2,500 camels.
 
 This meant approximately 2–3 shiploads of cargo. At that time, the typical Roman trade ship had a carrying capacity of around 100–150 tons. This number shows us how large the trade was.
 
@@ -157,7 +157,7 @@ In addition to these, many caravans left Mecca at almost every time of the year.
 
 The safe environment created by the sacred months (These are the four sacred lunar months during which fighting is prohibited. During this period, which consists of Zilkade, Zilhicce, Muharram, and Rajab, people focus on worship, show respect, and refrain from sinning, with the aim of creating an atmosphere of peace.) made it possible for more people to perform the Hajj. (During the pre-Islamic Jahiliyyah period, the Arabs continued to visit the Ka’ba and the sacred sites in its neighborhood. Pagan people would walk around the Ka’ba, perform the sa'y between Safa and Marwah, and stand in Arafat.)
 
-Hajj also meant more lively trade. In addition, major trade festivals such as Ukaz (Ukâz), Majannah (Mecenne), and Dhul-Majaz (Zülmecâz) were also held during the sacred months. They were particularly held during the Hajj season, and after people attended these fairs, they went to Arafat.
+Hajj also meant livelier trade. In addition, major trade festivals such as Ukaz (Ukâz), Majannah (Mecenne), and Dhul-Majaz (Zülmecâz) were also held during the sacred months. They were particularly held during the Hajj season, and after people attended these fairs, they went to Arafat.
 
 Because of its extensive trade activities, Mecca was described as the "Republic of Traders."
 
@@ -185,7 +185,7 @@ So, at the beginning of the 7th century, the Quraysh gained control of the most 
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F06_Chapter_7_Social_Classes_in_Mecca.mp3?alt=media&token=15d61607-1493-435a-b106-c39713f3026f',
     content: `The Quraysh used coins, as well as gold and silver, in their trade. Paying a fee to borrow money—which is usury (faiz)—played a very significant role in the economic activities of the time. This practice also affected the social structure. Usury, which means additional money on the original amount of money, is “ribâ” in Arabic. The Quraysh added to their wealth through lending at usury. It was the easiest and most profitable way to increase one’s wealth. As a result of the money trade, there was a wealthy aristocracy in the city. In such an environment where trade and money were so important, all human relationships were based on making more money. Money lenders and capitalists were the city’s most powerful class. They imposed enormous borrowing rates on debts. This system was designed to make the rich richer and the poor poorer. Vices of drinking and gambling were also so common that this was also one reason why people were constantly falling into debt.
 
-Due to the big money ownership in the hands of certain individuals, social class division was at an extremely high level. In fact, there were rich people who ate from gold plates and drank from silver cups and crystal glasses, but there were also poor people who could barely survive.
+Because large amounts of wealth were concentrated in the hands of certain individuals, there were extreme divisions between social classes. In fact, there were rich people who ate from gold plates and drank from silver cups and crystal glasses, but there were also poor people who could barely survive.
 
 There was a huge gap between the rich and the poor even in the most basic human relationships. Among the upper class of the Quraysh, money, wealth, children, and family were a source of pride and competition.`,
     vocabulary: [
@@ -214,7 +214,7 @@ In such a society, orphans were oppressed, the weak were looked down on, and the
 
 During the pre-Islamic era, those who oppressed and treated people unfairly were generally wealthy and powerful individuals. Due to its fight against injustice, Hilfu’l-Fudûl received support from the community.
 
-This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant helplessly applied to Hilfü’l-fudûl. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.`,
+This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilfü’l-fudûl for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.`,
     vocabulary: [
       { word: 'orphan', definition: 'A child whose parents have died.' },
       { word: 'defenseless', definition: 'Unable to protect oneself.' },
@@ -242,7 +242,7 @@ This organization played a very important role in maintaining justice and order 
 
 All sources note that the Prophet (as) spoke highly of this formation even after his prophethood and believed that Islam had further strengthened it. He used to say: “I have no desire to abandon my oath even against a herd of red-haired camels.” It is recorded that he said he would respond immediately without hesitation if he were called again (Musnad, I, 190, 317).
 
-As the example of the Hilfu’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era as entirely negative. In addition to this, for instance, the Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests. The bet was a type of gambling as well. Until one side gave up, camels used to continue to be killed, and at the end, the victor became well-known for his generosity. All of this was done for the fame of the individual and the tribe.
+As the example of the Hilfu’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entirely negative. In addition to this, for instance, the Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests. The bet was a type of gambling as well. Until one side gave up, camels continued to be slaughtered, and at the end, the victor became well-known for his generosity. All of this was done for the fame of the individual and the tribe.
 
 The admirable qualities of the Arabs before Islam, like generosity, were driven mostly by arrogance rather than real goodness. In the end, such behaviors turned into a tribal honor contest, and this led to greater problems.
 
@@ -273,7 +273,7 @@ Tribes were the basis of Arab society.`,
 
 Pre-Islamic Arabs valued ancestors greatly and knew their names by heart. It was important to work for the tribe and to honor and defend it in every circumstance, no matter what the tribe did.
 
-The position of Arab women before Islam was not always the same. It changed according to their social status and tribes. Despite limitations from society, some women managed to reach a level of some freedom. For example, Khadija, the wealthy wife of the Prophet (as), was free to run a business under her own name. Or a woman from a higher social class, like Hind bint Utbah, who was the wife of Abu Sufyan and the mother of Mu'awiya, had some power in society.
+The position of Arab women before Islam was not always the same. It changed according to their social status and tribes. Despite limitations from society, some women managed to gain a degree of freedom. For example, Khadija, the wealthy wife of the Prophet (as), was free to run a business under her own name. Or a woman from a higher social class, like Hind bint Utbah, who was the wife of Abu Sufyan and the mother of Mu'awiya, had some power in society.
 
 However, many women from lower social and economic groups were mistreated and disadvantaged. Those women and girls had no status and no human or legal rights in their family lives and in society. They had no say and were not allowed to give their opinions.
 
@@ -303,7 +303,7 @@ When news of the birth of a daughter was given to them, people in the Age of Ign
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F10_Chapter_11_Slavery%2C_Poets_and_Media.mp3?alt=media&token=05ecbabc-1d76-4ba2-9605-8e61e949263c',
     content: `“And when one of them is given news of a female baby, his face darkens, and he can’t breathe with grief. He hides from the people because of the bad news given to him. Shall he keep it in humiliation, or bury it in the dust? Evil is the decision they make.”
 
-Slavery was an economic institution in Mecca. Slaves, both male and female, were the most miserable class in society. They were bought and sold like animals. They were employed in various tasks as well as for people’s personal service. They were a show of wealth. They also acted as a weapon to protect their owner in times of war. White slaves brought from the regions of Damascus and Iraq were more expensive than black slaves brought from Africa because they served better and were skilled workers.
+Slavery was an economic institution in Mecca. Slaves, both male and female, were the most miserable class in society. They were bought and sold like animals. They were employed in various tasks as well as for people’s personal service. They were a show of wealth. They also acted as weapons to protect their owners in times of war. White slaves brought from the regions of Damascus and Iraq were more expensive than black slaves brought from Africa because they served better and were skilled workers.
 
 During this era, poets were an important part of social life and poetry was the most important part of the culture. Poetry was used to keep the tribe’s history alive. It told stories about brave ancestors and hard times. It also praised the tribe’s family and criticized enemies. Tribes were honored in poems, and poets praised conflict rather than peace and war instead of peace. There were very few poets who invited the tribes to peace and urged them to stay away from fighting. In a sense, they were serving as a media outlet. Tribes often formed a political alliance to defend each other, yet extreme tribalism made universal justice impossible when people supported their tribe even when it was wrong.`,
     vocabulary: [
@@ -353,7 +353,7 @@ Superstitious beliefs also dominated Arab life. Pre-Islamic Arabs thought the go
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F12_Chapter_13_Islam_and_a_New_Society.mp3?alt=media&token=b9c326a7-d4f9-4f61-ba21-2b1471f84319',
     content: `Politics, economics, and religion are three interconnected areas. Religion and beliefs determine every aspect of life. So, it is understandable that Islam faced opposition from both politically and economically powerful groups in Mecca. From the start, Islam showed that this was a new group. Islam made this new Muslim community different from, and better than, the people around them.
 
-The aristocracy provoked the public against the new religion. The leaders of the Quraysh viewed Islam as a threat to their authority. The wealth they got through trade, as well as the respect they had from other tribes, made the Quraysh the leaders of their region. They were serving as the prestigious caretakers of the pilgrimage in the Arabian Peninsula. Protecting this status and unity was very important to them.
+The aristocracy provoked the public against the new religion. The leaders of the Quraysh viewed Islam as a threat to their authority. The wealth they got through trade, as well as the respect they received from other tribes, made the Quraysh the leaders of their region. They were serving as the prestigious caretakers of the pilgrimage in the Arabian Peninsula. Protecting this status and unity was very important to them.
 
 The first people who heard the Prophet's call, which began in 610, were the Quraysh tribe of Mecca. Some of the Quraysh responded positively to his call and became Muslims. When they heard the Prophet Muhammad (as) read the Quran, they were sure it was from Allah. This message totally changed them. It touched their hearts and minds, making them cry and feel deep respect, even causing their hair to stand on end. However, a large group led by the tribal leaders denied his prophethood and opposed him fiercely.`,
     vocabulary: [
@@ -401,7 +401,7 @@ Maintaining their leadership position was of vital importance to the leaders of 
     title: 'Opposition to the New Faith',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch15-clean.png?alt=media&token=8cf5995d-ea53-41d0-991b-b5c4d4e7099f',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F14_Chapter_15_Opposition_to_the_New_Faith.mp3?alt=media&token=bcc84aa4-8c72-43b3-8f3c-7ea4bef502f6',
-    content: `Because they knew that the Prophet’s call to monotheism—which rejected oppression, injustice, exploitation, and usury—would eventually bring them face to face with people who carried out these practices.
+    content: `They knew that the Prophet’s call to monotheism—which rejected oppression, injustice, exploitation, and usury—would eventually bring them face to face with people who carried out these practices.
 
 Pagan Meccan leaders tried various methods to prevent the new faith from growing stronger. At first, they mocked just the new religion. When the Prophet (as) passed by the places where the disbelievers were sitting, they would point and laugh at him and say, “The son of the family of Abdulmuttalib is bringing news from heaven!”
 
@@ -432,7 +432,7 @@ The rejection of idols meant, for the Quraysh, the end of the trade on which the
 
 They also refused to believe that they would face punishment in the afterlife for their sins. It was too much for them to think that they would be judged for oppressing people, gaining money through unjust means, as well as for drinking alcohol and every kind of evil.
 
-As mentioned above, one of the characteristics of Arab society was tribal fanaticism. This was also one of the greatest barriers for the new religion. A tribal member could not show the courage to step outside the views of his tribe. Otherwise, he would be left unprotected by his tribe—which, in today’s terms, means being stateless and falling into a defenseless situation. The leaders in Mecca tried everything to stop the new Muslims. Because of this, the "freedom of choice" that Islam talked about could not work at that time.`,
+As mentioned above, one of the characteristics of Arab society was tribal fanaticism. This was also one of the greatest barriers for the new religion. A tribal member could not show the courage to step outside the views of his tribe. Otherwise, he would be left unprotected by his tribe—which, in today’s terms, means being stateless and being left defenseless. The leaders in Mecca tried everything to stop the new Muslims. Because of this, the "freedom of choice" that Islam talked about could not work at that time.`,
     vocabulary: [
       { word: 'hostility', definition: 'Strong opposition or hatred.' },
       { word: 'abandon', definition: 'To leave or give up something.' },
@@ -455,9 +455,9 @@ As mentioned above, one of the characteristics of Arab society was tribal fanati
 
 In Mecca, which was a place of oppression, injustice, and immorality before Islam, the Prophet (as) called upon people to follow justice and morality. At the heart of Islam is human honor and dignity. Islam respects humans as humans. All other differences are not important to Islam. Whether they are slaves, women, poor, or the weak, they all deserve respect.
 
-The Age of Ignorance was the opposite of Islam. The term both refers to pre-Islamic Arabia and also describes any culture, society or way of thinking that comes from human arrogance. On the other hand, Islam is all about making the world a more fair and peaceful place.
+The Age of Ignorance was the opposite of Islam. The term both refers to pre-Islamic Arabia and also describes any culture, society or way of thinking that comes from human arrogance. On the other hand, Islam is all about making the world a fairer and more peaceful place.
 
-The dreadful situation in the twenty-first century reminds us of the dark period of ignorance in seventh-century Mecca. So, the Age of Ignorance is not only a past time but also a culture that is still valid. Islam has always stood against it and will continue to do so.`,
+The dreadful situation in the twenty-first century reminds us of the dark period of ignorance in seventh-century Mecca. So, the Age of Ignorance is not only a period in the past but also a way of thinking that can still exist today. Islam has always stood against it and will continue to do so.`,
     vocabulary: [
       { word: 'opposition', definition: 'Resistance against something.' },
       { word: 'oppression', definition: 'Cruel and unfair treatment.' },
