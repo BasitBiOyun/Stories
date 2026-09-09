@@ -90,7 +90,15 @@ const ARABIC_COMMON_INFLECTION_SUFFIXES = ['وا', 'ون', 'ين', 'ات'] as co
 const addArabicSuffixForms = (forms: Set<string>, value: string): void => {
   for (const suffix of ARABIC_PRONOUN_SUFFIXES) {
     if (value.endsWith(suffix) && value.length - suffix.length >= 3) {
-      forms.add(value.slice(0, -suffix.length));
+      const withoutPronoun = value.slice(0, -suffix.length);
+      forms.add(withoutPronoun);
+
+      // A feminine noun ending in ة is written with ت before an attached
+      // pronoun: نبوة -> نبوته, مكانة -> مكانتها. Normalization represents ة
+      // as ه, so expose that lemma form explicitly and conservatively.
+      if (withoutPronoun.endsWith('ت') && withoutPronoun.length > 3) {
+        forms.add(`${withoutPronoun.slice(0, -1)}ه`);
+      }
     }
   }
   for (const suffix of ARABIC_COMMON_INFLECTION_SUFFIXES) {
