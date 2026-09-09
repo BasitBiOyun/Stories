@@ -100,7 +100,7 @@ Because people could not farm in this dry land, they made money through trade. W
 
 Hashim ibn Abd Manaf, Prophet Muhammad’s (as) great-grandfather, helped grow Mecca’s economy. He and the Quraysh leaders made special trade agreements with other tribes and nations. These agreements allowed merchants to travel safely and trade in places like Byzantium, Yemen, Iraq, and Ethiopia.
 
-The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer. In these months, people focused on worship, showed respect, and stayed away from fighting. Because of this safe atmosphere, more people could visit the city to make Hajj.`,
+The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer. In these months, people focused on worship, showed respect, and stayed away from fighting. Because of this safe atmosphere, more people could visit the city to perform Hajj.`,
     [
       { word: 'trade routes', definition: 'Paths used to move and exchange goods between places.' },
       { word: 'wealthy', definition: 'Rich and having a lot of money or valuable things.' },
@@ -120,7 +120,7 @@ The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer
 
 This religious activity also helped business grow quickly. Big trade fairs such as Ukaz, Majannah, and Dhul-Majaz took place during this time. People attended these fairs first and then went to Arafat.
 
-At the beginning of the 7th century, the Quraysh tribe controlled the most important trade routes and wealth in Arabia. The Quraysh traded with gold and silver coins. In the city, lending money with usury was widespread. This made the rich richer and the poor poorer.`,
+At the beginning of the 7th century, the Quraysh tribe controlled the most important trade routes and wealth in Arabia. The Quraysh used gold and silver coins for trade. In the city, lending money with usury was widespread. This made the rich richer and the poor poorer.`,
     [
       { word: 'trade fairs', definition: 'Large events where people meet to buy and sell goods.' },
       { word: 'Arafat', definition: 'The place mentioned in the story as part of pilgrimage practices.' },
@@ -278,7 +278,7 @@ The leaders of Mecca went further. Between 617 and 620, they began a social and 
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F13_Chapter_14_Boycott_and_Pressure.mp3?alt=media&token=68541084-fb07-4b4b-91d0-3ef54b281a76',
     `During the boycott, people had no food. Some died of hunger, and others even ate tree leaves to survive. The cries of hungry children could be heard everywhere.
 
-Prophet Muhammad (as) continued to ask people to stop worshipping idols and follow one Allah. However, the leaders were proud of their old beliefs and did not want to change. The idols brought them money, trade, and power. Losing the idols meant losing wealth and influence, so they became hostile to Islam.
+Prophet Muhammad (as) continued to ask people to stop worshipping idols and worship Allah alone. However, the leaders were proud of their old beliefs and did not want to change. The idols brought them money, trade, and power. Losing the idols meant losing wealth and influence, so they became hostile to Islam.
 
 They also did not want to accept that people would be judged after death. They did not want to think about punishment for hurting people, making money unfairly, drinking alcohol, or doing other evil things. Tribal loyalty was another challenge because people feared losing their tribe’s protection.`,
     [
