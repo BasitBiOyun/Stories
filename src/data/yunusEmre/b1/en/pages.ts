@@ -21,7 +21,7 @@ export const yunusB1Pages: PageData[] = [
     'Yunus Emre and Sûfîsm',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch1-clean.png?alt=media&token=35c3e7df-520e-4293-916b-7312d4aba9a0',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=8374c2f7-3dc6-480b-ae3b-3b0145c6f071',
-    `Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfis lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body's acts of worship, while the inner side refers to the heart's intentions and morality.
+    `Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfis lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body's acts of worship, while the inner side refers to the heart's intentions and morality.
 
 Sûfis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.
 
@@ -160,7 +160,7 @@ Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet's Su
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F07_Chapter_8_Tawhid_and_Unity.mp3?alt=media&token=932781cc-7bbf-4405-b629-4aa82c526406',
     `In his poems, he expresses a vivid love for Allah as a way of life, along with fear of Allah and loyalty to the Prophet Muhammad (pbuh).
 
-One of the most important basic spiritual principles in his works is the idea of Tawhid which means the Oneness of Allah. According to Yunus Emre, the Creator, Allah is the source of all things. So everything is connected to Him. The Creator is the true and only reality. According to the theory of the unity of existence, which was a key idea for Yunus Emre, there is only one true existence in the universe, and that is Allah.
+One of the most important basic spiritual principles in his works is the idea of Tawhid, which means the Oneness of Allah. According to Yunus Emre, Allah, the Creator, is the source of all things. So everything is connected to Him. The Creator is the true and only reality. According to the theory of the unity of existence, which was a key idea for Yunus Emre, there is only one true existence in the universe, and that is Allah.
 
 Yunus says:
 
@@ -293,7 +293,7 @@ Misafirdir, vatanına bir gün sefer etse gerek
     'Morality and Good Habits',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch12-clean.png?alt=media&token=dd15c0c8-a21b-424a-93a8-fbb6288eebd8',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F11_Chapter_12_Morality_and_Good_Habits.mp3?alt=media&token=d1f94fde-9bcd-47b9-9dd7-64fad10e4dd3',
-    `Yunus believes that true morality is about giving up bad habits that do not fit humans. Moral principles such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. With these principles, Yunus Emre teaches people the path to an honest life. He also taught people to avoid bad habits like being arrogant, stingy, greedy, selfish, or jealous, and gossiping.
+    `Yunus believes that true morality is about giving up bad habits that are not suitable for people. Moral principles such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. With these principles, Yunus Emre teaches people the path to an honest life. He also taught people to avoid bad habits like being arrogant, stingy, greedy, selfish, or jealous, and gossiping.
 
 Yunus Emre's poems are not only literary works but also a moral guide.
 
@@ -345,7 +345,7 @@ Sabır kimde ise o arşa yükselir
 Ki sabrın içinde bulunur türlü hünerler
 [/POEM]
 
-In the following verse he warns against “rage and arrogance”, he says:
+In the following verse, he warns against “rage and arrogance”:
 
 [POEM]
 English:
