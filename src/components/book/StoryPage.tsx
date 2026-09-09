@@ -6,6 +6,7 @@ import { PageData, Hotspot, Exercise } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
 import { ExerciseModule } from '../ExerciseModule';
 import { cn } from '../../lib/utils';
+import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
@@ -269,6 +270,7 @@ export const StoryPage = ({
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  const highlightLanguage = language === 'ar' ? 'ar' : 'en';
 
   const vocabStyle = useMemo(() => {
     if (collectionId === 'history') {
@@ -295,10 +297,10 @@ export const StoryPage = ({
     for (let i = 0; i < currentIndex; i++) {
       const prevPage = allPages[i];
       if (prevPage.animatedWords) {
-        prevPage.animatedWords.forEach(word => seen.add(word.toLowerCase().trim()));
+        prevPage.animatedWords.forEach(word => seen.add(word));
       }
       if (prevPage.vocabulary) {
-        prevPage.vocabulary.forEach(v => seen.add(v.word.toLowerCase().trim()));
+        prevPage.vocabulary.forEach(v => seen.add(v.word));
       }
     }
     return seen;
@@ -405,6 +407,9 @@ export const StoryPage = ({
     }
 
     for (const [k, v] of bookVocabularyMap.entries()) {
+      if (highlightPhraseMatches(text, k, 'ar')) {
+        return v;
+      }
       const kNorm = normalizeArabic(k);
       const kStripped = normalizeArabic(k.replace(/^ال/, ''));
       if ((norm.startsWith(kNorm) || norm.startsWith(kStripped)) && norm.length <= kNorm.length + 3) {
@@ -426,6 +431,9 @@ export const StoryPage = ({
     }
 
     for (const [k, v] of fallbackArabicDefinitionsMap.entries()) {
+      if (highlightPhraseMatches(text, k, 'ar')) {
+        return v;
+      }
       const kNorm = normalizeArabic(k);
       if (norm.startsWith(kNorm) && norm.length <= kNorm.length + 3) {
         return v;
@@ -545,6 +553,24 @@ export const StoryPage = ({
 
   const renderContent = (content: string) => {
     const parts = content.split(/(\[POEM\][\s\S]*?\[\/POEM\])/g);
+    const highlightWordCount = (value: string) => {
+      const normalized = normalizeHighlightText(value, highlightLanguage);
+      return normalized ? normalized.split(' ').length : 0;
+    };
+    const maxPhraseWords = Math.max(
+      1,
+      ...(page.vocabulary ?? []).map(v => highlightWordCount(v.word)),
+      ...(page.animatedWords ?? []).map(highlightWordCount),
+    );
+    const hasAlreadyBeenHighlighted = (requested: string, seen: Set<string>) => {
+      const requestedWordCount = highlightWordCount(requested);
+      return [...seen].some(previous => {
+        if (requestedWordCount > 1 || highlightWordCount(previous) > 1) {
+          return highlightPhraseMatches(requested, previous, highlightLanguage);
+        }
+        return highlightTokenMatches(requested, previous, highlightLanguage);
+      });
+    };
     
     let globalWordCounter = 0;
     const seenOnCurrentPage = new Set<string>();
@@ -584,77 +610,51 @@ export const StoryPage = ({
             continue;
           }
 
-          // Check for phrases (up to 3 words)
           let foundPhrase = null;
-          const potentialPhrases = [];
+          const potentialPhrases: { text: string; endIdx: number }[] = [];
           let currentPotential = word;
+          let wordsInPotential = 1;
           
-          // Look ahead for potential phrases
-          for (let lookAhead = 1; lookAhead <= 4; lookAhead++) {
-            if (wIdx + lookAhead < words.length) {
-              currentPotential += words[wIdx + lookAhead];
-              if (!/\s+/.test(words[wIdx + lookAhead])) {
-                potentialPhrases.push({ text: currentPotential, endIdx: wIdx + lookAhead });
-              }
+          // Look ahead as far as the longest configured vocabulary/animated phrase.
+          for (let lookAhead = 1; wIdx + lookAhead < words.length && wordsInPotential < maxPhraseWords; lookAhead++) {
+            const nextPart = words[wIdx + lookAhead];
+            currentPotential += nextPart;
+            if (!/\s+/.test(nextPart)) {
+              wordsInPotential += 1;
+              potentialPhrases.push({ text: currentPotential, endIdx: wIdx + lookAhead });
             }
           }
 
-          // Check longest phrases first
+          // Check longest phrases first.
           for (let i = potentialPhrases.length - 1; i >= 0; i--) {
             const p = potentialPhrases[i];
-            const cleanP = p.text.replace(/[.,!?;:\"'“”‘’`()]/g, '').toLowerCase().trim();
-            const normP = language === 'ar' ? normalizeArabic(cleanP) : cleanP;
-            
-            const isAlreadyHighlighted = seenHighlightedWords.has(cleanP) || seenOnCurrentPage.has(cleanP) || (language === 'ar' && seenOnCurrentPage.has(normP));
-            
-            const vocab = !isAlreadyHighlighted ? page.vocabulary?.find(v => {
-              const vWord = v.word.toLowerCase().trim();
-              const cleanV = vWord.replace(/[.,!?;:\"'“”‘’`()]/g, '');
-              if (language === 'ar') {
-                return normalizeArabic(cleanV) === normP || normalizeArabic(cleanV) === normalizeArabic(normP.replace(/^ال/, ''));
-              }
-              const cleanV_plural = cleanV + 's';
-              const cleanV_es = cleanV + 'es';
-              let cleanV_ies = cleanV;
-              if (cleanV.endsWith('y')) {
-                cleanV_ies = cleanV.slice(0, -1) + 'ies';
-              }
-              // For lookahead phrases, we only match if the vocab item itself is a multi-word phrase
-              const isMultiWord = cleanV.includes(' ');
-              if (!isMultiWord) return false;
-              return cleanV === cleanP || cleanV_plural === cleanP || cleanV_es === cleanP || cleanV_ies === cleanP;
-            }) : null;
+            const vocab = page.vocabulary?.find(v => (
+              highlightWordCount(v.word) > 1
+              && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+              && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
+              && highlightPhraseMatches(p.text, v.word, highlightLanguage)
+            ));
 
-            const isAnimated = !isAlreadyHighlighted && !vocab && page.animatedWords?.some(aw => {
-              const awWord = aw.toLowerCase().trim();
-              if (language === 'ar') {
-                return normalizeArabic(awWord) === normP || normalizeArabic(awWord) === normalizeArabic(normP.replace(/^ال/, ''));
-              }
-              const awWord_plural = awWord + 's';
-              const awWord_es = awWord + 'es';
-              let awWord_ies = awWord;
-              if (awWord.endsWith('y')) {
-                awWord_ies = awWord.slice(0, -1) + 'ies';
-              }
-              // For lookahead phrases, we only match if the animated word itself is a multi-word phrase
-              const isMultiWord = awWord.includes(' ');
-              if (!isMultiWord) return false;
-              return awWord === cleanP || awWord_plural === cleanP || awWord_es === cleanP || awWord_ies === cleanP;
-            });
+            const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+              highlightWordCount(aw) > 1
+              && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
+              && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
+              && highlightPhraseMatches(p.text, aw, highlightLanguage)
+            )) : undefined;
 
-            if (vocab || isAnimated) {
-              foundPhrase = { vocab, isAnimated, endIdx: p.endIdx, text: p.text, cleanText: cleanP, normText: normP };
+            if (vocab || animatedWord) {
+              foundPhrase = { vocab, animatedWord, endIdx: p.endIdx, text: p.text };
               break;
             }
           }
 
           const currentGlobalIdx = globalWordCounter;
+          void currentGlobalIdx;
 
           if (foundPhrase) {
             const wordsInPhrase = foundPhrase.text.split(/\s+/).filter(w => w.length > 0).length;
-            
-            seenOnCurrentPage.add(foundPhrase.cleanText);
-            if (foundPhrase.normText) seenOnCurrentPage.add(foundPhrase.normText);
+            const canonicalWord = foundPhrase.vocab?.word ?? foundPhrase.animatedWord ?? foundPhrase.text;
+            seenOnCurrentPage.add(canonicalWord);
             
             globalWordCounter += wordsInPhrase;
             skipCount = foundPhrase.endIdx - wIdx;
@@ -670,9 +670,10 @@ export const StoryPage = ({
                 />
               );
             } else {
+              const definitionSource = foundPhrase.animatedWord ?? foundPhrase.text;
               const definition = language === 'ar' 
-                ? getArabicDefinition(foundPhrase.cleanText)
-                : getEnglishDefinition(foundPhrase.cleanText);
+                ? getArabicDefinition(definitionSource)
+                : getEnglishDefinition(definitionSource);
               element = (
                 <VocabularyWord 
                   word={foundPhrase.text} 
@@ -692,61 +693,23 @@ export const StoryPage = ({
               </motion.span>
             );
           } else {
-            const cleanWord = word.replace(/[.,!?;:\"'“”‘’`()]/g, '').toLowerCase().trim();
-            const normWord = language === 'ar' ? normalizeArabic(cleanWord) : cleanWord;
+            const vocab = page.vocabulary?.find(v => (
+              highlightWordCount(v.word) === 1
+              && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+              && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
+              && highlightTokenMatches(word, v.word, highlightLanguage)
+            ));
             
-            const cleanV_for_check = page.vocabulary?.find(v => {
-              const cleanV = v.word.toLowerCase().trim().replace(/[.,!?;:\"'“”‘’`()]/g, '');
-              const cleanV_plural = cleanV + 's';
-              const cleanV_es = cleanV + 'es';
-              let cleanV_ies = cleanV;
-              if (cleanV.endsWith('y')) {
-                cleanV_ies = cleanV.slice(0, -1) + 'ies';
-              }
-              return cleanV === cleanWord || cleanV_plural === cleanWord || cleanV_es === cleanWord || cleanV_ies === cleanWord || cleanWord.startsWith(cleanV);
-            })?.word.toLowerCase().trim().replace(/[.,!?;:\"'“”‘’`()]/g, '');
+            const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+              highlightWordCount(aw) === 1
+              && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
+              && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
+              && highlightTokenMatches(word, aw, highlightLanguage)
+            )) : undefined;
 
-            const isAlreadyHighlighted = seenHighlightedWords.has(cleanWord) || 
-              seenOnCurrentPage.has(cleanWord) || 
-              (cleanV_for_check && seenOnCurrentPage.has(cleanV_for_check)) ||
-              (language === 'ar' && seenOnCurrentPage.has(normWord));
-            
-            const vocab = !isAlreadyHighlighted ? page.vocabulary?.find(v => {
-              const vWord = v.word.toLowerCase().trim();
-              const cleanV = vWord.replace(/[.,!?;:\"'“”‘’`()]/g, '');
-              if (language === 'ar') {
-                return normalizeArabic(cleanV) === normWord || normalizeArabic(cleanV) === normalizeArabic(normWord.replace(/^ال/, ''));
-              }
-              const cleanV_plural = cleanV + 's';
-              const cleanV_es = cleanV + 'es';
-              let cleanV_ies = cleanV;
-              if (cleanV.endsWith('y')) {
-                cleanV_ies = cleanV.slice(0, -1) + 'ies';
-              }
-              return cleanV === cleanWord || cleanV_plural === cleanWord || cleanV_es === cleanWord || cleanV_ies === cleanWord || cleanWord.startsWith(cleanV);
-            }) : null;
-            
-            const isAnimated = !isAlreadyHighlighted && !vocab && page.animatedWords?.some(aw => {
-              const awWord = aw.toLowerCase().trim();
-              if (language === 'ar') {
-                return normalizeArabic(awWord) === normWord || normalizeArabic(awWord) === normalizeArabic(normWord.replace(/^ال/, ''));
-              }
-              const awWord_plural = awWord + 's';
-              const awWord_es = awWord + 'es';
-              let awWord_ies = awWord;
-              if (awWord.endsWith('y')) {
-                awWord_ies = awWord.slice(0, -1) + 'ies';
-              }
-              return awWord === cleanWord || awWord_plural === cleanWord || awWord_es === cleanWord || awWord_ies === cleanWord || cleanWord.startsWith(awWord);
-            });
-
-            if (vocab || isAnimated) {
-              seenOnCurrentPage.add(cleanWord);
-              if (vocab) {
-                const baseV = vocab.word.toLowerCase().trim().replace(/[.,!?;:\"'“”‘’`()]/g, '');
-                seenOnCurrentPage.add(baseV);
-              }
-              if (language === 'ar') seenOnCurrentPage.add(normWord);
+            const canonicalWord = vocab?.word ?? animatedWord;
+            if (canonicalWord) {
+              seenOnCurrentPage.add(canonicalWord);
             }
 
             globalWordCounter++;
@@ -761,10 +724,10 @@ export const StoryPage = ({
                   collectionId={collectionId}
                 />
               );
-            } else if (isAnimated) {
+            } else if (animatedWord) {
               const definition = language === 'ar' 
-                ? getArabicDefinition(cleanWord)
-                : getEnglishDefinition(cleanWord);
+                ? getArabicDefinition(animatedWord)
+                : getEnglishDefinition(animatedWord);
               element = (
                 <VocabularyWord 
                   word={word} 
