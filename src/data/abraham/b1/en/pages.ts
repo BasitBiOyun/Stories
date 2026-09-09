@@ -18,7 +18,7 @@ const abrahamB1RawPages: PageData[] = [
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=57bc6da5-9305-4888-96d3-08482db1fee2',
     `A very long time ago, about 4,000 years ago, in the kingdom of Babylon in Mesopotamia, there was a boy named Abraham. In his homeland, people worshipped the stars, the moon, the sun, and statues made from wood and stone. Abraham was a wise boy, as Allah made his heart and mind clear of idols. (See Surah Enbiyâ: 51.)
 
-Abraham discovered Allah when he was at a very young age. Since his childhood, his heart was full of hatred for idols. He could not understand how an intelligent person could make a statue and then see it as a god which could help or harm him. He saw that these idols did not eat, drink, or talk. They could not even move from one place to another on their own.
+Abraham discovered Allah when he was at a very young age. From childhood, his heart was full of hatred for idols. He could not understand how an intelligent person could make a statue and then see it as a god which could help or harm him. He saw that these idols did not eat, drink, or talk. They could not even move from one place to another on their own.
 
 In the kingdom of Babylon, people had a large house of worship full of idols with a space in the middle for their biggest gods. Abraham was surprised to see that when people entered the building, they bowed to the statues and started crying and begging. They talked to the gods, asked for help, and made a wish. But these prayers and wishes could not be heard or understood by the statues!`,
     [], []
@@ -70,7 +70,7 @@ Abraham (pbuh) began to break the idols, one after another, until they were all 
   story(7, 'The Broken Idols',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch7.png?alt=media&token=3e535d5b-1e3c-4cd3-88e3-33b95447f33f',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F06_Chapter_7_The_Broken_Idols.mp3?alt=media&token=83d27022-9e27-4678-8ce7-38e04622dc4f',
-    `The next day, when people went to the temple to pray to their idols, they were shocked to see all the statues were broken into many pieces. They all gathered around the smashed idols. They wondered and tried to find out who did this. “We heard a young man speaking against our gods,” they remembered. “His name was Abraham.” They found Abraham (pbuh) and brought him into the temple. They asked him, “Did you harm our gods in this way?” Abraham (pbuh) calmly replied, “It was this statue there, the biggest of them all; ask that statue, if it can speak!”
+    `The next day, when people went to the temple to pray to their idols, they were shocked to see all the statues were broken into many pieces. They all gathered around the smashed idols. They wondered and tried to find out who did this. “We heard a young man speaking against our gods,” they remembered. “His name was Abraham.” They found Abraham (pbuh) and brought him into the temple. They asked him, “Did you harm our gods in this way?” Abraham (pbuh) calmly replied, “It was this statue there, the biggest of them all; ask that statue if it can speak!”
 
 The people were displeased with what they heard and said, “You are well aware that these idols don’t speak!” Abraham (pbuh) replied, “Then why do you worship things that can’t speak or see or even protect themselves? Have you gone mad?”
 
@@ -82,11 +82,11 @@ They looked at each other in shame because their thoughts and feelings told them
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F07_Chapter_8_Preparing_the_Great_Fire.mp3?alt=media&token=d012d642-1cf1-4d30-acf1-40830c943ebb',
     `Firewood was collected for the fire for days.
 
-The fire was so big that people couldn’t approach it. However, Abraham (pbuh) stayed calm because he trusted Allah. He knew that Allah would never leave him alone, and that whatever happens, it will be for his own good.
+The fire was so big that people couldn’t approach it. However, Abraham (pbuh) stayed calm because he trusted Allah. He knew that Allah would never leave him alone, and that whatever happened, it would be for his own good.
 
 News about the fire travelled very fast and far. People from many different towns came to see what would happen. The fire was finally ready. The heat was so strong that even birds couldn’t fly over the rising flames.
 
-Prophet Abraham’s (pbuh) hands and feet were tied, and he was placed on a catapult. Catapult was a kind of machine which was used to throw Abraham (pbuh) into the fire.
+Prophet Abraham’s (pbuh) hands and feet were tied, and he was placed on a catapult. A catapult was a kind of machine which was used to throw Abraham (pbuh) into the fire.
 
 Abraham (pbuh) was thrown straight into huge flames. At that moment, Angel Gabriel came to him and asked, “Is there anything you wish for?” Abraham (pbuh) only said, “Nothing from you!”
 
