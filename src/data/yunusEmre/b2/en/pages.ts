@@ -12,7 +12,7 @@ const rawYunusB2Pages: PageData[] = [
     title: 'Yunus Emre and Sûfîsm',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch1.png?alt=media&token=25cb0741-f1fe-4df1-abb9-8550a2926029',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=875dc868-3960-407d-9839-bed3b5d00a39',
-    content: `Yunus Emre was a great Anatolian poet and Muslim mystic/sûfî. Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism. Sûfis maintain a lifestyle within the outer (visible) and inner norms of Islam. The outer part relates to the body's acts of worship, whereas the inner side handles the morality and intentions of the heart. Sûfis adhere to moral principles that include the pursuit of becoming better people, the ability to remain patient during difficult times, the act of giving generously without expecting any return, the act of doing good to all individuals without prejudice, the response to evil with kindness, and not attaching importance to worldly possessions such as wealth, status, and fame.
+    content: `Yunus Emre was a great Anatolian poet and Muslim mystic/sûfî. A Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism. Sûfis maintain a lifestyle within the outer (visible) and inner norms of Islam. The outer part relates to the body's acts of worship, whereas the inner side handles the morality and intentions of the heart. Sûfis adhere to moral principles that include the pursuit of becoming better people, the ability to remain patient during difficult times, the act of giving generously without expecting any return, the act of doing good to all individuals without prejudice, the response to evil with kindness, and not attaching importance to worldly possessions such as wealth, status, and fame.
 
 In addition to his standing as a Sûfî, Yunus Emre was one of the Turkish poets to play a crucial role in the development of Old Anatolian Turkish. The words and expressions that he used made a significant contribution to the development of Turkish as a literary language. He established a literary tradition based on Sufism. One of the most important factors in the popularity of Yunus Emre’s works among the public is his style.`,
     vocabulary: [
@@ -33,13 +33,13 @@ In addition to his standing as a Sûfî, Yunus Emre was one of the Turkish poets
     title: 'His Style and Education',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch2.png?alt=media&token=48b7e1b9-9be8-4da2-803c-5547d7f38ff0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F01_Chapter_2_His_Style_and_Education.mp3?alt=media&token=435cb519-196c-4487-b756-03934193b755',
-    content: `For, his style is neither so simple nor so complex. Thus, his works have both literary value and are easy to understand. His philosophy includes fundamental values that have a significant influence on Turkish culture and ethics in Turkish society.
+    content: `His style is neither so simple nor so complex. Thus, his works both have literary value and are easy to understand. His philosophy includes fundamental values that have a significant influence on Turkish culture and ethics in Turkish society.
 
 According to historical accounts, he was a contemporary of famous figures such as Hacı Bektaş-ı Veli, Mevlana Celaleddin-i Rumi, and Saru Saltuk. As to the widely accepted view, he was born in 1240–41 and died in 1320–21. He is considered the founder of Turkish Sûfî literature.
 
 Some sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas. He also studied both divine love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).
 
-At that time, tekkes were not just an institution that offers Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time.`,
+At that time, tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time.`,
     vocabulary: [
       { word: 'contemporary', definition: 'living or existing during the same historical period' },
       { word: 'solidarity', definition: 'unity and mutual support among members of a community' },
@@ -85,7 +85,7 @@ The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was the most po
     title: 'The Babai Uprisings',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch4.png?alt=media&token=8d53944a-2f7d-432e-9623-6bfc88c6b5ac',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F03_Chapter_4_The_Babai_Uprisings.mp3?alt=media&token=3f4c837a-baeb-4f66-a2b1-afe074eb5044',
-    content: `At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. However, due to the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline. Starting in the 13th century, the Turkmen population grew in Anatolia. When the migrations caused by the Mongol invasion were added to this, lives of people in Anatolia were totally turned upside down. The nomadic Oguz and Turkmen tribes, who had migrated to Anatolia from Central Asia to escape the Mongol invasion, were exhausted from wanderings and were looking for safe lands to settle in. This crowd of nomads was also causing unrest within the community. Giyaseddin Keyhüsrev II’s failure to manage this situation even worsened the social and economic chaos.
+    content: `At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. However, due to the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline. Starting in the 13th century, the Turkmen population grew in Anatolia. When the migrations caused by the Mongol invasion were added to this, the lives of people in Anatolia were totally turned upside down. The nomadic Oguz and Turkmen tribes, who had migrated to Anatolia from Central Asia to escape the Mongol invasion, were exhausted from wanderings and were looking for safe lands to settle in. This crowd of nomads was also causing unrest within the community. Giyaseddin Keyhüsrev II’s failure to manage this situation even worsened the social and economic chaos.
 
 Throughout history, societies that faced difficult circumstances have always awaited a divine figure to save them. The Turkmen, too, were awaiting such a figure. In 1240, they rebelled under the leadership of Baba İshak who was the follower of Baba İlyas. Baba İlyas was the founder of a non-Sunni religious–mystical movement.`,
     vocabulary: [
@@ -177,7 +177,7 @@ Yunus’s understanding of Sûfîsm is based on the Qur’an and the Sunnah, whi
     title: 'Tawhid and True Reality',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch8.png?alt=media&token=bd2646dd-6daa-4e8f-9901-23d8e185ed04',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F07_Chapter_8_Tawhid_and_True_Reality.mp3?alt=media&token=4e5a6ee4-b0c6-4672-a007-e0c5bd10bb52',
-    content: `One of the most important fundamental values in his works is the belief in tawhid which means the absolute Oneness of Allah. According to Yunus Emre, the Creator, Allah is the source of all things and, therefore, everything is connected to Him. Creator is the true and only reality. From this perspective, Yunus Emre held the idea of vahdet-i vücut. According to the theory of vahdet-i vücut, Allah, the absolute reality, desired to be known and to reveal Himself, and for this reason, He created the worlds through His attributes.
+    content: `One of the most important fundamental values in his works is the belief in tawhid, which means the absolute Oneness of Allah. According to Yunus Emre, the Creator, Allah is the source of all things and, therefore, everything is connected to Him. The Creator is the true and only reality. From this perspective, Yunus Emre held the idea of vahdet-i vücut. According to the theory of vahdet-i vücut, Allah, the absolute reality, desired to be known and to reveal Himself, and for this reason, He created the worlds through His attributes.
 
 Yunus says:
 
@@ -326,7 +326,7 @@ Misafirdir, vatanına, bir gün sefer etse gerek
     title: 'Morality and Bad Habits',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch12.png?alt=media&token=80fc3835-73b9-4dc3-8570-0a49ea04a569',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F11_Chapter_12_Morality_and_Bad_Habits.mp3?alt=media&token=205f9312-bf53-4bfe-9017-a894d5c53c3e',
-    content: `According to Yunus, morality consists of abandoning behaviors unbecoming for humans. In Yunus’s understanding, immoral behaviors are described as “misbehavior” of the animalistic self. Values such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. Through these values, Yunus Emre teaches people the path to a righteous life. Additionally, by addressing negative traits such as arrogance, anger, stinginess, greed, envy, backbiting, and slander, he has warned people to stay away from these harmful habits. Yunus Emre's poems are not only literary works but also a moral guide.
+    content: `According to Yunus, morality consists of abandoning behaviors unbecoming of humans. In Yunus’s understanding, immoral behaviors are described as “misbehavior” of the animalistic self. Values such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. Through these values, Yunus Emre teaches people the path to a righteous life. Additionally, by addressing negative traits such as arrogance, anger, stinginess, greed, envy, backbiting, and slander, he has warned people to stay away from these harmful habits. Yunus Emre's poems are not only literary works but also a moral guide.
 
 Here are some of his verses concerning morality:
 
@@ -393,7 +393,7 @@ Buşu kimdeyise imanı gider
 İman gerek ise vârını gider
 [/POEM]
 
-It is obvious that Yunus Emre was not only a prominent figure in his own time but has also left a lasting legacy. His writings are valuable not only as literary works but also as a moral guide for future generations.`,
+It is obvious that Yunus Emre was not only a prominent figure in his own time but also left a lasting legacy. His writings are valuable not only as literary works but also as a moral guide for future generations.`,
     vocabulary: [
       { word: 'legacy', definition: 'a lasting influence or contribution passed on to later generations' },
       { word: 'prominent', definition: 'important, widely recognized, or influential' },
