@@ -155,11 +155,13 @@ const getResponsiveStoryFontStyle = (baseSize: number, isRTL: boolean, isDyslexi
 const PoemBlock = ({ 
   english, 
   turkish, 
-  fontSize 
+  fontSize,
+  renderTranslation,
 }: { 
   english: string; 
   turkish?: string; 
   fontSize: number;
+  renderTranslation?: (line: string, lineIndex: number) => React.ReactNode;
 }) => {
   const { isRTL } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
@@ -193,7 +195,9 @@ const PoemBlock = ({
           }}
         >
           {displayedPoem.split('\n').map((line, idx) => (
-            <div key={idx} className="my-1">{line.trim()}</div>
+            <div key={idx} className="my-1">
+              {!showOriginal && renderTranslation ? renderTranslation(line.trim(), idx) : line.trim()}
+            </div>
           ))}
         </motion.div>
       </AnimatePresence>
@@ -550,6 +554,7 @@ export const StoryPage = ({
       return { ...chunk, startIdx, endIdx };
     });
   }, [page.timedChunks]);
+  void chunksWithIndices;
 
   const renderContent = (content: string) => {
     const parts = content.split(/(\[POEM\][\s\S]*?\[\/POEM\])/g);
@@ -563,17 +568,127 @@ export const StoryPage = ({
       ...(page.animatedWords ?? []).map(highlightWordCount),
     );
     const hasAlreadyBeenHighlighted = (requested: string, seen: Set<string>) => {
-      const requestedWordCount = highlightWordCount(requested);
-      return [...seen].some(previous => {
-        if (requestedWordCount > 1 || highlightWordCount(previous) > 1) {
-          return highlightPhraseMatches(requested, previous, highlightLanguage);
-        }
-        return highlightTokenMatches(requested, previous, highlightLanguage);
-      });
+      const normalizedRequested = normalizeHighlightText(requested, highlightLanguage);
+      return [...seen].some(previous => (
+        normalizeHighlightText(previous, highlightLanguage) === normalizedRequested
+      ));
     };
     
     let globalWordCounter = 0;
     const seenOnCurrentPage = new Set<string>();
+
+    const renderInlineHighlights = (text: string, keyPrefix: string): React.ReactNode[] => {
+      const words = text.split(/(\s+)/);
+      const rendered: React.ReactNode[] = [];
+      let skipCount = 0;
+
+      for (let wIdx = 0; wIdx < words.length; wIdx += 1) {
+        if (skipCount > 0) {
+          skipCount -= 1;
+          continue;
+        }
+
+        const word = words[wIdx];
+        if (/\s+/.test(word)) {
+          rendered.push(word);
+          continue;
+        }
+
+        let foundPhrase: { vocab?: { word: string; definition: string }; animatedWord?: string; endIdx: number; text: string } | null = null;
+        const potentialPhrases: { text: string; endIdx: number }[] = [];
+        let currentPotential = word;
+        let wordsInPotential = 1;
+
+        for (let lookAhead = 1; wIdx + lookAhead < words.length && wordsInPotential < maxPhraseWords; lookAhead += 1) {
+          const nextPart = words[wIdx + lookAhead];
+          currentPotential += nextPart;
+          if (!/\s+/.test(nextPart)) {
+            wordsInPotential += 1;
+            potentialPhrases.push({ text: currentPotential, endIdx: wIdx + lookAhead });
+          }
+        }
+
+        for (let i = potentialPhrases.length - 1; i >= 0; i -= 1) {
+          const candidate = potentialPhrases[i];
+          const vocab = page.vocabulary?.find(v => (
+            highlightWordCount(v.word) > 1
+            && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+            && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
+            && highlightPhraseMatches(candidate.text, v.word, highlightLanguage)
+          ));
+          const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+            highlightWordCount(aw) > 1
+            && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
+            && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
+            && highlightPhraseMatches(candidate.text, aw, highlightLanguage)
+          )) : undefined;
+
+          if (vocab || animatedWord) {
+            foundPhrase = { vocab, animatedWord, endIdx: candidate.endIdx, text: candidate.text };
+            break;
+          }
+        }
+
+        if (foundPhrase) {
+          const canonicalWord = foundPhrase.vocab?.word ?? foundPhrase.animatedWord ?? foundPhrase.text;
+          seenOnCurrentPage.add(canonicalWord);
+          skipCount = foundPhrase.endIdx - wIdx;
+          const element = foundPhrase.vocab ? (
+            <VocabularyWord
+              word={foundPhrase.text}
+              definition={foundPhrase.vocab.definition}
+              customStyle={vocabStyle}
+              collectionId={collectionId}
+            />
+          ) : (
+            <VocabularyWord
+              word={foundPhrase.text}
+              definition={language === 'ar' ? getArabicDefinition(canonicalWord) : getEnglishDefinition(canonicalWord)}
+              customStyle={animatedStyle}
+              collectionId={collectionId}
+            />
+          );
+          rendered.push(<span key={`${keyPrefix}-${wIdx}`}>{element}</span>);
+          continue;
+        }
+
+        const vocab = page.vocabulary?.find(v => (
+          highlightWordCount(v.word) === 1
+          && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+          && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
+          && highlightTokenMatches(word, v.word, highlightLanguage)
+        ));
+        const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+          highlightWordCount(aw) === 1
+          && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
+          && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
+          && highlightTokenMatches(word, aw, highlightLanguage)
+        )) : undefined;
+
+        const canonicalWord = vocab?.word ?? animatedWord;
+        if (canonicalWord) seenOnCurrentPage.add(canonicalWord);
+
+        const element = vocab ? (
+          <VocabularyWord
+            word={word}
+            definition={vocab.definition}
+            customStyle={vocabStyle}
+            collectionId={collectionId}
+          />
+        ) : animatedWord ? (
+          <VocabularyWord
+            word={word}
+            definition={language === 'ar' ? getArabicDefinition(animatedWord) : getEnglishDefinition(animatedWord)}
+            customStyle={animatedStyle}
+            collectionId={collectionId}
+          />
+        ) : word;
+
+        rendered.push(<span key={`${keyPrefix}-${wIdx}`}>{element}</span>);
+      }
+
+      return rendered;
+    };
 
     return parts.map((part, partIdx) => {
       if (part.startsWith('[POEM]') && part.endsWith('[/POEM]')) {
@@ -584,7 +699,8 @@ export const StoryPage = ({
               key={`poem-${partIdx}`} 
               english={poem.translation} 
               turkish={poem.original} 
-              fontSize={fontSize} 
+              fontSize={fontSize}
+              renderTranslation={(line, lineIndex) => renderInlineHighlights(line, `poem-${partIdx}-${lineIndex}`)}
             />
           );
         }
