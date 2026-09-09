@@ -1,7 +1,6 @@
 import type { Exercise, PageData } from '../../../../types';
 import {
   abrahamB2FinalChallengeExercises,
-  abrahamB2FinalReviewExercises,
   abrahamB2KnowledgeCheckExercises,
   abrahamB2QuickChallenges,
   abrahamB2VocabularyChallengePairs,
@@ -14,33 +13,43 @@ const rawAbrahamB2Pages: PageData[] = [
 // c01a
 //__C01__
 // c01b
+
 // c02a
 //__C02__
 // c02b
+
 // c03a
 //__C03__
 // c03b
+
 // c04a
 //__C04__
 // c04b
+
 // c05a
 //__C05__
 // c05b
+
 // c06a
 //__C06__
 // c06b
+
 // c07a
 //__C07__
 // c07b
+
 // c08a
 //__C08__
 // c08b
+
 // c09a
 //__C09__
 // c09b
+
 // c10a
 //__C10__
 // c10b
+
 // c11a
 //__C11__
 // c11b
@@ -96,3 +105,6 @@ const standardizeEnglishStory=(page:PageData):PageData=>{if(!STORY_IDS.has(page.
 export const abrahamB2Pages:PageData[]=rawAbrahamB2Pages.map(cleanEnglishPage).map(standardizeEnglishStory).map(page=>{if(STORY_IDS.has(page.id)){const languageFocusExercises=englishLanguageFocus[page.id];return{...page,exercises:[abrahamB2QuickChallenges[page.id]],...(languageFocusExercises?{languageFocusExercises}:{})};}if(page.id===36)return{...page,exercises:abrahamB2KnowledgeCheckExercises};if(page.id===37)return{...page,title:'B2 Language Review',content:'Review and use the source, stance, time, cohesion and discourse patterns developed across all thirty-five chapters.',exercises:abrahamB2LanguageReviewExercises};if(page.id===38)return{...page,vocabularyPairs:abrahamB2VocabularyChallengePairs};if(page.id===40)return{...page,exercises:englishFinalChallenge};return page;});
 export const pages:PageData[]=abrahamB2Pages;
 // t02b
+// t03a
+//__T03__
+// t03b
