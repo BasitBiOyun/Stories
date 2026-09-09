@@ -4,12 +4,15 @@ const stripArabicDiacritics = (text: string): string => text
   .replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
   .replace(/ـ/g, '');
 
+const stripInvisibleControls = (text: string): string => text
+  .replace(/[\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF]/g, '');
+
 export const normalizeHighlightText = (text: string, language: HighlightLanguage): string => {
-  let value = text
+  let value = stripInvisibleControls(text
     .replace(/\[\/?POEM\]/gi, ' ')
     .replace(/\*\*/g, '')
     .normalize('NFKC')
-    .toLowerCase();
+    .toLowerCase());
 
   if (language === 'ar') {
     // Remove the accusative tanwin + supporting alif before stripping diacritics.
@@ -84,7 +87,22 @@ const addArabicPrefixForms = (forms: Set<string>, value: string): void => {
 };
 
 const ARABIC_PRONOUN_SUFFIXES = ['هما', 'هم', 'هن', 'ها', 'كم', 'كن', 'نا', 'ه', 'ك', 'ي'] as const;
-const ARABIC_COMMON_INFLECTION_SUFFIXES = ['وا', 'ون', 'ين'] as const;
+const ARABIC_COMMON_INFLECTION_SUFFIXES = ['وا', 'ون', 'ين', 'ات'] as const;
+
+const addArabicSuffixForms = (forms: Set<string>, value: string): void => {
+  for (const suffix of ARABIC_PRONOUN_SUFFIXES) {
+    if (value.endsWith(suffix) && value.length - suffix.length >= 3) {
+      forms.add(value.slice(0, -suffix.length));
+    }
+  }
+  for (const suffix of ARABIC_COMMON_INFLECTION_SUFFIXES) {
+    const minimumRemainder = suffix === 'ات' ? 4 : 3;
+    if (value.endsWith(suffix) && value.length - suffix.length >= minimumRemainder) {
+      forms.add(value.slice(0, -suffix.length));
+    }
+  }
+  if (value.endsWith('ا') && value.length > 4) forms.add(value.slice(0, -1));
+};
 
 export const arabicTokenForms = (raw: string): Set<string> => {
   const normalized = normalizeHighlightText(raw, 'ar');
@@ -97,18 +115,10 @@ export const arabicTokenForms = (raw: string): Set<string> => {
     for (const value of [...forms]) addArabicPrefixForms(forms, value);
   }
 
-  for (const value of [...forms]) {
-    for (const suffix of ARABIC_PRONOUN_SUFFIXES) {
-      if (value.endsWith(suffix) && value.length - suffix.length >= 3) {
-        forms.add(value.slice(0, -suffix.length));
-      }
-    }
-    for (const suffix of ARABIC_COMMON_INFLECTION_SUFFIXES) {
-      if (value.endsWith(suffix) && value.length - suffix.length >= 3) {
-        forms.add(value.slice(0, -suffix.length));
-      }
-    }
-    if (value.endsWith('ا') && value.length > 4) forms.add(value.slice(0, -1));
+  // Two conservative suffix passes cover combinations such as a plural ending
+  // followed by an attached pronoun without turning the matcher into a stemmer.
+  for (let pass = 0; pass < 2; pass += 1) {
+    for (const value of [...forms]) addArabicSuffixForms(forms, value);
   }
 
   for (const value of [...forms]) addArabicPrefixForms(forms, value);
