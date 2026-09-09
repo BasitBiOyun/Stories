@@ -186,3 +186,48 @@ export const highlightPhraseOccurs = (
 
   return false;
 };
+
+type SurfaceTokenSpan = { raw: string; start: number; end: number };
+
+const surfaceTokenSpans = (content: string): SurfaceTokenSpan[] => {
+  const spans: SurfaceTokenSpan[] = [];
+  const tokenPattern = /\S+/gu;
+  let match: RegExpExecArray | null;
+  while ((match = tokenPattern.exec(content)) !== null) {
+    spans.push({ raw: match[0], start: match.index, end: match.index + match[0].length });
+  }
+  return spans;
+};
+
+const trimHighlightSurface = (text: string): string => text
+  .replace(/^[^\p{L}\p{N}]+/u, '')
+  .replace(/[^\p{L}\p{N}\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]+$/u, '');
+
+/**
+ * Returns the exact surface span from content that satisfies the same matching
+ * rules used by StoryPage. This prevents data-level resolvers from dropping an
+ * Arabic vocabulary item merely because the prose attaches a clitic or uses a
+ * harmless punctuation/diacritic variant.
+ */
+export const findHighlightSurface = (
+  content: string,
+  phrase: string,
+  language: HighlightLanguage,
+): string | null => {
+  const requestedTokens = rawTokens(phrase, language);
+  if (!requestedTokens.length) return null;
+
+  const spans = surfaceTokenSpans(content);
+  const maxWindow = requestedTokens.length + 2;
+  for (let start = 0; start < spans.length; start += 1) {
+    for (let length = Math.max(1, requestedTokens.length - 1); length <= maxWindow; length += 1) {
+      const endIndex = start + length - 1;
+      if (endIndex >= spans.length) break;
+      const surface = content.slice(spans[start].start, spans[endIndex].end);
+      if (highlightPhraseMatches(surface, phrase, language)) {
+        return trimHighlightSurface(surface) || surface.trim();
+      }
+    }
+  }
+  return null;
+};
