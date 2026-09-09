@@ -837,7 +837,7 @@ export const StoryPage = ({
                   ? 'text-sky-950'
                   : 'text-amber-950'
               )}>
-                Language Focus
+                {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
               </h4>
               <p className={cn(
                 'text-xs sm:text-sm font-medium',
@@ -847,7 +847,7 @@ export const StoryPage = ({
                   ? 'text-sky-950/55'
                   : 'text-amber-900/55'
               )}>
-                Notice it. Connect it. Use it.
+                {language === 'ar' ? 'لاحظها. اربطها. استخدمها.' : 'Notice it. Connect it. Use it.'}
               </p>
             </div>
           </div>
