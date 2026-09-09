@@ -8,7 +8,7 @@ export const meccaA2Pages: PageData[] = [
     title: 'Bilal Ibn Rabah’s Place in Islam',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1-clean.png?alt=media&token=9f45ea9c-848e-4ed6-ac3a-86676de78194',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=76a7c1bd-fa29-41ba-a587-4846ce823fc8',
-    content: `Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca. After becoming a Muslim, he never left Prophet Muhammad (pbuh) until his death. He was also the first person to read the Adhan, the call to prayer, in the history of Islam.
+    content: `Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca. After becoming a Muslim, he never left Prophet Muhammad (pbuh) until his death. He was also the first person to give the Adhan, the call to prayer, in the history of Islam.
 
 Bilal was a black slave. He was born in Mecca. His mother was an Ethiopian woman. His father, Rebâh, and his mother, Hamâme, were also slaves. So Bilal was born into slavery.
 
@@ -162,7 +162,7 @@ After Bilal met Abu Bakr, he went back home. He could not sleep during the night
     title: 'Allah Is One',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8-clean.png?alt=media&token=1a188aa4-e27a-4510-a956-80754b70d6d6',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F07_Chapter_8_Allah_Is_One.mp3?alt=media&token=18a91bc7-23ff-4b9e-a238-15bca0cc7266',
-    content: `Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe this magic man Muhammad?” Bilal answered with a strong and sure voice: “Yes, Allah helped me to find the right way. Now I believe in the true religion.”
+    content: `Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe in this magic man Muhammad?” Bilal answered with a strong and sure voice: “Yes, Allah helped me to find the right way. Now I believe in the true religion.”
 
 When Umayya heard this, he went mad with anger. He locked Bilal in a house without food or water. He forced him to look at idols and worship them, but Bilal refused.
 
@@ -232,7 +232,7 @@ Abu Bakr told Bilal that he was now a free man and no longer a slave. Abu Bakr b
 
 After many years of hardship in Mecca, the Prophet (pbuh) told the Muslims to move to Medina. After the Hijrah, the Prophet (pbuh) wanted someone to call people to prayer. He chose Bilal.
 
-Bilal was a very brave man. Even when people hurt him, he shouted fearlessly, “There is no god but Allah.” That is why reading the first Adhan (call to prayer) was certainly worthy of Bilal. So Bilal gave the first Adhan: “Allah is the greatest, Allah is the greatest.”`,
+Bilal was a very brave man. Even when people hurt him, he shouted fearlessly, “There is no god but Allah.” That is why giving the first Adhan (call to prayer) was certainly worthy of Bilal. So Bilal gave the first Adhan: “Allah is the greatest, Allah is the greatest.”`,
     vocabulary: [
       { word: 'beloved', definition: 'Loved very much.' },
       { word: 'hardship', definition: 'A difficult time or problem.' },
@@ -274,7 +274,7 @@ In this speech, he said it is wrong to dislike or disrespect people because of t
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F12_Chapter_13_Everyone_Is_Equal.mp3?alt=media&token=746f98e6-3e86-4e1e-8cab-7cb0ab7899c8',
     content: `No person is better than another because of skin color. Arabs are not better than non-Arabs, and white people are not better than black people. The only way to be better is to be good and do good actions.
 
-Bilal loved the Prophet (pbuh) very much. When the Prophet (pbuh) died, Bilal was too sad to call the prayer. He started crying when he said the Prophet’s name. He could not stay in Medina, so he asked Abu Bakr to let him leave. Abu Bakr allowed him to leave the city. He went to Damascus and died there.
+Bilal loved the Prophet (pbuh) very much. When the Prophet (pbuh) died, Bilal was too sad to give the Adhan. He started crying when he said the Prophet’s name. He could not stay in Medina, so he asked Abu Bakr to let him leave. Abu Bakr allowed him to leave the city. He went to Damascus and died there.
 
 Bilal’s story shows that in Islam, everyone is equal. His life teaches us that it is unfair to behave badly to people because of their skin color or nationality. A person’s skin color or past is not important. What matters is the heart and good actions.`,
     vocabulary: [
