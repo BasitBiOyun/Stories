@@ -142,6 +142,18 @@ export const highlightTokenMatches = (
 
   if (language === 'en') return englishTokenMatches(surface, requested);
 
+  // Arabic interrogative hamza may attach directly to a present-tense verb:
+  // أتعصون -> تعصون. Keep this deliberately narrow so lexical words beginning
+  // with hamza/alif (e.g. إسلام) are never reduced indiscriminately.
+  if (
+    surface.startsWith('ا')
+    && surface.length > 4
+    && ['ت', 'ي', 'ن'].includes(requested[0])
+    && surface.slice(1) === requested
+  ) {
+    return true;
+  }
+
   const surfaceForms = arabicTokenForms(surface);
   const requestedForms = arabicTokenForms(requested);
   return [...requestedForms].some(form => surfaceForms.has(form));
