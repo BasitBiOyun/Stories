@@ -93,12 +93,16 @@ export const abrahamB2HotspotCoords = (chapter: number) => {
   return [{ x: leftX, y: firstY }, { x: rightX, y: secondY }] as const;
 };
 
+const englishCanonicalGlossary = Object.values(abrahamB2CanonicalVocabulary).flatMap(items =>
+  items.map(([word, _arWord, definition]) => ({ word, definition }))
+);
+
 const cleanEnglishPage = (page: PageData): PageData => {
   const { exercises: _exercises, sequencingItems: _sequencingItems, vocabularyPairs: _vocabularyPairs, ...base } = page;
   if (page.id === 36) return { ...base, type: 'quiz', title: 'B2 Knowledge Check', content: 'Check your understanding of the complete Prophet Abraham B2 story.', image: '', audioUrl: '', vocabulary: undefined, hotspots: undefined, animatedWords: undefined, syncPoints: undefined, timedChunks: undefined };
   if (page.id === 37) return { ...base, type: 'exercises', title: 'B2 Retrieval Review', content: 'Retrieve, reconnect, and use evidence from across the complete story.', image: '' };
   if (page.id === 38) return { ...base, type: 'vocabulary-match', title: 'B2 Vocabulary Challenge', content: 'Match ten meaning-bearing story terms with their precise meanings.', image: '', vocabulary: undefined, animatedWords: undefined };
-  if (page.id === 39) return { ...base, type: 'glossary', title: 'B2 Story Glossary', image: '' };
+  if (page.id === 39) return { ...base, type: 'glossary', title: 'B2 Story Glossary', image: '', animatedWords: undefined, syncPoints: undefined, timedChunks: undefined };
   if (page.id === 40) return { ...base, type: 'final-challenge', title: 'Final Challenge', content: 'Demonstrate whole-book B2 mastery through analysis, evidence, comparison, and synthesis.', image: '' };
   return base;
 };
@@ -123,6 +127,7 @@ export const abrahamB2Pages: PageData[] = rawAbrahamB2Pages.map(cleanEnglishPage
   if (page.id === 36) return { ...page, exercises: abrahamB2KnowledgeCheckExercises };
   if (page.id === 37) return { ...page, title: 'B2 Language Review', content: 'Review and use the source, stance, time, cohesion and discourse patterns developed across all thirty-five chapters.', exercises: abrahamB2LanguageReviewExercises };
   if (page.id === 38) return { ...page, vocabularyPairs: abrahamB2VocabularyChallengePairs };
+  if (page.id === 39) return { ...page, vocabulary: englishCanonicalGlossary };
   if (page.id === 40) return { ...page, exercises: englishFinalChallenge };
   return page;
 });
