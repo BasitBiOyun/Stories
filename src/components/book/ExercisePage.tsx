@@ -160,6 +160,12 @@ export const ExercisePage = ({
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  const exerciseTypeLabel = (type: Exercise['type']) => {
+    if (type === 'matching') return isArabic ? 'مُطَابَقَة' : 'Matching';
+    if (type === 'fill-blanks') return isArabic ? 'مَلْءُ الْفَرَاغَات' : 'Fill in the Blanks';
+    return t(`ex.type.${type}`);
+  };
+
   // Remove audio for pages 11, 12, 13 (indices 10, 11, 12)
   const hideAudio = page.id === 11 || page.id === 12 || page.id === 13;
   const showGenericHeader = page.type === 'sequencing' || page.type === 'game';
@@ -369,7 +375,7 @@ export const ExercisePage = ({
                             <p className={cn(
                               'text-gray-500 uppercase tracking-widest font-medium',
                               isArabic ? 'text-sm' : 'text-xs'
-                            )}>{t(`ex.type.${ex.type}`)}</p>
+                            )}>{exerciseTypeLabel(ex.type)}</p>
                           </div>
                         </div>
                         <ArrowRight className={cn(
