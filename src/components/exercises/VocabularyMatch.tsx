@@ -46,6 +46,7 @@ const themeFor = (collectionId: string) => {
 export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => {
   const { t, formatNumber, language } = useLanguage();
   const theme = themeFor(collectionId);
+  const isArabic = language === 'ar';
   const [meaningOrder, setMeaningOrder] = useState(() => shuffle(pairs.map((pair) => pair.meaning)));
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [selectedMeaning, setSelectedMeaning] = useState<string | null>(null);
@@ -131,14 +132,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
   return (
     <div className="h-full flex flex-col gap-3 relative overflow-hidden" onPointerDown={(event) => event.stopPropagation()}>
       <div className="flex items-center gap-3 shrink-0">
-        <span className="text-xs font-bold text-wood/50 tabular-nums w-8 text-right">{formatNumber(correctCount)}/{formatNumber(total)}</span>
+        <span className={cn('font-bold text-wood/50 tabular-nums w-8 text-right', isArabic ? 'text-sm' : 'text-xs')}>{formatNumber(correctCount)}/{formatNumber(total)}</span>
         <div className={cn('flex-1 h-3 rounded-full overflow-hidden', theme.barBg)}>
           <motion.div className={cn('h-full rounded-full', theme.barFill)} animate={{ width: `${progress}%` }} transition={{ type: 'spring', stiffness: 160, damping: 22 }} />
         </div>
-        <span className="text-xs font-bold text-emerald-600 tabular-nums w-10 text-right">{formatNumber(progress)}%</span>
+        <span className={cn('font-bold text-emerald-600 tabular-nums w-10 text-right', isArabic ? 'text-sm' : 'text-xs')}>{formatNumber(progress)}%</span>
         <AnimatePresence>
           {streak >= 2 && (
-            <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} className={cn('flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-black shrink-0', theme.badge)}>
+            <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} className={cn('flex items-center gap-1 px-2 py-1 rounded-full font-black shrink-0', isArabic ? 'text-sm' : 'text-[11px]', theme.badge)}>
               <Zap size={10} />{formatNumber(streak)}x
             </motion.div>
           )}
@@ -151,23 +152,23 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
           {feedback.kind === 'done' ? (
             <motion.div key="done" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3 flex items-center gap-3">
               <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
-              <div className="flex-1"><p className="font-display text-sm font-bold text-emerald-800">{t('ex.allWordsMatched').replace('{total}', formatNumber(total))}</p>{bestStreak >= 2 && <p className="text-xs text-emerald-700">{t('ex.bestStreak').replace('{count}', formatNumber(bestStreak))}</p>}</div>
-              <button onClick={reset} className="px-3 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold flex items-center gap-1"><RotateCcw size={13} />{t('ex.tryAgain')}</button>
+              <div className="flex-1"><p className={cn('font-display font-bold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>{t('ex.allWordsMatched').replace('{total}', formatNumber(total))}</p>{bestStreak >= 2 && <p className={cn('text-emerald-700', isArabic ? 'text-sm' : 'text-xs')}>{t('ex.bestStreak').replace('{count}', formatNumber(bestStreak))}</p>}</div>
+              <button onClick={reset} className={cn('px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold flex items-center gap-1', isArabic ? 'text-sm' : 'text-xs')}><RotateCcw size={13} />{t('ex.tryAgain')}</button>
             </motion.div>
           ) : feedback.kind === 'correct' ? (
             <motion.div key={`correct-${feedback.word}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3 flex items-center gap-3">
               <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
-              <p className="font-serif text-sm text-emerald-800"><strong>{displayWord(feedback.word, language)}</strong> {t('ex.means')} <span className={language === 'ar' ? '' : 'italic'}>{feedback.meaning}</span></p>
+              <p className={cn('font-serif text-emerald-800', isArabic ? 'text-base' : 'text-sm')}><strong>{displayWord(feedback.word, language)}</strong> {t('ex.means')} <span className={isArabic ? '' : 'italic'}>{feedback.meaning}</span></p>
             </motion.div>
           ) : feedback.kind === 'wrong' ? (
             <motion.div key={`wrong-${feedback.word}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3 flex items-center gap-3">
-              <XCircle size={20} className="text-rose-600 shrink-0" />
-              <p className="font-serif text-sm text-rose-800"><strong>{displayWord(feedback.word, language)}</strong> {t('ex.doesNotMean')} <span className={language === 'ar' ? '' : 'italic'}>{feedback.meaning}</span>. {t('ex.keepTrying')}</p>
+              <XCircle2 size={20} className="text-rose-600 shrink-0" />
+              <p className={cn('font-serif text-rose-800', isArabic ? 'text-base' : 'text-sm')}><strong>{displayWord(feedback.word, language)}</strong> {t('ex.doesNotMean')} <span className={isArabic ? '' : 'italic'}>{feedback.meaning}</span>. {t('ex.keepTrying')}</p>
             </motion.div>
           ) : (
             <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-2xl border-2 border-dashed border-gray-200 h-full min-h-[58px] flex items-center justify-center gap-2 px-4">
               <Lightbulb size={17} className={theme.accent} />
-              <p className="font-serif text-sm text-wood/50">{t('ex.selectWordHint')}</p>
+              <p className={cn('font-serif text-wood/50', isArabic ? 'text-base' : 'text-sm')}>{t('ex.selectWordHint')}</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -175,8 +176,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
 
       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
         <div className="grid grid-cols-2 gap-x-3 gap-y-2 pb-1 items-start">
-          <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display text-xs uppercase tracking-widest font-bold', theme.accent)}>{t('ex.words')}</span></div>
-          <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display text-xs uppercase tracking-widest font-bold', theme.accent)}>{t('ex.meanings')}</span></div>
+          <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accent)}>{t('ex.words')}</span></div>
+          <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accent)}>{t('ex.meanings')}</span></div>
 
           {pairs.map((pair, index) => {
             const meaning = meaningOrder[index];
@@ -200,11 +201,11 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className={cn('font-serif font-bold text-xs sm:text-base md:text-lg leading-snug', wordMatched ? 'text-emerald-800' : wordWrong ? 'text-rose-700' : 'text-wood')}>
+                    <span className={cn('font-serif font-bold leading-snug', isArabic ? 'text-sm sm:text-lg md:text-lg' : 'text-xs sm:text-base md:text-lg', wordMatched ? 'text-emerald-800' : wordWrong ? 'text-rose-700' : 'text-wood')}>
                       {displayWord(pair.word, language)}
                     </span>
                     {wordMatched && <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />}
-                    {wordWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
+                    {wordWrong && <XCircle2 size={16} className="text-rose-500 shrink-0" />}
                   </div>
                 </motion.button>
 
@@ -219,9 +220,9 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className={cn('font-serif text-xs sm:text-sm md:text-base leading-snug', meaningMatched ? 'text-emerald-800' : meaningWrong ? 'text-rose-700' : 'text-wood/80')}>{meaning}</span>
+                    <span className={cn('font-serif leading-snug', isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base', meaningMatched ? 'text-emerald-800' : meaningWrong ? 'text-rose-700' : 'text-wood/80')}>{meaning}</span>
                     {meaningMatched && <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />}
-                    {meaningWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
+                    {meaningWrong && <XCircle2 size={16} className="text-rose-500 shrink-0" />}
                   </div>
                 </motion.button>
               </React.Fragment>
