@@ -162,7 +162,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
             </motion.div>
           ) : feedback.kind === 'wrong' ? (
             <motion.div key={`wrong-${feedback.word}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3 flex items-center gap-3">
-              <XCircle2 size={20} className="text-rose-600 shrink-0" />
+              <XCircle size={20} className="text-rose-600 shrink-0" />
               <p className={cn('font-serif text-rose-800', isArabic ? 'text-base' : 'text-sm')}><strong>{displayWord(feedback.word, language)}</strong> {t('ex.doesNotMean')} <span className={isArabic ? '' : 'italic'}>{feedback.meaning}</span>. {t('ex.keepTrying')}</p>
             </motion.div>
           ) : (
@@ -205,7 +205,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
                       {displayWord(pair.word, language)}
                     </span>
                     {wordMatched && <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />}
-                    {wordWrong && <XCircle2 size={16} className="text-rose-500 shrink-0" />}
+                    {wordWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
                   </div>
                 </motion.button>
 
@@ -222,7 +222,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => 
                   <div className="flex items-center justify-between gap-2">
                     <span className={cn('font-serif leading-snug', isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base', meaningMatched ? 'text-emerald-800' : meaningWrong ? 'text-rose-700' : 'text-wood/80')}>{meaning}</span>
                     {meaningMatched && <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />}
-                    {meaningWrong && <XCircle2 size={16} className="text-rose-500 shrink-0" />}
+                    {meaningWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
                   </div>
                 </motion.button>
               </React.Fragment>
