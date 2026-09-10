@@ -29,6 +29,8 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   [/Hide password/gi, 'إخفاء كلمة المرور'],
   [/Incorrect password! Please try again\./gi, 'كلمة المرور غير صحيحة. حاول مرة أخرى.'],
   [/Interactive E-Book Series/gi, 'سلسلة الكتب الإلكترونية التفاعلية'],
+  [/ex\.type\.matching/gi, 'مُطَابَقَة'],
+  [/ex\.type\.fill-blanks/gi, 'مَلْءُ الْفَرَاغَات'],
 ];
 
 const localize = (value: string) => REPLACEMENTS.reduce(
