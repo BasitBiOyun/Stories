@@ -5,6 +5,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 export const BoardGame = () => {
   const { t, language } = useLanguage();
+  const isArabic = language === 'ar';
   const [position, setPosition] = useState(0);
   const [diceValue, setDiceValue] = useState(0);
   const [isRolling, setIsRolling] = useState(false);
@@ -51,8 +52,8 @@ export const BoardGame = () => {
           >
             <span className="text-[11px] font-display opacity-40 mb-1">{i + 1}</span>
             <span className={cn(
-              "text-[12px] font-serif font-bold leading-tight text-wood",
-              language === 'ar' && "text-[14px]"
+              "font-serif font-bold leading-tight text-wood",
+              isArabic ? "text-[15px]" : "text-[12px]"
             )}>{cell.title}</span>
             {position === i && (
               <motion.div layoutId="player" className="absolute -top-2 -right-2">
@@ -68,8 +69,8 @@ export const BoardGame = () => {
       <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center">
         <div className="p-4 bg-gold/5 rounded-xl border border-gold/20 max-w-xs">
           <p className={cn(
-            "font-serif text-base text-wood leading-relaxed",
-            language === 'ar' ? "not-italic text-lg" : "italic"
+            "font-serif text-wood leading-relaxed",
+            isArabic ? "not-italic text-lg" : "italic text-base"
           )}>{message}</p>
         </div>
         
@@ -83,7 +84,10 @@ export const BoardGame = () => {
           <button 
             onClick={rollDice}
             disabled={isRolling || position === boardSize - 1}
-            className="px-6 py-3 bg-wood text-parchment rounded-full font-sans font-bold text-xs uppercase tracking-widest hover:bg-gold transition-colors disabled:opacity-50 shadow-lg"
+            className={cn(
+              "px-6 py-3 bg-wood text-parchment rounded-full font-sans font-bold uppercase tracking-widest hover:bg-gold transition-colors disabled:opacity-50 shadow-lg",
+              isArabic ? "text-[15px]" : "text-xs"
+            )}
           >
             {position === boardSize - 1 ? t('bg.journeyComplete') : t('bg.rollDice')}
           </button>
