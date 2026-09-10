@@ -1,104 +1,15 @@
-/* Arabic UI optical compensation.
-   Keep layout geometry untouched: typography only. */
+/* Arabic script hygiene only.
+   Font sizes are controlled by the components that render each UI role. */
 
-/* Arabic has no uppercase/lowercase distinction, and Latin-style tracking hurts
-   the visual rhythm of connected Arabic glyphs. */
+/* Arabic has no uppercase/lowercase distinction. Wide Latin tracking also
+   weakens the rhythm of connected Arabic glyphs. */
 [dir="rtl"] :where(.font-display, .font-serif, .font-sans, .font-arabic) {
   letter-spacing: 0 !important;
   text-transform: none !important;
 }
 
-/* Arakom ships as Regular + Bold. Keep the heaviest utility on the real Bold face. */
+/* Arakom ships with Regular and Bold faces. Map extra-heavy utilities to the
+   real Bold face instead of asking the browser to synthesize a 900 weight. */
 [dir="rtl"] :where(.font-black, .font-extrabold) {
   font-weight: 700 !important;
-}
-
-/* Small UI labels: a modest optical lift, not a global scale-up. */
-[dir="rtl"] .font-display[class~="text-[10px]"] {
-  font-size: 0.75rem !important;
-  line-height: 1.35 !important;
-}
-
-[dir="rtl"] .font-display[class~="text-xs"] {
-  font-size: 0.8125rem !important;
-  line-height: 1.4 !important;
-}
-
-/* Muted/helper copy such as “Test your understanding of this page”. */
-[dir="rtl"] p.font-medium[class~="text-xs"] {
-  font-size: 0.8125rem !important;
-  font-weight: 700 !important;
-  line-height: 1.5 !important;
-}
-
-[dir="rtl"] p.font-medium[class~="text-sm"] {
-  font-size: 0.9375rem !important;
-  font-weight: 700 !important;
-  line-height: 1.5 !important;
-}
-
-/* Full-screen interactive exercise: keep headings/layout as-is and only improve
-   small labels, instructions, option/card copy and button text. */
-[dir="rtl"][role="dialog"] header .font-display[class~="text-[10px]"] {
-  font-size: 0.75rem !important;
-}
-
-[dir="rtl"][role="dialog"] header .font-serif[class~="text-xs"] {
-  font-size: 0.8125rem !important;
-  line-height: 1.5 !important;
-}
-
-[dir="rtl"][role="dialog"] main p.font-serif[class~="text-sm"],
-[dir="rtl"][role="dialog"] main button.font-serif[class~="text-sm"],
-[dir="rtl"][role="dialog"] main span.font-serif[class~="text-sm"] {
-  font-size: 0.9375rem !important;
-  line-height: 1.5 !important;
-}
-
-[dir="rtl"][role="dialog"] main button.font-display[class~="text-sm"] {
-  font-size: 0.9375rem !important;
-}
-
-@media (min-width: 640px) {
-  [dir="rtl"] .font-display[class~="sm:text-xs"] {
-    font-size: 0.875rem !important;
-  }
-
-  [dir="rtl"] p.font-medium[class~="sm:text-sm"] {
-    font-size: 0.9375rem !important;
-  }
-
-  [dir="rtl"][role="dialog"] header .font-display[class~="sm:text-xs"] {
-    font-size: 0.875rem !important;
-  }
-
-  [dir="rtl"][role="dialog"] header .font-serif[class~="sm:text-sm"] {
-    font-size: 0.9375rem !important;
-  }
-
-  [dir="rtl"][role="dialog"] main p.font-serif[class~="sm:text-base"],
-  [dir="rtl"][role="dialog"] main button.font-serif[class~="sm:text-base"],
-  [dir="rtl"][role="dialog"] main span.font-serif[class~="sm:text-base"] {
-    font-size: 1.0625rem !important;
-  }
-
-  [dir="rtl"][role="dialog"] main button.font-display[class~="sm:text-base"] {
-    font-size: 1.0625rem !important;
-  }
-}
-
-@media (min-width: 768px) {
-  [dir="rtl"][role="dialog"] header .font-serif[class~="md:text-base"] {
-    font-size: 1.0625rem !important;
-  }
-
-  [dir="rtl"][role="dialog"] main p.font-serif[class~="md:text-lg"],
-  [dir="rtl"][role="dialog"] main button.font-serif[class~="md:text-lg"],
-  [dir="rtl"][role="dialog"] main span.font-serif[class~="md:text-lg"] {
-    font-size: 1.1875rem !important;
-  }
-
-  [dir="rtl"][role="dialog"] main button.font-display[class~="md:text-lg"] {
-    font-size: 1.1875rem !important;
-  }
 }
