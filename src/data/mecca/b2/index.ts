@@ -1,12 +1,23 @@
-import type { BookData } from '../../../types';
+import type { BookData, PageData } from '../../../types';
 
-import { meccaB2Pages } from './en/pages';
+import { meccaB2Pages, meccaB2VocabIndexes } from './en/pages';
 import { meccaB2TeacherGuide } from './en/teacherGuide';
 import { meccaB2SelfStudyGuide } from './en/selfStudyGuide';
 
 import { meccaB2PagesAr } from './ar/pages';
 import { meccaB2TeacherGuideAr } from './ar/teacherGuide';
 import { meccaB2SelfStudyGuideAr } from './ar/selfStudyGuide';
+
+const alignArabicVocabularyWithEnglish = (pages: PageData[]): PageData[] => pages.map(page => {
+  const indexes = meccaB2VocabIndexes[page.id];
+  if (page.type !== 'story' || !indexes) return page;
+
+  const vocabulary = indexes
+    .map(index => page.vocabulary?.[index])
+    .filter((entry): entry is NonNullable<PageData['vocabulary']>[number] => Boolean(entry));
+
+  return { ...page, vocabulary };
+});
 
 export const meccaB2BookDataEn: BookData = {
   id: 'mecca-b2-en',
@@ -23,7 +34,7 @@ export const meccaB2BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: meccaB2PagesAr,
+  pages: alignArabicVocabularyWithEnglish(meccaB2PagesAr),
   teacherGuide: meccaB2TeacherGuideAr,
   selfStudyGuide: meccaB2SelfStudyGuideAr,
 };
