@@ -79,6 +79,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const { t, formatNumber, isRTL, language } = useLanguage();
   const { setFinalScore } = useStoryProgress();
   const theme = React.useMemo(() => getTheme(bookData), [bookData]);
+  const isArabic = language === 'ar';
 
   const [gameState, setGameState] = React.useState<'intro' | 'playing' | 'results'>('intro');
   const [questions, setQuestions] = React.useState<Exercise[]>([]);
@@ -241,7 +242,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           <h2 className={cn('font-display text-2xl sm:text-3xl md:text-4xl font-black tracking-tight', theme.text)}>
             {t('nav.finalChallenge')}
           </h2>
-          <p className="font-serif text-sm sm:text-base md:text-lg text-wood/65 mt-3 leading-relaxed">
+          <p className={cn('font-serif text-wood/65 mt-3 leading-relaxed', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>
             {t('nav.finalChallengeIntro')}
           </p>
         </div>
@@ -249,7 +250,11 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
         <button
           type="button"
           onClick={startChallenge}
-          className={cn('min-h-12 px-8 sm:px-10 rounded-xl text-white font-display text-xs sm:text-sm uppercase tracking-widest font-bold flex items-center gap-2 shadow-lg', theme.accent)}
+          className={cn(
+            'min-h-12 px-8 sm:px-10 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center gap-2 shadow-lg',
+            isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
+            theme.accent
+          )}
         >
           {t('nav.startChallenge')}
           <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
@@ -281,7 +286,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           <h2 className={cn('font-display text-2xl sm:text-3xl font-black', theme.text)}>
             {percentage === 100 ? t('nav.perfectScore') : percentage >= 70 ? t('nav.greatJob') : t('nav.keepPracticing')}
           </h2>
-          <p className="font-serif text-sm sm:text-base text-wood/60 mt-2">
+          <p className={cn('font-serif text-wood/60 mt-2', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
             {t('nav.resultsSummary')
               .replace('{score}', formatNumber(score))
               .replace('{total}', formatNumber(questions.length))}
@@ -292,14 +297,23 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           <button
             type="button"
             onClick={startChallenge}
-            className={cn('flex-1 min-h-12 rounded-xl border-2 bg-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', theme.border, theme.subtext)}
+            className={cn(
+              'flex-1 min-h-12 rounded-xl border-2 bg-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2',
+              isArabic ? 'text-sm sm:text-base' : 'text-xs',
+              theme.border,
+              theme.subtext
+            )}
           >
             <RotateCcw size={16} /> {t('nav.tryAgain')}
           </button>
           <button
             type="button"
             onClick={onComplete}
-            className={cn('flex-1 min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold', theme.accent)}
+            className={cn(
+              'flex-1 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold',
+              isArabic ? 'text-sm sm:text-base' : 'text-xs',
+              theme.accent
+            )}
           >
             {t('nav.finishJourney')}
           </button>
@@ -325,7 +339,8 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 disabled={selectedAnswer !== null}
                 onClick={() => handleAnswer(value)}
                 className={cn(
-                  'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 font-display text-sm sm:text-lg font-black uppercase tracking-widest transition-colors',
+                  'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 font-display font-black uppercase tracking-widest transition-colors',
+                  isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-lg',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
@@ -369,7 +384,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 )}>
                   {String.fromCharCode(65 + displayIndex)}
                 </span>
-                <span className="font-serif text-sm sm:text-base md:text-lg font-semibold flex-1 leading-snug">{option.text}</span>
+                <span className={cn('font-serif font-semibold flex-1 leading-snug', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{option.text}</span>
               </button>
             );
           })}
@@ -380,7 +395,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     if (currentQuestion.type === 'fill-blanks') {
       return (
         <div className={cn('rounded-2xl border-2 p-4 sm:p-6 space-y-5 bg-white', theme.border)}>
-          <div className="font-serif text-base sm:text-lg leading-loose text-wood">
+          <div className={cn('font-serif leading-loose text-wood', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg')}>
             {(currentQuestion.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
               <React.Fragment key={`${currentQuestion.id}-part-${index}`}>
                 {part}
@@ -401,7 +416,11 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
               type="button"
               disabled={!fillDraft.trim()}
               onClick={() => handleAnswer(fillDraft)}
-              className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
+              className={cn(
+                'w-full min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold disabled:opacity-40',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                theme.accent
+              )}
             >
               {t('nav.check')}
             </button>
@@ -416,10 +435,10 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          <p className="font-serif text-sm sm:text-base text-wood/55">{t('nav.matchingInstructions')}</p>
+          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <div className="space-y-2.5">
-              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.subtext)}>
+              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.subtext)}>
                 {language === 'ar' ? 'المفاهيم' : 'Concepts'}
               </p>
               {pairs.map((pair) => {
@@ -432,18 +451,19 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                     disabled={selectedAnswer !== null}
                     onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
                     className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-bold transition-colors flex items-center justify-between gap-3',
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-bold transition-colors flex items-center justify-between gap-3',
+                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                       selected ? `${theme.soft} ${theme.text}` : `bg-white ${theme.border}`
                     )}
                   >
                     <span>{pair.left}</span>
-                    {assigned && <span className={cn('text-xs font-medium truncate max-w-[45%]', theme.subtext)}>✓ {assigned}</span>}
+                    {assigned && <span className={cn('font-medium truncate max-w-[45%]', isArabic ? 'text-sm' : 'text-xs', theme.subtext)}>✓ {assigned}</span>}
                   </button>
                 );
               })}
             </div>
             <div className="space-y-2.5">
-              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.subtext)}>
+              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.subtext)}>
                 {language === 'ar' ? 'المعاني' : 'Meanings'}
               </p>
               {presentedMeanings.map((meaning) => {
@@ -455,7 +475,8 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                     disabled={selectedAnswer !== null || !selectedMatchingLeft}
                     onClick={() => selectMeaning(meaning)}
                     className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-medium transition-colors',
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-medium transition-colors',
+                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                       used
                         ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
                         : selectedMatchingLeft
@@ -474,7 +495,11 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
               type="button"
               disabled={!allAssigned}
               onClick={() => handleAnswer(matchingAssignments)}
-              className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
+              className={cn(
+                'w-full min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold disabled:opacity-40',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                theme.accent
+              )}
             >
               {t('nav.matchedThem')}
             </button>
@@ -487,7 +512,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       const itemMap = new Map((currentQuestion.sequencingItems ?? []).map((item) => [item.id, item.text]));
       return (
         <div className="space-y-4">
-          <p className="font-serif text-sm sm:text-base text-wood/55">
+          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
             {language === 'ar' ? 'رتّب الأحداث باستخدام زري الأعلى والأسفل، ثم تحقق من الإجابة.' : 'Use the up and down buttons to put the events in order, then check your answer.'}
           </p>
           <div className="space-y-2.5">
@@ -496,7 +521,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 <span className={cn('w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-display text-sm font-black', theme.soft, theme.subtext)}>
                   {formatNumber(index + 1)}
                 </span>
-                <span className="font-serif text-sm sm:text-base text-wood flex-1 leading-snug">{itemMap.get(id)}</span>
+                <span className={cn('font-serif text-wood flex-1 leading-snug', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{itemMap.get(id)}</span>
                 <div className="flex gap-1 shrink-0">
                   <button
                     type="button"
@@ -521,7 +546,11 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
               type="button"
               disabled={!sequenceDraft.length}
               onClick={() => handleAnswer(sequenceDraft)}
-              className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold disabled:opacity-40', theme.accent)}
+              className={cn(
+                'w-full min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold disabled:opacity-40',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                theme.accent
+              )}
             >
               {t('nav.check')}
             </button>
@@ -542,8 +571,8 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
               {formatNumber(currentStep + 1)}
             </span>
             <div className="min-w-0">
-              <p className={cn('font-display text-[10px] uppercase tracking-widest font-black', theme.subtext)}>{t('nav.question')}</p>
-              <p className={cn('font-display text-sm sm:text-base font-bold', theme.text)}>
+              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm' : 'text-[10px]', theme.subtext)}>{t('nav.question')}</p>
+              <p className={cn('font-display font-bold', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base', theme.text)}>
                 {formatNumber(currentStep + 1)} {t('nav.of')} {formatNumber(questions.length)}
               </p>
             </div>
@@ -571,16 +600,20 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
             animate={{ opacity: 1, y: 0 }}
             className={cn('rounded-2xl border-2 p-4 sm:p-5', lastCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200')}
           >
-            <p className="font-serif text-sm sm:text-base text-wood/75 leading-relaxed">
+            <p className={cn('font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
               {lastCorrect ? currentQuestion.feedback.correct : currentQuestion.feedback.incorrect}
             </p>
             {currentQuestion.explanation && (
-              <p className="font-serif text-sm sm:text-base text-wood/60 mt-2 leading-relaxed">{currentQuestion.explanation}</p>
+              <p className={cn('font-serif text-wood/60 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{currentQuestion.explanation}</p>
             )}
             <button
               type="button"
               onClick={goNext}
-              className={cn('w-full mt-4 min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', theme.accent)}
+              className={cn(
+                'w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                theme.accent
+              )}
             >
               {currentStep < questions.length - 1 ? t('nav.nextQuestion') : t('nav.seeResults')}
               <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
