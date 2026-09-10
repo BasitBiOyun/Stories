@@ -87,7 +87,8 @@ const QuestionCard = ({
   onInfo: () => void;
   collectionId?: string;
 }) => {
-  const { t, formatNumber, isRTL } = useLanguage();
+  const { t, formatNumber, isRTL, language } = useLanguage();
+  const isArabic = language === 'ar';
   const theme = themeFor(collectionId);
   const hasAnswer = answer !== null && answer !== undefined;
   const correct = isExerciseAnswerCorrect(exercise, answer);
@@ -137,7 +138,10 @@ const QuestionCard = ({
         )}>
           {showResults && hasAnswer ? (correct ? '✓' : '✗') : formatNumber(index + 1)}
         </span>
-        <p className="font-serif text-sm sm:text-base md:text-lg font-semibold leading-snug text-wood flex-1 min-w-0">
+        <p className={cn(
+          'font-serif font-semibold leading-snug text-wood flex-1 min-w-0',
+          isArabic ? 'text-base sm:text-lg md:text-lg' : 'text-sm sm:text-base md:text-lg'
+        )}>
           {exercise.question}
         </p>
         {showResults && hasAnswer && (
@@ -172,7 +176,8 @@ const QuestionCard = ({
                 disabled={showResults}
                 onClick={() => onAnswer(value)}
                 className={cn(
-                  'min-h-11 sm:min-h-12 rounded-xl border-2 px-3 py-2.5 font-display text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-colors',
+                  'min-h-11 sm:min-h-12 rounded-xl border-2 px-3 py-2.5 font-display font-black uppercase tracking-wider transition-colors',
+                  isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
@@ -223,7 +228,8 @@ const QuestionCard = ({
                   {String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
-                  'font-serif text-xs sm:text-sm md:text-base font-semibold leading-snug flex-1',
+                  'font-serif font-semibold leading-snug flex-1',
+                  isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base',
                   isRTL && 'text-right'
                 )}>
                   {option.text}
@@ -245,7 +251,8 @@ export const KnowledgeCheck = ({
   onReset,
   collectionId = 'prophets',
 }: Props) => {
-  const { t, formatNumber, isRTL } = useLanguage();
+  const { t, formatNumber, isRTL, language } = useLanguage();
+  const isArabic = language === 'ar';
   const theme = themeFor(collectionId);
   const supportedExercises = React.useMemo(
     () => exercises.filter((exercise) => exercise.type === 'true-false' || exercise.type === 'multiple-choice'),
@@ -364,7 +371,8 @@ export const KnowledgeCheck = ({
               </div>
               <div className="flex-1 min-w-0">
                 <p className={cn(
-                  'font-display text-xs sm:text-sm uppercase tracking-widest font-bold mb-1',
+                  'font-display uppercase tracking-widest font-bold mb-1',
+                  isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                   activeIsCorrect ? 'text-emerald-700' : 'text-rose-700'
                 )}>
                   {activeIsCorrect ? t('ex.correct') : t('ex.notQuite')}
@@ -385,7 +393,8 @@ export const KnowledgeCheck = ({
 
             <div className="mt-5 sm:mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <div className={cn(
-                'rounded-xl sm:rounded-2xl border p-4 sm:p-5 font-serif text-sm sm:text-base leading-relaxed',
+                'rounded-xl sm:rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed',
+                isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                 activeIsCorrect
                   ? 'bg-emerald-50 border-emerald-100 text-emerald-950'
                   : 'bg-rose-50 border-rose-100 text-rose-950'
@@ -394,8 +403,11 @@ export const KnowledgeCheck = ({
                   ? activeExercise.feedback.correct
                   : activeExercise.feedback.incorrect}
               </div>
-              <div className="rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-100 p-4 sm:p-5 font-serif text-sm sm:text-base text-wood/80 leading-relaxed">
-                <span className="block font-display text-[10px] sm:text-xs uppercase tracking-widest text-wood/40 mb-1.5">
+              <div className={cn(
+                'rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-100 p-4 sm:p-5 font-serif text-wood/80 leading-relaxed',
+                isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
+              )}>
+                <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1.5', isArabic ? 'text-sm' : 'text-[10px] sm:text-xs')}>
                   {t('ex.explanation')}
                 </span>
                 {activeExercise.explanation}
@@ -418,12 +430,13 @@ export const KnowledgeCheck = ({
             </div>
             <div className="min-w-0">
               <h3 className={cn('font-display text-xl sm:text-2xl md:text-3xl tracking-tight leading-tight', theme.title)}>{title}</h3>
-              <p className="font-serif text-xs sm:text-sm text-wood/50 mt-0.5">{t('nav.interactiveChallenge')}</p>
+              <p className={cn('font-serif text-wood/50 mt-0.5', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>{t('nav.interactiveChallenge')}</p>
             </div>
           </div>
           {showResults && (
             <div className={cn(
-              'px-3 py-2 rounded-xl border font-display text-xs sm:text-sm font-bold',
+              'px-3 py-2 rounded-xl border font-display font-bold',
+              isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
               percentage >= 70 ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-rose-50 border-rose-200 text-rose-700'
             )}>
               {formatNumber(correctCount)}/{formatNumber(supportedExercises.length)} · {formatNumber(percentage)}%
@@ -432,7 +445,7 @@ export const KnowledgeCheck = ({
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="font-display text-sm font-bold text-wood/50 tabular-nums shrink-0">
+          <span className={cn('font-display font-bold text-wood/50 tabular-nums shrink-0', isArabic ? 'text-base' : 'text-sm')}>
             {formatNumber(answeredCount)}/{formatNumber(supportedExercises.length)}
           </span>
           <div className={cn('h-2.5 rounded-full flex-1 overflow-hidden', theme.progressTrack)}>
@@ -441,7 +454,7 @@ export const KnowledgeCheck = ({
               animate={{ width: `${supportedExercises.length ? (answeredCount / supportedExercises.length) * 100 : 0}%` }}
             />
           </div>
-          <span className="font-display text-sm font-bold text-emerald-600 shrink-0">
+          <span className={cn('font-display font-bold text-emerald-600 shrink-0', isArabic ? 'text-base' : 'text-sm')}>
             {formatNumber(correctCount)} {t('ex.pts')}
           </span>
         </div>
@@ -468,7 +481,8 @@ export const KnowledgeCheck = ({
             onClick={() => setShowResults(true)}
             disabled={!allAnswered}
             className={cn(
-              'w-full min-h-12 rounded-xl font-display text-xs sm:text-sm uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-colors',
+              'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-colors',
+              isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
               allAnswered
                 ? `${theme.accentBg} text-white shadow-md`
                 : 'bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -488,7 +502,7 @@ export const KnowledgeCheck = ({
               <p className="font-display text-base sm:text-lg font-bold text-wood">
                 {formatNumber(correctCount)} / {formatNumber(supportedExercises.length)}
               </p>
-              <p className="font-serif text-sm text-wood/60">
+              <p className={cn('font-serif text-wood/60', isArabic ? 'text-base' : 'text-sm')}>
                 {t('ex.feedbackHint').replace('{info}', 'ⓘ')}
               </p>
             </div>
