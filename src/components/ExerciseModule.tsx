@@ -91,6 +91,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
   const theme = themeFor(collectionId);
+  const isArabic = language === 'ar';
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [showHint, setShowHint] = React.useState(false);
@@ -274,7 +275,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   submit(value);
                 }}
                 className={cn(
-                  'min-h-14 sm:min-h-16 rounded-2xl border-2 font-display text-sm sm:text-lg md:text-xl font-black uppercase tracking-wider transition-colors',
+                  'min-h-14 sm:min-h-16 rounded-2xl border-2 font-display font-black uppercase tracking-wider transition-colors',
+                  isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-lg md:text-xl',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
@@ -329,7 +331,10 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 )}>
                   {String.fromCharCode(65 + displayIndex)}
                 </span>
-                <span className="font-serif text-sm sm:text-base md:text-lg font-semibold leading-snug flex-1">
+                <span className={cn(
+                  'font-serif font-semibold leading-snug flex-1',
+                  isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg'
+                )}>
                   {option.text}
                 </span>
               </button>
@@ -345,11 +350,11 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          <p className="font-serif text-sm sm:text-base text-wood/55">{t('nav.matchingInstructions')}</p>
+          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <div className="space-y-2.5">
-              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.accentText)}>
-                {language === 'ar' ? 'المفاهيم' : 'Concepts'}
+              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
+                {isArabic ? 'المفاهيم' : 'Concepts'}
               </p>
               {pairs.map((pair) => {
                 const selected = selectedMatchingLeft === pair.left;
@@ -361,19 +366,20 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                     disabled={isSubmitted}
                     onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
                     className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-bold transition-colors flex items-center justify-between gap-3',
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-bold transition-colors flex items-center justify-between gap-3',
+                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                       selected ? theme.selected : `bg-white ${theme.softBorder}`
                     )}
                   >
                     <span>{pair.left}</span>
-                    {assigned && <span className={cn('text-xs font-medium truncate max-w-[45%]', theme.accentText)}>✓ {assigned}</span>}
+                    {assigned && <span className={cn('font-medium truncate max-w-[45%]', isArabic ? 'text-sm' : 'text-xs', theme.accentText)}>✓ {assigned}</span>}
                   </button>
                 );
               })}
             </div>
             <div className="space-y-2.5">
-              <p className={cn('font-display text-xs uppercase tracking-widest font-black', theme.accentText)}>
-                {language === 'ar' ? 'المعاني' : 'Meanings'}
+              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
+                {isArabic ? 'المعاني' : 'Meanings'}
               </p>
               {presentedMeanings.map((meaning) => {
                 const used = assignedMeanings.has(meaning);
@@ -384,7 +390,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                     disabled={isSubmitted || !selectedMatchingLeft}
                     onClick={() => selectMeaning(meaning)}
                     className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif text-sm sm:text-base font-medium transition-colors',
+                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-medium transition-colors',
+                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                       used
                         ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
                         : selectedMatchingLeft
@@ -404,7 +411,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               disabled={!allAssigned}
               onClick={() => submit(matchingAssignments)}
               className={cn(
-                'w-full min-h-12 rounded-xl font-display text-xs sm:text-sm uppercase tracking-widest font-bold',
+                'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 allAssigned ? `${theme.accentBg} ${theme.accentHover} text-white` : 'bg-gray-100 text-gray-400 cursor-not-allowed'
               )}
             >
@@ -418,7 +426,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     if (exercise.type === 'sequencing') {
       return (
         <div className="space-y-3">
-          <p className="font-serif text-sm sm:text-base text-wood/55">{t('nav.sequencingInstructions')}</p>
+          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.sequencingInstructions')}</p>
           {sequenceItems.map((item) => {
             const order = localSequence.indexOf(item.id);
             return (
@@ -432,7 +440,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                     : [...previous, item.id]
                 )}
                 className={cn(
-                  'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start flex items-center gap-4 font-serif text-sm sm:text-base font-semibold',
+                  'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start flex items-center gap-4 font-serif font-semibold',
+                  isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                   order >= 0 ? theme.selected : `bg-white ${theme.softBorder}`
                 )}
               >
@@ -452,7 +461,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               disabled={localSequence.length !== sequenceItems.length}
               onClick={() => submit(localSequence)}
               className={cn(
-                'w-full min-h-12 rounded-xl font-display text-xs sm:text-sm uppercase tracking-widest font-bold',
+                'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 localSequence.length === sequenceItems.length
                   ? `${theme.accentBg} text-white`
                   : 'bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -470,7 +480,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     if (exercise.type === 'fill-blanks') {
       return (
         <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-6 space-y-5">
-          <div className="font-serif text-base sm:text-lg leading-loose text-wood">
+          <div className={cn('font-serif leading-loose text-wood', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg')}>
             {(exercise.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
               <React.Fragment key={index}>
                 {part}
@@ -487,7 +497,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             ))}
           </div>
           {!isSubmitted && (
-            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', theme.accentBg)}>
+            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', isArabic && 'text-base', theme.accentBg)}>
               {t('nav.check')}
             </button>
           )}
@@ -503,7 +513,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       return (
         <div className="space-y-5">
           <div>
-            <p className="font-display text-xs uppercase tracking-widest text-wood/45 mb-2">{t('nav.availableItems')}</p>
+            <p className={cn('font-display uppercase tracking-widest text-wood/45 mb-2', isArabic ? 'text-sm' : 'text-xs')}>{t('nav.availableItems')}</p>
             <div className="min-h-20 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 p-3 flex flex-wrap gap-2">
               {available.map((item) => (
                 <button
@@ -511,12 +521,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   type="button"
                   disabled={isSubmitted}
                   onClick={() => setSelectedDragItem(selectedDragItem === item ? null : item)}
-                  className={cn('px-3 py-2 rounded-lg border-2 bg-white font-serif text-sm font-semibold', selectedDragItem === item ? theme.selected : 'border-gray-200')}
+                  className={cn('px-3 py-2 rounded-lg border-2 bg-white font-serif font-semibold', isArabic ? 'text-base' : 'text-sm', selectedDragItem === item ? theme.selected : 'border-gray-200')}
                 >
                   {item}
                 </button>
               ))}
-              {!available.length && <span className="text-sm text-wood/40 m-auto">{t('nav.allItemsAssigned')}</span>}
+              {!available.length && <span className={cn('text-wood/40 m-auto', isArabic ? 'text-base' : 'text-sm')}>{t('nav.allItemsAssigned')}</span>}
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -528,17 +538,17 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 onClick={() => assignDragItem(group.group)}
                 className={cn('rounded-2xl border-2 min-h-32 p-4 text-start', selectedDragItem ? theme.softBorder : 'border-gray-100 bg-gray-50')}
               >
-                <h5 className={cn('font-display text-sm font-bold mb-3', theme.accentText)}>{group.group}</h5>
+                <h5 className={cn('font-display font-bold mb-3', isArabic ? 'text-base' : 'text-sm', theme.accentText)}>{group.group}</h5>
                 <div className="flex flex-wrap gap-2">
                   {(dragAssignments[group.group] ?? []).map((item) => (
-                    <span key={item} className="px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 font-serif text-xs sm:text-sm">{item}</span>
+                    <span key={item} className={cn('px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 font-serif', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>{item}</span>
                   ))}
                 </div>
               </button>
             ))}
           </div>
           {!isSubmitted && (
-            <button type="button" disabled={!allAssigned} onClick={() => submit(dragAssignments)} className={cn('w-full min-h-12 rounded-xl font-bold', allAssigned ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400')}>
+            <button type="button" disabled={!allAssigned} onClick={() => submit(dragAssignments)} className={cn('w-full min-h-12 rounded-xl font-bold', isArabic && 'text-base', allAssigned ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400')}>
               {t('nav.check')}
             </button>
           )}
@@ -559,13 +569,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 onClick={() => setRevealedItems((previous) => new Set(previous).add(index))}
                 className={cn('w-full rounded-2xl border-2 p-5 sm:p-7 text-center min-h-28', theme.softBorder, theme.softBg)}
               >
-                <p className="font-serif text-base sm:text-lg font-semibold text-wood">{revealed ? item.answer : item.question}</p>
-                {!revealed && <span className={cn('block mt-3 text-xs uppercase tracking-widest font-bold', theme.accentText)}>{t('nav.tapToReveal')}</span>}
+                <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg')}>{revealed ? item.answer : item.question}</p>
+                {!revealed && <span className={cn('block mt-3 uppercase tracking-widest font-bold', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>{t('nav.tapToReveal')}</span>}
               </button>
             );
           })}
           {!isSubmitted && revealedItems.size === items.length && (
-            <button type="button" onClick={() => submit(true)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', theme.accentBg)}>{t('nav.continue')}</button>
+            <button type="button" onClick={() => submit(true)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', isArabic && 'text-base', theme.accentBg)}>{t('nav.continue')}</button>
           )}
         </div>
       );
@@ -581,9 +591,10 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 disabled={isSubmitted}
                 value={reflectionResponse}
                 onChange={(event) => setReflectionResponse(event.target.value)}
-                placeholder={language === 'ar' ? 'اكتب إجابتك القصيرة هنا...' : 'Write your short response here...'}
+                placeholder={isArabic ? 'اكتب إجابتك القصيرة هنا...' : 'Write your short response here...'}
                 className={cn(
-                  'w-full resize-y rounded-xl border-2 bg-white px-4 py-3 font-serif text-sm sm:text-base leading-relaxed text-wood outline-none',
+                  'w-full resize-y rounded-xl border-2 bg-white px-4 py-3 font-serif leading-relaxed text-wood outline-none',
+                  isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                   theme.softBorder
                 )}
               />
@@ -593,9 +604,9 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
               <div className="flex items-center gap-2 mb-2 text-wood/50">
                 {prompt.mode === 'Individual' ? <GraduationCap size={18} /> : prompt.mode === 'Pair' ? <MessageSquare size={18} /> : <Users size={18} />}
-                <span className="font-display text-xs uppercase tracking-widest">{language === 'ar' ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
+                <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
               </div>
-              <p className="font-serif text-sm sm:text-base md:text-lg font-semibold text-wood">{prompt.question}</p>
+              <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{prompt.question}</p>
             </div>
           ))}
           {!isSubmitted && (
@@ -605,6 +616,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               onClick={() => submit(reflectionNeedsWriting ? reflectionResponse : true)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-bold',
+                isArabic && 'text-base',
                 reflectionNeedsWriting && !reflectionResponse.trim()
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   : `${theme.accentBg} text-white`
@@ -623,7 +635,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         return (
           <div className="rounded-2xl bg-white border-2 border-gray-100 p-6 text-center">
             <p className={cn('font-display text-3xl font-black', theme.title)}>{formatNumber(quizScore)}/{formatNumber(total)}</p>
-            <p className="font-serif text-sm text-wood/60 mt-2">{t('nav.challengeComplete')}</p>
+            <p className={cn('font-serif text-wood/60 mt-2', isArabic ? 'text-base' : 'text-sm')}>{t('nav.challengeComplete')}</p>
           </div>
         );
       }
@@ -631,8 +643,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       return (
         <div className="space-y-5">
           <div className="flex items-center justify-between gap-3">
-            <span className={cn('font-display text-xs uppercase tracking-widest', theme.accentText)}>{t('nav.question')} {formatNumber(quizStep + 1)} / {formatNumber(total)}</span>
-            <span className="font-display text-sm font-bold text-wood/50">{formatNumber(quizScore)} {t('ex.pts')}</span>
+            <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs', theme.accentText)}>{t('nav.question')} {formatNumber(quizStep + 1)} / {formatNumber(total)}</span>
+            <span className={cn('font-display font-bold text-wood/50', isArabic ? 'text-base' : 'text-sm')}>{formatNumber(quizScore)} {t('ex.pts')}</span>
           </div>
           <p className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-wood leading-snug">{currentQuizQuestion.question}</p>
           <div className="grid grid-cols-1 gap-3">
@@ -643,7 +655,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 disabled={quizAnswered}
                 onClick={() => answerQuiz(option.isCorrect)}
                 className={cn(
-                  'min-h-14 rounded-xl border-2 p-3 text-start font-serif text-sm sm:text-base font-semibold',
+                  'min-h-14 rounded-xl border-2 p-3 text-start font-serif font-semibold',
+                  isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
                   quizAnswered && option.isCorrect ? 'border-emerald-500 bg-emerald-50' : `bg-white ${theme.softBorder}`
                 )}
               >
@@ -652,12 +665,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             ))}
           </div>
           {quizAnswered && (
-            <div className={cn('rounded-xl border p-3 font-serif text-sm', quizWasCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800')}>
+            <div className={cn('rounded-xl border p-3 font-serif', isArabic ? 'text-base' : 'text-sm', quizWasCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800')}>
               {quizWasCorrect ? t('nav.correctWellDone') : currentQuizQuestion.hint}
             </div>
           )}
           {quizAnswered && (
-            <button type="button" onClick={nextQuiz} className={cn('w-full min-h-12 rounded-xl text-white font-bold flex items-center justify-center gap-2', theme.accentBg)}>
+            <button type="button" onClick={nextQuiz} className={cn('w-full min-h-12 rounded-xl text-white font-bold flex items-center justify-center gap-2', isArabic && 'text-base', theme.accentBg)}>
               {quizStep < total - 1 ? t('nav.nextQuestion') : t('nav.seeResults')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
             </button>
           )}
@@ -685,9 +698,9 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     >
       <header className={cn('shrink-0 border-b-2 px-4 sm:px-6 md:px-10 py-4 sm:py-5 flex items-start justify-between gap-4', theme.softBg, theme.softBorder)}>
         <div className="min-w-0">
-          <p className={cn('font-display text-[10px] sm:text-xs uppercase tracking-[0.2em] font-black mb-1', theme.accentText)}>{t('nav.interactiveChallenge')}</p>
+          <p className={cn('font-display uppercase tracking-[0.2em] font-black mb-1', isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs', theme.accentText)}>{t('nav.interactiveChallenge')}</p>
           <h3 className={cn('font-display text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-tight', theme.title)}>{exercise.title}</h3>
-          {exercise.instructions && <p className={cn('font-serif text-xs sm:text-sm md:text-base mt-1', theme.accentText)}>{exercise.instructions}</p>}
+          {exercise.instructions && <p className={cn('font-serif mt-1', isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base', theme.accentText)}>{exercise.instructions}</p>}
         </div>
         <button type="button" onClick={onClose} className={cn('p-2 rounded-full shrink-0 border-2 bg-white', theme.softBorder, theme.accentText)} aria-label={t('nav.close')}>
           <XCircle className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -711,17 +724,17 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 <div className="flex items-start gap-3">
                   {correct ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={22} />}
                   <div className="flex-1 min-w-0">
-                    <p className={cn('font-display text-base sm:text-lg font-black', correct ? 'text-emerald-800' : 'text-rose-800')}>
+                    <p className={cn('font-display font-black', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg', correct ? 'text-emerald-800' : 'text-rose-800')}>
                       {correct ? `${t('nav.correct')}!` : t('nav.notQuite')}
                     </p>
-                    <p className="font-serif text-sm sm:text-base text-wood/75 mt-1 leading-relaxed">
+                    <p className={cn('font-serif text-wood/75 mt-1 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
                       {correct ? exercise.feedback.correct : exercise.feedback.incorrect}
                     </p>
                   </div>
                 </div>
                 {exercise.explanation && (
-                  <div className="rounded-xl bg-white/70 border border-black/5 p-3 sm:p-4 font-serif text-sm sm:text-base text-wood/75 leading-relaxed">
-                    <span className="block font-display text-[10px] uppercase tracking-widest text-wood/40 mb-1">{t('nav.explanation')}</span>
+                  <div className={cn('rounded-xl bg-white/70 border border-black/5 p-3 sm:p-4 font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+                    <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1', isArabic ? 'text-sm' : 'text-[10px]')}>{t('nav.explanation')}</span>
                     {exercise.explanation}
                   </div>
                 )}
@@ -730,11 +743,11 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   correct ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
                 )}>
                   {!correct && (
-                    <button type="button" onClick={retry} className="min-h-12 rounded-xl bg-white border-2 border-rose-200 text-rose-700 font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2">
+                    <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl bg-white border-2 border-rose-200 text-rose-700 font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
                   )}
-                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2', correct ? 'bg-emerald-600' : 'bg-rose-600')}>
+                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct ? 'bg-emerald-600' : 'bg-rose-600')}>
                     {t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
                   </button>
                 </div>
@@ -743,7 +756,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           </AnimatePresence>
 
           {isSubmitted && exercise.type === 'quiz-game' && (
-            <button type="button" onClick={onComplete} className={cn('w-full min-h-12 rounded-xl text-white font-display text-xs uppercase tracking-widest font-bold', theme.accentBg)}>
+            <button type="button" onClick={onComplete} className={cn('w-full min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentBg)}>
               {t('nav.continue')}
             </button>
           )}
@@ -753,13 +766,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       <footer className="shrink-0 border-t border-gray-200 bg-white px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between gap-3 safe-area-bottom">
         <div>
           {exercise.hints?.length ? (
-            <button type="button" onClick={() => setShowHint((value) => !value)} className={cn('flex items-center gap-2 font-display text-xs font-bold', theme.accentText)}>
+            <button type="button" onClick={() => setShowHint((value) => !value)} className={cn('flex items-center gap-2 font-display font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accentText)}>
               <HelpCircle size={16} /> {showHint ? t('nav.hideHint') : t('nav.needHint')}
             </button>
           ) : null}
         </div>
         {showHint && exercise.hints?.length ? (
-          <p className="font-serif text-xs sm:text-sm text-wood/60 flex items-center gap-2 max-w-2xl text-end">
+          <p className={cn('font-serif text-wood/60 flex items-center gap-2 max-w-2xl text-end', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
             <Lightbulb size={15} className={theme.accentText} /> {exercise.hints[0]}
           </p>
         ) : null}
