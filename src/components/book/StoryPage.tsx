@@ -274,7 +274,8 @@ export const StoryPage = ({
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
-  const highlightLanguage = language === 'ar' ? 'ar' : 'en';
+  const isArabic = language === 'ar';
+  const highlightLanguage = isArabic ? 'ar' : 'en';
 
   const vocabStyle = useMemo(() => {
     if (collectionId === 'history') {
@@ -919,7 +920,8 @@ export const StoryPage = ({
                 {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
               </h4>
               <p className={cn(
-                'text-xs sm:text-sm font-medium',
+                'font-medium',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 collectionId === 'history'
                   ? 'text-emerald-900/55'
                   : collectionId === 'turkish'
@@ -952,7 +954,8 @@ export const StoryPage = ({
                 >
                   <div className="flex items-start gap-3">
                     <span className={cn(
-                      'w-7 h-7 rounded-lg shrink-0 flex items-center justify-center text-xs font-black',
+                      'w-7 h-7 rounded-lg shrink-0 flex items-center justify-center font-black',
+                      isArabic ? 'text-sm' : 'text-xs',
                       completed
                         ? 'bg-green-500 text-white'
                         : collectionId === 'history'
@@ -964,9 +967,9 @@ export const StoryPage = ({
                       {completed ? '✓' : formatNumber(index + 1)}
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-bold text-sm sm:text-base text-wood leading-tight">{exercise.title}</span>
+                      <span className={cn('block font-bold text-wood leading-tight', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{exercise.title}</span>
                       {exercise.instructions && (
-                        <span className="block mt-1 text-[11px] sm:text-xs text-wood/55 leading-snug">{exercise.instructions}</span>
+                        <span className={cn('block mt-1 text-wood/55 leading-snug', isArabic ? 'text-sm sm:text-base' : 'text-[11px] sm:text-xs')}>{exercise.instructions}</span>
                       )}
                     </span>
                   </div>
@@ -1212,7 +1215,8 @@ export const StoryPage = ({
                       {t('nav.quickChallenge')}
                     </h4>
                     <p className={cn(
-                      "text-sm font-medium",
+                      "font-medium",
+                      isArabic ? 'text-base' : 'text-sm',
                       collectionId === 'history' ? "text-emerald-900/50" : collectionId === 'turkish' ? "text-sky-950/50" : "text-amber-900/50"
                     )}>
                       {t('nav.testUnderstanding')}
@@ -1328,7 +1332,8 @@ export const StoryPage = ({
                       {t('nav.quickChallenge')}
                     </h4>
                     <p className={cn(
-                      "text-xs sm:text-sm font-medium",
+                      "font-medium",
+                      isArabic ? 'text-base' : 'text-xs sm:text-sm',
                       collectionId === 'history' ? "text-emerald-900/50" : collectionId === 'turkish' ? "text-sky-950/50" : "text-amber-900/50"
                     )}>
                       {t('nav.testUnderstanding')}
