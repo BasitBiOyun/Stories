@@ -24,7 +24,7 @@ export const ExercisePage = ({
   level: string;
   collectionId?: string;
 }) => {
-  const { t, language } = useLanguage();
+  const { t, language, formatNumber } = useLanguage();
   const isArabic = language === 'ar';
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -364,7 +364,7 @@ export const ExercisePage = ({
                               ? "bg-green-500 text-white"
                               : colTheme.exerciseIdxBg
                           )}>
-                            {completedExercises.includes(ex.id) ? <CheckCircle2 size={20} /> : idx + 1}
+                            {completedExercises.includes(ex.id) ? <CheckCircle2 size={20} /> : formatNumber(idx + 1)}
                           </div>
                           <div>
                             <p className={cn(
@@ -374,7 +374,7 @@ export const ExercisePage = ({
                             )}>{ex.title}</p>
                             <p className={cn(
                               'text-gray-500 uppercase tracking-widest font-medium',
-                              isArabic ? 'text-sm' : 'text-xs'
+                              isArabic ? 'text-base' : 'text-xs'
                             )}>{exerciseTypeLabel(ex.type)}</p>
                           </div>
                         </div>
