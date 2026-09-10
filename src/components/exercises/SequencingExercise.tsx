@@ -52,7 +52,7 @@ const DraggableItem: React.FC<{
   correctIndex,
   collectionId,
 }) => {
-  const { language } = useLanguage();
+  const { language, formatNumber } = useLanguage();
   const isArabic = language === 'ar';
   const controls = useDragControls();
   const isDone = phase === 'revealed';
@@ -97,7 +97,7 @@ const DraggableItem: React.FC<{
         )}>
           {isDone
             ? isCorrectPosition ? '✓' : '✗'
-            : index + 1}
+            : formatNumber(index + 1)}
         </div>
 
         {/* Text */}
@@ -115,7 +115,7 @@ const DraggableItem: React.FC<{
         {isDone && !isCorrectPosition && (
           <div className="shrink-0 flex items-center gap-1 text-[11px] font-bold text-rose-500 bg-rose-100 px-2 py-0.5 rounded-full">
             <ArrowDown size={10} />
-            #{correctIndex + 1}
+            #{formatNumber(correctIndex + 1)}
           </div>
         )}
 
@@ -399,7 +399,7 @@ export const SequencingExercise = ({ items, onComplete, collectionId = 'prophets
                   isHistory ? "bg-emerald-500" : isTurkish ? "bg-sky-500" : "bg-amber-500"
                 )}
               >
-                <Zap size={10} fill="white" />{streak}x
+                <Zap size={10} fill="white" />{formatNumber(streak)}{isArabic ? '×' : 'x'}
               </motion.div>
             )}
           </AnimatePresence>
