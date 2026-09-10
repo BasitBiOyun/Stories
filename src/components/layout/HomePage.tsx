@@ -38,6 +38,8 @@ import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
 // @ts-ignore
 import abrahamCover from '../../assets/images/abraham_cover.webp';
 // @ts-ignore
+import mosesCover from '../../assets/images/moses_cover.webp';
+// @ts-ignore
 import yunusEmreCover from '../../assets/images/yunus_emre_cover.png';
 
 interface HomePageProps {
@@ -65,8 +67,7 @@ const prophets: ProphetStory[] = [
     id: 'musa',
     name: 'Prophet Moses',
     description: 'The journey from the palace to the desert, and the liberation of a people.',
-    image:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fmoses_cover.png?alt=media&token=3e9009f1-5f4d-47ed-9b5f-a6b58731d025',
+    image: mosesCover,
     availableLevels: ['A2', 'B1', 'B2'],
     isComingSoon: false,
   },
