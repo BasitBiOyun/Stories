@@ -25,6 +25,7 @@ export const ExercisePage = ({
   collectionId?: string;
 }) => {
   const { t, language } = useLanguage();
+  const isArabic = language === 'ar';
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -267,7 +268,8 @@ export const ExercisePage = ({
                   <BrainCircuit className="w-4 h-4" />
                 </div>
                 <h4 className={cn(
-                  "font-display text-[10px] sm:text-xs uppercase tracking-[0.15em] font-black",
+                  "font-display uppercase tracking-[0.15em] font-black",
+                  isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs',
                   colTheme.iconText
                 )}>{t('nav.interactiveChallenge')}</h4>
               </div>
@@ -329,8 +331,8 @@ export const ExercisePage = ({
                       {page.title}
                     </h3>
                     <p className={cn(
-                      "text-sm sm:text-base text-wood/60 leading-relaxed max-w-5xl",
-                      language !== 'ar' && "italic"
+                      "text-wood/60 leading-relaxed max-w-5xl",
+                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base italic'
                     )}>{page.content}</p>
                   </div>
                 
@@ -361,9 +363,13 @@ export const ExercisePage = ({
                           <div>
                             <p className={cn(
                               "font-bold",
+                              isArabic ? 'text-lg' : 'text-base',
                               completedExercises.includes(ex.id) ? "text-green-800" : "text-gray-900"
                             )}>{ex.title}</p>
-                            <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">{t(`ex.type.${ex.type}`)}</p>
+                            <p className={cn(
+                              'text-gray-500 uppercase tracking-widest font-medium',
+                              isArabic ? 'text-sm' : 'text-xs'
+                            )}>{t(`ex.type.${ex.type}`)}</p>
                           </div>
                         </div>
                         <ArrowRight className={cn(
