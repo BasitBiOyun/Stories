@@ -53,6 +53,7 @@ const DraggableItem: React.FC<{
   collectionId,
 }) => {
   const { language } = useLanguage();
+  const isArabic = language === 'ar';
   const controls = useDragControls();
   const isDone = phase === 'revealed';
   const isHistory = collectionId === 'history';
@@ -101,8 +102,8 @@ const DraggableItem: React.FC<{
 
         {/* Text */}
         <p className={cn(
-          'font-serif text-xs sm:text-base md:text-lg leading-snug flex-1',
-          language === 'ar' && "text-sm sm:text-xl",
+          'font-serif leading-snug flex-1',
+          isArabic ? 'text-sm sm:text-lg md:text-xl' : 'text-xs sm:text-base md:text-lg',
           isDone
             ? isCorrectPosition ? 'text-emerald-800' : 'text-rose-800'
             : 'text-wood'
@@ -159,6 +160,7 @@ const FeedbackPanel = ({
   collectionId?: string;
 }) => {
   const { t, formatNumber, language } = useLanguage();
+  const isArabic = language === 'ar';
   const isHistory = collectionId === 'history';
   const isTurkish = collectionId === 'turkish';
   return (
@@ -177,10 +179,10 @@ const FeedbackPanel = ({
               <CheckCircle2 size={18} />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-display text-xs sm:text-sm font-bold text-emerald-800 uppercase tracking-wider mb-0.5">
+              <p className={cn('font-display font-bold text-emerald-800 uppercase tracking-wider mb-0.5', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {t('ex.perfectOrder')}
               </p>
-              <p className="font-serif text-xs sm:text-sm text-emerald-700 truncate">
+              <p className={cn('font-serif text-emerald-700 truncate', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {t('ex.allEventsCorrect').replace('{total}', formatNumber(totalItems))}
                 {feedback.attempts === 1 && ` ${t('ex.firstTry')}`}
                 {feedback.attempts === 2 && ` ${t('ex.secondTry')}`}
@@ -189,7 +191,7 @@ const FeedbackPanel = ({
             </div>
             <button
               onClick={onReset}
-              className="shrink-0 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-emerald-600 text-white text-xs sm:text-sm font-bold hover:bg-emerald-700 transition-colors cursor-pointer"
+              className={cn('shrink-0 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors cursor-pointer', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}
             >
               <RotateCcw size={14} /> {t('ex.tryAgain')}
             </button>
@@ -208,12 +210,12 @@ const FeedbackPanel = ({
               <XCircle size={18} />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-display text-xs sm:text-sm font-bold text-rose-800 uppercase tracking-wider mb-0.5">
+              <p className={cn('font-display font-bold text-rose-800 uppercase tracking-wider mb-0.5', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {feedback.wrongCount === 1 
                   ? t('ex.itemOutOfPlace') 
                   : t('ex.itemsOutOfPlace').replace('{count}', formatNumber(feedback.wrongCount))}
               </p>
-              <p className="font-serif text-xs sm:text-sm text-rose-700 truncate">
+              <p className={cn('font-serif text-rose-700 truncate', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {t('ex.rearrangeHint')}
               </p>
             </div>
@@ -221,14 +223,14 @@ const FeedbackPanel = ({
               {phase !== 'revealed' && (
                 <button
                   onClick={onReveal}
-                  className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-white border-2 border-rose-200 text-rose-600 text-xs sm:text-sm font-bold hover:bg-rose-50 transition-colors cursor-pointer"
+                  className={cn('flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-white border-2 border-rose-200 text-rose-600 font-bold hover:bg-rose-50 transition-colors cursor-pointer', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}
                 >
                   {t('ex.showAnswer')}
                 </button>
               )}
               <button
                 onClick={onReset}
-                className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-rose-600 text-white text-xs sm:text-sm font-bold hover:bg-rose-700 transition-colors cursor-pointer"
+                className={cn('flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-rose-600 text-white font-bold hover:bg-rose-700 transition-colors cursor-pointer', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}
               >
                 <RotateCcw size={14} /> {t('ex.retry')}
               </button>
@@ -250,7 +252,7 @@ const FeedbackPanel = ({
             <GripVertical size={18} className={cn("shrink-0", isHistory ? "text-emerald-400" : isTurkish ? "text-sky-450" : "text-amber-400")} />
             <p className={cn(
               "font-serif text-lg text-wood/50",
-              language === 'ar' ? "not-italic text-xl" : "italic"
+              isArabic ? "not-italic text-xl" : "italic"
             )}>
               {t('ex.dragHint')}
             </p>
@@ -266,6 +268,7 @@ const FeedbackPanel = ({
 
 export const SequencingExercise = ({ items, onComplete, collectionId = 'prophets' }: Props) => {
   const { t, formatNumber, language } = useLanguage();
+  const isArabic = language === 'ar';
   const isHistory = collectionId === 'history';
   const isTurkish = collectionId === 'turkish';
   const [currentOrder, setCurrentOrder] = useState<string[]>(() =>
@@ -362,14 +365,15 @@ export const SequencingExercise = ({ items, onComplete, collectionId = 'prophets
           </div>
           <div>
             <p className={cn(
-              "font-display text-sm uppercase tracking-widest leading-none",
+              "font-display uppercase tracking-widest leading-none",
+              isArabic ? 'text-base' : 'text-sm',
               isHistory ? "text-emerald-700" : isTurkish ? "text-sky-750" : "text-amber-600"
             )}>
               {t('ex.sequenceChallenge')}
             </p>
             <p className={cn(
-              "font-serif text-sm text-wood/40",
-              language === 'ar' && "not-italic text-base"
+              "font-serif text-wood/40",
+              isArabic ? "not-italic text-base" : "text-sm"
             )}>
               {t('ex.arrangeOrder')}
             </p>
@@ -378,7 +382,7 @@ export const SequencingExercise = ({ items, onComplete, collectionId = 'prophets
 
         <div className="ml-auto flex items-center gap-2">
           {attempts > 0 && (
-            <span className="text-xs font-bold text-wood/40 tabular-nums">
+            <span className={cn('font-bold text-wood/40 tabular-nums', isArabic ? 'text-sm' : 'text-xs')}>
               {t('ex.attempt')} {formatNumber(attempts)}
             </span>
           )}
@@ -390,7 +394,8 @@ export const SequencingExercise = ({ items, onComplete, collectionId = 'prophets
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.6, opacity: 0 }}
                 className={cn(
-                  "flex items-center gap-1 px-2 py-1 rounded-full text-white text-[11px] font-black",
+                  "flex items-center gap-1 px-2 py-1 rounded-full text-white font-black",
+                  isArabic ? 'text-sm' : 'text-[11px]',
                   isHistory ? "bg-emerald-500" : isTurkish ? "bg-sky-500" : "bg-amber-500"
                 )}
               >
@@ -450,7 +455,8 @@ export const SequencingExercise = ({ items, onComplete, collectionId = 'prophets
           animate={{ opacity: 1, y: 0 }}
           onClick={handleVerify}
           className={cn(
-            "shrink-0 w-full py-3 text-white rounded-xl font-display text-[11px] uppercase tracking-widest transition-all shadow-lg active:scale-[0.98]",
+            "shrink-0 w-full py-3 text-white rounded-xl font-display uppercase tracking-widest transition-all shadow-lg active:scale-[0.98]",
+            isArabic ? 'text-sm sm:text-base' : 'text-[11px]',
             isHistory 
               ? "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-200" 
               : isTurkish 
