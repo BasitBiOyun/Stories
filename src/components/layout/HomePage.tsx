@@ -36,6 +36,8 @@ import {
 // @ts-ignore
 import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
 // @ts-ignore
+import abrahamCover from '../../assets/images/abraham_cover.webp';
+// @ts-ignore
 import yunusEmreCover from '../../assets/images/yunus_emre_cover.png';
 
 interface HomePageProps {
@@ -55,8 +57,7 @@ const prophets: ProphetStory[] = [
     id: 'ibrahim',
     name: 'Prophet Abraham',
     description: 'The search for truth, the building of the Kaaba, and unwavering faith.',
-    image:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham.png?alt=media&token=14c045ca-7578-4268-9963-b4bedd5435be',
+    image: abrahamCover,
     availableLevels: ['A2', 'B1', 'B2'],
     isComingSoon: false,
   },
