@@ -19,7 +19,7 @@ export const historicalEntities: Record<string, HistoricalEntity> = {
         title: 'Babylon',
         kindLabel: 'Ancient city and kingdom',
         periodLabel: 'Ancient Mesopotamia',
-        summary: 'Babylon was an old kingdom in Mesopotamia. This map shows the wider Babylonian Empire in a later period.',
+        summary: 'Babylon was an old kingdom in Mesopotamia. This map shows a larger Babylonian Empire from a later time.',
         mapAlt: 'Historical map showing the wider Babylonian Empire and important places.',
         approximateLabel: 'Historical borders are approximate',
       },
@@ -27,7 +27,7 @@ export const historicalEntities: Record<string, HistoricalEntity> = {
         title: 'بابل',
         kindLabel: 'مدينة ومملكة قديمة',
         periodLabel: 'بلاد ما بين النهرين القديمة',
-        summary: 'كانت بابل مملكةً قديمة في بلاد ما بين النهرين. وتُظهر هذه الخريطة الإمبراطورية البابلية الأوسع في فترة لاحقة.',
+        summary: 'كانت بابل مملكةً قديمة في بلاد ما بين النهرين. وتُظهر الخريطة إمبراطورية بابل الأكبر في زمنٍ لاحق.',
         mapAlt: 'خريطة تاريخية توضّح الإمبراطورية البابلية الأوسع وبعض الأماكن المهمة.',
         approximateLabel: 'الحدود التاريخية تقريبية',
       },
@@ -178,8 +178,10 @@ export const historicalEntities: Record<string, HistoricalEntity> = {
 
 const ABRAHAM_A2_CHAPTER_ENTITIES: Record<number, string[]> = {
   1: ['babylon', 'mesopotamia'],
-  11: ['syria', 'palestine'],
+  10: ['babylon'],
+  11: ['babylon', 'syria', 'palestine'],
   13: ['mecca'],
+  14: ['mecca'],
 };
 
 const normalizeForMerge = (value: string) => value
