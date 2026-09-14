@@ -32,12 +32,14 @@ export interface HistoricalEntityCopy {
   approximateLabel?: string;
 }
 
+export type HistoricalMapAsset = string | Record<HistoricalEntityLocale, string>;
+
 export interface HistoricalEntity {
   id: string;
   kind: HistoricalEntityKind;
   aliases: Record<HistoricalEntityLocale, string[]>;
   copy: Record<HistoricalEntityLocale, HistoricalEntityCopy>;
-  mapAsset: string;
+  mapAsset: HistoricalMapAsset;
   focus: HistoricalMapFocus;
   approximate: boolean;
   sources: string[];
