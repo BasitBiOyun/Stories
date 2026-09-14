@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
-import { getHistoricalEntity } from './registry';
+import { getHistoricalEntity, resolveHistoricalMapAsset } from './registry';
 
 export const HistoricalEntityWord = ({
   word,
@@ -16,8 +16,6 @@ export const HistoricalEntityWord = ({
   const locale = language === 'ar' ? 'ar' : 'en';
   const entity = getHistoricalEntity(entityId);
   const [isOpen, setIsOpen] = useState(false);
-  const pinnedRef = useRef(false);
-  const closeTimerRef = useRef<number | null>(null);
   const triggerRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({
@@ -52,21 +50,7 @@ export const HistoricalEntityWord = ({
     });
   };
 
-  const canHover = () => typeof window !== 'undefined'
-    && window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
-
-  const clearCloseTimer = () => {
-    if (closeTimerRef.current !== null) {
-      window.clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
-  };
-
-  const close = () => {
-    clearCloseTimer();
-    pinnedRef.current = false;
-    setIsOpen(false);
-  };
+  const close = () => setIsOpen(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -83,12 +67,11 @@ export const HistoricalEntityWord = ({
     };
   }, [isOpen]);
 
-  useEffect(() => () => clearCloseTimer(), []);
-
   if (!entity) return <>{word}</>;
 
   const copy = entity.copy[locale];
   const isArabic = locale === 'ar';
+  const mapAsset = resolveHistoricalMapAsset(entity, locale);
 
   return (
     <span className="relative inline-block">
@@ -98,36 +81,19 @@ export const HistoricalEntityWord = ({
         tabIndex={0}
         aria-expanded={isOpen}
         aria-label={`${copy.title}: ${copy.kindLabel}`}
-        onMouseEnter={() => {
-          if (!canHover()) return;
-          clearCloseTimer();
-          setIsOpen(true);
-        }}
-        onMouseLeave={() => {
-          if (!canHover() || pinnedRef.current) return;
-          clearCloseTimer();
-          closeTimerRef.current = window.setTimeout(() => setIsOpen(false), 140);
-        }}
         onClick={(event) => {
           event.stopPropagation();
-          clearCloseTimer();
-          if (isOpen && pinnedRef.current) {
-            close();
-            return;
-          }
-          pinnedRef.current = true;
-          setIsOpen(true);
+          setIsOpen(current => !current);
         }}
         onKeyDown={(event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            pinnedRef.current = !isOpen;
-            setIsOpen(!isOpen);
+            setIsOpen(current => !current);
           }
           if (event.key === 'Escape') close();
         }}
         className={cn(
-          'rounded-[3px] px-[2px] font-bold cursor-help transition-colors',
+          'rounded-[3px] px-[2px] font-bold cursor-pointer transition-colors',
           'text-teal-900 border-b-2 border-teal-600/75 bg-teal-100/55',
           'hover:bg-teal-200/70 hover:border-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/40',
         )}
@@ -139,15 +105,13 @@ export const HistoricalEntityWord = ({
         <AnimatePresence>
           {isOpen && (
             <>
-              {pinnedRef.current && (
-                <div className="fixed inset-0 z-[99998]" onClick={close} />
-              )}
+              <div className="fixed inset-0 z-[99998]" onClick={close} />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.96, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
+                initial={{ opacity: 0, scale: 0.98, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
                 animate={{ opacity: 1, scale: 1, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                exit={{ opacity: 0, scale: 0.96, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                transition={{ duration: 0.14, ease: 'easeOut' }}
+                exit={{ opacity: 0, scale: 0.98, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
+                transition={{ duration: 0.12, ease: 'easeOut' }}
                 style={{
                   position: 'fixed',
                   top: coords.top,
@@ -157,11 +121,6 @@ export const HistoricalEntityWord = ({
                 }}
                 dir={isArabic ? 'rtl' : 'ltr'}
                 lang={locale}
-                onMouseEnter={clearCloseTimer}
-                onMouseLeave={() => {
-                  if (pinnedRef.current || !canHover()) return;
-                  closeTimerRef.current = window.setTimeout(() => setIsOpen(false), 120);
-                }}
                 onClick={(event) => event.stopPropagation()}
                 className={cn(
                   'w-[calc(100vw-2rem)] max-w-[420px] overflow-hidden rounded-2xl border border-teal-300/30',
@@ -185,34 +144,13 @@ export const HistoricalEntityWord = ({
                   </div>
                 </div>
 
-                <div className="relative mx-3 sm:mx-4 aspect-[4/3] overflow-hidden rounded-xl border border-teal-200/20 bg-[#d8c7a7]">
+                <div className="relative mx-3 sm:mx-4 aspect-[4/3] overflow-hidden rounded-xl bg-[#d8c7a7]">
                   <img
-                    src={entity.mapAsset}
+                    src={mapAsset}
                     alt={copy.mapAlt}
                     className="absolute inset-0 h-full w-full object-cover"
                     draggable={false}
                   />
-
-                  {entity.focus.mode === 'point' ? (
-                    <div
-                      className="absolute -translate-x-1/2 -translate-y-1/2"
-                      style={{ left: `${entity.focus.x}%`, top: `${entity.focus.y}%` }}
-                    >
-                      <span className="absolute left-1/2 top-1/2 h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-teal-800/35 bg-teal-500/20" />
-                      <span className="relative block h-3.5 w-3.5 rounded-full border-2 border-[#f3ead8] bg-teal-800 shadow-lg" />
-                    </div>
-                  ) : (
-                    <span
-                      className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-teal-800/55 bg-teal-500/20 shadow-[0_0_0_4px_rgba(13,148,136,0.08)]"
-                      style={{
-                        left: `${entity.focus.x}%`,
-                        top: `${entity.focus.y}%`,
-                        width: `${entity.focus.width}%`,
-                        height: `${entity.focus.height}%`,
-                        transform: `translate(-50%, -50%) rotate(${entity.focus.rotate ?? 0}deg)`,
-                      }}
-                    />
-                  )}
                 </div>
 
                 <div className="p-4 sm:p-5 pt-3.5 sm:pt-4">
