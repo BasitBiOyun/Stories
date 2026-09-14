@@ -43,7 +43,7 @@ export const historicalEntities: Record<string, HistoricalEntity> = {
     kind: 'region',
     aliases: {
       en: ['Mesopotamia'],
-      ar: ['بِلَادِ مَا بَيْنَ النَّهْرَيْنِ'],
+      ar: ['بِلَادِ مَا بَيْنَ النَّهْرَيْنِ', 'النَّهْرَيْنِ'],
     },
     copy: {
       en: {
@@ -218,7 +218,10 @@ export const applyHistoricalEntitiesToPage = (
 
   if (historicalVocabulary.length === 0) return page;
 
-  const historicalWords = new Set(historicalVocabulary.map(item => normalizeForMerge(item.word)));
+  const historicalWords = new Set(
+    entityIds.flatMap(entityId => historicalEntities[entityId]?.aliases[locale] ?? [])
+      .map(normalizeForMerge),
+  );
   const ordinaryVocabulary = (page.vocabulary ?? []).filter(
     item => !historicalWords.has(normalizeForMerge(item.word)),
   );
