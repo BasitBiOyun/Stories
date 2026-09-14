@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { applyHistoricalEntitiesToPage } from '../../../features/historical-entities';
 import { abrahamA2PagesEn } from './en/pages';
 import { abrahamA2PagesAr } from './ar/pages';
 import { abrahamA2FinalChallengeExercisesPolished, abrahamA2KnowledgeCheckExercisesPolished, abrahamA2QuickChallengesPolished, abrahamA2VocabularyChallengePairsPolished, abrahamA2LanguageReviewExercises } from './en/exercises';
@@ -16,7 +17,8 @@ import { abrahamA2SelfStudyGuideAr, abrahamA2StudentGuideSectionsPreviewAr, abra
 
 const STORY_IDS = new Set(Array.from({ length: 14 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
+const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(sourcePage => {
+  const page = applyHistoricalEntitiesToPage(sourcePage, 'abraham-a2', 'en');
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercises[page.id] ?? abrahamA2LanguageFocusExercisesPart2[page.id] ?? abrahamA2LanguageFocusExercisesPart3[page.id] ?? abrahamA2LanguageFocusExercisesPart4[page.id] ?? abrahamA2LanguageFocusExercisesPart5[page.id] ?? abrahamA2LanguageFocusExercisesPart6[page.id] ?? abrahamA2LanguageFocusExercisesPart7[page.id] ?? abrahamA2LanguageFocusExercisesPart8[page.id] ?? abrahamA2LanguageFocusExercisesPart9[page.id] ?? abrahamA2LanguageFocusExercisesPart10[page.id] ?? abrahamA2LanguageFocusExercisesPart11[page.id];
     return { ...page, exercises: [abrahamA2QuickChallengesPolished[page.id]], ...(languageFocusExercises ? { languageFocusExercises } : {}) };
@@ -28,7 +30,8 @@ const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(page => {
   return page;
 });
 
-const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(sourcePage => {
+  const page = applyHistoricalEntitiesToPage(sourcePage, 'abraham-a2', 'ar');
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercisesAr[page.id] ?? abrahamA2LanguageFocusExercisesArPart2[page.id] ?? abrahamA2LanguageFocusExercisesArPart3[page.id] ?? abrahamA2LanguageFocusExercisesArPart4[page.id] ?? abrahamA2LanguageFocusExercisesArPart5[page.id] ?? abrahamA2LanguageFocusExercisesArPart6[page.id] ?? abrahamA2LanguageFocusExercisesArPart7[page.id] ?? abrahamA2LanguageFocusExercisesArPart8[page.id] ?? abrahamA2LanguageFocusExercisesArPart9[page.id] ?? abrahamA2LanguageFocusExercisesArPart10[page.id] ?? abrahamA2LanguageFocusExercisesArPart11[page.id];
     return { ...page, exercises: [abrahamA2QuickChallengesArPolished[page.id]], ...(languageFocusExercises ? { languageFocusExercises } : {}) };
