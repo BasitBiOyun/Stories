@@ -5,6 +5,7 @@ import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCards';
+import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 
 export const VocabularyWord = ({ 
   word, 
@@ -30,6 +31,7 @@ export const VocabularyWord = ({
   }>({ top: 0, left: 0, arrowOffset: 0, isAbove: true });
 
   const normalizedDefinition = definition?.trim() ?? '';
+  const historicalEntityId = getHistoricalEntityIdFromDefinition(normalizedDefinition);
   const genericFallback = t('nav.keyWordFallback').trim();
   const hasDefinition = Boolean(normalizedDefinition) && normalizedDefinition !== genericFallback;
 
@@ -130,6 +132,10 @@ export const VocabularyWord = ({
   useEffect(() => {
     if (!hasDefinition && isOpen) setIsOpen(false);
   }, [hasDefinition, isOpen]);
+
+  if (historicalEntityId) {
+    return <HistoricalEntityWord word={word} entityId={historicalEntityId} />;
+  }
 
   return (
     <span className="relative inline-block">
