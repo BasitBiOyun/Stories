@@ -148,7 +148,7 @@ export const HistoricalEntityWord = ({
                   <img
                     src={mapAsset}
                     alt={copy.mapAlt}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain"
                     draggable={false}
                   />
                 </div>
