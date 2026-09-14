@@ -3,6 +3,8 @@ import type { HistoricalEntity, HistoricalEntityLocale } from './types';
 
 const HISTORICAL_ENTITY_MARKER = '__historical_entity__:';
 const ancientNearEastContextMap = new URL('./assets/maps/ancient-near-east-context-map.svg', import.meta.url).href;
+const abrahamA2BabylonMapEn = new URL('./assets/maps/abraham-a2/abraham-a2-babylon-map-en.webp', import.meta.url).href;
+const abrahamA2BabylonMapAr = new URL('./assets/maps/abraham-a2/abraham-a2-babylon-map-ar.webp', import.meta.url).href;
 
 export const historicalEntities: Record<string, HistoricalEntity> = {
   babylon: {
@@ -17,20 +19,23 @@ export const historicalEntities: Record<string, HistoricalEntity> = {
         title: 'Babylon',
         kindLabel: 'Ancient city and kingdom',
         periodLabel: 'Ancient Mesopotamia',
-        summary: 'Babylon was an old kingdom in Mesopotamia.',
-        mapAlt: 'Historical map showing Babylon and its wider territory.',
+        summary: 'Babylon was an old kingdom in Mesopotamia. This map shows the wider Babylonian Empire in a later period.',
+        mapAlt: 'Historical map showing the wider Babylonian Empire and important places.',
         approximateLabel: 'Historical borders are approximate',
       },
       ar: {
         title: 'بابل',
         kindLabel: 'مدينة ومملكة قديمة',
         periodLabel: 'بلاد ما بين النهرين القديمة',
-        summary: 'كانت بابل مملكةً قديمة في بلاد ما بين النهرين.',
-        mapAlt: 'خريطة تاريخية توضّح بابل ومجالها الأوسع.',
+        summary: 'كانت بابل مملكةً قديمة في بلاد ما بين النهرين. وتُظهر هذه الخريطة الإمبراطورية البابلية الأوسع في فترة لاحقة.',
+        mapAlt: 'خريطة تاريخية توضّح الإمبراطورية البابلية الأوسع وبعض الأماكن المهمة.',
         approximateLabel: 'الحدود التاريخية تقريبية',
       },
     },
-    mapAsset: ancientNearEastContextMap,
+    mapAsset: {
+      en: abrahamA2BabylonMapEn,
+      ar: abrahamA2BabylonMapAr,
+    },
     focus: { mode: 'area', x: 61, y: 38, width: 25, height: 36, rotate: 3 },
     approximate: true,
     sources: [
