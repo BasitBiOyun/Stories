@@ -15,6 +15,39 @@ type KnownState = 'known' | 'unknown' | 'unreviewed';
 type FilterMode = 'all' | 'known' | 'unknown' | 'unreviewed';
 
 const STORAGE_KEY = (bookId: string) => `glossary_known_${bookId}`;
+const ARABIC_SCRIPT_RE = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
+const LATIN_SCRIPT_RE = /[A-Za-z]/;
+const TURKISH_OR_OTTOMAN_CHAR_RE = /[çğıöşüÇĞİÖŞÜâÂîÎûÛ]/;
+
+const normalizeGlossaryKey = (word: string) => word.trim().toLocaleLowerCase();
+
+const isTargetLanguageVocabulary = (word: string, isRTL: boolean) => {
+  const cleaned = word.trim();
+  if (!cleaned) return false;
+
+  if (isRTL) {
+    return ARABIC_SCRIPT_RE.test(cleaned) && !LATIN_SCRIPT_RE.test(cleaned);
+  }
+
+  return !ARABIC_SCRIPT_RE.test(cleaned) && !TURKISH_OR_OTTOMAN_CHAR_RE.test(cleaned);
+};
+
+const pickPreferredVoice = (lang: string) => {
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return undefined;
+
+  const normalizedLang = lang.toLowerCase();
+  const prefix = normalizedLang.split('-')[0];
+  const exact = voices.filter(voice => voice.lang.toLowerCase() === normalizedLang);
+  const sameLanguage = voices.filter(voice => voice.lang.toLowerCase().startsWith(prefix));
+  const candidates = exact.length > 0 ? exact : sameLanguage;
+  if (!candidates.length) return undefined;
+
+  const preferredName = /(google|microsoft|samantha|daniel|karen|zira|aria|majed|maged|tarik|hamed)/i;
+  return candidates.find(voice => preferredName.test(voice.name))
+    ?? candidates.find(voice => voice.localService)
+    ?? candidates[0];
+};
 
 export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, collectionId }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -131,19 +164,25 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const allVocabulary = useMemo(() => {
     if (page.vocabulary && page.vocabulary.length > 0) {
       return page.vocabulary
+        .filter(v => isTargetLanguageVocabulary(v.word, isRTL))
         .map(v => ({
-          word: v.word.toLowerCase(),
+          key: normalizeGlossaryKey(v.word),
+          word: v.word.trim(),
           definition: v.definition,
           example: v.example ?? null,
         }))
-        .sort((a, b) => a.word.localeCompare(b.word));
+        .sort((a, b) => a.word.localeCompare(b.word, isRTL ? 'ar' : 'en', { sensitivity: 'base' }));
     }
 
-    const vocabMap = new Map<string, { definition: string; example: string | null }>();
+    const vocabMap = new Map<string, { word: string; definition: string; example: string | null }>();
     bookData.pages.forEach(p => {
       p.vocabulary?.forEach(v => {
-        if (!vocabMap.has(v.word.toLowerCase())) {
-          vocabMap.set(v.word.toLowerCase(), {
+        if (!isTargetLanguageVocabulary(v.word, isRTL)) return;
+
+        const key = normalizeGlossaryKey(v.word);
+        if (!vocabMap.has(key)) {
+          vocabMap.set(key, {
+            word: v.word.trim(),
             definition: v.definition,
             example: v.example ?? null,
           });
@@ -151,12 +190,12 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       });
     });
     return Array.from(vocabMap.entries())
-      .map(([word, data]) => ({ word, ...data }))
-      .sort((a, b) => a.word.localeCompare(b.word));
-  }, [bookData, page]);
+      .map(([key, data]) => ({ key, ...data }))
+      .sort((a, b) => a.word.localeCompare(b.word, isRTL ? 'ar' : 'en', { sensitivity: 'base' }));
+  }, [bookData, page, isRTL]);
 
   const knownCount = useMemo(
-    () => allVocabulary.filter(v => knownMap[v.word] === 'known').length,
+    () => allVocabulary.filter(v => knownMap[v.key] === 'known').length,
     [allVocabulary, knownMap]
   );
 
@@ -167,7 +206,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         v.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
         v.definition.toLowerCase().includes(searchTerm.toLowerCase());
 
-      const state: KnownState = knownMap[v.word] ?? 'unreviewed';
+      const state: KnownState = knownMap[v.key] ?? 'unreviewed';
       const matchesFilter =
         filter === 'all' ||
         (filter === 'known' && state === 'known') ||
@@ -184,12 +223,17 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     window.speechSynthesis.cancel();
     setPlayingWord(word);
 
+    const targetLang = isRTL ? 'ar-SA' : 'en-US';
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = isRTL ? 'ar-SA' : 'en-US';
-    utterance.rate = 0.85;
+    const preferredVoice = pickPreferredVoice(targetLang);
+
+    if (preferredVoice) utterance.voice = preferredVoice;
+    utterance.lang = preferredVoice?.lang ?? targetLang;
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    utterance.volume = 1;
 
     const reset = () => setPlayingWord(null);
-    utterance.onend = reset;
     utterance.onerror = reset;
 
     const timeout = setTimeout(reset, 3000);
@@ -198,9 +242,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     window.speechSynthesis.speak(utterance);
   }, [isRTL]);
 
-  const markWord = useCallback((word: string, state: KnownState) => {
+  const markWord = useCallback((wordKey: string, state: KnownState) => {
     setKnownMap(prev => {
-      const next = { ...prev, [word]: state };
+      const next = { ...prev, [wordKey]: state };
       persistKnownMap(next);
       return next;
     });
@@ -218,8 +262,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const filterOptions: { value: FilterMode; label: string }[] = [
     { value: 'all', label: `${t('nav.all')} (${formatNumber(allVocabulary.length)})` },
     { value: 'known', label: `✓ ${t('nav.known')} (${formatNumber(knownCount)})` },
-    { value: 'unknown', label: `✗ ${t('nav.review')} (${formatNumber(allVocabulary.filter(v => knownMap[v.word] === 'unknown').length)})` },
-    { value: 'unreviewed', label: `${t('nav.new')} (${formatNumber(allVocabulary.filter(v => !knownMap[v.word]).length)})` },
+    { value: 'unknown', label: `✗ ${t('nav.review')} (${formatNumber(allVocabulary.filter(v => knownMap[v.key] === 'unknown').length)})` },
+    { value: 'unreviewed', label: `${t('nav.new')} (${formatNumber(allVocabulary.filter(v => !knownMap[v.key]).length)})` },
   ];
 
   return (
@@ -306,11 +350,11 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2">
           <AnimatePresence mode="popLayout">
             {filteredVocab.map((v) => {
-              const state: KnownState = knownMap[v.word] ?? 'unreviewed';
+              const state: KnownState = knownMap[v.key] ?? 'unreviewed';
 
               return (
                 <motion.div
-                  key={v.word}
+                  key={v.key}
                   layout
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -351,7 +395,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
 
                     <div className="shrink-0 flex flex-col gap-1 mt-0.5">
                       <button
-                        onClick={() => markWord(v.word, state === 'known' ? 'unreviewed' : 'known')}
+                        onClick={() => markWord(v.key, state === 'known' ? 'unreviewed' : 'known')}
                         className={cn(
                           "p-1.5 rounded-lg transition-all",
                           state === 'known'
@@ -363,7 +407,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                         <Check size={13} />
                       </button>
                       <button
-                        onClick={() => markWord(v.word, state === 'unknown' ? 'unreviewed' : 'unknown')}
+                        onClick={() => markWord(v.key, state === 'unknown' ? 'unreviewed' : 'unknown')}
                         className={cn(
                           "p-1.5 rounded-lg transition-all",
                           state === 'unknown'
