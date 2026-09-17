@@ -53,6 +53,7 @@ import { abrahamB1SelfStudyGuideEn } from './en/selfStudyGuide';
 import { abrahamB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['mardukh']);
 
 const englishLanguageFocus = {
   ...abrahamB1LanguageFocusExercises,
@@ -101,6 +102,10 @@ const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
     exercises: abrahamB1LanguageReviewExercises,
   };
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsPolished };
+  if (page.id === 17) return {
+    ...page,
+    vocabulary: page.vocabulary?.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(item.word.trim().toLocaleLowerCase())),
+  };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesPolished };
   return page;
 });
