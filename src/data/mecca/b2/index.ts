@@ -8,6 +8,19 @@ import { meccaB2PagesAr } from './ar/pages';
 import { meccaB2TeacherGuideAr } from './ar/teacherGuide';
 import { meccaB2SelfStudyGuideAr } from './ar/selfStudyGuide';
 
+const MECCA_B2_ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
+  'jahiliyyah',
+]);
+const normalizeTerm = (word: string) => word.trim().toLocaleLowerCase();
+
+const cleanEnglishGlossary = (pages: PageData[]): PageData[] => pages.map(page => {
+  if (page.type !== 'glossary' || !page.vocabulary?.length) return page;
+  return {
+    ...page,
+    vocabulary: page.vocabulary.filter(item => !MECCA_B2_ENGLISH_GLOSSARY_EXCLUSIONS.has(normalizeTerm(item.word))),
+  };
+});
+
 const alignArabicVocabularyWithEnglish = (pages: PageData[]): PageData[] => pages.map(page => {
   const indexes = meccaB2VocabIndexes[page.id];
   if (page.type !== 'story' || !indexes) return page;
@@ -24,7 +37,7 @@ export const meccaB2BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: meccaB2Pages,
+  pages: cleanEnglishGlossary(meccaB2Pages),
   teacherGuide: meccaB2TeacherGuide,
   selfStudyGuide: meccaB2SelfStudyGuide,
 };
