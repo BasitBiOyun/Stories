@@ -51,6 +51,7 @@ import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './
 import { yunusEmreB1SelfStudyGuideAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['sûfî', 'tawhid']);
 
 const englishLanguageFocus: Record<number, Exercise[]> = {
   ...yunusB1LanguageFocusExercises,
@@ -101,7 +102,15 @@ const buildPages = (
   return page;
 });
 
-const englishPages = buildPages(
+const cleanEnglishGlossary = (pages: PageData[]): PageData[] => pages.map(page => {
+  if (page.type !== 'glossary' || !page.vocabulary?.length) return page;
+  return {
+    ...page,
+    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(item.word.trim().toLocaleLowerCase())),
+  };
+});
+
+const englishPages = cleanEnglishGlossary(buildPages(
   yunusB1Pages,
   yunusB1QuickChallenges,
   englishLanguageFocus,
@@ -109,7 +118,7 @@ const englishPages = buildPages(
   yunusB1VocabularyChallengePairs,
   yunusB1LanguageReviewExercises,
   yunusB1FinalChallengeExercises,
-);
+));
 const arabicPages = buildPages(
   yunusEmreB1PagesAr,
   yunusB1QuickChallengesAr,
