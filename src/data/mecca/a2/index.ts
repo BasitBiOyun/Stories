@@ -53,6 +53,8 @@ import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStu
 import { meccaA2SelfStudyGuideAr, meccaA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['adhan', 'hijrah']);
+const normalizeTerm = (word: string) => word.trim().toLocaleLowerCase();
 
 const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
@@ -69,6 +71,10 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
     title: 'Language Review',
     content: 'Review and use the grammar patterns and language functions from all thirteen chapters.',
     exercises: meccaA2LanguageReviewExercises,
+  };
+  if (page.type === 'glossary' && page.vocabulary?.length) return {
+    ...page,
+    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(normalizeTerm(item.word))),
   };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercisesPolished };
   return page;
