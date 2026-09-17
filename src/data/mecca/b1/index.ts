@@ -56,6 +56,22 @@ import {
 import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
+const ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
+  'jahiliyyah',
+  'ka’ba',
+  'qiblah',
+  'arafat',
+]);
+const normalizeTerm = (word: string) => word.trim().toLocaleLowerCase();
+
+const cleanEnglishGlossary = (pages: PageData[]): PageData[] => pages.map(page => {
+  if (page.type !== 'glossary' || !page.vocabulary?.length) return page;
+  return {
+    ...page,
+    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(normalizeTerm(item.word))),
+  };
+});
+
 const englishLanguageFocus = {
   ...meccaB1LanguageFocusExercises,
   ...meccaB1LanguageFocusChapter3,
@@ -119,7 +135,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises),
+  pages: cleanEnglishGlossary(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises)),
   teacherGuide: meccaB1TeacherGuide,
   teacherGuideMetadata: meccaB1TeacherGuideMetadata,
   selfStudyGuide: meccaB1SelfStudyGuide,
