@@ -375,7 +375,7 @@ Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerl
   { id: 15, type: 'quiz', title: 'اختبار المعرفة: يونس إمره B2', image: '', audioUrl: '', content: 'اختبر فهم الكتاب بثمانية أسئلة قائمة على الدليل.' },
   { id: 16, type: 'vocabulary-match', title: 'تحدي المفردات B2', image: '', audioUrl: '', content: 'طابق عشر كلمات محورية بمعانيها في سياق القصة.' },
   { id: 17, type: 'glossary', title: 'المعجم الرئيسي', image: '', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: [] },
-  { id: 19, type: 'exercises', title: 'المراجعة الاسترجاعية', image: '', content: 'أكمل التسلسل والمطابقة والتأمل ولعبة الأسئلة ذات الثمانية بنود.' },
+  { id: 19, type: 'exercises', title: 'مراجعة اللغة', image: '', content: 'راجع واستعمل لغة المصدر والسبب والنتيجة والاستدراك والمقارنة والتفسير من الكتاب.' },
   { id: 20, type: 'final-challenge', title: 'التحدي النهائي: يونس إمره B2', image: '', content: 'أكمل التحدي النهائي ذي العشرة بنود عبر الكتاب كله.' },
 // c17b
 ];
