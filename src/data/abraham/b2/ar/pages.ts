@@ -188,7 +188,7 @@ const rawAbrahamB2PagesAr: PageData[] = [
   {id:36,type:'quiz',title:'اختبار المعرفة — B2',content:'اختبر فهمك لقصة النبي إبراهيم عليه السلام كاملة في مستوى B2.',image:'',audioUrl:''},
   {id:37,type:'exercises',title:'مراجعة اللغة B2',content:'راجع واستعمل صيغ المصدر والموقف والزمن والتماسك والعلاقات الخطابية التي تطورت عبر الفصول الخمسة والثلاثين.',image:''},
   {id:38,type:'vocabulary-match',title:'تحدي المفردات — B2',content:'صل عشرة مصطلحات أساسية من القصة بمعانيها الدقيقة.',image:''},
-  {id:39,type:'glossary',title:'مسرد القصة — B2',content:'مفردات القصة الأساسية في مستوى B2.',image:''},
+  {id:39,type:'glossary',title:'المعجم الرئيسي',content:'راجع جميع مفردات القصة المهمة في مكان واحد.',image:''},
   {id:40,type:'final-challenge',title:'التحدي النهائي',content:'أظهر إتقانك للقصة كاملة من خلال التحليل والدليل والمقارنة والتركيب.',image:''},
 ];
 
