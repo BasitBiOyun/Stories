@@ -259,16 +259,22 @@ const glossaryVocabulary = (book: BookData, language: Language): VocabularyItem[
   return result;
 };
 
+const nextLearningPageId = (book: BookData): number => {
+  const usedIds = new Set(book.pages.map(page => page.id));
+  const storyIds = book.pages
+    .filter(page => page.type === 'story')
+    .map(page => page.id);
+  let id = Math.max(0, ...storyIds) + 1;
+  while (usedIds.has(id)) id += 1;
+  return id;
+};
+
 const makeGlossaryPage = (book: BookData, language: Language): PageData | null => {
   const vocabulary = glossaryVocabulary(book, language);
   if (!vocabulary.length) return null;
 
-  const usedIds = new Set(book.pages.map(page => page.id));
-  let id = Math.max(0, ...usedIds) + 1;
-  while (usedIds.has(id)) id += 1;
-
   return {
-    id,
+    id: nextLearningPageId(book),
     type: 'glossary',
     title: language === 'ar' ? 'المعجم الرئيسي' : 'Master Glossary',
     content: language === 'ar'
@@ -346,13 +352,6 @@ const upgradeChallengePairs = (
   };
 };
 
-const nextFreePageId = (book: BookData): number => {
-  const usedIds = new Set(book.pages.map(page => page.id));
-  let id = Math.max(0, ...usedIds) + 1;
-  while (usedIds.has(id)) id += 1;
-  return id;
-};
-
 const updateChallengePage = (
   book: BookData,
   language: Language,
@@ -388,7 +387,7 @@ const updateChallengePage = (
     pages: [
       ...pages,
       {
-        id: nextFreePageId({ ...book, pages }),
+        id: nextLearningPageId({ ...book, pages }),
         type: 'vocabulary-match',
         ...challengeCopy,
         image: '',
