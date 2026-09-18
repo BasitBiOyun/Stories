@@ -374,8 +374,7 @@ Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerl
   },
   { id: 15, type: 'quiz', title: 'اختبار المعرفة: يونس إمره B2', image: '', audioUrl: '', content: 'اختبر فهم الكتاب بثمانية أسئلة قائمة على الدليل.' },
   { id: 16, type: 'vocabulary-match', title: 'تحدي المفردات B2', image: '', audioUrl: '', content: 'طابق عشر كلمات محورية بمعانيها في سياق القصة.' },
-  { id: 17, type: 'glossary', title: 'المعجم الشامل — الجزء الأول', image: '', content: 'راجع مفردات الفصول الأولى من Word Notes.', vocabulary: [] },
-  { id: 18, type: 'glossary', title: 'المعجم الشامل — الجزء الثاني', image: '', content: 'راجع مفردات الفصول الأخيرة من Word Notes.', vocabulary: [] },
+  { id: 17, type: 'glossary', title: 'المعجم الرئيسي', image: '', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: [] },
   { id: 19, type: 'exercises', title: 'المراجعة الاسترجاعية', image: '', content: 'أكمل التسلسل والمطابقة والتأمل ولعبة الأسئلة ذات الثمانية بنود.' },
   { id: 20, type: 'final-challenge', title: 'التحدي النهائي: يونس إمره B2', image: '', content: 'أكمل التحدي النهائي ذي العشرة بنود عبر الكتاب كله.' },
 // c17b
@@ -419,6 +418,10 @@ const arabicLanguageFocus: Record<number, Exercise[]> = {
 };
 const cleanContent = (content = '') => content.replace(/^\/\/ c\d+[ab]\s*(?:\n|$)/gm, '');
 
+const yunusB2ArabicMasterGlossary:NonNullable<PageData['vocabulary']>=rawYunusEmreB2PagesAr
+  .filter(page=>STORY_IDS.has(page.id))
+  .flatMap(page=>page.vocabulary??[]);
+
 export const yunusEmreB2PagesAr: PageData[] = rawYunusEmreB2PagesAr.map(page => {
   const clean = { ...page, content: cleanContent(page.content ?? '') };
   if (STORY_IDS.has(page.id)) {
@@ -431,6 +434,7 @@ export const yunusEmreB2PagesAr: PageData[] = rawYunusEmreB2PagesAr.map(page => 
   }
   if (page.id === 15) return { ...clean, exercises: yunusB2ManualKnowledgeCheckExercisesAr };
   if (page.id === 16) return { ...clean, vocabularyPairs: yunusB2VocabularyChallengePairsAr };
+  if (page.id === 17) return { ...clean, vocabulary: yunusB2ArabicMasterGlossary };
   if (page.id === 19) return {
     ...clean,
     title: 'مراجعة اللغة B2',
