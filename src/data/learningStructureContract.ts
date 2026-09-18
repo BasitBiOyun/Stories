@@ -5,7 +5,6 @@ export const LEARNING_BOOK_STRUCTURE_STANDARD = {
   hotspotsPerStory: 2,
   quickChallengesPerStory: 1,
   minimumGlossaryPages: 1,
-  retrievalReviewActivityTypes: ['sequencing', 'matching', 'reflection', 'quiz-game'] as const satisfies readonly ExerciseType[],
 } as const;
 
 export interface LearningBookStructureConfig {
@@ -32,9 +31,6 @@ const issue = (
   message: string,
   pageId?: number,
 ): LearningStructureIssue => ({ bookId: book.id, pageId, code, message });
-
-const sameExerciseShape = (actual: ExerciseType[], expected: readonly ExerciseType[]) =>
-  actual.length === expected.length && actual.every((type, index) => type === expected[index]);
 
 export const validateLearningBookStructure = (
   book: BookData,
@@ -122,29 +118,9 @@ export const validateLearningBookStructure = (
 
   const review = pageById(book, config.reviewPageId);
   if (!review || review.type !== 'exercises') {
-    issues.push(issue(book, 'RETRIEVAL_REVIEW_PAGE', 'Retrieval Review must remain an exercises page.', config.reviewPageId));
-  } else {
-    const actualTypes = (review.exercises ?? []).map(exercise => exercise.type);
-    const expectedTypes = LEARNING_BOOK_STRUCTURE_STANDARD.retrievalReviewActivityTypes;
-    if (!sameExerciseShape(actualTypes, expectedTypes)) {
-      issues.push(issue(
-        book,
-        'RETRIEVAL_REVIEW_SHAPE',
-        `Retrieval Review must keep four activities in this order: ${expectedTypes.join(', ')}; found ${actualTypes.join(', ') || 'none'}.`,
-        review.id,
-      ));
-    }
-
-    const quizGame = review.exercises?.find(exercise => exercise.type === 'quiz-game');
-    const quizQuestionCount = quizGame?.quizQuestions?.length ?? 0;
-    if (quizQuestionCount !== policy.reviewCount) {
-      issues.push(issue(
-        book,
-        'RETRIEVAL_REVIEW_QUIZ_COUNT',
-        `Retrieval Review quiz-game must contain exactly ${policy.reviewCount} questions; found ${quizQuestionCount}.`,
-        review.id,
-      ));
-    }
+    issues.push(issue(book, 'LANGUAGE_REVIEW_PAGE', 'Language Review must remain an exercises page.', config.reviewPageId));
+  } else if (!(review.exercises?.length)) {
+    issues.push(issue(book, 'LANGUAGE_REVIEW_EMPTY', 'Language Review must contain reviewed language tasks.', review.id));
   }
 
   if (config.glossaryPageIds.length < LEARNING_BOOK_STRUCTURE_STANDARD.minimumGlossaryPages) {
@@ -192,7 +168,7 @@ export const validateLearningBookStructure = (
     issues.push(issue(
       book,
       'LEARNING_PAGE_ORDER',
-      'Whole-book learning flow must be Knowledge Check → Master Glossary → Vocabulary Challenge → Retrieval Review → Final Challenge.',
+      'Whole-book learning flow must be Knowledge Check → Master Glossary → Vocabulary Challenge → Language Review → Final Challenge.',
     ));
   }
 
