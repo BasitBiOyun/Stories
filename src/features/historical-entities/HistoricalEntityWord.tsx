@@ -31,23 +31,31 @@ export const HistoricalEntityWord = ({
     const rect = triggerRef.current.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - 24, 420);
-    const tooltipHeight = tooltipRef.current?.offsetHeight ?? 330;
+    const edge = 12;
+    const gap = 8;
+    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - edge * 2, 420);
+    const tooltipHeight = tooltipRef.current?.offsetHeight ?? Math.min(viewportHeight - edge * 2, 420);
     const triggerCenterX = rect.left + rect.width / 2;
-    const halfWidth = tooltipWidth / 2;
-    const minLeft = 12 + halfWidth;
-    const maxLeft = viewportWidth - 12 - halfWidth;
-    const left = Math.min(Math.max(triggerCenterX, minLeft), maxLeft);
-    const arrowOffset = triggerCenterX - left;
-    const spaceAbove = rect.top;
-    const isAbove = spaceAbove >= tooltipHeight + 16 || spaceAbove >= viewportHeight - rect.bottom;
 
-    setCoords({
-      top: isAbove ? rect.top - 8 : rect.bottom + 8,
-      left,
-      arrowOffset,
-      isAbove,
-    });
+    const unclampedLeft = triggerCenterX - tooltipWidth / 2;
+    const maxLeft = Math.max(edge, viewportWidth - tooltipWidth - edge);
+    const left = Math.min(Math.max(unclampedLeft, edge), maxLeft);
+
+    const spaceAbove = rect.top - edge;
+    const spaceBelow = viewportHeight - rect.bottom - edge;
+    const isAbove = spaceAbove >= tooltipHeight + gap || spaceAbove >= spaceBelow;
+    const desiredTop = isAbove
+      ? rect.top - gap - tooltipHeight
+      : rect.bottom + gap;
+    const maxTop = Math.max(edge, viewportHeight - tooltipHeight - edge);
+    const top = Math.min(Math.max(desiredTop, edge), maxTop);
+
+    const arrowOffset = Math.min(
+      Math.max(triggerCenterX - left, 18),
+      Math.max(18, tooltipWidth - 18),
+    );
+
+    setCoords({ top, left, arrowOffset, isAbove });
   };
 
   const close = () => setIsOpen(false);
@@ -108,9 +116,9 @@ export const HistoricalEntityWord = ({
               <div className="fixed inset-0 z-[99998]" onClick={close} />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.98, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                animate={{ opacity: 1, scale: 1, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                exit={{ opacity: 0, scale: 0.98, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.12, ease: 'easeOut' }}
                 style={{
                   position: 'fixed',
@@ -123,7 +131,7 @@ export const HistoricalEntityWord = ({
                 lang={locale}
                 onClick={(event) => event.stopPropagation()}
                 className={cn(
-                  'w-[calc(100vw-2rem)] max-w-[420px] overflow-hidden rounded-2xl border border-teal-300/30',
+                  'w-[calc(100vw-1.5rem)] max-w-[420px] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-teal-300/30',
                   'bg-wood text-parchment shadow-2xl',
                   isArabic ? 'text-right' : 'text-left',
                 )}
@@ -165,7 +173,7 @@ export const HistoricalEntityWord = ({
                 </div>
 
                 <div
-                  style={{ left: `calc(50% + ${coords.arrowOffset}px)` }}
+                  style={{ left: coords.arrowOffset }}
                   className={cn(
                     'absolute -translate-x-1/2 border-8 border-transparent',
                     coords.isAbove ? 'top-full border-t-wood' : 'bottom-full border-b-wood',
