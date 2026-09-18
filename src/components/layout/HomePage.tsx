@@ -510,63 +510,67 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   const baseX = delta * 96;
 
                   return (
-                    <motion.button
+                    <div
                       key={story.id}
-                      type="button"
-                      aria-label={translatedStoryName(story)}
-                      onClick={() => setActiveIndex(index)}
-                      initial={false}
-                      animate={{
-                        x: hidden ? (delta < 0 ? -330 : 330) : baseX,
-                        scale: isActive ? 1 : absDelta === 1 ? 0.84 : 0.7,
-                        rotateY: isActive ? 0 : delta * -17,
-                        opacity: hidden ? 0 : isActive ? 1 : absDelta === 1 ? 0.62 : 0.24,
-                        filter: isActive ? 'brightness(1)' : absDelta === 1 ? 'brightness(0.72)' : 'brightness(0.5)',
-                      }}
-                      transition={{ duration: reduceMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
-                      style={{
-                        zIndex: 30 - absDelta,
-                        pointerEvents: hidden ? 'none' : 'auto',
-                        transformPerspective: 1800,
-                        transformStyle: 'preserve-3d',
-                      }}
-                      className="absolute left-1/2 top-1/2 aspect-[4/5] h-[82%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[28px] bg-[#0b120d] text-start shadow-[0_36px_90px_rgba(0,0,0,0.45)]"
+                      className="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      style={{ zIndex: 30 - absDelta }}
                     >
-                      <motion.div
-                        className="h-full w-full"
-                        style={
-                          isActive
-                            ? {
-                                rotateX: coverRotateX,
-                                rotateY: coverRotateY,
-                                y: scrollCoverY,
-                                transformPerspective: 1800,
-                                transformStyle: 'preserve-3d',
-                              }
-                            : undefined
-                        }
+                      <motion.button
+                        type="button"
+                        aria-label={translatedStoryName(story)}
+                        onClick={() => setActiveIndex(index)}
+                        initial={false}
+                        animate={{
+                          x: hidden ? (delta < 0 ? -330 : 330) : baseX,
+                          scale: isActive ? 1 : absDelta === 1 ? 0.84 : 0.7,
+                          rotateY: isActive ? 0 : delta * -17,
+                          opacity: hidden ? 0 : isActive ? 1 : absDelta === 1 ? 0.62 : 0.24,
+                          filter: isActive ? 'brightness(1)' : absDelta === 1 ? 'brightness(0.72)' : 'brightness(0.5)',
+                        }}
+                        transition={{ duration: reduceMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
+                        style={{
+                          pointerEvents: hidden ? 'none' : 'auto',
+                          transformPerspective: 1800,
+                          transformStyle: 'preserve-3d',
+                        }}
+                        className="pointer-events-auto aspect-[4/5] h-[82%] overflow-hidden rounded-[28px] bg-[#0b120d] text-start shadow-[0_36px_90px_rgba(0,0,0,0.45)]"
                       >
-                        <img
-                          src={story.image}
-                          alt=""
-                          className="h-full w-full object-cover"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/22 via-transparent to-white/[0.08]" />
-                        <div
-                          className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%]"
-                          style={{
-                            background: `linear-gradient(to top, rgba(10,17,13,0.72), transparent)`,
-                          }}
-                        />
-                        {isActive && (
-                          <div
-                            className="pointer-events-none absolute left-4 top-4 h-2.5 w-2.5 rounded-full shadow-[0_0_20px_currentColor]"
-                            style={{ color: visual.accentBright, background: visual.accentBright }}
+                        <motion.div
+                          className="relative h-full w-full"
+                          style={
+                            isActive
+                              ? {
+                                  rotateX: coverRotateX,
+                                  rotateY: coverRotateY,
+                                  y: scrollCoverY,
+                                  transformPerspective: 1800,
+                                  transformStyle: 'preserve-3d',
+                                }
+                              : undefined
+                          }
+                        >
+                          <img
+                            src={story.image}
+                            alt=""
+                            className="h-full w-full object-cover"
+                            referrerPolicy="no-referrer"
                           />
-                        )}
-                      </motion.div>
-                    </motion.button>
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/22 via-transparent to-white/[0.08]" />
+                          <div
+                            className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%]"
+                            style={{
+                              background: `linear-gradient(to top, rgba(10,17,13,0.72), transparent)`,
+                            }}
+                          />
+                          {isActive && (
+                            <div
+                              className="pointer-events-none absolute left-4 top-4 h-2.5 w-2.5 rounded-full shadow-[0_0_20px_currentColor]"
+                              style={{ color: visual.accentBright, background: visual.accentBright }}
+                            />
+                          )}
+                        </motion.div>
+                      </motion.button>
+                    </div>
                   );
                 })}
 
