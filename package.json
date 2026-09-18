@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build": "npm run typecheck && npm run validate:vocabulary && vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
@@ -17,7 +17,8 @@
     "validate:deploy": "node scripts/validation/runDeployChecks.mjs",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
     "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
-    "inventory:storage": "tsx scripts/validation/exportStorageInventory.ts"
+    "inventory:storage": "tsx scripts/validation/exportStorageInventory.ts",
+    "validate:vocabulary": "tsx scripts/validation/validateVocabularyFlow.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
