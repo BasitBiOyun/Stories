@@ -52,6 +52,23 @@ export interface Hotspot {
   description: string;
 }
 
+export interface VocabularyItem {
+  word: string;
+  definition: string;
+  example?: string;
+  partOfSpeech?: string;
+  level?: Level;
+  pronunciation?: string;
+  wordFamily?: string[];
+  collocations?: string[];
+  synonyms?: string[];
+  antonyms?: string[];
+  chapter?: number;
+  chapterTitle?: string;
+  storyExample?: string;
+  category?: string;
+}
+
 export interface PageData {
   id: number;
   type: PageType;
@@ -62,7 +79,7 @@ export interface PageData {
   languageFocusExercises?: Exercise[];
   image?: string;
   audioUrl?: string;
-  vocabulary?: { word: string; definition: string; example?: string }[];
+  vocabulary?: VocabularyItem[];
   sequencingItems?: { id: string; text: string }[];
   vocabularyPairs?: { word: string; meaning: string }[];
   hotspots?: Hotspot[];
