@@ -1020,18 +1020,19 @@ export const StoryPage = ({
               </div>
 
               <div className="min-w-0 pt-0.5">
-                <p className={cn(
-                  'font-display text-[10px] font-semibold uppercase tracking-[0.18em]',
-                  quickTheme.copy
-                )}>
-                  {completed ? t('nav.completed') : t('nav.testUnderstanding')}
-                </p>
-                <h4 className={cn(
-                  'mt-1 font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
-                  quickTheme.title
-                )}>
-                  {t('nav.quickChallenge')}
-                </h4>
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h4 className={cn(
+                    'font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
+                    quickTheme.title
+                  )}>
+                    {t('nav.quickChallenge')}
+                  </h4>
+                  {completed && (
+                    <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-display text-[9px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                      {t('nav.completed')}
+                    </span>
+                  )}
+                </div>
                 <p className={cn(
                   'mt-1.5 max-w-2xl font-serif leading-relaxed',
                   isArabic ? 'text-base' : 'text-sm',
