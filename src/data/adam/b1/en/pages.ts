@@ -201,66 +201,1096 @@ export const adamB1Pages: PageData[] = [
   {
     id: 16,
     type: 'glossary',
-    title: 'B1 Master Glossary - Part 1',
-    content: 'A complete list of the Word Notes from Chapters 1–6.',
+    title: 'Master Glossary',
+    content: 'Review all key vocabulary from the story in one place.',
     vocabulary: [
-      { word: 'Messenger', definition: 'A person chosen by Allah to deliver His message.' },
-      { word: 'fabulous', definition: 'Very impressive or wonderful.' },
-      { word: 'ruler', definition: 'A person given responsibility to lead or manage.' },
-      { word: 'curiosity', definition: 'A strong wish to know more.' },
-      { word: 'handful', definition: 'An amount that can be held in one hand.' },
-      { word: 'intellect', definition: 'The ability to reason, learn, and understand.' },
-      { word: 'knowledge', definition: 'Information and understanding that someone has.' },
-      { word: 'goodness', definition: 'What is good, helpful, or beneficial.' },
-      { word: 'admired', definition: 'Felt respect and approval for someone.' },
-      { word: 'arrogant', definition: 'Too proud and sure of one’s own importance.' },
-      { word: 'origin', definition: 'The point or material from which something begins.' },
-      { word: 'superiority', definition: 'The state of being considered better or higher.' },
-      { word: 'Creator', definition: 'The One who creates.' },
-      { word: 'angry', definition: 'Feeling strong displeasure.' },
-      { word: 'enemy', definition: 'Someone who is hostile or wishes harm.' },
-      { word: 'careful', definition: 'Paying attention to avoid danger or harm.' },
-      { word: 'lonely', definition: 'Unhappy because one is without companionship.' },
-      { word: 'wife', definition: 'A married woman in relation to her spouse.' },
-      { word: 'blessings', definition: 'Good things or gifts for which people are thankful.' },
-      { word: 'friend', definition: 'A person who is trusted and cared about.' },
-      { word: 'forbidden', definition: 'Not allowed by a rule or command.' },
-      { word: 'shame', definition: 'A painful feeling connected with awareness of wrong behavior.' },
-      { word: 'visible', definition: 'Able to be seen.' },
-      { word: 'inborn', definition: 'Present naturally from birth.' },
-    ],
-  },
-  {
-    id: 17,
-    type: 'glossary',
-    title: 'B1 Master Glossary - Part 2',
-    content: 'A complete list of the Word Notes from Chapters 7–12.',
-    vocabulary: [
-      { word: 'mistake', definition: 'An action or decision that is wrong.' },
-      { word: 'pardon', definition: 'To forgive someone for a wrong action.' },
-      { word: 'barrier', definition: 'Something that prevents progress or clear understanding.' },
-      { word: 'distinguishing', definition: 'Recognizing the difference between things.' },
-      { word: 'shelter', definition: 'A place that gives protection from danger or weather.' },
-      { word: 'struggle', definition: 'To make a strong effort during difficulty.' },
-      { word: 'survive', definition: 'To continue to live despite difficulty or danger.' },
-      { word: 'weapons', definition: 'Objects used for protection or fighting.' },
-      { word: 'community', definition: 'A group of people living or acting together.' },
-      { word: 'righteously', definition: 'In a morally right way.' },
-      { word: 'sacred', definition: 'Connected with religion and deserving special respect.' },
-      { word: 'purpose', definition: 'The reason why something exists or is done.' },
-      { word: 'jealous', definition: 'Unhappy because someone else has something one wants.' },
-      { word: 'shepherd', definition: 'A person who takes care of sheep or other animals.' },
-      { word: 'disagreement', definition: 'A serious difference of opinion.' },
-      { word: 'offering', definition: 'A gift or sacrifice made to show devotion.' },
-      { word: 'harm', definition: 'To hurt or damage someone or something.' },
-      { word: 'panic', definition: 'Sudden strong fear that makes calm thinking difficult.' },
-      { word: 'raven', definition: 'A large black bird.' },
-      { word: 'digging', definition: 'Making a hole in the ground.' },
-      { word: 'jealousy', definition: 'A feeling of wanting what another person has.' },
-      { word: 'admitting', definition: 'Accepting or saying that something is true.' },
-      { word: 'message', definition: 'An important idea or teaching passed to others.' },
-      { word: 'guide', definition: 'To show the right direction or way to act.' },
-    ],
+      {
+            "word": "Messenger",
+            "definition": "A person chosen by Allah to deliver His message.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈmesɪndʒər/",
+            "wordFamily": [
+                  "message",
+                  "messenger"
+            ],
+            "collocations": [
+                  "Messenger of Allah",
+                  "deliver a message"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Introduction & The Creation",
+            "storyExample": "Adam (pbuh) is the first Messenger and the father of all humans.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "fabulous",
+            "definition": "Very impressive or wonderful.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈfæbjələs/",
+            "wordFamily": [
+                  "fabulous",
+                  "fabulously"
+            ],
+            "collocations": [
+                  "fabulous story",
+                  "absolutely fabulous"
+            ],
+            "synonyms": [
+                  "wonderful",
+                  "impressive"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Introduction & The Creation",
+            "storyExample": "As the grandchildren of Adam (pbuh), we can learn many lessons from this fabulous but true story.",
+            "category": "Description"
+      },
+      {
+            "word": "ruler",
+            "definition": "A person given responsibility to lead or manage.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈruːlər/",
+            "wordFamily": [
+                  "rule",
+                  "ruler",
+                  "ruling"
+            ],
+            "collocations": [
+                  "place a ruler",
+                  "responsible ruler"
+            ],
+            "synonyms": [
+                  "leader"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Introduction & The Creation",
+            "storyExample": "He said He had decided to place a ruler (halîfe) on earth.",
+            "category": "Leadership & Responsibility"
+      },
+      {
+            "word": "curiosity",
+            "definition": "A strong wish to know more.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˌkjʊriˈɑːsəti/",
+            "wordFamily": [
+                  "curious",
+                  "curiosity",
+                  "curiously"
+            ],
+            "collocations": [
+                  "with curiosity",
+                  "natural curiosity"
+            ],
+            "synonyms": [
+                  "interest"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Introduction & The Creation",
+            "storyExample": "The angels were surprised and began to wait with curiosity.",
+            "category": "Learning & Thinking"
+      },
+      {
+            "word": "handful",
+            "definition": "An amount that can be held in one hand.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈhændfʊl/",
+            "wordFamily": [
+                  "hand",
+                  "handful"
+            ],
+            "collocations": [
+                  "a handful of dust",
+                  "a handful of people"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Shaping of Adam",
+            "storyExample": "Prophet Muhammad (peace be upon him, ʿalayhi s-salām) said that Allah created Adam (pbuh) from a handful of dust from different lands, so the children of Adam (pbuh) are white, red, black and yellow in color.",
+            "category": "Quantity & Description"
+      },
+      {
+            "word": "intellect",
+            "definition": "The ability to reason, learn, and understand.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈɪntəlekt/",
+            "wordFamily": [
+                  "intellect",
+                  "intellectual"
+            ],
+            "collocations": [
+                  "human intellect",
+                  "use the intellect"
+            ],
+            "synonyms": [
+                  "reason",
+                  "understanding"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Shaping of Adam",
+            "storyExample": "Allah gave Adam (pbuh) life and intellect to learn and understand.",
+            "category": "Learning & Thinking"
+      },
+      {
+            "word": "knowledge",
+            "definition": "Information and understanding that someone has.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈnɑːlɪdʒ/",
+            "wordFamily": [
+                  "know",
+                  "knowledge",
+                  "knowledgeable"
+            ],
+            "collocations": [
+                  "gain knowledge",
+                  "perfect knowledge"
+            ],
+            "synonyms": [
+                  "understanding"
+            ],
+            "antonyms": [
+                  "ignorance"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Shaping of Adam",
+            "storyExample": "He gave Adam (pbuh) more knowledge than the angels.",
+            "category": "Learning & Thinking"
+      },
+      {
+            "word": "goodness",
+            "definition": "What is good, helpful, or beneficial.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈɡʊdnəs/",
+            "wordFamily": [
+                  "good",
+                  "goodness"
+            ],
+            "collocations": [
+                  "real goodness",
+                  "human goodness"
+            ],
+            "synonyms": [
+                  "virtue",
+                  "kindness"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Shaping of Adam",
+            "storyExample": "Later, He taught Adam (pbuh) everything he needed to do good on earth.",
+            "category": "Values"
+      },
+      {
+            "word": "admired",
+            "definition": "Felt respect and approval for someone.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ədˈmaɪərd/",
+            "wordFamily": [
+                  "admire",
+                  "admired",
+                  "admiration"
+            ],
+            "collocations": [
+                  "admire someone",
+                  "widely admired"
+            ],
+            "synonyms": [
+                  "respected"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Iblis's Arrogance",
+            "storyExample": "They all admired him and showed respect to him, but Iblis didn’t think so.",
+            "category": "Feelings & Attitudes"
+      },
+      {
+            "word": "arrogant",
+            "definition": "Too proud and sure of one’s own importance.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈærəɡənt/",
+            "wordFamily": [
+                  "arrogant",
+                  "arrogance",
+                  "arrogantly"
+            ],
+            "collocations": [
+                  "arrogant attitude",
+                  "be arrogant"
+            ],
+            "synonyms": [
+                  "proud"
+            ],
+            "antonyms": [
+                  "humble"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Iblis's Arrogance",
+            "storyExample": "Iblis was arrogant.",
+            "category": "Character & Values"
+      },
+      {
+            "word": "origin",
+            "definition": "The point or material from which something begins.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈɔːrɪdʒɪn/",
+            "wordFamily": [
+                  "origin",
+                  "original",
+                  "originate"
+            ],
+            "collocations": [
+                  "origin of something",
+                  "social origin"
+            ],
+            "synonyms": [
+                  "source",
+                  "beginning"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Iblis's Arrogance",
+            "storyExample": "He thought he was more important and more valuable than Adam (pbuh) because he believed his origin was superior.",
+            "category": "Ideas & Identity"
+      },
+      {
+            "word": "superiority",
+            "definition": "The state of being considered better or higher.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/suːˌpɪriˈɔːrəti/",
+            "wordFamily": [
+                  "superior",
+                  "superiority"
+            ],
+            "collocations": [
+                  "sense of superiority",
+                  "claim superiority"
+            ],
+            "antonyms": [
+                  "inferiority"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Iblis's Arrogance",
+            "storyExample": "However, in the sight of Allah, superiority or greatness did not come from race, color, or being a member of a certain group.",
+            "category": "Values & Equality"
+      },
+      {
+            "word": "Creator",
+            "definition": "The One who creates.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/kriˈeɪtər/",
+            "wordFamily": [
+                  "create",
+                  "creation",
+                  "Creator"
+            ],
+            "collocations": [
+                  "the Creator",
+                  "Creator of everything"
+            ],
+            "chapter": 4,
+            "chapterTitle": "The Expulsion of Iblis",
+            "storyExample": "But Iblis continued saying he was right and the Creator was wrong.",
+            "category": "Belief & Faith"
+      },
+      {
+            "word": "angry",
+            "definition": "Feeling strong displeasure.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈæŋɡri/",
+            "wordFamily": [
+                  "anger",
+                  "angry",
+                  "angrily"
+            ],
+            "collocations": [
+                  "get angry",
+                  "angry with someone"
+            ],
+            "synonyms": [
+                  "furious"
+            ],
+            "antonyms": [
+                  "calm"
+            ],
+            "chapter": 4,
+            "chapterTitle": "The Expulsion of Iblis",
+            "storyExample": "Iblis got angry with Adam (pbuh) and hated him.",
+            "category": "Feelings"
+      },
+      {
+            "word": "enemy",
+            "definition": "Someone who is hostile or wishes harm.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈenəmi/",
+            "wordFamily": [
+                  "enemy",
+                  "enemies"
+            ],
+            "collocations": [
+                  "be an enemy",
+                  "enemy of someone"
+            ],
+            "synonyms": [
+                  "opponent"
+            ],
+            "antonyms": [
+                  "friend"
+            ],
+            "chapter": 4,
+            "chapterTitle": "The Expulsion of Iblis",
+            "storyExample": "Allah told Adam (pbuh) that Iblis was his enemy and warned him to be careful of Iblis.",
+            "category": "Relationships"
+      },
+      {
+            "word": "careful",
+            "definition": "Paying attention to avoid danger or harm.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈkerfəl/",
+            "wordFamily": [
+                  "care",
+                  "careful",
+                  "carefully"
+            ],
+            "collocations": [
+                  "be careful",
+                  "careful of danger"
+            ],
+            "synonyms": [
+                  "cautious"
+            ],
+            "antonyms": [
+                  "careless"
+            ],
+            "chapter": 4,
+            "chapterTitle": "The Expulsion of Iblis",
+            "storyExample": "Allah told Adam (pbuh) that Iblis was his enemy and warned him to be careful of Iblis.",
+            "category": "Safety & Awareness"
+      },
+      {
+            "word": "lonely",
+            "definition": "Unhappy because one is without companionship.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈloʊnli/",
+            "wordFamily": [
+                  "lonely",
+                  "loneliness"
+            ],
+            "collocations": [
+                  "feel lonely",
+                  "be lonely"
+            ],
+            "synonyms": [
+                  "isolated"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Life in Paradise and the Warning",
+            "storyExample": "Adam was in Paradise, but he started to feel lonely.",
+            "category": "Feelings"
+      },
+      {
+            "word": "wife",
+            "definition": "A married woman in relation to her spouse.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/waɪf/",
+            "wordFamily": [
+                  "wife",
+                  "wives"
+            ],
+            "collocations": [
+                  "husband and wife",
+                  "his wife"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Life in Paradise and the Warning",
+            "storyExample": "Allah gave him a wife called Eve (Hawwa) to be his companion.",
+            "category": "Family & Relationships"
+      },
+      {
+            "word": "blessings",
+            "definition": "Good things or gifts for which people are thankful.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈblesɪŋz/",
+            "wordFamily": [
+                  "bless",
+                  "blessing",
+                  "blessings"
+            ],
+            "collocations": [
+                  "receive blessings",
+                  "blessings of Paradise"
+            ],
+            "synonyms": [
+                  "gifts"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Life in Paradise and the Warning",
+            "storyExample": "All the blessings in Paradise were for them.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "friend",
+            "definition": "A person who is trusted and cared about.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/frend/",
+            "wordFamily": [
+                  "friend",
+                  "friendly",
+                  "friendship"
+            ],
+            "collocations": [
+                  "close friend",
+                  "pretend to be a friend"
+            ],
+            "antonyms": [
+                  "enemy"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Life in Paradise and the Warning",
+            "storyExample": "When Adam (pbuh) and Eve were happy in Paradise, Iblis came near them pretending to be their friend.",
+            "category": "Relationships"
+      },
+      {
+            "word": "forbidden",
+            "definition": "Not allowed by a rule or command.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/fərˈbɪdən/",
+            "wordFamily": [
+                  "forbid",
+                  "forbidden"
+            ],
+            "collocations": [
+                  "forbidden tree",
+                  "strictly forbidden"
+            ],
+            "synonyms": [
+                  "prohibited"
+            ],
+            "antonyms": [
+                  "allowed"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Satan’s lies and Adam’s Departure from Paradise",
+            "storyExample": "They both ate of the forbidden tree.",
+            "category": "Rules & Choices"
+      },
+      {
+            "word": "shame",
+            "definition": "A painful feeling connected with awareness of wrong behavior.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ʃeɪm/",
+            "wordFamily": [
+                  "shame",
+                  "ashamed",
+                  "shameful"
+            ],
+            "collocations": [
+                  "feel shame",
+                  "sense of shame"
+            ],
+            "synonyms": [
+                  "embarrassment"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Satan’s lies and Adam’s Departure from Paradise",
+            "storyExample": "When Adam finished eating, he felt that his heart was filled with pain, sadness and shame.",
+            "category": "Feelings & Values"
+      },
+      {
+            "word": "visible",
+            "definition": "Able to be seen.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈvɪzəbəl/",
+            "wordFamily": [
+                  "visible",
+                  "visibility",
+                  "invisible"
+            ],
+            "collocations": [
+                  "become visible",
+                  "clearly visible"
+            ],
+            "antonyms": [
+                  "invisible"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Satan’s lies and Adam’s Departure from Paradise",
+            "storyExample": "When they tasted the fruit, their private parts became visible.",
+            "category": "Description"
+      },
+      {
+            "word": "inborn",
+            "definition": "Present naturally from birth.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˌɪnˈbɔːrn/",
+            "collocations": [
+                  "inborn nature",
+                  "inborn quality"
+            ],
+            "synonyms": [
+                  "innate"
+            ],
+            "antonyms": [
+                  "learned"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Satan’s lies and Adam’s Departure from Paradise",
+            "storyExample": "They hurried to hide their private parts because a sense of shame (hayâ) is part of inborn human nature and nakedness is against creation.",
+            "category": "Human Nature"
+      },
+      {
+            "word": "mistake",
+            "definition": "An action or decision that is wrong.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/mɪˈsteɪk/",
+            "wordFamily": [
+                  "mistake",
+                  "mistaken"
+            ],
+            "collocations": [
+                  "make a mistake",
+                  "learn from a mistake"
+            ],
+            "synonyms": [
+                  "error"
+            ],
+            "chapter": 7,
+            "chapterTitle": "Forgiveness and Repentance",
+            "storyExample": "They made a mistake, but it wasn’t on purpose.",
+            "category": "Learning & Choices"
+      },
+      {
+            "word": "pardon",
+            "definition": "To forgive someone for a wrong action.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈpɑːrdən/",
+            "wordFamily": [
+                  "pardon",
+                  "pardoned"
+            ],
+            "collocations": [
+                  "pardon someone",
+                  "ask for pardon"
+            ],
+            "synonyms": [
+                  "forgive"
+            ],
+            "chapter": 7,
+            "chapterTitle": "Forgiveness and Repentance",
+            "storyExample": "They wanted Allah to pardon them.",
+            "category": "Forgiveness & Values"
+      },
+      {
+            "word": "barrier",
+            "definition": "Something that prevents progress or clear understanding.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈbæriər/",
+            "wordFamily": [
+                  "barrier",
+                  "barriers"
+            ],
+            "collocations": [
+                  "major barrier",
+                  "barrier to progress"
+            ],
+            "synonyms": [
+                  "obstacle"
+            ],
+            "chapter": 7,
+            "chapterTitle": "Forgiveness and Repentance",
+            "storyExample": "Arrogance is the biggest barrier to acting the right way and distinguishing between right and wrong, good and bad.",
+            "category": "Ideas & Obstacles"
+      },
+      {
+            "word": "distinguishing",
+            "definition": "Recognizing the difference between things.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/dɪˈstɪŋɡwɪʃɪŋ/",
+            "wordFamily": [
+                  "distinguish",
+                  "distinguishing",
+                  "distinction"
+            ],
+            "collocations": [
+                  "distinguish between",
+                  "distinguishing right from wrong"
+            ],
+            "synonyms": [
+                  "differentiating"
+            ],
+            "chapter": 7,
+            "chapterTitle": "Forgiveness and Repentance",
+            "storyExample": "Arrogance is the biggest barrier to acting the right way and distinguishing between right and wrong, good and bad.",
+            "category": "Learning & Thinking"
+      },
+      {
+            "word": "shelter",
+            "definition": "A place that gives protection from danger or weather.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈʃeltər/",
+            "wordFamily": [
+                  "shelter",
+                  "sheltered"
+            ],
+            "collocations": [
+                  "build shelter",
+                  "seek shelter"
+            ],
+            "synonyms": [
+                  "refuge"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Struggle and Survival on Earth",
+            "storyExample": "They would build buildings for shelter, protect nature and help the weak.",
+            "category": "Survival & Daily Life"
+      },
+      {
+            "word": "struggle",
+            "definition": "To make a strong effort during difficulty.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈstrʌɡəl/",
+            "wordFamily": [
+                  "struggle",
+                  "struggled",
+                  "struggling"
+            ],
+            "collocations": [
+                  "struggle to survive",
+                  "struggle with difficulty"
+            ],
+            "synonyms": [
+                  "strive"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Struggle and Survival on Earth",
+            "storyExample": "On earth, they had to struggle to survive and work hard to keep themselves alive.",
+            "category": "Challenges & Effort"
+      },
+      {
+            "word": "survive",
+            "definition": "To continue to live despite difficulty or danger.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/sərˈvaɪv/",
+            "wordFamily": [
+                  "survive",
+                  "survival",
+                  "survivor"
+            ],
+            "collocations": [
+                  "survive danger",
+                  "struggle to survive"
+            ],
+            "synonyms": [
+                  "remain alive"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Struggle and Survival on Earth",
+            "storyExample": "On earth, they had to struggle to survive and work hard to keep themselves alive.",
+            "category": "Survival & Life"
+      },
+      {
+            "word": "weapons",
+            "definition": "Objects used for protection or fighting.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈwepənz/",
+            "wordFamily": [
+                  "weapon",
+                  "weapons"
+            ],
+            "collocations": [
+                  "use weapons",
+                  "clothes and weapons"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Struggle and Survival on Earth",
+            "storyExample": "In addition, they had to protect themselves with clothes and weapons and protect themselves from dangers in the wild.",
+            "category": "Objects & Safety"
+      },
+      {
+            "word": "community",
+            "definition": "A group of people living or acting together.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/kəˈmjuːnəti/",
+            "wordFamily": [
+                  "community",
+                  "communal"
+            ],
+            "collocations": [
+                  "form a community",
+                  "local community"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The First Messenger and the Path of Guidance",
+            "storyExample": "After a period of time, when a community formed, Adam (pbuh) became the first Messenger of Allah.",
+            "category": "Society"
+      },
+      {
+            "word": "righteously",
+            "definition": "In a morally right way.",
+            "partOfSpeech": "adverb",
+            "level": "B1",
+            "pronunciation": "/ˈraɪtʃəsli/",
+            "wordFamily": [
+                  "right",
+                  "righteous",
+                  "righteously",
+                  "righteousness"
+            ],
+            "collocations": [
+                  "live righteously",
+                  "act righteously"
+            ],
+            "synonyms": [
+                  "morally"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The First Messenger and the Path of Guidance",
+            "storyExample": "He started teaching people to live righteously and act honestly.",
+            "category": "Values & Conduct"
+      },
+      {
+            "word": "sacred",
+            "definition": "Connected with religion and deserving special respect.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈseɪkrɪd/",
+            "wordFamily": [
+                  "sacred",
+                  "sacredness"
+            ],
+            "collocations": [
+                  "sacred text",
+                  "sacred place"
+            ],
+            "synonyms": [
+                  "holy"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The First Messenger and the Path of Guidance",
+            "storyExample": "Allah never stopped sending messengers and sacred texts to remind people of Him.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "purpose",
+            "definition": "The reason why something exists or is done.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈpɜːrpəs/",
+            "wordFamily": [
+                  "purpose",
+                  "purposeful",
+                  "purposely"
+            ],
+            "collocations": [
+                  "purpose of life",
+                  "clear purpose"
+            ],
+            "synonyms": [
+                  "aim",
+                  "reason"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The First Messenger and the Path of Guidance",
+            "storyExample": "They wanted people to keep Allah in their minds because if people forget Allah, they lose the meaning and purpose of life.",
+            "category": "Ideas & Meaning"
+      },
+      {
+            "word": "jealous",
+            "definition": "Unhappy because someone else has something one wants.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈdʒeləs/",
+            "wordFamily": [
+                  "jealous",
+                  "jealousy"
+            ],
+            "collocations": [
+                  "feel jealous",
+                  "jealous of someone"
+            ],
+            "synonyms": [
+                  "envious"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The Two Sons: Habil and Qabil",
+            "storyExample": "Qabil was mostly jealous.",
+            "category": "Feelings"
+      },
+      {
+            "word": "shepherd",
+            "definition": "A person who takes care of sheep or other animals.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈʃepərd/",
+            "wordFamily": [
+                  "shepherd",
+                  "shepherds"
+            ],
+            "collocations": [
+                  "become a shepherd",
+                  "work as a shepherd"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The Two Sons: Habil and Qabil",
+            "storyExample": "When they grew up, Habil became a shepherd.",
+            "category": "People & Roles"
+      },
+      {
+            "word": "disagreement",
+            "definition": "A serious difference of opinion.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˌdɪsəˈɡriːmənt/",
+            "wordFamily": [
+                  "agree",
+                  "disagree",
+                  "disagreement"
+            ],
+            "collocations": [
+                  "serious disagreement",
+                  "disagreement between people"
+            ],
+            "synonyms": [
+                  "conflict"
+            ],
+            "antonyms": [
+                  "agreement"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The Two Sons: Habil and Qabil",
+            "storyExample": "One day, they were in a serious disagreement.",
+            "category": "Relationships & Conflict"
+      },
+      {
+            "word": "offering",
+            "definition": "A gift or sacrifice made to show devotion.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈɔːfərɪŋ/",
+            "wordFamily": [
+                  "offer",
+                  "offered",
+                  "offering"
+            ],
+            "collocations": [
+                  "make an offering",
+                  "accept an offering"
+            ],
+            "synonyms": [
+                  "gift"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The Two Sons: Habil and Qabil",
+            "storyExample": "To solve the problem, they had to make an offering to Allah.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "harm",
+            "definition": "To hurt or damage someone or something.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/hɑːrm/",
+            "wordFamily": [
+                  "harm",
+                  "harmful",
+                  "harmless"
+            ],
+            "collocations": [
+                  "harm someone",
+                  "cause harm"
+            ],
+            "synonyms": [
+                  "hurt",
+                  "damage"
+            ],
+            "antonyms": [
+                  "protect"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The First Conflict and the Raven",
+            "storyExample": "When Habil heard this, he said, “I won’t fight back and harm you. You are my brother, and I fear Allah.”",
+            "category": "Actions & Safety"
+      },
+      {
+            "word": "panic",
+            "definition": "Sudden strong fear that makes calm thinking difficult.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈpænɪk/",
+            "wordFamily": [
+                  "panic",
+                  "panicked",
+                  "panicking"
+            ],
+            "collocations": [
+                  "start to panic",
+                  "panic suddenly"
+            ],
+            "synonyms": [
+                  "alarm"
+            ],
+            "antonyms": [
+                  "calm"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The First Conflict and the Raven",
+            "storyExample": "He also started to panic.",
+            "category": "Feelings"
+      },
+      {
+            "word": "raven",
+            "definition": "A large black bird.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈreɪvən/",
+            "wordFamily": [
+                  "raven",
+                  "ravens"
+            ],
+            "collocations": [
+                  "black raven",
+                  "send a raven"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The First Conflict and the Raven",
+            "storyExample": "Then Allah sent a raven that landed near Qabil and started digging the ground.",
+            "category": "Animals & Nature"
+      },
+      {
+            "word": "digging",
+            "definition": "Making a hole in the ground.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈdɪɡɪŋ/",
+            "wordFamily": [
+                  "dig",
+                  "dug",
+                  "digging"
+            ],
+            "collocations": [
+                  "digging the ground",
+                  "start digging"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The First Conflict and the Raven",
+            "storyExample": "Then Allah sent a raven that landed near Qabil and started digging the ground.",
+            "category": "Actions"
+      },
+      {
+            "word": "jealousy",
+            "definition": "A feeling of wanting what another person has.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈdʒeləsi/",
+            "wordFamily": [
+                  "jealous",
+                  "jealousy"
+            ],
+            "collocations": [
+                  "feel jealousy",
+                  "stay away from jealousy"
+            ],
+            "synonyms": [
+                  "envy"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Legacy of Adam",
+            "storyExample": "The story suggests that true believers should stay away from jealousy and control their anger.",
+            "category": "Feelings"
+      },
+      {
+            "word": "admitting",
+            "definition": "Accepting or saying that something is true.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ədˈmɪtɪŋ/",
+            "wordFamily": [
+                  "admit",
+                  "admitted",
+                  "admitting",
+                  "admission"
+            ],
+            "collocations": [
+                  "admit a mistake",
+                  "admitting mistakes"
+            ],
+            "synonyms": [
+                  "acknowledging"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Legacy of Adam",
+            "storyExample": "It also teaches people the importance of admitting mistakes and turning back to Allah.",
+            "category": "Learning & Values"
+      },
+      {
+            "word": "message",
+            "definition": "An important idea or teaching passed to others.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈmesɪdʒ/",
+            "wordFamily": [
+                  "message",
+                  "messenger"
+            ],
+            "collocations": [
+                  "spread a message",
+                  "important message"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Legacy of Adam",
+            "storyExample": "His children and grandchildren moved to different parts of the world and spread his message worldwide.",
+            "category": "Communication & Faith"
+      },
+      {
+            "word": "guide",
+            "definition": "To show the right direction or way to act.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ɡaɪd/",
+            "wordFamily": [
+                  "guide",
+                  "guidance",
+                  "guided"
+            ],
+            "collocations": [
+                  "guide someone",
+                  "guide us"
+            ],
+            "synonyms": [
+                  "lead",
+                  "direct"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Legacy of Adam",
+            "storyExample": "He sent His prophets, and their stories still guide us.",
+            "category": "Guidance & Faith"
+      }
+]
   },
   { id: 18, type: 'final-challenge', title: 'B1 Final Challenge', content: 'Demonstrate whole-book mastery through ten independent B1 activities.' },
 ];
