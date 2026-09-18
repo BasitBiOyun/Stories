@@ -12,7 +12,7 @@ import { ProphetStory, Level } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
-import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
+import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
 
 // @ts-ignore
 import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
@@ -45,7 +45,6 @@ const stories: ProphetStory[] = [
     description: 'The search for truth, the building of the Kaaba, and unwavering faith.',
     image: abrahamCover,
     availableLevels: ['A2', 'B1', 'B2'],
-    isComingSoon: false,
   },
   {
     id: 'musa',
@@ -53,7 +52,6 @@ const stories: ProphetStory[] = [
     description: 'The journey from the palace to the desert, and the liberation of a people.',
     image: mosesCover,
     availableLevels: ['A2', 'B1', 'B2'],
-    isComingSoon: false,
   },
   {
     id: 'mecca',
@@ -61,7 +59,6 @@ const stories: ProphetStory[] = [
     description: 'The City and the Age of Ignorance: Mecca before the dawn of Islam.',
     image: meccaCover,
     availableLevels: ['A2', 'B1', 'B2'],
-    isComingSoon: false,
   },
   {
     id: 'yunusEmre',
@@ -70,7 +67,6 @@ const stories: ProphetStory[] = [
       'The story of a wise Anatolian dervish who taught love, humility, and devotion through simple Turkish poetry.',
     image: yunusEmreCover,
     availableLevels: ['A2', 'B1', 'B2'],
-    isComingSoon: false,
   },
 ];
 
@@ -99,32 +95,28 @@ const collectionVisuals: Record<
   StoryCollectionId,
   {
     accent: string;
+    accentBright: string;
     accentSoft: string;
-    border: string;
-    surface: string;
-    background: string;
+    ambient: string;
   }
 > = {
   prophets: {
-    accent: '#E2BE6A',
-    accentSoft: 'rgba(226,190,106,0.15)',
-    border: 'rgba(226,190,106,0.35)',
-    surface: 'rgba(226,190,106,0.08)',
-    background: 'rgba(99,64,25,0.34)',
+    accent: '#D8B35C',
+    accentBright: '#F3D58A',
+    accentSoft: 'rgba(216,179,92,0.14)',
+    ambient: 'rgba(111,74,29,0.44)',
   },
   history: {
-    accent: '#5ED8A6',
-    accentSoft: 'rgba(94,216,166,0.14)',
-    border: 'rgba(94,216,166,0.34)',
-    surface: 'rgba(94,216,166,0.08)',
-    background: 'rgba(15,91,65,0.31)',
+    accent: '#55C997',
+    accentBright: '#86EDBD',
+    accentSoft: 'rgba(85,201,151,0.14)',
+    ambient: 'rgba(14,95,65,0.40)',
   },
   turkish: {
-    accent: '#65D5EA',
-    accentSoft: 'rgba(101,213,234,0.14)',
-    border: 'rgba(101,213,234,0.34)',
-    surface: 'rgba(101,213,234,0.08)',
-    background: 'rgba(22,79,101,0.32)',
+    accent: '#58CBE0',
+    accentBright: '#8AE8F5',
+    accentSoft: 'rgba(88,203,224,0.14)',
+    ambient: 'rgba(22,88,108,0.42)',
   },
 };
 
@@ -134,28 +126,43 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level } | null>(null);
 
   const { language, t, isRTL } = useLanguage();
-
-  const stageRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  const stageRef = useRef<HTMLElement>(null);
+
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const rotateYBase = useTransform(pointerX, [-0.5, 0.5], reduceMotion ? [0, 0] : [-4.5, 4.5]);
-  const rotateXBase = useTransform(pointerY, [-0.5, 0.5], reduceMotion ? [0, 0] : [4, -4]);
-  const rotateY = useSpring(rotateYBase, { stiffness: 180, damping: 24, mass: 0.7 });
-  const rotateX = useSpring(rotateXBase, { stiffness: 180, damping: 24, mass: 0.7 });
+  const pointerGlowX = useSpring(useTransform(pointerX, [-0.5, 0.5], [-42, 42]), {
+    stiffness: 160,
+    damping: 26,
+    mass: 0.7,
+  });
+  const pointerGlowY = useSpring(useTransform(pointerY, [-0.5, 0.5], [-28, 28]), {
+    stiffness: 160,
+    damping: 26,
+    mass: 0.7,
+  });
+  const coverRotateY = useSpring(
+    useTransform(pointerX, [-0.5, 0.5], reduceMotion ? [0, 0] : [-6, 6]),
+    { stiffness: 180, damping: 24, mass: 0.65 },
+  );
+  const coverRotateX = useSpring(
+    useTransform(pointerY, [-0.5, 0.5], reduceMotion ? [0, 0] : [5, -5]),
+    { stiffness: 180, damping: 24, mass: 0.65 },
+  );
+
   const { scrollYProgress } = useScroll({
     target: stageRef,
     offset: ['start end', 'end start'],
   });
-  const ambientY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-22, 22]);
-  const ambientScale = useTransform(scrollYProgress, [0, 0.5, 1], reduceMotion ? [1, 1, 1] : [1.08, 1.13, 1.08]);
-  const coverY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [14, -14]);
+  const scrollCoverY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [16, -18]);
+  const scrollGlowY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-26, 30]);
+  const scrollSigilY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [22, -24]);
 
   const copy =
     language === 'ar'
       ? {
           eyebrow: 'مكتبة القصص التفاعلية',
-          title: 'قصص تُقرأ، وتُسمع، وتُتعلّم.',
+          title: 'قصص تُقرأ، وتُسمع، وتُعاش.',
           intro: 'رحلات ثنائية اللغة تجمع القصة والفهم والمفردات والتعلّم النشط في تجربة واحدة.',
           all: 'جميع الكتب',
           prophets: 'قصص الأنبياء',
@@ -163,27 +170,27 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           turkish: 'التراث التركي الإسلامي',
           continueLabel: 'تابع من حيث توقفت',
           continueAction: 'متابعة القراءة',
-          libraryLabel: 'استكشف المكتبة',
-          chooseLevel: 'اختر مستواك وابدأ الرحلة',
-          books: 'كتب',
+          chooseLevel: 'اختر مستواك',
           previous: 'الكتاب السابق',
           next: 'الكتاب التالي',
+          explore: 'اسحب أو استخدم الأسهم للاستكشاف',
+          books: 'كتب',
         }
       : {
           eyebrow: 'Interactive story library',
-          title: 'Stories to read, hear and learn from.',
-          intro: 'Bilingual journeys that bring story, comprehension, vocabulary and active learning into one experience.',
+          title: 'Stories to read, hear and step inside.',
+          intro: 'Bilingual journeys combining story, comprehension, vocabulary and active learning in one focused experience.',
           all: 'All books',
           prophets: 'Prophets',
           history: 'History & civilization',
           turkish: 'Turkish-Islamic heritage',
           continueLabel: 'Continue where you left off',
           continueAction: 'Continue reading',
-          libraryLabel: 'Explore the library',
-          chooseLevel: 'Choose your level and begin',
-          books: 'books',
+          chooseLevel: 'Choose your level',
           previous: 'Previous book',
           next: 'Next book',
+          explore: 'Swipe or use the arrows to explore',
+          books: 'books',
         };
 
   const collectionLabels: Record<StoryCollectionId, string> = {
@@ -255,6 +262,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
 
   const moveCarousel = (direction: 1 | -1) => {
     if (visibleStories.length <= 1) return;
+
     setActiveIndex((current) => {
       const next = current + direction;
       if (next < 0) return visibleStories.length - 1;
@@ -263,37 +271,50 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     });
   };
 
-  const handleCoverPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handleStagePointerMove = (event: React.PointerEvent<HTMLElement>) => {
     if (reduceMotion || event.pointerType === 'touch') return;
     const rect = event.currentTarget.getBoundingClientRect();
     pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
     pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
   };
 
-  const resetCoverTilt = () => {
+  const resetPointer = () => {
     pointerX.set(0);
     pointerY.set(0);
   };
 
-  const handleCoverSwipe = (offsetX: number, velocityX: number) => {
+  const handleSwipeEnd = (offsetX: number, velocityX: number) => {
     if (visibleStories.length <= 1) return;
     if (Math.abs(offsetX) < 55 && Math.abs(velocityX) < 450) return;
+
     const effectiveX = isRTL ? -offsetX : offsetX;
     moveCarousel(effectiveX < 0 ? 1 : -1);
+  };
+
+  const circularDelta = (index: number) => {
+    const total = visibleStories.length;
+    let delta = index - activeIndex;
+
+    if (total > 2) {
+      if (delta > total / 2) delta -= total;
+      if (delta < -total / 2) delta += total;
+    }
+
+    return delta;
   };
 
   return (
     <div
       className={cn(
-        'min-h-screen overflow-x-hidden bg-[#0e1812] text-[#F6F0E2] selection:bg-[#E2BE6A]/25 selection:text-white',
+        'min-h-screen overflow-x-hidden bg-[#0c1510] text-[#F6F0E2] selection:bg-[#D8B35C]/25 selection:text-white',
         isRTL && 'font-arabic',
       )}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <header className="relative z-40 bg-[#0e1812]/92 backdrop-blur-xl">
-        <div className="mx-auto flex min-h-[78px] w-full max-w-[1480px] items-center justify-between gap-5 px-5 sm:px-8 lg:px-12">
+      <header className="relative z-50 bg-[#0c1510]/90 backdrop-blur-xl">
+        <div className="mx-auto flex min-h-[76px] w-full max-w-[1500px] items-center justify-between gap-5 px-5 sm:px-8 lg:px-12">
           <div className="flex min-w-0 items-center gap-3.5">
-            <div className="h-11 w-11 shrink-0 overflow-hidden rounded-xl border border-[#E2BE6A]/25 bg-[#17261c] p-1.5">
+            <div className="h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white/[0.045] p-1.5">
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/home_icon.png?alt=media&token=d8075082-0856-42d8-bc20-db4d7ce86c99"
                 alt=""
@@ -302,10 +323,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               />
             </div>
             <div className="min-w-0 text-start">
-              <p className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#F6F0E2]">
+              <p className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#F7F1E5]">
                 {t('nav.homeTitle')}
               </p>
-              <p className="mt-0.5 hidden truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E2BE6A]/64 sm:block">
+              <p className="mt-0.5 hidden truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D8B35C]/68 sm:block">
                 {language === 'ar' ? 'مادة تعليمية ثنائية اللغة' : 'Bilingual curriculum library'}
               </p>
             </div>
@@ -314,16 +335,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
         </div>
       </header>
 
-      <main className="relative mx-auto w-full max-w-[1480px] px-5 pb-16 pt-8 sm:px-8 sm:pt-10 lg:px-12 lg:pt-12">
-        <section className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
-          <div className="max-w-4xl text-start">
-            <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#E2BE6A]/76">
+      <main className="relative mx-auto w-full max-w-[1500px] px-5 pb-20 pt-7 sm:px-8 sm:pt-9 lg:px-12 lg:pt-11">
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-end">
+          <div className="max-w-5xl text-start">
+            <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D8B35C]/78">
               {copy.eyebrow}
             </div>
-            <h1 className="max-w-4xl text-[clamp(2.35rem,5.4vw,5rem)] font-semibold leading-[0.98] tracking-[-0.052em] text-[#FFF8E9]">
+            <h1 className="max-w-5xl text-[clamp(2.5rem,5.6vw,5.45rem)] font-semibold leading-[0.96] tracking-[-0.056em] text-[#FFF9EC]">
               {copy.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-[14px] font-medium leading-7 text-[#E5DDCC]/78 sm:text-[15px]">
+            <p className="mt-5 max-w-2xl text-[14px] font-medium leading-7 text-[#EDE5D4]/78 sm:text-[15px]">
               {copy.intro}
             </p>
           </div>
@@ -334,20 +355,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.985 }}
               onClick={() => launchStory(lastActiveStory.id, lastActive.level)}
-              className="group w-full rounded-2xl border border-white/10 bg-white/[0.045] p-4 text-start transition-colors hover:border-[#E2BE6A]/36 hover:bg-white/[0.065]"
+              className="group w-full rounded-2xl bg-white/[0.045] p-4 text-start transition-colors hover:bg-white/[0.075]"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#E2BE6A]/24 bg-[#E2BE6A]/10 text-[#E2BE6A]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
                   <Clock size={18} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E2BE6A]/76">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">
                     {copy.continueLabel}
                   </p>
-                  <p className="mt-1 truncate text-sm font-semibold text-[#FFF8E9]">
+                  <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
                     {translatedStoryName(lastActiveStory)} · {lastActive.level}
                   </p>
-                  <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#E5DDCC]/72 transition-colors group-hover:text-white">
+                  <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/72 transition-colors group-hover:text-white">
                     {copy.continueAction}
                     <ArrowRight size={14} mirrored={isRTL} />
                   </span>
@@ -357,27 +378,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           )}
         </section>
 
-        <section className="mt-9 sm:mt-11">
-          <div className="mb-5 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.21em] text-[#E2BE6A]/62">
-            <BookOpen size={15} />
-            <span>{copy.libraryLabel}</span>
-          </div>
-
-          <div className="grid gap-3 lg:grid-cols-[auto_repeat(3,minmax(0,1fr))]">
+        <section className="mt-9">
+          <div className="grid gap-3 md:grid-cols-4">
             <button
               type="button"
               onClick={() => selectCollection('all')}
               className={cn(
-                'min-h-[72px] rounded-2xl px-5 text-start transition-all lg:min-w-[150px]',
+                'rounded-2xl px-5 py-4 text-start transition-all',
                 activeCollection === 'all'
-                  ? 'bg-[#E2BE6A]/12 text-[#FFF8E9] shadow-[0_14px_38px_rgba(0,0,0,0.12)]'
-                  : 'bg-white/[0.025] text-[#E5DDCC]/72 hover:bg-white/[0.055]',
+                  ? 'bg-[#D8B35C]/13 shadow-[0_16px_42px_rgba(0,0,0,0.16)]'
+                  : 'bg-white/[0.025] hover:bg-white/[0.055]',
               )}
             >
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.17em] text-[#E2BE6A]/70">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/72">
                 {copy.all}
               </span>
-              <span className="mt-1 block text-sm font-semibold">
+              <span className="mt-1 block text-sm font-semibold text-[#FFF9EC]">
                 {stories.length} {copy.books}
               </span>
             </button>
@@ -391,17 +407,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   key={collection}
                   type="button"
                   onClick={() => selectCollection(collection)}
-                  className="group relative min-h-[72px] overflow-hidden rounded-2xl p-3.5 text-start transition-all"
+                  className="group relative overflow-hidden rounded-2xl px-4 py-3.5 text-start transition-all"
                   style={{
                     background: active ? visual.accentSoft : 'rgba(255,255,255,0.025)',
-                    boxShadow: active ? '0 14px 38px rgba(0,0,0,0.13)' : 'none',
+                    boxShadow: active ? '0 16px 42px rgba(0,0,0,0.16)' : 'none',
                   }}
                 >
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-y-0 end-0 w-24 opacity-[0.055] transition-opacity group-hover:opacity-[0.09]"
-                    style={{ background: `linear-gradient(to left, ${visual.accent}, transparent)` }}
-                  />
                   <div className="relative flex items-center gap-3.5">
                     <div
                       className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-1.5"
@@ -415,12 +426,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       />
                     </div>
                     <div className="min-w-0">
-                      <span
-                        className="block truncate text-[13px] font-semibold text-[#FFF8E9]"
-                      >
+                      <span className="block truncate text-[13px] font-semibold text-[#FFF9EC]">
                         {collectionLabels[collection]}
                       </span>
-                      <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#E5DDCC]/52">
+                      <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/48">
                         {collectionStoryIds[collection].length} {copy.books}
                       </span>
                     </div>
@@ -429,255 +438,274 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               );
             })}
           </div>
+        </section>
 
-          <div
-            ref={stageRef}
-            className="relative mt-5 overflow-hidden rounded-[34px] bg-[#122019] shadow-[0_34px_100px_rgba(0,0,0,0.30)] lg:h-[600px] xl:h-[620px]"
-          >
-            <AnimatePresence mode="wait">
+        <section
+          ref={stageRef}
+          onPointerMove={handleStagePointerMove}
+          onPointerLeave={resetPointer}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft') moveCarousel(isRTL ? 1 : -1);
+            if (event.key === 'ArrowRight') moveCarousel(isRTL ? -1 : 1);
+          }}
+          tabIndex={0}
+          aria-label={copy.explore}
+          className="relative mt-5 overflow-hidden rounded-[38px] bg-[#111d16] outline-none shadow-[0_38px_110px_rgba(0,0,0,0.33)] lg:h-[660px] xl:h-[690px]"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`ambient-${activeStory.id}`}
+              aria-hidden="true"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.55 }}
+              className="absolute inset-[-7%]"
+              style={{ y: scrollGlowY }}
+            >
+              <img
+                src={activeStory.image}
+                alt=""
+                className="h-full w-full scale-110 object-cover opacity-[0.15] blur-[34px]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0e1812]/96 via-[#0e1812]/86 to-[#0e1812]/74" />
               <motion.div
-                key={activeStory.id}
-                aria-hidden="true"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.45 }}
-                className="absolute inset-[-4%]"
-                style={{ y: ambientY, scale: ambientScale }}
-              >
-                <img
-                  src={activeStory.image}
-                  alt=""
-                  className="h-full w-full scale-110 object-cover opacity-[0.16] blur-2xl"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#101a14]/95 via-[#101a14]/88 to-[#101a14]/76" />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: `radial-gradient(circle at 78% 50%, ${activeVisual.background}, transparent 46%)`,
-                  }}
-                />
-              </motion.div>
-            </AnimatePresence>
+                className="absolute left-[12%] top-[8%] h-[58%] w-[46%] rounded-full blur-3xl"
+                style={{
+                  x: pointerGlowX,
+                  y: pointerGlowY,
+                  background: `radial-gradient(circle, ${activeVisual.ambient}, transparent 68%)`,
+                }}
+              />
+              <div
+                className="absolute bottom-[-12%] right-[-6%] h-[62%] w-[52%] rounded-full blur-3xl"
+                style={{
+                  background: `radial-gradient(circle, ${activeVisual.accentSoft}, transparent 70%)`,
+                }}
+              />
+            </motion.div>
+          </AnimatePresence>
 
-            <div className="relative grid min-h-[560px] lg:h-full lg:min-h-0 lg:grid-cols-[minmax(330px,0.9fr)_minmax(0,1.1fr)]">
-              <div className="relative flex min-h-[470px] items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-0 lg:p-10 [perspective:1400px]">
-                <motion.img
-                  aria-hidden="true"
-                  src={collectionIcons[activeStoryCollection]}
-                  alt=""
-                  className="pointer-events-none absolute start-[8%] top-[9%] h-44 w-44 object-contain opacity-[0.045] sm:h-56 sm:w-56"
-                  style={{ y: ambientY }}
-                  referrerPolicy="no-referrer"
-                />
+          <motion.img
+            aria-hidden="true"
+            src={collectionIcons[activeStoryCollection]}
+            alt=""
+            referrerPolicy="no-referrer"
+            className="pointer-events-none absolute -right-16 top-8 h-72 w-72 object-contain opacity-[0.045] sm:h-96 sm:w-96 lg:-right-8 lg:h-[460px] lg:w-[460px]"
+            style={{ y: scrollSigilY }}
+          />
 
-                <div className="absolute aspect-[4/5] h-[77%] translate-x-6 translate-y-5 rounded-[30px] bg-black/45 blur-2xl" />
+          <div className="relative grid min-h-[610px] lg:h-full lg:min-h-0 lg:grid-cols-[minmax(420px,0.95fr)_minmax(0,1.05fr)]">
+            <div className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-6 py-8 sm:px-10 lg:min-h-0 lg:px-8 lg:py-8 [perspective:1800px]">
+              <div className="absolute inset-x-[10%] bottom-[8%] h-16 rounded-[50%] bg-black/45 blur-3xl" />
 
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`cover-${activeStory.id}`}
-                    initial={{ opacity: 0, x: isRTL ? 34 : -34, scale: 0.96 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: isRTL ? -26 : 26, scale: 0.97 }}
-                    transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
-                    onPointerMove={handleCoverPointerMove}
-                    onPointerLeave={resetCoverTilt}
-                    style={{
-                      rotateX,
-                      rotateY,
-                      y: coverY,
-                      transformPerspective: 1400,
-                      transformStyle: 'preserve-3d',
-                    }}
-                    className="relative aspect-[4/5] h-[86%] max-h-[520px] overflow-hidden rounded-[28px] bg-[#0b120d] shadow-[0_34px_80px_rgba(0,0,0,0.42)] will-change-transform"
-                  >
-                    <img
-                      src={activeStory.image}
-                      alt={translatedStoryName(activeStory)}
-                      className="h-full w-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/18 via-transparent to-white/[0.07]" />
-                    <motion.div
-                      drag={visibleStories.length > 1 ? 'x' : false}
-                      dragConstraints={{ left: 0, right: 0 }}
-                      dragElastic={0.12}
-                      onDragEnd={(_, info) => handleCoverSwipe(info.offset.x, info.velocity.x)}
-                      className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
-                      aria-hidden="true"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+              <div className="relative h-[470px] w-full max-w-[560px] sm:h-[520px] lg:h-[560px]">
+                {visibleStories.map((story, index) => {
+                  const delta = circularDelta(index);
+                  const absDelta = Math.abs(delta);
+                  const isActive = delta === 0;
+                  const hidden = absDelta > 2;
+                  const visual = collectionVisuals[getStoryCollection(story.id)];
+                  const baseX = delta * 96;
 
-                <div className="absolute inset-x-5 bottom-5 flex items-center justify-between gap-3 lg:hidden">
-                  <span className="rounded-full bg-black/40 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur-md">
-                    {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
-                  </span>
-                </div>
-              </div>
-
-              <div className="relative flex min-h-[520px] flex-col justify-center px-6 py-8 sm:px-9 lg:h-full lg:min-h-0 lg:px-12 lg:py-10 xl:px-14">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`copy-${activeStory.id}`}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.32, ease: 'easeOut' }}
-                    className="text-start"
-                  >
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <div
-                          className="flex items-center gap-2.5 rounded-full px-3 py-1.5"
-                          style={{ background: activeVisual.surface }}
-                        >
-                          <img
-                            src={collectionIcons[activeStoryCollection]}
-                            alt=""
-                            className="h-5 w-5 object-contain"
-                            referrerPolicy="no-referrer"
-                          />
-                          <span
-                            className="text-[10px] font-semibold uppercase tracking-[0.16em]"
-                            style={{ color: activeVisual.accent }}
-                          >
-                            {collectionLabels[activeStoryCollection]}
-                          </span>
-                        </div>
-
-                        <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E5DDCC]/48 lg:inline">
-                          {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
-                        </span>
-                      </div>
-
-                      <div className="hidden items-center gap-2 sm:flex">
-                        <button
-                          type="button"
-                          onClick={() => moveCarousel(-1)}
-                          disabled={visibleStories.length <= 1}
-                          aria-label={copy.previous}
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.055] text-[#FFF9EB] transition-colors hover:bg-white/[0.11] disabled:cursor-default disabled:opacity-25"
-                        >
-                          <ChevronLeft size={18} mirrored={isRTL} />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => moveCarousel(1)}
-                          disabled={visibleStories.length <= 1}
-                          aria-label={copy.next}
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.055] text-[#FFF9EB] transition-colors hover:bg-white/[0.11] disabled:cursor-default disabled:opacity-25"
-                        >
-                          <ChevronRight size={18} mirrored={isRTL} />
-                        </button>
-                      </div>
-                    </div>
-
-                    <h2 className="mt-6 max-w-2xl text-[clamp(2.35rem,4.5vw,4.9rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-[#FFF9EB]">
-                      {translatedStoryName(activeStory)}
-                    </h2>
-
-                    <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-[#EDE5D4]/82 sm:text-base">
-                      {translatedStoryDescription(activeStory)}
-                    </p>
-
-                    <div className="mt-8">
-                      <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E5DDCC]/56">
-                        {copy.chooseLevel}
-                      </p>
-
-                      <div className="grid max-w-2xl grid-cols-1 gap-2.5 sm:grid-cols-3">
-                        {activeStory.availableLevels.map((level) => (
-                          <motion.button
-                            key={level}
-                            type="button"
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.985 }}
-                            onClick={() => launchStory(activeStory.id, level)}
-                            className="group rounded-2xl bg-white/[0.055] px-4 py-4 text-start transition-colors hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
-                            onMouseEnter={(event) => {
-                              event.currentTarget.style.background = activeVisual.surface;
-                            }}
-                            onMouseLeave={(event) => {
-                              event.currentTarget.style.background = 'rgba(255,255,255,0.055)';
-                            }}
-                          >
-                            <div className="flex items-center justify-between gap-3">
-                              <span className="text-2xl font-semibold tracking-[-0.035em] text-[#FFF9EB]">
-                                {level}
-                              </span>
-                              <ArrowRight
-                                size={16}
-                                mirrored={isRTL}
-                                className="opacity-45 transition-all group-hover:translate-x-0.5 group-hover:opacity-90"
-                                style={{ color: activeVisual.accent }}
-                              />
-                            </div>
-                            <span className="mt-1.5 block text-[11px] font-medium leading-4 text-[#EDE5D4]/68">
-                              {levelDescriptions[level][language === 'ar' ? 'ar' : 'en']}
-                            </span>
-                          </motion.button>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-              </div>
-            </div>
-          </div>
-
-          <div className="-mx-5 mt-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
-            <div className="flex min-w-max gap-3 lg:min-w-0 lg:grid lg:grid-cols-5">
-              {visibleStories.map((story, index) => {
-                const collection = getStoryCollection(story.id);
-                const visual = collectionVisuals[collection];
-                const active = index === activeIndex;
-
-                return (
-                  <button
-                    key={story.id}
-                    type="button"
-                    onClick={() => setActiveIndex(index)}
-                    className="group relative w-[190px] overflow-hidden rounded-2xl text-start transition-all lg:w-auto"
-                    style={{
-                      background: active ? visual.accentSoft : 'rgba(255,255,255,0.025)',
-                      transform: active ? 'translateY(-2px)' : 'translateY(0)',
-                      boxShadow: active ? '0 14px 34px rgba(0,0,0,0.16)' : 'none',
-                    }}
-                  >
-                    <div className="flex items-center gap-3 p-2.5">
-                      <div className="relative h-16 w-12 shrink-0 overflow-hidden rounded-lg bg-black/20">
+                  return (
+                    <motion.button
+                      key={story.id}
+                      type="button"
+                      aria-label={translatedStoryName(story)}
+                      onClick={() => setActiveIndex(index)}
+                      initial={false}
+                      animate={{
+                        x: hidden ? (delta < 0 ? -330 : 330) : baseX,
+                        scale: isActive ? 1 : absDelta === 1 ? 0.84 : 0.7,
+                        rotateY: isActive ? 0 : delta * -17,
+                        opacity: hidden ? 0 : isActive ? 1 : absDelta === 1 ? 0.62 : 0.24,
+                        filter: isActive ? 'brightness(1)' : absDelta === 1 ? 'brightness(0.72)' : 'brightness(0.5)',
+                      }}
+                      transition={{ duration: reduceMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
+                      style={{
+                        zIndex: 30 - absDelta,
+                        pointerEvents: hidden ? 'none' : 'auto',
+                        transformPerspective: 1800,
+                        transformStyle: 'preserve-3d',
+                      }}
+                      className="absolute left-1/2 top-1/2 aspect-[4/5] h-[82%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[28px] bg-[#0b120d] text-start shadow-[0_36px_90px_rgba(0,0,0,0.45)]"
+                    >
+                      <motion.div
+                        className="h-full w-full"
+                        style={
+                          isActive
+                            ? {
+                                rotateX: coverRotateX,
+                                rotateY: coverRotateY,
+                                y: scrollCoverY,
+                                transformPerspective: 1800,
+                                transformStyle: 'preserve-3d',
+                              }
+                            : undefined
+                        }
+                      >
                         <img
                           src={story.image}
                           alt=""
-                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+                          className="h-full w-full object-cover"
                           referrerPolicy="no-referrer"
                         />
-                      </div>
-                      <div className="min-w-0">
-                        <span
-                          className="block text-[9px] font-semibold uppercase tracking-[0.14em]"
-                          style={{ color: active ? visual.accent : 'rgba(229,221,204,0.42)' }}
-                        >
-                          {collectionLabels[collection]}
-                        </span>
-                        <span className="mt-1.5 block line-clamp-2 text-[12px] font-semibold leading-4 text-[#FFF8E9]">
-                          {translatedStoryName(story)}
-                        </span>
-                      </div>
-                    </div>
-                    {active && (
-                      <motion.span
-                        layoutId="active-story-rail"
-                        className="absolute end-3 top-3 h-2 w-2 rounded-full"
-                        style={{ background: visual.accent }}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/22 via-transparent to-white/[0.08]" />
+                        <div
+                          className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%]"
+                          style={{
+                            background: `linear-gradient(to top, rgba(10,17,13,0.72), transparent)`,
+                          }}
+                        />
+                        {isActive && (
+                          <div
+                            className="pointer-events-none absolute left-4 top-4 h-2.5 w-2.5 rounded-full shadow-[0_0_20px_currentColor]"
+                            style={{ color: visual.accentBright, background: visual.accentBright }}
+                          />
+                        )}
+                      </motion.div>
+                    </motion.button>
+                  );
+                })}
+
+                <motion.div
+                  drag={visibleStories.length > 1 ? 'x' : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.13}
+                  onDragEnd={(_, info) => handleSwipeEnd(info.offset.x, info.velocity.x)}
+                  className="absolute inset-0 z-40 cursor-grab touch-pan-y active:cursor-grabbing"
+                  aria-hidden="true"
+                />
+              </div>
+
+              <div className="absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5">
+                {visibleStories.map((story, index) => {
+                  const active = index === activeIndex;
+                  const visual = collectionVisuals[getStoryCollection(story.id)];
+
+                  return (
+                    <button
+                      key={story.id}
+                      type="button"
+                      onClick={() => setActiveIndex(index)}
+                      className={cn(
+                        'h-2.5 rounded-full transition-all duration-300',
+                        active ? 'w-8' : 'w-2.5 bg-white/20 hover:bg-white/40',
+                      )}
+                      style={active ? { background: visual.accentBright } : undefined}
+                      aria-label={translatedStoryName(story)}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="relative flex min-h-[520px] flex-col justify-center px-6 py-8 sm:px-10 lg:h-full lg:min-h-0 lg:px-12 lg:py-10 xl:px-16">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`content-${activeStory.id}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.34, ease: 'easeOut' }}
+                  className="text-start"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div
+                      className="inline-flex items-center gap-2.5 rounded-full px-3 py-1.5"
+                      style={{ background: activeVisual.accentSoft }}
+                    >
+                      <img
+                        src={collectionIcons[activeStoryCollection]}
+                        alt=""
+                        className="h-5 w-5 object-contain"
+                        referrerPolicy="no-referrer"
                       />
-                    )}
-                  </button>
-                );
-              })}
+                      <span
+                        className="text-[10px] font-semibold uppercase tracking-[0.16em]"
+                        style={{ color: activeVisual.accentBright }}
+                      >
+                        {collectionLabels[activeStoryCollection]}
+                      </span>
+                    </div>
+
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#EDE5D4]/46">
+                      {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <h2 className="mt-7 max-w-2xl text-[clamp(2.6rem,4.7vw,5.15rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-[#FFF9EC]">
+                    {translatedStoryName(activeStory)}
+                  </h2>
+
+                  <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-[#EEE6D6]/84 sm:text-[16px]">
+                    {translatedStoryDescription(activeStory)}
+                  </p>
+
+                  <div className="mt-8">
+                    <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#EDE5D4]/56">
+                      {copy.chooseLevel}
+                    </p>
+
+                    <div className="grid max-w-2xl grid-cols-1 gap-2.5 sm:grid-cols-3">
+                      {activeStory.availableLevels.map((level) => (
+                        <motion.button
+                          key={level}
+                          type="button"
+                          whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01 }}
+                          whileTap={{ scale: 0.985 }}
+                          onClick={() => launchStory(activeStory.id, level)}
+                          className="group rounded-2xl bg-white/[0.055] px-4 py-4 text-start transition-colors hover:bg-white/[0.095] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="text-2xl font-semibold tracking-[-0.035em] text-[#FFF9EC]">
+                              {level}
+                            </span>
+                            <ArrowRight
+                              size={16}
+                              mirrored={isRTL}
+                              className="opacity-45 transition-all group-hover:translate-x-0.5 group-hover:opacity-95"
+                              style={{ color: activeVisual.accentBright }}
+                            />
+                          </div>
+                          <span className="mt-1.5 block text-[11px] font-medium leading-4 text-[#EDE5D4]/70">
+                            {levelDescriptions[level][language === 'ar' ? 'ar' : 'en']}
+                          </span>
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex items-center justify-between gap-4">
+                    <p className="hidden text-[10px] font-semibold uppercase tracking-[0.16em] text-[#EDE5D4]/42 sm:block">
+                      {copy.explore}
+                    </p>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => moveCarousel(-1)}
+                        disabled={visibleStories.length <= 1}
+                        aria-label={copy.previous}
+                        className="flex h-11 w-11 items-center justify-center rounded-full bg-white/[0.06] text-[#FFF9EC] transition-colors hover:bg-white/[0.12] disabled:cursor-default disabled:opacity-25"
+                      >
+                        <ChevronLeft size={18} mirrored={isRTL} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => moveCarousel(1)}
+                        disabled={visibleStories.length <= 1}
+                        aria-label={copy.next}
+                        className="flex h-11 w-11 items-center justify-center rounded-full bg-white/[0.06] text-[#FFF9EC] transition-colors hover:bg-white/[0.12] disabled:cursor-default disabled:opacity-25"
+                      >
+                        <ChevronRight size={18} mirrored={isRTL} />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </section>
