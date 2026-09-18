@@ -12,6 +12,8 @@ import {
   Target,
   Sparkles,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
 } from '../ui/icons';
 import { PageData, BookData, VocabularyItem } from '../../types';
 import { cn } from '../../lib/utils';
@@ -68,7 +70,10 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const [filter, setFilter] = useState<FilterMode>('all');
   const [expandedWord, setExpandedWord] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeChapter, setActiveChapter] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const { t, formatNumber, isRTL } = useLanguage();
+  const WORDS_PER_PAGE = 12;
 
   const copy = useMemo(() => {
     const isA2 = String(bookData.level).toUpperCase() === 'A2';
@@ -107,6 +112,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             antonymsLabel: 'عكسها',
             chapterLabel: 'الفصل',
             categoryLabel: 'التصنيف',
+            allChapters: 'كل الفصول',
+            pageLabel: 'صفحة',
+            ofLabel: 'من',
           }
         : {
             eyebrow: 'مركز المفردات',
@@ -140,6 +148,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             antonymsLabel: 'عكسها',
             chapterLabel: 'الفصل',
             categoryLabel: 'التصنيف',
+            allChapters: 'كل الفصول',
+            pageLabel: 'صفحة',
+            ofLabel: 'من',
           };
     }
 
@@ -176,6 +187,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           antonymsLabel: 'Opposite',
           chapterLabel: 'Chapter',
           categoryLabel: 'Category',
+          allChapters: 'All Chapters',
+          pageLabel: 'Page',
+          ofLabel: 'of',
         }
       : {
           eyebrow: 'Vocabulary Learning Hub',
@@ -209,6 +223,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           antonymsLabel: 'Antonyms',
           chapterLabel: 'Chapter',
           categoryLabel: 'Category',
+          allChapters: 'All Chapters',
+          pageLabel: 'Page',
+          ofLabel: 'of',
         };
   }, [isRTL, bookData.level]);
 
@@ -358,10 +375,38 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         (filter === 'unreviewed' && state === 'unreviewed');
 
       const matchesCategory = !activeCategory || v.category === activeCategory;
+      const matchesChapter = activeChapter === null || v.chapter === activeChapter;
 
-      return matchesSearch && matchesFilter && matchesCategory;
+      return matchesSearch && matchesFilter && matchesCategory && matchesChapter;
     });
-  }, [allVocabulary, searchTerm, filter, knownMap, activeCategory]);
+  }, [allVocabulary, searchTerm, filter, knownMap, activeCategory, activeChapter]);
+
+  const chapterOptions = useMemo(() => {
+    const chapters = new Map<number, string>();
+    allVocabulary.forEach(v => {
+      if (typeof v.chapter === 'number' && !chapters.has(v.chapter)) {
+        chapters.set(v.chapter, v.chapterTitle ?? `${copy.chapterLabel} ${formatNumber(v.chapter)}`);
+      }
+    });
+    return Array.from(chapters.entries())
+      .map(([chapter, title]) => ({ chapter, title }))
+      .sort((a, b) => a.chapter - b.chapter);
+  }, [allVocabulary, copy.chapterLabel, formatNumber]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredVocab.length / WORDS_PER_PAGE));
+  const paginatedVocab = useMemo(() => {
+    const start = (currentPage - 1) * WORDS_PER_PAGE;
+    return filteredVocab.slice(start, start + WORDS_PER_PAGE);
+  }, [filteredVocab, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setExpandedWord(null);
+  }, [searchTerm, filter, activeCategory, activeChapter]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) setCurrentPage(totalPages);
+  }, [currentPage, totalPages]);
 
   const playWord = useCallback((word: string) => {
     if (!('speechSynthesis' in window)) return;
@@ -586,29 +631,72 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             ))}
           </div>
 
+          {chapterOptions.length > 0 && (
+            <select
+              value={activeChapter ?? ''}
+              onChange={(e) => setActiveChapter(e.target.value ? Number(e.target.value) : null)}
+              className={cn(
+                'shrink-0 px-3 py-2 rounded-xl text-xs font-bold border bg-white/70 outline-none cursor-pointer',
+                colTheme.borderStrong,
+                colTheme.brandText
+              )}
+              aria-label={copy.chapterLabel}
+            >
+              <option value="">{copy.allChapters}</option>
+              {chapterOptions.map(item => (
+                <option key={item.chapter} value={item.chapter}>
+                  {copy.chapterLabel} {formatNumber(item.chapter)} · {item.title}
+                </option>
+              ))}
+            </select>
+          )}
+
           <div className="hidden 2xl:flex items-center gap-1.5 text-[11px] text-wood/40 whitespace-nowrap px-1">
             <span>{formatNumber(filteredVocab.length)}</span>
             <span>{copy.visibleWords}</span>
           </div>
         </div>
 
-        {activeCategory && (
-          <div className="mt-2.5 pt-2.5 border-t border-black/5 flex items-center gap-2">
-            <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
-              {copy.categoryLabel}
-            </span>
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={cn(
-                'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition-all',
-                colTheme.brandSoft,
-                colTheme.brandText,
-                colTheme.borderStrong
-              )}
-            >
-              {activeCategory}
-              <X size={11} />
-            </button>
+        {(activeCategory || activeChapter !== null) && (
+          <div className="mt-2.5 pt-2.5 border-t border-black/5 flex flex-wrap items-center gap-2">
+            {activeCategory && (
+              <>
+                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+                  {copy.categoryLabel}
+                </span>
+                <button
+                  onClick={() => setActiveCategory(null)}
+                  className={cn(
+                    'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition-all',
+                    colTheme.brandSoft,
+                    colTheme.brandText,
+                    colTheme.borderStrong
+                  )}
+                >
+                  {activeCategory}
+                  <X size={11} />
+                </button>
+              </>
+            )}
+            {activeChapter !== null && (
+              <>
+                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+                  {copy.chapterLabel}
+                </span>
+                <button
+                  onClick={() => setActiveChapter(null)}
+                  className={cn(
+                    'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition-all',
+                    colTheme.brandSoft,
+                    colTheme.brandText,
+                    colTheme.borderStrong
+                  )}
+                >
+                  {formatNumber(activeChapter)}
+                  <X size={11} />
+                </button>
+              </>
+            )}
           </div>
         )}
 
@@ -641,7 +729,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2 items-start">
           <AnimatePresence mode="popLayout">
-            {filteredVocab.map((v, index) => {
+            {paginatedVocab.map((v, index) => {
               const state: KnownState = knownMap[v.key] ?? 'unreviewed';
               const statusLabel = state === 'known'
                 ? copy.knownBadge
@@ -679,7 +767,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1.5">
                         <span className="text-[10px] font-black tabular-nums text-wood/25">
-                          {String(index + 1).padStart(2, '0')}
+                          {String((currentPage - 1) * WORDS_PER_PAGE + index + 1).padStart(2, '0')}
                         </span>
                         <span className={cn(
                           'px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.08em]',
@@ -877,6 +965,46 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           </div>
         )}
       </div>
+
+      {filteredVocab.length > WORDS_PER_PAGE && (
+        <div className="shrink-0 flex items-center justify-center gap-2">
+          <button
+            onClick={() => setCurrentPage(pageNumber => Math.max(1, pageNumber - 1))}
+            disabled={currentPage === 1}
+            className={cn(
+              'w-8 h-8 rounded-lg border flex items-center justify-center transition-all',
+              currentPage === 1
+                ? 'opacity-30 cursor-not-allowed bg-white/30 border-black/5 text-wood/30'
+                : cn('bg-white/70 hover:bg-white', colTheme.borderStrong, colTheme.brandText)
+            )}
+            aria-label="Previous page"
+          >
+            <ChevronLeft size={14} mirrored={isRTL} />
+          </button>
+
+          <div className="px-3 py-1.5 rounded-lg bg-white/55 border border-black/5 text-[11px] sm:text-xs font-bold text-wood/55 tabular-nums">
+            {copy.pageLabel} {formatNumber(currentPage)} {copy.ofLabel} {formatNumber(totalPages)}
+            <span className="mx-1.5 text-wood/20">·</span>
+            {formatNumber((currentPage - 1) * WORDS_PER_PAGE + 1)}–{formatNumber(Math.min(currentPage * WORDS_PER_PAGE, filteredVocab.length))}
+            <span className="mx-1">/</span>
+            {formatNumber(filteredVocab.length)}
+          </div>
+
+          <button
+            onClick={() => setCurrentPage(pageNumber => Math.min(totalPages, pageNumber + 1))}
+            disabled={currentPage === totalPages}
+            className={cn(
+              'w-8 h-8 rounded-lg border flex items-center justify-center transition-all',
+              currentPage === totalPages
+                ? 'opacity-30 cursor-not-allowed bg-white/30 border-black/5 text-wood/30'
+                : cn('bg-white/70 hover:bg-white', colTheme.borderStrong, colTheme.brandText)
+            )}
+            aria-label="Next page"
+          >
+            <ChevronRight size={14} mirrored={isRTL} />
+          </button>
+        </div>
+      )}
 
       <div className={cn(
         'shrink-0 px-3.5 py-2.5 rounded-xl flex items-center gap-2.5 border',
