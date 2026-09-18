@@ -643,7 +643,7 @@ const findMeccaB2StoryExample=(content:string,word:string):string|null=>{
     ??content.split(/\n+/).map(part=>part.trim()).find(part=>part.toLocaleLowerCase('en').includes(target))
     ??null;
 };
-const masterGlossary:NonNullable<PageData['vocabulary']>=Array.from(new Map(
+const masterGlossary:NonNullable<PageData['vocabulary']>=Array.from(
   standardizedMeccaB2Pages
     .filter(page=>STORY_IDS.has(page.id))
     .flatMap(page=>(page.vocabulary??[]).map(item=>{
@@ -659,8 +659,13 @@ const masterGlossary:NonNullable<PageData['vocabulary']>=Array.from(new Map(
         category:meccaB2GlossaryCategoryByChapter[page.id]??'Story Vocabulary',
       };
     }))
-    .map(item=>[item.word.trim().toLocaleLowerCase('en'),item] as const)
-).values());
+    .reduce((map,item)=>{
+      const key=item.word.trim().toLocaleLowerCase('en');
+      if(!map.has(key))map.set(key,item);
+      return map;
+    },new Map<string,NonNullable<PageData['vocabulary']>[number]>())
+    .values()
+);
 
 const attachEnglishLearning=(pages:PageData[]):PageData[]=>pages.map(page=>{
   if(STORY_IDS.has(page.id)){
