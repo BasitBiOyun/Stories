@@ -3,14 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   Volume2,
   Search,
-  GraduationCap,
   Check,
   X,
   RotateCcw,
   BookOpenCheck,
   BrainCircuit,
   Target,
-  Sparkles,
+  Clock,
   CheckCircle,
   ChevronLeft,
   ChevronRight,
@@ -98,10 +97,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             knownBadge: 'أعرفها',
             reviewBadge: 'تدرّب',
             newBadge: 'جديد',
-            learningPath: 'طريق الكلمات',
-            pathSteps: ['شاهد', 'تعلّم', 'تذكّر', 'استخدم'],
-            selfCheck: 'اختياري',
-            selfCheckNote: 'اختر «أعرفها» إذا كنت تفهم الكلمة. اختر «تدرّب» إذا أردت دراستها مرة أخرى.',
             visibleWords: 'كلمات ظاهرة',
             wordFocus: 'تفاصيل الكلمة',
             closeFocus: 'إخفاء التفاصيل',
@@ -134,10 +129,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             knownBadge: 'واثق',
             reviewBadge: 'للتدرّب',
             newBadge: 'جديد',
-            learningPath: 'مسار التعلّم',
-            pathSteps: ['اكتشف', 'لاحظ', 'استرجع', 'استخدم'],
-            selfCheck: 'تقييم ذاتي',
-            selfCheckNote: 'اختر «واثق» إذا كنت تفهم الكلمة دون مساعدة، أو «للتدرّب» إذا أردت العودة إليها.',
             visibleWords: 'كلمات ظاهرة',
             wordFocus: 'تفاصيل الكلمة',
             closeFocus: 'إخفاء التفاصيل',
@@ -173,10 +164,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           knownBadge: 'I Know',
           reviewBadge: 'Practice',
           newBadge: 'New',
-          learningPath: 'Learning path',
-          pathSteps: ['See', 'Learn', 'Remember', 'Use'],
-          selfCheck: 'My choice',
-          selfCheckNote: 'Choose “I Know” if you understand the word. Choose “Practice” if you want to study it again.',
           visibleWords: 'words shown',
           wordFocus: 'Word details',
           closeFocus: 'Hide details',
@@ -209,10 +196,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           knownBadge: 'Confident',
           reviewBadge: 'Practice',
           newBadge: 'New',
-          learningPath: 'Learning path',
-          pathSteps: ['Discover', 'Notice', 'Recall', 'Use'],
-          selfCheck: 'Self-check',
-          selfCheckNote: 'Choose “Confident” when you understand the word without help, or “Practice” when you want to revisit it.',
           visibleWords: 'words shown',
           wordFocus: 'Word Focus',
           closeFocus: 'Hide details',
@@ -248,7 +231,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         hero: 'from-emerald-50/95 via-white/80 to-teal-50/70',
         heroGlow: 'bg-emerald-300/20',
         accentBorder: 'border-emerald-200/70',
-        footer: 'bg-emerald-50/70 border-emerald-100 text-emerald-900/70',
       };
     }
 
@@ -270,7 +252,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         hero: 'from-sky-50/95 via-white/80 to-cyan-50/70',
         heroGlow: 'bg-sky-300/20',
         accentBorder: 'border-sky-200/70',
-        footer: 'bg-sky-50/70 border-sky-100 text-sky-950/70',
       };
     }
 
@@ -291,7 +272,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       hero: 'from-amber-50/95 via-white/80 to-orange-50/70',
       heroGlow: 'bg-amber-300/20',
       accentBorder: 'border-amber-200/70',
-      footer: 'bg-amber-50/70 border-amber-100 text-amber-950/70',
     };
   }, [collectionId]);
 
@@ -486,7 +466,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       key: 'unreviewed' as FilterMode,
       label: copy.fresh,
       value: newCount,
-      icon: Sparkles,
+      icon: Clock,
       className: 'bg-violet-50 text-violet-700 border-violet-100',
     },
   ];
@@ -700,30 +680,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           </div>
         )}
 
-        <div className="hidden lg:flex items-center justify-between gap-4 mt-2.5 pt-2.5 border-t border-black/5">
-          <div className="flex items-center gap-2 min-w-0">
-            <GraduationCap size={15} className={colTheme.brandText} />
-            <span className="text-[11px] font-black uppercase tracking-[0.12em] text-wood/45">{copy.learningPath}</span>
-            <div className="flex items-center gap-1.5">
-              {copy.pathSteps.map((step, index) => (
-                <React.Fragment key={step}>
-                  <span className={cn(
-                    'px-2 py-1 rounded-lg text-[11px] font-semibold border',
-                    index === 0 ? cn(colTheme.brandSoft, colTheme.brandText, colTheme.border) : 'bg-white/50 border-black/5 text-wood/45'
-                  )}>
-                    {step}
-                  </span>
-                  {index < copy.pathSteps.length - 1 && <span className="text-wood/20">→</span>}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1.5 text-[11px] text-wood/40" title={copy.selfCheckNote}>
-            <Target size={13} />
-            <span className="font-semibold">{copy.selfCheck}</span>
-          </div>
-        </div>
       </section>
 
       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
@@ -1006,17 +962,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         </div>
       )}
 
-      <div className={cn(
-        'shrink-0 px-3.5 py-2.5 rounded-xl flex items-center gap-2.5 border',
-        colTheme.footer
-      )}>
-        <div className={cn('w-8 h-8 rounded-lg text-white flex items-center justify-center shrink-0', colTheme.brand600)}>
-          <GraduationCap size={16} />
-        </div>
-        <p className="text-xs sm:text-sm font-serif leading-snug">
-          {copy.selfCheckNote}
-        </p>
-      </div>
     </div>
   );
 };
