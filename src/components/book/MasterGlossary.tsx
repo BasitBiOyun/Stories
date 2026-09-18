@@ -1,6 +1,18 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, Search, GraduationCap, Check, X, RotateCcw, BookOpenCheck } from '../ui/icons';
+import {
+  Volume2,
+  Search,
+  GraduationCap,
+  Check,
+  X,
+  RotateCcw,
+  BookOpenCheck,
+  BrainCircuit,
+  Target,
+  Sparkles,
+  CheckCircle,
+} from '../ui/icons';
 import { PageData, BookData } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -56,92 +68,120 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const [filter, setFilter] = useState<FilterMode>('all');
   const { t, formatNumber, isRTL } = useLanguage();
 
+  const copy = useMemo(() => isRTL
+    ? {
+        eyebrow: 'مركز المفردات',
+        subtitle: 'راجِعْ الكلمات، قيِّمْ ثقتك، وحدِّدْ ما يحتاج إلى مزيد من التدرّب.',
+        progressTitle: 'خريطة الثقة',
+        progressHint: 'يعكس هذا المؤشر تقييمك الذاتي الحالي للكلمات.',
+        total: 'كل الكلمات',
+        confident: 'واثق',
+        practice: 'للتدرّب',
+        fresh: 'جديد',
+        allWords: 'كل الكلمات',
+        confidentFilter: 'واثق',
+        practiceFilter: 'للتدرّب',
+        newFilter: 'جديد',
+        knowAction: 'أعرف هذه الكلمة',
+        reviewAction: 'أحتاج إلى التدرّب',
+        knownBadge: 'واثق',
+        reviewBadge: 'للتدرّب',
+        newBadge: 'جديد',
+        learningPath: 'مسار التعلّم',
+        pathSteps: ['اكتشف', 'لاحظ', 'استرجع', 'استخدم'],
+        selfCheck: 'تقييم ذاتي',
+        selfCheckNote: 'اختر «واثق» إذا كنت تفهم الكلمة دون مساعدة، أو «للتدرّب» إذا أردت العودة إليها.',
+        visibleWords: 'كلمات ظاهرة',
+      }
+    : {
+        eyebrow: 'Vocabulary Learning Hub',
+        subtitle: 'Review the story vocabulary, map your confidence and keep difficult words visible.',
+        progressTitle: 'Confidence map',
+        progressHint: 'This stage reflects your current self-assessment of the vocabulary.',
+        total: 'All words',
+        confident: 'Confident',
+        practice: 'Practice',
+        fresh: 'New',
+        allWords: 'All words',
+        confidentFilter: 'Confident',
+        practiceFilter: 'Practice',
+        newFilter: 'New',
+        knowAction: 'I know this',
+        reviewAction: 'Needs practice',
+        knownBadge: 'Confident',
+        reviewBadge: 'Practice',
+        newBadge: 'New',
+        learningPath: 'Learning path',
+        pathSteps: ['Discover', 'Notice', 'Recall', 'Use'],
+        selfCheck: 'Self-check',
+        selfCheckNote: 'Choose “Confident” when you understand the word without help, or “Practice” when you want to revisit it.',
+        visibleWords: 'words shown',
+      }, [isRTL]);
+
   const colTheme = useMemo(() => {
     if (collectionId === 'history') {
       return {
-        brand600: "bg-emerald-600",
-        brand750: "bg-emerald-700",
-        brand600Text: "text-emerald-600",
-        shadowBrand: "shadow-emerald-200/55",
-        text950: "text-emerald-950",
-        text900: "text-emerald-900",
-        text700: "text-emerald-700",
-        text700OpText: "text-emerald-700/60",
-        borderLight: "border-emerald-150",
-        bgLight: "bg-emerald-50/80",
-        bgLightRaw: "bg-emerald-100",
-        progressTrack: "bg-emerald-100",
-        progressFill: "bg-emerald-500",
-        searchText: "text-emerald-400",
-        searchBorder: "border-emerald-100",
-        searchBg: "bg-white/60",
-        cardBorder: "border-emerald-100/50 hover:border-emerald-300",
-        playingBg: "bg-emerald-500 text-white scale-110",
-        playIconBtn: "bg-emerald-100 text-emerald-600 hover:bg-emerald-200",
-        playingIconBtnPulse: "bg-emerald-500",
-        badgeBg: "bg-emerald-100 text-emerald-700",
-        borderL: "border-emerald-200",
-        footerBg: "bg-emerald-650/5 border-emerald-600/10",
-        footerIconBg: "bg-emerald-600",
-        footerText: "text-emerald-900/70"
-      };
-    } else if (collectionId === 'turkish') {
-      return {
-        brand600: "bg-sky-700",
-        brand750: "bg-sky-800",
-        brand600Text: "text-sky-700",
-        shadowBrand: "shadow-sky-100/50",
-        text950: "text-sky-950",
-        text900: "text-sky-900",
-        text700: "text-sky-800",
-        text700OpText: "text-sky-700/65",
-        borderLight: "border-sky-100",
-        bgLight: "bg-sky-50/80",
-        bgLightRaw: "bg-sky-100",
-        progressTrack: "bg-sky-100",
-        progressFill: "bg-sky-500",
-        searchText: "text-sky-400",
-        searchBorder: "border-sky-100",
-        searchBg: "bg-white/60",
-        cardBorder: "border-sky-100/50 hover:border-sky-300",
-        playingBg: "bg-sky-700 text-white scale-110",
-        playIconBtn: "bg-sky-100 text-sky-700 hover:bg-sky-200",
-        playingIconBtnPulse: "bg-[#0284C7]",
-        badgeBg: "bg-sky-100 text-sky-800",
-        borderL: "border-sky-200",
-        footerBg: "bg-[#0D1D2C]/5 border-sky-600/10",
-        footerIconBg: "bg-sky-700",
-        footerText: "text-[#0F172A]/70"
-      };
-    } else {
-      return {
-        brand600: "bg-amber-600",
-        brand750: "bg-amber-700",
-        brand600Text: "text-amber-600",
-        shadowBrand: "shadow-amber-200",
-        text950: "text-amber-950",
-        text900: "text-amber-900",
-        text700: "text-amber-700",
-        text700OpText: "text-amber-700/60",
-        borderLight: "border-amber-100",
-        bgLight: "bg-amber-50/80",
-        bgLightRaw: "bg-amber-100",
-        progressTrack: "bg-amber-100",
-        progressFill: "bg-amber-500",
-        searchText: "text-amber-400",
-        searchBorder: "border-amber-100",
-        searchBg: "bg-white/60",
-        cardBorder: "border-amber-100/50 hover:border-amber-300",
-        playingBg: "bg-amber-500 text-white scale-110",
-        playIconBtn: "bg-amber-100 text-amber-600 hover:bg-amber-200",
-        playingIconBtnPulse: "bg-amber-500",
-        badgeBg: "bg-amber-100 text-amber-700",
-        borderL: "border-amber-200",
-        footerBg: "bg-amber-600/5 border-amber-600/10",
-        footerIconBg: "bg-amber-600",
-        footerText: "text-amber-900/70"
+        brand600: 'bg-emerald-600',
+        brand700: 'bg-emerald-700',
+        brandText: 'text-emerald-700',
+        brandTextStrong: 'text-emerald-950',
+        brandSoft: 'bg-emerald-50',
+        brandSoftStrong: 'bg-emerald-100',
+        border: 'border-emerald-100',
+        borderStrong: 'border-emerald-200',
+        hoverBorder: 'hover:border-emerald-300',
+        progressTrack: 'bg-emerald-100',
+        progressFill: 'bg-emerald-500',
+        audio: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
+        audioPlaying: 'bg-emerald-600 text-white',
+        hero: 'from-emerald-50/95 via-white/80 to-teal-50/70',
+        heroGlow: 'bg-emerald-300/20',
+        accentBorder: 'border-emerald-200/70',
+        footer: 'bg-emerald-50/70 border-emerald-100 text-emerald-900/70',
       };
     }
+
+    if (collectionId === 'turkish') {
+      return {
+        brand600: 'bg-sky-700',
+        brand700: 'bg-sky-800',
+        brandText: 'text-sky-700',
+        brandTextStrong: 'text-sky-950',
+        brandSoft: 'bg-sky-50',
+        brandSoftStrong: 'bg-sky-100',
+        border: 'border-sky-100',
+        borderStrong: 'border-sky-200',
+        hoverBorder: 'hover:border-sky-300',
+        progressTrack: 'bg-sky-100',
+        progressFill: 'bg-sky-600',
+        audio: 'bg-sky-100 text-sky-700 hover:bg-sky-200',
+        audioPlaying: 'bg-sky-700 text-white',
+        hero: 'from-sky-50/95 via-white/80 to-cyan-50/70',
+        heroGlow: 'bg-sky-300/20',
+        accentBorder: 'border-sky-200/70',
+        footer: 'bg-sky-50/70 border-sky-100 text-sky-950/70',
+      };
+    }
+
+    return {
+      brand600: 'bg-amber-600',
+      brand700: 'bg-amber-700',
+      brandText: 'text-amber-700',
+      brandTextStrong: 'text-amber-950',
+      brandSoft: 'bg-amber-50',
+      brandSoftStrong: 'bg-amber-100',
+      border: 'border-amber-100',
+      borderStrong: 'border-amber-200',
+      hoverBorder: 'hover:border-amber-300',
+      progressTrack: 'bg-amber-100',
+      progressFill: 'bg-amber-500',
+      audio: 'bg-amber-100 text-amber-700 hover:bg-amber-200',
+      audioPlaying: 'bg-amber-600 text-white',
+      hero: 'from-amber-50/95 via-white/80 to-orange-50/70',
+      heroGlow: 'bg-amber-300/20',
+      accentBorder: 'border-amber-200/70',
+      footer: 'bg-amber-50/70 border-amber-100 text-amber-950/70',
+    };
   }, [collectionId]);
 
   useEffect(() => {
@@ -189,6 +229,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         }
       });
     });
+
     return Array.from(vocabMap.entries())
       .map(([key, data]) => ({ key, ...data }))
       .sort((a, b) => a.word.localeCompare(b.word, isRTL ? 'ar' : 'en', { sensitivity: 'base' }));
@@ -198,6 +239,11 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     () => allVocabulary.filter(v => knownMap[v.key] === 'known').length,
     [allVocabulary, knownMap]
   );
+  const reviewCount = useMemo(
+    () => allVocabulary.filter(v => knownMap[v.key] === 'unknown').length,
+    [allVocabulary, knownMap]
+  );
+  const newCount = allVocabulary.length - knownCount - reviewCount;
 
   const filteredVocab = useMemo(() => {
     return allVocabulary.filter(v => {
@@ -237,7 +283,10 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     utterance.onerror = reset;
 
     const timeout = setTimeout(reset, 3000);
-    utterance.onend = () => { clearTimeout(timeout); reset(); };
+    utterance.onend = () => {
+      clearTimeout(timeout);
+      reset();
+    };
 
     window.speechSynthesis.speak(utterance);
   }, [isRTL]);
@@ -259,58 +308,152 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     ? Math.round((knownCount / allVocabulary.length) * 100)
     : 0;
 
-  const filterOptions: { value: FilterMode; label: string }[] = [
-    { value: 'all', label: `${t('nav.all')} (${formatNumber(allVocabulary.length)})` },
-    { value: 'known', label: `✓ ${t('nav.known')} (${formatNumber(knownCount)})` },
-    { value: 'unknown', label: `✗ ${t('nav.review')} (${formatNumber(allVocabulary.filter(v => knownMap[v.key] === 'unknown').length)})` },
-    { value: 'unreviewed', label: `${t('nav.new')} (${formatNumber(allVocabulary.filter(v => !knownMap[v.key]).length)})` },
+  const filterOptions: { value: FilterMode; label: string; count: number }[] = [
+    { value: 'all', label: copy.allWords, count: allVocabulary.length },
+    { value: 'known', label: copy.confidentFilter, count: knownCount },
+    { value: 'unknown', label: copy.practiceFilter, count: reviewCount },
+    { value: 'unreviewed', label: copy.newFilter, count: newCount },
+  ];
+
+  const summaryCards = [
+    {
+      key: 'all' as FilterMode,
+      label: copy.total,
+      value: allVocabulary.length,
+      icon: BookOpenCheck,
+      className: cn(colTheme.brandSoft, colTheme.brandText, colTheme.border),
+    },
+    {
+      key: 'known' as FilterMode,
+      label: copy.confident,
+      value: knownCount,
+      icon: CheckCircle,
+      className: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+    },
+    {
+      key: 'unknown' as FilterMode,
+      label: copy.practice,
+      value: reviewCount,
+      icon: Target,
+      className: 'bg-rose-50 text-rose-700 border-rose-100',
+    },
+    {
+      key: 'unreviewed' as FilterMode,
+      label: copy.fresh,
+      value: newCount,
+      icon: Sparkles,
+      className: 'bg-violet-50 text-violet-700 border-violet-100',
+    },
   ];
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col gap-2.5 overflow-hidden lg:-my-3 lg:h-[calc(100%+1.5rem)]">
-      <div className="shrink-0 flex flex-col gap-2.5">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2.5 lg:gap-6">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className={cn("w-10 h-10 rounded-xl text-white flex items-center justify-center shadow-md shrink-0", colTheme.brand600, colTheme.shadowBrand)}>
-              <BookOpenCheck size={20} />
+    <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden lg:-my-3 lg:h-[calc(100%+1.5rem)]">
+      <section className={cn(
+        'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm',
+        colTheme.hero,
+        colTheme.accentBorder
+      )}>
+        <div className={cn('absolute -top-16 -right-12 w-44 h-44 rounded-full blur-3xl pointer-events-none', colTheme.heroGlow)} />
+        <div className="relative flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
+          <div className="flex items-start gap-3 min-w-0">
+            <div className={cn(
+              'w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-white flex items-center justify-center shadow-lg shrink-0',
+              colTheme.brand600
+            )}>
+              <BrainCircuit size={23} />
             </div>
             <div className="min-w-0">
-              <h2 className={cn("text-2xl sm:text-3xl font-black tracking-tight leading-none", colTheme.text900)}>{t('nav.masterGlossary')}</h2>
-              <p className="font-serif text-sm sm:text-base italic text-wood/55 mt-0.5 truncate">{t('nav.everyWordLearned')}</p>
+              <div className={cn('text-[10px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>
+                {copy.eyebrow}
+              </div>
+              <h2 className={cn('text-2xl sm:text-3xl font-black tracking-tight leading-none', colTheme.brandTextStrong)}>
+                {t('nav.masterGlossary')}
+              </h2>
+              <p className="text-sm sm:text-[15px] text-wood/60 mt-1.5 max-w-2xl leading-relaxed">
+                {copy.subtitle}
+              </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 lg:w-[42%] lg:min-w-[420px] lg:max-w-[620px]">
-            <div className={cn("flex-1 h-2 rounded-full overflow-hidden", colTheme.progressTrack)}>
+          <div className="xl:w-[42%] xl:min-w-[430px] rounded-2xl border border-white/80 bg-white/65 backdrop-blur-md px-4 py-3 shadow-sm">
+            <div className="flex items-center justify-between gap-3 mb-2">
+              <div>
+                <div className={cn('text-xs font-black uppercase tracking-[0.12em]', colTheme.brandText)}>
+                  {copy.progressTitle}
+                </div>
+                <p className="text-[11px] sm:text-xs text-wood/45 mt-0.5">
+                  {copy.progressHint}
+                </p>
+              </div>
+              <div className={cn('text-2xl sm:text-3xl font-black tabular-nums', colTheme.brandTextStrong)}>
+                {formatNumber(progressPct)}%
+              </div>
+            </div>
+
+            <div className={cn('h-2.5 rounded-full overflow-hidden', colTheme.progressTrack)}>
               <motion.div
-                className={cn("h-full rounded-full", colTheme.progressFill)}
+                className={cn('h-full rounded-full', colTheme.progressFill)}
                 initial={{ width: 0 }}
                 animate={{ width: `${progressPct}%` }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
               />
             </div>
-            <span className={cn("text-xs sm:text-sm font-bold tabular-nums whitespace-nowrap", colTheme.text700)}>
-              {formatNumber(knownCount)}/{formatNumber(allVocabulary.length)} {t('nav.known')}
-            </span>
-            {knownCount > 0 && (
-              <button
-                onClick={resetProgress}
-                className={cn("p-2 rounded-lg transition-all shrink-0", colTheme.brand600Text, colTheme.bgLight)}
-                title={t('nav.reset')}
-                aria-label={t('nav.reset')}
-              >
-                <RotateCcw size={14} />
-              </button>
-            )}
+
+            <div className="flex items-center justify-between gap-2 mt-2">
+              <span className="text-[11px] sm:text-xs text-wood/45">
+                {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)} {copy.confident.toLowerCase()}
+              </span>
+              {(knownCount > 0 || reviewCount > 0) && (
+                <button
+                  onClick={resetProgress}
+                  className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all hover:scale-[1.02]', colTheme.brandSoft, colTheme.brandText)}
+                  title={t('nav.reset')}
+                  aria-label={t('nav.reset')}
+                >
+                  <RotateCcw size={12} />
+                  {t('nav.reset')}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col xl:flex-row xl:items-center gap-2">
+        <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-2.5 mt-4">
+          {summaryCards.map(item => {
+            const Icon = item.icon;
+            const active = filter === item.key;
+            return (
+              <button
+                key={item.key}
+                onClick={() => setFilter(item.key)}
+                className={cn(
+                  'rounded-2xl border p-3 text-left transition-all hover:-translate-y-0.5 hover:shadow-sm',
+                  item.className,
+                  active && 'ring-2 ring-current/15 shadow-sm'
+                )}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-white/70 flex items-center justify-center shadow-sm">
+                    <Icon size={16} />
+                  </div>
+                  <span className="text-xl sm:text-2xl font-black tabular-nums">{formatNumber(item.value)}</span>
+                </div>
+                <div className="mt-2 text-[11px] sm:text-xs font-black uppercase tracking-[0.08em] opacity-80">
+                  {item.label}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="shrink-0 rounded-2xl border border-black/5 bg-white/45 backdrop-blur-sm p-3 shadow-sm">
+        <div className="flex flex-col xl:flex-row xl:items-center gap-2.5">
           <div className="relative flex-1 min-w-0">
             <Search className={cn(
-              "absolute top-1/2 -translate-y-1/2 w-4 h-4",
-              isRTL ? "right-3.5" : "left-3.5",
-              colTheme.searchText
+              'absolute top-1/2 -translate-y-1/2 w-4 h-4',
+              isRTL ? 'right-3.5' : 'left-3.5',
+              colTheme.brandText
             )} />
             <input
               type="text"
@@ -318,11 +461,10 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={cn(
-                "w-full py-2.5 bg-white/60 backdrop-blur-sm border-2 rounded-xl outline-none transition-all font-serif italic shadow-inner",
-                isRTL ? "pr-10 pl-3" : "pl-10 pr-3",
-                colTheme.searchBorder,
-                `focus:${colTheme.brand600Text.replace('text-', 'border-')}`,
-                colTheme.text900
+                'w-full py-2.5 bg-white/75 border rounded-xl outline-none transition-all font-serif shadow-inner focus:ring-2 focus:ring-black/5',
+                isRTL ? 'pr-10 pl-3' : 'pl-10 pr-3',
+                colTheme.borderStrong,
+                colTheme.brandTextStrong
               )}
             />
           </div>
@@ -333,94 +475,170 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                 key={opt.value}
                 onClick={() => setFilter(opt.value)}
                 className={cn(
-                  "px-3 py-2 rounded-xl text-xs font-semibold transition-all border whitespace-nowrap",
+                  'px-3 py-2 rounded-xl text-xs font-bold transition-all border whitespace-nowrap',
                   filter === opt.value
                     ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
-                    : cn("bg-white/50 hover:bg-white/80", colTheme.text700, colTheme.borderLight)
+                    : cn('bg-white/60 hover:bg-white', colTheme.brandText, colTheme.border)
                 )}
               >
-                {opt.label}
+                {opt.label} <span className="opacity-70">· {formatNumber(opt.count)}</span>
               </button>
             ))}
           </div>
+
+          <div className="hidden 2xl:flex items-center gap-1.5 text-[11px] text-wood/40 whitespace-nowrap px-1">
+            <span>{formatNumber(filteredVocab.length)}</span>
+            <span>{copy.visibleWords}</span>
+          </div>
         </div>
-      </div>
+
+        <div className="hidden lg:flex items-center justify-between gap-4 mt-2.5 pt-2.5 border-t border-black/5">
+          <div className="flex items-center gap-2 min-w-0">
+            <GraduationCap size={15} className={colTheme.brandText} />
+            <span className="text-[11px] font-black uppercase tracking-[0.12em] text-wood/45">{copy.learningPath}</span>
+            <div className="flex items-center gap-1.5">
+              {copy.pathSteps.map((step, index) => (
+                <React.Fragment key={step}>
+                  <span className={cn(
+                    'px-2 py-1 rounded-lg text-[11px] font-semibold border',
+                    index === 0 ? cn(colTheme.brandSoft, colTheme.brandText, colTheme.border) : 'bg-white/50 border-black/5 text-wood/45'
+                  )}>
+                    {step}
+                  </span>
+                  {index < copy.pathSteps.length - 1 && <span className="text-wood/20">→</span>}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-[11px] text-wood/40" title={copy.selfCheckNote}>
+            <Target size={13} />
+            <span className="font-semibold">{copy.selfCheck}</span>
+          </div>
+        </div>
+      </section>
 
       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2">
           <AnimatePresence mode="popLayout">
-            {filteredVocab.map((v) => {
+            {filteredVocab.map((v, index) => {
               const state: KnownState = knownMap[v.key] ?? 'unreviewed';
+              const statusLabel = state === 'known'
+                ? copy.knownBadge
+                : state === 'unknown'
+                  ? copy.reviewBadge
+                  : copy.newBadge;
 
               return (
-                <motion.div
+                <motion.article
                   key={v.key}
                   layout
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.15 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.16 }}
                   className={cn(
-                    "group relative bg-white/45 backdrop-blur-sm border-2 rounded-2xl p-3.5 transition-all shadow-sm hover:shadow-md",
+                    'group relative overflow-hidden bg-white/68 backdrop-blur-sm border rounded-[1.35rem] p-4 transition-all shadow-sm hover:shadow-md hover:-translate-y-[1px]',
                     state === 'known'
-                      ? "border-green-200 bg-green-50/40"
+                      ? 'border-emerald-200/80'
                       : state === 'unknown'
-                        ? "border-red-200 bg-red-50/30"
-                        : colTheme.cardBorder
+                        ? 'border-rose-200/80'
+                        : cn(colTheme.border, colTheme.hoverBorder)
                   )}
                 >
-                  <div className="flex items-start gap-2.5">
+                  <div className={cn(
+                    'absolute inset-x-0 top-0 h-1',
+                    state === 'known'
+                      ? 'bg-emerald-400'
+                      : state === 'unknown'
+                        ? 'bg-rose-400'
+                        : colTheme.progressFill
+                  )} />
+
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="text-[10px] font-black tabular-nums text-wood/25">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className={cn(
+                          'px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.08em]',
+                          state === 'known'
+                            ? 'bg-emerald-50 text-emerald-700'
+                            : state === 'unknown'
+                              ? 'bg-rose-50 text-rose-700'
+                              : 'bg-violet-50 text-violet-700'
+                        )}>
+                          {statusLabel}
+                        </span>
+                      </div>
+
+                      <h3 className={cn(
+                        'text-xl sm:text-[1.35rem] font-black leading-tight',
+                        colTheme.brandTextStrong,
+                        !isRTL && 'capitalize'
+                      )}>
+                        {v.word}
+                      </h3>
+                    </div>
+
                     <button
                       onClick={() => playWord(v.word)}
                       className={cn(
-                        "shrink-0 p-2 rounded-lg transition-all shadow-sm mt-0.5",
-                        playingWord === v.word ? colTheme.playingBg : colTheme.playIconBtn
+                        'shrink-0 w-9 h-9 rounded-xl flex items-center justify-center transition-all shadow-sm',
+                        playingWord === v.word ? colTheme.audioPlaying : colTheme.audio
                       )}
                       aria-label={v.word}
                     >
-                      <Volume2 size={15} className={playingWord === v.word ? "animate-pulse" : ""} />
+                      <Volume2 size={16} className={playingWord === v.word ? 'animate-pulse' : ''} />
+                    </button>
+                  </div>
+
+                  <p className="font-serif text-[15px] sm:text-base text-wood/72 leading-relaxed mt-3 min-h-[3rem]">
+                    {v.definition}
+                  </p>
+
+                  {v.example && (
+                    <div className={cn(
+                      'mt-3 rounded-xl border px-3 py-2.5 bg-white/55',
+                      colTheme.border
+                    )}>
+                      <p className="font-serif italic text-sm text-wood/55 leading-relaxed">
+                        “{v.example}”
+                      </p>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-black/5">
+                    <button
+                      onClick={() => markWord(v.key, state === 'known' ? 'unreviewed' : 'known')}
+                      className={cn(
+                        'flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all border',
+                        state === 'known'
+                          ? 'bg-emerald-500 text-white border-emerald-500 shadow-sm shadow-emerald-100'
+                          : 'bg-white/70 text-emerald-700 border-emerald-100 hover:bg-emerald-50 hover:border-emerald-200'
+                      )}
+                      title={t('nav.iKnowThisWord')}
+                    >
+                      <Check size={13} />
+                      {copy.knowAction}
                     </button>
 
-                    <div className="flex-1 min-w-0">
-                      <h3 className={cn("text-xl font-bold capitalize mb-1 leading-tight", colTheme.text900)}>{v.word}</h3>
-                      <p className="font-serif text-base text-wood/70 leading-snug">
-                        {v.definition}
-                      </p>
-                      {v.example && (
-                        <p className={cn("font-serif italic text-sm border-l-2 pl-2.5 leading-snug mt-2", colTheme.text700OpText, colTheme.borderL)}>
-                          "{v.example}"
-                        </p>
+                    <button
+                      onClick={() => markWord(v.key, state === 'unknown' ? 'unreviewed' : 'unknown')}
+                      className={cn(
+                        'flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all border',
+                        state === 'unknown'
+                          ? 'bg-rose-500 text-white border-rose-500 shadow-sm shadow-rose-100'
+                          : 'bg-white/70 text-rose-600 border-rose-100 hover:bg-rose-50 hover:border-rose-200'
                       )}
-                    </div>
-
-                    <div className="shrink-0 flex flex-col gap-1 mt-0.5">
-                      <button
-                        onClick={() => markWord(v.key, state === 'known' ? 'unreviewed' : 'known')}
-                        className={cn(
-                          "p-1.5 rounded-lg transition-all",
-                          state === 'known'
-                            ? "bg-green-500 text-white shadow-sm shadow-green-200"
-                            : "bg-white/60 text-green-400 hover:bg-green-50 hover:text-green-600 border border-green-100"
-                        )}
-                        title={t('nav.iKnowThisWord')}
-                      >
-                        <Check size={13} />
-                      </button>
-                      <button
-                        onClick={() => markWord(v.key, state === 'unknown' ? 'unreviewed' : 'unknown')}
-                        className={cn(
-                          "p-1.5 rounded-lg transition-all",
-                          state === 'unknown'
-                            ? "bg-red-400 text-white shadow-sm shadow-red-200"
-                            : "bg-white/60 text-red-300 hover:bg-red-50 hover:text-red-500 border border-red-100"
-                        )}
-                        title={t('nav.needToReview')}
-                      >
-                        <X size={13} />
-                      </button>
-                    </div>
+                      title={t('nav.needToReview')}
+                    >
+                      <X size={13} />
+                      {copy.reviewAction}
+                    </button>
                   </div>
-                </motion.div>
+                </motion.article>
               );
             })}
           </AnimatePresence>
@@ -428,8 +646,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
 
         {filteredVocab.length === 0 && (
           <div className="h-48 flex flex-col items-center justify-center text-center p-6">
-            <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-3", colTheme.bgLight)}>
-              <Search className={cn("w-6 h-6", colTheme.searchText)} />
+            <div className={cn('w-12 h-12 rounded-full flex items-center justify-center mb-3', colTheme.brandSoft)}>
+              <Search className={cn('w-6 h-6', colTheme.brandText)} />
             </div>
             <p className="font-serif italic text-wood/40">
               {searchTerm ? t('nav.noWordsFound') : t('nav.noWordsCategory')}
@@ -438,15 +656,15 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         )}
       </div>
 
-      <div className={cn("shrink-0 px-3 py-2 rounded-xl flex items-center gap-2.5 border", colTheme.footerBg)}>
-        <div className={cn("w-8 h-8 rounded-lg text-white flex items-center justify-center shrink-0", colTheme.footerIconBg)}>
+      <div className={cn(
+        'shrink-0 px-3.5 py-2.5 rounded-xl flex items-center gap-2.5 border',
+        colTheme.footer
+      )}>
+        <div className={cn('w-8 h-8 rounded-lg text-white flex items-center justify-center shrink-0', colTheme.brand600)}>
           <GraduationCap size={16} />
         </div>
-        <p className={cn("text-xs sm:text-sm font-serif italic leading-snug", colTheme.footerText)}>
-          {t('nav.glossaryTip')}
-          {progressPct === 100
-            ? ` ${t('nav.glossaryAmazing')}`
-            : ` ${t('nav.glossaryProgress').replace('{percent}', formatNumber(progressPct)).replace('{total}', formatNumber(allVocabulary.length))}`}
+        <p className="text-xs sm:text-sm font-serif leading-snug">
+          {copy.selfCheckNote}
         </p>
       </div>
     </div>
