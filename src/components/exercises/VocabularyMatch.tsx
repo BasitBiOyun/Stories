@@ -140,10 +140,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     const pool = contextualPairs.length >= policy.vocabularyContextCount ? contextualPairs : pairs;
     return pickEvenly(pool, Math.min(policy.vocabularyContextCount, pool.length));
   }, [pairs, policy.vocabularyContextCount]);
-  const recallItems = useMemo(
-    () => pickEvenly([...pairs].reverse(), Math.min(policy.vocabularyRecallCount, pairs.length)),
-    [pairs, policy.vocabularyRecallCount]
-  );
+  const recallItems = useMemo(() => {
+    const reversed = [...pairs].reverse();
+    const grounded = reversed.filter(pair => Boolean(pair.context?.trim()) && Boolean(maskWord(pair.context, pair.word)));
+    const pool = policy.vocabularyRecallMode === 'guided' && grounded.length >= policy.vocabularyRecallCount
+      ? grounded
+      : reversed;
+    return pickEvenly(pool, Math.min(policy.vocabularyRecallCount, pool.length));
+  }, [pairs, policy.vocabularyRecallCount, policy.vocabularyRecallMode]);
 
   const signature = useMemo(
     () => `${level}:${language}:${pairs.map(pair => pair.word).join('|')}`,
