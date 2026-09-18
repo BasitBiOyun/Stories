@@ -220,8 +220,6 @@ English:
 “Anyone who claims to be a Muslim should know the requirements of Islam,
 He should follow Allah’s command and pray the five daily prayers”
 Turkish:
-// c03b
-// c04a
 Müslümanım diyen kişi şartı nedir bilse gerek
 Tanrı'nın buyruğun tutup beş vakt namaz kılsa gerek
 [/POEM]
@@ -292,8 +290,6 @@ May happiness be yours for all the months and years to come”
 Turkish:
 Seni dürlü beladan kurtara akl,
 Saadet ola sana cümle ay, yıl
-// c04b
-// c05a
 [/POEM]
 
 Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “The one who remembers death the most and is best in preparing for it. Those are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and righteous life.
