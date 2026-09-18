@@ -314,7 +314,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
     ]
   ),
   { id: 16, type: 'quiz', title: 'Knowledge Check: Mecca Before Islam - B1', image: '', content: 'Check your understanding of the whole story through eight evidence-based questions.' },
-  { id: 17, type: 'exercises', title: 'Retrieval Review', image: '', content: 'Reconnect chronology, systems, consequences and evidence across the story.' },
+  { id: 17, type: 'exercises', title: 'Language Review', image: '', content: 'Review and use grammar, meaning relationships and communicative language from across the book.' },
   { id: 18, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', image: '', content: 'Match ten important words and concepts with their meanings.' },
   {
     id: 19,
