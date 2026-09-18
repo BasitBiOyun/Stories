@@ -487,9 +487,16 @@ The dreadful situation in the twenty-first century reminds us of the dark period
   },
   {
     id: 20,
+    type: 'vocabulary-match',
+    title: 'B2 Vocabulary Challenge',
+    content: 'Practise the target vocabulary through matching, story context, and active recall.',
+    image: '',
+  },
+  {
+    id: 21,
     type: 'glossary',
     title: 'Master Glossary',
-    content: 'Review all key vocabulary from the story in one place.',
+    content: 'Review all key vocabulary from the story in one place before the Vocabulary Challenge.',
     image: '',
   },
   {
@@ -675,7 +682,7 @@ const attachEnglishLearning=(pages:PageData[]):PageData[]=>pages.map(page=>{
   if(page.id===18) return {...page,type:'quiz',exercises:meccaB2ManualKnowledgeCheckExercises};
   if(page.id===19) return {...page,type:'exercises',title:'B2 Language Review',content:'Review and use the qualification, cause-result, contrast, condition, information-focus and discourse patterns developed across all seventeen chapters.',exercises:meccaB2LanguageReviewExercises};
   if(page.id===20) return {...page,type:'vocabulary-match',vocabularyPairs:meccaB2VocabularyChallengePairs};
-  if(page.id===20) return {...page,type:'glossary',vocabulary:masterGlossary};
+  if(page.id===21) return {...page,type:'glossary',vocabulary:masterGlossary};
   if(page.id===22) return {...page,type:'final-challenge',exercises:meccaB2FinalChallengeExercisesPolished};
   return page;
 });
