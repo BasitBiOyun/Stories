@@ -157,7 +157,1310 @@ Each character in this Qur’anic story leaves behind a deterrent tale for human
 // anchor-17e
 // anchor-17f
 ];
-const glossary=Array.from(new Map(adamB2Pages.flatMap(p=>p.vocabulary??[]).map(v=>[v.word.toLowerCase(),v] as const)).values());
+const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[number], 'word' | 'definition' | 'level' | 'chapter' | 'chapterTitle' | 'storyExample'>> = {
+  "miraculous": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/mɪˈrækjələs/",
+    "wordFamily": [
+      "miracle",
+      "miraculous",
+      "miraculously"
+    ],
+    "collocations": [
+      "miraculous sign",
+      "miraculous event"
+    ],
+    "synonyms": [
+      "extraordinary"
+    ],
+    "category": "Belief & Description"
+  },
+  "fabulous": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈfæbjələs/",
+    "wordFamily": [
+      "fabulous",
+      "fabulously"
+    ],
+    "collocations": [
+      "fabulous story",
+      "fabulous account"
+    ],
+    "synonyms": [
+      "remarkable"
+    ],
+    "category": "Description"
+  },
+  "philosophical": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˌfɪləˈsɑːfɪkəl/",
+    "wordFamily": [
+      "philosophy",
+      "philosophical",
+      "philosophically"
+    ],
+    "collocations": [
+      "philosophical understanding",
+      "philosophical question"
+    ],
+    "category": "Ideas & Thinking"
+  },
+  "Unseen": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ʌnˈsiːn/",
+    "wordFamily": [
+      "see",
+      "seen",
+      "unseen"
+    ],
+    "collocations": [
+      "the Unseen",
+      "knowledge of the Unseen"
+    ],
+    "antonyms": [
+      "visible"
+    ],
+    "category": "Belief & Ideas"
+  },
+  "contrast": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈkɑːntræst/",
+    "wordFamily": [
+      "contrast",
+      "contrasting"
+    ],
+    "collocations": [
+      "clear contrast",
+      "contrast between good and evil"
+    ],
+    "synonyms": [
+      "difference"
+    ],
+    "category": "Ideas & Comparison"
+  },
+  "composition": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌkɑːmpəˈzɪʃən/",
+    "wordFamily": [
+      "compose",
+      "composition"
+    ],
+    "collocations": [
+      "material composition",
+      "composition of soil"
+    ],
+    "category": "Science & Description"
+  },
+  "mixture": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈmɪkstʃər/",
+    "wordFamily": [
+      "mix",
+      "mixture",
+      "mixed"
+    ],
+    "collocations": [
+      "mixture of water and soil",
+      "complex mixture"
+    ],
+    "category": "Science & Description"
+  },
+  "superiority": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/suːˌpɪriˈɔːrəti/",
+    "wordFamily": [
+      "superior",
+      "superiority"
+    ],
+    "collocations": [
+      "claim superiority",
+      "sense of superiority"
+    ],
+    "antonyms": [
+      "inferiority"
+    ],
+    "category": "Values & Equality"
+  },
+  "ancestor": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈænsestər/",
+    "wordFamily": [
+      "ancestor",
+      "ancestry",
+      "ancestral"
+    ],
+    "collocations": [
+      "common ancestor",
+      "human ancestor"
+    ],
+    "synonyms": [
+      "forebear"
+    ],
+    "category": "People & History"
+  },
+  "species": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈspiːʃiːz/",
+    "collocations": [
+      "human species",
+      "distinct species"
+    ],
+    "category": "Science & Life"
+  },
+  "representative": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌreprɪˈzentətɪv/",
+    "wordFamily": [
+      "represent",
+      "representative",
+      "representation"
+    ],
+    "collocations": [
+      "act as a representative",
+      "human representative"
+    ],
+    "category": "Responsibility & Roles"
+  },
+  "extraordinary": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ɪkˈstrɔːrdəneri/",
+    "wordFamily": [
+      "ordinary",
+      "extraordinary"
+    ],
+    "collocations": [
+      "extraordinary qualities",
+      "extraordinary ability"
+    ],
+    "antonyms": [
+      "ordinary"
+    ],
+    "category": "Description"
+  },
+  "fundamental": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˌfʌndəˈmentəl/",
+    "wordFamily": [
+      "fundament",
+      "fundamental",
+      "fundamentally"
+    ],
+    "collocations": [
+      "fundamental knowledge",
+      "fundamental principle"
+    ],
+    "synonyms": [
+      "essential"
+    ],
+    "category": "Learning & Ideas"
+  },
+  "civilization": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌsɪvələˈzeɪʃən/",
+    "wordFamily": [
+      "civilize",
+      "civilization",
+      "civilized"
+    ],
+    "collocations": [
+      "human civilization",
+      "build civilization"
+    ],
+    "category": "Society & Culture"
+  },
+  "intelligence": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ɪnˈtelɪdʒəns/",
+    "wordFamily": [
+      "intelligence",
+      "intelligent"
+    ],
+    "collocations": [
+      "human intelligence",
+      "use intelligence"
+    ],
+    "category": "Learning & Thinking"
+  },
+  "offspring": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈɔːfsprɪŋ/",
+    "collocations": [
+      "human offspring",
+      "future offspring"
+    ],
+    "synonyms": [
+      "descendants"
+    ],
+    "category": "Family & Humanity"
+  },
+  "revelation": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌrevəˈleɪʃən/",
+    "wordFamily": [
+      "reveal",
+      "revelation"
+    ],
+    "collocations": [
+      "divine revelation",
+      "receive revelation"
+    ],
+    "category": "Belief & Faith"
+  },
+  "essential": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ɪˈsenʃəl/",
+    "wordFamily": [
+      "essence",
+      "essential",
+      "essentially"
+    ],
+    "collocations": [
+      "essential knowledge",
+      "absolutely essential"
+    ],
+    "synonyms": [
+      "necessary"
+    ],
+    "category": "Ideas & Importance"
+  },
+  "privilege": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈprɪvəlɪdʒ/",
+    "wordFamily": [
+      "privilege",
+      "privileged"
+    ],
+    "collocations": [
+      "special privilege",
+      "honour and privilege"
+    ],
+    "category": "Status & Values"
+  },
+  "arrogant": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈærəɡənt/",
+    "wordFamily": [
+      "arrogant",
+      "arrogance",
+      "arrogantly"
+    ],
+    "collocations": [
+      "arrogant attitude",
+      "be arrogant"
+    ],
+    "synonyms": [
+      "proud"
+    ],
+    "antonyms": [
+      "humble"
+    ],
+    "category": "Character & Values"
+  },
+  "inability": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌɪnəˈbɪləti/",
+    "wordFamily": [
+      "able",
+      "ability",
+      "unable",
+      "inability"
+    ],
+    "collocations": [
+      "admit inability",
+      "inability to act"
+    ],
+    "antonyms": [
+      "ability"
+    ],
+    "category": "Ability & Limits"
+  },
+  "obedience": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/oʊˈbiːdiəns/",
+    "wordFamily": [
+      "obey",
+      "obedient",
+      "obedience"
+    ],
+    "collocations": [
+      "obedience to Allah",
+      "show obedience"
+    ],
+    "antonyms": [
+      "disobedience"
+    ],
+    "category": "Values & Faith"
+  },
+  "admiration": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌædməˈreɪʃən/",
+    "wordFamily": [
+      "admire",
+      "admiration"
+    ],
+    "collocations": [
+      "show admiration",
+      "respect and admiration"
+    ],
+    "synonyms": [
+      "respect"
+    ],
+    "category": "Feelings & Attitudes"
+  },
+  "arrogance": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈærəɡəns/",
+    "wordFamily": [
+      "arrogant",
+      "arrogance",
+      "arrogantly"
+    ],
+    "collocations": [
+      "hidden arrogance",
+      "show arrogance"
+    ],
+    "antonyms": [
+      "humility"
+    ],
+    "category": "Character & Values"
+  },
+  "ethnicity": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/eθˈnɪsəti/",
+    "wordFamily": [
+      "ethnic",
+      "ethnicity"
+    ],
+    "collocations": [
+      "race and ethnicity",
+      "ethnic identity"
+    ],
+    "category": "Identity & Society"
+  },
+  "respectful": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/rɪˈspektfəl/",
+    "wordFamily": [
+      "respect",
+      "respectful",
+      "respectfully"
+    ],
+    "collocations": [
+      "be respectful",
+      "respectful attitude"
+    ],
+    "antonyms": [
+      "disrespectful"
+    ],
+    "category": "Values & Conduct"
+  },
+  "inhabit": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ɪnˈhæbɪt/",
+    "wordFamily": [
+      "inhabit",
+      "inhabitant",
+      "habitat"
+    ],
+    "collocations": [
+      "inhabit a place",
+      "inhabit the Garden"
+    ],
+    "synonyms": [
+      "live in"
+    ],
+    "category": "Places & Actions"
+  },
+  "wrongdoers": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈrɔːŋˌduːərz/",
+    "wordFamily": [
+      "wrong",
+      "wrongdoing",
+      "wrongdoer"
+    ],
+    "collocations": [
+      "among the wrongdoers",
+      "punish wrongdoers"
+    ],
+    "category": "Values & Conduct"
+  },
+  "outcast": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈaʊtkæst/",
+    "wordFamily": [
+      "outcast"
+    ],
+    "collocations": [
+      "become an outcast",
+      "social outcast"
+    ],
+    "synonyms": [
+      "reject"
+    ],
+    "category": "People & Status"
+  },
+  "deceive": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/dɪˈsiːv/",
+    "wordFamily": [
+      "deceive",
+      "deception",
+      "deceptive"
+    ],
+    "collocations": [
+      "deceive someone",
+      "deliberately deceive"
+    ],
+    "synonyms": [
+      "mislead"
+    ],
+    "category": "Actions & Ethics"
+  },
+  "determination": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/dɪˌtɜːrməˈneɪʃən/",
+    "wordFamily": [
+      "determine",
+      "determined",
+      "determination"
+    ],
+    "collocations": [
+      "strong determination",
+      "determination weakens"
+    ],
+    "category": "Character & Motivation"
+  },
+  "whispered": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˈwɪspərd/",
+    "wordFamily": [
+      "whisper",
+      "whispered",
+      "whispering"
+    ],
+    "collocations": [
+      "whisper to someone",
+      "whisper softly"
+    ],
+    "category": "Communication & Influence"
+  },
+  "immortals": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ɪˈmɔːrtəlz/",
+    "wordFamily": [
+      "mortal",
+      "immortal",
+      "immortality"
+    ],
+    "collocations": [
+      "become immortals",
+      "immortal beings"
+    ],
+    "antonyms": [
+      "mortals"
+    ],
+    "category": "Ideas & Life"
+  },
+  "sincere": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/sɪnˈsɪr/",
+    "wordFamily": [
+      "sincere",
+      "sincerely",
+      "sincerity"
+    ],
+    "collocations": [
+      "sincere advisor",
+      "sincere intention"
+    ],
+    "antonyms": [
+      "insincere"
+    ],
+    "category": "Values & Character"
+  },
+  "preoccupied": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/priˈɑːkjəpaɪd/",
+    "wordFamily": [
+      "preoccupy",
+      "preoccupied",
+      "preoccupation"
+    ],
+    "collocations": [
+      "preoccupied with thoughts",
+      "become preoccupied"
+    ],
+    "synonyms": [
+      "absorbed"
+    ],
+    "category": "Mind & Attention"
+  },
+  "deception": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/dɪˈsepʃən/",
+    "wordFamily": [
+      "deceive",
+      "deception",
+      "deceptive"
+    ],
+    "collocations": [
+      "fall through deception",
+      "act of deception"
+    ],
+    "synonyms": [
+      "trickery"
+    ],
+    "category": "Actions & Ethics"
+  },
+  "evident": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈevɪdənt/",
+    "wordFamily": [
+      "evidence",
+      "evident",
+      "evidently"
+    ],
+    "collocations": [
+      "become evident",
+      "clearly evident"
+    ],
+    "synonyms": [
+      "clear"
+    ],
+    "category": "Description & Perception"
+  },
+  "unclad": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ʌnˈklæd/",
+    "wordFamily": [
+      "clad",
+      "unclad"
+    ],
+    "collocations": [
+      "be unclad",
+      "unclad body"
+    ],
+    "synonyms": [
+      "unclothed"
+    ],
+    "category": "Description"
+  },
+  "hayâ": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/həˈjɑː/",
+    "collocations": [
+      "sense of hayâ",
+      "moral modesty"
+    ],
+    "category": "Values & Spiritual Life"
+  },
+  "forbidden": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/fərˈbɪdən/",
+    "wordFamily": [
+      "forbid",
+      "forbidden"
+    ],
+    "collocations": [
+      "forbidden tree",
+      "strictly forbidden"
+    ],
+    "antonyms": [
+      "permitted"
+    ],
+    "category": "Rules & Choices"
+  },
+  "regretted": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/rɪˈɡretɪd/",
+    "wordFamily": [
+      "regret",
+      "regretted",
+      "regretful"
+    ],
+    "collocations": [
+      "deeply regretted",
+      "regret an action"
+    ],
+    "category": "Feelings & Reflection"
+  },
+  "mercy": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈmɜːrsi/",
+    "wordFamily": [
+      "mercy",
+      "merciful"
+    ],
+    "collocations": [
+      "Allah’s mercy",
+      "show mercy"
+    ],
+    "synonyms": [
+      "compassion"
+    ],
+    "category": "Values & Faith"
+  },
+  "repentance": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/rɪˈpentəns/",
+    "wordFamily": [
+      "repent",
+      "repentance",
+      "repentant"
+    ],
+    "collocations": [
+      "sincere repentance",
+      "accept repentance"
+    ],
+    "category": "Spiritual Life & Values"
+  },
+  "prophethood": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈprɑːfɪthʊd/",
+    "wordFamily": [
+      "prophet",
+      "prophethood"
+    ],
+    "collocations": [
+      "receive prophethood",
+      "role of prophethood"
+    ],
+    "category": "Spiritual Life"
+  },
+  "honoured": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈɑːnərd/",
+    "wordFamily": [
+      "honour",
+      "honoured",
+      "honourable"
+    ],
+    "collocations": [
+      "honoured human",
+      "highly honoured"
+    ],
+    "synonyms": [
+      "respected"
+    ],
+    "category": "Values & Status"
+  },
+  "innocence": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈɪnəsəns/",
+    "wordFamily": [
+      "innocent",
+      "innocence"
+    ],
+    "collocations": [
+      "moral innocence",
+      "violate innocence"
+    ],
+    "category": "Values & Human Nature"
+  },
+  "cornerstone": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈkɔːrnərstoʊn/",
+    "wordFamily": [
+      "cornerstone"
+    ],
+    "collocations": [
+      "cornerstone of something",
+      "basic cornerstone"
+    ],
+    "synonyms": [
+      "foundation"
+    ],
+    "category": "Ideas & Importance"
+  },
+  "vicegerency": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/vaɪsˈdʒɪərənsi/",
+    "wordFamily": [
+      "vicegerent",
+      "vicegerency"
+    ],
+    "collocations": [
+      "human vicegerency",
+      "responsibility of vicegerency"
+    ],
+    "category": "Responsibility & Faith"
+  },
+  "humiliation": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/hjuːˌmɪliˈeɪʃən/",
+    "wordFamily": [
+      "humiliate",
+      "humiliation"
+    ],
+    "collocations": [
+      "suffer humiliation",
+      "dishonour or humiliation"
+    ],
+    "antonyms": [
+      "dignity"
+    ],
+    "category": "Feelings & Status"
+  },
+  "pilgrimage": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈpɪlɡrɪmɪdʒ/",
+    "wordFamily": [
+      "pilgrim",
+      "pilgrimage"
+    ],
+    "collocations": [
+      "perform pilgrimage",
+      "rites of pilgrimage"
+    ],
+    "category": "Spiritual Life"
+  },
+  "conflict": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈkɑːnflɪkt/",
+    "wordFamily": [
+      "conflict",
+      "conflicting"
+    ],
+    "collocations": [
+      "face conflict",
+      "moral conflict"
+    ],
+    "synonyms": [
+      "struggle"
+    ],
+    "category": "Conflict & Life"
+  },
+  "struggle": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈstrʌɡəl/",
+    "wordFamily": [
+      "struggle",
+      "struggling"
+    ],
+    "collocations": [
+      "face a struggle",
+      "struggle with evil"
+    ],
+    "category": "Challenges & Effort"
+  },
+  "guidance": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈɡaɪdəns/",
+    "wordFamily": [
+      "guide",
+      "guided",
+      "guidance"
+    ],
+    "collocations": [
+      "Allah’s guidance",
+      "follow guidance"
+    ],
+    "synonyms": [
+      "direction"
+    ],
+    "category": "Guidance & Faith"
+  },
+  "cultivate": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˈkʌltɪveɪt/",
+    "wordFamily": [
+      "cultivate",
+      "cultivation"
+    ],
+    "collocations": [
+      "cultivate land",
+      "cultivate crops"
+    ],
+    "category": "Work & Agriculture"
+  },
+  "populate": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˈpɑːpjəleɪt/",
+    "wordFamily": [
+      "populate",
+      "population"
+    ],
+    "collocations": [
+      "populate the Earth",
+      "populate a region"
+    ],
+    "category": "People & Society"
+  },
+  "blisses": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈblɪsɪz/",
+    "wordFamily": [
+      "bliss",
+      "blissful"
+    ],
+    "collocations": [
+      "moments of bliss",
+      "great blisses"
+    ],
+    "synonyms": [
+      "joys"
+    ],
+    "category": "Feelings"
+  },
+  "harmony": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈhɑːrməni/",
+    "wordFamily": [
+      "harmony",
+      "harmonious"
+    ],
+    "collocations": [
+      "family harmony",
+      "peace and harmony"
+    ],
+    "synonyms": [
+      "peace"
+    ],
+    "category": "Relationships & Values"
+  },
+  "sacrifice": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈsækrəfaɪs/",
+    "wordFamily": [
+      "sacrifice",
+      "sacrificial"
+    ],
+    "collocations": [
+      "offer a sacrifice",
+      "religious sacrifice"
+    ],
+    "category": "Spiritual Life"
+  },
+  "insincerity": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˌɪnsɪnˈserəti/",
+    "wordFamily": [
+      "sincere",
+      "insincere",
+      "insincerity"
+    ],
+    "collocations": [
+      "lack of sincerity",
+      "insincerity in an offering"
+    ],
+    "antonyms": [
+      "sincerity"
+    ],
+    "category": "Values & Character"
+  },
+  "pious": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈpaɪəs/",
+    "wordFamily": [
+      "pious",
+      "piety"
+    ],
+    "collocations": [
+      "pious character",
+      "pious person"
+    ],
+    "category": "Values & Faith"
+  },
+  "aggressive": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/əˈɡresɪv/",
+    "wordFamily": [
+      "aggression",
+      "aggressive",
+      "aggressively"
+    ],
+    "collocations": [
+      "aggressive attitude",
+      "become aggressive"
+    ],
+    "antonyms": [
+      "peaceful"
+    ],
+    "category": "Character & Conduct"
+  },
+  "potential": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/pəˈtenʃəl/",
+    "wordFamily": [
+      "potential",
+      "potentially"
+    ],
+    "collocations": [
+      "human potential",
+      "potential for good"
+    ],
+    "category": "Human Nature & Ability"
+  },
+  "moderate": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈmɑːdərət/",
+    "wordFamily": [
+      "moderate",
+      "moderation",
+      "moderately"
+    ],
+    "collocations": [
+      "moderate desires",
+      "moderate approach"
+    ],
+    "antonyms": [
+      "extreme"
+    ],
+    "category": "Values & Self-Control"
+  },
+  "disobedient": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˌdɪsəˈbiːdiənt/",
+    "wordFamily": [
+      "obey",
+      "obedient",
+      "disobedient",
+      "disobedience"
+    ],
+    "collocations": [
+      "disobedient to authority",
+      "disobedient attitude"
+    ],
+    "antonyms": [
+      "obedient"
+    ],
+    "category": "Character & Conduct"
+  },
+  "purity and compassion": {
+    "partOfSpeech": "noun phrase",
+    "pronunciation": "/ˈpjʊrəti ænd kəmˈpæʃən/",
+    "wordFamily": [
+      "pure",
+      "purity",
+      "compassion",
+      "compassionate"
+    ],
+    "collocations": [
+      "moral purity",
+      "show compassion"
+    ],
+    "category": "Values & Character"
+  },
+  "familial": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/fəˈmɪliəl/",
+    "wordFamily": [
+      "family",
+      "familial"
+    ],
+    "collocations": [
+      "familial ties",
+      "familial considerations"
+    ],
+    "category": "Family & Relationships"
+  },
+  "criminal": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈkrɪmɪnəl/",
+    "wordFamily": [
+      "crime",
+      "criminal"
+    ],
+    "collocations": [
+      "criminal act",
+      "criminal behaviour"
+    ],
+    "category": "Law & Conduct"
+  },
+  "corpse": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/kɔːrps/",
+    "wordFamily": [
+      "corpse",
+      "corpses"
+    ],
+    "collocations": [
+      "human corpse",
+      "bury a corpse"
+    ],
+    "category": "Life & Death"
+  },
+  "guilt": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ɡɪlt/",
+    "wordFamily": [
+      "guilt",
+      "guilty"
+    ],
+    "collocations": [
+      "feel guilt",
+      "burdened with guilt"
+    ],
+    "category": "Feelings & Morality"
+  },
+  "victorious": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/vɪkˈtɔːriəs/",
+    "wordFamily": [
+      "victory",
+      "victorious"
+    ],
+    "collocations": [
+      "victorious side",
+      "victorious bird"
+    ],
+    "antonyms": [
+      "defeated"
+    ],
+    "category": "Conflict & Outcome"
+  },
+  "regret": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/rɪˈɡret/",
+    "wordFamily": [
+      "regret",
+      "regretful"
+    ],
+    "collocations": [
+      "feel regret",
+      "full of regret"
+    ],
+    "category": "Feelings & Reflection"
+  },
+  "falsehood": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈfɔːlshʊd/",
+    "wordFamily": [
+      "false",
+      "falsehood"
+    ],
+    "collocations": [
+      "truth over falsehood",
+      "spread falsehood"
+    ],
+    "antonyms": [
+      "truth"
+    ],
+    "category": "Values & Truth"
+  },
+  "consequence": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈkɑːnsəkwens/",
+    "wordFamily": [
+      "consequence",
+      "consequent"
+    ],
+    "collocations": [
+      "face a consequence",
+      "consequence of a choice"
+    ],
+    "synonyms": [
+      "result"
+    ],
+    "category": "Cause & Effect"
+  },
+  "jealousy": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈdʒeləsi/",
+    "wordFamily": [
+      "jealous",
+      "jealousy"
+    ],
+    "collocations": [
+      "feel jealousy",
+      "jealousy between people"
+    ],
+    "synonyms": [
+      "envy"
+    ],
+    "category": "Feelings"
+  },
+  "righteous": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈraɪtʃəs/",
+    "wordFamily": [
+      "right",
+      "righteous",
+      "righteousness"
+    ],
+    "collocations": [
+      "righteous person",
+      "righteous conduct"
+    ],
+    "category": "Values & Faith"
+  },
+  "successor": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/səkˈsesər/",
+    "wordFamily": [
+      "succeed",
+      "successor",
+      "succession"
+    ],
+    "collocations": [
+      "appoint a successor",
+      "rightful successor"
+    ],
+    "category": "People & Leadership"
+  },
+  "scrolls": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/skroʊlz/",
+    "wordFamily": [
+      "scroll",
+      "scrolls"
+    ],
+    "collocations": [
+      "written scrolls",
+      "send down scrolls"
+    ],
+    "category": "Texts & History"
+  },
+  "miracles": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈmɪrəkəlz/",
+    "wordFamily": [
+      "miracle",
+      "miraculous"
+    ],
+    "collocations": [
+      "perform miracles",
+      "divine miracles"
+    ],
+    "category": "Belief & Faith"
+  },
+  "legacy": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈleɡəsi/",
+    "wordFamily": [
+      "legacy",
+      "legacies"
+    ],
+    "collocations": [
+      "leave a legacy",
+      "spiritual legacy"
+    ],
+    "category": "History & Influence"
+  },
+  "peace": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/piːs/",
+    "wordFamily": [
+      "peace",
+      "peaceful",
+      "peacefully"
+    ],
+    "collocations": [
+      "inner peace",
+      "live in peace"
+    ],
+    "antonyms": [
+      "conflict"
+    ],
+    "category": "Feelings & Values"
+  },
+  "mislead": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˌmɪsˈliːd/",
+    "wordFamily": [
+      "lead",
+      "mislead",
+      "misleading"
+    ],
+    "collocations": [
+      "mislead people",
+      "deliberately mislead"
+    ],
+    "synonyms": [
+      "deceive"
+    ],
+    "category": "Actions & Ethics"
+  },
+  "sincere servants": {
+    "partOfSpeech": "noun phrase",
+    "pronunciation": "/sɪnˈsɪr ˈsɜːrvənts/",
+    "wordFamily": [
+      "sincere",
+      "sincerity",
+      "servant"
+    ],
+    "collocations": [
+      "sincere servants",
+      "devoted servants"
+    ],
+    "category": "People & Faith"
+  },
+  "authority": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/əˈθɔːrəti/",
+    "wordFamily": [
+      "authority",
+      "authoritative"
+    ],
+    "collocations": [
+      "have authority",
+      "exercise authority"
+    ],
+    "synonyms": [
+      "power"
+    ],
+    "category": "Power & Influence"
+  },
+  "descendants": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/dɪˈsendənts/",
+    "wordFamily": [
+      "descend",
+      "descendant"
+    ],
+    "collocations": [
+      "future descendants",
+      "human descendants"
+    ],
+    "synonyms": [
+      "offspring"
+    ],
+    "category": "Family & Humanity"
+  },
+  "value": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/ˈvæljuː/",
+    "wordFamily": [
+      "value",
+      "valuable"
+    ],
+    "collocations": [
+      "human value",
+      "sense of value"
+    ],
+    "synonyms": [
+      "worth"
+    ],
+    "category": "Values & Identity"
+  }
+};
+const glossary: NonNullable<PageData['vocabulary']> = adamB2Pages.flatMap(page => {
+  const source = page.content ?? '';
+  const paragraphs = source.split(/\n+/).map(part => part.trim()).filter(Boolean);
+  return (page.vocabulary ?? []).map(item => {
+    const meta = glossaryMetadata[item.word];
+    if (!meta) throw new Error(`Missing Adam B2 glossary metadata for: ${item.word}`);
+    const target = item.word.toLocaleLowerCase();
+    let storyExample = paragraphs
+      .flatMap(paragraph => paragraph.split(/(?<=[.!?])\s+/))
+      .find(sentence => sentence.toLocaleLowerCase().includes(target));
+    if (item.word === 'blisses') {
+      storyExample = 'One of their greatest joys on Earth came when Adam (pbuh) and Eve witnessed the birth of their first children.';
+    }
+    if (!storyExample || !source.includes(storyExample)) {
+      throw new Error(`Missing Adam B2 source example for: ${item.word}`);
+    }
+    return {
+      ...item,
+      ...meta,
+      level: 'B2' as const,
+      chapter: page.id,
+      chapterTitle: page.title,
+      storyExample,
+    };
+  });
+});
 for(const page of adamB2Pages){page.exercises=adamB2QuickChallenges[page.id]?[adamB2QuickChallenges[page.id]]:[];if(LF[page.id])page.languageFocusExercises=LF[page.id];}
 adamB2Pages.push(
 {id:18,type:'quiz',title:'Knowledge Check',image:'',content:'Answer eight questions to check your understanding of the key ideas across Adam’s story.',exercises:adamB2KnowledgeCheckExercises},
