@@ -326,6 +326,8 @@ export const StoryPage = ({
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [speed, setSpeed] = useState(1);
+  const [audioMenu, setAudioMenu] = useState<'volume' | 'speed' | null>(null);
+  const audioControlsRef = useRef<HTMLDivElement>(null);
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
@@ -578,20 +580,28 @@ export const StoryPage = ({
     }
   };
 
-  const handleSpeedChange = () => {
-    const nextSpeeds: Record<number, number> = {
-      1: 1.25,
-      1.25: 1.5,
-      1.5: 1.75,
-      1.75: 2,
-      2: 1
-    };
-    const newSpeed = nextSpeeds[speed] || 1;
+  const setPlaybackSpeed = (newSpeed: number) => {
     if (audioRef.current) {
       audioRef.current.playbackRate = newSpeed;
-      setSpeed(newSpeed);
     }
+    setSpeed(newSpeed);
+    setAudioMenu(null);
   };
+
+  useEffect(() => {
+    const closeAudioMenus = (event: PointerEvent) => {
+      if (!audioControlsRef.current?.contains(event.target as Node)) {
+        setAudioMenu(null);
+      }
+    };
+
+    document.addEventListener('pointerdown', closeAudioMenus);
+    return () => document.removeEventListener('pointerdown', closeAudioMenus);
+  }, []);
+
+  useEffect(() => {
+    setAudioMenu(null);
+  }, [page.id]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -1047,7 +1057,7 @@ export const StoryPage = ({
               type="button"
               onClick={() => setActiveExercise(exercise)}
               className={cn(
-                'group inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[12px] font-semibold text-white shadow-lg transition-all active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:w-auto md:min-w-[172px]',
+                'group inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[12px] font-semibold text-white shadow-lg transition-all active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:min-h-14 md:w-auto md:min-w-[205px] md:px-7 md:text-[13px]',
                 quickTheme.button
               )}
             >
@@ -1281,130 +1291,223 @@ export const StoryPage = ({
 
         <div className="shrink-0 w-full sm:w-auto">
           {page.audioUrl && (
-            <div 
+            <div
+              ref={audioControlsRef}
               dir="ltr"
               className={cn(
-                "flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl border backdrop-blur-md shadow-md transition-all w-full sm:w-auto justify-between sm:justify-start",
+                "relative flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
                 collectionId === 'history'
-                  ? "bg-emerald-50/85 border-emerald-200 shadow-emerald-100/10"
+                  ? "bg-emerald-50/88 border-emerald-200/90"
                   : collectionId === 'turkish'
-                  ? "bg-sky-50/85 border-sky-250 shadow-sky-100/10"
-                  : isA2 
-                    ? "bg-amber-50/80 border-amber-200" 
-                    : "bg-white/80 border-gold/20"
+                  ? "bg-sky-50/88 border-sky-200/90"
+                  : isA2
+                    ? "bg-amber-50/88 border-amber-200/90"
+                    : "bg-white/88 border-gold/20"
               )}
             >
-              <audio 
-                ref={audioRef} 
-                src={page.audioUrl} 
+              <audio
+                ref={audioRef}
+                src={page.audioUrl}
                 onEnded={() => setIsPlaying(false)}
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
               />
-              
+
               <button
+                type="button"
                 onClick={isAudioLocked ? undefined : toggleAudio}
                 disabled={isAudioLocked}
                 className={cn(
-                  "w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all shadow-md shrink-0",
+                  "flex h-11 w-11 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12",
                   isAudioLocked
                     ? "bg-gray-400 text-white cursor-not-allowed opacity-60"
                     : collectionId === 'history'
-                    ? "bg-teal-600 text-white hover:bg-teal-700"
+                    ? "bg-teal-700 text-white hover:bg-teal-800"
                     : collectionId === 'turkish'
-                    ? "bg-sky-700 text-white hover:bg-sky-850"
-                    : isA2 ? "bg-amber-600 text-white hover:bg-amber-700" : "bg-gold text-white hover:bg-gold/80"
+                    ? "bg-sky-800 text-white hover:bg-sky-900"
+                    : isA2
+                      ? "bg-amber-700 text-white hover:bg-amber-800"
+                      : "bg-gold text-white hover:bg-gold/85"
                 )}
+                aria-label={isPlaying ? (language === 'ar' ? 'إيقاف مؤقت' : 'Pause audio') : (language === 'ar' ? 'تشغيل' : 'Play audio')}
               >
-                {isAudioLocked ? <Lock size={16} /> : (isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />)}
+                {isAudioLocked
+                  ? <Lock size={17} />
+                  : isPlaying
+                  ? <Pause size={18} />
+                  : <Play size={19} className="translate-x-[1px]" />}
               </button>
 
-              <div className="flex flex-col flex-1 sm:w-36 md:w-44 gap-1">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  disabled={isAudioLocked}
-                  className={cn(
-                    "w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-current",
-                    isAudioLocked 
-                      ? "opacity-30 cursor-not-allowed" 
-                      : collectionId === 'history'
-                      ? "text-teal-600 bg-teal-200"
-                      : collectionId === 'turkish'
-                      ? "text-sky-600 bg-sky-200"
-                      : isA2 ? "text-amber-600 bg-amber-200" : "text-gold bg-gold/20"
-                  )}
-                />
-                <div className="flex justify-between text-[10px] font-mono opacity-60">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(duration)}</span>
-                </div>
-              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 sm:gap-2.5">
+                  <span className="w-9 shrink-0 text-start font-mono text-[10px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                    {formatTime(currentTime)}
+                  </span>
 
-              <div className="flex items-center gap-1 group/vol">
-                <button 
-                  onClick={isAudioLocked ? undefined : toggleMute}
-                  disabled={isAudioLocked}
-                  className={cn(
-                    "p-2 rounded-full transition-colors shrink-0",
-                    isAudioLocked 
-                      ? "opacity-30 cursor-not-allowed" 
-                      : collectionId === 'history'
-                      ? "hover:bg-teal-100 text-teal-600"
-                      : collectionId === 'turkish'
-                      ? "hover:bg-sky-100 text-sky-600"
-                      : isA2 ? "hover:bg-amber-200/50 text-amber-600" : "hover:bg-gold/10 text-gold"
-                  )}
-                >
-                  {volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
-                </button>
-                <div className="w-0 overflow-hidden group-hover/vol:w-24 transition-all duration-300 flex items-center">
                   <input
                     type="range"
                     min="0"
-                    max="1"
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolumeChange}
+                    max={duration || 0}
+                    value={currentTime}
+                    onChange={handleSeek}
                     disabled={isAudioLocked}
+                    aria-label={language === 'ar' ? 'تقدّم الصوت' : 'Audio progress'}
                     className={cn(
-                      "w-20 h-1.5 rounded-lg appearance-none cursor-pointer accent-current",
-                      isAudioLocked 
-                        ? "opacity-30 cursor-not-allowed" 
+                      "h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full accent-current",
+                      isAudioLocked
+                        ? "cursor-not-allowed opacity-30"
                         : collectionId === 'history'
-                        ? "text-teal-600 bg-teal-200"
+                        ? "bg-teal-200 text-teal-700"
                         : collectionId === 'turkish'
-                        ? "text-sky-600 bg-sky-200"
-                        : isA2 ? "text-amber-600 bg-amber-200" : "text-gold bg-gold/20"
+                        ? "bg-sky-200 text-sky-700"
+                        : isA2
+                          ? "bg-amber-200 text-amber-700"
+                          : "bg-gold/20 text-gold"
                     )}
                   />
+
+                  <span className="w-9 shrink-0 text-end font-mono text-[10px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                    {formatTime(duration)}
+                  </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="relative shrink-0">
                 <button
-                  onClick={isAudioLocked ? undefined : handleSpeedChange}
+                  type="button"
+                  onClick={() => setAudioMenu(current => current === 'volume' ? null : 'volume')}
                   disabled={isAudioLocked}
                   className={cn(
-                    "px-2 py-0.5 text-xs font-bold rounded-lg transition-colors shrink-0",
-                    isAudioLocked 
-                      ? "opacity-30 cursor-not-allowed bg-gray-200 text-gray-500" 
+                    "flex h-9 w-9 items-center justify-center rounded-full transition-colors sm:h-10 sm:w-10",
+                    isAudioLocked
+                      ? "cursor-not-allowed opacity-30"
+                      : audioMenu === 'volume'
+                      ? collectionId === 'history'
+                        ? "bg-teal-100 text-teal-800"
+                        : collectionId === 'turkish'
+                        ? "bg-sky-100 text-sky-800"
+                        : "bg-amber-100 text-amber-800"
                       : collectionId === 'history'
-                      ? "bg-teal-100 text-teal-700 hover:bg-teal-200"
+                      ? "text-teal-700 hover:bg-teal-100"
                       : collectionId === 'turkish'
-                      ? "bg-sky-100 text-sky-700 hover:bg-sky-200"
-                      : isA2 
-                        ? "bg-amber-100/80 text-amber-700 hover:bg-amber-200" 
-                        : "bg-gold/10 text-gold hover:bg-gold/30"
+                      ? "text-sky-700 hover:bg-sky-100"
+                      : "text-amber-700 hover:bg-amber-100"
                   )}
+                  aria-label={language === 'ar' ? 'مستوى الصوت' : 'Volume'}
+                  aria-expanded={audioMenu === 'volume'}
                 >
-                  {speed}x
+                  {volume === 0 ? <VolumeX size={19} /> : <Volume2 size={19} />}
                 </button>
+
+                <AnimatePresence>
+                  {audioMenu === 'volume' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                      transition={{ duration: 0.14, ease: 'easeOut' }}
+                      className="absolute end-0 top-[calc(100%+0.55rem)] z-50 w-48 rounded-2xl border border-black/[0.07] bg-white/96 p-3.5 shadow-2xl backdrop-blur-xl"
+                    >
+                      <div className="flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={toggleMute}
+                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/[0.045] text-wood/65 transition-colors hover:bg-black/[0.08]"
+                          aria-label={volume === 0 ? (language === 'ar' ? 'إلغاء كتم الصوت' : 'Unmute') : (language === 'ar' ? 'كتم الصوت' : 'Mute')}
+                        >
+                          {volume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}
+                        </button>
+
+                        <input
+                          type="range"
+                          min="0"
+                          max="1"
+                          step="0.01"
+                          value={volume}
+                          onChange={handleVolumeChange}
+                          aria-label={language === 'ar' ? 'مستوى الصوت' : 'Volume level'}
+                          className={cn(
+                            "h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full accent-current",
+                            collectionId === 'history'
+                              ? "bg-teal-200 text-teal-700"
+                              : collectionId === 'turkish'
+                              ? "bg-sky-200 text-sky-700"
+                              : "bg-amber-200 text-amber-700"
+                          )}
+                        />
+
+                        <span className="w-9 shrink-0 text-end font-mono text-[10px] font-semibold tabular-nums text-wood/50">
+                          {Math.round(volume * 100)}%
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="relative shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setAudioMenu(current => current === 'speed' ? null : 'speed')}
+                  disabled={isAudioLocked}
+                  className={cn(
+                    "flex h-9 min-w-[46px] items-center justify-center rounded-full px-2.5 font-display text-[11px] font-semibold tabular-nums transition-colors sm:h-10 sm:min-w-[50px]",
+                    isAudioLocked
+                      ? "cursor-not-allowed bg-gray-100 text-gray-400"
+                      : audioMenu === 'speed'
+                      ? collectionId === 'history'
+                        ? "bg-teal-100 text-teal-800"
+                        : collectionId === 'turkish'
+                        ? "bg-sky-100 text-sky-800"
+                        : "bg-amber-100 text-amber-800"
+                      : collectionId === 'history'
+                      ? "bg-teal-50 text-teal-800 hover:bg-teal-100"
+                      : collectionId === 'turkish'
+                      ? "bg-sky-50 text-sky-800 hover:bg-sky-100"
+                      : "bg-amber-50 text-amber-800 hover:bg-amber-100"
+                  )}
+                  aria-label={language === 'ar' ? 'سرعة التشغيل' : 'Playback speed'}
+                  aria-expanded={audioMenu === 'speed'}
+                >
+                  {speed}×
+                </button>
+
+                <AnimatePresence>
+                  {audioMenu === 'speed' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                      transition={{ duration: 0.14, ease: 'easeOut' }}
+                      className="absolute end-0 top-[calc(100%+0.55rem)] z-50 w-28 rounded-2xl border border-black/[0.07] bg-white/96 p-1.5 shadow-2xl backdrop-blur-xl"
+                    >
+                      {[1, 1.25, 1.5, 1.75, 2].map(option => (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => setPlaybackSpeed(option)}
+                          className={cn(
+                            "flex min-h-10 w-full items-center justify-between rounded-xl px-3 font-display text-[11px] font-semibold tabular-nums transition-colors",
+                            speed === option
+                              ? collectionId === 'history'
+                                ? "bg-teal-50 text-teal-800"
+                                : collectionId === 'turkish'
+                                ? "bg-sky-50 text-sky-800"
+                                : "bg-amber-50 text-amber-800"
+                              : "text-wood/62 hover:bg-black/[0.045]"
+                          )}
+                        >
+                          <span>{option}×</span>
+                          {speed === option && <span aria-hidden="true">✓</span>}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
+          )}
+        </div>
           )}
         </div>
       </div>
