@@ -281,34 +281,1245 @@ export const abrahamA2PagesEn: PageData[] = [
   {
     id: 18,
     type: 'glossary',
-    title: 'Master Glossary - Part 1',
-    content: 'A reference list of key vocabulary from the first half of the story.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2FAbraham_a2_ch1.png?alt=media&token=5e040caa-6fbf-4bb4-840f-8fc15c0c8478',
+    title: 'Master Glossary',
+    content: 'Review all key vocabulary from the story in one place.',
+    image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385",
     vocabulary: [
-      { word: 'Messenger', definition: 'A person chosen by Allah to give His message to people.' },
-      { word: 'worship', definition: 'To show great love and respect to Allah.' },
-      { word: 'idol', definition: 'A statue or object that people worship as a god.' },
-      { word: 'Creator', definition: 'The One who made everything.' },
-      { word: 'prayer', definition: 'Speaking to Allah and asking Him for help.' },
-      { word: 'festival', definition: 'A special time for celebration.' },
-      { word: 'protect', definition: 'To keep safe from harm.' }
-    ]
-  },
-  {
-    id: 19,
-    type: 'glossary',
-    title: 'Master Glossary - Part 2',
-    content: 'A reference list of key vocabulary from the second half of the story.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385',
-    vocabulary: [
-      { word: 'catapult', definition: 'A machine for throwing things far away.' },
-      { word: 'miracle', definition: 'A wonderful event from Allah.' },
-      { word: 'journey', definition: 'Travel from one place to another.' },
-      { word: 'valley', definition: 'Low land between hills or mountains.' },
-      { word: 'desert', definition: 'A very dry place with little water.' },
-      { word: 'mission', definition: 'An important job or task.' },
-      { word: 'unique', definition: 'The only one of its kind.' }
-    ]
+      {
+            "word": "Messenger",
+            "definition": "A person chosen by Allah to give His message to people.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈmesɪndʒər/",
+            "wordFamily": [
+                  "message",
+                  "messenger"
+            ],
+            "collocations": [
+                  "great Messenger",
+                  "Messenger of Allah"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Abraham and the Idols",
+            "storyExample": "When he grew up, Allah made him His great Messenger.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "worship",
+            "definition": "To show great love and respect to Allah.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/ˈwɜːrʃɪp/",
+            "wordFamily": [
+                  "worship",
+                  "worshipper"
+            ],
+            "collocations": [
+                  "worship Allah",
+                  "worship idols"
+            ],
+            "synonyms": [
+                  "honour"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Abraham and the Idols",
+            "storyExample": "They did not worship Him.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "Mesopotamia",
+            "definition": "An ancient land between two big rivers.",
+            "partOfSpeech": "proper noun",
+            "level": "A2",
+            "pronunciation": "/ˌmesəpəˈteɪmiə/",
+            "collocations": [
+                  "ancient Mesopotamia",
+                  "Babylon in Mesopotamia"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Abraham and the Idols",
+            "storyExample": "A very long time ago, a boy was born in the kingdom of Babylon in Mesopotamia.",
+            "category": "Places & History"
+      },
+      {
+            "word": "wish",
+            "definition": "Something that a person hopes will happen.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/wɪʃ/",
+            "wordFamily": [
+                  "wish",
+                  "wishes"
+            ],
+            "collocations": [
+                  "make a wish",
+                  "wish for something"
+            ],
+            "synonyms": [
+                  "hope"
+            ],
+            "chapter": 1,
+            "chapterTitle": "Abraham and the Idols",
+            "storyExample": "They came to the house, talked to the stone gods, and made a wish.",
+            "category": "Ideas & Feelings"
+      },
+      {
+            "word": "idol",
+            "definition": "A statue or object that people worship as a god.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈaɪdəl/",
+            "wordFamily": [
+                  "idol",
+                  "idols",
+                  "idolatry"
+            ],
+            "collocations": [
+                  "stone idol",
+                  "idol maker"
+            ],
+            "chapter": 2,
+            "chapterTitle": "Abraham and His Father",
+            "storyExample": "Abraham’s father was an idol maker.",
+            "category": "Belief & Objects"
+      },
+      {
+            "word": "respect",
+            "definition": "Treating someone or something as important.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/rɪˈspekt/",
+            "wordFamily": [
+                  "respect",
+                  "respectful",
+                  "respectfully"
+            ],
+            "collocations": [
+                  "show respect",
+                  "respect someone"
+            ],
+            "synonyms": [
+                  "regard"
+            ],
+            "antonyms": [
+                  "disrespect"
+            ],
+            "chapter": 2,
+            "chapterTitle": "Abraham and His Father",
+            "storyExample": "We show love and respect to them.",
+            "category": "Values"
+      },
+      {
+            "word": "ridiculous",
+            "definition": "Very silly or not making sense.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/rɪˈdɪkjələs/",
+            "wordFamily": [
+                  "ridiculous",
+                  "ridiculously"
+            ],
+            "collocations": [
+                  "look ridiculous",
+                  "sound ridiculous"
+            ],
+            "synonyms": [
+                  "silly"
+            ],
+            "chapter": 2,
+            "chapterTitle": "Abraham and His Father",
+            "storyExample": "This made Abraham laugh; that was so ridiculous.",
+            "category": "Description"
+      },
+      {
+            "word": "presents",
+            "definition": "Things given to someone as gifts.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈprezənts/",
+            "wordFamily": [
+                  "present",
+                  "presents"
+            ],
+            "collocations": [
+                  "give presents",
+                  "receive presents"
+            ],
+            "synonyms": [
+                  "gifts"
+            ],
+            "chapter": 2,
+            "chapterTitle": "Abraham and His Father",
+            "storyExample": "We ask them for help and give them presents.",
+            "category": "Objects & Giving"
+      },
+      {
+            "word": "Creator",
+            "definition": "The One who made everything.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/kriˈeɪtər/",
+            "wordFamily": [
+                  "create",
+                  "creation",
+                  "Creator"
+            ],
+            "collocations": [
+                  "one true Creator",
+                  "Creator of everything"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Abraham Looks at the Sky",
+            "storyExample": "Abraham was in search of one true Creator.",
+            "category": "Belief & Faith"
+      },
+      {
+            "word": "search",
+            "definition": "The act of looking for something.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/sɜːrtʃ/",
+            "wordFamily": [
+                  "search",
+                  "searching"
+            ],
+            "collocations": [
+                  "in search of",
+                  "search for something"
+            ],
+            "synonyms": [
+                  "quest"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Abraham Looks at the Sky",
+            "storyExample": "Abraham was in search of one true Creator.",
+            "category": "Learning & Thinking"
+      },
+      {
+            "word": "disappeared",
+            "definition": "Went out of sight.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/ˌdɪsəˈpɪrd/",
+            "wordFamily": [
+                  "appear",
+                  "disappear",
+                  "disappeared"
+            ],
+            "collocations": [
+                  "suddenly disappeared",
+                  "set and disappear"
+            ],
+            "synonyms": [
+                  "vanished"
+            ],
+            "antonyms": [
+                  "appeared"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Abraham Looks at the Sky",
+            "storyExample": "But when it disappeared, he said, “I will not show respect to it, because it sets and disappears.”",
+            "category": "Actions & Change"
+      },
+      {
+            "word": "countryside",
+            "definition": "Land outside towns and cities.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈkʌntrisaɪd/",
+            "collocations": [
+                  "walk in the countryside",
+                  "open countryside"
+            ],
+            "chapter": 3,
+            "chapterTitle": "Abraham Looks at the Sky",
+            "storyExample": "One night, Abraham left his home and took a walk in the countryside.",
+            "category": "Places & Nature"
+      },
+      {
+            "word": "creation",
+            "definition": "Something that has been created.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/kriˈeɪʃən/",
+            "wordFamily": [
+                  "create",
+                  "creation",
+                  "Creator"
+            ],
+            "collocations": [
+                  "Allah’s creation",
+                  "a creation"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Allah Guides Abraham",
+            "storyExample": "But when it set, he got the idea that Allah is not a creation.",
+            "category": "Belief & Ideas"
+      },
+      {
+            "word": "prayer",
+            "definition": "Speaking to Allah and asking Him for help.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/prer/",
+            "wordFamily": [
+                  "pray",
+                  "prayer"
+            ],
+            "collocations": [
+                  "say a prayer",
+                  "answer a prayer"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Allah Guides Abraham",
+            "storyExample": "Allah answered his prayer and made him His Messenger.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "forehead",
+            "definition": "The part of the face above the eyes.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈfɔːrhed/",
+            "collocations": [
+                  "put your forehead down",
+                  "forehead to the ground"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Allah Guides Abraham",
+            "storyExample": "Abraham put his forehead to the ground and spoke to Allah.",
+            "category": "Body"
+      },
+      {
+            "word": "angry",
+            "definition": "Feeling strong displeasure.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈæŋɡri/",
+            "wordFamily": [
+                  "anger",
+                  "angry",
+                  "angrily"
+            ],
+            "collocations": [
+                  "get angry",
+                  "feel angry"
+            ],
+            "synonyms": [
+                  "mad"
+            ],
+            "antonyms": [
+                  "calm"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Allah Guides Abraham",
+            "storyExample": "His father got angry and said, “Are you against my gods?”",
+            "category": "Feelings"
+      },
+      {
+            "word": "heals",
+            "definition": "Makes someone healthy again.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/hiːlz/",
+            "wordFamily": [
+                  "heal",
+                  "heals",
+                  "healing"
+            ],
+            "collocations": [
+                  "heal the sick",
+                  "heals me"
+            ],
+            "synonyms": [
+                  "cures"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Abraham Calls His People",
+            "storyExample": "He heals me when I am sick.",
+            "category": "Health & Care"
+      },
+      {
+            "word": "believe",
+            "definition": "To accept that something is true.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/bɪˈliːv/",
+            "wordFamily": [
+                  "believe",
+                  "belief",
+                  "believer"
+            ],
+            "collocations": [
+                  "believe in Allah",
+                  "believe something"
+            ],
+            "synonyms": [
+                  "trust"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Abraham Calls His People",
+            "storyExample": "O people! I believe in Allah.",
+            "category": "Belief & Faith"
+      },
+      {
+            "word": "power",
+            "definition": "The ability to do something.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈpaʊər/",
+            "wordFamily": [
+                  "power",
+                  "powerful",
+                  "powerless"
+            ],
+            "collocations": [
+                  "have power",
+                  "no power"
+            ],
+            "synonyms": [
+                  "ability"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Abraham Calls His People",
+            "storyExample": "They have no power to help you.",
+            "category": "Ability & Power"
+      },
+      {
+            "word": "sick",
+            "definition": "Not healthy or feeling ill.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/sɪk/",
+            "wordFamily": [
+                  "sick",
+                  "sickness"
+            ],
+            "collocations": [
+                  "feel sick",
+                  "when I am sick"
+            ],
+            "synonyms": [
+                  "ill"
+            ],
+            "antonyms": [
+                  "healthy"
+            ],
+            "chapter": 5,
+            "chapterTitle": "Abraham Calls His People",
+            "storyExample": "He heals me when I am sick.",
+            "category": "Health & Care"
+      },
+      {
+            "word": "festival",
+            "definition": "A special time for celebration.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈfestɪvəl/",
+            "wordFamily": [
+                  "festival",
+                  "festive"
+            ],
+            "collocations": [
+                  "big festival",
+                  "festival day"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Abraham Breaks the Idols",
+            "storyExample": "There was a big festival soon.",
+            "category": "Culture & Events"
+      },
+      {
+            "word": "axe",
+            "definition": "A tool used for cutting or breaking.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/æks/",
+            "wordFamily": [
+                  "axe",
+                  "axes"
+            ],
+            "collocations": [
+                  "use an axe",
+                  "place the axe"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Abraham Breaks the Idols",
+            "storyExample": "He got an axe and waited.",
+            "category": "Objects & Tools"
+      },
+      {
+            "word": "unbroken",
+            "definition": "Not broken or damaged.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ʌnˈbroʊkən/",
+            "wordFamily": [
+                  "break",
+                  "broken",
+                  "unbroken"
+            ],
+            "collocations": [
+                  "leave unbroken",
+                  "remain unbroken"
+            ],
+            "antonyms": [
+                  "broken"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Abraham Breaks the Idols",
+            "storyExample": "He left the largest one unbroken.",
+            "category": "Description"
+      },
+      {
+            "word": "hurried",
+            "definition": "Moved or acted quickly.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/ˈhɜːrid/",
+            "wordFamily": [
+                  "hurry",
+                  "hurried",
+                  "hurriedly"
+            ],
+            "collocations": [
+                  "hurry home",
+                  "hurried back"
+            ],
+            "synonyms": [
+                  "rushed"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Abraham Breaks the Idols",
+            "storyExample": "Abraham (pbuh) placed the axe around its neck and hurried back home.",
+            "category": "Actions"
+      },
+      {
+            "word": "shocked",
+            "definition": "Very surprised and upset.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ʃɑːkt/",
+            "wordFamily": [
+                  "shock",
+                  "shocked",
+                  "shocking"
+            ],
+            "collocations": [
+                  "feel shocked",
+                  "be shocked"
+            ],
+            "synonyms": [
+                  "stunned"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The People Question Abraham",
+            "storyExample": "They were shocked because all their stone gods were in pieces.",
+            "category": "Feelings"
+      },
+      {
+            "word": "displeased",
+            "definition": "Unhappy or annoyed.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/dɪsˈpliːzd/",
+            "wordFamily": [
+                  "please",
+                  "pleased",
+                  "displeased"
+            ],
+            "collocations": [
+                  "feel displeased",
+                  "displeased with an answer"
+            ],
+            "synonyms": [
+                  "annoyed"
+            ],
+            "antonyms": [
+                  "pleased"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The People Question Abraham",
+            "storyExample": "The people were displeased with his answer.",
+            "category": "Feelings"
+      },
+      {
+            "word": "protect",
+            "definition": "To keep safe from harm.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/prəˈtekt/",
+            "wordFamily": [
+                  "protect",
+                  "protection",
+                  "protective"
+            ],
+            "collocations": [
+                  "protect someone",
+                  "protect themselves"
+            ],
+            "synonyms": [
+                  "keep safe"
+            ],
+            "antonyms": [
+                  "harm"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The People Question Abraham",
+            "storyExample": "Don’t you see that they can’t speak or see and even protect themselves?",
+            "category": "Safety & Care"
+      },
+      {
+            "word": "harm",
+            "definition": "To hurt or damage.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/hɑːrm/",
+            "wordFamily": [
+                  "harm",
+                  "harmful",
+                  "harmless"
+            ],
+            "collocations": [
+                  "harm someone",
+                  "cause harm"
+            ],
+            "synonyms": [
+                  "hurt",
+                  "damage"
+            ],
+            "antonyms": [
+                  "protect"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The People Question Abraham",
+            "storyExample": "Did you harm our gods?",
+            "category": "Safety & Actions"
+      },
+      {
+            "word": "arrogant",
+            "definition": "Thinking you are better than other people.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈærəɡənt/",
+            "wordFamily": [
+                  "arrogant",
+                  "arrogance",
+                  "arrogantly"
+            ],
+            "collocations": [
+                  "too arrogant",
+                  "arrogant person"
+            ],
+            "synonyms": [
+                  "proud"
+            ],
+            "antonyms": [
+                  "humble"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Abraham Is Thrown into the Fire",
+            "storyExample": "But they were too arrogant to accept their mistake.",
+            "category": "Character & Values"
+      },
+      {
+            "word": "catapult",
+            "definition": "A machine for throwing things far away.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈkætəpʌlt/",
+            "wordFamily": [
+                  "catapult",
+                  "catapults"
+            ],
+            "collocations": [
+                  "use a catapult",
+                  "place on a catapult"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Abraham Is Thrown into the Fire",
+            "storyExample": "They placed him on a catapult.",
+            "category": "Objects & Tools"
+      },
+      {
+            "word": "flames",
+            "definition": "The hot, bright part of a fire.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/fleɪmz/",
+            "wordFamily": [
+                  "flame",
+                  "flames"
+            ],
+            "collocations": [
+                  "huge flames",
+                  "over the flames"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Abraham Is Thrown into the Fire",
+            "storyExample": "Birds could not fly over the flames.",
+            "category": "World & Nature"
+      },
+      {
+            "word": "dangerous",
+            "definition": "Able to cause harm.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈdeɪndʒərəs/",
+            "wordFamily": [
+                  "danger",
+                  "dangerous",
+                  "dangerously"
+            ],
+            "collocations": [
+                  "dangerous fire",
+                  "very dangerous"
+            ],
+            "synonyms": [
+                  "unsafe"
+            ],
+            "antonyms": [
+                  "safe"
+            ],
+            "chapter": 8,
+            "chapterTitle": "Abraham Is Thrown into the Fire",
+            "storyExample": "The fire was so huge that it was dangerous to go near it.",
+            "category": "Safety & Description"
+      },
+      {
+            "word": "miracle",
+            "definition": "A wonderful event from Allah.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈmɪrəkəl/",
+            "wordFamily": [
+                  "miracle",
+                  "miraculous"
+            ],
+            "collocations": [
+                  "a miracle from Allah",
+                  "see a miracle"
+            ],
+            "chapter": 9,
+            "chapterTitle": "Allah Saves Abraham",
+            "storyExample": "The miracle amazed the people, but they did not change their minds.",
+            "category": "Belief & Faith"
+      },
+      {
+            "word": "amazed",
+            "definition": "Very surprised and full of wonder.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/əˈmeɪzd/",
+            "wordFamily": [
+                  "amaze",
+                  "amazed",
+                  "amazing"
+            ],
+            "collocations": [
+                  "be amazed",
+                  "amazed the people"
+            ],
+            "synonyms": [
+                  "astonished"
+            ],
+            "chapter": 9,
+            "chapterTitle": "Allah Saves Abraham",
+            "storyExample": "The miracle amazed the people, but they did not change their minds.",
+            "category": "Feelings"
+      },
+      {
+            "word": "harmed",
+            "definition": "Hurt or damaged.",
+            "partOfSpeech": "verb",
+            "level": "A2",
+            "pronunciation": "/hɑːrmd/",
+            "wordFamily": [
+                  "harm",
+                  "harmed",
+                  "harmful",
+                  "harmless"
+            ],
+            "collocations": [
+                  "be harmed",
+                  "not harmed at all"
+            ],
+            "synonyms": [
+                  "hurt",
+                  "damaged"
+            ],
+            "antonyms": [
+                  "protected"
+            ],
+            "chapter": 9,
+            "chapterTitle": "Allah Saves Abraham",
+            "storyExample": "People were shocked to see that Abraham (pbuh) was not harmed at all.",
+            "category": "Safety & Actions"
+      },
+      {
+            "word": "cool",
+            "definition": "Not hot; a little cold.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/kuːl/",
+            "wordFamily": [
+                  "cool",
+                  "cooler",
+                  "cooling"
+            ],
+            "collocations": [
+                  "become cool",
+                  "cool and safe"
+            ],
+            "antonyms": [
+                  "hot"
+            ],
+            "chapter": 9,
+            "chapterTitle": "Allah Saves Abraham",
+            "storyExample": "Allah told the fire to be cool for Abraham (pbuh).",
+            "category": "Description"
+      },
+      {
+            "word": "slaves",
+            "definition": "People whose freedom has been taken away.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/sleɪvz/",
+            "wordFamily": [
+                  "slave",
+                  "slaves",
+                  "slavery"
+            ],
+            "collocations": [
+                  "two slaves",
+                  "free a slave"
+            ],
+            "chapter": 10,
+            "chapterTitle": "Abraham and Nimrod",
+            "storyExample": "He ordered his guards to bring two slaves.",
+            "category": "People & Society"
+      },
+      {
+            "word": "ordinary",
+            "definition": "Normal; not special.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈɔːrdəneri/",
+            "wordFamily": [
+                  "ordinary",
+                  "ordinarily"
+            ],
+            "collocations": [
+                  "ordinary person",
+                  "ordinary life"
+            ],
+            "synonyms": [
+                  "normal"
+            ],
+            "antonyms": [
+                  "special"
+            ],
+            "chapter": 10,
+            "chapterTitle": "Abraham and Nimrod",
+            "storyExample": "He thought Abraham was not an ordinary person.",
+            "category": "Description"
+      },
+      {
+            "word": "guards",
+            "definition": "People who protect a person or place.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ɡɑːrdz/",
+            "wordFamily": [
+                  "guard",
+                  "guards",
+                  "guarded"
+            ],
+            "collocations": [
+                  "security guards",
+                  "guards protect"
+            ],
+            "synonyms": [
+                  "protectors"
+            ],
+            "chapter": 10,
+            "chapterTitle": "Abraham and Nimrod",
+            "storyExample": "He ordered his guards to bring two slaves.",
+            "category": "People & Roles"
+      },
+      {
+            "word": "east",
+            "definition": "The direction where the sun rises.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/iːst/",
+            "wordFamily": [
+                  "east",
+                  "eastern"
+            ],
+            "collocations": [
+                  "in the east",
+                  "rise in the east"
+            ],
+            "antonyms": [
+                  "west"
+            ],
+            "chapter": 10,
+            "chapterTitle": "Abraham and Nimrod",
+            "storyExample": "Allah makes the sun rise in the east.",
+            "category": "Places & Direction"
+      },
+      {
+            "word": "journey",
+            "definition": "Travel from one place to another.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈdʒɜːrni/",
+            "wordFamily": [
+                  "journey",
+                  "journeys"
+            ],
+            "collocations": [
+                  "begin a journey",
+                  "long journey"
+            ],
+            "synonyms": [
+                  "trip"
+            ],
+            "chapter": 11,
+            "chapterTitle": "Abraham Leaves Babylon",
+            "storyExample": "Abraham (pbuh) began his journey.",
+            "category": "Travel & Places"
+      },
+      {
+            "word": "valley",
+            "definition": "Low land between hills or mountains.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈvæli/",
+            "wordFamily": [
+                  "valley",
+                  "valleys"
+            ],
+            "collocations": [
+                  "quiet valley",
+                  "valley between hills"
+            ],
+            "chapter": 11,
+            "chapterTitle": "Abraham Leaves Babylon",
+            "storyExample": "Finally, they arrived at a quiet valley near two small hills, Safa and Marwah.",
+            "category": "Places & Nature"
+      },
+      {
+            "word": "tiring",
+            "definition": "Making you feel very tired.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈtaɪərɪŋ/",
+            "wordFamily": [
+                  "tire",
+                  "tired",
+                  "tiring"
+            ],
+            "collocations": [
+                  "tiring journey",
+                  "very tiring"
+            ],
+            "synonyms": [
+                  "exhausting"
+            ],
+            "antonyms": [
+                  "restful"
+            ],
+            "chapter": 11,
+            "chapterTitle": "Abraham Leaves Babylon",
+            "storyExample": "It was a long, hot, and tiring journey.",
+            "category": "Feelings & Description"
+      },
+      {
+            "word": "message",
+            "definition": "Important information given to someone.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈmesɪdʒ/",
+            "wordFamily": [
+                  "message",
+                  "messenger"
+            ],
+            "collocations": [
+                  "Allah’s message",
+                  "tell a message"
+            ],
+            "chapter": 11,
+            "chapterTitle": "Abraham Leaves Babylon",
+            "storyExample": "He decided to leave Babylon and travel to other lands to tell people about Allah’s message.",
+            "category": "Communication & Faith"
+      },
+      {
+            "word": "blessings",
+            "definition": "Good things and help from Allah.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈblesɪŋz/",
+            "wordFamily": [
+                  "bless",
+                  "blessing",
+                  "blessings"
+            ],
+            "collocations": [
+                  "give blessings",
+                  "Allah’s blessings"
+            ],
+            "synonyms": [
+                  "gifts"
+            ],
+            "chapter": 12,
+            "chapterTitle": "Hagar and Ishmael in the Valley",
+            "storyExample": "He asked Allah to give them blessings, so they could thank Him.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "fearlessly",
+            "definition": "In a brave way, without fear.",
+            "partOfSpeech": "adverb",
+            "level": "A2",
+            "pronunciation": "/ˈfɪrləsli/",
+            "wordFamily": [
+                  "fear",
+                  "fearless",
+                  "fearlessly"
+            ],
+            "collocations": [
+                  "act fearlessly",
+                  "think fearlessly"
+            ],
+            "synonyms": [
+                  "bravely"
+            ],
+            "antonyms": [
+                  "fearfully"
+            ],
+            "chapter": 12,
+            "chapterTitle": "Hagar and Ishmael in the Valley",
+            "storyExample": "She thought fearlessly, “Allah will never let us die; He will surely protect us.”",
+            "category": "Character & Values"
+      },
+      {
+            "word": "useless",
+            "definition": "Not useful or helpful.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈjuːsləs/",
+            "wordFamily": [
+                  "use",
+                  "useful",
+                  "useless"
+            ],
+            "collocations": [
+                  "be useless",
+                  "completely useless"
+            ],
+            "synonyms": [
+                  "unhelpful"
+            ],
+            "antonyms": [
+                  "useful"
+            ],
+            "chapter": 12,
+            "chapterTitle": "Hagar and Ishmael in the Valley",
+            "storyExample": "But it was useless.",
+            "category": "Description"
+      },
+      {
+            "word": "plan",
+            "definition": "An idea about what to do.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/plæn/",
+            "wordFamily": [
+                  "plan",
+                  "planned",
+                  "planner"
+            ],
+            "collocations": [
+                  "make a plan",
+                  "Allah’s plan"
+            ],
+            "chapter": 12,
+            "chapterTitle": "Hagar and Ishmael in the Valley",
+            "storyExample": "Hagar knew that this was part of Allah's plan.",
+            "category": "Thinking & Decisions"
+      },
+      {
+            "word": "desert",
+            "definition": "A very dry place with little water.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈdezərt/",
+            "wordFamily": [
+                  "desert",
+                  "deserts"
+            ],
+            "collocations": [
+                  "in the desert",
+                  "desert land"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Zamzam Water",
+            "storyExample": "Hagar was running in the desert and Ishmael was crying for water.",
+            "category": "Places & Nature"
+      },
+      {
+            "word": "gift",
+            "definition": "Something special given to someone.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ɡɪft/",
+            "wordFamily": [
+                  "gift",
+                  "gifts"
+            ],
+            "collocations": [
+                  "give a gift",
+                  "gift from Allah"
+            ],
+            "synonyms": [
+                  "present"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Zamzam Water",
+            "storyExample": "The water is special because it was a gift from Allah in the middle of the desert.",
+            "category": "Objects & Giving"
+      },
+      {
+            "word": "ground",
+            "definition": "The solid surface of the earth.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ɡraʊnd/",
+            "collocations": [
+                  "on the ground",
+                  "out of the ground"
+            ],
+            "synonyms": [
+                  "earth"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Zamzam Water",
+            "storyExample": "Suddenly water came out of the ground under Ishmael’s feet.",
+            "category": "World & Nature"
+      },
+      {
+            "word": "famous",
+            "definition": "Known by many people.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈfeɪməs/",
+            "wordFamily": [
+                  "fame",
+                  "famous"
+            ],
+            "collocations": [
+                  "become famous",
+                  "very famous"
+            ],
+            "synonyms": [
+                  "well-known"
+            ],
+            "antonyms": [
+                  "unknown"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Zamzam Water",
+            "storyExample": "Later, this water became very famous.",
+            "category": "Description"
+      },
+      {
+            "word": "mission",
+            "definition": "An important job or task.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈmɪʃən/",
+            "wordFamily": [
+                  "mission",
+                  "missions"
+            ],
+            "collocations": [
+                  "important mission",
+                  "complete a mission"
+            ],
+            "synonyms": [
+                  "task"
+            ],
+            "chapter": 14,
+            "chapterTitle": "The Ka'ba and Abraham's Message",
+            "storyExample": "After Abraham (pbuh) built the Sacred Ka’ba, his mission was over.",
+            "category": "Purpose & Responsibility"
+      },
+      {
+            "word": "unique",
+            "definition": "The only one of its kind.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/juˈniːk/",
+            "wordFamily": [
+                  "unique",
+                  "uniquely"
+            ],
+            "collocations": [
+                  "truly unique",
+                  "unique in every way"
+            ],
+            "synonyms": [
+                  "special"
+            ],
+            "chapter": 14,
+            "chapterTitle": "The Ka'ba and Abraham's Message",
+            "storyExample": "Allah is unique in every way.",
+            "category": "Description & Faith"
+      },
+      {
+            "word": "partner",
+            "definition": "Someone who shares a task or power.",
+            "partOfSpeech": "noun",
+            "level": "A2",
+            "pronunciation": "/ˈpɑːrtnər/",
+            "wordFamily": [
+                  "partner",
+                  "partnership"
+            ],
+            "collocations": [
+                  "have a partner",
+                  "no partner"
+            ],
+            "chapter": 14,
+            "chapterTitle": "The Ka'ba and Abraham's Message",
+            "storyExample": "He has no partner, rival or helper.",
+            "category": "Relationships & Faith"
+      },
+      {
+            "word": "holy",
+            "definition": "Special and connected with religion.",
+            "partOfSpeech": "adjective",
+            "level": "A2",
+            "pronunciation": "/ˈhoʊli/",
+            "wordFamily": [
+                  "holy",
+                  "holiness"
+            ],
+            "collocations": [
+                  "holy place",
+                  "holy building"
+            ],
+            "synonyms": [
+                  "sacred"
+            ],
+            "chapter": 14,
+            "chapterTitle": "The Ka'ba and Abraham's Message",
+            "storyExample": "It was the first holy place on Earth, but it was lost after a long time.",
+            "category": "Spiritual Life"
+      }
+]
   },
   {
     id: 20,
