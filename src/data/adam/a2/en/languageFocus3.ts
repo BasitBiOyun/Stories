@@ -131,7 +131,7 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
 
 export const adamA2LanguageReviewExercises: Exercise[] = [
   {
-    id: 'adam-a2-language-review-1-plan-result', type: 'matching', title: 'Plans, Sequence and Result', instructions: 'Match each Chapter 1 pattern with what it communicates.', question: 'How does the opening talk about future plans, order and results?',
+    id: 'adam-a2-language-review-1-plan-result', type: 'matching', title: 'Plans and Order', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern tell us?',
     matchingPairs: [
       { left: 'was going to create', right: 'a plan seen from the past' },
       { left: 'After that', right: 'the next event in a sequence' },
@@ -142,17 +142,17 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     explanation: 'Chapter 1 combines future-in-the-past language with simple linkers for sequence, reason and result.', feedback: { correct: 'Good. You distinguished four different language jobs.', incorrect: 'Ask whether each expression shows a plan, order, reason or result.' },
   },
   {
-    id: 'adam-a2-language-review-2-ability', type: 'multiple-choice', title: 'Ability in the Story', instructions: 'Choose the sentence that directly expresses ability.', question: 'Which Chapter 2 sentence uses could to say what Adam was able to do?',
+    id: 'adam-a2-language-review-2-ability', type: 'multiple-choice', title: 'Ability in the Story', instructions: 'Choose the sentence with could.', question: 'Which sentence says what Adam could do?',
     options: ['Adam could learn and understand', 'Allah taught him to think', 'He was wiser than the angels', 'Iblis thought Adam was unimportant'], correctAnswer: 0,
     explanation: '“Could + verb” expresses ability. The other choices show teaching, comparison and opinion.', feedback: { correct: 'Correct. “Could learn and understand” directly expresses ability.', incorrect: 'Look for could + verb.' },
   },
   {
-    id: 'adam-a2-language-review-3-value-comparison-reason', type: 'fill-blanks', title: 'Comparison and Reason', instructions: 'Complete the sentence with the simple reason linker used throughout the story.', question: 'Which word introduces the reason useful knowledge matters?',
+    id: 'adam-a2-language-review-3-value-comparison-reason', type: 'fill-blanks', title: 'Comparison and Reason', instructions: 'Complete the sentence with one word.', question: 'Which word gives the reason?',
     fillBlanksText: 'Useful knowledge makes people great [blank] it helps them do good and stop bad.', correctAnswer: 'because',
     explanation: '“Because” connects an idea with its reason. Chapter 3 also uses comparative language such as better than and more valuable than.', feedback: { correct: 'Correct. “Because” introduces the reason.', incorrect: 'The second part explains why the first part is true.' },
   },
   {
-    id: 'adam-a2-language-review-4-wants-warnings-change', type: 'drag-drop', title: 'Intention, Warning, Prohibition and Change', instructions: 'Place each Chapter 4 expression in the correct language-function group.', question: 'Can you sort the four patterns by what they do?',
+    id: 'adam-a2-language-review-4-wants-warnings-change', type: 'drag-drop', title: 'Plans, Warnings and Change', instructions: 'Put each expression in the right group.', question: 'Where does each expression go?',
     dragDropGroups: [
       { group: 'Intention', items: ['wanted Adam to lose Allah’s love'] },
       { group: 'Warning', items: ['told Adam to be careful'] },
@@ -168,7 +168,7 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     explanation: 'Chapter 4 uses want + person + to for intention, tell for warning, tell + person + not to for prohibition, and started to for the beginning of a new state.', feedback: { correct: 'Correct. You sorted four different communicative functions.', incorrect: 'Look at wanted, told, not to, and started to.' },
   },
   {
-    id: 'adam-a2-language-review-5-condition-result', type: 'multiple-choice', title: 'Condition and Result', instructions: 'Choose the sentence that connects a condition with a future result.', question: 'Which Chapter 5 sentence uses the if + will pattern?',
+    id: 'adam-a2-language-review-5-condition-result', type: 'multiple-choice', title: 'Condition and Result', instructions: 'Choose the correct if sentence.', question: 'Which sentence uses if and will correctly?',
     options: ['If you eat from that tree, you will never die', 'They learned from their mistake', 'They decided never to repeat it', 'However, Iblis took an opposite direction'], correctAnswer: 0,
     explanation: 'The first clause gives the condition with if; the second gives the promised future result with will.', feedback: { correct: 'Correct. You identified the if + will pattern.', incorrect: 'Find the sentence with both if and will.' },
   },
@@ -178,7 +178,7 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     explanation: '“Were going to + verb” describes a planned future action from a past viewpoint.', feedback: { correct: 'Correct. “Were going to” completes the plan.', incorrect: 'The complete pattern is were going to + verb.' },
   },
   {
-    id: 'adam-a2-language-review-7-teaching-warning-time', type: 'sequencing', title: 'Teaching and Narrative Time', instructions: 'Put the Chapter 7 ideas into a natural story sequence.', question: 'How do time expressions and teaching language help organise a short narrative?',
+    id: 'adam-a2-language-review-7-teaching-warning-time', type: 'sequencing', title: 'Story Order', instructions: 'Put the ideas in a clear story order.', question: 'Which idea comes first, next and last?',
     sequencingItems: [
       { id: '1', text: 'Adam and Eve lived on Earth for many years.' },
       { id: '2', text: 'Then Allah made Adam His first Messenger.' },
@@ -188,7 +188,7 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     correctAnswer: ['1', '2', '3', '4'], explanation: 'Time signals such as “for many years” and “then” organise events, while started teaching and warning language describes guidance.', feedback: { correct: 'Correct. You rebuilt the sequence using time and teaching language.', incorrect: 'Start with life on Earth, then the new role, then teaching and guidance.' },
   },
   {
-    id: 'adam-a2-language-review-8-role-quality-obligation', type: 'matching', title: 'Roles, Quality and Obligation', instructions: 'Match each Chapter 8 pattern with what it expresses.', question: 'How does the chapter describe jobs, quality and what people needed to do?',
+    id: 'adam-a2-language-review-8-role-quality-obligation', type: 'matching', title: 'Jobs, Quality and Need', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern tell us?',
     matchingPairs: [
       { left: 'Habil became a shepherd', right: 'change into a role or job' },
       { left: 'Qabil was a farmer', right: 'past role or state' },
@@ -199,11 +199,11 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     explanation: 'Chapter 8 uses role language, superlatives and past obligation to describe the brothers and their choices.', feedback: { correct: 'Good. You distinguished role, state, quality and obligation.', incorrect: 'Focus on became, was, best/healthiest and had to.' },
   },
   {
-    id: 'adam-a2-language-review-9-intention-refusal', type: 'true-false', title: 'Future Refusal', instructions: 'Decide whether the statement about Chapter 9 language is true or false.', question: '“I won’t fight back” uses won’t to express a future refusal or negative intention.', correctAnswer: true,
+    id: 'adam-a2-language-review-9-intention-refusal', type: 'true-false', title: 'Future Refusal', instructions: 'Read the sentence and choose true or false.', question: '“I won’t fight back” talks about a future action.', correctAnswer: true,
     explanation: '“Won’t + verb” makes the future negative and can show a clear refusal. Chapter 9 also uses started to for changing reactions and should for uncertainty about the right action.', feedback: { correct: 'Correct. Won’t expresses a negative future choice here.', incorrect: 'Look at the pattern won’t + verb and what the speaker refuses to do.' },
   },
   {
-    id: 'adam-a2-language-review-10-transfer', type: 'reflection', title: 'Use the Story’s Advice Language', instructions: 'Use four language patterns from the final chapters to write a short A2 message for daily life.', question: 'Can you give advice, describe a past responsibility, show change and explain a positive result?', correctAnswer: null,
+    id: 'adam-a2-language-review-10-transfer', type: 'reflection', title: 'Use the Story’s Advice Language', instructions: 'Write four short sentences for daily life.', question: 'Can you use the story language in your own sentences?', correctAnswer: null,
     explanation: 'This final Language Review task transfers the book’s grammar and functions into meaningful language of your own.', feedback: { correct: 'Use all four starters and keep each sentence clear and meaningful.', incorrect: '' },
     discussionPrompts: [
       { question: 'Sentence 1 — “We should ...”', mode: 'Individual' },
