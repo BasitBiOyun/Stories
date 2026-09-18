@@ -114,6 +114,192 @@ const reorderLearningFlow = (
   return output;
 };
 
+const preparedStoryContext = (
+  page: PageData,
+  word: string,
+  preferred?: string,
+): string | undefined => {
+  if (preferred?.trim()) return preferred.trim();
+
+  const source = (page.content ?? '')
+    .replace(/\[[^\]]+\]/g, ' ')
+    .replace(/[*_#>`]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!source) return undefined;
+
+  const lowerSource = source.toLocaleLowerCase();
+  const lowerWord = word.toLocaleLowerCase();
+  const wordIndex = lowerSource.indexOf(lowerWord);
+  if (wordIndex < 0) return undefined;
+
+  const sentenceStart = Math.max(
+    source.lastIndexOf('.', wordIndex - 1),
+    source.lastIndexOf('!', wordIndex - 1),
+    source.lastIndexOf('?', wordIndex - 1),
+    source.lastIndexOf('؟', wordIndex - 1),
+  ) + 1;
+
+  const possibleEnds = ['.', '!', '?', '؟']
+    .map(mark => source.indexOf(mark, wordIndex + word.length))
+    .filter(index => index >= 0);
+  const sentenceEnd = possibleEnds.length ? Math.min(...possibleEnds) + 1 : source.length;
+  const sentence = source.slice(sentenceStart, sentenceEnd).trim();
+
+  return sentence.length > 240 ? `${sentence.slice(0, 237).trim()}…` : sentence;
+};
+
+const pickPreparedTargets = (
+  english: BookData,
+  arabic: BookData,
+): {
+  english: NonNullable<PageData['vocabularyPairs']>;
+  arabic: NonNullable<PageData['vocabularyPairs']>;
+} => {
+  const targetCount = getLearningLevelPolicy(english.level).vocabularyCount;
+  const paired: Array<{
+    english: NonNullable<PageData['vocabularyPairs']>[number];
+    arabic: NonNullable<PageData['vocabularyPairs']>[number];
+  }> = [];
+
+  english.pages
+    .filter(page => page.type === 'story')
+    .forEach(englishPage => {
+      const arabicPage = arabic.pages.find(page => page.type === 'story' && page.id === englishPage.id);
+      if (!arabicPage) return;
+
+      (englishPage.vocabulary ?? []).forEach((englishEntry, index) => {
+        const arabicEntry = arabicPage.vocabulary?.[index];
+        if (!arabicEntry?.word?.trim() || !arabicEntry.definition?.trim()) return;
+        if (!englishEntry.word?.trim() || !englishEntry.definition?.trim()) return;
+
+        paired.push({
+          english: {
+            word: englishEntry.word,
+            meaning: englishEntry.definition,
+            context: preparedStoryContext(
+              englishPage,
+              englishEntry.word,
+              englishEntry.storyExample ?? englishEntry.example,
+            ),
+            chapter: englishPage.id,
+            chapterTitle: englishPage.title,
+            partOfSpeech: englishEntry.partOfSpeech,
+          },
+          arabic: {
+            word: arabicEntry.word,
+            meaning: arabicEntry.definition,
+            context: preparedStoryContext(
+              arabicPage,
+              arabicEntry.word,
+              arabicEntry.storyExample ?? arabicEntry.example,
+            ),
+            chapter: arabicPage.id,
+            chapterTitle: arabicPage.title,
+            partOfSpeech: arabicEntry.partOfSpeech,
+          },
+        });
+      });
+    });
+
+  if (paired.length < targetCount) {
+    throw new Error(
+      `[Prepared Book Finalization] ${english.id} ${english.level} needs ${targetCount} paired target words; found ${paired.length}.`,
+    );
+  }
+
+  const selected = Array.from({ length: targetCount }, (_, index) => {
+    const sourceIndex = targetCount <= 1
+      ? 0
+      : Math.round(index * (paired.length - 1) / (targetCount - 1));
+    return paired[sourceIndex];
+  });
+
+  return {
+    english: selected.map(pair => pair.english),
+    arabic: selected.map(pair => pair.arabic),
+  };
+};
+
+const reorderPreparedVocabularyFlow = (pages: PageData[]): PageData[] => {
+  const vocabulary = pages.find(page => page.type === 'vocabulary-match');
+  const glossaries = pages.filter(page => page.type === 'glossary');
+
+  if (!vocabulary || !glossaries.length) return pages;
+
+  const roleIds = new Set([vocabulary.id, ...glossaries.map(page => page.id)]);
+  const positions = pages
+    .map((page, index) => roleIds.has(page.id) ? index : -1)
+    .filter(index => index >= 0);
+  const ordered = [...glossaries, vocabulary];
+
+  if (positions.length !== ordered.length) {
+    throw new Error('[Prepared Book Finalization] Vocabulary/glossary flow cannot be reordered safely.');
+  }
+
+  const output = [...pages];
+  positions.forEach((position, index) => {
+    output[position] = ordered[index];
+  });
+  return output;
+};
+
+const finalizePreparedLanguage = (
+  book: BookData,
+  vocabularyPairs: NonNullable<PageData['vocabularyPairs']>,
+  language: Language,
+): BookData => {
+  const policy = getLearningLevelPolicy(book.level);
+  const enriched = book.pages.map(page => page.type === 'vocabulary-match'
+    ? {
+        ...page,
+        title: language === 'ar' ? 'تحدي المفردات' : `${book.level} Vocabulary Challenge`,
+        content: language === 'ar'
+          ? `تدرّب على ${policy.vocabularyCount} كلمة أو عبارة مستهدفة عبر المطابقة والسياق والاسترجاع.`
+          : `Practise ${policy.vocabularyCount} target words through matching, context and recall.`,
+        vocabularyPairs,
+      }
+    : page);
+
+  return {
+    ...book,
+    pages: reorderPreparedVocabularyFlow(enriched),
+  };
+};
+
+/**
+ * Prepared books keep their reviewed/manual learning content. This lightweight
+ * UI finalizer only normalizes the vocabulary study flow and enriches the
+ * existing Vocabulary Challenge from the reviewed story Word Notes.
+ */
+export const finalizePreparedBookPairForUi = (pair: BookPair): BookPair => {
+  if (pair.en.level !== pair.ar.level) {
+    throw new Error(
+      `[Prepared Book Finalization] EN/AR levels differ: ${pair.en.level} vs ${pair.ar.level}.`,
+    );
+  }
+
+  const englishGlossaries = pair.en.pages.filter(page => page.type === 'glossary').length;
+  const arabicGlossaries = pair.ar.pages.filter(page => page.type === 'glossary').length;
+  const englishVocabularyPages = pair.en.pages.filter(page => page.type === 'vocabulary-match').length;
+  const arabicVocabularyPages = pair.ar.pages.filter(page => page.type === 'vocabulary-match').length;
+
+  if (englishGlossaries !== arabicGlossaries || englishVocabularyPages !== arabicVocabularyPages) {
+    throw new Error(
+      `[Prepared Book Finalization] EN/AR vocabulary page roles differ for ${pair.en.id} ${pair.en.level}.`,
+    );
+  }
+
+  if (!englishVocabularyPages) return pair;
+
+  const targets = pickPreparedTargets(pair.en, pair.ar);
+  return {
+    en: finalizePreparedLanguage(pair.en, targets.english, 'en'),
+    ar: finalizePreparedLanguage(pair.ar, targets.arabic, 'ar'),
+  };
+};
+
 /**
  * Authoritative UI finalization for every registered A2/B1/B2 book.
  * Book modules may prepare/lock chapter data, but one Learning System owns all
