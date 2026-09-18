@@ -1,11 +1,10 @@
 import type { BookData, PageData } from '../../../types';
-import { abrahamB2CanonicalVocabulary, abrahamB2HotspotCoords, abrahamB2Pages } from './en/pages';
+import { abrahamB2Pages } from './en/pages';
 import { abrahamB2PagesAr } from './ar/pages';
 import { abrahamB2TeacherGuideEn, abrahamB2TeacherGuideMetadata } from './en/teacherGuide';
 import { abrahamB2TeacherGuideAr, abrahamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
 import { abrahamB2SelfStudyGuideEn } from './en/selfStudyGuide';
 import { abrahamB2SelfStudyGuideAr } from './ar/selfStudyGuide';
-import { findHighlightSurface } from '../../../lib/highlightTextMatch';
 
 const ABRAHAM_B2_ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
   'al-maqam',
@@ -32,31 +31,7 @@ const buildEnglishPages = (): PageData[] => {
   ));
 };
 
-const abrahamB2PagesArResolved = abrahamB2PagesAr.map(page => {
-  if (page.id < 1 || page.id > 35) return page;
 
-  const seeds = abrahamB2CanonicalVocabulary[page.id] ?? [];
-  const vocabulary = seeds.flatMap(([, arNeedle, , arDefinition]) => {
-    const word = findHighlightSurface(page.content ?? '', arNeedle, 'ar');
-    return word ? [{ word, definition: arDefinition }] : [];
-  });
-
-  if (vocabulary.length !== seeds.length) {
-    console.warn(`[Abraham B2 AR] Chapter ${page.id} resolved ${vocabulary.length}/${seeds.length} canonical vocabulary pairs with shared matcher.`);
-  }
-
-  const coordinates = abrahamB2HotspotCoords(page.id);
-  return {
-    ...page,
-    vocabulary,
-    hotspots: vocabulary.slice(0, 2).map((item, index) => ({
-      id: `ab-b2-runtime-hs-${page.id}-${index + 1}`,
-      ...coordinates[index],
-      title: item.word,
-      description: item.definition,
-    })),
-  };
-});
 
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
@@ -74,7 +49,7 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم (عليه السلام) (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesArResolved,
+  pages: abrahamB2PagesAr,
   teacherGuide: abrahamB2TeacherGuideAr,
   teacherGuideMetadata: abrahamB2TeacherGuideMetadataAr,
   selfStudyGuide: abrahamB2SelfStudyGuideAr,
