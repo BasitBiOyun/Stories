@@ -295,19 +295,34 @@ const pickPreparedTargets = (
 };
 
 const reorderPreparedLearningFlow = (pages: PageData[]): PageData[] => {
-  const vocabulary = pages.find(page => page.type === 'vocabulary-match');
+  const knowledge = pages.filter(page => page.type === 'quiz');
   const glossaries = pages.filter(page => page.type === 'glossary');
+  const vocabulary = pages.filter(page => page.type === 'vocabulary-match');
+  const review = pages.filter(page => page.type === 'exercises');
+  const finalChallenge = pages.filter(page => page.type === 'final-challenge');
 
-  if (!vocabulary || !glossaries.length) return pages;
+  if (!knowledge.length || !glossaries.length || !vocabulary.length || !review.length || !finalChallenge.length) {
+    throw new Error(
+      `[Prepared Book Finalization] Learning flow is incomplete: knowledge=${knowledge.length}, glossary=${glossaries.length}, vocabulary=${vocabulary.length}, review=${review.length}, final=${finalChallenge.length}.`,
+    );
+  }
 
-  const roleIds = new Set([vocabulary.id, ...glossaries.map(page => page.id)]);
+  const ordered = [
+    ...knowledge,
+    ...glossaries,
+    ...vocabulary,
+    ...review,
+    ...finalChallenge,
+  ];
+  const roleIds = new Set(ordered.map(page => page.id));
   const positions = pages
     .map((page, index) => roleIds.has(page.id) ? index : -1)
     .filter(index => index >= 0);
-  const ordered = [...glossaries, vocabulary];
 
   if (positions.length !== ordered.length) {
-    throw new Error('[Prepared Book Finalization] Vocabulary/glossary flow cannot be reordered safely.');
+    throw new Error(
+      `[Prepared Book Finalization] Learning flow cannot be reordered safely. Positions=${positions.length}, pages=${ordered.length}.`,
+    );
   }
 
   const output = [...pages];
@@ -366,8 +381,10 @@ export const finalizePreparedBookPairForUi = (pair: BookPair): BookPair => {
   if (!englishVocabularyPages) return pair;
 
   const targets = pickPreparedTargets(pair.en, pair.ar);
-  void targets;
-  return pair;
+  return {
+    en: finalizePreparedLanguage(pair.en, targets.english, 'en'),
+    ar: finalizePreparedLanguage(pair.ar, targets.arabic, 'ar'),
+  };
 };
 
 /**
