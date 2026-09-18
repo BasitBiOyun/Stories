@@ -730,7 +730,6 @@ export const StoryPage = ({
             definition={vocab.definition}
             customStyle={vocabStyle}
             collectionId={collectionId}
-            variant={page.exercises?.[0]?.id === activeExercise.id ? 'quick' : 'default'}
           />
         ) : animatedWord ? (
           <VocabularyWord
