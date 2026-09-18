@@ -4,7 +4,7 @@ import { getLearningLevelPolicy } from './learningLevelPolicy';
 export const LEARNING_BOOK_STRUCTURE_STANDARD = {
   hotspotsPerStory: 2,
   quickChallengesPerStory: 1,
-  glossaryPages: 2,
+  minimumGlossaryPages: 1,
   retrievalReviewActivityTypes: ['sequencing', 'matching', 'reflection', 'quiz-game'] as const satisfies readonly ExerciseType[],
 } as const;
 
@@ -98,13 +98,26 @@ export const validateLearningBookStructure = (
   const vocabulary = pageById(book, config.vocabularyPageId);
   if (!vocabulary || vocabulary.type !== 'vocabulary-match') {
     issues.push(issue(book, 'VOCABULARY_PAGE', 'Vocabulary Challenge must remain a vocabulary-match page.', config.vocabularyPageId));
-  } else if ((vocabulary.vocabularyPairs?.length ?? 0) !== policy.vocabularyCount) {
-    issues.push(issue(
-      book,
-      'VOCABULARY_COUNT',
-      `Vocabulary Challenge must contain exactly ${policy.vocabularyCount} pairs; found ${vocabulary.vocabularyPairs?.length ?? 0}.`,
-      vocabulary.id,
-    ));
+  } else {
+    const vocabularyPairs = vocabulary.vocabularyPairs ?? [];
+    if (vocabularyPairs.length !== policy.vocabularyCount) {
+      issues.push(issue(
+        book,
+        'VOCABULARY_COUNT',
+        `Vocabulary Challenge must contain exactly ${policy.vocabularyCount} target words; found ${vocabularyPairs.length}.`,
+        vocabulary.id,
+      ));
+    }
+
+    const contextualCount = vocabularyPairs.filter(pair => Boolean(pair.context?.trim())).length;
+    if (contextualCount < policy.vocabularyContextCount) {
+      issues.push(issue(
+        book,
+        'VOCABULARY_CONTEXT_COUNT',
+        `Vocabulary Challenge needs at least ${policy.vocabularyContextCount} story-grounded context items; found ${contextualCount}.`,
+        vocabulary.id,
+      ));
+    }
   }
 
   const review = pageById(book, config.reviewPageId);
@@ -134,11 +147,11 @@ export const validateLearningBookStructure = (
     }
   }
 
-  if (config.glossaryPageIds.length !== LEARNING_BOOK_STRUCTURE_STANDARD.glossaryPages) {
+  if (config.glossaryPageIds.length < LEARNING_BOOK_STRUCTURE_STANDARD.minimumGlossaryPages) {
     issues.push(issue(
       book,
       'GLOSSARY_PAGE_COUNT',
-      `Book config must contain exactly ${LEARNING_BOOK_STRUCTURE_STANDARD.glossaryPages} Master Glossary pages; found ${config.glossaryPageIds.length}.`,
+      `Book config must contain at least ${LEARNING_BOOK_STRUCTURE_STANDARD.minimumGlossaryPages} Master Glossary page; found ${config.glossaryPageIds.length}.`,
     ));
   }
 
@@ -150,6 +163,38 @@ export const validateLearningBookStructure = (
       issues.push(issue(book, 'GLOSSARY_EMPTY', 'Master Glossary page must contain vocabulary.', glossaryId));
     }
   });
+
+  const pageIndex = (id: number) => book.pages.findIndex(page => page.id === id);
+  const knowledgeIndex = pageIndex(config.knowledgeCheckPageId);
+  const vocabularyIndex = pageIndex(config.vocabularyPageId);
+  const reviewIndex = pageIndex(config.reviewPageId);
+  const finalIndex = pageIndex(config.finalChallengePageId);
+  const glossaryIndexes = config.glossaryPageIds
+    .map(pageIndex)
+    .filter(index => index >= 0);
+  const firstGlossaryIndex = glossaryIndexes.length ? Math.min(...glossaryIndexes) : -1;
+  const lastGlossaryIndex = glossaryIndexes.length ? Math.max(...glossaryIndexes) : -1;
+
+  if (
+    knowledgeIndex >= 0 &&
+    firstGlossaryIndex >= 0 &&
+    lastGlossaryIndex >= 0 &&
+    vocabularyIndex >= 0 &&
+    reviewIndex >= 0 &&
+    finalIndex >= 0 &&
+    !(
+      knowledgeIndex < firstGlossaryIndex &&
+      lastGlossaryIndex < vocabularyIndex &&
+      vocabularyIndex < reviewIndex &&
+      reviewIndex < finalIndex
+    )
+  ) {
+    issues.push(issue(
+      book,
+      'LEARNING_PAGE_ORDER',
+      'Whole-book learning flow must be Knowledge Check → Master Glossary → Vocabulary Challenge → Retrieval Review → Final Challenge.',
+    ));
+  }
 
   const finalChallenge = pageById(book, config.finalChallengePageId);
   if (!finalChallenge || finalChallenge.type !== 'final-challenge') {
