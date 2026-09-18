@@ -341,7 +341,7 @@ const finalizePreparedLanguage = (
   const enriched = book.pages.map(page => page.type === 'vocabulary-match'
     ? {
         ...page,
-        title: language === 'ar' ? 'تحدي المفردات' : `${book.level} Vocabulary Challenge`,
+        title: language === 'ar' ? 'تحدي المفردات' : 'Vocabulary Challenge',
         content: language === 'ar'
           ? `تدرّب على ${policy.vocabularyCount} كلمة أو عبارة مستهدفة عبر المطابقة والسياق والاسترجاع.`
           : `Practise ${policy.vocabularyCount} target words through matching, context and recall.`,
