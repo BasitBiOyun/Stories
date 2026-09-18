@@ -236,15 +236,40 @@ const pickPreparedTargets = (
     );
   }
 
+  const policy = getLearningLevelPolicy(english.level);
   const contextRich = uniquePaired.filter(pair => pair.english.context && pair.arabic.context);
-  const sourcePool = contextRich.length >= targetCount ? contextRich : uniquePaired;
 
-  const selected = Array.from({ length: targetCount }, (_, index) => {
-    const sourceIndex = targetCount <= 1
-      ? 0
-      : Math.round(index * (sourcePool.length - 1) / (targetCount - 1));
-    return sourcePool[sourceIndex];
+  if (contextRich.length < policy.vocabularyContextCount) {
+    throw new Error(
+      `[Prepared Book Finalization] ${english.id} ${english.level} needs ${policy.vocabularyContextCount} bilingual story-context vocabulary targets; found ${contextRich.length}.`,
+    );
+  }
+
+  const pickEven = <T,>(items: T[], count: number): T[] => {
+    if (count <= 0) return [];
+    if (items.length <= count) return items.slice();
+    return Array.from({ length: count }, (_, index) => {
+      const sourceIndex = count <= 1
+        ? 0
+        : Math.round(index * (items.length - 1) / (count - 1));
+      return items[sourceIndex];
+    });
+  };
+
+  const contextTargets = pickEven(contextRich, policy.vocabularyContextCount);
+  const contextKeys = new Set(
+    contextTargets.map(pair =>
+      `${pair.english.word.trim().toLocaleLowerCase('en-US')}::${pair.arabic.word.trim().toLocaleLowerCase('ar')}`
+    )
+  );
+  const remaining = uniquePaired.filter(pair => {
+    const key = `${pair.english.word.trim().toLocaleLowerCase('en-US')}::${pair.arabic.word.trim().toLocaleLowerCase('ar')}`;
+    return !contextKeys.has(key);
   });
+  const selected = [
+    ...contextTargets,
+    ...pickEven(remaining, targetCount - contextTargets.length),
+  ];
 
   return {
     english: selected.map(pair => pair.english),
