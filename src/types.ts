@@ -69,6 +69,15 @@ export interface VocabularyItem {
   category?: string;
 }
 
+export interface VocabularyChallengePair {
+  word: string;
+  meaning: string;
+  context?: string;
+  chapter?: number;
+  chapterTitle?: string;
+  partOfSpeech?: string;
+}
+
 export interface PageData {
   id: number;
   type: PageType;
@@ -81,7 +90,7 @@ export interface PageData {
   audioUrl?: string;
   vocabulary?: VocabularyItem[];
   sequencingItems?: { id: string; text: string }[];
-  vocabularyPairs?: { word: string; meaning: string }[];
+  vocabularyPairs?: VocabularyChallengePair[];
   hotspots?: Hotspot[];
   animatedWords?: string[];
   syncPoints?: number[];
