@@ -473,22 +473,80 @@ const reviewExercise = (anchors: Anchor[], language: LearningLanguage, level: Le
   quizQuestions: anchors.map(anchor => quizQuestion(language === 'ar' ? anchor.arabic : anchor.english, anchor.chapterId, language)),
 });
 
+const storyContextFor = (
+  page: PageData,
+  word: string,
+  preferred: string | undefined,
+  language: LearningLanguage,
+): string | undefined => {
+  if (preferred?.trim()) return preferred.trim();
+
+  const source = (page.content ?? '')
+    .replace(/\[[^\]]+\]/g, ' ')
+    .replace(/[*_#>`]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!source) return undefined;
+
+  const normalizedWord = normalizeHighlightText(word, language);
+  const sentences = source
+    .split(/(?<=[.!?؟])\s+/)
+    .map(sentence => sentence.trim())
+    .filter(Boolean);
+
+  const match = sentences.find(sentence =>
+    normalizeHighlightText(sentence, language).includes(normalizedWord)
+  );
+
+  if (!match) return undefined;
+  return match.length > 240 ? `${match.slice(0, 237).trim()}…` : match;
+};
+
 const buildVocabularyPairs = (englishPages: PageData[], arabicPages: PageData[], storyIds: number[], count: number) => {
-  const pairs: Array<{ english: { word: string; meaning: string }; arabic: { word: string; meaning: string } }> = [];
+  const pairs: Array<{
+    english: NonNullable<PageData['vocabularyPairs']>[number];
+    arabic: NonNullable<PageData['vocabularyPairs']>[number];
+  }> = [];
+
   storyIds.forEach(id => {
     const english = storyPage(englishPages, id)!;
     const arabic = storyPage(arabicPages, id)!;
+
     (english.vocabulary ?? []).forEach((entry, index) => {
       const arabicEntry = arabic.vocabulary?.[index];
-      if (arabicEntry) pairs.push({
-        english: { word: entry.word, meaning: entry.definition },
-        arabic: { word: arabicEntry.word, meaning: arabicEntry.definition },
+      if (!arabicEntry) return;
+
+      pairs.push({
+        english: {
+          word: entry.word,
+          meaning: entry.definition,
+          context: storyContextFor(english, entry.word, entry.storyExample ?? entry.example, 'en'),
+          chapter: id,
+          chapterTitle: english.title,
+          partOfSpeech: entry.partOfSpeech,
+        },
+        arabic: {
+          word: arabicEntry.word,
+          meaning: arabicEntry.definition,
+          context: storyContextFor(arabic, arabicEntry.word, arabicEntry.storyExample ?? arabicEntry.example, 'ar'),
+          chapter: id,
+          chapterTitle: arabic.title,
+          partOfSpeech: arabicEntry.partOfSpeech,
+        },
       });
     });
   });
-  if (pairs.length < count) throw new Error(`[Learning System] Vocabulary Challenge needs ${count} paired Word Notes but only ${pairs.length} exist.`);
+
+  if (pairs.length < count) {
+    throw new Error(`[Learning System] Vocabulary Challenge needs ${count} paired Word Notes but only ${pairs.length} exist.`);
+  }
+
   const selected = pickEvenly(pairs, count);
-  return { english: selected.map(pair => pair.english), arabic: selected.map(pair => pair.arabic) };
+  return {
+    english: selected.map(pair => pair.english),
+    arabic: selected.map(pair => pair.arabic),
+  };
 };
 
 const cleanArabic = (value: string) => value
@@ -529,7 +587,9 @@ const applyPages = (
     if (config.vocabularyPageId && page.id === config.vocabularyPageId) return {
       ...page, type: 'vocabulary-match' as const,
       title: language === 'ar' ? 'تحدي المفردات' : `${config.level} Vocabulary Challenge`,
-      content: language === 'ar' ? `صل ${counts.vocabulary} كلمات أو عبارات من الفصول بمعانيها.` : `Match ${counts.vocabulary} chapter words or phrases with their meanings.`,
+      content: language === 'ar'
+        ? `تدرّب على ${counts.vocabulary} كلمة أو عبارة مستهدفة عبر المطابقة والسياق والاسترجاع.`
+        : `Practise ${counts.vocabulary} target words through matching, context and recall.`,
       vocabularyPairs: vocabulary,
     };
     if (page.id === config.reviewPageId) return {
