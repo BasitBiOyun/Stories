@@ -170,7 +170,7 @@ export const VocabularyWord = ({
                   pointerEvents: 'auto'
                 }}
                 className={cn(
-                  "w-[calc(100vw-1.5rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain p-3.5 sm:p-5",
+                  "w-[calc(100vw-1.5rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden p-3.5 sm:p-5",
                   "bg-wood text-parchment rounded-xl shadow-2xl border",
                   tooltipTheme.border,
                   language === 'ar' ? "text-right" : "text-left"
