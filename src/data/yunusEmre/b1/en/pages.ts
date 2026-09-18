@@ -194,7 +194,7 @@ His words remind us of Allah’s commands for achieving this unity.
 
 Yunus says:
 
-[POEM]
+[POEM compact]
 English:
 “Anyone who claims to be a Muslim should know the requirements of Islam,
 He should follow Allah’s command and pray the five daily prayers”
