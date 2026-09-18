@@ -507,6 +507,17 @@ const AppContent = () => {
             handleAnswer={handleAnswer} 
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
+            onReviewGlossary={
+              currentPage.type === 'vocabulary-match'
+                ? () => {
+                    const glossaryIndexes = currentBook.pages
+                      .map((page, index) => page.type === 'glossary' ? index : -1)
+                      .filter(index => index >= 0);
+                    const targetIndex = glossaryIndexes[glossaryIndexes.length - 1];
+                    if (typeof targetIndex === 'number') setCurrentPageIndex(targetIndex);
+                  }
+                : undefined
+            }
           />
         );
     }
