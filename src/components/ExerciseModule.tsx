@@ -28,7 +28,8 @@ interface ExerciseModuleProps {
   onComplete: () => void;
   onClose: () => void;
   collectionId?: string;
-  variant?: 'default' | 'quick' | 'language';
+  variant?: 'default' | 'quick' | 'language' | 'review';
+  embedded?: boolean;
 }
 
 const themeFor = (collectionId: string) => {
@@ -90,12 +91,14 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   onClose,
   collectionId = 'prophets',
   variant = 'default',
+  embedded = false,
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
   const theme = themeFor(collectionId);
   const isArabic = language === 'ar';
   const isQuick = variant === 'quick';
   const isLanguage = variant === 'language';
+  const isReview = variant === 'review';
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [showHint, setShowHint] = React.useState(false);
@@ -142,12 +145,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   }, [exercise]);
 
   React.useEffect(() => {
+    if (embedded) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = previous;
     };
-  }, []);
+  }, [embedded]);
 
   const isCorrectAnswer = (answer: any) => {
     if (exercise.type === 'matching') {
@@ -180,8 +184,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setIsSubmitted(true);
     if (isCorrectAnswer(answer)) {
       confetti({
-        particleCount: isQuick ? 60 : isLanguage ? 36 : 110,
-        spread: isQuick ? 52 : isLanguage ? 42 : 65,
+        particleCount: isQuick ? 60 : isLanguage ? 36 : isReview ? 22 : 110,
+        spread: isQuick ? 52 : isLanguage ? 42 : isReview ? 34 : 65,
         origin: { y: 0.65 },
         colors: collectionId === 'history'
           ? ['#059669', '#10B981', '#34D399']
@@ -246,7 +250,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setQuizWasCorrect(isCorrect);
     if (isCorrect) {
       setQuizScore((score) => score + 1);
-      confetti({ particleCount: isQuick ? 40 : isLanguage ? 28 : 70, spread: isQuick ? 45 : isLanguage ? 38 : 55, origin: { y: 0.7 } });
+      confetti({ particleCount: isQuick ? 40 : isLanguage ? 28 : isReview ? 18 : 70, spread: isQuick ? 45 : isLanguage ? 38 : isReview ? 32 : 55, origin: { y: 0.7 } });
     }
   };
 
@@ -707,19 +711,23 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className={cn(
-        'fixed inset-0 z-[1000] flex flex-col',
-        isQuick ? 'bg-[#FBFAF6]' : isLanguage ? 'bg-[#FCFBF8]' : 'bg-[#FDFBF7]',
+        embedded
+          ? 'relative flex min-h-0 w-full flex-col overflow-hidden rounded-[24px] bg-white/72 ring-1 ring-black/[0.06]'
+          : 'fixed inset-0 z-[1000] flex flex-col',
+        !embedded && (isQuick ? 'bg-[#FBFAF6]' : isLanguage ? 'bg-[#FCFBF8]' : 'bg-[#FDFBF7]'),
         isRTL && 'font-arabic'
       )}
-      style={isQuick ? { background: quickBackground } : isLanguage ? { background: languageBackground } : undefined}
+      style={!embedded ? (isQuick ? { background: quickBackground } : isLanguage ? { background: languageBackground } : undefined) : undefined}
       dir={isRTL ? 'rtl' : 'ltr'}
-      role="dialog"
-      aria-modal="true"
+      role={embedded ? 'group' : 'dialog'}
+      aria-modal={embedded ? undefined : true}
       aria-label={isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : (exercise.title || exercise.question || t('nav.interactiveChallenge'))}
     >
       <header className={cn(
         'shrink-0 px-4 sm:px-6 md:px-10 flex items-start justify-between gap-4',
-        isQuick
+        embedded && isReview
+          ? 'border-b border-black/[0.05] bg-white/45 py-4 sm:py-5'
+          : isQuick
           ? 'border-b border-black/[0.06] bg-white/45 py-4 sm:py-5 backdrop-blur-xl'
           : isLanguage
           ? 'border-b border-black/[0.05] bg-white/55 py-4 sm:py-5 backdrop-blur-xl'
@@ -731,7 +739,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs',
             theme.accentText
           )}>
-            {isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : t('nav.interactiveChallenge')}
+            {isQuick
+              ? t('nav.quickChallenge')
+              : isLanguage
+              ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus')
+              : isReview
+              ? (language === 'ar' ? 'مهمة لغوية' : 'Language task')
+              : t('nav.interactiveChallenge')}
           </p>
 
           {!isQuick && (
@@ -755,25 +769,33 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           )}
         </div>
 
-        <button
-          type="button"
-          onClick={onClose}
-          className={cn(
-            'touch-target flex shrink-0 items-center justify-center rounded-full transition-colors',
-            isQuick || isLanguage
-              ? 'bg-white/70 text-wood/55 shadow-sm ring-1 ring-black/[0.06] hover:bg-white hover:text-wood'
-              : `border-2 bg-white ${theme.softBorder} ${theme.accentText}`
-          )}
-          aria-label={t('nav.close')}
-        >
-          <XCircle className="w-6 h-6 sm:w-7 sm:h-7" />
-        </button>
+        {!embedded && (
+          <button
+            type="button"
+            onClick={onClose}
+            className={cn(
+              'touch-target flex shrink-0 items-center justify-center rounded-full transition-colors',
+              isQuick || isLanguage
+                ? 'bg-white/70 text-wood/55 shadow-sm ring-1 ring-black/[0.06] hover:bg-white hover:text-wood'
+                : `border-2 bg-white ${theme.softBorder} ${theme.accentText}`
+            )}
+            aria-label={t('nav.close')}
+          >
+            <XCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+          </button>
+        )}
       </header>
 
-      <main className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+      <main className={cn('flex-1 min-h-0 custom-scrollbar', embedded ? 'overflow-visible' : 'overflow-y-auto')}>
         <div className={cn(
           'w-full mx-auto px-4 sm:px-6 md:px-10 space-y-6',
-          isQuick ? 'max-w-4xl py-7 sm:py-10 md:py-12' : isLanguage ? 'max-w-5xl py-7 sm:py-9 md:py-10' : 'max-w-6xl py-5 sm:py-8'
+          embedded && isReview
+            ? 'max-w-5xl py-5 sm:py-6 md:py-7'
+            : isQuick
+            ? 'max-w-4xl py-7 sm:py-10 md:py-12'
+            : isLanguage
+            ? 'max-w-5xl py-7 sm:py-9 md:py-10'
+            : 'max-w-6xl py-5 sm:py-8'
         )}>
           {exercise.question && exercise.type !== 'quiz-game' && (
             <h4 className={cn(
@@ -782,6 +804,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 ? 'max-w-3xl text-2xl tracking-[-0.03em] sm:text-3xl md:text-[2.15rem]'
                 : isLanguage
                 ? 'max-w-4xl text-xl tracking-[-0.025em] sm:text-2xl md:text-[1.75rem]'
+                : isReview
+                ? 'max-w-4xl text-lg tracking-[-0.02em] sm:text-xl md:text-2xl'
                 : 'text-xl sm:text-2xl md:text-3xl'
             )}>
               {exercise.question}
@@ -849,7 +873,11 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
       <footer className={cn(
         'shrink-0 px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between gap-3 safe-area-bottom',
-        isQuick || isLanguage ? 'border-t border-black/[0.06] bg-white/55 backdrop-blur-xl' : 'border-t border-gray-200 bg-white'
+        embedded && isReview
+          ? 'border-t border-black/[0.05] bg-white/38'
+          : isQuick || isLanguage
+          ? 'border-t border-black/[0.06] bg-white/55 backdrop-blur-xl'
+          : 'border-t border-gray-200 bg-white'
       )}>
         <div>
           {exercise.hints?.length ? (
@@ -866,5 +894,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       </footer>
     </motion.div>
   );
-  return typeof document === 'undefined' ? dialog : createPortal(dialog, document.body);
+  if (embedded || typeof document === 'undefined') return dialog;
+  return createPortal(dialog, document.body);
 };
