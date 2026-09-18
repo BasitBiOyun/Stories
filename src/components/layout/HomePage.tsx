@@ -98,6 +98,7 @@ const collectionVisuals: Record<
     accentBright: string;
     accentSoft: string;
     ambient: string;
+    stage: string;
   }
 > = {
   prophets: {
@@ -105,18 +106,21 @@ const collectionVisuals: Record<
     accentBright: '#F3D58A',
     accentSoft: 'rgba(216,179,92,0.14)',
     ambient: 'rgba(111,74,29,0.44)',
+    stage: 'linear-gradient(135deg, #17140f 0%, #21180f 46%, #10130f 100%)',
   },
   history: {
     accent: '#55C997',
     accentBright: '#86EDBD',
     accentSoft: 'rgba(85,201,151,0.14)',
     ambient: 'rgba(14,95,65,0.40)',
+    stage: 'linear-gradient(135deg, #0d1714 0%, #10251d 48%, #0b1512 100%)',
   },
   turkish: {
     accent: '#58CBE0',
     accentBright: '#8AE8F5',
     accentSoft: 'rgba(88,203,224,0.14)',
     ambient: 'rgba(22,88,108,0.42)',
+    stage: 'linear-gradient(135deg, #0b1418 0%, #10242b 48%, #0a1216 100%)',
   },
 };
 
@@ -306,12 +310,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   return (
     <div
       className={cn(
-        'min-h-screen overflow-x-hidden bg-[#0c1510] text-[#F6F0E2] selection:bg-[#D8B35C]/25 selection:text-white',
+        'min-h-screen overflow-x-hidden bg-[#0b0e0c] text-[#F6F0E2] selection:bg-[#D8B35C]/25 selection:text-white',
         isRTL && 'font-arabic',
       )}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <header className="relative z-50 bg-[#0c1510]/90 backdrop-blur-xl">
+      <header className="relative z-50 bg-[#0b0e0c]/90 backdrop-blur-xl">
         <div className="mx-auto flex min-h-[76px] w-full max-w-[1500px] items-center justify-between gap-5 px-5 sm:px-8 lg:px-12">
           <div className="flex min-w-0 items-center gap-3.5">
             <div className="h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white/[0.045] p-1.5">
@@ -450,8 +454,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           }}
           tabIndex={0}
           aria-label={copy.explore}
-          className="relative mt-5 overflow-hidden rounded-[38px] bg-[#111d16] outline-none shadow-[0_38px_110px_rgba(0,0,0,0.33)] lg:h-[660px] xl:h-[690px]"
+          className="relative mt-5 overflow-hidden rounded-[38px] outline-none shadow-[0_38px_110px_rgba(0,0,0,0.33)] lg:h-[660px] xl:h-[690px]"
         >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`stage-${activeStoryCollection}`}
+              aria-hidden="true"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="absolute inset-0"
+              style={{ background: activeVisual.stage }}
+            />
+          </AnimatePresence>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={`ambient-${activeStory.id}`}
@@ -469,7 +486,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                 className="h-full w-full scale-110 object-cover opacity-[0.15] blur-[34px]"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0e1812]/96 via-[#0e1812]/86 to-[#0e1812]/74" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#090c0a]/94 via-[#090c0a]/78 to-[#090c0a]/58" />
               <motion.div
                 className="absolute left-[12%] top-[8%] h-[58%] w-[46%] rounded-full blur-3xl"
                 style={{
@@ -649,7 +666,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   </p>
 
                   <div className="mt-8">
-                    <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#EDE5D4]/56">
+                    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F0E8D8]/66">
                       {copy.chooseLevel}
                     </p>
 
@@ -661,10 +678,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                           whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01 }}
                           whileTap={{ scale: 0.985 }}
                           onClick={() => launchStory(activeStory.id, level)}
-                          className="group rounded-2xl bg-white/[0.055] px-4 py-4 text-start transition-colors hover:bg-white/[0.095] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
+                          className="group rounded-2xl px-4 py-4 text-start transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
+                          style={{
+                            background: `linear-gradient(145deg, rgba(255,255,255,0.07), ${activeVisual.accentSoft})`,
+                            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.035)',
+                          }}
                         >
                           <div className="flex items-center justify-between gap-3">
-                            <span className="text-2xl font-semibold tracking-[-0.035em] text-[#FFF9EC]">
+                            <span className="text-[30px] font-semibold leading-none tracking-[-0.04em] text-[#FFF9EC] sm:text-[32px]">
                               {level}
                             </span>
                             <ArrowRight
@@ -674,7 +695,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                               style={{ color: activeVisual.accentBright }}
                             />
                           </div>
-                          <span className="mt-1.5 block text-[11px] font-medium leading-4 text-[#EDE5D4]/70">
+                          <span className="mt-2 block text-[12px] font-medium leading-4 text-[#F0E8D8]/76 sm:text-[13px]">
                             {levelDescriptions[level][language === 'ar' ? 'ar' : 'en']}
                           </span>
                         </motion.button>
