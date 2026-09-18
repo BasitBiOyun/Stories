@@ -158,6 +158,18 @@ const pickPreparedTargets = (
   arabic: NonNullable<PageData['vocabularyPairs']>;
 } => {
   const targetCount = getLearningLevelPolicy(english.level).vocabularyCount;
+  const englishGlossaryByWord = new Map(
+    english.pages
+      .filter(page => page.type === 'glossary')
+      .flatMap(page => page.vocabulary ?? [])
+      .map(item => [item.word.trim().toLocaleLowerCase('en-US'), item] as const)
+  );
+  const arabicGlossaryByWord = new Map(
+    arabic.pages
+      .filter(page => page.type === 'glossary')
+      .flatMap(page => page.vocabulary ?? [])
+      .map(item => [item.word.trim().toLocaleLowerCase('ar'), item] as const)
+  );
   const paired: Array<{
     english: NonNullable<PageData['vocabularyPairs']>[number];
     arabic: NonNullable<PageData['vocabularyPairs']>[number];
@@ -174,30 +186,37 @@ const pickPreparedTargets = (
         if (!arabicEntry?.word?.trim() || !arabicEntry.definition?.trim()) return;
         if (!englishEntry.word?.trim() || !englishEntry.definition?.trim()) return;
 
+        const englishDetail = englishGlossaryByWord.get(
+          englishEntry.word.trim().toLocaleLowerCase('en-US'),
+        ) ?? englishEntry;
+        const arabicDetail = arabicGlossaryByWord.get(
+          arabicEntry.word.trim().toLocaleLowerCase('ar'),
+        ) ?? arabicEntry;
+
         paired.push({
           english: {
-            word: englishEntry.word,
-            meaning: englishEntry.definition,
+            word: englishDetail.word,
+            meaning: englishDetail.definition,
             context: preparedStoryContext(
               englishPage,
-              englishEntry.word,
-              englishEntry.storyExample ?? englishEntry.example,
+              englishDetail.word,
+              englishDetail.storyExample ?? englishDetail.example ?? englishEntry.storyExample ?? englishEntry.example,
             ),
-            chapter: englishPage.id,
-            chapterTitle: englishPage.title,
-            partOfSpeech: englishEntry.partOfSpeech,
+            chapter: englishDetail.chapter ?? englishPage.id,
+            chapterTitle: englishDetail.chapterTitle ?? englishPage.title,
+            partOfSpeech: englishDetail.partOfSpeech ?? englishEntry.partOfSpeech,
           },
           arabic: {
-            word: arabicEntry.word,
-            meaning: arabicEntry.definition,
+            word: arabicDetail.word,
+            meaning: arabicDetail.definition,
             context: preparedStoryContext(
               arabicPage,
-              arabicEntry.word,
-              arabicEntry.storyExample ?? arabicEntry.example,
+              arabicDetail.word,
+              arabicDetail.storyExample ?? arabicDetail.example ?? arabicEntry.storyExample ?? arabicEntry.example,
             ),
-            chapter: arabicPage.id,
-            chapterTitle: arabicPage.title,
-            partOfSpeech: arabicEntry.partOfSpeech,
+            chapter: arabicDetail.chapter ?? arabicPage.id,
+            chapterTitle: arabicDetail.chapterTitle ?? arabicPage.title,
+            partOfSpeech: arabicDetail.partOfSpeech ?? arabicEntry.partOfSpeech,
           },
         });
       });
