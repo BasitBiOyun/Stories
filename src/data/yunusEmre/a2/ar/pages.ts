@@ -67,8 +67,8 @@ Sen derviş olamazsın
 يَجِبُ أَنْ يَتْرُكَ الدَّرويشُ رَغَباتِ نَفْسِهِ، أَيْ أَنْ لا يَكونَ أَنانِيًّا.
 لا يُمْكِنُكَ أَنْ تَكونَ دَرْويشًا.
 التركية:
-Döğene elsiz gerek
-Söğene dilsiz gerek
+Dövene elsiz gerek
+Sövene dilsiz gerek
 Derviş gönülsüz gerek
 Sen derviş olamazsın
 [/POEM]
