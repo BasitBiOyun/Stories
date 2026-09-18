@@ -179,7 +179,6 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
 
       if (Object.keys(next).length === total) {
         setFeedback({ kind: 'done' });
-        confetti({ particleCount: 160, spread: 85, origin: { y: 0.6 } });
       } else {
         setFeedback({ kind: 'correct', word, meaning });
       }
@@ -648,30 +647,43 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
   }
 
   return (
-    <div className="h-full flex flex-col gap-3 relative overflow-hidden" onPointerDown={(event) => event.stopPropagation()}>
-      <div className="flex items-center gap-3 shrink-0">
-        <span className={cn('font-bold text-wood/50 tabular-nums w-8 text-right', isArabic ? 'text-sm' : 'text-xs')}>{formatNumber(correctCount)}/{formatNumber(total)}</span>
-        <div className={cn('flex-1 h-3 rounded-full overflow-hidden', theme.barBg)}>
+    <div className="h-full flex flex-col gap-3 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'} onPointerDown={(event) => event.stopPropagation()}>
+      {stageHeader}
+      <div className="flex items-center gap-3 shrink-0 px-1">
+        <span className={cn('font-display font-semibold text-wood/45 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
+          {formatNumber(correctCount)}/{formatNumber(total)}
+        </span>
+        <div className={cn('flex-1 h-1.5 rounded-full overflow-hidden', theme.barBg)}>
           <motion.div className={cn('h-full rounded-full', theme.barFill)} animate={{ width: `${progress}%` }} transition={{ type: 'spring', stiffness: 160, damping: 22 }} />
         </div>
-        <span className={cn('font-bold text-emerald-600 tabular-nums w-10 text-right', isArabic ? 'text-sm' : 'text-xs')}>{formatNumber(progress)}%</span>
         <AnimatePresence>
           {streak >= 2 && (
-            <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} className={cn('flex items-center gap-1 px-2 py-1 rounded-full font-black shrink-0', isArabic ? 'text-sm' : 'text-[11px]', theme.badge)}>
-              <Zap size={10} />{formatNumber(streak)}x
+            <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} className={cn('flex items-center gap-1 px-2 py-1 rounded-full font-semibold shrink-0', isArabic ? 'text-sm' : 'text-[10px]', theme.badge)}>
+              <Zap size={10} />{formatNumber(streak)}×
             </motion.div>
           )}
         </AnimatePresence>
-        <button onClick={reset} className={cn('p-1.5 rounded-lg transition-colors shrink-0', theme.reset)} aria-label={t('nav.reset')}><RotateCcw size={14} /></button>
       </div>
 
       <div className="shrink-0 min-h-[58px]">
         <AnimatePresence mode="wait">
           {feedback.kind === 'done' ? (
-            <motion.div key="done" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3 flex items-center gap-3">
+            <motion.div key="done" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl bg-emerald-50 px-4 py-3 flex items-center gap-3 ring-1 ring-emerald-200">
               <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
-              <div className="flex-1"><p className={cn('font-display font-bold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>{t('ex.allWordsMatched').replace('{total}', formatNumber(total))}</p>{bestStreak >= 2 && <p className={cn('text-emerald-700', isArabic ? 'text-sm' : 'text-xs')}>{t('ex.bestStreak').replace('{count}', formatNumber(bestStreak))}</p>}</div>
-              <button onClick={reset} className={cn('px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold flex items-center gap-1', isArabic ? 'text-sm' : 'text-xs')}><RotateCcw size={13} />{t('ex.tryAgain')}</button>
+              <div className="flex-1">
+                <p className={cn('font-display font-semibold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>{copy.complete}</p>
+                <p className={cn('mt-0.5 font-serif text-emerald-700/70', isArabic ? 'text-sm' : 'text-xs')}>
+                  {t('ex.allWordsMatched').replace('{total}', formatNumber(total))}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setStage('context')}
+                className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-4 font-display text-[10px] font-semibold', theme.badge)}
+              >
+                {copy.continue}
+                <ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />
+              </button>
             </motion.div>
           ) : feedback.kind === 'correct' ? (
             <motion.div key={`correct-${feedback.word}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3 flex items-center gap-3">
