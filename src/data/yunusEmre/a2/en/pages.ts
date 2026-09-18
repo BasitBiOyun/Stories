@@ -48,19 +48,32 @@ Because of the Creator, they forgave and tolerated the others. They were kind an
 
 In fact, the path of dervishhood was a very difficult one. Yunus Emre beautifully says this point in his poem that begins with the words, “You cannot be a dervish.”
 
-A dervish needs a wounded heart and eyes full of tears.
-
+[POEM_GRID]
+[POEM]
+English:
+A dervish needs a wounded heart.
+He needs eyes full of tears.
 He needs to be as easy going as a sheep.
-
 You can’t be a dervish.
-
+Turkish:
+Derviş bağrı baş gerek
+Gözü dolu yaş gerek
+Koyundan yavaş gerek
+Sen derviş olamazsın
+[/POEM]
+[POEM]
+English:
 He must be without hands when someone hits him.
-
 He must be tongueless when people make fun of him.
-
 A dervish needs to be without any desires (selfless).
-
 You can’t be a dervish.
+Turkish:
+Döğene elsiz gerek
+Söğene dilsiz gerek
+Derviş gönülsüz gerek
+Sen derviş olamazsın
+[/POEM]
+[/POEM_GRID]
 
 Dervishes had a way of life of their own. They ate less, spoke less, slept less, and spent their time on useful activities. Dervishes lived a moderate and disciplined life according to Islam.
 
