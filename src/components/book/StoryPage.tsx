@@ -1037,7 +1037,7 @@ export const StoryPage = ({
           "flex flex-col min-w-0",
           isRTL ? "text-right" : ""
         )}>
-          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood tracking-tight uppercase leading-tight truncate">{page.title}</h3>
+          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight truncate">{page.title}</h3>
           <p className={cn(
             "font-serif text-xs sm:text-base lg:text-lg mt-0.5",
             language !== 'ar' && "italic",
@@ -1224,8 +1224,7 @@ export const StoryPage = ({
           {/* Text Content */}
           <div 
             className={cn(
-              "font-serif leading-relaxed text-wood/90",
-              isDyslexic ? "font-sans tracking-wide" : "",
+              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch]",\n              isDyslexic ? "font-sans tracking-wide" : "",
               isRTL && "text-right"
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
@@ -1296,7 +1295,7 @@ export const StoryPage = ({
         <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pr-2 pb-4">
           <div className="grid grid-cols-12 gap-8 items-start">
             {/* Left side: Image */}
-            <div className="col-span-5">
+            <div className="col-span-5 self-start lg:sticky lg:top-0">
               {page.image && (
                 <motion.div 
                   initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
@@ -1338,8 +1337,7 @@ export const StoryPage = ({
             <div className="col-span-7">
               <div 
                 className={cn(
-                  "font-serif leading-relaxed text-wood/90",
-                  isDyslexic ? "font-sans tracking-wide" : "",
+                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch]",\n                  isDyslexic ? "font-sans tracking-wide" : "",
                   isRTL && "text-right"
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
