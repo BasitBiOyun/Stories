@@ -347,7 +347,7 @@ const AppContent = () => {
         lang={language}
         className={cn(
           "min-h-screen bg-wood flex flex-col items-center justify-center relative overflow-hidden page-texture p-4",
-          isDyslexic && "font-dyslexic-mode"
+          isDyslexic && language !== 'ar' && "font-dyslexic-mode"
         )}
       >
         <ParchmentEffect />
@@ -504,7 +504,7 @@ const AppContent = () => {
       lang={language}
       className={cn(
         "h-dvh max-h-dvh bg-wood flex flex-col relative overflow-hidden page-texture",
-        isDyslexic && "font-dyslexic-mode"
+        isDyslexic && language !== 'ar' && "font-dyslexic-mode"
       )}
     >
       {/* Living Parchment Effect */}
