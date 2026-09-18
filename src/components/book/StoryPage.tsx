@@ -1069,102 +1069,191 @@ export const StoryPage = ({
     const exercises = page.languageFocusExercises ?? [];
     if (!exercises.length) return null;
 
+    const completedCount = exercises.filter(exercise => completedExercises.includes(exercise.id)).length;
+    const focusTheme = collectionId === 'history'
+      ? {
+          container: 'bg-gradient-to-br from-emerald-50/92 via-white/94 to-teal-50/72 ring-emerald-200/65',
+          icon: 'bg-emerald-800 text-white',
+          accent: 'text-emerald-800',
+          title: 'text-emerald-950',
+          copy: 'text-emerald-950/58',
+          card: 'bg-white/82 hover:bg-white ring-emerald-100/80 hover:ring-emerald-300/90',
+          number: 'bg-emerald-100 text-emerald-800',
+          glow: 'bg-emerald-300/18',
+          progress: 'bg-emerald-600',
+          arrow: 'text-emerald-700',
+        }
+      : collectionId === 'turkish'
+      ? {
+          container: 'bg-gradient-to-br from-sky-50/92 via-white/94 to-cyan-50/72 ring-cyan-200/65',
+          icon: 'bg-sky-800 text-white',
+          accent: 'text-sky-800',
+          title: 'text-sky-950',
+          copy: 'text-sky-950/58',
+          card: 'bg-white/82 hover:bg-white ring-cyan-100/80 hover:ring-cyan-300/90',
+          number: 'bg-cyan-100 text-cyan-800',
+          glow: 'bg-cyan-300/18',
+          progress: 'bg-sky-700',
+          arrow: 'text-sky-700',
+        }
+      : {
+          container: 'bg-gradient-to-br from-amber-50/92 via-white/94 to-orange-50/65 ring-amber-200/65',
+          icon: 'bg-amber-800 text-white',
+          accent: 'text-amber-800',
+          title: 'text-amber-950',
+          copy: 'text-amber-950/58',
+          card: 'bg-white/82 hover:bg-white ring-amber-100/80 hover:ring-amber-300/90',
+          number: 'bg-amber-100 text-amber-800',
+          glow: 'bg-amber-300/18',
+          progress: 'bg-amber-700',
+          arrow: 'text-amber-700',
+        };
+
+    const typeLabel = (exercise: Exercise) => {
+      const labels: Record<string, { en: string; ar: string }> = {
+        matching: { en: 'Match', ar: 'مطابقة' },
+        'fill-blanks': { en: 'Complete', ar: 'أكمل' },
+        sequencing: { en: 'Order', ar: 'رتّب' },
+        reflection: { en: 'Use', ar: 'استخدم' },
+        'true-false': { en: 'Decide', ar: 'قرّر' },
+        'multiple-choice': { en: 'Choose', ar: 'اختر' },
+        'tap-reveal': { en: 'Explore', ar: 'استكشف' },
+        'drag-drop': { en: 'Classify', ar: 'صنّف' },
+      };
+      return labels[exercise.type]?.[language === 'ar' ? 'ar' : 'en']
+        ?? (language === 'ar' ? 'تدريب' : 'Practice');
+    };
+
     return (
-      <motion.div
+      <motion.section
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className={cn('w-full shrink-0', mobile ? '' : 'mt-4')}
+        className={cn('w-full shrink-0', mobile ? 'mt-1' : 'mt-4')}
+        aria-label={language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
       >
         <div className={cn(
-          'rounded-2xl border shadow-sm p-4 sm:p-5',
-          collectionId === 'history'
-            ? 'bg-emerald-50/55 border-emerald-200'
-            : collectionId === 'turkish'
-            ? 'bg-cyan-50/65 border-cyan-200'
-            : 'bg-amber-50/60 border-amber-200'
+          'relative overflow-hidden rounded-[28px] ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)]',
+          focusTheme.container
         )}>
-          <div className={cn('flex items-center gap-3 mb-4', mobile && 'justify-center text-center')}>
-            <div className={cn(
-              'w-11 h-11 rounded-xl flex items-center justify-center shadow-inner shrink-0',
-              collectionId === 'history'
-                ? 'bg-emerald-100 text-emerald-700'
-                : collectionId === 'turkish'
-                ? 'bg-cyan-100 text-cyan-700'
-                : 'bg-amber-100 text-amber-700'
-            )}>
-              <BookIcon size={22} />
-            </div>
-            <div>
-              <h4 className={cn(
-                'font-black text-lg sm:text-xl',
-                collectionId === 'history'
-                  ? 'text-emerald-950'
-                  : collectionId === 'turkish'
-                  ? 'text-sky-950'
-                  : 'text-amber-950'
-              )}>
-                {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
-              </h4>
-              <p className={cn(
-                'font-medium',
-                isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
-                collectionId === 'history'
-                  ? 'text-emerald-900/55'
-                  : collectionId === 'turkish'
-                  ? 'text-sky-950/55'
-                  : 'text-amber-900/55'
-              )}>
-                {language === 'ar' ? 'لاحظها. اربطها. استخدمها.' : 'Notice it. Connect it. Use it.'}
-              </p>
-            </div>
-          </div>
+          <div className={cn('pointer-events-none absolute -end-12 -top-12 h-40 w-40 rounded-full blur-3xl', focusTheme.glow)} aria-hidden="true" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {exercises.map((exercise, index) => {
-              const completed = completedExercises.includes(exercise.id);
-              return (
-                <button
-                  key={exercise.id}
-                  type="button"
-                  onClick={() => setActiveExercise(exercise)}
-                  className={cn(
-                    'rounded-xl border-2 p-3.5 text-left transition-all active:scale-[0.99] min-h-24',
-                    completed
-                      ? 'bg-green-50 border-green-300'
-                      : collectionId === 'history'
-                      ? 'bg-white border-emerald-100 hover:border-emerald-400 hover:shadow-md'
-                      : collectionId === 'turkish'
-                      ? 'bg-white border-cyan-100 hover:border-cyan-400 hover:shadow-md'
-                      : 'bg-white border-amber-100 hover:border-amber-400 hover:shadow-md'
-                  )}
-                >
-                  <div className="flex items-start gap-3">
-                    <span className={cn(
-                      'w-7 h-7 rounded-lg shrink-0 flex items-center justify-center font-black',
-                      isArabic ? 'text-sm' : 'text-xs',
-                      completed
-                        ? 'bg-green-500 text-white'
-                        : collectionId === 'history'
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : collectionId === 'turkish'
-                        ? 'bg-cyan-100 text-cyan-700'
-                        : 'bg-amber-100 text-amber-700'
+          <div className="relative p-5 sm:p-6">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <div className="flex min-w-0 items-start gap-4 text-start">
+                <div className={cn(
+                  'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-lg',
+                  focusTheme.icon
+                )}>
+                  <BookIcon size={22} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className={cn(
+                    'font-display text-[10px] font-semibold uppercase tracking-[0.18em]',
+                    focusTheme.accent
+                  )}>
+                    {language === 'ar' ? 'بعد القراءة' : 'After reading'}
+                  </p>
+                  <h4 className={cn(
+                    'mt-1 font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
+                    focusTheme.title
+                  )}>
+                    {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
+                  </h4>
+                  <p className={cn(
+                    'mt-1.5 font-serif leading-relaxed',
+                    isArabic ? 'text-base' : 'text-sm',
+                    focusTheme.copy
+                  )}>
+                    {language === 'ar' ? 'لاحظها. اربطها. استخدمها.' : 'Notice it. Connect it. Use it.'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="min-w-[150px] sm:text-end">
+                <div className="flex items-center justify-between gap-3 sm:justify-end">
+                  <span className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.14em]', focusTheme.copy)}>
+                    {language === 'ar' ? 'التقدّم' : 'Progress'}
+                  </span>
+                  <span className={cn('font-display text-[11px] font-semibold', focusTheme.accent)}>
+                    {formatNumber(completedCount)} / {formatNumber(exercises.length)}
+                  </span>
+                </div>
+                <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-black/[0.06] sm:w-36">
+                  <motion.div
+                    initial={false}
+                    animate={{ width: `${exercises.length ? (completedCount / exercises.length) * 100 : 0}%` }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                    className={cn('h-full rounded-full', focusTheme.progress)}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {exercises.map((exercise, index) => {
+                const completed = completedExercises.includes(exercise.id);
+
+                return (
+                  <motion.button
+                    key={exercise.id}
+                    type="button"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.99 }}
+                    onClick={() => setActiveExercise(exercise)}
+                    className={cn(
+                      'group relative min-h-[148px] overflow-hidden rounded-2xl p-4 text-start ring-1 transition-all shadow-[0_8px_24px_rgba(63,49,28,0.05)]',
+                      focusTheme.card
+                    )}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span className={cn(
+                        'flex h-8 min-w-8 items-center justify-center rounded-xl px-2 font-display text-[10px] font-semibold',
+                        completed ? 'bg-emerald-600 text-white' : focusTheme.number
+                      )}>
+                        {completed ? '✓' : String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className={cn(
+                        'font-display text-[9px] font-semibold uppercase tracking-[0.15em]',
+                        completed ? 'text-emerald-700' : focusTheme.accent
+                      )}>
+                        {completed ? t('nav.completed') : typeLabel(exercise)}
+                      </span>
+                    </div>
+
+                    <h5 className={cn(
+                      'mt-4 font-display font-semibold leading-[1.18] tracking-[-0.02em]',
+                      isArabic ? 'text-lg' : 'text-[15px] sm:text-base',
+                      focusTheme.title
                     )}>
-                      {completed ? '✓' : formatNumber(index + 1)}
-                    </span>
-                    <span className="min-w-0">
-                      <span className={cn('block font-bold text-wood leading-tight', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{exercise.title}</span>
-                      {exercise.instructions && (
-                        <span className={cn('block mt-1 text-wood/55 leading-snug', isArabic ? 'text-sm sm:text-base' : 'text-[11px] sm:text-xs')}>{exercise.instructions}</span>
+                      {exercise.title}
+                    </h5>
+
+                    {exercise.instructions && (
+                      <p className={cn(
+                        'mt-2 line-clamp-2 font-serif leading-relaxed',
+                        isArabic ? 'text-sm sm:text-base' : 'text-[11px] sm:text-xs',
+                        focusTheme.copy
+                      )}>
+                        {exercise.instructions}
+                      </p>
+                    )}
+
+                    <ArrowRight
+                      size={16}
+                      className={cn(
+                        'absolute bottom-4 end-4 opacity-38 transition-all group-hover:translate-x-0.5 group-hover:opacity-90',
+                        isRTL && 'rotate-180 group-hover:-translate-x-0.5',
+                        focusTheme.arrow
                       )}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
+                    />
+                  </motion.button>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </motion.div>
+      </motion.section>
     );
   };
 
@@ -1451,7 +1540,13 @@ export const StoryPage = ({
             }}
             onClose={() => setActiveExercise(null)}
             collectionId={collectionId}
-            variant={page.exercises?.[0]?.id === activeExercise.id ? 'quick' : 'default'}
+            variant={
+              page.exercises?.[0]?.id === activeExercise.id
+                ? 'quick'
+                : page.languageFocusExercises?.some(exercise => exercise.id === activeExercise.id)
+                ? 'language'
+                : 'default'
+            }
           />
         )}
       </AnimatePresence>
