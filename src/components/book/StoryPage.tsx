@@ -170,48 +170,83 @@ const PoemBlock = ({
   const { isRTL } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
   const hasOriginal = Boolean(turkish?.trim());
-  const displayedPoem = showOriginal && hasOriginal ? turkish! : english;
+
+  const poemFontSize = compact
+    ? `clamp(0.82rem, 0.74rem + 0.42vw, ${(fontSize * 1.08 * 1.3333).toFixed(1)}px)`
+    : `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)`;
+
+  const renderPoemLines = (
+    text: string,
+    useHighlights: boolean,
+  ) => text.split('\n').map((line, idx) => (
+    <div key={idx} className="my-1">
+      {useHighlights && renderTranslation ? renderTranslation(line.trim(), idx) : line.trim()}
+    </div>
+  ));
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      onClick={() => hasOriginal && setShowOriginal(!showOriginal)}
+      onClick={() => hasOriginal && setShowOriginal(current => !current)}
       className={cn(
         "w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
         inGrid ? "my-0 h-full min-h-[180px]" : "my-6",
-        hasOriginal ? "md:pl-10 md:pr-16 cursor-pointer" : "md:px-10"
+        hasOriginal ? "md:ps-10 md:pe-16 cursor-pointer" : "md:px-10"
       )}
     >
-      <AnimatePresence mode="wait">
+      <div className="grid w-full place-items-center">
         <motion.div
-          key={showOriginal ? 'tr' : 'en'}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
+          aria-hidden={showOriginal}
+          animate={{ opacity: showOriginal ? 0 : 1, scale: showOriginal ? 0.985 : 1 }}
           transition={{ duration: 0.15 }}
-          dir={showOriginal ? 'ltr' : isRTL ? 'rtl' : 'ltr'}
+          dir={isRTL ? 'rtl' : 'ltr'}
+          lang={isRTL ? 'ar' : 'en'}
           className={cn(
-            "font-serif leading-relaxed text-wood font-medium py-3 select-text selection:bg-gold/20",
-            (!isRTL || showOriginal) && "italic"
+            "col-start-1 row-start-1 py-3 select-text selection:bg-gold/20 leading-relaxed font-semibold italic",
+            showOriginal && "pointer-events-none"
           )}
-          style={{ 
-            fontSize: compact
-              ? `clamp(0.82rem, 0.74rem + 0.42vw, ${(fontSize * 1.08 * 1.3333).toFixed(1)}px)`
-              : `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)`
+          style={{
+            fontSize: poemFontSize,
+            fontFamily: isRTL ? "'Arakom', sans-serif" : "'Poppins', sans-serif",
           }}
         >
-          {displayedPoem.split('\n').map((line, idx) => (
-            <div key={idx} className="my-1">
-              {!showOriginal && renderTranslation ? renderTranslation(line.trim(), idx) : line.trim()}
-            </div>
-          ))}
+          {renderPoemLines(english, true)}
         </motion.div>
-      </AnimatePresence>
+
+        {hasOriginal && (
+          <motion.div
+            aria-hidden={!showOriginal}
+            animate={{ opacity: showOriginal ? 1 : 0, scale: showOriginal ? 1 : 0.985 }}
+            transition={{ duration: 0.15 }}
+            dir="ltr"
+            lang="tr"
+            className={cn(
+              "col-start-1 row-start-1 py-3 select-text selection:bg-gold/20 leading-relaxed font-semibold italic",
+              !showOriginal && "pointer-events-none"
+            )}
+            style={{
+              fontSize: poemFontSize,
+              fontFamily: "'Poppins', sans-serif",
+            }}
+          >
+            {renderPoemLines(turkish!, false)}
+          </motion.div>
+        )}
+      </div>
+
       {hasOriginal && (
-        <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center">
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            setShowOriginal(current => !current);
+          }}
+          aria-label={showOriginal ? 'Show translation' : 'Show original Turkish'}
+          className="absolute end-4 md:end-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center"
+        >
           <ArrowLeftRight size={16} />
-        </div>
+        </button>
       )}
     </motion.div>
   );
@@ -1184,7 +1219,7 @@ export const StoryPage = ({
       {/* Dynamic responsive layout container */}
       <div className="flex-1 min-h-0 overflow-hidden">
         {/* Mobile View: Vertical scrolling stack */}
-        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar pr-2 space-y-6">
+        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar pe-3 sm:pe-4 space-y-6">
           {page.image && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -1293,7 +1328,7 @@ export const StoryPage = ({
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
-        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pr-2 pb-4">
+        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pe-3 xl:pe-4 pb-4">
           <div className="grid grid-cols-12 gap-8 items-start">
             {/* Left side: Image */}
             <div className="col-span-5 self-start lg:sticky lg:top-0">
