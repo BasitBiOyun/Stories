@@ -13,6 +13,7 @@ import {
   CheckCircle,
   ChevronLeft,
   ChevronRight,
+  ArrowRight,
 } from '../ui/icons';
 import { PageData, BookData, VocabularyItem } from '../../types';
 import { cn } from '../../lib/utils';
@@ -22,6 +23,8 @@ interface MasterGlossaryProps {
   bookData: BookData;
   page: PageData;
   collectionId?: string;
+  onStartChallenge?: () => void;
+  challengeWordCount?: number;
 }
 
 type KnownState = 'known' | 'unknown' | 'unreviewed';
@@ -62,7 +65,13 @@ const pickPreferredVoice = (lang: string) => {
     ?? candidates[0];
 };
 
-export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, collectionId }) => {
+export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
+  bookData,
+  page,
+  collectionId,
+  onStartChallenge,
+  challengeWordCount = 0,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [playingWord, setPlayingWord] = useState<string | null>(null);
   const [knownMap, setKnownMap] = useState<Record<string, KnownState>>({});
@@ -110,6 +119,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             allChapters: 'كل الفصول',
             pageLabel: 'صفحة',
             ofLabel: 'من',
+            challengeReady: 'بعد المراجعة، اختبر الكلمات المستهدفة في السياق والاسترجاع.',
+            startChallenge: 'ابدأ تحدي المفردات',
           }
         : {
             eyebrow: 'مركز المفردات',
@@ -142,6 +153,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             allChapters: 'كل الفصول',
             pageLabel: 'صفحة',
             ofLabel: 'من',
+            challengeReady: 'بعد المراجعة، اختبر الكلمات المستهدفة في السياق والاسترجاع.',
+            startChallenge: 'ابدأ تحدي المفردات',
           };
     }
 
@@ -177,6 +190,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           allChapters: 'All Chapters',
           pageLabel: 'Page',
           ofLabel: 'of',
+          challengeReady: 'After reviewing the glossary, practise the target words in context and active recall.',
+          startChallenge: 'Start Vocabulary Challenge',
         }
       : {
           eyebrow: 'Vocabulary Learning Hub',
@@ -209,6 +224,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           allChapters: 'All Chapters',
           pageLabel: 'Page',
           ofLabel: 'of',
+          challengeReady: 'After reviewing the glossary, practise the target words in context and active recall.',
+          startChallenge: 'Start Vocabulary Challenge',
         };
   }, [isRTL, bookData.level]);
 
@@ -960,6 +977,34 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             <ChevronRight size={14} mirrored={isRTL} />
           </button>
         </div>
+      )}
+
+      {onStartChallenge && (
+        <section className={cn(
+          'shrink-0 flex flex-col gap-3 rounded-2xl border bg-white/58 px-4 py-3.5 shadow-sm sm:flex-row sm:items-center sm:justify-between',
+          colTheme.borderStrong
+        )}>
+          <div className="min-w-0">
+            <div className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.15em]', colTheme.brandText)}>
+              {formatNumber(challengeWordCount)} · {bookData.level}
+            </div>
+            <p className="mt-1 max-w-2xl font-serif text-sm leading-relaxed text-wood/55">
+              {copy.challengeReady}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onStartChallenge}
+            className={cn(
+              'inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl px-5 font-display text-[11px] font-semibold text-white shadow-md transition-all active:scale-[0.99]',
+              colTheme.brand600
+            )}
+          >
+            {copy.startChallenge}
+            <ArrowRight size={15} className={isRTL ? 'rotate-180' : ''} />
+          </button>
+        </section>
       )}
 
     </div>
