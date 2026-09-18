@@ -187,24 +187,24 @@ export const adamA2PagesAr: PageData[] = [
   { id: 12, type: 'vocabulary-match', title: 'تحدي المفردات', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'صل ست كلمات أساسية من القصة بمعانيها.' },
   { id: 13, type: 'exercises', title: 'مراجعة اللغة', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول العشرة.' },
   {
-    id: 14, type: 'glossary', title: 'المعجم الشامل - الجزء الأول', content: 'قائمة كاملة بملاحظات الكلمات من الفصول 1–5.', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
+    id: 14,
+    type: 'glossary',
+    title: 'المعجم الرئيسي',
+    content: 'راجع جميع مفردات القصة المهمة في مكان واحد.',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
     vocabulary: [
-      { word: 'نَبِيٍّ', definition: 'شخص يرسله الله إلى الناس برسالة.' }, { word: 'تُرَاب', definition: 'الأرض التي تنمو فيها النباتات.' }, { word: 'فُضُولٍ', definition: 'الرغبة في معرفة شيء أو تعلمه.' }, { word: 'أَحْفَادُ', definition: 'أبناء الأبناء أو البنات.' },
+{ word: 'نَبِيٍّ', definition: 'شخص يرسله الله إلى الناس برسالة.' }, { word: 'تُرَاب', definition: 'الأرض التي تنمو فيها النباتات.' }, { word: 'فُضُولٍ', definition: 'الرغبة في معرفة شيء أو تعلمه.' }, { word: 'أَحْفَادُ', definition: 'أبناء الأبناء أو البنات.' },
       { word: 'وَاحْتِرامًا', definition: 'معاملة شخص بتقدير واهتمام.' }, { word: 'الْعِلْمَ', definition: 'ما يعرفه الإنسان ويفهمه.' }, { word: 'فَأُعْجِبُوا', definition: 'أحبوه واحترموه كثيرًا.' }, { word: 'التُّرَاب', definition: 'أرض لينة يمكن أن تتشكل.' },
       { word: 'مُتَكَبِّرًا', definition: 'يظن أنه أفضل أو أهم من الآخرين.' }, { word: 'قِيمَةً', definition: 'مهم أو مفيد جدًا.' }, { word: 'مَخْلُوقَاتِ', definition: 'كائنات خلقها الله.' }, { word: 'أَصْلَهُ', definition: 'المكان أو المادة التي جاء منها الشيء.' },
       { word: 'بِالْوَحْدَةِ', definition: 'حزين لأنه وحده.' }, { word: 'رَائِعًا', definition: 'جميل جدًا ومفرح.' }, { word: 'حَذَّرَ', definition: 'نبه شخصًا إلى خطر أو شيء يجب تجنبه.' }, { word: 'زَوْجَةً', definition: 'امرأة متزوجة.' },
       { word: 'كَذِبًا', definition: 'قول غير صحيح.' }, { word: 'الْخَطَأِ', definition: 'شيء يفعله الشخص بشكل غير صحيح.' }, { word: 'نَسِيًّا', definition: 'ينسى الأشياء كثيرًا.' }, { word: 'أَفْضَلُ', definition: 'أعلى أو أحسن من شخص أو شيء آخر.' },
-    ]
-  },
-  {
-    id: 15, type: 'glossary', title: 'المعجم الشامل - الجزء الثاني', content: 'قائمة كاملة بملاحظات الكلمات من الفصول 6–10.', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723',
-    vocabulary: [
-      { word: 'الزُّروعِ', definition: 'نباتات تُزرع للغذاء.' }, { word: 'لِإِدارَةِ', definition: 'قيادة مكان وتنظيم شؤونه.' }, { word: 'الأَرْضِ', definition: 'العالم الذي نعيش عليه.' }, { word: 'الضُّعَفاءَ', definition: 'أشخاص ليسوا أقوياء ويحتاجون إلى المساعدة.' },
+
+{ word: 'الزُّروعِ', definition: 'نباتات تُزرع للغذاء.' }, { word: 'لِإِدارَةِ', definition: 'قيادة مكان وتنظيم شؤونه.' }, { word: 'الأَرْضِ', definition: 'العالم الذي نعيش عليه.' }, { word: 'الضُّعَفاءَ', definition: 'أشخاص ليسوا أقوياء ويحتاجون إلى المساعدة.' },
       { word: 'صَادِقِينَ', definition: 'يقولون الحقيقة ولا يخدعون.' }, { word: 'يُحْسِنوا', definition: 'يفعلوا الخير ويعاملوا الآخرين بلطف.' }, { word: 'عَدُوٌّ', definition: 'شخص يريد الضرر أو يعارض شخصًا آخر.' }, { word: 'أَنْبِياءَ', definition: 'أشخاص أرسلهم الله برسالته.' },
       { word: 'رَاعِيًا', definition: 'شخص يعتني بالغنم.' }, { word: 'مُزَارِعًا', definition: 'شخص يزرع المحاصيل أو يعتني بالحيوانات في مزرعة.' }, { word: 'قُرْبَانًا', definition: 'شيء يُقدَّم لله.' }, { word: 'حَسُودًا', definition: 'حزين لأن شخصًا آخر يملك شيئًا يريده.' },
       { word: 'غُرَابًا', definition: 'طائر أسود كبير.' }, { word: 'يَضْطَرِبُ', definition: 'يشعر بخوف وقلق شديدين.' }, { word: 'يَحْفِرُ', definition: 'يصنع حفرة بتحريك التراب.' }, { word: 'أُؤْذِيَكَ', definition: 'أسبب لك ضررًا أو ألمًا.' },
       { word: 'الْحَسَدِ', definition: 'الحزن لأن شخصًا آخر يملك شيئًا تريده.' }, { word: 'الْقِصَّةُ', definition: 'أحداث تُروى بترتيب.' }, { word: 'فِي كُلِّ الْعَالَمِ', definition: 'في أماكن كثيرة حول العالم.' }, { word: 'رِسَالَتَهُ', definition: 'فكرة مهمة تُنقل إلى الآخرين.' },
-    ]
+    ],
   },
   { id: 16, type: 'final-challenge', title: 'التحدي النهائي', content: 'أظهر ما تعلمته من القصة كلها عبر عشرة أنشطة مختلفة قابلة للتقييم.', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723' },
 ];
