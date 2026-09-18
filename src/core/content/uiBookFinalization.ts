@@ -192,6 +192,12 @@ const pickPreparedTargets = (
 
       const englishVocabulary = englishPage.vocabulary ?? [];
       const arabicVocabulary = arabicPage.vocabulary ?? [];
+      if (englishVocabulary.length !== arabicVocabulary.length) {
+        throw new Error(
+          `[Prepared Book Finalization] ${english.id} chapter ${englishPage.id} Word Notes differ: EN=${englishVocabulary.length}, AR=${arabicVocabulary.length}.`,
+        );
+      }
+
       englishVocabulary.forEach((englishEntry, index) => {
         const arabicEntry = arabicPage.vocabulary?.[index];
         if (!arabicEntry?.word?.trim() || !arabicEntry.definition?.trim()) return;
