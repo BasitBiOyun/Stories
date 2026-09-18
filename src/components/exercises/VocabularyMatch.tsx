@@ -54,7 +54,7 @@ const maskWord = (context: string | undefined, word: string) => {
   const lowerContext = context.toLocaleLowerCase();
   const lowerWord = word.toLocaleLowerCase();
   const index = lowerContext.indexOf(lowerWord);
-  if (index < 0) return context;
+  if (index < 0) return '';
   return context.slice(0, index) + '_____' + context.slice(index + word.length);
 };
 
@@ -92,7 +92,6 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
   const [wrongWord, setWrongWord] = useState<string | null>(null);
   const [wrongMeaning, setWrongMeaning] = useState<string | null>(null);
   const [streak, setStreak] = useState(0);
-  const [bestStreak, setBestStreak] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackState>({ kind: 'idle' });
 
   const [stage, setStage] = useState<'match' | 'context' | 'recall' | 'done'>('match');
@@ -138,7 +137,6 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
     setWrongWord(null);
     setWrongMeaning(null);
     setStreak(0);
-    setBestStreak(0);
     setFeedback({ kind: 'idle' });
     setStage('match');
     setRevisitWords(new Set());
@@ -175,7 +173,6 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
       setSelectedMeaning(null);
       const nextStreak = streak + 1;
       setStreak(nextStreak);
-      setBestStreak((value) => Math.max(value, nextStreak));
 
       if (Object.keys(next).length === total) {
         setFeedback({ kind: 'done' });
@@ -511,7 +508,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
               <p className={cn('font-serif font-semibold leading-[1.65] text-wood', isArabic ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl')}>
                 {currentRecall.meaning}
               </p>
-              {policy.vocabularyRecallMode !== 'choice' && currentRecall.context && (
+              {policy.vocabularyRecallMode === 'guided' && currentRecall.context && (
                 <p className={cn('mt-4 rounded-xl p-3 font-serif leading-relaxed text-wood/62', theme.barBg, isArabic ? 'text-base' : 'text-sm')}>
                   {maskWord(currentRecall.context, currentRecall.word)}
                 </p>
