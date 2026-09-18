@@ -188,7 +188,7 @@ export const ExercisePage = ({
   React.useEffect(() => {
     setReviewIndex(0);
     setCompletedExercises([]);
-  }, [page.id]);
+  }, [page.id, language]);
 
   const isReviewStageUnlocked = (stageIndex: number) => {
     const start = reviewStageStarts[stageIndex] ?? 0;
