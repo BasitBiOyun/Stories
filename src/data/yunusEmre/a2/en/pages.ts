@@ -189,8 +189,8 @@ In these two stories, Yunus tells us to always remember Allah in our hearts and 
   },
   { id: 9, type: 'quiz', title: 'Knowledge Check: Yunus Emre - A2', image: 'https://picsum.photos/seed/quiz-yunus-a2/1200/800', audioUrl: '', content: 'Check your understanding of the complete story.' },
   { id: 10, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-match-yunus-a2/1200/800', audioUrl: '', content: 'Match six important story words with their meanings.' },
-  { id: 11, type: 'glossary', title: 'Master Glossary - Part 1', content: 'Vocabulary from the first half of the story.', image: 'https://picsum.photos/seed/glossary1-yunus-a2/1200/800', vocabulary: [
-    {
+  { id: 11, type: 'glossary', title: 'Master Glossary', content: 'Review all key vocabulary from the story in one place.', image: 'https://picsum.photos/seed/glossary-yunus-a2/1200/800', vocabulary: [
+{
       word: 'poets',
       definition: 'People who write poems.',
       partOfSpeech: 'noun',
@@ -361,9 +361,8 @@ In these two stories, Yunus tells us to always remember Allah in our hearts and 
       storyExample: 'Dervishes lived a moderate and disciplined life according to Islam.',
       category: 'Daily Life',
     },
-  ] },
-  { id: 12, type: 'glossary', title: 'Master Glossary - Part 2', content: 'Vocabulary from the second half of the story.', image: 'https://picsum.photos/seed/glossary2-yunus-a2/1200/800', vocabulary: [
-    {
+
+{
       word: 'humble',
       definition: 'Not proud; respectful and modest.',
       partOfSpeech: 'adjective',
