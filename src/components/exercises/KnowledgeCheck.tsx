@@ -183,8 +183,8 @@ const QuestionCard = ({
                     : revealWrong
                       ? 'bg-rose-500 border-rose-500 text-white'
                       : selected
-                        ? `${theme.accentBg} border-transparent text-white`
-                        : `bg-white ${theme.softBorder} text-wood/65 hover:${theme.softBg}`
+                        ? `${theme.accentBg} text-white ring-transparent`
+                        : `bg-white text-wood/65 ring-black/[0.07] hover:bg-black/[0.025]`
                 )}
               >
                 {value ? t('ex.true') : t('ex.false')}
@@ -213,8 +213,8 @@ const QuestionCard = ({
                     : revealWrong
                       ? 'bg-rose-500 border-rose-500 text-white'
                       : selected
-                        ? `${theme.softBg} ${theme.border}`
-                        : `bg-white ${theme.softBorder} hover:${theme.softBg}`
+                        ? `${theme.softBg} ${theme.accentText} ring-black/[0.08]`
+                        : `bg-white ring-black/[0.07] hover:bg-black/[0.025]`
                 )}
               >
                 <span className={cn(
@@ -424,7 +424,7 @@ export const KnowledgeCheck = ({
     <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pe-2">
       <div className="mx-auto w-full max-w-5xl space-y-5 pb-4">
         <div className={cn(
-          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)]',
+          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)] flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
           theme.softBg,
           theme.softBorder
         )}>
@@ -507,16 +507,17 @@ export const KnowledgeCheck = ({
           )}>
             <Trophy className={percentage >= 70 ? 'text-emerald-600' : 'text-amber-600'} size={28} />
             <div className="flex-1">
-              <p className="font-display text-base sm:text-lg font-bold text-wood">
-                {formatNumber(correctCount)} / {formatNumber(supportedExercises.length)}
+              <p className="font-display text-xl sm:text-2xl font-semibold tracking-[-0.025em] text-wood">
+                {formatNumber(correctCount)} / {formatNumber(supportedExercises.length)} · {formatNumber(percentage)}%
               </p>
               <p className={cn('font-serif text-wood/60', isArabic ? 'text-[15px]' : 'text-sm')}>
                 {t('ex.feedbackHint').replace('{info}', 'ⓘ')}
               </p>
             </div>
             {onReset && (
-              <button type="button" onClick={reset} className="p-2.5 rounded-xl bg-white border border-gray-200 text-wood/60" aria-label={t('ex.tryAgain')}>
-                <RotateCcw size={18} />
+              <button type="button" onClick={reset} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-4 font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-wood/60 shadow-sm ring-1 ring-black/[0.07]" aria-label={t('ex.tryAgain')}>
+                <RotateCcw size={16} />
+                <span>{isArabic ? 'إعادة' : 'Try again'}</span>
               </button>
             )}
           </div>
