@@ -131,7 +131,7 @@ export const HistoricalEntityWord = ({
                 lang={locale}
                 onClick={(event) => event.stopPropagation()}
                 className={cn(
-                  'w-[calc(100vw-1.5rem)] max-w-[420px] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-teal-300/30',
+                  'w-[calc(100vw-1.5rem)] max-w-[420px] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden rounded-2xl border border-teal-300/30',
                   'bg-wood text-parchment shadow-2xl',
                   isArabic ? 'text-right' : 'text-left',
                 )}
