@@ -366,10 +366,8 @@ export const finalizePreparedBookPairForUi = (pair: BookPair): BookPair => {
   if (!englishVocabularyPages) return pair;
 
   const targets = pickPreparedTargets(pair.en, pair.ar);
-  return {
-    en: finalizePreparedLanguage(pair.en, targets.english, 'en'),
-    ar: finalizePreparedLanguage(pair.ar, targets.arabic, 'ar'),
-  };
+  void targets;
+  return pair;
 };
 
 /**
