@@ -436,8 +436,7 @@ Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerl
   },
   { id: 15, type: 'quiz', title: 'Knowledge Check: Yunus Emre - B2', image: '', audioUrl: '', content: 'Check whole-book comprehension with eight evidence-based questions.' },
   { id: 16, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: '', audioUrl: '', content: 'Match ten important story words with distinct meanings.' },
-  { id: 17, type: 'glossary', title: 'Master Glossary - Part 1', image: '', content: 'Review chapter vocabulary from the first half of the story.', vocabulary: [] },
-  { id: 18, type: 'glossary', title: 'Master Glossary - Part 2', image: '', content: 'Review chapter vocabulary from the second half of the story.', vocabulary: [] },
+  { id: 17, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review all key vocabulary from the story in one place.', vocabulary: [] },
   { id: 19, type: 'exercises', title: 'Retrieval Review', image: '', content: 'Retrieve, reconnect and use the key learning through four separate activities.' },
   { id: 20, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B2', image: '', content: 'Demonstrate whole-book mastery through ten independent scored activities.' },
 // c06b
@@ -480,6 +479,125 @@ const englishLanguageFocus: Record<number, Exercise[]> = {
   ...yunusB2LanguageFocusExercisesPart4,
 };
 
+const yunusB2GlossaryPronunciation:Record<string,string>={
+  "Islamic mysticism": "/ɪzˈlɑːmɪk ˈmɪstɪsɪzəm/",
+  "crucial": "/ˈkruːʃəl/",
+  "moral principles": "/ˈmɔːrəl ˈprɪnsəpəlz/",
+  "generously": "/ˈdʒenərəsli/",
+  "literary tradition": "/ˈlɪtəreri trəˈdɪʃən/",
+  "contemporary": "/kənˈtempəreri/",
+  "solidarity": "/ˌsɑːləˈderəti/",
+  "literary value": "/ˈlɪtəreri ˈvæljuː/",
+  "madrasas": "/məˈdrɑːsəz/",
+  "spiritual tutor": "/ˈspɪrɪtʃuəl ˈtuːtər/",
+  "poetry": "/ˈpoʊətri/",
+  "coincided": "/ˌkoʊɪnˈsaɪdɪd/",
+  "hard times": "/hɑːrd taɪmz/",
+  "invasion": "/ɪnˈveɪʒən/",
+  "navy": "/ˈneɪvi/",
+  "decline": "/dɪˈklaɪn/",
+  "nomadic": "/noʊˈmædɪk/",
+  "poor governance": "/pʊr ˈɡʌvərnəns/",
+  "unrest": "/ʌnˈrest/",
+  "rebelled": "/rɪˈbeld/",
+  "false retreat": "/fɔːls rɪˈtriːt/",
+  "captive": "/ˈkæptɪv/",
+  "suppressed": "/səˈprest/",
+  "plundered": "/ˈplʌndərd/",
+  "slaughtered": "/ˈslɔːtərd/",
+  "dependent state": "/dɪˈpendənt steɪt/",
+  "relief": "/rɪˈliːf/",
+  "principalities": "/ˌprɪnsəˈpælətiz/",
+  "conflict": "/ˈkɑːnflɪkt/",
+  "attached": "/əˈtætʃt/",
+  "medium": "/ˈmiːdiəm/",
+  "Qur’an": "/kʊrˈɑːn/",
+  "chaos": "/ˈkeɪɑːs/",
+  "dervishes": "/ˈdɜːrvɪʃɪz/",
+  "popular Sûfîsm": "/ˈpɑːpjələr ˈsuːfɪzəm/",
+  "belief": "/bɪˈliːf/",
+  "manifestations": "/ˌmænəfəˈsteɪʃənz/",
+  "source": "/sɔːrs/",
+  "vahdet-i vücut": "/vɑːhˈdet i vuːˈdʒuːt/",
+  "attributes": "/ˈætrəbjuːts/",
+  "harmony": "/ˈhɑːrməni/",
+  "core": "/kɔːr/",
+  "Creator": "/kriˈeɪtər/",
+  "foundation": "/faʊnˈdeɪʃən/",
+  "interrelated": "/ˌɪntərɪˈleɪtɪd/",
+  "manifests": "/ˈmænəfests/",
+  "intellect": "/ˈɪntəlekt/",
+  "moral behavior": "/ˈmɔːrəl bɪˈheɪvjər/",
+  "purity": "/ˈpjʊrəti/",
+  "perceives": "/pərˈsiːvz/",
+  "advisor": "/ədˈvaɪzər/",
+  "heart and reason": "/hɑːrt ænd ˈriːzən/",
+  "preparing": "/prɪˈperɪŋ/",
+  "meaningful": "/ˈmiːnɪŋfəl/",
+  "death": "/deθ/",
+  "morality": "/məˈræləti/",
+  "animalistic self": "/ˌænəməˈlɪstɪk self/",
+  "righteous life": "/ˈraɪtʃəs laɪf/",
+  "negative traits": "/ˈneɡətɪv treɪts/",
+  "moral guide": "/ˈmɔːrəl ɡaɪd/",
+  "legacy": "/ˈleɡəsi/",
+  "prominent": "/ˈprɑːmɪnənt/",
+  "writings": "/ˈraɪtɪŋz/",
+  "literary works": "/ˈlɪtəreri wɜːrks/",
+  "future generations": "/ˈfjuːtʃər ˌdʒenəˈreɪʃənz/"
+};
+const yunusB2GlossaryCategoryByChapter:Record<number,string>={
+  1:'Sûfîsm & Literature',
+  2:'Education & Intellectual Life',
+  3:'History & Institutions',
+  4:'History & Social Crisis',
+  5:'Conflict & Mongol Invasion',
+  6:'Politics & Dependence',
+  7:'Sûfîsm & Social Meaning',
+  8:'Tawhid & Metaphysics',
+  9:'Unity & Love',
+  10:'Heart, Intellect & Ethics',
+  11:'Salvation & Mortality',
+  12:'Morality & Character',
+  13:'Legacy & Moral Guidance',
+};
+const inferYunusB2PartOfSpeech=(word:string,definition:string):string=>{
+  const lower=definition.toLocaleLowerCase('en');
+  if(/^(happened |resisted |stopped |stole |killed |joined |becomes |recognizes |making )/.test(lower))return word.includes(' ')?'verb phrase':'verb';
+  if(/^(in a |extremely |living by |connected in |important, |having )/.test(lower))return word.includes(' ')?'adverbial phrase':'adverb';
+  if(/^(living or existing |important |widely recognized |having clear |a state of being free)/.test(lower))return word.includes(' ')?'adjective phrase':'adjective';
+  return word.includes(' ')?'noun phrase':'noun';
+};
+const findYunusB2StoryExample=(content:string,word:string):string|null=>{
+  const target=word.toLocaleLowerCase('en');
+  const sentences=content
+    .split(/\n+/)
+    .flatMap(paragraph=>paragraph.trim().split(/(?<=[.!?])(?:["”’']?)(?:\s+|$)/))
+    .map(sentence=>sentence.trim())
+    .filter(Boolean);
+  return sentences.find(sentence=>sentence.toLocaleLowerCase('en').includes(target))
+    ??content.split(/\n+/).map(part=>part.trim()).find(part=>part.toLocaleLowerCase('en').includes(target))
+    ??null;
+};
+const yunusB2MasterGlossary:NonNullable<PageData['vocabulary']>=rawYunusB2Pages
+  .filter(page=>STORY_IDS.has(page.id))
+  .flatMap(page=>(page.vocabulary??[]).map(item=>{
+    const storyExample=findYunusB2StoryExample(page.content??'',item.word);
+    if(!storyExample)throw new Error(`[Yunus B2 EN] Missing source example for ${item.word} in chapter ${page.id}.`);
+    const pronunciation=yunusB2GlossaryPronunciation[item.word];
+    if(!pronunciation)throw new Error(`[Yunus B2 EN] Missing pronunciation for ${item.word}.`);
+    return{
+      ...item,
+      level:'B2' as const,
+      partOfSpeech:inferYunusB2PartOfSpeech(item.word,item.definition),
+      pronunciation,
+      chapter:page.id,
+      chapterTitle:page.title,
+      storyExample,
+      category:yunusB2GlossaryCategoryByChapter[page.id]??'Story Vocabulary',
+    };
+  }));
+
 export const yunusB2Pages: PageData[] = rawYunusB2Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = englishLanguageFocus[page.id];
@@ -492,6 +610,7 @@ export const yunusB2Pages: PageData[] = rawYunusB2Pages.map(page => {
   }
   if (page.id === 15) return { ...page, exercises: yunusB2ManualKnowledgeCheckExercises };
   if (page.id === 16) return { ...page, vocabularyPairs: yunusB2VocabularyChallengePairs };
+  if (page.id === 17) return { ...page, vocabulary: yunusB2MasterGlossary };
   if (page.id === 19) return {
     ...page,
     title: 'B2 Language Review',
