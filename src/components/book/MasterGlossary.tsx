@@ -13,7 +13,7 @@ import {
   Sparkles,
   CheckCircle,
 } from '../ui/icons';
-import { PageData, BookData } from '../../types';
+import { PageData, BookData, VocabularyItem } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -66,6 +66,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const [playingWord, setPlayingWord] = useState<string | null>(null);
   const [knownMap, setKnownMap] = useState<Record<string, KnownState>>({});
   const [filter, setFilter] = useState<FilterMode>('all');
+  const [expandedWord, setExpandedWord] = useState<string | null>(null);
   const { t, formatNumber, isRTL } = useLanguage();
 
   const copy = useMemo(() => {
@@ -96,6 +97,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             selfCheck: 'اختياري',
             selfCheckNote: 'اختر «أعرفها» إذا كنت تفهم الكلمة. اختر «تدرّب» إذا أردت دراستها مرة أخرى.',
             visibleWords: 'كلمات ظاهرة',
+            wordFocus: 'تفاصيل الكلمة',
+            closeFocus: 'إخفاء التفاصيل',
+            inStory: 'في القصة',
+            wordFamilyLabel: 'عائلة الكلمة',
+            collocationsLabel: 'تعبيرات شائعة',
+            synonymsLabel: 'كلمات قريبة',
+            antonymsLabel: 'عكسها',
+            chapterLabel: 'الفصل',
           }
         : {
             eyebrow: 'مركز المفردات',
@@ -120,6 +129,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             selfCheck: 'تقييم ذاتي',
             selfCheckNote: 'اختر «واثق» إذا كنت تفهم الكلمة دون مساعدة، أو «للتدرّب» إذا أردت العودة إليها.',
             visibleWords: 'كلمات ظاهرة',
+            wordFocus: 'تفاصيل الكلمة',
+            closeFocus: 'إخفاء التفاصيل',
+            inStory: 'في القصة',
+            wordFamilyLabel: 'عائلة الكلمة',
+            collocationsLabel: 'تعبيرات شائعة',
+            synonymsLabel: 'كلمات قريبة',
+            antonymsLabel: 'عكسها',
+            chapterLabel: 'الفصل',
           };
     }
 
@@ -147,6 +164,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           selfCheck: 'My choice',
           selfCheckNote: 'Choose “I Know” if you understand the word. Choose “Practice” if you want to study it again.',
           visibleWords: 'words shown',
+          wordFocus: 'Word details',
+          closeFocus: 'Hide details',
+          inStory: 'In the story',
+          wordFamilyLabel: 'Word family',
+          collocationsLabel: 'Useful phrases',
+          synonymsLabel: 'Similar words',
+          antonymsLabel: 'Opposite',
+          chapterLabel: 'Chapter',
         }
       : {
           eyebrow: 'Vocabulary Learning Hub',
@@ -171,6 +196,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           selfCheck: 'Self-check',
           selfCheckNote: 'Choose “Confident” when you understand the word without help, or “Practice” when you want to revisit it.',
           visibleWords: 'words shown',
+          wordFocus: 'Word Focus',
+          closeFocus: 'Hide details',
+          inStory: 'In the story',
+          wordFamilyLabel: 'Word family',
+          collocationsLabel: 'Collocations',
+          synonymsLabel: 'Synonyms',
+          antonymsLabel: 'Antonyms',
+          chapterLabel: 'Chapter',
         };
   }, [isRTL, bookData.level]);
 
@@ -262,15 +295,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       return page.vocabulary
         .filter(v => isTargetLanguageVocabulary(v.word, isRTL))
         .map(v => ({
+          ...v,
           key: normalizeGlossaryKey(v.word),
           word: v.word.trim(),
-          definition: v.definition,
-          example: v.example ?? null,
         }))
         .sort((a, b) => a.word.localeCompare(b.word, isRTL ? 'ar' : 'en', { sensitivity: 'base' }));
     }
 
-    const vocabMap = new Map<string, { word: string; definition: string; example: string | null }>();
+    const vocabMap = new Map<string, VocabularyItem>();
     bookData.pages.forEach(p => {
       p.vocabulary?.forEach(v => {
         if (!isTargetLanguageVocabulary(v.word, isRTL)) return;
@@ -278,9 +310,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         const key = normalizeGlossaryKey(v.word);
         if (!vocabMap.has(key)) {
           vocabMap.set(key, {
+            ...v,
             word: v.word.trim(),
-            definition: v.definition,
-            example: v.example ?? null,
           });
         }
       });
@@ -303,10 +334,16 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
 
   const filteredVocab = useMemo(() => {
     return allVocabulary.filter(v => {
-      const matchesSearch =
-        !searchTerm ||
-        v.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        v.definition.toLowerCase().includes(searchTerm.toLowerCase());
+      const searchHaystack = [
+        v.word,
+        v.definition,
+        v.category,
+        v.partOfSpeech,
+        v.chapterTitle,
+        ...(v.collocations ?? []),
+        ...(v.wordFamily ?? []),
+      ].filter(Boolean).join(' ').toLowerCase();
+      const matchesSearch = !searchTerm || searchHaystack.includes(searchTerm.toLowerCase());
 
       const state: KnownState = knownMap[v.key] ?? 'unreviewed';
       const matchesFilter =
@@ -636,6 +673,23 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                       )}>
                         {v.word}
                       </h3>
+
+                      {(v.pronunciation || v.partOfSpeech || v.level || v.chapter) && (
+                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mt-1.5 text-[10px] sm:text-[11px] text-wood/45">
+                          {v.pronunciation && <span className="font-serif">{v.pronunciation}</span>}
+                          {v.partOfSpeech && <span className="font-semibold">{v.partOfSpeech}</span>}
+                          {v.level && (
+                            <span className={cn('px-1.5 py-0.5 rounded-md font-black', colTheme.brandSoft, colTheme.brandText)}>
+                              {v.level}
+                            </span>
+                          )}
+                          {v.chapter && (
+                            <span className="font-semibold">
+                              {copy.chapterLabel} {formatNumber(v.chapter)}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     <button
@@ -662,6 +716,91 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                       <p className="font-serif italic text-sm text-wood/55 leading-relaxed">
                         “{v.example}”
                       </p>
+                    </div>
+                  )}
+
+                  {(v.category || v.storyExample || v.wordFamily?.length || v.collocations?.length || v.synonyms?.length || v.antonyms?.length) && (
+                    <div className="mt-3">
+                      <div className="flex items-center justify-between gap-2">
+                        {v.category ? (
+                          <span className={cn(
+                            'px-2 py-1 rounded-lg text-[10px] font-black uppercase tracking-[0.08em]',
+                            colTheme.brandSoft,
+                            colTheme.brandText
+                          )}>
+                            {v.category}
+                          </span>
+                        ) : <span />}
+
+                        <button
+                          onClick={() => setExpandedWord(expandedWord === v.key ? null : v.key)}
+                          className={cn(
+                            'text-[11px] font-bold px-2.5 py-1.5 rounded-lg transition-all',
+                            colTheme.brandSoft,
+                            colTheme.brandText
+                          )}
+                        >
+                          {expandedWord === v.key ? copy.closeFocus : copy.wordFocus}
+                        </button>
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {expandedWord === v.key && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0, y: -4 }}
+                            animate={{ opacity: 1, height: 'auto', y: 0 }}
+                            exit={{ opacity: 0, height: 0, y: -4 }}
+                            transition={{ duration: 0.18 }}
+                            className="overflow-hidden"
+                          >
+                            <div className={cn('mt-2.5 rounded-xl border bg-white/60 p-3', colTheme.border)}>
+                              {v.chapterTitle && (
+                                <div className="text-[11px] font-bold text-wood/45 mb-2">
+                                  {copy.chapterLabel} {v.chapter ? formatNumber(v.chapter) : ''}{v.chapter ? ' · ' : ''}{v.chapterTitle}
+                                </div>
+                              )}
+
+                              {v.storyExample && (
+                                <div className="mb-3">
+                                  <div className={cn('text-[10px] font-black uppercase tracking-[0.1em] mb-1', colTheme.brandText)}>
+                                    {copy.inStory}
+                                  </div>
+                                  <p className="font-serif italic text-sm text-wood/65 leading-relaxed">
+                                    “{v.storyExample}”
+                                  </p>
+                                </div>
+                              )}
+
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                {v.wordFamily?.length ? (
+                                  <div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.wordFamilyLabel}</div>
+                                    <p className="text-xs text-wood/65 leading-relaxed">{v.wordFamily.join(' · ')}</p>
+                                  </div>
+                                ) : null}
+                                {v.collocations?.length ? (
+                                  <div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.collocationsLabel}</div>
+                                    <p className="text-xs text-wood/65 leading-relaxed">{v.collocations.join(' · ')}</p>
+                                  </div>
+                                ) : null}
+                                {v.synonyms?.length ? (
+                                  <div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.synonymsLabel}</div>
+                                    <p className="text-xs text-wood/65 leading-relaxed">{v.synonyms.join(' · ')}</p>
+                                  </div>
+                                ) : null}
+                                {v.antonyms?.length ? (
+                                  <div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.antonymsLabel}</div>
+                                    <p className="text-xs text-wood/65 leading-relaxed">{v.antonyms.join(' · ')}</p>
+                                  </div>
+                                ) : null}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   )}
 
