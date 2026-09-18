@@ -238,72 +238,1104 @@ export const mosesB1Pages: PageData[] = [
   {
     id: 16,
     type: 'glossary',
-    title: 'Master Glossary - Part 1',
+    title: 'Master Glossary',
     image: '',
-    content: 'Review Word Notes from Chapters 1–7.',
+    content: 'Review all key vocabulary from the story in one place.',
     vocabulary: [
-      { word: 'prophet', definition: 'A person chosen by Allah to guide people.' },
-      { word: 'ancestor', definition: 'A family member from an earlier generation.' },
-      { word: 'harsh', definition: 'Cruel, strict, or unkind.' },
-      { word: 'kingdom', definition: 'A country or land ruled by a king.' },
-      { word: 'advisors', definition: 'People who give advice to a ruler.' },
-      { word: 'newborn', definition: 'A baby who has just been born.' },
-      { word: 'heartless', definition: 'Showing no kindness or pity.' },
-      { word: 'frightened', definition: 'Very afraid.' },
-      { word: 'shelter', definition: 'A safe place that protects someone.' },
-      { word: 'ashore', definition: 'Onto the land from the water.' },
-      { word: 'servants', definition: 'People who work in a house or palace.' },
-      { word: 'kind-hearted', definition: 'Kind, gentle, and caring.' },
-      { word: 'nurse', definition: 'A woman who feeds and cares for a baby.' },
-      { word: 'courage', definition: 'Bravery in a difficult or dangerous situation.' },
-      { word: 'raised', definition: 'Brought up and cared for a child.' },
-      { word: 'originally', definition: 'At first or by origin.' },
-      { word: 'accidentally', definition: 'By chance and not on purpose.' },
-      { word: 'on purpose', definition: 'Intentionally and with a clear aim.' },
-      { word: 'pardoned', definition: 'Forgave someone for a wrong action.' },
-      { word: 'quarrelsome', definition: 'Often arguing or fighting.' },
-      { word: 'punishment', definition: 'A penalty for doing something wrong.' },
-      { word: 'escaped', definition: 'Got away from danger.' },
-      { word: 'guided', definition: 'Shown the right way.' },
-      { word: 'spring', definition: 'A natural place where water comes from the ground.' },
-      { word: 'wait our turn', definition: 'Wait until it is our proper time to act.' },
-      { word: 'shepherds', definition: 'People who look after sheep.' },
-      { word: 'messenger', definition: 'A person chosen to deliver Allah’s message.' },
-      { word: 'very old', definition: 'Advanced in age.' },
-    ],
-  },
-  {
-    id: 17,
-    type: 'glossary',
-    title: 'Master Glossary - Part 2',
-    image: '',
-    content: 'Review Word Notes from Chapters 8–13.',
-    vocabulary: [
-      { word: 'offered', definition: 'Gave someone a chance to accept something.' },
-      { word: 'stranger', definition: 'A person who is new to a place and does not know people there.' },
-      { word: 'valley', definition: 'Low land between hills or mountains.' },
-      { word: 'hillside', definition: 'The side or slope of a hill.' },
-      { word: 'Lord', definition: 'A title used here for Allah as the Creator and ruler.' },
-      { word: 'staff', definition: 'A long stick used for walking or support.' },
-      { word: 'signs', definition: 'Miracles or proofs of Allah’s power.' },
-      { word: 'guidance', definition: 'Help to follow the right path.' },
-      { word: 'brother Harun', definition: 'Moses’s brother who accompanied and supported him.' },
-      { word: 'throne', definition: 'A special seat for a king or ruler.' },
-      { word: 'kept refusing', definition: 'Continued to say no or reject something.' },
-      { word: 'shining white', definition: 'Giving off a bright white appearance.' },
-      { word: 'made fun of', definition: 'Laughed at someone in an unkind way.' },
-      { word: 'witnessed', definition: 'Saw something happen.' },
-      { word: 'arrogant', definition: 'Thinking that one is better or greater than others.' },
-      { word: 'trouble', definition: 'Cause problems or suffering for someone.' },
-      { word: 'keep it secret', definition: 'Hide information or a plan from others.' },
-      { word: 'caravan', definition: 'A group of people travelling together.' },
-      { word: 'catch up with', definition: 'Reach someone after following them.' },
-      { word: 'panicked', definition: 'Felt sudden strong fear.' },
-      { word: 'trapped', definition: 'Unable to escape from a dangerous place.' },
-      { word: 'parted', definition: 'Separated or opened into two sides.' },
-      { word: 'drowned', definition: 'Died under water because they could not breathe.' },
-      { word: 'right path', definition: 'The correct moral and spiritual way.' },
-    ],
+      {
+            "word": "prophet",
+            "definition": "A person chosen by Allah to guide people.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈprɑːfɪt/",
+            "wordFamily": [
+                  "prophet",
+                  "prophetic"
+            ],
+            "collocations": [
+                  "prophet of Allah",
+                  "great prophet"
+            ],
+            "chapter": 1,
+            "chapterTitle": "The Pharaoh’s Fear",
+            "storyExample": "Moses (pbuh) was a great prophet of Allah.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "ancestor",
+            "definition": "A family member from an earlier generation.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈænsestər/",
+            "wordFamily": [
+                  "ancestor",
+                  "ancestry"
+            ],
+            "collocations": [
+                  "common ancestor",
+                  "family ancestor"
+            ],
+            "synonyms": [
+                  "forebear"
+            ],
+            "chapter": 1,
+            "chapterTitle": "The Pharaoh’s Fear",
+            "storyExample": "They believed in only one Allah, just like their ancestor, Prophet Abraham (pbuh).",
+            "category": "Family & History"
+      },
+      {
+            "word": "harsh",
+            "definition": "Cruel, strict, or unkind.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/hɑːrʃ/",
+            "wordFamily": [
+                  "harsh",
+                  "harshly",
+                  "harshness"
+            ],
+            "collocations": [
+                  "harsh treatment",
+                  "rude and harsh"
+            ],
+            "synonyms": [
+                  "cruel",
+                  "severe"
+            ],
+            "antonyms": [
+                  "gentle"
+            ],
+            "chapter": 1,
+            "chapterTitle": "The Pharaoh’s Fear",
+            "storyExample": "That’s why he was rude and harsh to the Children of Israel.",
+            "category": "Character & Conduct"
+      },
+      {
+            "word": "kingdom",
+            "definition": "A country or land ruled by a king.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈkɪŋdəm/",
+            "wordFamily": [
+                  "king",
+                  "kingdom"
+            ],
+            "collocations": [
+                  "rule a kingdom",
+                  "take control of a kingdom"
+            ],
+            "chapter": 1,
+            "chapterTitle": "The Pharaoh’s Fear",
+            "storyExample": "The Pharaoh feared that this group, which was larger than the Egyptians, would take control of his kingdom.",
+            "category": "Places & Society"
+      },
+      {
+            "word": "advisors",
+            "definition": "People who give advice to a ruler.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ədˈvaɪzərz/",
+            "wordFamily": [
+                  "advise",
+                  "advice",
+                  "advisor"
+            ],
+            "collocations": [
+                  "royal advisors",
+                  "ask advisors"
+            ],
+            "synonyms": [
+                  "counsellors"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Pharaoh’s Dream",
+            "storyExample": "When he woke up, he called all his advisors and magicians and asked about the dream.",
+            "category": "People & Roles"
+      },
+      {
+            "word": "newborn",
+            "definition": "A baby who has just been born.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈnuːbɔːrn/",
+            "wordFamily": [
+                  "newborn"
+            ],
+            "collocations": [
+                  "newborn baby",
+                  "newborn boys"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Pharaoh’s Dream",
+            "storyExample": "Then, the Pharaoh told his soldiers, “Kill all the newborn boys of the Children of Israel.”",
+            "category": "People & Life"
+      },
+      {
+            "word": "heartless",
+            "definition": "Showing no kindness or pity.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈhɑːrtləs/",
+            "wordFamily": [
+                  "heart",
+                  "heartless"
+            ],
+            "collocations": [
+                  "heartless person",
+                  "be heartless"
+            ],
+            "synonyms": [
+                  "cruel"
+            ],
+            "antonyms": [
+                  "kind-hearted"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Pharaoh’s Dream",
+            "storyExample": "All mothers, fathers and sisters cried, but the soldiers who were heartless showed no pity.",
+            "category": "Character & Values"
+      },
+      {
+            "word": "frightened",
+            "definition": "Very afraid.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈfraɪtənd/",
+            "wordFamily": [
+                  "frighten",
+                  "frightened",
+                  "frightening"
+            ],
+            "collocations": [
+                  "feel frightened",
+                  "be frightened"
+            ],
+            "synonyms": [
+                  "scared"
+            ],
+            "antonyms": [
+                  "calm"
+            ],
+            "chapter": 2,
+            "chapterTitle": "The Pharaoh’s Dream",
+            "storyExample": "His mother was so frightened that she was unable to sleep at night.",
+            "category": "Feelings"
+      },
+      {
+            "word": "shelter",
+            "definition": "A safe place that protects someone.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈʃeltər/",
+            "wordFamily": [
+                  "shelter",
+                  "sheltered"
+            ],
+            "collocations": [
+                  "safe shelter",
+                  "find shelter"
+            ],
+            "synonyms": [
+                  "refuge"
+            ],
+            "chapter": 3,
+            "chapterTitle": "A Baby in the River",
+            "storyExample": "Waters will carry it to the shelter.",
+            "category": "Safety & Places"
+      },
+      {
+            "word": "ashore",
+            "definition": "Onto the land from the water.",
+            "partOfSpeech": "adverb",
+            "level": "B1",
+            "pronunciation": "/əˈʃɔːr/",
+            "collocations": [
+                  "come ashore",
+                  "wash ashore"
+            ],
+            "chapter": 3,
+            "chapterTitle": "A Baby in the River",
+            "storyExample": "Soon, the waves brought the basket ashore near the Pharaoh’s palace.",
+            "category": "Movement & Place"
+      },
+      {
+            "word": "servants",
+            "definition": "People who work in a house or palace.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈsɜːrvənts/",
+            "wordFamily": [
+                  "serve",
+                  "servant",
+                  "service"
+            ],
+            "collocations": [
+                  "palace servants",
+                  "household servants"
+            ],
+            "chapter": 3,
+            "chapterTitle": "A Baby in the River",
+            "storyExample": "The palace servants saw the basket and took it to the Pharaoh and the queen, Asiye.",
+            "category": "People & Roles"
+      },
+      {
+            "word": "kind-hearted",
+            "definition": "Kind, gentle, and caring.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˌkaɪnd ˈhɑːrtɪd/",
+            "wordFamily": [
+                  "kind",
+                  "kindness",
+                  "kind-hearted"
+            ],
+            "collocations": [
+                  "kind-hearted person",
+                  "good and kind-hearted"
+            ],
+            "synonyms": [
+                  "compassionate"
+            ],
+            "antonyms": [
+                  "heartless"
+            ],
+            "chapter": 3,
+            "chapterTitle": "A Baby in the River",
+            "storyExample": "The queen, who was different from her husband, was good, kind-hearted, and believed in Allah.",
+            "category": "Character & Values"
+      },
+      {
+            "word": "nurse",
+            "definition": "A woman who feeds and cares for a baby.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/nɜːrs/",
+            "wordFamily": [
+                  "nurse",
+                  "nursing"
+            ],
+            "collocations": [
+                  "find a nurse",
+                  "baby’s nurse"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Back to His Mother",
+            "storyExample": "She said to her servants, “Find a nurse for the baby.”",
+            "category": "People & Roles"
+      },
+      {
+            "word": "courage",
+            "definition": "Bravery in a difficult or dangerous situation.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈkɜːrɪdʒ/",
+            "wordFamily": [
+                  "courage",
+                  "courageous",
+                  "courageously"
+            ],
+            "collocations": [
+                  "show courage",
+                  "great courage"
+            ],
+            "synonyms": [
+                  "bravery"
+            ],
+            "antonyms": [
+                  "cowardice"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Back to His Mother",
+            "storyExample": "People always remember her because of her goodness and courage.",
+            "category": "Character & Values"
+      },
+      {
+            "word": "raised",
+            "definition": "Brought up and cared for a child.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/reɪzd/",
+            "wordFamily": [
+                  "raise",
+                  "raised",
+                  "raising"
+            ],
+            "collocations": [
+                  "raise a child",
+                  "be raised in a palace"
+            ],
+            "synonyms": [
+                  "brought up"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Back to His Mother",
+            "storyExample": "Queen Asiye also took care of Moses and raised him in the palace with love.",
+            "category": "Family & Care"
+      },
+      {
+            "word": "originally",
+            "definition": "At first or by origin.",
+            "partOfSpeech": "adverb",
+            "level": "B1",
+            "pronunciation": "/əˈrɪdʒənəli/",
+            "wordFamily": [
+                  "origin",
+                  "original",
+                  "originally"
+            ],
+            "collocations": [
+                  "originally from",
+                  "originally belong"
+            ],
+            "synonyms": [
+                  "at first"
+            ],
+            "chapter": 4,
+            "chapterTitle": "Back to His Mother",
+            "storyExample": "Young Moses felt close to the Children of Israel because he was originally not from a family of the palace and his mother was one of the Children of Israel.",
+            "category": "Identity & Origin"
+      },
+      {
+            "word": "accidentally",
+            "definition": "By chance and not on purpose.",
+            "partOfSpeech": "adverb",
+            "level": "B1",
+            "pronunciation": "/ˌæksɪˈdentəli/",
+            "wordFamily": [
+                  "accident",
+                  "accidental",
+                  "accidentally"
+            ],
+            "collocations": [
+                  "accidentally cause",
+                  "happen accidentally"
+            ],
+            "synonyms": [
+                  "by chance"
+            ],
+            "antonyms": [
+                  "deliberately"
+            ],
+            "chapter": 5,
+            "chapterTitle": "A Mistake in the Bazaar",
+            "storyExample": "He hit the Egyptian and accidentally caused someone's death.",
+            "category": "Actions & Choices"
+      },
+      {
+            "word": "on purpose",
+            "definition": "Intentionally and with a clear aim.",
+            "partOfSpeech": "adverb phrase",
+            "level": "B1",
+            "pronunciation": "/ɑːn ˈpɜːrpəs/",
+            "collocations": [
+                  "do something on purpose",
+                  "not on purpose"
+            ],
+            "synonyms": [
+                  "intentionally"
+            ],
+            "antonyms": [
+                  "accidentally"
+            ],
+            "chapter": 5,
+            "chapterTitle": "A Mistake in the Bazaar",
+            "storyExample": "I didn’t do it on purpose.",
+            "category": "Actions & Choices"
+      },
+      {
+            "word": "pardoned",
+            "definition": "Forgave someone for a wrong action.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈpɑːrdənd/",
+            "wordFamily": [
+                  "pardon",
+                  "pardoned"
+            ],
+            "collocations": [
+                  "pardon someone",
+                  "be pardoned"
+            ],
+            "synonyms": [
+                  "forgave"
+            ],
+            "chapter": 5,
+            "chapterTitle": "A Mistake in the Bazaar",
+            "storyExample": "Allah pardoned him, because He is Forgiving and Merciful.",
+            "category": "Forgiveness & Values"
+      },
+      {
+            "word": "quarrelsome",
+            "definition": "Often arguing or fighting.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈkwɔːrəlsəm/",
+            "wordFamily": [
+                  "quarrel",
+                  "quarrelsome"
+            ],
+            "collocations": [
+                  "quarrelsome person",
+                  "quarrelsome behaviour"
+            ],
+            "synonyms": [
+                  "argumentative"
+            ],
+            "antonyms": [
+                  "peaceable"
+            ],
+            "chapter": 5,
+            "chapterTitle": "A Mistake in the Bazaar",
+            "storyExample": "Moses understood that the Israelite was a quarrelsome man, not a peaceable man.",
+            "category": "Character & Conduct"
+      },
+      {
+            "word": "punishment",
+            "definition": "A penalty for doing something wrong.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈpʌnɪʃmənt/",
+            "wordFamily": [
+                  "punish",
+                  "punishment"
+            ],
+            "collocations": [
+                  "receive punishment",
+                  "punishment for a crime"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Escape from Egypt",
+            "storyExample": "Moses knew that the punishment for killing an Egyptian was death.",
+            "category": "Law & Consequences"
+      },
+      {
+            "word": "escaped",
+            "definition": "Got away from danger.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ɪˈskeɪpt/",
+            "wordFamily": [
+                  "escape",
+                  "escaped"
+            ],
+            "collocations": [
+                  "escape danger",
+                  "escape from soldiers"
+            ],
+            "synonyms": [
+                  "got away"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Escape from Egypt",
+            "storyExample": "Moses escaped from the soldiers.",
+            "category": "Actions & Safety"
+      },
+      {
+            "word": "guided",
+            "definition": "Shown the right way.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈɡaɪdɪd/",
+            "wordFamily": [
+                  "guide",
+                  "guided",
+                  "guidance"
+            ],
+            "collocations": [
+                  "guide someone",
+                  "be guided"
+            ],
+            "synonyms": [
+                  "led"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Escape from Egypt",
+            "storyExample": "He was not alone as Allah guided him.",
+            "category": "Guidance & Faith"
+      },
+      {
+            "word": "spring",
+            "definition": "A natural place where water comes from the ground.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/sprɪŋ/",
+            "wordFamily": [
+                  "spring",
+                  "springs"
+            ],
+            "collocations": [
+                  "natural spring",
+                  "near the spring"
+            ],
+            "chapter": 6,
+            "chapterTitle": "Escape from Egypt",
+            "storyExample": "Far from the spring two girls were sitting.",
+            "category": "World & Nature"
+      },
+      {
+            "word": "wait our turn",
+            "definition": "Wait until it is our proper time to act.",
+            "partOfSpeech": "phrase",
+            "level": "B1",
+            "pronunciation": "/weɪt aʊər tɜːrn/",
+            "collocations": [
+                  "wait your turn",
+                  "take turns"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The Two Sisters",
+            "storyExample": "We have to wait our turn.",
+            "category": "Daily Life & Conduct"
+      },
+      {
+            "word": "shepherds",
+            "definition": "People who look after sheep.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈʃepərdz/",
+            "wordFamily": [
+                  "shepherd",
+                  "shepherds"
+            ],
+            "collocations": [
+                  "shepherds and sheep",
+                  "work as shepherds"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The Two Sisters",
+            "storyExample": "We did not have to wait until the other shepherds went away.",
+            "category": "People & Roles"
+      },
+      {
+            "word": "messenger",
+            "definition": "A person chosen to deliver Allah’s message.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈmesɪndʒər/",
+            "wordFamily": [
+                  "message",
+                  "messenger"
+            ],
+            "collocations": [
+                  "messenger of Allah",
+                  "deliver a message"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The Two Sisters",
+            "storyExample": "The father of these girls was Şuayb (pbuh). Şuayb (pbuh) was a messenger of Allah to the eastern part of the Gulf of Aqaba (Akabe Körfezi), Midian.",
+            "category": "Spiritual Life"
+      },
+      {
+            "word": "very old",
+            "definition": "Advanced in age.",
+            "partOfSpeech": "adjective phrase",
+            "level": "B1",
+            "pronunciation": "/ˌveri ˈoʊld/",
+            "collocations": [
+                  "very old man",
+                  "be very old"
+            ],
+            "synonyms": [
+                  "elderly"
+            ],
+            "antonyms": [
+                  "young"
+            ],
+            "chapter": 7,
+            "chapterTitle": "The Two Sisters",
+            "storyExample": "Prophet Şuayb (pbuh) was very old.",
+            "category": "People & Age"
+      },
+      {
+            "word": "offered",
+            "definition": "Gave someone a chance to accept something.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈɔːfərd/",
+            "wordFamily": [
+                  "offer",
+                  "offered",
+                  "offering"
+            ],
+            "collocations": [
+                  "offer a job",
+                  "offer help"
+            ],
+            "chapter": 8,
+            "chapterTitle": "A Simple Life in Midian",
+            "storyExample": "Şuayb (pbuh) offered Moses a job.",
+            "category": "Work & Actions"
+      },
+      {
+            "word": "stranger",
+            "definition": "A person who is new to a place and does not know people there.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈstreɪndʒər/",
+            "wordFamily": [
+                  "strange",
+                  "stranger"
+            ],
+            "collocations": [
+                  "complete stranger",
+                  "stranger in a place"
+            ],
+            "chapter": 8,
+            "chapterTitle": "A Simple Life in Midian",
+            "storyExample": "He accepted the offer, because he was a stranger in Midian and he urgently needed a job and a house.",
+            "category": "People & Society"
+      },
+      {
+            "word": "valley",
+            "definition": "Low land between hills or mountains.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈvæli/",
+            "wordFamily": [
+                  "valley",
+                  "valleys"
+            ],
+            "collocations": [
+                  "mountain valley",
+                  "cross a valley"
+            ],
+            "chapter": 8,
+            "chapterTitle": "A Simple Life in Midian",
+            "storyExample": "They were crossing a valley between mountains.",
+            "category": "Places & Nature"
+      },
+      {
+            "word": "hillside",
+            "definition": "The side or slope of a hill.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈhɪlsaɪd/",
+            "wordFamily": [
+                  "hill",
+                  "hillside"
+            ],
+            "collocations": [
+                  "on the hillside",
+                  "steep hillside"
+            ],
+            "chapter": 8,
+            "chapterTitle": "A Simple Life in Midian",
+            "storyExample": "Suddenly, Moses saw a fire on the hillside.",
+            "category": "Places & Nature"
+      },
+      {
+            "word": "Lord",
+            "definition": "A title used here for Allah as the Creator and ruler.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/lɔːrd/",
+            "collocations": [
+                  "my Lord",
+                  "Lord of the universe"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The Voice on the Mountain",
+            "storyExample": "In the silence he heard a thundering voice: “Moses, I am your Lord. I chose you. Listen to me. I am Allah. There is no god but Allah. Remember Me and pray to Me.”",
+            "category": "Belief & Faith"
+      },
+      {
+            "word": "staff",
+            "definition": "A long stick used for walking or support.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/stæf/",
+            "wordFamily": [
+                  "staff",
+                  "staffs"
+            ],
+            "collocations": [
+                  "walking staff",
+                  "throw down a staff"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The Voice on the Mountain",
+            "storyExample": "Moses put down his staff on the ground.",
+            "category": "Objects"
+      },
+      {
+            "word": "signs",
+            "definition": "Miracles or proofs of Allah’s power.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/saɪnz/",
+            "wordFamily": [
+                  "sign",
+                  "signs"
+            ],
+            "collocations": [
+                  "signs of Allah",
+                  "signs of power"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The Voice on the Mountain",
+            "storyExample": "Allah said, “These are signs of My power. Show these signs to the Pharaoh. And tell him of the power of Allah.”",
+            "category": "Belief & Faith"
+      },
+      {
+            "word": "guidance",
+            "definition": "Help to follow the right path.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈɡaɪdəns/",
+            "wordFamily": [
+                  "guide",
+                  "guided",
+                  "guidance"
+            ],
+            "collocations": [
+                  "seek guidance",
+                  "guidance from Allah"
+            ],
+            "synonyms": [
+                  "direction"
+            ],
+            "chapter": 9,
+            "chapterTitle": "The Voice on the Mountain",
+            "storyExample": "Allah told Moses to go to Egypt and show the Pharaoh the signs and warn him to get guidance from Allah.",
+            "category": "Guidance & Faith"
+      },
+      {
+            "word": "brother Harun",
+            "definition": "Moses’s brother who accompanied and supported him.",
+            "partOfSpeech": "noun phrase",
+            "level": "B1",
+            "pronunciation": "/ˈbrʌðər hɑːˈruːn/",
+            "collocations": [
+                  "brother Harun",
+                  "take Harun with him"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The King’s Magicians",
+            "storyExample": "Moses (pbuh) took his brother Harun with him as his companion and went to the palace.",
+            "category": "Family & Support"
+      },
+      {
+            "word": "throne",
+            "definition": "A special seat for a king or ruler.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/θroʊn/",
+            "wordFamily": [
+                  "throne",
+                  "thrones"
+            ],
+            "collocations": [
+                  "sit on a throne",
+                  "royal throne"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The King’s Magicians",
+            "storyExample": "The king was sitting on his throne, and his advisors and soldiers were standing around him.",
+            "category": "Objects & Power"
+      },
+      {
+            "word": "kept refusing",
+            "definition": "Continued to say no or reject something.",
+            "partOfSpeech": "verb phrase",
+            "level": "B1",
+            "pronunciation": "/kept rɪˈfjuːzɪŋ/",
+            "wordFamily": [
+                  "refuse",
+                  "refused",
+                  "refusing",
+                  "refusal"
+            ],
+            "collocations": [
+                  "keep refusing",
+                  "refuse to believe"
+            ],
+            "antonyms": [
+                  "accepted"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The King’s Magicians",
+            "storyExample": "The Pharaoh kept refusing to believe in Allah.",
+            "category": "Choices & Attitudes"
+      },
+      {
+            "word": "shining white",
+            "definition": "Giving off a bright white appearance.",
+            "partOfSpeech": "adjective phrase",
+            "level": "B1",
+            "pronunciation": "/ˈʃaɪnɪŋ waɪt/",
+            "wordFamily": [
+                  "shine",
+                  "shining"
+            ],
+            "collocations": [
+                  "shining white",
+                  "bright white"
+            ],
+            "synonyms": [
+                  "bright"
+            ],
+            "chapter": 10,
+            "chapterTitle": "The King’s Magicians",
+            "storyExample": "When he took his arm out, it was shining white!",
+            "category": "Description"
+      },
+      {
+            "word": "made fun of",
+            "definition": "Laughed at someone in an unkind way.",
+            "partOfSpeech": "phrasal verb",
+            "level": "B1",
+            "pronunciation": "/meɪd fʌn əv/",
+            "wordFamily": [
+                  "fun"
+            ],
+            "collocations": [
+                  "make fun of someone",
+                  "be made fun of"
+            ],
+            "synonyms": [
+                  "mocked"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The Miracle of the Staff",
+            "storyExample": "They made fun of Moses (pbuh) and Allah.",
+            "category": "Actions & Conduct"
+      },
+      {
+            "word": "witnessed",
+            "definition": "Saw something happen.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈwɪtnəst/",
+            "wordFamily": [
+                  "witness",
+                  "witnessed"
+            ],
+            "collocations": [
+                  "witness an event",
+                  "witness a miracle"
+            ],
+            "synonyms": [
+                  "observed"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The Miracle of the Staff",
+            "storyExample": "The magicians who witnessed this miracle bowed down in front of Moses (pbuh).",
+            "category": "Actions & Perception"
+      },
+      {
+            "word": "arrogant",
+            "definition": "Thinking that one is better or greater than others.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/ˈærəɡənt/",
+            "wordFamily": [
+                  "arrogant",
+                  "arrogance",
+                  "arrogantly"
+            ],
+            "collocations": [
+                  "arrogant ruler",
+                  "be arrogant"
+            ],
+            "synonyms": [
+                  "proud"
+            ],
+            "antonyms": [
+                  "humble"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The Miracle of the Staff",
+            "storyExample": "The king still refused to believe in Allah, because he was arrogant.",
+            "category": "Character & Values"
+      },
+      {
+            "word": "trouble",
+            "definition": "Cause problems or suffering for someone.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈtrʌbəl/",
+            "wordFamily": [
+                  "trouble",
+                  "troubled",
+                  "troubling"
+            ],
+            "collocations": [
+                  "trouble someone",
+                  "cause trouble"
+            ],
+            "synonyms": [
+                  "harass"
+            ],
+            "chapter": 11,
+            "chapterTitle": "The Miracle of the Staff",
+            "storyExample": "He continued to trouble Moses (pbuh) and his people day and night.",
+            "category": "Actions & Harm"
+      },
+      {
+            "word": "keep it secret",
+            "definition": "Hide information or a plan from others.",
+            "partOfSpeech": "phrase",
+            "level": "B1",
+            "pronunciation": "/kiːp ɪt ˈsiːkrət/",
+            "collocations": [
+                  "keep something secret",
+                  "keep a plan secret"
+            ],
+            "antonyms": [
+                  "make public"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Red Sea",
+            "storyExample": "But you must keep it secret.",
+            "category": "Communication"
+      },
+      {
+            "word": "caravan",
+            "definition": "A group of people travelling together.",
+            "partOfSpeech": "noun",
+            "level": "B1",
+            "pronunciation": "/ˈkærəvæn/",
+            "wordFamily": [
+                  "caravan",
+                  "caravans"
+            ],
+            "collocations": [
+                  "large caravan",
+                  "caravan moved"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Red Sea",
+            "storyExample": "That’s why the caravan moved slowly.",
+            "category": "Travel & People"
+      },
+      {
+            "word": "catch up with",
+            "definition": "Reach someone after following them.",
+            "partOfSpeech": "phrasal verb",
+            "level": "B1",
+            "pronunciation": "/kætʃ ʌp wɪð/",
+            "collocations": [
+                  "catch up with someone",
+                  "manage to catch up"
+            ],
+            "synonyms": [
+                  "reach"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Red Sea",
+            "storyExample": "When the Pharaoh noticed that they had left the land, he prepared his huge army and easily managed to catch up with them.",
+            "category": "Actions & Movement"
+      },
+      {
+            "word": "panicked",
+            "definition": "Felt sudden strong fear.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈpænɪkt/",
+            "wordFamily": [
+                  "panic",
+                  "panicked",
+                  "panicking"
+            ],
+            "collocations": [
+                  "people panicked",
+                  "panic suddenly"
+            ],
+            "synonyms": [
+                  "became terrified"
+            ],
+            "antonyms": [
+                  "calmed down"
+            ],
+            "chapter": 12,
+            "chapterTitle": "The Red Sea",
+            "storyExample": "His people panicked.",
+            "category": "Feelings"
+      },
+      {
+            "word": "trapped",
+            "definition": "Unable to escape from a dangerous place.",
+            "partOfSpeech": "adjective",
+            "level": "B1",
+            "pronunciation": "/træpt/",
+            "wordFamily": [
+                  "trap",
+                  "trapped"
+            ],
+            "collocations": [
+                  "feel trapped",
+                  "be trapped"
+            ],
+            "synonyms": [
+                  "stuck"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Cruel King Drowns",
+            "storyExample": "They were trapped with the Red Sea in front and the king’s army behind them.",
+            "category": "Safety & Situation"
+      },
+      {
+            "word": "parted",
+            "definition": "Separated or opened into two sides.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/ˈpɑːrtɪd/",
+            "wordFamily": [
+                  "part",
+                  "parted",
+                  "parting"
+            ],
+            "collocations": [
+                  "sea parted",
+                  "part into two"
+            ],
+            "synonyms": [
+                  "separated"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Cruel King Drowns",
+            "storyExample": "The sea parted!",
+            "category": "Actions & Change"
+      },
+      {
+            "word": "drowned",
+            "definition": "Died under water because they could not breathe.",
+            "partOfSpeech": "verb",
+            "level": "B1",
+            "pronunciation": "/draʊnd/",
+            "wordFamily": [
+                  "drown",
+                  "drowned",
+                  "drowning"
+            ],
+            "collocations": [
+                  "drown in water",
+                  "were drowned"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Cruel King Drowns",
+            "storyExample": "The sea closed over them, and they drowned.",
+            "category": "Actions & Consequences"
+      },
+      {
+            "word": "right path",
+            "definition": "The correct moral and spiritual way.",
+            "partOfSpeech": "noun phrase",
+            "level": "B1",
+            "pronunciation": "/raɪt pæθ/",
+            "collocations": [
+                  "follow the right path",
+                  "guide to the right path"
+            ],
+            "synonyms": [
+                  "correct way"
+            ],
+            "chapter": 13,
+            "chapterTitle": "The Cruel King Drowns",
+            "storyExample": "Allah is not visible to physical eyes, but He is with us and when we pray to Him, He always guides us on the right path.",
+            "category": "Guidance & Values"
+      }
+]
   },
   { id: 18, type: 'exercises', title: 'Final Review & Reflection', image: '', content: 'Complete these final exercises to master the B1 story and lessons of Prophet Moses (pbuh).' },
   { id: 19, type: 'final-challenge', title: 'Final Challenge', image: '', content: 'Test your knowledge of the entire B1 story of Prophet Moses (pbuh).' },
