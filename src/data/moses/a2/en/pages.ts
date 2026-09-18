@@ -1103,7 +1103,7 @@ export const mosesA2Pages: PageData[] = [
         ],
         "chapter": 10,
         "chapterTitle": "The Voice on the Mountain",
-        "storyExample": "In the silence, he heard a loud voice.",
+        "storyExample": "In the silence, he heard a loud voice: “Moses, I am Allah. I chose you. Listen to me. There is no god but Allah.”",
         "category": "Sound & Senses"
     },
     {
