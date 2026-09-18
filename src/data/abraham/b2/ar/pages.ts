@@ -219,10 +219,17 @@ const arabicAudioTokens=[
 const arabicAudioUrl=(chapter:number)=>`https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2Farabic_audio%2FCHAPTER%20${chapter}.mp3?alt=media&token=${arabicAudioTokens[chapter-1]}`;
 const normalizeArabicChar=(char:string)=>char.replace(/[\u064B-\u065F\u0670\u0640\u0610-\u061A\u06D6-\u06ED\u200B-\u200F\uFEFF]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
 const normalizeArabic=(text:string)=>Array.from(text).map(normalizeArabicChar).join('').replace(/\s+/g,' ').trim();
+const arabicSurfaceAlternates: Record<string,string> = {
+  'التحريف': 'للتحريف',
+  'بنبوة': 'بنبوته',
+  'تفكير إبراهيم العقلي': 'تفكير إبراهيم عليه السلام العقلي',
+  'باعتقال إبراهيم ومحاكمته': 'باعتقال إبراهيم عليه السلام ومحاكمته',
+  'صدقت الرؤيا': 'صدقت الرءيا',
+};
 const findArabicSurface=(content:string,needle:string):string|null=>{
  let normalized='';const originalIndices:number[]=[];let previousWasSpace=false;
  for(let i=0;i<content.length;i+=1){const part=normalizeArabicChar(content[i]);if(!part)continue;if(/\s/.test(part)){if(previousWasSpace)continue;normalized+=' ';originalIndices.push(i);previousWasSpace=true;continue;}previousWasSpace=false;normalized+=part;originalIndices.push(i);}
- const target=normalizeArabic(needle);const startInNormalized=normalized.indexOf(target);if(startInNormalized<0||target.length===0)return null;const start=originalIndices[startInNormalized];const lastMapped=originalIndices[startInNormalized+target.length-1];if(start==null||lastMapped==null)return null;let end=lastMapped+1;while(end<content.length&&/[\u064B-\u065F\u0670\u0610-\u061A\u06D6-\u06ED]/.test(content[end]))end+=1;return content.slice(start,end);
+ const target=normalizeArabic(arabicSurfaceAlternates[needle]??needle);const startInNormalized=normalized.indexOf(target);if(startInNormalized<0||target.length===0)return null;const start=originalIndices[startInNormalized];const lastMapped=originalIndices[startInNormalized+target.length-1];if(start==null||lastMapped==null)return null;let end=lastMapped+1;while(end<content.length&&/[\u064B-\u065F\u0670\u0610-\u061A\u06D6-\u06ED]/.test(content[end]))end+=1;return content.slice(start,end);
 };
 type ResolvedArabicVocab={word:string;definition:string};
 const standardizeArabicPage=(page:PageData):PageData=>{
