@@ -16,13 +16,15 @@ export const ExercisePage = ({
   userAnswers, 
   handleAnswer,
   level,
-  collectionId = 'prophets'
+  collectionId = 'prophets',
+  onReviewGlossary,
 }: { 
   page: PageData; 
   userAnswers: Record<string, boolean | null>; 
   handleAnswer: (id: string, answer: boolean) => void;
   level: Level;
   collectionId?: string;
+  onReviewGlossary?: () => void;
 }) => {
   const { t, language, formatNumber } = useLanguage();
   const isArabic = language === 'ar';
@@ -313,7 +315,7 @@ export const ExercisePage = ({
                   )}>
                     {page.title}
                   </h3>
-                  <VocabularyMatch pairs={page.vocabularyPairs} collectionId={collectionId} level={level} />
+                  <VocabularyMatch pairs={page.vocabularyPairs} collectionId={collectionId} level={level} onReviewGlossary={onReviewGlossary} />
                 </div>
               )}
               {page.type === 'game' && (
