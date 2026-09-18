@@ -146,7 +146,7 @@ const HotspotButton = ({
                     pointerEvents: 'auto',
                   }}
                   className={cn(
-                    "w-[calc(100vw-1.5rem)] max-w-[22rem] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain",
+                    "w-[calc(100vw-1.5rem)] max-w-[22rem] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
                     language === 'ar' ? "p-4 sm:p-6" : "p-3.5 sm:p-5",
                     "bg-wood/95 backdrop-blur-md rounded-2xl shadow-2xl border",
                     collectionId === 'history' ? "border-emerald-500/40" : collectionId === 'turkish' ? "border-cyan-400/40" : "border-gold/30"
