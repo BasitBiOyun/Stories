@@ -651,7 +651,9 @@ const AppContent = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="shrink-0 scale-[0.9] origin-center sm:scale-100">\n                <LanguageToggle />\n              </div>
+              <div className="shrink-0 scale-[0.9] origin-center sm:scale-100">
+                <LanguageToggle />
+              </div>
 
               <button 
                 onClick={handleReturnToLibrary}
