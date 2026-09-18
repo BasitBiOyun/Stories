@@ -481,8 +481,22 @@ const AppContent = () => {
             collectionId={currentCollection || 'prophets'}
           />
         );
-      case 'glossary':
-        return <MasterGlossary bookData={currentBook!} page={currentPage} collectionId={currentCollection || 'prophets'} />;
+      case 'glossary': {
+        const challengeIndex = currentBook.pages.findIndex(page => page.type === 'vocabulary-match');
+        const challengePage = challengeIndex >= 0 ? currentBook.pages[challengeIndex] : null;
+        const nextPage = currentBook.pages[currentPageIndex + 1];
+        const canStartChallenge = challengeIndex >= 0 && nextPage?.type === 'vocabulary-match';
+
+        return (
+          <MasterGlossary
+            bookData={currentBook}
+            page={currentPage}
+            collectionId={currentCollection || 'prophets'}
+            onStartChallenge={canStartChallenge ? () => setCurrentPageIndex(challengeIndex) : undefined}
+            challengeWordCount={challengePage?.vocabularyPairs?.length ?? 0}
+          />
+        );
+      }
       case 'final-challenge':
         return <FinalChallenge bookData={currentBook!} onComplete={() => setShowSummary(true)} />;
       default:
