@@ -107,10 +107,11 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const [answerRevealed, setAnswerRevealed] = useState(false);
   const [useSentence, setUseSentence] = useState('');
 
-  const contextItems = useMemo(
-    () => pickEvenly(pairs, Math.min(policy.vocabularyContextCount, pairs.length)),
-    [pairs, policy.vocabularyContextCount]
-  );
+  const contextItems = useMemo(() => {
+    const contextualPairs = pairs.filter(pair => Boolean(pair.context) && Boolean(maskWord(pair.context, pair.word)));
+    const pool = contextualPairs.length >= policy.vocabularyContextCount ? contextualPairs : pairs;
+    return pickEvenly(pool, Math.min(policy.vocabularyContextCount, pool.length));
+  }, [pairs, policy.vocabularyContextCount]);
   const recallItems = useMemo(
     () => pickEvenly([...pairs].reverse(), Math.min(policy.vocabularyRecallCount, pairs.length)),
     [pairs, policy.vocabularyRecallCount]
