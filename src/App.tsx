@@ -65,7 +65,12 @@ const AppContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
-  const [isDyslexic, setIsDyslexic] = useState(false);
+  const [isDyslexic, setIsDyslexic] = useState(() => localStorage.getItem('reader_dyslexic') === 'true');
+  const [readerScale, setReaderScale] = useState(() => {
+    const stored = Number(localStorage.getItem('reader_scale'));
+    return Number.isFinite(stored) && stored >= 0.85 && stored <= 1.3 ? stored : 1;
+  });
+  const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
   const [isQuickTOCOpen, setIsQuickTOCOpen] = useState(false);
@@ -91,9 +96,15 @@ const AppContent = () => {
       window.removeEventListener('pdf-generation-end', handleEnd);
     };
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('reader_scale', String(readerScale));
+  }, [readerScale]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_dyslexic', String(isDyslexic));
+  }, [isDyslexic]);
  
-
-
   const { language, t, formatNumber, isRTL } = useLanguage();
   const { resetStats } = useStoryProgress();
   const {
@@ -277,7 +288,7 @@ const AppContent = () => {
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
       if (!selectedProphetId || showSummary) return;
-      if (isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen) return;
+      if (isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -305,6 +316,7 @@ const AppContent = () => {
     isTeacherGuideOpen,
     isSelfStudyOpen,
     isQuickTOCOpen,
+    isReaderSettingsOpen,
     currentPageIndex,
     totalPages,
     language
@@ -457,7 +469,7 @@ const AppContent = () => {
             allPages={currentBook?.pages || []}
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
-            fontSize={currentBook?.baseFontSize || 12}
+            fontSize={(currentBook?.baseFontSize || 12) * readerScale}
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
           />
@@ -504,99 +516,177 @@ const AppContent = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
       </div>
 
-      {/* Navigation Header */}
+      {/* Reader Header */}
       {!showSummary && (
         <header className={cn(
-          "relative z-50 h-12 sm:h-14 md:h-16 border-b px-2.5 sm:px-5 md:px-8 flex items-center justify-between transition-colors duration-500 shrink-0 gap-2 sm:gap-4",
+          "relative z-50 min-h-14 sm:min-h-16 px-3 sm:px-5 md:px-8 flex items-center transition-colors duration-500 shrink-0",
           themeClasses.headerBg
         )}>
-          {/* Left: Menu button + Title & Level */}
-          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink">
-            <button 
-              onClick={() => setIsMenuOpen(true)}
-              className="p-1.5 sm:p-2 rounded-full transition-colors shrink-0 hover:bg-white/10 text-parchment cursor-pointer"
-              title={t('nav.menu')}
-              aria-label={t('nav.menu')}
-              aria-expanded={isMenuOpen}
-            >
-              <Menu className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-            </button>
-
-            <div className="h-5 sm:h-6 w-px bg-gold/20 shrink-0 hidden sm:block" />
-
-            <div className="flex flex-col min-w-0">
-              <h2 className={cn(
-                "font-display text-[11px] sm:text-[15px] md:text-[18px] tracking-tight leading-snug truncate max-w-[100px] xs:max-w-[140px] sm:max-w-xs md:max-w-sm lg:max-w-md",
-                "text-parchment"
-              )} title={currentBookTitle}>{currentBookTitle}</h2>
-              <span className={cn(
-                "font-serif italic text-[8px] sm:text-[10px] uppercase tracking-widest leading-none mt-0.5",
-                themeClasses.headerSubtitle
-              )}>
-                {t('nav.level')} {formatNumber(currentLevel || '')}
-              </span>
-            </div>
-          </div>
-
-          {/* Center / Inline Language Toggle */}
-          <div className="shrink-0 flex items-center">
-            <LanguageToggle />
-          </div>
-
-          {/* Right Action Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0">
-            {/* Download PDF button */}
-            <button 
-              onClick={() => currentBook && generateBookPDF(currentBook)}
-              className={cn(
-                "flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-all border shrink-0 text-xs",
-                themeClasses.buttonSec
-              )}
-              title={t('nav.downloadPdf')}
-              aria-label={t('nav.downloadPdf')}
-            >
-              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden lg:inline font-display text-[10px] sm:text-[11px] uppercase tracking-wider">
-                {t('nav.downloadPdf')}
-              </span>
-            </button>
-
-            {/* Progress Bar & Percentage */}
-            <div className="hidden md:flex items-center gap-2 shrink-0">
-              <div 
-                onClick={handleProgressBarClick}
-                className={cn(
-                  "w-20 sm:w-28 md:w-36 lg:w-40 h-2 sm:h-2.5 rounded-full overflow-hidden border border-white/10 shadow-inner flex items-center p-[1px] cursor-pointer hover:scale-105 active:scale-95 transition-transform", 
-                  themeClasses.progressTrack
-                )}
-                title={language === 'ar' ? "انقر للانتقال السريع للصفحة" : "Click to quick-jump to page"}
+          <div className="relative z-50 flex w-full items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+              <button 
+                onClick={() => setIsMenuOpen(true)}
+                className="touch-target flex items-center justify-center rounded-full text-parchment transition-colors hover:bg-white/10"
+                title={t('nav.menu')}
+                aria-label={t('nav.menu')}
+                aria-expanded={isMenuOpen}
               >
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress * 100}%` }}
-                  className={cn("h-full rounded-full shadow-sm shadow-black/20", themeClasses.progressBar)}
-                />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
+
+              <div className="min-w-0">
+                <h2
+                  className="max-w-[150px] truncate font-display text-[12px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
+                  title={currentBookTitle}
+                >
+                  {currentBookTitle}
+                </h2>
+                <span className={cn(
+                  "mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.16em] sm:text-[10px]",
+                  themeClasses.headerSubtitle
+                )}>
+                  {t('nav.level')} {formatNumber(currentLevel || '')} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
+                </span>
               </div>
-              <span className={cn("font-display text-[10px] sm:text-[12px] font-bold tracking-wider", themeClasses.percentageText)}>
-                {formatNumber(Math.round(progress * 100))}%
-              </span>
             </div>
 
-            {/* Return to Library (Home) */}
-            <button 
-              onClick={handleReturnToLibrary}
-              className={cn(
-                "p-1.5 sm:p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-md flex items-center justify-center border shrink-0",
-                "bg-amber-950/40 border-amber-400/30 text-gold hover:text-parchment hover:bg-amber-400/25 hover:border-amber-400/60 cursor-pointer",
-                currentCollection === 'history' && "bg-emerald-950/40 border-emerald-500/30 text-emerald-400 hover:text-parchment hover:bg-emerald-500/25 hover:border-emerald-500/60",
-                currentCollection === 'turkish' && "bg-[#0D1D2C]/40 border-[#22D3EE]/30 text-[#22D3EE] hover:text-parchment hover:bg-[#22D3EE]/25 hover:border-[#22D3EE]/60"
-              )}
-              title={t('nav.returnToLibrary')}
-              aria-label={t('nav.returnToLibrary')}
-            >
-              <Home className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-            </button>
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setIsReaderSettingsOpen(prev => !prev)}
+                  className={cn(
+                    "touch-target flex items-center justify-center rounded-full border text-[13px] font-semibold tracking-[-0.03em] transition-colors",
+                    themeClasses.buttonSec
+                  )}
+                  aria-label={language === 'ar' ? 'إعدادات القراءة' : 'Reading settings'}
+                  aria-expanded={isReaderSettingsOpen}
+                  title={language === 'ar' ? 'إعدادات القراءة' : 'Reading settings'}
+                >
+                  Aa
+                </button>
+
+                <AnimatePresence>
+                  {isReaderSettingsOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: 'easeOut' }}
+                      className={cn(
+                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl",
+                        isRTL ? "left-0" : "right-0",
+                        themeClasses.menuBg,
+                        themeClasses.menuBorder
+                      )}
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="font-display text-[12px] font-semibold text-parchment">
+                            {language === 'ar' ? 'حجم النص' : 'Text size'}
+                          </p>
+                          <p className="mt-0.5 text-[10px] text-parchment/50">
+                            {language === 'ar' ? 'اضبط النص للقراءة المريحة' : 'Tune the story text for comfortable reading'}
+                          </p>
+                        </div>
+                        <span className={cn("font-display text-[11px] font-semibold", themeClasses.goldText)}>
+                          {Math.round(readerScale * 100)}%
+                        </span>
+                      </div>
+
+                      <div className="mt-3 grid grid-cols-3 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setReaderScale(prev => Math.max(0.85, Number((prev - 0.1).toFixed(2))))}
+                          disabled={readerScale <= 0.85}
+                          className="touch-target rounded-xl bg-white/[0.06] font-display text-lg text-parchment transition-colors hover:bg-white/[0.11] disabled:opacity-30"
+                          aria-label={language === 'ar' ? 'تصغير النص' : 'Decrease text size'}
+                        >
+                          −
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setReaderScale(1)}
+                          className="touch-target rounded-xl bg-white/[0.06] font-display text-[11px] font-semibold text-parchment transition-colors hover:bg-white/[0.11]"
+                        >
+                          {language === 'ar' ? 'إعادة' : 'Reset'}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setReaderScale(prev => Math.min(1.3, Number((prev + 0.1).toFixed(2))))}
+                          disabled={readerScale >= 1.3}
+                          className="touch-target rounded-xl bg-white/[0.06] font-display text-lg text-parchment transition-colors hover:bg-white/[0.11] disabled:opacity-30"
+                          aria-label={language === 'ar' ? 'تكبير النص' : 'Increase text size'}
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setIsDyslexic(prev => !prev)}
+                        className="mt-3 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={isDyslexic}
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'خط سهل للقراءة' : 'Dyslexia-friendly font'}
+                          </span>
+                          <span className="mt-0.5 block text-[9px] text-parchment/45">
+                            OpenDyslexic
+                          </span>
+                        </span>
+                        <span className={cn(
+                          "relative h-6 w-11 rounded-full transition-colors",
+                          isDyslexic ? themeClasses.progressBar : "bg-white/15"
+                        )}>
+                          <span className={cn(
+                            "absolute top-1 h-4 w-4 rounded-full bg-white shadow transition-transform",
+                            isDyslexic ? (isRTL ? "translate-x-1" : "translate-x-6") : (isRTL ? "translate-x-6" : "translate-x-1")
+                          )} />
+                        </span>
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="hidden sm:block">
+                <LanguageToggle />
+              </div>
+
+              <button 
+                onClick={handleReturnToLibrary}
+                className={cn(
+                  "touch-target flex items-center justify-center rounded-full border transition-colors",
+                  themeClasses.buttonSec
+                )}
+                title={t('nav.returnToLibrary')}
+                aria-label={t('nav.returnToLibrary')}
+              >
+                <Home className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            </div>
           </div>
+
+          <div className="absolute inset-x-0 bottom-0 h-[2px] bg-white/[0.06]" aria-hidden="true">
+            <motion.div
+              initial={false}
+              animate={{ width: `${progress * 100}%` }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className={cn("h-full", themeClasses.progressBar)}
+              style={{ marginInlineStart: isRTL ? 'auto' : 0 }}
+            />
+          </div>
+
+          {isReaderSettingsOpen && (
+            <button
+              type="button"
+              className="fixed inset-0 z-40 cursor-default"
+              aria-label={language === 'ar' ? 'إغلاق إعدادات القراءة' : 'Close reading settings'}
+              onClick={() => setIsReaderSettingsOpen(false)}
+            />
+          )}
         </header>
       )}
 
@@ -606,42 +696,10 @@ const AppContent = () => {
           "flex-1 w-full relative page-texture transition-all duration-500 flex flex-col overflow-hidden min-h-0",
           themeClasses.mainBg
         )}>
-          {/* Page Navigation Controls - Floating Side Buttons on Desktop (lg+) */}
-          {!showSummary && (
-            <div className="hidden lg:flex absolute inset-y-0 left-0 right-0 items-center justify-between pointer-events-none z-30 px-2 lg:px-3 xl:px-5">
-              <button 
-                onClick={handlePrevPage}
-                disabled={currentPageIndex === 0}
-                className={cn(
-                  "pointer-events-auto p-2.5 lg:p-3 rounded-full shadow-xl transition-all border-2 backdrop-blur-md",
-                  currentPageIndex === 0 ? "opacity-0 cursor-default" : "opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer",
-                  themeClasses.navButton
-                )}
-                title={t('nav.back')}
-                aria-label={t('nav.back')}
-              >
-                <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
-              </button>
-              <button 
-                onClick={handleNextPage}
-                disabled={currentPageIndex === totalPages - 1}
-                className={cn(
-                  "pointer-events-auto p-2.5 lg:p-3 rounded-full shadow-xl transition-all border-2 backdrop-blur-md",
-                  currentPageIndex === totalPages - 1 ? "opacity-0 cursor-default" : "opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer",
-                  themeClasses.navButton
-                )}
-                title={t('nav.next')}
-                aria-label={t('nav.next')}
-              >
-                <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
-              </button>
-            </div>
-          )}
-
           <div className="flex-1 overflow-hidden min-h-0 flex flex-col">
             <div className={cn(
               currentPage?.type === 'map' ? "w-full h-full" : "w-full max-w-[1700px] mx-auto h-full flex flex-col min-h-0",
-              !showSummary && currentPage?.type !== 'map' && "p-3 sm:p-5 md:p-8 lg:py-8 lg:px-20 xl:px-24 2xl:px-28"
+              !showSummary && currentPage?.type !== 'map' && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18"
             )}>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -660,124 +718,86 @@ const AppContent = () => {
         </div>
       </main>
 
-      {/* Footer */}
+      {/* Reader Navigation Dock */}
       {!showSummary && (
         <footer className={cn(
-          "relative z-50 h-11 sm:h-13 md:h-14 border-t px-2.5 sm:px-5 md:px-8 flex items-center justify-between transition-colors duration-500 shrink-0 gap-2",
+          "relative z-50 min-h-[52px] sm:min-h-14 px-2.5 sm:px-5 md:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 transition-colors duration-500 shrink-0",
           themeClasses.headerBg
         )}>
-          {/* Left: TOC button */}
-          <div className="flex items-center gap-2 relative shrink-0">
+          <div className="relative flex min-w-0 items-center justify-start">
             <button 
               onClick={() => setIsQuickTOCOpen(prev => !prev)}
-              className={cn(
-                "flex items-center gap-1.5 cursor-pointer group/page px-2 sm:px-2.5 py-1 rounded-lg border border-transparent transition-all duration-300",
-                "hover:bg-white/10 hover:border-gold/20 select-none active:scale-95"
-              )}
+              className="touch-target flex max-w-full items-center gap-2 rounded-xl px-2.5 text-parchment/80 transition-colors hover:bg-white/[0.08] hover:text-parchment"
               title={t('nav.tableOfContents')}
               aria-label={t('nav.tableOfContents')}
               aria-expanded={isQuickTOCOpen}
             >
-              <BookMarked className={cn(themeClasses.goldText, "w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2] shrink-0")} />
-              <span className={cn(
-                "font-serif italic text-xs sm:text-sm font-medium transition-colors whitespace-nowrap flex items-center gap-1",
-                "text-parchment/80 group-hover/page:text-parchment"
-              )}>
-                {t('nav.page')} {formatNumber(currentPageIndex + 1)} {t('nav.of')} {formatNumber(totalPages)}
-                <ChevronUp className={cn("w-3 h-3 opacity-40 transition-transform duration-300 shrink-0", isQuickTOCOpen && "rotate-180")} />
+              <BookMarked className={cn(themeClasses.goldText, "h-4 w-4 shrink-0")} />
+              <span className="truncate font-display text-[10px] font-semibold sm:text-[11px]">
+                {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
               </span>
+              <ChevronUp className={cn("h-3 w-3 shrink-0 opacity-45 transition-transform", isQuickTOCOpen && "rotate-180")} />
             </button>
 
-            {/* Quick Table of Contents Popover */}
             <AnimatePresence>
               {isQuickTOCOpen && (
                 <>
-                  {/* Backdrop to close click outside */}
-                  <div 
-                    className="fixed inset-0 z-40 bg-transparent" 
-                    onClick={() => setIsQuickTOCOpen(false)} 
+                  <button
+                    type="button"
+                    className="fixed inset-0 z-40 cursor-default"
+                    aria-label={language === 'ar' ? 'إغلاق الفهرس' : 'Close table of contents'}
+                    onClick={() => setIsQuickTOCOpen(false)}
                   />
                   <motion.div
-                    initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 12, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    exit={{ opacity: 0, y: 12, scale: 0.97 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
                     className={cn(
-                      "absolute bottom-14 left-0 z-50 w-72 sm:w-80 md:w-96 rounded-2xl shadow-2xl border backdrop-blur-2xl p-3 sm:p-4 flex flex-col gap-3",
+                      "absolute bottom-[calc(100%+0.7rem)] z-50 w-[min(25rem,calc(100vw-1.5rem))] rounded-2xl border p-3 shadow-2xl backdrop-blur-2xl sm:p-4",
                       themeClasses.menuBg,
                       themeClasses.menuBorder,
-                      language === 'ar' ? "left-auto right-0 origin-bottom-right" : "origin-bottom-left"
+                      isRTL ? "right-0" : "left-0"
                     )}
                   >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                      <h4 className={cn("font-display text-xs md:text-sm uppercase tracking-wider font-semibold", themeClasses.goldText)}>
+                    <div className="mb-2 flex items-center justify-between gap-4 px-1">
+                      <h4 className={cn("font-display text-[11px] font-semibold uppercase tracking-[0.16em]", themeClasses.goldText)}>
                         {t('nav.tableOfContents')}
                       </h4>
-                      <span 
-                        style={{ fontFamily: "'Poppins', sans-serif" }} 
-                        className="text-[11px] text-white/50 font-medium"
-                      >
-                        {formatNumber(totalPages)} {language === 'ar' ? "صفحات" : "pages"}
+                      <span className="font-display text-[10px] text-white/45">
+                        {formatNumber(totalPages)} {language === 'ar' ? "صفحة" : "pages"}
                       </span>
                     </div>
 
-                    <div className="space-y-1.5 max-h-64 sm:max-h-72 overflow-y-auto custom-scrollbar pr-1.5 scroll-smooth">
+                    <div className="max-h-[min(58vh,24rem)] space-y-1 overflow-y-auto pr-1 custom-scrollbar">
                       {currentBook?.pages.map((page, idx) => {
                         const isActive = currentPageIndex === idx;
                         return (
                           <button
                             key={page.id}
+                            type="button"
+                            aria-current={isActive ? 'page' : undefined}
                             onClick={() => {
                               setCurrentPageIndex(idx);
                               setIsQuickTOCOpen(false);
                             }}
                             className={cn(
-                              "w-full p-2 sm:p-2.5 rounded-xl text-left font-serif text-xs sm:text-[14px] flex items-center justify-between gap-2.5 transition-all",
-                              language === 'ar' && "text-right flex-row-reverse",
-                              isActive 
-                                ? "bg-gold/25 text-white font-semibold border border-gold/30" 
-                                : "hover:bg-white/5 text-parchment/70 hover:text-white border border-transparent"
+                              "flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-start transition-colors",
+                              isRTL && "text-right",
+                              isActive
+                                ? themeClasses.menuItemActive
+                                : "text-parchment/68 hover:bg-white/[0.06] hover:text-white"
                             )}
                           >
-                            <div className={cn("flex items-center gap-2 min-w-0", language === 'ar' && "flex-row-reverse")}>
-                              <span 
-                                style={{ fontFamily: "'Poppins', sans-serif" }}
-                                className={cn(
-                                  "text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md min-w-[20px] text-center font-medium shrink-0",
-                                  isActive ? "bg-gold/40 text-white" : "bg-white/5 text-white/40"
-                                )}
-                              >
-                                {formatNumber(idx + 1)}
-                              </span>
-                              <span className="truncate">{page.title}</span>
-                            </div>
-                            
-                            {/* Page Type Badge/Indicator */}
-                            <div className="flex items-center gap-1 shrink-0">
-                              {(page.type === 'quiz' || page.type === 'vocabulary-match' || page.type === 'sequencing' || page.type === 'game') && (
-                                <span className="text-[10px] bg-emerald-500/10 text-emerald-400/90 border border-emerald-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'معرفة' : 'Kc'}
-                                </span>
-                              )}
-                              {page.type === 'exercises' && (
-                                <span className="text-[10px] bg-amber-500/10 text-amber-400/90 border border-amber-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'تمارين' : 'Ex'}
-                                </span>
-                              )}
-                              {page.type === 'glossary' && (
-                                <span className="text-[10px] bg-sky-500/10 text-sky-400/90 border border-sky-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'قاموس' : 'Gl'}
-                                </span>
-                              )}
-                              {page.type === 'final-challenge' && (
-                                <span className="text-[10px] bg-red-500/10 text-red-400/90 border border-red-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'تحدي' : 'Ch'}
-                                </span>
-                              )}
-                              {isActive && (
-                                <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse shrink-0" />
-                              )}
-                            </div>
+                            <span className="w-7 shrink-0 text-center font-display text-[10px] font-semibold opacity-60">
+                              {formatNumber(idx + 1)}
+                            </span>
+                            <span className="min-w-0 flex-1 truncate font-display text-[11px] font-medium sm:text-[12px]">
+                              {page.title}
+                            </span>
+                            {isActive && (
+                              <span className={cn("h-2 w-2 shrink-0 rounded-full", themeClasses.progressBar)} />
+                            )}
                           </button>
                         );
                       })}
@@ -788,170 +808,152 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
 
-          {/* Center: Integrated Responsive Navigation Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          <div className="flex items-center gap-2">
             <button 
               onClick={handlePrevPage}
               disabled={currentPageIndex === 0}
               className={cn(
-                "flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg border text-xs font-bold transition-all disabled:opacity-25 disabled:cursor-not-allowed shadow-sm active:scale-95 cursor-pointer",
+                "touch-target flex items-center justify-center rounded-full border transition-all disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
                 themeClasses.buttonSec
               )}
               title={t('nav.back')}
+              aria-label={t('nav.back')}
             >
-              <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">{t('nav.back')}</span>
+              <ChevronLeft className="h-5 w-5" />
             </button>
 
             <button 
               onClick={handleNextPage}
               disabled={currentPageIndex === totalPages - 1}
               className={cn(
-                "flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-lg border text-xs font-bold transition-all disabled:opacity-25 disabled:cursor-not-allowed shadow-md active:scale-95 cursor-pointer",
+                "touch-target flex items-center justify-center rounded-full border transition-all disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
                 themeClasses.navButton
               )}
               title={t('nav.next')}
+              aria-label={t('nav.next')}
             >
-              <span className="hidden sm:inline">{t('nav.next')}</span>
-              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <ChevronRight className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Right: Quranic Quote or Collection Title */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            {/* Quranic Quote - Yusuf 111 - Shown on 2XL+ */}
-            <div className="hidden 2xl:flex flex-col items-center">
-              <div className="flex items-center gap-2">
-                <p className={cn(
-                  "tracking-wide drop-shadow-sm text-center font-medium text-xs",
-                  themeClasses.goldText,
-                  language === 'ar' ? "text-sm font-bold" : "font-serif italic text-xs"
-                )} dir={language === 'ar' ? "rtl" : "ltr"}>
-                  {language === 'ar' 
-                    ? "لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ"
-                    : "\"In their stories is a lesson for those who have intelligence.\""}
-                </p>
-              </div>
-            </div>
-
-            <p className="font-display text-[10px] sm:text-[11px] tracking-[0.15em] text-white/70 font-semibold uppercase truncate max-w-[120px] lg:max-w-none">
+          <div className="hidden min-w-0 items-center justify-end md:flex">
+            <span className="truncate font-display text-[9px] font-semibold uppercase tracking-[0.16em] text-parchment/48 lg:text-[10px]">
               {currentCollection === 'history' ? t('home.collection2') : currentCollection === 'turkish' ? t('home.collection3') : t('home.collection1')}
-            </p>
+            </span>
           </div>
         </footer>
       )}
 
-      {/* Side Menu */}
+      {/* Reader Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={cn("fixed inset-0 backdrop-blur-sm z-[200]", themeClasses.menuOverlayBg)}
+            className={cn("fixed inset-0 z-[200] backdrop-blur-sm", themeClasses.menuOverlayBg)}
             onClick={() => setIsMenuOpen(false)}
           >
-            <motion.div 
-              initial={{ x: -300 }}
+            <motion.aside
+              initial={{ x: isRTL ? 340 : -340 }}
               animate={{ x: 0 }}
-              exit={{ x: -300 }}
-              className={cn("w-80 h-full backdrop-blur-2xl shadow-2xl p-8 flex flex-col border-r", themeClasses.menuBg, themeClasses.menuBorder)}
+              exit={{ x: isRTL ? 340 : -340 }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              className={cn(
+                "h-full w-[min(22rem,88vw)] border-r p-5 shadow-2xl backdrop-blur-2xl sm:p-7",
+                isRTL && "ml-auto border-l border-r-0",
+                themeClasses.menuBg,
+                themeClasses.menuBorder
+              )}
               onClick={e => e.stopPropagation()}
+              aria-label={t('nav.mainMenu')}
             >
-              <div className="flex justify-between items-center mb-12">
-                <div className="flex items-center gap-3">
-                  <div className={cn("w-10 h-10 rounded-xl border flex items-center justify-center overflow-hidden p-1.5", themeClasses.menuLogoContainer)}>
-                    <img 
-                      src="https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/home_icon.png?alt=media&token=d8075082-0856-42d8-bc20-db4d7ce86c99"
-                      alt=""
-                      className="w-full h-full object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <h3 className="font-display text-xl text-parchment tracking-tight">
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className={cn("font-display text-[10px] font-semibold uppercase tracking-[0.18em]", themeClasses.menuAccentText)}>
                     {t('nav.mainMenu')}
+                  </p>
+                  <h3 className="mt-1 truncate font-display text-lg font-semibold text-parchment">
+                    {currentBookTitle}
                   </h3>
+                  <p className="mt-1 text-[11px] text-parchment/45">
+                    {t('nav.level')} {formatNumber(currentLevel || '')} · {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
+                  </p>
                 </div>
-                <button onClick={() => setIsMenuOpen(false)} className={cn("transition-colors", themeClasses.menuCloseButton)} aria-label="Close menu">
-                  <X size={24} />
+                <button
+                  type="button"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn("touch-target flex items-center justify-center rounded-full transition-colors hover:bg-white/[0.06]", themeClasses.menuCloseButton)}
+                  aria-label="Close menu"
+                >
+                  <X size={22} />
                 </button>
               </div>
 
-              <div className="lg:hidden mb-8">
-                <LanguageToggle />
-              </div>
-
-              <div className="space-y-2 flex-1">
+              <div className="mt-7 space-y-2">
                 <button 
                   onClick={handleReturnToLibrary}
-                  className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                  className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                 >
-                  <Home size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                  <span className="font-serif font-bold">{t('nav.libraryHome')}</span>
+                  <Home size={19} className={themeClasses.menuAccentText} />
+                  <span className="font-display text-[12px] font-semibold">{t('nav.libraryHome')}</span>
                 </button>
-                
-                <div className="py-4">
-                  <h4 className={cn("font-display text-[10px] uppercase tracking-widest mb-4 px-4", themeClasses.menuSectionHeader)}>
-                    {t('nav.guidesResources')}
-                  </h4>
+              </div>
+
+              <div className="mt-7">
+                <h4 className={cn("px-4 font-display text-[9px] font-semibold uppercase tracking-[0.18em]", themeClasses.menuSectionHeader)}>
+                  {t('nav.guidesResources')}
+                </h4>
+
+                <div className="mt-2 space-y-1">
                   <button 
                     onClick={() => {
                       setIsTeacherGuideOpen(true);
                       setIsMenuOpen(false);
                     }}
-                    className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
-                    <GraduationCap size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                    <span className="font-serif font-bold">{t('nav.teacherGuide')}</span>
+                    <GraduationCap size={19} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[12px] font-semibold">{t('nav.teacherGuide')}</span>
                   </button>
+
                   <button 
                     onClick={() => {
                       setIsSelfStudyOpen(true);
                       setIsMenuOpen(false);
                     }}
-                    className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
-                    <ClipboardList size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                    <span className="font-serif font-bold">{t('nav.selfStudyGuide')}</span>
+                    <ClipboardList size={19} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[12px] font-semibold">{t('nav.selfStudyGuide')}</span>
                   </button>
+
                   <button 
                     onClick={() => {
                       currentBook && generateBookPDF(currentBook);
                       setIsMenuOpen(false);
                     }}
-                    className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
-                    <Download size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                    <span className="font-serif font-bold">{t('nav.downloadPdf')}</span>
+                    <Download size={19} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[12px] font-semibold">{t('nav.downloadPdf')}</span>
                   </button>
                 </div>
+              </div>
 
-                <div className="py-4">
-                  <h4 className={cn("font-display text-[10px] uppercase tracking-widest mb-4 px-4", themeClasses.menuSectionHeader)}>
-                    {t('nav.tableOfContents')}
-                  </h4>
-                  <div className="space-y-1 max-h-64 overflow-y-auto custom-scrollbar pr-2">
-                    {currentBook?.pages.map((page, idx) => (
-                      <button 
-                        key={page.id}
-                        onClick={() => {
-                          setCurrentPageIndex(idx);
-                          setIsMenuOpen(false);
-                        }}
-                        className={cn(
-                          "w-full p-3 rounded-lg text-left font-serif text-sm flex items-center gap-3 transition-all",
-                          isRTL && "text-right",
-                          currentPageIndex === idx ? themeClasses.menuItemActive : themeClasses.menuItemHover
-                        )}
-                      >
-                        <span className="font-display text-[10px] opacity-40">{formatNumber(idx + 1)}</span>
-                        <span className="truncate">{page.title}</span>
-                      </button>
-                    ))}
-                  </div>
+              <div className="mt-auto pt-8">
+                <div className="rounded-2xl bg-white/[0.035] p-4">
+                  <p className="font-display text-[10px] font-semibold text-parchment/72">
+                    {language === 'ar' ? 'اختصارات القراءة' : 'Reading shortcuts'}
+                  </p>
+                  <p className="mt-2 text-[10px] leading-5 text-parchment/42">
+                    {language === 'ar'
+                      ? 'استخدم مفاتيح الأسهم للتنقل بين الصفحات. افتح Aa لضبط حجم النص.'
+                      : 'Use the arrow keys to move between pages. Open Aa to tune text size.'}
+                  </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.aside>
           </motion.div>
         )}
       </AnimatePresence>
