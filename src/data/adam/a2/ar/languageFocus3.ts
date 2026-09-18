@@ -81,21 +81,21 @@ export const adamA2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
 
 export const adamA2LanguageReviewExercisesAr: Exercise[] = [
   {
-    id: 'adam-a2-ar-language-review-1-plan-result', type: 'matching', title: 'الخطة والترتيب والنتيجة', instructions: 'صل كل تعبير من الفصل الأول بوظيفته.', question: 'كيف يتحدث افتتاح القصة عن الخطة والترتيب والسبب والنتيجة؟',
+    id: 'adam-a2-ar-language-review-1-plan-result', type: 'matching', title: 'الخطة والترتيب', instructions: 'صِل كل تعبير بمعناه.', question: 'ماذا يعني كل تعبير؟',
     matchingPairs: [{ left: 'كان سيخلق إنسانًا', right: 'خطة مستقبلية من منظور الماضي' }, { left: 'بعد ذلك', right: 'الحدث التالي في الترتيب' }, { left: 'لأنّ', right: 'سبب' }, { left: 'لذلك / ولهذا', right: 'نتيجة أو أثر' }],
     correctAnswer: { 'كان سيخلق إنسانًا': 'خطة مستقبلية من منظور الماضي', 'بعد ذلك': 'الحدث التالي في الترتيب', 'لأنّ': 'سبب', 'لذلك / ولهذا': 'نتيجة أو أثر' }, explanation: 'يجمع الفصل الأول بين الحديث عن خطة قادمة من منظور الماضي وروابط بسيطة للترتيب والسبب والنتيجة.', feedback: { correct: 'صحيح. فرّقت بين أربع وظائف لغوية.', incorrect: 'اسأل: هل التعبير يدل على خطة أم ترتيب أم سبب أم نتيجة؟' },
   },
   {
-    id: 'adam-a2-ar-language-review-2-ability', type: 'multiple-choice', title: 'التعبير عن القدرة', instructions: 'اختر الجملة التي تعبّر مباشرة عن القدرة.', question: 'أي جملة من الفصل الثاني تستعمل «يستطيع» لبيان ما كان آدم قادرًا على فعله؟',
+    id: 'adam-a2-ar-language-review-2-ability', type: 'multiple-choice', title: 'القدرة', instructions: 'اختر الجملة التي فيها «يستطيع».', question: 'أي جملة تقول ما كان آدم يستطيع فعله؟',
     options: ['كان آدم يستطيع أن يتعلم ويفهم', 'علّمه أن يفكر', 'كان أكثر حكمة من الملائكة', 'ظن إبليس أن آدم غير مهم'], correctAnswer: 0,
     explanation: '«يستطيع أن + فعل» تعبّر عن القدرة. أما الخيارات الأخرى فتعبّر عن التعليم أو المقارنة أو الرأي.', feedback: { correct: 'صحيح. «يستطيع أن يتعلم ويفهم» تعبّر عن القدرة.', incorrect: 'ابحث عن يستطيع أن + فعل.' },
   },
   {
-    id: 'adam-a2-ar-language-review-3-value-reason', type: 'fill-blanks', title: 'القيمة والسبب', instructions: 'أكمل الجملة بأداة السبب المناسبة.', question: 'أي أداة تربط قيمة العلم النافع بسببها؟',
+    id: 'adam-a2-ar-language-review-3-value-reason', type: 'fill-blanks', title: 'السبب', instructions: 'أكمل الجملة بكلمة واحدة.', question: 'ما الكلمة التي تذكر السبب؟',
     fillBlanksText: 'العلم النافع يجعل الإنسان أفضل [blank] يساعده على فعل الخير ومنع الشر.', correctAnswer: 'لأنّه', explanation: '«لأنّه» تربط الفكرة بسببها.', feedback: { correct: 'صحيح. «لأنّه» تقدم السبب.', incorrect: 'الجزء الثاني يشرح لماذا الفكرة الأولى صحيحة.' },
   },
   {
-    id: 'adam-a2-ar-language-review-4-functions', type: 'drag-drop', title: 'النية والتحذير والمنع والتغيّر', instructions: 'ضع كل تعبير من الفصل الرابع في المجموعة التي تناسب وظيفته.', question: 'هل تستطيع تصنيف التراكيب الأربعة بحسب وظيفتها؟',
+    id: 'adam-a2-ar-language-review-4-functions', type: 'drag-drop', title: 'الخطة والتحذير والتغيّر', instructions: 'ضع كل تعبير في المجموعة المناسبة.', question: 'أين نضع كل تعبير؟',
     dragDropGroups: [
       { group: 'نية', items: ['أراد أن يفقد آدم محبة الله'] },
       { group: 'تحذير', items: ['حذّر آدم من إبليس'] },
@@ -106,30 +106,30 @@ export const adamA2LanguageReviewExercisesAr: Exercise[] = [
     explanation: 'يستعمل الفصل «أراد» للنية، والتحذير للتنبيه، و«ألا» للمنع المنقول، و«بدأ» لبداية حالة جديدة.', feedback: { correct: 'صحيح. صنّفت أربع وظائف لغوية مختلفة.', incorrect: 'ركز على أراد، حذّر، ألا، وبدأ.' },
   },
   {
-    id: 'adam-a2-ar-language-review-5-condition-result', type: 'multiple-choice', title: 'الشرط والنتيجة', instructions: 'اختر الجملة التي تربط شرطًا بنتيجة مستقبلية.', question: 'أي جملة من الفصل الخامس تستعمل «إذا» مع نتيجة مستقبلية؟',
+    id: 'adam-a2-ar-language-review-5-condition-result', type: 'multiple-choice', title: 'إذا والنتيجة', instructions: 'اختر جملة «إذا» الصحيحة.', question: 'أي جملة تستعمل «إذا» بصورة صحيحة؟',
     options: ['إذا أكلتما منها فلن تموتا', 'تعلما من الخطأ', 'قررا ألا يكررا الخطأ', 'ولكن إبليس أخذ طريقًا مختلفًا'], correctAnswer: 0,
-    explanation: 'يقدم الجزء الأول الشرط بـ«إذا»، ثم تأتي النتيجة المستقبلية في الجزء الثاني.', feedback: { correct: 'صحيح. حددت تركيب الشرط والنتيجة.', incorrect: 'ابحث عن الجملة التي تبدأ بـ«إذا».' },
+    explanation: 'يقدم الجزء الأول الشرط بـ«إذا»، ثم تأتي النتيجة المستقبلية في الجزء الثاني.', feedback: { correct: 'صحيح. حددت تركيب إذا والنتيجة.', incorrect: 'ابحث عن الجملة التي تبدأ بـ«إذا».' },
   },
   {
     id: 'adam-a2-ar-language-review-6-purpose', type: 'fill-blanks', title: 'الهدف من استعمال الأرض', instructions: 'أكمل العبارة من الفصل السادس بالكلمة المناسبة.', question: 'ما الكلمة التي تبيّن هدف استعمال الأرض؟',
     fillBlanksText: 'استخدام الأرض [blank] المحاصيل.', correctAnswer: 'لزراعة', explanation: 'اللام في «لزراعة» تبيّن الغرض أو الهدف.', feedback: { correct: 'صحيح. «لزراعة» تبيّن الغرض.', incorrect: 'الفراغ يجيب عن السؤال: لماذا تُستخدم الأرض؟' },
   },
   {
-    id: 'adam-a2-ar-language-review-7-teaching-time', type: 'sequencing', title: 'التعليم وتسلسل الزمن', instructions: 'رتب أفكار الفصل السابع ترتيبًا طبيعيًا.', question: 'كيف تساعد إشارات الزمن ولغة التعليم على تنظيم القصة؟',
+    id: 'adam-a2-ar-language-review-7-teaching-time', type: 'sequencing', title: 'ترتيب القصة', instructions: 'رتب الأفكار ترتيبًا واضحًا.', question: 'ماذا يأتي أولًا ثم بعد ذلك؟',
     sequencingItems: [{ id: '1', text: 'عاش آدم وحواء على الأرض سنوات كثيرة.' }, { id: '2', text: 'ثم جعل الله آدم أول رسول.' }, { id: '3', text: 'بدأ آدم يعلم الناس الصدق وفعل الخير.' }, { id: '4', text: 'واصل توجيه الناس وتحذيرهم ضمن مسؤوليته.' }],
     correctAnswer: ['1', '2', '3', '4'], explanation: 'تنظم عبارات الزمن الأحداث، بينما تصف أفعال التعليم والتوجيه مسؤولية آدم.', feedback: { correct: 'صحيح. أعدت بناء التسلسل باستخدام الزمن ولغة التعليم.', incorrect: 'ابدأ بالحياة على الأرض، ثم الدور الجديد، ثم التعليم والتوجيه.' },
   },
   {
-    id: 'adam-a2-ar-language-review-8-role-quality-obligation', type: 'matching', title: 'الدور والجودة والواجب', instructions: 'صل كل تركيب من الفصل الثامن بما يعبّر عنه.', question: 'كيف يصف الفصل العمل والجودة وما كان ضروريًا؟',
+    id: 'adam-a2-ar-language-review-8-role-quality-obligation', type: 'matching', title: 'العمل والجودة والحاجة', instructions: 'صِل كل تركيب بمعناه.', question: 'ماذا يعني كل تركيب؟',
     matchingPairs: [{ left: 'أصبح هابيل راعيًا', right: 'التغيّر إلى دور أو عمل' }, { left: 'أصبح قابيل مزارعًا', right: 'التغيّر إلى دور أو عمل جديد' }, { left: 'أفضل وأصح خروف عنده', right: 'أعلى درجة في الجودة' }, { left: 'كان يجب عليهما أن يقدّما قربانًا', right: 'ضرورة في الماضي' }],
-    correctAnswer: { 'أصبح هابيل راعيًا': 'التغيّر إلى دور أو عمل', 'أصبح قابيل مزارعًا': 'التغيّر إلى دور أو عمل جديد', 'أفضل وأصح خروف عنده': 'أعلى درجة في الجودة', 'كان يجب عليهما أن يقدّما قربانًا': 'ضرورة في الماضي' }, explanation: 'يستعمل الفصل «أصبح» للدور الجديد، وصيغ التفضيل للجودة، و«كان يجب ... أن» للضرورة في الماضي.', feedback: { correct: 'صحيح. فرّقت بين الدور والجودة والواجب.', incorrect: 'ركز على أصبح، أفضل، وكان يجب.' },
+    correctAnswer: { 'أصبح هابيل راعيًا': 'التغيّر إلى دور أو عمل', 'أصبح قابيل مزارعًا': 'التغيّر إلى دور أو عمل جديد', 'أفضل وأصح خروف عنده': 'أعلى درجة في الجودة', 'كان يجب عليهما أن يقدّما قربانًا': 'ضرورة في الماضي' }, explanation: 'يستعمل الفصل «أصبح» للدور الجديد، وصيغ التفضيل للجودة، و«كان يجب ... أن» للضرورة في الماضي.', feedback: { correct: 'صحيح. فرّقت بين العمل والجودة والحاجة.', incorrect: 'ركز على أصبح، أفضل، وكان يجب.' },
   },
   {
-    id: 'adam-a2-ar-language-review-9-refusal', type: 'true-false', title: 'الرفض في المستقبل', instructions: 'حدد هل العبارة عن لغة الفصل التاسع صحيحة أم خاطئة.', question: '«لن أؤذيك» تعبّر عن رفض أو نية منفية في المستقبل.', correctAnswer: true,
+    id: 'adam-a2-ar-language-review-9-refusal', type: 'true-false', title: 'المستقبل', instructions: 'اختر صحيح أو خطأ.', question: '«لن أؤذيك» تتحدث عن فعل في المستقبل.', correctAnswer: true,
     explanation: '«لن + فعل» تنفي الفعل في المستقبل ويمكن أن تعبّر عن رفض واضح.', feedback: { correct: 'صحيح. «لن» تعبّر هنا عن اختيار مستقبلي منفي.', incorrect: 'ركز على «لن + فعل» وما يرفض المتكلم فعله.' },
   },
   {
-    id: 'adam-a2-ar-language-review-10-transfer', type: 'reflection', title: 'استخدم لغة النصيحة', instructions: 'استخدم أربعة أنماط من الفصول الأخيرة لكتابة رسالة قصيرة من مستوى A2 عن الحياة اليومية.', question: 'هل تستطيع أن تقدم نصيحة، وتصف واجبًا في الماضي، وتبين تغيرًا، وتذكر نتيجة إيجابية؟', correctAnswer: null,
+    id: 'adam-a2-ar-language-review-10-transfer', type: 'reflection', title: 'استخدم اللغة', instructions: 'اكتب أربع جمل قصيرة عن الحياة اليومية.', question: 'هل تستطيع استخدام لغة القصة في جملك؟', correctAnswer: null,
     explanation: 'تنقل هذه المهمة الأخيرة القواعد والوظائف من القصة إلى استعمال شخصي ذي معنى.', feedback: { correct: 'استخدم البدايات الأربع واجعل كل جملة واضحة وذات معنى.', incorrect: '' },
     discussionPrompts: [{ question: 'الجملة 1 — «يجب أن ...»', mode: 'Individual' }, { question: 'الجملة 2 — «أمس كان عليّ أن ...»', mode: 'Individual' }, { question: 'الجملة 3 — «أصبحت ... عندما ...»', mode: 'Pair' }, { question: 'الجملة 4 — «هذا يساعد الناس على أن ...»', mode: 'Pair' }],
   },
