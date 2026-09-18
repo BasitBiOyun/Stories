@@ -1,7 +1,7 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight } from '../ui/icons';
+import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
 import { PageData, Hotspot, Exercise } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
 import { ExerciseModule } from '../ExerciseModule';
@@ -730,6 +730,7 @@ export const StoryPage = ({
             definition={vocab.definition}
             customStyle={vocabStyle}
             collectionId={collectionId}
+            variant={page.exercises?.[0]?.id === activeExercise.id ? 'quick' : 'default'}
           />
         ) : animatedWord ? (
           <VocabularyWord
@@ -960,6 +961,109 @@ export const StoryPage = ({
   const isA2 = level === 'A2';
 
   const isAudioLocked = false;
+
+  const renderQuickChallengePanel = () => {
+    const exercise = page.exercises?.[0];
+    if (!exercise) return null;
+
+    const completed = completedExercises.includes(exercise.id);
+    const quickTheme = collectionId === 'history'
+      ? {
+          container: 'bg-gradient-to-br from-emerald-50/95 via-white/90 to-emerald-50/65 ring-emerald-200/70',
+          rail: 'bg-emerald-500',
+          icon: 'bg-emerald-700 text-white shadow-emerald-900/10',
+          title: 'text-emerald-950',
+          copy: 'text-emerald-950/58',
+          button: 'bg-emerald-700 hover:bg-emerald-800 focus-visible:ring-emerald-500',
+          glow: 'bg-emerald-300/20',
+        }
+      : collectionId === 'turkish'
+      ? {
+          container: 'bg-gradient-to-br from-sky-50/95 via-white/90 to-cyan-50/65 ring-cyan-200/70',
+          rail: 'bg-cyan-500',
+          icon: 'bg-sky-700 text-white shadow-sky-900/10',
+          title: 'text-sky-950',
+          copy: 'text-sky-950/58',
+          button: 'bg-sky-700 hover:bg-sky-800 focus-visible:ring-sky-500',
+          glow: 'bg-cyan-300/20',
+        }
+      : {
+          container: 'bg-gradient-to-br from-amber-50/95 via-white/90 to-orange-50/55 ring-amber-200/70',
+          rail: 'bg-amber-500',
+          icon: 'bg-amber-700 text-white shadow-amber-900/10',
+          title: 'text-amber-950',
+          copy: 'text-amber-950/58',
+          button: 'bg-amber-700 hover:bg-amber-800 focus-visible:ring-amber-500',
+          glow: 'bg-amber-300/20',
+        };
+
+    return (
+      <motion.section
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full shrink-0 mt-6"
+        aria-label={t('nav.quickChallenge')}
+      >
+        <div className={cn(
+          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_16px_42px_rgba(63,49,28,0.08)]',
+          quickTheme.container
+        )}>
+          <div className={cn('absolute inset-y-0 start-0 w-1.5', quickTheme.rail)} aria-hidden="true" />
+          <div className={cn('pointer-events-none absolute -end-10 -top-12 h-36 w-36 rounded-full blur-3xl', quickTheme.glow)} aria-hidden="true" />
+
+          <div className="relative flex flex-col gap-5 p-5 sm:p-6 md:flex-row md:items-center md:justify-between md:gap-8">
+            <div className="flex min-w-0 items-start gap-4 text-start">
+              <div className={cn(
+                'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-lg',
+                quickTheme.icon
+              )}>
+                {completed ? <CheckCircle2 size={23} /> : <Rocket size={22} />}
+              </div>
+
+              <div className="min-w-0 pt-0.5">
+                <p className={cn(
+                  'font-display text-[10px] font-semibold uppercase tracking-[0.18em]',
+                  quickTheme.copy
+                )}>
+                  {completed ? t('nav.completed') : t('nav.testUnderstanding')}
+                </p>
+                <h4 className={cn(
+                  'mt-1 font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
+                  quickTheme.title
+                )}>
+                  {t('nav.quickChallenge')}
+                </h4>
+                <p className={cn(
+                  'mt-1.5 max-w-2xl font-serif leading-relaxed',
+                  isArabic ? 'text-base' : 'text-sm',
+                  quickTheme.copy
+                )}>
+                  {t('nav.testUnderstanding')}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setActiveExercise(exercise)}
+              className={cn(
+                'group inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[12px] font-semibold text-white shadow-lg transition-all active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:w-auto md:min-w-[172px]',
+                quickTheme.button
+              )}
+            >
+              {completed ? t('nav.completed') : t('nav.startExercise')}
+              {!completed && (
+                <ArrowRight
+                  size={16}
+                  className={cn('transition-transform group-hover:translate-x-0.5', isRTL && 'rotate-180 group-hover:-translate-x-0.5')}
+                />
+              )}
+            </button>
+          </div>
+        </div>
+      </motion.section>
+    );
+  };
 
   const renderLanguageFocusPanel = (mobile = false) => {
     const exercises = page.languageFocusExercises ?? [];
@@ -1268,61 +1372,7 @@ export const StoryPage = ({
             {renderContent(page.content)}
           </div>
 
-          {/* Mobile Quick Challenge */}
-          {page.exercises && page.exercises.length > 0 && (
-            <div className={cn(
-              "pt-6 border-t",
-              collectionId === 'history' ? "border-emerald-100" : collectionId === 'turkish' ? "border-sky-100" : "border-amber-100"
-            )}>
-              <div className={cn(
-                "flex flex-col items-center p-6 rounded-3xl border shadow-sm gap-4 text-center",
-                collectionId === 'history' 
-                  ? "bg-emerald-50/40 border-emerald-105" 
-                  : collectionId === 'turkish' 
-                  ? "bg-sky-50/45 border-sky-105" 
-                  : "bg-amber-50/50 border-amber-100"
-              )}>
-                <div className="flex flex-col items-center gap-3">
-                  <div className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center shadow-inner shrink-0",
-                    collectionId === 'history' ? "bg-emerald-100 text-emerald-600" : collectionId === 'turkish' ? "bg-sky-150 text-sky-600" : "bg-amber-100 text-amber-600"
-                  )}>
-                    <Rocket size={24} />
-                  </div>
-                  <div>
-                    <h4 className={cn(
-                      "font-black text-xl",
-                      collectionId === 'history' ? "text-[#064E3B]" : collectionId === 'turkish' ? "text-sky-950" : "text-amber-900"
-                    )}>
-                      {t('nav.quickChallenge')}
-                    </h4>
-                    <p className={cn(
-                      "font-medium",
-                      isArabic ? 'text-base' : 'text-sm',
-                      collectionId === 'history' ? "text-emerald-900/50" : collectionId === 'turkish' ? "text-sky-950/50" : "text-amber-900/50"
-                    )}>
-                      {t('nav.testUnderstanding')}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setActiveExercise(page.exercises![0])}
-                  className={cn(
-                    "w-full px-6 py-3.5 rounded-xl font-bold text-base transition-all shadow-md active:scale-95 shrink-0 cursor-pointer",
-                    completedExercises.includes(page.exercises[0].id)
-                      ? "bg-green-500 text-white"
-                      : collectionId === 'history'
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                      : collectionId === 'turkish'
-                      ? "bg-sky-700 text-white hover:bg-sky-800"
-                      : "bg-amber-600 text-white hover:bg-amber-700"
-                  )}
-                >
-                  {completedExercises.includes(page.exercises[0].id) ? t('nav.completed') : t('nav.startExercise')}
-                </button>
-              </div>
-            </div>
-          )}
+          {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel(true)}
         </div>
@@ -1384,62 +1434,7 @@ export const StoryPage = ({
             </div>
           </div>
 
-          {/* Quick Challenge spanning across full width / both columns at the bottom */}
-          {page.exercises && page.exercises.length > 0 && (
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="w-full mt-6 pt-6 border-t border-gold/15 shrink-0"
-            >
-              <div className={cn(
-                "flex items-center justify-between p-5 rounded-2xl border shadow-sm gap-4",
-                collectionId === 'history' 
-                  ? "bg-emerald-50/40 border-emerald-105" 
-                  : collectionId === 'turkish' 
-                  ? "bg-sky-50/45 border-sky-105" 
-                  : "bg-amber-50/50 border-amber-100"
-              )}>
-                <div className="flex items-center gap-4">
-                  <div className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center shadow-inner shrink-0",
-                    collectionId === 'history' ? "bg-emerald-100 text-emerald-600" : collectionId === 'turkish' ? "bg-sky-150 text-sky-600" : "bg-amber-100 text-amber-600"
-                  )}>
-                    <Rocket size={24} />
-                  </div>
-                  <div>
-                    <h4 className={cn(
-                      "font-black text-lg sm:text-xl",
-                      collectionId === 'history' ? "text-[#064E3B]" : collectionId === 'turkish' ? "text-sky-950" : "text-amber-900"
-                    )}>
-                      {t('nav.quickChallenge')}
-                    </h4>
-                    <p className={cn(
-                      "font-medium",
-                      isArabic ? 'text-base' : 'text-xs sm:text-sm',
-                      collectionId === 'history' ? "text-emerald-900/50" : collectionId === 'turkish' ? "text-sky-950/50" : "text-amber-900/50"
-                    )}>
-                      {t('nav.testUnderstanding')}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setActiveExercise(page.exercises![0])}
-                  className={cn(
-                    "px-6 py-3 rounded-xl font-bold text-base transition-all shadow-md active:scale-95 shrink-0 min-w-[160px] cursor-pointer",
-                    completedExercises.includes(page.exercises[0].id)
-                      ? "bg-green-500 text-white"
-                      : collectionId === 'history'
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                      : collectionId === 'turkish'
-                      ? "bg-sky-700 text-white hover:bg-sky-800"
-                      : "bg-amber-600 text-white hover:bg-amber-700"
-                  )}
-                >
-                  {completedExercises.includes(page.exercises[0].id) ? t('nav.completed') : t('nav.startExercise')}
-                </button>
-              </div>
-            </motion.div>
-          )}
+          {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel()}
         </div>
