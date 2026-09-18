@@ -7,6 +7,7 @@ import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
 import { localizeTeacherGuideTymmValues } from '../data/localizeTeacherGuideTymmValues';
 import { polishReviewedB2TeacherGuide } from '../data/polishB2TeacherGuide';
 import { normalizeTeacherGuideLessonTiming } from '../data/normalizeTeacherGuideLessonTiming';
+import { upgradeVocabularyLearningFlow } from '../core/content/vocabularyLearningUpgrade';
 
 export interface BookBundleState {
   definition: BookDefinition | null;
@@ -53,7 +54,8 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       const resolvedPair = storageModule.applyResolvedAssets(loadedPair, loadedAssets);
       const localizedPair = localizeTeacherGuideTymmValues(resolvedPair);
       const polishedPair = polishReviewedB2TeacherGuide(localizedPair);
-      return normalizeTeacherGuideLessonTiming(polishedPair);
+      const normalizedPair = normalizeTeacherGuideLessonTiming(polishedPair);
+      return upgradeVocabularyLearningFlow(normalizedPair);
     };
 
     load()
