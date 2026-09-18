@@ -49,13 +49,41 @@ const normalizeTypedAnswer = (value: string, language: string) => {
     .replace(/ئ/g, 'ي');
 };
 
+const normalizeMaskCharacter = (character: string): string => {
+  if (/[\u064B-\u0652\u0670]/.test(character)) return '';
+  if (/[أإآٱ]/.test(character)) return 'ا';
+  if (character === 'ى') return 'ي';
+  if (character === 'ؤ') return 'و';
+  if (character === 'ئ') return 'ي';
+  return character.toLocaleLowerCase();
+};
+
 const maskWord = (context: string | undefined, word: string) => {
   if (!context) return '';
-  const lowerContext = context.toLocaleLowerCase();
-  const lowerWord = word.toLocaleLowerCase();
-  const index = lowerContext.indexOf(lowerWord);
-  if (index < 0) return '';
-  return context.slice(0, index) + '_____' + context.slice(index + word.length);
+
+  let normalizedContext = '';
+  const originalPositions: number[] = [];
+  Array.from(context).forEach((character, index) => {
+    const normalized = normalizeMaskCharacter(character);
+    if (!normalized) return;
+    normalizedContext += normalized;
+    originalPositions.push(index);
+  });
+
+  const normalizedWord = Array.from(word)
+    .map(normalizeMaskCharacter)
+    .join('');
+  const matchIndex = normalizedContext.indexOf(normalizedWord);
+  if (matchIndex < 0 || !normalizedWord) return '';
+
+  const startIndex = originalPositions[matchIndex];
+  const lastNormalizedIndex = matchIndex + normalizedWord.length - 1;
+  let endIndex = (originalPositions[lastNormalizedIndex] ?? startIndex) + 1;
+  while (endIndex < context.length && /[\u064B-\u0652\u0670]/.test(context[endIndex])) {
+    endIndex += 1;
+  }
+
+  return context.slice(0, startIndex) + '_____' + context.slice(endIndex);
 };
 
 const themeFor = (collectionId: string) => {
