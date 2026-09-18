@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, BrainCircuit, ArrowRight, CheckCircle2, Book as BookIcon } from '../ui/icons';
+import { motion } from 'motion/react';
+import { Play, Pause, Volume2, VolumeX, BrainCircuit, CheckCircle2, ChevronLeft } from '../ui/icons';
 import { PageData, Exercise, Level } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
 import { SequencingExercise } from '../exercises/SequencingExercise';
@@ -34,8 +34,8 @@ export const ExercisePage = ({
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [speed, setSpeed] = useState(1);
-  const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  const [reviewIndex, setReviewIndex] = useState(0);
 
   const colTheme = React.useMemo(() => {
     if (collectionId === 'history') {
@@ -171,6 +171,32 @@ export const ExercisePage = ({
   // Remove audio for pages 11, 12, 13 (indices 10, 11, 12)
   const hideAudio = page.id === 11 || page.id === 12 || page.id === 13;
   const showGenericHeader = page.type === 'sequencing' || page.type === 'game';
+
+  const languageReviewExercises = page.type === 'exercises' ? (page.exercises ?? []) : [];
+  const reviewTotal = languageReviewExercises.length;
+  const noticeCount = reviewTotal > 0 ? Math.max(2, Math.round(reviewTotal * 0.3)) : 0;
+  const useCount = reviewTotal > 0 ? Math.max(2, Math.round(reviewTotal * 0.25)) : 0;
+  const buildCount = Math.max(0, reviewTotal - noticeCount - useCount);
+  const buildStart = noticeCount;
+  const useStart = noticeCount + buildCount;
+  const reviewStageIndex = reviewIndex < buildStart ? 0 : reviewIndex < useStart ? 1 : 2;
+  const reviewStageStarts = [0, buildStart, useStart];
+  const reviewStageLabels = level === 'A2'
+    ? (isArabic ? ['انظر', 'تدرّب', 'استخدم'] : ['Look', 'Practice', 'Use'])
+    : (isArabic ? ['لاحظ', 'طبّق', 'استخدم'] : ['Notice', 'Build', 'Use']);
+
+  React.useEffect(() => {
+    setReviewIndex(0);
+    setCompletedExercises([]);
+  }, [page.id]);
+
+  const isReviewStageUnlocked = (stageIndex: number) => {
+    const start = reviewStageStarts[stageIndex] ?? 0;
+    if (start === 0) return true;
+    return languageReviewExercises
+      .slice(0, start)
+      .every(exercise => completedExercises.includes(exercise.id));
+  };
 
   return (
     <div className="h-full relative flex flex-col lg:-my-3 lg:h-[calc(100%+1.5rem)]">
@@ -329,94 +355,150 @@ export const ExercisePage = ({
                 </div>
               )}
               {page.type === 'exercises' && page.exercises && (
-                <div className="h-full min-h-0 flex flex-col">
-                  <div className="shrink-0 mb-4">
-                    <h3 className={cn(
-                      "font-display text-2xl sm:text-3xl text-wood tracking-tight mb-1",
-                      colTheme.exerciseTitle
+                <div className="h-full min-h-0 overflow-y-auto pe-1 custom-scrollbar">
+                  <div className="mx-auto w-full max-w-5xl space-y-4 pb-4">
+                    <section className={cn(
+                      "rounded-[28px] bg-white/68 p-5 shadow-[0_16px_42px_rgba(63,49,28,0.06)] ring-1 sm:p-6",
+                      colTheme.containerBorder
                     )}>
-                      {page.title}
-                    </h3>
-                    <p className={cn(
-                      "text-wood/60 leading-relaxed max-w-5xl",
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base italic'
-                    )}>{page.content}</p>
-                  </div>
-                
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 content-start">
-                    {page.exercises.map((ex, idx) => (
-                      <motion.button
-                        key={ex.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        onClick={() => setActiveExercise(ex)}
-                        className={cn(
-                          "p-4 rounded-2xl border-2 text-left flex items-center justify-between group transition-all",
-                          completedExercises.includes(ex.id)
-                            ? "bg-green-50 border-green-200"
-                            : cn("bg-white border-gray-100 hover:shadow-md", colTheme.exerciseBtnHover)
-                        )}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className={cn(
-                            "w-10 h-10 rounded-xl flex items-center justify-center font-bold",
-                            completedExercises.includes(ex.id)
-                              ? "bg-green-500 text-white"
-                              : colTheme.exerciseIdxBg
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="min-w-0">
+                          <p className={cn(
+                            "font-display text-[10px] font-semibold uppercase tracking-[0.18em]",
+                            colTheme.iconText
                           )}>
-                            {completedExercises.includes(ex.id) ? <CheckCircle2 size={20} /> : formatNumber(idx + 1)}
+                            {isArabic ? 'بعد المفردات' : 'After vocabulary'}
+                          </p>
+                          <h3 className={cn(
+                            "mt-1 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl",
+                            colTheme.exerciseTitle
+                          )}>
+                            {isArabic ? 'مراجعة اللغة' : 'Language Review'}
+                          </h3>
+                          <p className={cn(
+                            "mt-2 max-w-2xl font-serif leading-relaxed text-wood/58",
+                            isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
+                          )}>
+                            {level === 'A2'
+                              ? (isArabic
+                                  ? 'انظر إلى لغة القصة، تدرّب عليها، ثم استخدمها بنفسك.'
+                                  : 'Look at language from the story, practise it, then use it yourself.')
+                              : page.content}
+                          </p>
+                        </div>
+
+                        <div className="shrink-0 sm:min-w-[170px]">
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="font-display text-[9px] font-semibold uppercase tracking-[0.14em] text-wood/42">
+                              {isArabic ? 'المهمة' : 'Task'}
+                            </span>
+                            <span className={cn("font-display text-sm font-semibold tabular-nums", colTheme.iconText)}>
+                              {formatNumber(Math.min(reviewIndex + 1, reviewTotal))} / {formatNumber(reviewTotal)}
+                            </span>
                           </div>
-                          <div>
-                            <p className={cn(
-                              "font-bold",
-                              isArabic ? 'text-lg' : 'text-base',
-                              completedExercises.includes(ex.id) ? "text-green-800" : "text-gray-900"
-                            )}>{ex.title}</p>
-                            <p className={cn(
-                              'text-gray-500 uppercase tracking-widest font-medium',
-                              isArabic ? 'text-base' : 'text-xs'
-                            )}>{exerciseTypeLabel(ex.type)}</p>
+                          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/[0.06]">
+                            <motion.div
+                              initial={false}
+                              animate={{ width: `${reviewTotal ? ((reviewIndex + 1) / reviewTotal) * 100 : 0}%` }}
+                              className={cn("h-full rounded-full", collectionId === 'history' ? 'bg-emerald-600' : collectionId === 'turkish' ? 'bg-sky-700' : 'bg-amber-600')}
+                            />
                           </div>
                         </div>
-                        <ArrowRight className={cn(
-                          "w-5 h-5 transition-transform group-hover:translate-x-1",
-                          completedExercises.includes(ex.id) ? "text-green-400" : colTheme.exerciseArrowColor
-                        )} />
-                      </motion.button>
-                    ))}
-                  </div>
+                      </div>
 
-                  {completedExercises.length === page.exercises.length && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="mt-6 p-5 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl text-white text-center shadow-xl"
-                    >
-                      <h4 className="text-2xl font-black mb-1">{t('nav.masteryAchieved')}</h4>
-                      <p className="text-sm opacity-90 font-medium">{t('nav.masteryDesc')}</p>
-                    </motion.div>
-                  )}
+                      <div className="mt-5 grid grid-cols-3 gap-2">
+                        {reviewStageLabels.map((label, stageIndex) => {
+                          const unlocked = isReviewStageUnlocked(stageIndex);
+                          const active = reviewStageIndex === stageIndex;
+                          const complete = reviewStageStarts[stageIndex + 1] !== undefined
+                            ? languageReviewExercises
+                                .slice(reviewStageStarts[stageIndex], reviewStageStarts[stageIndex + 1])
+                                .every(exercise => completedExercises.includes(exercise.id))
+                            : languageReviewExercises
+                                .slice(reviewStageStarts[stageIndex])
+                                .every(exercise => completedExercises.includes(exercise.id));
+
+                          return (
+                            <button
+                              key={label}
+                              type="button"
+                              disabled={!unlocked}
+                              onClick={() => unlocked && setReviewIndex(reviewStageStarts[stageIndex])}
+                              className={cn(
+                                "min-h-11 rounded-xl px-2 py-2 font-display text-[11px] font-semibold transition-all ring-1 sm:text-xs md:text-sm",
+                                active
+                                  ? cn(colTheme.exerciseIdxBg, 'ring-current/15')
+                                  : complete
+                                  ? 'bg-emerald-50 text-emerald-700 ring-emerald-200'
+                                  : unlocked
+                                  ? 'bg-white text-wood/58 ring-black/[0.07] hover:bg-white/85'
+                                  : 'cursor-not-allowed bg-white/45 text-wood/25 ring-black/[0.04]'
+                              )}
+                            >
+                              {complete ? '✓ ' : ''}{label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </section>
+
+                    {languageReviewExercises[reviewIndex] && (
+                      <div className="space-y-3">
+                        {reviewIndex > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => setReviewIndex(index => Math.max(0, index - 1))}
+                            className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/70 px-3 font-display text-[10px] font-semibold uppercase tracking-[0.11em] text-wood/52 ring-1 ring-black/[0.06] transition-colors hover:bg-white"
+                          >
+                            <ChevronLeft size={14} className={cn(isArabic && 'rotate-180')} />
+                            {isArabic ? 'السابق' : 'Previous'}
+                          </button>
+                        )}
+
+                        <ExerciseModule
+                          key={languageReviewExercises[reviewIndex].id}
+                          exercise={languageReviewExercises[reviewIndex]}
+                          variant="review"
+                          embedded
+                          collectionId={collectionId}
+                          onClose={() => undefined}
+                          onComplete={() => {
+                            const exerciseId = languageReviewExercises[reviewIndex].id;
+                            setCompletedExercises(previous =>
+                              previous.includes(exerciseId) ? previous : [...previous, exerciseId]
+                            );
+                            if (reviewIndex < reviewTotal - 1) {
+                              setReviewIndex(index => index + 1);
+                            }
+                          }}
+                        />
+
+                        {completedExercises.length === reviewTotal && reviewTotal > 0 && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="rounded-[22px] bg-emerald-50/85 p-5 text-center ring-1 ring-emerald-200"
+                          >
+                            <CheckCircle2 className="mx-auto text-emerald-600" size={24} />
+                            <h4 className="mt-2 font-display text-xl font-semibold text-emerald-950">
+                              {isArabic ? 'اكتملت مراجعة اللغة' : 'Language Review complete'}
+                            </h4>
+                            <p className={cn("mt-1 font-serif text-emerald-900/60", isArabic ? 'text-base' : 'text-sm')}>
+                              {isArabic
+                                ? 'راجعت اللغة من الكتاب واستخدمتها في مهام جديدة.'
+                                : 'You reviewed the book’s language and used it in new tasks.'}
+                            </p>
+                          </motion.div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
           </div>
         </motion.div>
 
-      {/* Exercise Modal */}
-      <AnimatePresence>
-        {activeExercise && (
-          <ExerciseModule
-            exercise={activeExercise}
-            onComplete={() => {
-              setCompletedExercises(prev => [...prev, activeExercise.id]);
-              setActiveExercise(null);
-            }}
-            onClose={() => setActiveExercise(null)}
-            collectionId={collectionId}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 };
