@@ -25,38 +25,62 @@ const HotspotButton = ({
   const { language } = useLanguage();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const [coords, setCoords] = useState({
+    top: 12,
+    left: 12,
+    arrowOffset: 24,
+    isAbove: true,
+  });
 
   const updateCoords = () => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      setCoords({
-        top: rect.top + window.scrollY - 12,
-        left: rect.left + window.scrollX + rect.width / 2
-      });
-    }
+    if (!buttonRef.current) return;
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - 24, 352);
+    const tooltipHeight = tooltipRef.current?.offsetHeight ?? Math.min(viewportHeight - 24, 220);
+    const gap = 10;
+    const edge = 12;
+    const triggerCenterX = rect.left + rect.width / 2;
+
+    const unclampedLeft = triggerCenterX - tooltipWidth / 2;
+    const maxLeft = Math.max(edge, viewportWidth - tooltipWidth - edge);
+    const left = Math.min(Math.max(unclampedLeft, edge), maxLeft);
+
+    const spaceAbove = rect.top - edge;
+    const spaceBelow = viewportHeight - rect.bottom - edge;
+    const isAbove = spaceAbove >= tooltipHeight + gap || spaceAbove >= spaceBelow;
+    const desiredTop = isAbove
+      ? rect.top - gap - tooltipHeight
+      : rect.bottom + gap;
+    const maxTop = Math.max(edge, viewportHeight - tooltipHeight - edge);
+    const top = Math.min(Math.max(desiredTop, edge), maxTop);
+
+    const arrowOffset = Math.min(
+      Math.max(triggerCenterX - left, 18),
+      Math.max(18, tooltipWidth - 18),
+    );
+
+    setCoords({ top, left, arrowOffset, isAbove });
   };
 
   useEffect(() => {
-    if (isActive) {
-      updateCoords();
-      window.addEventListener('resize', updateCoords);
-      window.addEventListener('scroll', updateCoords, true);
-      return () => {
-        window.removeEventListener('resize', updateCoords);
-        window.removeEventListener('scroll', updateCoords, true);
-      };
-    }
-  }, [isActive]);
+    if (!isActive) return;
 
-  useEffect(() => {
-    if (isActive && tooltipRef.current && coords.top !== 0) {
-      const h = tooltipRef.current.offsetHeight;
-      const w = tooltipRef.current.offsetWidth;
-      tooltipRef.current.style.marginTop = `-${h}px`;
-      tooltipRef.current.style.marginLeft = `-${w / 2}px`;
-    }
-  }, [isActive, coords]);
+    updateCoords();
+    const frame = window.requestAnimationFrame(updateCoords);
+    const timer = window.setTimeout(updateCoords, 40);
+    window.addEventListener('resize', updateCoords);
+    window.addEventListener('scroll', updateCoords, true);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+      window.removeEventListener('resize', updateCoords);
+      window.removeEventListener('scroll', updateCoords, true);
+    };
+  }, [isActive]);
 
   return (
     <div
@@ -67,9 +91,11 @@ const HotspotButton = ({
         ref={buttonRef}
         onClick={onToggle}
         className="relative group/hotspot"
+        aria-expanded={isActive}
+        aria-label={hotspot.title}
       >
         <motion.div
-          animate={{ scale: [1, 1.2, 1] }}
+          animate={{ scale: [1, 1.16, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
           className={cn(
             "w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white",
@@ -89,38 +115,50 @@ const HotspotButton = ({
                 />
                 <motion.div
                   ref={tooltipRef}
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.14, ease: 'easeOut' }}
                   style={{
-                    position: 'absolute',
+                    position: 'fixed',
                     top: coords.top,
                     left: coords.left,
                     zIndex: 99999,
-                    pointerEvents: 'auto'
+                    pointerEvents: 'auto',
                   }}
                   className={cn(
-                    language === 'ar' ? "w-96 max-w-[90vw] p-4 sm:p-7" : "w-80 max-w-[85vw] p-3.5 sm:p-5",
-                    "bg-wood/95 backdrop-blur-md rounded-xl shadow-2xl border",
+                    "w-[calc(100vw-1.5rem)] max-w-[22rem] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain",
+                    language === 'ar' ? "p-4 sm:p-6" : "p-3.5 sm:p-5",
+                    "bg-wood/95 backdrop-blur-md rounded-2xl shadow-2xl border",
                     collectionId === 'history' ? "border-emerald-500/40" : collectionId === 'turkish' ? "border-cyan-400/40" : "border-gold/30"
                   )}
+                  dir={language === 'ar' ? 'rtl' : 'ltr'}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <h4 className={cn(
                     "font-display mb-2",
                     collectionId === 'history' ? "text-emerald-400" : collectionId === 'turkish' ? "text-cyan-400" : "text-gold",
-                    language === 'ar' ? "text-xl sm:text-3xl" : "text-base sm:text-lg"
+                    language === 'ar' ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
                   )}>
                     {hotspot.title}
                   </h4>
                   <p className={cn(
                     "font-serif text-parchment/80 leading-relaxed",
                     language !== 'ar' && "italic",
-                    language === 'ar' ? "text-base sm:text-xl" : "text-xs sm:text-base"
+                    language === 'ar' ? "text-base sm:text-lg" : "text-xs sm:text-base"
                   )}>
                     {hotspot.description}
                   </p>
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-wood/95" />
+
+                  <div
+                    style={{ left: coords.arrowOffset }}
+                    className={cn(
+                      "pointer-events-none absolute -translate-x-1/2 border-8 border-transparent",
+                      coords.isAbove
+                        ? "top-full border-t-wood/95"
+                        : "bottom-full border-b-wood/95"
+                    )}
+                  />
                 </motion.div>
               </>
             )}
