@@ -67,6 +67,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   const [knownMap, setKnownMap] = useState<Record<string, KnownState>>({});
   const [filter, setFilter] = useState<FilterMode>('all');
   const [expandedWord, setExpandedWord] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { t, formatNumber, isRTL } = useLanguage();
 
   const copy = useMemo(() => {
@@ -105,6 +106,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             synonymsLabel: 'كلمات قريبة',
             antonymsLabel: 'عكسها',
             chapterLabel: 'الفصل',
+            categoryLabel: 'التصنيف',
           }
         : {
             eyebrow: 'مركز المفردات',
@@ -137,6 +139,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             synonymsLabel: 'كلمات قريبة',
             antonymsLabel: 'عكسها',
             chapterLabel: 'الفصل',
+            categoryLabel: 'التصنيف',
           };
     }
 
@@ -172,6 +175,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           synonymsLabel: 'Similar words',
           antonymsLabel: 'Opposite',
           chapterLabel: 'Chapter',
+          categoryLabel: 'Category',
         }
       : {
           eyebrow: 'Vocabulary Learning Hub',
@@ -204,6 +208,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           synonymsLabel: 'Synonyms',
           antonymsLabel: 'Antonyms',
           chapterLabel: 'Chapter',
+          categoryLabel: 'Category',
         };
   }, [isRTL, bookData.level]);
 
@@ -352,9 +357,11 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         (filter === 'unknown' && state === 'unknown') ||
         (filter === 'unreviewed' && state === 'unreviewed');
 
-      return matchesSearch && matchesFilter;
+      const matchesCategory = !activeCategory || v.category === activeCategory;
+
+      return matchesSearch && matchesFilter && matchesCategory;
     });
-  }, [allVocabulary, searchTerm, filter, knownMap]);
+  }, [allVocabulary, searchTerm, filter, knownMap, activeCategory]);
 
   const playWord = useCallback((word: string) => {
     if (!('speechSynthesis' in window)) return;
@@ -585,6 +592,26 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           </div>
         </div>
 
+        {activeCategory && (
+          <div className="mt-2.5 pt-2.5 border-t border-black/5 flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+              {copy.categoryLabel}
+            </span>
+            <button
+              onClick={() => setActiveCategory(null)}
+              className={cn(
+                'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition-all',
+                colTheme.brandSoft,
+                colTheme.brandText,
+                colTheme.borderStrong
+              )}
+            >
+              {activeCategory}
+              <X size={11} />
+            </button>
+          </div>
+        )}
+
         <div className="hidden lg:flex items-center justify-between gap-4 mt-2.5 pt-2.5 border-t border-black/5">
           <div className="flex items-center gap-2 min-w-0">
             <GraduationCap size={15} className={colTheme.brandText} />
@@ -612,7 +639,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       </section>
 
       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2 items-start">
           <AnimatePresence mode="popLayout">
             {filteredVocab.map((v, index) => {
               const state: KnownState = knownMap[v.key] ?? 'unreviewed';
@@ -631,7 +658,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ duration: 0.16 }}
                   className={cn(
-                    'group relative overflow-hidden bg-white/68 backdrop-blur-sm border rounded-[1.35rem] p-4 transition-all shadow-sm hover:shadow-md hover:-translate-y-[1px]',
+                    'group self-start relative overflow-hidden bg-white/68 backdrop-blur-sm border rounded-[1.35rem] p-4 transition-all shadow-sm hover:shadow-md hover:-translate-y-[1px]',
                     state === 'known'
                       ? 'border-emerald-200/80'
                       : state === 'unknown'
@@ -674,15 +701,10 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                         {v.word}
                       </h3>
 
-                      {(v.pronunciation || v.partOfSpeech || v.level || v.chapter) && (
+                      {(v.pronunciation || v.partOfSpeech || v.chapter) && (
                         <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mt-1.5 text-[10px] sm:text-[11px] text-wood/45">
                           {v.pronunciation && <span className="font-serif">{v.pronunciation}</span>}
                           {v.partOfSpeech && <span className="font-semibold">{v.partOfSpeech}</span>}
-                          {v.level && (
-                            <span className={cn('px-1.5 py-0.5 rounded-md font-black', colTheme.brandSoft, colTheme.brandText)}>
-                              {v.level}
-                            </span>
-                          )}
                           {v.chapter && (
                             <span className="font-semibold">
                               {copy.chapterLabel} {formatNumber(v.chapter)}
@@ -723,13 +745,18 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                     <div className="mt-3">
                       <div className="flex items-center justify-between gap-2">
                         {v.category ? (
-                          <span className={cn(
-                            'px-2 py-1 rounded-lg text-[10px] font-black uppercase tracking-[0.08em]',
-                            colTheme.brandSoft,
-                            colTheme.brandText
-                          )}>
+                          <button
+                            onClick={() => setActiveCategory(activeCategory === v.category ? null : v.category)}
+                            title={activeCategory === v.category ? v.category : `${copy.categoryLabel}: ${v.category}`}
+                            className={cn(
+                              'px-2 py-1 rounded-lg text-[10px] font-black uppercase tracking-[0.08em] border transition-all',
+                              activeCategory === v.category
+                                ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
+                                : cn(colTheme.brandSoft, colTheme.brandText, colTheme.border)
+                            )}
+                          >
                             {v.category}
-                          </span>
+                          </button>
                         ) : <span />}
 
                         <button
