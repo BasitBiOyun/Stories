@@ -80,6 +80,40 @@ const makeBook = (
   studentGuideText: bundle.studentGuideText,
 });
 
+const reorderLearningFlow = (
+  pages: PageData[],
+  config: ReturnType<typeof inferRuntimeConfig>,
+): PageData[] => {
+  const orderedIds = [
+    config.knowledgeCheckPageId,
+    ...config.glossaryPageIds,
+    config.vocabularyPageId,
+    config.reviewPageId,
+    config.finalChallengePageId,
+  ].filter((id): id is number => typeof id === 'number');
+
+  const roleIds = new Set(orderedIds);
+  const rolePositions = pages
+    .map((page, index) => roleIds.has(page.id) ? index : -1)
+    .filter(index => index >= 0);
+  const pageById = new Map(pages.map(page => [page.id, page] as const));
+  const orderedPages = orderedIds
+    .map(id => pageById.get(id))
+    .filter((page): page is PageData => Boolean(page));
+
+  if (rolePositions.length !== orderedPages.length) {
+    throw new Error(
+      `[Book Finalization] Learning flow cannot be reordered safely. Positions=${rolePositions.length}, pages=${orderedPages.length}.`,
+    );
+  }
+
+  const output = [...pages];
+  rolePositions.forEach((position, index) => {
+    output[position] = orderedPages[index];
+  });
+  return output;
+};
+
 /**
  * Authoritative UI finalization for every registered A2/B1/B2 book.
  * Book modules may prepare/lock chapter data, but one Learning System owns all
@@ -123,6 +157,8 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
     arabicPages: pairedSources.arabicPages,
     config,
   });
+  const englishLearningPages = reorderLearningFlow(learning.englishPages, config);
+  const arabicLearningPages = reorderLearningFlow(learning.arabicPages, config);
   const structure = guideStructure(config);
   const englishReferences = pair.en.pages.filter(isLearningReferencePage);
   const arabicReferences = pair.ar.pages.filter(isLearningReferencePage);
@@ -132,7 +168,7 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
 
   const englishGuide = addReferenceGuidance(
     buildLearningGuideBundle({
-      pages: learning.englishPages,
+      pages: englishLearningPages,
       storyIds: config.storyIds,
       level: config.level,
       language: 'en',
@@ -144,7 +180,7 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
   );
   const arabicGuide = addReferenceGuidance(
     buildLearningGuideBundle({
-      pages: learning.arabicPages,
+      pages: arabicLearningPages,
       storyIds: config.storyIds,
       level: config.level,
       language: 'ar',
@@ -156,7 +192,7 @@ export const finalizeBookPairForUi = (pair: BookPair): BookPair => {
   );
 
   return {
-    en: makeBook(pair.en, learning.englishPages, englishGuide),
-    ar: makeBook(pair.ar, learning.arabicPages, arabicGuide),
+    en: makeBook(pair.en, englishLearningPages, englishGuide),
+    ar: makeBook(pair.ar, arabicLearningPages, arabicGuide),
   };
 };
