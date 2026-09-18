@@ -61,7 +61,8 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
     const languageFocus = meccaA2LanguageFocusExercisesPart12[page.id] ?? meccaA2LanguageFocusExercisesPart11[page.id] ?? meccaA2LanguageFocusExercisesPart10[page.id] ?? meccaA2LanguageFocusExercisesPart9[page.id] ?? meccaA2LanguageFocusExercisesPart8[page.id] ?? meccaA2LanguageFocusExercisesPart7[page.id] ?? meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
     return {
       ...page,
-      exercises: [meccaA2QuickChallengesPolished[page.id], ...languageFocus],
+      exercises: [meccaA2QuickChallengesPolished[page.id]],
+      languageFocusExercises: languageFocus,
     };
   }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercisesPolished };
@@ -85,7 +86,8 @@ const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
     const languageFocus = meccaA2LanguageFocusExercisesArPart12[page.id] ?? meccaA2LanguageFocusExercisesArPart11[page.id] ?? meccaA2LanguageFocusExercisesArPart10[page.id] ?? meccaA2LanguageFocusExercisesArPart9[page.id] ?? meccaA2LanguageFocusExercisesArPart8[page.id] ?? meccaA2LanguageFocusExercisesArPart7[page.id] ?? meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
     return {
       ...page,
-      exercises: [meccaA2QuickChallengesArPolished[page.id], ...languageFocus],
+      exercises: [meccaA2QuickChallengesArPolished[page.id]],
+      languageFocusExercises: languageFocus,
     };
   }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercisesArPolished };
