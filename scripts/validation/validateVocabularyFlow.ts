@@ -66,13 +66,27 @@ const validateLanguage = (
   if (knowledge.length !== 1) errors.push(`expected exactly 1 Knowledge Check, found ${knowledge.length}`);
   if (glossaries.length < 1) errors.push('expected at least 1 Master Glossary');
   if (vocabularyPages.length !== 1) errors.push(`expected exactly 1 Vocabulary Challenge, found ${vocabularyPages.length}`);
-  if (reviews.length !== 1) errors.push(`expected exactly 1 Retrieval Review, found ${reviews.length}`);
+  if (reviews.length !== 1) errors.push(`expected exactly 1 Language Review, found ${reviews.length}`);
   if (finals.length !== 1) errors.push(`expected exactly 1 Final Challenge, found ${finals.length}`);
 
   const sequence = learningRoleSequence(book);
   const expectedSequence = expectedLearningRoleSequence(book);
   if (!sameArray(sequence, expectedSequence)) {
     errors.push(`learning flow is ${sequence.join(' → ') || 'empty'}, expected ${expectedSequence.join(' → ')}`);
+  }
+
+  const review = reviews[0];
+  if (review) {
+    const expectedTitle = language === 'ar' ? 'مراجعة اللغة' : 'Language Review';
+    if (review.title !== expectedTitle) {
+      errors.push(`Language Review title is "${review.title}", expected "${expectedTitle}"`);
+    }
+    if (!(review.exercises?.length)) {
+      errors.push('Language Review has no exercises');
+    }
+    if (/retrieval review/i.test(review.title) || /مراجعة الاسترجاع|المراجعة الاسترجاعية/.test(review.title)) {
+      errors.push('legacy Retrieval Review title is still active');
+    }
   }
 
   const vocabulary = vocabularyPages[0];
@@ -172,7 +186,7 @@ const validatePair = async (
 
 const main = async () => {
   console.log('============================================================');
-  console.log('STORIES VOCABULARY FLOW VALIDATION');
+  console.log('STORIES LEARNING FLOW VALIDATION');
   console.log('Loads every registered EN/AR book through the real UI finalizer.');
   console.log('============================================================');
 
@@ -193,7 +207,7 @@ const main = async () => {
 
   if (failures.length) {
     console.error('\n============================================================');
-    console.error(`VOCABULARY FLOW VALIDATION FAILED — ${failures.length} book(s)`);
+    console.error(`LEARNING FLOW VALIDATION FAILED — ${failures.length} book(s)`);
     console.error('============================================================');
     failures.forEach(({ label, errors }) => {
       console.error(`\n[FAIL] ${label}`);
@@ -202,7 +216,7 @@ const main = async () => {
     process.exit(1);
   }
 
-  console.log('\nAll 15 registered book-level bundles passed vocabulary-flow validation.');
+  console.log('\nAll 15 registered book-level bundles passed learning-flow validation.');
 };
 
 await main();
