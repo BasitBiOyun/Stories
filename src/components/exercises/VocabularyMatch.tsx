@@ -123,6 +123,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const [feedback, setFeedback] = useState<FeedbackState>({ kind: 'idle' });
 
   const [stage, setStage] = useState<'match' | 'context' | 'recall' | 'done'>('match');
+  const [maxUnlockedStage, setMaxUnlockedStage] = useState(0);
   const [revisitWords, setRevisitWords] = useState<Set<string>>(new Set());
   const [contextIndex, setContextIndex] = useState(0);
   const [contextChoice, setContextChoice] = useState<string | null>(null);
@@ -173,6 +174,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     setStreak(0);
     setFeedback({ kind: 'idle' });
     setStage('match');
+    setMaxUnlockedStage(0);
     setRevisitWords(new Set());
     setContextIndex(0);
     setContextChoice(null);
@@ -211,6 +213,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
 
       if (Object.keys(next).length === total) {
         setFeedback({ kind: 'done' });
+        setMaxUnlockedStage(current => Math.max(current, 1));
       } else {
         setFeedback({ kind: 'correct', word, meaning });
       }
@@ -253,11 +256,15 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const copy = isArabic
     ? {
         title: 'تحدي المفردات',
-        subtitle: 'من المعنى إلى السياق ثم الاسترجاع.',
-        match: 'المطابقة',
-        context: 'في السياق',
-        recall: 'الاسترجاع',
-        contextHint: 'اختر الكلمة التي تناسب سياق القصة.',
+        subtitle: level === 'A2'
+          ? 'طابق الكلمات، ثم ابحث عنها في القصة، ثم تذكّرها.'
+          : 'من المعنى إلى السياق ثم الاسترجاع.',
+        match: level === 'A2' ? 'طابق' : 'المطابقة',
+        context: level === 'A2' ? 'في القصة' : 'في السياق',
+        recall: level === 'A2' ? 'تذكّر واستخدم' : 'الاسترجاع والاستخدام',
+        contextHint: level === 'A2'
+          ? 'اختر الكلمة المناسبة لجملة القصة.'
+          : 'اختر الكلمة التي تناسب سياق القصة.',
         recallHint: level === 'A2'
           ? 'اختر الكلمة التي تعبّر عن المعنى.'
           : level === 'B1'
@@ -282,11 +289,15 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
       }
     : {
         title: 'Vocabulary Challenge',
-        subtitle: 'Move from meaning recognition to story context and active recall.',
+        subtitle: level === 'A2'
+          ? 'Match the words, find them in the story, then remember them.'
+          : 'Move from meaning recognition to story context and active recall.',
         match: 'Match',
-        context: 'In Context',
-        recall: 'Recall & Use',
-        contextHint: 'Choose the word that best fits the story context.',
+        context: level === 'A2' ? 'In the Story' : 'In Context',
+        recall: level === 'A2' ? 'Remember & Use' : 'Recall & Use',
+        contextHint: level === 'A2'
+          ? 'Choose the word that fits the story sentence.'
+          : 'Choose the word that best fits the story context.',
         recallHint: level === 'A2'
           ? 'Choose the target word that matches the meaning.'
           : level === 'B1'
@@ -347,6 +358,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
 
   const continueContext = () => {
     if (contextIndex + 1 >= contextItems.length) {
+      setMaxUnlockedStage(current => Math.max(current, 2));
       setStage('recall');
       setContextChoice(null);
       setContextFeedback('idle');
@@ -395,6 +407,11 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   };
 
   const stageRank = stage === 'match' ? 0 : stage === 'context' ? 1 : stage === 'recall' ? 2 : 3;
+  const stageDefinitions = [
+    { key: 'match' as const, label: copy.match },
+    { key: 'context' as const, label: copy.context },
+    { key: 'recall' as const, label: copy.recall },
+  ];
   const stageHeader = (
     <div className="shrink-0 rounded-2xl bg-white/65 p-3 ring-1 ring-black/[0.06] shadow-sm">
       <div className="flex items-center gap-3">
@@ -404,10 +421,10 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.16em]', theme.accent)}>
-                {copy.title} · {level}
+              <p className={cn('font-display text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm', theme.accent)}>
+                {copy.title}
               </p>
-              <p className={cn('mt-0.5 font-serif text-wood/48', isArabic ? 'text-sm' : 'text-xs')}>
+              <p className={cn('mt-0.5 font-serif text-wood/52', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {copy.subtitle}
               </p>
             </div>
@@ -420,22 +437,36 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               <RotateCcw size={14} />
             </button>
           </div>
-          <div className="mt-3 grid grid-cols-3 gap-1.5">
-            {[copy.match, copy.context, copy.recall].map((label, index) => (
-              <div
-                key={label}
-                className={cn(
-                  'rounded-lg px-2 py-1.5 text-center font-display text-[9px] font-semibold uppercase tracking-[0.08em] ring-1',
-                  stageRank === index
-                    ? cn(theme.selected, 'ring-1')
-                    : stageRank > index
-                    ? 'bg-emerald-50 text-emerald-700 ring-emerald-200'
-                    : 'bg-white/55 text-wood/35 ring-black/[0.05]'
-                )}
-              >
-                {stageRank > index ? '✓ ' : ''}{label}
-              </div>
-            ))}
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            {stageDefinitions.map((item, index) => {
+              const isUnlocked = index <= maxUnlockedStage;
+              const isActive = stageRank === index;
+              const isComplete = stageRank > index;
+
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  disabled={!isUnlocked}
+                  onClick={() => {
+                    if (!isUnlocked) return;
+                    setStage(item.key);
+                  }}
+                  className={cn(
+                    'min-h-10 rounded-xl px-2.5 py-2 text-center font-display text-[11px] font-semibold tracking-[0.02em] ring-1 transition-all sm:text-xs md:text-[13px]',
+                    isActive
+                      ? cn(theme.selected, 'ring-1')
+                      : isComplete
+                      ? 'bg-emerald-50 text-emerald-700 ring-emerald-200 hover:bg-emerald-100'
+                      : isUnlocked
+                      ? 'bg-white/80 text-wood/62 ring-black/[0.07] hover:bg-white'
+                      : 'cursor-not-allowed bg-white/45 text-wood/28 ring-black/[0.04]'
+                  )}
+                >
+                  {isComplete ? '✓ ' : ''}{item.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -450,7 +481,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
           <div className="mx-auto max-w-4xl space-y-4 pb-3">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.14em]', theme.accent)}>02 · {copy.context}</p>
+                <p className={cn('font-display text-sm font-semibold tracking-[0.04em] sm:text-base', theme.accent)}>02 · {copy.context}</p>
                 <p className={cn('mt-1 font-serif text-wood/52', isArabic ? 'text-base' : 'text-sm')}>{copy.contextHint}</p>
               </div>
               <span className={cn('font-display text-xs font-semibold tabular-nums', theme.accent)}>
@@ -538,7 +569,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
           <div className="mx-auto max-w-3xl space-y-4 pb-3">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.14em]', theme.accent)}>03 · {copy.recall}</p>
+                <p className={cn('font-display text-sm font-semibold tracking-[0.04em] sm:text-base', theme.accent)}>03 · {copy.recall}</p>
                 <p className={cn('mt-1 font-serif text-wood/52', isArabic ? 'text-base' : 'text-sm')}>{copy.recallHint}</p>
               </div>
               <span className={cn('font-display text-xs font-semibold tabular-nums', theme.accent)}>
@@ -778,7 +809,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         </AnimatePresence>
       </div>
 
-      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden custom-scrollbar px-2">
         <div className="grid grid-cols-2 gap-x-3 gap-y-2 pb-1 items-start">
           <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accent)}>{t('ex.words')}</span></div>
           <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accent)}>{t('ex.meanings')}</span></div>
