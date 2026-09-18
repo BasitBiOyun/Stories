@@ -203,17 +203,28 @@ const pickPreparedTargets = (
       });
     });
 
-  if (paired.length < targetCount) {
+  const seen = new Set<string>();
+  const uniquePaired = paired.filter(pair => {
+    const key = `${pair.english.word.trim().toLocaleLowerCase('en-US')}::${pair.arabic.word.trim().toLocaleLowerCase('ar')}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  if (uniquePaired.length < targetCount) {
     throw new Error(
-      `[Prepared Book Finalization] ${english.id} ${english.level} needs ${targetCount} paired target words; found ${paired.length}.`,
+      `[Prepared Book Finalization] ${english.id} ${english.level} needs ${targetCount} unique paired target words; found ${uniquePaired.length}.`,
     );
   }
+
+  const contextRich = uniquePaired.filter(pair => pair.english.context && pair.arabic.context);
+  const sourcePool = contextRich.length >= targetCount ? contextRich : uniquePaired;
 
   const selected = Array.from({ length: targetCount }, (_, index) => {
     const sourceIndex = targetCount <= 1
       ? 0
-      : Math.round(index * (paired.length - 1) / (targetCount - 1));
-    return paired[sourceIndex];
+      : Math.round(index * (sourcePool.length - 1) / (targetCount - 1));
+    return sourcePool[sourceIndex];
   });
 
   return {
