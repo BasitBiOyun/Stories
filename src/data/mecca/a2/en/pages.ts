@@ -291,7 +291,1088 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
   { id: 14, type: 'quiz', title: 'Knowledge Check: Mecca A2 - Bilal ibn Rabah', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'Test your understanding of the A2 story of Bilal ibn Rabah and Mecca before Islam.' },
   { id: 15, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-match-mecca-a2/1200/800', audioUrl: '', content: 'Match important words from the story with their meanings.' },
   { id: 16, type: 'exercises', title: 'Retrieval Review', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'Retrieve, reconnect, and use the most important learning from Bilal’s story.' },
-  { id: 17, type: 'glossary', title: 'Master Glossary - Part 1', image: 'https://picsum.photos/seed/mecca-a2-glossary1/1200/800', content: 'Word Notes from the first half of the story.', vocabulary: [{ word: 'Adhan', definition: 'The call to prayer in Islam.' }, { word: 'justice', definition: 'Fair treatment for people.' }, { word: 'Slave markets', definition: 'Places where slaves were bought and sold.' }, { word: 'harsh', definition: 'Cruel, strict, or unkind.' }, { word: 'freedom', definition: 'The state of not being a slave or prisoner.' }, { word: 'secretly', definition: 'In a hidden way.' }] },
-  { id: 18, type: 'glossary', title: 'Master Glossary - Part 2', image: 'https://picsum.photos/seed/mecca-a2-glossary2/1200/800', content: 'Word Notes from the second half of the story.', vocabulary: [{ word: 'truth', definition: 'What is real and right.' }, { word: 'refused', definition: 'Said no.' }, { word: 'crime', definition: 'A wrong action against the law.' }, { word: 'rescued', definition: 'Saved from danger.' }, { word: 'Hijrah', definition: 'The migration of Muslims from Mecca to Medina.' }, { word: 'disrespect', definition: 'To treat someone without respect.' }] },
+  { id: 17, type: 'glossary', title: 'Master Glossary', image: 'https://picsum.photos/seed/mecca-a2-glossary/1200/800', content: 'Review all key vocabulary from the story in one place.', vocabulary: [
+    {
+        "word": "openly",
+        "definition": "In a way that is not hidden.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈoʊpənli/",
+        "wordFamily": [
+            "open",
+            "openly"
+        ],
+        "collocations": [
+            "speak openly",
+            "say openly"
+        ],
+        "antonyms": [
+            "secretly"
+        ],
+        "chapter": 1,
+        "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+        "storyExample": "Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca.",
+        "category": "Communication"
+    },
+    {
+        "word": "Adhan",
+        "definition": "The call to prayer in Islam.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈɑːðɑːn/",
+        "collocations": [
+            "give the Adhan",
+            "call to prayer"
+        ],
+        "chapter": 1,
+        "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+        "storyExample": "He was also the first person to give the Adhan, the call to prayer, in the history of Islam.",
+        "category": "Spiritual Life"
+    },
+    {
+        "word": "slave",
+        "definition": "A person forced to work for another person.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/sleɪv/",
+        "wordFamily": [
+            "slave",
+            "slavery"
+        ],
+        "collocations": [
+            "be a slave",
+            "born into slavery"
+        ],
+        "antonyms": [
+            "free person"
+        ],
+        "chapter": 1,
+        "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+        "storyExample": "Bilal was a black slave.",
+        "category": "People & Society"
+    },
+    {
+        "word": "valuable",
+        "definition": "Important and worthy.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈvæljuəbəl/",
+        "wordFamily": [
+            "value",
+            "valuable"
+        ],
+        "collocations": [
+            "valuable person",
+            "less valuable"
+        ],
+        "synonyms": [
+            "important",
+            "worthy"
+        ],
+        "antonyms": [
+            "worthless"
+        ],
+        "chapter": 1,
+        "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+        "storyExample": "His story teaches us that skin color or being a slave does not make a person less valuable.",
+        "category": "Values"
+    },
+    {
+        "word": "ignorance",
+        "definition": "Not knowing or not following the truth.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈɪɡnərəns/",
+        "wordFamily": [
+            "ignorant",
+            "ignorance"
+        ],
+        "collocations": [
+            "Age of Ignorance",
+            "live in ignorance"
+        ],
+        "antonyms": [
+            "knowledge"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The Age of Ignorance",
+        "storyExample": "The period before Islam was called the Age of Ignorance, or Jahiliyyah.",
+        "category": "History & Society"
+    },
+    {
+        "word": "idols",
+        "definition": "Objects that people wrongly worship.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈaɪdəlz/",
+        "wordFamily": [
+            "idol",
+            "idols"
+        ],
+        "collocations": [
+            "worship idols",
+            "stone idols"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The Age of Ignorance",
+        "storyExample": "They left the true belief and worshipped idols.",
+        "category": "Belief & Objects"
+    },
+    {
+        "word": "justice",
+        "definition": "Fair treatment for people.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈdʒʌstɪs/",
+        "wordFamily": [
+            "just",
+            "justice"
+        ],
+        "collocations": [
+            "peace and justice",
+            "social justice"
+        ],
+        "synonyms": [
+            "fairness"
+        ],
+        "antonyms": [
+            "injustice"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The Age of Ignorance",
+        "storyExample": "There was no real peace and justice in society.",
+        "category": "Values & Society"
+    },
+    {
+        "word": "luxury",
+        "definition": "A very comfortable and expensive way of life.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈlʌkʃəri/",
+        "wordFamily": [
+            "luxury",
+            "luxurious"
+        ],
+        "collocations": [
+            "live in luxury",
+            "luxury life"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The Age of Ignorance",
+        "storyExample": "Rich people had a lot of money and lived in luxury.",
+        "category": "Daily Life & Society"
+    },
+    {
+        "word": "system",
+        "definition": "A way that society or work is organized.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈsɪstəm/",
+        "wordFamily": [
+            "system",
+            "systematic"
+        ],
+        "collocations": [
+            "unfair system",
+            "social system"
+        ],
+        "chapter": 3,
+        "chapterTitle": "Slaves in Mecca",
+        "storyExample": "In this unfair system, the poor were getting poorer and the rich were getting richer.",
+        "category": "Society"
+    },
+    {
+        "word": "Slave markets",
+        "definition": "Places where slaves were bought and sold.",
+        "partOfSpeech": "noun phrase",
+        "level": "A2",
+        "pronunciation": "/sleɪv ˈmɑːrkɪts/",
+        "collocations": [
+            "slave markets",
+            "buy and sell slaves"
+        ],
+        "chapter": 3,
+        "chapterTitle": "Slaves in Mecca",
+        "storyExample": "Slave markets were very common in Arabia.",
+        "category": "History & Society"
+    },
+    {
+        "word": "Abyssinia",
+        "definition": "An old name for Ethiopia and nearby areas.",
+        "partOfSpeech": "proper noun",
+        "level": "A2",
+        "pronunciation": "/ˌæbɪˈsɪniə/",
+        "collocations": [
+            "from Abyssinia",
+            "ancient Abyssinia"
+        ],
+        "chapter": 3,
+        "chapterTitle": "Slaves in Mecca",
+        "storyExample": "Many slaves from different lands, especially from Abyssinia, lived in the homes of Meccan people.",
+        "category": "Places & History"
+    },
+    {
+        "word": "master",
+        "definition": "A person who owns a slave.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈmæstər/",
+        "wordFamily": [
+            "master",
+            "masters"
+        ],
+        "collocations": [
+            "his master",
+            "slave master"
+        ],
+        "chapter": 3,
+        "chapterTitle": "Slaves in Mecca",
+        "storyExample": "His master was Umayya b. Halef.",
+        "category": "People & Society"
+    },
+    {
+        "word": "hatred",
+        "definition": "A very strong feeling of dislike.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈheɪtrɪd/",
+        "wordFamily": [
+            "hate",
+            "hatred"
+        ],
+        "collocations": [
+            "hatred of Islam",
+            "feel hatred"
+        ],
+        "synonyms": [
+            "hate"
+        ],
+        "antonyms": [
+            "love"
+        ],
+        "chapter": 4,
+        "chapterTitle": "Bilal’s Hard Life",
+        "storyExample": "Umayya never gave up his hatred of Islam and Muslims.",
+        "category": "Feelings"
+    },
+    {
+        "word": "rude",
+        "definition": "Not polite or respectful.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ruːd/",
+        "wordFamily": [
+            "rude",
+            "rudely",
+            "rudeness"
+        ],
+        "collocations": [
+            "rude to someone",
+            "rude behaviour"
+        ],
+        "synonyms": [
+            "impolite"
+        ],
+        "antonyms": [
+            "polite"
+        ],
+        "chapter": 4,
+        "chapterTitle": "Bilal’s Hard Life",
+        "storyExample": "Every member of the family was rude to him.",
+        "category": "Character & Conduct"
+    },
+    {
+        "word": "harsh",
+        "definition": "Cruel, strict, or unkind.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/hɑːrʃ/",
+        "wordFamily": [
+            "harsh",
+            "harshly"
+        ],
+        "collocations": [
+            "harsh treatment",
+            "angry and harsh"
+        ],
+        "synonyms": [
+            "strict",
+            "cruel"
+        ],
+        "antonyms": [
+            "gentle"
+        ],
+        "chapter": 4,
+        "chapterTitle": "Bilal’s Hard Life",
+        "storyExample": "His master was often angry and harsh.",
+        "category": "Character & Conduct"
+    },
+    {
+        "word": "patient",
+        "definition": "Able to wait or suffer calmly.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈpeɪʃənt/",
+        "wordFamily": [
+            "patient",
+            "patience",
+            "patiently"
+        ],
+        "collocations": [
+            "be patient",
+            "remain patient"
+        ],
+        "synonyms": [
+            "calm"
+        ],
+        "antonyms": [
+            "impatient"
+        ],
+        "chapter": 4,
+        "chapterTitle": "Bilal’s Hard Life",
+        "storyExample": "Bilal had to be patient and work hard every day.",
+        "category": "Values"
+    },
+    {
+        "word": "obedient",
+        "definition": "Doing what someone tells you to do.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/əˈbiːdiənt/",
+        "wordFamily": [
+            "obey",
+            "obedient",
+            "obedience"
+        ],
+        "collocations": [
+            "obedient servant",
+            "be obedient"
+        ],
+        "antonyms": [
+            "disobedient"
+        ],
+        "chapter": 5,
+        "chapterTitle": "A New Message",
+        "storyExample": "Umayya liked Bilal because he was an obedient and hardworking servant.",
+        "category": "Character & Conduct"
+    },
+    {
+        "word": "freedom",
+        "definition": "The state of not being a slave or prisoner.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈfriːdəm/",
+        "wordFamily": [
+            "free",
+            "freedom",
+            "freely"
+        ],
+        "collocations": [
+            "gain freedom",
+            "pay for freedom"
+        ],
+        "antonyms": [
+            "slavery"
+        ],
+        "chapter": 5,
+        "chapterTitle": "A New Message",
+        "storyExample": "He did not have any money to pay for his freedom.",
+        "category": "Rights & Values"
+    },
+    {
+        "word": "fair",
+        "definition": "Treating people in the right and equal way.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/fer/",
+        "wordFamily": [
+            "fair",
+            "fairness",
+            "unfair"
+        ],
+        "collocations": [
+            "be fair",
+            "fair treatment"
+        ],
+        "synonyms": [
+            "just"
+        ],
+        "antonyms": [
+            "unfair"
+        ],
+        "chapter": 5,
+        "chapterTitle": "A New Message",
+        "storyExample": "He taught that people must be fair and equal.",
+        "category": "Values"
+    },
+    {
+        "word": "equal",
+        "definition": "Having the same value or rights.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈiːkwəl/",
+        "wordFamily": [
+            "equal",
+            "equality",
+            "equally"
+        ],
+        "collocations": [
+            "fair and equal",
+            "all people are equal"
+        ],
+        "synonyms": [
+            "the same"
+        ],
+        "antonyms": [
+            "unequal"
+        ],
+        "chapter": 5,
+        "chapterTitle": "A New Message",
+        "storyExample": "He taught that people must be fair and equal.",
+        "category": "Values & Equality"
+    },
+    {
+        "word": "Creator",
+        "definition": "Allah, Who created everything.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/kriˈeɪtər/",
+        "wordFamily": [
+            "create",
+            "creation",
+            "Creator"
+        ],
+        "collocations": [
+            "the Creator",
+            "Creator and creation"
+        ],
+        "chapter": 6,
+        "chapterTitle": "Visiting Abu Bakr",
+        "storyExample": "He walked in the desert all day and thought deeply about the Creator and the creation.",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "secretly",
+        "definition": "In a hidden way.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈsiːkrətli/",
+        "wordFamily": [
+            "secret",
+            "secretly"
+        ],
+        "collocations": [
+            "leave secretly",
+            "meet secretly"
+        ],
+        "synonyms": [
+            "privately"
+        ],
+        "antonyms": [
+            "openly"
+        ],
+        "chapter": 6,
+        "chapterTitle": "Visiting Abu Bakr",
+        "storyExample": "He left his room secretly and walked on a hidden path.",
+        "category": "Actions & Communication"
+    },
+    {
+        "word": "hidden path",
+        "definition": "A way that is not easy to see.",
+        "partOfSpeech": "noun phrase",
+        "level": "A2",
+        "pronunciation": "/ˈhɪdən pæθ/",
+        "wordFamily": [
+            "hide",
+            "hidden"
+        ],
+        "collocations": [
+            "hidden path",
+            "walk on a hidden path"
+        ],
+        "chapter": 6,
+        "chapterTitle": "Visiting Abu Bakr",
+        "storyExample": "He left his room secretly and walked on a hidden path.",
+        "category": "Places & Movement"
+    },
+    {
+        "word": "kind",
+        "definition": "Good and caring.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/kaɪnd/",
+        "wordFamily": [
+            "kind",
+            "kindness",
+            "kindly"
+        ],
+        "collocations": [
+            "kind man",
+            "be kind to someone"
+        ],
+        "synonyms": [
+            "caring"
+        ],
+        "antonyms": [
+            "unkind"
+        ],
+        "chapter": 6,
+        "chapterTitle": "Visiting Abu Bakr",
+        "storyExample": "Abu Bakr was a very kind man, and everybody knew that he was very nice to slaves.",
+        "category": "Character & Values"
+    },
+    {
+        "word": "partners",
+        "definition": "People or things joined with another.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈpɑːrtnərz/",
+        "wordFamily": [
+            "partner",
+            "partners",
+            "partnership"
+        ],
+        "collocations": [
+            "have no partners",
+            "business partners"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Bilal Accepts Islam",
+        "storyExample": "Allah has no partners or equals, not even a rich master or powerful people.",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "equals",
+        "definition": "People or things with the same value or power.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈiːkwəlz/",
+        "wordFamily": [
+            "equal",
+            "equality",
+            "equally"
+        ],
+        "collocations": [
+            "partners or equals",
+            "have no equals"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Bilal Accepts Islam",
+        "storyExample": "Allah has no partners or equals, not even a rich master or powerful people.",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "supported",
+        "definition": "Helped and encouraged.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/səˈpɔːrtɪd/",
+        "wordFamily": [
+            "support",
+            "supported",
+            "supportive"
+        ],
+        "collocations": [
+            "support someone",
+            "give support"
+        ],
+        "synonyms": [
+            "helped",
+            "encouraged"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Bilal Accepts Islam",
+        "storyExample": "Abu Bakr supported Bilal and was very happy to hear this.",
+        "category": "Helping Others"
+    },
+    {
+        "word": "truth",
+        "definition": "What is real and right.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/truːθ/",
+        "wordFamily": [
+            "true",
+            "truth",
+            "truthful"
+        ],
+        "collocations": [
+            "tell the truth",
+            "the truth"
+        ],
+        "antonyms": [
+            "lie"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Bilal Accepts Islam",
+        "storyExample": "But he also knew that the religion of Allah was the truth.",
+        "category": "Values & Belief"
+    },
+    {
+        "word": "angrily",
+        "definition": "In an angry way.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈæŋɡrəli/",
+        "wordFamily": [
+            "anger",
+            "angry",
+            "angrily"
+        ],
+        "collocations": [
+            "speak angrily",
+            "ask angrily"
+        ],
+        "antonyms": [
+            "calmly"
+        ],
+        "chapter": 8,
+        "chapterTitle": "Allah Is One",
+        "storyExample": "Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe in this magic man Muhammad?”",
+        "category": "Feelings"
+    },
+    {
+        "word": "refused",
+        "definition": "Said no.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/rɪˈfjuːzd/",
+        "wordFamily": [
+            "refuse",
+            "refused",
+            "refusal"
+        ],
+        "collocations": [
+            "refuse to do something",
+            "refuse an order"
+        ],
+        "synonyms": [
+            "said no"
+        ],
+        "antonyms": [
+            "accepted"
+        ],
+        "chapter": 8,
+        "chapterTitle": "Allah Is One",
+        "storyExample": "He forced him to look at idols and worship them, but Bilal refused.",
+        "category": "Choices & Actions"
+    },
+    {
+        "word": "whipped",
+        "definition": "Hit with a whip.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/wɪpt/",
+        "wordFamily": [
+            "whip",
+            "whipped"
+        ],
+        "collocations": [
+            "whip someone",
+            "was whipped"
+        ],
+        "chapter": 8,
+        "chapterTitle": "Allah Is One",
+        "storyExample": "He whipped Bilal and put a huge burning rock on his chest in the hot sun.",
+        "category": "Actions & Harm"
+    },
+    {
+        "word": "Allah is One",
+        "definition": "There is no god but Allah.",
+        "partOfSpeech": "phrase",
+        "level": "A2",
+        "pronunciation": "/əˈlɑː ɪz wʌn/",
+        "collocations": [
+            "say “Allah is One”",
+            "believe Allah is One"
+        ],
+        "chapter": 8,
+        "chapterTitle": "Allah Is One",
+        "storyExample": "But Bilal only said, “Allah is One, Allah is One.”",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "pain",
+        "definition": "A bad feeling in the body.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/peɪn/",
+        "wordFamily": [
+            "pain",
+            "painful"
+        ],
+        "collocations": [
+            "be in pain",
+            "feel pain"
+        ],
+        "antonyms": [
+            "comfort"
+        ],
+        "chapter": 9,
+        "chapterTitle": "Abu Bakr Saves Bilal",
+        "storyExample": "Bilal was in pain under a heavy rock.",
+        "category": "Health & Feelings"
+    },
+    {
+        "word": "right away",
+        "definition": "Immediately, without waiting.",
+        "partOfSpeech": "adverb phrase",
+        "level": "A2",
+        "pronunciation": "/raɪt əˈweɪ/",
+        "collocations": [
+            "go right away",
+            "leave right away"
+        ],
+        "synonyms": [
+            "immediately"
+        ],
+        "chapter": 9,
+        "chapterTitle": "Abu Bakr Saves Bilal",
+        "storyExample": "He went to see Umayya right away.",
+        "category": "Time"
+    },
+    {
+        "word": "price",
+        "definition": "The money needed to buy something.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/praɪs/",
+        "wordFamily": [
+            "price",
+            "priced"
+        ],
+        "collocations": [
+            "high price",
+            "pay a price"
+        ],
+        "chapter": 9,
+        "chapterTitle": "Abu Bakr Saves Bilal",
+        "storyExample": "If you want him, you can take him for a high price.",
+        "category": "Money & Trade"
+    },
+    {
+        "word": "crime",
+        "definition": "A wrong action against the law.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/kraɪm/",
+        "wordFamily": [
+            "crime",
+            "criminal"
+        ],
+        "collocations": [
+            "commit a crime",
+            "is it a crime"
+        ],
+        "chapter": 9,
+        "chapterTitle": "Abu Bakr Saves Bilal",
+        "storyExample": "Is it a crime to believe in the one true Allah?",
+        "category": "Law & Society"
+    },
+    {
+        "word": "agreed",
+        "definition": "Said yes.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/əˈɡriːd/",
+        "wordFamily": [
+            "agree",
+            "agreed",
+            "agreement"
+        ],
+        "collocations": [
+            "agree to do something",
+            "agree with someone"
+        ],
+        "synonyms": [
+            "accepted"
+        ],
+        "antonyms": [
+            "refused"
+        ],
+        "chapter": 10,
+        "chapterTitle": "A Free Muslim",
+        "storyExample": "Finally, Umayya agreed to sell Bilal for five pieces of gold.",
+        "category": "Choices & Actions"
+    },
+    {
+        "word": "gold",
+        "definition": "A valuable yellow metal.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ɡoʊld/",
+        "collocations": [
+            "piece of gold",
+            "gold coin"
+        ],
+        "chapter": 10,
+        "chapterTitle": "A Free Muslim",
+        "storyExample": "Finally, Umayya agreed to sell Bilal for five pieces of gold.",
+        "category": "Objects & Money"
+    },
+    {
+        "word": "rescued",
+        "definition": "Saved from danger.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˈreskjuːd/",
+        "wordFamily": [
+            "rescue",
+            "rescued"
+        ],
+        "collocations": [
+            "rescue someone",
+            "rescued from danger"
+        ],
+        "synonyms": [
+            "saved"
+        ],
+        "chapter": 10,
+        "chapterTitle": "A Free Muslim",
+        "storyExample": "Abu Bakr bought Bilal and rescued him from his master’s hands.",
+        "category": "Helping Others"
+    },
+    {
+        "word": "freely",
+        "definition": "Without being forced or stopped.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈfriːli/",
+        "wordFamily": [
+            "free",
+            "freedom",
+            "freely"
+        ],
+        "collocations": [
+            "live freely",
+            "worship freely"
+        ],
+        "antonyms": [
+            "under force"
+        ],
+        "chapter": 10,
+        "chapterTitle": "A Free Muslim",
+        "storyExample": "He could worship Allah freely.",
+        "category": "Freedom & Rights"
+    },
+    {
+        "word": "beloved",
+        "definition": "Loved very much.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/bɪˈlʌvɪd/",
+        "wordFamily": [
+            "love",
+            "beloved"
+        ],
+        "collocations": [
+            "beloved friend",
+            "most beloved"
+        ],
+        "synonyms": [
+            "dear"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The First Call to Prayer",
+        "storyExample": "After Bilal became free, he became one of the Prophet’s most beloved and respected friends.",
+        "category": "Relationships & Feelings"
+    },
+    {
+        "word": "hardship",
+        "definition": "A difficult time or problem.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈhɑːrdʃɪp/",
+        "wordFamily": [
+            "hardship",
+            "hardships"
+        ],
+        "collocations": [
+            "years of hardship",
+            "face hardship"
+        ],
+        "synonyms": [
+            "difficulty"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The First Call to Prayer",
+        "storyExample": "After many years of hardship in Mecca, the Prophet (pbuh) told the Muslims to move to Medina.",
+        "category": "Life & Challenges"
+    },
+    {
+        "word": "Hijrah",
+        "definition": "The migration of Muslims from Mecca to Medina.",
+        "partOfSpeech": "proper noun",
+        "level": "A2",
+        "pronunciation": "/ˈhɪdʒrə/",
+        "collocations": [
+            "after the Hijrah",
+            "the Hijrah to Medina"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The First Call to Prayer",
+        "storyExample": "After the Hijrah, the Prophet (pbuh) wanted someone to call people to prayer.",
+        "category": "History & Faith"
+    },
+    {
+        "word": "fearlessly",
+        "definition": "Without fear.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈfɪrləsli/",
+        "wordFamily": [
+            "fear",
+            "fearless",
+            "fearlessly"
+        ],
+        "collocations": [
+            "speak fearlessly",
+            "act fearlessly"
+        ],
+        "synonyms": [
+            "bravely"
+        ],
+        "antonyms": [
+            "fearfully"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The First Call to Prayer",
+        "storyExample": "Even when people hurt him, he shouted fearlessly, “There is no god but Allah.”",
+        "category": "Character & Values"
+    },
+    {
+        "word": "morning",
+        "definition": "The early part of the day.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈmɔːrnɪŋ/",
+        "wordFamily": [
+            "morning",
+            "mornings"
+        ],
+        "collocations": [
+            "every morning",
+            "morning prayer"
+        ],
+        "chapter": 12,
+        "chapterTitle": "Prayer Is Better Than Sleep",
+        "storyExample": "Bilal used to start the morning call to prayer very early.",
+        "category": "Time"
+    },
+    {
+        "word": "speech",
+        "definition": "Words spoken to people.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/spiːtʃ/",
+        "wordFamily": [
+            "speak",
+            "speech"
+        ],
+        "collocations": [
+            "give a speech",
+            "last speech"
+        ],
+        "chapter": 12,
+        "chapterTitle": "Prayer Is Better Than Sleep",
+        "storyExample": "Before he died in 632, he gave his last speech.",
+        "category": "Communication"
+    },
+    {
+        "word": "disrespect",
+        "definition": "To treat someone without respect.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˌdɪsrɪˈspekt/",
+        "wordFamily": [
+            "respect",
+            "disrespect",
+            "disrespectful"
+        ],
+        "collocations": [
+            "disrespect people",
+            "show disrespect"
+        ],
+        "antonyms": [
+            "respect"
+        ],
+        "chapter": 12,
+        "chapterTitle": "Prayer Is Better Than Sleep",
+        "storyExample": "In this speech, he said it is wrong to dislike or disrespect people because of the color of their skin.",
+        "category": "Values & Conduct"
+    },
+    {
+        "word": "skin color",
+        "definition": "The color of a person’s skin.",
+        "partOfSpeech": "noun phrase",
+        "level": "A2",
+        "pronunciation": "/skɪn ˈkʌlər/",
+        "collocations": [
+            "skin color",
+            "because of skin color"
+        ],
+        "chapter": 13,
+        "chapterTitle": "Everyone Is Equal",
+        "storyExample": "No person is better than another because of skin color.",
+        "category": "People & Identity"
+    },
+    {
+        "word": "nationality",
+        "definition": "The country or people someone belongs to.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˌnæʃəˈnæləti/",
+        "wordFamily": [
+            "nation",
+            "national",
+            "nationality"
+        ],
+        "collocations": [
+            "country and nationality",
+            "because of nationality"
+        ],
+        "chapter": 13,
+        "chapterTitle": "Everyone Is Equal",
+        "storyExample": "His life teaches us that it is unfair to behave badly to people because of their skin color or nationality.",
+        "category": "People & Identity"
+    },
+    {
+        "word": "Damascus",
+        "definition": "A historic city in Syria.",
+        "partOfSpeech": "proper noun",
+        "level": "A2",
+        "pronunciation": "/dəˈmæskəs/",
+        "collocations": [
+            "go to Damascus",
+            "city of Damascus"
+        ],
+        "chapter": 13,
+        "chapterTitle": "Everyone Is Equal",
+        "storyExample": "He went to Damascus and died there.",
+        "category": "Places & History"
+    },
+    {
+        "word": "matters",
+        "definition": "Is important.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˈmætərz/",
+        "wordFamily": [
+            "matter",
+            "matters"
+        ],
+        "collocations": [
+            "what matters",
+            "it matters"
+        ],
+        "synonyms": [
+            "is important"
+        ],
+        "chapter": 13,
+        "chapterTitle": "Everyone Is Equal",
+        "storyExample": "What matters is the heart and good actions.",
+        "category": "Ideas & Values"
+    }
+] },
   { id: 19, type: 'final-challenge', title: 'Final Challenge', image: 'https://picsum.photos/seed/mecca-a2-final-challenge/1200/800', content: 'Show what you understand from the whole story of Bilal ibn Rabah and Mecca.' },
 ];
