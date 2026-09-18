@@ -28,7 +28,7 @@ interface ExerciseModuleProps {
   onComplete: () => void;
   onClose: () => void;
   collectionId?: string;
-  variant?: 'default' | 'quick';
+  variant?: 'default' | 'quick' | 'language';
 }
 
 const themeFor = (collectionId: string) => {
@@ -95,6 +95,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const theme = themeFor(collectionId);
   const isArabic = language === 'ar';
   const isQuick = variant === 'quick';
+  const isLanguage = variant === 'language';
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [showHint, setShowHint] = React.useState(false);
@@ -179,8 +180,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setIsSubmitted(true);
     if (isCorrectAnswer(answer)) {
       confetti({
-        particleCount: isQuick ? 60 : 110,
-        spread: isQuick ? 52 : 65,
+        particleCount: isQuick ? 60 : isLanguage ? 36 : 110,
+        spread: isQuick ? 52 : isLanguage ? 42 : 65,
         origin: { y: 0.65 },
         colors: collectionId === 'history'
           ? ['#059669', '#10B981', '#34D399']
@@ -245,7 +246,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setQuizWasCorrect(isCorrect);
     if (isCorrect) {
       setQuizScore((score) => score + 1);
-      confetti({ particleCount: isQuick ? 40 : 70, spread: isQuick ? 45 : 55, origin: { y: 0.7 } });
+      confetti({ particleCount: isQuick ? 40 : isLanguage ? 28 : 70, spread: isQuick ? 45 : isLanguage ? 38 : 55, origin: { y: 0.7 } });
     }
   };
 
@@ -694,6 +695,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     ? 'radial-gradient(circle at 14% 8%, rgba(14,165,233,0.12), transparent 34%), #FBFAF6'
     : 'radial-gradient(circle at 14% 8%, rgba(217,119,6,0.12), transparent 34%), #FBFAF6';
 
+  const languageBackground = collectionId === 'history'
+    ? 'radial-gradient(circle at 88% 12%, rgba(16,185,129,0.11), transparent 32%), #FCFBF8'
+    : collectionId === 'turkish'
+    ? 'radial-gradient(circle at 88% 12%, rgba(14,165,233,0.11), transparent 32%), #FCFBF8'
+    : 'radial-gradient(circle at 88% 12%, rgba(217,119,6,0.11), transparent 32%), #FCFBF8';
+
   const dialog = (
     <motion.div
       initial={{ opacity: 0 }}
@@ -701,19 +708,21 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       exit={{ opacity: 0 }}
       className={cn(
         'fixed inset-0 z-[1000] flex flex-col',
-        isQuick ? 'bg-[#FBFAF6]' : 'bg-[#FDFBF7]',
+        isQuick ? 'bg-[#FBFAF6]' : isLanguage ? 'bg-[#FCFBF8]' : 'bg-[#FDFBF7]',
         isRTL && 'font-arabic'
       )}
-      style={isQuick ? { background: quickBackground } : undefined}
+      style={isQuick ? { background: quickBackground } : isLanguage ? { background: languageBackground } : undefined}
       dir={isRTL ? 'rtl' : 'ltr'}
       role="dialog"
       aria-modal="true"
-      aria-label={isQuick ? t('nav.quickChallenge') : (exercise.title || exercise.question || t('nav.interactiveChallenge'))}
+      aria-label={isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : (exercise.title || exercise.question || t('nav.interactiveChallenge'))}
     >
       <header className={cn(
         'shrink-0 px-4 sm:px-6 md:px-10 flex items-start justify-between gap-4',
         isQuick
           ? 'border-b border-black/[0.06] bg-white/45 py-4 sm:py-5 backdrop-blur-xl'
+          : isLanguage
+          ? 'border-b border-black/[0.05] bg-white/55 py-4 sm:py-5 backdrop-blur-xl'
           : `border-b-2 py-4 sm:py-5 ${theme.softBg} ${theme.softBorder}`
       )}>
         <div className="min-w-0">
@@ -722,11 +731,15 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs',
             theme.accentText
           )}>
-            {isQuick ? t('nav.quickChallenge') : t('nav.interactiveChallenge')}
+            {isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : t('nav.interactiveChallenge')}
           </p>
 
           {!isQuick && (
-            <h3 className={cn('mt-1 font-display text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-tight', theme.title)}>
+            <h3 className={cn(
+              'mt-1 font-display text-xl sm:text-2xl md:text-3xl leading-tight',
+              isLanguage ? 'font-semibold tracking-[-0.03em]' : 'font-black tracking-tight',
+              theme.title
+            )}>
               {exercise.title}
             </h3>
           )}
@@ -734,7 +747,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.instructions && (
             <p className={cn(
               'font-serif',
-              isQuick ? 'mt-2 max-w-3xl text-wood/58' : `mt-1 ${theme.accentText}`,
+              isQuick ? 'mt-2 max-w-3xl text-wood/58' : isLanguage ? 'mt-2 max-w-3xl text-wood/55' : `mt-1 ${theme.accentText}`,
               isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base'
             )}>
               {exercise.instructions}
@@ -747,7 +760,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           onClick={onClose}
           className={cn(
             'touch-target flex shrink-0 items-center justify-center rounded-full transition-colors',
-            isQuick
+            isQuick || isLanguage
               ? 'bg-white/70 text-wood/55 shadow-sm ring-1 ring-black/[0.06] hover:bg-white hover:text-wood'
               : `border-2 bg-white ${theme.softBorder} ${theme.accentText}`
           )}
@@ -760,13 +773,15 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       <main className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
         <div className={cn(
           'w-full mx-auto px-4 sm:px-6 md:px-10 space-y-6',
-          isQuick ? 'max-w-4xl py-7 sm:py-10 md:py-12' : 'max-w-6xl py-5 sm:py-8'
+          isQuick ? 'max-w-4xl py-7 sm:py-10 md:py-12' : isLanguage ? 'max-w-5xl py-7 sm:py-9 md:py-10' : 'max-w-6xl py-5 sm:py-8'
         )}>
           {exercise.question && exercise.type !== 'quiz-game' && (
             <h4 className={cn(
               'font-display font-semibold text-wood leading-[1.16]',
               isQuick
                 ? 'max-w-3xl text-2xl tracking-[-0.03em] sm:text-3xl md:text-[2.15rem]'
+                : isLanguage
+                ? 'max-w-4xl text-xl tracking-[-0.025em] sm:text-2xl md:text-[1.75rem]'
                 : 'text-xl sm:text-2xl md:text-3xl'
             )}>
               {exercise.question}
@@ -782,7 +797,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   'rounded-2xl p-4 sm:p-6 space-y-4',
-                  isQuick ? 'border ring-1 ring-inset' : 'border-2',
+                  isQuick || isLanguage ? 'border ring-1 ring-inset' : 'border-2',
                   correct
                     ? 'bg-emerald-50 border-emerald-200 ring-emerald-100'
                     : 'bg-rose-50 border-rose-200 ring-rose-100'
@@ -834,7 +849,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
       <footer className={cn(
         'shrink-0 px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between gap-3 safe-area-bottom',
-        isQuick ? 'border-t border-black/[0.06] bg-white/55 backdrop-blur-xl' : 'border-t border-gray-200 bg-white'
+        isQuick || isLanguage ? 'border-t border-black/[0.06] bg-white/55 backdrop-blur-xl' : 'border-t border-gray-200 bg-white'
       )}>
         <div>
           {exercise.hints?.length ? (
