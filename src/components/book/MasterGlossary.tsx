@@ -682,7 +682,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
 
       </section>
 
-      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
+      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2 -me-2">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2 items-start">
           <AnimatePresence mode="popLayout">
             {paginatedVocab.map((v, index) => {
