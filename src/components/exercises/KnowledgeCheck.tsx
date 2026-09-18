@@ -421,7 +421,7 @@ export const KnowledgeCheck = ({
   );
 
   return (
-    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pr-1">
+    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pe-1">
       <div className="space-y-5 pb-2">
         <div className={cn('flex flex-wrap items-center justify-between gap-3 border-b-2 pb-4', theme.border)}>
           <div className="flex items-center gap-3 min-w-0">
