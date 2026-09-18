@@ -105,6 +105,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const [recallFeedback, setRecallFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const [recallAttempts, setRecallAttempts] = useState(0);
   const [answerRevealed, setAnswerRevealed] = useState(false);
+  const [useSentence, setUseSentence] = useState('');
 
   const contextItems = useMemo(
     () => pickEvenly(pairs, Math.min(policy.vocabularyContextCount, pairs.length)),
@@ -149,6 +150,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     setRecallFeedback('idle');
     setRecallAttempts(0);
     setAnswerRevealed(false);
+    setUseSentence('');
   };
 
   useEffect(() => {
@@ -242,6 +244,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         revisitHint: 'راجع هذه الكلمات في المعجم الرئيسي ثم أعد التحدي.',
         restart: 'إعادة التحدي',
         backToGlossary: 'العودة إلى المعجم الرئيسي',
+        usePrompt: 'استخدم الكلمة في جملة قصيرة مرتبطة بالقصة.',
+        usePlaceholder: 'اكتب جملتك هنا…',
       }
     : {
         title: 'Vocabulary Challenge',
@@ -269,6 +273,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         revisitHint: 'Review these words in Master Glossary, then try the challenge again.',
         restart: 'Restart challenge',
         backToGlossary: 'Review in Master Glossary',
+        usePrompt: 'Use the word in one short sentence connected to the story.',
+        usePlaceholder: 'Write your sentence here…',
       };
 
   const optionWords = (item: Pair, itemIndex: number, optionCount: number) => {
@@ -352,6 +358,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     setRecallFeedback('idle');
     setRecallAttempts(0);
     setAnswerRevealed(false);
+    setUseSentence('');
   };
 
   const stageRank = stage === 'match' ? 0 : stage === 'context' ? 1 : stage === 'recall' ? 2 : 3;
@@ -561,6 +568,21 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               />
             )}
 
+            {policy.vocabularyRecallMode === 'independent' && recallFeedback === 'correct' && (
+              <div className="rounded-2xl bg-white p-4 ring-1 ring-black/[0.06]">
+                <label className={cn('block font-display text-[10px] font-semibold uppercase tracking-[0.12em]', theme.accent)}>
+                  {copy.usePrompt}
+                </label>
+                <textarea
+                  value={useSentence}
+                  onChange={(event) => setUseSentence(event.target.value)}
+                  rows={2}
+                  placeholder={copy.usePlaceholder}
+                  className="mt-2 w-full resize-none rounded-xl bg-stone-50 px-3.5 py-3 font-serif text-sm leading-relaxed text-wood outline-none ring-1 ring-black/[0.06] focus:ring-2 focus:ring-black/[0.12]"
+                />
+              </div>
+            )}
+
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-h-10 flex-1">
                 {recallFeedback === 'wrong' && (
@@ -596,7 +618,15 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     {copy.check}
                   </button>
                 ) : (
-                  <button type="button" onClick={continueRecall} className={cn('inline-flex min-h-11 items-center gap-2 rounded-xl px-5 font-display text-[11px] font-semibold', theme.badge)}>
+                  <button
+                    type="button"
+                    onClick={continueRecall}
+                    disabled={policy.vocabularyRecallMode === 'independent' && useSentence.trim().length < 8}
+                    className={cn(
+                      'inline-flex min-h-11 items-center gap-2 rounded-xl px-5 font-display text-[11px] font-semibold disabled:cursor-not-allowed disabled:opacity-35',
+                      theme.badge
+                    )}
+                  >
                     {copy.continue}<ArrowRight size={15} className={isRTL ? 'rotate-180' : ''} />
                   </button>
                 )}
