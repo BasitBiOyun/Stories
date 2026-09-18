@@ -8,7 +8,7 @@ import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 
 type Pair = VocabularyChallengePair;
-type Props = { pairs: Pair[]; collectionId?: string; level: Level };
+type Props = { pairs: Pair[]; collectionId?: string; level: Level; onReviewGlossary?: () => void };
 
 type FeedbackState =
   | { kind: 'idle' }
@@ -80,7 +80,7 @@ const themeFor = (collectionId: string) => {
   };
 };
 
-export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Props) => {
+export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary }: Props) => {
   const { t, formatNumber, language, isRTL } = useLanguage();
   const policy = getLearningLevelPolicy(level);
   const theme = themeFor(collectionId);
@@ -241,6 +241,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
         revisit: 'كلمات للمراجعة',
         revisitHint: 'راجع هذه الكلمات في المعجم الرئيسي ثم أعد التحدي.',
         restart: 'إعادة التحدي',
+        backToGlossary: 'العودة إلى المعجم الرئيسي',
       }
     : {
         title: 'Vocabulary Challenge',
@@ -267,6 +268,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
         revisit: 'Words to revisit',
         revisitHint: 'Review these words in Master Glossary, then try the challenge again.',
         restart: 'Restart challenge',
+        backToGlossary: 'Review in Master Glossary',
       };
 
   const optionWords = (item: Pair, itemIndex: number, optionCount: number) => {
@@ -634,9 +636,21 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
               </div>
             )}
 
-            <button type="button" onClick={reset} className="mx-auto flex min-h-12 items-center gap-2 rounded-2xl bg-white px-5 font-display text-[11px] font-semibold text-wood/65 ring-1 ring-black/[0.07]">
-              <RotateCcw size={16} />{copy.restart}
-            </button>
+            <div className="flex flex-col justify-center gap-2 sm:flex-row">
+              {revisitWords.size > 0 && onReviewGlossary && (
+                <button
+                  type="button"
+                  onClick={onReviewGlossary}
+                  className={cn('inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[11px] font-semibold', theme.badge)}
+                >
+                  <BrainCircuit size={16} />
+                  {copy.backToGlossary}
+                </button>
+              )}
+              <button type="button" onClick={reset} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-5 font-display text-[11px] font-semibold text-wood/65 ring-1 ring-black/[0.07]">
+                <RotateCcw size={16} />{copy.restart}
+              </button>
+            </div>
           </div>
         </div>
       </div>
