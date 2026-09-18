@@ -1,6 +1,9 @@
 import type { Exercise, PageData, PageType } from '../types';
 import type { B1BlueprintConfig } from './b1BlueprintSystem';
 import type { BlueprintLanguage, LearningBlueprint } from './learningBlueprint';
+import { getLearningLevelPolicy } from './learningLevelPolicy';
+
+const B1_VOCABULARY_COUNT = getLearningLevelPolicy('B1').vocabularyCount;
 
 export interface PreparedB1GoldStructure {
   englishPages: PageData[];
@@ -17,7 +20,7 @@ const makeLearningPage = (
   const copy: Record<PageType, { en: [string, string]; ar: [string, string] }> = {
     story: { en: ['', ''], ar: ['', ''] },
     quiz: { en: ['B1 Knowledge Check', 'Explain relationships from across the story.'], ar: ['اختبار الفهم B1', 'اشرح العلاقات في القصة كاملة.'] },
-    'vocabulary-match': { en: ['B1 Vocabulary Challenge', 'Match ten high-value story words with their meanings in context.'], ar: ['تحدي مفردات B1', 'صل عشر كلمات أساسية من القصة بمعانيها في السياق.'] },
+    'vocabulary-match': { en: ['B1 Vocabulary Challenge', 'Practise twelve high-value story words through matching, context, and guided recall.'], ar: ['تحدي مفردات B1', 'تدرّب على اثنتي عشرة كلمة أساسية من القصة عبر المطابقة والسياق والاسترجاع الموجّه.'] },
     sequencing: { en: ['', ''], ar: ['', ''] },
     game: { en: ['', ''], ar: ['', ''] },
     exercises: { en: ['B1 Retrieval Review', 'Retrieve sequence, relationships, evidence, and key lessons.'], ar: ['مراجعة الاسترجاع B1', 'استرجع التسلسل والعلاقات والأدلة والدروس الأساسية.'] },
@@ -60,10 +63,10 @@ const normaliseLanguagePages = (
 
   const learningPages: PageData[] = [
     findOrMake(config.knowledgeCheckPageId, target.knowledge, 'quiz'),
-    findOrMake(config.vocabularyPageId, target.vocabulary, 'vocabulary-match'),
-    findOrMake(config.reviewPageId, target.review, 'exercises'),
     findOrMake(config.glossaryPageIds[0], target.glossary1, 'glossary'),
     findOrMake(config.glossaryPageIds[1], target.glossary2, 'glossary'),
+    findOrMake(config.vocabularyPageId, target.vocabulary, 'vocabulary-match'),
+    findOrMake(config.reviewPageId, target.review, 'exercises'),
     findOrMake(config.finalChallengePageId, target.final, 'final-challenge'),
   ];
 
@@ -73,7 +76,7 @@ const normaliseLanguagePages = (
 
 /**
  * Gives every reviewed B1 book the same visible learning-page order:
- * Knowledge → Vocabulary → Retrieval Review → Glossary I → Glossary II → Final.
+ * Knowledge → Glossary I → Glossary II → Vocabulary → Retrieval Review → Final.
  * Only non-story learning page IDs are remapped. Chapter IDs, story prose,
  * media, audio, timed chunks, and chapter order remain untouched.
  */
@@ -89,10 +92,10 @@ export const prepareB1GoldLearningStructure = ({
   const firstLearningId = Math.max(...config.storyIds) + 1;
   const target = {
     knowledge: firstLearningId,
-    vocabulary: firstLearningId + 1,
-    review: firstLearningId + 2,
-    glossary1: firstLearningId + 3,
-    glossary2: firstLearningId + 4,
+    glossary1: firstLearningId + 1,
+    glossary2: firstLearningId + 2,
+    vocabulary: firstLearningId + 3,
+    review: firstLearningId + 4,
     final: firstLearningId + 5,
   };
 
@@ -115,7 +118,7 @@ const key = (value: string) => value.trim().toLocaleLowerCase('en-US');
 /**
  * Curated words are preferred, but a missing legacy target never blocks a book
  * load. Remaining slots are filled with unique story-grounded Blueprint targets
- * until the B1 policy total of ten is reached.
+ * until the B1 policy target is reached.
  */
 export const applyB1CuratedVocabulary = (
   pages: PageData[],
@@ -142,7 +145,7 @@ export const applyB1CuratedVocabulary = (
   });
 
   uniqueTargets.forEach(target => {
-    if (selected.length >= 10) return;
+    if (selected.length >= B1_VOCABULARY_COUNT) return;
     const targetKey = key(target.en.word);
     if (used.has(targetKey)) return;
     used.add(targetKey);
@@ -152,9 +155,10 @@ export const applyB1CuratedVocabulary = (
   return pages.map(page => page.id === vocabularyPageId
     ? {
         ...page,
-        vocabularyPairs: selected.slice(0, 10).map(target => ({
+        vocabularyPairs: selected.slice(0, B1_VOCABULARY_COUNT).map(target => ({
           word: target[language].word,
           meaning: target[language].definition,
+          context: target[language].example,
         })),
       }
     : page);
