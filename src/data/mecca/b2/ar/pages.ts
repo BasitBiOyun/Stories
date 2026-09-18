@@ -1,5 +1,5 @@
 import { PageData } from '../../../../types';
-import { meccaB2FinalReviewExercisesAr } from './exercises';
+import { meccaB2FinalReviewExercisesAr, meccaB2VocabularyChallengePairsAr } from './exercises';
 
 const rawMeccaB2PagesAr: PageData[] = [
   {
@@ -1946,6 +1946,15 @@ const rawMeccaB2PagesAr: PageData[] = [
     "animatedWords": [],
     "syncPoints": [],
     "exercises": []
+  },
+  {
+    "id": 21,
+    "type": "vocabulary-match",
+    "title": "تحدي المفردات B2",
+    "image": "",
+    "audioUrl": "",
+    "content": "تدرّب على المفردات المستهدفة من خلال المطابقة والسياق والاسترجاع النشط.",
+    "vocabularyPairs": meccaB2VocabularyChallengePairsAr
   },
   {
     "id": 22,
