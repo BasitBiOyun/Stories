@@ -559,6 +559,6 @@ In these two stories, Yunus tells us to always remember Allah in our hearts and 
       category: 'Ideas & Meaning',
     },
   ] },
-  { id: 13, type: 'exercises', title: 'Retrieval Review', image: 'https://picsum.photos/seed/exercises-yunus-a2/1200/800', content: 'Retrieve, reconnect and reflect on the complete story.' },
+  { id: 13, type: 'exercises', title: 'Language Review', image: 'https://picsum.photos/seed/exercises-yunus-a2/1200/800', content: 'Review and use the language from across the book.' },
   { id: 14, type: 'final-challenge', title: 'Final Challenge: Yunus Emre A2', image: 'https://picsum.photos/seed/challenge-yunus-a2/1200/800', content: 'Show whole-book mastery with ten independent activities.' },
 ];
