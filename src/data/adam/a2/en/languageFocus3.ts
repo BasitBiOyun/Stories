@@ -139,12 +139,12 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
       { left: 'Because of this', right: 'a result or consequence' },
     ],
     correctAnswer: { 'was going to create': 'a plan seen from the past', 'After that': 'the next event in a sequence', because: 'a reason', 'Because of this': 'a result or consequence' },
-    explanation: 'Chapter 1 combines future-in-the-past language with simple linkers for sequence, reason and result.', feedback: { correct: 'Good. You distinguished four different language jobs.', incorrect: 'Ask whether each expression shows a plan, order, reason or result.' },
+    explanation: 'Chapter 1 uses words for a plan, order, reason and result.', feedback: { correct: 'Good. You distinguished four different language jobs.', incorrect: 'Think: plan, order, reason or result?' },
   },
   {
     id: 'adam-a2-language-review-2-ability', type: 'multiple-choice', title: 'Ability in the Story', instructions: 'Choose the sentence with could.', question: 'Which sentence says what Adam could do?',
     options: ['Adam could learn and understand', 'Allah taught him to think', 'He was wiser than the angels', 'Iblis thought Adam was unimportant'], correctAnswer: 0,
-    explanation: '“Could + verb” expresses ability. The other choices show teaching, comparison and opinion.', feedback: { correct: 'Correct. “Could learn and understand” directly expresses ability.', incorrect: 'Look for could + verb.' },
+    explanation: '“Could + verb” says what someone was able to do.', feedback: { correct: 'Correct. “Could learn and understand” says what Adam was able to do.', incorrect: 'Look for could + verb.' },
   },
   {
     id: 'adam-a2-language-review-3-value-comparison-reason', type: 'fill-blanks', title: 'Comparison and Reason', instructions: 'Complete the sentence with one word.', question: 'Which word gives the reason?',
@@ -165,12 +165,12 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
       Prohibition: ['told Adam and Eve not to go near one tree'],
       Change: ['started to feel lonely'],
     },
-    explanation: 'Chapter 4 uses want + person + to for intention, tell for warning, tell + person + not to for prohibition, and started to for the beginning of a new state.', feedback: { correct: 'Correct. You sorted four different communicative functions.', incorrect: 'Look at wanted, told, not to, and started to.' },
+    explanation: 'Chapter 4 uses different phrases for a plan, a warning, saying “do not”, and a new change.', feedback: { correct: 'Correct. You put the four phrases in the right groups.', incorrect: 'Look at wanted, told, not to, and started to.' },
   },
   {
     id: 'adam-a2-language-review-5-condition-result', type: 'multiple-choice', title: 'Condition and Result', instructions: 'Choose the correct if sentence.', question: 'Which sentence uses if and will correctly?',
     options: ['If you eat from that tree, you will never die', 'They learned from their mistake', 'They decided never to repeat it', 'However, Iblis took an opposite direction'], correctAnswer: 0,
-    explanation: 'The first clause gives the condition with if; the second gives the promised future result with will.', feedback: { correct: 'Correct. You identified the if + will pattern.', incorrect: 'Find the sentence with both if and will.' },
+    explanation: 'The part with “if” comes first. The part with “will” tells us what happens next.', feedback: { correct: 'Correct. You identified the if + will pattern.', incorrect: 'Find the sentence with both if and will.' },
   },
   {
     id: 'adam-a2-language-review-6-purpose-responsibility', type: 'fill-blanks', title: 'A Planned Action', instructions: 'Complete the Chapter 6 plan with the missing word.', question: 'Which word completes the “were going to” structure?',
@@ -185,7 +185,7 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
       { id: '3', text: 'Adam started teaching people to be honest and do good.' },
       { id: '4', text: 'He warned and guided people as part of his responsibility.' },
     ],
-    correctAnswer: ['1', '2', '3', '4'], explanation: 'Time signals such as “for many years” and “then” organise events, while started teaching and warning language describes guidance.', feedback: { correct: 'Correct. You rebuilt the sequence using time and teaching language.', incorrect: 'Start with life on Earth, then the new role, then teaching and guidance.' },
+    correctAnswer: ['1', '2', '3', '4'], explanation: 'Time signals such as “for many years” and “then” organise events, while started teaching and warning language describes guidance.', feedback: { correct: 'Correct. You put the ideas in a clear order.', incorrect: 'Start with life on Earth, then the new role, then teaching and guidance.' },
   },
   {
     id: 'adam-a2-language-review-8-role-quality-obligation', type: 'matching', title: 'Jobs, Quality and Need', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern tell us?',
@@ -196,15 +196,15 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
       { left: 'They had to offer an offering', right: 'past necessity or obligation' },
     ],
     correctAnswer: { 'Habil became a shepherd': 'change into a role or job', 'Qabil was a farmer': 'past role or state', 'his best and healthiest sheep': 'superlative quality', 'They had to offer an offering': 'past necessity or obligation' },
-    explanation: 'Chapter 8 uses role language, superlatives and past obligation to describe the brothers and their choices.', feedback: { correct: 'Good. You distinguished role, state, quality and obligation.', incorrect: 'Focus on became, was, best/healthiest and had to.' },
+    explanation: 'Chapter 8 talks about jobs, the best quality, and things people had to do.', feedback: { correct: 'Good. You matched each phrase with the right meaning.', incorrect: 'Focus on became, was, best/healthiest and had to.' },
   },
   {
     id: 'adam-a2-language-review-9-intention-refusal', type: 'true-false', title: 'Future Refusal', instructions: 'Read the sentence and choose true or false.', question: '“I won’t fight back” talks about a future action.', correctAnswer: true,
-    explanation: '“Won’t + verb” makes the future negative and can show a clear refusal. Chapter 9 also uses started to for changing reactions and should for uncertainty about the right action.', feedback: { correct: 'Correct. Won’t expresses a negative future choice here.', incorrect: 'Look at the pattern won’t + verb and what the speaker refuses to do.' },
+    explanation: '“Won’t + verb” says that something will not happen. Here it shows a clear choice.', feedback: { correct: 'Correct. “Won’t” makes the future negative.', incorrect: 'Look at the pattern won’t + verb and what the speaker refuses to do.' },
   },
   {
     id: 'adam-a2-language-review-10-transfer', type: 'reflection', title: 'Use the Story’s Advice Language', instructions: 'Write four short sentences for daily life.', question: 'Can you use the story language in your own sentences?', correctAnswer: null,
-    explanation: 'This final Language Review task transfers the book’s grammar and functions into meaningful language of your own.', feedback: { correct: 'Use all four starters and keep each sentence clear and meaningful.', incorrect: '' },
+    explanation: 'Now use the same story language in your own short sentences.', feedback: { correct: 'Use all four starters and keep each sentence clear and meaningful.', incorrect: '' },
     discussionPrompts: [
       { question: 'Sentence 1 — “We should ...”', mode: 'Individual' },
       { question: 'Sentence 2 — “Yesterday, I had to ...”', mode: 'Individual' },
