@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   AnimatePresence,
   motion,
@@ -17,9 +17,9 @@ import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
 // @ts-ignore
 import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
 // @ts-ignore
-import abrahamCover from '../../assets/images/abraham_cover.webp';
+import abrahamCover from '../../assets/images/abraham_cover.png';
 // @ts-ignore
-import mosesCover from '../../assets/images/moses_cover.webp';
+import mosesCover from '../../assets/images/moses_cover.png';
 // @ts-ignore
 import yunusEmreCover from '../../assets/images/yunus_emre_cover.png';
 
@@ -86,9 +86,9 @@ const collectionIcons: Record<StoryCollectionId, string> = {
 };
 
 const levelDescriptions: Record<Level, { en: string; ar: string }> = {
-  A2: { en: 'Elementary', ar: 'المستوى الأساسي' },
-  B1: { en: 'Intermediate', ar: 'المستوى المتوسط' },
-  B2: { en: 'Upper intermediate', ar: 'فوق المتوسط' },
+  A2: { en: 'Elementary', ar: 'Ø§Ù„Ù…Ø³ØªÙˆÙ‰ Ø§Ù„Ø£Ø³Ø§Ø³ÙŠ' },
+  B1: { en: 'Intermediate', ar: 'Ø§Ù„Ù…Ø³ØªÙˆÙ‰ Ø§Ù„Ù…ØªÙˆØ³Ø·' },
+  B2: { en: 'Upper intermediate', ar: 'ÙÙˆÙ‚ Ø§Ù„Ù…ØªÙˆØ³Ø·' },
 };
 
 const collectionVisuals: Record<
@@ -165,20 +165,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   const copy =
     language === 'ar'
       ? {
-          eyebrow: 'مكتبة القصص التفاعلية',
-          title: 'قصص تُقرأ، وتُسمع، وتُعاش.',
-          intro: 'رحلات ثنائية اللغة تجمع القصة والفهم والمفردات والتعلّم النشط في تجربة واحدة.',
-          all: 'جميع الكتب',
-          prophets: 'قصص الأنبياء',
-          history: 'التاريخ والحضارة',
-          turkish: 'التراث التركي الإسلامي',
-          continueLabel: 'تابع من حيث توقفت',
-          continueAction: 'متابعة القراءة',
-          chooseLevel: 'اختر مستواك',
-          previous: 'الكتاب السابق',
-          next: 'الكتاب التالي',
-          explore: 'اسحب أو استخدم الأسهم للاستكشاف',
-          books: 'كتب',
+          eyebrow: 'Ù…ÙƒØªØ¨Ø© Ø§Ù„Ù‚ØµØµ Ø§Ù„ØªÙØ§Ø¹Ù„ÙŠØ©',
+          title: 'Ù‚ØµØµ ØªÙÙ‚Ø±Ø£ØŒ ÙˆØªÙØ³Ù…Ø¹ØŒ ÙˆØªÙØ¹Ø§Ø´.',
+          intro: 'Ø±Ø­Ù„Ø§Øª Ø«Ù†Ø§Ø¦ÙŠØ© Ø§Ù„Ù„ØºØ© ØªØ¬Ù…Ø¹ Ø§Ù„Ù‚ØµØ© ÙˆØ§Ù„ÙÙ‡Ù… ÙˆØ§Ù„Ù…ÙØ±Ø¯Ø§Øª ÙˆØ§Ù„ØªØ¹Ù„Ù‘Ù… Ø§Ù„Ù†Ø´Ø· ÙÙŠ ØªØ¬Ø±Ø¨Ø© ÙˆØ§Ø­Ø¯Ø©.',
+          all: 'Ø¬Ù…ÙŠØ¹ Ø§Ù„ÙƒØªØ¨',
+          prophets: 'Ù‚ØµØµ Ø§Ù„Ø£Ù†Ø¨ÙŠØ§Ø¡',
+          history: 'Ø§Ù„ØªØ§Ø±ÙŠØ® ÙˆØ§Ù„Ø­Ø¶Ø§Ø±Ø©',
+          turkish: 'Ø§Ù„ØªØ±Ø§Ø« Ø§Ù„ØªØ±ÙƒÙŠ Ø§Ù„Ø¥Ø³Ù„Ø§Ù…ÙŠ',
+          continueLabel: 'ØªØ§Ø¨Ø¹ Ù…Ù† Ø­ÙŠØ« ØªÙˆÙ‚ÙØª',
+          continueAction: 'Ù…ØªØ§Ø¨Ø¹Ø© Ø§Ù„Ù‚Ø±Ø§Ø¡Ø©',
+          chooseLevel: 'Ø§Ø®ØªØ± Ù…Ø³ØªÙˆØ§Ùƒ',
+          previous: 'Ø§Ù„ÙƒØªØ§Ø¨ Ø§Ù„Ø³Ø§Ø¨Ù‚',
+          next: 'Ø§Ù„ÙƒØªØ§Ø¨ Ø§Ù„ØªØ§Ù„ÙŠ',
+          explore: 'Ø§Ø³Ø­Ø¨ Ø£Ùˆ Ø§Ø³ØªØ®Ø¯Ù… Ø§Ù„Ø£Ø³Ù‡Ù… Ù„Ù„Ø§Ø³ØªÙƒØ´Ø§Ù',
+          books: 'ÙƒØªØ¨',
         }
       : {
           eyebrow: 'Interactive story library',
@@ -331,7 +331,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                 {t('nav.homeTitle')}
               </p>
               <p className="mt-0.5 hidden truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D8B35C]/68 sm:block">
-                {language === 'ar' ? 'مادة تعليمية ثنائية اللغة' : 'Bilingual curriculum library'}
+                {language === 'ar' ? 'Ù…Ø§Ø¯Ø© ØªØ¹Ù„ÙŠÙ…ÙŠØ© Ø«Ù†Ø§Ø¦ÙŠØ© Ø§Ù„Ù„ØºØ©' : 'Bilingual curriculum library'}
               </p>
             </div>
           </div>
@@ -370,7 +370,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                     {copy.continueLabel}
                   </p>
                   <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
-                    {translatedStoryName(lastActiveStory)} · {lastActive.level}
+                    {translatedStoryName(lastActiveStory)} Â· {lastActive.level}
                   </p>
                   <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/72 transition-colors group-hover:text-white">
                     {copy.continueAction}
@@ -738,3 +738,4 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     </div>
   );
 };
+
