@@ -636,14 +636,15 @@ const AppContent = () => {
                             OpenDyslexic
                           </span>
                         </span>
-                        <span className={cn(
-                          "relative h-6 w-11 rounded-full transition-colors",
-                          isDyslexic ? themeClasses.progressBar : "bg-white/15"
-                        )}>
-                          <span className={cn(
-                            "absolute top-1 h-4 w-4 rounded-full bg-white shadow transition-transform",
-                            isDyslexic ? (isRTL ? "translate-x-1" : "translate-x-6") : (isRTL ? "translate-x-6" : "translate-x-1")
-                          )} />
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            isDyslexic ? themeClasses.progressBar : "bg-white/15",
+                            isDyslexic ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
                         </span>
                       </button>
                     </motion.div>
