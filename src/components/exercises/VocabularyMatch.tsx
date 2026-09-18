@@ -1,12 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb } from '../ui/icons';
+import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb, ArrowRight, BrainCircuit } from '../ui/icons';
+import type { Level, VocabularyChallengePair } from '../../types';
+import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 
-type Pair = { word: string; meaning: string };
-type Props = { pairs: Pair[]; collectionId?: string };
+type Pair = VocabularyChallengePair;
+type Props = { pairs: Pair[]; collectionId?: string; level: Level };
 
 type FeedbackState =
   | { kind: 'idle' }
@@ -19,6 +21,41 @@ const shuffle = <T,>(items: T[]): T[] => [...items].sort(() => Math.random() - 0
 const displayWord = (word: string, language: string) => {
   if (language !== 'en' || !word) return word;
   return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+const pickEvenly = <T,>(items: T[], count: number): T[] => {
+  if (items.length <= count) return items.slice();
+  if (count <= 1) return count ? [items[0]] : [];
+  return Array.from({ length: count }, (_, index) => {
+    const sourceIndex = Math.round(index * (items.length - 1) / (count - 1));
+    return items[sourceIndex];
+  });
+};
+
+const normalizeTypedAnswer = (value: string, language: string) => {
+  const base = value
+    .toLocaleLowerCase(language === 'ar' ? 'ar' : 'en-US')
+    .trim()
+    .replace(/[.,!?;:'"“”‘’()[\]{}]/g, '')
+    .replace(/\s+/g, ' ');
+
+  if (language !== 'ar') return base;
+
+  return base
+    .replace(/[\u064B-\u0652\u0670]/g, '')
+    .replace(/[أإآٱ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/ؤ/g, 'و')
+    .replace(/ئ/g, 'ي');
+};
+
+const maskWord = (context: string | undefined, word: string) => {
+  if (!context) return '';
+  const lowerContext = context.toLocaleLowerCase();
+  const lowerWord = word.toLocaleLowerCase();
+  const index = lowerContext.indexOf(lowerWord);
+  if (index < 0) return context;
+  return context.slice(0, index) + '_____' + context.slice(index + word.length);
 };
 
 const themeFor = (collectionId: string) => {
@@ -43,8 +80,9 @@ const themeFor = (collectionId: string) => {
   };
 };
 
-export const VocabularyMatch = ({ pairs, collectionId = 'prophets' }: Props) => {
-  const { t, formatNumber, language } = useLanguage();
+export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Props) => {
+  const { t, formatNumber, language, isRTL } = useLanguage();
+  const policy = getLearningLevelPolicy(level);
   const theme = themeFor(collectionId);
   const isArabic = language === 'ar';
   const [meaningOrder, setMeaningOrder] = useState(() => shuffle(pairs.map((pair) => pair.meaning)));
