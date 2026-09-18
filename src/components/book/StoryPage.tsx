@@ -1508,8 +1508,6 @@ export const StoryPage = ({
             </div>
           )}
         </div>
-          )}
-        </div>
       </div>
 
       {/* Dynamic responsive layout container */}
