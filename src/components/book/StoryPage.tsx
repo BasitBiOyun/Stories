@@ -157,11 +157,15 @@ const PoemBlock = ({
   turkish, 
   fontSize,
   renderTranslation,
+  compact = false,
+  inGrid = false,
 }: { 
   english: string; 
   turkish?: string; 
   fontSize: number;
   renderTranslation?: (line: string, lineIndex: number) => React.ReactNode;
+  compact?: boolean;
+  inGrid?: boolean;
 }) => {
   const { isRTL } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
@@ -174,7 +178,8 @@ const PoemBlock = ({
       animate={{ opacity: 1, y: 0 }}
       onClick={() => hasOriginal && setShowOriginal(!showOriginal)}
       className={cn(
-        "my-6 w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
+        "w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
+        inGrid ? "my-0 h-full min-h-[180px]" : "my-6",
         hasOriginal ? "md:pl-10 md:pr-16 cursor-pointer" : "md:px-10"
       )}
     >
@@ -191,7 +196,9 @@ const PoemBlock = ({
             (!isRTL || showOriginal) && "italic"
           )}
           style={{ 
-            fontSize: `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)` 
+            fontSize: compact
+              ? `clamp(0.82rem, 0.74rem + 0.42vw, ${(fontSize * 1.08 * 1.3333).toFixed(1)}px)`
+              : `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)`
           }}
         >
           {displayedPoem.split('\n').map((line, idx) => (
@@ -231,7 +238,7 @@ const cleanPoemText = (lines: string[]) => {
 
 const parsePoem = (part: string) => {
   const body = part
-    .replace(/^\[POEM\]\s*/i, '')
+    .replace(/^\[POEM(?:\s+compact)?\]\s*/i, '')
     .replace(/\s*\[\/POEM\]$/i, '')
     .trim();
   const lines = body.split('\n');
@@ -571,7 +578,7 @@ export const StoryPage = ({
   void chunksWithIndices;
 
   const renderContent = (content: string) => {
-    const parts = content.split(/(\[POEM\][\s\S]*?\[\/POEM\])/g);
+    const parts = content.split(/(\[POEM_GRID\][\s\S]*?\[\/POEM_GRID\]|\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\])/g);
     const highlightWordCount = (value: string) => {
       const normalized = normalizeHighlightText(value, highlightLanguage);
       return normalized ? normalized.split(' ').length : 0;
@@ -705,15 +712,42 @@ export const StoryPage = ({
     };
 
     return parts.map((part, partIdx) => {
-      if (part.startsWith('[POEM]') && part.endsWith('[/POEM]')) {
+      if (part.startsWith('[POEM_GRID]') && part.endsWith('[/POEM_GRID]')) {
+        const poemParts = [...part.matchAll(/\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\]/gi)].map(match => match[0]);
+        if (poemParts.length > 0) {
+          return (
+            <div key={`poem-grid-${partIdx}`} className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+              {poemParts.map((poemPart, poemIndex) => {
+                const poem = parsePoem(poemPart);
+                if (!poem.translation) return null;
+                return (
+                  <PoemBlock
+                    key={`poem-grid-${partIdx}-${poemIndex}`}
+                    english={poem.translation}
+                    turkish={poem.original}
+                    fontSize={fontSize}
+                    compact
+                    inGrid
+                    renderTranslation={(line, lineIndex) => renderInlineHighlights(line, `poem-grid-${partIdx}-${poemIndex}-${lineIndex}`)}
+                  />
+                );
+              })}
+            </div>
+          );
+        }
+      }
+
+      if (/^\[POEM(?:\s+compact)?\]/i.test(part) && part.endsWith('[/POEM]')) {
         const poem = parsePoem(part);
         if (poem.translation) {
+          const compact = /^\[POEM\s+compact\]/i.test(part);
           return (
             <PoemBlock 
               key={`poem-${partIdx}`} 
               english={poem.translation} 
               turkish={poem.original} 
               fontSize={fontSize}
+              compact={compact}
               renderTranslation={(line, lineIndex) => renderInlineHighlights(line, `poem-${partIdx}-${lineIndex}`)}
             />
           );
