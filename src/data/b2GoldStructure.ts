@@ -1,6 +1,9 @@
 import type { Exercise, PageData, PageType } from '../types';
 import type { B2BlueprintConfig } from './b2BlueprintSystem';
 import type { BlueprintLanguage, LearningBlueprint } from './learningBlueprint';
+import { getLearningLevelPolicy } from './learningLevelPolicy';
+
+const B2_VOCABULARY_COUNT = getLearningLevelPolicy('B2').vocabularyCount;
 
 export interface PreparedB2GoldStructure {
   englishPages: PageData[];
@@ -29,8 +32,8 @@ const makeLearningPage = (
       ar: ['اختبار الفهم B2', 'اربط بين الأدلة والأسباب والمقارنات ونقاط التحول في القصة كاملة.'],
     },
     'vocabulary-match': {
-      en: ['B2 Vocabulary Challenge', 'Match ten high-value story words with their meanings in context.'],
-      ar: ['تحدي مفردات B2', 'صل عشر كلمات أساسية من القصة بمعانيها في السياق.'],
+      en: ['B2 Vocabulary Challenge', 'Practise fourteen high-value story words through matching, context, and independent recall.'],
+      ar: ['تحدي مفردات B2', 'تدرّب على أربع عشرة كلمة أساسية من القصة عبر المطابقة والسياق والاسترجاع المستقل.'],
     },
     sequencing: { en: ['', ''], ar: ['', ''] },
     game: { en: ['', ''], ar: ['', ''] },
@@ -87,10 +90,10 @@ const normaliseLanguagePages = (
 
   const learningPages: PageData[] = [
     findOrMake(config.knowledgeCheckPageId, target.knowledge, 'quiz'),
-    findOrMake(config.vocabularyPageId, target.vocabulary, 'vocabulary-match'),
-    findOrMake(config.reviewPageId, target.review, 'exercises'),
     findOrMake(config.glossaryPageIds[0], target.glossary1, 'glossary'),
     findOrMake(config.glossaryPageIds[1], target.glossary2, 'glossary'),
+    findOrMake(config.vocabularyPageId, target.vocabulary, 'vocabulary-match'),
+    findOrMake(config.reviewPageId, target.review, 'exercises'),
     findOrMake(config.finalChallengePageId, target.final, 'final-challenge'),
   ];
 
@@ -99,7 +102,7 @@ const normaliseLanguagePages = (
 
 /**
  * Gives every reviewed B2 book the same visible learning-page order:
- * Knowledge → Vocabulary → Retrieval Review → Glossary I → Glossary II → Final.
+ * Knowledge → Glossary I → Glossary II → Vocabulary → Retrieval Review → Final.
  * Story chapter IDs, prose, media, audio, timed chunks, chapter order and
  * intentional appendix/reference pages are never changed.
  */
@@ -119,10 +122,10 @@ export const prepareB2GoldLearningStructure = ({
   const firstLearningId = Math.max(...config.storyIds, ...preservedIds) + 1;
   const target = {
     knowledge: firstLearningId,
-    vocabulary: firstLearningId + 1,
-    review: firstLearningId + 2,
-    glossary1: firstLearningId + 3,
-    glossary2: firstLearningId + 4,
+    glossary1: firstLearningId + 1,
+    glossary2: firstLearningId + 2,
+    vocabulary: firstLearningId + 3,
+    review: firstLearningId + 4,
     final: firstLearningId + 5,
   };
 
@@ -167,7 +170,7 @@ export const applyB2CuratedVocabulary = (
   });
 
   uniqueTargets.forEach(target => {
-    if (selected.length >= 10) return;
+    if (selected.length >= B2_VOCABULARY_COUNT) return;
     const targetKey = key(target.en.word);
     if (used.has(targetKey)) return;
     used.add(targetKey);
@@ -177,9 +180,10 @@ export const applyB2CuratedVocabulary = (
   return pages.map(page => page.id === vocabularyPageId
     ? {
         ...page,
-        vocabularyPairs: selected.slice(0, 10).map(target => ({
+        vocabularyPairs: selected.slice(0, B2_VOCABULARY_COUNT).map(target => ({
           word: target[language].word,
           meaning: target[language].definition,
+          context: target[language].example,
         })),
       }
     : page);
