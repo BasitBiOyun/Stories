@@ -260,8 +260,1378 @@ export const mosesA2Pages: PageData[] = [
   },
   { id: 17, type: 'quiz', title: 'Knowledge Check: Moses (pbuh)', image: 'https://picsum.photos/seed/quiz-moses-a2/1200/800', audioUrl: '', content: 'Test your understanding of the story of Moses (pbuh).' },
   { id: 18, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-moses-a2/1200/800', audioUrl: '', content: 'Match the words from the story with their correct meanings.' },
-  { id: 19, type: 'glossary', title: 'Master Glossary - Part 1', content: 'A complete list of vocabulary from the first half of the story.', image: 'https://picsum.photos/seed/moses-a2-glossary1/1200/800', vocabulary: [{ word: 'Messenger', definition: 'A person who carries a message from Allah.' }, { word: 'cruel', definition: 'Very unkind and causing pain to others.' }, { word: 'ruler', definition: 'A person who controls or governs a country.' }, { word: 'dream', definition: 'Pictures or events seen in sleep.' }, { word: 'magicians', definition: 'People who perform magic.' }, { word: 'heartless', definition: 'Very unkind and showing no pity.' }, { word: 'basket', definition: 'A container used to carry things.' }, { word: 'protect', definition: 'To keep someone safe from danger.' }, { word: 'worried', definition: 'Feeling afraid or anxious about something.' }, { word: 'palace', definition: 'A large house where a king or queen lives.' }, { word: 'kind-hearted', definition: 'Kind and caring.' }, { word: 'nurse', definition: 'A woman who feeds and cares for a baby.' }] },
-  { id: 20, type: 'glossary', title: 'Master Glossary - Part 2', content: 'A complete list of vocabulary from the second half of the story.', image: 'https://picsum.photos/seed/moses-a2-glossary2/1200/800', vocabulary: [{ word: 'upset', definition: 'Very sad or worried because something bad happened.' }, { word: 'forgive', definition: 'To stop being angry about a mistake.' }, { word: 'accidentally', definition: 'By chance; not on purpose.' }, { word: 'escaped', definition: 'Got away from danger.' }, { word: 'guided', definition: 'Shown the right way.' }, { word: 'well', definition: 'A deep hole in the ground used to get water.' }, { word: 'sisters', definition: 'Girls or women who have the same parents.' }, { word: 'stranger', definition: 'A person who is new or not known in a place.' }, { word: 'miracles', definition: 'Amazing acts done by the power of Allah.' }, { word: 'universe', definition: 'All space, stars, planets, and everything that exists.' }, { word: 'arrogant', definition: 'Thinking one is better or more important than others.' }, { word: 'journey', definition: 'A long trip from one place to another.' }] },
+  { id: 19, type: 'glossary', title: 'Master Glossary', content: 'Review all key vocabulary from the story in one place.', image: 'https://picsum.photos/seed/moses-a2-glossary/1200/800', vocabulary: [
+    {
+        "word": "Messenger",
+        "definition": "A person chosen by Allah to carry His message.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈmesɪndʒər/",
+        "wordFamily": [
+            "message",
+            "messenger"
+        ],
+        "collocations": [
+            "Messenger of Allah",
+            "carry a message"
+        ],
+        "chapter": 1,
+        "chapterTitle": "The Cruel King",
+        "storyExample": "Moses (pbuh) was a great Messenger of Allah.",
+        "category": "Spiritual Life"
+    },
+    {
+        "word": "cruel",
+        "definition": "Very unkind and causing pain to others.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈkruːəl/",
+        "wordFamily": [
+            "cruel",
+            "cruelty",
+            "cruelly"
+        ],
+        "collocations": [
+            "cruel ruler",
+            "cruel treatment"
+        ],
+        "synonyms": [
+            "unkind"
+        ],
+        "antonyms": [
+            "kind"
+        ],
+        "chapter": 1,
+        "chapterTitle": "The Cruel King",
+        "storyExample": "He was an unfair and cruel ruler.",
+        "category": "Character & Values"
+    },
+    {
+        "word": "ruler",
+        "definition": "A person who controls a country.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈruːlər/",
+        "wordFamily": [
+            "rule",
+            "ruler"
+        ],
+        "collocations": [
+            "cruel ruler",
+            "ruler of a country"
+        ],
+        "synonyms": [
+            "leader"
+        ],
+        "chapter": 1,
+        "chapterTitle": "The Cruel King",
+        "storyExample": "He was an unfair and cruel ruler.",
+        "category": "People & Roles"
+    },
+    {
+        "word": "believe",
+        "definition": "To accept that something is true.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/bɪˈliːv/",
+        "wordFamily": [
+            "believe",
+            "belief",
+            "believer"
+        ],
+        "collocations": [
+            "believe in Allah",
+            "believe something"
+        ],
+        "synonyms": [
+            "trust"
+        ],
+        "chapter": 1,
+        "chapterTitle": "The Cruel King",
+        "storyExample": "He did not believe in Allah.",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "dream",
+        "definition": "Pictures or events seen in sleep.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/driːm/",
+        "wordFamily": [
+            "dream",
+            "dreamed",
+            "dreaming"
+        ],
+        "collocations": [
+            "have a dream",
+            "dream about something"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The King’s Dream",
+        "storyExample": "One day the king had a dream.",
+        "category": "Mind & Imagination"
+    },
+    {
+        "word": "magicians",
+        "definition": "People who perform magic.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/məˈdʒɪʃənz/",
+        "wordFamily": [
+            "magic",
+            "magician",
+            "magicians"
+        ],
+        "collocations": [
+            "the king’s magicians",
+            "call the magicians"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The King’s Dream",
+        "storyExample": "The king woke up and called his helpers and magicians.",
+        "category": "People & Roles"
+    },
+    {
+        "word": "heartless",
+        "definition": "Very unkind and showing no pity.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈhɑːrtləs/",
+        "wordFamily": [
+            "heart",
+            "heartless"
+        ],
+        "collocations": [
+            "heartless person",
+            "cruel and heartless"
+        ],
+        "synonyms": [
+            "cruel"
+        ],
+        "antonyms": [
+            "kind-hearted"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The King’s Dream",
+        "storyExample": "They were unkind and heartless.",
+        "category": "Character & Values"
+    },
+    {
+        "word": "despotic",
+        "definition": "Using power in a cruel and unfair way.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/dɪˈspɑːtɪk/",
+        "wordFamily": [
+            "despot",
+            "despotic"
+        ],
+        "collocations": [
+            "despotic king",
+            "despotic rule"
+        ],
+        "synonyms": [
+            "tyrannical"
+        ],
+        "chapter": 2,
+        "chapterTitle": "The King’s Dream",
+        "storyExample": "Years passed and many despotic kings ruled Egypt.",
+        "category": "Power & Society"
+    },
+    {
+        "word": "basket",
+        "definition": "A container used to carry things.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈbæskɪt/",
+        "wordFamily": [
+            "basket",
+            "baskets"
+        ],
+        "collocations": [
+            "put in a basket",
+            "carry a basket"
+        ],
+        "chapter": 3,
+        "chapterTitle": "A Baby in a Basket",
+        "storyExample": "Take a basket.",
+        "category": "Objects"
+    },
+    {
+        "word": "protect",
+        "definition": "To keep someone safe from danger.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/prəˈtekt/",
+        "wordFamily": [
+            "protect",
+            "protection",
+            "Protector"
+        ],
+        "collocations": [
+            "protect someone",
+            "protect from danger"
+        ],
+        "synonyms": [
+            "keep safe"
+        ],
+        "antonyms": [
+            "harm"
+        ],
+        "chapter": 3,
+        "chapterTitle": "A Baby in a Basket",
+        "storyExample": "Allah will protect him.",
+        "category": "Safety & Care"
+    },
+    {
+        "word": "worried",
+        "definition": "Feeling afraid that something may go wrong.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈwɜːrid/",
+        "wordFamily": [
+            "worry",
+            "worried",
+            "worrying"
+        ],
+        "collocations": [
+            "feel worried",
+            "very worried"
+        ],
+        "synonyms": [
+            "anxious"
+        ],
+        "antonyms": [
+            "calm"
+        ],
+        "chapter": 3,
+        "chapterTitle": "A Baby in a Basket",
+        "storyExample": "Moses’s mother was very worried and told her daughter to follow the basket.",
+        "category": "Feelings"
+    },
+    {
+        "word": "carried it away",
+        "definition": "Moved it to another place.",
+        "partOfSpeech": "phrasal verb",
+        "level": "A2",
+        "pronunciation": "/ˈkærid ɪt əˈweɪ/",
+        "wordFamily": [
+            "carry",
+            "carried",
+            "carrying"
+        ],
+        "collocations": [
+            "carry away",
+            "carried by water"
+        ],
+        "synonyms": [
+            "moved away"
+        ],
+        "chapter": 3,
+        "chapterTitle": "A Baby in a Basket",
+        "storyExample": "The water carried it away.",
+        "category": "Actions & Movement"
+    },
+    {
+        "word": "palace",
+        "definition": "A large home where a king or queen lives.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈpæləs/",
+        "wordFamily": [
+            "palace",
+            "palaces"
+        ],
+        "collocations": [
+            "royal palace",
+            "king’s palace"
+        ],
+        "chapter": 4,
+        "chapterTitle": "The Queen’s Love",
+        "storyExample": "It was near the king’s palace.",
+        "category": "Places"
+    },
+    {
+        "word": "kind-hearted",
+        "definition": "Kind and caring.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˌkaɪnd ˈhɑːrtɪd/",
+        "wordFamily": [
+            "kind",
+            "kindness",
+            "kind-hearted"
+        ],
+        "collocations": [
+            "kind-hearted person",
+            "good and kind-hearted"
+        ],
+        "synonyms": [
+            "caring"
+        ],
+        "antonyms": [
+            "heartless"
+        ],
+        "chapter": 4,
+        "chapterTitle": "The Queen’s Love",
+        "storyExample": "She was good and kind-hearted.",
+        "category": "Character & Values"
+    },
+    {
+        "word": "nurse",
+        "definition": "A woman who feeds and cares for a baby.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/nɜːrs/",
+        "wordFamily": [
+            "nurse",
+            "nursing"
+        ],
+        "collocations": [
+            "find a nurse",
+            "baby’s nurse"
+        ],
+        "chapter": 4,
+        "chapterTitle": "The Queen’s Love",
+        "storyExample": "Find a nurse for the baby.",
+        "category": "People & Roles"
+    },
+    {
+        "word": "love",
+        "definition": "A strong feeling of care for someone.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/lʌv/",
+        "wordFamily": [
+            "love",
+            "loving",
+            "lovely"
+        ],
+        "collocations": [
+            "feel love",
+            "love someone"
+        ],
+        "synonyms": [
+            "affection"
+        ],
+        "antonyms": [
+            "hate"
+        ],
+        "chapter": 4,
+        "chapterTitle": "The Queen’s Love",
+        "storyExample": "Allah placed a lot of love for him in her heart.",
+        "category": "Feelings & Values"
+    },
+    {
+        "word": "take care of",
+        "definition": "To protect and look after someone.",
+        "partOfSpeech": "phrasal verb",
+        "level": "A2",
+        "pronunciation": "/teɪk ker əv/",
+        "wordFamily": [
+            "care",
+            "caring"
+        ],
+        "collocations": [
+            "take care of a baby",
+            "take care of someone"
+        ],
+        "synonyms": [
+            "look after"
+        ],
+        "chapter": 5,
+        "chapterTitle": "Back to His Mother",
+        "storyExample": "Moses’s sister brought her mother to the palace to take care of the baby.",
+        "category": "Care & Responsibility"
+    },
+    {
+        "word": "Protector",
+        "definition": "Someone who keeps another person safe.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/prəˈtektər/",
+        "wordFamily": [
+            "protect",
+            "protection",
+            "Protector"
+        ],
+        "collocations": [
+            "Best Protector",
+            "protector of people"
+        ],
+        "synonyms": [
+            "guardian"
+        ],
+        "chapter": 5,
+        "chapterTitle": "Back to His Mother",
+        "storyExample": "Allah is the Best Protector.",
+        "category": "Safety & Faith"
+    },
+    {
+        "word": "safe",
+        "definition": "Protected from danger.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/seɪf/",
+        "wordFamily": [
+            "safe",
+            "safely",
+            "safety"
+        ],
+        "collocations": [
+            "safe place",
+            "keep safe"
+        ],
+        "antonyms": [
+            "dangerous"
+        ],
+        "chapter": 5,
+        "chapterTitle": "Back to His Mother",
+        "storyExample": "Moses grew up in a safe place, in the house of the king.",
+        "category": "Safety"
+    },
+    {
+        "word": "weak",
+        "definition": "Not strong and needing help.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/wiːk/",
+        "wordFamily": [
+            "weak",
+            "weakness",
+            "weaken"
+        ],
+        "collocations": [
+            "help the weak",
+            "weak person"
+        ],
+        "antonyms": [
+            "strong"
+        ],
+        "chapter": 5,
+        "chapterTitle": "Back to His Mother",
+        "storyExample": "He was always ready to help the weak people.",
+        "category": "People & Support"
+    },
+    {
+        "word": "upset",
+        "definition": "Very sad or worried after something bad happens.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ʌpˈset/",
+        "wordFamily": [
+            "upset"
+        ],
+        "collocations": [
+            "feel upset",
+            "very upset"
+        ],
+        "synonyms": [
+            "sad",
+            "distressed"
+        ],
+        "antonyms": [
+            "calm"
+        ],
+        "chapter": 6,
+        "chapterTitle": "A Mistake in the Bazaar",
+        "storyExample": "Moses was very upset.",
+        "category": "Feelings"
+    },
+    {
+        "word": "accidentally",
+        "definition": "By chance and not on purpose.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˌæksɪˈdentəli/",
+        "wordFamily": [
+            "accident",
+            "accidental",
+            "accidentally"
+        ],
+        "collocations": [
+            "happen accidentally",
+            "accidentally cause"
+        ],
+        "synonyms": [
+            "by chance"
+        ],
+        "antonyms": [
+            "deliberately"
+        ],
+        "chapter": 6,
+        "chapterTitle": "A Mistake in the Bazaar",
+        "storyExample": "He was so sorry because he accidentally caused someone's death.",
+        "category": "Actions & Choices"
+    },
+    {
+        "word": "Forgive me",
+        "definition": "Please pardon my mistake.",
+        "partOfSpeech": "phrase",
+        "level": "A2",
+        "pronunciation": "/fərˈɡɪv miː/",
+        "wordFamily": [
+            "forgive",
+            "forgave",
+            "forgiven",
+            "forgiveness"
+        ],
+        "collocations": [
+            "ask for forgiveness",
+            "forgive a mistake"
+        ],
+        "chapter": 6,
+        "chapterTitle": "A Mistake in the Bazaar",
+        "storyExample": "Forgive me.",
+        "category": "Language & Values"
+    },
+    {
+        "word": "Run away",
+        "definition": "Leave quickly to escape danger.",
+        "partOfSpeech": "phrasal verb",
+        "level": "A2",
+        "pronunciation": "/rʌn əˈweɪ/",
+        "wordFamily": [
+            "run",
+            "ran",
+            "running"
+        ],
+        "collocations": [
+            "run away from danger",
+            "run away quickly"
+        ],
+        "synonyms": [
+            "escape"
+        ],
+        "chapter": 6,
+        "chapterTitle": "A Mistake in the Bazaar",
+        "storyExample": "Run away from the city.",
+        "category": "Actions & Movement"
+    },
+    {
+        "word": "escaped",
+        "definition": "Got away from danger.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ɪˈskeɪpt/",
+        "wordFamily": [
+            "escape",
+            "escaped"
+        ],
+        "collocations": [
+            "escape from soldiers",
+            "escape danger"
+        ],
+        "synonyms": [
+            "got away"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Escape to Midian",
+        "storyExample": "Moses escaped from the soldiers.",
+        "category": "Actions & Safety"
+    },
+    {
+        "word": "guided",
+        "definition": "Shown the right way.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˈɡaɪdɪd/",
+        "wordFamily": [
+            "guide",
+            "guided",
+            "guidance"
+        ],
+        "collocations": [
+            "guide someone",
+            "Allah guided him"
+        ],
+        "synonyms": [
+            "led"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Escape to Midian",
+        "storyExample": "Allah guided him.",
+        "category": "Guidance & Faith"
+    },
+    {
+        "word": "well",
+        "definition": "A deep hole used to get water.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/wel/",
+        "wordFamily": [
+            "well",
+            "wells"
+        ],
+        "collocations": [
+            "water well",
+            "near the well"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Escape to Midian",
+        "storyExample": "Soon, he found a well.",
+        "category": "Places & Nature"
+    },
+    {
+        "word": "thirsty",
+        "definition": "Needing or wanting water.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈθɜːrsti/",
+        "wordFamily": [
+            "thirst",
+            "thirsty"
+        ],
+        "collocations": [
+            "feel thirsty",
+            "tired and thirsty"
+        ],
+        "antonyms": [
+            "hydrated"
+        ],
+        "chapter": 7,
+        "chapterTitle": "Escape to Midian",
+        "storyExample": "Moses was tired and thirsty.",
+        "category": "Needs & Feelings"
+    },
+    {
+        "word": "father",
+        "definition": "A male parent.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈfɑːðər/",
+        "wordFamily": [
+            "father",
+            "fatherly"
+        ],
+        "collocations": [
+            "their father",
+            "old father"
+        ],
+        "chapter": 8,
+        "chapterTitle": "The Two Sisters",
+        "storyExample": "Our father is very old.",
+        "category": "Family"
+    },
+    {
+        "word": "turn",
+        "definition": "The time when it is your chance to do something.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/tɜːrn/",
+        "wordFamily": [
+            "turn",
+            "turns"
+        ],
+        "collocations": [
+            "wait for your turn",
+            "take a turn"
+        ],
+        "chapter": 8,
+        "chapterTitle": "The Two Sisters",
+        "storyExample": "We wait for our turn.",
+        "category": "Daily Life"
+    },
+    {
+        "word": "help",
+        "definition": "To make something easier for someone.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/help/",
+        "wordFamily": [
+            "help",
+            "helper",
+            "helpful"
+        ],
+        "collocations": [
+            "help someone",
+            "need help"
+        ],
+        "synonyms": [
+            "assist"
+        ],
+        "antonyms": [
+            "hinder"
+        ],
+        "chapter": 8,
+        "chapterTitle": "The Two Sisters",
+        "storyExample": "Moses understood that the two sisters needed help.",
+        "category": "Helping Others"
+    },
+    {
+        "word": "early",
+        "definition": "Before the usual time.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈɜːrli/",
+        "wordFamily": [
+            "early",
+            "earlier",
+            "earliest"
+        ],
+        "collocations": [
+            "come home early",
+            "arrive early"
+        ],
+        "antonyms": [
+            "late"
+        ],
+        "chapter": 8,
+        "chapterTitle": "The Two Sisters",
+        "storyExample": "You came home very early!",
+        "category": "Time"
+    },
+    {
+        "word": "stranger",
+        "definition": "A person who is new or not known in a place.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈstreɪndʒər/",
+        "wordFamily": [
+            "strange",
+            "stranger"
+        ],
+        "collocations": [
+            "complete stranger",
+            "stranger in a place"
+        ],
+        "chapter": 9,
+        "chapterTitle": "A New Life",
+        "storyExample": "Moses accepted the job because he was a stranger in Midian.",
+        "category": "People & Society"
+    },
+    {
+        "word": "job",
+        "definition": "Work that a person does.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/dʒɑːb/",
+        "wordFamily": [
+            "job",
+            "jobs"
+        ],
+        "collocations": [
+            "offer a job",
+            "need a job"
+        ],
+        "synonyms": [
+            "work"
+        ],
+        "chapter": 9,
+        "chapterTitle": "A New Life",
+        "storyExample": "Şuayb (pbuh) offered Moses a job.",
+        "category": "Work & Daily Life"
+    },
+    {
+        "word": "married",
+        "definition": "Became husband and wife.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˈmærid/",
+        "wordFamily": [
+            "marry",
+            "married",
+            "marriage"
+        ],
+        "collocations": [
+            "get married",
+            "marry someone"
+        ],
+        "chapter": 9,
+        "chapterTitle": "A New Life",
+        "storyExample": "Later, he married one of the sisters.",
+        "category": "Family & Relationships"
+    },
+    {
+        "word": "family",
+        "definition": "People who are related and live as a family.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈfæməli/",
+        "wordFamily": [
+            "family",
+            "families"
+        ],
+        "collocations": [
+            "live with a family",
+            "family life"
+        ],
+        "chapter": 9,
+        "chapterTitle": "A New Life",
+        "storyExample": "Moses began to stay with the family.",
+        "category": "Family"
+    },
+    {
+        "word": "hillside",
+        "definition": "The sloping side of a hill.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈhɪlsaɪd/",
+        "wordFamily": [
+            "hill",
+            "hillside"
+        ],
+        "collocations": [
+            "on the hillside",
+            "steep hillside"
+        ],
+        "chapter": 10,
+        "chapterTitle": "The Voice on the Mountain",
+        "storyExample": "Suddenly, Moses saw a fire on the hillside.",
+        "category": "Places & Nature"
+    },
+    {
+        "word": "silence",
+        "definition": "Complete quiet.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈsaɪləns/",
+        "wordFamily": [
+            "silent",
+            "silence",
+            "silently"
+        ],
+        "collocations": [
+            "in silence",
+            "complete silence"
+        ],
+        "synonyms": [
+            "quiet"
+        ],
+        "antonyms": [
+            "noise"
+        ],
+        "chapter": 10,
+        "chapterTitle": "The Voice on the Mountain",
+        "storyExample": "In the silence, he heard a loud voice.",
+        "category": "Sound & Senses"
+    },
+    {
+        "word": "walking stick",
+        "definition": "A stick used to help someone walk.",
+        "partOfSpeech": "noun phrase",
+        "level": "A2",
+        "pronunciation": "/ˈwɔːkɪŋ stɪk/",
+        "wordFamily": [
+            "walk",
+            "walking"
+        ],
+        "collocations": [
+            "use a walking stick",
+            "put down a walking stick"
+        ],
+        "chapter": 10,
+        "chapterTitle": "The Voice on the Mountain",
+        "storyExample": "Put down your walking stick!",
+        "category": "Objects"
+    },
+    {
+        "word": "snake",
+        "definition": "A long animal with no legs.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/sneɪk/",
+        "wordFamily": [
+            "snake",
+            "snakes"
+        ],
+        "collocations": [
+            "big snake",
+            "turn into a snake"
+        ],
+        "chapter": 10,
+        "chapterTitle": "The Voice on the Mountain",
+        "storyExample": "It turned into a big snake!",
+        "category": "Animals"
+    },
+    {
+        "word": "signs",
+        "definition": "Special signs that show Allah’s power.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/saɪnz/",
+        "wordFamily": [
+            "sign",
+            "signs"
+        ],
+        "collocations": [
+            "signs of Allah",
+            "signs of power"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The Signs of Allah",
+        "storyExample": "I am showing you the signs of My power.",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "shining",
+        "definition": "Giving out bright light.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈʃaɪnɪŋ/",
+        "wordFamily": [
+            "shine",
+            "shining",
+            "shone"
+        ],
+        "collocations": [
+            "shining hand",
+            "shining light"
+        ],
+        "synonyms": [
+            "bright"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The Signs of Allah",
+        "storyExample": "See, your hand is now shining.",
+        "category": "Description"
+    },
+    {
+        "word": "prophet",
+        "definition": "A person chosen by Allah to guide people.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈprɑːfɪt/",
+        "wordFamily": [
+            "prophet",
+            "prophetic"
+        ],
+        "collocations": [
+            "Prophet of Allah",
+            "become a prophet"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The Signs of Allah",
+        "storyExample": "Allah chose Moses and made him His prophet.",
+        "category": "Spiritual Life"
+    },
+    {
+        "word": "throne",
+        "definition": "A special chair for a king or queen.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/θroʊn/",
+        "wordFamily": [
+            "throne",
+            "thrones"
+        ],
+        "collocations": [
+            "sit on a throne",
+            "king’s throne"
+        ],
+        "chapter": 11,
+        "chapterTitle": "The Signs of Allah",
+        "storyExample": "The king was sitting on his throne.",
+        "category": "Objects & Power"
+    },
+    {
+        "word": "miracles",
+        "definition": "Amazing signs from Allah.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈmɪrəkəlz/",
+        "wordFamily": [
+            "miracle",
+            "miracles",
+            "miraculous"
+        ],
+        "collocations": [
+            "miracles of Allah",
+            "show miracles"
+        ],
+        "chapter": 12,
+        "chapterTitle": "The King’s Magicians",
+        "storyExample": "These were miracles of Allah.",
+        "category": "Belief & Faith"
+    },
+    {
+        "word": "universe",
+        "definition": "Everything that exists in space and the world.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈjuːnɪvɜːrs/",
+        "wordFamily": [
+            "universe",
+            "universal"
+        ],
+        "collocations": [
+            "Lord of the universe",
+            "whole universe"
+        ],
+        "chapter": 12,
+        "chapterTitle": "The King’s Magicians",
+        "storyExample": "I am the Messenger from the Lord of the universe.",
+        "category": "World & Nature"
+    },
+    {
+        "word": "magic",
+        "definition": "Tricks that look impossible.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈmædʒɪk/",
+        "wordFamily": [
+            "magic",
+            "magician",
+            "magical"
+        ],
+        "collocations": [
+            "do magic",
+            "only magic"
+        ],
+        "chapter": 12,
+        "chapterTitle": "The King’s Magicians",
+        "storyExample": "This is only magic.",
+        "category": "Ideas & Events"
+    },
+    {
+        "word": "laughed at",
+        "definition": "Made fun of someone.",
+        "partOfSpeech": "phrasal verb",
+        "level": "A2",
+        "pronunciation": "/læft æt/",
+        "wordFamily": [
+            "laugh",
+            "laughed",
+            "laughter"
+        ],
+        "collocations": [
+            "laugh at someone",
+            "be laughed at"
+        ],
+        "synonyms": [
+            "mocked"
+        ],
+        "chapter": 12,
+        "chapterTitle": "The King’s Magicians",
+        "storyExample": "The king and his helpers laughed at him.",
+        "category": "Actions & Conduct"
+    },
+    {
+        "word": "ropes",
+        "definition": "Thick strong strings.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/roʊps/",
+        "wordFamily": [
+            "rope",
+            "ropes"
+        ],
+        "collocations": [
+            "thick ropes",
+            "sticks and ropes"
+        ],
+        "chapter": 13,
+        "chapterTitle": "The Magicians Believe",
+        "storyExample": "Some were holding ropes.",
+        "category": "Objects"
+    },
+    {
+        "word": "huge",
+        "definition": "Very big.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/hjuːdʒ/",
+        "wordFamily": [
+            "huge"
+        ],
+        "collocations": [
+            "huge snake",
+            "huge army"
+        ],
+        "synonyms": [
+            "enormous"
+        ],
+        "antonyms": [
+            "tiny"
+        ],
+        "chapter": 13,
+        "chapterTitle": "The Magicians Believe",
+        "storyExample": "Moses (pbuh) threw down his stick and it turned into a huge snake.",
+        "category": "Description"
+    },
+    {
+        "word": "arrogant",
+        "definition": "Thinking you are better than other people.",
+        "partOfSpeech": "adjective",
+        "level": "A2",
+        "pronunciation": "/ˈærəɡənt/",
+        "wordFamily": [
+            "arrogant",
+            "arrogance",
+            "arrogantly"
+        ],
+        "collocations": [
+            "arrogant person",
+            "be arrogant"
+        ],
+        "synonyms": [
+            "proud"
+        ],
+        "antonyms": [
+            "humble"
+        ],
+        "chapter": 13,
+        "chapterTitle": "The Magicians Believe",
+        "storyExample": "The king still did not believe in Allah, because he was arrogant.",
+        "category": "Character & Values"
+    },
+    {
+        "word": "journey",
+        "definition": "A trip from one place to another.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈdʒɜːrni/",
+        "wordFamily": [
+            "journey",
+            "journeys"
+        ],
+        "collocations": [
+            "night journey",
+            "get ready for a journey"
+        ],
+        "synonyms": [
+            "trip"
+        ],
+        "chapter": 14,
+        "chapterTitle": "The Night Journey",
+        "storyExample": "Get ready for the journey.",
+        "category": "Travel"
+    },
+    {
+        "word": "secret",
+        "definition": "Something kept hidden from other people.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈsiːkrət/",
+        "wordFamily": [
+            "secret",
+            "secretly"
+        ],
+        "collocations": [
+            "keep a secret",
+            "keep it secret"
+        ],
+        "antonyms": [
+            "public"
+        ],
+        "chapter": 14,
+        "chapterTitle": "The Night Journey",
+        "storyExample": "But you must keep it secret.",
+        "category": "Communication"
+    },
+    {
+        "word": "caravan",
+        "definition": "A group of people travelling together.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈkærəvæn/",
+        "wordFamily": [
+            "caravan",
+            "caravans"
+        ],
+        "collocations": [
+            "large caravan",
+            "caravan moved"
+        ],
+        "chapter": 14,
+        "chapterTitle": "The Night Journey",
+        "storyExample": "Their caravan moved slowly.",
+        "category": "Travel & People"
+    },
+    {
+        "word": "army",
+        "definition": "A large organized group of soldiers.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈɑːrmi/",
+        "wordFamily": [
+            "army",
+            "armies"
+        ],
+        "collocations": [
+            "huge army",
+            "king’s army"
+        ],
+        "chapter": 14,
+        "chapterTitle": "The Night Journey",
+        "storyExample": "The king prepared his huge army.",
+        "category": "People & Society"
+    },
+    {
+        "word": "panicked",
+        "definition": "Felt sudden strong fear.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˈpænɪkt/",
+        "wordFamily": [
+            "panic",
+            "panicked",
+            "panicking"
+        ],
+        "collocations": [
+            "panic suddenly",
+            "people panicked"
+        ],
+        "synonyms": [
+            "became frightened"
+        ],
+        "antonyms": [
+            "calmed down"
+        ],
+        "chapter": 15,
+        "chapterTitle": "The Sea Opens",
+        "storyExample": "His people panicked.",
+        "category": "Feelings"
+    },
+    {
+        "word": "parted",
+        "definition": "Opened and separated into parts.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/ˈpɑːrtɪd/",
+        "wordFamily": [
+            "part",
+            "parted",
+            "parting"
+        ],
+        "collocations": [
+            "sea parted",
+            "part into two"
+        ],
+        "synonyms": [
+            "separated"
+        ],
+        "chapter": 15,
+        "chapterTitle": "The Sea Opens",
+        "storyExample": "He hit the sea and the sea parted!",
+        "category": "Actions & Change"
+    },
+    {
+        "word": "safely",
+        "definition": "Without danger or harm.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˈseɪfli/",
+        "wordFamily": [
+            "safe",
+            "safely",
+            "safety"
+        ],
+        "collocations": [
+            "walk safely",
+            "arrive safely"
+        ],
+        "antonyms": [
+            "dangerously"
+        ],
+        "chapter": 15,
+        "chapterTitle": "The Sea Opens",
+        "storyExample": "Moses (pbuh) and his people safely walked between the walls of water.",
+        "category": "Safety"
+    },
+    {
+        "word": "walls",
+        "definition": "High sides that form a barrier.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/wɔːlz/",
+        "wordFamily": [
+            "wall",
+            "walls"
+        ],
+        "collocations": [
+            "high walls",
+            "walls of water"
+        ],
+        "chapter": 15,
+        "chapterTitle": "The Sea Opens",
+        "storyExample": "The waves became high walls!",
+        "category": "Objects & Places"
+    },
+    {
+        "word": "midway",
+        "definition": "In the middle of a way or journey.",
+        "partOfSpeech": "adverb",
+        "level": "A2",
+        "pronunciation": "/ˌmɪdˈweɪ/",
+        "wordFamily": [
+            "midway"
+        ],
+        "collocations": [
+            "stop midway",
+            "when midway"
+        ],
+        "synonyms": [
+            "halfway"
+        ],
+        "chapter": 16,
+        "chapterTitle": "The Cruel King Died in the Water",
+        "storyExample": "When they were midway, Allah closed the sea over them.",
+        "category": "Place & Position"
+    },
+    {
+        "word": "lessons",
+        "definition": "Things we learn from a story or event.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈlesənz/",
+        "wordFamily": [
+            "lesson",
+            "lessons"
+        ],
+        "collocations": [
+            "learn lessons",
+            "many lessons"
+        ],
+        "chapter": 16,
+        "chapterTitle": "The Cruel King Died in the Water",
+        "storyExample": "The story of Moses (pbuh) has many lessons to learn.",
+        "category": "Learning & Ideas"
+    },
+    {
+        "word": "power",
+        "definition": "The ability to control or do something.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/ˈpaʊər/",
+        "wordFamily": [
+            "power",
+            "powerful",
+            "powerless"
+        ],
+        "collocations": [
+            "have power",
+            "power over people"
+        ],
+        "synonyms": [
+            "ability",
+            "strength"
+        ],
+        "chapter": 16,
+        "chapterTitle": "The Cruel King Died in the Water",
+        "storyExample": "It shows that only Allah has power over us.",
+        "category": "Ability & Faith"
+    },
+    {
+        "word": "sea",
+        "definition": "A very large area of salt water.",
+        "partOfSpeech": "noun",
+        "level": "A2",
+        "pronunciation": "/siː/",
+        "wordFamily": [
+            "sea",
+            "seas"
+        ],
+        "collocations": [
+            "the sea",
+            "middle of the sea"
+        ],
+        "chapter": 16,
+        "chapterTitle": "The Cruel King Died in the Water",
+        "storyExample": "They also saw the road in the middle of the sea.",
+        "category": "World & Nature"
+    }
+] },
   { id: 21, type: 'exercises', title: 'Final Review & Reflection', image: 'https://picsum.photos/seed/moses-a2-final-review/1200/800', content: 'Complete these final exercises to master the lessons of Prophet Moses (pbuh).' },
   { id: 22, type: 'final-challenge', title: 'Final Challenge', content: 'Test your knowledge of the entire story of Prophet Moses (pbuh).', image: 'https://picsum.photos/seed/moses-a2-final-challenge/1200/800' },
 ];
