@@ -481,22 +481,14 @@ const AppContent = () => {
             collectionId={currentCollection || 'prophets'}
           />
         );
-      case 'glossary': {
-        const challengeIndex = currentBook.pages.findIndex(page => page.type === 'vocabulary-match');
-        const challengePage = challengeIndex >= 0 ? currentBook.pages[challengeIndex] : null;
-        const nextPage = currentBook.pages[currentPageIndex + 1];
-        const canStartChallenge = challengeIndex >= 0 && nextPage?.type === 'vocabulary-match';
-
+      case 'glossary':
         return (
           <MasterGlossary
             bookData={currentBook}
             page={currentPage}
             collectionId={currentCollection || 'prophets'}
-            onStartChallenge={canStartChallenge ? () => setCurrentPageIndex(challengeIndex) : undefined}
-            challengeWordCount={challengePage?.vocabularyPairs?.length ?? 0}
           />
         );
-      }
       case 'final-challenge':
         return <FinalChallenge bookData={currentBook!} onComplete={() => setShowSummary(true)} />;
       default:
@@ -705,6 +697,29 @@ const AppContent = () => {
                 <Home className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </div>
+          </div>
+
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 hidden w-[360px] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center xl:flex 2xl:w-[520px]"
+            aria-label="Surah Yusuf 12:111"
+          >
+            <p
+              dir="rtl"
+              lang="ar"
+              className={cn("text-[13px] font-semibold leading-tight 2xl:text-[15px]", themeClasses.goldText)}
+              style={{ fontFamily: 'Arakom, sans-serif' }}
+            >
+              لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ
+            </p>
+            <p
+              dir="ltr"
+              lang="en"
+              className="mt-0.5 text-[9px] font-medium leading-tight text-parchment/62 2xl:text-[10px]"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              “In their stories there is truly a lesson for people of understanding.”
+              <span className="ms-1 text-parchment/38">Yusuf 12:111</span>
+            </p>
           </div>
 
           <div className="absolute inset-x-0 bottom-0 h-[2px] bg-white/[0.06]" aria-hidden="true">
