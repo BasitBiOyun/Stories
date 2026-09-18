@@ -1,5 +1,6 @@
 import { PageData } from '../../../../types';
-import { meccaB2FinalReviewExercisesAr, meccaB2VocabularyChallengePairsAr } from './exercises';
+import { meccaB2VocabularyChallengePairsAr } from './exercises';
+import { meccaB2LanguageReviewExercisesAr } from './languageFocus3';
 
 const rawMeccaB2PagesAr: PageData[] = [
   {
@@ -2155,7 +2156,16 @@ const rawMeccaB2PagesAr: PageData[] = [
 const arabicMasterGlossary:NonNullable<PageData['vocabulary']>=rawMeccaB2PagesAr
   .filter(page=>page.type==='story')
   .flatMap(page=>page.vocabulary??[]);
-export const meccaB2PagesAr:PageData[]=rawMeccaB2PagesAr.map(page=>
-  page.id===20?{...page,vocabulary:arabicMasterGlossary}:page
-);
+export const meccaB2PagesAr:PageData[]=rawMeccaB2PagesAr.map(page => {
+  if (page.id === 19) {
+    return {
+      ...page,
+      title: 'مراجعة اللغة',
+      content: 'راجع واستعمل تراكيب اللغة والخطاب التي تعلمتها في الفصول.',
+      exercises: meccaB2LanguageReviewExercisesAr,
+    };
+  }
+  if (page.id === 20) return { ...page, vocabulary: arabicMasterGlossary };
+  return page;
+});
 export const pages: PageData[] = meccaB2PagesAr;
