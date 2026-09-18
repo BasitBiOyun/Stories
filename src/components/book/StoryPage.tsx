@@ -1451,6 +1451,7 @@ export const StoryPage = ({
             }}
             onClose={() => setActiveExercise(null)}
             collectionId={collectionId}
+            variant={page.exercises?.[0]?.id === activeExercise.id ? 'quick' : 'default'}
           />
         )}
       </AnimatePresence>
