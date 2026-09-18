@@ -379,72 +379,1082 @@ Divan (his collected poems)`,
   {
     id: 16,
     type: 'glossary',
-    title: 'Master Glossary - Part 1',
+    title: 'Master Glossary',
     image: '',
-    content: 'Review Word Notes from Chapters 1–7.',
+    content: 'Review all key vocabulary from the story in one place.',
     vocabulary: [
-      { word: 'Sûfî', definition: 'A Muslim who follows a spiritual path to become closer to Allah.' },
-      { word: 'outer', definition: 'Related to what is visible or outward.' },
-      { word: 'biases', definition: 'Unfair opinions or preferences about people.' },
-      { word: 'literary', definition: 'Related to literature and artistic writing.' },
-      { word: 'plain language', definition: 'Language that is clear and easy to understand.' },
-      { word: 'era', definition: 'A particular period of history.' },
-      { word: 'madrasa', definition: 'A traditional Islamic school or place of learning.' },
-      { word: 'spiritual tutor', definition: 'A teacher who guides someone in spiritual learning.' },
-      { word: 'community organizations', definition: 'Groups that organize help and activities for a community.' },
-      { word: 'fine arts', definition: 'Creative arts such as poetry, music, and painting.' },
-      { word: 'revolts', definition: 'Organized rebellions against authority.' },
-      { word: 'invasion', definition: 'The act of entering a land by force.' },
-      { word: 'navy', definition: 'A country’s military force that operates at sea.' },
-      { word: 'governance', definition: 'The way a state or organization is managed.' },
-      { word: 'decline', definition: 'A process of becoming weaker or less successful.' },
-      { word: 'chaos', definition: 'A state of serious disorder and confusion.' },
-      { word: 'revolt', definition: 'An organized action against a government or authority.' },
-      { word: 'captured', definition: 'Took control of a place by force.' },
-      { word: 'clashed', definition: 'Fought or came into violent conflict.' },
-      { word: 'false retreat', definition: 'A tactic in which an army pretends to withdraw to mislead the enemy.' },
-      { word: 'captive', definition: 'A person kept as a prisoner.' },
-      { word: 'deserted', definition: 'Empty because people have left.' },
-      { word: 'dependent', definition: 'Relying on another person or power.' },
-      { word: 'state income', definition: 'Money received by a government or state.' },
-      { word: 'shaykhs', definition: 'Religious or spiritual teachers.' },
-      { word: 'dervishes', definition: 'People following a Sûfî spiritual path.' },
-      { word: 'nomads', definition: 'People who move from place to place rather than living permanently in one place.' },
-      { word: 'respond', definition: 'To answer or react to a situation.' },
-    ],
-  },
-  {
-    id: 17,
-    type: 'glossary',
-    title: 'Master Glossary - Part 2',
-    image: '',
-    content: 'Review Word Notes from Chapters 8–13.',
-    vocabulary: [
-      { word: 'loyalty', definition: 'Strong support and faithfulness to someone.' },
-      { word: 'Tawhid', definition: 'The belief that Allah is One.' },
-      { word: 'Oneness', definition: 'The state of being one and undivided.' },
-      { word: 'unity of existence', definition: 'The idea of one true existence described in the chapter.' },
-      { word: 'creation', definition: 'The act or result of bringing things into existence.' },
-      { word: 'multiple existence', definition: 'The many created forms described in the chapter.' },
-      { word: 'reflections', definition: 'Things that show or represent something else.' },
-      { word: 'five daily prayers', definition: 'The five regular prayers Muslims perform each day.' },
-      { word: 'harmony', definition: 'A peaceful state in which things work well together.' },
-      { word: 'heartbreak', definition: 'Deep emotional sadness or pain.' },
-      { word: 'throne of the Lord', definition: 'The expression used in the chapter for the spiritual importance of the heart.' },
-      { word: 'intellect', definition: 'The ability to think, understand, and reason.' },
-      { word: 'salvation', definition: 'Being saved spiritually or reaching spiritual safety.' },
-      { word: 'wisdom', definition: 'The ability to use knowledge and experience well.' },
-      { word: 'advisor', definition: 'A person or thing that gives guidance.' },
-      { word: 'homeland', definition: 'The place a person considers their home country or native land.' },
-      { word: 'morality', definition: 'Principles about right and wrong behavior.' },
-      { word: 'humility', definition: 'The quality of not thinking you are better than others.' },
-      { word: 'generosity', definition: 'The willingness to give and help others.' },
-      { word: 'greed', definition: 'A strong selfish desire for more wealth or possessions.' },
-      { word: 'patience', definition: 'The ability to stay calm and continue through difficulty.' },
-      { word: 'rage', definition: 'Very strong anger.' },
-      { word: 'arrogance', definition: 'The belief that you are better or more important than others.' },
-      { word: 'moral guide', definition: 'Something that teaches or supports good and ethical behavior.' },
-    ],
+      {
+            "word": "Sûfî",
+            "definition": "A Muslim who follows a spiritual path to become closer to Allah.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈsuːfi/",
+            "wordFamily": [
+                  "Sûfî",
+                  "Sûfîsm"
+            ],
+            "collocations": [
+                  "Sûfî path",
+                  "Sûfî literature"
+            ],
+            "category": "Spiritual Life",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "Yunus Emre and Sûfîsm",
+            "storyExample": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia."
+      },
+      {
+            "word": "outer",
+            "definition": "Related to what is visible or outward.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈaʊtər/",
+            "wordFamily": [
+                  "outer",
+                  "outward"
+            ],
+            "collocations": [
+                  "outer rules",
+                  "outer part"
+            ],
+            "antonyms": [
+                  "inner"
+            ],
+            "category": "Ideas & Description",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "Yunus Emre and Sûfîsm",
+            "storyExample": "Sûfis lead a way of life within the outer (visible) and inner rules of Islam."
+      },
+      {
+            "word": "biases",
+            "definition": "Unfair opinions or preferences about people.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈbaɪəsɪz/",
+            "wordFamily": [
+                  "bias",
+                  "biased",
+                  "unbiased"
+            ],
+            "collocations": [
+                  "without biases",
+                  "personal biases"
+            ],
+            "synonyms": [
+                  "prejudices"
+            ],
+            "category": "Values & Society",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "Yunus Emre and Sûfîsm",
+            "storyExample": "Sûfis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
+      },
+      {
+            "word": "literary",
+            "definition": "Related to literature and artistic writing.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈlɪtəreri/",
+            "wordFamily": [
+                  "literature",
+                  "literary"
+            ],
+            "collocations": [
+                  "literary Turkish",
+                  "literary quality"
+            ],
+            "category": "Language & Literature",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "Yunus Emre and Sûfîsm",
+            "storyExample": "The words and phrases which he used helped develop a better literary Turkish."
+      },
+      {
+            "word": "plain language",
+            "definition": "Language that is clear and easy to understand.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/pleɪn ˈlæŋɡwɪdʒ/",
+            "wordFamily": [
+                  "plain",
+                  "plainly"
+            ],
+            "collocations": [
+                  "use plain language",
+                  "clear plain language"
+            ],
+            "synonyms": [
+                  "simple language"
+            ],
+            "category": "Language & Communication",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "His Language and Education",
+            "storyExample": "This plain language helps people understand his writings and sayings easily."
+      },
+      {
+            "word": "era",
+            "definition": "A particular period of history.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈɪrə/",
+            "wordFamily": [
+                  "era",
+                  "eras"
+            ],
+            "collocations": [
+                  "historical era",
+                  "same era"
+            ],
+            "synonyms": [
+                  "period"
+            ],
+            "category": "History & Time",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "His Language and Education",
+            "storyExample": "His works are very popular because they combine great literary quality with simple language."
+      },
+      {
+            "word": "madrasa",
+            "definition": "A traditional Islamic school or place of learning.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/məˈdrɑːsə/",
+            "wordFamily": [
+                  "madrasa",
+                  "madrasas"
+            ],
+            "collocations": [
+                  "madrasa education",
+                  "study at a madrasa"
+            ],
+            "category": "Education & History",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "His Language and Education",
+            "storyExample": "Some sources say that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time."
+      },
+      {
+            "word": "spiritual tutor",
+            "definition": "A teacher who guides someone in spiritual learning.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈspɪrɪtʃuəl ˈtuːtər/",
+            "wordFamily": [
+                  "spirit",
+                  "spiritual",
+                  "tutor"
+            ],
+            "collocations": [
+                  "spiritual tutor",
+                  "under a tutor’s guidance"
+            ],
+            "synonyms": [
+                  "spiritual teacher"
+            ],
+            "category": "Education & Spiritual Life",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "His Language and Education",
+            "storyExample": "But he also studied Allah’s love and morals at the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor)."
+      },
+      {
+            "word": "community organizations",
+            "definition": "Groups that organize help and activities for a community.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/kəˈmjuːnəti ˌɔːrɡənəˈzeɪʃənz/",
+            "wordFamily": [
+                  "community",
+                  "organize",
+                  "organization"
+            ],
+            "collocations": [
+                  "community organizations",
+                  "support organizations"
+            ],
+            "category": "Society & Institutions",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "Tekkés and Anatolia",
+            "storyExample": "They were also important community organizations that helped people and brought them together."
+      },
+      {
+            "word": "fine arts",
+            "definition": "Creative arts such as poetry, music, and painting.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/faɪn ɑːrts/",
+            "collocations": [
+                  "fine arts",
+                  "study fine arts"
+            ],
+            "category": "Arts & Culture",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "Tekkés and Anatolia",
+            "storyExample": "These places were very important for fine arts too, especially poetry."
+      },
+      {
+            "word": "revolts",
+            "definition": "Organized rebellions against authority.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/rɪˈvoʊlts/",
+            "wordFamily": [
+                  "revolt",
+                  "revolted"
+            ],
+            "collocations": [
+                  "Babai revolts",
+                  "start a revolt"
+            ],
+            "synonyms": [
+                  "rebellions"
+            ],
+            "category": "History & Conflict",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "Tekkés and Anatolia",
+            "storyExample": "The Anatolian Seljuks were seriously weakened by the Babai revolts in the 13th century."
+      },
+      {
+            "word": "invasion",
+            "definition": "The act of entering a land by force.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ɪnˈveɪʒən/",
+            "wordFamily": [
+                  "invade",
+                  "invasion",
+                  "invader"
+            ],
+            "collocations": [
+                  "Mongol invasion",
+                  "military invasion"
+            ],
+            "category": "History & Conflict",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "Tekkés and Anatolia",
+            "storyExample": "The defeat caused the Mongols' invasion of Anatolia."
+      },
+      {
+            "word": "navy",
+            "definition": "A country’s military force that operates at sea.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈneɪvi/",
+            "wordFamily": [
+                  "navy",
+                  "naval"
+            ],
+            "collocations": [
+                  "establish a navy",
+                  "naval force"
+            ],
+            "category": "History & Military",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Babai Revolts",
+            "storyExample": "He expanded the country’s borders and established a navy in the Mediterranean and Black Seas."
+      },
+      {
+            "word": "governance",
+            "definition": "The way a state or organization is managed.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈɡʌvərnəns/",
+            "wordFamily": [
+                  "govern",
+                  "government",
+                  "governance"
+            ],
+            "collocations": [
+                  "poor governance",
+                  "good governance"
+            ],
+            "category": "Politics & Society",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Babai Revolts",
+            "storyExample": "However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline."
+      },
+      {
+            "word": "decline",
+            "definition": "A process of becoming weaker or less successful.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/dɪˈklaɪn/",
+            "wordFamily": [
+                  "decline",
+                  "declining"
+            ],
+            "collocations": [
+                  "economic decline",
+                  "begin to decline"
+            ],
+            "synonyms": [
+                  "weakening"
+            ],
+            "antonyms": [
+                  "growth"
+            ],
+            "category": "Change & History",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Babai Revolts",
+            "storyExample": "However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline."
+      },
+      {
+            "word": "chaos",
+            "definition": "A state of serious disorder and confusion.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈkeɪɑːs/",
+            "wordFamily": [
+                  "chaos",
+                  "chaotic"
+            ],
+            "collocations": [
+                  "social chaos",
+                  "total chaos"
+            ],
+            "synonyms": [
+                  "disorder"
+            ],
+            "antonyms": [
+                  "order"
+            ],
+            "category": "Society & Conditions",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Babai Revolts",
+            "storyExample": "However, Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos."
+      },
+      {
+            "word": "revolt",
+            "definition": "An organized action against a government or authority.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/rɪˈvoʊlt/",
+            "wordFamily": [
+                  "revolt",
+                  "revolted"
+            ],
+            "collocations": [
+                  "start a revolt",
+                  "revolt against the state"
+            ],
+            "synonyms": [
+                  "rebellion"
+            ],
+            "category": "History & Conflict",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "Kösedağ and Destruction",
+            "storyExample": "Because of many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state."
+      },
+      {
+            "word": "captured",
+            "definition": "Took control of a place by force.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/ˈkæptʃərd/",
+            "wordFamily": [
+                  "capture",
+                  "captured"
+            ],
+            "collocations": [
+                  "capture a city",
+                  "be captured"
+            ],
+            "synonyms": [
+                  "seized"
+            ],
+            "category": "Conflict & Actions",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "Kösedağ and Destruction",
+            "storyExample": "In 1242, the Mongols captured Erzurum and killed its people."
+      },
+      {
+            "word": "clashed",
+            "definition": "Fought or came into violent conflict.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/klæʃt/",
+            "wordFamily": [
+                  "clash",
+                  "clashed"
+            ],
+            "collocations": [
+                  "clash at a battle",
+                  "forces clashed"
+            ],
+            "synonyms": [
+                  "fought"
+            ],
+            "category": "Conflict & Actions",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "Kösedağ and Destruction",
+            "storyExample": "Finally, in 1243, the Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas."
+      },
+      {
+            "word": "false retreat",
+            "definition": "A tactic in which an army pretends to withdraw to mislead the enemy.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/fɔːls rɪˈtriːt/",
+            "collocations": [
+                  "false retreat tactic",
+                  "use a false retreat"
+            ],
+            "category": "Military & Strategy",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "Kösedağ and Destruction",
+            "storyExample": "The Mongols used the classic false retreat and circling tactic."
+      },
+      {
+            "word": "captive",
+            "definition": "A person kept as a prisoner.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈkæptɪv/",
+            "wordFamily": [
+                  "captive",
+                  "captivity"
+            ],
+            "collocations": [
+                  "taken captive",
+                  "hold captive"
+            ],
+            "synonyms": [
+                  "prisoner"
+            ],
+            "category": "People & Conflict",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Chaos in Anatolia",
+            "storyExample": "The women and children were taken captive and forced to go with the Mongols."
+      },
+      {
+            "word": "deserted",
+            "definition": "Empty because people have left.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/dɪˈzɜːrtɪd/",
+            "wordFamily": [
+                  "desert",
+                  "deserted"
+            ],
+            "collocations": [
+                  "deserted city",
+                  "become deserted"
+            ],
+            "synonyms": [
+                  "abandoned"
+            ],
+            "category": "Places & Conditions",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Chaos in Anatolia",
+            "storyExample": "After these cruel raids, cities were deserted."
+      },
+      {
+            "word": "dependent",
+            "definition": "Relying on another person or power.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/dɪˈpendənt/",
+            "wordFamily": [
+                  "depend",
+                  "dependent",
+                  "dependence"
+            ],
+            "collocations": [
+                  "dependent on",
+                  "become dependent"
+            ],
+            "antonyms": [
+                  "independent"
+            ],
+            "category": "Politics & Power",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Chaos in Anatolia",
+            "storyExample": "Finally, an agreement was made with the Mongols, but in time the Seljuks became dependent on them."
+      },
+      {
+            "word": "state income",
+            "definition": "Money received by a government or state.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/steɪt ˈɪnkʌm/",
+            "wordFamily": [
+                  "state",
+                  "income"
+            ],
+            "collocations": [
+                  "state income",
+                  "government income"
+            ],
+            "category": "Economy & Government",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Chaos in Anatolia",
+            "storyExample": "A significant part of state income began to be sent to the Mongols every year."
+      },
+      {
+            "word": "shaykhs",
+            "definition": "Religious or spiritual teachers.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ʃeɪks/",
+            "wordFamily": [
+                  "shaykh",
+                  "shaykhs"
+            ],
+            "collocations": [
+                  "Sûfî shaykhs",
+                  "religious shaykhs"
+            ],
+            "category": "People & Spiritual Life",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Yunus as a Wise Dervish",
+            "storyExample": "During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure."
+      },
+      {
+            "word": "dervishes",
+            "definition": "People following a Sûfî spiritual path.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈdɜːrvɪʃɪz/",
+            "wordFamily": [
+                  "dervish",
+                  "dervishes"
+            ],
+            "collocations": [
+                  "Sûfî dervishes",
+                  "train dervishes"
+            ],
+            "category": "People & Spiritual Life",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Yunus as a Wise Dervish",
+            "storyExample": "These shaykhs trained dervishes in their teachings."
+      },
+      {
+            "word": "nomads",
+            "definition": "People who move from place to place rather than living permanently in one place.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈnoʊmædz/",
+            "wordFamily": [
+                  "nomad",
+                  "nomadic"
+            ],
+            "collocations": [
+                  "nomadic people",
+                  "among nomads"
+            ],
+            "category": "People & Society",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Yunus as a Wise Dervish",
+            "storyExample": "These dervishes were influential among nomads."
+      },
+      {
+            "word": "respond",
+            "definition": "To answer or react to a situation.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/rɪˈspɑːnd/",
+            "wordFamily": [
+                  "respond",
+                  "response",
+                  "responsive"
+            ],
+            "collocations": [
+                  "respond to a need",
+                  "respond to a situation"
+            ],
+            "synonyms": [
+                  "react"
+            ],
+            "category": "Communication & Actions",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Yunus as a Wise Dervish",
+            "storyExample": "He tried to respond to people’s efforts to make sense of life in hard days with his Sûfî identity."
+      },
+      {
+            "word": "loyalty",
+            "definition": "Strong support and faithfulness to someone.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈlɔɪəlti/",
+            "wordFamily": [
+                  "loyal",
+                  "loyalty"
+            ],
+            "collocations": [
+                  "loyalty to someone",
+                  "show loyalty"
+            ],
+            "synonyms": [
+                  "faithfulness"
+            ],
+            "category": "Values & Relationships",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tawhid and Unity",
+            "storyExample": "In his poems, he expresses a vivid love for Allah as a way of life, along with fear of Allah and loyalty to the Prophet Muhammad (pbuh)."
+      },
+      {
+            "word": "Tawhid",
+            "definition": "The belief that Allah is One.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/taʊˈhiːd/",
+            "collocations": [
+                  "idea of Tawhid",
+                  "Tawhid and unity"
+            ],
+            "category": "Belief & Faith",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tawhid and Unity",
+            "storyExample": "One of the most important basic spiritual principles in his works is the idea of Tawhid, which means the Oneness of Allah."
+      },
+      {
+            "word": "Oneness",
+            "definition": "The state of being one and undivided.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈwʌnnəs/",
+            "wordFamily": [
+                  "one",
+                  "Oneness"
+            ],
+            "collocations": [
+                  "Oneness of Allah",
+                  "divine Oneness"
+            ],
+            "category": "Belief & Faith",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tawhid and Unity",
+            "storyExample": "One of the most important basic spiritual principles in his works is the idea of Tawhid, which means the Oneness of Allah."
+      },
+      {
+            "word": "unity of existence",
+            "definition": "The idea of one true existence described in the chapter.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈjuːnəti əv ɪɡˈzɪstəns/",
+            "collocations": [
+                  "theory of unity of existence",
+                  "idea of unity"
+            ],
+            "category": "Ideas & Spiritual Thought",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tawhid and Unity",
+            "storyExample": "According to the theory of the unity of existence, which was a key idea for Yunus Emre, there is only one true existence in the universe, and that is Allah."
+      },
+      {
+            "word": "creation",
+            "definition": "The act or result of bringing things into existence.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/kriˈeɪʃən/",
+            "wordFamily": [
+                  "create",
+                  "creation",
+                  "Creator"
+            ],
+            "collocations": [
+                  "act of creation",
+                  "creation of the world"
+            ],
+            "category": "Belief & Ideas",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Allah’s Commands",
+            "storyExample": "As a result of creation, the original unity lost its unity and multiple existence appeared."
+      },
+      {
+            "word": "multiple existence",
+            "definition": "The many created forms described in the chapter.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈmʌltəpəl ɪɡˈzɪstəns/",
+            "collocations": [
+                  "multiple existence",
+                  "created existence"
+            ],
+            "category": "Ideas & Spiritual Thought",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Allah’s Commands",
+            "storyExample": "As a result of creation, the original unity lost its unity and multiple existence appeared."
+      },
+      {
+            "word": "reflections",
+            "definition": "Things that show or represent something else.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/rɪˈflekʃənz/",
+            "wordFamily": [
+                  "reflect",
+                  "reflection"
+            ],
+            "collocations": [
+                  "reflections of names",
+                  "spiritual reflections"
+            ],
+            "synonyms": [
+                  "images"
+            ],
+            "category": "Ideas & Meaning",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Allah’s Commands",
+            "storyExample": "All creations in the world are just reflections of Allah’s names."
+      },
+      {
+            "word": "five daily prayers",
+            "definition": "The five regular prayers Muslims perform each day.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/faɪv ˈdeɪli prerz/",
+            "collocations": [
+                  "pray the five daily prayers",
+                  "five daily prayers"
+            ],
+            "category": "Spiritual Life",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Allah’s Commands",
+            "storyExample": "He should follow Allah’s command and pray the five daily prayers”"
+      },
+      {
+            "word": "harmony",
+            "definition": "A peaceful state in which things work well together.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈhɑːrməni/",
+            "wordFamily": [
+                  "harmony",
+                  "harmonious"
+            ],
+            "collocations": [
+                  "live in harmony",
+                  "unity and harmony"
+            ],
+            "synonyms": [
+                  "peace"
+            ],
+            "antonyms": [
+                  "conflict"
+            ],
+            "category": "Values & Relationships",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "The Heart and Love",
+            "storyExample": "Love brings unity and harmony."
+      },
+      {
+            "word": "heartbreak",
+            "definition": "Deep emotional sadness or pain.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈhɑːrtbreɪk/",
+            "wordFamily": [
+                  "heartbreak",
+                  "heartbroken"
+            ],
+            "collocations": [
+                  "feel heartbreak",
+                  "anger and heartbreak"
+            ],
+            "category": "Feelings",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "The Heart and Love",
+            "storyExample": "According to him, where love is absent, negative emotions such as anger, heartbreak and separation arise."
+      },
+      {
+            "word": "throne of the Lord",
+            "definition": "The expression used in the chapter for the spiritual importance of the heart.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/θroʊn əv ðə lɔːrd/",
+            "collocations": [
+                  "the throne of the Lord",
+                  "heart as a throne"
+            ],
+            "category": "Spiritual Ideas",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "The Heart and Love",
+            "storyExample": "It is “the throne of the Lord,” that is, the place where Allah reveals Himself."
+      },
+      {
+            "word": "intellect",
+            "definition": "The ability to think, understand, and reason.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈɪntəlekt/",
+            "wordFamily": [
+                  "intellect",
+                  "intellectual"
+            ],
+            "collocations": [
+                  "heart and intellect",
+                  "use the intellect"
+            ],
+            "synonyms": [
+                  "reason"
+            ],
+            "category": "Learning & Thinking",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "The Heart and Love",
+            "storyExample": "Yunus Emre emphasizes not only heart but also intellect as a value; he described it as “a light from Allah that has existed since eternity.”"
+      },
+      {
+            "word": "salvation",
+            "definition": "Being saved spiritually or reaching spiritual safety.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/sælˈveɪʃən/",
+            "wordFamily": [
+                  "save",
+                  "salvation"
+            ],
+            "collocations": [
+                  "reach salvation",
+                  "spiritual salvation"
+            ],
+            "category": "Spiritual Life",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "Intellect and Death",
+            "storyExample": "He highlights that for a person to reach salvation, heart and intellect must support one another."
+      },
+      {
+            "word": "wisdom",
+            "definition": "The ability to use knowledge and experience well.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈwɪzdəm/",
+            "wordFamily": [
+                  "wise",
+                  "wisdom"
+            ],
+            "collocations": [
+                  "gain wisdom",
+                  "wisdom and knowledge"
+            ],
+            "category": "Learning & Values",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "Intellect and Death",
+            "storyExample": "“May your intelligence / wisdom save you from all troubles"
+      },
+      {
+            "word": "advisor",
+            "definition": "A person or thing that gives guidance.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ədˈvaɪzər/",
+            "wordFamily": [
+                  "advise",
+                  "advice",
+                  "advisor"
+            ],
+            "collocations": [
+                  "trusted advisor",
+                  "give advice"
+            ],
+            "synonyms": [
+                  "counsellor"
+            ],
+            "category": "People & Guidance",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "Intellect and Death",
+            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “The one who remembers death the most and is best in preparing for it."
+      },
+      {
+            "word": "homeland",
+            "definition": "The place a person considers their home country or native land.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈhoʊmlænd/",
+            "wordFamily": [
+                  "home",
+                  "homeland"
+            ],
+            "collocations": [
+                  "return to one’s homeland",
+                  "native homeland"
+            ],
+            "synonyms": [
+                  "native land"
+            ],
+            "category": "Places & Identity",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "Intellect and Death",
+            "storyExample": "A guest in this world, one day they must set out for their homeland”"
+      },
+      {
+            "word": "morality",
+            "definition": "Principles about right and wrong behavior.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/məˈræləti/",
+            "wordFamily": [
+                  "moral",
+                  "morality",
+                  "morally"
+            ],
+            "collocations": [
+                  "true morality",
+                  "moral principles"
+            ],
+            "category": "Values & Ethics",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "Morality and Good Habits",
+            "storyExample": "Yunus believes that true morality is about giving up bad habits that are not suitable for people."
+      },
+      {
+            "word": "humility",
+            "definition": "The quality of not thinking you are better than others.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/hjuːˈmɪləti/",
+            "wordFamily": [
+                  "humble",
+                  "humility",
+                  "humbly"
+            ],
+            "collocations": [
+                  "show humility",
+                  "practice humility"
+            ],
+            "synonyms": [
+                  "modesty"
+            ],
+            "antonyms": [
+                  "arrogance"
+            ],
+            "category": "Values & Ethics",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "Morality and Good Habits",
+            "storyExample": "Moral principles such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works."
+      },
+      {
+            "word": "generosity",
+            "definition": "The willingness to give and help others.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˌdʒenəˈrɑːsəti/",
+            "wordFamily": [
+                  "generous",
+                  "generosity",
+                  "generously"
+            ],
+            "collocations": [
+                  "show generosity",
+                  "acts of generosity"
+            ],
+            "antonyms": [
+                  "stinginess"
+            ],
+            "category": "Values & Ethics",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "Morality and Good Habits",
+            "storyExample": "Moral principles such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works."
+      },
+      {
+            "word": "greed",
+            "definition": "A strong selfish desire for more wealth or possessions.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ɡriːd/",
+            "wordFamily": [
+                  "greed",
+                  "greedy"
+            ],
+            "collocations": [
+                  "prison of greed",
+                  "human greed"
+            ],
+            "antonyms": [
+                  "generosity"
+            ],
+            "category": "Values & Ethics",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "Morality and Good Habits",
+            "storyExample": "He also taught people to avoid bad habits like being arrogant, stingy, greedy, selfish, or jealous, and gossiping."
+      },
+      {
+            "word": "patience",
+            "definition": "The ability to stay calm and continue through difficulty.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈpeɪʃəns/",
+            "wordFamily": [
+                  "patient",
+                  "patience",
+                  "patiently"
+            ],
+            "collocations": [
+                  "show patience",
+                  "have patience"
+            ],
+            "antonyms": [
+                  "impatience"
+            ],
+            "category": "Values & Ethics",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "A Moral Guide",
+            "storyExample": "In another verse, he talks about “patience” and says:"
+      },
+      {
+            "word": "rage",
+            "definition": "Very strong anger.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/reɪdʒ/",
+            "wordFamily": [
+                  "rage",
+                  "raging"
+            ],
+            "collocations": [
+                  "filled with rage",
+                  "give up rage"
+            ],
+            "synonyms": [
+                  "anger"
+            ],
+            "antonyms": [
+                  "calm"
+            ],
+            "category": "Feelings",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "A Moral Guide",
+            "storyExample": "In the following verse, he warns against “rage and arrogance”:"
+      },
+      {
+            "word": "arrogance",
+            "definition": "The belief that you are better or more important than others.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈærəɡəns/",
+            "wordFamily": [
+                  "arrogant",
+                  "arrogance",
+                  "arrogantly"
+            ],
+            "collocations": [
+                  "rage and arrogance",
+                  "show arrogance"
+            ],
+            "antonyms": [
+                  "humility"
+            ],
+            "category": "Values & Ethics",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "A Moral Guide",
+            "storyExample": "In the following verse, he warns against “rage and arrogance”:"
+      },
+      {
+            "word": "moral guide",
+            "definition": "Something that teaches or supports good and ethical behavior.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈmɔːrəl ɡaɪd/",
+            "wordFamily": [
+                  "moral",
+                  "guide",
+                  "guidance"
+            ],
+            "collocations": [
+                  "serve as a moral guide",
+                  "moral guide for generations"
+            ],
+            "category": "Values & Guidance",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "A Moral Guide",
+            "storyExample": "It is clear that Yunus Emre was an important person of his era, and his poems are still valuable today as a moral guide for future generations."
+      }
+]
   },
   { id: 18, type: 'exercises', title: 'Final Review & Reflection', image: '', content: 'Retrieve the book through sequencing, matching, reflection, and the Review Quiz.' },
   { id: 19, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B1', image: '', content: 'Complete the 10-item whole-book Final Challenge.' },
