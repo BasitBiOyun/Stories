@@ -782,7 +782,7 @@ const AppContent = () => {
                       </span>
                     </div>
 
-                    <div className="max-h-[min(58vh,24rem)] space-y-1 overflow-y-auto pr-1 custom-scrollbar">
+                    <div className="max-h-[min(58vh,24rem)] space-y-1 overflow-y-auto pe-1 custom-scrollbar">
                       {currentBook?.pages.map((page, idx) => {
                         const isActive = currentPageIndex === idx;
                         return (
