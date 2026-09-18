@@ -105,7 +105,7 @@ const AppContent = () => {
     localStorage.setItem('reader_dyslexic', String(isDyslexic));
   }, [isDyslexic]);
  
-  const { language, t, formatNumber, isRTL } = useLanguage();
+  const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { resetStats } = useStoryProgress();
   const {
     definition: currentDefinition,
@@ -651,14 +651,26 @@ const AppContent = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="shrink-0 scale-[0.9] origin-center sm:scale-100">
+              <button
+                type="button"
+                onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+                className={cn(
+                  "touch-target flex items-center justify-center rounded-full border font-display text-[10px] font-semibold uppercase sm:hidden",
+                  themeClasses.buttonSec
+                )}
+                aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+              >
+                {language === 'en' ? 'AR' : 'EN'}
+              </button>
+
+              <div className="hidden shrink-0 sm:block">
                 <LanguageToggle />
               </div>
 
               <button 
                 onClick={handleReturnToLibrary}
                 className={cn(
-                  "touch-target flex items-center justify-center rounded-full border transition-colors",
+                  "touch-target hidden items-center justify-center rounded-full border transition-colors sm:flex",
                   themeClasses.buttonSec
                 )}
                 title={t('nav.returnToLibrary')}
