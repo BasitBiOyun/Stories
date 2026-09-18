@@ -1,4 +1,4 @@
-import type { BookData, ExerciseType, Level, PageData } from '../types';
+import type { BookData, Level, PageData } from '../types';
 import { getLearningLevelPolicy } from './learningLevelPolicy';
 
 export const LEARNING_BOOK_STRUCTURE_STANDARD = {
