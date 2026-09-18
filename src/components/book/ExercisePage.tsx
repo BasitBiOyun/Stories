@@ -309,13 +309,12 @@ export const ExercisePage = ({
               )}
               {page.type === 'vocabulary-match' && page.vocabularyPairs && (
                 <div className="h-full flex flex-col min-h-0">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl text-wood tracking-tight mb-3 border-b-2 pb-3 shrink-0",
-                    colTheme.quizSectionBorder
-                  )}>
-                    {page.title}
-                  </h3>
-                  <VocabularyMatch pairs={page.vocabularyPairs} collectionId={collectionId} level={level} onReviewGlossary={onReviewGlossary} />
+                  <VocabularyMatch
+                    pairs={page.vocabularyPairs}
+                    collectionId={collectionId}
+                    level={level}
+                    onReviewGlossary={onReviewGlossary}
+                  />
                 </div>
               )}
               {page.type === 'game' && (
