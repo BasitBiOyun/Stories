@@ -1224,7 +1224,8 @@ export const StoryPage = ({
           {/* Text Content */}
           <div 
             className={cn(
-              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch]",\n              isDyslexic ? "font-sans tracking-wide" : "",
+              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch]",
+              isDyslexic ? "font-sans tracking-wide" : "",
               isRTL && "text-right"
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
@@ -1337,7 +1338,8 @@ export const StoryPage = ({
             <div className="col-span-7">
               <div 
                 className={cn(
-                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch]",\n                  isDyslexic ? "font-sans tracking-wide" : "",
+                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch]",
+                  isDyslexic ? "font-sans tracking-wide" : "",
                   isRTL && "text-right"
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
