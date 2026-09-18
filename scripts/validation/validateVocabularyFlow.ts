@@ -181,7 +181,7 @@ const main = async () => {
   for (const definition of bookRegistry.filter(definition => definition.level === 'B2' && definition.storyId === 'ibrahim')) {
     const label = `${definition.storyId} ${definition.level}`;
     try {
-      await definition.load();
+      await definition.loadSource();
       const errors: string[] = [];
       if (errors.length) failures.push({ label, errors });
     } catch (error) {
