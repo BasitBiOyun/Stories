@@ -68,8 +68,8 @@ He must be tongueless when people make fun of him.
 A dervish needs to be without any desires (selfless).
 You can’t be a dervish.
 Turkish:
-Döğene elsiz gerek
-Söğene dilsiz gerek
+Dövene elsiz gerek
+Sövene dilsiz gerek
 Derviş gönülsüz gerek
 Sen derviş olamazsın
 [/POEM]
