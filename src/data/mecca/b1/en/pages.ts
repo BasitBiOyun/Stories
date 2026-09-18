@@ -319,26 +319,1519 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
   {
     id: 19,
     type: 'glossary',
-    title: 'B1 Reference Glossary',
+    title: 'Master Glossary',
     image: '',
-    content: 'Reference vocabulary from all fifteen chapters.',
+    content: 'Review all key vocabulary from the story in one place.',
     vocabulary: [
-      { word: 'Jahiliyyah', definition: 'The period before Islam described in the story as the Age of Ignorance.' }, { word: 'chaotic', definition: 'Very disordered and difficult to control.' }, { word: 'central government', definition: 'One main authority that governs a country or region.' }, { word: 'misery', definition: 'Great suffering or unhappiness.' }, { word: 'cruelty', definition: 'Behavior that causes pain or suffering without kindness.' },
-      { word: 'barbarism', definition: 'Cruel and uncivilized behavior.' }, { word: 'revelation', definition: 'A message revealed by Allah to a prophet.' }, { word: 'holy city', definition: 'A city with special religious importance.' }, { word: 'Ka’ba', definition: 'The sacred House of Allah in Mecca.' }, { word: 'Qiblah', definition: 'The direction Muslims face during salah.' },
-      { word: 'valley', definition: 'Low land between hills or mountains.' }, { word: 'crops', definition: 'Plants grown for food or other use.' }, { word: 'population', definition: 'The people living in a place.' }, { word: 'settled', definition: 'Started living permanently in a place.' }, { word: 'pilgrimage', definition: 'A religious journey to a sacred place.' },
-      { word: 'mission', definition: 'An important task or duty.' }, { word: 'defeated', definition: 'Won against another group in a conflict.' }, { word: 'dry land', definition: 'Land with very little water.' }, { word: 'farm', definition: 'To grow crops or produce food from land.' }, { word: 'goods', definition: 'Products that are bought and sold.' },
-      { word: 'trade routes', definition: 'Paths used to move and exchange goods between places.' }, { word: 'wealthy', definition: 'Rich and having a lot of money or valuable things.' }, { word: 'trade agreements', definition: 'Deals between groups that make trade possible or safer.' }, { word: 'merchants', definition: 'People who buy and sell goods.' }, { word: 'sacred months', definition: 'Special months in which fighting was avoided and worship was emphasized.' },
-      { word: 'trade fairs', definition: 'Large events where people meet to buy and sell goods.' }, { word: 'Arafat', definition: 'The place mentioned in the story as part of pilgrimage practices.' }, { word: 'controlled', definition: 'Had power over something.' }, { word: 'usury', definition: 'Unfair extra money charged on a loan.' }, { word: 'widespread', definition: 'Existing among many people or in many places.' },
-      { word: 'social classes', definition: 'Groups in society divided by wealth, status, or power.' }, { word: 'debt', definition: 'Money that a person owes and must pay back.' }, { word: 'luxury', definition: 'A comfortable and expensive way of living.' }, { word: 'Orphans', definition: 'Children whose parents have died.' }, { word: 'property', definition: 'Things or possessions that belong to someone.' },
-      { word: 'Tribes', definition: 'Large family or social groups with a shared identity.' }, { word: 'physical strength', definition: 'Power of the body.' }, { word: 'sons', definition: 'Male children.' }, { word: 'tribal protection', definition: 'Safety provided by belonging to a tribe.' }, { word: 'ancestors', definition: 'Family members who lived in earlier generations.' },
-      { word: 'rights', definition: 'Basic freedoms and fair treatment that people should have.' }, { word: 'unfair treatment', definition: 'Behavior that is not just or equal.' }, { word: 'slavery', definition: 'A system in which people are owned and forced to work.' }, { word: 'Poets', definition: 'People who write or perform poetry.' }, { word: 'media', definition: 'Ways of sharing news, ideas, and messages with people.' },
-      { word: 'idols', definition: 'Objects wrongly worshipped as gods.' }, { word: 'Hanifs', definition: 'People who followed the old religion of Abraham.' }, { word: 'Creator', definition: 'Allah, the One who created everything.' }, { word: 'superstitions', definition: 'Beliefs based on fear or tradition rather than sound evidence or true religion.' }, { word: 'omens', definition: 'Signs people believed could predict what would happen.' },
-      { word: 'Politics', definition: 'Activities connected with power and governing society.' }, { word: 'economics', definition: 'Activities connected with money, work, trade, and resources.' }, { word: 'community', definition: 'A group of people who share a common life or identity.' }, { word: 'ignored', definition: 'Refused to pay attention to something.' }, { word: 'leaders', definition: 'People who guide or have authority over a group.' },
-      { word: 'super-rich', definition: 'Extremely wealthy.' }, { word: 'prestigious', definition: 'Highly respected and admired.' }, { word: 'caretakers', definition: 'People responsible for looking after a place or activity.' }, { word: 'forbade', definition: 'Did not allow something.' }, { word: 'zakat', definition: 'Obligatory charity that Muslims give under Islamic rules.' },
-      { word: 'mocked', definition: 'Made fun of someone or something in an unkind way.' }, { word: 'criticized the idols', definition: 'Said that idol worship was wrong.' }, { word: 'violent', definition: 'Using physical force or cruelty.' }, { word: 'Abyssinian', definition: 'From Abyssinia, the historical region associated with Ethiopia.' }, { word: 'boycott', definition: 'An organized refusal to trade or deal with a group as pressure.' },
-      { word: 'survive', definition: 'To stay alive in a difficult or dangerous situation.' }, { word: 'wealth', definition: 'A large amount of money or valuable possessions.' }, { word: 'hostile', definition: 'Unfriendly and strongly opposed to someone or something.' }, { word: 'punishment', definition: 'A penalty or consequence for wrongdoing.' }, { word: 'Tribal loyalty', definition: 'Strong support for one’s tribe.' },
-      { word: 'stateless', definition: 'Without the protection or recognized belonging of a state or community.' }, { word: 'freedom of choice', definition: 'The ability to make a choice without being forced.' }, { word: 'prevent', definition: 'To stop something from happening.' }, { word: 'mercy', definition: 'Kindness and compassion shown to others.' }, { word: 'fairness', definition: 'Justice and equal treatment.' },
-    ],
+      {
+            "word": "Jahiliyyah",
+            "definition": "The period before Islam described in the story as the Age of Ignorance.",
+            "partOfSpeech": "proper noun",
+            "pronunciation": "/ˌdʒɑːhɪˈliːjə/",
+            "wordFamily": [
+                  "Jahiliyyah"
+            ],
+            "collocations": [
+                  "Age of Ignorance",
+                  "Jahiliyyah period"
+            ],
+            "category": "History & Society",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "The City and the Age",
+            "storyExample": "The period before Islam was called the Age of Ignorance, or Jahiliyyah, because religious and social disorder was common in society."
+      },
+      {
+            "word": "chaotic",
+            "definition": "Very disordered and difficult to control.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/keɪˈɑːtɪk/",
+            "wordFamily": [
+                  "chaos",
+                  "chaotic",
+                  "chaotically"
+            ],
+            "collocations": [
+                  "chaotic life",
+                  "chaotic situation"
+            ],
+            "synonyms": [
+                  "disordered"
+            ],
+            "antonyms": [
+                  "orderly"
+            ],
+            "category": "Description",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "The City and the Age",
+            "storyExample": "Life was hard and chaotic."
+      },
+      {
+            "word": "central government",
+            "definition": "One main authority that governs a country or region.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˌsentrəl ˈɡʌvərnmənt/",
+            "wordFamily": [
+                  "govern",
+                  "government"
+            ],
+            "collocations": [
+                  "central government",
+                  "national government"
+            ],
+            "category": "Politics & Society",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "The City and the Age",
+            "storyExample": "There was no central government in Arabia, and tribes were the basis of society."
+      },
+      {
+            "word": "misery",
+            "definition": "Great suffering or unhappiness.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈmɪzəri/",
+            "wordFamily": [
+                  "misery",
+                  "miserable"
+            ],
+            "collocations": [
+                  "live in misery",
+                  "great misery"
+            ],
+            "synonyms": [
+                  "suffering"
+            ],
+            "category": "Life & Society",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "The City and the Age",
+            "storyExample": "Powerful people controlled many parts of life, while poor and weak people lived in misery."
+      },
+      {
+            "word": "cruelty",
+            "definition": "Behavior that causes pain or suffering without kindness.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈkruːəlti/",
+            "wordFamily": [
+                  "cruel",
+                  "cruelty",
+                  "cruelly"
+            ],
+            "collocations": [
+                  "acts of cruelty",
+                  "ignorance and cruelty"
+            ],
+            "synonyms": [
+                  "brutality"
+            ],
+            "antonyms": [
+                  "kindness"
+            ],
+            "category": "Values & Conduct",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "The City and the Age",
+            "storyExample": "The Quran describes this period as a time of ignorance and cruelty."
+      },
+      {
+            "word": "barbarism",
+            "definition": "Cruel and uncivilized behavior.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈbɑːrbərɪzəm/",
+            "wordFamily": [
+                  "barbarism",
+                  "barbaric"
+            ],
+            "collocations": [
+                  "age of barbarism",
+                  "opposite of barbarism"
+            ],
+            "synonyms": [
+                  "savagery"
+            ],
+            "category": "History & Society",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "The Age of Ignorance",
+            "storyExample": "The Jahiliyyah was an age of barbarism."
+      },
+      {
+            "word": "revelation",
+            "definition": "A message revealed by Allah to a prophet.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˌrevəˈleɪʃən/",
+            "wordFamily": [
+                  "reveal",
+                  "revelation"
+            ],
+            "collocations": [
+                  "divine revelation",
+                  "first revelation"
+            ],
+            "category": "Belief & Faith",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "The Age of Ignorance",
+            "storyExample": "This era ended when the first revelation of the Quran began in 610 CE."
+      },
+      {
+            "word": "holy city",
+            "definition": "A city with special religious importance.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈhoʊli ˈsɪti/",
+            "wordFamily": [
+                  "holy",
+                  "holiness"
+            ],
+            "collocations": [
+                  "holy city",
+                  "holy place"
+            ],
+            "synonyms": [
+                  "sacred city"
+            ],
+            "category": "Places & Faith",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "The Age of Ignorance",
+            "storyExample": "Mecca is the holy city of Islam."
+      },
+      {
+            "word": "Ka’ba",
+            "definition": "The sacred House of Allah in Mecca.",
+            "partOfSpeech": "proper noun",
+            "pronunciation": "/ˈkɑːbə/",
+            "collocations": [
+                  "Holy Ka’ba",
+                  "Ka’ba in Mecca"
+            ],
+            "category": "Places & Faith",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "The Age of Ignorance",
+            "storyExample": "Allah chose this city to be the location of His House, the Holy Ka’ba."
+      },
+      {
+            "word": "Qiblah",
+            "definition": "The direction Muslims face during salah.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈkɪblə/",
+            "collocations": [
+                  "face the Qiblah",
+                  "direction of Qiblah"
+            ],
+            "category": "Spiritual Life",
+            "level": "B1",
+            "chapter": 2,
+            "chapterTitle": "The Age of Ignorance",
+            "storyExample": "The Qiblah, the direction Muslims face during salah, is also located in Mecca."
+      },
+      {
+            "word": "valley",
+            "definition": "Low land between hills or mountains.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈvæli/",
+            "wordFamily": [
+                  "valley",
+                  "valleys"
+            ],
+            "collocations": [
+                  "dry valley",
+                  "valley between hills"
+            ],
+            "category": "Places & Nature",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "The Beginning of Mecca",
+            "storyExample": "The Quran describes Mecca as a valley where no crops grow."
+      },
+      {
+            "word": "crops",
+            "definition": "Plants grown for food or other use.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/krɑːps/",
+            "wordFamily": [
+                  "crop",
+                  "crops"
+            ],
+            "collocations": [
+                  "grow crops",
+                  "food crops"
+            ],
+            "category": "Agriculture & Nature",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "The Beginning of Mecca",
+            "storyExample": "The Quran describes Mecca as a valley where no crops grow."
+      },
+      {
+            "word": "population",
+            "definition": "The people living in a place.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˌpɑːpjəˈleɪʃən/",
+            "wordFamily": [
+                  "populate",
+                  "population"
+            ],
+            "collocations": [
+                  "local population",
+                  "population growth"
+            ],
+            "category": "People & Society",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "The Beginning of Mecca",
+            "storyExample": "There was no population in the land."
+      },
+      {
+            "word": "settled",
+            "definition": "Started living permanently in a place.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/ˈsetəld/",
+            "wordFamily": [
+                  "settle",
+                  "settled",
+                  "settlement"
+            ],
+            "collocations": [
+                  "settle in a place",
+                  "settled in Mecca"
+            ],
+            "synonyms": [
+                  "established themselves"
+            ],
+            "category": "People & Places",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "The Beginning of Mecca",
+            "storyExample": "After the discovery of Zamzam water, the Jurhumites from Yemen settled in Mecca."
+      },
+      {
+            "word": "pilgrimage",
+            "definition": "A religious journey to a sacred place.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈpɪlɡrɪmɪdʒ/",
+            "wordFamily": [
+                  "pilgrim",
+                  "pilgrimage"
+            ],
+            "collocations": [
+                  "pilgrimage site",
+                  "perform a pilgrimage"
+            ],
+            "category": "Spiritual Life",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "The Beginning of Mecca",
+            "storyExample": "Arabs accepted the religion of Abraham (as) and Ishmael (as), so the Ka’ba became a pilgrimage site."
+      },
+      {
+            "word": "mission",
+            "definition": "An important task or duty.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈmɪʃən/",
+            "wordFamily": [
+                  "mission",
+                  "missions"
+            ],
+            "collocations": [
+                  "complete a mission",
+                  "important mission"
+            ],
+            "synonyms": [
+                  "task"
+            ],
+            "category": "Purpose & Responsibility",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Ka’ba and Trade",
+            "storyExample": "After Abraham (as) completed his mission and invited people for pilgrimage, he returned to Palestine."
+      },
+      {
+            "word": "defeated",
+            "definition": "Won against another group in a conflict.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/dɪˈfiːtɪd/",
+            "wordFamily": [
+                  "defeat",
+                  "defeated"
+            ],
+            "collocations": [
+                  "defeat an enemy",
+                  "defeated a tribe"
+            ],
+            "synonyms": [
+                  "overcame"
+            ],
+            "category": "Conflict & History",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Ka’ba and Trade",
+            "storyExample": "Later, the Khuza’a tribe came to Mecca, defeated the Jurhum tribe, and took control of the city."
+      },
+      {
+            "word": "dry land",
+            "definition": "Land with very little water.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/draɪ lænd/",
+            "collocations": [
+                  "dry land",
+                  "dry region"
+            ],
+            "category": "Places & Nature",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Ka’ba and Trade",
+            "storyExample": "Because people could not farm in this dry land, they made money through trade."
+      },
+      {
+            "word": "farm",
+            "definition": "To grow crops or produce food from land.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/fɑːrm/",
+            "wordFamily": [
+                  "farm",
+                  "farmer",
+                  "farming"
+            ],
+            "collocations": [
+                  "farm the land",
+                  "farm crops"
+            ],
+            "category": "Work & Agriculture",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Ka’ba and Trade",
+            "storyExample": "Because people could not farm in this dry land, they made money through trade."
+      },
+      {
+            "word": "goods",
+            "definition": "Products that are bought and sold.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ɡʊdz/",
+            "collocations": [
+                  "trade goods",
+                  "buy and sell goods"
+            ],
+            "synonyms": [
+                  "products"
+            ],
+            "category": "Trade & Economy",
+            "level": "B1",
+            "chapter": 4,
+            "chapterTitle": "The Ka’ba and Trade",
+            "storyExample": "India, Indonesia, and China were also important for trade because they produced many different goods."
+      },
+      {
+            "word": "trade routes",
+            "definition": "Paths used to move and exchange goods between places.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/treɪd ruːts/",
+            "collocations": [
+                  "major trade routes",
+                  "control trade routes"
+            ],
+            "category": "Trade & Economy",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "The Trade Routes",
+            "storyExample": "Because Mecca was in the middle of important trade routes, it became a busy and wealthy city."
+      },
+      {
+            "word": "wealthy",
+            "definition": "Rich and having a lot of money or valuable things.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈwelθi/",
+            "wordFamily": [
+                  "wealth",
+                  "wealthy"
+            ],
+            "collocations": [
+                  "wealthy city",
+                  "wealthy merchants"
+            ],
+            "synonyms": [
+                  "rich"
+            ],
+            "antonyms": [
+                  "poor"
+            ],
+            "category": "Economy & Society",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "The Trade Routes",
+            "storyExample": "Because Mecca was in the middle of important trade routes, it became a busy and wealthy city."
+      },
+      {
+            "word": "trade agreements",
+            "definition": "Deals between groups that make trade possible or safer.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/treɪd əˈɡriːmənts/",
+            "wordFamily": [
+                  "agree",
+                  "agreement"
+            ],
+            "collocations": [
+                  "make trade agreements",
+                  "international trade agreements"
+            ],
+            "category": "Trade & Economy",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "The Trade Routes",
+            "storyExample": "He and the Quraysh leaders made special trade agreements with other tribes and nations."
+      },
+      {
+            "word": "merchants",
+            "definition": "People who buy and sell goods.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈmɜːrtʃənts/",
+            "wordFamily": [
+                  "merchant",
+                  "merchants"
+            ],
+            "collocations": [
+                  "rich merchants",
+                  "traveling merchants"
+            ],
+            "synonyms": [
+                  "traders"
+            ],
+            "category": "People & Trade",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "The Trade Routes",
+            "storyExample": "These agreements allowed merchants to travel safely and trade in places like Byzantium, Yemen, Iraq, and Ethiopia."
+      },
+      {
+            "word": "sacred months",
+            "definition": "Special months in which fighting was avoided and worship was emphasized.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈseɪkrɪd mʌnθs/",
+            "wordFamily": [
+                  "sacred",
+                  "sacredness"
+            ],
+            "collocations": [
+                  "the sacred months",
+                  "during sacred months"
+            ],
+            "category": "Spiritual Life & Time",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "The Trade Routes",
+            "storyExample": "The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer."
+      },
+      {
+            "word": "trade fairs",
+            "definition": "Large events where people meet to buy and sell goods.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/treɪd ferz/",
+            "collocations": [
+                  "large trade fairs",
+                  "attend trade fairs"
+            ],
+            "category": "Trade & Economy",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Fairs and Wealth",
+            "storyExample": "Big trade fairs such as Ukaz, Majannah, and Dhul-Majaz took place during this time."
+      },
+      {
+            "word": "Arafat",
+            "definition": "The place mentioned in the story as part of pilgrimage practices.",
+            "partOfSpeech": "proper noun",
+            "pronunciation": "/ˈærəfæt/",
+            "collocations": [
+                  "stand in Arafat",
+                  "go to Arafat"
+            ],
+            "category": "Places & Faith",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Fairs and Wealth",
+            "storyExample": "They also ran between Safa and Marwa and stood in Arafat."
+      },
+      {
+            "word": "controlled",
+            "definition": "Had power over something.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/kənˈtroʊld/",
+            "wordFamily": [
+                  "control",
+                  "controlled"
+            ],
+            "collocations": [
+                  "control trade",
+                  "control wealth"
+            ],
+            "synonyms": [
+                  "dominated"
+            ],
+            "category": "Power & Economy",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Fairs and Wealth",
+            "storyExample": "At the beginning of the 7th century, the Quraysh tribe controlled the most important trade routes and wealth in Arabia."
+      },
+      {
+            "word": "usury",
+            "definition": "Unfair extra money charged on a loan.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈjuːʒəri/",
+            "collocations": [
+                  "charge usury",
+                  "lending with usury"
+            ],
+            "category": "Economy & Ethics",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Fairs and Wealth",
+            "storyExample": "In the city, lending money with usury was widespread."
+      },
+      {
+            "word": "widespread",
+            "definition": "Existing among many people or in many places.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈwaɪdspred/",
+            "collocations": [
+                  "widespread practice",
+                  "be widespread"
+            ],
+            "synonyms": [
+                  "common"
+            ],
+            "antonyms": [
+                  "rare"
+            ],
+            "category": "Description",
+            "level": "B1",
+            "chapter": 6,
+            "chapterTitle": "Fairs and Wealth",
+            "storyExample": "In the city, lending money with usury was widespread."
+      },
+      {
+            "word": "social classes",
+            "definition": "Groups in society divided by wealth, status, or power.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈsoʊʃəl ˈklæsɪz/",
+            "collocations": [
+                  "different social classes",
+                  "gap between social classes"
+            ],
+            "category": "Society & Economy",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Rich and Poor",
+            "storyExample": "Usury caused a big gap between social classes."
+      },
+      {
+            "word": "debt",
+            "definition": "Money that a person owes and must pay back.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/det/",
+            "wordFamily": [
+                  "debt",
+                  "debtor"
+            ],
+            "collocations": [
+                  "be in debt",
+                  "pay back a debt"
+            ],
+            "category": "Money & Economy",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Rich and Poor",
+            "storyExample": "Many people were in debt and could not pay back their debts because of high interest."
+      },
+      {
+            "word": "luxury",
+            "definition": "A comfortable and expensive way of living.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈlʌkʃəri/",
+            "wordFamily": [
+                  "luxury",
+                  "luxurious"
+            ],
+            "collocations": [
+                  "live in luxury",
+                  "luxury goods"
+            ],
+            "antonyms": [
+                  "poverty"
+            ],
+            "category": "Daily Life & Economy",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Rich and Poor",
+            "storyExample": "While the rich lived in luxury with gold plates and silver cups, the poor struggled to survive."
+      },
+      {
+            "word": "Orphans",
+            "definition": "Children whose parents have died.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈɔːrfənz/",
+            "wordFamily": [
+                  "orphan",
+                  "orphans"
+            ],
+            "collocations": [
+                  "care for orphans",
+                  "poor orphans"
+            ],
+            "category": "People & Society",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Rich and Poor",
+            "storyExample": "Orphans and weak people were treated badly, and powerful people often took their property by force."
+      },
+      {
+            "word": "property",
+            "definition": "Things or possessions that belong to someone.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈprɑːpərti/",
+            "wordFamily": [
+                  "property",
+                  "properties"
+            ],
+            "collocations": [
+                  "own property",
+                  "take property"
+            ],
+            "synonyms": [
+                  "possessions"
+            ],
+            "category": "Rights & Economy",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Rich and Poor",
+            "storyExample": "Orphans and weak people were treated badly, and powerful people often took their property by force."
+      },
+      {
+            "word": "Tribes",
+            "definition": "Large family or social groups with a shared identity.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/traɪbz/",
+            "wordFamily": [
+                  "tribe",
+                  "tribal"
+            ],
+            "collocations": [
+                  "Arab tribes",
+                  "belong to a tribe"
+            ],
+            "category": "Society & Identity",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tribal Life",
+            "storyExample": "Tribes were the center of Arab society."
+      },
+      {
+            "word": "physical strength",
+            "definition": "Power of the body.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈfɪzɪkəl streŋθ/",
+            "wordFamily": [
+                  "strong",
+                  "strength"
+            ],
+            "collocations": [
+                  "physical strength",
+                  "great strength"
+            ],
+            "category": "People & Abilities",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tribal Life",
+            "storyExample": "Life in the desert was very hard, so physical strength was extremely important."
+      },
+      {
+            "word": "sons",
+            "definition": "Male children.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/sʌnz/",
+            "wordFamily": [
+                  "son",
+                  "sons"
+            ],
+            "collocations": [
+                  "have sons",
+                  "many sons"
+            ],
+            "category": "Family",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tribal Life",
+            "storyExample": "To earn respect from other tribes, families wanted to have many sons."
+      },
+      {
+            "word": "tribal protection",
+            "definition": "Safety provided by belonging to a tribe.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈtraɪbəl prəˈtekʃən/",
+            "wordFamily": [
+                  "tribe",
+                  "tribal",
+                  "protect",
+                  "protection"
+            ],
+            "collocations": [
+                  "tribal protection",
+                  "lose tribal protection"
+            ],
+            "category": "Society & Safety",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tribal Life",
+            "storyExample": "A person outside tribal protection was in great danger."
+      },
+      {
+            "word": "ancestors",
+            "definition": "Family members who lived in earlier generations.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈænsestərz/",
+            "wordFamily": [
+                  "ancestor",
+                  "ancestry"
+            ],
+            "collocations": [
+                  "proud of ancestors",
+                  "family ancestors"
+            ],
+            "synonyms": [
+                  "forebears"
+            ],
+            "category": "Family & History",
+            "level": "B1",
+            "chapter": 8,
+            "chapterTitle": "Tribal Life",
+            "storyExample": "Early Arabs were highly proud of their ancestors and remembered their names carefully."
+      },
+      {
+            "word": "rights",
+            "definition": "Basic freedoms and fair treatment that people should have.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/raɪts/",
+            "wordFamily": [
+                  "right",
+                  "rights"
+            ],
+            "collocations": [
+                  "human rights",
+                  "have rights"
+            ],
+            "category": "Rights & Society",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Women, Slavery and Poetry",
+            "storyExample": "However, many poor women had no rights and faced unfair treatment."
+      },
+      {
+            "word": "unfair treatment",
+            "definition": "Behavior that is not just or equal.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ʌnˈfer ˈtriːtmənt/",
+            "wordFamily": [
+                  "fair",
+                  "unfair",
+                  "treat",
+                  "treatment"
+            ],
+            "collocations": [
+                  "face unfair treatment",
+                  "unfair treatment of people"
+            ],
+            "antonyms": [
+                  "fair treatment"
+            ],
+            "category": "Rights & Values",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Women, Slavery and Poetry",
+            "storyExample": "However, many poor women had no rights and faced unfair treatment."
+      },
+      {
+            "word": "slavery",
+            "definition": "A system in which people are owned and forced to work.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈsleɪvəri/",
+            "wordFamily": [
+                  "slave",
+                  "slavery"
+            ],
+            "collocations": [
+                  "system of slavery",
+                  "slavery in society"
+            ],
+            "antonyms": [
+                  "freedom"
+            ],
+            "category": "Society & Rights",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Women, Slavery and Poetry",
+            "storyExample": "In old Mecca, slavery was an ordinary part of the economy."
+      },
+      {
+            "word": "Poets",
+            "definition": "People who write or perform poetry.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈpoʊəts/",
+            "wordFamily": [
+                  "poet",
+                  "poem",
+                  "poetry",
+                  "poetic"
+            ],
+            "collocations": [
+                  "tribal poets",
+                  "poets and poetry"
+            ],
+            "category": "Culture & Language",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Women, Slavery and Poetry",
+            "storyExample": "Poets were also very important in social life."
+      },
+      {
+            "word": "media",
+            "definition": "Ways of sharing news, ideas, and messages with people.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈmiːdiə/",
+            "collocations": [
+                  "mass media",
+                  "media of the people"
+            ],
+            "category": "Communication & Society",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Women, Slavery and Poetry",
+            "storyExample": "In those days, poets were like the media of the people."
+      },
+      {
+            "word": "idols",
+            "definition": "Objects wrongly worshipped as gods.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈaɪdəlz/",
+            "wordFamily": [
+                  "idol",
+                  "idols"
+            ],
+            "collocations": [
+                  "worship idols",
+                  "360 idols"
+            ],
+            "category": "Belief & Objects",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "Religious Life in Mecca",
+            "storyExample": "Before Islam, most people in Arabia worshipped idols."
+      },
+      {
+            "word": "Hanifs",
+            "definition": "People who followed the old religion of Abraham.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/həˈniːfs/",
+            "collocations": [
+                  "the Hanifs",
+                  "Hanifs followed Abraham"
+            ],
+            "category": "Belief & History",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "Religious Life in Mecca",
+            "storyExample": "Some people, called Hanifs, followed the old religion of Abraham (as)."
+      },
+      {
+            "word": "Creator",
+            "definition": "Allah, the One who created everything.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/kriˈeɪtər/",
+            "wordFamily": [
+                  "create",
+                  "creation",
+                  "Creator"
+            ],
+            "collocations": [
+                  "Allah as Creator",
+                  "Creator of everything"
+            ],
+            "category": "Belief & Faith",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "Religious Life in Mecca",
+            "storyExample": "Arab people in that period actually believed in one main God, Allah, as the Creator."
+      },
+      {
+            "word": "superstitions",
+            "definition": "Beliefs based on fear or tradition rather than sound evidence or true religion.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˌsuːpərˈstɪʃənz/",
+            "wordFamily": [
+                  "superstition",
+                  "superstitious"
+            ],
+            "collocations": [
+                  "believe in superstitions",
+                  "full of superstitions"
+            ],
+            "category": "Belief & Society",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "Religious Life in Mecca",
+            "storyExample": "Life in the Age of Ignorance was also full of superstitions."
+      },
+      {
+            "word": "omens",
+            "definition": "Signs people believed could predict what would happen.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈoʊmənz/",
+            "wordFamily": [
+                  "omen",
+                  "omens"
+            ],
+            "collocations": [
+                  "check omens",
+                  "bad omen"
+            ],
+            "category": "Belief & Society",
+            "level": "B1",
+            "chapter": 10,
+            "chapterTitle": "Religious Life in Mecca",
+            "storyExample": "People believed in kahins, or soothsayers, and checked omens before making decisions."
+      },
+      {
+            "word": "Politics",
+            "definition": "Activities connected with power and governing society.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈpɑːlətɪks/",
+            "wordFamily": [
+                  "politics",
+                  "political",
+                  "politically"
+            ],
+            "collocations": [
+                  "politics and religion",
+                  "politics and economics"
+            ],
+            "category": "Politics & Society",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "What Islam Meant",
+            "storyExample": "Politics, economics, and religion are connected."
+      },
+      {
+            "word": "economics",
+            "definition": "Activities connected with money, work, trade, and resources.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˌekəˈnɑːmɪks/",
+            "wordFamily": [
+                  "economy",
+                  "economic",
+                  "economics"
+            ],
+            "collocations": [
+                  "study economics",
+                  "politics and economics"
+            ],
+            "category": "Economy & Society",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "What Islam Meant",
+            "storyExample": "Politics, economics, and religion are connected."
+      },
+      {
+            "word": "community",
+            "definition": "A group of people who share a common life or identity.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/kəˈmjuːnəti/",
+            "wordFamily": [
+                  "community",
+                  "communal"
+            ],
+            "collocations": [
+                  "new community",
+                  "Muslim community"
+            ],
+            "category": "Society & Identity",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "What Islam Meant",
+            "storyExample": "From the beginning, Islam showed that Muslims were a new community."
+      },
+      {
+            "word": "ignored",
+            "definition": "Refused to pay attention to something.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/ɪɡˈnɔːrd/",
+            "wordFamily": [
+                  "ignore",
+                  "ignored",
+                  "ignorance"
+            ],
+            "collocations": [
+                  "ignore a message",
+                  "ignore a warning"
+            ],
+            "synonyms": [
+                  "disregarded"
+            ],
+            "antonyms": [
+                  "noticed"
+            ],
+            "category": "Actions & Attitudes",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "What Islam Meant",
+            "storyExample": "However, many leaders ignored the Quran and stood against the Prophet (as)."
+      },
+      {
+            "word": "leaders",
+            "definition": "People who guide or have authority over a group.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈliːdərz/",
+            "wordFamily": [
+                  "lead",
+                  "leader",
+                  "leadership"
+            ],
+            "collocations": [
+                  "religious leaders",
+                  "community leaders"
+            ],
+            "category": "People & Power",
+            "level": "B1",
+            "chapter": 11,
+            "chapterTitle": "What Islam Meant",
+            "storyExample": "However, many leaders ignored the Quran and stood against the Prophet (as)."
+      },
+      {
+            "word": "super-rich",
+            "definition": "Extremely wealthy.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˌsuːpər ˈrɪtʃ/",
+            "collocations": [
+                  "super-rich people",
+                  "super-rich leaders"
+            ],
+            "synonyms": [
+                  "extremely wealthy"
+            ],
+            "category": "Economy & Society",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "The Leaders of Quraysh",
+            "storyExample": "In the first few years of the call to Islam, almost none of Mecca’s super-rich people became Muslims."
+      },
+      {
+            "word": "prestigious",
+            "definition": "Highly respected and admired.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/preˈstɪdʒəs/",
+            "wordFamily": [
+                  "prestige",
+                  "prestigious"
+            ],
+            "collocations": [
+                  "prestigious position",
+                  "prestigious role"
+            ],
+            "synonyms": [
+                  "respected"
+            ],
+            "category": "Status & Society",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "The Leaders of Quraysh",
+            "storyExample": "They had high prestige, making them the prestigious caretakers of pilgrimage in the Arabian region."
+      },
+      {
+            "word": "caretakers",
+            "definition": "People responsible for looking after a place or activity.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈkerteɪkərz/",
+            "wordFamily": [
+                  "care",
+                  "caretaker"
+            ],
+            "collocations": [
+                  "caretakers of pilgrimage",
+                  "site caretakers"
+            ],
+            "category": "People & Roles",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "The Leaders of Quraysh",
+            "storyExample": "They had high prestige, making them the prestigious caretakers of pilgrimage in the Arabian region."
+      },
+      {
+            "word": "forbade",
+            "definition": "Did not allow something.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/fərˈbeɪd/",
+            "wordFamily": [
+                  "forbid",
+                  "forbade",
+                  "forbidden"
+            ],
+            "collocations": [
+                  "forbid a practice",
+                  "forbade usury"
+            ],
+            "antonyms": [
+                  "allowed"
+            ],
+            "category": "Rules & Ethics",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "The Leaders of Quraysh",
+            "storyExample": "For example, Quraysh used unfair money systems like usury, but the Quran forbade this and allowed only honest trade."
+      },
+      {
+            "word": "zakat",
+            "definition": "Obligatory charity that Muslims give under Islamic rules.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/zəˈkɑːt/",
+            "collocations": [
+                  "give zakat",
+                  "zakat and sadaqah"
+            ],
+            "category": "Spiritual Life & Giving",
+            "level": "B1",
+            "chapter": 12,
+            "chapterTitle": "The Leaders of Quraysh",
+            "storyExample": "Islam also commanded zakat and sadaqah to help the poor."
+      },
+      {
+            "word": "mocked",
+            "definition": "Made fun of someone or something in an unkind way.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/mɑːkt/",
+            "wordFamily": [
+                  "mock",
+                  "mocked",
+                  "mockery"
+            ],
+            "collocations": [
+                  "mock someone",
+                  "mock a belief"
+            ],
+            "synonyms": [
+                  "ridiculed"
+            ],
+            "category": "Actions & Conduct",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "Opposition to Islam",
+            "storyExample": "At first, the leaders of Mecca only mocked Islam."
+      },
+      {
+            "word": "criticized the idols",
+            "definition": "Said that idol worship was wrong.",
+            "partOfSpeech": "verb phrase",
+            "pronunciation": "/ˈkrɪtɪsaɪzd ði ˈaɪdəlz/",
+            "wordFamily": [
+                  "criticize",
+                  "criticism",
+                  "critical"
+            ],
+            "collocations": [
+                  "criticize idol worship",
+                  "criticize a belief"
+            ],
+            "category": "Communication & Belief",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "Opposition to Islam",
+            "storyExample": "But when the Quran criticized the idols and warned against false worship, their opposition became violent."
+      },
+      {
+            "word": "violent",
+            "definition": "Using physical force or cruelty.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈvaɪələnt/",
+            "wordFamily": [
+                  "violence",
+                  "violent",
+                  "violently"
+            ],
+            "collocations": [
+                  "violent opposition",
+                  "become violent"
+            ],
+            "synonyms": [
+                  "aggressive"
+            ],
+            "antonyms": [
+                  "peaceful"
+            ],
+            "category": "Conflict & Conduct",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "Opposition to Islam",
+            "storyExample": "But when the Quran criticized the idols and warned against false worship, their opposition became violent."
+      },
+      {
+            "word": "Abyssinian",
+            "definition": "From Abyssinia, the historical region associated with Ethiopia.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˌæbɪˈsɪniən/",
+            "wordFamily": [
+                  "Abyssinia",
+                  "Abyssinian"
+            ],
+            "collocations": [
+                  "Abyssinian slave",
+                  "from Abyssinia"
+            ],
+            "category": "People & History",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "Opposition to Islam",
+            "storyExample": "One of them was Bilal, an Abyssinian slave and one of the first believers in Islam."
+      },
+      {
+            "word": "boycott",
+            "definition": "An organized refusal to trade or deal with a group as pressure.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈbɔɪkɑːt/",
+            "wordFamily": [
+                  "boycott",
+                  "boycotted"
+            ],
+            "collocations": [
+                  "economic boycott",
+                  "begin a boycott"
+            ],
+            "category": "Society & Economy",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "Opposition to Islam",
+            "storyExample": "Between 617 and 620, they began a social and economic boycott against Muslims and those who helped them."
+      },
+      {
+            "word": "survive",
+            "definition": "To stay alive in a difficult or dangerous situation.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/sərˈvaɪv/",
+            "wordFamily": [
+                  "survive",
+                  "survival",
+                  "survivor"
+            ],
+            "collocations": [
+                  "struggle to survive",
+                  "survive hardship"
+            ],
+            "synonyms": [
+                  "stay alive"
+            ],
+            "category": "Life & Survival",
+            "level": "B1",
+            "chapter": 14,
+            "chapterTitle": "Boycott and Pressure",
+            "storyExample": "Some died of hunger, and others even ate tree leaves to survive."
+      },
+      {
+            "word": "wealth",
+            "definition": "A large amount of money or valuable possessions.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/welθ/",
+            "wordFamily": [
+                  "wealth",
+                  "wealthy"
+            ],
+            "collocations": [
+                  "gain wealth",
+                  "lose wealth"
+            ],
+            "synonyms": [
+                  "riches"
+            ],
+            "category": "Economy & Society",
+            "level": "B1",
+            "chapter": 14,
+            "chapterTitle": "Boycott and Pressure",
+            "storyExample": "Losing the idols meant losing wealth and influence, so they became hostile to Islam."
+      },
+      {
+            "word": "hostile",
+            "definition": "Unfriendly and strongly opposed to someone or something.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈhɑːstəl/",
+            "wordFamily": [
+                  "hostile",
+                  "hostility"
+            ],
+            "collocations": [
+                  "hostile to Islam",
+                  "hostile attitude"
+            ],
+            "synonyms": [
+                  "opposed"
+            ],
+            "antonyms": [
+                  "friendly"
+            ],
+            "category": "Attitudes & Conflict",
+            "level": "B1",
+            "chapter": 14,
+            "chapterTitle": "Boycott and Pressure",
+            "storyExample": "Losing the idols meant losing wealth and influence, so they became hostile to Islam."
+      },
+      {
+            "word": "punishment",
+            "definition": "A penalty or consequence for wrongdoing.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈpʌnɪʃmənt/",
+            "wordFamily": [
+                  "punish",
+                  "punishment"
+            ],
+            "collocations": [
+                  "receive punishment",
+                  "punishment for wrongdoing"
+            ],
+            "category": "Law & Consequences",
+            "level": "B1",
+            "chapter": 14,
+            "chapterTitle": "Boycott and Pressure",
+            "storyExample": "They did not want to think about punishment for hurting people, making money unfairly, drinking alcohol, or doing other evil things."
+      },
+      {
+            "word": "Tribal loyalty",
+            "definition": "Strong support for one’s tribe.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈtraɪbəl ˈlɔɪəlti/",
+            "wordFamily": [
+                  "tribe",
+                  "tribal",
+                  "loyal",
+                  "loyalty"
+            ],
+            "collocations": [
+                  "tribal loyalty",
+                  "strong loyalty"
+            ],
+            "category": "Society & Identity",
+            "level": "B1",
+            "chapter": 14,
+            "chapterTitle": "Boycott and Pressure",
+            "storyExample": "Tribal loyalty was another challenge because people feared losing their tribe’s protection."
+      },
+      {
+            "word": "stateless",
+            "definition": "Without the protection or recognized belonging of a state or community.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈsteɪtləs/",
+            "wordFamily": [
+                  "state",
+                  "stateless"
+            ],
+            "collocations": [
+                  "stateless person",
+                  "become stateless"
+            ],
+            "category": "Rights & Identity",
+            "level": "B1",
+            "chapter": 15,
+            "chapterTitle": "Islam and Justice",
+            "storyExample": "It was almost like being stateless today."
+      },
+      {
+            "word": "freedom of choice",
+            "definition": "The ability to make a choice without being forced.",
+            "partOfSpeech": "noun phrase",
+            "pronunciation": "/ˈfriːdəm əv tʃɔɪs/",
+            "wordFamily": [
+                  "free",
+                  "freedom",
+                  "choose",
+                  "choice"
+            ],
+            "collocations": [
+                  "freedom of choice",
+                  "protect freedom of choice"
+            ],
+            "category": "Rights & Values",
+            "level": "B1",
+            "chapter": 15,
+            "chapterTitle": "Islam and Justice",
+            "storyExample": "In old Arab society, tribal loyalty was so strong that freedom of choice was difficult."
+      },
+      {
+            "word": "prevent",
+            "definition": "To stop something from happening.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/prɪˈvent/",
+            "wordFamily": [
+                  "prevent",
+                  "prevention",
+                  "preventive"
+            ],
+            "collocations": [
+                  "prevent someone from doing",
+                  "prevent change"
+            ],
+            "synonyms": [
+                  "stop"
+            ],
+            "category": "Actions & Power",
+            "level": "B1",
+            "chapter": 15,
+            "chapterTitle": "Islam and Justice",
+            "storyExample": "The leaders of Mecca tried to prevent members of their tribes from becoming Muslim."
+      },
+      {
+            "word": "mercy",
+            "definition": "Kindness and compassion shown to others.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈmɜːrsi/",
+            "wordFamily": [
+                  "mercy",
+                  "merciful"
+            ],
+            "collocations": [
+                  "show mercy",
+                  "justice and mercy"
+            ],
+            "synonyms": [
+                  "compassion"
+            ],
+            "category": "Values",
+            "level": "B1",
+            "chapter": 15,
+            "chapterTitle": "Islam and Justice",
+            "storyExample": "In reality, Islam was calling people to a better form of unity based on justice, mercy, and belief in one Allah."
+      },
+      {
+            "word": "fairness",
+            "definition": "Justice and equal treatment.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈfernəs/",
+            "wordFamily": [
+                  "fair",
+                  "fairness",
+                  "unfair"
+            ],
+            "collocations": [
+                  "peace and fairness",
+                  "fairness in society"
+            ],
+            "synonyms": [
+                  "justice"
+            ],
+            "antonyms": [
+                  "unfairness"
+            ],
+            "category": "Values & Justice",
+            "level": "B1",
+            "chapter": 15,
+            "chapterTitle": "Islam and Justice",
+            "storyExample": "Jahiliyyah means a society without justice and mercy; Islam is the opposite because it brings peace and fairness."
+      }
+]
   },
   { id: 20, type: 'final-challenge', title: 'B1 Final Challenge', image: '', content: 'Demonstrate whole-book B1 understanding through ten varied tasks.' },
 ];
