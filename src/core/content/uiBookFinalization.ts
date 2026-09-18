@@ -114,12 +114,29 @@ const reorderLearningFlow = (
   return output;
 };
 
+const normalizeVocabularyContextText = (value: string): string => value
+  .toLocaleLowerCase()
+  .replace(/[\u064B-\u0652\u0670]/g, '')
+  .replace(/[أإآٱ]/g, 'ا')
+  .replace(/ى/g, 'ي')
+  .replace(/ؤ/g, 'و')
+  .replace(/ئ/g, 'ي')
+  .replace(/\s+/g, ' ')
+  .trim();
+
 const preparedStoryContext = (
   page: PageData,
   word: string,
   preferred?: string,
 ): string | undefined => {
-  if (preferred?.trim()) return preferred.trim();
+  const normalizedWord = normalizeVocabularyContextText(word);
+
+  if (
+    preferred?.trim()
+    && normalizeVocabularyContextText(preferred).includes(normalizedWord)
+  ) {
+    return preferred.trim();
+  }
 
   const source = (page.content ?? '')
     .replace(/\[[^\]]+\]/g, ' ')
@@ -129,24 +146,12 @@ const preparedStoryContext = (
 
   if (!source) return undefined;
 
-  const lowerSource = source.toLocaleLowerCase();
-  const lowerWord = word.toLocaleLowerCase();
-  const wordIndex = lowerSource.indexOf(lowerWord);
-  if (wordIndex < 0) return undefined;
+  const sentence = source
+    .split(/(?<=[.!?؟])\s+/)
+    .map(value => value.trim())
+    .find(value => normalizeVocabularyContextText(value).includes(normalizedWord));
 
-  const sentenceStart = Math.max(
-    source.lastIndexOf('.', wordIndex - 1),
-    source.lastIndexOf('!', wordIndex - 1),
-    source.lastIndexOf('?', wordIndex - 1),
-    source.lastIndexOf('؟', wordIndex - 1),
-  ) + 1;
-
-  const possibleEnds = ['.', '!', '?', '؟']
-    .map(mark => source.indexOf(mark, wordIndex + word.length))
-    .filter(index => index >= 0);
-  const sentenceEnd = possibleEnds.length ? Math.min(...possibleEnds) + 1 : source.length;
-  const sentence = source.slice(sentenceStart, sentenceEnd).trim();
-
+  if (!sentence) return undefined;
   return sentence.length > 240 ? `${sentence.slice(0, 237).trim()}…` : sentence;
 };
 
