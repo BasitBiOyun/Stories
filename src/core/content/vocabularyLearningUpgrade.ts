@@ -242,14 +242,14 @@ const pickEvenly = <T,>(items: T[], count: number): T[] => {
 const challengePage = (book: BookData): PageData | undefined =>
   book.pages.find(page => page.type === 'vocabulary-match');
 
-const glossaryVocabulary = (book: BookData): VocabularyItem[] => {
+const glossaryVocabulary = (book: BookData, language: Language): VocabularyItem[] => {
   const seen = new Set<string>();
   const result: VocabularyItem[] = [];
 
   book.pages.forEach(page => {
     if (page.type !== 'story' && page.type !== 'glossary') return;
     page.vocabulary?.forEach(item => {
-      const key = normalizeWord(item.word, 'en');
+      const key = normalizeWord(item.word, language);
       if (!key || seen.has(key) || !item.definition?.trim()) return;
       seen.add(key);
       result.push({ ...item });
@@ -260,7 +260,7 @@ const glossaryVocabulary = (book: BookData): VocabularyItem[] => {
 };
 
 const makeGlossaryPage = (book: BookData, language: Language): PageData | null => {
-  const vocabulary = glossaryVocabulary(book);
+  const vocabulary = glossaryVocabulary(book, language);
   if (!vocabulary.length) return null;
 
   const usedIds = new Set(book.pages.map(page => page.id));
@@ -346,6 +346,13 @@ const upgradeChallengePairs = (
   };
 };
 
+const nextFreePageId = (book: BookData): number => {
+  const usedIds = new Set(book.pages.map(page => page.id));
+  let id = Math.max(0, ...usedIds) + 1;
+  while (usedIds.has(id)) id += 1;
+  return id;
+};
+
 const updateChallengePage = (
   book: BookData,
   language: Language,
@@ -355,30 +362,65 @@ const updateChallengePage = (
   const policy = getLearningLevelPolicy(level);
   const hasChallenge = book.pages.some(page => page.type === 'vocabulary-match');
 
+  const challengeCopy = {
+    title: language === 'ar'
+      ? `تحدي المفردات ${level}`
+      : `${level} Vocabulary Challenge`,
+    content: language === 'ar'
+      ? `تدرّب على ${policy.vocabularyCount} كلمة مستهدفة عبر المطابقة والسياق والاسترجاع.`
+      : `Practise ${policy.vocabularyCount} target words through matching, story context and active recall.`,
+  };
+
   const pages = book.pages.map(page => {
     if (page.type !== 'vocabulary-match') return { ...page };
 
     return {
       ...page,
-      title: language === 'ar'
-        ? `تحدي المفردات ${level}`
-        : `${level} Vocabulary Challenge`,
-      content: language === 'ar'
-        ? `تدرّب على ${policy.vocabularyCount} كلمة مستهدفة عبر المطابقة والسياق والاسترجاع.`
-        : `Practise ${policy.vocabularyCount} target words through matching, story context and active recall.`,
+      ...challengeCopy,
       vocabularyPairs: pairs,
     };
   });
 
-  if (!hasChallenge) return { ...book, pages };
+  if (hasChallenge) return { ...book, pages };
 
-  return { ...book, pages };
+  return {
+    ...book,
+    pages: [
+      ...pages,
+      {
+        id: nextFreePageId({ ...book, pages }),
+        type: 'vocabulary-match',
+        ...challengeCopy,
+        image: '',
+        vocabularyPairs: pairs,
+      },
+    ],
+  };
 };
 
 const ensureGlossary = (book: BookData, language: Language): BookData => {
-  if (book.pages.some(page => page.type === 'glossary')) return book;
-  const glossary = makeGlossaryPage(book, language);
-  return glossary ? { ...book, pages: [...book.pages, glossary] } : book;
+  const glossaryPages = book.pages.filter(page => page.type === 'glossary');
+  const storyVocabulary = glossaryVocabulary(book, language);
+
+  if (!glossaryPages.length) {
+    const glossary = makeGlossaryPage(book, language);
+    return glossary ? { ...book, pages: [...book.pages, glossary] } : book;
+  }
+
+  if (!storyVocabulary.length) return book;
+
+  const hasPopulatedGlossary = glossaryPages.some(page => (page.vocabulary?.length ?? 0) > 0);
+  if (hasPopulatedGlossary) return book;
+
+  let populated = false;
+  return {
+    ...book,
+    pages: book.pages.map(page => {
+      if (page.type !== 'glossary' || populated) return { ...page };
+      populated = true;
+      return { ...page, vocabulary: storyVocabulary };
+    }),
+  };
 };
 
 const reorderLearningFlow = (book: BookData): BookData => {
