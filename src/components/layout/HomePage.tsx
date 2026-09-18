@@ -1,5 +1,13 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'motion/react';
 import { ProphetStory, Level } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -127,6 +135,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
 
   const { language, t, isRTL } = useLanguage();
 
+  const stageRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateYBase = useTransform(pointerX, [-0.5, 0.5], reduceMotion ? [0, 0] : [-4.5, 4.5]);
+  const rotateXBase = useTransform(pointerY, [-0.5, 0.5], reduceMotion ? [0, 0] : [4, -4]);
+  const rotateY = useSpring(rotateYBase, { stiffness: 180, damping: 24, mass: 0.7 });
+  const rotateX = useSpring(rotateXBase, { stiffness: 180, damping: 24, mass: 0.7 });
+  const { scrollYProgress } = useScroll({
+    target: stageRef,
+    offset: ['start end', 'end start'],
+  });
+  const ambientY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-22, 22]);
+  const ambientScale = useTransform(scrollYProgress, [0, 0.5, 1], reduceMotion ? [1, 1, 1] : [1.08, 1.13, 1.08]);
+  const coverY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [14, -14]);
+
   const copy =
     language === 'ar'
       ? {
@@ -239,6 +263,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     });
   };
 
+  const handleCoverPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (reduceMotion || event.pointerType === 'touch') return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const resetCoverTilt = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
+
+  const handleCoverSwipe = (offsetX: number, velocityX: number) => {
+    if (visibleStories.length <= 1) return;
+    if (Math.abs(offsetX) < 55 && Math.abs(velocityX) < 450) return;
+    const effectiveX = isRTL ? -offsetX : offsetX;
+    moveCarousel(effectiveX < 0 ? 1 : -1);
+  };
+
   return (
     <div
       className={cn(
@@ -247,7 +290,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       )}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <header className="relative z-40 border-b border-white/[0.07] bg-[#0e1812]/92 backdrop-blur-xl">
+      <header className="relative z-40 bg-[#0e1812]/92 backdrop-blur-xl">
         <div className="mx-auto flex min-h-[78px] w-full max-w-[1480px] items-center justify-between gap-5 px-5 sm:px-8 lg:px-12">
           <div className="flex min-w-0 items-center gap-3.5">
             <div className="h-11 w-11 shrink-0 overflow-hidden rounded-xl border border-[#E2BE6A]/25 bg-[#17261c] p-1.5">
@@ -274,9 +317,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       <main className="relative mx-auto w-full max-w-[1480px] px-5 pb-16 pt-8 sm:px-8 sm:pt-10 lg:px-12 lg:pt-12">
         <section className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
           <div className="max-w-4xl text-start">
-            <div className="mb-4 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#E2BE6A]/76">
-              <span className="h-px w-9 bg-[#E2BE6A]/50" />
-              <span>{copy.eyebrow}</span>
+            <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#E2BE6A]/76">
+              {copy.eyebrow}
             </div>
             <h1 className="max-w-4xl text-[clamp(2.35rem,5.4vw,5rem)] font-semibold leading-[0.98] tracking-[-0.052em] text-[#FFF8E9]">
               {copy.title}
@@ -326,10 +368,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               type="button"
               onClick={() => selectCollection('all')}
               className={cn(
-                'min-h-[72px] rounded-2xl border px-5 text-start transition-all lg:min-w-[150px]',
+                'min-h-[72px] rounded-2xl px-5 text-start transition-all lg:min-w-[150px]',
                 activeCollection === 'all'
-                  ? 'border-[#E2BE6A]/40 bg-[#E2BE6A]/10 text-[#FFF8E9]'
-                  : 'border-white/[0.08] bg-white/[0.025] text-[#E5DDCC]/72 hover:border-white/16 hover:bg-white/[0.045]',
+                  ? 'bg-[#E2BE6A]/12 text-[#FFF8E9] shadow-[0_14px_38px_rgba(0,0,0,0.12)]'
+                  : 'bg-white/[0.025] text-[#E5DDCC]/72 hover:bg-white/[0.055]',
               )}
             >
               <span className="block text-[10px] font-semibold uppercase tracking-[0.17em] text-[#E2BE6A]/70">
@@ -349,10 +391,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   key={collection}
                   type="button"
                   onClick={() => selectCollection(collection)}
-                  className="group relative min-h-[72px] overflow-hidden rounded-2xl border p-3.5 text-start transition-all"
+                  className="group relative min-h-[72px] overflow-hidden rounded-2xl p-3.5 text-start transition-all"
                   style={{
-                    borderColor: active ? visual.border : 'rgba(255,255,255,0.08)',
-                    background: active ? visual.surface : 'rgba(255,255,255,0.025)',
+                    background: active ? visual.accentSoft : 'rgba(255,255,255,0.025)',
+                    boxShadow: active ? '0 14px 38px rgba(0,0,0,0.13)' : 'none',
                   }}
                 >
                   <div
@@ -362,8 +404,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   />
                   <div className="relative flex items-center gap-3.5">
                     <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border p-1.5"
-                      style={{ borderColor: visual.border, background: visual.accentSoft }}
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-1.5"
+                      style={{ background: visual.accentSoft }}
                     >
                       <img
                         src={collectionIcons[collection]}
@@ -389,8 +431,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           </div>
 
           <div
-            className="relative mt-5 overflow-hidden rounded-[30px] border border-white/[0.09] bg-[#122019] shadow-[0_28px_80px_rgba(0,0,0,0.24)]"
-            style={{ minHeight: 560 }}
+            ref={stageRef}
+            className="relative mt-5 overflow-hidden rounded-[34px] bg-[#122019] shadow-[0_34px_100px_rgba(0,0,0,0.30)] lg:h-[600px] xl:h-[620px]"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -400,7 +442,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.45 }}
-                className="absolute inset-0"
+                className="absolute inset-[-4%]"
+                style={{ y: ambientY, scale: ambientScale }}
               >
                 <img
                   src={activeStory.image}
@@ -418,16 +461,36 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               </motion.div>
             </AnimatePresence>
 
-            <div className="relative grid min-h-[560px] lg:grid-cols-[minmax(320px,0.86fr)_minmax(0,1.14fr)]">
-              <div className="relative min-h-[440px] overflow-hidden lg:min-h-full">
+            <div className="relative grid min-h-[560px] lg:h-full lg:min-h-0 lg:grid-cols-[minmax(330px,0.9fr)_minmax(0,1.1fr)]">
+              <div className="relative flex min-h-[470px] items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-0 lg:p-10 [perspective:1400px]">
+                <motion.img
+                  aria-hidden="true"
+                  src={collectionIcons[activeStoryCollection]}
+                  alt=""
+                  className="pointer-events-none absolute start-[8%] top-[9%] h-44 w-44 object-contain opacity-[0.045] sm:h-56 sm:w-56"
+                  style={{ y: ambientY }}
+                  referrerPolicy="no-referrer"
+                />
+
+                <div className="absolute aspect-[4/5] h-[77%] translate-x-6 translate-y-5 rounded-[30px] bg-black/45 blur-2xl" />
+
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`cover-${activeStory.id}`}
-                    initial={{ opacity: 0, x: isRTL ? 28 : -28, scale: 0.985 }}
+                    initial={{ opacity: 0, x: isRTL ? 34 : -34, scale: 0.96 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: isRTL ? -20 : 20, scale: 0.99 }}
-                    transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0"
+                    exit={{ opacity: 0, x: isRTL ? -26 : 26, scale: 0.97 }}
+                    transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
+                    onPointerMove={handleCoverPointerMove}
+                    onPointerLeave={resetCoverTilt}
+                    style={{
+                      rotateX,
+                      rotateY,
+                      y: coverY,
+                      transformPerspective: 1400,
+                      transformStyle: 'preserve-3d',
+                    }}
+                    className="relative aspect-[4/5] h-[86%] max-h-[520px] overflow-hidden rounded-[28px] bg-[#0b120d] shadow-[0_34px_80px_rgba(0,0,0,0.42)] will-change-transform"
                   >
                     <img
                       src={activeStory.image}
@@ -435,18 +498,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#101a14]/90 via-transparent to-black/10 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#101a14]/95" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/18 via-transparent to-white/[0.07]" />
+                    <motion.div
+                      drag={visibleStories.length > 1 ? 'x' : false}
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.12}
+                      onDragEnd={(_, info) => handleCoverSwipe(info.offset.x, info.velocity.x)}
+                      className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
+                      aria-hidden="true"
+                    />
                   </motion.div>
                 </AnimatePresence>
 
                 <div className="absolute inset-x-5 bottom-5 flex items-center justify-between gap-3 lg:hidden">
-                  <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75 backdrop-blur-md">
+                  <span className="rounded-full bg-black/40 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur-md">
                     {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
                   </span>
                 </div>
               </div>
 
-              <div className="relative flex min-h-[520px] flex-col justify-center px-6 py-8 sm:px-9 lg:px-12 lg:py-10 xl:px-14">
+              <div className="relative flex min-h-[520px] flex-col justify-center px-6 py-8 sm:px-9 lg:h-full lg:min-h-0 lg:px-12 lg:py-10 xl:px-14">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`copy-${activeStory.id}`}
@@ -456,28 +527,51 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                     transition={{ duration: 0.32, ease: 'easeOut' }}
                     className="text-start"
                   >
-                    <div className="flex flex-wrap items-center gap-3">
-                      <div
-                        className="flex items-center gap-2.5 rounded-full border px-3 py-1.5"
-                        style={{ borderColor: activeVisual.border, background: activeVisual.surface }}
-                      >
-                        <img
-                          src={collectionIcons[activeStoryCollection]}
-                          alt=""
-                          className="h-5 w-5 object-contain"
-                          referrerPolicy="no-referrer"
-                        />
-                        <span
-                          className="text-[10px] font-semibold uppercase tracking-[0.16em]"
-                          style={{ color: activeVisual.accent }}
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <div
+                          className="flex items-center gap-2.5 rounded-full px-3 py-1.5"
+                          style={{ background: activeVisual.surface }}
                         >
-                          {collectionLabels[activeStoryCollection]}
+                          <img
+                            src={collectionIcons[activeStoryCollection]}
+                            alt=""
+                            className="h-5 w-5 object-contain"
+                            referrerPolicy="no-referrer"
+                          />
+                          <span
+                            className="text-[10px] font-semibold uppercase tracking-[0.16em]"
+                            style={{ color: activeVisual.accent }}
+                          >
+                            {collectionLabels[activeStoryCollection]}
+                          </span>
+                        </div>
+
+                        <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E5DDCC]/48 lg:inline">
+                          {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
                         </span>
                       </div>
 
-                      <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E5DDCC]/42 lg:inline">
-                        {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
-                      </span>
+                      <div className="hidden items-center gap-2 sm:flex">
+                        <button
+                          type="button"
+                          onClick={() => moveCarousel(-1)}
+                          disabled={visibleStories.length <= 1}
+                          aria-label={copy.previous}
+                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.055] text-[#FFF9EB] transition-colors hover:bg-white/[0.11] disabled:cursor-default disabled:opacity-25"
+                        >
+                          <ChevronLeft size={18} mirrored={isRTL} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => moveCarousel(1)}
+                          disabled={visibleStories.length <= 1}
+                          aria-label={copy.next}
+                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.055] text-[#FFF9EB] transition-colors hover:bg-white/[0.11] disabled:cursor-default disabled:opacity-25"
+                        >
+                          <ChevronRight size={18} mirrored={isRTL} />
+                        </button>
+                      </div>
                     </div>
 
                     <h2 className="mt-6 max-w-2xl text-[clamp(2.35rem,4.5vw,4.9rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-[#FFF9EB]">
@@ -501,17 +595,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.985 }}
                             onClick={() => launchStory(activeStory.id, level)}
-                            className="group rounded-2xl border bg-black/10 px-4 py-4 text-start transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
-                            style={{
-                              borderColor: 'rgba(255,255,255,0.11)',
-                            }}
+                            className="group rounded-2xl bg-white/[0.055] px-4 py-4 text-start transition-colors hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
                             onMouseEnter={(event) => {
-                              event.currentTarget.style.borderColor = activeVisual.border;
                               event.currentTarget.style.background = activeVisual.surface;
                             }}
                             onMouseLeave={(event) => {
-                              event.currentTarget.style.borderColor = 'rgba(255,255,255,0.11)';
-                              event.currentTarget.style.background = 'rgba(0,0,0,0.1)';
+                              event.currentTarget.style.background = 'rgba(255,255,255,0.055)';
                             }}
                           >
                             <div className="flex items-center justify-between gap-3">
@@ -535,34 +624,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="mt-9 flex items-center justify-between gap-4 border-t border-white/[0.08] pt-5">
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => moveCarousel(-1)}
-                      disabled={visibleStories.length <= 1}
-                      aria-label={copy.previous}
-                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-[#FFF9EB] transition-colors hover:border-white/22 hover:bg-white/[0.07] disabled:cursor-default disabled:opacity-25"
-                    >
-                      <ChevronLeft size={18} mirrored={isRTL} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => moveCarousel(1)}
-                      disabled={visibleStories.length <= 1}
-                      aria-label={copy.next}
-                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-[#FFF9EB] transition-colors hover:border-white/22 hover:bg-white/[0.07] disabled:cursor-default disabled:opacity-25"
-                    >
-                      <ChevronRight size={18} mirrored={isRTL} />
-                    </button>
-                  </div>
-
-                  <div className="hidden h-px flex-1 bg-white/[0.08] sm:block" />
-
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E5DDCC]/42">
-                    A2 · B1 · B2
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -579,10 +640,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                     key={story.id}
                     type="button"
                     onClick={() => setActiveIndex(index)}
-                    className="group relative w-[190px] overflow-hidden rounded-2xl border text-start transition-all lg:w-auto"
+                    className="group relative w-[190px] overflow-hidden rounded-2xl text-start transition-all lg:w-auto"
                     style={{
-                      borderColor: active ? visual.border : 'rgba(255,255,255,0.08)',
-                      background: active ? visual.surface : 'rgba(255,255,255,0.025)',
+                      background: active ? visual.accentSoft : 'rgba(255,255,255,0.025)',
+                      transform: active ? 'translateY(-2px)' : 'translateY(0)',
+                      boxShadow: active ? '0 14px 34px rgba(0,0,0,0.16)' : 'none',
                     }}
                   >
                     <div className="flex items-center gap-3 p-2.5">
@@ -607,9 +669,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       </div>
                     </div>
                     {active && (
-                      <motion.div
+                      <motion.span
                         layoutId="active-story-rail"
-                        className="absolute inset-x-0 bottom-0 h-[2px]"
+                        className="absolute end-3 top-3 h-2 w-2 rounded-full"
                         style={{ background: visual.accent }}
                       />
                     )}
