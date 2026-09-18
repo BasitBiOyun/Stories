@@ -2,7 +2,7 @@ import type { Level } from '../../types';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
-import { finalizeBookPairForUi } from './uiBookFinalization';
+import { finalizeBookPairForUi, finalizePreparedBookPairForUi } from './uiBookFinalization';
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -66,7 +66,7 @@ const createDefinition = (
   loadSource,
   load: async () => {
     const source = await loadSource();
-    return preservePreparedLearning ? source : finalizeBookPairForUi(source);
+    return preservePreparedLearning ? finalizePreparedBookPairForUi(source) : finalizeBookPairForUi(source);
   },
 });
 
