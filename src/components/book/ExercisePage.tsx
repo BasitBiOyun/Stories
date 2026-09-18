@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, Pause, Volume2, VolumeX, BrainCircuit, ArrowRight, CheckCircle2, Book as BookIcon } from '../ui/icons';
-import { PageData, Exercise } from '../../types';
+import { PageData, Exercise, Level } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
 import { SequencingExercise } from '../exercises/SequencingExercise';
 import { VocabularyMatch } from '../exercises/VocabularyMatch';
@@ -21,7 +21,7 @@ export const ExercisePage = ({
   page: PageData; 
   userAnswers: Record<string, boolean | null>; 
   handleAnswer: (id: string, answer: boolean) => void;
-  level: string;
+  level: Level;
   collectionId?: string;
 }) => {
   const { t, language, formatNumber } = useLanguage();
@@ -313,7 +313,7 @@ export const ExercisePage = ({
                   )}>
                     {page.title}
                   </h3>
-                  <VocabularyMatch pairs={page.vocabularyPairs} collectionId={collectionId} />
+                  <VocabularyMatch pairs={page.vocabularyPairs} collectionId={collectionId} level={level} />
                 </div>
               )}
               {page.type === 'game' && (
