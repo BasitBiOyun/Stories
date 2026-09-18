@@ -75,44 +75,36 @@ export const VocabularyWord = ({
   }, [collectionId]);
 
   const updateCoords = () => {
-    if (triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      
-      const tooltipWidth = tooltipRef.current 
-        ? tooltipRef.current.offsetWidth 
-        : Math.min(viewportWidth - 24, 320);
-      const tooltipHeight = tooltipRef.current 
-        ? tooltipRef.current.offsetHeight 
-        : 100;
+    if (!triggerRef.current) return;
 
-      const triggerCenterX = rect.left + rect.width / 2;
+    const rect = triggerRef.current.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const edge = 12;
+    const gap = 8;
+    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - edge * 2, 320);
+    const tooltipHeight = tooltipRef.current?.offsetHeight ?? Math.min(viewportHeight - edge * 2, 180);
+    const triggerCenterX = rect.left + rect.width / 2;
 
-      const halfWidth = tooltipWidth / 2;
-      const minLeft = 12 + halfWidth;
-      const maxLeft = viewportWidth - 12 - halfWidth;
-      
-      let clampedLeft = triggerCenterX;
-      if (clampedLeft < minLeft) clampedLeft = minLeft;
-      if (clampedLeft > maxLeft) clampedLeft = maxLeft;
+    const unclampedLeft = triggerCenterX - tooltipWidth / 2;
+    const maxLeft = Math.max(edge, viewportWidth - tooltipWidth - edge);
+    const left = Math.min(Math.max(unclampedLeft, edge), maxLeft);
 
-      const arrowOffset = triggerCenterX - clampedLeft;
+    const spaceAbove = rect.top - edge;
+    const spaceBelow = viewportHeight - rect.bottom - edge;
+    const isAbove = spaceAbove >= tooltipHeight + gap || spaceAbove >= spaceBelow;
+    const desiredTop = isAbove
+      ? rect.top - gap - tooltipHeight
+      : rect.bottom + gap;
+    const maxTop = Math.max(edge, viewportHeight - tooltipHeight - edge);
+    const top = Math.min(Math.max(desiredTop, edge), maxTop);
 
-      const spaceAbove = rect.top;
-      const isAbove = spaceAbove >= tooltipHeight + 16 || spaceAbove >= viewportHeight - rect.bottom;
+    const arrowOffset = Math.min(
+      Math.max(triggerCenterX - left, 18),
+      Math.max(18, tooltipWidth - 18),
+    );
 
-      const top = isAbove 
-        ? rect.top - 8
-        : rect.bottom + 8;
-
-      setCoords({
-        top,
-        left: clampedLeft,
-        arrowOffset,
-        isAbove
-      });
-    }
+    setCoords({ top, left, arrowOffset, isAbove });
   };
 
   useEffect(() => {
@@ -166,9 +158,9 @@ export const VocabularyWord = ({
               />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.95, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                animate={{ opacity: 1, scale: 1, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                exit={{ opacity: 0, scale: 0.95, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.15, ease: 'easeOut' }}
                 style={{ 
                   position: 'fixed',
@@ -178,7 +170,7 @@ export const VocabularyWord = ({
                   pointerEvents: 'auto'
                 }}
                 className={cn(
-                  "w-[calc(100vw-2rem)] max-w-xs sm:max-w-sm md:max-w-md p-3.5 sm:p-5",
+                  "w-[calc(100vw-1.5rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain p-3.5 sm:p-5",
                   "bg-wood text-parchment rounded-xl shadow-2xl border",
                   tooltipTheme.border,
                   language === 'ar' ? "text-right" : "text-left"
@@ -232,7 +224,7 @@ export const VocabularyWord = ({
 
                 <div 
                   style={{
-                    left: `calc(50% + ${coords.arrowOffset}px)`
+                    left: coords.arrowOffset
                   }}
                   className={cn(
                     "absolute -translate-x-1/2 border-8 border-transparent",
