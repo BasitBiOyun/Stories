@@ -488,44 +488,9 @@ The dreadful situation in the twenty-first century reminds us of the dark period
   {
     id: 20,
     type: 'glossary',
-    title: 'B2 Master Glossary - Part 1',
-    content: 'Advanced academic vocabulary and socio-political terminology from the first half of the text.',
+    title: 'Master Glossary',
+    content: 'Review all key vocabulary from the story in one place.',
     image: '',
-    vocabulary: [
-      { word: 'Jahiliyyah', definition: 'The state of spiritual, moral, and social ignorance and disorder preceding the rise of Islam.' },
-      { word: 'hegemony', definition: 'The political, economic, or military predominance or leadership of one state or group over others.' },
-      { word: 'Byzantine', definition: 'The Eastern Roman Empire, which acted as a major superpower surrounding northern Arabia.' },
-      { word: 'Sassanid', definition: 'The neo-Persian Empire, the main rival of Byzantium, bordering eastern Arabia.' },
-      { word: 'sedentary', definition: 'A settled way of life, characteristic of city-dwellers, contrasted with nomadic pastoralists.' },
-      { word: 'nomadic', definition: 'A roaming lifestyle moving from pasture to pasture without permanent settlement.' },
-      { word: 'monotheism', definition: 'The belief in and worship of a single, omnipotent, transcendent Creator.' },
-      { word: 'oligarchy', definition: 'A small group of wealthy, powerful elites running the political and social affairs of a city.' },
-      { word: 'lucrative', definition: 'Highly profitable trade, business, or commercial activities.' },
-      { word: 'customary', definition: 'According to the traditional practices, common law, and deep-seated tribal habits of a society.' },
-      { word: 'metropolis', definition: 'A large, densely populated, and economically active urban hub or city.' },
-      { word: 'pilgrimage', definition: 'A religious journey to a sacred sanctuary or temple; a key source of prestige for Mecca.' },
-    ],
-  },
-  {
-    id: 21,
-    type: 'glossary',
-    title: 'B2 Master Glossary - Part 2',
-    content: 'Advanced academic vocabulary and theological concepts from the second half of the text.',
-    image: '',
-    vocabulary: [
-      { word: 'usury', definition: 'The exploitative practice of lending money at exorbitant, compounding interest rates.' },
-      { word: 'alliance', definition: 'A formal agreement between tribes, clauses, or states to defend one another.' },
-      { word: 'boycott', definition: 'A punitive ban on social, commercial, and political relations with a targeted group.' },
-      { word: 'sanctuary', definition: 'A sacred area where acts of violence, warfare, and tribal retribution are strictly forbidden.' },
-      { word: 'venerated', definition: 'Highly respected, honored, and worshipped as sacred.' },
-      { word: 'stewardship', definition: 'The responsible custody and care of a sacred place, resource, or society.' },
-      { word: 'jurisdiction', definition: 'The official power to make legal decisions and enforce social rules.' },
-      { word: 'lineage', definition: 'Direct ancestry and ancestral pedigree; the primary determinant of status in tribal society.' },
-      { word: 'prestige', definition: 'High reputation, influence, or status earned through wealth, leadership, or lineage.' },
-      { word: 'equality', definition: 'The prophetic principle that all humans have equal value, regardless of race, class, or origin.' },
-      { word: 'tribalism', definition: 'Extreme loyalty to one’s tribe, placing tribal survival and pride above universal justice.' },
-      { word: 'revelation', definition: 'The sending down of divine wisdom, commands, and guidance from Allah to His prophets (vahiy).' },
-    ],
   },
   {
     id: 22,
@@ -641,6 +606,62 @@ const finalReplacementEn:Record<string,Exercise>={
 };
 const meccaB2FinalChallengeExercisesPolished=meccaB2FinalChallengeExercises.map(exercise=>finalReplacementEn[exercise.id]??exercise);
 
+const meccaB2GlossaryCategoryByChapter:Record<number,string>={
+  1:'World History & Geopolitics',
+  2:'Jahiliyyah & Society',
+  3:'Sacred Geography & Faith',
+  4:'Mecca & Early History',
+  5:'Trade & Economy',
+  6:'Trade Routes & Pilgrimage',
+  7:'Economy & Social Class',
+  8:'Justice & Social Protection',
+  9:'Women & Social Life',
+  10:'Tribal Society & Identity',
+  11:'Slavery & Social Structure',
+  12:'Belief & Religious Life',
+  13:'Islam & Social Change',
+  14:'Quraysh & Political Economy',
+  15:'Opposition & Power',
+  16:'Persecution & Resistance',
+  17:'Islam & Moral Transformation',
+};
+const inferMeccaB2PartOfSpeech=(word:string,definition:string):string=>{
+  const lower=definition.toLocaleLowerCase('en');
+  if(/^(to |supported |treated |moving |worshipping |using |lacking |linked |organized |forbidden |not allowed|subjected |associated |producing |placing |prevented |increased |decreased |refused |resisted )/.test(lower))return word.includes(' ')?'verb phrase':'verb';
+  if(/^(in a |very |highly |widely |deeply |truly |approximately |gradually |strongly )/.test(lower))return word.includes(' ')?'adverbial phrase':'adverb';
+  if(/^(sacred |cruel |advanced |organized |large |powerful |wealthy |poor |unfair |morally |religious |political |social |economic |unable |free |extreme |strong |active |connected |lawful |unlawful )/.test(lower))return word.includes(' ')?'adjective phrase':'adjective';
+  return word.includes(' ')?'noun phrase':'noun';
+};
+const findMeccaB2StoryExample=(content:string,word:string):string|null=>{
+  const target=word.toLocaleLowerCase('en');
+  const sentences=content
+    .split(/\n+/)
+    .flatMap(paragraph=>paragraph.trim().split(/(?<=[.!?])(?:["”’']?)(?:\s+|$)/))
+    .map(sentence=>sentence.trim())
+    .filter(Boolean);
+  return sentences.find(sentence=>sentence.toLocaleLowerCase('en').includes(target))
+    ??content.split(/\n+/).map(part=>part.trim()).find(part=>part.toLocaleLowerCase('en').includes(target))
+    ??null;
+};
+const masterGlossary:NonNullable<PageData['vocabulary']>=Array.from(new Map(
+  standardizedMeccaB2Pages
+    .filter(page=>STORY_IDS.has(page.id))
+    .flatMap(page=>(page.vocabulary??[]).map(item=>{
+      const storyExample=findMeccaB2StoryExample(page.content??'',item.word);
+      if(!storyExample)throw new Error(`[Mecca B2 EN] Missing source example for ${item.word} in chapter ${page.id}.`);
+      return{
+        ...item,
+        level:'B2' as const,
+        partOfSpeech:inferMeccaB2PartOfSpeech(item.word,item.definition),
+        chapter:page.id,
+        chapterTitle:page.title,
+        storyExample,
+        category:meccaB2GlossaryCategoryByChapter[page.id]??'Story Vocabulary',
+      };
+    }))
+    .map(item=>[item.word.trim().toLocaleLowerCase('en'),item] as const)
+).values());
+
 const attachEnglishLearning=(pages:PageData[]):PageData[]=>pages.map(page=>{
   if(STORY_IDS.has(page.id)){
     const languageFocusExercises=englishLanguageFocus[page.id];
@@ -649,6 +670,7 @@ const attachEnglishLearning=(pages:PageData[]):PageData[]=>pages.map(page=>{
   if(page.id===18) return {...page,type:'quiz',exercises:meccaB2ManualKnowledgeCheckExercises};
   if(page.id===19) return {...page,type:'exercises',title:'B2 Language Review',content:'Review and use the qualification, cause-result, contrast, condition, information-focus and discourse patterns developed across all seventeen chapters.',exercises:meccaB2LanguageReviewExercises};
   if(page.id===20) return {...page,type:'vocabulary-match',vocabularyPairs:meccaB2VocabularyChallengePairs};
+  if(page.id===20) return {...page,type:'glossary',vocabulary:masterGlossary};
   if(page.id===22) return {...page,type:'final-challenge',exercises:meccaB2FinalChallengeExercisesPolished};
   return page;
 });
