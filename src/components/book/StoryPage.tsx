@@ -216,6 +216,19 @@ const normalizePoemLabel = (line: string) =>
     .trim()
     .toLowerCase();
 
+const cleanPoemText = (lines: string[]) => {
+  const text = lines
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && !/^\/\/\s*c\d+[ab]?$/i.test(line))
+    .join('\n')
+    .trim();
+
+  return text
+    .replace(/^[“"«]\s*/, '')
+    .replace(/\s*[”"»](?=\s*[.!?،؛]?\s*$)/, '')
+    .trim();
+};
+
 const parsePoem = (part: string) => {
   const body = part
     .replace(/^\[POEM\]\s*/i, '')
@@ -234,14 +247,14 @@ const parsePoem = (part: string) => {
   if (turkishLabelIndex >= 0) {
     const translationStart = translationLabelIndex >= 0 ? translationLabelIndex + 1 : 0;
     return {
-      translation: lines.slice(translationStart, turkishLabelIndex).join('\n').trim(),
-      original: lines.slice(turkishLabelIndex + 1).join('\n').trim(),
+      translation: cleanPoemText(lines.slice(translationStart, turkishLabelIndex)),
+      original: cleanPoemText(lines.slice(turkishLabelIndex + 1)),
     };
   }
 
   const translationStart = translationLabelIndex >= 0 ? translationLabelIndex + 1 : 0;
   return {
-    translation: lines.slice(translationStart).join('\n').trim(),
+    translation: cleanPoemText(lines.slice(translationStart)),
     original: undefined,
   };
 };
