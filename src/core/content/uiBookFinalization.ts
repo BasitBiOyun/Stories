@@ -338,16 +338,40 @@ const finalizePreparedLanguage = (
   language: Language,
 ): BookData => {
   const policy = getLearningLevelPolicy(book.level);
-  const enriched = book.pages.map(page => page.type === 'vocabulary-match'
-    ? {
+  const enriched = book.pages.map(page => {
+    if (page.type === 'vocabulary-match') {
+      return {
         ...page,
         title: language === 'ar' ? 'تحدي المفردات' : 'Vocabulary Challenge',
         content: language === 'ar'
           ? `تدرّب على ${policy.vocabularyCount} كلمة أو عبارة مستهدفة عبر المطابقة والسياق والاسترجاع.`
           : `Practise ${policy.vocabularyCount} target words through matching, context and recall.`,
         vocabularyPairs,
-      }
-    : page);
+      };
+    }
+
+    if (page.type === 'exercises') {
+      const content = language === 'ar'
+        ? book.level === 'A2'
+          ? 'راجع لغة القصة بخطوات بسيطة: انظر، تدرب، ثم استخدمها.'
+          : book.level === 'B1'
+          ? 'راجع تراكيب القواعد وروابط المعنى واللغة التواصلية من الكتاب كله، ثم استخدمها في سياقات جديدة.'
+          : 'راجع تراكيب القواعد والموقف والتماسك ولغة الخطاب من الكتاب كله، ثم استخدمها بدقة في سياقات جديدة.'
+        : book.level === 'A2'
+        ? 'Review the story language in simple steps: look, practise, then use it.'
+        : book.level === 'B1'
+        ? 'Review grammar patterns, meaning relationships and useful language from across the book, then use them in new contexts.'
+        : 'Review grammar, stance, cohesion and discourse language from across the book, then use them precisely in new contexts.';
+
+      return {
+        ...page,
+        title: language === 'ar' ? 'مراجعة اللغة' : 'Language Review',
+        content,
+      };
+    }
+
+    return page;
+  });
 
   return {
     ...book,
