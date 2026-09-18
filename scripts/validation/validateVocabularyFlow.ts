@@ -178,7 +178,7 @@ const main = async () => {
 
   const failures: Array<{ label: string; errors: string[] }> = [];
 
-  for (const definition of bookRegistry.filter(definition => definition.level === 'B1')) {
+  for (const definition of bookRegistry.filter(definition => definition.level === 'B2')) {
     const label = `${definition.storyId} ${definition.level}`;
     try {
       const errors = await validatePair(label, definition.load);
