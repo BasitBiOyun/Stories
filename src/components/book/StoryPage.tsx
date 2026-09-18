@@ -25,6 +25,7 @@ const HotspotButton = ({
   const { language } = useLanguage();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const [canShowTooltip, setCanShowTooltip] = useState(false);
   const [coords, setCoords] = useState({
     top: 12,
     left: 12,
@@ -33,9 +34,24 @@ const HotspotButton = ({
   });
 
   const updateCoords = () => {
-    if (!buttonRef.current) return;
+    if (!buttonRef.current) {
+      setCanShowTooltip(false);
+      return;
+    }
 
     const rect = buttonRef.current.getBoundingClientRect();
+    const isVisibleTrigger =
+      buttonRef.current.getClientRects().length > 0 &&
+      rect.width > 0 &&
+      rect.height > 0;
+
+    if (!isVisibleTrigger) {
+      setCanShowTooltip(false);
+      return;
+    }
+
+    setCanShowTooltip(true);
+
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - 24, 352);
@@ -66,7 +82,10 @@ const HotspotButton = ({
   };
 
   useEffect(() => {
-    if (!isActive) return;
+    if (!isActive) {
+      setCanShowTooltip(false);
+      return;
+    }
 
     updateCoords();
     const frame = window.requestAnimationFrame(updateCoords);
@@ -107,7 +126,7 @@ const HotspotButton = ({
 
         {createPortal(
           <AnimatePresence>
-            {isActive && (
+            {isActive && canShowTooltip && (
               <>
                 <div
                   className="fixed inset-0 z-[99998]"
