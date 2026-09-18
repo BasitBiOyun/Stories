@@ -154,7 +154,7 @@ Over the years, Ishmael’s children had children; one of them was Muhammad, the
   { id: 14, type: 'quiz', title: 'B1 Knowledge Check: Prophet Abraham (pbuh)', image: '', audioUrl: '', content: 'Check your whole-story understanding with eight evidence-based questions.' },
   { id: 15, type: 'exercises', title: 'B1 Retrieval Review & Reflection', image: '', content: 'Retrieve the story through sequencing, matching, reflection, and an independent eight-question quiz.' },
   { id: 16, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', image: '', content: 'Match ten reviewed B1 words with their meanings.' },
-  { id: 17, type: 'glossary', title: 'B1 Master Glossary', image: '', content: 'Review useful story words before the final challenge.' },
+  { id: 17, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review all key vocabulary from the story in one place.' },
   { id: 18, type: 'final-challenge', title: 'B1 Final Challenge', image: '', content: 'Demonstrate B1-level understanding across the complete story.' },
 ];
 
@@ -265,8 +265,1136 @@ const hotspotText: Record<number, [{ title: string; description: string }, { tit
   13: [{ title: 'The Ka’ba', description: 'Abraham and Ishmael rebuilt the House of Allah on its old foundations.' }, { title: 'Message of Tawheed', description: 'The final message emphasizes the Oneness of Allah.' }],
 };
 
-const masterGlossary = Array.from({ length: 13 }, (_, index) => index + 1)
-  .reduce<VocabularyEntry[]>((all, chapter) => all.concat(vocabularyByChapter[chapter]), []);
+const masterGlossary: NonNullable<PageData['vocabulary']> = [
+  {
+    "word": "homeland",
+    "definition": "The country or place where a person comes from.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈhoʊmlænd/",
+    "wordFamily": [
+      "home",
+      "homeland"
+    ],
+    "collocations": [
+      "leave one’s homeland",
+      "return to one’s homeland"
+    ],
+    "synonyms": [
+      "native land"
+    ],
+    "chapter": 1,
+    "chapterTitle": "Abraham in Babylon",
+    "storyExample": "In his homeland, people worshipped the stars, the moon, the sun, and statues made from wood and stone.",
+    "category": "Places & Identity"
+  },
+  {
+    "word": "intelligent",
+    "definition": "Able to learn, understand, and think well.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/ɪnˈtelɪdʒənt/",
+    "wordFamily": [
+      "intelligence",
+      "intelligent",
+      "intelligently"
+    ],
+    "collocations": [
+      "intelligent person",
+      "highly intelligent"
+    ],
+    "synonyms": [
+      "clever"
+    ],
+    "antonyms": [
+      "unintelligent"
+    ],
+    "chapter": 1,
+    "chapterTitle": "Abraham in Babylon",
+    "storyExample": "He could not understand how an intelligent person could make a statue and then see it as a god which could help or harm him.",
+    "category": "Learning & Thinking"
+  },
+  {
+    "word": "begging",
+    "definition": "Asking strongly for help or something needed.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ˈbeɡɪŋ/",
+    "wordFamily": [
+      "beg",
+      "begged",
+      "begging"
+    ],
+    "collocations": [
+      "beg for help",
+      "crying and begging"
+    ],
+    "synonyms": [
+      "pleading"
+    ],
+    "chapter": 1,
+    "chapterTitle": "Abraham in Babylon",
+    "storyExample": "Abraham was surprised to see that when people entered the building, they bowed to the statues and started crying and begging.",
+    "category": "Communication & Actions"
+  },
+  {
+    "word": "surprised",
+    "definition": "Feeling that something is unexpected.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/sərˈpraɪzd/",
+    "wordFamily": [
+      "surprise",
+      "surprised",
+      "surprising"
+    ],
+    "collocations": [
+      "feel surprised",
+      "be surprised to see"
+    ],
+    "synonyms": [
+      "astonished"
+    ],
+    "chapter": 1,
+    "chapterTitle": "Abraham in Babylon",
+    "storyExample": "Abraham was surprised to see that when people entered the building, they bowed to the statues and started crying and begging.",
+    "category": "Feelings"
+  },
+  {
+    "word": "idol maker",
+    "definition": "A person who makes idols or statues.",
+    "partOfSpeech": "noun phrase",
+    "level": "B1",
+    "pronunciation": "/ˈaɪdəl ˌmeɪkər/",
+    "wordFamily": [
+      "idol",
+      "maker"
+    ],
+    "collocations": [
+      "idol maker",
+      "make idols"
+    ],
+    "chapter": 2,
+    "chapterTitle": "Abraham and His Father’s Idols",
+    "storyExample": "Abraham’s father was an idol maker, named Azer.",
+    "category": "People & Roles"
+  },
+  {
+    "word": "favors",
+    "definition": "Helpful acts or good things given to someone.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈfeɪvərz/",
+    "wordFamily": [
+      "favor",
+      "favors"
+    ],
+    "collocations": [
+      "ask favors",
+      "do someone a favor"
+    ],
+    "synonyms": [
+      "help",
+      "kind acts"
+    ],
+    "chapter": 2,
+    "chapterTitle": "Abraham and His Father’s Idols",
+    "storyExample": "We ask favors from them and give them presents.",
+    "category": "Helping & Giving"
+  },
+  {
+    "word": "Mardukh",
+    "definition": "The chief god of Babylon in the people’s false belief.",
+    "partOfSpeech": "proper noun",
+    "level": "B1",
+    "pronunciation": "/ˈmɑːrduːk/",
+    "collocations": [
+      "statue of Mardukh",
+      "Chief God of Babylon"
+    ],
+    "chapter": 2,
+    "chapterTitle": "Abraham and His Father’s Idols",
+    "storyExample": "One day, his father saw Abraham riding the statue of Mardukh (the Chief God of Babylon), and he got angry with him.",
+    "category": "History & Belief"
+  },
+  {
+    "word": "kicked",
+    "definition": "Hit something with the foot.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/kɪkt/",
+    "wordFamily": [
+      "kick",
+      "kicked",
+      "kicking"
+    ],
+    "collocations": [
+      "kick something",
+      "kick with the foot"
+    ],
+    "synonyms": [
+      "struck"
+    ],
+    "chapter": 2,
+    "chapterTitle": "Abraham and His Father’s Idols",
+    "storyExample": "But Abraham used to play with these idols as toys; he rode on their backs and sometimes kicked them.",
+    "category": "Actions"
+  },
+  {
+    "word": "Creator",
+    "definition": "The One who creates and controls everything.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/kriˈeɪtər/",
+    "wordFamily": [
+      "create",
+      "creation",
+      "Creator"
+    ],
+    "collocations": [
+      "true Creator",
+      "Creator of everything"
+    ],
+    "chapter": 3,
+    "chapterTitle": "Searching for the True Creator",
+    "storyExample": "On the other hand, Abraham was in search of one true Creator.",
+    "category": "Belief & Faith"
+  },
+  {
+    "word": "countryside",
+    "definition": "Land outside towns and cities.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈkʌntrisaɪd/",
+    "collocations": [
+      "walk in the countryside",
+      "open countryside"
+    ],
+    "chapter": 3,
+    "chapterTitle": "Searching for the True Creator",
+    "storyExample": "One night, Abraham left his home to take a walk in the countryside.",
+    "category": "Places & Nature"
+  },
+  {
+    "word": "cave",
+    "definition": "A natural hollow place in a mountain or rock.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/keɪv/",
+    "wordFamily": [
+      "cave",
+      "caves"
+    ],
+    "collocations": [
+      "mountain cave",
+      "find a cave"
+    ],
+    "chapter": 3,
+    "chapterTitle": "Searching for the True Creator",
+    "storyExample": "On a nearby mountain, he found a cave, sat there, and started thinking about Allah.",
+    "category": "Places & Nature"
+  },
+  {
+    "word": "faded",
+    "definition": "Gradually became less visible or disappeared.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ˈfeɪdɪd/",
+    "wordFamily": [
+      "fade",
+      "faded",
+      "fading"
+    ],
+    "collocations": [
+      "gradually fade",
+      "moon faded"
+    ],
+    "synonyms": [
+      "dimmed"
+    ],
+    "chapter": 3,
+    "chapterTitle": "Searching for the True Creator",
+    "storyExample": "But when the moon faded, he understood that it could not be Allah.",
+    "category": "Change & Description"
+  },
+  {
+    "word": "sunrise",
+    "definition": "The time when the sun first appears in the morning.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈsʌnraɪz/",
+    "collocations": [
+      "at sunrise",
+      "before sunrise"
+    ],
+    "antonyms": [
+      "sunset"
+    ],
+    "chapter": 4,
+    "chapterTitle": "Abraham Receives Guidance",
+    "storyExample": "Abraham stayed until sunrise, and when he saw the bright sun, he wondered, “Could this be Allah? It is bigger.”",
+    "category": "Time & Nature"
+  },
+  {
+    "word": "creations",
+    "definition": "Things that have been created.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/kriˈeɪʃənz/",
+    "wordFamily": [
+      "create",
+      "creation",
+      "Creator"
+    ],
+    "collocations": [
+      "Allah’s creations",
+      "created things"
+    ],
+    "chapter": 4,
+    "chapterTitle": "Abraham Receives Guidance",
+    "storyExample": "But when it set, he understood that Allah could not be one of the creations.",
+    "category": "Belief & Nature"
+  },
+  {
+    "word": "prostrated",
+    "definition": "Put the forehead to the ground in worship.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ˈprɑːstreɪtɪd/",
+    "wordFamily": [
+      "prostrate",
+      "prostrated",
+      "prostration"
+    ],
+    "collocations": [
+      "prostrate oneself",
+      "prostrate in worship"
+    ],
+    "chapter": 4,
+    "chapterTitle": "Abraham Receives Guidance",
+    "storyExample": "Abraham prostrated himself and asked Allah for help.",
+    "category": "Spiritual Life"
+  },
+  {
+    "word": "stone",
+    "definition": "To attack someone by throwing stones.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/stoʊn/",
+    "wordFamily": [
+      "stone",
+      "stoned",
+      "stoning"
+    ],
+    "collocations": [
+      "stone someone",
+      "threaten to stone"
+    ],
+    "chapter": 4,
+    "chapterTitle": "Abraham Receives Guidance",
+    "storyExample": "If you do not stop speaking like this, I will stone you.",
+    "category": "Actions & Conflict"
+  },
+  {
+    "word": "furious",
+    "definition": "Extremely angry.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/ˈfjʊriəs/",
+    "wordFamily": [
+      "fury",
+      "furious",
+      "furiously"
+    ],
+    "collocations": [
+      "get furious",
+      "absolutely furious"
+    ],
+    "synonyms": [
+      "enraged"
+    ],
+    "antonyms": [
+      "calm"
+    ],
+    "chapter": 5,
+    "chapterTitle": "Abraham Calls His People",
+    "storyExample": "People got furious when they heard him.",
+    "category": "Feelings"
+  },
+  {
+    "word": "harm",
+    "definition": "To hurt or damage someone or something.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/hɑːrm/",
+    "wordFamily": [
+      "harm",
+      "harmful",
+      "harmless"
+    ],
+    "collocations": [
+      "harm someone",
+      "cause harm"
+    ],
+    "synonyms": [
+      "hurt",
+      "damage"
+    ],
+    "antonyms": [
+      "protect"
+    ],
+    "chapter": 5,
+    "chapterTitle": "Abraham Calls His People",
+    "storyExample": "They have no power to help or harm you.",
+    "category": "Actions & Safety"
+  },
+  {
+    "word": "heals",
+    "definition": "Makes a sick or injured person well again.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/hiːlz/",
+    "wordFamily": [
+      "heal",
+      "heals",
+      "healing"
+    ],
+    "collocations": [
+      "heal the sick",
+      "heals me"
+    ],
+    "synonyms": [
+      "cures"
+    ],
+    "chapter": 5,
+    "chapterTitle": "Abraham Calls His People",
+    "storyExample": "My Allah gives me food and drink when I need them, and heals me when I am sick.",
+    "category": "Health & Care"
+  },
+  {
+    "word": "reconsider",
+    "definition": "To think again about an idea or belief.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ˌriːkənˈsɪdər/",
+    "wordFamily": [
+      "consider",
+      "reconsider",
+      "reconsideration"
+    ],
+    "collocations": [
+      "reconsider a decision",
+      "reconsider a belief"
+    ],
+    "synonyms": [
+      "think again"
+    ],
+    "chapter": 5,
+    "chapterTitle": "Abraham Calls His People",
+    "storyExample": "He wanted them to reconsider their beliefs.",
+    "category": "Learning & Thinking"
+  },
+  {
+    "word": "foolishness",
+    "definition": "Lack of good sense or wise thinking.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈfuːlɪʃnəs/",
+    "wordFamily": [
+      "fool",
+      "foolish",
+      "foolishly",
+      "foolishness"
+    ],
+    "collocations": [
+      "show foolishness",
+      "foolishness of a belief"
+    ],
+    "antonyms": [
+      "wisdom"
+    ],
+    "chapter": 6,
+    "chapterTitle": "Abraham Enters the Temple",
+    "storyExample": "Prophet Abraham (pbuh) decided to show them the foolishness of their beliefs.",
+    "category": "Thinking & Judgment"
+  },
+  {
+    "word": "celebration",
+    "definition": "A special event when people gather for a happy occasion.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˌseləˈbreɪʃən/",
+    "wordFamily": [
+      "celebrate",
+      "celebration"
+    ],
+    "collocations": [
+      "big celebration",
+      "hold a celebration"
+    ],
+    "chapter": 6,
+    "chapterTitle": "Abraham Enters the Temple",
+    "storyExample": "There was a big celebration soon.",
+    "category": "Culture & Events"
+  },
+  {
+    "word": "axe",
+    "definition": "A tool with a sharp metal head used for cutting.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/æks/",
+    "wordFamily": [
+      "axe",
+      "axes"
+    ],
+    "collocations": [
+      "use an axe",
+      "hang an axe"
+    ],
+    "chapter": 6,
+    "chapterTitle": "Abraham Enters the Temple",
+    "storyExample": "All the people usually went outside of town, so he got an axe and waited until the whole town was empty.",
+    "category": "Objects & Tools"
+  },
+  {
+    "word": "ridiculous",
+    "definition": "Very silly or unreasonable.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/rɪˈdɪkjələs/",
+    "wordFamily": [
+      "ridiculous",
+      "ridiculously"
+    ],
+    "collocations": [
+      "look ridiculous",
+      "sound ridiculous"
+    ],
+    "synonyms": [
+      "absurd",
+      "silly"
+    ],
+    "chapter": 6,
+    "chapterTitle": "Abraham Enters the Temple",
+    "storyExample": "Offering food to these statues was so ridiculous.",
+    "category": "Description & Judgment"
+  },
+  {
+    "word": "smashed",
+    "definition": "Broken violently into many pieces.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/smæʃt/",
+    "wordFamily": [
+      "smash",
+      "smashed",
+      "smashing"
+    ],
+    "collocations": [
+      "smashed idols",
+      "smashed into pieces"
+    ],
+    "synonyms": [
+      "broken"
+    ],
+    "chapter": 7,
+    "chapterTitle": "The Broken Idols",
+    "storyExample": "They all gathered around the smashed idols.",
+    "category": "Description & Change"
+  },
+  {
+    "word": "displeased",
+    "definition": "Unhappy or annoyed about something.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/dɪsˈpliːzd/",
+    "wordFamily": [
+      "please",
+      "pleased",
+      "displeased"
+    ],
+    "collocations": [
+      "feel displeased",
+      "displeased with something"
+    ],
+    "synonyms": [
+      "annoyed"
+    ],
+    "antonyms": [
+      "pleased"
+    ],
+    "chapter": 7,
+    "chapterTitle": "The Broken Idols",
+    "storyExample": "The people were displeased with what they heard and said, “You are well aware that these idols don’t speak!”",
+    "category": "Feelings"
+  },
+  {
+    "word": "shame",
+    "definition": "A painful feeling caused by knowing something is wrong.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ʃeɪm/",
+    "wordFamily": [
+      "shame",
+      "ashamed",
+      "shameful"
+    ],
+    "collocations": [
+      "feel shame",
+      "look in shame"
+    ],
+    "synonyms": [
+      "embarrassment"
+    ],
+    "chapter": 7,
+    "chapterTitle": "The Broken Idols",
+    "storyExample": "They looked at each other in shame because their thoughts and feelings told them that Abraham (pbuh) was right.",
+    "category": "Feelings & Values"
+  },
+  {
+    "word": "arrogant",
+    "definition": "Too proud to accept the truth or a mistake.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/ˈærəɡənt/",
+    "wordFamily": [
+      "arrogant",
+      "arrogance",
+      "arrogantly"
+    ],
+    "collocations": [
+      "arrogant attitude",
+      "be arrogant"
+    ],
+    "synonyms": [
+      "proud"
+    ],
+    "antonyms": [
+      "humble"
+    ],
+    "chapter": 7,
+    "chapterTitle": "The Broken Idols",
+    "storyExample": "But they were so arrogant that they couldn’t accept the truth and admit they were wrong.",
+    "category": "Character & Values"
+  },
+  {
+    "word": "approach",
+    "definition": "To come near something or someone.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/əˈproʊtʃ/",
+    "wordFamily": [
+      "approach",
+      "approached",
+      "approaching"
+    ],
+    "collocations": [
+      "approach a place",
+      "approach carefully"
+    ],
+    "synonyms": [
+      "come near"
+    ],
+    "chapter": 8,
+    "chapterTitle": "Preparing the Great Fire",
+    "storyExample": "The fire was so big that people couldn’t approach it.",
+    "category": "Actions & Movement"
+  },
+  {
+    "word": "flames",
+    "definition": "The bright, burning parts of a fire.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/fleɪmz/",
+    "wordFamily": [
+      "flame",
+      "flames"
+    ],
+    "collocations": [
+      "rising flames",
+      "huge flames"
+    ],
+    "chapter": 8,
+    "chapterTitle": "Preparing the Great Fire",
+    "storyExample": "The heat was so strong that even birds couldn’t fly over the rising flames.",
+    "category": "World & Nature"
+  },
+  {
+    "word": "catapult",
+    "definition": "An old machine used to throw heavy objects.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈkætəpʌlt/",
+    "wordFamily": [
+      "catapult",
+      "catapults"
+    ],
+    "collocations": [
+      "use a catapult",
+      "placed on a catapult"
+    ],
+    "chapter": 8,
+    "chapterTitle": "Preparing the Great Fire",
+    "storyExample": "Prophet Abraham’s (pbuh) hands and feet were tied, and he was placed on a catapult.",
+    "category": "Objects & Technology"
+  },
+  {
+    "word": "emerged",
+    "definition": "Came out from a place or situation.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ɪˈmɜːrdʒd/",
+    "wordFamily": [
+      "emerge",
+      "emerged",
+      "emergence"
+    ],
+    "collocations": [
+      "emerge from",
+      "emerge safely"
+    ],
+    "synonyms": [
+      "came out"
+    ],
+    "chapter": 8,
+    "chapterTitle": "Preparing the Great Fire",
+    "storyExample": "Prophet Abraham (pbuh) emerged in good condition when the flames cooled.",
+    "category": "Actions & Change"
+  },
+  {
+    "word": "miracle",
+    "definition": "A sign from Allah beyond ordinary human power.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈmɪrəkəl/",
+    "wordFamily": [
+      "miracle",
+      "miraculous"
+    ],
+    "collocations": [
+      "a miracle from Allah",
+      "witness a miracle"
+    ],
+    "chapter": 9,
+    "chapterTitle": "The Miracle and Nimrod",
+    "storyExample": "People felt embarrassed by the miracle, yet their anger and arrogance remained unchanged.",
+    "category": "Belief & Faith"
+  },
+  {
+    "word": "rage",
+    "definition": "Very strong anger.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/reɪdʒ/",
+    "wordFamily": [
+      "rage",
+      "raging"
+    ],
+    "collocations": [
+      "in a rage",
+      "rage did not calm down"
+    ],
+    "synonyms": [
+      "fury"
+    ],
+    "antonyms": [
+      "calm"
+    ],
+    "chapter": 9,
+    "chapterTitle": "The Miracle and Nimrod",
+    "storyExample": "Prophet Abraham (pbuh) tried every way to show them their error; however, their rage didn’t calm down.",
+    "category": "Feelings"
+  },
+  {
+    "word": "guards",
+    "definition": "People whose job is to protect a person or place.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ɡɑːrdz/",
+    "wordFamily": [
+      "guard",
+      "guards",
+      "guarded"
+    ],
+    "collocations": [
+      "palace guards",
+      "order the guards"
+    ],
+    "synonyms": [
+      "protectors"
+    ],
+    "chapter": 9,
+    "chapterTitle": "The Miracle and Nimrod",
+    "storyExample": "He ordered his guards to bring two slaves and told them to be put to death.",
+    "category": "People & Roles"
+  },
+  {
+    "word": "ordinary",
+    "definition": "Normal and not unusual or special.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/ˈɔːrdəneri/",
+    "wordFamily": [
+      "ordinary",
+      "ordinarily"
+    ],
+    "collocations": [
+      "ordinary person",
+      "ordinary life"
+    ],
+    "synonyms": [
+      "normal"
+    ],
+    "antonyms": [
+      "extraordinary"
+    ],
+    "chapter": 9,
+    "chapterTitle": "The Miracle and Nimrod",
+    "storyExample": "He realized that Abraham was not an ordinary person, so he decided to meet him.",
+    "category": "Description"
+  },
+  {
+    "word": "faith",
+    "definition": "Strong belief and trust in Allah.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/feɪθ/",
+    "wordFamily": [
+      "faith",
+      "faithful",
+      "faithfully"
+    ],
+    "collocations": [
+      "faith in Allah",
+      "strong faith"
+    ],
+    "synonyms": [
+      "belief",
+      "trust"
+    ],
+    "chapter": 10,
+    "chapterTitle": "Leaving Babylon",
+    "storyExample": "Only one woman and one man of his people shared his faith in Allah.",
+    "category": "Belief & Faith"
+  },
+  {
+    "word": "spread",
+    "definition": "To make an idea or message reach more people.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/spred/",
+    "wordFamily": [
+      "spread",
+      "spreading"
+    ],
+    "collocations": [
+      "spread a message",
+      "spread information"
+    ],
+    "synonyms": [
+      "disseminate"
+    ],
+    "chapter": 10,
+    "chapterTitle": "Leaving Babylon",
+    "storyExample": "Therefore, he decided to leave Babylon and travel to other lands to spread Allah’s message.",
+    "category": "Communication"
+  },
+  {
+    "word": "camelback",
+    "definition": "Travelling while riding a camel.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈkæməlbæk/",
+    "collocations": [
+      "travel on camelback",
+      "journey on camelback"
+    ],
+    "chapter": 10,
+    "chapterTitle": "Leaving Babylon",
+    "storyExample": "He traveled from Babylon to Syria and Palestine on camelback.",
+    "category": "Travel"
+  },
+  {
+    "word": "tiring",
+    "definition": "Making someone feel tired.",
+    "partOfSpeech": "adjective",
+    "level": "B1",
+    "pronunciation": "/ˈtaɪərɪŋ/",
+    "wordFamily": [
+      "tire",
+      "tired",
+      "tiring"
+    ],
+    "collocations": [
+      "tiring journey",
+      "physically tiring"
+    ],
+    "synonyms": [
+      "exhausting"
+    ],
+    "antonyms": [
+      "restful"
+    ],
+    "chapter": 10,
+    "chapterTitle": "Leaving Babylon",
+    "storyExample": "It was a long, hot, and tiring journey.",
+    "category": "Travel & Feelings"
+  },
+  {
+    "word": "fearlessly",
+    "definition": "Without being controlled by fear.",
+    "partOfSpeech": "adverb",
+    "level": "B1",
+    "pronunciation": "/ˈfɪrləsli/",
+    "wordFamily": [
+      "fear",
+      "fearless",
+      "fearlessly"
+    ],
+    "collocations": [
+      "act fearlessly",
+      "speak fearlessly"
+    ],
+    "synonyms": [
+      "bravely"
+    ],
+    "antonyms": [
+      "fearfully"
+    ],
+    "chapter": 11,
+    "chapterTitle": "Hagar and Ishmael in the Valley",
+    "storyExample": "She fearlessly said to Abraham (pbuh) when he left them in this desert valley, “Allah will never let us die; He will surely protect us.”",
+    "category": "Character & Values"
+  },
+  {
+    "word": "ran out",
+    "definition": "Was completely used up so none remained.",
+    "partOfSpeech": "phrasal verb",
+    "level": "B1",
+    "pronunciation": "/ræn aʊt/",
+    "wordFamily": [
+      "run",
+      "ran",
+      "running"
+    ],
+    "collocations": [
+      "run out of food",
+      "water ran out"
+    ],
+    "synonyms": [
+      "was used up"
+    ],
+    "chapter": 11,
+    "chapterTitle": "Hagar and Ishmael in the Valley",
+    "storyExample": "But soon their food and water ran out.",
+    "category": "Daily Life & Resources"
+  },
+  {
+    "word": "ritual",
+    "definition": "A religious action performed in a special way.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈrɪtʃuəl/",
+    "wordFamily": [
+      "ritual",
+      "rituals"
+    ],
+    "collocations": [
+      "religious ritual",
+      "perform a ritual"
+    ],
+    "chapter": 11,
+    "chapterTitle": "Hagar and Ishmael in the Valley",
+    "storyExample": "Even today, Muslims must complete the ritual “sa’y” after performing the tawaf during Hajj or Umrah.",
+    "category": "Spiritual Life"
+  },
+  {
+    "word": "approximately",
+    "definition": "About a number or amount, but not exactly.",
+    "partOfSpeech": "adverb",
+    "level": "B1",
+    "pronunciation": "/əˈprɑːksɪmətli/",
+    "wordFamily": [
+      "approximate",
+      "approximately"
+    ],
+    "collocations": [
+      "approximately 300 meters",
+      "approximately equal"
+    ],
+    "synonyms": [
+      "about",
+      "roughly"
+    ],
+    "chapter": 11,
+    "chapterTitle": "Hagar and Ishmael in the Valley",
+    "storyExample": "Safa is about 130 meters from the Ka’ba, while Marwa is approximately 300 meters away.",
+    "category": "Quantity & Measurement"
+  },
+  {
+    "word": "thirst",
+    "definition": "A strong need to drink water.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/θɜːrst/",
+    "wordFamily": [
+      "thirst",
+      "thirsty"
+    ],
+    "collocations": [
+      "cry with thirst",
+      "suffer from thirst"
+    ],
+    "chapter": 12,
+    "chapterTitle": "Zamzam and the City of Mecca",
+    "storyExample": "While the little child Ishmael was crying with thirst and Hagar was running between the two hills, suddenly water started flowing from the ground under the feet of Ishmael.",
+    "category": "Needs & Health"
+  },
+  {
+    "word": "flowing",
+    "definition": "Moving continuously like water.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ˈfloʊɪŋ/",
+    "wordFamily": [
+      "flow",
+      "flowing"
+    ],
+    "collocations": [
+      "water flowing",
+      "flowing from the ground"
+    ],
+    "synonyms": [
+      "running"
+    ],
+    "chapter": 12,
+    "chapterTitle": "Zamzam and the City of Mecca",
+    "storyExample": "While the little child Ishmael was crying with thirst and Hagar was running between the two hills, suddenly water started flowing from the ground under the feet of Ishmael.",
+    "category": "World & Nature"
+  },
+  {
+    "word": "spring",
+    "definition": "A place where water naturally comes from the ground.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/sprɪŋ/",
+    "wordFamily": [
+      "spring",
+      "springs"
+    ],
+    "collocations": [
+      "natural spring",
+      "sacred spring"
+    ],
+    "chapter": 12,
+    "chapterTitle": "Zamzam and the City of Mecca",
+    "storyExample": "This historic Zamzam spring still exists, providing water for thousands of years.",
+    "category": "World & Nature"
+  },
+  {
+    "word": "settle",
+    "definition": "To begin living permanently in a place.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/ˈsetəl/",
+    "wordFamily": [
+      "settle",
+      "settled",
+      "settlement"
+    ],
+    "collocations": [
+      "settle in a place",
+      "people settle there"
+    ],
+    "synonyms": [
+      "establish a home"
+    ],
+    "chapter": 12,
+    "chapterTitle": "Zamzam and the City of Mecca",
+    "storyExample": "More people came to settle there because of this sacred spring.",
+    "category": "People & Places"
+  },
+  {
+    "word": "foundations",
+    "definition": "The strong base under a building.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/faʊnˈdeɪʃənz/",
+    "wordFamily": [
+      "foundation",
+      "foundations"
+    ],
+    "collocations": [
+      "building foundations",
+      "old foundations"
+    ],
+    "chapter": 13,
+    "chapterTitle": "Building the Ka’ba",
+    "storyExample": "Father and son found the foundations of the old building and began to construct the new building on it.",
+    "category": "Buildings & Construction"
+  },
+  {
+    "word": "construct",
+    "definition": "To build something.",
+    "partOfSpeech": "verb",
+    "level": "B1",
+    "pronunciation": "/kənˈstrʌkt/",
+    "wordFamily": [
+      "construct",
+      "construction",
+      "constructive"
+    ],
+    "collocations": [
+      "construct a building",
+      "begin to construct"
+    ],
+    "synonyms": [
+      "build"
+    ],
+    "chapter": 13,
+    "chapterTitle": "Building the Ka’ba",
+    "storyExample": "Father and son found the foundations of the old building and began to construct the new building on it.",
+    "category": "Buildings & Construction"
+  },
+  {
+    "word": "races",
+    "definition": "Groups of people with different backgrounds or physical traits.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈreɪsɪz/",
+    "wordFamily": [
+      "race",
+      "racial"
+    ],
+    "collocations": [
+      "different races",
+      "people of all races"
+    ],
+    "chapter": 13,
+    "chapterTitle": "Building the Ka’ba",
+    "storyExample": "He built a place of worship for all people of different races and colors.",
+    "category": "People & Society"
+  },
+  {
+    "word": "Oneness",
+    "definition": "The belief that Allah is One and has no partner.",
+    "partOfSpeech": "noun",
+    "level": "B1",
+    "pronunciation": "/ˈwʌnnəs/",
+    "wordFamily": [
+      "one",
+      "Oneness"
+    ],
+    "collocations": [
+      "Oneness of Allah",
+      "message of Oneness"
+    ],
+    "chapter": 13,
+    "chapterTitle": "Building the Ka’ba",
+    "storyExample": "They spread all over the Arabian Peninsula to carry their grandfather Abraham’s (pbuh) message of the Oneness of Allah.",
+    "category": "Belief & Faith"
+  }
+];
 
 export const abrahamB1Pages: PageData[] = abrahamB1RawPages.map(page => {
   if (page.type !== 'story') {
