@@ -95,6 +95,32 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
   const [bestStreak, setBestStreak] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackState>({ kind: 'idle' });
 
+  const [stage, setStage] = useState<'match' | 'context' | 'recall' | 'done'>('match');
+  const [revisitWords, setRevisitWords] = useState<Set<string>>(new Set());
+  const [contextIndex, setContextIndex] = useState(0);
+  const [contextChoice, setContextChoice] = useState<string | null>(null);
+  const [contextFeedback, setContextFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [recallIndex, setRecallIndex] = useState(0);
+  const [recallChoice, setRecallChoice] = useState<string | null>(null);
+  const [typedRecall, setTypedRecall] = useState('');
+  const [recallFeedback, setRecallFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [recallAttempts, setRecallAttempts] = useState(0);
+  const [answerRevealed, setAnswerRevealed] = useState(false);
+
+  const contextItems = useMemo(
+    () => pickEvenly(pairs, Math.min(policy.vocabularyContextCount, pairs.length)),
+    [pairs, policy.vocabularyContextCount]
+  );
+  const recallItems = useMemo(
+    () => pickEvenly([...pairs].reverse(), Math.min(policy.vocabularyRecallCount, pairs.length)),
+    [pairs, policy.vocabularyRecallCount]
+  );
+
+  const signature = useMemo(
+    () => `${level}:${language}:${pairs.map(pair => pair.word).join('|')}`,
+    [level, language, pairs]
+  );
+
   const wordToMeaning = useMemo(
     () => Object.fromEntries(pairs.map((pair) => [pair.word, pair.meaning])),
     [pairs]
@@ -114,6 +140,31 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
     setStreak(0);
     setBestStreak(0);
     setFeedback({ kind: 'idle' });
+    setStage('match');
+    setRevisitWords(new Set());
+    setContextIndex(0);
+    setContextChoice(null);
+    setContextFeedback('idle');
+    setRecallIndex(0);
+    setRecallChoice(null);
+    setTypedRecall('');
+    setRecallFeedback('idle');
+    setRecallAttempts(0);
+    setAnswerRevealed(false);
+  };
+
+  useEffect(() => {
+    reset();
+    // Keep challenge state aligned with language/level/target-word changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signature]);
+
+  const addRevisit = (word: string) => {
+    setRevisitWords(previous => {
+      const next = new Set(previous);
+      next.add(word);
+      return next;
+    });
   };
 
   const tryMatch = (word: string, meaning: string) => {
@@ -136,6 +187,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level }: Pro
     }
 
     setStreak(0);
+    addRevisit(word);
     setWrongWord(word);
     setWrongMeaning(meaning);
     setFeedback({ kind: 'wrong', word, meaning });
