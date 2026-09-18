@@ -108,6 +108,6 @@ export const adamB2PagesAr: PageData[] = [
   { id: 18, type: 'quiz', title: 'فحص المعرفة', image: '', content: 'أجب عن ثمانية أسئلة للتحقق من فهم أهم أفكار قصة آدم.', exercises: adamB2KnowledgeCheckExercisesAr },
   { id: 19, type: 'exercises', title: 'مراجعة اللغة', image: '', content: 'راجع أدوات اللغة والخطاب التي تعلمتها عبر الفصول.', exercises: adamB2LanguageReviewExercisesAr },
   { id: 20, type: 'vocabulary-match', title: 'تحدي المفردات', image: '', content: 'صل الكلمات الأساسية بمعانيها الدقيقة.', vocabularyPairs: adamB2VocabularyChallengePairsAr },
-  { id: 21, type: 'glossary', title: 'القاموس الرئيسي', image: '', content: 'راجع المفردات الأساسية الواردة في الفصول السبعة عشر.', vocabulary: glossary },
+  { id: 21, type: 'glossary', title: 'المعجم الرئيسي', image: '', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: glossary },
   { id: 22, type: 'final-challenge', title: 'التَّحَدِّي النِّهَائِي لِلْمُسْتَوَى B2', image: '', content: 'أَجِبْ عَنْ هَذِهِ الأَسْئِلَةِ الْمُتَعَاقِبَةِ لِإِثْبَاتِ مَدَى تَمَكُّنِكَ مِنَ الْمَسِيرَةِ الْعِلْمِيَّةِ وَالْعَمَلِيَّةِ لِهَذَا الْمُسْتَوَى.', exercises: adamB2FinalChallengeExercisesAr },
 ];
