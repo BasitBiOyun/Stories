@@ -30,13 +30,11 @@ src/data/<story>/<level>/
 
 Equivalent grouping is acceptable when it improves readability, but each learning surface must have one obvious source of truth.
 
-## Legacy files
+## Learning files
 
-Existing `learningBlueprint`, `gold`, `Gold*`, `finalPedagogy`, guide-polish and similar runtime files are legacy migration debt where a current book still imports them.
+Reviewed exercises, language work and guides live with their book/level source files. Shared learning modules exist only for active cross-book policy, validation, page roles, source pairing, guide assembly and UI finalization.
 
-Do not create new layers of this kind.
-
-When a story/level is manually reviewed, flatten its approved exercises and guides into direct authored files, update its `index.ts` to load those files directly, then delete the now-unused Blueprint/Gold files for that book.
+Legacy Blueprint/Gold layers have been removed. Do not recreate parallel generated-learning layers.
 
 ## Story protection
 
