@@ -8,7 +8,7 @@ This document is the single pedagogical authoring standard for Stories across A2
 
 Code may lock page order, activity counts, supported exercise types, guide headings and UI behaviour. Code must not generate, rewrite, paraphrase, upgrade or “goldify” pedagogical content.
 
-Every story is read manually. Quick Challenges, whole-book assessments, Vocabulary Challenge content, Retrieval Review content, Final Challenge content, Teacher Guide content and Self-Study Guide content are written manually from that story.
+Every story is read manually. Quick Challenges, whole-book assessments, Vocabulary Challenge content, Language Review content, Final Challenge content, Teacher Guide content and Self-Study Guide content are written manually from that story.
 
 Once a book is reviewed and approved, its learning content is locked and changes only through an explicit manual edit.
 
@@ -75,7 +75,7 @@ Tap & Reveal is **Quick Challenge only**.
 
 Across one complete book, use Tap & Reveal **once or at most twice**.
 
-Tap & Reveal must never appear in Knowledge Check, Retrieval Review Quiz Game or Final Challenge.
+Tap & Reveal must never appear in Knowledge Check, Language Review or Final Challenge.
 
 ---
 
@@ -111,18 +111,17 @@ Purpose: check important meaning-bearing story vocabulary in context.
 - every word and every meaning must be unique
 - definitions must distinguish the words; two different words must not share an indistinguishable answer
 
-### Retrieval Review
+### Language Review
 
-Purpose: retrieve, reconnect and use previously learned material rather than simply retest the Knowledge Check.
+Purpose: revisit and actively use the language patterns developed across the whole book. It is a language workshop, not another story-comprehension test.
 
-Retrieval Review always contains **4 separate activities**:
-
-1. Sequencing
-2. Matching
-3. Reflection
-4. Quiz Game — 8 questions
-
-The 8-question Quiz Game is a new authored set. It must not reuse Knowledge Check questions or merely rephrase the same micro-facts.
+- A2 learner-facing language must stay short and concrete. The progression is **Look → Practice → Use**.
+- B1 and B2 use **Notice → Build → Use**.
+- Review grammar patterns, connectors, tense/aspect, modality, communicative functions and discourse relationships that actually appear in the book.
+- Story sentences may anchor a language point, but the task target must be the language itself rather than retrieval of a micro-fact.
+- Select exercise types according to the language goal. Do not force a fixed legacy activity sequence.
+- Finish with productive transfer where learners use reviewed language in a new, non-story context.
+- Do not repeat Knowledge Check or Final Challenge questions under a different wording.
 
 ### Final Challenge
 
@@ -149,7 +148,7 @@ This distribution applies to A2, B1 and B2. The cognitive demand changes by leve
 
 ## 5. No-repeat rule across assessments
 
-Quick Challenge, Knowledge Check, Retrieval Review Quiz Game and Final Challenge are separate authored sets.
+Quick Challenge, Knowledge Check, Language Review and Final Challenge are separate authored sets.
 
 Do not reuse the same question.
 
@@ -160,7 +159,7 @@ The same major theme may reappear only when the learner is doing something genui
 Example:
 
 - Knowledge Check: `Who did the dervishes share with?`
-- Retrieval Review: another important Chapter 2 learning point, such as identifying an action that shows generosity
+- Language Review: a Chapter 2 language pattern or communicative function, practised for form, meaning and use
 - Final Challenge: a different relationship, comparison or application from Chapter 2
 
 Before approval, manually compare all four assessment layers for repetition.
@@ -314,9 +313,9 @@ For every book:
 4. Manually write one Quick Challenge per chapter.
 5. Manually write the 8-question Knowledge Check.
 6. Manually select and define the Vocabulary Challenge set.
-7. Manually write all four Retrieval Review activities, including its independent 8-question Quiz Game.
+7. Manually write the cumulative Language Review as a staged language workshop appropriate to the CEFR level.
 8. Manually write the independent 10-item Final Challenge using the locked distribution.
-9. Compare Quick / Knowledge / Review Quiz / Final and remove repeated micro-facts.
+9. Compare Quick / Knowledge / Language Review / Final and remove repeated micro-facts.
 10. Manually write every Teacher Guide chapter.
 11. Manually write every Self-Study Guide chapter.
 12. Review English and Arabic independently against their own source texts.
