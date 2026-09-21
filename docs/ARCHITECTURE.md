@@ -17,7 +17,7 @@ Derived learning material is manually authored from the story:
 - Quick Challenges
 - Knowledge Check
 - Vocabulary Challenge
-- Retrieval Review
+- Language Review
 - Final Challenge
 - Teacher Guide
 - Self-Study Guide
