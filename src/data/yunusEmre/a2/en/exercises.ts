@@ -79,8 +79,6 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   },
 ];
 
-export const yunusA2FinalReviewExercises = yunusA2LanguageReviewExercises;
-
 export const yunusA2ManualFinalChallengeExercises: Exercise[] = [
   { id:'yunus-a2-final-1', type:'multiple-choice', title:'Mevlana and Yunus', instructions:'Choose the fact supported by Chapter 1.', question:'About how old was Yunus when Mevlana died in 1273?', options:['33 or 34','13 or 14','53 or 54'], correctAnswer:0, explanation:'Chapter 1 says Yunus was 33 or 34 when Mevlana died.', feedback:{correct:'Correct.',incorrect:'Return to the final sentence of Chapter 1.'}},
   { id:'yunus-a2-final-2', type:'multiple-choice', title:'Kind and Cheerful', instructions:'Choose the description stated in Chapter 2.', question:'Which pair describes how dervishes tried to be with other people?', options:['Kind and cheerful','Cold and sulky','Proud and selfish'], correctAnswer:0, explanation:'The chapter says they were kind and cheerful, not cold or sulky.', feedback:{correct:'Correct.',incorrect:'Use the second paragraph of Chapter 2.'}},

@@ -42,7 +42,6 @@ export const yunusA2LanguageReviewExercisesAr: Exercise[] = [
   { id:'yunus-a2-ar-language-review-8-transfer', type:'reflection', title:'استخدم اللغة', instructions:'اكتب أربع جمل قصيرة عن الحياة اليومية.', question:'هل تستطيع استخدام لغة القصة في جملك؟', correctAnswer:null, explanation:'ينقل هذا النشاط الأخير لغة الكتاب من القصة إلى رسالة شخصية بسيطة ومناسبة لمستوى A2.', feedback:{correct:'استخدم بدايات الجمل الأربع لتقديم رسالة واضحة وذات معنى.',incorrect:''}, discussionPrompts:[{question:'الجملة الأولى — «يخبرنا يونس أن ...»',mode:'Individual'},{question:'الجملة الثانية — «علينا أن ...»',mode:'Individual'},{question:'الجملة الثالثة — «يجب أن ...، لذلك ...»',mode:'Pair'},{question:'الجملة الرابعة — «هذا يساعدنا على أن ...»',mode:'Pair'}]},
 ];
 
-export const yunusA2FinalReviewExercisesAr = yunusA2LanguageReviewExercisesAr;
 export const exercises = yunusA2LanguageReviewExercisesAr;
 
 export const yunusA2ManualFinalChallengeExercisesAr: Exercise[] = [
