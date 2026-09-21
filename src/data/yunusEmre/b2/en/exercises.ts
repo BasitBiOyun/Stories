@@ -90,49 +90,6 @@ export const yunusB2VocabularyChallengePairs = [
   { word: 'legacy', meaning: 'A lasting influence passed on to later generations.' },
 ];
 
-export const yunusB2FinalReviewExercises: Exercise[] = [
-  {
-    id: 'yu-b2-r1', type: 'sequencing', title: 'Retrieval Review 1 — Historical and Intellectual Development', instructions: 'Put the major developments in narrative order.', question: 'How does the book move from Yunus Emre’s setting to his mature moral message?',
-    sequencingItems: [
-      { id: 'a', text: 'Yunus is introduced as a Sûfî poet who contributes to Old Anatolian Turkish.' },
-      { id: 'b', text: 'His education and the social role of tekkes are explained.' },
-      { id: 'c', text: 'Anatolia enters severe political and social crisis, followed by Kösedağ and Mongol domination.' },
-      { id: 'd', text: 'Yunus appears as a wise dervish using poetry to respond to people in hard times.' },
-      { id: 'e', text: 'The book develops his ideas about tawhid, love, heart and intellect.' },
-      { id: 'f', text: 'The final chapters connect death-awareness, virtues, harmful habits and legacy.' },
-    ],
-    correctAnswer: ['a', 'b', 'c', 'd', 'e', 'f'], explanation: 'The sequence reconnects biography, context, response, thought and moral legacy.', feedback,
-  },
-  matching('yu-b2-r2', 'Match each analytical claim with the strongest supporting evidence.', [
-    { left: 'The book qualifies some biographical claims', right: 'It uses phrases such as “Some sources note” and “widely accepted view”' },
-    { left: 'Political domination became economic pressure', right: 'Increasing payments to the Mongols made the state and people poorer' },
-    { left: 'Yunus’s response was cultural and spiritual rather than political rule', right: 'He travelled and used poetry as his medium in hard times' },
-    { left: 'Moral behavior grows from an inward framework', right: 'Love, purity of heart, intellect and virtues are linked with action' },
-  ], 'These pairs require claim-evidence reasoning across different parts of the book.', 'Retrieval Review 2 — Claim and Evidence'),
-  {
-    id: 'yu-b2-r3', type: 'reflection', title: 'Retrieval Review 3 — Reflection', instructions: 'Use precise story evidence and distinguish evidence from interpretation.', question: 'How does the book connect historical crisis with the importance of Yunus Emre’s poetic and moral voice?', correctAnswer: null,
-    explanation: 'A strong response can connect migration, Kösedağ, Mongol dependency and social hardship with Yunus’s role as a travelling wise dervish who used poetry to address meaning, love and moral conduct.', feedback,
-    discussionPrompts: [
-      { question: 'Which chapter gives the strongest evidence for crisis affecting ordinary people?', mode: 'Individual' },
-      { question: 'Where does the text move from historical explanation to spiritual interpretation?', mode: 'Pair' },
-      { question: 'Which moral teaching is most clearly connected to a concrete action?', mode: 'Class' },
-    ],
-  },
-  {
-    id: 'yu-b2-r4', type: 'quiz-game', title: 'Retrieval Review 4 — Quiz Game', instructions: 'Answer eight new questions.', question: 'Can you retrieve relationships, qualifications and turning points?', correctAnswer: null, explanation: 'This quiz uses a separate evidence set from the Knowledge Check and Final Challenge.', feedback,
-    quizQuestions: [
-      { question: 'What does the contrast between madrasa and tekke add to Yunus’s educational portrait?', options: [{ text: 'It combines formal learning with spiritual and moral formation.', isCorrect: true }, { text: 'It proves he rejected formal learning.', isCorrect: false }, { text: 'It shows tekkes were military schools.', isCorrect: false }], hint: 'Compare the two educational settings.' },
-      { question: 'Why is Alaeddin I included at the end of Chapter 3?', options: [{ text: 'His strong reign creates a contrast with the later decline and crisis.', isCorrect: true }, { text: 'He was Yunus’s sheikh.', isCorrect: false }, { text: 'He founded the Ilkhanate.', isCorrect: false }], hint: 'Think about contrast in historical conditions.' },
-      { question: 'What made the Babai crisis more than a simple rebellion in the book?', options: [{ text: 'It is linked with governance, migration, nomadic unrest and religious expectation.', isCorrect: true }, { text: 'It is described only as a tax dispute.', isCorrect: false }, { text: 'It had no relation to wider instability.', isCorrect: false }], hint: 'Look for interacting causes.' },
-      { question: 'Why is Celaleddin Karatay mentioned?', options: [{ text: 'As an example of a statesman trying to reduce pressure despite structural dependency.', isCorrect: true }, { text: 'As the commander who defeated the Mongols.', isCorrect: false }, { text: 'As Yunus’s poetry teacher.', isCorrect: false }], hint: 'He appears in the chapter on dependency.' },
-      { question: 'What does the Creator-created relationship explain in Chapter 9?', options: [{ text: 'Why love extends from Allah to created beings and supports unity.', isCorrect: true }, { text: 'Why love should be limited to private feeling.', isCorrect: false }, { text: 'Why prayer is rejected.', isCorrect: false }], hint: 'Connect love with unity.' },
-      { question: 'Why is breaking a heart morally serious in Chapter 10?', options: [{ text: 'The heart is described as the throne of the Lord and center of love.', isCorrect: true }, { text: 'The heart is a symbol of political rule.', isCorrect: false }, { text: 'The chapter says emotions replace worship.', isCorrect: false }], hint: 'Use the chapter’s metaphor.' },
-      { question: 'What does the “guest in this world” image accomplish?', options: [{ text: 'It frames earthly life as temporary and supports moral preparation.', isCorrect: true }, { text: 'It encourages withdrawal from all responsibility.', isCorrect: false }, { text: 'It explains migration after Kösedağ.', isCorrect: false }], hint: 'Connect death-awareness with righteous living.' },
-      { question: 'Why can the final poems be read as values-as-action rather than abstract praise?', options: [{ text: 'They call for patience and giving up anger and arrogance.', isCorrect: true }, { text: 'They avoid any behavioral implication.', isCorrect: false }, { text: 'They focus only on literary fame.', isCorrect: false }], hint: 'Identify the actions the verses demand.' },
-    ],
-  },
-];
-
 export const yunusB2FinalChallengeExercises: Exercise[] = [
   mc('yu-b2-f1', 'Which synthesis best explains why Yunus Emre’s literary importance cannot be separated from his Sûfî identity in this book?', ['His accessible Turkish carries a moral-spiritual tradition to a wider public.', 'His language matters only because it records military history.', 'His Sûfî identity is described as unrelated to his poetry.'], 0, 'The opening chapters connect language, literary tradition, values and Sûfî identity.', 'Final Challenge'),
   mc('yu-b2-f2', 'Which interpretation best explains the long historical section before the chapters on tawhid and love?', ['It establishes the crisis in which a wise dervish’s moral and spiritual message became socially meaningful.', 'It proves Yunus personally caused the Seljuk decline.', 'It replaces the need to study Yunus’s thought.'], 0, 'The text explicitly asks readers to understand the historical atmosphere in which Yunus lived and recited.', 'Final Challenge'),
