@@ -167,14 +167,6 @@ export const adamA2KnowledgeCheckExercises: Exercise[] = [
     explanation: 'The crow dug the ground and Qabil understood what to do.',
     feedback: { correct: 'Correct.', incorrect: 'Read the part about the crow again.' }
   }
-]; Qabil—farmer', 'Habil—farmer; Qabil—shepherd', 'Both brothers—farmers'], correctAnswer: 0,
-    explanation: 'Habil became a shepherd and Qabil became a farmer.', feedback: { correct: 'Correct.', incorrect: 'Reread the first paragraph of Chapter 8.' }
-  },
-  {
-    id: 'adam-a2-kc-8', type: 'true-false', title: 'The Crow', instructions: 'Decide whether the statement agrees with Chapter 9.',
-    question: 'The crow’s digging showed Qabil how to put his brother’s body in the ground.', correctAnswer: true,
-    explanation: 'The crow dug the ground and Qabil understood what to do.', feedback: { correct: 'Correct.', incorrect: 'Follow the crow’s action in the final part of Chapter 9.' }
-  }
 ];
 
 export const adamA2VocabularyChallengePairs = [
