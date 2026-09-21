@@ -59,4 +59,3 @@ fill('mo-b2-ar-f9','أكمل وصف مدين.','كانت السنوات العش
 
 // Compatibility alias used only by the locked story source while its embedded
 // legacy payloads are stripped by pages.ts before runtime assembly.
-export const mosesB2FinalReviewExercises = mosesB2FinalReviewExercisesAr;
