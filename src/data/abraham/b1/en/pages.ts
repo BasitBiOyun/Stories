@@ -152,7 +152,7 @@ Over the years, Ishmael’s children had children; one of them was Muhammad, the
     [], []
   ),
   { id: 14, type: 'quiz', title: 'B1 Knowledge Check: Prophet Abraham (pbuh)', image: '', audioUrl: '', content: 'Check your whole-story understanding with eight evidence-based questions.' },
-  { id: 15, type: 'exercises', title: 'B1 Retrieval Review & Reflection', image: '', content: 'Retrieve the story through sequencing, matching, reflection, and an independent eight-question quiz.' },
+  { id: 15, type: 'exercises', title: 'B1 Language Review', image: '', content: 'Review and use grammar patterns, meaning relationships and communicative functions from across the book.' },
   { id: 16, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', image: '', content: 'Match ten reviewed B1 words with their meanings.' },
   { id: 17, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review all key vocabulary from the story in one place.' },
   { id: 18, type: 'final-challenge', title: 'B1 Final Challenge', image: '', content: 'Demonstrate B1-level understanding across the complete story.' },

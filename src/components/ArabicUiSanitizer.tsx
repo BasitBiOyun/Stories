@@ -12,7 +12,6 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   [/Quick Challenge/gi, 'التحدي السريع'],
   [/Knowledge Check/gi, 'اختبار المعرفة'],
   [/Final Challenge/gi, 'التحدي النهائي'],
-  [/Retrieval Review/gi, 'مراجعة الاسترجاع'],
   [/Teacher Guide/gi, 'دليل المعلم'],
   [/Chapter Support/gi, 'دعم الفصول'],
   [/Full Guide/gi, 'الدليل الكامل'],

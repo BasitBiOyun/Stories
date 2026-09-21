@@ -258,7 +258,7 @@ export const meccaA2PagesAr: PageData[] = [
   },
   { id: 14, type: 'quiz', title: 'اختبار المعرفة: مكة A2 - بلال بن رباح', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'اختبر فهمك لقصة بلال بن رباح ومكة قبل الإسلام.' },
   { id: 15, type: 'vocabulary-match', title: 'تحدي الكلمات والمفردات', image: 'https://picsum.photos/seed/vocab-match-mecca-a2/1200/800', audioUrl: '', content: 'طابق الكلمات المهمة من القصة بمعانيها.' },
-  { id: 16, type: 'exercises', title: 'مراجعة الاسترجاع', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'استرجع الأفكار الرئيسة واربط بينها واستخدمها.' },
+  { id: 16, type: 'exercises', title: 'مراجعة اللغة', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'راجع لغة القصة بخطوات بسيطة: انظر، تدرّب، ثم استخدمها.' },
   { id: 17, type: 'glossary', title: 'المعجم الرئيسي', image: 'https://picsum.photos/seed/mecca-a2-glossary/1200/800', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: [
     {
         "word": "جَهَرُوا",

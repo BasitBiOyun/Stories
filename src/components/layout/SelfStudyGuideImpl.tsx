@@ -31,7 +31,6 @@ const localizeArabicUiText = (value: string) => value
   .replace(/Quick Challenge/gi, 'التحدي السريع')
   .replace(/Knowledge Check/gi, 'اختبار المعرفة')
   .replace(/Final Challenge/gi, 'التحدي النهائي')
-  .replace(/Retrieval Review/gi, 'مراجعة الاسترجاع')
   .replace(/Teacher Guide/gi, 'دليل المعلم')
   .replace(/Self Study Guide/gi, 'دليل الدراسة الذاتية')
   .replace(/Chapter Support/gi, 'دعم الفصول')
