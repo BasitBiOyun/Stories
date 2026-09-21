@@ -116,54 +116,58 @@ export const adamA2QuickChallenges: Record<number, Exercise> = {
 
 export const adamA2KnowledgeCheckExercises: Exercise[] = [
   {
-    id: 'adam-a2-kc-1', type: 'multiple-choice', title: 'A Role on Earth', instructions: 'Choose the role stated in Chapter 1.',
-    question: 'What role did Allah say the human would have on Earth?',
+    id: 'adam-a2-kc-1', type: 'multiple-choice', title: 'Adam on Earth', instructions: 'Choose the correct answer.',
+    question: 'What role would Adam have on Earth?',
     options: ['A ruler on Earth', 'An angel in the sky', 'A shepherd in Paradise'], correctAnswer: 0,
-    explanation: 'Chapter 1 says that the human was going to become the ruler on Earth.',
-    feedback: { correct: 'Correct. You recalled the role announced for life on Earth.', incorrect: 'Return to the sentence about what the human was going to become on Earth.' }
+    explanation: 'Chapter 1 says that Adam would have a role on Earth.',
+    feedback: { correct: 'Correct.', incorrect: 'Read the part about Adam’s role on Earth again.' }
   },
   {
-    id: 'adam-a2-kc-2', type: 'true-false', title: 'Knowledge and Thinking', instructions: 'Decide whether the statement agrees with Chapter 2.',
+    id: 'adam-a2-kc-2', type: 'true-false', title: 'Learning', instructions: 'Choose true or false.',
     question: 'Allah gave Adam knowledge and taught him to think.', correctAnswer: true,
-    explanation: 'Chapter 2 connects Adam’s learning and understanding with knowledge and thinking.', feedback: { correct: 'Correct.', incorrect: 'Reread the sentence explaining why Adam could learn and understand.' }
+    explanation: 'Chapter 2 says that Adam learned and understood through the knowledge Allah gave him.',
+    feedback: { correct: 'Correct.', incorrect: 'Read the part about Adam’s knowledge again.' }
   },
   {
-    id: 'adam-a2-kc-3', type: 'multiple-choice', title: 'Useful Knowledge', instructions: 'Choose what Chapter 3 says useful knowledge helps people do.',
-    question: 'According to Chapter 3, what can useful knowledge help people do?',
-    options: ['Do good and stop bad', 'Decide that one origin is always better', 'Avoid thinking about right and wrong'], correctAnswer: 0,
-    explanation: 'The chapter says useful knowledge helps people do good and stop bad.',
-    feedback: { correct: 'Correct. You used the chapter’s stated purpose of useful knowledge.', incorrect: 'Find the sentence beginning “But useful knowledge…” and read what people can do with it.' }
+    id: 'adam-a2-kc-3', type: 'multiple-choice', title: 'Useful Knowledge', instructions: 'Choose the correct answer.',
+    question: 'What does useful knowledge help people do?',
+    options: ['Do good and stop bad', 'Think one origin is always better', 'Stop thinking about right and wrong'], correctAnswer: 0,
+    explanation: 'Chapter 3 says useful knowledge helps people do good and stop bad.',
+    feedback: { correct: 'Correct.', incorrect: 'Read the sentence about useful knowledge again.' }
   },
   {
-    id: 'adam-a2-kc-4',
-    type: 'true-false',
-    title: 'The Tree Warning',
-    instructions: 'Decide whether the statement agrees with Chapter 4.',
-    question: 'Adam and Eve were free to go near every tree in Paradise.',
-    correctAnswer: false,
-    explanation: 'Chapter 4 gives one clear exception: they were told not to go near one tree.',
-    feedback: {
-      correct: 'Correct. You noticed the one restriction in the chapter.',
-      incorrect: 'Reread the final warning in Chapter 4 and look for the one exception.',
-    },
+    id: 'adam-a2-kc-4', type: 'true-false', title: 'The Tree', instructions: 'Choose true or false.',
+    question: 'Adam and Eve could go near every tree in Paradise.', correctAnswer: false,
+    explanation: 'They were told not to go near one tree.',
+    feedback: { correct: 'Correct.', incorrect: 'There was one tree they could not go near.' }
   },
   {
-    id: 'adam-a2-kc-5', type: 'multiple-choice', title: 'After the Mistake', instructions: 'Choose the response described in Chapter 5.',
-    question: 'What did Adam and Eve do after they understood their mistake?',
-    options: ['They were sorry, asked Allah to forgive them and learned from the mistake', 'They kept saying they were right', 'They ignored the mistake and continued as before'], correctAnswer: 0,
-    explanation: 'They were sad, said sorry to Allah, learned from the mistake and decided not to repeat it.',
-    feedback: { correct: 'Correct.', incorrect: 'Reread the paragraph after the mistake and follow their response step by step.' }
+    id: 'adam-a2-kc-5', type: 'multiple-choice', title: 'After the Mistake', instructions: 'Choose the correct answer.',
+    question: 'What did Adam and Eve do after their mistake?',
+    options: ['They were sorry and asked Allah to forgive them', 'They said they were right', 'They forgot the mistake'], correctAnswer: 0,
+    explanation: 'They were sorry, asked Allah to forgive them and learned from their mistake.',
+    feedback: { correct: 'Correct.', incorrect: 'Read what Adam and Eve did after the mistake.' }
   },
   {
-    id: 'adam-a2-kc-6', type: 'multiple-choice', title: 'Life on Earth', instructions: 'Choose an activity explicitly named in Chapter 6.',
-    question: 'Which activity is part of life on Earth in the chapter?',
-    options: ['Growing crops and keeping animals', 'Staying in Paradise and avoiding work', 'Leaving the land unused and living alone'], correctAnswer: 0,
-    explanation: 'The chapter names growing crops and keeping animals among the activities on Earth.',
-    feedback: { correct: 'Correct.', incorrect: 'Return to the activity list in Chapter 6 and choose only what is actually named.' }
+    id: 'adam-a2-kc-6', type: 'true-false', title: 'Life on Earth', instructions: 'Choose true or false.',
+    question: 'People on Earth did not need to work.', correctAnswer: false,
+    explanation: 'Chapter 6 talks about work such as growing crops and keeping animals.',
+    feedback: { correct: 'Correct.', incorrect: 'Chapter 6 gives examples of work on Earth.' }
   },
   {
-    id: 'adam-a2-kc-7', type: 'multiple-choice', title: 'Habil and Qabil', instructions: 'Choose the correct pair from Chapter 8.',
-    question: 'Which pair is correct?', options: ['Habil—shepherd; Qabil—farmer', 'Habil—farmer; Qabil—shepherd', 'Both brothers—farmers'], correctAnswer: 0,
+    id: 'adam-a2-kc-7', type: 'multiple-choice', title: 'Habil and Qabil', instructions: 'Choose the correct answer.',
+    question: 'What were Habil and Qabil’s jobs?',
+    options: ['Habil was a shepherd and Qabil was a farmer', 'Habil was a farmer and Qabil was a shepherd', 'Both were farmers'], correctAnswer: 0,
+    explanation: 'Habil became a shepherd and Qabil became a farmer.',
+    feedback: { correct: 'Correct.', incorrect: 'Read the first part of Chapter 8 again.' }
+  },
+  {
+    id: 'adam-a2-kc-8', type: 'true-false', title: 'The Crow', instructions: 'Choose true or false.',
+    question: 'The crow showed Qabil how to put his brother’s body in the ground.', correctAnswer: true,
+    explanation: 'The crow dug the ground and Qabil understood what to do.',
+    feedback: { correct: 'Correct.', incorrect: 'Read the part about the crow again.' }
+  }
+]; Qabil—farmer', 'Habil—farmer; Qabil—shepherd', 'Both brothers—farmers'], correctAnswer: 0,
     explanation: 'Habil became a shepherd and Qabil became a farmer.', feedback: { correct: 'Correct.', incorrect: 'Reread the first paragraph of Chapter 8.' }
   },
   {
