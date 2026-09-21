@@ -60,8 +60,6 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
 ];
 
 // Compatibility alias for the legacy page shell. The active page wiring uses adamB2LanguageReviewExercises.
-export const adamB2FinalReviewExercises = adamB2LanguageReviewExercises;
-
 export const adamB2FinalChallengeExercises: Exercise[] = [
   { id: 'adam-b2-fc-1', type: 'multiple-choice', title: 'Final Challenge 1', instructions: 'Choose the strongest answer.', question: 'What does the teaching of the names represent in the story?', options: ['Only the memorisation of labels', 'Human capacity for learning, language, reasoning and culture', 'A rejection of worldly knowledge'], correctAnswer: 1, explanation: 'Chapter 3 connects the names with broad human intellectual capacity.', feedback: { correct: 'Correct.', incorrect: 'Review Chapter 3.' } },
   { id: 'adam-b2-fc-2', type: 'multiple-choice', title: 'Final Challenge 2', instructions: 'Choose the strongest answer.', question: 'Why does Iblis’s argument fail within the logic of the book?', options: ['It bases superiority on material origin rather than obedience, knowledge and moral value', 'It uses too many examples', 'It accepts Adam’s knowledge'], correctAnswer: 0, explanation: 'Chapters 4–5 reject superiority based on material origin.', feedback: { correct: 'Correct.', incorrect: 'Review Chapters 4–5.' } },

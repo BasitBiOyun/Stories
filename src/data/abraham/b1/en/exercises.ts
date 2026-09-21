@@ -140,64 +140,6 @@ export const abrahamB1VocabularyChallengePairs = [
   { word: 'foundations', meaning: 'the supporting base on which a building is constructed' }
 ];
 
-export const abrahamB1FinalReviewExercises: Exercise[] = [
-  {
-    id: 'abraham-b1-review-sequence', type: 'sequencing', title: 'Journey of the Argument', instructions: 'Put these major developments in order.',
-    question: 'How does the narrative move from questioning inherited belief to establishing a place of worship?',
-    sequencingItems: [
-      { id: '1', text: 'Abraham questions powerless idols and created heavenly bodies' },
-      { id: '2', text: 'He openly calls his father and people to worship Allah' },
-      { id: '3', text: 'The broken idols expose a contradiction in the people’s belief' },
-      { id: '4', text: 'Allah protects Abraham from the great fire' },
-      { id: '5', text: 'Abraham challenges Nimrod’s claim of power' },
-      { id: '6', text: 'He leaves Babylon and his family reaches the valley' },
-      { id: '7', text: 'Zamzam supports settlement and Abraham and Ishmael build the Ka’ba' }
-    ],
-    correctAnswer: ['1', '2', '3', '4', '5', '6', '7'], explanation: 'The sequence shows a developing mission: reasoning, public challenge, trial, migration, family trust, and a lasting place of worship.',
-    feedback: { correct: 'Correct. You reconstructed the major narrative arc.', incorrect: 'Use the chapter titles as anchors and rebuild the journey from Babylon to Mecca.' }
-  },
-  {
-    id: 'abraham-b1-review-match', type: 'matching', title: 'Evidence and Meaning', instructions: 'Match each event with the idea it most clearly develops.',
-    question: 'What does each event contribute to the story?',
-    matchingPairs: [
-      { left: 'People repeat their fathers’ worship', right: 'blind imitation can resist evidence' },
-      { left: 'Abraham stays calm before the fire', right: 'trust can remain active under danger' },
-      { left: 'Hagar runs between the hills', right: 'reliance on Allah includes sustained effort' },
-      { left: 'The Ka’ba is rebuilt', right: 'the mission becomes a lasting communal legacy' }
-    ],
-    correctAnswer: { 'People repeat their fathers’ worship': 'blind imitation can resist evidence', 'Abraham stays calm before the fire': 'trust can remain active under danger', 'Hagar runs between the hills': 'reliance on Allah includes sustained effort', 'The Ka’ba is rebuilt': 'the mission becomes a lasting communal legacy' },
-    explanation: 'These pairings connect events with broader B1-level themes while remaining grounded in the text.',
-    feedback: { correct: 'Correct.', incorrect: 'Ask what each event shows about belief, trust, effort, or legacy.' }
-  },
-  {
-    id: 'abraham-b1-review-reflection', type: 'reflection', title: 'Claim, Evidence, Explanation', instructions: 'Use at least one exact event from the story as evidence.',
-    question: 'Which is more central to the story: Abraham’s reasoning or his perseverance? Explain how the two work together.',
-    correctAnswer: true, explanation: 'A strong response makes a claim, cites a relevant event, and explains the relationship between thinking clearly and remaining committed under pressure.',
-    feedback: { correct: 'Good reflection. Keep your claim tied to story evidence.', incorrect: 'Choose one event first, then explain what it shows about reasoning or perseverance.' },
-    discussionPrompts: [
-      { question: 'How does Chapter 5 show the difference between inherited belief and evidence?', mode: 'Individual' },
-      { question: 'How does the fire episode test more than physical courage?', mode: 'Pair' },
-      { question: 'How do Hagar’s actions complicate the idea that trust means simply waiting?', mode: 'Class' }
-    ]
-  },
-  {
-    id: 'abraham-b1-review-quiz', type: 'quiz-game', title: 'Independent Retrieval Quiz', instructions: 'Retrieve eight important ideas not used as simple repeats of the Knowledge Check.',
-    question: 'Can you reconnect details, motives, and consequences across the story?', correctAnswer: null,
-    explanation: 'This quiz targets distinct evidence and relationships across the narrative.',
-    feedback: { correct: 'Strong retrieval.', incorrect: 'Return to the relevant chapter and identify the evidence before trying again.' },
-    quizQuestions: [
-      { question: 'Which created things, besides statues, did people in Babylon worship?', options: [{ text: 'The stars, the moon, and the sun', isCorrect: true }, { text: 'Only rivers and mountains', isCorrect: false }, { text: 'Only the king of Babylon', isCorrect: false }], hint: 'Use the opening paragraph of Chapter 1.' },
-      { question: 'What does Abraham do after he enters the countryside and finds a cave?', options: [{ text: 'He sits and thinks about Allah before looking at the sky', isCorrect: true }, { text: 'He builds a new temple there', isCorrect: false }, { text: 'He meets Nimrod there', isCorrect: false }], hint: 'Use the beginning of the night scene in Chapter 3.' },
-      { question: 'Why does Abraham mention food, drink, and healing when speaking to his people?', options: [{ text: 'To contrast Allah’s care with the idols’ inability to help', isCorrect: true }, { text: 'To ask the idols for a meal', isCorrect: false }, { text: 'To describe the festival menu', isCorrect: false }], hint: 'Focus on the contrast in Chapter 5.' },
-      { question: 'What is the purpose of Abraham jokingly asking the idols to eat?', options: [{ text: 'To highlight their helplessness before he breaks them', isCorrect: true }, { text: 'To test whether the food is warm', isCorrect: false }, { text: 'To invite the people back early', isCorrect: false }], hint: 'The food remains untouched.' },
-      { question: 'What does the fire burning only the ropes emphasize?', options: [{ text: 'The punishment is reversed into protection for Abraham', isCorrect: true }, { text: 'The people secretly untie him', isCorrect: false }, { text: 'The fire was never lit', isCorrect: false }], hint: 'Compare Abraham with what bound him.' },
-      { question: 'Why are Sarah and Lot important at the beginning of the migration chapter?', options: [{ text: 'They show how few people had shared Abraham’s faith in Babylon', isCorrect: true }, { text: 'They lead Nimrod’s guards', isCorrect: false }, { text: 'They build the Ka’ba before Abraham', isCorrect: false }], hint: 'The chapter names only one woman and one man.' },
-      { question: 'What does Abraham ask Allah to give his family so that they may give thanks?', options: [{ text: 'Blessings', isCorrect: true }, { text: 'A new group of idols', isCorrect: false }, { text: 'A royal palace', isCorrect: false }], hint: 'Use Abraham’s prayer at the beginning of Chapter 11.' },
-      { question: 'How does Abraham remain connected to Mecca after people begin settling there?', options: [{ text: 'He visits Mecca several times to see his family', isCorrect: true }, { text: 'He sends Nimrod to govern the city', isCorrect: false }, { text: 'He never returns to the valley', isCorrect: false }], hint: 'Use the final sentence of Chapter 12.' }
-    ]
-  }
-];
-
 export const abrahamB1FinalChallengeExercises: Exercise[] = [
   { id: 'abraham-b1-final-1', type: 'multiple-choice', title: 'A Public System of Worship', instructions: 'Choose the interpretation best supported by Chapter 1.', question: 'What do the large house of worship and the people’s repeated bowing, crying, begging, and asking for help suggest about idol worship in Babylon?', options: ['It was an established communal practice supported by shared spaces and repeated actions', 'It was only a private habit inside Abraham’s family', 'It happened only once during a temporary celebration'], correctAnswer: 0, explanation: 'The chapter presents idol worship as a public and organized part of community life, not an isolated personal action.', feedback: { correct: 'Correct.', incorrect: 'Use the description of the large house of worship and what people regularly did there.' } },
   { id: 'abraham-b1-final-2', type: 'multiple-choice', title: 'Perseverance in Communication', instructions: 'Choose the interpretation best supported by Chapter 5.', question: 'What does Abraham’s response to the people’s anger show about the way he communicates his message?', options: ['He continues giving reasons and asks them to reconsider even when they become furious', 'He immediately stops explaining his position to avoid disagreement', 'He accepts their inherited practice but disagrees only in private'], correctAnswer: 0, explanation: 'The chapter says Abraham does not give up; he continues giving reasons and wants the people to reconsider their beliefs.', feedback: { correct: 'Correct.', incorrect: 'Follow the dialogue after the people become furious.' } },
