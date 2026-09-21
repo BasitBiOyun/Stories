@@ -21,5 +21,5 @@ export const yunusB2SelfStudyGuide: TeacherGuideSection[] = [
 export const yunusB2StudentGuideMetadata: StudentGuideMetadata = {
   title: 'Yunus Emre B2 Self-Study Guide', level: 'B2', language: 'English', estimatedStudyTime: '30–35 minutes per chapter',
   learningGoals: ['Read/listen for evidence, qualification, cause-effect, metaphor and synthesis.', 'Use B2 vocabulary in context.', 'Turn values into observable action without unsupported claims.'],
-  recommendedUse: ['Read/listen before opening hotspots.', 'Answer from memory before checking.', 'Use wrong-answer support to return to evidence.', 'Keep an evidence bank for Retrieval Review and Final Challenge.'],
+  recommendedUse: ['Read/listen before opening hotspots.', 'Answer from memory before checking.', 'Use wrong-answer support to return to evidence.', 'Keep an evidence bank for Language Review and Final Challenge.'],
 };
