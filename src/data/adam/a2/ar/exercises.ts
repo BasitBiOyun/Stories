@@ -116,57 +116,56 @@ export const adamA2QuickChallengesAr: Record<number, Exercise> = {
 
 export const adamA2KnowledgeCheckExercisesAr: Exercise[] = [
   {
-    id: 'adam-a2-ar-kc-1', type: 'multiple-choice', title: 'دور الإنسان في الأرض', instructions: 'اختر الدور المذكور في الفصل الأول.',
-    question: 'ما الدور الذي قال الله إن الإنسان سيقوم به في الأرض؟',
+    id: 'adam-a2-ar-kc-1', type: 'multiple-choice', title: 'آدم في الأرض', instructions: 'اختر الإجابة الصحيحة.',
+    question: 'ما الدور الذي سيكون لآدم في الأرض؟',
     options: ['يكون خليفة ومسؤولا في الأرض', 'يكون مَلَكا في السماء', 'يكون راعيا في الجنة'], correctAnswer: 0,
-    explanation: 'يذكر الفصل الأول أن الإنسان سيكون خليفة ومسؤولا في الأرض.',
-    feedback: { correct: 'صحيح. تذكرت الدور المذكور للحياة في الأرض.', incorrect: 'ارجع إلى الجملة التي تذكر ما سيكون عليه الإنسان في الأرض.' }
+    explanation: 'يذكر الفصل الأول أن لآدم دورا في الأرض.',
+    feedback: { correct: 'صحيح.', incorrect: 'اقرأ الجزء الذي يتحدث عن دور آدم في الأرض مرة أخرى.' }
   },
   {
-    id: 'adam-a2-ar-kc-2', type: 'true-false', title: 'العلم والتفكير', instructions: 'حدد هل العبارة توافق الفصل الثاني.',
-    question: 'علّم الله آدم العلم والتفكير.', correctAnswer: true,
-    explanation: 'يربط الفصل تعلم آدم وفهمه بالعلم والتفكير.', feedback: { correct: 'صحيح.', incorrect: 'أعد قراءة الجملة التي تشرح لماذا كان آدم يتعلم ويفهم.' }
+    id: 'adam-a2-ar-kc-2', type: 'true-false', title: 'التعلم', instructions: 'اختر صح أو خطأ.',
+    question: 'أعطى الله آدم العلم وعلّمه التفكير.', correctAnswer: true,
+    explanation: 'يذكر الفصل الثاني أن آدم تعلم وفهم بالعلم الذي أعطاه الله له.',
+    feedback: { correct: 'صحيح.', incorrect: 'اقرأ الجزء الذي يتحدث عن علم آدم مرة أخرى.' }
   },
   {
-    id: 'adam-a2-ar-kc-3', type: 'multiple-choice', title: 'العلم النافع', instructions: 'اختر ما يقول الفصل الثالث إن العلم النافع يساعد الناس على فعله.',
-    question: 'بحسب الفصل الثالث، ماذا يساعد العلم النافع الناس على أن يفعلوا؟',
-    options: ['فعل الخير ومنع الشر', 'اعتبار أصل واحد أفضل دائما', 'تجنب التفكير في الصواب والخطأ'], correctAnswer: 0,
-    explanation: 'يقول الفصل إن العلم النافع يساعد الناس على فعل الخير ومنع الشر.',
-    feedback: { correct: 'صحيح. استخدمت الغرض الذي يذكره الفصل للعلم النافع.', incorrect: 'ابحث عن الجملة التي تبدأ بمعنى «لكن العلم النافع...» واقرأ ما يستطيع الناس فعله به.' }
+    id: 'adam-a2-ar-kc-3', type: 'multiple-choice', title: 'العلم النافع', instructions: 'اختر الإجابة الصحيحة.',
+    question: 'ماذا يساعد العلم النافع الناس على أن يفعلوا؟',
+    options: ['يفعلوا الخير ويتركوا الشر', 'يقولوا إن أصلا واحدا أفضل دائما', 'يتوقفوا عن التفكير في الصواب والخطأ'], correctAnswer: 0,
+    explanation: 'يذكر الفصل الثالث أن العلم النافع يساعد الناس على فعل الخير وترك الشر.',
+    feedback: { correct: 'صحيح.', incorrect: 'اقرأ الجملة التي تتحدث عن العلم النافع مرة أخرى.' }
   },
   {
-    id: 'adam-a2-ar-kc-4',
-    type: 'true-false',
-    title: 'تحذير الشجرة',
-    instructions: 'حدد هل العبارة توافق الفصل الرابع.',
-    question: 'كان آدم وحواء يستطيعان الاقتراب من كل شجرة في الجنة بلا استثناء.',
-    correctAnswer: false,
-    explanation: 'يذكر الفصل استثناءً واضحًا: قيل لهما ألا يقتربا من شجرة واحدة.',
-    feedback: {
-      correct: 'صحيح. لاحظت الاستثناء الوحيد في الفصل.',
-      incorrect: 'أعد قراءة التحذير الأخير في الفصل الرابع وابحث عن الاستثناء.',
-    },
+    id: 'adam-a2-ar-kc-4', type: 'true-false', title: 'الشجرة', instructions: 'اختر صح أو خطأ.',
+    question: 'كان آدم وحواء يستطيعان الاقتراب من كل شجرة في الجنة.', correctAnswer: false,
+    explanation: 'قيل لهما ألا يقتربا من شجرة واحدة.',
+    feedback: { correct: 'صحيح.', incorrect: 'كانت هناك شجرة واحدة لا يجوز لهما الاقتراب منها.' }
   },
   {
-    id: 'adam-a2-ar-kc-5', type: 'multiple-choice', title: 'بعد الخطأ', instructions: 'اختر الاستجابة التي يصفها الفصل الخامس.',
-    question: 'ماذا فعل آدم وحواء بعد أن أدركا خطأهما؟',
-    options: ['حزنا وطلبا المغفرة من الله وتعلما من الخطأ', 'استمرا في القول إنهما على صواب', 'تجاهلا الخطأ واستمرا كما كانا'], correctAnswer: 0,
-    explanation: 'حزنا وطلبا المغفرة وتعلما من الخطأ وقررا ألا يكرراه.', feedback: { correct: 'صحيح.', incorrect: 'أعد قراءة الفقرة التي تأتي بعد الخطأ واتبع استجابتهما خطوة خطوة.' }
+    id: 'adam-a2-ar-kc-5', type: 'multiple-choice', title: 'بعد الخطأ', instructions: 'اختر الإجابة الصحيحة.',
+    question: 'ماذا فعل آدم وحواء بعد الخطأ؟',
+    options: ['حزنا وطلبا من الله أن يغفر لهما', 'قالا إنهما على صواب', 'نسيا الخطأ'], correctAnswer: 0,
+    explanation: 'حزنا وطلبا المغفرة من الله وتعلما من الخطأ.',
+    feedback: { correct: 'صحيح.', incorrect: 'اقرأ ما فعله آدم وحواء بعد الخطأ مرة أخرى.' }
   },
   {
-    id: 'adam-a2-ar-kc-6', type: 'multiple-choice', title: 'الحياة على الأرض', instructions: 'اختر عملا مذكورا صراحة في الفصل السادس.',
-    question: 'أي عمل ذُكر ضمن الحياة على الأرض؟', options: ['زراعة الزروع وتربية الحيوانات', 'البقاء في الجنة وتجنب العمل', 'ترك الأرض بلا استخدام والعيش منفردين'], correctAnswer: 0,
-    explanation: 'يذكر الفصل زراعة الزروع وتربية الحيوانات ضمن الأعمال على الأرض.', feedback: { correct: 'صحيح.', incorrect: 'ارجع إلى قائمة الأعمال في الفصل السادس واختر ما ورد فيها فعلا.' }
+    id: 'adam-a2-ar-kc-6', type: 'true-false', title: 'الحياة في الأرض', instructions: 'اختر صح أو خطأ.',
+    question: 'لم يكن الناس في الأرض بحاجة إلى العمل.', correctAnswer: false,
+    explanation: 'يذكر الفصل السادس أعمالا مثل الزراعة وتربية الحيوانات.',
+    feedback: { correct: 'صحيح.', incorrect: 'يذكر الفصل السادس أمثلة على العمل في الأرض.' }
   },
   {
-    id: 'adam-a2-ar-kc-7', type: 'multiple-choice', title: 'هابيل وقابيل', instructions: 'اختر الزوج الصحيح من الفصل الثامن.',
-    question: 'أي زوج صحيح؟', options: ['هابيل راعٍ؛ قابيل مزارع', 'هابيل مزارع؛ قابيل راعٍ', 'كلاهما مزارع'], correctAnswer: 0,
-    explanation: 'أصبح هابيل راعيا وأصبح قابيل مزارعا.', feedback: { correct: 'صحيح.', incorrect: 'أعد قراءة الفقرة الأولى من الفصل الثامن.' }
+    id: 'adam-a2-ar-kc-7', type: 'multiple-choice', title: 'هابيل وقابيل', instructions: 'اختر الإجابة الصحيحة.',
+    question: 'ما عمل هابيل وقابيل؟',
+    options: ['كان هابيل راعيا وكان قابيل مزارعا', 'كان هابيل مزارعا وكان قابيل راعيا', 'كان كلاهما مزارعا'], correctAnswer: 0,
+    explanation: 'أصبح هابيل راعيا وأصبح قابيل مزارعا.',
+    feedback: { correct: 'صحيح.', incorrect: 'اقرأ بداية الفصل الثامن مرة أخرى.' }
   },
   {
-    id: 'adam-a2-ar-kc-8', type: 'true-false', title: 'الغراب', instructions: 'حدد هل العبارة توافق الفصل التاسع.',
-    question: 'أظهر حفر الغراب لقابيل كيف يضع جثة أخيه في الأرض.', correctAnswer: true,
-    explanation: 'حفر الغراب الأرض ففهم قابيل ما ينبغي أن يفعله.', feedback: { correct: 'صحيح.', incorrect: 'اتبع فعل الغراب في الجزء الأخير من الفصل التاسع.' }
+    id: 'adam-a2-ar-kc-8', type: 'true-false', title: 'الغراب', instructions: 'اختر صح أو خطأ.',
+    question: 'أظهر الغراب لقابيل كيف يضع جثة أخيه في الأرض.', correctAnswer: true,
+    explanation: 'حفر الغراب الأرض ففهم قابيل ما ينبغي أن يفعله.',
+    feedback: { correct: 'صحيح.', incorrect: 'اقرأ الجزء الذي يتحدث عن الغراب مرة أخرى.' }
   }
 ];
 
