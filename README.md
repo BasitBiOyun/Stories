@@ -28,7 +28,7 @@ Each book/level should have one obvious manually authored source for:
 
 Approved material is locked and changed only by an intentional manual edit.
 
-Some existing books still pass through older Blueprint/Gold runtime layers. These are migration debt, not the authoring standard. They will be removed book by book as their final manual content is moved into direct authored files. Do not add new Gold, Blueprint, pedagogy-generator or quality-contract layers.
+Legacy Blueprint/Gold runtime layers have been removed. Approved learning content now lives in direct authored book files and passes only through the shared active learning/finalization layer. Do not reintroduce Gold, Blueprint, pedagogy-generator or parallel quality-contract layers.
 
 ## Commands
 
