@@ -310,11 +310,16 @@ entries.set(key, { word, definition });
   React.useEffect(() => {
     if (!isOpen) return;
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key !== 'Escape') return;
+      if (isPrepOpen) {
+        setIsPrepOpen(false);
+        return;
+      }
+      onClose();
     };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, isPrepOpen]);
 
   const renderTeacherContent = () => {
     switch (activeTab) {
@@ -1781,6 +1786,219 @@ entries.set(key, { word, definition });
               </div>
             </div>
           </div>
+
+          <AnimatePresence>
+            {isPrepOpen && selectedPrepChapter && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[130] bg-black/65 backdrop-blur-md p-2 sm:p-5 md:p-8"
+                onClick={() => setIsPrepOpen(false)}
+              >
+                <motion.section
+                  initial={{ opacity: 0, y: 22, scale: 0.985 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 18, scale: 0.985 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  onClick={(event) => event.stopPropagation()}
+                  className="mx-auto flex h-full max-w-6xl flex-col overflow-hidden rounded-[1.75rem] border border-gold/20 bg-wood shadow-[0_30px_90px_rgba(0,0,0,0.38)]"
+                  dir={isRTL ? 'rtl' : 'ltr'}
+                >
+                  <div className="shrink-0 border-b border-gold/15 bg-black/20 px-4 py-4 sm:px-6 md:px-8 md:py-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0 flex items-start gap-3 sm:gap-4">
+                        <span className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gold text-white flex items-center justify-center shrink-0 shadow-lg">
+                          <Sparkles size={22} />
+                        </span>
+                        <div className="min-w-0">
+                          <p className="font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gold/55">
+                            {language === 'ar' ? 'وضع تحضير الدرس' : 'LESSON PREP MODE'}
+                          </p>
+                          <h2 className="mt-1 truncate font-display text-lg sm:text-2xl md:text-[28px] font-bold text-parchment">
+                            {selectedPrepChapter.chapter}
+                          </h2>
+                          <div className="mt-2 flex flex-wrap items-center gap-2">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/15 bg-gold/[0.07] px-3 py-1 font-display text-[11px] font-bold text-gold">
+                              <Clock size={13} />
+                              {formatNumber(selectedPrepChapter.timing)}
+                            </span>
+                            <span className="rounded-full border border-white/[0.07] bg-white/[0.035] px-3 py-1 font-display text-[11px] font-bold text-parchment/55">
+                              {formatNumber(prepChapterIndex + 1)} / {formatNumber(content.length)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setIsPrepOpen(false)}
+                        className="w-11 h-11 shrink-0 rounded-xl border border-white/[0.07] bg-white/[0.04] text-gold hover:bg-white/[0.08] transition-colors flex items-center justify-center"
+                        aria-label={language === 'ar' ? 'إغلاق وضع التحضير' : 'Close Lesson Prep Mode'}
+                      >
+                        <X size={21} />
+                      </button>
+                    </div>
+
+                    <div className="mt-4 flex gap-2 overflow-x-auto pb-1 custom-scrollbar">
+                      {content.map((chapter, index) => (
+                        <button
+                          key={`prep-chapter-${index}`}
+                          type="button"
+                          onClick={() => setPrepChapterIndex(index)}
+                          title={chapter.chapter}
+                          className={cn(
+                            "shrink-0 min-w-10 h-10 px-3 rounded-full border font-display text-[11px] font-black transition-all",
+                            prepChapterIndex === index
+                              ? "bg-gold text-white border-gold shadow-lg shadow-black/10"
+                              : "bg-white/[0.035] text-gold/70 border-gold/15 hover:border-gold/35 hover:text-gold"
+                          )}
+                        >
+                          {formatNumber(index + 1)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-5 sm:px-6 md:px-8 md:py-7">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+                      <div className="lg:col-span-7 rounded-2xl border border-gold/15 bg-gold/[0.055] p-4 sm:p-5">
+                        <div className="flex items-center gap-2 mb-3">
+                          <CheckCircle size={17} className="text-gold" />
+                          <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold">
+                            {t('tg.learningObjectives')}
+                          </h3>
+                        </div>
+                        <ul className="space-y-2.5 font-serif text-[14px] sm:text-base text-parchment/88 leading-relaxed">
+                          {selectedPrepChapter.objectives.map((item, index) => (
+                            <li key={index} className="flex gap-2.5">
+                              <span className="text-gold/55">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="lg:col-span-5 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:p-5">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Lightbulb size={17} className="text-gold" />
+                          <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold">
+                            {t('tg.pedagogyApproach')}
+                          </h3>
+                        </div>
+                        <p className="font-serif text-[14px] sm:text-base text-parchment/78 leading-relaxed">
+                          {selectedPrepChapter.pedagogy}
+                        </p>
+                      </div>
+
+                      {(selectedPrepChapter.beforeReading?.length || selectedPrepChapter.duringReading?.length || selectedPrepChapter.afterReading?.length) ? (
+                        <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+                          {[
+                            { title: t('tg.beforeReading'), items: selectedPrepChapter.beforeReading },
+                            { title: t('tg.duringReading'), items: selectedPrepChapter.duringReading },
+                            { title: t('tg.afterReading'), items: selectedPrepChapter.afterReading },
+                          ].map((group) => group.items?.length ? (
+                            <div key={group.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:p-5">
+                              <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold mb-3">
+                                {group.title}
+                              </h3>
+                              <ul className="space-y-2 font-serif text-[14px] sm:text-[15px] text-parchment/75 leading-relaxed">
+                                {group.items.map((item, index) => <li key={index}>• {item}</li>)}
+                              </ul>
+                            </div>
+                          ) : null)}
+                        </div>
+                      ) : null}
+
+                      <div className="lg:col-span-7 rounded-2xl border border-white/[0.07] bg-black/10 p-4 sm:p-5">
+                        <div className="flex items-center gap-2 mb-3">
+                          <ClipboardList size={17} className="text-gold" />
+                          <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold">
+                            {t('tg.lessonFlow')}
+                          </h3>
+                        </div>
+                        <p className="font-serif text-[14px] sm:text-base text-parchment/80 leading-relaxed whitespace-pre-line">
+                          {selectedPrepChapter.lessonPlan}
+                        </p>
+                      </div>
+
+                      <div className="lg:col-span-5 space-y-4">
+                        {(selectedPrepChapter.grammarFocus || selectedPrepChapter.pronunciationFocus) && (
+                          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:p-5 space-y-4">
+                            {selectedPrepChapter.grammarFocus && (
+                              <div>
+                                <h3 className="font-display text-[11px] font-black uppercase tracking-[0.14em] text-gold/65 mb-1.5">
+                                  {t('tg.grammarFocus')}
+                                </h3>
+                                <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed">
+                                  {selectedPrepChapter.grammarFocus}
+                                </p>
+                              </div>
+                            )}
+                            {selectedPrepChapter.pronunciationFocus && (
+                              <div>
+                                <h3 className="font-display text-[11px] font-black uppercase tracking-[0.14em] text-gold/65 mb-1.5">
+                                  {t('tg.pronunciationFocus')}
+                                </h3>
+                                <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed">
+                                  {selectedPrepChapter.pronunciationFocus}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:p-5">
+                          <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold mb-3">
+                            {t('tg.differentiation')}
+                          </h3>
+                          <div className="space-y-3">
+                            <div>
+                              <p className="font-display text-[10px] font-black uppercase tracking-[0.12em] text-gold/50">{t('tg.fastFinishers')}</p>
+                              <p className="mt-1 font-serif text-[14px] text-parchment/75 leading-relaxed">{selectedPrepChapter.differentiation.fastFinishers}</p>
+                            </div>
+                            <div>
+                              <p className="font-display text-[10px] font-black uppercase tracking-[0.12em] text-gold/50">{t('tg.strugglingLearners')}</p>
+                              <p className="mt-1 font-serif text-[14px] text-parchment/75 leading-relaxed">{selectedPrepChapter.differentiation.strugglingLearners}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {(selectedPrepChapter.formativeAssessment?.length || selectedPrepChapter.assessmentTools?.exitTicket?.length) ? (
+                        <div className="lg:col-span-6 rounded-2xl border border-gold/15 bg-gold/[0.045] p-4 sm:p-5">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Award size={17} className="text-gold" />
+                            <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold">
+                              {t('tg.assessment')}
+                            </h3>
+                          </div>
+                          <ul className="space-y-2 font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed">
+                            {(selectedPrepChapter.formativeAssessment ?? selectedPrepChapter.assessmentTools?.exitTicket ?? []).map((item, index) => (
+                              <li key={index}>• {item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+
+                      {selectedPrepChapter.transferTask && (
+                        <div className="lg:col-span-6 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:p-5">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Globe size={17} className="text-gold" />
+                            <h3 className="font-display text-[12px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-gold">
+                              {language === 'ar' ? 'مهمة النقل' : 'Transfer Task'}
+                            </h3>
+                          </div>
+                          <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed">
+                            {selectedPrepChapter.transferTask}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.section>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </motion.div>
       )}
