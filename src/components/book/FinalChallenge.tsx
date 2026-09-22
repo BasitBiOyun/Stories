@@ -363,6 +363,71 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 ? 'Reflection'
                 : 'Question';
 
+  const renderCorrectionReview = () => {
+    if (lastCorrect !== false || attemptNumber !== 2) return null;
+
+    if (currentQuestion.type === 'fill-blanks') {
+      const acceptedAnswers = Array.isArray(currentQuestion.correctAnswer)
+        ? currentQuestion.correctAnswer.map(String)
+        : [String(currentQuestion.correctAnswer ?? '')];
+
+      return (
+        <div className={cn('mt-4 rounded-xl border px-4 py-3', theme.border, theme.soft)}>
+          <p className={cn('font-display font-black uppercase tracking-wider', isArabic ? 'text-sm' : 'text-xs', theme.subtext)}>
+            {isArabic ? 'الإجابة الصحيحة' : 'Correct Answer'}
+          </p>
+          <p className={cn('font-serif mt-1.5 font-bold text-wood', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+            {acceptedAnswers.join(' / ')}
+          </p>
+        </div>
+      );
+    }
+
+    if (currentQuestion.type === 'matching') {
+      return (
+        <div className={cn('mt-4 rounded-xl border px-4 py-3 space-y-2', theme.border, theme.soft)}>
+          <p className={cn('font-display font-black uppercase tracking-wider', isArabic ? 'text-sm' : 'text-xs', theme.subtext)}>
+            {isArabic ? 'المطابقة الصحيحة' : 'Correct Matching'}
+          </p>
+          {(currentQuestion.matchingPairs ?? []).map((pair) => (
+            <div key={`correct-${pair.left}`} className={cn('font-serif text-wood/80 leading-relaxed', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+              <span className="font-bold text-wood">{pair.left}</span>
+              <span className="mx-2 opacity-45">→</span>
+              <span>{pair.right}</span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    if (currentQuestion.type === 'sequencing') {
+      const itemMap = new Map((currentQuestion.sequencingItems ?? []).map((item) => [item.id, item.text]));
+      const orderedIds = Array.isArray(currentQuestion.correctAnswer)
+        ? currentQuestion.correctAnswer.map(String)
+        : (currentQuestion.sequencingItems ?? []).map((item) => item.id);
+
+      return (
+        <div className={cn('mt-4 rounded-xl border px-4 py-3 space-y-2', theme.border, theme.soft)}>
+          <p className={cn('font-display font-black uppercase tracking-wider', isArabic ? 'text-sm' : 'text-xs', theme.subtext)}>
+            {isArabic ? 'الترتيب الصحيح' : 'Correct Order'}
+          </p>
+          {orderedIds.map((id, index) => (
+            <div key={`correct-order-${id}`} className="flex items-start gap-2">
+              <span className={cn('w-6 h-6 rounded-full shrink-0 flex items-center justify-center font-display font-black', isArabic ? 'text-xs' : 'text-[10px]', theme.soft, theme.subtext)}>
+                {formatNumber(index + 1)}
+              </span>
+              <span className={cn('font-serif text-wood/80 leading-relaxed', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+                {itemMap.get(id)}
+              </span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   const renderAnswerArea = () => {
     if (currentQuestion.type === 'true-false') {
       return (
@@ -753,6 +818,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 {currentQuestion.explanation && (
                   <p className={cn('font-serif text-wood/60 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{currentQuestion.explanation}</p>
                 )}
+                {renderCorrectionReview()}
                 <button
                   type="button"
                   onClick={goNext}
