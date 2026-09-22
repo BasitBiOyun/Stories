@@ -72,9 +72,12 @@ const makeBook = (
 ): BookData => ({
   ...source,
   pages,
-  teacherGuide: bundle.teacherGuide,
+  // Teacher Guide is always authored/reviewed book content. Shared learning
+  // finalization may enrich learning pages or student study surfaces, but it
+  // must never generate, replace, or rewrite Teacher Guide content.
+  teacherGuide: source.teacherGuide,
+  teacherGuideMetadata: source.teacherGuideMetadata,
   selfStudyGuide: bundle.selfStudyGuide,
-  teacherGuideMetadata: bundle.teacherGuideMetadata,
   studentGuideSections: bundle.studentGuideSections,
   studentGuideMetadata: bundle.studentGuideMetadata,
   studentGuideText: bundle.studentGuideText,
