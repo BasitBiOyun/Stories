@@ -3,18 +3,6 @@ import type { TeacherGuideMetadata, TeacherGuideSection } from '../../../../type
 const TYMM_FOREIGN = 'https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri';
 const TYMM_VALUES = 'https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cercevesi';
 
-type ChapterSpec = {
-  n: number;
-  title: string;
-  focus: string;
-  misconception: string;
-  evidence: string;
-  question: string;
-  valueAction: string;
-  transfer: string;
-  language: string;
-};
-
 export const meccaB2TeacherGuide: TeacherGuideSection[] = [
   {
     "chapter": "Chapter 1: A City and an Age",
