@@ -233,6 +233,7 @@ entries.set(key, { word, definition });
     { id: 'overview', label: t('tg.overview'), icon: <BookOpen size={22} /> },
     { id: 'curriculum', label: t('tg.curriculum'), icon: <Layout size={22} /> },
     { id: 'approach', label: t('tg.approach'), icon: <Lightbulb size={22} /> },
+    { id: 'plans', label: t('tg.plans'), icon: <ClipboardList size={22} /> },
     { id: 'framework', label: t('tg.framework'), icon: <MessageSquare size={22} /> },
     { id: 'chapters', label: t('tg.chapters'), icon: <BookIcon size={22} /> },
     { id: 'management', label: t('tg.management'), icon: <Users size={22} /> },
