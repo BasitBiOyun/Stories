@@ -650,6 +650,549 @@ const manualTeacherGuideSections: TeacherGuideSection[] = [
     "transferTask": "Explain a neutral example where something can be evidence for a claim without being identical to the thing it indicates.",
     "teacherReflection": "Did learners preserve both sides of the argument—unworthy of worship yet meaningful as a sign?"
   }
+,
+
+  {
+    "chapter": "11. Arguing for Tawheed",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse how Abraham answers threats by reframing the issue around security, authority and guidance.",
+      "Distinguish the opponents’ threat from Abraham’s refusal to fear the partners they assign to Allah.",
+      "Use rhetorical questions, unless and evidence/absence-of-evidence language to explain how the argument is reversed."
+    ],
+    "pedagogy": "Use a threat-versus-security board. Learners first identify what Abraham’s people appear to threaten him with, then follow his questions about who actually has reason to fear and what authority supports worship.",
+    "priorKnowledge": [
+      "Creator/creation distinction from Chapters 9–10 and the function of rhetorical questions."
+    ],
+    "anticipatedMisconceptions": [
+      "Confidence in the passage is not the same as denying that opponents threatened him."
+    ],
+    "grammarFocus": "Rhetorical questions; exception with unless; evidence, absence of evidence and explicit inference.",
+    "pronunciationFocus": "Practise the rising-falling contour of the rhetorical questions and stress “no authority” and “more right to security” as argumentative pivots.",
+    "beforeReading": [
+      "Ask what changes when a speaker answers a threat by questioning the basis of the threat rather than simply denying fear."
+    ],
+    "duringReading": [
+      "Mark the threat inferred from the people’s behaviour and Abraham’s refusal to fear assigned partners.",
+      "Underline the question about which party has more right to security.",
+      "Identify the phrase about no authority having been sent down for the partners."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge and identify which question reverses the frame.",
+      "Use Language Focus to write one rhetorical question and one unless-clause without changing the source claim.",
+      "Explain in three sentences how security replaces fear as the key issue."
+    ],
+    "lessonPlan": "1. 0–5 min: threat/reframing warm-up. 2. 5–15 min: read/listen for threat and refusal. 3. 15–23 min: map the security argument and authority evidence. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on rhetorical questions and exception. 6. 37–43 min: three-sentence argument reversal. 7. 43–45 min: exit ticket naming the missing authority in the opponents’ claim.",
+    "discussionPoints": [
+      "How does Abraham reverse the question of who should be afraid?",
+      "Why does absence of authority matter to the argument?"
+    ],
+    "interactiveTips": [
+      "Use arrows to show question → implied answer rather than treating the questions as requests for information.",
+      "Keep “threat exists” and “Abraham does not fear it” as separate propositions."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide the three key questions and let learners match each to fear, authority or security.",
+      "fastFinishers": "Write a short paragraph using one rhetorical question, one exception and one evidence-based inference."
+    },
+    "formativeAssessment": [
+      "Identifies the threat accurately.",
+      "Explains the security reversal.",
+      "Uses rhetorical-question meaning rather than only punctuation."
+    ],
+    "expectedResponses": [
+      "Abraham refuses fear of the assigned partners and asks why his people do not fear unsupported association with Allah, shifting the argument toward justified security and guidance."
+    ],
+    "transferTask": "Reframe a neutral claim by asking what evidence or authority actually supports it.",
+    "teacherReflection": "Did learners understand the questions as argumentative moves, or only as quotations to repeat?"
+  },
+  {
+    "chapter": "12. Speaking to His Father",
+    "timing": "45 minutes",
+    "objectives": [
+      "Explain why the conflict with Abraham’s father combines religious belief, family relationship and livelihood.",
+      "Identify the father’s worship, manufacture and sale of idols as distinct layers of involvement.",
+      "Use stance framing, direct-speech functions and not only…but also to analyse why the disagreement becomes personal as well as religious."
+    ],
+    "pedagogy": "Build a three-layer conflict map: belief / family / livelihood. Learners locate one text detail for each layer before discussing the father’s anger, preventing the scene from becoming a simple “father versus son” summary.",
+    "priorKnowledge": [
+      "Abraham’s public argument from Chapter 11 and basic source/stance language."
+    ],
+    "anticipatedMisconceptions": [
+      "The conflict is not presented as a simple disagreement between strangers."
+    ],
+    "grammarFocus": "Stance framing and action interpretation; direct-speech functions; not only … but also expansion.",
+    "pronunciationFocus": "Practise faithful, forefathers, shaped and sold; stress not only…but also to show the accumulation of reasons for the father’s anger.",
+    "beforeReading": [
+      "Ask what makes a disagreement more difficult when belief, family role and income overlap."
+    ],
+    "duringReading": [
+      "Mark the quoted exchange about the statues and the parents’ practice.",
+      "Underline the sentence explaining that the father both worshipped and shaped/sold idols.",
+      "Separate Abraham’s theological challenge from the father’s personal/economic involvement."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the three-layer map.",
+      "Use Language Focus to expand a one-dimensional statement into a not only…but also explanation.",
+      "Write a balanced explanation of why the father may experience the challenge as personal without endorsing his position."
+    ],
+    "lessonPlan": "1. 0–5 min: three-layer conflict frame. 2. 5–15 min: read/listen and identify the quoted challenge. 3. 15–23 min: map belief/family/livelihood evidence. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on stance and expansion. 6. 37–43 min: balanced conflict explanation. 7. 43–45 min: exit ticket naming the three overlapping layers.",
+    "discussionPoints": [
+      "Why might the father experience Abraham’s challenge as both religious and personal?",
+      "Which detail shows the disagreement also touches livelihood?"
+    ],
+    "interactiveTips": [
+      "Keep explanation and justification separate: understanding the father’s interests does not require accepting his beliefs.",
+      "Use three distinct icons for belief, family and economic interest so one layer does not swallow the others."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Give one evidence strip for each layer and sentence frames beginning “Religiously… / As a father… / Economically…”.",
+      "fastFinishers": "Write six sentences explaining the conflict through all three layers and one direct-speech function."
+    },
+    "formativeAssessment": [
+      "Uses evidence for all three layers.",
+      "Explains personal stakes without caricature.",
+      "Uses expansion language accurately."
+    ],
+    "expectedResponses": [
+      "The father’s anger is intensified because he worships idols, makes and sells them, and is being challenged by his own son."
+    ],
+    "transferTask": "Analyse a neutral disagreement where belief, relationship and practical interest overlap.",
+    "teacherReflection": "Did learners explain the father’s position accurately without turning explanation into endorsement?"
+  },
+  {
+    "chapter": "13. Debating the Idolaters",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse how Abraham advises his father with affection, evidence and warning rather than ridicule.",
+      "Identify hearing, seeing and benefit as the concrete capability tests in his advice.",
+      "Use purpose, parallel negatives and evidence→invitation→warning→concern sequencing to describe respectful challenge."
+    ],
+    "pedagogy": "Treat the passage as a communication-strategy sequence. Learners identify the affectionate address first, then the capability evidence, the invitation to follow, and the warning motivated by concern.",
+    "priorKnowledge": [
+      "Chapter 12 family context and the capability argument from Chapter 7."
+    ],
+    "anticipatedMisconceptions": [
+      "Respectful language does not mean Abraham avoids a direct challenge."
+    ],
+    "grammarFocus": "Purpose and interpersonal strategy; parallel negatives; evidence → invitation → warning → concern.",
+    "pronunciationFocus": "Practise the repeated “O my father” with consistent respectful tone; use parallel rhythm for neither hear / see / benefit.",
+    "beforeReading": [
+      "Ask how a person can challenge an idea directly without humiliating the person who holds it."
+    ],
+    "duringReading": [
+      "Count and mark each affectionate address to the father.",
+      "Underline the three capability negatives and the invitation to follow.",
+      "Identify the final warning and the concern motivating it."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by linking a line to its function: affection, evidence, invitation or warning.",
+      "Use Language Focus to write a parallel-negative sentence and a respectful invitation.",
+      "Explain why the passage is both gentle and intellectually direct."
+    ],
+    "lessonPlan": "1. 0–5 min: respectful-challenge criteria. 2. 5–15 min: read/listen for repeated address and evidence. 3. 15–23 min: sequence affection→evidence→invitation→warning. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on parallel negatives and interpersonal purpose. 6. 37–43 min: strategy explanation. 7. 43–45 min: exit ticket identifying one respectful and one direct feature.",
+    "discussionPoints": [
+      "Which feature makes the advice both gentle and intellectually direct?",
+      "How does the repeated address affect the tone of the warning?"
+    ],
+    "interactiveTips": [
+      "Label each utterance by function rather than discussing tone in general terms.",
+      "Do not ask students to reenact a family religious conflict; use text analysis and neutral transfer."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide four labels—affection/evidence/invitation/warning—and let learners match quotations to them.",
+      "fastFinishers": "Write a short advisory paragraph that uses parallel negatives, a respectful address and a clear reason."
+    },
+    "formativeAssessment": [
+      "Identifies communication functions.",
+      "Explains the capability evidence.",
+      "Maintains respectful tone in transfer."
+    ],
+    "expectedResponses": [
+      "Abraham repeatedly addresses his father respectfully, gives capability-based reasons, invites him to follow guidance and warns him out of concern."
+    ],
+    "transferTask": "Rewrite a blunt disagreement as a respectful evidence-based challenge without weakening the core point.",
+    "teacherReflection": "Did learners see respect as a communication strategy that coexists with direct disagreement?"
+  },
+  {
+    "chapter": "14. Calling People to Reconsider",
+    "timing": "45 minutes",
+    "objectives": [
+      "Explain how Abraham responds to his father’s threat with peace, prayer and continued mission.",
+      "Distinguish withdrawing from one relationship from abandoning the broader message.",
+      "Use conditional threat, future commitment, hope/probability and analogy to analyse persistence."
+    ],
+    "pedagogy": "Use a continuity-after-rejection timeline. Learners mark the father’s threat, Abraham’s peaceful response, withdrawal, prayer and move toward public debate, then compare the doctor/judge analogies with the purpose of questioning people.",
+    "priorKnowledge": [
+      "Chapter 13 respectful advice and basic conditional/future forms."
+    ],
+    "anticipatedMisconceptions": [
+      "Turning away from his father does not mean abandoning the wider mission."
+    ],
+    "grammarFocus": "Conditional threat vs future commitment; hope/probability stance; analogy as reasoning; inquiry purpose.",
+    "pronunciationFocus": "Contrast the force of the father’s threat with the calmer tone of “Peace be upon you” and “I will ask my Lord…”; pause around the doctor/judge analogies.",
+    "beforeReading": [
+      "Ask what forms persistence can take after a conversation has reached a threat."
+    ],
+    "duringReading": [
+      "Mark the conditional threat and Abraham’s peaceful/future response.",
+      "Underline the transition from family withdrawal to public debate.",
+      "Identify what the doctor and judge analogies explain about his questioning method."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the timeline.",
+      "Use Language Focus to contrast the threat with Abraham’s future commitments.",
+      "Write a paragraph explaining what changes—audience—and what remains—mission."
+    ],
+    "lessonPlan": "1. 0–5 min: persistence-after-rejection warm-up. 2. 5–15 min: read/listen to threat and response. 3. 15–23 min: timeline withdrawal→prayer→public debate. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on condition, future and analogy. 6. 37–43 min: continuity paragraph. 7. 43–45 min: exit ticket naming what changes and what stays constant.",
+    "discussionPoints": [
+      "What changes in Abraham’s audience after the father’s threat, and what remains constant?",
+      "What do the doctor and judge analogies add to the logic of questioning?"
+    ],
+    "interactiveTips": [
+      "Use two colours for response to father and action toward wider society.",
+      "Ask learners to state the function of each analogy, not whether they like the comparison."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Use a four-step card sequence: threat / peace / withdrawal / public debate.",
+      "fastFinishers": "Write six sentences using if, will/hope and one analogy to explain strategic persistence."
+    },
+    "formativeAssessment": [
+      "Orders the transition accurately.",
+      "Separates withdrawal from abandonment.",
+      "Explains analogy as reasoning."
+    ],
+    "expectedResponses": [
+      "Abraham ends the immediate confrontation with peace and prayer, but continues the wider mission by questioning the people publicly."
+    ],
+    "transferTask": "Describe a neutral situation where changing audience or method allows a principled task to continue.",
+    "teacherReflection": "Did learners distinguish strategic withdrawal from giving up?"
+  },
+  {
+    "chapter": "15. Breaking the Idols",
+    "timing": "45 minutes",
+    "objectives": [
+      "Identify the people’s appeal to forefathers and evaluate why inherited practice is not sufficient evidence in the chapter.",
+      "Distinguish respect for tradition from using tradition as proof of truth.",
+      "Use rhetorical observable tests, exclusivity and defining relations to formulate testable claims."
+    ],
+    "pedagogy": "Set up a context-versus-evidence board. Learners place “our forefathers did it” under historical context, then compare it with Abraham’s observable questions about seeing, benefit and harm.",
+    "priorKnowledge": [
+      "Capability testing from Chapter 7 and family/tradition references from Chapter 12."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not claim every inherited practice is wrong merely because it is inherited."
+    ],
+    "grammarFocus": "Rhetorical observable tests; evidence vs inherited tradition; exclusivity, defining relatives and testable claims.",
+    "pronunciationFocus": "Use questioning intonation for “Do the idols…?” and contrastive stress between forefathers and observable ability.",
+    "beforeReading": [
+      "Ask when tradition is useful as historical context and when it is not enough to prove a claim."
+    ],
+    "duringReading": [
+      "Mark the people’s admission that the idols are lifeless.",
+      "Underline the appeal to forefathers as their defense.",
+      "Identify Abraham’s observable challenge about harm and benefit."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by classifying tradition or testable evidence.",
+      "Use Language Focus to rewrite one inherited-practice claim into a testable question.",
+      "Write a qualified statement explaining that tradition can be context without being sufficient proof."
+    ],
+    "lessonPlan": "1. 0–5 min: context/evidence distinction. 2. 5–14 min: read/listen for forefather defense. 3. 14–22 min: compare inherited practice with observable tests. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on rhetorical tests and exclusivity. 6. 36–43 min: qualified evaluation. 7. 43–45 min: exit ticket: tradition as context vs proof.",
+    "discussionPoints": [
+      "When can tradition count as context but not sufficient evidence?",
+      "What makes Abraham’s challenge testable within the chapter?"
+    ],
+    "interactiveTips": [
+      "Do not frame the lesson as “old = wrong”; keep the issue on evidence quality.",
+      "Ask students to label every statement C = context or E = evidence."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Give two columns—Inherited because… / Observable because…—and preselect three text details.",
+      "fastFinishers": "Write a short argument that respects historical tradition while requiring independent evidence for a factual claim."
+    },
+    "formativeAssessment": [
+      "Classifies tradition appropriately.",
+      "Identifies testable evidence.",
+      "Avoids anti-tradition overgeneralisation."
+    ],
+    "expectedResponses": [
+      "The people admit the idols are lifeless but defend worship through ancestral practice; Abraham challenges whether that practice proves the idols can act."
+    ],
+    "transferTask": "Evaluate a neutral inherited practice by separating its historical value from evidence for a factual claim.",
+    "teacherReflection": "Did learners critique the evidential role of tradition rather than tradition itself?"
+  },
+  {
+    "chapter": "16. The Broken Temple",
+    "timing": "45 minutes",
+    "objectives": [
+      "Compare the chapter’s chain of divine actions with the earlier descriptions of idol helplessness.",
+      "Identify creation, guidance, provision, healing, death and revival as cumulative agency.",
+      "Use relative-clause chaining, exception and stance to explain active divine agency versus lifeless objects."
+    ],
+    "pedagogy": "Build an agency chain. Learners map each relative clause beginning “He who…” to an action, then compare the chain with the earlier inability list for idols.",
+    "priorKnowledge": [
+      "Chapter 7 helplessness evidence and Chapter 15 testable claims."
+    ],
+    "anticipatedMisconceptions": [
+      "The comparison is not merely “large power versus small power”; it is active divine agency versus lifeless objects."
+    ],
+    "grammarFocus": "Dialogue reframing; cumulative relative-clause chain; exception; local stance marking.",
+    "pronunciationFocus": "Read the “He who…” chain with parallel rhythm and stress the action verbs created/guides/feeds/waters/heals/dies/revives.",
+    "beforeReading": [
+      "Recall two idol inabilities and ask what kind of evidence would create a true agency contrast."
+    ],
+    "duringReading": [
+      "Underline each divine action in the Quranic chain.",
+      "Group the actions into creation/guidance, provision/care and life/death.",
+      "Mark the exception “but not so the Lord of the Worlds” as the pivot."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the action groups.",
+      "Use Language Focus to build a cumulative relative-clause sentence.",
+      "Compare two strongest action/inability pairs and justify why they are strong."
+    ],
+    "lessonPlan": "1. 0–5 min: retrieve helplessness evidence. 2. 5–15 min: read/listen and mark the relative-clause chain. 3. 15–23 min: group divine actions. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on chaining and exception. 6. 37–43 min: agency comparison. 7. 43–45 min: exit ticket with one action/inability contrast.",
+    "discussionPoints": [
+      "Which two divine actions create the strongest contrast with the idols, and why?",
+      "How does the cumulative chain strengthen the chapter’s argument?"
+    ],
+    "interactiveTips": [
+      "Use verbs, not abstract labels, in the agency map.",
+      "Keep theological claims tied to the exact wording of the chapter rather than extending them."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide six action cards and let learners group them into three categories.",
+      "fastFinishers": "Write a seven-sentence comparison using two relative clauses and one explicit exception."
+    },
+    "formativeAssessment": [
+      "Identifies cumulative agency.",
+      "Uses relative clauses coherently.",
+      "Explains contrast through actions rather than vague “power” language."
+    ],
+    "expectedResponses": [
+      "The chapter lists active divine functions—creating, guiding, providing, healing, causing death and revival—in contrast with lifeless idols."
+    ],
+    "transferTask": "Compare two systems by listing concrete actions each can or cannot perform rather than using vague labels.",
+    "teacherReflection": "Did learners focus on the action chain as evidence?"
+  },
+  {
+    "chapter": "17. Questioned Before the People",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse why Abraham waits for the festival and enters an empty temple.",
+      "Explain how questioning silent statues and food offerings sets up a practical demonstration.",
+      "Use resistance→decision→purpose and until/then sequencing to show intentional action."
+    ],
+    "pedagogy": "Teach the chapter as planning before action. Learners identify the opportunity created by the empty city, Abraham’s purpose, and the first silent-statue test before any smashing occurs.",
+    "priorKnowledge": [
+      "Chapter 15 observable testing and Chapter 16 agency contrast."
+    ],
+    "anticipatedMisconceptions": [
+      "The episode is not presented as random destruction without an argumentative aim."
+    ],
+    "grammarFocus": "Resistance → decision → purpose; future-in-the-past; until/then/past-perfect sequencing; rhetorical testing.",
+    "pronunciationFocus": "Practise festival, temple, offerings and cautious; use questioning tone for “Why don’t you eat?” and a deliberate pause before the silence.",
+    "beforeReading": [
+      "Ask what makes a practical demonstration different from impulsive action."
+    ],
+    "duringReading": [
+      "Mark why the city and temple become empty.",
+      "Underline the stated intention to show error.",
+      "Track the approach to the food offering and the first unanswered question."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by identifying purpose before action.",
+      "Use Language Focus to write the opportunity→decision→purpose sequence.",
+      "Explain why the silence of the statues is already part of the demonstration."
+    ],
+    "lessonPlan": "1. 0–5 min: demonstration vs impulse. 2. 5–14 min: read/listen for festival opportunity. 3. 14–22 min: map purpose and first test. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on sequence and purpose. 6. 36–43 min: practical-demonstration explanation. 7. 43–45 min: exit ticket naming opportunity and intended proof.",
+    "discussionPoints": [
+      "What makes the temple episode a demonstration rather than merely an act?",
+      "Why is the unanswered food question important before the later destruction?"
+    ],
+    "interactiveTips": [
+      "Stop the analysis before Chapter 18; do not let later knowledge erase the setup stage.",
+      "Use purpose arrows so every action must answer “for what reason?”"
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide four steps: festival / empty temple / food question / silence.",
+      "fastFinishers": "Write six sentences showing how context creates an opportunity for an evidence-based demonstration."
+    },
+    "formativeAssessment": [
+      "Identifies purpose before action.",
+      "Sequences the setup correctly.",
+      "Explains silence as evidence."
+    ],
+    "expectedResponses": [
+      "Abraham chooses the empty temple to create a practical test, beginning by asking the silent statues about the food placed before them."
+    ],
+    "transferTask": "Design a harmless classroom demonstration that tests a claim and state the purpose before the procedure.",
+    "teacherReflection": "Did learners distinguish deliberate demonstration from random action?"
+  },
+  {
+    "chapter": "18. The Decision to Burn Abraham",
+    "timing": "45 minutes",
+    "objectives": [
+      "Explain how smashing all but the largest idol and hanging the axe creates a later test of agency.",
+      "Identify the exception as the key design feature of the demonstration.",
+      "Use rhetorical challenge, exception, past-perfect completion and source transition to analyse how evidence is staged."
+    ],
+    "pedagogy": "Use a scene-design diagram. Learners mark what is destroyed, what is deliberately left intact, where the axe is placed, and what inference the arrangement is designed to provoke later.",
+    "priorKnowledge": [
+      "Chapter 17 purpose and practical-test setup."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not ask the reader to believe the largest idol actually acted."
+    ],
+    "grammarFocus": "Rhetorical challenge plus reason; exception; past-perfect completion and purpose; narrative → sourced quotation.",
+    "pronunciationFocus": "Stress all / except one and the location of the axe; use neutral reporting tone when moving from narrative to the quoted Quranic response.",
+    "beforeReading": [
+      "Ask why a demonstration might deliberately leave one object unchanged."
+    ],
+    "duringReading": [
+      "Mark the questions to the statues before the smashing.",
+      "Underline “all except one” and the axe placement.",
+      "Identify the shift from narrative action to the quoted public reaction."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by explaining the function of the untouched idol.",
+      "Use Language Focus to write an exception sentence and a purpose sentence.",
+      "Predict the logical question the scene is designed to force without claiming the idol actually acted."
+    ],
+    "lessonPlan": "1. 0–5 min: exception-as-design warm-up. 2. 5–14 min: read/listen to questions and smashing. 3. 14–22 min: diagram largest idol/axe/others. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on exception and purpose. 6. 36–43 min: evidence-staging explanation. 7. 43–45 min: exit ticket: why leave one idol?",
+    "discussionPoints": [
+      "Why is the untouched idol essential to the logic of the next scene?",
+      "What is the difference between staging a rhetorical test and making a literal factual claim?"
+    ],
+    "interactiveTips": [
+      "Keep a visible label “rhetorical setup, not literal attribution”.",
+      "Use the scene diagram rather than reenacting destruction."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Give a before/after temple diagram and ask learners to label the exception and axe.",
+      "fastFinishers": "Write a six-sentence analysis of how exception and object placement create a later argument."
+    },
+    "formativeAssessment": [
+      "Explains the exception’s function.",
+      "Avoids literal-idol-action misconception.",
+      "Uses purpose language accurately."
+    ],
+    "expectedResponses": [
+      "Leaving the largest idol intact with the axe creates a rhetorical test of whether the idols can act or speak."
+    ],
+    "transferTask": "Explain how leaving one exception in a neutral demonstration can make the tested claim clearer.",
+    "teacherReflection": "Did learners understand the scene as staged evidence rather than literal attribution?"
+  },
+  {
+    "chapter": "19. Thrown into the Fire",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse the public exchange in which Abraham directs the people to ask the largest idol.",
+      "Identify the people’s admission that the idols cannot speak as the argumentative turning point.",
+      "Use direct challenge, conditional test and self-correction language to show how the contradiction is voiced by the people themselves."
+    ],
+    "pedagogy": "Map speaker moves in sequence: accusation → Abraham’s rhetorical reply → instruction to ask → people’s self-recognition → reversion. Learners identify exactly where the opponents state the contradiction.",
+    "priorKnowledge": [
+      "Chapter 18 rhetorical setup and the difference between literal and rhetorical attribution."
+    ],
+    "anticipatedMisconceptions": [
+      "Abraham’s statement is not a literal attribution of guilt to the idol."
+    ],
+    "grammarFocus": "Direct challenge → corrective contrast → conditional test → admission; self-correction/reversal; purpose.",
+    "pronunciationFocus": "Use distinct speaker voices without dramatization; stress “Ask them if they can speak” and the opponents’ admission that the idols do not speak.",
+    "beforeReading": [
+      "Ask what happens in an argument when the opposing side states the key contradiction themselves."
+    ],
+    "duringReading": [
+      "Label every speaker in the exchange.",
+      "Underline the conditional “if they can speak”.",
+      "Mark the point where the people say the idols cannot speak and the later reversion to old ideas."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by locating the turning-point admission.",
+      "Use Language Focus to write a conditional test and a self-correction sentence.",
+      "Explain why the admission is strong evidence even though it does not end the conflict."
+    ],
+    "lessonPlan": "1. 0–5 min: self-admission as evidence. 2. 5–15 min: read/listen and label speakers. 3. 15–23 min: map test→admission→reversion. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on conditional test and reversal. 6. 37–43 min: turning-point analysis. 7. 43–45 min: exit ticket quoting/paraphrasing the admission.",
+    "discussionPoints": [
+      "At what moment do the people verbalise the contradiction themselves?",
+      "Why does the admission not automatically produce lasting change?"
+    ],
+    "interactiveTips": [
+      "Use speaker labels on every quotation to prevent narrator/opponent confusion.",
+      "Keep “they admit inability” separate from “they permanently change belief”."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide the four dialogue moves on cards and ask learners to order them.",
+      "fastFinishers": "Write a seven-sentence argument analysis using one conditional test and one reversal marker."
+    },
+    "formativeAssessment": [
+      "Identifies speaker ownership.",
+      "Locates the argumentative turning point.",
+      "Separates admission from durable change."
+    ],
+    "expectedResponses": [
+      "The people themselves admit that the idols cannot speak, which exposes the contradiction Abraham’s rhetorical test was designed to reveal."
+    ],
+    "transferTask": "Analyse a neutral debate where a speaker’s own admission changes the strength of an argument.",
+    "teacherReflection": "Did learners identify the exact turning point rather than summarize the whole confrontation?"
+  },
+  {
+    "chapter": "20. The Faith of the Believers",
+    "timing": "45 minutes",
+    "objectives": [
+      "Evaluate the shift from failed argument to coercive punishment.",
+      "Distinguish recognition of contradiction from willingness to admit it publicly.",
+      "Use strong inference, narrowed options, collective decision and passive authority language to explain why social power remains after argumentative defeat."
+    ],
+    "pedagogy": "Use two tracks: intellectual outcome / political response. On one track the people have no answer and recognise the problem; on the other, arrogance and authority produce chains, collective wood gathering and the fire plan.",
+    "priorKnowledge": [
+      "Chapter 19 admission/reversion and the concept of coercion."
+    ],
+    "anticipatedMisconceptions": [
+      "Lack of a verbal answer does not automatically mean social power disappears."
+    ],
+    "grammarFocus": "Strong inference with must; recognition vs refusal; narrowed options; collective decision; passive authority.",
+    "pronunciationFocus": "Contrast stress on no answer / however / authority; keep the descriptions of chains and fire factual rather than dramatic.",
+    "beforeReading": [
+      "Ask whether losing an argument necessarily means losing institutional or political power."
+    ],
+    "duringReading": [
+      "Mark the statement that the people have no answer and realise the contradiction.",
+      "Underline the explanation that arrogance blocks admission.",
+      "Trace the collective decisions: chains, burning, ordered wood gathering and catapult preparation."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the two-track map.",
+      "Use Language Focus to write a recognition-versus-action contrast.",
+      "Explain why coercion can follow argumentative failure without implying the argument had no effect."
+    ],
+    "lessonPlan": "1. 0–5 min: argument power vs social power. 2. 5–15 min: read/listen for recognition and refusal. 3. 15–23 min: two-track map of intellectual/political outcome. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on inference and passive authority. 6. 37–43 min: coercion analysis. 7. 43–45 min: exit ticket completing “They had no answer, but…”.",
+    "discussionPoints": [
+      "Why can recognition of a contradiction fail to produce public change?",
+      "Which actions show that authority remains even after the argument fails?"
+    ],
+    "interactiveTips": [
+      "Do not role-play punishment; analyse institutional actions through the text.",
+      "Ask learners to distinguish evidence of recognition from evidence of coercion with separate colours."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide two columns: What they recognised / What they did next.",
+      "fastFinishers": "Write eight sentences explaining how argumentative defeat and coercive power can coexist."
+    },
+    "formativeAssessment": [
+      "Separates recognition from action.",
+      "Identifies collective coercive mechanisms.",
+      "Uses passive/collective language accurately."
+    ],
+    "expectedResponses": [
+      "The chapter says the people recognise the contradiction yet refuse to admit it, then use political authority and collective coercion to punish Abraham."
+    ],
+    "transferTask": "Explain a neutral situation where evidence changes the intellectual balance but not immediately the institutional outcome.",
+    "teacherReflection": "Did learners grasp the difference between losing an argument and losing power?"
+  }
+
 ];
 
 const makeSection = (p: ChapterPlan): TeacherGuideSection => {
@@ -695,7 +1238,7 @@ const makeSection = (p: ChapterPlan): TeacherGuideSection => {
 
 export const abrahamB2TeacherGuideEn: TeacherGuideSection[] = [
   ...manualTeacherGuideSections,
-  ...plans.slice(10).map(makeSection),
+  ...plans.slice(20).map(makeSection),
 ];
 
 export const abrahamB2TeacherGuideMetadata: TeacherGuideMetadata = {
