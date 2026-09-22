@@ -53,6 +53,7 @@ export const TeacherGuide = ({
   collectionId?: string;
 }) => {
   const [activeTab, setActiveTab] = useState('overview');
+  const contentScrollRef = React.useRef<HTMLDivElement>(null);
   const { language, t, formatNumber, isRTL } = useLanguage();
 
   const isHistory = collectionId === 'history';
@@ -259,6 +260,20 @@ entries.set(key, { word, definition });
       setActiveTab(tabs[0].id);
     }
   }, [isOpen]);
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    contentScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab, isOpen]);
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
 
   const renderTeacherContent = () => {
     switch (activeTab) {
@@ -1550,6 +1565,8 @@ entries.set(key, { word, definition });
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
+                      aria-label={`${formatNumber(idx + 1)}. ${tab.label}`}
+                      title={tab.label}
                       aria-current={isActive ? 'page' : undefined}
                       className={cn(
                         "relative w-full min-h-12 md:min-h-[3.75rem] flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3.5 px-2 md:px-3.5 rounded-xl transition-all group cursor-pointer overflow-hidden",
@@ -1589,7 +1606,7 @@ entries.set(key, { word, definition });
             </aside>
 
             {/* Content Area */}
-            <div className="teacher-guide-content flex-1 overflow-y-auto custom-scrollbar">
+            <div ref={contentScrollRef} className="teacher-guide-content flex-1 overflow-y-auto custom-scrollbar">
               <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
                 <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
                   <div className="min-w-0 flex items-center gap-3">
