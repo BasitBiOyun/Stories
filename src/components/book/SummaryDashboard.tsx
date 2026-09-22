@@ -264,10 +264,10 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
   const successMessage = useMemo(() => {
     if (isArabic) {
       const name = currentStoryMeta ? currentStoryMeta.nameAr : bookData.title;
-      return `لقد أكملت قراءة قصة ${name} (${bookData.level}) بنجاح.`;
+      return `لقد أكملت التحدي النهائي لقصة ${name} (${bookData.level}) بنجاح.`;
     } else {
       const name = currentStoryMeta ? currentStoryMeta.nameEn : bookData.title;
-      return `You completed ${name} (${bookData.level}) successfully.`;
+      return `You completed the final challenge for ${name} (${bookData.level}) successfully.`;
     }
   }, [isArabic, currentStoryMeta, bookData.level, bookData.title]);
 
@@ -278,24 +278,24 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
         badgeNameEn: 'Mastered',
         badgeNameAr: 'متقن القصة',
         colorClass: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/30',
-        descEn: 'Superb! Perfect comprehension and thorough mastery of vocabulary.',
-        descAr: 'رائع جداً! فهم متكامل وإتقان تام للمفردات والدروس المستفادة.'
+        descEn: 'Excellent whole-story mastery. You connected details, evidence, and ideas across the book.',
+        descAr: 'إتقان ممتاز للقصة كاملة. ربطت بين التفاصيل والأدلة والأفكار عبر الكتاب.'
       };
     } else if (finalScore !== null && finalScore >= 70) {
       return {
         badgeNameEn: 'Successful Reader',
         badgeNameAr: 'قارئ متميز',
         colorClass: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
-        descEn: 'Excellent! Strong understanding and active participation.',
-        descAr: 'ممتاز! إدراك قوي ومشاركة نشطة في جميع أقسام القصة.'
+        descEn: 'Strong whole-story understanding. A small review can make the remaining ideas more secure.',
+        descAr: 'فهم قوي للقصة كاملة. مراجعة قصيرة ستساعد على تثبيت ما بقي من الأفكار.'
       };
     } else if (finalScore !== null) {
       return {
         badgeNameEn: 'Story Explorer',
         badgeNameAr: 'مستكشف القصة',
         colorClass: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
-        descEn: 'Good job! Completed the story and explored new words.',
-        descAr: 'عمل رائع! أكملت القصة واستكشفت كلمات ومرادفات جديدة.'
+        descEn: 'You completed the challenge. Review the questions that needed another look, then try the ideas again.',
+        descAr: 'أكملت التحدي. راجع الأسئلة التي احتاجت إلى محاولة أخرى ثم أعد تثبيت الأفكار.'
       };
     } else {
       // No final score
@@ -303,8 +303,8 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
         badgeNameEn: 'Journey Explorer',
         badgeNameAr: 'مستكشف الرحلة',
         colorClass: 'text-slate-400 bg-slate-400/10 border-slate-400/30',
-        descEn: 'Completed! Read all chapters and mastered key concepts.',
-        descAr: 'مكتمل! قرأت جميع الفصول وتعرفت على المفاهيم الأساسية.'
+        descEn: 'The learning journey is complete.',
+        descAr: 'اكتملت رحلة التعلم.'
       };
     }
   }, [finalScore]);
@@ -510,10 +510,10 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                   </div>
                   <div>
                     <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                      {isArabic ? 'الفصول المقروءة' : 'Chapters Completed'}
+                      {isArabic ? 'الفصول التي فُتحت' : 'Chapters Visited'}
                     </span>
                     <span className="block text-2xl md:text-[28px] font-black text-white mt-1 tabular-nums">
-                      {formatNumber(chaptersCount)}
+                      {formatNumber(stats.chaptersVisited.size)} / {formatNumber(chaptersCount)}
                     </span>
                   </div>
                 </div>
@@ -667,6 +667,41 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                     {formatNumber(finalDetails.missedQuestionCount)} / {formatNumber(finalDetails.scoredQuestionCount)}
                   </span>
                 </div>
+
+                {finalDetails.missedQuestions.length > 0 ? (
+                  <div className="space-y-2.5">
+                    <p className="text-[11px] md:text-[12px] uppercase tracking-wider text-[#F5EDD6]/40 font-black">
+                      {isArabic ? 'للمراجعة' : 'REVIEW THESE'}
+                    </p>
+                    {finalDetails.missedQuestions.map((item, index) => (
+                      <div
+                        key={item.id}
+                        className="rounded-2xl border border-white/10 bg-black/10 px-4 py-3 flex items-start gap-3"
+                      >
+                        <span
+                          className="w-7 h-7 rounded-full shrink-0 flex items-center justify-center text-[11px] font-black"
+                          style={{ color: categoryInfo.accentColor, backgroundColor: `${categoryInfo.accentColor}14` }}
+                        >
+                          {formatNumber(index + 1)}
+                        </span>
+                        <div className="min-w-0">
+                          <p className="text-[12px] md:text-[13px] font-black text-white/85">
+                            {item.title}
+                          </p>
+                          <p className="text-[13px] md:text-[14px] text-[#F5EDD6]/65 leading-relaxed mt-0.5">
+                            {item.question}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.06] px-4 py-3 text-[13px] md:text-[14px] text-emerald-100/80">
+                    {isArabic
+                      ? 'لم يحتج أي سؤال إلى محاولة ثانية.'
+                      : 'No scored question needed a second attempt.'}
+                  </div>
+                )}
               </div>
             )}
 
