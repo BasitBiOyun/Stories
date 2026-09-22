@@ -128,7 +128,7 @@ Yunus served his teacher Taptuk Emre in this way for exactly forty years. Taptuk
     ],
     hotspots: [
       { id: 'h5-1', x: 34, y: 50, title: 'Straightest Pieces', description: 'He chose the straightest pieces of wood with the greatest care.' },
-      { id: 'h5-2', x: 68, y: 46, title: 'Heart and Ego', description: 'He is training and fixing his own heart and ego.' },
+      { id: 'h5-2', x: 68, y: 46, title: 'Heart and Ego', description: 'He is training his own heart and ego.' },
     ],
   },
   {

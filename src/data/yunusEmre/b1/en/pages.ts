@@ -1248,7 +1248,7 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 11,
             "chapterTitle": "Intellect and Death",
-            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “The one who remembers death the most and is best in preparing for it."
+            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest."
       },
       {
             "word": "homeland",
