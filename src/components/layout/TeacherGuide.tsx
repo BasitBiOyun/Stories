@@ -1471,6 +1471,8 @@ entries.set(key, { word, definition });
             </div>
             <div className="flex items-center gap-2 sm:gap-4 shrink-0">
               <button
+                data-pdf-locked="true"
+                aria-disabled="true"
                 onClick={() => generateTeacherGuidePDF(title || t('tg.title'), subtitle || t('tg.subtitle'), content, metadata)}
                 className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-gold/10 hover:bg-gold/20 text-gold rounded-xl border border-gold/20 transition-all font-display text-xs sm:text-sm group cursor-pointer"
                 title={t('nav.downloadPdf')}
@@ -1512,10 +1514,10 @@ entries.set(key, { word, definition });
                     )}>
                       {tab.icon}
                     </div>
-                    <span className="block md:hidden text-[9px] font-bold text-center leading-none opacity-80">
+                    <span className="block md:hidden text-[10px] sm:text-[11px] font-bold text-center leading-none opacity-85">
                       #{formatNumber(idx + 1)}
                     </span>
-                    <span className="hidden md:block font-display text-sm uppercase tracking-widest text-left font-bold">
+                    <span className="hidden md:block font-display text-[15px] lg:text-base uppercase tracking-[0.12em] text-left font-bold">
                       {tab.label}
                     </span>
                   </button>
@@ -1525,7 +1527,7 @@ entries.set(key, { word, definition });
 
             {/* Content Area */}
             <div className="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-6 md:p-12">
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-5xl mx-auto">
                 {renderTeacherContent()}
               </div>
             </div>
