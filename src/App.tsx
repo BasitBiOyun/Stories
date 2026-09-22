@@ -121,6 +121,7 @@ const AppContent = () => {
   }, [currentBookPair, language]);
 
   const currentPage = currentBook?.pages[currentPageIndex];
+  const isFinalChallengePage = currentPage?.type === 'final-challenge';
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
 
@@ -287,7 +288,7 @@ const AppContent = () => {
       }
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
-      if (!selectedProphetId || showSummary) return;
+      if (!selectedProphetId || showSummary || isFinalChallengePage) return;
       if (isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
@@ -319,11 +320,12 @@ const AppContent = () => {
     isReaderSettingsOpen,
     currentPageIndex,
     totalPages,
-    language
+    language,
+    isFinalChallengePage
   ]);
 
   const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (totalPages <= 1) return;
+    if (totalPages <= 1 || isFinalChallengePage) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const width = rect.width;
@@ -772,7 +774,7 @@ const AppContent = () => {
       </main>
 
       {/* Reader Navigation Dock */}
-      {!showSummary && (
+      {!showSummary && !isFinalChallengePage && (
         <footer className={cn(
           "relative z-50 min-h-[52px] sm:min-h-14 px-2.5 sm:px-5 md:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 transition-colors duration-500 shrink-0",
           themeClasses.headerBg
