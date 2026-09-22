@@ -388,9 +388,11 @@ export const StoryPage = ({
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
 
   useEffect(() => {
     if (page.type === 'story') trackChapterVisit(page.id);
+    setIsLanguageFocusOpen(false);
   }, [page.id, page.type]);
 
   const isArabic = language === 'ar';
@@ -1204,126 +1206,174 @@ export const StoryPage = ({
         aria-label={language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
       >
         <div className={cn(
-          'relative overflow-hidden rounded-[28px] ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)]',
+          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_14px_38px_rgba(63,49,28,0.06)]',
           focusTheme.container
         )}>
-          <div className={cn('pointer-events-none absolute -end-12 -top-12 h-40 w-40 rounded-full blur-3xl', focusTheme.glow)} aria-hidden="true" />
+          <div className={cn('pointer-events-none absolute -end-12 -top-12 h-36 w-36 rounded-full blur-3xl', focusTheme.glow)} aria-hidden="true" />
 
-          <div className="relative p-5 sm:p-6">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-              <div className="flex min-w-0 items-start gap-4 text-start">
-                <div className={cn(
-                  'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-lg',
-                  focusTheme.icon
-                )}>
-                  <BookIcon size={22} />
-                </div>
+          <button
+            type="button"
+            onClick={() => setIsLanguageFocusOpen((open) => !open)}
+            aria-expanded={isLanguageFocusOpen}
+            className="relative w-full p-4 sm:p-5 text-start"
+          >
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className={cn(
+                'flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl shadow-md',
+                focusTheme.icon
+              )}>
+                <BookIcon size={21} />
+              </div>
 
-                <div className="min-w-0">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <p className={cn(
-                    'font-display text-[10px] font-semibold uppercase tracking-[0.18em]',
+                    'font-display text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.18em]',
                     focusTheme.accent
                   )}>
                     {language === 'ar' ? 'بعد القراءة' : 'After reading'}
                   </p>
-                  <h4 className={cn(
-                    'mt-1 font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
-                    focusTheme.title
-                  )}>
-                    {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
-                  </h4>
-                  <p className={cn(
-                    'mt-1.5 font-serif leading-relaxed',
-                    isArabic ? 'text-base' : 'text-sm',
-                    focusTheme.copy
-                  )}>
-                    {language === 'ar' ? 'لاحظها. اربطها. استخدمها.' : 'Notice it. Connect it. Use it.'}
-                  </p>
-                </div>
-              </div>
-
-              <div className="min-w-[150px] sm:text-end">
-                <div className="flex items-center justify-between gap-3 sm:justify-end">
-                  <span className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.14em]', focusTheme.copy)}>
-                    {language === 'ar' ? 'التقدّم' : 'Progress'}
-                  </span>
-                  <span className={cn('font-display text-[11px] font-semibold', focusTheme.accent)}>
-                    {formatNumber(completedCount)} / {formatNumber(exercises.length)}
+                  <span className={cn('font-display text-[10px] sm:text-[11px] font-semibold', focusTheme.copy)}>
+                    {formatNumber(exercises.length)} {language === 'ar' ? 'أنشطة' : exercises.length === 1 ? 'activity' : 'activities'}
                   </span>
                 </div>
-                <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-black/[0.06] sm:w-36">
-                  <motion.div
-                    initial={false}
-                    animate={{ width: `${exercises.length ? (completedCount / exercises.length) * 100 : 0}%` }}
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className={cn('h-full rounded-full', focusTheme.progress)}
-                  />
-                </div>
+                <h4 className={cn(
+                  'mt-0.5 font-display text-lg sm:text-xl font-semibold tracking-[-0.02em]',
+                  focusTheme.title
+                )}>
+                  {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
+                </h4>
+                <p className={cn(
+                  'mt-1 font-serif leading-relaxed',
+                  isArabic ? 'text-[14px] sm:text-base' : 'text-[12px] sm:text-[13px]',
+                  focusTheme.copy
+                )}>
+                  {language === 'ar'
+                    ? 'افتح الأنشطة عندما تكون مستعدًا لملاحظة اللغة وربطها واستخدامها.'
+                    : 'Open when you are ready to notice, connect, and use the language.'}
+                </p>
               </div>
-            </div>
 
-            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-              {exercises.map((exercise, index) => {
-                const completed = completedExercises.includes(exercise.id);
-
-                return (
-                  <motion.button
-                    key={exercise.id}
-                    type="button"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.99 }}
-                    onClick={() => setActiveExercise(exercise)}
-                    className={cn(
-                      'group relative min-h-[148px] overflow-hidden rounded-2xl p-4 text-start ring-1 transition-all shadow-[0_8px_24px_rgba(63,49,28,0.05)]',
-                      focusTheme.card
-                    )}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className={cn(
-                        'flex h-8 min-w-8 items-center justify-center rounded-xl px-2 font-display text-[10px] font-semibold',
-                        completed ? 'bg-emerald-600 text-white' : focusTheme.number
-                      )}>
-                        {completed ? '✓' : String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span className={cn(
-                        'font-display text-[9px] font-semibold uppercase tracking-[0.15em]',
-                        completed ? 'text-emerald-700' : focusTheme.accent
-                      )}>
-                        {completed ? t('nav.completed') : typeLabel(exercise)}
-                      </span>
-                    </div>
-
-                    <h5 className={cn(
-                      'mt-4 font-display font-semibold leading-[1.18] tracking-[-0.02em]',
-                      isArabic ? 'text-lg' : 'text-[15px] sm:text-base',
-                      focusTheme.title
-                    )}>
-                      {exercise.title}
-                    </h5>
-
-                    {exercise.instructions && (
-                      <p className={cn(
-                        'mt-2 line-clamp-2 font-serif leading-relaxed',
-                        isArabic ? 'text-sm sm:text-base' : 'text-[11px] sm:text-xs',
-                        focusTheme.copy
-                      )}>
-                        {exercise.instructions}
-                      </p>
-                    )}
-
-                    <ArrowRight
-                      size={16}
-                      className={cn(
-                        'absolute bottom-4 end-4 opacity-38 transition-all group-hover:translate-x-0.5 group-hover:opacity-90',
-                        isRTL && 'rotate-180 group-hover:-translate-x-0.5',
-                        focusTheme.arrow
-                      )}
+              <div className="shrink-0 flex items-center gap-3">
+                <div className="hidden sm:block min-w-[112px]">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={cn('font-display text-[9px] font-semibold uppercase tracking-[0.12em]', focusTheme.copy)}>
+                      {language === 'ar' ? 'التقدّم' : 'Progress'}
+                    </span>
+                    <span className={cn('font-display text-[10px] font-semibold', focusTheme.accent)}>
+                      {formatNumber(completedCount)} / {formatNumber(exercises.length)}
+                    </span>
+                  </div>
+                  <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-black/[0.06]">
+                    <motion.div
+                      initial={false}
+                      animate={{ width: `${exercises.length ? (completedCount / exercises.length) * 100 : 0}%` }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      className={cn('h-full rounded-full', focusTheme.progress)}
                     />
-                  </motion.button>
-                );
-              })}
+                  </div>
+                </div>
+                <span className={cn(
+                  'flex h-9 w-9 items-center justify-center rounded-xl ring-1 transition-transform',
+                  focusTheme.number,
+                  isLanguageFocusOpen && 'rotate-90'
+                )}>
+                  <ArrowRight size={16} className={cn(isRTL && 'rotate-180')} />
+                </span>
+              </div>
             </div>
-          </div>
+
+            <div className="mt-3 flex items-center gap-2 sm:hidden">
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]">
+                <motion.div
+                  initial={false}
+                  animate={{ width: `${exercises.length ? (completedCount / exercises.length) * 100 : 0}%` }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className={cn('h-full rounded-full', focusTheme.progress)}
+                />
+              </div>
+              <span className={cn('font-display text-[10px] font-semibold', focusTheme.accent)}>
+                {formatNumber(completedCount)} / {formatNumber(exercises.length)}
+              </span>
+            </div>
+          </button>
+
+          <AnimatePresence initial={false}>
+            {isLanguageFocusOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.22, ease: 'easeOut' }}
+                className="overflow-hidden"
+              >
+                <div className="border-t border-black/[0.06] px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+                  <div className="space-y-2">
+                    {exercises.map((exercise, index) => {
+                      const completed = completedExercises.includes(exercise.id);
+
+                      return (
+                        <motion.button
+                          key={exercise.id}
+                          type="button"
+                          whileHover={{ x: isRTL ? -2 : 2 }}
+                          whileTap={{ scale: 0.995 }}
+                          onClick={() => setActiveExercise(exercise)}
+                          className={cn(
+                            'group flex w-full items-center gap-3 rounded-2xl p-3 sm:p-3.5 text-start ring-1 transition-all',
+                            focusTheme.card
+                          )}
+                        >
+                          <span className={cn(
+                            'flex h-9 min-w-9 items-center justify-center rounded-xl px-2 font-display text-[10px] font-semibold shrink-0',
+                            completed ? 'bg-emerald-600 text-white' : focusTheme.number
+                          )}>
+                            {completed ? '✓' : formatNumber(index + 1)}
+                          </span>
+
+                          <span className="min-w-0 flex-1">
+                            <span className="flex flex-wrap items-center gap-2">
+                              <span className={cn(
+                                'font-display font-semibold leading-tight',
+                                isArabic ? 'text-[15px] sm:text-base' : 'text-[13px] sm:text-[14px]',
+                                focusTheme.title
+                              )}>
+                                {exercise.title}
+                              </span>
+                              <span className={cn(
+                                'rounded-full px-2 py-0.5 font-display text-[9px] font-semibold uppercase tracking-[0.12em]',
+                                completed ? 'bg-emerald-100 text-emerald-700' : focusTheme.number
+                              )}>
+                                {completed ? t('nav.completed') : typeLabel(exercise)}
+                              </span>
+                            </span>
+                            {exercise.instructions && (
+                              <span className={cn(
+                                'mt-1 block truncate font-serif',
+                                isArabic ? 'text-[13px] sm:text-[14px]' : 'text-[11px] sm:text-[12px]',
+                                focusTheme.copy
+                              )}>
+                                {exercise.instructions}
+                              </span>
+                            )}
+                          </span>
+
+                          <ArrowRight
+                            size={16}
+                            className={cn(
+                              'shrink-0 opacity-45 transition-all group-hover:opacity-90',
+                              focusTheme.arrow,
+                              isRTL && 'rotate-180'
+                            )}
+                          />
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.section>
     );
