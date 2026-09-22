@@ -91,24 +91,24 @@ export const yunusB2VocabularyChallengePairs = [
 ];
 
 export const yunusB2FinalChallengeExercises: Exercise[] = [
-  mc('yu-b2-f1', 'Which synthesis best explains why Yunus Emre’s literary importance cannot be separated from his Sûfî identity in this book?', ['His accessible Turkish carries a moral-spiritual tradition to a wider public.', 'His language matters only because it records military history.', 'His Sûfî identity is described as unrelated to his poetry.'], 0, 'The opening chapters connect language, literary tradition, values and Sûfî identity.', 'Final Challenge'),
-  mc('yu-b2-f2', 'Which interpretation best explains the long historical section before the chapters on tawhid and love?', ['It establishes the crisis in which a wise dervish’s moral and spiritual message became socially meaningful.', 'It proves Yunus personally caused the Seljuk decline.', 'It replaces the need to study Yunus’s thought.'], 0, 'The text explicitly asks readers to understand the historical atmosphere in which Yunus lived and recited.', 'Final Challenge'),
-  mc('yu-b2-f3', 'Which claim best synthesizes the chapters on heart, intellect and death?', ['Inner sensitivity, reason and awareness of mortality are presented as mutually reinforcing guides toward righteous life.', 'Reason is presented as the enemy of the heart.', 'Death-awareness is presented as unrelated to morality.'], 0, 'Chapters 10–11 connect heart, intellect, salvation and death’s advisory role.', 'Final Challenge'),
-  tf('yu-b2-f4', 'The book presents Mongol domination as affecting politics but not the economy or ordinary people.', false, 'It describes tribute, poverty, destruction, captivity and widespread social suffering.', 'Final Challenge'),
-  tf('yu-b2-f5', 'In the book, love is connected with both the Creator and the created and is associated with unity and harmony.', true, 'Chapter 9 explicitly makes these connections.', 'Final Challenge'),
-  matching('yu-b2-f6', 'Match the historical condition with its consequence.', [
+mc('yu-b2-f1','Which synthesis best explains why Yunus Emre’s literary importance cannot be separated from his Sûfî identity in this book?',['His language matters only because it records military history.','His accessible Turkish carries a moral-spiritual tradition to a wider public.','His Sûfî identity is described as unrelated to his poetry.'],1,'The opening chapters connect language, literary tradition, values and Sûfî identity.','Final Challenge'),
+mc('yu-b2-f2','Which interpretation best explains the long historical section before the chapters on tawhid and love?',['It proves Yunus personally caused the Seljuk decline.','It replaces the need to study Yunus’s thought.','It establishes the crisis in which a wise dervish’s moral and spiritual message became socially meaningful.'],2,'The text explicitly asks readers to understand the historical atmosphere in which Yunus lived and recited.','Final Challenge'),
+mc('yu-b2-f3','Which claim best synthesizes the chapters on heart, intellect and death?',['Inner sensitivity, reason and awareness of mortality are presented as mutually reinforcing guides toward righteous life.','Reason is presented as the enemy of the heart.','Death-awareness is presented as unrelated to morality.'],0,'Chapters 10–11 connect heart, intellect, salvation and death’s advisory role.','Final Challenge'),
+tf('yu-b2-f4', 'The book presents Mongol domination as affecting politics but not the economy or ordinary people.', false, 'It describes tribute, poverty, destruction, captivity and widespread social suffering.', 'Final Challenge'),
+tf('yu-b2-f5', 'In the book, love is connected with both the Creator and the created and is associated with unity and harmony.', true, 'Chapter 9 explicitly makes these connections.', 'Final Challenge'),
+matching('yu-b2-f6', 'Match the historical condition with its consequence.', [
     { left: 'Kösedağ defeat', right: 'Mongol victory opens the way to devastation and stronger domination' },
     { left: 'Increasing Mongol payments', right: 'The Seljuk state and population become poorer' },
     { left: 'Mongol pressure across eastern regions', right: 'Shaykhs and dervishes move toward Anatolia' },
   ], 'The book repeatedly builds cause-and-consequence chains across the historical chapters.', 'Final Challenge'),
-  matching('yu-b2-f7', 'Match the moral concept with the action or implication supported by the story.', [
+matching('yu-b2-f7', 'Match the moral concept with the action or implication supported by the story.', [
     { left: 'Patience', right: 'Endure difficulty without surrendering moral discipline' },
     { left: 'Generosity', right: 'Give without expecting a return' },
     { left: 'Respect for the heart', right: 'Avoid actions that wound another person inwardly' },
   ], 'These concepts are presented as observable moral conduct, not labels alone.', 'Final Challenge'),
-  fill('yu-b2-f8', 'Complete the source-aware sentence.', 'Some biographical claims are presented through historical [blank] rather than as unqualified certainty.', 'accounts', 'Chapter 2 uses explicit source-qualification language.', 'Final Challenge'),
-  fill('yu-b2-f9', 'Complete the whole-book moral contrast.', 'Yunus praises humility and patience while warning against arrogance, anger and [blank].', 'greed', 'The final moral chapters repeatedly contrast virtues with destructive habits.', 'Final Challenge'),
-  {
+fill('yu-b2-f8', 'Complete the source-aware sentence.', 'Some biographical claims are presented through historical [blank] rather than as unqualified certainty.', 'accounts', 'Chapter 2 uses explicit source-qualification language.', 'Final Challenge'),
+fill('yu-b2-f9', 'Complete the whole-book moral contrast.', 'Yunus praises humility and patience while warning against arrogance, anger and [blank].', 'greed', 'The final moral chapters repeatedly contrast virtues with destructive habits.', 'Final Challenge'),
+{
     id: 'yu-b2-f10', type: 'sequencing', title: 'Final Challenge', instructions: 'Put the reasoning chain in order.', question: 'Order the book’s broad argument from historical crisis to lasting legacy.',
     sequencingItems: [
       { id: '1', text: 'Anatolia experiences political, economic and social disruption.' },
@@ -119,7 +119,6 @@ export const yunusB2FinalChallengeExercises: Exercise[] = [
     ],
     correctAnswer: ['1', '2', '3', '4', '5'], explanation: 'The final sequence synthesizes context, response, thought, moral action and legacy.', feedback,
   },
-
-  mc('yu-b2-f11', 'Which statement best represents vahdet-i vücut as it is presented in Chapters 8–9?', ['Allah is the absolute and only true reality, while created multiplicity is described as manifestations of His names.', 'Every created thing exists independently from Allah and has no connection to Him.', 'The theory teaches that moral behavior is more important than tawhid and therefore replaces it.'], 0, 'Chapters 8–9 present Allah as the absolute reality and describe the plurality of creation as manifestations or reflections connected to Him.', 'Final Challenge'),
-  mc('yu-b2-f12', 'How do the three types of intellect in Chapter 10 broaden the book’s account of reason?', ['They give reason roles in understanding worldly life, the order of the hereafter, and pious conduct.', 'They divide reason into three competing powers that must defeat the heart.', 'They limit reason to practical work in this world and exclude spiritual or moral guidance.'], 0, 'Chapter 10 distinguishes practical reason, limited intellect, and universal intellect by their roles in worldly understanding, the hereafter, and pious behavior.', 'Final Challenge'),
+mc('yu-b2-f11','Which statement best represents vahdet-i vücut as it is presented in Chapters 8–9?',['Every created thing exists independently from Allah and has no connection to Him.','The theory teaches that moral behavior is more important than tawhid and therefore replaces it.','Allah is the absolute and only true reality, while created multiplicity is described as manifestations of His names.'],2,'Chapters 8–9 present Allah as the absolute reality and describe the plurality of creation as manifestations or reflections connected to Him.','Final Challenge'),
+mc('yu-b2-f12','How do the three types of intellect in Chapter 10 broaden the book’s account of reason?',['They divide reason into three competing powers that must defeat the heart.','They give reason roles in understanding worldly life, the order of the hereafter, and pious conduct.','They limit reason to practical work in this world and exclude spiritual or moral guidance.'],1,'Chapter 10 distinguishes practical reason, limited intellect, and universal intellect by their roles in worldly understanding, the hereafter, and pious behavior.','Final Challenge'),
 ];
