@@ -319,6 +319,34 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
 
   if (!currentQuestion) return null;
 
+  const questionTypeLabel = isArabic
+    ? currentQuestion.type === 'multiple-choice'
+      ? 'اختيار من متعدد'
+      : currentQuestion.type === 'true-false'
+        ? 'صح / خطأ'
+        : currentQuestion.type === 'matching'
+          ? 'مطابقة'
+          : currentQuestion.type === 'fill-blanks'
+            ? 'إكمال'
+            : currentQuestion.type === 'sequencing'
+              ? 'ترتيب'
+              : currentQuestion.type === 'reflection'
+                ? 'تأمل'
+                : 'سؤال'
+    : currentQuestion.type === 'multiple-choice'
+      ? 'Multiple Choice'
+      : currentQuestion.type === 'true-false'
+        ? 'True / False'
+        : currentQuestion.type === 'matching'
+          ? 'Matching'
+          : currentQuestion.type === 'fill-blanks'
+            ? 'Fill In'
+            : currentQuestion.type === 'sequencing'
+              ? 'Sequencing'
+              : currentQuestion.type === 'reflection'
+                ? 'Reflection'
+                : 'Question';
+
   const renderAnswerArea = () => {
     if (currentQuestion.type === 'true-false') {
       return (
@@ -607,21 +635,39 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   return (
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 py-5 sm:p-8">
       <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8 pb-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <span className={cn('w-10 h-10 sm:w-12 sm:h-12 rounded-xl border flex items-center justify-center font-display font-black shrink-0', theme.soft, theme.subtext)}>
-              {formatNumber(currentStep + 1)}
-            </span>
-            <div className="min-w-0">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm' : 'text-[10px]', theme.subtext)}>{t('nav.question')}</p>
-              <p className={cn('font-display font-bold', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base', theme.text)}>
-                {formatNumber(currentStep + 1)} {t('nav.of')} {formatNumber(questions.length)}
-              </p>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <span className={cn('w-10 h-10 sm:w-12 sm:h-12 rounded-xl border flex items-center justify-center font-display font-black shrink-0', theme.soft, theme.subtext)}>
+                {formatNumber(currentStep + 1)}
+              </span>
+              <div className="min-w-0">
+                <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm' : 'text-[10px]', theme.subtext)}>{t('nav.question')}</p>
+                <p className={cn('font-display font-bold', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base', theme.text)}>
+                  {formatNumber(currentStep + 1)} {t('nav.of')} {formatNumber(questions.length)}
+                </p>
+              </div>
+            </div>
+            <div className={cn('px-3 py-2 rounded-xl border flex items-center gap-2 shrink-0', theme.soft)}>
+              <Target size={17} className={theme.subtext} />
+              <span className={cn('font-display text-xs sm:text-sm font-black', theme.text)}>{questionTypeLabel}</span>
             </div>
           </div>
-          <div className={cn('px-3 py-2 rounded-xl border flex items-center gap-2 shrink-0', theme.soft)}>
-            <Target size={17} className={theme.subtext} />
-            <span className={cn('font-display text-sm font-black', theme.text)}>{formatNumber(score)}</span>
+
+          <div className="flex gap-1 sm:gap-1.5" aria-label={isArabic ? 'تقدم التحدي' : 'Challenge progress'}>
+            {questions.map((question, index) => (
+              <span
+                key={question.id}
+                className={cn(
+                  'h-1.5 sm:h-2 flex-1 rounded-full transition-colors',
+                  index < currentStep
+                    ? theme.accentSolid
+                    : index === currentStep
+                      ? theme.accentSolid
+                      : 'bg-wood/10'
+                )}
+              />
+            ))}
           </div>
         </div>
 
@@ -653,31 +699,60 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 ? theme.soft
                 : lastCorrect
                   ? 'bg-emerald-50 border-emerald-200'
-                  : 'bg-rose-50 border-rose-200'
+                  : attemptNumber === 1
+                    ? 'bg-amber-50 border-amber-200'
+                    : 'bg-rose-50 border-rose-200'
             )}
           >
-            <p className={cn('font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
-              {currentQuestion.type === 'reflection'
-                ? currentQuestion.feedback.correct
-                : lastCorrect
-                  ? currentQuestion.feedback.correct
-                  : currentQuestion.feedback.incorrect}
-            </p>
-            {currentQuestion.explanation && (
-              <p className={cn('font-serif text-wood/60 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{currentQuestion.explanation}</p>
+            {currentQuestion.type !== 'reflection' && lastCorrect === false && attemptNumber === 1 ? (
+              <>
+                <p className={cn('font-display font-black uppercase tracking-wider text-amber-800', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+                  {isArabic ? 'دليل من القصة' : 'Story Evidence'}
+                </p>
+                <p className={cn('font-serif text-wood/75 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+                  {currentQuestion.feedback.incorrect || (isArabic ? 'ارجع إلى الدليل في القصة وحاول مرة أخرى.' : 'Return to the story evidence and try once more.')}
+                </p>
+                <button
+                  type="button"
+                  onClick={retryCurrentQuestion}
+                  className={cn(
+                    'w-full mt-4 min-h-12 rounded-xl border-2 bg-white font-display uppercase tracking-widest font-bold',
+                    isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                    theme.border,
+                    theme.subtext
+                  )}
+                >
+                  {isArabic ? 'حاول مرة أخرى' : 'Try Again'}
+                </button>
+              </>
+            ) : (
+              <>
+                <p className={cn('font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+                  {currentQuestion.type === 'reflection'
+                    ? currentQuestion.feedback.correct
+                    : lastCorrect
+                      ? currentQuestion.feedback.correct
+                      : currentQuestion.feedback.incorrect}
+                </p>
+                {currentQuestion.explanation && (
+                  <p className={cn('font-serif text-wood/60 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{currentQuestion.explanation}</p>
+                )}
+                <button
+                  type="button"
+                  onClick={goNext}
+                  className={cn(
+                    'w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2',
+                    isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                    theme.accent
+                  )}
+                >
+                  {currentStep < questions.length - 1
+                    ? t('nav.nextQuestion')
+                    : (isArabic ? 'عرض ملخص التعلم' : 'View Learning Summary')}
+                  <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+                </button>
+              </>
             )}
-            <button
-              type="button"
-              onClick={goNext}
-              className={cn(
-                'w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2',
-                isArabic ? 'text-sm sm:text-base' : 'text-xs',
-                theme.accent
-              )}
-            >
-              {currentStep < questions.length - 1 ? t('nav.nextQuestion') : t('nav.seeResults')}
-              <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
-            </button>
           </motion.div>
         )}
       </div>
