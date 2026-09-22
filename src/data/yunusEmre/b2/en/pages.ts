@@ -14,7 +14,7 @@ const rawYunusB2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=875dc868-3960-407d-9839-bed3b5d00a39',
     content: `Yunus Emre was a great Anatolian poet and Muslim mystic/sûfî. A Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism. Sûfis maintain a lifestyle within the outer (visible) and inner norms of Islam. The outer part relates to the body's acts of worship, whereas the inner side handles the morality and intentions of the heart. Sûfis adhere to moral principles that include the pursuit of becoming better people, the ability to remain patient during difficult times, the act of giving generously without expecting any return, the act of doing good to all individuals without prejudice, the response to evil with kindness, and not attaching importance to worldly possessions such as wealth, status, and fame.
 
-In addition to his standing as a Sûfî, Yunus Emre was one of the Turkish poets to play a crucial role in the development of Old Anatolian Turkish. The words and expressions that he used made a significant contribution to the development of Turkish as a literary language. He established a literary tradition based on Sufism. One of the most important factors in the popularity of Yunus Emre’s works among the public is his style.`,
+In addition to his standing as a Sûfî, Yunus Emre was one of the first to create and perform poetry from the heart in plain Turkish. He was also one of the Turkish poets to play a crucial role in the development of Old Anatolian Turkish. The words and expressions that he used made a significant contribution to the development of Turkish as a literary language. He established a literary tradition based on Sufism. One of the most important factors in the popularity of Yunus Emre’s works among the public is his style.`,
     vocabulary: [
       { word: 'Islamic mysticism', definition: 'a spiritual tradition within Islam focused on inner purification and closeness to Allah' },
       { word: 'crucial', definition: 'extremely important to the development or outcome of something' },
@@ -23,7 +23,7 @@ In addition to his standing as a Sûfî, Yunus Emre was one of the Turkish poets
       { word: 'literary tradition', definition: 'a continuing body of writing shaped by shared styles, themes, or methods' },
     ],
     hotspots: [
-      { id: 'h1-1', x: 27, y: 38, title: 'Old Anatolian Turkish', description: 'Yunus Emre played a crucial role in the development of Old Anatolian Turkish and established a literary tradition based on Sufism.' },
+      { id: 'h1-1', x: 27, y: 38, title: 'Plain Turkish', description: 'Yunus Emre created and performed poetry from the heart in plain Turkish and helped develop Old Anatolian Turkish as a literary language.' },
       { id: 'h1-2', x: 71, y: 58, title: 'Sûfî', description: 'Sûfis maintain a lifestyle within the outer acts of worship and the inner morality and intentions of the heart.' },
     ],
   },
