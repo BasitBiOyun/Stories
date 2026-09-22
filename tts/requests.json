@@ -1,5 +1,14 @@
 {
   "version": 1,
-  "requests": [],
-  "sourceBatch": "yunus-emre-20260922-complete"
+  "sourceBatch": "yunus-emre-b2-ch1-20260922",
+  "requests": [
+    {
+      "id": "yunus-b2-ch1-rowan-20260922-v1",
+      "enabled": true,
+      "allowOverwrite": true,
+      "cleanupDuplicates": false,
+      "storagePath": "yunus/b2/audio/00_Chapter_1.mp3",
+      "narrationText": "Yunus Emre and Sûfîsm\n\nYunus Emre was a great Anatolian poet and Muslim mystic/sûfî. A Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism. Sûfis maintain a lifestyle within the outer (visible) and inner norms of Islam. The outer part relates to the body's acts of worship, whereas the inner side handles the morality and intentions of the heart. Sûfis adhere to moral principles that include the pursuit of becoming better people, the ability to remain patient during difficult times, the act of giving generously without expecting any return, the act of doing good to all individuals without prejudice, the response to evil with kindness, and not attaching importance to worldly possessions such as wealth, status, and fame.\n\nIn addition to his standing as a Sûfî, Yunus Emre was one of the first to create and perform poetry from the heart in plain Turkish. He was also one of the Turkish poets to play a crucial role in the development of Old Anatolian Turkish. The words and expressions that he used made a significant contribution to the development of Turkish as a literary language. He established a literary tradition based on Sufism. One of the most important factors in the popularity of Yunus Emre’s works among the public is his style."
+    }
+  ]
 }
