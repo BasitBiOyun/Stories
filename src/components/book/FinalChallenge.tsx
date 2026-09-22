@@ -55,13 +55,6 @@ const getTheme = (bookData: BookData) => {
   };
 };
 
-const isSupportedFinalExercise = (exercise: Exercise) =>
-  exercise.type === 'multiple-choice'
-  || exercise.type === 'true-false'
-  || exercise.type === 'matching'
-  || exercise.type === 'fill-blanks'
-  || exercise.type === 'sequencing';
-
 const normalizeText = (value: unknown) => String(value ?? '')
   .trim()
   .toLocaleLowerCase()
@@ -91,23 +84,22 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
   const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
   const [sequenceDraft, setSequenceDraft] = React.useState<string[]>([]);
+  const [reflectionDraft, setReflectionDraft] = React.useState('');
 
   const dedicatedFinalQuestions = React.useMemo(() => {
     const finalPage = bookData.pages.find((page) => page.type === 'final-challenge');
-    return (finalPage?.exercises ?? []).filter(isSupportedFinalExercise);
-  }, [bookData]);
-
-  const fallbackQuestions = React.useMemo(() => {
-    const collected: Exercise[] = [];
-    bookData.pages.forEach((page) => {
-      page.exercises?.forEach((exercise) => {
-        if (isSupportedFinalExercise(exercise)) collected.push(exercise);
-      });
-    });
-    return collected;
+    return finalPage?.exercises ?? [];
   }, [bookData]);
 
   const currentQuestion = questions[currentStep];
+  const scoredQuestionCount = React.useMemo(
+    () => questions.filter((question) => question.type !== 'reflection').length,
+    [questions]
+  );
+  const reflectionQuestionCount = React.useMemo(
+    () => questions.filter((question) => question.type === 'reflection').length,
+    [questions]
+  );
 
   React.useEffect(() => {
     if (currentQuestion?.type === 'sequencing') {
@@ -124,12 +116,11 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setSequenceDraft([]);
+    setReflectionDraft('');
   };
 
   const startChallenge = () => {
-    const selected = dedicatedFinalQuestions.length === 10
-      ? [...dedicatedFinalQuestions]
-      : [...fallbackQuestions].slice(0, 10);
+    const selected = [...dedicatedFinalQuestions];
 
     setQuestions(selected);
     setCurrentStep(0);
@@ -169,11 +160,18 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
         : false;
       return normalizedMatch || morphologyMatch;
     }
+    if (currentQuestion.type === 'reflection') return true;
     return answer === currentQuestion.correctAnswer;
   };
 
   const handleAnswer = (answer: Exclude<FinalAnswer, null>) => {
     if (!currentQuestion || selectedAnswer !== null) return;
+    if (currentQuestion.type === 'reflection') {
+      setSelectedAnswer(answer);
+      setLastCorrect(null);
+      return;
+    }
+
     const correct = isCorrectAnswer(answer);
     setSelectedAnswer(answer);
     setLastCorrect(correct);
@@ -222,7 +220,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       return;
     }
 
-    const percentage = Math.round((score / Math.max(questions.length, 1)) * 100);
+    const percentage = Math.round((score / Math.max(scoredQuestionCount, 1)) * 100);
     setFinalScore(percentage);
     setGameState('results');
   };
@@ -264,7 +262,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   }
 
   if (gameState === 'results') {
-    const total = Math.max(questions.length, 1);
+    const total = Math.max(scoredQuestionCount, 1);
     const percentage = Math.round((score / total) * 100);
 
     return (
@@ -289,8 +287,15 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           <p className={cn('font-serif text-wood/60 mt-2', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
             {t('nav.resultsSummary')
               .replace('{score}', formatNumber(score))
-              .replace('{total}', formatNumber(questions.length))}
+              .replace('{total}', formatNumber(scoredQuestionCount))}
           </p>
+          {reflectionQuestionCount > 0 && (
+            <p className={cn('font-serif text-wood/55 mt-1', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+              {isArabic
+                ? `تم إكمال ${formatNumber(reflectionQuestionCount)} مهمة تأملية منفصلة عن الدرجة.`
+                : `${formatNumber(reflectionQuestionCount)} reflection task${reflectionQuestionCount === 1 ? '' : 's'} completed separately from the score.`}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
@@ -559,6 +564,53 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       );
     }
 
+    if (currentQuestion.type === 'reflection') {
+      return (
+        <div className={cn('rounded-2xl border-2 bg-white p-4 sm:p-6 space-y-4', theme.border)}>
+          {currentQuestion.instructions && (
+            <p className={cn('font-serif text-wood/65 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+              {currentQuestion.instructions}
+            </p>
+          )}
+          {!!currentQuestion.discussionPrompts?.length && (
+            <div className="space-y-2">
+              {currentQuestion.discussionPrompts.map((prompt, index) => (
+                <div key={`${currentQuestion.id}-prompt-${index}`} className={cn('rounded-xl border px-3 py-2.5 font-serif text-wood/70', theme.border, theme.soft, isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+                  {prompt.question}
+                </div>
+              ))}
+            </div>
+          )}
+          <textarea
+            value={reflectionDraft}
+            disabled={selectedAnswer !== null}
+            onChange={(event) => setReflectionDraft(event.target.value)}
+            rows={7}
+            placeholder={isArabic ? 'اكتب إجابتك هنا...' : 'Write your response here...'}
+            className={cn(
+              'w-full resize-y rounded-xl border-2 bg-white px-4 py-3 font-serif text-wood outline-none transition-shadow focus:ring-2 focus:ring-black/5',
+              theme.border,
+              isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
+            )}
+          />
+          {selectedAnswer === null && (
+            <button
+              type="button"
+              disabled={!reflectionDraft.trim()}
+              onClick={() => handleAnswer(reflectionDraft.trim())}
+              className={cn(
+                'w-full min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold disabled:opacity-40',
+                isArabic ? 'text-sm sm:text-base' : 'text-xs',
+                theme.accent
+              )}
+            >
+              {isArabic ? 'إكمال التأمل' : 'Complete Reflection'}
+            </button>
+          )}
+        </div>
+      );
+    }
+
     return null;
   };
 
@@ -583,14 +635,21 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           </div>
         </div>
 
-        <motion.h3
-          key={currentQuestion.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={cn('font-display text-xl sm:text-2xl md:text-3xl font-black leading-snug text-center', theme.text)}
-        >
-          {currentQuestion.question || currentQuestion.instructions}
-        </motion.h3>
+        <div className="space-y-2">
+          <motion.h3
+            key={currentQuestion.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={cn('font-display text-xl sm:text-2xl md:text-3xl font-black leading-snug text-center', theme.text)}
+          >
+            {currentQuestion.question || currentQuestion.instructions}
+          </motion.h3>
+          {currentQuestion.question && currentQuestion.instructions && currentQuestion.type !== 'reflection' && (
+            <p className={cn('font-serif text-center text-wood/55', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+              {currentQuestion.instructions}
+            </p>
+          )}
+        </div>
 
         {renderAnswerArea()}
 
@@ -598,10 +657,21 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
           <motion.div
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className={cn('rounded-2xl border-2 p-4 sm:p-5', lastCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200')}
+            className={cn(
+              'rounded-2xl border-2 p-4 sm:p-5',
+              currentQuestion.type === 'reflection'
+                ? theme.soft
+                : lastCorrect
+                  ? 'bg-emerald-50 border-emerald-200'
+                  : 'bg-rose-50 border-rose-200'
+            )}
           >
             <p className={cn('font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
-              {lastCorrect ? currentQuestion.feedback.correct : currentQuestion.feedback.incorrect}
+              {currentQuestion.type === 'reflection'
+                ? currentQuestion.feedback.correct
+                : lastCorrect
+                  ? currentQuestion.feedback.correct
+                  : currentQuestion.feedback.incorrect}
             </p>
             {currentQuestion.explanation && (
               <p className={cn('font-serif text-wood/60 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{currentQuestion.explanation}</p>
