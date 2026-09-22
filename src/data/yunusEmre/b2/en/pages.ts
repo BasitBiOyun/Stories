@@ -438,7 +438,7 @@ Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerl
   { id: 16, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: '', audioUrl: '', content: 'Match ten important story words with distinct meanings.' },
   { id: 17, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review all key vocabulary from the story in one place.', vocabulary: [] },
   { id: 19, type: 'exercises', title: 'Language Review', image: '', content: 'Review and use the language and discourse patterns from across the book.' },
-  { id: 20, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B2', image: '', content: 'Demonstrate whole-book mastery through ten independent scored activities.' },
+  { id: 20, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B2', image: '', content: 'Demonstrate whole-book mastery through the Final Challenge.' },
 // c06b
 ];
 
