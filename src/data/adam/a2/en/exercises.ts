@@ -259,8 +259,7 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     correctAnswer: ['1', '2', '3', '4', '5'],
     explanation: 'The sequence checks organisation across several chapters rather than another isolated fact.',
     feedback: { correct: 'Correct. You connected five later stages in order.', incorrect: 'Use Chapters 5–9 and place one event at a time.' }
-  }
-
+  },
 
   {
     id: 'adam-a2-final-11', type: 'multiple-choice', title: 'Knowledge and Respect', instructions: 'Choose the answer stated in Chapter 2.',
