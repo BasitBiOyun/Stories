@@ -119,4 +119,7 @@ export const yunusB2FinalChallengeExercises: Exercise[] = [
     ],
     correctAnswer: ['1', '2', '3', '4', '5'], explanation: 'The final sequence synthesizes context, response, thought, moral action and legacy.', feedback,
   },
+
+  mc('yu-b2-f11', 'Which statement best represents vahdet-i vücut as it is presented in Chapters 8–9?', ['Allah is the absolute and only true reality, while created multiplicity is described as manifestations of His names.', 'Every created thing exists independently from Allah and has no connection to Him.', 'The theory teaches that moral behavior is more important than tawhid and therefore replaces it.'], 0, 'Chapters 8–9 present Allah as the absolute reality and describe the plurality of creation as manifestations or reflections connected to Him.', 'Final Challenge'),
+  mc('yu-b2-f12', 'How do the three types of intellect in Chapter 10 broaden the book’s account of reason?', ['They give reason roles in understanding worldly life, the order of the hereafter, and pious conduct.', 'They divide reason into three competing powers that must defeat the heart.', 'They limit reason to practical work in this world and exclude spiritual or moral guidance.'], 0, 'Chapter 10 distinguishes practical reason, limited intellect, and universal intellect by their roles in worldly understanding, the hereafter, and pious behavior.', 'Final Challenge'),
 ];
