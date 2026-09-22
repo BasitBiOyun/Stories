@@ -1531,6 +1531,15 @@ entries.set(key, { word, definition });
             </div>
             <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <button
+                type="button"
+                onClick={() => openLessonPrep(prepChapterIndex)}
+                className="hidden sm:inline-flex min-h-11 items-center gap-2 rounded-xl border border-gold/20 bg-gold/[0.10] px-3.5 font-display text-[12px] sm:text-[13px] font-bold text-gold transition-colors hover:bg-gold hover:text-white"
+                title={language === 'ar' ? 'فتح وضع تحضير الدرس' : 'Open Lesson Prep Mode'}
+              >
+                <Sparkles size={17} />
+                <span>{language === 'ar' ? 'تحضير الدرس' : 'Lesson Prep'}</span>
+              </button>
+              <button
                 data-pdf-locked="true"
                 aria-disabled="true"
                 onClick={() => generateTeacherGuidePDF(displayGuideTitle, displayGuideSubtitle, content, metadata)}
@@ -1634,8 +1643,8 @@ entries.set(key, { word, definition });
             {/* Content Area */}
             <div ref={contentScrollRef} className="teacher-guide-content flex-1 overflow-y-auto custom-scrollbar">
               <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
-                <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
-                  <div className="min-w-0 flex items-center gap-3">
+                <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-3 sm:gap-4">
+                  <div className="min-w-0 flex flex-1 items-center gap-3">
                     <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">
                       {activeTabMeta.icon}
                     </span>
@@ -1648,6 +1657,63 @@ entries.set(key, { word, definition });
                       </h3>
                     </div>
                   </div>
+
+                  <div className="relative order-3 w-full md:order-none md:w-[19rem] lg:w-[22rem]">
+                    <Search className={cn("pointer-events-none absolute top-1/2 -translate-y-1/2 w-4 h-4 text-gold/50", isRTL ? "right-3.5" : "left-3.5")} />
+                    <input
+                      value={searchQuery}
+                      onChange={(event) => setSearchQuery(event.target.value)}
+                      placeholder={language === 'ar' ? 'ابحث عن قسم أو فصل...' : 'Search sections or chapters...'}
+                      className={cn(
+                        "w-full h-11 rounded-xl border border-white/[0.08] bg-black/20 text-parchment placeholder:text-parchment/30 outline-none focus:border-gold/35 focus:ring-2 focus:ring-gold/10 font-serif text-[13px] sm:text-sm",
+                        isRTL ? "pr-10 pl-3.5 text-right" : "pl-10 pr-3.5"
+                      )}
+                      aria-label={language === 'ar' ? 'بحث سريع في دليل المعلم' : 'Quick search in Teacher Guide'}
+                    />
+                    {searchQuery.trim() && (
+                      <div className="absolute top-[calc(100%+0.5rem)] inset-x-0 z-50 overflow-hidden rounded-2xl border border-gold/15 bg-wood/95 shadow-2xl backdrop-blur-xl">
+                        {searchResults.length > 0 ? (
+                          <div className="p-2">
+                            {searchResults.map((result, index) => (
+                              <button
+                                key={`${result.kind}-${index}-${result.label}`}
+                                type="button"
+                                onClick={() => {
+                                  if (result.kind === 'section') {
+                                    setActiveTab(result.tabId);
+                                    setSearchQuery('');
+                                  } else {
+                                    jumpToChapter(result.chapterIndex);
+                                  }
+                                }}
+                                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-start hover:bg-white/[0.06] transition-colors"
+                              >
+                                <span className="w-8 h-8 rounded-lg bg-gold/[0.10] text-gold flex items-center justify-center shrink-0">
+                                  {result.kind === 'section' ? <Layout size={16} /> : <BookIcon size={16} />}
+                                </span>
+                                <span className="min-w-0 flex-1">
+                                  <span className="block font-display text-[10px] font-bold uppercase tracking-[0.12em] text-gold/45">
+                                    {result.kind === 'section'
+                                      ? (language === 'ar' ? 'قسم' : 'Section')
+                                      : (language === 'ar' ? 'فصل' : 'Chapter')}
+                                  </span>
+                                  <span className="block truncate font-display text-[13px] sm:text-sm font-bold text-parchment/85">
+                                    {result.label}
+                                  </span>
+                                </span>
+                                <ChevronRight className={cn("w-4 h-4 text-gold/45", isRTL && "rotate-180")} />
+                              </button>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="px-4 py-4 font-serif text-[13px] text-parchment/45">
+                            {language === 'ar' ? 'لا توجد نتيجة مطابقة.' : 'No matching section or chapter.'}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
                   <div className="hidden sm:flex items-center gap-2">
                     <span className="px-3 py-1.5 rounded-full border border-gold/15 bg-gold/[0.06] font-display text-[11px] font-bold text-gold">
                       {formatNumber(assessmentLevel)}
