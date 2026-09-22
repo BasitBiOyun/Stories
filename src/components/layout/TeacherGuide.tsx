@@ -19,7 +19,8 @@ import {
   Globe,
   Link as LinkIcon,
   Award,
-  Download
+  Download,
+  ChevronRight
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
@@ -229,23 +230,28 @@ entries.set(key, { word, definition });
   }, [pages, isArabicGuide]);
 
   const tabs = [
-    { id: 'overview', label: `${formatNumber(1)}. ${t('tg.overview')}`, icon: <BookOpen size={24} /> },
-    { id: 'curriculum', label: `${formatNumber(2)}. ${t('tg.curriculum')}`, icon: <Layout size={24} /> },
-    { id: 'approach', label: `${formatNumber(3)}. ${t('tg.approach')}`, icon: <Lightbulb size={24} /> },
-    { id: 'framework', label: `${formatNumber(4)}. ${t('tg.framework')}`, icon: <MessageSquare size={24} /> },
-    { id: 'chapters', label: `${formatNumber(5)}. ${t('tg.chapters')}`, icon: <BookIcon size={24} /> },
-    { id: 'management', label: `${formatNumber(6)}. ${t('tg.management')}`, icon: <Users size={24} /> },
-    { id: 'differentiation', label: `${formatNumber(7)}. ${t('tg.differentiation')}`, icon: <Users size={24} /> },
-    { id: 'assessment', label: `${formatNumber(8)}. ${t('tg.assessment')}`, icon: <Award size={24} /> },
-    { id: 'kinesthetic', label: `${formatNumber(9)}. ${t('tg.kinesthetic')}`, icon: <Move size={24} /> },
-    { id: 'global', label: `${formatNumber(10)}. ${t('tg.global')}`, icon: <Globe size={24} /> },
-    { id: 'values', label: `${formatNumber(11)}. ${t('tg.values')}`, icon: <Heart size={24} /> },
-    { id: 'sensitive', label: `${formatNumber(12)}. ${t('tg.sensitive')}`, icon: <ShieldAlert size={24} /> },
-    { id: 'tips', label: `${formatNumber(13)}. ${t('tg.tips')}`, icon: <MessageSquare size={24} /> },
-    { id: 'home', label: `${formatNumber(14)}. ${t('tg.home')}`, icon: <Home size={24} /> },
-    { id: 'checklist', label: `${formatNumber(15)}. ${t('tg.checklist')}`, icon: <CheckCircle size={24} /> },
-    { id: 'appendices', label: `${formatNumber(16)}. ${t('tg.appendices')}`, icon: <FileText size={24} /> },
+    { id: 'overview', label: t('tg.overview'), icon: <BookOpen size={22} /> },
+    { id: 'curriculum', label: t('tg.curriculum'), icon: <Layout size={22} /> },
+    { id: 'approach', label: t('tg.approach'), icon: <Lightbulb size={22} /> },
+    { id: 'framework', label: t('tg.framework'), icon: <MessageSquare size={22} /> },
+    { id: 'chapters', label: t('tg.chapters'), icon: <BookIcon size={22} /> },
+    { id: 'management', label: t('tg.management'), icon: <Users size={22} /> },
+    { id: 'differentiation', label: t('tg.differentiation'), icon: <Users size={22} /> },
+    { id: 'assessment', label: t('tg.assessment'), icon: <Award size={22} /> },
+    { id: 'kinesthetic', label: t('tg.kinesthetic'), icon: <Move size={22} /> },
+    { id: 'global', label: t('tg.global'), icon: <Globe size={22} /> },
+    { id: 'values', label: t('tg.values'), icon: <Heart size={22} /> },
+    { id: 'sensitive', label: t('tg.sensitive'), icon: <ShieldAlert size={22} /> },
+    { id: 'tips', label: t('tg.tips'), icon: <MessageSquare size={22} /> },
+    { id: 'home', label: t('tg.home'), icon: <Home size={22} /> },
+    { id: 'checklist', label: t('tg.checklist'), icon: <CheckCircle size={22} /> },
+    { id: 'appendices', label: t('tg.appendices'), icon: <FileText size={22} /> },
   ];
+
+  const activeTabIndex = Math.max(0, tabs.findIndex(tab => tab.id === activeTab));
+  const activeTabMeta = tabs[activeTabIndex] ?? tabs[0];
+  const displayGuideTitle = metadata?.title || title || t('tg.title');
+  const displayGuideSubtitle = metadata?.subtitle || subtitle || t('tg.subtitle');
 
   React.useEffect(() => {
     if (isOpen) {
@@ -1442,7 +1448,7 @@ entries.set(key, { word, definition });
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className={cn(
-            "fixed inset-0 bg-wood/95 backdrop-blur-2xl z-[100] overflow-hidden flex flex-col",
+            "teacher-guide-shell fixed inset-0 bg-wood/95 backdrop-blur-2xl z-[100] overflow-hidden flex flex-col",
             isRTL && "font-arabic"
           )}
           style={{
@@ -1452,37 +1458,50 @@ entries.set(key, { word, definition });
           dir={isRTL ? 'rtl' : 'ltr'}
         >
           {/* Header */}
-          <div className="min-h-[4rem] sm:min-h-[5rem] md:h-24 border-b border-gold/20 px-3 sm:px-6 md:px-12 py-2.5 sm:py-3.5 flex items-center justify-between shrink-0 bg-black/20 gap-2">
-            <div className="flex items-center gap-2.5 sm:gap-4 min-w-0">
-              <div className="p-2 sm:p-3 bg-gold text-white rounded-xl shrink-0">
-                <GraduationCap className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+          <div className="teacher-guide-header min-h-[4.75rem] md:min-h-[6.5rem] border-b border-gold/15 px-4 sm:px-7 md:px-10 lg:px-12 py-3.5 flex items-center justify-between shrink-0 gap-3">
+            <div className="flex items-center gap-3.5 sm:gap-5 min-w-0">
+              <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
+                <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8" />
+                <span className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1.5 rounded-full bg-wood border border-gold/30 flex items-center justify-center font-display text-[10px] font-black text-gold">
+                  {formatNumber(assessmentLevel)}
+                </span>
               </div>
               <div className="min-w-0">
-                <h2 className="font-display text-base sm:text-2xl md:text-3xl text-parchment tracking-tight leading-tight truncate">
-                  {t('tg.title')}
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gold/65">
+                    {language === 'ar' ? 'مساحة عمل المعلم' : 'TEACHER WORKSPACE'}
+                  </span>
+                  <span className="hidden sm:inline h-1 w-1 rounded-full bg-gold/35" />
+                  <span className="hidden sm:inline font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-parchment/35">
+                    {formatNumber(activeTabIndex + 1)} / {formatNumber(tabs.length)}
+                  </span>
+                </div>
+                <h2 className="font-display text-lg sm:text-2xl md:text-[28px] text-parchment tracking-tight leading-tight truncate">
+                  {displayGuideTitle}
                 </h2>
                 <p className={cn(
-                  "font-serif text-gold text-[10px] sm:text-xs md:text-sm mt-0.5 truncate",
+                  "font-serif text-gold/75 text-xs sm:text-sm md:text-[15px] mt-0.5 truncate",
                   language !== 'ar' && "italic"
                 )}>
-                  {t('tg.subtitle')}
+                  {displayGuideSubtitle}
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <button
                 data-pdf-locked="true"
                 aria-disabled="true"
-                onClick={() => generateTeacherGuidePDF(title || t('tg.title'), subtitle || t('tg.subtitle'), content, metadata)}
-                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-gold/10 hover:bg-gold/20 text-gold rounded-xl border border-gold/20 transition-all font-display text-xs sm:text-sm group cursor-pointer"
+                onClick={() => generateTeacherGuidePDF(displayGuideTitle, displayGuideSubtitle, content, metadata)}
+                className="flex items-center gap-2 min-h-11 px-3 sm:px-4 bg-gold/[0.08] text-gold rounded-xl border border-gold/15 transition-all font-display text-xs sm:text-sm group cursor-pointer"
                 title={t('nav.downloadPdf')}
               >
-                <Download size={18} className="group-hover:scale-110 transition-transform shrink-0" />
+                <Download size={18} className="shrink-0" />
                 <span className="hidden sm:inline">{t('nav.downloadPdf')}</span>
               </button>
               <button 
                 onClick={onClose}
-                className="p-2 sm:p-3 bg-white/5 text-gold hover:bg-white/10 rounded-full transition-all cursor-pointer shrink-0"
+                className="w-11 h-11 flex items-center justify-center bg-white/[0.05] text-gold hover:bg-white/10 rounded-xl border border-white/[0.06] transition-all cursor-pointer shrink-0"
+                aria-label={language === 'ar' ? 'إغلاق دليل المعلم' : 'Close Teacher Guide'}
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
@@ -1492,43 +1511,114 @@ entries.set(key, { word, definition });
           {/* Main Layout */}
           <div className="flex-1 flex overflow-hidden">
             {/* Sidebar Tabs */}
-            <div className={cn(
-              "w-14 sm:w-20 md:w-80 border-gold/10 overflow-y-auto custom-scrollbar bg-black/20 shrink-0",
+            <aside className={cn(
+              "teacher-guide-sidebar w-[4.5rem] sm:w-20 md:w-[21rem] lg:w-[22rem] border-gold/10 overflow-y-auto custom-scrollbar shrink-0",
               isRTL ? "border-l" : "border-r"
             )}>
-              <div className="p-1.5 sm:p-3 md:p-4 space-y-1.5 sm:space-y-3">
-                {tabs.map((tab, idx) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={cn(
-                      "w-full flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-4 p-2 sm:p-3 md:p-5 rounded-xl transition-all group cursor-pointer",
-                      activeTab === tab.id 
-                        ? "bg-gold text-white shadow-lg shadow-gold/20" 
-                        : "text-parchment/40 hover:bg-white/5 hover:text-parchment"
-                    )}
-                  >
-                    <div className={cn(
-                      "shrink-0",
-                      activeTab === tab.id ? "text-white" : "text-gold/60 group-hover:text-gold"
-                    )}>
-                      {tab.icon}
+              <div className="hidden md:block px-5 pt-5 pb-3">
+                <div className="rounded-2xl border border-gold/12 bg-white/[0.035] p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-gold/50">
+                        {language === 'ar' ? 'خريطة الدليل' : 'GUIDE MAP'}
+                      </p>
+                      <p className="mt-1 font-display text-sm font-bold text-parchment/85">
+                        {formatNumber(activeTabIndex + 1)} / {formatNumber(tabs.length)}
+                      </p>
                     </div>
-                    <span className="block md:hidden text-[10px] sm:text-[11px] font-bold text-center leading-none opacity-85">
-                      #{formatNumber(idx + 1)}
-                    </span>
-                    <span className="hidden md:block font-display text-[15px] lg:text-base uppercase tracking-[0.12em] text-left font-bold">
-                      {tab.label}
-                    </span>
-                  </button>
-                ))}
+                    <div className="relative w-11 h-11 rounded-full border border-gold/20 flex items-center justify-center">
+                      <span className="font-display text-[11px] font-black text-gold">
+                        {Math.round(((activeTabIndex + 1) / tabs.length) * 100)}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-3 h-1.5 rounded-full bg-white/[0.05] overflow-hidden">
+                    <motion.div
+                      initial={false}
+                      animate={{ width: `${((activeTabIndex + 1) / tabs.length) * 100}%` }}
+                      className="h-full rounded-full bg-gold"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <nav className="p-2 sm:p-3 md:px-4 md:pb-6 space-y-1.5">
+                {tabs.map((tab, idx) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={cn(
+                        "relative w-full min-h-12 md:min-h-[3.75rem] flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3.5 px-2 md:px-3.5 rounded-xl transition-all group cursor-pointer overflow-hidden",
+                        isActive 
+                          ? "bg-gold/[0.14] text-parchment border border-gold/25 shadow-[0_8px_24px_rgba(0,0,0,0.12)]" 
+                          : "text-parchment/52 border border-transparent hover:bg-white/[0.045] hover:text-parchment"
+                      )}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="teacher-guide-active-tab"
+                          className={cn("absolute top-2 bottom-2 w-1 rounded-full bg-gold", isRTL ? "right-0" : "left-0")}
+                        />
+                      )}
+                      <span className={cn(
+                        "w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors",
+                        isActive ? "bg-gold text-white" : "bg-white/[0.04] text-gold/65 group-hover:text-gold"
+                      )}>
+                        {tab.icon}
+                      </span>
+                      <span className="block md:hidden font-display text-[10px] sm:text-[11px] font-black opacity-85">
+                        {formatNumber(idx + 1)}
+                      </span>
+                      <span className={cn("hidden md:flex min-w-0 flex-1 items-center gap-2", isRTL ? "text-right" : "text-left")}>
+                        <span className="w-6 shrink-0 font-display text-[11px] font-black text-gold/45">
+                          {formatNumber(idx + 1).toString().padStart(2, '0')}
+                        </span>
+                        <span className="min-w-0 flex-1 font-display text-[14px] lg:text-[15px] font-bold leading-tight">
+                          {tab.label}
+                        </span>
+                        <ChevronRight className={cn("w-4 h-4 shrink-0 opacity-0 transition-all group-hover:opacity-60", isActive && "opacity-70", isRTL && "rotate-180")} />
+                      </span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </aside>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-6 md:p-12">
-              <div className="max-w-5xl mx-auto">
-                {renderTeacherContent()}
+            <div className="teacher-guide-content flex-1 overflow-y-auto custom-scrollbar">
+              <div className="sticky top-0 z-20 border-b border-gold/10 bg-wood/90 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
+                <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+                  <div className="min-w-0 flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">
+                      {activeTabMeta.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-gold/48">
+                        {language === 'ar' ? 'القسم الحالي' : 'CURRENT SECTION'}
+                      </p>
+                      <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-parchment truncate">
+                        {activeTabMeta.label}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-2">
+                    <span className="px-3 py-1.5 rounded-full border border-gold/15 bg-gold/[0.06] font-display text-[11px] font-bold text-gold">
+                      {formatNumber(assessmentLevel)}
+                    </span>
+                    <span className="px-3 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.03] font-display text-[11px] font-bold text-parchment/55">
+                      {formatNumber(activeTabIndex + 1)} / {formatNumber(tabs.length)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-4 py-5 sm:px-7 sm:py-7 md:px-10 md:py-9 lg:px-12 lg:py-10">
+                <div className="max-w-6xl mx-auto">
+                  {renderTeacherContent()}
+                </div>
               </div>
             </div>
           </div>
