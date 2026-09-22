@@ -220,9 +220,9 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     question: 'Which description is right for each brother?',
     matchingPairs: [
       { left: 'Habil', right: 'kind and gentle; he chose not to harm his brother' },
-      { left: 'Qabil', right: 'mostly jealous; his anger led to a terrible consequence' }
+      { left: 'Qabil', right: 'was jealous; his anger led to something terrible' }
     ],
-    correctAnswer: { Habil: 'kind and gentle; he chose not to harm his brother', Qabil: 'mostly jealous; his anger led to a terrible consequence' },
+    correctAnswer: { Habil: 'kind and gentle; he chose not to harm his brother', Qabil: 'was jealous; his anger led to something terrible' },
     explanation: 'The two chapters contrast Habil’s gentle, non-retaliating response with Qabil’s jealousy and uncontrolled anger.',
     feedback: { correct: 'Correct. You connected character descriptions with later actions.', incorrect: 'Use the character descriptions in Chapter 8 and the brothers’ actions in Chapter 9.' }
   },
