@@ -803,7 +803,7 @@ const AppContent = () => {
               aria-expanded={isQuickTOCOpen}
             >
               <BookMarked className={cn(themeClasses.goldText, "h-4 w-4 shrink-0")} />
-              <span className="truncate font-display text-[10px] font-semibold sm:text-[11px]">
+              <span className="truncate font-display text-[12px] font-semibold sm:text-[13px] md:text-[14px]">
                 {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
               </span>
               <ChevronUp className={cn("h-3 w-3 shrink-0 opacity-45 transition-transform", isQuickTOCOpen && "rotate-180")} />
@@ -831,10 +831,10 @@ const AppContent = () => {
                     )}
                   >
                     <div className="mb-2 flex items-center justify-between gap-4 px-1">
-                      <h4 className={cn("font-display text-[11px] font-semibold uppercase tracking-[0.16em]", themeClasses.goldText)}>
+                      <h4 className={cn("font-display text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.14em]", themeClasses.goldText)}>
                         {t('nav.tableOfContents')}
                       </h4>
-                      <span className="font-display text-[10px] text-white/45">
+                      <span className="font-display text-[11px] sm:text-[12px] text-white/50">
                         {formatNumber(totalPages)} {language === 'ar' ? "صفحة" : "pages"}
                       </span>
                     </div>
@@ -859,10 +859,10 @@ const AppContent = () => {
                                 : "text-parchment/68 hover:bg-white/[0.06] hover:text-white"
                             )}
                           >
-                            <span className="w-7 shrink-0 text-center font-display text-[10px] font-semibold opacity-60">
+                            <span className="w-8 shrink-0 text-center font-display text-[11px] sm:text-[12px] font-semibold opacity-65">
                               {formatNumber(idx + 1)}
                             </span>
-                            <span className="min-w-0 flex-1 truncate font-display text-[11px] font-medium sm:text-[12px]">
+                            <span className="min-w-0 flex-1 truncate font-display text-[13px] font-medium sm:text-[14px]">
                               {page.title}
                             </span>
                             {isActive && (
@@ -907,7 +907,7 @@ const AppContent = () => {
           </div>
 
           <div className="hidden min-w-0 items-center justify-end md:flex">
-            <span className="truncate font-display text-[9px] font-semibold uppercase tracking-[0.16em] text-parchment/48 lg:text-[10px]">
+            <span className="truncate font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-parchment/55 lg:text-[12px]">
               {currentCollection === 'history' ? t('home.collection2') : currentCollection === 'turkish' ? t('home.collection3') : t('home.collection1')}
             </span>
           </div>
@@ -940,13 +940,13 @@ const AppContent = () => {
             >
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <p className={cn("font-display text-[10px] font-semibold uppercase tracking-[0.18em]", themeClasses.menuAccentText)}>
+                  <p className={cn("font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuAccentText)}>
                     {t('nav.mainMenu')}
                   </p>
                   <h3 className="mt-1 truncate font-display text-lg font-semibold text-parchment">
                     {currentBookTitle}
                   </h3>
-                  <p className="mt-1 text-[11px] text-parchment/45">
+                  <p className="mt-1 text-[13px] text-parchment/55">
                     {t('nav.level')} {formatNumber(currentLevel || '')} · {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
                   </p>
                 </div>
@@ -965,13 +965,13 @@ const AppContent = () => {
                   onClick={handleReturnToLibrary}
                   className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                 >
-                  <Home size={19} className={themeClasses.menuAccentText} />
-                  <span className="font-display text-[12px] font-semibold">{t('nav.libraryHome')}</span>
+                  <Home size={21} className={themeClasses.menuAccentText} />
+                  <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.libraryHome')}</span>
                 </button>
               </div>
 
               <div className="mt-7">
-                <h4 className={cn("px-4 font-display text-[9px] font-semibold uppercase tracking-[0.18em]", themeClasses.menuSectionHeader)}>
+                <h4 className={cn("px-4 font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuSectionHeader)}>
                   {t('nav.guidesResources')}
                 </h4>
 
@@ -983,8 +983,8 @@ const AppContent = () => {
                     }}
                     className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
-                    <GraduationCap size={19} className={themeClasses.menuAccentText} />
-                    <span className="font-display text-[12px] font-semibold">{t('nav.teacherGuide')}</span>
+                    <GraduationCap size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.teacherGuide')}</span>
                   </button>
 
                   <button 
@@ -994,8 +994,8 @@ const AppContent = () => {
                     }}
                     className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
-                    <ClipboardList size={19} className={themeClasses.menuAccentText} />
-                    <span className="font-display text-[12px] font-semibold">{t('nav.selfStudyGuide')}</span>
+                    <ClipboardList size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.selfStudyGuide')}</span>
                   </button>
 
                   <button 
@@ -1005,24 +1005,12 @@ const AppContent = () => {
                     }}
                     className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
-                    <Download size={19} className={themeClasses.menuAccentText} />
-                    <span className="font-display text-[12px] font-semibold">{t('nav.downloadPdf')}</span>
+                    <Download size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.downloadPdf')}</span>
                   </button>
                 </div>
               </div>
 
-              <div className="mt-auto pt-8">
-                <div className="rounded-2xl bg-white/[0.035] p-4">
-                  <p className="font-display text-[10px] font-semibold text-parchment/72">
-                    {language === 'ar' ? 'اختصارات القراءة' : 'Reading shortcuts'}
-                  </p>
-                  <p className="mt-2 text-[10px] leading-5 text-parchment/42">
-                    {language === 'ar'
-                      ? 'استخدم مفاتيح الأسهم للتنقل بين الصفحات. افتح Aa لضبط حجم النص.'
-                      : 'Use the arrow keys to move between pages. Open Aa to tune text size.'}
-                  </p>
-                </div>
-              </div>
             </motion.aside>
           </motion.div>
         )}
