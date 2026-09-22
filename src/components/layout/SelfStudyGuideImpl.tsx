@@ -432,6 +432,7 @@ export const SelfStudyGuide = ({
                     type="button"
                     onClick={() => openChapter(index)}
                     title={chapter.chapter}
+                    aria-label={chapter.chapter}
                     className={cn(
                       "relative aspect-square rounded-2xl border flex items-center justify-center font-display text-[12px] sm:text-[13px] font-black transition-all hover:-translate-y-0.5",
                       status?.complete
@@ -786,6 +787,7 @@ export const SelfStudyGuide = ({
                       type="button"
                       onClick={() => setActiveTab(tab.id)}
                       aria-current={isActive ? 'page' : undefined}
+                      aria-label={tab.label}
                       title={tab.label}
                       className={cn(
                         "relative w-full min-h-12 md:min-h-[3.65rem] flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3.5 px-2 md:px-3.5 rounded-xl border transition-all",
@@ -829,6 +831,7 @@ export const SelfStudyGuide = ({
                       value={searchQuery}
                       onChange={event => setSearchQuery(event.target.value)}
                       placeholder={isAr ? 'ابحث عن فصل أو دليل...' : 'Find a chapter or study guide...'}
+                      aria-label={isAr ? 'بحث في دليل الدراسة الذاتية' : 'Search Self-Study Guide'}
                       className={cn(
                         "w-full h-11 rounded-xl border border-white/[0.08] bg-black/20 text-white placeholder:text-white/25 outline-none focus:border-gold/35 focus:ring-2 focus:ring-gold/10 font-serif text-[13px]",
                         isRTL ? "pr-10 pl-3.5 text-right" : "pl-10 pr-3.5"
