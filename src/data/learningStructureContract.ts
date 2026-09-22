@@ -175,11 +175,11 @@ export const validateLearningBookStructure = (
   const finalChallenge = pageById(book, config.finalChallengePageId);
   if (!finalChallenge || finalChallenge.type !== 'final-challenge') {
     issues.push(issue(book, 'FINAL_CHALLENGE_PAGE', 'Final Challenge must remain a final-challenge page.', config.finalChallengePageId));
-  } else if ((finalChallenge.exercises?.length ?? 0) !== policy.finalCount) {
+  } else if (!(finalChallenge.exercises?.length)) {
     issues.push(issue(
       book,
-      'FINAL_CHALLENGE_COUNT',
-      `Final Challenge must contain exactly ${policy.finalCount} questions; found ${finalChallenge.exercises?.length ?? 0}.`,
+      'FINAL_CHALLENGE_EMPTY',
+      'Final Challenge must contain manually authored questions.',
       finalChallenge.id,
     ));
   }
