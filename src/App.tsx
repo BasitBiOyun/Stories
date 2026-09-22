@@ -999,6 +999,8 @@ const AppContent = () => {
                   </button>
 
                   <button 
+                    data-pdf-locked="true"
+                    aria-disabled="true"
                     onClick={() => {
                       currentBook && generateBookPDF(currentBook);
                       setIsMenuOpen(false);
