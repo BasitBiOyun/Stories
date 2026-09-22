@@ -1457,5 +1457,5 @@ Divan (his collected poems)`,
 ]
   },
   { id: 18, type: 'exercises', title: 'Final Review & Reflection', image: '', content: 'Retrieve the book through sequencing, matching, reflection, and the Review Quiz.' },
-  { id: 19, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B1', image: '', content: 'Complete the 10-item whole-book Final Challenge.' },
+  { id: 19, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B1', image: '', content: 'Bring the book’s history, ideas, and moral lessons together in the Final Challenge.' },
 ];
