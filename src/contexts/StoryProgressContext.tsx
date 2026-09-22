@@ -1,9 +1,19 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+interface FinalChallengeDetails {
+  firstAttemptAccuracy: number;
+  masteryAccuracy: number;
+  correctedAnswers: number;
+  missedQuestionCount: number;
+  reflectionCompleted: number;
+  scoredQuestionCount: number;
+}
+
 interface StoryProgressStats {
   wordsClicked: Set<string>;
   exercisesCompleted: Set<string>;
   finalScore: number | null;
+  finalChallengeDetails: FinalChallengeDetails | null;
 }
 
 interface StoryProgressContextType {
@@ -11,6 +21,7 @@ interface StoryProgressContextType {
   trackWordClick: (word: string) => void;
   trackExerciseComplete: (id: string) => void;
   setFinalScore: (score: number) => void;
+  setFinalChallengeDetails: (details: FinalChallengeDetails) => void;
   resetStats: () => void;
 }
 
@@ -21,6 +32,7 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     wordsClicked: new Set<string>(),
     exercisesCompleted: new Set<string>(),
     finalScore: null,
+    finalChallengeDetails: null,
   });
 
   const trackWordClick = (word: string) => {
@@ -43,16 +55,21 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     setStats(prev => ({ ...prev, finalScore: score }));
   };
 
+  const setFinalChallengeDetails = (details: FinalChallengeDetails) => {
+    setStats(prev => ({ ...prev, finalChallengeDetails: details }));
+  };
+
   const resetStats = () => {
     setStats({
       wordsClicked: new Set<string>(),
       exercisesCompleted: new Set<string>(),
       finalScore: null,
+      finalChallengeDetails: null,
     });
   };
 
   return (
-    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, setFinalScore, resetStats }}>
+    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, setFinalScore, setFinalChallengeDetails, resetStats }}>
       {children}
     </StoryProgressContext.Provider>
   );
