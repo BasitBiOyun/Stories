@@ -1,10 +1,17 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+interface FinalChallengeMissedQuestion {
+  id: string;
+  title: string;
+  question: string;
+}
+
 interface FinalChallengeDetails {
   firstAttemptAccuracy: number;
   masteryAccuracy: number;
   correctedAnswers: number;
   missedQuestionCount: number;
+  missedQuestions: FinalChallengeMissedQuestion[];
   reflectionCompleted: number;
   scoredQuestionCount: number;
 }
@@ -12,6 +19,7 @@ interface FinalChallengeDetails {
 interface StoryProgressStats {
   wordsClicked: Set<string>;
   exercisesCompleted: Set<string>;
+  chaptersVisited: Set<number>;
   finalScore: number | null;
   finalChallengeDetails: FinalChallengeDetails | null;
 }
@@ -20,6 +28,7 @@ interface StoryProgressContextType {
   stats: StoryProgressStats;
   trackWordClick: (word: string) => void;
   trackExerciseComplete: (id: string) => void;
+  trackChapterVisit: (id: number) => void;
   setFinalScore: (score: number) => void;
   setFinalChallengeDetails: (details: FinalChallengeDetails) => void;
   resetStats: () => void;
@@ -31,6 +40,7 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
   const [stats, setStats] = useState<StoryProgressStats>({
     wordsClicked: new Set<string>(),
     exercisesCompleted: new Set<string>(),
+    chaptersVisited: new Set<number>(),
     finalScore: null,
     finalChallengeDetails: null,
   });
@@ -51,6 +61,14 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     });
   };
 
+  const trackChapterVisit = (id: number) => {
+    setStats(prev => {
+      const next = new Set(prev.chaptersVisited);
+      next.add(id);
+      return { ...prev, chaptersVisited: next };
+    });
+  };
+
   const setFinalScore = (score: number) => {
     setStats(prev => ({ ...prev, finalScore: score }));
   };
@@ -63,13 +81,14 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     setStats({
       wordsClicked: new Set<string>(),
       exercisesCompleted: new Set<string>(),
+      chaptersVisited: new Set<number>(),
       finalScore: null,
       finalChallengeDetails: null,
     });
   };
 
   return (
-    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, setFinalScore, setFinalChallengeDetails, resetStats }}>
+    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, trackChapterVisit, setFinalScore, setFinalChallengeDetails, resetStats }}>
       {children}
     </StoryProgressContext.Provider>
   );
