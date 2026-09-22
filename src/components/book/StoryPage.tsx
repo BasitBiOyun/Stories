@@ -376,7 +376,7 @@ export const StoryPage = ({
   collectionId?: string;
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
-  const { trackExerciseComplete } = useStoryProgress();
+  const { trackExerciseComplete, trackChapterVisit } = useStoryProgress();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -388,6 +388,11 @@ export const StoryPage = ({
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (page.type === 'story') trackChapterVisit(page.id);
+  }, [page.id, page.type]);
+
   const isArabic = language === 'ar';
   const highlightLanguage = isArabic ? 'ar' : 'en';
 
