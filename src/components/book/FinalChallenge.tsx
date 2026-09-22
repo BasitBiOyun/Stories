@@ -317,72 +317,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     );
   }
 
-  if (gameState === 'results') {
-    const total = Math.max(scoredQuestionCount, 1);
-    const percentage = Math.round((score / total) * 100);
-
-    return (
-      <div className="h-full min-h-0 overflow-y-auto flex flex-col items-center justify-center text-center px-5 py-8 gap-6 sm:gap-8">
-        <div className="relative">
-          <div className={cn('w-28 h-28 sm:w-32 sm:h-32 rounded-full border-8 flex items-center justify-center', theme.soft)}>
-            <span className={cn('font-display text-3xl sm:text-4xl font-black', theme.text)}>{formatNumber(percentage)}%</span>
-          </div>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className={cn('absolute -top-2 -right-2 w-11 h-11 rounded-full text-white flex items-center justify-center shadow-md', theme.accentSolid)}
-          >
-            <Medal size={22} />
-          </motion.div>
-        </div>
-
-        <div>
-          <h2 className={cn('font-display text-2xl sm:text-3xl font-black', theme.text)}>
-            {percentage === 100 ? t('nav.perfectScore') : percentage >= 70 ? t('nav.greatJob') : t('nav.keepPracticing')}
-          </h2>
-          <p className={cn('font-serif text-wood/60 mt-2', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
-            {t('nav.resultsSummary')
-              .replace('{score}', formatNumber(score))
-              .replace('{total}', formatNumber(scoredQuestionCount))}
-          </p>
-          {reflectionQuestionCount > 0 && (
-            <p className={cn('font-serif text-wood/55 mt-1', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
-              {isArabic
-                ? `تم إكمال ${formatNumber(reflectionQuestionCount)} مهمة تأملية منفصلة عن الدرجة.`
-                : `${formatNumber(reflectionQuestionCount)} reflection task${reflectionQuestionCount === 1 ? '' : 's'} completed separately from the score.`}
-            </p>
-          )}
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-          <button
-            type="button"
-            onClick={startChallenge}
-            className={cn(
-              'flex-1 min-h-12 rounded-xl border-2 bg-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2',
-              isArabic ? 'text-sm sm:text-base' : 'text-xs',
-              theme.border,
-              theme.subtext
-            )}
-          >
-            <RotateCcw size={16} /> {t('nav.tryAgain')}
-          </button>
-          <button
-            type="button"
-            onClick={onComplete}
-            className={cn(
-              'flex-1 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold',
-              isArabic ? 'text-sm sm:text-base' : 'text-xs',
-              theme.accent
-            )}
-          >
-            {t('nav.finishJourney')}
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   if (!currentQuestion) return null;
 
   const renderAnswerArea = () => {
@@ -391,7 +325,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[true, false].map((value) => {
             const selected = selectedAnswer === value;
-            const revealCorrect = selectedAnswer !== null && currentQuestion.correctAnswer === value;
+            const revealCorrect = selectedAnswer !== null && (lastCorrect === true || attemptNumber === 2) && currentQuestion.correctAnswer === value;
             const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
             return (
               <button
@@ -422,7 +356,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
         <div className="grid grid-cols-1 gap-3">
           {presentedOptions.map((option, displayIndex) => {
             const selected = selectedAnswer === option.originalIndex;
-            const revealCorrect = selectedAnswer !== null && option.originalIndex === currentQuestion.correctAnswer;
+            const revealCorrect = selectedAnswer !== null && (lastCorrect === true || attemptNumber === 2) && option.originalIndex === currentQuestion.correctAnswer;
             const revealWrong = selectedAnswer !== null && selected && !revealCorrect;
             return (
               <button
