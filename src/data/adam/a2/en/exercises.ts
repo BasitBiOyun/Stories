@@ -182,12 +182,12 @@ export const adamA2VocabularyChallengePairs = [
 // 3 multiple choice + 2 true/false + 2 matching + 2 fill blanks + 1 sequencing.
 export const adamA2FinalChallengeExercises: Exercise[] = [
   {
-    id: 'adam-a2-final-1', type: 'multiple-choice', title: 'Earth: From Role to Action', instructions: 'Choose the statement that correctly connects two parts of the story.',
-    question: 'Which statement best connects the opening of the story with Chapter 6?',
+    id: 'adam-a2-final-1', type: 'multiple-choice', title: 'Earth and Work', instructions: 'Choose the true sentence.',
+    question: 'What do Chapters 1 and 6 both tell us about people on Earth?',
     options: [
-      'The opening gives humans a role on Earth, and Chapter 6 later gives examples of work and care on Earth',
-      'The opening says humans should avoid Earth, and Chapter 6 says they should return to Paradise immediately',
-      'The opening says humans have no role on Earth, and Chapter 6 removes every responsibility'
+      'Chapter 1 says people have a role on Earth. Chapter 6 shows some of their work and care.',
+      'Chapter 1 says people should stay away from Earth. Chapter 6 says they should go back to Paradise at once.',
+      'Chapter 1 says people have no role on Earth. Chapter 6 says they have no duties.'
     ], correctAnswer: 0,
     explanation: 'Chapter 1 announces a human role on Earth; Chapter 6 later describes activities and responsibilities there.',
     feedback: { correct: 'Correct. You connected an early idea with its later development.', incorrect: 'Compare the statement about the human role in Chapter 1 with the activity and responsibility list in Chapter 6.' }
@@ -216,8 +216,8 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     explanation: 'The chapter states this as Iblis’s continuing aim on Earth.', feedback: { correct: 'Correct.', incorrect: 'Reread the final sentence about Iblis in Chapter 6.' }
   },
   {
-    id: 'adam-a2-final-6', type: 'matching', title: 'Character and Action', instructions: 'Match each brother with the description supported by Chapters 8–9.',
-    question: 'Which description belongs to each brother?',
+    id: 'adam-a2-final-6', type: 'matching', title: 'Habil and Qabil', instructions: 'Match each brother with the right description.',
+    question: 'Which description is right for each brother?',
     matchingPairs: [
       { left: 'Habil', right: 'kind and gentle; he chose not to harm his brother' },
       { left: 'Qabil', right: 'mostly jealous; his anger led to a terrible consequence' }
@@ -247,17 +247,17 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     feedback: { correct: 'Correct.', incorrect: 'Find the family paragraph and look at the first positive teaching action.' }
   },
   {
-    id: 'adam-a2-final-10', type: 'sequencing', title: 'From Temptation to Later Lessons', instructions: 'Put these later events in story order.',
-    question: 'Which sequence shows how the later part of the story develops?',
+    id: 'adam-a2-final-10', type: 'sequencing', title: 'Story Order', instructions: 'Put these events in the correct order.',
+    question: 'What happened first, next, and later?',
     sequencingItems: [
       { id: '1', text: 'Iblis lies about the tree' },
       { id: '2', text: 'Adam and Eve make a mistake and ask forgiveness' },
-      { id: '3', text: 'They begin life on Earth with work and responsibilities' },
+      { id: '3', text: 'They begin life on Earth and have work to do' },
       { id: '4', text: 'Habil and Qabil bring different offerings' },
       { id: '5', text: 'A crow later shows Qabil what to do after Habil dies' }
     ],
     correctAnswer: ['1', '2', '3', '4', '5'],
-    explanation: 'The sequence checks organisation across several chapters rather than another isolated fact.',
+    explanation: 'These events happen in this order across Chapters 5–9.',
     feedback: { correct: 'Correct. You connected five later stages in order.', incorrect: 'Use Chapters 5–9 and place one event at a time.' }
   },
 
