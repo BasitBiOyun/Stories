@@ -671,21 +671,36 @@ const AppContent = () => {
                 </AnimatePresence>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-                className={cn(
-                  "touch-target flex items-center justify-center rounded-full border font-display text-[10px] font-semibold uppercase sm:hidden",
-                  themeClasses.buttonSec
-                )}
-                aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-              >
-                {language === 'en' ? 'AR' : 'EN'}
-              </button>
+              {isFinalChallengePage ? (
+                <span
+                  className={cn(
+                    "min-w-11 h-11 px-3 flex items-center justify-center rounded-full border font-display text-[10px] font-semibold uppercase",
+                    themeClasses.buttonSec
+                  )}
+                  title={language === 'ar' ? 'لغة التحدي ثابتة أثناء المحاولة' : 'Challenge language is locked during the attempt'}
+                  aria-label={language === 'ar' ? 'لغة التحدي: العربية' : 'Challenge language: English'}
+                >
+                  {language.toUpperCase()}
+                </span>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+                    className={cn(
+                      "touch-target flex items-center justify-center rounded-full border font-display text-[10px] font-semibold uppercase sm:hidden",
+                      themeClasses.buttonSec
+                    )}
+                    aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+                  >
+                    {language === 'en' ? 'AR' : 'EN'}
+                  </button>
 
-              <div className="hidden shrink-0 sm:block">
-                <LanguageToggle />
-              </div>
+                  <div className="hidden shrink-0 sm:block">
+                    <LanguageToggle />
+                  </div>
+                </>
+              )}
 
               <button 
                 onClick={handleReturnToLibrary}
