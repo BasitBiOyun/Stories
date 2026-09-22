@@ -7,7 +7,7 @@ import confetti from 'canvas-confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { highlightPhraseMatches } from '../../lib/highlightTextMatch';
-import { presentMatchingMeanings, presentMultipleChoice } from '../../lib/exercisePresentation';
+import { presentMatchingMeanings } from '../../lib/exercisePresentation';
 
 interface FinalChallengeProps {
   bookData: BookData;
@@ -154,7 +154,9 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   };
 
   const presentedOptions = React.useMemo(
-    () => currentQuestion?.type === 'multiple-choice' ? presentMultipleChoice(currentQuestion) : [],
+    () => currentQuestion?.type === 'multiple-choice'
+      ? (currentQuestion.options ?? []).map((text, originalIndex) => ({ text, originalIndex }))
+      : [],
     [currentQuestion]
   );
   const presentedMeanings = React.useMemo(
