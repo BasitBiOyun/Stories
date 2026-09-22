@@ -206,21 +206,6 @@ export interface TeacherGuideMetadata {
   valuesFramework?: string[];
   differentiationNotes?: string;
   assessmentRubric?: RubricRow[];
-  implementationPlans?: {
-    optionA: {
-      title: string;
-      steps: { time: string; activity: string }[];
-    };
-    optionB: {
-      title: string;
-      lessons: { title: string; description: string }[];
-    };
-    optionC?: {
-      title: string;
-      steps?: { time: string; activity: string }[];
-      lessons?: { title: string; description: string }[];
-    };
-  };
   homeConnection?: {
     title: string;
     items: string[];
