@@ -1035,6 +1035,7 @@ const AppContent = () => {
         isOpen={isSelfStudyOpen} 
         onClose={() => setIsSelfStudyOpen(false)} 
         content={currentBook?.selfStudyGuide || []}
+        pages={currentBook?.pages || []}
         studentGuideText={currentBook?.studentGuideText}
         studentGuideSections={currentBook?.studentGuideSections}
         metadata={currentBook?.studentGuideMetadata}
