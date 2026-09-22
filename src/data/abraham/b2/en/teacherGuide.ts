@@ -1193,6 +1193,441 @@ const manualTeacherGuideSections: TeacherGuideSection[] = [
     "teacherReflection": "Did learners grasp the difference between losing an argument and losing power?"
   }
 
+,
+
+  {
+    "chapter": "21. The Coolness of the Fire",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse the miracle as a reversal of the crowd’s intended instrument of coercion.",
+      "Identify the command for the fire to become coolness and safety and the detail that only the ropes burn.",
+      "Use cause, restriction, passive event focus and change-of-state language to describe the reversal without attributing control to Abraham."
+    ],
+    "pedagogy": "Use an intention/outcome contrast. Learners first state what the fire is meant to do, then trace the narrative result: flames remain, Abraham is not burned, the ropes burn, and the fire becomes cool and safe by Allah’s command.",
+    "priorKnowledge": [
+      "Chapter 20 coercion plan and passive language for institutional action."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not say Abraham controls the fire himself."
+    ],
+    "grammarFocus": "Appearance/effect reversal; cause and restriction; passive event focus; change of state; as-if comparison.",
+    "pronunciationFocus": "Contrast burn / cool / safe / only the ropes; read the command to the fire with a clear pause before the result.",
+    "beforeReading": [
+      "Ask what would count as a true reversal if a punishment device remained physically present but failed in its intended effect."
+    ],
+    "duringReading": [
+      "Mark the chief priest’s order and the catapult action.",
+      "Underline the divine command and every detail showing what the fire does and does not burn.",
+      "Identify the garden comparison as a description of experience, not a literal location change."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the intention/outcome chart.",
+      "Use Language Focus to write one restricted result with only and one change-of-state sentence.",
+      "Explain why the ropes detail matters to the reversal."
+    ],
+    "lessonPlan": "1. 0–5 min: intended effect vs actual effect. 2. 5–14 min: read/listen to the throwing and command. 3. 14–22 min: map fire effects and non-effects. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on restriction and change of state. 6. 36–43 min: reversal explanation. 7. 43–45 min: exit ticket: what burned and what did not.",
+    "discussionPoints": [
+      "How does the same fire function differently for the crowd’s intention and the narrative outcome?",
+      "Why is “only the ropes” an important limiting detail?"
+    ],
+    "interactiveTips": [
+      "Keep cause ownership explicit: the text attributes the change to Allah’s command.",
+      "Use a two-column intention/outcome board rather than dramatizing the fire scene."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide four cards: flames remain / Abraham unharmed / ropes burn / fire becomes cool and safe.",
+      "fastFinishers": "Write six sentences using only, but and became to explain the reversal precisely."
+    },
+    "formativeAssessment": [
+      "Identifies the reversal accurately.",
+      "Preserves agency attribution.",
+      "Uses restriction language correctly."
+    ],
+    "expectedResponses": [
+      "The fire remains present but, by Allah’s command, becomes cool and safe for Abraham and burns only his ropes."
+    ],
+    "transferTask": "Explain a neutral situation where an intended mechanism remains present but its expected effect is reversed.",
+    "teacherReflection": "Did learners describe the reversal through the text’s precise limits rather than vague miracle language?"
+  },
+  {
+    "chapter": "22. Stepping Out Unharmed",
+    "timing": "45 minutes",
+    "objectives": [
+      "Evaluate the different social responses after Abraham emerges unharmed.",
+      "Distinguish miracle outcome from subsequent public, secret and hostile reactions.",
+      "Use duration, turning-point, consequence and motive language to explain why one event produces varied responses."
+    ],
+    "pedagogy": "Build a response spectrum. After confirming the unchanged miracle evidence, learners sort people into public followers, secret believers and rulers whose anger remains, then identify fear of rulers as a motive for secrecy.",
+    "priorKnowledge": [
+      "Chapter 21 miracle outcome and cause/consequence distinction."
+    ],
+    "anticipatedMisconceptions": [
+      "A powerful event does not produce one uniform reaction in the chapter."
+    ],
+    "grammarFocus": "Duration → result; turning point; past-perfect prior result; consequence vs motive; contrast and reaction focus.",
+    "pronunciationFocus": "Stress long time / once the fire burnt out / consequently / but some; use contrastive rhythm to separate the response groups.",
+    "beforeReading": [
+      "Ask why the same striking event can produce different public behaviours."
+    ],
+    "duringReading": [
+      "Mark how long the fire burns and the turning point when Abraham exits.",
+      "Separate the rulers’ reaction from the response of followers.",
+      "Underline the reason some keep faith secret."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by matching response with motive.",
+      "Use Language Focus to distinguish consequence from motive in two sentences.",
+      "Write a short response-spectrum explanation without saying everyone believed."
+    ],
+    "lessonPlan": "1. 0–5 min: one event, different reactions. 2. 5–15 min: read/listen to fire ending and exit. 3. 15–23 min: sort rulers/followers/secret believers. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on duration, result and motive. 6. 37–43 min: response-spectrum paragraph. 7. 43–45 min: exit ticket: one reaction and its reason.",
+    "discussionPoints": [
+      "What does the hidden-belief detail show about the relation between conviction and political fear?",
+      "Why should consequence and motive not be merged?"
+    ],
+    "interactiveTips": [
+      "Use separate cards for belief state and public action.",
+      "Require the phrase about fear of rulers before accepting an explanation of secrecy."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Use a three-row table: group / response / reason.",
+      "fastFinishers": "Write seven sentences comparing public following, secret belief and continued elite hostility."
+    },
+    "formativeAssessment": [
+      "Distinguishes response groups.",
+      "Identifies fear as motive rather than miracle consequence.",
+      "Avoids uniform-reaction claims."
+    ],
+    "expectedResponses": [
+      "Many begin following Abraham, some hide belief because they fear rulers, while the rulers’ anger continues."
+    ],
+    "transferTask": "Explain a neutral event that produces different public actions because people face different risks.",
+    "teacherReflection": "Did learners separate internal conviction, public behaviour and political pressure?"
+  },
+  {
+    "chapter": "23. Debating King Nimrod",
+    "timing": "45 minutes",
+    "objectives": [
+      "Identify the category error in Nimrod’s claim that releasing one prisoner and killing another equals giving life and causing death.",
+      "Distinguish control over a prisoner’s fate from control over life and death as Abraham frames it.",
+      "Use reported stance, passive focus and parallel claims to compare the two meanings."
+    ],
+    "pedagogy": "Create a claim-scope table. One side records Abraham’s proposition about life/death; the other records what Nimrod actually does with two condemned men. Learners judge whether the actions match the original category before moving to the next chapter.",
+    "priorKnowledge": [
+      "Claim scope and evidence testing from Chapters 15 and 19."
+    ],
+    "anticipatedMisconceptions": [
+      "Choosing a prisoner’s fate is not equivalent to creating life or controlling death itself."
+    ],
+    "grammarFocus": "Reported stance; passive/modal focus; compressed background; past-perfect cause chain; parallel claims.",
+    "pronunciationFocus": "Contrast “gives life and causes death” with “freed one / put the other to death”; stress the verbs that reveal different scopes.",
+    "beforeReading": [
+      "Ask how a debate can fail when two speakers use the same words for different categories of action."
+    ],
+    "duringReading": [
+      "Mark Abraham’s exact life/death claim.",
+      "Record Nimrod’s response and the two prisoner actions.",
+      "Label what Nimrod demonstrably controls and what the original claim refers to."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by matching action to claim scope.",
+      "Use Language Focus to write two parallel sentences with different scopes.",
+      "Explain the category error without simply calling the reply foolish."
+    ],
+    "lessonPlan": "1. 0–5 min: same words, different scope. 2. 5–14 min: read/listen to the first exchange. 3. 14–22 min: build the claim-scope table. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on reported stance and parallel claims. 6. 36–43 min: category-error explanation. 7. 43–45 min: exit ticket: what does Nimrod actually control?",
+    "discussionPoints": [
+      "What exactly does Nimrod control, and what does Abraham’s claim refer to?",
+      "Why is matching scope necessary before deciding whether a reply answers a claim?"
+    ],
+    "interactiveTips": [
+      "Ban evaluative labels until learners define both claim scopes.",
+      "Use identical sentence frames so the semantic mismatch becomes visible."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide two boxes: Political/legal control / Creating life and controlling death.",
+      "fastFinishers": "Write a six-sentence analysis using parallel clauses to show the category mismatch."
+    },
+    "formativeAssessment": [
+      "Defines both scopes accurately.",
+      "Explains the mismatch with evidence.",
+      "Uses reported stance clearly."
+    ],
+    "expectedResponses": [
+      "Nimrod controls the legal fate of prisoners, but that is not the same category as creating life or controlling death itself."
+    ],
+    "transferTask": "Find a neutral example where a reply uses the same word as a claim but answers a different category.",
+    "teacherReflection": "Did learners diagnose the category error rather than rely on the narrator’s evaluation alone?"
+  },
+  {
+    "chapter": "24. Sarah, Hajar, and a New Trial",
+    "timing": "45 minutes",
+    "objectives": [
+      "Explain why the sun challenge is harder for Nimrod to manipulate than the prisoner example.",
+      "Trace the chapter’s transition from the debate to Abraham’s continuing call and the identification of Sarah and Lot as believers.",
+      "Use argument escalation, expected effect, simultaneity, concession and general-to-specific reference."
+    ],
+    "pedagogy": "Teach two movements: argument escalation and social narrowing. Learners first compare the sun challenge with the earlier life/death claim, then track how the chapter moves from Abraham’s fame and continued preaching to the statement that only Sarah and Lot share his belief.",
+    "priorKnowledge": [
+      "Chapter 23 claim-scope mismatch."
+    ],
+    "anticipatedMisconceptions": [
+      "The argument does not claim the sun itself is divine."
+    ],
+    "grammarFocus": "Argument escalation and result; expected effect with would; simultaneity, concession, limitation and general → specific reference.",
+    "pronunciationFocus": "Stress east / west in the challenge, then use a reset before “In the meantime” to mark the shift from debate to social response.",
+    "beforeReading": [
+      "Ask what makes a second test more resistant to verbal manipulation than the first."
+    ],
+    "duringReading": [
+      "Underline the east/west challenge and Nimrod’s inability to answer.",
+      "Mark the spread of Abraham’s fame and his continued efforts.",
+      "Identify the limiting statement that only one woman and one man share his belief and name them."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge with the correct argumentative or social detail.",
+      "Use Language Focus to write an escalation sentence followed by a limiting social-response sentence.",
+      "Explain why the chapter can show fame spreading while belief remains limited."
+    ],
+    "lessonPlan": "1. 0–5 min: stronger-test prediction. 2. 5–14 min: read/listen to the sun challenge. 3. 14–22 min: compare first and second debate tests. 4. 22–28 min: track fame, preaching and limited belief; Quick Challenge. 5. 28–37 min: Language Focus on escalation and limitation. 6. 37–43 min: two-movement synthesis. 7. 43–45 min: exit ticket naming Sarah and Lot and the reason the second test differs.",
+    "discussionPoints": [
+      "Why is the second challenge harder for Nimrod to manipulate rhetorically?",
+      "How can fame spread while conversion remains limited?"
+    ],
+    "interactiveTips": [
+      "Keep “sun as test” separate from “sun as object of worship”.",
+      "Use a divider between the debate half and the Sarah/Lot transition half of the chapter."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Use two headings: Stronger argument / Limited social response.",
+      "fastFinishers": "Write seven sentences linking argumentative escalation, fame and limited belief with concession."
+    },
+    "formativeAssessment": [
+      "Explains why the second test matches the claim more directly.",
+      "Identifies Sarah and Lot correctly.",
+      "Uses limitation language accurately."
+    ],
+    "expectedResponses": [
+      "Abraham shifts to a cosmic test Nimrod cannot control; despite growing fame and continued preaching, the chapter identifies Sarah and Lot as the two believers from his people."
+    ],
+    "transferTask": "Strengthen a neutral test so it matches the scope of a claim more directly.",
+    "teacherReflection": "Did learners keep the two chapter movements connected without treating them as one causal claim?"
+  },
+  {
+    "chapter": "25. Sarah and Hajar",
+    "timing": "45 minutes",
+    "objectives": [
+      "Explain emigration as a response to rejection that also continues Abraham’s mission.",
+      "Trace the movement from his people to Egypt and Palestine and the repeated call to belief and justice.",
+      "Distinguish migration from abandonment and use realisation→decision→movement plus recurring-action language."
+    ],
+    "pedagogy": "Build a mission-across-places route map. Each location receives two labels: why Abraham moves there and what mission activity continues there. The later Sarah/Hajar family development is then placed as a new family context, not as the cause of emigration.",
+    "priorKnowledge": [
+      "Chapter 24 limited belief response and purpose language."
+    ],
+    "anticipatedMisconceptions": [
+      "Migration is not presented as abandonment of the message."
+    ],
+    "grammarFocus": "Realisation → decision → movement; future-in-the-past; recurring action with wherever; past-perfect background.",
+    "pronunciationFocus": "Practise emigrate, Egypt, Palestine and wherever; stress the recurring-action verbs called, judged, guided.",
+    "beforeReading": [
+      "Ask how leaving a place can sometimes preserve rather than end a mission."
+    ],
+    "duringReading": [
+      "Mark the realisation that no one else will believe and the decision to emigrate.",
+      "Trace Egypt then Palestine on a route map.",
+      "Underline the recurring activities Abraham continues wherever he travels and the later family background involving Sarah and Hajar."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using route and mission evidence.",
+      "Use Language Focus to write realisation→decision→movement.",
+      "Explain in four sentences why emigration is strategic continuation in this chapter."
+    ],
+    "lessonPlan": "1. 0–5 min: leaving vs abandoning. 2. 5–14 min: read/listen to emigration decision. 3. 14–22 min: map Egypt/Palestine and continuing mission. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on decision and recurring action. 6. 36–43 min: continuation paragraph. 7. 43–45 min: exit ticket: one place and one continued action.",
+    "discussionPoints": [
+      "How can leaving one place represent persistence rather than retreat?",
+      "Which recurring verbs prove the mission continues after migration?"
+    ],
+    "interactiveTips": [
+      "Keep movement causes separate from later family developments.",
+      "Use arrows labelled with both destination and continued action."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide route cards and three recurring-action verbs to attach to each location.",
+      "fastFinishers": "Write seven sentences combining past-perfect background, decision and wherever-recurring action."
+    },
+    "formativeAssessment": [
+      "Traces route accurately.",
+      "Identifies continued mission.",
+      "Avoids equating migration with surrender."
+    ],
+    "expectedResponses": [
+      "Abraham emigrates after rejection but continues calling people, judging fairly and guiding them in new lands."
+    ],
+    "transferTask": "Describe a neutral project that changes location or method while keeping its central purpose.",
+    "teacherReflection": "Did learners use continued actions as evidence that migration does not equal abandonment?"
+  },
+  {
+    "chapter": "26. Hajar’s Trust in the Desert",
+    "timing": "45 minutes",
+    "objectives": [
+      "Connect the birth lines of Ishmael and Isaac with the command to take Hajar and Ishmael toward Mecca.",
+      "Explain the uncultivated valley as a deliberate test and future-oriented move rather than an accidental journey.",
+      "Use parallel lineage, reported instruction, future plan and journey-endpoint language."
+    ],
+    "pedagogy": "Use a two-part page map: lineage first, journey second. Learners compare the two prophetic descendant lines, then follow the command and physical movement to the uncultivated valley near Safa and Marwa.",
+    "priorKnowledge": [
+      "Sarah/Hajar family context from Chapter 25 and genealogy framing from Chapter 1."
+    ],
+    "anticipatedMisconceptions": [
+      "The move is not presented as an accidental journey."
+    ],
+    "grammarFocus": "Parallel lineage contrast; reported instruction vs future plan; still-background; until as journey endpoint.",
+    "pronunciationFocus": "Practise Ishmael, Isaac, Safa and Marwa; stress parallel lineage phrases before shifting tone to the command and journey.",
+    "beforeReading": [
+      "Ask what evidence would show that a difficult journey is part of a larger plan rather than random movement."
+    ],
+    "duringReading": [
+      "Map the Ishmael and Isaac descendant lines stated in the chapter.",
+      "Underline the command to take Hajar and Ishmael to Mecca and the future statements about the city and water.",
+      "Trace the route through cultivated land, desert and mountains to the uncultivated valley."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by distinguishing lineage from journey evidence.",
+      "Use Language Focus to write one parallel lineage sentence and one reported-instruction/future sentence.",
+      "Explain how the chapter connects a family move to a larger future."
+    ],
+    "lessonPlan": "1. 0–5 min: lineage/future prediction. 2. 5–14 min: read/listen to the two descendant lines. 3. 14–23 min: command and route to the valley. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on parallel lineage and future plan. 6. 37–43 min: family-to-future explanation. 7. 43–45 min: exit ticket: one present hardship and one future-oriented detail.",
+    "discussionPoints": [
+      "How does the chapter connect a family decision with a much larger future?",
+      "Which future details are explicitly reported rather than inferred by the learner?"
+    ],
+    "interactiveTips": [
+      "Use separate colours for lineage and journey so they do not collapse into one relation.",
+      "Keep later Zamzam details out until the chapter itself introduces only the promise of water."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide two family-line cards and a four-step route strip.",
+      "fastFinishers": "Write a seven-sentence synthesis combining parallel lineage and future-in-the-past without adding later events."
+    },
+    "formativeAssessment": [
+      "Keeps the two lineage branches accurate.",
+      "Identifies the journey as commanded/planned.",
+      "Avoids importing Chapter 30 outcomes prematurely."
+    ],
+    "expectedResponses": [
+      "The chapter links Ishmael and Isaac to later prophetic lines and presents the move of Hajar and Ishmael to the barren valley as a commanded test with a stated future."
+    ],
+    "transferTask": "Explain a neutral decision whose immediate difficulty and long-term purpose must be kept distinct.",
+    "teacherReflection": "Did learners respect the chapter’s future orientation without reading later outcomes backward into it?"
+  },
+  {
+    "chapter": "27. Hajar and Ishmael Search for Water",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse Hajar’s shift from anxiety to trust after learning that Abraham acts by Allah’s command.",
+      "Distinguish trust in the command from knowledge of how the practical water problem will be solved.",
+      "Use question→confirmation→reason, corrective not…but and spatial sequence to explain the change in interpretation."
+    ],
+    "pedagogy": "Use a same-situation/new-information model. Before Abraham answers, learners record the barren conditions and Hajar’s anxiety; after “Has Allah commanded you?” / “Yes,” they record what changes in interpretation even though the physical environment is unchanged.",
+    "priorKnowledge": [
+      "Chapter 26 barren-valley setting and command."
+    ],
+    "anticipatedMisconceptions": [
+      "Trust does not mean she already knows how the practical problem will be solved."
+    ],
+    "grammarFocus": "Accumulated absence; question → confirmation → reason; corrective not … but; past-perfect cause; spatial endpoint.",
+    "pronunciationFocus": "Practise the question “Has Allah commanded you…?” and the calm response; stress no fruit / no trees / no food / no water as accumulated absence.",
+    "beforeReading": [
+      "Ask how one new piece of information can change interpretation without changing physical circumstances."
+    ],
+    "duringReading": [
+      "Mark the repeated absence of resources and Hajar’s anxiety.",
+      "Underline the question about Allah’s command and Abraham’s confirmation.",
+      "Identify the sentence explaining that Abraham is not acting on his own decision."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using before/after interpretation.",
+      "Use Language Focus to write question→confirmation→reason.",
+      "Explain what Hajar now knows and what she still does not know."
+    ],
+    "lessonPlan": "1. 0–5 min: same facts, new information. 2. 5–14 min: read/listen to barren conditions and anxiety. 3. 14–22 min: analyse question/answer and interpretive shift. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on correction and reason. 6. 36–43 min: known/unknown explanation. 7. 43–45 min: exit ticket: what changed without the valley changing?",
+    "discussionPoints": [
+      "What information changes Hajar’s interpretation of the same situation?",
+      "What practical uncertainty remains after her trust changes?"
+    ],
+    "interactiveTips": [
+      "Keep physical facts and interpretation in separate columns.",
+      "Do not treat trust as a prediction of the exact mechanism of rescue."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Use Before answer / After answer boxes with the same valley facts.",
+      "fastFinishers": "Write six sentences using not…but and a past-perfect reason to explain the interpretive shift."
+    },
+    "formativeAssessment": [
+      "Identifies the new information.",
+      "Separates trust from practical foreknowledge.",
+      "Uses corrective structure accurately."
+    ],
+    "expectedResponses": [
+      "Hajar’s interpretation changes when she learns the move is commanded by Allah; she trusts the outcome without knowing how water or help will come."
+    ],
+    "transferTask": "Describe a neutral situation where reliable new information changes interpretation before circumstances change.",
+    "teacherReflection": "Did learners distinguish confidence in a source from certainty about the method or outcome?"
+  },
+  {
+    "chapter": "28. Zamzam Appears",
+    "timing": "45 minutes",
+    "objectives": [
+      "Analyse Abraham’s prayer through worship, social attachment, provision and gratitude.",
+      "Explain how the chapter frames the barren valley as part of a long-term future centered on the Ka‘ba and monotheism.",
+      "Use purpose chains, obligation, clarification and long-term reference without confusing prayer with later fulfilment."
+    ],
+    "pedagogy": "Break the prayer into four requested outcomes—prayer, hearts, fruits, gratitude—then separate the prayer itself from the narrator’s later explanation about the Ka‘ba and descendants.",
+    "priorKnowledge": [
+      "Chapter 27 command/trust and the difference between present condition and future plan."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not present barrenness as evidence that the place lacks future purpose."
+    ],
+    "grammarFocus": "Purpose chains; had to for obligation; “that is” clarification; relative background; long-term time/reference cohesion.",
+    "pronunciationFocus": "Chunk the prayer by purpose phrases and stress prayer / hearts / fruits / thanks; pause before the narrator’s long-term explanation.",
+    "beforeReading": [
+      "Ask what kinds of needs a prayer can include besides immediate physical survival."
+    ],
+    "duringReading": [
+      "Label the four components of the prayer.",
+      "Underline the explanation connecting the move with the Ka‘ba and the renewed center of monotheism.",
+      "Mark the long-term descendant reference and keep it separate from the immediate prayer."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by classifying a prayer element.",
+      "Use Language Focus to write a purpose chain with in order that / so that.",
+      "Explain how material provision is linked to gratitude rather than treated as an end by itself."
+    ],
+    "lessonPlan": "1. 0–5 min: categories of need. 2. 5–15 min: read/listen and divide the prayer. 3. 15–23 min: separate prayer from long-term narrator framing. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on purpose and obligation. 6. 37–43 min: four-part interpretation. 7. 43–45 min: exit ticket naming one spiritual and one material request.",
+    "discussionPoints": [
+      "Which parts of the prayer concern worship, society, and material provision?",
+      "How does gratitude change the interpretation of provision in the prayer?"
+    ],
+    "interactiveTips": [
+      "Use four icons for worship/hearts/provision/gratitude and attach exact phrases.",
+      "Do not present the narrator’s later historical explanation as words of the prayer itself."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Give the four categories and ask learners to match phrases from the prayer.",
+      "fastFinishers": "Write a seven-sentence analysis distinguishing request, purpose and later narrative fulfilment."
+    },
+    "formativeAssessment": [
+      "Classifies prayer components accurately.",
+      "Separates prayer from narrator explanation.",
+      "Uses purpose language coherently."
+    ],
+    "expectedResponses": [
+      "Abraham’s prayer combines worship, social attachment, provision and gratitude, while the narrator connects the valley to a long-term Ka‘ba-centered future."
+    ],
+    "transferTask": "Analyse a neutral plan that includes purpose, social support, material resources and a responsible use of those resources.",
+    "teacherReflection": "Did learners preserve the difference between prayer, purpose and later narrative interpretation?"
+  }
+
 ];
 
 const makeSection = (p: ChapterPlan): TeacherGuideSection => {
@@ -1238,7 +1673,7 @@ const makeSection = (p: ChapterPlan): TeacherGuideSection => {
 
 export const abrahamB2TeacherGuideEn: TeacherGuideSection[] = [
   ...manualTeacherGuideSections,
-  ...plans.slice(20).map(makeSection),
+  ...plans.slice(28).map(makeSection),
 ];
 
 export const abrahamB2TeacherGuideMetadata: TeacherGuideMetadata = {
