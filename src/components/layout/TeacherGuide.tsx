@@ -1574,7 +1574,7 @@ entries.set(key, { word, definition });
                       </span>
                       <span className={cn("hidden md:flex min-w-0 flex-1 items-center gap-2", isRTL ? "text-right" : "text-left")}>
                         <span className="w-6 shrink-0 font-display text-[11px] font-black text-gold/45">
-                          {formatNumber(idx + 1).toString().padStart(2, '0')}
+                          {formatNumber(idx + 1)}
                         </span>
                         <span className="min-w-0 flex-1 font-display text-[14px] lg:text-[15px] font-bold leading-tight">
                           {tab.label}
@@ -1618,6 +1618,55 @@ entries.set(key, { word, definition });
               <div className="px-4 py-5 sm:px-7 sm:py-7 md:px-10 md:py-9 lg:px-12 lg:py-10">
                 <div className="max-w-6xl mx-auto">
                   {renderTeacherContent()}
+
+                  <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-gold/10 flex items-stretch sm:items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      disabled={activeTabIndex === 0}
+                      onClick={() => activeTabIndex > 0 && setActiveTab(tabs[activeTabIndex - 1].id)}
+                      className="group min-w-0 flex-1 sm:flex-none sm:min-w-[12rem] rounded-2xl border border-white/[0.07] bg-white/[0.025] px-4 py-3.5 text-start transition-all hover:bg-white/[0.05] hover:border-gold/15 disabled:opacity-25 disabled:pointer-events-none"
+                    >
+                      <span className="flex items-center gap-2 text-gold/55">
+                        <ChevronRight className={cn("w-4 h-4 shrink-0", isRTL ? "" : "rotate-180")} />
+                        <span className="font-display text-[10px] font-bold uppercase tracking-[0.14em]">
+                          {language === 'ar' ? 'السابق' : 'Previous'}
+                        </span>
+                      </span>
+                      {activeTabIndex > 0 && (
+                        <span className="mt-1 block truncate font-display text-sm font-bold text-parchment/80">
+                          {tabs[activeTabIndex - 1].label}
+                        </span>
+                      )}
+                    </button>
+
+                    <div className="hidden md:flex flex-col items-center justify-center px-4">
+                      <span className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-parchment/30">
+                        {language === 'ar' ? 'تقدم الدليل' : 'GUIDE PROGRESS'}
+                      </span>
+                      <span className="mt-1 font-display text-sm font-black text-gold/75">
+                        {formatNumber(activeTabIndex + 1)} / {formatNumber(tabs.length)}
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
+                      disabled={activeTabIndex === tabs.length - 1}
+                      onClick={() => activeTabIndex < tabs.length - 1 && setActiveTab(tabs[activeTabIndex + 1].id)}
+                      className="group min-w-0 flex-1 sm:flex-none sm:min-w-[12rem] rounded-2xl border border-gold/15 bg-gold/[0.055] px-4 py-3.5 text-end transition-all hover:bg-gold/[0.09] disabled:opacity-25 disabled:pointer-events-none"
+                    >
+                      <span className="flex items-center justify-end gap-2 text-gold/70">
+                        <span className="font-display text-[10px] font-bold uppercase tracking-[0.14em]">
+                          {language === 'ar' ? 'التالي' : 'Next'}
+                        </span>
+                        <ChevronRight className={cn("w-4 h-4 shrink-0", isRTL && "rotate-180")} />
+                      </span>
+                      {activeTabIndex < tabs.length - 1 && (
+                        <span className="mt-1 block truncate font-display text-sm font-bold text-parchment">
+                          {tabs[activeTabIndex + 1].label}
+                        </span>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
