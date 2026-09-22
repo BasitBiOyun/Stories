@@ -280,6 +280,8 @@ export const SelfStudyGuide = ({
             </div>
             <div className="flex items-center gap-2 sm:gap-6 shrink-0">
               <button
+                data-pdf-locked="true"
+                aria-disabled="true"
                 onClick={() => generateStudentGuidePDF(displayTitle, displaySubtitle, metadata, studentGuideText, displaySections.map(s => ({ title: s.title, text: s.text, points: s.points })))}
                 className="flex items-center gap-2 px-3 sm:px-6 py-2 sm:py-4 bg-gold/10 hover:bg-gold/20 text-gold rounded-xl border border-gold/20 font-display text-xs sm:text-base cursor-pointer"
                 title={t('nav.downloadPdf')}
@@ -289,13 +291,13 @@ export const SelfStudyGuide = ({
           </div>
 
           <div className="flex-1 flex overflow-hidden">
-            <div className={cn('w-16 sm:w-20 md:w-72 border-gold/10 overflow-y-auto custom-scrollbar bg-black/40 shrink-0', isRTL ? 'border-l' : 'border-r')}>
+            <div className={cn('w-16 sm:w-20 md:w-80 border-gold/10 overflow-y-auto custom-scrollbar bg-black/40 shrink-0', isRTL ? 'border-l' : 'border-r')}>
               <div className="p-1.5 sm:p-3 md:p-4 space-y-2">
                 {tabs.map(tab => (
                   <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={cn('w-full flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3 p-2 sm:p-3 md:p-4 rounded-xl transition-all cursor-pointer', activeTab === tab.id ? 'bg-gold text-white' : 'text-white/60 hover:bg-white/5 hover:text-white')}>
                     <div className={activeTab === tab.id ? 'text-white' : 'text-gold'}>{tab.icon}</div>
-                    <span className="block md:hidden text-[9px] font-bold text-center max-w-[52px] truncate">{tab.label}</span>
-                    <span className="hidden md:block text-xs font-display uppercase tracking-[0.16em] text-left leading-tight">{tab.label}</span>
+                    <span className="block md:hidden text-[10px] sm:text-[11px] font-bold text-center max-w-[58px] truncate">{tab.label}</span>
+                    <span className="hidden md:block text-[14px] lg:text-[15px] font-display uppercase tracking-[0.12em] text-left leading-snug">{tab.label}</span>
                   </button>
                 ))}
               </div>
@@ -303,7 +305,7 @@ export const SelfStudyGuide = ({
             <div className="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-8 md:p-16 bg-gradient-to-br from-transparent to-gold/5"><div className="max-w-5xl mx-auto">{renderContent()}</div></div>
           </div>
 
-          <div className="h-14 md:h-20 border-t border-gold/10 px-4 md:px-16 flex items-center justify-center shrink-0 bg-black/20"><p className="font-display text-[10px] sm:text-xs tracking-[0.3em] text-gold uppercase text-center">{displayFooter}</p></div>
+          <div className="h-14 md:h-20 border-t border-gold/10 px-4 md:px-16 flex items-center justify-center shrink-0 bg-black/20"><p className="font-display text-[12px] sm:text-[13px] tracking-[0.22em] text-gold uppercase text-center">{displayFooter}</p></div>
         </motion.div>
       )}
     </AnimatePresence>
