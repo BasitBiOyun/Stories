@@ -80,6 +80,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const [score, setScore] = React.useState(0);
   const [firstAttemptCorrect, setFirstAttemptCorrect] = React.useState(0);
   const [correctedAnswers, setCorrectedAnswers] = React.useState(0);
+  const [missedQuestions, setMissedQuestions] = React.useState<Array<{ id: string; title: string; question: string }>>([]);
   const [attemptNumber, setAttemptNumber] = React.useState<1 | 2>(1);
   const [selectedAnswer, setSelectedAnswer] = React.useState<FinalAnswer>(null);
   const [lastCorrect, setLastCorrect] = React.useState<boolean | null>(null);
@@ -131,6 +132,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setScore(0);
     setFirstAttemptCorrect(0);
     setCorrectedAnswers(0);
+    setMissedQuestions([]);
     resetQuestionState();
 
     if (!selected.length) {
@@ -140,6 +142,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
         masteryAccuracy: 0,
         correctedAnswers: 0,
         missedQuestionCount: 0,
+        missedQuestions: [],
         reflectionCompleted: 0,
         scoredQuestionCount: 0,
       });
@@ -201,6 +204,16 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
 
     if (attemptNumber === 1 && correct) {
       setFirstAttemptCorrect((previous) => previous + 1);
+    } else if (attemptNumber === 1 && !correct) {
+      setMissedQuestions((previous) => (
+        previous.some((item) => item.id === currentQuestion.id)
+          ? previous
+          : [...previous, {
+              id: currentQuestion.id,
+              title: currentQuestion.title || (isArabic ? 'سؤال' : 'Question'),
+              question: currentQuestion.question || currentQuestion.instructions || (isArabic ? 'سؤال التحدي' : 'Challenge question'),
+            }]
+      ));
     }
 
     if (correct) {
@@ -268,7 +281,8 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       firstAttemptAccuracy,
       masteryAccuracy,
       correctedAnswers,
-      missedQuestionCount: Math.max(scoredQuestionCount - firstAttemptCorrect, 0),
+      missedQuestionCount: missedQuestions.length,
+      missedQuestions,
       reflectionCompleted: reflectionQuestionCount,
       scoredQuestionCount,
     });
@@ -665,7 +679,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                   index < currentStep
                     ? theme.accentSolid
                     : index === currentStep
-                      ? theme.accentSolid
+                      ? `${theme.accentSolid} ring-2 ring-white/90 ring-offset-1 ring-offset-transparent`
                       : 'bg-wood/10'
                 )}
               />
