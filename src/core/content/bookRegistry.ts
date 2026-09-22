@@ -2,7 +2,7 @@ import type { Level } from '../../types';
 import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
-import { finalizeBookPairForUi, finalizePreparedBookPairForUi } from './uiBookFinalization';
+import { finalizePreparedBookPairForUi } from './uiBookFinalization';
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -56,7 +56,6 @@ const createDefinition = (
   collection: CollectionId,
   titles: BookDisplayTitles,
   loadSource: () => Promise<BookPair>,
-  preservePreparedLearning = false,
 ): BookDefinition => ({
   storyId,
   level,
@@ -66,7 +65,7 @@ const createDefinition = (
   loadSource,
   load: async () => {
     const source = await loadSource();
-    return preservePreparedLearning ? finalizePreparedBookPairForUi(source) : finalizeBookPairForUi(source);
+    return finalizePreparedBookPairForUi(source);
   },
 });
 
@@ -79,7 +78,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'adamA2BookDataEn',
     'adamA2BookDataAr',
     'Adam A2',
-  ), true),
+  )),
   createDefinition('adam', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Adam (B1)',
     ar: 'قصص الأنبياء: آدم (عليه السلام)',
@@ -88,7 +87,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'adamB1BookDataEn',
     'adamB1BookDataAr',
     'Adam B1',
-  ), true),
+  )),
   createDefinition('adam', 'B2', 'prophets', {
     en: 'Stories of the Prophets: Adam (B2)',
     ar: 'قصص الأنبياء: آدم (عليه السلام)',
@@ -97,7 +96,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'adamB2BookDataEn',
     'adamB2BookDataAr',
     'Adam B2',
-  ), true),
+  )),
 
   createDefinition('ibrahim', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Abraham (A2)',
@@ -107,7 +106,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'abrahamA2BookDataEn',
     'abrahamA2BookDataAr',
     'Abraham A2',
-  ), true),
+  )),
   createDefinition('ibrahim', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Abraham (B1)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
@@ -116,7 +115,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'abrahamB1BookDataEn',
     'abrahamB1BookDataAr',
     'Abraham B1',
-  ), true),
+  )),
   createDefinition('ibrahim', 'B2', 'prophets', {
     en: 'Stories of the Prophets: Abraham (B2)',
     ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
@@ -125,7 +124,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'abrahamB2BookDataEn',
     'abrahamB2BookDataAr',
     'Abraham B2',
-  ), true),
+  )),
 
   createDefinition('musa', 'A2', 'prophets', {
     en: 'Stories of the Prophets: Moses (A2)',
@@ -135,7 +134,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'mosesA2BookDataEn',
     'mosesA2BookDataAr',
     'Moses A2',
-  ), true),
+  )),
   createDefinition('musa', 'B1', 'prophets', {
     en: 'Stories of the Prophets: Moses (B1)',
     ar: 'قصص الأنبياء: موسى (عليه السلام)',
@@ -144,7 +143,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'mosesB1BookDataEn',
     'mosesB1BookDataAr',
     'Moses B1',
-  ), true),
+  )),
   createDefinition('musa', 'B2', 'prophets', {
     en: 'Stories of the Prophets: Moses (B2)',
     ar: 'قصص الأنبياء: موسى (عليه السلام)',
@@ -153,7 +152,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'mosesB2BookDataEn',
     'mosesB2BookDataAr',
     'Moses B2',
-  ), true),
+  )),
 
   createDefinition('mecca', 'A2', 'history', {
     en: 'Islamic History & Civilization: Mecca',
@@ -163,7 +162,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'meccaA2BookDataEn',
     'meccaA2BookDataAr',
     'Mecca A2',
-  ), true),
+  )),
   createDefinition('mecca', 'B1', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
@@ -172,7 +171,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'meccaB1BookDataEn',
     'meccaB1BookDataAr',
     'Mecca B1',
-  ), true),
+  )),
   createDefinition('mecca', 'B2', 'history', {
     en: 'Islamic History & Civilization: Mecca',
     ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
@@ -181,7 +180,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'meccaB2BookDataEn',
     'meccaB2BookDataAr',
     'Mecca B2',
-  ), true),
+  )),
 
   createDefinition('yunusEmre', 'A2', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
@@ -191,7 +190,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'yunusEmreA2BookDataEn',
     'yunusEmreA2BookDataAr',
     'Yunus Emre A2',
-  ), true),
+  )),
   createDefinition('yunusEmre', 'B1', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
@@ -200,7 +199,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'yunusEmreB1BookDataEn',
     'yunusEmreB1BookDataAr',
     'Yunus Emre B1',
-  ), true),
+  )),
   createDefinition('yunusEmre', 'B2', 'turkish', {
     en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
     ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
@@ -209,7 +208,7 @@ export const bookRegistry: readonly BookDefinition[] = [
     'yunusEmreB2BookDataEn',
     'yunusEmreB2BookDataAr',
     'Yunus Emre B2',
-  ), true),
+  )),
 ] as const;
 
 const registryByKey = new Map(bookRegistry.map(definition => [definitionKey(definition.storyId, definition.level), definition]));
