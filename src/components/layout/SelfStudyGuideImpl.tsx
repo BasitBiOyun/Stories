@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
-import { X, Crown, Download, FileText } from '../ui/icons';
+import { X, Crown, Download } from '../ui/icons';
 import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
 import { cn } from '../../lib/utils';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
-import { TeacherGuideSection, StudentGuideSection } from '../../types';
+import { PageData, StudentGuideSection, TeacherGuideSection } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
 const GuideIcon = ({ name, className = 'w-7 h-7' }: { name: GuideIconName; className?: string }) => (
   <PhosphorGuideIcon name={name} className={className} />
@@ -47,26 +48,13 @@ const localizeArabicDeep = <T,>(value: T): T => {
   return value;
 };
 
-const listBlock = (title: string, items?: string[]) => {
-  if (!items?.length) return null;
-  return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6">
-      <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest mb-3">{title}</h5>
-      <ul className="space-y-2 font-serif text-sm sm:text-base text-white leading-relaxed">
-        {items.map((item, i) => <li key={i} className="flex gap-2.5"><span className="text-gold/60">•</span><span>{item}</span></li>)}
-      </ul>
-    </div>
-  );
-};
-
-const textBlock = (title: string, text?: string) => {
-  if (!text) return null;
-  return (
-    <div className="bg-gold/5 border border-gold/15 rounded-2xl p-4 sm:p-6">
-      <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest mb-3">{title}</h5>
-      <p className="font-serif text-sm sm:text-base text-white leading-relaxed">{text}</p>
-    </div>
-  );
+type StudyStep = {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: GuideIconName;
+  lists: Array<{ title: string; items?: string[] }>;
+  texts: Array<{ title: string; text?: string }>;
 };
 
 export const SelfStudyGuide = ({
@@ -76,6 +64,7 @@ export const SelfStudyGuide = ({
   subtitle,
   footerText,
   content = [],
+  pages = [],
   studentGuideText = '',
   studentGuideSections = [],
   metadata,
@@ -87,6 +76,7 @@ export const SelfStudyGuide = ({
   subtitle?: string;
   footerText?: string;
   content?: TeacherGuideSection[];
+  pages?: PageData[];
   studentGuideText?: string;
   studentGuideSections?: StudentGuideSection[];
   metadata?: import('../../types').StudentGuideMetadata;
@@ -94,7 +84,12 @@ export const SelfStudyGuide = ({
 }) => {
   const [activeTab, setActiveTab] = useState('welcome');
   const [activeGuideSection, setActiveGuideSection] = useState(0);
+  const [activeStudyStep, setActiveStudyStep] = useState(0);
+  const [isRescueOpen, setIsRescueOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const contentScrollRef = React.useRef<HTMLDivElement>(null);
   const { language, t, formatNumber, isRTL } = useLanguage();
+  const { stats } = useStoryProgress();
 
   const isHistory = collectionId === 'history';
   const isTurkish = collectionId === 'turkish';
@@ -110,9 +105,11 @@ export const SelfStudyGuide = ({
     metadata = localizeArabicDeep(metadata);
   }
 
-  const displayTitle = title || t('nav.studentSelfStudyGuide');
-  const displaySubtitle = subtitle || t('nav.reflectionPractice');
+  const displayTitle = metadata?.title || title || t('nav.studentSelfStudyGuide');
+  const displaySubtitle = metadata?.subtitle || subtitle || t('nav.reflectionPractice');
   const displayFooter = footerText || t('nav.interactiveEbookSeries');
+
+  const storyPages = useMemo(() => pages.filter(page => page.type === 'story'), [pages]);
 
   const defaultGuideSections = [
     { title: t('ssg.whoIsThisFor'), icon: iconFor('Users'), text: metadata?.whoIsThisFor || t('ssg.whoIsThisForDesc'), points: [t('ssg.learnerType1'), t('ssg.learnerType2')] },
@@ -127,12 +124,12 @@ export const SelfStudyGuide = ({
   ];
 
   const displaySections = studentGuideSections.length > 0
-    ? studentGuideSections.map(s => ({ ...s, icon: iconFor(s.icon) }))
+    ? studentGuideSections.map(section => ({ ...section, icon: iconFor(section.icon) }))
     : defaultGuideSections;
 
   const tabs = [
-    { id: 'welcome', label: t('ssg.welcome'), icon: iconFor('Stars', 'w-5 h-5') },
-    ...(content.length ? [{ id: 'chapters', label: isAr ? 'دعم الفصول' : 'Chapter Support', icon: iconFor('Map', 'w-5 h-5') }] : []),
+    { id: 'welcome', label: isAr ? 'مساحة الدراسة' : 'Study Home', icon: iconFor('Stars', 'w-5 h-5') },
+    ...(content.length ? [{ id: 'chapters', label: isAr ? 'مسار الفصول' : 'Study Path', icon: iconFor('Map', 'w-5 h-5') }] : []),
     ...displaySections.map((section, idx) => ({
       id: `section-${idx}`,
       label: section.title,
@@ -145,66 +142,540 @@ export const SelfStudyGuide = ({
     ...(studentGuideText ? [{ id: 'full-guide', label: isAr ? 'الدليل الكامل' : (t('ssg.fullGuide') || 'Full Guide'), icon: iconFor('FileText', 'w-5 h-5') }] : [])
   ];
 
+  const getChapterPage = (index: number) => storyPages[index];
+
+  const getChapterExerciseIds = (index: number) => {
+    const page = getChapterPage(index);
+    if (!page) return [];
+    return [
+      ...(page.exercises ?? []).map(exercise => exercise.id),
+      ...(page.languageFocusExercises ?? []).map(exercise => exercise.id),
+    ];
+  };
+
+  const chapterStatus = content.map((_, index) => {
+    const page = getChapterPage(index);
+    const exerciseIds = getChapterExerciseIds(index);
+    const completedExercises = exerciseIds.filter(id => stats.exercisesCompleted.has(id)).length;
+    const visited = page ? stats.chaptersVisited.has(page.id) : false;
+    const complete = exerciseIds.length > 0 && completedExercises === exerciseIds.length;
+    return { visited, complete, completedExercises, totalExercises: exerciseIds.length };
+  });
+
+  const visitedCount = chapterStatus.filter(status => status.visited).length;
+  const completedChapterCount = chapterStatus.filter(status => status.complete).length;
+  const totalBookExercises = chapterStatus.reduce((sum, status) => sum + status.totalExercises, 0);
+  const completedBookExercises = chapterStatus.reduce((sum, status) => sum + status.completedExercises, 0);
+
+  const lastVisitedIndex = chapterStatus.reduce((last, status, index) => status.visited ? index : last, -1);
+  const continueIndex = lastVisitedIndex < 0
+    ? 0
+    : chapterStatus[lastVisitedIndex]?.complete && lastVisitedIndex < content.length - 1
+      ? lastVisitedIndex + 1
+      : lastVisitedIndex;
+
+  const activeSection = content[activeGuideSection];
+
+  const labels = isAr ? {
+    goals: 'هدفك في هذا الفصل',
+    notice: 'ما الذي ألاحظه؟',
+    read: 'اقرأ / استمع',
+    find: 'اعثر على الدليل في القصة',
+    vocab: 'المفردات في السياق',
+    quick: 'التحدي السريع',
+    wrong: 'إذا أخطأت',
+    check: 'اختبر نفسك',
+    use: 'استخدم ما تعلمته',
+    reflection: 'تأمل',
+    grammar: 'التركيز اللغوي',
+    pronunciation: 'النطق',
+  } : {
+    goals: 'Your Chapter Goal',
+    notice: 'What to Notice',
+    read: 'Read / Listen',
+    find: 'Find the Evidence in the Story',
+    vocab: 'Vocabulary in Context',
+    quick: 'Quick Challenge',
+    wrong: 'If You Get It Wrong',
+    check: 'Check Yourself',
+    use: 'Use What You Learned',
+    reflection: 'Reflection',
+    grammar: 'Language Focus',
+    pronunciation: 'Pronunciation',
+  };
+
+  const getStudySteps = (section: TeacherGuideSection): StudyStep[] => [
+    {
+      id: 'goal',
+      title: isAr ? 'حدّد هدفك' : 'Set Your Goal',
+      subtitle: isAr ? 'اعرف ما الذي تبحث عنه قبل أن تبدأ.' : 'Know what you are looking for before you begin.',
+      icon: 'target',
+      lists: [
+        { title: labels.goals, items: section.objectives },
+        { title: labels.notice, items: section.whatToNotice },
+      ],
+      texts: [],
+    },
+    {
+      id: 'read',
+      title: isAr ? 'اقرأ واستمع' : 'Read & Listen',
+      subtitle: isAr ? 'اقرأ للمعنى ثم ارجع إلى الدليل.' : 'Read for meaning, then return to the evidence.',
+      icon: 'headphones',
+      lists: [
+        { title: labels.read, items: section.readListen },
+        { title: labels.find, items: section.findAnswerInStory },
+      ],
+      texts: [],
+    },
+    {
+      id: 'notice',
+      title: isAr ? 'لاحظ اللغة' : 'Notice the Language',
+      subtitle: isAr ? 'اربط المفردات والتراكيب بما رأيته في الفصل.' : 'Connect vocabulary and language patterns to the chapter.',
+      icon: 'eye',
+      lists: [
+        { title: labels.vocab, items: section.vocabularyInContext },
+      ],
+      texts: [
+        { title: labels.grammar, text: section.grammarFocus },
+        { title: labels.pronunciation, text: section.pronunciationFocus },
+      ],
+    },
+    {
+      id: 'challenge',
+      title: isAr ? 'اختبر وأصلح' : 'Challenge & Repair',
+      subtitle: isAr ? 'أجب أولاً، ثم استخدم الدليل إذا احتجت إلى إصلاح الإجابة.' : 'Answer first, then use evidence to repair what went wrong.',
+      icon: 'search',
+      lists: [
+        { title: labels.wrong, items: section.wrongAnswerSupport },
+      ],
+      texts: [
+        { title: labels.quick, text: section.quickChallengeGuide },
+      ],
+    },
+    {
+      id: 'use',
+      title: isAr ? 'استخدم وتأمل' : 'Use & Reflect',
+      subtitle: isAr ? 'حوّل ما تعلمته إلى إجابة أو فعل أو تأمل قصير.' : 'Turn what you learned into a short response, action, or reflection.',
+      icon: 'check',
+      lists: [
+        { title: labels.check, items: section.selfCheck },
+      ],
+      texts: [
+        { title: labels.use, text: section.useWhatYouLearned },
+        { title: labels.reflection, text: section.reflectionPrompt },
+      ],
+    },
+  ];
+
+  const activeStudySteps = activeSection ? getStudySteps(activeSection) : [];
+
+  const normalizedSearch = searchQuery.trim().toLocaleLowerCase(isAr ? 'ar' : 'en');
+  const searchResults = normalizedSearch
+    ? [
+        ...content
+          .map((chapter, index) => ({ kind: 'chapter' as const, index, label: chapter.chapter }))
+          .filter(result => result.label.toLocaleLowerCase(isAr ? 'ar' : 'en').includes(normalizedSearch)),
+        ...displaySections
+          .map((section, index) => ({ kind: 'section' as const, index, label: section.title }))
+          .filter(result => result.label.toLocaleLowerCase(isAr ? 'ar' : 'en').includes(normalizedSearch)),
+      ].slice(0, 8)
+    : [];
+
+  const openChapter = (index: number) => {
+    setActiveGuideSection(Math.min(Math.max(index, 0), Math.max(content.length - 1, 0)));
+    setActiveStudyStep(0);
+    setIsRescueOpen(false);
+    setSearchQuery('');
+    setActiveTab('chapters');
+  };
+
   React.useEffect(() => {
-    if (isOpen) {
-      setActiveTab('welcome');
-      setActiveGuideSection(0);
-    }
+    if (!isOpen) return;
+    setActiveTab('welcome');
+    setActiveGuideSection(continueIndex);
+    setActiveStudyStep(0);
+    setIsRescueOpen(false);
+    setSearchQuery('');
   }, [isOpen]);
 
-  const renderChapterSupport = () => {
-    const section = content[activeGuideSection];
-    if (!section) return null;
+  React.useEffect(() => {
+    if (!isOpen) return;
+    contentScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab, activeGuideSection, isOpen]);
 
-    const labels = isAr ? {
-      goals: 'أهداف الفصل', notice: 'ما الذي ألاحظه؟', read: 'اقرأ / استمع', find: 'اعثر على الجواب في القصة',
-      vocab: 'المفردات في السياق', quick: 'التحدي السريع', wrong: 'إذا أخطأت', check: 'اختبر نفسك',
-      use: 'استخدم ما تعلمته', reflection: 'تأمل', grammar: 'التركيز اللغوي', pronunciation: 'النطق'
-    } : {
-      goals: 'Chapter Goals', notice: 'What to Notice', read: 'Read / Listen', find: 'Find the Answer in the Story',
-      vocab: 'Vocabulary in Context', quick: 'Quick Challenge', wrong: 'If You Get It Wrong', check: 'Check Yourself',
-      use: 'Use What You Learned', reflection: 'Reflection', grammar: 'Language Focus', pronunciation: 'Pronunciation'
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      if (isRescueOpen) {
+        setIsRescueOpen(false);
+        return;
+      }
+      onClose();
     };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isOpen, isRescueOpen, onClose]);
+
+  const renderList = (title: string, items?: string[]) => {
+    if (!items?.length) return null;
+    return (
+      <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 sm:p-5">
+        <h5 className="font-display text-[11px] sm:text-[12px] font-black uppercase tracking-[0.14em] text-gold/72">{title}</h5>
+        <ul className="mt-3 space-y-2.5 font-serif text-[14px] sm:text-base text-white/82 leading-relaxed">
+          {items.map((item, index) => (
+            <li key={index} className="flex gap-2.5">
+              <span className="text-gold/55">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const renderText = (title: string, text?: string) => {
+    if (!text) return null;
+    return (
+      <div className="rounded-2xl border border-gold/15 bg-gold/[0.055] p-4 sm:p-5">
+        <h5 className="font-display text-[11px] sm:text-[12px] font-black uppercase tracking-[0.14em] text-gold/72">{title}</h5>
+        <p className="mt-3 font-serif text-[14px] sm:text-base text-white/82 leading-relaxed">{text}</p>
+      </div>
+    );
+  };
+
+  const renderStudyHome = () => {
+    const progressPercent = content.length ? Math.round((visitedCount / content.length) * 100) : 0;
+    const continueChapter = content[continueIndex];
 
     return (
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5 sm:space-y-8">
-        <div className="flex flex-wrap gap-2">
-          {content.map((chapter, idx) => (
-            <button
-              key={`${chapter.chapter}-${idx}`}
-              onClick={() => setActiveGuideSection(idx)}
-              className={cn(
-                'px-3 py-2 rounded-xl border text-xs sm:text-sm font-display transition-all cursor-pointer',
-                activeGuideSection === idx ? 'bg-gold text-white border-gold' : 'bg-white/5 text-white/70 border-white/10 hover:border-gold/40'
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 sm:space-y-8">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-gold/20 bg-gradient-to-br from-gold/[0.13] via-white/[0.035] to-transparent p-5 sm:p-7 md:p-8">
+          <div className="absolute -end-16 -top-16 w-52 h-52 rounded-full bg-gold/[0.08] blur-3xl" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.45fr_0.85fr] gap-6 lg:gap-8 items-center">
+            <div>
+              <p className="font-display text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-gold/60">
+                {isAr ? 'مساحة الدراسة الشخصية' : 'YOUR STUDY WORKSPACE'}
+              </p>
+              <h3 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
+                {isAr ? 'اعرف أين أنت وما الخطوة التالية.' : 'Know where you are and what comes next.'}
+              </h3>
+              <p className="mt-3 max-w-2xl font-serif text-[14px] sm:text-base md:text-lg text-white/68 leading-relaxed">
+                {metadata?.whoIsThisFor || metadata?.description || t('ssg.welcomeDesc')}
+              </p>
+
+              {continueChapter && (
+                <button
+                  type="button"
+                  onClick={() => openChapter(continueIndex)}
+                  className="mt-5 inline-flex min-h-12 items-center gap-3 rounded-2xl bg-gold px-5 sm:px-6 font-display text-[13px] sm:text-sm font-bold text-white shadow-lg shadow-black/15 transition-transform hover:-translate-y-0.5"
+                >
+                  <GuideIcon name="target" className="w-5 h-5" />
+                  <span>{isAr ? 'تابع من حيث توقفت' : 'Continue where you left off'}</span>
+                  <span className="opacity-70">· {formatNumber(continueIndex + 1)}</span>
+                </button>
               )}
-            >
-              {formatNumber(idx + 1)}
-            </button>
-          ))}
+            </div>
+
+            <div className="rounded-[1.5rem] border border-white/[0.08] bg-black/15 p-5">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="font-display text-[10px] font-black uppercase tracking-[0.15em] text-white/35">
+                    {isAr ? 'تقدم الفصول' : 'CHAPTER PROGRESS'}
+                  </p>
+                  <p className="mt-1 font-display text-3xl font-black text-white">{formatNumber(progressPercent)}%</p>
+                </div>
+                <p className="font-display text-sm font-bold text-gold">
+                  {formatNumber(visitedCount)} / {formatNumber(content.length)}
+                </p>
+              </div>
+              <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[0.06]">
+                <motion.div initial={false} animate={{ width: `${progressPercent}%` }} className="h-full rounded-full bg-gold" />
+              </div>
+
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="rounded-2xl bg-white/[0.04] p-3.5">
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.12em] text-white/35">{isAr ? 'فصول مكتملة' : 'Completed'}</p>
+                  <p className="mt-1 font-display text-xl font-black text-white">{formatNumber(completedChapterCount)}</p>
+                </div>
+                <div className="rounded-2xl bg-white/[0.04] p-3.5">
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.12em] text-white/35">{isAr ? 'أنشطة مكتملة' : 'Activities'}</p>
+                  <p className="mt-1 font-display text-xl font-black text-white">{formatNumber(completedBookExercises)} / {formatNumber(totalBookExercises)}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="bg-gold/10 border border-gold/20 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-8">
-          <div className="flex flex-wrap justify-between gap-3 items-start mb-6">
-            <div>
-              <p className="text-gold/60 uppercase tracking-[0.2em] text-[10px] font-display mb-2">{formatNumber(activeGuideSection + 1)} / {formatNumber(content.length)}</p>
-              <h3 className="font-display text-xl sm:text-3xl text-white">{section.chapter}</h3>
+        {content.length > 0 && (
+          <div>
+            <div className="flex items-end justify-between gap-4 mb-4">
+              <div>
+                <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-gold/50">
+                  {isAr ? 'خريطة الكتاب' : 'BOOK MAP'}
+                </p>
+                <h4 className="mt-1 font-display text-xl sm:text-2xl font-bold text-white">{isAr ? 'اختر فصلاً' : 'Choose a chapter'}</h4>
+              </div>
+              <div className="hidden sm:flex items-center gap-3 font-display text-[10px] text-white/40">
+                <span>○ {isAr ? 'جديد' : 'New'}</span>
+                <span className="text-gold">● {isAr ? 'تمت زيارته' : 'Visited'}</span>
+                <span className="text-emerald-400">✓ {isAr ? 'مكتمل' : 'Complete'}</span>
+              </div>
             </div>
-            <span className="text-xs text-gold border border-gold/20 bg-gold/5 rounded-full px-3 py-1.5">{section.timing}</span>
+
+            <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2.5">
+              {content.map((chapter, index) => {
+                const status = chapterStatus[index];
+                return (
+                  <button
+                    key={`home-chapter-${index}`}
+                    type="button"
+                    onClick={() => openChapter(index)}
+                    title={chapter.chapter}
+                    className={cn(
+                      "relative aspect-square rounded-2xl border flex items-center justify-center font-display text-[12px] sm:text-[13px] font-black transition-all hover:-translate-y-0.5",
+                      status?.complete
+                        ? "border-emerald-400/25 bg-emerald-400/[0.10] text-emerald-300"
+                        : status?.visited
+                          ? "border-gold/30 bg-gold/[0.10] text-gold"
+                          : "border-white/[0.08] bg-white/[0.025] text-white/42 hover:border-gold/20 hover:text-white/70"
+                    )}
+                  >
+                    {status?.complete ? '✓' : formatNumber(index + 1)}
+                    {status?.visited && !status.complete && <span className="absolute bottom-1.5 w-1.5 h-1.5 rounded-full bg-gold" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {(metadata?.learningGoals?.length || metadata?.recommendedUse?.length) && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {metadata?.learningGoals?.length ? renderList(isAr ? 'أهدافك' : 'Your Learning Goals', metadata.learningGoals) : null}
+            {metadata?.recommendedUse?.length ? renderList(isAr ? 'طريقة الاستخدام المقترحة' : 'Recommended Study Routine', metadata.recommendedUse) : null}
+          </div>
+        )}
+      </motion.div>
+    );
+  };
+
+  const renderChapterSupport = () => {
+    if (!activeSection) return null;
+    const steps = activeStudySteps;
+    const status = chapterStatus[activeGuideSection];
+
+    return (
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5 sm:space-y-7">
+        <div className="rounded-[1.65rem] border border-gold/18 bg-gradient-to-br from-gold/[0.10] via-white/[0.025] to-transparent p-4 sm:p-5">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div className="min-w-0">
+              <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-gold/50">
+                {isAr ? 'مسار الفصل' : 'CHAPTER STUDY PATH'}
+              </p>
+              <h3 className="mt-1 font-display text-xl sm:text-2xl md:text-3xl font-bold text-white">{activeSection.chapter}</h3>
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                <span className="rounded-full border border-gold/15 bg-gold/[0.055] px-3 py-1 font-display text-[10px] sm:text-[11px] font-bold text-gold">
+                  {activeSection.timing}
+                </span>
+                {status?.complete ? (
+                  <span className="rounded-full border border-emerald-400/20 bg-emerald-400/[0.09] px-3 py-1 font-display text-[10px] sm:text-[11px] font-bold text-emerald-300">
+                    ✓ {isAr ? 'أنشطة الفصل مكتملة' : 'Chapter activities complete'}
+                  </span>
+                ) : status?.visited ? (
+                  <span className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1 font-display text-[10px] sm:text-[11px] font-bold text-white/55">
+                    {formatNumber(status.completedExercises)} / {formatNumber(status.totalExercises)} {isAr ? 'أنشطة' : 'activities'}
+                  </span>
+                ) : null}
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsRescueOpen(open => !open)}
+              className={cn(
+                "min-h-11 shrink-0 rounded-xl border px-4 font-display text-[12px] sm:text-[13px] font-bold transition-colors",
+                isRescueOpen
+                  ? "border-amber-300/30 bg-amber-300/[0.13] text-amber-200"
+                  : "border-white/[0.08] bg-white/[0.035] text-white/68 hover:border-amber-300/25 hover:text-amber-200"
+              )}
+            >
+              {isAr ? 'أحتاج مساعدة' : "I'm stuck"}
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {listBlock(labels.goals, section.objectives)}
-            {listBlock(labels.notice, section.whatToNotice)}
-            {listBlock(labels.read, section.readListen)}
-            {listBlock(labels.find, section.findAnswerInStory)}
-            {listBlock(labels.vocab, section.vocabularyInContext)}
-            {textBlock(labels.quick, section.quickChallengeGuide)}
-            {listBlock(labels.wrong, section.wrongAnswerSupport)}
-            {listBlock(labels.check, section.selfCheck)}
-            {textBlock(labels.use, section.useWhatYouLearned)}
-            {textBlock(labels.reflection, section.reflectionPrompt)}
-            {textBlock(labels.grammar, section.grammarFocus)}
-            {textBlock(labels.pronunciation, section.pronunciationFocus)}
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-1 custom-scrollbar">
+            {content.map((chapter, index) => {
+              const chapterState = chapterStatus[index];
+              return (
+                <button
+                  key={`chapter-nav-${index}`}
+                  type="button"
+                  onClick={() => openChapter(index)}
+                  title={chapter.chapter}
+                  className={cn(
+                    "relative shrink-0 min-w-10 h-10 px-3 rounded-full border font-display text-[11px] font-black transition-all",
+                    activeGuideSection === index
+                      ? "bg-gold text-white border-gold shadow-lg shadow-black/10"
+                      : chapterState?.complete
+                        ? "border-emerald-400/25 bg-emerald-400/[0.08] text-emerald-300"
+                        : chapterState?.visited
+                          ? "border-gold/25 bg-gold/[0.065] text-gold"
+                          : "border-white/[0.08] bg-white/[0.025] text-white/42 hover:text-white/70"
+                  )}
+                >
+                  {chapterState?.complete && activeGuideSection !== index ? '✓' : formatNumber(index + 1)}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {isRescueOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: -8, height: 0 }}
+              className="overflow-hidden"
+            >
+              <div className="rounded-[1.5rem] border border-amber-300/20 bg-amber-300/[0.065] p-4 sm:p-5">
+                <div className="flex items-start gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-amber-300/[0.12] text-amber-200 flex items-center justify-center shrink-0">
+                    <GuideIcon name="search" className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-amber-200/65">
+                      {isAr ? 'وضع الإنقاذ' : 'RESCUE MODE'}
+                    </p>
+                    <h4 className="mt-1 font-display text-lg sm:text-xl font-bold text-white">
+                      {isAr ? 'لا تبحث عن الإجابة. عد إلى الدليل.' : "Don't hunt for the answer. Return to the evidence."}
+                    </h4>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {renderList(labels.find, activeSection.findAnswerInStory)}
+                  {renderList(labels.wrong, activeSection.wrongAnswerSupport)}
+                  {renderList(labels.vocab, activeSection.vocabularyInContext)}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="rounded-[1.6rem] border border-white/[0.07] bg-black/10 p-3 sm:p-4">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
+            {steps.map((step, index) => (
+              <button
+                key={step.id}
+                type="button"
+                onClick={() => setActiveStudyStep(index)}
+                className={cn(
+                  "relative rounded-2xl border p-3 sm:p-3.5 text-start transition-all",
+                  activeStudyStep === index
+                    ? "border-gold/30 bg-gold/[0.11] text-white shadow-lg shadow-black/10"
+                    : "border-white/[0.06] bg-white/[0.02] text-white/52 hover:bg-white/[0.04] hover:text-white/72"
+                )}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className={cn(
+                    "w-8 h-8 rounded-xl flex items-center justify-center",
+                    activeStudyStep === index ? "bg-gold text-white" : "bg-white/[0.04] text-gold/65"
+                  )}>
+                    <GuideIcon name={step.icon} className="w-4 h-4" />
+                  </span>
+                  <span className="font-display text-[10px] font-black text-gold/45">{formatNumber(index + 1)}</span>
+                </div>
+                <p className="mt-2 font-display text-[12px] sm:text-[13px] font-bold leading-tight">{step.title}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {steps[activeStudyStep] && (
+          <motion.div
+            key={steps[activeStudyStep].id}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded-[1.65rem] border border-gold/16 bg-white/[0.025] p-4 sm:p-6"
+          >
+            <div className="flex items-start gap-3 sm:gap-4">
+              <span className="w-11 h-11 rounded-2xl bg-gold text-white flex items-center justify-center shrink-0">
+                <GuideIcon name={steps[activeStudyStep].icon} className="w-5 h-5" />
+              </span>
+              <div>
+                <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-gold/50">
+                  {isAr ? `الخطوة ${formatNumber(activeStudyStep + 1)} من 5` : `STEP ${formatNumber(activeStudyStep + 1)} OF 5`}
+                </p>
+                <h4 className="mt-1 font-display text-xl sm:text-2xl font-bold text-white">{steps[activeStudyStep].title}</h4>
+                <p className="mt-1.5 font-serif text-[14px] sm:text-base text-white/58">{steps[activeStudyStep].subtitle}</p>
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {steps[activeStudyStep].lists.map((block, index) => (
+                <React.Fragment key={`list-${index}`}>{renderList(block.title, block.items)}</React.Fragment>
+              ))}
+              {steps[activeStudyStep].texts.map((block, index) => (
+                <React.Fragment key={`text-${index}`}>{renderText(block.title, block.text)}</React.Fragment>
+              ))}
+            </div>
+
+            <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/[0.06] pt-4">
+              <button
+                type="button"
+                disabled={activeStudyStep === 0}
+                onClick={() => setActiveStudyStep(step => Math.max(0, step - 1))}
+                className="min-h-10 rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 font-display text-[11px] sm:text-[12px] font-bold text-white/55 disabled:opacity-25"
+              >
+                {isAr ? 'السابق' : 'Previous'}
+              </button>
+              <span className="font-display text-[10px] sm:text-[11px] font-bold text-white/30">
+                {formatNumber(activeStudyStep + 1)} / 5
+              </span>
+              <button
+                type="button"
+                disabled={activeStudyStep === steps.length - 1}
+                onClick={() => setActiveStudyStep(step => Math.min(steps.length - 1, step + 1))}
+                className="min-h-10 rounded-xl border border-gold/18 bg-gold/[0.065] px-4 font-display text-[11px] sm:text-[12px] font-bold text-gold disabled:opacity-25"
+              >
+                {isAr ? 'التالي' : 'Next'}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </motion.div>
+    );
+  };
+
+  const renderGeneralSection = () => {
+    if (!activeTab.startsWith('section-')) return null;
+    const sectionIdx = parseInt(activeTab.split('-')[1]);
+    const section = displaySections[sectionIdx];
+    if (!section) return null;
+
+    return (
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} key={activeTab}>
+        <div className="rounded-[1.75rem] border border-gold/18 bg-gradient-to-br from-gold/[0.09] via-white/[0.025] to-transparent p-5 sm:p-7 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gold/[0.13] flex items-center justify-center text-gold shrink-0">{section.icon}</div>
+            <div>
+              <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-gold/50">
+                {isAr ? 'دليل الدراسة' : 'STUDY GUIDE'}
+              </p>
+              <h3 className="mt-1 font-display text-xl sm:text-2xl md:text-3xl font-bold text-white">{section.title}</h3>
+            </div>
+          </div>
+          <p className="mt-5 font-serif text-[15px] sm:text-lg text-white/78 leading-relaxed max-w-4xl">{section.text}</p>
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
+            {section.points.map((point, index) => (
+              <div key={index} className="flex items-start gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4">
+                <span className="w-7 h-7 rounded-full bg-gold/[0.10] text-gold flex items-center justify-center shrink-0">
+                  <GuideIcon name="check" className="w-4 h-4" />
+                </span>
+                <span className="font-serif text-[14px] sm:text-base text-white/78 leading-relaxed">{point}</span>
+              </div>
+            ))}
           </div>
         </div>
       </motion.div>
@@ -212,100 +683,204 @@ export const SelfStudyGuide = ({
   };
 
   const renderContent = () => {
-    if (activeTab.startsWith('section-')) {
-      const sectionIdx = parseInt(activeTab.split('-')[1]);
-      const section = displaySections[sectionIdx];
-      if (!section) return null;
+    if (activeTab.startsWith('section-')) return renderGeneralSection();
+    if (activeTab === 'welcome') return renderStudyHome();
+    if (activeTab === 'chapters') return renderChapterSupport();
+    if (activeTab === 'full-guide') {
       return (
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} key={activeTab} className="space-y-4 sm:space-y-8">
-          <div className="bg-gold/10 border border-gold/20 rounded-2xl sm:rounded-[2.5rem] p-4 sm:p-8 md:p-16 relative overflow-hidden">
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 sm:gap-6 mb-6 sm:mb-10">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gold/20 flex items-center justify-center text-gold shrink-0">{section.icon}</div>
-                <h3 className="font-display text-xl sm:text-3xl text-white">{section.title}</h3>
-              </div>
-              <p className="font-serif text-base sm:text-xl text-white leading-relaxed mb-6">{section.text}</p>
-              <div className="grid grid-cols-1 gap-3">
-                {section.points.map((point, pIdx) => (
-                  <div key={pIdx} className="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <GuideIcon name="check" className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                    <span className="font-serif text-sm sm:text-lg text-white">{point}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="prose prose-invert prose-gold max-w-none font-serif">
+          <div className="rounded-[1.75rem] border border-white/[0.08] bg-white/[0.03] p-5 sm:p-8">
+            <ReactMarkdown>{studentGuideText}</ReactMarkdown>
           </div>
         </motion.div>
       );
     }
-
-    switch (activeTab) {
-      case 'welcome':
-        return (
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="space-y-6 sm:space-y-8 text-center py-4 sm:py-12">
-            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gold/20 rounded-3xl flex items-center justify-center mx-auto text-gold"><GuideIcon name="trophy" className="w-8 h-8 sm:w-12 sm:h-12" /></div>
-            <h3 className="font-display text-2xl sm:text-4xl text-white">{t('ssg.welcomeExplorer')}</h3>
-            <p className="font-serif text-white leading-relaxed text-base sm:text-xl max-w-2xl mx-auto">{metadata?.whoIsThisFor || t('ssg.welcomeDesc')}</p>
-            {content.length > 0 && <p className="font-serif text-gold text-sm sm:text-lg">{isAr ? 'استخدم «دعم الفصول» للحصول على خطوات خاصة بكل فصل.' : 'Use Chapter Support for the exact study steps for each chapter.'}</p>}
-          </motion.div>
-        );
-      case 'chapters':
-        return renderChapterSupport();
-      case 'full-guide':
-        return (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="prose prose-invert prose-gold max-w-none font-serif">
-            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-4 sm:p-10 md:p-16">
-              <ReactMarkdown>{studentGuideText}</ReactMarkdown>
-            </div>
-          </motion.div>
-        );
-      default:
-        return null;
-    }
+    return null;
   };
+
+  const activeTabIndex = Math.max(0, tabs.findIndex(tab => tab.id === activeTab));
+  const activeTabMeta = tabs[activeTabIndex] ?? tabs[0];
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          className={cn('fixed inset-0 bg-wood/98 backdrop-blur-3xl z-[100] overflow-hidden flex flex-col', isRTL && 'font-arabic')}
-          style={{ '--color-gold': isHistory ? '#10b981' : isTurkish ? '#22D3EE' : '#c2aa6b', '--color-wood': isHistory ? '#042416' : isTurkish ? '#0d1d2c' : '#14221a' } as React.CSSProperties}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={cn('self-study-shell fixed inset-0 bg-wood/98 backdrop-blur-3xl z-[100] overflow-hidden flex flex-col', isRTL && 'font-arabic')}
+          style={{
+            '--color-gold': isHistory ? '#10b981' : isTurkish ? '#22D3EE' : '#c2aa6b',
+            '--color-wood': isHistory ? '#042416' : isTurkish ? '#0d1d2c' : '#14221a'
+          } as React.CSSProperties}
           dir={isRTL ? 'rtl' : 'ltr'}
         >
-          <div className="min-h-[4.5rem] md:h-28 border-b border-gold/20 px-3 sm:px-8 md:px-16 py-3 flex items-center justify-between shrink-0 bg-black/20 gap-2">
-            <div className="flex items-center gap-3 sm:gap-6 min-w-0">
-              <div className="p-2.5 sm:p-4 bg-gold text-white rounded-xl sm:rounded-2xl shrink-0"><Crown className="w-6 h-6 sm:w-8 sm:h-8" /></div>
-              <div className="min-w-0"><h2 className="font-display text-lg sm:text-3xl md:text-4xl text-white truncate">{displayTitle}</h2><p className="font-serif text-gold text-xs sm:text-base mt-0.5 truncate">{displaySubtitle}</p></div>
+          <header className="self-study-header min-h-[4.75rem] md:min-h-[6.25rem] border-b border-gold/15 px-4 sm:px-7 md:px-10 lg:px-12 py-3.5 flex items-center justify-between shrink-0 gap-3">
+            <div className="flex items-center gap-3.5 sm:gap-5 min-w-0">
+              <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
+                <Crown className="w-6 h-6 sm:w-8 sm:h-8" />
+              </div>
+              <div className="min-w-0">
+                <p className="font-display text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-gold/60">
+                  {isAr ? 'مساحة الدراسة الذاتية' : 'SELF-STUDY WORKSPACE'}
+                </p>
+                <h2 className="mt-0.5 font-display text-lg sm:text-2xl md:text-[28px] text-white font-bold tracking-tight truncate">{displayTitle}</h2>
+                <p className="font-serif text-gold/70 text-[13px] sm:text-[15px] mt-0.5 truncate">{displaySubtitle}</p>
+              </div>
             </div>
-            <div className="flex items-center gap-2 sm:gap-6 shrink-0">
+
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <button
                 data-pdf-locked="true"
                 aria-disabled="true"
-                onClick={() => generateStudentGuidePDF(displayTitle, displaySubtitle, metadata, studentGuideText, displaySections.map(s => ({ title: s.title, text: s.text, points: s.points })))}
-                className="flex items-center gap-2 px-3 sm:px-6 py-2 sm:py-4 bg-gold/10 hover:bg-gold/20 text-gold rounded-xl border border-gold/20 font-display text-xs sm:text-base cursor-pointer"
+                onClick={() => generateStudentGuidePDF(displayTitle, displaySubtitle, metadata, studentGuideText, displaySections.map(section => ({ title: section.title, text: section.text, points: section.points })))}
+                className="flex min-h-11 items-center gap-2 rounded-xl border border-gold/15 bg-gold/[0.07] px-3 sm:px-4 font-display text-[12px] sm:text-[13px] font-bold text-gold"
                 title={t('nav.downloadPdf')}
-              ><Download size={20} /><span className="hidden sm:inline">{t('nav.downloadPdf')}</span></button>
-              <button onClick={onClose} className="p-2.5 sm:p-4 bg-white/5 text-gold hover:bg-white/10 rounded-full cursor-pointer"><X className="w-5 h-5 sm:w-7 sm:h-7" /></button>
+              >
+                <Download size={18} />
+                <span className="hidden sm:inline">{t('nav.downloadPdf')}</span>
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-11 h-11 flex items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.04] text-gold hover:bg-white/[0.08] transition-colors"
+                aria-label={isAr ? 'إغلاق دليل الدراسة الذاتية' : 'Close Self-Study Guide'}
+              >
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
             </div>
-          </div>
+          </header>
 
           <div className="flex-1 flex overflow-hidden">
-            <div className={cn('w-16 sm:w-20 md:w-80 border-gold/10 overflow-y-auto custom-scrollbar bg-black/40 shrink-0', isRTL ? 'border-l' : 'border-r')}>
-              <div className="p-1.5 sm:p-3 md:p-4 space-y-2">
-                {tabs.map(tab => (
-                  <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={cn('w-full flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3 p-2 sm:p-3 md:p-4 rounded-xl transition-all cursor-pointer', activeTab === tab.id ? 'bg-gold text-white' : 'text-white/60 hover:bg-white/5 hover:text-white')}>
-                    <div className={activeTab === tab.id ? 'text-white' : 'text-gold'}>{tab.icon}</div>
-                    <span className="block md:hidden text-[10px] sm:text-[11px] font-bold text-center max-w-[58px] truncate">{tab.label}</span>
-                    <span className="hidden md:block text-[14px] lg:text-[15px] font-display uppercase tracking-[0.12em] text-left leading-snug">{tab.label}</span>
-                  </button>
-                ))}
+            <aside className={cn(
+              'self-study-sidebar w-[4.5rem] sm:w-20 md:w-[20rem] lg:w-[21rem] border-gold/10 overflow-y-auto custom-scrollbar shrink-0',
+              isRTL ? 'border-l' : 'border-r'
+            )}>
+              <div className="hidden md:block px-4 pt-5 pb-3">
+                <div className="rounded-2xl border border-gold/12 bg-white/[0.035] p-4">
+                  <div className="flex items-end justify-between gap-3">
+                    <div>
+                      <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-gold/50">
+                        {isAr ? 'تقدمك' : 'YOUR PROGRESS'}
+                      </p>
+                      <p className="mt-1 font-display text-lg font-black text-white">{formatNumber(visitedCount)} / {formatNumber(content.length)}</p>
+                    </div>
+                    <span className="font-display text-[11px] font-bold text-gold">{formatNumber(completedBookExercises)} / {formatNumber(totalBookExercises)}</span>
+                  </div>
+                  <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/[0.05]">
+                    <motion.div
+                      initial={false}
+                      animate={{ width: `${content.length ? (visitedCount / content.length) * 100 : 0}%` }}
+                      className="h-full rounded-full bg-gold"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-8 md:p-16 bg-gradient-to-br from-transparent to-gold/5"><div className="max-w-5xl mx-auto">{renderContent()}</div></div>
+
+              <nav className="p-2 sm:p-3 md:px-4 md:pb-6 space-y-1.5">
+                {tabs.map((tab, index) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => setActiveTab(tab.id)}
+                      aria-current={isActive ? 'page' : undefined}
+                      title={tab.label}
+                      className={cn(
+                        "relative w-full min-h-12 md:min-h-[3.65rem] flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3.5 px-2 md:px-3.5 rounded-xl border transition-all",
+                        isActive
+                          ? "border-gold/25 bg-gold/[0.12] text-white"
+                          : "border-transparent text-white/48 hover:bg-white/[0.04] hover:text-white/72"
+                      )}
+                    >
+                      <span className={cn(
+                        "w-9 h-9 rounded-xl flex items-center justify-center shrink-0",
+                        isActive ? "bg-gold text-white" : "bg-white/[0.04] text-gold/65"
+                      )}>
+                        {tab.icon}
+                      </span>
+                      <span className="block md:hidden font-display text-[10px] sm:text-[11px] font-black">{formatNumber(index + 1)}</span>
+                      <span className={cn("hidden md:block min-w-0 flex-1 font-display text-[14px] lg:text-[15px] font-bold leading-tight", isRTL ? "text-right" : "text-left")}>
+                        {tab.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </aside>
+
+            <main ref={contentScrollRef} className="self-study-content flex-1 overflow-y-auto custom-scrollbar">
+              <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-9 lg:px-11 py-3">
+                <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-3">
+                  <div className="min-w-0 flex flex-1 items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">{activeTabMeta.icon}</span>
+                    <div className="min-w-0">
+                      <p className="font-display text-[10px] font-black uppercase tracking-[0.15em] text-gold/45">{isAr ? 'أنت هنا' : 'YOU ARE HERE'}</p>
+                      <h3 className="font-display text-base sm:text-lg font-bold text-white truncate">{activeTabMeta.label}</h3>
+                    </div>
+                  </div>
+
+                  <div className="relative order-3 w-full md:order-none md:w-[19rem]">
+                    <span className={cn("pointer-events-none absolute top-1/2 -translate-y-1/2 text-gold/50", isRTL ? "right-3.5" : "left-3.5")}>
+                      <GuideIcon name="search" className="w-4 h-4" />
+                    </span>
+                    <input
+                      value={searchQuery}
+                      onChange={event => setSearchQuery(event.target.value)}
+                      placeholder={isAr ? 'ابحث عن فصل أو دليل...' : 'Find a chapter or study guide...'}
+                      className={cn(
+                        "w-full h-11 rounded-xl border border-white/[0.08] bg-black/20 text-white placeholder:text-white/25 outline-none focus:border-gold/35 focus:ring-2 focus:ring-gold/10 font-serif text-[13px]",
+                        isRTL ? "pr-10 pl-3.5 text-right" : "pl-10 pr-3.5"
+                      )}
+                    />
+                    {searchQuery.trim() && (
+                      <div className="absolute top-[calc(100%+0.5rem)] inset-x-0 z-50 overflow-hidden rounded-2xl border border-gold/15 bg-wood/95 shadow-2xl backdrop-blur-xl">
+                        {searchResults.length > 0 ? (
+                          <div className="p-2">
+                            {searchResults.map((result, index) => (
+                              <button
+                                key={`${result.kind}-${result.index}-${index}`}
+                                type="button"
+                                onClick={() => {
+                                  if (result.kind === 'chapter') openChapter(result.index);
+                                  else {
+                                    setActiveTab(`section-${result.index}`);
+                                    setSearchQuery('');
+                                  }
+                                }}
+                                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-start hover:bg-white/[0.06]"
+                              >
+                                <span className="w-8 h-8 rounded-lg bg-gold/[0.10] text-gold flex items-center justify-center shrink-0">
+                                  <GuideIcon name={result.kind === 'chapter' ? 'book' : 'target'} className="w-4 h-4" />
+                                </span>
+                                <span className="min-w-0 flex-1">
+                                  <span className="block font-display text-[10px] font-black uppercase tracking-[0.12em] text-gold/42">
+                                    {result.kind === 'chapter' ? (isAr ? 'فصل' : 'Chapter') : (isAr ? 'دليل' : 'Guide')}
+                                  </span>
+                                  <span className="block truncate font-display text-[13px] font-bold text-white/82">{result.label}</span>
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="px-4 py-4 font-serif text-[13px] text-white/42">{isAr ? 'لا توجد نتيجة مطابقة.' : 'No matching chapter or guide.'}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-4 py-5 sm:px-7 sm:py-7 md:px-9 md:py-8 lg:px-11 lg:py-10">
+                <div className="max-w-6xl mx-auto">{renderContent()}</div>
+              </div>
+            </main>
           </div>
 
-          <div className="h-14 md:h-20 border-t border-gold/10 px-4 md:px-16 flex items-center justify-center shrink-0 bg-black/20"><p className="font-display text-[12px] sm:text-[13px] tracking-[0.22em] text-gold uppercase text-center">{displayFooter}</p></div>
+          <footer className="h-12 md:h-14 border-t border-gold/10 px-4 md:px-10 flex items-center justify-center shrink-0 bg-black/15">
+            <p className="font-display text-[10px] sm:text-[11px] tracking-[0.16em] text-gold/55 uppercase text-center">{displayFooter}</p>
+          </footer>
         </motion.div>
       )}
     </AnimatePresence>
