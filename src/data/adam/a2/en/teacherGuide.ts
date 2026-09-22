@@ -73,26 +73,6 @@ export const adamA2TeacherGuideMetadata: TeacherGuideMetadata = {
     ],
     questions: ['Which story detail shows this value?', 'What simple action could show the same value at school or home?', 'Which part is story evidence and which part is your own application?']
   },
-  implementationPlans: {
-    optionA: {
-      title: 'One 40-minute chapter lesson',
-      steps: [
-        { time: '5 min', activity: 'Purposeful preview and prerequisite activation' },
-        { time: '10 min', activity: 'Listen/read for overall meaning and key evidence' },
-        { time: '5 min', activity: 'Quick Challenge and evidence repair' },
-        { time: '12 min', activity: 'Chapter-specific Language Focus' },
-        { time: '6 min', activity: 'Short speaking/writing transfer' },
-        { time: '2 min', activity: 'Exit ticket and next step' }
-      ]
-    },
-    optionB: {
-      title: 'Support-first use',
-      lessons: [
-        { title: 'Meaning and evidence', description: 'Reduce language load, replay only the needed audio segment and locate one evidence sentence at a time.' },
-        { title: 'Language and transfer', description: 'Use selected Language Focus items and one short supported production without adding new factual content.' }
-      ]
-    }
-  }
 };
 
 export const adamA2TeacherGuide: TeacherGuideSection[] = [
