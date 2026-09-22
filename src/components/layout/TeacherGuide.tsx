@@ -429,19 +429,65 @@ entries.set(key, { word, definition });
       case 'chapters':
         return (
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h3 className="font-display text-xl sm:text-3xl text-parchment border-b border-gold/20 pb-3 sm:pb-4">{t('tg.chapterSupport')}</h3>
+            <div className="flex flex-col gap-4 border-b border-gold/20 pb-4 sm:pb-5">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+                <div>
+                  <p className="font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-gold/50">
+                    {language === 'ar' ? 'التنقل بين الفصول' : 'CHAPTER NAVIGATOR'}
+                  </p>
+                  <h3 className="mt-1 font-display text-xl sm:text-3xl text-parchment">{t('tg.chapterSupport')}</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => openLessonPrep(0)}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-gold/20 bg-gold/[0.08] px-4 font-display text-[12px] sm:text-[13px] font-bold text-gold hover:bg-gold/[0.13] transition-colors"
+                >
+                  <Sparkles size={17} />
+                  {language === 'ar' ? 'وضع تحضير الدرس' : 'Lesson Prep Mode'}
+                </button>
+              </div>
+
+              <div className="flex gap-2.5 overflow-x-auto pb-1 custom-scrollbar">
+                {content.map((chapter, index) => (
+                  <button
+                    key={`chapter-nav-${index}`}
+                    type="button"
+                    onClick={() => jumpToChapter(index)}
+                    title={chapter.chapter}
+                    aria-label={chapter.chapter}
+                    className="group shrink-0 min-w-11 h-11 px-3 rounded-full border border-gold/15 bg-white/[0.035] text-gold hover:bg-gold hover:text-white hover:border-gold transition-all font-display text-[12px] font-black"
+                  >
+                    {formatNumber(index + 1)}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className="space-y-6 sm:space-y-12">
               {content.map((section, idx) => (
-                <div key={idx} className="relative">
+                <div
+                  key={idx}
+                  ref={(node) => { chapterRefs.current[idx] = node; }}
+                  className="relative scroll-mt-24"
+                >
                   <div className="relative bg-black/40 border border-gold/20 rounded-2xl overflow-hidden backdrop-blur-xl">
                     <div className="bg-gold/10 px-4 sm:px-8 py-4 sm:py-6 border-b border-gold/20 flex flex-wrap gap-2 justify-between items-center">
                       <div>
                         <h4 className="font-display text-lg sm:text-2xl text-gold">{section.chapter}</h4>
                         <p className="text-gold/40 text-[10px] uppercase tracking-[0.2em] mt-0.5">{t('tg.pedagogicalModule')} {formatNumber(idx + 1)}</p>
                       </div>
-                      <span className="font-display text-[10px] sm:text-xs text-gold bg-gold/5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gold/20 shadow-inner">
-                        {formatNumber(section.timing)}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="font-display text-[10px] sm:text-xs text-gold bg-gold/5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gold/20 shadow-inner">
+                          {formatNumber(section.timing)}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => openLessonPrep(idx)}
+                          className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-gold/20 bg-black/10 px-3 font-display text-[10px] sm:text-[11px] font-bold text-gold hover:bg-gold hover:text-white transition-colors"
+                        >
+                          <Sparkles size={14} />
+                          {language === 'ar' ? 'تحضير' : 'Prep'}
+                        </button>
+                      </div>
                     </div>
                     
                     <div className="p-4 sm:p-8 space-y-6 sm:space-y-8">
