@@ -1628,6 +1628,387 @@ const manualTeacherGuideSections: TeacherGuideSection[] = [
     "teacherReflection": "Did learners preserve the difference between prayer, purpose and later narrative interpretation?"
   }
 
+,
+
+  {
+    "chapter": "29. Mecca Is Settled",
+    "timing": "45 minutes",
+    "objectives": [
+      "Evaluate Hajar’s repeated search as active effort rather than passive waiting.",
+      "Connect the seven journeys between Safa and Marwa with the later ritual memory of sa‘y.",
+      "Distinguish narrated action, source attribution to Ibn Abbas and later interpretation."
+    ],
+    "pedagogy": "Use an effort-and-memory sequence. Learners first follow Hajar’s practical search step by step, then identify the source attribution and only after that discuss how the chapter connects her effort with later Hajj practice.",
+    "priorKnowledge": [
+      "Chapter 28 barren-valley context and the difference between trust and practical foreknowledge."
+    ],
+    "anticipatedMisconceptions": [
+      "Reliance on Allah is not depicted as passive waiting."
+    ],
+    "grammarFocus": "Source/narrative voice separation; possibility vs fact; trigger/background/sequence; later interpretation.",
+    "pronunciationFocus": "Practise Safa, Marwa and sa‘y; use repeated rhythm for the sevenfold movement and a source-marking pause before the Ibn Abbas narration.",
+    "beforeReading": [
+      "Ask what actions would show active trust when a practical problem remains unresolved."
+    ],
+    "duringReading": [
+      "Mark the source introduction to Ibn Abbas.",
+      "Trace Hajar’s movement to Safa, Marwa and the repeated search.",
+      "Underline the sentence linking her effort with sa‘y and later Hajj memory."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the action sequence.",
+      "Use Language Focus to distinguish source narration from later interpretation.",
+      "Write one sentence explaining why trust and effort are not opposites here."
+    ],
+    "lessonPlan": "1. 0–5 min: active trust criteria. 2. 5–15 min: read/listen and trace the search. 3. 15–23 min: source voice vs later interpretation. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on sequencing and source framing. 6. 37–43 min: effort-and-memory synthesis. 7. 43–45 min: exit ticket: one action and one later ritual connection.",
+    "discussionPoints": [
+      "Why does the chapter preserve Hajar’s effort as part of worship memory?",
+      "What is directly narrated and what is interpreted retrospectively?"
+    ],
+    "interactiveTips": [
+      "Use a simple route diagram rather than dramatizing distress.",
+      "Keep source attribution visible when discussing the Ibn Abbas narration."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide Safa/Marwa cards and a short sequence strip.",
+      "fastFinishers": "Write seven sentences distinguishing source, action sequence and later ritual interpretation."
+    },
+    "formativeAssessment": [
+      "Identifies active effort.",
+      "Preserves source attribution.",
+      "Separates event from later interpretation."
+    ],
+    "expectedResponses": [
+      "Hajar actively searches between Safa and Marwa seven times, and the chapter later connects that effort with the ritual sa‘y of Hajj."
+    ],
+    "transferTask": "Explain a neutral example where trust in an outcome still requires repeated practical effort.",
+    "teacherReflection": "Did learners treat Hajar’s search as active agency rather than passive waiting?"
+  },
+  {
+    "chapter": "30. Abraham and Ishmael",
+    "timing": "45 minutes",
+    "objectives": [
+      "Trace cause and consequence from the appearance of Zamzam to the possibility of settlement.",
+      "Distinguish the water miracle from the Jurham tribe’s later inference based on birds.",
+      "Use action→result, purpose, time perspective and observed evidence versus inference."
+    ],
+    "pedagogy": "Build a water-to-settlement chain: Gabriel strikes the ground → water flows → Hajar contains it → birds indicate water → Jurham approaches. Learners must mark where direct observation ends and inference begins.",
+    "priorKnowledge": [
+      "Chapter 29 active search and the barren-valley setting."
+    ],
+    "anticipatedMisconceptions": [
+      "The tribe does not create Zamzam in the chapter."
+    ],
+    "grammarFocus": "Action → immediate result; purpose; future/current/past time perspectives; observed evidence vs inference.",
+    "pronunciationFocus": "Practise Zamzam, Gabriel and Jurham; stress immediately / because / indicated to make the cause-inference chain audible.",
+    "beforeReading": [
+      "Ask how a single resource can alter whether people can remain in a place."
+    ],
+    "duringReading": [
+      "Mark the angel’s action and the immediate appearance of water.",
+      "Underline Hajar’s practical action to contain the water.",
+      "Identify the birds as observed evidence and the tribe’s inference that water is present."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by ordering the causal chain.",
+      "Use Language Focus to write one direct cause and one evidence-based inference.",
+      "Explain why the tribe belongs at the end of the chain, not at the beginning."
+    ],
+    "lessonPlan": "1. 0–5 min: resource and settlement prediction. 2. 5–14 min: read/listen to Zamzam appearance. 3. 14–22 min: build action→water→birds→Jurham chain. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on result and inference. 6. 36–43 min: settlement explanation. 7. 43–45 min: exit ticket distinguishing cause from clue.",
+    "discussionPoints": [
+      "How does one resource change the social future of the valley?",
+      "Why are the birds evidence for the tribe rather than the cause of the water?"
+    ],
+    "interactiveTips": [
+      "Label each arrow Cause / Action / Clue / Inference.",
+      "Keep the miracle event and the tribe’s later reasoning in separate visual boxes."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide the five chain steps to reorder.",
+      "fastFinishers": "Write a seven-sentence causal explanation that distinguishes direct result from inferred evidence."
+    },
+    "formativeAssessment": [
+      "Orders the causal chain.",
+      "Distinguishes cause from clue.",
+      "Keeps Jurham’s role accurate."
+    ],
+    "expectedResponses": [
+      "Water appears before Jurham arrives; birds signal the presence of water, and the tribe then approaches the valley."
+    ],
+    "transferTask": "Explain how a new shared resource can change settlement or movement in a neutral context.",
+    "teacherReflection": "Did learners separate physical cause, observed clue and social response?"
+  },
+  {
+    "chapter": "31. The Dream of Sacrifice",
+    "timing": "50 minutes",
+    "objectives": [
+      "Analyse how the chapter presents dream, command, consultation and Ishmael’s response.",
+      "Identify Ishmael’s awareness and willingness as explicit evidence in the dialogue.",
+      "Use life-stage background, source framing and dialogue functions to distinguish disclosure, consultation and commitment."
+    ],
+    "pedagogy": "Treat the dialogue as the centre of the chapter. Learners first establish Ishmael’s life stage, then map Abraham’s disclosure, request for opinion and Ishmael’s answer, avoiding any reading that removes Ishmael’s voice from the scene.",
+    "priorKnowledge": [
+      "Family sequence from Chapters 25–30 and source/dialogue framing."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not portray Ishmael as unaware or unwilling."
+    ],
+    "grammarFocus": "Growth/life-stage background; turning point; command/source framing; dialogue as disclosure, consultation and commitment.",
+    "pronunciationFocus": "Practise forbearing, sacrifice and patient; use clear speaker changes in “O my son…” and “O my father…”.",
+    "beforeReading": [
+      "Ask what consultation can add when one person believes a difficult duty has already been assigned."
+    ],
+    "duringReading": [
+      "Mark the life-stage phrase about being old enough to walk with Abraham.",
+      "Underline Abraham’s disclosure and question “what do you think?”.",
+      "Identify Ishmael’s response and the conditional phrase “if Allah wills”."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by matching dialogue line to function.",
+      "Use Language Focus to write a disclosure→consultation→commitment sequence.",
+      "Explain why Ishmael cannot be described as unaware in the chapter."
+    ],
+    "lessonPlan": "1. 0–5 min: consultation in a difficult decision. 2. 5–15 min: read/listen to background and dream. 3. 15–24 min: map dialogue functions. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on source/command and dialogue. 6. 39–47 min: B2 explanation of consultation. 7. 47–50 min: exit ticket naming Ishmael’s explicit response.",
+    "discussionPoints": [
+      "Why is consultation included even though Abraham understands the dream as a command?",
+      "What wording shows Ishmael’s awareness and commitment?"
+    ],
+    "interactiveTips": [
+      "Use separate speech cards for father and son rather than paraphrasing both through the narrator.",
+      "Keep theological interpretation within the chapter’s own framing."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide three dialogue-function labels: disclosure / consultation / commitment.",
+      "fastFinishers": "Write eight sentences analysing the dialogue with one source frame, one consultation function and one qualified commitment."
+    },
+    "formativeAssessment": [
+      "Identifies speaker roles.",
+      "Explains consultation without denying command framing.",
+      "Uses the dialogue as evidence."
+    ],
+    "expectedResponses": [
+      "Abraham tells Ishmael the dream and asks his view; Ishmael understands the task and responds that he will be patient, if Allah wills."
+    ],
+    "transferTask": "Analyse a neutral difficult conversation by separating disclosure, consultation and commitment.",
+    "teacherReflection": "Did learners preserve Ishmael’s agency as represented in the dialogue?"
+  },
+  {
+    "chapter": "32. Submission and Mercy",
+    "timing": "50 minutes",
+    "objectives": [
+      "Evaluate what the interruption of the sacrifice reveals about the test’s purpose.",
+      "Identify fulfilment of the vision and the substitute as evidence that Ishmael’s death is not the final intended outcome.",
+      "Use imminent-action, interruption, fulfilment and limiting correction language."
+    ],
+    "pedagogy": "Build a near-event/interruption/outcome sequence. Learners identify what is about to happen, the stopping call, the statement that the vision has been fulfilled and the substitute, then infer what the chapter says the test measures.",
+    "priorKnowledge": [
+      "Chapter 31 dialogue and command framing."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not present Ishmael’s death as the desired final outcome."
+    ],
+    "grammarFocus": "When plus imminent “was about to”; interruption; test → fulfilment → evaluation → consequence; limiting correction.",
+    "pronunciationFocus": "Use a suspense-neutral pause before the stopping call; stress fulfilled / clear test / substitute rather than dramatizing the knife detail.",
+    "beforeReading": [
+      "Ask what evidence would show that a test has been completed before the feared outcome occurs."
+    ],
+    "duringReading": [
+      "Mark the moment of imminent action.",
+      "Underline the call stopping Abraham and the phrase declaring the vision fulfilled.",
+      "Identify the later statement that the substitute is a ram or goat."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using fulfilment evidence.",
+      "Use Language Focus to write imminent action followed by interruption.",
+      "Explain why submission, rather than death, is central to the test as the chapter presents it."
+    ],
+    "lessonPlan": "1. 0–5 min: what counts as test completion? 2. 5–15 min: read/listen to submission and interruption. 3. 15–24 min: map imminent action→stop→fulfilled→substitute. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on interruption and correction. 6. 39–47 min: test-purpose explanation. 7. 47–50 min: exit ticket citing one fulfilment detail.",
+    "discussionPoints": [
+      "What evidence shows that submission, not death itself, is central to the test?",
+      "How does the substitute change the interpretation of the outcome?"
+    ],
+    "interactiveTips": [
+      "Keep the lesson analytical and non-graphic.",
+      "Require the wording “fulfilled the vision” before accepting claims about the test’s completion."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Use four cards: about to act / stopped / vision fulfilled / substitute.",
+      "fastFinishers": "Write eight sentences explaining how interruption changes the meaning of the expected outcome."
+    },
+    "formativeAssessment": [
+      "Uses fulfilment evidence.",
+      "Separates submission from death outcome.",
+      "Handles sensitive content responsibly."
+    ],
+    "expectedResponses": [
+      "The call stops the sacrifice, states that the vision has been fulfilled and provides a substitute, so the chapter frames the event as a test of submission."
+    ],
+    "transferTask": "Explain a neutral test or trial where completion is shown by willingness or process rather than the feared final event.",
+    "teacherReflection": "Did learners interpret the stopping point through the chapter’s fulfilment language?"
+  },
+  {
+    "chapter": "33. Building the Ka‘ba",
+    "timing": "50 minutes",
+    "objectives": [
+      "Connect the sacrifice tradition, father–son reunion and transition toward building the Ka‘ba without compressing chronology.",
+      "Distinguish animal sacrifice in the chapter’s historical framing from human sacrifice attributed to idolaters.",
+      "Use historical time frame, clarification, contrast and future-in-the-past to explain thematic transition."
+    ],
+    "pedagogy": "Use a three-panel transition: sacrifice practice / reunion / building intention. Learners identify the chapter’s explicit contrast between animal and human sacrifice, then mark the later reunion as a separate stage before construction.",
+    "priorKnowledge": [
+      "Chapter 32 substitute and the difference between event and later interpretation."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter’s movement to construction is thematic, not a claim that every detail occurs immediately."
+    ],
+    "grammarFocus": "Historical time frame; “in fact” clarification; while contrast; time-bound scope; future-in-the-past later plan.",
+    "pronunciationFocus": "Practise sacrifice, firstborn, reunion and pilgrimage; stress while in the contrast between prophets’ animal sacrifice and idolaters’ human sacrifice.",
+    "beforeReading": [
+      "Ask how a chapter can connect two themes without claiming they occur at the same moment."
+    ],
+    "duringReading": [
+      "Mark the chapter’s claim about sacrifice practices in Abraham’s time.",
+      "Underline the contrast between earlier prophets and idolaters.",
+      "Identify the later father–son reunion and the statement that they were going to build the House."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by distinguishing historical contrast from later sequence.",
+      "Use Language Focus to write a time-limited contrast and a future-in-the-past construction sentence.",
+      "Explain the common theme linking sacrifice and building without collapsing chronology."
+    ],
+    "lessonPlan": "1. 0–5 min: thematic link vs chronology. 2. 5–15 min: read/listen to sacrifice framing. 3. 15–24 min: analyse animal/human contrast and time scope. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on clarification/contrast/future plan. 6. 39–47 min: transition synthesis. 7. 47–50 min: exit ticket: one historical contrast and one later event.",
+    "discussionPoints": [
+      "What common idea links sacrifice and construction even though the actions are different?",
+      "Which wording prevents us from treating all details as immediate sequence?"
+    ],
+    "interactiveTips": [
+      "Keep the sacrifice comparison source-bound and avoid adding external historical claims.",
+      "Use a visible separator before the reunion/building stage."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide three panels with one evidence sentence for each.",
+      "fastFinishers": "Write eight sentences linking theme while explicitly marking the chronological gap."
+    },
+    "formativeAssessment": [
+      "Preserves chronological separation.",
+      "States the chapter’s sacrifice contrast accurately.",
+      "Explains thematic link without overclaim."
+    ],
+    "expectedResponses": [
+      "The chapter contrasts animal sacrifice with human sacrifice in its historical framing, then separately moves to the later reunion and preparation to build the Ka‘ba."
+    ],
+    "transferTask": "Connect two stages of a neutral project thematically while making the time gap explicit.",
+    "teacherReflection": "Did learners distinguish thematic continuity from immediate chronology?"
+  },
+  {
+    "chapter": "34. The First Call to Pilgrimage",
+    "timing": "50 minutes",
+    "objectives": [
+      "Analyse Abraham and Ishmael’s cooperative roles in building the Ka‘ba.",
+      "Explain why the prayer for acceptance shows humility even during successful completion of a commanded task.",
+      "Use prior-command relevance, commitment, no-longer limitation, parallel ongoing action and imperative-as-request."
+    ],
+    "pedagogy": "Build a role-and-humility chart. Learners track command, Ishmael’s commitment, Abraham’s adaptation when the wall becomes high, Ishmael’s stone-carrying role and the shared prayer for acceptance.",
+    "priorKnowledge": [
+      "Chapter 33 building intention and teamwork language."
+    ],
+    "anticipatedMisconceptions": [
+      "Performing a commanded task is not treated as a guarantee of acceptance."
+    ],
+    "grammarFocus": "Present relevance of a prior command; will for commitment; no longer for limitation/adaptation; parallel ongoing action; imperative as respectful request.",
+    "pronunciationFocus": "Practise Al-Maqam and “Accept this service from us”; use parallel rhythm for Abraham standing / Ishmael handing stones / both praying.",
+    "beforeReading": [
+      "Ask how people can show confidence in a task while still remaining humble about its acceptance or quality."
+    ],
+    "duringReading": [
+      "Mark the command and Ishmael’s commitment to help.",
+      "Underline the moment Abraham can no longer lift stones high enough and the adaptation using Al-Maqam.",
+      "Identify the parallel roles and the shared prayer."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge by matching person to role.",
+      "Use Language Focus to write limitation→adaptation and two parallel actions.",
+      "Explain why asking for acceptance matters while the work is still being done."
+    ],
+    "lessonPlan": "1. 0–5 min: teamwork and humility. 2. 5–15 min: read/listen to command and commitment. 3. 15–24 min: map roles and adaptation. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on limitation, commitment and parallel action. 6. 39–47 min: humility/teamwork explanation. 7. 47–50 min: exit ticket: one role and one reason for the prayer.",
+    "discussionPoints": [
+      "Why is the prayer for acceptance significant while the work is still being done?",
+      "How does the chapter show adaptation when physical limitation appears?"
+    ],
+    "interactiveTips": [
+      "Use a two-person role chart rather than a generic teamwork discussion.",
+      "Keep prayer language as evidence of humility, not as a detached moral slogan."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Match Abraham / Ishmael / both to build, hand stones, stand on Al-Maqam, pray.",
+      "fastFinishers": "Write eight sentences combining will, no longer, parallel actions and the acceptance prayer."
+    },
+    "formativeAssessment": [
+      "Identifies roles accurately.",
+      "Explains adaptation.",
+      "Connects prayer to humility."
+    ],
+    "expectedResponses": [
+      "Ishmael brings stones, Abraham builds from Al-Maqam when height becomes a limitation, and both ask Allah to accept their service."
+    ],
+    "transferTask": "Describe a joint task where roles change in response to a limitation and the team still seeks feedback or acceptance.",
+    "teacherReflection": "Did learners ground teamwork and humility in the specific building actions?"
+  },
+  {
+    "chapter": "35. The Legacy of Abraham",
+    "timing": "50 minutes",
+    "objectives": [
+      "Synthesize Abraham’s legacy through the Ka‘ba, pilgrimage, family transmission and Hanifism.",
+      "Distinguish institutional legacy from legacy transmitted through people and regions.",
+      "Use limiting claims, qualified interpretation, not-just scope, coexistence and continuity language without claiming idolatry disappeared permanently."
+    ],
+    "pedagogy": "Use a four-part legacy matrix: place, ritual, family lines, continuing belief. Learners add only evidence from the chapter, then mark the coexistence of Hanif faith and idolatry as a limit on any claim of complete religious transformation.",
+    "priorKnowledge": [
+      "Chapters 1, 26 and 33–34 on genealogy, Mecca and building."
+    ],
+    "anticipatedMisconceptions": [
+      "The chapter does not claim Abraham’s work permanently eliminated later idolatry."
+    ],
+    "grammarFocus": "Limiting an overstrong claim; evidence → qualified interpretation; not just scope; coexistence; recurring condition; present-perfect continuity.",
+    "pronunciationFocus": "Practise legacy, pilgrimage, Hanifism, coexist and restored; stress not just / all people / coexisted to preserve scope and qualification.",
+    "beforeReading": [
+      "Ask what makes a legacy institutional, familial, geographical or conceptual."
+    ],
+    "duringReading": [
+      "Mark restoration of the Ka‘ba and the call to pilgrimage.",
+      "Trace Ishmael in Hijaz, Isaac in Palestine and the other children eastward.",
+      "Underline the statement that Hanif faith coexisted with idolatry."
+    ],
+    "afterReading": [
+      "Complete the Quick Challenge using the legacy matrix.",
+      "Use Language Focus to correct an overstrong statement such as “idolatry ended permanently.”",
+      "Write a final eight-sentence synthesis using evidence from at least three legacy categories."
+    ],
+    "lessonPlan": "1. 0–5 min: legacy categories. 2. 5–15 min: read/listen for place and pilgrimage. 3. 15–24 min: map family/geographical transmission and coexistence. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on scope and continuity. 6. 39–47 min: final evidence-based synthesis. 7. 47–50 min: exit ticket: one institutional and one person-transmitted legacy.",
+    "discussionPoints": [
+      "Which parts of the legacy are institutional and which are transmitted through people?",
+      "Which sentence prevents a claim that Abraham permanently ended idolatry?"
+    ],
+    "interactiveTips": [
+      "Require one chapter citation/detail in each legacy category.",
+      "Use coexistence as a deliberate check against triumphalist overstatement."
+    ],
+    "differentiation": {
+      "strugglingLearners": "Provide four legacy boxes with one starter detail in each.",
+      "fastFinishers": "Write a ten-sentence final synthesis connecting Chapter 1 genealogy with Chapters 34–35 while preserving the coexistence qualification."
+    },
+    "formativeAssessment": [
+      "Uses multiple legacy categories.",
+      "Preserves coexistence/qualification.",
+      "Distinguishes institution from personal transmission."
+    ],
+    "expectedResponses": [
+      "The chapter combines the restored Ka‘ba and pilgrimage with family lines, regional transmission and Hanifism, while explicitly noting coexistence with idolatry."
+    ],
+    "transferTask": "Analyse a neutral legacy by separating institutions, practices, people and ideas that continue beyond one event.",
+    "teacherReflection": "Did learners produce a qualified legacy synthesis rather than a celebratory list?"
+  }
+
 ];
 
 const makeSection = (p: ChapterPlan): TeacherGuideSection => {
@@ -1673,7 +2054,7 @@ const makeSection = (p: ChapterPlan): TeacherGuideSection => {
 
 export const abrahamB2TeacherGuideEn: TeacherGuideSection[] = [
   ...manualTeacherGuideSections,
-  ...plans.slice(28).map(makeSection),
+  
 ];
 
 export const abrahamB2TeacherGuideMetadata: TeacherGuideMetadata = {
