@@ -174,12 +174,14 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     }
     if (currentQuestion.type === 'fill-blanks') {
       if (typeof answer !== 'string') return false;
-      const expected = currentQuestion.correctAnswer;
-      const normalizedMatch = normalizeText(answer) === normalizeText(expected);
-      const morphologyMatch = typeof expected === 'string'
-        ? highlightPhraseMatches(answer, expected, language === 'ar' ? 'ar' : 'en')
-        : false;
-      return normalizedMatch || morphologyMatch;
+      const expectedAnswers = Array.isArray(currentQuestion.correctAnswer)
+        ? currentQuestion.correctAnswer.map(String)
+        : [String(currentQuestion.correctAnswer ?? '')];
+
+      return expectedAnswers.some((expected) => (
+        normalizeText(answer) === normalizeText(expected)
+        || highlightPhraseMatches(answer, expected, language === 'ar' ? 'ar' : 'en')
+      ));
     }
     if (currentQuestion.type === 'reflection') return true;
     return answer === currentQuestion.correctAnswer;
