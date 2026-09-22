@@ -20,7 +20,10 @@ import {
   Link as LinkIcon,
   Award,
   Download,
-  ChevronRight
+  ChevronRight,
+  Search,
+  Clock,
+  Sparkles
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
@@ -53,7 +56,12 @@ export const TeacherGuide = ({
   collectionId?: string;
 }) => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isPrepOpen, setIsPrepOpen] = useState(false);
+  const [prepChapterIndex, setPrepChapterIndex] = useState(0);
+  const [pendingChapterIndex, setPendingChapterIndex] = useState<number | null>(null);
   const contentScrollRef = React.useRef<HTMLDivElement>(null);
+  const chapterRefs = React.useRef<Record<number, HTMLDivElement | null>>({});
   const { language, t, formatNumber, isRTL } = useLanguage();
 
   const isHistory = collectionId === 'history';
@@ -234,7 +242,6 @@ entries.set(key, { word, definition });
     { id: 'overview', label: t('tg.overview'), icon: <BookOpen size={22} /> },
     { id: 'curriculum', label: t('tg.curriculum'), icon: <Layout size={22} /> },
     { id: 'approach', label: t('tg.approach'), icon: <Lightbulb size={22} /> },
-    { id: 'plans', label: t('tg.plans'), icon: <ClipboardList size={22} /> },
     { id: 'framework', label: t('tg.framework'), icon: <MessageSquare size={22} /> },
     { id: 'chapters', label: t('tg.chapters'), icon: <BookIcon size={22} /> },
     { id: 'management', label: t('tg.management'), icon: <Users size={22} /> },
@@ -254,6 +261,31 @@ entries.set(key, { word, definition });
   const activeTabMeta = tabs[activeTabIndex] ?? tabs[0];
   const displayGuideTitle = metadata?.title || title || t('tg.title');
   const displayGuideSubtitle = metadata?.subtitle || subtitle || t('tg.subtitle');
+  const selectedPrepChapter = content[prepChapterIndex] ?? content[0];
+
+  const normalizedSearch = searchQuery.trim().toLocaleLowerCase(language === 'ar' ? 'ar' : 'en');
+  const searchResults = normalizedSearch
+    ? [
+        ...tabs
+          .filter(tab => tab.label.toLocaleLowerCase(language === 'ar' ? 'ar' : 'en').includes(normalizedSearch))
+          .map(tab => ({ kind: 'section' as const, label: tab.label, tabId: tab.id })),
+        ...content
+          .map((chapter, index) => ({ chapter, index }))
+          .filter(({ chapter }) => chapter.chapter.toLocaleLowerCase(language === 'ar' ? 'ar' : 'en').includes(normalizedSearch))
+          .map(({ chapter, index }) => ({ kind: 'chapter' as const, label: chapter.chapter, chapterIndex: index })),
+      ].slice(0, 8)
+    : [];
+
+  const jumpToChapter = (index: number) => {
+    setActiveTab('chapters');
+    setPendingChapterIndex(index);
+    setSearchQuery('');
+  };
+
+  const openLessonPrep = (index = prepChapterIndex) => {
+    setPrepChapterIndex(Math.min(Math.max(index, 0), Math.max(content.length - 1, 0)));
+    setIsPrepOpen(true);
+  };
 
   React.useEffect(() => {
     if (isOpen) {
@@ -265,6 +297,15 @@ entries.set(key, { word, definition });
     if (!isOpen) return;
     contentScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab, isOpen]);
+
+  React.useEffect(() => {
+    if (activeTab !== 'chapters' || pendingChapterIndex === null) return;
+    const frame = window.requestAnimationFrame(() => {
+      chapterRefs.current[pendingChapterIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setPendingChapterIndex(null);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeTab, pendingChapterIndex]);
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -356,67 +397,6 @@ entries.set(key, { word, definition });
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        );
-      case 'plans':
-        return (
-          <div className="space-y-6 sm:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.plans')}</h3>
-            <div className="space-y-6 sm:space-y-8">
-              <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} A: {metadata?.implementationPlans?.optionA.title}</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-xs uppercase tracking-widest text-gold">
-                  {metadata?.implementationPlans?.optionA.steps?.map((step, i) => (
-                    <div key={i} className="space-y-1 bg-white/5 p-3 rounded-xl sm:bg-transparent sm:p-0 sm:space-y-2 sm:border-r sm:border-gold/10 sm:pr-4">
-                      <div className="font-bold">{formatNumber(step.time)}</div>
-                      <div className="normal-case text-parchment/60 font-serif text-[13px] sm:text-[15px] leading-tight">{step.activity}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} B: {metadata?.implementationPlans?.optionB.title}</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-                  {metadata?.implementationPlans?.optionB.lessons?.map((lesson, i) => (
-                    <div key={i}>
-                      <h5 className="font-display text-parchment text-[13px] sm:text-[15px] mb-2 uppercase tracking-widest">{lesson.title}</h5>
-                      <p className={cn(
-                        "font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed",
-                        language !== 'ar' && "italic"
-                      )}>{lesson.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {metadata?.implementationPlans?.optionC && (
-                <div className="bg-white/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
-                  <h4 className="font-display text-lg sm:text-2xl text-gold mb-4">{t('tg.plans')} C: {metadata?.implementationPlans?.optionC.title}</h4>
-                  {metadata?.implementationPlans?.optionC.steps && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 text-xs uppercase tracking-widest text-gold">
-                      {metadata?.implementationPlans?.optionC.steps.map((step, i) => (
-                        <div key={i} className="space-y-2 bg-white/5 border border-gold/5 p-3 sm:p-4 rounded-xl leading-relaxed">
-                          <div className="font-bold text-gold">{formatNumber(step.time)}</div>
-                          <div className="normal-case text-parchment/70 font-serif text-[13px] sm:text-[15px] leading-tight font-medium">{step.activity}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {metadata?.implementationPlans?.optionC.lessons && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-                      {metadata?.implementationPlans?.optionC.lessons.map((lesson, i) => (
-                        <div key={i}>
-                          <h5 className="font-display text-parchment text-[13px] sm:text-[15px] mb-2 uppercase tracking-widest">{lesson.title}</h5>
-                          <p className={cn(
-                            "font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed",
-                            language !== 'ar' && "italic"
-                          )}>{lesson.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         );
