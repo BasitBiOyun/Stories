@@ -170,11 +170,15 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     }
     if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') return true;
     if (exercise.type === 'fill-blanks') {
-      const normalizedMatch = normalizeText(answer) === normalizeText(exercise.correctAnswer);
-      const morphologyMatch = typeof answer === 'string' && typeof exercise.correctAnswer === 'string'
-        ? highlightPhraseMatches(answer, exercise.correctAnswer, language === 'ar' ? 'ar' : 'en')
-        : false;
-      return normalizedMatch || morphologyMatch;
+      if (typeof answer !== 'string') return false;
+      const expectedAnswers = Array.isArray(exercise.correctAnswer)
+        ? exercise.correctAnswer.map(String)
+        : [String(exercise.correctAnswer ?? '')];
+
+      return expectedAnswers.some((expected) => (
+        normalizeText(answer) === normalizeText(expected)
+        || highlightPhraseMatches(answer, expected, language === 'ar' ? 'ar' : 'en')
+      ));
     }
     return answer === exercise.correctAnswer;
   };
