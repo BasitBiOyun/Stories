@@ -18,6 +18,27 @@ steps:
         ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
         || true
 
+  # Chat-controlled narration queue. Normal preview commits do nothing here unless
+  # tts/requests.json exists. When it does, the build reads the ElevenLabs key
+  # directly from Secret Manager, generates Rowan narration, writes the MP3 to the
+  # exact approved Firebase Storage object, then removes verified old English
+  # duplicates for that same story/level/chapter. Arabic paths are never cleaned.
+  - id: tts-requests
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ ! -f tts/requests.json ]; then
+          echo "[Stories TTS] No tts/requests.json; skipping narration generation."
+          exit 0
+        fi
+        export ELEVENLABS_API_KEY="$(gcloud secrets versions access latest --secret=ELEVENLABS_API_KEY --project=$PROJECT_ID)"
+        python3 scripts/tts/expand_source_batch.py
+        python3 scripts/tts/process_requests.py
+        python3 scripts/tts/cleanup_duplicates.py
+
   - id: build
     name: gcr.io/cloud-builders/docker
     env:
