@@ -180,7 +180,21 @@ export const adamA2VocabularyChallengePairsAr = [
 
 // توزيع التحدي النهائي ثابت:
 // 3 اختيار من متعدد + 2 صح/خطأ + 2 مطابقة + 2 إكمال + 1 ترتيب.
-export const adamA2FinalChallengeExercisesAr: Exercise[] = [
+export const adamA2FinalChallengeExercisesAr: Exercise[
+  {
+    id: 'adam-a2-ar-final-11', type: 'multiple-choice', title: 'العلم والاحترام', instructions: 'اختر الإجابة التي يذكرها الفصل الثاني.',
+    question: 'لماذا أُعجبت الملائكة بآدم واحترمته؟',
+    options: ['لأن الله أعطاه العلم وعلّمه أن يفكر ويتعلم', 'لأنه خُلق من النار', 'لأن لديه أبناء كثيرين'], correctAnswer: 0,
+    explanation: 'يذكر الفصل الثاني أن الله أعطى آدم العلم وعلّمه التفكير، وأعطاه القدرة على التعلم والفهم.',
+    feedback: { correct: 'صحيح.', incorrect: 'راجع الجمل التي تتحدث عن علم آدم في الفصل الثاني.' }
+  },
+  {
+    id: 'adam-a2-ar-final-12', type: 'true-false', title: 'ألوان البشر', instructions: 'حدد هل العبارة توافق الفصل الأول.',
+    question: 'يربط الفصل الأول اختلاف ألوان بشرة الناس بالتراب الذي أُحضر من أماكن مختلفة من الأرض.', correctAnswer: true,
+    explanation: 'يذكر الفصل أن التراب أُحضر من أماكن مختلفة من الأرض، ويربط ذلك باختلاف ألوان البشر.',
+    feedback: { correct: 'صحيح.', incorrect: 'راجع الفقرتين الأخيرتين من الفصل الأول.' }
+  },
+] = [
   {
     id: 'adam-a2-ar-final-1', type: 'multiple-choice', title: 'الأرض: من الدور إلى العمل', instructions: 'اختر العبارة التي تربط جزأين من القصة بصورة صحيحة.',
     question: 'أي عبارة تربط بداية القصة بالفصل السادس بصورة أفضل؟',
