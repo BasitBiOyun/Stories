@@ -253,6 +253,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
   }, [bookData.pages]);
 
   const finalScore = stats.finalScore;
+  const finalDetails = stats.finalChallengeDetails;
 
   // Metadata of the current story
   const currentStoryMeta = useMemo(() => {
@@ -556,7 +557,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                       </div>
                       <div>
                         <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                          {isArabic ? 'نقاط التحدي' : 'Challenge Score'}
+                          {isArabic ? 'الإتقان النهائي' : 'Final Mastery'}
                         </span>
                         <span className="block text-2xl md:text-[28px] font-black text-white mt-1 tabular-nums">
                           {formatNumber(finalScore)}%
@@ -604,6 +605,70 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                 )}
               </div>
             </div>
+
+            {finalDetails && (
+              <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 md:p-6 space-y-5">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-[12px] md:text-[13px] uppercase tracking-wider text-[#F5EDD6]/45 font-black">
+                      {isArabic ? 'أداء التحدي النهائي' : 'FINAL CHALLENGE MASTERY'}
+                    </p>
+                    <p className="text-[14px] md:text-[15px] text-[#F5EDD6]/70 mt-1">
+                      {isArabic
+                        ? 'يفصل بين دقة المحاولة الأولى وما أتقنته بعد فرصة التصحيح.'
+                        : 'Separates first-try accuracy from what you mastered after a correction opportunity.'}
+                    </p>
+                  </div>
+                  <CheckCircle2 className="w-7 h-7 shrink-0" style={{ color: categoryInfo.accentColor }} />
+                </div>
+
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
+                      {isArabic ? 'المحاولة الأولى' : 'First Try'}
+                    </span>
+                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
+                      {formatNumber(finalDetails.firstAttemptAccuracy)}%
+                    </span>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
+                      {isArabic ? 'الإتقان النهائي' : 'Final Mastery'}
+                    </span>
+                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
+                      {formatNumber(finalDetails.masteryAccuracy)}%
+                    </span>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
+                      {isArabic ? 'إجابات صُححت' : 'Corrected'}
+                    </span>
+                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
+                      {formatNumber(finalDetails.correctedAnswers)}
+                    </span>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
+                      {isArabic ? 'مهام التأمل' : 'Reflections'}
+                    </span>
+                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
+                      {formatNumber(finalDetails.reflectionCompleted)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-[13px] md:text-[14px] text-[#F5EDD6]/65">
+                  <span>
+                    {isArabic
+                      ? 'أسئلة احتاجت مراجعة بعد المحاولة الأولى'
+                      : 'Questions that needed another look after the first try'}
+                  </span>
+                  <span className="font-black text-white">
+                    {formatNumber(finalDetails.missedQuestionCount)} / {formatNumber(finalDetails.scoredQuestionCount)}
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* SECTION: REFLECTION / QUOTE */}
             {categoryInfo.quote && (
