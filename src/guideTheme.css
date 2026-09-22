@@ -166,3 +166,55 @@
     border-radius: 1rem;
   }
 }
+
+
+/* Premium Self-Study workspace: quieter than Teacher Guide, but equally structured. */
+.self-study-shell {
+  background-image:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--color-gold) 10%, transparent) 0%, transparent 28%),
+    radial-gradient(circle at 90% 14%, color-mix(in srgb, var(--color-gold) 6%, transparent) 0%, transparent 24%),
+    linear-gradient(145deg, rgba(255,255,255,0.012), transparent 40%);
+}
+
+.self-study-header {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.15)),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-gold) 4%, transparent), transparent 44%);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.14);
+}
+
+.self-study-sidebar {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.12)),
+    color-mix(in srgb, var(--color-wood) 95%, black 5%);
+}
+
+.self-study-content {
+  background:
+    radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--color-gold) 4%, transparent), transparent 22%),
+    linear-gradient(180deg, rgba(255,255,255,0.01), transparent 34%);
+}
+
+.self-study-content p,
+.self-study-content li {
+  text-wrap: pretty;
+}
+
+.self-study-content h2,
+.self-study-content h3,
+.self-study-content h4,
+.self-study-content h5 {
+  text-wrap: balance;
+}
+
+.self-study-shell button:focus-visible,
+.self-study-shell input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-gold) 82%, white 18%);
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .self-study-header {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  }
+}
