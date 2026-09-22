@@ -405,10 +405,6 @@ const teacherMetadata = (
         skillsFocus: { reading: policy.analysisFocusAr, listening: 'متابعة النص مع الصوت عند توفره.', speaking: 'تبرير الإجابة بعبارة قصيرة أو مناقشة.', writing: policy.writingTarget },
         classroomManagement: ['استخدم الأسئلة للتعليم قبل القياس.', 'لا تضف معلومات تاريخية أو دينية غير موجودة في الفصل.', 'بعد الخطأ أعد الطالب إلى موضع الدليل.'],
         differentiationNotes: 'حافظ على المعلومة نفسها، وغيّر طول المهمة أو مقدار الدعم لا مصدر الإجابة.',
-        implementationPlans: first && second ? {
-          optionA: { title: `نموذج: ${first.chapter}`, steps: [{ time: first.timing, activity: first.lessonPlan }] },
-          optionB: { title: `نموذج: ${second.chapter}`, lessons: [{ title: second.chapter, description: second.lessonPlan }] },
-        } : undefined,
         sensitiveNotes: { title: 'ضوابط المحتوى', notes: ['النص هو المرجع الواقعي.', 'لا تحول التأمل إلى حقيقة جديدة.', 'قدّم مشاهد الألم أو الظلم بلغة هادئة وغير رسومية.'] },
       }
     : {
@@ -432,10 +428,6 @@ const teacherMetadata = (
         skillsFocus: { reading: policy.analysisFocusEn, listening: 'Follow the text with narration when audio is available.', speaking: 'Justify an answer briefly or discuss evidence.', writing: policy.writingTarget },
         classroomManagement: ['Use questions for teaching before scoring.', 'Do not add historical or religious information not present in the chapter.', 'After an error, send the learner back to the evidence.'],
         differentiationNotes: 'Keep the learning fact unchanged; vary task length or support, not the source of the answer.',
-        implementationPlans: first && second ? {
-          optionA: { title: `Sample: ${first.chapter}`, steps: [{ time: first.timing, activity: first.lessonPlan }] },
-          optionB: { title: `Sample: ${second.chapter}`, lessons: [{ title: second.chapter, description: second.lessonPlan }] },
-        } : undefined,
         sensitiveNotes: { title: 'Content Safeguards', notes: ['The chapter is the factual authority.', 'Do not turn reflection into a new factual claim.', 'Handle pain, punishment, or injustice in calm, non-graphic language.'] },
       };
 };
