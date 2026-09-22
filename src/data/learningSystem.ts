@@ -570,7 +570,7 @@ const cleanExercise = (exercise: Exercise): Exercise => ({
 const cloneExercise = (exercise: Exercise, id: string, title: string): Exercise => ({ ...exercise, id, title });
 
 const applyPages = (
-  pages: PageData[], config: LearningSystemConfig, quick: Map<number, Anchor>, knowledge: Anchor[], reviewAnchors: Anchor[], finalAnchors: Anchor[], vocabulary: NonNullable<PageData['vocabularyPairs']>, language: LearningLanguage,
+  pages: PageData[], config: LearningSystemConfig, quick: Map<number, Anchor>, knowledge: Anchor[], reviewAnchors: Anchor[], vocabulary: NonNullable<PageData['vocabularyPairs']>, language: LearningLanguage,
 ) => {
   const counts = stageCounts(config);
   const output = pages.map(page => {
@@ -598,12 +598,18 @@ const applyPages = (
       content: language === 'ar' ? `مراجعة من ${counts.review} أسئلة تربط الإجابة بدليل من الفصول.` : `${counts.review}-question review connecting answers with chapter evidence.`,
       exercises: [reviewExercise(reviewAnchors, language, config.level)],
     };
-    if (page.id === config.finalChallengePageId) return {
-      ...page, type: 'final-challenge' as const,
-      title: language === 'ar' ? 'التحدي النهائي' : `${config.level} Final Challenge`,
-      content: language === 'ar' ? `${counts.final} أنشطة نهائية مبنية على الفصول وفق مستوى ${config.level}.` : `${counts.final} final chapter-based activities following the ${config.level} learning policy.`,
-      exercises: finalAnchors.map((anchor, index) => cloneExercise(language === 'ar' ? anchor.arabic : anchor.english, `learning-${config.level.toLowerCase()}-final-${index + 1}`, language === 'ar' ? `التحدي النهائي ${index + 1}` : `${config.level} Final Challenge ${index + 1}`)),
-    };
+    if (page.id === config.finalChallengePageId) {
+      const authoredCount = page.exercises?.length ?? 0;
+      return {
+        ...page,
+        type: 'final-challenge' as const,
+        title: language === 'ar' ? 'التحدي النهائي' : `${config.level} Final Challenge`,
+        content: language === 'ar'
+          ? `${authoredCount} نشاطًا نهائيًا مكتوبًا يدويًا ومبنيًا على فصول القصة.`
+          : `${authoredCount} manually authored final activities grounded in the story chapters.`,
+        exercises: page.exercises ?? [],
+      };
+    }
     return page;
   });
   return language === 'ar'
@@ -669,7 +675,9 @@ const validateOutput = (englishPages: PageData[], arabicPages: PageData[], confi
   });
   const englishFinal = requirePage(englishPages, config.finalChallengePageId, 'English').exercises ?? [];
   const arabicFinal = requirePage(arabicPages, config.finalChallengePageId, 'Arabic').exercises ?? [];
-  if (englishFinal.length !== counts.final || arabicFinal.length !== counts.final) throw new Error(`[Learning System] Final Challenge must contain ${counts.final} activities.`);
+  if (!englishFinal.length || englishFinal.length !== arabicFinal.length) {
+    throw new Error(`[Learning System] Authored Final Challenge EN/AR counts must match and be non-zero. EN=${englishFinal.length} AR=${arabicFinal.length}.`);
+  }
   englishFinal.forEach((exercise, index) => { validatePair(exercise, arabicFinal[index], `Final ${index + 1}`); generatedTypes.add(exercise.type); });
   if (config.storyIds.length >= 5) ['multiple-choice', 'true-false', 'matching', 'fill-blanks', 'tap-reveal'].forEach(type => {
     if (!generatedTypes.has(type)) throw new Error(`[Learning System] ${config.level} output does not include required ${type} variety.`);
@@ -702,16 +710,14 @@ export const runLearningSystem = ({ englishPages, arabicPages, config }: { engli
 
   const knowledgeRaw = select(anchors, counts.knowledge, used, 0);
   const reviewRaw = select(anchors, counts.review, used, Math.floor(anchors.length / 3));
-  const finalRaw = select(anchors, counts.final, used, Math.floor(anchors.length * 2 / 3));
   const knowledge = stagePairs(knowledgeRaw, englishStories, arabicStories, config.level, 0);
   const review = reviewRaw.map((anchor, index) => pairVariant(anchor, englishStories, arabicStories, index % 2 ? 'true-false' : 'multiple-choice', config.level));
-  const final = stagePairs(finalRaw, englishStories, arabicStories, config.level, 2);
   const vocabulary = config.vocabularyPageId
     ? buildVocabularyPairs(englishStories, arabicStories, config.storyIds, counts.vocabulary)
     : { english: [], arabic: [] };
 
-  const englishOutput = applyPages(englishPages, config, quick, knowledge, review, final, vocabulary.english, 'en');
-  const arabicOutput = applyPages(arabicPages, config, quick, knowledge, review, final, vocabulary.arabic, 'ar');
+  const englishOutput = applyPages(englishPages, config, quick, knowledge, review, vocabulary.english, 'en');
+  const arabicOutput = applyPages(arabicPages, config, quick, knowledge, review, vocabulary.arabic, 'ar');
   validateOutput(englishOutput, arabicOutput, config);
 
   const englishGuides = buildLearningGuides({ pages: englishOutput, storyIds: config.storyIds, level: config.level, language: 'en' });
