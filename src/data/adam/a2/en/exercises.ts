@@ -181,41 +181,37 @@ export const adamA2VocabularyChallengePairs = [
 // Locked Final distribution:
 // 3 multiple choice + 2 true/false + 2 matching + 2 fill blanks + 1 sequencing.
 export const adamA2FinalChallengeExercises: Exercise[] = [
-  {
+{
     id: 'adam-a2-final-1', type: 'multiple-choice', title: 'Earth and Work', instructions: 'Choose the true sentence.',
     question: 'What do Chapters 1 and 6 both tell us about people on Earth?',
-    options: [
-      'Chapter 1 says people have a role on Earth. Chapter 6 shows some of their work and care.',
-      'Chapter 1 says people should stay away from Earth. Chapter 6 says they should go back to Paradise at once.',
-      'Chapter 1 says people have no role on Earth. Chapter 6 says they have no duties.'
-    ], correctAnswer: 0,
+    options: ['Chapter 1 says people should stay away from Earth. Chapter 6 says they should go back to Paradise at once.','Chapter 1 says people have a role on Earth. Chapter 6 shows some of their work and care.','Chapter 1 says people have no role on Earth. Chapter 6 says they have no duties.'], correctAnswer: 1,
     explanation: 'Chapter 1 announces a human role on Earth; Chapter 6 later describes activities and responsibilities there.',
     feedback: { correct: 'Correct. You connected an early idea with its later development.', incorrect: 'Compare the statement about the human role in Chapter 1 with the activity and responsibility list in Chapter 6.' }
   },
-  {
+{
     id: 'adam-a2-final-2', type: 'multiple-choice', title: 'Giving One’s Best', instructions: 'Choose the lesson stated after the two offerings.',
     question: 'What lesson does Chapter 8 state after describing Habil’s and Qabil’s offerings?',
-    options: ['Real goodness is giving the best and the most loved', 'A person’s job decides whether the person is good', 'The quality and intention behind a gift never matter'], correctAnswer: 0,
+    options: ['Real goodness is giving the best and the most loved','A person’s job decides whether the person is good','The quality and intention behind a gift never matter'], correctAnswer: 0,
     explanation: 'The chapter explicitly states that real goodness is giving the best and the most loved.',
     feedback: { correct: 'Correct.', incorrect: 'Use the final sentence of Chapter 8, not the brothers’ job titles.' }
   },
-  {
+{
     id: 'adam-a2-final-3', type: 'multiple-choice', title: 'Iblis’s Plan', instructions: 'Choose the plan stated in Chapter 4.',
-    question: 'What did Iblis want to happen to Adam?', options: ['He wanted Adam to lose Allah’s love', 'He wanted Adam to remain careful about Iblis', 'He wanted Adam to keep following Allah’s warning'], correctAnswer: 0,
+    question: 'What did Iblis want to happen to Adam?', options: ['He wanted Adam to remain careful about Iblis','He wanted Adam to keep following Allah’s warning','He wanted Adam to lose Allah’s love'], correctAnswer: 2,
     explanation: 'The chapter says Iblis wanted Adam to lose Allah’s love, just as Iblis had.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence explaining what Iblis wanted after he waited for a chance.' }
   },
-  {
+{
     id: 'adam-a2-final-4', type: 'true-false', title: 'Two Responses to Being Wrong', instructions: 'Decide whether the comparison agrees with Chapter 5.',
     question: 'Adam and Eve admitted their mistake, and Iblis also accepted that he was wrong.', correctAnswer: false,
     explanation: 'Adam and Eve were sorry and tried to repair their mistake; Iblis kept believing that he was right.',
     feedback: { correct: 'Correct. You compared two different responses to being wrong.', incorrect: 'Compare the paragraph about Adam and Eve’s regret with the final paragraph about Iblis.' }
   },
-  {
+{
     id: 'adam-a2-final-5', type: 'true-false', title: 'Daily Life', instructions: 'Decide whether the statement agrees with Chapter 6.',
     question: 'Iblis wanted people not to remember Allah in their daily lives.', correctAnswer: true,
     explanation: 'The chapter states this as Iblis’s continuing aim on Earth.', feedback: { correct: 'Correct.', incorrect: 'Reread the final sentence about Iblis in Chapter 6.' }
   },
-  {
+{
     id: 'adam-a2-final-6', type: 'matching', title: 'Habil and Qabil', instructions: 'Match each brother with the right description.',
     question: 'Which description is right for each brother?',
     matchingPairs: [
@@ -226,7 +222,7 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     explanation: 'The two chapters contrast Habil’s gentle, non-retaliating response with Qabil’s jealousy and uncontrolled anger.',
     feedback: { correct: 'Correct. You connected character descriptions with later actions.', incorrect: 'Use the character descriptions in Chapter 8 and the brothers’ actions in Chapter 9.' }
   },
-  {
+{
     id: 'adam-a2-final-7', type: 'matching', title: 'Lessons at the End', instructions: 'Match each idea with the action advised in Chapter 10.',
     question: 'Connect each idea to the positive action in the final chapter.',
     matchingPairs: [{ left: 'Jealousy', right: 'stay away from it' }, { left: 'Anger', right: 'control it' }, { left: 'Other people', right: 'be kind to them' }],
@@ -234,19 +230,19 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     explanation: 'The final chapter turns earlier events into clear behavioural advice.',
     feedback: { correct: 'Correct.', incorrect: 'Reread the advice sentences in Chapter 10 and match each idea with its action.' }
   },
-  {
+{
     id: 'adam-a2-final-8', type: 'fill-blanks', title: 'Origin and Value', instructions: 'Complete the chapter sentence with one word.',
     question: 'Complete the idea from Chapter 3.', fillBlanksText: 'For Allah, clay or fire did not make anybody [blank].', correctAnswer: 'valuable',
     explanation: 'The missing word is valuable.',
     feedback: { correct: 'Correct.', incorrect: 'Use the sentence beginning “For Allah” and find the final value word.' }
   },
-  {
+{
     id: 'adam-a2-final-9', type: 'fill-blanks', title: 'Guiding Children', instructions: 'Complete one positive action from Chapter 7.',
     question: 'Complete the sentence.', fillBlanksText: 'Adam and Eve taught their children to [blank] well and to thank Allah.', correctAnswer: 'behave',
     explanation: 'The chapter says they taught their children to behave well and thank Allah.',
     feedback: { correct: 'Correct.', incorrect: 'Find the family paragraph and look at the first positive teaching action.' }
   },
-  {
+{
     id: 'adam-a2-final-10', type: 'sequencing', title: 'Story Order', instructions: 'Put these events in the correct order.',
     question: 'What happened first, next, and later?',
     sequencingItems: [
@@ -260,15 +256,14 @@ export const adamA2FinalChallengeExercises: Exercise[] = [
     explanation: 'These events happen in this order across Chapters 5–9.',
     feedback: { correct: 'Correct. You connected five later stages in order.', incorrect: 'Use Chapters 5–9 and place one event at a time.' }
   },
-
-  {
+{
     id: 'adam-a2-final-11', type: 'multiple-choice', title: 'Knowledge and Respect', instructions: 'Choose the answer stated in Chapter 2.',
     question: 'Why did the angels admire and respect Adam?',
-    options: ['Because Allah gave him knowledge and taught him to think and learn', 'Because he was created from fire', 'Because he already had many children'], correctAnswer: 0,
+    options: ['Because he was created from fire','Because Allah gave him knowledge and taught him to think and learn','Because he already had many children'], correctAnswer: 1,
     explanation: 'Chapter 2 says Allah gave Adam knowledge, taught him to think, and gave him the ability to learn and understand.',
     feedback: { correct: 'Correct.', incorrect: 'Reread the sentences about Adam’s knowledge in Chapter 2.' }
   },
-  {
+{
     id: 'adam-a2-final-12', type: 'true-false', title: 'Different Human Colors', instructions: 'Decide whether the statement agrees with Chapter 1.',
     question: 'Chapter 1 connects different human skin colors with soil collected from different parts of the earth.', correctAnswer: true,
     explanation: 'The chapter says soil was collected from different parts of the earth and connects this with different human skin colors.',
