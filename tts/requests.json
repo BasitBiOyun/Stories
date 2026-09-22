@@ -1,46 +1,46 @@
 {
   "version": 1,
-  "sourceBatch": "yunus-emre-20260922-batch1",
+  "sourceBatch": "yunus-emre-20260922-batch2",
   "requests": [
     {
-      "id": "yunus-a2-ch5-rowan-20260922-v1",
+      "id": "yunus-b1-ch7-rowan-20260922-v1",
       "enabled": true,
       "allowOverwrite": true,
       "cleanupDuplicates": false,
-      "storagePath": "yunus/a2/audio/04_Chapter_5_Straight_Wood_and_the_Ego.mp3",
-      "narrationText": "Straight Wood and the Ego\n\nJust imagine! Carrying firewood every day hurts your back and leaves bad cuts. He chose the straightest pieces of wood with the greatest care. So why was he doing that?\n\nThe wood is Yunus’s ego and it looks like it needs to be corrected. It looks like Yunus is working with wood to fix crooked pieces. But in fact, he is training his own heart and ego. Every time he uses the axe, he makes a bad part of himself better. This service taught him how to have a good heart and do the right thing.\n\nYunus served his teacher Taptuk Emre in this way for exactly forty years. Taptuk Emre noticed that Yunus never carried crooked wood to the house. One day he asked Yunus the following question:\n\n\"My Yunus, is there no crooked wood in the mountains? Why do you always bring straight pieces?\""
+      "storagePath": "yunus/b1/audio/06_Chapter_7_Yunus_as_a_Wise_Dervish.mp3",
+      "narrationText": "Yunus as a Wise Dervish.\n\n\nAnatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.\n\nSo in such an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.\n\nYunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet's Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs."
     },
     {
-      "id": "yunus-a2-ch6-rowan-20260922-v1",
+      "id": "yunus-b1-ch11-rowan-20260922-v1",
       "enabled": true,
       "allowOverwrite": true,
       "cleanupDuplicates": false,
-      "storagePath": "yunus/a2/audio/05_Chapter_6_The_Door_of_Honesty.mp3",
-      "narrationText": "The Door of Honesty\n\nYunus replied, \"My teacher, this place is a door of honesty and goodness. Not even a crooked piece of wood can enter here. And a dishonest and insincere person cannot enter this place, either.\"\n\nNature and living alone helped the dervish think deeply about himself. During this time, Yunus made his heart purer. He learned the special language of all creatures. He looked at nature and found a lesson from everything in it, like reading the Quran. Also, the lessons and talks at the dervish house helped him with this learning. For Yunus, woodcutting in nature helped him become a better person.\n\nHe first learned to be alone with Allah in the mountains. The mountains are quiet and far from people. There are trees, animals, and rivers. If you look closely, you find a deeper meaning in everything in nature. Everything tells a story."
+      "storagePath": "yunus/b1/audio/10_Chapter_11_Intellect_and_Death.mp3",
+      "narrationText": "Intellect and Death\n\nHe highlights that for a person to reach salvation, heart and intellect must support one another.\n\nHe says:\n\n“May your intelligence / wisdom save you from all troubles\nMay happiness be yours for all the months and years to come”\n\nDeath is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.\n\nAbout death he says:\n\n“Whoever comes into this world must later leave it,\nA guest in this world, one day they must set out for their homeland”"
     },
     {
-      "id": "yunus-a2-ch7-rowan-20260922-v1",
+      "id": "yunus-b2-ch2-rowan-20260922-v1",
       "enabled": true,
       "allowOverwrite": true,
       "cleanupDuplicates": false,
-      "storagePath": "yunus/a2/audio/06_Chapter_7_A_Single_Daisy.mp3",
-      "narrationText": "A Single Daisy\n\nOne day, Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers. I will give a gift to whoever prepares the most beautiful bunch of flowers.” All the dervishes went out into the fields. They picked flowers and ran back to their teacher. Yunus was the last to return.\n\nIn the late afternoon, he returned with a single daisy. Some dervishes were making fun of Yunus. They whispered in each other’s ears, “Just look at him! All he could find was a single daisy!” Taptuk asked Yunus about the meaning behind this single daisy. Yunus replied, “My teacher, I walked around the fields, and wherever I saw a flower, I heard that it was saying the name of Allah. I could not cut any of them. When it started to get dark, a daisy called out to me:"
+      "storagePath": "yunus/b2/audio/01_Chapter_2_His_Style_and_Education.mp3",
+      "narrationText": "His Style and Education\n\nHis style is neither too simple nor too complex. Thus, his works both have literary value and are easy to understand. His philosophy includes fundamental values that have a significant influence on Turkish culture and ethics in Turkish society.\n\nAccording to historical accounts, he was a contemporary of famous figures such as Hacı Bektaş-ı Veli, Mevlana Celaleddin-i Rumi, and Saru Saltuk. As to the widely accepted view, he was born in 1240–41 and died in 1320–21. He is considered the founder of Turkish Sûfî literature.\n\nSome sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas. He also studied both divine love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).\n\nAt that time, tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time."
     },
     {
-      "id": "yunus-b1-ch4-rowan-20260922-v1",
+      "id": "yunus-b2-ch3-rowan-20260922-v1",
       "enabled": true,
       "allowOverwrite": true,
       "cleanupDuplicates": false,
-      "storagePath": "yunus/b1/audio/03_Chapter_4_The_Babai_Revolts.mp3",
-      "narrationText": "The Babai Revolts\n\nIf we take a closer look at this historical atmosphere, we can better understand Anatolia—the land where Yunus Emre lived and recited his unforgettable verses.\n\nThe rule of the Anatolian Seljuk Sultan Alaeddin the First (1220–1237) was the most powerful and brilliant period of the Seljuks. He expanded the country’s borders and established a navy in the Mediterranean and Black Seas. At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline. The Mongol invasion caused many people to migrate to Anatolia from Central Asia, which totally turned the lives of the local people upside down. At the beginning of the 13th century, the Turkmen population grew in Anatolia. However, Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos."
+      "storagePath": "yunus/b2/audio/02_Chapter_3_Tekkés_and_Difficult_Times.mp3",
+      "narrationText": "Tekkes and Difficult Times\n\nBesides, they were leading institutions in the field of the fine arts, particularly poetry. Many of the great masters of Turkish poetry were trained in tekkes. Yunus Emre was also one of the great masters of poetry who had been trained under his sheikh, Taptuk Emre.\n\nThe 13th and 14th centuries, the period in which Yunus Emre was born and lived, coincided with hard times. In those years, the Anatolian Seljuks were severely weakened by the Babai uprisings. This was immediately followed by the defeat at Kösedağ. The defeat at Kösedağ facilitated the Mongols' invasion of Anatolia. Anatolia faced political, economic, and social hardships as a result of these assaults. Society was struggling to cope with these trials.\n\nIf we take a closer look at this historical atmosphere, we can better understand Anatolia—the land where Yunus Emre lived and recited his unforgettable verses.\n\nThe rule of the Anatolian Seljuk Sultan Alaeddin the First (1220–1237) was the most powerful and glorious period of the Seljuks. He expanded the country’s borders and established a navy in the Mediterranean and Black Seas."
     },
     {
-      "id": "yunus-b1-ch6-rowan-20260922-v1",
+      "id": "yunus-b2-ch11-rowan-20260922-v1",
       "enabled": true,
       "allowOverwrite": true,
       "cleanupDuplicates": false,
-      "storagePath": "yunus/b1/audio/05_Chapter_6_Chaos_in_Anatolia.mp3",
-      "narrationText": "Chaos in Anatolia\n\nThe men were killed by the sword. The women and children were taken captive and forced to go with the Mongols. They caused a lot of destruction, sadness, and misery everywhere they went. After these cruel raids, cities were deserted. Yunus Emre lived during a time when the Mongol army invaded Anatolia.\n\nThese events created an atmosphere of panic in Anatolia that had never been seen before. Finally, an agreement was made with the Mongols, but in time the Seljuks became dependent on them. The Seljuk sultans acted almost like government officials for the Mongols. A significant part of state income began to be sent to the Mongols every year. However, this tax increased continuously and this made both the state and the people poorer. After 1277, the Mongols began to administer Anatolia through the commanders and governors that they sent. And in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire (The Mongol state centred in Iran)."
+      "storagePath": "yunus/b2/audio/10_Chapter_11_Salvation_and_Death.mp3",
+      "narrationText": "Salvation and Death\n\nHis understanding of unity is also evident in the relationship between the heart and reason; he emphasizes that for a person to reach salvation, heart and reason must support one another.\n\nYunus says:\n\n“May your intelligence / wisdom save you from all troubles\nMay happiness be yours for all the months and years to come”\n\nDeath is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and righteous life.\n\nAbout death Yunus says:\n\n“Whoever comes into this world must eventually leave it,\nA guest in this world, one day they must set out for their homeland”"
     }
   ]
 }
