@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Trophy, RotateCcw, ArrowRight, Medal, Target } from '../ui/icons';
+import { Trophy, ArrowRight, Target } from '../ui/icons';
 import { BookData, Exercise } from '../../types';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
@@ -70,14 +70,17 @@ const normalizeText = (value: unknown) => String(value ?? '')
 
 export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComplete }) => {
   const { t, formatNumber, isRTL, language } = useLanguage();
-  const { setFinalScore } = useStoryProgress();
+  const { setFinalScore, setFinalChallengeDetails } = useStoryProgress();
   const theme = React.useMemo(() => getTheme(bookData), [bookData]);
   const isArabic = language === 'ar';
 
-  const [gameState, setGameState] = React.useState<'intro' | 'playing' | 'results'>('intro');
+  const [gameState, setGameState] = React.useState<'intro' | 'playing'>('intro');
   const [questions, setQuestions] = React.useState<Exercise[]>([]);
   const [currentStep, setCurrentStep] = React.useState(0);
   const [score, setScore] = React.useState(0);
+  const [firstAttemptCorrect, setFirstAttemptCorrect] = React.useState(0);
+  const [correctedAnswers, setCorrectedAnswers] = React.useState(0);
+  const [attemptNumber, setAttemptNumber] = React.useState<1 | 2>(1);
   const [selectedAnswer, setSelectedAnswer] = React.useState<FinalAnswer>(null);
   const [lastCorrect, setLastCorrect] = React.useState<boolean | null>(null);
   const [fillDraft, setFillDraft] = React.useState('');
@@ -117,6 +120,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setMatchingAssignments({});
     setSequenceDraft([]);
     setReflectionDraft('');
+    setAttemptNumber(1);
   };
 
   const startChallenge = () => {
@@ -125,8 +129,25 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setQuestions(selected);
     setCurrentStep(0);
     setScore(0);
+    setFirstAttemptCorrect(0);
+    setCorrectedAnswers(0);
     resetQuestionState();
-    setGameState(selected.length ? 'playing' : 'results');
+
+    if (!selected.length) {
+      setFinalScore(0);
+      setFinalChallengeDetails({
+        firstAttemptAccuracy: 0,
+        masteryAccuracy: 0,
+        correctedAnswers: 0,
+        missedQuestionCount: 0,
+        reflectionCompleted: 0,
+        scoredQuestionCount: 0,
+      });
+      onComplete?.();
+      return;
+    }
+
+    setGameState('playing');
   };
 
   const presentedOptions = React.useMemo(
@@ -176,14 +197,31 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setSelectedAnswer(answer);
     setLastCorrect(correct);
 
+    if (attemptNumber === 1 && correct) {
+      setFirstAttemptCorrect((previous) => previous + 1);
+    }
+
     if (correct) {
       setScore((previous) => previous + 1);
-      confetti({
-        particleCount: 90,
-        spread: 65,
-        origin: { y: 0.65 },
-        colors: theme.confetti,
-      });
+      if (attemptNumber === 2) {
+        setCorrectedAnswers((previous) => previous + 1);
+      }
+    }
+  };
+
+  const retryCurrentQuestion = () => {
+    if (!currentQuestion || attemptNumber !== 1 || lastCorrect !== false) return;
+
+    setSelectedAnswer(null);
+    setLastCorrect(null);
+    setAttemptNumber(2);
+    setFillDraft('');
+    setSelectedMatchingLeft(null);
+    setMatchingAssignments({});
+    setReflectionDraft('');
+
+    if (currentQuestion.type === 'sequencing') {
+      setSequenceDraft([...(currentQuestion.sequencingItems ?? [])].map((item) => item.id).reverse());
     }
   };
 
@@ -220,9 +258,27 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       return;
     }
 
-    const percentage = Math.round((score / Math.max(scoredQuestionCount, 1)) * 100);
-    setFinalScore(percentage);
-    setGameState('results');
+    const masteryAccuracy = Math.round((score / Math.max(scoredQuestionCount, 1)) * 100);
+    const firstAttemptAccuracy = Math.round((firstAttemptCorrect / Math.max(scoredQuestionCount, 1)) * 100);
+
+    setFinalScore(masteryAccuracy);
+    setFinalChallengeDetails({
+      firstAttemptAccuracy,
+      masteryAccuracy,
+      correctedAnswers,
+      missedQuestionCount: Math.max(scoredQuestionCount - firstAttemptCorrect, 0),
+      reflectionCompleted: reflectionQuestionCount,
+      scoredQuestionCount,
+    });
+
+    confetti({
+      particleCount: 180,
+      spread: 85,
+      origin: { y: 0.65 },
+      colors: theme.confetti,
+    });
+
+    onComplete?.();
   };
 
   if (gameState === 'intro') {
