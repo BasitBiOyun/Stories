@@ -137,6 +137,7 @@ export const inferLearningSystemConfig = (pages: PageData[], level: Level): Lear
     reviewPageId: review.id,
     glossaryPageIds: [glossaries[0].id, glossaries[1].id],
     finalChallengePageId: finalChallenge.id,
+    finalCount: finalChallenge.exercises?.length,
   };
 };
 
