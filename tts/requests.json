@@ -1,46 +1,5 @@
 {
   "version": 1,
-  "sourceBatch": "yunus-emre-20260922-batch2",
-  "requests": [
-    {
-      "id": "yunus-b1-ch7-rowan-20260922-v1",
-      "enabled": true,
-      "allowOverwrite": true,
-      "cleanupDuplicates": false,
-      "storagePath": "yunus/b1/audio/06_Chapter_7_Yunus_as_a_Wise_Dervish.mp3",
-      "narrationText": "Yunus as a Wise Dervish.\n\n\nAnatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.\n\nSo in such an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.\n\nYunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet's Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs."
-    },
-    {
-      "id": "yunus-b1-ch11-rowan-20260922-v1",
-      "enabled": true,
-      "allowOverwrite": true,
-      "cleanupDuplicates": false,
-      "storagePath": "yunus/b1/audio/10_Chapter_11_Intellect_and_Death.mp3",
-      "narrationText": "Intellect and Death\n\nHe highlights that for a person to reach salvation, heart and intellect must support one another.\n\nHe says:\n\n“May your intelligence / wisdom save you from all troubles\nMay happiness be yours for all the months and years to come”\n\nDeath is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.\n\nAbout death he says:\n\n“Whoever comes into this world must later leave it,\nA guest in this world, one day they must set out for their homeland”"
-    },
-    {
-      "id": "yunus-b2-ch2-rowan-20260922-v1",
-      "enabled": true,
-      "allowOverwrite": true,
-      "cleanupDuplicates": false,
-      "storagePath": "yunus/b2/audio/01_Chapter_2_His_Style_and_Education.mp3",
-      "narrationText": "His Style and Education\n\nHis style is neither too simple nor too complex. Thus, his works both have literary value and are easy to understand. His philosophy includes fundamental values that have a significant influence on Turkish culture and ethics in Turkish society.\n\nAccording to historical accounts, he was a contemporary of famous figures such as Hacı Bektaş-ı Veli, Mevlana Celaleddin-i Rumi, and Saru Saltuk. As to the widely accepted view, he was born in 1240–41 and died in 1320–21. He is considered the founder of Turkish Sûfî literature.\n\nSome sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas. He also studied both divine love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).\n\nAt that time, tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time."
-    },
-    {
-      "id": "yunus-b2-ch3-rowan-20260922-v1",
-      "enabled": true,
-      "allowOverwrite": true,
-      "cleanupDuplicates": false,
-      "storagePath": "yunus/b2/audio/02_Chapter_3_Tekkés_and_Difficult_Times.mp3",
-      "narrationText": "Tekkes and Difficult Times\n\nBesides, they were leading institutions in the field of the fine arts, particularly poetry. Many of the great masters of Turkish poetry were trained in tekkes. Yunus Emre was also one of the great masters of poetry who had been trained under his sheikh, Taptuk Emre.\n\nThe 13th and 14th centuries, the period in which Yunus Emre was born and lived, coincided with hard times. In those years, the Anatolian Seljuks were severely weakened by the Babai uprisings. This was immediately followed by the defeat at Kösedağ. The defeat at Kösedağ facilitated the Mongols' invasion of Anatolia. Anatolia faced political, economic, and social hardships as a result of these assaults. Society was struggling to cope with these trials.\n\nIf we take a closer look at this historical atmosphere, we can better understand Anatolia—the land where Yunus Emre lived and recited his unforgettable verses.\n\nThe rule of the Anatolian Seljuk Sultan Alaeddin the First (1220–1237) was the most powerful and glorious period of the Seljuks. He expanded the country’s borders and established a navy in the Mediterranean and Black Seas."
-    },
-    {
-      "id": "yunus-b2-ch11-rowan-20260922-v1",
-      "enabled": true,
-      "allowOverwrite": true,
-      "cleanupDuplicates": false,
-      "storagePath": "yunus/b2/audio/10_Chapter_11_Salvation_and_Death.mp3",
-      "narrationText": "Salvation and Death\n\nHis understanding of unity is also evident in the relationship between the heart and reason; he emphasizes that for a person to reach salvation, heart and reason must support one another.\n\nYunus says:\n\n“May your intelligence / wisdom save you from all troubles\nMay happiness be yours for all the months and years to come”\n\nDeath is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and righteous life.\n\nAbout death Yunus says:\n\n“Whoever comes into this world must eventually leave it,\nA guest in this world, one day they must set out for their homeland”"
-    }
-  ]
+  "requests": [],
+  "sourceBatch": "yunus-emre-20260922-complete"
 }

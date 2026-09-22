@@ -307,7 +307,7 @@ Misafirdir, vatanına, bir gün sefer etse gerek
     vocabulary: [
       { word: 'advisor', definition: 'a person or influence that gives guidance about how to act or decide' },
       { word: 'heart and reason', definition: 'the two human capacities that the chapter says should support one another' },
-      { word: 'preparing', definition: 'making oneself ready in advance for a future event or responsibility' },
+      { word: 'prepare', definition: 'to make oneself ready in advance for a future event or responsibility' },
       { word: 'meaningful', definition: 'having clear importance, purpose, or value' },
       { word: 'death', definition: 'the end of physical life, presented here as a reminder that can guide conduct' },
     ],
@@ -532,7 +532,7 @@ const yunusB2GlossaryPronunciation:Record<string,string>={
   "perceives": "/pərˈsiːvz/",
   "advisor": "/ədˈvaɪzər/",
   "heart and reason": "/hɑːrt ænd ˈriːzən/",
-  "preparing": "/prɪˈperɪŋ/",
+  "prepare": "/prɪˈper/",
   "meaningful": "/ˈmiːnɪŋfəl/",
   "death": "/deθ/",
   "morality": "/məˈræləti/",
