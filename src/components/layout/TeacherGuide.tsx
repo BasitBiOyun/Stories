@@ -312,8 +312,8 @@ entries.set(key, { word, definition });
                 { title: t('tg.sel'), desc: t('tg.selDesc') }
               ].map((item, i) => (
                 <div key={i} className="bg-white/5 border border-gold/10 p-4 sm:p-6 rounded-xl">
-                  <h4 className="font-display text-gold text-xs sm:text-base uppercase tracking-widest mb-2 sm:mb-3">{item.title}</h4>
-                  <p className="font-serif text-parchment/70 text-xs sm:text-base leading-relaxed">{item.desc}</p>
+                  <h4 className="font-display text-gold text-[13px] sm:text-base md:text-[17px] uppercase tracking-widest mb-2 sm:mb-3">{item.title}</h4>
+                  <p className="font-serif text-parchment/70 text-[13px] sm:text-base md:text-[17px] leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -336,7 +336,7 @@ entries.set(key, { word, definition });
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-display shrink-0 text-sm sm:text-xl">{formatNumber(i+1)}</div>
                   <div>
                     <h4 className="font-display text-parchment text-base sm:text-xl">{item.title}</h4>
-                    <p className="font-serif text-xs sm:text-lg text-parchment/60 leading-relaxed">{item.desc}</p>
+                    <p className="font-serif text-[13px] sm:text-lg text-parchment/60 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -354,7 +354,7 @@ entries.set(key, { word, definition });
                   {metadata?.implementationPlans?.optionA.steps?.map((step, i) => (
                     <div key={i} className="space-y-1 bg-white/5 p-3 rounded-xl sm:bg-transparent sm:p-0 sm:space-y-2 sm:border-r sm:border-gold/10 sm:pr-4">
                       <div className="font-bold">{formatNumber(step.time)}</div>
-                      <div className="normal-case text-parchment/60 font-serif text-xs sm:text-sm leading-tight">{step.activity}</div>
+                      <div className="normal-case text-parchment/60 font-serif text-[13px] sm:text-[15px] leading-tight">{step.activity}</div>
                     </div>
                   ))}
                 </div>
@@ -364,9 +364,9 @@ entries.set(key, { word, definition });
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                   {metadata?.implementationPlans?.optionB.lessons?.map((lesson, i) => (
                     <div key={i}>
-                      <h5 className="font-display text-parchment text-xs sm:text-sm mb-2 uppercase tracking-widest">{lesson.title}</h5>
+                      <h5 className="font-display text-parchment text-[13px] sm:text-[15px] mb-2 uppercase tracking-widest">{lesson.title}</h5>
                       <p className={cn(
-                        "font-serif text-white text-xs sm:text-base leading-relaxed",
+                        "font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed",
                         language !== 'ar' && "italic"
                       )}>{lesson.description}</p>
                     </div>
@@ -381,7 +381,7 @@ entries.set(key, { word, definition });
                       {metadata?.implementationPlans?.optionC.steps.map((step, i) => (
                         <div key={i} className="space-y-2 bg-white/5 border border-gold/5 p-3 sm:p-4 rounded-xl leading-relaxed">
                           <div className="font-bold text-gold">{formatNumber(step.time)}</div>
-                          <div className="normal-case text-parchment/70 font-serif text-xs sm:text-sm leading-tight font-medium">{step.activity}</div>
+                          <div className="normal-case text-parchment/70 font-serif text-[13px] sm:text-[15px] leading-tight font-medium">{step.activity}</div>
                         </div>
                       ))}
                     </div>
@@ -390,9 +390,9 @@ entries.set(key, { word, definition });
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                       {metadata?.implementationPlans?.optionC.lessons.map((lesson, i) => (
                         <div key={i}>
-                          <h5 className="font-display text-parchment text-xs sm:text-sm mb-2 uppercase tracking-widest">{lesson.title}</h5>
+                          <h5 className="font-display text-parchment text-[13px] sm:text-[15px] mb-2 uppercase tracking-widest">{lesson.title}</h5>
                           <p className={cn(
-                            "font-serif text-white text-xs sm:text-base leading-relaxed",
+                            "font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed",
                             language !== 'ar' && "italic"
                           )}>{lesson.description}</p>
                         </div>
@@ -410,20 +410,20 @@ entries.set(key, { word, definition });
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.bdaFramework')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
               <div className="space-y-3 sm:space-y-6">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.beforeReading')}</h4>
-                <div className="font-serif text-xs sm:text-base text-parchment/70 leading-relaxed">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.beforeReading')}</h4>
+                <div className="font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/70 leading-relaxed">
                   {metadata?.readingFramework.before}
                 </div>
               </div>
               <div className="space-y-3 sm:space-y-6">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.duringReading')}</h4>
-                <div className="font-serif text-xs sm:text-base text-parchment/70 leading-relaxed">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.duringReading')}</h4>
+                <div className="font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/70 leading-relaxed">
                   {metadata?.readingFramework.during}
                 </div>
               </div>
               <div className="space-y-3 sm:space-y-6">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.afterReading')}</h4>
-                <div className="font-serif text-xs sm:text-base text-parchment/70 leading-relaxed">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.afterReading')}</h4>
+                <div className="font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/70 leading-relaxed">
                   {metadata?.readingFramework.after}
                 </div>
               </div>
@@ -451,20 +451,20 @@ entries.set(key, { word, definition });
                     <div className="p-4 sm:p-8 space-y-6 sm:space-y-8">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                         <div className="space-y-3 sm:space-y-4">
-                          <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                          <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                             <CheckCircle size={16} className="text-gold shrink-0" /> {t('tg.learningObjectives')}
                           </h5>
-                          <ul className="space-y-2 font-serif text-xs sm:text-base text-white">
+                          <ul className="space-y-2 font-serif text-[13px] sm:text-base md:text-[17px] text-white">
                             {section.objectives.map((obj, i) => <li key={i} className="flex gap-2.5 sm:gap-3"><span className="text-gold/40">•</span> {obj}</li>)}
                           </ul>
                         </div>
                         <div className="space-y-3 sm:space-y-4">
-                          <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                          <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                             <Lightbulb size={16} className="text-gold shrink-0" /> {t('tg.pedagogyApproach')}
                           </h5>
                           <div className="bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
                             <p className={cn(
-                              "font-serif text-xs sm:text-base text-white leading-relaxed",
+                              "font-serif text-[13px] sm:text-base md:text-[17px] text-white leading-relaxed",
                               language !== 'ar' && "italic"
                             )}>
                               {section.pedagogy}
@@ -477,26 +477,26 @@ entries.set(key, { word, definition });
                         <div className="space-y-2 sm:space-y-3">
                           <h5 className="font-display text-[10px] text-gold/60 uppercase tracking-widest">{t('tg.grammarFocus')}</h5>
                           <div className="p-3 bg-white/5 rounded-lg border border-gold/5">
-                            <p className="font-serif text-xs sm:text-base text-white">{section.grammarFocus}</p>
+                            <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white">{section.grammarFocus}</p>
                           </div>
                         </div>
                         <div className="space-y-2 sm:space-y-3">
                           <h5 className="font-display text-[10px] text-gold/60 uppercase tracking-widest">{t('tg.pronunciationFocus')}</h5>
                           <div className="p-3 bg-white/5 rounded-lg border border-gold/5">
-                            <p className="font-serif text-xs sm:text-base text-white">{section.pronunciationFocus}</p>
+                            <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white">{section.pronunciationFocus}</p>
                           </div>
                         </div>
                       </div>
 
                       <div className="space-y-3 sm:space-y-4 border-t border-gold/10 pt-4 sm:pt-8">
-                        <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                        <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                           <ClipboardList size={16} className="text-gold shrink-0" /> {t('tg.lessonFlow')}
                         </h5>
                         <div className="space-y-2.5 sm:space-y-3">
                           {section.lessonPlan.split(/\d\./).filter(Boolean).map((step, i) => (
                             <div key={i} className="flex gap-2.5 sm:gap-4 items-start group/step">
                               <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold font-display text-[10px] sm:text-xs shrink-0 group-hover/step:bg-gold group-hover/step:text-white transition-colors mt-0.5">{formatNumber(i+1)}</div>
-                              <p className="font-serif text-xs sm:text-base text-white leading-relaxed">{step.trim()}</p>
+                              <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white leading-relaxed">{step.trim()}</p>
                             </div>
                           ))}
                         </div>
@@ -507,7 +507,7 @@ entries.set(key, { word, definition });
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 border-t border-gold/10 pt-4 sm:pt-8">
                           {section.assessmentTools && (
                             <div className="space-y-3 sm:space-y-4">
-                              <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                              <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                                 <Award size={16} className="text-gold shrink-0" /> {t('tg.assessmentTools')}
                               </h5>
                               <div className="space-y-3 sm:space-y-4">
@@ -524,7 +524,7 @@ entries.set(key, { word, definition });
                                 {section.assessmentTools.exitTicket && (
                                   <div>
                                     <span className="text-[10px] text-gold/60 uppercase font-display block mb-2">{t('tg.exitTicketQuestions')}</span>
-                                    <ul className="space-y-1 font-serif text-xs sm:text-sm text-white">
+                                    <ul className="space-y-1 font-serif text-[13px] sm:text-[15px] text-white">
                                       {section.assessmentTools.exitTicket.map((q, i) => <li key={i}>• {q}</li>)}
                                     </ul>
                                   </div>
@@ -534,10 +534,10 @@ entries.set(key, { word, definition });
                           )}
                           {section.kinestheticActivities && (
                             <div className="space-y-3 sm:space-y-4">
-                              <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                              <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                                 <Move size={16} className="text-gold shrink-0" /> {t('tg.kinesthetic')}
                               </h5>
-                              <ul className="space-y-2 sm:space-y-3 font-serif text-xs sm:text-base text-white">
+                              <ul className="space-y-2 sm:space-y-3 font-serif text-[13px] sm:text-base md:text-[17px] text-white">
                                 {section.kinestheticActivities.map((act, i) => <li key={i} className="flex gap-2.5 sm:gap-3"><span className="text-gold/40">•</span> {act}</li>)}
                               </ul>
                             </div>
@@ -547,35 +547,35 @@ entries.set(key, { word, definition });
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 border-t border-gold/10 pt-4 sm:pt-8">
                         <div className="space-y-3 sm:space-y-4">
-                          <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                          <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                             <MessageSquare size={16} className="text-gold shrink-0" /> {t('tg.discussionPoints')}
                           </h5>
-                          <ul className="space-y-2 font-serif text-xs sm:text-base text-white">
+                          <ul className="space-y-2 font-serif text-[13px] sm:text-base md:text-[17px] text-white">
                             {section.discussionPoints.map((point, i) => <li key={i} className="flex gap-2.5 sm:gap-3"><span className="text-gold/40">•</span> {point}</li>)}
                           </ul>
                         </div>
                         <div className="space-y-3 sm:space-y-4">
-                          <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                          <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                             <Users size={16} className="text-gold shrink-0" /> {t('tg.differentiation')}
                           </h5>
                           <div className="space-y-3 sm:space-y-4">
                             <div className="bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
                               <span className="text-[10px] text-gold/60 uppercase font-display block mb-1">{t('tg.fastFinishers')}:</span>
-                              <p className="text-xs sm:text-sm font-serif text-white leading-relaxed">{section.differentiation.fastFinishers}</p>
+                              <p className="text-[13px] sm:text-[15px] font-serif text-white leading-relaxed">{section.differentiation.fastFinishers}</p>
                             </div>
                             <div className="bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
                               <span className="text-[10px] text-gold/60 uppercase font-display block mb-1">{t('tg.strugglingLearners')}:</span>
-                              <p className="text-xs sm:text-sm font-serif text-white leading-relaxed">{section.differentiation.strugglingLearners}</p>
+                              <p className="text-[13px] sm:text-[15px] font-serif text-white leading-relaxed">{section.differentiation.strugglingLearners}</p>
                             </div>
                           </div>
                         </div>
                       </div>
 
                       <div className="bg-gold/5 border border-gold/10 p-4 sm:p-6 rounded-2xl space-y-3 sm:space-y-4">
-                        <h5 className="font-display text-xs sm:text-sm text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                        <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
                           <Heart size={16} className="text-gold shrink-0" /> {t('tg.appTips')}
                         </h5>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 font-serif text-xs sm:text-sm text-white">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 font-serif text-[13px] sm:text-[15px] text-white">
                           {section.interactiveTips.map((tip, i) => <li key={i} className="flex gap-2.5 sm:gap-3">
                             <CheckCircle size={14} className="text-gold shrink-0 mt-0.5" /> {tip}
                           </li>)}
@@ -601,13 +601,13 @@ entries.set(key, { word, definition });
               ].map((item, i) => (
                 <div key={i} className="bg-gold/5 p-4 sm:p-6 rounded-xl border border-gold/10">
                   <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{item.title}</h4>
-                  <p className="font-serif text-white text-xs sm:text-base leading-relaxed">{item.desc}</p>
+                  <p className="font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
             <div className="bg-white/5 p-4 sm:p-6 rounded-xl border border-gold/10">
               <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{t('tg.practicalNotes')}</h4>
-              <ul className="space-y-2 font-serif text-white text-xs sm:text-base leading-relaxed">
+              <ul className="space-y-2 font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">
                 <li>• {t('tg.practicalNote1')}</li>
                 <li>• {t('tg.practicalNote2')}</li>
                 <li>• {t('tg.practicalNote3')}</li>
@@ -622,8 +622,8 @@ entries.set(key, { word, definition });
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.diffStrategies')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
               <div className="space-y-3 sm:space-y-6">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest">{t('tg.forSupport')}</h4>
-                <ul className="space-y-2 sm:space-y-3 font-serif text-xs sm:text-base text-white">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest">{t('tg.forSupport')}</h4>
+                <ul className="space-y-2 sm:space-y-3 font-serif text-[13px] sm:text-base md:text-[17px] text-white">
                   <li>• {t('tg.forSupport1')}</li>
                   <li>• {t('tg.forSupport2')}</li>
                   <li>• {t('tg.forSupport3')}</li>
@@ -632,8 +632,8 @@ entries.set(key, { word, definition });
                 </ul>
               </div>
               <div className="space-y-3 sm:space-y-6">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest">{t('tg.forExtension')}</h4>
-                <ul className="space-y-2 sm:space-y-3 font-serif text-xs sm:text-base text-white">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest">{t('tg.forExtension')}</h4>
+                <ul className="space-y-2 sm:space-y-3 font-serif text-[13px] sm:text-base md:text-[17px] text-white">
                   <li>• {t('tg.forExtension1')}</li>
                   <li>• {t('tg.forExtension2')}</li>
                   <li>• {t('tg.forExtension3')}</li>
@@ -643,7 +643,7 @@ entries.set(key, { word, definition });
             </div>
             <div className="bg-white/5 p-4 sm:p-6 rounded-xl border border-gold/10">
               <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{t('tg.forMixedAbility')}</h4>
-              <ul className="space-y-2 font-serif text-white text-xs sm:text-base leading-relaxed">
+              <ul className="space-y-2 font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">
                 <li>• {t('tg.forMixedAbility1')}</li>
                 <li>• {t('tg.forMixedAbility2')}</li>
                 <li>• {t('tg.forMixedAbility3')}</li>
@@ -658,14 +658,14 @@ entries.set(key, { word, definition });
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
               <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border border-gold/10 hover:bg-gold/5 transition-colors">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase mb-3 sm:mb-4 flex items-center gap-2"><ClipboardList size={16} /> {assessmentProfile.evidenceLabel}</h4>
-                <div className="font-serif text-white text-xs sm:text-base leading-relaxed">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase mb-3 sm:mb-4 flex items-center gap-2"><ClipboardList size={16} /> {assessmentProfile.evidenceLabel}</h4>
+                <div className="font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">
                   {assessmentProfile.description}
                 </div>
               </div>
               <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border border-gold/10 hover:bg-gold/5 transition-colors">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase mb-3 sm:mb-4 flex items-center gap-2"><CheckCircle size={16} /> {assessmentProfile.formativeLabel}</h4>
-                <ul className="space-y-2 font-serif text-white text-xs sm:text-sm leading-relaxed">
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase mb-3 sm:mb-4 flex items-center gap-2"><CheckCircle size={16} /> {assessmentProfile.formativeLabel}</h4>
+                <ul className="space-y-2 font-serif text-white text-[13px] sm:text-[15px] leading-relaxed">
                   {assessmentProfile.evidenceItems.map((item, i) => <li key={i}>• {item}</li>)}
                 </ul>
               </div>
@@ -674,7 +674,7 @@ entries.set(key, { word, definition });
             <div className="bg-gold/5 border border-gold/10 p-4 sm:p-8 rounded-2xl">
               <h4 className="font-display text-lg sm:text-2xl text-gold mb-4 sm:mb-6">{assessmentProfile.rubricTitle}</h4>
               <div className="overflow-x-auto -mx-2 px-2">
-                <table className="w-full text-left font-serif text-xs sm:text-sm text-white min-w-[500px]">
+                <table className="w-full text-left font-serif text-[13px] sm:text-[15px] text-white min-w-[500px]">
                   <thead>
                     <tr className="border-b border-gold/20">
                       <th className={cn("pb-3 sm:pb-4 font-display text-gold uppercase tracking-widest text-[10px]", isRTL && "text-right")}>{t('tg.criterion')}</th>
@@ -686,7 +686,7 @@ entries.set(key, { word, definition });
                   <tbody className="divide-y divide-gold/10">
                     {assessmentProfile.rubricRows.map((row, i) => (
                       <tr key={i}>
-                        <td className="py-3 sm:py-6 font-bold text-parchment text-xs sm:text-base">{row.criterion}</td>
+                        <td className="py-3 sm:py-6 font-bold text-parchment text-[13px] sm:text-base md:text-[17px]">{row.criterion}</td>
                         <td className="py-3 sm:py-6 pr-2 sm:pr-4">{row.excellent}</td>
                         <td className="py-3 sm:py-6 pr-2 sm:pr-4">{row.good}</td>
                         <td className="py-3 sm:py-6">{row.developing}</td>
@@ -736,7 +736,7 @@ entries.set(key, { word, definition });
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">{item.icon}</div>
                   <div>
                     <h4 className="font-display text-base sm:text-xl text-gold mb-1.5 sm:mb-2">{item.title}</h4>
-                    <p className="font-serif text-white text-xs sm:text-base leading-relaxed">{item.desc}</p>
+                    <p className="font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -901,7 +901,7 @@ entries.set(key, { word, definition });
                 <h4 className="font-display text-lg sm:text-2xl text-gold mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
                   <Globe size={20} className="sm:w-6 sm:h-6 shrink-0" /> {t('tg.keyThemes')}
                 </h4>
-                <div className="space-y-3 font-serif text-xs sm:text-lg text-white leading-relaxed">
+                <div className="space-y-3 font-serif text-[13px] sm:text-lg text-white leading-relaxed">
                   <ul className="space-y-2 sm:space-y-3 pl-4 sm:pl-6 border-l-2 border-gold/20">
                     {(globalData ? globalData.themes : fallbackThemes).map((theme, i) => (
                       <li key={i}>• <strong>{theme.title}</strong> {theme.description}</li>
@@ -911,7 +911,7 @@ entries.set(key, { word, definition });
               </div>
               <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border border-gold/10">
                 <h4 className="font-display text-base sm:text-xl text-gold mb-3 sm:mb-4">{t('tg.actionPoints')}</h4>
-                <ul className="space-y-2 sm:space-y-3 font-serif text-white text-xs sm:text-base leading-relaxed">
+                <ul className="space-y-2 sm:space-y-3 font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">
                   {(globalData?.actions || fallbackActions).map((action, i) => (
                     <li key={i}>• {action}</li>
                   ))}
@@ -1096,7 +1096,7 @@ entries.set(key, { word, definition });
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
               <div className="bg-gold/5 p-4 sm:p-6 rounded-xl border border-gold/10">
                 <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{t('tg.keyThemes')}</h4>
-                <ul className="space-y-2 font-serif text-white text-xs sm:text-base leading-relaxed">
+                <ul className="space-y-2 font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed">
                   {(valuesData ? valuesData.items : fallbackItems).map((item, i) => (
                     <li key={i}>• <strong>{item.label}:</strong> {item.value}</li>
                   ))}
@@ -1104,7 +1104,7 @@ entries.set(key, { word, definition });
               </div>
               <div className="bg-white/5 p-4 sm:p-6 rounded-xl border border-gold/10">
                 <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{t('tg.actionPoints')}</h4>
-                <ul className="space-y-2 font-serif text-white text-xs sm:text-sm leading-relaxed">
+                <ul className="space-y-2 font-serif text-white text-[13px] sm:text-[15px] leading-relaxed">
                   {(valuesData?.questions || fallbackQuestions).map((q, i) => (
                     <li key={i}>• {q}</li>
                   ))}
@@ -1208,7 +1208,7 @@ entries.set(key, { word, definition });
             <div className="space-y-4">
               <div className="bg-amber-950/20 border border-amber-500/20 p-4 sm:p-6 rounded-2xl">
                 <h4 className="font-display text-amber-400 text-sm sm:text-base mb-2">{t('tg.keyGuidance')}</h4>
-                <ul className="space-y-2 sm:space-y-3 font-serif text-white text-xs sm:text-sm leading-relaxed">
+                <ul className="space-y-2 sm:space-y-3 font-serif text-white text-[13px] sm:text-[15px] leading-relaxed">
                   {(sensitiveData?.notes || fallbackNotes).map((note, i) => (
                     <li key={i}>• {note}</li>
                   ))}
@@ -1236,14 +1236,14 @@ entries.set(key, { word, definition });
                   <MessageSquare className="text-gold shrink-0 mt-0.5 sm:mt-1 w-5 h-5 sm:w-6 sm:h-6" />
                   <div>
                     <h4 className="font-display text-parchment text-base sm:text-xl mb-1 sm:mb-1.5">{item.title}</h4>
-                    <p className="font-serif text-xs sm:text-lg text-white leading-relaxed">{item.desc}</p>
+                    <p className="font-serif text-[13px] sm:text-lg text-white leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="bg-white/5 p-4 sm:p-6 rounded-xl border border-gold/10">
               <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{t('tg.usefulLanguage')}</h4>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 font-serif text-white text-xs sm:text-sm">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 font-serif text-white text-[13px] sm:text-[15px]">
                 <li>• {t('tg.classroomLang1')}</li>
                 <li>• {t('tg.classroomLang2')}</li>
                 <li>• {t('tg.classroomLang3')}</li>
@@ -1273,7 +1273,7 @@ entries.set(key, { word, definition });
                       <div key={i} className="flex gap-3 sm:gap-4 items-start group">
                         <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0 group-hover:scale-150 transition-transform" />
                         <p className={cn(
-                          "font-serif text-xs sm:text-lg text-white leading-relaxed",
+                          "font-serif text-[13px] sm:text-lg text-white leading-relaxed",
                           language !== 'ar' && "italic"
                         )}>{item}</p>
                       </div>
@@ -1283,7 +1283,7 @@ entries.set(key, { word, definition });
               </div>
               <div className="bg-gold/5 p-4 sm:p-6 rounded-xl border border-gold/10">
                 <h4 className="font-display text-gold text-sm sm:text-base mb-2 sm:mb-3">{t('tg.parentTask')}</h4>
-                <ul className="space-y-2 font-serif text-white text-xs sm:text-sm">
+                <ul className="space-y-2 font-serif text-white text-[13px] sm:text-[15px]">
                   <li>• {t('tg.parentTask1')}</li>
                   <li>• {t('tg.parentTask2')}</li>
                   <li>• {t('tg.parentTask3')}</li>
@@ -1298,7 +1298,7 @@ entries.set(key, { word, definition });
             <h3 className="font-display text-xl sm:text-3xl text-parchment">{t('tg.checklist')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
               <div className="space-y-3 sm:space-y-4">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest">{t('tg.beforeClass')}</h4>
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest">{t('tg.beforeClass')}</h4>
                 {[
                   t('tg.checklistBefore1'),
                   t('tg.checklistBefore2'),
@@ -1307,12 +1307,12 @@ entries.set(key, { word, definition });
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5 sm:gap-3 bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
                     <CheckCircle size={16} className="text-gold shrink-0" />
-                    <p className="font-serif text-white text-xs sm:text-sm">{item}</p>
+                    <p className="font-serif text-white text-[13px] sm:text-[15px]">{item}</p>
                   </div>
                 ))}
               </div>
               <div className="space-y-3 sm:space-y-4">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest">{t('tg.duringClass')}</h4>
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest">{t('tg.duringClass')}</h4>
                 {[
                   t('tg.checklistDuring1'),
                   t('tg.checklistDuring2'),
@@ -1321,12 +1321,12 @@ entries.set(key, { word, definition });
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5 sm:gap-3 bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
                     <CheckCircle size={16} className="text-gold shrink-0" />
-                    <p className="font-serif text-white text-xs sm:text-sm">{item}</p>
+                    <p className="font-serif text-white text-[13px] sm:text-[15px]">{item}</p>
                   </div>
                 ))}
               </div>
               <div className="space-y-3 sm:space-y-4">
-                <h4 className="font-display text-gold text-xs sm:text-sm uppercase tracking-widest">{t('tg.afterClass')}</h4>
+                <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest">{t('tg.afterClass')}</h4>
                 {[
                   t('tg.checklistAfter1'),
                   t('tg.checklistAfter2'),
@@ -1335,7 +1335,7 @@ entries.set(key, { word, definition });
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5 sm:gap-3 bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
                     <CheckCircle size={16} className="text-gold shrink-0" />
-                    <p className="font-serif text-white text-xs sm:text-sm">{item}</p>
+                    <p className="font-serif text-white text-[13px] sm:text-[15px]">{item}</p>
                   </div>
                 ))}
               </div>
@@ -1378,7 +1378,7 @@ entries.set(key, { word, definition });
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
               <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border border-gold/10">
                 <h4 className="font-display text-lg sm:text-2xl text-gold mb-3 sm:mb-4">{t('tg.sampleExitTicket')}</h4>
-                <ul className="space-y-2 sm:space-y-3 font-serif text-xs sm:text-base text-parchment/60">
+                <ul className="space-y-2 sm:space-y-3 font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/60">
                   {(appendicesData?.exitTicket || fallbackExitTicket).map((item, i) => (
                     <li key={i}>• {item}</li>
                   ))}
@@ -1389,7 +1389,7 @@ entries.set(key, { word, definition });
                   {appendicesData?.miniProject?.title || fallbackMiniProjectTitle}
                 </h4>
                 <p className={cn(
-                  "font-serif text-white text-xs sm:text-base leading-relaxed",
+                  "font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed",
                   language !== 'ar' && "italic"
                 )}>
                   {appendicesData?.miniProject?.desc || fallbackMiniProjectDesc}
@@ -1400,7 +1400,7 @@ entries.set(key, { word, definition });
                   {appendicesData?.reflectivePrompt?.title || fallbackReflectiveTitle}
                 </h4>
                 <p className={cn(
-                  "font-serif text-white text-xs sm:text-base leading-relaxed",
+                  "font-serif text-white text-[13px] sm:text-base md:text-[17px] leading-relaxed",
                   language !== 'ar' && "italic"
                 )}>
                   {appendicesData?.reflectivePrompt?.desc || fallbackReflectiveDesc}
@@ -1413,7 +1413,7 @@ entries.set(key, { word, definition });
             {teacherGuideGlossary.map((entry, i) => (
               <div key={`${entry.word}-${i}`} className="bg-white/5 border border-gold/10 rounded-xl p-3 sm:p-4">
                 <div className="font-display text-sm sm:text-base text-gold mb-1">{entry.word}</div>
-                <p className="font-serif text-xs sm:text-sm text-white leading-relaxed">{entry.definition}</p>
+                <p className="font-serif text-[13px] sm:text-[15px] text-white leading-relaxed">{entry.definition}</p>
                 {entry.example && (
                   <p className={cn(
                     "font-serif text-[11px] sm:text-xs text-parchment/50 mt-2 leading-relaxed",
@@ -1424,7 +1424,7 @@ entries.set(key, { word, definition });
             ))}
           </div>
         ) : (
-          <p className="font-serif text-xs sm:text-sm text-parchment/60 leading-relaxed">
+          <p className="font-serif text-[13px] sm:text-[15px] text-parchment/60 leading-relaxed">
             {language === 'ar'
               ? 'لا توجد مفردات مصدرية متاحة لهذا الكتاب في بيانات الصفحات الحالية.'
               : 'No source glossary entries are available for this book in the current page data.'}
@@ -1462,7 +1462,7 @@ entries.set(key, { word, definition });
             <div className="flex items-center gap-3.5 sm:gap-5 min-w-0">
               <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
                 <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8" />
-                <span className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1.5 rounded-full bg-wood border border-gold/30 flex items-center justify-center font-display text-[10px] font-black text-gold">
+                <span className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1.5 rounded-full bg-black/55 border border-gold/30 flex items-center justify-center font-display text-[10px] font-black text-gold">
                   {formatNumber(assessmentLevel)}
                 </span>
               </div>
@@ -1480,7 +1480,7 @@ entries.set(key, { word, definition });
                   {displayGuideTitle}
                 </h2>
                 <p className={cn(
-                  "font-serif text-gold/75 text-xs sm:text-sm md:text-[15px] mt-0.5 truncate",
+                  "font-serif text-gold/75 text-[13px] sm:text-[15px] md:text-[15px] mt-0.5 truncate",
                   language !== 'ar' && "italic"
                 )}>
                   {displayGuideSubtitle}
@@ -1492,7 +1492,7 @@ entries.set(key, { word, definition });
                 data-pdf-locked="true"
                 aria-disabled="true"
                 onClick={() => generateTeacherGuidePDF(displayGuideTitle, displayGuideSubtitle, content, metadata)}
-                className="flex items-center gap-2 min-h-11 px-3 sm:px-4 bg-gold/[0.08] text-gold rounded-xl border border-gold/15 transition-all font-display text-xs sm:text-sm group cursor-pointer"
+                className="flex items-center gap-2 min-h-11 px-3 sm:px-4 bg-gold/[0.08] text-gold rounded-xl border border-gold/15 transition-all font-display text-[13px] sm:text-[15px] group cursor-pointer"
                 title={t('nav.downloadPdf')}
               >
                 <Download size={18} className="shrink-0" />
@@ -1589,7 +1589,7 @@ entries.set(key, { word, definition });
 
             {/* Content Area */}
             <div className="teacher-guide-content flex-1 overflow-y-auto custom-scrollbar">
-              <div className="sticky top-0 z-20 border-b border-gold/10 bg-wood/90 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
+              <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
                 <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
                   <div className="min-w-0 flex items-center gap-3">
                     <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">
