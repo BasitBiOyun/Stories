@@ -255,8 +255,7 @@ export const adamA2FinalChallengeExercisesAr: Exercise[] = [
     ],
     correctAnswer: ['1', '2', '3', '4', '5'],
     explanation: 'يقيس الترتيب تنظيم القصة عبر عدة فصول بدل معلومة منفردة أخرى.', feedback: { correct: 'صحيح. ربطت خمس مراحل بالترتيب.', incorrect: 'استخدم الفصول 5–9 وضع حدثا واحدا في كل مرة.' }
-  }
-
+  },
 
   {
     id: 'adam-a2-ar-final-11', type: 'multiple-choice', title: 'العلم والاحترام', instructions: 'اختر الإجابة التي يذكرها الفصل الثاني.',
