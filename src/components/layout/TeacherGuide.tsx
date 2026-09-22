@@ -30,6 +30,26 @@ import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 
+const splitLessonPlanSteps = (lessonPlan: string): string[] => {
+  const normalized = lessonPlan.replace(/\s+/g, ' ').trim();
+  if (!normalized) return [];
+
+  const numbered = normalized
+    .split(/(?=\b\d+\.\s)/)
+    .map(step => step.replace(/^\d+\.\s*/, '').trim())
+    .filter(Boolean);
+
+  if (numbered.length > 1) return numbered;
+
+  const semicolonSteps = normalized
+    .split(/\s*;\s*/)
+    .map(step => step.trim())
+    .filter(Boolean);
+
+  return semicolonSteps.length > 1 ? semicolonSteps : [normalized];
+};
+
+
 export const TeacherGuide = ({ 
   isOpen, 
   onClose, 
@@ -540,10 +560,10 @@ entries.set(key, { word, definition });
                           <ClipboardList size={16} className="text-gold shrink-0" /> {t('tg.lessonFlow')}
                         </h5>
                         <div className="space-y-2.5 sm:space-y-3">
-                          {section.lessonPlan.split(/\d\./).filter(Boolean).map((step, i) => (
+                          {splitLessonPlanSteps(section.lessonPlan).map((step, i) => (
                             <div key={i} className="flex gap-2.5 sm:gap-4 items-start group/step">
                               <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold font-display text-[10px] sm:text-xs shrink-0 group-hover/step:bg-gold group-hover/step:text-white transition-colors mt-0.5">{formatNumber(i+1)}</div>
-                              <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white leading-relaxed">{step.trim()}</p>
+                              <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white leading-relaxed">{step}</p>
                             </div>
                           ))}
                         </div>
@@ -1916,9 +1936,18 @@ entries.set(key, { word, definition });
                             {t('tg.lessonFlow')}
                           </h3>
                         </div>
-                        <p className="font-serif text-[14px] sm:text-base text-parchment/80 leading-relaxed whitespace-pre-line">
-                          {selectedPrepChapter.lessonPlan}
-                        </p>
+                        <div className="space-y-2.5">
+                          {splitLessonPlanSteps(selectedPrepChapter.lessonPlan).map((step, index) => (
+                            <div key={index} className="flex items-start gap-3">
+                              <span className="w-6 h-6 rounded-full bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0 font-display text-[10px] font-black mt-0.5">
+                                {formatNumber(index + 1)}
+                              </span>
+                              <p className="font-serif text-[14px] sm:text-base text-parchment/80 leading-relaxed">
+                                {step}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
                       <div className="lg:col-span-5 space-y-4">
