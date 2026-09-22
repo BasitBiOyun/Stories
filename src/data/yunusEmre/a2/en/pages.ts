@@ -115,7 +115,7 @@ There was a mountain behind Taptuk’s dervish house. Taptuk asked Yunus to coll
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F04_Chapter_5_Straight_Wood_and_the_Ego.mp3?alt=media&token=2877e2b5-610b-43d2-aafc-82eebdc7d0ef',
     content: `Just imagine! Carrying firewood every day hurts your back and leaves bad cuts. He chose the straightest pieces of wood with the greatest care. So why was he doing that?
 
-The wood is Yunus’s ego and it looks like it needs to be corrected. It looks like Yunus is working with wood to fix crooked pieces. But in fact, he is training and fixing his own heart and ego. Every time he uses the axe, he fixes a bad part of himself. This service taught him how to have a good heart and do the right thing.
+The wood is Yunus’s ego and it looks like it needs to be corrected. It looks like Yunus is working with wood to fix crooked pieces. But in fact, he is training his own heart and ego. Every time he uses the axe, he makes a bad part of himself better. This service taught him how to have a good heart and do the right thing.
 
 Yunus served his teacher Taptuk Emre in this way for exactly forty years. Taptuk Emre noticed that Yunus never carried crooked wood to the house. One day he asked Yunus the following question:
 
@@ -135,7 +135,7 @@ Yunus served his teacher Taptuk Emre in this way for exactly forty years. Taptuk
     id: 6, type: 'story', title: 'The Door of Honesty',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch6-clean.png?alt=media&token=67497bea-2d63-4b36-9282-4a195dbfca4a',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F05_Chapter_6_The_Door_of_Honesty.mp3?alt=media&token=ae9043fe-3949-413b-8258-3821a1d649e0',
-    content: `Yunus replied, "My teacher, this place is a door of honesty and goodness. Not even a crooked piece of wood can enter here. And a crooked person cannot enter this place, either."
+    content: `Yunus replied, "My teacher, this place is a door of honesty and goodness. Not even a crooked piece of wood can enter here. And a dishonest and insincere person cannot enter this place, either."
 
 Nature and living alone helped the dervish think deeply about himself. During this time, Yunus made his heart purer. He learned the special language of all creatures. He looked at nature and found a lesson from everything in it, like reading the Quran. Also, the lessons and talks at the dervish house helped him with this learning. For Yunus, woodcutting in nature helped him become a better person.
 
@@ -157,7 +157,7 @@ He first learned to be alone with Allah in the mountains. The mountains are quie
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F06_Chapter_7_A_Single_Daisy.mp3?alt=media&token=db885702-c119-40e8-ae16-a635de955363',
     content: `One day, Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers. I will give a gift to whoever prepares the most beautiful bunch of flowers.” All the dervishes went out into the fields. They picked flowers and ran back to their teacher. Yunus was the last to return.
 
-In the late afternoon, he returned with a single daisy. Some dervishes were making fun of Yunus. They whispered in each other’s ears, “Just look at him! All he could find was a single daisy!” Taptuk asked Yunus about the meaning and the reason for this single daisy. Yunus replied, “My teacher, I walked around the fields, and wherever I saw a flower, I heard that it was saying the name of Allah. I could not cut any of them. When it started to get dark, a daisy called out to me:`,
+In the late afternoon, he returned with a single daisy. Some dervishes were making fun of Yunus. They whispered in each other’s ears, “Just look at him! All he could find was a single daisy!” Taptuk asked Yunus about the meaning behind this single daisy. Yunus replied, “My teacher, I walked around the fields, and wherever I saw a flower, I heard that it was saying the name of Allah. I could not cut any of them. When it started to get dark, a daisy called out to me:`,
     vocabulary: [
       { word: 'bunch', definition: 'A group of flowers held together.' },
       { word: 'fields', definition: 'Open areas of land.' },
@@ -471,7 +471,7 @@ In these two stories, Yunus tells us to always remember Allah in our hearts and 
       collocations: ['use an axe', 'cut with an axe'],
       chapter: 5,
       chapterTitle: 'Straight Wood and the Ego',
-      storyExample: 'Every time he uses the axe, he fixes a bad part of himself.',
+      storyExample: 'Every time he uses the axe, he makes a bad part of himself better.',
       category: 'Objects',
     },
     {

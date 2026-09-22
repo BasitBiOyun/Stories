@@ -126,12 +126,12 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
 export const yunusB1LanguageFocusChapter6: Exercise[] = [
   {
     id: 'yunus-b1-language-6-focus-and-effect', type: 'matching', title: 'Who or What Is Put in Focus?', instructions: 'Match each story pattern with what it helps the writer foreground. Focus on how the sentence is built, not on recalling the event.', question: 'How does Chapter 6 shift attention from the people who act to the people, places, and institutions affected by events?', matchingPairs: [
-      { left: 'The men were killed with swords.', right: 'puts the affected people in focus rather than naming the doer' },
+      { left: 'The men were killed by the sword.', right: 'puts the affected people in focus rather than naming the doer' },
       { left: 'The women and children were taken captive and forced to go...', right: 'links two things done to the same affected group' },
       { left: 'an agreement was made with the Mongols', right: 'focuses on the agreement and its result rather than who negotiated it' },
       { left: 'the lands of Anatolia were directly attached to the Ilkhanate Empire', right: 'presents a political change as something imposed on a place' },
     ], correctAnswer: {
-      'The men were killed with swords.': 'puts the affected people in focus rather than naming the doer',
+      'The men were killed by the sword.': 'puts the affected people in focus rather than naming the doer',
       'The women and children were taken captive and forced to go...': 'links two things done to the same affected group',
       'an agreement was made with the Mongols': 'focuses on the agreement and its result rather than who negotiated it',
       'the lands of Anatolia were directly attached to the Ilkhanate Empire': 'presents a political change as something imposed on a place',

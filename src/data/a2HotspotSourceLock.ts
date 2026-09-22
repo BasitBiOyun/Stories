@@ -140,7 +140,7 @@ const approvedEnglishHotspots: HotspotOverrides = {
     'h4-1': { title: 'Wood-Cutting Duties', description: 'Taptuk then assigned Yunus to the wood-cutting duties at the dervish house.' },
     'h4-2': { title: 'Crooked Wood', description: 'But he never cut or brought green or crooked wood.' },
     'h5-1': { title: 'Straightest Pieces', description: 'He chose the straightest pieces of wood with the greatest care.' },
-    'h5-2': { title: 'Heart and Ego', description: 'But in fact, he is training and fixing his own heart and ego.' },
+    'h5-2': { title: 'Heart and Ego', description: 'But in fact, he is training his own heart and ego.' },
     'h6-1': { title: 'Honesty and Goodness', description: 'My teacher, this place is a door of honesty and goodness.' },
     'h6-2': { title: 'Nature', description: 'He looked at nature and found a lesson from everything in it, like reading the Quran.' },
     'h7-1': { title: 'Single Daisy', description: 'In the late afternoon, he returned with a single daisy.' },

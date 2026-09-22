@@ -118,7 +118,7 @@ However, this situation gave the Mongols in Azerbaijan the courage to attack the
     'Chaos in Anatolia',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch6-clean.png?alt=media&token=46c5c3ce-c38b-4795-be21-bf782a93fd9d',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F05_Chapter_6_Chaos_in_Anatolia.mp3?alt=media&token=d8eaa69b-4531-4735-803e-551ea619d357',
-    `The men were killed with swords. The women and children were taken captive and forced to go with the Mongols. They caused a lot of destruction, sadness, and misery everywhere they went. After these cruel raids, cities were deserted. Yunus Emre lived during a time when the Mongol army invaded Anatolia.
+    `The men were killed by the sword. The women and children were taken captive and forced to go with the Mongols. They caused a lot of destruction, sadness, and misery everywhere they went. After these cruel raids, cities were deserted. Yunus Emre lived during a time when the Mongol army invaded Anatolia.
 
 These events created an atmosphere of panic in Anatolia that had never been seen before. Finally, an agreement was made with the Mongols, but in time the Seljuks became dependent on them. The Seljuk sultans acted almost like government officials for the Mongols. A significant part of state income began to be sent to the Mongols every year. However, this tax increased continuously and this made both the state and the people poorer. After 1277, the Mongols began to administer Anatolia through the commanders and governors that they sent. And in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire (The Mongol state centred in Iran).`,
     [
@@ -139,7 +139,7 @@ These events created an atmosphere of panic in Anatolia that had never been seen
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F06_Chapter_7_Yunus_as_a_Wise_Dervish.mp3?alt=media&token=b49d99a5-9f7c-4fc0-9cc5-f2ad927740cf',
     `Anatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.
 
-So in such an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. He tried to respond to people’s efforts to make sense of life in hard days with his Sûfî identity. Poetry was his most influential tool.
+So in such an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.
 
 Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet's Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.`,
     [
@@ -265,7 +265,7 @@ Seni türlü beladan kurtara akıl,
 Saadet ola sana cümle ay, yıl
 [/POEM]
 
-Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “The one who remembers death the most and is best in preparing for it. Those are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.
+Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.
 
 About death he says:
 
@@ -963,7 +963,7 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 7,
             "chapterTitle": "Yunus as a Wise Dervish",
-            "storyExample": "He tried to respond to people’s efforts to make sense of life in hard days with his Sûfî identity."
+            "storyExample": "As a Sûfî, he helped people make sense of life during those hard days."
       },
       {
             "word": "loyalty",
