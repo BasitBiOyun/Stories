@@ -180,7 +180,21 @@ export const adamA2VocabularyChallengePairs = [
 
 // Locked Final distribution:
 // 3 multiple choice + 2 true/false + 2 matching + 2 fill blanks + 1 sequencing.
-export const adamA2FinalChallengeExercises: Exercise[] = [
+export const adamA2FinalChallengeExercises: Exercise[
+  {
+    id: 'adam-a2-final-11', type: 'multiple-choice', title: 'Knowledge and Respect', instructions: 'Choose the answer stated in Chapter 2.',
+    question: 'Why did the angels admire and respect Adam?',
+    options: ['Because Allah gave him knowledge and taught him to think and learn', 'Because he was created from fire', 'Because he already had many children'], correctAnswer: 0,
+    explanation: 'Chapter 2 says Allah gave Adam knowledge, taught him to think, and gave him the ability to learn and understand.',
+    feedback: { correct: 'Correct.', incorrect: 'Reread the sentences about Adam’s knowledge in Chapter 2.' }
+  },
+  {
+    id: 'adam-a2-final-12', type: 'true-false', title: 'Different Human Colors', instructions: 'Decide whether the statement agrees with Chapter 1.',
+    question: 'Chapter 1 connects different human skin colors with soil collected from different parts of the earth.', correctAnswer: true,
+    explanation: 'The chapter says soil was collected from different parts of the earth and connects this with different human skin colors.',
+    feedback: { correct: 'Correct.', incorrect: 'Look again at the final two paragraphs of Chapter 1.' }
+  },
+] = [
   {
     id: 'adam-a2-final-1', type: 'multiple-choice', title: 'Earth: From Role to Action', instructions: 'Choose the statement that correctly connects two parts of the story.',
     question: 'Which statement best connects the opening of the story with Chapter 6?',
