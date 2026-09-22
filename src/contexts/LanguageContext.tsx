@@ -133,7 +133,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.glossaryAmazing': 'Amazing! You know all the words! 🎉',
     'nav.glossaryProgress': 'You know {percent}% of the {total} words so far.',
     'nav.finalChallenge': 'Final Challenge',
-    'nav.finalChallengeIntro': "You've reached the end of the journey! Are you ready to test your knowledge with 10 random questions from the story?",
+    'nav.finalChallengeIntro': "You've reached the end of the journey. Bring the whole story together with a carefully designed final challenge.",
     'nav.startChallenge': 'Start the Challenge',
     'nav.perfectScore': 'Perfect Score!',
     'nav.greatJob': 'Great Job!',
