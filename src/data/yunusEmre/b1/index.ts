@@ -45,10 +45,6 @@ import {
   yunusB1LanguageFocusChapter12Ar,
   yunusB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
-import { yunusB1SelfStudyGuide, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
-import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { yunusEmreB1SelfStudyGuideAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['sûfî', 'tawhid']);
@@ -135,10 +131,8 @@ export const yunusEmreB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 13,
   pages: englishPages,
-  teacherGuide: yunusB1TeacherGuide,
-  teacherGuideMetadata: yunusB1TeacherGuideMetadata,
-  selfStudyGuide: yunusB1SelfStudyGuide,
-  studentGuideMetadata: yunusB1StudentGuideMetadata,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreB1BookDataAr: BookData = {
@@ -147,10 +141,8 @@ export const yunusEmreB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: arabicPages,
-  teacherGuide: yunusEmreB1TeacherGuideAr,
-  teacherGuideMetadata: yunusEmreB1TeacherGuideMetadataAr,
-  selfStudyGuide: yunusEmreB1SelfStudyGuideAr,
-  studentGuideMetadata: yunusEmreB1StudentGuideMetadataAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreB1BookData = yunusEmreB1BookDataEn;
