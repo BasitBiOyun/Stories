@@ -18,6 +18,12 @@ import {
 
 import { Level } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
+import {
+  loadSelfStudyGuideData,
+  loadTeacherGuideData,
+  type BilingualSelfStudyGuideData,
+  type BilingualTeacherGuideData,
+} from './core/content/bookGuideLoader';
 import { cn } from './lib/utils';
 import { generateBookPDF } from './lib/pdfGenerator';
 import { useLanguage } from './contexts/LanguageContext';
@@ -64,6 +70,8 @@ const AppContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
+  const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
+  const [selfStudyGuideData, setSelfStudyGuideData] = useState<BilingualSelfStudyGuideData | null>(null);
   const [isDyslexic, setIsDyslexic] = useState(() => localStorage.getItem('reader_dyslexic') === 'true');
   const [readerScale, setReaderScale] = useState(() => {
     const stored = Number(localStorage.getItem('reader_scale'));
@@ -125,6 +133,65 @@ const AppContent = () => {
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
 
   const currentCollection = currentDefinition?.collection ?? null;
+
+  const currentTeacherGuide = teacherGuideData
+    ? (language === 'ar' ? teacherGuideData.ar : teacherGuideData.en)
+    : null;
+  const currentSelfStudyGuide = selfStudyGuideData
+    ? (language === 'ar' ? selfStudyGuideData.ar : selfStudyGuideData.en)
+    : null;
+
+  useEffect(() => {
+    setTeacherGuideData(null);
+    setSelfStudyGuideData(null);
+    setIsTeacherGuideOpen(false);
+    setIsSelfStudyOpen(false);
+  }, [currentDefinition?.storyId, currentLevel]);
+
+  useEffect(() => {
+    if (!currentDefinition || !currentLevel || !currentBookPair) return;
+
+    const timer = window.setTimeout(() => {
+      loadTeacherGuideData(currentDefinition.storyId, currentLevel)
+        .then(setTeacherGuideData)
+        .catch(() => undefined);
+      loadSelfStudyGuideData(currentDefinition.storyId, currentLevel)
+        .then(setSelfStudyGuideData)
+        .catch(() => undefined);
+    }, 1500);
+
+    return () => window.clearTimeout(timer);
+  }, [currentDefinition?.storyId, currentLevel, currentBookPair]);
+
+  const openTeacherGuide = () => {
+    if (!currentDefinition || !currentLevel) return;
+    setIsMenuOpen(false);
+    if (teacherGuideData) {
+      setIsTeacherGuideOpen(true);
+      return;
+    }
+    loadTeacherGuideData(currentDefinition.storyId, currentLevel)
+      .then(data => {
+        setTeacherGuideData(data);
+        setIsTeacherGuideOpen(true);
+      })
+      .catch(error => console.error('[Teacher Guide] Unable to load guide data.', error));
+  };
+
+  const openSelfStudyGuide = () => {
+    if (!currentDefinition || !currentLevel) return;
+    setIsMenuOpen(false);
+    if (selfStudyGuideData) {
+      setIsSelfStudyOpen(true);
+      return;
+    }
+    loadSelfStudyGuideData(currentDefinition.storyId, currentLevel)
+      .then(data => {
+        setSelfStudyGuideData(data);
+        setIsSelfStudyOpen(true);
+      })
+      .catch(error => console.error('[Self-Study Guide] Unable to load guide data.', error));
+  };
 
   // Dynamic UI theme classes based on active collection
   const themeClasses = useMemo(() => {
@@ -970,10 +1037,7 @@ const AppContent = () => {
 
                 <div className="mt-2 space-y-1">
                   <button 
-                    onClick={() => {
-                      setIsTeacherGuideOpen(true);
-                      setIsMenuOpen(false);
-                    }}
+                    onClick={openTeacherGuide}
                     className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
                     <GraduationCap size={21} className={themeClasses.menuAccentText} />
@@ -981,10 +1045,7 @@ const AppContent = () => {
                   </button>
 
                   <button 
-                    onClick={() => {
-                      setIsSelfStudyOpen(true);
-                      setIsMenuOpen(false);
-                    }}
+                    onClick={openSelfStudyGuide}
                     className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                   >
                     <ClipboardList size={21} className={themeClasses.menuAccentText} />
@@ -1015,9 +1076,9 @@ const AppContent = () => {
       <TeacherGuide 
         isOpen={isTeacherGuideOpen} 
         onClose={() => setIsTeacherGuideOpen(false)} 
-        content={currentBook?.teacherGuide || []}
+        content={currentTeacherGuide?.content || []}
         pages={currentBook?.pages || []}
-        metadata={currentBook?.teacherGuideMetadata}
+        metadata={currentTeacherGuide?.metadata}
         bookId={currentBook?.id}
         level={currentLevel || undefined}
         collectionId={currentCollection || 'prophets'}
@@ -1027,11 +1088,11 @@ const AppContent = () => {
       <SelfStudyGuide 
         isOpen={isSelfStudyOpen} 
         onClose={() => setIsSelfStudyOpen(false)} 
-        content={currentBook?.selfStudyGuide || []}
+        content={currentSelfStudyGuide?.content || []}
         pages={currentBook?.pages || []}
-        studentGuideText={currentBook?.studentGuideText}
-        studentGuideSections={currentBook?.studentGuideSections}
-        metadata={currentBook?.studentGuideMetadata}
+        studentGuideText={currentSelfStudyGuide?.text}
+        studentGuideSections={currentSelfStudyGuide?.sections}
+        metadata={currentSelfStudyGuide?.metadata}
         title={t('nav.studentSelfStudyGuide')}
         subtitle={t('nav.reflectionPractice')}
         footerText={t('nav.interactiveEbookSeries')}
