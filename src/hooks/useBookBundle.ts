@@ -32,6 +32,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
 
   useEffect(() => {
     let cancelled = false;
+    let mediaTimer: number | null = null;
     setActiveBilingualBookPair(null);
     setPair(null);
     setError(null);
@@ -58,18 +59,20 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       setPair(immediatePair);
       setLoading(false);
 
-      loadBookAssets(definition.storage)
-        .then(loadedAssets => {
-          if (cancelled) return;
-          const resolvedPair = applyResolvedAssets(loadedPair, loadedAssets);
-          setActiveBilingualBookPair(resolvedPair);
-          setPair(resolvedPair);
-        })
-        .catch(reason => {
-          // Media discovery is an enhancement layer. The authored book remains
-          // usable even when Firebase listing is slow or temporarily unavailable.
-          console.warn('[Book media] Background media resolution failed.', reason);
-        });
+      mediaTimer = window.setTimeout(() => {
+        loadBookAssets(definition.storage)
+          .then(loadedAssets => {
+            if (cancelled) return;
+            const resolvedPair = applyResolvedAssets(loadedPair, loadedAssets);
+            setActiveBilingualBookPair(resolvedPair);
+            setPair(resolvedPair);
+          })
+          .catch(reason => {
+            // Media discovery is an enhancement layer. The authored book remains
+            // usable even when Firebase listing is slow or temporarily unavailable.
+            console.warn('[Book media] Background media resolution failed.', reason);
+          });
+      }, 250);
     };
 
     load().catch(reason => {
@@ -81,6 +84,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
 
     return () => {
       cancelled = true;
+      if (mediaTimer !== null) window.clearTimeout(mediaTimer);
       setActiveBilingualBookPair(null);
     };
   }, [definition]);
