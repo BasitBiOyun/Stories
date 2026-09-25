@@ -261,20 +261,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       if ('requestIdleCallback' in window) {
         idleId = window.requestIdleCallback(warmNext, { timeout: 1800 });
       } else {
-        timerId = window.setTimeout(warmNext, 700);
+        timerId = globalThis.setTimeout(warmNext, 700);
       }
     };
 
     if ('requestIdleCallback' in window) {
       idleId = window.requestIdleCallback(warmNext, { timeout: 1200 });
     } else {
-      timerId = window.setTimeout(warmNext, 900);
+      timerId = globalThis.setTimeout(warmNext, 900);
     }
 
     return () => {
       cancelled = true;
       if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
-      if (timerId !== null) window.clearTimeout(timerId);
+      if (timerId !== null) globalThis.clearTimeout(timerId);
     };
   }, []);
 
