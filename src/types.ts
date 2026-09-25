@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type PageType = 'story' | 'quiz' | 'vocabulary-match' | 'sequencing' | 'game' | 'exercises' | 'glossary' | 'final-challenge' | 'map';
+export type PageType = 'story' | 'quiz' | 'vocabulary-match' | 'exercises' | 'glossary' | 'final-challenge';
 
 export type Level = 'A2' | 'B1' | 'B2';
 
@@ -89,7 +89,6 @@ export interface PageData {
   image?: string;
   audioUrl?: string;
   vocabulary?: VocabularyItem[];
-  sequencingItems?: { id: string; text: string }[];
   vocabularyPairs?: VocabularyChallengePair[];
   hotspots?: Hotspot[];
   animatedWords?: string[];
