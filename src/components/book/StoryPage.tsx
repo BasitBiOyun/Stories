@@ -110,7 +110,7 @@ const HotspotButton = ({
       <button
         ref={buttonRef}
         onClick={onToggle}
-        className="relative group/hotspot"
+        className="relative z-[80] visible opacity-100 group/hotspot"
         aria-expanded={isActive}
         aria-label={hotspot.title}
       >
@@ -1631,7 +1631,7 @@ export const StoryPage = ({
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative group perspective-1000 w-full max-w-lg mx-auto"
+              className="relative z-[60] group perspective-1000 w-full max-w-lg mx-auto"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               style={{ rotateX, rotateY }}
@@ -1645,7 +1645,7 @@ export const StoryPage = ({
                   style={{ x: imageX, y: imageY, scale: 1.1 }}
                 />
                 
-                <div className="absolute inset-0 p-4 pointer-events-none">
+                <div className="absolute inset-0 z-[70] p-4 pointer-events-none">
                   <div className="relative w-full h-full">
                      {page.hotspots?.map((hotspot) => (
                       <HotspotButton 
@@ -1658,7 +1658,7 @@ export const StoryPage = ({
                     ))}
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
               </div>
             </motion.div>
           )}
@@ -1689,7 +1689,7 @@ export const StoryPage = ({
                 <motion.div 
                   initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="relative group perspective-1000 w-full"
+                  className="relative z-[60] group perspective-1000 w-full"
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                   style={{ rotateX, rotateY }}
@@ -1703,7 +1703,7 @@ export const StoryPage = ({
                       style={{ x: imageX, y: imageY, scale: 1.1 }}
                     />
                     
-                    <div className="absolute inset-0 p-4 pointer-events-none">
+                    <div className="absolute inset-0 z-[70] p-4 pointer-events-none">
                       <div className="relative w-full h-full">
                          {page.hotspots?.map((hotspot) => (
                           <HotspotButton 
@@ -1716,7 +1716,7 @@ export const StoryPage = ({
                         ))}
                       </div>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
                   </div>
                 </motion.div>
               )}
