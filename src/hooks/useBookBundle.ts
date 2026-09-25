@@ -4,6 +4,11 @@ import { getBookDefinition } from '../core/content/bookRegistry';
 import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
 import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
+import {
+  applyResolvedAssets,
+  EMPTY_RESOLVED_ASSETS,
+  loadBookAssets,
+} from '../core/storage/storageAssetLoader';
 
 export interface BookBundleState {
   definition: BookDefinition | null;
@@ -42,30 +47,37 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
     setLoading(true);
 
     const load = async () => {
-      const [loadedPair, storageModule] = await Promise.all([
-        definition.load(),
-        import('../core/storage/storageAssetLoader'),
-      ]);
-      const loadedAssets = await storageModule.loadBookAssets(definition.storage);
-      const resolvedPair = storageModule.applyResolvedAssets(loadedPair, loadedAssets);
-      return resolvedPair;
+      const loadedPair = await definition.load();
+      if (cancelled) return;
+
+      // Open the book as soon as its reviewed content chunk is ready. Existing
+      // authored media URLs are validated immediately, while Firebase folder
+      // discovery continues without blocking the first render.
+      const immediatePair = applyResolvedAssets(loadedPair, EMPTY_RESOLVED_ASSETS);
+      setActiveBilingualBookPair(immediatePair);
+      setPair(immediatePair);
+      setLoading(false);
+
+      loadBookAssets(definition.storage)
+        .then(loadedAssets => {
+          if (cancelled) return;
+          const resolvedPair = applyResolvedAssets(loadedPair, loadedAssets);
+          setActiveBilingualBookPair(resolvedPair);
+          setPair(resolvedPair);
+        })
+        .catch(reason => {
+          // Media discovery is an enhancement layer. The authored book remains
+          // usable even when Firebase listing is slow or temporarily unavailable.
+          console.warn('[Book media] Background media resolution failed.', reason);
+        });
     };
 
-    load()
-      .then(loadedPair => {
-        if (cancelled) return;
-        // Register before state publication so VocabularyWord sees the complete
-        // bilingual pair on its very first render for this book.
-        setActiveBilingualBookPair(loadedPair);
-        setPair(loadedPair);
-        setLoading(false);
-      })
-      .catch(reason => {
-        if (cancelled) return;
-        setActiveBilingualBookPair(null);
-        setError(reason instanceof Error ? reason : new Error(String(reason)));
-        setLoading(false);
-      });
+    load().catch(reason => {
+      if (cancelled) return;
+      setActiveBilingualBookPair(null);
+      setError(reason instanceof Error ? reason : new Error(String(reason)));
+      setLoading(false);
+    });
 
     return () => {
       cancelled = true;
