@@ -49,4 +49,4 @@ export const presentMatchingMeanings = (exercise: Exercise): string[] => {
 
 /** Hide internal CEFR level prefixes from learner-facing exercise titles. */
 export const presentExerciseTitle = (exercise: Pick<Exercise, 'title'>): string =>
-  (exercise.title ?? '').replace(/^(?:A2|B1|B2)\s*[:\-–—]?\s*/i, '').trim();
+  (exercise.title ?? '').replace(/^(?:A2|B1|B2)\b\s*[:\-–—]?\s*/i, '').trim();
