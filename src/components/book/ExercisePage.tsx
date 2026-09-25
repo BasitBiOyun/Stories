@@ -18,6 +18,7 @@ export const ExercisePage = ({
   level,
   collectionId = 'prophets',
   onReviewGlossary,
+  onReviewComplete,
 }: { 
   page: PageData; 
   userAnswers: Record<string, boolean | null>; 
@@ -25,6 +26,7 @@ export const ExercisePage = ({
   level: Level;
   collectionId?: string;
   onReviewGlossary?: () => void;
+  onReviewComplete?: () => void;
 }) => {
   const { t, language, formatNumber } = useLanguage();
   const isArabic = language === 'ar';
@@ -469,6 +471,8 @@ export const ExercisePage = ({
                             );
                             if (reviewIndex < reviewTotal - 1) {
                               setReviewIndex(index => index + 1);
+                            } else {
+                              onReviewComplete?.();
                             }
                           }}
                         />
