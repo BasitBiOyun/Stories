@@ -14,78 +14,20 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
+import {
+  collectionStoryIds,
+  collectionVisuals,
+  getStoryCollection,
+  storyCatalog as stories,
+  type StoryCollectionId,
+} from '../../core/content/storyCatalog';
 
-// @ts-ignore
-import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
-// @ts-ignore
-import abrahamCover from '../../assets/images/abraham_cover.png';
-// @ts-ignore
-import mosesCover from '../../assets/images/moses_cover.png';
-// @ts-ignore
-import yunusEmreCover from '../../assets/images/yunus_emre_cover.png';
 
 interface HomePageProps {
   onStart: (prophetId: string, level: Level) => void;
 }
 
 type CollectionId = 'all' | 'prophets' | 'history' | 'turkish';
-type StoryCollectionId = Exclude<CollectionId, 'all'>;
-
-const stories: ProphetStory[] = [
-  {
-    id: 'adam',
-    name: 'Prophet Adam',
-    description: 'The first human, the knowledge of names, and the beginning of humanity.',
-    image:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2FAdam_soil.png?alt=media&token=88abb96a-8dad-4f48-9b60-f30073f9dd9c',
-    availableLevels: ['A2', 'B1', 'B2'],
-  },
-  {
-    id: 'ibrahim',
-    name: 'Prophet Abraham',
-    description: 'The search for truth, the building of the Kaaba, and unwavering faith.',
-    image: abrahamCover,
-    availableLevels: ['A2', 'B1', 'B2'],
-  },
-  {
-    id: 'musa',
-    name: 'Prophet Moses',
-    description: 'The journey from the palace to the desert, and the liberation of a people.',
-    image: mosesCover,
-    availableLevels: ['A2', 'B1', 'B2'],
-  },
-  {
-    id: 'mecca',
-    name: 'Mecca Before Islam',
-    description: 'The City and the Age of Ignorance: Mecca before the dawn of Islam.',
-    image: meccaCover,
-    availableLevels: ['A2', 'B1', 'B2'],
-  },
-  {
-    id: 'yunusEmre',
-    name: 'Yunus Emre',
-    description:
-      'The story of a wise Anatolian dervish who taught love, humility, and devotion through simple Turkish poetry.',
-    image: yunusEmreCover,
-    availableLevels: ['A2', 'B1', 'B2'],
-  },
-];
-
-const collectionStoryIds: Record<StoryCollectionId, string[]> = {
-  prophets: ['adam', 'ibrahim', 'musa'],
-  history: ['mecca'],
-  turkish: ['yunusEmre'],
-};
-
-const collectionIcons: Record<StoryCollectionId, string> = {
-  prophets:
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/prophets_icon.png?alt=media&token=985739ce-9484-4998-a9e3-a11077955048',
-  history:
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/civilization_icon.png?alt=media&token=fc8ac841-d12e-4169-a052-4946d20409f2',
-  turkish:
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/scholars_icon.png?alt=media&token=3c0b480b-bea3-42e3-9718-2a1967dacf78',
-};
-
 const levelDescriptions: Record<Level, { en: string; ar: string }> = {
   A2: { en: 'Elementary', ar: 'المستوى الأساسي' },
   B1: { en: 'Intermediate', ar: 'المستوى المتوسط' },
@@ -204,11 +146,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     turkish: copy.turkish,
   };
 
-  const getStoryCollection = (storyId: string): StoryCollectionId => {
-    if (collectionStoryIds.history.includes(storyId)) return 'history';
-    if (collectionStoryIds.turkish.includes(storyId)) return 'turkish';
-    return 'prophets';
-  };
 
   const translatedStoryName = (story: ProphetStory) => {
     const key = `prophet.${story.id}`;
@@ -479,7 +416,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       style={{ background: visual.accentSoft }}
                     >
                       <img
-                        src={collectionIcons[collection]}
+                        src={collectionVisuals[collection].icon}
                         alt=""
                         className="h-full w-full object-contain"
                         referrerPolicy="no-referrer"
@@ -562,7 +499,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
 
           <motion.img
             aria-hidden="true"
-            src={collectionIcons[activeStoryCollection]}
+            src={collectionVisuals[activeStoryCollection].icon}
             alt=""
             referrerPolicy="no-referrer"
             className="pointer-events-none absolute -right-16 top-8 h-72 w-72 object-contain opacity-[0.045] sm:h-96 sm:w-96 lg:-right-8 lg:h-[460px] lg:w-[460px]"
@@ -695,7 +632,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       style={{ background: activeVisual.accentSoft }}
                     >
                       <img
-                        src={collectionIcons[activeStoryCollection]}
+                        src={collectionVisuals[activeStoryCollection].icon}
                         alt=""
                         className="h-5 w-5 object-contain"
                         referrerPolicy="no-referrer"
