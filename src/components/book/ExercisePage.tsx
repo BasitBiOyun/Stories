@@ -192,7 +192,7 @@ export const ExercisePage = ({
   };
 
   return (
-    <div className="h-full relative flex flex-col lg:-my-3 lg:h-[calc(100%+1.5rem)]">
+    <div className="h-full relative flex flex-col">
       {/* Top Bar: Audio (Right) */}
       <div className="absolute top-0 right-0 z-50">
         {/* Fixed Audio Player - Top Right */}
