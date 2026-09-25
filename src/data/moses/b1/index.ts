@@ -47,10 +47,6 @@ import {
   mosesB1LanguageFocusChapter12Ar,
   mosesB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { mosesB1TeacherGuide as mosesB1TeacherGuideEn, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesB1SelfStudyGuide as mosesB1SelfStudyGuideEn } from './en/selfStudyGuide';
-import { mosesB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
@@ -120,9 +116,8 @@ export const mosesB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 12,
   pages: buildEnglishPages(),
-  teacherGuide: mosesB1TeacherGuideEn,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadata,
-  selfStudyGuide: mosesB1SelfStudyGuideEn,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const mosesB1BookDataAr: BookData = {
@@ -131,9 +126,8 @@ export const mosesB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: buildArabicPages(),
-  teacherGuide: mosesB1TeacherGuideAr,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadataAr,
-  selfStudyGuide: mosesB1SelfStudyGuideAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const mosesB1BookData = mosesB1BookDataEn;
