@@ -251,7 +251,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     let cancelled = false;
     let index = 0;
     let idleId: number | null = null;
-    let timerId: number | null = null;
+    let timerId: ReturnType<typeof setTimeout> | null = null;
 
     const warmNext = () => {
       if (cancelled || index >= remaining.length) return;
@@ -261,20 +261,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       if ('requestIdleCallback' in window) {
         idleId = window.requestIdleCallback(warmNext, { timeout: 1800 });
       } else {
-        timerId = globalThis.setTimeout(warmNext, 700);
+        timerId = setTimeout(warmNext, 700);
       }
     };
 
     if ('requestIdleCallback' in window) {
       idleId = window.requestIdleCallback(warmNext, { timeout: 1200 });
     } else {
-      timerId = globalThis.setTimeout(warmNext, 900);
+      timerId = setTimeout(warmNext, 900);
     }
 
     return () => {
       cancelled = true;
       if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
-      if (timerId !== null) globalThis.clearTimeout(timerId);
+      if (timerId !== null) clearTimeout(timerId);
     };
   }, []);
 
