@@ -1,5 +1,7 @@
 import type { TeacherGuideMetadata, TeacherGuideSection } from '../../../../types';
 
+const TYMM_FOREIGN = 'https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri';
+
 export const yunusEmreB2TeacherGuideAr: TeacherGuideSection[] = [
   {
     "chapter": "الفصل 1: يُونُس إِمْرَه وَالتَّصَوُّفُ",
