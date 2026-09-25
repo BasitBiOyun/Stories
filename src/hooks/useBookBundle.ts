@@ -46,6 +46,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
     }
 
     setLoading(true);
+    const loadStartedAt = performance.now();
 
     const load = async () => {
       const loadedPair = await definition.load();
@@ -58,6 +59,9 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       setActiveBilingualBookPair(immediatePair);
       setPair(immediatePair);
       setLoading(false);
+      console.info(
+        `[Book performance] ${definition.storyId} ${definition.level} reader ready in ${Math.round(performance.now() - loadStartedAt)} ms`,
+      );
 
       mediaTimer = window.setTimeout(() => {
         loadBookAssets(definition.storage)
@@ -66,6 +70,9 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
             const resolvedPair = applyResolvedAssets(loadedPair, loadedAssets);
             setActiveBilingualBookPair(resolvedPair);
             setPair(resolvedPair);
+            console.info(
+              `[Book performance] ${definition.storyId} ${definition.level} media resolved in ${Math.round(performance.now() - loadStartedAt)} ms`,
+            );
           })
           .catch(reason => {
             // Media discovery is an enhancement layer. The authored book remains
