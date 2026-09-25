@@ -56,18 +56,31 @@ const createDefinition = (
   collection: CollectionId,
   titles: BookDisplayTitles,
   loadSource: () => Promise<BookPair>,
-): BookDefinition => ({
-  storyId,
-  level,
-  collection,
-  titles,
-  storage: getStorageManifest(storyId, level),
-  loadSource,
-  load: async () => {
-    const source = await loadSource();
-    return finalizePreparedBookPairForUi(source);
-  },
-});
+): BookDefinition => {
+  let preparedPromise: Promise<BookPair> | null = null;
+
+  const load = () => {
+    if (!preparedPromise) {
+      preparedPromise = loadSource()
+        .then(source => finalizePreparedBookPairForUi(source))
+        .catch(error => {
+          preparedPromise = null;
+          throw error;
+        });
+    }
+    return preparedPromise;
+  };
+
+  return {
+    storyId,
+    level,
+    collection,
+    titles,
+    storage: getStorageManifest(storyId, level),
+    loadSource,
+    load,
+  };
+};
 
 export const bookRegistry: readonly BookDefinition[] = [
   createDefinition('adam', 'A2', 'prophets', {
