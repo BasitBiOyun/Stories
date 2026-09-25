@@ -47,10 +47,6 @@ import {
   abrahamB1LanguageFocusChapter12Ar,
   abrahamB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamB1SelfStudyGuideEn } from './en/selfStudyGuide';
-import { abrahamB1SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['mardukh']);
@@ -137,9 +133,8 @@ export const abrahamB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 12,
   pages: buildEnglishPages(),
-  teacherGuide: abrahamB1TeacherGuideEn,
-  teacherGuideMetadata: abrahamB1TeacherGuideMetadata,
-  selfStudyGuide: abrahamB1SelfStudyGuideEn,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamB1BookDataAr: BookData = {
@@ -148,9 +143,8 @@ export const abrahamB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: buildArabicPages(),
-  teacherGuide: abrahamB1TeacherGuideAr,
-  teacherGuideMetadata: abrahamB1TeacherGuideMetadataAr,
-  selfStudyGuide: abrahamB1SelfStudyGuideAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamB1BookData = abrahamB1BookDataEn;
