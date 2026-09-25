@@ -1,894 +1,674 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import {
-  Trophy,
-  BookOpen,
-  Rocket,
-  ArrowRight,
-  Target,
-  RotateCcw,
-  Library,
-  CheckCircle2,
   Award,
-  Crown,
-  Sparkles,
-  Compass,
-  Star,
+  BookOpen,
+  BrainCircuit,
+  CheckCircle2,
+  ChevronLeft,
   ChevronRight,
-  ChevronLeft
+  Compass,
+  Headphones,
+  Library,
+  RotateCcw,
+  Rocket,
+  Sparkles,
+  Target,
+  Trophy,
 } from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
-import { cn } from '../../lib/utils';
-import { BookData, Level } from '../../types';
-
-// Cover images
-// @ts-ignore
-import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
-// @ts-ignore
-import yunusEmreCover from '../../assets/images/yunus_emre_cover.png';
+import {
+  collectionVisuals,
+  getNextLevel,
+  getStoryMeta,
+  storyCatalog,
+} from '../../core/content/storyCatalog';
+import type { BookData, Level } from '../../types';
 
 interface SummaryDashboardProps {
   bookData: BookData;
   onFinish: () => void;
   onReviewStory?: () => void;
   onReadAgain?: () => void;
-  onStartJourney?: (prophetId: string, level: Level) => void;
+  onStartJourney?: (storyId: string, level: Level) => void;
 }
 
-// All stories metadata for recommendations
-const storiesMetadata = [
-  {
-    id: 'adam',
-    nameEn: 'Prophet Adam',
-    nameAr: 'آدم عليه السلام',
-    descriptionEn: 'The first human, the knowledge of names, and the beginning of humanity.',
-    descriptionAr: 'الإنسان الأول، وتعليم الأسماء، وبداية البشرية.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2FAdam_soil.png?alt=media&token=88abb96a-8dad-4f48-9b60-f30073f9dd9c',
-    category: 'prophets'
-  },
-  {
-    id: 'ibrahim',
-    nameEn: 'Prophet Abraham',
-    nameAr: 'إبراهيم عليه السلام',
-    descriptionEn: 'The search for truth, the building of the Kaaba, and unwavering faith.',
-    descriptionAr: 'البحث عن الحقيقة، وبناء الكعبة، والإيمان الراسخ الذي لا يتزعزع.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham.png?alt=media&token=14c045ca-7578-4268-9963-b4bedd5435be',
-    category: 'prophets'
-  },
-  {
-    id: 'musa',
-    nameEn: 'Prophet Moses',
-    nameAr: 'موسى عليه السلام',
-    descriptionEn: 'The journey from the palace to the desert, and the liberation of a people.',
-    descriptionAr: 'الرحلة من القصر إلى الصحراء، وتحرير بني إسرائيل من فرعون.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fmoses_cover.png?alt=media&token=3e9009f1-5f4d-47ed-9b5f-a6b58731d025',
-    category: 'prophets'
-  },
-  {
-    id: 'mecca',
-    nameEn: 'Mecca Before Islam',
-    nameAr: 'مكة قبل الإسلام',
-    descriptionEn: 'The City and the Age of Ignorance: Mecca before the dawn of Islam.',
-    descriptionAr: 'المدينة وعصر الجاهلية: مكة المكرمة قبل بزوغ فجر الإسلام.',
-    image: meccaCover,
-    category: 'history'
-  },
-  {
-    id: 'yunusEmre',
-    nameEn: 'Yunus Emre',
-    nameAr: 'يونس أمره',
-    descriptionEn: 'The story of a wise Anatolian dervish who taught love, humility, and devotion.',
-    descriptionAr: 'قصة درويش الأناضول الحكيم الذي علّم الحب والتواضع والولاء.',
-    image: yunusEmreCover,
-    category: 'turkish'
-  }
-];
+const normalizeWord = (value: string) => value.trim().toLocaleLowerCase();
 
-// Helper to resolve theme & configurations for each category dynamically
-const getCategoryInfo = (categoryId: string) => {
-  if (categoryId === 'history') {
-    return {
-      id: 'history',
-      nameEn: 'Islamic History & Civilization',
-      nameAr: 'التاريخ والحضارة الإسلامية',
-      tagEn: 'History',
-      tagAr: 'التاريخ',
-      accentColor: '#10B981', // Emerald
-      accentClass: 'text-emerald-400 border-emerald-500/20 bg-emerald-500/10',
-      badgeClass: 'bg-emerald-950/80 text-emerald-300 border-emerald-600/40 shadow-inner',
-      badgeTextEn: 'History',
-      badgeTextAr: 'التاريخ',
-      btnClass: 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-950/50',
-    };
-  } else if (categoryId === 'turkish') {
-    return {
-      id: 'turkish',
-      nameEn: 'Turkish-Islamic Heritage',
-      nameAr: 'التراث التركي الإسلامي',
-      tagEn: 'Turkish-Islamic Heritage',
-      tagAr: 'التراث التركي الإسلامي',
-      accentColor: '#22D3EE', // Cyan
-      accentClass: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/10',
-      badgeClass: 'bg-[#0C1E30]/80 text-[#22D3EE] border-cyan-700/40 shadow-inner',
-      badgeTextEn: 'Heritage',
-      badgeTextAr: 'التراث',
-      btnClass: 'bg-cyan-600 hover:bg-cyan-700 shadow-cyan-950/50',
-    };
-  } else {
-    return {
-      id: 'prophets',
-      nameEn: 'Stories of the Prophets',
-      nameAr: 'قصص الأنبياء عليهم السلام',
-      tagEn: 'Stories of the Prophets',
-      tagAr: 'قصص الأنبياء',
-      accentColor: '#D4AF37', // Gold
-      accentClass: 'text-gold border-amber-500/20 bg-amber-500/10',
-      badgeClass: 'bg-amber-950/80 text-amber-300 border-amber-700/40 shadow-inner',
-      badgeTextEn: 'Prophets',
-      badgeTextAr: 'الأنبياء',
-      btnClass: 'bg-amber-600 hover:bg-amber-700 shadow-amber-950/50',
-    };
-  }
+const getCurrentStoryId = (bookId: string) => {
+  const id = bookId.toLowerCase();
+  if (id.includes('abraham')) return 'ibrahim';
+  if (id.includes('moses')) return 'musa';
+  if (id.includes('mecca')) return 'mecca';
+  if (id.includes('yunusemre')) return 'yunusEmre';
+  return 'adam';
 };
+
+const percent = (value: number, total: number) =>
+  total > 0 ? Math.min(100, Math.round((value / total) * 100)) : 0;
+
+const progressWidth = (value: number, total: number) => `${percent(value, total)}%`;
 
 export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
   bookData,
   onFinish,
   onReviewStory,
   onReadAgain,
-  onStartJourney
+  onStartJourney,
 }) => {
-  const { formatNumber, isRTL, language, t } = useLanguage();
+  const { formatNumber, isRTL, language } = useLanguage();
   const { stats } = useStoryProgress();
-
   const isArabic = language === 'ar';
 
-  // Determine current story and category
-  const currentStoryId = useMemo(() => {
-    const idLower = bookData.id.toLowerCase();
-    if (idLower.includes('adam')) return 'adam';
-    if (idLower.includes('abraham')) return 'ibrahim';
-    if (idLower.includes('moses')) return 'musa';
-    if (idLower.includes('mecca')) return 'mecca';
-    if (idLower.includes('yunusemre')) return 'yunusEmre';
-    return 'adam';
-  }, [bookData.id]);
+  const currentStoryId = useMemo(() => getCurrentStoryId(bookData.id), [bookData.id]);
+  const story = useMemo(() => getStoryMeta(currentStoryId) ?? storyCatalog[0], [currentStoryId]);
+  const visual = collectionVisuals[story.collection];
 
-  // Mark this specific story & level as completed in local storage
   useEffect(() => {
     localStorage.setItem(`completed_${currentStoryId}_${bookData.level}`, 'true');
   }, [currentStoryId, bookData.level]);
 
-  // Category Configuration (Theming)
-  const categoryInfo = useMemo(() => {
-    if (currentStoryId === 'mecca') {
-      return {
-        id: 'history',
-        nameEn: 'Islamic History & Civilization',
-        nameAr: 'التاريخ والحضارة الإسلامية',
-        tagEn: 'Islamic History & Civilization',
-        tagAr: 'التاريخ والحضارة الإسلامية',
-        accentColor: '#10B981', // Emerald
-        accentClass: 'text-emerald-400 border-emerald-500/20 bg-emerald-500/10',
-        bgGradient: 'from-[#041d13] via-[#092c1e] to-[#020e0a]',
-        cardBg: 'bg-[#042416]/95 border-emerald-500/20',
-        ringClass: 'text-emerald-500',
-        ringTrack: 'text-emerald-500/10',
-        badgeClass: 'bg-emerald-950/80 text-emerald-300 border-emerald-600/40 shadow-inner',
-        glowStyle: 'rgba(16, 185, 129, 0.2)',
-        btnClass: 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-950/50',
-        lightBgClass: 'bg-[#EDF2EE]/95',
-        bannerIconBg: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
-        badgeTextEn: 'History',
-        badgeTextAr: 'التاريخ',
-        quote: {
-          textAr: 'إِنَّ فِي قَصَصِهِمْ عِبْرَةً لِأُولِي الْأَلْبَابِ',
-          textEn: '"In their stories there is truly a lesson for people of understanding."',
-          sourceAr: 'سورة يوسف ١١١',
-          sourceEn: 'Surah Yusuf 111'
-        }
-      };
-    } else if (currentStoryId === 'yunusEmre') {
-      return {
-        id: 'turkish',
-        nameEn: 'Turkish-Islamic Heritage',
-        nameAr: 'التراث التركي الإسلامي',
-        tagEn: 'Great Figures of Turkish-Islamic Heritage',
-        tagAr: 'أعلام التراث التركي الإسلامي',
-        accentColor: '#22D3EE', // Cyan
-        accentClass: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/10',
-        bgGradient: 'from-[#041221] via-[#091e30] to-[#020a12]',
-        cardBg: 'bg-[#0a1826]/95 border-cyan-500/20',
-        ringClass: 'text-cyan-400',
-        ringTrack: 'text-cyan-400/10',
-        badgeClass: 'bg-[#0C1E30]/80 text-[#22D3EE] border-cyan-700/40 shadow-inner',
-        glowStyle: 'rgba(34, 211, 238, 0.2)',
-        btnClass: 'bg-cyan-600 hover:bg-cyan-700 shadow-cyan-950/50',
-        lightBgClass: 'bg-[#EAF0F4]/95',
-        bannerIconBg: 'bg-[#22D3EE]/10 border-[#22D3EE]/20 text-[#22D3EE]',
-        badgeTextEn: 'Heritage',
-        badgeTextAr: 'التراث',
-        quote: {
-          textAr: 'نحب المخلوق لأجل الخالق.',
-          textEn: '"We love the created, for the sake of the Creator."',
-          sourceAr: 'يونس أمره',
-          sourceEn: 'Yunus Emre'
-        }
-      };
-    } else {
-      // Prophets
-      return {
-        id: 'prophets',
-        nameEn: 'Stories of the Prophets',
-        nameAr: 'قصص الأنبياء عليهم السلام',
-        tagEn: 'Prophet Biography',
-        tagAr: 'السيرة النبوية',
-        accentColor: '#D4AF37', // Gold
-        accentClass: 'text-gold border-amber-500/20 bg-amber-500/10',
-        bgGradient: 'from-[#1a0c07] via-[#291710] to-[#0b0503]',
-        cardBg: 'bg-[#14221a]/95 border-amber-400/20',
-        ringClass: 'text-gold',
-        ringTrack: 'text-gold/10',
-        badgeClass: 'bg-amber-950/80 text-amber-300 border-amber-700/40 shadow-inner',
-        glowStyle: 'rgba(217, 119, 6, 0.2)',
-        btnClass: 'bg-amber-600 hover:bg-amber-700 shadow-amber-950/50',
-        lightBgClass: 'bg-parchment/95',
-        bannerIconBg: 'bg-amber-500/10 border-amber-500/20 text-gold',
-        badgeTextEn: 'Prophets',
-        badgeTextAr: 'الأنبياء',
-        quote: {
-          textAr: 'إِنَّ فِي قَصَصِهِمْ عِبْرَةً لِأُولِي الْأَلْبَابِ',
-          textEn: '"In their stories there is truly a lesson for people of understanding."',
-          sourceAr: 'سورة يوسف ١١١',
-          sourceEn: 'Surah Yusuf 111'
-        }
-      };
-    }
-  }, [currentStoryId]);
+  const storyPages = useMemo(
+    () => bookData.pages.filter(page => page.type === 'story'),
+    [bookData.pages],
+  );
 
-  // Calculations
-  const chaptersCount = useMemo(() => {
-    return bookData.pages.filter(p => p.type === 'story').length;
+  const totalWordNotes = useMemo(() => {
+    const words = new Set<string>();
+    storyPages.forEach(page => {
+      page.vocabulary?.forEach(item => words.add(normalizeWord(item.word)));
+    });
+    return words.size;
+  }, [storyPages]);
+
+  const expectedActivityIds = useMemo(() => {
+    const ids = new Set<string>();
+
+    bookData.pages.forEach(page => {
+      if (page.type === 'story') {
+        page.exercises?.forEach(exercise => ids.add(exercise.id));
+        page.languageFocusExercises?.forEach(exercise => ids.add(exercise.id));
+      }
+
+      if (page.type === 'quiz' || page.type === 'exercises') {
+        page.exercises?.forEach(exercise => ids.add(exercise.id));
+      }
+
+      if (page.type === 'vocabulary-match' && page.vocabularyPairs?.length) {
+        ids.add(`vocabulary-${page.id}`);
+      }
+    });
+
+    return ids;
   }, [bookData.pages]);
+
+  const completedActivityCount = useMemo(
+    () => [...stats.exercisesCompleted].filter(id => expectedActivityIds.has(id)).length,
+    [stats.exercisesCompleted, expectedActivityIds],
+  );
+
+  const audioChapterTotal = useMemo(
+    () => storyPages.filter(page => Boolean(page.audioUrl)).length,
+    [storyPages],
+  );
+
+  const finalChallengePage = useMemo(
+    () => bookData.pages.find(page => page.type === 'final-challenge'),
+    [bookData.pages],
+  );
+
+  const reflectionTotal = useMemo(
+    () => finalChallengePage?.exercises?.filter(exercise => exercise.type === 'reflection').length ?? 0,
+    [finalChallengePage],
+  );
 
   const finalScore = stats.finalScore;
   const finalDetails = stats.finalChallengeDetails;
+  const chapterCount = storyPages.length;
+  const chapterVisited = Math.min(stats.chaptersVisited.size, chapterCount);
+  const wordsExplored = Math.min(stats.wordsClicked.size, totalWordNotes || stats.wordsClicked.size);
+  const audioPlayed = Math.min(
+    stats.audioChaptersPlayed.size,
+    Math.max(audioChapterTotal, stats.audioChaptersPlayed.size),
+  );
 
-  // Metadata of the current story
-  const currentStoryMeta = useMemo(() => {
-    return storiesMetadata.find(s => s.id === currentStoryId);
-  }, [currentStoryId]);
+  const nextRecommendation = useMemo(() => {
+    const nextLevel = getNextLevel(bookData.level);
+    if (nextLevel) return { story, level: nextLevel };
 
-  // Clean success message without hardcoded text prefixing
-  const successMessage = useMemo(() => {
-    if (isArabic) {
-      const name = currentStoryMeta ? currentStoryMeta.nameAr : bookData.title;
-      return `لقد أكملت التحدي النهائي لقصة ${name} (${bookData.level}) بنجاح.`;
-    } else {
-      const name = currentStoryMeta ? currentStoryMeta.nameEn : bookData.title;
-      return `You completed the final challenge for ${name} (${bookData.level}) successfully.`;
+    const sameCollection = storyCatalog.find(item => item.collection === story.collection && item.id !== story.id);
+    if (sameCollection) return { story: sameCollection, level: 'A2' as Level };
+
+    const other = storyCatalog.find(item => item.id !== story.id);
+    return other ? { story: other, level: 'A2' as Level } : null;
+  }, [bookData.level, story]);
+
+  const scoreBand = useMemo(() => {
+    if (finalScore === null) {
+      return isArabic
+        ? { label: 'اكتملت الرحلة', text: 'أنهيت مسار الكتاب ووصلت إلى صفحة الإنجاز.' }
+        : { label: 'Journey complete', text: 'You reached the end of the learning journey.' };
     }
-  }, [isArabic, currentStoryMeta, bookData.level, bookData.title]);
-
-  // Achievement Title & Subtitle based on Score Thresholds
-  const scoreResult = useMemo(() => {
-    if (finalScore !== null && finalScore >= 90) {
-      return {
-        badgeNameEn: 'Mastered',
-        badgeNameAr: 'متقن القصة',
-        colorClass: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/30',
-        descEn: 'Excellent whole-story mastery. You connected details, evidence, and ideas across the book.',
-        descAr: 'إتقان ممتاز للقصة كاملة. ربطت بين التفاصيل والأدلة والأفكار عبر الكتاب.'
-      };
-    } else if (finalScore !== null && finalScore >= 70) {
-      return {
-        badgeNameEn: 'Successful Reader',
-        badgeNameAr: 'قارئ متميز',
-        colorClass: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
-        descEn: 'Strong whole-story understanding. A small review can make the remaining ideas more secure.',
-        descAr: 'فهم قوي للقصة كاملة. مراجعة قصيرة ستساعد على تثبيت ما بقي من الأفكار.'
-      };
-    } else if (finalScore !== null) {
-      return {
-        badgeNameEn: 'Story Explorer',
-        badgeNameAr: 'مستكشف القصة',
-        colorClass: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
-        descEn: 'You completed the challenge. Review the questions that needed another look, then try the ideas again.',
-        descAr: 'أكملت التحدي. راجع الأسئلة التي احتاجت إلى محاولة أخرى ثم أعد تثبيت الأفكار.'
-      };
-    } else {
-      // No final score
-      return {
-        badgeNameEn: 'Journey Explorer',
-        badgeNameAr: 'مستكشف الرحلة',
-        colorClass: 'text-slate-400 bg-slate-400/10 border-slate-400/30',
-        descEn: 'The learning journey is complete.',
-        descAr: 'اكتملت رحلة التعلم.'
-      };
+    if (finalScore >= 90) {
+      return isArabic
+        ? { label: 'إتقان قوي', text: 'أظهرت فهماً متماسكاً للكتاب كاملاً وربطت التفاصيل بالأفكار الكبرى.' }
+        : { label: 'Strong mastery', text: 'You showed secure whole-book understanding and connected details with larger ideas.' };
     }
-  }, [finalScore]);
+    if (finalScore >= 70) {
+      return isArabic
+        ? { label: 'فهم راسخ', text: 'أكملت الكتاب بفهم قوي، مع نقاط محددة يمكنك تثبيتها بالمراجعة.' }
+        : { label: 'Secure understanding', text: 'You completed the book with strong understanding and a clear path for targeted review.' };
+    }
+    return isArabic
+      ? { label: 'اكتمل المسار', text: 'أنهيت الرحلة وحددت بوضوح ما يحتاج إلى مراجعة إضافية.' }
+      : { label: 'Journey completed', text: 'You completed the journey and identified exactly what deserves another look.' };
+  }, [finalScore, isArabic]);
 
-  // Dynamic recommendation logic for primary "What's Next" CTA
-  const nextRec = useMemo(() => {
-    const levels: Level[] = ['A2', 'B1', 'B2'];
-    const currentLevelIdx = levels.indexOf(bookData.level);
-
-    // 1. Next level of same story
-    if (currentLevelIdx !== -1 && currentLevelIdx < levels.length - 1) {
-      const nextLevel = levels[currentLevelIdx + 1];
-      const meta = storiesMetadata.find(s => s.id === currentStoryId);
-      if (meta) {
-        return {
-          storyId: currentStoryId,
-          level: nextLevel,
-          metadata: meta
-        };
+  const copy = isArabic
+    ? {
+        eyebrow: 'اكتملت الرحلة',
+        congratulations: 'أحسنت الإنجاز',
+        completed: `أكملت ${story.nameAr} · ${bookData.level}`,
+        journey: 'رحلتك التعليمية',
+        chapters: 'الفصول',
+        words: 'ملاحظات الكلمات',
+        practice: 'مهام التدريب',
+        audio: 'فصول استمعت إليها',
+        mastery: 'الإتقان النهائي',
+        how: 'كيف تعلمت',
+        read: 'قرأت وتتبعت',
+        listen: 'استمعت',
+        explore: 'استكشفت المفردات',
+        practise: 'تدربت',
+        reflect: 'راجعت وتأملت',
+        finalChallenge: 'التحدي النهائي',
+        firstTry: 'المحاولة الأولى',
+        finalMastery: 'الإتقان بعد المراجعة',
+        corrected: 'إجابات تحسنت',
+        reflections: 'مهام التأمل',
+        revisit: 'نقاط تستحق مراجعة أخرى',
+        noRevisit: 'لم يحتج أي سؤال مسجل إلى محاولة ثانية.',
+        canDo: 'ما الذي تستطيع فعله الآن؟',
+        continue: 'واصل التعلم',
+        nextLevel: 'الخطوة المقترحة التالية',
+        review: 'مراجعة هذا الكتاب',
+        readAgain: 'القراءة من جديد',
+        library: 'العودة إلى المكتبة',
+        start: 'متابعة الرحلة',
+        of: 'من',
       }
-    }
-
-    // 2. Other story in same category, starting at Level A2
-    const sameCategoryOthers = storiesMetadata.filter(s => s.category === categoryInfo.id && s.id !== currentStoryId);
-    if (sameCategoryOthers.length > 0) {
-      return {
-        storyId: sameCategoryOthers[0].id,
-        level: 'A2' as Level,
-        metadata: sameCategoryOthers[0]
+    : {
+        eyebrow: 'Journey complete',
+        congratulations: 'Congratulations',
+        completed: `You completed ${story.name} · ${bookData.level}`,
+        journey: 'Your learning journey',
+        chapters: 'Chapters',
+        words: 'Word Notes explored',
+        practice: 'Practice tasks',
+        audio: 'Audio chapters explored',
+        mastery: 'Final mastery',
+        how: 'How you learned',
+        read: 'Read & followed',
+        listen: 'Listened',
+        explore: 'Explored vocabulary',
+        practise: 'Practised',
+        reflect: 'Reviewed & reflected',
+        finalChallenge: 'Final Challenge',
+        firstTry: 'First try',
+        finalMastery: 'Mastery after review',
+        corrected: 'Answers improved',
+        reflections: 'Reflections completed',
+        revisit: 'Worth another look',
+        noRevisit: 'No scored question needed a second attempt.',
+        canDo: 'What you can do now',
+        continue: 'Continue learning',
+        nextLevel: 'Recommended next step',
+        review: 'Review this book',
+        readAgain: 'Read again',
+        library: 'Back to library',
+        start: 'Continue journey',
+        of: 'of',
       };
+
+  const canDoItems = useMemo(() => {
+    if (bookData.level === 'A2') {
+      return isArabic
+        ? [
+            'تتبع الأحداث والشخصيات والأفكار الرئيسة في قصة طويلة مقسمة إلى فصول قصيرة.',
+            'تفهم مفردات القصة الأساسية من السياق وتعود إلى ملاحظات الكلمات عند الحاجة.',
+            'تجيب عن أسئلة الفهم وتستخدم أنماطاً لغوية بسيطة مرتبطة بالنص.',
+          ]
+        : [
+            'Follow the main events, people and ideas across a complete chaptered story.',
+            'Understand key story vocabulary from context and use Word Notes when needed.',
+            'Answer comprehension questions and reuse simple language patterns from the text.',
+          ];
     }
 
-    // 3. Story in another category, starting at Level A2
-    const otherCategories = storiesMetadata.filter(s => s.id !== currentStoryId);
-    if (otherCategories.length > 0) {
-      return {
-        storyId: otherCategories[0].id,
-        level: 'A2' as Level,
-        metadata: otherCategories[0]
-      };
+    if (bookData.level === 'B1') {
+      return isArabic
+        ? [
+            'تربط بين تسلسل الأحداث والأسباب والنتائج عبر فصول متعددة.',
+            'تستخدم مفردات القصة والعلاقات اللغوية لشرح أفكارك بوضوح أكبر.',
+            'تراجع إجاباتك وتنتقل من الفهم إلى إنتاج لغوي مترابط.',
+          ]
+        : [
+            'Connect sequence, cause and result across multiple chapters.',
+            'Use story vocabulary and language relationships to explain ideas more clearly.',
+            'Review your answers and move from comprehension into connected language use.',
+          ];
     }
 
-    return null;
-  }, [currentStoryId, bookData.level, categoryInfo.id]);
+    return isArabic
+      ? [
+          'تحلل الأدلة والسببية ونبرة المصدر عبر الكتاب كاملاً مع الحفاظ على درجة اليقين.',
+          'تستخدم مفردات دقيقة وروابط خطابية لبناء تفسير مترابط على مستوى B2.',
+          'تجمع أفكاراً من فصول مختلفة وتراجع استجابتك في ضوء التغذية الراجعة.',
+        ]
+      : [
+          'Analyse evidence, causality and source stance across the whole book without overstating certainty.',
+          'Use precise vocabulary and discourse relationships to build connected B2 interpretation.',
+          'Synthesize ideas across chapters and improve a response after targeted feedback.',
+        ];
+  }, [bookData.level, isArabic]);
 
-  // Dynamic recommendation logic for other stories at the same level
-  const sameLevelStories = useMemo(() => {
-    const currentLevel = bookData.level;
-    
-    // Filter out current story
-    const others = storiesMetadata.filter(s => s.id !== currentStoryId);
-    
-    // Map them to include their completion status for this level
-    const mapped = others.map(story => {
-      const isCompleted = localStorage.getItem(`completed_${story.id}_${currentLevel}`) === 'true';
-      return {
-        ...story,
-        isCompleted
-      };
-    });
-    
-    // Sort: incomplete first, completed last
-    mapped.sort((a, b) => {
-      if (a.isCompleted && !b.isCompleted) return 1;
-      if (!a.isCompleted && b.isCompleted) return -1;
-      return 0;
-    });
-    
-    // Return up to 4 recommendations
-    return mapped.slice(0, 4);
-  }, [bookData.level, currentStoryId]);
+  const learningSteps = [
+    {
+      icon: BookOpen,
+      label: copy.read,
+      value: chapterVisited,
+      total: chapterCount,
+    },
+    {
+      icon: Headphones,
+      label: copy.listen,
+      value: audioPlayed,
+      total: audioChapterTotal,
+    },
+    {
+      icon: Compass,
+      label: copy.explore,
+      value: wordsExplored,
+      total: totalWordNotes,
+    },
+    {
+      icon: Rocket,
+      label: copy.practise,
+      value: completedActivityCount,
+      total: expectedActivityIds.size,
+    },
+    {
+      icon: BrainCircuit,
+      label: copy.reflect,
+      value: finalDetails?.reflectionCompleted ?? 0,
+      total: reflectionTotal,
+    },
+  ];
 
-  // Localized section header for other stories at the same level
-  const moreStoriesHeader = useMemo(() => {
-    if (isArabic) {
-      return `قصص أخرى في المستوى ${bookData.level}`;
-    } else {
-      return `More Stories at ${bookData.level} Level`;
-    }
-  }, [isArabic, bookData.level]);
+  const summaryCards = [
+    {
+      icon: BookOpen,
+      label: copy.chapters,
+      value: chapterCount ? `${formatNumber(chapterVisited)} / ${formatNumber(chapterCount)}` : formatNumber(chapterVisited),
+      progress: percent(chapterVisited, chapterCount),
+    },
+    {
+      icon: Compass,
+      label: copy.words,
+      value: totalWordNotes ? `${formatNumber(wordsExplored)} / ${formatNumber(totalWordNotes)}` : formatNumber(wordsExplored),
+      progress: percent(wordsExplored, totalWordNotes),
+    },
+    {
+      icon: Rocket,
+      label: copy.practice,
+      value: expectedActivityIds.size
+        ? `${formatNumber(completedActivityCount)} / ${formatNumber(expectedActivityIds.size)}`
+        : formatNumber(completedActivityCount),
+      progress: percent(completedActivityCount, expectedActivityIds.size),
+    },
+    {
+      icon: Target,
+      label: copy.mastery,
+      value: finalScore === null ? '—' : `${formatNumber(finalScore)}%`,
+      progress: finalScore ?? 0,
+    },
+  ];
 
   return (
-    <div 
-      className={cn(
-        "fixed inset-0 z-50 overflow-y-auto w-full min-h-screen bg-gradient-to-b py-12 px-6 md:py-16 md:px-12 flex flex-col items-center justify-start custom-scrollbar",
-        categoryInfo.bgGradient
-      )}
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto text-white custom-scrollbar"
       dir={isRTL ? 'rtl' : 'ltr'}
+      style={{ background: visual.summaryGradient }}
     >
-      {/* Subtle Full-Screen Ambient Glow Overlays */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full opacity-10 blur-[150px] bg-white" />
-        <div 
-          className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full opacity-25 blur-[180px]"
-          style={{ backgroundColor: categoryInfo.accentColor }}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <img
+          src={story.image}
+          alt=""
+          className="absolute -right-[8%] -top-[16%] h-[70vh] w-[52vw] min-w-[520px] object-cover opacity-[0.075] blur-[32px]"
+        />
+        <div
+          className="absolute left-[7%] top-[4%] h-[420px] w-[420px] rounded-full blur-[150px]"
+          style={{ background: visual.ambient, opacity: 0.55 }}
+        />
+        <div
+          className="absolute bottom-[-14%] right-[8%] h-[520px] w-[520px] rounded-full blur-[170px]"
+          style={{ background: visual.accentSoft }}
         />
       </div>
 
-      {/* Main Content Wrapper (Appropriate max-width so content doesn't disperse) */}
-      <div className="w-full max-w-6xl relative z-10 flex flex-col gap-16">
-        
-        {/* Animated Main Content Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+      <main className="relative mx-auto w-full max-w-7xl px-5 py-7 sm:px-8 sm:py-9 lg:px-12 lg:py-12">
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start"
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="relative overflow-hidden rounded-[34px] border border-white/10 bg-black/15 shadow-[0_34px_100px_rgba(0,0,0,0.32)] backdrop-blur-xl"
         >
-          
-          {/* LEFT COLUMN: VISUAL CONGRATULATIONS & MAIN SUMMARY ACCENT */}
-          <div className="lg:col-span-5 flex flex-col justify-start space-y-10">
-            
-            <div className="space-y-8">
-              {/* Level & Category Badges */}
-              <div className="flex flex-wrap items-center gap-3">
-                <span className={cn("px-4 py-2 rounded-full text-[13px] font-bold uppercase tracking-wide border", categoryInfo.badgeClass)}>
-                  {isArabic ? categoryInfo.nameAr : categoryInfo.nameEn}
-                </span>
-                <span className="px-4 py-2 rounded-full text-[13px] font-bold uppercase tracking-wide bg-white/5 border border-white/10 text-parchment/90 shadow-inner">
-                  {t('nav.level')} {formatNumber(bookData.level)}
-                </span>
-              </div>
-
-              {/* Achievement Badge Visual Shield */}
-              <div className="relative py-4 flex flex-col items-center text-center lg:items-start lg:text-left">
-                
-                <div className="relative mb-8 self-center lg:self-start">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-0 scale-[1.3] rounded-full opacity-15"
-                    style={{ border: `1px dashed ${categoryInfo.accentColor}` }}
-                  />
-                  <motion.div
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative w-32 h-32 md:w-36 md:h-36 rounded-full flex items-center justify-center shadow-xl border"
-                    style={{ 
-                      backgroundImage: `linear-gradient(135deg, ${categoryInfo.accentColor}20, ${categoryInfo.accentColor}40)`,
-                      borderColor: `${categoryInfo.accentColor}40`
-                    }}
-                  >
-                    <Trophy className="w-16 h-16 text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]" />
-                    <div className="absolute -top-2 -right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-xl border border-white/10">
-                      <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    </div>
-                  </motion.div>
-                </div>
-
-                <span className="text-[13px] md:text-[14px] uppercase tracking-wider text-[#F5EDD6]/60 font-bold mb-3">
-                  {isArabic ? 'إنجاز متميز' : 'JOURNEY COMPLETED'}
-                </span>
-
-                <h1 className="text-4xl md:text-5xl lg:text-[50px] font-black tracking-tight text-white leading-tight mb-4 font-display">
-                  {isArabic ? 'تهانينا لك!' : 'Congratulations!'}
-                </h1>
-
-                <p className="text-lg md:text-[19px] font-medium text-[#F5EDD6]/90 leading-relaxed max-w-xl mb-6">
-                  {successMessage}
-                </p>
-
-                {/* Level Achievement Badge Description */}
-                <div className={cn("inline-flex flex-col p-5 rounded-2xl border w-full max-w-md", scoreResult.colorClass)}>
-                  <span className="text-[14px] md:text-[15px] font-black uppercase tracking-wide mb-1.5 flex items-center gap-2">
-                    <Award className="w-4 h-4" />
-                    {isArabic ? scoreResult.badgeNameAr : scoreResult.badgeNameEn}
-                  </span>
-                  <span className="text-[13px] md:text-[14px] opacity-90 leading-relaxed">
-                    {isArabic ? scoreResult.descAr : scoreResult.descEn}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Back to library button */}
-            <div className="pt-4 max-w-md">
-              <button
-                onClick={onFinish}
-                className="w-full flex items-center justify-center gap-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-parchment font-bold text-[14px] md:text-[16px] uppercase tracking-wide py-4.5 px-6 transition-all shadow-sm"
-              >
-                <Library className="w-5 h-5" />
-                {isArabic ? 'المكتبة الرئيسية' : 'Back to Library'}
-              </button>
-            </div>
-
-          </div>
-
-          {/* RIGHT COLUMN: SUMMARY DETAILS, QUOTE, & NEXT RECOMMENDED */}
-          <div className="lg:col-span-7 flex flex-col justify-start space-y-12">
-            
-            {/* SECTION: LEARNING SUMMARY */}
-            <div className="space-y-6">
-              <h3 className="text-[15px] md:text-[16px] uppercase tracking-wider text-[#F5EDD6]/40 font-black flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: categoryInfo.accentColor }} />
-                {isArabic ? 'ملخص التعلم' : 'LEARNING SUMMARY'}
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Stats Card 1: Chapters */}
-                <div className="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center gap-4 hover:border-white/15 transition-colors">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 text-white">
-                    <BookOpen className="w-7 h-7" style={{ color: categoryInfo.accentColor }} />
-                  </div>
-                  <div>
-                    <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                      {isArabic ? 'الفصول التي فُتحت' : 'Chapters Visited'}
-                    </span>
-                    <span className="block text-2xl md:text-[28px] font-black text-white mt-1 tabular-nums">
-                      {formatNumber(stats.chaptersVisited.size)} / {formatNumber(chaptersCount)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Stats Card 2: Words Explored */}
-                <div className="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center gap-4 hover:border-white/15 transition-colors">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 text-white">
-                    <Compass className="w-7 h-7" style={{ color: categoryInfo.accentColor }} />
-                  </div>
-                  <div>
-                    <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                      {isArabic ? 'الكلمات المستكشفة' : 'Words Explored'}
-                    </span>
-                    <span className="block text-2xl md:text-[28px] font-black text-white mt-1 tabular-nums">
-                      {formatNumber(stats.wordsClicked.size)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Stats Card 3: Challenges Completed */}
-                <div className="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center gap-4 hover:border-white/15 transition-colors">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 text-white">
-                    <Rocket className="w-7 h-7" style={{ color: categoryInfo.accentColor }} />
-                  </div>
-                  <div>
-                    <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                      {isArabic ? 'التمارين والمهام' : 'Challenges Completed'}
-                    </span>
-                    <span className="block text-2xl md:text-[28px] font-black text-white mt-1 tabular-nums">
-                      {formatNumber(stats.exercisesCompleted.size)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Stats Card 4: Final Challenge Score with Progress Ring */}
-                {finalScore !== null ? (
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center justify-between hover:border-white/15 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 text-white">
-                        <Target className="w-7 h-7" style={{ color: categoryInfo.accentColor }} />
-                      </div>
-                      <div>
-                        <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                          {isArabic ? 'الإتقان النهائي' : 'Final Mastery'}
-                        </span>
-                        <span className="block text-2xl md:text-[28px] font-black text-white mt-1 tabular-nums">
-                          {formatNumber(finalScore)}%
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Dynamic SVG Circular Progress */}
-                    <div className="relative w-12 h-12">
-                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                        <path
-                          className={categoryInfo.ringTrack}
-                          stroke="currentColor"
-                          strokeWidth="3.5"
-                          fill="none"
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                        />
-                        <path
-                          className={categoryInfo.ringClass}
-                          stroke="currentColor"
-                          strokeWidth="3.5"
-                          strokeDasharray={`${finalScore}, 100`}
-                          strokeLinecap="round"
-                          fill="none"
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                ) : (
-                  // Quiz not taken state
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center gap-4 hover:border-white/15 transition-colors">
-                    <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/5 text-white/40">
-                      <Target className="w-7 h-7" />
-                    </div>
-                    <div>
-                      <span className="block text-[13px] md:text-[14px] uppercase tracking-wide text-[#F5EDD6]/50">
-                        {isArabic ? 'الاختبار النهائي' : 'Final Challenge'}
-                      </span>
-                      <span className="block text-sm font-semibold text-[#F5EDD6]/40 mt-1">
-                        {isArabic ? 'غير مكتمل بعد' : 'Not completed'}
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {finalDetails && (
-              <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 md:p-6 space-y-5">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-[12px] md:text-[13px] uppercase tracking-wider text-[#F5EDD6]/45 font-black">
-                      {isArabic ? 'أداء التحدي النهائي' : 'FINAL CHALLENGE MASTERY'}
-                    </p>
-                    <p className="text-[14px] md:text-[15px] text-[#F5EDD6]/70 mt-1">
-                      {isArabic
-                        ? 'يفصل بين دقة المحاولة الأولى وما أتقنته بعد فرصة التصحيح.'
-                        : 'Separates first-try accuracy from what you mastered after a correction opportunity.'}
-                    </p>
-                  </div>
-                  <CheckCircle2 className="w-7 h-7 shrink-0" style={{ color: categoryInfo.accentColor }} />
-                </div>
-
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
-                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
-                      {isArabic ? 'المحاولة الأولى' : 'First Try'}
-                    </span>
-                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
-                      {formatNumber(finalDetails.firstAttemptAccuracy)}%
-                    </span>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
-                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
-                      {isArabic ? 'الإتقان النهائي' : 'Final Mastery'}
-                    </span>
-                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
-                      {formatNumber(finalDetails.masteryAccuracy)}%
-                    </span>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
-                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
-                      {isArabic ? 'إجابات صُححت' : 'Corrected'}
-                    </span>
-                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
-                      {formatNumber(finalDetails.correctedAnswers)}
-                    </span>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
-                    <span className="block text-[11px] md:text-[12px] uppercase tracking-wide text-[#F5EDD6]/45">
-                      {isArabic ? 'مهام التأمل' : 'Reflections'}
-                    </span>
-                    <span className="block text-xl md:text-2xl font-black text-white mt-1 tabular-nums">
-                      {formatNumber(finalDetails.reflectionCompleted)}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-[13px] md:text-[14px] text-[#F5EDD6]/65">
-                  <span>
-                    {isArabic
-                      ? 'أسئلة احتاجت مراجعة بعد المحاولة الأولى'
-                      : 'Questions that needed another look after the first try'}
-                  </span>
-                  <span className="font-black text-white">
-                    {formatNumber(finalDetails.missedQuestionCount)} / {formatNumber(finalDetails.scoredQuestionCount)}
-                  </span>
-                </div>
-
-                {finalDetails.missedQuestions.length > 0 ? (
-                  <div className="space-y-2.5">
-                    <p className="text-[11px] md:text-[12px] uppercase tracking-wider text-[#F5EDD6]/40 font-black">
-                      {isArabic ? 'للمراجعة' : 'REVIEW THESE'}
-                    </p>
-                    {finalDetails.missedQuestions.map((item, index) => (
-                      <div
-                        key={item.id}
-                        className="rounded-2xl border border-white/10 bg-black/10 px-4 py-3 flex items-start gap-3"
-                      >
-                        <span
-                          className="w-7 h-7 rounded-full shrink-0 flex items-center justify-center text-[11px] font-black"
-                          style={{ color: categoryInfo.accentColor, backgroundColor: `${categoryInfo.accentColor}14` }}
-                        >
-                          {formatNumber(index + 1)}
-                        </span>
-                        <div className="min-w-0">
-                          <p className="text-[12px] md:text-[13px] font-black text-white/85">
-                            {item.title}
-                          </p>
-                          <p className="text-[13px] md:text-[14px] text-[#F5EDD6]/65 leading-relaxed mt-0.5">
-                            {item.question}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.06] px-4 py-3 text-[13px] md:text-[14px] text-emerald-100/80">
-                    {isArabic
-                      ? 'لم يحتج أي سؤال إلى محاولة ثانية.'
-                      : 'No scored question needed a second attempt.'}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* SECTION: REFLECTION / QUOTE */}
-            {categoryInfo.quote && (
-              <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 text-center space-y-4">
-                <p 
-                  className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed text-white font-serif italic"
-                  dir={isArabic ? "rtl" : "ltr"}
+          <div className="grid lg:grid-cols-[390px_minmax(0,1fr)]">
+            <div className="relative min-h-[420px] overflow-hidden bg-black/20">
+              <img src={story.image} alt={isArabic ? story.nameAr : story.name} className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/5" />
+              <div className="absolute inset-x-0 bottom-0 p-7 sm:p-8">
+                <div
+                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em]"
+                  style={{ color: visual.accentBright, borderColor: `${visual.accent}55`, background: visual.accentSoft }}
                 >
-                  {isArabic ? categoryInfo.quote.textAr : categoryInfo.quote.textEn}
+                  <img src={visual.icon} alt="" className="h-4 w-4 object-contain" />
+                  {isArabic ? visual.nameAr : visual.nameEn}
+                </div>
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
+                  {copy.eyebrow}
                 </p>
-                <span className="block text-[13px] md:text-[14px] font-bold uppercase tracking-wider text-[#F5EDD6]/50">
-                  — {isArabic ? categoryInfo.quote.sourceAr : categoryInfo.quote.sourceEn}
-                </span>
+                <h1 className="mt-2 font-display text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
+                  {isArabic ? story.nameAr : story.name}
+                </h1>
+                <p className="mt-2 text-sm font-semibold text-white/65">
+                  {bookData.level} · {isArabic ? visual.shortAr : visual.shortEn}
+                </p>
               </div>
-            )}
+            </div>
 
-            {/* SECTION: WHAT'S NEXT & RECOMMENDED ACTION */}
-            {nextRec && (
-              <div className="space-y-4">
-                <h3 className="text-[15px] md:text-[16px] uppercase tracking-wider text-[#F5EDD6]/40 font-black flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: categoryInfo.accentColor }} />
-                  {isArabic ? 'الخطوة التالية في الرحلة' : 'WHAT\'S NEXT?'}
-                </h3>
-
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-5 flex flex-col md:flex-row items-center justify-between gap-6 hover:border-white/15 transition-all">
-                  
-                  {/* Recommendation Card Info */}
-                  <div className="flex items-center gap-5 w-full md:w-auto">
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl overflow-hidden border border-white/10 flex-shrink-0 bg-black/20">
-                      <img 
-                        src={nextRec.metadata.image} 
-                        alt={nextRec.metadata.nameEn} 
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300" 
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="space-y-1.5 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className={cn("px-2.5 py-1 rounded text-[11px] font-bold uppercase border", categoryInfo.badgeClass)}>
-                          {nextRec.level}
-                        </span>
-                        <span className="text-[13px] text-[#F5EDD6]/60 uppercase tracking-wide font-bold">
-                          {isArabic ? nextRec.metadata.nameAr : nextRec.metadata.nameEn}
-                        </span>
-                      </div>
-                      <h4 className="text-lg md:text-[20px] font-bold text-white font-display">
-                        {isArabic ? nextRec.metadata.nameAr : nextRec.metadata.nameEn}
-                      </h4>
-                      <p className="text-[14px] md:text-[15px] text-[#F5EDD6]/70 line-clamp-2 leading-relaxed max-w-md">
-                        {isArabic ? nextRec.metadata.descriptionAr : nextRec.metadata.descriptionEn}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Recommend Button Action (Primary CTA) */}
-                  <div className="w-full md:w-auto flex-shrink-0">
-                    <button
-                      onClick={() => onStartJourney && onStartJourney(nextRec.storyId, nextRec.level)}
-                      className={cn(
-                        "w-full md:w-auto group inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl text-white font-bold text-[14px] md:text-[16px] uppercase tracking-wide transition-all",
-                        categoryInfo.btnClass
-                      )}
-                    >
-                      {isArabic ? 'مواصلة الرحلة' : 'Continue Journey'}
-                      {isRTL ? (
-                        <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-                      ) : (
-                        <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                      )}
-                    </button>
-                  </div>
-
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <div className="flex items-center gap-3">
+                <motion.div
+                  initial={{ scale: 0.8, rotate: -8 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: 'spring', stiffness: 180, damping: 16 }}
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl border"
+                  style={{ background: visual.accentSoft, borderColor: `${visual.accent}44`, color: visual.accentBright }}
+                >
+                  <Trophy size={28} />
+                </motion.div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/42">
+                    {copy.eyebrow}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold" style={{ color: visual.accentBright }}>
+                    {scoreBand.label}
+                  </p>
                 </div>
               </div>
-            )}
 
-          </div>
+              <h2 className="mt-8 font-display text-[clamp(2.7rem,5vw,5.4rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+                {copy.congratulations}
+              </h2>
+              <p className="mt-5 text-lg font-medium leading-8 text-white/82 sm:text-xl">
+                {copy.completed}
+              </p>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/58 sm:text-[15px]">
+                {scoreBand.text}
+              </p>
 
-        </motion.div>
-
-        {/* SECTION: MORE STORIES AT SAME LEVEL */}
-        {sameLevelStories.length > 0 && (
-          <div className="space-y-6 pt-10 border-t border-white/10">
-            <h3 className="text-[15px] md:text-[16px] uppercase tracking-wider text-[#F5EDD6]/40 font-black flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: categoryInfo.accentColor }} />
-              {moreStoriesHeader}
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {sameLevelStories.map(story => {
-                const storyCategoryInfo = getCategoryInfo(story.category);
-                return (
-                  <div 
-                    key={story.id} 
-                    className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col justify-between hover:border-white/20 hover:bg-white/[0.07] transition-all group shadow-lg"
-                  >
-                    {/* Image & Badges */}
-                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/20">
-                      <img 
-                        src={story.image} 
-                        alt={isArabic ? story.nameAr : story.nameEn} 
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      
-                      {/* Badges Overlay */}
-                      <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2 justify-between items-center">
-                        <span className={cn("px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wide border", storyCategoryInfo.badgeClass)}>
-                          {isArabic ? storyCategoryInfo.badgeTextAr : storyCategoryInfo.badgeTextEn}
-                        </span>
-                        <span className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white/10 border border-white/10 text-white shadow-inner uppercase tracking-wide">
-                          {bookData.level}
-                        </span>
-                      </div>
-
-                      {/* Completed Overlay Badge */}
-                      {story.isCompleted && (
-                        <div className="absolute bottom-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/95 border border-emerald-400/30 text-white text-[11px] font-black uppercase tracking-wider shadow-md">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          {isArabic ? 'مكتمل' : 'Completed'}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Info and CTA */}
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-5">
-                      <div className="space-y-2">
-                        <h4 className="text-[18px] md:text-[20px] font-bold text-white font-display line-clamp-1">
-                          {isArabic ? story.nameAr : story.nameEn}
-                        </h4>
-                        <p className="text-[14px] md:text-[15px] text-[#F5EDD6]/70 line-clamp-2 leading-relaxed">
-                          {isArabic ? story.descriptionAr : story.descriptionEn}
-                        </p>
-                      </div>
-
-                      <button
-                        onClick={() => onStartJourney && onStartJourney(story.id, bookData.level)}
-                        className={cn(
-                          "w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-white font-bold text-[14px] md:text-[15px] uppercase tracking-wide transition-all shadow-md group-hover:opacity-95",
-                          story.isCompleted 
-                            ? "bg-white/10 hover:bg-white/20 border border-white/10" 
-                            : storyCategoryInfo.btnClass
-                        )}
-                      >
-                        {story.isCompleted ? (
-                          <>
-                            <RotateCcw className="w-4 h-4" />
-                            {isArabic ? 'قراءة مرة أخرى' : 'Read Again'}
-                          </>
-                        ) : (
-                          <>
-                            <BookOpen className="w-4 h-4" />
-                            {isArabic ? 'ابدأ القصة' : 'Start Story'}
-                          </>
-                        )}
-                      </button>
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {summaryCards.map(({ icon: Icon, label, value, progress }) => (
+                  <div key={label} className="rounded-2xl border border-white/8 bg-white/[0.035] p-4">
+                    <Icon size={18} style={{ color: visual.accentBright }} />
+                    <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/42">{label}</p>
+                    <p className="mt-1 text-xl font-semibold tabular-nums text-white">{value}</p>
+                    <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/8">
+                      <div className="h-full rounded-full" style={{ width: `${progress}%`, background: visual.accent }} />
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        <section className="mt-6 grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+          <div className="rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
+                  {copy.journey}
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
+                  {copy.how}
+                </h3>
+              </div>
+              <Sparkles size={23} style={{ color: visual.accentBright }} />
+            </div>
+
+            <div className="mt-7 space-y-3">
+              {learningSteps.map(({ icon: Icon, label, value, total }, index) => {
+                const complete = total > 0 && value >= total;
+                return (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, x: isRTL ? 10 : -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.06 * index }}
+                    className="grid grid-cols-[42px_minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-white/7 bg-black/10 px-4 py-3.5"
+                  >
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{ background: visual.accentSoft, color: visual.accentBright }}
+                    >
+                      <Icon size={19} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="truncate text-sm font-semibold text-white/86">{label}</span>
+                        <span className="text-xs font-semibold tabular-nums text-white/46">
+                          {total > 0 ? `${formatNumber(value)} / ${formatNumber(total)}` : formatNumber(value)}
+                        </span>
+                      </div>
+                      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.07]">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: total > 0 ? progressWidth(value, total) : value > 0 ? '100%' : '0%' }}
+                          transition={{ duration: 0.65, delay: 0.08 * index }}
+                          className="h-full rounded-full"
+                          style={{ background: visual.accent }}
+                        />
+                      </div>
+                    </div>
+                    <CheckCircle2
+                      size={18}
+                      className={complete ? 'opacity-100' : 'opacity-20'}
+                      style={{ color: complete ? visual.accentBright : undefined }}
+                    />
+                  </motion.div>
                 );
               })}
             </div>
           </div>
-        )}
 
-        {/* SECONDARY OPERATIONS LINK */}
-        <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/10">
-          <button
-            onClick={onReviewStory ?? onFinish}
-            className="flex-1 inline-flex items-center justify-center gap-2.5 rounded-xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 px-5 py-4 text-[13px] md:text-[14px] font-bold uppercase tracking-wide text-parchment transition-all"
-          >
-            <Library className="h-4.5 w-4.5" style={{ color: categoryInfo.accentColor }} />
-            {isArabic ? 'مراجعة هذه القصة' : 'Review This Story'}
-          </button>
+          <div className="rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: visual.accentSoft, color: visual.accentBright }}>
+                <Target size={21} />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">{copy.finalChallenge}</p>
+                <h3 className="mt-1 font-display text-2xl font-semibold tracking-[-0.03em]">
+                  {finalScore === null ? '—' : `${formatNumber(finalScore)}%`}
+                </h3>
+              </div>
+            </div>
 
-          <button
-            onClick={onReadAgain ?? onFinish}
-            className="flex-1 inline-flex items-center justify-center gap-2.5 rounded-xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 px-5 py-4 text-[13px] md:text-[14px] font-bold uppercase tracking-wide text-parchment transition-all"
-          >
-            <RotateCcw className="h-4.5 w-4.5" style={{ color: categoryInfo.accentColor }} />
-            {isArabic ? 'قراءة مرة أخرى' : 'Read Again'}
-          </button>
-        </div>
+            {finalDetails ? (
+              <>
+                <div className="mt-7 grid grid-cols-2 gap-3">
+                  {[
+                    [copy.firstTry, `${formatNumber(finalDetails.firstAttemptAccuracy)}%`],
+                    [copy.finalMastery, `${formatNumber(finalDetails.masteryAccuracy)}%`],
+                    [copy.corrected, formatNumber(finalDetails.correctedAnswers)],
+                    [copy.reflections, formatNumber(finalDetails.reflectionCompleted)],
+                  ].map(([label, value]) => (
+                    <div key={label} className="rounded-2xl border border-white/7 bg-black/10 p-4">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.13em] text-white/38">{label}</p>
+                      <p className="mt-2 text-2xl font-semibold tabular-nums">{value}</p>
+                    </div>
+                  ))}
+                </div>
 
-      </div>
+                <div className="mt-4 rounded-2xl border border-white/7 bg-black/10 p-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-xs font-semibold text-white/55">{copy.revisit}</p>
+                    <span className="text-sm font-semibold tabular-nums">
+                      {formatNumber(finalDetails.missedQuestionCount)} / {formatNumber(finalDetails.scoredQuestionCount)}
+                    </span>
+                  </div>
+
+                  {finalDetails.missedQuestions.length ? (
+                    <div className="mt-3 space-y-2">
+                      {finalDetails.missedQuestions.slice(0, 3).map((item, index) => (
+                        <div key={item.id} className="flex items-start gap-3 rounded-xl bg-white/[0.035] px-3 py-2.5">
+                          <span
+                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+                            style={{ background: visual.accentSoft, color: visual.accentBright }}
+                          >
+                            {formatNumber(index + 1)}
+                          </span>
+                          <div>
+                            <p className="text-xs font-semibold text-white/80">{item.title}</p>
+                            <p className="mt-0.5 text-xs leading-5 text-white/48">{item.question}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="mt-3 text-sm leading-6 text-white/58">{copy.noRevisit}</p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <p className="mt-6 text-sm leading-7 text-white/52">
+                {isArabic ? 'تظهر هنا تفاصيل المحاولة الأولى والمراجعة عند إكمال التحدي النهائي.' : 'First-try and review details appear here when the Final Challenge is completed.'}
+              </p>
+            )}
+          </div>
+        </section>
+
+        <section className="mt-6 rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
+          <div className="flex items-center gap-3">
+            <Award size={22} style={{ color: visual.accentBright }} />
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
+                {bookData.level}
+              </p>
+              <h3 className="mt-1 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
+                {copy.canDo}
+              </h3>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {canDoItems.map((item, index) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 * index }}
+                className="rounded-2xl border border-white/7 bg-black/10 p-5"
+              >
+                <span
+                  className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
+                  style={{ background: visual.accentSoft, color: visual.accentBright }}
+                >
+                  {formatNumber(index + 1)}
+                </span>
+                <p className="mt-4 text-sm font-medium leading-7 text-white/72">{item}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-6 overflow-hidden rounded-[30px] border border-white/8 bg-white/[0.035]">
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div className="p-6 sm:p-8">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
+                {copy.continue}
+              </p>
+              <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
+                {copy.nextLevel}
+              </h3>
+
+              {nextRecommendation && (
+                <div className="mt-6 flex items-center gap-4">
+                  <img
+                    src={nextRecommendation.story.image}
+                    alt=""
+                    className="h-20 w-16 rounded-xl object-cover shadow-lg"
+                  />
+                  <div className="min-w-0">
+                    <p className="truncate text-base font-semibold">
+                      {isArabic ? nextRecommendation.story.nameAr : nextRecommendation.story.name}
+                    </p>
+                    <p className="mt-1 text-sm text-white/48">
+                      {nextRecommendation.level} · {isArabic
+                        ? collectionVisuals[nextRecommendation.story.collection].shortAr
+                        : collectionVisuals[nextRecommendation.story.collection].shortEn}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                {nextRecommendation && (
+                  <button
+                    type="button"
+                    onClick={() => onStartJourney?.(nextRecommendation.story.id, nextRecommendation.level)}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                    style={{ background: visual.summaryButton }}
+                  >
+                    {copy.start}
+                    {isRTL ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={onReviewStory ?? onFinish}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-5 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.08]"
+                >
+                  <BookOpen size={16} />
+                  {copy.review}
+                </button>
+                <button
+                  type="button"
+                  onClick={onReadAgain ?? onFinish}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-5 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.08]"
+                >
+                  <RotateCcw size={16} />
+                  {copy.readAgain}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center border-t border-white/8 bg-black/10 p-6 lg:border-s lg:border-t-0">
+              <button
+                type="button"
+                onClick={onFinish}
+                className="inline-flex min-h-13 w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-6 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.09]"
+              >
+                <Library size={18} style={{ color: visual.accentBright }} />
+                {copy.library}
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
