@@ -25,8 +25,6 @@ import {
   meccaB1LanguageFocusChapter14,
   meccaB1LanguageFocusChapter15,
 } from './en/languageFocus3';
-import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
-import { meccaB1SelfStudyGuide, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { pages as meccaB1PagesAr } from './ar/pages';
 import {
   meccaB1FinalChallengeExercisesAr,
@@ -53,8 +51,6 @@ import {
   meccaB1LanguageFocusChapter14Ar,
   meccaB1LanguageFocusChapter15Ar,
 } from './ar/languageFocus3';
-import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
   'jahiliyyah',
@@ -136,10 +132,8 @@ export const meccaB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 13,
   pages: cleanEnglishGlossary(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises)),
-  teacherGuide: meccaB1TeacherGuide,
-  teacherGuideMetadata: meccaB1TeacherGuideMetadata,
-  selfStudyGuide: meccaB1SelfStudyGuide,
-  studentGuideMetadata: meccaB1StudentGuideMetadata,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaB1BookDataAr: BookData = {
@@ -148,10 +142,8 @@ export const meccaB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
-  teacherGuide: meccaB1TeacherGuideAr,
-  teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
-  selfStudyGuide: meccaB1SelfStudyGuideAr,
-  studentGuideMetadata: meccaB1StudentGuideMetadataAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaB1BookData = meccaB1BookDataEn;
