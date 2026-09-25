@@ -476,7 +476,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
   ];
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden lg:-my-3 lg:h-[calc(100%+1.5rem)]">
+    <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
       <section className={cn(
         'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm',
         colTheme.hero,
