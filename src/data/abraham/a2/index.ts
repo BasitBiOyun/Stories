@@ -10,10 +10,6 @@ import { abrahamA2LanguageFocusExercisesPart7, abrahamA2LanguageFocusExercisesPa
 import { abrahamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamA2LanguageFocusExercisesArPart2, abrahamA2LanguageFocusExercisesArPart3, abrahamA2LanguageFocusExercisesArPart4, abrahamA2LanguageFocusExercisesArPart5, abrahamA2LanguageFocusExercisesArPart6 } from './ar/languageFocus2';
 import { abrahamA2LanguageFocusExercisesArPart7, abrahamA2LanguageFocusExercisesArPart8, abrahamA2LanguageFocusExercisesArPart9, abrahamA2LanguageFocusExercisesArPart10, abrahamA2LanguageFocusExercisesArPart11 } from './ar/languageFocus3';
-import { abrahamA2TeacherGuideEn, abrahamA2TeacherGuideMetadataEn } from './en/teacherGuide';
-import { abrahamA2TeacherGuideAr, abrahamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamA2SelfStudyGuideEn, abrahamA2StudentGuideSectionsPreview, abrahamA2StudentGuideMetadataPreview, abrahamA2StudentGuideTextPreview } from './en/selfStudyGuide';
-import { abrahamA2SelfStudyGuideAr, abrahamA2StudentGuideSectionsPreviewAr, abrahamA2StudentGuideMetadataPreviewAr, abrahamA2StudentGuideTextPreviewAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 14 }, (_, index) => index + 1));
 
@@ -45,14 +41,14 @@ const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(sourcePage => {
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en', title: 'Stories of the Prophets: Abraham (A2)', level: 'A2', baseFontSize: 13,
-  pages: buildEnglishPages(), teacherGuide: abrahamA2TeacherGuideEn, teacherGuideMetadata: abrahamA2TeacherGuideMetadataEn,
-  selfStudyGuide: abrahamA2SelfStudyGuideEn, studentGuideSections: abrahamA2StudentGuideSectionsPreview, studentGuideMetadata: abrahamA2StudentGuideMetadataPreview, studentGuideText: abrahamA2StudentGuideTextPreview,
+  pages: buildEnglishPages(), teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamA2BookDataAr: BookData = {
   id: 'a2-abraham-ar', title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)', level: 'A2', baseFontSize: 14,
-  pages: buildArabicPages(), teacherGuide: abrahamA2TeacherGuideAr, teacherGuideMetadata: abrahamA2TeacherGuideMetadataAr,
-  selfStudyGuide: abrahamA2SelfStudyGuideAr, studentGuideSections: abrahamA2StudentGuideSectionsPreviewAr, studentGuideMetadata: abrahamA2StudentGuideMetadataPreviewAr, studentGuideText: abrahamA2StudentGuideTextPreviewAr,
+  pages: buildArabicPages(), teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamA2BookData = abrahamA2BookDataEn;
