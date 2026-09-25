@@ -1,12 +1,8 @@
 import type { BookData, PageData } from '../../../types';
 
 import { meccaB2Pages, meccaB2VocabIndexes } from './en/pages';
-import { meccaB2TeacherGuide } from './en/teacherGuide';
-import { meccaB2SelfStudyGuide } from './en/selfStudyGuide';
 
 import { meccaB2PagesAr } from './ar/pages';
-import { meccaB2TeacherGuideAr } from './ar/teacherGuide';
-import { meccaB2SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const MECCA_B2_ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
   'jahiliyyah',
@@ -38,8 +34,8 @@ export const meccaB2BookDataEn: BookData = {
   level: 'B2',
   baseFontSize: 13,
   pages: cleanEnglishGlossary(meccaB2Pages),
-  teacherGuide: meccaB2TeacherGuide,
-  selfStudyGuide: meccaB2SelfStudyGuide,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaB2BookDataAr: BookData = {
@@ -48,8 +44,8 @@ export const meccaB2BookDataAr: BookData = {
   level: 'B2',
   baseFontSize: 14,
   pages: alignArabicVocabularyWithEnglish(meccaB2PagesAr),
-  teacherGuide: meccaB2TeacherGuideAr,
-  selfStudyGuide: meccaB2SelfStudyGuideAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaB2BookData = meccaB2BookDataEn;
