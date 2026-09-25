@@ -1,28 +1,100 @@
 {
   "fps": 60,
-  "outputFps": 30,
+  "outputFps": 60,
   "width": 1920,
   "height": 1080,
   "duration": 39.65,
   "bpm": 92.3077,
   "scenes": [
-    { "id": "s1", "name": "Hook — arch & fly-through", "start": 0.0, "end": 3.9 },
-    { "id": "s2", "name": "Story page, recomposed", "start": 3.9, "end": 8.45 },
-    { "id": "s3", "name": "Word Notes", "start": 8.45, "end": 12.35 },
-    { "id": "s4", "name": "English ⇄ Arabic", "start": 12.35, "end": 17.55 },
-    { "id": "s5", "name": "Exercises", "start": 17.55, "end": 22.75 },
-    { "id": "s6", "name": "A2 · B1 · B2", "start": 22.75, "end": 28.6 },
-    { "id": "s7", "name": "Teacher Guide / Self-Study Guide", "start": 28.6, "end": 34.45 },
-    { "id": "s8", "name": "Brand finale", "start": 34.45, "end": 39.65 }
+    {
+      "id": "s1",
+      "name": "Hook — arch & fly-through",
+      "start": 0.0,
+      "end": 3.9
+    },
+    {
+      "id": "s2",
+      "name": "Story page, recomposed",
+      "start": 3.9,
+      "end": 8.45
+    },
+    {
+      "id": "s3",
+      "name": "Word Notes",
+      "start": 8.45,
+      "end": 12.35
+    },
+    {
+      "id": "s4",
+      "name": "English ⇄ Arabic",
+      "start": 12.35,
+      "end": 17.55
+    },
+    {
+      "id": "s5",
+      "name": "Exercises",
+      "start": 17.55,
+      "end": 22.75
+    },
+    {
+      "id": "s6",
+      "name": "A2 · B1 · B2",
+      "start": 22.75,
+      "end": 28.6
+    },
+    {
+      "id": "s7",
+      "name": "Teacher Guide / Self-Study Guide",
+      "start": 28.6,
+      "end": 34.45
+    },
+    {
+      "id": "s8",
+      "name": "Brand finale",
+      "start": 34.45,
+      "end": 39.65
+    }
   ],
   "vo": [
-    { "file": "audio/vo/vo_00.wav", "start": 0.75, "text": "Bir hikâyeyi okumak başka, içine girmek başka." },
-    { "file": "audio/vo/vo_01.wav", "start": 4.05, "text": "Her bölüm kendi illüstrasyonu, sesli anlatımı ve keşfedilecek ayrıntılarıyla açılıyor." },
-    { "file": "audio/vo/vo_02.wav", "start": 8.75, "text": "Bilmediğin bir kelimeye dokun; anlamı ve Arapça karşılığı hemen yanında." },
-    { "file": "audio/vo/vo_03.wav", "start": 12.6, "text": "Tek dokunuşla kitap Arapçaya geçiyor. Metin, ses ve sayfa düzeniyle birlikte." },
-    { "file": "audio/vo/vo_04.wav", "start": 17.75, "text": "Her bölümün ardından kısa bir alıştırma ve dil çalışması. Kitabın sonunda kapsamlı bir değerlendirme." },
-    { "file": "audio/vo/vo_05.wav", "start": 23.0, "text": "Aynı hikâye üç seviyede: A2, B1 ve B2. Her seviyenin kendi dili, kendi görselleri var." },
-    { "file": "audio/vo/vo_06.wav", "start": 28.95, "text": "Öğretmene, ders planlarıyla hazır bir kılavuz. Öğrenciye, adım adım bir çalışma rehberi." },
-    { "file": "audio/vo/vo_07.wav", "start": 35.4, "text": "Okunan, dinlenen, içine girilen hikâyeler." }
+    {
+      "file": "audio/vo/vo_00.wav",
+      "start": 0.75,
+      "text": "Bir hikâyeyi okumak başka, içine girmek başka."
+    },
+    {
+      "file": "audio/vo/vo_01.wav",
+      "start": 4.05,
+      "text": "Her bölüm kendi illüstrasyonu, sesli anlatımı ve keşfedilecek ayrıntılarıyla açılıyor."
+    },
+    {
+      "file": "audio/vo/vo_02.wav",
+      "start": 8.75,
+      "text": "Bilmediğin bir kelimeye dokun; anlamı ve Arapça karşılığı hemen yanında."
+    },
+    {
+      "file": "audio/vo/vo_03.wav",
+      "start": 12.6,
+      "text": "Tek dokunuşla kitap Arapçaya geçiyor. Metin, ses ve sayfa düzeniyle birlikte."
+    },
+    {
+      "file": "audio/vo/vo_04.wav",
+      "start": 17.75,
+      "text": "Her bölümün ardından kısa bir alıştırma ve dil çalışması. Kitabın sonunda kapsamlı bir değerlendirme."
+    },
+    {
+      "file": "audio/vo/vo_05.wav",
+      "start": 23.0,
+      "text": "Aynı hikâye üç seviyede: A2, B1 ve B2. Her seviyenin kendi dili, kendi görselleri var."
+    },
+    {
+      "file": "audio/vo/vo_06.wav",
+      "start": 28.95,
+      "text": "Öğretmene, ders planlarıyla hazır bir kılavuz. Öğrenciye, adım adım bir çalışma rehberi."
+    },
+    {
+      "file": "audio/vo/vo_07.wav",
+      "start": 35.4,
+      "text": "Okunan, dinlenen, içine girilen hikâyeler."
+    }
   ]
 }

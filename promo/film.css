@@ -54,7 +54,7 @@ img { display: block; }
 
 /* Overlays */
 #dust { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
-#flash { position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 50%, #fff4d6 0%, rgba(243,213,138,.55) 40%, rgba(0,0,0,0) 80%); opacity: 0; mix-blend-mode: screen; pointer-events: none; }
+#flash { position: absolute; inset: 0; background: radial-gradient(28% 70% at 50% 50%, rgba(255,246,222,.95) 0%, rgba(243,213,138,.45) 38%, rgba(216,179,92,.12) 65%, rgba(0,0,0,0) 85%); opacity: 0; mix-blend-mode: screen; pointer-events: none; }
 #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(130% 110% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
 #grain { position: absolute; inset: 0; width: 1920px; height: 1080px; opacity: .085; mix-blend-mode: overlay; pointer-events: none; image-rendering: auto; }
 
@@ -72,7 +72,7 @@ img { display: block; }
 .card3d.archcard { border-radius: 0; clip-path: url(#arch); box-shadow: none; }
 .card3d .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.35)); }
 .word3d { position: absolute; left: 0; top: 0; font-weight: 700; font-size: 150px; letter-spacing: -0.045em; line-height: 1; color: #fdf6e6; white-space: nowrap;
-  text-shadow: 0 10px 50px rgba(0,0,0,.55); transform-origin: 50% 50%; }
+  text-shadow: 0 10px 50px rgba(0,0,0,.75), 0 0 90px rgba(0,0,0,.6); transform-origin: 50% 50%; }
 .word3d .m { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .04em .12em; }
 .word3d .m > span { display: inline-block; }
 .word3d .dot { color: var(--gold-hi); }
