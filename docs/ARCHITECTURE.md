@@ -37,19 +37,15 @@ Shared code owns structure and presentation only. It may define or render:
 
 Shared code must not decide or generate the learning point, question wording, answer, distractors, vocabulary importance, chapter pedagogy, misconceptions or guide prose.
 
-## Legacy migration
+## Legacy status
 
-Some current books still use older Blueprint/Gold compilation layers at runtime. They remain temporarily only because those books have not yet been flattened into direct authored files.
+Blueprint, Gold, generated-learning and legacy page-route layers have been removed from the active runtime. Current books load direct reviewed source files and pass only through shared structural UI finalization.
 
-These layers are migration debt. Do not extend them or use them for new authoring. As each book/level receives its final manual review, move the approved output into direct source files and remove that book’s Blueprint/Gold transforms.
-
-Target direction:
+Keep the architecture in this direction:
 
 `locked story + manual exercises + manual Teacher Guide + manual Self-Study Guide -> shared renderer`
 
-not:
-
-`story -> generator -> Gold transform -> quality transform -> override -> runtime`
+Do not reintroduce generator, Gold, Blueprint, quality-transform or runtime override layers for authored learning content.
 
 ## Deployment
 
