@@ -213,7 +213,7 @@ const scene = (id, a, b, update) => scenes.push({ el: document.getElementById(id
     op(persp, P(t, 0.8, 1.1, E.lin));
 
     /* camera dolly through the library */
-    const camZ = K(t, [[0.9, 0], [3.9, FINAL_Z, bezier(0.5, 0.0, 0.12, 1)]]);
+    const camZ = K(t, [[0.9, 0], [3.9, FINAL_Z, bezier(0.5, 0.0, 0.3, 1)]]);
     const sway = smoothNoise(t * 0.9, 3) * 1.4;
     for (const o of CARDS) {
       const rel = camZ - o.z; // >0 : card is closer than its rest depth
@@ -278,7 +278,7 @@ const enWords = splitWords($('#pgTextEn'));
     }
     /* camera: from the image filling the frame → hero product angle → into "Messenger" */
     const imgFocus = { px: imgRect.cx, py: imgRect.cy, s: window.__FINAL_W / imgRect.w };
-    const pull = P(t, 3.95, 5.45, E.cam);
+    const pull = P(t, 3.9, 5.3, bezier(0.3, 0, 0.1, 1));
     const push = P(t, 7.45, 8.45, bezier(0.6, 0, 0.9, 0.55));
     const after = P(t, 8.45, 9.25, E.out);
     const hand = { x: smoothNoise(t * 0.5, 7) * 6, y: smoothNoise(t * 0.45, 9) * 5 };
@@ -296,7 +296,7 @@ const enWords = splitWords($('#pgTextEn'));
     };
     camTf(pageEn, c);
     blur(pageEn, after * 14);
-    op(pageEn, 1 - after * 0.6);
+    op(pageEn, 1 - P(t, 8.45, 8.85, E.inOut));
     op(backdrop, P(t, 4.2, 5.2) * (1 - push));
     tf(backdrop, { x: -c.ry * 3, y: c.rx * 3, s: 1 });
 
@@ -378,9 +378,10 @@ const enWords = splitWords($('#pgTextEn'));
   const count = $('#s3count'), num = $('#s3num');
   let mainSize = null;
 
-  scene('s3', 8.45, 12.75, t => {
+  scene('s3', 8.45, 12.5, t => {
     if (!mainSize) mainSize = { w: main.offsetWidth, h: main.offsetHeight, ww: main.querySelector('.wn-word').offsetWidth };
-    op(bg, P(t, 8.55, 9.2, E.lin) * (1 - P(t, 12.35, 12.75, E.lin)));
+    op(bg, P(t, 8.5, 8.95, E.inOut) * (1 - P(t, 12.2, 12.5, E.lin)));
+    const dk = P(t, 8.55, 8.95, E.inOut);
     /* 1 — tap on the word */
     const tap = Math.exp(-Math.pow((t - 8.72) / 0.09, 2));
     const lift = P(t, 8.85, 9.65, E.cam);
@@ -391,14 +392,14 @@ const enWords = splitWords($('#pgTextEn'));
     const wx = lerp(CX - W0 / 2, cardX + 50, lift), wy = lerp(CY - H0 / 2 - 6, cardY + 38, lift);
     const ws = lerp(1, endS, lift) * (1 + tap * 0.05);
     word.style.transform = `translate3d(${wx.toFixed(2)}px,${wy.toFixed(2)}px,0) scale(${ws.toFixed(4)})`;
-    word.style.color = `rgb(${lerp(20, 255, lift) | 0},${lerp(34, 247, lift) | 0},${lerp(26, 228, lift) | 0})`;
+    word.style.color = `rgb(${lerp(20, 255, dk) | 0},${lerp(34, 247, dk) | 0},${lerp(26, 228, dk) | 0})`;
     word.style.setProperty('--u', (1 - P(t, 8.95, 9.4, E.in)).toFixed(3));
     op(word, t < 9.7 ? 1 : 0);
     word.style.textShadow = `0 0 ${(tap * 40).toFixed(1)}px rgba(243,213,138,${(tap * 0.9).toFixed(2)})`;
 
     /* 2 — the Word Note unfolds around it */
     const unfold = P(t, 9.05, 9.75, E.cam);
-    const exitRing = P(t, 11.95, 12.6, E.inStrong);
+    const exitRing = P(t, 11.9, 12.4, E.inStrong);
     const float = { ry: smoothNoise(t * 0.6, 2) * 4 - 8 * P(t, 10.3, 11.1, E.cam), rx: smoothNoise(t * 0.5, 5) * 3 + 4 };
     tf(main, { x: cardX, y: cardY, z: -exitRing * 900, ...float });
     main.style.clipPath = `inset(0 ${((1 - unfold) * (mainSize.w - mainSize.ww - 80)).toFixed(1)}px ${((1 - unfold) * (mainSize.h - 110)).toFixed(1)}px 0 round 22px)`;
@@ -457,12 +458,12 @@ const enWords = splitWords($('#pgTextEn'));
   const toggle = $('#s4toggle'), knob = $('#s4knob'), seam = $('#s4seam');
   const arTag = $('#s4arTag'), trTag = $('#s4trTag');
 
-  scene('s4', 12.3, 17.9, t => {
+  scene('s4', 12.3, 17.6, t => {
     const intro = P(t, 12.3, 12.95, E.cam);
     const flip = P(t, 13.3, 14.35, bezier(0.6, 0, 0.3, 1));   // seam travels right → left (RTL)
     const settle = P(t, 14.35, 15.3, E.cam);
     const recede = P(t, 15.05, 15.9, E.cam);
-    const leave = P(t, 17.35, 17.9, E.inStrong);
+    const leave = P(t, 17.15, 17.6, E.inStrong);
     const ry = lerp(-15, 15, P(t, 13.25, 14.5, E.inOut));
     const hand = smoothNoise(t * 0.5, 11) * 4;
     const cam = {
@@ -475,7 +476,7 @@ const enWords = splitWords($('#pgTextEn'));
     arL.style.clipPath = `inset(0 0 0 ${Math.max(0, seamX).toFixed(1)}px)`;
     const dim = recede * 0.7 + leave * 0.3;
     [en, ar].forEach(p => { p.style.filter = `brightness(${(lerp(0.55, 1, intro) * (1 - dim)).toFixed(3)}) blur(${(recede * 6 + leave * 10).toFixed(2)}px)`; });
-    op(enL, P(t, 12.3, 12.6, E.lin)); op(arL, 1 - leave);
+    op(enL, P(t, 12.35, 12.75, E.lin)); op(arL, 1 - leave);
     seam.style.left = seamX + 'px';
     op(seam, Math.sin(Math.PI * flip) * 1.2);
     /* toggle: the real EN / العربية switch, one tap */
@@ -520,9 +521,9 @@ const enWords = splitWords($('#pgTextEn'));
   const qcH = 900;
   let fbH = null;
 
-  scene('s5', 17.45, 23.1, t => {
+  scene('s5', 17.5, 23.1, t => {
     if (fbH == null) { fb.style.height = 'auto'; fbH = fb.offsetHeight; }
-    const inn = P(t, 17.5, 18.3, E.cam);
+    const inn = P(t, 17.5, 18.25, E.outSoft);
     const back = P(t, 20.25, 21.35, E.cam);
     const leave = P(t, 22.6, 23.1, E.inStrong);
     const hand = { x: smoothNoise(t * 0.5, 21) * 5, y: smoothNoise(t * 0.4, 22) * 4 };
@@ -530,11 +531,11 @@ const enWords = splitWords($('#pgTextEn'));
       x: lerp(170, -40, back) + hand.x, y: lerp(lerp(420, 90, inn), 260, back) + hand.y, z: lerp(-500, 0, inn) - back * 900,
       rx: lerp(28, 3, inn) + back * 6, ry: lerp(14, 10, inn) + back * 16, rz: lerp(-3, -0.5, inn), s: 0.96,
     });
-    op(qc, P(t, 17.5, 17.8, E.lin) * (1 - back * 0.55) * (1 - leave));
+    op(qc, P(t, 17.5, 17.7, E.lin) * (1 - back * 0.55) * (1 - leave));
     blur(qc, back * 5 + leave * 10);
-    qWords.forEach((w, i) => { const p = P(t, 17.95 + i * 0.03, 18.45 + i * 0.03, E.outSoft); w.style.opacity = p; w.style.transform = `translateY(${((1 - p) * 20).toFixed(1)}px)`; });
+    qWords.forEach((w, i) => { const p = P(t, 17.6 + i * 0.03, 18.1 + i * 0.03, E.outSoft); w.style.opacity = p; w.style.transform = `translateY(${((1 - p) * 20).toFixed(1)}px)`; });
     opts.forEach((o, i) => {
-      const p = P(t, 18.3 + i * 0.1, 18.85 + i * 0.1, E.outSoft);
+      const p = P(t, 18.05 + i * 0.1, 18.6 + i * 0.1, E.outSoft);
       o.style.opacity = p.toFixed(3); o.style.transform = `translateX(${((1 - p) * 60).toFixed(1)}px)`;
     });
     /* the learner answers */
@@ -587,6 +588,7 @@ const enWords = splitWords($('#pgTextEn'));
   });
   const head = $('#s6head'), headSpans = maskLines(head);
   const path = $('#s6path');
+  const outlines = LV.map(() => { const q = document.createElementNS('http://www.w3.org/2000/svg', 'path'); q.setAttribute('fill', 'none'); q.setAttribute('stroke', 'url(#goldStroke)'); q.setAttribute('stroke-width', '1.6'); $('#s6line').appendChild(q); return q; });
   const style = el('style', null, `.lvl-txt{position:absolute;left:40px;right:34px;top:calc(100% + 26px);font-size:17.5px;line-height:1.5;font-style:italic;color:rgba(253,246,230,.78)} .lvl-txt::before{content:'';display:block;width:34px;height:2px;background:var(--gold);margin-bottom:12px}`, document.head);
 
   scene('s6', 22.6, 29.0, t => {
@@ -598,7 +600,7 @@ const enWords = splitWords($('#pgTextEn'));
     LV.forEach(o => {
       const p = P(t, o.t0 - 0.12, o.t0 + 0.75, E.cam);
       const x = 470 + o.i * 455, base = 890 - o.i * 55;
-      tf(o.e, { x, y: base - 640 + (1 - p) * 120, z: (1 - p) * -300, s: 1 });
+      tf(o.e, { x, y: base - 640, z: 0, s: 1 });
       o.e.style.height = '640px'; o.e.style.width = '430px';
       o.e.querySelector('.lvl-img').style.clipPath = `url(#arch)`;
       o.img.style.transform = `translate3d(${(-cam * 30 + (o.i - 1) * 10).toFixed(1)}px,${((1 - p) * 60).toFixed(1)}px,0) scale(${(1.12 - 0.08 * p).toFixed(4)})`;
@@ -611,6 +613,12 @@ const enWords = splitWords($('#pgTextEn'));
       o.s.style.opacity = sp.toFixed(3); o.s.style.transform = `translateY(${((1 - sp) * 16).toFixed(1)}px)`;
       const r = o.e.getBoundingClientRect();
       apex.push([r.left + r.width / 2, r.top - 20, p]);
+      const ol = outlines[o.i];
+      ol.setAttribute('d', archD(r.left, r.top, r.width, r.height, false));
+      const L = ol.getTotalLength();
+      const dp = P(t, 23.15 + o.i * 0.18, 24.05 + o.i * 0.18, E.inOut);
+      ol.style.strokeDasharray = `${(L * dp).toFixed(1)} ${L}`;
+      ol.style.opacity = (0.9 - 0.55 * p).toFixed(3);
     });
     /* gold progression line: A2 → B1 → B2 */
     let d = '';
@@ -642,8 +650,8 @@ const enWords = splitWords($('#pgTextEn'));
 
   scene('s7', 28.5, 34.6, t => {
     const sd = P(t, 28.55, 29.0, E.cam);
-    seam.style.transform = `scaleY(${sd.toFixed(4)})`;
     const close = P(t, 33.55, 34.4, bezier(0.7, 0, 0.9, 0.5));
+    seam.style.transform = `scale(${(1 + Math.pow(close, 3) * 26).toFixed(3)},${sd.toFixed(4)})`;
     op(seam, sd * (1 + close * 0.6));
     seam.style.boxShadow = `0 0 ${(24 + close * 60).toFixed(0)}px ${(6 + close * 30).toFixed(0)}px rgba(243,213,138,${(0.6 + close * 0.3).toFixed(2)})`;
     const oL = P(t, 28.9, 29.75, E.cam), oR = P(t, 31.5, 32.35, E.cam);
@@ -680,7 +688,7 @@ const enWords = splitWords($('#pgTextEn'));
     lblLs.forEach((s, i) => { const p = P(t, 29.35 + i * 0.1, 29.95 + i * 0.1, E.outSoft); s.style.opacity = p * (1 - close); s.style.transform = `translateY(${((1 - p) * 26).toFixed(1)}px)`; });
     lblRs.forEach((s, i) => { const p = P(t, 31.85 + i * 0.1, 32.45 + i * 0.1, E.outSoft); s.style.opacity = p * (1 - close); s.style.transform = `translateY(${((1 - p) * 26).toFixed(1)}px)`; });
     drawDust(t, 0.22, 0);
-    $('#flash').style.opacity = (P(t, 34.22, 34.45, E.in) * 0.75).toFixed(3);
+    $('#flash').style.opacity = (P(t, 34.25, 34.45, E.in) * 0.6).toFixed(3);
   });
 }
 

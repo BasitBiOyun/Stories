@@ -146,7 +146,7 @@ def main() -> None:
     ap.add_argument("--from", dest="t_from", type=float, default=0.0)
     ap.add_argument("--to", dest="t_to", type=float, default=None)
     ap.add_argument("--fps", type=int, default=TIMELINE["fps"])
-    ap.add_argument("--blur-to", type=int, default=TIMELINE["outputFps"], help="deliver at this fps with frame-blend motion blur (0 = off)")
+    ap.add_argument("--blur-to", type=int, default=0 if TIMELINE["outputFps"] == TIMELINE["fps"] else TIMELINE["outputFps"], help="deliver at this fps with frame-blend motion blur (0 = off)")
     ap.add_argument("--scale", type=float, default=1.0, help="device scale factor (supersampling)")
     ap.add_argument("--crf", type=int, default=16)
     ap.add_argument("--out", default=str(PROMO / "out" / "stories-promo.mp4"))
