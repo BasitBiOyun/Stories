@@ -31,7 +31,6 @@ import { HomePage } from './components/layout/HomePage';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
-import { InteractiveMapPage } from './components/book/InteractiveMapPage';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { FinalChallenge } from './components/book/FinalChallenge';
@@ -476,13 +475,6 @@ const AppContent = () => {
             collectionId={currentCollection || 'prophets'}
           />
         );
-      case 'map':
-        return (
-          <InteractiveMapPage 
-            page={currentPage}
-            collectionId={currentCollection || 'prophets'}
-          />
-        );
       case 'glossary':
         return (
           <MasterGlossary
@@ -769,8 +761,8 @@ const AppContent = () => {
         )}>
           <div className="flex-1 overflow-hidden min-h-0 flex flex-col">
             <div className={cn(
-              currentPage?.type === 'map' ? "w-full h-full" : "w-full max-w-[1700px] mx-auto h-full flex flex-col min-h-0",
-              !showSummary && currentPage?.type !== 'map' && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18"
+              "w-full max-w-[1700px] mx-auto h-full flex flex-col min-h-0",
+              !showSummary && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18"
             )}>
               <AnimatePresence mode="wait">
                 <motion.div
