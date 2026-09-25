@@ -32,9 +32,9 @@ Equivalent grouping is acceptable when it improves readability, but each learnin
 
 ## Learning files
 
-Reviewed exercises, language work and guides live with their book/level source files. Shared learning modules exist only for active cross-book policy, validation, page roles, source pairing, guide assembly and UI finalization.
+Reviewed exercises, language work and guides live with their book/level source files. Shared learning modules exist only where they are actively required for cross-book vocabulary policy, validation, page-role checks and UI finalization.
 
-Legacy Blueprint/Gold layers have been removed. Do not recreate parallel generated-learning layers.
+Legacy Blueprint/Gold and generated-guide layers have been removed. Do not recreate parallel generated-learning layers.
 
 ## Story protection
 
