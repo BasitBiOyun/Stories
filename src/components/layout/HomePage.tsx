@@ -13,6 +13,7 @@ import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
+import { preloadBook } from '../../core/content/bookRegistry';
 
 // @ts-ignore
 import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
@@ -258,6 +259,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     setActiveIndex(0);
   };
 
+  const warmBook = (prophetId: string, level: Level) => {
+    preloadBook(prophetId, level)?.catch(() => undefined);
+  };
+
   const launchStory = (prophetId: string, level: Level) => {
     localStorage.setItem('last_active_story', JSON.stringify({ prophetId, level }));
     setLastActive({ prophetId, level });
@@ -358,6 +363,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               type="button"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.985 }}
+              onPointerEnter={() => warmBook(lastActiveStory.id, lastActive.level)}
+              onFocus={() => warmBook(lastActiveStory.id, lastActive.level)}
+              onTouchStart={() => warmBook(lastActiveStory.id, lastActive.level)}
               onClick={() => launchStory(lastActiveStory.id, lastActive.level)}
               className="group w-full rounded-2xl bg-white/[0.045] p-4 text-start transition-colors hover:bg-white/[0.075]"
             >
@@ -677,6 +685,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                           type="button"
                           whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01 }}
                           whileTap={{ scale: 0.985 }}
+                          onPointerEnter={() => warmBook(activeStory.id, level)}
+                          onFocus={() => warmBook(activeStory.id, level)}
+                          onTouchStart={() => warmBook(activeStory.id, level)}
                           onClick={() => launchStory(activeStory.id, level)}
                           className="group rounded-2xl px-4 py-4 text-start transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
                           style={{
