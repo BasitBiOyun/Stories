@@ -24,6 +24,7 @@ type Props = {
   onReset?: () => void;
   level?: string;
   collectionId?: string;
+  onComplete?: (exerciseIds: string[]) => void;
 };
 
 const themeFor = (collectionId?: string) => {
@@ -250,6 +251,7 @@ export const KnowledgeCheck = ({
   handleAnswer,
   onReset,
   collectionId = 'prophets',
+  onComplete,
 }: Props) => {
   const { t, formatNumber, isRTL, language } = useLanguage();
   const isArabic = language === 'ar';
@@ -486,7 +488,10 @@ export const KnowledgeCheck = ({
         {!showResults && (
           <button
             type="button"
-            onClick={() => setShowResults(true)}
+            onClick={() => {
+              setShowResults(true);
+              onComplete?.(supportedExercises.map(exercise => exercise.id));
+            }}
             disabled={!allAnswered}
             className={cn(
               'w-full min-h-14 rounded-2xl px-6 font-display uppercase tracking-[0.13em] font-semibold flex items-center justify-center gap-2 transition-all',
