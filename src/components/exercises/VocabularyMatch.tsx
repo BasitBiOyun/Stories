@@ -8,7 +8,7 @@ import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 
 type Pair = VocabularyChallengePair;
-type Props = { pairs: Pair[]; collectionId?: string; level: Level; onReviewGlossary?: () => void };
+type Props = { pairs: Pair[]; collectionId?: string; level: Level; onReviewGlossary?: () => void; onComplete?: () => void };
 
 type FeedbackState =
   | { kind: 'idle' }
@@ -108,7 +108,7 @@ const themeFor = (collectionId: string) => {
   };
 };
 
-export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary }: Props) => {
+export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary, onComplete }: Props) => {
   const { t, formatNumber, language, isRTL } = useLanguage();
   const policy = getLearningLevelPolicy(level);
   const theme = themeFor(collectionId);
@@ -393,6 +393,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const continueRecall = () => {
     if (recallIndex + 1 >= recallItems.length) {
       setStage('done');
+      onComplete?.();
       confetti({ particleCount: 55, spread: 55, origin: { y: 0.72 } });
       return;
     }
