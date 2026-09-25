@@ -502,20 +502,23 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       return (
         <div className={cn('rounded-2xl border-2 p-4 sm:p-6 space-y-5 bg-white', theme.border)}>
           <div className={cn('font-serif leading-loose text-wood', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg')}>
-            {(currentQuestion.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
-              <React.Fragment key={`${currentQuestion.id}-part-${index}`}>
-                {part}
-                {index < pieces.length - 1 && (
-                  <input
-                    type="text"
-                    disabled={selectedAnswer !== null}
-                    value={fillDraft}
-                    onChange={(event) => setFillDraft(event.target.value)}
-                    className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.border)}
-                  />
-                )}
-              </React.Fragment>
-            ))}
+            {(currentQuestion.fillBlanksText ?? '').split(/(\[blank\]|_{3,})/g).map((part, index) => {
+              const isBlank = /^(?:\[blank\]|_{3,})$/.test(part);
+              if (!isBlank) {
+                return <React.Fragment key={`${currentQuestion.id}-part-${index}`}>{part}</React.Fragment>;
+              }
+              return (
+                <input
+                  key={`${currentQuestion.id}-blank-${index}`}
+                  type="text"
+                  disabled={selectedAnswer !== null}
+                  value={fillDraft}
+                  onChange={(event) => setFillDraft(event.target.value)}
+                  aria-label={isArabic ? 'إجابة الفراغ' : 'Blank answer'}
+                  className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.border)}
+                />
+              );
+            })}
           </div>
           {selectedAnswer === null && (
             <button
