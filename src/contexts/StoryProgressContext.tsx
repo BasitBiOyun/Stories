@@ -20,6 +20,7 @@ interface StoryProgressStats {
   wordsClicked: Set<string>;
   exercisesCompleted: Set<string>;
   chaptersVisited: Set<number>;
+  audioChaptersPlayed: Set<number>;
   finalScore: number | null;
   finalChallengeDetails: FinalChallengeDetails | null;
 }
@@ -29,6 +30,7 @@ interface StoryProgressContextType {
   trackWordClick: (word: string) => void;
   trackExerciseComplete: (id: string) => void;
   trackChapterVisit: (id: number) => void;
+  trackAudioChapter: (id: number) => void;
   setFinalScore: (score: number) => void;
   setFinalChallengeDetails: (details: FinalChallengeDetails) => void;
   resetStats: () => void;
@@ -41,6 +43,7 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     wordsClicked: new Set<string>(),
     exercisesCompleted: new Set<string>(),
     chaptersVisited: new Set<number>(),
+    audioChaptersPlayed: new Set<number>(),
     finalScore: null,
     finalChallengeDetails: null,
   });
@@ -69,6 +72,14 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     });
   };
 
+  const trackAudioChapter = (id: number) => {
+    setStats(prev => {
+      const next = new Set(prev.audioChaptersPlayed);
+      next.add(id);
+      return { ...prev, audioChaptersPlayed: next };
+    });
+  };
+
   const setFinalScore = (score: number) => {
     setStats(prev => ({ ...prev, finalScore: score }));
   };
@@ -82,13 +93,14 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
       wordsClicked: new Set<string>(),
       exercisesCompleted: new Set<string>(),
       chaptersVisited: new Set<number>(),
+      audioChaptersPlayed: new Set<number>(),
       finalScore: null,
       finalChallengeDetails: null,
     });
   };
 
   return (
-    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, trackChapterVisit, setFinalScore, setFinalChallengeDetails, resetStats }}>
+    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, trackChapterVisit, trackAudioChapter, setFinalScore, setFinalChallengeDetails, resetStats }}>
       {children}
     </StoryProgressContext.Provider>
   );
