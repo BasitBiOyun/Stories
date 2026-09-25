@@ -47,10 +47,6 @@ import {
   meccaA2LanguageFocusExercisesArPart11,
   meccaA2LanguageFocusExercisesArPart12,
 } from './ar/languageFocus3';
-import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
-import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
-import { meccaA2SelfStudyGuideAr, meccaA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['adhan', 'hijrah']);
@@ -108,10 +104,8 @@ export const meccaA2BookDataEn: BookData = {
   level: 'A2',
   baseFontSize: 13,
   pages: buildEnglishPages(),
-  teacherGuide: meccaA2TeacherGuide,
-  teacherGuideMetadata: meccaA2TeacherGuideMetadata,
-  selfStudyGuide: meccaA2SelfStudyGuide,
-  studentGuideMetadata: meccaA2StudentGuideMetadata,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaA2BookDataAr: BookData = {
@@ -120,10 +114,8 @@ export const meccaA2BookDataAr: BookData = {
   level: 'A2',
   baseFontSize: 14,
   pages: buildArabicPages(),
-  teacherGuide: meccaA2TeacherGuideAr,
-  teacherGuideMetadata: meccaA2TeacherGuideMetadataAr,
-  selfStudyGuide: meccaA2SelfStudyGuideAr,
-  studentGuideMetadata: meccaA2StudentGuideMetadataAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaA2BookData = meccaA2BookDataEn;
