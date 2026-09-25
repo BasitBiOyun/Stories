@@ -23,7 +23,7 @@ const mosesB2PagesArResolved = mosesB2PagesAr.map(page => {
   if (page.id < 1 || page.id > 24) return page;
 
   const seeds = mosesB2CanonicalVocabulary[page.id] ?? [];
-  const vocabulary = seeds.flatMap(([, arNeedle, arDefinition]) => {
+  const vocabulary = seeds.flatMap(([, arNeedle, , arDefinition]) => {
     const word = findHighlightSurface(page.content ?? '', arNeedle, 'ar');
     return word ? [{ word, definition: arDefinition }] : [];
   });
