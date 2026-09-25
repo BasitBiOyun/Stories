@@ -6,6 +6,7 @@ import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
 import { VocabularyMatch } from '../exercises/VocabularyMatch';
 import { ExerciseModule } from '../ExerciseModule';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
 import { cn } from '../../lib/utils';
 
@@ -27,6 +28,7 @@ export const ExercisePage = ({
   onReviewComplete?: () => void;
 }) => {
   const { t, language, formatNumber } = useLanguage();
+  const { trackExerciseComplete } = useStoryProgress();
   const isArabic = language === 'ar';
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -294,6 +296,7 @@ export const ExercisePage = ({
                   userAnswers={userAnswers} 
                   handleAnswer={handleAnswer} 
                   collectionId={collectionId}
+                  onComplete={(exerciseIds) => exerciseIds.forEach(trackExerciseComplete)}
                 />
               )}
               {page.type === 'vocabulary-match' && page.vocabularyPairs && (
@@ -303,6 +306,7 @@ export const ExercisePage = ({
                     collectionId={collectionId}
                     level={level}
                     onReviewGlossary={onReviewGlossary}
+                    onComplete={() => trackExerciseComplete(`vocabulary-${page.id}`)}
                   />
                 </div>
               )}
@@ -416,6 +420,7 @@ export const ExercisePage = ({
                           onClose={() => undefined}
                           onComplete={() => {
                             const exerciseId = languageReviewExercises[reviewIndex].id;
+                            trackExerciseComplete(exerciseId);
                             setCompletedExercises(previous =>
                               previous.includes(exerciseId) ? previous : [...previous, exerciseId]
                             );
