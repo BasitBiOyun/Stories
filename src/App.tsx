@@ -501,6 +501,7 @@ const AppContent = () => {
             handleAnswer={handleAnswer} 
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
+            onReviewComplete={currentPage.type === 'exercises' ? handleNextPage : undefined}
             onReviewGlossary={
               currentPage.type === 'vocabulary-match'
                 ? () => {
