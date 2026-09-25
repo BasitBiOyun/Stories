@@ -21,10 +21,6 @@ import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocus3';
 import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
 import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocus3';
-import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
-import { teacherGuide as yunusA2TeacherGuideAr, teacherGuideMetadata as yunusA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { yunusA2SelfStudyGuide } from './en/selfStudyGuide';
-import { yunusEmreA2SelfStudyGuideAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 8 }, (_, index) => index + 1));
 
@@ -80,9 +76,8 @@ export const yunusEmreA2BookDataEn: BookData = {
   level: 'A2',
   baseFontSize: 13,
   pages: buildEnglishPages(),
-  teacherGuide: yunusA2TeacherGuide,
-  teacherGuideMetadata: yunusA2TeacherGuideMetadata,
-  selfStudyGuide: yunusA2SelfStudyGuide,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreA2BookDataAr: BookData = {
@@ -91,9 +86,8 @@ export const yunusEmreA2BookDataAr: BookData = {
   level: 'A2',
   baseFontSize: 14,
   pages: buildArabicPages(),
-  teacherGuide: yunusA2TeacherGuideAr,
-  teacherGuideMetadata: yunusA2TeacherGuideMetadataAr,
-  selfStudyGuide: yunusEmreA2SelfStudyGuideAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreA2BookData = yunusEmreA2BookDataEn;
