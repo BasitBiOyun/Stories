@@ -6,6 +6,7 @@ import { PageData, Hotspot, Exercise } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
 import { ExerciseModule } from '../ExerciseModule';
 import { cn } from '../../lib/utils';
+import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
@@ -1338,7 +1339,7 @@ export const StoryPage = ({
                                 isArabic ? 'text-[15px] sm:text-base' : 'text-[13px] sm:text-[14px]',
                                 focusTheme.title
                               )}>
-                                {exercise.title}
+                                {presentExerciseTitle(exercise)}
                               </span>
                               <span className={cn(
                                 'rounded-full px-2 py-0.5 font-display text-[9px] font-semibold uppercase tracking-[0.12em]',
