@@ -231,6 +231,53 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   const activeStoryCollection = getStoryCollection(activeStory.id);
   const activeVisual = collectionVisuals[activeStoryCollection];
 
+  useEffect(() => {
+    // The user normally spends a moment looking at the active cover before
+    // choosing A2/B1/B2. Warm all available levels immediately so the eventual
+    // click does not have to start a cold dynamic import.
+    activeStory.availableLevels.forEach(level => {
+      preloadBook(activeStory.id, level)?.catch(() => undefined);
+    });
+  }, [activeStory.id]);
+
+  useEffect(() => {
+    // After the active cover is warm, use browser idle time to prepare the
+    // remaining book chunks gradually. This avoids a network burst while still
+    // making later first opens feel instant within the same library session.
+    const remaining = stories
+      .filter(story => story.id !== activeStory.id)
+      .flatMap(story => story.availableLevels.map(level => ({ storyId: story.id, level })));
+
+    let cancelled = false;
+    let index = 0;
+    let idleId: number | null = null;
+    let timerId: number | null = null;
+
+    const warmNext = () => {
+      if (cancelled || index >= remaining.length) return;
+      const item = remaining[index++];
+      preloadBook(item.storyId, item.level)?.catch(() => undefined);
+
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(warmNext, { timeout: 1800 });
+      } else {
+        timerId = window.setTimeout(warmNext, 700);
+      }
+    };
+
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(warmNext, { timeout: 1200 });
+    } else {
+      timerId = window.setTimeout(warmNext, 900);
+    }
+
+    return () => {
+      cancelled = true;
+      if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
+      if (timerId !== null) window.clearTimeout(timerId);
+    };
+  }, []);
+
   const lastActiveStory = lastActive
     ? stories.find((story) => story.id === lastActive.prophetId) ?? null
     : null;
