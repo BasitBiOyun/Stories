@@ -1,11 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, BrainCircuit, CheckCircle2, ChevronLeft } from '../ui/icons';
-import { PageData, Exercise, Level } from '../../types';
+import { Play, Pause, Volume2, VolumeX, CheckCircle2, ChevronLeft } from '../ui/icons';
+import { PageData, Level } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
-import { SequencingExercise } from '../exercises/SequencingExercise';
 import { VocabularyMatch } from '../exercises/VocabularyMatch';
-import { BoardGame } from './BoardGame';
 import { ExerciseModule } from '../ExerciseModule';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -164,15 +162,8 @@ export const ExercisePage = ({
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  const exerciseTypeLabel = (type: Exercise['type']) => {
-    if (type === 'matching') return isArabic ? 'مُطَابَقَة' : 'Matching';
-    if (type === 'fill-blanks') return isArabic ? 'مَلْءُ الْفَرَاغَات' : 'Fill in the Blanks';
-    return t(`ex.type.${type}`);
-  };
-
   // Remove audio for pages 11, 12, 13 (indices 10, 11, 12)
   const hideAudio = page.id === 11 || page.id === 12 || page.id === 13;
-  const showGenericHeader = page.type === 'sequencing' || page.type === 'game';
 
   const languageReviewExercises = page.type === 'exercises' ? (page.exercises ?? []) : [];
   const reviewTotal = languageReviewExercises.length;
@@ -295,21 +286,6 @@ export const ExercisePage = ({
             "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 shadow-xl h-full flex flex-col overflow-y-auto custom-scrollbar",
             colTheme.containerBorder
           )}>
-            {showGenericHeader && (
-              <div className="flex items-center gap-2 mb-2 sm:mb-3 shrink-0">
-                <div className={cn(
-                  "w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shadow-sm shrink-0",
-                  colTheme.iconBg
-                )}>
-                  <BrainCircuit className="w-4 h-4" />
-                </div>
-                <h4 className={cn(
-                  "font-display uppercase tracking-[0.15em] font-black",
-                  isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs',
-                  colTheme.iconText
-                )}>{t('nav.interactiveChallenge')}</h4>
-              </div>
-            )}
             <div className="flex-1 min-h-0 flex flex-col h-full">
               {page.type === 'quiz' && page.exercises && (
                 <KnowledgeCheck 
@@ -320,21 +296,6 @@ export const ExercisePage = ({
                   collectionId={collectionId}
                 />
               )}
-              {page.type === 'sequencing' && page.sequencingItems && (
-                <div className="h-full flex flex-col">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-3 border-b-2 pb-3",
-                    colTheme.quizSectionBorder
-                  )}>
-                    {page.title}
-                  </h3>
-                  <SequencingExercise 
-                    items={page.sequencingItems} 
-                    onComplete={(correct) => console.log('Sequence correct:', correct)} 
-                    collectionId={collectionId}
-                  />
-                </div>
-              )}
               {page.type === 'vocabulary-match' && page.vocabularyPairs && (
                 <div className="h-full flex flex-col min-h-0">
                   <VocabularyMatch
@@ -343,17 +304,6 @@ export const ExercisePage = ({
                     level={level}
                     onReviewGlossary={onReviewGlossary}
                   />
-                </div>
-              )}
-              {page.type === 'game' && (
-                <div className="h-full flex flex-col">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-3 border-b-2 pb-3",
-                    colTheme.quizSectionBorder
-                  )}>
-                    {page.title}
-                  </h3>
-                  <BoardGame />
                 </div>
               )}
               {page.type === 'exercises' && page.exercises && (
