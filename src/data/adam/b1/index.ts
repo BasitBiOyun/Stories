@@ -45,10 +45,6 @@ import {
   adamB1LanguageFocusExercisesArPart10,
   adamB1LanguageFocusExercisesArPart11,
 } from './ar/languageFocus3';
-import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
-import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB1SelfStudyGuideAr, adamB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 12 }, (_, index) => index + 1));
 
@@ -130,10 +126,8 @@ export const adamB1BookDataEn: BookData = {
   level: 'B1',
   baseFontSize: 12,
   pages: englishPages,
-  teacherGuide: adamB1TeacherGuide,
-  teacherGuideMetadata: adamB1TeacherGuideMetadata,
-  selfStudyGuide: adamB1SelfStudyGuide,
-  studentGuideMetadata: adamB1StudentGuideMetadata,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamB1BookDataAr: BookData = {
@@ -142,10 +136,8 @@ export const adamB1BookDataAr: BookData = {
   level: 'B1',
   baseFontSize: 14,
   pages: arabicPages,
-  teacherGuide: adamB1TeacherGuideAr,
-  teacherGuideMetadata: adamB1TeacherGuideMetadataAr,
-  selfStudyGuide: adamB1SelfStudyGuideAr,
-  studentGuideMetadata: adamB1StudentGuideMetadataAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamB1BookData = adamB1BookDataEn;
