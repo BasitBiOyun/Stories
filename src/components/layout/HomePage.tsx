@@ -34,39 +34,6 @@ const levelDescriptions: Record<Level, { en: string; ar: string }> = {
   B2: { en: 'Upper intermediate', ar: 'فوق المتوسط' },
 };
 
-const collectionVisuals: Record<
-  StoryCollectionId,
-  {
-    accent: string;
-    accentBright: string;
-    accentSoft: string;
-    ambient: string;
-    stage: string;
-  }
-> = {
-  prophets: {
-    accent: '#D8B35C',
-    accentBright: '#F3D58A',
-    accentSoft: 'rgba(216,179,92,0.14)',
-    ambient: 'rgba(111,74,29,0.44)',
-    stage: 'linear-gradient(135deg, #17140f 0%, #21180f 46%, #10130f 100%)',
-  },
-  history: {
-    accent: '#55C997',
-    accentBright: '#86EDBD',
-    accentSoft: 'rgba(85,201,151,0.14)',
-    ambient: 'rgba(14,95,65,0.40)',
-    stage: 'linear-gradient(135deg, #0d1714 0%, #10251d 48%, #0b1512 100%)',
-  },
-  turkish: {
-    accent: '#58CBE0',
-    accentBright: '#8AE8F5',
-    accentSoft: 'rgba(88,203,224,0.14)',
-    ambient: 'rgba(22,88,108,0.42)',
-    stage: 'linear-gradient(135deg, #0b1418 0%, #10242b 48%, #0a1216 100%)',
-  },
-};
-
 export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   const [activeCollection, setActiveCollection] = useState<CollectionId>('all');
   const [activeIndex, setActiveIndex] = useState(0);
