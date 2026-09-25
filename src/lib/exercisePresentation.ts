@@ -46,3 +46,7 @@ export const presentMatchingMeanings = (exercise: Exercise): string[] => {
   const offset = 1 + (hashSeed(`${exercise.id}:matching`) % maxOffset);
   return meanings.map((_, displayIndex) => meanings[(displayIndex + offset) % meanings.length]);
 };
+
+/** Hide internal CEFR level prefixes from learner-facing exercise titles. */
+export const presentExerciseTitle = (exercise: Pick<Exercise, 'title'>): string =>
+  (exercise.title ?? '').replace(/^(?:A2|B1|B2)\s*[:\-–—]?\s*/i, '').trim();
