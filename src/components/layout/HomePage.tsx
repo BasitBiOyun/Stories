@@ -248,6 +248,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       if (story && level && story.availableLevels.includes(level)) {
         setLastActive({ prophetId: story.id, level });
         setActiveIndex(storyIndex);
+        preloadBook(story.id, level)?.catch(() => undefined);
       }
     } catch {
       // Ignore malformed local storage data.
