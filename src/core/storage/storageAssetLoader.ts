@@ -1,10 +1,8 @@
-import { getDownloadURL, listAll, ref } from 'firebase/storage';
-import { storage } from '../../lib/firebase';
 import type { BookData, PageData } from '../../types';
 import type { BookPair } from '../content/contracts';
 import type { AssetKind, BookAssetManifest, ResolvedBookAssets, StoragePathCandidates } from './contracts';
 
-const EMPTY_ASSETS: ResolvedBookAssets = { images: {}, englishAudio: {}, arabicAudio: {} };
+export const EMPTY_RESOLVED_ASSETS: ResolvedBookAssets = { images: {}, englishAudio: {}, arabicAudio: {} };
 const cache = new Map<string, Promise<Record<number, string>>>();
 
 const IMAGE_EXTENSION = /\.(?:png|jpe?g|webp|avif|gif)$/i;
@@ -38,6 +36,10 @@ const loadMergedFolders = async ({ paths, kind }: StoragePathCandidates): Promis
   if (existing) return existing;
 
   const request = (async () => {
+    const [{ getDownloadURL, listAll, ref }, { storage }] = await Promise.all([
+      import('firebase/storage'),
+      import('../../lib/firebase'),
+    ]);
     const resolved: Record<number, string> = {};
 
     for (const path of paths) {
@@ -69,7 +71,7 @@ const loadMergedFolders = async ({ paths, kind }: StoragePathCandidates): Promis
 };
 
 export const loadBookAssets = async (manifest: BookAssetManifest): Promise<ResolvedBookAssets> => {
-  if (!manifest.sharedImages && !manifest.englishAudio && !manifest.arabicAudio) return EMPTY_ASSETS;
+  if (!manifest.sharedImages && !manifest.englishAudio && !manifest.arabicAudio) return EMPTY_RESOLVED_ASSETS;
 
   const [images, englishAudio, arabicAudio] = await Promise.all([
     manifest.sharedImages ? loadMergedFolders(manifest.sharedImages) : Promise.resolve({}),
