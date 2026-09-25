@@ -18,6 +18,7 @@ import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
 import {
+  presentExerciseTitle,
   presentMatchingMeanings,
   presentMultipleChoice,
   presentQuizOptions,
@@ -99,6 +100,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const isQuick = variant === 'quick';
   const isLanguage = variant === 'language';
   const isReview = variant === 'review';
+  const displayExerciseTitle = React.useMemo(() => presentExerciseTitle(exercise), [exercise]);
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [showHint, setShowHint] = React.useState(false);
@@ -493,20 +495,21 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       return (
         <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-6 space-y-5">
           <div className={cn('font-serif leading-loose text-wood', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg')}>
-            {(exercise.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
-              <React.Fragment key={index}>
-                {part}
-                {index < pieces.length - 1 && (
-                  <input
-                    type="text"
-                    disabled={isSubmitted}
-                    value={typeof userAnswer === 'string' ? userAnswer : ''}
-                    onChange={(event) => setUserAnswer(event.target.value)}
-                    className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.softBorder)}
-                  />
-                )}
-              </React.Fragment>
-            ))}
+            {(exercise.fillBlanksText ?? '').split(/(\[blank\]|_{3,})/g).map((part, index) => {
+              const isBlank = /^(?:\[blank\]|_{3,})$/.test(part);
+              if (!isBlank) return <React.Fragment key={index}>{part}</React.Fragment>;
+              return (
+                <input
+                  key={index}
+                  type="text"
+                  disabled={isSubmitted}
+                  value={typeof userAnswer === 'string' ? userAnswer : ''}
+                  onChange={(event) => setUserAnswer(event.target.value)}
+                  aria-label={isArabic ? 'إجابة الفراغ' : 'Blank answer'}
+                  className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.softBorder)}
+                />
+              );
+            })}
           </div>
           {!isSubmitted && (
             <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', isArabic && 'text-base', theme.accentBg)}>
@@ -725,7 +728,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       dir={isRTL ? 'rtl' : 'ltr'}
       role={embedded ? 'group' : 'dialog'}
       aria-modal={embedded ? undefined : true}
-      aria-label={isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : (exercise.title || exercise.question || t('nav.interactiveChallenge'))}
+      aria-label={isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : (displayExerciseTitle || exercise.question || t('nav.interactiveChallenge'))}
     >
       <header className={cn(
         'shrink-0 px-4 sm:px-6 md:px-10 flex items-start justify-between gap-4',
@@ -758,7 +761,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               isLanguage ? 'font-semibold tracking-[-0.03em]' : 'font-black tracking-tight',
               theme.title
             )}>
-              {exercise.title}
+              {displayExerciseTitle}
             </h3>
           )}
 
