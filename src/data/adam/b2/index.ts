@@ -1,10 +1,6 @@
 import type { BookData, PageData } from '../../../types';
 import { adamB2Pages } from './en/pages';
 import { adamB2PagesAr } from './ar/pages';
-import { adamB2TeacherGuide, adamB2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB2SelfStudyGuide, adamB2StudentGuideMetadata } from './en/selfStudyGuide';
-import { adamB2TeacherGuideAr, adamB2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB2SelfStudyGuideAr, adamB2StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const ADAM_B2_ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['hayâ']);
 
@@ -24,10 +20,8 @@ export const adamB2BookDataEn: BookData = {
   level: 'B2',
   baseFontSize: 12,
   pages: englishPages,
-  teacherGuide: adamB2TeacherGuide,
-  teacherGuideMetadata: adamB2TeacherGuideMetadata,
-  selfStudyGuide: adamB2SelfStudyGuide,
-  studentGuideMetadata: adamB2StudentGuideMetadata,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamB2BookDataAr: BookData = {
@@ -36,10 +30,8 @@ export const adamB2BookDataAr: BookData = {
   level: 'B2',
   baseFontSize: 14,
   pages: adamB2PagesAr,
-  teacherGuide: adamB2TeacherGuideAr,
-  teacherGuideMetadata: adamB2TeacherGuideMetadataAr,
-  selfStudyGuide: adamB2SelfStudyGuideAr,
-  studentGuideMetadata: adamB2StudentGuideMetadataAr,
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamB2BookData = adamB2BookDataEn;
