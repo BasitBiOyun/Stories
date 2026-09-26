@@ -1,74 +1,70 @@
 import type { Exercise } from '../../../../types';
 
-/** Manually authored Mecca/Bilal B1 Language Focus, derived from the actual English story text. */
+/**
+ * Manually authored Mecca B1 Language Focus (Chapters 1–2), derived from the
+ * actual English story text. Each chapter follows Notice → Build → Use:
+ * learners first discover what a form does in a real chapter sentence, then
+ * practise it in context, then use it in a new situation.
+ */
 export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
       id: 'mecca-b1-language-1-historical-frame',
-      type: 'matching',
-      title: 'Building a Historical Frame',
-      instructions: 'Match each expression with the job it does in the chapter.',
-      question: 'How does Chapter 1 place the reader in a historical period and describe the situation at that time?',
-      matchingPairs: [
-        { left: 'Islam started in the 7th century in the city of Mecca.', right: 'places an event in a specific historical period and location' },
-        { left: 'The period before Islam was called the Age of Ignorance...', right: 'labels and defines a historical period' },
-        { left: 'There was no central government in Arabia...', right: 'describes an important situation that existed at the time' },
-        { left: 'tribes were the basis of society', right: 'explains how society was organised' },
+      type: 'multiple-choice',
+      title: 'What Does “This Reason” Point To?',
+      instructions: 'Read the two sentences from Chapter 1. Then choose the best answer.',
+      question: '“Before Islam, Mecca was led by a council of rich merchants. For this reason, the city was known as the Republic of Merchants.” What is “this reason”?',
+      options: [
+        'Islam started in the 7th century in Mecca.',
+        'A council of rich merchants led Mecca.',
+        'Poor and weak people lived in misery.',
+        'There was no central government in Arabia.',
       ],
-      correctAnswer: {
-        'Islam started in the 7th century in the city of Mecca.': 'places an event in a specific historical period and location',
-        'The period before Islam was called the Age of Ignorance...': 'labels and defines a historical period',
-        'There was no central government in Arabia...': 'describes an important situation that existed at the time',
-        'tribes were the basis of society': 'explains how society was organised',
-      },
-      explanation: 'Historical writing often combines a time expression, a label for the period, and descriptions of the political or social situation.',
+      correctAnswer: 1,
+      explanation: '“For this reason” points back to the sentence just before it and introduces a result. Mecca was led by rich merchants, so people called it the Republic of Merchants. Writers use “this reason”, “this period” or “this city” to connect a new sentence to an idea they have already given.',
       feedback: {
-        correct: 'Good. You identified how the chapter establishes historical context.',
-        incorrect: 'Ask whether the expression gives time/place, names the period, or describes how society worked.',
+        correct: 'Correct. The name “Republic of Merchants” is a result of who led the city.',
+        incorrect: 'Read the sentence directly before “For this reason” in the second paragraph. Which fact explains the name “Republic of Merchants”?',
       },
     },
     {
       id: 'mecca-b1-language-1-cause-contrast',
-      type: 'matching',
-      title: 'Connecting Cause, Result and Contrast',
-      instructions: 'Match each connector with the relationship it creates.',
-      question: 'How does the chapter connect reasons, results and contrasting social conditions?',
-      matchingPairs: [
-        { left: '...was called the Age of Ignorance ... because religious and social disorder was common...', right: 'gives the reason for a name or description' },
-        { left: 'For this reason, the city was known as the Republic of Merchants.', right: 'introduces a result based on the previous information' },
-        { left: 'Powerful people controlled many parts of life, while poor and weak people lived in misery.', right: 'places two contrasting situations side by side' },
-      ],
-      correctAnswer: {
-        '...was called the Age of Ignorance ... because religious and social disorder was common...': 'gives the reason for a name or description',
-        'For this reason, the city was known as the Republic of Merchants.': 'introduces a result based on the previous information',
-        'Powerful people controlled many parts of life, while poor and weak people lived in misery.': 'places two contrasting situations side by side',
-      },
-      explanation: '“Because” introduces a reason, “for this reason” points to a result, and “while” can contrast two conditions at the same time.',
+      type: 'word-bank',
+      title: 'Reason or Contrast?',
+      instructions: 'Complete the lines from Chapter 1 with words from the bank. Two words are not needed.',
+      question: 'Which word gives a reason, and which word puts two different situations side by side?',
+      fillBlanksText: 'The period before Islam was called the Age of Ignorance, or Jahiliyyah, [blank] religious and social disorder was common in society. … Powerful people controlled many parts of life, [blank] poor and weak people lived in misery.',
+      wordBank: ['because', 'while', 'because of', 'during'],
+      correctAnswer: ['because', 'while'],
+      explanation: '“Because” + subject + verb gives the reason for the name: disorder was common. “While” can put two situations that existed at the same time side by side to show a contrast: the powerful controlled life, but the poor and weak suffered. “Because of” and “during” need a noun, not a full clause (subject + verb).',
       feedback: {
-        correct: 'Correct. You distinguished reason, result and contrast.',
-        incorrect: 'Look at what comes before and after each connector and decide how the ideas are related.',
+        correct: 'Correct. “Because” explains the name, and “while” contrasts the two groups.',
+        incorrect: 'Ask: does the second part explain why, or does it show a different group at the same time? Then check the first two paragraphs of Chapter 1.',
       },
     },
     {
       id: 'mecca-b1-language-1-focus-and-reporting',
-      type: 'matching',
-      title: 'Choosing What to Put in Focus',
-      instructions: 'Match each sentence pattern with its communicative purpose.',
-      question: 'How does the chapter shift between who performs an action, what receives the action, and whose description is being reported?',
-      matchingPairs: [
-        { left: 'Mecca was led by a council of rich merchants.', right: 'focuses on Mecca and its system of leadership rather than the leaders themselves' },
-        { left: 'poor and weak people were often treated badly', right: 'focuses on the people affected by the action' },
-        { left: 'The Quran describes this period as a time of ignorance and cruelty.', right: 'identifies the source of a description or viewpoint' },
+      type: 'transformation',
+      title: 'Who Did It, and Who Says So?',
+      instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
+      question: 'How does the chapter keep the focus on the people affected, and how does it show the source of a description?',
+      transformItems: [
+        {
+          source: 'Society was not fair, and people from poor backgrounds were often treated badly.',
+          frame: 'Society was not fair, and others often [blank] badly.',
+          answers: ['treated people from poor backgrounds', 'treated poor people', 'treated those from poor backgrounds', 'treated people from a poor background'],
+        },
+        {
+          source: 'The Quran describes this period as a time of ignorance and cruelty.',
+          frame: 'In the Quran, this period [blank] a time of ignorance and cruelty.',
+          answers: ['is described as', 'was described as'],
+        },
       ],
-      correctAnswer: {
-        'Mecca was led by a council of rich merchants.': 'focuses on Mecca and its system of leadership rather than the leaders themselves',
-        'poor and weak people were often treated badly': 'focuses on the people affected by the action',
-        'The Quran describes this period as a time of ignorance and cruelty.': 'identifies the source of a description or viewpoint',
-      },
-      explanation: 'Passive forms can foreground the place or people affected, while “X describes Y as...” clearly attributes a description to a source.',
+      correctAnswer: null,
+      explanation: 'The chapter uses the passive (“were often treated badly”) because the people who suffered are the focus, and the doers are general or unknown. Your active version needs a vague subject such as “others”, which shows why the passive sounds better here. “X describes Y as Z” names the source of a description; the passive “Y is described as Z in X” keeps the same source but puts the period first.',
       feedback: {
-        correct: 'Good. You noticed how information focus changes across the chapter.',
-        incorrect: 'Ask whether the sentence foregrounds the doer, the receiver, or the source of a description.',
+        correct: 'Well done. You moved between active and passive and kept the source of the description clear.',
+        incorrect: 'Item 1: put the affected people after the active verb “treated”. Item 2: use is/was + “described as”. Check the last paragraph of Chapter 1.',
       },
     },
     {
@@ -95,72 +91,66 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
   2: [
     {
       id: 'mecca-b1-language-2-definition-contrast',
-      type: 'matching',
-      title: 'Defining and Contrasting Ideas',
-      instructions: 'Match each chapter expression with the meaning it builds.',
-      question: 'How does the chapter define Jahiliyyah and position Islam in contrast to it?',
-      matchingPairs: [
-        { left: 'The Jahiliyyah was an age of barbarism.', right: 'gives a direct definition or characterization of a period' },
-        { left: 'People did not truly know Allah...', right: 'describes a negative condition in that period' },
-        { left: 'Prophet Muhammad (as) described Islam as the opposite of barbarism.', right: 'sets up an explicit contrast between two ideas' },
-        { left: 'This era ended when the first revelation of the Quran began in 610 CE.', right: 'marks the historical point when one period ended' },
+      type: 'sequencing',
+      title: 'Follow the Explanation',
+      instructions: 'Put these sentences from Chapter 2 in the most natural order. Words like “the Jahiliyyah period”, “first” and “this city” will help you.',
+      question: 'How does the writer move from the Jahiliyyah to a short profile of Mecca?',
+      sequencingItems: [
+        { id: 'a', text: 'Allah chose this city to be the location of His House, the Holy Ka’ba.' },
+        { id: 'b', text: 'Mecca is the holy city of Islam.' },
+        { id: 'c', text: 'The Jahiliyyah was an age of barbarism.' },
+        { id: 'd', text: 'To understand the Jahiliyyah period, we must first talk about Mecca.' },
       ],
-      correctAnswer: {
-        'The Jahiliyyah was an age of barbarism.': 'gives a direct definition or characterization of a period',
-        'People did not truly know Allah...': 'describes a negative condition in that period',
-        'Prophet Muhammad (as) described Islam as the opposite of barbarism.': 'sets up an explicit contrast between two ideas',
-        'This era ended when the first revelation of the Quran began in 610 CE.': 'marks the historical point when one period ended',
-      },
-      explanation: 'The chapter first characterizes the period, then contrasts it with Islam and finally marks the transition to a new historical phase.',
+      correctAnswer: ['c', 'd', 'b', 'a'],
+      explanation: 'The writer first defines the period (“The Jahiliyyah was an age of barbarism”). “To understand the Jahiliyyah period, we must first …” refers back to that period and states the purpose and the first step of the next explanation. Then the new topic, Mecca, is introduced with a short definition. “This city” refers back to Mecca, so it must come after Mecca has been named.',
       feedback: {
-        correct: 'Good. You identified definition, description, contrast and historical transition.',
-        incorrect: 'Ask whether each sentence defines, describes, contrasts or marks a change in time.',
+        correct: 'Correct. Definition of the period, purpose and first step, the new topic, then a sentence that refers back to it.',
+        incorrect: 'Start with the sentence that defines the period. Then ask: which sentence says what we must do first, which names Mecca, and which refers back to “this city”?',
       },
     },
     {
       id: 'mecca-b1-language-2-ordering-explanation',
-      type: 'matching',
-      title: 'Organising an Explanation',
-      instructions: 'Match each expression with its discourse function.',
-      question: 'How does the writer guide the reader from the idea of Jahiliyyah to an explanation of Mecca?',
-      matchingPairs: [
-        { left: 'To understand the Jahiliyyah period...', right: 'states the purpose of the next part of the explanation' },
-        { left: 'we must first talk about Mecca', right: 'signals a necessary first step in the explanation' },
-        { left: 'Mecca is the holy city of Islam.', right: 'introduces the new topic with a concise description' },
-        { left: 'Allah chose this city to be the location of His House...', right: 'adds a reason why the new topic is important' },
+      type: 'sentence-building',
+      title: 'Describing One Idea as Another',
+      instructions: 'Tap the pieces to rebuild this sentence from Chapter 2.',
+      question: 'Where does “as” go when we describe one idea in terms of another?',
+      sentenceChunks: [
+        'Prophet Muhammad (as)',
+        'described',
+        'Islam',
+        'as the opposite',
+        'of barbarism.',
       ],
-      correctAnswer: {
-        'To understand the Jahiliyyah period...': 'states the purpose of the next part of the explanation',
-        'we must first talk about Mecca': 'signals a necessary first step in the explanation',
-        'Mecca is the holy city of Islam.': 'introduces the new topic with a concise description',
-        'Allah chose this city to be the location of His House...': 'adds a reason why the new topic is important',
-      },
-      explanation: 'Expressions such as “to understand...” and “must first...” help organise an explanation so the reader can follow why one topic comes before another.',
+      correctAnswer: null,
+      explanation: 'The pattern is describe + thing + as + description: “described Islam as the opposite of barbarism”. The same pattern appears in Chapter 1: “The Quran describes this period as a time of ignorance and cruelty.” Here the pattern builds a contrast, because the chapter has just called the Jahiliyyah “an age of barbarism”.',
       feedback: {
-        correct: 'Correct. You traced how the explanation is organised.',
-        incorrect: 'Look for purpose, sequence and the reason the writer introduces Mecca at this point.',
+        correct: 'Well done. The thing being described comes straight after “described”, and “as” introduces the description.',
+        incorrect: 'Start with the person, then “described”, then what he described, then “as …”. Check the first paragraph of Chapter 2.',
       },
     },
     {
       id: 'mecca-b1-language-2-addition-definition',
-      type: 'matching',
-      title: 'Adding Related Information',
-      instructions: 'Match each sentence with the way it adds or defines information.',
-      question: 'How does the chapter build a compact profile of Mecca without using separate disconnected facts?',
-      matchingPairs: [
-        { left: 'Prophet Muhammad (as) was also born in Mecca.', right: 'adds another important connection to the city' },
-        { left: 'He spent 52 years of his life in this city and began to teach the message of Islam here.', right: 'joins two related facts about the same person and place' },
-        { left: 'The Qiblah, the direction Muslims face during salah, is also located in Mecca.', right: 'defines a term inside the sentence while adding another link to Mecca' },
+      type: 'transformation',
+      title: 'Time Clauses and Inserted Definitions',
+      instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
+      question: 'Can you move a “when” clause to the front and unpack a definition that sits inside a sentence?',
+      transformItems: [
+        {
+          source: 'This era ended when the first revelation of the Quran began in 610 CE.',
+          frame: 'When the first revelation of the Quran began in 610 CE, [blank].',
+          answers: ['this era ended', 'the era ended', 'the Jahiliyyah ended', 'the Jahiliyyah era ended', 'the Jahiliyyah period ended'],
+        },
+        {
+          source: 'The Qiblah, the direction Muslims face during salah, is also located in Mecca.',
+          frame: 'The Qiblah is also located in Mecca. It is [blank] during salah.',
+          answers: ['the direction Muslims face', 'the direction that Muslims face', 'the direction which Muslims face'],
+        },
       ],
-      correctAnswer: {
-        'Prophet Muhammad (as) was also born in Mecca.': 'adds another important connection to the city',
-        'He spent 52 years of his life in this city and began to teach the message of Islam here.': 'joins two related facts about the same person and place',
-        'The Qiblah, the direction Muslims face during salah, is also located in Mecca.': 'defines a term inside the sentence while adding another link to Mecca',
-      },
-      explanation: '“Also”, coordinated verbs with “and”, and an inserted definition help the writer connect related information instead of listing isolated sentences.',
+      correctAnswer: null,
+      explanation: 'A “when” clause can come after or before the main clause. When it comes first, we put a comma after it. A noun phrase between commas (“the Qiblah, the direction Muslims face during salah, …”) defines the word just before it. The writer puts the definition inside the sentence so the reader understands the term and gets a new fact at the same time.',
       feedback: {
-        correct: 'Good. You noticed how related facts are combined and clarified.',
-        incorrect: 'Ask whether the expression adds, joins or defines information.',
+        correct: 'Well done. You moved the time clause and turned the inserted definition into its own sentence.',
+        incorrect: 'Item 1: after the comma, add the main clause about the era. Item 2: use the words between the commas in the last sentence of Chapter 2.',
       },
     },
     {
