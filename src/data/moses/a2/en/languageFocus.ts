@@ -1,43 +1,67 @@
 import type { Exercise } from '../../../../types';
 
-/** Chapter-specific A2 Language Focus for Moses — Chapters 1–2. */
+/**
+ * Chapter-specific A2 Language Focus for Moses — Chapters 1–2.
+ * Each chapter follows Look → Practise → Use. Every quoted sentence comes
+ * from the English chapter text.
+ */
 export const mosesA2LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
-      id: 'moses-a2-language-1-past-description', type: 'matching', title: 'Describing People in a Past Story',
-      instructions: 'Match each Chapter 1 sentence with its language job.', question: 'What does each past form communicate?',
-      matchingPairs: [
-        { left: 'Moses was a great Messenger of Allah.', right: 'past identity and description' },
-        { left: 'Pharaoh was the king of Egypt.', right: 'past role' },
-        { left: 'They were the grandchildren of Jacob and Joseph.', right: 'past family relationship' },
-        { left: 'He was an unfair and cruel ruler.', right: 'past qualities' },
-      ],
-      correctAnswer: {
-        'Moses was a great Messenger of Allah.': 'past identity and description',
-        'Pharaoh was the king of Egypt.': 'past role',
-        'They were the grandchildren of Jacob and Joseph.': 'past family relationship',
-        'He was an unfair and cruel ruler.': 'past qualities',
+      id: 'moses-a2-language-1-past-description',
+      type: 'word-bank',
+      title: 'Was, Were or Believed?',
+      instructions: 'Complete the sentences from Chapter 1. Use the words in the box. Two words are not needed.',
+      question: 'Which past word fits each sentence?',
+      fillBlanksText: 'Pharaoh [blank] the king of Egypt. … They [blank] the grandchildren of Jacob (pbuh) (Yakub) and Joseph (pbuh) (Yûsuf). They [blank] in one Allah, like their great-grandfather, Prophet Abraham (pbuh).',
+      wordBank: ['was', 'were', 'believed', 'is', 'thought'],
+      correctAnswer: ['was', 'were', 'believed'],
+      explanation: 'Use was with one person (Pharaoh was …) and were with more than one person (They were …). We say believe in Allah, and the story is in the past, so it is believed in.',
+      feedback: {
+        correct: 'Correct. Was for one person, were for a group, and believed in for faith.',
+        incorrect: 'Look at Chapter 1 again. Is the subject one person or a group? Which verb goes with “in one Allah”?',
       },
-      explanation: 'Was and were identify people, roles, relationships and qualities in a past narrative.',
-      feedback: { correct: 'Correct.', incorrect: 'Ask whether the sentence gives identity, role, relationship or quality.' },
     },
     {
-      id: 'moses-a2-language-1-belief-thought', type: 'multiple-choice', title: 'Belief and Thought',
-      instructions: 'Choose the sentence that reports a negative past idea.', question: 'Which sentence uses “did not + base verb” correctly?',
-      options: ['They did not think the king was a god.', 'They did not thought the king was a god.', 'They not think the king was a god.'], correctAnswer: 0,
-      explanation: 'After did not, use the base verb: did not think.', feedback: { correct: 'Correct.', incorrect: 'Use did not + base verb.' },
-    },
-    {
-      id: 'moses-a2-language-1-cause-result', type: 'sequencing', title: 'Cause and Result',
-      instructions: 'Put the chunks in order.', question: 'How does Chapter 1 connect fear with cruel treatment?',
-      sequencingItems: [
-        { id: '1', text: 'The king feared the Children of Israel.' },
-        { id: '2', text: 'Because of his fear,' },
-        { id: '3', text: 'he was rude to them' },
-        { id: '4', text: 'and forced them to do dangerous work.' },
+      id: 'moses-a2-language-1-belief-thought',
+      type: 'error-correction',
+      title: 'Did Not + Verb',
+      instructions: 'Each sentence has one mistake. Tap the wrong words. Then choose the correct words.',
+      question: 'What form of the verb comes after did not?',
+      errorItems: [
+        {
+          sentence: 'He did not believed in Allah.',
+          error: 'did not believed',
+          options: ['not believe', 'did not believe', 'did not believing'],
+          answer: 1,
+        },
+        {
+          sentence: 'So, they did not thought the king was a god.',
+          error: 'did not thought',
+          options: ['did not think', 'did not thinking', 'not think'],
+          answer: 0,
+        },
       ],
-      correctAnswer: ['1', '2', '3', '4'], explanation: 'Because of + noun introduces a cause before a result.',
-      feedback: { correct: 'Correct.', incorrect: 'Start with the fear, then give the result.' },
+      correctAnswer: null,
+      explanation: 'After did not, use the base verb: did not believe, did not think. Did already shows the past, so the next verb does not change.',
+      feedback: {
+        correct: 'Well done. After did not, the verb stays in the base form.',
+        incorrect: 'Find the two sentences in Chapter 1. After did not, use the verb without -ed or a past form.',
+      },
+    },
+    {
+      id: 'moses-a2-language-1-cause-result',
+      type: 'sentence-building',
+      title: 'Why Was the King Rude?',
+      instructions: 'Tap the pieces to build the sentence from Chapter 1.',
+      question: 'Where does “Because of his fear” go?',
+      sentenceChunks: ['Because of', 'his fear,', 'he was rude', 'to the Children of Israel.'],
+      correctAnswer: null,
+      explanation: 'Because of + a noun (his fear) gives the reason. Here the reason comes first, then a comma, then the result: he was rude to the Children of Israel.',
+      feedback: {
+        correct: 'Correct. The reason comes first, then the result.',
+        incorrect: 'Read the end of Chapter 1. Start with the reason: Because of …',
+      },
     },
     {
       id: 'moses-a2-language-1-production', type: 'reflection', title: 'Use It: Describe and Explain',
@@ -54,35 +78,63 @@ export const mosesA2LanguageFocusExercises: Record<number, Exercise[]> = {
   ],
   2: [
     {
-      id: 'moses-a2-language-2-story-actions', type: 'matching', title: 'Following Past Actions',
-      instructions: 'Match each Chapter 2 sentence with its job in the sequence.', question: 'How do past verbs move the story?',
+      id: 'moses-a2-language-2-story-actions',
+      type: 'matching',
+      title: 'Past Verbs in the Story',
+      instructions: 'Find these past verbs in Chapter 2. Match each one with its base form.',
+      question: 'What is the base form of each past verb?',
+      matchingHeadings: { left: 'From the chapter', right: 'Base form' },
       matchingPairs: [
-        { left: 'The king had a dream.', right: 'starts the event' },
-        { left: 'He saw a fire in his vision.', right: 'reports what he experienced' },
-        { left: 'The king woke up and called his helpers.', right: 'shows the next actions' },
-        { left: 'He asked about the dream.', right: 'shows how he looked for an explanation' },
+        { left: 'had', right: 'have' },
+        { left: 'saw', right: 'see' },
+        { left: 'came', right: 'come' },
+        { left: 'found', right: 'find' },
+        { left: 'told', right: 'tell' },
       ],
-      correctAnswer: {
-        'The king had a dream.': 'starts the event', 'He saw a fire in his vision.': 'reports what he experienced',
-        'The king woke up and called his helpers.': 'shows the next actions', 'He asked about the dream.': 'shows how he looked for an explanation',
+      correctAnswer: { had: 'have', saw: 'see', came: 'come', found: 'find', told: 'tell' },
+      explanation: 'These verbs are irregular: they do not take -ed in the past. The story uses the past form (had, saw, came, found, told) because the events are finished.',
+      feedback: {
+        correct: 'Correct. You know the base form of each irregular past verb.',
+        incorrect: 'Read the sentence in Chapter 2 with each verb. What is the verb in the present? For example, “the king had a dream” → have.',
       },
-      explanation: 'Simple past verbs move completed story events forward.', feedback: { correct: 'Correct.', incorrect: 'Follow the events from dream to reaction.' },
     },
     {
-      id: 'moses-a2-language-2-future-prediction', type: 'fill-blanks', title: 'Future Prediction',
-      instructions: 'Complete the prediction with one word.', question: 'Which helper verb expresses the future prediction?',
-      fillBlanksText: 'A boy [blank] be born from the Children of Israel.', correctAnswer: 'will',
-      explanation: 'Will + base verb expresses a future prediction.', feedback: { correct: 'Correct.', incorrect: 'Use the future helper before be.' },
-    },
-    {
-      id: 'moses-a2-language-2-orders-and-when', type: 'sequencing', title: 'Order and Later Action',
-      instructions: 'Put the chunks in order.', question: 'How does the chapter connect a command with what happened later?',
-      sequencingItems: [
-        { id: '1', text: 'Pharaoh told his soldiers:' }, { id: '2', text: '“Kill all the baby boys.”' },
-        { id: '3', text: 'When they found baby boys,' }, { id: '4', text: 'they killed them.' },
+      id: 'moses-a2-language-2-future-prediction',
+      type: 'choose-form',
+      title: 'What Will Happen?',
+      instructions: 'Choose the correct word for each sentence from Chapter 2.',
+      question: 'Which word talks about the past, and which word talks about the future?',
+      formChoices: [
+        { sentence: 'The fire came from Jerusalem and [choice] the houses of the Egyptians.', options: ['burns', 'burnt', 'burn'], answer: 1 },
+        { sentence: 'They said, “A boy [choice] be born from the Children of Israel …”', options: ['was', 'is', 'will'], answer: 2 },
+        { sentence: '“… and he [choice] kill the Egyptians.”', options: ['will', 'is', 'was'], answer: 0 },
       ],
-      correctAnswer: ['1', '2', '3', '4'], explanation: 'An imperative gives a direct order; when connects a later situation with its result.',
-      feedback: { correct: 'Correct.', incorrect: 'Start with the speaker and command, then the when clause.' },
+      correctAnswer: null,
+      explanation: 'The dream is a finished event, so it uses the past: burnt. The helpers and magicians talk about the future, so they use will + base verb: will be born, will kill.',
+      feedback: {
+        correct: 'Correct. Past for the dream, will for the prediction.',
+        incorrect: 'Read Chapter 2 again. Is it the dream (past) or what the helpers say will happen (future)?',
+      },
+    },
+    {
+      id: 'moses-a2-language-2-orders-and-when',
+      type: 'sequencing',
+      title: 'Put the Events in Order',
+      instructions: 'Put the sentences from Chapter 2 in story order.',
+      question: 'What happened first, next and last?',
+      sequencingItems: [
+        { id: '1', text: 'One day the king had a dream.' },
+        { id: '2', text: 'The king woke up and called his helpers and magicians.' },
+        { id: '3', text: 'He asked about the dream.' },
+        { id: '4', text: 'Then, the king told his soldiers, “Kill all the baby boys of the Children of Israel.”' },
+        { id: '5', text: 'When they found baby boys, they killed them.' },
+      ],
+      correctAnswer: ['1', '2', '3', '4', '5'],
+      explanation: 'Past verbs tell the events in order. One day starts the event, Then shows the next step, and When joins two past actions: first they found, then they killed.',
+      feedback: {
+        correct: 'Correct. You followed the events from the dream to the soldiers’ actions.',
+        incorrect: 'Read Chapter 2 again. Look for One day, Then and When to find the order.',
+      },
     },
     {
       id: 'moses-a2-language-2-production', type: 'reflection', title: 'Use It: Prediction and Instruction',
