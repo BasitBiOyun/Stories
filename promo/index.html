@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <title>Stories — Tanıtım Filmi</title>
@@ -96,8 +96,8 @@
       <div class="world" id="s3world"></div>
     </div>
     <div class="s3-word" id="s3word">Messenger</div>
-    <div class="kin" id="s3head"><div class="eyebrow">Word Notes</div><div class="line">Kelime,</div><div class="line">bağlamıyla birlikte.</div></div>
-    <div class="counter" id="s3count"><div class="num" id="s3num">0</div><div class="lbl">kelime<br><span>tek bir Master Glossary’de</span></div></div>
+    <div class="kin" id="s3head" lang="tr"><div class="eyebrow">Word Notes · Bölüm 1</div><div class="line">Kelime,</div><div class="line">bağlamıyla birlikte.</div></div>
+    <div class="counter" id="s3count"><div class="num" id="s3num">0</div><div class="lbl">Word Notes<br><span>Bölüm 1 · Introduction &amp; The Creation</span></div></div>
   </section>
 
   <!-- ================= S4 · ENGLISH ⇄ ARABIC ================= -->
@@ -133,7 +133,14 @@
       </div>
     </div>
     <div class="tap" id="s5tap"></div>
-    <div class="kin kin-right" id="s5head"><div class="eyebrow" id="s5eye">Her bölümün ardından</div><div class="line" id="s5l1">Oku.</div><div class="line" id="s5l2">Anla.</div><div class="line" id="s5l3">Kullan.</div></div>
+    <div class="persp" id="s5rail"><div class="world" id="s5railw"></div></div>
+  </section>
+
+  <!-- ================= S5b · END OF BOOK ================= -->
+  <section class="scene" id="s5b">
+    <div class="persp" id="s5bpersp"><div class="world" id="s5bworld"></div></div>
+    <svg id="s5bgate" viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:1920px;height:1080px;overflow:visible"><path id="s5bgp" fill="none" stroke="url(#goldStroke)" stroke-width="2.4"/></svg>
+    <div class="top-shade"></div><div class="cap-shade"></div>
   </section>
 
   <!-- ================= S6 · LEVELS ================= -->
@@ -147,7 +154,7 @@
       </div>
     </div>
     <svg id="s6line" viewBox="0 0 1920 1080"><path id="s6path" d="" fill="none" stroke="url(#goldStroke)" stroke-width="2" /></svg>
-    <div class="kin" id="s6head"><div class="eyebrow">Mecca Before Islam · مكة قبل الإسلام</div><div class="line">Aynı hikâye.</div><div class="line gold">Üç seviye.</div></div>
+    <div class="kin" id="s6head" lang="tr"><div class="eyebrow">Mecca Before Islam · مكة قبل الإسلام</div><div class="line">Aynı hikâye.</div><div class="line gold">Üç seviye.</div></div>
   </section>
 
   <!-- ================= S7 · GUIDES ================= -->
@@ -186,8 +193,8 @@
       </div>
     </div>
     <div id="s7seam"></div>
-    <div class="s7-label" id="s7lblL"><small>Sınıfta</small><b>Öğretmen Kılavuzu</b><span>16 bölüm · ders hazırlığı · değerlendirme</span></div>
-    <div class="s7-label right" id="s7lblR"><small>Evde</small><b>Bağımsız Çalışma Kılavuzu</b><span>12 bölüm · 60 etkinlik · kendi hızında</span></div>
+    <div class="s7-label" id="s7lblL"><small lang="tr">Öğretmen için</small><b>Öğretmen Kılavuzu</b><span>16 bölüm · ders hazırlığı · değerlendirme</span></div>
+    <div class="s7-label right" id="s7lblR"><small lang="tr">Öğrenci için</small><b>Evde Bağımsız Çalışma Kılavuzu</b><span>12 bölüm · 60 etkinlik · kendi hızında</span></div>
   </section>
 
   <!-- ================= S8 · FINALE ================= -->
@@ -197,15 +204,14 @@
     <div id="s8logo"><img src="assets/brand/home_icon.png" alt=""><div class="sheen" id="s8sheen"></div></div>
     <div id="s8flare" class="star"><div class="star-glow"></div><svg viewBox="-50 -50 100 100"><path d="M0,-46 C3,-10 10,-3 46,0 C10,3 3,10 0,46 C-3,10 -10,3 -46,0 C-10,-3 -3,-10 0,-46 Z" fill="#FFF3CF"/></svg></div>
     <div id="s8word"></div>
-    <div id="s8sub">Etkileşimli Dil ve Değerler Kütüphanesi</div>
-    <div id="s8tag">Stories to read, hear and step inside.</div>
-    <div id="s8meta"><span>English</span><i></i><span class="a">العربية</span><i></i><span>A2 · B1 · B2</span><i></i><span>5 kitap</span></div>
+    <div id="s8sub" lang="tr">Etkileşimli Dil ve Değerler Kütüphanesi</div>
+        <div id="s8meta"><span>English</span><i></i><span class="a">العربية</span><i></i><span>A2 · B1 · B2</span></div>
   </section>
 
   <canvas id="dust" width="1920" height="1080"></canvas>
   <div id="flash"></div>
   <div id="vignette"></div>
-  <canvas id="grain" width="960" height="540"></canvas>
+  <canvas id="grain" width="1920" height="1080"></canvas>
 </div>
 <script src="film.js"></script>
 </body>
