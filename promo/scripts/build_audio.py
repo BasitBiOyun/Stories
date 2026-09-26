@@ -473,8 +473,8 @@ def build_sfx() -> np.ndarray:
     at("s5", 23.1, click(2400), 0.3); at("s5", 23.15, chime((86, 93)), 0.22)
     at("s5", 24.4, whoosh(0.8, 250, 3000, 0.5), 0.08)
     at("s5", 25.8, click(2200), 0.22)
-    for j in range(4):
-        at("s5", 26.75 + j * 0.3 + 0.24, click(3000 + j * 150, 0.04), 0.1)
+    for j in range(4):                                        # Language Focus writing task: prompts ticked
+        at("s5", 26.9 + j * 0.24, click(3000 + j * 150, 0.04), 0.1)
     at("s5", 27.7, chime((88,), 0), 0.1)
     at("s5", 28.15, whoosh(1.4, 300, 7000, 0.5), 0.12)
     # S5b — end of book
