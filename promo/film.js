@@ -8,7 +8,7 @@
 'use strict';
 
 const W = 1920, H = 1080, CX = 960, CY = 540;
-const DURATION = 60.0;
+let DURATION = 89.333;   // read from timeline.json at start-up
 const OLD_END = 39.65; // end of the finale in the finale's own (original) clock
 
 /* ---------- math & easing ---------- */
@@ -155,9 +155,137 @@ function drawGrain(frameIndex) {
 const scenes = [];
 /* A scene runs on its own clock. `warp` = [clockA, clockB, filmA, filmB] maps film time onto it,
    so a scene choreographed once can be re-timed (slowed down / moved) without touching its keys. */
-const scene = (id, a, b, update, warp) => scenes.push({ el: document.getElementById(id), a, b, update, warp });
-const W1 = [0, 3.9, 0, 4.667], W2 = [3.9, 8.45, 4.2, 10.667], W3 = [8.45, 12.35, 10.667, 15.333], W4 = [12.35, 17.6, 15.333, 20.667];
-const W6 = [22.75, 28.6, 42.667, 48.667], W7 = [28.6, 34.45, 48.667, 54.667], W8 = [34.45, 39.65, 54.667, 60.0];
+/* A scene runs on its own clock. timeline.json → warps[id] = [[clock, film], ...] maps film time onto it
+   piecewise-linearly, so holds (where a feature is read) can be lengthened without slowing transitions. */
+const scene = (id, a, b, update) => scenes.push({ id, el: document.getElementById(id), a, b, update });
+let WARPS = {};
+function sceneClock(id, t) {
+  const k = WARPS[id];
+  if (!k) return t;
+  let i = 1;
+  while (i < k.length - 1 && t > k[i][1]) i++;
+  const [c0, f0] = k[i - 1], [c1, f1] = k[i];
+  return c0 + (t - f0) * (c1 - c0) / (f1 - f0);
+}
+
+/* ---------------------- S0 · CIVILIZATION OPENER ----------------------
+   "Dil öğrenirken tarihini ve medeniyetini de keşfet."
+   A slow camera journey through arch-framed panels — prophets' stories, Mecca,
+   Jerusalem, Bukhara, Kashgari, Yasawi, Yunus Emre, Istanbul — which then settle
+   into one constellation behind the message and collapse into the brand star. */
+{
+  const S = $('#s0'), world = $('#s0world');
+  const STOPS = [
+    { name: 'Peygamberlerin Hikâyeleri', sub: 'Hz. Âdem · Hz. İbrahim · Hz. Musa', imgs: ['adam_b1_05', 'abraham_b1_03', 'moses_a2_15'] },
+    { name: 'Mekke', sub: 'Kâbe’nin şehri', imgs: ['civ/mekke|mecca_b1_10'] },
+    { name: 'Kudüs', sub: 'Mescid-i Aksâ’nın şehri', imgs: ['civ/kudus|designed/kudus'] },
+    { name: 'Buhara', sub: 'İpek Yolu’nun ilim şehri', imgs: ['civ/buhara|designed/buhara'] },
+    { name: 'Kaşgarlı Mahmud', sub: 'Dîvânu Lugâti’t-Türk', imgs: ['civ/kasgarli|designed/kasgarli'] },
+    { name: 'Ahmed Yesevi', sub: 'Pîr-i Türkistan', imgs: ['civ/yesevi|designed/yesevi'] },
+    { name: 'Yunus Emre', sub: 'Anadolu’nun gönül eri', imgs: ['yunusEmre_b1_07'] },
+    { name: 'İstanbul', sub: 'İki kıtanın buluştuğu şehir', imgs: ['civ/istanbul|designed/istanbul'] },
+  ];
+  const GAPZ = 1500, FOCUS = 420, T0 = 1.7, STEP = 1.2, PX = 420;
+  const frame = w => `<svg class="civ-frame" viewBox="0 0 588 728" preserveAspectRatio="none"><path d="${archD(14, 14, 560, 700, false)}" fill="none" stroke="url(#goldStroke)" stroke-width="2"/><path d="${archD(4, 4, 580, 720, false)}" fill="none" stroke="rgba(243,213,138,.35)" stroke-width="1"/></svg>`;
+  const panels = [];
+  STOPS.forEach((st, i) => {
+    const side = i % 2 ? 1 : -1;               // panel right (+1) or left (-1) of the path
+    st.imgs.forEach((im, k) => {
+      // 'civ/x|fallback': supplied artwork in assets/img/civ/ wins; otherwise the fallback is used (resolved in ready())
+      const [want, alt] = im.split('|');
+      const p = el('div', 'civ', `<div class="civ-img"><img src="assets/img/${alt || want}.jpg"${alt ? ` data-want="assets/img/${want}.jpg"` : ''}></div>${frame()}`, world);
+      const focus = { 'civ/mekke': '57% 60%', 'civ/kudus': '59% 45%', 'civ/istanbul': '72% 50%', 'civ/buhara': '47% 40%', 'civ/kasgarli': '42% 50%', 'civ/yesevi': '40% 45%' }[want];
+      if (focus) p.querySelector('img').dataset.focus = focus;
+      const fan = st.imgs.length > 1 ? (k - 1) : 0;
+      panels.push({ el: p, img: p.querySelector('img'), i, k, side,
+        x: side * PX + fan * 250 * -side, y: -30 + Math.abs(fan) * 40, z: -(i * GAPZ + FOCUS) - Math.abs(fan) * 380, s: k ? 0.86 : 1, rz: fan * 4 * -side });
+    });
+    const lab = el('div', 'civ-label' + (side < 0 ? ' right' : ''), `<div class="ix">${String(i + 1).padStart(2, '0')} / 08</div><div class="nm"><span>${st.name}</span></div><div class="sb"><span>${st.sub}</span></div>`, S);
+    lab.setAttribute('lang', 'tr');
+    if (st.name.length > 14) lab.querySelector('.nm').style.fontSize = '84px';
+    st.label = lab; st.side = side; st.nm = lab.querySelector('.nm > span'); st.sb = lab.querySelector('.sb > span');
+  });
+  const msg = $('#s0msg'), l1 = msg.querySelector('.l1'), l2 = msg.querySelector('.l2');
+  const l1s = l1.firstChild, l2s = l2.firstChild;
+  const path = $('#s0path'), spark = $('#s0spark');
+  const station = t => (t - T0) / STEP;                         // 0 at the first stop, 7 at İstanbul
+  const camZ = t => {
+    if (t < T0) return -GAPZ * 0.5 * (1 - E.outSoft(clamp(t / T0)));
+    const s = Math.min(station(t), 7.6);
+    return GAPZ * (s - 0.6 * Math.sin(2 * Math.PI * s) / (2 * Math.PI));   // eases (never stops) at every station
+  };
+  const END = 10.75;                                           // gallery → constellation
+  const zEnd = camZ(END);
+  const ARC = panels.map((p, j) => {
+    const n = panels.length, u = j / (n - 1) - 0.5;
+    return { x: u * 2500, y: 250 + u * u * 420, z: -(zEnd + 1100) - Math.abs(u) * 420 };
+  });
+  let lw = null;
+
+  scene('s0', 0, 14.25, t => {
+    if (!lw) lw = STOPS.map(st => st.label.offsetWidth);
+    const cz = t < END ? camZ(t) : zEnd + (t - END) * 90;
+    const settle = P(t, END, END + 1.5, E.cam);
+    const out = P(t, 13.15, 14.0, bezier(0.7, 0, 0.9, 0.4));
+    const sway = smoothNoise(t * 0.35, 71) * 1.2;
+    tf(world, { x: CX, y: CY, z: cz, rz: sway * (1 - settle), ry: smoothNoise(t * 0.3, 72) * 1.5 });
+    const anchors = [];
+    panels.forEach((p, j) => {
+      const a = ARC[j];
+      const x = lerp(p.x, a.x, settle), y = lerp(p.y, a.y, settle), z = lerp(p.z, a.z, settle);
+      const rel = cz + z;                                    // 0 = at the lens, negative = ahead
+      const vis = rel < 900;
+      show(p.el, vis); if (!vis) return;
+      const sc = lerp(p.s, 0.72, settle) * (1 - out * 0.9);
+      tf(p.el, { x: x * (1 - out) - 280, y: y * (1 - out) - 350, z: z, s: sc, rz: lerp(p.rz, 0, settle), ry: lerp(p.side * -14, 0, settle) });
+      const fadeFar = clamp((rel + 5200) / 1800), fadeNear = clamp((900 - rel) / 500);
+      const queued = lerp(lerp(0.28, 1, clamp((rel + 2100) / 900)), 1, settle);   // upcoming stops stay dim until they take focus
+      op(p.el, fadeFar * fadeNear * queued * lerp(1, 0.55, settle) * (1 - out));
+      blur(p.el, Math.max(0, (-rel - 3300) / 700) + Math.max(0, (rel - 250) / 90) + settle * 1.6);
+      p.img.style.transform = `translate3d(${(smoothNoise(t * 0.4, j) * 12 + (x / 2300) * 20).toFixed(1)}px,${(-rel * 0.004).toFixed(1)}px,0) scale(1.02)`;
+      if (p.k === 0 && settle < 0.5) { const r = p.el.getBoundingClientRect(); if (rel > -5200 && rel < 300) anchors.push([r.left + r.width / 2, r.bottom - r.height * 0.02, p.i]); }
+    });
+    /* names travel with their panels, then yield to the message */
+    STOPS.forEach((st, i) => {
+      const s = station(t);
+      const vin = P(s, i - 0.62, i - 0.2, E.outSoft), vout = P(s, i + 0.5, i + 0.85, E.in);
+      // screen-space type, opposite the panel it names
+      const drift = (s - i) * -40;
+      if (st.side > 0) { st.label.style.left = '150px'; st.label.style.right = 'auto'; }
+      else { st.label.style.right = '150px'; st.label.style.left = 'auto'; }
+      st.label.style.top = '430px';
+      tf(st.label, { x: drift * st.side * -1, y: 0 });
+      st.nm.style.transform = `translate3d(0,${((1 - vin) * 110).toFixed(1)}%,0)`;
+      st.sb.style.transform = `translate3d(0,${((1 - P(s, i - 0.5, i - 0.1, E.outSoft)) * 120).toFixed(1)}%,0)`;
+      op(st.label, (t < END ? 1 : 0) * clamp(vin * 1.5) * (1 - vout));
+      show(st.label, vin > 0 && vout < 1);
+      blur(st.label, vout * 10);
+    });
+    /* the route that threads the stops */
+    anchors.sort((a, b) => a[2] - b[2]);
+    let d = '';
+    anchors.forEach(([x, y], k) => {
+      if (!k) { d = `M${x.toFixed(1)},${y.toFixed(1)}`; return; }
+      const [px, py] = anchors[k - 1];
+      d += ` C${((px + x) / 2).toFixed(1)},${(py + 60).toFixed(1)} ${((px + x) / 2).toFixed(1)},${(y + 60).toFixed(1)} ${x.toFixed(1)},${y.toFixed(1)}`;
+    });
+    path.setAttribute('d', d);
+    path.style.strokeDashoffset = (-t * 40).toFixed(1);
+    op($('#s0thread'), P(t, 1.8, 2.6, E.lin) * (1 - settle));
+    /* message: "Dil öğrenirken" leads the journey, the full sentence closes it */
+    const toC = P(t, END + 0.1, END + 1.0, E.cam);
+    l1.style.top = lerp(118, 300, toC).toFixed(1) + 'px';
+    l1.style.fontSize = lerp(40, 54, toC).toFixed(1) + 'px';
+    l1s.style.transform = `translate3d(0,${((1 - P(t, 0.45, 1.25, E.outSoft)) * 110).toFixed(1)}%,0)`;
+    l2.style.top = '370px';
+    l2s.style.transform = `translate3d(0,${((1 - P(t, END + 0.55, END + 1.4, E.outSoft)) * 110).toFixed(1)}%,0)`;
+    op(msg, 1 - out); blur(msg, out * 12);
+    /* collapse into the brand star (S1 picks it up) */
+    const sp = P(t, 13.2, 13.95, E.inOut);
+    tf(spark, { s: 0.2 + sp * 0.5 }); op(spark, Math.sin(Math.PI * clamp((t - 13.2) / 1.0)) * 0.9);
+    drawDust(t, 0.3 + 0.25 * settle, cz / 2500);
+  });
+}
 
 /* ------------------------------ S1 · HOOK ------------------------------ */
 {
@@ -246,7 +374,7 @@ const W6 = [22.75, 28.6, 42.667, 48.667], W7 = [28.6, 34.45, 48.667, 54.667], W8
     }
     drawDust(t, 0.25 + 0.5 * P(t, 0.8, 1.6), camZ / 900);
     $('#flash').style.opacity = (flare * 0.55).toFixed(3);
-  }, W1);
+  });
 }
 
 /* --------------------------- S2 · STORY PAGE --------------------------- */
@@ -359,7 +487,7 @@ const enWords = splitWords($('#pgTextEn'));
     }
     drawDust(t, 0.35 * (1 - pull) + 0.12, 0);
     op($('#s2'), 1 - P(t, 8.9, 9.25, E.lin));
-  }, W2);
+  });
 }
 
 /* --------------------------- S3 · WORD NOTES --------------------------- */
@@ -431,7 +559,7 @@ const enWords = splitWords($('#pgTextEn'));
     op(count, P(t, 10.95, 11.2, E.lin) * (1 - P(t, 11.95, 12.3, E.lin)));
     tf(count, { y: (1 - P(t, 10.95, 11.5, E.outSoft)) * 30 });
     drawDust(t, 0.3, 0.2);
-  }, W3);
+  });
 }
 
 /* ------------------------- S4 · ENGLISH ⇄ ARABIC ------------------------ */
@@ -497,7 +625,7 @@ const enWords = splitWords($('#pgTextEn'));
     const tr = P(t, 15.75, 16.4, E.outSoft);
     trTag.style.opacity = (tr * (1 - leave)).toFixed(3); tf(trTag, { y: (1 - tr) * 18 });
     drawDust(t, 0.25, 0.1);
-  }, W4);
+  });
 }
 
 /* ------------- S5 · CHAPTER LOOP · story → Quick Challenge → Language Focus ------------- */
@@ -840,7 +968,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     headSpans.forEach((s, i) => riseIn(s, t, 22.95 + i * 0.16, 0.8));
     op(head, 1 - leave);
     drawDust(t, 0.3, -0.1);
-  }, W6);
+  });
 }
 
 /* ----------------------------- S7 · GUIDES ----------------------------- */
@@ -897,7 +1025,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     lblRs.forEach((s, i) => { const p = P(t, 31.85 + i * 0.1, 32.45 + i * 0.1, E.outSoft); s.style.opacity = p * (1 - close); s.style.transform = `translateY(${((1 - p) * 26).toFixed(1)}px)`; });
     drawDust(t, 0.22, 0);
     $('#flash').style.opacity = (P(t, 34.25, 34.45, E.in) * 0.6).toFixed(3);
-  }, W7);
+  });
 }
 
 /* ----------------------------- S8 · FINALE ----------------------------- */
@@ -939,7 +1067,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     $('#stage').style.filter = fade > 0 ? `brightness(${(1 - fade).toFixed(3)})` : '';
     drawDust(t, 0.45 * a, 0.05);
     $('#flash').style.opacity = (Math.exp(-Math.pow((t - 34.47) / 0.18, 2)) * 0.9).toFixed(3);
-  }, W8);
+  });
 }
 
 /* ======================================================================
@@ -949,7 +1077,7 @@ function render(t) {
   $('#stage').style.filter = '';
   $('#flash').style.opacity = 0;
   let any = false;
-  const local = s => (s.warp ? s.warp[0] + (t - s.warp[2]) * (s.warp[1] - s.warp[0]) / (s.warp[3] - s.warp[2]) : t);
+  const local = s => sceneClock(s.id, t);
   for (const s of scenes) {
     const lt = local(s);
     s.el.style.display = lt >= s.a && lt < s.b ? 'block' : 'none';
@@ -960,6 +1088,12 @@ function render(t) {
 }
 
 async function ready() {
+  const tl = await (await fetch('timeline.json')).json();
+  WARPS = tl.warps || {}; DURATION = tl.duration; window.__duration = DURATION;
+  // prefer supplied artwork (assets/img/civ/*) when it exists
+  await Promise.all(Array.from(document.querySelectorAll('img[data-want]')).map(async i => {
+    try { const r = await fetch(i.dataset.want, { method: 'HEAD' }); if (r.ok) { i.src = i.dataset.want; if (i.dataset.focus) i.style.objectPosition = i.dataset.focus; } } catch (e) { /* keep fallback */ }
+  }));
   await document.fonts.ready;
   await Promise.all(['Poppins', 'Arakom'].flatMap(f => [400, 600, 700].map(w => document.fonts.load(`${w} 40px ${f}`, 'Aa ğşı ع'))));
   await Promise.all(Array.from(document.images).map(i => (i.complete ? i.decode().catch(() => {}) : new Promise(r => { i.onload = () => i.decode().then(r, r); i.onerror = r; }))));
