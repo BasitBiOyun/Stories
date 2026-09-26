@@ -13,8 +13,8 @@ Goal: every chapter's Language Focus follows Notice → Build → Use (A2: Look 
 
 ## Still to do (⏳ above, plus)
 - Abraham A2 — AR (EN ✅)
-- Yunus Emre A2 AR; Yunus Emre B1 / B2 — EN, AR
-- Yunus Emre A2 EN ✅
+- Yunus Emre B1 / B2 — EN, AR
+- Yunus Emre A2 EN ✅ AR ✅
 
 For each variant: rewrite per `REWRITE_BRIEF.md`, then run
 `npx tsx docs/language-focus/review.mts <storyId> <level>` (type mix, matching share, repeated sequences, answer leaks),
@@ -34,6 +34,7 @@ For each variant: rewrite per `REWRITE_BRIEF.md`, then run
 - Mecca B1 AR: ch9 «العبيد يُواجِهْنَ» → يواجهون; ch8 «لديهم» → لديها.
 - Mecca A2 AR: ch9 «كانَ بِلال» (tanween), ch12 «كَلِمات» (case), ch13 «حَزِينًا جِدًّا لِأَنْ يُؤَذِّنَ».
 - Moses A2 AR: ch13 «فَاسْتَمِرَّ فِي إِيذَاءِ» → فَاسْتَمَرَّ; Latin commas in ch4, ch10.
+- Yunus Emre A2 AR: ch8 «أَنْ نَعْمَلَ كُلِّ عَمَلٍ» → كُلَّ; ch2 «هٰذِهِ تَجارِبَ» → هذه التجاربَ.
 - Adam A2 AR: ch9 «أَیْضًا» uses Persian ی (U+06CC).
 - Adam B2 AR: ch7 «وتغير الأجواء» → وتغيّرت; ch13 «أن قابيل، مع أنه…» lacks a خبر.
 - English: see the per-book notes in `audit/` and the commit messages (minor punctuation / wording only).
