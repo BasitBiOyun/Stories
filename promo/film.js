@@ -696,11 +696,15 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     <div class="lf-prog"><small>PROGRESS</small><b id="lfCount">0 / 4</b><div class="bar"><i id="lfBar"></i></div></div></div>
     <div class="lf-rows">${LFA.map(([ti, tg, d], i) => `<div class="lf-row"><div class="n">${i + 1}</div><div><b>${ti}</b><span class="tag">${tg}</span><p>${d}</p></div><div class="arr">→</div></div>`).join('')}</div>`, world);
   const lfRows = Array.from(lf.querySelectorAll('.lf-row'));
-  const task = matchCard('lft', 'LANGUAGE FOCUS', 'Source Voice and Story Time', 'Match each Chapter 1 expression with the time perspective it creates.',
-    'How does the chapter move between presenting the story as a source and narrating past events?', 'Match the concepts on the left with their meanings on the right.',
-    ['The Holy Qur’an tells his tale', 'These surahs describe Adam’s tale', 'Allah created the sky and the earth', 'the angels began to wait'],
-    ['narrates a completed event in the past', 'moves the past narrative to the next event', 'presents what the source does generally', 'presents information about the source in the present'], 'CONCEPTS', 'MEANINGS', world);
-  const TASK_PAIRS = [[0, 2], [1, 3], [2, 0], [3, 1]];
+  // Activity 4 of the real Chapter 1 Language Focus (languageFocus.ts): a USE / writing task
+  const WRITE = 'The Qur’an tells Adam’s story. After Allah created the sky and the earth, He told the angels that He was going to create a human.';
+  const task = { c: el('div', 'ui lfw', `<div class="lfw-top"><div class="ui-ey">LANGUAGE FOCUS</div><div class="ui-t">Build a Connected Account</div><div class="ui-s">Write or say four connected B1 sentences. Use at least three different Chapter 1 language patterns from this Language Focus.</div></div>
+    <div class="lfw-q">Can you move from source information into past narration and then describe what was still going to happen?</div>
+    <div class="lfw-box"><div class="lfw-ta"><span class="lfw-txt"></span><i class="lfw-caret"></i><span class="lfw-ph">Write your short response here…</span></div></div>
+    ${[['INDIVIDUAL', 'Sentence 1 — Present the source: “The Qur’an tells/describes ...”'], ['INDIVIDUAL', 'Sentence 2 — Shift to the story: “After ..., Allah ...”'], ['INDIVIDUAL', 'Sentence 3 — Report the announcement: “He told the angels that ...”'], ['PAIR', 'Sentence 4 — Look forward from that past moment using “was going to” or “would”.']].map(([m, q]) => `<div class="lfw-p"><small>${m}</small><b>${q}</b><em>✓</em></div>`).join('')}
+    <div class="lfw-btn">I’ve reflected on these</div>`, world) };
+  const lfwTxt = task.c.querySelector('.lfw-txt'), lfwPh = task.c.querySelector('.lfw-ph'), lfwCaret = task.c.querySelector('.lfw-caret');
+  const lfwP = Array.from(task.c.querySelectorAll('.lfw-p')), lfwBtn = task.c.querySelector('.lfw-btn');
   /* chapter rail: all 12 chapters of Adam (B1), each with its own Quick Challenge and Language Focus */
   const railW = $('#s5railw');
   const mods = ADAM_CH.map((ti, i) => el('div', 'rail-m', `<div class="ri"><img src="assets/img/adam_b1/ch${String(i + 1).padStart(2, '0')}.jpg"></div><div class="rb"><div class="rn" lang="tr">BÖLÜM ${String(i + 1).padStart(2, '0')}</div><div class="rt">${ti}</div><div class="rc"><span class="h" lang="tr">Hikâye</span><i class="ar a0"></i><span class="q">Quick Challenge</span><i class="ar a1"></i><span class="l">Language Focus</span></div></div>`, railW));
@@ -746,17 +750,23 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     tf(lf, { x: 340 - lSide * 250 + hand.x, y: lerp(1250, 250, lIn) + hand.y, z: -lSide * 380 - lOut * 900, rx: lerp(18, 2, lIn), ry: lSide * 16 });
     op(lf, P(t, 24.45, 24.7, E.lin) * (1 - lSide * 0.35) * (1 - lOut));
     lfRows.forEach((row, i) => { const p = P(t, 24.95 + i * 0.1, 25.5 + i * 0.1, E.outSoft); row.style.opacity = p.toFixed(3); row.style.transform = `translateY(${((1 - p) * 26).toFixed(1)}px)`; });
-    lfRows[0].classList.toggle('hl', t > 25.75);
-    lfRows[0].style.transform += ` scale(${(1 - Math.exp(-Math.pow((t - 25.8) / 0.07, 2)) * 0.02).toFixed(4)})`;
+    lfRows[3].classList.toggle('hl', t > 25.75);
+    lfRows[3].style.transform += ` scale(${(1 - Math.exp(-Math.pow((t - 25.8) / 0.07, 2)) * 0.02).toFixed(4)})`;
     const doneA = t >= 27.7;
-    lfRows[0].querySelector('.n').classList.toggle('done', doneA);
-    lfRows[0].querySelector('.n').textContent = doneA ? '✓' : '1';
+    lfRows[3].querySelector('.n').classList.toggle('done', doneA);
+    lfRows[3].querySelector('.n').textContent = doneA ? '✓' : '4';
     $('#lfCount').textContent = doneA ? '1 / 4' : '0 / 4';
     $('#lfBar').style.width = (P(t, 27.7, 28.0) * 25) + '%';
     const tIn = P(t, 25.95, 26.75, E.cam);
-    tf(task.c, { x: lerp(2100, 690, tIn) + hand.x, y: 150 + hand.y, z: 120 - lOut * 900, ry: lerp(-24, -6, tIn), rx: 2 });
+    tf(task.c, { x: lerp(2100, 720, tIn) + hand.x, y: 150 + hand.y, z: 120 - lOut * 900, ry: lerp(-24, -6, tIn), rx: 2, s: 0.94 });
     op(task.c, P(t, 25.95, 26.2, E.lin) * (1 - lOut));
-    matchLines(task.svg, task.L, task.R, TASK_PAIRS, t, 26.75, 0.3);
+    // the learner writes, following the four sentence prompts; each prompt is ticked as it is used
+    const typed = Math.round(WRITE.length * P(t, 26.55, 27.62, E.lin));
+    lfwTxt.textContent = WRITE.slice(0, typed);
+    lfwPh.style.display = typed ? 'none' : '';
+    lfwCaret.style.opacity = t > 26.45 && t < 27.75 && (Math.floor(t * 6) % 2 === 0 || (typed > 0 && typed < WRITE.length)) ? 1 : 0;
+    lfwP.forEach((pp, j) => pp.classList.toggle('on', t >= 26.9 + j * 0.24));
+    lfwBtn.classList.toggle('on', t >= 27.62);
     /* every chapter repeats the loop — this stretch plays ~4x slower in film time (timeline.json warps) */
     const rIn = P(t, 27.98, 28.12, E.outSoft), rOut = P(t, 29.36, 29.46, E.in);
     const pan = P(t, 27.98, 29.46, bezier(0.35, 0, 0.55, 1));
@@ -824,15 +834,18 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
 
   /* Language Review (live UI content, task 1 / 8) */
   const lrWrap = el('div', 'ui', '', world); lrWrap.style.width = '1400px';
-  const lrHead = el('div', 'ui-pad', `<div class="kc-box" style="display:block;padding:22px 30px"><div style="display:flex;justify-content:space-between"><div><div class="ui-ey">AFTER VOCABULARY</div><div class="ui-t" style="font-size:40px">Language Review</div></div><div style="width:190px;font-size:13px;letter-spacing:.16em;color:#8a8579;font-weight:700">TASK <b style="float:right;color:var(--rust);font-size:18px">1 / 8</b><div class="bar" style="margin-top:12px"><i style="width:12.5%"></i></div></div></div>
-    <div class="tabs amber" style="margin-top:14px"><div class="on">Notice</div><div>Build</div><div>Use</div></div></div>`, lrWrap);
-  const lr = matchCard('lrt', 'LANGUAGE TASK', 'Time Perspective and Narrative Voice', 'Match each pattern with the job it performs in connected narration.',
-    'How can a writer move between source information, past events, and what was still ahead from a past viewpoint?', 'Match the concepts on the left with their meanings on the right.',
-    ['The Qur’an tells ...', 'After ... happened, ...', 'was going to / would + verb', 'began / started to + verb'],
-    ['place one past event before another', 'show future meaning viewed from the past', 'mark the beginning of a process or action', 'present information about a source'], 'CONCEPTS', 'MEANINGS', lrWrap);
-  lr.c.style.position = 'relative'; lr.c.style.boxShadow = 'none'; lr.c.style.background = 'transparent'; lr.c.style.width = '100%'; lr.c.style.paddingTop = '0';
-  lr.c.querySelector('.mt-q').style.fontSize = '28px'; lr.c.querySelector('.mt-i').remove(); lr.c.querySelector('.ui-s').remove(); lrHead.style.paddingBottom = '18px';
-  const LRP = [[0, 3], [1, 0], [2, 1], [3, 2]];
+  const lrHead = el('div', 'ui-pad', `<div class="kc-box" style="display:block;padding:22px 30px"><div style="display:flex;justify-content:space-between"><div><div class="ui-ey">AFTER VOCABULARY</div><div class="ui-t" style="font-size:40px">Language Review</div></div><div style="width:190px;font-size:13px;letter-spacing:.16em;color:#8a8579;font-weight:700">TASK <b style="float:right;color:var(--rust);font-size:18px">5 / 8</b><div class="bar" style="margin-top:12px"><i style="width:62.5%"></i></div></div></div>
+    <div class="tabs amber" style="margin-top:14px"><div class="done">✓ Notice</div><div class="on">Build</div><div>Use</div></div></div>`, lrWrap);
+  // Task 5 / 8 of the real Language Review (exercises.ts): sequencing, in the Build stage
+  const SEQ = ['After an earlier event, a new situation began.', 'Over time, the situation changed.', 'Later, people took on new roles and responsibilities.', 'The influence still continues today.'];
+  const SEQ_SHOWN = [2, 0, 3, 1];   // presented out of order, as the app does
+  const lr = { c: el('div', 'ui-pad lrs', `<div class="ui-ey">LANGUAGE TASK</div><div class="ui-t" style="font-size:34px">Build a Coherent Development</div>
+    <div class="mt-q" style="font-size:26px;margin-top:14px">How can a paragraph move from an earlier event to change, later development, and continuing influence?</div>
+    <div class="sq-h">Click the events in the correct order</div>
+    ${SEQ_SHOWN.map(k => `<div class="sq-i" data-k="${k}"><span>—</span>${SEQ[k]}</div>`).join('')}
+    <div class="sq-btn">SELECT ALL EVENTS (0/4)</div>`, lrWrap) };
+  const sqItems = Array.from(lr.c.querySelectorAll('.sq-i')), sqBtn = lr.c.querySelector('.sq-btn');
+  lr.c.style.paddingTop = '0'; lrHead.style.paddingBottom = '18px';
 
   /* Final Challenge */
   const fc = el('div', 'ui fc', `<div class="ico">${ICON_TROPHY}</div><h2>Final Challenge</h2><p>You’ve reached the end of the journey. Bring the whole story together with a carefully designed final challenge.</p><div class="go" id="fcGo">START THE CHALLENGE &nbsp;→</div>`, world);
@@ -907,7 +920,19 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     const vn = VPAIRS.filter((_, k) => t >= 36.5 + k * 0.42 + 0.34).length;
     $('#vcN').textContent = `${vn}/12`; $('#vcBar').style.width = (vn / 12 * 100) + '%';
     /* Language Review */
-    matchLines(lr.svg, lr.L, lr.R, LRP, t, 39.05, 0.33);
+    // events are clicked in order (1 → 4), then the order is checked
+    let picked = 0;
+    sqItems.forEach(it => {
+      const k = +it.dataset.k, at = 39.31 + k * 0.33, on = t >= at;
+      if (on) picked++;
+      it.classList.toggle('sel', on);
+      it.querySelector('span').textContent = on ? String(k + 1) : '—';
+      it.style.transform = `scale(${(1 - Math.exp(-Math.pow((t - at) / 0.06, 2)) * 0.015).toFixed(4)})`;
+    });
+    const checked = t >= 40.55;
+    sqItems.forEach(it => it.classList.toggle('ok', checked));
+    sqBtn.textContent = checked ? 'Correct. The development moves from earlier event to change, later stage, and present continuity.' : picked === 4 ? 'CHECK ORDER' : `SELECT ALL EVENTS (${picked}/4)`;
+    sqBtn.className = 'sq-btn' + (checked ? ' ok' : picked === 4 ? ' ready' : '');
     /* Final Challenge */
     const go = Math.exp(-Math.pow((t - 42.0) / 0.07, 2));
     $('#fcGo').style.transform = `scale(${(1 - go * 0.05).toFixed(3)})`;
