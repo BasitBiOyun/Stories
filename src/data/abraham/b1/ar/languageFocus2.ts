@@ -94,7 +94,7 @@ export const abrahamB1LanguageFocusChapter4Ar: Record<number, Exercise[]> = {
       question: 'ما صيغة الفعل بعد «إنْ لم»؟ وماذا نضع قبل جواب الشرط الذي يبدأ بـ«سـ»؟',
       formChoices: [
         {
-          sentence: 'إنْ لم [choice] عن هذا الكلام، فسأرجُمك.',
+          sentence: 'إنْ لم [choice] عن هذا الكلام، …',
           options: ['تَتَوَقَّفْ', 'تَتَوَقَّفُ', 'تَتَوَقَّفَ'],
           answer: 0,
         },
