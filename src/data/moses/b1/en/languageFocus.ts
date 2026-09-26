@@ -1,76 +1,90 @@
 import type { Exercise } from '../../../../types';
 
-/** Manually authored Moses B1 Language Focus, derived from the actual English story text. */
+/**
+ * Manually authored Moses B1 Language Focus (Chapters 1–2). Each chapter follows
+ * Notice → Build → Use; every quoted line is taken from the English chapter.
+ */
 export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
       id: 'moses-b1-language-1-time-frame',
-      type: 'matching',
-      title: 'Setting the Historical Frame',
-      instructions: 'Match each expression with the job it does in the chapter.',
-      question: 'How does Chapter 1 establish time before moving into the main conflict?',
-      matchingPairs: [
-        { left: 'He lived there in the 13th century BC', right: 'places Moses in a historical period' },
-        { left: 'over 3000 years ago', right: 'restates the time distance for the reader' },
-        { left: 'At that time, the Pharaoh ruled Egypt', right: 'connects the historical frame to the situation in Egypt' },
-        { left: 'Years passed', right: 'moves the narrative forward across a longer period' },
+      type: 'drag-drop',
+      title: 'Setting the Time or Moving It On?',
+      instructions: 'Read the time expressions from Chapter 1. Does each one place the story in a period of history, or move the story on to a later moment? Put it in the right group.',
+      question: 'How does Chapter 1 set its historical time and then move the story forward?',
+      dragDropGroups: [
+        {
+          group: 'Places the story in history',
+          items: ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh (Firavun) ruled Egypt.'],
+        },
+        {
+          group: 'Moves the story on',
+          items: ['Years passed', 'One day the Pharaoh had a dream.'],
+        },
       ],
       correctAnswer: {
-        'He lived there in the 13th century BC': 'places Moses in a historical period',
-        'over 3000 years ago': 'restates the time distance for the reader',
-        'At that time, the Pharaoh ruled Egypt': 'connects the historical frame to the situation in Egypt',
-        'Years passed': 'moves the narrative forward across a longer period',
+        'Places the story in history': ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh (Firavun) ruled Egypt.'],
+        'Moves the story on': ['Years passed', 'One day the Pharaoh had a dream.'],
       },
-      explanation: 'The chapter uses several time expressions for different purposes: dating, restating distance, linking background conditions, and advancing the story.',
+      explanation: '“In the 13th century BC” and “over 3000 years ago” date the story; “ago” counts back from today. “At that time” points back to that same period and describes the situation in Egypt. “Years passed” jumps over a long period, and “One day” moves the story to one particular event: the dream.',
       feedback: {
-        correct: 'Good. You identified how the chapter builds and shifts its time frame.',
-        incorrect: 'Ask whether the expression dates the story, links background information, or moves time forward.',
+        correct: 'Correct. You separated the expressions that date the story from the ones that move it forward.',
+        incorrect: 'Look at the first sentences of Chapter 1, then at the last two. Which expressions give a date or a period, and which ones take us to a later time?',
       },
     },
     {
       id: 'moses-b1-language-1-fear-and-future',
-      type: 'matching',
-      title: 'Fear About What Might Happen',
-      instructions: 'Match each structure with the meaning it creates.',
-      question: 'How does the chapter express Pharaoh’s fear about a possible future change?',
-      matchingPairs: [
-        { left: 'The Pharaoh feared that this group ... would take control', right: 'reports a fear about a future possibility from a past viewpoint' },
-        { left: 'he saw himself as the god', right: 'describes how he viewed his own identity' },
-        { left: 'he saw an Israelite take him down from his throne', right: 'reports the event inside his dream' },
+      type: 'transformation',
+      title: 'Fear and Forced Work',
+      instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 1. Type the missing word or words.',
+      question: 'How can we say the same idea about the Pharaoh’s fear and his control in a different way?',
+      transformItems: [
+        {
+          source: 'The Pharaoh feared that this group, which was larger than the Egyptians, would take control of his kingdom.',
+          frame: 'The Pharaoh thought, “This group [blank] take control of my kingdom.”',
+          answers: ['will', 'is going to', 'might', 'may', 'could'],
+        },
+        {
+          source: 'He made the Children of Israel do dangerous work for little or no money.',
+          frame: 'The Children of Israel [blank] do dangerous work for little or no money.',
+          answers: ['were made to', 'had to', 'were forced to'],
+        },
       ],
-      correctAnswer: {
-        'The Pharaoh feared that this group ... would take control': 'reports a fear about a future possibility from a past viewpoint',
-        'he saw himself as the god': 'describes how he viewed his own identity',
-        'he saw an Israelite take him down from his throne': 'reports the event inside his dream',
-      },
-      explanation: 'The verb “feared” is followed by “would” because the possible loss of control was still in the future from that past moment. “Saw himself as” describes self-perception, while “saw + object + verb” reports a scene in the dream.',
+      correctAnswer: null,
+      explanation: 'In the Pharaoh’s own thoughts, the future is “will”: “This group will take control.” When the narrator reports that fear from a past point of view, “will” moves back to “would”: “feared that this group … would take control”. “Make + person + base verb” (made the Children of Israel do) shows that someone forced others to act. In the passive, “to” comes back: “The Children of Israel were made to do …”.',
       feedback: {
-        correct: 'Correct. You distinguished future-from-the-past fear, self-perception, and observed action.',
-        incorrect: 'Look at what follows “feared” and “saw” and ask what kind of meaning each structure carries.',
+        correct: 'Well done. You moved between the Pharaoh’s fear and his own words, and between “made … do” and “were made to do”.',
+        incorrect: 'Think about the Pharaoh’s own words at that moment, and about the fact that the Children of Israel had no choice. Then check the middle of Chapter 1.',
       },
     },
     {
       id: 'moses-b1-language-1-cause-result-power',
-      type: 'matching',
-      title: 'Connecting Cause, Result and Control',
-      instructions: 'Match the Chapter 1 language with its communicative function.',
-      question: 'How does the narrator connect belief, fear, harsh treatment and forced work?',
-      matchingPairs: [
-        { left: 'So, they did not believe that the Pharaoh was a god.', right: 'shows a result from the belief described before it' },
-        { left: 'That’s why he was rude and harsh to the Children of Israel.', right: 'points back to Pharaoh’s fear as the reason' },
-        { left: 'He made the Children of Israel work ...', right: 'shows one person forcing another group to do something' },
-        { left: 'the despotic kings continued to rule Egypt', right: 'shows that a situation carried on over time' },
+      type: 'choose-form',
+      title: 'Linking Reason and Result',
+      instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 1.',
+      question: 'Which words link a belief or a fear to its result, and show that a situation went on?',
+      formChoices: [
+        {
+          sentence: 'They believed in only one Allah, just like their ancestor, Prophet Abraham (pbuh). [choice], they did not believe that the Pharaoh was a god.',
+          options: ['Because', 'So', 'Although'],
+          answer: 1,
+        },
+        {
+          sentence: 'The Pharaoh feared that this group … would take control of his kingdom. [choice] he was rude and harsh to the Children of Israel.',
+          options: ['That’s because', 'Even so,', 'That’s why'],
+          answer: 2,
+        },
+        {
+          sentence: 'Years passed and the despotic kings continued [choice] Egypt.',
+          options: ['rule', 'to rule', 'to ruling'],
+          answer: 1,
+        },
       ],
-      correctAnswer: {
-        'So, they did not believe that the Pharaoh was a god.': 'shows a result from the belief described before it',
-        'That’s why he was rude and harsh to the Children of Israel.': 'points back to Pharaoh’s fear as the reason',
-        'He made the Children of Israel work ...': 'shows one person forcing another group to do something',
-        'the despotic kings continued to rule Egypt': 'shows that a situation carried on over time',
-      },
-      explanation: 'B1 narration becomes clearer when ideas are linked. “So” and “that’s why” express result/reason, “make + person + verb” expresses coercion, and “continue to + verb” marks duration or persistence.',
+      correctAnswer: null,
+      explanation: '“So” and “That’s why” both introduce a result. “That’s because” does the opposite: it introduces a reason. In the chapter, the belief and the fear are the reasons; not believing in the Pharaoh and the harsh treatment are the results. “Continue” is followed by “to + base verb” (or an -ing form): “continued to rule” shows that the situation went on for many years.',
       feedback: {
-        correct: 'Good. You connected each structure with the relationship or action it expresses.',
-        incorrect: 'Decide whether the phrase signals a result, a reason, forced action, or continuation.',
+        correct: 'Correct. You linked each reason to its result and showed that the situation continued.',
+        incorrect: 'Ask: is the next idea a reason or a result? Then check the second half of Chapter 1.',
       },
     },
     {
@@ -97,74 +111,68 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
   2: [
     {
       id: 'moses-b1-language-2-reporting-prediction',
-      type: 'matching',
-      title: 'Reporting Voices and Predictions',
-      instructions: 'Match each expression with the job it does in the narrative.',
-      question: 'How does Chapter 2 move between the narrator and the words of other people?',
-      matchingPairs: [
-        { left: 'Ibn Abbas told: “The Pharaoh saw a fire...”', right: 'introduces a reported source before quoting the account' },
-        { left: 'They said: “A boy will be born...”', right: 'reports a prediction about a future event' },
-        { left: 'the Egyptian people will die at this boy’s hands', right: 'continues the prediction with another future consequence' },
-        { left: 'the Pharaoh told his soldiers: “Kill...”', right: 'introduces a direct command to another group' },
-      ],
-      correctAnswer: {
-        'Ibn Abbas told: “The Pharaoh saw a fire...”': 'introduces a reported source before quoting the account',
-        'They said: “A boy will be born...”': 'reports a prediction about a future event',
-        'the Egyptian people will die at this boy’s hands': 'continues the prediction with another future consequence',
-        'the Pharaoh told his soldiers: “Kill...”': 'introduces a direct command to another group',
-      },
-      explanation: 'The chapter changes voice clearly: a source is introduced, advisors predict what will happen, and Pharaoh gives a direct order. “Will” marks the predicted future inside the quoted speech.',
+      type: 'multiple-choice',
+      title: 'A Prediction About the Future',
+      instructions: 'Read the advisors’ words from Chapter 2. Then choose the best answer.',
+      question: 'They said, “A boy will be born of the Children of Israel and the Egyptian people will die at this boy’s hands.” What are the advisors doing when they use “will”?',
+      options: ['reporting something that has already happened', 'giving the soldiers an order', 'predicting something that they believe is going to happen', 'describing something that happens every year'],
+      correctAnswer: 2,
+      explanation: '“Will + base verb” is used here for a prediction: the advisors say what they believe is going to happen. “Will be born” is passive, because a baby does not do the action of being born. The prediction leads to the Pharaoh’s order, which uses an imperative with no subject: “Kill …”.',
       feedback: {
-        correct: 'Correct. You identified source reporting, prediction, and direct command.',
-        incorrect: 'Ask who is speaking and whether the words report a source, predict the future, or give an order.',
+        correct: 'Correct. The advisors predict a future event, and the Pharaoh reacts to it.',
+        incorrect: 'Ask: has the boy been born yet when the advisors speak? Check what they said after the Pharaoh woke up.',
       },
     },
     {
       id: 'moses-b1-language-2-sequence-and-command',
-      type: 'matching',
-      title: 'Building the Event Sequence',
-      instructions: 'Match each structure with its function.',
-      question: 'How does the chapter organize actions after the dream?',
-      matchingPairs: [
-        { left: 'When he woke up, he called all his advisors', right: 'links one action to the time another action begins' },
-        { left: 'Then, the Pharaoh told his soldiers...', right: 'moves the narrative to the next major action' },
-        { left: 'When they found baby boys, they killed them.', right: 'shows what happened whenever the stated condition was met' },
-        { left: 'Kill all the newborn boys...', right: 'uses the base verb directly to give an order' },
+      type: 'sequencing',
+      title: 'What Happened After the Dream?',
+      instructions: 'Put the events from Chapter 2 in the right order. Use “When” and “Then” to help you.',
+      question: 'How do “when” and “then” organise the events after the Pharaoh’s dream?',
+      sequencingItems: [
+        { id: '1', text: 'When he woke up, he called all his advisors and magicians and asked about the dream.' },
+        { id: '2', text: 'Then, the Pharaoh told his soldiers, “Kill all the newborn boys of the Children of Israel.”' },
+        { id: '3', text: 'His soldiers broke into houses and searched the rooms.' },
+        { id: '4', text: 'When they found baby boys, they killed them.' },
       ],
-      correctAnswer: {
-        'When he woke up, he called all his advisors': 'links one action to the time another action begins',
-        'Then, the Pharaoh told his soldiers...': 'moves the narrative to the next major action',
-        'When they found baby boys, they killed them.': 'shows what happened whenever the stated condition was met',
-        'Kill all the newborn boys...': 'uses the base verb directly to give an order',
-      },
-      explanation: '“When” connects actions in time, “then” advances the sequence, and a direct imperative gives an order without a subject before the verb.',
+      correctAnswer: ['1', '2', '3', '4'],
+      explanation: '“When he woke up” links his first action to the moment the dream ended. “Then” moves the story to the next step: the order. The imperative “Kill …” has no subject because it tells someone what to do. “When they found baby boys, they killed them” shows what happened each time the soldiers found a boy.',
       feedback: {
-        correct: 'Good. You distinguished time links, sequence, repeated situation, and command.',
-        incorrect: 'Look for whether the form answers when, what happened next, or what someone was ordered to do.',
+        correct: 'Correct. The time words guided you from the dream to the soldiers’ actions.',
+        incorrect: 'Start with the moment the Pharaoh woke up. Which sentence begins with “Then”? What did the soldiers do before they found the boys? Check the first half of Chapter 2.',
       },
     },
     {
       id: 'moses-b1-language-2-fear-intensity',
-      type: 'matching',
-      title: 'Expressing Intense Fear and Possibility',
-      instructions: 'Match each sentence with the meaning relationship it expresses.',
-      question: 'How does the chapter describe Moses’s mother’s fear without simply naming the emotion?',
-      matchingPairs: [
-        { left: 'She was so frightened that she was unable to sleep at night.', right: 'shows an intense state followed by its result' },
-        { left: 'She was scared that ... the soldiers could hear his voice.', right: 'expresses fear about a possible event' },
-        { left: 'when Moses cried', right: 'places the possible event inside a specific repeated situation' },
-        { left: 'She did not know what to do.', right: 'uses an embedded question phrase to express uncertainty about action' },
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence from Chapter 2 has one mistake. Tap the wrong word or phrase, then choose the correction.',
+      question: 'Can you correct the language that describes the mother’s fear?',
+      errorItems: [
+        {
+          sentence: 'His mother was such frightened that she was unable to sleep at night.',
+          error: 'such',
+          options: ['so', 'very', 'too'],
+          answer: 0,
+        },
+        {
+          sentence: 'She was scared that when Moses cried, the soldiers can hear his voice.',
+          error: 'can',
+          options: ['will', 'could', 'can be'],
+          answer: 1,
+        },
+        {
+          sentence: 'She did not know what doing.',
+          error: 'what doing',
+          options: ['what do', 'what did', 'what to do'],
+          answer: 2,
+        },
       ],
-      correctAnswer: {
-        'She was so frightened that she was unable to sleep at night.': 'shows an intense state followed by its result',
-        'She was scared that ... the soldiers could hear his voice.': 'expresses fear about a possible event',
-        'when Moses cried': 'places the possible event inside a specific repeated situation',
-        'She did not know what to do.': 'uses an embedded question phrase to express uncertainty about action',
-      },
-      explanation: 'The chapter develops fear through several patterns: “so ... that” links intensity to result, “scared that ... could” expresses a feared possibility, and “what to do” expresses uncertainty about the next action.',
+      correctAnswer: null,
+      explanation: '“So + adjective + that …” links a strong feeling to its result: so frightened that she was unable to sleep. “Such” goes before a noun (such a strong fear). After a past verb like “was scared that”, “can” moves back to “could”. “What to do” (question word + to + base verb) shows that she could not decide on her next action.',
       feedback: {
-        correct: 'Correct. You identified how the language develops fear, possibility, timing, and uncertainty.',
-        incorrect: 'Decide whether each expression shows intensity-result, feared possibility, time, or uncertainty.',
+        correct: 'Well done. You corrected the language of strong feeling, feared possibility and uncertainty.',
+        incorrect: 'Compare each sentence with the end of Chapter 2, where Moses’s mother cannot sleep.',
       },
     },
     {
