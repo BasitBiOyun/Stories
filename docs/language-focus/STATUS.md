@@ -13,7 +13,8 @@ Goal: every chapter's Language Focus follows Notice → Build → Use (A2: Look 
 
 ## Still to do (⏳ above, plus)
 - Abraham A2 — EN, AR
-- Yunus Emre A2 / B1 / B2 — EN, AR
+- Yunus Emre A2 AR; Yunus Emre B1 / B2 — EN, AR
+- Yunus Emre A2 EN ✅
 
 For each variant: rewrite per `REWRITE_BRIEF.md`, then run
 `npx tsx docs/language-focus/review.mts <storyId> <level>` (type mix, matching share, repeated sequences, answer leaks),
