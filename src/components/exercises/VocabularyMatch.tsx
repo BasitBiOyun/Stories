@@ -8,6 +8,13 @@ import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 
 type Pair = VocabularyChallengePair;
+
+/** The same number on a matched word and its meaning shows which two belong together. */
+const MatchedPairNumber = ({ label }: { label: string }) => (
+  <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 px-1 font-display text-[10px] font-black text-white">
+    {label}
+  </span>
+);
 type Props = { pairs: Pair[]; collectionId?: string; level: Level; onReviewGlossary?: () => void; onComplete?: () => void };
 
 type FeedbackState =
@@ -819,6 +826,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
             const meaning = meaningOrder[index];
             const wordMatched = Boolean(matches[pair.word]);
             const meaningMatched = matchedMeanings.includes(meaning);
+            const meaningOwnerIndex = meaningMatched ? pairs.findIndex((candidate) => matches[candidate.word] === meaning) : -1;
             const wordSelected = selectedWord === pair.word;
             const meaningSelected = selectedMeaning === meaning;
             const wordWrong = wrongWord === pair.word;
@@ -840,7 +848,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     <span className={cn('font-serif font-bold leading-snug', isArabic ? 'text-sm sm:text-lg md:text-lg' : 'text-xs sm:text-base md:text-lg', wordMatched ? 'text-emerald-800' : wordWrong ? 'text-rose-700' : 'text-wood')}>
                       {displayWord(pair.word, language)}
                     </span>
-                    {wordMatched && <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />}
+                    {wordMatched && <MatchedPairNumber label={formatNumber(index + 1)} />}
                     {wordWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
                   </div>
                 </motion.button>
@@ -857,7 +865,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className={cn('font-serif leading-snug', isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base', meaningMatched ? 'text-emerald-800' : meaningWrong ? 'text-rose-700' : 'text-wood/80')}>{meaning}</span>
-                    {meaningMatched && <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />}
+                    {meaningMatched && meaningOwnerIndex >= 0 && <MatchedPairNumber label={formatNumber(meaningOwnerIndex + 1)} />}
                     {meaningWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
                   </div>
                 </motion.button>
