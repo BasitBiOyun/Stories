@@ -1,75 +1,69 @@
-# Stories — Tanıtım Filmi (motion graphic)
+# Lisandan Kültüre — Tanıtım Filmi (motion graphic)
 
-39.65 saniyelik, 1920×1080, Türkçe voice-over'lı tanıtım filmi.
-Final dosya: `out/stories-promo.mp4` (H.264 + AAC, 30 fps, 60 fps'ten kare harmanlamalı motion blur ile).
+60 saniyelik, **3840×2160 (4K UHD), 60 fps**, konuşmasız, müzikli tanıtım filmi.
+Final dosya: `out/lisandan-kulture-4k.mp4` (H.264 High + AAC 48 kHz).
 
 Film tamamen kodla üretilir: `index.html` + `film.css` + `film.js` deterministik bir zaman çizelgesidir
-(`window.__seek(t)` → t anının tam karesi). Harici animasyon kütüphanesi yoktur; kamera, 3B derinlik,
-maskeler, parallax, kinetik tipografi ve easing'ler `film.js` içindedir. Uygulama ekranları ekran görüntüsü
-olarak değil, gerçek içerik ve marka tokenlarıyla sahne içinde yeniden kurulan bileşenler olarak yer alır.
+(`window.__seek(t)` → t anının tam karesi). 1920×1080 CSS kompozisyonu **device scale factor 2** ile
+rasterize edilir; metin, SVG ve UI gerçek 4K çözünürlükte çizilir (upscale yok). Görseller orijinal
+çözünürlüklerinden (Adam B1 bölümleri 3200×4000) dışa aktarılmıştır.
 
-## Konsept — "Kemer"
+Sahneler kendi saatleriyle koreografe edilir; `scene(..., warp)` ile film zamanına eşlenir. Böylece v2'deki
+sahneler koreografisi bozulmadan yavaşlatıldı, araya yeni sahneler eklendi.
 
-Kütüphane logosundaki kemer (ve içindeki yıldız) filmin görsel omurgasıdır: açılışta kemer altın bir çizgiyle
-çizilir ve kameranın içinden geçtiği bir pencereye dönüşür; seviye sahnesinde A2/B1/B2 panelleri aynı kemer
-maskesiyle kesilir; finalde tüm kütüphane duvarının önünde logo olarak geri döner.
-
-## Voice-over (final metin)
-
-| # | Başlangıç | Metin |
-|---|-----------|-------|
-| 1 | 0.75 s | Bir hikâyeyi okumak başka, içine girmek başka. |
-| 2 | 4.05 s | Her bölüm kendi illüstrasyonu, sesli anlatımı ve keşfedilecek ayrıntılarıyla açılıyor. |
-| 3 | 8.75 s | Bilmediğin bir kelimeye dokun; anlamı ve Arapça karşılığı hemen yanında. |
-| 4 | 12.6 s | Tek dokunuşla kitap Arapçaya geçiyor. Metin, ses ve sayfa düzeniyle birlikte. |
-| 5 | 17.75 s | Her bölümün ardından kısa bir alıştırma ve dil çalışması. Kitabın sonunda kapsamlı bir değerlendirme. |
-| 6 | 23.0 s | Aynı hikâye üç seviyede: A2, B1 ve B2. Her seviyenin kendi dili, kendi görselleri var. |
-| 7 | 28.95 s | Öğretmene, ders planlarıyla hazır bir kılavuz. Öğrenciye, adım adım bir çalışma rehberi. |
-| 8 | 35.4 s | Okunan, dinlenen, içine girilen hikâyeler. |
-
-Ses: açık kaynak Piper `tr_TR-fahrettin-medium` (offline). Her satır için birden fazla take üretildi ve
-Whisper ile geri-transkripsiyon skoruna göre en anlaşılır take seçildi (`audio/vo/take_report.json`).
-Profesyonel bir seslendirme ile değiştirmek için aynı dosya adlarıyla `audio/vo/vo_0X.wav` dosyalarını
-değiştirip ses ve video adımlarını tekrar çalıştırmak yeterlidir (başlangıç zamanları `timeline.json`'da).
-
-## Zaman çizelgesi (92.3 BPM; sahne kesmeleri vuruşlara oturur)
+## Zaman çizelgesi (90 BPM; kesmeler vuruşlarda)
 
 | Sahne | Süre | İçerik |
 |-------|------|--------|
-| S1 Hook | 0.00–3.90 | Yıldız yanar, logo kemeri çizilir, kamera kemerden geçip 5 kitabın illüstrasyonları arasında uçar. "Oku. / Dinle. / İçine gir." — kemer biçimli varış penceresi Adam B1 1. bölüm görselidir. |
-| S2 Hikâye sayfası | 3.90–8.45 | Match-cut: görsel, yeniden kurulan gerçek hikâye sayfasındaki yerine oturur. Sayfa 3B ürün açısına döner; metin dizilir, oynatıcı başlar (gerçek anlatımdan kesit duyulur), hotspot "Soil" açılır. Etiketler: Sesli anlatım · Keşif noktası · Word Notes. Kamera "Messenger" kelimesine dalar. |
-| S3 Word Notes | 8.45–12.35 | Kelime sayfadan kopar, gerçek Word Note kartına dönüşür (tanım + Arapça karşılık). Bölümün diğer kelime kartları derinlikten gelir; sayaç 48 (Master Glossary). |
-| S4 EN ⇄ AR | 12.35–17.55 | Gerçek EN/العربية anahtarı; altın ışık dikişi sağdan sola (RTL) geçerek sayfayı ayna düzenli Arapça sürümüne çevirir. Uygulamanın Arapça sloganı: «قصص تُقرأ، وتُسمع، وتُعاش.» — gerçek Arapça anlatımdan kesit. |
-| S5 Alıştırmalar | 17.55–22.75 | Quick Challenge sorusu yanıtlanır (Correct! + açıklama). Kitap sonu dizisi derinlikten akar: Language Focus, Knowledge Check, Language Review, Vocabulary Challenge, Final Challenge. |
-| S6 Seviyeler | 22.75–28.60 | "Mecca Before Islam": aynı konu (Cahiliye) üç seviyede, üç ayrı illüstrasyon dünyası; her seviyenin gerçek cümlesi altında. Altın ilerleme çizgisi A2→B1→B2. |
-| S7 Kılavuzlar | 28.60–34.45 | Işık dikişinden açılan bir kitap gibi: solda Teacher Guide (16 bölümlük rehber haritası, Lesson Prep), sağda Self-Study Guide (bölüm haritası, ilerleme). Sayfalar kapanır → |
-| S8 Final | 34.45–39.65 | Darbe; tüm hikâye illüstrasyonlarından oluşan kütüphane duvarı, logo + ışık süzmesi, "Stories", "Etkileşimli Dil ve Değerler Kütüphanesi", "Stories to read, hear and step inside.", English · العربية · A2 · B1 · B2 · 5 kitap. |
+| Hook | 0.0–4.7 | Yıldız, logo kemeri, 5 kitabın illüstrasyonları arasında uçuş: **Oku. Dinle. Anla.** |
+| Hikâye sayfası | 4.7–10.7 | Adam B1 · 1. bölüm: sayfa 3B'de kurulur; sesli anlatım, keşif noktası (Soil), Word Notes etiketleri. |
+| Word Notes | 10.7–15.3 | "Messenger" sayfadan kopar → Word Note kartı (anlam + Arapça). Bölüm 1'in 4 kelimesi. |
+| EN ⇄ AR | 15.3–20.7 | Gerçek dil anahtarı; RTL ışık dikişi sayfayı ayna düzenli Arapça sürüme çevirir; «قصص تُقرأ، وتُسمع، وتُعاش.» |
+| Bölüm döngüsü | 20.7–29.3 | Akış göstergesi **Hikâye → Quick Challenge → Language Focus**. Quick Challenge çözülür; "After reading" Language Focus'un 4 gerçek etkinliği; 1. etkinlik (Source Voice and Story Time) eşleştirilir. Ardından 12 bölümün rayı: her bölümde aynı döngü. |
+| Kitap sonu | 29.3–42.7 | Kemer kapısından geçiş; üstte gerçek sırayla ilerleyen çubuk: **Knowledge Check → Master Glossary → Vocabulary Challenge → Language Review → Final Challenge**. Master Glossary'de kitabın 48 kelimesinin tamamı, öz-değerlendirme (Confident / Practice / New) ve güven haritası. |
+| Seviyeler | 42.7–48.7 | Mecca Before Islam: **A2 — Temel, B1 — Orta, B2 — Üst**; üç ayrı illüstrasyon dünyası ve her seviyeden aynı konudaki gerçek cümle. |
+| Kılavuzlar | 48.7–54.7 | Işık dikişinden açılan kitap: **Öğretmen Kılavuzu** (16 bölüm) · **Evde Bağımsız Çalışma Kılavuzu** (12 bölüm, 60 etkinlik). |
+| Final | 54.7–60.0 | Kütüphane duvarı, logo, **Lisandan Kültüre**, "Etkileşimli Dil ve Değerler Kütüphanesi", English · العربية · A2 · B1 · B2. |
+
+### Doğrulanan öğrenme akışı (kaynak kod)
+
+- Bölüm içi: `src/components/book/StoryPage.tsx` hikâye metninden sonra önce **Quick Challenge** panelini,
+  ardından "After reading" **Language Focus** panelini gösterir; Self-Study Guide ders planları da aynı sırayı önerir.
+- Kitap sonu: `src/core/content/uiBookFinalization.ts` → `reorderPreparedLearningFlow` sırası
+  `knowledge → glossaries → vocabulary → review → final`. Uygulamadaki içindekiler: 13 Knowledge Check,
+  14 Master Glossary, 15 Vocabulary Challenge, 16 Language Review ("After vocabulary"), 17 Final Challenge.
+
+## Ses
+
+Konuşma / TTS yok. `scripts/build_audio.py` özgün, prosedürel bir müzik besteler (hazır sample yok → lisans
+sorunu yok): pad, yaylı ensemble, piyano motifi, kalimba arpeji, bas, sinematik davul; bölümler filmi izler
+(sakin hikâye → bölüm döngüsü → kitap sonunda doruk → seviyelerde nefes → kılavuzlarda yükseliş → D majörde
+final). Üzerine ince ses tasarımı: geçiş whoosh'ları, UI tıkları, doğru cevap çanı, riser ve final darbesi.
+Master: -14 LUFS, -1.2 dBTP.
 
 ## Kullanılan gerçek proje assetleri
 
-- Logo ve koleksiyon ikonları (Firebase: `home_icon.png`, `prophets/civilization/scholars_icon.png`) → `assets/brand/`
-- Hikâye illüstrasyonları (Adam, Abraham, Moses, Mecca, Yunus Emre; A2/B1/B2) → `assets/img/`, duvar için `assets/img/wall/`
-- Adam B1 1. bölüm: İngilizce ve Arapça metin, Word Notes, hotspot'lar, Quick Challenge sorusu ve açıklaması
-- Mecca A2/B1/B2 "Age of Ignorance" cümleleri (seviye farkı için)
-- Teacher Guide ve Self-Study Guide başlıkları/bölüm listeleri, kitap sonu etkinlik adları
-- Adam B1 1. bölüm İngilizce ve Arapça gerçek anlatım sesinden kısa kesitler → `audio/source/`
-- Fontlar: Poppins (OFL, uygulamanın fontu), Arakom (`public/`)
-- Renkler: `src/index.css` tokenları ve uygulama ekranlarından örneklenen değerler (gold `#c2aa6b`, wood `#14221a`, parchment `#f3ece2`, brown `#3c1b06`…)
-
-Müzik ve efektler `scripts/build_audio.py` içinde tamamen prosedürel sentezlenir (hazır sample yok → lisans sorunu yok).
+- Logo (`home_icon.png`) → `assets/brand/`
+- Hikâye illüstrasyonları (Adam, Abraham, Moses, Mecca, Yunus Emre; A2/B1/B2) → `assets/img/`,
+  Adam B1'in 12 bölüm görseli → `assets/img/adam_b1/`, duvar → `assets/img/wall/`
+- Adam B1: 1. bölüm İngilizce/Arapça metin, Word Notes, hotspot'lar, Quick Challenge, Language Focus
+  etkinlikleri, 12 bölüm başlığı, Knowledge Check soruları, Master Glossary'nin 48 kelimesi (tanım, tür,
+  bölüm, kategori), Vocabulary Challenge ve Language Review ekran içerikleri, Final Challenge ekranı
+- Mecca A2/B1/B2 "Age of Ignorance" cümleleri
+- Teacher Guide ve Self-Study Guide başlıkları/bölüm listeleri
+- Fontlar: Poppins (OFL, uygulamanın fontu), Arakom (`public/`); renkler `src/index.css` tokenlarından
 
 ## Üretim komutları
 
 ```bash
 pip install playwright imageio-ffmpeg numpy scipy soundfile
-# (Chromium: PLAYWRIGHT_BROWSERS_PATH altında ya da --chrome /yol/chrome)
+# Chromium: PLAYWRIGHT_BROWSERS_PATH altında ya da --chrome /yol/chrome
 
-python3 promo/scripts/build_audio.py                      # → promo/out/mix.wav (+ stems)
-python3 promo/scripts/render.py --workers 4               # → promo/out/stories-promo.mp4
-python3 promo/scripts/render.py --stills 5 12.8 36        # tek kareler → promo/out/stills/
+python3 promo/scripts/build_audio.py                        # → promo/out/mix.wav (+ stems)
+python3 promo/scripts/render.py --workers 4 --crf 14 --out promo/out/master-4k.mp4   # 4K60 master
+python3 promo/scripts/render.py --stills 12 33.8 57         # 4K tek kareler → promo/out/stills/
+python3 promo/scripts/render.py --scale 1 --workers 4 --out promo/out/preview-1080.mp4  # hızlı 1080p önizleme
 ```
 
 Önizleme: `promo/` klasörünü bir HTTP sunucusuyla açıp `index.html` (gerçek zamanlı döngü) veya
-`index.html?t=13.5` (tek kare) adresine gidin.
-
-VO'yu yeniden üretmek (yalnızca metin değişirse): `python3 promo/scripts/generate_vo.py --models <model klasörü>`.
+`index.html?t=33.8` (tek kare) adresine gidin.
