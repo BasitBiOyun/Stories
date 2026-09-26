@@ -248,7 +248,7 @@ function sceneClock(id, t) {
     /* names travel with their panels, then yield to the message */
     STOPS.forEach((st, i) => {
       const s = station(t);
-      const vin = P(s, i - 0.62, i - 0.2, E.outSoft), vout = P(s, i + 0.5, i + 0.85, E.in);
+      const vin = P(s, i - 0.5, i - 0.2, E.outSoft), vout = P(s, i + 0.4, i + 0.56, E.in);
       // screen-space type, opposite the panel it names
       const drift = (s - i) * -40;
       if (st.side > 0) { st.label.style.left = '150px'; st.label.style.right = 'auto'; }
@@ -256,7 +256,7 @@ function sceneClock(id, t) {
       st.label.style.top = '430px';
       tf(st.label, { x: drift * st.side * -1, y: 0 });
       st.nm.style.transform = `translate3d(0,${((1 - vin) * 110).toFixed(1)}%,0)`;
-      st.sb.style.transform = `translate3d(0,${((1 - P(s, i - 0.5, i - 0.1, E.outSoft)) * 120).toFixed(1)}%,0)`;
+      st.sb.style.transform = `translate3d(0,${((1 - P(s, i - 0.42, i - 0.12, E.outSoft)) * 120).toFixed(1)}%,0)`;
       op(st.label, (t < END ? 1 : 0) * clamp(vin * 1.5) * (1 - vout));
       show(st.label, vin > 0 && vout < 1);
       blur(st.label, vout * 10);
