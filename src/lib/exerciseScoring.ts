@@ -26,6 +26,9 @@ export const answersMatch = (given: unknown, accepted: readonly unknown[]): bool
   return normalized.length > 0 && accepted.some(candidate => normalizeAnswer(candidate) === normalized);
 };
 
+/** Chip identity for chosen (not typed) answers: only Unicode form and outer spaces are ignored. */
+const exactChip = (value: unknown): string => String(value ?? '').normalize('NFC').trim();
+
 /** word-bank: correctAnswer lists the expected chip text for each [blank], in order. */
 export const wordBankExpected = (exercise: Exercise): string[] =>
   Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer.map(String) : [];
@@ -55,17 +58,18 @@ export const scoreLanguageItems = (exercise: Exercise, answer: unknown): boolean
       return (exercise.formChoices ?? []).map((item, index) => choices[index] === item.answer);
     }
     case 'word-bank': {
+      // Chips are chosen, not typed, so compare exactly: distractors may differ only in tashkeel.
       const placed = Array.isArray(answer) ? answer : [];
-      return wordBankExpected(exercise).map((expected, index) => answersMatch(placed[index], [expected]));
+      return wordBankExpected(exercise).map((expected, index) => exactChip(placed[index]) === exactChip(expected));
     }
     case 'error-correction': {
       const items = Array.isArray(answer) ? answer as ErrorCorrectionAnswer[] : [];
       return (exercise.errorItems ?? []).map((item, index) => Boolean(items[index]?.found) && items[index]?.choice === item.answer);
     }
     case 'sentence-building': {
-      const built = Array.isArray(answer) ? answer.map(String) : [];
-      const sentence = normalizeAnswer(built.join(' '));
-      const ok = sentenceBuildingAccepted(exercise).some(order => normalizeAnswer(order.join(' ')) === sentence);
+      const built = Array.isArray(answer) ? answer.map(exactChip) : [];
+      const ok = sentenceBuildingAccepted(exercise).some(order =>
+        order.length === built.length && order.every((chunk, index) => exactChip(chunk) === built[index]));
       return [ok];
     }
     case 'transformation': {
