@@ -185,7 +185,7 @@ function sceneClock(id, t) {
     { name: 'Yunus Emre', sub: 'Anadolu’nun gönül eri', imgs: ['yunusEmre_b1_07'] },
     { name: 'İstanbul', sub: 'İki kıtanın buluştuğu şehir', imgs: ['civ/istanbul|designed/istanbul'] },
   ];
-  const GAPZ = 1500, FOCUS = 420, T0 = 1.7, STEP = 1.2, PX = 420;
+  const GAPZ = 1500, FOCUS = 420, T0 = 1.7, STEP = 1.7, PX = 420;
   const frame = w => `<svg class="civ-frame" viewBox="0 0 588 728" preserveAspectRatio="none"><path d="${archD(14, 14, 560, 700, false)}" fill="none" stroke="url(#goldStroke)" stroke-width="2"/><path d="${archD(4, 4, 580, 720, false)}" fill="none" stroke="rgba(243,213,138,.35)" stroke-width="1"/></svg>`;
   const panels = [];
   STOPS.forEach((st, i) => {
@@ -214,7 +214,7 @@ function sceneClock(id, t) {
     const s = Math.min(station(t), 7.6);
     return GAPZ * (s - 0.6 * Math.sin(2 * Math.PI * s) / (2 * Math.PI));   // eases (never stops) at every station
   };
-  const END = 10.75;                                           // gallery → constellation
+  const END = T0 + 7.6 * STEP - 0.07;                          // gallery → constellation (14.55)
   const zEnd = camZ(END);
   const ARC = panels.map((p, j) => {
     const n = panels.length, u = j / (n - 1) - 0.5;
@@ -222,11 +222,11 @@ function sceneClock(id, t) {
   });
   let lw = null;
 
-  scene('s0', 0, 14.25, t => {
+  scene('s0', 0, END + 4.35, t => {
     if (!lw) lw = STOPS.map(st => st.label.offsetWidth);
     const cz = t < END ? camZ(t) : zEnd + (t - END) * 90;
     const settle = P(t, END, END + 1.5, E.cam);
-    const out = P(t, 13.15, 14.0, bezier(0.7, 0, 0.9, 0.4));
+    const out = P(t, END + 3.27, END + 4.12, bezier(0.7, 0, 0.9, 0.4));
     const sway = smoothNoise(t * 0.35, 71) * 1.2;
     tf(world, { x: CX, y: CY, z: cz, rz: sway * (1 - settle), ry: smoothNoise(t * 0.3, 72) * 1.5 });
     const anchors = [];
@@ -248,7 +248,7 @@ function sceneClock(id, t) {
     /* names travel with their panels, then yield to the message */
     STOPS.forEach((st, i) => {
       const s = station(t);
-      const vin = P(s, i - 0.5, i - 0.2, E.outSoft), vout = P(s, i + 0.4, i + 0.56, E.in);
+      const vin = P(s, i - 0.36, i - 0.16, E.outSoft), vout = P(s, i + 0.4, i + 0.56, E.in);
       // screen-space type, opposite the panel it names
       const drift = (s - i) * -40;
       if (st.side > 0) { st.label.style.left = '150px'; st.label.style.right = 'auto'; }
@@ -256,10 +256,10 @@ function sceneClock(id, t) {
       st.label.style.top = '430px';
       tf(st.label, { x: drift * st.side * -1, y: 0 });
       st.nm.style.transform = `translate3d(0,${((1 - vin) * 110).toFixed(1)}%,0)`;
-      st.sb.style.transform = `translate3d(0,${((1 - P(s, i - 0.42, i - 0.12, E.outSoft)) * 120).toFixed(1)}%,0)`;
+      st.sb.style.transform = `translate3d(0,${((1 - P(s, i - 0.3, i - 0.08, E.outSoft)) * 120).toFixed(1)}%,0)`;
       op(st.label, (t < END ? 1 : 0) * clamp(vin * 1.5) * (1 - vout));
       show(st.label, vin > 0 && vout < 1);
-      blur(st.label, vout * 10);
+      blur(st.label, vout * 10, 'drop-shadow(0 8px 26px rgba(0,0,0,.65))');
     });
     /* the route that threads the stops */
     anchors.sort((a, b) => a[2] - b[2]);
@@ -279,10 +279,10 @@ function sceneClock(id, t) {
     l1s.style.transform = `translate3d(0,${((1 - P(t, 0.45, 1.25, E.outSoft)) * 110).toFixed(1)}%,0)`;
     l2.style.top = '370px';
     l2s.style.transform = `translate3d(0,${((1 - P(t, END + 0.55, END + 1.4, E.outSoft)) * 110).toFixed(1)}%,0)`;
-    op(msg, 1 - out); blur(msg, out * 12);
+    op(msg, 1 - out); blur(msg, out * 12, 'drop-shadow(0 12px 34px rgba(0,0,0,.7))');
     /* collapse into the brand star (S1 picks it up) */
-    const sp = P(t, 13.2, 13.95, E.inOut);
-    tf(spark, { s: 0.2 + sp * 0.5 }); op(spark, Math.sin(Math.PI * clamp((t - 13.2) / 1.0)) * 0.9);
+    const sp = P(t, END + 3.32, END + 4.07, E.inOut);
+    tf(spark, { s: 0.2 + sp * 0.5 }); op(spark, Math.sin(Math.PI * clamp((t - END - 3.32) / 1.0)) * 0.9);
     drawDust(t, 0.3 + 0.25 * settle, cz / 2500);
   });
 }
@@ -370,7 +370,7 @@ function sceneClock(id, t) {
       o.w.style.top = (CY - 90 + o.y) + 'px';
       tf(o.w, { s: 1 + pass * 2.4, x: o.x * pass * 1.4, z: 0 });
       op(o.w, (t < o.t0 ? 0 : 1) * (1 - pass));
-      blur(o.w, pass * 22);
+      blur(o.w, pass * 22, 'drop-shadow(0 10px 28px rgba(0,0,0,.5))');
     }
     drawDust(t, 0.25 + 0.5 * P(t, 0.8, 1.6), camZ / 900);
     $('#flash').style.opacity = (flare * 0.55).toFixed(3);
@@ -618,7 +618,7 @@ const enWords = splitWords($('#pgTextEn'));
     knob.style.transform = `translateX(${(P(t, 13.02, 13.4, E.back) * 164).toFixed(1)}px)`;
     /* the Arabic tagline of the library */
     const reveal = P(t, 15.2, 16.1, bezier(0.5, 0, 0.2, 1));
-    arTag.style.clipPath = `inset(-20% 0 -20% ${((1 - reveal) * 100).toFixed(2)}%)`;
+    arTag.style.clipPath = `inset(-40% -8% -40% ${((1 - reveal) * 100).toFixed(2)}%)`;
     arTag.style.webkitMaskImage = `linear-gradient(to left, #000 ${(reveal * 100).toFixed(1)}%, transparent ${(reveal * 100 + 12).toFixed(1)}%)`;
     tf(arTag, { x: (1 - reveal) * -40 - leave * 80, s: 1 + (t - 15.2) * 0.012 });
     op(arTag, 1 - leave); blur(arTag, leave * 12);
@@ -701,9 +701,11 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
   const TASK_PAIRS = [[0, 2], [1, 3], [2, 0], [3, 1]];
   /* chapter rail: all 12 chapters of Adam (B1), each with its own Quick Challenge and Language Focus */
   const railW = $('#s5railw');
-  const mods = ADAM_CH.map((ti, i) => el('div', 'rail-m', `<div class="ri"><img src="assets/img/adam_b1/ch${String(i + 1).padStart(2, '0')}.jpg"></div><div class="rb"><div class="rn" lang="tr">BÖLÜM ${String(i + 1).padStart(2, '0')}</div><div class="rt">${ti}</div><div class="rc"><span class="q">Quick Challenge</span><span class="l">Language Focus</span></div></div>`, railW));
-  const railHead = el('div', 'kin', '<div class="eyebrow" lang="tr">12 bölümün her birinde</div><div class="line">Hikâye, ardından</div><div class="line gold">kendi alıştırması ve dil çalışması.</div>', S);
-  railHead.style.bottom = '90px'; railHead.querySelectorAll('.line').forEach(l => { l.style.fontSize = '62px'; });
+  const mods = ADAM_CH.map((ti, i) => el('div', 'rail-m', `<div class="ri"><img src="assets/img/adam_b1/ch${String(i + 1).padStart(2, '0')}.jpg"></div><div class="rb"><div class="rn" lang="tr">BÖLÜM ${String(i + 1).padStart(2, '0')}</div><div class="rt">${ti}</div><div class="rc"><span class="h" lang="tr">Hikâye</span><i class="ar a0"></i><span class="q">Quick Challenge</span><i class="ar a1"></i><span class="l">Language Focus</span></div></div>`, railW));
+  const modQ = mods.map(m => m.querySelector('.rc .q')), modL = mods.map(m => m.querySelector('.rc .l')), modA = mods.map(m => m.querySelector('.rc .a1')), modA0 = mods.map(m => m.querySelector('.rc .a0'));
+  const railHead = el('div', 'kin', '<div class="eyebrow">Hikâye → Quick Challenge → Language Focus</div><div class="line">Her bölüm.</div><div class="line">Kendi hikâyesi.</div><div class="line gold">Kendi alıştırmaları.</div>', S);
+  railHead.setAttribute('lang', 'tr');
+  railHead.style.bottom = '70px'; railHead.querySelectorAll('.line').forEach(l => { l.style.fontSize = '56px'; });
   const railSpans = maskLines(railHead);
   let fbH = null;
 
@@ -711,7 +713,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     if (fbH == null) { fb.style.height = 'auto'; fbH = fb.offsetHeight; }
     const hand = { x: smoothNoise(t * 0.45, 51) * 5, y: smoothNoise(t * 0.4, 52) * 4 };
     /* flow indicator */
-    const fIn = P(t, 20.7, 21.3, E.outSoft), fOut = P(t, 27.95, 28.35, E.in);
+    const fIn = P(t, 20.7, 21.3, E.outSoft), fOut = P(t, 27.8, 27.97, E.in);
     op(flow, fIn * (1 - fOut)); tf(flow, { y: (1 - fIn) * -16 });
     paintFlow(flow, [1 + P(t, 21.1, 21.5), P(t, 21.2, 21.6) + P(t, 24.45, 24.85), P(t, 24.6, 25.0) + P(t, 27.7, 28.0)], [P(t, 21.0, 21.6, E.inOut), P(t, 24.4, 25.0, E.inOut)]);
     /* Quick Challenge */
@@ -738,7 +740,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     fb.style.height = (fbp * fbH).toFixed(1) + 'px'; fb.style.opacity = P(t, 23.25, 23.45, E.lin).toFixed(3);
     fb.style.marginTop = (12 * fbp).toFixed(1) + 'px'; fb.style.borderWidth = fbp > 0.01 ? '1.5px' : '0';
     /* Language Focus rises from below, then its first activity opens */
-    const lIn = P(t, 24.45, 25.35, E.cam), lSide = P(t, 25.95, 26.7, E.cam), lOut = P(t, 27.85, 28.2, E.inStrong);
+    const lIn = P(t, 24.45, 25.35, E.cam), lSide = P(t, 25.95, 26.7, E.cam), lOut = P(t, 27.8, 27.98, E.inStrong);
     tf(lf, { x: 340 - lSide * 250 + hand.x, y: lerp(1250, 250, lIn) + hand.y, z: -lSide * 380 - lOut * 900, rx: lerp(18, 2, lIn), ry: lSide * 16 });
     op(lf, P(t, 24.45, 24.7, E.lin) * (1 - lSide * 0.35) * (1 - lOut));
     lfRows.forEach((row, i) => { const p = P(t, 24.95 + i * 0.1, 25.5 + i * 0.1, E.outSoft); row.style.opacity = p.toFixed(3); row.style.transform = `translateY(${((1 - p) * 26).toFixed(1)}px)`; });
@@ -753,14 +755,20 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     tf(task.c, { x: lerp(2100, 690, tIn) + hand.x, y: 150 + hand.y, z: 120 - lOut * 900, ry: lerp(-24, -6, tIn), rx: 2 });
     op(task.c, P(t, 25.95, 26.2, E.lin) * (1 - lOut));
     matchLines(task.svg, task.L, task.R, TASK_PAIRS, t, 26.75, 0.3);
-    /* every chapter repeats the loop */
-    const rIn = P(t, 28.15, 28.6, E.outSoft), rOut = P(t, 29.15, 29.5, E.in);
-    const pan = P(t, 28.2, 29.45, bezier(0.5, 0, 0.3, 1));
-    camTf(railW, { px: 200 + pan * 11 * 440, py: 280, s: 1, sx: 760 + hand.x, sy: 470 + (1 - rIn) * 80, z: -150 - rOut * 300, ry: -14, rx: 3 });
-    mods.forEach((m, i) => tf(m, { x: i * 440, y: Math.sin(i * 1.3) * 18, z: 0 }));
-    op($('#s5rail'), rIn * (1 - rOut)); blur(railW, Math.sin(Math.PI * pan) * 2.5 + rOut * 6);
-    railSpans.forEach((sp, i) => riseIn(sp, t, 28.25 + i * 0.12, 0.7));
-    op(railHead, 1 - P(t, 29.1, 29.45, E.lin));
+    /* every chapter repeats the loop — this stretch plays ~4x slower in film time (timeline.json warps) */
+    const rIn = P(t, 27.98, 28.12, E.outSoft), rOut = P(t, 29.36, 29.46, E.in);
+    const pan = P(t, 27.98, 29.46, bezier(0.35, 0, 0.55, 1));
+    camTf(railW, { px: 300 + pan * 5 * 440, py: 280, s: 1.14, sx: 1080 + hand.x, sy: 400 + (1 - rIn) * 80, z: -120 - rOut * 300, ry: -12, rx: 3 });
+    mods.forEach((m, i) => {
+      tf(m, { x: i * 440, y: Math.sin(i * 1.3) * 14, z: 0 });
+      // as the camera reaches a chapter, its own Quick Challenge and then its Language Focus light up
+      const cx = m.getBoundingClientRect(); const c = cx.left + cx.width / 2;
+      const q = clamp((1500 - c) / 160), l = clamp((1330 - c) / 160);
+      modA0[i].style.setProperty('--on', q.toFixed(3)); modQ[i].style.setProperty('--on', q.toFixed(3)); modA[i].style.setProperty('--on', l.toFixed(3)); modL[i].style.setProperty('--on', l.toFixed(3));
+    });
+    op($('#s5rail'), rIn * (1 - rOut)); blur(railW, rOut * 6);
+    railSpans.forEach((sp, i) => riseIn(sp, t, 28.04 + i * 0.035, 0.2));
+    op(railHead, 1 - P(t, 29.34, 29.44, E.lin));
     drawDust(t, 0.22, 0);
   });
 }

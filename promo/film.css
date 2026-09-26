@@ -72,7 +72,7 @@ img { display: block; }
 .card3d.archcard { border-radius: 0; clip-path: url(#arch); box-shadow: none; }
 .card3d .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.35)); }
 .word3d { position: absolute; left: 0; top: 0; font-weight: 700; font-size: 150px; letter-spacing: -0.045em; line-height: 1; color: #fdf6e6; white-space: nowrap;
-  text-shadow: 0 10px 50px rgba(0,0,0,.75), 0 0 90px rgba(0,0,0,.6); transform-origin: 50% 50%; }
+  transform-origin: 50% 50%; }
 .word3d .m { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .04em .12em; }
 .word3d .m > span { display: inline-block; }
 .word3d .dot { color: var(--gold-hi); }
@@ -187,7 +187,7 @@ img { display: block; }
 #s4toggle .ar { font-family: Arakom; font-weight: 400; font-size: 34px; }
 #s4toggle .knob { position: absolute; left: 8px; top: 8px; width: 150px; height: 78px; border-radius: 40px; background: linear-gradient(180deg, #d4bd7e, #b99e5a); box-shadow: 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35); }
 #s4tag { position: absolute; inset: 0; }
-.ar-tag { position: absolute; right: 150px; top: 350px; font-family: Arakom; direction: rtl; font-size: 132px; line-height: 1.3; color: #fdf6e6; white-space: nowrap; text-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.ar-tag { position: absolute; right: 110px; padding: 0 40px; top: 350px; font-family: Arakom; direction: rtl; font-size: 132px; line-height: 1.3; color: #fdf6e6; white-space: nowrap; text-shadow: 0 20px 60px rgba(0,0,0,.5); }
 .tr-tag { position: absolute; right: 158px; top: 610px; display: flex; gap: 22px; align-items: center; font-size: 28px; font-weight: 600; color: var(--gold); letter-spacing: .02em; }
 .tr-tag i { width: 70px; height: 2px; background: linear-gradient(90deg, rgba(194,170,107,.1), var(--gold), rgba(194,170,107,.1)); }
 .tr-tag .a { font-family: Arakom; font-weight: 400; font-size: 32px; }
@@ -255,7 +255,7 @@ img { display: block; }
 #sg { background: #332418; }
 .sg-hero { border: 1px solid rgba(194,170,107,.22); border-radius: 22px; padding: 28px 30px; background: linear-gradient(160deg, #3d2c1b, #2f2014); position: relative; height: 330px; }
 .sg-eyebrow { font-size: 12px; letter-spacing: .2em; color: var(--gold); font-weight: 600; }
-.sg-h { font-size: 38px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.08; margin-top: 10px; color: #fff; width: 420px; }
+.sg-h { font-size: 34px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; margin-top: 12px; color: #fff; width: 300px; }
 .sg-prog { position: absolute; right: 26px; top: 26px; width: 330px; height: 278px; border-radius: 18px; background: rgba(0,0,0,.18); border: 1px solid rgba(194,170,107,.2); padding: 22px; }
 .sg-prog small, .sg-map-h small, .sg-stats small { display: block; font-size: 11px; letter-spacing: .18em; color: var(--gold); font-weight: 600; }
 .sg-pc { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; } .sg-pc b { font-size: 40px; font-weight: 700; } .sg-pc span { color: var(--gold); font-weight: 700; font-size: 16px; }
@@ -372,9 +372,11 @@ img { display: block; }
 .rail-m .rb { padding: 20px 24px; }
 .rail-m .rn { font-size: 14px; letter-spacing: .2em; font-weight: 700; color: var(--gold); }
 .rail-m .rt { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 6px; height: 58px; }
-.rail-m .rc { display: flex; gap: 8px; margin-top: 16px; }
-.rail-m .rc span { font-size: 14px; font-weight: 700; padding: 7px 11px; border-radius: 10px; white-space: nowrap; }
-.rail-m .rc .q { background: #fff1e0; color: #bb4d00; } .rail-m .rc .l { background: #f3ebdf; color: #6f3a12; }
+.rail-m .rc { display: flex; gap: 0; align-items: center; margin-top: 16px; }
+.rail-m .rc .ar { width: 14px; height: 2px; margin: 0 4px; flex: none; background: linear-gradient(90deg, #d9c9ad, #d9c9ad); position: relative; }
+.rail-m .rc .ar::after { content: ''; position: absolute; inset: 0; background: #e17100; transform-origin: 0 50%; transform: scaleX(var(--on, 0)); }
+.rail-m .rc span { font-size: 13px; font-weight: 700; padding: 6px 9px; border-radius: 10px; white-space: nowrap; }
+.rail-m .rc .q, .rail-m .rc .l { background: color-mix(in srgb, #f3ebdf, #e17100 calc(var(--on, 0) * 100%)); color: color-mix(in srgb, #8b6d4f, #ffffff calc(var(--on, 0) * 100%)); }
 
 /* Knowledge Check */
 .kc { width: 1400px; padding: 40px 54px; }
@@ -454,7 +456,7 @@ img { display: block; }
 .civ .civ-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(10,8,5,.55)); }
 .civ .civ-frame { position: absolute; inset: -14px; pointer-events: none; }
 .civ-label { position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: 0 50%; }
-.civ-label .nm { font-size: 104px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: #fdf6e6; text-shadow: 0 10px 50px rgba(0,0,0,.7); overflow: hidden; padding-bottom: .12em; }
+.civ-label .nm { font-size: 104px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: #fdf6e6; overflow: hidden; padding-bottom: .12em; }
 .civ-label .nm > span, .civ-label .sb > span { display: inline-block; }
 .civ-label .sb { margin-top: 10px; font-size: 30px; font-weight: 500; letter-spacing: .01em; color: var(--gold-hi); overflow: hidden; }
 .civ-label .ix { font-size: 16px; letter-spacing: .3em; color: rgba(243,213,138,.7); font-weight: 600; margin-bottom: 12px; }
@@ -464,5 +466,6 @@ img { display: block; }
 #s0msg .l1, #s0msg .l2 { position: absolute; left: 0; right: 0; overflow: hidden; padding-bottom: .14em; }
 #s0msg .l1 > span, #s0msg .l2 > span { display: inline-block; }
 #s0msg .l1 { font-size: 40px; font-weight: 600; color: var(--gold-hi); letter-spacing: -0.01em; }
-#s0msg .l2 { font-size: 96px; font-weight: 700; letter-spacing: -0.045em; color: #fdf6e6; line-height: 1.05; text-shadow: 0 16px 60px rgba(0,0,0,.7); }
+#s0msg .l2 { font-size: 96px; font-weight: 700; letter-spacing: -0.045em; color: #fdf6e6; line-height: 1.05; }
 #s0spark { left: 960px; top: 540px; }
+.rail-m .rc .h { background: #f6e7c1; color: #7a5412; }
