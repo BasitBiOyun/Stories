@@ -686,9 +686,9 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
   const flow = el('div', 'flow', `<div class="fl-eye"><span lang="tr">Bölüm 1</span> · Introduction &amp; The Creation</div>${flowRow(['Hikâye', 'Quick Challenge', 'Language Focus'])}`, S);
   /* Language Focus panel — real Chapter 1 activities (src/data/adam/b1/en/languageFocus.ts) */
   const LFA = [
-    ['Source Voice and Story Time', 'MATCH', 'Match each Chapter 1 expression with the time perspective it creates.'],
-    ['Looking Forward from a Past Moment', 'MATCH', 'Match each expression with the meaning it carries in the chapter.'],
-    ['Connecting and Reporting Ideas', 'MATCH', 'Match each Chapter 1 structure with its communicative job.'],
+    ['True Now or Happened Then?', 'CLASSIFY', 'Is it true now, or an event that happened in the story? Put it in the right group.'],
+    ['Order, Report, Look Forward', 'COMPLETE', 'Complete the lines from Chapter 1 with words from the bank.'],
+    ['Find and Fix the Mistake', 'CORRECT', 'Each sentence has one mistake. Tap the wrong words, then choose the correction.'],
     ['Build a Connected Account', 'USE', 'Write or say four connected B1 sentences using Chapter 1 language patterns.'],
   ];
   const lf = el('div', 'ui lf', `<div class="lf-head"><div class="ico brown"><svg viewBox="0 0 24 24"><path d="M5 4.5h11a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2z M5 18a2 2 0 0 1 2-2h11" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
