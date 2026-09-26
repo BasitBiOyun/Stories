@@ -1,80 +1,96 @@
 import type { Exercise } from '../../../../types';
 
 /**
- * Manually authored, chapter-specific B1 Language Focus work.
- * Activities are derived from the actual chapter language and are designed to
- * build contextual grammaring rather than repeat story comprehension.
+ * Manually authored, chapter-specific B1 Language Focus work for Adam.
+ * Each chapter follows Notice → Build → Use: learners first discover what a
+ * form does in a real chapter sentence, then practise it in context, then use
+ * it in a new situation. Every quoted sentence comes from the English chapter;
+ * quoted words of Allah are only read and asked about, never changed.
  */
 export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
       id: 'adam-b1-language-1-source-and-story-time',
-      type: 'matching',
-      title: 'Source Voice and Story Time',
-      instructions: 'Match each Chapter 1 expression with the time perspective it creates.',
-      question: 'How does the chapter move between presenting the story as a source and narrating past events?',
-      matchingPairs: [
-        { left: 'The Holy Qur’an tells his tale', right: 'presents what the source does generally' },
-        { left: 'These surahs describe Adam’s tale', right: 'presents information about the source in the present' },
-        { left: 'Allah created the sky and the earth', right: 'narrates a completed event in the past' },
-        { left: 'the angels began to wait', right: 'moves the past narrative to the next event' },
+      type: 'drag-drop',
+      title: 'True Now or Happened Then?',
+      instructions: 'Read each part of Chapter 1. Is it something that is true now, or an event that happened in the story? Put it in the right group.',
+      question: 'Why does Chapter 1 use present forms in some sentences and past forms in others?',
+      dragDropGroups: [
+        {
+          group: 'True now (present forms)',
+          items: [
+            'Adam (pbuh) is the first Messenger and the father of all humans.',
+            'The Holy Qur’an tells his tale in different surahs.',
+            'we can learn many lessons from this fabulous but true story',
+          ],
+        },
+        {
+          group: 'Happened in the story (past forms)',
+          items: [
+            'Allah created him from soil',
+            '… gave him full value as the first human.',
+            'The angels were surprised',
+          ],
+        },
       ],
       correctAnswer: {
-        'The Holy Qur’an tells his tale': 'presents what the source does generally',
-        'These surahs describe Adam’s tale': 'presents information about the source in the present',
-        'Allah created the sky and the earth': 'narrates a completed event in the past',
-        'the angels began to wait': 'moves the past narrative to the next event',
+        'True now (present forms)': [
+          'Adam (pbuh) is the first Messenger and the father of all humans.',
+          'The Holy Qur’an tells his tale in different surahs.',
+          'we can learn many lessons from this fabulous but true story',
+        ],
+        'Happened in the story (past forms)': [
+          'Allah created him from soil',
+          '… gave him full value as the first human.',
+          'The angels were surprised',
+        ],
       },
-      explanation: 'Chapter 1 uses present forms when it talks about what the Qur’an and its surahs do, then switches to past forms when the story itself begins.',
+      explanation: 'The present simple (is, tells) and “can” describe things that are true today: Adam’s place as the first Messenger, what the Qur’an does, and what we can learn now. The past simple (created, gave, were) tells finished events inside the story. Even in the first paragraph, “Allah created him from soil” is past, because it is an event, not a present fact.',
       feedback: {
-        correct: 'Good. You distinguished source commentary from past narration.',
-        incorrect: 'Ask whether each sentence describes the source now or tells an event that happened in the story.',
+        correct: 'Correct. You separated present facts about Adam, the Qur’an and us from past story events.',
+        incorrect: 'Look at the verb in each part: is, tells, can learn, or created, gave, were? Then ask: is this still true today, or did it happen once in the story?',
       },
     },
     {
       id: 'adam-b1-language-1-future-from-the-past',
-      type: 'matching',
-      title: 'Looking Forward from a Past Moment',
-      instructions: 'Match each expression with the meaning it carries in the chapter.',
-      question: 'How do “was going to” and “would” let the narrator look forward from a past point in the story?',
-      matchingPairs: [
-        { left: 'He was going to create a human', right: 'a plan announced from a past viewpoint' },
-        { left: 'This ruler would live there for many years', right: 'a future situation viewed from the past' },
-        { left: 'Allah decided to place a ruler on earth', right: 'a decision made before the future role begins' },
-      ],
-      correctAnswer: {
-        'He was going to create a human': 'a plan announced from a past viewpoint',
-        'This ruler would live there for many years': 'a future situation viewed from the past',
-        'Allah decided to place a ruler on earth': 'a decision made before the future role begins',
-      },
-      explanation: 'The narrator is already telling a past story. “Was going to” and “would” therefore describe what was still in the future at that past moment.',
+      type: 'word-bank',
+      title: 'Order, Report, Look Forward',
+      instructions: 'Complete the lines from Chapter 1 with words from the bank. Three words are not needed.',
+      question: 'Which words order the events, report what was said, and look forward from a past moment?',
+      fillBlanksText: '[blank] Allah created the sky and the earth, He [blank] the angels that He was going to create a human. … This ruler [blank] live there for many years.',
+      wordBank: ['After', 'told', 'would', 'While', 'said', 'will'],
+      correctAnswer: ['After', 'told', 'would'],
+      explanation: '“After + past simple” puts one finished event before the next: first the sky and the earth, then the announcement. We “tell someone” something, but we “say something” (not “said the angels”). “Would” and “was going to” look forward from a past moment: when the angels were told, the ruler’s long life on earth was still in the future. “Will” looks forward from now, so it does not fit a story told in the past.',
       feedback: {
-        correct: 'Correct. You identified future meaning inside a past narrative.',
-        incorrect: 'Imagine the narrator standing at the moment when the angels were told. Which actions had not happened yet?',
+        correct: 'Correct. You ordered the events, reported the announcement, and looked forward from the past.',
+        incorrect: 'Check the second paragraph of Chapter 1. Which came first? Who was told? Is the ruler’s future seen from now or from that past moment?',
       },
     },
     {
       id: 'adam-b1-language-1-sequence-and-reporting',
-      type: 'matching',
-      title: 'Connecting and Reporting Ideas',
-      instructions: 'Match each Chapter 1 structure with its communicative job.',
-      question: 'How does the chapter connect events and report what was announced?',
-      matchingPairs: [
-        { left: 'After Allah created the sky and the earth, ...', right: 'places one completed event before another' },
-        { left: 'He told the angels that ...', right: 'reports information given to someone' },
-        { left: 'He said He decided to ...', right: 'reports a decision inside the narrative' },
-        { left: 'began to wait with curiosity', right: 'shows the start of a continuing action or state' },
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct an earlier decision in reported speech and a verb pattern after “began”?',
+      errorItems: [
+        {
+          sentence: 'He said He has decided to place a ruler (halîfe) on earth.',
+          error: 'has decided',
+          options: ['had decided', 'have decided', 'was deciding'],
+          answer: 0,
+        },
+        {
+          sentence: 'The angels were surprised and began wait with curiosity.',
+          error: 'began wait',
+          options: ['began to wait', 'began to waiting', 'begin waiting'],
+          answer: 0,
+        },
       ],
-      correctAnswer: {
-        'After Allah created the sky and the earth, ...': 'places one completed event before another',
-        'He told the angels that ...': 'reports information given to someone',
-        'He said He decided to ...': 'reports a decision inside the narrative',
-        'began to wait with curiosity': 'shows the start of a continuing action or state',
-      },
-      explanation: 'B1 narration depends on relationships between clauses. “After” orders events, reporting verbs introduce information and decisions, and “began to” marks the start of an action or state.',
+      correctAnswer: null,
+      explanation: 'When we report a decision after a past verb (He said …), a decision made before that moment moves back to the past perfect: “He said He had decided …”. After “began”, use “to + base verb” (or -ing): “began to wait”. “Began” is already past, so the verb after it does not change.',
       feedback: {
-        correct: 'Good. You connected each form with the relationship it creates.',
-        incorrect: 'Read the surrounding clause and ask: sequence, reported information, reported decision, or beginning?',
+        correct: 'Well done. You fixed the past perfect and the pattern after “began”.',
+        incorrect: 'Read the end of Chapter 1 again: “He said He … to place a ruler” and “The angels were surprised and began …”.',
       },
     },
     {
@@ -100,70 +116,61 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
   2: [
     {
       id: 'adam-b1-language-2-cause-and-result',
-      type: 'matching',
-      title: 'Building Cause and Result',
-      instructions: 'Match each Chapter 2 connector with the relationship it creates.',
-      question: 'How does the chapter turn one idea into a reason or result without using separate, disconnected sentences?',
-      matchingPairs: [
-        { left: 'That’s why humans have different skin colors.', right: 'points back to a reason already given' },
-        { left: '..., so the children of Adam are ...', right: 'introduces a result that follows from the previous clause' },
-        { left: 'from a handful of dust from different lands', right: 'adds source/origin detail inside the same idea' },
+      type: 'multiple-choice',
+      title: 'What Must Happen First?',
+      instructions: 'Read Allah’s words to the angels in Chapter 2. Then choose the best answer.',
+      question: 'Allah told His angels, “After I have created Adam (pbuh) and given him life and knowledge, show respect to him.” According to these words, when were the angels to show respect to Adam?',
+      options: [
+        'when his creation was complete and he had life and knowledge',
+        'while he was still being shaped from soil',
+        'before Allah created him',
+        'only after Adam had lived on earth for many years',
       ],
-      correctAnswer: {
-        'That’s why humans have different skin colors.': 'points back to a reason already given',
-        '..., so the children of Adam are ...': 'introduces a result that follows from the previous clause',
-        'from a handful of dust from different lands': 'adds source/origin detail inside the same idea',
-      },
-      explanation: 'Chapter 2 uses “that’s why” and “so” to make cause-result relationships explicit, while repeated “from” phrases add origin details without breaking the sentence apart.',
+      correctAnswer: 0,
+      explanation: '“After + have/has + past participle” (After I have created … and given …) shows an action that must be complete before the next action can happen. The instruction “show respect to him” comes second: first the creation and the gift of life and knowledge, then the respect.',
       feedback: {
-        correct: 'Good. You identified how the chapter links reasons, results, and origin details.',
-        incorrect: 'Ask whether the expression points backward to a reason, forward to a result, or adds where something came from.',
+        correct: 'Correct. “After I have created … and given …” means the creation must be complete first.',
+        incorrect: 'Look at the verbs after “After”: “have created” and “given”. Are these actions finished or still going on when the angels show respect?',
       },
     },
     {
       id: 'adam-b1-language-2-report-and-command',
-      type: 'matching',
-      title: 'Reporting and Giving a Command',
-      instructions: 'Match each form with its communicative job in Chapter 2.',
-      question: 'How does the chapter move from reporting a statement to quoting an instruction?',
-      matchingPairs: [
-        { left: 'Prophet Muhammad said that ...', right: 'reports information from a named speaker' },
-        { left: 'Allah told His angels ...', right: 'introduces words directed to specific listeners' },
-        { left: 'After I have created Adam and given him life and knowledge, ...', right: 'sets a condition in time that must be completed before the next action' },
-        { left: 'show respect to him', right: 'gives a direct instruction' },
-      ],
-      correctAnswer: {
-        'Prophet Muhammad said that ...': 'reports information from a named speaker',
-        'Allah told His angels ...': 'introduces words directed to specific listeners',
-        'After I have created Adam and given him life and knowledge, ...': 'sets a condition in time that must be completed before the next action',
-        'show respect to him': 'gives a direct instruction',
-      },
-      explanation: 'The chapter combines reported speech with direct quotation. Inside the quotation, “after” establishes the earlier action and the imperative gives the instruction that follows.',
+      type: 'word-bank',
+      title: 'Purpose, Sequence and Comparison',
+      instructions: 'Complete the lines from Chapter 2 with words from the bank. Three words are not needed.',
+      question: 'Which small words show purpose, the next stage, and a comparison?',
+      fillBlanksText: 'Allah gave Adam (pbuh) life and intellect [blank] learn and understand. [blank], He taught Adam (pbuh) everything he needed to do good on earth. He gave Adam (pbuh) more knowledge [blank] the angels.',
+      wordBank: ['to', 'Later', 'than', 'for', 'While', 'as'],
+      correctAnswer: ['to', 'Later', 'than'],
+      explanation: '“To + base verb” gives the purpose of a gift: life and intellect were given so that Adam could learn and understand (not “for learn”). “Later” moves the account to the next stage. “More … than” compares two things; “more … as” is a common mistake.',
       feedback: {
-        correct: 'Correct. You tracked both the reporting frame and the instruction inside it.',
-        incorrect: 'Separate the speaker-reporting frame from the exact instruction inside the quotation.',
+        correct: 'Correct. You showed purpose, the next stage and a comparison.',
+        incorrect: 'Read the second paragraph of Chapter 2. Ask: why was intellect given? When did the teaching happen? What is Adam’s knowledge compared with?',
       },
     },
     {
       id: 'adam-b1-language-2-purpose-sequence-comparison',
-      type: 'matching',
-      title: 'Purpose, Sequence, and Comparison',
-      instructions: 'Match the Chapter 2 pattern with the relationship it expresses.',
-      question: 'How does the second paragraph explain purpose, move the story forward, and compare amounts?',
-      matchingPairs: [
-        { left: 'life and intellect to learn and understand', right: 'expresses the purpose connected with what was given' },
-        { left: 'Later, He taught him ...', right: 'moves the account to a subsequent stage' },
-        { left: 'more knowledge than the angels', right: 'compares the amount or degree of knowledge' },
+      type: 'transformation',
+      title: 'Reason First or Result First?',
+      instructions: 'The chapter gives the reason first and then the result with “That’s why”. Complete each sentence with one linking word or phrase so that it keeps the same meaning.',
+      question: 'How can you show the same cause and result in a different order?',
+      transformItems: [
+        {
+          source: 'Then, Allah’s angels collected soil from different parts of the earth and Allah shaped Adam (pbuh). That’s why humans have different skin colors.',
+          frame: 'Humans have different skin colors [blank] Allah’s angels collected soil from different parts of the earth.',
+          answers: ['because', 'since', 'as'],
+        },
+        {
+          source: 'Then, Allah’s angels collected soil from different parts of the earth and Allah shaped Adam (pbuh). That’s why humans have different skin colors.',
+          frame: 'Allah’s angels collected soil from different parts of the earth, [blank] humans have different skin colors.',
+          answers: ['so', 'and so', 'and that’s why', 'and that is why', 'which is why'],
+        },
       ],
-      correctAnswer: {
-        'life and intellect to learn and understand': 'expresses the purpose connected with what was given',
-        'Later, He taught him ...': 'moves the account to a subsequent stage',
-        'more knowledge than the angels': 'compares the amount or degree of knowledge',
-      },
-      explanation: 'The infinitive can express purpose, “later” organizes the sequence, and “more ... than” creates a comparative relationship. Together they make the paragraph more connected and precise.',
+      correctAnswer: null,
+      explanation: '“That’s why” starts a new sentence and points back to the reason in the sentence before. “Because” (or since / as) comes before the reason, so the result can come first. “So” (or which is why) joins the reason and the result in one sentence, with the reason first.',
       feedback: {
-        correct: 'Good. You identified three different relationships built by short language patterns.',
-        incorrect: 'Ask: why was something given, when did the next step happen, and what two things are being compared?',
+        correct: 'Well done. You kept the cause-result meaning while changing the order.',
+        incorrect: 'Item 1: the result comes first, so you need a word that introduces a reason. Item 2: the reason comes first, so you need a word that introduces a result.',
       },
     },
     {

@@ -3,22 +3,109 @@ import type { Exercise } from '../../../../types';
 export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
   3: [
     {
-      id: 'adam-b1-language-3-reporting-beliefs', type: 'matching', title: 'Reporting Beliefs and Judgments', instructions: 'Match each Chapter 3 expression with the kind of judgment it reports.', question: 'How does the narrator show what different characters think without presenting those thoughts as the narrator’s own voice?',
-      matchingPairs: [{ left: 'The angels thought that Adam was amazing.', right: 'reports a positive judgment held by a group' }, { left: 'Iblis thought that Adam was an unimportant being.', right: 'reports a negative judgment held by one character' }, { left: 'he believed his origin was superior', right: 'gives the belief used to support a claim' }],
-      correctAnswer: { 'The angels thought that Adam was amazing.': 'reports a positive judgment held by a group', 'Iblis thought that Adam was an unimportant being.': 'reports a negative judgment held by one character', 'he believed his origin was superior': 'gives the belief used to support a claim' },
-      explanation: 'Patterns such as “thought that” and “believed” let a narrator report a character’s viewpoint while keeping that viewpoint separate from the narrator’s own statement.', feedback: { correct: 'Good. You separated reported viewpoint from narrator voice.', incorrect: 'Ask whose judgment each clause belongs to: the narrator, the angels, or Iblis?' },
+      id: 'adam-b1-language-3-reporting-beliefs',
+      type: 'drag-drop',
+      title: 'Whose View Is It?',
+      instructions: 'Read each part of Chapter 3. Is it a character’s view, or is it the narrator telling us what happened or what was true? Put it in the right group.',
+      question: 'How does the narrator keep the characters’ opinions separate from the narrator’s own statements?',
+      dragDropGroups: [
+        {
+          group: 'A character’s view (thought / believed / said)',
+          items: [
+            'All the angels thought that Adam (pbuh) was amazing.',
+            'he believed his origin was superior',
+            'Iblis said, “I am better than Adam (pbuh).”',
+          ],
+        },
+        {
+          group: 'The narrator’s own statement',
+          items: [
+            'They all admired him and showed respect to him',
+            'Iblis was arrogant.',
+            'Iblis did not think carefully and was wrong about Adam (pbuh).',
+          ],
+        },
+      ],
+      correctAnswer: {
+        'A character’s view (thought / believed / said)': [
+          'All the angels thought that Adam (pbuh) was amazing.',
+          'he believed his origin was superior',
+          'Iblis said, “I am better than Adam (pbuh).”',
+        ],
+        'The narrator’s own statement': [
+          'They all admired him and showed respect to him',
+          'Iblis was arrogant.',
+          'Iblis did not think carefully and was wrong about Adam (pbuh).',
+        ],
+      },
+      explanation: 'Verbs such as “thought that”, “believed” and “said” tell us that an idea belongs to a character. The narrator does not have to agree with it: Iblis believed his origin was superior, but the narrator tells us plainly that “Iblis was arrogant” and “was wrong about Adam”.',
+      feedback: {
+        correct: 'Correct. You separated the characters’ views from the narrator’s own statements.',
+        incorrect: 'Look for a reporting verb (thought, believed, said). If there is one, the idea belongs to a character. If the sentence simply tells us what happened or what was true, it is the narrator.',
+      },
     },
     {
-      id: 'adam-b1-language-3-contrast-and-comparison', type: 'matching', title: 'Contrast and Comparison', instructions: 'Match each Chapter 3 pattern with the relationship it builds.', question: 'How does the chapter place opposing judgments side by side and compare value?',
-      matchingPairs: [{ left: 'They all admired him, but Iblis didn’t think so.', right: 'contrasts one response with an opposing response' }, { left: 'I am better than Adam.', right: 'makes a direct comparison of value or status' }, { left: 'more important and more valuable than Adam', right: 'intensifies a comparative judgment across two qualities' }, { left: 'However, in the sight of Allah, ...', right: 'signals a strong contrast with the previous viewpoint' }],
-      correctAnswer: { 'They all admired him, but Iblis didn’t think so.': 'contrasts one response with an opposing response', 'I am better than Adam.': 'makes a direct comparison of value or status', 'more important and more valuable than Adam': 'intensifies a comparative judgment across two qualities', 'However, in the sight of Allah, ...': 'signals a strong contrast with the previous viewpoint' },
-      explanation: '“But” and “however” organize contrast, while “better than” and “more ... than” compare people or qualities. Together they help the paragraph present competing judgments clearly.', feedback: { correct: 'Correct. You identified both contrast markers and comparative language.', incorrect: 'First decide whether the expression contrasts two ideas or compares two values.' },
+      id: 'adam-b1-language-3-contrast-and-comparison',
+      type: 'choose-form',
+      title: 'Comparing and Contrasting',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 3.',
+      question: 'Which forms compare value and introduce a contrasting view?',
+      formChoices: [
+        {
+          sentence: 'He thought he was [choice] and more valuable than Adam (pbuh) …',
+          options: ['importanter', 'more important', 'the most important'],
+          answer: 1,
+        },
+        {
+          sentence: 'According to Satan, fire was superior [choice] clay.',
+          options: ['than', 'from', 'to'],
+          answer: 2,
+        },
+        {
+          sentence: '[choice], in the sight of Allah, superiority or greatness did not come from race, color, or being a member of a certain group.',
+          options: ['However', 'Because', 'So'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'Long adjectives such as “important” and “valuable” make the comparative with “more … than”, not with -er. “Superior” already has a comparing meaning, so it takes “to”, not “than”. “However” introduces a view that contrasts with the one before: Satan’s view against the view “in the sight of Allah”.',
+      feedback: {
+        correct: 'Correct. You chose the right comparative forms and the contrast marker.',
+        incorrect: 'Check the second paragraph of Chapter 3. Notice “superior to” and ask whether the last sentence agrees with Satan’s view or contrasts with it.',
+      },
     },
     {
-      id: 'adam-b1-language-3-reason-and-result', type: 'matching', title: 'Reason, Limitation, and Result', instructions: 'Match each structure with the relationship it expresses in the chapter.', question: 'How does the chapter explain why a judgment was made, show a limitation, and describe a result?',
-      matchingPairs: [{ left: 'because he believed his origin was superior', right: 'gives the reason behind a judgment' }, { left: 'He couldn’t see and accept that ...', right: 'shows an inability to recognize or accept an idea' }, { left: 'which made him more valuable', right: 'adds the result or effect of the preceding information' }, { left: 'greatness did not come from race, color, or group', right: 'states what cannot be treated as the source of a quality' }],
-      correctAnswer: { 'because he believed his origin was superior': 'gives the reason behind a judgment', 'He couldn’t see and accept that ...': 'shows an inability to recognize or accept an idea', 'which made him more valuable': 'adds the result or effect of the preceding information', 'greatness did not come from race, color, or group': 'states what cannot be treated as the source of a quality' },
-      explanation: 'The chapter links ideas through reason (“because”), limitation (“couldn’t”), result (“which made ...”), and source/origin language (“come from”). These relationships make the argument more connected than a list of separate statements.', feedback: { correct: 'Good. You tracked how one clause explains or develops another.', incorrect: 'Ask whether the clause answers why, shows inability, gives a result, or identifies a source.' },
+      id: 'adam-b1-language-3-reason-and-result',
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct a reported belief, a contrast and a clause that adds a result?',
+      errorItems: [
+        {
+          sentence: 'Iblis thought that Adam is an unimportant being created from clay.',
+          error: 'Adam is',
+          options: ['Adam was', 'Adam be', 'Adam were'],
+          answer: 0,
+        },
+        {
+          sentence: 'They all admired him and showed respect to him, and Iblis didn’t think so.',
+          error: 'and Iblis',
+          options: ['so Iblis', 'but Iblis', 'because Iblis'],
+          answer: 1,
+        },
+        {
+          sentence: 'He couldn’t see and accept that Adam (pbuh) had perfect knowledge for the good of every creature of Allah, what made him more valuable.',
+          error: 'what made',
+          options: ['that made', 'who made', 'which made'],
+          answer: 2,
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'After “thought that” in a past story, the reported belief stays in the past: “Iblis thought that Adam was …”. The narrator does not share this belief, so the present “is” is wrong. “But” shows that Iblis’s reaction was the opposite of everyone else’s. After a comma, “which” adds a comment about the whole idea before it (Adam’s perfect knowledge made him more valuable); “that” cannot follow a comma in this way, and “who” is for people.',
+      feedback: {
+        correct: 'Well done. You fixed the reported belief, the contrast and the added result.',
+        incorrect: 'Compare each sentence with Chapter 3: Iblis’s belief in the first paragraph, the angels’ reaction, and the sentence that begins “He couldn’t see and accept …”.',
+      },
     },
     {
       id: 'adam-b1-language-3-build-a-balanced-judgment', type: 'reflection', title: 'Build a Balanced Judgment', instructions: 'Write or say four connected B1 sentences about a new situation involving two different opinions. Use at least three Chapter 3 language patterns.', question: 'Can you report two viewpoints, give a reason, compare them, and then signal your contrasting conclusion without retelling Chapter 3?', correctAnswer: null,
@@ -30,36 +117,290 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
 
 export const adamB1LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   4: [
-    { id: 'adam-b1-language-4-continuing-and-reaction', type: 'matching', title: 'Continuing an Action and Describing a Reaction', instructions: 'Match each Chapter 4 expression with the function it performs.', question: 'How does the chapter show that a position continues and then describe the emotional reaction that follows?', matchingPairs: [{ left: 'Iblis continued saying he was right', right: 'shows that an action or claim continues over time' }, { left: 'Iblis got angry with Adam', right: 'describes a change into an emotional state' }, { left: 'He hated him', right: 'states the resulting attitude directly' }], correctAnswer: { 'Iblis continued saying he was right': 'shows that an action or claim continues over time', 'Iblis got angry with Adam': 'describes a change into an emotional state', 'He hated him': 'states the resulting attitude directly' }, explanation: '“Continue + -ing” presents an action or claim as ongoing, while “get + adjective” can show a change of state. The chapter then uses a simple verb to state the attitude that follows.', feedback: { correct: 'Correct. You identified continuation, change of state, and attitude.', incorrect: 'Ask whether each expression shows an ongoing action, a change of feeling, or a direct attitude.' } },
-    { id: 'adam-b1-language-4-reason-and-desire', type: 'matching', title: 'Reason and Desired Outcome', instructions: 'Match each structure with the relationship it expresses.', question: 'How does the chapter connect a reason with what one person wants another person to do or experience?', matchingPairs: [{ left: 'He didn’t want Allah to be kind to Adam (pbuh).', right: 'expresses a desired or undesired outcome involving another person' }, { left: 'because of Adam (pbuh)', right: 'gives a reason with a noun phrase rather than a full clause' }, { left: 'He thought that because of Adam (pbuh), Allah had put him far from His help.', right: 'reports the belief through which the character interprets the event' }], correctAnswer: { 'He didn’t want Allah to be kind to Adam (pbuh).': 'expresses a desired or undesired outcome involving another person', 'because of Adam (pbuh)': 'gives a reason with a noun phrase rather than a full clause', 'He thought that because of Adam (pbuh), Allah had put him far from His help.': 'reports the belief through which the character interprets the event' }, explanation: '“Want + object + to ...” expresses a desired outcome involving someone else. “Because of + noun” gives a reason without adding a full clause, while “thought that ...” keeps the interpretation inside the character’s viewpoint.', feedback: { correct: 'Good. You separated desire, reason, and reported interpretation.', incorrect: 'Look for the pattern that answers what was wanted, why, or what the character believed.' } },
-    { id: 'adam-b1-language-4-purpose-warning', type: 'matching', title: 'Purpose, Prevention, and Warning', instructions: 'Match each Chapter 4 phrase with its communicative function.', question: 'How does the chapter express purpose, prevention, similarity, and a warning?', matchingPairs: [{ left: 'waited for a chance to keep Adam (pbuh) away', right: 'shows purpose after waiting for an opportunity' }, { left: 'keep Adam (pbuh) away from Allah’s kindness', right: 'describes preventing someone from staying close to something' }, { left: 'just like himself', right: 'compares one intended situation with another person’s situation' }, { left: 'warned him to be careful of Iblis', right: 'reports a warning directed to another person' }], correctAnswer: { 'waited for a chance to keep Adam (pbuh) away': 'shows purpose after waiting for an opportunity', 'keep Adam (pbuh) away from Allah’s kindness': 'describes preventing someone from staying close to something', 'just like himself': 'compares one intended situation with another person’s situation', 'warned him to be careful of Iblis': 'reports a warning directed to another person' }, explanation: 'The chapter uses “a chance to ...” for opportunity and purpose, “keep + object + away from ...” for prevention, “just like ...” for similarity, and “warn + object + to be careful of ...” for a reported warning.', feedback: { correct: 'Correct. You tracked four different relationships across the paragraph.', incorrect: 'Decide whether the phrase expresses purpose, prevention, similarity, or warning.' } },
+    {
+      id: 'adam-b1-language-4-continuing-and-reaction',
+      type: 'multiple-choice',
+      title: 'Which Happened First?',
+      instructions: 'Read the first paragraph of Chapter 4 again. Then choose the best answer.',
+      question: 'Allah said to Iblis, “Go away! …” Later in the paragraph we read: “He thought that … Allah had put him far from His help.” Why does the writer use “had put” and not “put”?',
+      options: [
+        'Iblis was sent away at the same moment as he was thinking this.',
+        'Allah had already sent Iblis away before Iblis had this thought.',
+        'It shows something that was going to happen later.',
+        'It shows something that Iblis did again and again.',
+      ],
+      correctAnswer: 1,
+      explanation: 'The past perfect (had + past participle) shows that one past event happened before another past event. First Allah sent Iblis away (“Go away!”); after that, Iblis thought about it and blamed Adam. “Had put” makes this order clear.',
+      feedback: {
+        correct: 'Correct. “Had put” shows the earlier of two past events.',
+        incorrect: 'Find “Go away!” in the first paragraph. Did that happen before or after Iblis’s thought about Adam?',
+      },
+    },
+    {
+      id: 'adam-b1-language-4-reason-and-desire',
+      type: 'choose-form',
+      title: 'Verb Patterns and Reasons',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 4.',
+      question: 'Which forms follow “continue” and “want”, and which reason word comes before a noun?',
+      formChoices: [
+        {
+          sentence: 'But Iblis continued [choice] he was right and the Creator was wrong.',
+          options: ['say', 'saying', 'said'],
+          answer: 1,
+        },
+        {
+          sentence: 'He didn’t want Allah [choice] kind to Adam (pbuh).',
+          options: ['to be', 'be', 'that He is'],
+          answer: 0,
+        },
+        {
+          sentence: 'He thought that [choice] Adam (pbuh), Allah had put him far from His help.',
+          options: ['because', 'so', 'because of'],
+          answer: 2,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Continue + -ing” (or continue + to + verb) shows that an action or claim goes on: Iblis did not stop saying he was right. “Want + person + to + verb” says what someone wants another person to do; English does not use “want that …”. “Because of” is followed by a noun (because of Adam); “because” is followed by a full clause with a subject and a verb.',
+      feedback: {
+        correct: 'Correct. You chose continue + -ing, want + person + to, and because of + noun.',
+        incorrect: 'Check the first paragraph of Chapter 4. Remember: after “because of” comes a noun, and after “want Allah” comes “to + verb”.',
+      },
+    },
+    {
+      id: 'adam-b1-language-4-purpose-warning',
+      type: 'sentence-building',
+      title: 'Build Iblis’s Plan',
+      instructions: 'Put the chunks in order to rebuild the sentence from Chapter 4.',
+      question: 'How do “a chance to …” and “keep someone away from …” work together in one sentence?',
+      sentenceChunks: ['He waited', 'for a chance', 'to keep', 'Adam (pbuh)', 'away from', 'Allah’s kindness,', 'just as he himself was.'],
+      correctAnswer: null,
+      explanation: '“Wait for a chance to + verb” says what someone is waiting to be able to do. “Keep + person + away from + something” means stop that person from being close to it; the person comes between “keep” and “away from”. “Just as he himself was” compares Adam’s possible future with Iblis’s own situation.',
+      feedback: {
+        correct: 'Well done. You placed the person between “keep” and “away from”.',
+        incorrect: 'Start with the person and the verb. Then: what was he waiting for? Put the person after “keep”, and finish with the comparison. Check the second paragraph of Chapter 4.',
+      },
+    },
     { id: 'adam-b1-language-4-build-warning-situation', type: 'reflection', title: 'Build a Warning Situation', instructions: 'Write or say four connected B1 sentences about a new situation in which someone continues a harmful plan and another person gives a warning. Use at least three Chapter 4 patterns.', question: 'Can you connect continuation, reason, purpose, and warning in a short new situation without retelling Chapter 4?', correctAnswer: null, explanation: 'A strong response may use “continued + -ing”, “because of + noun”, “waited for a chance to ...”, “keep + object + away from ...”, and “warned + person + to be careful of ...”.', feedback: { correct: 'Keep the four sentences connected and make the reason and warning clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Show an action that continues with “continued + -ing”.', mode: 'Individual' }, { question: 'Sentence 2 — Give a reason with “because of + noun”.', mode: 'Individual' }, { question: 'Sentence 3 — Express purpose with “waited for a chance to ...” or a similar pattern.', mode: 'Individual' }, { question: 'Sentence 4 — Report a warning with “warned + person + to be careful of ...”.', mode: 'Pair' }] },
   ],
 };
 
 export const adamB1LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
   5: [
-    { id: 'adam-b1-language-5-beginning-state-role', type: 'matching', title: 'Beginning a State and Giving a Role', instructions: 'Match each Chapter 5 expression with the function it performs.', question: 'How does the chapter show a new feeling, a new activity, and the role of a person?', matchingPairs: [{ left: 'he started to feel lonely', right: 'shows the beginning of a new state or feeling' }, { left: 'They began living in Paradise', right: 'shows the beginning of an activity or situation' }, { left: 'a wife called Eve', right: 'identifies a person by the name given to her' }, { left: 'to be his companion', right: 'expresses the intended role or purpose' }], correctAnswer: { 'he started to feel lonely': 'shows the beginning of a new state or feeling', 'They began living in Paradise': 'shows the beginning of an activity or situation', 'a wife called Eve': 'identifies a person by the name given to her', 'to be his companion': 'expresses the intended role or purpose' }, explanation: 'The chapter uses “start to + verb” and “begin + -ing” to present beginnings. “Called + name” identifies a person, while “to be ...” can express the role or purpose intended for that person.', feedback: { correct: 'Correct. You separated beginning, identification, and intended role.', incorrect: 'Ask whether the phrase shows a beginning, names a person, or explains a role.' } },
-    { id: 'adam-b1-language-5-comparison-and-restriction', type: 'matching', title: 'Comparison and a Negative Instruction', instructions: 'Match each structure with the relationship it expresses.', question: 'How does the chapter compare Paradise with human imagination and express the one restriction?', matchingPairs: [{ left: 'more wonderful than we can imagine', right: 'compares one degree of quality with the limit of what people can imagine' }, { left: 'we can imagine', right: 'expresses ability or possibility' }, { left: 'asked them not to go near one tree', right: 'reports a negative instruction directed to other people' }], correctAnswer: { 'more wonderful than we can imagine': 'compares one degree of quality with the limit of what people can imagine', 'we can imagine': 'expresses ability or possibility', 'asked them not to go near one tree': 'reports a negative instruction directed to other people' }, explanation: '“More ... than ...” builds a comparison, “can + verb” expresses ability or possibility, and “ask + object + not to + verb” reports a negative instruction or request.', feedback: { correct: 'Good. You identified comparison, ability, and negative instruction.', incorrect: 'Look for the part that compares, the modal that shows ability, and the pattern that reports what someone should not do.' } },
-    { id: 'adam-b1-language-5-time-manner-condition', type: 'matching', title: 'Time, Manner, and Conditional Result', instructions: 'Match each Chapter 5 expression with the relationship it creates.', question: 'How does the paragraph connect the setting, the way an action is presented, and a claimed result?', matchingPairs: [{ left: 'When Adam and Eve were happy in Paradise', right: 'sets the time or background for the next event' }, { left: 'came near them pretending to be their friend', right: 'shows how the action was presented at the same time' }, { left: 'if they ate from that one tree', right: 'introduces the condition in a claimed cause-result relationship' }, { left: 'they would never die', right: 'gives the claimed result of that condition' }], correctAnswer: { 'When Adam and Eve were happy in Paradise': 'sets the time or background for the next event', 'came near them pretending to be their friend': 'shows how the action was presented at the same time', 'if they ate from that one tree': 'introduces the condition in a claimed cause-result relationship', 'they would never die': 'gives the claimed result of that condition' }, explanation: 'A “when” clause gives the background time. An -ing phrase such as “pretending ...” can show manner or a simultaneous action. “If + past ... would + verb” presents a conditional relationship here inside the reported claim.', feedback: { correct: 'Correct. You tracked time, manner, condition, and result across one connected paragraph.', incorrect: 'Decide whether each phrase gives background time, manner, a condition, or its result.' } },
+    {
+      id: 'adam-b1-language-5-beginning-state-role',
+      type: 'matching',
+      title: 'What Do These Phrases Mean?',
+      instructions: 'Match each phrase from Chapter 5 with its meaning.',
+      question: 'What do these phrases tell us about life in Paradise and about Iblis?',
+      matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+      matchingPairs: [
+        { left: 'a wife called Eve (Hawwa)', right: 'a partner who had this name' },
+        { left: 'to be his companion', right: 'so that he had someone to share his life with' },
+        { left: 'more wonderful than we can imagine', right: 'better than anything people can picture' },
+        { left: 'pretending to be their friend', right: 'acting as if he cared about them, but not really' },
+        { left: 'whispered', right: 'said very quietly and secretly' },
+      ],
+      correctAnswer: {
+        'a wife called Eve (Hawwa)': 'a partner who had this name',
+        'to be his companion': 'so that he had someone to share his life with',
+        'more wonderful than we can imagine': 'better than anything people can picture',
+        'pretending to be their friend': 'acting as if he cared about them, but not really',
+        'whispered': 'said very quietly and secretly',
+      },
+      explanation: '“Called + name” gives a person’s name. “To be + role” gives the purpose of a gift or action. “More … than we can imagine” compares Paradise with the limit of human imagination. “Pretend to be” means to act as if something is true when it is not; the chapter adds, “It was a big lie.”',
+      feedback: {
+        correct: 'Correct. You understood how each phrase adds meaning to the chapter.',
+        incorrect: 'Read Chapter 5 again and look at the words around each phrase, for example “It was a big lie” after “pretending to be their friend”.',
+      },
+    },
+    {
+      id: 'adam-b1-language-5-comparison-and-restriction',
+      type: 'choose-form',
+      title: 'Beginnings and a Restriction',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 5.',
+      question: 'Which forms follow “start”, “begin” and “ask … not …”?',
+      formChoices: [
+        {
+          sentence: 'Adam was in Paradise, but he started [choice] lonely.',
+          options: ['feel', 'to feel', 'felt'],
+          answer: 1,
+        },
+        {
+          sentence: 'They began [choice] in Paradise.',
+          options: ['living', 'live', 'lived'],
+          answer: 0,
+        },
+        {
+          sentence: 'Allah only asked them [choice] near one tree.',
+          options: ['not go', 'don’t go', 'not to go'],
+          answer: 2,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Start” and “begin” are followed by “to + verb” or “-ing” (started to feel, began living). Only the first verb shows the past; the second verb does not change. To report a negative request, use ask + person + not to + verb: “asked them not to go”.',
+      feedback: {
+        correct: 'Correct. You chose the right verb patterns for a beginning and a reported restriction.',
+        incorrect: 'Check Chapter 5: after “started” and “began”, the verb does not take the past form. For a request not to do something, “not” comes before “to”.',
+      },
+    },
+    {
+      id: 'adam-b1-language-5-time-manner-condition',
+      type: 'transformation',
+      title: 'From Reported Words to Direct Words',
+      instructions: 'The chapter reports what Iblis whispered. Complete Iblis’s words as he might have said them directly.',
+      question: 'How does a reported “if … would …” sentence change when we give the speaker’s direct words?',
+      transformItems: [
+        {
+          source: 'He whispered to them that if they ate from that one tree, they would never die.',
+          frame: 'He whispered to them, “If you eat from that one tree, you [blank] die.”',
+          answers: ['will never', 'will not ever', 'won’t ever', 'shall never'],
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'In direct words about the future, Iblis would use “If + present, … will + verb”: “If you eat …, you will never die.” When the narrator reports it in a past story, the verbs move back: eat → ate, will → would. The chapter makes clear that this claim was false: “It was a big lie.”',
+      feedback: {
+        correct: 'Well done. You changed the reported claim back into direct words.',
+        incorrect: 'In direct speech the verbs move forward again: “ate” becomes “eat”, and “would” becomes “will”. Keep the word “never”.',
+      },
+    },
     { id: 'adam-b1-language-5-build-advice-situation', type: 'reflection', title: 'Build a New Advice Situation', instructions: 'Write or say four connected B1 sentences about a new situation with a beginning, one clear restriction, and a conditional result. Use at least three Chapter 5 patterns.', question: 'Can you reuse the chapter’s language relationships in a new situation without retelling Chapter 5?', correctAnswer: null, explanation: 'A strong response may use “started to ...”, “began + -ing”, “more ... than ...”, “asked + person + not to ...”, “when ...”, and an “if ... would ...” relationship.', feedback: { correct: 'Keep the sentences connected and make the restriction and result easy to follow.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Show the beginning of a feeling or activity with “started to ...” or “began + -ing”.', mode: 'Individual' }, { question: 'Sentence 2 — Add a comparison with “more ... than ...” if it fits your situation.', mode: 'Individual' }, { question: 'Sentence 3 — Report one negative instruction with “asked + person + not to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Add a condition and result with “if ... would ...” or another natural conditional pattern.', mode: 'Pair' }] },
   ],
 };
 
 export const adamB1LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
   6: [
-    { id: 'adam-b1-language-6-success-causation-earlier-past', type: 'matching', title: 'Success, Influence, and an Earlier Warning', instructions: 'Match each Chapter 6 expression with the meaning relationship it creates.', question: 'How does the chapter show a successful action, influence on other people, and an event that happened earlier?', matchingPairs: [{ left: 'Iblis managed to trick them', right: 'shows that an attempted action was successfully completed' }, { left: 'He convinced them to believe his lies', right: 'shows one person influencing others to accept an idea' }, { left: 'the warning Allah had given them', right: 'places the giving of the warning before the later forgetting' }], correctAnswer: { 'Iblis managed to trick them': 'shows that an attempted action was successfully completed', 'He convinced them to believe his lies': 'shows one person influencing others to accept an idea', 'the warning Allah had given them': 'places the giving of the warning before the later forgetting' }, explanation: '“Manage to + verb” marks successful completion, “convince + person + to + verb” shows influence, and the past perfect “had given” makes an earlier past event clear in relation to a later one.', feedback: { correct: 'Correct. You separated successful action, influence, and earlier past time.', incorrect: 'Ask whether the phrase shows success, persuasion, or an event that happened before another past event.' } },
-    { id: 'adam-b1-language-6-sequence-change-discovery', type: 'matching', title: 'Building a Sequence of Change', instructions: 'Match each expression with the role it plays in the unfolding sequence.', question: 'How does Chapter 6 move from actions to feelings, change, and discovery?', matchingPairs: [{ left: 'stretched out his hand, picked one of the fruits and offered it to Eve', right: 'links several completed actions in chronological order' }, { left: 'When Adam finished eating', right: 'marks the point in time before the next reaction' }, { left: 'he felt that his heart was filled with pain, sadness and shame', right: 'describes an emotional state after the action' }, { left: 'the surrounding atmosphere changed and the internal harmony ceased', right: 'presents two resulting changes in the situation' }, { left: 'Adam discovered that he and his wife were uncovered', right: 'introduces a realization using “discover that + clause”' }], correctAnswer: { 'stretched out his hand, picked one of the fruits and offered it to Eve': 'links several completed actions in chronological order', 'When Adam finished eating': 'marks the point in time before the next reaction', 'he felt that his heart was filled with pain, sadness and shame': 'describes an emotional state after the action', 'the surrounding atmosphere changed and the internal harmony ceased': 'presents two resulting changes in the situation', 'Adam discovered that he and his wife were uncovered': 'introduces a realization using “discover that + clause”' }, explanation: 'The paragraph combines coordinated past actions with a “when” time clause, a feeling expression with “felt that ...”, resulting changes, and “discover that + clause” to move the narrative forward coherently.', feedback: { correct: 'Good. You tracked action, time, feeling, change, and realization across the paragraph.', incorrect: 'Decide whether each phrase advances actions, marks time, describes emotion, shows change, or introduces a realization.' } },
-    { id: 'adam-b1-language-6-result-purpose-cause', type: 'matching', title: 'Result, Purpose, and Cause', instructions: 'Match each expression with the relationship it expresses.', question: 'How does the final paragraph explain what followed, what the characters intended to do, and why?', matchingPairs: [{ left: 'their private parts became visible', right: 'shows a change of state with “become + adjective”' }, { left: 'so they both started cutting tree leaves', right: 'introduces a result that follows from the discovery' }, { left: 'to cover themselves', right: 'states the purpose of cutting the leaves' }, { left: 'because a sense of shame (hayâ) is part of inborn human nature', right: 'gives a reason for the reaction described' }, { left: 'They hurried to hide their private parts', right: 'shows urgent action directed toward a goal' }], correctAnswer: { 'their private parts became visible': 'shows a change of state with “become + adjective”', 'so they both started cutting tree leaves': 'introduces a result that follows from the discovery', 'to cover themselves': 'states the purpose of cutting the leaves', 'because a sense of shame (hayâ) is part of inborn human nature': 'gives a reason for the reaction described', 'They hurried to hide their private parts': 'shows urgent action directed toward a goal' }, explanation: '“Become + adjective” marks a change of state, “so” links a result, “to + verb” can express purpose, “because” introduces a reason, and “hurry to + verb” presents an urgent goal-directed action.', feedback: { correct: 'Correct. You distinguished change, result, purpose, cause, and urgent goal.', incorrect: 'Look for what changed, what happened as a result, what the action was for, and which clause explains why.' } },
+    {
+      id: 'adam-b1-language-6-success-causation-earlier-past',
+      type: 'multiple-choice',
+      title: 'What Does “Managed to” Tell Us?',
+      instructions: 'Read the first sentence of Chapter 6. Then choose the best meaning.',
+      question: '“Eventually, Iblis managed to trick them.” What do “eventually” and “managed to” tell us together?',
+      options: [
+        'Iblis tricked them easily, the first time he tried.',
+        'Iblis tried to trick them, but he did not succeed.',
+        'Iblis had tried for some time, and in the end he succeeded.',
+        'Iblis was ordered to trick them.',
+      ],
+      correctAnswer: 2,
+      explanation: '“Manage to + verb” means to succeed in doing something difficult. “Eventually” means “in the end, after some time”. Together they show that Iblis’s success came only after effort. In the same paragraph, the past perfect “the warning Allah had given them” shows that the warning came before they forgot it.',
+      feedback: {
+        correct: 'Correct. “Managed to” shows success after difficulty, and “eventually” shows it came in the end.',
+        incorrect: 'Look at the first word of Chapter 6, “Eventually”. Does it mean “at once” or “in the end”? Then ask what “managed to” adds.',
+      },
+    },
+    {
+      id: 'adam-b1-language-6-sequence-change-discovery',
+      type: 'sequencing',
+      title: 'Put the Events in Order',
+      instructions: 'Put the parts of Chapter 6 in the order in which they happened.',
+      question: 'How do the verbs and time clauses show the order of events?',
+      sequencingItems: [
+        { id: 'a', text: 'He convinced them to believe his lies, …' },
+        { id: 'b', text: 'Adam stretched out his hand, picked one of the fruits and offered it to Eve.' },
+        { id: 'c', text: 'They both ate of the forbidden tree.' },
+        { id: 'd', text: 'When Adam finished eating, he felt that his heart was filled with pain, sadness and shame.' },
+        { id: 'e', text: 'They hurried to hide their private parts …' },
+      ],
+      correctAnswer: ['a', 'b', 'c', 'd', 'e'],
+      explanation: 'The chapter tells the events in time order. A list of past simple verbs (stretched out, picked, offered) gives actions one after another. The time clause “When Adam finished eating” marks the point after which the feeling came, and the final actions show the reaction to what they discovered.',
+      feedback: {
+        correct: 'Correct. You followed the actions, the time clause and the reaction in order.',
+        incorrect: 'Read Chapter 6 again. What had to happen before Adam picked the fruit? What does “When Adam finished eating” tell you about the order?',
+      },
+    },
+    {
+      id: 'adam-b1-language-6-result-purpose-cause',
+      type: 'word-bank',
+      title: 'Result, Purpose and Reason',
+      instructions: 'Complete the lines from Chapter 6 with words from the bank. Three words are not needed.',
+      question: 'Which words show a result, a purpose and a reason?',
+      fillBlanksText: 'Adam (pbuh) discovered that he and his wife were uncovered, [blank] they both started cutting tree leaves in Paradise [blank] cover themselves. They hurried to hide their private parts [blank] a sense of shame (hayâ) is part of inborn human nature …',
+      wordBank: ['so', 'to', 'because', 'because of', 'for', 'although'],
+      correctAnswer: ['so', 'to', 'because'],
+      explanation: '“So” introduces a result: they discovered they were uncovered, so they started cutting leaves. “To + verb” gives the purpose of the action (to cover themselves), not “for cover”. “Because” introduces a reason with a full clause; “because of” needs a noun.',
+      feedback: {
+        correct: 'Correct. You linked the result, the purpose and the reason.',
+        incorrect: 'Read the last paragraph of Chapter 6. Ask: what happened as a result? Why did they cut leaves? Why did they hurry?',
+      },
+    },
     { id: 'adam-b1-language-6-build-consequence-chain', type: 'reflection', title: 'Build a Consequence Chain', instructions: 'Write or say four connected B1 sentences about a new situation in which an earlier warning is forgotten, an action creates a change, and someone reacts for a clear purpose. Use at least three Chapter 6 patterns.', question: 'Can you use the chapter’s language to build a new action → change → reaction sequence without retelling Chapter 6?', correctAnswer: null, explanation: 'A strong response may use “managed to ...”, “convinced + person + to ...”, “had + past participle”, “when ...”, “became ...”, “so ...”, “to + verb” for purpose, and “because ...”.', feedback: { correct: 'Keep the sequence easy to follow and make the purpose and cause explicit.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Mention an earlier warning or instruction using a past-perfect form such as “had given” or “had told”.', mode: 'Individual' }, { question: 'Sentence 2 — Show a successful action or influence with “managed to ...” or “convinced + person + to ...”.', mode: 'Individual' }, { question: 'Sentence 3 — Describe a change and its result using “became ...” and/or “so ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Explain the reaction with a purpose phrase “to ...” and a reason with “because ...”.', mode: 'Pair' }] },
   ],
 };
 
 export const adamB1LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
   7: [
-    { id: 'adam-b1-language-7-intention-response-decision', type: 'matching', title: 'Intention, Regret, and Decision', instructions: 'Match each Chapter 7 expression with the meaning it adds.', question: 'How does the chapter distinguish intention, emotional response, learning, and a later decision?', matchingPairs: [{ left: "it wasn’t on purpose", right: 'shows that the wrong action was not intentional' }, { left: 'They were very sad about their wrong action', right: 'describes an emotional response to what happened' }, { left: 'learned from their mistake', right: 'shows a lesson taken from a past action' }, { left: 'decided never to repeat it', right: 'expresses a strong decision about future behavior' }], correctAnswer: { "it wasn’t on purpose": 'shows that the wrong action was not intentional', 'They were very sad about their wrong action': 'describes an emotional response to what happened', 'learned from their mistake': 'shows a lesson taken from a past action', 'decided never to repeat it': 'expresses a strong decision about future behavior' }, explanation: 'The chapter moves from absence of intention to regret, learning, and a decision about what should not happen again. These forms help speakers explain responsibility without reducing everything to a single yes/no judgment.', feedback: { correct: 'Correct. You separated intention, feeling, learning, and commitment.', incorrect: 'Ask what each expression tells us: Was it intended? How did they feel? What did they learn? What did they decide?' } },
-    { id: 'adam-b1-language-7-speech-request-cause-contrast', type: 'matching', title: 'Speech, Request, Cause, and Contrast', instructions: 'Match each expression with its discourse function.', question: 'How does Chapter 7 connect what people say with explanation and contrast?', matchingPairs: [{ left: '“Are you running away from Me?”', right: 'uses direct speech to present a question exactly as spoken' }, { left: 'Adam replied, “No, my Lord, but I am shy of You.”', right: 'reports an answer and uses “but” to qualify or contrast the first idea' }, { left: 'They wanted Allah to pardon them', right: 'uses “want + person + to + verb” to express a desired action by someone else' }, { left: 'because he was arrogant', right: 'gives the reason for the behavior described before it' }, { left: 'On the other hand', right: 'signals a shift to a contrasting perspective or path' }], correctAnswer: { '“Are you running away from Me?”': 'uses direct speech to present a question exactly as spoken', 'Adam replied, “No, my Lord, but I am shy of You.”': 'reports an answer and uses “but” to qualify or contrast the first idea', 'They wanted Allah to pardon them': 'uses “want + person + to + verb” to express a desired action by someone else', 'because he was arrogant': 'gives the reason for the behavior described before it', 'On the other hand': 'signals a shift to a contrasting perspective or path' }, explanation: 'Direct speech brings a voice into the narrative, “but” qualifies or contrasts, “want + person + to + verb” expresses a desired action, “because” gives cause, and “on the other hand” organizes contrast across a longer stretch of discourse.', feedback: { correct: 'Good. You identified how the chapter manages voice, cause, desire, and contrast.', incorrect: 'Look for the exact spoken words, the desired action, the reason, and the phrase that changes perspective.' } },
-    { id: 'adam-b1-language-7-purpose-responsibility-future', type: 'matching', title: 'Purpose and Future Responsibility', instructions: 'Match each expression with the relationship it creates.', question: 'How does the final paragraph move from pardon to a new role on earth?', matchingPairs: [{ left: 'put them on earth to live there', right: 'uses “to + verb” to state the purpose or intended role of the move' }, { left: 'gave them everything to rule on earth', right: 'links what was given with the purpose it would serve' }, { left: 'They would direct, control and make everything better', right: 'uses “would” to describe expected future actions from a past narrative viewpoint' }, { left: 'make everything better', right: 'uses “make + object + adjective” to describe causing a change of state' }], correctAnswer: { 'put them on earth to live there': 'uses “to + verb” to state the purpose or intended role of the move', 'gave them everything to rule on earth': 'links what was given with the purpose it would serve', 'They would direct, control and make everything better': 'uses “would” to describe expected future actions from a past narrative viewpoint', 'make everything better': 'uses “make + object + adjective” to describe causing a change of state' }, explanation: 'The final paragraph combines purpose infinitives with “would” for future-in-the-past expectations and “make + object + adjective” for causing change. Together they frame responsibility as an ongoing role rather than one isolated action.', feedback: { correct: 'Correct. You connected purpose, expected future action, and caused change.', incorrect: 'Ask what each “to + verb” is for, what “would” predicts from the past viewpoint, and what “make ... better” causes.' } },
+    {
+      id: 'adam-b1-language-7-intention-response-decision',
+      type: 'matching',
+      title: 'Words for Responsibility',
+      instructions: 'Match each phrase from Chapter 7 with its meaning.',
+      question: 'What do these phrases tell us about the two different responses to a wrong action?',
+      matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+      matchingPairs: [
+        { left: 'it wasn’t on purpose', right: 'they did not do it deliberately' },
+        { left: 'learned from their mistake', right: 'understood a lesson because of what went wrong' },
+        { left: 'pardon', right: 'forgive' },
+        { left: 'chose an opposite path', right: 'took a completely different direction' },
+        { left: 'the biggest barrier', right: 'the thing that stops people most' },
+      ],
+      correctAnswer: {
+        'it wasn’t on purpose': 'they did not do it deliberately',
+        'learned from their mistake': 'understood a lesson because of what went wrong',
+        'pardon': 'forgive',
+        'chose an opposite path': 'took a completely different direction',
+        'the biggest barrier': 'the thing that stops people most',
+      },
+      explanation: '“On purpose” means deliberately, so “it wasn’t on purpose” separates the mistake from a planned wrong. “Learn from + mistake” means to take a lesson from it. “Pardon” is a formal word for “forgive”. “An opposite path” and “the biggest barrier” help the chapter contrast Adam and Eve’s response with Iblis’s arrogance.',
+      feedback: {
+        correct: 'Correct. These phrases show how the chapter talks about responsibility.',
+        incorrect: 'Read the second and third paragraphs of Chapter 7 again and use the words around each phrase to find its meaning.',
+      },
+    },
+    {
+      id: 'adam-b1-language-7-speech-request-cause-contrast',
+      type: 'word-bank',
+      title: 'Linking Two Responses',
+      instructions: 'Complete the lines from Chapter 7 with words from the bank. Three words are not needed.',
+      question: 'Which linking words show contrast inside a sentence, contrast between two paths, and a reason?',
+      fillBlanksText: 'They made a mistake, [blank] it wasn’t on purpose. … [blank], Iblis chose an opposite path. He never admitted he was wrong [blank] he was arrogant.',
+      wordBank: ['but', 'On the other hand', 'because', 'so', 'In addition', 'because of'],
+      correctAnswer: ['but', 'On the other hand', 'because'],
+      explanation: '“But” limits the first idea inside one sentence: there was a mistake, but it was not intentional. “On the other hand” starts a new part of the text and moves to a contrasting person or path. “Because” gives the reason with a full clause (he was arrogant); “because of” would need a noun.',
+      feedback: {
+        correct: 'Correct. You chose the right links for contrast and reason.',
+        incorrect: 'Ask for each gap: does it limit the first idea, move to a different person’s path, or give a reason? Then check Chapter 7.',
+      },
+    },
+    {
+      id: 'adam-b1-language-7-purpose-responsibility-future',
+      type: 'choose-form',
+      title: 'Decision, Wish and Purpose',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 7.',
+      question: 'Which verb forms follow “decide never”, “want someone” and a purpose?',
+      formChoices: [
+        {
+          sentence: 'They said sorry to Allah, learned from their mistake and decided never [choice] it.',
+          options: ['repeating', 'to repeat', 'repeat'],
+          answer: 1,
+        },
+        {
+          sentence: 'They wanted Allah [choice] them.',
+          options: ['to pardon', 'pardon', 'that He pardons'],
+          answer: 0,
+        },
+        {
+          sentence: 'Allah pardoned both Adam (pbuh) and Eve and put them on earth [choice] there.',
+          options: ['for living', 'for live', 'to live'],
+          answer: 2,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Decide (never) to + verb” expresses a decision about the future. “Want + person + to + verb” says what someone wants another person to do. “To + verb” after an action gives its purpose: they were put on earth to live there, not “for live”.',
+      feedback: {
+        correct: 'Correct. Each of these patterns uses “to + base verb”.',
+        incorrect: 'Look at the second and fourth paragraphs of Chapter 7. After “decided never”, “wanted Allah” and “on earth”, which form do you find?',
+      },
+    },
     { id: 'adam-b1-language-7-build-repair-plan', type: 'reflection', title: 'Build a Repair-and-Responsibility Plan', instructions: 'Write or say four connected B1 sentences about a new situation where someone makes an unintentional mistake, responds responsibly, and then takes on a useful next step. Use at least four Chapter 7 patterns.', question: 'Can you use the chapter’s language to explain intention, response, reason, decision, and future responsibility in a new context?', correctAnswer: null, explanation: 'A strong response may include “not on purpose”, “was/were sad about ...”, “learned from ...”, “decided never to ...”, “wanted + person + to ...”, “because ...”, “on the other hand ...”, “to + verb” for purpose, or “would ...” for an expected later action.', feedback: { correct: 'Keep the four sentences connected so the intention, response, reason, and next responsibility are easy to follow.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Explain that a mistake happened but was not on purpose.', mode: 'Individual' }, { question: 'Sentence 2 — Describe the person’s response and what they learned from the mistake.', mode: 'Individual' }, { question: 'Sentence 3 — Give a reason and a decision using “because ...” and “decided never to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — State a useful next purpose or expected responsibility using “to + verb” and/or “would ...”.', mode: 'Pair' }] },
   ],
 };
