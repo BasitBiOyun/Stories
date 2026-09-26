@@ -8,7 +8,7 @@ Goal: every chapter's Language Focus follows Notice → Build → Use (A2: Look 
 | Adam A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ✅ |
 | Abraham (ibrahim) B1 | ✅ | ✅ |
 | Abraham B2 | ✅ | ✅ |
-| Moses (musa) A2 / B1 / B2 | ✅ ✅ ✅ | ⏳ ✅ ⏳ |
+| Moses (musa) A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ⏳ |
 | Mecca A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ⏳ |
 
 ## Still to do (⏳ above, plus)
@@ -33,6 +33,7 @@ For each variant: rewrite per `REWRITE_BRIEF.md`, then run
 - Moses B1 AR: ch11 «أفاعي» → أفاعٍ; ch1 «نبيَّا» → نبيًّا; sukun before «ال» in ch2, ch12, ch13.
 - Mecca B1 AR: ch9 «العبيد يُواجِهْنَ» → يواجهون; ch8 «لديهم» → لديها.
 - Mecca A2 AR: ch9 «كانَ بِلال» (tanween), ch12 «كَلِمات» (case), ch13 «حَزِينًا جِدًّا لِأَنْ يُؤَذِّنَ».
+- Moses A2 AR: ch13 «فَاسْتَمِرَّ فِي إِيذَاءِ» → فَاسْتَمَرَّ; Latin commas in ch4, ch10.
 - Adam A2 AR: ch9 «أَیْضًا» uses Persian ی (U+06CC).
 - Adam B2 AR: ch7 «وتغير الأجواء» → وتغيّرت; ch13 «أن قابيل، مع أنه…» lacks a خبر.
 - English: see the per-book notes in `audit/` and the commit messages (minor punctuation / wording only).
