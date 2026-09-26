@@ -380,11 +380,11 @@ def build_sfx() -> np.ndarray:
     place(fx, shimmer(1.2, 91), 1.05, 0.5)                    # flare
     for at in (1.6, 2.3, 2.9, 3.4, 3.8):                       # cards past the lens
         place(fx, whoosh(0.55, 400, 6000, 0.55), at - 0.3, 0.1)
-    place(fx, whoosh(1.3, 150, 2500, 0.8), 3.5, 0.14)
-    place(fx, impact(0.6, 50), 4.667, 0.18)
-    place(fx, click(1900), 5.8, 0.22)                         # play narration
-    place(fx, click(2600, 0.05), 7.4, 0.16)                   # hotspot
-    place(fx, whoosh(1.2, 250, 7000, 0.92), 9.3, 0.13)        # push into the word
+    place(fx, whoosh(1.3, 150, 2500, 0.8), 3.0, 0.14)
+    place(fx, impact(0.6, 50), 4.2, 0.18)
+    place(fx, click(1900), 5.42, 0.22)                         # play narration
+    place(fx, click(2600, 0.05), 7.26, 0.16)                   # hotspot
+    place(fx, whoosh(1.2, 250, 7000, 0.92), 9.25, 0.13)        # push into the word
     place(fx, click(2300), 10.99, 0.28)                       # tap "Messenger"
     place(fx, chime((93,), 0), 11.0, 0.08)
     place(fx, whoosh(0.9, 300, 5000, 0.6), 13.0, 0.08)
