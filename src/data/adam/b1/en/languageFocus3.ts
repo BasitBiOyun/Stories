@@ -3,21 +3,99 @@ import type { Exercise } from '../../../../types';
 export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
   8: [
     {
-      id: 'adam-b1-language-8-future-necessity-purpose-addition', type: 'matching', title: 'Future Role, Necessity, Purpose, and Addition', instructions: 'Match each Chapter 8 expression with the meaning relationship it builds.', question: 'How does the chapter move from an expected role on earth to necessary action and purpose?',
-      matchingPairs: [{ left: 'They would use land to grow crops and keep animals', right: 'uses “would + verb” for expected future action viewed from an earlier point in the story' }, { left: 'they had to struggle to survive', right: 'uses “had to + verb” to express necessity in a past situation' }, { left: 'to survive / to keep themselves alive', right: 'uses “to + verb” to express purpose' }, { left: 'In addition', right: 'adds another related responsibility or difficulty to the previous idea' }],
-      correctAnswer: { 'They would use land to grow crops and keep animals': 'uses “would + verb” for expected future action viewed from an earlier point in the story', 'they had to struggle to survive': 'uses “had to + verb” to express necessity in a past situation', 'to survive / to keep themselves alive': 'uses “to + verb” to express purpose', 'In addition': 'adds another related responsibility or difficulty to the previous idea' },
-      explanation: 'Chapter 8 combines future-in-the-past expectations with past necessity, purpose infinitives, and an additive connector. These forms help turn a general role into a connected account of what people were expected and required to do.', feedback: { correct: 'Correct. You separated expected future action, necessity, purpose, and addition.', incorrect: 'Ask what each expression does: predict from a past viewpoint, show necessity, explain purpose, or add information.' },
+      id: 'adam-b1-language-8-future-necessity-purpose-addition',
+      type: 'drag-drop',
+      title: 'Why, With What, How Long?',
+      instructions: 'Read each part of Chapter 8. Does the phrase in it tell us why (purpose), with what (means), or how long (time)? Put it in the right group.',
+      question: 'What do “to + verb”, “with + noun” and the two uses of “for” add to a sentence?',
+      dragDropGroups: [
+        {
+          group: 'Why? (purpose)',
+          items: [
+            '… use land to grow crops and keep animals.',
+            '… build buildings for shelter …',
+            '… work hard to keep themselves alive.',
+          ],
+        },
+        {
+          group: 'With what? (means)',
+          items: [
+            '… protect themselves with clothes and weapons …',
+          ],
+        },
+        {
+          group: 'How long? (time)',
+          items: [
+            'Adam (pbuh) and Eve lived on earth for many years.',
+          ],
+        },
+      ],
+      correctAnswer: {
+        'Why? (purpose)': [
+          '… use land to grow crops and keep animals.',
+          '… build buildings for shelter …',
+          '… work hard to keep themselves alive.',
+        ],
+        'With what? (means)': [
+          '… protect themselves with clothes and weapons …',
+        ],
+        'How long? (time)': [
+          'Adam (pbuh) and Eve lived on earth for many years.',
+        ],
+      },
+      explanation: '“To + verb” (to grow, to keep) gives the purpose of an action. “For + noun” can also give a purpose (for shelter), but “for + a period of time” (for many years) tells us how long. “With + noun” (with clothes and weapons) tells us what people used to do something.',
+      feedback: {
+        correct: 'Correct. You noticed that “for” can show a purpose or a length of time.',
+        incorrect: 'Ask a question about each phrase: Why did they do it? What did they use? How long did it last? Notice that “shelter” is a purpose, but “many years” is a time.',
+      },
     },
     {
-      id: 'adam-b1-language-8-means-cause-duration-contrast', type: 'matching', title: 'Means, Cause, Duration, and Contrast', instructions: 'Match each expression with its function in the chapter.', question: 'How does Chapter 8 explain how actions are done, why actions happen, and how life develops over time?',
-      matchingPairs: [{ left: 'protect themselves with clothes and weapons', right: 'uses “with + noun” to show the means or tools used for protection' }, { left: 'because he wanted people not to remember Allah', right: 'uses “because + clause” to explain motive or cause' }, { left: 'lived on earth for many years', right: 'uses “for + period” to express duration' }, { left: 'both good and difficult times', right: 'places two contrasting kinds of experience inside one balanced expression' }],
-      correctAnswer: { 'protect themselves with clothes and weapons': 'uses “with + noun” to show the means or tools used for protection', 'because he wanted people not to remember Allah': 'uses “because + clause” to explain motive or cause', 'lived on earth for many years': 'uses “for + period” to express duration', 'both good and difficult times': 'places two contrasting kinds of experience inside one balanced expression' },
-      explanation: 'The chapter does more than list events: “with” shows means, “because” gives a motive, “for” marks duration, and “both ... and ...” balances contrasting experiences within the same life period.', feedback: { correct: 'Good. You identified means, cause, duration, and balanced contrast.', incorrect: 'Look for the tool used, the reason given, the time period, and the two contrasted experiences.' },
+      id: 'adam-b1-language-8-means-cause-duration-contrast',
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct a future seen from the past, a purpose and a “want” pattern?',
+      errorItems: [
+        {
+          sentence: 'They will use land to grow crops and keep animals.',
+          error: 'will',
+          options: ['must', 'would', 'are going to'],
+          answer: 1,
+        },
+        {
+          sentence: 'On earth, they had to struggle for survive and work hard to keep themselves alive.',
+          error: 'for survive',
+          options: ['to survive', 'for surviving to', 'to surviving'],
+          answer: 0,
+        },
+        {
+          sentence: 'He was still there because he wanted people don’t remember Allah.',
+          error: 'people don’t remember',
+          options: ['people not remember', 'people to don’t remember', 'people not to remember'],
+          answer: 2,
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'The story is told in the past, so a role that was still ahead of Adam and Eve is described with “would + verb”, not “will”. Purpose is “to + verb” (to survive), not “for + verb”. In the negative, “want + person + to” becomes “want + person + not to + verb”: he wanted people not to remember Allah.',
+      feedback: {
+        correct: 'Well done. You fixed “would”, the purpose infinitive and the negative “want” pattern.',
+        incorrect: 'Compare each sentence with Chapter 8: the first sentence of the chapter, the second paragraph, and the sentence about Iblis in the third paragraph.',
+      },
     },
     {
-      id: 'adam-b1-language-8-connect-a-survival-account', type: 'multiple-choice', title: 'Connect a Survival Account', instructions: 'Choose the sentence that best combines necessity, purpose, and addition in natural B1 English.', question: 'Which sentence uses the Chapter 8 relationships most clearly?',
-      options: ['They had to build a shelter to stay safe. In addition, they had to find food because winter was coming.', 'They would shelter because addition had to safe food.', 'To they had to survive, in addition because shelter.'], correctAnswer: 0,
-      explanation: 'The first sentence uses “had to” for necessity, “to stay safe” for purpose, “in addition” to add another need, and “because” to explain a reason. The relationships are clear and connected rather than isolated.', feedback: { correct: 'Correct. The sentence connects necessity, purpose, addition, and cause naturally.', incorrect: 'Choose the option where each connector has a clear job and the clauses form a coherent short account.' },
+      id: 'adam-b1-language-8-connect-a-survival-account',
+      type: 'word-bank',
+      title: 'Necessity and Addition',
+      instructions: 'Complete the lines from Chapter 8 with words from the bank. Three words are not needed.',
+      question: 'Which words add another need, show past necessity, and join two kinds of experience?',
+      fillBlanksText: '[blank], they [blank] protect themselves with clothes and weapons and protect themselves from dangers in the wild. … They had [blank] good and difficult times and they had many children.',
+      wordBank: ['In addition', 'had to', 'both', 'However', 'must', 'either'],
+      correctAnswer: ['In addition', 'had to', 'both'],
+      explanation: '“In addition” adds another point of the same kind: one more thing they needed to do. “Had to + verb” is the past of “must” when it means necessity; “must” is not used for the past. “Both … and …” joins two things and says that each one is true: their life had good times and difficult times.',
+      feedback: {
+        correct: 'Correct. You added a need, showed past necessity and joined two experiences.',
+        incorrect: 'Read the second and third paragraphs of Chapter 8. Does the first sentence add or contrast? Is the story in the past? Which word goes with “… and …”?',
+      },
     },
     {
       id: 'adam-b1-language-8-build-new-responsibility-account', type: 'reflection', title: 'Build a New Responsibility Account', instructions: 'Write or say four connected B1 sentences about people beginning life in a difficult new place. Use at least four Chapter 8 patterns.', question: 'Can you use the chapter’s language to connect an expected role, necessity, purpose, addition, and cause in a new context?', correctAnswer: null,
@@ -30,26 +108,74 @@ export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
 export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
   9: [
     {
-      id: 'adam-b1-language-9-time-change-continuation', type: 'matching', title: 'Time, Change, and Continuation', instructions: 'Match each Chapter 9 expression with the relationship it builds in the narrative.', question: 'How does the chapter show when events happen, when a role changes, and when an action continues?',
-      matchingPairs: [{ left: 'At that time', right: 'locates a situation at a particular stage in the past' }, { left: 'After a period of time, when a community came out', right: 'connects a later event with a time clause' }, { left: 'Adam became the first Messenger', right: 'uses “became” to show a change of role or state' }, { left: 'Allah never stopped sending messengers and sacred texts', right: 'uses “never stopped + -ing” to show continuation over time' }],
-      correctAnswer: { 'At that time': 'locates a situation at a particular stage in the past', 'After a period of time, when a community came out': 'connects a later event with a time clause', 'Adam became the first Messenger': 'uses “became” to show a change of role or state', 'Allah never stopped sending messengers and sacred texts': 'uses “never stopped + -ing” to show continuation over time' },
-      explanation: 'Chapter 9 organizes its ideas with time expressions, a change-of-state verb, and a continuation pattern. Together they help the reader follow development across time rather than read isolated facts.', feedback: { correct: 'Correct. You identified time reference, later sequence, change of role, and continuation.', incorrect: 'Ask whether the expression locates time, introduces a later stage, marks a new state, or shows that an action continued.' },
+      id: 'adam-b1-language-9-time-change-continuation',
+      type: 'true-false',
+      title: 'Stopped Doing or Stopped to Do?',
+      instructions: 'Read the sentence from Chapter 9. Then decide: true or false?',
+      question: '“Allah never stopped sending messengers and sacred texts to remind people of Him.” True or false: this sentence has the same meaning as “Allah never stopped to send messengers.”',
+      correctAnswer: false,
+      explanation: '“Stop + -ing” means that an activity ends: “never stopped sending” means the sending went on and never ended. “Stop + to + verb” means to pause one activity in order to do something else. So the two sentences have different meanings, and only “never stopped sending” fits the chapter.',
+      feedback: {
+        correct: 'Correct. “Never stopped sending” means the sending continued all the time.',
+        incorrect: 'Compare “I stopped eating” (I ended the activity) with “I stopped to eat” (I paused something else in order to eat). Which one matches the chapter’s meaning?',
+      },
     },
     {
-      id: 'adam-b1-language-9-teaching-purpose-direction', type: 'matching', title: 'Teaching, Direction, and Purpose', instructions: 'Match each pattern with its communicative function.', question: 'How does Chapter 9 express teaching, directing people, and acting for a purpose?',
-      matchingPairs: [{ left: 'started teaching people to live righteously and act honestly', right: 'uses “start + -ing” and “teach + person + to + verb” to introduce ongoing instruction' }, { left: 'taught their children to pray only to Allah and be aware of Iblis', right: 'uses “teach + person + to + verb” to express guidance about what someone should do' }, { left: 'sent many other messengers to show people the right path', right: 'uses “to + verb” after an action to express purpose' }, { left: 'wanted to make people keep Allah in their minds', right: 'uses “want to + verb” and “make + person + base verb” to express intention and influence' }],
-      correctAnswer: { 'started teaching people to live righteously and act honestly': 'uses “start + -ing” and “teach + person + to + verb” to introduce ongoing instruction', 'taught their children to pray only to Allah and be aware of Iblis': 'uses “teach + person + to + verb” to express guidance about what someone should do', 'sent many other messengers to show people the right path': 'uses “to + verb” after an action to express purpose', 'wanted to make people keep Allah in their minds': 'uses “want to + verb” and “make + person + base verb” to express intention and influence' },
-      explanation: 'The chapter repeatedly uses teaching and purpose structures to show how one person guides another. The forms are useful beyond this story whenever we explain instruction, intention, or influence.', feedback: { correct: 'Good. You separated teaching, guidance, purpose, and intended influence.', incorrect: 'Look for who teaches whom, what action follows “to”, and where the sentence expresses intention or influence.' },
+      id: 'adam-b1-language-9-teaching-purpose-direction',
+      type: 'sequencing',
+      title: 'Follow the Time Markers',
+      instructions: 'Put the parts of Chapter 9 in order. Use the time words to help you.',
+      question: 'How do “At that time”, “After a period of time”, “Thus” and “Years later” organise the chapter?',
+      sequencingItems: [
+        { id: 'a', text: 'At that time, there was no community.' },
+        { id: 'b', text: 'After a period of time, when a community formed, Adam (pbuh) became the first Messenger of Allah.' },
+        { id: 'c', text: 'Thus, he became the first human, the first father, and the first messenger of Islam.' },
+        { id: 'd', text: 'Years later, after the death of Adam (pbuh), Allah sent many other messengers …' },
+      ],
+      correctAnswer: ['a', 'b', 'c', 'd'],
+      explanation: '“At that time” describes the situation at the start. “After a period of time, when …” moves to a later stage, and “became” shows Adam’s new role. “Thus” draws a conclusion from what came before. “Years later, after the death of …” jumps forward to a much later time.',
+      feedback: {
+        correct: 'Correct. The time markers lead you through the stages of the chapter.',
+        incorrect: 'Look at the first words of each part. Which describes the starting situation, which a later stage, which a conclusion, and which a time long after?',
+      },
     },
     {
-      id: 'adam-b1-language-9-connect-time-purpose-result', type: 'multiple-choice', title: 'Connect Time, Purpose, and Result', instructions: 'Choose the option that uses Chapter 9 relationships naturally in a new B1 context.', question: 'Which short passage clearly connects a later stage, a new role, purpose, and a general result?',
-      options: ['After a few months, when the group became larger, Mira became its coordinator. She started teaching new members to use the system safely. She made a guide to help them work independently, because if people understand the process, they make fewer mistakes.', 'After because Mira became to teaching, if the guide people fewer mistakes.', 'Mira started coordinator when purpose and people make to safely because.'], correctAnswer: 0,
-      explanation: 'The first passage uses a time clause, “became” for a new role, “started teaching” for instruction, “to help” for purpose, and an if-clause for a general result. The ideas form a coherent B1 paragraph.', feedback: { correct: 'Correct. The paragraph connects time, role change, teaching, purpose, and result naturally.', incorrect: 'Choose the option where each structure has a clear job and the sentences build one connected situation.' },
+      id: 'adam-b1-language-9-connect-time-purpose-result',
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct “teach + person + to”, a purpose and an if-clause about a general truth?',
+      errorItems: [
+        {
+          sentence: 'He started teaching people live righteously and act honestly.',
+          error: 'people live',
+          options: ['people living', 'people to live', 'to people live'],
+          answer: 1,
+        },
+        {
+          sentence: '… Allah sent many other messengers for show people the right path and the ways to stay away from Iblis.',
+          error: 'for show',
+          options: ['to show', 'for showing to', 'to showing'],
+          answer: 0,
+        },
+        {
+          sentence: 'They wanted people to keep Allah in their minds because if people will forget Allah, they lose the meaning and purpose of life.',
+          error: 'will forget',
+          options: ['would forget', 'forgot', 'forget'],
+          answer: 2,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Teach + person + to + verb” says what someone learns to do: teaching people to live righteously. “To + verb” after an action gives its purpose: messengers were sent to show the right path. In an if-clause about something that is generally true, use the present simple, not “will”: “if people forget Allah, they lose …”.',
+      feedback: {
+        correct: 'Well done. You fixed the teaching pattern, the purpose and the if-clause.',
+        incorrect: 'Compare each sentence with Chapter 9: the first paragraph, and the last paragraph that begins “Years later …”.',
+      },
     },
     {
       id: 'adam-b1-language-9-build-guidance-paragraph', type: 'reflection', title: 'Build a Guidance Paragraph', instructions: 'Write or say four connected B1 sentences about someone who begins guiding a group. Use at least four Chapter 9 patterns.', question: 'Can you use the chapter’s language to show time, a new role, teaching, purpose, continuation, and a general result in a new context?', correctAnswer: null,
-      explanation: 'A strong response may use “after ... / when ...”, “became ...”, “started teaching ... to ...”, “never stopped + -ing”, “to + verb” for purpose, “wanted to ...”, “make + person + base verb”, or “if + present, present” for a general result.', feedback: { correct: 'Keep the four sentences connected so the role change, teaching, purpose, and result form one coherent paragraph.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Use “after ...” or “when ...” and “became” to introduce a new stage or role.', mode: 'Individual' }, { question: 'Sentence 2 — Use “started teaching ... to ...” to explain what guidance began.', mode: 'Individual' }, { question: 'Sentence 3 — Add a purpose with “to + verb” or an intention with “wanted to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Add either continuation with “never stopped + -ing” or a general result with “if + present, present”.', mode: 'Pair' }],
+      explanation: 'A strong response may use “after ... / when ...”, “became ...”, “started teaching ... to ...”, “never stopped + -ing”, “to + verb” for purpose, “wanted + person + to ...”, or “if + present, present” for a general result.', feedback: { correct: 'Keep the four sentences connected so the role change, teaching, purpose, and result form one coherent paragraph.', incorrect: '' },
+      discussionPrompts: [{ question: 'Sentence 1 — Use “after ...” or “when ...” and “became” to introduce a new stage or role.', mode: 'Individual' }, { question: 'Sentence 2 — Use “started teaching ... to ...” to explain what guidance began.', mode: 'Individual' }, { question: 'Sentence 3 — Add a purpose with “to + verb” or a wish with “wanted + person + to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Add either continuation with “never stopped + -ing” or a general result with “if + present, present”.', mode: 'Pair' }],
     },
   ],
 };
@@ -57,21 +183,92 @@ export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
 export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
   10: [
     {
-      id: 'adam-b1-language-10-growth-role-habit', type: 'matching', title: 'Growth, Roles, and Regular Work', instructions: 'Match each Chapter 10 expression with the job it does in the narrative.', question: 'How does the chapter show growing up, taking on a role, and doing regular work?',
-      matchingPairs: [{ left: 'The children grew up to be strong and healthy young adults.', right: 'shows development from childhood to a later state' }, { left: 'When they grew up, Habil became a shepherd.', right: 'uses a time clause and “became” to introduce a new role' }, { left: 'He kept cows, sheep and other animals.', right: 'describes regular work connected with Habil’s role' }, { left: 'Qabil was a farmer. He worked on the farm and grew crops.', right: 'adds connected actions that explain what a role involved' }],
-      correctAnswer: { 'The children grew up to be strong and healthy young adults.': 'shows development from childhood to a later state', 'When they grew up, Habil became a shepherd.': 'uses a time clause and “became” to introduce a new role', 'He kept cows, sheep and other animals.': 'describes regular work connected with Habil’s role', 'Qabil was a farmer. He worked on the farm and grew crops.': 'adds connected actions that explain what a role involved' },
-      explanation: 'Chapter 10 moves from childhood to adulthood, then links each brother with a role and the repeated work connected with that role. These patterns are useful when describing how a person develops and what their work involves.', feedback: { correct: 'Correct. You separated development, role change, and regular work.', incorrect: 'Ask whether the sentence shows a later state, a new role, or the actions that belong to that role.' },
+      id: 'adam-b1-language-10-growth-role-habit',
+      type: 'matching',
+      title: 'What Do These Phrases Mean?',
+      instructions: 'Match each phrase from Chapter 10 with its meaning.',
+      question: 'What do these phrases tell us about the two brothers?',
+      matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+      matchingPairs: [
+        { left: 'grew up to be', right: 'developed into, as they got older' },
+        { left: 'mostly jealous', right: 'usually unhappy when others had good things' },
+        { left: 'a serious disagreement', right: 'a big argument' },
+        { left: 'just a handful of', right: 'only a small amount of' },
+      ],
+      correctAnswer: {
+        'grew up to be': 'developed into, as they got older',
+        'mostly jealous': 'usually unhappy when others had good things',
+        'a serious disagreement': 'a big argument',
+        'just a handful of': 'only a small amount of',
+      },
+      explanation: '“Grow up to be + description” tells us what a child became as an adult. “Mostly” means “most of the time”. “Just” in “just a handful of” means “only” and makes the amount sound small, which contrasts with Habil’s “best and healthiest sheep”.',
+      feedback: {
+        correct: 'Correct. These phrases help the chapter describe and contrast the brothers.',
+        incorrect: 'Read Chapter 10 again and use the words around each phrase. For example, what does “just” add before “a handful of his crops that were not very valuable”?',
+      },
     },
     {
-      id: 'adam-b1-language-10-contrast-purpose-obligation', type: 'matching', title: 'Contrast, Purpose, and Obligation', instructions: 'Match each expression with its communicative function.', question: 'How does Chapter 10 connect a problem, a purpose, an obligation, and contrasting choices?',
-      matchingPairs: [{ left: 'To solve the problem, they had to offer an offering to Allah.', right: 'combines purpose with a past obligation' }, { left: 'Habil brought his best and healthiest sheep, but Qabil brought just a handful of his crops.', right: 'uses “but” to contrast two choices in one sentence' }, { left: 'Qabil didn’t care about pleasing Allah and his father Adam (pbuh).', right: 'uses “care about + -ing” in the negative to show lack of concern' }, { left: 'However, real goodness is giving out the best and the most loved.', right: 'uses “however” to shift from the example to a contrasting general principle' }],
-      correctAnswer: { 'To solve the problem, they had to offer an offering to Allah.': 'combines purpose with a past obligation', 'Habil brought his best and healthiest sheep, but Qabil brought just a handful of his crops.': 'uses “but” to contrast two choices in one sentence', 'Qabil didn’t care about pleasing Allah and his father Adam (pbuh).': 'uses “care about + -ing” in the negative to show lack of concern', 'However, real goodness is giving out the best and the most loved.': 'uses “however” to shift from the example to a contrasting general principle' },
-      explanation: 'The chapter does more than list events: it explains why an action was required, contrasts two responses, uses “didn’t care about + -ing” to show lack of concern, and then moves from the specific situation to a general idea.', feedback: { correct: 'Good. You identified purpose, obligation, contrast, lack of concern, and the move to a general principle.', incorrect: 'Look for the infinitive of purpose, “had to”, the contrast markers “but/however”, and the negative “didn’t care about + -ing” pattern.' },
+      id: 'adam-b1-language-10-contrast-purpose-obligation',
+      type: 'choose-form',
+      title: 'Roles, Obligation and the Best Gift',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 10.',
+      question: 'Which forms show a new role, a past obligation and the highest quality?',
+      formChoices: [
+        {
+          sentence: 'When they grew up, Habil [choice] a shepherd.',
+          options: ['become', 'became', 'was becoming'],
+          answer: 1,
+        },
+        {
+          sentence: 'To solve the problem, they [choice] make an offering to Allah.',
+          options: ['must', 'have to', 'had to'],
+          answer: 2,
+        },
+        {
+          sentence: 'Habil brought his [choice] and healthiest sheep as a gift for Allah, …',
+          options: ['best', 'better', 'most good'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Become” is irregular: become – became – become, so the past simple is “became”. “Had to” is the past form for a necessary action; “must” is not used for the past. “Good – better – best”: “best” is the superlative, and it matches “healthiest” in the same phrase.',
+      feedback: {
+        correct: 'Correct. You chose the past form, the past obligation and the superlative.',
+        incorrect: 'Check Chapter 10: the story is in the past, and “best” goes together with “healthiest”.',
+      },
     },
     {
-      id: 'adam-b1-language-10-build-connected-comparison', type: 'multiple-choice', title: 'Build a Connected Comparison', instructions: 'Choose the passage that uses Chapter 10 relationships naturally in a new B1 context.', question: 'Which passage clearly connects development, roles, purpose, obligation, and contrast?',
-      options: ['When Lina and Derya grew up, they chose different jobs. Lina became a nurse, while Derya became a designer. To finish their training, they had to complete long projects, but they worked in very different ways. Lina planned every step carefully; however, Derya preferred to experiment before making a final plan.', 'When grew up Lina became while Derya. To finish because had to but however different.', 'Lina and Derya role different to completing had jobs however because when.'], correctAnswer: 0,
-      explanation: 'The first passage uses a time clause with “grew up”, “became” for new roles, “to + verb” for purpose, “had to” for obligation, and “while/but/however” to organize contrast across connected sentences.', feedback: { correct: 'Correct. The passage connects the ideas and uses each structure for a clear purpose.', incorrect: 'Choose the option where time, new roles, purpose, obligation, and contrast form one coherent paragraph.' },
+      id: 'adam-b1-language-10-build-connected-comparison',
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct the verb forms after “loved” and “care about”, and the contrast between the brothers?',
+      errorItems: [
+        {
+          sentence: 'Habil was kind, gentle and loved take care of animals.',
+          error: 'loved take',
+          options: ['loved to taking', 'loved taking', 'love taking'],
+          answer: 1,
+        },
+        {
+          sentence: '… as a gift for Allah, and Qabil brought just a handful of his crops that were not very valuable.',
+          error: 'and Qabil',
+          options: ['but Qabil', 'so Qabil', 'because Qabil'],
+          answer: 0,
+        },
+        {
+          sentence: 'Qabil didn’t care about please Allah and his father Adam (pbuh).',
+          error: 'please',
+          options: ['to please', 'pleasing', 'pleased'],
+          answer: 1,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Love” can be followed by -ing (or to + verb), so “loved taking care of animals” is correct. “But” shows the contrast between the two gifts: Habil’s best sheep and Qabil’s crops that were not very valuable. After a preposition such as “about”, use the -ing form: “care about pleasing”.',
+      feedback: {
+        correct: 'Well done. You fixed the verb patterns and the contrast.',
+        incorrect: 'Compare each sentence with Chapter 10. Remember: after a preposition (about, of, in) the verb takes -ing.',
+      },
     },
     {
       id: 'adam-b1-language-10-compare-two-choices', type: 'reflection', title: 'Compare Two Choices', instructions: 'Write or say four connected B1 sentences about two people who respond differently to the same task. Use at least four Chapter 10 patterns.', question: 'Can you use the chapter’s language to show development or role, purpose, obligation, contrasting actions, and a general principle in a new situation?', correctAnswer: null,
@@ -84,21 +281,90 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
 export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
   11: [
     {
-      id: 'adam-b1-language-11-cause-threat-refusal', type: 'matching', title: 'Cause, Threat, and Refusal', instructions: 'Match each Chapter 11 expression with the meaning or function it carries.', question: 'How does the chapter use short language patterns to explain motive, threat, and refusal?',
-      matchingPairs: [{ left: 'Allah accepted Habil’s offering, because he gave from his heart.', right: 'uses “because” to explain the reason for an outcome' }, { left: 'I will kill you.', right: 'uses “will” in direct speech to express a threat or strong intention' }, { left: 'I won’t fight back and harm you.', right: 'uses “won’t” to refuse a future action' }, { left: 'you are my brother and I fear Allah', right: 'adds reasons that support the refusal' }],
-      correctAnswer: { 'Allah accepted Habil’s offering, because he gave from his heart.': 'uses “because” to explain the reason for an outcome', 'I will kill you.': 'uses “will” in direct speech to express a threat or strong intention', 'I won’t fight back and harm you.': 'uses “won’t” to refuse a future action', 'you are my brother and I fear Allah': 'adds reasons that support the refusal' },
-      explanation: 'Chapter 11 contrasts two future-oriented statements: one person announces harmful intent, while the other refuses harm and supports that refusal with reasons.', feedback: { correct: 'Correct. You identified cause, threat, refusal, and supporting reason.', incorrect: 'Look at what “because”, “will”, “won’t”, and “and” are doing in each statement.' },
+      id: 'adam-b1-language-11-cause-threat-refusal',
+      type: 'drag-drop',
+      title: 'Future, Past or Now?',
+      instructions: 'Read the words spoken in Chapter 11. Is the speaker talking about the future, the past or the present moment? Put each one in the right group.',
+      question: 'How do the verb forms in the spoken words show a threat, a refusal, an admission and a present feeling?',
+      dragDropGroups: [
+        {
+          group: 'The future: a threat or a refusal',
+          items: ['“I will kill you.”', '“I won’t fight back and harm you.”'],
+        },
+        {
+          group: 'The past: admitting what he did',
+          items: ['“I killed my brother.”', '“I did the worst thing in life.”'],
+        },
+        {
+          group: 'Now: a present judgment or inability',
+          items: ['“I am worse than this raven.”', '“I cannot hide my brother’s dead body.”'],
+        },
+      ],
+      correctAnswer: {
+        'The future: a threat or a refusal': ['“I will kill you.”', '“I won’t fight back and harm you.”'],
+        'The past: admitting what he did': ['“I killed my brother.”', '“I did the worst thing in life.”'],
+        'Now: a present judgment or inability': ['“I am worse than this raven.”', '“I cannot hide my brother’s dead body.”'],
+      },
+      explanation: '“Will” and “won’t” look to the future: here “will” is a threat and “won’t” is a firm refusal. The past simple (killed, did) admits finished actions. The present (am, cannot) describes how Qabil sees himself and what he is unable to do at that moment. “Worst” compares with everything (the superlative); “worse than” compares two things.',
+      feedback: {
+        correct: 'Correct. You connected each verb form with the time it talks about.',
+        incorrect: 'Look at the verb in each quotation: will / won’t, killed / did, or am / cannot. Which time does each one point to?',
+      },
     },
     {
-      id: 'adam-b1-language-11-regret-indirect-question', type: 'matching', title: 'Regret and Not Knowing What to Do', instructions: 'Match each expression with the function it performs after the violent action.', question: 'How does the language show reflection, uncertainty, and comparison?',
-      matchingPairs: [{ left: 'I killed my brother.', right: 'states a completed past action directly' }, { left: 'I did the worst thing in life.', right: 'evaluates a past action with a superlative expression' }, { left: 'I don’t know what I should do with his dead body.', right: 'uses an embedded question to express uncertainty about the next action' }, { left: 'I am worse than this raven.', right: 'uses a comparative form to judge oneself against another being' }, { left: 'I cannot hide my brother’s dead body.', right: 'uses “cannot” to express inability' }],
-      correctAnswer: { 'I killed my brother.': 'states a completed past action directly', 'I did the worst thing in life.': 'evaluates a past action with a superlative expression', 'I don’t know what I should do with his dead body.': 'uses an embedded question to express uncertainty about the next action', 'I am worse than this raven.': 'uses a comparative form to judge oneself against another being', 'I cannot hide my brother’s dead body.': 'uses “cannot” to express inability' },
-      explanation: 'The chapter moves from naming a completed action to judging it, admitting uncertainty, comparing oneself with the raven, and expressing inability. These forms help build a coherent voice of regret and panic.', feedback: { correct: 'Good. You separated completed action, evaluation, uncertainty, comparison, and inability.', incorrect: 'Ask whether the sentence reports what happened, judges it, asks indirectly what to do, compares, or expresses inability.' },
+      id: 'adam-b1-language-11-regret-indirect-question',
+      type: 'choose-form',
+      title: 'Reason, Beginning and Guidance',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 11.',
+      question: 'Which forms give a reason, show a beginning, and describe how the raven guided Qabil?',
+      formChoices: [
+        {
+          sentence: 'Allah accepted Habil’s offering [choice] he gave from his heart.',
+          options: ['because of', 'because', 'so'],
+          answer: 1,
+        },
+        {
+          sentence: 'He also started [choice].',
+          options: ['panic', 'panicked', 'to panic'],
+          answer: 2,
+        },
+        {
+          sentence: 'It showed Qabil the way [choice] his brother’s dead body in the pit.',
+          options: ['to put', 'putting', 'for put'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Because” is followed by a full clause (he gave from his heart); “because of” needs a noun. “Start + to + verb” (or -ing) shows the beginning of a feeling or action. “Show someone the way to + verb” explains how to do something: the raven showed Qabil how to put the body in the ground.',
+      feedback: {
+        correct: 'Correct. You chose the reason word, the verb pattern after “started” and the guidance pattern.',
+        incorrect: 'Check Chapter 11. Is a full clause or a noun after the reason word? After “started”, the verb does not take the past form.',
+      },
     },
     {
-      id: 'adam-b1-language-11-process-and-guidance', type: 'multiple-choice', title: 'Describe a Process and What It Teaches', instructions: 'Choose the passage that uses Chapter 11 language relationships naturally in a new context.', question: 'Which passage clearly links a reaction, a developing action, uncertainty, guidance, and a later self-evaluation?',
-      options: ['When Eren saw the damaged shelf, he started checking each piece. He did not know what he should repair first, so his uncle showed him the way to support the weak side. Afterward, Eren said, “I was less careful than I should have been, but now I know what to do.”', 'When Eren damaged shelf started because should what repair way less now.', 'Eren checking uncle because what should the way and less than repaired first.'], correctAnswer: 0,
-      explanation: 'The first passage uses “when” to frame a reaction, “started + -ing” for a developing action, an embedded “what ... should ...” question for uncertainty, “showed him the way to ...” for guidance, and comparison/evaluation in the closing sentence.', feedback: { correct: 'Correct. The language forms build one connected development rather than isolated sentences.', incorrect: 'Choose the option where reaction, process, uncertainty, guidance, and evaluation are all expressed in complete connected sentences.' },
+      id: 'adam-b1-language-11-process-and-guidance',
+      type: 'transformation',
+      title: 'Report What Qabil Said',
+      instructions: 'Complete each sentence to report Qabil’s words. Keep the meaning.',
+      question: 'How do an admission and a question word change when we report someone’s words?',
+      transformItems: [
+        {
+          source: 'He said, “I killed my brother. …”',
+          frame: 'Qabil admitted that he [blank] his brother.',
+          answers: ['had killed', 'killed'],
+        },
+        {
+          source: '“Now I don’t know what I should do with his dead body.”',
+          frame: 'Qabil did not know [blank] with his brother’s dead body.',
+          answers: ['what he should do', 'what to do', 'what he could do'],
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'When we report words after a past verb (admitted, did not know), a finished past action can move back to the past perfect: “he had killed”. Inside a sentence, a question word is followed by normal statement order: “what he should do”, not “what should he do”. “What to do” is a shorter way to say the same thing.',
+      feedback: {
+        correct: 'Well done. You reported the admission and the uncertainty correctly.',
+        incorrect: 'Item 1: change “I” to “he” and move “killed” back in time. Item 2: after “what”, put the subject before “should”.',
+      },
     },
     {
       id: 'adam-b1-language-11-reflect-and-revise', type: 'reflection', title: 'From a Bad Choice to a Better Next Step', instructions: 'Write or say four connected B1 sentences about someone who makes a serious mistake and then has to decide what to do next. Use at least four Chapter 11 patterns.', question: 'Can you use the chapter’s language to express cause, a strong intention or refusal, uncertainty, guidance, comparison, or inability in a new situation?', correctAnswer: null,
@@ -111,21 +377,65 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
 export const adamB1LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
   12: [
     {
-      id: 'adam-b1-language-12-stance-obligation-continuity', type: 'matching', title: 'Suggestion, Obligation, and a Message That Continues', instructions: 'Match each Chapter 12 expression with the function it performs.', question: 'How does the final chapter move from interpreting the story to responsibility and continuing guidance?',
-      matchingPairs: [{ left: 'The story suggests that true believers should stay away from jealousy.', right: 'reports an interpretation, then uses “should” for recommended conduct' }, { left: 'As a prophet and a father of his other children, Adam had to continue his life.', right: 'uses a role as context and “had to” for past necessity' }, { left: 'The message still calls upon people ...', right: 'uses “still” to show that something continues to be true now' }, { left: 'Allah never left people alone.', right: 'uses “never” to describe something that did not happen at any time' }],
-      correctAnswer: { 'The story suggests that true believers should stay away from jealousy.': 'reports an interpretation, then uses “should” for recommended conduct', 'As a prophet and a father of his other children, Adam had to continue his life.': 'uses a role as context and “had to” for past necessity', 'The message still calls upon people ...': 'uses “still” to show that something continues to be true now', 'Allah never left people alone.': 'uses “never” to describe something that did not happen at any time' },
-      explanation: 'The chapter does more than narrate events. It interprets the story, expresses recommended conduct, describes a past responsibility, and marks ideas that continue across time.', feedback: { correct: 'Correct. You separated interpretation, recommendation, past necessity, and continuity.', incorrect: 'Look closely at “suggests that”, “should”, “had to”, “still”, and “never”.' },
+      id: 'adam-b1-language-12-stance-obligation-continuity',
+      type: 'multiple-choice',
+      title: 'What Is This Sentence Doing?',
+      instructions: 'Read the sentence from Chapter 12. Then choose the best answer.',
+      question: '“The story suggests that true believers should stay away from jealousy and control their anger.” What does this sentence do?',
+      options: [
+        'It reports a rule that Adam gave to his sons.',
+        'It describes what true believers did on that day.',
+        'It says that anger is impossible to control.',
+        'It gives advice that the writer takes from the story.',
+      ],
+      correctAnswer: 3,
+      explanation: '“The story suggests that …” introduces an interpretation: a lesson the writer draws from the events, not an event itself. “Should + verb” gives advice about the right way to act. Together they turn the story of the two brothers into a recommendation for readers today.',
+      feedback: {
+        correct: 'Correct. “Suggests that” gives the writer’s interpretation, and “should” gives advice.',
+        incorrect: 'Look at the subject: “The story” suggests something. Is this an event in the story, or a lesson taken from it? What does “should” usually express?',
+      },
     },
     {
-      id: 'adam-b1-language-12-time-and-parallel-purpose', type: 'matching', title: 'Across Time and Across Actions', instructions: 'Match the language pattern with what it helps the writer organise.', question: 'How are time, change, and several connected actions organised in Chapter 12?',
-      matchingPairs: [{ left: 'He got old over the years.', right: 'shows gradual change across a period of time' }, { left: 'His children and grandchildren moved ... and spread his message ...', right: 'joins two connected completed actions with “and”' }, { left: 'to turn away from Satan’s tricks, ... to do good and avoid evil', right: 'uses parallel verb patterns to organise several aims or directions' }, { left: 'the importance of admitting mistakes and turning back to Allah', right: 'uses “the importance of + -ing” to present actions as important principles' }],
-      correctAnswer: { 'He got old over the years.': 'shows gradual change across a period of time', 'His children and grandchildren moved ... and spread his message ...': 'joins two connected completed actions with “and”', 'to turn away from Satan’s tricks, ... to do good and avoid evil': 'uses parallel verb patterns to organise several aims or directions', 'the importance of admitting mistakes and turning back to Allah': 'uses “the importance of + -ing” to present actions as important principles' },
-      explanation: 'These patterns help a B1 writer move beyond isolated sentences by organising development through time and grouping related actions in a balanced way.', feedback: { correct: 'Good. You identified time development and parallel organisation.', incorrect: 'Ask whether the expression marks change over time, links completed actions, groups aims, or turns actions into general principles.' },
+      id: 'adam-b1-language-12-time-and-parallel-purpose',
+      type: 'word-bank',
+      title: 'Necessity, Time and Continuity',
+      instructions: 'Complete the lines from Chapter 12 with words from the bank. Three words are not needed.',
+      question: 'Which words show a past necessity, change across time, and something that continues now?',
+      fillBlanksText: 'But as a prophet and the father of his other children, Adam (pbuh) [blank] continue his life. He got old [blank] the years. … He sent His prophets, and their stories [blank] guide us.',
+      wordBank: ['had to', 'over', 'still', 'must', 'since', 'yet'],
+      correctAnswer: ['had to', 'over', 'still'],
+      explanation: '“Had to” shows what was necessary in the past because of Adam’s role (as a prophet and a father). “Over the years” shows slow change across a long period. “Still” (before the main verb) shows that something continues now and has not stopped: the prophets’ stories guide us today.',
+      feedback: {
+        correct: 'Correct. You showed past necessity, change over time and continuity.',
+        incorrect: 'Read Chapter 12 again. Is the first sentence about the past? Which word goes with “the years”? Which word shows that the guidance continues today?',
+      },
     },
     {
-      id: 'adam-b1-language-12-coherent-legacy-passage', type: 'multiple-choice', title: 'Build a Message That Continues', instructions: 'Choose the paragraph that uses Chapter 12 language relationships naturally in a new context.', question: 'Which paragraph clearly links past responsibility, change over time, a continuing message, and a present recommendation?',
-      options: ['As the oldest member of the team, Selin had to support the new students after the coach left. Over the years, she became more experienced and shared what she had learned. Her advice still helps younger players, and the story suggests that leaders should listen carefully and act responsibly.', 'As oldest team had support over years still suggests leaders listening because advice.', 'Selin had to years and still coach suggests because younger experienced responsibly.'], correctAnswer: 0,
-      explanation: 'The first paragraph uses “as ...” to frame a role, “had to” for past necessity, “over the years” for development, “still” for continuity, and “suggests that ... should ...” for a present recommendation.', feedback: { correct: 'Correct. The forms work together to build one coherent B1 paragraph.', incorrect: 'Choose the option where role, necessity, time development, continuity, and recommendation are expressed in complete connected sentences.' },
+      id: 'adam-b1-language-12-coherent-legacy-passage',
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong word, then choose the correction.',
+      question: 'Can you correct the verb forms in a list of actions and after “the importance of”?',
+      errorItems: [
+        {
+          sentence: 'It also teaches people the importance of admit mistakes and turning back to Allah.',
+          error: 'admit',
+          options: ['to admit', 'admitted', 'admitting'],
+          answer: 2,
+        },
+        {
+          sentence: '… calls upon people to turn away from Satan’s tricks and jealousy, to do good, and avoiding evil.',
+          error: 'avoiding',
+          options: ['to avoid', 'avoided', 'of avoiding'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'After a preposition such as “of”, use the -ing form, and keep both actions the same: “the importance of admitting … and turning back …”. In a list, the items should be parallel (the same form): “to turn away …, to do good, and to avoid evil”.',
+      feedback: {
+        correct: 'Well done. You made the verb forms match in each sentence.',
+        incorrect: 'Look at the other verb in each list: “turning back” in the first sentence, and “to turn away … to do good” in the second. Make the wrong verb match them.',
+      },
     },
     {
       id: 'adam-b1-language-12-reflect-and-transfer', type: 'reflection', title: 'A Lesson That Remains Useful', instructions: 'Write or say four connected B1 sentences about a person, family, class, or community whose experience leaves a useful lesson. Use at least four Chapter 12 patterns.', question: 'Can you describe a past responsibility, development over time, and a message that still matters without retelling Adam’s story?', correctAnswer: null,
