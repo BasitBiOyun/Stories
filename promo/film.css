@@ -458,6 +458,7 @@ img { display: block; }
 .civ-label { position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: 0 50%; }
 .civ-label .nm { font-size: 104px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: #fdf6e6; overflow: hidden; padding-bottom: .12em; }
 .civ-label .nm > span, .civ-label .sb > span { display: inline-block; }
+.civ-label .nm, .civ-label .sb { padding-top: .22em; margin-top: -.22em; }  /* room for the dot of İ inside the reveal mask */
 .civ-label .sb { margin-top: 10px; font-size: 30px; font-weight: 500; letter-spacing: .01em; color: var(--gold-hi); overflow: hidden; }
 .civ-label .ix { font-size: 16px; letter-spacing: .3em; color: rgba(243,213,138,.7); font-weight: 600; margin-bottom: 12px; }
 .civ-label.right { transform-origin: 100% 50%; text-align: right; }
@@ -469,3 +470,30 @@ img { display: block; }
 #s0msg .l2 { font-size: 96px; font-weight: 700; letter-spacing: -0.045em; color: #fdf6e6; line-height: 1.05; }
 #s0spark { left: 960px; top: 540px; }
 .rail-m .rc .h { background: #f6e7c1; color: #7a5412; }
+
+/* v6 — Language Focus writing task (activity 4, USE) */
+.lfw { width: 1120px; padding: 34px 46px 30px; }
+.lfw .ui-t { font-size: 36px; color: #4a1d05; } .lfw .ui-s { font-size: 17px; max-width: 760px; }
+.lfw-top { padding-bottom: 18px; border-bottom: 1px solid rgba(20,34,26,.08); }
+.lfw-q { font-size: 27px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-top: 22px; }
+.lfw-box { margin-top: 16px; background: #fff; border-radius: 18px; padding: 14px; box-shadow: 0 4px 14px rgba(60,27,6,.05); }
+.lfw-ta { min-height: 108px; border: 2px solid #f2cf6e; border-radius: 12px; padding: 14px 16px; font-size: 19px; line-height: 1.5; color: #14221a; }
+.lfw-ph { color: #a8a397; } .lfw-caret { display: inline-block; width: 2px; height: 22px; background: #e17100; vertical-align: -4px; margin-left: 1px; }
+.lfw-p { position: relative; margin-top: 10px; background: #fff; border-radius: 14px; padding: 12px 18px; border: 1.5px solid #f1ece2; }
+.lfw-p small { display: block; font-size: 11.5px; letter-spacing: .14em; color: #8a877e; font-weight: 600; }
+.lfw-p b { display: block; font-size: 17px; font-weight: 600; margin-top: 3px; }
+.lfw-p em { position: absolute; right: 16px; top: 50%; margin-top: -15px; width: 30px; height: 30px; border-radius: 50%; background: var(--green); color: #fff; font-style: normal; font-weight: 700; display: grid; place-items: center; opacity: 0; transform: scale(.6); }
+.lfw-p.on { border-color: #9ee6c7; } .lfw-p.on em { opacity: 1; transform: none; }
+.lfw-btn { margin-top: 14px; height: 52px; border-radius: 14px; background: #eef0f2; color: #a0a6ad; display: grid; place-items: center; font-size: 17px; font-weight: 600; }
+.lfw-btn.on { background: var(--rust); color: #fff; }
+/* v6 — Language Review sequencing task (5 / 8, Build) */
+.tabs.amber div.done { color: #06905f; }
+.lrs { padding-bottom: 30px; }
+.sq-h { font-size: 18px; color: #8a877e; margin: 16px 0 12px; }
+.sq-i { display: flex; gap: 16px; align-items: center; min-height: 62px; border-radius: 14px; border: 2px solid #f2cf6e; background: #fff; padding: 10px 18px; font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+.sq-i span { width: 36px; height: 36px; border-radius: 50%; background: #f1eee8; color: #a8a397; display: grid; place-items: center; font-size: 16px; font-weight: 800; flex: none; }
+.sq-i.sel { background: #fdf1d6; border-color: #f0b54a; } .sq-i.sel span { background: var(--orange); color: #fff; }
+.sq-i.ok { background: #ecfdf5; border-color: #7fe0b8; color: #0b5e44; } .sq-i.ok span { background: var(--green); color: #fff; }
+.sq-btn { margin-top: 6px; min-height: 54px; border-radius: 14px; background: #eef0f2; color: #a0a6ad; display: grid; place-items: center; font-size: 15px; font-weight: 700; letter-spacing: .12em; padding: 0 20px; text-align: center; }
+.sq-btn.ready { background: var(--orange); color: #fff; }
+.sq-btn.ok { background: #ecfdf5; color: #0b5e44; letter-spacing: 0; font-size: 17px; border: 1.5px solid #a4f4cf; }
