@@ -1,33 +1,40 @@
 import type { Exercise } from '../../../../types';
 
-/** Canonical Adam A2 English Language Focus, Chapters 8–10, plus cumulative Language Review. */
+/**
+ * Canonical Adam A2 English Language Focus, Chapters 8–10, plus cumulative Language Review.
+ * Look → Practise → Use; every quoted line comes from the English chapter.
+ */
 export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   8: [
     {
-      id: 'adam-a2-language-8-describing-people', type: 'matching', title: 'Describing People and Roles', instructions: 'Match each Chapter 8 expression with the language job it does.', question: 'How does the chapter describe character, interests and later roles?',
-      matchingPairs: [
-        { left: 'Habil was kind and gentle', right: 'describes character with be + adjective' },
-        { left: 'He loved taking care of animals', right: 'describes an interest with love + -ing' },
-        { left: 'Habil became a shepherd', right: 'shows a change into a new role with became' },
-        { left: 'Qabil was a farmer', right: 'states a person’s role with be + job' },
+      id: 'adam-a2-language-8-describing-people', type: 'drag-drop', title: 'What Was He Like? What Was His Job?', instructions: 'Read the parts of Chapter 8. Put each one in the right group.', question: 'Which parts describe a person, and which parts tell us a person’s job?',
+      dragDropGroups: [
+        { group: 'What the person was like', items: ['Habil was kind, gentle …', 'Qabil was mostly jealous.'] },
+        { group: 'The person’s job', items: ['When they grew up, Habil became a shepherd.', 'Qabil was a farmer.'] },
       ],
       correctAnswer: {
-        'Habil was kind and gentle': 'describes character with be + adjective',
-        'He loved taking care of animals': 'describes an interest with love + -ing',
-        'Habil became a shepherd': 'shows a change into a new role with became',
-        'Qabil was a farmer': 'states a person’s role with be + job',
+        'What the person was like': ['Habil was kind, gentle …', 'Qabil was mostly jealous.'],
+        'The person’s job': ['When they grew up, Habil became a shepherd.', 'Qabil was a farmer.'],
       },
-      explanation: 'Chapter 8 uses simple A2 patterns to describe what people were like, what they enjoyed and what roles they later had.', feedback: { correct: 'Correct. You separated character, interest, change and job language.', incorrect: 'Look at the main verb in each expression: was, loved or became.' },
+      explanation: '“Was + adjective” describes what a person is like: was kind, was jealous. “Was / became + a + job” tells us a person’s job: was a farmer, became a shepherd. “Became” shows a change: when they grew up, Habil started this job.',
+      feedback: { correct: 'Good. You saw the difference between “was kind” (what he was like) and “was a farmer” (his job).', incorrect: 'Look at the word after “was” or “became”. Is it a word like kind or jealous, or “a” + a job? Check the first paragraph of Chapter 8.' },
     },
     {
-      id: 'adam-a2-language-8-time-purpose-duty', type: 'fill-blanks', title: 'Time, Purpose and Duty', instructions: 'Complete the sentence with the word that expresses past necessity.', question: 'Which word completes the “had to + verb” pattern?',
-      fillBlanksText: 'They [blank] to offer an offering.', correctAnswer: 'had',
-      explanation: '“Had to + verb” expresses necessity in the past. Chapter 8 also uses time markers such as “When they grew up” and “One day”, and “to + verb” to show purpose.', feedback: { correct: 'Correct. “Had to” expresses a past necessity.', incorrect: 'The complete pattern for past necessity is had to + verb.' },
+      id: 'adam-a2-language-8-time-purpose-duty', type: 'choose-form', title: 'Loved, Had To, Best', instructions: 'Choose the correct form for each sentence from Chapter 8.', question: 'Which forms describe Habil’s interest, a past duty and the best quality?',
+      formChoices: [
+        { sentence: '… Habil was kind, gentle and loved [choice] care of animals.', options: ['take', 'taking', 'takes'], answer: 1 },
+        { sentence: 'To solve the problem, they [choice] offer an offering to Allah.', options: ['had to', 'must to', 'had'], answer: 0 },
+        { sentence: 'Habil brought his [choice] sheep as a gift for Allah …', options: ['goodest and healthiest', 'most good and most healthy', 'best and healthiest'], answer: 2 },
+      ],
+      correctAnswer: null,
+      explanation: '“Love + verb-ing” tells us what someone enjoys: loved taking care of animals. “Had to + verb” says something was necessary in the past. “Good” has a special form: the best. “Healthy” becomes “the healthiest”.',
+      feedback: { correct: 'Well done. You chose “loved taking”, “had to” and “best and healthiest”.', incorrect: 'Read Chapter 8 again. Remember: love + -ing, had to + verb, good → best.' },
     },
     {
-      id: 'adam-a2-language-8-quality-contrast', type: 'multiple-choice', title: 'Comparing Quality', instructions: 'Choose the expression that shows the highest quality.', question: 'Which Chapter 8 phrase uses superlative language to describe a very high-quality offering?',
-      options: ['his best and healthiest sheep', 'just a handful of his crops', 'but Qabil brought ...'], correctAnswer: 0,
-      explanation: '“Best” and “healthiest” are superlative forms that highlight very high quality. “But” introduces contrast, while “a handful” describes a limited amount.', feedback: { correct: 'Correct. “Best and healthiest” shows the highest quality.', incorrect: 'Look for the superlative forms in the options.' },
+      id: 'adam-a2-language-8-quality-contrast', type: 'fill-blanks', title: 'Two Different Gifts', instructions: 'Complete the line from Chapter 8 with one word.', question: 'Which word shows that the two brothers’ gifts were different?',
+      fillBlanksText: '… as a gift for Allah, [blank] Qabil brought just a handful of his crops.', correctAnswer: ['but', 'while', 'whereas'],
+      explanation: '“But” joins two different ideas. Habil brought his best sheep, but Qabil brought just a handful of his crops. The chapter says: “Real goodness is giving the best and the most loved.”',
+      feedback: { correct: 'Correct. “But” shows the difference between the two gifts.', incorrect: 'Habil gave a lot, and Qabil gave a little. Which small word shows this difference? Check the second paragraph of Chapter 8.' },
     },
     {
       id: 'adam-a2-language-8-use-it', type: 'reflection', title: 'Say It: Describe a Good Choice', instructions: 'Write or say four short A2 sentences using the Chapter 8 language patterns.', question: 'Can you describe a person, a responsibility and a good choice in your own life?', correctAnswer: null,
@@ -42,41 +49,37 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   ],
   9: [
     {
-      id: 'adam-a2-language-9-future-intentions', type: 'matching', title: 'Will and Won’t: Intention and Refusal', instructions: 'Match each Chapter 9 expression with the language job it does.', question: 'How does the dialogue use will and won’t to show what a person intends or refuses to do?',
+      id: 'adam-a2-language-9-future-intentions', type: 'multiple-choice', title: 'What Does “Won’t” Show?', instructions: 'Read Habil’s words from Chapter 9. Choose the best meaning.', question: 'Habil said, “I won’t fight back or harm you.” What does “won’t” show here?',
+      options: ['Habil says no: he will not do these things.', 'Habil was not able to fight because he was weak.', 'Habil talks about something he did before.'],
+      correctAnswer: 0,
+      explanation: '“Won’t” = will not. “Won’t + verb” tells us about the future, and here it shows Habil’s clear choice: he refuses to fight back. He gives the reason: “You are my brother, and I fear Allah.”',
+      feedback: { correct: 'Correct. “Won’t” shows Habil’s choice not to fight back.', incorrect: '“Won’t” is short for “will not”. It is about Habil’s choice now and in the future. Read his words in the first paragraph of Chapter 9.' },
+    },
+    {
+      id: 'adam-a2-language-9-changing-feelings', type: 'matching', title: 'Feelings and Meanings', instructions: 'Find these phrases in Chapter 9. Match each one with its meaning.', question: 'What do these Chapter 9 phrases mean in the story?',
+      matchingHeadings: { left: 'From Chapter 9', right: 'Meaning' },
       matchingPairs: [
-        { left: 'I will kill you', right: 'states a future intention with will + verb' },
-        { left: 'I won’t fight back', right: 'refuses a future action with won’t + verb' },
-        { left: 'I won’t harm you', right: 'says clearly that an action will not happen' },
-        { left: 'I fear Allah', right: 'gives the reason behind the speaker’s choice' },
+        { left: 'he gave from his heart', right: 'he really wanted to give it' },
+        { left: 'Qabil’s anger cooled', right: 'he was not so angry any more' },
+        { left: 'he also started to panic', right: 'suddenly he felt very afraid' },
+        { left: '“I am worse than this crow.”', right: 'Even this bird is better than me.' },
       ],
       correctAnswer: {
-        'I will kill you': 'states a future intention with will + verb',
-        'I won’t fight back': 'refuses a future action with won’t + verb',
-        'I won’t harm you': 'says clearly that an action will not happen',
-        'I fear Allah': 'gives the reason behind the speaker’s choice',
+        'he gave from his heart': 'he really wanted to give it',
+        'Qabil’s anger cooled': 'he was not so angry any more',
+        'he also started to panic': 'suddenly he felt very afraid',
+        '“I am worse than this crow.”': 'Even this bird is better than me.',
       },
-      explanation: 'In direct speech, “will + verb” states a future intention. “Won’t + verb” makes the future negative and can show a clear refusal.', feedback: { correct: 'Correct. You separated positive future intention, negative future choice and reason.', incorrect: 'Look first for will/won’t, then ask whether the speaker plans an action, rejects it, or explains why.' },
+      explanation: 'The chapter shows feelings that change: anger “cooled” (became less strong), and Qabil “started to panic”. “Worse than” is the opposite of “better than”: Qabil saw that even the crow knew what to do.',
+      feedback: { correct: 'Good. You understood how Chapter 9 describes feelings.', incorrect: 'Find each phrase in Chapter 9 and read the sentence around it. What does it mean there?' },
     },
     {
-      id: 'adam-a2-language-9-changing-feelings', type: 'drag-drop', title: 'Changing Feelings and States', instructions: 'Sort each Chapter 9 expression by the language pattern it uses.', question: 'How does the chapter describe changing feelings and reactions?',
-      dragDropGroups: [
-        { group: 'became + adjective', items: ['Qabil became very angry'] },
-        { group: 'felt + adjective', items: ['he felt so sad'] },
-        { group: 'started to + verb', items: ['he started to panic'] },
-        { group: 'change became weaker', items: ['Qabil’s anger cooled'] },
-      ],
-      correctAnswer: {
-        'became + adjective': ['Qabil became very angry'],
-        'felt + adjective': ['he felt so sad'],
-        'started to + verb': ['he started to panic'],
-        'change became weaker': ['Qabil’s anger cooled'],
-      },
-      explanation: 'The chapter uses “became + adjective”, “felt + adjective”, “started to + verb” and a change verb such as “cooled” to show emotional change over time.', feedback: { correct: 'Good. You sorted the chapter’s different ways of describing feelings and change.', incorrect: 'Focus on the main signal in each expression: became, felt, started to, or cooled.' },
-    },
-    {
-      id: 'adam-a2-language-9-problem-solution', type: 'fill-blanks', title: 'A Problem and a Way Forward', instructions: 'Complete the uncertainty expression with one word.', question: 'Which word asks about the right action in this Chapter 9 sentence?',
-      fillBlanksText: 'I don’t know what I [blank] do.', correctAnswer: 'should',
-      explanation: '“I don’t know what I should do” expresses uncertainty and a need for guidance. Chapter 9 also uses “cannot + verb” for inability and “show someone the way to ...” for learning a solution.', feedback: { correct: 'Correct. “Should” is used when the speaker is unsure about the right action.', incorrect: 'Look for the modal used to ask what the right action is.' },
+      id: 'adam-a2-language-9-problem-solution', type: 'word-bank', title: 'Became, Should, Sent', instructions: 'Complete the lines from Chapter 9 with words from the box. Two words are not needed.', question: 'Which words tell what happened, and which word asks about the right action?',
+      fillBlanksText: 'Qabil [blank] very angry … “Now I don’t know what I [blank] do with his dead body.” Then, Allah [blank] a crow.',
+      wordBank: ['became', 'becomed', 'should', 'sent', 'sended'],
+      correctAnswer: ['became', 'should', 'sent'],
+      explanation: '“Become” and “send” have special past forms: became, sent. “Became + adjective” shows a change of feeling: Qabil’s feeling changed, and he became very angry. “I don’t know what I should do” shows that Qabil did not know the right action and needed help.',
+      feedback: { correct: 'Correct. You used “became”, “should” and “sent”.', incorrect: 'Remember: become → became, send → sent. Then find Qabil’s words about what to do in Chapter 9.' },
     },
     {
       id: 'adam-a2-language-9-use-it', type: 'reflection', title: 'Say It: Ask for and Give Help', instructions: 'Write or say four short A2 sentences. Use the Chapter 9 patterns in a safe everyday situation.', question: 'Can you express a choice, describe a feeling, ask what to do and show someone how to do something?', correctAnswer: null,
@@ -91,30 +94,35 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   ],
   10: [
     {
-      id: 'adam-a2-language-10-advice', type: 'matching', title: 'Should: Giving Advice', instructions: 'Match each Chapter 10 expression with the language job it does.', question: 'How does the chapter use should and other advice language to tell people how to behave?',
+      id: 'adam-a2-language-10-advice', type: 'matching', title: 'Past Forms in Chapter 10', instructions: 'Find these verbs in Chapter 10. Match each verb with its past form.', question: 'Chapter 10 tells us what happened to Adam’s family. Which past form goes with each verb?',
+      matchingHeadings: { left: 'Verb', right: 'Past form in Chapter 10' },
       matchingPairs: [
-        { left: 'good people should stay away from jealousy', right: 'gives advice about something to avoid' },
-        { left: 'good people should control their anger', right: 'gives advice about self-control' },
-        { left: 'It tells them to be well-behaved', right: 'uses tell + person + to + verb to give guidance' },
-        { left: 'It tells them to be kind to others', right: 'gives positive guidance about how to treat people' },
+        { left: 'go', right: 'went' },
+        { left: 'become', right: 'became' },
+        { left: 'lose', right: 'lost' },
+        { left: 'spread', right: 'spread' },
       ],
-      correctAnswer: {
-        'good people should stay away from jealousy': 'gives advice about something to avoid',
-        'good people should control their anger': 'gives advice about self-control',
-        'It tells them to be well-behaved': 'uses tell + person + to + verb to give guidance',
-        'It tells them to be kind to others': 'gives positive guidance about how to treat people',
-      },
-      explanation: '“Should + verb” gives advice. “Tell + person + to + verb” is another useful way to give guidance about what someone should do.', feedback: { correct: 'Correct. You separated advice about avoiding something, controlling behaviour and doing something positive.', incorrect: 'Look for should and tells them to. Then ask what behaviour each expression recommends.' },
+      correctAnswer: { go: 'went', become: 'became', lose: 'lost', spread: 'spread' },
+      explanation: 'These verbs have special past forms: go → went, become → became, lose → lost. Some verbs do not change at all: spread → spread (“His children and grandchildren spread his message worldwide”).',
+      feedback: { correct: 'Good. You found the past forms in Chapter 10.', incorrect: 'Look at Chapter 10 again: “He went …”, “Adam (pbuh) became …”, “He lost …”, “… spread his message …”.' },
     },
     {
-      id: 'adam-a2-language-10-past-necessity-change', type: 'fill-blanks', title: 'Had To and Became: Duty and Change', instructions: 'Complete the past-necessity pattern with one word.', question: 'Which word completes the Chapter 10 responsibility expression?',
-      fillBlanksText: 'He [blank] to continue his life.', correctAnswer: 'had',
-      explanation: '“Had to + verb” expresses necessity or responsibility in the past. The chapter also uses “became” and “got” to describe changes of state over time.', feedback: { correct: 'Correct. “Had to” expresses a past necessity.', incorrect: 'The complete past-necessity pattern is had to + verb.' },
+      id: 'adam-a2-language-10-past-necessity-change', type: 'choose-form', title: 'Should, Had To, Still', instructions: 'Choose the correct form for each sentence from Chapter 10.', question: 'Which form gives advice, which says what was necessary, and which shows that something continues?',
+      formChoices: [
+        { sentence: 'The story tells us that good people [choice] stay away from jealousy and control their anger.', options: ['should to', 'should', 'shoulds'], answer: 1 },
+        { sentence: 'He [choice] continue his life.', options: ['had to', 'must to', 'had'], answer: 0 },
+        { sentence: 'This message [choice] advises people to love and respect Allah.', options: ['yet', 'ever', 'still'], answer: 2 },
+      ],
+      correctAnswer: null,
+      explanation: '“Should + verb” gives advice (no “to” after should). “Had to + verb” says something was necessary in the past. “Still” shows that something continues until now: the message did not stop.',
+      feedback: { correct: 'Well done. You chose “should”, “had to” and “still”.', incorrect: 'Remember: should + verb, had to + verb. Which word means “it continues now”? Check Chapter 10.' },
     },
     {
-      id: 'adam-a2-language-10-continuing-message', type: 'multiple-choice', title: 'Still, Tell and Help: A Message That Continues', instructions: 'Choose the expression that shows continuation up to the present.', question: 'Which Chapter 10 phrase uses “still” to show that something continues?',
-      options: ['This message still advises people', 'It tells them to be well-behaved', 'The stories help us to live an honest life'], correctAnswer: 0,
-      explanation: '“Still” shows that something continues. “Tell someone to ...” gives guidance, while “help someone to ...” describes support or a positive result.', feedback: { correct: 'Correct. “Still” marks continuation.', incorrect: 'Look for the option containing the word “still”.' },
+      id: 'adam-a2-language-10-continuing-message', type: 'sentence-building', title: 'What Does the Message Tell People?', instructions: 'Put the parts in order to make the sentence from Chapter 10.', question: 'How does the chapter say what the message asks people to do?',
+      sentenceChunks: ['It', 'tells', 'them', 'to be', 'well-behaved', 'and kind to others.'],
+      correctAnswer: null,
+      explanation: '“Tell + person + to + verb” gives guidance: it tells them to be well-behaved. The chapter also says: “The stories of His messengers help us to live an honest life.”',
+      feedback: { correct: 'Correct. “Tells them to be …” gives guidance.', incorrect: 'Use the pattern tell + person + to + verb. Check the second paragraph of Chapter 10.' },
     },
     {
       id: 'adam-a2-language-10-use-it', type: 'reflection', title: 'Say It: Advice, Responsibility and Help', instructions: 'Write or say four short A2 sentences. Use the Chapter 10 patterns in everyday situations.', question: 'Can you give advice, describe a past responsibility, show change over time and explain how something helps you?', correctAnswer: null,
