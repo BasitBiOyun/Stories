@@ -2,81 +2,69 @@ import type { Exercise } from '../../../../types';
 
 /**
  * Manually authored, chapter-specific B1 Language Focus work for Abraham.
- * Activities are derived from the actual chapter language and do not duplicate
- * the chapter comprehension role of Quick Challenge.
+ * Each chapter follows Notice → Build → Use: learners first discover what a
+ * form does in a real chapter sentence, then practise it in context, then use
+ * it in a new situation. Every quoted sentence comes from the English chapter.
  */
 export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
       id: 'abraham-b1-language-1-time-frame',
-      type: 'matching',
-      title: 'Building the Time Frame',
-      instructions: 'Match each Chapter 1 expression with the time relationship it creates.',
-      question: 'How does the chapter place Abraham’s childhood inside a much earlier historical setting?',
-      matchingPairs: [
-        { left: 'A very long time ago', right: 'opens a distant past narrative' },
-        { left: 'about 4,000 years ago', right: 'adds a more specific past-time reference' },
-        { left: 'when he was at a very young age', right: 'links an event to a stage of his life' },
-        { left: 'Since his childhood', right: 'connects a state with its starting point in childhood' },
+      type: 'multiple-choice',
+      title: 'What Does “Could” Mean Here?',
+      instructions: 'Read the sentence from Chapter 1. Then choose the best meaning of “could”.',
+      question: '“He could not understand how an intelligent person could make a statue and then see it as a god which could help or harm him.” In “a god which could help or harm him”, what does “could” show?',
+      options: [
+        'a power that people believed the statue had',
+        'a power that the statue really showed in the chapter',
+        'something people were allowed to do in the past',
+        'a polite request',
       ],
-      correctAnswer: {
-        'A very long time ago': 'opens a distant past narrative',
-        'about 4,000 years ago': 'adds a more specific past-time reference',
-        'when he was at a very young age': 'links an event to a stage of his life',
-        'Since his childhood': 'connects a state with its starting point in childhood',
-      },
-      explanation: 'The chapter does more than use past tense. It layers broad historical time, a more exact reference, a life-stage clause, and a starting-point expression to organise the narrative.',
+      correctAnswer: 0,
+      explanation: '“Could” changes its meaning with the context. In “a god which could help or harm him”, it describes a power people believed the statue had. The chapter shows the opposite: “They could not even move from one place to another on their own.” In “He could not understand how …”, “could not” shows that Abraham was unable to accept the idea.',
       feedback: {
-        correct: 'Good. You identified four different ways of locating information in time.',
-        incorrect: 'Ask whether the expression opens the distant past, gives a date-like reference, links an event to a life stage, or marks a starting point.',
+        correct: 'Correct. “Could” here describes a power that people imagined, not a power the statue really had.',
+        incorrect: 'Read the end of the second paragraph: the statues “could not even move … on their own”. So who believed they could help or harm?',
       },
     },
     {
       id: 'abraham-b1-language-1-ability-and-possibility',
-      type: 'matching',
-      title: 'Ability, Possibility, and Reasoning',
-      instructions: 'Match each structure with the meaning it carries in Chapter 1.',
-      question: 'How does the chapter use “could” to express different kinds of possibility and ability?',
-      matchingPairs: [
-        { left: 'He could not understand how ...', right: 'shows difficulty accepting or making sense of an idea' },
-        { left: 'how an intelligent person could make a statue ...', right: 'presents a possible action inside an indirect question' },
-        { left: 'which could help or harm him', right: 'describes an ability or power attributed to something' },
-        { left: 'They could not even move ... on their own', right: 'expresses absence of independent ability' },
+      type: 'transformation',
+      title: 'Short Phrase, Full Clause',
+      instructions: 'The chapter adds detail to a noun with a short phrase. Complete each sentence with a full relative clause (who / which / that + verb) that keeps the same meaning.',
+      question: 'How does a short phrase like “named …” or “made from …” carry the same information as a full clause?',
+      transformItems: [
+        {
+          source: '… there was a boy named Abraham.',
+          frame: '… there was a boy [blank] Abraham.',
+          answers: ['who was named', 'that was named', 'who was called', 'that was called', 'whose name was'],
+        },
+        {
+          source: 'In his homeland, people worshipped the stars, the moon, the sun, and statues made from wood and stone.',
+          frame: '… and statues [blank] from wood and stone.',
+          answers: ['which were made', 'that were made'],
+        },
       ],
-      correctAnswer: {
-        'He could not understand how ...': 'shows difficulty accepting or making sense of an idea',
-        'how an intelligent person could make a statue ...': 'presents a possible action inside an indirect question',
-        'which could help or harm him': 'describes an ability or power attributed to something',
-        'They could not even move ... on their own': 'expresses absence of independent ability',
-      },
-      explanation: 'The same modal form contributes different meanings depending on the surrounding clause: understanding, possibility, attributed power, or inability.',
+      correctAnswer: null,
+      explanation: 'A past participle phrase after a noun (“a boy named Abraham”, “statues made from wood and stone”) is a short form of a relative clause: “a boy who was named Abraham”, “statues which were made from wood and stone”. The short form makes description compact, so the chapter can give a lot of detail in one sentence.',
       feedback: {
-        correct: 'Correct. You interpreted “could” from context rather than treating it as one fixed meaning.',
-        incorrect: 'Read the whole clause around “could” and ask what kind of meaning the speaker is building there.',
+        correct: 'Well done. You turned the compact phrases into full relative clauses.',
+        incorrect: 'Use who for a person and which or that for things, then add was/were before the participle: “who was named …”, “which were made …”.',
       },
     },
     {
       id: 'abraham-b1-language-1-describing-and-linking',
-      type: 'matching',
-      title: 'Adding Detail Without Starting a New Sentence',
-      instructions: 'Match each Chapter 1 structure with the detail it adds.',
-      question: 'How does the chapter pack extra information into connected noun phrases and clauses?',
-      matchingPairs: [
-        { left: 'a boy named Abraham', right: 'identifies the boy by name' },
-        { left: 'statues made from wood and stone', right: 'describes what the statues were made from' },
-        { left: 'a god which could help or harm him', right: 'adds an attributed ability to the noun “god”' },
-        { left: 'a large house of worship full of idols', right: 'adds a descriptive state to the place' },
-      ],
-      correctAnswer: {
-        'a boy named Abraham': 'identifies the boy by name',
-        'statues made from wood and stone': 'describes what the statues were made from',
-        'a god which could help or harm him': 'adds an attributed ability to the noun “god”',
-        'a large house of worship full of idols': 'adds a descriptive state to the place',
-      },
-      explanation: 'B1 writing becomes more compact and connected when extra detail is attached directly to a noun instead of being broken into several short sentences.',
+      type: 'word-bank',
+      title: 'Placing Events in Time',
+      instructions: 'Complete the lines from Chapter 1 with words from the bank. One word is not needed.',
+      question: 'Which time words place Abraham’s story in the distant past and in his early life?',
+      fillBlanksText: 'A very long time ago, about 4,000 years [blank], in the kingdom of Babylon in Mesopotamia, there was a boy named Abraham. … Abraham discovered Allah [blank] he was at a very young age. [blank] childhood, his heart was full of hatred for idols.',
+      wordBank: ['ago', 'when', 'From', 'Since', 'before'],
+      correctAnswer: ['ago', 'when', 'From'],
+      explanation: '“Ago” comes after a period of time and counts back from now (about 4,000 years ago). “When” links an event to a stage of life (when he was at a very young age). “From childhood” gives the starting point of a past state. “Since childhood” would need the present perfect or past perfect (“had been full of …”), so it does not fit with “was”.',
       feedback: {
-        correct: 'Good. You saw how the chapter expands noun phrases and clauses to make description more precise.',
-        incorrect: 'Find the main noun first, then ask what extra information the rest of the phrase adds about it.',
+        correct: 'Correct. Ago, when and from each place the story in time in a different way.',
+        incorrect: 'Check the first two paragraphs of Chapter 1. Notice that the sentence with “childhood” uses the past simple “was”.',
       },
     },
     {
@@ -102,74 +90,107 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
   2: [
     {
       id: 'abraham-b1-language-2-past-habit-background',
-      type: 'matching',
-      title: 'Habit and Background in the Past',
-      instructions: 'Match each Chapter 2 expression with the past-time meaning it builds.',
-      question: 'How does the chapter separate repeated childhood habits from actions happening in the background?',
-      matchingPairs: [
-        { left: 'he often used to watch his father', right: 'describes a repeated habit in an earlier period of life' },
-        { left: 'while he was making idols', right: 'shows an action continuing in the background at the same time' },
-        { left: 'Abraham used to play with these idols as toys', right: 'describes another repeated childhood behaviour' },
-        { left: 'One day, his father saw Abraham riding the statue', right: 'moves from repeated background habits to one specific event' },
+      type: 'drag-drop',
+      title: 'Again and Again, or One Time?',
+      instructions: 'Read each part of Chapter 2. Did it happen again and again in Abraham’s childhood, or only one time? Put it in the right group.',
+      question: 'How does the chapter show the difference between childhood habits and one particular event?',
+      dragDropGroups: [
+        {
+          group: 'Again and again (a habit)',
+          items: [
+            'he often used to watch his father',
+            'Abraham used to play with these idols as toys',
+            'he rode on their backs and sometimes kicked them',
+          ],
+        },
+        {
+          group: 'Only one time (a single event)',
+          items: [
+            'One day, Abraham asked his father',
+            'His father answered, “It is Mardukh, the god of gods, son!”',
+            'This made Abraham laugh',
+          ],
+        },
       ],
       correctAnswer: {
-        'he often used to watch his father': 'describes a repeated habit in an earlier period of life',
-        'while he was making idols': 'shows an action continuing in the background at the same time',
-        'Abraham used to play with these idols as toys': 'describes another repeated childhood behaviour',
-        'One day, his father saw Abraham riding the statue': 'moves from repeated background habits to one specific event',
+        'Again and again (a habit)': [
+          'he often used to watch his father',
+          'Abraham used to play with these idols as toys',
+          'he rode on their backs and sometimes kicked them',
+        ],
+        'Only one time (a single event)': [
+          'One day, Abraham asked his father',
+          'His father answered, “It is Mardukh, the god of gods, son!”',
+          'This made Abraham laugh',
+        ],
       },
-      explanation: 'The chapter combines “used to” for repeated past behaviour, “while + was/were -ing” for background action, and “one day” to shift into a particular event.',
+      explanation: '“Used to + verb” describes a habit in an earlier period of life. Once “used to” sets up the habit, the past simple can continue it: “he rode on their backs and sometimes kicked them” describes the same repeated play. “One day” moves the story to one particular event, told in the past simple.',
       feedback: {
-        correct: 'Correct. You separated repeated habits, background action, and a single event.',
-        incorrect: 'Ask whether the sentence describes something repeated, something in progress, or one particular moment.',
+        correct: 'Correct. You separated repeated childhood behaviour from single events.',
+        incorrect: 'Look for “used to”, “often” and “sometimes” for habits, and “One day” for a single event. “He rode on their backs” follows “used to play”, so it is part of the same habit.',
       },
     },
     {
       id: 'abraham-b1-language-2-correcting-contrast',
-      type: 'matching',
-      title: 'Correcting an Idea with Contrast',
-      instructions: 'Match each Chapter 2 structure with the function it performs in the dialogue.',
-      question: 'How do the speakers correct, contrast, and explain ideas?',
-      matchingPairs: [
-        { left: 'They are not toys, but our gods.', right: 'rejects one label and replaces it with another' },
-        { left: 'We worship them; we show love and respect to them.', right: 'adds parallel information to explain a belief or practice' },
-        { left: 'It has big ears, bigger than ours.', right: 'moves from description to direct comparison' },
-        { left: 'These big ears show his deep knowledge.', right: 'presents an interpretation or claimed meaning of a visible feature' },
+      type: 'choose-form',
+      title: 'Habit, Background, Event',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 2.',
+      question: 'Which form shows a past habit, an action in progress, and a single event?',
+      formChoices: [
+        {
+          sentence: 'When Abraham was a young boy, he often [choice] watch his father …',
+          options: ['used to', 'was used to', 'use to'],
+          answer: 0,
+        },
+        {
+          sentence: '… while he [choice] idols.',
+          options: ['was making', 'was make', 'used to making'],
+          answer: 0,
+        },
+        {
+          sentence: 'One day, his father [choice] Abraham riding the statue of Mardukh (the Chief God of Babylon), and he got angry with him.',
+          options: ['saw', 'used to see', 'was seeing'],
+          answer: 0,
+        },
       ],
-      correctAnswer: {
-        'They are not toys, but our gods.': 'rejects one label and replaces it with another',
-        'We worship them; we show love and respect to them.': 'adds parallel information to explain a belief or practice',
-        'It has big ears, bigger than ours.': 'moves from description to direct comparison',
-        'These big ears show his deep knowledge.': 'presents an interpretation or claimed meaning of a visible feature',
-      },
-      explanation: 'B1 speakers often build meaning by correcting a previous idea, adding explanation, comparing two things, and stating what they think a detail means.',
+      correctAnswer: null,
+      explanation: 'Used to + base verb = a past habit (“used to watch”). “Was used to” means “was familiar with”, and “use to” is only correct after did/didn’t. While + was/were + -ing = an action in progress in the background (“while he was making idols”). One day + past simple = one finished event (“his father saw Abraham”).',
       feedback: {
-        correct: 'Good. You identified how the dialogue moves from correction to explanation and comparison.',
-        incorrect: 'Look for the relationship between the two parts: replacement, addition, comparison, or interpretation.',
+        correct: 'Correct. You chose the right form for a habit, a background action and one event.',
+        incorrect: 'Ask: was it repeated, was it in progress at that time, or did it happen once? Then check the first two paragraphs of Chapter 2.',
       },
     },
     {
       id: 'abraham-b1-language-2-reported-prohibition',
-      type: 'matching',
-      title: 'From Direct Warning to Reported Instruction',
-      instructions: 'Match each form with the kind of message it expresses.',
-      question: 'How can a speaker report an instruction or prohibition without repeating the exact original words?',
-      matchingPairs: [
-        { left: 'He told his son not to play with it again.', right: 'reports a negative instruction with “tell + person + not to + verb”' },
-        { left: 'Do not play with it again.', right: 'gives the negative instruction directly' },
-        { left: 'His father told him to leave it alone.', right: 'reports a positive instruction with “tell + person + to + verb”' },
-        { left: 'Leave it alone.', right: 'gives the instruction directly as an imperative' },
+      type: 'error-correction',
+      title: 'Find and Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
+      question: 'Can you correct a contrast, a comparison and a reported instruction?',
+      errorItems: [
+        {
+          sentence: 'Azer replied, “They are not toys, and our gods.”',
+          error: 'and',
+          options: ['but', 'so', 'or'],
+          answer: 0,
+        },
+        {
+          sentence: 'Abraham asked, “What is this statue, father? It has big ears, more bigger than ours.”',
+          error: 'more bigger',
+          options: ['bigger', 'more big', 'the biggest'],
+          answer: 0,
+        },
+        {
+          sentence: 'He told his son don’t play with it again.',
+          error: 'don’t play',
+          options: ['not to play', 'not play', 'to not playing'],
+          answer: 0,
+        },
       ],
-      correctAnswer: {
-        'He told his son not to play with it again.': 'reports a negative instruction with “tell + person + not to + verb”',
-        'Do not play with it again.': 'gives the negative instruction directly',
-        'His father told him to leave it alone.': 'reports a positive instruction with “tell + person + to + verb”',
-        'Leave it alone.': 'gives the instruction directly as an imperative',
-      },
-      explanation: 'The chapter uses reported instruction after the father becomes angry. At B1, learners should be able to move between a direct imperative and “tell + person + (not) to + verb”.',
+      correctAnswer: null,
+      explanation: '“Not … but …” rejects one idea and replaces it with another: “not toys, but our gods”. Short adjectives form the comparative with -er, never with “more … -er”: “bigger than ours”. To report a negative instruction, use tell + person + not to + verb: “He told his son not to play with it again.”',
       feedback: {
-        correct: 'Correct. You distinguished direct instructions from reported ones.',
-        incorrect: 'Check whether the words are spoken directly or reported later, and whether the instruction is positive or negative.',
+        correct: 'Well done. You corrected the contrast, the comparative and the reported instruction.',
+        incorrect: 'Compare each sentence with Chapter 2: Azer’s reply, Abraham’s question about the ears, and the end of the second paragraph.',
       },
     },
     {

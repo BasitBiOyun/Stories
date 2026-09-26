@@ -1,6 +1,8 @@
 import { PageData } from '../../../../types';
 import { meccaB2FinalChallengeExercisesAr, meccaB2VocabularyChallengePairsAr } from './exercises';
-import { meccaB2LanguageReviewExercisesAr } from './languageFocus3';
+import { meccaB2LanguageFocusExercisesAr } from './languageFocus';
+import { meccaB2LanguageFocusExercisesArPart2 } from './languageFocus2';
+import { meccaB2LanguageFocusExercisesArPart3, meccaB2LanguageFocusExercisesArPart4, meccaB2LanguageReviewExercisesAr } from './languageFocus3';
 
 const rawMeccaB2PagesAr: PageData[] = [
   {
@@ -1975,7 +1977,15 @@ const rawMeccaB2PagesAr: PageData[] = [
 const arabicMasterGlossary:NonNullable<PageData['vocabulary']>=rawMeccaB2PagesAr
   .filter(page=>page.type==='story')
   .flatMap(page=>page.vocabulary??[]);
+const arabicLanguageFocus:Record<number,NonNullable<PageData['languageFocusExercises']>>={
+  ...meccaB2LanguageFocusExercisesAr,
+  ...meccaB2LanguageFocusExercisesArPart2,
+  ...meccaB2LanguageFocusExercisesArPart3,
+  ...meccaB2LanguageFocusExercisesArPart4,
+};
 export const meccaB2PagesAr:PageData[]=rawMeccaB2PagesAr.map(page => {
+  const languageFocusExercises = page.type === 'story' ? arabicLanguageFocus[page.id] : undefined;
+  if (languageFocusExercises) return { ...page, languageFocusExercises };
   if (page.id === 19) {
     return {
       ...page,
