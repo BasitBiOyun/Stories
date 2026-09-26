@@ -208,35 +208,37 @@ def cymbal(rev=False, dur=2.5):
 # Sections (beats @ 90 BPM, film time in brackets) — they follow timeline.json:
 #   opener 0–21 [0–14]  hook 21–28 [14–18.7]  A 28–59 [18.7–39.3]  B 59–76 [39.3–50.7]
 #   C 76–103 [50.7–68.7]  D 103–114 [68.7–76]  E 114–125 [76–83.3]  F 125– [83.3–]
-OPEN, HOOK, A0, B0, C0, D0, E0, F0 = 0, 21, 28, 59, 76, 103, 114, 125
+OPEN, HOOK, A0, B0, C0, D0, E0, F0 = 0, 28, 35, 66, 90, 117, 128, 139
 # (start_beat, end_beat, bass_root, chord tones)
 CH = [
-    (0, 10, 38, [50, 57, 62, 66]),                # D (Hicaz colour: F#) over a D–A drone
-    (10, 16, 31, [50, 55, 58, 62]),               # Gm / D pedal
-    (16, 21, 38, [50, 57, 62, 66]),               # D
-    (21, 28, 38, [50, 57, 62, 69]),               # hook: D + A drone
-    (28, 36, 38, [50, 53, 57, 60, 64]),           # Dm9
-    (36, 44, 34, [50, 53, 57, 58, 62]),           # Bbmaj7
-    (44, 48, 29, [48, 53, 57, 60, 64]),           # F(add9)
-    (48, 52, 36, [48, 52, 55, 60, 62]),           # C(add9)
-    (52, 56, 31, [50, 53, 55, 58, 62]),           # Gm9
-    (56, 59, 33, [49, 52, 57, 61, 64]),           # A7sus -> A
-    (59, 63, 38, [50, 53, 57, 60, 64]),           # Dm9
-    (63, 67, 34, [50, 53, 57, 58, 62]),           # Bbmaj7
-    (67, 71, 29, [48, 53, 57, 60, 64]),           # F(add9)
-    (71, 76, 36, [48, 52, 55, 60, 62]),           # C(add9)
-    (76, 80, 38, [50, 53, 57, 60, 64]),           # Dm9
-    (80, 84, 34, [50, 53, 57, 58, 62]),           # Bbmaj7
-    (84, 88, 29, [48, 53, 57, 60, 64]),           # F(add9)
-    (88, 92, 36, [48, 52, 55, 60, 62]),           # C(add9)
-    (92, 96, 38, [50, 53, 57, 60, 64]),           # Dm9
-    (96, 100, 34, [50, 53, 57, 58, 62]),          # Bbmaj7
-    (100, 103, 36, [48, 52, 55, 60, 64]),         # C
-    (103, 108, 33, [48, 53, 57, 60, 64]),         # F/A (breakdown)
-    (108, 114, 34, [50, 53, 57, 58, 62, 65]),     # Bbmaj7
-    (114, 119, 31, [50, 53, 55, 58, 62]),         # Gm9
-    (119, 125, 33, [52, 57, 61, 64, 67]),         # A7sus -> A (pull)
-    (125, 140, 38, [50, 54, 57, 62, 64, 66, 69]), # D(add9) — resolution
+    (0, 13, 38, [50, 57, 62, 66]),  # D (Hicaz colour: F#) over a D–A drone
+    (13, 21, 31, [50, 55, 58, 62]),  # Gm / D pedal
+    (21, 28, 38, [50, 57, 62, 66]),  # D
+    (28, 35, 38, [50, 57, 62, 69]),  # hook: D + A drone
+    (35, 43, 38, [50, 53, 57, 60, 64]),  # Dm9
+    (43, 51, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
+    (51, 55, 29, [48, 53, 57, 60, 64]),  # F(add9)
+    (55, 59, 36, [48, 52, 55, 60, 62]),  # C(add9)
+    (59, 63, 31, [50, 53, 55, 58, 62]),  # Gm9
+    (63, 66, 33, [49, 52, 57, 61, 64]),  # A7sus -> A
+    (66, 70, 38, [50, 53, 57, 60, 64]),  # Dm9
+    (70, 74, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
+    (74, 78, 29, [48, 53, 57, 60, 64]),  # F(add9)
+    (78, 83, 36, [48, 52, 55, 60, 62]),  # C(add9)
+    (83, 87, 38, [50, 53, 57, 60, 64]),  # Dm9 (chapter loop, extended)
+    (87, 90, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
+    (90, 94, 38, [50, 53, 57, 60, 64]),  # Dm9
+    (94, 98, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
+    (98, 102, 29, [48, 53, 57, 60, 64]),  # F(add9)
+    (102, 106, 36, [48, 52, 55, 60, 62]),  # C(add9)
+    (106, 110, 38, [50, 53, 57, 60, 64]),  # Dm9
+    (110, 114, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
+    (114, 117, 36, [48, 52, 55, 60, 64]),  # C
+    (117, 122, 33, [48, 53, 57, 60, 64]),  # F/A (breakdown)
+    (122, 128, 34, [50, 53, 57, 58, 62, 65]),  # Bbmaj7
+    (128, 133, 31, [50, 53, 55, 58, 62]),  # Gm9
+    (133, 139, 33, [52, 57, 61, 64, 67]),  # A7sus -> A (pull)
+    (139, 154, 38, [50, 54, 57, 62, 64, 66, 69]),  # D(add9) — resolution
 ]
 
 
@@ -285,28 +287,28 @@ def build_music() -> dict[str, np.ndarray]:
                 place(st["str"], stereo(strings(m, dur, 0.45), (j - 1) * 0.4), b2t(a) - 0.1, lvl)
     # --- opener colour: ney phrases in D Hicaz, oud answers, frame drum
     HIC = {'D': 62, 'Eb': 63, 'F#': 66, 'G': 67, 'A': 69, 'Bb': 70, 'C': 72, 'D5': 74}
-    phrase = [(1.5, 'A', 2.5), (4.0, 'Bb', 1.0), (5.0, 'A', 1.0), (6.0, 'G', 1.0), (7.0, 'F#', 2.5),
-              (10.0, 'G', 1.5), (11.5, 'A', 1.0), (12.5, 'Bb', 1.0), (13.5, 'C', 1.5), (15.0, 'Bb', 1.0), (16.0, 'A', 3.5)]
+    phrase = [(2.00, 'A', 2.5), (5.33, 'Bb', 1.0), (6.67, 'A', 1.0), (8.00, 'G', 1.0), (9.33, 'F#', 2.5),
+              (13.33, 'G', 1.5), (15.33, 'A', 1.0), (16.67, 'Bb', 1.0), (18.00, 'C', 1.5), (20.00, 'Bb', 1.0), (21.33, 'A', 3.5)]
     for bt, nm, ln in phrase:
         place(st["eth"], stereo(ney(HIC[nm], b2t(ln) + 0.4), -0.15), b2t(bt), 0.07)
-    for bt, nm in [(3, 'D'), (3.5, 'Eb'), (4, 'F#'), (8, 'G'), (8.5, 'F#'), (9, 'Eb'), (9.5, 'D'), (13, 'D5'), (13.5, 'C'), (14, 'Bb'), (17, 'A'), (17.5, 'G'), (18, 'F#'), (19, 'Eb'), (19.5, 'D')]:
+    for bt, nm in [(4.00, 'D'), (4.67, 'Eb'), (5.33, 'F#'), (10.67, 'G'), (11.33, 'F#'), (12.00, 'Eb'), (12.67, 'D'), (17.33, 'D5'), (18.00, 'C'), (18.67, 'Bb'), (22.67, 'A'), (23.33, 'G'), (24.00, 'F#'), (25.33, 'Eb'), (26.00, 'D')]:
         place(st["eth"], stereo(oud(HIC[nm] - 12), 0.25), b2t(bt), 0.05)
-    for bt in np.arange(5, 27, 1.0):
-        place(st["eth"], stereo(frame_drum(True), -0.1), b2t(bt), 0.12 if (bt - 5) % 2 == 0 else 0.07)
+    for bt in np.arange(6, 34, 1.0):
+        place(st["eth"], stereo(frame_drum(True), -0.1), b2t(bt), 0.12 if (bt - 6) % 2 == 0 else 0.07)
         place(st["eth"], stereo(frame_drum(False), 0.2), b2t(bt + 0.5), 0.05)
     # --- piano motif in A and C, melody in the breakdown and the finale
     offs = [0, 1, 1.5, 2, 3]
-    for bar_beat in list(range(32, 59, 4)) + list(range(76, 103, 4)):
+    for bar_beat in list(range(39, 66, 4)) + list(range(90, 117, 4)):
         a, b, root, tones = chord_at(bar_beat)
         up = sorted({t + 12 for t in tones if t >= 50})
         seq = [up[0], up[2 % len(up)], up[3 % len(up)], up[-1], up[2 % len(up)]]
         for off, m in zip(offs, seq):
             place(st["pno"], stereo(piano(m, 2.2, 0.55 if bar_beat < C0 else 0.7), 0.15), b2t(bar_beat + off), 0.11)
-    for k, (bt, m) in enumerate([(103, 69), (104.5, 72), (105, 74), (106, 72), (107, 70), (108.5, 69), (109, 67), (110, 65), (111, 64), (112.5, 65)]):
+    for k, (bt, m) in enumerate([(117, 69), (118.5, 72), (119, 74), (120, 72), (121, 70), (122.5, 69), (123, 67), (124, 65), (125, 64), (126.5, 65)]):
         place(st["pno"], stereo(piano(m, 3.0, 0.65), -0.1), b2t(bt), 0.1)
         if k % 2 == 0:
             place(st["pno"], stereo(piano(m - 24, 3.0, 0.5), 0.1), b2t(bt), 0.05)
-    for bt, m in [(125, 66), (125, 74), (126, 78), (127, 76), (128.5, 74), (129, 81), (131, 78), (132, 74)]:
+    for bt, m in [(139, 66), (139, 74), (140, 78), (141, 76), (142.5, 74), (143, 81), (145, 78), (146, 74)]:
         place(st["pno"], stereo(piano(m, 4.0, 0.75), 0.05), b2t(bt), 0.09)
     # --- kalimba-like arpeggio (eighths) from the story page on
     pat = [0, 2, 3, 4, 3, 2, 4, 1]
@@ -437,13 +439,13 @@ def build_sfx() -> np.ndarray:
     # S0 — civilization opener (its own clock is film time)
     at("s0", 0.2, shimmer(2.4, 84), 0.35)
     for i in range(8):                                        # each stop takes focus
-        tt = 1.7 + i * 1.2
+        tt = 1.7 + i * 1.7
         at("s0", tt - 0.55, whoosh(0.9, 250, 4200, 0.62), 0.07)
         at("s0", tt - 0.05, chime((74 + [0, 3, 5, 7, 10, 7, 5, 12][i],), 0), 0.035)
-    at("s0", 10.8, whoosh(1.4, 180, 3000, 0.7), 0.09)        # constellation forms
-    at("s0", 11.35, impact(0.5, 48), 0.12)                    # "tarihini ve medeniyetini de keşfet."
-    at("s0", 11.4, shimmer(2.0, 86), 0.3)
-    at("s0", 13.2, whoosh(0.8, 300, 5000, 0.9, rev=True), 0.1)  # collapse into the star
+    at("s0", 14.6, whoosh(1.4, 180, 3000, 0.7), 0.09)        # constellation forms
+    at("s0", 15.15, impact(0.5, 48), 0.12)                    # "tarihini ve medeniyetini de keşfet."
+    at("s0", 15.2, shimmer(2.0, 86), 0.3)
+    at("s0", 17.87, whoosh(0.8, 300, 5000, 0.9, rev=True), 0.1)  # collapse into the star
     # S1 — hook
     at("s1", 0.1, shimmer(2.2, 86), 0.4)
     at("s1", 0.4, whoosh(1.0, 200, 3000, 0.7), 0.07)
@@ -536,7 +538,7 @@ def main() -> None:
     tt = t_axis(N)
     fade = np.clip(tt / 0.05, 0, 1) * np.clip((TL["duration"] + 0.4 - tt) / 1.6, 0, 1)
     # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
-    arc = np.interp(tt, [0, 13.6, 14.2, 18.4, 18.9, 39.0, 39.6, 50.4, 51.0, 68.4, 69.0, 75.7, 76.3, 83.0, 83.5, 89.4],
+    arc = np.interp(tt, [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7],
                     [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
     mix = (music * arc[:, None] + sfx * 0.9) * fade[:, None]
     mix = rms_comp(mix, thr_db=-14, ratio=1.8)
