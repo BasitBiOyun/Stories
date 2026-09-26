@@ -75,6 +75,63 @@ const validateExercise = (exercise: Exercise, where: string): string[] => {
       }
       break;
     }
+    case 'choose-form': {
+      const items = exercise.formChoices ?? [];
+      if (!items.length) errors.push(`${at}: choose-form needs formChoices`);
+      items.forEach((item, index) => {
+        if ((item.sentence.match(/\[choice\]/g) ?? []).length !== 1) errors.push(`${at}: item ${index + 1} needs exactly one [choice]`);
+        if (item.options.length < 2) errors.push(`${at}: item ${index + 1} needs at least 2 options`);
+        if (!Number.isInteger(item.answer) || item.answer < 0 || item.answer >= item.options.length) errors.push(`${at}: item ${index + 1} answer is not a valid option index`);
+        if (duplicates(item.options).length) errors.push(`${at}: item ${index + 1} repeats an option`);
+      });
+      break;
+    }
+    case 'word-bank': {
+      const blanks = (exercise.fillBlanksText?.match(/\[blank\]/g) ?? []).length;
+      const expected = Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer.map(String) : [];
+      const bank = [...(exercise.wordBank ?? [])];
+      if (!blanks) errors.push(`${at}: word-bank text has no [blank]`);
+      if (expected.length !== blanks) errors.push(`${at}: word-bank needs one expected answer per [blank] (${blanks} blanks, ${expected.length} answers)`);
+      expected.forEach(answer => {
+        const index = bank.indexOf(answer);
+        if (index < 0) errors.push(`${at}: expected answer "${answer}" is not available in the word bank`);
+        else bank.splice(index, 1);
+      });
+      if (!bank.length) errors.push(`${at}: word bank needs at least one distractor`);
+      break;
+    }
+    case 'error-correction': {
+      const items = exercise.errorItems ?? [];
+      if (!items.length) errors.push(`${at}: error-correction needs errorItems`);
+      items.forEach((item, index) => {
+        if (!item.error || !item.sentence.includes(item.error)) errors.push(`${at}: item ${index + 1} error text is not in its sentence`);
+        if (item.options.length < 2) errors.push(`${at}: item ${index + 1} needs at least 2 correction options`);
+        if (!Number.isInteger(item.answer) || item.answer < 0 || item.answer >= item.options.length) errors.push(`${at}: item ${index + 1} answer is not a valid option index`);
+        if (item.options[item.answer] === item.error) errors.push(`${at}: item ${index + 1} correction is identical to the error`);
+      });
+      break;
+    }
+    case 'sentence-building': {
+      const chunks = exercise.sentenceChunks ?? [];
+      if (chunks.length < 3) errors.push(`${at}: sentence-building needs at least 3 chunks`);
+      if (Array.isArray(exercise.correctAnswer)) {
+        exercise.correctAnswer.forEach((order: unknown, index: number) => {
+          if (!Array.isArray(order) || [...order].sort().join('\u0000') !== [...chunks].sort().join('\u0000')) {
+            errors.push(`${at}: alternative order ${index + 1} does not use exactly the authored chunks`);
+          }
+        });
+      }
+      break;
+    }
+    case 'transformation': {
+      const items = exercise.transformItems ?? [];
+      if (!items.length) errors.push(`${at}: transformation needs transformItems`);
+      items.forEach((item, index) => {
+        if ((item.frame.match(/\[blank\]/g) ?? []).length !== 1) errors.push(`${at}: item ${index + 1} frame needs exactly one [blank]`);
+        if (!item.answers.length || item.answers.some(answer => !answer.trim())) errors.push(`${at}: item ${index + 1} needs accepted answers`);
+      });
+      break;
+    }
     default:
       break;
   }
