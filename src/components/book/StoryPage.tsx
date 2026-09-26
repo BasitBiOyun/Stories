@@ -1195,6 +1195,11 @@ export const StoryPage = ({
         'multiple-choice': { en: 'Choose', ar: 'اختر' },
         'tap-reveal': { en: 'Explore', ar: 'استكشف' },
         'drag-drop': { en: 'Classify', ar: 'صنّف' },
+        'choose-form': { en: 'Choose the form', ar: 'اختر الصيغة' },
+        'word-bank': { en: 'Complete', ar: 'أكمل' },
+        'error-correction': { en: 'Correct', ar: 'صحّح' },
+        'sentence-building': { en: 'Build', ar: 'ابنِ الجملة' },
+        transformation: { en: 'Rewrite', ar: 'أعد الصياغة' },
       };
       return labels[exercise.type]?.[language === 'ar' ? 'ar' : 'en']
         ?? (language === 'ar' ? 'تدريب' : 'Practice');
