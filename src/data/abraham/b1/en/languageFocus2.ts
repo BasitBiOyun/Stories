@@ -135,7 +135,7 @@ export const abrahamB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       question: 'Can you correct the verb forms after “should” and “stop”?',
       errorItems: [
         {
-          sentence: 'He recognized that he should to guide his people because Allah chose him to be His Messenger.',
+          sentence: 'He recognized that he should to guide his people …',
           error: 'should to guide',
           options: ['should guide', 'should guiding', 'should guided'],
           answer: 0,
