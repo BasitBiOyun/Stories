@@ -82,7 +82,8 @@ async def run(args: argparse.Namespace) -> None:
 
         async def grab(t: float) -> bytes:
             await page.evaluate(f"window.__seek({t:.6f})")
-            return await page.screenshot(type="png" if args.stills else "jpeg", quality=None if args.stills else 95, scale="device", animations="disabled", caret="hide")
+            lossless = args.stills or args.raw
+            return await page.screenshot(type="png" if lossless else "jpeg", quality=None if lossless else 95, scale="device", animations="disabled", caret="hide")
 
         if args.stills:
             out = PROMO / "out" / "stills"
@@ -118,7 +119,7 @@ async def run(args: argparse.Namespace) -> None:
         audio = PROMO / "out" / "mix.wav"
         if audio.exists() and not args.no_audio:
             cmd += ["-ss", f"{t0}", "-t", f"{t1 - t0}", "-i", str(audio)]
-        cmd += ["-vf", ",".join(vf), "-c:v", "libx264", "-preset", "slow", "-crf", str(args.crf), "-profile:v", "high",
+        cmd += ["-vf", ",".join(vf), "-c:v", "libx264", "-preset", "slower", "-crf", str(args.crf), "-profile:v", "high", "-x264-params", "aq-mode=3:aq-strength=0.9:deblock=-1,-1:ref=5:bframes=4:psy-rd=1.0,0.15",
                 "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709"]
         if audio.exists() and not args.no_audio:
             cmd += ["-c:a", "aac", "-b:a", "256k", "-shortest"]
@@ -195,7 +196,7 @@ def parallel(args: argparse.Namespace) -> None:
     use_audio = audio.exists() and not args.no_audio
     if use_audio:
         cmd += ["-ss", f"{t0}", "-t", f"{t1 - t0}", "-i", str(audio)]
-    cmd += ["-vf", ",".join(vf), "-c:v", "libx264", "-preset", "slow", "-crf", str(args.crf), "-profile:v", "high", "-pix_fmt", "yuv420p",
+    cmd += ["-vf", ",".join(vf), "-c:v", "libx264", "-preset", "slower", "-crf", str(args.crf), "-profile:v", "high", "-x264-params", "aq-mode=3:aq-strength=0.9:deblock=-1,-1:ref=5:bframes=4:psy-rd=1.0,0.15", "-pix_fmt", "yuv420p",
             "-movflags", "+faststart", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709"]
     if use_audio:
         cmd += ["-c:a", "aac", "-b:a", "256k", "-shortest"]

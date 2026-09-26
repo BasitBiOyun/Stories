@@ -187,7 +187,7 @@ img { display: block; }
 #s4toggle .ar { font-family: Arakom; font-weight: 400; font-size: 34px; }
 #s4toggle .knob { position: absolute; left: 8px; top: 8px; width: 150px; height: 78px; border-radius: 40px; background: linear-gradient(180deg, #d4bd7e, #b99e5a); box-shadow: 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35); }
 #s4tag { position: absolute; inset: 0; }
-.ar-tag { position: absolute; right: 110px; padding: 0 40px; top: 350px; font-family: Arakom; direction: rtl; font-size: 132px; line-height: 1.3; color: #fdf6e6; white-space: nowrap; text-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.ar-tag { position: absolute; right: 110px; padding: 60px 40px 90px; margin-top: -60px; top: 350px; font-family: Arakom; direction: rtl; font-size: 132px; line-height: 1.3; color: #fdf6e6; white-space: nowrap; text-shadow: 0 20px 60px rgba(0,0,0,.5); }
 .tr-tag { position: absolute; right: 158px; top: 610px; display: flex; gap: 22px; align-items: center; font-size: 28px; font-weight: 600; color: var(--gold); letter-spacing: .02em; }
 .tr-tag i { width: 70px; height: 2px; background: linear-gradient(90deg, rgba(194,170,107,.1), var(--gold), rgba(194,170,107,.1)); }
 .tr-tag .a { font-family: Arakom; font-weight: 400; font-size: 32px; }

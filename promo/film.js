@@ -124,7 +124,9 @@ function archD(x, y, w, h, closed = true) {
 }
 
 /* ---------- global overlays ---------- */
-const dust = $('#dust').getContext('2d');
+const DPR = window.devicePixelRatio || 1;
+const dustCv = $('#dust'); dustCv.width = W * DPR; dustCv.height = H * DPR; dustCv.style.width = W + 'px'; dustCv.style.height = H + 'px';
+const dust = dustCv.getContext('2d'); dust.scale(DPR, DPR);   // particles drawn at device resolution (sharp at 4K)
 const grainCv = $('#grain'), grain = grainCv.getContext('2d');
 const grainImg = grain.createImageData(1920, 1080);
 const DUST = (() => { const r = rng(42); return Array.from({ length: 140 }, () => ({ x: r(), y: r(), z: r(), s: r(), ph: r() * 6.28 })); })();
@@ -619,7 +621,7 @@ const enWords = splitWords($('#pgTextEn'));
     /* the Arabic tagline of the library */
     const reveal = P(t, 15.2, 16.1, bezier(0.5, 0, 0.2, 1));
     arTag.style.clipPath = `inset(-40% -8% -40% ${((1 - reveal) * 100).toFixed(2)}%)`;
-    arTag.style.webkitMaskImage = `linear-gradient(to left, #000 ${(reveal * 100).toFixed(1)}%, transparent ${(reveal * 100 + 12).toFixed(1)}%)`;
+    arTag.style.webkitMaskImage = reveal >= 1 ? 'none' : `linear-gradient(to left, #000 ${(reveal * 100).toFixed(1)}%, transparent ${(reveal * 100 + 12).toFixed(1)}%)`;
     tf(arTag, { x: (1 - reveal) * -40 - leave * 80, s: 1 + (t - 15.2) * 0.012 });
     op(arTag, 1 - leave); blur(arTag, leave * 12);
     const tr = P(t, 15.75, 16.4, E.outSoft);
@@ -703,7 +705,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
   const railW = $('#s5railw');
   const mods = ADAM_CH.map((ti, i) => el('div', 'rail-m', `<div class="ri"><img src="assets/img/adam_b1/ch${String(i + 1).padStart(2, '0')}.jpg"></div><div class="rb"><div class="rn" lang="tr">BÖLÜM ${String(i + 1).padStart(2, '0')}</div><div class="rt">${ti}</div><div class="rc"><span class="h" lang="tr">Hikâye</span><i class="ar a0"></i><span class="q">Quick Challenge</span><i class="ar a1"></i><span class="l">Language Focus</span></div></div>`, railW));
   const modQ = mods.map(m => m.querySelector('.rc .q')), modL = mods.map(m => m.querySelector('.rc .l')), modA = mods.map(m => m.querySelector('.rc .a1')), modA0 = mods.map(m => m.querySelector('.rc .a0'));
-  const railHead = el('div', 'kin', '<div class="eyebrow">Hikâye → Quick Challenge → Language Focus</div><div class="line">Her bölüm.</div><div class="line">Kendi hikâyesi.</div><div class="line gold">Kendi alıştırmaları.</div>', S);
+  const railHead = el('div', 'kin', '<div class="eyebrow">Hikâye → <span lang="en">Quick Challenge</span> → <span lang="en">Language Focus</span></div><div class="line">Her bölüm.</div><div class="line">Kendi hikâyesi.</div><div class="line gold">Kendi alıştırmaları.</div>', S);
   railHead.setAttribute('lang', 'tr');
   railHead.style.bottom = '70px'; railHead.querySelectorAll('.line').forEach(l => { l.style.fontSize = '56px'; });
   const railSpans = maskLines(railHead);
