@@ -82,9 +82,7 @@ async def run(args: argparse.Namespace) -> None:
 
         async def grab(t: float) -> bytes:
             await page.evaluate(f"window.__seek({t:.6f})")
-            shot = await cdp.send("Page.captureScreenshot", {"format": "png" if args.stills else "jpeg", "quality": 96, "captureBeyondViewport": False})
-            import base64
-            return base64.b64decode(shot["data"])
+            return await page.screenshot(type="png" if args.stills else "jpeg", quality=None if args.stills else 95, scale="device", animations="disabled", caret="hide")
 
         if args.stills:
             out = PROMO / "out" / "stills"
@@ -103,7 +101,7 @@ async def run(args: argparse.Namespace) -> None:
         out_path.parent.mkdir(parents=True, exist_ok=True)
         if args.raw:
             cmd = [ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(fps), "-i", "-",
-                   "-vf", f"scale={W}:{H}:flags=lanczos", "-c:v", "libx264", "-preset", "ultrafast", "-qp", "0", "-pix_fmt", "yuv444p", str(out_path)]
+                   "-c:v", "libx264", "-preset", "ultrafast", "-qp", "0", "-pix_fmt", "yuv444p", str(out_path)]
             ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
             for i in range(n):
                 ff.stdin.write(await grab(t0 + i / fps))
@@ -111,7 +109,7 @@ async def run(args: argparse.Namespace) -> None:
                     print(f"[{t0:.2f}] frame {i}/{n}", flush=True)
             ff.stdin.close(); ff.wait(); await browser.close(); srv.shutdown()
             return
-        vf = [f"scale={W}:{H}:flags=lanczos"] if args.scale != 1 else []
+        vf = []  # native resolution: W×H × device scale factor (scale 2 → true 3840×2160)
         if args.blur_to:
             # two-sample motion blur: average frame pairs, then drop to the delivery rate
             vf += [f"tmix=frames={fps // args.blur_to}:weights='1 1'", f"fps={args.blur_to}"]
@@ -147,7 +145,7 @@ def main() -> None:
     ap.add_argument("--to", dest="t_to", type=float, default=None)
     ap.add_argument("--fps", type=int, default=TIMELINE["fps"])
     ap.add_argument("--blur-to", type=int, default=0 if TIMELINE["outputFps"] == TIMELINE["fps"] else TIMELINE["outputFps"], help="deliver at this fps with frame-blend motion blur (0 = off)")
-    ap.add_argument("--scale", type=float, default=1.0, help="device scale factor (supersampling)")
+    ap.add_argument("--scale", type=float, default=TIMELINE.get("renderScale", 1), help="device scale factor: 2 renders true 3840×2160 from the 1920×1080 composition")
     ap.add_argument("--crf", type=int, default=16)
     ap.add_argument("--out", default=str(PROMO / "out" / "stories-promo.mp4"))
     ap.add_argument("--chrome", default=None)
