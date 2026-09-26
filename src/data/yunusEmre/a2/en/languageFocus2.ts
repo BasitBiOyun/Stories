@@ -1,55 +1,42 @@
 import type { Exercise } from '../../../../types';
 
 /**
- * Continued manually authored Language Focus work for later chapters.
- * Every chapter is read first; nothing here is generated from a fixed exercise template.
+ * Continued A2 Language Focus work for Yunus Emre (Look → Practise → Use).
+ * Every quoted sentence comes from the English chapter text.
  */
 export const yunusA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
   5: [
     {
       id: 'yunus-a2-language-5-question-functions',
-      type: 'matching',
-      title: 'Questions That Make Us Think',
-      instructions: 'Match each Chapter 5 question with the job it does.',
-      question: 'How do the questions in Chapter 5 ask for reasons or information?',
-      matchingPairs: [
-        { left: 'So why was he doing that?', right: 'asks for the reason behind a past action' },
-        { left: 'Is there no crooked wood in the mountains?', right: 'asks whether something exists' },
-        { left: 'Why do you always bring straight pieces?', right: 'asks for the reason behind a repeated habit' },
+      type: 'sequencing',
+      title: 'From “It Looks Like” to “In Fact”',
+      instructions: 'Put the four sentences from Chapter 5 in the correct order.',
+      question: 'How does the chapter move from what we see to what is really happening?',
+      sequencingItems: [
+        { id: '1', text: 'It looks like Yunus is working with wood to fix crooked pieces.' },
+        { id: '2', text: 'But in fact, he is training his own heart and ego.' },
+        { id: '3', text: 'Every time he uses the axe, he makes a bad part of himself better.' },
+        { id: '4', text: 'This service taught him how to have a good heart and do the right thing.' },
       ],
-      correctAnswer: {
-        'So why was he doing that?': 'asks for the reason behind a past action',
-        'Is there no crooked wood in the mountains?': 'asks whether something exists',
-        'Why do you always bring straight pieces?': 'asks for the reason behind a repeated habit',
-      },
-      explanation: 'Chapter 5 uses questions for different communicative purposes. “Why” asks for a reason, while “Is there...?” checks whether something exists.',
+      correctAnswer: ['1', '2', '3', '4'],
+      explanation: '“It looks like …” gives a first idea: what we see. “But in fact …” gives the true meaning. “Every time …” shows something that happens again and again. “This service taught him how to …” gives the result: what Yunus learned.',
       feedback: {
-        correct: 'Correct. You identified what information each question is trying to get.',
-        incorrect: 'Look at the information each question expects: a reason or an answer about existence.',
+        correct: 'Correct. You followed the chapter from the first idea to the true meaning and the result.',
+        incorrect: 'Read the second paragraph of Chapter 5. Start with “It looks like”. Which sentence says what is true “in fact”?',
       },
     },
     {
       id: 'yunus-a2-language-5-appearance-reality',
-      type: 'matching',
-      title: 'From Appearance to Reality',
-      instructions: 'Match each story expression with the meaning relationship it creates.',
-      question: 'How does Chapter 5 move from what the work looks like to what it really means?',
-      matchingPairs: [
-        { left: 'It looks like ...', right: 'introduces a first impression' },
-        { left: 'But in fact ...', right: 'corrects the first impression and gives the deeper meaning' },
-        { left: 'Every time he uses the axe ...', right: 'introduces something that happens repeatedly' },
-        { left: 'This service taught him how to ...', right: 'shows a result of the experience or learning' },
-      ],
-      correctAnswer: {
-        'It looks like ...': 'introduces a first impression',
-        'But in fact ...': 'corrects the first impression and gives the deeper meaning',
-        'Every time he uses the axe ...': 'introduces something that happens repeatedly',
-        'This service taught him how to ...': 'shows a result of the experience or learning',
-      },
-      explanation: 'The chapter deliberately moves from appearance to deeper meaning. These chunks help the reader follow that change and understand what Yunus learns from the work.',
+      type: 'sentence-building',
+      title: 'Build Taptuk’s Question',
+      instructions: 'Put the words in order to make Taptuk Emre’s question from Chapter 5.',
+      question: 'How do we ask about a habit with “Why”?',
+      sentenceChunks: ['Why', 'do you', 'always', 'bring', 'straight pieces?'],
+      correctAnswer: null,
+      explanation: 'To ask about a habit, use: Why + do + you + (always) + verb … ? “Always” comes before the main verb: “Why do you always bring straight pieces?” The other question, “Is there no crooked wood in the mountains?”, starts with “Is there” to ask if something exists.',
       feedback: {
-        correct: 'Good. You followed the chapter’s move from first impression to deeper meaning and result.',
-        incorrect: 'Read the middle paragraph in order: first impression, correction, repeated action, then learning.',
+        correct: 'Well done. You built the question in the right order.',
+        incorrect: 'Look at the last line of Chapter 5. Start with “Why”, then “do you”. “Always” goes before “bring”.',
       },
     },
     {
@@ -76,49 +63,41 @@ export const yunusA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'yunus-a2-language-6-change-learning',
       type: 'matching',
-      title: 'Language of Change and Learning',
-      instructions: 'Match each Chapter 6 expression with what it shows about Yunus’s learning.',
-      question: 'How does the chapter describe help, change and learning?',
+      title: 'If You Look Closely',
+      instructions: 'Match the beginnings and endings to make sentences from the last paragraph of Chapter 6.',
+      question: 'How does Chapter 6 describe the mountains and what you can find there?',
+      matchingHeadings: { left: 'Beginning', right: 'Ending' },
       matchingPairs: [
-        { left: 'Nature and living alone helped the dervish think deeply', right: 'shows support for an action' },
-        { left: 'Yunus made his heart purer', right: 'shows a change in a personal quality' },
-        { left: 'He learned to be alone with Allah', right: 'describes something he learned to do' },
-        { left: 'Woodcutting in nature helped him become a better person', right: 'shows an activity supporting personal growth' },
+        { left: 'The mountains are', right: 'quiet and far from people.' },
+        { left: 'There are', right: 'trees, animals, and rivers.' },
+        { left: 'If you look closely,', right: 'you find a deeper meaning in everything in nature.' },
+        { left: 'Everything', right: 'tells a story.' },
       ],
       correctAnswer: {
-        'Nature and living alone helped the dervish think deeply': 'shows support for an action',
-        'Yunus made his heart purer': 'shows a change in a personal quality',
-        'He learned to be alone with Allah': 'describes something he learned to do',
-        'Woodcutting in nature helped him become a better person': 'shows an activity supporting personal growth',
+        'The mountains are': 'quiet and far from people.',
+        'There are': 'trees, animals, and rivers.',
+        'If you look closely,': 'you find a deeper meaning in everything in nature.',
+        'Everything': 'tells a story.',
       },
-      explanation: 'Chapter 6 repeatedly uses language such as “helped ... think”, “made ... purer”, “learned to ...” and “helped ... become” to describe learning and personal change.',
+      explanation: '“Are” + adjectives describes a place (quiet, far from people). “There are” + plural nouns says what is in a place. “If you look closely, you find …” has two parts: first what you do, then what happens. “Everything” is singular, so the verb takes -s: “tells”.',
       feedback: {
-        correct: 'Good. You connected each language pattern with the kind of change or learning it expresses.',
-        incorrect: 'Read the middle and final paragraphs again and look for helped, made, learned and become.',
+        correct: 'Good. You rebuilt the sentences about the mountains.',
+        incorrect: 'Read the last paragraph of Chapter 6. Which ending is a list of things? Which ending starts with “you find”?',
       },
     },
     {
       id: 'yunus-a2-language-6-if-observation',
-      type: 'matching',
-      title: 'If You Look Closely',
-      instructions: 'Rebuild the key observation patterns from the final paragraph.',
-      question: 'How does Chapter 6 describe the mountains and connect careful looking with discovery?',
-      matchingPairs: [
-        { left: 'The mountains are', right: 'quiet and far from people' },
-        { left: 'There are', right: 'trees, animals, and rivers' },
-        { left: 'If you look closely', right: 'you find a deeper meaning in everything in nature' },
-        { left: 'Everything', right: 'tells a story' },
-      ],
-      correctAnswer: {
-        'The mountains are': 'quiet and far from people',
-        'There are': 'trees, animals, and rivers',
-        'If you look closely': 'you find a deeper meaning in everything in nature',
-        'Everything': 'tells a story',
-      },
-      explanation: 'The paragraph combines place description with a simple condition-result pattern: “If you look closely, you find ...”. The condition tells us what to do; the second part tells us what we can discover.',
+      type: 'word-bank',
+      title: 'Helped Him Think, Made It Purer',
+      instructions: 'Complete the sentences from Chapter 6 with words from the bank. Two words are not needed.',
+      question: 'Which form comes after “helped the dervish”, “made his heart” and “learned”?',
+      fillBlanksText: 'Nature and living alone helped the dervish [blank] deeply about himself. During this time, Yunus made his heart [blank]. … He first learned [blank] alone with Allah in the mountains.',
+      wordBank: ['think', 'purer', 'to be', 'thinking', 'being'],
+      correctAnswer: ['think', 'purer', 'to be'],
+      explanation: 'After “help + person”, use the base verb: “helped the dervish think”. “Make + thing + adjective” shows a change: “made his heart purer” (more pure than before). After “learn”, use “to + verb”: “learned to be alone”.',
       feedback: {
-        correct: 'Correct. You rebuilt both the place description and the if-result pattern.',
-        incorrect: 'Return to the final paragraph and follow it from the mountain description to “If you look closely ...”.',
+        correct: 'Correct. You used the right form after helped, made and learned.',
+        incorrect: 'Read the second and third paragraphs of Chapter 6 again. We say “helped him think”, not “helped him thinking”, and “learned to be”, not “learned being”.',
       },
     },
     {
