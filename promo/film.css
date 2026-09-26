@@ -442,3 +442,27 @@ img { display: block; }
 .fc .go { margin-top: 36px; height: 68px; padding: 0 40px; border-radius: 14px; background: var(--rust); color: #fff; display: grid; place-items: center; font-size: 18px; font-weight: 700; letter-spacing: .14em; box-shadow: 0 14px 30px rgba(187,77,0,.3); }
 .fcq { width: 1160px; padding: 40px 54px; }
 .fcq .kc-q { box-shadow: none; padding: 0; background: transparent; }
+
+/* ======================================================================
+   v4 — civilization opener (S0)
+   ====================================================================== */
+.s0-haze { position: absolute; inset: 0; background: radial-gradient(70% 55% at 50% 60%, rgba(120,78,30,.35), rgba(0,0,0,0) 70%), linear-gradient(180deg, #0a0907 0%, #120e09 60%, #0a0907 100%); }
+.civ { position: absolute; left: 0; top: 0; width: 560px; height: 700px; transform-origin: 50% 50%; }
+.civ-label { z-index: 3; }
+.civ .civ-img { position: absolute; inset: 0; clip-path: url(#arch); overflow: hidden; background: #1a140c; }
+.civ .civ-img img { position: absolute; left: -6%; top: -6%; width: 112%; height: 112%; object-fit: cover; }
+.civ .civ-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(10,8,5,.55)); }
+.civ .civ-frame { position: absolute; inset: -14px; pointer-events: none; }
+.civ-label { position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: 0 50%; }
+.civ-label .nm { font-size: 104px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: #fdf6e6; text-shadow: 0 10px 50px rgba(0,0,0,.7); overflow: hidden; padding-bottom: .12em; }
+.civ-label .nm > span, .civ-label .sb > span { display: inline-block; }
+.civ-label .sb { margin-top: 10px; font-size: 30px; font-weight: 500; letter-spacing: .01em; color: var(--gold-hi); overflow: hidden; }
+.civ-label .ix { font-size: 16px; letter-spacing: .3em; color: rgba(243,213,138,.7); font-weight: 600; margin-bottom: 12px; }
+.civ-label.right { transform-origin: 100% 50%; text-align: right; }
+#s0thread { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; filter: drop-shadow(0 0 5px rgba(243,213,138,.6)); }
+#s0msg { position: absolute; left: 0; right: 0; top: 0; text-align: center; }
+#s0msg .l1, #s0msg .l2 { position: absolute; left: 0; right: 0; overflow: hidden; padding-bottom: .14em; }
+#s0msg .l1 > span, #s0msg .l2 > span { display: inline-block; }
+#s0msg .l1 { font-size: 40px; font-weight: 600; color: var(--gold-hi); letter-spacing: -0.01em; }
+#s0msg .l2 { font-size: 96px; font-weight: 700; letter-spacing: -0.045em; color: #fdf6e6; line-height: 1.05; text-shadow: 0 16px 60px rgba(0,0,0,.7); }
+#s0spark { left: 960px; top: 540px; }
