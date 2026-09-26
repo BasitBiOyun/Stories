@@ -95,14 +95,12 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       instructions: 'Match each Chapter 2 chunk with the job it does.',
       question: 'How does the chapter describe what Adam was able to do and how he learned?',
       matchingPairs: [
-        { left: 'Adam could learn', right: 'describes an ability' },
-        { left: 'Adam could understand', right: 'describes an ability' },
+        { left: 'Adam could learn and understand', right: 'describes an ability' },
         { left: 'Allah taught him to think', right: 'describes learning from a teacher' },
         { left: 'He learned more', right: 'describes a result of learning' },
       ],
       correctAnswer: {
-        'Adam could learn': 'describes an ability',
-        'Adam could understand': 'describes an ability',
+        'Adam could learn and understand': 'describes an ability',
         'Allah taught him to think': 'describes learning from a teacher',
         'He learned more': 'describes a result of learning',
       },
