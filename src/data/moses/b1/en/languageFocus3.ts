@@ -1,27 +1,73 @@
 import type { Exercise } from '../../../../types';
 
-/** Moses B1 Chapters 9–13 Language Focus, consolidated without changing activity content. */
+/** Moses B1 Chapters 9–13 Language Focus: Notice → Build → Use, every quoted line taken from the English chapter. */
 
 /** Moses B1 Chapter 9 Language Focus, manually derived from the English story text. */
 export const mosesB1LanguageFocusChapter9: Record<number, Exercise[]> = {
   9: [
     {
-      id: 'moses-b1-language-9-command-response', type: 'matching', title: 'Command, Action and Result', instructions: 'Match each expression with the role it plays in the sequence.', question: 'How does the chapter move from direct instruction to visible result?',
-      matchingPairs: [{ left: 'Put down your walking stick!', right: 'gives a direct command' }, { left: 'Moses put down his staff on the ground.', right: 'shows the command being carried out' }, { left: 'It turned into a big snake!', right: 'shows the immediate result of the action' }, { left: 'Put your hand into your chest. Now take it out.', right: 'uses two linked imperatives to guide a sequence of actions' }],
-      correctAnswer: { 'Put down your walking stick!': 'gives a direct command', 'Moses put down his staff on the ground.': 'shows the command being carried out', 'It turned into a big snake!': 'shows the immediate result of the action', 'Put your hand into your chest. Now take it out.': 'uses two linked imperatives to guide a sequence of actions' },
-      explanation: 'The passage repeatedly uses imperative commands, then reports Moses’s response and the result that follows. This creates a clear instruction → action → result pattern.', feedback: { correct: 'Correct. You identified the language that builds the command-response-result sequence.', incorrect: 'Separate the direct instruction from Moses’s action and the result that follows it.' }
+      id: 'moses-b1-language-9-command-response',
+      type: 'multiple-choice',
+      title: 'What Does “Upon This” Mean?',
+      instructions: 'Read the last sentence of Chapter 9. Then choose the best meaning.',
+      question: 'After the message on the mountain, the chapter ends: “Upon this, Moses (pbuh) headed to Egypt.” What does “Upon this” mean here?',
+      options: ['on top of this mountain', 'right after this, and because of it', 'before this happened', 'even though this happened'],
+      correctAnswer: 1,
+      explanation: '“Upon this” is a formal connector. It links an event with the action that follows it immediately, as a response. The message from Allah comes first, and heading to Egypt is Moses’s response. To “head to” a place means to go towards it.',
+      feedback: {
+        correct: 'Correct. “Upon this” shows an action that follows as a response.',
+        incorrect: 'What had just happened before Moses went to Egypt? Read the last three sentences of Chapter 9.',
+      },
     },
     {
-      id: 'moses-b1-language-9-reported-mission', type: 'matching', title: 'From Direct Words to Reported Mission', instructions: 'Match the language with the function it performs.', question: 'How does the text shift from direct speech to a reported mission?',
-      matchingPairs: [{ left: 'Show these signs to the Pharaoh.', right: 'directly tells Moses what to do' }, { left: 'Tell him of the power of Allah.', right: 'adds a second direct instruction' }, { left: 'Allah told Moses to go to Egypt', right: 'reports an instruction with “told + person + to + verb”' }, { left: 'and show the Pharaoh the signs and warn him', right: 'links several parts of the same mission in one reported structure' }],
-      correctAnswer: { 'Show these signs to the Pharaoh.': 'directly tells Moses what to do', 'Tell him of the power of Allah.': 'adds a second direct instruction', 'Allah told Moses to go to Egypt': 'reports an instruction with “told + person + to + verb”', 'and show the Pharaoh the signs and warn him': 'links several parts of the same mission in one reported structure' },
-      explanation: 'The chapter first gives direct commands, then summarizes the mission with “told Moses to...”. This lets the narrative move from quoted speech to a compact report of responsibility.', feedback: { correct: 'Good. You distinguished direct commands from reported instruction.', incorrect: 'Look for the difference between exact quoted words and the later sentence that summarizes the mission.' }
+      id: 'moses-b1-language-9-reported-mission',
+      type: 'choose-form',
+      title: 'Change, Mission and New Role',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 9.',
+      question: 'Which forms show a complete change, a reported instruction and a new role?',
+      formChoices: [
+        {
+          sentence: 'Moses put down his staff on the ground. It [choice] a big snake!',
+          options: ['turned to be', 'turned into', 'was turning'],
+          answer: 1,
+        },
+        {
+          sentence: 'Allah told Moses [choice] to Egypt and show the Pharaoh the signs …',
+          options: ['go', 'that go', 'to go'],
+          answer: 2,
+        },
+        {
+          sentence: 'After this message from Allah, Moses [choice] a Messenger of Allah, a prophet.',
+          options: ['became', 'become', 'was becoming'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Turn into” shows a complete change from one thing into another. “Tell + person + to + base verb” reports an instruction without quoting it: Allah told Moses to go … and show … and warn …. “Became” marks a new role; “After this message” shows what came first.',
+      feedback: {
+        correct: 'Correct. You chose the forms for change, reported instruction and new role.',
+        incorrect: 'Check the second half of Chapter 9: what happens to the staff, what Moses is told to do, and what he becomes.',
+      },
     },
     {
-      id: 'moses-b1-language-9-role-change', type: 'matching', title: 'Message, Change and Next Step', instructions: 'Match each expression with the meaning it adds to the final part of the chapter.', question: 'How does the chapter show that the mountain encounter changes Moses’s role and direction?',
-      matchingPairs: [{ left: 'After this message from Allah', right: 'marks the event that comes before the change' }, { left: 'Moses became a Messenger of Allah, a prophet.', right: 'expresses a new role or state' }, { left: 'Upon this', right: 'connects the new role with the next action' }, { left: 'Moses headed to Egypt.', right: 'shows the mission becoming movement and action' }],
-      correctAnswer: { 'After this message from Allah': 'marks the event that comes before the change', 'Moses became a Messenger of Allah, a prophet.': 'expresses a new role or state', 'Upon this': 'connects the new role with the next action', 'Moses headed to Egypt.': 'shows the mission becoming movement and action' },
-      explanation: '“After this...” places the message before the change, “became” marks a new state, and “Upon this” links that change to the next action in the narrative.', feedback: { correct: 'Correct. You followed the language of transition from message to new role and action.', incorrect: 'Find the phrase that marks what happened first, the verb that signals a new role, and the connector that leads to the next action.' }
+      id: 'moses-b1-language-9-role-change',
+      type: 'sequencing',
+      title: 'On the Mountain',
+      instructions: 'Put the parts of Chapter 9 in the right order. Use “Then” and “Once more” to help you.',
+      question: 'How does the chapter move from Allah’s words to Moses’s action?',
+      sequencingItems: [
+        { id: '1', text: 'Moses climbed the mountain.' },
+        { id: '2', text: 'In the silence he heard a thundering voice …' },
+        { id: '3', text: 'Then Allah told Moses, “Put down your walking stick!”' },
+        { id: '4', text: 'Moses put down his staff on the ground.' },
+        { id: '5', text: 'Once more Allah spoke to Moses …' },
+      ],
+      correctAnswer: ['1', '2', '3', '4', '5'],
+      explanation: '“Then” and “Once more” show the order of Allah’s words. Each command is an imperative with no subject (“Put down …!”), and Moses’s action follows in the past simple (“put down”). This command → action → result pattern runs through the whole chapter.',
+      feedback: {
+        correct: 'Correct. You followed the scene from the voice to the command and Moses’s action.',
+        incorrect: 'The voice comes before the command, and the command comes before Moses’s action. Which word shows that Allah spoke a second time?',
+      },
     },
     {
       id: 'moses-b1-language-9-connected-production', type: 'reflection', title: 'Explain a New Responsibility', instructions: 'Write or say five connected B1 sentences about someone who receives instructions, carries them out, takes on a new responsibility, and then begins a new task. Do not retell the chapter.', question: 'Can you connect direct instruction, reported instruction, change of role and next action naturally?', correctAnswer: null,
@@ -33,32 +79,269 @@ export const mosesB1LanguageFocusChapter9: Record<number, Exercise[]> = {
 
 /** Moses B1 Chapter 10 Language Focus, manually derived from the English story text. */
 export const mosesB1LanguageFocusChapter10: Record<number, Exercise[]> = { 10: [
-  { id:'moses-b1-language-10-effort-realization', type:'matching', title:'Effort, Realization and Necessity', instructions:'Match each expression with the function it performs in the argument.', question:'How does the chapter move from trying to persuade Pharaoh to deciding that another step is necessary?', matchingPairs:[{left:'After making every effort to convince him',right:'shows that Moses tried persuasion fully before changing approach'},{left:'Moses realized that logical discussions would not work.',right:'expresses a conclusion based on what happened'},{left:'The Pharaoh kept refusing to believe in Allah.',right:'shows an action continuing despite repeated attempts'},{left:'Moses had no choice but to display the miracles.',right:'expresses necessity when other options have failed'}], correctAnswer:{'After making every effort to convince him':'shows that Moses tried persuasion fully before changing approach','Moses realized that logical discussions would not work.':'expresses a conclusion based on what happened','The Pharaoh kept refusing to believe in Allah.':'shows an action continuing despite repeated attempts','Moses had no choice but to display the miracles.':'expresses necessity when other options have failed'}, explanation:'The paragraph builds a clear progression: sustained effort → realization → continued refusal → necessary next action.', feedback:{correct:'Correct. You identified how the language builds the decision step by step.',incorrect:'Look for the phrase showing effort, the verb showing a conclusion, the continuing refusal, and the expression of necessity.'}},
-  { id:'moses-b1-language-10-action-result', type:'matching', title:'Action and Visible Result', instructions:'Match each action with the result language that follows it.', question:'How does the chapter connect Moses’s actions with immediate visible changes?', matchingPairs:[{left:'Moses got his staff and threw it on the ground.',right:'sets up the action before the change'},{left:'The staff turned into a big snake!',right:'states the visible result with “turned into”'},{left:'Then he put his arm in his armpit.',right:'uses “Then” to move to the next action'},{left:'When he got out his arm, it was shining white!',right:'uses “When” to connect the action with the resulting state'}], correctAnswer:{'Moses got his staff and threw it on the ground.':'sets up the action before the change','The staff turned into a big snake!':'states the visible result with “turned into”','Then he put his arm in his armpit.':'uses “Then” to move to the next action','When he got out his arm, it was shining white!':'uses “When” to connect the action with the resulting state'}, explanation:'The chapter uses sequence markers and change-of-state language to make the progression from action to result easy to follow.', feedback:{correct:'Good. You followed the language from action to visible outcome.',incorrect:'Separate the action, the sequence marker, and the words that describe the resulting state.'}},
-  { id:'moses-b1-language-10-purpose-contrast', type:'matching', title:'Purpose and Contrast', instructions:'Match each expression with the relationship it creates.', question:'How does the chapter explain why the signs were given and how Pharaoh responded?', matchingPairs:[{left:'Allah gave them to Moses',right:'introduces the source of the signs'},{left:'in order to help him against the Pharaoh',right:'states purpose explicitly'},{left:'These were miracles of Allah.',right:'identifies what the signs mean in the narrative'},{left:'The king and his advisors laughed at him.',right:'creates a contrasting human response after the purpose and signs are explained'}], correctAnswer:{'Allah gave them to Moses':'introduces the source of the signs','in order to help him against the Pharaoh':'states purpose explicitly','These were miracles of Allah.':'identifies what the signs mean in the narrative','The king and his advisors laughed at him.':'creates a contrasting human response after the purpose and signs are explained'}, explanation:'“In order to” explains purpose, while the final reaction contrasts the intended support of the signs with Pharaoh’s mocking response.', feedback:{correct:'Correct. You distinguished purpose from the contrasting response.',incorrect:'Find the phrase answering “Why were the signs given?” and then compare it with Pharaoh’s reaction.'}},
+  {
+    id: 'moses-b1-language-10-effort-realization',
+    type: 'multiple-choice',
+    title: 'Only One Option Left',
+    instructions: 'Read the sentence from Chapter 10. Then choose the best meaning.',
+    question: '“Moses (pbuh) had no choice but to display the miracles.” What does “had no choice but to” mean?',
+    options: ['He did not want to show the miracles, so he stopped.', 'He could choose from many different ways.', 'Showing the miracles was the only thing he could still do.', 'Someone else showed the miracles for him.'],
+    correctAnswer: 2,
+    explanation: '“Have no choice but to + base verb” means that the other options have failed, so only one action is left. The sentences before it explain why: talking and logical discussion did not work, and the Pharaoh went on refusing.',
+    feedback: {
+      correct: 'Correct. Only one option was left for Moses.',
+      incorrect: 'Read the sentences just before this one in Chapter 10. Did Moses’s first way of convincing the Pharaoh work?',
+    },
+  },
+  {
+    id: 'moses-b1-language-10-action-result',
+    type: 'sequencing',
+    title: 'Action and Visible Result',
+    instructions: 'Put the parts of Chapter 10 in the right order. Use “Then” and “When” to help you.',
+    question: 'How does the chapter connect Moses’s actions with the changes that follow?',
+    sequencingItems: [
+      { id: '1', text: 'Moses (pbuh) got his staff and threw it on the ground.' },
+      { id: '2', text: 'The staff turned into a big snake!' },
+      { id: '3', text: 'Then he put his arm in his armpit.' },
+      { id: '4', text: 'When he took his arm out, it was shining white!' },
+      { id: '5', text: 'The king and his advisors laughed at him.' },
+    ],
+    correctAnswer: ['1', '2', '3', '4', '5'],
+    explanation: 'Each action is followed by its result. “Then” moves to the second action, and “When he took his arm out” links that action to the new state (it was shining white). The last sentence is a contrast: the signs were real miracles, but the king and his advisors only laughed.',
+    feedback: {
+      correct: 'Correct. You followed each action to its result and to the king’s reaction.',
+      incorrect: 'An action comes before its result. Which sentence begins with “Then”, and which one begins with “When”? Check the end of Chapter 10.',
+    },
+  },
+  {
+    id: 'moses-b1-language-10-purpose-contrast',
+    type: 'transformation',
+    title: 'Effort, Repetition and Purpose',
+    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 10. Type the missing word or words.',
+    question: 'How can we express effort, repeated refusal and purpose in another way?',
+    transformItems: [
+      {
+        source: 'After making every effort to convince him, Moses (pbuh) realized that logical discussions would not work.',
+        frame: 'After he [blank] every effort to convince him, Moses (pbuh) realized that logical discussions would not work.',
+        answers: ['had made', 'made'],
+      },
+      {
+        source: 'The Pharaoh kept refusing to believe in Allah.',
+        frame: 'The Pharaoh refused to believe in Allah again and [blank].',
+        answers: ['again'],
+      },
+      {
+        source: 'Allah gave them to Moses (pbuh) in order to help him against the Pharaoh.',
+        frame: 'Allah gave them to Moses (pbuh) so that they [blank] help him against the Pharaoh.',
+        answers: ['could', 'would', 'might'],
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“After + -ing” can be expanded into a full clause: “After he had made every effort …”. “Keep + -ing” shows that an action happens again and again. “In order to + base verb” and “so that + subject + could/would” both express purpose.',
+    feedback: {
+      correct: 'Well done. You expressed the same ideas with new structures.',
+      incorrect: 'Use the past form of “make” after “After he …”, think about what “kept refusing” says about how often he refused, and use a modal such as “could” after “so that they”.',
+    },
+  },
   { id:'moses-b1-language-10-connected-production', type:'reflection', title:'Explain a Change of Approach', instructions:'Write or say five connected B1 sentences about a person who first tries one solution, realizes it is not working, chooses another action, sees a result, and explains the purpose of that action. Do not retell the chapter.', question:'Can you connect effort, realization, necessity, result and purpose in one short explanation?', correctAnswer:null, explanation:'Keep one situation throughout. Useful language includes “After making every effort...”, “realized that...”, “kept...”, “had no choice but to...”, “When...”, “turned into/became...”, and “in order to...”.', feedback:{correct:'Keep the five sentences connected so the change of approach is easy to follow.',incorrect:''}, discussionPrompts:[{question:'Sentence 1 — Describe the first solution and the effort made.',mode:'Individual'},{question:'Sentence 2 — Use “realized that...” to explain why the first approach was not working.',mode:'Individual'},{question:'Sentence 3 — Use “had no choice but to...” or another natural necessity expression for the next step.',mode:'Individual'},{question:'Sentence 4 — Use “When...” or a sequence marker to show the result of the new action.',mode:'Pair'},{question:'Sentence 5 — Use “in order to...” to explain the purpose of the new action.',mode:'Pair'}]}
 ]};
 
 /** Moses B1 Chapter 11 Language Focus, manually derived from the English story text. */
 export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
-  {id:'moses-b1-language-11-sequence-result',type:'matching',title:'Sequence and Immediate Result',instructions:'Match each expression with the relationship it creates in the event sequence.',question:'How does the chapter connect actions with the changes that follow them?',matchingPairs:[{left:'Once the sticks and ropes fell to the ground',right:'marks the moment after which their appearance changes'},{left:'they looked just like snakes',right:'describes the apparent result of the magicians’ action'},{left:'Moses threw down his staff',right:'states the new action after Allah’s command'},{left:'it turned into a huge snake',right:'states the immediate visible result of that action'}],correctAnswer:{'Once the sticks and ropes fell to the ground':'marks the moment after which their appearance changes','they looked just like snakes':'describes the apparent result of the magicians’ action','Moses threw down his staff':'states the new action after Allah’s command','it turned into a huge snake':'states the immediate visible result of that action'},explanation:'The chapter uses time markers and change-of-state language to move clearly from action to visible outcome.',feedback:{correct:'Correct. You followed how the text links action and result.',incorrect:'Look for the time marker, the action, and the phrase that describes what changes afterward.'}},
-  {id:'moses-b1-language-11-command-response',type:'matching',title:'Command, Action and Response',instructions:'Match each line with the function it performs in the exchange.',question:'How does direct speech move the scene forward?',matchingPairs:[{left:'“Throw down your staff!”',right:'gives a direct instruction'},{left:'Moses threw down his staff',right:'shows the instruction being carried out'},{left:'“We believe in the Lord of Moses and Harun!”',right:'expresses the magicians’ new position in direct speech'},{left:'“Be rude to them!”',right:'shows Pharaoh giving a harsh order after the event'}],correctAnswer:{'“Throw down your staff!”':'gives a direct instruction','Moses threw down his staff':'shows the instruction being carried out','“We believe in the Lord of Moses and Harun!”':'expresses the magicians’ new position in direct speech','“Be rude to them!”':'shows Pharaoh giving a harsh order after the event'},explanation:'Direct speech is used for commands and declarations, while the surrounding narration shows the action or consequence that follows.',feedback:{correct:'Correct. You distinguished instruction, action, declaration, and order.',incorrect:'Separate the lines that tell someone what to do from the line that states a new belief.'}},
-  {id:'moses-b1-language-11-witness-persistence-cause',type:'matching',title:'Witness, Persistence and Cause',instructions:'Match each expression with the meaning or discourse function it adds.',question:'How does the chapter describe who saw the event and who continued resisting?',matchingPairs:[{left:'The magicians who witnessed this miracle',right:'uses a relative clause to identify the magicians through what they saw'},{left:'The king still refused to believe in Allah',right:'shows that the refusal continued despite the new event'},{left:'because he was arrogant',right:'gives the reason for the continued refusal'},{left:'He continued to trouble Moses and his people',right:'shows an action continuing over time'}],correctAnswer:{'The magicians who witnessed this miracle':'uses a relative clause to identify the magicians through what they saw','The king still refused to believe in Allah':'shows that the refusal continued despite the new event','because he was arrogant':'gives the reason for the continued refusal','He continued to trouble Moses and his people':'shows an action continuing over time'},explanation:'The text combines identification, persistence, and cause to explain how different people react and how one response continues.',feedback:{correct:'Good. You identified relative description, persistence, and cause.',incorrect:'Find the words that mean “even after this”, “for this reason”, and “kept doing”.'}},
+  {
+    id: 'moses-b1-language-11-sequence-result',
+    type: 'true-false',
+    title: 'Looked Like or Turned Into?',
+    instructions: 'Read the sentence from Chapter 11. Is the statement true or false?',
+    question: '“Once the sticks and ropes fell to the ground, they looked just like snakes!” This sentence tells us that the sticks and ropes really became snakes.',
+    correctAnswer: false,
+    explanation: '“Look (just) like” describes how something seems, not what it really is. The king himself calls it “only magic”. For Moses’s staff, the chapter uses a different verb: it “turned into a huge snake” – a real change. “Once” means “as soon as”: the sticks looked like snakes at the moment they fell.',
+    feedback: { correct: 'Correct. The sticks only seemed to be snakes.', incorrect: 'Compare “looked just like snakes” with what happens to Moses’s staff later in Chapter 11.' },
+  },
+  {
+    id: 'moses-b1-language-11-command-response',
+    type: 'error-correction',
+    title: 'Find and Fix the Mistake',
+    instructions: 'Each sentence from Chapter 11 has one mistake. Tap the wrong word or phrase, then choose the correction.',
+    question: 'Can you correct a person clause, a “let” structure and an order?',
+    errorItems: [
+      {
+        sentence: 'The magicians which witnessed this miracle bowed down in front of Moses (pbuh).',
+        error: 'which',
+        options: ['whose', 'who', 'what'],
+        answer: 1,
+      },
+      {
+        sentence: 'The Pharaoh did not want to let those who worshipped Allah to live.',
+        error: 'to live',
+        options: ['live', 'living', 'lived'],
+        answer: 0,
+      },
+      {
+        sentence: 'He told his advisors and soldiers, “Being rude to them!”',
+        error: 'Being',
+        options: ['Are', 'Be', 'To be'],
+        answer: 1,
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“Who” begins a relative clause about people: the magicians who witnessed this miracle. “Let + person + base verb” has no “to”: let them live. An order with “be” uses the base form at the start: “Be rude to them!”',
+    feedback: {
+      correct: 'Well done. You corrected the person clause, the “let” structure and the order.',
+      incorrect: 'Compare each sentence with the second half of Chapter 11. Are the magicians people or things? Which verbs are followed by a base verb without “to”?',
+    },
+  },
+  {
+    id: 'moses-b1-language-11-witness-persistence-cause',
+    type: 'word-bank',
+    title: 'The King Does Not Change',
+    instructions: 'Complete the lines from Chapter 11 with words from the bank. Three words are not needed.',
+    question: 'Which words show that the refusal continued, give its reason and show an action going on over time?',
+    fillBlanksText: 'The king [blank] refused to believe in Allah, [blank] he was arrogant. … He continued [blank] Moses (pbuh) and his people day and night.',
+    wordBank: ['already', 'because of', 'still', 'troubled', 'because', 'to trouble'],
+    correctAnswer: ['still', 'because', 'to trouble'],
+    explanation: '“Still” shows that the refusal continued even after the magicians believed. “Because” + a clause gives the reason (he was arrogant); “because of” would need a noun (because of his arrogance). “Continued to + base verb” shows an action going on over time.',
+    feedback: {
+      correct: 'Correct. You showed continuing refusal, its reason and a continuing action.',
+      incorrect: 'The magicians changed, but did the king? Look at what follows each gap: a clause or a verb? Then check the end of Chapter 11.',
+    },
+  },
   {id:'moses-b1-language-11-connected-production',type:'reflection',title:'Describe a Turning Point',instructions:'Write or say five connected B1 sentences about a non-story situation in which an instruction leads to an action, the action produces a result, one group changes its view, and another person keeps resisting. Do not retell the chapter.',question:'Can you connect command, action, result, changed response, and continued resistance in one short paragraph?',correctAnswer:null,explanation:'Useful language includes “Once...”, “When...”, a direct imperative, “turned into/became...”, “who...”, “still...”, “continued to...”, and “because...”.',feedback:{correct:'Keep the five sentences connected around one situation and make the cause of the continued resistance clear.',incorrect:''},discussionPrompts:[{question:'Sentence 1 — Give a direct instruction.',mode:'Individual'},{question:'Sentence 2 — Show the action and use “Once...” or “When...” to connect it with the result.',mode:'Individual'},{question:'Sentence 3 — Describe a group who saw the result and changed its view.',mode:'Individual'},{question:'Sentence 4 — Use “still” or “continued to” for someone who did not change.',mode:'Pair'},{question:'Sentence 5 — Use “because” to explain why the resistance continued.',mode:'Pair'}]}
 ]};
 
 /** Moses B1 Chapter 12 Language Focus, manually derived from the English story text. */
 export const mosesB1LanguageFocusChapter12: Record<number, Exercise[]> = { 12: [
-  {id:'moses-b1-language-12-plan-obligation',type:'matching',title:'Plan, Secrecy and Obligation',instructions:'Match each expression with the meaning or function it adds to the plan.',question:'How does the chapter turn an escape plan into clear instructions?',matchingPairs:[{left:'“Get ready for the journey.”',right:'gives a direct instruction to prepare'},{left:'“We are going away from Egypt.”',right:'states the planned movement already decided by the group leader'},{left:'“You must keep it secret.”',right:'expresses strong obligation'},{left:'“Nobody should see us.”',right:'expresses what needs to be avoided for the plan to stay safe'}],correctAnswer:{'“Get ready for the journey.”':'gives a direct instruction to prepare','“We are going away from Egypt.”':'states the planned movement already decided by the group leader','“You must keep it secret.”':'expresses strong obligation','“Nobody should see us.”':'expresses what needs to be avoided for the plan to stay safe'},explanation:'The chapter combines direct instructions, a planned future action, obligation, and avoidance to organize a secret departure.',feedback:{correct:'Correct. You distinguished instruction, plan, obligation, and avoidance.',incorrect:'Look for the imperative, the planned movement, “must”, and “should”.'}},
-  {id:'moses-b1-language-12-inability-result',type:'matching',title:'Inability and Consequence',instructions:'Match the clauses to show how the text explains why the caravan moves slowly.',question:'How does the chapter connect physical limitation with its result?',matchingPairs:[{left:'The children and the old could not walk fast',right:'states an inability'},{left:'and got tired very quickly',right:'adds a second difficulty affecting the same group'},{left:'That’s why',right:'signals that a result is coming'},{left:'the caravan moved slowly',right:'states the consequence of the earlier difficulties'}],correctAnswer:{'The children and the old could not walk fast':'states an inability','and got tired very quickly':'adds a second difficulty affecting the same group','That’s why':'signals that a result is coming','the caravan moved slowly':'states the consequence of the earlier difficulties'},explanation:'The chapter explains movement through a clear limitation → added difficulty → result sequence.',feedback:{correct:'Correct. You followed the cause-and-result structure.',incorrect:'Find the inability, the added problem, and the phrase that introduces the result.'}},
-  {id:'moses-b1-language-12-time-pursuit-reassurance',type:'matching',title:'Time, Pursuit and Reassurance',instructions:'Match each expression with its role in moving the narrative forward.',question:'How does the chapter organize the pursuit and then change the emotional direction of the scene?',matchingPairs:[{left:'When the Pharaoh noticed they left the land',right:'marks the moment that triggers Pharaoh’s response'},{left:'he prepared his huge army and easily managed to catch up with them',right:'shows action followed by successful pursuit'},{left:'When the sun rose, the caravan reached the Red Sea',right:'moves the story to a new time and location'},{left:'“Calm down! Allah is with us and will show us the way to safety.”',right:'changes panic into reassurance and expresses future guidance'}],correctAnswer:{'When the Pharaoh noticed they left the land':'marks the moment that triggers Pharaoh’s response','he prepared his huge army and easily managed to catch up with them':'shows action followed by successful pursuit','When the sun rose, the caravan reached the Red Sea':'moves the story to a new time and location','“Calm down! Allah is with us and will show us the way to safety.”':'changes panic into reassurance and expresses future guidance'},explanation:'Time clauses organize the chase, while direct reassurance shifts the scene from fear toward confidence about what will happen next.',feedback:{correct:'Good. You identified trigger, pursuit, time shift, and reassurance.',incorrect:'Separate the two “When...” clauses from the final direct speech about the future.'}},
+  {
+    id: 'moses-b1-language-12-plan-obligation',
+    type: 'drag-drop',
+    title: 'The Plan and the Rules',
+    instructions: 'Read Moses’s words to his people in Chapter 12. Does each sentence tell the plan, or give an instruction or a rule? Put it in the right group.',
+    question: 'How does Moses use different forms for the plan and for the rules the group must follow?',
+    dragDropGroups: [
+      {
+        group: 'The plan (what is going to happen)',
+        items: ['We are going away from Egypt.', 'We will leave at night.'],
+      },
+      {
+        group: 'Instructions and rules (what people must do or avoid)',
+        items: ['Get ready for the journey.', 'But you must keep it secret.', 'Nobody should see us.'],
+      },
+    ],
+    correctAnswer: {
+      'The plan (what is going to happen)': ['We are going away from Egypt.', 'We will leave at night.'],
+      'Instructions and rules (what people must do or avoid)': ['Get ready for the journey.', 'But you must keep it secret.', 'Nobody should see us.'],
+    },
+    explanation: 'Moses uses the present continuous (We are going away) and “will” (We will leave) for a plan that has already been decided. For the rules he uses an imperative (Get ready), “must” for a strong obligation, and “should” for what it is important to avoid.',
+    feedback: {
+      correct: 'Correct. You separated the plan from the instructions and rules.',
+      incorrect: 'Ask: does the sentence say what will happen, or what the people must do or avoid? Look for “must”, “should” and a verb with no subject.',
+    },
+  },
+  {
+    id: 'moses-b1-language-12-inability-result',
+    type: 'transformation',
+    title: 'Cause, Result and Success',
+    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 12. Type the missing word or words.',
+    question: 'How can we join a cause and its result, and say that someone succeeded?',
+    transformItems: [
+      {
+        source: 'The children and the old could not walk fast and got tired very quickly. That’s why the caravan moved slowly.',
+        frame: 'The children and the old could not walk fast and got tired very quickly, [blank] the caravan moved slowly.',
+        answers: ['so', 'and so', 'which is why', 'and that’s why', 'and that is why'],
+      },
+      {
+        source: 'When the Pharaoh noticed that they had left the land, he prepared his huge army and easily managed to catch up with them.',
+        frame: '… he prepared his huge army and easily succeeded in [blank] up with them.',
+        answers: ['catching'],
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“That’s why” and “so” both introduce a result. “Could not” shows a past inability, and that inability is the cause. “Manage to + base verb” means succeed in doing something difficult; after “succeed in”, use the -ing form.',
+    feedback: {
+      correct: 'Well done. You joined the cause to its result and expressed success in a new way.',
+      incorrect: 'Which short word introduces a result in the middle of a sentence? Which verb form follows a preposition like “in”?',
+    },
+  },
+  {
+    id: 'moses-b1-language-12-time-pursuit-reassurance',
+    type: 'matching',
+    title: 'Words for the Chase',
+    instructions: 'Match each word or phrase from Chapter 12 with its meaning.',
+    question: 'What do these words tell us about the journey, the chase and Moses’s answer to his people’s fear?',
+    matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+    matchingPairs: [
+      { left: 'caravan', right: 'a group of people travelling together' },
+      { left: 'noticed', right: 'became aware of' },
+      { left: 'catch up with', right: 'reach people who are ahead of you' },
+      { left: 'panicked', right: 'suddenly became very afraid' },
+      { left: 'Calm down!', right: 'Relax and stop worrying!' },
+    ],
+    correctAnswer: {
+      caravan: 'a group of people travelling together',
+      noticed: 'became aware of',
+      'catch up with': 'reach people who are ahead of you',
+      panicked: 'suddenly became very afraid',
+      'Calm down!': 'Relax and stop worrying!',
+    },
+    explanation: 'The Pharaoh “noticed” (became aware) that the people had left, and his army could “catch up with” the slow “caravan”. When the people “panicked”, Moses answered with an imperative, “Calm down!”, and a promise with “will”: Allah “will show us the way to safety”.',
+    feedback: {
+      correct: 'Correct. These words carry the chase and the change from panic to calm.',
+      incorrect: 'Find each word in Chapter 12 and use the sentence around it to work out its meaning.',
+    },
+  },
   {id:'moses-b1-language-12-connected-production',type:'reflection',title:'Explain a Difficult Group Plan',instructions:'Write or say five connected B1 sentences about a non-story group that must leave quietly, has members who cannot move quickly, is followed by another group, and receives reassurance from its leader. Do not retell the chapter.',question:'Can you connect instruction, obligation, inability, result, time, and reassurance in one short paragraph?',correctAnswer:null,explanation:'Useful language includes an imperative, “must/should”, “could not”, “That’s why...”, “When...”, “managed to...”, and “will...”.',feedback:{correct:'Keep the sentences connected around one situation and make the final reassurance respond naturally to the problem.',incorrect:''},discussionPrompts:[{question:'Sentence 1 — Give a direct instruction and state the group’s plan.',mode:'Individual'},{question:'Sentence 2 — Use “must” or “should” to explain a rule for the plan.',mode:'Individual'},{question:'Sentence 3 — Use “could not” and “That’s why...” to connect a limitation with its result.',mode:'Individual'},{question:'Sentence 4 — Use “When...” and “managed to...” to describe another group following them.',mode:'Pair'},{question:'Sentence 5 — End with reassurance using a present support statement and “will” for future help.',mode:'Pair'}]}
 ]};
 
 /** Moses B1 Chapter 13 Language Focus, manually derived from the English story text. */
 export const mosesB1LanguageFocusChapter13: Record<number, Exercise[]> = { 13: [
-  {id:'moses-b1-language-13-command-event-result',type:'matching',title:'Command, Event and Result',instructions:'Match each expression with the role it plays in moving the scene forward.',question:'How does the chapter connect instruction, action, and consequence?',matchingPairs:[{left:'“Hit the sea with your stick!”',right:'gives a direct command'},{left:'When the stick touched the waters of the sea',right:'marks the moment that triggers the next event'},{left:'The sea parted',right:'states the immediate result'},{left:'Allah made a path for them across the sea',right:'explains the practical outcome of the event'}],correctAnswer:{'“Hit the sea with your stick!”':'gives a direct command','When the stick touched the waters of the sea':'marks the moment that triggers the next event','The sea parted':'states the immediate result','Allah made a path for them across the sea':'explains the practical outcome of the event'},explanation:'The passage progresses from command → triggering moment → visible event → resulting possibility for the group.',feedback:{correct:'Correct. You followed the command-to-result sequence.',incorrect:'Separate the direct command, the “When...” trigger, the immediate event, and its practical outcome.'}},
-  {id:'moses-b1-language-13-time-change-consequence',type:'matching',title:'Time, Change and Consequence',instructions:'Match each clause with the relationship it expresses.',question:'How does the chapter organize the final change in the sea?',matchingPairs:[{left:'when they were midway',right:'places the next event at a specific moment in the journey'},{left:'Allah ordered the sea to close',right:'reports an instruction affecting what happens next'},{left:'the sea closed over them',right:'states the change that follows the order'},{left:'and they drowned',right:'states the final consequence'}],correctAnswer:{'when they were midway':'places the next event at a specific moment in the journey','Allah ordered the sea to close':'reports an instruction affecting what happens next','the sea closed over them':'states the change that follows the order','and they drowned':'states the final consequence'},explanation:'The chapter uses a time clause, a reported order, a change of state, and a final result to build the ending clearly.',feedback:{correct:'Correct. You identified time, order, change, and consequence.',incorrect:'Look at what “when” introduces and what happens after the order.'}},
-  {id:'moses-b1-language-13-purpose-general-lesson',type:'matching',title:'Purpose and General Lessons',instructions:'Match each expression with the function it performs in the final paragraph.',question:'How does the ending move from events to general meaning?',matchingPairs:[{left:'The story of Moses has many lessons to learn',right:'signals a shift from narrative events to interpretation'},{left:'It again reminds us that...',right:'introduces a general principle drawn from the story'},{left:'Allah sent prophets to show people a better life',right:'uses “to + verb” to express purpose'},{left:'when we pray to Him, He always guides us on the right path',right:'connects a recurring situation with its usual result'}],correctAnswer:{'The story of Moses has many lessons to learn':'signals a shift from narrative events to interpretation','It again reminds us that...':'introduces a general principle drawn from the story','Allah sent prophets to show people a better life':'uses “to + verb” to express purpose','when we pray to Him, He always guides us on the right path':'connects a recurring situation with its usual result'},explanation:'The final paragraph changes register: it interprets the story, states general principles, explains purpose, and gives a recurring condition-result relationship.',feedback:{correct:'Good. You distinguished interpretation, purpose, and recurring meaning.',incorrect:'Look for the shift from “what happened” to “what the story teaches”.'}},
+  {
+    id: 'moses-b1-language-13-command-event-result',
+    type: 'true-false',
+    title: 'One Moment or Every Time?',
+    instructions: 'Read the two uses of “when” from Chapter 13. Is the statement true or false?',
+    question: 'At the end of Chapter 13 we read, “… when we pray to Him, He always guides us on the right path.” Here “when” describes one moment in the story, just like “When the stick touched the waters of the sea”.',
+    correctAnswer: false,
+    explanation: 'With the present simple and “always”, “when” means “every time”: it states a general truth (when we pray, He guides us). With the past simple, “when” marks one moment in the story that triggers the next event: when the stick touched the water, a miracle happened.',
+    feedback: {
+      correct: 'Correct. The last “when” states a general truth, not one moment in the story.',
+      incorrect: 'Compare the tenses: “touched” (past simple) and “pray … guides” (present simple with “always”). Which one is about every time?',
+    },
+  },
+  {
+    id: 'moses-b1-language-13-time-change-consequence',
+    type: 'sequencing',
+    title: 'Through the Sea',
+    instructions: 'Put the parts of Chapter 13 in the right order.',
+    question: 'How does the chapter move from a command, through a trigger, to a final consequence?',
+    sequencingItems: [
+      { id: '1', text: 'He told Moses (pbuh), “Hit the sea with your stick!”' },
+      { id: '2', text: 'When the stick touched the waters of the sea, a miracle happened!' },
+      { id: '3', text: 'Allah made a path for them across the sea!' },
+      { id: '4', text: 'Moses (pbuh) and his people safely walked between the walls of water.' },
+      { id: '5', text: 'They entered the parted waters and when they were midway, Allah ordered the sea to close.' },
+      { id: '6', text: 'The sea closed over them, and they drowned.' },
+    ],
+    correctAnswer: ['1', '2', '3', '4', '5', '6'],
+    explanation: 'The command comes first; “When the stick touched …” marks the moment that triggers the miracle. The path is the result, and Moses’s people use it. “When they were midway” marks a second key moment, and “Allah ordered the sea to close” reports an order (order + object + to + base verb). The last sentence gives the final consequence.',
+    feedback: {
+      correct: 'Correct. You followed the command, the two “when” moments and the final consequence.',
+      incorrect: 'Start with the command. Moses’s people cross before the Pharaoh’s army enters the water. Check the first paragraph of Chapter 13.',
+    },
+  },
+  {
+    id: 'moses-b1-language-13-purpose-general-lesson',
+    type: 'word-bank',
+    title: 'From Story to Lesson',
+    instructions: 'Complete the lines from the end of Chapter 13 with words from the bank. Three words are not needed.',
+    question: 'Which words turn the events of the story into lessons and explain a purpose?',
+    fillBlanksText: 'The story of Moses (pbuh) has many lessons for us [blank]. It again reminds us [blank] no one can enslave another human being. … Allah sent prophets [blank] show people a better life.',
+    wordBank: ['learning', 'to learn', 'what', 'that', 'for', 'to'],
+    correctAnswer: ['to learn', 'that', 'to'],
+    explanation: '“Lessons for us to learn” uses “to + base verb” after a noun to say what we should do with the lessons. “Remind someone that + clause” introduces a general truth drawn from the story. “Sent prophets to show …” uses “to + base verb” for purpose. “For show” is not possible.',
+    feedback: {
+      correct: 'Correct. You moved from the events to the lessons and their purpose.',
+      incorrect: 'Look at what follows each gap: a full clause after “reminds us”, and a base verb after the last gap. Check the last paragraph of Chapter 13.',
+    },
+  },
   {id:'moses-b1-language-13-connected-production',type:'reflection',title:'From Event to Lesson',instructions:'Write or say five connected B1 sentences about a non-story situation where a leader gives an instruction, an event changes the situation, a consequence follows, and the group later explains what it learned. Do not retell the chapter.',question:'Can you move naturally from command and sequence to consequence, purpose, and a general lesson?',correctAnswer:null,explanation:'Useful language includes an imperative, “When...”, a clear result clause, “to + verb” for purpose, and “This reminds us that...” or “This shows that...”.',feedback:{correct:'Keep one clear situation and make the final lesson grow naturally from the earlier events.',incorrect:''},discussionPrompts:[{question:'Sentence 1 — Give a direct instruction.',mode:'Individual'},{question:'Sentence 2 — Use “When...” to introduce the event that follows.',mode:'Individual'},{question:'Sentence 3 — State the consequence of that event.',mode:'Individual'},{question:'Sentence 4 — Use “to + verb” to explain the purpose of one action.',mode:'Pair'},{question:'Sentence 5 — End with “This reminds us that...” or “This shows that...” to express a general lesson.',mode:'Pair'}]}
 ]};
