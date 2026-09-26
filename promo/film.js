@@ -156,7 +156,7 @@ const scenes = [];
 /* A scene runs on its own clock. `warp` = [clockA, clockB, filmA, filmB] maps film time onto it,
    so a scene choreographed once can be re-timed (slowed down / moved) without touching its keys. */
 const scene = (id, a, b, update, warp) => scenes.push({ el: document.getElementById(id), a, b, update, warp });
-const W1 = [0, 3.9, 0, 4.667], W2 = [3.9, 8.45, 4.667, 10.667], W3 = [8.45, 12.35, 10.667, 15.333], W4 = [12.35, 17.6, 15.333, 20.667];
+const W1 = [0, 3.9, 0, 4.667], W2 = [3.9, 8.45, 4.2, 10.667], W3 = [8.45, 12.35, 10.667, 15.333], W4 = [12.35, 17.6, 15.333, 20.667];
 const W6 = [22.75, 28.6, 42.667, 48.667], W7 = [28.6, 34.45, 48.667, 54.667], W8 = [34.45, 39.65, 54.667, 60.0];
 
 /* ------------------------------ S1 · HOOK ------------------------------ */
@@ -218,7 +218,7 @@ const W6 = [22.75, 28.6, 42.667, 48.667], W7 = [28.6, 34.45, 48.667, 54.667], W8
     op(persp, P(t, 0.8, 1.1, E.lin));
 
     /* camera dolly through the library */
-    const camZ = K(t, [[0.9, 0], [3.9, FINAL_Z, bezier(0.5, 0.0, 0.3, 1)]]);
+    const camZ = K(t, [[0.9, 0], [3.45, FINAL_Z, bezier(0.5, 0.0, 0.4, 1)]]);
     const sway = smoothNoise(t * 0.9, 3) * 1.4;
     for (const o of CARDS) {
       const rel = camZ - o.z; // >0 : card is closer than its rest depth
@@ -283,7 +283,7 @@ const enWords = splitWords($('#pgTextEn'));
     }
     /* camera: from the image filling the frame → hero product angle → into "Messenger" */
     const imgFocus = { px: imgRect.cx, py: imgRect.cy, s: window.__FINAL_W / imgRect.w };
-    const pull = P(t, 3.9, 5.3, bezier(0.3, 0, 0.1, 1));
+    const pull = P(t, 3.9, 5.3, bezier(0.22, 0, 0.1, 1));
     const push = P(t, 7.45, 8.45, bezier(0.6, 0, 0.9, 0.55));
     const after = P(t, 8.45, 9.25, E.out);
     const hand = { x: smoothNoise(t * 0.5, 7) * 6, y: smoothNoise(t * 0.45, 9) * 5 };
@@ -587,12 +587,12 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     op(flow, fIn * (1 - fOut)); tf(flow, { y: (1 - fIn) * -16 });
     paintFlow(flow, [1 + P(t, 21.1, 21.5), P(t, 21.2, 21.6) + P(t, 24.45, 24.85), P(t, 24.6, 25.0) + P(t, 27.7, 28.0)], [P(t, 21.0, 21.6, E.inOut), P(t, 24.4, 25.0, E.inOut)]);
     /* Quick Challenge */
-    const inn = P(t, 20.85, 21.75, E.outSoft);
+    const inn = P(t, 20.75, 21.5, E.outSoft);
     const up = P(t, 24.3, 25.2, E.cam);
     tf(qc, { x: 410 + hand.x - up * 180, y: lerp(lerp(560, 200, inn), -620, up) + hand.y, z: lerp(-600, 0, inn) - up * 500, rx: lerp(24, 3, inn) + up * 10, ry: lerp(10, -4, inn), rz: lerp(-2.5, 0, inn) });
-    op(qc, P(t, 20.85, 21.1, E.lin) * (1 - P(t, 24.9, 25.3, E.lin)));
-    qWords.forEach((w, i) => { const p = P(t, 21.35 + i * 0.03, 21.85 + i * 0.03, E.outSoft); w.style.opacity = p; w.style.transform = `translateY(${((1 - p) * 20).toFixed(1)}px)`; });
-    opts.forEach((o, i) => { const p = P(t, 21.8 + i * 0.12, 22.35 + i * 0.12, E.outSoft); o.style.opacity = p.toFixed(3); o.style.transform = `translateX(${((1 - p) * 60).toFixed(1)}px)`; });
+    op(qc, P(t, 20.75, 21.0, E.lin) * (1 - P(t, 24.9, 25.3, E.lin)));
+    qWords.forEach((w, i) => { const p = P(t, 21.0 + i * 0.03, 21.5 + i * 0.03, E.outSoft); w.style.opacity = p; w.style.transform = `translateY(${((1 - p) * 20).toFixed(1)}px)`; });
+    opts.forEach((o, i) => { const p = P(t, 21.45 + i * 0.12, 22.0 + i * 0.12, E.outSoft); o.style.opacity = p.toFixed(3); o.style.transform = `translateX(${((1 - p) * 60).toFixed(1)}px)`; });
     const r = opts[1].getBoundingClientRect();
     const tx = r.left + r.width * 0.36, ty = r.top + r.height * 0.55;
     const mv = P(t, 22.55, 23.05, E.cam);
@@ -610,7 +610,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     fb.style.height = (fbp * fbH).toFixed(1) + 'px'; fb.style.opacity = P(t, 23.25, 23.45, E.lin).toFixed(3);
     fb.style.marginTop = (12 * fbp).toFixed(1) + 'px'; fb.style.borderWidth = fbp > 0.01 ? '1.5px' : '0';
     /* Language Focus rises from below, then its first activity opens */
-    const lIn = P(t, 24.45, 25.35, E.cam), lSide = P(t, 25.95, 26.7, E.cam), lOut = P(t, 27.95, 28.5, E.inStrong);
+    const lIn = P(t, 24.45, 25.35, E.cam), lSide = P(t, 25.95, 26.7, E.cam), lOut = P(t, 27.85, 28.2, E.inStrong);
     tf(lf, { x: 340 - lSide * 250 + hand.x, y: lerp(1250, 250, lIn) + hand.y, z: -lSide * 380 - lOut * 900, rx: lerp(18, 2, lIn), ry: lSide * 16 });
     op(lf, P(t, 24.45, 24.7, E.lin) * (1 - lSide * 0.35) * (1 - lOut));
     lfRows.forEach((row, i) => { const p = P(t, 24.95 + i * 0.1, 25.5 + i * 0.1, E.outSoft); row.style.opacity = p.toFixed(3); row.style.transform = `translateY(${((1 - p) * 26).toFixed(1)}px)`; });
@@ -626,7 +626,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     op(task.c, P(t, 25.95, 26.2, E.lin) * (1 - lOut));
     matchLines(task.svg, task.L, task.R, TASK_PAIRS, t, 26.75, 0.3);
     /* every chapter repeats the loop */
-    const rIn = P(t, 28.05, 28.6, E.outSoft), rOut = P(t, 29.15, 29.5, E.in);
+    const rIn = P(t, 28.15, 28.6, E.outSoft), rOut = P(t, 29.15, 29.5, E.in);
     const pan = P(t, 28.2, 29.45, bezier(0.5, 0, 0.3, 1));
     camTf(railW, { px: 200 + pan * 11 * 440, py: 280, s: 1, sx: 760 + hand.x, sy: 470 + (1 - rIn) * 80, z: -150 - rOut * 300, ry: -14, rx: 3 });
     mods.forEach((m, i) => tf(m, { x: i * 440, y: Math.sin(i * 1.3) * 18, z: 0 }));
@@ -719,7 +719,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     const hand = { x: smoothNoise(t * 0.45, 61) * 5, y: smoothNoise(t * 0.4, 62) * 4 };
     const cx = camX(t), speed = Math.abs(camX(t + 1 / 60) - cx) * 60;
     const leave = P(t, 42.55, 43.0, E.inStrong);
-    tf(world, { x: -cx + hand.x, y: hand.y, z: -leave * 700, ry: clamp(speed / 900, 0, 1) * -3 });
+    camTf(world, { px: cx + CX, py: CY, s: 1, sx: CX + hand.x, sy: CY + hand.y, z: -leave * 700, ry: clamp(speed / 900, 0, 1) * -3 });
     blur(world, Math.min(9, speed / 1500) + leave * 8);
     STATIONS.forEach((s, i) => {
       const dz = i % 2 ? -120 : 0;
