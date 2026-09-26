@@ -12,7 +12,7 @@ Goal: every chapter's Language Focus follows Notice → Build → Use (A2: Look 
 | Mecca A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ⏳ |
 
 ## Still to do (⏳ above, plus)
-- Abraham A2 — EN, AR
+- Abraham A2 — AR (EN ✅)
 - Yunus Emre A2 AR; Yunus Emre B1 / B2 — EN, AR
 - Yunus Emre A2 EN ✅
 
