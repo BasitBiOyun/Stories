@@ -137,7 +137,8 @@ const ChooseForm = ({ exercise, isSubmitted, onSubmit, theme }: RendererProps) =
                 if (!isGap(part)) return <React.Fragment key={partIndex}>{part}</React.Fragment>;
                 return (
                   <span key={partIndex} role="radiogroup" aria-label={text.copy.correctForm} className="mx-1 inline-flex flex-wrap items-center gap-1.5 align-middle">
-                    {item.options.map((option, optionIndex) => {
+                    {presentDeranged(item.options.map((_, index) => index), `${exercise.id}:${itemIndex}`).map((optionIndex) => {
+                      const option = item.options[optionIndex];
                       const selected = choices[itemIndex] === optionIndex;
                       const isAnswer = optionIndex === item.answer;
                       return (
@@ -338,7 +339,8 @@ const ErrorCorrection = ({ exercise, isSubmitted, onSubmit, theme }: RendererPro
                 <div className="space-y-2">
                   <p className={cn('font-display font-bold uppercase tracking-widest text-wood/45', text.small)}>{text.copy.replaceWith}</p>
                   <div role="radiogroup" aria-label={text.copy.replaceWith} className="flex flex-wrap gap-2">
-                    {item.options.map((option, optionIndex) => {
+                    {presentDeranged(item.options.map((_, index) => index), `${exercise.id}:${itemIndex}`).map((optionIndex) => {
+                      const option = item.options[optionIndex];
                       const selected = answer.choice === optionIndex;
                       const isAnswer = optionIndex === item.answer;
                       return (

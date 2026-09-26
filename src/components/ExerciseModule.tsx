@@ -18,6 +18,7 @@ import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
 import {
+  presentDeranged,
   presentExerciseTitle,
   presentMatchingMeanings,
   presentMultipleChoice,
@@ -592,7 +593,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     }
 
     if (exercise.type === 'drag-drop') {
-      const allItems = exercise.dragDropGroups?.flatMap((group) => group.items) ?? [];
+      // Authored groups list their items together; mix them so the order does not give the answer away.
+      const allItems = presentDeranged(exercise.dragDropGroups?.flatMap((group) => group.items) ?? [], `${exercise.id}:items`);
       const assigned = Object.values(dragAssignments).flat();
       const available = allItems.filter((item) => !assigned.includes(item));
       const allAssigned = allItems.length > 0 && available.length === 0;

@@ -4,48 +4,68 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
   3: [
     {
       id: 'abraham-b1-language-3-contrast-viewpoint',
-      type: 'matching',
-      title: 'Holding Two Ideas Together',
-      instructions: 'Match each Chapter 3 expression with the relationship it creates.',
-      question: 'How does the chapter connect contrast, continuation, and viewpoint?',
-      matchingPairs: [
-        { left: 'Although he always wondered about Allah, he also knew ...', right: 'acknowledges one idea before adding a different but compatible conclusion' },
-        { left: 'the people ... were still showing love and respect to idols', right: 'shows a situation continuing without change' },
-        { left: 'On the other hand, Abraham was in search of one true Creator.', right: 'shifts the viewpoint from the people to Abraham' },
-        { left: 'But when it disappeared ...', right: 'contrasts an earlier possibility with later evidence' },
+      type: 'multiple-choice',
+      title: 'What Does “Still” Tell Us?',
+      instructions: 'Read the sentence from Chapter 3. Then choose what “still” tells us.',
+      question: '“Years passed, and Abraham grew into a young man. … It made him sad to see the people of the kingdom; they were still showing love and respect to idols.” What does “still” tell us about the people?',
+      options: [
+        'They continued to do this; nothing had changed over the years.',
+        'They were quiet and did not move.',
+        'They started doing this again after a break.',
+        'They did this for the first time.',
       ],
-      correctAnswer: {
-        'Although he always wondered about Allah, he also knew ...': 'acknowledges one idea before adding a different but compatible conclusion',
-        'the people ... were still showing love and respect to idols': 'shows a situation continuing without change',
-        'On the other hand, Abraham was in search of one true Creator.': 'shifts the viewpoint from the people to Abraham',
-        'But when it disappeared ...': 'contrasts an earlier possibility with later evidence',
+      correctAnswer: 0,
+      explanation: '“Still” (before the main verb, after be) shows that a situation continues and has not changed, often when we expect a change. Years passed and Abraham grew up, but the people were still showing love and respect to idols. The continuous form “were showing” adds that this was ongoing. That is why it made Abraham sad.',
+      feedback: {
+        correct: 'Correct. “Still” shows that the people’s behaviour continued without change.',
+        incorrect: 'Look at the first words of Chapter 3: “Years passed …”. What did not change in all those years?',
       },
-      explanation: 'The chapter uses concession, continuation, viewpoint shift, and contrast to organise connected reasoning.',
-      feedback: { correct: 'Correct. You identified how the expressions organise viewpoint and contrast.', incorrect: 'Ask whether the expression concedes an idea, shows continuation, shifts viewpoint, or contrasts an earlier idea with later evidence.' },
     },
     {
-      id: 'abraham-b1-language-3-purpose-sequence', type: 'matching', title: 'Purpose and Movement Through a Scene', instructions: 'Match each expression with its job in the narrative.', question: 'How does the chapter connect purpose and sequence?',
-      matchingPairs: [
-        { left: 'left his home to take a walk', right: 'uses “to + verb” to express purpose' },
-        { left: 'found a cave, sat there, and started thinking', right: 'links several actions in a compact sequence' },
-        { left: 'Then he stood up and looked up ...', right: 'moves the narrative to the next step' },
-        { left: 'when the moon faded, he understood ...', right: 'links new evidence to a resulting conclusion' },
-      ],
-      correctAnswer: { 'left his home to take a walk': 'uses “to + verb” to express purpose', 'found a cave, sat there, and started thinking': 'links several actions in a compact sequence', 'Then he stood up and looked up ...': 'moves the narrative to the next step', 'when the moon faded, he understood ...': 'links new evidence to a resulting conclusion' },
-      explanation: 'B1 narration becomes clearer when purpose, linked actions, sequence markers, and result clauses show how one moment leads to another.',
-      feedback: { correct: 'Good. You traced how language organises intention and sequence.', incorrect: 'Look for purpose, a chain of actions, the next step, and the point where evidence leads to a conclusion.' },
+      id: 'abraham-b1-language-3-purpose-sequence',
+      type: 'word-bank',
+      title: 'Linking Ideas in Abraham’s Search',
+      instructions: 'Complete the lines from Chapter 3 with words from the bank. Two words are not needed.',
+      question: 'Which linking words show contrast, a change of viewpoint, purpose and reason?',
+      fillBlanksText: '[blank] he always wondered about Allah, he also knew that Allah could not be a statue. It made him sad to see the people of the kingdom; they were still showing love and respect to idols. [blank], Abraham was in search of one true Creator. One night, Abraham left his home [blank] take a walk in the countryside. … “I will not show respect to it or worship it, [blank] it sets and disappears.”',
+      wordBank: ['Although', 'On the other hand', 'to', 'because', 'Despite', 'Because of'],
+      correctAnswer: ['Although', 'On the other hand', 'to', 'because'],
+      explanation: '“Although + clause” holds two ideas together: Abraham still had questions about Allah, but he was sure of one thing. “On the other hand” moves from the people to Abraham’s different position. “To + verb” gives the purpose of an action (left his home to take a walk). “Because” gives the reason for a decision. “Despite” and “because of” cannot be followed by a full clause (subject + verb); they need a noun.',
+      feedback: {
+        correct: 'Correct. You chose the right link for contrast, viewpoint, purpose and reason.',
+        incorrect: 'For each gap, ask: is it a contrast, a new viewpoint, a purpose (why he left home), or a reason (why he will not worship the star)? Then check Chapter 3.',
+      },
     },
     {
-      id: 'abraham-b1-language-3-question-to-conclusion', type: 'matching', title: 'From Possibility to Conclusion', instructions: 'Match each form with its role in a reasoning sequence.', question: 'How can a speaker explore a possibility and then move toward a conclusion?',
-      matchingPairs: [
-        { left: 'Could this be my Allah?', right: 'opens a possibility for consideration' },
-        { left: 'because it sets and disappears', right: 'gives the reason for rejecting that possibility' },
-        { left: 'Could this be Allah?', right: 'tests a new possibility with the same question pattern' },
-        { left: 'he understood that it could not be Allah', right: 'reports the conclusion reached after new evidence' },
+      id: 'abraham-b1-language-3-question-to-conclusion',
+      type: 'transformation',
+      title: 'Asking and Concluding',
+      instructions: 'Rewrite each sentence. Report the direct question in item 1. Change the reported conclusion into Abraham’s own words in item 2.',
+      question: 'How does a question or a conclusion change when we report it?',
+      transformItems: [
+        {
+          source: 'He saw a bright star and wondered, “Could this be my Allah?”',
+          frame: 'He saw a bright star and wondered [blank] his Allah.',
+          answers: [
+            'if it could be', 'whether it could be', 'if this could be', 'whether this could be',
+            'if that could be', 'whether that could be', 'if it was', 'whether it was',
+          ],
+        },
+        {
+          source: 'But when the moon faded, he understood that it could not be Allah.',
+          frame: 'But when the moon faded, he said, “[blank] Allah.”',
+          answers: [
+            'It cannot be', "It can't be", 'It can not be', 'This cannot be', "This can't be",
+            'It could not be', "It couldn't be", 'This could not be', "This couldn't be",
+          ],
+        },
       ],
-      correctAnswer: { 'Could this be my Allah?': 'opens a possibility for consideration', 'because it sets and disappears': 'gives the reason for rejecting that possibility', 'Could this be Allah?': 'tests a new possibility with the same question pattern', 'he understood that it could not be Allah': 'reports the conclusion reached after new evidence' },
-      explanation: 'The useful language pattern is the reasoning sequence: consider a possibility, give a reason, test again, and report a conclusion.',
-      feedback: { correct: 'Correct. You followed the language of reasoning from possibility to conclusion.', incorrect: 'Separate the question form, the reason clause, the repeated test, and the reported conclusion.' },
+      correctAnswer: null,
+      explanation: 'A reported yes/no question uses if or whether and statement word order: “Could this be my Allah?” → “He wondered if it could be his Allah.” A reported conclusion often moves back in time: Abraham’s thought “It cannot be Allah” becomes “he understood that it could not be Allah”. Together these forms build a reasoning chain: test a possibility, then report the conclusion.',
+      feedback: {
+        correct: 'Well done. You moved between direct words and reported thinking.',
+        incorrect: 'Item 1: start with if or whether and put the subject before the verb. Item 2: use Abraham’s own words, for example “It can’t be …”.',
+      },
     },
     {
       id: 'abraham-b1-language-3-reasoned-observation', type: 'reflection', title: 'Build a Short Reasoning Chain', instructions: 'Write or say four connected B1 sentences about someone examining two possible explanations for an everyday situation. Use at least three Chapter 3 language patterns without retelling the story.', question: 'Can you move from contrast or viewpoint to purpose or sequence, then test a possibility and finish with a reasoned conclusion?', correctAnswer: null,
@@ -64,22 +84,75 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
 export const abrahamB1LanguageFocusChapter4: Record<number, Exercise[]> = {
   4: [
     {
-      id: 'abraham-b1-language-4-time-result', type: 'matching', title: 'From Observation to Result', instructions: 'Match each Chapter 4 expression with the relationship it creates.', question: 'How does the chapter connect time, new evidence, and a resulting conclusion?',
-      matchingPairs: [{ left: 'stayed until sunrise', right: 'marks the endpoint of a continuing action' }, { left: 'when he saw the bright sun', right: 'introduces the event that triggers the next thought' }, { left: 'when it set, he understood ...', right: 'links new evidence to a changed conclusion' }, { left: 'Allah is the Creator of everything.', right: 'states the conclusion reached after the observation' }],
-      correctAnswer: { 'stayed until sunrise': 'marks the endpoint of a continuing action', 'when he saw the bright sun': 'introduces the event that triggers the next thought', 'when it set, he understood ...': 'links new evidence to a changed conclusion', 'Allah is the Creator of everything.': 'states the conclusion reached after the observation' },
-      explanation: 'The chapter uses time expressions to organise observation first and conclusion second.', feedback: { correct: 'Correct. You traced how the time clauses organise evidence and result.', incorrect: 'Separate the endpoint, the triggering event, the evidence-to-conclusion link, and the final statement.' },
+      id: 'abraham-b1-language-4-time-result',
+      type: 'multiple-choice',
+      title: 'Same Form, Different Purpose',
+      instructions: 'Read the two “if” sentences from Chapter 4. Then choose the best answer.',
+      question: '(1) Abraham: “If Allah doesn’t show me the right way, I will be on the wrong path.” (2) His father: “If you do not stop speaking like this, I will stone you.” Both sentences use If + present, will + verb. How are they different?',
+      options: [
+        'In (1), Abraham shows that he needs Allah’s guidance; in (2), his father makes a threat.',
+        'Sentence (1) is about the past; sentence (2) is about the future.',
+        'In (1), Abraham makes a threat; in (2), his father asks for help.',
+        'Both sentences are promises to help someone.',
+      ],
+      correctAnswer: 0,
+      explanation: 'If + present simple, will + verb talks about a possible future situation and its result. The form is the same in both sentences, but the purpose depends on the speaker. Abraham is praying and asking for help, so his sentence shows his need for guidance. His father is angry, so his sentence is a threat: stop, or this will happen.',
+      feedback: {
+        correct: 'Correct. The same grammar can express a need or a threat, depending on who speaks and why.',
+        incorrect: 'Look at what each speaker is doing: Abraham has just asked Allah for help, and his father “grew angry”. Both sentences are about the future.',
+      },
     },
     {
-      id: 'abraham-b1-language-4-condition-consequence', type: 'matching', title: 'Conditions and Consequences', instructions: 'Match each conditional expression with the kind of consequence it presents.', question: 'How do the two “if” clauses create different kinds of pressure in the chapter?',
-      matchingPairs: [{ left: 'If Allah doesn’t show me the right way, I will be on the wrong path.', right: 'presents a possible condition and its future consequence' }, { left: 'If you do not stop speaking like this, I will stone you.', right: 'uses a condition to express a threat' }, { left: 'doesn’t show me', right: 'negative present form inside the condition' }, { left: 'will be / will stone', right: 'future result that follows if the condition is met' }],
-      correctAnswer: { 'If Allah doesn’t show me the right way, I will be on the wrong path.': 'presents a possible condition and its future consequence', 'If you do not stop speaking like this, I will stone you.': 'uses a condition to express a threat', 'doesn’t show me': 'negative present form inside the condition', 'will be / will stone': 'future result that follows if the condition is met' },
-      explanation: 'The same condition-result pattern can express very different meanings depending on the speaker and situation.', feedback: { correct: 'Correct. You identified both the form and the different communicative purposes.', incorrect: 'Look at what comes after “if” and what future result the speaker predicts or threatens.' },
+      id: 'abraham-b1-language-4-condition-consequence',
+      type: 'choose-form',
+      title: 'Time and Role',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 4.',
+      question: 'Which forms mark an end point in time and the role someone is chosen for?',
+      formChoices: [
+        {
+          sentence: 'Abraham stayed [choice] sunrise, and when he saw the bright sun, he wondered, “Could this be Allah? It is bigger.”',
+          options: ['until', 'by', 'since'],
+          answer: 0,
+        },
+        {
+          sentence: 'He recognized that he … because Allah chose him [choice] His Messenger.',
+          options: ['to be', 'be', 'being'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Until” marks the end point of an action that continues (he stayed … until sunrise). Choose + person + to be + role says what someone is chosen for: Allah chose him to be His Messenger.',
+      feedback: {
+        correct: 'Correct. You used until for an end point, the present simple after if, and chose + person + to be.',
+        incorrect: 'Remember: no “will” after “if” here, and chose him + to + verb. Check the first three paragraphs of Chapter 4.',
+      },
     },
     {
-      id: 'abraham-b1-language-4-duty-purpose-command', type: 'matching', title: 'Duty, Purpose, and Direct Action', instructions: 'Match each expression with its communicative function.', question: 'How does Chapter 4 move from inner responsibility to direct speech?',
-      matchingPairs: [{ left: 'he should guide his people', right: 'expresses a responsibility or duty' }, { left: 'because Allah chose him', right: 'gives the reason for that responsibility' }, { left: 'chose him to be His Messenger', right: 'uses “to be” to express the role or purpose connected with the choice' }, { left: 'Follow me. / Stop worshipping idols. / Leave here now.', right: 'uses direct imperatives for advice, command, or dismissal' }],
-      correctAnswer: { 'he should guide his people': 'expresses a responsibility or duty', 'because Allah chose him': 'gives the reason for that responsibility', 'chose him to be His Messenger': 'uses “to be” to express the role or purpose connected with the choice', 'Follow me. / Stop worshipping idols. / Leave here now.': 'uses direct imperatives for advice, command, or dismissal' },
-      explanation: 'The chapter links responsibility to reason and role, then shifts into direct imperatives when the conversation begins.', feedback: { correct: 'Correct. You distinguished responsibility, reason, role, and direct command.', incorrect: 'Ask whether the expression shows duty, explains why, names a role, or directly tells someone what to do.' },
+      id: 'abraham-b1-language-4-duty-purpose-command',
+      type: 'error-correction',
+      title: 'Duty and Direct Instructions',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct the verb forms after “should” and “stop”?',
+      errorItems: [
+        {
+          sentence: 'He recognized that he should to guide his people because Allah chose him to be His Messenger.',
+          error: 'should to guide',
+          options: ['should guide', 'should guiding', 'should guided'],
+          answer: 0,
+        },
+        {
+          sentence: '… told his father, “O my father, follow me: I will guide you on the right way. Stop worship idols.”',
+          error: 'Stop worship',
+          options: ['Stop worshipping', 'Stop to worship', 'Stopping worship'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Should + base verb” (no “to”) expresses a duty; here “because …” gives the reason for that duty. Direct instructions use the imperative: “Follow me”, “Leave here now”. After “stop”, use -ing to mean “do not do this any more”: “Stop worshipping idols”. “Stop to worship” would mean stopping in order to worship, which is the opposite meaning.',
+      feedback: {
+        correct: 'Well done. You fixed the modal verb and the imperative.',
+        incorrect: 'Check the third and fourth paragraphs of Chapter 4: “he should … his people” and Abraham’s words to his father.',
+      },
     },
     {
       id: 'abraham-b1-language-4-connected-response', type: 'reflection', title: 'Build a Responsibility-and-Response Scene', instructions: 'Write or say four connected B1 sentences about a person who realises a responsibility, explains why it matters, gives one direct instruction, and faces a conditional response. Do not retell Chapter 4.', question: 'Can you connect time or realisation, responsibility + reason, an imperative, and an if-clause in one short coherent scene?', correctAnswer: null,
@@ -91,36 +164,350 @@ export const abrahamB1LanguageFocusChapter4: Record<number, Exercise[]> = {
 
 export const abrahamB1LanguageFocusChapter5: Record<number, Exercise[]> = {
   5: [
-    { id: 'abraham-b1-language-5-reason-result', type: 'matching', title: 'Reasons and Results', instructions: 'Match each Chapter 5 expression with the relationship it creates.', question: 'How does the chapter connect reasons, situations, and results?', matchingPairs: [{ left: 'I do not worship your idols because Allah is the one and only true God.', right: 'gives a reason with because' }, { left: 'People got furious when they heard him.', right: 'uses when to connect a reaction to the event that triggers it' }, { left: 'because of this, we do the same', right: 'presents an earlier cause or basis for a present action' }, { left: 'heals me when I am sick', right: 'uses when to describe the situation in which an action happens' }], correctAnswer: { 'I do not worship your idols because Allah is the one and only true God.': 'gives a reason with because', 'People got furious when they heard him.': 'uses when to connect a reaction to the event that triggers it', 'because of this, we do the same': 'presents an earlier cause or basis for a present action', 'heals me when I am sick': 'uses when to describe the situation in which an action happens' }, explanation: 'Chapter 5 repeatedly links actions and beliefs to reasons or situations rather than listing events separately.', feedback: { correct: 'Correct. You identified how reason and situation expressions organise the argument.', incorrect: 'Check whether the expression explains why something happens or tells you when it happens.' } },
-    { id: 'abraham-b1-language-5-persistence-purpose', type: 'matching', title: 'Persistence and Purpose', instructions: 'Match each expression with its communicative function.', question: 'How does the chapter show continued effort and intended change?', matchingPairs: [{ left: 'did not give up', right: 'shows persistence despite resistance' }, { left: 'tried to show them the right way', right: 'shows an attempt to help or influence others' }, { left: 'wanted them to reconsider their beliefs', right: 'expresses a desired change in another person’s thinking' }, { left: 'They ignored him, though.', right: 'adds a contrasting result despite his continued effort' }], correctAnswer: { 'did not give up': 'shows persistence despite resistance', 'tried to show them the right way': 'shows an attempt to help or influence others', 'wanted them to reconsider their beliefs': 'expresses a desired change in another person’s thinking', 'They ignored him, though.': 'adds a contrasting result despite his continued effort' }, explanation: 'The chapter contrasts Abraham’s continuing purpose with the people’s refusal to respond.', feedback: { correct: 'Correct. You distinguished attempt, persistence, desired change, and contrast.', incorrect: 'Ask whether the expression shows effort, refusal to stop, an intended change, or an opposite result.' } },
-    { id: 'abraham-b1-language-5-action-patterns', type: 'matching', title: 'Who Does What?', instructions: 'Match each verb pattern with the kind of relationship it expresses.', question: 'How do the verb patterns show action, influence, and response?', matchingPairs: [{ left: 'try to + verb', right: 'attempt an action' }, { left: 'want + person + to + verb', right: 'express a desired action or change by another person' }, { left: 'tell + person + clause', right: 'direct a message toward someone' }, { left: 'reply / ignore', right: 'show different responses to another person’s words' }], correctAnswer: { 'try to + verb': 'attempt an action', 'want + person + to + verb': 'express a desired action or change by another person', 'tell + person + clause': 'direct a message toward someone', 'reply / ignore': 'show different responses to another person’s words' }, explanation: 'These patterns help the chapter move from Abraham’s intention to the people’s response.', feedback: { correct: 'Correct. You connected the verb patterns to attempt, influence, communication, and response.', incorrect: 'Focus on who performs the action and whether the pattern shows an attempt, a desired change, a message, or a response.' } },
+    {
+      id: 'abraham-b1-language-5-reason-result',
+      type: 'matching',
+      title: 'Words for Effort and Response',
+      instructions: 'Match each word or phrase from Chapter 5 with its meaning.',
+      question: 'What do these words tell us about Abraham’s effort and the people’s response?',
+      matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+      matchingPairs: [
+        { left: 'got furious', right: 'became very angry' },
+        { left: 'did not give up', right: 'kept trying' },
+        { left: 'reconsider', right: 'think again about' },
+        { left: 'ignored', right: 'paid no attention to' },
+        { left: 'though (at the end of a sentence)', right: 'however' },
+      ],
+      correctAnswer: {
+        'got furious': 'became very angry',
+        'did not give up': 'kept trying',
+        'reconsider': 'think again about',
+        'ignored': 'paid no attention to',
+        'though (at the end of a sentence)': 'however',
+      },
+      explanation: '“Give up” is a phrasal verb meaning “stop trying”, so “did not give up” means he kept trying. “Reconsider” = re- (again) + consider (think about). “Ignore” means to pay no attention on purpose. At the end of a sentence, “though” works like “however”: “They ignored him, though.” shows a result that is different from what Abraham hoped for.',
+      feedback: {
+        correct: 'Correct. These words show Abraham’s continued effort and the people’s refusal.',
+        incorrect: 'Read the end of Chapter 5 again: “Abraham (pbuh) did not give up … He wanted them to reconsider their beliefs. They ignored him, though.”',
+      },
+    },
+    {
+      id: 'abraham-b1-language-5-persistence-purpose',
+      type: 'choose-form',
+      title: 'Reasons and Situations',
+      instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 5.',
+      question: 'When do we use because, because of, and when?',
+      formChoices: [
+        {
+          sentence: '“I do not worship your idols [choice] Allah is the one and only true God!”',
+          options: ['because', 'because of', 'so'],
+          answer: 0,
+        },
+        {
+          sentence: 'People replied, “We saw our fathers worship them; [choice], we do the same.”',
+          options: ['because of this', 'because this', 'because of'],
+          answer: 0,
+        },
+        {
+          sentence: '“My Allah gives me food and drink when I need them, and heals me [choice] I am sick.”',
+          options: ['when', 'during', 'because of'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Because” is followed by a clause with a subject and verb (because Allah is …). “Because of” is followed by a noun or pronoun (because of this). “When + clause” tells us the situation in which something happens (when I am sick). “During” is followed by a noun, not a clause.',
+      feedback: {
+        correct: 'Correct. You matched each linker with the kind of words that follow it.',
+        incorrect: 'Look at what comes after each gap: a full clause (subject + verb) or nothing but a comma? Then check Abraham’s and the people’s words in Chapter 5.',
+      },
+    },
+    {
+      id: 'abraham-b1-language-5-action-patterns',
+      type: 'transformation',
+      title: 'Wanting Someone to Act',
+      instructions: 'Rewrite each sentence from Chapter 5 so that it keeps the same meaning.',
+      question: 'How do we say what we want another person to do, and how can a when-clause move?',
+      transformItems: [
+        {
+          source: 'He wanted them to reconsider their beliefs.',
+          frame: 'Abraham said to the people, “I want [blank] your beliefs.”',
+          answers: ['you to reconsider'],
+        },
+        {
+          source: 'People got furious when they heard him.',
+          frame: 'When [blank], they got furious.',
+          answers: ['people heard him', 'the people heard him', 'people heard Abraham', 'the people heard Abraham'],
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'To say what we want another person to do, use want + person + to + verb: “I want you to reconsider …” (not “I want that you reconsider”). A when-clause can come after or before the main clause. When it comes first, put a comma after it: “When people heard him, they got furious.”',
+      feedback: {
+        correct: 'Well done. You used want + person + to and moved the when-clause correctly.',
+        incorrect: 'Item 1: Abraham speaks to the people, so “them” becomes “you”. Item 2: the when-clause now comes first, so it needs its own subject.',
+      },
+    },
     { id: 'abraham-b1-language-5-connected-response', type: 'reflection', title: 'Build a Persuasion Scene', instructions: 'Write or say four connected B1 sentences about someone trying to change another person’s mind. Do not retell Chapter 5.', question: 'Can you connect a reason, an attempt, persistence, and a contrasting response in one short scene?', correctAnswer: null, explanation: 'A strong response can use because, try to, not give up or continue, want someone to..., and though/but to keep one coherent situation.', feedback: { correct: 'Keep all four sentences in one situation and make the contrast logically follow from the attempt.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State a belief or decision and give a reason with because.', mode: 'Individual' }, { question: 'Sentence 2 — Show an attempt with try to + verb.', mode: 'Individual' }, { question: 'Sentence 3 — Show persistence or a desired change with did not give up / wanted ... to ....', mode: 'Individual' }, { question: 'Sentence 4 — Add a contrasting response with but or though.', mode: 'Pair' }] },
   ],
 };
 
 export const abrahamB1LanguageFocusChapter6: Record<number, Exercise[]> = {
   6: [
-    { id: 'abraham-b1-language-6-plan-intention', type: 'matching', title: 'Plan, Intention, and Secrecy', instructions: 'Match each Chapter 6 expression with the function it performs.', question: 'How does the chapter move from decision to hidden intention?', matchingPairs: [{ left: 'decided to show them the foolishness of their beliefs', right: 'expresses a decision followed by an intended action' }, { left: 'made a plan to destroy all their idols', right: 'turns a general decision into a concrete plan' }, { left: 'did not tell anyone what he was going to do', right: 'presents a future action viewed from a past moment' }, { left: 'what he was going to do', right: 'reports an intended future action without quoting the speaker directly' }], correctAnswer: { 'decided to show them the foolishness of their beliefs': 'expresses a decision followed by an intended action', 'made a plan to destroy all their idols': 'turns a general decision into a concrete plan', 'did not tell anyone what he was going to do': 'presents a future action viewed from a past moment', 'what he was going to do': 'reports an intended future action without quoting the speaker directly' }, explanation: 'The chapter uses decision, planning, and future-in-the-past language to show that the action is deliberate rather than accidental.', feedback: { correct: 'Correct. You distinguished decision, planning, and intended future action.', incorrect: 'Check whether the phrase shows a choice, a detailed plan, or an action that was still in the future at that past moment.' } },
-    { id: 'abraham-b1-language-6-habit-event-condition', type: 'matching', title: 'Habit, Opportunity, and Timing', instructions: 'Match each expression with the time relationship it creates.', question: 'How does the chapter connect a usual event with one specific opportunity?', matchingPairs: [{ left: 'All the people usually went outside of town', right: 'describes a repeated or habitual event' }, { left: 'There was a big celebration soon', right: 'introduces the specific situation that creates an opportunity' }, { left: 'so he got an axe', right: 'shows a result or response to the situation' }, { left: 'waited until the whole town was empty', right: 'marks the point that had to be reached before the next action' }], correctAnswer: { 'All the people usually went outside of town': 'describes a repeated or habitual event', 'There was a big celebration soon': 'introduces the specific situation that creates an opportunity', 'so he got an axe': 'shows a result or response to the situation', 'waited until the whole town was empty': 'marks the point that had to be reached before the next action' }, explanation: 'The narrative combines a habitual pattern with a particular celebration, then uses so and until to show result and timing.', feedback: { correct: 'Correct. You identified habit, situation, result, and a time boundary.', incorrect: 'Ask whether the phrase describes what usually happened, what happened this time, what resulted, or when the next step became possible.' } },
-    { id: 'abraham-b1-language-6-action-development', type: 'matching', title: 'How the Action Develops', instructions: 'Match each pattern with the meaning it adds to the action.', question: 'How do these structures show progression and resulting states?', matchingPairs: [{ left: 'began to break the idols', right: 'marks the beginning of an action or process' }, { left: 'one after another', right: 'shows repeated actions happening in sequence' }, { left: 'until they were all broken', right: 'shows the endpoint or completed result of the process' }, { left: 'left the largest statue ... untouched', right: 'uses leave + object + complement to show the state that remained after an action' }], correctAnswer: { 'began to break the idols': 'marks the beginning of an action or process', 'one after another': 'shows repeated actions happening in sequence', 'until they were all broken': 'shows the endpoint or completed result of the process', 'left the largest statue ... untouched': 'uses leave + object + complement to show the state that remained after an action' }, explanation: 'These patterns help the reader follow not just what happened, but how the action began, continued, reached an endpoint, and left one object in a different state.', feedback: { correct: 'Correct. You tracked beginning, sequence, endpoint, and resulting state.', incorrect: 'Focus on whether the phrase shows the start of a process, repetition, completion, or the final state of an object.' } },
+    {
+      id: 'abraham-b1-language-6-plan-intention',
+      type: 'multiple-choice',
+      title: 'A Plan Seen from the Past',
+      instructions: 'Read the sentence from Chapter 6. Then choose the best meaning.',
+      question: '“He made a plan to destroy all their idols, but he did not tell anyone what he was going to do.” What does “what he was going to do” mean here?',
+      options: [
+        'the action he had planned for later; at that moment it had not happened yet',
+        'the action he was doing at that exact moment',
+        'an action he did many times before',
+        'an action he had already finished',
+      ],
+      correctAnswer: 0,
+      explanation: '“Was/were going to + verb” is the future seen from a moment in the past. When Abraham made his plan, breaking the idols was still in the future, so the chapter says “what he was going to do”. Together with “decided to” and “made a plan to”, it shows that his action was deliberate, not an accident.',
+      feedback: {
+        correct: 'Correct. “Was going to” shows a planned action that was still in the future at that time.',
+        incorrect: 'Think about the order of events in Chapter 6: first he made the plan, then he waited, and only later did he break the idols.',
+      },
+    },
+    {
+      id: 'abraham-b1-language-6-habit-event-condition',
+      type: 'word-bank',
+      title: 'Habit, Result and Timing',
+      instructions: 'Complete the lines from Chapter 6 with words from the bank. Two words are not needed.',
+      question: 'Which words show a habit, a result and a time limit?',
+      fillBlanksText: 'There was a big celebration soon. All the people [blank] went outside of town, [blank] he got an axe and waited [blank] the whole town was empty.',
+      wordBank: ['usually', 'so', 'until', 'because', 'by'],
+      correctAnswer: ['usually', 'so', 'until'],
+      explanation: '“Usually” describes what normally happened at celebrations (a habit). “So” introduces the result: the town would be empty, so Abraham got an axe. “Until” marks the point he had to wait for before he could act. “Because” would give a reason, not a result, and “by” cannot be followed by a clause here.',
+      feedback: {
+        correct: 'Correct. You showed the habit, the result and the time limit.',
+        incorrect: 'Ask: what normally happened, what did Abraham do as a result, and how long did he wait? Then check the first paragraph of Chapter 6.',
+      },
+    },
+    {
+      id: 'abraham-b1-language-6-action-development',
+      type: 'sentence-building',
+      title: 'Build the Final Sentence',
+      instructions: 'Tap the pieces to rebuild this sentence from Chapter 6.',
+      question: 'Where does the word that describes the statue’s final state go?',
+      sentenceChunks: [
+        'He left',
+        'the largest statue in the temple',
+        'untouched,',
+        'hung the axe around its neck,',
+        'and then hurried back home.',
+      ],
+      correctAnswer: null,
+      explanation: 'Leave + object + adjective/participle shows the state something stays in after an action: “He left the largest statue in the temple untouched.” The describing word comes after the object. Before this, the chapter uses “began to break the idols, one after another, until they were all broken” to show the start, the repetition and the end of the action.',
+      feedback: {
+        correct: 'Well done. The object comes first, then the word that describes its final state.',
+        incorrect: 'Start with “He left”, then say what he left, then how it stayed. Check the last paragraph of Chapter 6.',
+      },
+    },
     { id: 'abraham-b1-language-6-connected-production', type: 'reflection', title: 'Describe a Deliberate Plan', instructions: 'Write or say four connected B1 sentences about a person carrying out a careful plan in a new situation. Do not retell Chapter 6.', question: 'Can you connect intention, opportunity, timing, and a final resulting state?', correctAnswer: null, explanation: 'A strong response can combine decided/planned to, usually or a background situation, so, until, began to, and left + object + adjective/complement.', feedback: { correct: 'Keep the four sentences in one coherent situation and make each action logically lead to the next.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State a decision or plan using decided to or planned to.', mode: 'Individual' }, { question: 'Sentence 2 — Describe the situation or opportunity, and connect the response with so.', mode: 'Individual' }, { question: 'Sentence 3 — Use until to show when the main action could begin or end.', mode: 'Individual' }, { question: 'Sentence 4 — Show the final state using left + object + adjective/complement, or another clear result expression.', mode: 'Pair' }] },
   ],
 };
 
 export const abrahamB1LanguageFocusChapter7: Record<number, Exercise[]> = {
   7: [
-    { id: 'abraham-b1-language-7-reporting-reaction', type: 'matching', title: 'Reporting What People Saw, Heard, and Remembered', instructions: 'Match each Chapter 7 expression with the function it performs in the narrative.', question: 'How does the chapter report reactions and remembered information?', matchingPairs: [{ left: 'were shocked to see all the statues were broken', right: 'reports a strong reaction followed by what caused it' }, { left: 'We heard a young man speaking against our gods', right: 'reports something previously heard without quoting the original speech' }, { left: 'they remembered', right: 'signals that earlier information is being brought back into the present situation' }, { left: 'were displeased with what they heard', right: 'links an emotional reaction to the content of a message' }], correctAnswer: { 'were shocked to see all the statues were broken': 'reports a strong reaction followed by what caused it', 'We heard a young man speaking against our gods': 'reports something previously heard without quoting the original speech', 'they remembered': 'signals that earlier information is being brought back into the present situation', 'were displeased with what they heard': 'links an emotional reaction to the content of a message' }, explanation: 'Chapter 7 repeatedly connects reactions with information: people see, hear, remember, and then respond.', feedback: { correct: 'Correct. You distinguished reaction, reported perception, memory, and response to a message.', incorrect: 'Check whether the expression tells us what people experienced, what information they recalled, or how they reacted to it.' } },
-    { id: 'abraham-b1-language-7-embedded-questions', type: 'matching', title: 'Questions Inside Larger Sentences', instructions: 'Match each pattern with the meaning relationship it creates.', question: 'How does the chapter move between direct questions and questions embedded inside statements?', matchingPairs: [{ left: 'tried to find out who did this', right: 'places a who-question inside a larger verb phrase' }, { left: 'They asked him, “Did you harm our gods in this way?”', right: 'uses a direct yes/no question addressed to Abraham' }, { left: 'ask that statue, if it can speak', right: 'places a yes/no possibility inside a larger command using if' }, { left: 'what they heard', right: 'turns the content of a message into a noun-like clause after a preposition' }], correctAnswer: { 'tried to find out who did this': 'places a who-question inside a larger verb phrase', 'They asked him, “Did you harm our gods in this way?”': 'uses a direct yes/no question addressed to Abraham', 'ask that statue, if it can speak': 'places a yes/no possibility inside a larger command using if', 'what they heard': 'turns the content of a message into a noun-like clause after a preposition' }, explanation: 'B1 narratives often move between direct questions and embedded question/content clauses. The word order and function change depending on whether the question stands alone or sits inside a larger sentence.', feedback: { correct: 'Correct. You identified direct and embedded question patterns.', incorrect: 'Ask whether the words form a complete spoken question, or whether they depend on another verb such as find out, ask, or hear.' } },
-    { id: 'abraham-b1-language-7-cause-condition-contrast', type: 'matching', title: 'Cause, Contrast, and Consequence', instructions: 'Match each connector or structure with the relationship it builds.', question: 'How does the chapter explain why the people know something but still act differently?', matchingPairs: [{ left: 'because their thoughts and feelings told them that Abraham was right', right: 'gives a reason for their feeling of shame' }, { left: 'But they were so arrogant that they couldn’t accept the truth', right: 'contrasts inner recognition with outward refusal and shows a strong result' }, { left: 'If they accepted that Abraham was right, then it meant their forefathers were wrong', right: 'builds a condition and the consequence they associated with it' }, { left: 'they couldn’t accept the truth and admit they were wrong', right: 'joins two related actions they were unwilling or unable to do' }], correctAnswer: { 'because their thoughts and feelings told them that Abraham was right': 'gives a reason for their feeling of shame', 'But they were so arrogant that they couldn’t accept the truth': 'contrasts inner recognition with outward refusal and shows a strong result', 'If they accepted that Abraham was right, then it meant their forefathers were wrong': 'builds a condition and the consequence they associated with it', 'they couldn’t accept the truth and admit they were wrong': 'joins two related actions they were unwilling or unable to do' }, explanation: 'The chapter uses because, but, so...that, and if...then to connect recognition, attitude, and consequence across several sentences.', feedback: { correct: 'Correct. You tracked reason, contrast, result, and conditional consequence.', incorrect: 'Focus on whether the structure explains why, contrasts two ideas, shows a strong result, or predicts a consequence from a condition.' } },
+    {
+      id: 'abraham-b1-language-7-reporting-reaction',
+      type: 'drag-drop',
+      title: 'Two Kinds of Questions',
+      instructions: 'Sort the parts of Chapter 7. Is it a question in the speaker’s exact words, or a question idea inside a longer sentence?',
+      question: 'How is the word order different when a question sits inside a longer sentence?',
+      dragDropGroups: [
+        {
+          group: 'The speaker’s exact question',
+          items: [
+            'They asked him, “Did you harm our gods in this way?”',
+            '“Then why do you worship things that can’t speak …?”',
+            '“Have you gone mad?”',
+          ],
+        },
+        {
+          group: 'A question idea inside a longer sentence',
+          items: [
+            'They wondered and tried to find out who did this.',
+            'ask that statue if it can speak!',
+          ],
+        },
+      ],
+      correctAnswer: {
+        'The speaker’s exact question': [
+          'They asked him, “Did you harm our gods in this way?”',
+          '“Then why do you worship things that can’t speak …?”',
+          '“Have you gone mad?”',
+        ],
+        'A question idea inside a longer sentence': [
+          'They wondered and tried to find out who did this.',
+          'ask that statue if it can speak!',
+        ],
+      },
+      explanation: 'A direct question uses question word order (Did you harm …? Have you gone …? Why do you …?) and a question mark. Inside a longer sentence, after words like find out or ask … if, the question idea has no question mark and uses statement word order: ask that statue if it can speak (not “if can it speak”). In “find out who did this”, who is the subject and did is the main verb, so the order is the same as a statement.',
+      feedback: {
+        correct: 'Correct. You noticed that question ideas inside a sentence keep statement word order.',
+        incorrect: 'Look for quotation marks, a question mark and an auxiliary before the subject (did you, have you, do you). Those are direct questions.',
+      },
+    },
+    {
+      id: 'abraham-b1-language-7-embedded-questions',
+      type: 'error-correction',
+      title: 'Fix the Mistake',
+      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
+      question: 'Can you correct the verb forms after heard and shocked, and the word order after what?',
+      errorItems: [
+        {
+          sentence: '“We heard a young man to speak against our gods,” they remembered.',
+          error: 'to speak',
+          options: ['speaking', 'spoke', 'to speaking'],
+          answer: 0,
+        },
+        {
+          sentence: 'The people were displeased with what did they hear and said, “You are well aware that these idols don’t speak!”',
+          error: 'what did they hear',
+          options: ['what they heard', 'what they did hear', 'what heard they'],
+          answer: 0,
+        },
+        {
+          sentence: '… they were shocked to seeing all the statues were broken into many pieces.',
+          error: 'to seeing',
+          options: ['to see', 'for seeing', 'seeing to'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'After hear + person, use -ing (or the base verb), never to + verb: “We heard a young man speaking against our gods.” The -ing form shows the action was in progress. After what inside a longer sentence, use statement word order and no did: “what they heard”. After adjectives of feeling such as shocked, use to + base verb to say what caused the feeling: “shocked to see”.',
+      feedback: {
+        correct: 'Well done. You corrected the verb patterns and the word order after “what”.',
+        incorrect: 'Use -ing after “heard a young man”, statement word order after “what”, and to + base verb after “shocked”. Compare with Chapter 7.',
+      },
+    },
+    {
+      id: 'abraham-b1-language-7-cause-condition-contrast',
+      type: 'choose-form',
+      title: 'Reason, Result and Consequence',
+      instructions: 'Choose the correct word to complete each sentence from Chapter 7.',
+      question: 'How does the chapter explain why the people felt ashamed but still refused to accept the truth?',
+      formChoices: [
+        {
+          sentence: 'They looked at each other in shame [choice] their thoughts and feelings told them that Abraham (pbuh) was right.',
+          options: ['because', 'so', 'although'],
+          answer: 0,
+        },
+        {
+          sentence: 'But they were so arrogant [choice] they couldn’t accept the truth and admit they were wrong.',
+          options: ['that', 'as', 'than'],
+          answer: 0,
+        },
+        {
+          sentence: 'If they accepted that Abraham (pbuh) was right, then it [choice] their forefathers were wrong, as well.',
+          options: ['meant', 'will mean', 'was meaning'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: '“Because” gives the reason for their shame. “So + adjective + that” shows a very strong quality and its result: they were so arrogant that they couldn’t accept the truth. “If … then …” shows the consequence they were afraid of; the story is in the past, so the result verb is also past (meant).',
+      feedback: {
+        correct: 'Correct. You linked the reason, the strong result and the consequence.',
+        incorrect: 'Read the last paragraph of Chapter 7. Ask which word gives a reason, which word completes “so arrogant …”, and which tense fits a story told in the past.',
+      },
+    },
     { id: 'abraham-b1-language-7-connected-production', type: 'reflection', title: 'Report a Disagreement Clearly', instructions: 'Write or say four connected B1 sentences about a disagreement in a new situation. Do not retell Chapter 7.', question: 'Can you report what people heard or discovered, include an embedded question, and explain a contrast or consequence?', correctAnswer: null, explanation: 'A strong response can combine heard/saw/remembered, find out who/what/why, because or but, and an if...then consequence.', feedback: { correct: 'Keep the four sentences connected so the information, reaction, and consequence form one coherent situation.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Report something someone heard, saw, or remembered.', mode: 'Individual' }, { question: 'Sentence 2 — Add an embedded question such as find out who/what/why...', mode: 'Individual' }, { question: 'Sentence 3 — Explain a reaction using because, but, or so...that.', mode: 'Individual' }, { question: 'Sentence 4 — Add an if...then consequence or a clear final result.', mode: 'Pair' }] },
   ],
 };
 
 export const abrahamB1LanguageFocusChapter8: Record<number, Exercise[]> = {
   8: [
-    { id: 'abraham-b1-language-8-degree-result', type: 'matching', title: 'Degree and Result Under Extreme Conditions', instructions: 'Match each Chapter 8 expression with the relationship it creates.', question: 'How does the chapter connect extreme conditions with their results?', matchingPairs: [{ left: 'The fire was so big that people couldn’t approach it', right: 'shows an extreme degree followed by its result' }, { left: 'The heat was so strong that even birds couldn’t fly over the rising flames', right: 'uses so...that to show how intense the heat was' }, { left: 'However, Abraham stayed calm', right: 'contrasts external danger with Abraham’s response' }, { left: 'because he trusted Allah', right: 'gives the reason for his calm response' }], correctAnswer: { 'The fire was so big that people couldn’t approach it': 'shows an extreme degree followed by its result', 'The heat was so strong that even birds couldn’t fly over the rising flames': 'uses so...that to show how intense the heat was', 'However, Abraham stayed calm': 'contrasts external danger with Abraham’s response', 'because he trusted Allah': 'gives the reason for his calm response' }, explanation: 'The chapter uses degree-result, contrast, and cause relationships to make the danger and Abraham’s response clear.', feedback: { correct: 'Correct. You distinguished result, contrast, and cause.', incorrect: 'Check whether the phrase shows intensity and result, contrasts two ideas, or explains why something happened.' } },
-    { id: 'abraham-b1-language-8-future-viewpoint', type: 'matching', title: 'Looking Forward from a Past Moment', instructions: 'Match each expression with what it communicates from the story’s past viewpoint.', question: 'How does Chapter 8 talk about expected future events from a past moment?', matchingPairs: [{ left: 'He knew that Allah would never leave him alone', right: 'reports a future expectation from a past viewpoint' }, { left: 'whatever happens, it will be for his own good', right: 'expresses confidence about an uncertain future event' }, { left: 'People came to see what would happen', right: 'places a future event inside a past-time purpose or expectation' }, { left: 'asked, “Is there anything you wish for?”', right: 'uses a direct question to ask about a present wish in the scene' }], correctAnswer: { 'He knew that Allah would never leave him alone': 'reports a future expectation from a past viewpoint', 'whatever happens, it will be for his own good': 'expresses confidence about an uncertain future event', 'People came to see what would happen': 'places a future event inside a past-time purpose or expectation', 'asked, “Is there anything you wish for?”': 'uses a direct question to ask about a present wish in the scene' }, explanation: 'B1 narratives often shift viewpoint: would can describe something future relative to a past moment, while direct questions remain anchored in the scene.', feedback: { correct: 'Correct. You tracked time and viewpoint across the narrative.', incorrect: 'Ask whether the event is future from the narrator’s past moment or happening directly inside the scene.' } },
-    { id: 'abraham-b1-language-8-passive-purpose-result', type: 'matching', title: 'Process, Purpose, and Result', instructions: 'Match each structure with the function it performs.', question: 'How does the chapter describe what was done to Abraham and what happened afterwards?', matchingPairs: [{ left: 'Firewood was collected for the fire', right: 'uses the passive because the action matters more than who performed it' }, { left: 'his hands and feet were tied', right: 'focuses on Abraham as the receiver of an action' }, { left: 'a machine which was used to throw Abraham into the fire', right: 'combines passive description with purpose' }, { left: 'the fire turned out to be safe / turned into a garden', right: 'describes an unexpected final state or transformation' }], correctAnswer: { 'Firewood was collected for the fire': 'uses the passive because the action matters more than who performed it', 'his hands and feet were tied': 'focuses on Abraham as the receiver of an action', 'a machine which was used to throw Abraham into the fire': 'combines passive description with purpose', 'the fire turned out to be safe / turned into a garden': 'describes an unexpected final state or transformation' }, explanation: 'Passive forms organize the punishment process, while purpose and result expressions explain what actions were for and how the situation finally changed.', feedback: { correct: 'Correct. You identified process focus, purpose, and final result.', incorrect: 'Decide whether the sentence focuses on the receiver of an action, explains purpose, or describes the final state.' } },
+    {
+      id: 'abraham-b1-language-8-degree-result',
+      type: 'drag-drop',
+      title: 'Who Did the Action?',
+      instructions: 'Sort the parts of Chapter 8. Does the sentence tell us who did the action, or not?',
+      question: 'Why does the chapter sometimes not say who did an action?',
+      dragDropGroups: [
+        {
+          group: 'We are not told who did the action',
+          items: [
+            'Firewood was collected for the fire for days.',
+            'Prophet Abraham’s (pbuh) hands and feet were tied',
+            'Abraham (pbuh) was thrown straight into huge flames.',
+          ],
+        },
+        {
+          group: 'The subject does the action',
+          items: [
+            'Abraham (pbuh) stayed calm',
+            'Angel Gabriel came to him',
+            'It only burnt the ropes on his hands and feet.',
+          ],
+        },
+      ],
+      correctAnswer: {
+        'We are not told who did the action': [
+          'Firewood was collected for the fire for days.',
+          'Prophet Abraham’s (pbuh) hands and feet were tied',
+          'Abraham (pbuh) was thrown straight into huge flames.',
+        ],
+        'The subject does the action': [
+          'Abraham (pbuh) stayed calm',
+          'Angel Gabriel came to him',
+          'It only burnt the ropes on his hands and feet.',
+        ],
+      },
+      explanation: 'The passive (was/were + past participle: was collected, were tied, was thrown) puts the focus on what happened to Abraham or the firewood. The people who did these actions are not important here, so the chapter does not name them. In active sentences, the subject does the action: “It only burnt the ropes” – the fire did the burning.',
+      feedback: {
+        correct: 'Correct. You noticed that the passive focuses on what happened, not on who did it.',
+        incorrect: 'Look for was/were + past participle. Then ask: can I find the person who did the action in the sentence?',
+      },
+    },
+    {
+      id: 'abraham-b1-language-8-future-viewpoint',
+      type: 'word-bank',
+      title: 'Danger and Calm',
+      instructions: 'Complete the lines from Chapter 8 with words from the bank. Two words are not needed.',
+      question: 'Which words show how extreme the fire was and how Abraham reacted?',
+      fillBlanksText: 'The fire was [blank] big [blank] people couldn’t approach it. [blank], Abraham (pbuh) stayed calm [blank] he trusted Allah.',
+      wordBank: ['so', 'that', 'However', 'because', 'such', 'Although'],
+      correctAnswer: ['so', 'that', 'However', 'because'],
+      explanation: '“So + adjective + that” shows a very strong degree and its result: the fire was so big that people couldn’t approach it. (“Such” needs a noun: such a big fire that …). “However,” at the start of a sentence shows a contrast with the sentence before. “Because” gives the reason for Abraham’s calm. “Although” must join two clauses in one sentence, so it cannot stand alone with a comma.',
+      feedback: {
+        correct: 'Correct. You showed the degree, the result, the contrast and the reason.',
+        incorrect: 'Check the second paragraph of Chapter 8. Which word goes with an adjective (big), and which contrast word can start a sentence followed by a comma?',
+      },
+    },
+    {
+      id: 'abraham-b1-language-8-passive-purpose-result',
+      type: 'choose-form',
+      title: 'Looking Forward from the Past',
+      instructions: 'Choose the correct form to complete each sentence from Chapter 8.',
+      question: 'How does the chapter talk about the future when the story is told in the past?',
+      formChoices: [
+        {
+          sentence: 'He knew that Allah would never leave him alone, and that whatever [choice], it would be for his own good.',
+          options: ['happened', 'happens', 'will happen'],
+          answer: 0,
+        },
+        {
+          sentence: 'People from many different towns came to see what [choice] happen.',
+          options: ['would', 'will', 'did'],
+          answer: 0,
+        },
+        {
+          sentence: 'A catapult was a kind of machine which was used [choice] throw Abraham (pbuh) into the fire.',
+          options: ['to', 'for', 'by'],
+          answer: 0,
+        },
+      ],
+      correctAnswer: null,
+      explanation: 'When a story is told in the past, “would” shows the future from that past moment: people came to see what would happen. In the same way, Abraham knew that “whatever happened, it would be for his own good” – both verbs move back from “whatever happens, it will be”. “Was used to + base verb” describes the purpose of an object (it was used to throw). It is different from “used to” for past habits.',
+      feedback: {
+        correct: 'Correct. You kept the future-in-the-past forms and the purpose pattern.',
+        incorrect: 'The story is in the past, so the future is expressed with would and a past verb. Read the second, third and fourth paragraphs of Chapter 8 again.',
+      },
+    },
     { id: 'abraham-b1-language-8-connected-production', type: 'reflection', title: 'Describe Pressure and an Unexpected Outcome', instructions: 'Write or say four connected B1 sentences about a new situation involving pressure and an unexpected result. Do not retell Chapter 8.', question: 'Can you connect degree-result, contrast/cause, a past viewpoint, and a final change?', correctAnswer: null, explanation: 'A strong response can use so...that, however/because, knew/thought that ... would, and turned out to be/became.', feedback: { correct: 'Keep the four sentences connected as one short narrative.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Describe an extreme situation using so...that.', mode: 'Individual' }, { question: 'Sentence 2 — Add a contrasting response and explain it with however and/or because.', mode: 'Individual' }, { question: 'Sentence 3 — Report what someone expected using knew/thought that ... would.', mode: 'Individual' }, { question: 'Sentence 4 — End with an unexpected result using turned out to be, became, or turned into.', mode: 'Pair' }] },
   ],
 };
