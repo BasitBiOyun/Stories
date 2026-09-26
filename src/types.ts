@@ -13,7 +13,35 @@ export type ExerciseType =
   | 'drag-drop' 
   | 'tap-reveal' 
   | 'reflection' 
-  | 'quiz-game';
+  | 'quiz-game'
+  | 'choose-form'
+  | 'word-bank'
+  | 'error-correction'
+  | 'sentence-building'
+  | 'transformation';
+
+/** One sentence with an inline choice at its [choice] gap (choose-form). */
+export interface FormChoiceItem {
+  sentence: string;
+  options: string[];
+  answer: number;
+}
+
+/** One sentence containing a single authored error (error-correction). */
+export interface ErrorCorrectionItem {
+  sentence: string;
+  /** Exact substring of `sentence` that is wrong. */
+  error: string;
+  options: string[];
+  answer: number;
+}
+
+/** Rewrite a story sentence by completing the [blank] in `frame` (transformation). */
+export interface TransformationItem {
+  source: string;
+  frame: string;
+  answers: string[];
+}
 
 export interface QuizQuestion {
   question: string;
@@ -35,6 +63,15 @@ export interface Exercise {
     incorrect: string;
   };
   matchingPairs?: { left: string; right: string }[];
+  /** Column headings for matching; defaults to generic labels. */
+  matchingHeadings?: { left: string; right: string };
+  formChoices?: FormChoiceItem[];
+  /** word-bank: chips for the [blank]s in fillBlanksText (answers + distractors). */
+  wordBank?: string[];
+  errorItems?: ErrorCorrectionItem[];
+  /** sentence-building: chunks in the correct order; correctAnswer may list other accepted orders. */
+  sentenceChunks?: string[];
+  transformItems?: TransformationItem[];
   sequencingItems?: { id: string; text: string }[];
   fillBlanksText?: string;
   dragDropGroups?: { group: string; items: string[] }[];
