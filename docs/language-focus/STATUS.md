@@ -38,6 +38,7 @@ For each variant: rewrite per `REWRITE_BRIEF.md`, then run
 - Moses B2 AR: ch5 «أَوْ الْإِفْصَاحِ» → أَوِ; ch18 «مِنَ فِرْعَوْنَ» → مِنْ; ch1 «عَلَيْهِ السَّلَامِ» → السَّلَامُ; ch4 «وَقَوْمَهُ» → وَقَوْمِهِ; ch12 «كَانَتْ بَاطِنُ قَدَمَيْهِ مُتَقَرِّحَةً» (agreement); ch22 «لَحَاقِهِمْ» → لِحَاقِهِمْ.
 - Moses A2 AR: ch13 «فَاسْتَمِرَّ فِي إِيذَاءِ» → فَاسْتَمَرَّ; Latin commas in ch4, ch10.
 - Yunus Emre A2 AR: ch8 «أَنْ نَعْمَلَ كُلِّ عَمَلٍ» → كُلَّ; ch2 «هٰذِهِ تَجارِبَ» → هذه التجاربَ.
+- Yunus Emre B1 AR: ch5 «مَشْكِلَاتٍ» → مُشْكِلَاتٍ, «الْمَغُولَ» → الْمُغُولَ; ch10 «أَيْ الْمَكَانُ» → أَيِ; ch11 «يَبْلُغَ … إِلَى الْخَلَاصِ».
 - Adam A2 AR: ch9 «أَیْضًا» uses Persian ی (U+06CC).
 - Adam B2 AR: ch7 «وتغير الأجواء» → وتغيّرت; ch13 «أن قابيل، مع أنه…» lacks a خبر.
 - English: see the per-book notes in `audit/` and the commit messages (minor punctuation / wording only).
