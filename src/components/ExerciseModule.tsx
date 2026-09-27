@@ -386,11 +386,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
+          {!exercise.matchingHeadings && (
+            <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
+          )}
           <div ref={matchingGridRef} className="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <div className="space-y-2.5">
               <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
-                {isArabic ? 'المفاهيم' : 'Concepts'}
+                {exercise.matchingHeadings?.left ?? (isArabic ? 'المفاهيم' : 'Concepts')}
               </p>
               {pairs.map((pair, pairIndex) => {
                 const selected = selectedMatchingLeft === pair.left;
@@ -426,7 +428,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             </div>
             <div className="space-y-2.5">
               <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
-                {isArabic ? 'المعاني' : 'Meanings'}
+                {exercise.matchingHeadings?.right ?? (isArabic ? 'المعاني' : 'Meanings')}
               </p>
               {presentedMeanings.map((meaning) => {
                 const used = assignedMeanings.has(meaning);
