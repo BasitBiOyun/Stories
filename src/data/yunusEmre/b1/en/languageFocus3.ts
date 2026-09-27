@@ -3,33 +3,70 @@ import type { Exercise } from '../../../../types';
 /** Chapter 9 English Language Focus, derived only from the locked Chapter 9 story text. */
 export const yunusB1LanguageFocusChapter9: Exercise[] = [
   {
-    id: 'yunus-b1-language-9-result-purpose', type: 'matching', title: 'From Cause to Purpose', instructions: 'Match each expression from the chapter with the job it performs in a connected explanation. Focus on function rather than recalling the chapter content.', question: 'How does Chapter 9 move from a cause or result to a goal, a means, or a reminder?', matchingPairs: [
-      { left: 'As a result of ...', right: 'introduces an outcome that follows from an earlier cause or process' },
-      { left: 'In this way, ...', right: 'shows a consequence or explains how the previous idea leads forward' },
-      { left: 'The main goal ... is to ...', right: 'states an aim clearly' },
-      { left: 'for achieving ...', right: 'shows the purpose of an action or instruction' },
-      { left: 'remind us of ...', right: 'brings an important rule, idea, or responsibility back to attention' },
-    ], correctAnswer: {
-      'As a result of ...': 'introduces an outcome that follows from an earlier cause or process',
-      'In this way, ...': 'shows a consequence or explains how the previous idea leads forward',
-      'The main goal ... is to ...': 'states an aim clearly',
-      'for achieving ...': 'shows the purpose of an action or instruction',
-      'remind us of ...': 'brings an important rule, idea, or responsibility back to attention',
-    }, explanation: 'The chapter links ideas through result, consequence, goal, purpose, and reminder. These expressions help a B1 learner build an explanation instead of producing isolated sentences.', feedback: { correct: 'Correct. You identified how the expressions organise an explanation.', incorrect: 'Ask whether the expression presents a result, develops a consequence, states a goal, gives a purpose, or recalls an important responsibility.' },
+    id: 'yunus-b1-language-9-result-purpose',
+    type: 'sequencing',
+    title: 'Follow the Chain of Ideas',
+    instructions: 'Put the sentences from the first part of Chapter 9 in the right order. Use the linking words to help you.',
+    question: 'How do “as a result of”, “in this way”, “the main goal” and “this unity” link the ideas together?',
+    sequencingItems: [
+      { id: 'a', text: 'In this way, every creature is an image, but only Allah is truly real.' },
+      { id: 'b', text: 'His words remind us of Allah’s commands for achieving this unity.' },
+      { id: 'c', text: 'As a result of creation, the original unity lost its unity and multiple existence appeared.' },
+      { id: 'd', text: 'The main goal for humans is to reach unity with Allah.' },
+      { id: 'e', text: 'All creations in the world are just reflections of Allah’s names.' },
+    ],
+    correctAnswer: ['c', 'e', 'a', 'd', 'b'],
+    explanation: '“As a result of + noun” opens the explanation with a cause (creation) and its result. “In this way” points back to the idea just before it (creations are reflections), so it must follow that sentence. “The main goal … is to + verb” states an aim, and “this unity” in the last sentence points back to that aim. “For + -ing” (for achieving) shows purpose, and “remind us of” brings something important back to mind.',
+    feedback: {
+      correct: 'Correct. You used the linking words to rebuild the chain from result to goal to purpose.',
+      incorrect: 'Look for the words that point back: “In this way” needs an idea before it, and “this unity” needs a unity that was already mentioned. Then check Chapter 9.',
+    },
   },
   {
-    id: 'yunus-b1-language-9-should-general-case', type: 'multiple-choice', title: 'A General Responsibility', instructions: 'Choose the sentence that naturally combines a general person reference with “should” to express an expected or responsible action.', question: 'Which sentence best mirrors the pattern “Anyone who ... should ...” in a new context?', options: [
-      'Anyone who joins the project should understand the safety rules before starting work.',
-      'Anyone who joins the project should understood the safety rules before starts work.',
-      'Anyone who joins the project describes one named person, so “should” cannot express responsibility.',
-    ], correctAnswer: 0, explanation: '“Anyone who ...” refers to any person who meets the condition, while “should ...” expresses an expected, advisable, or responsible action for that group.', feedback: { correct: 'Correct. The sentence gives a general condition and then states what is expected of anyone in that situation.', incorrect: 'Look for a sentence meaning “every person who meets this condition is expected to do this”.' },
+    id: 'yunus-b1-language-9-should-general-case',
+    type: 'multiple-choice',
+    title: 'What Does “Should” Mean in the Poem?',
+    instructions: 'Read the lines of the poem in Chapter 9. Then choose the best answer.',
+    question: '“Anyone who claims to be a Muslim should know the requirements of Islam, / He should follow Allah’s command and pray the five daily prayers” What does “should” express in these lines?',
+    options: [
+      'a guess that the person probably knows it already',
+      'something that the person did in the past',
+      'a duty that is expected of every person in this group',
+      'a wish that the person may or may not have',
+    ],
+    correctAnswer: 2,
+    explanation: '“Anyone who …” means every person who fits the description, not one particular person. “Should + base verb” here expresses what is expected of that person: a duty or responsibility. In other contexts, “should” can also be a guess (“He should be home by now”), but the poem is about what a person is expected to know and do.',
+    feedback: {
+      correct: 'Correct. “Anyone who … should …” states what is expected of every person in the group.',
+      incorrect: 'Read the lines again. Is the poem guessing, telling a story about the past, or saying what a person who claims to be a Muslim is expected to do?',
+    },
   },
   {
-    id: 'yunus-b1-language-9-parallel-relationship', type: 'multiple-choice', title: 'Build a Two-Way Relationship', instructions: 'Choose the sentence that uses balanced parallel clauses to show a relationship working in both directions.', question: 'Which sentence most naturally follows the chapter’s pattern “Those who ... ..., and those who ... also ...”?', options: [
-      'Those who listen carefully understand others better, and those who understand others also communicate more thoughtfully.',
-      'Those who listen carefully understand others better, and those who understanding others also communicates thoughtful.',
-      'Those who listen carefully because the second clause must repeat exactly the same words without adding a related idea.',
-    ], correctAnswer: 0, explanation: 'The repeated “those who ...” structure creates balance between two related general statements. “Also” then adds the second relationship without breaking that parallel shape.', feedback: { correct: 'Correct. The two clauses are balanced and connected as related general truths.', incorrect: 'Choose the option with two complete, parallel “those who ...” clauses and a meaningful relationship between them.' },
+    id: 'yunus-b1-language-9-parallel-relationship',
+    type: 'error-correction',
+    title: 'Find and Fix the Mistake',
+    instructions: 'Each sentence from the end of Chapter 9 has one mistake. Tap the wrong word or phrase, then choose the correction.',
+    question: 'Can you correct a superlative and keep a two-way relationship balanced?',
+    errorItems: [
+      {
+        sentence: 'Love is a very important theme in Yunus Emre’s works. It is most important part of his philosophy.',
+        error: 'most important part',
+        options: ['the more important part', 'the most important part', 'most importantly part'],
+        answer: 1,
+      },
+      {
+        sentence: 'Those who love the Creator love the created, and those who love the created love also the Creator.',
+        error: 'love also',
+        options: ['also loves', 'loves also', 'also love'],
+        answer: 2,
+      },
+    ],
+    correctAnswer: null,
+    explanation: 'A superlative after a verb needs “the”: “It is the most important part”. It shows that love is above every other part of his philosophy. “Those who + verb” means “the people who …”, so the verb is plural (love). “Also” normally comes before the main verb: “… also love the Creator”. The two halves use the same pattern in reverse, which shows a relationship that works in both directions.',
+    feedback: {
+      correct: 'Well done. You corrected the superlative and kept the two halves balanced.',
+      incorrect: 'Read the last paragraph of Chapter 9 again. What small word comes before “most important”? Where does “also” go: before or after the verb?',
+    },
   },
   {
     id: 'yunus-b1-language-9-production', type: 'reflection', title: 'Explain a Goal and the Responsibilities Around It', instructions: 'Write or say five to six connected B1 sentences about a goal in school, community life, teamwork, health, or another everyday context. Do not retell Chapter 9.', question: 'Can you move from a result or situation to a goal, explain a purpose, state a general responsibility, and finish with two connected general statements?', correctAnswer: null, explanation: 'Useful language from the chapter includes “as a result of...”, “in this way...”, “the main goal is to...”, “for achieving...”, “remind us of...”, “anyone who... should...”, and “those who..., and those who... also...”.', feedback: { correct: 'Keep the paragraph connected: establish the situation, state the goal, explain what helps achieve it, and end with a broader responsibility or relationship.', incorrect: '' }, discussionPrompts: [
@@ -45,33 +82,80 @@ export const yunusB1LanguageFocusChapter9: Exercise[] = [
 /** Chapter 10 English Language Focus, derived only from the locked Chapter 10 story text. */
 export const yunusB1LanguageFocusChapter10: Exercise[] = [
   {
-    id: 'yunus-b1-language-10-condition-explanation', type: 'matching', title: 'Build the Relationship Between Ideas', instructions: 'Match each expression from the chapter with the meaning-making job it performs. Focus on how the language connects ideas, not on recalling chapter facts.', question: 'How do these expressions organise condition, explanation, reason, and description?', matchingPairs: [
-      { left: 'where ... is absent, ... arise', right: 'shows what tends to happen in a situation where something is missing' },
-      { left: 'that is, ...', right: 'restates an idea more clearly or explains what it means' },
-      { left: 'For this reason, ...', right: 'introduces a response or conclusion based on the previous idea' },
-      { left: 'describe ... as ...', right: 'presents one action, person, or thing in terms of another idea' },
-      { left: 'the ... that ...', right: 'adds information that identifies or explains a noun' },
-    ], correctAnswer: {
-      'where ... is absent, ... arise': 'shows what tends to happen in a situation where something is missing',
-      'that is, ...': 'restates an idea more clearly or explains what it means',
-      'For this reason, ...': 'introduces a response or conclusion based on the previous idea',
-      'describe ... as ...': 'presents one action, person, or thing in terms of another idea',
-      'the ... that ...': 'adds information that identifies or explains a noun',
-    }, explanation: 'These patterns help a B1 learner move from a situation to an explanation, give a reasoned response, and define an idea more precisely.', feedback: { correct: 'Correct. You identified how the chapter links and clarifies ideas.', incorrect: 'Ask whether the expression presents a situation, clarifies an idea, gives a reasoned result, describes something in another way, or adds identifying information.' },
+    id: 'yunus-b1-language-10-condition-explanation',
+    type: 'matching',
+    title: 'What Do These Phrases Mean?',
+    instructions: 'Match each phrase from Chapter 10 with its meaning in plain English.',
+    question: 'What do these phrases from the chapter and the poem mean?',
+    matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+    matchingPairs: [
+      { left: 'the throne of the Lord', right: 'the place where Allah reveals Himself' },
+      { left: 'breaking a heart', right: 'hurting someone deeply' },
+      { left: 'unfortunate in both worlds', right: 'unhappy in this life and the next' },
+      { left: 'since eternity', right: 'with no beginning in time' },
+    ],
+    correctAnswer: {
+      'the throne of the Lord': 'the place where Allah reveals Himself',
+      'breaking a heart': 'hurting someone deeply',
+      'unfortunate in both worlds': 'unhappy in this life and the next',
+      'since eternity': 'with no beginning in time',
+    },
+    explanation: 'The chapter explains its own image with “that is”: the heart is “the throne of the Lord,” that is, the place where Allah reveals Himself. “Breaking a heart” is not physical; it means hurting a person’s feelings deeply. “Both worlds” are this life and the next. “Since eternity” means from a time that has no beginning.',
+    feedback: {
+      correct: 'Good. You understood the images and phrases of Chapter 10.',
+      incorrect: 'Read Chapter 10 and the poem again. Look for “that is”: it tells you what one of the images means.',
+    },
   },
   {
-    id: 'yunus-b1-language-10-describe-as', type: 'multiple-choice', title: 'Describe One Idea Through Another', instructions: 'Choose the sentence that uses “describe ... as ...” naturally to interpret an action or quality.', question: 'Which sentence best transfers the chapter pattern to a new context?', options: [
-      'The coach described ignoring a teammate as damaging the trust of the whole group.',
-      'The coach described ignore a teammate as damage the trust of the whole group.',
-      'The coach described because a teammate, so the sentence cannot compare one action with another idea.',
-    ], correctAnswer: 0, explanation: '“Describe + noun/-ing form + as + noun/-ing form” can present an action or idea through another interpretation. The chapter uses this pattern to give moral weight to an action.', feedback: { correct: 'Correct. The sentence interprets one action by presenting it as another meaningful consequence.', incorrect: 'Choose the option with a complete “describe ... as ...” relationship and natural -ing forms.' },
+    id: 'yunus-b1-language-10-describe-as',
+    type: 'choose-form',
+    title: 'Situation, Interpretation and Addition',
+    instructions: 'Choose the correct word or form to complete each sentence from Chapter 10.',
+    question: 'Which forms show a general result, an interpretation and an added value?',
+    formChoices: [
+      {
+        sentence: 'According to him, where love is absent, negative emotions such as anger, heartbreak and separation [choice].',
+        options: ['arises', 'arise', 'arising'],
+        answer: 1,
+      },
+      {
+        sentence: 'For this reason, he described breaking a heart [choice] destroying Allah’s house.',
+        options: ['like', 'to be', 'as'],
+        answer: 2,
+      },
+      {
+        sentence: 'Yunus Emre emphasizes [choice] heart but also intellect as a value …',
+        options: ['not only', 'either', 'both'],
+        answer: 0,
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“Where X is absent, Y arise” describes what generally happens in a situation without something; the subject “negative emotions” is plural, so the verb is “arise”. “Describe A as B” gives an interpretation of A (a learner error is “describe … like …”). “Not only … but also …” adds a second value and gives it equal weight; “both” would need “and”, and “either” would need “or”.',
+    feedback: {
+      correct: 'Correct. You chose the forms for a general result, an interpretation and an added value.',
+      incorrect: 'Read Chapter 10 again. Check the subject of “arise”, the word that always follows “described …”, and the partner of “but also”.',
+    },
   },
   {
-    id: 'yunus-b1-language-10-addition-duration', type: 'multiple-choice', title: 'Add a Second Value and Show Continuity', instructions: 'Choose the sentence that combines “not only ... but also ...” with a natural expression of something continuing from the past until now.', question: 'Which sentence is grammatically and functionally closest to the chapter patterns?', options: [
-      'The tradition values not only knowledge but also compassion, and this principle has existed for centuries.',
-      'The tradition values not only knowledge but also compassion, and this principle existed since centuries.',
-      'The tradition values knowledge only, because “not only ... but also ...” cannot add a second value.',
-    ], correctAnswer: 0, explanation: '“Not only ... but also ...” adds balanced emphasis to a second idea. “Has existed for/since ...” links a past beginning or duration with continued relevance in the present.', feedback: { correct: 'Correct. The sentence adds a second value and expresses continuity naturally.', incorrect: 'Look for balanced addition and a present-perfect form that connects the past with the present.' },
+    id: 'yunus-b1-language-10-addition-duration',
+    type: 'sentence-building',
+    title: 'Build the Description of the Heart',
+    instructions: 'Tap the pieces to rebuild this sentence from Chapter 10.',
+    question: 'Where does the “that” clause go when it describes a noun?',
+    sentenceChunks: [
+      'Heart is',
+      'the eye',
+      'that sees',
+      'the truth',
+      'and the center',
+      'of understanding.',
+    ],
+    correctAnswer: null,
+    explanation: 'A “that” clause comes directly after the noun it describes: “the eye that sees the truth”. It tells us which eye the writer means. “And” then adds a second description of the heart: “the center of understanding”.',
+    feedback: {
+      correct: 'Well done. The “that” clause follows the noun it describes.',
+      incorrect: 'Start with “Heart is”, then name what the heart is. Put “that sees” right after the noun it describes. Check the sentence after the poem in Chapter 10.',
+    },
   },
   {
     id: 'yunus-b1-language-10-production', type: 'reflection', title: 'Explain Why a Value Matters', instructions: 'Write or say five to six connected B1 sentences about a value in friendship, family life, school, teamwork, or community life. Do not retell Chapter 10.', question: 'Can you describe what happens when a value is absent, clarify what the value means, explain a consequence, add a second related value, and show why the idea remains important over time?', correctAnswer: null, explanation: 'Useful language from the chapter includes “where ... is absent, ... arise”, “that is...”, “for this reason...”, “describe ... as ...”, “the ... that ...”, “not only ... but also ...”, and “has existed since/for ...”.', feedback: { correct: 'Keep the paragraph connected: situation, clarification, consequence, added value, and continued importance.', incorrect: '' }, discussionPrompts: [
@@ -87,35 +171,101 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
 /** Chapter 11 English Language Focus, derived only from the locked Chapter 11 story text. */
 export const yunusB1LanguageFocusChapter11: Exercise[] = [
   {
-    id: 'yunus-b1-language-11-purpose-necessity', type: 'matching', title: 'Purpose, Necessity, Viewpoint, and Generalisation', instructions: 'Match each expression from the chapter with the meaning-making job it performs. Focus on how the language works, not on recalling chapter facts.', question: 'How do these patterns organise purpose, necessity, attributed viewpoints, and general statements?', matchingPairs: [
-      { left: 'for a person to ...', right: 'introduces a goal or condition needed for a desired outcome' },
-      { left: 'must ...', right: 'presents something as necessary or unavoidable' },
-      { left: 'According to him, ...', right: 'attributes an idea to a particular person or viewpoint' },
-      { left: 'as ... said, ...', right: 'connects a statement with a supporting source or earlier voice' },
-      { left: 'A person who ...', right: 'makes a general statement about people with a particular behaviour or quality' },
-      { left: 'Whoever ...', right: 'extends a statement to any person who meets the condition' },
-    ], correctAnswer: {
-      'for a person to ...': 'introduces a goal or condition needed for a desired outcome',
-      'must ...': 'presents something as necessary or unavoidable',
-      'According to him, ...': 'attributes an idea to a particular person or viewpoint',
-      'as ... said, ...': 'connects a statement with a supporting source or earlier voice',
-      'A person who ...': 'makes a general statement about people with a particular behaviour or quality',
-      'Whoever ...': 'extends a statement to any person who meets the condition',
-    }, explanation: 'Chapter 11 uses these patterns to express a goal, present necessity, identify whose view is being reported, support an idea with another voice, and form general statements about people.', feedback: { correct: 'Correct. You identified how the chapter moves from purpose and necessity to viewpoint and generalisation.', incorrect: 'Ask whether the expression gives a goal, marks necessity, identifies a source, supports a statement, or generalises about people.' },
+    id: 'yunus-b1-language-11-purpose-necessity',
+    type: 'drag-drop',
+    title: 'Whose Words Are These?',
+    instructions: 'Read each part of Chapter 11. Is it the writer reporting Yunus Emre’s view, Yunus Emre’s own words from a poem, or the words of the Prophet Muhammad (pbuh)? Put it in the right group.',
+    question: 'How does the chapter show whose idea or words we are reading?',
+    dragDropGroups: [
+      {
+        group: 'The writer reports Yunus’s view',
+        items: [
+          'He highlights that … heart and intellect must support one another.',
+          'According to him, death is the best advisor for humanity …',
+        ],
+      },
+      {
+        group: 'Yunus’s own words (poem)',
+        items: [
+          '“May your intelligence / wisdom save you from all troubles”',
+          '“Whoever comes into this world must later leave it”',
+        ],
+      },
+      {
+        group: 'The Prophet’s words',
+        items: [
+          '“Those who remember death the most and prepare for it the best are the wisest.”',
+        ],
+      },
+    ],
+    correctAnswer: {
+      'The writer reports Yunus’s view': [
+        'He highlights that … heart and intellect must support one another.',
+        'According to him, death is the best advisor for humanity …',
+      ],
+      'Yunus’s own words (poem)': [
+        '“May your intelligence / wisdom save you from all troubles”',
+        '“Whoever comes into this world must later leave it”',
+      ],
+      'The Prophet’s words': [
+        '“Those who remember death the most and prepare for it the best are the wisest.”',
+      ],
+    },
+    explanation: 'Reporting verbs and phrases such as “He highlights that …” and “According to him, …” show that the writer is telling us Yunus’s view in the writer’s own words. Quotation marks show exact words. The chapter introduces the poems with “He says:” and the saying of the Prophet with “as the Prophet Muhammad (pbuh) said:”.',
+    feedback: {
+      correct: 'Correct. You separated reported views from exact quoted words.',
+      incorrect: 'Look for quotation marks and for the words that introduce them: “He says:” or “as the Prophet … said:”. Without quotation marks, the writer is reporting the view.',
+    },
   },
   {
-    id: 'yunus-b1-language-11-must-relationship', type: 'multiple-choice', title: 'Use “Must” to Express a Necessary Relationship', instructions: 'Choose the sentence that uses the chapter pattern naturally to show that two things need to work together for a goal.', question: 'Which sentence best transfers the pattern to a new context?', options: [
-      'For a team to solve a difficult problem, careful planning and open communication must support one another.',
-      'For a team solving a difficult problem, careful planning must supporting open communication one another.',
-      'A team reaches every goal automatically, so “must” cannot express a necessary relationship.',
-    ], correctAnswer: 0, explanation: '“For + noun/person + to + verb” can frame a goal, while “must + base verb” expresses what is necessary for that goal. The chapter combines these functions in one connected idea.', feedback: { correct: 'Correct. The sentence links a goal with a necessary relationship between two elements.', incorrect: 'Look for “for ... to ...” followed by “must + base verb” in a complete, meaningful relationship.' },
+    id: 'yunus-b1-language-11-must-relationship',
+    type: 'transformation',
+    title: 'Say It Another Way',
+    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 11.',
+    question: 'Can you report a view and make a general statement with a different structure?',
+    transformItems: [
+      {
+        source: 'According to him, death is the best advisor for humanity …',
+        frame: 'He [blank] that death is the best advisor for humanity.',
+        answers: ['believes', 'believed', 'thinks', 'thought', 'says', 'said', 'claims', 'claimed', 'feels', 'felt', 'argues', 'argued', 'highlights', 'highlighted'],
+      },
+      {
+        source: 'A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.',
+        frame: '[blank] lives with an understanding of death’s advisory role lives a meaningful and honest life.',
+        answers: ['Whoever', 'Anyone who', 'Anybody who', 'Everyone who', 'Everybody who', 'Every person who', 'Someone who'],
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“According to + person” can be changed into a reporting verb with “that”: “He believes / says that …”. “A person who …” makes a general statement about people; “whoever” or “anyone who” says the same thing about any person who meets the condition. Note that “whoever” already contains “who”, so we do not add another “who”.',
+    feedback: {
+      correct: 'Well done. You kept the meaning with a new structure.',
+      incorrect: 'For the first frame, use a reporting verb such as “believes” or “says”. For the second, think of a word that means “any person who”.',
+    },
   },
   {
-    id: 'yunus-b1-language-11-source-generalisation', type: 'multiple-choice', title: 'Move from a Viewpoint to a General Statement', instructions: 'Choose the option that first attributes an idea and then develops it into a natural general statement.', question: 'Which two-sentence sequence is the clearest and most coherent?', options: [
-      'According to the mentor, mistakes can be useful teachers. A person who reflects on a mistake can make a better decision next time.',
-      'According to the mentor mistakes can be useful teachers. A person who reflecting on a mistake can making a better decision next time.',
-      'According to the mentor, mistakes can be useful teachers. Whoever, because, the next decision.',
-    ], correctAnswer: 0, explanation: '“According to ...” marks the source of a viewpoint, while “a person who ...” can turn that idea into a wider statement about behaviour and consequence.', feedback: { correct: 'Correct. The first sentence identifies the viewpoint and the second develops it into a general relationship.', incorrect: 'Choose the option with a complete source phrase and a grammatical “a person who ...” statement.' },
+    id: 'yunus-b1-language-11-source-generalisation',
+    type: 'choose-form',
+    title: 'Goal and Supporting Voice',
+    instructions: 'Choose the correct word or form to complete each sentence from Chapter 11.',
+    question: 'Which forms state a goal and connect a view with a supporting voice?',
+    formChoices: [
+      {
+        sentence: 'He highlights that for a person [choice] salvation, heart and intellect must support one another.',
+        options: ['reaching', 'to reach', 'reaches'],
+        answer: 1,
+      },
+      {
+        sentence: 'According to him, death is the best advisor for humanity, [choice] the Prophet Muhammad (pbuh) said: …',
+        options: ['although', 'so that', 'as'],
+        answer: 2,
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“For + person + to + verb” states a goal and who has it: for a person to reach salvation. The main clause then says what is necessary for that goal: “heart and intellect must support one another”. “As + someone + said” connects a view with an earlier voice that supports it, so the reader sees that the idea has a respected source.',
+    feedback: {
+      correct: 'Correct. You chose the goal pattern and the word that brings in a supporting voice.',
+      incorrect: 'Read the first sentence of Chapter 11 and the sentence about death again. Which form follows “for a person”? Which word introduces a saying that agrees with the view?',
+    },
   },
   {
     id: 'yunus-b1-language-11-production', type: 'reflection', title: 'Explain a Principle and Its Consequence', instructions: 'Write or say five to six connected B1 sentences about a principle for learning, friendship, teamwork, family life, or personal growth. Do not retell Chapter 11.', question: 'Can you state a goal, explain what must happen to reach it, attribute one idea to another person or source, and finish with a general statement about people and consequences?', correctAnswer: null, explanation: 'Useful language from the chapter includes “for a person to...”, “must...”, “According to...”, “as ... said...”, “a person who...”, and “whoever...”. Use only the patterns that fit your topic naturally.', feedback: { correct: 'Keep the response connected: goal, necessary relationship, attributed idea, explanation, and general consequence.', incorrect: '' }, discussionPrompts: [
@@ -131,35 +281,72 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
 /** Chapter 12 English Language Focus, derived only from the locked Chapter 12 story text. */
 export const yunusB1LanguageFocusChapter12: Exercise[] = [
   {
-    id: 'yunus-b1-language-12-meaning-relations', type: 'matching', title: 'Define, Exemplify, Contrast, and Describe', instructions: 'Match each expression from the chapter with the meaning-making job it performs. Focus on how the language shapes the idea, not on recalling the list of virtues.', question: 'How do these patterns explain morality and organise contrasting habits?', matchingPairs: [
-      { left: 'is about + -ing', right: 'defines an idea through an action or process' },
-      { left: 'such as ...', right: 'introduces representative examples of a larger group' },
-      { left: 'with these principles, ...', right: 'shows the means or basis used to achieve an outcome' },
-      { left: 'teach someone to ...', right: 'expresses guidance toward an action or behaviour' },
-      { left: 'avoid ...', right: 'expresses deliberate distance from an unwanted behaviour' },
-      { left: 'not only ... but also ...', right: 'adds a second role and gives it equal importance' },
-    ], correctAnswer: {
-      'is about + -ing': 'defines an idea through an action or process',
-      'such as ...': 'introduces representative examples of a larger group',
-      'with these principles, ...': 'shows the means or basis used to achieve an outcome',
-      'teach someone to ...': 'expresses guidance toward an action or behaviour',
-      'avoid ...': 'expresses deliberate distance from an unwanted behaviour',
-      'not only ... but also ...': 'adds a second role and gives it equal importance',
-    }, explanation: 'Chapter 12 defines morality through action, gives examples, shows how principles guide behaviour, contrasts what people should build with what they should avoid, and presents poetry as having more than one role.', feedback: { correct: 'Correct. You identified how the chapter moves from definition and examples to guidance and balanced addition.', incorrect: 'Ask whether the expression defines, gives examples, shows means, guides behaviour, marks avoidance, or adds a second equal role.' },
+    id: 'yunus-b1-language-12-meaning-relations',
+    type: 'drag-drop',
+    title: 'Principles and Bad Habits',
+    instructions: 'Sort the words from Chapter 12. Is it a moral principle to build, or a bad habit to avoid?',
+    question: 'What kind of word does the chapter use for the principles, and what kind for the bad habits?',
+    dragDropGroups: [
+      {
+        group: 'Moral principles (nouns)',
+        items: ['honesty', 'patience', 'humility', 'generosity'],
+      },
+      {
+        group: 'Bad habits (adjectives after “being”)',
+        items: ['arrogant', 'stingy', 'greedy', 'jealous'],
+      },
+    ],
+    correctAnswer: {
+      'Moral principles (nouns)': ['honesty', 'patience', 'humility', 'generosity'],
+      'Bad habits (adjectives after “being”)': ['arrogant', 'stingy', 'greedy', 'jealous'],
+    },
+    explanation: 'The principles are nouns that name qualities: honesty, patience, humility, generosity. The bad habits are adjectives that describe people, so the chapter puts them after “being”: “bad habits like being arrogant, stingy, greedy …”. Many pairs are related: generous → generosity, humble → humility, patient → patience, honest → honesty.',
+    feedback: {
+      correct: 'Correct. You separated the principles (nouns) from the bad habits (adjectives).',
+      incorrect: 'Look at the first paragraph of Chapter 12. Which words come after “such as”, and which come after “like being”?',
+    },
   },
   {
-    id: 'yunus-b1-language-12-guidance', type: 'multiple-choice', title: 'Turn Principles into Practical Guidance', instructions: 'Choose the option that naturally combines a principle with guidance about what to do and what to avoid.', question: 'Which sentence best transfers the chapter pattern to a new context?', options: [
-      'With these principles, a coach can teach players to support one another and avoid blaming teammates after mistakes.',
-      'With these principles, a coach can teach players supporting one another and avoid to blame teammates after mistakes.',
-      'With these principles, a coach avoids that players because support is principle.',
-    ], correctAnswer: 0, explanation: 'The chapter uses “with ...” to show the basis for guidance, “teach ... to ...” for the desired action, and “avoid + -ing/noun” for behaviour that should be left behind.', feedback: { correct: 'Correct. The sentence links a guiding principle with one constructive action and one behaviour to avoid.', incorrect: 'Look for “teach + person + to + verb” and a natural “avoid + -ing/noun” structure.' },
+    id: 'yunus-b1-language-12-guidance',
+    type: 'word-bank',
+    title: 'Define, Give Examples, Guide',
+    instructions: 'Complete the lines from Chapter 12 with words from the bank. Two words are not needed.',
+    question: 'Which forms follow “is about”, “teach people” and “like”?',
+    fillBlanksText: 'Yunus believes that true morality is about [blank] up bad habits that are not suitable for people. Moral principles [blank] as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. … He also taught people [blank] avoid bad habits like [blank] arrogant, stingy, greedy, selfish, or jealous, and gossiping.',
+    wordBank: ['to', 'giving', 'being', 'such', 'give', 'be'],
+    correctAnswer: ['giving', 'such', 'to', 'being'],
+    explanation: '“About” is a preposition, so it is followed by an -ing form: “is about giving up”. “Such as” introduces examples of a larger group. “Teach + person + to + verb” shows guidance toward an action. “Like” is also a preposition here, so the verb after it takes -ing: “like being arrogant”.',
+    feedback: {
+      correct: 'Well done. You used -ing after prepositions and “to + verb” after “teach people”.',
+      incorrect: 'Check the first paragraph of Chapter 12. Remember: after a preposition (about, like) we use -ing.',
+    },
   },
   {
-    id: 'yunus-b1-language-12-balanced-role', type: 'multiple-choice', title: 'Give Something Two Connected Roles', instructions: 'Choose the sentence that uses “not only ... but also ...” to describe two meaningful roles without simply listing facts.', question: 'Which sentence is the most coherent?', options: [
-      'A school library is not only a place for reading but also a space where students can learn from one another.',
-      'A school library not only is a place for reading but also students learning each other.',
-      'A school library is only for reading but also not a space for learning.',
-    ], correctAnswer: 0, explanation: '“Not only ... but also ...” works best when it joins two parallel, compatible roles and presents both as important.', feedback: { correct: 'Correct. The two roles are parallel and contribute to one larger description.', incorrect: 'Choose the option where both sides of “not only ... but also ...” have matching structure and compatible meaning.' },
+    id: 'yunus-b1-language-12-balanced-role',
+    type: 'error-correction',
+    title: 'Find and Fix the Mistake',
+    instructions: 'Each sentence from Chapter 12 has one mistake. Tap the wrong word or phrase, then choose the correction.',
+    question: 'Can you correct a verb form and a “not only … but also …” pattern?',
+    errorItems: [
+      {
+        sentence: 'With these principles, Yunus Emre teach people the path to an honest life.',
+        error: 'teach',
+        options: ['teaching', 'teaches', 'is teach'],
+        answer: 1,
+      },
+      {
+        sentence: 'Yunus Emre\'s poems are not only literary works and also a moral guide.',
+        error: 'and also',
+        options: ['but also', 'or also', 'so also'],
+        answer: 0,
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“With these principles” shows the means: the principles are what Yunus uses to guide people. The subject “Yunus Emre” is singular, so the present simple verb takes -s: “teaches”. “Not only … but also …” is a fixed pair: it adds a second role (a moral guide) and gives it the same importance as the first (literary works).',
+    feedback: {
+      correct: 'Well done. You corrected the verb and completed the fixed pair.',
+      incorrect: 'Read Chapter 12 again. Is “Yunus Emre” one person or many? Which word always goes with “not only … also”?',
+    },
   },
   {
     id: 'yunus-b1-language-12-production', type: 'reflection', title: 'Define a Value and Turn It into Action', instructions: 'Write or say five to six connected B1 sentences about one value in school, friendship, family life, teamwork, or personal growth. Do not retell Chapter 12.', question: 'Can you define the value, give examples, show how it guides action, contrast a helpful behaviour with one to avoid, and describe a wider role or result?', correctAnswer: null, explanation: 'Useful language from the chapter includes “is about + -ing”, “such as...”, “with these principles...”, “teach someone to...”, “avoid...”, and “not only... but also...”. Use only the forms that fit your topic naturally.', feedback: { correct: 'Keep the response connected: definition, examples, guidance, contrast in behaviour, and a wider role or result.', incorrect: '' }, discussionPrompts: [
@@ -175,33 +362,65 @@ export const yunusB1LanguageFocusChapter12: Exercise[] = [
 /** Chapter 13 English Language Focus, derived only from the locked Chapter 13 story text. */
 export const yunusB1LanguageFocusChapter13: Exercise[] = [
   {
-    id: 'yunus-b1-language-13-relations', type: 'matching', title: 'Generalise, Predict, and Give Guidance', instructions: 'Match each pattern from the chapter with the meaning-making job it performs. Focus on how the language builds a general principle rather than on recalling the moral lesson itself.', question: 'How do these patterns turn an observation into wider guidance?', matchingPairs: [
-      { left: 'those who ... will ...', right: 'connects a defined group with a likely or promised future result' },
-      { left: 'whoever ...', right: 'makes a general statement that applies to any person meeting the condition' },
-      { left: 'if ...', right: 'sets the condition under which the following idea becomes relevant' },
-      { left: 'one must ...', right: 'expresses impersonal necessity or strong guidance' },
-      { left: 'in the following verse ...', right: 'moves the discourse to a new but related example or warning' },
-    ], correctAnswer: {
-      'those who ... will ...': 'connects a defined group with a likely or promised future result',
-      'whoever ...': 'makes a general statement that applies to any person meeting the condition',
-      'if ...': 'sets the condition under which the following idea becomes relevant',
-      'one must ...': 'expresses impersonal necessity or strong guidance',
-      'in the following verse ...': 'moves the discourse to a new but related example or warning',
-    }, explanation: 'Chapter 13 repeatedly moves from a quality or condition to a wider consequence, then uses impersonal guidance and discourse markers to organise related examples.', feedback: { correct: 'Correct. You identified how the chapter generalises, links conditions with consequences, and shifts between related examples.', incorrect: 'Ask whether the pattern identifies a group, generalises to anyone, sets a condition, expresses necessity, or moves to another example.' },
+    id: 'yunus-b1-language-13-relations',
+    type: 'matching',
+    title: 'What Do the Lines Mean?',
+    instructions: 'Read the lines of the poems in Chapter 13. Match each line with its meaning.',
+    question: 'What do Yunus Emre’s lines about patience and anger say?',
+    matchingHeadings: { left: 'From the poems', right: 'Meaning' },
+    matchingPairs: [
+      { left: 'Patience is the foundation of an everlasting kingdom', right: 'Success that lasts is built on patience.' },
+      { left: 'those who are blessed with patience will reach greatness', right: 'People given the gift of patience will one day become great.' },
+      { left: 'Whoever possesses patience rises to the heavens', right: 'Any patient person reaches a very high spiritual place.' },
+      { left: 'Whoever is filled with anger loses their faith', right: 'A person full of anger has their belief taken away.' },
+      { left: 'If faith is required, one must give up rage', right: 'To keep your belief, you have to leave anger behind.' },
+    ],
+    correctAnswer: {
+      'Patience is the foundation of an everlasting kingdom': 'Success that lasts is built on patience.',
+      'those who are blessed with patience will reach greatness': 'People given the gift of patience will one day become great.',
+      'Whoever possesses patience rises to the heavens': 'Any patient person reaches a very high spiritual place.',
+      'Whoever is filled with anger loses their faith': 'A person full of anger has their belief taken away.',
+      'If faith is required, one must give up rage': 'To keep your belief, you have to leave anger behind.',
+    },
+    explanation: 'The lines use patterns that turn one observation into a general principle. “Those who … will …” links a group of people with a future result. “Whoever …” means any person who meets the condition. “If …, one must …” gives a condition and then a strong general duty; “one” means any person, not one particular person.',
+    feedback: {
+      correct: 'Good. You understood the meaning of each line.',
+      incorrect: 'Read the poems in Chapter 13 again. Which line gives a future result, which gives a condition and a duty, and which describe what happens to any patient or angry person?',
+    },
   },
   {
-    id: 'yunus-b1-language-13-general-result', type: 'multiple-choice', title: 'Express a General Result', instructions: 'Choose the sentence that naturally transfers the chapter pattern to a new context.', question: 'Which sentence best expresses a general condition and its usual result?', options: [
-      'Whoever listens carefully to both sides usually understands the disagreement more clearly.',
-      'Whoever will listen carefully to both sides understanding the disagreement more clearly.',
-      'Whoever listened carefully because the disagreement must clearly.',
-    ], correctAnswer: 0, explanation: 'The chapter uses “whoever ...” to introduce a condition that can apply to any person, followed by a general consequence.', feedback: { correct: 'Correct. The sentence gives a complete general condition and a natural result.', incorrect: 'Choose the option where “whoever” introduces a complete action and the main clause gives the resulting general statement.' },
+    id: 'yunus-b1-language-13-general-result',
+    type: 'multiple-choice',
+    title: 'Who Is “One”?',
+    instructions: 'Read the line from the poem in Chapter 13. Then choose the best answer.',
+    question: '“If faith is required, one must give up rage” Who does “one” refer to in this line?',
+    options: [
+      'one particular person that Yunus is speaking to',
+      'Yunus Emre himself and nobody else',
+      'any person in general',
+      'the first person in a list',
+    ],
+    correctAnswer: 2,
+    explanation: '“One” can be an impersonal pronoun meaning “any person” or “people in general”. With “must”, it gives advice that is true for everybody, not for one named person. In everyday English we often say “you” with the same meaning: “If you want to keep your faith, you must give up rage.”',
+    feedback: {
+      correct: 'Correct. “One must …” gives a general duty for any person.',
+      incorrect: 'Read the whole line again. Does the poem name a person, or does it give advice that applies to everyone?',
+    },
   },
   {
-    id: 'yunus-b1-language-13-condition-guidance', type: 'multiple-choice', title: 'Turn a Condition into Guidance', instructions: 'Choose the sentence that uses a condition and impersonal necessity coherently.', question: 'Which sentence best follows the chapter pattern “if ... one must ...”?', options: [
-      'If trust is important in a team, one must speak honestly when a problem appears.',
-      'If trust important in a team, one must speaking honestly when a problem appears.',
-      'If trust is important in a team, one must to honest because problem.',
-    ], correctAnswer: 0, explanation: 'The condition identifies when the principle matters, and “one must + base verb” expresses a strong general requirement without naming a particular person.', feedback: { correct: 'Correct. The condition and the guidance form one clear meaning relationship.', incorrect: 'Look for a complete “if” clause followed by “one must + base verb”.' },
+    id: 'yunus-b1-language-13-condition-guidance',
+    type: 'word-bank',
+    title: 'Linking the Verses',
+    instructions: 'Complete the lines from Chapter 13 with words from the bank. Three words are not needed.',
+    question: 'Which words introduce the verses, show what a warning is about, and bring Yunus’s work into the present?',
+    fillBlanksText: '[blank] another verse, he talks about “patience” and says: … In the following verse, he warns [blank] “rage and arrogance”: … It is clear that Yunus Emre was an important person of his era, and his poems are [blank] valuable today as a moral guide for future generations. His works are as [blank]:',
+    wordBank: ['still', 'In', 'follows', 'against', 'following', 'yet', 'At'],
+    correctAnswer: ['In', 'against', 'still', 'follows'],
+    explanation: 'We say “in a verse” (like “in a poem”, “in a book”). “Warn against + noun” names the danger someone tells us to avoid. “Still” shows that something from the past continues now: the poems were valuable then and are valuable today. “As follows:” is a fixed phrase that introduces a list.',
+    feedback: {
+      correct: 'Well done. You linked the verses and brought the poems into the present.',
+      incorrect: 'Read the lines between the poems and the last paragraph of Chapter 13 again. Which preposition goes with “verse”? Which fixed phrase introduces a list?',
+    },
   },
   {
     id: 'yunus-b1-language-13-production', type: 'reflection', title: 'Build a Short Principle-and-Result Paragraph', instructions: 'Write or say five connected B1 sentences about a principle in school, friendship, teamwork, family life, or personal growth. Do not retell Chapter 13.', question: 'Can you introduce one principle, generalise who it affects, show a result, add a related warning or contrast, and finish with practical guidance?', correctAnswer: null, explanation: 'Useful language from the chapter includes “those who ... will ...”, “whoever ...”, “if ...”, “one must ...”, and a transition such as “in another case” or “in the following example”. Use only the forms that fit your message naturally.', feedback: { correct: 'Keep the response connected: principle, general condition, consequence, related warning or example, and final guidance.', incorrect: '' }, discussionPrompts: [
