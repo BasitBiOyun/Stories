@@ -306,7 +306,7 @@ Misafirdir, vatanına, bir gün sefer etse gerek
 [/POEM]`,
     vocabulary: [
       { word: 'advisor', definition: 'a person or influence that gives guidance about how to act or decide' },
-      { word: 'heart and reason', definition: 'the two human capacities that the chapter says should support one another' },
+      { word: 'heart and reason', definition: 'the inner, feeling side of a person (the heart) together with the ability to think and judge (reason)' },
       { word: 'prepare', definition: 'to make oneself ready in advance for a future event or responsibility' },
       { word: 'meaningful', definition: 'having clear importance, purpose, or value' },
       { word: 'death', definition: 'the end of physical life, presented here as a reminder that can guide conduct' },
@@ -352,7 +352,7 @@ Nasibi sabr olanlar uluyısar
       { word: 'animalistic self', definition: 'the lower self associated in the chapter with uncontrolled desires and immoral conduct' },
       { word: 'righteous life', definition: 'a life guided by morally good and correct conduct' },
       { word: 'negative traits', definition: 'harmful qualities of character or behavior' },
-      { word: 'moral guide', definition: 'something that gives guidance about right conduct and character' },
+      { word: 'moral guide', definition: 'a source that shows people how to behave well and live rightly' },
     ],
     hotspots: [
       { id: 'h12-1', x: 36, y: 69, title: 'morality consists', description: 'The chapter presents morality through abandoning harmful behavior and cultivating positive qualities.' },
@@ -394,7 +394,7 @@ It is obvious that Yunus Emre was not only a prominent figure in his own time bu
       { word: 'legacy', definition: 'a lasting influence or contribution passed on to later generations' },
       { word: 'prominent', definition: 'important, widely recognized, or influential' },
       { word: 'writings', definition: 'written works produced by an author' },
-      { word: 'literary works', definition: 'written works valued as literature' },
+      { word: 'literary works', definition: 'poems, stories and other writings valued for their artistic quality' },
       { word: 'future generations', definition: 'people who will live after the present generation and inherit its cultural influence' },
     ],
     hotspots: [

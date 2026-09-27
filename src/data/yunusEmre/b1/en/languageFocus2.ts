@@ -4,61 +4,76 @@ import type { Exercise } from '../../../../types';
 export const yunusB1LanguageFocusChapter4: Exercise[] = [
   {
     id: 'yunus-b1-language-4-condition-perspective',
-    type: 'matching',
-    title: 'Using a Condition to Open a Historical Explanation',
-    instructions: 'Match each expression with the meaning relationship it creates.',
-    question: 'How does the opening sentence connect a closer look at history with a better understanding of place and context?',
-    matchingPairs: [
-      { left: 'If we take a closer look at this historical atmosphere...', right: 'sets a condition or approach for gaining deeper understanding' },
-      { left: 'we can better understand Anatolia', right: 'states the possible result of taking that approach' },
-      { left: 'the land where Yunus Emre lived and recited...', right: 'adds identifying information about Anatolia and connects place with a person’s experience' },
+    type: 'multiple-choice',
+    title: 'Why Does the Chapter Begin with “If”?',
+    instructions: 'Read the first sentence of Chapter 4. Then choose the best answer.',
+    question: '“If we take a closer look at this historical atmosphere, we can better understand Anatolia …” What is the writer telling the reader?',
+    options: [
+      'People must study history before they are allowed to read about Yunus Emre.',
+      'Learning about the history of that time will help us understand the place better.',
+      'The writer is not sure that the history of Anatolia is true.',
+      'Anatolia was easier to understand in the past than it is today.',
     ],
-    correctAnswer: {
-      'If we take a closer look at this historical atmosphere...': 'sets a condition or approach for gaining deeper understanding',
-      'we can better understand Anatolia': 'states the possible result of taking that approach',
-      'the land where Yunus Emre lived and recited...': 'adds identifying information about Anatolia and connects place with a person’s experience',
-    },
-    explanation: 'The sentence uses “if” to present an approach and “can” to show the understanding that becomes possible. The “where” clause then connects the place with Yunus Emre’s life.',
+    correctAnswer: 1,
+    explanation: '“If + present simple, … can + verb” gives a condition and a possible result. The condition is an approach (taking a closer look at the history), and “can better understand” is what becomes possible if we follow it. The writer uses “we” to invite the reader to look at the history together before the chapter tells it.',
     feedback: {
-      correct: 'Correct. You followed the movement from condition to possible result and then to place description.',
-      incorrect: 'Ask which part gives the condition, which part gives the possible result, and which part adds information about Anatolia.',
+      correct: 'Correct. The “if” part gives an approach, and “can” shows the understanding that becomes possible.',
+      incorrect: 'Read the sentence again. The “if” part is not a rule or a doubt. What becomes possible when we look closely at the history?',
     },
   },
   {
     id: 'yunus-b1-language-4-contrast-change',
-    type: 'multiple-choice',
-    title: 'From a High Point to Decline',
-    instructions: 'Choose the sentence that best preserves the chapter’s contrast and time relationship.',
-    question: 'Which sentence most naturally connects an earlier period of strength with a later period of decline?',
-    options: [
-      'Alaeddin I’s reign was one of the Seljuks’ strongest periods; however, under his son the economic and social structure began to decline.',
-      'Alaeddin I’s reign was powerful because his son had already caused the decline before it began.',
-      'Alaeddin I’s reign and the later decline happened for exactly the same reason, so there is no contrast between them.',
+    type: 'choose-form',
+    title: 'Strength, Change and Place',
+    instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 4.',
+    question: 'Which forms describe a high point, mark a change in direction, and add information about a place?',
+    formChoices: [
+      {
+        sentence: 'The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was [choice] period of the Seljuks.',
+        options: ['the more powerful and brilliant', 'the most powerful and brilliant', 'most powerful and brilliant'],
+        answer: 1,
+      },
+      {
+        sentence: '[choice] … the Seljuk economic and social structure began to decline.',
+        options: ['However,', 'Therefore,', 'For example,'],
+        answer: 0,
+      },
+      {
+        sentence: '… Anatolia—the land [choice] Yunus Emre lived and recited his unforgettable verses.',
+        options: ['which', 'where', 'when'],
+        answer: 1,
+      },
     ],
-    correctAnswer: 0,
-    explanation: 'The chapter first evaluates Alaeddin I’s reign with strong superlative language and then uses “however” to signal a change in direction under the next ruler.',
+    correctAnswer: null,
+    explanation: 'The superlative “the most + adjective” with “the” evaluates Alaeddin I’s rule as the highest point of the Seljuks. “However” turns the story in a new direction: after the strongest period comes a decline. “Where” begins a clause about a place (the land where he lived); “which” would need a subject or object after it, and “when” is for time.',
     feedback: {
-      correct: 'Good. The sentence keeps both the chronological change and the contrast.',
-      incorrect: 'Look for a sentence that first establishes strength, then marks a later change with contrast rather than treating the two periods as identical.',
+      correct: 'Correct. You chose the superlative, the contrast word and the place word.',
+      incorrect: 'Read the second paragraph of Chapter 4 again. Is the sentence praising the best period, turning to a change, or describing a place?',
     },
   },
   {
     id: 'yunus-b1-language-4-cause-chain',
-    type: 'sequencing',
-    title: 'Reconstructing a Cause-and-Change Chain',
-    instructions: 'Put the language moves in an order that builds a coherent explanation. Focus on how the relationships are expressed, not on recalling dates.',
-    question: 'How can a B1 explanation move from pressure to movement, social change, and a worsening situation?',
-    sequencingItems: [
-      { id: '1', text: 'A major pressure caused many people to move from one region to another.' },
-      { id: '2', text: 'This change affected the lives of the local population.' },
-      { id: '3', text: 'The number of newcomers then grew.' },
-      { id: '4', text: 'A failure to manage the situation worsened the social and economic problems.' },
+    type: 'transformation',
+    title: 'Same Cause, New Sentence',
+    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 4.',
+    question: 'Can you express the same cause and result with a different structure?',
+    transformItems: [
+      {
+        source: 'The Mongol invasion caused many people to migrate to Anatolia from Central Asia …',
+        frame: 'Many people migrated to Anatolia from Central Asia [blank] the Mongol invasion.',
+        answers: ['because of', 'as a result of', 'due to', 'as a consequence of', 'owing to'],
+      },
+      {
+        source: '… Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos.',
+        frame: 'The social and economic chaos got worse because Giyaseddin Keyhüsrev II [blank] this situation.',
+        answers: ['failed to manage', 'did not manage', 'didn’t manage', 'didn\'t manage', 'could not manage', 'couldn’t manage', 'couldn\'t manage', 'was unable to manage', 'failed to handle', 'did not manage to control'],
+      },
     ],
-    correctAnswer: ['1', '2', '3', '4'],
-    explanation: 'Chapter 4 uses several cause-result patterns: “caused ... to migrate”, “which ... turned the lives ... upside down”, and “failure to manage this situation worsened...”. The point is to build a connected chain rather than four isolated facts.',
+    correctAnswer: null,
+    explanation: '“X caused people to + verb” puts the cause first. With “because of / as a result of + noun”, the result comes first and the cause comes at the end. “Someone’s failure to + verb” is a noun phrase; as a clause it becomes “someone failed to + verb” (or “did not manage to …”). “Worsened” means “made worse”, so the result can be said as “got worse”.',
     feedback: {
-      correct: 'Correct. You built a coherent chain from cause through change to worsening conditions.',
-      incorrect: 'Start with the pressure that causes movement, then show the effect of that movement, the continuing change, and finally the result of poor management.',
+      correct: 'Well done. You kept the same cause and result in a new structure.',
+      incorrect: 'Ask what the cause is in each sentence from Chapter 4 and what happened because of it. Then fit that cause into the new frame.',
     },
   },
   {
@@ -85,31 +100,71 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
 /** Chapter 5 English Language Focus, derived only from the locked Chapter 5 story text. */
 export const yunusB1LanguageFocusChapter5: Exercise[] = [
   {
-    id: 'yunus-b1-language-5-cause-response', type: 'matching', title: 'Building Cause and Response', instructions: 'Match each expression with the relationship it creates. Focus on meaning, not historical recall.', question: 'How does the chapter connect difficult conditions, people’s responses, and later consequences?', matchingPairs: [
-      { left: 'Because of many economic and social problems...', right: 'introduces a cause before describing a response' },
-      { left: 'because they believed these leaders would save them', right: 'gives the reason for following the leaders and reports an expected future from a past viewpoint' },
-      { left: 'This disaster caused deep sorrow and fear...', right: 'shows the emotional result produced by an event' },
-      { left: 'Thus, they easily defeated the Seljuks.', right: 'marks a result that follows from the tactic just described' },
-    ], correctAnswer: {
-      'Because of many economic and social problems...': 'introduces a cause before describing a response',
-      'because they believed these leaders would save them': 'gives the reason for following the leaders and reports an expected future from a past viewpoint',
-      'This disaster caused deep sorrow and fear...': 'shows the emotional result produced by an event',
-      'Thus, they easily defeated the Seljuks.': 'marks a result that follows from the tactic just described',
-    }, explanation: 'Chapter 5 repeatedly links causes with responses and results. It also reports what people believed would happen from their position in the past.', feedback: { correct: 'Correct. You identified four different ways the text builds cause, reason, expectation, and result.', incorrect: 'Ask whether each expression introduces a cause, explains a reason, reports an expectation, or signals a result.' },
+    id: 'yunus-b1-language-5-cause-response',
+    type: 'multiple-choice',
+    title: 'What Does “Would” Show?',
+    instructions: 'Read the part of the sentence from Chapter 5. Then choose the best answer.',
+    question: '“… they believed these leaders would save them.” What does “would save” tell us?',
+    options: [
+      'The leaders really saved the Turkmen in the end.',
+      'The Turkmen used to be saved by the leaders again and again.',
+      'At that time, the Turkmen expected to be saved in the future.',
+      'The Turkmen politely asked the leaders to save them.',
+    ],
+    correctAnswer: 2,
+    explanation: '“Would” is the past form of “will”. After a past verb like “believed”, it shows a future that people expected at that time: they thought, “These leaders will save us.” The sentence does not say that the leaders really saved them. In fact, the chapter says the Seljuk forces put an end to the rebellion.',
+    feedback: {
+      correct: 'Correct. “Believed … would” reports what people expected, seen from that time in the past.',
+      incorrect: 'Read the first paragraph of Chapter 5 again. Did the rebellion succeed in the end? So is “would save” a fact or an expectation?',
+    },
   },
   {
-    id: 'yunus-b1-language-5-past-viewpoint', type: 'multiple-choice', title: 'Reporting a Future Seen from the Past', instructions: 'Choose the sentence that best keeps the viewpoint used in the chapter.', question: 'Which sentence naturally reports what a group believed at that earlier time?', options: [
-      'They followed the leaders because they believed the leaders would save them.',
-      'They followed the leaders because they believe the leaders will save them yesterday.',
-      'They followed the leaders because the leaders save them before they believed it.',
-    ], correctAnswer: 0, explanation: 'The chapter uses “believed ... would save” to report an expectation that was still in the future from a past point of view.', feedback: { correct: 'Good. The sentence keeps both the past viewpoint and the later expected action.', incorrect: 'Look for a past reporting verb followed by “would” for something expected to happen later from that past viewpoint.' },
+    id: 'yunus-b1-language-5-past-viewpoint',
+    type: 'word-bank',
+    title: 'Linking Events in a Chain',
+    instructions: 'Complete the lines from Chapter 5 with words from the bank. Two words are not needed.',
+    question: 'Which words show a surprising change, a result and a consequence in the second paragraph?',
+    fillBlanksText: '[blank], this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster [blank] deep sorrow and fear among the Seljuk people. … The Mongols used the classic false retreat and circling tactic. [blank], they easily defeated the Seljuks.',
+    wordBank: ['caused', 'However', 'Thus', 'made', 'Because'],
+    correctAnswer: ['However', 'caused', 'Thus'],
+    explanation: '“However” marks an unexpected turn: the Seljuks had just ended the rebellion, but this same situation gave the Mongols courage. “Cause + noun” shows what an event produced (“caused deep sorrow and fear”); we do not say “made sorrow”. “Thus” introduces a result of what was just described: the tactic worked, so they won easily. “Because” cannot stand alone with a comma before a sentence.',
+    feedback: {
+      correct: 'Well done. You linked the turn, the emotional result and the military result.',
+      incorrect: 'Read the second paragraph of Chapter 5 again. Which blank starts a surprising new development, and which one follows from the tactic?',
+    },
   },
   {
-    id: 'yunus-b1-language-5-contrast-result', type: 'multiple-choice', title: 'Connecting Contrast and Consequence', instructions: 'Choose the version that creates the clearest logical movement between the ideas.', question: 'Which short passage best moves from one outcome to an unexpected new development and then to its consequence?', options: [
-      'The revolt was suppressed with difficulty. However, this gave another power courage to attack. The attack caused fear, and later a successful tactic led to defeat.',
-      'The revolt was suppressed with difficulty because however another power attack fear tactic.',
-      'The revolt ended, so there was no contrast, no further consequence, and no need to connect the ideas.',
-    ], correctAnswer: 0, explanation: '“However” marks a change in direction, while expressions such as “caused...” and “thus...” show consequences. Together they help a B1 explanation develop across several sentences.', feedback: { correct: 'Correct. The ideas are connected through contrast first and consequence afterwards.', incorrect: 'Choose the passage that uses a contrast marker for the new development and clear cause-result language for what follows.' },
+    id: 'yunus-b1-language-5-contrast-result',
+    type: 'error-correction',
+    title: 'Because or Because Of?',
+    instructions: 'Each sentence from Chapter 5 has one mistake. Tap the wrong word or phrase, then choose the correction.',
+    question: 'Which linking form needs a noun, and which needs a full clause?',
+    errorItems: [
+      {
+        sentence: 'Because many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state.',
+        error: 'Because',
+        options: ['Although', 'Because of', 'Since'],
+        answer: 1,
+      },
+      {
+        sentence: 'They followed spiritual leaders called \'Baba\', because of they believed these leaders would save them.',
+        error: 'because of',
+        options: ['because', 'due to', 'so'],
+        answer: 0,
+      },
+      {
+        sentence: 'After that, the Mongols destroyed and raided Sivas, Kayseri, and Erzincan, left not a single stone standing.',
+        error: 'left',
+        options: ['to leave', 'leaving', 'leaves'],
+        answer: 1,
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“Because of” is followed by a noun phrase (“because of many economic and social problems”). “Because” is followed by a clause with a subject and a verb (“because they believed …”). After a comma, an -ing clause can add the result of the main action: “…, leaving not a single stone standing.”',
+    feedback: {
+      correct: 'Well done. You chose “because of” before a noun, “because” before a clause, and an -ing form for the result.',
+      incorrect: 'Look at what comes after each linking word: a noun phrase or a subject + verb? Then check the sentences in Chapter 5.',
+    },
   },
   {
     id: 'yunus-b1-language-5-production', type: 'reflection', title: 'Explain a Chain of Pressure, Belief, and Result', instructions: 'Write or say five to six connected B1 sentences about a real or imagined social situation. Do not retell Chapter 5.', question: 'Can you explain a difficult condition, describe how people respond, report what they believe will happen, introduce an unexpected development, and finish with a clear result?', correctAnswer: null, explanation: 'A strong response should read as one connected explanation. Useful language from the chapter includes “because of...”, “were looking for...”, “started...”, “because they believed... would...”, “however”, “caused...”, “thus”, and “after that”.', feedback: { correct: 'Keep the relationships explicit so each sentence develops the previous one.', incorrect: '' }, discussionPrompts: [
@@ -125,31 +180,101 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
 /** Chapter 6 English Language Focus, derived only from the locked Chapter 6 story text. */
 export const yunusB1LanguageFocusChapter6: Exercise[] = [
   {
-    id: 'yunus-b1-language-6-focus-and-effect', type: 'matching', title: 'Who or What Is Put in Focus?', instructions: 'Match each story pattern with what it helps the writer foreground. Focus on how the sentence is built, not on recalling the event.', question: 'How does Chapter 6 shift attention from the people who act to the people, places, and institutions affected by events?', matchingPairs: [
-      { left: 'The men were killed by the sword.', right: 'puts the affected people in focus rather than naming the doer' },
-      { left: 'The women and children were taken captive and forced to go...', right: 'links two things done to the same affected group' },
-      { left: 'an agreement was made with the Mongols', right: 'focuses on the agreement and its result rather than who negotiated it' },
-      { left: 'the lands of Anatolia were directly attached to the Ilkhanate Empire', right: 'presents a political change as something imposed on a place' },
-    ], correctAnswer: {
-      'The men were killed by the sword.': 'puts the affected people in focus rather than naming the doer',
-      'The women and children were taken captive and forced to go...': 'links two things done to the same affected group',
-      'an agreement was made with the Mongols': 'focuses on the agreement and its result rather than who negotiated it',
-      'the lands of Anatolia were directly attached to the Ilkhanate Empire': 'presents a political change as something imposed on a place',
-    }, explanation: 'Chapter 6 often places affected people, agreements, income, and territory at the beginning of the sentence. This helps the text describe what happened to them, not only who caused it.', feedback: { correct: 'Correct. You identified how sentence focus changes when the affected person or thing becomes the subject.', incorrect: 'Ask whether the sentence is mainly interested in the doer or in the person, thing, or place affected by the action.' },
+    id: 'yunus-b1-language-6-focus-and-effect',
+    type: 'drag-drop',
+    title: 'Who Is the Subject?',
+    instructions: 'Read each sentence from Chapter 6. Is the subject the one who acts, or the person or thing that the action happens to? Put it in the right group.',
+    question: 'When does the chapter use the passive, and what does it put in focus?',
+    dragDropGroups: [
+      {
+        group: 'Active: the subject acts',
+        items: [
+          'They caused a lot of destruction, sadness, and misery everywhere they went.',
+          'These events created an atmosphere of panic in Anatolia …',
+          'After 1277, the Mongols began to administer Anatolia …',
+        ],
+      },
+      {
+        group: 'Passive: the action happens to the subject',
+        items: [
+          'The men were killed by the sword.',
+          'The women and children were taken captive …',
+          '… in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire …',
+        ],
+      },
+    ],
+    correctAnswer: {
+      'Active: the subject acts': [
+        'They caused a lot of destruction, sadness, and misery everywhere they went.',
+        'These events created an atmosphere of panic in Anatolia …',
+        'After 1277, the Mongols began to administer Anatolia …',
+      ],
+      'Passive: the action happens to the subject': [
+        'The men were killed by the sword.',
+        'The women and children were taken captive …',
+        '… in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire …',
+      ],
+    },
+    explanation: 'The passive is “was/were + past participle”. It puts the people or places that suffered in first position: the men, the women and children, the lands of Anatolia. The doer is often not named, because the focus is on what happened to the victims. Note: “by the sword” names the weapon, not the doer.',
+    feedback: {
+      correct: 'Correct. You separated the sentences about the doers from the sentences about those affected.',
+      incorrect: 'Look for “was/were + past participle” (killed, taken, attached). In those sentences the subject does not act; something happens to it.',
+    },
   },
   {
-    id: 'yunus-b1-language-6-change-over-time', type: 'multiple-choice', title: 'Building Change Over Time', instructions: 'Choose the passage that most naturally shows a gradual change rather than a list of disconnected facts.', question: 'Which short passage best uses the chapter’s language of developing dependence and control?', options: [
-      'An agreement was made, but in time the weaker side became dependent. A large part of its income began to be sent away, and later outside officials began to administer the region.',
-      'An agreement was made. Dependence income officials region yesterday tomorrow.',
-      'An agreement was made, so nothing changed afterwards and no later development needs to be connected.',
-    ], correctAnswer: 0, explanation: 'Expressions such as “in time”, “became dependent”, “began to be sent”, “after 1277”, and “began to administer” let the writer show a process developing across time.', feedback: { correct: 'Correct. The passage presents change as a connected process with clear stages.', incorrect: 'Look for a passage that marks gradual change and later stages with time expressions and verbs such as “became” and “began”.' },
+    id: 'yunus-b1-language-6-change-over-time',
+    type: 'choose-form',
+    title: 'Step by Step to Dependence',
+    instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 6.',
+    question: 'Which forms show a change of state, a comparison and a process that started?',
+    formChoices: [
+      {
+        sentence: 'Finally, an agreement was made with the Mongols, but in time the Seljuks [choice] dependent on them.',
+        options: ['become', 'have become', 'became'],
+        answer: 2,
+      },
+      {
+        sentence: 'The Seljuk sultans acted [choice] government officials for the Mongols.',
+        options: ['almost like', 'most like', 'almost alike'],
+        answer: 0,
+      },
+      {
+        sentence: 'A significant part of state income began [choice] to the Mongols every year.',
+        options: ['to send', 'to be sent', 'sending'],
+        answer: 1,
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“In time … became + adjective” shows a slow change of state in the past. “Almost like + noun” compares: the sultans were not really Mongol officials, but they behaved nearly as if they were. The income did not send anything; someone sent it, so the passive infinitive is needed: “began to be sent”.',
+    feedback: {
+      correct: 'Correct. You showed the change of state, the comparison and the passive process.',
+      incorrect: 'Read the second paragraph of Chapter 6 again. Did the income send something, or was it sent? Is the chapter saying the sultans were officials, or nearly like them?',
+    },
   },
   {
-    id: 'yunus-b1-language-6-comparison-result', type: 'multiple-choice', title: 'Showing Degree, Comparison, and Result', instructions: 'Choose the version that best preserves the relationships used in the chapter.', question: 'Which sentence set most clearly moves from a comparison to a worsening condition and then to its effect?', options: [
-      'The rulers acted almost like officials for another power. However, the tax kept increasing, and this made both the state and the people poorer.',
-      'The rulers almost officials however tax poorer because like continuously.',
-      'The rulers acted independently, and the increasing tax made everyone richer.',
-    ], correctAnswer: 0, explanation: '“Almost like” expresses an approximate comparison. “However” introduces a worsening development, and “made ... poorer” expresses the effect of that development on two groups.', feedback: { correct: 'Correct. The relationships of comparison, contrast, and result are all clear.', incorrect: 'Find the version with an approximate comparison, a contrast marker, and a clear result with “made + object + adjective”.' },
+    id: 'yunus-b1-language-6-comparison-result',
+    type: 'transformation',
+    title: 'Keep the Meaning, Change the Focus',
+    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 6.',
+    question: 'Can you say the same result or the same action with a different structure?',
+    transformItems: [
+      {
+        source: '… this tax increased continuously and this made both the state and the people poorer.',
+        frame: 'Because this tax increased continuously, both the state and the people [blank].',
+        answers: ['became poorer', 'got poorer', 'grew poorer', 'were made poorer', 'became poor', 'got poor'],
+      },
+      {
+        source: 'After 1277, the Mongols began to administer Anatolia through the commanders and governors that they sent.',
+        frame: 'After 1277, Anatolia [blank] by the Mongols through the commanders and governors that they sent.',
+        answers: ['began to be administered', 'started to be administered', 'was administered', 'began being administered', 'was governed', 'began to be governed'],
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“Make + object + comparative adjective” (made the people poorer) shows a result. With the affected people as the subject, the same result is “the people became / got poorer”. In the passive, the object of the active sentence (Anatolia) becomes the subject, and the doer can follow with “by”: “Anatolia began to be administered by the Mongols.”',
+    feedback: {
+      correct: 'Well done. You kept the result and changed the focus of the sentence.',
+      incorrect: 'Ask who or what was affected in each sentence from Chapter 6. Put that person or place first and use “became + adjective” or “(began to) be + past participle”.',
+    },
   },
   {
     id: 'yunus-b1-language-6-production', type: 'reflection', title: 'Describe a Process of Losing Control', instructions: 'Write or say five to six connected B1 sentences about a real, historical, or imagined situation in which a person, group, or organisation gradually loses control. Do not retell Chapter 6.', question: 'Can you keep the affected side in focus, show change over time, compare its new role with an earlier one, and finish with a clear consequence?', correctAnswer: null, explanation: 'A strong response should develop as one short process. Useful language from the chapter includes “was/were + past participle”, “in time”, “became...”, “almost like...”, “began to be...”, “however”, “made ... + adjective”, “through...”, and “was/were directly attached to...”.', feedback: { correct: 'Keep the stages connected so the reader can see who is affected, how the situation changes, and what the final consequence is.', incorrect: '' }, discussionPrompts: [
@@ -165,38 +290,78 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
 /** Chapter 7 English Language Focus, derived only from the locked Chapter 7 story text. */
 export const yunusB1LanguageFocusChapter7: Exercise[] = [
   {
-    id: 'yunus-b1-language-7-context-action', type: 'matching', title: 'Context and Action at the Same Time', instructions: 'Match each story pattern with the relationship it helps express. Focus on the language, not on recalling story facts.', question: 'How does Chapter 7 connect historical circumstances with actions happening inside them?', matchingPairs: [
-      { left: 'During the same period', right: 'places another event or situation in the same time frame' },
-      { left: 'under Mongol pressure', right: 'adds a circumstance that helps explain movement or action' },
-      { left: 'They were spreading... and establishing...', right: 'presents two ongoing, parallel activities in the background' },
-      { left: 'So in such an environment', right: 'moves from the earlier situation to a response that developed within it' },
-    ], correctAnswer: {
-      'During the same period': 'places another event or situation in the same time frame',
-      'under Mongol pressure': 'adds a circumstance that helps explain movement or action',
-      'They were spreading... and establishing...': 'presents two ongoing, parallel activities in the background',
-      'So in such an environment': 'moves from the earlier situation to a response that developed within it',
-    }, explanation: 'The chapter combines time, pressure, ongoing activity, and a result-like transition. This lets the writer explain actions as part of a larger situation instead of listing events separately.', feedback: { correct: 'Correct. You distinguished time, circumstance, ongoing background, and transition to a response.', incorrect: 'Ask whether each expression mainly gives the time, the pressure around an action, an ongoing background activity, or a transition from context to response.' },
+    id: 'yunus-b1-language-7-context-action',
+    type: 'multiple-choice',
+    title: 'A Foundation and an Inspiration',
+    instructions: 'Read the last two sentences of Chapter 7. Then choose the best answer.',
+    question: '“Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet\'s Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.” How are the two sources different?',
+    options: [
+      'The earlier Sûfîs are the foundation, and the Qur’an and the Sunnah are an extra inspiration.',
+      'Both sentences say exactly the same thing in different words.',
+      'The Qur’an and the Sunnah are the foundation, and the earlier Sûfîs are an extra inspiration.',
+      'The second sentence shows that Yunus disagreed with the earlier Sûfîs.',
+    ],
+    correctAnswer: 2,
+    explanation: '“Comes from” names the origin or foundation of something. “Was also inspired by” adds a second, additional influence: ideas and experiences that encouraged him. The word “also” shows that this influence is added to the foundation, not placed above it.',
+    feedback: {
+      correct: 'Correct. “Comes from” gives the foundation, and “was also inspired by” adds another influence.',
+      incorrect: 'Look at the verbs: “comes from” and “was also inspired by”. Which one names the origin, and which one adds something with “also”?',
+    },
   },
   {
-    id: 'yunus-b1-language-7-influence-response', type: 'multiple-choice', title: 'Influence and Response', instructions: 'Choose the passage that most naturally connects influence with a response to other people.', question: 'Which short passage best uses the chapter’s patterns to show influence, response, and a means of reaching people?', options: [
-      'The teacher was influential among young people, so she tried to respond to their efforts to understand difficult changes. Conversation became her most influential tool.',
-      'The teacher influential young people respond efforts changes tool because among.',
-      'The teacher was influential, so she avoided responding to anyone and had no way of communicating with them.',
-    ], correctAnswer: 0, explanation: 'Chapter 7 uses patterns such as “influential among...”, “tried to respond to people’s efforts to make sense of...”, and “his most influential tool” to connect a person’s role with the needs of others and the means used to reach them.', feedback: { correct: 'Correct. The passage connects influence, response to a need, and an effective tool.', incorrect: 'Look for a passage that links being influential among a group with responding to their efforts and using a clear tool or means.' },
+    id: 'yunus-b1-language-7-influence-response',
+    type: 'error-correction',
+    title: 'Find and Fix the Mistake',
+    instructions: 'Each sentence from Chapter 7 has one mistake. Tap the wrong word or phrase, then choose the correction.',
+    question: 'Can you correct a parallel -ing form, a preposition and a verb pattern?',
+    errorItems: [
+      {
+        sentence: 'They were spreading a simple understanding of Islam and established popular Sûfîsm.',
+        error: 'established',
+        options: ['establish', 'establishing', 'to establish'],
+        answer: 1,
+      },
+      {
+        sentence: 'These dervishes were influential between nomads.',
+        error: 'between',
+        options: ['among', 'on', 'at'],
+        answer: 0,
+      },
+      {
+        sentence: 'As a Sûfî, he helped people making sense of life during those hard days.',
+        error: 'making',
+        options: ['made', 'make', 'makes'],
+        answer: 1,
+      },
+    ],
+    correctAnswer: null,
+    explanation: 'In “were spreading … and establishing …”, both verbs share “were”, so both need the -ing form: two activities going on at the same time. We are influential “among” a group of people. “Help + person + base verb” shows what someone makes possible for others: “helped people make sense of life”.',
+    feedback: {
+      correct: 'Well done. You kept the parallel -ing forms, the preposition and the verb pattern correct.',
+      incorrect: 'Compare each sentence with Chapter 7: the end of the first paragraph and the second paragraph.',
+    },
   },
   {
-    id: 'yunus-b1-language-7-source-inspiration', type: 'multiple-choice', title: 'Source and Inspiration', instructions: 'Choose the version that most clearly distinguishes a foundation from an additional influence.', question: 'Which sentence best reflects the difference between “comes from” and “was inspired by” in the chapter?', options: [
-      'Her basic approach comes from long experience, and she was also inspired by the ideas and examples of earlier teachers.',
-      'Her approach inspired comes earlier by from experience teachers ideas.',
-      'Her approach has no source, but it comes only from people who had no influence on her.',
-    ], correctAnswer: 0, explanation: '“Comes from” identifies a foundation or source. “Was inspired by” adds another influence. Using both lets a writer describe more than one layer behind a person’s ideas or practice.', feedback: { correct: 'Correct. The sentence separates a foundation from an additional source of inspiration.', incorrect: 'Find the sentence that first names where an approach comes from and then adds another influence with “was inspired by”.' },
+    id: 'yunus-b1-language-7-source-inspiration',
+    type: 'word-bank',
+    title: 'Time, Pressure and Response',
+    instructions: 'Complete the lines from Chapter 7 with words from the bank. Three words are not needed.',
+    question: 'Which words place the events in time, name the pressure, and lead to Yunus’s response?',
+    fillBlanksText: 'Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. … Poetry was his [blank] influential tool.',
+    wordBank: ['under', 'During', 'most', 'such', 'While', 'so', 'more'],
+    correctAnswer: ['During', 'under', 'such', 'most'],
+    explanation: '“During + noun” places an event inside a period; “while” needs a clause (while + subject + verb). “Under … pressure” shows the force behind an action. “Such an environment” points back to everything described before: chaos, pressure and new teachers. “His most influential tool” is a superlative: poetry was the strongest of his ways of reaching people.',
+    feedback: {
+      correct: 'Well done. You placed the events in time and linked the situation with Yunus’s response.',
+      incorrect: 'Check the first two paragraphs of Chapter 7. Remember: “during” comes before a noun, and a superlative after “his” needs “most”.',
+    },
   },
   {
-    id: 'yunus-b1-language-7-production', type: 'reflection', title: 'Build a Response from Its Context', instructions: 'Write or say five to six connected B1 sentences about a real or imagined person who appears in a difficult situation and responds to a need in the community. Do not retell Chapter 7.', question: 'Can you establish the situation, show ongoing activity, explain the person’s response and tool, and identify the sources of their ideas?', correctAnswer: null, explanation: 'Useful language from the chapter includes “during the same period”, “under ... pressure”, “were ...-ing and ...-ing”, “so in such an environment”, “tried to respond to...”, “efforts to make sense of...”, “most influential tool”, “comes from...”, and “was inspired by...”.', feedback: { correct: 'Keep the sentences connected so the context leads naturally to the response, the tool, and the sources of influence.', incorrect: '' }, discussionPrompts: [
+    id: 'yunus-b1-language-7-production', type: 'reflection', title: 'Build a Response from Its Context', instructions: 'Write or say five to six connected B1 sentences about a real or imagined person who appears in a difficult situation and responds to a need in the community. Do not retell Chapter 7.', question: 'Can you establish the situation, show ongoing activity, explain the person’s response and tool, and identify the sources of their ideas?', correctAnswer: null, explanation: 'Useful language from the chapter includes “during the same period”, “under ... pressure”, “were ...-ing and ...-ing”, “so in such an environment”, “helped people make sense of...”, “influential among...”, “most influential tool”, “comes from...”, and “was inspired by...”.', feedback: { correct: 'Keep the sentences connected so the context leads naturally to the response, the tool, and the sources of influence.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Introduce a difficult situation or pressure.', mode: 'Individual' },
       { question: 'Sentence 2 — Describe two activities that were happening during the same period.', mode: 'Individual' },
       { question: 'Sentence 3 — Use “so” or a similar connector to move from the situation to the person’s response.', mode: 'Pair' },
-      { question: 'Sentence 4 — Explain what the person tried to respond to and name an influential tool or means.', mode: 'Pair' },
+      { question: 'Sentence 4 — Explain how the person helped people (“helped people + verb”) and name their most influential tool or means.', mode: 'Pair' },
       { question: 'Sentences 5–6 — State what the person’s approach comes from and add another source of inspiration.', mode: 'Pair' },
     ],
   },
@@ -205,31 +370,69 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
 /** Chapter 8 English Language Focus, derived only from the locked Chapter 8 story text. */
 export const yunusB1LanguageFocusChapter8: Exercise[] = [
   {
-    id: 'yunus-b1-language-8-definition-viewpoint', type: 'matching', title: 'Define, Attribute, Connect', instructions: 'Match each pattern from the chapter with the job it performs in a text. Focus on meaning and function, not on recalling the chapter’s ideas.', question: 'How does Chapter 8 define an idea, attribute a viewpoint, and connect one idea to another?', matchingPairs: [
-      { left: 'the idea of ... which means ...', right: 'defines or explains a key concept' },
-      { left: 'According to ...', right: 'shows whose viewpoint or interpretation is being reported' },
-      { left: 'the source of all things. So ...', right: 'moves from a stated basis to a conclusion or consequence' },
-      { left: '..., which was a key idea for ...', right: 'adds extra information about an already identified idea' },
-    ], correctAnswer: {
-      'the idea of ... which means ...': 'defines or explains a key concept',
-      'According to ...': 'shows whose viewpoint or interpretation is being reported',
-      'the source of all things. So ...': 'moves from a stated basis to a conclusion or consequence',
-      '..., which was a key idea for ...': 'adds extra information about an already identified idea',
-    }, explanation: 'The chapter does more than state beliefs. It defines terms, marks a viewpoint, draws a consequence with “so”, and adds explanatory information with a relative clause.', feedback: { correct: 'Correct. You identified four different discourse functions.', incorrect: 'Ask whether the expression defines, attributes a viewpoint, draws a consequence, or adds extra information.' },
+    id: 'yunus-b1-language-8-definition-viewpoint',
+    type: 'matching',
+    title: 'What Do These Phrases Mean?',
+    instructions: 'Match each phrase from Chapter 8 with its meaning in plain English.',
+    question: 'What do these phrases from the chapter and the poem mean?',
+    matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
+    matchingPairs: [
+      { left: 'a vivid love', right: 'a strong and lively feeling' },
+      { left: 'the source of all things', right: 'where everything comes from' },
+      { left: 'a key idea for Yunus Emre', right: 'a central belief in his thinking' },
+      { left: 'an enemy to his own soul', right: 'someone who harms himself' },
+    ],
+    correctAnswer: {
+      'a vivid love': 'a strong and lively feeling',
+      'the source of all things': 'where everything comes from',
+      'a key idea for Yunus Emre': 'a central belief in his thinking',
+      'an enemy to his own soul': 'someone who harms himself',
+    },
+    explanation: '“Vivid” describes something strong and full of life. A “source” is where something begins or comes from. A “key” idea is the most important one, the idea that opens the others. In the poem, a person who is “an enemy to his own soul” is harming himself, not someone else.',
+    feedback: {
+      correct: 'Good. You understood the key phrases of the chapter and the poem.',
+      incorrect: 'Read Chapter 8 and the poem again. Ask which phrase is about a feeling, which is about an origin, which is about importance, and which is about harm.',
+    },
   },
   {
-    id: 'yunus-b1-language-8-one-true-focus', type: 'multiple-choice', title: 'Focus on One True Choice', instructions: 'Choose the sentence that most naturally uses the chapter’s pattern for singling out one true or central option.', question: 'Which sentence best mirrors “there is only one true ..., and that is ...” without copying the story content?', options: [
-      'For this team, there is only one final goal, and that is to finish the project safely.',
-      'For this team, there one only final goal and that safely project finish.',
-      'For this team, there are many final goals, and that is the only one although none is central.',
-    ], correctAnswer: 0, explanation: 'The pattern “there is only one ..., and that is ...” narrows several possibilities to one central choice and then identifies it clearly.', feedback: { correct: 'Correct. The sentence first limits the possibilities and then identifies the single central choice.', incorrect: 'Look for a sentence that uses “there is only one ...” and then names that one choice with “and that is ...”.' },
+    id: 'yunus-b1-language-8-one-true-focus',
+    type: 'word-bank',
+    title: 'Define, Report, Conclude',
+    instructions: 'Complete the lines from Chapter 8 with words from the bank. Three words are not needed.',
+    question: 'Which words define an idea, show whose view it is, and draw a conclusion?',
+    fillBlanksText: 'One of the most important basic spiritual principles in his works is the idea of Tawhid, [blank] means the Oneness of Allah. [blank] Yunus Emre, Allah, the Creator, is the source of all things. [blank] everything is connected to Him.',
+    wordBank: ['So', 'which', 'According to', 'who', 'Due to', 'But'],
+    correctAnswer: ['which', 'According to', 'So'],
+    explanation: '“…, which means …” adds a definition to a word or idea; “who” is only for people. “According to + person” shows whose view the writer is reporting; “due to” gives a reason, not a viewpoint. “So” draws a conclusion from the idea before it: if Allah is the source of all things, then everything is connected to Him. “But” would show a contrast that is not there.',
+    feedback: {
+      correct: 'Well done. You defined the idea, reported the view and drew the conclusion.',
+      incorrect: 'Read the second paragraph of Chapter 8 again. Which blank gives a definition, which names whose view it is, and which draws a conclusion?',
+    },
   },
   {
-    id: 'yunus-b1-language-8-whoever-condition', type: 'multiple-choice', title: 'Whoever: A General Human Case', instructions: 'Choose the sentence in which “whoever” introduces a general case about any person who does something.', question: 'Which sentence uses “whoever” in the same generalising way as the poem?', options: [
-      'Whoever ignores the warning must accept the consequences of that choice.',
-      'Whoever the warning because consequences choice the.',
-      'Whoever refers to one named person who has already been identified in the previous sentence.',
-    ], correctAnswer: 0, explanation: 'In the poem, “whoever” does not name one specific person. It means any person who meets the condition described after it.', feedback: { correct: 'Correct. “Whoever” introduces a general human case rather than a named individual.', incorrect: 'Choose the sentence where the meaning is “any person who...”.' },
+    id: 'yunus-b1-language-8-whoever-condition',
+    type: 'transformation',
+    title: 'Only One: Say It Another Way',
+    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 8.',
+    question: 'How else can you say that there is only one true reality?',
+    transformItems: [
+      {
+        source: 'The Creator is the true and only reality.',
+        frame: 'Nothing is truly real [blank] the Creator.',
+        answers: ['except', 'but', 'other than', 'apart from', 'except for', 'besides'],
+      },
+      {
+        source: '… there is only one true existence in the universe, and that is Allah.',
+        frame: 'Allah is [blank] true existence in the universe.',
+        answers: ['the only', 'the one and only', 'the one', 'the single', 'the one single'],
+      },
+    ],
+    correctAnswer: null,
+    explanation: '“There is only one …, and that is …” first limits the possibilities to one, then names it. The same idea can be said with “the only …” (Allah is the only true existence) or negatively with “nothing … except / other than …”. All these patterns single out one thing and leave out everything else.',
+    feedback: {
+      correct: 'Well done. You kept the “only one” meaning in a new structure.',
+      incorrect: 'Look at the last sentence before the poem in Chapter 8. It limits the choice to one and then names it. In the first frame, which word means “and nothing else”?',
+    },
   },
   {
     id: 'yunus-b1-language-8-production', type: 'reflection', title: 'Explain an Idea from Definition to Conclusion', instructions: 'Write or say five to six connected B1 sentences about a principle, belief, or important idea from school, community life, science, or everyday experience. Do not retell Chapter 8.', question: 'Can you define the idea, attribute a viewpoint, add explanatory information, draw a consequence, and end with a general statement about people?', correctAnswer: null, explanation: 'Useful language from the chapter includes “the idea of ... which means ...”, “according to ...”, “..., which is/was ...”, “so ...”, “there is only one ..., and that is ...”, and “whoever ...”.', feedback: { correct: 'Keep the paragraph connected: define the idea first, develop it, then move to a consequence or general statement.', incorrect: '' }, discussionPrompts: [

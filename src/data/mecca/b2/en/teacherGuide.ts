@@ -5,1199 +5,428 @@ const TYMM_VALUES = 'https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cerceve
 
 export const meccaB2TeacherGuide: TeacherGuideSection[] = [
   {
-    "chapter": "Chapter 1: A City and an Age",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how Byzantine–Sassanid rivalry and Arabian tribal division create the regional frame for the rise of Islam.",
-      "Distinguish neighbouring imperial context from direct political control over Mecca.",
-      "Use cause, contrast and macro-to-local framing to write a qualified historical introduction."
-    ],
-    "pedagogy": "Build the chapter as a two-scale map. Learners first locate the two exhausted empires and the politically fragmented Arabian Peninsula, then deliberately narrow the lens to Mecca. The teaching goal is not memorising dates but learning how a historian moves from regional context to a local case without inventing direct rule.",
-    "priorKnowledge": [
-      "Empire, tribe, political unity, century and basic cause/contrast language."
-    ],
-    "anticipatedMisconceptions": [
-      "The Byzantine and Sassanid empires are regional neighbours in this chapter, not rulers of Mecca.",
-      "The absence of Arabian political unity does not mean there were no organised tribes or local authorities."
-    ],
-    "grammarFocus": "Macro-context → local focus; because for cause; on the other hand for contrast; relative clauses for identifying empires and regions.",
-    "pronunciationFocus": "Chunk the long empire names separately, then practise contrastive stress in “two superpowers” versus “no political unity” and a deliberate pause before the move to Mecca.",
-    "beforeReading": [
-      "Show a simple region map and ask learners to identify what information belongs to empire-level context and what would belong to city-level context."
-    ],
-    "duringReading": [
-      "Mark the sentence showing that imperial rivalry exhausted both sides.",
-      "Underline the clause explaining why Arabia lacked political unity.",
-      "Box the sentence where the writer shifts from the broad region to Mecca and Jahiliyyah."
-    ],
-    "afterReading": [
-      "Write a three-sentence introduction that moves region → Arabia → Mecca without saying the empires ruled Mecca.",
-      "Complete the Quick Challenge and justify the answer with one exact phrase.",
-      "Use the Language Focus to refine one cause/contrast sentence rather than adding another fact."
-    ],
-    "lessonPlan": "1. 0–5 min: map the regional frame and define “superpower” and “political unity”. 2. 5–13 min: read/listen for the two empires and the condition of Arabia. 3. 13–20 min: build a two-column evidence map: imperial rivalry / Arabian fragmentation. 4. 20–27 min: identify the writer’s zoom from region to Mecca and complete the Quick Challenge. 5. 27–37 min: use Language Focus to connect cause and contrast accurately. 6. 37–46 min: draft and peer-check a qualified three-sentence historical introduction. 7. 46–50 min: exit ticket—one sentence explaining why regional context matters without claiming direct rule.",
-    "discussionPoints": [
-      "Why does the book begin outside Mecca before narrowing to Mecca?",
-      "What is the difference between being a neighbouring power and governing a place?",
-      "Which sentence provides the clearest bridge from regional history to the local story?"
-    ],
-    "interactiveTips": [
-      "Use the map only for spatial orientation; every historical claim still needs text evidence.",
-      "Ask learners to label each claim “regional” or “local” before discussing it.",
-      "Replay the transition sentence and have learners notice how the writer changes scale."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide three cards—Empires / Arabia / Mecca—and let learners place one quoted detail under each before writing.",
-      "fastFinishers": "Add a fourth sentence explaining why exhausted empires and fragmented tribes create context without claiming a single direct cause for Islam’s rise."
-    },
-    "formativeAssessment": [
-      "Separates regional context from local political control.",
-      "Uses one cause link and one contrast link accurately.",
-      "Keeps the final introduction proportionate to the evidence."
-    ],
-    "expectedResponses": [
-      "The chapter presents exhausted Byzantine–Sassanid rivalry and Arabian tribal division as the regional background before narrowing to Mecca and the Age of Ignorance."
-    ],
-    "transferTask": "Write a short introduction to another historical city that begins with regional context but clearly marks when the focus becomes local.",
-    "teacherReflection": "Did learners use context to frame Mecca, or did they turn neighbouring empires into unsupported direct causes or rulers?",
-    "assessmentTools": {
-      "rubric": [
-        "Scale distinction",
-        "Evidence accuracy",
-        "Cause/contrast control",
-        "Qualified historical framing"
-      ],
-      "exitTicket": [
-        "Write one regional fact and one local fact, then connect them without claiming direct rule."
-      ]
-    }
+    chapter: 'Chapter 1: A City and an Age', timing: '40 minutes',
+    objectives: ['Explain how the chapter moves from the Middle Ages and two superpowers to one city (Mecca) and one era (the Age of Ignorance).', 'Separate regional context (the Arabs were neighbours of the two empires) from direct control over Mecca, which the chapter does not claim.', 'Discover how reference words (these, the time) and a transition signal (After describing …) organise a zoom from region to city, and correct because / because of and relative clauses (which, that).', 'Write a qualified wide-to-local historical introduction.'],
+    pedagogy: 'Draw three nested boxes on the board (The Middle Ages → the region → one city). While listening, learners place each paragraph in a box, then argue which sentence moves the reader from one box to the next. Grammar is discovered from this structure: before Activity 1 you ask “Which sentence cannot come first, and which word tells you?”, and learners formulate the rule that reference words point back and so fix the order. The because / because of contrast comes from “because the Arabs lived in tribes”: learners notice that a subject and a verb follow “because” before you name the rule.',
+    priorKnowledge: ['Empire, tribe, century; because + clause; relative pronouns who / which / that at B1 level.'],
+    anticipatedMisconceptions: ['The Byzantine and Sassanid empires are neighbours of the Arabs in this chapter, not rulers of Mecca.', 'The lack of political unity is explained by tribal life; it does not mean that there was no organisation at all.', 'The chapter names the rise of Islam as a major development of the Middle Ages; it does not present the exhausted empires as its cause.'],
+    grammarFocus: 'Targets: organising a text from wide to narrow (reference words these / the time · transition signal After describing … · The city we are talking about is …) · because + clause vs because of + noun phrase · relative clauses without a repeated pronoun (which we now call Istanbul) and that / which for things (the pre-Islamic era … that covers …).\nNotice (Activity 1): learners order five chapter sentences. Before they check, ask: “Which sentence cannot come first, and which word tells you?” and “Which sentence tells the reader that the wide view is finished?” Pairs state the rule (these / the time point back, After describing … closes the frame) before you confirm it.\nBuild (Activity 2): correct “which we now call it Istanbul”, “because of the Arabs lived in tribes” and “the pre-Islamic era … who covers”. After each item ask what follows the word: a clause or a noun phrase, a person or a thing?\nLikely errors: *because of the Arabs lived · *which we now call it Istanbul · who for an era or a period.\nUse (Activity 3): a four-sentence introduction to a city learners know (for example Konya or Istanbul) that moves from wide context to local focus with one reference word, one transition signal and one because-clause, without claiming more control or causation than the evidence shows.',
+    pronunciationFocus: 'Chunk the long names: “the CHRIStian ROmano-byZANtine EMpire | with its CAPital city con-stan-ti-NO-ple”, “the PERsians | ruled by the zo-ro-AS-tri-an SAS-sa-nids”.\nPause after the transition frame: “AFter deSCRIBing the BROAD BACKground of the TIME, | take a CLOser LOOK …”.\nContrastive stress: “TWO SUperpowers” vs “NO poLItical UNity”.\nDates: “four seventy-six”, “fourteen fifty-three”, “six ten”, “the SEVenth CENtury”.\nWord focus: RIV-al-ry, SU-per-pow-ers, by-ZAN-tine, rev-e-LA-tion, CON-quest.',
+    beforeReading: ['Draw three nested boxes on the board: The Middle Ages / The region / One city. Pairs predict what kind of information the writer will put in each box and which box a book about Mecca should start with.'],
+    duringReading: ['First listening, books closed: which empires are named, and which city?', 'Label each paragraph W (wide), R (region) or L (local).', 'Underline the sentence that closes the wide frame (After describing …).', 'Circle every date and say what it marks (fall of the Roman Empire, conquest of Constantinople, beginning of the revelation).'],
+    afterReading: ['Complete the Quick Challenge and justify the answer with one phrase from the chapter.', 'Language Focus: order the five sentences using the reference words and the transition signal (Activity 1), correct the cause and relative clauses (Activity 2), then frame a historical introduction (Activity 3).', 'Write a four-sentence wide-to-local introduction to a city learners know.'],
+    lessonPlan: '0–5 Hook: three nested boxes on the board, pairs predict what goes in each; 5–12 Listen with books closed (Which empires? Which city?), then read along and label paragraphs W / R / L; 12–18 Pairs find the evidence that the empires were neighbours of the Arabs and the reason for the lack of political unity, whole-class check with quotes; 18–22 Quick Challenge; 22–32 Language Focus: Activity 1 as whole-class discovery (Which sentence cannot come first? Which one closes the wide view?), Activity 2 in pairs with a short board check of because vs because of; 32–38 Use (Activity 3): learners draft a wide-to-local introduction to Konya, Istanbul or their own town, a partner underlines the reference word and the transition signal; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the writer begin with the Middle Ages and two empires before naming Mecca?', 'What is the difference between being a neighbour of the Arabs and governing Mecca?', 'What reason does the chapter give for the lack of political unity, and what does it not claim about the rise of Islam?'],
+    interactiveTips: ['Use the Middle Ages hotspot to fix the time frame (476–1453) before the empire dates.', 'Open the Mecca hotspot only after learners have found the sentence that narrows the focus.', 'Replay the transition sentence and ask learners to show with their hands when the view becomes narrower.'],
+    differentiation: { strugglingLearners: 'Give three cards (Empires / Arabia / Mecca) with one quoted detail each to place, and the frame “In the 7th century, ____. At that time, ____ because ____. The city we are talking about is ____.”', fastFinishers: 'Write a five-sentence introduction with two reference words, one transition signal and one sentence saying what the context does not explain.' },
+    formativeAssessment: ['Keeps regional context separate from local control.', 'Explains how reference words and the transition signal fix the order.', 'Uses because + clause and relative clauses without a repeated pronoun.'],
+    expectedResponses: ['The chapter calls the rise of Islam a major development of the Middle Ages, names the Byzantine and Sassanid empires as exhausted rivals and neighbours of the Arabs, explains that tribal life meant no political unity, and then narrows to Mecca and the Age of Ignorance (from the 5th century to 610).'],
+    transferTask: 'Write a wide-to-local introduction to another city that clearly marks the moment the focus becomes local.',
+    teacherReflection: 'Did learners discover the ordering rule from the reference words themselves, and did they avoid turning neighbouring empires into rulers of Mecca?',
+    assessmentTools: { rubric: ['Scale distinction', 'Evidence accuracy', 'Reference and transition signals', 'Cause and relative-clause control'], exitTicket: ['Write one sentence with “because” and one with “because of” about why your town grew, then underline what follows each.'] },
+    extraResources: { links: [{ label: 'TYMM Foreign Language Skills', url: TYMM_FOREIGN }, { label: 'TYMM Erdem-Değer-Eylem', url: TYMM_VALUES }] },
   },
   {
-    "chapter": "Chapter 2: Jahiliyyah and Mecca",
-    "timing": "50 minutes",
-    "objectives": [
-      "Define Jahiliyyah from the chapter’s moral, spiritual and social criteria rather than as a lack of science.",
-      "Explain how siding with the powerful, injustice and disorder contribute to the chapter’s definition.",
-      "Use rejection, concession and contrast language to keep the definition historically precise."
-    ],
-    "pedagogy": "Teach the definition by testing and rejecting an oversimplification. Learners begin with the common gloss “ignorance,” then use the chapter to prove why lack of scientific knowledge is insufficient. Only after collecting moral, social and spiritual evidence do they formulate a B2 definition.",
-    "priorKnowledge": [
-      "Difference between dictionary gloss and contextual definition; basic concession language."
-    ],
-    "anticipatedMisconceptions": [
-      "Jahiliyyah does not mean Arabs lacked all knowledge, culture or skill.",
-      "The chapter’s broader moral warning should not be used to label whole modern peoples or cultures carelessly."
-    ],
-    "grammarFocus": "Definition by rejection: not the lack of…; because for explanation; although for concession; on the contrary for extending a claim carefully.",
-    "pronunciationFocus": "Practise Jahiliyyah and barbarism in meaningful phrases, with contrastive stress on “not the lack of science” and a pause before the chapter’s positive definition.",
-    "beforeReading": [
-      "Write two possible meanings of “ignorance” on the board—lack of knowledge / harmful way of thinking—and ask which one the text will support."
-    ],
-    "duringReading": [
-      "Underline the sentence that explicitly rejects lack of science as the definition.",
-      "Group evidence under spiritual, social and moral disorder.",
-      "Mark the sentence that extends Jahiliyyah beyond a closed period of the past."
-    ],
-    "afterReading": [
-      "Construct a two-part definition: what Jahiliyyah is not + what the chapter says it involves.",
-      "Complete the Quick Challenge and explain which evidence rules out the oversimplified option.",
-      "Use one concession sentence to preserve historical scope while acknowledging the chapter’s broader warning."
-    ],
-    "lessonPlan": "1. 0–5 min: definition test—what can “ignorance” mean? 2. 5–14 min: read/listen and locate the explicit rejected definition. 3. 14–22 min: sort evidence into spiritual / social / moral categories. 4. 22–28 min: Quick Challenge with evidence-based elimination. 5. 28–38 min: Language Focus on rejection, concession and contrast. 6. 38–46 min: write a precise B2 definition and compare it with the opening guess. 7. 46–50 min: exit ticket—one sentence beginning “Jahiliyyah here does not simply mean…”.",
-    "discussionPoints": [
-      "What exact sentence prevents us from defining Jahiliyyah as lack of science?",
-      "Why does the chapter include the oppressed and weak in its explanation?",
-      "How can a concept have a historical meaning and still be used as a moral warning without becoming a careless label?"
-    ],
-    "interactiveTips": [
-      "Keep the rejected definition visible throughout the lesson so learners can test every claim against it.",
-      "Use color coding for spiritual, social and moral evidence.",
-      "When a learner generalises, ask for the quantity or scope word that the chapter actually uses."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use the frame “It does not simply mean ____. In this chapter it includes ____ and ____.”",
-      "fastFinishers": "Write a four-sentence definition using concession and a final caution about scope."
-    },
-    "formativeAssessment": [
-      "Rejects the scientific-ignorance simplification with direct evidence.",
-      "Uses at least two evidence categories.",
-      "Keeps the broader warning qualified rather than universal."
-    ],
-    "expectedResponses": [
-      "The chapter defines Jahiliyyah as a condition of spiritual, moral and social disorder rather than a lack of scientific knowledge."
-    ],
-    "transferTask": "Define another historically loaded concept by stating what it does not mean, what evidence supports it and where its scope ends.",
-    "teacherReflection": "Did learners build the definition from the chapter, or simply replace one slogan with another?",
-    "assessmentTools": {
-      "rubric": [
-        "Definition accuracy",
-        "Evidence categories",
-        "Qualification",
-        "Scope control"
-      ],
-      "exitTicket": [
-        "Complete: “The chapter rejects ____. Instead, it links Jahiliyyah with ____ and ____.”"
-      ]
-    }
+    chapter: 'Chapter 2: Jahiliyyah and Mecca', timing: '40 + 40 minutes',
+    objectives: ['Define Jahiliyyah with the chapter’s own criteria: not a lack of science or knowledge, but not truly knowing Allah and lacking justice, order and peace.', 'Explain why the Prophet did not view Jahiliyyah only as a period of the past.', 'Discover how a careful definition is built in steps (rejecting a meaning, giving the real reason, conceding a limit, extending with On the contrary) and how as well as, In fact and in other words add, strengthen and restate.', 'Locate Mecca on the Arabian Peninsula and explain the word peninsula with the text’s own reason.'],
+    pedagogy: 'Lesson 1 builds a “definition staircase” on the board: what Jahiliyyah is not, why it has its name, what society looked like (people sided with the powerful, the oppressed lived in misery) and how the Prophet extended it beyond the past. Learners fill each step with a quoted phrase; the geography paragraph becomes a quick sketch map. Lesson 2 turns the staircase into language: learners discover that the signals themselves (is not …, because …, Although …, On the contrary) carry the steps, then test the add / strengthen / restate signals in the word bank.',
+    priorKnowledge: ['Although + clause; because; simple definitions (X is a Y that …).'],
+    anticipatedMisconceptions: ['Jahiliyyah does not mean a lack of science or knowledge; the chapter rejects this meaning explicitly.', '“On the contrary” does not deny the historical meaning; it rejects only the idea that Jahiliyyah belongs to the past.', 'The warning describes a way of behaving that could arise again; it must not be used to label whole modern peoples or cultures.'],
+    grammarFocus: 'Targets: defining by contrast (is not the lack of … · is called … because … · Although … essentially describes …, … · On the contrary, …) · adding, emphasising and restating (as well as, In fact, in other words).\nNotice (Activity 1): write “The meaning of "ignorance" is not the lack of science or the lack of knowledge.” and “On the contrary, he believed it could arise again at any moment and warned people against it.” on the board. Ask: “What does the writer throw away in the first sentence? What idea does ‘On the contrary’ throw away?” Learners then match the four parts with the writer’s moves and describe the pattern (reject → reason → concede → extend) before you name it.\nBuild (Activity 2): complete the lines with as well as / In fact / in other words; learners explain why On the contrary and for example do not fit.\nLikely errors: On the contrary for any contrast (without a denied idea before it) · *Although …, but … · in other words introducing a new idea instead of a restatement.\nUse (Activity 3): a five- to six-sentence definition of a term that is often misunderstood (for example bullying, fake news or fair play), with one “is not …” sentence, one because-reason, one Although-concession and one in other words.',
+    pronunciationFocus: 'Contrastive stress on the rejected meaning: “the MEANing of IGnorance is NOT the LACK of SCIence | or the LACK of KNOWledge”.\nPause after the concession: “ALthough the word jahiliyyah esSENtially deSCRIBES the pre-isLAMic PERiod of the ARabs, | the PROphet (as) did NOT VIEW it as a PERiod of the PAST”.\nSignals as separate chunks: “In FACT, |”, “in OTHer WORDS, |”, “On the CONtrary, |”.\nWord focus: BAR-bar-ism, op-PRESSED (-ed = /t/), CIV-i-lized (-ed = /d/), pe-NIN-su-la, an-i-mal-IS-tic, ag-GRES-sive.',
+    beforeReading: ['Write “ignorance” on the board. Pairs write a one-sentence definition. Keep two definitions visible and tell learners that the chapter will reject one common meaning.'],
+    duringReading: ['Lesson 1 listening: which meaning of “ignorance” does the chapter reject?', 'Build the definition staircase: not … / because … / what society looked like / not only the past.', 'Label the references to the Quran and the Prophet as sources, not the writer’s own words.', 'Sketch the peninsula with the three seas named in the text.'],
+    afterReading: ['Lesson 1: Quick Challenge and a bridge note: the chapter’s definition in one sentence starting “Jahiliyyah is not …”.', 'Lesson 2: Language Focus: match the four definition moves (Activity 1), complete the add / strengthen / restate lines (Activity 2), then define a misunderstood term (Activity 3).', 'Write a definition of a term from school or social life that rules out a misleading meaning first.'],
+    lessonPlan: 'Lesson 1 (40 min): 0–5 Hook: pairs define “ignorance” in one sentence, two definitions stay on the board; 5–14 Listen with books closed (Which meaning is rejected?), then read along; 14–24 Definition staircase in pairs: four steps, each with a quoted phrase, then a whole-class check of step 3 (who people sided with, who lived in misery); 24–30 Sketch map: learners draw the peninsula, label the three seas from the last paragraph and explain “peninsula” with the text’s own reason; 30–36 Quick Challenge; 36–40 Bridge note: “Jahiliyyah is not … . It is called … because …”; Lesson 2 (40 min): 0–5 Rebuild the staircase from memory on the board; 5–15 Language Focus Activity 1 as whole-class discovery (What does the writer throw away? What does On the contrary throw away?), then pairs match; 15–22 Activity 2 individually, pairs justify why the two extra expressions do not fit; 22–34 Use (Activity 3): each learner defines a misunderstood term (bullying, fake news, fair play) in five or six sentences with is not / because / Although / in other words; 34–38 Pairs swap texts and label each sentence reject / reason / concede / restate; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the writer start by saying what “ignorance” does not mean?', 'Which social details show that Jahiliyyah was about justice and order rather than knowledge?', 'What is the difference between Jahiliyyah as a historical period and Jahiliyyah as something that “could arise again at any moment”?'],
+    interactiveTips: ['Open the Jahiliyyah hotspot to check the definition after learners have built the staircase, not before.', 'Use the Peninsula hotspot with the sketch map: water on three sides (south, west and east).', 'Replay the Although … On the contrary sentences and ask learners what each signal changes.'],
+    differentiation: { strugglingLearners: 'Give the four staircase headings and the frame “Jahiliyyah is not ____. It is called the Age of Ignorance because ____. In other words, ____.”', fastFinishers: 'Write a seven-sentence definition that uses all four definition moves and one In fact sentence that strengthens a claim with evidence.' },
+    formativeAssessment: ['Rejects the “lack of knowledge” reading with evidence.', 'Explains the Prophet’s extension of the term with On the contrary.', 'Uses as well as / In fact / in other words for their real functions.'],
+    expectedResponses: ['Jahiliyyah is not a lack of science or knowledge; the period is called the Age of Ignorance because people did not truly know Allah and lacked justice, order and peace, and the Prophet believed it could arise again at any moment.'],
+    transferTask: 'Define a term that is often misunderstood by ruling out the misleading meaning before giving the precise one.',
+    teacherReflection: 'Did learners discover the reject → reason → concede → extend pattern themselves, and did they keep the moral warning from becoming a label for modern peoples?',
+    assessmentTools: { rubric: ['Definition from evidence', 'Definition moves', 'Add / strengthen / restate signals', 'Respectful scope'], exitTicket: ['Complete about a word from school life: “____ is not ____. On the contrary, ____. In other words, ____.”'] },
   },
   {
-    "chapter": "Chapter 3: The Holy City",
-    "timing": "50 minutes",
-    "objectives": [
-      "Connect Mecca’s sacred status, the Ka’ba, Qiblah, prophetic memory and the barren-valley description without collapsing different source types.",
-      "Distinguish direct statements, cited descriptions and cautious interpretation in the chapter.",
-      "Use cautious reporting and unreal-past condition language appropriately."
-    ],
-    "pedagogy": "Turn the chapter into a source-labeling exercise. Learners tag statements as direct narrative, quoted/cited source, or cautious author interpretation. The Ka’ba’s centrality then becomes a case study in how a text can propose an interpretation without presenting it as absolute certainty.",
-    "priorKnowledge": [
-      "Source attribution, quotation versus narration, and conditional meaning."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not say agriculture established Mecca; it describes a valley without crops.",
-      "“It can be said” signals interpretation, not an unquestionable historical fact."
-    ],
-    "grammarFocus": "Direct statement versus passive source description; It can be said that… for cautious interpretation; Had + past participle…, would have… for unreal past condition.",
-    "pronunciationFocus": "Practise Ka’ba, Qiblah and migration quotation in separate sense groups; lower the voice slightly on “It can be said” to mark cautious stance.",
-    "beforeReading": [
-      "Give three labels—Narrator / Cited source / Interpretation—and ask learners what linguistic clues might identify each."
-    ],
-    "duringReading": [
-      "Label the Quranic barren-valley description as cited source evidence.",
-      "Mark the migration quotation and identify its speaker.",
-      "Circle “It can be said” and explain why the wording is weaker than a direct factual assertion."
-    ],
-    "afterReading": [
-      "Build a short source map linking sacred status, Qiblah, barren geography and settlement interpretation.",
-      "Complete the Quick Challenge and name the evidence type used.",
-      "Rewrite one overconfident sentence so it accurately reflects the chapter’s cautious wording."
-    ],
-    "lessonPlan": "1. 0–5 min: introduce the three source labels. 2. 5–15 min: read/listen for sacred geography, Qiblah and the migration quotation. 3. 15–23 min: classify direct statement / citation / interpretation. 4. 23–28 min: Quick Challenge and source-label check. 5. 28–38 min: Language Focus on cautious interpretation and unreal past condition. 6. 38–46 min: rewrite an overconfident claim and explain the revision. 7. 46–50 min: exit ticket—one cited fact and one cautious interpretation.",
-    "discussionPoints": [
-      "Which claims are quoted or cited rather than narrated directly?",
-      "Why does “It can be said” matter in historical writing?",
-      "How does the barren-valley description affect the interpretation of the Ka’ba’s role in settlement?"
-    ],
-    "interactiveTips": [
-      "Display source labels beside the relevant sentences instead of discussing them abstractly.",
-      "Replay the migration quotation and the cautious settlement sentence back-to-back.",
-      "Do not ask learners to resolve historical questions the chapter itself leaves cautious."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give learners the three labels and preselect four sentences to classify.",
-      "fastFinishers": "Write a five-sentence explanation containing one direct statement, one citation, one cautious interpretation and one unreal-past condition."
-    },
-    "formativeAssessment": [
-      "Classifies source types accurately.",
-      "Preserves cautious wording.",
-      "Connects geography and settlement without converting interpretation into certainty."
-    ],
-    "expectedResponses": [
-      "The chapter cites Mecca as a barren valley and cautiously presents the Ka’ba as central to the city’s emergence as a settlement."
-    ],
-    "transferTask": "Take one claim from another historical text and rewrite it to show clearly whether it is source evidence or interpretation.",
-    "teacherReflection": "Did learners notice stance markers, or did they treat every sentence as equally certain?",
-    "assessmentTools": {
-      "rubric": [
-        "Source labeling",
-        "Cautious stance",
-        "Conditional control",
-        "Evidence-to-interpretation link"
-      ],
-      "exitTicket": [
-        "Write one sentence beginning “The source states…” and another beginning “It can be said that…”."
-      ]
-    }
+    chapter: 'Chapter 3: The Holy City', timing: '40 minutes',
+    objectives: ['Identify the reasons the chapter gives for Mecca’s holiness: the location of the Ka’ba, the birthplace of the Prophet and the place where he began to spread Islam.', 'Separate source-referenced statements (Âl-i Imran, 96 · Sunan al-Tirmidhi, 3925 · Surah Ibrahim: 37) from the writer’s interpretation (It can be said that …).', 'Discover stance (It can be said that …), a passive that reports a source (is described in … as …), the cleft sentence (It was also in this city that …) and the past perfect passive (had not yet been discovered).', 'Explain from the text why there was no population before Zamzam was discovered.'],
+    pedagogy: 'Give each pair two colours: one for sentences that point to a source (a verse or hadith reference in brackets), one for the writer’s own interpretation. The key discovery is “It can be said that city life began here only with the building of the Ka’ba.”: learners compare it with a proven fact and decide how sure the writer is. The prophetic saying is read aloud once by the teacher and explained in plain English; it is never gapped, drilled or rewritten.',
+    priorKnowledge: ['Past perfect; passive with be + past participle; certain vs possible statements.'],
+    anticipatedMisconceptions: ['“It can be said that …” marks the writer’s interpretation, not a quoted source or a proven fact.', 'The chapter describes Mecca as “a valley where no crops grow”; it links the start of city life with the Ka’ba, not with farming.', 'The date of Abraham’s arrival is approximate (“approximately between 2200 and 2000 B.C.”), not exact.'],
+    grammarFocus: 'Targets: stance (It can be said that …) · passive that reports a source (Mecca is described in the Holy Quran as …) · cleft sentence for focus (It was also in this city that …) · past perfect passive for an earlier situation (the Zamzam water had not yet been discovered).\nNotice (Activity 1): board “It can be said that city life began here only with the building of the Ka’ba.” and a teacher version “It is a proven fact that …”. Ask: “Which sentence can the writer defend? Which sentences in the chapter give a source in brackets, and is this one of them?” Learners state the difference before choosing.\nBuild (Activity 2): choose is described / that / had not; after each item ask one meaning question: “Who describes Mecca?”, “Which words does the writer want us to notice?”, “Which happened first: the arrival or the discovery?”\nLikely errors: *Mecca describes in the Quran · *It was in this city which … · *the Zamzam water has not yet been discovered · turning “It can be said” into “It is certain”.\nUse (Activity 3): four to five sentences about a place learners know, with one sourced statement (… is described in … as …), one interpretation (It can be said that …) and one cleft sentence (It was in … that …).',
+    pronunciationFocus: 'Keep the stance frame light and stress the claim: “it can be SAID that | CIty LIFE began HERE | ONly with the BUILDing of the KA’ba”.\nCleft focus: “it was ALso in THIS CIty | that the LAST PROphet … was BORN”.\nNumbers: “fifty-two years”, “forty years”, “almost thirteen”, “between twenty-two hundred and two thousand B.C.”.\nThe prophetic saying is read once by the teacher, calmly, with a pause after “leave,”; learners listen and explain it, they do not drill it.\nWord focus: SET-tle-ment, mi-GRA-tion, PROPH-et-hood, pop-u-LA-tion, ap-PROX-i-mate-ly.',
+    beforeReading: ['Ask: “What can make a city important for millions of people who do not live there?” Collect ideas and tell learners to check which reasons the chapter gives.'],
+    duringReading: ['Listen for the three things connected with this city (the Ka’ba, the Prophet’s birth and life, the beginning of his call).', 'Colour source references in one colour and “It can be said that …” in another.', 'Draw a mini-timeline: Abraham brings Ishmael and Hagar → Zamzam is discovered → people settle.', 'Box the definition of the Qiblah.'],
+    afterReading: ['Complete the Quick Challenge and name the sentence that proves the answer.', 'Language Focus: decide how certain the writer is (Activity 1), choose the source, focus and earlier-past forms (Activity 2), then separate source statement from interpretation (Activity 3).', 'Describe a place learners know with one sourced statement and one clearly marked interpretation.'],
+    lessonPlan: '0–5 Hook: “What makes a city important to people who do not live there?”, ideas on the board; 5–13 Listen and read, then pairs tick the ideas the chapter confirms; 13–20 Two-colour task: source references vs “It can be said that …”, then a quick timeline from the last paragraph; 20–24 Quick Challenge; 24–32 Language Focus: Activity 1 as a whole-class vote with justification (How sure is the writer?), Activity 2 in pairs with the three meaning questions; 32–38 Use (Activity 3): four or five sentences about a place in the learners’ town with one described-as sentence, one It can be said that sentence and one It was … that sentence; 38–40 Exit ticket.',
+    discussionPoints: ['Which statements does the writer support with a reference, and which are his own interpretation?', 'Why does the writer connect the beginning of city life with the Ka’ba rather than with farming?', 'What does the Prophet’s saying on leaving Mecca show about his relationship with the city?'],
+    interactiveTips: ['Use the Ka’ba hotspot to connect the House of Allah with the beginning of city life.', 'Use the Qiblah hotspot together with the one-sentence definition in the text.', 'Replay paragraph 4 and ask learners to raise a hand at the interpretation.'],
+    differentiation: { strugglingLearners: 'Give the two colour labels with one example each and the frames “____ is described in ____ as ____.” and “It can be said that ____.”', fastFinishers: 'Write a six-sentence description with a source reference, a hedged interpretation, a cleft sentence and one past perfect passive.' },
+    formativeAssessment: ['Separates sourced statements from interpretation.', 'Keeps the writer’s level of certainty.', 'Uses the passive, the cleft sentence and the past perfect passive for their meanings.'],
+    expectedResponses: ['Mecca is holy because Allah chose it for the Ka’ba and because the Prophet was born there, lived there and began his call there; since it is described as a valley where no crops grow and there was no population before Zamzam was discovered, the writer interprets that city life began only with the building of the Ka’ba.'],
+    transferTask: 'Write two sentences about a local landmark: one that reports a source and one that clearly marks your own interpretation.',
+    teacherReflection: 'Did learners keep “It can be said that …” as an interpretation, and did they treat the verse and the prophetic saying as sources to understand rather than language to manipulate?',
+    assessmentTools: { rubric: ['Source vs interpretation', 'Stance accuracy', 'Passive / cleft / past perfect control', 'Timeline accuracy'], exitTicket: ['Write one sentence with “… is described as …” and one with “It can be said that …” about your school.'] },
   },
   {
-    "chapter": "Chapter 4: The Ka’ba and the Quraysh",
-    "timing": "50 minutes",
-    "objectives": [
-      "Trace the sequence from Jurhumite settlement through Khuza’a rule to Quraysh administration.",
-      "Separate religious change, political control and economic adaptation as distinct historical processes.",
-      "Use chronology and background-cause language to explain multi-stage change."
-    ],
-    "pedagogy": "Use a three-lane timeline—people/rule, religion, economy. Learners place each event in the correct lane before connecting them. This prevents the shift to idolatry, the later transfer of administration and the development of trade from being collapsed into one event.",
-    "priorKnowledge": [
-      "Chronology markers and the difference between political, religious and economic change."
-    ],
-    "anticipatedMisconceptions": [
-      "Khuza’a’s spread of idolatry and the later Quraysh takeover are separate events.",
-      "The chapter links limited agriculture to trade as an economic pressure, not as the sole cause of every later development."
-    ],
-    "grammarFocus": "After / later / during / in the fifth century for chronology; since for background reason; sequence language that distinguishes institutions.",
-    "pronunciationFocus": "Practise Jurhumites, Khuza’a and Quraysh separately; stress chronology markers so listeners can hear the change of stage.",
-    "beforeReading": [
-      "Draw three empty timeline lanes labeled Rule / Religion / Economy and predict which details might belong in each."
-    ],
-    "duringReading": [
-      "Place Zamzam/Jurhum settlement, Khuza’a rule, idolatry and Quraysh administration on the timeline.",
-      "Mark the sentence about unsuitable agriculture and identify the economic response it helps explain.",
-      "Underline the fifth-century time marker."
-    ],
-    "afterReading": [
-      "Retell the chapter in four stages without merging religious and political change.",
-      "Complete the Quick Challenge using the timeline.",
-      "Use Language Focus to write one sentence showing background reason and one showing chronological transition."
-    ],
-    "lessonPlan": "1. 0–5 min: set up the three-lane timeline. 2. 5–15 min: read/listen and place Jurhum, Khuza’a and Quraysh chronologically. 3. 15–23 min: separate religious, political and economic evidence. 4. 23–28 min: Quick Challenge using the timeline. 5. 28–38 min: Language Focus on chronology and background cause. 6. 38–46 min: produce a four-stage historical explanation. 7. 46–50 min: exit ticket—one religious change and one political change with dates/order markers.",
-    "discussionPoints": [
-      "Which event changes religious practice, and which changes administration?",
-      "Why does the chapter mention agriculture when explaining trade?",
-      "What would become inaccurate if we merged Khuza’a and Quraysh into one stage?"
-    ],
-    "interactiveTips": [
-      "Physically separate the three timeline lanes to prevent category mixing.",
-      "Use only the chapter’s chronology; do not insert additional dynastic details.",
-      "Ask learners to justify every arrow between events with a connector from the text."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide event cards and let learners sort them into the three lanes before writing.",
-      "fastFinishers": "Write a six-sentence explanation that includes two chronological transitions and one background cause without turning correlation into a stronger claim."
-    },
-    "formativeAssessment": [
-      "Orders major stages correctly.",
-      "Separates religious, political and economic changes.",
-      "Uses chronology markers accurately."
-    ],
-    "expectedResponses": [
-      "The chapter moves from Jurhumite settlement to Khuza’a rule and idolatry, then to Quraysh administration and an economy increasingly dependent on trade."
-    ],
-    "transferTask": "Create a three-lane timeline for another historical change and explain why keeping categories separate improves accuracy.",
-    "teacherReflection": "Did the timeline clarify distinct processes, or did learners still compress them into one undifferentiated story?",
-    "assessmentTools": {
-      "rubric": [
-        "Chronology",
-        "Category distinction",
-        "Cause wording",
-        "Historical precision"
-      ],
-      "exitTicket": [
-        "Name one religious change, one political change and the marker that shows their order."
-      ]
-    }
+    chapter: 'Chapter 4: The Ka’ba and the Quraysh', timing: '40 minutes',
+    objectives: ['Trace the stages of Mecca’s history in order: the Jurhumites settle → Ishmael learns Arabic → Abraham and Ishmael rebuild the Ka’ba → the Khuza’a rule and idolatry spreads → the Quraysh take over the administration in the 5th century.', 'Explain why people tried to make a living through trade (the land was not suitable for agriculture).', 'Discover “since” meaning “because” and the time expressions that organise several centuries (After + noun, Later, During + noun, In + century).', 'Explain a multi-stage change in which religion, political control and geography interact.'],
+    pedagogy: 'Turn the chapter into a living timeline: five learners hold stage cards at the front and the class orders them, each move justified with a time expression from the text. Pairs then ask of each stage “What changed: religion, rule or economy?”. Grammar grows from this: learners notice that the “Since …” sentence in paragraph 3 does not fit on the timeline at all, because it gives a reason, and they test this against the time meaning of since with a perfect tense.',
+    priorKnowledge: ['Past simple narrative; since with the present perfect for time; tribe and pilgrimage.'],
+    anticipatedMisconceptions: ['“Since” in paragraph 3 means “because”; it does not give the starting point of trade.', 'The Khuza’a spreading idolatry and the Quraysh taking over the administration are separate stages.', 'Pre-Islamic Mecca was administered by “a council of mostly wealthy merchants”, not by one ruler.'],
+    grammarFocus: 'Targets: since = because (Since the surroundings of the city were not suitable for agriculture, …) · time expressions for a long history: After + noun, Later (adverb), During + noun, In + century.\nNotice (Activity 1): read “Since the surroundings of the city were not suitable for agriculture, people tried to make a living through trade.” Ask: “Does this sentence tell us when trade started or why it started?” Contrast with a teacher sentence: “People have traded here since the 5th century.” Learners state the two meanings and the tense clue before choosing.\nBuild (Activity 2): complete the four gaps with After / Later / During / In; learners explain why While and Since do not fit (While needs a clause, time-since needs a perfect tense).\nLikely errors: *During the Khuza’a ruled · *While the rule of this tribe · since + past simple used for a starting point.\nUse (Activity 3): a five- to six-sentence account of how a place changed in several stages, with at least three time expressions and one since-reason.',
+    pronunciationFocus: 'Time expressions as short chunks with a pause: “AFter the disCOVery of the ZAMzam WAter, |”, “LAter, |”, “in the FIFTH CENtury, |”.\nReason with a slight rise, result with a fall: “SINCE the surROUNDings of the CIty were NOT SUItable for AGriculture ↗ | PEOple TRIED to make a LIVing through TRADE ↘”.\n-ed endings: settled /d/, learned /d/, defeated /ɪd/, established /t/, passed /t/, administered /d/.\nWord focus: OFF-spring, re-con-STRUCT, PIL-grim-age, i-DOL-a-try, AG-ri-cul-ture, ad-min-is-TRA-tion.',
+    beforeReading: ['Show five stage cards in random order (the Jurhumites settle / the Ka’ba is rebuilt / the Khuza’a rule / the Quraysh administer / trade with the empires). Pairs guess the order and keep the guess to check later.'],
+    duringReading: ['Order the stage cards while listening.', 'Circle every time expression and place it on a timeline.', 'Label each stage: religion, rule or economy.', 'Underline the sentence with “Since” and decide whether it belongs on the timeline.'],
+    afterReading: ['Complete the Quick Challenge with the timeline visible.', 'Language Focus: the meaning of “Since” (Activity 1), time expressions for a long history (Activity 2), then explain a multi-stage change (Activity 3).', 'Write a short multi-stage history of a place learners know.'],
+    lessonPlan: '0–5 Predict the order of five stage cards in pairs; 5–12 Listen and read; 12–20 Living timeline: five volunteers hold the cards at the front, the class moves them and every move must quote a time expression from the text, then pairs label each stage religion / rule / economy; 20–24 Quick Challenge; 24–32 Language Focus: Activity 1 as discovery (When or why? Compare “People have traded here since …”), Activity 2 in pairs with a two-minute check of why While and Since do not fit; 32–38 Use (Activity 3): a five- or six-sentence history of a neighbourhood, school or town in stages, with three time expressions and one since-reason, partners check that every time word fits the timeline; 38–40 Exit ticket.',
+    discussionPoints: ['Which stage changed religion, which changed rule, and which changed the economy?', 'How did the Ka’ba becoming a pilgrimage site help the city grow?', 'Why does the chapter connect trade with the land around Mecca?'],
+    interactiveTips: ['Use the Pilgrimage hotspot with the sentence “this helped the city grow rapidly”.', 'Use the Quraysh hotspot for the 5th-century change of administration.', 'The last paragraph leads into Chapter 5 (“these products”): ask learners to predict what comes next.'],
+    differentiation: { strugglingLearners: 'Give the five stage cards with the time expressions printed on them and the frame “After ____, ____. Later, ____. During ____, ____.”', fastFinishers: 'Write a six-sentence history of a place with four different time expressions, one since-reason and one sentence naming which stage mattered most and why.' },
+    formativeAssessment: ['Orders the stages accurately.', 'Distinguishes since-reason from since-time.', 'Chooses After / Later / During / In according to what follows.'],
+    expectedResponses: ['The Jurhumites settled after Zamzam was discovered, Abraham and Ishmael rebuilt the Ka’ba, the Khuza’a spread idolatry, the Quraysh took over the administration in the 5th century, and people turned to trade because the land was not suitable for agriculture.'],
+    transferTask: 'Explain one change in a place you know by giving its time and its reason in the same short paragraph.',
+    teacherReflection: 'Did the living timeline show learners the difference between time words and reason words, and did they keep the separate stages separate?',
+    assessmentTools: { rubric: ['Sequence', 'Cause vs time', 'Time-expression accuracy', 'Multi-stage explanation'], exitTicket: ['Write one sentence with “since” = because and one with “since” for time, and say which one needs a perfect tense.'] },
   },
   {
-    "chapter": "Chapter 5: Mecca as a Trade Center",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how agreements, safe passage and interregional routes contributed to Mecca’s commercial growth.",
-      "Use caravan size and ship-capacity comparison as quantitative evidence rather than decoration.",
-      "Use approximation and evidence-to-inference language to make proportionate claims."
-    ],
-    "pedagogy": "Teach the chapter as an evidence-scale lesson. Learners identify the network first, then test what the numerical details actually allow them to claim. Hashim’s role is treated through agreements and access, not through genealogy alone.",
-    "priorKnowledge": [
-      "Trade route, caravan, agreement, estimate and comparison."
-    ],
-    "anticipatedMisconceptions": [
-      "Hashim’s significance in this chapter is economic and diplomatic, not merely genealogical.",
-      "“Up to 2,500 camels” is an upper figure, not a claim that every caravan had that size."
-    ],
-    "grammarFocus": "Up to for upper estimate; approximately for cautious comparison; comparison with ship capacity; This number shows… for evidence-to-inference; gradually for historical development.",
-    "pronunciationFocus": "Practise route/place names in short groups and contrast stress on “up to” and “approximately” so approximations are not heard as exact totals.",
-    "beforeReading": [
-      "Ask what kinds of evidence would prove that a city had become an important trade centre: routes, agreements, quantities, or all three."
-    ],
-    "duringReading": [
-      "Map the regions Quraysh merchants could enter under agreements.",
-      "Highlight “up to 2,500 camels” and the Roman ship comparison.",
-      "Mark the final sentence describing gradual development."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and explain why one number matters.",
-      "Write one evidence-to-inference sentence using “This number shows…” with an appropriate qualifier.",
-      "Compare route access and caravan scale as two different kinds of commercial evidence."
-    ],
-    "lessonPlan": "1. 0–5 min: define three evidence types—network / agreement / quantity. 2. 5–15 min: read/listen and map destinations. 3. 15–23 min: analyse the caravan and ship comparison. 4. 23–28 min: Quick Challenge with numerical evidence. 5. 28–38 min: Language Focus on estimates and evidence-to-inference wording. 6. 38–46 min: write a proportionate claim about Mecca’s commercial scale using two evidence types. 7. 46–50 min: exit ticket—one number, one qualifier and one justified inference.",
-    "discussionPoints": [
-      "What do the agreements change about access and movement?",
-      "What does the caravan number show, and what does it not prove?",
-      "Why is “gradually” an important word in the final claim?"
-    ],
-    "interactiveTips": [
-      "Place route names on a map only after learners find them in the text.",
-      "Require every numerical claim to retain its qualifier such as “up to” or “approximately”.",
-      "Ask learners to distinguish evidence from the inference built from it."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use a frame: “The chapter says up to ____. This suggests ____ because ____.”",
-      "fastFinishers": "Compare the strength of route evidence, agreement evidence and quantitative evidence in a short paragraph."
-    },
-    "formativeAssessment": [
-      "Retains numerical qualifiers.",
-      "Explains why agreements matter.",
-      "Builds a proportionate inference from evidence."
-    ],
-    "expectedResponses": [
-      "Trade agreements expanded Quraysh access, while large caravans and broad routes show the growing scale of Meccan trade."
-    ],
-    "transferTask": "Use one approximate number from another source to make a careful claim that does not exaggerate what the figure proves.",
-    "teacherReflection": "Did learners treat numbers as evidence with limits rather than as impressive facts to repeat?",
-    "assessmentTools": {
-      "rubric": [
-        "Quantifier accuracy",
-        "Route/agreement evidence",
-        "Inference quality",
-        "No numerical overclaim"
-      ],
-      "exitTicket": [
-        "Write: “Up to ____; this suggests ____, but it does not prove ____.”"
-      ]
-    }
+    chapter: 'Chapter 5: Mecca as a Trade Center', timing: '40 minutes',
+    objectives: ['Explain how Mecca became a trade center: Hashim’s trade deals, permission to travel freely, the summer and winter journeys and caravans and ships to several regions.', 'Interpret the caravan and ship figures as evidence of scale without overclaiming.', 'Discover the difference between a reported fact or figure and the writer’s judgment (This number shows us …, played a key role), and the careful wording up to / approximately / around / gradually.', 'Write a proportionate claim supported by a figure.'],
+    pedagogy: 'Put the chapter’s numbers on the board without context (up to 2,500 / 2–3 / 100–150 / mid-5th century / early 6th century) and let pairs find what each one measures. The discovery is that the writer never says “exactly”: learners hunt for up to, approximately, around and gradually and explain what each word protects. Evidence vs judgment is decided sentence by sentence with a gesture (thumbs up = checkable fact, flat hand = the writer’s judgment) before Activity 1 names the categories.',
+    priorKnowledge: ['Large numbers and ranges; fact vs opinion at B1; the trade products at the end of Chapter 4.'],
+    anticipatedMisconceptions: ['“Up to 2,500 camels” is an upper limit, not the size of every caravan.', 'The ship comparison is approximate (“approximately 2–3 shiploads”, “around 100–150 tons”).', 'Mecca developed “gradually” from the mid-5th century; it did not become a trade center suddenly.'],
+    grammarFocus: 'Targets: evidence vs judgment (a reported fact or figure / This number shows us …, played a key role in …) · careful quantity and change (up to, approximately, around, gradually) · summary reference (This meant …, This number …).\nNotice (Activity 1): board “At that time, the typical Roman trade ship had a carrying capacity of around 100–150 tons.” and “This number shows us how large the trade was.” Ask: “Which sentence could we check in a record? Which one tells us what the writer concludes?” Learners define the two categories in their own words, then sort.\nBuild (Activity 2): find the word that makes each sentence stronger than the chapter (exactly, precisely, suddenly) and restore up to / approximately / gradually; ask: “What evidence would we need to prove the stronger version?”\nLikely errors: reading up to 2,500 as every caravan · dropping around / approximately when retelling · *the city developed gradual · presenting played a key role as a checkable fact.\nUse (Activity 3): four to five sentences about a real figure from school or town life (the number of students, buses, books in the library), with one reported number, one careful quantity word and one “This number shows …” conclusion that is no stronger than the figure.',
+    pronunciationFocus: 'Numbers and ranges as one chunk: “UP to TWO THOUsand FIVE HUNdred CAMels”, “apPROXimately TWO to THREE SHIPloads”, “aROUND a HUNdred to a HUNdred and FIFty TONS”.\nStress the hedge when it matters: “UP to”, “aROUND”, “GRADually”.\nThe conclusion falls: “this NUMber SHOWS us | how LARGE the TRADE was ↘”.\nWord focus: CAR-a-vans, MER-chants, CAR-go, e-CON-o-my, ab-ys-SIN-i-a, GRAD-u-al-ly.',
+    beforeReading: ['Write five numbers from the chapter on the board without context. Pairs guess what each one measures, then check while reading.'],
+    duringReading: ['Match each number with what it measures.', 'Mark the places the caravans and ships reached.', 'Paragraph 3 and 4: thumbs up for a checkable fact, flat hand for the writer’s judgment, sentence by sentence.', 'Circle up to, approximately, around and gradually.'],
+    afterReading: ['Complete the Quick Challenge and name the figure that supports the answer.', 'Language Focus: sort evidence and judgment (Activity 1), remove the overclaims (Activity 2), then use a number without overclaiming (Activity 3).', 'Write a short, proportionate claim about a real number from school or town life.'],
+    lessonPlan: '0–5 Number hook: five figures on the board, pairs guess what they measure; 5–12 Listen and read, then match each number with its meaning; 12–19 Trade map in pairs: arrows from Mecca to Byzantium, Yemen, Iraq, Egypt and Abyssinia (by sea), two arrows labelled with a quoted phrase; 19–23 Quick Challenge; 23–31 Language Focus: Activity 1 as discovery (Which sentence can we check? Which one concludes?), then Activity 2 in pairs with the question “What would we need to prove the stronger version?”; 31–38 Use (Activity 3): each learner writes four or five sentences about a real number from school or town life, a partner circles every careful quantity word and marks the conclusion; 38–40 Exit ticket.',
+    discussionPoints: ['What exactly does the caravan figure prove, and what does it not prove?', 'Why does the writer say Hashim played a “key role”, and is that a fact or a judgment?', 'How does “gradually” change the story of Mecca’s growth?'],
+    interactiveTips: ['Use the Caravans hotspot with the 2,500-camel figure and ask what “up to” limits.', 'Use the Trade Center hotspot after learners have drawn the trade map.', 'Replay paragraph 3 and pause after each sentence for the fact / judgment gesture.'],
+    differentiation: { strugglingLearners: 'Give a two-column table (fact or figure / writer’s judgment) with the first row done, and the frame “Up to ____. This number shows that ____.”', fastFinishers: 'Write a six-sentence paragraph that uses three different quantity hedges and ends with a conclusion clearly proportionate to the evidence.' },
+    formativeAssessment: ['Separates checkable figures from the writer’s judgment.', 'Keeps up to / approximately / gradually when retelling.', 'Draws a conclusion no stronger than the figure.'],
+    expectedResponses: ['Hashim and the Quraysh leaders made trade deals that let them travel freely; caravans of up to 2,500 camels, approximately 2–3 shiploads, show how large the trade was, and Mecca gradually developed into a center of trade from the mid-5th century.'],
+    transferTask: 'Report one real figure from your school or town and write a conclusion that does not claim more than the number shows.',
+    teacherReflection: 'Did learners notice the hedges themselves, and could they say what evidence a stronger claim would need?',
+    assessmentTools: { rubric: ['Figure accuracy', 'Evidence vs judgment', 'Quantity hedges', 'Proportionate conclusion'], exitTicket: ['Write one sentence with “up to”, one with “approximately” and one conclusion that starts “This number shows …”.'] },
   },
   {
-    "chapter": "Chapter 6: Sacred Months and Trade",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how imperial warfare, route disruption, sacred-month security, pilgrimage and fairs interact in one causal network.",
-      "Distinguish separate causes that reinforce the same commercial outcome.",
-      "Use multi-cause connectors to build a coherent B2 explanation."
-    ],
-    "pedagogy": "Replace a linear timeline with a causal network. Learners build arrows from Byzantine–Sassanid war to route change, from sacred-month security to pilgrimage movement, and from Hajj/fairs to commercial activity. The key skill is showing interaction without pretending every factor is the same kind of cause.",
-    "priorKnowledge": [
-      "Cause/result connectors and the trade-network evidence from Chapter 5."
-    ],
-    "anticipatedMisconceptions": [
-      "The sacred months did not stop commerce; the chapter says increased safety supported pilgrimage and trade.",
-      "The Silk Road disruption and Hajj fairs are separate mechanisms that converge on Mecca’s importance."
-    ],
-    "grammarFocus": "Because of / due to + noun phrase; this made…; in addition; therefore/so; connectors for combining several mechanisms.",
-    "pronunciationFocus": "Use falling tone at the end of each causal branch and a reset before “in addition” so listeners can hear multiple causes rather than one long chain.",
-    "beforeReading": [
-      "Give learners three headings—war/routes, security/pilgrimage, fairs/trade—and ask how they might connect."
-    ],
-    "duringReading": [
-      "Trace why the Silk Road became less usable.",
-      "Mark how sacred-month security affected Hajj participation.",
-      "Identify the fair names and the sentence connecting pilgrimage season with trade."
-    ],
-    "afterReading": [
-      "Draw a minimum four-arrow causal network and explain it aloud.",
-      "Complete the Quick Challenge by naming the relevant causal branch.",
-      "Use Language Focus to combine two causes in one paragraph without list-like writing."
-    ],
-    "lessonPlan": "1. 0–5 min: introduce causal-network notation. 2. 5–14 min: read/listen for war and route disruption. 3. 14–22 min: add sacred-month security, Hajj and fairs as separate branches. 4. 22–28 min: Quick Challenge and causal-arrow justification. 5. 28–38 min: Language Focus on multi-cause connectors. 6. 38–46 min: write one connected paragraph explaining how the branches reinforce Mecca’s importance. 7. 46–50 min: exit ticket—two different causes leading to one shared result.",
-    "discussionPoints": [
-      "Which cause changes routes, and which changes human movement?",
-      "Why should Hajj and trade not be treated as identical activities?",
-      "How do several mechanisms reinforce one economic result?"
-    ],
-    "interactiveTips": [
-      "Use arrows with labels rather than a single numbered sequence.",
-      "Ask learners to name the mechanism on each arrow: route, safety, gathering, commerce.",
-      "If a learner says “because” repeatedly, require a different connector that matches the relation."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the four main nodes and let learners add labeled arrows before writing.",
-      "fastFinishers": "Add a sentence explaining which cause is structural and which is seasonal, while keeping both connected to trade."
-    },
-    "formativeAssessment": [
-      "Builds a causal network with distinct mechanisms.",
-      "Uses connectors that match the relation.",
-      "Avoids treating sacred months as a ban on trade."
-    ],
-    "expectedResponses": [
-      "War disrupted the Silk Road while safer sacred months increased pilgrimage and fairs, together strengthening Mecca’s trade position."
-    ],
-    "transferTask": "Explain a modern situation in which two different causes reinforce the same outcome without claiming they are identical.",
-    "teacherReflection": "Did learners explain interaction, or merely list five facts with causal vocabulary added?",
-    "assessmentTools": {
-      "rubric": [
-        "Causal network",
-        "Mechanism distinction",
-        "Connector precision",
-        "Integrated explanation"
-      ],
-      "exitTicket": [
-        "Write two arrows in words: ____ led to ____; separately, ____ also supported ____."
-      ]
-    }
+    chapter: 'Chapter 6: Sacred Months and Trade', timing: '40 minutes',
+    objectives: ['Explain three mechanisms that made Mecca central: the Silk Road became unusable because of the Byzantine–Sassanid wars, the sacred months created safety for the Hajj, and trade festivals were held during the sacred months.', 'Explain the conclusion that at the beginning of the 7th century the Quraysh gained control of the most important trade route and wealth in Arabia.', 'Discover summary “This” as the link in a causal chain, and express the same cause with because + clause, because of / due to + noun phrase and a causing verb (made … unusable).', 'Build one coherent causal account from several mechanisms.'],
+    pedagogy: 'Draw a causal chain with the class, one arrow at a time: wars → Silk Road unusable → “This” → Red Sea and overland routes important; sacred months → safety → more people perform the Hajj → livelier trade and festivals. Learners label every arrow with the words from the text (due to, This made, made it possible, also meant, Because of, So). The discovery question for Activity 1 is “What exactly is ‘This’: one thing or a whole situation?”; learners then rewrite one cause three ways and decide which pattern each linking word needs.',
+    priorKnowledge: ['Because / because of from Chapter 1; past passive; the trade routes from Chapter 5.'],
+    anticipatedMisconceptions: ['“This” sums up the whole situation (the Silk Road had become unusable); it does not refer to the empires or to the Silk Road as a thing.', 'The sacred months did not stop trade: “Hajj also meant livelier trade”, and trade festivals were held during these months.', 'The bracket about the Jahiliyyah period describes what pagan Arabs did at the time; learners should not mix it with the later Islamic Hajj.'],
+    grammarFocus: 'Targets: summary “This” + causing verb (This made the Red Sea route and the overland route through Arabia highly important) · three ways to express a cause: because + clause, because of / due to + noun phrase (Because of its extensive trade activities, …), or a causing verb as in Activity 2 (the wars … made the Silk Road unusable) · reduced relative clause (The safe environment created by the sacred months …).\nNotice (Activity 1): read the first two sentences and ask: “What made the Red Sea route important? Point to it. Is ‘This’ one word from the previous sentence or the whole sentence?” Learners formulate the rule (a sentence-initial This can sum up a whole situation) before choosing.\nBuild (Activity 2): rewrite the three causes with because …, Due to the safe environment created by … and The wars … made …; after each item learners say whether their cause is a clause or a noun phrase.\nLikely errors: *because of it had extensive trade activities · *due to the sacred months created a safe environment · *made the Silk Road to be unusable · This with an unclear reference.\nUse (Activity 3): a six-sentence causal account of a real change (for example why a road, market or app became popular), with one summary This, one because, one because of / due to and one causing verb.',
+    pronunciationFocus: 'Stress the summary word and the verb: “THIS MADE the RED SEA ROUTE | and the Overland ROUTE through ARabia | HIGHly imPORtant”.\nLong subject, then a pause: “the SAFE enVIronment CREated by the SAcred MONTHS | made it POSsible for MORE PEOple to perFORM the HAJJ”.\nNames inside English (Ukaz, Majannah, Dhul-Majaz, Zilkade, Zilhicce, Muharram, Rajab): read them clearly and at an even pace; meaning matters more than a perfect accent.\nWord focus: ex-TEN-sive, pro-HIB-it-ed, un-US-a-ble, O-ver-land, MED-i-ter-RA-ne-an, FES-ti-vals.',
+    beforeReading: ['Ask: “If the main road between two cities is closed, what happens to the towns on the other roads?” Take two answers and tell learners the chapter describes something similar on a much larger scale.'],
+    duringReading: ['Draw the causal chain arrow by arrow while listening.', 'Label each arrow with the linking words from the text.', 'Read the long bracket about the sacred months and name the four months.', 'Underline the final “So” sentence as the writer’s conclusion.'],
+    afterReading: ['Complete the Quick Challenge with the causal chain visible.', 'Language Focus: find what “This” refers to (Activity 1), express the same cause in different ways (Activity 2), then explain interacting causes (Activity 3).', 'Write a causal account of a real change in learners’ own town or school.'],
+    lessonPlan: '0–5 Hook: a closed main road, what happens to the other routes?; 5–12 Listen and read; 12–20 Causal chain on the board built with the class, pairs label every arrow with the text’s own linking words (due to, This made, made it possible, also meant, Because of, So); 20–24 Quick Challenge; 24–32 Language Focus: Activity 1 as whole-class discovery (Is “This” one word or the whole situation?), Activity 2 in pairs, then learners say for each answer whether the cause is a clause or a noun phrase; 32–38 Use (Activity 3): pairs explain why a road, market, festival or app became popular with a four-link causal chain, one pair reads and the class names the links; 38–40 Exit ticket.',
+    discussionPoints: ['Which cause came from outside Arabia, and which came from Arabian practice?', 'How did the sacred months support both worship and trade?', 'Does the final “So” sentence follow from the evidence? What would make it an overclaim?'],
+    interactiveTips: ['Use the Sacred Months hotspot together with the bracket that names the four months.', 'Use the Trade Festivals hotspot for Ukaz, Majannah and Dhul-Majaz and their link to the Hajj season.', 'Replay the first two sentences and ask learners to point at what “This” sums up.'],
+    differentiation: { strugglingLearners: 'Give the causal chain with the arrows drawn and the linking words in a box, plus the frames “Because ____, ____.” / “Because of ____, ____.” / “____ made ____ important.”', fastFinishers: 'Write a seven-sentence causal account that connects an outside cause and a local cause and ends with a “So …” conclusion no stronger than the evidence.' },
+    formativeAssessment: ['Identifies what summary This refers to.', 'Uses clause vs noun-phrase causes correctly.', 'Connects several mechanisms into one account.'],
+    expectedResponses: ['The wars made the Silk Road unusable, so the Red Sea and overland routes through Arabia became highly important; the sacred months created a safe environment for the Hajj and the trade festivals, which meant livelier trade, and at the beginning of the 7th century the Quraysh gained control of the most important trade route and wealth in Arabia.'],
+    transferTask: 'Explain one change in your town with two interacting causes and one clear conclusion.',
+    teacherReflection: 'Did learners build one connected causal account, or did they list the causes side by side?',
+    assessmentTools: { rubric: ['Mechanisms', 'Reference and cohesion', 'Cause patterns', 'Proportionate conclusion'], exitTicket: ['Rewrite “Because of the rain, the match was cancelled.” once with “because” and once with “made”.'] },
   },
   {
-    "chapter": "Chapter 7: Social Classes in Mecca",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how usury, debt and concentrated wealth are presented as structural drivers of inequality.",
-      "Distinguish a system-level explanation from a moral judgment about individual greed.",
-      "Use consequence and paired-comparative language to explain class polarisation."
-    ],
-    "pedagogy": "Turn the chapter into a system diagram rather than a catalogue of luxury and poverty. Learners trace lending at usury → debt burden → concentration of wealth → class division, then use the rich/poor examples as evidence of the resulting structure.",
-    "priorKnowledge": [
-      "Economic cause/result and the role of trade in previous chapters."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter describes a lending system and class structure, not only individual greed.",
-      "Luxury examples illustrate inequality; they should not become the sole explanation of the system."
-    ],
-    "grammarFocus": "As a result of…; was designed to make…; so…that; paired comparatives such as richer/poorer; consequence clauses.",
-    "pronunciationFocus": "Stress the paired movement in “richer / poorer” and chunk “as a result of” as a single discourse marker before the consequence.",
-    "beforeReading": [
-      "Ask learners to distinguish a personal bad choice from a rule or practice that repeatedly produces the same social effect."
-    ],
-    "duringReading": [
-      "Mark the definition and role of ribā/usury.",
-      "Trace the sentences connecting lending, debt and concentrated wealth.",
-      "Compare the gold-plate example with the description of people barely surviving."
-    ],
-    "afterReading": [
-      "Build a four-stage structural explanation using arrows.",
-      "Complete the Quick Challenge and identify whether the answer concerns practice, effect or example.",
-      "Use Language Focus to write a consequence paragraph without reducing the issue to one individual."
-    ],
-    "lessonPlan": "1. 0–5 min: personal action versus structural practice warm-up. 2. 5–14 min: read/listen for the role of usury. 3. 14–23 min: build the debt → wealth concentration → class gap chain. 4. 23–28 min: Quick Challenge by classifying practice/effect/example. 5. 28–38 min: Language Focus on consequence and paired comparatives. 6. 38–46 min: write a system-level explanation using the luxury/poverty contrast only as supporting evidence. 7. 46–50 min: exit ticket—one practice, one mechanism, one social result.",
-    "discussionPoints": [
-      "What makes the chapter’s explanation structural rather than merely personal?",
-      "Where does the text move from financial practice to class consequence?",
-      "Why are the luxury examples evidence of inequality rather than its complete cause?"
-    ],
-    "interactiveTips": [
-      "Use a chain diagram and require verbs on every arrow.",
-      "Keep “ribā/usury” tied to the chapter’s definition instead of outside financial detail.",
-      "Ask learners to label examples as illustration, not cause, where appropriate."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the chain “lending at usury → debt → ____ → class gap” and let learners complete it from the text.",
-      "fastFinishers": "Add a qualification explaining why structural analysis does not require claiming every wealthy person behaved identically."
-    },
-    "formativeAssessment": [
-      "Explains the practice-to-structure chain.",
-      "Uses consequence language accurately.",
-      "Keeps examples and causes conceptually distinct."
-    ],
-    "expectedResponses": [
-      "The chapter links usury and debt with concentrated wealth, producing a sharper division between rich and poor."
-    ],
-    "transferTask": "Explain how a repeated rule or practice in another context can create unequal outcomes over time.",
-    "teacherReflection": "Did learners identify the mechanism, or did discussion drift into unsupported general judgments about wealthy individuals?",
-    "assessmentTools": {
-      "rubric": [
-        "Mechanism",
-        "Structural explanation",
-        "Comparative language",
-        "Evidence classification"
-      ],
-      "exitTicket": [
-        "Complete: “The practice of ____ contributed to ____ because ____.”"
-      ]
-    }
+    chapter: 'Chapter 7: Social Classes in Mecca', timing: '40 + 40 minutes',
+    objectives: ['Explain usury (ribâ) as the chapter defines it and how lending at usury increased the wealth of the Quraysh.', 'Trace the chain from economic practice (lending at usury, enormous borrowing rates, drinking and gambling) to social result (a wealthy aristocracy, extreme class divisions, a huge gap even in basic human relationships).', 'Discover how the chapter links practice and result (As a result of + noun phrase, so + adjective + that, Because … were concentrated) and how paired comparatives show a widening gap.', 'Evaluate the writer’s strong interpretation “This system was designed to …” and explain a system rather than one person’s greed.'],
+    pedagogy: 'Lesson 1 builds a “system diagram”: learners place practices on the left, results on the right and draw the links. The contrast sentence (gold plates and silver cups … poor people who could barely survive) is read calmly as evidence of inequality, not as a luxury story. Lesson 2 asks what kind of claim “This system was designed to make the rich richer and the poor poorer” is: learners discover that the two comparatives move in opposite directions and that “designed to” is the writer’s strong interpretation. They then test the linking forms in Activity 2.',
+    priorKnowledge: ['Comparatives; passive; so … that / such … that at B1; the trade wealth from Chapters 5–6.'],
+    anticipatedMisconceptions: ['The chapter describes a system of lending and class, not only individual greed.', '“Was designed to” is the writer’s interpretation of purpose; learners should report it as the writer’s view.', 'Drinking and gambling are named as “also one reason” for debt, not the only reason.'],
+    grammarFocus: 'Targets: practice vs social result · As a result of + noun phrase (As a result of the money trade, there was a wealthy aristocracy in the city) · so + adjective + that (… so common that this was also one reason why …) · passive state (large amounts of wealth were concentrated) · paired comparatives for a widening gap and designed to for a stated purpose (This system was designed to make the rich richer and the poor poorer).\nNotice (Activity 1): board “This system was designed to make the rich richer and the poor poorer.” Ask: “Is this something the lenders did, or what happened to society? Which two words move in opposite directions?” Learners define practice and result in their own words, then sort.\nBuild (Activity 2): choose As a result of / so / were concentrated; after each item ask whether the next words are a noun phrase, an adjective + that-clause or a past participle.\nLikely errors: *As a result the money trade · *such common that · *too common that · *wealth were concentrating · *the rich more rich.\nUse (Activity 3): a six- to seven-sentence explanation of how one practice affects a whole group (for example how buying on credit with high interest affects a family budget), with one As a result of, one so … that and one pair of comparatives.',
+    pronunciationFocus: 'Parallel contrast with strong stress on both pairs: “to make the RICH RICHer | and the POOR POORer”.\nDegree and result with a pause after the adjective: “SO COMmon | that THIS was ALso one REAson why …”.\nThe contrast sentence in two halves: “there were RICH people who ATE from GOLD PLATES … | but there were ALso POOR people who could BAREly surVIVE”.\nWord focus: U-su-ry (/ʒ/), a-ris-TOC-ra-cy, CAP-i-tal-ists, PROF-it-a-ble, e-NOR-mous, CON-cen-trat-ed.',
+    beforeReading: ['Ask: “If you borrow 100 lira and must pay back 150, who gets richer and who gets poorer over time?” Pairs draw two arrows and keep the drawing for the system diagram.'],
+    duringReading: ['Box the definition of usury and the Arabic term ribâ.', 'Left column: practices, right column: social results, each with a quoted phrase.', 'Underline “This system was designed to …” and mark it as the writer’s interpretation.', 'Read the gold plates / barely survive sentence as evidence of inequality.'],
+    afterReading: ['Lesson 1: Quick Challenge and a bridge note: one practice → one result.', 'Lesson 2: Language Focus: sort practice and result (Activity 1), choose the linking forms (Activity 2), then explain a system (Activity 3).', 'Write a system explanation about a practice in learners’ own world that affects a whole group.'],
+    lessonPlan: 'Lesson 1 (40 min): 0–5 Hook: borrow 100, pay back 150, pairs draw who gets richer and who gets poorer; 5–14 Listen and read, box the definition of usury; 14–26 System diagram in groups of three: practices on the left, results on the right, every link labelled with words from the text (As a result of, Because, so … that), groups display their diagrams; 26–32 Gallery check: groups remove any arrow the text does not support and add “also one reason” where the text limits a claim; 32–36 Quick Challenge; 36–40 Bridge note: one practice → one result; Lesson 2 (40 min): 0–4 Retrieve the diagram orally; 4–13 Language Focus Activity 1 as discovery (What kind of claim is “was designed to …”? Which two words move in opposite directions?), then pairs sort; 13–21 Activity 2 in pairs, learners name what follows each form; 21–33 Use (Activity 3): a six- or seven-sentence system explanation (buying on credit with high interest, unequal access to resources) with one As a result of, one so … that and one pair of comparatives; 33–38 Peer check: partners mark practice (P) and result (R) in each other’s text; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the writer call usury “the easiest and most profitable way” to increase wealth, and who paid for it?', 'Is “This system was designed to make the rich richer and the poor poorer” evidence or interpretation? What in the chapter supports it?', 'How does the gold plates / barely survive sentence show the gap without numbers?'],
+    interactiveTips: ['Use the Usury hotspot with the chapter’s definition (additional money on the original amount of money).', 'Use the Social Classes hotspot after the system diagram is complete.', 'Replay the sentence with the two comparatives and ask learners to show the widening gap with their hands.'],
+    differentiation: { strugglingLearners: 'Give practice and result cards to match, and the frames “As a result of ____, ____.” and “____ was so ____ that ____.”', fastFinishers: 'Write an eight-sentence explanation of a system with two practices, two results, one designed-to interpretation clearly marked as the writer’s and one pair of comparatives.' },
+    formativeAssessment: ['Separates practices from results with evidence.', 'Reports “designed to” as the writer’s interpretation.', 'Uses As a result of, so … that and paired comparatives accurately.'],
+    expectedResponses: ['The Quraysh added to their wealth through lending at usury and imposed enormous borrowing rates; as a result of the money trade there was a wealthy aristocracy, and because wealth was concentrated in the hands of certain individuals there were extreme divisions between the rich and the poor.'],
+    transferTask: 'Explain how one economic practice today can widen the gap between two groups.',
+    teacherReflection: 'Did learners explain a system with links between practice and result, and did they report the writer’s strongest claim as his interpretation?',
+    assessmentTools: { rubric: ['Definition of usury', 'Practice → result links', 'Linking forms and comparatives', 'Evidence vs interpretation'], exitTicket: ['Write one “As a result of …” sentence and one “so … that …” sentence about a habit that affects a whole class.'] },
   },
   {
-    "chapter": "Chapter 8: Injustice and Hilfü’l-Fudûl",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain the injustices that created a need for Hilfü’l-Fudûl.",
-      "Evaluate the pact as an organised accountability mechanism rather than a symbolic declaration.",
-      "Use purpose, passive focus and conditional consequence to explain institutional justice."
-    ],
-    "pedagogy": "Teach the chapter through a problem–institution–case structure. Learners first document who is harmed, then define what the pact is designed to do, and finally test that definition against the unpaid-merchant case. The case must show how a principle becomes enforceable action.",
-    "priorKnowledge": [
-      "Victim-focused passive voice and the difference between intention and institution."
-    ],
-    "anticipatedMisconceptions": [
-      "Hilfü’l-Fudûl is not presented as a ceremonial promise only; the merchant example shows practical pressure for payment.",
-      "The chapter’s praise of the pact should not be expanded into claims beyond the described functions."
-    ],
-    "grammarFocus": "Passive voice for victims/actions; to prevent… for purpose; if…would for conditional enforcement and stated consequence.",
-    "pronunciationFocus": "Use stress to foreground affected groups in passive clauses, then contrast the conditional warning with the final payment outcome.",
-    "beforeReading": [
-      "Ask what must exist for a justice principle to become an institution: agreement, procedure, consequence, or all three."
-    ],
-    "duringReading": [
-      "List the specific injustices affecting orphans, weak people, outsiders and small sellers.",
-      "Underline the purpose of the pact.",
-      "Track the merchant case from unpaid goods to warning to payment."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the problem–institution–case framework.",
-      "Explain why the merchant example proves practical accountability.",
-      "Use Language Focus to design a nonviolent accountability rule with purpose and consequence."
-    ],
-    "lessonPlan": "1. 0–5 min: distinguish moral intention from an enforceable procedure. 2. 5–14 min: read/listen and list groups harmed by injustice. 3. 14–23 min: define Hilfü’l-Fudûl’s purpose and trace the merchant case. 4. 23–28 min: Quick Challenge with case evidence. 5. 28–38 min: Language Focus on passive, purpose and conditional consequence. 6. 38–46 min: design a simple school accountability process and compare its structure with the pact. 7. 46–50 min: exit ticket—problem / mechanism / consequence.",
-    "discussionPoints": [
-      "What concrete injustices make the pact necessary?",
-      "What turns the pact from a good intention into an institution?",
-      "How does the unpaid-merchant case demonstrate enforcement without violence?"
-    ],
-    "interactiveTips": [
-      "Use three cards—Problem / Institution / Case—and move evidence between them only with justification.",
-      "Keep the merchant case in sequence so the conditional consequence is visible.",
-      "Ask learners to identify whose rights are foregrounded by passive constructions."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use the frame “People were ____. The pact was created to ____. If ____, the members would ____.”",
-      "fastFinishers": "Compare symbolic support and enforceable accountability in a short analytical paragraph."
-    },
-    "formativeAssessment": [
-      "Identifies affected groups accurately.",
-      "Explains the pact’s institutional function.",
-      "Uses conditional consequence in context."
-    ],
-    "expectedResponses": [
-      "Hilfü’l-Fudûl organised practical support for people facing injustice, and the merchant case shows that members could pressure a powerful buyer to pay."
-    ],
-    "transferTask": "Design a peaceful accountability process for a school situation in which someone’s rights are ignored.",
-    "teacherReflection": "Did learners explain the mechanism of justice, or only repeat that the pact was good?",
-    "assessmentTools": {
-      "rubric": [
-        "Problem evidence",
-        "Institutional mechanism",
-        "Case interpretation",
-        "Purpose/condition language"
-      ],
-      "exitTicket": [
-        "Write: “The pact existed to ____. In the merchant case, if ____, the members would ____.”"
-      ]
-    }
+    chapter: 'Chapter 8: Injustice and Hilfü’l-Fudûl', timing: '40 minutes',
+    objectives: ['Describe the injustices named in the chapter: orphans oppressed, the weak looked down on, camels taken without payment, goods seized, visitors from outside mistreated.', 'Explain the purpose of Hilfü’l-Fudûl, the Prophet’s membership at twenty, and how the merchant case shows the pact’s real pressure.', 'Discover why the chapter uses passives without “by” for the victims, and how reported speech (if he did not pay, they would collect it) becomes direct speech (If you do not pay, they will collect it).', 'Explain how a principle becomes practical pressure through a stated condition.'],
+    pedagogy: 'Start with the victims: learners list who was harmed and notice that the sentences about them almost never say who did the harm. The discovery question is “Who is at the front of these sentences, and who is missing?” The merchant case then becomes a short, calm freeze-frame in three steps (the unpaid merchant / the members advise him / the message to Ubayy); no one represents the Prophet. Learners turn the reported message into direct speech. The chapter ends before we know what Ubayy did: learners predict, and Chapter 9 answers.',
+    priorKnowledge: ['Past passive; first conditional; reported speech with would.'],
+    anticipatedMisconceptions: ['Hilfü’l-Fudûl was an agreement “to help people who had been oppressed in Mecca”, not a group formed to take power.', 'The oppressors are described as “generally wealthy and powerful individuals”, not as all rich people.', 'The chapter ends with the warning to Ubayy; his response comes at the start of Chapter 9.'],
+    grammarFocus: 'Targets: passive without “by” to keep the victims in focus (orphans were oppressed, the weak were looked down on, and the poor were shown no mercy) vs passive with “by” (an agreement was made by some Quraysh tribes) · the active version to show who acted (some Quraysh tribes made an agreement) · reported condition → direct speech (if he did not pay, they would collect it themselves → If you do not pay, they will collect it themselves).\nNotice (Activity 1): board “In such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy.” Ask: “Who is at the front of each clause? Who did the harm, and does the sentence say?” Learners explain why the writer might choose this before they sort the phrases.\nBuild (Activity 2): turn the agreement sentence into the active and the reported warning into direct speech; ask: “What changes in the tense and the pronouns, and why?”\nLikely errors: *orphans oppressed (no be) · *the weak were looked down (no on) · *If you will not pay · *they would collect in direct speech.\nUse (Activity 3): learners explain in two sentences how the pact turned a principle into pressure, then write three sentences about a school or sports rule backed by a consequence, with one passive without by and one If … will … condition.',
+    pronunciationFocus: 'Passive auxiliaries are weak: “ORphans were (/wə/) opPRESSED, | the WEAK were LOOKED DOWN on, | and the POOR were SHOWN no MERcy”.\n-ed endings: oppressed /t/, looked /t/, seized /d/, treated /ɪd/, named /d/, attended /ɪd/.\nThe warning with a rise on the condition and a fall on the result: “if he did NOT PAY ↗ | they would colLECT it themSELVES ↘”.\nWord focus: OR-phans, de-FENSE-less, RIGHT-eous (/tʃ/), en-thu-si-AS-tic, or-gan-i-ZA-tion, IN-ci-dents.',
+    beforeReading: ['Ask: “If a powerful person refuses to pay a small seller, what can the seller do alone? What can a group do?” Collect two ideas.'],
+    duringReading: ['List who was harmed and how.', 'Circle every passive verb about the victims and check whether a doer is named.', 'Underline the purpose of the agreement and the Prophet’s age.', 'Number the three steps of the merchant case.'],
+    afterReading: ['Complete the Quick Challenge and support it with the merchant case.', 'Language Focus: sort doer named / not named (Activity 1), change the focus and turn the warning into direct speech (Activity 2), then explain conditional enforcement (Activity 3).', 'Predict what Ubayy did, using a conditional; check the prediction at the start of Chapter 9.'],
+    lessonPlan: '0–5 Hook: what can a small seller do alone, and what can a group do?; 5–12 Listen and read; 12–18 Victim list in pairs: who was harmed and how, with a quoted phrase for each, then the discovery question (Who is missing from these sentences?); 18–24 Freeze-frame in three steps with volunteers (unpaid merchant / members advise him / the message to Ubayy), no one represents the Prophet, the class narrates each frame in one sentence; 24–27 Quick Challenge; 27–34 Language Focus: Activity 1 in pairs, Activity 2 with a board check of the tense and pronoun changes; 34–38 Use (Activity 3): two sentences on how the pact turned principle into pressure, then three sentences about a school or sports rule with If … will …; 38–40 Exit ticket: predict what Ubayy did.',
+    discussionPoints: ['Why might the writer avoid naming the oppressors in the first sentences?', 'What makes Hilfü’l-Fudûl more than a promise?', 'What does it show that the Prophet, at twenty, became “an enthusiastic member of the organization”?'],
+    interactiveTips: ['Use the Hilfü’l-Fudûl hotspot for the name and its meaning, The Community of the Righteous.', 'Use the Justice hotspot with the merchant case.', 'Replay the last sentence and stop before learners predict Ubayy’s reaction.'],
+    differentiation: { strugglingLearners: 'Give the victims and the verbs on cards (orphans / oppressed …) and the frames “____ were ____.” and “If you do not ____, we will ____.”', fastFinishers: 'Write a six-sentence account of the merchant case as a news report: a passive headline, one reported condition and one direct quotation.' },
+    formativeAssessment: ['Explains why the passive keeps the victims in focus.', 'Converts reported speech to direct speech correctly.', 'Links the pact’s principle with a real consequence.'],
+    expectedResponses: ['Some Quraysh tribes made an agreement to help the oppressed and the Prophet, then twenty, joined it; when a merchant was not paid by Ubayy b. Halef, the members told him to demand his money again and to warn Ubayy that if he did not pay, they would collect it themselves.'],
+    transferTask: 'Describe a rule that works because a clear consequence stands behind it.',
+    teacherReflection: 'Did learners discover the focus effect of the passive themselves, and did the freeze-frame stay calm and respectful?',
+    assessmentTools: { rubric: ['Evidence of injustice', 'Passive focus', 'Reported vs direct speech', 'Principle and consequence'], exitTicket: ['Predict Ubayy’s response in one sentence with “If …”, and write one passive sentence without “by” about the victims.'] },
   },
   {
-    "chapter": "Chapter 9: Generosity and Tribal Life",
-    "timing": "50 minutes",
-    "objectives": [
-      "Recognise positive pre-Islamic qualities while evaluating how fame, gambling and tribal competition could distort generous action.",
-      "Use motive evidence to distinguish admirable behaviour from the reasons behind it.",
-      "Use qualification and contrast language to produce a balanced historical judgment."
-    ],
-    "pedagogy": "Make motive the analytical centre. Learners first record the genuinely positive evidence—Hilfü’l-Fudûl, generosity and hospitality—then separately analyse the competitive camel-slaughter example and the text’s claim about arrogance. The lesson should end with a qualified evaluation, not a positive/negative label.",
-    "priorKnowledge": [
-      "Hilfü’l-Fudûl from Chapter 8 and language for qualification."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not say generosity was absent; it criticises motives and competitive excess in some practices.",
-      "Calling the era “entirely negative” contradicts the chapter’s explicit qualification."
-    ],
-    "grammarFocus": "Not entirely; in addition; however; mostly; rather than; qualification of motive and scope.",
-    "pronunciationFocus": "Practise contrastive stress in “generosity / arrogance” and make “mostly” audible as a qualifier rather than a total claim.",
-    "beforeReading": [
-      "Ask whether a good-looking action can have mixed motives, using a neutral everyday example."
-    ],
-    "duringReading": [
-      "Underline the sentence rejecting an entirely negative picture.",
-      "Identify evidence of hospitality and generosity.",
-      "Trace how betting, fame and tribal honour change the interpretation of the camel-slaughter example."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and state both the positive evidence and the qualification.",
-      "Write a balanced evaluation using “not entirely,” “however” and “mostly.”",
-      "Distinguish action from motive in one contemporary neutral example."
-    ],
-    "lessonPlan": "1. 0–5 min: action versus motive warm-up. 2. 5–14 min: read/listen for positive evidence. 3. 14–22 min: analyse the camel competition and the stated motive. 4. 22–28 min: Quick Challenge requiring both positive and critical evidence. 5. 28–38 min: Language Focus on qualification and contrast. 6. 38–46 min: write a balanced B2 evaluation that rejects both “all good” and “all bad”. 7. 46–50 min: exit ticket—one admirable action, one qualifying motive.",
-    "discussionPoints": [
-      "Why does the chapter explicitly reject an entirely negative picture?",
-      "How can generosity remain a good action while its motive is criticised?",
-      "Which words prevent the author’s criticism from becoming an absolute claim?"
-    ],
-    "interactiveTips": [
-      "Use two columns—Action / Motive—rather than Good / Bad.",
-      "Require the qualifier “mostly” when learners refer to the chapter’s motive claim.",
-      "Return to Chapter 8 briefly only to support the positive evidence, not to retell the whole pact."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use the frame “The era was not entirely ____. For example ____. However, ____ was often/mostly driven by ____.”",
-      "fastFinishers": "Write a paragraph that distinguishes action, motive, social consequence and author qualification."
-    },
-    "formativeAssessment": [
-      "Includes positive and critical evidence.",
-      "Uses qualifiers accurately.",
-      "Distinguishes motive from action."
-    ],
-    "expectedResponses": [
-      "The chapter recognises generosity and hospitality but argues that some competitive generosity was driven mostly by pride and tribal fame."
-    ],
-    "transferTask": "Evaluate a neutral action by separating what was done, why it may have been done and what evidence supports each claim.",
-    "teacherReflection": "Did learners preserve the chapter’s mixed evaluation, or revert to an absolute moral label?",
-    "assessmentTools": {
-      "rubric": [
-        "Balanced evaluation",
-        "Motive evidence",
-        "Qualification",
-        "Contrast control"
-      ],
-      "exitTicket": [
-        "Complete: “The chapter is not entirely negative because ____. However, ____.”"
-      ]
-    }
+    chapter: 'Chapter 9: Generosity and Tribal Life', timing: '40 minutes',
+    objectives: ['Explain how the merchant case ends and why the Prophet continued to speak highly of the pact.', 'Identify the chapter’s positive evidence (Hilfu’l-Fudûl, generosity and hospitality) and its criticism (the camel contest as a type of gambling, motives driven mostly by arrogance, a tribal honor contest).', 'Discover how the writer qualifies a judgment (it certainly doesn’t make sense to call … entirely negative · mostly … rather than …), adds evidence (In addition to this, for instance) and uses the passive infinitive (continued to be slaughtered).', 'Write a balanced judgment that praises an action and still evaluates its motive.'],
+    pedagogy: 'Open with the ending of Chapter 8 (“On this, Ubayy paid the money immediately.”) and check the learners’ predictions. Then a two-sided board: Positive evidence / Criticism. Pairs place each sentence and argue about the difficult one, the generosity contest. The discovery point is the word “mostly”: learners compare the chapter’s sentence with “entirely by arrogance” and decide which one the writer could defend. The Prophet’s words and the Musnad reference are read and explained as a source, not changed.',
+    priorKnowledge: ['Adverbs of degree; passive infinitive (to be + past participle); the merchant case from Chapter 8.'],
+    anticipatedMisconceptions: ['The chapter does not say pre-Islamic Arabs lacked generosity; it questions the motive (mostly arrogance) and the competitive excess.', '“Mostly” is not “only”: the writer leaves room for real goodness.', 'The Prophet’s praise is for the pact (Hilfu’l-Fudûl), not for the camel contest.'],
+    grammarFocus: 'Targets: qualified judgment (it certainly doesn’t make sense to call the pre-Islamic era entirely negative · were driven mostly by arrogance rather than real goodness) · adding evidence (In addition to this, for instance) · passive infinitive (camels continued to be slaughtered).\nNotice (Activity 1): board the chapter’s sentence and a version with “entirely by arrogance, with no real goodness at all”. Ask: “Which one can the writer defend with the evidence in this chapter? What does ‘mostly’ leave open?” Learners formulate the job of mostly and rather than before they choose.\nBuild (Activity 2): correct entire negative / In addition this / continued to slaughter; ask: “Which word describes the adjective? Did the camels do the action or receive it?”\nLikely errors: *entire negative · *In addition this · *camels continued to slaughter (active meaning) · *mostly by arrogance than real goodness.\nUse (Activity 3): five to six sentences evaluating a behaviour that looks good but may have a mixed motive (for example a charity event organised mainly for social media), with one mostly … rather than …, one In addition to this and one “it doesn’t make sense to call … entirely …”.',
+    pronunciationFocus: 'Balanced judgment with contrastive stress: “driven MOSTly by ARrogance | RATHer than REAL GOODness”.\nThe qualification: “it CERtainly DOESn’t make SENSE | to call the pre-isLAMic era ENtirely NEGative”.\nPassive infinitive with a weak “to be”: “CAMels conTINued to be (/tə bi/) SLAUGHtered”.\nWord focus: gen-er-OS-i-ty, hos-pi-TAL-i-ty, hes-i-TA-tion, ex-TRAOR-di-nar-y, AD-mi-ra-ble, AR-ro-gance.',
+    beforeReading: ['Read the last line of Chapter 8 again. Learners share their predictions about Ubayy with a conditional, then listen for the answer in the first sentence.'],
+    duringReading: ['Check the prediction: what did Ubayy do?', 'Two columns: positive evidence / criticism, each with a quoted phrase.', 'Circle mostly, rather than and entirely.', 'Mark the sentence that links the contest with gambling.'],
+    afterReading: ['Complete the Quick Challenge with both columns visible.', 'Language Focus: keep the writer’s judgment (Activity 1), correct the qualifying and adding forms (Activity 2), then write a balanced judgment (Activity 3).', 'Evaluate a modern behaviour that looks generous by separating the action from the motive.'],
+    lessonPlan: '0–4 Prediction check: learners read their Chapter 8 predictions aloud, then listen to the first sentence; 4–11 Listen and read; 11–19 Two-column board in pairs (positive evidence / criticism) with a quoted phrase for each item, then a short class debate: where does the generosity contest belong, and why is the answer “both”?; 19–23 Quick Challenge; 23–31 Language Focus: Activity 1 as discovery (Which version can the writer defend? What does “mostly” leave open?), Activity 2 in pairs with the question “Did the camels do the action or receive it?”; 31–38 Use (Activity 3): learners evaluate a behaviour that looks good but may have a mixed motive, a partner checks that the text praises the action and still questions the motive; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the writer say it “doesn’t make sense” to call the era entirely negative?', 'Can an action be generous and still be driven mostly by arrogance?', 'How did the generosity contest turn into “a tribal honor contest”, and what did this lead to?'],
+    interactiveTips: ['Use the Generosity hotspot for the positive evidence and the Tribal Honor hotspot for the criticism.', 'Replay the camel-contest paragraph once and describe it factually, without dramatising the slaughter.', 'Read the Prophet’s words and the Musnad reference as a source: explain them, never gap or change them.'],
+    differentiation: { strugglingLearners: 'Give the two column headings with one example in each and the frame “____ was ____, but it was driven mostly by ____ rather than ____.”', fastFinishers: 'Write a seven-sentence balanced judgment with two pieces of positive evidence, one criticism, mostly … rather than … and a qualified conclusion.' },
+    formativeAssessment: ['Keeps both positive evidence and criticism.', 'Explains how mostly limits the claim.', 'Uses the passive infinitive and In addition to this correctly.'],
+    expectedResponses: ['Ubayy paid at once and the pact made Mecca safer for trade; the writer says the era was not entirely negative because of the pact and Arab generosity and hospitality, but he judges that such generosity was driven mostly by arrogance rather than real goodness and turned into a tribal honor contest.'],
+    transferTask: 'Evaluate one modern act of generosity by separating the action from its possible motive, without judging a real classmate.',
+    teacherReflection: 'Did learners hold praise and criticism together, or did they slide into “all good” or “all bad”?',
+    assessmentTools: { rubric: ['Positive and critical evidence', 'Qualification (mostly, rather than, entirely)', 'Adding and passive forms', 'Balanced judgment'], exitTicket: ['Write one sentence with “mostly … rather than …” about why people do something good.'] },
   },
   {
-    "chapter": "Chapter 10: Women in Jahiliyyah",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how women’s position varied by social status and tribe.",
-      "Use Khadija and Hind as limited examples without turning them into claims about all women.",
-      "Recognise the severe disadvantage described for many lower-status women and girls while preserving scope words."
-    ],
-    "pedagogy": "Teach variation before injustice. Learners first identify the chapter’s explicit warning that women’s position was not always the same, then compare higher-status examples with the description of many lower-status women. This sequence prevents both totalising oppression claims and misleading equality claims.",
-    "priorKnowledge": [
-      "Qualification, class variation and scope words such as many, some and not always."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter neither says every woman was powerless nor that women generally had equal rights.",
-      "High-status examples cannot erase the disadvantages described for many lower-status women."
-    ],
-    "grammarFocus": "Not always; according to; despite; however; many/some; no matter what for unrestricted condition in tribal loyalty.",
-    "pronunciationFocus": "Stress the scope markers “not always,” “some,” and “many,” and pause before “however” to make the contrast audible.",
-    "beforeReading": [
-      "Present two extreme statements—“all women had no power” / “women had equal rights”—and ask learners to wait for evidence before choosing either."
-    ],
-    "duringReading": [
-      "Highlight the sentence stating variation by status and tribe.",
-      "Mark Khadija and Hind as examples, not general rules.",
-      "Underline the description of lower-status women and the language showing scope."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by choosing the statement that preserves variation.",
-      "Write a qualified comparison using at least two scope markers.",
-      "Explain why one high-status example cannot represent every woman in a society."
-    ],
-    "lessonPlan": "1. 0–5 min: test the two extreme claims without resolving them. 2. 5–15 min: read/listen and locate the explicit variation sentence. 3. 15–23 min: compare high-status examples with lower-status evidence. 4. 23–28 min: Quick Challenge on scope. 5. 28–38 min: Language Focus on qualification and concession. 6. 38–46 min: write a balanced social comparison with clear scope. 7. 46–50 min: exit ticket—one sentence beginning “Women’s position was not always the same because…”.",
-    "discussionPoints": [
-      "Which sentence directly prevents a universal claim?",
-      "What can Khadija’s example show, and what can it not show?",
-      "How do class and tribe affect the scope of the chapter’s claims?"
-    ],
-    "interactiveTips": [
-      "Put every example beside its scope word: some / many / lower-status / higher-status.",
-      "Do not ask learners to simulate discriminatory scenes.",
-      "When an absolute word appears in discussion, require learners to replace it with the text’s actual quantity wording."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide a comparison grid: higher-status examples / many lower-status women / scope word.",
-      "fastFinishers": "Write a six-sentence comparison using not always, despite, however and one explicit warning against generalisation."
-    },
-    "formativeAssessment": [
-      "Uses scope words accurately.",
-      "Treats examples as examples rather than universal evidence.",
-      "Explains the class/status contrast."
-    ],
-    "expectedResponses": [
-      "The chapter says women’s status varied by tribe and social position; some high-status women had influence, while many lower-status women faced severe disadvantage."
-    ],
-    "transferTask": "Rewrite an overgeneralised social claim so that its scope matches the evidence provided.",
-    "teacherReflection": "Did learners retain variation and inequality together, or did one side erase the other?",
-    "assessmentTools": {
-      "rubric": [
-        "Scope control",
-        "Example use",
-        "Contrast",
-        "Source accuracy"
-      ],
-      "exitTicket": [
-        "Rewrite: “Women in Mecca…” using a qualifier that the chapter supports."
-      ]
-    }
+    chapter: 'Chapter 10: Women in Jahiliyyah', timing: '40 + 40 minutes',
+    objectives: ['Explain why physical strength, male children and tribal protection mattered so much in the desert environment, using the chapter’s reasons.', 'Describe the unlimited duty of tribal loyalty (in every circumstance, no matter what the tribe did).', 'Compare women’s experiences according to social status: some women gained a degree of freedom (Khadija, Hind bint Utbah), while many women from lower groups were mistreated and had no say.', 'Discover how no matter what removes every condition and how not always, according to, Despite and However limit a generalisation.'],
+    pedagogy: 'Lesson 1 separates two kinds of claims: unlimited claims about tribal loyalty (in every circumstance, no matter what) and limited claims about women (not always the same, some, many). Learners place sentences on a “scope line” from “all / always” to “some”. The birth-of-a-daughter paragraph is read by the teacher, calmly; the chapter ends with the reference to Surah Nahl, verses 58–59, and the verses themselves open Chapter 11. Lesson 2 opens the language: learners discover that the writer uses one set of words to make loyalty unlimited and another set to stop a generalisation about women.',
+    priorKnowledge: ['Although / despite at B1; some / many / all; the tribal honor contest from Chapter 9.'],
+    anticipatedMisconceptions: ['The chapter neither says every woman was powerless nor that women generally had equal rights: the position of women “was not always the same”.', 'Khadija and Hind bint Utbah are examples of women with wealth or higher status; they do not cancel the disadvantages of “many women from lower social and economic groups”.', 'The wish for sons is explained in the text through tribal power, respect and protection; learners should not add other explanations.'],
+    grammarFocus: 'Targets: removing every condition (in every circumstance, no matter what the tribe did) · limiting a generalisation (was not always the same · It changed according to … · Despite limitations from society, some women managed to … · However, many women …) · Despite + noun phrase vs Although + clause.\nNotice (Activity 1): read “It was important to work for the tribe and to honor and defend it in every circumstance, no matter what the tribe did.” Ask: “Was there any situation in which a member could refuse? Which words tell you?” Then point to the next paragraph: “Does the writer speak about women with the same kind of words?”\nBuild (Activity 2): complete the lines with always / according to / Despite / However; learners explain why Although and in spite do not fit.\nLikely errors: *Despite society limited them · *In spite limitations · *not always same · turning “some women” into “women” when retelling.\nUse (Activity 3): a six- to seven-sentence qualified comparison of two groups’ experiences today (for example students in a big city and in a village), with not always, according to, Despite / However and one exception that does not become a rule.',
+    pronunciationFocus: 'Unlimited duty with even stress: “in EVery CIRcumstance, | no MATter WHAT the TRIBE DID”.\nLimiting words carry the stress: “NOT ALways the SAME”, “SOME WOmen”, “MANy WOmen from LOWer SOcial and ecoNOMic GROUPS”.\nPause after the concession: “deSPITE limiTAtions from soCIety, | SOME WOmen …”.\nThe teacher reads the birth paragraph slowly and calmly; learners do not act it out.\nWord focus: CRU-cial, AN-ces-tors, DIG-ni-ty, dis-ad-VAN-taged, la-MENT-ed, mis-TREAT-ed.',
+    beforeReading: ['Write “all women”, “many women”, “some women” on the board. Ask: “Why is it risky for a history book to say ‘all’?” Learners give one reason.'],
+    duringReading: ['Lesson 1 listening: why were men seen as the tribes’ most valuable fighting members?', 'Scope line: place sentences from “all / always” to “some”.', 'Name the two women the chapter uses as examples and what each one shows.', 'Note the Surah Nahl reference and tell learners that the verses open Chapter 11.'],
+    afterReading: ['Lesson 1: Quick Challenge and a bridge note: one unlimited claim about loyalty and one limited claim about women.', 'Lesson 2: Language Focus: loyalty without limits (Activity 1), limiting a generalisation (Activity 2), then a qualified comparison (Activity 3).', 'Write a qualified comparison of two groups today that keeps exceptions as exceptions.'],
+    lessonPlan: 'Lesson 1 (40 min): 0–5 Hook: all / many / some on the board, why is “all” risky?; 5–14 Listen and read, the teacher reads the birth paragraph calmly; 14–20 Reason chain in pairs: hard desert → physical strength → men as fighters → male children → respect and protection, each link with a quoted phrase; 20–30 Scope line: pairs place six chapter sentences between “all / always” and “some” and justify each place with one word; 30–35 Quick Challenge; 35–40 Bridge note: one unlimited claim and one limited claim; Lesson 2 (40 min): 0–4 Retrieve the scope line; 4–12 Language Focus Activity 1 as discovery (Could a member ever refuse? Which words tell you?); 12–20 Activity 2 in pairs, then learners explain why Although and in spite do not fit; 20–32 Use (Activity 3): a qualified comparison of two groups today, with one exception clearly marked as an exception; 32–37 Peer check: partners underline every limiting word and challenge any hidden “all”; 37–40 Exit ticket.',
+    discussionPoints: ['Why does the writer use unlimited language for tribal loyalty and limited language for women?', 'What do the examples of Khadija and Hind bint Utbah show, and what do they not show?', 'How does the chapter connect the wish for sons with tribal power and protection?'],
+    interactiveTips: ['Use the Tribal Protection hotspot for the reason chain and the Women hotspot for the comparison by status.', 'Replay “no matter what the tribe did” and ask learners to complete “even when …”.', 'Keep the Surah Nahl reference as a source; the verses are read and explained at the start of Chapter 11, never gapped.'],
+    differentiation: { strugglingLearners: 'Give the scope line with three sentences already placed and the frames “Despite ____, some ____.” and “However, many ____.”', fastFinishers: 'Write an eight-sentence comparison with four limiting devices, one exception and one sentence explaining why the exception does not change the general pattern.' },
+    formativeAssessment: ['Distinguishes unlimited and limited claims.', 'Keeps the status-based comparison with both the examples and the general pattern.', 'Uses Despite + noun phrase and However correctly.'],
+    expectedResponses: ['Tribal loyalty was expected in every circumstance, no matter what the tribe did; the position of women was not always the same and changed according to social status and tribe, so some women like Khadija gained a degree of freedom, while many women from lower groups were mistreated and had no say.'],
+    transferTask: 'Compare two groups’ experiences today without turning one example into a rule.',
+    teacherReflection: 'Did learners notice the difference between the writer’s unlimited and limited language, and did the discussion stay respectful and based on evidence?',
+    assessmentTools: { rubric: ['Reason chain', 'Scope and qualification', 'Despite / However control', 'Respectful comparison'], exitTicket: ['Write one sentence with “no matter what” and one with “Despite …, some …” about school life.'] },
   },
   {
-    "chapter": "Chapter 11: Slavery, Poets and Media",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain slavery as an economic institution using affected-person evidence.",
-      "Explain poetry as a mechanism for preserving memory, praising tribes and attacking rivals.",
-      "Compare material power and cultural influence while clarifying the chapter’s “media” analogy."
-    ],
-    "pedagogy": "Use two institutions side by side: slavery as material/economic power and poetry as cultural/reputational power. Learners identify what each institution does, then explain why the text calls poets a kind of media without importing modern mass-media features.",
-    "priorKnowledge": [
-      "Passive voice for institutions and Chapter 10’s discussion of social status."
-    ],
-    "anticipatedMisconceptions": [
-      "The “media” comparison is functional and metaphorical; it does not claim modern mass media existed.",
-      "The chapter’s price/skill comparison among enslaved people describes a dehumanising market logic and should not be treated as a value judgment about persons."
-    ],
-    "grammarFocus": "Institutional passive voice; more…than + because; both…and; while/yet; rather than for competing interpretations.",
-    "pronunciationFocus": "Practise passive chunks such as “were bought and sold” neutrally, then contrast stress on material power versus cultural influence.",
-    "beforeReading": [
-      "Introduce two headings—Material control / Public reputation—and ask which chapter topics might fit each."
-    ],
-    "duringReading": [
-      "Mark passive verbs describing how enslaved people were treated.",
-      "List the stated functions of poetry: memory, praise, criticism and conflict.",
-      "Underline the sentence comparing poets to media and explain the basis of the analogy."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and identify whether it tests slavery, poetry or the connection between them.",
-      "Write a comparison of economic and cultural power using both…and / while.",
-      "State one limit of the media analogy."
-    ],
-    "lessonPlan": "1. 0–5 min: set up material power / cultural influence. 2. 5–15 min: read/listen for slavery as an economic institution. 3. 15–23 min: identify poetry’s social functions and the media analogy. 4. 23–28 min: Quick Challenge with institution labeling. 5. 28–38 min: Language Focus on passive and comparison. 6. 38–46 min: write a paragraph comparing the two forms of power and one limit of the analogy. 7. 46–50 min: exit ticket—one passive institutional fact and one cultural function.",
-    "discussionPoints": [
-      "Why does passive voice suit the description of an institution affecting people?",
-      "What specific social functions do poets perform in the chapter?",
-      "In what sense are poets like media, and in what sense is the comparison limited?"
-    ],
-    "interactiveTips": [
-      "Use neutral language around enslavement and avoid graphic or role-play treatment.",
-      "Make learners name the function behind the media analogy rather than just repeat the word.",
-      "Separate price/skill comparison as market evidence from any judgment of human worth."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use two boxes with sentence starters: “Enslaved people were…” / “Poets were used to…”.",
-      "fastFinishers": "Write a seven-sentence comparison of material and cultural power using two passive structures and one explicit limitation of the analogy."
-    },
-    "formativeAssessment": [
-      "Explains both institutions from chapter evidence.",
-      "Uses passive structures accurately.",
-      "States the media analogy without anachronistic overclaim."
-    ],
-    "expectedResponses": [
-      "The chapter presents slavery as economic exploitation and poetry as a tool of collective memory and reputation, describing poets as a kind of social media outlet by analogy."
-    ],
-    "transferTask": "Compare two different ways power can operate—through material control and through public reputation—using a neutral modern example.",
-    "teacherReflection": "Did learners understand the institutional comparison without normalising slavery or turning the media analogy into an anachronism?",
-    "assessmentTools": {
-      "rubric": [
-        "Institutional evidence",
-        "Passive control",
-        "Analogy accuracy",
-        "Comparison quality"
-      ],
-      "exitTicket": [
-        "Write one sentence explaining why “poets as media” is an analogy rather than a literal modern-media claim."
-      ]
-    }
+    chapter: 'Chapter 11: Slavery, Poets and Media', timing: '40 + 40 minutes',
+    objectives: ['Read and explain the verses that open the chapter (Surah Nahl, 58–59) as the Qur’an’s description of the scene at the end of Chapter 10, without changing them.', 'Explain slavery as an economic institution in Mecca from the chapter’s evidence (bought and sold, employed, a show of wealth, used as protection in war).', 'Evaluate the comparison of poets with a media outlet: what poetry did, how far the comparison works (“In a sense”), and how extreme tribalism made universal justice impossible.', 'Discover how the passive without a doer describes an institution, what the active version adds, and how “In a sense” hedges a comparison.'],
+    pedagogy: 'Lesson 1 starts by re-reading the last sentence of Chapter 10, then the verses, read once by the teacher or the audio and explained in plain English; they are never gapped or rewritten. The slavery paragraph is handled factually: learners list what the institution did to people, and the teacher names the price comparison as the market logic of the time, not a judgment of persons. Lesson 2 focuses on the poets: learners test the media comparison in the matching task and discover that “In a sense” protects the writer from claiming too much; they then turn passive sentences into active ones and decide what is gained and what is lost.',
+    priorKnowledge: ['Present and past passive; media words (archive, documentary, publicity); comparison with like.'],
+    anticipatedMisconceptions: ['“In a sense, they were serving as a media outlet” is a partial comparison; it does not claim that modern media existed.', 'The price difference between enslaved people describes the market logic of the time; it is not a value judgment about persons.', 'Not every poet praised war: the text says there were “very few poets” who invited the tribes to peace.'],
+    grammarFocus: 'Targets: hedged comparison (In a sense, they were serving as a media outlet) · passive for an institution (They were bought and sold like animals · They were employed in various tasks … · Poetry was used to keep the tribe’s history alive) and its active version with a named doer · rather than for preference (poets praised conflict and war rather than peace).\nNotice (Activity 1): ask: “Does the writer say that poets WERE the media? Which words stop him from saying it fully?” Learners explain “In a sense” before matching the five things poetry did with the modern roles.\nBuild (Activity 2): turn three passive sentences into the active (People bought and sold them …, Their owners employed them …, Poets honored tribes …); ask: “What did you have to add? What was the writer’s passive keeping in focus?”\nLikely errors: *They were buy and sold · *People were bought them · removing the hedge (*poets were the media) · *praised war rather than to make peace.\nUse (Activity 3): a six- to seven-sentence comparison of two kinds of power today (for example money and social media influence), with one hedged comparison (in a sense), one passive that describes how a system works and one rather than.',
+    pronunciationFocus: 'Passive with a weak “were”: “they were (/wə/) BOUGHT and SOLD | like ANimals”.\n-ed endings: employed /d/, honored /d/, praised /d/, criticized /d/, urged /d/, formed /d/.\nThe hedge as its own chunk: “in a SENSE, | they were SERVing as a MEdia OUTlet”.\nThe verses are read once by the teacher or the audio, calmly and without drama; learners listen and explain, they do not drill.\nWord focus: hu-mil-i-A-tion, in-sti-TU-tion, al-LI-ance, TRIB-al-ism, MIS-er-a-ble, ME-di-a.',
+    beforeReading: ['Ask: “Before newspapers and phones, how did people keep their history and spread their views?” Collect ideas, then tell learners the chapter gives one answer.'],
+    duringReading: ['Read the last sentence of Chapter 10, then listen to the verses and say in plain words what they describe.', 'List what the institution of slavery did to people (bought, sold, employed, shown as wealth, used as protection).', 'Number the things poetry did.', 'Underline “In a sense” and the final sentence about tribalism.'],
+    afterReading: ['Lesson 1: Quick Challenge and a bridge note: one thing slavery was, one thing poetry did.', 'Lesson 2: Language Focus: test the poets–media comparison (Activity 1), passive or active (Activity 2), then compare material and cultural power (Activity 3).', 'Write a hedged comparison between a past and a present form of influence.'],
+    lessonPlan: 'Lesson 1 (40 min): 0–5 Hook: how did people keep history and spread views before newspapers?; 5–10 Re-read the last sentence of Chapter 10, then the verses read once by the teacher or the audio, learners explain them in plain English; 10–18 Listen to and read the rest of the chapter; 18–26 Slavery evidence in pairs: five things the institution did to people, each with a quoted phrase, and a short teacher note on the price comparison as market logic; 26–33 Poets: pairs number what poetry did and find the sentence about the very few poets who called for peace; 33–37 Quick Challenge; 37–40 Bridge note; Lesson 2 (40 min): 0–4 Retrieve the two lists; 4–13 Language Focus Activity 1 as discovery (Did the writer say poets WERE the media?), then pairs match; 13–21 Activity 2 in pairs, then the question “What did the passive keep in focus?”; 21–33 Use (Activity 3): a comparison of two kinds of power today (money / social media influence) with one hedge, one passive and one rather than; 33–37 Pairs check that the hedge is still there and that every claim is supported; 37–40 Exit ticket.',
+    discussionPoints: ['What does it mean that slavery was “an economic institution”?', 'How far does the comparison between poets and the media work, and where does it stop?', 'Why did extreme tribalism make universal justice impossible, according to the last sentence?'],
+    interactiveTips: ['Use the Slavery hotspot for the institution and the Poets hotspot for the media comparison.', 'Treat the verses as a source: read and explain them, never gap or rewrite them.', 'Replay the last sentence of the chapter and ask what “yet” turns against.'],
+    differentiation: { strugglingLearners: 'Give the five poetry functions and five media roles on cards and the frames “In a sense, ____ was like ____.” and “____ were ____ by ____.”', fastFinishers: 'Write an eight-sentence comparison of material and cultural power in the chapter and today, with two hedges, two passives and one sentence on where the comparison stops.' },
+    formativeAssessment: ['Describes slavery as an institution, with evidence and with dignity.', 'Explains the limit of the media comparison.', 'Converts passive to active and explains the change in focus.'],
+    expectedResponses: ['Slavery was an economic institution in which people were bought, sold, employed and shown as wealth; poetry kept tribal history alive, praised the tribe and criticized enemies, so in a sense poets served as a media outlet, while extreme tribalism made universal justice impossible.'],
+    transferTask: 'Compare one historical form of influence with a modern one and state clearly where the comparison stops.',
+    teacherReflection: 'Did learners discuss slavery with dignity, and did they keep the hedge in the media comparison?',
+    assessmentTools: { rubric: ['Institutional evidence', 'Hedged comparison', 'Passive / active control', 'Dignity and sensitivity'], exitTicket: ['Write one sentence with “In a sense, …” comparing something old and something new, and one passive sentence about how a system works.'] },
   },
   {
-    "chapter": "Chapter 12: Religious Life in Mecca",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain the coexistence of dominant idolatry, belief in Allah as creator, idol mediation and denial of resurrection.",
-      "Avoid the inaccurate simplification that pre-Islamic Arabs uniformly denied Allah.",
-      "Use concession, contrast and passive reporting to represent a complex belief system."
-    ],
-    "pedagogy": "Teach the chapter as a belief-system map with apparently conflicting propositions. Learners must hold the propositions together before evaluating them. The goal is accurate representation of the chapter’s description, not resolving theological questions beyond the text.",
-    "priorKnowledge": [
-      "Concession, contrast and the difference between direct worship and mediation."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not say all pre-Islamic Arabs denied Allah.",
-      "Belief in Allah as creator is presented alongside idolatry and denial of resurrection, not as evidence that the systems were identical."
-    ],
-    "grammarFocus": "Although for concession; but/while for coexistence and contrast; passive “were seen as” for reported belief; when as contextual background during pilgrimage.",
-    "pronunciationFocus": "Use balanced stress across the contrasted propositions—creator belief / idol mediation / denial of resurrection—and pause after concession markers.",
-    "beforeReading": [
-      "Put four empty nodes on the board: Creator / Idols / Afterlife / Pilgrimage and tell learners the chapter will show how they relate."
-    ],
-    "duringReading": [
-      "Mark the statement that idolatry was dominant.",
-      "Underline the statement that Allah was accepted as creator.",
-      "Identify how idols are described as mediators and where resurrection/afterlife is denied."
-    ],
-    "afterReading": [
-      "Build a four-node belief map using only chapter statements.",
-      "Complete the Quick Challenge and explain which simplification the correct answer avoids.",
-      "Use Language Focus to write a concession sentence that holds two apparently conflicting beliefs together."
-    ],
-    "lessonPlan": "1. 0–5 min: set up the four-node belief map. 2. 5–15 min: read/listen for dominant practice and creator belief. 3. 15–23 min: add mediation, afterlife and pilgrimage evidence. 4. 23–28 min: Quick Challenge against oversimplification. 5. 28–38 min: Language Focus on concession, contrast and reported belief. 6. 38–46 min: write a qualified explanation of the belief system. 7. 46–50 min: exit ticket—one sentence beginning “Although…, the chapter also says…”.",
-    "discussionPoints": [
-      "Why is “they worshipped idols” an incomplete summary?",
-      "What role do mediators play in the chapter’s description?",
-      "Which contrast is most important for understanding the belief system accurately?"
-    ],
-    "interactiveTips": [
-      "Do not let one node erase another; every summary must account for at least three.",
-      "Use passive “were seen as” to keep a reported belief distinct from narrator endorsement.",
-      "Keep discussion within what the chapter states rather than adding outside theological detail."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the four node labels and sentence frames with although / but.",
-      "fastFinishers": "Write a five-sentence synthesis containing one concession, one passive reporting structure and one pilgrimage-context sentence."
-    },
-    "formativeAssessment": [
-      "Represents multiple beliefs simultaneously.",
-      "Uses concession without contradiction errors.",
-      "Avoids universal denial-of-Allah claims."
-    ],
-    "expectedResponses": [
-      "The chapter describes dominant idolatry alongside belief in Allah as creator, idols as mediators and denial of resurrection."
-    ],
-    "transferTask": "Summarise another complex viewpoint by preserving two ideas that may seem contradictory instead of deleting one.",
-    "teacherReflection": "Did learners represent the belief system accurately, or simplify it into a single proposition?",
-    "assessmentTools": {
-      "rubric": [
-        "Complexity preserved",
-        "Concession",
-        "Reported belief",
-        "Source boundaries"
-      ],
-      "exitTicket": [
-        "Complete: “Although ____, the chapter says ____, while ____.”"
-      ]
-    }
+    chapter: 'Chapter 12: Religious Life in Mecca', timing: '40 minutes',
+    objectives: ['Describe the religious landscape: idolatry dominant, 360 idols in and around the Ka’ba, a few individuals who had adopted religions like Christianity, and some Hanifs.', 'Explain the apparent contradiction: the Arabs accepted a higher God known as “Allah” and believed Allah to be the creator, yet mainly worshipped idols as go-betweens and did not believe in the Resurrection.', 'Discover the writer’s stance markers (Actually, Although, were seen as, Oddly enough, No doubt) and the forms that add context (a when-clause after a time noun, who for people, the passive for a practice).', 'Explain a belief system without simplifying it.'],
+    pedagogy: 'Learners draw a “belief map” with three circles (what they believed / how they worshipped / what they sought: omens, soothsayers) and fill it with quotes. The discovery centres on the writer’s voice: learners find five short signals and decide for each whether the writer is correcting, conceding, reporting, surprised or certain. The practice of walking around the Ka’ba naked is stated in the text; the teacher reads it once, factually, with the text’s own explanation (to symbolize purification from sins) and moves on.',
+    priorKnowledge: ['Relative clauses with who / when; passive for practices; stance adverbs at B1 (actually, of course).'],
+    anticipatedMisconceptions: ['The chapter does not say pre-Islamic Arabs denied Allah: they accepted a higher God known as “Allah” and believed Allah to be the creator.', '“Idols were seen as go-betweens” reports how people viewed idols, not the writer’s view.', 'The pilgrimage season brought a time when fighting was forbidden; the chapter does not say that tribal disputes ended for ever.'],
+    grammarFocus: 'Targets: the writer’s stance (Actually for correction · Although for concession · were seen as for reported belief · Oddly enough for surprise · No doubt for certainty) · a when-clause after a time noun (during the pilgrimage season, when fighting was forbidden …) · who for people (some Hanifs who believed …) · the passive for a practice (stones were placed in front of the Ka’ba).\nNotice (Activity 1): board “Idols were seen as go-betweens (mediators).” and “Oddly enough they did not believe in the Resurrection and Afterlife.” Ask: “In which sentence do we hear the writer’s own reaction? In which one do we hear what the Arabs thought?” Learners label the two voices before matching all five sentences.\nBuild (Activity 2): choose when / who / were placed; ask for each: time, person or practice?\nLikely errors: *the season which fighting was forbidden · *Hanifs which believed · *stones placed (no be) · dropping “were seen as” so that a reported belief sounds like fact.\nUse (Activity 3): learners explain the contradiction in two sentences, then describe a tradition or festival they know in four sentences with one Although, one were seen as, one when-clause after a time noun and one stance marker of their choice.',
+    pronunciationFocus: 'Stance markers as separate chunks: “ACtually, |”, “ODDly eNOUGH | …”, “NO DOUBT, | …”.\nConcession: “ALthough they MAINly WORshipped IDols, | they beLIEVED ALlah to be the creATor”.\nNumber: “three hundred and SIXty”.\nWord focus: i-DOL-a-trous, ME-di-a-tors, res-ur-REC-tion, O-mens, su-per-STI-tious, pu-ri-fi-CA-tion.',
+    beforeReading: ['Ask: “Can people hold two beliefs that seem to clash at the same time?” Take one everyday example (someone who knows sugar is unhealthy but eats it every day) and keep the idea for the reading.'],
+    duringReading: ['Belief map: what they believed / how they worshipped / what they sought, with quotes.', 'Circle Actually, Although, were seen as, Oddly enough and No doubt.', 'Underline the when-clause about the pilgrimage season.', 'Mark the sentence about kahins (soothsayers) and omens.'],
+    afterReading: ['Complete the Quick Challenge and name the sentence that proves the answer.', 'Language Focus: match the writer’s five stance moves (Activity 1), choose the context forms (Activity 2), then explain the religious contradiction (Activity 3).', 'Describe a tradition learners know with the writer’s stance tools.'],
+    lessonPlan: '0–4 Hook: can people hold two beliefs that clash?; 4–11 Listen and read; 11–19 Belief map in groups of three with quotes, then one group explains the contradiction to the class in two sentences; 19–23 Quick Challenge; 23–31 Language Focus: Activity 1 as discovery (Whose voice do we hear: the writer’s or the Arabs’?), Activity 2 in pairs with the question time, person or practice?; 31–38 Use (Activity 3): two sentences on the contradiction in the chapter, then four sentences about a tradition learners know with Although, were seen as and a when-clause; 38–40 Exit ticket.',
+    discussionPoints: ['How could people accept Allah as the creator and still mainly worship idols, according to the chapter?', 'Why does the writer say “Oddly enough” about the Resurrection and Afterlife?', 'What did the pilgrimage season change in tribal life?'],
+    interactiveTips: ['Use the Idolatry hotspot for the 360 idols and the Hanifs hotspot for those who believed in the religion of Abraham.', 'Replay the second paragraph and pause at each stance marker.', 'State the pilgrimage practice once, factually, with the text’s own explanation, then move on.'],
+    differentiation: { strugglingLearners: 'Give the five stance markers with a one-word label each (correct / concede / report / surprise / certain) and the frame “Although they ____, they ____. Idols were seen as ____.”', fastFinishers: 'Write a seven-sentence explanation of the belief system with four stance markers and one sentence that separates the writer’s view from reported belief.' },
+    formativeAssessment: ['Holds the contradiction together with evidence.', 'Distinguishes reported belief from the writer’s stance.', 'Chooses when / who / the passive for time, person and practice.'],
+    expectedResponses: ['Idolatry was dominant, with 360 idols in and around the Ka’ba, yet the Arabs accepted Allah as the creator and saw idols as go-betweens; oddly enough they did not believe in the Resurrection and Afterlife, and pilgrimage to the Ka’ba was the most popular form of worship.'],
+    transferTask: 'Describe a tradition you know and separate what people believe from your own comment.',
+    teacherReflection: 'Did learners keep reported belief and the writer’s stance apart, and was the religious content handled respectfully?',
+    assessmentTools: { rubric: ['Belief-system evidence', 'Stance markers', 'Relative clauses and passive', 'Respectful description'], exitTicket: ['Write one sentence with “were seen as” and one with “Oddly enough” about a belief or habit in your town.'] },
   },
   {
-    "chapter": "Chapter 13: Islam and a New Society",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how religious change is connected in the chapter with political authority, economic prestige and social leadership.",
-      "Distinguish system-level causes of opposition from the varied responses of individual Quraysh.",
-      "Use system-relation and consequence language to explain cross-domain effects."
-    ],
-    "pedagogy": "Use an interconnected-systems diagram rather than a single-cause explanation. Learners map religion, economy, political authority and tribal prestige, then test how a change in one domain threatens the others. A separate branch records that some Quraysh accepted the message, preventing a monolithic group claim.",
-    "priorKnowledge": [
-      "Causal networks from Chapter 6 and status/economy from Chapters 5–7."
-    ],
-    "anticipatedMisconceptions": [
-      "Opposition is not explained by theology alone in the chapter.",
-      "The Quraysh are not presented as responding uniformly; some accepted Islam while many leaders opposed it."
-    ],
-    "grammarFocus": "Interconnected; so for consequence; as well as for parallel causes; participle clause “making…” for effect; however for contrasting response.",
-    "pronunciationFocus": "Stress the domain words religion / economy / politics and use a clear reset before “however” to signal the contrasting response group.",
-    "beforeReading": [
-      "Draw three linked circles—religion, economy, politics—and ask learners to predict how change in one might affect the others."
-    ],
-    "duringReading": [
-      "Underline the explicit statement that politics, economics and religion are interconnected.",
-      "Mark evidence of trade wealth and regional respect as sources of status.",
-      "Separate the positive responses of some Quraysh from the opposition led by tribal leaders."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the systems diagram.",
-      "Write a cross-domain explanation with at least two causes and one consequence.",
-      "Add one contrast sentence showing that group response was not uniform."
-    ],
-    "lessonPlan": "1. 0–5 min: build the three-domain prediction map. 2. 5–14 min: read/listen for the explicit interconnectedness claim. 3. 14–22 min: add wealth, pilgrimage prestige and leadership evidence. 4. 22–28 min: Quick Challenge and response-group distinction. 5. 28–38 min: Language Focus on system relation and consequence. 6. 38–46 min: produce a B2 systems paragraph plus one contrasting response sentence. 7. 46–50 min: exit ticket—two linked domains and one non-uniform response.",
-    "discussionPoints": [
-      "Which domains does the chapter explicitly connect?",
-      "How do trade wealth and pilgrimage prestige contribute to leadership?",
-      "What evidence prevents us from saying all Quraysh responded in the same way?"
-    ],
-    "interactiveTips": [
-      "Require arrows between domains to be labeled with chapter evidence.",
-      "Use different symbols for system causes and human responses.",
-      "If a learner gives a single-cause explanation, ask which explicit domain in the chapter has been omitted."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide three linked circles and a frame: “Because ____, a change in ____ could affect ____.”",
-      "fastFinishers": "Write an eight-sentence system explanation that distinguishes structural interests, leadership response and individual conversion."
-    },
-    "formativeAssessment": [
-      "Uses multiple domains in the explanation.",
-      "Distinguishes leaders from all Quraysh.",
-      "Explains a cross-domain consequence."
-    ],
-    "expectedResponses": [
-      "The chapter links religion, economics and politics, showing why a new religious community could threaten existing commercial prestige and authority while still attracting some Quraysh."
-    ],
-    "transferTask": "Explain a non-religious historical change in which economic, political and social factors interact rather than operate separately.",
-    "teacherReflection": "Did learners build a systems explanation, or return to a single-cause story of opposition?",
-    "assessmentTools": {
-      "rubric": [
-        "System links",
-        "Group qualification",
-        "Cause/effect",
-        "B2 synthesis"
-      ],
-      "exitTicket": [
-        "Write: “The chapter links ____ and ____ because ____. However, not all ____.”"
-      ]
-    }
+    chapter: 'Chapter 13: Islam and a New Society', timing: '40 minutes',
+    objectives: ['Explain why the writer finds the opposition to Islam “understandable”: politics, economics and religion are interconnected.', 'Identify what the Quraysh leaders wanted to protect: the wealth they got through trade, the respect of other tribes and their status as prestigious caretakers of the pilgrimage.', 'Contrast the two responses: some Quraysh responded positively and were deeply moved by the Quran, while a large group led by the tribal leaders opposed him fiercely.', 'Discover So for a conclusion, It is understandable that …, and how a participle clause (making them cry …), as well as and a shortened relative clause (a large group led by …) pack information.'],
+    pedagogy: 'Draw a triangle (politics / economics / religion) and ask learners to predict what happens to the other two corners when one changes; the chapter then confirms the prediction. Learners discover “So” by removing it: does the third sentence still follow from the first two? For the packing task, learners first unpack each dense sentence into two or three simple sentences, then compare the versions and decide which one a history writer would choose and why.',
+    priorKnowledge: ['Not only … but also; relative clauses; -ing forms after a comma at B1.'],
+    anticipatedMisconceptions: ['“It is understandable that …” means that the opposition could be expected; it does not mean that the writer justifies it.', 'The Quraysh did not respond uniformly: some accepted Islam, while a large group led by the tribal leaders opposed it.', 'The opposition is explained through authority, wealth and status as well as belief, not through one factor alone.'],
+    grammarFocus: 'Targets: So for a conclusion drawn from a general principle · It is understandable that … (evaluation) · participle clause for an effect (…, making them cry and feel deep respect, even causing their hair to stand on end) · as well as for a second cause inside the subject (The wealth they got through trade, as well as the respect they received from other tribes, made …) · shortened relative clause (a large group led by the tribal leaders).\nNotice (Activity 1): read the first three sentences and ask: “Why is the opposition ‘understandable’? What would be lost if we removed ‘So’?” Learners state that So turns a general principle into a conclusion before choosing.\nBuild (Activity 2): unpack the three dense sentences (… and this made them cry …, Not only … but also …, a large group that was led by …); ask which version is better for a history text and why.\nLikely errors: *making them to cry · *a large group leading by the tribal leaders · Not only … without but also · So used to start a new topic instead of a conclusion.\nUse (Activity 3): learners explain in two sentences why a religious message could affect political and economic power, then write four sentences about how a change in one area of school life (for example a new phone rule) affects two others, with one So-conclusion, one as well as and one participle clause for an effect.',
+    pronunciationFocus: 'The conclusion: a pause after the principle, then “SO, | it is underSTANDable that …”.\nParticiple clause as a trailing chunk with a falling tone: “it TOUCHED their HEARTS and MINDS, | MAKing them CRY …, | EVen CAUSing their HAIR to stand on END ↘”.\nContrast of responses: “SOME of the QURaysh responded POSitively … | HOWever, a LARGE GROUP …”.\nWord focus: in-ter-con-NECT-ed, op-po-SI-tion, au-THOR-i-ty, pres-TI-gious, PROPH-et-hood, un-der-STAND-a-ble.',
+    beforeReading: ['Draw a triangle: politics / economics / religion. Ask: “If a new idea changes one corner, what happens to the other two?” Pairs give one example.'],
+    duringReading: ['Box the principle sentences and the So-conclusion.', 'List what the Quraysh leaders wanted to protect.', 'Two colours: those who accepted / those who opposed.', 'Underline the sentence that describes how the Quran touched the listeners.'],
+    afterReading: ['Complete the Quick Challenge with the triangle visible.', 'Language Focus: the job of So (Activity 1), unpack and repack the dense sentences (Activity 2), then explain interconnected opposition (Activity 3).', 'Explain how a change in one area of school life affects two others.'],
+    lessonPlan: '0–5 Triangle hook: pairs predict how a change in one corner affects the others; 5–12 Listen and read; 12–19 Pairs list what the leaders wanted to protect (three items with quotes) and mark the two responses in two colours; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as discovery (remove “So”: does the conclusion still follow?), Activity 2 as an unpack-and-repack challenge in pairs, one dense sentence per round; 32–38 Use (Activity 3): two sentences on why the opposition was understandable, then four sentences on how a new school rule affects two other areas of school life; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the writer call the opposition “understandable”, and is that the same as “right”?', 'What did the Quraysh leaders stand to lose?', 'What do the two responses in the last paragraph show about the Quraysh?'],
+    interactiveTips: ['Use the Opposition hotspot for the leaders’ reasons and the New Community hotspot for those who accepted.', 'Replay the sentence about the Quran touching hearts and minds and ask learners to count the effects.', 'Keep the listeners’ reaction as the text describes it; do not ask learners to act it out.'],
+    differentiation: { strugglingLearners: 'Give the three dense sentences already unpacked into simple sentences and the frame “____ are interconnected. So, it is understandable that ____.”', fastFinishers: 'Write a seven-sentence explanation connecting political, economic and religious interests, with one participle clause, one as well as and one sentence stating that “understandable” is not the same as “justified”.' },
+    formativeAssessment: ['Explains the principle → conclusion link.', 'Separates the two responses.', 'Unpacks participle clauses and shortened relative clauses correctly.'],
+    expectedResponses: ['Because politics, economics and religion are interconnected, the writer finds it understandable that powerful groups opposed Islam: the Quraysh leaders viewed it as a threat to their authority, wealth and status, while some Quraysh accepted it and were deeply moved by the Quran.'],
+    transferTask: 'Explain how one change can affect several areas of life at once.',
+    teacherReflection: 'Did learners separate “understandable” from “justified”, and did the unpacking make the dense sentences accessible?',
+    assessmentTools: { rubric: ['Interconnected causes', 'Two responses', 'So-conclusion and evaluation', 'Packing and unpacking'], exitTicket: ['Write one “So, it is understandable that …” sentence and one sentence with a participle clause for an effect.'] },
   },
   {
-    "chapter": "Chapter 14: Quraysh and Power",
-    "timing": "50 minutes",
-    "objectives": [
-      "Compare the social profile of early believers with prominent Quraysh while preserving the chapter’s quantity words.",
-      "Explain why dependence on the existing order cannot be reduced to extreme wealth alone.",
-      "Use ranges, approximators, concession and relative clauses without overclaiming."
-    ],
-    "pedagogy": "Make quantifier precision the core skill. Learners collect every numerical or scope marker—between, almost no, many, although—and test how the interpretation changes when those words are removed. The social analysis is then rebuilt with the qualifiers restored.",
-    "priorKnowledge": [
-      "Scope control from Chapter 10 and system-level analysis from Chapter 13."
-    ],
-    "anticipatedMisconceptions": [
-      "“Almost no super-rich among the first 46” is not “no wealthy person ever accepted Islam.”",
-      "Prominent Quraysh leaders were not all described as extremely rich; status and leadership also matter."
-    ],
-    "grammarFocus": "Between…and for range; almost no for strong approximation; many for pattern without universality; although for qualification; while for contrast; whose relative clause for precise group identification.",
-    "pronunciationFocus": "Stress quantifiers and approximators—between, almost, many—more clearly than surrounding words so their limiting function is heard.",
-    "beforeReading": [
-      "Give learners the sentence “No rich person accepted Islam” and tell them to test it against the chapter rather than accept or reject it from memory."
-    ],
-    "duringReading": [
-      "Circle the population range and the figure of 46 early believers.",
-      "Highlight “almost no,” “many,” and the qualification about leading Quraysh not always being extremely wealthy.",
-      "Mark the trade/usury contrast and the claims about status and leadership."
-    ],
-    "afterReading": [
-      "Correct the overgeneralised opening sentence using the chapter’s own quantity language.",
-      "Complete the Quick Challenge and explain which qualifier makes the answer accurate.",
-      "Use Language Focus to write a socially precise comparison of early believers and elite interests."
-    ],
-    "lessonPlan": "1. 0–5 min: overclaim test with a deliberately absolute sentence. 2. 5–14 min: read/listen and collect every range/quantifier. 3. 14–22 min: compare early-believer profile with prominent Quraysh status. 4. 22–28 min: Quick Challenge focused on qualifier accuracy. 5. 28–38 min: Language Focus on range, approximation, concession and relative clauses. 6. 38–46 min: rewrite two overgeneralised claims and justify every quantity word. 7. 46–50 min: exit ticket—one accurate sentence containing “almost” or “many”.",
-    "discussionPoints": [
-      "What changes if “almost” is removed from “almost no”?",
-      "Why does the chapter mention that prominent leaders were not always extremely wealthy?",
-      "How do status, wealth and dependence on the existing order overlap without becoming identical?"
-    ],
-    "interactiveTips": [
-      "Physically cross out qualifiers, read the stronger sentence, and ask whether the text still supports it.",
-      "Keep population figures and social interpretation in separate columns until the final synthesis.",
-      "Do not accept “all elites” or “all poor people” unless the source itself uses universal language."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give a quantifier bank—between / almost no / many / although—and ask learners to match each to the source sentence.",
-      "fastFinishers": "Write a paragraph that distinguishes wealth, prominence and institutional interest while preserving every quantifier."
-    },
-    "formativeAssessment": [
-      "Retains ranges and approximators.",
-      "Avoids wealth-only explanation.",
-      "Uses relative/concession structures accurately."
-    ],
-    "expectedResponses": [
-      "The chapter says many early Muslims were poor or enslaved and almost none of the first 46 were super-rich, while prominent Quraysh leaders were not necessarily all extremely wealthy."
-    ],
-    "transferTask": "Take an overgeneralised statistical claim and repair it by restoring the range, approximator or qualifier that the evidence requires.",
-    "teacherReflection": "Did learners understand that removing one small quantifier can turn a supported claim into an unsupported one?",
-    "assessmentTools": {
-      "rubric": [
-        "Quantifier precision",
-        "Social comparison",
-        "Concession",
-        "No overclaim"
-      ],
-      "exitTicket": [
-        "Rewrite one absolute claim from the lesson so every quantity word matches the chapter."
-      ]
-    }
+    chapter: 'Chapter 14: Quraysh and Power', timing: '40 minutes',
+    objectives: ['Describe the first Muslims with the chapter’s precise quantities (46 people in the first few years, almost no one from the super-rich, many of the poor and the slaves) and Mecca’s population (between 5,000 and 10,000).', 'Explain why the upper class opposed the new formation: their survival depended on the existing order, they considered usury lawful, and they ignored the Quran’s commands to be fair to the poor, pay zakat and give alms.', 'Discover how quantity and time expressions keep claims accurate (between … and …, almost no one, many, in the first few years), and correct almost none of, whose and Although without but.', 'Write a qualified power analysis that combines a social pattern, an economic interest and an exception.'],
+    pedagogy: 'Give learners a “claim-strength ladder” (all → many → some → almost no one → no one) and ask them to place the chapter’s quantity words on it. Then they test overclaiming: what becomes false if “Many of the first Muslims” becomes “All”? The Abu Talib sentence is the exception learners must explain: the leading figures were not always extremely wealthy, but they were prominent. The Quraysh’s own words (“Trade is like usury.”, “Never obey him.”) are reported speech, not the writer’s view.',
+    priorKnowledge: ['Quantifiers (all, many, few, none); relative pronouns; although at B1.'],
+    anticipatedMisconceptions: ['“Almost no one from Mecca’s super-rich” is not “no wealthy person ever accepted Islam”.', '“Many of the first Muslims were the poor and the slaves” does not mean all of them.', 'Not all leading figures of the Quraysh were extremely wealthy; the text gives Abu Talib as a prominent figure.'],
+    grammarFocus: 'Targets: precise quantity and scope (between 5,000 and 10,000 · almost no one · Many of the first Muslims · In the first few years) · almost none of vs almost no + noun · whose for possession (The upper class of the city, whose survival depended on the existing order, …) · Although + clause without but.\nNotice (Activity 1): ask: “Why does the writer not give one number for the population? Is ‘almost no one’ the same as ‘no one’?” Learners place the chapter’s expressions on the claim-strength ladder, then match them with what they tell us.\nBuild (Activity 2): correct almost no of / who survival / Although …, but …; ask for each: “Before a noun or before of? A person or possession? Is the contrast already in the sentence?”\nLikely errors: *almost no of the tribal leaders · *who survival · *Although …, but … · many → all when retelling.\nUse (Activity 3): a six-sentence qualified analysis of who supports or resists a change at school (for example a new timetable), with one range, one almost none of / almost no one, one whose-clause and one Although.',
+    pronunciationFocus: 'Numbers and ranges: “beTWEEN FIVE THOUsand and TEN THOUsand”, “FORty-SIX PEOple”.\nQuantity words carry the stress: “ALmost NO one”, “MANy of the FIRST MUSlims”, “ALmost NONE of the TRIBal LEADers”.\nNon-defining relative clause with pauses on both sides: “the UPper CLASS of the CIty, | whose surVIVal dePENDed on the exISTing ORder, | reFUSED …”.\nWord focus: RAD-i-cal, LAW-ful, PROM-i-nent, IN-fi-nite, pop-u-LA-tion, SU-per-rich.',
+    beforeReading: ['Draw the claim-strength ladder (all / many / some / almost no one / no one). Pairs place one sentence about their own class on it, for example “____ students walk to school.”'],
+    duringReading: ['Circle every quantity or range.', 'Underline what the upper class’s survival depended on.', 'Mark the Quraysh’s own words in quotation marks as reported speech.', 'List the three Quranic commands that these people ignored.'],
+    afterReading: ['Complete the Quick Challenge and support it with a quantity phrase.', 'Language Focus: match the quantity and time expressions (Activity 1), correct the quantifier, relative pronoun and concession (Activity 2), then write a qualified power analysis (Activity 3).', 'Write a qualified analysis of who supports or resists a change in learners’ own school.'],
+    lessonPlan: '0–5 Claim-strength ladder: pairs place a sentence about their class; 5–12 Listen and read; 12–20 Pairs place every chapter quantity on the ladder, then test one overclaim (many → all) and explain what becomes false; 20–24 Quick Challenge; 24–31 Language Focus: Activity 1 as discovery (Why not one number? Is almost no one the same as no one?), Activity 2 in pairs with the three check questions; 31–38 Use (Activity 3): a six-sentence analysis of who supports or resists a change at school, with a range, almost none of / almost no one, a whose-clause and an Although; 38–40 Exit ticket.',
+    discussionPoints: ['What does the chapter say the Prophet’s message gave the first Muslims, and why might this matter to the poor and the slaves? (Mark the second part as your inference.)', 'Why was maintaining their leadership position “of vital importance” to the leaders of the Quraysh?', 'How does the Quran, according to the chapter, distinguish between trade and usury, and why did this matter to the Quraysh?'],
+    interactiveTips: ['Use the First Muslims hotspot with the quantity phrases and the Power hotspot with the leaders’ quoted words.', 'Replay the sentence with “whose survival” and ask what belonged to whom.', 'Keep the Quraysh’s quotations as their words, not the writer’s.'],
+    differentiation: { strugglingLearners: 'Give the ladder with the chapter phrases on cards and the frames “Between ____ and ____ …”, “Almost none of ____ …” and “Although ____, ____.”', fastFinishers: 'Write an eight-sentence analysis combining a social pattern, an economic interest, one exception like Abu Talib and a sentence explaining why the exception does not break the pattern.' },
+    formativeAssessment: ['Keeps the chapter’s quantities exact.', 'Explains elite opposition with more than wealth alone.', 'Uses almost none of, whose and Although correctly.'],
+    expectedResponses: ['In the first few years there was almost no one from Mecca’s super-rich among the 46 Muslims and many of them were poor or slaves; the upper class, whose survival depended on the existing order, opposed the new faith because it distinguished trade from usury and called for fairness to the poor, zakat and alms, and because the leaders wanted to keep their leadership position.'],
+    transferTask: 'Analyse support for and resistance to a change in your school without claiming “all” or “none”.',
+    teacherReflection: 'Did learners keep the chapter’s quantities exact, and did they see status as well as wealth in the opposition?',
+    assessmentTools: { rubric: ['Quantity accuracy', 'Multi-factor explanation', 'Quantifier / whose / although control', 'Qualified exception'], exitTicket: ['Write one sentence with “almost none of” and one with “whose” about your school.'] },
   },
   {
-    "chapter": "Chapter 15: Opposition to the New Faith",
-    "timing": "50 minutes",
-    "objectives": [
-      "Trace the escalation from ridicule to fiercer opposition, persecution and social-economic boycott.",
-      "Explain why believers without strong protectors were especially exposed to harm.",
-      "Use escalation markers and relative clauses to identify changing intensity and affected groups."
-    ],
-    "pedagogy": "Build an escalation timeline with two tracks: tactic used / group most affected. Learners must see the boycott as a later intensification rather than another item in a flat list. Sensitive details remain factual and non-graphic.",
-    "priorKnowledge": [
-      "Tribal protection from earlier chapters and discourse markers for sequence/intensity."
-    ],
-    "anticipatedMisconceptions": [
-      "The boycott is not described as a peaceful disagreement; it produced severe social and economic isolation.",
-      "The most vulnerable believers were not affected equally with people who had strong protection."
-    ],
-    "grammarFocus": "At first / when / went further for escalation; would eventually for expected consequence viewed from the past; who/that relative clauses for affected groups.",
-    "pronunciationFocus": "Use rising intensity across “at first / when / went further” while keeping descriptions of suffering calm and non-dramatic.",
-    "beforeReading": [
-      "Put four empty stages on a line—mockery / intensified opposition / persecution / boycott—and tell learners to verify whether this sequence is supported."
-    ],
-    "duringReading": [
-      "Mark the shift from mockery to fiercer opposition after attacks on idols.",
-      "Identify who suffered most and why protection mattered.",
-      "Underline the boycott dates and the evidence of social/economic isolation."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the escalation timeline.",
-      "Write a cause-and-escalation explanation that identifies the most vulnerable group.",
-      "Use Language Focus to connect one earlier tactic with the later boycott without graphic elaboration."
-    ],
-    "lessonPlan": "1. 0–5 min: introduce the four-stage escalation hypothesis. 2. 5–15 min: read/listen and verify each stage. 3. 15–23 min: add a second track for who was most exposed and why. 4. 23–28 min: Quick Challenge with timeline evidence. 5. 28–38 min: Language Focus on escalation markers and relative clauses. 6. 38–46 min: write a B2 explanation of why opposition intensified and who paid the highest cost. 7. 46–50 min: exit ticket—one escalation marker and one vulnerability explanation.",
-    "discussionPoints": [
-      "Which marker shows that opposition became more severe?",
-      "Why did people without powerful protectors suffer more?",
-      "What makes the boycott qualitatively different from mockery?"
-    ],
-    "interactiveTips": [
-      "Use neutral icons or labels for tactics; do not dramatise torture or starvation.",
-      "Keep dates as anchors, not as a memorisation test.",
-      "Ask learners to distinguish cause of escalation from consequence for vulnerable groups."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the four stage labels and one sentence frame: “When ____, opposition became ____; people who ____ were especially vulnerable.”",
-      "fastFinishers": "Write an eight-sentence explanation that integrates escalation, protection and boycott consequences with careful source language."
-    },
-    "formativeAssessment": [
-      "Orders escalation accurately.",
-      "Explains unequal vulnerability.",
-      "Uses escalation markers without sensationalism."
-    ],
-    "expectedResponses": [
-      "The chapter moves from mockery to stronger opposition, targeted persecution and then a social-economic boycott, with unprotected believers suffering most."
-    ],
-    "transferTask": "Analyse a neutral conflict scenario by distinguishing escalation of tactics from unequal exposure to consequences.",
-    "teacherReflection": "Did learners recognise escalation and vulnerability while maintaining calm, evidence-based language?",
-    "assessmentTools": {
-      "rubric": [
-        "Escalation sequence",
-        "Vulnerability evidence",
-        "Discourse markers",
-        "Sensitive-content handling"
-      ],
-      "exitTicket": [
-        "Complete: “At first ____. When ____, opposition ____. Those who ____ were most vulnerable.”"
-      ]
-    }
+    chapter: 'Chapter 15: Opposition to the New Faith', timing: '40 + 40 minutes',
+    objectives: ['Explain what the Meccan leaders knew: the call to monotheism would eventually bring them face to face with people who carried out oppression, injustice, exploitation and usury.', 'Trace the escalation: mockery → fierce opposition after the Quran spoke against their idols → the suffering of Bilal → the boycott of 617–620.', 'Explain who suffered most (poor people or those without powerful protectors) and what the Prophet, Khadija and Abu Talib did during the boycott.', 'Discover the escalation signals (At first, However, when …, went further), would for a future seen from the past, where for a place and those who for a group.'],
+    pedagogy: 'Lesson 1 builds an “escalation staircase”: each step is a stage of opposition with its signal phrase. The sentences about Bilal and about hunger during the boycott are read by the teacher, calmly and once; learners note the facts and name who was most exposed, with no role-play and no dramatic retelling. Lesson 2 opens the language: learners discover that the staircase is built by the signals themselves and that “would” in the first sentence reports what the leaders expected, seen from their point in the past.',
+    priorKnowledge: ['Past simple and past continuous; will / would in reported speech; the opposition in Chapters 13–14.'],
+    anticipatedMisconceptions: ['“Would eventually bring them face to face” reports what the leaders knew would happen; it is an expectation seen from the past.', 'The boycott was not a peaceful disagreement: the text reports starvation and children dying of hunger.', 'Not everyone was affected equally: “Poor people or those without powerful protectors suffered the most.”'],
+    grammarFocus: 'Targets: escalation signals (At first · However, when … · went further) · would for a future seen from the past (They knew that the Prophet’s call to monotheism … would eventually bring them face to face with people who …) · where for a place (the places where the disbelievers were sitting) · those who for a group identified by an action (there were even those who ate tree leaves).\nNotice (Activity 1): ask: “Which words tell you this is the first stage? Which words tell you that something is worse than before?” Learners order the four moments and name each signal before you confirm.\nBuild (Activity 2): choose would / where / who; ask: “Is this the leaders’ expectation or what happened? A place or a time? A person or a thing?”\nLikely errors: *will eventually bring after “They knew that” · *the places which the disbelievers were sitting · *those which ate tree leaves · At first used for a later stage.\nUse (Activity 3): a six- to seven-sentence account of how a pressure grew step by step in a neutral modern example (for example online bullying that starts with jokes), with At first / However, when … / went further and one sentence saying who was most exposed.',
+    pronunciationFocus: 'Signals with a clear pause: “at FIRST, |”, “HOWever, | WHEN the QURan beGAN …”, “the MECcan eLITES went FURther | …”.\nExpectation: “they KNEW that | … would evENtually BRING them FACE to FACE …”.\nDates: “between six seventeen and six twenty”.\nRead the sentences about Bilal and the boycott calmly and at an even pace, without a dramatic voice.\nWord focus: mon-o-THE-ism, ex-ploi-TA-tion, BOY-cott, star-VA-tion, e-VEN-tu-al-ly, ab-ys-SIN-i-an.',
+    beforeReading: ['Ask: “How can pressure on a person grow step by step?” Pairs name three steps in a neutral school example (a joke, exclusion, a threat) without naming real people.'],
+    duringReading: ['Lesson 1 listening: what did the leaders know would happen?', 'Build the escalation staircase: mockery → fierce opposition → Bilal → boycott, each step with its signal.', 'Circle who suffered the most.', 'Mark what the Prophet, Khadija and Abu Talib did during the boycott.'],
+    afterReading: ['Lesson 1: Quick Challenge and a bridge note: first step, last step and who suffered most.', 'Lesson 2: Language Focus: order the escalation with its signals (Activity 1), choose the expectation, place and people forms (Activity 2), then explain escalation and vulnerability (Activity 3).', 'Write an account of how pressure grew step by step in a neutral modern example and who was most exposed.'],
+    lessonPlan: 'Lesson 1 (40 min): 0–5 Hook: how can pressure grow step by step? three steps in a neutral example; 5–14 Listen and read, the teacher reads the Bilal and boycott sentences calmly; 14–24 Escalation staircase in pairs: four steps, each with its signal phrase and one quoted fact, then a whole-class check; 24–31 Vulnerability: pairs find who suffered most and what three people did to support the Muslims during the boycott; 31–36 Quick Challenge; 36–40 Bridge note; Lesson 2 (40 min): 0–4 Rebuild the staircase from memory; 4–12 Language Focus Activity 1 as discovery (Which words mark the first stage? Which words say it got worse?); 12–20 Activity 2 in pairs with the three check questions; 20–32 Use (Activity 3): an account of how pressure grew in a neutral example such as online bullying that starts with jokes, with the three signals and one sentence on who was most exposed; 32–37 Pairs check the signals and add one action that could protect the most exposed person; 37–40 Exit ticket.',
+    discussionPoints: ['Why did the opposition become fierce when the Quran began to speak about their idols?', 'Why did poor people and those without powerful protectors suffer the most?', 'What does the response of the Prophet, Khadija and Abu Talib during the boycott show?'],
+    interactiveTips: ['Use the Bilal hotspot for the most exposed believers and the Boycott hotspot for 617–620.', 'Replay the first sentence and ask whether it tells us what happened or what the leaders expected.', 'Do not role-play or dramatise the persecution or the hunger.'],
+    differentiation: { strugglingLearners: 'Give the four staircase steps on cards with the signals printed and the frames “At first, ____. However, when ____, ____. They went further and ____.”', fastFinishers: 'Write an eight-sentence account of escalation with four signals, one would-expectation and one sentence explaining why unequal protection meant unequal harm.' },
+    formativeAssessment: ['Orders the stages with their signals.', 'Explains would as an expectation seen from the past.', 'Names who was most exposed, calmly and with evidence.'],
+    expectedResponses: ['At first the leaders mocked the new religion; when the Quran spoke ill of their idols they opposed the Prophet fiercely, the most vulnerable such as Bilal suffered the most, and between 617 and 620 the elites went further with a social and economic boycott that caused starvation.'],
+    transferTask: 'Describe how a pressure can grow step by step and name one action that protects the most exposed person.',
+    teacherReflection: 'Did learners handle persecution calmly, and did they connect escalation with unequal protection?',
+    assessmentTools: { rubric: ['Escalation sequence', 'Expectation vs outcome', 'Relative clauses', 'Sensitive handling'], exitTicket: ['Write one sentence with “At first, …” and one with “… went further and …” about how a problem grew.'] },
   },
   {
-    "chapter": "Chapter 16: Hostility and Tribal Fanaticism",
-    "timing": "50 minutes",
-    "objectives": [
-      "Explain how idol-related interests, afterlife accountability and tribal protection are presented as barriers to individual choice.",
-      "Analyse the protection-pressure paradox of tribal belonging.",
-      "Use condition, predicted consequence and otherwise to model what happens when a person conforms or dissents."
-    ],
-    "pedagogy": "Organise the chapter around two conditional systems: leaders fear loss of idol-based political/economic influence, while individuals fear loss of tribal protection. Learners then evaluate how a protective institution can simultaneously constrain choice.",
-    "priorKnowledge": [
-      "Tribal protection from Chapters 8–10 and condition/result language."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not say tribal protection had no value; the threat of losing real protection is what makes the pressure powerful.",
-      "Economic, political, religious and afterlife motives should remain distinct even when they interact."
-    ],
-    "grammarFocus": "If for condition; would/could for expected or possible consequence; otherwise for cost of nonconformity; because of this for linking social pressure to individual decision.",
-    "pronunciationFocus": "Pause between condition and consequence and stress “otherwise” as the turning point that introduces the cost of dissent.",
-    "beforeReading": [
-      "Ask learners to complete two neutral condition frames: “If a leader loses ____, then…” / “If a member loses protection, then…”."
-    ],
-    "duringReading": [
-      "Mark the leaders’ expected political/economic losses connected with abandoning idols.",
-      "Identify the paragraph on afterlife accountability separately.",
-      "Trace the condition linking disagreement with the tribe to loss of protection."
-    ],
-    "afterReading": [
-      "Draw a two-level protection-pressure diagram: leader interests / individual security.",
-      "Complete the Quick Challenge and identify which conditional chain it tests.",
-      "Use Language Focus to explain why a system can protect and constrain at the same time."
-    ],
-    "lessonPlan": "1. 0–5 min: condition/consequence warm-up. 2. 5–14 min: read/listen for leaders’ idol-related interests and afterlife concerns. 3. 14–23 min: analyse tribal protection and the cost of dissent. 4. 23–28 min: Quick Challenge using the two-level diagram. 5. 28–38 min: Language Focus on if / would / could / otherwise. 6. 38–46 min: write a protection-pressure paradox explanation. 7. 46–50 min: exit ticket—one benefit of protection and one condition under which it becomes pressure.",
-    "discussionPoints": [
-      "Why does losing protection matter so much in the chapter?",
-      "How are leaders’ interests different from an ordinary member’s security problem?",
-      "How can one institution provide security and still reduce freedom of choice?"
-    ],
-    "interactiveTips": [
-      "Use separate arrows for leader-level and individual-level consequences.",
-      "Do not collapse all hostility into one motive; ask which paragraph supports each motive.",
-      "Require learners to state the protective benefit before criticising the pressure mechanism."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use two if–then frames and a final “otherwise” sentence.",
-      "fastFinishers": "Write a seven-sentence paradox analysis distinguishing political/economic interests, afterlife accountability and individual protection."
-    },
-    "formativeAssessment": [
-      "Explains both protection and pressure.",
-      "Separates different motive levels.",
-      "Uses condition/consequence language accurately."
-    ],
-    "expectedResponses": [
-      "Tribal belonging offered vital protection, but the possibility of losing that protection could make independent religious choice dangerous."
-    ],
-    "transferTask": "Explain a neutral situation where belonging provides security but can also create pressure to conform.",
-    "teacherReflection": "Did learners understand why protection itself can become leverage, rather than treating tribe as simply harmful?",
-    "assessmentTools": {
-      "rubric": [
-        "Paradox",
-        "Motive distinction",
-        "Conditional language",
-        "Balanced evaluation"
-      ],
-      "exitTicket": [
-        "Write: “Tribal protection helped because ____. However, if ____, then ____.”"
-      ]
-    }
+    chapter: 'Chapter 16: Hostility and Tribal Fanaticism', timing: '40 minutes',
+    objectives: ['Identify the reasons the chapter gives for the Quraysh’s hostility: the demand to abandon their old religions, the call to worship a single Allah, the threat to the trade and authority built on idols, and refusal to believe in punishment in the afterlife.', 'Explain tribal fanaticism as a barrier: a member who stepped outside his tribe’s views would be left unprotected, which the writer compares to being stateless today.', 'Discover Otherwise (= if he did the opposite), the hypothetical conditional (would lose … if they lost), the passive with would (would be judged) and Because of this.', 'Analyse why “freedom of choice” could not work at that time.'],
+    pedagogy: 'Sort the reasons for hostility into four boxes (religious / economic and political / afterlife / tribal) with a quoted phrase each. Then focus on one pair of sentences: “A tribal member could not show the courage to step outside the views of his tribe. Otherwise, he would be left unprotected by his tribe …”. Learners paraphrase Otherwise in their own words before any rule is given and then test the writer’s modern analogy (in today’s terms … stateless): what does it help us see, and where does it stop?',
+    priorKnowledge: ['Second conditional; passive with would; tribal loyalty from Chapter 10.'],
+    anticipatedMisconceptions: ['“Otherwise” here means “if he did step outside his tribe’s views”, not “because” or “in addition”.', 'The chapter does not say tribal protection had no value; losing real protection is what made the pressure so strong.', '“In today’s terms … stateless” is the writer’s modern analogy, not a seventh-century term.'],
+    grammarFocus: 'Targets: Otherwise for the consequence of the opposite choice (Otherwise, he would be left unprotected by his tribe) · hypothetical conditional (would lose both their political and economic influence if they lost their idols) · passive with would (they would be judged) · Because of + noun / pronoun (Because of this, …).\nNotice (Activity 1): board the two sentences with Otherwise. Ask: “What would happen if a member did step outside the tribe’s views? Which word takes us to that situation?” Pairs paraphrase Otherwise before choosing.\nBuild (Activity 2): correct if they would lose / they would judge / Because this; ask: “Which clause needs would? Did the Quraysh judge, or were they judged? A clause or a noun after the link?”\nLikely errors: *if they would lose · *they would judge (active meaning) · *Because this · Otherwise used as “in addition”.\nUse (Activity 3): five to six sentences analysing a choice limited by group pressure (for example holding a different opinion in a friend group or team), with one Otherwise, one if + past / would and one Because of this.',
+    pronunciationFocus: 'Otherwise as a separate chunk followed by the consequence: “OTHerwise, | he would be LEFT unproTECted by his TRIBE”.\nConditional with a weak “would”: “would (/wəd/) LOSE BOTH their poLItical and ecoNOMic INfluence | if they LOST their IDols”.\nPassive with would: “they would be (/bi/) JUDGED”.\nThe analogy with pauses: “which, | in TOday’s TERMS, | means being STATEless”.\nWord focus: hos-TIL-i-ty, a-BAN-don, AF-ter-life, fa-NAT-i-cism, STATE-less, op-por-TU-ni-ty.',
+    beforeReading: ['Ask: “What makes it hard to disagree with your own group?” Pairs give one reason without naming real people.'],
+    duringReading: ['Four boxes: religious / economic and political / afterlife / tribal reasons, each with a quoted phrase.', 'Underline Otherwise and the consequence after it.', 'Circle “in today’s terms” and mark it as a modern analogy.', 'Box the final sentence about freedom of choice.'],
+    afterReading: ['Complete the Quick Challenge with the four boxes visible.', 'Language Focus: the meaning of Otherwise (Activity 1), correct the condition, passive and cause link (Activity 2), then analyse constrained choice (Activity 3).', 'Analyse a choice limited by group pressure in learners’ own world.'],
+    lessonPlan: '0–5 Hook: what makes it hard to disagree with your own group?; 5–12 Listen and read; 12–20 Four-box sort in pairs with quotes, then a quick check: which two reasons does the writer call “main” ones?; 20–24 Quick Challenge; 24–31 Language Focus: Activity 1 as discovery (What would happen if he did step outside? Which word takes us there?), Activity 2 in pairs with the three check questions; 31–38 Use (Activity 3): learners analyse a choice limited by group pressure (a different opinion in a friend group or team), then test the writer’s analogy: what does “stateless” help us see, and where does it stop?; 38–40 Exit ticket.',
+    discussionPoints: ['Which reasons for hostility are religious, which are economic or political, and how do they connect?', 'Why could “freedom of choice” not work at that time, according to the writer?', 'How helpful is the modern analogy of being stateless, and what are its limits?'],
+    interactiveTips: ['Use the Idols hotspot for the link between idols, trade and authority, and the Tribal Fanaticism hotspot for the barrier to choice.', 'Replay the Otherwise sentences and ask learners to say the hidden “if …” aloud.', 'The chapter ends with “The leaders in Mecca tried everything to stop the new Muslims”; Chapter 17 opens with an example (Abu Jahl), so ask learners to predict what kind of example will follow.'],
+    differentiation: { strugglingLearners: 'Give the four boxes with one quote already placed and the frames “____ could not ____. Otherwise, ____ would ____.” and “Because of this, ____.”', fastFinishers: 'Write a seven-sentence analysis that connects two reasons for hostility, uses Otherwise and a hypothetical conditional, and evaluates the stateless analogy.' },
+    formativeAssessment: ['Separates and connects the reasons for hostility.', 'Paraphrases Otherwise accurately.', 'Uses the hypothetical conditional and the passive with would correctly.'],
+    expectedResponses: ['The Quraysh were hostile because the Quran demanded that they abandon their old religions and worship a single Allah, which threatened the trade and authority built on idols; a tribal member could not step outside his tribe’s views, otherwise he would be left unprotected, so freedom of choice could not work at that time.'],
+    transferTask: 'Analyse one choice that is limited by group pressure and state what the person would lose otherwise.',
+    teacherReflection: 'Did learners see how social pressure limits individual choice, and did they treat the modern analogy as an analogy?',
+    assessmentTools: { rubric: ['Reasons for hostility', 'Otherwise and conditions', 'Passive with would', 'Analogy evaluation'], exitTicket: ['Write one sentence with “Otherwise, …” and one with “If …, … would …” about disagreeing with a group.'] },
   },
   {
-    "chapter": "Chapter 17: Islam Against Ignorance",
-    "timing": "50 minutes",
-    "objectives": [
-      "Synthesize the historical meaning of Jahiliyyah with the chapter’s broader moral extension while keeping analogy separate from historical fact.",
-      "Explain the chapter’s dignity claim concerning enslaved people, women, poor and weak people.",
-      "Use inclusive, contrastive and time-spanning language to write a careful final synthesis."
-    ],
-    "pedagogy": "Use the final chapter as a three-layer synthesis: historical seventh-century meaning, conceptual moral extension, and modern analogy. Learners must label which layer each sentence belongs to before evaluating the ethical message. This prevents the modern comparison from being treated as new historical evidence.",
-    "priorKnowledge": [
-      "Chapter 2 definition of Jahiliyyah; Chapters 10–16 on inequality, coercion and opposition; source/interpretation distinction."
-    ],
-    "anticipatedMisconceptions": [
-      "The broader moral use of Jahiliyyah does not justify labeling whole modern nations, cultures or peoples with the term.",
-      "The chapter’s modern analogy is an ethical comparison, not evidence about seventh-century events."
-    ],
-    "grammarFocus": "Both…and also for holding meanings together; whether…or for inclusion; on the other hand for ethical contrast; has always… / will continue… for past-present-future perspective.",
-    "pronunciationFocus": "Use balanced stress across the listed groups—slaves, women, poor, weak—and a clear pause before the modern analogy so historical claim and present comparison remain distinct.",
-    "beforeReading": [
-      "Draw three boxes: Historical meaning / Moral pattern / Modern analogy, and remind learners that evidence must stay in the correct box."
-    ],
-    "duringReading": [
-      "Mark the Quraysh leaders’ unity accusation separately from the chapter’s response.",
-      "Underline the dignity statement covering enslaved people, women, poor and weak people.",
-      "Place the final twenty-first-century comparison in the analogy box rather than the historical-evidence box."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge with explicit layer labeling.",
-      "Write a final synthesis containing one historical claim, one conceptual extension and one carefully signposted modern analogy.",
-      "Finish with one concrete dignity-based action rather than a label applied to another group."
-    ],
-    "lessonPlan": "1. 0–5 min: set up the three-layer synthesis frame. 2. 5–14 min: read/listen for the historical claim and leaders’ reported accusation. 3. 14–22 min: analyse the dignity statement and broader moral definition. 4. 22–28 min: Quick Challenge with layer labels. 5. 28–38 min: Language Focus on inclusion, contrast and time perspective. 6. 38–46 min: write a final B2 synthesis keeping history, concept and analogy distinct. 7. 46–50 min: exit ticket—one dignity action and one sentence explaining why analogy is not historical evidence.",
-    "discussionPoints": [
-      "Which sentences belong to historical description, conceptual extension and modern analogy?",
-      "How does the chapter define human worth across differences of status?",
-      "How can an ethical warning be applied without turning it into a careless label for other peoples?"
-    ],
-    "interactiveTips": [
-      "Require learners to label the layer before commenting on any sentence.",
-      "Use speaker labels for the Quraysh accusation and narrator/chapter response.",
-      "Redirect broad modern labels into specific behaviour or dignity-based actions."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide three sentence starters: “Historically… / More broadly, the chapter says… / As a modern analogy…”",
-      "fastFinishers": "Write an eight-sentence synthesis that includes all three layers, one inclusive structure and one explicit warning about analogy."
-    },
-    "formativeAssessment": [
-      "Keeps historical evidence and modern analogy separate.",
-      "Explains the dignity claim accurately.",
-      "Uses inclusive/contrastive language responsibly."
-    ],
-    "expectedResponses": [
-      "The final chapter keeps Jahiliyyah as a historical term, extends it as a moral pattern of arrogance and injustice, and contrasts that pattern with a dignity-centered ethical vision."
-    ],
-    "transferTask": "Write one concrete action that protects dignity in a present-day setting without labeling an entire community or culture.",
-    "teacherReflection": "Did learners finish with a layered, source-aware synthesis rather than a broad modern condemnation?",
-    "assessmentTools": {
-      "rubric": [
-        "Historical/concept/analogy separation",
-        "Dignity evidence",
-        "Inclusive language",
-        "Responsible synthesis"
-      ],
-      "exitTicket": [
-        "Write one historical sentence, one moral-pattern sentence and one present action; label each."
-      ]
-    }
-  }
+    chapter: 'Chapter 17: Islam Against Ignorance', timing: '40 + 40 minutes',
+    objectives: ['Explain the leaders’ accusation (“You have destroyed our unity.”) and how the chapter answers it with human honor and dignity.', 'Explain the chapter’s two meanings of the Age of Ignorance: pre-Islamic Arabia, and any culture, society or way of thinking that comes from human arrogance.', 'Distinguish historical description from the writer’s modern analogy (The dreadful situation in the twenty-first century reminds us of …).', 'Discover how the conclusion widens its claim (both … and also, Whether … or …, On the other hand, has always … and will continue, reminds us of) and how reported speech keeps an accusation as someone else’s words.'],
+    pedagogy: 'The final chapter is a synthesis. Lesson 1 sorts the chapter into three layers on the board: historical evidence (Abu Jahl, the leaders’ accusation), principle (human honor and dignity, respect for every person) and modern analogy (the twenty-first century). Groups then build a book-wide timeline of the Age of Ignorance with one key sentence from earlier chapters. Lesson 2 shows how the conclusion widens its claim: learners discover that each signal does a different job and that reported speech turns the leaders’ words into their accusation, not the writer’s view.',
+    priorKnowledge: ['Reported speech with backshift; relative clauses; not only … but also and the definition of Jahiliyyah from Chapter 2.'],
+    anticipatedMisconceptions: ['“You have destroyed our unity” is the leaders’ accusation, not the writer’s judgment.', 'The comparison with the twenty-first century is the writer’s analogy, not historical evidence about seventh-century Mecca.', 'The wider meaning of the Age of Ignorance is a way of thinking that comes from arrogance; it must not be used to label whole modern peoples or cultures.'],
+    grammarFocus: 'Targets: widening a claim (The term both refers to pre-Islamic Arabia and also describes … · Whether they are slaves, women, poor, or the weak, they all deserve respect · On the other hand · Islam has always stood against it and will continue to do so · reminds us of) · reported speech with backshift (“You have destroyed our unity.” → they said that he had destroyed their unity) · a noun phrase that works like a shortened relative clause (Abu Jahl, one of the leading figures of opposition to Islam, … = who was one of …).\nNotice (Activity 1): ask: “Does the writer mean only the seventh century when he says ‘Age of Ignorance’? Which words let one term hold two meanings?” and “Which sentence is about today, and is it evidence or a comparison?” Learners name each job before matching.\nBuild (Activity 2): report the leaders’ words and expand the phrase about Abu Jahl; ask: “Whose view is this now? What changed: the tense, the pronouns, or both?”\nLikely errors: *they said that he has destroyed our unity · *both refers … also describes (without and) · *they all deserves respect · treating “reminds us of” as proof.\nUse (Activity 3): a seven- to eight-sentence synthesis that keeps three layers apart: one historical fact from the book, one principle, and one present-day comparison marked with reminds us of or in today’s terms.',
+    pronunciationFocus: 'Two meanings held together: “the TERM BOTH reFERS to pre-isLAMic ARabia | and ALso deSCRIBES …”.\nInclusive list with rising items and a final fall: “WHETHer they are SLAVES ↗, WOmen ↗, POOR ↗, or the WEAK ↘, | they ALL deSERVE reSPECT”.\nPast–future frame: “isLAM has ALways STOOD against it | and WILL conTINue to DO so”.\nReported speech with a weak “had”: “they SAID that he had (/həd/) deSTROYED their UNity”.\nWord focus: op-PRES-sion, im-mo-RAL-i-ty, AR-ro-gance, DREAD-ful, DIG-ni-ty, re-SPECT.',
+    beforeReading: ['Ask: “Can a word from history describe something that happens today? Give one example (for example ‘a dark age’).” Pairs say what such a comparison helps us see and what it can hide.'],
+    duringReading: ['Lesson 1 listening: what did the leaders accuse the Prophet of?', 'Three layers: historical evidence / principle / modern analogy, each with a quoted sentence.', 'Box the two meanings of the Age of Ignorance.', 'Underline the Whether … or sentence and list the groups it includes.'],
+    afterReading: ['Lesson 1: Quick Challenge and a bridge note: one historical fact, one principle and one analogy from the chapter.', 'Lesson 2: Language Focus: match the widening signals (Activity 1), report the accusation and expand the phrase about Abu Jahl (Activity 2), then synthesise across time (Activity 3).', 'Write a synthesis that keeps historical evidence, principle and present-day comparison distinct.'],
+    lessonPlan: 'Lesson 1 (40 min): 0–5 Hook: can a word from history describe today? What does it help us see, what can it hide?; 5–13 Listen and read; 13–21 Three layers in pairs: historical evidence / principle / modern analogy, each with a quoted sentence, whole-class check; 21–32 Book-wide timeline in groups of four: each group adds one key sentence from two earlier chapters (the Chapter 2 definition, Chapter 7 classes, the Chapter 8 pact, the Chapter 15 boycott) and links it to the principle of human honor; 32–36 Quick Challenge; 36–40 Bridge note; Lesson 2 (40 min): 0–4 Retrieve the three layers; 4–13 Language Focus Activity 1 as discovery (Which words let one term hold two meanings? Is the modern sentence evidence or comparison?), then pairs match; 13–20 Activity 2 in pairs with the questions “Whose view?” and “What changed?”; 20–33 Use (Activity 3): a seven- or eight-sentence synthesis with one historical fact, one principle and one present-day comparison clearly marked; 33–37 Pairs label the three layers in each other’s texts; 37–40 Exit ticket.',
+    discussionPoints: ['How does the chapter answer the leaders’ claim “You have destroyed our unity”?', 'What does “Islam respects humans as humans” mean for the slaves, women, the poor and the weak described in this book?', 'What does the comparison with the twenty-first century help us see, and why must it stay an analogy?'],
+    interactiveTips: ['Use the Human Honor hotspot for the principle and the Against Ignorance hotspot for the two meanings of the term.', 'Replay the last paragraph and ask learners to mark past, present and future.', 'Link back to Chapter 2: the Prophet believed Jahiliyyah could arise again at any moment.'],
+    differentiation: { strugglingLearners: 'Give the three layer labels with one sentence each and the frames “The term both ____ and also ____.”, “Whether ____ or ____, ____.” and “____ reminds us of ____.”', fastFinishers: 'Write a ten-sentence synthesis across the book with four widening signals, one reported accusation and one sentence on the limits of the modern analogy.' },
+    formativeAssessment: ['Keeps historical evidence, principle and analogy distinct.', 'Reports the accusation as the leaders’ words.', 'Uses both … and also, Whether … or and has always … will continue accurately.'],
+    expectedResponses: ['The leaders accused the Prophet of destroying their unity, but the chapter places human honor and dignity at the heart of Islam: whether slaves, women, poor or weak, all deserve respect; the Age of Ignorance is both a historical period and a way of thinking that comes from human arrogance and can still exist today.'],
+    transferTask: 'Write about one present-day situation in which respect for human dignity is needed, clearly marking your comparison as a comparison.',
+    teacherReflection: 'Did the synthesis connect the whole book while keeping evidence, principle and analogy apart, and did the discussion avoid labelling modern peoples?',
+    assessmentTools: { rubric: ['Book-wide synthesis', 'Evidence / principle / analogy', 'Widening signals and reported speech', 'Respectful scope'], exitTicket: ['Write one sentence with “both … and also …” about a word with two meanings, and one reported-speech sentence about something a classmate said.'] },
+  },
 ];
 
 export const meccaB2TeacherGuideMetadata: TeacherGuideMetadata = {
-  title:'Mecca B2 — Teacher Guide',
-  subtitle:'TYMM-aligned, evidence-first guide with chapter-specific Language Focus integration',
-  level:'B2',
-  estimatedDuration:'17 chapter lessons × approximately 50 minutes',
-  targetAudience:'B2 English learners',
-  targetLearners:'B2 learners ready to analyse historical relationships, qualify claims, separate evidence from inference, and defend interpretations in connected speech and writing.',
-  purpose:'Use the supplied Mecca B2 story, chapter audio, Word Notes, hotspots, Quick Challenges and the actual Language Focus for all seventeen story chapters to build evidence-based listening, reading, speaking and writing without strengthening the source.',
-  approachDesc:'Each chapter follows the same meaning-first TYMM route: YDAB1 listening and YDAB2 reading establish argument and evidence; the Quick Challenge checks comprehension; the actual chapter Language Focus develops discourse and grammar awareness from source sentences; YDAB3 speaking and YDAB4 writing then transfer those functions into connected B2 analysis, comparison, evaluation or synthesis.',
-  assessmentEvidence:'Quick Challenges with textual justification, chapter Language Focus noticing and production, claim-evidence-explanation responses, analytical discussion, exit tickets, the Knowledge Check, B2 Language Review and Final Challenge.',
-  assessmentOverview:{ formative:['Quick Challenge + textual justification','Language Focus guided noticing','Connected B2 oral/written transfer','Exit ticket on evidence and qualification','Teacher observation and feedback'], summative:['Knowledge Check','B2 Language Review / retrieval work where used as assessment evidence','Final Challenge'] },
-  readingFramework:{ before:'Predict one relationship from the title/image and mark it as provisional.', during:'Track direct facts, causes, contrasts, quantities, concessions, conditions, passive information focus and source-attribution language.', after:'Check comprehension first, then analyse Language Focus in the original sentence, then produce a connected B2 transfer response.' },
-  vocabularyApproach:{ selection:'Prioritise Word Notes and only the additional words necessary to understand the chapter argument or Language Focus.', method:'Infer from context, audio and sentence relationship before giving a direct definition.', recycling:'Reuse chapter vocabulary in Language Focus production, exit tickets and cross-chapter synthesis.' },
-  grammarApproach:'Teach language as a tool for historical explanation. Start with the exact source sentence, identify the discourse/grammar function, complete the prepared Language Focus task, and reuse the form in connected B2 production. Do not reduce B2 Language Focus to naming connectors when the chapter is actually working on qualification, passive information focus, counterfactuality, quantity, causation, condition or synthesis.',
+  title: 'Mecca B2 Teacher Guide',
+  subtitle: 'TYMM-aligned guide with inductive grammar, evidence-based analysis and 40-minute lesson plans',
+  level: 'B2',
+  estimatedDuration: '17 chapter units: Chapters 1, 3–6, 8–9, 12–14 and 16 are planned for 40 minutes; Chapters 2, 7, 10–11, 15 and 17 are planned as 40 + 40 minutes. Whole-book review pages follow separately.',
+  targetAudience: 'B2 English learners, especially upper-secondary students.',
+  targetLearners: 'B2 learners ready to analyse historical relationships, qualify claims, separate evidence from interpretation, and defend their views in connected speech and writing.',
+  purpose: 'Develop evidence-based B2 listening, reading, speaking and writing through the history of pre-Islamic Mecca and the rise of Islam, using the chapter audio, Word Notes, hotspots, Quick Challenges and the Language Focus attached to every story chapter, without strengthening what the source says.',
+  approachDesc: `Every story chapter follows the TYMM route. YDAB1 listening and YDAB2 reading establish meaning, argument and evidence; the Quick Challenge checks comprehension. Grammar is then learned inductively, as the Maarif Model expects for English: in the Language Focus, learners first NOTICE a form in a real chapter sentence and work out what it does (the rule is confirmed only after they formulate it), then BUILD it in controlled, meaningful practice, and finally USE it in connected YDAB3 speaking and YDAB4 writing about their own world. At B2 the language serves analysis: stance, hedging, qualification, cause and consequence, and the difference between evidence and interpretation. Denser or more sensitive chapters are divided into two 40-minute lessons rather than compressed. See ${TYMM_FOREIGN}.`,
+  assessmentEvidence: '17 Quick Challenges with textual justification, evidence and stance checks, chapter Language Focus tasks and connected production, exit tickets, Knowledge Check, Vocabulary Challenge, B2 Language Review and Final Challenge.',
+  assessmentOverview: { formative: ['Quick Challenge after each chapter', 'Evidence, stance and scope checks', 'Language Focus: noticing and controlled practice', 'Connected B2 speaking/writing transfer', 'Exit tickets', 'Knowledge Check', 'Vocabulary Challenge', 'B2 Language Review'], summative: ['Final Challenge'] },
+  readingFramework: { before: 'Activate only what the chapter needs, with a short chapter-specific prediction, image, card task or question, and keep predictions provisional until the text confirms them.', during: 'Listen first for gist, then read and follow the chapter’s own evidence structure: definition, source vs interpretation, timeline, figures and hedges, causal chain, system, voice, scope, escalation or analogy.', after: 'Complete the Quick Challenge, then the chapter’s Language Focus (notice → build → use), then a connected B2 transfer about the learners’ own world. In 40 + 40 chapters, Lesson 1 secures meaning and evidence and Lesson 2 develops language and production.' },
+  vocabularyApproach: { selection: 'Prioritise chapter Word Notes and the analytical words needed for the chapter’s key relationship.', method: 'Infer meaning from context, hotspot or audio before any direct explanation.', recycling: 'Reuse vocabulary in Language Focus production, exit tickets, the Vocabulary Challenge and the B2 Language Review.' },
+  grammarApproach: 'Inductive and text-based. Start from the story sentence, ask a meaning question (What does this form tell us? How sure is the writer? Whose view is this?), let learners formulate the rule in their own words, then confirm it and practise it in context. Rule explanations appear in the app only after learners answer. At B2, language is a tool for analysis: stance, hedging, qualification, information focus, cause and condition. Do not replace the chapter work with unrelated grammar drills.',
   grammarSequence: [
-  "Chapter 1: Macro-context → local focus; because for cause; on the other hand for contrast; relative clauses for identifying empires and regions.",
-  "Chapter 2: Definition by rejection: not the lack of…; because for explanation; although for concession; on the contrary for extending a claim carefully.",
-  "Chapter 3: Direct statement versus passive source description; It can be said that… for cautious interpretation; Had + past participle…, would have… for unreal past condition.",
-  "Chapter 4: After / later / during / in the fifth century for chronology; since for background reason; sequence language that distinguishes institutions.",
-  "Chapter 5: Up to for upper estimate; approximately for cautious comparison; comparison with ship capacity; This number shows… for evidence-to-inference; gradually for historical development.",
-  "Chapter 6: Because of / due to + noun phrase; this made…; in addition; therefore/so; connectors for combining several mechanisms.",
-  "Chapter 7: As a result of…; was designed to make…; so…that; paired comparatives such as richer/poorer; consequence clauses.",
-  "Chapter 8: Passive voice for victims/actions; to prevent… for purpose; if…would for conditional enforcement and stated consequence.",
-  "Chapter 9: Not entirely; in addition; however; mostly; rather than; qualification of motive and scope.",
-  "Chapter 10: Not always; according to; despite; however; many/some; no matter what for unrestricted condition in tribal loyalty.",
-  "Chapter 11: Institutional passive voice; more…than + because; both…and; while/yet; rather than for competing interpretations.",
-  "Chapter 12: Although for concession; but/while for coexistence and contrast; passive “were seen as” for reported belief; when as contextual background during pilgrimage.",
-  "Chapter 13: Interconnected; so for consequence; as well as for parallel causes; participle clause “making…” for effect; however for contrasting response.",
-  "Chapter 14: Between…and for range; almost no for strong approximation; many for pattern without universality; although for qualification; while for contrast; whose relative clause for precise group identification.",
-  "Chapter 15: At first / when / went further for escalation; would eventually for expected consequence viewed from the past; who/that relative clauses for affected groups.",
-  "Chapter 16: If for condition; would/could for expected or possible consequence; otherwise for cost of nonconformity; because of this for linking social pressure to individual decision.",
-  "Chapter 17: Both…and also for holding meanings together; whether…or for inclusion; on the other hand for ethical contrast; has always… / will continue… for past-present-future perspective."
-],
-  skillsFocus:{ reading:'TYMM YDAB2: analyse main claims, textual evidence, qualification, cause-result, contrast, condition and source perspective.', listening:'TYMM YDAB1: follow the supplied audio for argument, detail, stance, qualification and precise recovery of evidence.', speaking:'TYMM YDAB3: defend, qualify, compare and synthesize interpretations in connected B2 speech.', writing:'TYMM YDAB4: produce connected analytical paragraphs that preserve evidence, scope and source certainty.' },
-  valuesFocus:['D14 Saygı — human dignity, accurate representation and respectful disagreement','D5 Duyarlılık — sensitivity to vulnerability, inequality and coercive pressure','D6 Dürüstlük — source fidelity, precise attribution and qualified claims','D16 Sorumluluk — responsible use of wealth, authority and group membership','D20 Yardımseverlik — practical support for people facing injustice or exclusion','D9 Merhamet — humane response to suffering without sensationalizing it'],
-  languageFocus:['All seventeen story chapters have an actual chapter-specific Language Focus drawn from the student-facing text.','Use Language Focus only after story meaning and Quick Challenge comprehension are secure.','Return to the original sentence before discussing form or function.','Complete the prepared noticing/matching/choice task, then the chapter production/reflection task.','The final goal is connected B2 meaning: analysis, qualification, comparison, evaluation or synthesis rather than isolated grammar display.','After Chapter 17, use the separate B2 Language Review to recycle the major discourse functions across the whole book.'],
-  differentiationNotes:'For support, reduce the number of evidence sentences or target forms while preserving the same B2 communicative purpose, and provide oral rehearsal plus claim-evidence frames. For extension, require second evidence, counter-reading, explicit qualification and cross-chapter synthesis.',
-  sensitiveNotes:{ title:'Source fidelity and respectful discussion', notes:['Do not turn the story’s descriptions into claims about all Arabs, all women, all tribes or modern societies.','Distinguish historical evidence, theological framing, source attribution, learner inference and the chapter’s own modern analogy.','Discuss slavery, persecution, hunger and gender inequality without sensationalizing suffering.','Use quantity and qualification language exactly where the source limits a claim.'] },
+    'Ch1: wide-to-narrow organisation (these, the time, After describing …); because vs because of; relative clauses (which we now call …, that for things)',
+    'Ch2: defining by contrast (is not …, is called … because …, Although …, On the contrary); as well as, In fact, in other words',
+    'Ch3: It can be said that …; is described in … as …; cleft It was … that …; had not yet been discovered',
+    'Ch4: since = because; After / Later / During / In for a long history',
+    'Ch5: evidence vs judgment; up to, approximately, around, gradually',
+    'Ch6: summary This + causing verb; because vs because of / due to vs made …; created by (reduced relative)',
+    'Ch7: practice vs result; As a result of + noun; so … that; were concentrated; the rich richer and the poor poorer; designed to',
+    'Ch8: passive without by (victim focus) vs passive with by; active version; reported condition → direct speech',
+    'Ch9: mostly … rather than …; entirely negative; In addition to this; continued to be slaughtered',
+    'Ch10: no matter what; not always, according to, Despite, However for limiting a generalisation',
+    'Ch11: In a sense (hedged comparison); passive for an institution vs active with a doer; rather than',
+    'Ch12: stance markers (Actually, Although, were seen as, Oddly enough, No doubt); when after a time noun; who; were placed',
+    'Ch13: So for a conclusion; It is understandable that …; participle clause (making them cry); as well as; led by',
+    'Ch14: between … and …, almost no one, many, in the first few years; almost none of; whose; Although without but',
+    'Ch15: At first, However, when …, went further; would for a future seen from the past; where; those who',
+    'Ch16: Otherwise; would lose … if they lost; would be judged; Because of this',
+    'Ch17: both … and also; Whether … or; On the other hand; has always … and will continue; reminds us of; reported speech (had destroyed)',
+  ],
+  skillsFocus: { listening: 'TYMM YDAB1: follow narration and argument for gist, stance, qualification and precise evidence.', reading: 'TYMM YDAB2: analyse main claims, source vs interpretation, figures and hedges, cause-result chains, scope, voice and analogy.', speaking: 'TYMM YDAB3: defend, qualify, compare and evaluate interpretations respectfully in connected B2 speech.', writing: 'TYMM YDAB4: produce connected analytical paragraphs that preserve evidence, scope and source certainty and transfer chapter language to new contexts.' },
+  valuesFocus: ['D6 Honesty — source fidelity, precise attribution and qualified claims', 'D14 Respect — human dignity, accurate representation of beliefs and respectful disagreement', 'D5 Sensitivity — sensitivity to vulnerability, inequality and pressure on the weak', 'D9 Compassion — a humane response to suffering without sensationalising it', 'D16 Responsibility — responsible use of wealth, authority and group membership', 'D20 Helpfulness — practical support for people facing injustice or exclusion'],
+  languageFocus: ['Every one of the 17 story chapters has an active Language Focus set of three activities built as notice → build → use.', 'Use Language Focus after basic comprehension and the Quick Challenge.', 'Always start from the story sentence: ask what the form does before naming it.', 'Let learners answer first; the explanation shown after each answer confirms the rule they have found.', 'At B2 the last step is always connected production about the learners’ own world (analysis, comparison, evaluation or synthesis), not a retelling of the chapter.', 'For 40 + 40 chapters, use the second lesson for Language Focus and connected production rather than re-reading the whole story.', 'After Chapter 17, the B2 Language Review recycles the main discourse functions of the whole book.'],
+  differentiationNotes: 'Reduce linguistic load without lowering the reasoning target: one evidence sentence at a time, cards, audio replay, sentence frames and oral rehearsal. Extend by adding a second piece of evidence, a counter-reading, explicit qualification or cross-chapter synthesis, not by introducing outside facts.',
+  sensitiveNotes: { title: 'Source fidelity and respectful discussion', notes: ['Qur’anic verses, prophetic sayings and prayers are read, explained and matched to meanings; they are never gapped, “corrected” or rewritten.', 'Keep religious explanations within the wording of the story, and keep source references (verse, hadith) visible.', 'Do not turn the story’s descriptions into claims about all Arabs, all women, all tribes or modern peoples.', 'Distinguish historical evidence, source attribution, the writer’s interpretation, learners’ inference and the chapter’s modern analogy.', 'Discuss slavery, persecution, hunger and the treatment of women and girls factually and with dignity; never role-play violence and never let anyone represent the Prophet.', 'Preserve qualifiers such as up to, approximately, mostly, many, almost no one and It can be said that.', 'Do not introduce legends, events, dates or biographical details that are not in this B2 book.'] },
+  globalCitizenship: {
+    title: 'Global Citizenship and Cultural Bridges',
+    description: 'The story of pre-Islamic Mecca raises questions every society faces: how wealth is gained and shared, who protects the weak, how loyalty to a group can limit justice and free choice, and why every human being deserves respect.',
+    themes: [
+      { title: 'Standing up for the unprotected:', description: 'Hilfü’l-Fudûl was an agreement to help people who had been oppressed in Mecca, and it helped a merchant get his money back (Chapters 8–9). Discuss fair, non-violent ways in which communities protect people with less power today.' },
+      { title: 'Fair and unfair economies:', description: 'Chapter 7 describes lending at usury and a system that made the rich richer and the poor poorer. Discuss how debt and unequal access to resources affect families today, using careful and qualified language.' },
+      { title: 'Loyalty and justice:', description: 'Tribal loyalty was expected “no matter what the tribe did”, and extreme tribalism made universal justice impossible (Chapters 10–11, 16). Discuss the difference between belonging to a group and supporting it when it is wrong.' },
+      { title: 'Equal human dignity:', description: 'Chapter 17 says that whether they are slaves, women, poor or the weak, they all deserve respect. Connect this with respectful treatment of every person at school and online.' },
+    ],
+    actions: ['Agree on a class procedure for helping a classmate who is treated unfairly, based on evidence and respectful steps rather than humiliation.', 'Find one local organisation that supports people in need and write three qualified sentences about what it does.', 'Check one news story or social media post for overclaiming: underline words like all, never and always and rewrite them with careful language.'],
+  },
+  appendices: {
+    exitTicket: ['One claim from today’s chapter and the sentence that supports it is …', 'One language pattern I discovered today, and what it does in the sentence, is …', 'One place where the writer (or I) could easily overclaim, and a more careful wording, is …'],
+    miniProject: { title: 'A Pact for Our School', desc: 'In groups, reread Chapters 8–9 about Hilfü’l-Fudûl. Write a one-page “pact” for your school in clear English: what problem it answers, whom it protects, what members promise to do and what happens if the promise is not kept. Quote one sentence from the book, and use at least three Language Focus patterns from the book (for example a passive without by, an If … will … condition and mostly … rather than …). Present the pact to the class in two minutes.' },
+    reflectivePrompt: { title: 'Loyalty, Courage and Respect', desc: 'The book says that a tribal member could not show the courage to step outside the views of his tribe, and that whether they are slaves, women, poor, or the weak, they all deserve respect. Write eight to ten sentences about a time when it was hard to disagree with your group or to treat someone fairly. What did you do, what happened as a result, and what would you do differently now?' },
+  },
+  valuesEducation: {
+    title: 'TYMM Values in Action',
+    description: `Use only values genuinely supported by the chapter. Require evidence first, then connect the value to an observable, age-appropriate action. See ${TYMM_VALUES}.`,
+    items: [
+      { label: 'D6 Honesty', value: 'Accurate figures, hedges, attribution and the difference between evidence and interpretation are made visible in learners’ language.' },
+      { label: 'D14 Respect / D5 Sensitivity', value: 'Respect and sensitivity guide discussion of beliefs, women, enslaved people, the poor and persecution.' },
+      { label: 'D16 Responsibility', value: 'Responsible use of wealth, authority and group membership is linked to the chapters on usury, power and tribal loyalty.' },
+      { label: 'D20 Helpfulness / D9 Compassion', value: 'Hilfü’l-Fudûl and the support given during the boycott connect values with concrete help for people facing injustice.' },
+    ],
+    questions: ['Which sentence supports the value?', 'What action could show it?', 'Which part is source evidence and which part is your own application?'],
+  },
 };
