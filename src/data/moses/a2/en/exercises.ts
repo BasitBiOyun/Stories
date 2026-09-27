@@ -41,16 +41,122 @@ export const mosesA2VocabularyChallengePairsPolished = [
 ];
 
 export const mosesA2LanguageReviewExercises: Exercise[] = [
-  { id: 'moses-a2-language-review-1-form-function', type: 'matching', title: 'Match the Meaning', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern mean?', matchingPairs: [{ left: 'was/were + -ing', right: 'background action in the past' }, { left: 'because + clause', right: 'a reason' }, { left: 'so + clause', right: 'a result' }, { left: 'then / after + time', right: 'sequence' }], correctAnswer: { 'was/were + -ing': 'background action in the past', 'because + clause': 'a reason', 'so + clause': 'a result', 'then / after + time': 'sequence' }, explanation: 'These phrases help us tell past events, reasons, results and order.', feedback: { correct: 'Correct.', incorrect: 'Think: past action, reason, result or order.' } },
-  { id: 'moses-a2-language-review-2-ability', type: 'multiple-choice', title: 'Past Inability', instructions: 'Choose the sentence about something a person could not do.', question: 'Which sentence is correct?', options: ['He could not continue because he was tired.', 'He cannot continue yesterday.', 'He will not could continue.'], correctAnswer: 0, explanation: '“Could not” means “was not able to”.', feedback: { correct: 'Correct.', incorrect: 'Look for could not + base verb.' } },
-  { id: 'moses-a2-language-review-3-purpose', type: 'fill-blanks', title: 'Why?', instructions: 'Complete the sentence with one word.', question: 'Which word completes the sentence?', fillBlanksText: 'She went to the library [blank] study.', correctAnswer: 'to', explanation: '“To + verb” can tell us why someone does something.', feedback: { correct: 'Correct.', incorrect: 'Use the infinitive marker before the base verb.' } },
-  { id: 'moses-a2-language-review-4-command-report', type: 'drag-drop', title: 'Say It or Report It', instructions: 'Put the examples in the right group.', question: 'Which sentences give a command, and which tell us about a command?', dragDropGroups: [{ group: 'Direct command', items: ['Wait here!', 'Open the book!'] }, { group: 'Reported instruction', items: ['She told me to wait.', 'He told us to open the book.'] }], correctAnswer: { 'Direct command': ['Wait here!', 'Open the book!'], 'Reported instruction': ['She told me to wait.', 'He told us to open the book.'] }, explanation: 'Imperatives give a command directly. Tell + person + to + verb reports an instruction.', feedback: { correct: 'Correct.', incorrect: 'Separate the exact command from the sentence that reports it.' } },
-  { id: 'moses-a2-language-review-5-future-time', type: 'fill-blanks', title: 'Future', instructions: 'Complete the sentence.', question: 'Which word completes the sentence?', fillBlanksText: 'When we finish this work, we [blank] go home.', correctAnswer: 'will', explanation: '“When” tells us the time. “Will” tells us what happens next.', feedback: { correct: 'Correct.', incorrect: 'Use the future helper before the base verb.' } },
-  { id: 'moses-a2-language-review-6-change', type: 'multiple-choice', title: 'Change', instructions: 'Choose the sentence that shows a change.', question: 'Which sentence uses become correctly?', options: ['The room became quiet.', 'The room become quiet yesterday.', 'The room became to quiet.'], correctAnswer: 0, explanation: 'Become + adjective describes a change of state.', feedback: { correct: 'Correct.', incorrect: 'Look for became + adjective.' } },
-  { id: 'moses-a2-language-review-7-place-movement', type: 'matching', title: 'Place and Moving', instructions: 'Match each expression with its meaning.', question: 'What does each expression mean?', matchingPairs: [{ left: 'in front of / behind', right: 'position' }, { left: 'in the middle of', right: 'central position' }, { left: 'arrive at / arrive in', right: 'reach a place' }, { left: 'look for', right: 'search for someone or something' }], correctAnswer: { 'in front of / behind': 'position', 'in the middle of': 'central position', 'arrive at / arrive in': 'reach a place', 'look for': 'search for someone or something' }, explanation: 'Journey chapters recycle useful place and movement language.', feedback: { correct: 'Correct.', incorrect: 'Separate position, arrival and searching.' } },
-  { id: 'moses-a2-language-review-8-question-ability', type: 'true-false', title: 'Can You?', instructions: 'Choose true or false.', question: '“Can you...?” can ask if someone is able to do something.', correctAnswer: true, explanation: 'Can you...? is a common A2 question about ability.', feedback: { correct: 'Correct.', incorrect: 'Think about the meaning of can.' } },
-  { id: 'moses-a2-language-review-9-sequence', type: 'sequencing', title: 'Story Order', instructions: 'Put the sentences in a clear order.', question: 'What comes first, next and last?', sequencingItems: [{ id: '1', text: 'At first, there was a problem.' }, { id: '2', text: 'Someone decided to help.' }, { id: '3', text: 'Then the person acted.' }, { id: '4', text: 'In the end, the situation changed.' }], correctAnswer: ['1','2','3','4'], explanation: '“At first”, “then” and “in the end” help put a short story in order.', feedback: { correct: 'Correct.', incorrect: 'Start with the situation, then the action, then the result.' } },
-  { id: 'moses-a2-language-review-10-transfer', type: 'reflection', title: 'Use It', instructions: 'Write four short sentences about daily life.', question: 'Can you use the story language in your own sentences?', correctAnswer: null, explanation: 'Use the same story language in your own short sentences.', feedback: { correct: 'Use all four starters and make each sentence meaningful.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — “Yesterday, I could not ... because ...”', mode: 'Individual' }, { question: 'Sentence 2 — “I decided to ... to ...”', mode: 'Individual' }, { question: 'Sentence 3 — “Can you ...?”', mode: 'Pair' }, { question: 'Sentence 4 — “When ..., I will ...”', mode: 'Pair' }] },
+  // LOOK — notice what the book's language does, across chapters.
+  {
+    id: 'moses-a2-language-review-1-in-progress-or-finished', type: 'drag-drop', title: 'Look: Was It Happening or Did It Happen?',
+    instructions: 'Read the sentences from Chapters 5, 7 and 11. Was the action already happening at that moment, or is it a finished action? Put each sentence in the right group.',
+    question: 'What is the difference between “was walking” and “saw”?',
+    dragDropGroups: [
+      { group: 'Already happening at that moment', items: ['One day he was walking in the bazaar.', 'They were watering their animals.', 'The king was sitting on his throne.'] },
+      { group: 'A finished action', items: ['He saw two men fighting.', 'Soon, he found a well.', 'He met the king and his helpers.'] },
+    ],
+    correctAnswer: {
+      'Already happening at that moment': ['One day he was walking in the bazaar.', 'They were watering their animals.', 'The king was sitting on his throne.'],
+      'A finished action': ['He saw two men fighting.', 'Soon, he found a well.', 'He met the king and his helpers.'],
+    },
+    explanation: 'Was/were + verb-ing (was walking, were watering, was sitting) shows an action that was already happening at that moment. It paints the background of the scene. The past simple (saw, found, met) tells a finished action, often a new event in that scene: Moses was walking, and then he saw two men.',
+    feedback: { correct: 'Well done. Was/were + -ing is the background; the past simple is the event.', incorrect: 'Look at the verb. Does it have was/were + -ing, or is it one past verb (saw, found, met)?' },
+  },
+  {
+    id: 'moses-a2-language-review-2-can-could', type: 'matching', title: 'Look: Able or Not Able?',
+    matchingHeadings: { left: 'From the book', right: 'Meaning' },
+    instructions: 'Read the sentences from Chapters 8, 12, 14 and 15. Match each one with its meaning.',
+    question: 'What do can, cannot, could and could not mean in these sentences?',
+    matchingPairs: [
+      { left: 'All of my magicians can do this.', right: 'They are able now.' },
+      { left: 'He cannot come with us.', right: 'He is not able now.' },
+      { left: 'They could see the sandy ground!', right: 'They were able then, in the past.' },
+      { left: 'The children and the old could not walk fast …', right: 'They were not able then, in the past.' },
+    ],
+    correctAnswer: {
+      'All of my magicians can do this.': 'They are able now.',
+      'He cannot come with us.': 'He is not able now.',
+      'They could see the sandy ground!': 'They were able then, in the past.',
+      'The children and the old could not walk fast …': 'They were not able then, in the past.',
+    },
+    explanation: 'Can + base verb means able now, and cannot + base verb means not able now. The girls and the king are speaking, so they use can and cannot. Could and could not are the past: the story tells us what people were able or not able to do at that time. After can, cannot, could and could not, use the base verb without “to”.',
+    feedback: { correct: 'Correct. Can and cannot are about now; could and could not are about the past.', incorrect: 'Ask two questions for each sentence: able or not able? Now or in the past?' },
+  },
+  {
+    id: 'moses-a2-language-review-3-future', type: 'multiple-choice', title: 'Look: Will and Going To',
+    instructions: 'Read the words of three speakers from Chapters 2, 6 and 14. Then choose the best answer.',
+    question: 'The helpers and magicians: “A boy will be born from the Children of Israel …” Moses’s friend: “Now they are going to catch you.” Moses (pbuh): “We will leave at night.” When do the actions in these sentences happen?',
+    options: ['before the person speaks', 'at the same moment as the person speaks', 'later, after the person speaks'],
+    correctAnswer: 2,
+    explanation: 'Will + base verb and are going to + base verb talk about the future. The helpers and magicians make a prediction (will be born), Moses’s friend says what he expects soon (are going to catch), and Moses gives a plan (will leave). After that, the story tells what really happened in the past: “They left Egypt at night.”',
+    feedback: { correct: 'Correct. Will and going to look forward to the future.', incorrect: 'Look at the verbs: will be born, are going to catch, will leave. Has the action happened yet?' },
+  },
+  // PRACTISE — use the forms in the book's own sentences.
+  {
+    id: 'moses-a2-language-review-4-reason-result', type: 'word-bank', title: 'Practise: Reason, Result, Different Idea',
+    instructions: 'Complete the sentences from Chapters 1, 3, 6 and 9 with words from the bank. Two words are not needed.',
+    question: 'Which word gives a reason, which gives a result, and which gives a different idea?',
+    fillBlanksText: '[blank] his fear, he was rude to the Children of Israel. … Moses’s mother was so sad. [blank] she knew that Allah was kinder to the baby Moses than she was. … He was so sorry [blank] he accidentally caused someone\'s death. … He was very old, [blank] he couldn’t help his daughters.',
+    wordBank: ['Because of', 'But', 'because', 'so', 'if', 'to'],
+    correctAnswer: ['Because of', 'But', 'because', 'so'],
+    explanation: '“Because of” + a noun gives a reason: because of his fear. “Because” + a sentence also gives a reason: because he accidentally caused someone’s death. “So” gives the result: he was very old, so he couldn’t help. “But” gives a different idea: she was sad, but she knew Allah was kinder to her baby.',
+    feedback: { correct: 'Well done. You linked reasons, results and a different idea.', incorrect: 'For each gap, ask: is the next part a reason, a result or a different idea? Is there a noun or a whole sentence after the gap?' },
+  },
+  {
+    id: 'moses-a2-language-review-5-verb-patterns', type: 'choose-form', title: 'Practise: What Comes After the Verb?',
+    instructions: 'Choose the correct form to complete each sentence from Chapters 1, 9 and 12.',
+    question: 'After “forced them”, “began” and “gave them to Moses”, which verb form comes next?',
+    formChoices: [
+      { sentence: 'He forced them [choice] dangerous work for no money.', options: ['do', 'to do', 'doing'], answer: 1 },
+      { sentence: 'Moses began [choice] with the family.', options: ['to stay', 'stay', 'stayed'], answer: 0 },
+      { sentence: 'Allah gave them to Moses (pbuh) [choice] him.', options: ['for help', 'helping', 'to help'], answer: 2 },
+    ],
+    correctAnswer: null,
+    explanation: 'Force + person + to + verb: “forced them to do”. Begin + to + verb: “began to stay”. To + verb can also answer the question “Why?”: Allah gave the miracles to Moses to help him. We do not say for help him.',
+    feedback: { correct: 'Correct. Forced them to …, began to …, and to + verb for a purpose.', incorrect: 'Look at the word before the gap: forced them, began, gave them … . Which form has “to”?' },
+  },
+  {
+    id: 'moses-a2-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Practise: Fix One Past Verb',
+    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
+    question: 'Can you correct two irregular past verbs and one was/were + -ing?',
+    errorItems: [
+      { sentence: 'He thinked Moses was crazy.', error: 'thinked', options: ['thought', 'think', 'thinking'], answer: 0 },
+      { sentence: 'When the sun rised, they arrived at the sea.', error: 'rised', options: ['rising', 'raised', 'rose'], answer: 2 },
+      { sentence: 'His helpers and soldiers was standing around him.', error: 'was standing', options: ['were stand', 'were standing', 'was stood'], answer: 1 },
+    ],
+    correctAnswer: null,
+    explanation: '“Think” and “rise” are irregular: think → thought, rise → rose (not thinked, rised). “Raised” is a different verb. His helpers and soldiers are more than one person, so we use were + verb-ing: were standing.',
+    feedback: { correct: 'Well done. You fixed all three sentences.', incorrect: 'Compare with the book: the king’s opinion in Chapter 12, the morning in Chapter 14 and the palace scene at the end of Chapter 11.' },
+  },
+  {
+    id: 'moses-a2-language-review-7-a-decision', type: 'sentence-building', title: 'Practise: The Queen’s Decision',
+    instructions: 'Put the words in order to make Queen Asiye’s words from Chapter 4.',
+    question: 'How does the queen say her decision?',
+    sentenceChunks: ['I will', 'take him', 'to the palace', 'and look after', 'him.'],
+    correctAnswer: null,
+    explanation: 'I will + base verb shows a decision: the queen decides at that moment. After “and”, the second verb is also a base verb, and we do not need to say will again: will take him … and look after him.',
+    feedback: { correct: 'Well done. I will + verb … and + verb shows her decision.', incorrect: 'Start with “I will”. What will she do first, and where? Then add the second action with “and”.' },
+  },
+  // USE — take the language into a new, everyday context.
+  {
+    id: 'moses-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Rainy Morning',
+    instructions: 'This text is not from the book. Complete it with words you practised in the book. Two words are not needed.',
+    question: 'Can you use the book’s language to write about a morning in your own life?',
+    fillBlanksText: 'Last Monday, I [blank] walking to school with my little brother. It was cold and rainy, [blank] we walked fast. My brother could not find his hat. I gave him my scarf [blank] keep him warm. He smiled and said, “Tomorrow I [blank] bring my own hat.”',
+    wordBank: ['was', 'so', 'to', 'will', 'were', 'because'],
+    correctAnswer: ['was', 'so', 'to', 'will'],
+    explanation: '“I was walking” shows the background: the action was happening at that time. “So” gives the result of the cold rain. “To keep him warm” says why. “I will bring” is a promise for tomorrow. Like Moses at the well, the writer sees a need and helps.',
+    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: background or event? reason or result? why? now or tomorrow?' },
+  },
+  {
+    id: 'moses-a2-language-review-9-transfer', type: 'reflection', title: 'Use: A Time Someone Needed Help',
+    instructions: 'Write four or five short sentences about a time you or someone in your family helped a person: at home, at school or in your town. Say your sentences to a partner first.',
+    question: 'Can you use the language of the whole book to tell a short story from your own life?',
+    correctAnswer: null,
+    explanation: 'Example: “Last week, I was waiting for the bus with my mother. An old man was standing near us. His bag was very heavy, so he could not carry it. My mother told me to help him. I carried his bag to the bus. Next time, I will help again because it is the right thing to do.”',
+    feedback: { correct: 'Check your sentences: was/were + -ing, a past verb, could not, because or so, told … to …, will.', incorrect: '' },
+    discussionPrompts: [
+      { question: 'Sentence 1 — The background: “Last …, I was …-ing …” or “We were …-ing …”', mode: 'Individual' },
+      { question: 'Sentence 2 — The problem: “He/She could not … because …” or “…, so he/she …”', mode: 'Individual' },
+      { question: 'Sentence 3 — The help: “My … told me to … .” “I decided to … to …” (helped, carried, gave …)', mode: 'Pair' },
+      { question: 'Sentence 4 — Next time: “Next time, I will …”', mode: 'Pair' },
+    ],
+  },
 ];
 
 export const mosesA2FinalChallengeExercisesPolished: Exercise[] = [
