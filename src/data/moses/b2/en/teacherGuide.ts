@@ -206,7 +206,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Responsibility: acknowledging unintended harm and seeking to repair it.'],
   },
   {
-    chapter: 'Chapter 10: Escape to Midian', timing: '40 minutes',
+    chapter: 'Chapter 10: A Prayer for Forgiveness', timing: '40 minutes',
     objectives: ['Follow the quoted Qur’anic passage: admission and prayer, forgiveness, a promise for the future, and the second dispute.', 'Explain how Moses’s repentance changes his future conduct.', 'Notice what each quoted line does (admits, reports an answer, promises, accuses) and interpret “plain” from context.', 'Write about learning from a mistake, moving from past to future.'],
     pedagogy: 'The whole chapter is a Qur’anic passage: play the audio or read it aloud calmly as a model; learners follow silently, then read the key lines aloud in meaning groups. Analysis stays on function: learners label each line “looks back” or “looks forward” and discover the move from admission to commitment. The verse is matched and explained, never gapped, corrected or rewritten.',
     priorKnowledge: ['Chapter 9 events; present perfect for a present result; will / will never.'],
@@ -228,7 +228,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Accountability: admitting a mistake and committing to better conduct.'],
   },
   {
-    chapter: 'Chapter 11: The Women Shepherds', timing: '40 minutes',
+    chapter: 'Chapter 11: Escape to Midian', timing: '40 minutes',
     objectives: ['Explain the warning, Moses’s prayer and the conditions of his flight to Midian.', 'Explain why the warning was believable (“one of those who give sincere advice”).', 'Understand participle clauses of manner and reason (looking about in a state of fear, fearing pursuit, hiding during the day), concession (However ↔ Although) and without + -ing.', 'Describe a difficult journey with concession and manner language.'],
     pedagogy: 'Give learners a blank route from Egypt to a watering hole outside Midian and ask them to annotate it with the chapter’s conditions (no preparation, hot sand, travelling by night). The language work grows from the annotations: learners notice that the chapter often says how Moses moved with an -ing phrase, and they expand these phrases into full clauses to check the meaning.',
     priorKnowledge: ['However / although; -ing forms; Chapter 10 events.'],
@@ -250,7 +250,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Refuge: people fleeing danger need a safe place and trustworthy help.'],
   },
   {
-    chapter: 'Chapter 12: Shu’ayb’s Home', timing: '40 minutes',
+    chapter: 'Chapter 12: The Women Shepherds', timing: '40 minutes',
     objectives: ['Describe Moses’s physical state on arrival and the situation of the two women at the well.', 'Interpret “Forgetting his thirst” as evidence of the priority Moses gives to helping others.', 'Understand could only … after + past perfect and use a reported offer (asked if he could), until + clause and surprised that + clause.', 'Distinguish what the text states from what we infer about Moses’s character.'],
     pedagogy: 'Start with needs: learners list what Moses needed (rest, sandals, food, drink) and then find the sentence where he forgets them. This contrast is the interpretive core of the chapter. The grammar is discovered through the women’s situation: “Who watered first? Could the women choose the time?” Learners then see how “could only … after … had taken” builds a limit and an order.',
     priorKnowledge: ['Past perfect for the earlier action; reported questions with if.'],
@@ -272,7 +272,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Fair access to shared resources: the women had to wait because of the crowd; notice who is left behind.'],
   },
   {
-    chapter: 'Chapter 13: A Shepherd’s Life', timing: '40 minutes',
+    chapter: 'Chapter 13: Shu’ayb’s Home', timing: '40 minutes',
     objectives: ['Explain who the women’s father was, why they returned early and how he responded.', 'Distinguish what Moses observes from the interpretation he forms (“It was clear to Moses that …”).', 'Discover the sentence-comment “which” (…, which surprised their father) and use Due to + noun, so that + may and after + -ing.', 'Describe hospitality and gratitude as concrete actions.'],
     pedagogy: 'Build a cause–reaction chain on the board: Moses helps → the daughters return early → the father is surprised → the invitation. The discovery question for the grammar sits in that chain: “What surprised the father — the home, or the fact that they came back early?” Learners find that “which” after a comma can point to a whole clause. The closing sentence is used to practise B2 reading: what Moses sees versus what he concludes.',
     priorKnowledge: ['Relative clauses with which / who; purpose with to + verb.'],
@@ -294,7 +294,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Hospitality and gratitude: welcoming a stranger and thanking help in person.'],
   },
   {
-    chapter: 'Chapter 14: The Voice at Mount Sinai', timing: '40 minutes',
+    chapter: 'Chapter 14: A Shepherd’s Life', timing: '40 minutes',
     objectives: ['Explain why Shu’ayb’s family took Moses in and why the job offer suited him.', 'Interpret the ten years in Midian as the chapter presents them: “a period of spiritual preparation for prophethood”.', 'Keep the reason the text states, and use advise + person + to, offer + person + thing, marry + person and the time words for / after / during.', 'Argue, with evidence, why a waiting period can be preparation rather than delay.'],
     pedagogy: 'Note first that the title looks ahead: this chapter is still in Midian, and Mount Sinai is only reached in Chapter 15. Learners build a “ten-year box”: arrival, work, marriage, deep thought, return. The discovery question is the chapter’s own interpretation: “The text calls these years preparation. What evidence could support that word?” The verb patterns are treated as fixed expressions that learners notice and repair, because Turkish patterns are often transferred here.',
     priorKnowledge: ['Because-clauses; for / during / after with time; Chapter 13 invitation.'],
@@ -316,7 +316,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Welcoming strangers: shelter and fair work for someone who has lost everything.'],
   },
   {
-    chapter: 'Chapter 15: The Two Signs', timing: '40 minutes',
+    chapter: 'Chapter 15: The Voice at Mount Sinai', timing: '40 minutes',
     objectives: ['Follow the journey to Mount Sinai and the move from an ordinary aim (fire, warmth, a guide) to the beginning of Moses’s mission.', 'Explain why Allah asked about the staff, as the chapter states it.', 'Discover “hoping to …” as a wished, uncertain result, and rephrase purpose (so that … would / could) and near future in the past (was about to = was going to).', 'Describe how something ordinary gains extraordinary meaning.'],
     pedagogy: 'Put two columns on the board: “what Moses expected” / “what happened”. Learners fill them from the text and discover that “hoping to” belongs in the first column. The staff then becomes the bridge: learners list its ordinary uses in Moses’s own words and see why the chapter says the question “made him focus on it”. Keep the moment of fear factual and calm.',
     priorKnowledge: ['Purpose with to + verb; going to; Chapter 14 return journey.'],
@@ -338,7 +338,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Guidance: asking for direction and responding to it when lost.'],
   },
   {
-    chapter: 'Chapter 16: The Mission Begins', timing: '40 minutes',
+    chapter: 'Chapter 16: The Two Signs', timing: '40 minutes',
     objectives: ['Identify the two signs (the staff and the white hand) and the command that follows them.', 'Follow the quoted Qur’anic account of the scene at the fire and what each line does.', 'Notice possibility (perhaps I can), command + reason, and so for a consequence, and use a participle clause of reason (Realizing that …) and a reported command (commanded … to go).', 'Explain how receiving evidence brings a public responsibility.'],
     pedagogy: 'Link Chapters 15 and 16 on one board line: fire → voice → staff → hand → command. The Qur’anic passage retells the same scene; learners compare the narrator’s version with the quoted verses and notice that the verses add the sacred valley and the call to worship. Language work stays on function: which line is a hope, which a command with its reason, which a consequence. Verses are read and matched, never gapped or rewritten.',
     priorKnowledge: ['Chapter 15 events; because-clauses; command + to-infinitive.'],
@@ -360,7 +360,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Responsibility to speak: knowing the truth about injustice can bring a duty to address it.'],
   },
   {
-    chapter: 'Chapter 17: Moses and Aaron', timing: '40 minutes',
+    chapter: 'Chapter 17: The Mission Begins', timing: '40 minutes',
     objectives: ['Follow the quoted continuation of the scene (Surah Tâhâ: 9-24): the warning, the staff, the hand and the command “Go to Pharaoh!”.', 'Explain the chapter’s claim of continuity: the same religion as Jacob, Islamic monotheism, and descent from Abraham.', 'Understand “lest” (so that … not) in a warning and use the same as that of, one of the + plural noun, descendant and successor.', 'Build a connected explanation of continuity rather than a list of names.'],
     pedagogy: 'Point out first that Aaron appears in Chapter 18; this chapter completes the Qur’anic scene and adds a family-and-faith line. Learners draw that line (Abraham → Jacob → Moses) and label each link with the chapter’s words (grandson, forefather, descendants, successors). The warning is read aloud as a model and understood through one question: “What danger should Moses avoid?” The verse is explained, not gapped.',
     priorKnowledge: ['Family words (grandson, forefather); relative clauses; therefore.'],
@@ -382,7 +382,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Shared heritage: the book presents Moses as honoured in Judaism, Christianity and Islam and linked to Abraham.'],
   },
   {
-    chapter: 'Chapter 18: Pharaoh’s Threat', timing: '40 minutes',
+    chapter: 'Chapter 18: Moses and Aaron', timing: '40 minutes',
     objectives: ['Explain Moses and Aaron’s message and request, and the Pharaoh’s responses.', 'Analyse how the Pharaoh’s questions work as power moves rather than requests for information.', 'Notice negative and rhetorical questions, move between reported and direct questions, and track the contrast “my slaves” / “Their Lord is Allah”.', 'Write an analysis of rhetorical questions with whereas / while.'],
     pedagogy: 'Present the dialogue as a “transcript”: learners mark each turn as request, answer or pressure. The discovery question is simple: “Does the Pharaoh really want information here?” Learners find that negative questions (“Are you not that Moses …?”) expect agreement and use Moses’s past against him. Do not role-play Moses or Aaron; learners analyse the lines from the text.',
     priorKnowledge: ['Direct and reported questions; possessive adjectives; Chapters 4–8 (Moses’s upbringing in the palace).'],
@@ -404,7 +404,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Freedom and dignity: people are not the property of a ruler.'],
   },
   {
-    chapter: 'Chapter 19: The Contest Begins', timing: '40 minutes',
+    chapter: 'Chapter 19: Pharaoh’s Threat', timing: '40 minutes',
     objectives: ['Explain the Pharaoh’s accusation and Moses’s answer about the accidental killing, his flight and his forgiveness.', 'Analyse how the chapter presents the two sides differently (direct speech vs reported answer) and how the argument turns from discussion to threat and then to evidence.', 'Use despite the fact that ↔ although, rather for a correction, What if …? and its report, threatened to + verb and have no choice but to + verb.', 'Write a structured rebuttal in a new, neutral context.'],
     pedagogy: 'Map the argument in four stages on the board: accusation → correction → threat → evidence (the staff). Learners discover that the Pharaoh is quoted directly while Moses is reported, and discuss what that does to the reader. The language of rebuttal (rather, despite the fact that) then becomes a tool learners use in their own school-debate rebuttal.',
     priorKnowledge: ['Reported speech; although; if-clauses; Chapter 9 (the accidental killing).'],
@@ -426,7 +426,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Fair argument: answering accusations with facts rather than threats.'],
   },
   {
-    chapter: 'Chapter 20: The Magicians Believe', timing: '40 minutes',
+    chapter: 'Chapter 20: The Contest Begins', timing: '40 minutes',
     objectives: ['Explain the Pharaoh’s fear after the white hand and his advisers’ plan (detain Moses, call the magicians, hold a contest).', 'Analyse the plan as an attempt to manage public perception, and the gap between expectation and outcome.', 'Understand the contest expressions and use It was decided that … ↔ decided to …, recommend that + base verb ↔ recommend + -ing, and out of fear that ↔ because he feared that.', 'Write about how a message can be framed to reduce the impact of evidence.'],
     pedagogy: 'The title looks ahead: the magicians’ belief comes in Chapter 21; here the contest is planned and begins. Learners build a “strategy board”: aim → method → expected result → first sign that it will fail (“But things did not go as the Pharaoh had expected”). The discovery question for language is: “Which word makes the magicians’ snakes smaller?” (only). Learners then notice how the impersonal passive hides the decision-makers.',
     priorKnowledge: ['Passive voice; purpose; Chapter 19 threat and evidence.'],
@@ -448,7 +448,7 @@ export const mosesB2TeacherGuide: TeacherGuideSection[] = [
     globalCitizenship: ['Media literacy: recognising attempts to discredit evidence and manage public opinion.'],
   },
   {
-    chapter: 'Chapter 21: The Exodus', timing: '40 minutes',
+    chapter: 'Chapter 21: The Magicians Believe', timing: '40 minutes',
     objectives: ['Explain the outcome of the contest, the magicians’ belief and why it was a major defeat for the Pharaoh.', 'Contrast expert recognition with the public obedience of people who “lacked vision” after long oppression.', 'Understand “not merely A, but B” and use can’t do anything but + base verb, after + -ing, since + clause vs because of + noun, -ed vs -ing adjectives and reply by + -ing.', 'Analyse why people may obey power even against evidence.'],
     pedagogy: 'The title looks ahead: the departure from Egypt is told in Chapter 22. Here learners follow two reactions to the same evidence: the magicians (experts) believe; many ordinary subjects still obey. A two-column “reaction map” holds the evidence. The discovery question is: “Why does the writer tell us who the magicians really were just before ‘So it was a major defeat’?” Learners see that “not merely … but …” upgrades their status and explains the defeat.',
     priorKnowledge: ['Chapter 20 plan; because / since; -ed and -ing adjectives.'],
