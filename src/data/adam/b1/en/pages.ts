@@ -57,7 +57,7 @@ export const adamB1Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch4.mp3?alt=media&token=87cead03-57bf-41ee-bd1a-f66b18a5eb3d',
     content: "But Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis, “Go away! You are far from My love and care.” Iblis got angry with Adam (pbuh) and hated him. He didn’t want Allah to be kind to Adam (pbuh). He thought that because of Adam (pbuh), Allah had put him far from His help. \n\nHe waited for a chance to keep Adam (pbuh) away from Allah’s kindness, just as he himself was. Allah told Adam (pbuh) that Iblis was his enemy and warned him to be careful of Iblis.",
     vocabulary: [
-      { word: 'Creator', definition: 'The One who creates.' },
+      { word: 'Creator', definition: 'The One who brought all things into existence.' },
       { word: 'angry', definition: 'Feeling strong displeasure.' },
       { word: 'enemy', definition: 'Someone who is hostile or wishes harm.' },
       { word: 'careful', definition: 'Paying attention to avoid danger or harm.' },
@@ -480,7 +480,7 @@ export const adamB1Pages: PageData[] = [
       },
       {
             "word": "Creator",
-            "definition": "The One who creates.",
+            "definition": "The One who brought all things into existence.",
             "partOfSpeech": "noun",
             "level": "B1",
             "pronunciation": "/kriˈeɪtər/",
