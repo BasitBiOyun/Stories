@@ -2,23 +2,21 @@
 
 Goal: every chapter's Language Focus follows Notice → Build → Use (A2: Look → Practise → Use), in line with the Türkiye Yüzyılı Maarif Modeli (inductive discovery for English; holistic / semi-inductive for Arabic). Matching is kept only where it is the best interaction (A2 ≈ half of chapters, B1 ≤ ~40%, B2 ≈ 25–40%, never more than one per chapter). Rules for authors: `REWRITE_BRIEF.md`. Pilot to imitate: Abraham B1 (`src/data/abraham/b1/{en,ar}/languageFocus*.ts`).
 
-## Done (reviewed, committed, pushed to `preview`)
-| Book | EN | AR |
+## Result — all 30 variants done (reviewed, committed, pushed to `preview`)
+| | Before | After |
 |---|---|---|
-| Adam A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ✅ |
-| Abraham (ibrahim) A2 | ✅ | ✅ |
-| Abraham (ibrahim) B1 | ✅ | ✅ |
-| Abraham B2 | ✅ | ✅ |
-| Moses (musa) A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ✅ |
-| Mecca A2 / B1 / B2 | ✅ ✅ ✅ | ✅ ✅ ✅ |
+| Language Focus activities | 1 766 | 1 765 |
+| Matching | 795 (45%) | 153 (8.7%) |
+| Chapters with matching | every chapter | 153 of 466, never more than one |
+| A2 / B1 / B2 matching share | 28% / 66% / 41% | 13% / 6% / 8% |
 
-## Still to do (⏳ above, plus)
-- Yunus Emre B1 / B2 — EN, AR
-- Yunus Emre A2 EN ✅ AR ✅
+Types after the rewrite: reflection 466, multiple-choice 201, choose-form 184, transformation 161, matching 153, error-correction 148, word-bank 147, drag-drop 133, true-false 68, sentence-building 57, sequencing 46.
 
-For each variant: rewrite per `REWRITE_BRIEF.md`, then run
-`npx tsx docs/language-focus/review.mts <storyId> <level>` (type mix, matching share, repeated sequences, answer leaks),
-`npx tsc --noEmit` and `npm run validate:exercises`, read every item, commit per book.
+For later edits: follow `REWRITE_BRIEF.md`, run `npx tsx docs/language-focus/review.mts <storyId> <level>`, `npx tsc --noEmit` and `npm run validate:exercises`.
+
+## Follow-ups for a human editor
+- Teacher guides (`teacherGuide.ts` grammarFocus) in some books still quote old items that are not in the story text (e.g. Yunus Emre B1 EN ch2/ch7, Yunus Emre B2 AR «مهّد»، «للهرب»، «العقل المحدود», Adam B2 EN ch9/ch15, Mecca B2 AR). The Language Focus itself no longer uses them.
+- Story-text slips below: the story text was not changed; learning items use the correct forms.
 
 ## Review lessons from the run
 - An item must not show another item's answer (shorten with …).
@@ -39,6 +37,7 @@ For each variant: rewrite per `REWRITE_BRIEF.md`, then run
 - Moses A2 AR: ch13 «فَاسْتَمِرَّ فِي إِيذَاءِ» → فَاسْتَمَرَّ; Latin commas in ch4, ch10.
 - Yunus Emre A2 AR: ch8 «أَنْ نَعْمَلَ كُلِّ عَمَلٍ» → كُلَّ; ch2 «هٰذِهِ تَجارِبَ» → هذه التجاربَ.
 - Yunus Emre B1 AR: ch5 «مَشْكِلَاتٍ» → مُشْكِلَاتٍ, «الْمَغُولَ» → الْمُغُولَ; ch10 «أَيْ الْمَكَانُ» → أَيِ; ch11 «يَبْلُغَ … إِلَى الْخَلَاصِ».
+- Yunus Emre B2 AR: «وَفْقًا/وَفِقًا» → وِفْقًا (ch2, ch11); «أَيْ + ال» → أَيِ (ch2, ch9, ch10); ch10 «عِنْدَ يُونُسِ» → يُونُسَ; ch9 «وَتَمْتَدُّ هَذِهِ الْمَحَبَّةُ إِلَى مَحَبَّةِ اللَّهِ» (meaning).
 - Adam A2 AR: ch9 «أَیْضًا» uses Persian ی (U+06CC).
 - Adam B2 AR: ch7 «وتغير الأجواء» → وتغيّرت; ch13 «أن قابيل، مع أنه…» lacks a خبر.
 - English: see the per-book notes in `audit/` and the commit messages (minor punctuation / wording only).
