@@ -456,7 +456,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   ],
   7: [
     v('reasonable person', 'شخص عاقل', 'A person capable of logical and sensible judgment.', 'شخص قادر على التفكير المنطقي والحكم السليم.'),
-    v('lifeless', 'بلا حياة', 'Having no life or living power.', 'خالي من الحياة ولا يملك قدرة الكائن الحي.'),
+    v('lifeless', 'بلا حياة', 'Having no life or living power.', 'خالٍ من الحياة، لا يتحرّك ولا يحسّ كما يفعل الكائن الحي.'),
     v('entirely helpless', 'عاجزة تماما', 'Completely unable to act or defend oneself.', 'غير قادر إطلاقًا على الفعل أو الدفاع عن النفس.'),
     v('niche', 'محراب', 'A recessed or designated sacred space in a place of worship.', 'موضع مخصص أو مجوف داخل مكان العبادة.'),
     v('capable of hearing', 'قادرة على سماع دعائهم', 'Able to receive and respond to sound or prayer.', 'قادر على سماع الصوت أو الدعاء والاستجابة له.'),
@@ -465,7 +465,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
     v('priest', 'كاهنا', 'A religious official serving in a place of worship.', 'شخص يتولى وظيفة دينية في مكان للعبادة.'),
     v('displaying his hatred', 'إظهار كراهيته', 'Openly showing strong rejection or dislike.', 'إظهار الرفض أو الكراهية الشديدة بصورة واضحة.'),
     v('cave', 'كهفا', 'A natural hollow space inside a mountain or rock.', 'تجويف طبيعي داخل جبل أو صخر.'),
-    v('certainty', 'الموقنين', 'A state of firm conviction without serious doubt.', 'حالة من اليقين الراسخ من غير شك مؤثر.'),
+    v('certainty', 'الموقنين', 'A state of firm conviction without serious doubt.', 'الذين بلغوا يقينًا راسخًا لا يخالطه شكّ.'),
     v('those that set', 'الآفلين', 'Celestial objects that disappear below the horizon.', 'الأجرام التي تغيب وتختفي عن الأفق.'),
   ],
   9: [
@@ -477,7 +477,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   ],
   10: [
     v('evidently created', 'مخلوقة بوضوح', 'Clearly showing the characteristics of something created rather than eternal.', 'تظهر بوضوح صفات المخلوق لا صفات الأزلي.'),
-    v('everlasting', 'أزلي لا يزول', 'Continuing forever without ending or disappearing.', 'دائم لا ينتهي ولا يزول.'),
+    v('everlasting', 'أزلي لا يزول', 'Continuing forever without ending or disappearing.', 'موجود بلا بداية، وباقٍ بلا نهاية.'),
     v('unworthy of worship', 'غير مستحقة للعبادة', 'Not deserving religious devotion or worship.', 'لا تستحق أن تصرف لها العبادة.'),
     v('rational thinking', 'تفكير إبراهيم العقلي', 'Reasoning based on logic and evidence.', 'تفكير يعتمد على العقل والمنطق والدليل.'),
     v('uncover the truth', 'كشف الحقيقة', 'To reveal what is actually true after examination.', 'إظهار الحقيقة بعد البحث والنظر.'),
@@ -486,7 +486,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
 // k02a
   11: [
     v('present evidence', 'تقديم الأدلة', 'To offer reasons or proof in support of a claim.', 'عرض حجج أو براهين لتأييد ادعاء.'),
-    v('correctness of their beliefs', 'صحة معتقداتهم', 'The claimed truth or validity of what a group believes.', 'مدى صحة أو صدق ما يعتقده قوم.'),
+    v('correctness of their beliefs', 'صحة معتقداتهم', 'The claimed truth or validity of what a group believes.', 'كون ما يعتقدونه صادقًا مطابقًا للحقيقة.'),
     v('ridiculousness', 'سخافة ادعاءاتهم', 'The quality of being unreasonable or impossible to take seriously.', 'كون الادعاء غير معقول ولا يستند إلى حجة قوية.'),
     v('threatened him', 'هددوه', 'Warned someone of intended harm or punishment.', 'أنذروه بإيقاع الأذى أو العقوبة.'),
     v('punishment of their gods', 'عقاب آلهتهم', 'Harm they believed their deities could inflict.', 'الأذى الذي اعتقدوا أن آلهتهم تستطيع إيقاعه.'),
@@ -494,7 +494,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   12: [
     v('paid no heed', 'لم يلتفت', 'Ignored a warning or refused to give it attention.', 'لم يهتم بالتهديد ولم يجعله يغير موقفه.'),
     v('benefit and harm', 'النفع والضر', 'Positive and negative effects that may reach a person.', 'ما يصل إلى الإنسان من خير أو أذى.'),
-    v('mindful', 'لتذكير قومه', 'Consciously aware of an important truth or duty.', 'واعٍ بحقيقة أو واجب مهم ومتذكر له.'),
+    v('mindful', 'لتذكير قومه', 'Consciously aware of an important truth or duty.', 'تنبيه قومه إلى أمر يجب ألّا يغفلوا عنه، وحثّهم على تذكّره.'),
     v('evident error', 'ضلال مبين', 'A mistake or false belief that is clearly visible.', 'خطأ أو اعتقاد باطل ظاهر بوضوح.'),
     v('bitter struggle', 'معركة حادة', 'A severe and continuing conflict between opposing sides.', 'صراع شديد ومستمر بين طرفين متعارضين.'),
   ],
@@ -542,7 +542,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   ],
   19: [
     v('may witness', 'يشهدون', 'May observe an event directly and testify about it.', 'يرون الحدث مباشرة ويشهدون عليه.'),
-    v('reverted', 'فرجعوا', 'Returned to an earlier state, position, or belief.', 'عادوا إلى موقف أو حال سابق.'),
+    v('reverted', 'فرجعوا', 'Returned to an earlier state, position, or belief.', 'فكّروا في أنفسهم وراجعوا موقفهم.'),
     v('arrested and judged', 'باعتقال إبراهيم ومحاكمته', 'Taken into custody and subjected to a formal judgment.', 'القبض على شخص وإخضاعه للمحاكمة.'),
     v('demonstrate in public', 'ليظهر لهم أمام الناس', 'To prove or show something openly before others.', 'إظهار أمر وإثباته علنًا أمام الناس.'),
     v('undamaged', 'لا يزال سليما', 'Remaining whole and not physically harmed.', 'باق على حاله من غير كسر أو ضرر.'),
@@ -567,7 +567,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
     v('sufficient for me', 'حسبي الله', 'Enough to rely on completely for protection and support.', 'كاف لي أعتمد عليه في الحفظ والنصرة.'),
     v('breathless', 'بلا نفس', 'Temporarily unable to breathe normally.', 'غير قادر على التنفس بصورة طبيعية.'),
     v('completely unharmed', 'دون أي أذى', 'Having suffered no injury or damage at all.', 'لم يصبه أي ضرر أو إصابة.'),
-    v('astonishment', 'أصوات الدهشة', 'Great surprise caused by an unexpected event.', 'دهشة شديدة بسبب حدث غير متوقع.'),
+    v('astonishment', 'أصوات الدهشة', 'Great surprise caused by an unexpected event.', 'أصوات عالية تعبّر عن تعجّب شديد من أمر لم يتوقّعوه.'),
     v('despotic rulers', 'الحكام الطغاة', 'Rulers who exercise power in an oppressive way.', 'حكام يستخدمون السلطة بالقهر والاستبداد.'),
   ],
   23: [
@@ -587,7 +587,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   25: [
     v('emigrate', 'قرر الهجرة', 'To leave one land and settle in another.', 'مغادرة بلد للاستقرار في بلد آخر.'),
     v('settled there', 'استقر فيها', 'Established a permanent or long-term home in a place.', 'اتخذ مكانًا للإقامة الدائمة أو الطويلة.'),
-    v('judged fairly', 'بالعدل', 'Made decisions according to justice rather than bias.', 'حكم وفق العدل من غير تحيز.'),
+    v('judged fairly', 'بالعدل', 'Made decisions according to justice rather than bias.', 'بإعطاء كل صاحب حقّ حقَّه، من غير ظلم ولا تحيّز.'),
     v('righteousness', 'الحق والصواب', 'Moral correctness and commitment to what is right.', 'الاستقامة الأخلاقية والالتزام بالحق.'),
     v('sterile', 'عاقرا', 'Unable to have children.', 'غير قادرة على الإنجاب.'),
   ],
@@ -609,12 +609,12 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
     v('Sacred House', 'البيت الحرام', 'The holy sanctuary identified with the Ka‘ba.', 'المكان المقدس الذي يقصد به الكعبة.'),
     v('rebuilding', 'إعادة بناء', 'Constructing a structure again after it has been lost or damaged.', 'بناء منشأة من جديد بعد زوالها أو تلفها.'),
     v('barren valley', 'وادي مكة الجدب', 'A dry valley with little or no vegetation.', 'واد جاف يقل فيه النبات أو ينعدم.'),
-    v('renewed center', 'مركزا للتوحيد', 'A place restored to function again as a central focus.', 'مكان أعيد ليؤدي دوره مركزًا من جديد.'),
+    v('renewed center', 'مركزا للتوحيد', 'A place restored to function again as a central focus.', 'مكانًا يجتمع فيه الناس على عبادة الله وحده، وتنطلق منه الدعوة إليها.'),
     v('throughout the Arabian Peninsula', 'جميع أنحاء شبه الجزيرة العربية', 'Across the different regions of the Arabian Peninsula.', 'في المناطق المختلفة من شبه الجزيرة العربية.'),
   ],
   29: [
     v('companion', 'صحابة النبي', 'A person who lived with and supported Prophet Muhammad.', 'من لقي النبي محمد وآمن به وصحبه.'),
-    v('narrated many hadiths', 'الرواة الكبار للحديث', 'Reported a large number of transmitted sayings and accounts.', 'نقل عددًا كبيرًا من الأحاديث والروايات.'),
+    v('narrated many hadiths', 'الرواة الكبار للحديث', 'Reported a large number of transmitted sayings and accounts.', 'العلماء البارزون الذين نقلوا كثيرًا من أحاديث النبي ﷺ ورواياته.'),
     v('Safa', 'جبل الصفا', 'One of the two hills between which Hajar searched for help.', 'أحد الجبلين اللذين سعت هاجر بينهما طلبًا للماء.'),
     v('patient search', 'بحث هاجر المثابر', 'A persistent effort continued despite hardship.', 'سعي مستمر بصبر رغم المشقة.'),
     v('pilgrimage', 'الحج', 'A religious journey to a sacred place.', 'رحلة دينية إلى مكان مقدس.'),
@@ -622,7 +622,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
 // k03b
 // k04a
   30: [
-    v('hit the ground', 'ضرب الملك الأرض', 'Struck the earth with force.', 'ضرب الأرض بقوة.'),
+    v('hit the ground', 'ضرب الملك الأرض', 'Struck the earth with force.', 'دقّ الملَكُ الأرضَ بعقب قدمه.'),
     v('small basin', 'حوضا صغيرا', 'A small enclosed area used to collect or hold water.', 'موضع صغير يجمع الماء ويحفظه.'),
     v('abundant and flowing', 'الوفرة والتدفق', 'Present in a large quantity and moving continuously.', 'كثير ومستمر في الجريان.'),
     v('origin is unknown', 'مجهول المنشأ', 'Having a source that is not known or identified.', 'لا يعرف مصدره أو أصله.'),
@@ -643,7 +643,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
     v('proxy', 'الفداء', 'Something that takes the place of another; here, the animal sacrificed instead of Ishmael.', 'بديل يقدم عوضًا عن غيره.'),
   ],
   33: [
-    v('hundreds of millions', 'مئات الملايين', 'Many times one hundred million (100,000,000); an extremely large number.', 'عدد ضخم يبلغ مئات الملايين.'),
+    v('hundreds of millions', 'مئات الملايين', 'Many times one hundred million (100,000,000); an extremely large number.', 'عدد ضخم جدًّا يزيد على مئتي مليون.'),
     v('widespread', 'شائعة', 'Existing or practiced across many places or among many people.', 'منتشر بين عدد كبير من الناس أو المناطق.'),
     v('firstborn children', 'أول الأبناء', 'Children born first in their families.', 'الأبناء الذين يولدون أولًا في أسرهم.'),
     v('equivalent to human life', 'تعادل حياة الإنسان', 'Treated as equal in value to a human life in the described context.', 'تعد مساوية في القيمة لحياة الإنسان في السياق المذكور.'),
@@ -657,10 +657,10 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
     v('handing him the stones', 'يناوله الحجارة', 'Passing building stones to another person by hand.', 'إعطاء الحجارة لشخص آخر ليستخدمها في البناء.'),
   ],
   35: [
-    v('restorer', 'معيد بناء', 'A person who rebuilds or returns something to an earlier state.', 'شخص يعيد بناء شيء أو إرجاعه إلى حال سابقة.'),
-    v('clear evidence', 'دليل واضح', 'Strong and understandable proof supporting a conclusion.', 'برهان قوي وواضح يؤيد نتيجة.'),
+    v('restorer', 'معيد بناء', 'A person who rebuilds or returns something to an earlier state.', 'مَن يقيم البناء مرة أخرى على ما كان موجودًا قبله، لا مَن يبنيه أول مرة.'),
+    v('clear evidence', 'دليل واضح', 'Strong and understandable proof supporting a conclusion.', 'برهان ظاهر يُفهم منه ما يدلّ عليه من غير عناء.'),
     v('completion of Abraham', 'إكمالا لرسالة إبراهيم', 'The final stage that finishes the mission Abraham was given.', 'المرحلة التي تتم بها رسالة إبراهيم.'),
-    v('chosen race', 'عرق معين', 'A particular ethnic group selected over others.', 'جماعة عرقية محددة تختار دون غيرها.'),
+    v('chosen race', 'عرق معين', 'A particular ethnic group selected over others.', 'جماعة من الناس يجمعها أصل ونسب واحد، تُخَصّ دون غيرها.'),
     v('coexisted with idolatry', 'جنبا إلى جنب مع الوثنية', 'Existed at the same time and place as idol worship.', 'وجد في الوقت والمكان نفسيهما مع الوثنية.'),
   ],
 // k04b
