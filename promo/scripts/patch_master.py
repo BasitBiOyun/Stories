@@ -69,7 +69,8 @@ def main() -> None:
     #    x264 settings, then join the pieces bit-exactly with the concat demuxer (-c copy).
     X264 = ["-c:v", "libx264", "-preset", "slower", "-crf", str(args.crf), "-profile:v", "high",
             "-x264-params", "aq-mode=3:aq-strength=0.9:deblock=-1,-1:ref=5:bframes=4:psy-rd=1.0,0.15",
-            "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-an"]
+            "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-an",
+            "-r", str(FPS), "-fps_mode", "cfr"]
     pieces, cur = [], 0
     for ri, (f0, f1) in enumerate(ranges):
         if f0 > cur:
@@ -86,11 +87,11 @@ def main() -> None:
             continue
         if kind == "master":
             cmd = [ffmpeg(), "-y", "-loglevel", "error", "-i", args.master, "-vf",
-                   f"trim=start_frame={a}:end_frame={b},setpts=PTS-STARTPTS", *X264, str(out) + ".part.mp4"]
+                   f"trim=start_frame={a}:end_frame={b},setpts=N/({FPS}*TB)", *X264, str(out) + ".part.mp4"]
         else:
             lst = tmp / f"r{a}.txt"
             lst.write_text("".join(f"file '{j[4].name}'\n" for j in jobs if j[0] == a))
-            cmd = [ffmpeg(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-vf", "setpts=PTS-STARTPTS", *X264, str(out) + ".part.mp4"]
+            cmd = [ffmpeg(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-vf", f"setpts=N/({FPS}*TB)", *X264, str(out) + ".part.mp4"]
         subprocess.run(cmd, check=True)
         Path(str(out) + ".part.mp4").rename(out)
         print("encoded piece", k, kind, a, b, flush=True)
