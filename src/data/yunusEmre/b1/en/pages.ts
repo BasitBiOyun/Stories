@@ -208,7 +208,7 @@ Love is a very important theme in Yunus Emre’s works. It is the most important
       { word: 'creation', definition: 'The act or result of bringing things into existence.' },
       { word: 'multiple existence', definition: 'The many created forms described in the chapter.' },
       { word: 'reflections', definition: 'Things that show or represent something else.' },
-      { word: 'five daily prayers', definition: 'The five regular prayers Muslims perform each day.' },
+      { word: 'five daily prayers', definition: 'The five acts of worship a Muslim performs at set times every day: Fajr, Dhuhr, Asr, Maghrib and Isha.' },
     ],
     [
       { id: 'yunus-b1-en-9-1', x: 40, y: 32, title: 'Allah’s Commands', description: 'The poem names following Allah’s command and the five daily prayers.' },
@@ -1095,7 +1095,7 @@ Divan (his collected poems)`,
       },
       {
             "word": "five daily prayers",
-            "definition": "The five regular prayers Muslims perform each day.",
+            "definition": "The five acts of worship a Muslim performs at set times every day: Fajr, Dhuhr, Asr, Maghrib and Isha.",
             "partOfSpeech": "noun phrase",
             "pronunciation": "/faɪv ˈdeɪli prerz/",
             "collocations": [

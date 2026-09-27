@@ -700,7 +700,9 @@ const englishSurfaceAlternates: Record<string,string> = {
 };
 const findEnglishSurface=(content:string,needle:string):string|null=>{
   const candidate=englishSurfaceAlternates[needle]??needle;
-  const index=content.toLocaleLowerCase('en').indexOf(candidate.toLocaleLowerCase('en'));
+  // Case-insensitive search that keeps string positions: toLocaleLowerCase can change the length of
+  // the text (for example "İ" becomes two characters), which shifted the slice and cut words.
+  const index=content.search(new RegExp(candidate.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'));
   return index<0?null:content.slice(index,index+candidate.length);
 };
 export const abrahamB2HotspotCoords=(chapter:number)=>{const leftX=21+((chapter*7)%22);const rightX=59+((chapter*11)%21);const firstY=28+((chapter*13)%37);let secondY=31+((chapter*17)%38);if(Math.abs(firstY-secondY)<9)secondY=secondY<52?secondY+14:secondY-14;return[{x:leftX,y:firstY},{x:rightX,y:secondY}] as const;};

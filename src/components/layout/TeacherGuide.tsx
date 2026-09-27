@@ -42,7 +42,7 @@ const splitLessonPlanSteps = (lessonPlan: string): string[] => {
   if (numbered.length > 1) return numbered;
 
   const semicolonSteps = normalized
-    .split(/\s*;\s*/)
+    .split(/\s*[;؛]\s*/)
     .map(step => step.trim())
     .filter(Boolean);
 
@@ -462,14 +462,6 @@ entries.set(key, { word, definition });
                   </p>
                   <h3 className="mt-1 font-display text-xl sm:text-3xl text-parchment">{t('tg.chapterSupport')}</h3>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openLessonPrep(0)}
-                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-gold/20 bg-gold/[0.08] px-4 font-display text-[12px] sm:text-[13px] font-bold text-gold hover:bg-gold/[0.13] transition-colors"
-                >
-                  <Sparkles size={17} />
-                  {language === 'ar' ? 'وضع تحضير الدرس' : 'Lesson Prep Mode'}
-                </button>
               </div>
 
               <div className="flex gap-2.5 overflow-x-auto pb-1 custom-scrollbar">
@@ -544,13 +536,13 @@ entries.set(key, { word, definition });
                         <div className="space-y-2 sm:space-y-3">
                           <h5 className="font-display text-[10px] text-gold/60 uppercase tracking-widest">{t('tg.grammarFocus')}</h5>
                           <div className="p-3 bg-white/5 rounded-lg border border-gold/5">
-                            <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white">{section.grammarFocus}</p>
+                            <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white whitespace-pre-line">{section.grammarFocus}</p>
                           </div>
                         </div>
                         <div className="space-y-2 sm:space-y-3">
                           <h5 className="font-display text-[10px] text-gold/60 uppercase tracking-widest">{t('tg.pronunciationFocus')}</h5>
                           <div className="p-3 bg-white/5 rounded-lg border border-gold/5">
-                            <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white">{section.pronunciationFocus}</p>
+                            <p className="font-serif text-[13px] sm:text-base md:text-[17px] text-white whitespace-pre-line">{section.pronunciationFocus}</p>
                           </div>
                         </div>
                       </div>
@@ -1558,11 +1550,12 @@ entries.set(key, { word, definition });
               <button
                 type="button"
                 onClick={() => openLessonPrep(prepChapterIndex)}
-                className="hidden sm:inline-flex min-h-11 items-center gap-2 rounded-xl border border-gold/20 bg-gold/[0.10] px-3.5 font-display text-[12px] sm:text-[13px] font-bold text-gold transition-colors hover:bg-gold hover:text-white"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-xl border border-gold/20 bg-gold/[0.10] px-3 sm:px-3.5 font-display text-[12px] sm:text-[13px] font-bold text-gold transition-colors hover:bg-gold hover:text-white"
                 title={language === 'ar' ? 'فتح وضع تحضير الدرس' : 'Open Lesson Prep Mode'}
+                aria-label={language === 'ar' ? 'فتح وضع تحضير الدرس' : 'Open Lesson Prep Mode'}
               >
                 <Sparkles size={17} />
-                <span>{language === 'ar' ? 'تحضير الدرس' : 'Lesson Prep'}</span>
+                <span className="hidden sm:inline">{language === 'ar' ? 'تحضير الدرس' : 'Lesson Prep'}</span>
               </button>
               <button
                 data-pdf-locked="true"
@@ -1958,7 +1951,7 @@ entries.set(key, { word, definition });
                                 <h3 className="font-display text-[11px] font-black uppercase tracking-[0.14em] text-gold/65 mb-1.5">
                                   {t('tg.grammarFocus')}
                                 </h3>
-                                <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed">
+                                <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed whitespace-pre-line">
                                   {selectedPrepChapter.grammarFocus}
                                 </p>
                               </div>
@@ -1968,7 +1961,7 @@ entries.set(key, { word, definition });
                                 <h3 className="font-display text-[11px] font-black uppercase tracking-[0.14em] text-gold/65 mb-1.5">
                                   {t('tg.pronunciationFocus')}
                                 </h3>
-                                <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed">
+                                <p className="font-serif text-[14px] sm:text-[15px] text-parchment/78 leading-relaxed whitespace-pre-line">
                                   {selectedPrepChapter.pronunciationFocus}
                                 </p>
                               </div>
