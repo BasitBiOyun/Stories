@@ -824,80 +824,132 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
   ],
 };
 
-const reviewFeedback = {
-  correct: 'Correct. Your choice fits the discourse function and meaning practised across the book.',
-  incorrect: 'Not yet. Reconsider the relationship between form, meaning, and discourse purpose, then try again.',
-};
-
-const reviewMc = (id: string, title: string, question: string, options: string[], correctAnswer: number, explanation: string): Exercise => ({
-  id, type: 'multiple-choice', title, instructions: 'Choose the option that best preserves the intended B2 meaning.', question, options, correctAnswer, explanation, feedback: reviewFeedback,
-});
-const reviewFill = (id: string, title: string, question: string, text: string, correctAnswer: string, explanation: string): Exercise => ({
-  id, type: 'fill-blanks', title, instructions: 'Complete the sentence with the language that best expresses the relationship.', question, fillBlanksText: text, correctAnswer, explanation, feedback: reviewFeedback,
-});
-const reviewMatching = (id: string, title: string, question: string, pairs: { left: string; right: string }[], explanation: string): Exercise => ({
-  id, type: 'matching', title, instructions: 'Match each form with the discourse function it performs.', question, matchingPairs: pairs, correctAnswer: Object.fromEntries(pairs.map(pair => [pair.left, pair.right])), explanation, feedback: reviewFeedback,
-});
-const reviewSequencing = (id: string, title: string, question: string, items: { id: string; text: string }[], explanation: string): Exercise => ({
-  id, type: 'sequencing', title, instructions: 'Order the moves so the paragraph develops as a coherent B2 explanation.', question, sequencingItems: items, correctAnswer: items.map(item => item.id), explanation, feedback: reviewFeedback,
-});
-
 export const mosesB2LanguageReviewExercises: Exercise[] = [
-  reviewMatching('mo-b2-lr1', 'Language Review 1 — Degrees of Certainty', 'Match each expression with the stance it communicates.', [
-    { left: 'According to the sources…', right: 'attributes information rather than presenting it as the writer’s unqualified fact' },
-    { left: 'It is possible that…', right: 'opens a cautious possibility' },
-    { left: 'probably…', right: 'marks a likely conclusion that is not certain' },
-    { left: 'the exact date is unknown', right: 'states a clear limit on what can be claimed' },
-  ], 'Across the historical chapters, source attribution, possibility, probability, and explicit uncertainty prevent overclaiming.'),
-
-  reviewMatching('mo-b2-lr2', 'Language Review 2 — Cause, Purpose, and Result', 'Match each connector with the relationship it builds.', [
-    { left: 'because…', right: 'gives a cause or reason' },
-    { left: 'to prevent…', right: 'states the purpose of an action' },
-    { left: 'so that…', right: 'expresses an intended result or purpose' },
-    { left: 'as a result / thus…', right: 'presents a consequence or synthesized result' },
-  ], 'B2 explanation depends on selecting connectors according to the relationship between ideas, not treating them as interchangeable linking words.'),
-
-  reviewMc('mo-b2-lr3', 'Language Review 3 — Focus and Information Structure', 'Why is a passive form such as “he was placed in a basket” useful in this narrative?', [
-    'It keeps Moses and what happens to him in focus when the actor is not the main point.',
-    'It proves that no one performed the action.',
-    'It makes the event less important than the actor.',
-  ], 0, 'Passive voice can shift attention toward the affected person or event without claiming that an action had no agent.'),
-
-  reviewFill('mo-b2-lr4', 'Language Review 4 — Multi-Cause Explanation', 'Complete the structure that prevents a one-cause explanation.', 'Pharaoh’s authority depended not only on control of resources, [blank] also on control of manpower and people.', 'but', '“Not only … but also …” adds a second factor and helps construct a more qualified, multi-cause analysis.'),
-
-  reviewMatching('mo-b2-lr5', 'Language Review 5 — Contrast, Concession, and Correction', 'Match each form with what it does.', [
-    { left: 'unlike…', right: 'contrasts two people or positions directly' },
-    { left: 'however…', right: 'signals a turn that qualifies or opposes the previous statement' },
-    { left: 'despite the fact that…', right: 'acknowledges a fact before presenting a contrasting outcome' },
-    { left: 'rather…', right: 'rejects one interpretation and replaces it with a more accurate one' },
-    { left: 'not merely … but…', right: 'reframes something as broader or more significant than the first description' },
-  ], 'These forms help a B2 writer manage competing interpretations instead of simply adding sentences one after another.'),
-
-  reviewMatching('mo-b2-lr6', 'Language Review 6 — Conditions, Threats, and Commitments', 'Match the pattern with its communicative function.', [
-    { left: 'If you accept another god, I will…', right: 'sets a condition and a threatened consequence' },
-    { left: 'What if I bring you something convincing?', right: 'opens a hypothetical challenge to the other speaker’s position' },
-    { left: 'when you fear for him, then…', right: 'links a future condition/time point to an instructed response' },
-    { left: 'I will never again…', right: 'turns reflection or repentance into a future commitment' },
-  ], 'Modality and condition structures express more than time: they can threaten, challenge, instruct, reassure, or commit.'),
-
-  reviewSequencing('mo-b2-lr7', 'Language Review 7 — Build an Analytical Paragraph', 'Put the language moves into a coherent order.', [
-    { id: 'a', text: 'According to the account, a ruler presents material provision as evidence of legitimate authority.' },
-    { id: 'b', text: 'However, the same narrative also provides evidence of coercion and restricted freedom.' },
-    { id: 'c', text: 'For this reason, material provision alone cannot explain whether the authority is just.' },
-    { id: 'd', text: 'A stronger interpretation must therefore compare the ruler’s claims with the consequences of his actions.' },
-  ], 'The sequence models B2 synthesis: source framing → counter-evidence → reasoned qualification → analytical conclusion.'),
-
+  // NOTICE — discover what the book's language does, across chapters.
   {
-    id: 'mo-b2-lr8',
-    type: 'reflection',
-    title: 'Language Review 8 — B2 Synthesis',
-    instructions: 'Write an 8–10 sentence analytical paragraph. This is language practice, not a story quiz.',
-    question: 'Explain how a powerful public claim can be tested against evidence. Use at least one qualification phrase, one cause/result link, one concession or correction, and one sentence that distinguishes evidence from interpretation.',
+    id: 'mo-b2-language-review-1-source-hedge-view', type: 'drag-drop', title: 'Notice: Whose Claim, and How Sure?',
+    instructions: 'Read the sentences from Chapters 2, 5, 18 and 23. Decide how each one presents its information, and put it in the right group.',
+    question: 'Does the writer report a source, hedge a claim, or present a character’s view?',
+    dragDropGroups: [
+      { group: 'The writer reports a source', items: ['According to the sources, Seti I … was the pharaoh who oppressed the Israelites.', 'Ibn Abbas said, “The Pharaoh saw a fire in his vision. …”'] },
+      { group: 'The writer hedges: likely or possible, not proved', items: ['So the pharaoh who drowned at sea was probably Ramses II.', 'It is possible that some people of that period did not practise or believe in paganism.'] },
+      { group: 'A character’s view, not the writer’s', items: ['The Pharaoh listened to Moses’ speech, and he thought that Moses had lost his mind.', 'He and his soldiers saw this extraordinary event as a sign of Pharaoh’s godlike power.'] },
+    ],
+    correctAnswer: {
+      'The writer reports a source': ['According to the sources, Seti I … was the pharaoh who oppressed the Israelites.', 'Ibn Abbas said, “The Pharaoh saw a fire in his vision. …”'],
+      'The writer hedges: likely or possible, not proved': ['So the pharaoh who drowned at sea was probably Ramses II.', 'It is possible that some people of that period did not practise or believe in paganism.'],
+      'A character’s view, not the writer’s': ['The Pharaoh listened to Moses’ speech, and he thought that Moses had lost his mind.', 'He and his soldiers saw this extraordinary event as a sign of Pharaoh’s godlike power.'],
+    },
+    explanation: 'The book separates three layers. Attribution (“according to the sources”, “Ibn Abbas said”) tells you whose information it is. Hedging (“probably”, “It is possible that …”) is the writer’s own careful judgement: likely or possible, not proved. Verbs such as “thought that …” and “saw X as Y” report how a character interprets events; they do not tell you that the interpretation is true. A B2 summary keeps each layer in place.',
+    feedback: { correct: 'Well done. You kept sources, the writer’s hedges and the characters’ views apart.', incorrect: 'Look for the signal words: according to / said (a source), probably / possible (a hedge), thought / saw … as (a character’s view).' },
+  },
+  {
+    id: 'mo-b2-language-review-2-not-only-not-merely', type: 'multiple-choice', title: 'Notice: Not Only … / Not Merely …',
+    instructions: 'Read the two sentences from Chapters 3 and 21. Then choose the best explanation.',
+    question: 'Chapter 3: “… god-king authority was based not only on the richness of the river, but also on the manpower of the slaves …” Chapter 21: “At that time, magicians were not merely performers, but the elite intellectual scholars of ancient Egypt.” What do the two structures do?',
+    options: [
+      'They reject the first description as false and put a correct one in its place.',
+      'They accept the first description but show it is incomplete, then add a second, weightier point.',
+      'They show that the writer cannot decide which of the two descriptions is true.',
+      'They present the second point as a result of the first one.',
+    ],
+    correctAnswer: 1,
+    explanation: '‘Not only A but also B’ and ‘not merely A, but B’ keep A (the river mattered; the magicians did perform) and add B, which carries more weight: the slaves’ manpower, the magicians’ status as scholars. Compare “rather” in Chapter 19: “he was not a disbeliever when he killed the Egyptian; rather, he had committed the act only by accident” — there the first idea is rejected completely and replaced.',
+    feedback: { correct: 'Correct. Both structures widen a description instead of cancelling it.', incorrect: 'Ask: is the first part still true? Did the river matter? Did the magicians perform? Then look at what the second part adds.' },
+  },
+  {
+    id: 'mo-b2-language-review-3-participle-clauses', type: 'true-false', title: 'Notice: -ing Phrases Around Moses',
+    instructions: 'Read the sentences from Chapters 12, 15 and 19. Decide whether the statement about their meaning is true or false.',
+    question: 'Chapter 12: “Forgetting his thirst, Moses approached them …” Chapter 15: “… approached it, hoping to bring his family some fire …” Chapter 19: “Ignoring his irony, Moses (pbuh) explained that he was not a disbeliever …” — Statement: the -ing phrases describe actions that happen only after the main action is finished.',
+    correctAnswer: false,
+    explanation: 'The -ing phrase and the main verb share one subject (Moses), and they happen at the same time: while he approaches, he forgets his thirst or hopes for fire; while he explains, he ignores the Pharaoh’s irony. The phrase adds his attitude or aim to the action without a second full clause. It does not mean “afterwards”.',
+    feedback: { correct: 'Correct. The -ing phrases run alongside the main action and share its subject.', incorrect: 'Ask who forgets, who hopes and who ignores, and when. Is it the same person, at the same moment as approached / explained?' },
+  },
+  // BUILD — controlled practice in the book's own sentences.
+  {
+    id: 'mo-b2-language-review-4-cause-linkers', type: 'choose-form', title: 'Build: Cause Before a Noun, a Clause or a Sentence',
+    instructions: 'Choose the form that completes each sentence from the book. Look at what comes after the gap.',
+    question: 'Which linker fits a noun phrase, which fits a clause, and which links two sentences?',
+    formChoices: [
+      { sentence: 'Control of the Nile River was vital. [choice], the geographical structure of the land was reshaped by human power.', options: ['Because', 'For this reason', 'Despite this'], answer: 1 },
+      { sentence: '[choice] the crowd at the water source, the young women could only water their animals after the male shepherds had taken their flocks away.', options: ['Due to', 'Because', 'Although'], answer: 0 },
+      { sentence: '[choice] they needed someone reliable and strong, one of the daughters advised her father to employ Moses.', options: ['Because of', 'Due to', 'Because'], answer: 2 },
+    ],
     correctAnswer: null,
-    explanation: 'A strong response selects language for stance, evidence, causality, contrast, and synthesis rather than relying on isolated grammar forms.',
-    feedback: reviewFeedback,
+    explanation: 'Choose the linker by what follows it. A new sentence that draws a result from the previous one starts with “For this reason,”. A noun phrase (the crowd) needs ‘due to’ or ‘because of’. A clause with its own subject and verb (they needed) needs “because”. “Despite this” and “although” would signal a contrast the book does not make.',
+    feedback: { correct: 'Correct. You matched each linker to a sentence, a noun phrase or a clause.', incorrect: 'After the gap, is there a whole new sentence, a noun (the crowd) or a subject + verb (they needed)? Check Chapters 3, 12 and 14.' },
+  },
+  {
+    id: 'mo-b2-language-review-5-overclaims', type: 'error-correction', title: 'Build: Do Not Overclaim',
+    instructions: 'Each sentence makes a stronger claim than the book does. Tap the words that overclaim, then choose the writer’s original, more careful words.',
+    question: 'Can you restore the writer’s degree of certainty?',
+    errorItems: [
+      { sentence: 'The entire Torah (Tevrat) consists of the history of Moses (pbuh) and the Israelites under his leadership.', error: 'The entire', options: ['Almost the entire', 'The whole', 'Certainly the entire'], answer: 0 },
+      { sentence: 'All of the sources state that the Exodus … must have taken place in the early thirteenth century BC.', error: 'All', options: ['Every', 'Most', 'None'], answer: 1 },
+      { sentence: 'It was certain that the Pharaoh would never accept Moses’ (pbuh) teachings or put an end to the hard days of the Children of Israel.', error: 'It was certain', options: ['It was proved', 'Everyone agreed', 'It seemed'], answer: 2 },
+    ],
+    correctAnswer: null,
+    explanation: 'Quantifiers and stance verbs set the strength of a claim. “Almost the entire” and “most of the sources” leave room for exceptions; “the entire” and “all” do not. “It seemed that …” gives an impression at that moment; ‘It was certain that …’ turns it into a fact. Rewriting a text with stronger words than the source is overclaiming.',
+    feedback: { correct: 'Well done. You kept the writer’s careful degree of certainty.', incorrect: 'Compare with the book: the opening of Chapter 1, the end of Chapter 2 and the start of Chapter 22. Which word leaves room for doubt or exceptions?' },
+  },
+  {
+    id: 'mo-b2-language-review-6-reporting', type: 'transformation', title: 'Build: Report What They Said',
+    instructions: 'Report each piece of direct speech from Chapters 8, 12 and 13. Write only the missing words.',
+    question: 'How do tense, pronouns and word order change when you report a question or a statement?',
+    transformItems: [
+      { source: 'The Pharaoh was astonished and asked, “Who are you? …”', frame: 'The Pharaoh was astonished and asked her who [blank].', answers: ['she was'] },
+      { source: 'He asked, “Why are you shepherding?”', frame: 'He asked the two sisters why [blank].', answers: ['they were shepherding'] },
+      { source: 'She said, “Our father invites you to our home so that he may thank you in person.”', frame: 'She said that their father [blank] him to their home so that he might thank him in person.', answers: ['invited', 'was inviting'] },
+    ],
+    correctAnswer: null,
+    explanation: 'A reported question uses statement word order: “Who are you?” → ‘who she was’; “Why are you shepherding?” → ‘why they were shepherding’. After a past reporting verb, present forms move back (are → were, invites → invited, may → might), and pronouns change to fit the reporter’s point of view (you → she / they / him, our → their).',
+    feedback: { correct: 'Correct. You moved the tense back, changed the pronouns and used statement word order.', incorrect: 'Check three things: tense back (are → were), pronouns (you → she/they/him), and subject before verb in the reported question.' },
+  },
+  {
+    id: 'mo-b2-language-review-7-impersonal-passive', type: 'sentence-building', title: 'Build: A Decision Without a Named Decider',
+    instructions: 'Put the parts in order to rebuild a sentence from Chapter 20.',
+    question: 'How does the chapter report the decision about the contest without saying who made it?',
+    sentenceChunks: ['It was decided', 'that a contest', 'would be held', 'between the magicians of Egypt', 'and Moses (pbuh).'],
+    correctAnswer: null,
+    explanation: '“It was decided that …” is an impersonal passive: the decision is in focus and the deciders stay unnamed. Inside it, “would be held” is a passive seen from the past, looking forward to the contest. The book uses the passive in the same way elsewhere when what happens matters more than who acts: “He was placed in a basket” (Chapter 4), “the Torah (Tevrat) was given to him by Allah” (Chapter 24).',
+    feedback: { correct: 'Well done. The impersonal passive puts the decision first.', incorrect: 'Start with the empty subject “It” and the passive verb. Then say what was decided, and between whom.' },
+  },
+  // USE — transfer the language into the learners' own world.
+  {
+    id: 'mo-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Report on a School Project',
+    instructions: 'This text is not from the book. Complete the report with words and phrases from the bank. Two of them are not needed.',
+    question: 'Can you report evidence, give a cause, add a second point and hedge a conclusion?',
+    fillBlanksText: 'Last term, our class started a recycling project at school. [blank] our survey, most students threw plastic bottles into ordinary bins. [blank] a lack of recycling boxes in the corridors, many bottles ended up in the rubbish. We placed new boxes on every floor, and the project helped not only the environment [blank] the school budget. The number of bottles in the ordinary bins fell by half, so the new boxes were [blank] the main reason for the change. However, we cannot be sure: some students were also away on a school trip that month.',
+    wordBank: ['According to', 'Due to', 'but also', 'probably', 'certainly', 'Although'],
+    correctAnswer: ['According to', 'Due to', 'but also', 'probably'],
+    explanation: '“According to our survey” attributes the evidence. “Due to” + a noun phrase gives the cause. “Not only … but also …” adds a second benefit. “Probably” hedges the conclusion, and the last sentence explains why: another cause is possible. “Certainly” would overclaim, and “although” needs a clause, not a noun.',
+    feedback: { correct: 'Well done. Your report is sourced, connected and careful.', incorrect: 'For each gap ask: is this a source, a cause before a noun, the second half of “not only”, or a hedge? Read the last sentence before you choose the hedge.' },
+  },
+  {
+    id: 'mo-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Make the Claim More Careful',
+    instructions: 'These sentences are not from the book. Each one claims too much. Rewrite it more carefully. Write only the missing words.',
+    question: 'Can you hedge a claim with a quantifier, an adverb or a careful reporting verb?',
+    transformItems: [
+      { source: 'Everyone in our class hates the new timetable.', frame: '[blank] students in our class dislike the new timetable.', answers: ['Many', 'Most', 'Some', 'Several', 'A lot of', 'Lots of', 'Quite a few'] },
+      { source: 'The new bus timetable is the reason for our late arrivals.', frame: 'The new bus timetable is [blank] the reason for our late arrivals.', answers: ['probably', 'possibly', 'perhaps', 'likely', 'most likely', 'very likely', 'partly'] },
+      { source: 'Our survey proves that students want a longer lunch break.', frame: 'Our survey [blank] that students want a longer lunch break.', answers: ['suggests', 'indicates', 'seems to show', 'appears to show', 'may show', 'might show', 'could show', 'seems to suggest'] },
+    ],
+    correctAnswer: null,
+    explanation: 'Careful writers limit a claim to what the evidence shows: a quantifier instead of “everyone” (many, most, some), a hedging adverb (probably, possibly), or a softer reporting verb instead of “proves” (suggests, indicates). This is the same care the book shows with “most of the sources”, “probably” and “it seemed”.',
+    feedback: { correct: 'Well done. Your sentences claim only what the evidence can support.', incorrect: 'Replace the absolute word: everyone → many/most/some; is → is probably; proves → suggests/indicates.' },
+  },
+  {
+    id: 'mo-b2-language-review-10-transfer', type: 'reflection', title: 'Use: A Short Argued Paragraph',
+    instructions: 'Should students in your school do one hour of helpful work each month, for example in the library, the school garden or for older neighbours? Write a short argued paragraph of 6–8 sentences. Discuss your ideas with a partner first.',
+    question: 'Can you state a position, support it with evidence and qualify it, using the language of the whole book?',
+    correctAnswer: null,
+    explanation: 'Example: “In my view, one hour of helpful work each month would probably be good for our school. According to our class survey, most students would like to help in the library or the school garden. The project would help not only the people we support but also the students themselves, because they would learn responsibility. Due to busy timetables, however, some students have little free time. It is possible that a few of them will see the hour as extra work. Although this worry is understandable, the hour would be short and flexible. It is not a punishment; rather, it is a chance to be useful.”',
+    feedback: { correct: 'Check your paragraph: a hedged position (probably / it seems), a source (according to), a cause (because / due to), not only … but also, a concession (although), and a correction with rather.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Write 8–10 connected sentences using “according to…”, a cautious marker such as “probably/it is possible”, a cause/result connector, and a contrast or correction form. End by stating what the evidence supports and what remains interpretation.', mode: 'Individual' },
+      { question: 'Position — state your view carefully: “In my view, … would probably …” or “It seems that …”', mode: 'Individual' },
+      { question: 'Evidence — name your source and give a cause: “According to …, …” / “… because …” / “Due to …, …”', mode: 'Individual' },
+      { question: 'Develop — add a second, stronger point: “… not only … but also …”', mode: 'Pair' },
+      { question: 'Qualify — answer a possible objection: “Although …, …” or “It is not …; rather, …”', mode: 'Pair' },
     ],
   },
 ];
