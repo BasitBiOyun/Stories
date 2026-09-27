@@ -668,14 +668,149 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
 
 // t01a
 const abrahamB2LanguageReviewExercises: Exercise[] = [
-  { id:'abraham-b2-language-review-1-source-qualification', type:'matching', title:'Source, Report and Historical Distance', instructions:'Match each reporting frame with the degree of commitment it signals.', question:'How can a B2 writer preserve the difference between direct attribution, cautious synthesis, report and uncertain tradition?', matchingPairs:[{left:'According to X, ...',right:'directly attributes a claim to a named source'},{left:'Some sources suggest that ...',right:'marks limited evidence and avoids presenting the claim as settled fact'},{left:'It is believed that ...',right:'presents a historical belief with distance from certainty'},{left:'It is reported / said that ...',right:'passes on a narration or circulating claim without full authorial commitment'}], correctAnswer:{'According to X, ...':'directly attributes a claim to a named source','Some sources suggest that ...':'marks limited evidence and avoids presenting the claim as settled fact','It is believed that ...':'presents a historical belief with distance from certainty','It is reported / said that ...':'passes on a narration or circulating claim without full authorial commitment'}, explanation:'Across the book, source frames protect the boundary between evidence, narration, belief and interpretation.', feedback:{correct:'Correct. The degree of commitment matches the reporting frame.',incorrect:'Ask whether the wording names a source, limits the evidence, reports a belief, or passes on a narration at a distance.'} },
-  { id:'abraham-b2-language-review-2-viewpoint-time', type:'matching', title:'Time Viewed from Different Points', instructions:'Match each form with the temporal viewpoint it creates.', question:'How do B2 writers position events relative to a past viewpoint?', matchingPairs:[{left:'was going to leave',right:'a future plan viewed from a point in the past'},{left:'would later become',right:'a later development presented from an earlier past viewpoint'},{left:'had already changed',right:'an event completed before another past event'},{left:'was about to begin when ...',right:'an imminent action interrupted or redirected by another event'}], correctAnswer:{'was going to leave':'a future plan viewed from a point in the past','would later become':'a later development presented from an earlier past viewpoint','had already changed':'an event completed before another past event','was about to begin when ...':'an imminent action interrupted or redirected by another event'}, explanation:'The chapters repeatedly use tense and aspect to show plans, later developments, completed background and turning points.', feedback:{correct:'Correct. You identified the viewpoint created by each form.',incorrect:'Separate future-from-the-past, earlier completed background, and an action that is just about to happen.'} },
-  { id:'abraham-b2-language-review-3-contrast-reframing', type:'multiple-choice', title:'Contrast Without Oversimplifying', instructions:'Choose the sentence that acknowledges one point and then reframes it more precisely.', question:'Which sentence best uses concession and corrective contrast?', options:['Although the policy appears strict, its purpose is not simply to punish but to make expectations clearer.','The policy is strict, and strict policies are strict because they are strict.','The policy is either completely successful or completely useless.'], correctAnswer:0, explanation:'Although concedes an appearance, while not simply ... but ... redirects the claim toward a more precise interpretation.', feedback:{correct:'Correct. The sentence concedes, then refines the argument.',incorrect:'Look for a sentence that accepts an initial impression but avoids an all-or-nothing conclusion.'} },
-  { id:'abraham-b2-language-review-4-cause-purpose-result', type:'sequencing', title:'Build a Cause–Purpose–Result Chain', instructions:'Put the moves into the most coherent order for a short analytical paragraph.', question:'How can a paragraph distinguish a problem, a purpose, an action and a result?', sequencingItems:[{id:'1',text:'The original process created repeated delays.'},{id:'2',text:'To reduce those delays, the team changed the order of the steps.'},{id:'3',text:'They also added a final check so that mistakes could be caught earlier.'},{id:'4',text:'As a result, the process became faster without removing the quality check.'}], correctAnswer:['1','2','3','4'], explanation:'The sequence moves from cause/problem to purpose, action and a measured result.', feedback:{correct:'Correct. The relationships are now explicit and coherent.',incorrect:'Start with the problem, then state the purpose, describe the action, and finish with its result.'} },
-  { id:'abraham-b2-language-review-5-condition-consequence', type:'multiple-choice', title:'Condition, Possibility and Consequence', instructions:'Choose the sentence in which the consequence matches the strength of the condition.', question:'Which sentence is the most appropriately calibrated?', options:['If the evidence remains incomplete, the conclusion should remain open to revision.','If one detail is uncertain, the whole argument must be false.','Unless every source agrees, all possible explanations are equally certain.'], correctAnswer:0, explanation:'The first sentence links an incomplete condition to a proportionate, non-absolute consequence.', feedback:{correct:'Correct. The strength of the consequence matches the condition.',incorrect:'Avoid a conclusion that is stronger than the evidence or condition allows.'} },
-  { id:'abraham-b2-language-review-6-reference-cohesion', type:'matching', title:'Reference and Cohesion Across Sentences', instructions:'Match each form with the cohesion job it performs.', question:'How do B2 writers keep a longer paragraph connected without repeating every noun?', matchingPairs:[{left:'the group who ...',right:'adds defining information while keeping the same referent active'},{left:'the place where ...',right:'links a location to information about what happens there'},{left:'this decision',right:'refers back to a whole previous action or proposition'},{left:'some ..., while others ...',right:'organises parallel groups without overgeneralising them'}], correctAnswer:{'the group who ...':'adds defining information while keeping the same referent active','the place where ...':'links a location to information about what happens there','this decision':'refers back to a whole previous action or proposition','some ..., while others ...':'organises parallel groups without overgeneralising them'}, explanation:'Relative clauses, demonstrative reference and parallel group framing support coherence across longer stretches of discourse.', feedback:{correct:'Correct. Each form has a different cohesion role.',incorrect:'Decide whether the form defines a person/group, anchors a place, refers back to an earlier idea, or compares parallel groups.'} },
-  { id:'abraham-b2-language-review-7-evidence-interpretation', type:'fill-blanks', title:'Keep Evidence Separate from Interpretation', instructions:'Complete the sentence with the phrase that marks interpretation rather than direct evidence.', question:'Which wording keeps the writer from presenting an inference as a fact?', fillBlanksText:'The pattern is clear in the data; however, it [blank] a change in behaviour rather than proving one by itself.', correctAnswer:'can be interpreted as', explanation:'“Can be interpreted as” explicitly marks an inference. It does not turn the interpretation into direct evidence.', feedback:{correct:'Correct. The wording preserves the evidence–interpretation boundary.',incorrect:'Use a phrase that offers a possible reading without claiming that the evidence proves it directly.'} },
-  { id:'abraham-b2-language-review-8-transfer', type:'reflection', title:'B2 Transfer: Build a Qualified Analytical Paragraph', instructions:'Write or present one coherent 8–10 sentence paragraph about a non-story issue such as a school policy, a historical claim, a technology debate, a sports decision or a social trend.', question:'Can you combine the book’s language resources into one nuanced argument rather than a sequence of isolated grammar forms?', correctAnswer:null, explanation:'The aim is cumulative transfer: source control, viewpoint, contrast, cause/purpose/result, condition, cohesion and evidence-aware interpretation.', feedback:{correct:'Use the language resources as tools for precision, stance and coherence.',incorrect:''}, discussionPrompts:[{question:'Attribute or qualify at least one claim using “According to...”, “Some sources suggest...”, “It is believed...” or an equivalent frame.',mode:'Individual'},{question:'Use one past-viewpoint form such as “would later...”, “was going to...” or a past perfect background form.',mode:'Individual'},{question:'Include one concession/corrective contrast and one clear cause–purpose–result relationship.',mode:'Pair'},{question:'End with a conclusion whose certainty and scope do not exceed the evidence you presented.',mode:'Pair'}] },
+  // NOTICE — find what the book's language does, across chapters.
+  {
+    id: 'abraham-b2-language-review-1-whose-claim', type: 'drag-drop', title: 'Notice: Whose Claim Is It?',
+    instructions: 'Read the sentences from Chapters 2, 4, 5, 11, 12, 31, 33 and 35. Who is responsible for each claim? Put each sentence in the right group.',
+    question: 'Does the sentence pass on a source, give the writer’s own interpretation, or simply tell an event?',
+    dragDropGroups: [
+      { group: 'The writer passes on a source or tradition', items: ['In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf …', 'Azer is presented in Islamic sources as Nimrod\'s idol maker.', 'According to another narration, Nimrod had a dream that a child in the region would challenge his throne.'] },
+      { group: 'The writer interprets or concludes', items: ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka‘ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'] },
+      { group: 'The narrator tells an event directly', items: ['A bitter struggle began between Abraham (pbuh) and his people.', 'Ishmael learned Arabic from them …', 'Abraham (pbuh) returned to Palestine.'] },
+    ],
+    correctAnswer: {
+      'The writer passes on a source or tradition': ['In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf …', 'Azer is presented in Islamic sources as Nimrod\'s idol maker.', 'According to another narration, Nimrod had a dream that a child in the region would challenge his throne.'],
+      'The writer interprets or concludes': ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka‘ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'],
+      'The narrator tells an event directly': ['A bitter struggle began between Abraham (pbuh) and his people.', 'Ishmael learned Arabic from them …', 'Abraham (pbuh) returned to Palestine.'],
+    },
+    explanation: 'Framing words show where a claim comes from. “is often described as”, “is presented in Islamic sources as” and “According to another narration” pass on what a source or tradition says. “We may say that”, “It is understood from … that” and “are clear evidence that” mark the writer’s own reasoning: a view the writer offers, or a conclusion drawn from evidence. A past simple sentence with no frame (began, learned, returned) tells an event directly. A careful B2 reader keeps these three voices apart.',
+    feedback: { correct: 'Well done. You separated the source, the writer’s reasoning and the narrator’s account.', incorrect: 'Look at the start of each sentence: is there a source frame (described, presented, According to), a reasoning frame (may say, understood, evidence), or no frame at all?' },
+  },
+  {
+    id: 'abraham-b2-language-review-2-future-in-the-past', type: 'multiple-choice', title: 'Notice: Looking Ahead from the Past',
+    instructions: 'Read the sentences from Chapters 17 and 25. Then choose the best explanation.',
+    question: 'Chapter 17: “He knew that there was going to be a great celebration outside the town.” Chapter 25: “When Abraham (pbuh) realized that no one else was going to believe in his call, he decided to emigrate.” What does “was going to” do in these sentences?',
+    options: [
+      'It shows a plan that was never carried out.',
+      'It describes an action that was repeated many times in the past.',
+      'It looks forward from a moment in the past (what he knew or realized then) to something that was still ahead.',
+      'It shows that the writer doubts whether the event took place.',
+    ],
+    correctAnswer: 2,
+    explanation: '“Was going to” is the future seen from the past. The verbs knew and realized put us at a past moment; from there, the celebration and the people’s refusal were still in the future. The form itself does not say whether the event really happened: the context does, and here both did. Chapter 5 takes the same viewpoint: “Very soon, he was going to fight against his family and the whole system in his society.” Would can do the same job: “All the people would attend it.”',
+    feedback: { correct: 'Correct. The narrator stands at a past moment and looks ahead.', incorrect: 'Find the past moment first (he knew, he realized). Is the celebration before or after that moment?' },
+  },
+  {
+    id: 'abraham-b2-language-review-3-cause-aim-obstacle-result', type: 'matching', title: 'Notice: Cause, Aim, Obstacle, Result',
+    matchingHeadings: { left: 'From the book', right: 'What the linking language does' },
+    instructions: 'Read the sentences from Chapters 3, 14, 21 and 32. Match each one with what its linking language does.',
+    question: 'How does each sentence connect an action with a cause, an aim, an obstacle or a result?',
+    matchingPairs: [
+      { left: 'The people stood away from the pit because of the great heat.', right: 'gives the cause after the action it explains' },
+      { left: 'He went to Damascus in search of Hanifism …', right: 'names the goal of a journey' },
+      { left: 'His father\'s harsh behavior towards Abraham (pbuh) did not stop him from carrying the message of truth.', right: 'presents a difficulty that did not change the action' },
+      { left: 'Because of this, Allah made him the leader of humanity …', right: 'points back to the previous sentence and presents what followed from it' },
+    ],
+    correctAnswer: {
+      'The people stood away from the pit because of the great heat.': 'gives the cause after the action it explains',
+      'He went to Damascus in search of Hanifism …': 'names the goal of a journey',
+      'His father\'s harsh behavior towards Abraham (pbuh) did not stop him from carrying the message of truth.': 'presents a difficulty that did not change the action',
+      'Because of this, Allah made him the leader of humanity …': 'points back to the previous sentence and presents what followed from it',
+    },
+    explanation: 'Because of + noun gives the cause after the action: the heat made the people stand away. In search of + noun names the aim of a journey. Not stop someone from + -ing presents an obstacle that failed: his father’s harshness did not change what Abraham did. “Because of this” at the start of a sentence points back: this is the whole previous sentence, and the new sentence gives what followed from it.',
+    feedback: { correct: 'Correct. You matched each linker with its job.', incorrect: 'Ask where the cause is: after the action, in the sentence before, or is it an aim or an obstacle? Compare Chapters 3, 14, 21 and 32.' },
+  },
+  // BUILD — controlled practice in the book's own sentences.
+  {
+    id: 'abraham-b2-language-review-4-passive-earlier-past', type: 'error-correction', title: 'Build: Passive Forms and the Earlier Past',
+    instructions: 'Each sentence from Chapters 20, 22 and 25 has one mistake. Tap the mistake, then choose the correct form.',
+    question: 'Can you correct the passive forms and the verb that steps back to an earlier past?',
+    errorItems: [
+      { sentence: 'Abraham (pbuh) was put on the catapult; his hands and feet were tying.', error: 'were tying', options: ['had tied', 'were tied', 'tied'], answer: 1 },
+      { sentence: 'Cries of astonishment was heard from the unbelievers.', error: 'was heard', options: ['were heard', 'were hearing', 'heard'], answer: 0 },
+      { sentence: 'Abraham (pbuh) has aged and his hair was gray after many years spent in calling people to Allah.', error: 'has aged', options: ['is aging', 'have aged', 'had aged'], answer: 2 },
+    ],
+    correctAnswer: null,
+    explanation: 'A passive needs be + past participle: someone tied his hands and feet, so they were tied (were tying would mean the hands were doing the tying). The verb agrees with the plural subject Cries, so were heard. Had aged steps back from the moment of the story: by the time Sarah made her suggestion, Abraham had already grown old. The present perfect has aged belongs to the present, not to a past story.',
+    feedback: { correct: 'Well done. You fixed the passive, the agreement and the earlier past.', incorrect: 'Ask: who did the action, is the subject singular or plural, and does the verb look back from a past moment? Compare with Chapters 20, 22 and 25.' },
+  },
+  {
+    id: 'abraham-b2-language-review-5-reporting-words', type: 'transformation', title: 'Build: Report the Words',
+    instructions: 'Report the words from Chapters 7 and 15. Complete each new sentence and keep the meaning.',
+    question: 'How do a statement and a question change when we report them in a past story?',
+    transformItems: [
+      { source: 'His father continued, “These big ears show his deep knowledge.”', frame: 'His father added that those big ears [blank] his deep knowledge.', answers: ['showed'] },
+      { source: 'they responded: “Are you criticizing our gods and our forefathers? …”', frame: 'They asked Abraham (pbuh) [blank] their gods and their forefathers.', answers: ['whether he was criticizing', 'if he was criticizing', 'whether he was criticising', 'if he was criticising'] },
+    ],
+    correctAnswer: null,
+    explanation: 'After a past reporting verb, the tense usually moves back and these becomes those: show → showed. The father’s claim is reported, not shared by the narrator. A reported yes/no question uses whether or if + statement word order, with no question mark: Are you criticizing …? → whether he was criticizing …. The pronouns change too: you → he, our gods → their gods.',
+    feedback: { correct: 'Correct. You moved the tense back and used statement word order.', incorrect: 'Move the tense one step back (show → showed, are → was). For a yes/no question, start with whether or if, then subject + verb.' },
+  },
+  {
+    id: 'abraham-b2-language-review-6-certainty-and-scope', type: 'multiple-choice', title: 'Build: Keep the Writer’s Certainty',
+    instructions: 'Read the sentences from Chapters 4 and 22. Choose the summary that keeps how sure the writer is and how many people are meant.',
+    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 20th century BC.” Chapter 22: “… many people started following Abraham (pbuh), but some kept their faith secret out of fear of rulers.” Which summary keeps the writer’s certainty and scope?',
+    options: [
+      'It has been proven that Abraham lived in the 20th century BC; after the fire, many people followed him, but some hid their faith because they feared the rulers.',
+      'Abraham is believed to have lived in the 20th century BC; after the fire, everyone followed him openly, and nobody feared the rulers.',
+      'Abraham is believed to have lived in the 20th century BC; after the fire, many people followed him, but some hid their faith because they feared the rulers.',
+      'Abraham is believed to have lived in the 20th century BC; after the fire, most people hid their faith, and only a few followed him.',
+    ],
+    correctAnswer: 2,
+    explanation: '“is believed to have lived” keeps a distance: it reports a belief about a date, so ‘It has been proven’ overstates it. Many … but some … divides the people into two groups: ‘everyone’ and ‘nobody’ erase the second group, and ‘most … only a few’ reverses their sizes. A good B2 summary changes the words but keeps the strength of the claim and its scope.',
+    feedback: { correct: 'Correct. The summary keeps both the certainty and the size of each group.', incorrect: 'Check two things: does the summary make the date more certain than the book does, and does it keep many … but some …?' },
+  },
+  {
+    id: 'abraham-b2-language-review-7-link-limit-collocate', type: 'word-bank', title: 'Build: Link, Limit and Collocate',
+    instructions: 'Complete the lines from Chapters 14, 17, 25 and 35 with words from the bank. Two words are not needed.',
+    question: 'Which words complete a collocation, mark an unexpected turn, give a result and widen the scope?',
+    fillBlanksText: '… he was determined to [blank] to these practices … Allah also will cause them to die and bring them back to life again. [blank], idolaters would not give up but held on tightly to their idols. … Sarah thought she could not have a child. [blank], she suggested Abraham (pbuh) get married to Hajar. … He built a place of worship for all people, [blank] people of a chosen race or color.',
+    wordBank: ['put an end', 'However', 'Therefore', 'not just', 'give an end', 'Although'],
+    correctAnswer: ['put an end', 'However', 'Therefore', 'not just'],
+    explanation: 'Put an end to + noun is a fixed collocation meaning ‘stop something completely’; give an end is not English. However turns to something unexpected: Allah’s power is described, yet the idolaters still refused to give up. Therefore gives a result: Sarah believed she could not have a child, so she made her suggestion. Not just widens the scope: the place is for everyone, not only for one group. Although needs a full clause after it (Although she thought …, she …), so it cannot stand alone before a comma.',
+    feedback: { correct: 'Well done. You chose the collocation, the contrast, the result and the scope marker.', incorrect: 'For each gap, ask: is it part of a fixed phrase, a surprise, a result, or a wider group? Check Chapters 14, 17, 25 and 35.' },
+  },
+  // USE — take the language into new contexts from the learners' world.
+  {
+    id: 'abraham-b2-language-review-8-new-context', type: 'choose-form', title: 'Use: Our Town’s Old Fountain',
+    instructions: 'This text is not from the book. It is part of a report for the school newspaper. Choose the form that fits each sentence.',
+    question: 'Can you name a source, keep the right degree of certainty and link the ideas in a new text?',
+    formChoices: [
+      { sentence: 'According to a sign in the town museum, the old fountain in the square [choice] in 1890.', options: ['built', 'was built', 'had built'], answer: 1 },
+      { sentence: 'Some older residents [choice] that its water once came from a spring in the hills, but no written record confirms this.', options: ['believe', 'prove', 'have shown'], answer: 0 },
+      { sentence: 'Last year the council was going to close the fountain because of repair costs; [choice], our class collected signatures, and it is still open today.', options: ['therefore', 'however', 'in spite of'], answer: 1 },
+    ],
+    correctAnswer: null,
+    explanation: 'A fountain does not build itself, so the passive is needed: was built. The source is named at the start (According to a sign …). Believe keeps the claim as a belief; prove or have shown would contradict the next words: no written record confirms this. Was going to close is a plan seen from the past, and however shows that the plan did not happen. In spite of needs a noun after it, not a comma and a clause.',
+    feedback: { correct: 'Well done. You used the book’s language in a new report.', incorrect: 'For each sentence, ask: who did the action? How sure can we be? Does the next part give a result or something unexpected?' },
+  },
+  {
+    id: 'abraham-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Say It More Carefully',
+    instructions: 'These sentences are not from the book. Rewrite each one so that the claim is reported as a belief or made less certain. Complete the new sentence.',
+    question: 'Can you report a belief and soften a claim that is too strong?',
+    transformItems: [
+      { source: 'People believe that the Romans built the old bridge.', frame: 'The old bridge [blank] by the Romans.', answers: ['is believed to have been built'] },
+      { source: 'The survey proves that students want a longer break.', frame: 'The survey [blank] that students want a longer break.', answers: ['suggests', 'indicates', 'seems to show', 'appears to show', 'may show', 'might show'] },
+      { source: 'The new timetable will reduce lateness.', frame: 'The new timetable [blank] lateness.', answers: ['may reduce', 'might reduce', 'could reduce', 'is likely to reduce', 'will probably reduce'] },
+    ],
+    correctAnswer: null,
+    explanation: 'Is believed to have been built reports a belief about a past event: believed + to have + past participle, here in the passive. Suggests or indicates presents a survey as evidence without calling it proof. May, might or could turn a certain prediction into a possibility. The book makes the same moves: “is believed to have lived” and “Some sources suggest that he lived between 2200–2000 BC.”',
+    feedback: { correct: 'Well done. Your sentences report and qualify the claims carefully.', incorrect: 'Use is believed to have been + past participle for the belief, a verb like suggests for the survey, and may/might/could for the prediction.' },
+  },
+  {
+    id: 'abraham-b2-language-review-10-transfer', type: 'reflection', title: 'Use: Argue a School Decision',
+    instructions: 'Write a short argued paragraph (6–8 sentences) about a decision in your school or town, for example a new timetable, a phone rule or a new use for an old building. State your position, give evidence and add one qualification. Plan it with a partner first.',
+    question: 'Can you use the language of the whole book to argue carefully: position, source, background, evidence and limits?',
+    correctAnswer: null,
+    explanation: 'Example: “In my view, our school should keep the library open at lunchtime. According to a class survey, about sixty students use it every week. Before this year, the library had already become a quiet place for homework. Last spring the school was going to close it at lunch because of staff costs; however, some parents offered to help as volunteers. The survey suggests that students value a quiet space, although it may not show what every student thinks. Therefore, the library should stay open at lunch, not just for readers but for anyone who needs to study.”',
+    feedback: { correct: 'Check your paragraph: a position (In my view …), a source (According to …), background (had + past participle, was going to), a contrast (however, although), a careful claim (suggests, may), a result (Therefore) and a scope marker (not just).', incorrect: '' },
+    discussionPrompts: [
+      { question: 'Position and source: “In my view, … . According to …, …”', mode: 'Individual' },
+      { question: 'Background: “Before …, … had already …” or “The school was going to …; however, …”', mode: 'Individual' },
+      { question: 'Evidence and interpretation: “The survey suggests that …, although it may not …”', mode: 'Pair' },
+      { question: 'Conclusion and scope: “Therefore, … , not just … but …”', mode: 'Pair' },
+    ],
+  },
 ];
 const englishFinalFeedback={correct:'Correct. Your answer is supported by the story as a whole.',incorrect:'Not yet. Compare the relevant chapters and try again.'};
 const englishFinalOverrides:Record<string,Exercise>={
