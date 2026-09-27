@@ -38,16 +38,122 @@ export const abrahamA2VocabularyChallengePairsPolished = [
 ];
 
 export const abrahamA2LanguageReviewExercises: Exercise[] = [
-  { id: 'abraham-a2-language-review-1-form-function', type: 'matching', title: 'Match the Meaning', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern mean?', matchingPairs: [{ left: 'could not + verb', right: 'past inability' }, { left: 'used to + verb', right: 'a repeated past habit' }, { left: 'because + clause', right: 'a reason' }, { left: 'bigger than', right: 'a comparison' }], correctAnswer: { 'could not + verb': 'past inability', 'used to + verb': 'a repeated past habit', 'because + clause': 'a reason', 'bigger than': 'a comparison' }, explanation: 'These patterns come from the opening chapters and perform four different language jobs.', feedback: { correct: 'Correct. You matched each pattern with its meaning.', incorrect: 'Focus on ability, habit, reason and comparison.' } },
-  { id: 'abraham-a2-language-review-2-past-habit', type: 'multiple-choice', title: 'Habit or One Event?', instructions: 'Choose the sentence about something that happened many times in the past.', question: 'Which sentence talks about a past habit?', options: ['Abraham used to watch his father making idols.', 'One day, Abraham asked his father a question.', 'The sun came out in the morning.'], correctAnswer: 0, explanation: '“Used to + verb” talks about something that happened many times in the past.', feedback: { correct: 'Correct. “Used to watch” describes a past habit.', incorrect: 'Look for “used to + verb”.' } },
-  { id: 'abraham-a2-language-review-3-condition', type: 'fill-blanks', title: 'If and Will', instructions: 'Complete the sentence with one word.', question: 'Which word completes the if sentence?', fillBlanksText: 'If you follow the right way, you [blank] understand more clearly.', correctAnswer: 'will', explanation: 'With “if”, we say the situation first. “Will” tells us what happens next.', feedback: { correct: 'Correct. “Will” tells us what happens next.', incorrect: 'Look at the second part. It needs “will”.' } },
-  { id: 'abraham-a2-language-review-4-purpose-necessity', type: 'drag-drop', title: 'Why or Need?', instructions: 'Put the expressions in the right group.', question: 'Which expressions show a reason to act, and which show something necessary?', dragDropGroups: [{ group: 'Purpose', items: ['travelled to tell people the message', 'used the machine to throw'] }, { group: 'Duty or necessity', items: ['had to guide his people', 'had to give food to her child'] }], correctAnswer: { Purpose: ['travelled to tell people the message', 'used the machine to throw'], 'Duty or necessity': ['had to guide his people', 'had to give food to her child'] }, explanation: '“To + verb” can tell us why someone does something. “Had to” tells us something was necessary.', feedback: { correct: 'Correct. You matched “why” and “need” correctly.', incorrect: 'Ask: “Why?” or “Was it necessary?”' } },
-  { id: 'abraham-a2-language-review-5-plan-sequence', type: 'sequencing', title: 'Plan to Result', instructions: 'Put the sentences in a clear order.', question: 'What comes first, next and last?', sequencingItems: [{ id: '1', text: 'He wanted to test an idea.' }, { id: '2', text: 'He made a plan to act.' }, { id: '3', text: 'Then he carried out the plan.' }, { id: '4', text: 'In the end, people saw the result.' }], correctAnswer: ['1', '2', '3', '4'], explanation: '“Wanted to” shows the plan. “Then” and “in the end” show the order.', feedback: { correct: 'Correct. You put the plan, action and result in order.', incorrect: 'Start with the plan, then the action, then the result.' } },
-  { id: 'abraham-a2-language-review-6-ability', type: 'true-false', title: 'Past Inability', instructions: 'Choose true or false.', question: '“Could not” tells us that someone was not able to do something in the past.', correctAnswer: true, explanation: 'Examples include objects that could not move and birds that could not fly over the flames.', feedback: { correct: 'Correct. “Could not” means “was not able to”.', incorrect: 'Review the chapters that describe what someone or something was unable to do.' } },
-  { id: 'abraham-a2-language-review-7-because-of', type: 'multiple-choice', title: 'Because or Because Of?', instructions: 'Choose the correct sentence.', question: 'Which sentence uses because of correctly?', options: ['More people came because of the water.', 'More people came because of the water appeared.', 'More people came because of it was useful.'], correctAnswer: 0, explanation: 'Use “because of” before a thing or noun, for example “the water”.', feedback: { correct: 'Correct. “The water” comes after “because of”.', incorrect: 'After “because of”, look for a thing or noun.' } },
-  { id: 'abraham-a2-language-review-8-change-continuation', type: 'matching', title: 'Change and Still', instructions: 'Match each pattern with its meaning.', question: 'What does each expression mean?', matchingPairs: [{ left: 'became cool and safe', right: 'change to a new state' }, { left: 'turned into a garden', right: 'change into something different' }, { left: 'still there today', right: 'continuation to the present' }, { left: 'after + past event', right: 'one event happens later than another' }], correctAnswer: { 'became cool and safe': 'change to a new state', 'turned into a garden': 'change into something different', 'still there today': 'continuation to the present', 'after + past event': 'one event happens later than another' }, explanation: '“Became” and “turned into” show change. “Still” shows that something continues.', feedback: { correct: 'Correct. You matched change, continuing and order.', incorrect: 'Focus on became, turned into, still and after.' } },
-  { id: 'abraham-a2-language-review-9-certainty', type: 'fill-blanks', title: 'Being Sure', instructions: 'Complete the sentence with two words.', question: 'Which two words show that the speaker is sure?', fillBlanksText: 'I will help you [blank].', correctAnswer: 'for sure', explanation: '“For sure” shows that the speaker is very sure.', feedback: { correct: 'Correct. “For sure” shows the speaker is sure.', incorrect: 'Return to Ishmael’s reply in the final chapter.' } },
-  { id: 'abraham-a2-language-review-10-transfer', type: 'reflection', title: 'Use It', instructions: 'Write or say four short sentences about your daily life.', question: 'Can you use these patterns in your own sentences?', correctAnswer: null, explanation: 'Use the same story language in your own daily-life sentences.', feedback: { correct: 'Use all four starters and make each sentence meaningful.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — “I used to ... but now ...”', mode: 'Individual' }, { question: 'Sentence 2 — “I decided to ... because ...”', mode: 'Individual' }, { question: 'Sentence 3 — “Yesterday, I had to ...”', mode: 'Individual' }, { question: 'Sentence 4 — “After ..., I will ... for sure.”', mode: 'Pair' }] }
+  // LOOK — notice what the book's language does, across chapters.
+  {
+    id: 'abraham-a2-language-review-1-going-on-or-one-event', type: 'drag-drop', title: 'Look: Going On, or One Event?',
+    instructions: 'Read the parts from Chapters 2, 5, 6 and 13. Was it going on for some time, or did it happen once? Put each part in the right group.',
+    question: 'Which verbs show something going on for some time, and which show one event?',
+    dragDropGroups: [
+      { group: 'Going on for some time', items: ['Abraham used to watch his father making idols from stone', 'He was trying to show them the right way', 'Hagar was running in the desert'] },
+      { group: 'Happened once', items: ['One day, his father saw Abraham.', 'He got an axe and waited.', 'Suddenly water came out of the ground'] },
+    ],
+    correctAnswer: {
+      'Going on for some time': ['Abraham used to watch his father making idols from stone', 'He was trying to show them the right way', 'Hagar was running in the desert'],
+      'Happened once': ['One day, his father saw Abraham.', 'He got an axe and waited.', 'Suddenly water came out of the ground'],
+    },
+    explanation: '“Used to + base verb” (used to watch) is a habit in the past: it happened again and again. “Was + -ing” (was trying, was running) is an action that was going on at that time. The past simple (saw, got, came) tells one finished event. Words like “One day” and “Suddenly” often come before one event.',
+    feedback: { correct: 'Well done. Used to and was + -ing go on for some time; the past simple tells one event.', incorrect: 'Look at the verb: used to …? was + -ing? Or one past form like saw or came?' },
+  },
+  {
+    id: 'abraham-a2-language-review-2-had-to-could-can-will', type: 'matching', title: 'Look: Had To, Could Not, Can, Will',
+    matchingHeadings: { left: 'From the book', right: 'Meaning' },
+    instructions: 'Read the sentences from Chapters 4, 7, 8 and 14. Match each one with its meaning.',
+    question: 'What do had to, could not, can and will mean in these sentences?',
+    matchingPairs: [
+      { left: 'By now, he had to guide his people.', right: 'It was his duty.' },
+      { left: 'Birds could not fly over the flames.', right: 'In the past, they were not able to do it.' },
+      { left: 'Ask it if it can speak!', right: 'Is it able to do this now?' },
+      { left: 'I will help you for sure.', right: 'a promise about the future' },
+    ],
+    correctAnswer: {
+      'By now, he had to guide his people.': 'It was his duty.',
+      'Birds could not fly over the flames.': 'In the past, they were not able to do it.',
+      'Ask it if it can speak!': 'Is it able to do this now?',
+      'I will help you for sure.': 'a promise about the future',
+    },
+    explanation: '“Had to + base verb” is a duty in the past: Abraham had to guide his people. “Could not + base verb” means that someone or something was not able to do it in the past. “Can” is about ability now: Abraham asks the people to see if the idol can speak. “Will + base verb” talks about the future, and Ishmael’s “for sure” makes it a promise. After all these words, use the base verb: guide, fly, speak, help.',
+    feedback: { correct: 'Correct. Had to is a duty, could not and can are about ability, and will is a promise.', incorrect: 'Look at the small word before the verb: had to, could not, can or will. Is it about a duty, ability or the future?' },
+  },
+  {
+    id: 'abraham-a2-language-review-3-reason-result', type: 'multiple-choice', title: 'Look: Because and So',
+    instructions: 'Read the sentences from Chapters 8 and 10. Then choose the best answer.',
+    question: 'Chapter 8: “But Abraham (pbuh) stayed calm, because he trusted Allah.” Chapter 10: “He thought Abraham was not an ordinary person. So, he wanted to meet him.” Which parts give the REASON?',
+    options: ['he stayed calm … / he wanted to meet him', 'he trusted Allah … / He thought Abraham was not an ordinary person', 'he stayed calm … / He thought Abraham was not an ordinary person'],
+    correctAnswer: 1,
+    explanation: '“Because” comes before the reason: why did Abraham stay calm? Because he trusted Allah. “So” comes before the result: first the reason (Nimrod thought Abraham was not ordinary), then “So, …” and what happened (he wanted to meet him). “Because of” is different: it comes before a noun, not a sentence.',
+    feedback: { correct: 'Correct. Because + the reason; the reason + So + the result.', incorrect: 'Ask “Why?” for each sentence. Why did Abraham stay calm? Why did Nimrod want to meet him?' },
+  },
+  // PRACTISE — use the forms in the book's own sentences.
+  {
+    id: 'abraham-a2-language-review-4-linking-words', type: 'word-bank', title: 'Practise: Reason, Result, Different Idea',
+    instructions: 'Complete the sentences from Chapters 5, 8, 11 and 14 with words from the bank. Two words are not needed.',
+    question: 'Which words give a reason or a result, and which word gives a different idea?',
+    fillBlanksText: 'People said, “We saw our fathers worship them; [blank] this, we do the same.” … But they were [blank] arrogant to accept their mistake. … Abraham (pbuh) understood that no one was going to listen to him. [blank], he decided to leave Babylon … It was the first holy place on Earth, [blank] it was lost after a long time.',
+    wordBank: ['because of', 'too', 'So', 'but', 'because', 'very'],
+    correctAnswer: ['because of', 'too', 'So', 'but'],
+    explanation: '“Because of” comes before a noun or “this”: because of this (not “because this”). “Too + adjective + to + verb” shows a result: they were very arrogant, so they did not accept their mistake. We cannot say very arrogant to. “So” gives the result: no one was going to listen, so he decided to leave. “But” gives a different idea: it was the first holy place, but it was lost.',
+    feedback: { correct: 'Well done. You linked reasons, a result and a different idea.', incorrect: 'For each gap, ask: is the next part a reason, a result or a different idea? Look at the words after each gap: a noun (this), an adjective + to (arrogant to …) or a new sentence?' },
+  },
+  {
+    id: 'abraham-a2-language-review-5-verb-patterns', type: 'choose-form', title: 'Practise: Told, Let, Began',
+    instructions: 'Choose the correct form to complete each sentence from the book.',
+    question: 'After “told his son not”, “let the second slave” and “began”, which form comes next?',
+    formChoices: [
+      { sentence: 'He got angry and told his son not [choice] with it again.', options: ['play', 'to play', 'playing'], answer: 1 },
+      { sentence: 'Then Nimrod said, “I let the second slave [choice]. Let him go.”', options: ['to live', 'living', 'live'], answer: 2 },
+      { sentence: 'Abraham (pbuh) began [choice] the stone gods, one after another.', options: ['to break', 'break', 'broken'], answer: 0 },
+    ],
+    correctAnswer: null,
+    explanation: '“Tell + person + (not) to + base verb” gives an instruction: told his son not to play. “Let + person + base verb” (no “to”) means “allow”: let the second slave live. After “begin”, use “to + base verb”: began to break.',
+    feedback: { correct: 'Correct. Told … not to + verb; let + base verb; began to + verb.', incorrect: 'Look at the verb before the gap: told, let or began. Only one of them takes the base verb without “to”. Check Chapters 2, 6 and 10.' },
+  },
+  {
+    id: 'abraham-a2-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Practise: Fix One Mistake',
+    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
+    question: 'Can you correct the verb after “If” and two past verbs?',
+    errorItems: [
+      { sentence: 'If you will not stop speaking like this, I will stone you.', error: 'will not stop', options: ['do not stop', 'did not stop', 'not stop'], answer: 0 },
+      { sentence: 'People found Abraham (pbuh) and bringed him to the house of idols.', error: 'bringed', options: ['brings', 'brought', 'bring'], answer: 1 },
+      { sentence: 'She was so happy. She drinked the water.', error: 'drinked', options: ['drunk', 'drink', 'drank'], answer: 2 },
+    ],
+    correctAnswer: null,
+    explanation: 'After “If”, use the present, not “will”: “If you do not stop …, I will …”. “Will” goes only in the result part. “Bring” and “drink” change in the past: brought, drank (not bringed, drinked).',
+    feedback: { correct: 'Well done. You fixed all three sentences.', incorrect: 'Compare with the book: Chapter 5 (the father’s words), Chapter 7 (People found Abraham …) and Chapter 13 (Hagar and the water).' },
+  },
+  {
+    id: 'abraham-a2-language-review-7-still', type: 'sentence-building', title: 'Practise: Still Against Him',
+    instructions: 'Put the words in order to make the sentence from Chapter 9.',
+    question: 'How do we say that something did not change?',
+    sentenceChunks: ['Abraham (pbuh) tried hard', 'to show them the truth,', 'but they were', 'still', 'against him.'],
+    correctAnswer: null,
+    explanation: '“Still” shows that a situation did not change: before the miracle and after it, the people were against Abraham. “Still” comes after “was/were”: they were still against him. Compare a change in the same chapter: “The fire became cool and safe for him.” “Tried hard to + verb” shows a big effort.',
+    feedback: { correct: 'Well done. They were still against him: no change.', incorrect: 'Start with what Abraham tried to do. Then use “but” and say what did not change. “Still” comes after “were”.' },
+  },
+  // USE — take the language into a new, everyday context.
+  {
+    id: 'abraham-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Rainy Afternoon',
+    instructions: 'This text is not from the book. Complete it with words you practised in the book. Two words are not needed.',
+    question: 'Can you use the book’s language to tell about a day at school?',
+    fillBlanksText: 'Last Friday, it was raining when school finished. Our teacher told us [blank] wait inside [blank] we had no umbrellas. We [blank] wait for thirty minutes. Then the sky became clear, but the ground was [blank] wet. We walked home carefully.',
+    wordBank: ['to', 'because', 'had to', 'still', 'because of', 'used to'],
+    correctAnswer: ['to', 'because', 'had to', 'still'],
+    explanation: '“Told us to wait” gives an instruction. “Because” + a sentence gives the reason: we had no umbrellas. “Had to” shows what was necessary on that day (“used to” is for a habit, not one day). “Still” shows no change: the sky changed, but the ground was still wet.',
+    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: an instruction? a reason? something necessary on one day? no change?' },
+  },
+  {
+    id: 'abraham-a2-language-review-9-transfer', type: 'reflection', title: 'Use: A Day I Remember',
+    instructions: 'Write four or five short sentences about a difficult day: at home, at school or on a trip. Say your sentences to a partner first.',
+    question: 'Can you use the language of the whole book to tell about a day in your own life?',
+    correctAnswer: null,
+    explanation: 'Example: “Last winter, I was walking to school with my brother. Suddenly, it started to snow. We could not see the road, so we had to walk slowly. My mother told us to wear our warm coats. Now it is spring, but I still remember that day.”',
+    feedback: { correct: 'Check your sentences: was + -ing, one past event, could not / had to, so or because, told … to, still.', incorrect: '' },
+    discussionPrompts: [
+      { question: 'Sentence 1 — What was going on: “Last …, I was …-ing when …”', mode: 'Individual' },
+      { question: 'Sentence 2 — One event: “One day / Suddenly, …” (came, saw, got …)', mode: 'Individual' },
+      { question: 'Sentence 3 — Ability, duty and reason: “I could not …, so I had to …” or “… because …”', mode: 'Pair' },
+      { question: 'Sentence 4 — An instruction and no change: “My … told me to … . I still …”', mode: 'Pair' },
+    ],
+  },
 ];
 
 export const abrahamA2FinalChallengeExercisesPolished: Exercise[] = [
