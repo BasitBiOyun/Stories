@@ -59,3 +59,4 @@ Per chapter: new type sequence + language target(s) (compact); data problems fix
 ## Added during the run
 - Word-bank and sentence-building answers are chosen chips and are scored EXACTLY (tashkeel counts). Typed transformation answers ignore tashkeel, so test case endings with choose-form or error-correction, not transformation.
 - If the story text has a clear slip (e.g. sukun before «ال» where a kasra is needed, wrong agreement), do not copy the slip into a learning item: write the correct form in the item (the verbatim check ignores tashkeel) and report the slip. Never change the story text.
+- Story sentences that render a prophet's prayer or a Qur'anic statement (even in paraphrase) are treated like verses: no error-correction or gapping of them.
