@@ -161,6 +161,16 @@ const scenes = [];
    piecewise-linearly, so holds (where a feature is read) can be lengthened without slowing transitions. */
 const scene = (id, a, b, update) => scenes.push({ id, el: document.getElementById(id), a, b, update });
 let WARPS = {};
+/** film seconds between scene clock c0 and scene clock c (through the warp) */
+function filmSince(id, c0, c) { return clockFilm(id, c) - clockFilm(id, c0); }
+function clockFilm(id, c) {
+  const k = WARPS[id];
+  if (!k) return c;
+  let i = 1;
+  while (i < k.length - 1 && c > k[i][0]) i++;
+  const [c0, f0] = k[i - 1], [c1, f1] = k[i];
+  return f0 + (c - c0) * (f1 - f0) / (c1 - c0);
+}
 function sceneClock(id, t) {
   const k = WARPS[id];
   if (!k) return t;
@@ -589,19 +599,55 @@ const enWords = splitWords($('#pgTextEn'));
   arText.innerHTML = '<p>آدم (عليه السلام) هو أول <b class="vw">رسول</b> وأبو البشر جميعا. خلقه الله من التراب، وأكرمه تكريما عظيما، وأعطاه قيمة كبيرة كأول إنسان. يحكي القرآن الكريم قصة آدم (عليه السلام) في سور مختلفة. تتحدث سور الأعراف، والبقرة، والحجر، والإسراء، وص، وطه عن قصة آدم (عليه السلام) بوضوح. نحن -أحفاد آدم- يمكننا أن نتعلم دروسا كثيرة من هذه القصة <b class="vw">الرائعة</b> والحقيقية.</p><p>بعد أن خلق الله السماء والأرض، أخبر الملائكة أنه سيخلق إنسانًا. وقال إنه قرر أن يجعل <b class="vw">خليفة</b> في الأرض. وكان هذا الخليفة سيعيش فيها سنوات كثيرة. فتعجبت الملائكة وبدأت تنتظر <b class="vw">بفضول</b>.</p>';
   const toggle = $('#s4toggle'), knob = $('#s4knob'), seam = $('#s4seam');
   const arTag = $('#s4arTag'), trTag = $('#s4trTag');
+  /* Arabic hotspots on the chapter illustration (src/data/adam/b1/ar/pages.ts, chapter 1 hotspots, unchanged) */
+  const arImg = ar.querySelector('.pg-img'), arHs = [...ar.querySelectorAll('.hotspot')];
+  const AR_HS = [
+    ['التراب', 'يذكر الفصل أن آدم خُلق من التراب.'],
+    ['المسؤولية في الأرض', 'يخبر الله الملائكة أنه سيجعل خليفة في الأرض.'],
+  ];
+  const arCards = AR_HS.map(([b, e]) => el('div', 'hs-card hs-ar', `<b>${b}</b><em>${e}</em>`, arImg));
+  const arPlay = ar.querySelector('.pl-btn'), arFill = ar.querySelector('.pl-fill'), arKnob = ar.querySelector('.pl-knob');
+  const arTime = ar.querySelectorAll('.pl-time')[0];
+  const tap = $('#s4tap'), chip = $('#s4chip');
+  let hsGeo = null;
+  // the hotspot beat is inserted at clock HB0; everything after it keeps its choreography, HD later
+  const HB0 = 14.9, HD = 2.5, L = c => c + HD;
+  const TAPS = [15.35, 16.4];
 
-  scene('s4', 12.3, 17.6, t => {
+  scene('s4', 12.3, L(17.6), t => {
+    if (!hsGeo) {
+      const img = planePos(arImg, ar);
+      hsGeo = {
+        img, hs: arHs.map(h => ({ x: img.x + h.offsetLeft, y: img.y + h.offsetTop })),
+        cards: arCards.map((c, i) => {                      // each card opens just above its hotspot
+          const h = arHs[i], w = c.offsetWidth, hh = c.offsetHeight;
+          c.style.left = clamp(h.offsetLeft - w / 2, 14, img.w - w - 14) + 'px'; c.style.top = (h.offsetTop - 34 - hh) + 'px';
+          return { w, h: hh };
+        }),
+      };
+    }
     const intro = P(t, 12.3, 12.95, E.cam);
     const flip = P(t, 13.3, 14.35, bezier(0.6, 0, 0.3, 1));   // seam travels right → left (RTL)
     const settle = P(t, 14.35, 15.3, E.cam);
-    const recede = P(t, 15.05, 15.9, E.cam);
-    const leave = P(t, 17.15, 17.6, E.inStrong);
+    const recede = P(t, L(15.05), L(15.9), E.cam);
+    const leave = P(t, L(17.15), L(17.6), E.inStrong);
     const ry = lerp(-15, 15, P(t, 13.25, 14.5, E.inOut));
     const hand = smoothNoise(t * 0.5, 11) * 4;
-    const cam = {
+    let cam = {
       px: 960, py: 540, s: lerp(0.62, 0.8, intro) + settle * 0.04 - recede * 0.12,
       ry: ry, rx: 7 - recede * 3, rz: lerp(-0.6, 0.6, flip), sx: CX + hand - recede * 60, sy: CY + recede * 40,
     };
+    /* hotspot beat: the camera leans into the Arabic illustration, two taps, then eases back out */
+    const zin = P(t, 14.75, 15.35, E.cam) * (1 - P(t, 17.05, L(15.2), E.cam));
+    if (zin > 0) {
+      const g = hsGeo.img;
+      cam = {
+        px: lerp(cam.px, g.x + g.w * 0.5, zin), py: lerp(cam.py, g.y + g.h * 0.47, zin),
+        s: Math.exp(lerp(Math.log(cam.s), Math.log(1.2), zin)),
+        ry: lerp(cam.ry, 15 - 20 * zin, zin), rx: lerp(cam.rx, 3, zin), rz: lerp(cam.rz, 0, zin),
+        sx: lerp(cam.sx, CX + 120 + hand, zin), sy: lerp(cam.sy, CY + 10, zin),
+      };
+    }
     camTf(en, cam); camTf(ar, cam);
     const seamX = lerp(W + 60, -60, flip);
     enL.style.clipPath = `inset(0 ${Math.max(0, W - seamX).toFixed(1)}px 0 0)`;
@@ -611,6 +657,41 @@ const enWords = splitWords($('#pgTextEn'));
     op(enL, P(t, 12.35, 12.75, E.lin)); op(arL, 1 - leave);
     seam.style.left = seamX + 'px';
     op(seam, Math.sin(Math.PI * flip) * 1.2);
+    /* the Arabic narration of the same page plays on (real chapter-1 recording, 1:11) */
+    const arPlaying = t > 14.42;
+    arPlay.querySelector('.play').style.opacity = arPlaying ? 0 : 1; arPlay.querySelector('.pause').style.opacity = arPlaying ? 1 : 0;
+    const sec = Math.max(0, filmSince('s4', 14.42, t));
+    const prog = clamp(sec / 71);
+    arFill.style.width = (prog * 100).toFixed(3) + '%'; arKnob.style.left = (prog * 100).toFixed(3) + '%';
+    arTime.textContent = `0:0${Math.floor(sec)}`;
+    /* hotspots pulse; tap → Arabic card */
+    arHs.forEach((h, i) => {
+      const pulse = (Math.sin((t - 14.4) * 5 + i) + 1) / 2 * P(t, 14.6, 15.0);
+      const hit = Math.exp(-Math.pow((t - TAPS[i]) / 0.07, 2));
+      h.style.transform = `scale(${((1 + pulse * 0.1) * (1 - hit * 0.15)).toFixed(3)})`;
+      h.style.boxShadow = `0 0 0 ${(pulse * 16).toFixed(1)}px rgba(225,113,0,${(0.38 * (1 - pulse) * P(t, 14.6, 15.0)).toFixed(3)})`;
+    });
+    arCards.forEach((c, i) => {
+      const a = P(t, TAPS[i] + 0.05, TAPS[i] + 0.45, E.back) * (1 - P(t, TAPS[i] + 0.88, TAPS[i] + 1.05, E.in));
+      c.style.opacity = clamp(a * 1.4).toFixed(3);
+      c.style.transform = `translateY(${((1 - a) * 16).toFixed(1)}px) scale(${(0.9 + 0.1 * a).toFixed(3)})`;
+    });
+    /* the finger */
+    let tv = 0;
+    TAPS.forEach((tt, i) => {
+      const v = P(t, tt - 0.3, tt - 0.12, E.lin) * (1 - P(t, tt + 0.2, tt + 0.4, E.lin));
+      if (v <= 0) return;
+      tv = v;
+      const r = arHs[i].getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+      const mv = P(t, tt - 0.3, tt, E.outSoft), press = Math.exp(-Math.pow((t - tt) / 0.06, 2));
+      tap.style.left = lerp(x + 90, x, mv) + 'px'; tap.style.top = lerp(y + 70, y, mv) + 'px';
+      tap.style.transform = `scale(${(1 - press * 0.25).toFixed(3)})`;
+      const rp = clamp((t - tt) / 0.4);
+      tap.style.setProperty('--r', (1 + rp * 1.8).toFixed(3)); tap.style.setProperty('--ro', (t > tt ? 1 - rp : 0).toFixed(3));
+    });
+    op(tap, tv);
+    const cv = P(t, 15.45, 15.85, E.outSoft) * (1 - P(t, 17.1, 17.4, E.in));
+    op(chip, cv); tf(chip, { y: (1 - cv) * 14 });
     /* toggle: the real EN / العربية switch, one tap */
     const tIn = P(t, 12.35, 12.85, E.back), tOut = P(t, 13.35, 13.8, E.in);
     const press = Math.exp(-Math.pow((t - 13.02) / 0.07, 2));
@@ -619,14 +700,14 @@ const enWords = splitWords($('#pgTextEn'));
     blur(toggle, tOut * 16);
     knob.style.transform = `translateX(${(P(t, 13.02, 13.4, E.back) * 164).toFixed(1)}px)`;
     /* the Arabic tagline of the library */
-    const reveal = P(t, 15.2, 16.1, bezier(0.5, 0, 0.2, 1));
+    const reveal = P(t, L(15.2), L(16.1), bezier(0.5, 0, 0.2, 1));
     arTag.style.clipPath = `inset(-40% -8% -40% ${((1 - reveal) * 100).toFixed(2)}%)`;
     arTag.style.webkitMaskImage = reveal >= 1 ? 'none' : `linear-gradient(to left, #000 ${(reveal * 100).toFixed(1)}%, transparent ${(reveal * 100 + 12).toFixed(1)}%)`;
-    tf(arTag, { x: (1 - reveal) * -40 - leave * 80, s: 1 + (t - 15.2) * 0.012 });
+    tf(arTag, { x: (1 - reveal) * -40 - leave * 80, s: 1 + (t - L(15.2)) * 0.012 });
     op(arTag, 1 - leave); blur(arTag, leave * 12);
-    const tr = P(t, 15.75, 16.4, E.outSoft);
+    const tr = P(t, L(15.75), L(16.4), E.outSoft);
     trTag.style.opacity = (tr * (1 - leave)).toFixed(3); tf(trTag, { y: (1 - tr) * 18 });
-    drawDust(t, 0.25, 0.1);
+    drawDust(t < HB0 ? t : t < L(HB0) ? HB0 + (t - HB0) * 0.2 : t - HD + 0.5, 0.25, 0.1);
   });
 }
 
