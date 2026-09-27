@@ -521,9 +521,75 @@ def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndar
     return x * (10 ** (g / 20))[:, None]
 
 
+def edit_track(path: Path) -> np.ndarray:
+    """Cut a licensed music track to the film: three beat-aligned sections, each anchored on a hit.
+
+    film 0 → 59.9      intro; the track's first big hit lands on the hook (18.9 s)
+    film 59.9 → 78.2   the track's peak; its downbeat hits as the end-of-book gate opens
+    film 78.2 → end    the outro; its final hit lands as the Lisandan Kültüre wordmark completes (93.9 s)
+    """
+    import librosa
+    y, sr = librosa.load(str(path), sr=SR, mono=False)
+    y = y.T if y.ndim == 2 else np.stack([y, y], 1)
+    mono = y.mean(1)
+    onset = librosa.onset.onset_strength(y=mono, sr=SR, hop_length=512)
+    ot = librosa.times_like(onset, sr=SR, hop_length=512)
+
+    def hit(lo, hi):
+        m = (ot >= lo) & (ot <= hi)
+        return float(ot[m][np.argmax(onset[m])])
+
+    h1, h2, h3 = hit(25.5, 27.5), hit(135.3, 136.8), hit(187.3, 188.9)
+    F2, F3 = 59.9, 78.2
+    segs = [(0.0, F2, h1 - 18.9), (F2, F3, h2 - F2), (F3, DUR, h3 - 93.9)]   # (film from, film to, music offset)
+    out = np.zeros((N, 2))
+    xf = 0.35
+    for k, (f0, f1, off) in enumerate(segs):
+        a = max(0, int((f0 - (xf if k else 0)) * SR)); b = min(N, int((f1 + (xf if k < 2 else 0)) * SR))
+        src = np.arange(a, b) / SR + off
+        ok = (src >= 0) & (src < len(y) / SR - 1e-3)
+        seg = np.zeros((b - a, 2))
+        seg[ok] = y[(src[ok] * SR).astype(int)]
+        tt = np.arange(a, b) / SR
+        g = np.ones(b - a)
+        if k:
+            g *= np.clip((tt - (f0 - xf)) / (2 * xf), 0, 1) ** 0.5            # equal-power-ish fade in
+        if k < 2:
+            g *= np.clip(((f1 + xf) - tt) / (2 * xf), 0, 1) ** 0.5            # fade out
+        out[a:b] += seg * g[:, None]
+    # the intro of the track is very quiet: lift it gently until the hook
+    tt = t_axis(N)
+    lift = np.interp(tt, [0, 17.5, 18.9], [1.8, 1.8, 1.0])
+    print(f"hits in track: {h1:.2f}s {h2:.2f}s {h3:.2f}s", flush=True)
+    return out * lift[:, None]
+
+
 def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--music", type=Path, help="use this music track (cut to the film) instead of the procedural score")
+    args = ap.parse_args()
     out_dir = PROMO / "out"
     (out_dir / "stems").mkdir(parents=True, exist_ok=True)
+    if args.music:
+        music = edit_track(args.music)
+        music = music / (np.sqrt(np.mean(music[int(20 * SR):int(90 * SR)] ** 2)) + 1e-9) * 0.12
+    else:
+        music = score()
+    sfx = build_sfx()
+    tt = t_axis(N)
+    fade = np.clip(tt / 0.05, 0, 1) * np.clip((TL["duration"] + 0.4 - tt) / 1.6, 0, 1)
+    if args.music:
+        arc = np.ones(N)          # the track carries its own dynamics
+    else:
+        # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
+        arc = np.interp(tt, [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7],
+                        [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
+    mix = (music * arc[:, None] + sfx * 0.9) * fade[:, None]
+    finish(mix, music, sfx, out_dir)
+
+
+def score() -> np.ndarray:
     st = build_music()
     st["pad"] = hp(st["pad"], 240)
     st["str"] = hp(st["str"], 200)
@@ -534,13 +600,10 @@ def main() -> None:
              + reverb(st["eth"], 3.0, 0.45, 6000))
     music = hp(music, 40)
     music = music + 0.5 * hp(music, 3200) + 0.3 * bp(music, 900, 3000) - 0.25 * bp(music, 180, 450)  # presence / air
-    sfx = build_sfx()
-    tt = t_axis(N)
-    fade = np.clip(tt / 0.05, 0, 1) * np.clip((TL["duration"] + 0.4 - tt) / 1.6, 0, 1)
-    # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
-    arc = np.interp(tt, [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7],
-                    [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
-    mix = (music * arc[:, None] + sfx * 0.9) * fade[:, None]
+    return music
+
+
+def finish(mix, music, sfx, out_dir) -> None:
     mix = rms_comp(mix, thr_db=-14, ratio=1.8)
     mix = np.tanh(mix * 1.2) / 1.2
     for name, s in (("music", music), ("sfx", sfx)):
