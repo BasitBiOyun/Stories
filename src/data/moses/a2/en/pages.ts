@@ -25,7 +25,7 @@ export const mosesA2Pages: PageData[] = [
     content: `Years passed and many despotic kings ruled Egypt. One day the king had a dream. He saw a fire in his vision. The fire came from Jerusalem and burnt the houses of the Egyptians. But it did not harm any of the Children of Israel. The king woke up and called his helpers and magicians. He asked about the dream. They said, “A boy will be born from the Children of Israel and he will kill the Egyptians.” Then, the king told his soldiers, “Kill all the baby boys of the Children of Israel.” His soldiers entered the houses and searched the rooms. When they found baby boys, they killed them. All mothers, fathers, and sisters cried, but the soldiers had no kindness. They were unkind and heartless.`,
     vocabulary: [
       { word: 'dream', definition: 'Pictures or events seen in sleep.' },
-      { word: 'magicians', definition: 'People who perform magic.' },
+      { word: 'magicians', definition: 'People who do surprising tricks that look impossible.' },
       { word: 'heartless', definition: 'Very unkind and showing no pity.' },
       { word: 'despotic', definition: 'Using power in a cruel and unfair way.' },
     ],
@@ -139,7 +139,7 @@ export const mosesA2Pages: PageData[] = [
       { word: 'stranger', definition: 'A person who is new or not known in a place.' },
       { word: 'job', definition: 'Work that a person does.' },
       { word: 'married', definition: 'Became husband and wife.' },
-      { word: 'family', definition: 'People who are related and live as a family.' },
+      { word: 'family', definition: 'Parents, children and other relatives who live together.' },
     ],
     hotspots: [
       { id: 'moses-a2-en-h9a', x: 35, y: 45, title: 'Prophet Şuayb', description: 'Şuayb offered Moses a job in Midian.' },
@@ -373,7 +373,7 @@ export const mosesA2Pages: PageData[] = [
     },
     {
         "word": "magicians",
-        "definition": "People who perform magic.",
+        "definition": "People who do surprising tricks that look impossible.",
         "partOfSpeech": "noun",
         "level": "A2",
         "pronunciation": "/məˈdʒɪʃənz/",
@@ -1044,7 +1044,7 @@ export const mosesA2Pages: PageData[] = [
     },
     {
         "word": "family",
-        "definition": "People who are related and live as a family.",
+        "definition": "Parents, children and other relatives who live together.",
         "partOfSpeech": "noun",
         "level": "A2",
         "pronunciation": "/ˈfæməli/",
