@@ -1,6 +1,6 @@
 # Lisandan Kültüre — Tanıtım Filmi (motion graphic)
 
-60 saniyelik, **3840×2160 (4K UHD), 60 fps**, konuşmasız, müzikli tanıtım filmi.
+1:41 süreli, **3840×2160 (4K UHD), 60 fps**, müzikli tanıtım filmi (yalnızca iki kısa gerçek anlatım kesiti).
 Final dosya: `out/lisandan-kulture-4k.mp4` (H.264 High + AAC 48 kHz).
 
 Film tamamen kodla üretilir: `index.html` + `film.css` + `film.js` deterministik bir zaman çizelgesidir
