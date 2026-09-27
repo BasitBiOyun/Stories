@@ -168,7 +168,7 @@ When Umayya heard this, he went mad with anger. He locked Bilal in a house witho
 
 Umayya told children to tie ropes around Bilal’s neck and pull him through the city of Mecca. He whipped Bilal and put a huge burning rock on his chest in the hot sun. He told him, “If you speak well of our idols, you will be free.” But Bilal only said, “Allah is One, Allah is One.”`,
     vocabulary: [
-      { word: 'angrily', definition: 'In an angry way.' },
+      { word: 'angrily', definition: 'In a way that shows you are very upset with someone.' },
       { word: 'refused', definition: 'Said no.' },
       { word: 'whipped', definition: 'Hit with a whip.' },
       { word: 'Allah is One', definition: 'There is no god but Allah.' },
@@ -237,7 +237,7 @@ Bilal was a very brave man. Even when people hurt him, he shouted fearlessly, �
       { word: 'beloved', definition: 'Loved very much.' },
       { word: 'hardship', definition: 'A difficult time or problem.' },
       { word: 'Hijrah', definition: 'The migration of Muslims from Mecca to Medina.' },
-      { word: 'fearlessly', definition: 'Without fear.' },
+      { word: 'fearlessly', definition: 'Bravely, not afraid of anyone.' },
     ],
     hotspots: [
       { id: 'mecca-a2-en-h11a', x: 28, y: 68, title: 'Hijrah', description: 'The Muslims move from Mecca to Medina after years of hardship.' },
@@ -259,7 +259,7 @@ In this speech, he said it is wrong to dislike or disrespect people because of t
       { word: 'morning', definition: 'The early part of the day.' },
       { word: 'equal', definition: 'Having the same value.' },
       { word: 'speech', definition: 'Words spoken to people.' },
-      { word: 'disrespect', definition: 'To treat someone without respect.' },
+      { word: 'disrespect', definition: 'To treat someone rudely, as if they are not important.' },
     ],
     hotspots: [
       { id: 'mecca-a2-en-h12a', x: 40, y: 29, title: 'Morning Adhan', description: 'Bilal adds the words “Prayer is better than sleep” to the morning call to prayer.' },
@@ -910,7 +910,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "angrily",
-        "definition": "In an angry way.",
+        "definition": "In a way that shows you are very upset with someone.",
         "partOfSpeech": "adverb",
         "level": "A2",
         "pronunciation": "/ˈæŋɡrəli/",
@@ -1216,7 +1216,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "fearlessly",
-        "definition": "Without fear.",
+        "definition": "Bravely, not afraid of anyone.",
         "partOfSpeech": "adverb",
         "level": "A2",
         "pronunciation": "/ˈfɪrləsli/",
@@ -1280,7 +1280,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "disrespect",
-        "definition": "To treat someone without respect.",
+        "definition": "To treat someone rudely, as if they are not important.",
         "partOfSpeech": "verb",
         "level": "A2",
         "pronunciation": "/ˌdɪsrɪˈspekt/",
