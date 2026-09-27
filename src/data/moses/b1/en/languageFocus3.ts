@@ -166,7 +166,7 @@ export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
     question: 'Can you correct a person clause, a “let” structure and an order?',
     errorItems: [
       {
-        sentence: 'The magicians which witnessed this miracle bowed down in front of Moses (pbuh).',
+        sentence: 'The magicians which witnessed this miracle bowed down to Allah.',
         error: 'which',
         options: ['whose', 'who', 'what'],
         answer: 1,
