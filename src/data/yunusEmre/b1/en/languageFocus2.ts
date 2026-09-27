@@ -34,7 +34,7 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
         answer: 1,
       },
       {
-        sentence: '[choice] because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline.',
+        sentence: '[choice] … the Seljuk economic and social structure began to decline.',
         options: ['However,', 'Therefore,', 'For example,'],
         answer: 0,
       },
