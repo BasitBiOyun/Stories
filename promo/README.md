@@ -69,16 +69,26 @@ python3 promo/scripts/render.py --scale 1 --workers 4 --out promo/out/preview-10
 `index.html?t=33.8` (tek kare) adresine gidin.
 
 
-## Müzik (v7)
+## v8 — Arapça keşif noktaları ve gerçek anlatım
 
-Film müziği: **"Strength" — AShamaluevMusic** (`assets/audio/strength-ashamaluev.mp3`), filme vuruşlara hizalı üç
-bölüm hâlinde kurgulandı (`build_audio.py --music`): parçanın ilk büyük vuruşu "Oku. Dinle. Anla." anına, doruk bölümü
-kitap sonu bölümlerine, son vuruşu "Lisandan Kültüre" yazısının tamamlandığı ana denk gelir. Ses efektleri aynıdır.
-Önceki prosedürel müzik `--music` verilmeden hâlâ üretilebilir.
+- **EN ⇄ AR sahnesi** (≈37.2–46.7 sn): dil Arapçaya geçtikten sonra kamera bölüm illüstrasyonuna yaklaşır; iki keşif
+  noktasına dokunulur ve Arapça kartlar açılır — «التراب» ve «المسؤولية في الأرض» (metinler
+  `src/data/adam/b1/ar/pages.ts` 1. bölüm hotspot'larından, değiştirilmeden). Film bu vuruş için bir ölçü (4 vuruş,
+  2.667 sn) uzadı: toplam **1:41**.
+- **Sesli anlatım**: uygulamanın kendi 1. bölüm kayıtlarından iki kısa kesit — hikâye sayfasında oynat tuşuna
+  basılınca İngilizce "Adam (pbuh) is the first Messenger and the father of all humans." (≈24.3 sn), Arapçaya
+  geçince «آدم (عليه السلام) هو أول رسول وأبو البشر جميعا» (≈39.8 sn; Arapça oynatıcı da ilerler). Anlatım
+  sırasında müzik alçalır. Kesitler: `assets/audio/narration_{en,ar}_ch1.wav`.
+- **Müzik**: ilk (prosedürel) müzik. Yeni ölçü için Gm9 ölçüsü (vuruş 59–63) bir kez tekrarlanır; sonraki bütün
+  bölümler kesmelere aynen oturur.
+
+Teslim dosyası (YouTube 4K için yüksek bitrate H.264, ~80 Mbps): yalnızca değişen aralık yeniden çizilir, geri
+kalan kareler önceki master'dan yeniden sıkıştırılmadan kopyalanır:
 
 ```bash
-python3 promo/scripts/build_audio.py --music promo/assets/audio/strength-ashamaluev.mp3
+python3 promo/scripts/build_audio.py                       # müzik + efekt + anlatım → out/mix.wav
+# yeni film 39.75 → 50.733 sn (kareler 2385–3044) 4K kayıpsız çizilir (promo/out/v8/run.sh)
+python3 promo/scripts/splice_copy.py --master promo/out/master-4k-v2.mp4 \
+    --patch promo/out/v8/r_0.mkv promo/out/v8/r_1.mkv promo/out/v8/r_2.mkv promo/out/v8/r_3.mkv \
+    --from 39.75 --old-to 48.066667 --out promo/out/lisandan-kulture-4k.mp4
 ```
-
-Lisans: AShamaluevMusic parçaları atıf karşılığında ücretsiz kullanılabilir; yayında müzik künyesi belirtilmelidir
-(güncel koşullar: ashamaluevmusic.com).
