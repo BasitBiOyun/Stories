@@ -1,5 +1,8 @@
 import type { TeacherGuideSection, StudentGuideMetadata } from '../../../../types';
 import { meccaA2TeacherGuide } from './teacherGuide';
+// Learners see only the targets line of the teacher's grammar/pronunciation notes, not the teaching steps.
+const learnerLine = (text?: string): string | undefined => text?.split('\n')[0].replace(/^(Targets|الأهداف):\s*/, '').trim() || undefined;
+
 
 type SelfPlan = {
   chapter: string;
@@ -33,12 +36,12 @@ export const meccaA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map((p, in
     timing: '20 minutes',
     objectives: ['Understand the chapter’s main event or idea.', 'Find direct evidence in the story.', 'Use key A2 vocabulary in a short response.', 'Complete the Quick Challenge, then use the real chapter Language Focus before producing a short response.'],
     pedagogy: 'Independent evidence-first study using only the chapter text, audio, Word Notes, hotspots, Quick Challenge and active chapter Language Focus.',
-    grammarFocus: teacher?.grammarFocus,
+    grammarFocus: learnerLine(teacher?.grammarFocus),
     lessonPlan: 'Read once for meaning; listen while following the text; read again to mark evidence; complete the Quick Challenge; open the chapter Language Focus and practise its target patterns; write a short response; self-check.',
     discussionPoints: [p.reflect],
     interactiveTips: ['Replay the chapter audio once while following the exact text.', 'Use hotspots only to return to evidence already present in the chapter.', 'Use Language Focus only after the chapter meaning and Quick Challenge are clear.'],
     differentiation: { strugglingLearners: 'Read one paragraph at a time and use a two-part frame: “The story says ____. This means ____.” Then complete only the core Language Focus items before producing one sentence.', fastFinishers: p.use },
-    whatToNotice: [p.notice, teacher?.grammarFocus ? `Language Focus: ${teacher.grammarFocus}` : 'Notice one useful language pattern from the active chapter Language Focus.'],
+    whatToNotice: [p.notice, learnerLine(teacher?.grammarFocus) ? `Language Focus: ${learnerLine(teacher.grammarFocus)}` : 'Notice one useful language pattern from the active chapter Language Focus.'],
     readListen: ['Read the chapter once silently.', 'Play the chapter audio and follow the same sentences with your eyes.'],
     findAnswerInStory: [p.evidence],
     vocabularyInContext: [p.words, 'Choose two words and make a new A2 sentence for each without changing their meaning.'],

@@ -559,7 +559,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   21: [
     v('flames reaching the sky', 'ألسنة لهبها تبلغ السماء', 'Very high flames rising from an intense fire.', 'لهب شديد يرتفع إلى علو كبير.'),
     v('chief priest', 'كبير الكهنة', 'The highest-ranking religious official among the priests.', 'أعلى مسؤول ديني بين الكهنة.'),
-    v('angel Gabriel', 'الملك جبريل', 'The angel Gabriel, presented as a messenger from Allah.', 'جبريل عليه السلام، الملك الذي يبلغ رسالات الله.'),
+    v('angel Gabriel', 'الملك جبريل', 'The angel who acts as a messenger from Allah in the story.', 'جبريل عليه السلام، الملك الذي يبلغ رسالات الله.'),
     v('coolness and safety', 'بردا وسلاما', 'A state in which the fire no longer causes harm.', 'حال أصبحت فيها النار باردة لا تؤذي.'),
     v('burned his ropes', 'تحرق إلا حباله', 'Destroyed the restraints while leaving Abraham unharmed.', 'أحرقت القيود وحدها وتركت إبراهيم سالمًا.'),
   ],
@@ -640,10 +640,10 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
     v('fulfilled the vision', 'صدقت الرؤيا', 'Carried out what the vision required as a test.', 'حقق ما دلت عليه الرؤيا من اختبار.'),
     v('willingness to sacrifice', 'استعداده لتضحية', 'Readiness to give up something deeply valued for a higher duty.', 'الاستعداد لبذل شيء عزيز من أجل واجب أعلى.'),
     v('leader of humanity', 'إماما للناس', 'A person appointed as a model and guide for people.', 'شخص جعل قدوة ودليلًا للناس.'),
-    v('proxy', 'الفداء', 'A substitute given in place of another.', 'بديل يقدم عوضًا عن غيره.'),
+    v('proxy', 'الفداء', 'Something that takes the place of another; here, the animal sacrificed instead of Ishmael.', 'بديل يقدم عوضًا عن غيره.'),
   ],
   33: [
-    v('hundreds of millions', 'مئات الملايين', 'A very large number measured in multiple hundreds of millions.', 'عدد ضخم يبلغ مئات الملايين.'),
+    v('hundreds of millions', 'مئات الملايين', 'Many times one hundred million (100,000,000); an extremely large number.', 'عدد ضخم يبلغ مئات الملايين.'),
     v('widespread', 'شائعة', 'Existing or practiced across many places or among many people.', 'منتشر بين عدد كبير من الناس أو المناطق.'),
     v('firstborn children', 'أول الأبناء', 'Children born first in their families.', 'الأبناء الذين يولدون أولًا في أسرهم.'),
     v('equivalent to human life', 'تعادل حياة الإنسان', 'Treated as equal in value to a human life in the described context.', 'تعد مساوية في القيمة لحياة الإنسان في السياق المذكور.'),
@@ -659,7 +659,7 @@ export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2Voca
   35: [
     v('restorer', 'معيد بناء', 'A person who rebuilds or returns something to an earlier state.', 'شخص يعيد بناء شيء أو إرجاعه إلى حال سابقة.'),
     v('clear evidence', 'دليل واضح', 'Strong and understandable proof supporting a conclusion.', 'برهان قوي وواضح يؤيد نتيجة.'),
-    v('completion of Abraham', 'إكمالا لرسالة إبراهيم', 'The final stage that brings Abraham’s mission to completion.', 'المرحلة التي تتم بها رسالة إبراهيم.'),
+    v('completion of Abraham', 'إكمالا لرسالة إبراهيم', 'The final stage that finishes the mission Abraham was given.', 'المرحلة التي تتم بها رسالة إبراهيم.'),
     v('chosen race', 'عرق معين', 'A particular ethnic group selected over others.', 'جماعة عرقية محددة تختار دون غيرها.'),
     v('coexisted with idolatry', 'جنبا إلى جنب مع الوثنية', 'Existed at the same time and place as idol worship.', 'وجد في الوقت والمكان نفسيهما مع الوثنية.'),
   ],

@@ -1,5 +1,21 @@
 {
   "version": 1,
-  "requests": [],
-  "sourceBatch": "yunus-emre-b2-ch1-20260922-complete"
+  "requests": [
+    {
+      "id": "moses-b1-ch11-rowan-20260927-prostration-fix",
+      "enabled": true,
+      "allowOverwrite": true,
+      "chapterNumber": 11,
+      "storagePath": "Moses/b1/audio/10_Chapter_11_The_Miracle_of_the_Staff.mp3",
+      "narrationText": "The Miracle of the Staff\n\nThey made fun of Moses (pbuh) and Allah. The king said to Moses (pbuh), “This is only magic. All of my magicians can do this.” He invited his magicians to the palace. The magicians came with sticks in their hands. Some were holding ropes. They put down the sticks and ropes. Once the sticks and ropes fell to the ground, they looked just like snakes! When Moses (pbuh) saw them, he got frightened. But Allah spoke to Moses (pbuh), “Throw down your staff!” Moses (pbuh) threw down his staff and it turned into a huge snake. In a second, his staff ate up all the snakes of the magicians. The magicians who witnessed this miracle bowed down to Allah. They shouted, “We believe in the Lord of Moses and Harun!” The king still refused to believe in Allah, because he was arrogant. The Pharaoh did not want to let those who worshipped Allah live. He continued to trouble Moses (pbuh) and his people day and night. He told his advisors and soldiers, “Be rude to them!”"
+    },
+    {
+      "id": "abraham-a2-ch14-rowan-20260927-ancestor-fix",
+      "enabled": true,
+      "allowOverwrite": true,
+      "chapterNumber": 14,
+      "storagePath": "Abraham/abraham_a2/audio/07_Chapter_14.mp3",
+      "narrationText": "The Ka'ba and Abraham's Message\n\nDuring that time, Abraham (pbuh) visited Mecca several times to see his family. One day, Allah asked Abraham (pbuh) to build the House of Allah, the Ka’ba. Abraham (pbuh) said to Ishmael, “O Ishmael, Allah gave me an important job, and you will help me with it.” Ishmael said, “I will help you for sure.” The Ka’ba was a very old building. It was the first holy place on Earth, but it was lost after a long time.\n\nFather and son found the bottom of the old building of the Ka’ba and built the new building on it. After Abraham (pbuh) built the Sacred Ka’ba, his mission was over. He built a special place for Muslims of all colors. Today, people still visit the House of Allah to make Hajj. Hajj makes us remember Abraham (pbuh) and his family's story.\n\nAfter many years, Ishmael’s family grew and grew. One of them was Muhammad, the Prophet of Islam (pbuh). Muhammad (pbuh) told people the message of his ancestor, Abraham (pbuh).\n\nThe message is: “There is no god but Allah. He has no partner, rival or helper. Allah is unique in every way.”"
+    }
+  ]
 }
