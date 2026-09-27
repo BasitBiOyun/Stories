@@ -184,14 +184,146 @@ export const abrahamB1FinalChallengeExercises: Exercise[] = [
  * story comprehension.
  */
 export const abrahamB1LanguageReviewExercises: Exercise[] = [
-  { id: 'abraham-b1-language-review-1-time-development', type: 'matching', title: 'Time, Habit, and Development', instructions: 'Match each pattern with the job it performs in connected narration.', question: 'How can a writer organise repeated past behaviour, a specific event, change, and continuation?', matchingPairs: [{ left: 'used to / usually + verb', right: 'describe repeated behaviour in an earlier period' }, { left: 'while + past continuous', right: 'show a background action happening at the same time' }, { left: 'One day / when / after', right: 'move to a specific event or order events' }, { left: 'over time / still / continued to', right: 'show change or continuation across a longer period' }], correctAnswer: { 'used to / usually + verb': 'describe repeated behaviour in an earlier period', 'while + past continuous': 'show a background action happening at the same time', 'One day / when / after': 'move to a specific event or order events', 'over time / still / continued to': 'show change or continuation across a longer period' }, explanation: 'Across the book, time expressions separate habit, background, turning points, and longer-term development.', feedback: { correct: 'Correct. You matched each pattern with its time function.', incorrect: 'Ask whether the form shows habit, background, a specific event, or longer-term continuation.' } },
-  { id: 'abraham-b1-language-review-2-reason-result-contrast', type: 'matching', title: 'Reason, Result, and Contrast', instructions: 'Match each connector or structure with the relationship it creates.', question: 'How can you explain why something happened, what followed, and how another idea differs?', matchingPairs: [{ left: 'because / because of', right: 'give a reason or cause' }, { left: 'so / therefore / as a result', right: 'introduce a result or consequence' }, { left: 'although / but / however / though', right: 'show contrast or an unexpected result' }, { left: 'on the other hand', right: 'shift to a contrasting viewpoint or alternative' }], correctAnswer: { 'because / because of': 'give a reason or cause', 'so / therefore / as a result': 'introduce a result or consequence', 'although / but / however / though': 'show contrast or an unexpected result', 'on the other hand': 'shift to a contrasting viewpoint or alternative' }, explanation: 'These links recur throughout Abraham B1 and turn separate statements into coherent reasoning.', feedback: { correct: 'Correct. You distinguished cause, result, contrast, and viewpoint shift.', incorrect: 'Focus on the relationship between the second idea and the first.' } },
-  { id: 'abraham-b1-language-review-3-thinking-possibility-conclusion', type: 'matching', title: 'Reasoning from Possibility to Conclusion', instructions: 'Match each form with its role in a reasoning chain.', question: 'How can a speaker test an idea, explain evidence, and report a conclusion?', matchingPairs: [{ left: 'Could this be ...?', right: 'open a possibility for consideration' }, { left: 'because ...', right: 'give evidence or a reason for accepting or rejecting an idea' }, { left: 'realised / understood that ...', right: 'report the conclusion reached after evidence' }, { left: 'could / could not / was unable to', right: 'express possibility, ability, or limitation in context' }], correctAnswer: { 'Could this be ...?': 'open a possibility for consideration', 'because ...': 'give evidence or a reason for accepting or rejecting an idea', 'realised / understood that ...': 'report the conclusion reached after evidence', 'could / could not / was unable to': 'express possibility, ability, or limitation in context' }, explanation: 'The chapters repeatedly move from observation to possibility, evidence, and conclusion rather than presenting conclusions without support.', feedback: { correct: 'Correct. You traced the reasoning sequence.', incorrect: 'Separate possibility, evidence, conclusion, and ability/limitation.' } },
-  { id: 'abraham-b1-language-review-4-intention-duty-instruction', type: 'matching', title: 'Intention, Responsibility, and Instruction', instructions: 'Match each pattern with its communicative function.', question: 'How can you express a plan, responsibility, direct instruction, or reported instruction?', matchingPairs: [{ left: 'decided / planned / tried to + verb', right: 'express intention, planning, or attempted action' }, { left: 'should / had to + verb', right: 'express responsibility or necessity' }, { left: 'Stop ... / Follow ... / Leave ...', right: 'give a direct instruction with an imperative' }, { left: 'told / ordered + person + to + verb', right: 'report an instruction without quoting it directly' }], correctAnswer: { 'decided / planned / tried to + verb': 'express intention, planning, or attempted action', 'should / had to + verb': 'express responsibility or necessity', 'Stop ... / Follow ... / Leave ...': 'give a direct instruction with an imperative', 'told / ordered + person + to + verb': 'report an instruction without quoting it directly' }, explanation: 'B1 narration needs clear distinctions between what someone plans, what someone must do, and what one person tells another to do.', feedback: { correct: 'Correct.', incorrect: 'Ask whether the expression shows intention, duty, a direct command, or a reported command.' } },
-  { id: 'abraham-b1-language-review-5-condition-purpose-future', type: 'matching', title: 'Conditions, Purpose, and Future Meaning', instructions: 'Match each structure with its function.', question: 'How can a speaker connect conditions, goals, and future consequences?', matchingPairs: [{ left: 'If + present, will + verb', right: 'present a possible condition and its future consequence' }, { left: 'to / in order to + verb', right: 'state the purpose of an action' }, { left: 'was going to + verb', right: 'show an intended future action viewed from a past moment' }, { left: 'will + verb', right: 'express future expectation, promise, or commitment' }], correctAnswer: { 'If + present, will + verb': 'present a possible condition and its future consequence', 'to / in order to + verb': 'state the purpose of an action', 'was going to + verb': 'show an intended future action viewed from a past moment', 'will + verb': 'express future expectation, promise, or commitment' }, explanation: 'These patterns let learners connect present conditions, intended purposes, and future meaning from either present or past viewpoints.', feedback: { correct: 'Correct.', incorrect: 'Think: condition, purpose, future-from-the-past, or future commitment.' } },
-  { id: 'abraham-b1-language-review-6-action-process-state', type: 'sequencing', title: 'Build a Process from Plan to Result', instructions: 'Put the language moves into the most natural order for a short B1 account.', question: 'How can a paragraph move from intention to process, completion, and continuing purpose?', sequencingItems: [{ id: '1', text: 'First, the person decided to carry out a plan.' }, { id: '2', text: 'Then the main action began and continued step by step.' }, { id: '3', text: 'After the work was completed, the result became clear.' }, { id: '4', text: 'Over time, the project continued to serve its purpose.' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'Decision, process language, completion, and continuity create a coherent development rather than a list of disconnected actions.', feedback: { correct: 'Correct. The sequence moves from plan to process, completion, and continuity.', incorrect: 'Follow the development: decision → process → completed result → continuing purpose.' } },
-  { id: 'abraham-b1-language-review-7-reconstruct-discourse', type: 'fill-blanks', title: 'Choose the Relationship', instructions: 'Complete the paragraph with the connector that best expresses the relationship.', question: 'Which connector best introduces an unexpected contrast?', fillBlanksText: 'Mina explained her reasons clearly and tried several times to persuade the group. [blank], they still refused to change their decision.', correctAnswer: 'However', explanation: '“However” shows that the result contrasts with what the earlier effort might lead us to expect.', feedback: { correct: 'Correct. “However” clearly marks the unexpected contrast.', incorrect: 'The second sentence contrasts with the effort described in the first.' } },
-  { id: 'abraham-b1-language-review-8-transfer', type: 'reflection', title: 'Use the Language in a New Situation', instructions: 'Write or say a connected six-sentence B1 response about a new situation. Do not retell Abraham’s story.', question: 'Can you combine time, reason/result, intention, condition, reported instruction, and continuity in one coherent response?', correctAnswer: null, explanation: 'The aim is to select and combine language from across the book in a new context, not to recall story facts.', feedback: { correct: 'Keep all six sentences focused on one situation and make the relationships between ideas explicit.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Set a past routine or background with “used to”, “usually”, or “while ... was/were -ing”.', mode: 'Individual' }, { question: 'Sentence 2 — Introduce a specific event with “One day”, “when”, or “after”.', mode: 'Individual' }, { question: 'Sentence 3 — Explain a reason and result with “because” and “so/therefore”.', mode: 'Individual' }, { question: 'Sentence 4 — Add a decision, plan, or purpose with “decided/planned to” or “to + verb”.', mode: 'Individual' }, { question: 'Sentence 5 — Include either “If ..., will ...” or a reported instruction with “told/ordered ... to ...”.', mode: 'Pair' }, { question: 'Sentence 6 — Finish with change or continuity using “over time”, “still”, or “continued to”.', mode: 'Pair' }] }
+  // NOTICE — discover what the book's language does, across chapters.
+  {
+    id: 'abraham-b1-language-review-1-habit-background-event', type: 'drag-drop', title: 'Notice: Habit, Background or Event?',
+    instructions: 'Read the parts of Chapters 2, 3, 6, 10 and 12. Does each part describe a past habit, an action in progress in the background, or one event that moves the story on? Put it in the right group.',
+    question: 'How does the book show the difference between a habit, a background action and a single event?',
+    dragDropGroups: [
+      { group: 'A habit in the past', items: ['But Abraham used to play with these idols as toys …', 'All the people usually went outside of town …'] },
+      { group: 'An action in progress (background)', items: ['… they were still showing love and respect to idols.', 'While the little child Ishmael was crying with thirst …'] },
+      { group: 'One event that moves the story on', items: ['One day, his father saw Abraham riding the statue of Mardukh …', '… suddenly water started flowing from the ground …', 'Finally, they reached a lonely valley …'] },
+    ],
+    correctAnswer: {
+      'A habit in the past': ['But Abraham used to play with these idols as toys …', 'All the people usually went outside of town …'],
+      'An action in progress (background)': ['… they were still showing love and respect to idols.', 'While the little child Ishmael was crying with thirst …'],
+      'One event that moves the story on': ['One day, his father saw Abraham riding the statue of Mardukh …', '… suddenly water started flowing from the ground …', 'Finally, they reached a lonely valley …'],
+    },
+    explanation: 'Used to + verb and usually + past simple describe what happened again and again in an earlier time (Chapters 2 and 6). Was/were + -ing describes an action in progress, the background of the scene: the people were still showing respect to idols (Chapter 3), Ishmael was crying (Chapter 12). The past simple, often with One day, suddenly or Finally, tells the single event that moves the story on. Careful: in “his father saw Abraham riding the statue”, the event is saw; riding only describes what Abraham was doing at that moment.',
+    feedback: { correct: 'Well done. You separated habits, background actions and single events across the whole book.', incorrect: 'Look at the verb form in each part: used to / usually, was/were + -ing, or a past simple event with a time word such as One day, suddenly or Finally.' },
+  },
+  {
+    id: 'abraham-b1-language-review-2-could-in-context', type: 'matching', title: 'Notice: What Does “Could” Do?',
+    matchingHeadings: { left: 'From the book', right: 'What “could” shows here' },
+    instructions: 'Read the sentences from Chapters 1, 3, 8 and 10. Match each one with the job that could / couldn’t does in it.',
+    question: 'The book uses “could” again and again. Does it always mean the same thing?',
+    matchingPairs: [
+      { left: '… see it as a god which could help or harm him.', right: 'an ability that people wrongly believed in' },
+      { left: 'He saw a bright star and wondered, “Could this be my Allah?”', right: 'an idea that is being tested with a question' },
+      { left: 'The fire was so big that people couldn’t approach it.', right: 'a real limit: nobody was able to do it' },
+      { left: '… so that his child could teach people about Allah.', right: 'the aim of a request: an ability in the future' },
+    ],
+    correctAnswer: {
+      '… see it as a god which could help or harm him.': 'an ability that people wrongly believed in',
+      'He saw a bright star and wondered, “Could this be my Allah?”': 'an idea that is being tested with a question',
+      'The fire was so big that people couldn’t approach it.': 'a real limit: nobody was able to do it',
+      '… so that his child could teach people about Allah.': 'the aim of a request: an ability in the future',
+    },
+    explanation: 'Could changes its job with the context. In Chapter 1 it describes a power people believed a statue had, while the chapter shows the truth: “They could not even move from one place to another on their own.” In Chapter 3, Could this be …? tests a possible answer, and Abraham rejects it when the star sets. In Chapter 8, couldn’t is a real limit: the heat stopped people. In Chapter 10, so that + could gives the aim of Abraham’s request: what his child would be able to do later.',
+    feedback: { correct: 'Correct. The same small word can show a belief, a test, a real limit or an aim.', incorrect: 'Read each sentence again and ask: is someone believing, testing an idea, meeting a real limit, or hoping for something in the future?' },
+  },
+  {
+    id: 'abraham-b1-language-review-3-future-from-the-past', type: 'multiple-choice', title: 'Notice: Looking Forward from the Past',
+    instructions: 'Read the sentences from Chapters 6, 8 and 10. Then choose the best answer.',
+    question: 'Chapter 6: “He made a plan to destroy all their idols, but he did not tell anyone what he was going to do.” Chapter 8: “He knew that Allah would never leave him alone …” Chapter 10: “Abraham (pbuh) realized that nobody was going to listen to his message.” What do “was going to” and “would” show in these sentences?',
+    options: [
+      'an action that was already finished at that moment',
+      'a habit that was repeated again and again in the past',
+      'the future, seen from a moment in the past',
+      'an action that was in progress at that exact moment',
+    ],
+    correctAnswer: 2,
+    explanation: 'The book is told in the past, so when it looks forward from a past moment it uses was/were going to + verb and would + verb. When Abraham made his plan, breaking the idols was still in the future. Before the fire, Abraham trusted what would happen next. In Chapter 10, he understood a prediction about the future. In his own words at that moment, these would be is going to and will.',
+    feedback: { correct: 'Correct. Was going to and would are the future seen from the past.', incorrect: 'Ask: at the moment described, had the action happened yet? Was it still in the future?' },
+  },
+  // BUILD — use the forms in the book's own sentences, mixing chapters.
+  {
+    id: 'abraham-b1-language-review-4-reason-result-contrast', type: 'word-bank', title: 'Build: Reason, Result and Surprise',
+    instructions: 'Complete the lines from Chapters 4, 9 and 10 with words from the bank. Two words are not needed.',
+    question: 'Which word gives a reason, which gives a result, and which show an unexpected contrast?',
+    fillBlanksText: 'He recognized that he should guide his people [blank] Allah chose him to be His Messenger. … People felt embarrassed by the miracle, [blank] their anger and arrogance remained unchanged. Prophet Abraham (pbuh) tried every way to show them their error; [blank], their rage didn’t calm down. … Abraham (pbuh) realized that nobody was going to listen to his message. [blank], he decided to leave Babylon …',
+    wordBank: ['because', 'yet', 'however', 'Therefore', 'because of', 'so'],
+    correctAnswer: ['because', 'yet', 'however', 'Therefore'],
+    explanation: 'Because + a clause gives the reason for a duty or a decision; because of needs a noun, not a clause. Yet (between two clauses, no comma after it) and however (after a semicolon, with a comma after it) both show a contrast we do not expect: people were embarrassed, but they did not change. Therefore starts a new sentence and gives the result of what came before: nobody would listen, so Abraham left. In the first gap, so would turn the reason into a result.',
+    feedback: { correct: 'Well done. You linked reasons, results and unexpected contrasts, and you placed them correctly in the sentence.', incorrect: 'For each gap, ask: does the next part give a reason, a result, or a surprising contrast? Then check the punctuation around the gap. Look again at Chapters 4, 9 and 10.' },
+  },
+  {
+    id: 'abraham-b1-language-review-5-verb-patterns', type: 'choose-form', title: 'Build: What Follows the Verb?',
+    instructions: 'Choose the correct form to complete each sentence from the book.',
+    question: 'After “was surprised”, “made him” and “told his wife”, which form comes next?',
+    formChoices: [
+      { sentence: 'Abraham was surprised [choice] that when people entered the building, they bowed to the statues …', options: ['seeing', 'to see', 'for seeing'], answer: 1 },
+      { sentence: 'It made him [choice] to see the people of the kingdom …', options: ['sad', 'sadly', 'to be sad'], answer: 0 },
+      { sentence: 'Prophet Abraham (pbuh) told his wife [choice] near one of the hills with Ishmael.', options: ['stay', 'to stay', 'staying'], answer: 1 },
+    ],
+    correctAnswer: null,
+    explanation: 'An adjective of feeling + to + verb gives the cause of the feeling: surprised to see (Chapter 1). Make + person + adjective shows how something changes a person’s feelings: it made him sad (Chapter 3). Tell + person + to + verb reports an instruction (Chapter 10), like “He ordered his guards to bring two slaves” in Chapter 9. Compare make and let, which take the base verb with no to: “Can you make the sun rise from the west?”',
+    feedback: { correct: 'Correct. Surprised to + verb, made + person + adjective, told + person + to + verb.', incorrect: 'Look at the word just before the gap: a feeling adjective, make + person, or tell + person. Check Chapters 1, 3 and 10.' },
+  },
+  {
+    id: 'abraham-b1-language-review-6-passive-and-time', type: 'error-correction', title: 'Build: Fix the Verb Form',
+    instructions: 'Each sentence has one mistake in a verb form. Tap the mistake, then choose the correction.',
+    question: 'Can you correct a passive verb and a verb after “until”?',
+    errorItems: [
+      { sentence: 'But these prayers and wishes could not be hear or understood by the statues!', error: 'be hear', options: ['be heard', 'been heard', 'be hearing'], answer: 0 },
+      { sentence: 'Prophet Abraham’s (pbuh) hands and feet was tied, and he was placed on a catapult.', error: 'was tied', options: ['were tied', 'were tying', 'tied'], answer: 0 },
+      { sentence: '… he got an axe and waited until the whole town will be empty.', error: 'will be', options: ['would be', 'was', 'is'], answer: 1 },
+    ],
+    correctAnswer: null,
+    explanation: 'The passive is be + past participle, and it also works after a modal: could not + be heard (Chapter 1). The form of be agrees with the subject: hands and feet (plural) were tied (Chapter 8); the passive is used because the people who did it are not important here. After until, when, after and while, we do not use will or would for the future: the past simple does this job in a story, so he waited until the town was empty (Chapter 6).',
+    feedback: { correct: 'Well done. You corrected the passive forms and the verb after until.', incorrect: 'Check what comes after could not be, whether the subject is singular or plural, and which tense follows until in a past story. Compare with Chapters 1, 6 and 8.' },
+  },
+  {
+    id: 'abraham-b1-language-review-7-reported-speech', type: 'transformation', title: 'Build: Report What People Said',
+    instructions: 'Report each sentence from Chapters 2, 5 and 7. Write the missing words.',
+    question: 'What changes when we report a statement or a question?',
+    transformItems: [
+      { source: 'Azer replied, “They are not toys, but our gods.”', frame: 'Azer replied that they [blank] toys, but their gods.', answers: ['were not', 'weren’t', "weren't", 'are not', 'aren’t', "aren't"] },
+      { source: 'People replied, “We saw our fathers worship them; …”', frame: 'People replied that they [blank] their fathers worship them.', answers: ['had seen', 'saw'] },
+      { source: 'They asked him, “Did you harm our gods in this way?”', frame: 'They asked him [blank] their gods in that way.', answers: ['if he had harmed', 'whether he had harmed', 'if he harmed', 'whether he harmed'] },
+    ],
+    correctAnswer: null,
+    explanation: 'In reported speech the pronouns change (our → their, you → he), and the verb usually moves one step back: are → were, saw → had seen, did you harm → had harmed. A yes/no question is reported with if or whether and statement word order, with no did and no question mark. Inside a longer sentence, a question idea also uses statement word order, as in Chapter 7: the people “tried to find out who did this”.',
+    feedback: { correct: 'Correct. You changed the pronouns, moved the verbs back and reported the question with if or whether.', incorrect: 'Change our to their and you to he. Move the verb back one step, and use if or whether for a yes/no question.' },
+  },
+  // USE — take the language into a new, everyday context.
+  {
+    id: 'abraham-b1-language-review-8-new-context', type: 'word-bank', title: 'Use: Our Recycling Project',
+    instructions: 'This text is not from the book. Complete it with forms you practised in the book. Three words are not needed.',
+    question: 'Can you use the book’s language to tell the story of a class project?',
+    fillBlanksText: 'Last year, many students in our class [blank] throw paper into the rubbish bin. One day, our teacher, Mrs Demir, asked us to make a recycling box. We made a plan, but we did not tell the other classes what we [blank] to do. At first, some students laughed at the idea. We did not give up, [blank]. After two months, the box was [blank] full that we needed a second one. Now, every Friday, the paper [blank] to a recycling centre in our town.',
+    wordBank: ['used to', 'were going', 'though', 'so', 'is taken', 'use to', 'such', 'takes'],
+    correctAnswer: ['used to', 'were going', 'though', 'so', 'is taken'],
+    explanation: 'Used to + verb describes a past habit that has now stopped (use to is only correct after did/didn’t). Were going to is the future seen from the past: the plan was still in the future. Though at the end of a sentence shows a contrast. So + adjective + that gives a strong degree and its result (such needs a noun: such a full box). The paper is taken is passive: what happens to the paper matters, not who takes it.',
+    feedback: { correct: 'Well done. You used the book’s language to tell a new story.', incorrect: 'For each gap ask: a past habit? the future seen from the past? a contrast? a degree and its result? something that happens to the paper?' },
+  },
+  {
+    id: 'abraham-b1-language-review-9-new-context', type: 'error-correction', title: 'Use: Check a Friend’s Sentences',
+    instructions: 'A friend wrote these sentences about school. Each one has one mistake. Tap the mistake, then choose the correction.',
+    question: 'Can you use the rules from the book to correct new sentences?',
+    errorItems: [
+      { sentence: 'Our coach made us to run around the school field three times.', error: 'to run', options: ['run', 'running', 'ran'], answer: 0 },
+      { sentence: 'The maths exam was such difficult that nobody finished it early.', error: 'such difficult', options: ['such a difficult', 'so difficult', 'too difficult'], answer: 1 },
+      { sentence: 'My teacher asked me if did I finish my project.', error: 'did I finish', options: ['I had finished', 'had I finished', 'I have finished'], answer: 0 },
+    ],
+    correctAnswer: null,
+    explanation: 'Make + person + base verb, with no to: made us run. So + adjective + that shows a degree and its result; such needs a noun (such a difficult exam). A reported question uses if + statement word order and moves the verb back: asked me if I had finished.',
+    feedback: { correct: 'Well done. You can check your own writing with the book’s patterns.', incorrect: 'Ask: which verbs take the base form? Is there a noun after such? Is the reported question in statement word order?' },
+  },
+  {
+    id: 'abraham-b1-language-review-10-transfer', type: 'reflection', title: 'Use: A Plan That Changed Something',
+    instructions: 'Write five or six connected sentences about a plan or project that changed something in your school, family or town. Tell your story to a partner first. Do not retell Abraham’s story.',
+    question: 'Can you use the language of the whole book to tell a real story from your own life?',
+    correctAnswer: null,
+    explanation: 'Example: Two years ago, the children in our street used to play on a dirty piece of land. One day, while we were cleaning our bikes, our neighbour Mr Aydın told us to write to the town council. We sent a letter, but we did not know what they were going to say. However, they said yes, so the rubbish was collected and new trees were planted. The park was so beautiful that everybody came to see it. Today we still play there every afternoon.',
+    feedback: { correct: 'Check your sentences: used to for a past habit, while + was/were -ing for the background, told/asked + person + to, was/were going to, a passive (was/were + past participle), a linker (however, so, because) and so … that.', incorrect: '' },
+    discussionPrompts: [
+      { question: 'Sentences 1–2 — Before and the start: “… used to …”, “One day, while … was/were -ing, …”', mode: 'Individual' },
+      { question: 'Sentence 3 — An instruction and a plan: “… told/asked us to …”, “We didn’t know what … was/were going to …”', mode: 'Individual' },
+      { question: 'Sentence 4 — The work and a turn: a passive (“… was/were cleaned / painted / planted”) and a linker (however / so / because)', mode: 'Pair' },
+      { question: 'Sentences 5–6 — The result: “It was so … that …”, “Today … still …”', mode: 'Pair' },
+    ],
+  },
 ];
 
 export const abrahamB1QuickChallengesPolished = abrahamB1QuickChallenges;
