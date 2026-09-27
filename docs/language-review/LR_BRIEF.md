@@ -1,6 +1,6 @@
 # Language Review rewrite brief (shared by all worker agents)
 
-Repo: /home/user/Stories (branch `claude/yunus-emre-a2-language-review-h27mqw`). Do NOT commit, push, stash or reset. Other agents edit OTHER books at the same time: never touch files outside your scope and never revert changes you did not make.
+Repo: /home/user/Stories (branch `preview`). Do NOT commit, push, stash or reset. Other agents edit OTHER books at the same time: never touch files outside your scope and never revert changes you did not make.
 
 ## Goal
 Rewrite the book-level **Language Review** (the one page with `type: 'exercises'`, title "Language Review" / «مراجعة اللغة») of ONE book, in English and Arabic, to the standard of the approved pilot: **Yunus Emre A2** — `yunusA2LanguageReviewExercises` in `src/data/yunusEmre/a2/en/exercises.ts` and `yunusA2LanguageReviewExercisesAr` in `src/data/yunusEmre/a2/ar/exercises.ts`. Read both completely first and match their quality, tone and structure. The user approved this pilot as the system for all books.
