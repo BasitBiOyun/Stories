@@ -5,112 +5,100 @@ import { Exercise } from '../../../../types';
 
 export const adamA2QuickChallenges: Record<number, Exercise> = {
   1: {
-    id: 'adam-a2-quick-1', type: 'multiple-choice', title: 'Different Places, Different Colours',
-    instructions: 'Choose the answer supported by Chapter 1.',
-    question: 'Why does the chapter say people have different skin colours?',
-    options: ['The soil came from different parts of Earth', 'The angels chose different colours', 'People changed colour later'], correctAnswer: 0,
-    explanation: 'The chapter connects soil from different parts of Earth with different human skin colours.',
-    feedback: { correct: 'Correct. You connected the reason and result stated in the chapter.', incorrect: 'Reread the two sentences about soil from different parts of Earth and what the chapter says happened because of this.' }
+    id: 'adam-a2-quick-1', type: 'multiple-choice', title: 'Many Skin Colors',
+    instructions: 'Read the question. Choose the answer from Chapter 1.',
+    question: 'Why are people’s skin colors not all the same?',
+    options: ['Humans have lived on earth for many years.', 'Adam was made from soil from many parts of the earth.', 'The angels waited with curiosity for the new human.'], correctAnswer: 1,
+    explanation: 'Chapter 1 says the angels “collected soil from different parts of the earth, and Allah shaped Adam. Because of this, humans have different skin colors.”',
+    feedback: { correct: 'Yes! The soil came from many places, so people have many skin colors. We are all children of Adam.', incorrect: 'Not this one. Read the third paragraph of Chapter 1 again and find the words “Because of this …”.' }
   },
   2: {
-    id: 'adam-a2-quick-2', type: 'fill-blanks', title: 'Show Respect',
-    instructions: 'Complete the command with one word from Chapter 2.',
-    question: 'Complete what Allah told the angels to do.', fillBlanksText: 'Show [blank] to Adam.', correctAnswer: 'respect',
-    explanation: 'Allah told the angels to show respect to Adam.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the first command to the angels in Chapter 2.' }
+    id: 'adam-a2-quick-2', type: 'multiple-choice', title: 'Adam’s Knowledge',
+    instructions: 'Read the question. Choose the answer from Chapter 2.',
+    question: 'Why did Adam know more than the angels?',
+    options: ['Allah gave him knowledge and taught him to think.', 'He was created from clay.', 'The angels admired him and respected him.'], correctAnswer: 0,
+    explanation: 'Chapter 2 says Adam “was wiser than the angels, because Allah gave Adam knowledge and taught him to think.”',
+    feedback: { correct: 'Right! Allah gave Adam knowledge and taught him to think. That is why he learned more than the angels knew.', incorrect: 'Read the first paragraph of Chapter 2 again. Find the word “because” and read what comes after it.' }
   },
   3: {
-    id: 'adam-a2-quick-3',
-    type: 'matching',
-    title: 'Origin, Knowledge and Value',
-    instructions: 'Match each Chapter 3 idea with the detail that completes it.',
-    question: 'How does Chapter 3 contrast origin with what truly makes a person valuable?',
+    id: 'adam-a2-quick-3', type: 'matching', matchingHeadings: { left: 'Who or what', right: 'What Chapter 3 says' }, title: 'What Makes a Person Great?',
+    instructions: 'Match each part with what Chapter 3 says about it.',
+    question: 'What does Chapter 3 tell us about Iblis, Adam and real value?',
     matchingPairs: [
-      { left: "Iblis's origin", right: 'fire' },
-      { left: "Adam's origin", right: 'soil' },
-      { left: "Iblis's mistake", right: 'thinking his origin made him better' },
-      { left: 'Useful knowledge', right: 'helps people do good and stop bad' },
+      { left: 'Iblis', right: 'He said, “I am better than Adam.”' },
+      { left: 'Adam', right: 'His knowledge was for the good of every creature.' },
+      { left: 'Clay or fire', right: 'It did not make anybody valuable.' },
+      { left: 'Useful knowledge', right: 'With it, humans can do good and stop bad.' }
     ],
-    correctAnswer: {
-      "Iblis's origin": 'fire',
-      "Adam's origin": 'soil',
-      "Iblis's mistake": 'thinking his origin made him better',
-      'Useful knowledge': 'helps people do good and stop bad',
-    },
-    explanation: 'The chapter names fire and soil, but its main contrast is between pride in origin and the value of useful knowledge.',
-    feedback: {
-      correct: 'Correct. You connected the details with the chapter’s central contrast.',
-      incorrect: 'Separate the two origins from the lesson about pride and useful knowledge.',
-    },
+    correctAnswer: { 'Iblis': 'He said, “I am better than Adam.”', 'Adam': 'His knowledge was for the good of every creature.', 'Clay or fire': 'It did not make anybody valuable.', 'Useful knowledge': 'With it, humans can do good and stop bad.' },
+    explanation: 'Iblis said he was better because he came from fire. But Chapter 3 says, “For Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great, because with this knowledge, humans can do good and stop bad.”',
+    feedback: { correct: 'Well done! Where we come from does not make us better. Useful knowledge and good actions do.', incorrect: 'Read Chapter 3 again. The first paragraph has Iblis’s words, the second is about Adam’s knowledge, and the third is about clay, fire and useful knowledge.' }
   },
   4: {
     id: 'adam-a2-quick-4', type: 'multiple-choice', title: 'Adam and Eve',
-    instructions: 'Choose the reason stated in Chapter 4.',
-    question: 'Why did Allah give Adam a wife?', options: ['Adam felt lonely', 'Adam wanted to leave Paradise', 'The angels asked for another person'], correctAnswer: 0,
-    explanation: 'Adam started to feel lonely in Paradise, so Allah gave him Eve (Hawwa).',
-    feedback: { correct: 'Correct.', incorrect: 'Read the sentence immediately before Eve is introduced and notice how Adam felt.' }
+    instructions: 'Read the question. Choose the answer from Chapter 4.',
+    question: 'Why did Allah give Adam a wife?',
+    options: ['Allah wanted Adam to be careful about Iblis.', 'The angels asked Allah for another human.', 'Adam started to feel lonely in Paradise.'], correctAnswer: 2,
+    explanation: 'Chapter 4 says, “Adam started to feel lonely in Paradise. So, Allah gave him a wife. Her name was Eve (Hawwa).”',
+    feedback: { correct: 'Yes! Adam felt lonely, so Allah gave him Eve.', incorrect: 'Read the second paragraph of Chapter 4 again. How did Adam feel just before the word “So”?' }
   },
   5: {
-    id: 'adam-a2-quick-5', type: 'multiple-choice', title: 'Iblis’s Lie',
-    instructions: 'Choose the promise Iblis made in Chapter 5.',
-    question: 'What did Iblis tell Adam and Eve about the tree?',
-    options: ['They would never die if they ate from it', 'They would become hungry if they ate from it', 'They would forget everything if they ate from it'], correctAnswer: 0,
-    explanation: 'Iblis told them that they would never die if they ate from the tree.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the sentence beginning “If you eat…” and read the result Iblis promised.' }
+    id: 'adam-a2-quick-5', type: 'sequencing', title: 'The Lie and the Mistake',
+    instructions: 'Put the events from Chapter 5 in the right order.',
+    question: 'What happened first, next and last?',
+    sequencingItems: [
+      { id: '1', text: 'Iblis told Adam and Eve that he was their friend.' },
+      { id: '2', text: 'Adam and Eve forgot Allah’s warning.' },
+      { id: '3', text: 'They ate fruit from the banned tree.' },
+      { id: '4', text: 'They said sorry to Allah.' }
+    ],
+    correctAnswer: ['1', '2', '3', '4'],
+    explanation: 'First Iblis came near them and said he was their friend. After a while, they believed his lie and forgot Allah’s warning. Then they ate from the banned tree. They were very sad and said sorry to Allah.',
+    feedback: { correct: 'Great! You followed the story from Iblis’s lie to Adam and Eve saying sorry.', incorrect: 'Follow Chapter 5 paragraph by paragraph: Iblis’s words, what Adam and Eve forgot, what they ate, and what they did when they were sad.' }
   },
   6: {
-    id: 'adam-a2-quick-6', type: 'tap-reveal', title: 'A New Life on Earth',
-    instructions: 'Answer from memory, then reveal the chapter answer.',
-    question: 'What happened after Allah forgave Adam and Eve?',
-    tapRevealItems: [{ question: 'What happened after Allah forgave Adam and Eve?', answer: 'They began life on Earth.' }],
-    correctAnswer: 'They began life on Earth.',
-    explanation: 'After forgiving them, Allah put Adam and Eve on Earth to live there.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the first sentence of Chapter 6 and follow the order: forgiveness, then what?' }
+    id: 'adam-a2-quick-6', type: 'true-false', title: 'Iblis on Earth',
+    instructions: 'Is the sentence true or false? Use Chapter 6.',
+    question: 'On earth, Iblis stayed far away from Adam and Eve.', correctAnswer: false,
+    explanation: 'Chapter 6 says, “But Iblis also followed Adam and Eve on earth. He was still around. He wanted people not to remember Allah in their daily lives.”',
+    feedback: { correct: 'Correct! Iblis followed them to earth. He wanted people to forget Allah.', incorrect: 'Read the last paragraph of Chapter 6 again. Where did Iblis go, and what did he want?' }
   },
   7: {
-    id: 'adam-a2-quick-7', type: 'fill-blanks', title: 'Adam’s Teaching',
-    instructions: 'Complete the first quality in Adam’s teaching list.',
-    question: 'Complete the sentence from Chapter 7.', fillBlanksText: 'He started teaching people to be [blank], do good, stop bad and always remember Allah.', correctAnswer: 'honest',
-    explanation: 'Adam taught people to be honest, do good, stop bad and remember Allah.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the sentence beginning “He started teaching…” and look at the first quality.' }
+    id: 'adam-a2-quick-7', type: 'multiple-choice', title: 'A Warning for the Children',
+    instructions: 'Read the question. Choose the answer from Chapter 7.',
+    question: 'Why did Adam and Eve warn their children against Iblis?',
+    options: ['Iblis was their enemy, not their friend.', 'Iblis was the ruler of the earth.', 'The other messengers asked them to do it.'], correctAnswer: 0,
+    explanation: 'Chapter 7 says, “They also warned their children against Iblis, because Iblis was their enemy, not their friend.” The other messengers came later, after Adam’s death.',
+    feedback: { correct: 'Right! Iblis said he was their friend, but he was really their enemy.', incorrect: 'Read the second paragraph of Chapter 7 again. Find the word “because” after “warned their children”.' }
   },
   8: {
-    id: 'adam-a2-quick-8',
-    type: 'matching',
-    title: 'The Two Brothers and Their Offerings',
-    instructions: 'Match each Chapter 8 detail with the correct brother or idea.',
-    question: 'What work and offering does the chapter connect with each brother?',
+    id: 'adam-a2-quick-8', type: 'matching', matchingHeadings: { left: 'The brothers', right: 'Their work and gift' }, title: 'Two Brothers, Two Offerings',
+    instructions: 'Match each part with the right answer from Chapter 8.',
+    question: 'What was each brother’s work, and what did he offer to Allah?',
     matchingPairs: [
-      { left: "Habil's work", right: 'shepherd' },
-      { left: "Qabil's work", right: 'farmer' },
-      { left: "Habil's offering", right: 'his best and healthiest sheep' },
-      { left: "Qabil's offering", right: 'a handful of his crops' },
+      { left: 'Habil’s work', right: 'a shepherd' },
+      { left: 'Qabil’s work', right: 'a farmer' },
+      { left: 'Habil’s offering', right: 'his best and healthiest sheep' },
+      { left: 'Qabil’s offering', right: 'just a handful of his crops' }
     ],
-    correctAnswer: {
-      "Habil's work": 'shepherd',
-      "Qabil's work": 'farmer',
-      "Habil's offering": 'his best and healthiest sheep',
-      "Qabil's offering": 'a handful of his crops',
-    },
-    explanation: 'The chapter introduces each brother’s work and then contrasts what each one chose to offer.',
-    feedback: {
-      correct: 'Correct. You connected both jobs and both offerings accurately.',
-      incorrect: 'Reread Chapter 8 from the brothers’ jobs to the two offerings.',
-    },
+    correctAnswer: { 'Habil’s work': 'a shepherd', 'Qabil’s work': 'a farmer', 'Habil’s offering': 'his best and healthiest sheep', 'Qabil’s offering': 'just a handful of his crops' },
+    explanation: 'Chapter 8 says Habil became a shepherd and Qabil was a farmer. “Habil brought his best and healthiest sheep as a gift for Allah, but Qabil brought just a handful of his crops.” The chapter ends: “Real goodness is giving the best and the most loved.”',
+    feedback: { correct: 'Well done! Habil gave his best. Real goodness is giving the best we have.', incorrect: 'The jobs are in the first paragraph of Chapter 8. The offerings are in the second paragraph.' }
   },
   9: {
-    id: 'adam-a2-quick-9', type: 'true-false', title: 'Habil’s Response',
-    instructions: 'Decide whether the statement agrees with Chapter 9.',
-    question: 'Habil said that he would fight back and harm Qabil.', correctAnswer: false,
-    explanation: 'Habil said that he would not fight back or harm Qabil.',
-    feedback: { correct: 'Correct.', incorrect: 'Read Habil’s reply and focus on “I won’t fight back or harm you”.' }
+    id: 'adam-a2-quick-9', type: 'multiple-choice', title: 'Habil’s Answer',
+    instructions: 'Read the question. Choose the answer from Chapter 9.',
+    question: 'Habil said, “I won’t fight back or harm you.” Why?',
+    options: ['Qabil said sorry to him first.', 'Qabil was his brother, and he feared Allah.', 'Their father Adam told him not to fight.'], correctAnswer: 1,
+    explanation: 'Habil gave his reasons himself: “You are my brother, and I fear Allah.”',
+    feedback: { correct: 'Yes! Habil chose not to hurt his brother, because he feared Allah.', incorrect: 'Read Habil’s words in the first paragraph of Chapter 9 again. Look at the sentence right after “I won’t fight back or harm you.”' }
   },
   10: {
-    id: 'adam-a2-quick-10', type: 'multiple-choice', title: 'The Message Continues',
-    instructions: 'Choose the answer stated in Chapter 10.',
-    question: 'Who spread Adam’s message worldwide after him?', options: ['His children and grandchildren', 'Only the angels', 'Only farmers'], correctAnswer: 0,
-    explanation: 'The chapter says that Adam’s children and grandchildren spread his message worldwide.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the sentence about Adam’s children and grandchildren near the end of the story.' }
+    id: 'adam-a2-quick-10', type: 'true-false', title: 'The Message Continues',
+    instructions: 'Is the sentence true or false? Use Chapter 10.',
+    question: 'Adam’s message stayed only with his own family.', correctAnswer: false,
+    explanation: 'Chapter 10 says, “His children and grandchildren spread his message worldwide. This message still advises people to love and respect Allah.”',
+    feedback: { correct: 'Correct! His children and grandchildren took his message all over the world.', incorrect: 'Read the second paragraph of Chapter 10 again. Where did Adam’s children and grandchildren spread his message?' }
   }
 };
 
