@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the promo soundtrack: an original procedural score + subtle sound design.
 
-No voice, no speech, no third-party samples: every sound is synthesized here, so
-the soundtrack is license-clean. The score is written on a 90 BPM grid and its
+Music and sound design are synthesized here (no third-party samples). The only voice is two short
+excerpts of the app's own chapter-1 narration (promo/assets/audio/narration_*.wav). The score is written on a 90 BPM grid and its
 sections follow the film (promo/timeline.json); sound-design cues mirror the motion
 cues in film.js.
 
@@ -466,8 +466,10 @@ def build_sfx() -> np.ndarray:
     at("s4", 13.02, click(2000), 0.3)
     at("s4", 13.3, whoosh(1.2, 180, 8000, 0.5), 0.16)
     at("s4", 13.5, shimmer(1.6, 88), 0.4)
-    at("s4", 15.2, whoosh(1.0, 300, 3000, 0.4), 0.06)
-    at("s4", 17.15, whoosh(0.8, 400, 6000, 0.3), 0.1)
+    at("s4", 15.35, click(2600, 0.05), 0.16)                 # Arabic hotspots on the illustration
+    at("s4", 16.4, click(2600, 0.05), 0.16)
+    at("s4", 17.7, whoosh(1.0, 300, 3000, 0.4), 0.06)
+    at("s4", 19.65, whoosh(0.8, 400, 6000, 0.3), 0.1)
     # S5 — chapter loop
     at("s5", 20.75, whoosh(0.7, 200, 2500, 0.6), 0.08)
     at("s5", 23.1, click(2400), 0.3); at("s5", 23.15, chime((86, 93)), 0.22)
@@ -509,6 +511,46 @@ def build_sfx() -> np.ndarray:
     return reverb(fx, 2.0, 0.2)
 
 
+# ------------------------------------------------------------------ narration (the app's own recordings)
+# Two short excerpts of the real chapter-1 audio (src/data/adam/b1/{en,ar}/pages.ts → audioUrl):
+#   EN "Adam (pbuh) is the first Messenger and the father of all humans." — when play is pressed on the story page
+#   AR «آدم (عليه السلام) هو أول رسول وأبو البشر جميعا» — after the page switches to Arabic
+NARRATION = [("narration_en_ch1.wav", "s2", 4.80), ("narration_ar_ch1.wav", "s4", 14.42)]
+
+
+def narration() -> tuple[np.ndarray, np.ndarray]:
+    """Return the voice track and a music-duck gain curve."""
+    vo = np.zeros((N, 2)); duck = np.ones(N)
+    tt = t_axis(N)
+    for name, scene, clock in NARRATION:
+        x, sr = sf.read(PROMO / "assets" / "audio" / name, dtype="float64")
+        assert sr == SR
+        if x.ndim > 1:
+            x = x.mean(1)
+        n = len(x)
+        x = x * np.clip(np.arange(n) / (0.012 * SR), 0, 1) * np.clip((n - np.arange(n)) / (0.08 * SR), 0, 1)
+        x = x / (np.sqrt(np.mean(x ** 2)) + 1e-9) * 0.16
+        t0 = film_time(scene, clock)
+        place(vo, stereo(hp(x, 90)), t0, 1.0)
+        t1 = t0 + n / SR
+        duck = np.minimum(duck, np.interp(tt, [t0 - 0.35, t0 - 0.05, t1, t1 + 0.6], [1, 0.42, 0.42, 1], left=1, right=1))
+    return reverb(vo, 0.9, 0.06, 9000), duck
+
+
+# the score was composed on the v6 grid; the v8 Arabic-hotspot beat added one bar (4 beats) to the film at 40.55 s.
+# The music repeats bar 59–63 (Gm9) at the bar line 63 (42.0 s), so every later section still lands on its cut.
+INSERT_AT_BEAT, INSERT_BEATS = 63, 4
+
+
+def insert_bar(music: np.ndarray) -> np.ndarray:
+    a, b = int(round(b2t(INSERT_AT_BEAT - INSERT_BEATS) * SR)), int(round(b2t(INSERT_AT_BEAT) * SR))
+    rep = music[a:b].copy()
+    x = int(0.02 * SR)
+    r = np.linspace(0, 1, x)[:, None]
+    rep[:x] = music[b:b + x] * np.sqrt(1 - r) + rep[:x] * np.sqrt(r)   # the repeat's own end flows on into bar 63
+    return np.concatenate([music[:b], rep, music[b:]])[:N]
+
+
 def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndarray:
     lvl = np.sqrt(np.convolve((x ** 2).mean(1), np.ones(480) / 480, mode="same") + 1e-12)
     db = 20 * np.log10(lvl)
@@ -521,71 +563,20 @@ def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndar
     return x * (10 ** (g / 20))[:, None]
 
 
-def edit_track(path: Path) -> np.ndarray:
-    """Cut a licensed music track to the film: three beat-aligned sections, each anchored on a hit.
-
-    film 0 → 59.9      intro; the track's first big hit lands on the hook (18.9 s)
-    film 59.9 → 78.2   the track's peak; its downbeat hits as the end-of-book gate opens
-    film 78.2 → end    the outro; its final hit lands as the Lisandan Kültüre wordmark completes (93.9 s)
-    """
-    import librosa
-    y, sr = librosa.load(str(path), sr=SR, mono=False)
-    y = y.T if y.ndim == 2 else np.stack([y, y], 1)
-    mono = y.mean(1)
-    onset = librosa.onset.onset_strength(y=mono, sr=SR, hop_length=512)
-    ot = librosa.times_like(onset, sr=SR, hop_length=512)
-
-    def hit(lo, hi):
-        m = (ot >= lo) & (ot <= hi)
-        return float(ot[m][np.argmax(onset[m])])
-
-    h1, h2, h3 = hit(25.5, 27.5), hit(135.3, 136.8), hit(187.3, 188.9)
-    F2, F3 = 59.9, 78.2
-    segs = [(0.0, F2, h1 - 18.9), (F2, F3, h2 - F2), (F3, DUR, h3 - 93.9)]   # (film from, film to, music offset)
-    out = np.zeros((N, 2))
-    xf = 0.35
-    for k, (f0, f1, off) in enumerate(segs):
-        a = max(0, int((f0 - (xf if k else 0)) * SR)); b = min(N, int((f1 + (xf if k < 2 else 0)) * SR))
-        src = np.arange(a, b) / SR + off
-        ok = (src >= 0) & (src < len(y) / SR - 1e-3)
-        seg = np.zeros((b - a, 2))
-        seg[ok] = y[(src[ok] * SR).astype(int)]
-        tt = np.arange(a, b) / SR
-        g = np.ones(b - a)
-        if k:
-            g *= np.clip((tt - (f0 - xf)) / (2 * xf), 0, 1) ** 0.5            # equal-power-ish fade in
-        if k < 2:
-            g *= np.clip(((f1 + xf) - tt) / (2 * xf), 0, 1) ** 0.5            # fade out
-        out[a:b] += seg * g[:, None]
-    # the intro of the track is very quiet: lift it gently until the hook
-    tt = t_axis(N)
-    lift = np.interp(tt, [0, 17.5, 18.9], [1.8, 1.8, 1.0])
-    print(f"hits in track: {h1:.2f}s {h2:.2f}s {h3:.2f}s", flush=True)
-    return out * lift[:, None]
-
-
 def main() -> None:
-    import argparse
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--music", type=Path, help="use this music track (cut to the film) instead of the procedural score")
-    args = ap.parse_args()
     out_dir = PROMO / "out"
     (out_dir / "stems").mkdir(parents=True, exist_ok=True)
-    if args.music:
-        music = edit_track(args.music)
-        music = music / (np.sqrt(np.mean(music[int(20 * SR):int(90 * SR)] ** 2)) + 1e-9) * 0.12
-    else:
-        music = score()
+    music = insert_bar(score())
     sfx = build_sfx()
+    vo, duck = narration()
     tt = t_axis(N)
     fade = np.clip(tt / 0.05, 0, 1) * np.clip((TL["duration"] + 0.4 - tt) / 1.6, 0, 1)
-    if args.music:
-        arc = np.ones(N)          # the track carries its own dynamics
-    else:
-        # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
-        arc = np.interp(tt, [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7],
-                        [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
-    mix = (music * arc[:, None] + sfx * 0.9) * fade[:, None]
+    # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
+    ins = b2t(INSERT_BEATS)
+    keys = [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7]
+    arc = np.interp(tt, [k + ins if k > 42 else k for k in keys],
+                    [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
+    mix = (music * (arc * duck)[:, None] + sfx * 0.9 + vo) * fade[:, None]
     finish(mix, music, sfx, out_dir)
 
 
