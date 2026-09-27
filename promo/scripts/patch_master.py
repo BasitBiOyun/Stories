@@ -37,13 +37,14 @@ def main() -> None:
     ap.add_argument("--out", required=True)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--crf", type=int, default=12)
+    ap.add_argument("--skip-render", action="store_true", help="reuse already rendered patch chunks")
     args = ap.parse_args()
     total = round(TL["duration"] * FPS)
     ranges = sorted((round(float(a) * FPS), round(float(b) * FPS)) for a, b in (r.split("-") for r in args.ranges))
     tmp = PROMO / "out" / "patch"
     tmp.mkdir(parents=True, exist_ok=True)
 
-    # 1) render every range in ~equal sub-chunks across the workers
+    # 1) render every range in ~equal sub-chunks across the workers (skipped if already rendered)
     jobs = []
     for ri, (f0, f1) in enumerate(ranges):
         n = f1 - f0
@@ -59,37 +60,45 @@ def main() -> None:
                "--fps", str(FPS), "--port", str(8900 + ri * 10 + w), "--out", str(out)]
         subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL)
         print(f"rendered frames {a}-{b}", flush=True)
-        return job
 
-    with ThreadPoolExecutor(args.workers) as ex:
-        list(ex.map(run, jobs))
+    if not args.skip_render:
+        with ThreadPoolExecutor(args.workers) as ex:
+            list(ex.map(run, jobs))
 
-    # 2) splice: master[0:f0] + patch + master[f1:f2] + ... ; one encode of the result
-    inputs = ["-i", args.master]
-    for j in jobs:
-        inputs += ["-i", str(j[4])]
-    inputs += ["-i", str(PROMO / "out" / "mix.wav")]
-    parts, fc, cur = [], [], 0
-    k = 0
+    # 2) splice without holding frames in memory: encode each piece on its own with identical
+    #    x264 settings, then join the pieces bit-exactly with the concat demuxer (-c copy).
+    X264 = ["-c:v", "libx264", "-preset", "slower", "-crf", str(args.crf), "-profile:v", "high",
+            "-x264-params", "aq-mode=3:aq-strength=0.9:deblock=-1,-1:ref=5:bframes=4:psy-rd=1.0,0.15",
+            "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-an",
+            "-r", str(FPS), "-fps_mode", "cfr"]
+    pieces, cur = [], 0
     for ri, (f0, f1) in enumerate(ranges):
         if f0 > cur:
-            fc.append(f"[0:v]trim=start_frame={cur}:end_frame={f0},setpts=PTS-STARTPTS,format=yuv420p[m{k}]"); parts.append(f"[m{k}]"); k += 1
-        for j_i, j in enumerate(jobs):
-            if j[0] == ri:
-                fc.append(f"[{j_i + 1}:v]format=yuv420p,setpts=PTS-STARTPTS[p{j_i}]"); parts.append(f"[p{j_i}]")
+            pieces.append(("master", cur, f0))
+        pieces.append(("patch", ri, None))
         cur = f1
     if cur < total:
-        fc.append(f"[0:v]trim=start_frame={cur}:end_frame={total},setpts=PTS-STARTPTS,format=yuv420p[m{k}]"); parts.append(f"[m{k}]")
-    fc.append("".join(parts) + f"concat=n={len(parts)}:v=1:a=0,fps={FPS}[v]")
-    audio_idx = len(jobs) + 1
-    cmd = [ffmpeg(), "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(fc), "-map", "[v]", "-map", f"{audio_idx}:a",
-           "-c:v", "libx264", "-preset", "slower", "-crf", str(args.crf), "-profile:v", "high",
-           "-x264-params", "aq-mode=3:aq-strength=0.9:deblock=-1,-1:ref=5:bframes=4:psy-rd=1.0,0.15",
-           "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
-           "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", args.out]
-    subprocess.run(cmd, check=True)
-    for j in jobs:
-        j[4].unlink()
+        pieces.append(("master", cur, total))
+    outs = []
+    for k, (kind, a, b) in enumerate(pieces):
+        out = tmp / f"piece{k:02d}.mp4"
+        outs.append(out)
+        if out.exists():
+            continue
+        if kind == "master":
+            cmd = [ffmpeg(), "-y", "-loglevel", "error", "-i", args.master, "-vf",
+                   f"trim=start_frame={a}:end_frame={b},setpts=N/({FPS}*TB)", *X264, str(out) + ".part.mp4"]
+        else:
+            lst = tmp / f"r{a}.txt"
+            lst.write_text("".join(f"file '{j[4].name}'\n" for j in jobs if j[0] == a))
+            cmd = [ffmpeg(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-vf", f"setpts=N/({FPS}*TB)", *X264, str(out) + ".part.mp4"]
+        subprocess.run(cmd, check=True)
+        Path(str(out) + ".part.mp4").rename(out)
+        print("encoded piece", k, kind, a, b, flush=True)
+    lst = tmp / "pieces.txt"
+    lst.write_text("".join(f"file '{o.name}'\n" for o in outs))
+    subprocess.run([ffmpeg(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i", str(PROMO / "out" / "mix.wav"),
+                    "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", args.out], check=True)
     print("wrote", args.out)
 
 
