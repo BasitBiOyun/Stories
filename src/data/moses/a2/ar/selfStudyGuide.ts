@@ -2,6 +2,9 @@ import type { StudentGuideMetadata, StudentGuideSection, TeacherGuideSection } f
 import { mosesA2PagesAr } from './pages';
 import { mosesA2TeacherGuideAr } from './teacherGuide';
 import { mosesA2QuickChallengesArPolished } from './exercises';
+// Learners see only the targets line of the teacher's grammar/pronunciation notes, not the teaching steps.
+const learnerLine = (text?: string): string | undefined => text?.split('\n')[0].replace(/^(Targets|الأهداف):\s*/, '').trim() || undefined;
+
 
 export const mosesA2StudentGuideMetadataAr: StudentGuideMetadata = {
   title: 'موسى A2 — دليل الدراسة الذاتية', level: 'A2', language: 'Arabic', estimatedStudyTime: '16 × 20–25 دقيقة',
@@ -62,8 +65,8 @@ export const mosesA2SelfStudyGuidePreviewAr: TeacherGuideSection[] = baseGuide.m
 
   return {
     ...section,
-    grammarFocus: teacher?.grammarFocus || 'لاحظ تركيبًا حقيقيًا من التركيز اللغوي بعد فهم الفصل.',
-    pronunciationFocus: teacher?.pronunciationFocus || (words.length ? words.slice(0, 3).join('، ') : undefined),
+    grammarFocus: learnerLine(teacher?.grammarFocus) || 'لاحظ تركيبًا حقيقيًا من التركيز اللغوي بعد فهم الفصل.',
+    pronunciationFocus: learnerLine(teacher?.pronunciationFocus) || (words.length ? words.slice(0, 3).join('، ') : undefined),
     whatToNotice: [
       ...(section.objectives || []).slice(0, 2),
       ...(hotspots.length ? [`استخدم النقاط التفاعلية الحقيقية بوصفها علامات للدليل: ${hotspots.join('، ')}.`] : []),
@@ -91,7 +94,7 @@ export const mosesA2SelfStudyGuidePreviewAr: TeacherGuideSection[] = baseGuide.m
     selfCheck: [
       'هل أستطيع قول الحدث الرئيس في جملة أو جملتين؟',
       words.length ? `هل أفهم وأستخدم ثلاثًا من هذه الكلمات على الأقل: ${words.slice(0, 3).join('، ')}؟` : 'هل أستخدم ثلاث كلمات من الفصل؟',
-      `هل أفهم أو أستخدم هذا التركيب: ${teacher?.grammarFocus || 'تركيبًا حقيقيًا من الفصل'}؟`,
+      `هل أفهم أو أستخدم هذا التركيب: ${learnerLine(teacher?.grammarFocus) || 'تركيبًا حقيقيًا من الفصل'}؟`,
       'هل أستطيع دعم إجابتي بدليل وتحديد خطوتي التالية؟',
     ],
     useWhatYouLearned: valueAction,
