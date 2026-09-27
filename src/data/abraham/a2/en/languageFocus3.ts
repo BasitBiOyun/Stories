@@ -307,7 +307,7 @@ export const abrahamA2LanguageFocusExercisesPart11: Record<number, Exercise[]> =
       title: 'After, Still, One Of',
       instructions: 'Complete the lines from Chapter 14 with words from the bank. Two words are not needed.',
       question: 'Which words connect the Ka’ba to today and to the Prophet Muhammad (pbuh)?',
-      fillBlanksText: '[blank] Abraham (pbuh) built the Sacred Ka’ba, his mission was over. … Today, people [blank] visit the House of Allah to make Hajj. … After many years, Ishmael’s children had children. [blank] them was Muhammad, the Prophet of Islam (pbuh).',
+      fillBlanksText: '[blank] Abraham (pbuh) built the Sacred Ka’ba, his mission was over. … Today, people [blank] visit the House of Allah to make Hajj. … After many years, Ishmael’s family grew and grew. [blank] them was Muhammad, the Prophet of Islam (pbuh).',
       wordBank: ['After', 'still', 'One of', 'Before', 'yet'],
       correctAnswer: ['After', 'still', 'One of'],
       explanation: '“After + past event” shows what came first: first he built the Ka’ba, then his mission was over. “Still” shows that something continues today. “One of + plural” picks one person from a group.',

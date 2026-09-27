@@ -1,5 +1,8 @@
 import type { TeacherGuideSection, StudentGuideMetadata } from '../../../../types';
 import { meccaA2TeacherGuideAr } from './teacherGuide';
+// Learners see only the targets line of the teacher's grammar/pronunciation notes, not the teaching steps.
+const learnerLine = (text?: string): string | undefined => text?.split('\n')[0].replace(/^(Targets|الأهداف):\s*/, '').trim() || undefined;
+
 
 type SelfPlanAr = { chapter: string; notice: string; evidence: string; words: string; use: string; reflect: string };
 
@@ -26,12 +29,12 @@ export const meccaA2SelfStudyGuideAr: TeacherGuideSection[] = selfPlansAr.map((p
     timing: '20 دقيقة',
     objectives: ['فهم الحدث أو الفكرة الرئيسة.', 'العثور على دليل مباشر من القصة.', 'استخدام مفردات A2 في إجابة قصيرة.', 'إكمال التحدي السريع ثم استخدام التركيز اللغوي الحقيقي للفصل قبل إنتاج إجابة قصيرة.'],
     pedagogy: 'تعلم ذاتي قائم على الدليل باستخدام نص الفصل وصوته وملاحظات الكلمات والنقاط التفاعلية والتحدي السريع والتركيز اللغوي الفعلي للفصل.',
-    grammarFocus: teacher?.grammarFocus,
+    grammarFocus: learnerLine(teacher?.grammarFocus),
     lessonPlan: 'اقرأ للفهم؛ استمع وأنت تتبع النص؛ أعد القراءة وحدد الدليل؛ أكمل التحدي السريع؛ افتح التركيز اللغوي للفصل وتدرّب على تراكيبه؛ اكتب إجابة قصيرة؛ نفذ الفحص الذاتي.',
     discussionPoints: [p.reflect],
     interactiveTips: ['أعد صوت الفصل مرة واحدة وأنت تتبع النص نفسه.', 'استخدم النقاط التفاعلية للعودة إلى دليل موجود في الفصل.', 'استخدم التركيز اللغوي بعد وضوح معنى الفصل والتحدي السريع.'],
     differentiation: { strugglingLearners: 'اقرأ فقرة واحدة في كل مرة واستخدم: «تقول القصة ____. وهذا يعني ____.» ثم أنجز العناصر الأساسية من التركيز اللغوي قبل كتابة جملة واحدة.', fastFinishers: p.use },
-    whatToNotice: [p.notice, teacher?.grammarFocus ? `التركيز اللغوي: ${teacher.grammarFocus}` : 'لاحظ تركيباً لغوياً مفيداً من التركيز اللغوي الفعلي للفصل.'],
+    whatToNotice: [p.notice, learnerLine(teacher?.grammarFocus) ? `التركيز اللغوي: ${learnerLine(teacher.grammarFocus)}` : 'لاحظ تركيباً لغوياً مفيداً من التركيز اللغوي الفعلي للفصل.'],
     readListen: ['اقرأ الفصل مرة بصمت.', 'شغل الصوت واتبع الجمل بعينيك.'],
     findAnswerInStory: [p.evidence],
     vocabularyInContext: [p.words, 'اختر كلمتين واكتب جملة A2 جديدة لكل منهما مع الحفاظ على المعنى.'],

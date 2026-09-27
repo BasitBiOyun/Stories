@@ -5,2005 +5,850 @@ const TYMM_VALUES = 'https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cerceve
 
 const manualTeacherGuideSections: TeacherGuideSection[] = [
   {
-    "chapter": "1. Prophet Abraham and Tawheed",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain how the opening presents Abraham as a representative of Tawheed and a connecting figure in prophetic genealogy.",
-      "Trace the Ishmael–Muhammad and Isaac–Jacob–later prophets links without adding relationships not stated in the chapter.",
-      "Use source framing, definition/reformulation, addition and active/passive focus to keep claims precise."
-    ],
-    "pedagogy": "Build a genealogy-and-source map rather than a biography summary. Learners separate what the Qur’an is said to present, what the chapter defines as monotheism, and what the genealogy explicitly links through Ishmael and Isaac.",
-    "priorKnowledge": [
-      "Basic family-relation vocabulary and the difference between source statement and learner inference."
-    ],
-    "anticipatedMisconceptions": [
-      "Being central to several religious traditions does not mean the chapter says those traditions are identical in every detail."
-    ],
-    "grammarFocus": "Source framing and definition/reformulation; addition; active vs passive information focus.",
-    "pronunciationFocus": "Rehearse Abraham, Ishmael, Isaac, Jacob and Halilullah in short sense groups; stress the definitional frame in “Monotheistic belief means…” and the source frame in “is presented as”.",
-    "beforeReading": [
-      "Show only the title and ask what evidence would be needed to call someone both a representative of Tawheed and a connecting figure."
-    ],
-    "duringReading": [
-      "Draw the two family lines beginning with Ishmael and Isaac exactly as the text gives them.",
-      "Mark the sentences that define monotheism and the sentence that gives Abraham the title “Allah’s friend”."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and require one exact chapter detail for each answer.",
-      "Use Language Focus to rewrite one sentence so the source or definition is explicit.",
-      "Produce a four-sentence synthesis distinguishing chapter statement from inference."
-    ],
-    "lessonPlan": "1. 0–5 min: title prediction and evidence criteria. 2. 5–14 min: read/listen for the Tawheed definition and source framing. 3. 14–23 min: build the two-branch prophetic genealogy. 4. 23–28 min: Quick Challenge with evidence. 5. 28–37 min: Language Focus on source framing and information focus. 6. 37–43 min: four-sentence synthesis. 7. 43–45 min: exit ticket naming one stated fact and one inference to avoid.",
-    "discussionPoints": [
-      "Which details make Abraham central in the chapter, and which claim would go beyond the text?",
-      "Why does the title “Allah’s friend” function differently from a genealogical relationship?"
-    ],
-    "interactiveTips": [
-      "Use arrows only where the chapter explicitly gives a family connection.",
-      "Ask learners to label each statement “definition”, “genealogy”, or “source presentation” before discussing importance."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the names Abraham, Ishmael, Isaac, Jacob and Muhammad on movable cards and let learners reconstruct only the links explicitly stated.",
-      "fastFinishers": "Write a short paragraph using “is presented as”, “means”, and one passive structure while preserving the difference between title, definition and genealogy."
-    },
-    "formativeAssessment": [
-      "Accurately reconstructs the two family lines.",
-      "Distinguishes definition from source presentation.",
-      "Avoids claiming equivalence among traditions."
-    ],
-    "expectedResponses": [
-      "The chapter presents Abraham as a representative of Tawheed, links later prophetic lines through Ishmael and Isaac, and gives him the unique title “Allah’s friend”."
-    ],
-    "transferTask": "Take a short biographical text and distinguish a definition, a relationship, and a source-framed claim.",
-    "teacherReflection": "Did learners keep genealogy, religious centrality and source framing separate, or collapse them into one broad claim?",
-    "assessmentTools": {
-      "rubric": [
-        "Genealogy accuracy",
-        "Source framing",
-        "Definition control",
-        "No unsupported equivalence"
-      ],
-      "exitTicket": [
-        "Write one claim beginning “The chapter presents…” and one relationship beginning “Through…”."
-      ]
-    },
-    "extraResources": {
-      "links": [
-        {
-          "label": "TYMM Foreign Language Skills",
-          "url": "https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri"
-        },
-        {
-          "label": "TYMM Erdem-Değer-Eylem",
-          "url": "https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cercevesi"
-        }
-      ]
-    }
+    chapter: '1. Prophet Abraham and Tawheed', timing: '40 minutes',
+    objectives: ['Explain how the chapter presents Abraham (pbuh): messenger and representative of monotheistic belief, a fundamental figure in three religions, father of two prophets and “Allah’s friend”.', 'Reconstruct the Ishmael and Isaac lines exactly as the chapter states them, without adding links.', 'Discover how a source frame (is presented as), a definition (means that), addition (also, in detail) and the two passives of “give” control what a sentence claims and puts first.', 'Keep a source’s presentation, a definition and a family fact apart in a B2 summary.'],
+    pedagogy: 'Start with a sorting question, not a lecture: which sentences define, which report how a source presents Abraham, and which give family facts? Groups build the two-branch family tree only from stated links, then the class returns to the first sentence. Grammar is discovered through meaning: you ask “Who is presenting Abraham like this? Is the writer doubtful?” and learners work out that “is presented as” names the Qur’an as the source before you call it a frame. The passive of “give” is reached the same way: “What does the sentence want us to notice first, the title or the person?”',
+    priorKnowledge: ['Family vocabulary (father, ancestor, forefather); present simple passive; the difference between a definition and an example.'],
+    anticipatedMisconceptions: ['“Is presented as” does not mean the writer doubts the description.', 'Being a fundamental figure in three religions does not mean the chapter says the three religions are the same in every detail.', 'Jacob is not the father of Moses, Aaron, Jonah and Jesus; the chapter calls him their ancestor.'],
+    grammarFocus: 'Targets: source framing (In the Holy Qur’an, … is presented as …) · definition with means that + clause · also for a second role · in detail for a fuller account · the two passives of give (No other prophet had been given this title / The unique name … was given to Abraham).\nNotice (Activity 1): board “In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and representative of the monotheistic belief.” Ask only: “Who presents Abraham in this way?” and “Does the writer sound unsure?” Pairs agree that the frame names the source and does not add doubt; then you confirm the rule.\nBuild (Activities 2–3): complete means that / also / in detail and say why “refers to” (needs a noun) and “instead” (cancels the first role) fail; then restart the two give-sentences with the person (No other prophet …) and with the thing (The unique name … was also given to …).\nLikely errors: reading the frame as doubt · *refers to that there is no god … · *No other prophet was given to this title · *The unique name was given Abraham (missing “to”).\nUse (Activity 4): a 7–9 sentence explanation of a non-story concept or historical figure with one source frame, one “means that”, one “also” and one passive that foregrounds a title or recognition, ending with why the wording is clearer.',
+    pronunciationFocus: 'Chunk the opening sentence into sense groups: “In the HOly Qur’AN, | PROphet ABraham | is preSENTed as the MESsenger and REPreSENTative | of the monoTHEistic beLIEF.”\nWeak forms in the passive: “was” /wəz/ and “to” /tə/ in “was ALso GIVen to ABraham”; contrastive stress in “this TItle was NOT given to any OTHer prophet”.\nNames as clear units: ISH-mael, I-saac (/ˈaɪzək/), JA-cob, JO-seph.\nWord focus: mon-o-the-IS-tic, rep-re-SENT-a-tive, fun-da-MEN-tal, FORE-fa-ther, AN-ces-tor, i-DOL-a-try.',
+    beforeReading: ['Write three starters on the board: “X means that …”, “In the Qur’an, X is presented as …”, “X is the father of …”. Pairs say what kind of information each starter brings (definition / a source’s presentation / family fact) and predict one thing the chapter will say with each.'],
+    duringReading: ['First listening, books closed: list every name you hear.', 'Draw the two family lines from Ishmael and from Isaac using only the links stated.', 'Box the definition of monotheistic belief and underline the two sentences that name the Qur’an as a source.', 'Mark the title “Allah’s friend” and the sentence that makes it unique.'],
+    afterReading: ['Complete the Quick Challenge with the family tree and the boxed definition in view.', 'Language Focus: discover the source frame in Activity 1, complete define / add / expand in Activity 2 and refocus the give-passives in Activity 3.', 'Write the Activity 4 paragraph about a non-story concept or figure and add one sentence explaining why one wording choice makes it clearer.'],
+    lessonPlan: '0–5 Hook: three sentence starters on the board, pairs predict what kind of information each will carry; 5–13 Listen with books closed and list the names, then read along and box the definition; 13–21 Family-tree task: groups of four draw the Ishmael and Isaac lines on A4, swap with a neighbouring group and delete any arrow the text does not state (Jacob is an ancestor, not the father, of Moses and Jesus); 21–25 Quick Challenge individually; 25–33 Language Focus: Activity 1 as whole-class discovery (Who presents Abraham this way? Is the writer doubtful?), Activities 2–3 in pairs while you monitor “to” in the passive; 33–38 Use: learners draft the first four sentences of the Activity 4 paragraph about a scientist, poet or local figure, two volunteers read and the class names the source frame and the passive; 38–40 Exit ticket.',
+    discussionPoints: ['Which sentences tell us how the Qur’an presents Abraham, and which give family facts directly?', 'Why does the chapter stress that the title “Allah’s friend” was not given to any other prophet before?', 'What would be an unsupported claim about the three religions the chapter names?'],
+    interactiveTips: ['Use the “monotheistic belief” hotspot to check the boxed definition and the “fundamental figure” hotspot before discussing the three religions.', 'Replay the family-line sentences slowly and let learners correct their tree while listening.', 'Treat the KEY WORDS line as vocabulary support, not as part of the narrative.'],
+    differentiation: { strugglingLearners: 'Give name cards (Abraham, Ishmael, Isaac, Jacob, Muhammad, Joseph, Moses, Aaron, Jonah, Jesus) and the frames “In the Qur’an, ____ is presented as ____.” and “____ means that ____.” Learners build the tree with the cards before they write.', fastFinishers: 'Write one paragraph that uses both passives of “give” (person first / thing first) and add a sentence explaining what each version puts in focus.' },
+    formativeAssessment: ['Reconstructs both family lines without invented links.', 'Explains that “is presented as” names a source and does not express doubt.', 'Chooses the passive that foregrounds the intended information and keeps “to” before the person.'],
+    expectedResponses: ['The Qur’an presents Abraham as the messenger and representative of monotheistic belief; he is a fundamental figure in Judaism, Christianity and Islam, the father of Ishmael and Isaac, and he was given the title “Allah’s friend”, which no other prophet had been given before.'],
+    transferTask: 'Choose a figure from science or literature and write two sentences: one that reports how a source presents the person, and one passive sentence that foregrounds a title or award they received.',
+    teacherReflection: 'Did learners discover that the frame names a source rather than doubt, and did the family tree stay limited to the links the chapter states?',
+    assessmentTools: { rubric: ['Genealogy accuracy', 'Source framing', 'Definition and addition', 'Information focus in the passive'], exitTicket: ['Write one sentence beginning “In ____, ____ is presented as …” and one passive sentence that starts with the person who received something.'] },
+    extraResources: { links: [{ label: 'TYMM Foreign Language Skills', url: TYMM_FOREIGN }, { label: 'TYMM Erdem-Değer-Eylem', url: TYMM_VALUES }] },
   },
   {
-    "chapter": "2. Abraham as Allah’s Friend",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain how the chapter connects Hanifism, Tawheed, moral uprightness and reasoning.",
-      "Identify the text’s cautious wording when it says “We may say” and distinguish it from stronger definitions.",
-      "Use cause–result and reformulation to explain why reasoning and prophetic teaching are both present."
-    ],
-    "pedagogy": "Use a concept web with four nodes—Hanif, Tawheed, moral uprightness and reasoning. Learners must connect each arrow to a sentence in the chapter, especially the claim that human beings can discover Allah’s existence through reasoning and the claim that all prophets taught this religion.",
-    "priorKnowledge": [
-      "Chapter 1 definition of Tawheed and simple cause/result relations."
-    ],
-    "anticipatedMisconceptions": [
-      "Reasoning is not presented as a replacement for prophetic teaching."
-    ],
-    "grammarFocus": "Definition chains and relative clauses; cautious stance such as “we may say”; reformulation; cause → result → conclusion.",
-    "pronunciationFocus": "Practise Hanif, Hanifism, morally upright and reasoning; use softer intonation on “We may say” to signal a cautious stance.",
-    "beforeReading": [
-      "Put “reason”, “revelation”, “morality” and “Tawheed” on the board and ask learners not to connect them until the text provides evidence."
-    ],
-    "duringReading": [
-      "Mark the definition of hanif and Hanifism.",
-      "Underline the claim about discovering Allah’s existence through reasoning and the later statement that all prophets taught this religion."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge with a reason for the chosen answer.",
-      "Use Language Focus to turn the concept web into a cause–result paragraph.",
-      "Write one sentence explaining why “reasoning replaces prophets” is too strong."
-    ],
-    "lessonPlan": "1. 0–5 min: four-node concept prediction. 2. 5–14 min: read/listen for definitions. 3. 14–22 min: map reasoning, prophetic teaching and moral uprightness. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on cautious stance and reformulation. 6. 36–43 min: B2 concept paragraph. 7. 43–45 min: exit sentence correcting the replacement misconception.",
-    "discussionPoints": [
-      "How does the chapter combine reason, revelation, and moral conduct?",
-      "Which statement is presented cautiously rather than as a simple definition?"
-    ],
-    "interactiveTips": [
-      "Require a quoted or paraphrased sentence for each arrow in the concept web.",
-      "Contrast “Hanifism is…” with “We may say…” so learners hear the difference in commitment."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give four sentence strips and let learners match each to Hanif / Tawheed / reasoning / prophetic teaching.",
-      "fastFinishers": "Write five connected sentences including one cautious claim, one relative clause and one cause–result conclusion."
-    },
-    "formativeAssessment": [
-      "Explains all four concepts without making reasoning a substitute for revelation.",
-      "Recognises cautious stance.",
-      "Uses cause/result to connect ideas."
-    ],
-    "expectedResponses": [
-      "The chapter presents Hanifism as monotheistic and morally upright, says reasoning can lead to recognition of Allah’s existence, and still states that prophets taught this religion."
-    ],
-    "transferTask": "Explain a claim in another text where reasoning and instruction work together rather than replacing one another.",
-    "teacherReflection": "Did learners preserve the chapter’s balance between reasoning, prophetic teaching and moral conduct?"
+    chapter: '2. Abraham as Allah’s Friend', timing: '40 minutes',
+    objectives: ['Explain how the chapter links Abraham’s mission, the hanîf, Hanifism, reasoning and acts of worship.', 'Distinguish the chapter’s direct definitions from the writer’s cautious interpretation (“We may say that …”).', 'Discover how the chapter defines terms (dash, relative clause, participle phrase), signals stance, reformulates with “that is” and builds a reason → conclusion chain.', 'Explain continuity and change in a tradition without overstating either.'],
+    pedagogy: 'Use a four-node concept web on the board (hanîf, Hanifism, reasoning, acts of worship). Learners may draw an arrow only when they can read out the sentence that supports it. Then compare two sentences side by side: “Hanifism is …” and “We may say that it is …”. You ask “Which sentence is a definition and which is the writer’s view?” and learners find the stance marker themselves before you name it. The reason chain (As … changed, … became necessary. So, …) is discovered by asking “Why did details change, and what follows from that?”',
+    priorKnowledge: ['Chapter 1 definition of monotheism; because / so; defining relative clauses with who.'],
+    anticipatedMisconceptions: ['“We may say” marks an interpretation, not a quotation or a doubtful claim.', 'The chapter does not say reasoning replaces the teaching of the prophets; it says all prophets taught this religion.', 'A hanîf is a person; Hanifism is the belief.'],
+    grammarFocus: 'Targets: three ways of defining (Tawheed—the belief that …, a monotheist who is not …, the belief … taught by Prophet Abraham) · stance with We may say that … · reformulation with that is · reason with As … (= because) and conclusion with So · only to limit a difference.\nNotice (Activities 1–2): after matching the terms, board the two sentences “Hanifism is the belief in the oneness of Allah taught by Prophet Abraham (pbuh).” / “We may say that it is the former version of Islam.” Ask: “Which one is a definition? Which one tells us how the writer chooses to describe it?” Learners name the job of “may” and “say” before you confirm.\nBuild (Activity 3): move the reason to the end with because / since / as, and rewrite the passive “can be found” actively (people can find …), discussing which version matches “capable of discovering”.\nLikely errors: *We may say it is the former version of Islam, which means it is certain · *capable to discover · *As human conditions changed, so some changes … (double linker) · hanîf used for the belief.\nUse (Activity 4): an 8–10 sentence paragraph about a non-story tradition or system with a stable core and changed details: one relative-clause definition, one stance marker, one “that is”, one reason → result → conclusion chain.',
+    pronunciationFocus: 'Soften the stance marker: “we MAY SAY | that it is the FORmer VERsion of ISlam” with a level, not falling, tone on “say”.\nPause before and after the reformulation: “… HANifism; | THAT is, | the exISTence of alLAH | can be FOUND through REAsoning.”\nWeak forms: “can be” /kən bi/, “of” /əv/ in “the oneness of Allah”.\nWord focus: ha-NEEF (hanîf), HAN-if-ism, MOR-al-ly UP-right, REA-son-ing, ca-PAC-i-ties, CA-pa-ble.',
+    beforeReading: ['Board four words: mission, hanîf, reasoning, worship. Pairs predict one link between two of them and write it as a question (Can reasoning …?). Keep three questions on the board to test against the text.'],
+    duringReading: ['Listen once for the mission and the tests.', 'Box the three definitions (Tawheed, a hanîf, Hanifism).', 'Underline “We may say that” and “that is” in a second colour.', 'Circle the reason (As …) and the conclusion (So, …) in the last two sentences.'],
+    afterReading: ['Complete the Quick Challenge and name the sentence that supports your answer.', 'Language Focus: match the defined terms (Activity 1), decide what “We may say that” adds (Activity 2), then rewrite the reason and the reformulation (Activity 3).', 'Write the Activity 4 continuity-and-change paragraph about a non-story tradition, system or practice.'],
+    lessonPlan: '0–5 Hook: four words on the board, pairs write one prediction question linking two of them; 5–12 Listen for the mission and the tests, then read and box the three definitions; 12–19 Concept web: pairs draw arrows between hanîf, Hanifism, reasoning and acts of worship, each arrow labelled with a quoted phrase, then a quick whole-class check of the predictions; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 in pairs, Activity 2 as whole-class discovery (Which sentence is a definition, which is the writer’s view?), Activity 3 individually with pair checking; 32–38 Use: learners plan the Activity 4 paragraph with a four-box organiser (definition / stance / reformulation / reason → conclusion) about a sport, a language or a school tradition and write the first five sentences; 38–40 Exit ticket.',
+    discussionPoints: ['Which statements are definitions and which one is offered cautiously as the writer’s interpretation?', 'According to the chapter, what can human beings discover through reasoning?', 'What exactly does the last sentence say is different, and what does “only” do there?'],
+    interactiveTips: ['Use the “life mission” hotspot for the first paragraph and the “morally upright” hotspot to complete the definition of a hanîf.', 'Replay “We may say that …” and the sentence with “that is” and ask learners what each one does.', 'Do not extend the comparison of religions beyond the chapter’s own sentences.'],
+    differentiation: { strugglingLearners: 'Provide the frames “A hanîf is a person who ____.”, “Hanifism is the belief ____.”, “We may say that ____.” and “____; that is, ____.” with the four sentences cut into strips to match.', fastFinishers: 'Write a paragraph that uses all three defining patterns (dash, relative clause, participle phrase) and one clearly marked interpretation, then label each sentence definition or interpretation.' },
+    formativeAssessment: ['Distinguishes definition from interpretation and explains the stance marker.', 'Reformulates with “that is” without changing the meaning.', 'Builds a reason → conclusion chain with one linker per link.'],
+    expectedResponses: ['A hanîf is a monotheist who is not a Jew, a Christian or an idolater and is morally upright; Hanifism is the belief in the oneness of Allah taught by Abraham, which the writer cautiously calls the former version of Islam; details changed as human conditions changed, so the difference is only in the acts of worship.'],
+    transferTask: 'Describe something at your school that has kept its core but changed in some details (for example a ceremony or a club), using one cautious stance marker and one “that is” reformulation.',
+    teacherReflection: 'Did learners hear and explain the difference between “Hanifism is …” and “We may say that …”, and did they keep reasoning and prophetic teaching together?',
+    assessmentTools: { rubric: ['Definition accuracy', 'Stance recognition', 'Reformulation', 'Cause–conclusion chain'], exitTicket: ['Write one definition sentence with “who” and one cautious sentence beginning “We may say that …” about a tradition you know.'] },
   },
   {
-    "chapter": "3. Hanifism and the One True Faith",
-    "timing": "45 minutes",
-    "objectives": [
-      "Evaluate the chapter’s claim of continuity while also preserving its claim of later mixture or corruption.",
-      "Explain the role of the Hijaz hanifs, Varaka and the Bilal “Ahad, Ahad” episode in that continuity argument.",
-      "Use contrast and layered time relations without turning the chapter into a claim that all traditions are identical."
-    ],
-    "pedagogy": "Build a continuity/rupture timeline. Learners place the Hijaz hanifs, Varaka’s search, the first revelation and the Bilal episode on the timeline, then mark where the chapter introduces “however, later on” to qualify continuity.",
-    "priorKnowledge": [
-      "Hanifism from Chapter 2 and basic historical sequence markers."
-    ],
-    "anticipatedMisconceptions": [
-      "Continuity of monotheism does not erase the chapter’s claim that beliefs later became mixed or corrupted."
-    ],
-    "grammarFocus": "Discourse movement and contrast; layered time relations; time-limited evaluation in relative clauses; additive expansion.",
-    "pronunciationFocus": "Practise Hijaz, Varaka, Bilal and “Ahad, Ahad”; give clear contrastive stress to “However, later on” and additive stress to “not only… but also…”.",
-    "beforeReading": [
-      "Draw a line labelled continuity ↔ change and ask what kind of evidence could support both at once."
-    ],
-    "duringReading": [
-      "Mark the group in the Hijaz who called themselves hanifs.",
-      "Trace Varaka’s search and response to the first revelation.",
-      "Identify what the Bilal episode contributes and where the text shifts to mixture/corruption."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and locate the contrast marker supporting the answer.",
-      "Use Language Focus to write a continuity sentence followed by a qualified contrast.",
-      "Explain the Bilal episode’s function without presenting it as proof of every broader historical claim."
-    ],
-    "lessonPlan": "1. 0–5 min: continuity/change frame. 2. 5–15 min: read/listen and place the Hijaz hanifs and Varaka. 3. 15–23 min: analyse the Bilal episode and the later-corruption contrast. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on contrast and layered time. 6. 37–43 min: two-part historical synthesis. 7. 43–45 min: exit ticket on what the Bilal episode does and does not establish.",
-    "discussionPoints": [
-      "What does the Varaka–Bilal episode add to the chapter’s argument about continuity?",
-      "Where does the chapter itself limit a simple continuity claim?"
-    ],
-    "interactiveTips": [
-      "Use two colours on the timeline: continuity evidence and change/corruption evidence.",
-      "Do not let the emotionally memorable Bilal episode replace the chapter’s other historical claims."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give four event cards and one contrast marker; learners order the events and place “however” at the correct conceptual shift.",
-      "fastFinishers": "Write a six-sentence synthesis using while, however and not only…but also without erasing the chapter’s qualification."
-    },
-    "formativeAssessment": [
-      "Represents both continuity and change.",
-      "Explains the episode’s argumentative role.",
-      "Uses contrast markers accurately."
-    ],
-    "expectedResponses": [
-      "The chapter presents surviving Hanif figures as continuity evidence while also stating that belief later became mixed or corrupted."
-    ],
-    "transferTask": "Summarise a historical tradition that shows both continuity and change without reducing it to either one.",
-    "teacherReflection": "Did learners hold continuity and corruption together, or use one to cancel the other?"
+    chapter: '3. Hanifism and the One True Faith', timing: '40 minutes',
+    objectives: ['Trace the development the chapter describes: hanîfs who avoided idolatry, a later mixing with idolatry, and Varaka b. Nevfel’s search.', 'Explain the scene of Bilal and Varaka and what “Ahad, Ahad” shows, without dramatising the punishment.', 'Discover how discourse markers (In fact, However, like, not only … but also), a time-limited relative clause and a layered sentence organise the chapter.', 'Limit an evaluation in time or context instead of making it absolute.'],
+    pedagogy: 'Put the chapter on a simple timeline (the hanîfs in the Hijaz → later mixing with idolatry → Varaka goes to Damascus → the first revelation → the scene with Bilal) and let pairs attach one quoted phrase to each point. Then learners test the wording: “Does ‘the least corrupted religion at that time’ mean not corrupted at all? For all time?” They discover that the superlative compares and “at that time” limits it. The layered scene sentence is rebuilt from chunks so learners see how one sentence holds time, place, event and background.',
+    priorKnowledge: ['Chapter 2 definitions of hanîf and Hanifism; however; past continuous with while.'],
+    anticipatedMisconceptions: ['“The least corrupted religion at that time” is a limited comparison, not a claim that it was uncorrupted or best for all time.', 'The hanîfs described first stayed away from idolatry; the mixing came later.', 'Varaka is described as the cousin of Khadija, not of Muhammad (pbuh).'],
+    grammarFocus: 'Targets: turning points (In fact to strengthen, However, later on to turn, like to compare, not only … but also to add) · non-defining which-clause for an evaluation limited by at that time · a layered sentence (One day, while …, main clause, lying … / punished …) · participle opening (Hearing his words, …).\nNotice (Activity 1): board “He went to Damascus in search of Hanifism and accepted Christianity, which was the least corrupted religion at that time.” Ask: “Does this say Christianity was not corrupted? Is it true for every period?” Learners find that the comparison and “at that time” both limit the claim.\nBuild (Activities 2–3): complete In fact / However / like / not only and explain why Therefore and unlike are wrong; then rebuild the scene from chunks and label “lying” (what he was doing) and “punished” (what was done to him).\nLikely errors: *However, therefore later … (two linkers) · unlike for like · *Varaka saw Bilal lain / punishing by his master · reading the superlative as “not corrupted at all”.\nUse (Activity 4): an 8–10 sentence paragraph about a non-story belief, institution or idea that changed but kept some continuity, with in fact, however, when/while, a limited which-clause and not only … but also.',
+    pronunciationFocus: 'Chunk the layered sentence: “ONE DAY, | while he was in the DESert, | VAraka saw BIlal al-HAbashi | LYing under the BURning SUN, | PUNished by his MASter.” Keep a calm, even voice.\nContrastive stress: “not ONly what Allah told ABraham, | but ALso what Allah told NOah …”.\nTurn signal: pause and fall-rise on “HOWever, | LAter ON, …”.\n-ed endings: called /d/, stayed /d/, accepted /ɪd/, welcomed /d/, corrupted /ɪd/, punished /t/.\nWord focus: i-DOL-a-try, cor-RUPT-ed, rev-e-LA-tion, PROPH-et-hood, da-MAS-cus.',
+    beforeReading: ['Ask: “Can an idea stay the same for centuries? What can change it?” Collect two answers, then show the word “corrupted” and ask pairs to guess what the chapter will say became corrupted.'],
+    duringReading: ['Mark the three stages: stayed away from idolatry → became mixed with idolatry → corrupted.', 'Underline the relative clause about Christianity and circle “at that time”.', 'Put the Varaka events in order on a mini timeline.', 'Box the last sentence and its “not only … but also”.'],
+    afterReading: ['Complete the Quick Challenge using the timeline.', 'Language Focus: discover the time limit in Activity 1, complete the turning points in Activity 2 and rebuild the layered scene in Activity 3.', 'Write the Activity 4 contrast-and-extension paragraph on a non-story topic, keeping every evaluation limited by time or context.'],
+    lessonPlan: '0–4 Hook: “Can an idea stay the same for centuries?” two answers, then predict what became corrupted; 4–11 Listen and read, then mark the three stages of the belief; 11–18 Timeline in pairs: five points with a quoted phrase each (the Varaka and Bilal scene is summarised in neutral words, no acting out), whole-class check of who is whose cousin; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Not corrupted at all? For all time?), Activity 2 in pairs with a reason for each rejected option, Activity 3 on screen by volunteers; 31–38 Use: pairs choose a school club, a festival or a sport rule that changed and write six sentences using in fact, however, one while-sentence and one limited which-clause; 38–40 Exit ticket.',
+    discussionPoints: ['What changed between the hanîfs of the Hijaz and the later period?', 'Why does the writer add “at that time” to the evaluation of Christianity?', 'What does Varaka’s reply to Bilal show about his view, according to the scene?'],
+    interactiveTips: ['Use the “became mixed with idolatry” and “corrupted” hotspots to fix the difference between the first stage and the later stages.', 'Replay the Bilal scene once, calmly, and ask only who said what.', 'Do not add stories about Bilal or Varaka that are not in the chapter.'],
+    differentiation: { strugglingLearners: 'Give the timeline with the stage names already written and the frames “At first, ____. However, later on, ____.” and “____, which was ____ at that time.”', fastFinishers: 'Rewrite the Varaka sentence twice: once without “at that time” and once without “least”, and explain in two sentences how each change makes the claim stronger than the text.' },
+    formativeAssessment: ['Keeps the stages of the belief in order.', 'Explains how “at that time” and the superlative limit the evaluation.', 'Uses turning-point markers with the right logical relation.'],
+    expectedResponses: ['A group of hanîfs in the Hijaz stayed away from idolatry, but later the belief became mixed with idolatry and was corrupted; Varaka searched for Hanifism, accepted the least corrupted religion of his time, welcomed Muhammad’s prophethood and answered Bilal’s “Ahad, Ahad”.'],
+    transferTask: 'Write two sentences evaluating a phone, a book or a team “at that time”, so that the reader knows the evaluation belongs to one period only.',
+    teacherReflection: 'Did learners discover how the time limit protects the evaluation, and did they handle the Bilal scene calmly and factually?',
+    assessmentTools: { rubric: ['Stage sequence', 'Limited evaluation', 'Discourse markers', 'Layered sentence control'], exitTicket: ['Write one sentence with “However, later on, …” and one with “…, which was ____ at that time.”'] },
   },
   {
-    "chapter": "4. Hanifism Before Islam",
-    "timing": "45 minutes",
-    "objectives": [
-      "Distinguish source-attributed possibilities from stronger claims about Abraham’s setting.",
-      "Identify “different ideas”, “some sources”, “is believed” and “suggest” as different levels of commitment.",
-      "Use hedging to report birthplace, chronology and religious setting without false certainty."
-    ],
-    "pedagogy": "Turn the chapter into an uncertainty ladder. Learners rank birthplace and chronology statements by their wording rather than by prior knowledge, then compare them with the more direct descriptions of religious practices in Mesopotamia.",
-    "priorKnowledge": [
-      "Source framing from Chapter 1 and the meaning of hedge/qualification."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not present birthplace and chronology as equally certain facts."
-    ],
-    "grammarFocus": "Source attribution and hedging: “some sources say”, “is believed”, “suggest”; cautious synthesis; prior state and social variation.",
-    "pronunciationFocus": "Practise Mesopotamia, Sumer and Babylon; reduce stress on hedge frames and place main stress on the claim they qualify.",
-    "beforeReading": [
-      "Give one certain and one hedged sentence and ask which wording commits the writer more strongly."
-    ],
-    "duringReading": [
-      "Highlight every source/uncertainty expression in the birthplace and dating paragraph.",
-      "Separate those statements from the direct description of people worshipping celestial bodies, idols or rulers."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and identify the hedge that protects the answer.",
-      "Remove a hedge from one sentence, then explain why the result is less accurate.",
-      "Write a three-sentence cautious historical profile of setting, date and religious diversity."
-    ],
-    "lessonPlan": "1. 0–5 min: certainty ladder. 2. 5–15 min: read/listen and mark source-attribution language. 3. 15–23 min: rank birthplace/date claims by certainty. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on hedging and prior state. 6. 37–43 min: cautious historical profile. 7. 43–45 min: exit ticket restoring a missing hedge.",
-    "discussionPoints": [
-      "Which sentence would become inaccurate if its hedge were removed?",
-      "Why are the worship-practice sentences different from the birthplace claims in source status?"
-    ],
-    "interactiveTips": [
-      "Use a physical certainty scale from direct statement to attributed possibility.",
-      "Ask learners to keep the hedge attached whenever they paraphrase a claim."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide four hedge cards and let learners match them to the original sentences.",
-      "fastFinishers": "Rewrite a short overconfident paragraph using at least three different source-attribution frames."
-    },
-    "formativeAssessment": [
-      "Identifies hedge strength.",
-      "Preserves attribution in paraphrase.",
-      "Separates uncertain biography from directly stated setting details."
-    ],
-    "expectedResponses": [
-      "The chapter reports several possible birthplace/date claims with hedges while more directly describing the region’s varied forms of worship."
-    ],
-    "transferTask": "Repair an overconfident historical paragraph by restoring source attribution and uncertainty.",
-    "teacherReflection": "Did learners preserve degree of certainty, or treat all historical statements as equally secure?"
+    chapter: '4. Hanifism Before Islam', timing: '40 minutes',
+    objectives: ['Summarise what the chapter says about Azer, Abraham’s birthplace, his period and the beliefs of his society.', 'Separate what the writer states directly from what sources report, suggest or what people believed.', 'Discover source-status frames (Some sources say/suggest, is believed to have lived, Most generally speaking, we can say), the past perfect for an earlier state and “some … still others …”.', 'Write a qualified summary that neither invents agreement nor claims nothing can be known.'],
+    pedagogy: 'Make certainty visible with three colours: green for what the writer states directly, yellow for reported or hedged information, blue for what people of that time believed. Learners justify every colour with the signal words. Grammar grows out of this: you ask “How sure is the writer here, and how do you know?” and learners discover that “some sources say”, “is believed to have lived” and “most generally speaking, we can say” are tools for honesty about evidence. The past perfect is discovered with a timeline question: “Which came first, the belief or its being forgotten, and both before what?”',
+    priorKnowledge: ['Chapter 2–3 stance markers; past simple vs past perfect; approximate dates.'],
+    anticipatedMisconceptions: ['The chapter does not say the sources agree on Abraham’s birthplace or dates.', 'It does not say nothing can be known either: it gives a cautious general conclusion.', '“Was believed to be in the heavens” reports what people then believed, not a statement by the writer.'],
+    grammarFocus: 'Targets: source-status frames (Some sources say that …, Some sources suggest that …, Most generally speaking, we can say that …, is believed to have lived, was believed to be) · past perfect for an earlier state (had existed … had been forgotten) · perfect infinitive after a present belief · some … still others … for groups.\nNotice (Activity 1): learners sort seven parts of the chapter into “stated directly” and “reported or hedged”. Then ask: “Why is ‘There are different ideas about the birthplace’ stated directly, although it is about uncertainty?”\nBuild (Activities 2–3): choose the summary that keeps the caution and say what is wrong with each of the others; then correct has existed → had existed, to live → to have lived, other → others.\nLikely errors: joining two sources into one certain fact · *is believed to live in the 20th century BC · *has existed before … had been forgotten · *still other worshipped.\nUse (Activity 4): an 8–10 sentence paragraph on a disputed historical topic outside the story with three source-status frames, one had + past participle, one however and “some … while/still others …”.',
+    pronunciationFocus: 'Keep the frame and the claim in separate chunks: “SOME SOURces SUGgest | that he LIVED | beTWEEN twenty-two HUNdred and two THOUsand BC.”\nWeak forms: “is believed to have lived” → /ɪz bɪˈliːvd tə həv ˈlɪvd/; “had been” /həd bɪn/.\nList intonation with a fall on the last group: “the PLANets, STARS, SUN, and MOON↘”.\nWord focus: mes-o-po-TA-mi-a, BAB-y-lon, PROS-per-ous, AG-ri-cul-ture, IN-dus-try, his-TOR-i-cal-ly.',
+    beforeReading: ['Read three sentences about your own town aloud: one certain, one reported (“Some people say …”), one believed in the past. Learners show 1, 2 or 3 fingers and name the words that helped them decide.'],
+    duringReading: ['Colour-code: green = stated directly, yellow = reported or hedged, blue = what people then believed.', 'Circle every date and date range.', 'Underline the sentence with “had existed” and “had been forgotten”.', 'List the three groups of worship in the last paragraph.'],
+    afterReading: ['Complete the Quick Challenge without turning any reported view into a fact.', 'Language Focus: sort direct and reported statements (Activity 1), choose the faithful summary (Activity 2) and correct the earlier-past, perfect-infinitive and “others” errors (Activity 3).', 'Write the Activity 4 qualified historical overview on a non-story topic.'],
+    lessonPlan: '0–5 Certainty signals: three sentences about your town, learners show 1, 2 or 3 fingers and name the signal; 5–12 Listen for gist (What do we know for sure about Abraham’s birthplace?), then read and colour-code; 12–18 Pairs compare colours and defend each with a signal word, then list the three groups of worship; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs with the whole-class question about “There are different ideas”, Activity 2 as a vote with justifications, Activity 3 individually; 31–38 Use: groups of three draft a qualified overview of a local legend-free historical question (for example when a bridge or mosque in your town was first built) with three source frames, then swap and highlight any sentence that sounds more certain than its evidence; 38–40 Exit ticket.',
+    discussionPoints: ['What does the writer state directly, and why is “there are different ideas” itself a direct statement?', 'Why does “Most generally speaking, we can say” not contradict the disagreement in the sources?', 'What had happened to the message of monotheism in these lands before Abraham’s time?'],
+    interactiveTips: ['Use the “Islamic sources” hotspot when learners colour Azer’s description and the “migrated from there” hotspot for the Sumer–Harran view.', 'Replay the dates and ask learners to write them exactly, with “some sources suggest” attached.', 'Reject summaries that remove a source frame or a hedge.'],
+    differentiation: { strugglingLearners: 'Give the frames “Some sources say that ____.”, “____ is believed to have ____.” and “Some people ____; still others ____.” with the seven sentence strips from Activity 1 ready to sort.', fastFinishers: 'Write a five-sentence paragraph that moves from two disagreeing sources to one cautious conclusion, and label the certainty of each sentence (high / medium / low).' },
+    formativeAssessment: ['Keeps reported views attributed and dates approximate.', 'Uses the past perfect to show the earlier state and its loss.', 'Chooses and justifies a summary that keeps the chapter’s caution.'],
+    expectedResponses: ['The Qur’an names Abraham’s father as Azer, an idol worshipper; sources differ on the birthplace, but broadly Abraham was born in Mesopotamia (Ur or Babylon) around the 20th century BC; monotheism had existed there before but had been forgotten, and people worshipped heavenly bodies, idols or their rulers.'],
+    transferTask: 'Write three sentences about a scientific or historical question where experts disagree: one attributed view, one alternative view and one cautious general conclusion.',
+    teacherReflection: 'Did learners keep every reported view attributed, and did they discover the job of the past perfect from the timeline question?',
+    assessmentTools: { rubric: ['Source status', 'Cautious synthesis', 'Earlier-past control', 'Group distinction'], exitTicket: ['Write one sentence with “Some sources say that …” and one with “… is believed to have …”.'] },
   },
   {
-    "chapter": "5. The Birthplace and Mission of Abraham",
-    "timing": "45 minutes",
-    "objectives": [
-      "Separate the chapter’s broader mission claim from the two alternative Nimrod birth narratives.",
-      "Explain why “according to another narration” prevents the stories from being merged into one verified sequence.",
-      "Use future-in-the-past and reporting language to retell predictions without increasing certainty."
-    ],
-    "pedagogy": "Use a two-column source board: fortuneteller prediction / alternative dream narration. Only after the two narratives are kept separate do learners connect them to the chapter’s broader claim that Abraham would challenge family and social systems through monotheism.",
-    "priorKnowledge": [
-      "Chapter 4 source caution and future-in-the-past meaning."
-    ],
-    "anticipatedMisconceptions": [
-      "Two narrations are not automatically two independently verified historical facts."
-    ],
-    "grammarFocus": "Future-in-the-past; alternate narration/source shift; result cohesion; supporting relative clauses.",
-    "pronunciationFocus": "Practise fortuneteller, astrologer and narration; stress “According to another narration” as a clear source shift.",
-    "beforeReading": [
-      "Ask how a writer should present two different stories about the same early event."
-    ],
-    "duringReading": [
-      "Mark the fortunetellers’ prediction and every future-in-the-past element.",
-      "Box the source shift introducing Nimrod’s dream.",
-      "Underline the separate, broader statement about Abraham’s mission in Mesopotamia and lands of migration."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge with the correct narration label.",
-      "Retell both narrations in parallel without combining them.",
-      "Use Language Focus to write one future-in-the-past sentence and one source-shift sentence."
-    ],
-    "lessonPlan": "1. 0–5 min: alternative-narration problem. 2. 5–15 min: read/listen for prediction and dream versions. 3. 15–22 min: two-column source board. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on future-in-the-past and source shift. 6. 36–43 min: parallel retelling. 7. 43–45 min: exit ticket naming what is narration and what is broader mission.",
-    "discussionPoints": [
-      "How should we retell alternative narrations without merging them into one certain account?",
-      "Which part of the chapter is broader than either birth narrative?"
-    ],
-    "interactiveTips": [
-      "Never place details from the two versions on a single chronological line unless the chapter itself links them.",
-      "Use different speaker/source labels before every retelling."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give each narration on a separate card and sentence frames beginning “One narration says…” / “According to another narration…”.",
-      "fastFinishers": "Write a source-aware paragraph that includes both versions and then returns to the chapter’s broader mission claim."
-    },
-    "formativeAssessment": [
-      "Keeps narratives separate.",
-      "Uses source-shift language.",
-      "Controls future-in-the-past."
-    ],
-    "expectedResponses": [
-      "The chapter gives a fortuneteller prediction and an alternative dream narration, while separately presenting Abraham’s larger mission of spreading monotheism."
-    ],
-    "transferTask": "Report two competing accounts of an event without blending them or deciding more than the source does.",
-    "teacherReflection": "Did learners preserve the alternative-narration structure rather than constructing one synthetic story?"
+    chapter: '5. The Birthplace and Mission of Abraham', timing: '40 minutes',
+    objectives: ['Explain the danger around Abraham’s birth: the prediction or dream, Nimrod’s order and Azer’s response.', 'Keep the two narrations (the astrologers’ prediction and Nimrod’s dream) as alternative accounts, not two events.', 'Discover the future seen from the past (was going to, would), the source frame “According to another narration”, result linkers and relative clauses of person and place.', 'Discuss the chapter’s danger calmly, without dramatising the order against the children.'],
+    pedagogy: 'Stand learners at a point in the past: “It is the year Abraham is born. What is still in the future?” From there they discover that “was going to” and “would” look forward from a past moment, while the past simple tells what happened then. The two narrations are compared in a two-column table (Account 1: the astrologers / Account 2: the dream) so that learners see “another narration” as another version, not another event. The order about the children is read once by the teacher, calmly, and summarised in neutral words.',
+    priorKnowledge: ['Past simple and past continuous; will for predictions; so for result.'],
+    anticipatedMisconceptions: ['The dream is not a second event after the prediction; it is another narration of how Nimrod learned about the child.', '“Would be born” is a prediction reported from the past, not something the narrator says will happen now.', 'Azer is described as an idolater, yet he took his wife to a safe place; learners should not assume the chapter explains his motive.'],
+    grammarFocus: 'Targets: the future seen from the past (Very soon, he was going to fight …; they predicted that a child … would be born …, would change …, would end …) · According to another narration for an alternative account · result with So / Therefore / As a result · non-defining who-clause and its shortened form (his wife, pregnant with Abraham) · where = in which.\nNotice (Activity 1): learners sort six parts into “an event that happened” and “a later event seen from the past”. Ask: “Standing at the moment of his birth, which of these has not happened yet?”\nBuild (Activities 2–3): decide what “According to another narration” tells the reader, then rewrite So as a formal result linker, shorten the who-clause and replace where with in which.\nLikely errors: *they predicted that a child will be born (tense not shifted) · *he was going fight · *a cave which Abraham was born · treating the two narrations as a sequence.\nUse (Activity 4): an 8–10 sentence past narrative outside the story with was going to, at least two uses of would, one clearly marked alternative account, a result linker and one who- and one where-clause.',
+    pronunciationFocus: 'Weak forms in the future-in-the-past: “was GOing to FIGHT” /wəz ˈɡəʊɪŋ tə/; “would be BORN” /wəd bi/.\nThree parallel predictions with rising tone on the first two and a fall on the last: “would be BORN in the REgion↗, | would CHANGE the reLIgion of the PEOple↗, | and would END the REIGN of NIMrod↘”.\n-ed endings: rejected /ɪd/, migrated /ɪd/, predicted /ɪd/, gathered /d/, ordered /d/, killed /d/.\nWord focus: FOR-tune-tell-ers, as-TROL-o-gers, nar-RA-tion, PREG-nant, REIGN (/reɪn/, silent g), THRONE (/θ/).',
+    beforeReading: ['Ask: “If you tell a story about the past, how do you mention something that had not happened yet at that time?” Collect examples (I was going to …, She knew he would …) and keep them on the board.'],
+    duringReading: ['Underline every “was going to” and “would”.', 'Two columns: Account 1 (fortunetellers and astrologers) / Account 2 (the dream).', 'Mark the result word that introduces Nimrod’s order.', 'Circle the place where Abraham was born and the words that introduce it.'],
+    afterReading: ['Complete the Quick Challenge with the two-column table in view.', 'Language Focus: sort happened / seen from the past (Activity 1), explain “another narration” (Activity 2), then link result, person and place (Activity 3).', 'Write the Activity 4 layered past narrative about a historical or fictional situation outside the story.'],
+    lessonPlan: '0–5 Hook: “How do we mention something that had not happened yet?” learners give two examples; 5–12 Listen and read, underline was going to and would; 12–19 Two-account table in pairs: who predicted or dreamed what, and what did Nimrod do as a result? (the teacher reads the order once, calmly, and the class summarises it in neutral words); 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as whole-class discovery (Standing at his birth, what has not happened yet?), Activity 2 in pairs, Activity 3 individually with a pair check of “in which”; 32–38 Use: learners write the first six sentences of a narrative about a harbour town expecting a storm or a team expecting a new coach, with was going to, two woulds and “According to another account, …”; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the narrator say Abraham “was going to” fight the whole system, rather than “fought”?', 'How do the two narrations differ, and why does the writer report both?', 'What did Azer do after Nimrod’s order, according to the chapter?'],
+    interactiveTips: ['Use the “whole system” hotspot for the first paragraph and the “fortunetellers” hotspot for Account 1.', 'Replay the prediction sentence and ask learners to count the three woulds.', 'Never ask learners to act out the order against the children.'],
+    differentiation: { strugglingLearners: 'Provide the table with column headings and the frames “They predicted that ____ would ____.”, “According to another narration, ____.” and “So, ____.”', fastFinishers: 'Retell the chapter in six sentences from Nimrod’s astrologers’ point of view, keeping every prediction in “would” and marking the second narration clearly.' },
+    formativeAssessment: ['Distinguishes what happened from what was predicted.', 'Keeps the two narrations as alternatives.', 'Uses was going to / would and formal result linkers accurately.'],
+    expectedResponses: ['Nimrod’s astrologers predicted, or according to another narration Nimrod dreamed, that a child would challenge his rule; so he ordered that all male children be killed, and Azer hid his pregnant wife in a cave, where Abraham was born.'],
+    transferTask: 'Write three sentences about a plan someone once had: what they were going to do, what others predicted would happen, and what actually happened.',
+    teacherReflection: 'Did learners discover the “future seen from the past” from the viewpoint question, and did they keep the alternative account clearly marked?',
+    assessmentTools: { rubric: ['Viewpoint in time', 'Alternative account', 'Result linking', 'Relative clauses of person and place'], exitTicket: ['Write one sentence with “was going to” and one reported prediction with “would”.'] },
   },
   {
-    "chapter": "6. Abraham’s Childhood",
-    "timing": "45 minutes",
-    "objectives": [
-      "Infer what Abraham’s reaction to his father’s statues shows about his judgment.",
-      "Use the Mardukh episode as evidence of treating the statue as an ordinary object rather than accepting its claimed status.",
-      "Distinguish childlike behaviour from the seriousness of the chapter’s larger argument."
-    ],
-    "pedagogy": "Teach the scene as evidence of status-testing. Learners compare what the father says the statue is with what Abraham observes and does, then infer how the mismatch exposes the claimed status.",
-    "priorKnowledge": [
-      "Difference between observation and inference."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter’s childlike scene is evidence of rejection, not proof that Abraham lacked seriousness."
-    ],
-    "grammarFocus": "Time and background layering; reported question/statement/directive; analogy and comparison.",
-    "pronunciationFocus": "Practise Mardukh and “god of gods”; use questioning intonation for Abraham’s direct questions and firm reported tone for the father’s directive.",
-    "beforeReading": [
-      "Ask what observable evidence could challenge a grand title given to an ordinary object."
-    ],
-    "duringReading": [
-      "Mark the father’s explanation of the statues and Abraham’s spontaneous reaction.",
-      "Identify the riding/comparison detail and the direct question about Mardukh’s ears.",
-      "Separate what Abraham observes from what the father claims."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using one observed action as evidence.",
-      "Use Language Focus to report the father’s statement and Abraham’s question accurately.",
-      "Write a short inference explaining what the scene suggests without overreading the child’s behaviour."
-    ],
-    "lessonPlan": "1. 0–5 min: title/status warm-up. 2. 5–14 min: read/listen for claim and reaction. 3. 14–22 min: observation vs claimed status chart. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on reported speech and comparison. 6. 36–43 min: evidence-based inference. 7. 43–45 min: exit ticket separating observation from inference.",
-    "discussionPoints": [
-      "What is the strongest evidence that Abraham does not accept the statue’s claimed status?",
-      "Why does the childlike action still serve a serious argumentative function?"
-    ],
-    "interactiveTips": [
-      "Use two labels—Observed / Claimed—to keep evidence and belief separate.",
-      "Do not turn the humorous detail into mockery of students’ or communities’ beliefs."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide three evidence strips and ask learners to complete “This shows Abraham did not accept… because…”.",
-      "fastFinishers": "Write five sentences combining reported speech, comparison and a cautious inference about the scene."
-    },
-    "formativeAssessment": [
-      "Uses scene evidence rather than general knowledge.",
-      "Distinguishes claim from observation.",
-      "Makes a proportionate inference."
-    ],
-    "expectedResponses": [
-      "Abraham’s astonishment, play with the statue and questioning of Mardukh show that he treats it as an ordinary object rather than accepting its divine status."
-    ],
-    "transferTask": "Analyse a neutral advertisement or title by comparing the claim with observable evidence.",
-    "teacherReflection": "Did learners infer from the scene while keeping the inference proportional to what the chapter actually shows?"
+    chapter: '6. Abraham’s Childhood', timing: '40 minutes',
+    objectives: ['Explain how the chapter presents Abraham’s early wisdom and his first questions about his father’s statues.', 'Follow the father–son exchanges and say who asks, who states and who orders in each one.', 'Discover a participle clause of reason (Being a child, …), the changes between direct and reported questions, statements and orders, and comparison with as + clause and -er than.', 'Explain how the comparisons make the “god of gods” look like an ordinary object.'],
+    pedagogy: 'The chapter moves between reported and direct speech, so make the voices visible: pairs turn each exchange into a two-line script (Abraham / his father) and mark whether the original was a question, a statement or an order. Grammar is discovered by comparing forms the chapter itself gives: “His father replied that he made statues of gods” and “His father answered: ‘It is Mardukh …’”. You ask “What did the father actually say?” and learners rebuild the direct words before you confirm the backshift. The verse is read and explained, never gapped or rewritten.',
+    priorKnowledge: ['Past simple narrative; said / asked / told; comparatives of short adjectives.'],
+    anticipatedMisconceptions: ['“Being a child” gives the reason for his play; it does not mean he stopped being a child after the event.', 'The father’s answers express the father’s belief; the chapter does not present Mardukh as a god.', '“Sitting on their backs as people sit on the backs of donkeys” is a comparison of how he sat, not an example list.'],
+    grammarFocus: 'Targets: participle clause of reason (Being a child, he played …) · reported vs direct speech (a question: asked … what that statue was / a statement: replied that he made … = “I make …” / an order: ordered his son not to play = “Don’t play …”) · comparison with as + clause and -er than (bigger than ours).\nNotice (Activity 1): board “Being a child, he played with the statues, sitting on their backs as people sit on the backs of donkeys.” Ask: “Why did he play with them? Which words tell you?” Learners paraphrase “Being a child” as “Because he was a child” before you confirm the pattern.\nBuild (Activities 2–3): turn the question, the statement and the order into reported or direct speech with the right word order and tense, then complete as / bigger / than and explain why such as, more and then fail.\nLikely errors: *asked his father what is this statue · *ordered his son to not play / *ordered his son don’t play · *more big than · such as + clause.\nUse (Activity 4): an 8–10 sentence childhood memory or fictional scene outside the story with a time frame, “one day”, a being-clause, one reported question, one reported statement, one reported order and one comparison.',
+    pronunciationFocus: 'Direct questions rise or fall naturally, reported questions do not: “WHAT is this STATue, FAther?” ↘ vs “he ASKED what that STATue WAS”.\nContrast in the comparison: “it has BIG EARS, | BIGger than OURS”.\nWeak forms: “to” /tə/ in “ordered his son not to PLAY”; “than” /ðən/.\nWord focus: SCULP-tures, spon-TA-ne-ous-ly, as-TON-ished, FU-ri-ous, MAR-dukh, JUDGE-ment.',
+    beforeReading: ['Ask pairs to recall one question they asked an adult as a small child and how the adult answered. Two volunteers report it (“I asked my grandmother why …”) and the class notices how the question changes when it is reported.'],
+    duringReading: ['Listen for the three exchanges between Abraham and his father.', 'Mark each exchange Q (question), S (statement) or O (order).', 'Underline the being-clause and the two comparisons.', 'Box the verse and note what it says Allah gave Abraham.'],
+    afterReading: ['Complete the Quick Challenge with the Q/S/O marks in view.', 'Language Focus: discover what “Being a child” adds (Activity 1), switch direct and reported speech (Activity 2) and complete the comparisons (Activity 3).', 'Write the Activity 4 childhood memory with layered language.'],
+    lessonPlan: '0–5 Hook: pairs report a question they asked an adult as a small child, the class notices the word order; 5–12 Listen and read, mark each exchange Q, S or O; 12–19 Script task in pairs: rewrite the three exchanges as a two-line dialogue (direct speech), then two pairs read their dialogue aloud in a calm voice, without acting out the statues; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as whole-class discovery (Why did he play with them?), Activity 2 in pairs using the scripts they just wrote, Activity 3 individually; 32–38 Use: learners write the Activity 4 memory (a first day at school, a visit to a museum or a question to a grandparent) with one reported question, statement and order, and partners tick each form; 38–40 Exit ticket.',
+    discussionPoints: ['What does the verse say Allah had given Abraham, and how does the chapter connect this with his childhood?', 'How does Abraham react when he hears that his father makes “statues of gods”?', 'What effect do the comparisons with donkeys and with “ours” have on how we see the statue?'],
+    interactiveTips: ['Use the “sound judgement” and “wisdom” hotspots together with the verse to explain what Abraham was given.', 'Replay the last exchange and ask learners to report it without looking at the text.', 'Keep the scene respectful: learners describe the father’s view accurately, without mocking.'],
+    differentiation: { strugglingLearners: 'Give three frames: “Abraham asked his father what ____.”, “His father replied that ____.” and “His father ordered him not to ____.” plus a list of the direct sentences to report.', fastFinishers: 'Report the whole final exchange (question, comment about the ears and answer) in indirect speech and explain every tense change.' },
+    formativeAssessment: ['Identifies the speech function of each exchange.', 'Reports questions with statement word order and the right tense.', 'Explains what the comparisons do in the scene.'],
+    expectedResponses: ['Allah gave Abraham wisdom from childhood; when his father said he made statues of gods, Abraham rejected the idea, played with the statues as people ride donkeys, and asked about Mardukh, whose ears were “bigger than ours”.'],
+    transferTask: 'Report a short conversation from your week in three sentences: one question, one statement and one request or order.',
+    teacherReflection: 'Did learners rebuild the direct words themselves before the rule was confirmed, and did they describe the father’s beliefs accurately and respectfully?',
+    assessmentTools: { rubric: ['Speech function', 'Reported-speech form', 'Comparison', 'Coherent narrative'], exitTicket: ['Report one question and one order from today’s lesson (The teacher asked us … / She told us not to …).'] },
   },
   {
-    "chapter": "7. Hatred for Idols",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse the contrast between people’s dependence on idols and the idols’ physical helplessness.",
-      "Identify inability to hear, rise, harm or benefit as the chapter’s central evidence.",
-      "Use contrastive comparison and “as if” to explain why human behaviour appears contradictory in the narrative."
-    ],
-    "pedagogy": "Build a capability test. Learners list what worshippers ask from the idols and then list what the idols can actually do in the chapter. The argument must rest on capability, not simply material such as wood or stone.",
-    "priorKnowledge": [
-      "Chapter 6 claim-versus-observation distinction."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter’s argument is about capability and worship, not merely dislike of art or statues."
-    ],
-    "grammarFocus": "Observation → evidence → evaluation; contextual meanings of could for plausibility vs ability; relative background; as if; stance change.",
-    "pronunciationFocus": "Contrast stress in lifeless / helpless versus bowing / begging; practise “as if” as an evaluative comparison rather than a literal claim.",
-    "beforeReading": [
-      "Ask what capabilities would logically matter if people expected an object to hear prayers, help or harm."
-    ],
-    "duringReading": [
-      "Underline every inability attributed to the idols.",
-      "Circle the human actions of bowing, crying and begging.",
-      "Mark the sentence where Abraham’s reaction changes from amusement to anger."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by matching human expectation with idol capability.",
-      "Use Language Focus to write a whereas/despite contrast.",
-      "Explain why helplessness is more central than the statue’s material."
-    ],
-    "lessonPlan": "1. 0–5 min: capability criteria. 2. 5–14 min: read/listen and collect idol abilities/inabilities. 3. 14–22 min: match human expectations to evidence. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on contrast, could and as if. 6. 36–43 min: analytical comparison. 7. 43–45 min: exit ticket naming the strongest capability contradiction.",
-    "discussionPoints": [
-      "Why is helplessness more important to the argument than the material wood or stone itself?",
-      "What does the change from laughter to anger add to the chapter’s stance?"
-    ],
-    "interactiveTips": [
-      "Keep the capability chart factual and avoid caricature.",
-      "Ask learners to distinguish could = ability from could = plausible interpretation where relevant."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use a two-column chart: People expect / The idols can actually…",
-      "fastFinishers": "Write six connected sentences using whereas, despite and as if to explain the contradiction and stance change."
-    },
-    "formativeAssessment": [
-      "Identifies capability evidence.",
-      "Uses contrast accurately.",
-      "Does not reduce the argument to material composition."
-    ],
-    "expectedResponses": [
-      "The chapter contrasts people asking idols for help with the idols’ inability to hear, rise, harm or benefit."
-    ],
-    "transferTask": "Evaluate a neutral claim by listing the capability it promises and the evidence of what it can actually do.",
-    "teacherReflection": "Did learners analyse the capability contradiction rather than merely repeat negative descriptions of idols?"
+    chapter: '7. Hatred for Idols', timing: '40 minutes',
+    objectives: ['Trace how Abraham’s reaction to the idols changes from laughter at seven to dislike and later anger.', 'Separate what Abraham observes (lifeless, silent, helpless) from the conclusion he draws.', 'Discover “as if” for a gap between behaviour and reality, the past perfect and relative clauses that carry background, and ways of expressing inability and impossibility.', 'Build an observation → evaluation → changed feeling paragraph on a non-story topic.'],
+    pedagogy: 'Build a three-column board: What Abraham sees / What he concludes / How he feels. Learners fill it with quoted phrases and notice that his feeling changes over time. The key sentence is then discovered through a question, not a rule: “Could the idols hear the prayers? Then why does the writer say ‘as if’?” Learners work out that “as if” + past form describes behaviour that suggests something unreal. The background structures (had made, in the middle of which, who used to go) are found by asking which action or detail came first.',
+    priorKnowledge: ['could / couldn’t; used to; defining and non-defining relative clauses.'],
+    anticipatedMisconceptions: ['“As if those lifeless idols were capable of hearing” does not suggest they could hear; it shows the contradiction.', 'Abraham’s first reaction was laughter; anger came later.', 'The chapter describes the people’s behaviour in the temple; learners should not mock worshippers today.'],
+    grammarFocus: 'Targets: as if + past form for an unreal comparison · past perfect inside a clause (worship what he had made) · in the middle of which (preposition + which) · non-defining who-clause (Abraham, who used to go …) · could not / were not able to / It was impossible to … · At first …, but later … vs Although ….\nNotice (Activity 1): board “… as if those lifeless idols were capable of hearing their prayers!” Ask: “Does the writer think the idols heard? Which word in the same sentence tells you?” Learners use “lifeless” as the evidence before you name the pattern.\nBuild (Activities 2–3): choose had made / which / who and explain why that fails after a preposition or a comma; then rewrite could not, It was impossible and At first … but later with the given starters.\nLikely errors: *in the middle of that was a niche · *Abraham, that used to go … · *worship what he made (sequence lost) · *Although at first he thought …, but later ….\nUse (Activity 4): an 8–10 sentence observation-to-evaluation paragraph on a non-story situation with three linked qualities, a when/if example, could for plausibility and ability, a background relative clause, one “as if” and an “at first … but later …” change.',
+    pronunciationFocus: 'Three linked qualities with list intonation: “LIFEless↗, SIlent↗, and enTIREly HELPless↘”.\nThe “as if” clause is a separate tone unit with a slight fall-rise: “… BEGging the IDols for HELP, | as if those LIFEless IDols | were CApable of HEARing their PRAYers”.\nWeak and strong forms: “could NOT get back UP” (strong “not”), “he COULD not understand” vs weak /kəd/ in “how people could believe”.\nWord focus: REA-son-a-ble, WOR-ship, NICHE (/niːʃ/ or /nɪtʃ/), CA-pa-ble, HELP-less, en-TIRE-ly.',
+    beforeReading: ['Show two pictures or describe two situations in words: a child talking to a toy, and an adult shouting at a broken machine. Ask: “Does the person really believe the object hears? What words could describe this behaviour?” Collect “as if …” sentences.'],
+    duringReading: ['Three columns: sees / concludes / feels, each with a quoted phrase.', 'Underline the “as if” clause.', 'Circle “at first” and “later”.', 'Mark the words that describe the temple and the niche.'],
+    afterReading: ['Complete the Quick Challenge using the three columns.', 'Language Focus: judge the “as if” statement (Activity 1), choose the background forms (Activity 2) and re-express ability, impossibility and change (Activity 3).', 'Write the Activity 4 observation-to-evaluation paragraph about a non-story situation.'],
+    lessonPlan: '0–5 Hook: “Does the person really believe the object hears?” two situations, learners produce two “as if” sentences; 5–12 Listen and read; 12–19 Three-column board in pairs (sees / concludes / feels), then a whole-class line of feelings: laughter at seven → dislike → anger, each with a quote; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as whole-class discovery (Did the idols hear? Which word proves it?), Activity 2 in pairs with a spoken reason for each rejected option, Activity 3 individually; 32–38 Use: learners write an observation-to-evaluation paragraph about people trusting a fake online review or a lucky charm before an exam, with “as if” and “at first … but later …”; 38–40 Exit ticket.',
+    discussionPoints: ['Which observations lead Abraham to his conclusion about the idols?', 'Why does the writer use “as if” and not “because” in the temple sentence?', 'How and why do Abraham’s feelings change in the chapter?'],
+    interactiveTips: ['Use the “reasonable person” hotspot for Abraham’s reasoning and the “lifeless” hotspot for the evidence.', 'Replay the temple sentence and ask learners to count the three -ing actions before the “as if” clause.', 'Keep the discussion on reasoning; do not ask learners to imitate bowing or begging.'],
+    differentiation: { strugglingLearners: 'Give the frames “The statues were ____, ____ and ____.”, “People acted as if ____.” and “At first he ____, but later ____.”', fastFinishers: 'Write a paragraph in which one “as if” sentence and one “It was impossible to understand how …” sentence carry the main argument, and explain the difference in strength.' },
+    formativeAssessment: ['Separates observation from evaluation.', 'Explains “as if” as an unreal comparison with text evidence.', 'Uses which / who and the past perfect correctly in background clauses.'],
+    expectedResponses: ['Abraham saw that the statues were lifeless, silent and helpless and could not get back up when they fell, so he could not understand how a reasonable person could worship what he had made; people begged them as if they could hear, and his early laughter later turned into anger.'],
+    transferTask: 'Describe a habit people follow as if it had a power it does not have (for example a “lucky” pen), using one observation, one “as if” sentence and one evaluation.',
+    teacherReflection: 'Did learners use the word “lifeless” as evidence to discover the meaning of “as if”, and did they keep the tone respectful?',
+    assessmentTools: { rubric: ['Observation vs evaluation', 'Unreal comparison', 'Background clauses', 'Change of viewpoint'], exitTicket: ['Write one “as if” sentence and one “At first …, but later …” sentence about a situation you have seen.'] },
   },
   {
-    "chapter": "8. Discovering Allah",
-    "timing": "45 minutes",
-    "objectives": [
-      "Trace the first celestial observation from seeing a planet to rejecting what sets.",
-      "Distinguish observed setting from the larger conclusion drawn from it.",
-      "Use temporal evidence chains and intended-result language without presenting the passage as serial worship of celestial objects."
-    ],
-    "pedagogy": "Slow the reasoning down to one observation. Learners record exactly what happens to the planet, then identify Abraham’s verbal response and only then formulate what the observation contributes to the argument.",
-    "priorKnowledge": [
-      "Observation/inference distinction from Chapters 6–7."
-    ],
-    "anticipatedMisconceptions": [
-      "The passage should not be reduced to Abraham simply choosing one celestial object after another."
-    ],
-    "grammarFocus": "Expectation and persistence; evaluative relative clause; intended result with might; temporal evidence chain.",
-    "pronunciationFocus": "Practise the quoted contrast “This is my lord” / “I do not love those that set” with a clear pause at the change in observation.",
-    "beforeReading": [
-      "Ask learners to predict what property of a celestial body could become evidence against its independence."
-    ],
-    "duringReading": [
-      "Mark the sequence night falls → planet appears → planet sets → response.",
-      "Underline the wording explaining that stars cannot appear whenever they want.",
-      "Keep the Quranic narration and the chapter’s explanatory sentence visibly separate."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the event chain.",
-      "Use Language Focus to express the sequence as observation → evidence → conclusion.",
-      "Write one sentence stating what setting shows and one sentence stating what it does not by itself prove."
-    ],
-    "lessonPlan": "1. 0–5 min: observation criterion prediction. 2. 5–14 min: read/listen to the planet episode. 3. 14–22 min: four-step evidence chain. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on temporal chain and evaluative clauses. 6. 36–43 min: bounded inference writing. 7. 43–45 min: exit ticket observation vs conclusion.",
-    "discussionPoints": [
-      "What exactly does setting show about the planet’s status?",
-      "Why is it important to separate the Quranic quotation from the narrator’s explanatory sentence?"
-    ],
-    "interactiveTips": [
-      "Do not jump ahead to moon and sun until the planet reasoning is complete.",
-      "Ask learners to label each statement O = observation or I = inference."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the four event steps and ask learners to connect them with when/then/but.",
-      "fastFinishers": "Write a five-sentence analysis distinguishing quotation, observation, narrator explanation and inference."
-    },
-    "formativeAssessment": [
-      "Orders the reasoning correctly.",
-      "Separates observation from inference.",
-      "Avoids the serial-worship misconception."
-    ],
-    "expectedResponses": [
-      "The planet’s setting becomes evidence that it is not independent or permanent, contributing to Abraham’s rejection of it as lord."
-    ],
-    "transferTask": "Take a neutral observation and show how a careful conclusion can be drawn without claiming more than the observation supports.",
-    "teacherReflection": "Did learners make the inference after establishing the observation, or start with the conclusion and read it back into the scene?"
+    chapter: '8. Discovering Allah', timing: '40 minutes',
+    objectives: ['Explain the pressure from Abraham’s father and Abraham’s persistence.', 'Follow the night scene: the cave, the sky, the planet that set and the conclusion about the stars.', 'Discover purpose with that + might, a comment clause with “, which …”, stop + -ing for persistence and the narrator’s evidence → reason sentence.', 'Distinguish the quoted verse, the narrator’s account and the narrator’s conclusion.'],
+    pedagogy: 'The chapter has three voices: the narrator’s account, the quoted verse and the narrator’s conclusion. Pairs label each sentence with one of these before any language work. Then ask about the verse: “Why was Abraham shown the heavens and the earth?” Learners find that “that he might be one of those with certainty” states a purpose. The comment clause and “never stopped displaying” come from a second question: “What made things worse, and did Abraham ever stop?” The verse is read and explained but never gapped.',
+    priorKnowledge: ['Purpose with to / so that; relative which; stop + -ing / stop + to from earlier study.'],
+    anticipatedMisconceptions: ['“That he might be” expresses purpose, not doubt about Abraham.', '“Which made things even worse” refers to the whole situation (the father’s wish), not to the priest.', 'The chapter does not say Abraham worshipped the planet; it quotes his words and his reaction when it set.'],
+    grammarFocus: 'Targets: purpose with that + might (… that he might be one of those with certainty) · comment clause with “, which …” on a whole situation · persistence with never stopped + -ing and contrast with yet · saw that … = understood that …; because for a reason; do so to avoid repetition.\nNotice (Activity 1): read the verse aloud and ask: “Why was Abraham shown the heavens and the earth?” Learners locate the answer in “that he might be …” and restate it with “so that he would …” before you confirm.\nBuild (Activities 2–3): correct what → which and to display → displaying (What would “stopped to display” mean?), then rebuild the last sentence from chunks and say what “do so” replaces.\nLikely errors: *, what made things worse · *, that made things worse · *never stopped to display (changes the meaning) · repeating “show up” instead of “do so”.\nUse (Activity 4): an 8–10 sentence paragraph on a non-story situation where an appearance is tested over time: an expectation from another person, a yet-contrast, a which-comment, a purpose clause and a “when … but when …” chain leading to a conclusion.',
+    pronunciationFocus: 'Stress the persistence: “Abraham NEver STOPPED | disPLAYing his HAtred” with “yet” as a separate beat: “… those STATues, | YET Abraham …”.\nComment clause dropped in pitch: “… when he GREW UP, | which made THINGS | even WORSE”.\nRead the verse slowly in meaning units, with a pause before “that he might be”.\nWord focus: PRIEST, dis-PLAY-ing, CER-tain-ty, EM-pire, PLAN-et, IN-ci-dent.',
+    beforeReading: ['Ask: “If you look at the night sky for a whole night, what changes? What stays the same?” Pairs list two changes. Keep the list for the last sentence of the chapter.'],
+    duringReading: ['Label each sentence: narrator / verse / narrator’s conclusion.', 'Underline what the father wanted and what Abraham never stopped doing.', 'Box the purpose in the verse.', 'Mark the reason in the last sentence.'],
+    afterReading: ['Complete the Quick Challenge with the voice labels in view.', 'Language Focus: find the purpose in the verse (Activity 1), correct the comment clause and stop + -ing (Activity 2), rebuild the narrator’s conclusion (Activity 3).', 'Write the Activity 4 change-as-evidence paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “What changes in the night sky during one night?” pairs list two changes; 5–12 Listen and read, then label narrator / verse / conclusion; 12–18 Pressure and persistence: pairs complete “His father wanted … , yet Abraham …” with evidence, then compare the sky list with the last sentence; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Why was he shown the heavens and the earth?), Activity 2 in pairs with the meaning question “What would stopped to display mean?”, Activity 3 on screen; 31–38 Use: learners write the Activity 4 paragraph about a product that looked reliable at first, or a rumour tested over a week, with yet, one “, which …” and one “when … but when …” chain; 38–40 Exit ticket.',
+    discussionPoints: ['What did Abraham’s father want, and why did it make things worse?', 'What is the purpose stated in the verse?', 'What evidence from the sky does the narrator use in the last sentence?'],
+    interactiveTips: ['Use the “priest” hotspot for the father’s expectation and the “displaying his hatred” hotspot for Abraham’s persistence.', 'Replay the verse without interruption, then replay the last sentence and ask for the reason.', 'Do not turn the planet scene into role-play; read the quoted words as a quotation.'],
+    differentiation: { strugglingLearners: 'Give the frames “His father wanted him to ____, which ____.”, “He never stopped ____-ing.” and “He was shown ____ that he might ____.”', fastFinishers: 'Rewrite the last sentence in three ways (because / since / as a result) and say which keeps the narrator’s reasoning clearest.' },
+    formativeAssessment: ['Distinguishes the three voices.', 'Explains the purpose clause in the verse.', 'Uses “, which …” and stop + -ing correctly.'],
+    expectedResponses: ['His father wanted him to become a priest, which made things worse, yet Abraham never stopped showing his hatred; in the cave he looked at the sky, and the verse says he was shown the heavens and the earth so that he might reach certainty; he saw that the stars could only appear at night.'],
+    transferTask: 'Write three sentences about something you tested over time (a phone battery, a new study habit): what you expected, what happened when …, and what you concluded.',
+    teacherReflection: 'Did learners keep the verse, the narrator’s account and the narrator’s conclusion apart, and did they discover the purpose meaning from the question?',
+    assessmentTools: { rubric: ['Voice distinction', 'Purpose', 'Comment clause and persistence', 'Evidence-to-conclusion'], exitTicket: ['Write one sentence with “, which made …” and one with “never stopped + -ing”.'] },
   },
   {
-    "chapter": "9. The Signs in the Sky",
-    "timing": "45 minutes",
-    "objectives": [
-      "Synthesize the planet, moon and sun observations into one repeated argument.",
-      "Identify appearance and disappearance under the Creator’s command as the recurring criterion.",
-      "Use condition, parallel structure and corrective contrast to show why size or brightness is not the final standard."
-    ],
-    "pedagogy": "Use a three-row comparison table for planet, moon and sun. Learners fill the same fields—appearance, apparent appeal, disappearance, response—then infer the shared criterion only after all three rows are complete.",
-    "priorKnowledge": [
-      "Chapter 8 observation-to-inference chain."
-    ],
-    "anticipatedMisconceptions": [
-      "Brightness or size is not the final criterion in the argument."
-    ],
-    "grammarFocus": "Condition → future consequence; development of stance; passive information focus; corrective contrast and created status.",
-    "pronunciationFocus": "Use parallel rhythm across planet / moon / sun and strong contrastive stress on “bigger” versus the later created/commanded status.",
-    "beforeReading": [
-      "Recall the planet episode and ask what would make a second or third celestial example genuinely add evidence."
-    ],
-    "duringReading": [
-      "Complete the comparison table for moon and sun.",
-      "Mark the conditional statement about guidance and the final declaration of monotheism.",
-      "Underline the narrator’s corrective “while in fact” explanation that the celestial bodies are created."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by identifying the repeated criterion.",
-      "Use Language Focus to write a parallel three-example synthesis.",
-      "Explain why the sun being bigger does not defeat the earlier criterion."
-    ],
-    "lessonPlan": "1. 0–5 min: retrieve Chapter 8 criterion. 2. 5–15 min: read/listen moon and sun sequence. 3. 15–23 min: complete three-row comparison. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on condition, parallelism and corrective contrast. 6. 37–43 min: synthesis paragraph. 7. 43–45 min: exit ticket naming the repeated criterion.",
-    "discussionPoints": [
-      "What repeated feature makes the three observations one argument rather than three unrelated events?",
-      "Why does “this is bigger” not become the final criterion?"
-    ],
-    "interactiveTips": [
-      "Keep identical table headings for all three bodies so the repeated logic becomes visible.",
-      "Ask learners to use “in each case” only after identifying genuinely parallel evidence."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the planet row completed and let learners use it as a model for moon and sun.",
-      "fastFinishers": "Write a six-sentence synthesis using similarly, in each case and taken together while preserving the chapter’s final creator/creation distinction."
-    },
-    "formativeAssessment": [
-      "Identifies the common criterion.",
-      "Uses parallel structure meaningfully.",
-      "Rejects size/brightness as the decisive standard."
-    ],
-    "expectedResponses": [
-      "Across planet, moon and sun, appearance and disappearance support the chapter’s distinction between created celestial bodies and the Creator."
-    ],
-    "transferTask": "Compare three examples with one consistent criterion and explain why a superficial difference does not change the standard.",
-    "teacherReflection": "Did learners discover the repeated criterion through comparison rather than simply memorise the final conclusion?"
+    chapter: '9. The Signs in the Sky', timing: '40 minutes',
+    objectives: ['Follow the quoted verses from the moon to the sun to Abraham’s declaration that he is not of the idolaters.', 'Explain the narrator’s correction: the heavenly bodies were worshipped, while in fact they had been created.', 'Discover the real conditional in the verse, passive focus (were worshipped, had been created, cannot be worshipped) and a corrective contrast with “while in fact”.', 'Show in writing how repeated evidence leads to a reasoned stance.'],
+    pedagogy: 'Put three “rising / setting” boxes on the board (planet in Chapter 8, moon, sun) and let learners fill in what Abraham said each time; the pattern of the verses becomes visible without explanation. Then contrast practice and reality: “What did people do with the heavenly bodies? What does the writer say was true?” Learners discover that the passive keeps the heavenly bodies as the topic and that “while in fact” corrects the practice. The quoted verses are read and explained, never gapped or rewritten.',
+    priorKnowledge: ['First conditional; past passive; defining relative clauses.'],
+    anticipatedMisconceptions: ['“If my Lord does not guide me, I will be one of the erring people” does not mean Abraham had gone astray.', '“This is my lord, this is bigger” is followed by rejection when the sun sets; the chapter ends with a clear declaration.', '“Had been created” (passive) is not the same as “had created”.'],
+    grammarFocus: 'Targets: real conditional (If my Lord does not guide me, I will be …) · passive to keep the object in focus (were worshipped by people, had been created, cannot be worshipped as partners) · corrective contrast with while in fact · shortening a defining relative clause (People who worshipped … → People worshipping … / Worshippers of …).\nNotice (Activity 1): read the moon lines and ask: “Is Abraham saying he is lost? What does his guidance depend on?” Learners decide the statement is false and name the condition before you name the pattern.\nBuild (Activities 2–3): complete were worshipped / while in fact / had been created and explain what “had created” would wrongly say; then change the passive to active (they cannot worship …) and shorten the who-clause.\nLikely errors: *If my Lord will not guide me · *the heavenly bodies had created · *while in fact … were creating · *People worshipped astronomical objects got into arguments (relative pronoun lost).\nUse (Activity 4): an 8–10 sentence paragraph on a non-story issue where an appearance is tested and revised, with if … will, a passive that foregrounds an idea, “while in fact” or “however”, and a final sentence on how repeated evidence leads to a position.',
+    pronunciationFocus: 'Read the verses in meaning units and slowly: “THEN, | when he saw the MOON RISing, | he SAID, | ‘THIS is my LORD.’”\nContrastive stress: “WERE WORshipped by PEOple, | while in FACT | … had been creATed”.\nWeak forms in the passive: “had been” /həd bɪn/, “can’t be” in “cannot be worshipped” (stress CAN-not).\nWord focus: ER-ring, IN-no-cent, AS-ter-oids, as-tro-NOM-i-cal, HEAV-en-ly, DEM-on-strat-ed.',
+    beforeReading: ['Recall the planet scene from Chapter 8 in one sentence. Ask: “What do you think Abraham will say when he sees the moon and the sun?” Pairs write one prediction.'],
+    duringReading: ['Fill the rising / setting boxes for the moon and the sun.', 'Underline the if-sentence.', 'Mark “were worshipped” and “had been created” and the words between them.', 'Box Abraham’s final declaration and the sentence about the debate.'],
+    afterReading: ['Complete the Quick Challenge with the boxes in view.', 'Language Focus: judge the conditional (Activity 1), complete the appearance-and-reality line (Activity 2) and change subjects and descriptions (Activity 3).', 'Write the Activity 4 evidence-to-stance paragraph on a non-story issue.'],
+    lessonPlan: '0–4 Recall the planet scene and predict the next steps; 4–11 Listen and read the verses, then fill the rising / setting boxes; 11–18 Think-pair-share: “What did people do, and what does the writer say was really true?” pairs find the two passives and the phrase that links them; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Is Abraham lost? What does his guidance depend on?), Activities 2–3 in pairs; 31–38 Use: learners write an evidence-to-stance paragraph about a popular belief tested by evidence (for example that sugar gives lasting energy), with one if … will sentence, one passive and “while in fact”; 38–40 Exit ticket.',
+    discussionPoints: ['What pattern repeats in the moon and sun verses, and how does the last verse end it?', 'What is the difference between how people treated the heavenly bodies and what the writer says they are?', 'What did Abraham demonstrate in the debate?'],
+    interactiveTips: ['Use the “erring people” hotspot for the condition and the “innocent” hotspot for the declaration.', 'Replay the verse from the sun to the end and ask learners to note the words of the declaration.', 'Do not ask learners to extend the theology beyond the chapter’s sentences.'],
+    differentiation: { strugglingLearners: 'Give the frames “When he saw ____ rising, he said ____. When it set, he said ____.” and “They were worshipped by people, while in fact ____.”', fastFinishers: 'Write a paragraph that contrasts appearance and reality twice, once with “while in fact” and once with “however”, and explain the difference in position.' },
+    formativeAssessment: ['Follows the verse pattern accurately.', 'Explains the conditional as a dependency, not a confession.', 'Chooses active or passive for focus and uses “while in fact” to correct.'],
+    expectedResponses: ['When the moon and the sun set, Abraham rejected them and declared he was not of the idolaters; the writer says the heavenly bodies were worshipped by people, while in fact they had been created and appear and disappear at the Creator’s command.'],
+    transferTask: 'Write two sentences about a common belief: one passive sentence about how it is treated and one “while in fact” sentence that corrects it with evidence.',
+    teacherReflection: 'Did learners discover the job of the passive and of “while in fact” from the practice-versus-reality question, and did they read the verses respectfully?',
+    assessmentTools: { rubric: ['Verse sequence', 'Conditional meaning', 'Passive focus', 'Corrective contrast'], exitTicket: ['Write one “If …, I will …” sentence and one “… while in fact …” sentence about a school topic.'] },
   },
   {
-    "chapter": "10. Challenging Star Worshippers",
-    "timing": "45 minutes",
-    "objectives": [
-      "Distinguish heavenly bodies as signs from heavenly bodies as objects of worship.",
-      "Identify created, controlled, managed and purpose-serving as the chapter’s reasons for the distinction.",
-      "Use passive status, however contrast and first/second organisation to reframe the celestial bodies as evidence."
-    ],
-    "pedagogy": "Organise the argument as rejection then reframing. Learners first collect why the bodies are “unworthy of worship,” then separately collect why they still matter as “signs of Allah,” so rejection of worship does not become rejection of observation or meaning.",
-    "priorKnowledge": [
-      "Chapter 9 Creator/creation synthesis."
-    ],
-    "anticipatedMisconceptions": [
-      "Calling something a sign does not make it divine."
-    ],
-    "grammarFocus": "Passive status/control/purpose; however contrast; first/second organisation; rejection followed by reframing.",
-    "pronunciationFocus": "Practise created, controlled, managed and signs with parallel stress; pause clearly after “firstly” and “secondly” to make the two-part argument audible.",
-    "beforeReading": [
-      "Write “not worthy of worship” and “still meaningful as evidence” as two empty columns."
-    ],
-    "duringReading": [
-      "Place created/controlled/managed/purpose under the first column as reasons.",
-      "Mark the Qur’anic instruction not to bow to sun or moon and to worship the Creator.",
-      "Identify the sentence that reframes the same bodies as signs."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and state which half of the two-part argument it checks.",
-      "Use Language Focus to write “X is evidence of Y, but X is not Y.”",
-      "Give a concise explanation of how astronomy moves from object of worship to evidence in the chapter."
-    ],
-    "lessonPlan": "1. 0–5 min: rejection/reframing setup. 2. 5–14 min: read/listen and collect created/control/purpose evidence. 3. 14–22 min: analyse the first/second structure and cited verse. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on passive status and reframing. 6. 36–43 min: two-part analytical explanation. 7. 43–45 min: exit ticket using “evidence of…but not…”.",
-    "discussionPoints": [
-      "How does the chapter turn astronomy from an object of worship into evidence?",
-      "Why must “sign” and “object of worship” remain conceptually distinct?"
-    ],
-    "interactiveTips": [
-      "Do not let the two columns merge; a reason for rejection may coexist with evidential value.",
-      "Use first/second cards to make the argument’s organisation visible before writing."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide sentence frames “The bodies are created/controlled, so…” and “They are signs because…, but…”.",
-      "fastFinishers": "Write a seven-sentence argument using two passive structures, however and a first/second organisation."
-    },
-    "formativeAssessment": [
-      "Explains both rejection and reframing.",
-      "Uses passive forms to describe created/controlled status.",
-      "Keeps sign and divinity distinct."
-    ],
-    "expectedResponses": [
-      "The chapter argues that celestial bodies are created and controlled, so they are not objects of worship; they function instead as signs pointing to their Creator."
-    ],
-    "transferTask": "Explain a neutral example where something can be evidence for a claim without being identical to the thing it indicates.",
-    "teacherReflection": "Did learners preserve both sides of the argument—unworthy of worship yet meaningful as a sign?"
-  }
-,
-
-  {
-    "chapter": "11. Arguing for Tawheed",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse how Abraham answers threats by reframing the issue around security, authority and guidance.",
-      "Distinguish the opponents’ threat from Abraham’s refusal to fear the partners they assign to Allah.",
-      "Use rhetorical questions, unless and evidence/absence-of-evidence language to explain how the argument is reversed."
-    ],
-    "pedagogy": "Use a threat-versus-security board. Learners first identify what Abraham’s people appear to threaten him with, then follow his questions about who actually has reason to fear and what authority supports worship.",
-    "priorKnowledge": [
-      "Creator/creation distinction from Chapters 9–10 and the function of rhetorical questions."
-    ],
-    "anticipatedMisconceptions": [
-      "Confidence in the passage is not the same as denying that opponents threatened him."
-    ],
-    "grammarFocus": "Rhetorical questions; exception with unless; evidence, absence of evidence and explicit inference.",
-    "pronunciationFocus": "Practise the rising-falling contour of the rhetorical questions and stress “no authority” and “more right to security” as argumentative pivots.",
-    "beforeReading": [
-      "Ask what changes when a speaker answers a threat by questioning the basis of the threat rather than simply denying fear."
-    ],
-    "duringReading": [
-      "Mark the threat inferred from the people’s behaviour and Abraham’s refusal to fear assigned partners.",
-      "Underline the question about which party has more right to security.",
-      "Identify the phrase about no authority having been sent down for the partners."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge and identify which question reverses the frame.",
-      "Use Language Focus to write one rhetorical question and one unless-clause without changing the source claim.",
-      "Explain in three sentences how security replaces fear as the key issue."
-    ],
-    "lessonPlan": "1. 0–5 min: threat/reframing warm-up. 2. 5–15 min: read/listen for threat and refusal. 3. 15–23 min: map the security argument and authority evidence. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on rhetorical questions and exception. 6. 37–43 min: three-sentence argument reversal. 7. 43–45 min: exit ticket naming the missing authority in the opponents’ claim.",
-    "discussionPoints": [
-      "How does Abraham reverse the question of who should be afraid?",
-      "Why does absence of authority matter to the argument?"
-    ],
-    "interactiveTips": [
-      "Use arrows to show question → implied answer rather than treating the questions as requests for information.",
-      "Keep “threat exists” and “Abraham does not fear it” as separate propositions."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the three key questions and let learners match each to fear, authority or security.",
-      "fastFinishers": "Write a short paragraph using one rhetorical question, one exception and one evidence-based inference."
-    },
-    "formativeAssessment": [
-      "Identifies the threat accurately.",
-      "Explains the security reversal.",
-      "Uses rhetorical-question meaning rather than only punctuation."
-    ],
-    "expectedResponses": [
-      "Abraham refuses fear of the assigned partners and asks why his people do not fear unsupported association with Allah, shifting the argument toward justified security and guidance."
-    ],
-    "transferTask": "Reframe a neutral claim by asking what evidence or authority actually supports it.",
-    "teacherReflection": "Did learners understand the questions as argumentative moves, or only as quotations to repeat?"
+    chapter: '10. Challenging Star Worshippers', timing: '40 minutes',
+    objectives: ['Explain the chapter’s contrast between created heavenly bodies and Allah, who is everlasting.', 'State Abraham’s two-part clarification: the heavenly bodies are unworthy of worship and they are signs of Allah.', 'Discover how passive participles describe created things, how “However” marks the contrast between the created and the Creator, and how firstly … secondly and not only … but also organise a two-part argument.', 'Connect rational thinking with the start of the conflict without adding events.'],
+    pedagogy: 'Start from the words that describe the heavenly bodies: learners collect “created, controlled, managed, made to serve a purpose, come and go” and notice that almost every one describes something done to them. You then ask: “Who or what is on the other side of ‘However’?” and learners discover that the contrast is between created things and the Creator. The two-part clarification becomes a two-box organiser (not gods / signs), which leads naturally to “not only that … but also that …”. The verse is read and explained, not gapped.',
+    priorKnowledge: ['Past participles as adjectives; however; firstly / secondly.'],
+    anticipatedMisconceptions: ['“However” does not contrast Abraham with the worshippers here; it contrasts the heavenly bodies with Allah.', 'The chapter does not only reject the heavenly bodies as gods; it also presents them as signs of Allah.', 'The conflict starts after the clarification; the chapter ends as the people begin arguing and threatening.'],
+    grammarFocus: 'Targets: passive participles for created things (created, controlled, managed, and made to serve a purpose) · un- = not (unworthy) · However for the created / Creator contrast · firstly … secondly … → not only that … but also that … · and then … → After / Once + clause.\nNotice (Activities 1–2): after matching the descriptions, ask: “Do the heavenly bodies act in these words, or is something done to them?” Then read the two sentences around “However” and ask: “What is on each side of the contrast?”\nBuild (Activity 3): rewrite the two-part clarification with not only that … but also that … and turn “…, and then …” into a time clause with After / Once / When.\nLikely errors: *not only the heavenly bodies are unworthy … but also (missing that / word order) · *After Abraham’s thinking helped …, then the conflict started · However read as Abraham vs the people.\nUse (Activity 4): an 8–10 sentence paragraph on a non-story topic where something visible is evaluated and then reinterpreted, with one passive description, one however, firstly / secondly and a final consequence.',
+    pronunciationFocus: 'Four participles as a list, the last one longest: “creATed↗, conTROLLED↗, MANaged↗, and MADE to SERVE a PURpose↘”.\n-ed endings: created /ɪd/, controlled /d/, managed /d/, started /ɪd/, emphasizes (third-person /ɪz/).\nOrganisers as their own tone units: “FIRSTly, | …”, “SECondly, | …”; “HOWever, | alLAH SEES and KNOWS EVerything”.\nWord focus: EV-i-dent-ly, ev-er-LAST-ing, un-WOR-thy, RA-tion-al, dis-ap-PEAR-ance, EM-pha-sizes.',
+    beforeReading: ['Show the two words “sign” and “god” and ask: “Can something be a sign of a thing without being that thing?” Collect everyday examples (smoke is a sign of fire).'],
+    duringReading: ['Collect the words that describe the heavenly bodies.', 'Mark what comes before and after “However”.', 'Two boxes: firstly / secondly.', 'Underline the sentence where the conflict starts.'],
+    afterReading: ['Complete the Quick Challenge using the two boxes.', 'Language Focus: match the descriptions (Activity 1), identify the contrast of “However” (Activity 2), reorganise the two-part explanation and the sequence (Activity 3).', 'Write the Activity 4 contrast-and-reframing paragraph on a non-story topic.'],
+    lessonPlan: '0–5 Hook: “Can something be a sign of a thing without being that thing?” everyday examples; 5–12 Listen and read, collect the descriptive words; 12–18 Card sort in pairs: eight cards (created, everlasting, come and go, sees and knows everything, managed, without end, fading, made to serve a purpose) into “the heavenly bodies” / “Allah”, then the two-box organiser for Abraham’s clarification; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs, Activity 2 as whole-class discovery (What is on each side of However?), Activity 3 individually; 31–38 Use: learners write a contrast-and-reframing paragraph about something often misread, for example a traffic light or a warning symbol that is a sign and not the danger itself, with firstly / secondly and one however; 38–40 Exit ticket.',
+    discussionPoints: ['Which words in the first sentence show that the heavenly bodies are created?', 'What two points does Abraham make, and why is the second one important?', 'What happens after his rational thinking uncovers the truth?'],
+    interactiveTips: ['Use the “evidently created” and “everlasting” hotspots as the two sides of the card sort.', 'Replay the verse once and ask learners to list the signs it names.', 'Keep the conflict at the level the chapter describes (arguing and threatening); do not add events.'],
+    differentiation: { strugglingLearners: 'Provide the eight cards with pictures or Turkish glosses and the frames “Firstly, ____. Secondly, ____.” and “____; however, ____.”', fastFinishers: 'Write the clarification three ways (firstly / secondly; not only … but also; both … and) and say which gives the second point the most weight.' },
+    formativeAssessment: ['Identifies the created / Creator contrast.', 'States both parts of the clarification.', 'Reorganises a two-part argument and a sequence with accurate linkers.'],
+    expectedResponses: ['The heavenly bodies are created, controlled and temporary, while Allah knows everything and is everlasting; Abraham explained that they are unworthy of worship and that they are signs of Allah, and after his reasoning uncovered the truth, the conflict with the star worshippers began.'],
+    transferTask: 'Choose a symbol at school (a bell, a flag, a sign) and write two sentences: firstly what it is not, secondly what it is a sign of.',
+    teacherReflection: 'Did learners discover the created / Creator contrast from the participles, and did they keep both parts of Abraham’s clarification?',
+    assessmentTools: { rubric: ['Contrast accuracy', 'Two-part clarification', 'Discourse organisation', 'Sequence control'], exitTicket: ['Write one sentence with “not only that … but also that …” and one beginning “After …, …”.'] },
   },
   {
-    "chapter": "12. Speaking to His Father",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain why the conflict with Abraham’s father combines religious belief, family relationship and livelihood.",
-      "Identify the father’s worship, manufacture and sale of idols as distinct layers of involvement.",
-      "Use stance framing, direct-speech functions and not only…but also to analyse why the disagreement becomes personal as well as religious."
-    ],
-    "pedagogy": "Build a three-layer conflict map: belief / family / livelihood. Learners locate one text detail for each layer before discussing the father’s anger, preventing the scene from becoming a simple “father versus son” summary.",
-    "priorKnowledge": [
-      "Abraham’s public argument from Chapter 11 and basic source/stance language."
-    ],
-    "anticipatedMisconceptions": [
-      "The conflict is not presented as a simple disagreement between strangers."
-    ],
-    "grammarFocus": "Stance framing and action interpretation; direct-speech functions; not only … but also expansion.",
-    "pronunciationFocus": "Practise faithful, forefathers, shaped and sold; stress not only…but also to show the accumulation of reasons for the father’s anger.",
-    "beforeReading": [
-      "Ask what makes a disagreement more difficult when belief, family role and income overlap."
-    ],
-    "duringReading": [
-      "Mark the quoted exchange about the statues and the parents’ practice.",
-      "Underline the sentence explaining that the father both worshipped and shaped/sold idols.",
-      "Separate Abraham’s theological challenge from the father’s personal/economic involvement."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the three-layer map.",
-      "Use Language Focus to expand a one-dimensional statement into a not only…but also explanation.",
-      "Write a balanced explanation of why the father may experience the challenge as personal without endorsing his position."
-    ],
-    "lessonPlan": "1. 0–5 min: three-layer conflict frame. 2. 5–15 min: read/listen and identify the quoted challenge. 3. 15–23 min: map belief/family/livelihood evidence. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on stance and expansion. 6. 37–43 min: balanced conflict explanation. 7. 43–45 min: exit ticket naming the three overlapping layers.",
-    "discussionPoints": [
-      "Why might the father experience Abraham’s challenge as both religious and personal?",
-      "Which detail shows the disagreement also touches livelihood?"
-    ],
-    "interactiveTips": [
-      "Keep explanation and justification separate: understanding the father’s interests does not require accepting his beliefs.",
-      "Use three distinct icons for belief, family and economic interest so one layer does not swallow the others."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give one evidence strip for each layer and sentence frames beginning “Religiously… / As a father… / Economically…”.",
-      "fastFinishers": "Write six sentences explaining the conflict through all three layers and one direct-speech function."
-    },
-    "formativeAssessment": [
-      "Uses evidence for all three layers.",
-      "Explains personal stakes without caricature.",
-      "Uses expansion language accurately."
-    ],
-    "expectedResponses": [
-      "The father’s anger is intensified because he worships idols, makes and sells them, and is being challenged by his own son."
-    ],
-    "transferTask": "Analyse a neutral disagreement where belief, relationship and practical interest overlap.",
-    "teacherReflection": "Did learners explain the father’s position accurately without turning explanation into endorsement?"
+    chapter: '11. Arguing for Tawheed', timing: '40 minutes',
+    objectives: ['Follow Abraham’s argument in Surah En’âm 80–83: his guidance, his lack of fear, his questions and the final question about security.', 'Separate what the verses say from the writer’s comments and inferences after the quotation.', 'Discover rhetorical questions, the narrow exception with “unless”, and ways of framing an inference (That … shows …, The fact that …, It is understood from … that …).', 'Build a question-led argument that distinguishes evidence from inference.'],
+    pedagogy: 'The chapter is one long quotation followed by three sentences of commentary. Learners first mark where the quotation ends. Then they sort sentences into “from the verses” and “the writer’s comment or inference” and discover the signals themselves: “attempted to”, “That … shows …”, “It is understood from … that …”. For the exception you ask: “Is Abraham afraid of the partners? Then what does ‘unless my Lord wills it’ add?” The verses are read and explained, never gapped or rewritten.',
+    priorKnowledge: ['Chapter 10 conflict; if / unless; questions that expect no answer, in Turkish and in English.'],
+    anticipatedMisconceptions: ['“Unless my Lord wills it” does not mean Abraham is sometimes afraid; it limits what can happen to him to his Lord’s will.', 'The threat of punishment “of their gods” is the writer’s inference from Abraham’s words, not a line quoted from the people.', 'The people’s arguments are not quoted; the writer comments on their absence.'],
+    grammarFocus: 'Targets: rhetorical questions (Will you not reconsider? So which of the two parties has more right to security, if you are aware?) · exception with unless = except if · evidence vs inference (attempted to …; That these arguments are not told … shows …; It is understood from … that …) · The fact that … as a clearer subject · We understand / infer from … that ….\nNotice (Activity 1): pairs sort six parts into “from the verses” and “the writer’s comment or inference”. Ask: “Which words show you the writer is now speaking?”\nBuild (Activities 2–3): decide what “unless my Lord wills it” does to the main claim; then rewrite the that-clause subject with “The fact that …” and the impersonal passive with “We understand / infer …”.\nLikely errors: *unless my Lord does not will it (double negative) · *That these arguments are not told shows … read as a quotation · *It understands from … that … · treating an inference as a stated fact.\nUse (Activity 4): an 8–10 sentence argument about a non-story disagreement with two rhetorical questions, one unless-exception, one sentence about evidence or authority, one marked inference and a final comparison of which position is better supported.',
+    pronunciationFocus: 'Rhetorical questions fall rather than rise, because the speaker expects no answer: “WILL you NOT reCONsider↘?”, “So WHICH of the TWO PARties | has MORE RIGHT to seCURity↘, | if you are aWARE?”\nThe exception as a separate tone unit: “I do NOT FEAR partners you asSIGN to him, | unLESS my LORD WILLS it.”\nWeak forms in the framing sentence: “It is UNderSTOOD from …” /ɪt ɪz/.\nWord focus: com-pre-HENDS, au-THOR-i-ty, se-CUR-i-ty, ri-DIC-u-lous-ness, cor-RECT-ness, THREAT-ened.',
+    beforeReading: ['Write two sentences on the board: “He is late. He must have missed the bus.” Ask: “Which one is a fact and which one is a conclusion someone draws?” Learners suggest words that signal an inference (must, probably, so we can say …).'],
+    duringReading: ['Mark where the quotation from Surah En’âm ends.', 'Underline the questions in the verses.', 'Circle “unless”.', 'Highlight the writer’s three comment sentences and the signal word at the start of each.'],
+    afterReading: ['Complete the Quick Challenge and name whether your evidence comes from the verses or from the writer.', 'Language Focus: sort quotation and commentary (Activity 1), explain the unless-exception (Activity 2), reframe the inferences (Activity 3).', 'Write the Activity 4 question-led argument on a non-story disagreement.'],
+    lessonPlan: '0–5 Fact or conclusion? two board sentences, learners name the signal of inference; 5–12 Listen to the verses, then read and mark where the quotation ends; 12–18 Evidence table in pairs: left column a line from the verses, right column the writer’s comment on it, with the signal word circled; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs, Activity 2 as whole-class discovery (Is Abraham afraid? What does unless add?), Activity 3 individually; 31–38 Use: groups of three prepare a short question-led argument on a school debate (for example homework at weekends) with two rhetorical questions, one unless and one “It can be inferred that …”, and one group reads to the class; 38–40 Exit ticket.',
+    discussionPoints: ['What questions does Abraham ask, and what answer does he expect?', 'Which information comes from the verses and which from the writer’s interpretation?', 'How does the writer use the absence of the people’s arguments?'],
+    interactiveTips: ['Use the “present evidence” and “correctness of their beliefs” hotspots with the writer’s commentary, not with the verses.', 'Replay the verses without stopping, then replay only the last three sentences of the chapter.', 'Do not invent the people’s arguments; the chapter says they are not told.'],
+    differentiation: { strugglingLearners: 'Give a two-column table with the verse lines already copied and the frames “The verses say that ____.” and “The writer infers that ____.”', fastFinishers: 'Rewrite the three commentary sentences with three different inference frames (It can be inferred that …, This suggests that …, We conclude from … that …) and rank them by strength.' },
+    formativeAssessment: ['Separates quotation from commentary accurately.', 'Explains unless as a narrow exception that keeps the claim.', 'Marks an inference explicitly in their own writing.'],
+    expectedResponses: ['In the verses Abraham says he does not fear the partners, unless his Lord wills it, and asks which side has more right to security; the writer then comments that the people’s arguments are not told and infers from Abraham’s words that they threatened him with the punishment of their gods.'],
+    transferTask: 'Read a short news headline and write one sentence stating what it says and one sentence that marks your inference from it.',
+    teacherReflection: 'Did learners find the boundary between quotation and commentary themselves, and did they mark their own inferences?',
+    assessmentTools: { rubric: ['Quotation vs commentary', 'Exception meaning', 'Inference framing', 'Question-led argument'], exitTicket: ['Write one sentence with “unless” and one beginning “It can be inferred from … that …”.'] },
   },
   {
-    "chapter": "13. Debating the Idolaters",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse how Abraham advises his father with affection, evidence and warning rather than ridicule.",
-      "Identify hearing, seeing and benefit as the concrete capability tests in his advice.",
-      "Use purpose, parallel negatives and evidence→invitation→warning→concern sequencing to describe respectful challenge."
-    ],
-    "pedagogy": "Treat the passage as a communication-strategy sequence. Learners identify the affectionate address first, then the capability evidence, the invitation to follow, and the warning motivated by concern.",
-    "priorKnowledge": [
-      "Chapter 12 family context and the capability argument from Chapter 7."
-    ],
-    "anticipatedMisconceptions": [
-      "Respectful language does not mean Abraham avoids a direct challenge."
-    ],
-    "grammarFocus": "Purpose and interpersonal strategy; parallel negatives; evidence → invitation → warning → concern.",
-    "pronunciationFocus": "Practise the repeated “O my father” with consistent respectful tone; use parallel rhythm for neither hear / see / benefit.",
-    "beforeReading": [
-      "Ask how a person can challenge an idea directly without humiliating the person who holds it."
-    ],
-    "duringReading": [
-      "Count and mark each affectionate address to the father.",
-      "Underline the three capability negatives and the invitation to follow.",
-      "Identify the final warning and the concern motivating it."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by linking a line to its function: affection, evidence, invitation or warning.",
-      "Use Language Focus to write a parallel-negative sentence and a respectful invitation.",
-      "Explain why the passage is both gentle and intellectually direct."
-    ],
-    "lessonPlan": "1. 0–5 min: respectful-challenge criteria. 2. 5–15 min: read/listen for repeated address and evidence. 3. 15–23 min: sequence affection→evidence→invitation→warning. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on parallel negatives and interpersonal purpose. 6. 37–43 min: strategy explanation. 7. 43–45 min: exit ticket identifying one respectful and one direct feature.",
-    "discussionPoints": [
-      "Which feature makes the advice both gentle and intellectually direct?",
-      "How does the repeated address affect the tone of the warning?"
-    ],
-    "interactiveTips": [
-      "Label each utterance by function rather than discussing tone in general terms.",
-      "Do not ask students to reenact a family religious conflict; use text analysis and neutral transfer."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide four labels—affection/evidence/invitation/warning—and let learners match quotations to them.",
-      "fastFinishers": "Write a short advisory paragraph that uses parallel negatives, a respectful address and a clear reason."
-    },
-    "formativeAssessment": [
-      "Identifies communication functions.",
-      "Explains the capability evidence.",
-      "Maintains respectful tone in transfer."
-    ],
-    "expectedResponses": [
-      "Abraham repeatedly addresses his father respectfully, gives capability-based reasons, invites him to follow guidance and warns him out of concern."
-    ],
-    "transferTask": "Rewrite a blunt disagreement as a respectful evidence-based challenge without weakening the core point.",
-    "teacherReflection": "Did learners see respect as a communication strategy that coexists with direct disagreement?"
+    chapter: '12. Speaking to His Father', timing: '40 minutes',
+    objectives: ['Explain how Abraham responds to the threat: he pays no heed, declares that benefit and harm come from Allah and calls people to worship Him alone.', 'Follow the exchange in Surah Enbiyâ 52–56 and say what each line does in the debate.', 'Discover fixed expressions with prepositions (pay no heed to, mindful of, faithful to), not only … but … as well with inversion, and reported instructions vs imperatives.', 'Describe a response to pressure that is based on a clear principle.'],
+    pedagogy: 'Give each pair the five lines of the verse on strips and ask them to order them by what each line does (question, justification by tradition, answer, doubt about seriousness, statement of belief). The debate structure becomes visible before any grammar. The expressions are discovered in context: learners find the preposition that belongs to each one (heed to, mindful of, faithful to) and notice that the verse moves “to” to the front. Inversion after “Not only” is discovered by comparing the text sentence with a version that starts with “Not only”.',
+    priorKnowledge: ['Chapter 11 threat; not only … but also; told + person + to.'],
+    anticipatedMisconceptions: ['“We found our parents worshiping them” justifies the practice by tradition; it is not evidence that the statues are gods.', '“Are you telling us the truth, or are you just playing?” questions Abraham’s seriousness; it does not accept his view.', 'The father was the most amazed and furious because he also shaped and sold idols, not only because he worshipped them.'],
+    grammarFocus: 'Targets: debate functions in the verse (challenging question → tradition → direct answer → doubt → statement of belief and witness) · fixed expressions with prepositions (paid no heed to, mindful of, to which you are faithful, in evident error) · not only … but … as well and inversion (Not only did he worship idols, but …) · reported instruction (told them to firmly reject …) → imperative.\nNotice (Activity 1): pairs order the five lines and label what each line does. Ask: “What do the people use as their reason? Does Abraham accept that reason?”\nBuild (Activities 2–3): match the expressions and underline their prepositions; then start the father sentence with “Not only …” (what changes after it?) and turn the reported instruction into direct speech.\nLikely errors: *paid no heed this threat · *faithful with · *Not only he worshipped idols, but … (no inversion) · *He said to them, “To reject …”.\nUse (Activity 4): an 8–10 sentence paragraph on a non-story situation in which someone faces pressure and responds from a principle, with “As a …”, “In doing so”, a short exchange of challenge and response, and not only … but also.',
+    pronunciationFocus: 'Read the exchange with clear speaker changes and a short pause between turns; the question “WHAT are these STATues | to which you are FAITHful?” falls at the end.\nInversion with stress on the auxiliary: “NOT ONly DID he WORship IDols, | but he SHAPED and SOLD them as WELL.”\nWeak forms: “to” /tə/, “of” /əv/ in “mindful of the oneness of Allah”.\nWord focus: MIND-ful, EV-i-dent, FAITH-ful, WIT-ness, a-MAZED, FU-ri-ous.',
+    beforeReading: ['Ask: “If someone says ‘We have always done it this way’, is that a reason? When is it a good reason and when is it not?” Collect one example of each.'],
+    duringReading: ['Underline what Abraham declared about benefit and harm.', 'Number the five lines of the verse and write the function next to each.', 'Circle the fixed expressions and their prepositions.', 'Mark why the father was the most furious.'],
+    afterReading: ['Complete the Quick Challenge with the numbered lines in view.', 'Language Focus: order the debate (Activity 1), match the expressions of response and conflict (Activity 2), then add with inversion and turn the instruction into direct speech (Activity 3).', 'Write the Activity 4 stance-and-response paragraph about a non-story situation.'],
+    lessonPlan: '0–5 Hook: “We have always done it this way” — a good reason or not? one example of each; 5–12 Listen and read; 12–19 Strip task in pairs: order the five verse lines and label each one (question / tradition / answer / doubt / belief), then compare with another pair; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as a quick check of the strip task, Activity 2 in pairs with a preposition race (heed to, mindful of, faithful to), Activity 3 as whole-class discovery (What happens to the word order after Not only?); 32–38 Use: learners write the Activity 4 paragraph about a student who keeps to a fair-play principle under team pressure, with “As a …”, “In doing so”, a two-line exchange and not only … but also; 38–40 Exit ticket.',
+    discussionPoints: ['How does the chapter describe Abraham’s response to the threat?', 'What reason do the people give for their worship, and how does Abraham answer it?', 'Why was his father the most amazed and furious?'],
+    interactiveTips: ['Use the “paid no heed” hotspot for Abraham’s response and the “benefit and harm” hotspot for his declaration.', 'Replay the verse and ask learners to raise a hand at each change of speaker.', 'Treat the verse lines as quotations: explain and order them, never gap or rewrite them.'],
+    differentiation: { strugglingLearners: 'Give the five strips with the function labels in a box to match, and the frames “He paid no heed to ____.” and “Not only did ____, but ____ as well.”', fastFinishers: 'Write a short dialogue on a non-story topic that follows the same five functions (question, tradition, answer, doubt, statement) and label each line.' },
+    formativeAssessment: ['Orders the debate and names each function.', 'Uses fixed expressions with the correct preposition.', 'Produces inversion after “Not only”.'],
+    expectedResponses: ['Abraham ignored the threat, declared that benefit and harm come from Allah and told the people to reject idol worship; when they justified it by their parents’ practice, he said they were in evident error and bore witness that their Lord created the heavens and the earth; his father was the most furious because he also shaped and sold idols.'],
+    transferTask: 'Write two sentences about a time someone paid no heed to pressure: one with “As a …” and one with “In doing so, …”.',
+    teacherReflection: 'Did the strip task make the debate structure visible, and did learners discover the inversion from the example rather than from a rule?',
+    assessmentTools: { rubric: ['Debate structure', 'Fixed expressions', 'Addition with inversion', 'Principle-based response'], exitTicket: ['Write one sentence with “paid no heed to” and one beginning “Not only did …”.'] },
   },
   {
-    "chapter": "14. Calling People to Reconsider",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain how Abraham responds to his father’s threat with peace, prayer and continued mission.",
-      "Distinguish withdrawing from one relationship from abandoning the broader message.",
-      "Use conditional threat, future commitment, hope/probability and analogy to analyse persistence."
-    ],
-    "pedagogy": "Use a continuity-after-rejection timeline. Learners mark the father’s threat, Abraham’s peaceful response, withdrawal, prayer and move toward public debate, then compare the doctor/judge analogies with the purpose of questioning people.",
-    "priorKnowledge": [
-      "Chapter 13 respectful advice and basic conditional/future forms."
-    ],
-    "anticipatedMisconceptions": [
-      "Turning away from his father does not mean abandoning the wider mission."
-    ],
-    "grammarFocus": "Conditional threat vs future commitment; hope/probability stance; analogy as reasoning; inquiry purpose.",
-    "pronunciationFocus": "Contrast the force of the father’s threat with the calmer tone of “Peace be upon you” and “I will ask my Lord…”; pause around the doctor/judge analogies.",
-    "beforeReading": [
-      "Ask what forms persistence can take after a conversation has reached a threat."
-    ],
-    "duringReading": [
-      "Mark the conditional threat and Abraham’s peaceful/future response.",
-      "Underline the transition from family withdrawal to public debate.",
-      "Identify what the doctor and judge analogies explain about his questioning method."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the timeline.",
-      "Use Language Focus to contrast the threat with Abraham’s future commitments.",
-      "Write a paragraph explaining what changes—audience—and what remains—mission."
-    ],
-    "lessonPlan": "1. 0–5 min: persistence-after-rejection warm-up. 2. 5–15 min: read/listen to threat and response. 3. 15–23 min: timeline withdrawal→prayer→public debate. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on condition, future and analogy. 6. 37–43 min: continuity paragraph. 7. 43–45 min: exit ticket naming what changes and what stays constant.",
-    "discussionPoints": [
-      "What changes in Abraham’s audience after the father’s threat, and what remains constant?",
-      "What do the doctor and judge analogies add to the logic of questioning?"
-    ],
-    "interactiveTips": [
-      "Use two colours for response to father and action toward wider society.",
-      "Ask learners to state the function of each analogy, not whether they like the comparison."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use a four-step card sequence: threat / peace / withdrawal / public debate.",
-      "fastFinishers": "Write six sentences using if, will/hope and one analogy to explain strategic persistence."
-    },
-    "formativeAssessment": [
-      "Orders the transition accurately.",
-      "Separates withdrawal from abandonment.",
-      "Explains analogy as reasoning."
-    ],
-    "expectedResponses": [
-      "Abraham ends the immediate confrontation with peace and prayer, but continues the wider mission by questioning the people publicly."
-    ],
-    "transferTask": "Describe a neutral situation where changing audience or method allows a principled task to continue.",
-    "teacherReflection": "Did learners distinguish strategic withdrawal from giving up?"
+    chapter: '13. Debating the Idolaters', timing: '40 minutes',
+    objectives: ['Explain how Abraham advises his father with respect: sense of duty, avoiding embarrassment, expressing love, then asking kindly.', 'Follow the verse from Surah Maryam: the question, the invitation, the warning and the concern.', 'Discover “I fear that …” for a worried prediction, compact purpose and reason (to save, Being a wise son, hoping to …), and careful reporting (or after could not, why he worshipped, before he got).', 'Write a respectful persuasion that manages both the argument and the relationship.'],
+    pedagogy: 'Frame the chapter as a lesson in respectful persuasion. Pairs list Abraham’s moves in order (duty → no embarrassment → love → kind question → quick explanation) and decide what each move protects: the argument or the relationship. The verse is then read in four parts (question, invitation, warning, concern). To discover the stance you ask: “Does Abraham say the punishment will certainly come? Which words tell you?” Learners find “I fear that …” before you name it. Remind the class that the verse continues into Chapter 14.',
+    priorKnowledge: ['so that; so for result; reported questions from Chapter 6.'],
+    anticipatedMisconceptions: ['“I fear that a punishment … will afflict you” expresses concern, not certainty.', 'Abraham does not make fun of his father’s job; the chapter says he avoided embarrassing him.', 'The father’s last question is not an agreement; the exchange continues in the next chapter.'],
+    grammarFocus: 'Targets: stance with I fear that … will … · purpose (so that his father could be saved → to save / in order to save) · reason (He was a wise son, so … → Being a wise son / As he was …) · hoped-for effect (in that way, he hoped to … → hoping to …) · careful reporting (could not hear, see, or protect · asked him why he worshipped · Before his father got angry).\nNotice (Activity 1): read the warning line and ask: “Is the punishment presented as certain? What does ‘I fear that’ tell us about Abraham’s feeling?” Learners judge the statement false and explain it before you confirm.\nBuild (Activities 2–3): rewrite purpose, reason and hope in compact forms, then choose or / worshipped / got and explain why nor, did he worship and will get fail here.\nLikely errors: *could not hear, see, nor protect · *asked him why did he worship · *Before his father will get angry · *Being a wise son, so he did not ….\nUse (Activity 4): an 8–10 sentence paragraph about a non-story situation in which someone tries to persuade a person they respect, with so that, “in that way”, neither … nor …, one invitation and one carefully framed possible consequence (I’m concerned that … / I fear that …).',
+    pronunciationFocus: 'Address forms as their own tone unit with a warm, falling tone: “O my FAther, | …”.\nParallel negatives with equal stress: “NEIther HEAR, | nor SEE, | nor BENefit you in ANy way”.\nConcern, not threat: “I FEAR that | a PUNishment …” spoken softly, with a slight fall.\nWord focus: em-BAR-rassed, FA-ther-ly, dis-o-BE-di-ent, be-NEF-i-cent, af-FLICT, PUN-ish-ment.',
+    beforeReading: ['Ask pairs: “How would you tell an older family member that you disagree with a habit of theirs, without hurting them?” Collect three strategies on the board to compare with Abraham’s moves.'],
+    duringReading: ['List Abraham’s moves in order.', 'Divide the verse into question / invitation / warning / concern.', 'Underline “I fear that”.', 'Mark the words that show kindness (kindly, loved, wise son).'],
+    afterReading: ['Complete the Quick Challenge with the list of moves in view.', 'Language Focus: judge “I fear that” (Activity 1), compact purpose, reason and hope (Activity 2), choose the careful reporting forms (Activity 3).', 'Write the Activity 4 respectful persuasion paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: three strategies for disagreeing with an older family member; 5–12 Listen and read; 12–19 Moves timeline in pairs: Abraham’s five moves with a quote each, then compare with the class strategies (which one did the class not think of?); 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as whole-class discovery (Certain or a worry?), Activity 2 in pairs, Activity 3 individually with a short explanation of “or” vs “nor”; 32–38 Use: learners write a respectful persuasion paragraph to a friend who is spending too much time online, with so that, in that way, neither … nor … and “I’m concerned that …”; 38–40 Exit ticket.',
+    discussionPoints: ['Why does Abraham tell his father that he loves him before asking his question?', 'What does the verse invite the father to do, and what does it warn about?', 'How is “I fear that …” different from “I know that …” in this situation?'],
+    interactiveTips: ['Use the “duty” hotspot for Abraham’s motive and the “embarrassed” hotspot for his care in speaking.', 'Replay the verse and pause after each “O my father” so learners name the function.', 'Keep the verse as a quotation; persuasion practice happens only in the non-story Use task.'],
+    differentiation: { strugglingLearners: 'Give the frames “He wanted to advise his father so that ____.”, “He did not ____ or ____.” and “I’m concerned that ____ will ____.”', fastFinishers: 'Write two versions of the same message to a friend, one harsh and one respectful, and explain which language choices change the relationship.' },
+    formativeAssessment: ['Lists Abraham’s moves in order with evidence.', 'Explains “I fear that” as concern rather than certainty.', 'Uses compact purpose and reason forms accurately.'],
+    expectedResponses: ['Abraham felt it was his duty to advise his father so that he could be saved; he did not embarrass him, told him he loved him and asked kindly why he worshipped statues that could not hear, see or protect him, then invited him to follow him and warned, with concern, of a possible punishment.'],
+    transferTask: 'Write a three-sentence message that gives advice to someone older than you: one sentence of respect, one reason, one concern with “I’m worried that …”.',
+    teacherReflection: 'Did learners notice how language choices protect the relationship, and did they read the verse as a quotation rather than material for role-play?',
+    assessmentTools: { rubric: ['Sequence of moves', 'Stance of concern', 'Purpose and reason', 'Respectful persuasion'], exitTicket: ['Write one sentence with “so that” and one with “I fear that …” or “I’m concerned that …”.'] },
   },
   {
-    "chapter": "15. Breaking the Idols",
-    "timing": "45 minutes",
-    "objectives": [
-      "Identify the people’s appeal to forefathers and evaluate why inherited practice is not sufficient evidence in the chapter.",
-      "Distinguish respect for tradition from using tradition as proof of truth.",
-      "Use rhetorical observable tests, exclusivity and defining relations to formulate testable claims."
-    ],
-    "pedagogy": "Set up a context-versus-evidence board. Learners place “our forefathers did it” under historical context, then compare it with Abraham’s observable questions about seeing, benefit and harm.",
-    "priorKnowledge": [
-      "Capability testing from Chapter 7 and family/tradition references from Chapter 12."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not claim every inherited practice is wrong merely because it is inherited."
-    ],
-    "grammarFocus": "Rhetorical observable tests; evidence vs inherited tradition; exclusivity, defining relatives and testable claims.",
-    "pronunciationFocus": "Use questioning intonation for “Do the idols…?” and contrastive stress between forefathers and observable ability.",
-    "beforeReading": [
-      "Ask when tradition is useful as historical context and when it is not enough to prove a claim."
-    ],
-    "duringReading": [
-      "Mark the people’s admission that the idols are lifeless.",
-      "Underline the appeal to forefathers as their defense.",
-      "Identify Abraham’s observable challenge about harm and benefit."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by classifying tradition or testable evidence.",
-      "Use Language Focus to rewrite one inherited-practice claim into a testable question.",
-      "Write a qualified statement explaining that tradition can be context without being sufficient proof."
-    ],
-    "lessonPlan": "1. 0–5 min: context/evidence distinction. 2. 5–14 min: read/listen for forefather defense. 3. 14–22 min: compare inherited practice with observable tests. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on rhetorical tests and exclusivity. 6. 36–43 min: qualified evaluation. 7. 43–45 min: exit ticket: tradition as context vs proof.",
-    "discussionPoints": [
-      "When can tradition count as context but not sufficient evidence?",
-      "What makes Abraham’s challenge testable within the chapter?"
-    ],
-    "interactiveTips": [
-      "Do not frame the lesson as “old = wrong”; keep the issue on evidence quality.",
-      "Ask students to label every statement C = context or E = evidence."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give two columns—Inherited because… / Observable because…—and preselect three text details.",
-      "fastFinishers": "Write a short argument that respects historical tradition while requiring independent evidence for a factual claim."
-    },
-    "formativeAssessment": [
-      "Classifies tradition appropriately.",
-      "Identifies testable evidence.",
-      "Avoids anti-tradition overgeneralisation."
-    ],
-    "expectedResponses": [
-      "The people admit the idols are lifeless but defend worship through ancestral practice; Abraham challenges whether that practice proves the idols can act."
-    ],
-    "transferTask": "Evaluate a neutral inherited practice by separating its historical value from evidence for a factual claim.",
-    "teacherReflection": "Did learners critique the evidential role of tradition rather than tradition itself?"
+    chapter: '14. Calling People to Reconsider', timing: '40 minutes',
+    objectives: ['Contrast the father’s threat and demand with Abraham’s calm promises and hope.', 'Explain why Abraham went to the town to debate although he knew he might face negative consequences.', 'Discover how “will” carries both a threat and a commitment, how “might” marks possible risk and how “Just as A …, or B …, C …” builds an analogy.', 'Write a risk-aware reasoning paragraph that uses an analogy to explain a method.'],
+    pedagogy: 'The chapter begins in the middle of the verse from Chapter 13, so first recall the father’s question. Then learners sort the lines into “threat or demand” and “promise or hope” and discover that the same future form serves opposite purposes. The ending is a comparison: pairs draw three boxes (doctor / judge / Abraham), write what each one looks for and why, and see that the analogy presents questioning as a careful method. The verse is read and explained, never gapped.',
+    priorKnowledge: ['First conditional; will for promises; might for possibility.'],
+    anticipatedMisconceptions: ['Abraham’s “will” sentences are promises about his own actions, not threats.', '“He knew well that he might face negative consequences” means the risk was possible, not certain.', 'The doctor and the judge are comparisons for his method; they are not characters in the story.'],
+    grammarFocus: 'Targets: will for a threat (If you do not stop this, I will stone you) vs will for a commitment (I will ask my Lord to forgive you) · imperative as a demand (So leave me alone …) · I hope I will … for hopeful stance · might for a possible risk (he knew well that he might face …) · analogy with Just as …, or …, … and purpose infinitives (to find, to uncover, to reveal).\nNotice (Activity 1): pairs sort the lines into threat/demand and promise/hope. Ask: “Both speakers use ‘will’. Why do the two sets of sentences feel so different?”\nBuild (Activities 2–3): decide what “might” shows about Abraham’s decision, then match each part of the doctor and judge comparison with its meaning.\nLikely errors: *he knew well that he must face (certainty instead of possibility) · *Just like a wise doctor looks … (like + clause in formal writing) · *to reveal of the reality · reading Abraham’s “will” as a threat.\nUse (Activity 4): an 8–10 sentence paragraph on a non-story situation where someone continues despite possible consequences, with one condition → consequence, two will-commitments, one might and one “just as” analogy ending with a purpose (to uncover …).',
+    pronunciationFocus: 'Contrast the tones: the threat with strong stress and a falling tone, “I WILL STONE you↘”; the promise softer, “I will ASK my LORD | to forGIVE you”.\nPossibility: “he KNEW WELL | that he MIGHT FACE | NEGative CONsequences” (stress on MIGHT).\nAnalogy in three tone units: “JUST as a WISE DOCtor … | or a CLEVer JUDGE … | ABraham QUEStioned them …”.\nWord focus: dis-ap-POINT-ed, de-TER-mined, CON-se-quen-ces, SUS-pect (noun), un-COV-er, re-VEAL.',
+    beforeReading: ['Recall the father’s question at the end of Chapter 13 (“Are you rejecting my gods, O Abraham?”). Ask: “How do you think each of them will answer now?” Pairs predict one sentence for the father and one for Abraham.'],
+    duringReading: ['Two colours: the father’s threat and demand / Abraham’s promises and hope.', 'Underline “In fact, he knew well that he might …”.', 'Box the doctor and the judge and what each one looks for.', 'Mark why Abraham went to the town.'],
+    afterReading: ['Complete the Quick Challenge using the two colours.', 'Language Focus: sort threat and promise (Activity 1), interpret “might” (Activity 2), match the parts of the analogy (Activity 3).', 'Write the Activity 4 risk-aware reasoning paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Recall the father’s last question and predict both answers; 5–11 Listen and read; 11–18 Two-colour sort in pairs, then a whole-class discussion: same “will”, different purpose; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Why do the two “will” sets feel different?), Activity 2 in pairs, Activity 3 with a three-box board (doctor / judge / Abraham: looks for / in order to); 31–38 Use: learners write a risk-aware paragraph about a student reporter investigating a problem in the canteen, with might, two will-commitments and a “just as” analogy; 38–40 Exit ticket.',
+    discussionPoints: ['How does Abraham answer his father’s threat?', 'What does the chapter say Abraham knew before he went to the town?', 'What do the doctor and the judge have in common with Abraham’s questioning?'],
+    interactiveTips: ['Use the “harsh behavior” hotspot for the father’s side and the “negative consequences” hotspot for the risk.', 'Replay Abraham’s answer and ask learners to count his “will” sentences.', 'Do not role-play the threat; read the verse as a quotation.'],
+    differentiation: { strugglingLearners: 'Give a sorting table with the lines already copied and the frames “He knew that he might ____.” and “Just as a ____ ____ to ____, ____ ____ to ____.”', fastFinishers: 'Create a new analogy for careful questioning (for example a scientist or a mechanic) in the “Just as …” pattern and explain why it fits.' },
+    formativeAssessment: ['Distinguishes threat from commitment with evidence.', 'Explains might as possibility.', 'Builds a coherent analogy with a purpose.'],
+    expectedResponses: ['The father threatened to stone Abraham, but Abraham answered with peace, a promise to ask forgiveness for him and a hope in his prayer; although he knew he might face negative consequences, he went to the town and questioned the people, like a doctor looking for a cause or a judge seeking the truth.'],
+    transferTask: 'Write one analogy that explains why asking questions is useful in your favourite school subject, using “Just as …”.',
+    teacherReflection: 'Did learners discover that the same form can threaten or promise, and did the analogy help them explain the method rather than the conflict?',
+    assessmentTools: { rubric: ['Speech function', 'Risk and possibility', 'Analogy', 'Coherent reasoning'], exitTicket: ['Write one promise with “will” and one risk with “might” about a plan of yours.'] },
   },
   {
-    "chapter": "16. The Broken Temple",
-    "timing": "45 minutes",
-    "objectives": [
-      "Compare the chapter’s chain of divine actions with the earlier descriptions of idol helplessness.",
-      "Identify creation, guidance, provision, healing, death and revival as cumulative agency.",
-      "Use relative-clause chaining, exception and stance to explain active divine agency versus lifeless objects."
-    ],
-    "pedagogy": "Build an agency chain. Learners map each relative clause beginning “He who…” to an action, then compare the chain with the earlier inability list for idols.",
-    "priorKnowledge": [
-      "Chapter 7 helplessness evidence and Chapter 15 testable claims."
-    ],
-    "anticipatedMisconceptions": [
-      "The comparison is not merely “large power versus small power”; it is active divine agency versus lifeless objects."
-    ],
-    "grammarFocus": "Dialogue reframing; cumulative relative-clause chain; exception; local stance marking.",
-    "pronunciationFocus": "Read the “He who…” chain with parallel rhythm and stress the action verbs created/guides/feeds/waters/heals/dies/revives.",
-    "beforeReading": [
-      "Recall two idol inabilities and ask what kind of evidence would create a true agency contrast."
-    ],
-    "duringReading": [
-      "Underline each divine action in the Quranic chain.",
-      "Group the actions into creation/guidance, provision/care and life/death.",
-      "Mark the exception “but not so the Lord of the Worlds” as the pivot."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the action groups.",
-      "Use Language Focus to build a cumulative relative-clause sentence.",
-      "Compare two strongest action/inability pairs and justify why they are strong."
-    ],
-    "lessonPlan": "1. 0–5 min: retrieve helplessness evidence. 2. 5–15 min: read/listen and mark the relative-clause chain. 3. 15–23 min: group divine actions. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on chaining and exception. 6. 37–43 min: agency comparison. 7. 43–45 min: exit ticket with one action/inability contrast.",
-    "discussionPoints": [
-      "Which two divine actions create the strongest contrast with the idols, and why?",
-      "How does the cumulative chain strengthen the chapter’s argument?"
-    ],
-    "interactiveTips": [
-      "Use verbs, not abstract labels, in the agency map.",
-      "Keep theological claims tied to the exact wording of the chapter rather than extending them."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide six action cards and let learners group them into three categories.",
-      "fastFinishers": "Write a seven-sentence comparison using two relative clauses and one explicit exception."
-    },
-    "formativeAssessment": [
-      "Identifies cumulative agency.",
-      "Uses relative clauses coherently.",
-      "Explains contrast through actions rather than vague “power” language."
-    ],
-    "expectedResponses": [
-      "The chapter lists active divine functions—creating, guiding, providing, healing, causing death and revival—in contrast with lifeless idols."
-    ],
-    "transferTask": "Compare two systems by listing concrete actions each can or cannot perform rather than using vague labels.",
-    "teacherReflection": "Did learners focus on the action chain as evidence?"
+    chapter: '15. Breaking the Idols', timing: '40 minutes',
+    objectives: ['Explain how Abraham tests the idols with questions and a challenge, and how the people defend their belief with tradition.', 'Describe Abraham’s reply: no fear, a true religion and guidance from the Lord who alone is worthy of worship.', 'Discover the difference between testing and defending questions, manner and purpose phrases (Showing no fear, to persuade) and the past perfect, “explain that” and “give up + -ing” in reported argument.', 'Build a balanced evidence-vs-tradition argument that ends without insult.'],
+    pedagogy: 'Put a T-chart on the board: Abraham tests / The people defend. Learners place each question with a reason: can the answer be checked by looking? Grammar grows from this: you ask “Why did the forefathers’ worship happen before the argument, and how does the text show it?” and learners discover the past perfect in reported argument. Point out early that “dumb idols” here means idols that cannot speak, not a school insult. The title mentions breaking, but in this chapter the idols are not yet broken; keep to what the chapter says.',
+    priorKnowledge: ['Past perfect; to + infinitive of purpose; give up.'],
+    anticipatedMisconceptions: ['The people admit the idols are lifeless; their reason is tradition, not evidence.', '“Dumb” here means unable to speak.', 'No idol is broken in this chapter; it ends with “Abraham (pbuh) did not give up arguing with the idolaters”.'],
+    grammarFocus: 'Targets: testing questions vs defending questions (Do the idols see you …? / Are you criticizing our gods …?) · observable test with see if … · manner (showed no fear as he replied → Showing no fear, … / Fearlessly) · purpose (To persuade them …, he challenged → He challenged them to persuade …) · reported argument (had worshipped · explained that … · did not give up arguing) · who-clauses defining the Lord.\nNotice (Activity 1): pairs sort six lines into “Abraham tests the idols” and “The people defend their belief”. Ask: “Which questions could someone check just by looking? Which questions change the topic?”\nBuild (Activities 2–3): rewrite manner and purpose in compact forms, then correct have worshipped → had worshipped, explained them → explained, to argue → arguing.\nLikely errors: *explained them that · *did not give up to argue · *their forefathers have worshipped them (tense in report) · *For persuade them.\nUse (Activity 4): an 8–10 sentence argument on a non-story habit defended because “it has always been done this way”, with two testing questions, although / even though, a but-contrast, a relative clause for a better alternative and one “see whether …” test, ending in a balanced conclusion.',
+    pronunciationFocus: 'Testing questions with a clear fall: “DO the IDols SEE you | when you BOW DOWN before them↘?”\nThree who-clauses in a row, each a tone unit: “WHO aLONE is WORthy of WORship, | WHO is the creATor of the HEAVens and the EARTH, | and WHO REGulates ALL afFAIRS of LIFE”.\nContrastive stress: “I am SErious”; “I have ALready CRITicized them”.\nWord focus: CRIT-i-cize, FORE-fa-thers, REG-u-lates, per-SUADE, af-FAIRS, WOR-thy.',
+    beforeReading: ['Ask: “How can you test whether a claim is true without arguing about it?” Collect ideas (look, measure, try it). Keep “test by looking” on the board.'],
+    duringReading: ['T-chart: tests / defends, with every question placed.', 'Underline the people’s reason and the fact they admit.', 'Circle the words that show Abraham’s manner.', 'Box the challenge “see if …”.'],
+    afterReading: ['Complete the Quick Challenge with the T-chart in view.', 'Language Focus: sort testing and defending (Activity 1), rewrite manner and purpose (Activity 2), correct the reported argument (Activity 3).', 'Write the Activity 4 evidence-vs-tradition argument with a balanced conclusion.'],
+    lessonPlan: '0–5 Hook: “How can you test a claim without arguing?” ideas on the board; 5–12 Listen and read; 12–18 T-chart in pairs, then whole-class check: which side’s questions can be checked by looking?; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as a quick confirmation of the T-chart, Activity 2 in pairs, Activity 3 as whole-class discovery (Which happened first, the forefathers’ worship or the argument?); 31–38 Use: groups plan an evidence-vs-tradition paragraph about a school habit (for example always sitting in the same seats) with two testing questions and a “see whether …” test, ending with a fair conclusion; 38–40 Exit ticket.',
+    discussionPoints: ['What do the people admit about the idols, and what reason do they still give?', 'How do Abraham’s questions differ from the people’s questions?', 'What does Abraham’s challenge ask the people to observe?'],
+    interactiveTips: ['Use the “defend their beliefs” hotspot for the people’s column and the “confirmed their belief” hotspot for their reasoning.', 'Replay Abraham’s long reply and ask learners to count the who-clauses.', 'Explain “dumb” as “unable to speak” and keep the discussion free of insults.'],
+    differentiation: { strugglingLearners: 'Give the six lines on strips for the T-chart and the frames “They admitted that ____, but ____.” and “He challenged them to see if ____.”', fastFinishers: 'Write two short paragraphs about the same habit: one that only defends it by tradition and one that tests it with evidence, then comment on the difference.' },
+    formativeAssessment: ['Classifies testing and defending questions with a reason.', 'Reports the argument with the past perfect and “explain that”.', 'Ends their own argument with a balanced conclusion.'],
+    expectedResponses: ['Abraham asked whether the idols could see or benefit them; the people admitted the idols were lifeless but said their forefathers had worshipped them; Abraham replied without fear that he had been sent with guidance from the Lord who alone is worthy of worship and challenged them to see if the idols could harm him.'],
+    transferTask: 'Choose one claim you often hear and write one question that tests it by observation and one “see whether …” sentence.',
+    teacherReflection: 'Did learners discover the difference between testing and defending, and did the class keep the discussion respectful?',
+    assessmentTools: { rubric: ['Testing vs defending', 'Manner and purpose', 'Reported argument', 'Balanced conclusion'], exitTicket: ['Write one sentence with “did not give up + -ing” and one with “explained that …”.'] },
   },
   {
-    "chapter": "17. Questioned Before the People",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse why Abraham waits for the festival and enters an empty temple.",
-      "Explain how questioning silent statues and food offerings sets up a practical demonstration.",
-      "Use resistance→decision→purpose and until/then sequencing to show intentional action."
-    ],
-    "pedagogy": "Teach the chapter as planning before action. Learners identify the opportunity created by the empty city, Abraham’s purpose, and the first silent-statue test before any smashing occurs.",
-    "priorKnowledge": [
-      "Chapter 15 observable testing and Chapter 16 agency contrast."
-    ],
-    "anticipatedMisconceptions": [
-      "The episode is not presented as random destruction without an argumentative aim."
-    ],
-    "grammarFocus": "Resistance → decision → purpose; future-in-the-past; until/then/past-perfect sequencing; rhetorical testing.",
-    "pronunciationFocus": "Practise festival, temple, offerings and cautious; use questioning tone for “Why don’t you eat?” and a deliberate pause before the silence.",
-    "beforeReading": [
-      "Ask what makes a practical demonstration different from impulsive action."
-    ],
-    "duringReading": [
-      "Mark why the city and temple become empty.",
-      "Underline the stated intention to show error.",
-      "Track the approach to the food offering and the first unanswered question."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by identifying purpose before action.",
-      "Use Language Focus to write the opportunity→decision→purpose sequence.",
-      "Explain why the silence of the statues is already part of the demonstration."
-    ],
-    "lessonPlan": "1. 0–5 min: demonstration vs impulse. 2. 5–14 min: read/listen for festival opportunity. 3. 14–22 min: map purpose and first test. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on sequence and purpose. 6. 36–43 min: practical-demonstration explanation. 7. 43–45 min: exit ticket naming opportunity and intended proof.",
-    "discussionPoints": [
-      "What makes the temple episode a demonstration rather than merely an act?",
-      "Why is the unanswered food question important before the later destruction?"
-    ],
-    "interactiveTips": [
-      "Stop the analysis before Chapter 18; do not let later knowledge erase the setup stage.",
-      "Use purpose arrows so every action must answer “for what reason?”"
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide four steps: festival / empty temple / food question / silence.",
-      "fastFinishers": "Write six sentences showing how context creates an opportunity for an evidence-based demonstration."
-    },
-    "formativeAssessment": [
-      "Identifies purpose before action.",
-      "Sequences the setup correctly.",
-      "Explains silence as evidence."
-    ],
-    "expectedResponses": [
-      "Abraham chooses the empty temple to create a practical test, beginning by asking the silent statues about the food placed before them."
-    ],
-    "transferTask": "Design a harmless classroom demonstration that tests a claim and state the purpose before the procedure.",
-    "teacherReflection": "Did learners distinguish deliberate demonstration from random action?"
+    chapter: '16. The Broken Temple', timing: '40 minutes',
+    objectives: ['Follow the exchange in Surah Şuarâ 69–82: Abraham’s questions, the people’s appeal to their ancestors and his description of the Lord of the Worlds.', 'Explain how the chain of “He who …” lines contrasts the Lord with idols that do not hear, benefit or harm.', 'Discover parallel “He who …” clauses, the exception “but not so”, the local stance “I hope” and the change of focus between passive and active (Idol worship is hated by Allah / Allah hates idol worship; provide someone with / provide something to).', 'Write a cohesive evaluation paragraph that uses a relative-clause chain and an exception.'],
+    pedagogy: 'Most of the chapter is a quoted verse, so meaning comes first through structure: learners number the “He who …” lines and give each one a one-word label (Creator, Guide, Provider, Healer, Giver of life and death, Forgiver). Then they compare the chain with the people’s answers. The exception is discovered with one question: “Are all the things they worship enemies to Abraham? Who is the exception?” The final prose sentence shows the narrator retelling the verses; learners compare it with the verse lines. Verses are read, explained and matched, never gapped or rewritten.',
+    priorKnowledge: ['Relative clauses with who; passive vs active; the people’s appeal to tradition from Chapters 12 and 15.'],
+    anticipatedMisconceptions: ['The chapter title mentions a broken temple, but this chapter contains no breaking; it is the exchange and the narrator’s summary.', '“But not so the Lord of the Worlds” excludes the Lord from “enemies”; it does not weaken Him.', '“I hope” in the last line shows Abraham’s humility about forgiveness; it is not doubt about the Lord.'],
+    grammarFocus: 'Targets: parallel “He who …” clauses for a chain of attributes · exception with but not so (so = “an enemy to me”) · local stance with I hope · passive vs active for topic (Idol worship is hated by Allah / Allah hates idol worship) · provide + person + with + thing / provide + thing + to/for + person.\nNotice (Activity 1): learners match the five “He who …” lines with what they say about the Lord. Ask: “Why does the verse repeat ‘He who’? What does the repetition contrast with?”\nBuild (Activities 2–3): rewrite the last sentence with Allah as subject and with the other pattern of provide; then decide what “but not so” means and what “so” replaces.\nLikely errors: *provides human beings food and drink (missing with) · *provides food and drink with human beings · *Allah is hated idol worship · reading “but not so” as “not as great”.\nUse (Activity 4): an 8–10 sentence evaluation of a non-story practice, policy or technology with a question that identifies it, two testing questions, one inherited justification, “Have you considered …?”, a three-part relative-clause chain, one exception and one local stance marker, ending with a reasoned conclusion.',
+    pronunciationFocus: 'Parallel lines with the same rhythm, stress on the verbs: “HE who creATed me, | and GUIDES me. | HE who FEEDS me, | and WAters me.”\nThe exception with contrastive stress: “they are ENemies to ME, | but NOT SO | the LORD of the WORLDS”.\nStance inserted as a separate low unit: “HE who, | I HOPE, | will forGIVE my SINS …”.\nWord focus: res-ur-REC-tion, AN-ces-tors, re-VIVES, GUI-dance, U-ni-verse, man-KIND.',
+    beforeReading: ['Ask: “If you describe someone only through what they do for others, what kind of sentences do you need?” Model one: “She is the one who …”. Pairs write two more about a person who helps them.'],
+    duringReading: ['Mark each speaker change in the verse.', 'Number the “He who …” lines and label each one with one word.', 'Circle “but not so” and “I hope”.', 'Compare the last prose sentence with the verse lines and tick what it repeats.'],
+    afterReading: ['Complete the Quick Challenge with the numbered lines in view.', 'Language Focus: match the “He who …” lines (Activity 1), change the focus and the pattern of provide (Activity 2), explain “but not so” (Activity 3).', 'Write the Activity 4 cohesive evaluation paragraph on a non-story practice.'],
+    lessonPlan: '0–5 Hook: “She is the one who …” pairs write two sentences about a helpful person; 5–12 Listen to the verses and read, mark the speaker changes; 12–18 Label chain: pairs number the “He who …” lines and give each a one-word label, then tick which labels the narrator’s last sentence repeats; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs with the whole-class question (Why repeat He who?), Activity 2 individually, Activity 3 as whole-class discovery (What does so replace? Who is the exception?); 31–38 Use: learners write an evaluation of a school app or rule with a “which … which … which …” chain, one exception (except / but not …) and “I expect” or “it seems”; 38–40 Exit ticket.',
+    discussionPoints: ['How do the people answer Abraham’s questions, and what do they rely on?', 'What picture of the Lord does the chain of “He who …” lines build?', 'Why does Abraham say “I hope” only in the last line?'],
+    interactiveTips: ['Use the “beauty of Allah’s creation” and “His power” hotspots with the narrator’s summary after the verse.', 'Replay the “He who …” lines and ask learners to tap the desk on each “He”.', 'Keep the verse whole on screen; match and explain its lines, never gap them.'],
+    differentiation: { strugglingLearners: 'Give the six labels on cards to match with the verse lines, plus the frames “Allah hates ____.” and “He provides ____ with ____.”', fastFinishers: 'Write a short description of a person or institution using a five-part “the one who …” chain and one exception with “but not …”.' },
+    formativeAssessment: ['Labels the attributes in the chain accurately.', 'Explains the exception and what “so” replaces.', 'Uses both patterns of provide and chooses active or passive for topic.'],
+    expectedResponses: ['The people said they worship idols because they found their ancestors doing so; Abraham said all these are enemies to him except the Lord of the Worlds, who created and guides him, feeds him and gives him drink, heals him, makes him die and revives him, and whom he hopes will forgive his sins.'],
+    transferTask: 'Write a three-part “who …” chain describing a person who supports your school, and add one sentence with “I hope …”.',
+    teacherReflection: 'Did learners see how repetition builds contrast with the idols, and did they treat the verse as a text to understand rather than to manipulate?',
+    assessmentTools: { rubric: ['Attribute chain', 'Exception', 'Topic control (active/passive)', 'Cohesive evaluation'], exitTicket: ['Write one sentence with “provides … with …” and one with “All … except …” or “but not …”.'] },
   },
   {
-    "chapter": "18. The Decision to Burn Abraham",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain how smashing all but the largest idol and hanging the axe creates a later test of agency.",
-      "Identify the exception as the key design feature of the demonstration.",
-      "Use rhetorical challenge, exception, past-perfect completion and source transition to analyse how evidence is staged."
-    ],
-    "pedagogy": "Use a scene-design diagram. Learners mark what is destroyed, what is deliberately left intact, where the axe is placed, and what inference the arrangement is designed to provoke later.",
-    "priorKnowledge": [
-      "Chapter 17 purpose and practical-test setup."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not ask the reader to believe the largest idol actually acted."
-    ],
-    "grammarFocus": "Rhetorical challenge plus reason; exception; past-perfect completion and purpose; narrative → sourced quotation.",
-    "pronunciationFocus": "Stress all / except one and the location of the axe; use neutral reporting tone when moving from narrative to the quoted Quranic response.",
-    "beforeReading": [
-      "Ask why a demonstration might deliberately leave one object unchanged."
-    ],
-    "duringReading": [
-      "Mark the questions to the statues before the smashing.",
-      "Underline “all except one” and the axe placement.",
-      "Identify the shift from narrative action to the quoted public reaction."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by explaining the function of the untouched idol.",
-      "Use Language Focus to write an exception sentence and a purpose sentence.",
-      "Predict the logical question the scene is designed to force without claiming the idol actually acted."
-    ],
-    "lessonPlan": "1. 0–5 min: exception-as-design warm-up. 2. 5–14 min: read/listen to questions and smashing. 3. 14–22 min: diagram largest idol/axe/others. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on exception and purpose. 6. 36–43 min: evidence-staging explanation. 7. 43–45 min: exit ticket: why leave one idol?",
-    "discussionPoints": [
-      "Why is the untouched idol essential to the logic of the next scene?",
-      "What is the difference between staging a rhetorical test and making a literal factual claim?"
-    ],
-    "interactiveTips": [
-      "Keep a visible label “rhetorical setup, not literal attribution”.",
-      "Use the scene diagram rather than reenacting destruction."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give a before/after temple diagram and ask learners to label the exception and axe.",
-      "fastFinishers": "Write a six-sentence analysis of how exception and object placement create a later argument."
-    },
-    "formativeAssessment": [
-      "Explains the exception’s function.",
-      "Avoids literal-idol-action misconception.",
-      "Uses purpose language accurately."
-    ],
-    "expectedResponses": [
-      "Leaving the largest idol intact with the axe creates a rhetorical test of whether the idols can act or speak."
-    ],
-    "transferTask": "Explain how leaving one exception in a neutral demonstration can make the tested claim clearer.",
-    "teacherReflection": "Did learners understand the scene as staged evidence rather than literal attribution?"
+    chapter: '17. Questioned Before the People', timing: '40 minutes',
+    objectives: ['Explain Abraham’s plan: he distances himself, waits for the festival, goes to the empty temple and questions a statue.', 'Interpret “Why don’t you eat?” as an ironic test, not a real question.', 'Discover the future seen from the past (was going to, would), the time sequence in a plan (decided to, waited until, then, had gone) and a rhetorical question as a test.', 'Write a plan-and-test paragraph with clear time relations.'],
+    pedagogy: 'Build a plan timeline on the board: resistance → decision → knowledge of the festival → waiting → temple → question → silence. Learners add a quoted phrase to each step. The viewpoint is discovered by asking: “At the moment he made his plan, had the festival happened yet? How does the narrator show this?” Learners find “was going to” and “would”. The irony is discovered from the result sentence: “What did the statue do? So what did the question prove?” The axe is mentioned calmly as part of the narrative; no acting out.',
+    priorKnowledge: ['Future seen from the past from Chapter 5; past perfect; until.'],
+    anticipatedMisconceptions: ['Abraham does not expect the statue to eat; the question is ironic.', 'The priests had gone before Abraham arrived; that is why the temple was empty.', 'The chapter title speaks of questioning before the people, but in this chapter the people are away at the festival; Abraham questions the statue.'],
+    grammarFocus: 'Targets: future seen from the past (He knew that there was going to be a great celebration … All the people would attend it) · plan sequence (decided to do …, waited until the city was empty, then …) · past perfect for an earlier event (The priests had also gone …) · rhetorical question as an ironic test (Why don’t you eat?) · However for continued resistance.\nNotice (Activity 1): ask: “Does Abraham really want an answer from the statue? What happens next?” Learners use “The statue kept silent and rigid” as the evidence before you name irony.\nBuild (Activities 2–3): rewrite the reported ideas as Abraham’s own thoughts (is going to be, will attend), then correct doing → to do, will be → was, have → had.\nLikely errors: *decided doing · *waited until the city will be empty · *The priests have also gone · keeping “would” inside Abraham’s own thought.\nUse (Activity 4): an 8–10 sentence plan-and-test paragraph on a non-story situation with however, a decision phrase, a purpose clause, was going to / would, an until-clause, one past perfect and an ironic question, ending with what the test revealed.',
+    pronunciationFocus: 'Future-in-the-past in weak forms: “there was GOing to be /wəz ˈɡəʊɪŋ tə bi/ a GREAT celeBRAtion”; “all the PEOple would atTEND it” /wəd/.\nSequence markers with pauses: “He WAITed | until the CIty was EMPty, | THEN | CAUtiously MADE his WAY to the TEMple.”\nIrony in the voice: a calm, level tone on “The FOOD in front of you is getting COLD. | WHY DON’T you EAT?”\n-ed endings: distanced /t/, decided /ɪd/, waited /ɪd/, approached /t/, asked /t/.\nWord focus: cel-e-BRA-tion, CAU-tious-ly, OF-fer-ings, RI-gid, FES-ti-val.',
+    beforeReading: ['Ask pairs: “If you want to prove a point without a long argument, what could you do?” Collect two ideas (show a test, a demonstration). Keep them for the chapter.'],
+    duringReading: ['Plan timeline: seven steps with a quoted phrase each.', 'Underline “was going to” and “would”.', 'Circle “until” and “had also gone”.', 'Box the question to the statue and the sentence that follows it.'],
+    afterReading: ['Complete the Quick Challenge using the timeline.', 'Language Focus: interpret the ironic question (Activity 1), turn the reported ideas into Abraham’s thoughts (Activity 2), correct the timing forms (Activity 3).', 'Write the Activity 4 plan-and-test paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “How can you prove a point without a long argument?” two ideas; 5–12 Listen and read; 12–19 Timeline in groups of three on A4 (seven steps, each with a quote), then one group presents and others correct the order; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as whole-class discovery (Does he want an answer? What happens next?), Activity 2 in pairs (What did Abraham think at that moment?), Activity 3 individually; 32–38 Use: learners write a plan-and-test paragraph about a student who tests an advert’s claim that a bag is waterproof, with was going to, until, had + past participle and an ironic question; 38–40 Exit ticket.',
+    discussionPoints: ['Why did Abraham wait until the city was empty?', 'What does the silence of the statue show?', 'How does the narrator show what Abraham knew about the future?'],
+    interactiveTips: ['Use the “held on tightly” hotspot for the resistance and the “great celebration” hotspot for the timing of the plan.', 'Replay the last three sentences and ask learners what the silence proves.', 'Describe the axe only as the text does; no dramatisation.'],
+    differentiation: { strugglingLearners: 'Give the timeline steps on cards to order and the frames “He knew that there was going to be ____.” and “He waited until ____.”', fastFinishers: 'Write the plan as Abraham’s own thoughts in the present (There is going to be …, I will …) and then as the narrator’s past account, and list every form that changes.' },
+    formativeAssessment: ['Orders the plan accurately.', 'Explains the ironic question with the silence as evidence.', 'Controls future-in-the-past, until and the past perfect.'],
+    expectedResponses: ['Because the idolaters held on to their idols, Abraham decided to show their error; he knew everyone would attend a festival outside the town, waited until the city was empty, went to the temple, where even the priests had gone, and asked a statue why it did not eat, but it stayed silent.'],
+    transferTask: 'Write three sentences about a test you once made of a claim (an app, a product, a rumour): what you were going to check, what you waited for, what the result showed.',
+    teacherReflection: 'Did learners discover the irony from the evidence sentence, and did the timeline make the time relations clear?',
+    assessmentTools: { rubric: ['Plan sequence', 'Viewpoint in time', 'Irony and evidence', 'Coherent test paragraph'], exitTicket: ['Write one sentence with “was going to” and one with “waited until …”.'] },
   },
   {
-    "chapter": "19. Thrown into the Fire",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse the public exchange in which Abraham directs the people to ask the largest idol.",
-      "Identify the people’s admission that the idols cannot speak as the argumentative turning point.",
-      "Use direct challenge, conditional test and self-correction language to show how the contradiction is voiced by the people themselves."
-    ],
-    "pedagogy": "Map speaker moves in sequence: accusation → Abraham’s rhetorical reply → instruction to ask → people’s self-recognition → reversion. Learners identify exactly where the opponents state the contradiction.",
-    "priorKnowledge": [
-      "Chapter 18 rhetorical setup and the difference between literal and rhetorical attribution."
-    ],
-    "anticipatedMisconceptions": [
-      "Abraham’s statement is not a literal attribution of guilt to the idol."
-    ],
-    "grammarFocus": "Direct challenge → corrective contrast → conditional test → admission; self-correction/reversal; purpose.",
-    "pronunciationFocus": "Use distinct speaker voices without dramatization; stress “Ask them if they can speak” and the opponents’ admission that the idols do not speak.",
-    "beforeReading": [
-      "Ask what happens in an argument when the opposing side states the key contradiction themselves."
-    ],
-    "duringReading": [
-      "Label every speaker in the exchange.",
-      "Underline the conditional “if they can speak”.",
-      "Mark the point where the people say the idols cannot speak and the later reversion to old ideas."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by locating the turning-point admission.",
-      "Use Language Focus to write a conditional test and a self-correction sentence.",
-      "Explain why the admission is strong evidence even though it does not end the conflict."
-    ],
-    "lessonPlan": "1. 0–5 min: self-admission as evidence. 2. 5–15 min: read/listen and label speakers. 3. 15–23 min: map test→admission→reversion. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on conditional test and reversal. 6. 37–43 min: turning-point analysis. 7. 43–45 min: exit ticket quoting/paraphrasing the admission.",
-    "discussionPoints": [
-      "At what moment do the people verbalise the contradiction themselves?",
-      "Why does the admission not automatically produce lasting change?"
-    ],
-    "interactiveTips": [
-      "Use speaker labels on every quotation to prevent narrator/opponent confusion.",
-      "Keep “they admit inability” separate from “they permanently change belief”."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the four dialogue moves on cards and ask learners to order them.",
-      "fastFinishers": "Write a seven-sentence argument analysis using one conditional test and one reversal marker."
-    },
-    "formativeAssessment": [
-      "Identifies speaker ownership.",
-      "Locates the argumentative turning point.",
-      "Separates admission from durable change."
-    ],
-    "expectedResponses": [
-      "The people themselves admit that the idols cannot speak, which exposes the contradiction Abraham’s rhetorical test was designed to reveal."
-    ],
-    "transferTask": "Analyse a neutral debate where a speaker’s own admission changes the strength of an argument.",
-    "teacherReflection": "Did learners identify the exact turning point rather than summarize the whole confrontation?"
+    chapter: '18. The Decision to Burn Abraham', timing: '40 minutes',
+    objectives: ['Explain what Abraham did in the temple and why: a practical proof of the people’s error.', 'Follow the people’s reaction: shock, the search for who did it and the start of the quoted verses.', 'Discover “for” + clause as reason, “all except one”, the past perfect and “Having fulfilled …” for a completed action, and hung vs hanged, shocked to see, who had done.', 'Keep narrative, quoted verse and the narrator’s evaluation apart when summarising.'],
+    pedagogy: 'The chapter is the turning point of the temple episode. Learners first separate three kinds of text: quoted verses (Sâffât 91–92, Enbiyâ 59–67), the narrator’s account of actions and the narrator’s evaluation (“a practical proof of their foolishness”). Then the one statue left standing is treated as a clue: “Why did he leave one? Where did he put the axe?” The reason meaning of “for” is discovered by testing: learners replace “for” with “because” and with “in order to” and decide which keeps the meaning. The breaking of the idols is summarised calmly and never acted out.',
+    priorKnowledge: ['Chapter 17 plan; past perfect; except.'],
+    anticipatedMisconceptions: ['“For he knew they would not eat” gives a reason, not a purpose.', 'He destroyed all the statues except one; the one left matters for the next chapter.', 'The chapter title speaks of the decision to burn Abraham, but that decision comes later (Chapter 20); here the people only search for who did it.'],
+    grammarFocus: 'Targets: for + clause = because (He was mocking them, for he knew they would not eat) · exception with all except one · past perfect and perfect participle for a completed task (He had fulfilled his duty … → Having fulfilled …) · hung (objects) vs hanged · adjective + to-infinitive (shocked to see) · who had done that (earlier action in a reported search).\nNotice (Activity 1): ask: “Why was he mocking them? Replace ‘for’ with ‘because’ and then with ‘in order to’: which keeps the meaning?” Learners judge the statement false with their own test.\nBuild (Activities 2–3): split “all except one” into two statements and put the completed task first with Having fulfilled / After fulfilling; then complete hung / to see / had done and explain why hanged, for seeing and has done fail.\nLikely errors: *he hanged the axe · *shocked for seeing · *who has done that · *Having fulfilled his duty, the temple was left (dangling subject).\nUse (Activity 4): an 8–10 sentence evidence-building paragraph on a non-story situation with a rhetorical question, a reason with for or because, one exception, a past-perfect completion and a short attributed quotation or piece of evidence, ending with what the evidence shows.',
+    pronunciationFocus: 'Separate the reason with a pause: “He was MOCKing them, | for he KNEW they would NOT EAT.”\nException with contrastive stress: “He desTROYED them ALL | exCEPT ONE.”\nPast perfect weak form: “He had fulFILLED /həd/ his DUty …”; “who had DONE that”.\nIrregular past: hung /hʌŋ/ (not hanged).\nWord focus: MOCK-ing, OF-fer-ing, ful-FILLED, PRAC-ti-cal, FOOL-ish-ness, WRONG-do-ers.',
+    beforeReading: ['Recall the silent statue from Chapter 17. Ask: “If silence proves something, what could make the proof even clearer for everyone?” Collect predictions without confirming them.'],
+    duringReading: ['Three colours: quoted verse / narrator’s account / narrator’s evaluation.', 'Underline the reason introduced by “for”.', 'Mark the exception and where the axe was put.', 'Circle the people’s first reaction and their question.'],
+    afterReading: ['Complete the Quick Challenge with the three colours in view.', 'Language Focus: test the meaning of “for” (Activity 1), rewrite the exception and the completed task (Activity 2), complete hung / to see / had done (Activity 3).', 'Write the Activity 4 evidence-building paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “What could make the proof clearer?” predictions from Chapter 17; 5–12 Listen and read (the teacher summarises the breaking in one calm sentence); 12–18 Three-colour highlighting in pairs, then a whole-class check of what the narrator calls “a practical proof”; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery with the because / in order to test, Activity 2 in pairs, Activity 3 individually with a quick explanation of hung vs hanged; 31–38 Use: learners write an evidence-building paragraph about a science-fair test of a “miracle” cleaning product, with for + reason, except, Having + past participle and one attributed quotation from a label; 38–40 Exit ticket.',
+    discussionPoints: ['What does the narrator say Abraham’s action proved?', 'Why might it matter that one statue was left with the axe on its neck?', 'How did the people react when they returned?'],
+    interactiveTips: ['Use the “mocking them” hotspot with the reason clause and the “false gods” hotspot with the narrator’s evaluation.', 'Replay the people’s return and ask for the three reactions (shocked, tried to find out, remembered his name).', 'Never role-play smashing or violence; keep the focus on evidence and reasoning.'],
+    differentiation: { strugglingLearners: 'Give the frames “He was mocking them, for ____.”, “He destroyed all of them except ____.” and “Having ____, he ____.”', fastFinishers: 'Write a short report of the scene as a neutral news paragraph (who, what, where, reaction) using one past perfect, one exception and one attributed quotation from the chapter’s verses.' },
+    formativeAssessment: ['Separates verse, account and evaluation.', 'Explains “for” as reason with a substitution test.', 'Uses the past perfect or a perfect participle for a completed action.'],
+    expectedResponses: ['Abraham asked the statues why they did not eat or speak, mocking them because he knew they would not; he destroyed all of them except one, hung the axe on its neck and left, having given a practical proof; the people were shocked to see their gods smashed and tried to find out who had done it.'],
+    transferTask: 'Write two sentences about a task you completed before something else happened: one with “had + past participle” and one beginning “Having …”.',
+    teacherReflection: 'Did learners discover the reason meaning of “for” through the substitution test, and did the class stay calm and analytical about the destruction scene?',
+    assessmentTools: { rubric: ['Voice distinction', 'Reason vs purpose', 'Completion and sequence', 'Evidence paragraph'], exitTicket: ['Write one sentence with “for” meaning “because” and one sentence with “all … except …”.'] },
   },
   {
-    "chapter": "20. The Faith of the Believers",
-    "timing": "45 minutes",
-    "objectives": [
-      "Evaluate the shift from failed argument to coercive punishment.",
-      "Distinguish recognition of contradiction from willingness to admit it publicly.",
-      "Use strong inference, narrowed options, collective decision and passive authority language to explain why social power remains after argumentative defeat."
-    ],
-    "pedagogy": "Use two tracks: intellectual outcome / political response. On one track the people have no answer and recognise the problem; on the other, arrogance and authority produce chains, collective wood gathering and the fire plan.",
-    "priorKnowledge": [
-      "Chapter 19 admission/reversion and the concept of coercion."
-    ],
-    "anticipatedMisconceptions": [
-      "Lack of a verbal answer does not automatically mean social power disappears."
-    ],
-    "grammarFocus": "Strong inference with must; recognition vs refusal; narrowed options; collective decision; passive authority.",
-    "pronunciationFocus": "Contrast stress on no answer / however / authority; keep the descriptions of chains and fire factual rather than dramatic.",
-    "beforeReading": [
-      "Ask whether losing an argument necessarily means losing institutional or political power."
-    ],
-    "duringReading": [
-      "Mark the statement that the people have no answer and realise the contradiction.",
-      "Underline the explanation that arrogance blocks admission.",
-      "Trace the collective decisions: chains, burning, ordered wood gathering and catapult preparation."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the two-track map.",
-      "Use Language Focus to write a recognition-versus-action contrast.",
-      "Explain why coercion can follow argumentative failure without implying the argument had no effect."
-    ],
-    "lessonPlan": "1. 0–5 min: argument power vs social power. 2. 5–15 min: read/listen for recognition and refusal. 3. 15–23 min: two-track map of intellectual/political outcome. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on inference and passive authority. 6. 37–43 min: coercion analysis. 7. 43–45 min: exit ticket completing “They had no answer, but…”.",
-    "discussionPoints": [
-      "Why can recognition of a contradiction fail to produce public change?",
-      "Which actions show that authority remains even after the argument fails?"
-    ],
-    "interactiveTips": [
-      "Do not role-play punishment; analyse institutional actions through the text.",
-      "Ask learners to distinguish evidence of recognition from evidence of coercion with separate colours."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide two columns: What they recognised / What they did next.",
-      "fastFinishers": "Write eight sentences explaining how argumentative defeat and coercive power can coexist."
-    },
-    "formativeAssessment": [
-      "Separates recognition from action.",
-      "Identifies collective coercive mechanisms.",
-      "Uses passive/collective language accurately."
-    ],
-    "expectedResponses": [
-      "The chapter says the people recognise the contradiction yet refuse to admit it, then use political authority and collective coercion to punish Abraham."
-    ],
-    "transferTask": "Explain a neutral situation where evidence changes the intellectual balance but not immediately the institutional outcome.",
-    "teacherReflection": "Did learners grasp the difference between losing an argument and losing power?"
-  }
-
-,
-
-  {
-    "chapter": "21. The Coolness of the Fire",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse the miracle as a reversal of the crowd’s intended instrument of coercion.",
-      "Identify the command for the fire to become coolness and safety and the detail that only the ropes burn.",
-      "Use cause, restriction, passive event focus and change-of-state language to describe the reversal without attributing control to Abraham."
-    ],
-    "pedagogy": "Use an intention/outcome contrast. Learners first state what the fire is meant to do, then trace the narrative result: flames remain, Abraham is not burned, the ropes burn, and the fire becomes cool and safe by Allah’s command.",
-    "priorKnowledge": [
-      "Chapter 20 coercion plan and passive language for institutional action."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not say Abraham controls the fire himself."
-    ],
-    "grammarFocus": "Appearance/effect reversal; cause and restriction; passive event focus; change of state; as-if comparison.",
-    "pronunciationFocus": "Contrast burn / cool / safe / only the ropes; read the command to the fire with a clear pause before the result.",
-    "beforeReading": [
-      "Ask what would count as a true reversal if a punishment device remained physically present but failed in its intended effect."
-    ],
-    "duringReading": [
-      "Mark the chief priest’s order and the catapult action.",
-      "Underline the divine command and every detail showing what the fire does and does not burn.",
-      "Identify the garden comparison as a description of experience, not a literal location change."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the intention/outcome chart.",
-      "Use Language Focus to write one restricted result with only and one change-of-state sentence.",
-      "Explain why the ropes detail matters to the reversal."
-    ],
-    "lessonPlan": "1. 0–5 min: intended effect vs actual effect. 2. 5–14 min: read/listen to the throwing and command. 3. 14–22 min: map fire effects and non-effects. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on restriction and change of state. 6. 36–43 min: reversal explanation. 7. 43–45 min: exit ticket: what burned and what did not.",
-    "discussionPoints": [
-      "How does the same fire function differently for the crowd’s intention and the narrative outcome?",
-      "Why is “only the ropes” an important limiting detail?"
-    ],
-    "interactiveTips": [
-      "Keep cause ownership explicit: the text attributes the change to Allah’s command.",
-      "Use a two-column intention/outcome board rather than dramatizing the fire scene."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide four cards: flames remain / Abraham unharmed / ropes burn / fire becomes cool and safe.",
-      "fastFinishers": "Write six sentences using only, but and became to explain the reversal precisely."
-    },
-    "formativeAssessment": [
-      "Identifies the reversal accurately.",
-      "Preserves agency attribution.",
-      "Uses restriction language correctly."
-    ],
-    "expectedResponses": [
-      "The fire remains present but, by Allah’s command, becomes cool and safe for Abraham and burns only his ropes."
-    ],
-    "transferTask": "Explain a neutral situation where an intended mechanism remains present but its expected effect is reversed.",
-    "teacherReflection": "Did learners describe the reversal through the text’s precise limits rather than vague miracle language?"
+    chapter: '19. Thrown into the Fire', timing: '40 minutes',
+    objectives: ['Follow the trial in the verses: the accusation, Abraham’s answer, the people’s brief self-correction and their reversal.', 'Explain why Abraham did not resist the arrest: he wanted a public audience for his proof.', 'Discover the reversal pattern (self-correction → But … reverted), reported questions and instructions, the formal demand “that Abraham (pbuh) be arrested and judged”, and purpose with so that / wanted to.', 'Build a public contradiction test in a non-story paragraph.'],
+    pedagogy: 'Draw a simple “mood line” on the board for the people: accusation → self-correction (You yourselves are the wrongdoers) → reversal (they reverted) → demand for arrest. Learners find the words that mark each turn. To discover the reversal you ask: “Did the people change their minds for good? Which word in the next sentence tells you?” Abraham’s calm is then explained through purpose: “Why didn’t he resist?” The chapter title mentions the fire, but this chapter ends at the trial; the fire comes later. Verses are read and explained, not gapped.',
+    priorKnowledge: ['Chapter 18 events; reported questions with if; told + person + to.'],
+    anticipatedMisconceptions: ['“You yourselves are the wrongdoers” is a moment of self-correction, not a lasting change.', '“But it was this biggest of them that did it” is part of Abraham’s test (“Ask them if they can speak”), not a sincere accusation of the statue.', 'Abraham did not resist because the public trial served his purpose, not because he was helpless.'],
+    grammarFocus: 'Targets: turns in the dialogue (challenge → corrective “But it was …” → test “Ask them if they can speak” → self-correction → reversal “But they reverted …”) · reported yes/no question (asked him if he was …) · reported instruction (told them to ask …) · formal demand (demanded that Abraham (pbuh) be arrested and judged) · purpose (so that he could demonstrate … → he wanted to demonstrate …) · resist → offer/put up no resistance.\nNotice (Activity 1): ask: “Did the people change their minds for good? What is the very next word, and what does ‘reverted’ mean?” Learners judge the statement false and point to “But … reverted”.\nBuild (Activities 2–3): correct was he → he was, ask → to ask, arrest → arrested; then restate the purpose with “he wanted to …” and the verb “resist” as a noun phrase.\nLikely errors: *asked him if was he · *told them ask · *demanded that Abraham be arrest · *offered no resist (verb instead of the noun).\nUse (Activity 4): an 8–10 sentence public contradiction test on a non-story situation with a challenge, a corrective but, an if-test, a brief self-correction and reversal, a so-that purpose and a final rhetorical question.',
+    pronunciationFocus: 'Corrective stress in Abraham’s answer: “But it was THIS BIGgest of them | that DID it.”\nReversal signalled by stress and pause: “But they reVERTed | to their OLD iDEas.”\nReported question without rising tone: “they ASKED him | if he was reSPONsible for BREAKing the IDols.”\nWord focus: re-VERT-ed, re-SIST, re-SPON-si-ble, DEM-on-strate, un-DAM-aged, FU-ri-ous-ly.',
+    beforeReading: ['Ask: “Have you ever seen someone admit they were wrong and then quickly go back to their old view? Why might that happen?” Collect two reasons (pride, pressure).'],
+    duringReading: ['Draw the people’s mood line with four points.', 'Underline the test Abraham proposes.', 'Circle “But they reverted”.', 'Mark why Abraham did not resist.'],
+    afterReading: ['Complete the Quick Challenge with the mood line in view.', 'Language Focus: judge the self-correction (Activity 1), correct the reported trial language (Activity 2), express the purpose behind his calm (Activity 3).', 'Write the Activity 4 public contradiction test on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “Admit, then go back to the old view — why?” two reasons; 5–12 Listen to the verses and read; 12–18 Mood line in pairs with a quote at each point, then the whole class adds Abraham’s purpose under the line; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (For good? Which word tells you?), Activity 2 in pairs, Activity 3 individually; 31–38 Use: learners write a public contradiction test about a club that claims all members are welcome but meets only when some cannot come, with but, if, so that and a final rhetorical question; 38–40 Exit ticket.',
+    discussionPoints: ['What test does Abraham propose, and what does it reveal?', 'Why is the people’s self-correction important, even though it does not last?', 'What does the narrator say Abraham was aiming for?'],
+    interactiveTips: ['Use the “may witness” hotspot for the public trial and the “reverted” hotspot for the reversal.', 'Replay the verse from “Then they turned to one another” to “Do you not understand?” and ask learners to mark the reversal.', 'Do not stage the trial; report it in neutral language.'],
+    differentiation: { strugglingLearners: 'Give the frames “They asked him if ____.”, “He told them to ____.” and “He did not resist so that he could ____.”', fastFinishers: 'Report the whole dialogue of the verse in indirect speech (asked if, told them to, admitted that, insisted that) and explain two choices of reporting verb.' },
+    formativeAssessment: ['Identifies the self-correction and the reversal with evidence.', 'Reports questions, instructions and demands correctly.', 'Explains Abraham’s calm through purpose.'],
+    expectedResponses: ['Asked if he had done it, Abraham pointed to the biggest idol and told them to ask the idols if they could speak; the people briefly said they themselves were the wrongdoers but reverted to their old ideas and demanded his arrest, and he did not resist because he wanted to show publicly that their beliefs were foolish.'],
+    transferTask: 'Report a short disagreement from a TV debate or a class discussion in three sentences with “asked if”, “told … to” and “demanded that”.',
+    teacherReflection: 'Did learners notice how the reversal is signalled, and did they understand Abraham’s calm as purposeful?',
+    assessmentTools: { rubric: ['Dialogue turns', 'Reporting accuracy', 'Purpose', 'Contradiction test'], exitTicket: ['Write one reported yes/no question and one sentence with “demanded that … be …”.'] },
   },
   {
-    "chapter": "22. Stepping Out Unharmed",
-    "timing": "45 minutes",
-    "objectives": [
-      "Evaluate the different social responses after Abraham emerges unharmed.",
-      "Distinguish miracle outcome from subsequent public, secret and hostile reactions.",
-      "Use duration, turning-point, consequence and motive language to explain why one event produces varied responses."
-    ],
-    "pedagogy": "Build a response spectrum. After confirming the unchanged miracle evidence, learners sort people into public followers, secret believers and rulers whose anger remains, then identify fear of rulers as a motive for secrecy.",
-    "priorKnowledge": [
-      "Chapter 21 miracle outcome and cause/consequence distinction."
-    ],
-    "anticipatedMisconceptions": [
-      "A powerful event does not produce one uniform reaction in the chapter."
-    ],
-    "grammarFocus": "Duration → result; turning point; past-perfect prior result; consequence vs motive; contrast and reaction focus.",
-    "pronunciationFocus": "Stress long time / once the fire burnt out / consequently / but some; use contrastive rhythm to separate the response groups.",
-    "beforeReading": [
-      "Ask why the same striking event can produce different public behaviours."
-    ],
-    "duringReading": [
-      "Mark how long the fire burns and the turning point when Abraham exits.",
-      "Separate the rulers’ reaction from the response of followers.",
-      "Underline the reason some keep faith secret."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by matching response with motive.",
-      "Use Language Focus to distinguish consequence from motive in two sentences.",
-      "Write a short response-spectrum explanation without saying everyone believed."
-    ],
-    "lessonPlan": "1. 0–5 min: one event, different reactions. 2. 5–15 min: read/listen to fire ending and exit. 3. 15–23 min: sort rulers/followers/secret believers. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on duration, result and motive. 6. 37–43 min: response-spectrum paragraph. 7. 43–45 min: exit ticket: one reaction and its reason.",
-    "discussionPoints": [
-      "What does the hidden-belief detail show about the relation between conviction and political fear?",
-      "Why should consequence and motive not be merged?"
-    ],
-    "interactiveTips": [
-      "Use separate cards for belief state and public action.",
-      "Require the phrase about fear of rulers before accepting an explanation of secrecy."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use a three-row table: group / response / reason.",
-      "fastFinishers": "Write seven sentences comparing public following, secret belief and continued elite hostility."
-    },
-    "formativeAssessment": [
-      "Distinguishes response groups.",
-      "Identifies fear as motive rather than miracle consequence.",
-      "Avoids uniform-reaction claims."
-    ],
-    "expectedResponses": [
-      "Many begin following Abraham, some hide belief because they fear rulers, while the rulers’ anger continues."
-    ],
-    "transferTask": "Explain a neutral event that produces different public actions because people face different risks.",
-    "teacherReflection": "Did learners separate internal conviction, public behaviour and political pressure?"
+    chapter: '20. The Faith of the Believers', timing: '40 minutes',
+    objectives: ['Explain how the people move from failed argument to force: recognition, refusal, punishment and preparation of the fire.', 'Interpret “it must be the culprit” as ironic deduction.', 'Discover must for deduction, “All they could do was …” for narrowed options, although vs however, passive orders and agree to / decide to.', 'Discuss recognition without admission, calmly and without dramatising the preparations.'],
+    pedagogy: 'Show the turn from reasoning to force as two halves of the board: “What they realised” / “What they did”. Learners fill both halves with quotes and notice that the second half grows as the first half is refused. For “must” you ask: “Is Abraham giving an order to the idol, or drawing a conclusion? Does he believe it?” Learners find the ironic deduction. The preparation of the fire is read once by the teacher in an even voice; learners summarise it in neutral words and never act it out.',
+    priorKnowledge: ['Must for obligation; however; passive with were ordered.'],
+    anticipatedMisconceptions: ['“It must be the culprit” is not an obligation; it is an ironic conclusion.', 'The people realised the weakness of their beliefs but did not admit it; recognition is not admission.', 'The chapter title mentions believers, but the chapter describes the people’s preparations; do not add events about believers that the chapter does not contain.'],
+    grammarFocus: 'Targets: must for deduction (it must be the culprit, said ironically) · narrowed options (All they could do was use …) · recognition vs refusal (In fact, they realized …; however, their arrogance would not allow them …) → Although … · passive order (All the citizens were ordered to …) → active · agree that … should be … → agree to + verb · decide to + verb · dig – dug – dug.\nNotice (Activity 1): ask: “Is ‘must’ an order here? Does Abraham think the idol really did it?” Learners explain the ironic deduction with the people’s own answer as evidence.\nBuild (Activities 2–3): complete could / to throw / dug and explain why should, throwing and digged fail; then rewrite with Although, with an active order and with agree to.\nLikely errors: *All they could do was to use (possible but not the text’s form) · *decided throwing · *digged · *Although they realized …, however … (double contrast).\nUse (Activity 4): an 8–10 sentence paragraph on a non-story situation where a group recognises a weak argument but refuses to admit it, with must, in fact, however, “all they could do was …”, agreed that / decided to, one passive order and a purpose phrase.',
+    pronunciationFocus: 'Ironic deduction with a strong stress on MUST: “it MUST be the CULprit!”\nConcession with a clear fall-rise before the main point: “ALTHOUGH they reALized … , | their ARrogance would NOT alLOW them …”.\nNarrowed option: “ALL they could DO | was USE their auTHORity”.\nRead the preparations in an even, calm voice with short pauses; no dramatic emphasis.\nWord focus: CUL-prit, AR-ro-gance, TY-rants, au-THOR-i-ty, CAT-a-pult, CIT-i-zens.',
+    beforeReading: ['Ask: “When people lose an argument but will not admit it, what do they sometimes do instead?” Collect answers in neutral words (change the topic, use power, get angry).'],
+    duringReading: ['Two halves: what they realised / what they did.', 'Underline “must” and the people’s reply.', 'Circle “however” and “All they could do was”.', 'Mark the passive order and the collective decision.'],
+    afterReading: ['Complete the Quick Challenge using the two halves.', 'Language Focus: interpret “must” (Activity 1), complete the narrowed choice and decision (Activity 2), rewrite contrast, order and decision (Activity 3).', 'Write the Activity 4 paragraph about recognition without admission in a non-story situation.'],
+    lessonPlan: '0–5 Hook: “What do people do when they lose an argument but will not admit it?” neutral answers; 5–12 Listen and read (the teacher reads the preparations once, calmly); 12–18 Two-halves board in pairs, then a whole-class sentence: “They realized … / however, …” (written with a semicolon in their notebooks); 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (An order or a conclusion?), Activity 2 in pairs, Activity 3 individually with a check of Although vs however; 31–38 Use: learners write a recognition-without-admission paragraph about a team that knows its tactics failed but refuses to change them, with must, in fact, however and “all they could do was …”; 38–40 Exit ticket.',
+    discussionPoints: ['What does the people’s reply prove about their own belief?', 'Why does the chapter say their arrogance would not allow them to admit it?', 'How does the language show the move from argument to force?'],
+    interactiveTips: ['Use the “culprit” hotspot for the ironic deduction and the “arrogance” hotspot for the refusal.', 'Replay the sentence with “In fact … however …” and ask what each half says.', 'Do not describe or discuss the fire in more detail than the chapter gives; never role-play it.'],
+    differentiation: { strugglingLearners: 'Give the frames “It must be ____.”, “Although they ____, they would not ____.” and “All they could do was ____.”', fastFinishers: 'Write two versions of the recognition sentence (with however and with although) and explain which one makes the refusal the main point.' },
+    formativeAssessment: ['Explains “must” as ironic deduction.', 'Distinguishes recognition from admission.', 'Transforms contrast, orders and decisions accurately.'],
+    expectedResponses: ['Abraham said the biggest idol must be the culprit, and the people answered that it could not speak or move; they realized their beliefs were foolish but their arrogance stopped them admitting it, so all they could do was use their power: they chained him and decided to throw him into a great fire.'],
+    transferTask: 'Write two sentences about a time someone realised they were wrong: one with “In fact, …; however, …” and one with “Although …, …”.',
+    teacherReflection: 'Did learners discover the deductive meaning of “must”, and did the class treat the preparations calmly and factually?',
+    assessmentTools: { rubric: ['Deduction', 'Recognition vs admission', 'Transformation accuracy', 'Sensitive handling'], exitTicket: ['Write one sentence with “must be” for a conclusion and one with “All … could do was …”.'] },
   },
   {
-    "chapter": "23. Debating King Nimrod",
-    "timing": "45 minutes",
-    "objectives": [
-      "Identify the category error in Nimrod’s claim that releasing one prisoner and killing another equals giving life and causing death.",
-      "Distinguish control over a prisoner’s fate from control over life and death as Abraham frames it.",
-      "Use reported stance, passive focus and parallel claims to compare the two meanings."
-    ],
-    "pedagogy": "Create a claim-scope table. One side records Abraham’s proposition about life/death; the other records what Nimrod actually does with two condemned men. Learners judge whether the actions match the original category before moving to the next chapter.",
-    "priorKnowledge": [
-      "Claim scope and evidence testing from Chapters 15 and 19."
-    ],
-    "anticipatedMisconceptions": [
-      "Choosing a prisoner’s fate is not equivalent to creating life or controlling death itself."
-    ],
-    "grammarFocus": "Reported stance; passive/modal focus; compressed background; past-perfect cause chain; parallel claims.",
-    "pronunciationFocus": "Contrast “gives life and causes death” with “freed one / put the other to death”; stress the verbs that reveal different scopes.",
-    "beforeReading": [
-      "Ask how a debate can fail when two speakers use the same words for different categories of action."
-    ],
-    "duringReading": [
-      "Mark Abraham’s exact life/death claim.",
-      "Record Nimrod’s response and the two prisoner actions.",
-      "Label what Nimrod demonstrably controls and what the original claim refers to."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by matching action to claim scope.",
-      "Use Language Focus to write two parallel sentences with different scopes.",
-      "Explain the category error without simply calling the reply foolish."
-    ],
-    "lessonPlan": "1. 0–5 min: same words, different scope. 2. 5–14 min: read/listen to the first exchange. 3. 14–22 min: build the claim-scope table. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on reported stance and parallel claims. 6. 36–43 min: category-error explanation. 7. 43–45 min: exit ticket: what does Nimrod actually control?",
-    "discussionPoints": [
-      "What exactly does Nimrod control, and what does Abraham’s claim refer to?",
-      "Why is matching scope necessary before deciding whether a reply answers a claim?"
-    ],
-    "interactiveTips": [
-      "Ban evaluative labels until learners define both claim scopes.",
-      "Use identical sentence frames so the semantic mismatch becomes visible."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide two boxes: Political/legal control / Creating life and controlling death.",
-      "fastFinishers": "Write a six-sentence analysis using parallel clauses to show the category mismatch."
-    },
-    "formativeAssessment": [
-      "Defines both scopes accurately.",
-      "Explains the mismatch with evidence.",
-      "Uses reported stance clearly."
-    ],
-    "expectedResponses": [
-      "Nimrod controls the legal fate of prisoners, but that is not the same category as creating life or controlling death itself."
-    ],
-    "transferTask": "Find a neutral example where a reply uses the same word as a claim but answers a different category.",
-    "teacherReflection": "Did learners diagnose the category error rather than rely on the narrator’s evaluation alone?"
+    chapter: '21. The Coolness of the Fire', timing: '40 minutes',
+    objectives: ['Explain the turning point of the chapter: the fire remains, but by Allah’s command it becomes coolness and safety for Abraham.', 'Describe Abraham’s trust (his answer to Gabriel, his thanks) using the chapter’s words.', 'Discover “as if he were” for an unreal comparison, the passive at the turning point (was fired, was thrown, was turned), and but / for / only for contrast, cause and limit.', 'Separate appearance (the flames were still there) from effect (they did not burn him) in a non-story paragraph.'],
+    pedagogy: 'Use an appearance / effect table: what could still be seen (flames reaching the sky, heat, the pit) and what actually happened to Abraham (cool, safe, only the ropes burned). Learners discover the grammar of the contrast from the table: “What stayed the same? What changed? Why? What exactly did the fire burn?” leads to but, for and only. The passive is discovered by asking “Who fired the catapult? Why doesn’t the sentence say?” The scene is read calmly by the teacher or the audio; no one plays Abraham, Gabriel or the people.',
+    priorKnowledge: ['“As if” from Chapter 7; passive past simple; for = because from Chapter 18.'],
+    anticipatedMisconceptions: ['“As if he were sitting in a garden” does not mean the fire became a real garden.', 'The flames did not disappear; they were still there but did not burn him.', '“Nothing from you” is not rudeness to Gabriel; it shows that Abraham relied on Allah alone.'],
+    grammarFocus: 'Targets: unreal comparison with as if + were (as if he were sitting in a garden) and like + -ing (like going down into a cool garden) · passive at the turning point (The catapult was fired, and Abraham (pbuh) was thrown into the fire · … as the fire was turned into coolness) · ordered that … be thrown · but for contrast, for + clause for the cause, only to limit the effect · change of state (It became cool and safe).\nNotice (Activity 1): read “… he sat in the middle of the fire as if he were sitting in a garden.” Ask: “Where was he really? What did it feel like? Is the narrator unsure?” Learners explain the real/unreal comparison before you name it.\nBuild (Activities 2–3): rewrite the passives with an agent (They … threw him; Allah turned the fire …) and discuss what the active version adds; then complete but / for / only and say why because of, so and also fail.\nLikely errors: *as if he was a garden · *because of Allah commanded · *It also burned his ropes (wrong limit) · *the chief priest ordered that Abraham was thrown.\nUse (Activity 4): an 8–10 sentence paragraph on a non-story situation that still looks dangerous or difficult but whose effect changes, with but, one passive, for or because, only, one “as if” and became / was turned into.',
+    pronunciationFocus: 'Contrast inside the key sentence: “the RISing FLAMES were STILL THERE, | but they did NOT BURN him, | for alLAH comMANDed …”.\nRead the verse “O FIRE! | be COOLness and SAFEty for ABraham” slowly and respectfully, as a quotation.\nWeak forms in the passive: “was FIRED” /wəz/, “was THROWN”.\nLimit with stress: “it ONly BURNED his ROPES”.\nWord focus: CA-ta-pult, GA-bri-el, PLEA-sant (/e/), SAFE-ty, COOL-ness, o-BEYED.',
+    beforeReading: ['Ask: “Can something look exactly the same but have a completely different effect? Think of a medicine that looks like sweets, or a toy snake.” Pairs give one example in the frame “It still looked …, but …”.'],
+    duringReading: ['Appearance / effect table with quoted phrases.', 'Underline “as if” and “like”.', 'Circle the passive verbs at the turning point.', 'Mark Abraham’s answer to Gabriel and his thanks.'],
+    afterReading: ['Complete the Quick Challenge with the table in view.', 'Language Focus: interpret the garden comparison (Activity 1), name the agents behind the passives (Activity 2), complete contrast, cause and limit (Activity 3).', 'Write the Activity 4 appearance-versus-effect paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “It still looked …, but …” pairs give one everyday example; 5–12 Listen to the audio with books closed, then read; 12–18 Appearance / effect table in pairs, whole-class check of the one thing the fire burned; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Where was he really? What did it feel like?), Activity 2 in pairs (Who did it? Why doesn’t the sentence say?), Activity 3 individually; 31–38 Use: learners write an appearance-versus-effect paragraph about a storm that looked frightening but caused only small damage, or a difficult exam that turned out manageable, with but, for, only and “as if”; 38–40 Exit ticket.',
+    discussionPoints: ['What stayed the same in the fire, and what changed?', 'What does Abraham’s answer to Gabriel show about his trust?', 'Why does the chapter use the passive at the moment Abraham is thrown?'],
+    interactiveTips: ['Use the “flames reaching the sky” hotspot for appearance and the “chief priest” hotspot for the order.', 'Replay the verse once and let learners simply listen before discussing it.', 'No role-play of the fire, the angel or the prophet; keep all production in the non-story task.'],
+    differentiation: { strugglingLearners: 'Give the table with row headings and the frames “The flames were still there, but ____.”, “It only burned ____.” and “He sat as if ____.”', fastFinishers: 'Write the scene summary twice, once from the viewpoint of the watching people and once as a neutral report, and explain where the passive helps.' },
+    formativeAssessment: ['Separates appearance from effect with evidence.', 'Explains “as if he were” as an unreal comparison.', 'Uses but / for / only with the right logical relation.'],
+    expectedResponses: ['Abraham was thrown into the fire after answering Gabriel “Nothing from you”; the flames were still there but did not burn him, because Allah commanded the fire to be coolness and safety; it only burned his ropes, and he sat in the fire as if in a garden, thanking Allah.'],
+    transferTask: 'Describe something that looked worse than it really was in three sentences: one with “but”, one with “only”, one with “as if”.',
+    teacherReflection: 'Did the appearance / effect table lead learners to the contrast language, and did the class treat the miracle respectfully and without dramatisation?',
+    assessmentTools: { rubric: ['Appearance vs effect', 'Unreal comparison', 'Passive focus', 'Contrast, cause and limit'], exitTicket: ['Write one “as if … were …” sentence and one sentence with “only” that limits an effect.'] },
   },
   {
-    "chapter": "24. Sarah, Hajar, and a New Trial",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain why the sun challenge is harder for Nimrod to manipulate than the prisoner example.",
-      "Trace the chapter’s transition from the debate to Abraham’s continuing call and the identification of Sarah and Lot as believers.",
-      "Use argument escalation, expected effect, simultaneity, concession and general-to-specific reference."
-    ],
-    "pedagogy": "Teach two movements: argument escalation and social narrowing. Learners first compare the sun challenge with the earlier life/death claim, then track how the chapter moves from Abraham’s fame and continued preaching to the statement that only Sarah and Lot share his belief.",
-    "priorKnowledge": [
-      "Chapter 23 claim-scope mismatch."
-    ],
-    "anticipatedMisconceptions": [
-      "The argument does not claim the sun itself is divine."
-    ],
-    "grammarFocus": "Argument escalation and result; expected effect with would; simultaneity, concession, limitation and general → specific reference.",
-    "pronunciationFocus": "Stress east / west in the challenge, then use a reset before “In the meantime” to mark the shift from debate to social response.",
-    "beforeReading": [
-      "Ask what makes a second test more resistant to verbal manipulation than the first."
-    ],
-    "duringReading": [
-      "Underline the east/west challenge and Nimrod’s inability to answer.",
-      "Mark the spread of Abraham’s fame and his continued efforts.",
-      "Identify the limiting statement that only one woman and one man share his belief and name them."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge with the correct argumentative or social detail.",
-      "Use Language Focus to write an escalation sentence followed by a limiting social-response sentence.",
-      "Explain why the chapter can show fame spreading while belief remains limited."
-    ],
-    "lessonPlan": "1. 0–5 min: stronger-test prediction. 2. 5–14 min: read/listen to the sun challenge. 3. 14–22 min: compare first and second debate tests. 4. 22–28 min: track fame, preaching and limited belief; Quick Challenge. 5. 28–37 min: Language Focus on escalation and limitation. 6. 37–43 min: two-movement synthesis. 7. 43–45 min: exit ticket naming Sarah and Lot and the reason the second test differs.",
-    "discussionPoints": [
-      "Why is the second challenge harder for Nimrod to manipulate rhetorically?",
-      "How can fame spread while conversion remains limited?"
-    ],
-    "interactiveTips": [
-      "Keep “sun as test” separate from “sun as object of worship”.",
-      "Use a divider between the debate half and the Sarah/Lot transition half of the chapter."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use two headings: Stronger argument / Limited social response.",
-      "fastFinishers": "Write seven sentences linking argumentative escalation, fame and limited belief with concession."
-    },
-    "formativeAssessment": [
-      "Explains why the second test matches the claim more directly.",
-      "Identifies Sarah and Lot correctly.",
-      "Uses limitation language accurately."
-    ],
-    "expectedResponses": [
-      "Abraham shifts to a cosmic test Nimrod cannot control; despite growing fame and continued preaching, the chapter identifies Sarah and Lot as the two believers from his people."
-    ],
-    "transferTask": "Strengthen a neutral test so it matches the scope of a claim more directly.",
-    "teacherReflection": "Did learners keep the two chapter movements connected without treating them as one causal claim?"
+    chapter: '22. Stepping Out Unharmed', timing: '40 minutes',
+    objectives: ['Explain what the watching crowd saw and how the chapter contrasts their faces with Abraham’s.', 'Identify the two reactions after the miracle: many followed Abraham, some kept their faith secret out of fear.', 'Discover duration → result (for such a long time that …), the turning point with “Once”, contrast with “yet”, the past perfect for an earlier result, and “Consequently” vs “out of fear of”.', 'Organise a turning-point paragraph with a clear timeline and distinct reactions.'],
+    pedagogy: 'Draw a timeline across the board: last words → long burning → fire burns out → Abraham steps out → reactions. Learners place a quoted phrase on each point and add the watchers’ expectation above the line (“it would never be extinguished”). Then ask: “Which words show how long, which show the turning moment, which show the result, and which show why someone did something?” Learners sort such … that, Once, Consequently and out of fear of by job before you name them. The verse is read as a quotation.',
+    priorKnowledge: ['Chapter 21 events; so … that; past perfect.'],
+    anticipatedMisconceptions: ['“Consequently” introduces a result of the miracle; “out of fear of rulers” gives a motive.', 'The rulers were shamed but not changed: “the fire of their rage remained uncooled”.', 'Not everyone hid their faith; many followed Abraham openly and some kept it secret.'],
+    grammarFocus: 'Targets: duration → result (The fire kept burning for such a long time that the disbelievers thought it would never be extinguished) · turning point (Once the fire burnt out, …) · contrast (The smoke blackened their faces, yet his face was bright) · past perfect for an earlier result (had become cool … had only blackened) · result vs motive (Consequently, … / out of fear of rulers).\nNotice (Activity 1): read the last sentence and ask: “Which phrase tells us what happened because of the miracle? Which one tells us why some people hid their faith?” Learners separate result from motive before you confirm.\nBuild (Activities 2–3): rebuild the such … that sentence from chunks and name what “kept + -ing” and “would never be” add; then complete Once / yet / had become and explain why Unless, so and has become fail.\nLikely errors: *for so a long time that · *Once the fire will burn out · *had became · out of fear used as a result.\nUse (Activity 4): an 8–10 sentence turning-point paragraph on a non-story situation with such … that, once, a past perfect, yet or but, one passive, consequently and a separate motive phrase.',
+    pronunciationFocus: 'Chunk the long sentence: “The FIRE kept BURNing | for SUCH a LONG TIME | that the disbeLIEVers THOUGHT | it would NEVer be exTINguished.”\nContrastive stress: “THEIR FACES … | yet HIS FACE was BRIGHT”.\nRead Abraham’s last words and the verse slowly, as quotations.\n-ed endings: blackened /d/, shamed /d/, started /ɪd/, extinguished /t/, uncooled /d/.\nWord focus: suf-FI-cient, BREATH-less, ex-TIN-guished, as-TON-ish-ment, des-POT-ic, CON-se-quent-ly.',
+    beforeReading: ['Ask: “When a long difficult situation suddenly ends well, do all people react in the same way? Why not?” Collect two different reactions and their reasons.'],
+    duringReading: ['Timeline with five points and quoted phrases.', 'Mark the watchers’ expectation above the timeline.', 'Underline the contrast of faces.', 'Two colours in the last sentence: result / motive.'],
+    afterReading: ['Complete the Quick Challenge with the timeline in view.', 'Language Focus: separate result and motive (Activity 1), rebuild the duration-to-result sentence (Activity 2), complete the turning point and contrast (Activity 3).', 'Write the Activity 4 turning-point paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “Do all people react the same way when a long difficulty ends?” two reactions with reasons; 5–12 Listen and read; 12–18 Timeline in pairs on the board, with the expectation above the line, then a quick check of the two reactions at the end; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (What happened because of it? Why did some hide?), Activity 2 on screen by volunteers, Activity 3 in pairs; 31–38 Use: learners write a turning-point paragraph about a long power cut in a neighbourhood or a long drought that ends, with such … that, once, yet, consequently and out of + noun; 38–40 Exit ticket.',
+    discussionPoints: ['What did the watchers expect, and what did they see?', 'What does the contrast between the faces communicate?', 'Why did some people keep their faith secret, according to the chapter?'],
+    interactiveTips: ['Use the “sufficient for me” hotspot for Abraham’s last words and the “breathless” hotspot for the watchers’ situation.', 'Replay the sentence with “such … that” and ask learners to raise a hand at “that”.', 'Discuss the rulers’ rage and people’s fear factually; do not dramatise.'],
+    differentiation: { strugglingLearners: 'Give the frames “It lasted for such a long time that ____.”, “Once ____, ____.” and “Some people ____ out of fear of ____.”', fastFinishers: 'Rewrite the last sentence with three different motive phrases (out of fear of, because they were afraid of, to avoid) and explain which is most formal.' },
+    formativeAssessment: ['Places the events and the expectation on a clear timeline.', 'Distinguishes result from motive.', 'Uses such … that, once, yet and the past perfect accurately.'],
+    expectedResponses: ['The fire burned so long that the disbelievers thought it would never go out, but once it burnt out Abraham stepped out unharmed, his face bright while theirs were blackened; consequently many people followed him, though some kept their faith secret out of fear of the rulers.'],
+    transferTask: 'Write two sentences about a real change at your school: one with “Consequently, …” and one that gives a motive with “out of …”.',
+    teacherReflection: 'Did learners discover the different jobs of consequently and out of fear of, and did the timeline keep the sequence clear?',
+    assessmentTools: { rubric: ['Timeline', 'Result vs motive', 'Turning-point language', 'Coherent paragraph'], exitTicket: ['Write one “such a … that …” sentence and one sentence with “Once …, …”.'] },
   },
   {
-    "chapter": "25. Sarah and Hajar",
-    "timing": "45 minutes",
-    "objectives": [
-      "Explain emigration as a response to rejection that also continues Abraham’s mission.",
-      "Trace the movement from his people to Egypt and Palestine and the repeated call to belief and justice.",
-      "Distinguish migration from abandonment and use realisation→decision→movement plus recurring-action language."
-    ],
-    "pedagogy": "Build a mission-across-places route map. Each location receives two labels: why Abraham moves there and what mission activity continues there. The later Sarah/Hajar family development is then placed as a new family context, not as the cause of emigration.",
-    "priorKnowledge": [
-      "Chapter 24 limited belief response and purpose language."
-    ],
-    "anticipatedMisconceptions": [
-      "Migration is not presented as abandonment of the message."
-    ],
-    "grammarFocus": "Realisation → decision → movement; future-in-the-past; recurring action with wherever; past-perfect background.",
-    "pronunciationFocus": "Practise emigrate, Egypt, Palestine and wherever; stress the recurring-action verbs called, judged, guided.",
-    "beforeReading": [
-      "Ask how leaving a place can sometimes preserve rather than end a mission."
-    ],
-    "duringReading": [
-      "Mark the realisation that no one else will believe and the decision to emigrate.",
-      "Trace Egypt then Palestine on a route map.",
-      "Underline the recurring activities Abraham continues wherever he travels and the later family background involving Sarah and Hajar."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using route and mission evidence.",
-      "Use Language Focus to write realisation→decision→movement.",
-      "Explain in four sentences why emigration is strategic continuation in this chapter."
-    ],
-    "lessonPlan": "1. 0–5 min: leaving vs abandoning. 2. 5–14 min: read/listen to emigration decision. 3. 14–22 min: map Egypt/Palestine and continuing mission. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on decision and recurring action. 6. 36–43 min: continuation paragraph. 7. 43–45 min: exit ticket: one place and one continued action.",
-    "discussionPoints": [
-      "How can leaving one place represent persistence rather than retreat?",
-      "Which recurring verbs prove the mission continues after migration?"
-    ],
-    "interactiveTips": [
-      "Keep movement causes separate from later family developments.",
-      "Use arrows labelled with both destination and continued action."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide route cards and three recurring-action verbs to attach to each location.",
-      "fastFinishers": "Write seven sentences combining past-perfect background, decision and wherever-recurring action."
-    },
-    "formativeAssessment": [
-      "Traces route accurately.",
-      "Identifies continued mission.",
-      "Avoids equating migration with surrender."
-    ],
-    "expectedResponses": [
-      "Abraham emigrates after rejection but continues calling people, judging fairly and guiding them in new lands."
-    ],
-    "transferTask": "Describe a neutral project that changes location or method while keeping its central purpose.",
-    "teacherReflection": "Did learners use continued actions as evidence that migration does not equal abandonment?"
+    chapter: '23. Debating King Nimrod', timing: '40 minutes',
+    objectives: ['Explain why Nimrod held a dialogue with Abraham and how alone Abraham was at the trial.', 'Follow the first exchange of the debate and explain how Nimrod narrows the meaning of Abraham’s words.', 'Discover how reporting verbs keep claims at a distance, the past perfect in a when-clause, one … the other, and parallel wording with a different scope.', 'Compare claims by meaning and scope, not only by wording.'],
+    pedagogy: 'Put the two claims side by side on the board: “My Lord (Allah) is He Who gives life and causes death.” / “I give life and cause death.” Ask: “Are the words the same? Is the meaning the same? What does Nimrod do to show what he means?” Learners discover that parallel wording can hide a smaller scope. Before that, a sort shows how the narrator reports Nimrod’s claim (declared, thought, said) and states his own view (Abraham’s logic was undeniable). The execution of a prisoner is mentioned calmly and never acted out.',
+    priorKnowledge: ['Reporting verbs; past perfect; one / another / the other.'],
+    anticipatedMisconceptions: ['The narrator does not accept Nimrod’s claim to be a god; it is reported.', 'Nimrod’s answer is not agreement; he copies the words but changes their meaning.', 'Abraham’s father was on the king’s side, not Abraham’s.'],
+    grammarFocus: 'Targets: reporting frames that keep a distance (those who declared themselves as gods; He thought that his claim … could not be questioned …; He said: “…”) vs the narrator’s own statements · compressed background (Still a young man, …) and even for emphasis · past perfect in a when-clause (When King Nimrod heard that Abraham (pbuh) had emerged …) · one … the other for a pair · parallel wording with narrower meaning.\nNotice (Activity 1): pairs sort six parts into “the narrator states it” and “a claim or belief is reported”. Ask: “Which words show that the narrator is only reporting Nimrod?”\nBuild (Activities 2–3): correct has emerged → had emerged and another → the other; then decide what Nimrod’s near-identical words show, using the two prisoners as evidence.\nLikely errors: *heard that Abraham has emerged · *freed one and another · *declared themselves gods (accept; the text uses “as gods”) · assuming the same words mean the same claim.\nUse (Activity 4): an 8–10 sentence claim-and-counterclaim exchange on a non-story disagreement with a reported attitude, a passive modal, a past perfect inside a when-sentence, because, even / still, and one pair of deliberately parallel claims whose scope differs.',
+    pronunciationFocus: 'Parallel claims with contrastive stress on the subject: “MY LORD (Allah) is HE who GIVES LIFE and CAUses DEATH” / “I give LIFE and cause DEATH”.\nCompressed background as its own tone unit: “STILL a YOUNG MAN, | Abraham was PUT on TRIal …”.\nWeak form in the past perfect: “had eMERGED” /həd/.\nPair reference: “He FREED ONE | and the OTHer was PUT to DEATH” (calm voice).\nWord focus: un-de-NI-a-ble, DI-a-logue, dis-PUT-ed, KING-dom, SEN-tenced, e-MERGED.',
+    beforeReading: ['Write two sentences on the board: “Our team wins every match.” / “Our team wins every home match.” Ask: “Same words? Same claim?” Learners explain how a small change narrows the scope.'],
+    duringReading: ['Sort sentences into “narrator states” / “claim reported”.', 'Mark why Nimrod was filled with rage.', 'Underline “Even his father …”.', 'Put the two claims side by side and note what Nimrod does with the two men.'],
+    afterReading: ['Complete the Quick Challenge using the side-by-side claims.', 'Language Focus: sort statements and reported claims (Activity 1), correct the earlier past and “the other” (Activity 2), explain the parallel wording (Activity 3).', 'Write the Activity 4 claim-and-counterclaim exchange on a non-story disagreement.'],
+    lessonPlan: '0–5 Hook: “Our team wins every match / every home match” — same claim?; 5–12 Listen and read; 12–18 Sort in pairs: narrator states / claim reported, then find the one sentence where the narrator gives his own evaluation (undeniable); 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as a check of the sort, Activity 2 individually, Activity 3 as whole-class discovery (Same words? Same meaning? What proves it?); 31–38 Use: pairs write a claim-and-counterclaim exchange about two phone companies that both say “We cover the whole country”, making clear how the scope differs; 38–40 Exit ticket.',
+    discussionPoints: ['Why did Nimrod want to meet Abraham?', 'How does the chapter show that Abraham stood alone?', 'How does Nimrod change the meaning of Abraham’s words, and how does the narrator show it?'],
+    interactiveTips: ['Use the “declared themselves as gods” hotspot for the reported claim and the “filled with rage” hotspot for Nimrod’s motive.', 'Replay the exchange and pause after each claim so learners can compare them.', 'Keep the prisoner example factual; do not role-play the king or the trial.'],
+    differentiation: { strugglingLearners: 'Give a two-column sort sheet and the frames “Nimrod claimed that ____.”, “When he heard that ____ had ____, he ____.” and “He freed one and ____.”', fastFinishers: 'Find another pair of claims with the same words but different scope (from advertising or sport) and write a paragraph explaining the difference.' },
+    formativeAssessment: ['Separates reported claims from the narrator’s statements.', 'Uses the past perfect and one … the other correctly.', 'Explains how parallel wording narrows meaning, with evidence.'],
+    expectedResponses: ['Nimrod, who claimed to be a god, was enraged when he heard Abraham had come out of the fire unharmed; at the trial, Abraham said his Lord gives life and causes death, and Nimrod copied the words but meant only that he could free one prisoner and execute the other.'],
+    transferTask: 'Find a slogan or claim in an advert and write two sentences: what it seems to claim and what it may really mean.',
+    teacherReflection: 'Did learners discover the difference between wording and scope, and did they keep the narrator’s distance from Nimrod’s claims?',
+    assessmentTools: { rubric: ['Reported vs stated', 'Chronology', 'Pair reference', 'Scope of claims'], exitTicket: ['Write one sentence with “When … heard that … had …” and one with “one … the other”.'] },
   },
   {
-    "chapter": "26. Hajar’s Trust in the Desert",
-    "timing": "45 minutes",
-    "objectives": [
-      "Connect the birth lines of Ishmael and Isaac with the command to take Hajar and Ishmael toward Mecca.",
-      "Explain the uncultivated valley as a deliberate test and future-oriented move rather than an accidental journey.",
-      "Use parallel lineage, reported instruction, future plan and journey-endpoint language."
-    ],
-    "pedagogy": "Use a two-part page map: lineage first, journey second. Learners compare the two prophetic descendant lines, then follow the command and physical movement to the uncultivated valley near Safa and Marwa.",
-    "priorKnowledge": [
-      "Sarah/Hajar family context from Chapter 25 and genealogy framing from Chapter 1."
-    ],
-    "anticipatedMisconceptions": [
-      "The move is not presented as an accidental journey."
-    ],
-    "grammarFocus": "Parallel lineage contrast; reported instruction vs future plan; still-background; until as journey endpoint.",
-    "pronunciationFocus": "Practise Ishmael, Isaac, Safa and Marwa; stress parallel lineage phrases before shifting tone to the command and journey.",
-    "beforeReading": [
-      "Ask what evidence would show that a difficult journey is part of a larger plan rather than random movement."
-    ],
-    "duringReading": [
-      "Map the Ishmael and Isaac descendant lines stated in the chapter.",
-      "Underline the command to take Hajar and Ishmael to Mecca and the future statements about the city and water.",
-      "Trace the route through cultivated land, desert and mountains to the uncultivated valley."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by distinguishing lineage from journey evidence.",
-      "Use Language Focus to write one parallel lineage sentence and one reported-instruction/future sentence.",
-      "Explain how the chapter connects a family move to a larger future."
-    ],
-    "lessonPlan": "1. 0–5 min: lineage/future prediction. 2. 5–14 min: read/listen to the two descendant lines. 3. 14–23 min: command and route to the valley. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on parallel lineage and future plan. 6. 37–43 min: family-to-future explanation. 7. 43–45 min: exit ticket: one present hardship and one future-oriented detail.",
-    "discussionPoints": [
-      "How does the chapter connect a family decision with a much larger future?",
-      "Which future details are explicitly reported rather than inferred by the learner?"
-    ],
-    "interactiveTips": [
-      "Use separate colours for lineage and journey so they do not collapse into one relation.",
-      "Keep later Zamzam details out until the chapter itself introduces only the promise of water."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide two family-line cards and a four-step route strip.",
-      "fastFinishers": "Write a seven-sentence synthesis combining parallel lineage and future-in-the-past without adding later events."
-    },
-    "formativeAssessment": [
-      "Keeps the two lineage branches accurate.",
-      "Identifies the journey as commanded/planned.",
-      "Avoids importing Chapter 30 outcomes prematurely."
-    ],
-    "expectedResponses": [
-      "The chapter links Ishmael and Isaac to later prophetic lines and presents the move of Hajar and Ishmael to the barren valley as a commanded test with a stated future."
-    ],
-    "transferTask": "Explain a neutral decision whose immediate difficulty and long-term purpose must be kept distinct.",
-    "teacherReflection": "Did learners respect the chapter’s future orientation without reading later outcomes backward into it?"
+    chapter: '24. Sarah, Hajar, and a New Trial', timing: '40 minutes',
+    objectives: ['Explain how Abraham ends the debate with the sun challenge and how his fame spreads.', 'Contrast his continued effort with the small result: only Sarah and Lot shared his belief.', 'Discover “would” for an expected effect, fixed expressions (put forth, utterly defeated, left him unable to speak, in the meantime, tried every means), in spite of vs although, and only vs no one except.', 'Describe effort and a limited outcome without exaggeration.'],
+    pedagogy: 'Use a “scales” diagram: on one side Abraham’s efforts (continued calling, great effort, every means, love and care), on the other the result (they left him alone, only one woman and one man). Learners fill both sides with quotes and discover why the chapter needs concession language. The debate ending is discovered through prediction: “At the moment Abraham gives the new challenge, what does the narrator already tell us about its effect? Which word?” The verse and the Qur’anic comment are read as quotations.',
+    priorKnowledge: ['Chapter 23 debate; although; would for future in the past from Chapters 5 and 17.'],
+    anticipatedMisconceptions: ['“Would unquestionably and easily quiet him” is the narrator looking ahead, not an imaginary situation.', 'The people did not follow Abraham in large numbers here; only Sarah and Lot shared his belief.', 'The chapter title names Hajar, but Hajar does not appear in this chapter; she is introduced in Chapter 25.'],
+    grammarFocus: 'Targets: fixed expressions (put forth another challenge, utterly defeated, left him unable to speak, In the meantime, tried every means) · would for an expected effect seen from the past (a challenge which would unquestionably and easily quiet him) · concession (However, in spite of his love and care …, they left him alone → although he loved and cared for …) · limitation (Only one woman and one man … → No one except …).\nNotice (Activity 1): learners match the five expressions with their meanings, then ask: “Which expression tells us two things happened in the same period?”\nBuild (Activities 2–3): rewrite in spite of + noun as although + clause and “Only …” as “No one except …”; then decide what “would” expresses and find the sentence that confirms it.\nLikely errors: *in spite of he loved · *although his love and care · *Only one woman and one man … didn’t share (double limit) · *put forward/forth confused with put off.\nUse (Activity 4): an 8–10 sentence paragraph about a non-story situation where strong effort receives limited support, with so, would for an expected effect, in the meantime, however + in spite of / although, only, and two parallel sentences naming two supporters.',
+    pronunciationFocus: 'Read the challenge as a quotation with a clear contrast: “alLAH causes the SUN to RISE from the EAST; | THEN cause it to RISE from the WEST.”\nIntensifiers take strong stress: “he was UTterly deFEATed”, “unQUEStionably and EAsily”.\nParallel sentences with the same rhythm: “The WOman’s NAME was SArah … | The MAN’s NAME was LOT …”.\nWord focus: un-QUES-tion-a-bly, UT-ter-ly, bab-y-LO-ni-a, MEANS (/z/), per-SUADE.',
+    beforeReading: ['Ask: “Have you ever tried very hard to convince people and only one or two agreed? Was it still worth it?” Collect two short answers.'],
+    duringReading: ['Scales diagram: efforts / results.', 'Underline the challenge and the sentence that shows its effect.', 'Circle “In the meantime”, “However” and “in spite of”.', 'Mark who shared Abraham’s belief.'],
+    afterReading: ['Complete the Quick Challenge with the scales in view.', 'Language Focus: match the expressions (Activity 1), rewrite concession and limitation (Activity 2), explain the expected effect with “would” (Activity 3).', 'Write the Activity 4 effort-and-limited-outcome paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “Tried hard, only one or two agreed — worth it?” two answers; 5–12 Listen and read; 12–18 Scales diagram in pairs, then a whole-class sentence joining both sides with however; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs, Activity 2 individually with a quick board check of in spite of vs although, Activity 3 as whole-class discovery (What does the narrator already know about the effect?); 31–38 Use: learners write a paragraph about a student who campaigned for a recycling project and gained only two helpers, with would, in the meantime, in spite of and only; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the sun challenge leave Nimrod without an answer?', 'What did people talk about after the debate?', 'What does the chapter set against Abraham’s effort, and how many people shared his belief?'],
+    interactiveTips: ['Use the “put forth” hotspot for the new challenge and the “unquestionably” hotspot for the narrator’s certainty.', 'Replay the last paragraph and ask learners to name the two people and one detail about each.', 'Do not add information about Sarah or Lot beyond these two sentences.'],
+    differentiation: { strugglingLearners: 'Give the frames “In spite of his ____, ____.”, “Although he ____, ____.” and “Only ____ and ____ ____.”', fastFinishers: 'Write the same limited outcome three ways (only, no one except, just) and explain which one sounds strongest.' },
+    formativeAssessment: ['Explains the expected effect of the challenge with the confirming sentence.', 'Uses in spite of + noun and although + clause correctly.', 'States the limited result precisely.'],
+    expectedResponses: ['Abraham challenged Nimrod to make the sun rise from the west and left him utterly defeated; his fame spread, and he kept calling people to Allah by every means, but in spite of his love and care they left him alone, and only Sarah, who became his wife, and Lot shared his belief.'],
+    transferTask: 'Describe an effort you made that had a smaller result than you hoped, in two sentences with “in spite of” and “only”.',
+    teacherReflection: 'Did the scales make the concession language necessary, and did learners stay precise about the small result?',
+    assessmentTools: { rubric: ['Debate outcome', 'Concession', 'Limitation', 'Expected effect'], exitTicket: ['Write one sentence with “in spite of + noun” and the same idea with “although + clause”.'] },
   },
   {
-    "chapter": "27. Hajar and Ishmael Search for Water",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse Hajar’s shift from anxiety to trust after learning that Abraham acts by Allah’s command.",
-      "Distinguish trust in the command from knowledge of how the practical water problem will be solved.",
-      "Use question→confirmation→reason, corrective not…but and spatial sequence to explain the change in interpretation."
-    ],
-    "pedagogy": "Use a same-situation/new-information model. Before Abraham answers, learners record the barren conditions and Hajar’s anxiety; after “Has Allah commanded you?” / “Yes,” they record what changes in interpretation even though the physical environment is unchanged.",
-    "priorKnowledge": [
-      "Chapter 26 barren-valley setting and command."
-    ],
-    "anticipatedMisconceptions": [
-      "Trust does not mean she already knows how the practical problem will be solved."
-    ],
-    "grammarFocus": "Accumulated absence; question → confirmation → reason; corrective not … but; past-perfect cause; spatial endpoint.",
-    "pronunciationFocus": "Practise the question “Has Allah commanded you…?” and the calm response; stress no fruit / no trees / no food / no water as accumulated absence.",
-    "beforeReading": [
-      "Ask how one new piece of information can change interpretation without changing physical circumstances."
-    ],
-    "duringReading": [
-      "Mark the repeated absence of resources and Hajar’s anxiety.",
-      "Underline the question about Allah’s command and Abraham’s confirmation.",
-      "Identify the sentence explaining that Abraham is not acting on his own decision."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using before/after interpretation.",
-      "Use Language Focus to write question→confirmation→reason.",
-      "Explain what Hajar now knows and what she still does not know."
-    ],
-    "lessonPlan": "1. 0–5 min: same facts, new information. 2. 5–14 min: read/listen to barren conditions and anxiety. 3. 14–22 min: analyse question/answer and interpretive shift. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on correction and reason. 6. 36–43 min: known/unknown explanation. 7. 43–45 min: exit ticket: what changed without the valley changing?",
-    "discussionPoints": [
-      "What information changes Hajar’s interpretation of the same situation?",
-      "What practical uncertainty remains after her trust changes?"
-    ],
-    "interactiveTips": [
-      "Keep physical facts and interpretation in separate columns.",
-      "Do not treat trust as a prediction of the exact mechanism of rescue."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use Before answer / After answer boxes with the same valley facts.",
-      "fastFinishers": "Write six sentences using not…but and a past-perfect reason to explain the interpretive shift."
-    },
-    "formativeAssessment": [
-      "Identifies the new information.",
-      "Separates trust from practical foreknowledge.",
-      "Uses corrective structure accurately."
-    ],
-    "expectedResponses": [
-      "Hajar’s interpretation changes when she learns the move is commanded by Allah; she trusts the outcome without knowing how water or help will come."
-    ],
-    "transferTask": "Describe a neutral situation where reliable new information changes interpretation before circumstances change.",
-    "teacherReflection": "Did learners distinguish confidence in a source from certainty about the method or outcome?"
+    chapter: '25. Sarah and Hajar', timing: '40 minutes',
+    objectives: ['Trace Abraham’s journey (his people → Egypt → Palestine) and what he did wherever he travelled.', 'Explain the background to Sarah’s suggestion: she was sterile, Hajar had been given to her in Egypt and Abraham had aged.', 'Discover how the past perfect gives background while the past simple moves the story, “was going to” as a realisation, “wherever” for a repeated pattern, and reported thought and suggest + base verb.', 'Narrate a change of plan with clear background and consequence.'],
+    pedagogy: 'Put a route map on the board (his people → Egypt → Palestine) and ask pairs to write what happened at each stop. Then learners sort sentences into “moves the story forward” and “steps back to explain” and discover the past perfect from its job before you name it. The realisation is discovered with a viewpoint question: “What did Abraham understand at that moment? Say it as his own thought.” Family matters (Sarah’s infertility and the marriage) are treated as the chapter treats them: briefly and respectfully.',
+    priorKnowledge: ['Past simple vs past perfect; was going to from earlier chapters; suggest.'],
+    anticipatedMisconceptions: ['Hajar was given to Sarah earlier, in Egypt; this is background, not a new event after Palestine.', 'It was Sarah who suggested the marriage, because she thought she could not have a child.', '“Wherever he traveled” means his call was a repeated pattern on the whole journey, not a single event.'],
+    grammarFocus: 'Targets: past simple for main events (left, traveled, settled, gave birth) vs past perfect for background (had been given, had aged) · future seen from the past in a realisation (realized that no one else was going to believe → “No one else is going to believe …”) · wherever = in every place where · reported thought with backshift (Sarah thought she could not have a child) · suggest (that) + person + base verb.\nNotice (Activity 1): pairs sort five sentences into “earlier background” and “main events”. Ask: “Which sentences stop the story to explain something from before? Why do we need them before Sarah’s suggestion?”\nBuild (Activities 2–3): turn the realisation into Abraham’s thought and replace wherever; then correct cannot → could not and to get → get.\nLikely errors: *She had been give · *suggested Abraham to get married · *Sarah thought she cannot have a child · using the past perfect for main events.\nUse (Activity 4): an 8–10 sentence non-story narrative about someone who changes plans after realising an expected outcome will not happen, with was going to / would, a decision phrase, two coordinated actions, a wherever / whenever clause, a past perfect and a consequence connector.',
+    pronunciationFocus: 'Realisation and decision in two tone units: “when he reALized | that NO one ELSE was GOing to beLIEVE, | he deCIDed to EMigrate.”\nWeak forms in the past perfect: “she had been GIVen” /həd bɪn/; “he had AGED”.\nThe verse as a quotation: “I will EMigrate | for the SAKE of my LORD.”\n-ed endings: traveled /d/, settled /d/, judged /d/, aged /d/, suggested /ɪd/.\nWord focus: EM-i-grate, RIGHT-eous-ness, STER-ile, PAL-es-tine, e-GYP-tian, SER-vant.',
+    beforeReading: ['Ask: “When people move to a new country, what background information does a listener need to understand their story?” Collect two kinds (why they left, what happened before).'],
+    duringReading: ['Route map: what happened at each stop.', 'Underline the realisation and the decision.', 'Circle every past perfect and say what it explains.', 'Mark the reason for Sarah’s suggestion.'],
+    afterReading: ['Complete the Quick Challenge with the route map in view.', 'Language Focus: sort background and main events (Activity 1), rewrite the realisation and the repeated action (Activity 2), correct the reported thought and suggest (Activity 3).', 'Write the Activity 4 change-of-plan narrative on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “What background does a listener need in a migration story?” two kinds; 5–12 Listen and read; 12–18 Route map in pairs with one quote per stop, then add what Abraham did wherever he traveled; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Which sentences step back? Why before the suggestion?), Activity 2 in pairs, Activity 3 individually; 31–38 Use: learners write a change-of-plan narrative about a family that was going to open a shop in one town but moved when they realised it would not work, with a past perfect background and wherever; 38–40 Exit ticket.',
+    discussionPoints: ['What did Abraham realise, and what did he decide as a result?', 'What did Abraham do wherever he traveled?', 'Which background details explain Sarah’s suggestion?'],
+    interactiveTips: ['Use the “emigrate” hotspot for the decision and the “settled there” hotspot for Palestine.', 'Replay the verse and ask who believed in Abraham’s message according to it.', 'Handle Sarah’s infertility and the marriage briefly and respectfully, as the chapter does.'],
+    differentiation: { strugglingLearners: 'Give the route map with the places filled in and the frames “She had been given ____ when ____.” and “She suggested (that) he ____.”', fastFinishers: 'Retell the chapter in six sentences in strict time order (no past perfect) and then in the chapter’s order (with past perfect), and explain what the past perfect makes possible.' },
+    formativeAssessment: ['Separates background from main events.', 'Uses the past perfect only for earlier background.', 'Reports thought and suggestion correctly.'],
+    expectedResponses: ['When Abraham realized no one else was going to believe, he emigrated with Sarah and Lot to Egypt and then to Palestine, calling people to Allah wherever he went; because Sarah was sterile and had been given Hajar as a servant in Egypt, she suggested that Abraham marry Hajar, who later gave birth to Ishmael.'],
+    transferTask: 'Write three sentences about a journey or move you know: one main event, one past-perfect background detail and one “wherever …” pattern.',
+    teacherReflection: 'Did learners discover the job of the past perfect from the sort, and did the class discuss the family details respectfully?',
+    assessmentTools: { rubric: ['Route and sequence', 'Background vs main events', 'Reported thought and suggest', 'Coherent narrative'], exitTicket: ['Write one past-perfect background sentence and one sentence with “suggested (that) + person + base verb”.'] },
   },
   {
-    "chapter": "28. Zamzam Appears",
-    "timing": "45 minutes",
-    "objectives": [
-      "Analyse Abraham’s prayer through worship, social attachment, provision and gratitude.",
-      "Explain how the chapter frames the barren valley as part of a long-term future centered on the Ka‘ba and monotheism.",
-      "Use purpose chains, obligation, clarification and long-term reference without confusing prayer with later fulfilment."
-    ],
-    "pedagogy": "Break the prayer into four requested outcomes—prayer, hearts, fruits, gratitude—then separate the prayer itself from the narrator’s later explanation about the Ka‘ba and descendants.",
-    "priorKnowledge": [
-      "Chapter 27 command/trust and the difference between present condition and future plan."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not present barrenness as evidence that the place lacks future purpose."
-    ],
-    "grammarFocus": "Purpose chains; had to for obligation; “that is” clarification; relative background; long-term time/reference cohesion.",
-    "pronunciationFocus": "Chunk the prayer by purpose phrases and stress prayer / hearts / fruits / thanks; pause before the narrator’s long-term explanation.",
-    "beforeReading": [
-      "Ask what kinds of needs a prayer can include besides immediate physical survival."
-    ],
-    "duringReading": [
-      "Label the four components of the prayer.",
-      "Underline the explanation connecting the move with the Ka‘ba and the renewed center of monotheism.",
-      "Mark the long-term descendant reference and keep it separate from the immediate prayer."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by classifying a prayer element.",
-      "Use Language Focus to write a purpose chain with in order that / so that.",
-      "Explain how material provision is linked to gratitude rather than treated as an end by itself."
-    ],
-    "lessonPlan": "1. 0–5 min: categories of need. 2. 5–15 min: read/listen and divide the prayer. 3. 15–23 min: separate prayer from long-term narrator framing. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on purpose and obligation. 6. 37–43 min: four-part interpretation. 7. 43–45 min: exit ticket naming one spiritual and one material request.",
-    "discussionPoints": [
-      "Which parts of the prayer concern worship, society, and material provision?",
-      "How does gratitude change the interpretation of provision in the prayer?"
-    ],
-    "interactiveTips": [
-      "Use four icons for worship/hearts/provision/gratitude and attach exact phrases.",
-      "Do not present the narrator’s later historical explanation as words of the prayer itself."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Give the four categories and ask learners to match phrases from the prayer.",
-      "fastFinishers": "Write a seven-sentence analysis distinguishing request, purpose and later narrative fulfilment."
-    },
-    "formativeAssessment": [
-      "Classifies prayer components accurately.",
-      "Separates prayer from narrator explanation.",
-      "Uses purpose language coherently."
-    ],
-    "expectedResponses": [
-      "Abraham’s prayer combines worship, social attachment, provision and gratitude, while the narrator connects the valley to a long-term Ka‘ba-centered future."
-    ],
-    "transferTask": "Analyse a neutral plan that includes purpose, social support, material resources and a responsible use of those resources.",
-    "teacherReflection": "Did learners preserve the difference between prayer, purpose and later narrative interpretation?"
-  }
-
-,
-
-  {
-    "chapter": "29. Mecca Is Settled",
-    "timing": "45 minutes",
-    "objectives": [
-      "Evaluate Hajar’s repeated search as active effort rather than passive waiting.",
-      "Connect the seven journeys between Safa and Marwa with the later ritual memory of sa‘y.",
-      "Distinguish narrated action, source attribution to Ibn Abbas and later interpretation."
-    ],
-    "pedagogy": "Use an effort-and-memory sequence. Learners first follow Hajar’s practical search step by step, then identify the source attribution and only after that discuss how the chapter connects her effort with later Hajj practice.",
-    "priorKnowledge": [
-      "Chapter 28 barren-valley context and the difference between trust and practical foreknowledge."
-    ],
-    "anticipatedMisconceptions": [
-      "Reliance on Allah is not depicted as passive waiting."
-    ],
-    "grammarFocus": "Source/narrative voice separation; possibility vs fact; trigger/background/sequence; later interpretation.",
-    "pronunciationFocus": "Practise Safa, Marwa and sa‘y; use repeated rhythm for the sevenfold movement and a source-marking pause before the Ibn Abbas narration.",
-    "beforeReading": [
-      "Ask what actions would show active trust when a practical problem remains unresolved."
-    ],
-    "duringReading": [
-      "Mark the source introduction to Ibn Abbas.",
-      "Trace Hajar’s movement to Safa, Marwa and the repeated search.",
-      "Underline the sentence linking her effort with sa‘y and later Hajj memory."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the action sequence.",
-      "Use Language Focus to distinguish source narration from later interpretation.",
-      "Write one sentence explaining why trust and effort are not opposites here."
-    ],
-    "lessonPlan": "1. 0–5 min: active trust criteria. 2. 5–15 min: read/listen and trace the search. 3. 15–23 min: source voice vs later interpretation. 4. 23–28 min: Quick Challenge. 5. 28–37 min: Language Focus on sequencing and source framing. 6. 37–43 min: effort-and-memory synthesis. 7. 43–45 min: exit ticket: one action and one later ritual connection.",
-    "discussionPoints": [
-      "Why does the chapter preserve Hajar’s effort as part of worship memory?",
-      "What is directly narrated and what is interpreted retrospectively?"
-    ],
-    "interactiveTips": [
-      "Use a simple route diagram rather than dramatizing distress.",
-      "Keep source attribution visible when discussing the Ibn Abbas narration."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide Safa/Marwa cards and a short sequence strip.",
-      "fastFinishers": "Write seven sentences distinguishing source, action sequence and later ritual interpretation."
-    },
-    "formativeAssessment": [
-      "Identifies active effort.",
-      "Preserves source attribution.",
-      "Separates event from later interpretation."
-    ],
-    "expectedResponses": [
-      "Hajar actively searches between Safa and Marwa seven times, and the chapter later connects that effort with the ritual sa‘y of Hajj."
-    ],
-    "transferTask": "Explain a neutral example where trust in an outcome still requires repeated practical effort.",
-    "teacherReflection": "Did learners treat Hajar’s search as active agency rather than passive waiting?"
+    chapter: '26. Hajar’s Trust in the Desert', timing: '40 minutes',
+    objectives: ['Explain the two family lines the chapter names (Ishmael → Muhammad; Isaac → Moses and Jesus) and the instruction to take Hajar and Ishmael to Mecca.', 'Distinguish the instruction Abraham received from the plan he was informed about (the city and the water).', 'Discover reported instruction (told … that he should …) vs reported future plan (informed … that … would …), while for parallel contrast, still for a continuing state, until for an end point, and the passive “was given”.', 'Write a journey paragraph that keeps the plan distinct from completed actions.'],
+    pedagogy: 'Start with a two-column board: “What Abraham had to do” / “What would happen later”. Learners place the two reported sentences and discover the difference between should (instruction) and would (plan) from the columns, before you name it. The family lines return from Chapter 1: learners check that this chapter repeats and extends them (Isaac’s birth, both lines named with while). The journey is traced on a sketch: cultivated land → desert → mountains → uncultivated valley near Safa and Marwa.',
+    priorKnowledge: ['Chapter 1 family lines; reported speech; future in the past with would.'],
+    anticipatedMisconceptions: ['“He should take Hajar and Ishmael” is an instruction; “would be built … would flow” is a plan for the future, not something already done.', '“While” here sets two family lines side by side; it does not mean “during”.', 'The chapter title speaks of Hajar’s trust, but her words of trust come in Chapter 27; here the family sets out and arrives.'],
+    grammarFocus: 'Targets: reported instruction (Allah told Abraham (pbuh) that he should take …) vs reported plan (He informed Abraham (pbuh) that the sacred city would be built … and that water would flow …) · while = whereas for parallel lines · still for a continuing state (Hajar was still nursing Ishmael) · until for the end of a journey · passive with give (Abraham (pbuh) was given another son) · In a few days = a few days later.\nNotice (Activity 1): board the two reported sentences and ask: “Which one tells Abraham what to do? Which one tells him what will happen?” Learners name the job of should and would before you confirm.\nBuild (Activities 2–3): complete while / still / until and explain why since, during and unless fail; then make Abraham the subject with was given and rewrite In a few days.\nLikely errors: *Allah told Abraham that he would take (instruction lost) · *during he reached · *since from Isaac’s came … (reason instead of contrast) · *Abraham was given by Allah another son (awkward agent).\nUse (Activity 4): an 8–10 sentence non-story paragraph about a family or team told to move for a future purpose, with told … that … should, would, while, was/were still … and an until-clause.',
+    pronunciationFocus: 'Separate instruction and plan by stress: “he SHOULD TAKE Hajar and ISHmael” / “the SACred CIty would be BUILT | … and WAter would FLOW for him”.\nParallel contrast with a pause before while: “From ISHmael’s deSCENdants came PROphet MuHAMmad, | WHILE from I-saac’s came MOses and JEsus.”\nJourney list with a fall on the last item: “CULtivated LAND, DESert, and MOUNtains↘”.\nWord focus: OFF-spring, de-SCEN-dants, pen-IN-su-la, un-CUL-ti-vat-ed, NURS-ing, SA-fa, MAR-wa.',
+    beforeReading: ['Ask: “What is the difference between ‘You should pack tonight’ and ‘The new school will open next year’?” Learners label one as an instruction and one as a plan.'],
+    duringReading: ['Two columns: had to do / would happen later.', 'Underline the two family lines and the word that joins them.', 'Circle “still” and “until”.', 'Sketch the journey with its end point.'],
+    afterReading: ['Complete the Quick Challenge with the two columns in view.', 'Language Focus: separate instruction and plan (Activity 1), complete the family lines, the continuing state and the end of the journey (Activity 2), change time and focus (Activity 3).', 'Write the Activity 4 planned-journey paragraph on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “You should pack tonight” vs “The new school will open next year” — instruction or plan?; 5–12 Listen and read; 12–18 Two columns in pairs, then a journey sketch with the four landscapes and the valley near Safa and Marwa; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (What to do? What will happen?), Activity 2 in pairs, Activity 3 individually; 31–38 Use: learners write a paragraph about a science team told that it should move its station to a remote island, where a new laboratory would be built, with while, still and until; 38–40 Exit ticket.',
+    discussionPoints: ['Which prophets does the chapter link to each of Abraham’s two sons?', 'What was Abraham told to do, and what was he told would happen later?', 'Why does the chapter call this “another test”?'],
+    interactiveTips: ['Use the “offspring” and “descendants” hotspots to check the family lines.', 'Replay the instruction and the plan back to back and let learners say which is which.', 'Do not add details of the journey that the chapter does not give.'],
+    differentiation: { strugglingLearners: 'Give the frames “Allah told Abraham that he should ____.”, “He informed him that ____ would ____.” and “He walked until ____.”', fastFinishers: 'Write a short paragraph in which one instruction and two plans are reported, and explain how a reader can tell them apart.' },
+    formativeAssessment: ['States both family lines accurately.', 'Distinguishes instruction from plan with the modal as evidence.', 'Uses while, still and until with the right meaning.'],
+    expectedResponses: ['Allah gave Abraham a second son, Isaac, from Sarah; Muhammad came from Ishmael’s descendants, while Moses and Jesus came from Isaac’s; Abraham was told he should take Hajar and Ishmael to Mecca and was informed that the city would be built through Ishmael and water would flow for him, so he walked until he reached an uncultivated valley near Safa and Marwa.'],
+    transferTask: 'Write two sentences about a move or change in your family or school: one instruction someone received and one plan for the future.',
+    teacherReflection: 'Did learners discover the should / would difference from the columns, and did they keep the family lines exactly as stated?',
+    assessmentTools: { rubric: ['Family lines', 'Instruction vs plan', 'Time and contrast markers', 'Journey paragraph'], exitTicket: ['Write one reported instruction with “should” and one reported plan with “would”.'] },
   },
   {
-    "chapter": "30. Abraham and Ishmael",
-    "timing": "45 minutes",
-    "objectives": [
-      "Trace cause and consequence from the appearance of Zamzam to the possibility of settlement.",
-      "Distinguish the water miracle from the Jurham tribe’s later inference based on birds.",
-      "Use action→result, purpose, time perspective and observed evidence versus inference."
-    ],
-    "pedagogy": "Build a water-to-settlement chain: Gabriel strikes the ground → water flows → Hajar contains it → birds indicate water → Jurham approaches. Learners must mark where direct observation ends and inference begins.",
-    "priorKnowledge": [
-      "Chapter 29 active search and the barren-valley setting."
-    ],
-    "anticipatedMisconceptions": [
-      "The tribe does not create Zamzam in the chapter."
-    ],
-    "grammarFocus": "Action → immediate result; purpose; future/current/past time perspectives; observed evidence vs inference.",
-    "pronunciationFocus": "Practise Zamzam, Gabriel and Jurham; stress immediately / because / indicated to make the cause-inference chain audible.",
-    "beforeReading": [
-      "Ask how a single resource can alter whether people can remain in a place."
-    ],
-    "duringReading": [
-      "Mark the angel’s action and the immediate appearance of water.",
-      "Underline Hajar’s practical action to contain the water.",
-      "Identify the birds as observed evidence and the tribe’s inference that water is present."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by ordering the causal chain.",
-      "Use Language Focus to write one direct cause and one evidence-based inference.",
-      "Explain why the tribe belongs at the end of the chain, not at the beginning."
-    ],
-    "lessonPlan": "1. 0–5 min: resource and settlement prediction. 2. 5–14 min: read/listen to Zamzam appearance. 3. 14–22 min: build action→water→birds→Jurham chain. 4. 22–27 min: Quick Challenge. 5. 27–36 min: Language Focus on result and inference. 6. 36–43 min: settlement explanation. 7. 43–45 min: exit ticket distinguishing cause from clue.",
-    "discussionPoints": [
-      "How does one resource change the social future of the valley?",
-      "Why are the birds evidence for the tribe rather than the cause of the water?"
-    ],
-    "interactiveTips": [
-      "Label each arrow Cause / Action / Clue / Inference.",
-      "Keep the miracle event and the tribe’s later reasoning in separate visual boxes."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide the five chain steps to reorder.",
-      "fastFinishers": "Write a seven-sentence causal explanation that distinguishes direct result from inferred evidence."
-    },
-    "formativeAssessment": [
-      "Orders the causal chain.",
-      "Distinguishes cause from clue.",
-      "Keeps Jurham’s role accurate."
-    ],
-    "expectedResponses": [
-      "Water appears before Jurham arrives; birds signal the presence of water, and the tribe then approaches the valley."
-    ],
-    "transferTask": "Explain how a new shared resource can change settlement or movement in a neutral context.",
-    "teacherReflection": "Did learners separate physical cause, observed clue and social response?"
+    chapter: '27. Hajar and Ishmael Search for Water', timing: '40 minutes',
+    objectives: ['Describe the empty valley and what Abraham left with Hajar and Ishmael.', 'Explain how Hajar moves from anxiety to reassurance through one question and its answer.', 'Discover “since” as reason, the piled-up “no + noun” list, a participle for a simultaneous action, where for a place, “not X but Y” for correction, and reported yes/no questions.', 'Write a paragraph that moves from uncertainty to an informed response.'],
+    pedagogy: 'Draw an emotion line for Hajar: anxious → asks → hears the answer → “I am satisfied”. Learners put the exact words at each point. The reason meaning of “since” is discovered with a test: “Does ‘since’ here tell us when or why? Try replacing it with ‘because’ and with ‘from the time that’.” The correction pattern is discovered by asking: “Whose decision was it? What does the chapter reject, and what does it put in its place?” Abraham’s prayer at the end is only begun here; it continues in Chapter 28.',
+    priorKnowledge: ['since for time; reported questions; relative where.'],
+    anticipatedMisconceptions: ['“Since Allah is with us” gives a reason, not a starting time.', 'Abraham was not acting on his own decision; the chapter says Allah had commanded him.', 'The chapter title speaks of searching for water, but the search happens in Chapter 29; here the family is left in the valley and Abraham begins to pray.'],
+    grammarFocus: 'Targets: since = because (We are not going to be lost, since Allah is with us) · accumulated absence (no fruit, no trees, no food, no water, and no sign of life) · participle for a simultaneous action (began walking away, leaving them behind) · where for a place (a place where they could not see him) · correction with not X but Y (was not acting on his own decision; Allah had commanded him) · reported yes/no question (asked him whether Allah had commanded him …).\nNotice (Activity 1): read Hajar’s words and ask: “Does ‘since’ tell us when or why? Test it with ‘because’.” Learners choose the reason meaning with the test as evidence.\nBuild (Activities 2–3): correct not water → no water, left → leaving, which → where; then rewrite the correction as “not on … but on …” and report Hajar’s question with whether / if and backshift.\nLikely errors: *not water · *which they could not see him · *asked him whether had Allah commanded · *here / us not changed to there / them.\nUse (Activity 4): an 8–10 sentence non-story paragraph about a difficult relocation or responsibility with three coordinated negatives, an As / While background, a clarifying question, since or because, “not … but …” and an end point (as far as / until / where).',
+    pronunciationFocus: 'Piled negatives with equal stress and a slow pace: “NO FRUIT, | NO TREES, | NO FOOD, | NO WAter, | and NO SIGN of LIFE.”\nThe question and answer in two calm tone units: “HAS alLAH comMANDed you | to LEAVE us HERE?” ↗ / “YES. | I am LEAVing you | to alLAH’s CARE.”\nReason clause after a pause: “we are NOT going to be LOST, | since alLAH is WITH us.”\nWord focus: AN-xious, SAT-is-fied, ad-VANCED, LEA-ther, di-REC-tion, com-MAND-ed.',
+    beforeReading: ['Ask: “What makes you feel calmer when you do not understand why something is happening?” Collect answers (an explanation, a trusted person, a reason).'],
+    duringReading: ['List what the valley did not have and what Abraham left.', 'Emotion line for Hajar with her exact words.', 'Underline “since” and “not acting on his own decision”.', 'Mark where Abraham stopped and what he began to do.'],
+    afterReading: ['Complete the Quick Challenge with the emotion line in view.', 'Language Focus: test the meaning of “since” (Activity 1), correct the absence list, the participle and where (Activity 2), rewrite the correction and report the question (Activity 3).', 'Write the Activity 4 paragraph from uncertainty to reassurance on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “What makes you calmer when you do not understand what is happening?” answers; 5–12 Listen and read; 12–18 Emotion line in pairs with Hajar’s exact words, then a whole-class check of whose decision it was; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery with the because / from-the-time-that test, Activity 2 individually, Activity 3 in pairs; 31–38 Use: learners write a paragraph about a student who must stay alone at a new school for a week while parents travel, moving from anxiety to reassurance, with no … no … no …, since and “not … but …”; 38–40 Exit ticket.',
+    discussionPoints: ['What details make the valley seem completely empty?', 'What changed Hajar’s anxiety into reassurance?', 'What does the chapter say about whose decision it was?'],
+    interactiveTips: ['Use the “skin of water” and “leather bag” hotspots when learners list what was left.', 'Replay the exchange between Hajar and Abraham and pause before her answer: ask the class to predict it.', 'Do not role-play the parting; describe it in learners’ own neutral words.'],
+    differentiation: { strugglingLearners: 'Give the frames “The valley had no ____, no ____ and no ____.”, “Hajar asked him whether ____.” and “He was acting not on ____ but on ____.”', fastFinishers: 'Write Hajar’s answer as reported speech and explain every change (pronouns, tense, since).' },
+    formativeAssessment: ['Explains “since” as reason with evidence.', 'Reports the yes/no question with correct word order and backshift.', 'Uses “not … but …” to correct an explanation.'],
+    expectedResponses: ['Abraham left Hajar and Ishmael with water and dates in a valley with no food, water or sign of life; when Hajar asked whether Allah had commanded this and he said yes, she said she was satisfied, since Allah was with them, understanding that he acted not on his own decision but on Allah’s command.'],
+    transferTask: 'Write three sentences about a moment when an explanation made you calmer: one question, one answer, one reason with “since”.',
+    teacherReflection: 'Did learners discover the reason meaning of “since” by testing it, and did they keep the emotional scene calm and respectful?',
+    assessmentTools: { rubric: ['Setting evidence', 'Emotional turn', 'Reason and correction', 'Reported question'], exitTicket: ['Write one sentence with “since” meaning “because” and one with “not … but …”.'] },
   },
   {
-    "chapter": "31. The Dream of Sacrifice",
-    "timing": "50 minutes",
-    "objectives": [
-      "Analyse how the chapter presents dream, command, consultation and Ishmael’s response.",
-      "Identify Ishmael’s awareness and willingness as explicit evidence in the dialogue.",
-      "Use life-stage background, source framing and dialogue functions to distinguish disclosure, consultation and commitment."
-    ],
-    "pedagogy": "Treat the dialogue as the centre of the chapter. Learners first establish Ishmael’s life stage, then map Abraham’s disclosure, request for opinion and Ishmael’s answer, avoiding any reading that removes Ishmael’s voice from the scene.",
-    "priorKnowledge": [
-      "Family sequence from Chapters 25–30 and source/dialogue framing."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not portray Ishmael as unaware or unwilling."
-    ],
-    "grammarFocus": "Growth/life-stage background; turning point; command/source framing; dialogue as disclosure, consultation and commitment.",
-    "pronunciationFocus": "Practise forbearing, sacrifice and patient; use clear speaker changes in “O my son…” and “O my father…”.",
-    "beforeReading": [
-      "Ask what consultation can add when one person believes a difficult duty has already been assigned."
-    ],
-    "duringReading": [
-      "Mark the life-stage phrase about being old enough to walk with Abraham.",
-      "Underline Abraham’s disclosure and question “what do you think?”.",
-      "Identify Ishmael’s response and the conditional phrase “if Allah wills”."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by matching dialogue line to function.",
-      "Use Language Focus to write a disclosure→consultation→commitment sequence.",
-      "Explain why Ishmael cannot be described as unaware in the chapter."
-    ],
-    "lessonPlan": "1. 0–5 min: consultation in a difficult decision. 2. 5–15 min: read/listen to background and dream. 3. 15–24 min: map dialogue functions. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on source/command and dialogue. 6. 39–47 min: B2 explanation of consultation. 7. 47–50 min: exit ticket naming Ishmael’s explicit response.",
-    "discussionPoints": [
-      "Why is consultation included even though Abraham understands the dream as a command?",
-      "What wording shows Ishmael’s awareness and commitment?"
-    ],
-    "interactiveTips": [
-      "Use separate speech cards for father and son rather than paraphrasing both through the narrator.",
-      "Keep theological interpretation within the chapter’s own framing."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide three dialogue-function labels: disclosure / consultation / commitment.",
-      "fastFinishers": "Write eight sentences analysing the dialogue with one source frame, one consultation function and one qualified commitment."
-    },
-    "formativeAssessment": [
-      "Identifies speaker roles.",
-      "Explains consultation without denying command framing.",
-      "Uses the dialogue as evidence."
-    ],
-    "expectedResponses": [
-      "Abraham tells Ishmael the dream and asks his view; Ishmael understands the task and responds that he will be patient, if Allah wills."
-    ],
-    "transferTask": "Analyse a neutral difficult conversation by separating disclosure, consultation and commitment.",
-    "teacherReflection": "Did learners preserve Ishmael’s agency as represented in the dialogue?"
+    chapter: '28. Zamzam Appears', timing: '40 minutes',
+    objectives: ['Explain what Abraham asks for in the prayer (Surah Ibrâhim 37) and the purpose of each request.', 'Explain the necessity the chapter describes: Hajar and Ishmael had to settle in Mecca for the rebuilding of the Ka‘ba.', 'Discover purpose chains (in order … that they may, so that they may, to carry), had to for necessity, “that is” for clarification, which for background and reference across generations (one of them, They).', 'Write a purpose-to-legacy paragraph that moves from an immediate necessity to a long-term effect.'],
+    pedagogy: 'The chapter has two parts: the end of Abraham’s prayer and the narrator’s explanation. For the prayer, learners match each part with its meaning and then draw an arrow from each request to its purpose; the pattern “so that they may …” is discovered from the arrows. For the explanation, you ask: “Was the move Abraham’s personal choice? Which words tell you?” Learners find “had to” and “According to Allah’s intention”. Reference is traced with coloured circles (Ishmael’s children → one of them → They). The prayer is read and matched, never gapped.',
+    priorKnowledge: ['so that; must / have to; relative which; pronouns.'],
+    anticipatedMisconceptions: ['“Had to” shows necessity from Allah’s intention, not Abraham’s preference.', '“That is” clarifies “the temple” as the Ka‘ba; it does not introduce a second building.', 'The chapter title mentions Zamzam, but Zamzam appears in Chapter 30; this chapter is the prayer and its purpose.'],
+    grammarFocus: 'Targets: purpose in the prayer (in order … that they may offer prayers perfectly; so that they may give thanks) · had to for necessity (Abraham (pbuh) had to take …; Hajar and Ishmael had to leave …) · that is for clarification (the temple, that is, the Ka‘ba) · which-clause for background (the Holy Ka‘ba which was lost after Noah’s Flood) · reference across generations (one of them, They) · to + verb for purpose (to carry …).\nNotice (Activities 1–2): after matching the parts of the prayer, ask: “Why does Abraham ask for each thing? Which words give the reason?” Then read the two narrator sentences and ask: “Was this his choice? What shows it?”\nBuild (Activity 3): complete which / them / They / to carry and explain why who, it and for carrying fail.\nLikely errors: *so that they may to give thanks · *one of it · *for carrying the message (purpose of a person’s action) · “that is” read as “for example”.\nUse (Activity 4): an 8–10 sentence non-story paragraph about a community project or long-term plan with had to / needed to, that is, two purpose links, one background relative clause, “over the years” and clear reference links.',
+    pronunciationFocus: 'Read the prayer slowly in meaning units with a pause before each purpose: “… by YOUR SAcred HOUSE; | in ORder, O our LORD, | that they may OFfer PRAYers PERfectly; …”.\nClarification with a lower pitch: “the TEMple, | THAT is, | the KA‘ba”.\nNecessity stressed on the main verb, weak “to”: “had to LEAVE /hæd tə/”.\nWord focus: cul-ti-VA-tion, re-con-STRUCT, BAR-ren, pen-IN-su-la, in-TEN-tion, GRAND-fa-ther.',
+    beforeReading: ['Ask: “When you ask someone for help, do you usually explain why you need it? Give an example.” Model: “Could you lend me your notes so that I can revise?”'],
+    duringReading: ['Arrow from each request in the prayer to its purpose.', 'Underline “had to” twice and “According to Allah’s intention”.', 'Circle “that is”.', 'Colour the reference chain: Ishmael’s children → one of them → They.'],
+    afterReading: ['Complete the Quick Challenge with the arrows in view.', 'Language Focus: match the parts of the prayer (Activity 1), explain “had to” (Activity 2), complete the links across generations (Activity 3).', 'Write the Activity 4 purpose-to-legacy paragraph on a non-story project.'],
+    lessonPlan: '0–5 Hook: “Could you lend me your notes so that I can revise?” learners give one request with a purpose; 5–12 Listen and read; 12–18 Arrows in pairs (request → purpose), then the reference chain in colours on the board; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs, Activity 2 as whole-class discovery (Was it his choice? What shows it?), Activity 3 individually; 31–38 Use: learners write a purpose-to-legacy paragraph about a village that had to build a well or a school library that needed to move, with had to, that is, so that and over the years; 38–40 Exit ticket.',
+    discussionPoints: ['What does Abraham ask for in the prayer, and for what purpose?', 'According to the chapter, why did Hajar and Ishmael have to settle in Mecca?', 'How does the last paragraph connect Ishmael’s descendants with Abraham’s message?'],
+    interactiveTips: ['Use the “Sacred House” hotspot for the prayer and the “rebuilding” hotspot for the narrator’s explanation.', 'Replay the prayer once without stopping; then work with the text on screen.', 'Keep the prayer whole: learners match and explain it, never gap or rewrite it.'],
+    differentiation: { strugglingLearners: 'Give the frames “He asked for ____ so that ____.”, “They had to ____ because ____.” and “____, that is, ____.”', fastFinishers: 'Write a paragraph that uses three different purpose forms (to, in order to, so that) and explain which sounds most formal.' },
+    formativeAssessment: ['Links each request to its purpose.', 'Explains had to as necessity with evidence.', 'Tracks reference across generations accurately.'],
+    expectedResponses: ['Abraham prayed that his family in the barren valley might pray properly, be loved by people and be given fruits so that they would give thanks; according to Allah’s intention they had to settle near the old temple, that is, the Ka‘ba, to rebuild it, and over the years Ishmael’s descendants, one of whom was Muhammad, spread Abraham’s message.'],
+    transferTask: 'Write two sentences about something your school had to do: one with “had to” and one clarifying a word with “that is”.',
+    teacherReflection: 'Did learners discover the purpose pattern from the arrows, and did they treat the prayer as a text to understand, not to manipulate?',
+    assessmentTools: { rubric: ['Request and purpose', 'Necessity', 'Clarification and background', 'Reference chain'], exitTicket: ['Write one sentence with “had to” and one with “so that … may/can …”.'] },
   },
   {
-    "chapter": "32. Submission and Mercy",
-    "timing": "50 minutes",
-    "objectives": [
-      "Evaluate what the interruption of the sacrifice reveals about the test’s purpose.",
-      "Identify fulfilment of the vision and the substitute as evidence that Ishmael’s death is not the final intended outcome.",
-      "Use imminent-action, interruption, fulfilment and limiting correction language."
-    ],
-    "pedagogy": "Build a near-event/interruption/outcome sequence. Learners identify what is about to happen, the stopping call, the statement that the vision has been fulfilled and the substitute, then infer what the chapter says the test measures.",
-    "priorKnowledge": [
-      "Chapter 31 dialogue and command framing."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not present Ishmael’s death as the desired final outcome."
-    ],
-    "grammarFocus": "When plus imminent “was about to”; interruption; test → fulfilment → evaluation → consequence; limiting correction.",
-    "pronunciationFocus": "Use a suspense-neutral pause before the stopping call; stress fulfilled / clear test / substitute rather than dramatizing the knife detail.",
-    "beforeReading": [
-      "Ask what evidence would show that a test has been completed before the feared outcome occurs."
-    ],
-    "duringReading": [
-      "Mark the moment of imminent action.",
-      "Underline the call stopping Abraham and the phrase declaring the vision fulfilled.",
-      "Identify the later statement that the substitute is a ram or goat."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using fulfilment evidence.",
-      "Use Language Focus to write imminent action followed by interruption.",
-      "Explain why submission, rather than death, is central to the test as the chapter presents it."
-    ],
-    "lessonPlan": "1. 0–5 min: what counts as test completion? 2. 5–15 min: read/listen to submission and interruption. 3. 15–24 min: map imminent action→stop→fulfilled→substitute. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on interruption and correction. 6. 39–47 min: test-purpose explanation. 7. 47–50 min: exit ticket citing one fulfilment detail.",
-    "discussionPoints": [
-      "What evidence shows that submission, not death itself, is central to the test?",
-      "How does the substitute change the interpretation of the outcome?"
-    ],
-    "interactiveTips": [
-      "Keep the lesson analytical and non-graphic.",
-      "Require the wording “fulfilled the vision” before accepting claims about the test’s completion."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Use four cards: about to act / stopped / vision fulfilled / substitute.",
-      "fastFinishers": "Write eight sentences explaining how interruption changes the meaning of the expected outcome."
-    },
-    "formativeAssessment": [
-      "Uses fulfilment evidence.",
-      "Separates submission from death outcome.",
-      "Handles sensitive content responsibly."
-    ],
-    "expectedResponses": [
-      "The call stops the sacrifice, states that the vision has been fulfilled and provides a substitute, so the chapter frames the event as a test of submission."
-    ],
-    "transferTask": "Explain a neutral test or trial where completion is shown by willingness or process rather than the feared final event.",
-    "teacherReflection": "Did learners interpret the stopping point through the chapter’s fulfilment language?"
+    chapter: '29. Mecca Is Settled', timing: '40 minutes',
+    objectives: ['Follow Hajar’s search as reported by Ibn Abbas: the water runs out, Safa, Marwa, seven times.', 'Separate the source’s report from the narrator’s later comments on Hajj.', 'Discover how a named source frames a report, Hajar’s possibility (Maybe …), an appositive (Ibn Abbas, a companion of …), the passive “was later commemorated”, and a summary that keeps fact, possibility and comparison apart.', 'Move from attributed evidence to a clearly marked later interpretation.'],
+    pedagogy: 'Make the voices visible with brackets: learners draw a bracket where Ibn Abbas’s report begins and ends and colour the narrator’s sentences after it. The discovery question is: “Who tells us about Hajj, Ibn Abbas or the narrator? How do you know?” Then learners compare four summaries and discover that “Maybe …” is Hajar’s hope, not a fact, and that “almost no difference” is not “exactly the same”. The search is retold calmly in learners’ own words; no one plays Hajar.',
+    priorKnowledge: ['According to / said; maybe and might; passive past simple.'],
+    anticipatedMisconceptions: ['“Maybe there is a caravan passing by” is Hajar’s thought, not a fact; she saw nothing.', 'The narrator, not Ibn Abbas, links the search to Hajj.', '“Almost no difference” does not mean the two pilgrimages are exactly the same.', 'The chapter title speaks of settling Mecca, but this chapter tells Hajar’s search; the settlement comes with the Jurham tribe in Chapter 30.'],
+    grammarFocus: 'Targets: named source frame (Ibn Abbas, a companion of Prophet Muhammad (pbuh) who narrated many hadiths, said, “…”) · appositive vs who was … and … · possibility in a character’s mind (‘Maybe there is a caravan passing by,’ she thought) · participle and sequence (Leaving Ishmael under a tree, she began …; Then, …; but still saw nothing) · passive for later commemoration (Her effort was later commemorated by Muslims during Hajj) · careful comparison (almost no difference).\nNotice (Activity 1): pairs sort six sentences into “inside Ibn Abbas’s report” and “told by the narrator”. Ask: “Where do the quotation marks close? Who connects the search with Hajj?”\nBuild (Activities 2–3): rewrite the appositive with “who was … and …” and the passive with Muslims as subject; then choose the summary that keeps possibility, fact and comparison apart.\nLikely errors: *Ibn Abbas, who a companion … · treating “maybe” as fact · “almost no difference” → “the same” · *Her effort was later commemorated by Hajj.\nUse (Activity 4): an 8–10 sentence non-story paragraph about a documented journey, rescue or discovery with an attributed source, one might / maybe, a when / after trigger, an -ing background phrase, two sequence markers, a but / still result and a clearly marked later interpretation.',
+    pronunciationFocus: 'Frame the source as one tone unit before the report: “Ibn ABbas, | a comPANion of PROphet MuHAMmad | who NARrated MAny HAdiths, | SAID, | …”.\nHajar’s hope with a rising tone: “MAYbe there IS a CAravan PASSing BY↗”.\nSequence with pauses: “THEN, | she MOVED aCROSS to the opPOsite HILL, | MARwa, | but STILL saw NOthing.”\nWord focus: com-PAN-ion, nar-RAT-ed, CAR-a-van, com-MEM-o-rat-ed, PIL-grim-age, ex-HAUST-ed.',
+    beforeReading: ['Show two sentences: “My grandmother said, ‘We walked to school every day.’” / “Today that road is a highway.” Ask: “Who is speaking in each? Which sentence is the grandmother’s, and which is the person telling the story?”'],
+    duringReading: ['Bracket the start and end of Ibn Abbas’s report.', 'Number Hajar’s actions in order.', 'Underline “Maybe …” and label it “possibility”.', 'Colour the narrator’s two comments about Hajj.'],
+    afterReading: ['Complete the Quick Challenge with the brackets in view.', 'Language Focus: sort report and narration (Activity 1), rewrite the source and the commemoration (Activity 2), choose the faithful summary (Activity 3).', 'Write the Activity 4 report-to-interpretation paragraph on a non-story event.'],
+    lessonPlan: '0–5 Hook: grandmother sentence vs narrator sentence — who is speaking?; 5–12 Listen and read; 12–18 Brackets and numbering in pairs, then a quick whole-class check of where the report ends; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Who connects the search with Hajj?), Activity 2 in pairs, Activity 3 as a vote with reasons against each wrong summary; 31–38 Use: learners write a paragraph based on a mountain-rescue report (According to the rescue team, …), with maybe, a sequence and a later interpretation clearly marked; 38–40 Exit ticket.',
+    discussionPoints: ['What does Ibn Abbas report about Hajar’s search?', 'Which sentences are the narrator’s additions, and what do they add?', 'Why is “almost no difference” a more careful claim than “the same”?'],
+    interactiveTips: ['Use the “companion” and “narrated many hadiths” hotspots to explain who Ibn Abbas is.', 'Replay the report and ask learners to count Hajar’s actions.', 'The report itself contains a comparison with sa’y inside its quotation marks; point this out as part of the text as printed and keep the Hajj link attributed.'],
+    differentiation: { strugglingLearners: 'Give a two-colour key and the frames “According to Ibn Abbas, ____.”, “She thought that maybe ____.” and “Later, ____.”', fastFinishers: 'Write a short report of a real historical event from a named source, then add one sentence of later interpretation, and label both.' },
+    formativeAssessment: ['Separates the source’s report from the narrator’s comments.', 'Keeps Hajar’s possibility as a possibility.', 'Preserves careful comparison in a summary.'],
+    expectedResponses: ['According to Ibn Abbas, when the water ran out Hajar left Ishmael under a tree and climbed Safa, hoping a caravan might be passing, then crossed to Marwa, running between the hills seven times; the narrator adds that her effort is later remembered during Hajj and that the two pilgrimages are almost the same.'],
+    transferTask: 'Write two sentences about a family story: one reported from the person who told it, one of your own later interpretation, clearly marked.',
+    teacherReflection: 'Did learners find the boundary of the source’s report themselves, and did their summaries keep the levels of certainty?',
+    assessmentTools: { rubric: ['Source boundary', 'Possibility vs fact', 'Careful comparison', 'Report-to-interpretation paragraph'], exitTicket: ['Write one sentence beginning “According to …” and one sentence with “maybe” that shows a character’s possibility.'] },
   },
   {
-    "chapter": "33. Building the Ka‘ba",
-    "timing": "50 minutes",
-    "objectives": [
-      "Connect the sacrifice tradition, father–son reunion and transition toward building the Ka‘ba without compressing chronology.",
-      "Distinguish animal sacrifice in the chapter’s historical framing from human sacrifice attributed to idolaters.",
-      "Use historical time frame, clarification, contrast and future-in-the-past to explain thematic transition."
-    ],
-    "pedagogy": "Use a three-panel transition: sacrifice practice / reunion / building intention. Learners identify the chapter’s explicit contrast between animal and human sacrifice, then mark the later reunion as a separate stage before construction.",
-    "priorKnowledge": [
-      "Chapter 32 substitute and the difference between event and later interpretation."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter’s movement to construction is thematic, not a claim that every detail occurs immediately."
-    ],
-    "grammarFocus": "Historical time frame; “in fact” clarification; while contrast; time-bound scope; future-in-the-past later plan.",
-    "pronunciationFocus": "Practise sacrifice, firstborn, reunion and pilgrimage; stress while in the contrast between prophets’ animal sacrifice and idolaters’ human sacrifice.",
-    "beforeReading": [
-      "Ask how a chapter can connect two themes without claiming they occur at the same moment."
-    ],
-    "duringReading": [
-      "Mark the chapter’s claim about sacrifice practices in Abraham’s time.",
-      "Underline the contrast between earlier prophets and idolaters.",
-      "Identify the later father–son reunion and the statement that they were going to build the House."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by distinguishing historical contrast from later sequence.",
-      "Use Language Focus to write a time-limited contrast and a future-in-the-past construction sentence.",
-      "Explain the common theme linking sacrifice and building without collapsing chronology."
-    ],
-    "lessonPlan": "1. 0–5 min: thematic link vs chronology. 2. 5–15 min: read/listen to sacrifice framing. 3. 15–24 min: analyse animal/human contrast and time scope. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on clarification/contrast/future plan. 6. 39–47 min: transition synthesis. 7. 47–50 min: exit ticket: one historical contrast and one later event.",
-    "discussionPoints": [
-      "What common idea links sacrifice and construction even though the actions are different?",
-      "Which wording prevents us from treating all details as immediate sequence?"
-    ],
-    "interactiveTips": [
-      "Keep the sacrifice comparison source-bound and avoid adding external historical claims.",
-      "Use a visible separator before the reunion/building stage."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide three panels with one evidence sentence for each.",
-      "fastFinishers": "Write eight sentences linking theme while explicitly marking the chronological gap."
-    },
-    "formativeAssessment": [
-      "Preserves chronological separation.",
-      "States the chapter’s sacrifice contrast accurately.",
-      "Explains thematic link without overclaim."
-    ],
-    "expectedResponses": [
-      "The chapter contrasts animal sacrifice with human sacrifice in its historical framing, then separately moves to the later reunion and preparation to build the Ka‘ba."
-    ],
-    "transferTask": "Connect two stages of a neutral project thematically while making the time gap explicit.",
-    "teacherReflection": "Did learners distinguish thematic continuity from immediate chronology?"
+    chapter: '30. Abraham and Ishmael', timing: '40 minutes',
+    objectives: ['Describe the appearance of the water, Hajar’s response and the angel’s words about the House of Allah.', 'Explain the name Zamzam as the chapter gives it and why the Jurham tribe stopped in the valley.', 'Discover immediate result, purpose and a short time gap (immediately, to stop, Not long after that), the present continuous “is flowing to this day”, called / which is called, and inference from a sign (which could only mean, must be).', 'Separate observation from inference in a non-story paragraph.'],
+    pedagogy: 'Build an event chain on the board: angel strikes the ground → water flows → Hajar builds a basin → angel speaks → the well today → the Jurham tribe arrives. Learners add a signal word to each link (immediately, to stop, will build, to this day, not long after that, had seen). The inference is discovered with one question: “Did the tribe see the water? What did they see, and what did it mean to them?” The angel and the miracle are described in the chapter’s words; no depiction or role-play.',
+    priorKnowledge: ['Purpose infinitive; past perfect; must for deduction from Chapter 20.'],
+    anticipatedMisconceptions: ['The Jurham tribe did not see the water first; they saw a bird and inferred water.', '“Called Zamzam” is a name; the chapter gives several meanings for the word Zemzem.', 'The chapter title names Abraham and Ishmael, but Abraham does not appear here; the angel speaks of the House which “this boy and his father will build”.'],
+    grammarFocus: 'Targets: immediate result (water immediately flowed out) · purpose (made a small basin … to stop it from spreading) · future in the angel’s words (which this boy and his father will build) · continuing present (is flowing to this day) · naming (called Zamzam = which is called / known as) · passive vs active (This name was given to the water → People gave this name …) · time shift (Not long after that) · inference from a sign (had seen … a bird …, which could only mean the presence of water → there must be water).\nNotice (Activity 1): read the last sentence and ask: “Did the tribe see the water? What did they actually see? What does ‘could only mean’ tell us?” Learners judge the statement false and name the inference.\nBuild (Activities 2–3): complete immediately / to stop / Not long after that and explain why lately, for stopping and Long before that fail; then rewrite the name, the passive and the inference with must be.\nLikely errors: *to stop it spreading / from spread · *for stopping it · *there must have water · *This well, calling Zamzam.\nUse (Activity 4): an 8–10 sentence non-story paragraph about a discovery that changes what people do next, with an immediate result, a purpose, will, still / to this day, not long after, a past perfect and a marked inference (could mean / suggested).',
+    pronunciationFocus: 'Result and purpose in tone units: “the ANgel HIT the GROUND with his HEEL, | and WAter imMEdiately FLOWED OUT.”\nThe angel’s words calmly, as a quotation: “DO not be aFRAID. | THIS is the PLACE for the HOUSE of alLAH …”.\nInference with stress on ONly: “which could ONly MEAN | the PRESence of WAter”.\nWord focus: im-ME-di-ate-ly, BA-sin, a-BUN-dant, OR-i-gin, ZAM-zam, JUR-ham.',
+    beforeReading: ['Ask: “If you see birds circling in the desert, what might it mean? What else could it mean?” Learners give one inference and one alternative.'],
+    duringReading: ['Event chain with a signal word for each link.', 'Underline what the angel says will happen.', 'Circle “to this day”.', 'Mark what the Jurham tribe saw and what it meant.'],
+    afterReading: ['Complete the Quick Challenge with the event chain in view.', 'Language Focus: judge the sign and the inference (Activity 1), complete result, purpose and time gap (Activity 2), rewrite names and conclusions (Activity 3).', 'Write the Activity 4 sign-to-settlement paragraph on a non-story discovery.'],
+    lessonPlan: '0–5 Hook: “Birds circling in the desert — what might it mean?” one inference, one alternative; 5–12 Listen and read; 12–18 Event chain in pairs on strips, each with a signal word, then order check on the board; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (What did they actually see?), Activity 2 in pairs, Activity 3 individually; 31–38 Use: learners write a sign-to-settlement paragraph about hikers who found a spring after noticing green plants on a hillside, with immediately, to, not long after and one marked inference; 38–40 Exit ticket.',
+    discussionPoints: ['What did Hajar do as soon as the water appeared, and why?', 'What does the angel say about the place?', 'What sign led the Jurham tribe to the valley, and why is their conclusion an inference?'],
+    interactiveTips: ['Use the “hit the ground” hotspot for the moment of the miracle and the “small basin” hotspot for Hajar’s response.', 'Replay the meanings of Zemzem and let learners choose the one they find most interesting.', 'Do not draw or act the angel; keep to the chapter’s words.'],
+    differentiation: { strugglingLearners: 'Give the event strips with the signal words in a box and the frames “She made a basin to ____.” and “They had seen ____, which could only mean ____.”', fastFinishers: 'Write two versions of the tribe’s reasoning, one certain (must be) and one cautious (might be), and explain which the chapter’s wording supports.' },
+    formativeAssessment: ['Orders the events with the right signal words.', 'Separates what was seen from what was inferred.', 'Rewrites names, passives and inferences accurately.'],
+    expectedResponses: ['When the angel struck the ground, water immediately flowed out; Hajar made a basin to stop it spreading, and the angel said this was the place for the House of Allah that the boy and his father would build; the well, called Zamzam, still flows today, and not long after, the Jurham tribe stopped there because a bird flying towards the valley could only mean water.'],
+    transferTask: 'Write two sentences about a sign you noticed (dark clouds, a crowd outside a shop): what you saw and what it could only mean.',
+    teacherReflection: 'Did learners discover the difference between the sign and the inference, and did they describe the miracle respectfully in the chapter’s words?',
+    assessmentTools: { rubric: ['Event chain', 'Observation vs inference', 'Time and purpose markers', 'Transformation accuracy'], exitTicket: ['Write one sentence with “immediately” and one inference with “which could only mean …” or “must be”.'] },
   },
   {
-    "chapter": "34. The First Call to Pilgrimage",
-    "timing": "50 minutes",
-    "objectives": [
-      "Analyse Abraham and Ishmael’s cooperative roles in building the Ka‘ba.",
-      "Explain why the prayer for acceptance shows humility even during successful completion of a commanded task.",
-      "Use prior-command relevance, commitment, no-longer limitation, parallel ongoing action and imperative-as-request."
-    ],
-    "pedagogy": "Build a role-and-humility chart. Learners track command, Ishmael’s commitment, Abraham’s adaptation when the wall becomes high, Ishmael’s stone-carrying role and the shared prayer for acceptance.",
-    "priorKnowledge": [
-      "Chapter 33 building intention and teamwork language."
-    ],
-    "anticipatedMisconceptions": [
-      "Performing a commanded task is not treated as a guarantee of acceptance."
-    ],
-    "grammarFocus": "Present relevance of a prior command; will for commitment; no longer for limitation/adaptation; parallel ongoing action; imperative as respectful request.",
-    "pronunciationFocus": "Practise Al-Maqam and “Accept this service from us”; use parallel rhythm for Abraham standing / Ishmael handing stones / both praying.",
-    "beforeReading": [
-      "Ask how people can show confidence in a task while still remaining humble about its acceptance or quality."
-    ],
-    "duringReading": [
-      "Mark the command and Ishmael’s commitment to help.",
-      "Underline the moment Abraham can no longer lift stones high enough and the adaptation using Al-Maqam.",
-      "Identify the parallel roles and the shared prayer."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge by matching person to role.",
-      "Use Language Focus to write limitation→adaptation and two parallel actions.",
-      "Explain why asking for acceptance matters while the work is still being done."
-    ],
-    "lessonPlan": "1. 0–5 min: teamwork and humility. 2. 5–15 min: read/listen to command and commitment. 3. 15–24 min: map roles and adaptation. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on limitation, commitment and parallel action. 6. 39–47 min: humility/teamwork explanation. 7. 47–50 min: exit ticket: one role and one reason for the prayer.",
-    "discussionPoints": [
-      "Why is the prayer for acceptance significant while the work is still being done?",
-      "How does the chapter show adaptation when physical limitation appears?"
-    ],
-    "interactiveTips": [
-      "Use a two-person role chart rather than a generic teamwork discussion.",
-      "Keep prayer language as evidence of humility, not as a detached moral slogan."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Match Abraham / Ishmael / both to build, hand stones, stand on Al-Maqam, pray.",
-      "fastFinishers": "Write eight sentences combining will, no longer, parallel actions and the acceptance prayer."
-    },
-    "formativeAssessment": [
-      "Identifies roles accurately.",
-      "Explains adaptation.",
-      "Connects prayer to humility."
-    ],
-    "expectedResponses": [
-      "Ishmael brings stones, Abraham builds from Al-Maqam when height becomes a limitation, and both ask Allah to accept their service."
-    ],
-    "transferTask": "Describe a joint task where roles change in response to a limitation and the team still seeks feedback or acceptance.",
-    "teacherReflection": "Did learners ground teamwork and humility in the specific building actions?"
+    chapter: '31. The Dream of Sacrifice', timing: '40 minutes',
+    objectives: ['Explain how Ishmael grew up among the Jurham tribe and what the chapter says about his character.', 'Follow the verses (Sâffât 101–102): good news, the dream, Abraham’s question and Ishmael’s answer.', 'Discover “was to be” for looking ahead from the past, a participle clause of background (Growing up among …), must / had to for obligation, and the functions of the dialogue (telling, asking for a view, accepting, promising patience with “InshAllah”).', 'Keep obligation, consultation and personal response distinct in a non-story exchange.'],
+    pedagogy: 'Handle the theme calmly: the teacher or the audio reads the verses once, and the class works with the text, not with images of the scene. Learners first build a life-stage line for Ishmael (grows up → learns Arabic → is loved for his gentle character → marries). Then they match the verse parts with their meanings and discover the structure of the exchange: Abraham tells and asks, Ishmael accepts and promises. “Was to be” is discovered with a viewpoint question: “At the moment of the dream, does the narrator already know what it will become?” No role-play and no freeze-frames of the prophets.',
+    priorKnowledge: ['Participle clauses from Chapter 6; must / had to; future seen from the past.'],
+    anticipatedMisconceptions: ['“Was to be the ultimate test” looks ahead; it does not say the sacrifice happened.', 'Abraham asks his son for his view; the dialogue is a consultation, not only an order.', '“InshAllah” and “you shall find me of the patient” show Ishmael’s acceptance with trust, not fear.'],
+    grammarFocus: 'Targets: participle clause of background (Growing up among the Jurham tribe, Ishmael married …) · obligation in a report (learnt that he must sacrifice … → had to) · was to be for what a past event would become (which was to be the ultimate test of his faith) · old enough to … for a life stage · dialogue functions in the verses (telling the dream, asking “what do you think”, accepting, promising patience qualified by “if Allah wills”).\nNotice (Activity 1): after matching the verse parts, ask: “What does Abraham do after telling the dream? What does Ishmael do in his answer?” Learners name ask-for-a-view, accept and promise before you confirm.\nBuild (Activities 2–3): expand the participle clause with as / while / after and report must as had to; then decide what “was to be” expresses.\nLikely errors: *Growing up among the Jurham tribe, the daughter was married (dangling subject) · *learnt that he must to sacrifice · reading “was to be” as a cancelled plan · *old enough for walk.\nUse (Activity 4): an 8–10 sentence non-story exchange about a difficult responsibility discussed between two people, with a background-growth phrase, a turning point, a reported obligation, a question inviting the other’s view, a reasoned response and a commitment qualified by “if possible” or “if all goes well”.',
+    pronunciationFocus: 'Read the verses slowly, calmly and in meaning units, with no dramatic voice: “O my SON! | I have SEEN in a DREAM …”.\nBackground clause as its own tone unit: “GROWing UP among the JURham TRIBE, | ISHmael MARried …”.\nWeak form in “was to be” /wəz tə bi/: “which was to be the ULtimate TEST”.\nWord focus: for-BEAR-ing, TI-dings, UL-ti-mate, SAC-ri-fice, ad-MIRED, JUR-ham.',
+    beforeReading: ['Ask: “When a family faces a hard decision, why is it important to ask everyone’s view before acting?” Collect two reasons (respect, shared responsibility).'],
+    duringReading: ['Life-stage line for Ishmael with quoted phrases.', 'Underline “was to be” and “must”.', 'Divide the verse into: good news / dream / question / answer.', 'Circle “InshAllah” and the promise of patience.'],
+    afterReading: ['Complete the Quick Challenge with the life-stage line in view.', 'Language Focus: match the verse parts (Activity 1), expand the background and report the obligation (Activity 2), interpret “was to be” (Activity 3).', 'Write the Activity 4 consultation-under-pressure exchange on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “Why ask everyone’s view before a hard family decision?” two reasons; 5–12 The teacher plays the audio once, calmly, then learners read; 12–18 Life-stage line in pairs, then the verse divided into four functions on the board; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs with the whole-class question (What does each speaker do?), Activity 2 individually, Activity 3 as whole-class discovery (Does the narrator already know?); 31–38 Use: pairs write a short consultation between a team captain and a player about who must give up a place in a final, with a reported obligation, “What do you think?” and “if all goes well”; 38–40 Exit ticket.',
+    discussionPoints: ['What does the chapter say about Ishmael’s character and how people saw him?', 'Why does Abraham ask his son what he thinks?', 'What does Ishmael’s answer show, and what does “InshAllah” add?'],
+    interactiveTips: ['Use the “gentle character” hotspot for Ishmael and the “ultimate test” hotspot for the narrator’s evaluation.', 'Play the verses once and move straight to the text; do not pause the audio for commentary.', 'No role-play, drawings or freeze-frames of Abraham or Ishmael; production stays in the non-story task.'],
+    differentiation: { strugglingLearners: 'Give the four function labels to match with the verse parts and the frames “Growing up ____, he ____.” and “He learnt that he had to ____.”', fastFinishers: 'Write the exchange of the Use task twice, once as an order only and once as a consultation, and explain which language makes the difference.' },
+    formativeAssessment: ['Sequences Ishmael’s life stages accurately.', 'Names the functions of the verse dialogue.', 'Explains “was to be” and reports obligation correctly.'],
+    expectedResponses: ['Ishmael grew up among the Jurham, learned Arabic, was loved for his gentle character and married; Abraham dreamt that he sacrificed his son, which was to be the greatest test of his faith; he told his son and asked his view, and Ishmael told him to do as commanded, promising patience, if Allah willed.'],
+    transferTask: 'Write two sentences about a decision in your class: one that reports an obligation with “had to” and one that asks for others’ views.',
+    teacherReflection: 'Did learners see the dialogue as consultation, and did the lesson stay calm, respectful and free of dramatisation?',
+    assessmentTools: { rubric: ['Life stages', 'Dialogue functions', 'Looking ahead from the past', 'Consultation exchange'], exitTicket: ['Write one sentence beginning “Growing up …,” and one question that asks for someone’s view.'] },
   },
   {
-    "chapter": "35. The Legacy of Abraham",
-    "timing": "50 minutes",
-    "objectives": [
-      "Synthesize Abraham’s legacy through the Ka‘ba, pilgrimage, family transmission and Hanifism.",
-      "Distinguish institutional legacy from legacy transmitted through people and regions.",
-      "Use limiting claims, qualified interpretation, not-just scope, coexistence and continuity language without claiming idolatry disappeared permanently."
-    ],
-    "pedagogy": "Use a four-part legacy matrix: place, ritual, family lines, continuing belief. Learners add only evidence from the chapter, then mark the coexistence of Hanif faith and idolatry as a limit on any claim of complete religious transformation.",
-    "priorKnowledge": [
-      "Chapters 1, 26 and 33–34 on genealogy, Mecca and building."
-    ],
-    "anticipatedMisconceptions": [
-      "The chapter does not claim Abraham’s work permanently eliminated later idolatry."
-    ],
-    "grammarFocus": "Limiting an overstrong claim; evidence → qualified interpretation; not just scope; coexistence; recurring condition; present-perfect continuity.",
-    "pronunciationFocus": "Practise legacy, pilgrimage, Hanifism, coexist and restored; stress not just / all people / coexisted to preserve scope and qualification.",
-    "beforeReading": [
-      "Ask what makes a legacy institutional, familial, geographical or conceptual."
-    ],
-    "duringReading": [
-      "Mark restoration of the Ka‘ba and the call to pilgrimage.",
-      "Trace Ishmael in Hijaz, Isaac in Palestine and the other children eastward.",
-      "Underline the statement that Hanif faith coexisted with idolatry."
-    ],
-    "afterReading": [
-      "Complete the Quick Challenge using the legacy matrix.",
-      "Use Language Focus to correct an overstrong statement such as “idolatry ended permanently.”",
-      "Write a final eight-sentence synthesis using evidence from at least three legacy categories."
-    ],
-    "lessonPlan": "1. 0–5 min: legacy categories. 2. 5–15 min: read/listen for place and pilgrimage. 3. 15–24 min: map family/geographical transmission and coexistence. 4. 24–29 min: Quick Challenge. 5. 29–39 min: Language Focus on scope and continuity. 6. 39–47 min: final evidence-based synthesis. 7. 47–50 min: exit ticket: one institutional and one person-transmitted legacy.",
-    "discussionPoints": [
-      "Which parts of the legacy are institutional and which are transmitted through people?",
-      "Which sentence prevents a claim that Abraham permanently ended idolatry?"
-    ],
-    "interactiveTips": [
-      "Require one chapter citation/detail in each legacy category.",
-      "Use coexistence as a deliberate check against triumphalist overstatement."
-    ],
-    "differentiation": {
-      "strugglingLearners": "Provide four legacy boxes with one starter detail in each.",
-      "fastFinishers": "Write a ten-sentence final synthesis connecting Chapter 1 genealogy with Chapters 34–35 while preserving the coexistence qualification."
-    },
-    "formativeAssessment": [
-      "Uses multiple legacy categories.",
-      "Preserves coexistence/qualification.",
-      "Distinguishes institution from personal transmission."
-    ],
-    "expectedResponses": [
-      "The chapter combines the restored Ka‘ba and pilgrimage with family lines, regional transmission and Hanifism, while explicitly noting coexistence with idolatry."
-    ],
-    "transferTask": "Analyse a neutral legacy by separating institutions, practices, people and ideas that continue beyond one event.",
-    "teacherReflection": "Did learners produce a qualified legacy synthesis rather than a celebratory list?"
-  }
-
+    chapter: '32. Submission and Mercy', timing: '40 minutes',
+    objectives: ['Follow the sequence in the chapter: obedience, the voice that stops Abraham, the verses about fulfilling the vision, and the consequence (leader of humanity).', 'Explain the limiting last sentence: it was only a test, and a ram or goat was the substitute.', 'Discover “just as … was about to” for the moment of interruption, promise + to, because of + noun vs because, only for a limit, and willingness + to.', 'Separate what happened from what the event showed and what followed from it.'],
+    pedagogy: 'Use a four-box frame on the board: What happened / What stopped it / What it showed / What followed. Learners fill the boxes with quoted phrases. The interruption is discovered with a timing question: “Did the knife reach Ishmael? Which words tell you?” Learners find “just as … was about to”. The limit is discovered from the last sentence: “Was it a real sacrifice of Ishmael? What shows this?” The verses are read respectfully and never gapped; there is no role-play of the scene.',
+    priorKnowledge: ['Chapter 31 dream and dialogue; because / because of; be going to.'],
+    anticipatedMisconceptions: ['The knife did not reach Ishmael; the voice stopped Abraham before.', 'The event was a test; the chapter says the substitute was a ram or goat.', '“Because of this” connects Abraham’s willingness with Allah making him leader; it does not refer to the substitute.'],
+    grammarFocus: 'Targets: imminent action and interruption (A voice stopped Abraham (pbuh) just as his knife was about to near Ishmael) · promise + to (promised to obey) · evaluation with willingness + to (showed his willingness to sacrifice all his belongings for Allah) · consequence with Because of this (+ noun/pronoun) vs because (+ clause) · limit with only (It was only a test).\nNotice (Activity 1): ask: “Did the knife touch Ishmael? Which two words show the exact moment?” Learners explain “just as … was about to” before you confirm.\nBuild (Activities 2–3): complete to obey / Because of / only and explain why obeying, Because and even fail; then rebuild the evaluation sentence and name what “Here” points back to.\nLikely errors: *promised obeying · *Because this, Allah made him … · *It was even a test · *his willingness of sacrificing.\nUse (Activity 4): an 8–10 sentence non-story paragraph about a test, inspection or trial that reaches a critical point, with a when-clause, was about to, an interruption, an evaluation of what the event proved, because of this / therefore and a limiting final sentence with only / rather than / not … but ….',
+    pronunciationFocus: 'Timing in one tone unit with stress on the key words: “a VOICE STOPPED Abraham | JUST as his KNIFE was aBOUT to NEAR ISHmael”.\nRead the verses calmly and slowly: “O ABraham: | you have inDEED FULfilled the VIsion.”\nLimit with stress: “it was ONly a TEST”.\nWord focus: WILL-ing-ness, be-LONG-ings, VI-sion, SUB-sti-tute, hu-MAN-i-ty, MES-sen-gers.',
+    beforeReading: ['Recall Chapter 31 in two sentences (the dream, Ishmael’s answer). Ask: “What do you expect the next chapter to tell us?” and keep the predictions short and neutral.'],
+    duringReading: ['Four boxes: happened / stopped / showed / followed.', 'Underline “just as … was about to”.', 'Circle “Because of this” and “only”.', 'Mark who asked for the leadership to continue in his children, according to the verse.'],
+    afterReading: ['Complete the Quick Challenge with the four boxes in view.', 'Language Focus: interpret the moment of interruption (Activity 1), complete promise, consequence and limit (Activity 2), rebuild the evaluation (Activity 3).', 'Write the Activity 4 turning-point evaluation on a non-story situation.'],
+    lessonPlan: '0–5 Recall Chapter 31 and predict neutrally; 5–12 Listen to the audio once, then read; 12–18 Four-box frame in pairs with a quote per box, then a whole-class check of the last sentence (only a test, the substitute); 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Did the knife touch him? Which words show the moment?), Activity 2 in pairs, Activity 3 on screen by volunteers; 31–38 Use: learners write a turning-point evaluation about a bridge inspection stopped just as a lorry was about to cross, ending with what the inspection proved and a limiting sentence with “only”; 38–40 Exit ticket.',
+    discussionPoints: ['At what exact moment was Abraham stopped?', 'What does the chapter say Abraham showed, and what followed because of it?', 'How does the last sentence limit the meaning of the event?'],
+    interactiveTips: ['Use the “obeyed Allah’s command” hotspot for the first verse and the “fulfilled the vision” hotspot for the second.', 'Play the audio once without stopping; discuss the text, not images.', 'No role-play, drawings or freeze-frames of the scene or the prophets.'],
+    differentiation: { strugglingLearners: 'Give the four-box frame with headings and the frames “He was about to ____ when ____.”, “Because of this, ____.” and “It was only ____.”', fastFinishers: 'Write a paragraph that separates event, evaluation and consequence into three clearly signalled parts and add one limiting sentence.' },
+    formativeAssessment: ['Places the interruption precisely with evidence.', 'Separates event, evaluation and consequence.', 'Uses because of, only and willingness to correctly.'],
+    expectedResponses: ['Both father and son obeyed; a voice stopped Abraham just as his knife was about to reach Ishmael and said he had fulfilled the vision; Abraham had shown his willingness to give everything for Allah, and because of this Allah made him a leader of humanity; it was only a test, and a ram or goat was the substitute.'],
+    transferTask: 'Write two sentences about a test you took: one with “was about to” and one that states what the test showed with “Because of this, …”.',
+    teacherReflection: 'Did learners discover the timing of the interruption from the text, and did the class keep the sensitive scene calm and respectful?',
+    assessmentTools: { rubric: ['Event timing', 'Evaluation vs consequence', 'Limiting language', 'Turning-point paragraph'], exitTicket: ['Write one sentence with “was about to” and one with “Because of this, …”.'] },
+  },
+  {
+    chapter: '33. Building the Ka‘ba', timing: '40 minutes',
+    objectives: ['Explain how the chapter links the sacrifice to a practice that continues today, and how it describes sacrifice in Abraham’s time.', 'Separate claims limited to Abraham’s time and people from statements about today.', 'Discover time frames that limit claims (At Abraham’s time, In Abraham’s religion, for the people of that era), in fact for clarification, while / whereas for contrast, were going to for a plan seen from the past, and expressions of reunion.', 'Compare practices across time without turning time-bound claims into universal statements.'],
+    pedagogy: 'Put two columns on the board: “Then (Abraham’s time)” / “Now (every year)”. Learners sort the chapter’s claims and discover that the chapter itself limits its statements with time frames and the past tense. You ask: “Does the chapter say animal sacrifice is equivalent to human life for all times? Which words limit it?” The reunion is then read as a separate scene: learners find the words of emotion (longing, crying with joy) and the plan ahead (were going to build). The historical practice of child sacrifice is mentioned only as the chapter states it, calmly.',
+    priorKnowledge: ['Present simple for routines vs past simple; while for contrast; was going to.'],
+    anticipatedMisconceptions: ['“Equivalent to human life” is limited to Abraham’s religion and era; it is not a general claim.', 'The chapter says animal sacrifice did not begin with Abraham; prophets before him also sacrificed animals.', 'The chapter title speaks of building the Ka‘ba, but here father and son only reunite and plan to build it; the building is in Chapter 34.'],
+    grammarFocus: 'Targets: time frames that limit a claim (At Abraham’s time, In Abraham’s religion, for the people of that era + past tense) vs present simple with Every year for today · in fact / Actually for clarification · contrast with while / whereas (Prophets before him also sacrificed animals, while idolaters sacrificed humans) · future seen from the past (This time, they were going to build …) · quite + adjective, equivalent to, each other, with longing.\nNotice (Activity 1): pairs sort five parts into “limited to Abraham’s time” and “about today”. Ask: “Which words and which tense show that a claim belongs only to that period?”\nBuild (Activities 2–3): move the contrast clause to the front with Whereas / While and restate “were going to build” as “their plan was to build”; then match the expressions of practice and reunion.\nLikely errors: removing the time frame and making the claim general · *Whereas prophets before him also sacrificed animals, but idolaters … · *embraced themselves (for each other) · *equivalent with.\nUse (Activity 4): an 8–10 sentence non-story paragraph comparing two practices or traditions across time, with a historical time frame, in fact, while, a claim limited to that period, “after several years” and a was / were going to plan.',
+    pronunciationFocus: 'Time frames as their own tone units: “at ABraham’s TIME, | …”, “for the PEOple of THAT Era, | …”.\nContrast with a pause before while: “PROphets beFORE him ALso SACrificed ANimals, | WHILE IDolaters SACrificed HUmans” (calm voice).\nNumbers: “HUNdreds of MILlions”, “about THIRty years OLD”.\nWord focus: e-QUIV-a-lent, WIDE-spread, FIRST-born, sep-a-RA-tion, em-BRACED, LONG-ing.',
+    beforeReading: ['Ask: “If you describe how people lived five hundred years ago, how do you make clear that you are not describing today?” Collect phrases (at that time, in those days, used to).'],
+    duringReading: ['Two columns: then / now.', 'Underline every phrase that limits a claim to a time or group.', 'Circle “In fact” and “while”.', 'Mark the reunion: how long they had been apart, Ishmael’s age and the plan ahead.'],
+    afterReading: ['Complete the Quick Challenge with the two columns in view.', 'Language Focus: sort then and now (Activity 1), rewrite the contrast and the plan (Activity 2), match the expressions of practice and reunion (Activity 3).', 'Write the Activity 4 historically framed contrast on a non-story topic.'],
+    lessonPlan: '0–5 Hook: “How do you show you are not describing today?” phrases on the board; 5–12 Listen and read; 12–18 Then / now columns in pairs, then a whole-class check of every limiting phrase; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Which words and tense limit the claim?), Activity 2 individually, Activity 3 in pairs; 31–38 Use: learners write a historically framed contrast about how messages were sent in their grandparents’ time and today, with a time frame, in fact, while and was going to; 38–40 Exit ticket.',
+    discussionPoints: ['Which claims does the chapter limit to Abraham’s time, and how?', 'What does the chapter say about animal sacrifice before Abraham?', 'How is the reunion of father and son described, and what were they going to do?'],
+    interactiveTips: ['Use the “hundreds of millions” hotspot for the present-day practice and the “widespread” hotspot for the practice of Abraham’s time.', 'Replay the reunion sentences and ask learners for the words of emotion.', 'Mention the historical practice of child sacrifice only as the chapter states it; do not expand on it.'],
+    differentiation: { strugglingLearners: 'Give the two columns with the limiting phrases in a box and the frames “At that time, ____.” and “____, while ____.”', fastFinishers: 'Rewrite two limited claims without their time frame and explain in two sentences why the new versions overstate the chapter.' },
+    formativeAssessment: ['Separates time-bound claims from present practice.', 'Uses while / whereas correctly.', 'Keeps time frames in their own comparative writing.'],
+    expectedResponses: ['Every year Muslims remember this act during Hajj; in Abraham’s time sacrificing firstborn children was widespread, while in his religion animal sacrifice took the place of human life and meant safety; prophets before him also sacrificed animals; after years apart, father and son reunited with joy, planning to build the House of Allah.'],
+    transferTask: 'Write two sentences comparing one school custom in your parents’ time and today, with “at that time” and “while”.',
+    teacherReflection: 'Did learners discover how time frames protect claims, and did the class handle the historical practice calmly?',
+    assessmentTools: { rubric: ['Then vs now', 'Limited claims', 'Contrast', 'Plan from the past'], exitTicket: ['Write one claim limited by “At that time, …” and one contrast with “while”.'] },
+  },
+  {
+    chapter: '34. The First Call to Pilgrimage', timing: '40 minutes',
+    objectives: ['Explain how Abraham and Ishmael build the Ka‘ba together on the old foundations and how they adapt when the walls become high.', 'Understand the hadith at the start and the prayer at the end as quotations with their own sources.', 'Discover the present perfect for present relevance and will for commitment, the backshift in reported dialogue, “no longer” for a stopped ability, “carry on + -ing” for a continuing action, and the imperative as a humble request in prayer.', 'Describe a shared task from instruction to commitment, difficulty, adaptation and completion.'],
+    pedagogy: 'Build a task sequence on the board: instruction → commitment → foundations → walls grow high → adaptation (the stone of Al-Maqam, Ishmael hands stones) → shared prayer. Learners add a quoted phrase to each step. The request in the prayer is discovered with one question: “Is ‘Accept’ an order here? Who is speaking to whom?” Learners find that the imperative addressed to Allah is a humble request. The hadith and the verse are read and explained as quotations, never gapped.',
+    priorKnowledge: ['Present perfect vs past simple; reported speech; imperatives.'],
+    anticipatedMisconceptions: ['“Accept this service from us” is a humble request, not an order.', '“Could no longer lift” means he had been able to before and now could not; it is about height and age, not unwillingness.', 'The chapter title speaks of the call to pilgrimage, but the call itself is mentioned in Chapter 35 (Surah Hajj: 27); this chapter is the building.'],
+    grammarFocus: 'Targets: present perfect for a command still relevant (Allah has commanded me …) and will for commitment (you will help me / I will help you for sure) · reported dialogue with backshift (had commanded, would help) · build on the foundations · no longer for a stopped ability (could no longer lift) · carry on + -ing (carried on handing him the stones) · imperative as a humble request in prayer (Accept this service from us).\nNotice (Activity 1): read the prayer and ask: “Who is speaking to whom? Can a person give an order to Allah? So what is ‘Accept’ here?” Learners explain the request meaning before you confirm.\nBuild (Activities 2–3): report Abraham’s and Ishmael’s words with had commanded / would help; then choose on / no longer / handing and explain why in, not longer and hand fail.\nLikely errors: *Abraham told Ishmael that Allah has commanded him · *could not longer · *carried on to hand · *built the Ka‘ba in the foundations.\nUse (Activity 4): an 8–10 sentence non-story paragraph about two people completing a demanding shared task, with a present-perfect instruction, a will-commitment, a reported instruction, no longer, a continuing parallel action, a cause → adaptation link and a final respectful request.',
+    pronunciationFocus: 'Commitment with strong “will” and “sure”: “I WILL HELP you for SURE.”\nNo longer as one stressed unit: “could NO LONGer LIFT the STONES”.\nThe prayer read slowly, falling at the end of each unit: “O our LORD! | acCEPT this SERvice from US; | VERily YOU are the ALL HEARer, | the ALL KNOWer.”\nWord focus: foun-DA-tions, al-MA-qam, al-MIGHT-y, SER-vice, es-TAB-lish, SA-cred.',
+    beforeReading: ['Ask: “When two people build or make something together, how do they share the work when one of them can no longer do a part?” Collect examples (one holds, one fixes).'],
+    duringReading: ['Task sequence with a quote at each step.', 'Underline the present perfect and the two “will” sentences.', 'Circle “no longer” and “carried on”.', 'Box the hadith and the prayer with their sources.'],
+    afterReading: ['Complete the Quick Challenge with the task sequence in view.', 'Language Focus: interpret the imperative in the prayer (Activity 1), report the dialogue (Activity 2), choose the building forms (Activity 3).', 'Write the Activity 4 shared-task sequence on a non-story situation.'],
+    lessonPlan: '0–5 Hook: “How do two people share the work when one can no longer do a part?” examples; 5–12 Listen and read; 12–18 Task sequence in pairs on strips, then a quick check of the adaptation step (Al-Maqam, handing the stones); 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (Who speaks to whom? What is Accept here?), Activity 2 in pairs, Activity 3 individually; 31–38 Use: learners write a shared-task paragraph about two classmates building a school garden bed, with has asked, will, no longer, carried on + -ing and a final polite request; 38–40 Exit ticket.',
+    discussionPoints: ['How do father and son share the work, and how do they adapt?', 'What does the hadith at the start say about the place?', 'Why is “Accept this service from us” a request and not an order?'],
+    interactiveTips: ['Use the “made sacred” hotspot with the hadith and the “important task” hotspot with the dialogue.', 'Replay the dialogue and ask learners to report each line immediately.', 'Treat the hadith and the verse as quotations with sources: explain them, never gap or rewrite them.'],
+    differentiation: { strugglingLearners: 'Give the task steps on cards and the frames “He told him that Allah had ____.”, “He could no longer ____.” and “He carried on ____-ing.”', fastFinishers: 'Write the dialogue in reported speech with three different reporting verbs (told, promised, explained) and explain the tense changes.' },
+    formativeAssessment: ['Orders the task steps including the adaptation.', 'Reports the dialogue with correct backshift.', 'Explains the imperative in prayer as a request.'],
+    expectedResponses: ['Abraham told Ishmael that Allah had commanded him to build a house and that Ishmael would help, and Ishmael promised he would; they built the Ka‘ba on the old foundations, and when Abraham could no longer lift the stones high enough he stood on the stone of Al-Maqam while Ishmael carried on handing him stones, both praying that Allah accept their service.'],
+    transferTask: 'Write two sentences about a shared job at home: one with “could no longer” and one with “carried on + -ing”.',
+    teacherReflection: 'Did learners discover the request meaning of the imperative, and did the task sequence make the adaptation clear?',
+    assessmentTools: { rubric: ['Task sequence', 'Reported dialogue', 'Change and continuation', 'Request vs order'], exitTicket: ['Write one sentence with “no longer” and one polite request that uses an imperative.'] },
+  },
+  {
+    chapter: '35. The Legacy of Abraham', timing: '40 minutes',
+    objectives: ['Explain how the chapter presents Abraham’s legacy: restorer of the Ka‘ba, completion of his mission, a place of worship for all people, and a lasting example.', 'Keep the scope of the chapter’s claims: evidence of his mission in that region at that time, not proof that everyone accepted it.', 'Discover limiting and widening expressions (was but the restorer, not just …), coexistence, evidence → interpretation, the present perfect for continuing relevance and where for a situation.', 'Write a qualified legacy paragraph and synthesise the book’s main strands.'],
+    pedagogy: 'Use the final chapter for synthesis. Learners first test each claim with a “scope ruler”: Who? Where? When? How sure? They discover that “was but the restorer” limits the claim, “not just people of a chosen race or color” widens it, and “in that region at that time” keeps the evidence in place. Then the class looks back: pairs choose one earlier chapter that supports each legacy claim (for example Chapter 34 for the building, Chapter 2 for Hanifism). Grammar is confirmed only after learners state what each form does to the claim.',
+    priorKnowledge: ['Hanifism from Chapters 2–4; the building of the Ka‘ba from Chapter 34; present perfect.'],
+    anticipatedMisconceptions: ['The chapter does not say Abraham built the first Ka‘ba; it calls him the restorer of an older structure.', 'The evidence shows that Abraham invited people in that region at that time, not that everyone accepted.', '“Coexisted with idolatry” means Hanif faith and idolatry were present in the same region at the same time; it does not mean they were mixed.'],
+    grammarFocus: 'Targets: limiting a claim (He was but the restorer = only the restorer) · widening scope (not just people of a chosen race or color) · coexistence (his Hanif faith coexisted with idolatry) · evidence → interpretation (… are clear evidence that … in that region at that time) · present perfect for continuing relevance (Abraham (pbuh) has always been there to show them the right path) · where for a situation (societies where morals have worsened) · especially to narrow a general claim.\nNotice (Activity 1): after matching the expressions, ask: “Which expression makes the claim smaller? Which one makes it wider? Why does the chapter need both?”\nBuild (Activities 2–3): choose the statement that keeps the scope of the evidence sentence and say how the others overstate it; then correct always was → has always been and which → where.\nLikely errors: *Abraham always was there (link to now lost) · *societies which morals have worsened · “restorer” read as “first builder” · “invited” read as “converted everyone”.\nUse (Activity 4): an 8–10 sentence non-story paragraph on the legacy of an institution, idea or reform, with one limiting phrase, one evidence → interpretation link, “not just …”, a coexistence statement, a when / whenever condition and has remained / has continued.',
+    pronunciationFocus: 'Limit with stress on “but” meaning only: “he was BUT the reSTORer | of the STRUCture that was ORiginally BUILT | LONG beFORE.”\nScope contrast: “for ALL PEOple, | NOT JUST PEOple of a CHOsen RACE or COLor”.\nPresent perfect weak forms: “has ALways BEEN there” /həz/; “has been corRUPTed”.\nWord focus: re-STOR-er, re-con-STRUC-tion, co-ex-IST-ed, sal-VA-tion, PIL-grim-age, com-PLE-tion.',
+    beforeReading: ['Ask: “What makes a person’s legacy last after they are gone?” Pairs name one person from history or their own family and one thing that lasts. Keep two answers on the board.'],
+    duringReading: ['Scope ruler for each main claim: who / where / when / how sure.', 'Underline “but”, “not just” and “coexisted”.', 'Mark what Abraham left to Isaac and to Ishmael before his death.', 'Box the last two sentences and their present-perfect verbs.'],
+    afterReading: ['Complete the Quick Challenge with the scope ruler in view.', 'Language Focus: match the careful legacy expressions (Activity 1), choose the statement that keeps the scope (Activity 2), correct the lasting-guide sentences (Activity 3).', 'Write the Activity 4 qualified legacy paragraph and add one sentence linking it to an earlier chapter.'],
+    lessonPlan: '0–5 Hook: “What makes a legacy last?” pairs name one person and one lasting thing; 5–12 Listen and read; 12–18 Scope ruler in pairs for three claims (restorer, clear evidence, has always been there), then a whole-class check; 18–22 Quick Challenge; 22–30 Language Focus: Activity 1 in pairs, Activity 2 as whole-class discovery (How do the wrong statements overstate the claim?), Activity 3 individually; 30–38 Book synthesis and Use: pairs match each legacy claim with one earlier chapter, then write a qualified legacy paragraph about a library, a scientist’s discovery or a local reform with “was but …”, “not just …” and “has remained …”; 38–40 Exit ticket.',
+    discussionPoints: ['Why does the chapter call Abraham the restorer rather than the builder of the Ka‘ba?', 'What does the evidence sentence claim, and what does it not claim?', 'How does the chapter describe Abraham’s lasting role, and which earlier chapters support it?'],
+    interactiveTips: ['Use the “restorer” hotspot for the limiting claim and the “clear evidence” hotspot for the scope discussion.', 'Replay the last paragraph and ask learners to raise a hand at each present-perfect verb.', 'Keep the synthesis to chapters of this book; do not add legends or events not in the text.'],
+    differentiation: { strugglingLearners: 'Give the frames “He was only ____, because ____.”, “It was for all people, not just ____.” and “____ has always ____.”', fastFinishers: 'Write an eight-sentence synthesis of the whole book with evidence from three different chapters, one limiting phrase and one present-perfect sentence of continuing relevance.' },
+    formativeAssessment: ['Keeps the scope of legacy claims.', 'Explains the limiting and widening expressions.', 'Uses the present perfect for continuing relevance and links claims to earlier chapters.'],
+    expectedResponses: ['The chapter says Abraham was only the restorer of the older Ka‘ba; its reconstruction and the call to pilgrimage are evidence that he established the religion and invited people in that region at that time; he built a place of worship for all people, his Hanif faith coexisted with idolatry in the Hijaz, and he has always been an example for people who have lost their way.'],
+    transferTask: 'Write three sentences about the legacy of someone in your community: one limited claim, one “not just …” sentence and one “has remained / has continued” sentence.',
+    teacherReflection: 'Did learners keep every legacy claim within its scope, and did the synthesis draw only on this book’s chapters?',
+    assessmentTools: { rubric: ['Scope control', 'Limiting and widening language', 'Continuing relevance', 'Cross-chapter synthesis'], exitTicket: ['Write one sentence with “was but …” or “was only …” and one with “has always …”.'] },
+  },
 ];
 
 export const abrahamB2TeacherGuideEn: TeacherGuideSection[] = manualTeacherGuideSections;
 
 export const abrahamB2TeacherGuideMetadata: TeacherGuideMetadata = {
   title: 'Prophet Abraham B2 — Teacher Guide',
-  subtitle: 'TYMM-aligned, evidence-based chapter guidance with integrated English Language Focus',
+  subtitle: 'TYMM-aligned guide with chapter-specific support, inductive B2 grammar and 40-minute lesson plans',
   level: 'B2',
-  estimatedDuration: '35 lessons, usually 45 minutes; selected later chapters use 50 minutes',
+  estimatedDuration: '35 chapter units, each planned for one 40-minute lesson. Whole-book review pages (Knowledge Check, Language Review, Vocabulary Challenge, Final Challenge) follow separately.',
   targetAudience: 'Upper-secondary and other B2 English learners using the 35-chapter Prophet Abraham story.',
-  targetLearners: 'Learners who can follow extended narrative and exposition, compare evidence, distinguish source status from inference, qualify claims, and produce connected analytical B2 speech and writing.',
-  purpose: 'A chapter-specific guide for evidence-based reading, listening, speaking, analytical writing, source qualification, integrated Language Focus, and values-as-action across the complete 35-chapter story.',
-  approachDesc: `Use a TYMM-compatible receptive-to-productive route. Learners construct meaning through listening/viewing and reading (YDAB1–YDAB2), verify interpretation with direct evidence and the Quick Challenge, use the chapter’s actual Language Focus as an integrated supporting-skill stage, then transform that language into connected speaking and writing (YDAB3–YDAB4). Grammar, vocabulary and pronunciation support communication and meaning-making; they are not detached drills. See ${TYMM_FOREIGN}.`,
-  assessmentEvidence: 'Chapter evidence tasks, Quick Challenges, Language Focus performance, analytical speaking/writing transfer, exit tickets, B2 Language Review, Knowledge Check, Vocabulary Challenge and Final Challenge.',
+  targetLearners: 'Learners who can follow extended narrative, quoted verses and exposition, compare evidence, distinguish a source’s statement from the writer’s interpretation, qualify claims and produce connected analytical B2 speech and writing.',
+  purpose: 'Develop evidence-based B2 reading, listening, speaking and writing through the story of Prophet Abraham (pbuh), from Tawheed and Hanifism to the fire, the journey to Mecca and the Ka‘ba, using the Language Focus attached to every story chapter.',
+  approachDesc: `Every story chapter follows the TYMM route. YDAB1 listening and YDAB2 reading establish meaning and evidence; the Quick Challenge checks comprehension. Grammar is then learned inductively, as the Maarif Model expects for English: in the Language Focus, learners first NOTICE a form in a real chapter sentence and work out what it does in the text (source, stance, time, cause, contrast, scope), the rule being confirmed only after they have formulated it; they then BUILD it in controlled, meaningful practice and finally USE it in connected YDAB3 speaking and YDAB4 writing about a non-story topic from their own world. At B2 the emphasis is on analysis, stance, hedging and the difference between evidence and interpretation. See ${TYMM_FOREIGN}.`,
+  assessmentEvidence: '35 Quick Challenges, evidence and source-status checks, chapter Language Focus tasks (notice → build → use), connected B2 speaking and writing, exit tickets, Knowledge Check, B2 Language Review, Vocabulary Challenge and Final Challenge.',
   assessmentOverview: {
-    formative: ['Evidence and source-status checks', 'Quick Challenge plus evidence repair', 'Guided chapter Language Focus', 'Connected B2 speaking/writing transfer', 'Exit tickets and peer/teacher feedback'],
+    formative: ['Quick Challenge after each chapter', 'Evidence and source-status checks (quotation vs narrator vs inference)', 'Language Focus: noticing and controlled practice', 'Connected B2 speaking/writing transfer on non-story topics', 'Exit tickets and peer feedback with the chapter rubric'],
     summative: ['Whole-book Knowledge Check', 'Vocabulary Challenge', 'B2 Language Review', 'Final Challenge and cross-chapter synthesis'],
   },
   readingFramework: {
-    before: 'Activate only relevant prior knowledge and establish a purposeful inquiry question without pre-teaching the interpretation.',
-    during: 'Listen/read for meaning first, then track direct evidence, source attribution, stance, contrast, cause, scope, time, inference and synthesis as required by the chapter.',
-    after: 'Complete/repair the Quick Challenge, work through the exact chapter Language Focus, then require a connected B2 transfer in a new context so language supports analysis and communication.',
+    before: 'Activate only what the chapter needs, with a short chapter-specific question, sentence pair, card task or prediction; do not pre-teach the interpretation.',
+    during: 'Listen first for gist, then read and follow the chapter’s own evidence structure: definition, source frame, quotation vs narrator, sequence, cause, contrast, scope, inference or synthesis. Several chapters begin or end in the middle of a quoted verse; recall the previous chapter’s last line before reading. Read “(pbuh)” aloud as “peace be upon him”.',
+    after: 'Complete the Quick Challenge, then the chapter’s Language Focus (notice → build → use), then a connected B2 transfer about a non-story topic from the learners’ own world, and an exit ticket.',
   },
   vocabularyApproach: {
-    selection: 'Prioritise the chapter Word Notes and vocabulary required for evidence, source status, argument or Language Focus.',
-    method: 'Infer from context, word formation and discourse before direct explanation where feasible.',
-    recycling: 'Recycle target words in evidence discussion, Language Focus transfer, exit tickets and later synthesis.',
+    selection: 'Prioritise the chapter Word Notes and the analytical words needed for the chapter’s key relationship (source, evidence, inference, scope).',
+    method: 'Infer meaning from context, word formation and the chapter’s own reformulations before any direct explanation.',
+    recycling: 'Recycle target words in evidence discussion, Language Focus production, exit tickets and the final synthesis in Chapter 35.',
   },
-  grammarApproach: 'Use only the active chapter-specific Language Focus already attached to the student page. At B2, teach grammar as discourse control: source framing, stance, qualification, information focus, condition, cause, contrast, time perspective, argument organisation and synthesis. Learners notice the relationship in the chapter, practise it, then use it in a new connected response. Do not substitute an unrelated generic grammar sequence.',
+  grammarApproach: 'Inductive and text-based. Start from the story sentence, ask one or two meaning questions (Who is presenting this? Is it certain? What happened first? What does this word limit?), let learners formulate the rule in their own words, then confirm it and practise it in context. At B2, grammar is discourse control: source framing, stance and hedging, information focus, time perspective, cause and contrast, scope and inference. Use only the Language Focus attached to each chapter; do not replace it with unrelated drills.',
   grammarSequence: [
-  "Ch1: Source framing and definition/reformulation; addition; active vs passive information focus.",
-  "Ch2: Definition chains and relative clauses; cautious stance such as “we may say”; reformulation; cause → result → conclusion.",
-  "Ch3: Discourse movement and contrast; layered time relations; time-limited evaluation in relative clauses; additive expansion.",
-  "Ch4: Source attribution and hedging: “some sources say”, “is believed”, “suggest”; cautious synthesis; prior state and social variation.",
-  "Ch5: Future-in-the-past; alternate narration/source shift; result cohesion; supporting relative clauses.",
-  "Ch6: Time and background layering; reported question/statement/directive; analogy and comparison.",
-  "Ch7: Observation → evidence → evaluation; contextual meanings of could for plausibility vs ability; relative background; as if; stance change.",
-  "Ch8: Expectation and persistence; evaluative relative clause; intended result with might; temporal evidence chain.",
-  "Ch9: Condition → future consequence; development of stance; passive information focus; corrective contrast and created status.",
-  "Ch10: Passive status/control/purpose; however contrast; first/second organisation; rejection followed by reframing.",
-  "Ch11: Rhetorical questions; exception with unless; evidence, absence of evidence and explicit inference.",
-  "Ch12: Stance framing and action interpretation; direct-speech functions; not only … but also expansion.",
-  "Ch13: Purpose and interpersonal strategy; parallel negatives; evidence → invitation → warning → concern.",
-  "Ch14: Conditional threat vs future commitment; hope/probability stance; analogy as reasoning; inquiry purpose.",
-  "Ch15: Rhetorical observable tests; evidence vs inherited tradition; exclusivity, defining relatives and testable claims.",
-  "Ch16: Dialogue reframing; cumulative relative-clause chain; exception; local stance marking.",
-  "Ch17: Resistance → decision → purpose; future-in-the-past; until/then/past-perfect sequencing; rhetorical testing.",
-  "Ch18: Rhetorical challenge plus reason; exception; past-perfect completion and purpose; narrative → sourced quotation.",
-  "Ch19: Direct challenge → corrective contrast → conditional test → admission; self-correction/reversal; purpose.",
-  "Ch20: Strong inference with must; recognition vs refusal; narrowed options; collective decision; passive authority.",
-  "Ch21: Appearance/effect reversal; cause and restriction; passive event focus; change of state; as-if comparison.",
-  "Ch22: Duration → result; turning point; past-perfect prior result; consequence vs motive; contrast and reaction focus.",
-  "Ch23: Reported stance; passive/modal focus; compressed background; past-perfect cause chain; parallel claims.",
-  "Ch24: Argument escalation and result; expected effect with would; simultaneity, concession, limitation and general → specific reference.",
-  "Ch25: Realisation → decision → movement; future-in-the-past; recurring action with wherever; past-perfect background.",
-  "Ch26: Parallel lineage contrast; reported instruction vs future plan; still-background; until as journey endpoint.",
-  "Ch27: Accumulated absence; question → confirmation → reason; corrective not … but; past-perfect cause; spatial endpoint.",
-  "Ch28: Purpose chains; had to for obligation; “that is” clarification; relative background; long-term time/reference cohesion.",
-  "Ch29: Source/narrative voice separation; possibility vs fact; trigger/background/sequence; later interpretation.",
-  "Ch30: Action → immediate result; purpose; future/current/past time perspectives; observed evidence vs inference.",
-  "Ch31: Growth/life-stage background; turning point; command/source framing; dialogue as disclosure, consultation and commitment.",
-  "Ch32: When plus imminent “was about to”; interruption; test → fulfilment → evaluation → consequence; limiting correction.",
-  "Ch33: Historical time frame; “in fact” clarification; while contrast; time-bound scope; future-in-the-past later plan.",
-  "Ch34: Present relevance of a prior command; will for commitment; no longer for limitation/adaptation; parallel ongoing action; imperative as respectful request.",
-  "Ch35: Limiting an overstrong claim; evidence → qualified interpretation; not just scope; coexistence; recurring condition; present-perfect continuity."
-],
+    'Ch1: source frame (is presented as); means that; also / in detail; two passives of give',
+    'Ch2: three ways of defining; stance (We may say that); that is; As … (reason) → So',
+    'Ch3: In fact / However / like / not only … but also; time-limited which-clause (at that time); layered scene sentence',
+    'Ch4: source-status frames (some sources say/suggest, is believed to have lived, most generally speaking); past perfect; some … still others',
+    'Ch5: future seen from the past (was going to, would); According to another narration; result linkers; who / where = in which',
+    'Ch6: Being a child (reason); direct vs reported questions, statements and orders; as + clause, -er than',
+    'Ch7: as if + past form; had made; in the middle of which; non-defining who; could not / impossible; At first … but later',
+    'Ch8: purpose with that + might; “, which …” comment clause; never stopped + -ing; saw that … because … do so',
+    'Ch9: real conditional; passive focus (were worshipped, had been created); while in fact; shortened relative clauses',
+    'Ch10: passive participles for created things; un-; However (created vs Creator); firstly / secondly → not only that … but also that; After / Once',
+    'Ch11: quotation vs commentary; unless (exception); That … shows / The fact that; It is understood from … that → We infer',
+    'Ch12: debate functions; paid no heed to, mindful of, faithful to; Not only did he …; reported instruction → imperative',
+    'Ch13: I fear that … will; to save / Being … / hoping to …; or after could not; reported why-question; before + past simple',
+    'Ch14: will for threat vs commitment; I hope; might for possible risk; Just as …, or …, … analogy',
+    'Ch15: testing vs defending questions; manner (Showing no fear) and purpose (to persuade); had worshipped; explained that; give up + -ing',
+    'Ch16: parallel “He who …” clauses; but not so (exception); I hope; passive vs active; provide with / provide to',
+    'Ch17: rhetorical/ironic question; was going to / would → is going to / will; decide to; until + past simple; had gone',
+    'Ch18: for + clause = because; all except one; Having fulfilled / had fulfilled; hung vs hanged; shocked to see; who had done',
+    'Ch19: self-correction and reversal (But … reverted); asked if he was; told them to; demanded that … be arrested; so that / offer no resistance',
+    'Ch20: must for deduction; All they could do was; Although vs however; passive order → active; agree to / decide to; dug',
+    'Ch21: as if he were; passive at the turning point; ordered that … be thrown; but / for / only',
+    'Ch22: Consequently vs out of fear of; such a long time that; kept + -ing; would never be; Once / yet / had become',
+    'Ch23: reported claims vs narrator statements; Still a young man / Even; had emerged; one … the other; parallel wording, different scope',
+    'Ch24: put forth, utterly, left him unable to speak, in the meantime, every means; in spite of vs although; Only → No one except; would for expected effect',
+    'Ch25: past perfect background vs past simple events; realized that … was going to; wherever; thought she could not; suggest + base verb',
+    'Ch26: told … that he should vs informed … that … would; while (whereas) / still / until; was given; In a few days',
+    'Ch27: since = because; no … no … no …; participle for a simultaneous action; where; not X but Y; asked whether he had',
+    'Ch28: purpose in the prayer (that they may, so that they may); had to; that is; which; one of them / They; to carry',
+    'Ch29: quoted source vs narrator; maybe (possibility); appositive → who was; was later commemorated; almost no difference',
+    'Ch30: which could only mean → must be; had seen; immediately / to stop / Not long after that; called Zamzam; was given → gave',
+    'Ch31: verse functions (tell, ask a view, accept, promise); Growing up …; must → had to; was to be',
+    'Ch32: just as … was about to; promised to; Because of + noun; only; willingness to',
+    'Ch33: time frames that limit claims vs Every year; while / whereas; were going to → their plan was to; equivalent to, each other, with longing',
+    'Ch34: imperative as a humble request; has commanded / will → had commanded / would; build on; no longer; carry on + -ing',
+    'Ch35: was but (= only); not just …; coexisted; evidence limited in place and time; has always been; where for a situation',
+  ],
   skillsFocus: {
-    reading: 'TYMM YDAB2: close reading, evidence selection, source/stance interpretation, inference, comparison, qualification and cross-paragraph synthesis.',
-    listening: 'TYMM YDAB1: gist listening followed by targeted replay for evidence, source cues, discourse markers, stress and pronunciation.',
-    speaking: 'TYMM YDAB3: evidence-based discussion, respectful challenge, qualification, comparison and sustained B2 explanation using chapter language.',
-    writing: 'TYMM YDAB4: plan, draft and improve connected analytical writing with claim–evidence–explanation, source qualification, counter-reading and synthesis.',
+    reading: 'TYMM YDAB2: close reading, evidence selection, quotation vs narrator vs inference, source status, scope, comparison and cross-chapter synthesis.',
+    listening: 'TYMM YDAB1: gist listening followed by targeted replay for evidence, speaker changes in quoted verses, discourse markers, stress and pronunciation.',
+    speaking: 'TYMM YDAB3: evidence-based discussion, respectful challenge, qualification, attribution and sustained B2 explanation using chapter language.',
+    writing: 'TYMM YDAB4: connected analytical paragraphs on non-story topics with claim–evidence–explanation, source qualification, limited claims and clear time relations.',
   },
   valuesFocus: [
     'D6 Dürüstlük — preserve evidence, source attribution, uncertainty and scope instead of overstating a claim',
-    'D10 Mütevazılık — remain open to correction and distinguish conviction from arrogance',
-    'D12 Sabır — sustain purposeful effort when persuasion, search or service is difficult',
-    'D14 Saygı — challenge beliefs and arguments without humiliating people or caricaturing traditions',
-    'D16 Sorumluluk — connect knowledge, family care, mission, consultation and shared tasks with responsible action',
+    'D10 Mütevazılık — remain open to correction and distinguish conviction from arrogance (Chapters 19–20)',
+    'D12 Sabır — sustain purposeful effort when persuasion, search or service is difficult (Chapters 24, 27–29, 31)',
+    'D14 Saygı — disagree without humiliating people, as Abraham speaks to his father (Chapters 13–14)',
+    'D16 Sorumluluk — connect duty, consultation and shared tasks with responsible action (Chapters 13, 31, 34)',
     'D20 Yardımseverlik — recognise protection, cooperation, provision and service as concrete actions',
     `Use values only where the chapter’s events provide real support, and integrate them into learning activity rather than a detached moral lecture. See ${TYMM_VALUES}.`,
   ],
-  languageFocus: ['All 35 story chapters have active English Language Focus authored from that chapter’s text.', 'Use Language Focus only after meaning and evidence are established and the Quick Challenge is completed/repaired.', 'At B2, foreground communicative and discourse function rather than asking learners merely to name grammar.', 'Finish each Language Focus stage with a connected non-story transfer so learners select and use the language autonomously.'],
-  differentiationNotes: 'Preserve the same evidence and discourse target while reducing linguistic load for support. Extend stronger learners through source comparison, qualification, counter-reading, discourse control and cross-chapter synthesis rather than unrelated factual expansion.',
+  languageFocus: ['Every one of the 35 story chapters has an active Language Focus set built as notice → build → use.', 'Use Language Focus after basic comprehension and the Quick Challenge.', 'Always start from the story sentence: ask what the form does in the text (source, stance, time, cause, scope) before naming it.', 'Let learners answer first; the explanation shown after each answer confirms the rule they have found.', 'At B2 the last step is always a connected, non-story paragraph or exchange; the task states which forms to use and learners choose how to organise them.', 'Quoted verses, hadiths and prayers appear in Language Focus only for reading, matching and explaining; they are never gapped or rewritten.'],
+  differentiationNotes: 'Keep the same evidence and discourse target while reducing linguistic load for support: sentence strips, sorting tables, frames, audio replay and oral rehearsal. Extend stronger learners through source comparison, rewriting a claim at different strengths, cross-chapter synthesis and explaining their own language choices, not through outside facts.',
+  sensitiveNotes: { title: 'Source fidelity and respectful discussion', notes: ['Qur’anic verses, prophetic sayings (hadiths), prayers and supplications are read, explained and matched to meanings; they are never gapped, “corrected” or rewritten, and learners do not perform them as drama.', 'Never depict, draw, role-play or freeze-frame Abraham, Ishmael or any prophet, or the angel Gabriel. Production tasks are always about non-story topics.', 'Keep the chapter’s distinctions visible: quoted verse, narrator’s account, narrator’s interpretation, reported claims (for example Nimrod’s) and other narrations.', 'Handle the order against the children (Chapter 5), the breaking of the idols, the fire (Chapters 18–22), the execution of a prisoner (Chapter 23), the dream of sacrifice (Chapters 31–32) and the historical practice of child sacrifice (Chapter 33) calmly and factually; the teacher reads these passages once, and they are never acted out.', 'Describe the beliefs of Abraham’s people accurately and without mockery; the chapters’ criticism of idol worship is not an invitation to ridicule anyone today.', 'Several chapter titles announce an event that happens in a later chapter (for example Chapters 15, 16, 19, 27–30, 33); teach what the chapter text actually contains.', 'Do not introduce legends, dates or biographical details that are not in this B2 book.'] },
+  globalCitizenship: {
+    title: 'Global Citizenship and Cultural Bridges',
+    description: 'The story of Prophet Abraham (pbuh), a fundamental figure in Judaism, Christianity and Islam, raises questions every community faces: how to disagree respectfully, how to check a claim before accepting it, how to live together with people who believe differently, and how shared places and tasks bring people together.',
+    themes: [
+      { title: 'Disagreeing with respect:', description: 'Abraham advises his father kindly, tells him he loves him and does not embarrass him (Chapter 13). Discuss how to disagree with family members, friends or people online without humiliating them.' },
+      { title: 'Checking claims with evidence:', description: 'Abraham tests the idols with questions that can be checked by looking (Chapter 15), and the book separates evidence from tradition. Connect this with checking news, adverts and rumours today.' },
+      { title: 'Living together with difference:', description: 'Chapter 35 says Abraham built a place of worship for all people, not just people of a chosen race or color, and that his faith coexisted with idolatry in the Hijaz. Discuss equal dignity for people of every origin.' },
+      { title: 'Shared work and service:', description: 'Abraham and Ishmael build the Ka‘ba together and adapt when the work becomes hard (Chapter 34). Compare this with community projects in which people of different ages share a task.' },
+    ],
+    actions: ['Write three rules for respectful disagreement in class discussions and online messages, each with an example sentence.', 'Choose one claim from an advert or a social-media post and write two questions that could test it with evidence.', 'Plan a small shared class task (for example tidying the school garden or library) in which everyone has a role, and write a short report of how the work was shared.'],
+  },
+  appendices: {
+    exitTicket: ['One claim from today’s chapter, with the sentence that supports it and who says it (the verse, the narrator or a character), is …', 'One language pattern I noticed today, and what it does to the claim (frames a source, limits, contrasts, shows time), is …', 'One sentence I can now write about my own world with today’s pattern is …'],
+    miniProject: { title: 'Evidence or Tradition?', desc: 'In groups, choose a habit or belief from school or daily life that people defend mainly because “it has always been done this way”. Make a one-page poster or a two-minute audio report: state the claim, write two questions that test it (Chapter 15), report one source correctly (According to …, Some sources say …), mark one inference clearly (It can be inferred that …) and end with a qualified conclusion. Use at least three Language Focus patterns from the book.' },
+    reflectivePrompt: { title: 'Speaking Kindly, Standing Firm', desc: 'Abraham tells his father that he loves him, asks kindly and says “I fear that …” instead of threatening (Chapter 13), and when his father threatens him he answers with peace and a promise to pray for him (Chapter 14). Write eight to ten sentences about a time when you disagreed with someone you respect. How did you express your view? What would you say differently now, and which words would help you stay both honest and kind?' },
+  },
+  valuesEducation: {
+    title: 'TYMM Values in Action',
+    description: `Use only values genuinely supported by the chapter. Require evidence first, then connect the value to an observable, age-appropriate action. See ${TYMM_VALUES}.`,
+    items: [
+      { label: 'D6 Honesty', value: 'Source attribution, scope and the difference between evidence and interpretation are made visible in learners’ language.' },
+      { label: 'D14 Respect', value: 'Abraham’s respectful persuasion of his father models disagreement without humiliation.' },
+      { label: 'D12 Patience / D16 Responsibility', value: 'Hajar’s search, Ishmael’s answer and the shared building task are linked with patient effort and responsibility.' },
+      { label: 'D20 Helpfulness', value: 'Provision, protection and shared service are turned into realistic actions at school and at home.' },
+    ],
+    questions: ['Which sentence supports the value?', 'What action could show it?', 'Which part is source evidence and which part is your own application?'],
+  },
 };
