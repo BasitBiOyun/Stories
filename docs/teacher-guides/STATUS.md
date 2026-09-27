@@ -13,8 +13,7 @@ Brief for workers: `TG_BRIEF.md`. Tools: `tools/dumpChapters.mts`, `tools/checkG
 
 - All other variants rewritten by workers and reviewed (checkGuide OK, typecheck, spot reads): Adam A2/B1/B2, Abraham A2/B1, Abraham B2 EN, Moses A2/B1/B2, Mecca A2/B1/B2, Yunus Emre A2/B2 — EN and AR.
 
-## In progress
-- Abraham B2 AR (worker re-run after a session-limit stop).
+- Abraham B2 AR (re-run after a session-limit stop). All 30 teacher guides are now done.
 
 ## Other fixes found during the pass
 - Moses B2 EN and Abraham B2 EN: hotspot and Word Note titles were cut off ("espotism.", "ffspring") because lower-casing "İ" changed string length; fixed in `findEnglishSurface`.
@@ -22,9 +21,12 @@ Brief for workers: `TG_BRIEF.md`. Tools: `tools/dumpChapters.mts`, `tools/checkG
 - Moses A2 / Mecca A2 self-study guides copied teacher notes; learners now see only the targets line.
 - Many circular or wrong Word Note definitions fixed (EN and AR), e.g. Moses B2 AR «سخرية», «أغرقنا», «رعي»; Adam B1 AR «الحسد» (described غبطة); Abraham B1 AR «عاديًّا» (meant the opposite).
 
+## Story text corrected with approval (English only, narration regenerated via tts/requests.json)
+- Moses B1 EN ch11: the magicians "bowed down to Allah" (was "in front of Moses").
+- Abraham A2 EN ch14: Abraham is Muhammad's "ancestor" (was "great-grandfather").
+
 ## Needs a decision (story text is locked)
-- Moses B1 EN ch11: "bowed down in front of Moses" — the Arabic says «فسجدوا لله»; theologically the prostration is to Allah.
-- Abraham A2 EN ch14: Abraham called Muhammad's "great-grandfather"; Arabic says «أحفاد» (descendants).
+- Abraham B2 AR ch18: words were added inside the quotation of Qur'an 37:91 (the verse is only «ألا تأكلون»).
 - Mecca A2 AR ch2: interest called «فَيْضًا» (abundance); the term is «الرِّبا».
 - Adam A2 AR Quick Challenge ch2 gaps a paraphrase of Allah's command («أظهروا [blank] لآدم»).
 - Mecca B2 AR Quick Challenges 3 and 17 are loosely tied to the text wording.
