@@ -85,7 +85,9 @@ const IMAGE_TOKENS=['','56fc134a-cdf0-4b42-8e16-45eb9ca06c8b','a3812fa5-fe4c-4e4
 export const mosesB2ImageUrl=(chapter:number)=>`${STORAGE_BASE}${encodeURIComponent(`Moses/b2/images/moses_b2_ch${chapter}-clean.png`)}?alt=media&token=${IMAGE_TOKENS[chapter]}`;
 export const mosesB2HotspotCoords:Record<number,[number,number,number,number]>={1:[28,36,72,58],2:[34,63,68,34],3:[25,52,74,42],4:[38,32,66,65],5:[22,44,77,56],6:[31,68,70,30],7:[26,35,73,62],8:[36,57,64,28],9:[24,64,76,38],10:[33,31,69,67],11:[27,48,75,70],12:[40,66,62,34],13:[23,30,78,54],14:[35,69,67,40],15:[29,43,71,65],16:[37,34,63,71],17:[25,60,74,32],18:[32,28,70,61],19:[21,55,79,37],20:[39,62,65,29],21:[28,41,72,68],22:[34,70,67,36],23:[24,33,76,59],24:[38,54,62,73]};
 const englishSurfaceAlternates:Record<string,string>={'watering hole':'water source'};
-const findEnglishSurface=(content:string,needle:string)=>{const candidate=englishSurfaceAlternates[needle]??needle;const i=content.toLocaleLowerCase('en').indexOf(candidate.toLocaleLowerCase('en'));return i<0?null:content.slice(i,i+candidate.length);};
+// Case-insensitive search that keeps string positions: toLocaleLowerCase can change the length of
+// the text (for example "İ" becomes two characters), which shifted the slice and cut words.
+const findEnglishSurface=(content:string,needle:string)=>{const candidate=englishSurfaceAlternates[needle]??needle;const i=content.search(new RegExp(candidate.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'));return i<0?null:content.slice(i,i+candidate.length);};
 const mosesB2GlossaryCategoryByChapter:Record<number,string>={
 1:'History & Society',2:'History & Oppression',3:'Power & Economy',4:'Birth & Providence',5:'Power & Oppression',6:'Policy & Providence',
 7:'Care & Faith',8:'Identity & Justice',9:'Conflict & Consequences',10:'Repentance & Escape',11:'Escape & Trust',12:'Service & Daily Life',
