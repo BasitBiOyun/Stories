@@ -67,3 +67,18 @@ python3 promo/scripts/render.py --scale 1 --workers 4 --out promo/out/preview-10
 
 Önizleme: `promo/` klasörünü bir HTTP sunucusuyla açıp `index.html` (gerçek zamanlı döngü) veya
 `index.html?t=33.8` (tek kare) adresine gidin.
+
+
+## Müzik (v7)
+
+Film müziği: **"Strength" — AShamaluevMusic** (`assets/audio/strength-ashamaluev.mp3`), filme vuruşlara hizalı üç
+bölüm hâlinde kurgulandı (`build_audio.py --music`): parçanın ilk büyük vuruşu "Oku. Dinle. Anla." anına, doruk bölümü
+kitap sonu bölümlerine, son vuruşu "Lisandan Kültüre" yazısının tamamlandığı ana denk gelir. Ses efektleri aynıdır.
+Önceki prosedürel müzik `--music` verilmeden hâlâ üretilebilir.
+
+```bash
+python3 promo/scripts/build_audio.py --music promo/assets/audio/strength-ashamaluev.mp3
+```
+
+Lisans: AShamaluevMusic parçaları atıf karşılığında ücretsiz kullanılabilir; yayında müzik künyesi belirtilmelidir
+(güncel koşullar: ashamaluevmusic.com).
