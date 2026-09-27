@@ -2,6 +2,9 @@ import type { StudentGuideMetadata, StudentGuideSection, TeacherGuideSection } f
 import { mosesA2Pages } from './pages';
 import { mosesA2TeacherGuide } from './teacherGuide';
 import { mosesA2QuickChallengesPolished } from './exercises';
+// Learners see only the targets line of the teacher's grammar/pronunciation notes, not the teaching steps.
+const learnerLine = (text?: string): string | undefined => text?.split('\n')[0].replace(/^(Targets|الأهداف):\s*/, '').trim() || undefined;
+
 
 export const mosesA2StudentGuideMetadata: StudentGuideMetadata = {
   title: 'Moses A2 — Self-Study Guide', level: 'A2', language: 'English', estimatedStudyTime: '16 × 20–25 minutes',
@@ -62,8 +65,8 @@ export const mosesA2SelfStudyGuidePreview: TeacherGuideSection[] = baseGuide.map
 
   return {
     ...section,
-    grammarFocus: teacher?.grammarFocus || 'Notice one useful pattern in the real Language Focus after understanding the chapter.',
-    pronunciationFocus: teacher?.pronunciationFocus || (words.length ? words.slice(0, 3).join(', ') : undefined),
+    grammarFocus: learnerLine(teacher?.grammarFocus) || 'Notice one useful pattern in the real Language Focus after understanding the chapter.',
+    pronunciationFocus: learnerLine(teacher?.pronunciationFocus) || (words.length ? words.slice(0, 3).join(', ') : undefined),
     whatToNotice: [
       ...(section.objectives || []).slice(0, 2),
       ...(hotspots.length ? [`Use the real hotspot(s) as evidence anchors: ${hotspots.join(', ')}.`] : []),
@@ -91,7 +94,7 @@ export const mosesA2SelfStudyGuidePreview: TeacherGuideSection[] = baseGuide.map
     selfCheck: [
       'Can I tell the main event in one or two sentences?',
       words.length ? `Can I understand and use at least three of these words: ${words.slice(0, 3).join(', ')}?` : 'Can I use three chapter words?',
-      `Can I understand or use this language focus: ${teacher?.grammarFocus || 'one real pattern from the chapter'}?`,
+      `Can I understand or use this language focus: ${learnerLine(teacher?.grammarFocus) || 'one real pattern from the chapter'}?`,
       'Can I support my answer with evidence and name my next step?',
     ],
     useWhatYouLearned: valueAction,
