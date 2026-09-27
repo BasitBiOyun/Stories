@@ -237,7 +237,7 @@ const vocabularyByChapter: Record<number, VocabularyEntry[]> = {
     { word: 'foundations', definition: 'The strong base under a building.' },
     { word: 'construct', definition: 'To build something.' },
     { word: 'races', definition: 'Groups of people with different backgrounds or physical traits.' },
-    { word: 'Oneness', definition: 'The belief that Allah is One and has no partner.' },
+    { word: 'Oneness', definition: 'The quality of being One: Allah is One and has no partner.' },
   ],
 };
 
@@ -1377,7 +1377,7 @@ const masterGlossary: NonNullable<PageData['vocabulary']> = [
   },
   {
     "word": "Oneness",
-    "definition": "The belief that Allah is One and has no partner.",
+    "definition": "The quality of being One: Allah is One and has no partner.",
     "partOfSpeech": "noun",
     "level": "B1",
     "pronunciation": "/ˈwʌnnəs/",
