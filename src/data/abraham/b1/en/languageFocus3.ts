@@ -209,31 +209,31 @@ export const abrahamB1LanguageFocusChapter11: Record<number, Exercise[]> = {
     {
       id: 'abraham-b1-language-11-need-process',
       type: 'choose-form',
-      title: 'Prayer and Promise',
+      title: 'Purpose and Background',
       instructions: 'Choose the correct form to complete each sentence from Chapter 11.',
-      question: 'Which forms express a hoped-for purpose and strong confidence about the future?',
+      question: 'Which forms show a purpose and an action that was going on at that time?',
       formChoices: [
         {
-          sentence: '“O Allah! Give them blessings so that they [choice] give thanks.”',
-          options: ['may', 'must', 'are'],
+          sentence: 'Abraham (pbuh) left them there and prayed to Allah [choice] them.',
+          options: ['protecting', 'to protect', 'protects'],
+          answer: 1,
+        },
+        {
+          sentence: 'Hagar knew that Abraham (pbuh) [choice] what Allah told him.',
+          options: ['was doing', 'is doing', 'has done'],
           answer: 0,
         },
         {
-          sentence: 'She fearlessly said to Abraham (pbuh) when he left them in this desert valley, “Allah will never let us [choice] …”',
-          options: ['die', 'to die', 'dying'],
-          answer: 0,
-        },
-        {
-          sentence: '“… He will [choice] protect us.”',
-          options: ['surely', 'sure', 'be sure'],
-          answer: 0,
+          sentence: 'This was part of Allah’s plan [choice] the Holy House, the Ka’ba, and the city of Mecca in the time to come.',
+          options: ['building', 'for build', 'to build'],
+          answer: 2,
         },
       ],
       correctAnswer: null,
-      explanation: '“So that + subject + may/can/will” states the purpose or hoped-for result of an action: blessings so that they may give thanks. “Let + person + base verb” has no “to”: never let us die. “Will never” and “will surely” show strong confidence about the future; “surely” is an adverb, so it goes before the main verb.',
+      explanation: '“Pray to someone + to + verb” says what the prayer asks for: prayed to Allah to protect them. After a past verb such as “knew”, the past continuous shows an action that was going on at that time: Abraham was doing what Allah told him. “A plan + to + verb” names the purpose of the plan: Allah’s plan to build the Holy House. The prayer and Hagar’s own words in the chapter are read as they are and are not changed.',
       feedback: {
-        correct: 'Correct. You chose the forms for purpose, permission and certainty.',
-        incorrect: 'Check the first two paragraphs of Chapter 11: Abraham’s prayer and Hagar’s words. Remember: let + verb without “to”, and an adverb (-ly) before the verb.',
+        correct: 'Correct. You chose the forms for purpose and for an action in progress.',
+        incorrect: 'Read the first and third paragraphs of Chapter 11 again. Which form names a purpose (to + verb)? Which form shows an action going on in the past?',
       },
     },
     {
