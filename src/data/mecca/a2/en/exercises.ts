@@ -41,16 +41,122 @@ export const meccaA2VocabularyChallengePairsPolished = [
 ];
 
 export const meccaA2LanguageReviewExercises: Exercise[] = [
-  { id: 'mecca-a2-language-review-1-form-function', type: 'matching', title: 'Past, Change and Why', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern mean?', matchingPairs: [{ left: 'was / were', right: 'past state or identity' }, { left: 'became + adjective', right: 'change of state' }, { left: 'because + clause', right: 'reason with a full clause' }, { left: 'because of + noun', right: 'reason with a noun phrase' }], correctAnswer: { 'was / were': 'past state or identity', 'became + adjective': 'change of state', 'because + clause': 'reason with a full clause', 'because of + noun': 'reason with a noun phrase' }, explanation: 'These patterns describe background, change and reasons.', feedback: { correct: 'Correct.', incorrect: 'Separate past state, change and the two reason patterns.' } },
-  { id: 'mecca-a2-language-review-2-decision', type: 'multiple-choice', title: 'Making a Decision', instructions: 'Choose the sentence about a decision.', question: 'Which sentence shows a decision?', options: ['She decided to ask for help.', 'She thought about the problem.', 'She felt worried.'], correctAnswer: 0, explanation: '“Decided to” tells us about a choice.', feedback: { correct: 'Correct.', incorrect: 'Look for “decided to”.' } },
-  { id: 'mecca-a2-language-review-3-purpose', type: 'fill-blanks', title: 'Purpose', instructions: 'Complete the sentence with one word.', question: 'Which word shows why the action is done?', fillBlanksText: 'He went to the library [blank] study.', correctAnswer: 'to', explanation: '“To + verb” can explain why an action is done.', feedback: { correct: 'Correct.', incorrect: 'Use “to + verb” to say why someone does something.' } },
-  { id: 'mecca-a2-language-review-4-duty-purpose', type: 'drag-drop', title: 'Need or Why?', instructions: 'Put the expressions in the right group.', question: 'Which show something necessary, and which show why something is done?', dragDropGroups: [{ group: 'Duty or necessity', items: ['had to work', 'must follow the rule'] }, { group: 'Purpose', items: ['went to learn', 'called to ask'] }], correctAnswer: { 'Duty or necessity': ['had to work', 'must follow the rule'], Purpose: ['went to learn', 'called to ask'] }, explanation: '“Had to” and “must” show a need. “To + verb” can tell us why.', feedback: { correct: 'Correct.', incorrect: 'Ask: “Was it necessary?” or “Why?”' } },
-  { id: 'mecca-a2-language-review-5-sequence', type: 'sequencing', title: 'Think, Act, Result', instructions: 'Put the sentences in a clear order.', question: 'What comes first, next and last?', sequencingItems: [{ id: '1', text: 'She thought about the problem.' }, { id: '2', text: 'She decided to act.' }, { id: '3', text: 'Then she started to work.' }, { id: '4', text: 'In the end, the situation changed.' }], correctAnswer: ['1', '2', '3', '4'], explanation: 'First someone thinks, then decides, acts and gets a result.', feedback: { correct: 'Correct.', incorrect: 'Start with the thought and finish with the result.' } },
-  { id: 'mecca-a2-language-review-6-request-permission', type: 'matching', title: 'Ask, Allow or Say No', instructions: 'Match each pattern with its meaning.', question: 'What does each pattern mean?', matchingPairs: [{ left: 'ask + person + to + verb', right: 'make a request' }, { left: 'allow + person + to + verb', right: 'give permission' }, { left: 'tell + person + to + verb', right: 'give or report an instruction' }, { left: 'refuse to + verb', right: 'say no to an action' }], correctAnswer: { 'ask + person + to + verb': 'make a request', 'allow + person + to + verb': 'give permission', 'tell + person + to + verb': 'give or report an instruction', 'refuse to + verb': 'say no to an action' }, explanation: 'These patterns separate request, permission, instruction and refusal.', feedback: { correct: 'Correct.', incorrect: 'Focus on ask, allow, tell and refuse.' } },
-  { id: 'mecca-a2-language-review-7-condition', type: 'fill-blanks', title: 'If and Will', instructions: 'Complete the sentence.', question: 'Which word completes the if sentence?', fillBlanksText: 'If you practise, you [blank] improve.', correctAnswer: 'will', explanation: 'With “if”, we say the situation first. “Will” tells us what happens next.', feedback: { correct: 'Correct.', incorrect: 'The second part needs “will”.' } },
-  { id: 'mecca-a2-language-review-8-fairness', type: 'multiple-choice', title: 'Fair or Unfair?', instructions: 'Choose the sentence that says something is unfair.', question: 'Which sentence says the action is unfair?', options: ['It is unfair to judge people by skin color.', 'People were in the market.', 'They started to walk.'], correctAnswer: 0, explanation: '“It is unfair to + verb” evaluates behaviour.', feedback: { correct: 'Correct.', incorrect: 'Look for language that judges an action as unfair.' } },
-  { id: 'mecca-a2-language-review-9-habit', type: 'true-false', title: 'Used To', instructions: 'Choose true or false.', question: '“Used to” can talk about something that happened many times in the past.', correctAnswer: true, explanation: '“Used to” is useful for repeated situations or habits in the past.', feedback: { correct: 'Correct.', incorrect: 'Review the language for repeated past actions.' } },
-  { id: 'mecca-a2-language-review-10-transfer', type: 'reflection', title: 'Use It', instructions: 'Write or say four short sentences about school, family, a club or a team.', question: 'Can you use four story patterns in your own sentences?', correctAnswer: null, explanation: 'Use meaningful language from different parts of the book.', feedback: { correct: 'Use four different patterns.', incorrect: '' }, discussionPrompts: [{ question: 'Use a reason with because.', mode: 'Individual' }, { question: 'Use a past duty with had to.', mode: 'Individual' }, { question: 'Use a request or permission pattern.', mode: 'Pair' }, { question: 'Use a fairness sentence.', mode: 'Pair' }] },
+  // LOOK — notice what the book's language does, across chapters.
+  {
+    id: 'mecca-a2-language-review-1-habit-or-event', type: 'drag-drop', title: 'Look: Again and Again, or One Time?',
+    instructions: 'Read the sentences from the book. Did it happen again and again, or only one time? Put each sentence in the right group.',
+    question: 'Which words tell us that something happened again and again?',
+    dragDropGroups: [
+      { group: 'Again and again (a habit)', items: ['Umayya was always very unkind to Bilal.', '… he often allowed only Bilal to stay with him.', 'Bilal used to start the morning call to prayer very early.'] },
+      { group: 'One time (one event)', items: ['One day, Bilal heard people talking about a new Prophet …', 'In the end, he accepted Islam.', 'Before he died in 632, he gave his last speech.'] },
+    ],
+    correctAnswer: {
+      'Again and again (a habit)': ['Umayya was always very unkind to Bilal.', '… he often allowed only Bilal to stay with him.', 'Bilal used to start the morning call to prayer very early.'],
+      'One time (one event)': ['One day, Bilal heard people talking about a new Prophet …', 'In the end, he accepted Islam.', 'Before he died in 632, he gave his last speech.'],
+    },
+    explanation: '“Always” and “often” tell us how often. “Used to + verb” tells us about a habit in the past: Bilal started the call to prayer early on many mornings. Time words like “One day”, “In the end” and “Before he died” point to one event at one time.',
+    feedback: { correct: 'Well done. You found the habits and the single events.', incorrect: 'Look for the small time words: always, often, used to … or One day, In the end, Before … . Check Chapters 4, 5, 7, 11 and 12.' },
+  },
+  {
+    id: 'mecca-a2-language-review-2-had-to-could-would', type: 'matching', title: 'Look: Had To, Could, Would',
+    matchingHeadings: { left: 'From the book', right: 'Meaning' },
+    instructions: 'Read the sentences from Chapters 4, 5, 7 and 10. Match each one with its meaning.',
+    question: 'What do had to, could, could not and would mean in these sentences?',
+    matchingPairs: [
+      { left: 'Bilal had to be patient and work hard every day.', right: 'There was no other way for him.' },
+      { left: 'He could not sleep during the night.', right: 'Sleep was impossible for him.' },
+      { left: 'He could worship Allah freely.', right: 'Now nothing stopped him.' },
+      { left: 'Bilal thought he would be a slave forever.', right: 'This was his idea about his future.' },
+    ],
+    correctAnswer: {
+      'Bilal had to be patient and work hard every day.': 'There was no other way for him.',
+      'He could not sleep during the night.': 'Sleep was impossible for him.',
+      'He could worship Allah freely.': 'Now nothing stopped him.',
+      'Bilal thought he would be a slave forever.': 'This was his idea about his future.',
+    },
+    explanation: '“Had to + verb” shows a past duty: there was no choice. “Could + verb” shows that someone was able to do something; “could not” shows that it was not possible. After “thought” or “knew”, “would + verb” tells us what a person expected for the future.',
+    feedback: { correct: 'Correct. Had to = no choice, could = able, could not = not possible, would = the expected future.', incorrect: 'Look at the small verb in each sentence: had to, could, could not, would. Is it about a duty, being able, or the future?' },
+  },
+  {
+    id: 'mecca-a2-language-review-3-if-sentences', type: 'multiple-choice', title: 'Look: If … Will, If … Would',
+    instructions: 'Read the two sentences from Chapters 8 and 10. Then choose the best answer.',
+    question: 'Chapter 8: “If you speak well of our idols, you will be free.” Chapter 10: “If you offered me only one piece of gold, I would still sell him to you.” Which sentence talks about a real possible future, a choice Bilal could really make?',
+    options: ['the sentence from Chapter 8 (If … will …)', 'the sentence from Chapter 10 (If … would …)', 'both sentences'],
+    correctAnswer: 0,
+    explanation: '“If + present verb …, will + verb” talks about a real possible future: Umayya gave Bilal a real choice. “If + past verb …, would + verb” talks about an imagined situation: nobody offered one piece of gold. The real price was different.',
+    feedback: { correct: 'Correct. If … will is a real possible future. If … would only imagines.', incorrect: 'Look at the verbs: speak … will be, or offered … would sell? Which one is only imagined?' },
+  },
+  // PRACTISE — use the forms in the book's own sentences.
+  {
+    id: 'mecca-a2-language-review-4-linking-ideas', type: 'word-bank', title: 'Practise: But, So, Because',
+    instructions: 'Complete the sentences from Chapters 1, 2, 5 and 13 with words from the bank. Two words are not needed.',
+    question: 'Which word gives a different idea, which gives a reason, and which gives a result?',
+    fillBlanksText: 'People in Mecca thought Bilal was just a poor slave. … [blank] Islam made him a free and great man. … Some rich people lent money to the poor and wanted more money back. … [blank], the rich became richer and the poor became poorer. … Umayya liked Bilal [blank] he was an obedient and hardworking servant. … He could not stay in Medina, [blank] he asked Abu Bakr …',
+    wordBank: ['But', 'Because of this', 'because', 'so', 'because of', 'When'],
+    correctAnswer: ['But', 'Because of this', 'because', 'so'],
+    explanation: '“But” gives a different idea: people thought he was just a poor slave, but Islam made him free and great. “Because of this” and “so” give a result. “Because” + a sentence gives the reason. “Because of” needs a noun after it (“because of skin color”), not a sentence.',
+    feedback: { correct: 'Well done. You linked different ideas, reasons and results.', incorrect: 'For each gap, ask: does the next part give a different idea, a reason or a result? Is there a sentence or only a noun after the gap?' },
+  },
+  {
+    id: 'mecca-a2-language-review-5-person-to-verb', type: 'choose-form', title: 'Practise: Wanted Him To …, Let Him …',
+    instructions: 'Choose the correct form to complete each sentence from the book.',
+    question: 'After “forced him”, “wanted Bilal” and “let him”, which form comes next?',
+    formChoices: [
+      { sentence: 'He forced him [choice] at idols and worship them …', options: ['look', 'to look', 'looking'], answer: 1 },
+      { sentence: 'Umayya wanted Bilal [choice] sorry and leave his new religion.', options: ['to feel', 'feel', 'feeling'], answer: 0 },
+      { sentence: '… he asked Abu Bakr to let him [choice].', options: ['to leave', 'leaving', 'leave'], answer: 2 },
+    ],
+    correctAnswer: null,
+    explanation: 'After “force”, “want”, “ask”, “tell” or “allow” + person, use “to + verb”: “forced him to look”, “wanted Bilal to feel”. After “let” + person, use the base verb without “to”: “let him leave”.',
+    feedback: { correct: 'Correct. Force, want and ask + person + to + verb; let + person + base verb.', incorrect: 'Look at the verb before the person: forced, wanted or let? Check Chapters 8, 9 and 13.' },
+  },
+  {
+    id: 'mecca-a2-language-review-6-fix-the-past', type: 'error-correction', title: 'Practise: Fix One Mistake',
+    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
+    question: 'Can you correct the past verbs and the verb after “did not”?',
+    errorItems: [
+      { sentence: 'He leaved his room secretly and walked on a hidden path.', error: 'leaved', options: ['leave', 'left', 'leaving'], answer: 1 },
+      { sentence: 'Umayya did not wanted to set Bilal free.', error: 'wanted', options: ['wants', 'wanting', 'want'], answer: 2 },
+      { sentence: 'Abu Bakr buyed Bilal and rescued him from his master’s hands.', error: 'buyed', options: ['bought', 'buys', 'buying'], answer: 0 },
+    ],
+    correctAnswer: null,
+    explanation: '“Leave” and “buy” change in the past: left, bought (not leaved, buyed). Many other verbs just add -ed: walked, rescued. After “did not”, use the base verb: “did not want” (no -ed).',
+    feedback: { correct: 'Well done. You fixed all three sentences.', incorrect: 'Compare with the book: Chapter 6 (the hidden path), Chapter 9 (set Bilal free) and Chapter 10 (rescued him).' },
+  },
+  {
+    id: 'mecca-a2-language-review-7-one-of-the-most', type: 'sentence-building', title: 'Practise: One of the Most …',
+    instructions: 'Put the parts in order to make the sentence from Chapter 11.',
+    question: 'How does the book put Bilal in a top group of people?',
+    sentenceChunks: ['After Bilal became free,', 'he became', 'one of', 'the Prophet’s most beloved and respected', 'friends.'],
+    correctAnswer: null,
+    explanation: '“One of the + most … / -est + plural noun” puts one person in a top group: “one of the Prophet’s most beloved and respected friends”. The noun at the end is plural. Chapter 3 uses the same pattern for Umayya: “one of the richest and most powerful leaders in Mecca”.',
+    feedback: { correct: 'Well done. One of + most … + plural noun puts Bilal in a top group.', incorrect: 'Start with the time: After Bilal became free. Then say what he became: one of … friends.' },
+  },
+  // USE — take the language into a new, everyday context.
+  {
+    id: 'mecca-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A New Student',
+    instructions: 'This text is not from the book. Complete it with words you met in the book. Two words are not needed.',
+    question: 'Can you use the book’s language to write about a new student at your school?',
+    fillBlanksText: 'Deniz is a new student from another country. On her first day, she could not [blank] the lessons, and she was very quiet. Our teacher asked us [blank] help her. [blank], we sat with her at lunch every day. Now she is one of the happiest [blank] in our class.',
+    wordBank: ['understand', 'to', 'Because of this', 'students', 'understood', 'student'],
+    correctAnswer: ['understand', 'to', 'Because of this', 'students'],
+    explanation: '“Could not” takes the base verb: “could not understand”. “Asked + person + to + verb” reports a request. “Because of this” gives the result. After “one of the happiest”, the noun is plural: “students”. A small kind action can change a new student’s day.',
+    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: which form comes after could not? after asked us? Is it a result? After one of the …, one or many?' },
+  },
+  {
+    id: 'mecca-a2-language-review-9-transfer', type: 'reflection', title: 'Use: Someone Helped Me',
+    instructions: 'Write four or five short sentences about a problem you had and a person who helped you: at home, at school or in your town. Say your sentences to a partner first.',
+    question: 'Can you use the language of the whole book to write about your own life?',
+    correctAnswer: null,
+    explanation: 'Example: “Last year, I was often late for school. I had to take two buses, and I could not wake up early. My brother told me to go to bed at ten, and my mother let me use her alarm clock. Because of this, I am never late now. My mornings are easier than before.”',
+    feedback: { correct: 'Check your sentences: often / used to, had to, could not, told / asked me to …, let me …, because / so / because of this, -er than.', incorrect: '' },
+    discussionPrompts: [
+      { question: 'Sentence 1 — A habit in the past: “Last year, I was often …” or “I used to …”', mode: 'Individual' },
+      { question: 'Sentence 2 — The problem: “I had to … , and I could not …”', mode: 'Individual' },
+      { question: 'Sentence 3 — The help: “My … told me to … / asked me to … / let me …”', mode: 'Pair' },
+      { question: 'Sentence 4 — The result: “Because of this, … . Now my … is/are …-er than before.”', mode: 'Pair' },
+    ],
+  },
 ];
 
 export const meccaA2FinalChallengeExercisesPolished: Exercise[] = [
