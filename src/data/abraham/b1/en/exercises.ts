@@ -4,116 +4,139 @@ import type { Exercise } from '../../../../types';
 
 export const abrahamB1QuickChallenges: Record<number, Exercise> = {
   1: {
-    id: 'abraham-b1-quick-1', type: 'matching', title: 'Belief and Evidence',
-    instructions: 'Match each observation with what it shows.', question: 'What did Abraham notice in Babylon?',
+    id: 'abraham-b1-quick-1', type: 'matching', matchingHeadings: { left: 'Who or what', right: 'What Chapter 1 says' }, title: 'Belief and Evidence',
+    instructions: 'Match each name with what Chapter 1 says about it.', question: 'Who did what in Babylon?',
     matchingPairs: [
-      { left: 'People', right: 'asked statues for help' },
-      { left: 'Statues', right: 'could not hear, talk, or move by themselves' }
+      { left: 'Allah', right: 'made the boy’s heart and mind clear of idols' },
+      { left: 'Young Abraham', right: 'could not understand why intelligent people worshipped things they made' },
+      { left: 'The people in the house of worship', right: 'bowed, cried and begged for help' },
+      { left: 'The statues', right: 'could not hear or understand any prayer or wish' },
     ],
-    correctAnswer: { People: 'asked statues for help', Statues: 'could not hear, talk, or move by themselves' },
-    explanation: 'The chapter contrasts the people’s requests with the statues’ complete inability to respond.',
-    feedback: { correct: 'Correct. You used the chapter’s contrast as evidence.', incorrect: 'Reread the final paragraph and separate the people’s actions from the statues’ abilities.' }
+    correctAnswer: {
+      Allah: 'made the boy’s heart and mind clear of idols',
+      'Young Abraham': 'could not understand why intelligent people worshipped things they made',
+      'The people in the house of worship': 'bowed, cried and begged for help',
+      'The statues': 'could not hear or understand any prayer or wish',
+    },
+    explanation: 'Chapter 1 says “Allah made his heart and mind clear of idols”, that Abraham “could not understand how an intelligent person could make a statue and then see it as a god”, that people “bowed to the statues and started crying and begging”, and that their prayers “could not be heard or understood by the statues!”',
+    feedback: { correct: 'Well done! You separated what the people did from what the statues could not do, and that contrast is Abraham’s evidence.', incorrect: 'Paragraph 1 is about Allah and Abraham’s heart, paragraph 2 about Abraham’s thoughts, and paragraph 3 about the people and the statues. Match each name with its paragraph.' },
   },
   2: {
-    id: 'abraham-b1-quick-2', type: 'multiple-choice', title: 'A Human-Made God?', instructions: 'Choose the best explanation supported by the chapter.',
-    question: 'Why does Abraham’s treatment of the idols weaken his father’s claim about them?',
-    options: ['He treats them like ordinary objects and toys, not powerful beings', 'He believes only the largest statue can move', 'He wants to become an idol maker'], correctAnswer: 0,
-    explanation: 'Abraham watches the idols being made and even plays with them, which conflicts with the claim that they possess divine power.',
-    feedback: { correct: 'Correct.', incorrect: 'Compare what Azer says about the statues with what Abraham actually does to them.' }
+    id: 'abraham-b1-quick-2', type: 'multiple-choice', title: 'A Human-Made God?', instructions: 'Choose the answer that the chapter supports best.',
+    question: 'Azer said that Mardukh’s big ears showed his deep knowledge. Why did this make Abraham laugh?',
+    options: ['His father had told him that the idols were only toys.', 'He knew that a statue he rode and kicked could not have any knowledge.', 'He was happy that his father allowed him to play with Mardukh.'],
+    correctAnswer: 1,
+    explanation: 'Abraham watched his father make the idols, and he “rode on their backs and sometimes kicked them.” So he could see that a made statue with big ears could not really know anything. Azer said the opposite: “They are not toys, but our gods,” and he told Abraham not to play with Mardukh again.',
+    feedback: { correct: 'Right! Abraham treated the statues like toys, so the idea of a statue with “deep knowledge” seemed funny to him.', incorrect: 'Read the first paragraph again. What did Azer say the idols were, and what did Abraham do with them?' },
   },
   3: {
-    id: 'abraham-b1-quick-3', type: 'tap-reveal', title: 'A Pattern in the Sky', instructions: 'Answer from memory, then reveal the evidence.',
-    question: 'What shared feature of the star and moon leads Abraham to reject them as Allah?',
-    tapRevealItems: [{ question: 'What happens to both?', answer: 'They disappear or fade; they do not remain.' }],
-    correctAnswer: 'They disappear or fade; they do not remain.', explanation: 'Abraham uses change and disappearance as evidence that created things cannot be the Creator.',
-    feedback: { correct: 'Correct.', incorrect: 'Return to the end of the star scene and the moon scene.' }
+    id: 'abraham-b1-quick-3', type: 'multiple-choice', title: 'A Pattern in the Sky', instructions: 'Choose the answer that the chapter supports.',
+    question: 'Why did Abraham decide that the star and the moon could not be Allah?',
+    options: ['Neither of them stayed: the star set and the moon faded.', 'They were smaller and less bright than the sun.', 'He saw them from a cave, far away from the people.'],
+    correctAnswer: 0,
+    explanation: 'About the star Abraham said, “I will not show respect to it or worship it, because it sets and disappears.” Then, “when the moon faded, he understood that it could not be Allah.” Something that changes and goes away cannot be the Creator.',
+    feedback: { correct: 'Yes! Both of them disappeared, and something that disappears cannot be the Creator.', incorrect: 'Read the end of the chapter again. Look at what happened to the star and to the moon, and at the word “because”.' },
   },
   4: {
-    id: 'abraham-b1-quick-4', type: 'true-false', title: 'Guidance Becomes Mission', instructions: 'Decide whether the statement is supported by Chapter 4.',
-    question: 'After understanding that the sun is also a creation, Abraham asks Allah for guidance and then begins calling others to the right way.', correctAnswer: true,
-    explanation: 'The chapter links Abraham’s request for guidance with his role as a Messenger and his call to his father.',
-    feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from the setting sun to Abraham’s prayer and then to his conversation with his father.' }
+    id: 'abraham-b1-quick-4', type: 'sequencing', title: 'From the Sun to His Father', instructions: 'Put the events of Chapter 4 in the right order.',
+    question: 'What happened first, next and last?',
+    sequencingItems: [
+      { id: '1', text: 'Abraham saw the bright sun and wondered if it could be Allah.' },
+      { id: '2', text: 'When it set, he understood that Allah could not be one of the creations.' },
+      { id: '3', text: 'He prostrated himself and asked Allah for help.' },
+      { id: '4', text: 'He asked his father to follow him and stop worshipping idols.' },
+      { id: '5', text: 'Azer grew angry and told him to leave.' },
+    ],
+    correctAnswer: ['1', '2', '3', '4', '5'],
+    explanation: 'Abraham first wondered about the sun (“It is bigger”). When it set, he understood that “Allah is the Creator of everything.” He prostrated himself and asked for help, then went home and said, “O my father, follow me.” His father grew angry and said, “Leave here now.”',
+    feedback: { correct: 'Great! You followed Abraham from watching the sky, to his prayer, to his call to his father.', incorrect: 'Follow the chapter step by step: the sky comes before the prayer, and the prayer comes before Abraham goes home.' },
   },
   5: {
-    id: 'abraham-b1-quick-5', type: 'multiple-choice', title: 'Tradition or Evidence?', instructions: 'Choose the strongest inference from the people’s answer.',
-    question: 'What weakness does Abraham expose when the people say they worship idols because their fathers did?',
-    options: ['Their reason depends on inherited habit rather than the idols’ real power', 'Their fathers had proved the idols could heal', 'They had personally seen the statues speak'], correctAnswer: 0,
-    explanation: 'The people appeal to tradition, while Abraham points to what actually provides food, drink, and healing.',
-    feedback: { correct: 'Correct.', incorrect: 'Contrast the people’s reason with Abraham’s evidence about help and healing.' }
+    id: 'abraham-b1-quick-5', type: 'multiple-choice', title: 'Tradition or Evidence?', instructions: 'Choose the answer that the chapter supports best.',
+    question: 'The people said, “We saw our fathers worship them.” Why was this a weak reason?',
+    options: ['The statues gave them food and drink when they needed it.', 'Their fathers had seen the statues heal sick people.', 'It was only a habit, and the statues had no power to help or harm them.'],
+    correctAnswer: 2,
+    explanation: 'The people gave only one reason: “We saw our fathers worship them; because of this, we do the same.” Abraham showed the problem: the statues “have no power to help or harm you,” while Allah gives him food and drink and heals him when he is sick.',
+    feedback: { correct: 'Right! Doing something because our fathers did it is not proof. Abraham asked his people to think about the evidence.', incorrect: 'Compare the people’s answer with Abraham’s words in the middle of the paragraph. Who gives food, drink and healing, and what can the statues do?' },
   },
   6: {
-    id: 'abraham-b1-quick-6', type: 'sequencing', title: 'The Temple Plan', instructions: 'Put Abraham’s actions in order.',
-    question: 'How does the temple plan unfold?',
-    sequencingItems: [
-      { id: '1', text: 'The town becomes empty during the celebration' },
-      { id: '2', text: 'Abraham enters the temple and questions the untouched food' },
-      { id: '3', text: 'He breaks the idols' },
-      { id: '4', text: 'He leaves the largest statue with the axe' }
-    ],
-    correctAnswer: ['1', '2', '3', '4'], explanation: 'The sequence prepares the later public argument about whether the idols can act for themselves.',
-    feedback: { correct: 'Correct.', incorrect: 'Trace the chapter from the celebration to Abraham’s return home.' }
+    id: 'abraham-b1-quick-6', type: 'true-false', title: 'The Temple Plan', instructions: 'Is the sentence true or false? Use Chapter 6.',
+    question: 'Abraham broke every statue in the temple, even the largest one.',
+    correctAnswer: false,
+    explanation: 'Abraham broke the idols “one after another,” but “he left the largest statue in the temple untouched, hung the axe around its neck, and then hurried back home.” This was part of his plan.',
+    feedback: { correct: 'Correct! He did not break the largest statue. He hung the axe around its neck.', incorrect: 'Read the last paragraph of Chapter 6 again. What did Abraham do with the largest statue?' },
   },
   7: {
-    id: 'abraham-b1-quick-7', type: 'multiple-choice', title: 'Their Own Admission', instructions: 'Choose the statement that best explains Abraham’s argument.',
-    question: 'Why is the people’s sentence “these idols don’t speak” important?',
-    options: ['It gives Abraham evidence from their own words that the idols are powerless', 'It proves the largest idol broke the others', 'It explains why the people wanted new statues'], correctAnswer: 0,
-    explanation: 'Abraham turns their own admission into a question: why worship things that cannot speak, see, or protect themselves?',
-    feedback: { correct: 'Correct.', incorrect: 'Look at what Abraham says immediately after the people admit the idols cannot speak.' }
+    id: 'abraham-b1-quick-7', type: 'multiple-choice', title: 'Shame and Pride', instructions: 'Choose the answer that the chapter supports best.',
+    question: 'The people felt that Abraham was right. Why did they still shout, “Burn him!”?',
+    options: ['They were too proud to admit that they and their forefathers were wrong.', 'They believed that the largest statue had really broken the others.', 'King Nimrod had ordered them to punish Abraham.'],
+    correctAnswer: 0,
+    explanation: 'Chapter 7 says, “They looked at each other in shame because their thoughts and feelings told them that Abraham (pbuh) was right. But they were so arrogant that they couldn’t accept the truth.” Accepting it “meant their forefathers were wrong, as well.”',
+    feedback: { correct: 'Yes! Their pride was stronger than the truth they felt. Admitting a mistake needs honesty and courage.', incorrect: 'Read the last paragraph of Chapter 7 again. Look for the word “But” after they felt shame.' },
   },
   8: {
-    id: 'abraham-b1-quick-8', type: 'true-false', title: 'Trust Under Pressure', instructions: 'Decide whether the statement matches the chapter.',
-    question: 'Abraham’s calmness is presented as passive carelessness rather than trust in Allah.', correctAnswer: false,
-    explanation: 'The chapter explicitly explains his calmness through trust in Allah even while the danger is extreme.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the sentence explaining why Abraham stayed calm while the fire was being prepared.' }
+    id: 'abraham-b1-quick-8', type: 'multiple-choice', title: 'Calm Before the Fire', instructions: 'Choose the answer that the chapter supports.',
+    question: 'The fire was so big that people could not come near it. Why did Abraham stay calm?',
+    options: ['Angel Gabriel had already told him that he would be safe.', 'He trusted Allah and knew that whatever happened would be for his own good.', 'Many people from other towns had come to help him.'],
+    correctAnswer: 1,
+    explanation: 'Chapter 8 says, “Abraham (pbuh) stayed calm because he trusted Allah. He knew that Allah would never leave him alone, and that whatever happened, it would be for his own good.” Gabriel came only later, and the people from other towns came “to see what would happen.”',
+    feedback: { correct: 'Right! His calm came from his trust in Allah, not from knowing how the story would end.', incorrect: 'Read the second paragraph of Chapter 8 again. Find the sentence with “because”.' },
   },
   9: {
-    id: 'abraham-b1-quick-9', type: 'matching', title: 'Claim and Challenge', instructions: 'Match each speaker with the key claim or response.',
-    question: 'How does the debate with Nimrod develop?',
+    id: 'abraham-b1-quick-9', type: 'matching', matchingHeadings: { left: 'In the debate', right: 'What was said or done' }, title: 'Claim and Challenge', instructions: 'Match each step of the debate with what was said or done.',
+    question: 'How did the debate between Abraham and Nimrod go?',
     matchingPairs: [
-      { left: 'Nimrod', right: 'claims he can give life and death' },
-      { left: 'Abraham', right: 'asks him to make the sun rise from the west' }
+      { left: 'Abraham’s first answer', right: '“He is Allah, the One. He gives life and brings death.”' },
+      { left: 'Nimrod’s claim', right: '“I can give life and death.”' },
+      { left: 'Nimrod’s example', right: 'One slave was killed, and the other was let go.' },
+      { left: 'Abraham’s challenge', right: '“Can you make the sun rise from the west?”' },
     ],
-    correctAnswer: { Nimrod: 'claims he can give life and death', Abraham: 'asks him to make the sun rise from the west' },
-    explanation: 'Abraham moves the discussion from Nimrod’s display of political power to a task beyond human control.',
-    feedback: { correct: 'Correct.', incorrect: 'Separate Nimrod’s claim from Abraham’s final challenge.' }
+    correctAnswer: {
+      'Abraham’s first answer': '“He is Allah, the One. He gives life and brings death.”',
+      'Nimrod’s claim': '“I can give life and death.”',
+      'Nimrod’s example': 'One slave was killed, and the other was let go.',
+      'Abraham’s challenge': '“Can you make the sun rise from the west?”',
+    },
+    explanation: 'Nimrod tried to copy Abraham’s words about life and death by deciding what happened to two slaves. Abraham then asked for something only Allah can do: “Can you make the sun rise from the west?” Nimrod “was unable to do this.”',
+    feedback: { correct: 'Well done! You followed the debate from Abraham’s answer to the challenge Nimrod could not meet.', incorrect: 'Read the second half of Chapter 9 again. Check who says “I can …” and who asks about the sun.' },
   },
   10: {
-    id: 'abraham-b1-quick-10', type: 'multiple-choice', title: 'Why Leave Babylon?', instructions: 'Choose the best cause-and-result explanation.',
-    question: 'Why does Abraham’s departure from Babylon continue rather than end his mission?',
-    options: ['He leaves because people will not listen and travels to spread Allah’s message elsewhere', 'He abandons his message after losing hope', 'He leaves to search for a stronger idol'], correctAnswer: 0,
-    explanation: 'Migration becomes a way to continue the mission in other lands, not a withdrawal from it.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the sentence that explains why Abraham decided to leave Babylon.' }
+    id: 'abraham-b1-quick-10', type: 'multiple-choice', title: 'Why Leave Babylon?', instructions: 'Choose the answer that the chapter supports.',
+    question: 'Why did Abraham decide to leave Babylon?',
+    options: ['His father had told him to leave home.', 'Nobody was going to listen to him, so he went to spread Allah’s message in other lands.', 'Nimrod ordered him to go to Syria and Palestine.'],
+    correctAnswer: 1,
+    explanation: 'Chapter 10 says, “Abraham (pbuh) realized that nobody was going to listen to his message. Therefore, he decided to leave Babylon and travel to other lands to spread Allah’s message.” Leaving did not end his mission; it continued it.',
+    feedback: { correct: 'Yes! He did not give up. He took the message to new places.', incorrect: 'Read the beginning of the second paragraph again. Find the word “Therefore”.' },
   },
   11: {
-    id: 'abraham-b1-quick-11', type: 'matching', title: 'Trust and Effort', instructions: 'Match Hagar’s belief with her response.',
-    question: 'How does Chapter 11 combine reliance on Allah with human action?',
-    matchingPairs: [
-      { left: 'Hagar’s trust', right: 'Allah will protect us' },
-      { left: 'Hagar’s effort', right: 'runs between Safa and Marwa searching for water and food' }
-    ],
-    correctAnswer: { 'Hagar’s trust': 'Allah will protect us', 'Hagar’s effort': 'runs between Safa and Marwa searching for water and food' },
-    explanation: 'The chapter presents trust and sustained effort together rather than as opposites.',
-    feedback: { correct: 'Correct.', incorrect: 'Use one detail from Hagar’s words and one from her actions.' }
+    id: 'abraham-b1-quick-11', type: 'true-false', title: 'Trust and Effort', instructions: 'Is the sentence true or false? Use Chapter 11.',
+    question: 'Hagar trusted Allah, so when the food and water ran out, she sat and waited for help.',
+    correctAnswer: false,
+    explanation: 'Hagar trusted Allah: “Allah will never let us die; He will surely protect us.” But she did not only wait. She “started running from one hill to another looking for water and food” and “ran between these two hills seven times.”',
+    feedback: { correct: 'Correct! Hagar trusted Allah and also worked hard. She ran between Safa and Marwa seven times.', incorrect: 'Read the last paragraph of Chapter 11 again. What did Hagar do when the food and water ran out?' },
   },
   12: {
-    id: 'abraham-b1-quick-12', type: 'sequencing', title: 'From Water to Settlement', instructions: 'Arrange the cause-and-result chain.',
-    question: 'How does Zamzam change the valley?',
+    id: 'abraham-b1-quick-12', type: 'sequencing', title: 'From Water to a City', instructions: 'Put the events of Chapter 12 in the right order.',
+    question: 'How did the valley change?',
     sequencingItems: [
-      { id: '1', text: 'Water appears under Ishmael’s feet' },
-      { id: '2', text: 'Hagar collects the water and gives it to her child' },
-      { id: '3', text: 'More people settle near the spring' },
-      { id: '4', text: 'A city called Mecca begins to grow' }
+      { id: '1', text: 'Ishmael was crying with thirst while Hagar ran between the hills.' },
+      { id: '2', text: 'Water started flowing from the ground under Ishmael’s feet.' },
+      { id: '3', text: 'Hagar saw it from a distance and shouted, “Zamzam!”' },
+      { id: '4', text: 'She drank the water, collected it and fed her child.' },
+      { id: '5', text: 'More people came to settle there and started building Mecca.' },
     ],
-    correctAnswer: ['1', '2', '3', '4'], explanation: 'The chapter connects the appearance of water with settlement and the growth of Mecca.',
-    feedback: { correct: 'Correct.', incorrect: 'Follow the chapter from Ishmael’s thirst to the arrival of other people.' }
+    correctAnswer: ['1', '2', '3', '4', '5'],
+    explanation: 'Chapter 12 moves from need to gift to a new city: Ishmael’s thirst, the water under his feet, Hagar’s shout, the first drink, and then people who came to settle “because of this sacred spring.”',
+    feedback: { correct: 'Great! One gift of water changed an empty valley into the city of Mecca.', incorrect: 'Start with Ishmael’s thirst. The city is built only after people come because of the water.' },
   },
   13: {
-    id: 'abraham-b1-quick-13', type: 'multiple-choice', title: 'Building and Legacy', instructions: 'Choose the answer that connects action and message.',
-    question: 'Why is building the Ka’ba a fitting conclusion to Abraham’s mission in this story?',
-    options: ['It creates a place of worship connected with the message that Allah is One and has no partner', 'It proves Babylon’s idols were rebuilt in Mecca', 'It ends the need to teach future generations'], correctAnswer: 0,
-    explanation: 'The chapter joins the House of Allah with Abraham’s continuing legacy of Tawheed through later generations.',
-    feedback: { correct: 'Correct.', incorrect: 'Connect the building paragraph with the final paragraph about Abraham’s descendants and message.' }
-  }
+    id: 'abraham-b1-quick-13', type: 'multiple-choice', title: 'A House for Everyone', instructions: 'Choose the answer that the chapter supports.',
+    question: 'According to Chapter 13, for whom did Abraham build the Ka’ba?',
+    options: ['only for Abraham, Ishmael and their family', 'only for the people who settled near Zamzam', 'for all people of different races and colors'],
+    correctAnswer: 2,
+    explanation: 'Chapter 13 says, “He built a place of worship for all people of different races and colors.” It connects this house with the message of the Oneness of Allah that Abraham’s descendants carried.',
+    feedback: { correct: 'Right! The chapter says the Ka’ba is a place of worship for people of every race and color.', incorrect: 'Read the third paragraph of Chapter 13 again. Find the words “a place of worship for …”.' },
+  },
 };
 
 export const abrahamB1KnowledgeCheckExercises: Exercise[] = [
