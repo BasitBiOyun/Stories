@@ -389,18 +389,133 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
 };
 
 
-const reviewFeedback={correct:'Correct. You selected language that preserves the book’s meaning and level of certainty.',incorrect:'Not yet. Reconsider the discourse relationship and the degree of certainty expressed.'};
-const reviewMc=(id:string,question:string,options:string[],correctAnswer:number,explanation:string):Exercise=>({id,type:'multiple-choice',title:'B2 Language Review',instructions:'Choose the language that best preserves the intended meaning.',question,options,correctAnswer,explanation,feedback:reviewFeedback});
-const reviewFill=(id:string,question:string,text:string,answer:string,explanation:string):Exercise=>({id,type:'fill-blanks',title:'B2 Language Review',instructions:'Complete the sentence with the best discourse form.',question,fillBlanksText:text,correctAnswer:answer,explanation,feedback:reviewFeedback});
-const reviewMatch=(id:string,question:string,pairs:{left:string;right:string}[],explanation:string):Exercise=>({id,type:'matching',title:'B2 Language Review',instructions:'Match each form with the discourse function it performs across the book.',question,matchingPairs:pairs,correctAnswer:Object.fromEntries(pairs.map(p=>[p.left,p.right])),explanation,feedback:reviewFeedback});
-
 export const meccaB2LanguageReviewExercises: Exercise[] = [
-reviewMatch('me-b2-lr1','Match the language with its source-framing or qualification function.',[{left:'It can be said that...',right:'Marks an interpretation rather than an absolute fact'},{left:'not always the same',right:'Blocks an overgeneralization'},{left:'almost no one',right:'Expresses a very small quantity without claiming zero'},{left:'gradually developed',right:'Presents change as a process over time'}],'These forms keep historical claims proportionate to the evidence.'),
-reviewMatch('me-b2-lr2','Match each causal form with the kind of relationship it commonly builds in the chapters.',[{left:'because / since',right:'Introduces a clause giving a reason'},{left:'because of / due to',right:'Introduces a noun phrase as cause'},{left:'as a result / therefore',right:'Introduces a consequence'},{left:'so...that',right:'Links a high degree with its result'}],'The book repeatedly explains social and economic systems through explicit causal links.'),
-reviewMc('me-b2-lr3','Which sentence best uses passive voice for institutional analysis?',['Goods were seized and vulnerable people were denied protection, so the focus remains on the harm and those affected.','Powerful men seized goods, therefore passive voice is impossible.','The merchant was goods because the sentence is historical.'],0,'Passive voice is useful when the affected people, action, or institution matters more than naming an agent.'),
-reviewFill('me-b2-lr4','Complete the unreal past relationship.','Had the people not forced him to leave, he [blank] never have left Mecca.','would','Had + past participle combines with would have + past participle to express an unreal past condition and result.'),
-reviewMc('me-b2-lr5','Which sentence gives the most appropriately qualified B2 comparison?',['Although some higher-status women had economic freedom, many lower-status women remained severely disadvantaged.','All women had exactly the same position in every tribe.','Because Khadija ran a business, no woman faced restrictions.'],0,'Although allows evidence of variation without erasing the broader pattern described in the chapter.'),
-{ id:'me-b2-lr6',type:'sequencing',title:'B2 Language Review',instructions:'Order the discourse markers to build an escalation.',question:'How can a B2 paragraph show intensifying opposition?',sequencingItems:[{id:'a',text:'At first, the new religion was mocked.'},{id:'b',text:'However, when idols and established interests were challenged, opposition became fiercer.'},{id:'c',text:'Vulnerable believers then suffered direct persecution.'},{id:'d',text:'The elites went further and imposed a social and economic boycott.'}],correctAnswer:['a','b','c','d'],explanation:'At first, however/when, then, and went further make the escalation explicit.',feedback:reviewFeedback },
-reviewMatch('me-b2-lr7','Match each relationship with language suitable for synthesizing the book.',[{left:'Sacred status + trade',right:'not only... but also / as well as'},{left:'Economic inequality despite moral resistance',right:'although / however'},{left:'Tribal protection leading to constrained choice',right:'if... then / otherwise'},{left:'Historical Jahiliyyah extended to a recurring pattern',right:'both... and also / not only... but also'}],'B2 synthesis depends on selecting connectors that accurately represent the relationship, not simply linking sentences mechanically.'),
-{ id:'me-b2-lr8',type:'reflection',title:'B2 Language Review — Productive Synthesis',instructions:'Write a coherent analytical paragraph using language from the review.',question:'How did sacred status, trade, class, tribal protection and belief interact in Mecca, and why did reform affect several systems at once?',correctAnswer:null,explanation:'A strong response should use at least four target relationships: cause/result, concession, qualification, condition, comparison or additive synthesis. It should distinguish evidence from interpretation.',feedback:reviewFeedback,discussionPrompts:[{question:'Write 7–9 sentences. Include one qualification (for example, not always/almost/can be said), one cause-result chain, one concession, and one conditional or counterfactual relationship.',mode:'Individual'}] }
+  // NOTICE — discover what the book's language does, across chapters.
+  {
+    id: 'me-b2-language-review-1-writer-stance', type: 'drag-drop', title: 'Notice: How Sure Is the Writer?',
+    instructions: 'Read the sentences from Chapters 5, 9, 11, 12, 13, 14 and 17. Does the writer limit the claim, report what other people believed or said, or state the claim with certainty? Put each sentence in its group.',
+    question: 'Which words show how far the writer stands behind each claim?',
+    dragDropGroups: [
+      { group: 'The writer limits the claim', items: ['These caravans numbered up to 2,500 camels.', 'In a sense, they were serving as a media outlet.', 'The population of Mecca … was between 5,000 and 10,000.'] },
+      { group: 'The writer reports what others believed or said', items: ['Pre-Islamic Arabs thought the gods talked through kahins (soothsayers) and poets …', 'The leaders of the Quraysh viewed Islam as a threat to their authority.', 'The Quraysh were saying that Islam broke up families …'] },
+      { group: 'The writer states the claim with certainty', items: ['No doubt, pilgrimage to the Ka’ba was the most popular and common form of worship.', '… it certainly doesn’t make sense to call the pre-Islamic era entirely negative.'] },
+    ],
+    correctAnswer: {
+      'The writer limits the claim': ['These caravans numbered up to 2,500 camels.', 'In a sense, they were serving as a media outlet.', 'The population of Mecca … was between 5,000 and 10,000.'],
+      'The writer reports what others believed or said': ['Pre-Islamic Arabs thought the gods talked through kahins (soothsayers) and poets …', 'The leaders of the Quraysh viewed Islam as a threat to their authority.', 'The Quraysh were saying that Islam broke up families …'],
+      'The writer states the claim with certainty': ['No doubt, pilgrimage to the Ka’ba was the most popular and common form of worship.', '… it certainly doesn’t make sense to call the pre-Islamic era entirely negative.'],
+    },
+    explanation: 'A careful reader tracks how far the writer stands behind each claim. “Up to” gives an upper limit, a range (between … and …) admits that the exact number is unknown, and “in a sense” marks a comparison as only partly true. Verbs such as thought, viewed … as and were saying report the beliefs or words of other people, not the writer’s own view. “No doubt” and “certainly” present a claim as sure. If you remove these signals when you retell a text, you change what the writer actually claims.',
+    feedback: { correct: 'Well done. You separated limited claims, reported views and certain claims.', incorrect: 'Look for the signal in each sentence: a limit (up to, in a sense, between … and …), a reporting verb (thought, viewed, were saying) or a word of certainty (no doubt, certainly).' },
+  },
+  {
+    id: 'me-b2-language-review-2-passive-focus', type: 'multiple-choice', title: 'Notice: Who Stays in Focus?',
+    instructions: 'Read the lines from Chapters 8 and 15. Then choose the best explanation.',
+    question: 'Chapter 8: “In such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy.” Chapter 15: “The cries of children dying of hunger began to be heard.” Why does the writer not say who did these actions?',
+    options: [
+      'History does not record who treated these people so badly.',
+      'To keep the reader’s attention on the people who suffered, not on the people who caused the suffering.',
+      'In English, a passive verb cannot be followed by a “by” phrase.',
+      'To show that each of these things happened only once.',
+    ],
+    correctAnswer: 1,
+    explanation: 'In these passives the people who suffered (orphans, the weak, the poor, the children) stay at the centre of the sentence, and the doer is left out. The doers are not unknown: Chapter 8 names them in a separate sentence, “those who oppressed and treated people unfairly were generally wealthy and powerful individuals”. When the doer matters, the writer adds a “by” phrase: “an agreement was made by some Quraysh tribes”. So the choice between passive and active shows what the writer wants the reader to look at.',
+    feedback: { correct: 'Correct. The passive keeps the victims and what happened to them in focus.', incorrect: 'Ask what stands at the front of each sentence: the people who suffered, or the people who acted? Then look for the sentence in Chapter 8 that names the oppressors.' },
+  },
+  {
+    id: 'me-b2-language-review-3-would-from-the-past', type: 'true-false', title: 'Notice: What Does “Would” Tell Us?',
+    instructions: 'Read the sentences from Chapters 15 and 16. Is the statement true or false?',
+    question: 'Chapter 15: “They knew that the Prophet’s call to monotheism … would eventually bring them face to face with people who carried out these practices.” Chapter 16: “Leaders who built their authority on idols would lose both their political and economic influence if they lost their idols.” Statement: In both sentences, “would” reports something that had already happened.',
+    correctAnswer: false,
+    explanation: 'False. In Chapter 15, “would” is the past form of “will”: after “They knew that …”, it shows what the leaders expected to happen later, seen from their point in the past. In Chapter 16, “would” gives an imagined result, and the if-clause uses the past simple (if they lost) for a situation that had not happened. In both sentences “would” looks forward from the past; it does not report a finished event. That is why the leaders were afraid: they could see what might happen.',
+    feedback: { correct: 'Correct. Here “would” looks forward: an expected future and an imagined result.', incorrect: 'Did the leaders already face these people, or lose their idols, at that moment? Read “They knew that …” and “if they lost …” again.' },
+  },
+  // BUILD — controlled practice in the book's own sentences, mixing chapters.
+  {
+    id: 'me-b2-language-review-4-reason-and-concession', type: 'word-bank', title: 'Build: Reason, Result or Concession?',
+    instructions: 'Complete the lines from Chapters 3, 4, 12 and 14 with words from the bank. Two words are not needed.',
+    question: 'Which link gives a result, which gives a reason with a clause, which needs a noun phrase, and which admits a fact before a contrasting one?',
+    fillBlanksText: '… the Zamzam water had not yet been discovered, [blank] there was no population living there. … [blank] the surroundings of the city were not suitable for agriculture, people tried to make a living through trade. … [blank] they mainly worshipped idols, they believed “Allah” to be the creator. … These people, who saw themselves as superior to others [blank] their wealth, ignored the Quran’s commands …',
+    wordBank: ['so', 'Since', 'Although', 'because of', 'Despite', 'However'],
+    correctAnswer: ['so', 'Since', 'Although', 'because of'],
+    explanation: '“So” introduces a result: the water had not been found, so nobody lived there. “Since” can introduce a reason that the reader easily accepts, and it is followed by a clause with a subject and a verb. “Because of” is followed by a noun phrase (their wealth). “Although” admits one fact and then adds a second fact that seems to clash with it; it takes a clause, so “Despite”, which needs a noun phrase, does not fit. “However” links two separate sentences and cannot introduce a clause like these.',
+    feedback: { correct: 'Well done. You matched each link to its meaning and to what follows it.', incorrect: 'For each gap, ask two questions: is it a result, a reason or a contrast? And is it followed by a clause or by a noun phrase?' },
+  },
+  {
+    id: 'me-b2-language-review-5-claim-and-passive', type: 'error-correction', title: 'Build: Fix the Claim, Fix the Form',
+    instructions: 'Each sentence from Chapters 6, 14 and 16 has one mistake: a claim that is too strong, or a verb form that makes the subject the doer. Tap the mistake, then choose the correction.',
+    question: 'Can you keep the claim as careful as the chapter and use the passive where the subject does not do the action?',
+    errorItems: [
+      { sentence: 'All of the first Muslims were the poor and the slaves.', error: 'All of', options: ['Much of', 'Many of', 'Every of'], answer: 1 },
+      { sentence: 'In addition, major trade festivals such as Ukaz (Ukâz) … were also holding during the sacred months.', error: 'were also holding', options: ['were also hold', 'had also held', 'were also held'], answer: 2 },
+      { sentence: 'Otherwise, he would leave unprotected by his tribe …', error: 'would leave unprotected', options: ['would be left unprotected', 'would left unprotected', 'would have leave unprotected'], answer: 0 },
+    ],
+    correctAnswer: null,
+    explanation: 'The chapter says “Many of the first Muslims …”: “many” describes a large part of the group, while “all” would claim that there were no exceptions, which is more than the evidence shows (“much” is for uncountable nouns). Festivals do not hold anything; people hold them, so the passive is needed: were also held. In the same way, a member who stepped outside his tribe’s views did not leave anyone; he was the one who would lose protection, so after “would” we need be + past participle: would be left unprotected.',
+    feedback: { correct: 'Well done. You removed the overclaim and chose the passive where the subject receives the action.', incorrect: 'First ask whether the claim is stronger than the chapter allows. Then ask who does the action: the festivals and the tribal member, or other people?' },
+  },
+  {
+    id: 'me-b2-language-review-6-same-meaning-new-structure', type: 'transformation', title: 'Build: Same Meaning, New Structure',
+    instructions: 'Rewrite each sentence from Chapters 7, 8 and 14 by completing the frame. Keep the meaning of the original.',
+    question: 'What changes when a cause becomes a clause, when a result gets its own linker, and when direct speech becomes reported speech?',
+    transformItems: [
+      { source: 'Due to its fight against injustice, Hilfu’l-Fudûl received support from the community.', frame: 'Hilfu’l-Fudûl received support from the community because [blank].', answers: ['it fought against injustice', 'it fought injustice', 'it was fighting against injustice', 'it was fighting injustice', 'of its fight against injustice', 'it struggled against injustice'] },
+      { source: 'Because large amounts of wealth were concentrated in the hands of certain individuals, there were extreme divisions between social classes.', frame: 'Large amounts of wealth were concentrated in the hands of certain individuals. [blank], there were extreme divisions between social classes.', answers: ['As a result', 'Therefore', 'Consequently', 'As a consequence', 'For this reason', 'Because of this', 'Due to this', 'Thus', 'Hence', 'So', 'That is why', 'This is why'] },
+      { source: 'The Quraysh were saying, “Muhammad is trying to gain the upper hand over us; …”', frame: 'The Quraysh were saying that Muhammad [blank] to gain the upper hand over them.', answers: ['was trying'] },
+    ],
+    correctAnswer: null,
+    explanation: '“Due to” and “because of” are followed by a noun phrase (its fight against injustice); “because” is followed by a clause with its own subject and verb (it fought against injustice). A result can also open a new sentence with a linker such as As a result or Therefore. When direct speech is reported after a past verb (were saying that …), the present continuous moves back to the past continuous and the pronouns change: us → them. Reporting also reminds the reader that these are the Quraysh’s words, not the writer’s view.',
+    feedback: { correct: 'Well done. You kept the meaning and changed the structure correctly.', incorrect: 'Check what the frame needs: a clause after “because”, a result linker at the start of a sentence, and the past continuous with “them” after “were saying that”.' },
+  },
+  {
+    id: 'me-b2-language-review-7-relative-words', type: 'choose-form', title: 'Build: Which Relative Word?',
+    instructions: 'Choose the correct word to complete each sentence from Chapters 8, 16 and 17.',
+    question: 'Which relative word fits a person, a thing after a preposition, and a place that is the subject of the clause?',
+    formChoices: [
+      { sentence: 'Prophet Muhammad (as), [choice] was twenty years old at the time, also attended this meeting.', options: ['which', 'who', 'that'], answer: 1 },
+      { sentence: 'The rejection of idols meant, for the Quraysh, the end of the trade on [choice] they depended for their wealth.', options: ['that', 'whom', 'which'], answer: 2 },
+      { sentence: 'In Mecca, [choice] was a place of oppression, injustice, and immorality before Islam, the Prophet (as) called upon people to follow justice and morality.', options: ['which', 'where', 'that'], answer: 0 },
+    ],
+    correctAnswer: null,
+    explanation: '“Who” refers to a person, and in a clause between commas we cannot use “that”. After a preposition, “which” refers to a thing (on which they depended); “whom” is only for people, and “that” cannot follow a preposition. “Where” replaces an adverbial of place (the places where the disbelievers were sitting), but in Chapter 17 the relative word is the subject of “was”, so the writer needs “which”.',
+    feedback: { correct: 'Correct. You chose the relative word by what it refers to and by its job in the clause.', incorrect: 'Ask what the word refers to (a person, a thing, a place) and what it does in its clause: is it the subject, or does it follow a preposition?' },
+  },
+  // USE — take the language into new, everyday contexts.
+  {
+    id: 'me-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Report on a School Project',
+    instructions: 'This text is not from the book. It is part of a report written by a student council. Complete it with expressions from the bank. Two expressions are not needed.',
+    question: 'Can you report a school project carefully, without saying more than the evidence shows?',
+    fillBlanksText: 'Last term, a recycling project was started at our school by the student council. [blank] 40 bags of paper were collected every week, but the number changed from month to month. [blank] the project, the school needed to buy less new paper. [blank] some classes joined enthusiastically, others took part only occasionally. It can be said that the project was [blank] successful, but it is too early to call it a complete success. Next year, the council hopes that every class will take part.',
+    wordBank: ['Up to', 'As a result of', 'Although', 'mostly', 'Despite', 'entirely'],
+    correctAnswer: ['Up to', 'As a result of', 'Although', 'mostly'],
+    explanation: 'Up to gives the highest weekly number, not the number for every week. As a result of + noun phrase names the cause of the saving. Although admits one fact and adds a contrasting one in the same sentence, without “but”; Despite would need a noun phrase. Mostly limits the success: the report praises the project but does not overclaim, which is why entirely does not fit. Like the writer of the book, a careful reporter keeps claims in proportion to the evidence.',
+    feedback: { correct: 'Well done. Your report is clear, fair and careful.', incorrect: 'For each gap, ask: is it a limit, a cause, a contrast or a degree? Then check what follows the gap: a number, a noun phrase or a clause.' },
+  },
+  {
+    id: 'me-b2-language-review-9-new-context', type: 'choose-form', title: 'Use: Say Only What the Evidence Shows',
+    instructions: 'These sentences are not from the book. Read the evidence in each sentence, then choose the form that says exactly what the evidence allows.',
+    question: 'Which form keeps each new sentence accurate and fair?',
+    formChoices: [
+      { sentence: 'In our class survey, 18 of 25 students said they read every day, so [choice] students in our class read daily.', options: ['all', 'almost no', 'most'], answer: 2 },
+      { sentence: 'Each class may borrow [choice] 30 books a week: some classes borrow 30, others borrow only 10 or 12.', options: ['exactly', 'up to', 'at least'], answer: 1 },
+      { sentence: 'Nobody saw who damaged the plants in the school garden, so the report says that the plants [choice] during the weekend.', options: ['damaged', 'were damaged', 'had damaging'], answer: 1 },
+    ],
+    correctAnswer: null,
+    explanation: 'Most matches 18 out of 25: a large part of the class, but not all of it. Up to gives the highest number allowed, so smaller numbers are still possible; exactly and at least do not fit a class that borrows only 10. When the doer is unknown, or less important than what happened, use the passive: the plants were damaged. The plants did not damage anything themselves.',
+    feedback: { correct: 'Well done. Each sentence now says exactly what the evidence shows.', incorrect: 'Compare each form with the evidence in the same sentence: how many, how much, and who did the action?' },
+  },
+  {
+    id: 'me-b2-language-review-10-transfer', type: 'reflection', title: 'Use: Argue a Careful Case',
+    instructions: 'Write a short argued paragraph (6–8 sentences) on this question: Should our school set up a student committee to help classmates who are treated unfairly? State your position, give reasons and evidence from school life, and add at least one qualification. Plan your paragraph with a partner first.',
+    question: 'Can you use the language of the whole book to argue a position carefully?',
+    correctAnswer: null,
+    explanation: 'Example: “In my view, our school should set up a student committee to help classmates who are treated unfairly. At present, some students are left out or laughed at, and these problems are often not reported. Due to fear of being mocked, many students stay silent. As a result of this silence, small problems can grow into serious ones. Although our teachers already help, they cannot see everything that happens in the corridors. The committee would not replace the teachers; its role would be mostly to listen rather than to punish. If it worked fairly and respectfully, it would make our school a safer place for everyone.”',
+    feedback: { correct: 'Check your paragraph: a clear position; a reason with because, due to or as a result of; a limit such as mostly, many, not always or although; a passive without “by” (students are left out …); and an if … would … sentence for a possible result.', incorrect: '' },
+    discussionPrompts: [
+      { question: 'Sentence 1 — Your position: “In my view, our school should … because …” or “It can be said that …”', mode: 'Individual' },
+      { question: 'Sentences 2–3 — Evidence and cause: “Some students are left out / are not listened to …”, “Due to …, …”, “As a result of …, …”', mode: 'Individual' },
+      { question: 'Sentences 4–5 — Qualification: “Although …, …”, “Its role would be mostly … rather than …”, “… is not always …”', mode: 'Pair' },
+      { question: 'Sentences 6–7 — Consequence: “If the committee …, it would … . Otherwise, …”', mode: 'Pair' },
+    ],
+  },
 ];
