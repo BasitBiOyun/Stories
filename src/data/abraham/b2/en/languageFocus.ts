@@ -36,13 +36,13 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       title: 'Define, Add, Expand',
       instructions: 'Complete the lines from Chapter 1 with words from the bank. Two options are not needed.',
       question: 'Which expressions define an idea, add a new role, and announce a fuller account?',
-      fillBlanksText: 'Monotheistic belief [blank] I bear witness that there is no god but Allah. … Abraham (pbuh) is [blank] a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). … The Qur’an presents [blank] his discovery of the oneness of Allah (Tawheed) in the middle of an idol-worshipping nation.',
-      wordBank: ['means that', 'also', 'in detail', 'refers to', 'instead'],
-      correctAnswer: ['means that', 'also', 'in detail'],
-      explanation: '“X means that + clause” unpacks an abstract term into a full statement. (“Refers to” needs a noun phrase, not a clause.) “Also” adds a second role to the earlier description without replacing it; “instead” would cancel the first role. “Presents in detail” tells the reader that the Qur’an gives a fuller account, not just a short mention.',
+      fillBlanksText: 'Monotheistic belief [blank] bearing witness that there is no god but Allah. … Abraham (pbuh) is [blank] a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). … The Qur’an presents [blank] his discovery of the oneness of Allah (Tawheed) in the middle of an idol-worshipping nation.',
+      wordBank: ['means', 'also', 'in detail', 'means that', 'instead'],
+      correctAnswer: ['means', 'also', 'in detail'],
+      explanation: '“X means + -ing form” unpacks an abstract term into an action. (“Means that” needs a full clause with its own subject, not an -ing form.) “Also” adds a second role to the earlier description without replacing it; “instead” would cancel the first role. “Presents in detail” tells the reader that the Qur’an gives a fuller account, not just a short mention.',
       feedback: {
         correct: 'Correct. You chose the expressions that define, add and expand.',
-        incorrect: 'Check what follows each gap: a full clause (I bear witness …), an extra role, and a whole account. Then compare with the first paragraph of Chapter 1.',
+        incorrect: 'Check what follows each gap: an -ing form (bearing witness …), an extra role, and a whole account. Then compare with the first paragraph of Chapter 1.',
       },
     },
     {
@@ -210,11 +210,11 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
       options: [
         'It limits the evaluation “the least corrupted” to that period, instead of making it true for all times.',
         'It shows that Christianity became the least corrupted religion later.',
-        'It shows that Varaka left Christianity after some time.',
+        'It shows that Waraqa left Christianity after some time.',
         'It means that Christianity was not corrupted at all in that period.',
       ],
       correctAnswer: 0,
-      explanation: 'The non-defining relative clause “which was the least corrupted religion” adds the writer’s evaluation of Christianity. “At that time” limits this evaluation to Varaka’s period. Also note that “the least corrupted” is a comparison: it does not mean “not corrupted at all”.',
+      explanation: 'The non-defining relative clause “which was the least corrupted religion” adds the writer’s evaluation of Christianity. “At that time” limits this evaluation to Waraqa’s period. Also note that “the least corrupted” is a comparison: it does not mean “not corrupted at all”.',
       feedback: {
         correct: 'Correct. The time phrase limits the evaluation to one period.',
         incorrect: 'Read the whole relative clause again. What is being evaluated, and for which period? Does “least corrupted” mean “not corrupted”?',
@@ -244,12 +244,12 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
       sentenceChunks: [
         'One day,',
         'while he was in the desert,',
-        'Varaka saw Bilal al-Habashi',
+        'Waraqa saw Bilal al-Habashi',
         'lying under the burning sun,',
         'punished by his master.',
       ],
       correctAnswer: null,
-      explanation: '“One day” moves to one specific event, and “while he was in the desert” gives the ongoing background. The main clause is “Varaka saw Bilal al-Habashi”. Then two participle phrases describe Bilal: “lying” (active, what he was doing) and “punished” (passive, what was being done to him). The chapter uses the same compact style in “Hearing his words, Varaka replied …”.',
+      explanation: '“One day” moves to one specific event, and “while he was in the desert” gives the ongoing background. The main clause is “Waraqa saw Bilal al-Habashi”. Then two participle phrases describe Bilal: “lying” (active, what he was doing) and “punished” (passive, what was being done to him). The chapter uses the same compact style in “Hearing his words, Waraqa replied …”.',
       feedback: {
         correct: 'Well done. The time frame comes first, then the main event, then the details about Bilal.',
         incorrect: 'Start with the time frame, then the background with “while”, then who saw whom. The -ing and -ed phrases describe Bilal, so they come after his name.',
@@ -774,7 +774,7 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-8-concession-persistence',
       type: 'multiple-choice',
       title: 'Purpose in the Verse',
-      instructions: 'Read the lines from Surah En’âm quoted in Chapter 8. Then choose the best explanation.',
+      instructions: 'Read the lines from Surah al-An’am quoted in Chapter 8. Then choose the best explanation.',
       question: '“Thus, We showed Abraham the empire of the heavens and the earth, that he might be one of those with certainty.” What does “that he might be …” express?',
       options: [
         'The purpose of showing him the heavens and the earth: so that he would reach certainty.',
@@ -1108,10 +1108,10 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
           'It is understood from Abraham (pbuh)’s statement … that his people threatened him with the punishment of their gods.',
         ],
       },
-      explanation: 'The chapter first quotes Surah En’âm: 80–83 and then comments on it. The writer’s sentences use their own framing: “attempted to …” reports; “That these arguments are not told … shows …” draws a conclusion from something missing; “It is understood from … that …” marks an inference. A careful reader keeps the quoted evidence and the writer’s interpretation apart.',
+      explanation: 'The chapter first quotes Surah al-An’am: 80–83 and then comments on it. The writer’s sentences use their own framing: “attempted to …” reports; “That these arguments are not told … shows …” draws a conclusion from something missing; “It is understood from … that …” marks an inference. A careful reader keeps the quoted evidence and the writer’s interpretation apart.',
       feedback: {
         correct: 'Correct. You separated the quoted evidence from the writer’s interpretation.',
-        incorrect: 'Find where the quotation from Surah En’âm ends. Sentences after it are the writer’s. Look for “shows”, “It is understood” and “attempted”.',
+        incorrect: 'Find where the quotation from Surah al-An’am ends. Sentences after it are the writer’s. Look for “shows”, “It is understood” and “attempted”.',
       },
     },
     {
@@ -1187,11 +1187,11 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-12-discourse-stance',
       type: 'sequencing',
       title: 'Follow the Debate',
-      instructions: 'Put the lines of the exchange from Surah Enbiyâ in Chapter 12 in order. Use what each line does to help you.',
+      instructions: 'Put the lines of the exchange from Surah al-Anbiya in Chapter 12 in order. Use what each line does to help you.',
       question: 'How does the debate move from a question to a clear statement of belief?',
       sequencingItems: [
         { id: '1', text: '‘What are these statues to which you are faithful?’' },
-        { id: '2', text: '‘We found our parents worshiping them.’' },
+        { id: '2', text: '‘We found our parents worshipping them.’' },
         { id: '3', text: '‘You and your parents are in evident error.’' },
         { id: '4', text: '‘Are you telling us the truth, or are you just playing?’' },
         {
