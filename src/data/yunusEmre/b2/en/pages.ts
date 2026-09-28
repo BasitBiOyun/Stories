@@ -12,9 +12,9 @@ const rawYunusB2Pages: PageData[] = [
     title: 'Yunus Emre and Sûfîsm',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch1.png?alt=media&token=25cb0741-f1fe-4df1-abb9-8550a2926029',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=875dc868-3960-407d-9839-bed3b5d00a39',
-    content: `Yunus Emre was a great Anatolian poet and Muslim mystic/sûfî. A Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism. Sûfis maintain a lifestyle within the outer (visible) and inner norms of Islam. The outer part relates to the body's acts of worship, whereas the inner side handles the morality and intentions of the heart. Sûfis adhere to moral principles that include the pursuit of becoming better people, the ability to remain patient during difficult times, the act of giving generously without expecting any return, the act of doing good to all individuals without prejudice, the response to evil with kindness, and not attaching importance to worldly possessions such as wealth, status, and fame.
+    content: `Yunus Emre was a great Anatolian poet and Muslim mystic/sûfî. A Sûfî is a person who seeks closeness to Allah by adopting Islamic mysticism. Sûfîs maintain a lifestyle within the outer (visible) and inner norms of Islam. The outer part relates to the body's acts of worship, whereas the inner side handles the morality and intentions of the heart. Sûfîs adhere to moral principles that include the pursuit of becoming better people, the ability to remain patient during difficult times, the act of giving generously without expecting any return, the act of doing good to all individuals without prejudice, the response to evil with kindness, and not attaching importance to worldly possessions such as wealth, status, and fame.
 
-In addition to his standing as a Sûfî, Yunus Emre was one of the first to create and perform poetry from the heart in plain Turkish. He was also one of the Turkish poets to play a crucial role in the development of Old Anatolian Turkish. The words and expressions that he used made a significant contribution to the development of Turkish as a literary language. He established a literary tradition based on Sufism. One of the most important factors in the popularity of Yunus Emre’s works among the public is his style.`,
+In addition to his standing as a Sûfî, Yunus Emre was one of the first to create and perform poetry from the heart in plain Turkish. He was also one of the Turkish poets to play a crucial role in the development of Old Anatolian Turkish. The words and expressions that he used made a significant contribution to the development of Turkish as a literary language. He established a literary tradition based on Sûfîsm. One of the most important factors in the popularity of Yunus Emre’s works among the public is his style.`,
     vocabulary: [
       { word: 'Islamic mysticism', definition: 'a spiritual tradition within Islam focused on inner purification and closeness to Allah' },
       { word: 'crucial', definition: 'extremely important to the development or outcome of something' },
@@ -24,7 +24,7 @@ In addition to his standing as a Sûfî, Yunus Emre was one of the first to crea
     ],
     hotspots: [
       { id: 'h1-1', x: 27, y: 38, title: 'Plain Turkish', description: 'Yunus Emre created and performed poetry from the heart in plain Turkish and helped develop Old Anatolian Turkish as a literary language.' },
-      { id: 'h1-2', x: 71, y: 58, title: 'Sûfî', description: 'Sûfis maintain a lifestyle within the outer acts of worship and the inner morality and intentions of the heart.' },
+      { id: 'h1-2', x: 71, y: 58, title: 'Sûfî', description: 'Sûfîs maintain a lifestyle within the outer acts of worship and the inner morality and intentions of the heart.' },
     ],
   },
   {
@@ -37,7 +37,7 @@ In addition to his standing as a Sûfî, Yunus Emre was one of the first to crea
 
 According to historical accounts, he was a contemporary of famous figures such as Hacı Bektaş-ı Veli, Mevlana Celaleddin-i Rumi, and Saru Saltuk. As to the widely accepted view, he was born in 1240–41 and died in 1320–21. He is considered the founder of Turkish Sûfî literature.
 
-Some sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas. He also studied both divine love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).
+Some sources note that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. However, his education was not limited to madrasas. He also studied both divine love and morals at the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor).
 
 At that time, tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time.`,
     vocabulary: [
@@ -163,8 +163,8 @@ Yunus’s understanding of Sûfîsm is based on the Qur’an and the Sunnah, whi
       { word: 'medium', definition: 'a means or form through which ideas are communicated' },
       { word: 'Qur’an', definition: 'Islam’s holy scripture, regarded by Muslims as revelation from Allah' },
       { word: 'chaos', definition: 'a condition of extreme disorder in which normal structures no longer function effectively' },
-      { word: 'dervishes', definition: 'members of Sufi traditions who follow a disciplined spiritual path' },
-      { word: 'popular Sûfîsm', definition: 'forms of Sufi religious life practiced and transmitted among ordinary communities' },
+      { word: 'dervishes', definition: 'members of Sûfî traditions who follow a disciplined spiritual path' },
+      { word: 'popular Sûfîsm', definition: 'forms of Sûfî religious life practiced and transmitted among ordinary communities' },
     ],
     hotspots: [
       { id: 'h7-1', x: 34, y: 28, title: 'Popular Sûfîsm', description: 'Shaykhs under Mongol pressure came to Anatolia and dervishes spread a simple understanding of Islam among nomads.' },
@@ -195,7 +195,7 @@ As a result of creation, the initial unity disintegrated and multiple existence 
       { word: 'belief', definition: 'acceptance that an idea or religious teaching is true' },
       { word: 'manifestations', definition: 'visible or recognizable expressions of an underlying reality' },
       { word: 'source', definition: 'the origin from which something begins or is derived' },
-      { word: 'vahdet-i vücut', definition: 'the Unity of Existence as presented in the chapter’s account of Yunus Emre’s Sufi thought' },
+      { word: 'vahdet-i vücut', definition: 'the Unity of Existence as presented in the chapter’s account of Yunus Emre’s Sûfî thought' },
       { word: 'attributes', definition: 'qualities or characteristics understood as belonging to a person or being' },
     ],
     hotspots: [
@@ -418,7 +418,7 @@ Ocak, Ahmet Yaşar. "Babaîlik," TDV İslâm Ansiklopedisi, https://islamansiklo
 
 Ocak, Ahmet Yaşar. Babaîler İsyanı, Dergah Yayınları, İstanbul, 2011.
 
-Öngören, Reşat. "Sufi," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/sufi.
+Öngören, Reşat. "Sûfî," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/sufi.
 
 Sevim, Ali. "Keyhüsrev II," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keyhusrev-ii.
 
@@ -613,7 +613,7 @@ export const yunusB2Pages: PageData[] = rawYunusB2Pages.map(page => {
   if (page.id === 17) return { ...page, vocabulary: yunusB2MasterGlossary };
   if (page.id === 19) return {
     ...page,
-    title: 'B2 Language Review',
+    title: 'Language Review',
     content: 'Review and use the source-framing, cause-result, concession, comparison, interpretation, necessity and possibility patterns developed across all thirteen chapters.',
     exercises: yunusB2LanguageReviewExercises,
   };

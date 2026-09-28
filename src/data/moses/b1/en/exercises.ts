@@ -58,7 +58,7 @@ export const mosesB1PolishedFinalChallengeExercises: Exercise[] = mosesB1FinalCh
   return exercise;
 });
 
-/** Cumulative Moses B1 Language Review. */
+/** Cumulative Moses Language Review. */
 export const mosesB1LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {

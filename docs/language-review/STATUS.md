@@ -14,8 +14,8 @@ Goal: each book's Language Review is a cumulative language workshop (A2: Look �
 Checks for later edits: `npx tsx docs/language-review/tools/checkReview.mts <storyId> <LEVEL>` (all 15 end with OK), `npm run validate`, `npm run build`.
 
 ## Notes
-- Adam B2 still has an unused older copy of the review arrays in `languageFocus3.ts`. The live ones are in `exercises.ts`.
-- Mecca B2 and Abraham B2 English: the page mapping in `pages.ts` titles the review "B2 Language Review". Left unchanged (the vocabulary-flow check passes).
+- English name spellings are unified: Hagar (not Hajar), Hilfü’l-Fudûl, Sûfî / Sûfîs / Sûfîsm. Audio file URLs keep their old names.
+- Every review page is titled "Language Review" at source too (no "A2/B1/B2 Language Review").
 - Teacher-review items (one defensible answer is decided by meaning, not grammar): Adam A2 AR item 4, Adam B1 EN/AR item 4, Abraham A2 EN item 4, Mecca B1 EN item 4, Mecca B2 EN item 4, Abraham B2 item 7, Abraham B1 AR item 2 (sequence vs result الفاء).
 
 ## Story-text slips reported (story unchanged; items use the correct form)
@@ -24,12 +24,12 @@ Checks for later edits: `npx tsx docs/language-review/tools/checkReview.mts <sto
 - Adam B2 AR: ch7 «وتغير الأجواء» → وتغيّرت; ch12 «أول أطفالهما» (dual); ch16 hadith «مئة وأربعة صحف» (flag only).
 - Abraham A2 AR: ch7 «آلِهَتِنا» → آلِهَتَنا; ch12 «فالله خير الماكرين» (wording question).
 - Abraham B1 AR: ch12 «تَدَفُّق» → تَدَفَّقْ and mismatched quotation marks; ch7 «مَحْطومة» → مُحَطَّمة.
-- Abraham B2 AR: ch30 «لتمنع انتشارُه» → انتشارَه, «سيُبنيه» → سيبنيه; ch29 «شيْئً» → شيئًا; ch35 «شَيَّد» → شُيِّد; ch20 «أن يَحرِق إبراهيم»; ch18 «يَحطِم» → يُحطِّم; ch13 «ابنًاحكيمًا» (space); ch17/22 sukun before «ال»; ch25 a duplicated sentence. EN: ch29–30 Hagar/Hajar.
+- Abraham B2 AR: ch30 «لتمنع انتشارُه» → انتشارَه, «سيُبنيه» → سيبنيه; ch29 «شيْئً» → شيئًا; ch35 «شَيَّد» → شُيِّد; ch20 «أن يَحرِق إبراهيم»; ch18 «يَحطِم» → يُحطِّم; ch13 «ابنًاحكيمًا» (space); ch17/22 sukun before «ال»; ch25 a duplicated sentence.
 - Moses A2 AR: ch13 «فَاسْتَمِرَّ» → فَاسْتَمَرَّ; ch4, ch10 Latin commas.
 - Moses B1 AR: ch12 «لم يستطعْ الأطفال» → يستطعِ. EN: ch7 "sheepmen".
 - Moses B2 AR: ch2 «أُوائل» → أَوائل; ch1 «السلامِ» → السلامُ; ch12 «كانت باطنُ» → كان; ch17 «مِنَ فرعون» → مِنْ; ch14 «رعمسيس» vs «رمسيس».
 - Mecca A2 AR: ch2 «فيضًا» for faiz (usual: رِبًا); ch13 «حزينًا جدًّا لأن يؤذّن» (calque); ch9 «إذا تريده» (إذا + past); ch12 «كَلِمات» (case).
 - Mecca B1 AR: ch12 «وكانَتْ القبائل» → وكانَتِ; ch8 «وكانَتْ الحياة»; ch9 «يُواجِهْنَ» → يواجهون.
-- Mecca B2 AR: ch3 «القولُ أنّ» → إنّ; ch12 «أنّهمْ اعتقدوا» → أنّهمُ; ch2 «بَشكل» → بِشكل; ch15 «حمَوْا النبي» → حمَوُا; ch17 «رفض أبو جهل … بشدّة» lacks an object. EN: Hilfü’l-Fudûl / Hilfu’l-Fudûl.
-- Yunus Emre B1 AR: ch5 «الْمَغول» → الْمُغول; ch10 «أيْ الْمكان» → أيِ; ch11 «يبلغ … إلى». EN: ch1 Sûfis/Sûfîs; ch10 "heart is the center".
+- Mecca B2 AR: ch3 «القولُ أنّ» → إنّ; ch12 «أنّهمْ اعتقدوا» → أنّهمُ; ch2 «بَشكل» → بِشكل; ch15 «حمَوْا النبي» → حمَوُا; ch17 «رفض أبو جهل … بشدّة» lacks an object.
+- Yunus Emre B1 AR: ch5 «الْمَغول» → الْمُغول; ch10 «أيْ الْمكان» → أيِ; ch11 «يبلغ … إلى». EN: ch10 "heart is the center".
 - Yunus Emre B2 AR: «وَفْقًا/وَفِقًا» → وِفْقًا (ch2, ch11); ch6 «مِثيل» → مَثيل; «أيْ + ال» → أيِ (ch2, 9, 10); ch10 «عند يونسِ» → يونسَ.

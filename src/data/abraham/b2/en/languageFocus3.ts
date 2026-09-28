@@ -623,7 +623,7 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
         {
           group: 'Earlier background (past perfect)',
           items: [
-            'She had been given an Egyptian woman, Hajar, as a servant when they were in Egypt.',
+            'She had been given an Egyptian woman, Hagar, as a servant when they were in Egypt.',
             'Abraham (pbuh) had aged and his hair was gray after many years spent in calling people to Allah.',
           ],
         },
@@ -632,22 +632,22 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
           items: [
             'He left his people and traveled with his wife Sarah and Lot to Egypt.',
             'After Egypt, Abraham (pbuh) traveled to Palestine and settled there.',
-            'Hajar gave birth to her first son, Ishmael, when Abraham (pbuh) was an old man.',
+            'Hagar gave birth to her first son, Ishmael, when Abraham (pbuh) was an old man.',
           ],
         },
       ],
       correctAnswer: {
         'Earlier background (past perfect)': [
-          'She had been given an Egyptian woman, Hajar, as a servant when they were in Egypt.',
+          'She had been given an Egyptian woman, Hagar, as a servant when they were in Egypt.',
           'Abraham (pbuh) had aged and his hair was gray after many years spent in calling people to Allah.',
         ],
         'Main events (past simple)': [
           'He left his people and traveled with his wife Sarah and Lot to Egypt.',
           'After Egypt, Abraham (pbuh) traveled to Palestine and settled there.',
-          'Hajar gave birth to her first son, Ishmael, when Abraham (pbuh) was an old man.',
+          'Hagar gave birth to her first son, Ishmael, when Abraham (pbuh) was an old man.',
         ],
       },
-      explanation: 'The past simple moves the story forward: left, traveled, settled, gave birth. The past perfect steps back to explain the situation at that point: Hajar had been given to Sarah earlier in Egypt, and Abraham had aged over many years. This background explains why Sarah suggested the marriage.',
+      explanation: 'The past simple moves the story forward: left, traveled, settled, gave birth. The past perfect steps back to explain the situation at that point: Hagar had been given to Sarah earlier in Egypt, and Abraham had aged over many years. This background explains why Sarah suggested the marriage.',
       feedback: {
         correct: 'Correct. You separated earlier background from the main events.',
         incorrect: 'Look for had + past participle: it steps back to an earlier time. Past simple verbs carry the story forward.',
@@ -693,13 +693,13 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
         },
         {
           options: ['get', 'getting', 'got'],
-          sentence: 'Therefore, she suggested Abraham (pbuh) to get married to Hajar.',
+          sentence: 'Therefore, she suggested Abraham (pbuh) to get married to Hagar.',
           error: 'to get',
           answer: 0,
         },
       ],
       correctAnswer: null,
-      explanation: 'A thought reported in the past moves back in time: “She thought she could not have a child.” “Suggest” is never followed by person + to-infinitive. Use suggest (that) + person + base verb: “she suggested Abraham get married to Hajar”.',
+      explanation: 'A thought reported in the past moves back in time: “She thought she could not have a child.” “Suggest” is never followed by person + to-infinitive. Use suggest (that) + person + base verb: “she suggested Abraham get married to Hagar”.',
       feedback: {
         correct: 'Well done. You corrected the reported thought and the pattern after “suggest”.',
         incorrect: 'Ask: does the reported thought need a past form? Which form follows “suggested + person”? Check the end of Chapter 25.',
@@ -735,7 +735,7 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'An Instruction and a Plan',
       instructions: 'Read the two sentences from Chapter 26. Then choose the best explanation.',
-      question: '“One day, Allah told Abraham (pbuh) that he should take Hajar and Ishmael to the Sacred City, Mecca.” / “He informed Abraham (pbuh) that the sacred city would be built through Ishmael and that water would flow for him.” How are the two sentences different?',
+      question: '“One day, Allah told Abraham (pbuh) that he should take Hagar and Ishmael to the Sacred City, Mecca.” / “He informed Abraham (pbuh) that the sacred city would be built through Ishmael and that water would flow for him.” How are the two sentences different?',
       options: [
         'The first reports an instruction (should); the second reports a future plan (would).',
         'Both report instructions to Abraham.',
@@ -755,7 +755,7 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
       title: 'Branches, Background and the End of the Journey',
       instructions: 'Complete the lines from Chapter 26 with words from the bank. Three options are not needed.',
       question: 'Which words set two family lines side by side, show a continuing state and mark the end of a journey?',
-      fillBlanksText: 'From Ishmael\'s descendants came Prophet Muhammad (pbuh), [blank] from Isaac\'s came Moses (pbuh) and Jesus (pbuh). … Hajar was [blank] nursing Ishmael … Abraham (pbuh) walked through cultivated land, desert, and mountains [blank] he reached the desert of the Arabian Peninsula …',
+      fillBlanksText: 'From Ishmael\'s descendants came Prophet Muhammad (pbuh), [blank] from Isaac\'s came Moses (pbuh) and Jesus (pbuh). … Hagar was [blank] nursing Ishmael … Abraham (pbuh) walked through cultivated land, desert, and mountains [blank] he reached the desert of the Arabian Peninsula …',
       wordBank: ['while', 'still', 'until', 'since', 'during', 'unless'],
       correctAnswer: ['while', 'still', 'until'],
       explanation: '“While” can set two parallel facts side by side (= whereas): one family line led to Prophet Muhammad, the other to Moses and Jesus. “Since” would wrongly give a reason. “Still” shows that a state continues: Ishmael was a baby who was still breastfeeding. “Until” marks the end point of the long walk.',
@@ -777,8 +777,8 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
           answers: ['was given'],
         },
         {
-          source: 'In a few days, Abraham (pbuh) set out with his wife Hajar and their son Ishmael.',
-          frame: '[blank], Abraham (pbuh) set out with his wife Hajar and their son Ishmael.',
+          source: 'In a few days, Abraham (pbuh) set out with his wife Hagar and their son Ishmael.',
+          frame: '[blank], Abraham (pbuh) set out with his wife Hagar and their son Ishmael.',
           answers: ['A few days later', 'After a few days', 'Within a few days'],
         },
       ],
@@ -821,7 +821,7 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-27-absence-accumulation',
       type: 'multiple-choice',
       title: 'What Does “Since” Mean Here?',
-      instructions: 'Read Hajar’s words in Chapter 27. Then choose the best explanation.',
+      instructions: 'Read Hagar’s words in Chapter 27. Then choose the best explanation.',
       question: '“I am satisfied to be with Allah! We are not going to be lost, since Allah is with us.” What does “since” introduce?',
       options: [
         'The reason for her confidence.',
@@ -833,7 +833,7 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
       explanation: '“Since” has two meanings: time (since 2020, since he left) and reason (= because). Here it is followed by a present fact, “Allah is with us”, which explains why she is sure they will not be lost. Her answer turns her anxiety into reassurance.',
       feedback: {
         correct: 'Correct. “Since” here means “because”.',
-        incorrect: 'Replace “since” with “because” and with “from the time when”. Which keeps the meaning of Hajar’s words?',
+        incorrect: 'Replace “since” with “because” and with “from the time when”. Which keeps the meaning of Hagar’s words?',
       },
     },
     {
@@ -851,7 +851,7 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
         },
         {
           options: ['leaving', 'leave', 'had left'],
-          sentence: 'As Abraham (pbuh) began walking away, left them behind, Hajar became anxious as to what was happening.',
+          sentence: 'As Abraham (pbuh) began walking away, left them behind, Hagar became anxious as to what was happening.',
           error: 'left',
           answer: 0,
         },
@@ -888,8 +888,8 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
           ],
         },
         {
-          source: 'Hajar asked him: “Has Allah commanded you to leave us here?”',
-          frame: 'Hajar asked him [blank] to leave them there.',
+          source: 'Hagar asked him: “Has Allah commanded you to leave us here?”',
+          frame: 'Hagar asked him [blank] to leave them there.',
           answers: ['whether Allah had commanded him', 'if Allah had commanded him'],
         },
       ],
@@ -958,7 +958,7 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Why “Had To”?',
       instructions: 'Read the sentences from Chapter 28. Then choose the best explanation.',
-      question: '“Abraham (pbuh) had to take Hajar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka‘ba.” What does “had to” show?',
+      question: '“Abraham (pbuh) had to take Hagar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka‘ba.” What does “had to” show?',
       options: [
         'The move was necessary as part of Allah’s intention, not Abraham’s personal choice.',
         'Abraham wanted to move because he preferred the new place.',
@@ -966,7 +966,7 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
         'Abraham was not sure whether he would move.',
       ],
       correctAnswer: 0,
-      explanation: '“Had to” is the past of “must/have to”: it expresses necessity. The chapter explains where the necessity came from: “According to Allah’s intention, Hajar and Ishmael had to leave Palestine …”. “That is” then clarifies the word “temple” by naming it: the Ka‘ba.',
+      explanation: '“Had to” is the past of “must/have to”: it expresses necessity. The chapter explains where the necessity came from: “According to Allah’s intention, Hagar and Ishmael had to leave Palestine …”. “That is” then clarifies the word “temple” by naming it: the Ka‘ba.',
       feedback: {
         correct: 'Correct. “Had to” shows necessity coming from Allah’s intention.',
         incorrect: 'Read the next sentences: “According to Allah’s intention …”. Is the move a wish, a habit, a doubt, or a necessity?',
@@ -1051,7 +1051,7 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
           'Exhausted and sad, she heard a voice but could not find where it came from.',
         ],
       },
-      explanation: '“Ibn Abbas … said, “…”” frames a report from a named source, and the quotation marks show where it begins and ends. Inside it, “Maybe … she thought” is Hajar’s own possibility, not a fact. After the report, the narrator adds a later link (“was later commemorated”), a comment (“Actually, …”) and continues the story.',
+      explanation: '“Ibn Abbas … said, “…”” frames a report from a named source, and the quotation marks show where it begins and ends. Inside it, “Maybe … she thought” is Hagar’s own possibility, not a fact. After the report, the narrator adds a later link (“was later commemorated”), a comment (“Actually, …”) and continues the story.',
       feedback: {
         correct: 'Correct. You found where the report ends and the narrator continues.',
         incorrect: 'Find the closing quotation mark of Ibn Abbas’s report. Sentences after it belong to the narrator. Look for “later” and “Actually”.',
@@ -1089,13 +1089,13 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
       instructions: 'Choose the summary that keeps what Chapter 29 presents as fact, possibility and comparison.',
       question: 'Which summary of Chapter 29 is faithful to the text?',
       options: [
-        'Hajar hoped a caravan might be passing, but she saw nothing; her search is later remembered during Hajj, and the two pilgrimages are almost the same.',
-        'Hajar knew a caravan was passing by, so she ran to Safa to meet it.',
-        'Ibn Abbas says that the Hajj began on the day of Hajar’s search.',
+        'Hagar hoped a caravan might be passing, but she saw nothing; her search is later remembered during Hajj, and the two pilgrimages are almost the same.',
+        'Hagar knew a caravan was passing by, so she ran to Safa to meet it.',
+        'Ibn Abbas says that the Hajj began on the day of Hagar’s search.',
         'The narrator says that the pilgrimage of Abraham and the pilgrimage of Islam are exactly the same.',
       ],
       correctAnswer: 0,
-      explanation: '“Maybe there is a caravan …” is a possibility in Hajar’s mind, not a fact, and she “still saw nothing”. The later link to Hajj is the narrator’s, not Ibn Abbas’s. “Almost no difference” is a careful claim; “exactly the same” would overstate it.',
+      explanation: '“Maybe there is a caravan …” is a possibility in Hagar’s mind, not a fact, and she “still saw nothing”. The later link to Hajj is the narrator’s, not Ibn Abbas’s. “Almost no difference” is a careful claim; “exactly the same” would overstate it.',
       feedback: {
         correct: 'Correct. This summary keeps the possibility, the later link and the careful comparison.',
         incorrect: 'Check three things: was the caravan a fact or a possibility? Who links the search to Hajj? Does the narrator say “almost no difference” or “no difference”?',
@@ -1157,7 +1157,7 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       title: 'Event, Response and What Came Next',
       instructions: 'Complete the lines from Chapter 30 with words from the bank. Three options are not needed.',
       question: 'Which words show an immediate result, a purpose and a short gap in time?',
-      fillBlanksText: 'The angel hit the ground with his heel, and water [blank] flowed out. It was a miracle! Hajar quickly made a small basin around the water [blank] it from spreading, and she filled her water skin. … [blank], the tribe of Jurham (Cürhüm) that was moving from southern Arabia, Yemen, stopped by the valley of Mecca.',
+      fillBlanksText: 'The angel hit the ground with his heel, and water [blank] flowed out. It was a miracle! Hagar quickly made a small basin around the water [blank] it from spreading, and she filled her water skin. … [blank], the tribe of Jurham (Cürhüm) that was moving from southern Arabia, Yemen, stopped by the valley of Mecca.',
       wordBank: [
         'immediately',
         'to stop',
@@ -1167,10 +1167,10 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
         'Long before that',
       ],
       correctAnswer: ['immediately', 'to stop', 'Not long after that'],
-      explanation: '“Immediately” shows that the result followed the action at once; “lately” means “recently” and does not describe how fast something happened. “To + verb” gives the purpose of Hajar’s action: she made the basin to stop the water spreading. “Not long after that” moves the story forward by a short time; “Long before that” would move it back.',
+      explanation: '“Immediately” shows that the result followed the action at once; “lately” means “recently” and does not describe how fast something happened. “To + verb” gives the purpose of Hagar’s action: she made the basin to stop the water spreading. “Not long after that” moves the story forward by a short time; “Long before that” would move it back.',
       feedback: {
         correct: 'Correct. You showed the immediate result, the purpose and the short time gap.',
-        incorrect: 'Ask: how quickly did the water appear? Why did Hajar make the basin? Did the tribe arrive soon after or long before? Check Chapter 30.',
+        incorrect: 'Ask: how quickly did the water appear? Why did Hagar make the basin? Did the tribe arrive soon after or long before? Check Chapter 30.',
       },
     },
     {

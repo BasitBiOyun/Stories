@@ -57,7 +57,7 @@ export const adamB1FinalChallengeExercises: Exercise[] = [
 ];
 
 /**
- * Cumulative B1 Language Review for Adam English.
+ * Cumulative Language Review for Adam English.
  * Recycles grammar, discourse relations and communicative functions from the
  * twelve chapter Language Focus sections without retesting story comprehension.
  */

@@ -179,7 +179,7 @@ export const abrahamB1FinalChallengeExercises: Exercise[] = [
 ];
 
 /**
- * Cumulative B1 Language Review for Abraham English.
+ * Cumulative Language Review for Abraham English.
  * Recycles language functions taught across Chapters 1–13 without retesting
  * story comprehension.
  */

@@ -1,9 +1,8 @@
-import type { Exercise, PageData, TeacherGuideMetadata } from '../../../../types';
+import type { Exercise, PageData } from '../../../../types';
 import { meccaB2QuickChallenges, meccaB2VocabularyChallengePairs, meccaB2FinalChallengeExercises } from './exercises';
 import { meccaB2LanguageFocusExercises } from './languageFocus';
 import { meccaB2LanguageFocusExercisesPart2 } from './languageFocus2';
 import { meccaB2LanguageFocusExercisesPart3, meccaB2LanguageFocusExercisesPart4, meccaB2LanguageReviewExercises } from './languageFocus3';
-import { meccaB2TeacherGuideMetadata } from './teacherGuide';
 
 const sourceMeccaB2Pages: PageData[] = [
   {
@@ -212,7 +211,7 @@ There was a huge gap between the rich and the poor even in the most basic human 
 
 In such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy. For instance, the camels of the weak used to be taken without payment, and the goods and property of small sellers were unjustly seized by force. Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed. To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca. Prophet Muhammad (as), who was twenty years old at the time, also attended this meeting. This formation was named Hilfü’l-fudûl, which means The Community of the Righteous. Young Muhammad became an enthusiastic member of the organization.
 
-During the pre-Islamic era, those who oppressed and treated people unfairly were generally wealthy and powerful individuals. Due to its fight against injustice, Hilfu’l-Fudûl received support from the community.
+During the pre-Islamic era, those who oppressed and treated people unfairly were generally wealthy and powerful individuals. Due to its fight against injustice, Hilfü’l-Fudûl received support from the community.
 
 This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilfü’l-fudûl for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.`,
     vocabulary: [
@@ -242,7 +241,7 @@ This organization played a very important role in maintaining justice and order 
 
 All sources note that the Prophet (as) spoke highly of this formation even after his prophethood and believed that Islam had further strengthened it. He used to say: “I have no desire to abandon my oath even against a herd of red-haired camels.” It is recorded that he said he would respond immediately without hesitation if he were called again (Musnad, I, 190, 317).
 
-As the example of the Hilfu’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entirely negative. In addition to this, for instance, the Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests. The bet was a type of gambling as well. Until one side gave up, camels continued to be slaughtered, and at the end, the victor became well-known for his generosity. All of this was done for the fame of the individual and the tribe.
+As the example of the Hilfü’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entirely negative. In addition to this, for instance, the Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests. The bet was a type of gambling as well. Until one side gave up, camels continued to be slaughtered, and at the end, the victor became well-known for his generosity. All of this was done for the fame of the individual and the tribe.
 
 The admirable qualities of the Arabs before Islam, like generosity, were driven mostly by arrogance rather than real goodness. In the end, such behaviors turned into a tribal honor contest, and this led to greater problems.
 
@@ -680,49 +679,10 @@ const attachEnglishLearning=(pages:PageData[]):PageData[]=>pages.map(page=>{
     return {...page,type:'story',exercises:meccaB2QuickChallenges[page.id]?[meccaB2QuickChallenges[page.id]]:[],...(languageFocusExercises?{languageFocusExercises}:{})};
   }
   if(page.id===18) return {...page,type:'quiz',exercises:meccaB2ManualKnowledgeCheckExercises};
-  if(page.id===19) return {...page,type:'exercises',title:'B2 Language Review',content:'Review and use the qualification, cause-result, contrast, condition, information-focus and discourse patterns developed across all seventeen chapters.',exercises:meccaB2LanguageReviewExercises};
+  if(page.id===19) return {...page,type:'exercises',title:'Language Review',content:'Review and use the qualification, cause-result, contrast, condition, information-focus and discourse patterns developed across all seventeen chapters.',exercises:meccaB2LanguageReviewExercises};
   if(page.id===20) return {...page,type:'vocabulary-match',vocabularyPairs:meccaB2VocabularyChallengePairs};
   if(page.id===21) return {...page,type:'glossary',vocabulary:masterGlossary};
   if(page.id===22) return {...page,type:'final-challenge',exercises:meccaB2FinalChallengeExercisesPolished};
   return page;
 });
 export const meccaB2Pages:PageData[]=attachEnglishLearning(standardizedMeccaB2Pages);
-export const meccaB2TeacherGuideMetadataPolished:TeacherGuideMetadata={
-  ...meccaB2TeacherGuideMetadata,
-  targetLearners:'B2 learners ready to analyse historical relationships, qualify claims, and defend interpretations with evidence.',
-  approachDesc:'Read and listen for evidence first; analyse causes, systems and qualifications second; produce claim-evidence-explanation responses third.',
-  readingFramework:{
-    before:'Predict one relationship from the title and image, but mark it as unproven until the chapter supplies evidence.',
-    during:'Track direct facts, cause-effect links, contrasts and qualification words. Use the supplied audio to verify wording rather than inventing context.',
-    after:'Complete the Quick Challenge, identify the exact supporting evidence, then produce a short analytical or transfer response.'
-  },
-  globalCitizenship:{
-    title:'Justice, dignity and responsible belonging',
-    description:'Use the Mecca chapters to examine fair economic conduct, protection of vulnerable people, accurate representation of beliefs, and group loyalty that does not excuse injustice.',
-    themes:[
-      {title:'Economic fairness',description:'Evaluate financial systems by their effects on people with less power.'},
-      {title:'Human dignity',description:'Connect the story’s treatment of weak, poor, enslaved and socially disadvantaged people with equal human worth.'},
-      {title:'Responsible belonging',description:'Distinguish supportive community ties from tribal pressure that suppresses moral choice.'}
-    ],
-    actions:[
-      'Challenge an unfair transaction with evidence and respectful procedure rather than humiliation.',
-      'Use qualified language when describing another group’s beliefs or social conditions.',
-      'Support a person facing exclusion without turning the response into status competition.'
-    ]
-  },
-  valuesEducation:{
-    title:'Values as action',
-    description:'Values are demonstrated through observable choices linked to chapter evidence.',
-    items:[
-      {label:'Justice',value:'Move from recognizing unfairness to a fair, nonviolent response, as the Hilfü’l-Fudûl chapter illustrates.'},
-      {label:'Dignity',value:'Refuse to rank human worth by wealth, gender, freedom status or tribal protection.'},
-      {label:'Integrity',value:'Keep interpretations inside the limits of the source instead of exaggerating for effect.'}
-    ],
-    questions:['What action would make this value visible?','Which chapter evidence supports that action?'],
-    actions:['Name the unfair mechanism.','Identify who is most vulnerable.','Choose a proportionate, respectful corrective action.']
-  },
-  homeConnection:{
-    title:'Evidence conversation at home',
-    items:['Choose one chapter claim and explain its evidence in two minutes.','Ask a family member for an alternative interpretation, then check whether the story supports it.']
-  }
-};

@@ -46,7 +46,7 @@ Then Pharaoh sent callers to all the cities, saying: ‘Truly! These indeed are 
   { id:25,type:'quiz',title:'Knowledge Check: Moses (pbuh) - B2',content:'Review the narrative themes, miracles, and historical lessons of Moses (pbuh).',image:'' },
   { id:26,type:'vocabulary-match',title:'Vocabulary Challenge - Moses B2',content:'Match key vocabulary concepts from the story of Moses (pbuh).',image:'' },
   { id:27,type:'glossary',title:'Master Glossary',content:'Review all key vocabulary from the story in one place.',image:'' },
-  { id:29,type:'exercises',title:'B2 Language Review',content:'Review and use the source-framing, stance, cause, contrast, condition, focus and discourse patterns developed across all twenty-four chapters.',image:'' },
+  { id:29,type:'exercises',title:'Language Review',content:'Review and use the source-framing, stance, cause, contrast, condition, focus and discourse patterns developed across all twenty-four chapters.',image:'' },
   { id:30,type:'final-challenge',title:'Final Challenge',content:'Test your knowledge of the entire B2 story of Prophet Moses (pbuh).',image:'' },
 ];
 

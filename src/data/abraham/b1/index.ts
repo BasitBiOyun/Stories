@@ -93,7 +93,7 @@ const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesPolished };
   if (page.id === 15) return {
     ...page,
-    title: 'B1 Language Review',
+    title: 'Language Review',
     content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.',
     exercises: abrahamB1LanguageReviewExercises,
   };

@@ -19,14 +19,14 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       options: [
         'It shows that the inner side takes the place of the outer part.',
         'It shows that the outer part is the cause of the inner side.',
-        'It contrasts two different sides of the same lifestyle, and Sûfis keep both.',
+        'It contrasts two different sides of the same lifestyle, and Sûfîs keep both.',
         'It shows that the inner side came later in time than the outer part.',
       ],
       correctAnswer: 2,
-      explanation: '“Whereas” sets two ideas side by side to show how they differ. The previous sentence says Sûfis live “within the outer (visible) and inner norms of Islam”, so the contrast describes two complementary dimensions, not a choice between them and not a sequence in time.',
+      explanation: '“Whereas” sets two ideas side by side to show how they differ. The previous sentence says Sûfîs live “within the outer (visible) and inner norms of Islam”, so the contrast describes two complementary dimensions, not a choice between them and not a sequence in time.',
       feedback: {
         correct: 'Correct. “Whereas” contrasts the two sides without removing either one.',
-        incorrect: 'Read the sentence just before it: Sûfis maintain a lifestyle within the outer and inner norms of Islam. Does one side replace the other?',
+        incorrect: 'Read the sentence just before it: Sûfîs maintain a lifestyle within the outer and inner norms of Islam. Does one side replace the other?',
       },
     },
     {
@@ -62,7 +62,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Which verb form follows a preposition such as “of” or “without”?',
       errorItems: [
         {
-          sentence: 'Sûfis adhere to moral principles that include the pursuit of become better people, the ability to remain patient during difficult times, …',
+          sentence: 'Sûfîs adhere to moral principles that include the pursuit of become better people, the ability to remain patient during difficult times, …',
           error: 'of become',
           options: ['of to become', 'of becoming', 'for become'],
           answer: 1,
@@ -103,7 +103,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
           group: 'The writer states the claim directly',
           items: [
             'His philosophy includes fundamental values that have a significant influence on Turkish culture and ethics in Turkish society.',
-            '… the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).',
+            '… the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor).',
             '… tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations …',
           ],
         },
@@ -116,7 +116,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         ],
         'The writer states the claim directly': [
           'His philosophy includes fundamental values that have a significant influence on Turkish culture and ethics in Turkish society.',
-          '… the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).',
+          '… the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor).',
           '… tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations …',
         ],
       },

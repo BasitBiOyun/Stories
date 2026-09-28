@@ -196,7 +196,7 @@ export const adamB1Pages: PageData[] = [
     ],
   },
   { id: 13, type: 'quiz', title: 'B1 Knowledge Check: Prophet Adam (pbuh)', content: 'Check your whole-book understanding with eight independent questions.' },
-  { id: 14, type: 'exercises', title: 'B1 Language Review', content: 'Consolidate grammar, discourse relationships, and communicative functions from across the chapters, then use them in new connected contexts.' },
+  { id: 14, type: 'exercises', title: 'Language Review', content: 'Consolidate grammar, discourse relationships, and communicative functions from across the chapters, then use them in new connected contexts.' },
   { id: 15, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', content: 'Match ten meaning-bearing Word Notes from across the story with their correct meanings.' },
   {
     id: 16,

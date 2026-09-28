@@ -406,9 +406,9 @@ export const mosesB1TeacherGuideMetadata: TeacherGuideMetadata = {
   targetLearners: 'Learners who can follow a connected narrative, locate evidence, track time, cause, contrast, purpose and viewpoint, and produce short connected explanations with support.',
   purpose: 'Develop evidence-based B1 reading, listening, speaking and writing through the story of Prophet Moses (pbuh) as told in this book, using the Language Focus attached to every story chapter and without adding claims from outside the text.',
   approachDesc: `Every story chapter follows the TYMM route. YDAB1 listening and YDAB2 reading establish meaning and evidence; the Quick Challenge checks comprehension. Grammar is then learned inductively, as the Maarif Model expects for English: in the Language Focus, learners first NOTICE a form in a real chapter sentence and work out what it does (the rule is confirmed only afterwards), then BUILD it in controlled, meaningful practice, and finally USE it in connected YDAB3 speaking and YDAB4 writing about their own world. Chapters 9, 11 and 13 are divided into two 40-minute lessons rather than compressed. See ${TYMM_FOREIGN}.`,
-  assessmentEvidence: '13 Quick Challenges, text-evidence checks, chapter Language Focus tasks and production, exit tickets, Knowledge Check, Vocabulary Challenge, B1 Language Review and Final Challenge.',
+  assessmentEvidence: '13 Quick Challenges, text-evidence checks, chapter Language Focus tasks and production, exit tickets, Knowledge Check, Vocabulary Challenge, Language Review and Final Challenge.',
   assessmentOverview: {
-    formative: ['Quick Challenge after each chapter', 'Evidence and claim-ownership checks', 'Language Focus: noticing and controlled practice', 'Connected B1 speaking/writing transfer', 'Exit tickets', 'Knowledge Check', 'Vocabulary Challenge', 'B1 Language Review'],
+    formative: ['Quick Challenge after each chapter', 'Evidence and claim-ownership checks', 'Language Focus: noticing and controlled practice', 'Connected B1 speaking/writing transfer', 'Exit tickets', 'Knowledge Check', 'Vocabulary Challenge', 'Language Review'],
     summative: ['Final Challenge'],
   },
   readingFramework: {
@@ -460,7 +460,7 @@ export const mosesB1TeacherGuideMetadata: TeacherGuideMetadata = {
     'Always start from the story sentence: ask what the form does before naming it.',
     'Let learners answer first; the explanation shown after each answer confirms the rule they have found.',
     'At B1 the last step is always connected production about the learners’ own world, not a retelling of the chapter.',
-    'For 40 + 40 chapters (9, 11, 13), use the second lesson for Language Focus and connected production rather than re-reading the whole story. After Chapter 13, follow the book: Knowledge Check → Vocabulary Challenge → Master Glossary → B1 Language Review → Final Challenge.',
+    'For 40 + 40 chapters (9, 11, 13), use the second lesson for Language Focus and connected production rather than re-reading the whole story. After Chapter 13, follow the book: Knowledge Check → Vocabulary Challenge → Master Glossary → Language Review → Final Challenge.',
   ],
   differentiationNotes: 'Reduce linguistic load without lowering the reasoning target: one evidence sentence at a time, selected vocabulary, audio replay, sentence frames and oral rehearsal. Extend by combining more chapter patterns or adding a second evidence relationship, not by introducing outside facts.',
   sensitiveNotes: {
