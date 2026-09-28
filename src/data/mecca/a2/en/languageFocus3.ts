@@ -275,7 +275,7 @@ export const meccaA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       id: 'mecca-a2-language-12-habit', type: 'word-bank', title: 'Meaning and Equality',
       instructions: 'Complete the lines from Chapter 12 with words from the bank. Three words are not needed.',
       question: 'Which words explain a meaning and make a statement about all people?',
-      fillBlanksText: 'He added the words “es-Salâtü hayrün mine’n-nevm,” [blank] “Prayer is better than sleep.” … Prophet Muhammad (pbuh) taught that [blank] people are equal. No skin color is [blank] than another.',
+      fillBlanksText: 'He added the words “as-salatu khayrun minan-nawm,” [blank] “Prayer is better than sleep.” … Prophet Muhammad (pbuh) taught that [blank] people are equal. No skin color is [blank] than another.',
       wordBank: ['which means', 'all', 'better', 'who means', 'every', 'good'],
       correctAnswer: ['which means', 'all', 'better'],
       explanation: '“Which means” explains the meaning of words. “All + plural noun + are” makes a statement about everyone: “all people are equal”. “Every” needs a singular noun (“every person is”). “Better than” compares two things.',

@@ -10,7 +10,7 @@ export const meccaA2Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=76a7c1bd-fa29-41ba-a587-4846ce823fc8',
     content: `Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca. After becoming a Muslim, he never left Prophet Muhammad (pbuh) until his death. He was also the first person to give the Adhan, the call to prayer, in the history of Islam.
 
-Bilal was a black slave. He was born in Mecca. His mother was an Ethiopian woman. His father, Rebâh, and his mother, Hamâme, were also slaves. So Bilal was born into slavery.
+Bilal was a black slave. He was born in Mecca. His mother was an Ethiopian woman. His father, Rabah, and his mother, Hamama, were also slaves. So Bilal was born into slavery.
 
 Without Islam, he would always be a slave. People in Mecca thought Bilal was just a poor slave. They thought he had no power and would never become someone important. But Islam made him a free and great man. His story teaches us that skin color or being a slave does not make a person less valuable.`,
     vocabulary: [
@@ -56,7 +56,7 @@ Mecca was a business city. People bought and sold things there. Some rich people
 
 Slave markets were very common in Arabia. Mecca was a center for buying and selling slaves. Many slaves from different lands, especially from Abyssinia, lived in the homes of Meccan people.
 
-One of those slaves was Bilal ibn Rebâh. His master was Umayya b. Halef. Umayya was one of the richest and most powerful leaders in Mecca. He worshipped idols and became a major enemy of Islam. When Prophet Muhammad (pbuh) started teaching Islam, Umayya wanted this message to stop.`,
+One of those slaves was Bilal ibn Rabah. His master was Umayya ibn Khalaf. Umayya was one of the richest and most powerful leaders in Mecca. He worshipped idols and became a major enemy of Islam. When Prophet Muhammad (pbuh) started teaching Islam, Umayya wanted this message to stop.`,
     vocabulary: [
       { word: 'system', definition: 'A way that society or work is organized.' },
       { word: 'Slave markets', definition: 'Places where slaves were bought and sold.' },
@@ -74,7 +74,7 @@ One of those slaves was Bilal ibn Rebâh. His master was Umayya b. Halef. Umayya
     title: 'Bilal’s Hard Life',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4-clean.png?alt=media&token=fb69563f-c9cc-4ea6-9e78-3cae12485941',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F03_Chapter_4_Bilal%E2%80%99s_Hard_Life.mp3?alt=media&token=12a37c49-7c5f-4635-bd3e-dbb88eae6146',
-    content: `Umayya never gave up his hatred of Islam and Muslims. Bilal was a slave of Umayya b. Halef. Umayya was always very unkind to Bilal. Every member of the family was rude to him. They did not respect him as a person.
+    content: `Umayya never gave up his hatred of Islam and Muslims. Bilal was a slave of Umayya ibn Khalaf. Umayya was always very unkind to Bilal. Every member of the family was rude to him. They did not respect him as a person.
 
 They called Bilal “the son of the black woman” to hurt his feelings. He had a very difficult life at his master’s house. He looked after his master’s camels and worked under the hot sun in the desert of Mecca all day.
 
@@ -250,7 +250,7 @@ Bilal was a very brave man. Even when people hurt him, he shouted fearlessly, �
     title: 'Prayer Is Better Than Sleep',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12-clean.png?alt=media&token=e8a10ab8-e855-42ba-a970-adaf466f52a9',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F11_Chapter_12_Prayer_Is_Better_Than_Sleep.mp3?alt=media&token=a9931375-9370-4267-8d5f-422bf60a91f5',
-    content: `Bilal used to start the morning call to prayer very early. He added the words “es-Salâtü hayrün mine’n-nevm,” which means “Prayer is better than sleep.” The Prophet (pbuh) was pleased with this and told him to repeat it every morning.
+    content: `Bilal used to start the morning call to prayer very early. He added the words “as-salatu khayrun minan-nawm,” which means “Prayer is better than sleep.” The Prophet (pbuh) was pleased with this and told him to repeat it every morning.
 
 Prophet Muhammad (pbuh) taught that all people are equal. No skin color is better than another. Before he died in 632, he gave his last speech. This speech is called the Farewell Sermon.
 
@@ -527,7 +527,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
         ],
         "chapter": 3,
         "chapterTitle": "Slaves in Mecca",
-        "storyExample": "His master was Umayya b. Halef.",
+        "storyExample": "His master was Umayya ibn Khalaf.",
         "category": "People & Society"
     },
     {
