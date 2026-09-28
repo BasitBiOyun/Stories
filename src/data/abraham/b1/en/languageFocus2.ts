@@ -44,8 +44,8 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       question: 'How does a question or a conclusion change when we report it?',
       transformItems: [
         {
-          source: 'He saw a bright star and wondered, “Could this be my Allah?”',
-          frame: 'He saw a bright star and wondered [blank] his Allah.',
+          source: 'He saw a bright star and wondered, “Could this be my Lord?”',
+          frame: 'He saw a bright star and wondered [blank] his Lord.',
           answers: [
             'if it could be', 'whether it could be', 'if this could be', 'whether this could be',
             'if that could be', 'whether that could be', 'if it was', 'whether it was',
@@ -61,7 +61,7 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'A reported yes/no question uses if or whether and statement word order: “Could this be my Allah?” → “He wondered if it could be his Allah.” A reported conclusion often moves back in time: Abraham’s thought “It cannot be Allah” becomes “he understood that it could not be Allah”. Together these forms build a reasoning chain: test a possibility, then report the conclusion.',
+      explanation: 'A reported yes/no question uses if or whether and statement word order: “Could this be my Lord?” → “He wondered if it could be his Lord.” A reported conclusion often moves back in time: Abraham’s thought “It cannot be Allah” becomes “he understood that it could not be Allah”. Together these forms build a reasoning chain: test a possibility, then report the conclusion.',
       feedback: {
         correct: 'Well done. You moved between direct words and reported thinking.',
         incorrect: 'Item 1: start with if or whether and put the subject before the verb. Item 2: use Abraham’s own words, for example “It can’t be …”.',
@@ -110,7 +110,7 @@ export const abrahamB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       question: 'Which forms mark an end point in time and the role someone is chosen for?',
       formChoices: [
         {
-          sentence: 'Abraham stayed [choice] sunrise, and when he saw the bright sun, he wondered, “Could this be Allah? It is bigger.”',
+          sentence: 'Abraham stayed [choice] sunrise, and when he saw the bright sun, he wondered, “Could this be my Lord? It is bigger.”',
           options: ['until', 'by', 'since'],
           answer: 0,
         },
@@ -209,7 +209,7 @@ export const abrahamB1LanguageFocusChapter5: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: '“My Allah gives me food and drink when I need them, and heals me [choice] I am sick.”',
+          sentence: '“My Lord gives me food and drink when I need them, and heals me [choice] I am sick.”',
           options: ['when', 'during', 'because of'],
           answer: 0,
         },
