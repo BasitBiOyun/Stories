@@ -79,7 +79,7 @@ for (const lang of ['en', 'ar'] as const) {
       if (hotspotTitles.has(key)) issue(`ch${chapter} hotspot title "${h.title}" is used twice`);
       hotspotTitles.add(key);
       if (key === normalizeHighlightText(page.title, hl)) issue(`ch${chapter} hotspot title "${h.title}" repeats the chapter title`);
-      if (lang === 'en' && /\bProphet\b/.test(h.description) && !/\(pbuh\)/.test(h.description)) issue(`ch${chapter} hotspot "${h.title}": Prophet without (pbuh)`);
+      if (lang === 'en' && /\bProphet\b/.test(h.description) && !/\((pbuh|as)\)/.test(h.description)) issue(`ch${chapter} hotspot "${h.title}": Prophet without (pbuh)`);
       if (lang === 'ar' && /النبي|الرسول/.test(h.description.replace(TASHKEEL, '')) && !/ﷺ|صلى الله عليه وسلم/.test(h.description.replace(TASHKEEL, ''))) issue(`ch${chapter} hotspot "${h.title}": الرسول/النبي without ﷺ`);
       checkTashkeel(`ch${chapter} hotspot "${h.title}"`, h.title + ' ' + h.description);
       if (flag === '--dump') console.log(`   ch${chapter} HS ${h.title} = ${h.description}`);
@@ -124,6 +124,7 @@ for (const lang of ['en', 'ar'] as const) {
     else {
       if (!inChapter(p.chapter, p.context)) issue(`${label}: context is not a sentence of ch${p.chapter}`);
       if (!maskable(p.context, p.word)) issue(`${label}: context does not contain the word`);
+      else if (bare(p.context).split(bare(p.word)).length > 2) issue(`${label}: the word occurs twice in the context, the blank gives it away`);
     }
     if (p.chapterTitle && p.chapterTitle !== byChapter.get(p.chapter ?? 0)?.title) issue(`${label}: chapterTitle does not match ch${p.chapter}`);
     if (!p.partOfSpeech) issue(`${label}: no partOfSpeech`);
