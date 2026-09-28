@@ -343,6 +343,6 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     },
     reflection('mo-b2-lf12-c', 'Service Despite Need', [
       'Explain in 5–6 sentences why “Forgetting his thirst” matters in the paragraph. Use one cause phrase, one limitation with “could only”, and one sentence of interpretation.',
-    ], 'The phrase foregrounds Moses’s own need and helps the reader interpret the priority he gives to helping others.'),
+    ], 'The phrase foregrounds Moses’ own need and helps the reader interpret the priority he gives to helping others.'),
   ],
 };
