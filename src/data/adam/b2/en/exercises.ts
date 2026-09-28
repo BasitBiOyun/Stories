@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 // Canonical source for Adam B2 English assessment activities.
 
@@ -33,19 +33,17 @@ export const adamB2KnowledgeCheckExercises: Exercise[] = [
   { id: 'adam-b2-kc-8-enemy-of-humans', type: 'true-false', title: 'The Real Rival', instructions: 'Decide whether the statement is true or false according to Chapters 1 and 17.', question: 'Chapters 1 and 17 both present Satan above all as an enemy of human beings, not only as a rebel against Allah.', correctAnswer: true, explanation: 'Chapter 1: “Satan is portrayed as a rebel against Allah’s command but also as a rival and enemy of Adam (pbuh) rather than Allah.” Chapter 17: the Qur’an “does not focus so much on Satan’s anti-God position” but “rather underlines his anti-human attitude”.', feedback: { correct: 'Right, the statement is true. The book opens and closes with the same idea: Satan did rebel, but his main target is the human being.', incorrect: 'Compare the last sentence of the first paragraph of Chapter 1 with the second paragraph of Chapter 17. Whom does Satan mainly oppose there?' } },
 ];
 
-export const adamB2VocabularyChallengePairs: { word: string; meaning: string }[] = [
-  { word: 'Miraculous', meaning: 'Extraordinary and associated with divine or supernatural intervention.' },
-  { word: 'Vicegerency', meaning: 'The role or responsibility of acting as a steward or representative.' },
-  { word: 'Revelation', meaning: 'Divine communication or disclosure given to prophets.' },
-  { word: 'Deception', meaning: 'The act of causing someone to believe something false.' },
-  { word: 'Repentance', meaning: 'Sincere regret accompanied by turning away from wrongdoing.' },
-  { word: 'Humiliation', meaning: 'The state of being made to feel dishonoured or degraded.' },
-  { word: 'Cultivate', meaning: 'To prepare, develop, or use land productively.' },
-  { word: 'Insincerity', meaning: 'Lack of genuine intention or honesty.' },
-  { word: 'Compassion', meaning: 'Concern for another person’s suffering or difficulty.' },
-  { word: 'Legacy', meaning: 'Guidance, influence, or responsibility passed to later generations.' },
-  { word: 'Deterrent', meaning: 'Something intended to discourage a harmful action.' },
-  { word: 'Descendants', meaning: 'People who come from a particular ancestor in later generations.' },
+export const adamB2VocabularyChallengePairs: VocabularyChallengePair[] = [
+  { word: "miraculous", meaning: "Beyond ordinary natural processes through divine power.", partOfSpeech: "adjective", chapter: 1, context: "He was created from clay without parents, as a miraculous sign of Allah's unlimited power." },
+  { word: "civilization", meaning: "An organized society with developed culture and knowledge.", partOfSpeech: "noun", chapter: 3, context: "The names taught to Adam (pbuh) could be the fundamental knowledge of being human, thinking, forming logical judgments, and producing civilization and culture." },
+  { word: "privilege", meaning: "A special honour or advantage.", partOfSpeech: "noun", chapter: 4, context: "Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh)." },
+  { word: "inhabit", meaning: "To live in or occupy a place.", partOfSpeech: "verb", chapter: 6, context: "“And you, Adam, inhabit the Garden, you and your wife, and eat whatever you wish; but do not approach this tree, for fear that you become wrongdoers.”" },
+  { word: "unclad", meaning: "Without clothing or covering.", partOfSpeech: "adjective", chapter: 8, context: "Adam (pbuh) discovered that he and his wife were unclad, so they both started cutting tree leaves in Paradise with which to cover themselves." },
+  { word: "humiliation", meaning: "The experience of being stripped of dignity.", partOfSpeech: "noun", chapter: 10, context: "Adam (pbuh)’s descending to Earth, then, did not imply dishonour or humiliation, but rather it was an honorable and respected settlement on Earth." },
+  { word: "witnessed", meaning: "Saw an important event happen with one’s own eyes.", partOfSpeech: "verb", chapter: 12, context: "One of their greatest joys on Earth came when Adam (pbuh) and Eve witnessed the birth of their first children." },
+  { word: "purify", meaning: "To make something clean by removing what is bad or harmful.", partOfSpeech: "verb", chapter: 15, context: "This story provides an example illustrating that with the guidance of revelation (vâhiy), choosing the truth over falsehood and goodness over evil will purify human nature of evil." },
+  { word: "legacy", meaning: "Guidance or influence passed to later generations.", partOfSpeech: "noun", chapter: 16, context: "This was Adam (pbuh)’s legacy to his children." },
+  { word: "acknowledges", meaning: "Accepts or admits that something is true.", partOfSpeech: "verb", chapter: 17, context: "Satan, too, acknowledges this fact." },
 ];
 
 export const adamB2LanguageReviewExercises: Exercise[] = [
