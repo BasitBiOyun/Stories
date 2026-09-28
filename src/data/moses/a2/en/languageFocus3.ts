@@ -80,7 +80,7 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       dragDropGroups: [
         {
           group: 'Allah tells Moses what to do',
-          items: ['Put your hand into your chest.', 'Now take it out.', 'Go to the king'],
+          items: ['Put your hand inside your clothes.', 'Now take it out.', 'Go to the king'],
         },
         {
           group: 'The story tells what happened',
@@ -88,7 +88,7 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: {
-        'Allah tells Moses what to do': ['Put your hand into your chest.', 'Now take it out.', 'Go to the king'],
+        'Allah tells Moses what to do': ['Put your hand inside your clothes.', 'Now take it out.', 'Go to the king'],
         'The story tells what happened': ['Moses (pbuh) went to Egypt.', 'He met the king and his helpers.', 'The king was sitting on his throne.'],
       },
       explanation: 'An instruction starts with the base verb and has no subject: Put …, Take …, Go …. The story events have a subject and a past verb: Moses went, He met, The king was sitting.',
@@ -121,7 +121,7 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       title: 'With Whom? Why?',
       instructions: 'Complete the sentence from Chapter 11. Use the words in the box. Two words are not needed.',
       question: 'Which word shows who went with Moses, and which word shows why he went?',
-      fillBlanksText: 'Moses (pbuh) took his brother Harun [blank] him and went to the palace [blank] give the message of Allah.',
+      fillBlanksText: 'Moses (pbuh) took his brother Harun (pbuh) [blank] him and went to the palace [blank] give the message of Allah.',
       wordBank: ['with', 'to', 'for', 'and'],
       correctAnswer: ['with', 'to'],
       explanation: 'Take + person + with + me/him shows who goes together. To + base verb gives the purpose: to give the message.',
@@ -188,8 +188,8 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       sequencingItems: [
         { id: '1', text: 'Moses (pbuh) took his walking stick and threw it on the ground.' },
         { id: '2', text: 'The stick turned into a big snake!' },
-        { id: '3', text: 'Then he put his arm in his armpit.' },
-        { id: '4', text: 'He took his arm out.' },
+        { id: '3', text: 'Then he put his hand inside his clothes.' },
+        { id: '4', text: 'He took his hand out.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
       explanation: 'Past verbs give the actions in order. Then shows the next step: after the stick, Moses showed the second sign.',

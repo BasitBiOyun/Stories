@@ -13,7 +13,7 @@ export const mosesA2LanguageFocusExercises: Record<number, Exercise[]> = {
       title: 'Was, Were or Believed?',
       instructions: 'Complete the sentences from Chapter 1. Use the words in the box. Two words are not needed.',
       question: 'Which past word fits each sentence?',
-      fillBlanksText: 'Pharaoh [blank] the king of Egypt. … They [blank] the grandchildren of Jacob (pbuh) (Yakub) and Joseph (pbuh) (Yûsuf). They [blank] in one Allah, like their great-grandfather, Prophet Abraham (pbuh).',
+      fillBlanksText: 'Pharaoh [blank] the king of Egypt. … They [blank] the grandchildren of Jacob (pbuh) and Joseph (pbuh). They [blank] in one Allah, like their great-grandfather, Prophet Abraham (pbuh).',
       wordBank: ['was', 'were', 'believed', 'is', 'thought'],
       correctAnswer: ['was', 'were', 'believed'],
       explanation: 'Use was with one person (Pharaoh was …) and were with more than one person (They were …). We say believe in Allah, and the story is in the past, so it is believed in.',
