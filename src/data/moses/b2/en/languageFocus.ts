@@ -120,7 +120,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Keep the Writer’s Stance',
       instructions: 'Choose the summary that keeps the stance of the chapter sentence.',
-      question: '“According to the sources, Seti I (I. Seti, approximately 1290-1279 BC) was the pharaoh who oppressed the Israelites.” Which summary keeps the writer’s stance?',
+      question: '“According to the sources, Seti I (approximately 1290-1279 BC) was the pharaoh who oppressed the Israelites.” Which summary keeps the writer’s stance?',
       options: [
         'It has been proved beyond doubt that Seti I oppressed the Israelites.',
         'The sources identify Seti I as the pharaoh who oppressed the Israelites.',
@@ -221,7 +221,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: 'The child at the foot of the tree in the waters of the Nile was give the name “Mûsâ” in the Pharaoh’s palace.',
+          sentence: 'The child at the foot of the tree in the waters of the Nile was give the name “Musa” in the Pharaoh’s palace.',
           error: 'was give',
           options: ['was given', 'was gave', 'gave'],
           answer: 0,
@@ -285,14 +285,14 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: 'The Pharaoh made Benî Israel to work under extremely heavy conditions for small pay or no money.',
+          sentence: 'The Pharaoh made the Children of Israel to work under extremely heavy conditions for small pay or no money.',
           error: 'to work',
           options: ['work', 'working', 'worked'],
           answer: 0,
         },
       ],
       correctAnswer: null,
-      explanation: 'The chapter only says “It is possible that …”; “certain”, “clear” or “obvious” would overclaim. In the active, make + object + bare infinitive expresses forced action: “made Benî Israel work”.',
+      explanation: 'The chapter only says “It is possible that …”; “certain”, “clear” or “obvious” would overclaim. In the active, make + object + bare infinitive expresses forced action: “made the Children of Israel work”.',
       feedback: {
         correct: 'Well done. You avoided an overclaim and used “make + object + verb” correctly.',
         incorrect: 'How sure is the chapter about these people’s beliefs? And after “made + person”, which verb form follows? Check Chapter 5.',

@@ -156,7 +156,7 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       question: 'Can you express intention, result and a warning in another way?',
       transformItems: [
         {
-          source: 'He unintentionally killed the Copt (Kıpti) with a single punch.',
+          source: 'He unintentionally killed the Copt with a single punch.',
           frame: 'He killed the Copt with a single punch, but he did not [blank] to.',
           answers: ['mean', 'intend', 'want', 'plan'],
         },
@@ -193,13 +193,13 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       matchingPairs: [
         { left: '“My Lord! Verily, I have wronged myself, so forgive me.”', right: 'admits a fault and asks for pardon' },
         { left: 'Then He forgave him.', right: 'reports the answer to that prayer' },
-        { left: '“… I will never more be a helper for the Mujrimeen …”', right: 'a promise about how he will act from now on' },
+        { left: '“… I will never more be a helper for the criminals …”', right: 'a promise about how he will act from now on' },
         { left: '“O Moses! Is it your intention to kill me as you killed a man yesterday?”', right: 'an accusing question that recalls the earlier death' },
       ],
       correctAnswer: {
         '“My Lord! Verily, I have wronged myself, so forgive me.”': 'admits a fault and asks for pardon',
         'Then He forgave him.': 'reports the answer to that prayer',
-        '“… I will never more be a helper for the Mujrimeen …”': 'a promise about how he will act from now on',
+        '“… I will never more be a helper for the criminals …”': 'a promise about how he will act from now on',
         '“O Moses! Is it your intention to kill me as you killed a man yesterday?”': 'an accusing question that recalls the earlier death',
       },
       explanation: 'The passage moves from admission and request (“I have wronged myself, so forgive me”) to forgiveness, then to a future commitment (“I will never more …”). The man’s question uses the past (“as you killed a man yesterday”) to accuse Moses in the present.',
@@ -243,13 +243,13 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         { left: 'the chiefs are taking counsel together about you to kill you', right: 'the leaders are meeting to plan his death' },
         { left: 'Truly, I am to you one of those who give sincere advice.', right: 'the messenger assures Moses that his warning can be trusted' },
         { left: 'So he escaped from there, looking about in a state of fear.', right: 'he left while anxiously watching all around him' },
-        { left: 'My Lord! Save me from the people who are Zalimeen', right: 'a prayer to be rescued from wrongdoers' },
+        { left: 'My Lord! Save me from the people who are wrongdoers!', right: 'a request to Allah for safety from the unjust Egyptians' },
       ],
       correctAnswer: {
         'the chiefs are taking counsel together about you to kill you': 'the leaders are meeting to plan his death',
         'Truly, I am to you one of those who give sincere advice.': 'the messenger assures Moses that his warning can be trusted',
         'So he escaped from there, looking about in a state of fear.': 'he left while anxiously watching all around him',
-        'My Lord! Save me from the people who are Zalimeen': 'a prayer to be rescued from wrongdoers',
+        'My Lord! Save me from the people who are wrongdoers!': 'a request to Allah for safety from the unjust Egyptians',
       },
       explanation: '“Taking counsel together” means consulting as a group. The speaker adds “I am … one of those who give sincere advice” so that Moses believes him. The participle clause “looking about in a state of fear” describes how he left.',
       feedback: {
