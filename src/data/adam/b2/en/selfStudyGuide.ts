@@ -37,7 +37,7 @@ export const adamB2SelfStudyGuide: TeacherGuideSection[] = [
     readListen: ['Listen for the material terms and conclusion markers.', 'Read the hadith and the conclusion together.'],
     findAnswerInStory: ['Find the sentence explaining water, soil and mud.', 'Find the sentence rejecting superiority due to colour.'],
     vocabularyInContext: ['composition = what something is made of', 'ancestor = a person from whom later generations descend'],
-    quickChallengeGuide: 'Check which source gives which information: the verse of Surah Sâd or the hadith about the handful of dust.', wrongAnswerSupport: ['Read the verse and the hadith separately. Which one names colours?'],
+    quickChallengeGuide: 'Check which source gives which information: the verse of Surah Sad or the hadith about the handful of dust.', wrongAnswerSupport: ['Read the verse and the hadith separately. Which one names colours?'],
     selfCheck: ['Can I explain the evidence chain?', 'Does my conclusion go beyond the evidence?'], useWhatYouLearned: 'Write a 6–8 sentence concept explanation using a definition, example and justified conclusion.', reflectionPrompt: 'Why is common origin relevant to equal human value in this text?'
   },
   {
@@ -88,7 +88,7 @@ export const adamB2SelfStudyGuide: TeacherGuideSection[] = [
     whatToNotice: ['Adam and Eve receive one stated prohibition.', 'Satan asks for time and declares a continuing attempt to deceive humanity.'],
     readListen: ['Listen for commands and future intentions.', 'Reread the quotations by function, not page order.'], findAnswerInStory: ['Find the tree rule.', 'Find the request for respite and the declared vow.'],
     vocabularyInContext: ['inhabit = live in or occupy a place', 'outcast = rejected or expelled', 'deceive = cause someone to believe something false'],
-    quickChallengeGuide: 'Follow Satan from challenging his Creator to expulsion, the request for time, the respite and his oath to deceive.', wrongAnswerSupport: ['Follow the dialogue of Surah Sâd 77–82: who speaks, what is asked for and what is given.'], selfCheck: ['Can I explain why the sequence is logical rather than page-based?', 'Can I tell the five stages without looking?'], useWhatYouLearned: 'Write a 6–8 sentence chain in which each decision creates the condition for what follows.', reflectionPrompt: 'Why does a long-term declared intention matter to later narrative events?'
+    quickChallengeGuide: 'Follow Satan from challenging his Creator to expulsion, the request for time, the respite and his oath to deceive.', wrongAnswerSupport: ['Follow the dialogue of Surah Sad 77–82: who speaks, what is asked for and what is given.'], selfCheck: ['Can I explain why the sequence is logical rather than page-based?', 'Can I tell the five stages without looking?'], useWhatYouLearned: 'Write a 6–8 sentence chain in which each decision creates the condition for what follows.', reflectionPrompt: 'Why does a long-term declared intention matter to later narrative events?'
   },
   {
     chapter: 'Chapter 7: The Whisper of Deception', timing: '45–50 minutes',
@@ -106,12 +106,12 @@ export const adamB2SelfStudyGuide: TeacherGuideSection[] = [
     chapter: 'Chapter 8: Realization, Modesty & Source Limits', timing: '45 minutes',
     objectives: ['Infer what immediate covering signifies according to the chapter.', 'State what the Qur’an does not specify about the tree.', 'Separate explicit evidence from attributed interpretation.'],
     pedagogy: 'Move evidence → interpretation → source limit, then transfer the same discipline to a new source.',
-    lessonPlan: 'Read/listen for the immediate consequences. Locate the covering action and the sentence explaining hayâ. Find the statement that the Qur’an does not describe the tree type. Answer the multiple-choice Quick Challenge before checking the evidence. Open Chapter 8 Language Focus and classify explicit / not specified / attributed interpretation. Write a 6–8 sentence source-boundary paragraph and self-check every claim.',
+    lessonPlan: 'Read/listen for the immediate consequences. Locate the covering action and the sentence explaining haya. Find the statement that the Qur’an does not describe the tree type. Answer the multiple-choice Quick Challenge before checking the evidence. Open Chapter 8 Language Focus and classify explicit / not specified / attributed interpretation. Write a 6–8 sentence source-boundary paragraph and self-check every claim.',
     discussionPoints: ['Why is an inference stronger when the text itself explains the action?'], interactiveTips: ['Reveal only after committing to an answer from the story.'],
     differentiation: { strugglingLearners: 'Use three labels: explicit / not stated / attributed.', fastFinishers: 'Correct an overconfident paragraph by restoring source boundaries.' },
-    whatToNotice: ['Immediate covering is linked to inborn modesty/hayâ.', 'The chapter explicitly says the Qur’an does not describe the tree type.'],
+    whatToNotice: ['Immediate covering is linked to inborn modesty/haya.', 'The chapter explicitly says the Qur’an does not describe the tree type.'],
     readListen: ['Listen for the immediate reaction.', 'Read the final paragraph for source limits.'], findAnswerInStory: ['Find the covering action and explanation.', 'Find the sentence stating the tree is not described in the Qur’an.'],
-    vocabularyInContext: ['hayâ = modesty or sense of shame in the chapter', 'evident = clearly visible or apparent'],
+    vocabularyInContext: ['haya = modesty or sense of shame in the chapter', 'evident = clearly visible or apparent'],
     quickChallengeGuide: 'Choose the reason the writer gives for their haste, then check it against the evidence.', wrongAnswerSupport: ['Return to the sentence explaining why they hurried to cover themselves.'], selfCheck: ['Can I support the modesty inference?', 'Did I avoid inventing the tree type?'], useWhatYouLearned: 'Write a 6–8 sentence paragraph containing one supported inference, one “not stated” point and one attributed interpretation.', reflectionPrompt: 'How does careful reading prevent us from filling gaps with assumptions?'
   },
   {
@@ -190,7 +190,7 @@ export const adamB2SelfStudyGuide: TeacherGuideSection[] = [
     chapter: 'Chapter 15: Qabil’s Regret & Adam’s Grief', timing: '45 minutes',
     objectives: ['Distinguish regret from completed moral repair.', 'Separate narrated event from wider interpretation.', 'Use the active interpretive frame in B2 production.'],
     pedagogy: 'Compare emotion, consequence, interpretation and continued action.',
-    lessonPlan: 'Read/listen to Maide 31 and the later interpretation. Mark Qabil’s regret, the sentence “What is essentially described here is the consequence of choosing evil”, and Adam’s continued responsibility. Complete the active Quick Challenge. Open Chapter 15 Language Focus and analyse purpose, embedded method, interpretive framing, relative clause and while contrast. Write an 8–10 sentence event-to-interpretation paragraph and self-check that interpretation is visibly marked.',
+    lessonPlan: 'Read/listen to Ma’idah 31 and the later interpretation. Mark Qabil’s regret, the sentence “What is essentially described here is the consequence of choosing evil”, and Adam’s continued responsibility. Complete the active Quick Challenge. Open Chapter 15 Language Focus and analyse purpose, embedded method, interpretive framing, relative clause and while contrast. Write an 8–10 sentence event-to-interpretation paragraph and self-check that interpretation is visibly marked.',
     discussionPoints: ['Why does regret not automatically erase consequence?'], interactiveTips: ['Use the corrected active story wording; do not return to the older “being described” phrase.'],
     differentiation: { strugglingLearners: 'Use event / regret / interpretation / next action.', fastFinishers: 'Compare Qabil’s regret with Adam’s repentance using evidence.' },
     whatToNotice: ['The chapter interprets the episode as a consequence of choosing evil rooted in jealousy.', 'Adam prays and continues earthly responsibilities despite grief.'],

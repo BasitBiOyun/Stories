@@ -314,7 +314,7 @@ export const adamB1LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
       title: 'Result, Purpose and Reason',
       instructions: 'Complete the lines from Chapter 6 with words from the bank. Three words are not needed.',
       question: 'Which words show a result, a purpose and a reason?',
-      fillBlanksText: 'Adam (pbuh) discovered that he and his wife were uncovered, [blank] they both started cutting tree leaves in Paradise [blank] cover themselves. They hurried to hide their private parts [blank] a sense of shame (hayâ) is part of inborn human nature …',
+      fillBlanksText: 'Adam (pbuh) discovered that he and his wife were uncovered, [blank] they both started cutting tree leaves in Paradise [blank] cover themselves. They hurried to hide their private parts [blank] a sense of shame (haya) is part of inborn human nature …',
       wordBank: ['so', 'to', 'because', 'because of', 'for', 'although'],
       correctAnswer: ['so', 'to', 'because'],
       explanation: '“So” introduces a result: they discovered they were uncovered, so they started cutting leaves. “To + verb” gives the purpose of the action (to cover themselves), not “for cover”. “Because” introduces a reason with a full clause; “because of” needs a noun.',

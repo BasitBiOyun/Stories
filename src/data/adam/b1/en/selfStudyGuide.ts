@@ -14,7 +14,7 @@ export const adamB1SelfStudyGuide: TeacherGuideSection[] = [
     findAnswerInStory: ['Find the opening description of Adam.', 'Find the sentence saying a ruler would be placed on earth.'],
     vocabularyInContext: ['Messenger = a person chosen to convey divine guidance.', 'ruler = a steward or khalifa entrusted with responsibility.', 'curiosity = a strong desire to know.'],
     quickChallengeGuide: 'Find how the angels reacted in the final sentence; remember that Adam is not created yet in this chapter.',
-    wrongAnswerSupport: ['Return to the last paragraph and locate ruler (halîfe).'],
+    wrongAnswerSupport: ['Return to the last paragraph and locate ruler (khalifah).'],
     selfCheck: ['Can I separate source-present from past narration?', 'Can I use after, said that, was going to or would correctly?'],
     useWhatYouLearned: 'Write four connected sentences about a past plan: one background fact, one past event, one reported statement and one thing that was going to happen next.',
     reflectionPrompt: 'How does time language help you follow the chapter more accurately?',

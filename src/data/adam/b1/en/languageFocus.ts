@@ -74,7 +74,7 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you correct an earlier decision in reported speech and a verb pattern after “began”?',
       errorItems: [
         {
-          sentence: 'He said He has decided to place a ruler (halîfe) on earth.',
+          sentence: 'He said He has decided to place a ruler (khalifah) on earth.',
           error: 'has decided',
           options: ['had decided', 'have decided', 'was deciding'],
           answer: 0,

@@ -63,7 +63,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you move between active and passive, and between “not … but …” and “rather than”, without changing the claim?',
       transformItems: [
         {
-          source: 'Adam (pbuh)’s tale (kıssa) is not symbolic or imaginary, but it is an original factual tale with historical correctness and reality …',
+          source: 'Adam (pbuh)’s tale is not symbolic or imaginary, but it is an original factual tale with historical correctness and reality …',
           frame: 'Adam (pbuh)’s tale is an original factual tale [blank] symbolic or imaginary.',
           answers: ['rather than', 'rather than being', 'and not', 'not', 'instead of being'],
         },
@@ -149,7 +149,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you move a preposition in a relative clause and choose a passive when Adam is the topic?',
       transformItems: [
         {
-          source: 'The material from which Adam (pbuh) was created is expressed in various verses (âyet) using different terms …',
+          source: 'The material from which Adam (pbuh) was created is expressed in various verses using different terms …',
           frame: 'The material [blank] is expressed in various verses using different terms.',
           answers: [
             'which Adam (pbuh) was created from',
@@ -161,8 +161,8 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
           ],
         },
         {
-          source: '… Surah Sâd, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material …',
-          frame: '… Surah Sâd, verse 71, informs that Adam (pbuh) [blank] out of clay by Allah.',
+          source: '… Surah Sad, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material …',
+          frame: '… Surah Sad, verse 71, informs that Adam (pbuh) [blank] out of clay by Allah.',
           answers: ['was created'],
         },
       ],
@@ -179,7 +179,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       title: 'Example, Conclusion, Correction',
       instructions: 'Complete the lines from Chapter 2 with words from the bank. Two words are not needed.',
       question: 'Which linkers move the explanation from a general point to an example, to a conclusion, and to a correction?',
-      fillBlanksText: '[blank], Surah Sâd, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material … [blank], in essence, people are from the same soil and they have no superiority over one another due to the difference in their colors. It is clear that Adam (pbuh) did not evolve from any other living being, [blank] was created from the earth …',
+      fillBlanksText: '[blank], Surah Sad, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material … [blank], in essence, people are from the same soil and they have no superiority over one another due to the difference in their colors. It is clear that Adam (pbuh) did not evolve from any other living being, [blank] was created from the earth …',
       wordBank: ['As an example', 'So', 'but', 'Otherwise', 'Although'],
       correctAnswer: ['As an example', 'So', 'but'],
       explanation: '“As an example” moves from the general statement about different terms to one specific verse. “So, in essence” draws a conclusion from the hadith: people come from the same soil, so colour gives no one superiority. “did not …, but was …” rejects one idea (evolution from another being) and replaces it with the chapter’s claim.',
@@ -356,7 +356,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       title: 'Introduce the Second Kind of Knowledge',
       instructions: 'Complete the lines from Chapter 4 with words from the bank. Three words are not needed.',
       question: 'Which words mark a shift, identify the new idea, name the channel, and include both ideas?',
-      fillBlanksText: '[blank], in the Qur’an, Allah mentions another type of knowledge, [blank] is the revelation (vahiy) (see Nisâ: 163-165). He delivers it to mankind [blank] the prophets. It is clear that human beings need [blank] types of knowledge.',
+      fillBlanksText: '[blank], in the Qur’an, Allah mentions another type of knowledge, [blank] is the revelation (wahy) (see Nisa: 163-165). He delivers it to mankind [blank] the prophets. It is clear that human beings need [blank] types of knowledge.',
       wordBank: ['However', 'which', 'through', 'both', 'Therefore', 'who', 'either'],
       correctAnswer: ['However', 'which', 'through', 'both'],
       explanation: '“However” shifts from the knowledge Allah gave Adam to a different type. “Which is the revelation” identifies that type (which for a thing, not who). “Through the prophets” names the channel. “Both types” includes the two kinds together; “either” would suggest a choice between them, the reading the chapter rejects.',
@@ -518,7 +518,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'The imperative can command, permit or forbid. “Inhabit” and “eat whatever you wish” open a wide space of freedom; “do not approach” sets a single limit inside it, and “for fear that …” gives the reason for that limit. Satan’s “allow me until …” is a different speech act: a request for permission with a time limit.',
       feedback: {
         correct: 'Correct. You identified permission, prohibition, warning and request.',
-        incorrect: 'Read A’raf 19 and the verses from Surah Sâd again in Chapter 6. Which line opens freedom, which one limits it, which one explains the limit, and who asks for something?',
+        incorrect: 'Read A’raf 19 and the verses from Surah Sad again in Chapter 6. Which line opens freedom, which one limits it, which one explains the limit, and who asks for something?',
       },
     },
     {
