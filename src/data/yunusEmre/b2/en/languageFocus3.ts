@@ -223,7 +223,7 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'How Did He Warn People?',
       instructions: 'Read the sentence from Chapter 12. Then choose what “by addressing …” shows.',
-      question: '“Additionally, by addressing negative traits such as arrogance, anger, stinginess, greed, envy, backbiting, and slander, he has warned people to stay away from these harmful habits.” What does “by addressing …” tell us?',
+      question: '“Additionally, by addressing negative traits such as arrogance, anger, stinginess, greed, envy, backbiting, and slander, he warned people to stay away from these harmful habits.” What does “by addressing …” tell us?',
       options: [
         'why people had these negative traits',
         'the way he warned people: by speaking directly about these traits',
@@ -356,12 +356,12 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
     instructions: 'Read each sentence from the book. Who is responsible for the claim: historical sources, Yunus Emre, or the writer? Put it in the right group.',
     question: 'How does the writer show whose claim each sentence makes?',
     dragDropGroups: [
-      { group: 'The writer reports what sources or scholars say', items: ['Some sources note that he received a good madrasa education …', 'As to the widely accepted view, he was born in 1240–41 and died in 1320–21.', 'Sources say: “The Mongols slaughtered the people of the great cities and towns …”'] },
+      { group: 'The writer reports what sources or scholars say', items: ['Some sources note that he received a good madrasa education …', 'According to the widely accepted view, he was born in 1240–41 and died in 1320–21.', 'Sources say: “The Mongols slaughtered the people of the great cities and towns …”'] },
       { group: 'The writer reports Yunus Emre’s own view', items: ['For, according to him, where love is absent, negative emotions such as anger, heartbreak and separation arise.', 'In his view, purity of the heart is essential for the proper performance of acts of worship.', 'According to Yunus, morality consists of abandoning behaviors unbecoming of humans.'] },
       { group: 'The writer makes the claim in their own voice', items: ['Society was struggling to cope with these trials.', 'These events created an atmosphere of panic in Anatolia that had never been seen before.', 'Anatolia was experiencing total chaos.'] },
     ],
     correctAnswer: {
-      'The writer reports what sources or scholars say': ['Some sources note that he received a good madrasa education …', 'As to the widely accepted view, he was born in 1240–41 and died in 1320–21.', 'Sources say: “The Mongols slaughtered the people of the great cities and towns …”'],
+      'The writer reports what sources or scholars say': ['Some sources note that he received a good madrasa education …', 'According to the widely accepted view, he was born in 1240–41 and died in 1320–21.', 'Sources say: “The Mongols slaughtered the people of the great cities and towns …”'],
       'The writer reports Yunus Emre’s own view': ['For, according to him, where love is absent, negative emotions such as anger, heartbreak and separation arise.', 'In his view, purity of the heart is essential for the proper performance of acts of worship.', 'According to Yunus, morality consists of abandoning behaviors unbecoming of humans.'],
       'The writer makes the claim in their own voice': ['Society was struggling to cope with these trials.', 'These events created an atmosphere of panic in Anatolia that had never been seen before.', 'Anatolia was experiencing total chaos.'],
     },
@@ -385,7 +385,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'yunus-b2-language-review-3-perception-comparison', type: 'true-false', title: 'Notice: Seen, Not Literally True',
     instructions: 'Read the two sentences from Chapters 5 and 6. Is the statement true or false?',
-    question: 'Chapter 5: “In the eyes of the Turkmen, these fathers were divine saviors.” Chapter 6: “The Seljuk sultans began to act almost as if they were Mongols’ civil officials.” Statement: In both sentences, the writer states as a literal fact what these people really were.',
+    question: 'Chapter 5: “In the eyes of the Turkmen, these spiritual fathers were divine saviors.” Chapter 6: “The Seljuk sultans began to act almost as if they were Mongols’ civil officials.” Statement: In both sentences, the writer states as a literal fact what these people really were.',
     correctAnswer: false,
     explanation: 'False. “In the eyes of the Turkmen” limits the claim to how one group saw the fathers; the writer does not say that they really were saviors. “As if” + a past form (“were”) compares the sultans with officials and marks the comparison as not literally true, and “almost” softens it further. B2 writers use such frames to keep perception and interpretation apart from fact.',
     feedback: { correct: 'Correct. One sentence reports a group’s perception; the other makes a non-literal comparison.', incorrect: 'Look at the frames: “In the eyes of …” and “almost as if …”. Whose view is it, and is the comparison literal?' },
@@ -434,7 +434,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
     formChoices: [
       { sentence: 'At that time, tekkes were not just institutions that offered Sûfî training [choice] they were also important civil society organizations …', options: ['but', 'and', 'so'], answer: 0 },
       { sentence: 'He also studied [choice] divine love and morals at the tekke, …', options: ['either', 'both', 'neither'], answer: 1 },
-      { sentence: 'Yunus Emre emphasizes not only heart [choice] intellect as a value, …', options: ['and also', 'as well', 'but also'], answer: 2 },
+      { sentence: 'Yunus Emre emphasizes not only the heart [choice] the intellect as a value, …', options: ['and also', 'as well', 'but also'], answer: 2 },
     ],
     correctAnswer: null,
     explanation: '“Not just … but … also” and “not only … but also” keep the first side and add a second, often less expected one: tekkes were training places and also civil society organizations; Yunus values the heart and also the intellect. “Both … and” joins two equal parts. “Either … or” would offer a choice and “neither … nor” would reject both, so they cannot go with “and”.',
