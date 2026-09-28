@@ -94,7 +94,7 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
           items: [
             'Soon, the basket came to the waterside.',
             'The palace servants saw the basket and took it to the king and the queen',
-            'She ran to the Queen',
+            'She ran to the queen',
           ],
         },
         {
@@ -109,7 +109,7 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'Going to a place or person': [
           'Soon, the basket came to the waterside.',
           'The palace servants saw the basket and took it to the king and the queen',
-          'She ran to the Queen',
+          'She ran to the queen',
         ],
         'Where something is': [
           'It was near the king’s palace.',
@@ -247,7 +247,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'What Does “Accidentally” Mean?',
       instructions: 'Read the sentence from Chapter 6. Choose the best meaning.',
-      question: '“He was so sorry because he accidentally caused someone\'s death.” What does accidentally tell us?',
+      question: '“He was so sorry because he accidentally caused someone’s death.” What does accidentally tell us?',
       options: ['He wanted to do it.', 'He did not plan to do it.', 'He did it many times.'],
       correctAnswer: 1,
       explanation: 'Accidentally means not on purpose: Moses did not plan or want this result. That is why he was so sorry and asked Allah to forgive him.',
@@ -294,10 +294,10 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'Are + verb-ing shows what is happening now: are looking for you. Are going to + base verb shows what the friend expects will happen soon: are going to catch you.',
+      explanation: 'Are + verb-ing shows what is happening now: are looking for you. Are going to + base verb shows what the man expects will happen soon: are going to catch you.',
       feedback: {
         correct: 'Well done. Are looking for now, are going to catch for the future.',
-        incorrect: 'Read the friend’s words at the end of Chapter 6. Be + -ing for now; be going to + base verb for the future.',
+        incorrect: 'Read the man’s words at the end of Chapter 6. Be + -ing for now; be going to + base verb for the future.',
       },
     },
     { id:'moses-a2-language-6-production', type:'reflection', title:'Use It: Give a Safe Warning', instructions:'Create a safe new situation using Chapter 6 patterns.', question:'Can you explain purpose, reason, present danger and a future warning?', correctAnswer:null, explanation:'Use to + verb, because, present continuous, be going to/will and an imperative.', feedback:{correct:'Keep the situation safe and new.',incorrect:''}, discussionPrompts:[{question:'Give one purpose with to + verb.',mode:'Individual'},{question:'Add a reason with because.',mode:'Individual'},{question:'Describe what is happening now.',mode:'Individual'},{question:'Give one safe warning and instruction.',mode:'Pair'}] },
@@ -327,7 +327,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       title: 'Arriving and Looking',
       instructions: 'Complete the sentences from Chapter 7. Use the words in the box. Two words are not needed.',
       question: 'Which small words complete the journey?',
-      fillBlanksText: 'After many days, he arrived [blank] Midian (Medyen). … Moses was tired and thirsty. [blank], he looked [blank] water.',
+      fillBlanksText: 'After many days, he arrived [blank] Midian. … Moses was tired and thirsty. [blank], he looked [blank] water.',
       wordBank: ['at', 'So', 'for', 'Because', 'to'],
       correctAnswer: ['at', 'So', 'for'],
       explanation: 'We say arrive at a place, not arrive to. So introduces the result: he was thirsty, so he looked for water. Look for means try to find.',
@@ -452,7 +452,7 @@ export const mosesA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       instructions: 'Choose the correct words for each sentence from Chapter 9.',
       question: 'What form of the verb comes after want and decided?',
       formChoices: [
-        { sentence: 'Şuayb (pbuh) said, “Go and call the young man. I want [choice] him for his work.”', options: ['thank', 'to thank', 'thanking'], answer: 1 },
+        { sentence: 'Shu’ayb (pbuh) said, “Go and call the young man. I want [choice] him for his work.”', options: ['thank', 'to thank', 'thanking'], answer: 1 },
         { sentence: 'After ten years, Moses decided [choice] back to Egypt.', options: ['going', 'go', 'to go'], answer: 2 },
       ],
       correctAnswer: null,
@@ -470,7 +470,7 @@ export const mosesA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       question: 'Which time words help you find the order?',
       sequencingItems: [
         { id: '1', text: 'Moses came to the house.' },
-        { id: '2', text: 'Şuayb (pbuh) offered Moses a job.' },
+        { id: '2', text: 'Shu’ayb (pbuh) offered Moses a job.' },
         { id: '3', text: 'Later, he married one of the sisters.' },
         { id: '4', text: 'After ten years, Moses decided …' },
       ],
