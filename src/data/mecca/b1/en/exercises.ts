@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 const tf = (id: string, question: string, answer: boolean, explanation: string): Exercise => ({ id, type: 'true-false', question, correctAnswer: answer, explanation, feedback: { correct: 'Correct. The story supports this answer.', incorrect: 'Check the chapter evidence and try again.' } });
 const mc = (id: string, question: string, options: string[], answer: number, explanation: string): Exercise => ({ id, type: 'multiple-choice', question, options, correctAnswer: answer, explanation, feedback: { correct: 'Correct. Your answer matches the story evidence.', incorrect: 'Return to the relevant chapter and compare the choices with the text.' } });
@@ -21,17 +21,17 @@ export const meccaB1QuickChallenges: Record<number, Exercise> = {
   15: { id: 'qc-15', type: 'multiple-choice', title: 'A Better Unity', instructions: 'Read the question. Choose the answer from Chapter 15.', question: 'The Quraysh leaders said Islam was breaking up families and destroying unity. How does the writer answer this claim?', options: ['The writer agrees that tribal loyalty was the best way to keep families safe.', 'The writer says Islam was calling people to a better form of unity based on justice, mercy and belief in one Allah.', 'The writer says Islam asked people to build a new unity based on wealth and tribe.'], correctAnswer: 1, explanation: 'After the leaders’ claim, the writer says: “In reality, Islam was calling people to a better form of unity based on justice, mercy, and belief in one Allah.” The words “In reality” show that the writer does not accept the leaders’ claim.', feedback: { correct: 'Correct. With “In reality”, the writer answers the claim: Islam offered unity based on justice, mercy and faith.', incorrect: 'Read the second paragraph of Chapter 15. Find the words “In reality” and see what comes after them.' } },
 };
 
-export const meccaB1VocabularyChallengePairs = [
-  { word: 'Jahiliyyah', meaning: 'a pre-Islamic condition of religious and social ignorance and disorder' },
-  { word: 'pilgrimage', meaning: 'a religious journey to a sacred place' },
-  { word: 'merchant', meaning: 'a person who buys and sells goods' },
-  { word: 'usury', meaning: 'unfair extra money demanded on a loan' },
-  { word: 'debt', meaning: 'money that a person owes and must repay' },
-  { word: 'tribal loyalty', meaning: 'strong support for one’s tribe, sometimes even when it acts wrongly' },
-  { word: 'Hanif', meaning: 'a person who followed the monotheistic religion of Abraham' },
-  { word: 'prestige', meaning: 'high respect and social status' },
-  { word: 'boycott', meaning: 'organized refusal to trade or deal with a group in order to pressure it' },
-  { word: 'mercy', meaning: 'kindness and compassion shown to others' }
+export const meccaB1VocabularyChallengePairs: VocabularyChallengePair[] = [
+  { word: 'chaotic', meaning: 'Very disordered and difficult to control.', partOfSpeech: 'adjective', chapter: 1, context: 'Life was hard and chaotic.' },
+  { word: 'pilgrimage', meaning: 'A religious journey to a sacred place.', partOfSpeech: 'noun', chapter: 3, context: 'Arabs accepted the religion of Abraham (as) and Ishmael (as), so the Ka’ba became a pilgrimage site.' },
+  { word: 'widespread', meaning: 'Existing among many people or in many places.', partOfSpeech: 'adjective', chapter: 6, context: 'In the city, lending money with usury was widespread.' },
+  { word: 'luxury', meaning: 'A comfortable and expensive way of living.', partOfSpeech: 'noun', chapter: 7, context: 'While the rich lived in luxury with gold plates and silver cups, the poor struggled to survive.' },
+  { word: 'superstitions', meaning: 'Beliefs based on fear or tradition rather than sound evidence or true religion.', partOfSpeech: 'noun', chapter: 10, context: 'Life in the Age of Ignorance was also full of superstitions.' },
+  { word: 'ignored', meaning: 'Refused to pay attention to something.', partOfSpeech: 'verb', chapter: 11, context: 'However, many leaders ignored the Quran and stood against the Prophet (as).' },
+  { word: 'forbade', meaning: 'Did not allow something.', partOfSpeech: 'verb', chapter: 12, context: 'For example, Quraysh used unfair money systems like usury, but the Quran forbade this and allowed only honest trade.' },
+  { word: 'mocked', meaning: 'Made fun of someone or something in an unkind way.', partOfSpeech: 'verb', chapter: 13, context: 'At first, the leaders of Mecca only mocked Islam.' },
+  { word: 'hostile', meaning: 'Unfriendly and strongly opposed to someone or something.', partOfSpeech: 'adjective', chapter: 14, context: 'Losing the idols meant losing wealth and influence, so they became hostile to Islam.' },
+  { word: 'mercy', meaning: 'Kindness and compassion shown to others.', partOfSpeech: 'noun', chapter: 15, context: 'In reality, Islam was calling people to a better form of unity based on justice, mercy, and belief in one Allah.' },
 ];
 
 export const meccaB1FinalChallengeExercises: Exercise[] = [

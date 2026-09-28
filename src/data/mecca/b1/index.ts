@@ -1,4 +1,4 @@
-import type { BookData, Exercise, PageData } from '../../../types';
+import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
 import { meccaB1Pages } from './en/pages';
 import {
   meccaB1FinalChallengeExercises,
@@ -52,22 +52,6 @@ import {
   meccaB1LanguageFocusChapter15Ar,
 } from './ar/languageFocus3';
 
-const ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
-  'jahiliyyah',
-  'ka’ba',
-  'qiblah',
-  'arafat',
-]);
-const normalizeTerm = (word: string) => word.trim().toLocaleLowerCase();
-
-const cleanEnglishGlossary = (pages: PageData[]): PageData[] => pages.map(page => {
-  if (page.type !== 'glossary' || !page.vocabulary?.length) return page;
-  return {
-    ...page,
-    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(normalizeTerm(item.word))),
-  };
-});
-
 const englishLanguageFocus = {
   ...meccaB1LanguageFocusExercises,
   ...meccaB1LanguageFocusChapter3,
@@ -107,7 +91,7 @@ const attachLearning = (
   quickChallenges: Record<number, Exercise>,
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
+  vocabularyPairs: VocabularyChallengePair[],
   review: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => sourcePages.map((page) => {
@@ -131,7 +115,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: cleanEnglishGlossary(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises)),
+  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises),
   teacherGuide: [],
   selfStudyGuide: [],
 };

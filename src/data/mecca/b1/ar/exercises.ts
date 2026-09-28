@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 const tf = (id: string, question: string, answer: boolean, explanation: string): Exercise => ({ id, type:'true-false', question, correctAnswer:answer, explanation, feedback:{ correct:'صحيح. تدعم القصة هذه الإجابة.', incorrect:'ارجع إلى دليل الفصل وحاول مرة أخرى.' } });
 const mc = (id: string, question: string, options: string[], answer: number, explanation: string): Exercise => ({ id, type:'multiple-choice', question, options, correctAnswer:answer, explanation, feedback:{ correct:'أحسنت. الإجابة مدعومة بنص القصة.', incorrect:'ارجع إلى الفصل وقارن الخيارات بالدليل الوارد في النص.' } });
@@ -21,17 +21,17 @@ export const meccaB1QuickChallengesAr: Record<number, Exercise> = {
   15: { id: 'qc-ar-15', type: 'multiple-choice', title: 'وحدة أرقى', instructions: 'اقرأ السؤال، ثم اختر الجواب من الفصل الخامس عشر.', question: 'قال زعماء قريش إنّ الإسلام يفرّق العائلات ويهدم الوحدة. كيف يردّ الكاتب على هذا القول؟', options: ['يوافقهم الكاتب على أنّ العصبية القبلية أفضل طريقة لحماية العائلات.', 'يقول الكاتب إنّ الإسلام كان يدعو إلى وحدة أرقى تقوم على العدل والرحمة والإيمان بالله الواحد.', 'يقول الكاتب إنّ الإسلام دعا إلى وحدة جديدة تقوم على المال والقبيلة.'], correctAnswer: 1, explanation: 'بعد قول الزعماء، يقول الكاتب: «في الواقع، كان الإسلام يدعو لوحدة أرقى تقوم على العدل والرحمة والإيمان بالله الواحد الأحد». وعبارة «في الواقع» تُظهر أنّ الكاتب لا يقبل قولهم.', feedback: { correct: 'صحيح. بعبارة «في الواقع» يردّ الكاتب على الزعماء: الإسلام يقدّم وحدة تقوم على العدل والرحمة والإيمان.', incorrect: 'اقرأ الفقرة الثانية من الفصل الخامس عشر، وابحث عن عبارة «في الواقع» وما يأتي بعدها.' } },
 };
 
-export const meccaB1VocabularyChallengePairsAr = [
-  { word:'الجاهلية', meaning:'حالة دينية واجتماعية قبل الإسلام اتسمت بالجهل والاضطراب والظلم' },
-  { word:'الحج', meaning:'رحلة دينية إلى مكان مقدس للعبادة' },
-  { word:'تاجر', meaning:'شخص يشتري البضائع ويبيعها' },
-  { word:'الربا', meaning:'زيادة مالية ظالمة تُطلب على القرض' },
-  { word:'الدَّين', meaning:'مال يجب على الشخص سداده للآخرين' },
-  { word:'العصبية القبلية', meaning:'ولاء شديد للقبيلة قد يدفع إلى نصرتها حتى في الخطأ' },
-  { word:'حنيف', meaning:'شخص اتبع توحيد إبراهيم ورفض عبادة الأصنام' },
-  { word:'الهيبة', meaning:'مكانة واحترام اجتماعيان مرتبطان بالنفوذ' },
-  { word:'المقاطعة', meaning:'الامتناع المنظم عن التعامل مع جماعة للضغط عليها' },
-  { word:'الرحمة', meaning:'اللطف والعطف والرفق بالآخرين' }
+export const meccaB1VocabularyChallengePairsAr: VocabularyChallengePair[] = [
+  { word: 'فَوْضَوِيَّة', meaning: 'غير منظّمة وفيها اضطراب كبير.', partOfSpeech: 'adjective', chapter: 1, context: 'كانت الحياة شاقَّة وفَوْضَوِيَّة.' },
+  { word: 'استقرت', meaning: 'بدأت تعيش بصورة دائمة في مكان.', partOfSpeech: 'verb', chapter: 3, context: 'بعد اكتشاف ماء زمزم، استقرت قبيلة جرهم اليمنية في مكة.' },
+  { word: 'شَائِعًا', meaning: 'منتشرًا بين عدد كبير من الناس.', partOfSpeech: 'adjective', chapter: 6, context: 'وَكَانَ انْتِشَارُ إقراض المال بالرِّبا شَائِعًا جدًّا في مكة.' },
+  { word: 'تَرَف', meaning: 'حياة مريحة وغالية فيها كثير من الرفاهية.', partOfSpeech: 'noun', chapter: 7, context: 'وبينما كان الأغنياء يعيشون في تَرَف بالأطباق الذهبيّة والكؤوس الفضّيّة، كان الفقراء يَجِدونَ صعوبة في العيْش.' },
+  { word: 'بالخرافات', meaning: 'بمعتقدات غير صحيحة لا تقوم على دليل سليم.', partOfSpeech: 'noun', chapter: 10, context: 'وكان الحج أهم نشاط ديني واقتصادي، وكانت الحياة مليئة بالخرافات والكهانة والتطير قبل اتخاذ القرارات.' },
+  { word: 'تَجَاهَلُوا', meaning: 'رفضوا الاهتمام بشيء أو الالتفات إليه.', partOfSpeech: 'verb', chapter: 11, context: 'ولكنّ كثيراً من الزُّعماء تَجَاهَلُوا القرآن وَوَقَفُوا ضدّ النبي صلّى الله عليه وسلّم.' },
+  { word: 'يَمْنَعُ', meaning: 'لا يسمح بحدوث شيء أو القيام به.', partOfSpeech: 'verb', chapter: 12, context: 'على سبيل المثال، اِسْتَخْدَمَتْ قريش أنْظِمَة مالية غير عادلة مثل الربا، ولكنّ القرآن يَمْنَعُ هذا وَيَقُولُ إنّ التجارة الصادقة هي المسموح بها فقطْ.' },
+  { word: 'سَخِرُوا', meaning: 'استهزؤوا بشخص أو فكرة بطريقة غير لطيفة.', partOfSpeech: 'verb', chapter: 13, context: 'في البداية، سَخِرُوا منه فقطْ.' },
+  { word: 'أعداءً', meaning: 'أشخاصًا يكرهون غيرهم ويقفون ضدّه بقوة.', partOfSpeech: 'noun', chapter: 14, context: 'وإذا ترَكوا أصنامهم، فقَدوا ثروتهم ومكانتهم، وهذا جعلهم أعداءً للإسلام.' },
+  { word: 'الرحمة', meaning: 'العطف واللطف بالآخرين.', partOfSpeech: 'noun', chapter: 15, context: 'في الواقع، كان الإسلام يدعو لوحدة أرقى تقوم على العدل والرحمة والإيمان بالله الواحد الأحد.' },
 ];
 
 export const meccaB1FinalChallengeExercisesAr: Exercise[] = [
