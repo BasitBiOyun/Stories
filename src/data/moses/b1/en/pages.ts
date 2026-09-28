@@ -109,7 +109,7 @@ export const mosesB1Pages: PageData[] = [
     6,
     'Escape from Egypt',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2F05_Chapter_6_Escape_from_Egypt.mp3?alt=media&token=e933fc91-c0fa-4c87-a477-bc2b0b758623',
-    `His sadness increased even more. At this moment a friend of Moses (pbuh) came and said to him, “The Pharaoh’s soldiers are looking for you. You killed an Egyptian yesterday. Now they are going to catch you. Run away from the city.” Moses knew that the punishment for killing an Egyptian was death. Moses escaped from the soldiers. He left Egypt and travelled for a long time. He was not alone as Allah guided him. After many days, he reached the land of Midian, which was the closest place between Egypt and Syria. The Pharaoh was not the ruler in this land. Moses was tired and thirsty. He was looking for water. Soon, he found a well where many men gathered. These were shepherds who were watering their sheep and cattle. Far from the spring two girls were sitting. They also had sheep with them. But they did not go near it. Moses asked the girls, “Why are you sitting far away from the spring? Why aren’t you taking your sheep to drink water?”`,
+    `His sadness increased even more. At this moment a man came from the far end of the city and said to Moses (pbuh), “The Pharaoh’s soldiers are looking for you. You killed an Egyptian yesterday. Now they are going to catch you. Run away from the city.” Moses knew that the punishment for killing an Egyptian was death. Moses escaped from the soldiers. He left Egypt and travelled for a long time. He was not alone as Allah guided him. After many days, he reached the land of Midian, which was the closest place between Egypt and Syria. The Pharaoh was not the ruler in this land. Moses was tired and thirsty. He was looking for water. Soon, he found a well where many men gathered. These were shepherds who were watering their sheep and cattle. Far from the spring two girls were sitting. They also had sheep with them. But they did not go near it. Moses asked the girls, “Why are you sitting far away from the spring? Why aren’t you taking your sheep to drink water?”`,
     [
       { word: 'punishment', definition: 'A penalty for doing something wrong.' },
       { word: 'escaped', definition: 'Got away from danger.' },
@@ -117,7 +117,7 @@ export const mosesB1Pages: PageData[] = [
       { word: 'well', definition: 'A deep hole in the ground from which people take water.' },
     ],
     [
-      { id: 'moses-b1-en-6-1', x: 41, y: 31, title: 'A Warning', description: 'A friend warned Moses (pbuh) that the Pharaoh’s soldiers were looking for him, so he left Egypt.' },
+      { id: 'moses-b1-en-6-1', x: 41, y: 31, title: 'A Warning', description: 'A man from the city warned Moses (pbuh) that the Pharaoh’s soldiers were looking for him, so he left Egypt.' },
       { id: 'moses-b1-en-6-2', x: 63, y: 69, title: 'The Well in Midian', description: 'In Midian, Moses (pbuh) found shepherds at a well and two girls waiting far from the water.' },
     ],
   ),
