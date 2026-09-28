@@ -256,7 +256,7 @@ export const meccaA2PagesAr: PageData[] = [
       { id: 'mecca-a2-ar-h13b', x: 69, y: 66, title: 'الْقَلْبُ وَالْأَعْمَالُ', description: 'تنتهي القصة بأن المهم هو القلب والأعمال الصالحة.' },
     ],
   },
-  { id: 14, type: 'quiz', title: 'اختبار المعرفة: مكة A2 - بلال بن رباح', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'اختبر فهمك لقصة بلال بن رباح ومكة قبل الإسلام.' },
+  { id: 14, type: 'quiz', title: 'اختبار المعرفة', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'اختبر فهمك لقصة بلال بن رباح ومكة قبل الإسلام.' },
   { id: 15, type: 'vocabulary-match', title: 'تحدي الكلمات والمفردات', image: 'https://picsum.photos/seed/vocab-match-mecca-a2/1200/800', audioUrl: '', content: 'طابق الكلمات المهمة من القصة بمعانيها.' },
   { id: 16, type: 'exercises', title: 'مراجعة اللغة', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'راجع لغة القصة بخطوات بسيطة: انظر، تدرّب، ثم استخدمها.' },
   { id: 17, type: 'glossary', title: 'المعجم الرئيسي', image: 'https://picsum.photos/seed/mecca-a2-glossary/1200/800', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: [
@@ -469,5 +469,5 @@ export const meccaA2PagesAr: PageData[] = [
         "definition": "ما له قيمة ويستحق الاهتمام."
     }
 ] },
-  { id: 19, type: 'final-challenge', title: 'التحدي النهائي والشامل', image: 'https://picsum.photos/seed/mecca-a2-final-challenge/1200/800', content: 'أظهر ما فهمته من قصة بلال بن رباح كاملة.' },
+  { id: 19, type: 'final-challenge', title: 'التحدي النهائي', image: 'https://picsum.photos/seed/mecca-a2-final-challenge/1200/800', content: 'أظهر ما فهمته من قصة بلال بن رباح كاملة.' },
 ];

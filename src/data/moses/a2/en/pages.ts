@@ -258,7 +258,7 @@ export const mosesA2Pages: PageData[] = [
       { id: 'moses-a2-en-h16b', x: 65, y: 50, title: 'The Lesson', description: 'The story teaches that only Allah has true power over people.' },
     ],
   },
-  { id: 17, type: 'quiz', title: 'Knowledge Check: Moses (pbuh)', image: 'https://picsum.photos/seed/quiz-moses-a2/1200/800', audioUrl: '', content: 'Test your understanding of the story of Moses (pbuh).' },
+  { id: 17, type: 'quiz', title: 'Knowledge Check', image: 'https://picsum.photos/seed/quiz-moses-a2/1200/800', audioUrl: '', content: 'Test your understanding of the story of Moses (pbuh).' },
   { id: 18, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-moses-a2/1200/800', audioUrl: '', content: 'Match the words from the story with their correct meanings.' },
   { id: 19, type: 'glossary', title: 'Master Glossary', content: 'Review all key vocabulary from the story in one place.', image: 'https://picsum.photos/seed/moses-a2-glossary/1200/800', vocabulary: [
     {

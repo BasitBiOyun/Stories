@@ -258,7 +258,7 @@ export const abrahamA2PagesAr: PageData[] = [
   {
     id: 15,
     type: 'quiz',
-    title: 'اختبار المعرفة: إبراهيم (عليه السلام)',
+    title: 'اختبار المعرفة',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2FAbraham_a2_ch1.png?alt=media&token=5e040caa-6fbf-4bb4-840f-8fc15c0c8478',
     audioUrl: '',
     content: 'اختبر فهمك للأحداث الرئيسية في حياة النبي إبراهيم (عليه السلام).'

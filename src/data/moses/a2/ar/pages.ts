@@ -356,7 +356,7 @@ export const mosesA2PagesAr: PageData[] = [
       { id: 'moses-a2-ar-h16b', x: 65, y: 50, title: 'الدرس', description: 'تعلم القصة أن الله وحده صاحب القدرة الحقيقية على الناس.' },
     ],
   },
-  { id: 17, type: 'quiz', title: 'اختبار المعرفة: موسى عليه السلام', image: 'https://picsum.photos/seed/quiz-moses-a2/1200/800', audioUrl: '', content: 'اختبر فهمك وحفظك لقصة النبي موسى عليه السلام الجميلة.' },
+  { id: 17, type: 'quiz', title: 'اختبار المعرفة', image: 'https://picsum.photos/seed/quiz-moses-a2/1200/800', audioUrl: '', content: 'اختبر فهمك وحفظك لقصة النبي موسى عليه السلام الجميلة.' },
   { id: 18, type: 'vocabulary-match', title: 'تحدي المفردات', image: 'https://picsum.photos/seed/vocab-moses-a2/1200/800', audioUrl: '', content: 'صل الكلمات من القصة بالمعاني الصحيحة لها لتختبر مفرداتك.' },
   { id: 19, type: 'glossary', title: 'المعجم الرئيسي', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', image: 'https://picsum.photos/seed/moses-a2-glossary/1200/800', vocabulary: [
     {

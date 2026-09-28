@@ -288,7 +288,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
       { id: 'mecca-a2-en-h13b', x: 69, y: 66, title: 'Heart and Actions', description: 'The story ends by saying that the heart and good actions are what matter.' },
     ],
   },
-  { id: 14, type: 'quiz', title: 'Knowledge Check: Mecca A2 - Bilal ibn Rabah', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'Test your understanding of the A2 story of Bilal ibn Rabah and Mecca before Islam.' },
+  { id: 14, type: 'quiz', title: 'Knowledge Check', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'Test your understanding of the A2 story of Bilal ibn Rabah and Mecca before Islam.' },
   { id: 15, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-match-mecca-a2/1200/800', audioUrl: '', content: 'Match important words from the story with their meanings.' },
   { id: 16, type: 'exercises', title: 'Language Review', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'Review and use the language patterns from across the book.' },
   { id: 17, type: 'glossary', title: 'Master Glossary', image: 'https://picsum.photos/seed/mecca-a2-glossary/1200/800', content: 'Review all key vocabulary from the story in one place.', vocabulary: [

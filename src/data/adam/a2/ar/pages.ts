@@ -183,7 +183,7 @@ export const adamA2PagesAr: PageData[] = [
       { id: 'adam-a2-ar-h10b', x: 55, y: 30, title: 'الرِّسالَة', description: 'نَشَرَ أَوْلَادُهُ وَأَحْفَادُهُ رِسَالَتَهُ فِي كُلِّ الْعَالَمِ.' },
     ],
   },
-  { id: 11, type: 'quiz', title: 'اختبار المعرفة: آدم (عليه السلام)', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'اختبر فهمك لثماني أفكار أساسية من القصة.' },
+  { id: 11, type: 'quiz', title: 'اختبار المعرفة', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'اختبر فهمك لثماني أفكار أساسية من القصة.' },
   { id: 12, type: 'vocabulary-match', title: 'تحدي المفردات', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'صل ست كلمات أساسية من القصة بمعانيها.' },
   { id: 13, type: 'exercises', title: 'مراجعة اللغة', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول العشرة.' },
   {

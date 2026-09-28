@@ -372,11 +372,11 @@ Yazıcı, Tahsin. "Derviş," TDV İslâm Ansiklopedisi, https://islamansiklopedi
 Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerler," I. Ulusal Yunus Emre Sempozyumu, Karaman, 2010, s. 101-116.`,
     vocabulary: [], hotspots: [],
   },
-  { id: 15, type: 'quiz', title: 'اختبار المعرفة: يونس إمره B2', image: '', audioUrl: '', content: 'اختبر فهم الكتاب بثمانية أسئلة قائمة على الدليل.' },
+  { id: 15, type: 'quiz', title: 'اختبار المعرفة', image: '', audioUrl: '', content: 'اختبر فهم الكتاب بثمانية أسئلة قائمة على الدليل.' },
   { id: 16, type: 'vocabulary-match', title: 'تحدي المفردات B2', image: '', audioUrl: '', content: 'طابق عشر كلمات محورية بمعانيها في سياق القصة.' },
   { id: 17, type: 'glossary', title: 'المعجم الرئيسي', image: '', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: [] },
   { id: 19, type: 'exercises', title: 'مراجعة اللغة', image: '', content: 'راجع واستعمل لغة المصدر والسبب والنتيجة والاستدراك والمقارنة والتفسير من الكتاب.' },
-  { id: 20, type: 'final-challenge', title: 'التحدي النهائي: يونس إمره B2', image: '', content: 'أظهر إتقانك للكتاب كاملًا من خلال التحدي النهائي.' },
+  { id: 20, type: 'final-challenge', title: 'التحدي النهائي', image: '', content: 'أظهر إتقانك للكتاب كاملًا من خلال التحدي النهائي.' },
 // c17b
 ];
 

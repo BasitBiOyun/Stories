@@ -233,7 +233,7 @@ export const mosesB1Pages: PageData[] = [
       { id: 'moses-b1-en-13-2', x: 74, y: 35, title: 'The Final Lesson', description: 'The chapter ends by emphasizing Allah’s power, guidance, and human freedom.' },
     ],
   ),
-  { id: 14, type: 'quiz', title: 'Knowledge Check: Moses (pbuh) - B1', image: '', audioUrl: '', content: 'Test your understanding of the B1 story of Prophet Moses (pbuh).' },
+  { id: 14, type: 'quiz', title: 'Knowledge Check', image: '', audioUrl: '', content: 'Test your understanding of the B1 story of Prophet Moses (pbuh).' },
   { id: 15, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: '', audioUrl: '', content: 'Match the B1 story words with their meanings.' },
   {
     id: 16,

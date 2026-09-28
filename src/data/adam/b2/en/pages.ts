@@ -1467,4 +1467,4 @@ adamB2Pages.push(
 {id:19,type:'exercises',title:'Language Review',image:'',content:'Review the grammar, stance and discourse tools developed across the chapters.',exercises:adamB2LanguageReviewExercises},
 {id:20,type:'vocabulary-match',title:'Vocabulary Challenge',image:'',content:'Match key B2 words from the story with their meanings.',vocabularyPairs:adamB2VocabularyChallengePairs},
 {id:21,type:'glossary',title:'Master Glossary',image:'',content:'Review the active Word Notes from all seventeen chapters.',vocabulary:glossary},
-{id:22,type:'final-challenge',title:'B2 Final Challenge',image:'',content:'Complete the final challenge to demonstrate your mastery of Adam’s story.',exercises:adamB2FinalChallengeExercises});
+{id:22,type:'final-challenge',title:'Final Challenge',image:'',content:'Complete the final challenge to demonstrate your mastery of Adam’s story.',exercises:adamB2FinalChallengeExercises});

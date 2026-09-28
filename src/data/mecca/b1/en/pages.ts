@@ -313,7 +313,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
       { id: 'mecca-b1-en-15-2', x: 68, y: 64, title: 'Islam and Justice', description: 'Islam called people to unity based on justice, mercy, and belief in one Allah.' },
     ]
   ),
-  { id: 16, type: 'quiz', title: 'Knowledge Check: Mecca Before Islam - B1', image: '', content: 'Check your understanding of the whole story through eight evidence-based questions.' },
+  { id: 16, type: 'quiz', title: 'Knowledge Check', image: '', content: 'Check your understanding of the whole story through eight evidence-based questions.' },
   { id: 17, type: 'exercises', title: 'Language Review', image: '', content: 'Review and use grammar, meaning relationships and communicative language from across the book.' },
   { id: 18, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', image: '', content: 'Match ten important words and concepts with their meanings.' },
   {
@@ -1833,5 +1833,5 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
       }
 ]
   },
-  { id: 20, type: 'final-challenge', title: 'B1 Final Challenge', image: '', content: 'Demonstrate whole-book B1 understanding through ten varied tasks.' },
+  { id: 20, type: 'final-challenge', title: 'Final Challenge', image: '', content: 'Demonstrate whole-book B1 understanding through ten varied tasks.' },
 ];

@@ -175,7 +175,7 @@ export const adamA2Pages: PageData[] = [
       { id: 'adam-a2-en-h10b', x: 55, y: 30, title: 'The Message', description: 'His children and grandchildren spread his message around the world.' },
     ],
   },
-  { id: 11, type: 'quiz', title: 'Knowledge Check: Adam (pbuh)', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'Check your understanding of eight key ideas from the story.' },
+  { id: 11, type: 'quiz', title: 'Knowledge Check', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'Check your understanding of eight key ideas from the story.' },
   { id: 12, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'Match six key words from the story with their meanings.' },
   { id: 13, type: 'exercises', title: 'Language Review', image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter10.png?alt=media&token=1547f902-5af2-4d83-94a6-7d0b70ca0723', content: 'Review and use the grammar patterns and language functions from all ten chapters.' },
   {
