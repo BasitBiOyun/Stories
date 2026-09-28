@@ -29,7 +29,7 @@ export const abrahamB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       question: 'Which verb form follows order, let and make + person or thing?',
       errorItems: [
         {
-          sentence: 'He ordered his guards bring two slaves and told them to be put to death.',
+          sentence: 'He ordered his guards bring two slaves and to put them to death.',
           error: 'bring',
           options: ['to bring', 'bringing', 'brought'],
           answer: 0,
@@ -141,7 +141,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: 'They all travelled for a long time. [choice], they reached a lonely valley near two small hills, Safa and Marwa.',
+          sentence: 'They all traveled for a long time. [choice], they reached a lonely valley near two small hills, Safa and Marwa.',
           options: ['Finally', 'At first', 'Firstly'],
           answer: 0,
         },
@@ -387,7 +387,7 @@ export const abrahamB1LanguageFocusChapter13: Record<number, Exercise[]> = {
       title: 'Purpose Across Generations',
       instructions: 'Complete the lines from Chapter 13 with words from the bank. Two words are not needed.',
       question: 'Which words show who the Ka’ba was for, a long period of time and a purpose?',
-      fillBlanksText: 'He built a place of worship [blank] all people of different races and colors. … [blank], Ishmael’s children had children; one of them was Muhammad, the Prophet of Islam (pbuh). They spread all over the Arabian Peninsula [blank] carry their grandfather Abraham’s (pbuh) message of the Oneness of Allah.',
+      fillBlanksText: 'He built a place of worship [blank] all people of different races and colors. … [blank], Ishmael’s descendants grew in number; among them was Muhammad, the Prophet of Islam (pbuh). They spread all over the Arabian Peninsula [blank] carry their grandfather Abraham’s (pbuh) message of the Oneness of Allah.',
       wordBank: ['for', 'Over the years', 'to', 'Since', 'so'],
       correctAnswer: ['for', 'Over the years', 'to'],
       explanation: '“For + noun” shows who something is for (a place of worship for all people). “Over the years” shows change or continuity across a long period, here across generations. “To + verb” gives the purpose of an action (spread … to carry the message). “Since” needs a starting point, and “so” would introduce a result.',
