@@ -1,4 +1,4 @@
-import { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 // Single source of truth for every English Adam A2 learning activity.
 // Story prose lives in pages.ts and is never generated or rewritten here.
@@ -113,13 +113,13 @@ export const adamA2KnowledgeCheckExercises: Exercise[] = [
   { id: 'adam-a2-kc-8-a-sad-father', type: 'multiple-choice', title: 'A Sad Father', instructions: 'Read the question. Choose the answer.', question: 'Why did Adam (pbuh) become very sad at the end of the story?', options: ['His children did not want to hear his message.', 'He lost both of his sons on the same day.', 'He had to leave his home and go far away.'], correctAnswer: 1, explanation: 'Chapter 10: “Adam (pbuh) became very sad. He lost both of his sons on the same day.” Habil died, and Qabil went far away.', feedback: { correct: 'Yes. Habil died, and Qabil went far away. Adam (pbuh) lost both sons on one day.', incorrect: 'Not this one. Read the first paragraph of Chapter 10 again. What happened to Adam’s two sons?' } },
 ];
 
-export const adamA2VocabularyChallengePairs = [
-  { word: 'Messenger', meaning: 'A person who carries a message from Allah' },
-  { word: 'arrogant', meaning: 'Thinking that you are more important or better than others' },
-  { word: 'regret', meaning: 'Feeling sorry about a mistake' },
-  { word: 'shepherd', meaning: 'A person who looks after sheep' },
-  { word: 'offering', meaning: 'Something given to Allah' },
-  { word: 'jealousy', meaning: 'Feeling unhappy because of what another person has or achieves' }
+export const adamA2VocabularyChallengePairs: VocabularyChallengePair[] = [
+  { word: 'grandchildren', meaning: 'The children of a person’s children.', partOfSpeech: 'noun', chapter: 1, context: 'We are the grandchildren of Adam (pbuh), so we can learn many lessons from this fantastic story.' },
+  { word: 'origin', meaning: 'The place or material something comes from.', partOfSpeech: 'noun', chapter: 3, context: 'He came from the fire and believed his origin was better.' },
+  { word: 'wonderful', meaning: 'Very good and enjoyable.', partOfSpeech: 'adjective', chapter: 4, context: 'It was more wonderful than we can imagine.' },
+  { word: 'forgetful', meaning: 'Often forgetting things.', partOfSpeech: 'adjective', chapter: 5, context: 'Unfortunately, people are sometimes forgetful.' },
+  { word: 'harm', meaning: 'To hurt someone or cause damage.', partOfSpeech: 'verb', chapter: 9, context: 'I won’t fight back or harm you.' },
+  { word: 'control', meaning: 'To stop a feeling from becoming too strong.', partOfSpeech: 'verb', chapter: 10, context: 'The story tells us that good people should stay away from jealousy and control their anger.' },
 ];
 
 // Locked Final distribution:
