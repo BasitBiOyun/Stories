@@ -392,14 +392,6 @@ const yunusB2ManualKnowledgeCheckExercisesAr: Exercise[] = [
   { id: 'yunus-b2-ar-kc-8-patience-brings-greatness', type: 'true-false', title: 'أكثر من التحمّل', instructions: 'هل توافق العبارة ما ورد في الفصلين الثاني عشر والثالث عشر؟', question: 'في أبيات يونس عن الصبر، الصبر أكثر من تحمّل الشدائد: فهو يبلغ بصاحبه العظمة، وفيه كل أنواع المهارات.', correctAnswer: true, explanation: 'الفصل الثاني عشر: «أولئك الذين رزقوا الصبر سينالون العظمة». الفصل الثالث عشر: «من يتحلى بالصبر يرتفع إلى السماوات، ففي الصبر تكمن كل أنواع المهارات».', feedback: { correct: 'صحيح، العبارة صحيحة. تعرض الأبيات الصبر مصدرًا للعظمة والمهارة، لا مجرد وسيلة لاجتياز الأوقات الصعبة.', incorrect: 'أعد قراءة أبيات الصبر في آخر الفصل الثاني عشر وأول الفصل الثالث عشر: إلامَ يقود الصبر بحسبها؟' } },
 ];
 
-const finalFeedbackAr = { correct: 'صحيح. التركيب مدعوم عبر فصول الكتاب.', incorrect: 'ليس بعد. أعد وصل الفصول ذات الصلة ثم حاول مرة أخرى.' };
-const finalReplacementAr: Record<string, Exercise> = {
-  'yu-b2-ar-f6': {id:'yu-b2-ar-f6',type:'matching',title:'التحدي النهائي',instructions:'طابق الحالة التاريخية بنتيجتها الأوسع.',question:'اربط النظام التاريخي عبر الفصول.',matchingPairs:[{left:'اضطراب البابائيين وضعف الإدارة',right:'تعمق الاضطراب الداخلي قبل كوسه داغ'},{left:'هزيمة كوسه داغ',right:'فتح النصر المغولي الطريق للدمار والهيمنة'},{left:'تزايد المدفوعات للمغول',right:'تحولت التبعية السياسية إلى ضغط اقتصادي على الدولة والناس'},{left:'الضغط المغولي في المناطق الشرقية',right:'تحرك الشيوخ والدراويش نحو الأناضول وتأثر المجال الديني والثقافي'}],correctAnswer:{'اضطراب البابائيين وضعف الإدارة':'تعمق الاضطراب الداخلي قبل كوسه داغ','هزيمة كوسه داغ':'فتح النصر المغولي الطريق للدمار والهيمنة','تزايد المدفوعات للمغول':'تحولت التبعية السياسية إلى ضغط اقتصادي على الدولة والناس','الضغط المغولي في المناطق الشرقية':'تحرك الشيوخ والدراويش نحو الأناضول وتأثر المجال الديني والثقافي'},explanation:'يربط الكتاب الأزمة الداخلية والهزيمة والتبعية والحركة الثقافية في سلسلة واحدة.',feedback:finalFeedbackAr},
-  'yu-b2-ar-f7': {id:'yu-b2-ar-f7',type:'matching',title:'التحدي النهائي',instructions:'طابق الفكرة بأثرها المركب عبر الفصول.',question:'اربط الإطار الأخلاقي والروحي في الفصول الأخيرة.',matchingPairs:[{left:'التوحيد والمحبة',right:'تصبح الوحدة أساساً للعلاقة بالخالق والمخلوق'},{left:'القلب والعقل',right:'يتعاون الحس الباطن والفهم العقلي في طريق النجاة'},{left:'تذكر الموت',right:'يمكن للوعي بالفناء أن يوجه إلى حياة ذات معنى وصلاح'},{left:'الفضائل والصفات الضارة',right:'تتحول الأخلاق إلى اختيارات سلوكية لا أسماء مجردة'}],correctAnswer:{'التوحيد والمحبة':'تصبح الوحدة أساساً للعلاقة بالخالق والمخلوق','القلب والعقل':'يتعاون الحس الباطن والفهم العقلي في طريق النجاة','تذكر الموت':'يمكن للوعي بالفناء أن يوجه إلى حياة ذات معنى وصلاح','الفضائل والصفات الضارة':'تتحول الأخلاق إلى اختيارات سلوكية لا أسماء مجردة'},explanation:'تبني الفصول الأخيرة إطاراً مترابطاً من العقيدة والباطن والموت والعمل.',feedback:finalFeedbackAr},
-  'yu-b2-ar-f8': {id:'yu-b2-ar-f8',type:'fill-blanks',title:'التحدي النهائي',instructions:'أكمل العلاقة التاريخية الجامعة.',question:'أكمل الخلاصة.',fillBlanksText:'يصبح صوت يونس الشعري ذا معنى اجتماعي في زمن الأزمة والهيمنة المغولية وبحث الناس عن [blank].',correctAnswer:['المعنى','الغاية'],explanation:'يربط الفصل السابع بحث الناس عن معنى في الأيام الصعبة باستخدام يونس الشعر وسيلة صوفية.',feedback:finalFeedbackAr},
-  'yu-b2-ar-f9': {id:'yu-b2-ar-f9',type:'fill-blanks',title:'التحدي النهائي',instructions:'أكمل علاقة الإرث الجامعة.',question:'أكمل الخلاصة.',fillBlanksText:'يقدم الكتاب إرث يونس المستمر بوصفه أدبياً و[blank] في الوقت نفسه، إذ تصل القصائد بالأخلاق والهداية.',correctAnswer:['أخلاقياً','أخلاقي'],explanation:'تقدم الفصول الأخيرة الشعر عملاً أدبياً ودليلاً أخلاقياً للأجيال.',feedback:finalFeedbackAr},
-};
-const yunusB2FinalChallengeExercisesArPolished: Exercise[] = yunusB2FinalChallengeExercisesAr.map(exercise => finalReplacementAr[exercise.id] ?? exercise);
 // t01b
 // t02a
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
@@ -434,7 +426,7 @@ export const yunusEmreB2PagesAr: PageData[] = rawYunusEmreB2PagesAr.map(page => 
     content: 'راجع واستعمل لغة نسبة المصادر والسبب والنتيجة والاستدراك والمقارنة والتفسير والضرورة والإمكان التي تطورت عبر الفصول الثلاثة عشر.',
     exercises: yunusB2LanguageReviewExercisesAr,
   };
-  if (page.id === 20) return { ...clean, exercises: yunusB2FinalChallengeExercisesArPolished };
+  if (page.id === 20) return { ...clean, exercises: yunusB2FinalChallengeExercisesAr };
   return clean;
 });
 
