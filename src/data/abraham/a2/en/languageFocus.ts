@@ -171,7 +171,7 @@ export const abrahamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'A Question to Himself',
       instructions: 'Read the question from Chapter 3. Choose what Abraham is doing.',
-      question: 'Abraham saw a bright star and thought, “Could this be my Allah?” What is Abraham doing?',
+      question: 'Abraham saw a bright star and thought, “Could this be my Lord?” What is Abraham doing?',
       options: [
         'He is sure that the star is Allah.',
         'He is telling the star what to do.',

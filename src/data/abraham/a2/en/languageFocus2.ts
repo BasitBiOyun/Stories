@@ -7,7 +7,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       type: 'true-false',
       title: 'What Does “Had To” Mean?',
       instructions: 'Read the sentence from Chapter 4. Then decide: true or false?',
-      question: '“By now, he had to guide his people.” True or false: guiding his people was now Abraham’s duty.',
+      question: '“From then on, he had to guide his people.” True or false: guiding his people was now Abraham’s duty.',
       correctAnswer: true,
       explanation: '“Had to + base verb” tells us about a duty or something necessary in the past. Allah made Abraham His Messenger, so now guiding his people was his job.',
       feedback: {
@@ -21,7 +21,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       title: 'Time Words in the Story',
       instructions: 'Complete the lines from Chapter 4 with words from the bank. Two words are not needed.',
       question: 'Which time words move the story from the night to the morning?',
-      fillBlanksText: 'Abraham stayed [blank]. [blank] the sun came out. It was shining and very bright. [blank] he saw the bright sun, he thought, “Could this be Allah? It is bigger and brighter.”',
+      fillBlanksText: 'Abraham stayed [blank]. [blank] the sun came out. It was shining and very bright. [blank] he saw the bright sun, he thought, “Could this be my Lord? It is bigger and brighter.”',
       wordBank: ['all night', 'In the morning', 'When', 'On the morning', 'during'],
       correctAnswer: ['all night', 'In the morning', 'When'],
       explanation: '“All night” tells us how long Abraham stayed: from evening until morning. We say “in the morning”, not “on the morning”. “When” joins two actions: first he saw the sun, then he had a new thought.',
@@ -193,11 +193,11 @@ export const abrahamA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = 
       question: 'Which questions use a question word, and which can have a yes/no answer?',
       dragDropGroups: [
         { group: 'Has a question word (Who? Why?)', items: ['Who did this?', 'Then, why do you worship these objects?'] },
-        { group: 'Yes or no question', items: ['Don’t you see that they …?', 'Are you crazy?'] },
+        { group: 'Yes or no question', items: ['Don’t you see that they …?', 'Don’t you understand?'] },
       ],
       correctAnswer: {
         'Has a question word (Who? Why?)': ['Who did this?', 'Then, why do you worship these objects?'],
-        'Yes or no question': ['Don’t you see that they …?', 'Are you crazy?'],
+        'Yes or no question': ['Don’t you see that they …?', 'Don’t you understand?'],
       },
       explanation: '“Who …?” asks for a person and “Why …?” asks for a reason. Questions that start with “Don’t …?” or “Are …?” can have a yes/no answer. Abraham’s yes/no questions make the people think: they know the answer.',
       feedback: {
