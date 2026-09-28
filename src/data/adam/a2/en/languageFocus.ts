@@ -46,7 +46,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
           answer: 1,
         },
         {
-          sentence: '… he told the angels that he [choice] create a human.',
+          sentence: '… He told the angels that He [choice] create a human.',
           options: ['going to', 'were going to', 'was going to'],
           answer: 2,
         },

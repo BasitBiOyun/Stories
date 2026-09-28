@@ -150,7 +150,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       title: 'Time, Result and Reason',
       instructions: 'Complete the narrator’s lines from Chapter 8 with words from the bank. Three words are not needed.',
       question: 'Which linkers connect the moment of discovery, the response and the reason for it?',
-      fillBlanksText: '[blank] they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, [blank] they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, [blank] the sense of shame (hayâ) is inborn human nature and nakedness is contrary to human nature.',
+      fillBlanksText: '[blank] they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, [blank] they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, [blank] the sense of shame (haya) is inborn human nature and nakedness is contrary to human nature.',
       wordBank: ['When', 'so', 'because', 'Although', 'unless', 'but'],
       correctAnswer: ['When', 'so', 'because'],
       explanation: '“When” sets the time point that starts the chain. “So” introduces the result of the discovery: they began to cover themselves. “Because” gives the reason for their haste: shame is part of human nature. The chain moves time → result → reason.',

@@ -7,7 +7,7 @@ export const adamB1Pages: PageData[] = [
     id: 1, type: 'story', title: 'Introduction & The Creation',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Fimages%2Fadam_b1_chapter_1.png?alt=media&token=f2ae6289-f8fa-4606-a89a-d1d8537a4394',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch1.mp3?alt=media&token=1b85ccfb-4eaa-4154-b3d9-3eef74cd6e50',
-    content: "Adam (pbuh) is the first Messenger and the father of all humans. Allah created him from soil and showed him great respect and gave him full value as the first human. The Holy Qur’an tells his tale in different surahs. Surahs A’raf, Baqarah, Hicr, Isra, Sâd and Taha describe Adam (pbuh)’s tale clearly. As the grandchildren of Adam (pbuh), we can learn many lessons from this fabulous but true story. In this story, there are numerous important messages about humans’ role in life.\n\nAfter Allah created the sky and the earth, He told the angels that He was going to create a human. He said He had decided to place a ruler (halîfe) on earth. This ruler would live there for many years. The angels were surprised and began to wait with curiosity.",
+    content: "Adam (pbuh) is the first Messenger and the father of all humans. Allah created him from soil and showed him great respect and gave him full value as the first human. The Holy Qur’an tells his tale in different surahs. Surahs A’raf, Baqarah, Hijr, Isra, Sad and Taha describe Adam (pbuh)’s tale clearly. As the grandchildren of Adam (pbuh), we can learn many lessons from this fabulous but true story. In this story, there are numerous important messages about humans’ role in life.\n\nAfter Allah created the sky and the earth, He told the angels that He was going to create a human. He said He had decided to place a ruler (khalifah) on earth. This ruler would live there for many years. The angels were surprised and began to wait with curiosity.",
     vocabulary: [
       { word: 'messenger', definition: 'A person chosen by Allah to deliver His message.' },
       { word: 'fabulous', definition: 'Very impressive or wonderful.' },
@@ -23,7 +23,7 @@ export const adamB1Pages: PageData[] = [
     id: 2, type: 'story', title: 'The Shaping of Adam',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Fimages%2Fadam_b1_chapter_2.png?alt=media&token=0859c3b7-a4b5-420c-a48d-8577e494ad6e',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch2.mp3?alt=media&token=50c2834f-df94-46fd-acc3-05427df307e3',
-    content: "Then, Allah’s angels collected soil from different parts of the earth and Allah shaped Adam (pbuh). That’s why humans have different skin colors. Prophet Muhammad (peace be upon him, ʿalayhi s-salām) said that Allah created Adam (pbuh) from a handful of dust from different lands, so the children of Adam (pbuh) are white, red, black and yellow in color. \n\nAllah told His angels, “After I have created Adam (pbuh) and given him life and knowledge, show respect to him.” Allah gave Adam (pbuh) life and intellect to learn and understand. Later, He taught Adam (pbuh) everything he needed to do good on earth. He gave Adam (pbuh) more knowledge than the angels.",
+    content: "Then, Allah’s angels collected soil from different parts of the earth and Allah shaped Adam (pbuh). That’s why humans have different skin colors. Prophet Muhammad (pbuh) said that Allah created Adam (pbuh) from a handful of dust from different lands, so the children of Adam (pbuh) are white, red, black and yellow in color. \n\nAllah told His angels, “After I have created Adam (pbuh) and given him life and knowledge, show respect to him.” Allah gave Adam (pbuh) life and intellect to learn and understand. Later, He taught Adam (pbuh) everything he needed to do good on earth. He gave Adam (pbuh) more knowledge than the angels.",
     vocabulary: [
       { word: 'handful', definition: 'An amount that can be held in one hand.' },
       { word: 'intellect', definition: 'The ability to reason, learn, and understand.' },
@@ -87,7 +87,7 @@ export const adamB1Pages: PageData[] = [
     id: 6, type: 'story', title: 'Satan’s lies and Adam’s Departure from Paradise',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Fimages%2Fadam_b1_chapter_6.png?alt=media&token=a98133d4-6d45-4468-b7b7-c14a72cd267d',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch6.mp3?alt=media&token=6e7590c3-4f65-40ef-9439-146a77befcdc',
-    content: "Eventually, Iblis managed to trick them. He convinced them to believe his lies, and they forgot the warning Allah had given them. Adam stretched out his hand, picked one of the fruits and offered it to Eve. They both ate of the forbidden tree. \n\nWhen Adam finished eating, he felt that his heart was filled with pain, sadness and shame. The surrounding atmosphere changed and the internal harmony ceased. \n\nWhen they tasted the fruit, their private parts became visible. Adam (pbuh) discovered that he and his wife were uncovered, so they both started cutting tree leaves in Paradise to cover themselves. They hurried to hide their private parts because a sense of shame (hayâ) is part of inborn human nature and nakedness is against creation.",
+    content: "Eventually, Iblis managed to trick them. He convinced them to believe his lies, and they forgot the warning Allah had given them. Adam stretched out his hand, picked one of the fruits and offered it to Eve. They both ate of the forbidden tree. \n\nWhen Adam finished eating, he felt that his heart was filled with pain, sadness and shame. The surrounding atmosphere changed and the internal harmony ceased. \n\nWhen they tasted the fruit, their private parts became visible. Adam (pbuh) discovered that he and his wife were uncovered, so they both started cutting tree leaves in Paradise to cover themselves. They hurried to hide their private parts because a sense of shame (haya) is part of inborn human nature and nakedness is against creation.",
     vocabulary: [
       { word: 'forbidden', definition: 'Not allowed by a rule or command.' },
       { word: 'shame', definition: 'A painful feeling connected with awareness of wrong behavior.' },
@@ -266,7 +266,7 @@ export const adamB1Pages: PageData[] = [
             ],
             "chapter": 1,
             "chapterTitle": "Introduction & The Creation",
-            "storyExample": "He said He had decided to place a ruler (halîfe) on earth.",
+            "storyExample": "He said He had decided to place a ruler (khalifah) on earth.",
             "category": "Leadership & Responsibility"
       },
       {
@@ -308,7 +308,7 @@ export const adamB1Pages: PageData[] = [
             ],
             "chapter": 2,
             "chapterTitle": "The Shaping of Adam",
-            "storyExample": "Prophet Muhammad (peace be upon him, ʿalayhi s-salām) said that Allah created Adam (pbuh) from a handful of dust from different lands, so the children of Adam (pbuh) are white, red, black and yellow in color.",
+            "storyExample": "Prophet Muhammad (pbuh) said that Allah created Adam (pbuh) from a handful of dust from different lands, so the children of Adam (pbuh) are white, red, black and yellow in color.",
             "category": "Quantity & Description"
       },
       {
@@ -748,7 +748,7 @@ export const adamB1Pages: PageData[] = [
             ],
             "chapter": 6,
             "chapterTitle": "Satan’s lies and Adam’s Departure from Paradise",
-            "storyExample": "They hurried to hide their private parts because a sense of shame (hayâ) is part of inborn human nature and nakedness is against creation.",
+            "storyExample": "They hurried to hide their private parts because a sense of shame (haya) is part of inborn human nature and nakedness is against creation.",
             "category": "Human Nature"
       },
       {
