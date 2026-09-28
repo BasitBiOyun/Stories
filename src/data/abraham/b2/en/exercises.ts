@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 const feedback = { correct: 'Correct. Your answer is supported by the chapter.', incorrect: 'Not yet. Return to the chapter evidence and try again.' };
 const mc = (id:string,q:string,options:string[],answer:number,explanation:string,title='Quick Challenge'):Exercise => ({id,type:'multiple-choice',title,instructions:'Choose the best evidence-based answer.',question:q,options,correctAnswer:answer,explanation,feedback});
@@ -54,17 +54,17 @@ export const abrahamB2KnowledgeCheckExercises: Exercise[] = [
   { id: 'abraham-b2-kc-8-angel-confirms-hagar', type: 'multiple-choice', title: 'Words That Come True', instructions: 'Connect Chapter 30 with Chapter 27 and choose the best answer.', question: 'The angel tells Hagar, “Allah never abandons his people.” Which earlier words of Hagar does this confirm?', options: ['“Has Allah commanded you to leave us here?”', '“We are not going to be lost, since Allah is with us.”', '“Maybe there is a caravan passing by.”', '“Yes. I am leaving you to Allah’s care.”'], correctAnswer: 1, explanation: 'Chapter 27: “I am satisfied to be with Allah! We are not going to be lost, since Allah is with us.” Chapter 30: “Do not be afraid. This is the place for the House of Allah, which this boy and his father will build. Allah never abandons his people.”', feedback: { correct: 'Yes. Hagar’s trust in Chapter 27 is answered in Chapter 30: Allah did not leave them, and the water appeared.', incorrect: 'Check who says each option: one is Abraham’s answer, and two are Hagar’s question and thought. Which sentence expresses the same trust as the angel’s words?' } },
 ];
 
-export const abrahamB2VocabularyChallengePairs = [
-{word:'Hanif',meaning:'A morally upright monotheist associated with Abraham’s path of Tawheed.'},
-{word:'idolatry',meaning:'Worship directed to idols or other created beings as divine.'},
-{word:'qualified claim',meaning:'A statement whose certainty is limited by wording such as “some sources” or “is believed”.'},
-{word:'reverted',meaning:'Returned to a former belief or position after briefly recognizing a contradiction.'},
-{word:'demonstrate',meaning:'Show a claim clearly through evidence, reasoning, or an example.'},
-{word:'sufficient',meaning:'Enough to meet a need; used in the story’s expression of trust in Allah.'},
-{word:'emigrate',meaning:'Leave one land to settle elsewhere, here for the sake of faith.'},
-{word:'barren',meaning:'Dry or unproductive, with little or no vegetation.'},
-{word:'forbearing',meaning:'Patient and self-controlled under difficulty.'},
-{word:'legacy',meaning:'A lasting influence, practice, or inheritance passed to later generations.'},
+export const abrahamB2VocabularyChallengePairs: VocabularyChallengePair[] = [
+  { word: "rival", meaning: "Someone or something that competes with another for the same position.", partOfSpeech: "noun", chapter: 1, context: "He has no partner, rival, or helper." },
+  { word: "historically", meaning: "According to history or to what is known about the past.", partOfSpeech: "adverb", chapter: 4, context: "Historically, Abraham (pbuh) is believed to have lived in the 20th century BC." },
+  { word: "predicted", meaning: "Said that something would happen in the future.", partOfSpeech: "verb", chapter: 5, context: "One year, around the 20th century BC, they predicted that a child named Abraham (pbuh) would be born in the region, would change the religion of the people, and would end the reign of Nimrod." },
+  { word: "everlasting", meaning: "Lasting for ever; never ending.", partOfSpeech: "adjective", chapter: 10, context: "Allah is without end, everlasting without disappearance." },
+  { word: "harsh", meaning: "Cruel, severe and unkind.", partOfSpeech: "adjective", chapter: 14, context: "His father's harsh behavior towards Abraham (pbuh) did not stop him from carrying the message of truth." },
+  { word: "demanded", meaning: "Asked for something firmly, as if it were a right.", partOfSpeech: "verb", chapter: 19, context: "They furiously demanded that Abraham (pbuh) be arrested and judged." },
+  { word: "culprit", meaning: "The person who is responsible for a crime or wrong action.", partOfSpeech: "noun", chapter: 20, context: "He told them that it must be the culprit!" },
+  { word: "unquestionably", meaning: "In a way that nobody can doubt.", partOfSpeech: "adverb", chapter: 24, context: "This reply of the king was totally foolish, so Abraham (pbuh) put forth another challenge which would unquestionably and easily quiet him." },
+  { word: "barren", meaning: "Dry and unable to produce plants or crops.", partOfSpeech: "adjective", chapter: 28, context: "According to Allah’s intention, Hagar and Ishmael had to leave Palestine and settle in the barren valley of Mecca, near the place of the old temple, to reconstruct the Holy Ka‘ba which was lost after Noah’s Flood, making this place the renewed center of monotheism: Islam." },
+  { word: "longing", meaning: "A strong wish to see or have someone or something you love.", partOfSpeech: "noun", chapter: 33, context: "Father and son embraced each other again with longing." },
 ];
 
 export const abrahamB2FinalChallengeExercises: Exercise[] = [

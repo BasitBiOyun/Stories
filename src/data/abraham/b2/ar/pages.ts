@@ -8,7 +8,8 @@ import {
 import { abrahamB2LanguageFocusPart1Ar } from './languageFocus';
 import { abrahamB2LanguageFocusPart2Ar } from './languageFocus2';
 import { abrahamB2LanguageFocusPart3Ar } from './languageFocus3';
-import { abrahamB2CanonicalVocabulary, abrahamB2HotspotCoords, abrahamB2ImageUrl } from '../en/pages';
+import { abrahamB2ImageUrl } from '../en/pages';
+import { highlightPhraseOccurs } from '../../../../lib/highlightTextMatch';
 
 const rawAbrahamB2PagesAr: PageData[] = [
 // c01a
@@ -192,6 +193,465 @@ const rawAbrahamB2PagesAr: PageData[] = [
   {id:40,type:'final-challenge',title:'التحدي النهائي',content:'أظهر إتقانك للقصة كاملة من خلال التحليل والدليل والمقارنة والتركيب.',image:''},
 ];
 
+// Word Notes and hotspots of the 35 story chapters, exactly as the reader shows them.
+const abrahamB2StoryNotesAr: Record<number, Pick<PageData, 'vocabulary' | 'hotspots'>> = {
+  1: {
+    vocabulary: [
+      { word: "مُمَثِّل", definition: "من يتحدّث أو يعمل باسم جماعة أو فكرة أو عقيدة." },
+      { word: "التوحيديّة", definition: "القائمة على الإيمان بإلهٍ فرد لا شريك له." },
+      { word: "نِدّ", definition: "مثيلٌ ينافس غيره ويساويه في المكانة." },
+      { word: "الجَدّ", definition: "أبو الأب أو أبو الأم، أو من سبقهما من الآباء في النسب." },
+      { word: "فريد", definition: "لا مثيل له ولا يشبهه غيره." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-1-1', x: 28, y: 41, title: "رسول التوحيد", description: "يقدّم القرآن الكريم إبراهيم عليه السلام رسولًا لعقيدة أنّ الله واحد لا شريك له." },
+      { id: 'ab-b2-runtime-hs-1-2', x: 70, y: 62, title: "أبو الأنبياء", description: "كان إبراهيم عليه السلام أبا إسماعيل وإسحاق عليهما السلام، ومن نسل إسماعيل جاء النبي محمد ﷺ." },
+    ],
+  },
+  2: {
+    vocabulary: [
+      { word: "مهمّة", definition: "عملٌ أو غاية كبيرة يُكلَّف بها الإنسان أو يختارها لنفسه." },
+      { word: "نضال", definition: "جهد طويل وشاقّ في مواجهة الصعوبات أو الخصوم." },
+      { word: "مستقيم في الأخلاق", definition: "صادق عادل يتصرّف دائمًا بطريقة صحيحة وكريمة." },
+      { word: "العقل", definition: "قدرة الإنسان على التفكير والفهم والوصول إلى النتائج بالمنطق." },
+      { word: "قدرات", definition: "ما يملكه الإنسان من إمكانات للفهم والعمل." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-2-1', x: 35, y: 54, title: "مهمّة حياته", description: "أمضى إبراهيم عليه السلام حياته يدعو الناس إلى الإيمان بالله وحده، واجتاز اختبارات صعبة بثقته الكاملة به." },
+      { id: 'ab-b2-runtime-hs-2-2', x: 60, y: 65, title: "الطريق الحنيف", description: "يصف القرآن الكريم إبراهيم عليه السلام بأنه حنيف، أي موحّد ليس يهوديًّا ولا نصرانيًّا ولا مشركًا." },
+    ],
+  },
+  3: {
+    vocabulary: [
+      { word: "الشرك", definition: "عبادة الأصنام أو غيرها من المخلوقات مع الله أو بدلًا منه." },
+      { word: "التحريف", definition: "تغيير الشيء عن أصله الصحيح حتى يفسد معناه." },
+      { word: "الوحي", definition: "رسالة من الله يتلقّاها النبي." },
+      { word: "نبوّة", definition: "مقام من اختاره الله ليبلّغ رسالته إلى الناس." },
+      { word: "رحّب", definition: "استقبل الأمر بفرح وقبول." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-3-1', x: 42, y: 30, title: "حنفاء الحجاز", description: "قبل الإسلام كانت في الحجاز جماعة تسمّي نفسها الحنفاء، وكانت تبتعد عن الشرك وممارساته." },
+      { id: 'ab-b2-runtime-hs-3-2', x: 71, y: 44, title: "«أحدٌ، أحد»", description: "رأى ورقة بن نوفل بلالًا يُعذَّب تحت الشمس الحارقة وهو يردّد: «أحدٌ، أحد»." },
+    ],
+  },
+  4: {
+    vocabulary: [
+      { word: "مكان مولد", definition: "الموضع الذي خرج فيه الإنسان إلى الحياة." },
+      { word: "تاريخيًّا", definition: "بحسب ما يُعرف من أحداث الماضي وأخباره." },
+      { word: "مزدهرة", definition: "غنيّة وناجحة ومتقدّمة." },
+      { word: "الصناعة", definition: "العمل في إنتاج السلع والأدوات بكميات كبيرة." },
+      { word: "جوانب", definition: "أجزاء أو نواحٍ مختلفة من الشيء." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-4-1', x: 27, y: 43, title: "بلاد نمرود", description: "وُلد إبراهيم عليه السلام على الأرجح في أور أو بابل، بلاد الملك نمرود، نحو القرن العشرين قبل الميلاد." },
+      { id: 'ab-b2-runtime-hs-4-2', x: 61, y: 61, title: "معبودات كثيرة", description: "عبد الناس في زمن إبراهيم عليه السلام الكواكب والنجوم والشمس والقمر وأصنام الحجر والخشب، بل عبدوا ملوكهم أيضًا." },
+    ],
+  },
+  5: {
+    vocabulary: [
+      { word: "الجوّ", definition: "الحالة والمؤثّرات العامة التي تحيط بالإنسان في مكان ما." },
+      { word: "المنجّمين", definition: "أشخاص يزعمون معرفة المستقبل من حركة الكواكب." },
+      { word: "تنبّأوا", definition: "أخبروا بما سيحدث في المستقبل قبل وقوعه." },
+      { word: "حكم", definition: "مدّة سلطة الملك على البلاد وإدارته لأمورها." },
+      { word: "رواية", definition: "خبر عن أحداث ماضية ينقله الناس بعضهم عن بعض." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-5-1', x: 34, y: 56, title: "نبوءة المنجّمين", description: "تنبّأ منجّمو نمرود بأنّ طفلًا اسمه إبراهيم عليه السلام سيغيّر دين الناس ويُنهي حكم الملك." },
+      { id: 'ab-b2-runtime-hs-5-2', x: 72, y: 40, title: "مولد في كهف", description: "ليحمي آزر الطفل من أمر نمرود، أخفى زوجته الحامل في كهف، وهناك وُلد إبراهيم عليه السلام." },
+    ],
+  },
+  6: {
+    vocabulary: [
+      { word: "طهّر", definition: "نقّى الشيء وأزال عنه كلّ ما يفسده." },
+      { word: "رشد", definition: "القدرة على اتخاذ القرار الحكيم والتمييز بين الصواب والخطأ." },
+      { word: "تعجّب", definition: "اندهش كثيرًا من أمر غير متوقَّع." },
+      { word: "تلقائيًّا", definition: "بصورة طبيعية وفورية من غير تخطيط أو توجيه." },
+      { word: "التماثيل", definition: "أشكال على هيئة إنسان أو حيوان تُصنع من الحجر أو الخشب أو المعدن." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-6-1', x: 41, y: 32, title: "حكمة منذ الصغر", description: "منح الله إبراهيم عليه السلام الحكمة والرشد وهو ما يزال طفلًا." },
+      { id: 'ab-b2-runtime-hs-6-2', x: 62, y: 57, title: "على ظهر مردوخ", description: "ركب إبراهيم عليه السلام وهو صغير تمثال مردوخ، الإله الأكبر لبابل، فغضب أبوه بشدّة." },
+    ],
+  },
+  7: {
+    vocabulary: [
+      { word: "الكراهية", definition: "شعور قويّ جدًّا بالنفور وعدم المحبة." },
+      { word: "بلا حياة", definition: "ميت أو جماد لا روح فيه، لا يتحرّك ولا يحسّ." },
+      { word: "عاجزة", definition: "لا تقدر على فعل أيّ شيء ولا على حماية نفسها." },
+      { word: "محراب", definition: "تجويف في جدار المعبد يوضع فيه تمثال أو شيء مهمّ." },
+      { word: "يتوسّلون", definition: "يطلبون بإلحاح وتذلّل." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-7-1', x: 26, y: 45, title: "أصنام لا تقوم", description: "رأى إبراهيم عليه السلام أنّ الأصنام عاجزة، إذا سقطت لا تستطيع أن تقوم مرّة أخرى." },
+      { id: 'ab-b2-runtime-hs-7-2', x: 73, y: 36, title: "المعبد الكبير", description: "كان معبد قومه مليئًا بالأصنام، وفي وسطه محراب يضمّ أكبر الآلهة." },
+    ],
+  },
+  8: {
+    vocabulary: [
+      { word: "كاهن", definition: "شخص يقوم بالشعائر الدينية في مكان العبادة." },
+      { word: "ملكوت", definition: "السلطان الكامل على السماوات والأرض وما فيهما." },
+      { word: "الحادثة", definition: "واقعة مهمّة أو غير عادية وقعت في وقت معيّن." },
+      { word: "الموقنين", definition: "الذين بلغوا ثقة تامّة بالحقّ لا يخالطها شكّ." },
+      { word: "أفل", definition: "غاب واختفى تحت الأفق." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-8-1', x: 33, y: 58, title: "ليلة في الجبل", description: "مشى إبراهيم عليه السلام وحده في الظلام حتى وجد كهفًا في الجبل فجلس فيه ليستريح." },
+      { id: 'ab-b2-runtime-hs-8-2', x: 63, y: 39, title: "الكوكب الآفل", description: "لمّا غاب الكوكب قال إبراهيم عليه السلام إنه لا يحبّ الآفلين." },
+    ],
+  },
+  9: {
+    vocabulary: [
+      { word: "بريء", definition: "لا علاقة له بالأمر الباطل ولا يشارك فيه." },
+      { word: "الأجرام السماويّة", definition: "أجسام طبيعية في الفضاء كالشمس والقمر والنجوم والكواكب." },
+      { word: "الكويكبات", definition: "أجسام صخرية صغيرة تدور حول الشمس." },
+      { word: "الحوار", definition: "نقاش يتبادل فيه الطرفان الآراء والحجج." },
+      { word: "وجّهت", definition: "أدرتُ الشيء وقصدت به ناحية معيّنة." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-9-1', x: 40, y: 34, title: "القمر والشمس", description: "رأى إبراهيم عليه السلام القمر ثم الشمس تبزغ وتغيب، فأعرض عن عبادتها." },
+      { id: 'ab-b2-runtime-hs-9-2', x: 74, y: 46, title: "جدال حول النجوم", description: "بيّن إبراهيم عليه السلام لعابدي النجوم أنّ الأجرام السماوية لا يجوز اتخاذها شركاء مع الله." },
+    ],
+  },
+  10: {
+    vocabulary: [
+      { word: "أزليّ", definition: "لا بداية لوجوده ولا نهاية له." },
+      { word: "غير مستحقّة", definition: "لا تملك ما يجعلها أهلًا للشيء." },
+      { word: "أوضح", definition: "شرح الأمر حتى صار مفهومًا بلا لبس." },
+      { word: "يؤكّد", definition: "يُبرز أهمية الفكرة ويقوّيها." },
+      { word: "الخلاف", definition: "نزاع جادّ بين طرفين مختلفين في الرأي." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-10-1', x: 25, y: 47, title: "آيات لا آلهة", description: "بيّن إبراهيم عليه السلام أنّ الشمس والقمر آيات من الله، لا آلهة تُعبد." },
+      { id: 'ab-b2-runtime-hs-10-2', x: 64, y: 63, title: "بداية الخلاف", description: "أشعل تفكيره العقلي خلافًا مع عابدي النجوم، فجادلوه وهدّدوه." },
+    ],
+  },
+  11: {
+    vocabulary: [
+      { word: "المجادلة", definition: "تبادل الكلام والحجج بين المختلفين، وغالبًا بحدّة." },
+      { word: "صحّة", definition: "مطابقة الشيء للحقّ والواقع." },
+      { word: "سخافة", definition: "كون الشيء تافهًا لا يقبله العقل." },
+      { word: "ادّعاءات", definition: "أقوال يزعم أصحابها أنها حقّ من غير دليل." },
+      { word: "هدّدوا", definition: "توعّدوا غيرهم بالأذى أو العقوبة." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-11-1', x: 32, y: 60, title: "أيّ الفريقين أحقّ بالأمن؟", description: "سأل إبراهيم عليه السلام: أيّ الفريقين أحقّ بالأمن، من عبد الله وحده أم من أشرك به؟" },
+      { id: 'ab-b2-runtime-hs-11-2', x: 75, y: 52, title: "حجج فارغة", description: "حاول قومه إثبات معتقداتهم، لكنّ حججهم كانت ضعيفة حتى إنّ الآيات لم تذكرها." },
+    ],
+  },
+  12: {
+    vocabulary: [
+      { word: "لم يلتفت", definition: "لم يهتمّ بالأمر ولم يُعِرْه أيّ انتباه." },
+      { word: "أعلن", definition: "صرّح بالأمر وأظهره أمام الناس." },
+      { word: "تذكير", definition: "تنبيه الإنسان إلى أمر مهمّ حتى لا ينساه." },
+      { word: "قاطعًا", definition: "حاسمًا لا تردّد فيه ولا رجوع عنه." },
+      { word: "ضلال مبين", definition: "بُعد عن الحقّ ظاهر لكلّ من ينظر." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-12-1', x: 39, y: 36, title: "لا خوف من الأصنام", description: "لم يلتفت إبراهيم عليه السلام إلى التهديد، وأعلن أنّ النفع والضرّ بيد الله وحده." },
+      { id: 'ab-b2-runtime-hs-12-2', x: 65, y: 45, title: "صانع الأصنام الغاضب", description: "كان أبوه أشدّهم غضبًا، لأنه كان ينحت الأصنام ويبيعها إلى جانب عبادتها." },
+    ],
+  },
+  13: {
+    vocabulary: [
+      { word: "واجب", definition: "أمر يشعر الإنسان بأنّه ملزم بفعله لأنه صحيح." },
+      { word: "الإحراج", definition: "شعور بالخجل والضيق أمام الآخرين." },
+      { word: "الحبّ الأبويّ", definition: "المودّة الدافئة التي يشعر بها الوالد تجاه ولده." },
+      { word: "عصيًّا", definition: "رافضًا للطاعة مخالفًا للأمر." },
+      { word: "يمسّ", definition: "يصيب الإنسان بأذى أو ألم." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-13-1', x: 24, y: 49, title: "نصيحة بلطف", description: "نصح إبراهيم عليه السلام أباه بلطف دون أن يسخر من عمله، وقال له إنه يحبّه." },
+      { id: 'ab-b2-runtime-hs-13-2', x: 76, y: 62, title: "تحذير من الشيطان", description: "حذّر إبراهيم عليه السلام أباه من عبادة الشيطان الذي عصى الله." },
+    ],
+  },
+  14: {
+    vocabulary: [
+      { word: "القاسي", definition: "شديد غليظ لا رحمة فيه ولا لين." },
+      { word: "عزم", definition: "قرّر بقوة وثبات أن يفعل الأمر." },
+      { word: "عواقب", definition: "نتائج تترتّب على فعل ما، وغالبًا ما تكون سيّئة." },
+      { word: "المشتبه به", definition: "شخص يُظنّ أنّه ارتكب جريمة." },
+      { word: "إنهاء", definition: "إيقاف الشيء إيقافًا كاملًا." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-14-1', x: 31, y: 62, title: "تهديد الأب", description: "هدّد الأب ابنه بالرجم، فردّ إبراهيم عليه السلام بالسلام ووعده بأن يستغفر له ربّه." },
+      { id: 'ab-b2-runtime-hs-14-2', x: 66, y: 41, title: "أسئلة كأسئلة القاضي", description: "كما يسأل القاضي الذكي المشتبه به، سأل إبراهيم عليه السلام الناس ليُظهر لهم الحقيقة." },
+    ],
+  },
+  15: {
+    vocabulary: [
+      { word: "الدفاع", definition: "حماية الشيء والاحتجاج له عند مهاجمته." },
+      { word: "تنتقد", definition: "تذكر عيوب الشيء وأخطاءه." },
+      { word: "مدبّر", definition: "من يتولّى تنظيم الأمور وتصريفها." },
+      { word: "إقناع", definition: "جعل الآخرين يوافقون على فكرة بتقديم أسباب مقبولة." },
+      { word: "جادّ", definition: "يقصد ما يقول ولا يمزح." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-15-1', x: 38, y: 38, title: "حجّة الآباء", description: "اعترف المشركون بأنّ الأصنام بلا حياة، لكنّهم قالوا إنّ آباءهم كانوا يعبدونها." },
+      { id: 'ab-b2-runtime-hs-15-2', x: 77, y: 58, title: "تحدٍّ جريء", description: "انتقد إبراهيم عليه السلام الأصنام علنًا، وتحدّى قومه أن يروا هل تستطيع أن تضرّه." },
+    ],
+  },
+  16: {
+    vocabulary: [
+      { word: "الأقدمون", definition: "الذين عاشوا في الماضي البعيد." },
+      { word: "خطيئة", definition: "ذنب يخالف أمر الله." },
+      { word: "العالمين", definition: "جميع المخلوقات من إنس وجنّ وغيرهم." },
+      { word: "رزق", definition: "أعطى العباد ما يحتاجون إليه من طعام وغيره." },
+      { word: "يشفي", definition: "يعيد الصحة إلى المريض." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-16-1', x: 23, y: 51, title: "ماذا تعبدون؟", description: "سأل إبراهيم عليه السلام قومه: هل تسمعكم أصنامكم أو تنفعكم أو تضرّكم؟" },
+      { id: 'ab-b2-runtime-hs-16-2', x: 67, y: 37, title: "ربّ العالمين", description: "وصف إبراهيم عليه السلام الله بأنه الذي يخلق ويهدي ويُطعم ويشفي ويُحيي الموتى." },
+    ],
+  },
+  17: {
+    vocabulary: [
+      { word: "تمسّكوا", definition: "لم يتركوا الشيء وأصرّوا على البقاء عليه." },
+      { word: "انقطع", definition: "ابتعد وترك الصلة." },
+      { word: "حذر", definition: "انتباه شديد لتجنّب الخطر." },
+      { word: "قرابين", definition: "ما يُقدَّم من طعام أو غيره تعبّدًا." },
+      { word: "جامد", definition: "صلب لا يتحرّك ولا يلين." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-17-1', x: 30, y: 64, title: "مدينة خالية", description: "انتظر إبراهيم عليه السلام حتى ذهب الجميع، حتى الكهنة، إلى الاحتفال خارج المدينة." },
+      { id: 'ab-b2-runtime-hs-17-2', x: 78, y: 54, title: "طعام للأصنام", description: "سأل إبراهيم عليه السلام أحد التماثيل لماذا لا يأكل الطعام الذي أمامه، فظلّ صامتًا." },
+    ],
+  },
+  18: {
+    vocabulary: [
+      { word: "يسخر", definition: "يستهزئ بالشيء ويُظهر احتقاره له." },
+      { word: "يحطّم", definition: "يكسر الشيء بقوة إلى قطع كثيرة." },
+      { word: "الآلهة الباطلة", definition: "ما يعبده الناس من دون الله بغير حقّ." },
+      { word: "سفه", definition: "خفّة العقل وسوء التصرّف." },
+      { word: "الظالمين", definition: "الذين يعتدون على حقوق غيرهم ويؤذونهم." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-18-1', x: 37, y: 40, title: "الفأس في عنق الصنم", description: "حطّم إبراهيم عليه السلام الأصنام كلّها إلا أكبرها، وعلّق الفأس في عنقه." },
+      { id: 'ab-b2-runtime-hs-18-2', x: 68, y: 47, title: "صدمة في المعبد", description: "عاد الناس فصُدموا حين رأوا آلهتهم مكسّرة ومتناثرة في أنحاء المعبد." },
+    ],
+  },
+  19: {
+    vocabulary: [
+      { word: "يشهدون", definition: "يرون الأمر بأعينهم ويحضرونه." },
+      { word: "طالبوا", definition: "ألحّوا وأصرّوا على تنفيذ الأمر." },
+      { word: "يقاوم", definition: "يدافع عن نفسه ويرفض الخضوع." },
+      { word: "المحاكمة", definition: "إجراء رسمي يُنظر فيه في تهمة شخص أمام قاضٍ." },
+      { word: "سليم", definition: "لم يُصبه كسر ولا ضرر." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-19-1', x: 22, y: 53, title: "اسألوا كبيرهم", description: "ابتسم إبراهيم عليه السلام وقال لهم أن يسألوا الصنم الأكبر الذي بقي سليمًا." },
+      { id: 'ab-b2-runtime-hs-19-2', x: 79, y: 64, title: "محاكمة علنية", description: "لم يقاوم إبراهيم عليه السلام اعتقاله، لأنّ المحاكمة أتاحت له أن يُظهر للناس بطلان معتقداتهم." },
+    ],
+  },
+  20: {
+    vocabulary: [
+      { word: "الجاني", definition: "من ارتكب الجريمة أو الفعل الخاطئ." },
+      { word: "كبرياء", definition: "غرور شديد يمنع صاحبه من قبول الحقّ." },
+      { word: "الاعتراف", definition: "الإقرار بأنّ الأمر صحيح." },
+      { word: "طغاة", definition: "حكّام يستعملون سلطتهم بقسوة وظلم." },
+      { word: "الانتقام", definition: "إيذاء من أساء إليك ردًّا على إساءته." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-20-1', x: 29, y: 29, title: "الكبرياء أمام الحقّ", description: "أدرك القوم سخافة معتقداتهم، لكنّ كبرياءهم منعهم من الاعتراف بذلك." },
+      { id: 'ab-b2-runtime-hs-20-2', x: 69, y: 67, title: "إعداد النار", description: "جمع السكان الحطب أيامًا، وملؤوا حفرة عميقة ليحرقوا إبراهيم عليه السلام حيًّا." },
+    ],
+  },
+  21: {
+    vocabulary: [
+      { word: "لهب", definition: "الجزء المضيء الحارّ من النار الذي يرتفع في الهواء." },
+      { word: "الحفرة", definition: "تجويف واسع عميق في الأرض." },
+      { word: "المنجنيق", definition: "آلة قديمة تُستخدم لقذف الأشياء الثقيلة إلى مسافة بعيدة." },
+      { word: "المتصاعدة", definition: "المرتفعة إلى أعلى شيئًا فشيئًا." },
+      { word: "برودة", definition: "حالة لطيفة منعشة بعيدة عن الحرّ." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-21-1', x: 36, y: 42, title: "لا أريد منك شيئًا", description: "سأل المَلَك جبريل إبراهيمَ عليه السلام هل يرغب في شيء، فأجاب أنه لا يريد منه شيئًا." },
+      { id: 'ab-b2-runtime-hs-21-2', x: 59, y: 60, title: "كأنّها حديقة", description: "أمر الله النار أن تكون بردًا وسلامًا، فلم تحرق إلا حبال إبراهيم عليه السلام." },
+    ],
+  },
+  22: {
+    vocabulary: [
+      { word: "بلا نفس", definition: "غير قادر على أخذ الهواء بسهولة." },
+      { word: "تخمد", definition: "تنطفئ فلا يبقى فيها اشتعال." },
+      { word: "سوّد", definition: "جعل الشيء داكن اللون." },
+      { word: "أخزت", definition: "أذلّت وفضحت أمام الناس." },
+      { word: "يجرؤ", definition: "يملك الشجاعة ليفعل أمرًا مخيفًا أو صعبًا." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-22-1', x: 21, y: 55, title: "حسبي الله", description: "كانت آخر كلمات إبراهيم عليه السلام قبل دخول النار: «حسبي الله»." },
+      { id: 'ab-b2-runtime-hs-22-2', x: 70, y: 49, title: "الخروج من الحفرة", description: "خرج إبراهيم عليه السلام من النار سالمًا ووجهه مضيء، بينما سوّد الدخان وجوه من كانوا يشاهدون." },
+    ],
+  },
+  23: {
+    vocabulary: [
+      { word: "عاديّ", definition: "مألوف لا يتميّز بشيء خاصّ." },
+      { word: "امتلأ غضبًا", definition: "اشتدّ سخطه حتى لم يعد يملك نفسه." },
+      { word: "حاجّ", definition: "جادل غيره وحاول أن يغلبه بالكلام." },
+      { word: "لا يمكن دحضه", definition: "لا يُستطاع إبطاله أو إثبات خطئه." },
+      { word: "الإعدام", definition: "عقوبة القتل التي يحكم بها قاضٍ أو حاكم." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-23-1', x: 28, y: 31, title: "ملك ادّعى الألوهية", description: "ادّعى الملك نمرود الألوهية، واستدعى إبراهيم عليه السلام ليحاوره بنفسه." },
+      { id: 'ab-b2-runtime-hs-23-2', x: 60, y: 42, title: "الحياة والموت", description: "أطلق نمرود أحد المحكوم عليهما وقتل الآخر، زاعمًا أنه هو أيضًا يُحيي ويُميت." },
+    ],
+  },
+  24: {
+    vocabulary: [
+      { word: "طرح", definition: "قدّم فكرة أو سؤالًا ليُنظر فيه." },
+      { word: "بلا شكّ", definition: "على نحو مؤكَّد لا يتردّد فيه أحد." },
+      { word: "بُهت", definition: "تحيّر وسكت عاجزًا عن الجواب." },
+      { word: "صيت", definition: "شهرة الإنسان وذِكره بين الناس." },
+      { word: "الوسائل", definition: "الطرق التي يُتوصَّل بها إلى غاية." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-24-1', x: 35, y: 44, title: "الشمس من المغرب", description: "تحدّى إبراهيم عليه السلام نمرود أن يأتي بالشمس من المغرب، فعجز الملك عن الجواب." },
+      { id: 'ab-b2-runtime-hs-24-2', x: 71, y: 59, title: "مؤمنان فقط", description: "لم يؤمن مع إبراهيم عليه السلام من قومه إلا سارة ولوط عليه السلام؛ فصارت سارة زوجته، وصار لوط نبيًّا فيما بعد." },
+    ],
+  },
+  25: {
+    vocabulary: [
+      { word: "الهجرة", definition: "ترك الوطن للإقامة في بلد آخر." },
+      { word: "الصواب", definition: "ما هو صحيح وموافق للحقّ." },
+      { word: "عاقر", definition: "امرأة لا تستطيع الإنجاب." },
+      { word: "شاخ", definition: "كبر في السنّ وضعف." },
+      { word: "اقترحت", definition: "عرضت رأيًا أو فكرة على غيرها لينظر فيها." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-25-1', x: 42, y: 57, title: "الرحلة إلى مصر", description: "ترك إبراهيم عليه السلام قومه وسافر مع سارة ولوط عليه السلام إلى مصر، ثم استقرّ في فلسطين." },
+      { id: 'ab-b2-runtime-hs-25-2', x: 61, y: 38, title: "مولد إسماعيل", description: "وَلدت هاجر إسماعيل عليه السلام حين كان إبراهيم عليه السلام قد تقدّم به العمر." },
+    ],
+  },
+  26: {
+    vocabulary: [
+      { word: "نسل", definition: "الأبناء والأحفاد ومن يأتي بعدهم." },
+      { word: "ذرّيّة", definition: "أولاد الإنسان وأحفاده عبر الأجيال." },
+      { word: "أخبر", definition: "أعلم غيره بأمر ما." },
+      { word: "ترضع", definition: "تُطعم طفلها الحليب من صدرها." },
+      { word: "غير ذي زرع", definition: "لا تُنبت أرضه محاصيل ولا شجرًا." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-26-1', x: 27, y: 33, title: "ابنان وأنبياء كثيرون", description: "من ذرّية إسماعيل عليه السلام جاء النبي محمد ﷺ، ومن ذرّية إسحاق عليه السلام جاء موسى وعيسى عليهما السلام." },
+      { id: 'ab-b2-runtime-hs-26-2', x: 72, y: 55, title: "عبر الصحراء", description: "قاد إبراهيم عليه السلام هاجر والطفل إسماعيل عليه السلام إلى وادٍ قرب تلّتَي الصفا والمروة." },
+    ],
+  },
+  27: {
+    vocabulary: [
+      { word: "القلق", definition: "شعور بالخوف والتوتّر ممّا قد يحدث." },
+      { word: "الراحة", definition: "الطمأنينة وزوال التعب أو الهمّ." },
+      { word: "راضية", definition: "مطمئنّة قانعة بما قُدِّر لها." },
+      { word: "التمر", definition: "ثمر النخل الحلو." },
+      { word: "مضى", definition: "سار وتقدّم إلى الأمام." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-27-1', x: 34, y: 46, title: "في رعاية الله", description: "ترك إبراهيم عليه السلام هاجر وإسماعيل عليه السلام في الوادي الخالي ومعهما الماء والتمر فقط، وأودعهما رعاية الله." },
+      { id: 'ab-b2-runtime-hs-27-2', x: 62, y: 34, title: "سؤال هاجر", description: "سألت هاجر إن كان الله قد أمره بذلك، فلمّا قال نعم اطمأنّ قلبها." },
+    ],
+  },
+  28: {
+    vocabulary: [
+      { word: "أسكنت", definition: "جعلتُ غيري يقيم في مكان ويعيش فيه." },
+      { word: "الجدب", definition: "جافّ قليل النبات لا تُنتج أرضه شيئًا." },
+      { word: "مشيئة", definition: "إرادة الله وما يريد أن يكون." },
+      { word: "طوفان", definition: "ماء كثير يغمر الأرض ويغرقها." },
+      { word: "من جديد", definition: "مرّة أخرى بعد انقطاع أو زوال." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-28-1', x: 41, y: 59, title: "دعاء للوادي", description: "دعا إبراهيم عليه السلام أن تميل قلوب الناس إلى أهله الذين أسكنهم عند البيت المحرّم." },
+      { id: 'ab-b2-runtime-hs-28-2', x: 73, y: 65, title: "موضع الكعبة", description: "استقرّت هاجر وإسماعيل عليه السلام قرب موضع الكعبة التي ضاع أثرها بعد طوفان نوح عليه السلام." },
+    ],
+  },
+  29: {
+    vocabulary: [
+      { word: "نفد", definition: "انتهى ولم يبقَ منه شيء." },
+      { word: "حزن", definition: "ألم في النفس بسبب مصيبة أو فقد." },
+      { word: "قافلة", definition: "جماعة من المسافرين يعبرون الصحراء معًا بدوابّهم." },
+      { word: "رمزًا", definition: "علامة تدلّ على معنى أو حدث وتذكّر به." },
+      { word: "الحجّ", definition: "رحلة إلى مكة لأداء عبادة في أيام معيّنة." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-29-1', x: 26, y: 35, title: "سبعة أشواط", description: "سعت هاجر بين الصفا والمروة سبع مرّات تبحث عن الماء أو المساعدة." },
+      { id: 'ab-b2-runtime-hs-29-2', x: 63, y: 68, title: "أثر في الحجّ", description: "يعيد المسلمون في الحجّ بحث هاجر حين يسعون بين الصفا والمروة." },
+    ],
+  },
+  30: {
+    vocabulary: [
+      { word: "عقب", definition: "مؤخّر القدم." },
+      { word: "حوضًا", definition: "مكان منخفض يُجمع فيه الماء." },
+      { word: "الوفرة", definition: "الكثرة الزائدة عن الحاجة." },
+      { word: "المنشأ", definition: "المصدر الذي يبدأ منه الشيء." },
+      { word: "يترك", definition: "يتخلّى عن غيره ولا يعتني به." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-30-1', x: 33, y: 48, title: "ماء من الأرض", description: "ضرب المَلَك جبريل الأرض بعقبه، فتفجّر ماء زمزم." },
+      { id: 'ab-b2-runtime-hs-30-2', x: 74, y: 61, title: "طائر فوق الوادي", description: "رأت قبيلة جرهم طائرًا يطير نحو الوادي، فعرفت أنّ فيه ماءً." },
+    ],
+  },
+  31: {
+    vocabulary: [
+      { word: "أعجبوا", definition: "نظروا إليه باحترام ومحبّة كبيرين." },
+      { word: "لطف", definition: "الرفق واللين في المعاملة." },
+      { word: "أعظم اختبار", definition: "أشدّ امتحان وأكبره." },
+      { word: "بشّر", definition: "أخبر بخبر سارّ يُفرح." },
+      { word: "حليم", definition: "صبور هادئ لا يغضب بسرعة." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-31-1', x: 40, y: 61, title: "النشأة بين جرهم", description: "نشأ إسماعيل عليه السلام بين قبيلة جرهم، وتعلّم منهم العربية، وتزوّج ابنة أحد زعمائهم." },
+      { id: 'ab-b2-runtime-hs-31-2', x: 64, y: 50, title: "أصعب رؤيا", description: "رأى إبراهيم عليه السلام في المنام أنه يذبح ابنه، فقال له إسماعيل عليه السلام: افعل ما تؤمر." },
+    ],
+  },
+  32: {
+    vocabulary: [
+      { word: "تقيّ", definition: "يخشى الله ويجتنب المعاصي." },
+      { word: "أضجع", definition: "وضعه على جنبه على الأرض." },
+      { word: "استعداد", definition: "التهيّؤ والرغبة في فعل الأمر." },
+      { word: "الفداء", definition: "ما يُقدَّم بدلًا من غيره لإنقاذه." },
+      { word: "كبشًا", definition: "ذكر الخراف البالغ." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-32-1', x: 25, y: 37, title: "صوت في اللحظة الأخيرة", description: "أوقف صوتٌ إبراهيمَ عليه السلام حين كانت السكين على وشك أن تقترب من إسماعيل عليه السلام." },
+      { id: 'ab-b2-runtime-hs-32-2', x: 75, y: 57, title: "إمام للناس", description: "لأنّ إبراهيم عليه السلام نجح في كلّ اختبار، جعله الله إمامًا للناس وجعل من ذرّيته رسلًا." },
+    ],
+  },
+  33: {
+    vocabulary: [
+      { word: "شائعة", definition: "منتشرة بين كثير من الناس أو في أماكن كثيرة." },
+      { word: "تعادل", definition: "تساوي الشيء في القيمة." },
+      { word: "العصر", definition: "حقبة من الزمن التاريخي." },
+      { word: "فراق", definition: "ابتعاد الأحبّة بعضهم عن بعض مدّة من الزمن." },
+      { word: "شوق", definition: "رغبة قويّة في لقاء من تحبّ." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-33-1', x: 32, y: 50, title: "عيد الأضحى", description: "يتذكّر المسلمون كلّ عام في أيام الحجّ ثقة إبراهيم عليه السلام بالله في يوم التضحية." },
+      { id: 'ab-b2-runtime-hs-33-2', x: 65, y: 60, title: "لقاء الأب والابن", description: "بعد سنوات من الفراق، تعانق إبراهيم عليه السلام وإسماعيل عليه السلام وبكيا فرحًا." },
+    ],
+  },
+  34: {
+    vocabulary: [
+      { word: "حرّمه الله", definition: "جعله الله مكانًا محترمًا لا يُعتدى عليه." },
+      { word: "أسس", definition: "القواعد التي يقوم عليها البناء." },
+      { word: "يناول", definition: "يعطي غيره الشيء بيده." },
+      { word: "استجابة", definition: "تلبية الطلب أو الأمر." },
+      { word: "إقامة", definition: "إنشاء الشيء وتثبيته ليبقى." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-34-1', x: 39, y: 63, title: "الوقوف على حجر المقام", description: "لمّا ارتفع البناء وقف إبراهيم عليه السلام على حجر المقام، وكان إسماعيل عليه السلام يناوله الحجارة." },
+      { id: 'ab-b2-runtime-hs-34-2', x: 76, y: 39, title: "دعاء أثناء البناء", description: "كان الأب والابن يدعوان الله وهما يبنيان: «ربّنا تقبّل منّا»." },
+    ],
+  },
+  35: {
+    vocabulary: [
+      { word: "معيد بناء", definition: "من يُرجِع المنشأة القديمة إلى حالتها الأولى." },
+      { word: "اعتناق", definition: "قبول الدين والإيمان به واتّباعه." },
+      { word: "إكمال", definition: "إتمام الشيء حتى لا ينقص منه شيء." },
+      { word: "جنبًا إلى جنب", definition: "معًا في الوقت والمكان نفسيهما." },
+      { word: "النجاة", definition: "الخلاص من الهلاك أو الخطر." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-35-1', x: 24, y: 39, title: "بيت للجميع", description: "أنشأ إبراهيم عليه السلام مكان عبادة لجميع الناس، لا لقوم أو عرق معيّن." },
+      { id: 'ab-b2-runtime-hs-35-2', x: 66, y: 56, title: "قبل الوفاة", description: "قبل وفاته ترك إبراهيم عليه السلام فلسطين لإسحاق عليه السلام ومكة لإسماعيل عليه السلام." },
+    ],
+  },
+};
+
 const abrahamB2LanguageReviewExercisesAr: Exercise[] = [
   // لاحظ — اكتشف ما تفعله لغة الكتاب عبر الفصول.
   {
@@ -344,31 +804,21 @@ const arabicLanguageFocus:Record<number,Exercise[]>={...abrahamB2LanguageFocusPa
 const arabicAudioTokens=[
 'ac141b9d-73c1-436e-9db5-e2dc3fe06fd0','2fe1ca83-0f4c-439b-84ad-893cfb155a19','f1628231-d7ef-4286-85d8-189a6cb72063','d2cab735-0f57-44e7-bf8a-e3e94d5fd540','9b385b4b-8229-4f70-bab4-a0e45a2ed9e4','7a447a31-0345-4e56-88fd-3face653336a','b69ea386-7b1a-4f10-9381-64bf4c81eab6','995beb9f-6ab9-4d16-947b-df0fe3419498','654667a2-9814-4833-a9c8-e63820c057ae','99e6a224-24cd-467d-857e-36ee636d9a0e','88f3cd04-ae9c-4031-aa19-8f9ea4462984','12af9feb-44d1-424a-b6eb-4b649c86655e','af710c60-adba-4d84-96e0-656a02adf01b','e31e0d8b-73e8-4fdf-aee1-f2b58cd926be','0bdc1948-ec66-446a-a11e-0043ec1b1bfe','2bcc1fc7-8b32-40ac-ac01-0ce2bf51d479','4e9a095b-2754-4809-b887-c324a9e9c05c','27dbb89e-cd63-4734-836d-b537d733800a','fa8fa126-fc86-4021-9996-2962e572a9c0','31325634-d850-42bf-a833-50e605d6d2f2','99cdb781-fde1-4824-a5d0-3f61c578e18b','e029f713-f051-415a-b795-dc1fc3c380ba','2d25817f-bddf-43db-bc00-53571ae66188','07c73128-1201-4926-b4fa-919b92d57f32','51a50c70-9ac8-496f-a7ad-0183159b1225','15521c55-6b94-427a-8f7d-471b92a04a4c','4557144f-66f6-4aae-942e-75b4895014fa','5d0add92-2802-4fea-8e44-15d2beccbc9d','6262ae57-39b0-47ab-a45f-8c1f70e3c482','6c8fea82-b220-45d7-9f06-628ef3a4c080','3724a893-f982-40d6-b829-4156355f1d7d','cabc451b-7eec-4642-b419-050782bce547','a401acfd-0c85-47bd-a479-869eaa157720','68f33245-b35d-42b4-b930-097a3bcec62b','eb631425-7204-4c9e-8d0f-70af5b7ea0e1'] as const;
 const arabicAudioUrl=(chapter:number)=>`https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2Farabic_audio%2FCHAPTER%20${chapter}.mp3?alt=media&token=${arabicAudioTokens[chapter-1]}`;
-const normalizeArabicChar=(char:string)=>char.replace(/[\u064B-\u065F\u0670\u0640\u0610-\u061A\u06D6-\u06ED\u200B-\u200F\uFEFF]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
-const normalizeArabic=(text:string)=>Array.from(text).map(normalizeArabicChar).join('').replace(/\s+/g,' ').trim();
-const arabicSurfaceAlternates: Record<string,string> = {
-  'التحريف': 'للتحريف',
-  'بنبوة': 'بنبوته',
-  'تفكير إبراهيم العقلي': 'تفكير إبراهيم عليه السلام العقلي',
-  'باعتقال إبراهيم ومحاكمته': 'باعتقال إبراهيم (عليه السلام) ومحاكمته',
-  'صدقت الرؤيا': 'صدقت الرءيا',
-};
-const findArabicSurface=(content:string,needle:string):string|null=>{
- let normalized='';const originalIndices:number[]=[];let previousWasSpace=false;
- for(let i=0;i<content.length;i+=1){const part=normalizeArabicChar(content[i]);if(!part)continue;if(/\s/.test(part)){if(previousWasSpace)continue;normalized+=' ';originalIndices.push(i);previousWasSpace=true;continue;}previousWasSpace=false;normalized+=part;originalIndices.push(i);}
- const target=normalizeArabic(arabicSurfaceAlternates[needle]??needle);const startInNormalized=normalized.indexOf(target);if(startInNormalized<0||target.length===0)return null;const start=originalIndices[startInNormalized];const lastMapped=originalIndices[startInNormalized+target.length-1];if(start==null||lastMapped==null)return null;let end=lastMapped+1;while(end<content.length&&/[\u064B-\u065F\u0670\u0610-\u061A\u06D6-\u06ED]/.test(content[end]))end+=1;return content.slice(start,end);
-};
-type ResolvedArabicVocab={word:string;definition:string};
-const standardizeArabicPage=(page:PageData):PageData=>{
- if(!STORY_IDS.has(page.id))return page;
- const seeds=abrahamB2CanonicalVocabulary[page.id]??[];
- const resolved=seeds.map(([,arNeedle,,arDefinition])=>{const word=findArabicSurface(page.content??'',arNeedle);return word?{word,definition:arDefinition}:null;}).filter((item):item is ResolvedArabicVocab=>item!==null).slice(0,5);
- if(resolved.length!==5)console.warn(`[Abraham B2 AR] Chapter ${page.id} resolved ${resolved.length}/5 canonical vocabulary pairs.`);
- const coordinates=abrahamB2HotspotCoords(page.id);
- return {...page,image:abrahamB2ImageUrl(page.id),audioUrl:arabicAudioUrl(page.id),vocabulary:resolved,hotspots:resolved.slice(0,2).map((item,index)=>({id:`ab-b2-runtime-hs-${page.id}-${index+1}`,...coordinates[index],title:item.word,description:item.definition})),animatedWords:undefined,syncPoints:undefined,timedChunks:undefined};
-};
+const standardizeArabicPage=(page:PageData):PageData=>STORY_IDS.has(page.id)?{...page,image:abrahamB2ImageUrl(page.id),audioUrl:arabicAudioUrl(page.id),...abrahamB2StoryNotesAr[page.id],animatedWords:undefined,syncPoints:undefined,timedChunks:undefined}:page;
 const standardizedArabicPages=rawAbrahamB2PagesAr.map(standardizeArabicPage);
-const arabicGlossary=standardizedArabicPages.filter(page=>STORY_IDS.has(page.id)).flatMap(page=>page.vocabulary??[]);
+// The Master Glossary lists every Word Note with its chapter and the story sentence it comes from.
+const storySentences=(content:string):string[]=>content
+  .split(/\n+/)
+  .flatMap(paragraph=>paragraph.trim().split(/(?<=[.!؟?»”])\s+/))
+  .map(sentence=>sentence.trim())
+  .filter(Boolean);
+const arabicGlossary:NonNullable<PageData['vocabulary']>=standardizedArabicPages
+  .filter(page=>STORY_IDS.has(page.id))
+  .flatMap(page=>(page.vocabulary??[]).map(item=>{
+    const storyExample=storySentences(page.content??'').find(sentence=>highlightPhraseOccurs(sentence,item.word,'ar'));
+    if(!storyExample)throw new Error(`[Abraham B2 AR] Missing source example for ${item.word} in chapter ${page.id}.`);
+    return{...item,level:'B2' as const,chapter:page.id,chapterTitle:page.title,storyExample};
+  }));
 export const abrahamB2PagesAr:PageData[]=standardizedArabicPages.map(page=>{
  if(STORY_IDS.has(page.id)){const languageFocusExercises=arabicLanguageFocus[page.id];return {...page,exercises:[abrahamB2QuickChallengesAr[page.id]],...(languageFocusExercises?{languageFocusExercises}:{})};}
  if(page.id===36)return {...page,exercises:abrahamB2KnowledgeCheckExercisesAr};
