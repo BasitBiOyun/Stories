@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 // المصدر اليدوي المباشر الوحيد لأنشطة إبراهيم B1 العربية.
 
@@ -29,17 +29,17 @@ export const abrahamB1KnowledgeCheckExercisesAr: Exercise[] = [
   { id: 'abraham-b1-ar-kc-8-carrying-the-message', type: 'multiple-choice', title: 'الرسالة تستمر', instructions: 'اختر الإجابة الأدق، واعتمد على الفصل الثالث عشر.', question: 'ماذا فعل نسل إسماعيل بحسب الفقرة الأخيرة من القصة؟', options: ['حملوا رسالة إبراهيم عن وحدانية الله.', 'رجعوا إلى بابل ليبحثوا عن قوم إبراهيم.', 'صنعوا أصنامًا جديدة حول الكعبة في مكة.'], correctAnswer: 0, explanation: 'الفصل الثالث عشر: «وانتشروا في أنحاء شبه الجزيرة العربية، لِيَحْمِلوا رسالة جدّهم إبراهيم عليه السلام عن وحدانية الله».', feedback: { correct: 'صحيح. لم تنته رسالة إبراهيم بموته، فقد حملها نسله، ومنهم النبي محمد صلى الله عليه وسلم.', incorrect: 'ليست هذه. أعد قراءة الفقرة الأخيرة من الفصل الثالث عشر: إلى أين انتشر نسل إسماعيل، وماذا حملوا؟' } },
 ];
 
-export const abrahamB1VocabularyChallengePairsAr = [
-  { word: 'الخالق', meaning: 'الله الذي خلق كل شيء ويدبره' },
-  { word: 'يعيد النظر', meaning: 'يفكر مرة أخرى في معتقد أو قرار' },
-  { word: 'متكبر', meaning: 'شديد الكبر حتى يرفض الحق أو الاعتراف بالخطأ' },
-  { word: 'منجنيق', meaning: 'آلة قديمة تستخدم لقذف أشياء ثقيلة أو أشخاص' },
-  { word: 'معجزة', meaning: 'آية خارقة من الله تتجاوز القدرة البشرية المعتادة' },
-  { word: 'إيمان', meaning: 'اعتقاد قوي وثقة بالله' },
-  { word: 'وادٍ', meaning: 'أرض منخفضة بين التلال أو الجبال' },
-  { word: 'شعيرة', meaning: 'عمل ديني يؤدى بطريقة محددة' },
-  { word: 'نبع', meaning: 'مكان يخرج منه الماء طبيعياً من الأرض' },
-  { word: 'أساسات', meaning: 'القاعدة التي يقوم عليها البناء' }
+export const abrahamB1VocabularyChallengePairsAr: VocabularyChallengePair[] = [
+  { word: 'وطن', meaning: 'البلد أو المكان الذي ينتمي إليه الإنسان.', partOfSpeech: 'noun', chapter: 1, context: 'وكان الناس في وطنه يَعْبُدون النجوم والقمر والشمس والتماثيل المصنوعة من الخشب ‏والحجر.' },
+  { word: 'الريف', meaning: 'الأرض الواقعة خارج المدن والبلدات.', partOfSpeech: 'noun', chapter: 3, context: 'ذات ليلة، غادر إبراهيم منزله لِيَتَنَزَّه في الريف.' },
+  { word: 'ضرر', meaning: 'الأذى أو السوء الذي يصيب أحدًا.', partOfSpeech: 'noun', chapter: 5, context: 'إنها لا تَمْلِك ‏القدرة على نفعكم أو ضرركم.' },
+  { word: 'احتفال', meaning: 'مناسبة خاصة يجتمع فيها الناس للفرح.', partOfSpeech: 'noun', chapter: 6, context: 'وكان هناك احتفال كبير قريبًا.' },
+  { word: 'استاء', meaning: 'شعر بعدم الرضا أو الانزعاج.', partOfSpeech: 'verb', chapter: 7, context: 'استاء الناس مما سَمِعوا، وقالوا: "أنت تَعْلَم جيّدًا أنّ هذه الأصنام لا تَتَكَلَّم!"' },
+  { word: 'الحطب', meaning: 'خشب يُجمع ويُستخدم لإشعال النار.', partOfSpeech: 'noun', chapter: 8, context: 'استمرّ جَمْع الحَطَب لإشعال النار عِدّة أيام.' },
+  { word: 'عادي', meaning: 'مثل سائر الناس، لا يتميّز بشيء خاص.', partOfSpeech: 'adjective', chapter: 9, context: 'أَدْرَكَ أنّ إبراهيم لم يكن شخصًا عاديًّا، فقرّر أن ‏يَلْتَقِي به.' },
+  { word: 'مُتْعِبة', meaning: 'تجعل الإنسان مرهقًا يحتاج إلى الراحة.', partOfSpeech: 'adjective', chapter: 10, context: 'وكانت الرحلةُ طويلةً ‏وحارّةً ومُتْعِبةً.' },
+  { word: 'نَفِد', meaning: 'انتهى تمامًا ولم يبق منه شيء.', partOfSpeech: 'verb', chapter: 11, context: 'ولكن سرعان ما نَفِد طعامهم وماؤهم.' },
+  { word: 'تَشْيِيد', meaning: 'بناء شيء وإقامته.', partOfSpeech: 'noun', chapter: 13, context: 'فعَثَر الأب والابن على أساسات البناء القديم، وبدآ في تَشْيِيد البناء ‏الجديد فوقها.' },
 ];
 
 export const abrahamB1FinalChallengeExercisesAr: Exercise[] = [
