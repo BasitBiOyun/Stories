@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 // Single manually authored source of truth for Abraham B1 English learning activities.
 
@@ -150,17 +150,17 @@ export const abrahamB1KnowledgeCheckExercises: Exercise[] = [
   { id: 'abraham-b1-kc-8-carrying-the-message', type: 'multiple-choice', title: 'The Message Continues', instructions: 'Choose the best answer. Use the evidence in Chapter 13.', question: 'What did Ishmael’s descendants do, according to the last paragraph of the story?', options: ['They carried Abraham’s message of the Oneness of Allah.', 'They went back to Babylon to find Abraham’s people.', 'They built new idols around the Ka’ba in Mecca.'], correctAnswer: 0, explanation: 'Chapter 13: “They spread all over the Arabian Peninsula to carry their grandfather Abraham’s (pbuh) message of the Oneness of Allah.”', feedback: { correct: 'Correct. Abraham’s message did not end with him: his descendants, and later Prophet Muhammad (pbuh), carried it on.', incorrect: 'Not quite. Reread the last paragraph of Chapter 13. Where did Ishmael’s descendants go, and what did they carry?' } },
 ];
 
-export const abrahamB1VocabularyChallengePairs = [
-  { word: 'Creator', meaning: 'The One who creates and controls everything' },
-  { word: 'reconsider', meaning: 'to think again about a belief or decision' },
-  { word: 'arrogant', meaning: 'too proud to accept truth or admit a mistake' },
-  { word: 'catapult', meaning: 'a machine used to throw heavy objects or people' },
-  { word: 'miracle', meaning: 'an extraordinary sign from Allah beyond ordinary human power' },
-  { word: 'faith', meaning: 'strong belief and trust in Allah' },
-  { word: 'valley', meaning: 'low land between hills or mountains' },
-  { word: 'ritual', meaning: 'a religious action performed in a prescribed way' },
-  { word: 'spring', meaning: 'a place where water naturally flows from the ground' },
-  { word: 'foundations', meaning: 'the supporting base on which a building is constructed' }
+export const abrahamB1VocabularyChallengePairs: VocabularyChallengePair[] = [
+  { word: 'homeland', meaning: 'The country or place where a person comes from.', partOfSpeech: 'noun', chapter: 1, context: 'In his homeland, people worshipped the stars, the moon, the sun, and statues made from wood and stone.' },
+  { word: 'countryside', meaning: 'Land outside towns and cities.', partOfSpeech: 'noun', chapter: 3, context: 'One night, Abraham left his home to take a walk in the countryside.' },
+  { word: 'harm', meaning: 'To hurt or damage someone or something.', partOfSpeech: 'verb', chapter: 5, context: 'They have no power to help or harm you.' },
+  { word: 'celebration', meaning: 'A special event when people gather for a happy occasion.', partOfSpeech: 'noun', chapter: 6, context: 'There was a big celebration soon.' },
+  { word: 'displeased', meaning: 'Unhappy or annoyed about something.', partOfSpeech: 'adjective', chapter: 7, context: 'The people were displeased with what they heard and said, “You are well aware that these idols don’t speak!”' },
+  { word: 'firewood', meaning: 'Wood that is cut and used to make a fire.', partOfSpeech: 'noun', chapter: 8, context: 'Firewood was collected for the fire for days.' },
+  { word: 'ordinary', meaning: 'Normal and not unusual or special.', partOfSpeech: 'adjective', chapter: 9, context: 'He realized that Abraham was not an ordinary person, so he decided to meet him.' },
+  { word: 'tiring', meaning: 'Making someone feel that they need rest.', partOfSpeech: 'adjective', chapter: 10, context: 'It was a long, hot, and tiring journey.' },
+  { word: 'ran out', meaning: 'Was completely used up so none remained.', partOfSpeech: 'verb', chapter: 11, context: 'But soon their food and water ran out.' },
+  { word: 'construct', meaning: 'To build something.', partOfSpeech: 'verb', chapter: 13, context: 'Father and son found the foundations of the old building and began to construct the new building on it.' },
 ];
 
 export const abrahamB1FinalChallengeExercises: Exercise[] = [
