@@ -373,7 +373,7 @@ Buşu kimde ise imanı gider
       { id: 'yunus-b1-ar-13-2', x: 74, y: 33, title: 'الصَّبْرُ', description: 'تمدح الأبيات الصبر وتحذر من الغضب والتكبر.' },
     ],
   ),
-  { id: 14, type: 'quiz', title: 'اختبار المعرفة الشامل: يونس إمره - B1', image: '', content: 'اختبر فهمك للقصة الكاملة في مستوى B1.' },
+  { id: 14, type: 'quiz', title: 'اختبار المعرفة', image: '', content: 'اختبر فهمك للقصة الكاملة في مستوى B1.' },
   { id: 15, type: 'vocabulary-match', title: 'تحدي المفردات', image: '', content: 'طابق مفردات B1 الأساسية من القصة بمعانيها.' },
   {
     id: 16,
@@ -593,5 +593,5 @@ Buşu kimde ise imanı gider
 ]
   },
   { id: 18, type: 'exercises', title: 'المراجعة النهائية والتأمل', image: '', content: 'استرجع الكتاب عبر التسلسل والمطابقة والتأمل واختبار المراجعة.' },
-  { id: 19, type: 'final-challenge', title: 'التحدي النهائي: يونس إمره B1', image: '', content: 'اجمع تاريخ الكتاب وأفكاره ودروسه الأخلاقية في التحدي النهائي.' },
+  { id: 19, type: 'final-challenge', title: 'التحدي النهائي', image: '', content: 'اجمع تاريخ الكتاب وأفكاره ودروسه الأخلاقية في التحدي النهائي.' },
 ];

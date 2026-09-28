@@ -1178,7 +1178,7 @@ const rawMeccaB2PagesAr: PageData[] = [
   {
     "id": 18,
     "type": "quiz",
-    "title": "اختبار صح / خطأ الشامل (B2)",
+    "title": "اختبار المعرفة",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch18-clean.png?alt=media&token=c193ab4f-a2e6-4299-8877-bb89bc2385cc",
     "audioUrl": "",
     "content": "تَحَقَّقْ مِنْ فَهْمِكَ لِلْكِتَابِ كُلِّهِ مِنْ خِلَالِ ثَمَانِيَةِ أَسْئِلَةٍ. اقْرَأْ كُلَّ خِيَارٍ بِدِقَّةٍ، وَاخْتَرِ الْإِجَابَةَ الَّتِي يَدْعَمُهَا النَّصُّ.",
@@ -1695,7 +1695,7 @@ const rawMeccaB2PagesAr: PageData[] = [
   {
     "id": 22,
     "type": "final-challenge",
-    "title": "تحدي B2 النهائي الشامل",
+    "title": "التحدي النهائي",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch22-clean.png?alt=media&token=f25dfbc9-ffda-4ac2-a89c-33abcba12bcd",
     "audioUrl": "",
     "content": "اجمع ما تعلمته من القصة كاملة في تحدٍّ نهائي تحليلي لمستوى B2.",

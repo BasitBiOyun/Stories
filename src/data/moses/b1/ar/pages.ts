@@ -306,7 +306,7 @@ export const pages: PageData[] = [
       { id: 'moses-b1-ar-13-2', x: 74, y: 35, title: 'الدرس الأخير', description: 'ينتهي الفصل بالتأكيد على قدرة الله وهدايته وحرية الإنسان.' },
     ],
   ),
-  { id: 14, type: 'quiz', title: 'اختبار قصة موسى عليه السلام', image: '', audioUrl: '', content: 'اختبر حصيلتك المعرفية لقصة النبي موسى عليه السلام لمستوى B1.' },
+  { id: 14, type: 'quiz', title: 'اختبار المعرفة', image: '', audioUrl: '', content: 'اختبر حصيلتك المعرفية لقصة النبي موسى عليه السلام لمستوى B1.' },
   { id: 15, type: 'vocabulary-match', title: 'تحدي مفردات قصة موسى عليه السلام', image: '', audioUrl: '', content: 'صل الكلمات بمعانيها الصحيحة لتختبر حصيلتك اللغوية لمستوى B1.' },
   {
     id: 16,
@@ -526,7 +526,7 @@ export const pages: PageData[] = [
 ]
   },
   { id: 18, type: 'exercises', title: 'التقييم والمراجعة لمستوى B1', image: '', content: 'أكمل هذه التمارين التفاعلية النهائية لاختبار فهمك وعبرك من القصة.' },
-  { id: 19, type: 'final-challenge', title: 'التحدي النهائي المستحق', image: '', content: 'اجتز التحدي النهائي الشامل لقصة النبي موسى عليه السلام لمستوى B1.' },
+  { id: 19, type: 'final-challenge', title: 'التحدي النهائي', image: '', content: 'اجتز التحدي النهائي الشامل لقصة النبي موسى عليه السلام لمستوى B1.' },
 ];
 
 export const mosesB1PagesAr: PageData[] = pages;

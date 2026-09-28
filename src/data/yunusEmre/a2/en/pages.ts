@@ -187,7 +187,7 @@ In these two stories, Yunus tells us to always remember Allah in our hearts and 
       { id: 'h8-2', x: 68, y: 52, title: 'Meaningful and Fruitful Life', description: 'This helps us live a meaningful and fruitful life.' },
     ],
   },
-  { id: 9, type: 'quiz', title: 'Knowledge Check: Yunus Emre - A2', image: 'https://picsum.photos/seed/quiz-yunus-a2/1200/800', audioUrl: '', content: 'Check your understanding of the complete story.' },
+  { id: 9, type: 'quiz', title: 'Knowledge Check', image: 'https://picsum.photos/seed/quiz-yunus-a2/1200/800', audioUrl: '', content: 'Check your understanding of the complete story.' },
   { id: 10, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-match-yunus-a2/1200/800', audioUrl: '', content: 'Match six important story words with their meanings.' },
   { id: 11, type: 'glossary', title: 'Master Glossary', content: 'Review all key vocabulary from the story in one place.', image: 'https://picsum.photos/seed/glossary-yunus-a2/1200/800', vocabulary: [
 {
@@ -560,5 +560,5 @@ In these two stories, Yunus tells us to always remember Allah in our hearts and 
     },
   ] },
   { id: 13, type: 'exercises', title: 'Language Review', image: 'https://picsum.photos/seed/exercises-yunus-a2/1200/800', content: 'Review and use the language from across the book.' },
-  { id: 14, type: 'final-challenge', title: 'Final Challenge: Yunus Emre A2', image: 'https://picsum.photos/seed/challenge-yunus-a2/1200/800', content: 'Bring the whole story together in the Final Challenge.' },
+  { id: 14, type: 'final-challenge', title: 'Final Challenge', image: 'https://picsum.photos/seed/challenge-yunus-a2/1200/800', content: 'Bring the whole story together in the Final Challenge.' },
 ];

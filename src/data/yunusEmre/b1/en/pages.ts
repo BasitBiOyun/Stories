@@ -374,7 +374,7 @@ Divan (his collected poems)`,
       { id: 'yunus-b1-en-13-2', x: 74, y: 33, title: 'Patience', description: 'Patience is praised, while rage and arrogance are warned against.' },
     ],
   ),
-  { id: 14, type: 'quiz', title: 'Knowledge Check: Yunus Emre - B1', image: '', content: 'Check your understanding of the complete B1 story.' },
+  { id: 14, type: 'quiz', title: 'Knowledge Check', image: '', content: 'Check your understanding of the complete B1 story.' },
   { id: 15, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: '', content: 'Match key B1 words from the story with their meanings.' },
   {
     id: 16,
@@ -1457,5 +1457,5 @@ Divan (his collected poems)`,
 ]
   },
   { id: 18, type: 'exercises', title: 'Final Review & Reflection', image: '', content: 'Retrieve the book through sequencing, matching, reflection, and the Review Quiz.' },
-  { id: 19, type: 'final-challenge', title: 'Final Challenge: Yunus Emre B1', image: '', content: 'Bring the book’s history, ideas, and moral lessons together in the Final Challenge.' },
+  { id: 19, type: 'final-challenge', title: 'Final Challenge', image: '', content: 'Bring the book’s history, ideas, and moral lessons together in the Final Challenge.' },
 ];

@@ -258,7 +258,7 @@ export const abrahamA2PagesEn: PageData[] = [
   {
     id: 15,
     type: 'quiz',
-    title: 'Knowledge Check: Abraham (pbuh)',
+    title: 'Knowledge Check',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2FAbraham_a2_ch1.png?alt=media&token=5e040caa-6fbf-4bb4-840f-8fc15c0c8478',
     audioUrl: '',
     content: 'Test your understanding of the major events in Prophet Abraham’s life.'

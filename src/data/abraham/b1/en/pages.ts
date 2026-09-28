@@ -151,11 +151,11 @@ After he built the Holy Ka’ba, Abraham’s (pbuh) mission was over. He built a
 Over the years, Ishmael’s children had children; one of them was Muhammad, the Prophet of Islam (pbuh). They spread all over the Arabian Peninsula to carry their grandfather Abraham’s (pbuh) message of the Oneness of Allah. The message is “There is no god but Allah. He has no partner, rival, or helper. Allah is unique in every way.”`,
     [], []
   ),
-  { id: 14, type: 'quiz', title: 'B1 Knowledge Check: Prophet Abraham (pbuh)', image: '', audioUrl: '', content: 'Check your whole-story understanding with eight evidence-based questions.' },
+  { id: 14, type: 'quiz', title: 'Knowledge Check', image: '', audioUrl: '', content: 'Check your whole-story understanding with eight evidence-based questions.' },
   { id: 15, type: 'exercises', title: 'Language Review', image: '', content: 'Review and use grammar patterns, meaning relationships and communicative functions from across the book.' },
   { id: 16, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', image: '', content: 'Match ten reviewed B1 words with their meanings.' },
   { id: 17, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review all key vocabulary from the story in one place.' },
-  { id: 18, type: 'final-challenge', title: 'B1 Final Challenge', image: '', content: 'Demonstrate B1-level understanding across the complete story.' },
+  { id: 18, type: 'final-challenge', title: 'Final Challenge', image: '', content: 'Demonstrate B1-level understanding across the complete story.' },
 ];
 
 type VocabularyEntry = { word: string; definition: string };

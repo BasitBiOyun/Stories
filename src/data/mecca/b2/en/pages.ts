@@ -472,7 +472,7 @@ The dreadful situation in the twenty-first century reminds us of the dark period
   {
     id: 18,
     type: 'quiz',
-    title: 'Knowledge Check: Mecca and the Transregional Context - B2',
+    title: 'Knowledge Check',
     image: '',
     audioUrl: '',
     content: 'Check your understanding of the whole book through eight questions. Read each option closely and choose the one the text supports.',
@@ -501,7 +501,7 @@ The dreadful situation in the twenty-first century reminds us of the dark period
   {
     id: 22,
     type: 'final-challenge',
-    title: 'B2 Final Challenge',
+    title: 'Final Challenge',
     content: 'Demonstrate your deep mastership of the pre-Islamic Mecca historical and social systems at the B2 level.',
     image: '',
   },

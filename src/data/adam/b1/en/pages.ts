@@ -195,7 +195,7 @@ export const adamB1Pages: PageData[] = [
       { id: 'adam-b1-en-h12b', x: 62, y: 36, title: 'Continuing Guidance', description: 'The final chapter gathers lessons about jealousy, mistakes, good action, and guidance.' },
     ],
   },
-  { id: 13, type: 'quiz', title: 'B1 Knowledge Check: Prophet Adam (pbuh)', content: 'Check your whole-book understanding with eight independent questions.' },
+  { id: 13, type: 'quiz', title: 'Knowledge Check', content: 'Check your whole-book understanding with eight independent questions.' },
   { id: 14, type: 'exercises', title: 'Language Review', content: 'Consolidate grammar, discourse relationships, and communicative functions from across the chapters, then use them in new connected contexts.' },
   { id: 15, type: 'vocabulary-match', title: 'B1 Vocabulary Challenge', content: 'Match ten meaning-bearing Word Notes from across the story with their correct meanings.' },
   {
@@ -1292,5 +1292,5 @@ export const adamB1Pages: PageData[] = [
       }
 ]
   },
-  { id: 18, type: 'final-challenge', title: 'B1 Final Challenge', content: 'Demonstrate whole-book mastery through ten independent B1 activities.' },
+  { id: 18, type: 'final-challenge', title: 'Final Challenge', content: 'Demonstrate whole-book mastery through ten independent B1 activities.' },
 ];
