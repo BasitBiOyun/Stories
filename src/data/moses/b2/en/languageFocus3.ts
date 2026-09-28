@@ -57,7 +57,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Due to” is followed by a noun phrase (“Moses’s help”), not a clause. “So that + subject + may/can/will” states the purpose of the invitation. After the preposition “after”, use the -ing form: “After introducing himself …”.',
+      explanation: '“Due to” is followed by a noun phrase (“Moses’ help”), not a clause. “So that + subject + may/can/will” states the purpose of the invitation. After the preposition “after”, use the -ing form: “After introducing himself …”.',
       feedback: {
         correct: 'Well done. You corrected the cause phrase, the purpose clause and the -ing form.',
         incorrect: 'Ask what each word needs after it: “due to” + noun, a purpose linker + clause, “after” + -ing. Check the second half of Chapter 13.',
@@ -81,7 +81,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'It suited him because he wanted to return to Egypt immediately.',
       ],
       correctAnswer: 2,
-      explanation: 'The because-clause links the offer to Moses’s situation: a stranger with urgent needs. B2 readers look for the reason the text actually states instead of adding one.',
+      explanation: 'The because-clause links the offer to Moses’ situation: a stranger with urgent needs. B2 readers look for the reason the text actually states instead of adding one.',
       feedback: {
         correct: 'Correct. The chapter explains the fit through his situation as a stranger in need.',
         incorrect: 'Find the sentence that begins “This offer suited Moses well” in Chapter 14 and read its because-clause.',
@@ -153,7 +153,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'Something he used to do every winter',
       ],
       correctAnswer: 0,
-      explanation: 'The participle phrase “hoping to + verb” adds Moses’s aim at the moment he moves: warmth and guidance. “Hoping” marks an uncertain, wished-for result. The chapter then turns this ordinary purpose into the beginning of his mission.',
+      explanation: 'The participle phrase “hoping to + verb” adds Moses’ aim at the moment he moves: warmth and guidance. “Hoping” marks an uncertain, wished-for result. The chapter then turns this ordinary purpose into the beginning of his mission.',
       feedback: {
         correct: 'Correct. “Hoping to” expresses a purpose that is not yet certain.',
         incorrect: 'Notice the word “hoping”. Did Moses already have the fire and a guide, or did he want them?',
@@ -222,7 +222,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       question: 'Can you express a reason with a participle clause and report a command?',
       transformItems: [
         {
-          source: 'Moses’s fear subsided, and he felt peace, because he realized that he was witnessing the Truth.',
+          source: 'Moses’ fear subsided, and he felt peace, because he realized that he was witnessing the Truth.',
           frame: '[blank] that he was witnessing the Truth, Moses felt his fear subside and felt peace.',
           answers: ['Realizing', 'Realising', 'Having realized', 'Having realised', 'Because he realized', 'Because he realised', 'As he realized', 'As he realised', 'Since he realized', 'Since he realised'],
         },
@@ -240,7 +240,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf16-c', 'Evidence Creates Responsibility', [
-      'Write 5–7 sentences explaining how receiving the two signs changes Moses’s situation. Include one cause clause, one reported command, and one purpose clause.',
+      'Write 5–7 sentences explaining how receiving the two signs changes Moses’ situation. Include one cause clause, one reported command, and one purpose clause.',
     ], 'The B2 target is to integrate grammar with the chapter’s meaning: signs are followed by a public responsibility.'),
   ],
   17: [
@@ -309,13 +309,13 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         { left: '“What do you want?”', right: 'demands that Moses state his request directly' },
         { left: '“Why should I send them, as they are my slaves?”', right: 'rejects the request through a claim of ownership' },
         { left: 'Didn’t he know that the Pharaoh was a god?', right: 'presents Pharaoh’s claim as something everyone should already accept' },
-        { left: '“Are you not that Moses who we took from the Nile as a defenseless baby?”', right: 'uses Moses’s past and upbringing to put pressure on him' },
+        { left: '“Are you not that Moses who we took from the Nile as a defenseless baby?”', right: 'uses Moses’ past and upbringing to put pressure on him' },
       ],
       correctAnswer: {
         '“What do you want?”': 'demands that Moses state his request directly',
         '“Why should I send them, as they are my slaves?”': 'rejects the request through a claim of ownership',
         'Didn’t he know that the Pharaoh was a god?': 'presents Pharaoh’s claim as something everyone should already accept',
-        '“Are you not that Moses who we took from the Nile as a defenseless baby?”': 'uses Moses’s past and upbringing to put pressure on him',
+        '“Are you not that Moses who we took from the Nile as a defenseless baby?”': 'uses Moses’ past and upbringing to put pressure on him',
       },
       explanation: 'The questions are not neutral requests for information. A negative question (“Didn’t he know …?”, “Are you not …?”) expects agreement and puts pressure on the listener; “Why should I …?” is a rhetorical refusal.',
       feedback: {
@@ -366,10 +366,10 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'Pharaoh calls the Israelites his guests, while Moses calls them his servants.',
       ],
       correctAnswer: 2,
-      explanation: 'The possessives carry the argument: “my slaves” (Pharaoh’s claim of human ownership) against “Their Lord is Allah” (Moses’s statement of divine lordship).',
+      explanation: 'The possessives carry the argument: “my slaves” (Pharaoh’s claim of human ownership) against “Their Lord is Allah” (Moses’ statement of divine lordship).',
       feedback: {
         correct: 'Correct. The possessives “my slaves” and “their Lord” carry the contrast.',
-        incorrect: 'Look at the Pharaoh’s question about sending the Israelites and at Moses’s short reply.',
+        incorrect: 'Look at the Pharaoh’s question about sending the Israelites and at Moses’ short reply.',
       },
     },
     reflection('mo-b2-lf18-d', 'Rhetorical Question Analysis', [
@@ -384,7 +384,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf19-a',
       type: 'drag-drop',
       title: 'Accusation and Answer',
-      instructions: 'Sort the parts of Chapter 19. Are they the Pharaoh’s accusation in his own words, or Moses’s answer as the narrator reports it?',
+      instructions: 'Sort the parts of Chapter 19. Are they the Pharaoh’s accusation in his own words, or Moses’ answer as the narrator reports it?',
       question: 'How does the chapter present the two sides of the argument differently?',
       dragDropGroups: [
         {
@@ -392,15 +392,15 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
           items: ['Killing is an act of unbelief.', 'So, when you killed, you were not a believer.', 'You are on the run from the law'],
         },
         {
-          group: 'Moses’s answer (reported by the narrator)',
+          group: 'Moses’ answer (reported by the narrator)',
           items: ['he was not a disbeliever when he killed the Egyptian', 'he had left Egypt out of fear of revenge', 'Allah had forgiven him and made him one of His Messengers'],
         },
       ],
       correctAnswer: {
         'The Pharaoh’s accusation (his own words)': ['Killing is an act of unbelief.', 'So, when you killed, you were not a believer.', 'You are on the run from the law'],
-        'Moses’s answer (reported by the narrator)': ['he was not a disbeliever when he killed the Egyptian', 'he had left Egypt out of fear of revenge', 'Allah had forgiven him and made him one of His Messengers'],
+        'Moses’ answer (reported by the narrator)': ['he was not a disbeliever when he killed the Egyptian', 'he had left Egypt out of fear of revenge', 'Allah had forgiven him and made him one of His Messengers'],
       },
-      explanation: 'The Pharaoh speaks directly (“you”, present tense), which makes his accusation sound immediate. Moses’s answer is reported (“he explained that …”), so the verbs move back (“had left”, “had forgiven”). The narrator also frames the Pharaoh’s words as a threat.',
+      explanation: 'The Pharaoh speaks directly (“you”, present tense), which makes his accusation sound immediate. Moses’ answer is reported (“he explained that …”), so the verbs move back (“had left”, “had forgiven”). The narrator also frames the Pharaoh’s words as a threat.',
       feedback: {
         correct: 'Correct. You separated the direct accusation from the reported answer.',
         incorrect: 'Look at the pronouns and tenses: “you … were”, “you are” belong to direct speech; “he had …” belongs to the narrator’s report.',
@@ -524,7 +524,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf20-c', 'Managing Public Perception', [
-      'Write 5–7 sentences explaining how the advisers plan to reduce the impact of Moses’s signs. Use one passive reporting structure, one purpose expression, and one sentence showing expectation versus outcome.',
+      'Write 5–7 sentences explaining how the advisers plan to reduce the impact of Moses’ signs. Use one passive reporting structure, one purpose expression, and one sentence showing expectation versus outcome.',
     ], 'The task integrates political purpose with discourse organization and source-based interpretation.'),
   ],
   21: [
@@ -687,7 +687,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf22-d', 'Certainty Before Visible Evidence', [
-      'Write 6–8 sentences analyzing the difference between the people’s visible evidence and Moses’s confidence. Keep separate what the characters can see, what Moses says, and what happens later.',
+      'Write 6–8 sentences analyzing the difference between the people’s visible evidence and Moses’ confidence. Keep separate what the characters can see, what Moses says, and what happens later.',
     ], 'B2 analysis distinguishes present evidence, stated confidence, and later outcome instead of collapsing them into one moment.'),
   ],
   23: [

@@ -333,7 +333,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'Instruction and Reassurance',
       instructions: 'Read the Qur’anic words quoted in Chapter 6. Match each part with what it does.',
-      question: 'What does each part of the inspired message do for Moses’s mother?',
+      question: 'What does each part of the inspired message do for Moses’ mother?',
       matchingHeadings: { left: 'From the chapter', right: 'What the words do' },
       matchingPairs: [
         { left: 'but when you fear for him, then put him into the river', right: 'a condition followed by the action it requires' },
