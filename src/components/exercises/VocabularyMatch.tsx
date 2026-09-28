@@ -89,6 +89,10 @@ const maskWord = (context: string | undefined, word: string) => {
   while (endIndex < context.length && /[\u064B-\u0652\u0670]/.test(context[endIndex])) {
     endIndex += 1;
   }
+  // Blank out a whole Latin word, so an inflected form ("mocked" for "mock") leaves no "___ed" hint.
+  while (endIndex < context.length && /\p{Script=Latin}/u.test(context[endIndex])) {
+    endIndex += 1;
+  }
 
   return context.slice(0, startIndex) + '_____' + context.slice(endIndex);
 };
