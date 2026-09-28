@@ -2,8 +2,8 @@
 """Arabic narration queue (tts/arabic_requests.json), kept apart from the English-only queue.
 
 Same flow as process_requests.py: the chapter title, a paragraph break, then the story;
-parenthetical spans are not read. The Arabic honorifics that stand in for "(pbuh)" are not
-read either. Audio is written only to existing arabic_audio objects, keeping their download
+parenthetical spans are not read, while honorifics written in the text itself
+are read. Audio is written only to existing arabic_audio objects, keeping their download
 token so the current audioUrl values stay valid.
 """
 from __future__ import annotations
@@ -31,30 +31,12 @@ MODEL_ID = "eleven_v4"
 SPEED = 0.96
 REQUESTS_FILE = Path(os.environ.get("STORIES_TTS_ARABIC_REQUESTS_FILE", "tts/arabic_requests.json"))
 ARABIC_SCRIPT_RE = re.compile(r"[؀-ۿ]")
-DIACRITICS = "[ً-ْٰ]*"
-
-
-def _loose(word: str) -> str:
-    """Match an Arabic word whatever its diacritics."""
-    return DIACRITICS.join(re.escape(ch) for ch in word) + DIACRITICS
-
-
-HONORIFIC_RE = re.compile(
-    r"\s*(?:ﷺ|"
-    + r"\s+".join(_loose(w) for w in ("صلى", "الله", "عليه", "وسلم"))
-    + r"|"
-    + r"\s+".join(_loose(w) for w in ("عليه", "السلام"))
-    + r")"
-)
-
-
 def log(message: str) -> None:
     print(f"[Stories TTS Arabic] {message}", flush=True)
 
 
 def narration_for_audio(text: str) -> str:
     cleaned = strip_parenthetical_content(text)
-    cleaned = HONORIFIC_RE.sub("", cleaned)
     cleaned = re.sub(r"[ \t]+([،؛.!?؟:])", r"\1", cleaned)
     cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
     return cleaned.strip()
