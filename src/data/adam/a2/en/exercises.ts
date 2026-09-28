@@ -103,58 +103,14 @@ export const adamA2QuickChallenges: Record<number, Exercise> = {
 };
 
 export const adamA2KnowledgeCheckExercises: Exercise[] = [
-  {
-    id: 'adam-a2-kc-1', type: 'multiple-choice', title: 'Adam on Earth', instructions: 'Choose the correct answer.',
-    question: 'What role would Adam have on Earth?',
-    options: ['A ruler on Earth', 'An angel in the sky', 'A shepherd in Paradise'], correctAnswer: 0,
-    explanation: 'Chapter 1 says that Adam would have a role on Earth.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the part about Adam’s role on Earth again.' }
-  },
-  {
-    id: 'adam-a2-kc-2', type: 'true-false', title: 'Learning', instructions: 'Choose true or false.',
-    question: 'Allah gave Adam knowledge and taught him to think.', correctAnswer: true,
-    explanation: 'Chapter 2 says that Adam learned and understood through the knowledge Allah gave him.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the part about Adam’s knowledge again.' }
-  },
-  {
-    id: 'adam-a2-kc-3', type: 'multiple-choice', title: 'Useful Knowledge', instructions: 'Choose the correct answer.',
-    question: 'What does useful knowledge help people do?',
-    options: ['Do good and stop bad', 'Think one origin is always better', 'Stop thinking about right and wrong'], correctAnswer: 0,
-    explanation: 'Chapter 3 says useful knowledge helps people do good and stop bad.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the sentence about useful knowledge again.' }
-  },
-  {
-    id: 'adam-a2-kc-4', type: 'true-false', title: 'The Tree', instructions: 'Choose true or false.',
-    question: 'Adam and Eve could go near every tree in Paradise.', correctAnswer: false,
-    explanation: 'They were told not to go near one tree.',
-    feedback: { correct: 'Correct.', incorrect: 'There was one tree they could not go near.' }
-  },
-  {
-    id: 'adam-a2-kc-5', type: 'multiple-choice', title: 'After the Mistake', instructions: 'Choose the correct answer.',
-    question: 'What did Adam and Eve do after their mistake?',
-    options: ['They were sorry and asked Allah to forgive them', 'They said they were right', 'They forgot the mistake'], correctAnswer: 0,
-    explanation: 'They were sorry, asked Allah to forgive them and learned from their mistake.',
-    feedback: { correct: 'Correct.', incorrect: 'Read what Adam and Eve did after the mistake.' }
-  },
-  {
-    id: 'adam-a2-kc-6', type: 'true-false', title: 'Life on Earth', instructions: 'Choose true or false.',
-    question: 'People on Earth did not need to work.', correctAnswer: false,
-    explanation: 'Chapter 6 talks about work such as growing crops and keeping animals.',
-    feedback: { correct: 'Correct.', incorrect: 'Chapter 6 gives examples of work on Earth.' }
-  },
-  {
-    id: 'adam-a2-kc-7', type: 'multiple-choice', title: 'Habil and Qabil', instructions: 'Choose the correct answer.',
-    question: 'What were Habil and Qabil’s jobs?',
-    options: ['Habil was a shepherd and Qabil was a farmer', 'Habil was a farmer and Qabil was a shepherd', 'Both were farmers'], correctAnswer: 0,
-    explanation: 'Habil became a shepherd and Qabil became a farmer.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the first part of Chapter 8 again.' }
-  },
-  {
-    id: 'adam-a2-kc-8', type: 'true-false', title: 'The Crow', instructions: 'Choose true or false.',
-    question: 'The crow showed Qabil how to put his brother’s body in the ground.', correctAnswer: true,
-    explanation: 'The crow dug the ground and Qabil understood what to do.',
-    feedback: { correct: 'Correct.', incorrect: 'Read the part about the crow again.' }
-  }
+  { id: 'adam-a2-kc-1-the-angels-wait', type: 'multiple-choice', title: 'The Angels', instructions: 'Read the question. Choose the answer.', question: 'Allah told the angels that He was going to create a human. How did the angels feel?', options: ['They were surprised and curious.', 'They were angry and afraid.', 'They were sad and lonely.'], correctAnswer: 0, explanation: 'Chapter 1: “Angels got surprised. They began waiting with curiosity.”', feedback: { correct: 'Yes! The angels were surprised, and they waited with curiosity to see the new creature.', incorrect: 'Not this one. Read the second paragraph of Chapter 1 again. What did the angels do after Allah spoke?' } },
+  { id: 'adam-a2-kc-2-not-everyone-admired', type: 'true-false', title: 'Everyone Admired Adam?', instructions: 'Read the sentence. Is it true or false?', question: 'All the angels and Iblis admired Adam.', correctAnswer: false, explanation: 'Chapter 2: “All the angels thought that Adam was amazing.” But: “Iblis didn’t think so. Iblis thought Adam was an unimportant creature created from clay.”', feedback: { correct: 'Right, it is false. The angels admired Adam, but Iblis did not. He thought Adam was unimportant.', incorrect: 'Read the second paragraph of Chapter 2 again. Did Iblis think the same as the angels?' } },
+  { id: 'adam-a2-kc-3-sent-away', type: 'multiple-choice', title: 'Iblis Is Sent Away', instructions: 'Read the question. Choose the answer.', question: 'Why did Allah send Iblis away?', options: ['He ate fruit from the banned tree.', 'He hurt Adam and Eve in Paradise.', 'He kept saying that he was right.'], correctAnswer: 2, explanation: 'Chapter 3: “But Iblis continued saying he was right and the Creator was wrong.” After that, Allah sent him away from His love and care.', feedback: { correct: 'Yes. Iblis was arrogant. He did not say sorry. He kept saying he was right.', incorrect: 'Not quite. Read the end of Chapter 3 again. What did Iblis continue saying?' } },
+  { id: 'adam-a2-kc-4-why-iblis-hated-adam', type: 'multiple-choice', title: 'Iblis and Adam', instructions: 'Read the question. Choose the answer.', question: 'Why did Iblis hate Adam?', options: ['Adam told the angels bad things about him.', 'Adam took the best place in Paradise from him.', 'He thought he lost Allah’s love because of Adam.'], correctAnswer: 2, explanation: 'Chapter 4: “Iblis thought Allah put him far from His love because of Adam.”', feedback: { correct: 'Yes. Iblis blamed Adam. He did not see that his own arrogance was the real problem.', incorrect: 'Not this one. Read the first paragraph of Chapter 4 again. What did Iblis think about Adam?' } },
+  { id: 'adam-a2-kc-5-not-on-purpose', type: 'true-false', title: 'The Mistake', instructions: 'Read the sentence. Is it true or false?', question: 'Adam and Eve ate from the tree on purpose, because they wanted to disobey Allah.', correctAnswer: false, explanation: 'Chapter 5: “They forgot Allah’s warning.” And: “They made a mistake, but it wasn’t on purpose.”', feedback: { correct: 'Right, it is false. Adam and Eve forgot the warning. Their mistake was not on purpose, and they were very sorry.', incorrect: 'Read Chapter 5 again. Did Adam and Eve remember Allah’s warning? Was their mistake on purpose?' } },
+  { id: 'adam-a2-kc-6-the-first-messenger', type: 'multiple-choice', title: 'The First Messenger', instructions: 'Read the question. Choose the answer.', question: 'What did Adam (pbuh) teach people as the first Messenger?', options: ['to build big houses and grow crops', 'to be honest, do good and remember Allah', 'to stay in one place and never travel'], correctAnswer: 1, explanation: 'Chapter 7: “He started teaching people to be honest, do good, stop bad and always remember Allah.”', feedback: { correct: 'Yes. Adam (pbuh) taught people to be honest, to do good, to stop bad and to always remember Allah.', incorrect: 'Not quite. Read the first paragraph of Chapter 7 again. What did Adam (pbuh) start teaching people?' } },
+  { id: 'adam-a2-kc-7-the-same-way', type: 'true-false', title: 'Other Messengers', instructions: 'Read the sentence. Is it true or false?', question: 'After Adam (pbuh), Allah sent other messengers, and they taught the same way.', correctAnswer: true, explanation: 'Chapter 7: “After the death of Adam (pbuh), Allah sent many other messengers.” And: “All the prophets took the same way. They wanted to make people remember Allah.”', feedback: { correct: 'Right, it is true. All the prophets took the same way. They wanted people to remember Allah.', incorrect: 'Read the last paragraph of Chapter 7 again. What did all the prophets want?' } },
+  { id: 'adam-a2-kc-8-a-sad-father', type: 'multiple-choice', title: 'A Sad Father', instructions: 'Read the question. Choose the answer.', question: 'Why did Adam (pbuh) become very sad at the end of the story?', options: ['His children did not want to hear his message.', 'He lost both of his sons on the same day.', 'He had to leave his home and go far away.'], correctAnswer: 1, explanation: 'Chapter 10: “Adam (pbuh) became very sad. He lost both of his sons on the same day.” Habil died, and Qabil went far away.', feedback: { correct: 'Yes. Habil died, and Qabil went far away. Adam (pbuh) lost both sons on one day.', incorrect: 'Not this one. Read the first paragraph of Chapter 10 again. What happened to Adam’s two sons?' } },
 ];
 
 export const adamA2VocabularyChallengePairs = [
