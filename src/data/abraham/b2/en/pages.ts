@@ -25,7 +25,7 @@ In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and r
   {
     id: 2,
     type: 'story',
-    title: 'Abraham as Allah’s Friend',
+    title: 'Hanifism and the One True Faith',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F01_Chapter_2_Abraham_as_Allah%E2%80%99s_Friend.mp3?alt=media&token=0303777a-0c94-4898-ad1c-ce260e331d8e',
     content: `He challenged the idol worship of his time and taught people to believe in Allah alone. His life mission was to spread the message of Tawheed—the belief that Allah is One and He has no partners. During his struggle, he had very difficult tests and he passed the tests with his full trust in Allah.
@@ -35,7 +35,7 @@ In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf; a hanîf is
   {
     id: 3,
     type: 'story',
-    title: 'Hanifism and the One True Faith',
+    title: 'Hanifism Before Islam',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F02_Chapter_3_Hanifism_and_the_One_True_Faith.mp3?alt=media&token=171a95ce-498c-4cc6-a993-ac54abe5964e',
     content: `In fact, Judaism, Christianity, and Islam are all based on the religion of Abraham (pbuh). At the beginning of Prophet Muhammad's mission, there was a group in the Hijaz who called themselves hanîfs. They stayed away from idolatry and its practices. However, later on, this belief became mixed with idolatry and, like Judaism and Christianity, it was corrupted. One of the last hanîfs we can mention is Waraqa ibn Nawfal, the cousin of Muhammad's wife Khadija. He went to Damascus in search of Hanifism and accepted Christianity, which was the least corrupted religion at that time. When the first revelation (wahy) came to Muhammad (pbuh), Waraqa ibn Nawfal welcomed his prophethood. One day, while he was in the desert, Waraqa saw Bilal al-Habashi lying under the burning sun, punished by his master. At that moment, Bilal was saying, “Ahad, Ahad,” meaning “One, One.” Hearing his words, Waraqa replied, “I swear, O Bilal, One, One.”
@@ -48,7 +48,7 @@ As the last faith, Islam includes not only what Allah told Abraham (pbuh), but a
   {
     id: 4,
     type: 'story',
-    title: 'Hanifism Before Islam',
+    title: 'Abraham’s Land and Time',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F03_Chapter_4_Hanifism_Before_Islam.mp3?alt=media&token=d08f7bf4-23c7-4b83-a80d-221e96f8676c',
     content: `In the Holy Qur’an, the name of Abraham (pbuh)’s father is Azer. He is described as an idol worshipper (see Surah al-An’am: 74). Azer is presented in Islamic sources as Nimrod's idol maker. There are different ideas about the birthplace of Abraham (pbuh). Some sources say that he was born in the land of Sumer, Mesopotamia, and migrated from there to Harran. Most generally speaking, we can say that Abraham was born in the city of Ur or Babylon, the country of King Nimrod. Historically, Abraham (pbuh) is believed to have lived in the 20th century BC. Some sources suggest that he lived between 2200–2000 BC. During the time of Abraham (pbuh), the Sumerian/Mesopotamian country was prosperous in many aspects, such as agriculture and industry. Abraham (pbuh)'s message of monotheism was a belief that had existed in these lands before, but it had been forgotten over time. In the time of Abraham (pbuh), Allah was believed to be in the heavens.
@@ -58,7 +58,7 @@ People worshipped the planets, stars, sun, and moon; some people worshipped idol
   {
     id: 5,
     type: 'story',
-    title: 'The Birthplace and Mission of Abraham',
+    title: 'Nimrod’s Fear and Abraham’s Birth',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F04_Chapter_5_The_Birthplace_and_Mission_of_Abraham.mp3?alt=media&token=a463971a-d367-49c9-9e95-78868795cc1a',
     content: `The head of Abraham (pbuh)’s family was an idolater who totally rejected Allah and made idols with his own hands. Abraham (pbuh) was born into that atmosphere and family. Very soon, he was going to fight against his family and the whole system in his society. As a prophet who lived before Jacob (pbuh), Joseph (pbuh), Moses (pbuh), and Jesus (pbuh), Abraham (pbuh) tried to spread the belief in monotheism in the land of Mesopotamia and the lands where he migrated. Nimrod, the king of Babylon, had many fortunetellers and astrologers. One year, around the 20th century BC, they predicted that a child named Abraham (pbuh) would be born in the region, would change the religion of the people, and would end the reign of Nimrod. According to another narration, Nimrod had a dream that a child in the region would challenge his throne. So, he gathered pregnant women in one place and ordered that all male children be killed.
@@ -132,7 +132,7 @@ They began arguing and threatening Abraham (pbuh). “And his people argued with
   {
     id: 12,
     type: 'story',
-    title: 'Speaking to His Father',
+    title: 'Confronting His People',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F11_Chapter_12_Speaking_to_His_Father.mp3?alt=media&token=d0f15e47-a55b-4e88-a837-3a0770997c18',
     content: `Prophet Abraham (pbuh) paid no heed to this threat. As a true believer, he expressed his fear of Allah. In doing so, he declared his belief that both benefit and harm come from Allah. Abraham (pbuh) did his best to make his people mindful of the oneness of Allah and the need to worship Him alone. He told them to firmly reject the worship of idols. He said to his father and his people in Surah al-Anbiya, verses 52–56: “When he said to his father and his people, ‘What are these statues to which you are faithful?’ They said, ‘We found our parents worshipping them.’ He said, ‘You and your parents are in evident error.’ They said, ‘Are you telling us the truth, or are you just playing?’ He said, ‘Your Lord is the Lord of the heavens and the earth, the One who created them, and I bear witness to that.’”
@@ -145,7 +145,7 @@ A bitter struggle began between Abraham (pbuh) and his people. The most amazed a
   {
     id: 13,
     type: 'story',
-    title: 'Debating the Idolaters',
+    title: 'Speaking to His Father',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F12_Chapter_13_Debating_the_Idolaters.mp3?alt=media&token=49e3bd81-8558-4803-a119-d779ee1504d7',
     content: `Abraham (pbuh) felt that it was his duty as a good son to advise his father against this evil so that his father could be saved from Allah's punishment. He was a wise son, so he did not make his father feel embarrassed, or make fun of his job. He told him that he loved him; in that way, he hoped to increase fatherly love. Then he kindly asked him why he worshipped lifeless statues who could not hear, see, or protect him. Before his father got angry, he quickly added an explanation, as recorded in Surah Maryam, verses 42–48: “He (Abraham) said to his father, ‘O my father, why do you worship what can neither hear, nor see, nor benefit you in any way? O my father, there has come to me knowledge that never came to you. So follow me, and I will guide you along a straight way.
@@ -163,7 +163,7 @@ O my father, do not worship Satan. Satan is disobedient to the Most Beneficent (
   {
     id: 15,
     type: 'story',
-    title: 'Breaking the Idols',
+    title: 'Debating the Idolaters',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F14_Chapter_15_Breaking_the_Idols.mp3?alt=media&token=be5a070b-45e9-4408-bddd-1929f6023e6e',
     content: `“Do the idols see you when you bow down before them? Do they benefit you in any way?” They quickly tried to defend their beliefs. They argued that they knew the idols were lifeless but that their forefathers had worshipped them; to them, this confirmed their belief. Abraham (pbuh) explained that their forefathers had been wrong. This angered them and they responded: “Are you criticizing our gods and our forefathers? Or are you just joking?” Abraham (pbuh) showed no fear as he replied: “I am serious. I come to you with a true religion. I have been sent with guidance from our Lord Who alone is worthy of worship, Who is the Creator of the heavens and the earth, and Who regulates all affairs of life, unlike the speechless idols which are just stone and wood.” To persuade them that the idols could not harm him, he challenged: “I have already criticized them; see if they have any power to harm me by now!”
@@ -173,7 +173,7 @@ Abraham (pbuh) did not give up arguing with the idolaters.`,
   {
     id: 16,
     type: 'story',
-    title: 'The Broken Temple',
+    title: 'The Idols or the Creator',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F15_Chapter_16_The_Broken_Temple.mp3?alt=media&token=3ebcb16d-df42-4d8b-88ca-ef8c847804d4',
     content: `Allah said in Surah ash-Shu’ara, verses 69–82: “And describe to them the story of Abraham. When he said to his father and his people, ‘What do you worship?’ They said, ‘We worship idols, and we remain faithful to them.’ He said, ‘Do they hear you when you pray? Or do they benefit you, or harm you?’ They said, ‘But we found our ancestors doing so.’ He said, ‘Have you considered what you worship— You and your ancient ancestors? They are enemies to me, but not so the Lord of the Worlds. He who created me, and guides me. He who feeds me, and waters me. And when I get sick, He heals me. He who makes me die, and then revives me. He who, I hope, will forgive my sins on the Day of Resurrection?’” He explained to them the beauty of Allah's creation, His power, and His wisdom. Idol worship is hated by Allah, as Allah is the Lord of the universe Who created mankind, offers guidance, provides human beings with food and drink and heals the sick.`,
@@ -184,7 +184,7 @@ Abraham (pbuh) did not give up arguing with the idolaters.`,
   {
     id: 17,
     type: 'story',
-    title: 'Questioned Before the People',
+    title: 'The Empty Temple',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F16_Chapter_17_Questioned_Before_the_People.mp3?alt=media&token=bfbc27f2-54a1-4bcd-b331-f81774155d0a',
     content: `Allah also will cause them to die and bring them back to life again. However, idolaters would not give up but held on tightly to their idols. Abraham (pbuh) left his father's house and distanced himself from his people and what they worshipped. Actually, he decided to do something shocking to show their error. He knew that there was going to be a great celebration outside the town. All the people would attend it. Abraham (pbuh) waited until the city was empty, then cautiously made his way to the temple. The streets leading to it and the temple itself were empty. The priests had also gone to the festival outside the city. Abraham (pbuh) went there with a sharp axe. He looked at the stone and wood statues of the gods and at the food put in front of them as offerings. He approached one of the statues and asked: “The food in front of you is getting cold.
@@ -194,7 +194,7 @@ Why don't you eat?” The statue kept silent and rigid.`,
   {
     id: 18,
     type: 'story',
-    title: 'The Decision to Burn Abraham',
+    title: 'Breaking the Idols',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F17_Chapter_18_The_Decision_to_Burn_Abraham.mp3?alt=media&token=0ae53990-9b95-450d-a818-ad940a9f4d58',
     content: `Abraham (pbuh) asked all the other statues around him: “Will you not eat of the offering before you?” (Surah as-Saffat: 91). He was mocking them, for he knew they would not eat. He once again asked them: “What is the matter with you that you do not speak?” (Surah as-Saffat: 92). He then raised his axe and started smashing the false gods worshipped by the people. He destroyed them all except one. On its neck, he hung the axe. He left the temple. He had fulfilled his duty to show his people a practical proof of their foolishness in worshipping something other than Allah. When the people returned, they were shocked to see their gods smashed into pieces, spread all over the temple. They tried to find out who had done that to their idols and Abraham (pbuh)'s name came to their minds. Allah said in Surah al-Anbiya, verses 59–67: “They said, ‘Who did this to our gods? He is certainly one of the wrongdoers.’ They said, ‘We heard a youth mentioning them.`,
@@ -202,7 +202,7 @@ Why don't you eat?” The statue kept silent and rigid.`,
   {
     id: 19,
     type: 'story',
-    title: 'Thrown into the Fire',
+    title: 'Questioned Before the People',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F18_Chapter_19_Thrown_into_the_Fire.mp3?alt=media&token=d5a3e204-3a26-4084-a741-ede788f383a3',
     content: `He is called Abraham.’ They said, ‘Bring him before the eyes of the people, so that they may witness.’ They said, ‘Are you the one who did this to our gods, O Abraham?’ He said, ‘But it was this biggest of them that did it. Ask them if they can speak.’ Then they turned to one another and said, ‘You yourselves are the wrongdoers.’ But they reverted to their old ideas: ‘You certainly know that these do not speak.’ He said, ‘Do you worship, instead of Allah, what can neither benefit you in anything, nor harm you? Shame on you, and on what you worship instead of Allah. Do you not understand?’” They furiously demanded that Abraham (pbuh) be arrested and judged. Abraham (pbuh) did not resist. This was exactly what he was aiming for, so that he could demonstrate to them in public that their beliefs were foolish. At the trial, they asked him if he was responsible for breaking the idols.
@@ -212,7 +212,7 @@ Smiling, he told them to ask the biggest idol which was still undamaged.`,
   {
     id: 20,
     type: 'story',
-    title: 'The Faith of the Believers',
+    title: 'The Decision to Burn Abraham',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F19_Chapter_20_The_Faith_of_the_Believers.mp3?alt=media&token=1dc71341-e358-4deb-962e-ca26d2c893b2',
     content: `He told them that it must be the culprit! They replied that he knew well that the idol could not speak or move. These words gave Abraham (pbuh) the chance to show the foolishness of worshipping these lifeless objects. They had no answer for Abraham (pbuh). In fact, they realized the stupidity of their beliefs; however, their arrogance would not allow them to admit their foolishness. All they could do was use their authority as tyrants to punish Abraham (pbuh). They kept him in chains and planned their revenge. Anger was burning in their hearts. They agreed that Abraham (pbuh) should be burned alive. They decided to throw Abraham (pbuh) into the biggest fire they could build. All the citizens were ordered to gather wood as a service to their gods. For several days they collected fuel. They dug a deep pit, filled it with firewood, and set it on fire. They brought a catapult with which to throw Abraham (pbuh) into the fire. Abraham (pbuh) was put on the catapult; his hands and feet were tied.`,
@@ -251,7 +251,7 @@ The king called up two men sentenced to death. He freed one and the other was pu
   {
     id: 24,
     type: 'story',
-    title: 'Sarah, Hagar, and a New Trial',
+    title: 'Sarah and Lot Believe',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F23_Chapter_24_Sarah%2C_Hajar%2C_and_a_New_Trial.mp3?alt=media&token=49060ebe-4cbd-437c-865e-3a9336a128cf',
     content: `This reply of the king was totally foolish, so Abraham (pbuh) put forth another challenge which would unquestionably and easily quiet him. Abraham (pbuh) said: “Verily, Allah causes the sun to rise from the east; then cause it to rise from the west.” He was utterly defeated. Allah does not guide the people who are Zalimeen (wrongdoers) (Surah al-Baqarah: 258). Abraham (pbuh)'s fame spread throughout the entire kingdom of Babylonia. People talked about how he was saved from the fire and how he debated with the king and left him unable to speak. In the meantime, Abraham (pbuh) continued calling people to believe in Allah and made a great effort to guide his people to the right path. He tried every means to persuade them. However, in spite of his love and care for his people, they left him alone. Only one woman and one man of his people shared his belief in Allah.
@@ -264,7 +264,7 @@ The woman's name was Sarah and she became his wife. The man's name was Lot and h
   {
     id: 25,
     type: 'story',
-    title: 'Sarah and Hagar',
+    title: 'Emigration and Ishmael’s Birth',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F24_Chapter_25_Sarah_and_Hajar.mp3?alt=media&token=0e2106bf-baee-4089-957e-bf08c73f8146',
     content: `When Abraham (pbuh) realized that no one else was going to believe in his call, he decided to emigrate. He left his people and traveled with his wife Sarah and Lot to Egypt. Allah told us: “So Lot believed in him (Abraham's message of Islamic Monotheism). He (Abraham) said, ‘I will emigrate for the sake of my Lord. Verily, He is the All Mighty, the All Wise.’” (Surah al-Ankabut: 26). After Egypt, Abraham (pbuh) traveled to Palestine and settled there. He called people to believe in Allah wherever he traveled, judged fairly between people, and guided them to truth and righteousness. Abraham (pbuh)'s wife Sarah was sterile. She had been given an Egyptian woman, Hagar, as a servant when they were in Egypt. Abraham (pbuh) had aged and his hair was gray after many years spent in calling people to Allah. Sarah thought she could not have a child. Therefore, she suggested Abraham (pbuh) get married to Hagar. Hagar gave birth to her first son, Ishmael, when Abraham (pbuh) was an old man.`,
@@ -272,7 +272,7 @@ The woman's name was Sarah and she became his wife. The man's name was Lot and h
   {
     id: 26,
     type: 'story',
-    title: 'Hagar’s Trust in the Desert',
+    title: 'The Journey to Mecca',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F25_Chapter_26_Hajar%E2%80%99s_Trust_in_the_Desert.mp3?alt=media&token=fb5f22dc-235c-4535-ac20-2dd9ab13218f',
     content: `Some time later, Allah gave Abraham (pbuh) another son from his first wife, Sarah. The name of this second son was Isaac. Allah told Abraham (pbuh) that these two sons’ offspring would be the prophets of Judaism, Christianity, and Islam. From Ishmael's descendants came Prophet Muhammad (pbuh), while from Isaac's came Moses (pbuh) and Jesus (pbuh). One day, Allah told Abraham (pbuh) that he should take Hagar and Ishmael to the Sacred City, Mecca. This was another test for Abraham (pbuh) while Ishmael was still a little child. It was part of Allah’s master plan. He informed Abraham (pbuh) that the sacred city would be built through Ishmael and that water would flow for him. In a few days, Abraham (pbuh) set out with his wife Hagar and their son Ishmael. Hagar was still nursing Ishmael and the child was still breastfeeding. Abraham (pbuh) walked through cultivated land, desert, and mountains until he reached the desert of the Arabian Peninsula and came to an uncultivated valley near two small hills called Safa and Marwa.`,
@@ -280,7 +280,7 @@ The woman's name was Sarah and she became his wife. The man's name was Lot and h
   {
     id: 27,
     type: 'story',
-    title: 'Hagar and Ishmael Search for Water',
+    title: 'Hagar’s Trust in the Desert',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F26_Chapter_27_Hajar_and_Ishmael_Search_for_Water.mp3?alt=media&token=d14daae7-e2e0-455c-bda1-66ab2239854c',
     content: `The valley had no fruit, no trees, no food, no water, and no sign of life. Abraham (pbuh) left them with a skin of water and a leather bag full of dates. As Abraham (pbuh) began walking away, leaving them behind, Hagar became anxious as to what was happening. Abraham (pbuh) continued walking. Hagar asked him: “Has Allah commanded you to leave us here?” He replied: “Yes. I am leaving you to Allah’s care.” Feeling a degree of comfort in this answer, this great woman said: “I am satisfied to be with Allah! We are not going to be lost, since Allah is with us.” Hagar came to understand that Abraham (pbuh) was not acting on his own decision; Allah had commanded him to leave them. Abraham (pbuh) advanced as far as the upper parts of Mecca. He stopped in a place where they could not see him.
@@ -290,7 +290,7 @@ He turned his face towards the direction where the Ka‘ba stands today and rais
   {
     id: 28,
     type: 'story',
-    title: 'Zamzam Appears',
+    title: 'Abraham’s Prayer for Mecca',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F27_Chapter_28_Zamzam_Appears.mp3?alt=media&token=baf68a2a-1d4c-4428-972b-f49b47c307b2',
     content: `I have made some of my offspring to dwell in a valley with no cultivation, by Your Sacred House (the Ka‘ba at Mecca); in order, O our Lord, that they may offer prayers perfectly (Iqamat as salat); so fill some hearts among men with love towards them, and O Allah provide them with fruits so that they may give thanks” (Surah Ibrahim: 37). Abraham (pbuh) had to take Hagar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka‘ba. According to Allah’s intention, Hagar and Ishmael had to leave Palestine and settle in the barren valley of Mecca, near the place of the old temple, to reconstruct the Holy Ka‘ba which was lost after Noah’s Flood, making this place the renewed center of monotheism: Islam. Over the years, Ishmael’s children had children; one of them was Muhammad, the Prophet of Islam (pbuh).
@@ -300,7 +300,7 @@ They spread all over the Arabian Peninsula to carry their grandfather Abraham (p
   {
     id: 29,
     type: 'story',
-    title: 'Mecca Is Settled',
+    title: 'Hagar’s Search for Water',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F28_Chapter_29_Mecca_Is_Settled.mp3?alt=media&token=780ddf21-7c82-4189-9eb7-08eb04c16bbb',
     content: `Ibn Abbas, a companion of Prophet Muhammad (pbuh) who narrated many hadiths, said, “Ishmael's mother went on suckling Ishmael and drinking from the water. When the water in the water skin was used up, she became thirsty and her child also became thirsty. She started looking at Ishmael in grief. Hagar began searching for water. Leaving Ishmael under a tree, she began climbing the rocky slope of a nearby hill, Safa. ‘Maybe there is a caravan passing by,’ she thought to herself. Then, she moved across to the opposite hill, Marwa, but still saw nothing. She ran between the two hills of Safa and Marwa seven times looking for signs of water or help. Hagar’s patient search for water is directly comparable to the running (sa’y) between Safa and Marwah.” Her effort was later commemorated by Muslims during Hajj. Actually, there is almost no difference between the pilgrimage called by Abraham (pbuh) and the pilgrimage of Islam.
@@ -313,7 +313,7 @@ Exhausted and sad, she heard a voice but could not find where it came from.`,
   {
     id: 30,
     type: 'story',
-    title: 'Abraham and Ishmael',
+    title: 'Zamzam Appears',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F29_Chapter_30_Abraham_and_Ishmael.mp3?alt=media&token=be356476-581b-4c87-8f05-e0354e668b60',
     content: `Looking down into the valley, Hagar saw the angel Gabriel standing next to her son, Ishmael. The angel hit the ground with his heel, and water immediately flowed out. It was a miracle! Hagar quickly made a small basin around the water to stop it from spreading, and she filled her water skin. The angel said, “Do not be afraid. This is the place for the House of Allah, which this boy and his father will build. Allah never abandons His people.” This well, called Zamzam, is flowing to this day in the city of Mecca in the Arabian Peninsula. This name was given to the water because the word Zamzam means “abundant and flowing, the voice of Gabriel, the sound water makes as it flows, the sound of thunder, a sound whose origin is unknown.” Not long after that, the tribe of Jurham that was moving from southern Arabia, Yemen, stopped by the valley of Mecca. They had seen the unusual sight of a bird flying in its direction, which could only mean the presence of water.`,
@@ -339,7 +339,7 @@ He (Abraham) said (asking of Allah), ‘and from my children” (Surah al-Baqara
   {
     id: 33,
     type: 'story',
-    title: 'Building the Ka‘ba',
+    title: 'Sacrifice and Reunion',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F32_Chapter_33_Building_the_Ka%E2%80%98ba.mp3?alt=media&token=64ffd38a-fbaf-4181-b4d2-c9685a826820',
     content: `Every year, hundreds of millions of Muslims perform this act of trust in Allah during the days of Hajj. This day is called "The Day of Sacrifice" or "The Celebration of Sacrifice." At Abraham (pbuh)’s time, the practice of sacrificing the firstborn children was quite widespread in Arabia, Palestine, and Egypt. Actually, sacrificing animals was part of Abraham's religion of monotheism. In Abraham (pbuh)’s religion, animal sacrifice was equivalent to human life, and for the people of that era, it meant safety, especially for children. In fact, animal sacrifice is not a form of worship that began with Abraham (pbuh). Prophets before him also sacrificed animals, while idolaters sacrificed humans. Abraham (pbuh) returned to Palestine. After a separation of several years, the father and son came together again. At that time, Ishmael was about thirty years old. Father and son embraced each other again with longing. Both were crying with joy. This time, they were going to build the honored House of Allah, which is a center of worship and the direction people face while praying, and to make it the site of Islamic pilgrimage, Hajj.`,
@@ -350,7 +350,7 @@ He (Abraham) said (asking of Allah), ‘and from my children” (Surah al-Baqara
   {
     id: 34,
     type: 'story',
-    title: 'The First Call to Pilgrimage',
+    title: 'Building the Ka‘ba',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F33_Chapter_34_The_First_Call_to_Pilgrimage.mp3?alt=media&token=0e5a8118-0498-4e50-a826-e6aaca1b8cc4',
     content: `Prophet Muhammad (pbuh) said: “Indeed this place has been made sacred by Allah since the day He created the heavens and the earth, and it will remain so until the Day of Judgment” (Sunan an-Nasa'i, 2874). Abraham (pbuh) said to Ishmael: “O Ishmael, Allah has commanded me to do an important task, and you will help me in this task.” Ishmael replied, “I will help you for sure.” Abraham (pbuh) said, “The Almighty Allah commanded me to build a house for Himself.” Father and son found the foundations of the old structure and began to build the Ka‘ba on it. When the building became high and the old man Abraham (pbuh) could no longer lift the stones to such a high position, he stood over the stone of Al-Maqam and Ishmael carried on handing him the stones, and both of them were saying: “O our Lord! Accept this service from us; verily You are the All Hearer, the All Knower” (Surah al-Baqarah: 127).
