@@ -185,7 +185,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Whose View Is It?',
       instructions: 'Read the two sentence openings from Chapter 8. Then choose why the writer uses them.',
-      question: '“According to Yunus Emre, the Creator, Allah is the source of all things …” / “According to the theory of vahdet-i vücut, Allah, the absolute reality, desired to be known …” Why does the writer begin these sentences with “According to …”?',
+      question: '“According to Yunus Emre, the Creator, Allah is the source of all things …” / “According to the theory of the Unity of Existence, Allah, the absolute reality, desired to be known …” Why does the writer begin these sentences with “According to …”?',
       options: [
         'To show that the writer disagrees with these ideas.',
         'To show whose view or which theory the ideas belong to.',
@@ -207,7 +207,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       question: 'Which expressions build the chapter’s argument step by step?',
       formChoices: [
         {
-          sentence: 'The Creator is the true and only reality. [choice], Yunus Emre held the idea of vahdet-i vücut.',
+          sentence: 'The Creator is the true and only reality. [choice], Yunus Emre held the idea of the Unity of Existence (vahdet-i vücut).',
           options: ['In contrast', 'From this perspective', 'For example'],
           answer: 1,
         },

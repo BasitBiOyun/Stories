@@ -131,7 +131,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Keep the Source Caution',
       instructions: 'Choose the rewrite that keeps the writer’s degree of certainty.',
-      question: '“As to the widely accepted view, he was born in 1240–41 and died in 1320–21.” Which version keeps the same degree of certainty?',
+      question: '“According to the widely accepted view, he was born in 1240–41 and died in 1320–21.” Which version keeps the same degree of certainty?',
       options: [
         'It has been proven beyond doubt that he was born in 1240–41 and died in 1320–21.',
         'Most scholars accept that he was born in 1240–41 and died in 1320–21.',
@@ -276,7 +276,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
           answer: 2,
         },
         {
-          sentence: 'The nomadic Oguz and Turkmen tribes, who had migrated to Anatolia from Central Asia for escape the Mongol invasion, were exhausted from wanderings …',
+          sentence: 'The nomadic Oguz and Turkmen tribes, who had migrated to Anatolia from Central Asia for escape the Mongol invasion, were exhausted from wandering …',
           error: 'for escape',
           options: ['to escape', 'for to escape', 'so escape'],
           answer: 0,
