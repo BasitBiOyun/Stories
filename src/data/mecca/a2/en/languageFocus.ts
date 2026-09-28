@@ -50,7 +50,7 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Which words give background facts and show a change?',
       formChoices: [
         { sentence: 'He was born [choice] Mecca.', options: ['on', 'in', 'at'], answer: 1 },
-        { sentence: 'His father, Rebâh, and his mother, Hamâme, [choice] also slaves.', options: ['was', 'were', 'be'], answer: 1 },
+        { sentence: 'His father, Rabah, and his mother, Hamama, [choice] also slaves.', options: ['was', 'were', 'be'], answer: 1 },
         { sentence: 'But Islam [choice] him a free and great man.', options: ['did', 'was', 'made'], answer: 2 },
       ],
       correctAnswer: null,
