@@ -4,6 +4,23 @@ import { highlightPhraseOccurs } from '../../../../lib/highlightTextMatch';
 type WordNote = { word: string; definition: string };
 type Hotspot = { id: string; x: number; y: number; title: string; description: string };
 
+// Arabic chapter narration in Storage (Moses/b1/audio/arabic_audio/Hz.Musa<n>.mp3).
+const ARABIC_AUDIO_URLS: Record<number, string> = {
+  1: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa1.mp3?alt=media&token=b62236fa-c3dd-4dd5-9f28-cbbbb3b8ce73',
+  2: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa2.mp3?alt=media&token=67124954-89a9-488e-8ece-13a64acf3866',
+  3: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa3.mp3?alt=media&token=a310714e-f094-4052-bdc2-271985387150',
+  4: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa4.mp3?alt=media&token=6d2bf8af-a276-4927-973b-6e6d47cfb4ef',
+  5: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa5.mp3?alt=media&token=5ed89ca8-7420-43a2-903c-0bfe311f68b9',
+  6: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa6.mp3?alt=media&token=f0d8fad0-e608-4bc9-89f1-3ae88130a1c9',
+  7: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa7.mp3?alt=media&token=47fd46c7-1cac-4dc4-ba91-04722469ba9c',
+  8: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa8.mp3?alt=media&token=bac0de77-9439-4d4a-9a70-55ff6fe0333d',
+  9: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa9.mp3?alt=media&token=6a9f0ac7-a8b1-4c28-a6ee-80a70676fded',
+  10: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa10.mp3?alt=media&token=75ef1350-8911-42a5-a0df-52af7aab5058',
+  11: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa11.mp3?alt=media&token=2d19094a-962b-482b-966e-6f1ee2597f6e',
+  12: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa12.mp3?alt=media&token=1102b6f8-f571-4695-bf96-6682507b39e4',
+  13: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2Farabic_audio%2FHz.Musa13.mp3?alt=media&token=3afe72f9-4f2b-43e0-9f4e-1c1ff643ec66',
+};
+
 const story = (
   id: number,
   title: string,
@@ -15,7 +32,7 @@ const story = (
   type: 'story',
   title,
   image: '',
-  audioUrl: '',
+  audioUrl: ARABIC_AUDIO_URLS[id] ?? '',
   content,
   vocabulary,
   hotspots,
