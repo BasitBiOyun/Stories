@@ -1227,11 +1227,11 @@ entries.set(key, { word, definition });
             'مناقشة عبارة يونس الخالدة "أحب الخلق من أجل الخالق" كقاعدة سامية وعالمية تعزز التسامح الشامل وحماية البيئة والإحسان لكل كائن حي.',
             'توجيه نقاش مجاهدة الهوى والطباع السيئة بضرب أمثلة عملية من حياة الطلاب اليومية، مبيناً أن التغلب على الصفات الذميمة هو قمة الانضباط والتحكم بالذات.'
           ] : [
-            'Explain Sufism (Tasavvuf) as the spiritual dimension of Islamic practice, complementing formal worship and deepening inner moral character.',
+            'Explain Sûfîsm (Tasavvuf) as the spiritual dimension of Islamic practice, complementing formal worship and deepening inner moral character.',
             'Teach historical dervish practices, lodges (tekkes), and sheikhs objectively as structured educational, artistic, and social centers in Anatolian history.',
             'Frame the inner struggle against the animal self (nafs) as a proactive, positive endeavor of personal self-discipline and refinement.',
             'Frame reflections on death and temporary life gently, focusing on how mortality teaches humility, gratitude, and social responsibility.',
-            'Emphasize the profound Sufi metaphor of the human heart as a mirror of divine presence, so that students understand the severe ethical cost of pride.'
+            'Emphasize the profound Sûfî metaphor of the human heart as a mirror of divine presence, so that students understand the severe ethical cost of pride.'
           ]
         ) : isAdam ? (
           isAr ? [
@@ -1416,7 +1416,7 @@ entries.set(key, { word, definition });
           'An ethical value from the Farewell Sermon that still matters today is...',
           'A key academic term from this chapter I want to remember is...'
         ] : isYunus ? [
-          'One lesson I learned about the Sufi concept of tawhid or love is...',
+          'One lesson I learned about the Sûfî concept of tawhid or love is...',
           'An action of honesty or humility I read about in this chapter was...',
           'A key vocabulary word related to character that I want to use is...'
         ] : [

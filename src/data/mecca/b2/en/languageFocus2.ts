@@ -177,7 +177,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       'The admirable qualities of the Arabs before Islam, like generosity, had nothing to do with arrogance.',
     ],
     correctAnswer: 1,
-    explanation: '“Mostly” limits the claim: arrogance was the main motive, but the writer does not say it was the only one. “Rather than” compares two possible motives and prefers one. The same balance runs through the whole chapter: the Hilfu’l-Fudûl and Arab hospitality are real positive evidence, yet the camel contest is also called “a type of gambling”. The writer praises the action and still questions the motive.',
+    explanation: '“Mostly” limits the claim: arrogance was the main motive, but the writer does not say it was the only one. “Rather than” compares two possible motives and prefers one. The same balance runs through the whole chapter: the Hilfü’l-Fudûl and Arab hospitality are real positive evidence, yet the camel contest is also called “a type of gambling”. The writer praises the action and still questions the motive.',
     feedback: {
       correct: 'Correct. You kept both the qualifier “mostly” and the direction of the contrast.',
       incorrect: 'Look at the first sentence of paragraph 4. Which motive does the writer see as the main one, and is it described as the only motive?',
@@ -191,7 +191,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     question: 'Can you correct the forms that qualify, add evidence and describe a repeated action?',
     errorItems: [
       {
-        sentence: 'As the example of the Hilfu’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entire negative.',
+        sentence: 'As the example of the Hilfü’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entire negative.',
         error: 'entire negative',
         options: ['entire negatively', 'entirely negative', 'entirely negatively'],
         answer: 1,

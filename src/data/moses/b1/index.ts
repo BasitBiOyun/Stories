@@ -90,7 +90,7 @@ const buildEnglishPages = (): PageData[] => mosesB1Pages.map(page => {
   }
   if (page.id === 14) return { ...page, exercises: mosesB1PolishedKnowledgeCheckExercises };
   if (page.id === 15) return { ...page, vocabularyPairs: mosesB1PolishedVocabularyChallengePairs };
-  if (page.id === 18) return { ...page, title: 'B1 Language Review', content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.', exercises: mosesB1LanguageReviewExercises };
+  if (page.id === 18) return { ...page, title: 'Language Review', content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.', exercises: mosesB1LanguageReviewExercises };
   if (page.id === 19) return { ...page, exercises: mosesB1PolishedFinalChallengeExercises };
   return page;
 });

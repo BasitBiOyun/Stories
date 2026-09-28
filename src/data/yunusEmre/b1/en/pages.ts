@@ -21,9 +21,9 @@ export const yunusB1Pages: PageData[] = [
     'Yunus Emre and Sûfîsm',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch1-clean.png?alt=media&token=35c3e7df-520e-4293-916b-7312d4aba9a0',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=8374c2f7-3dc6-480b-ae3b-3b0145c6f071',
-    `Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfis lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body's acts of worship, while the inner side refers to the heart's intentions and morality.
+    `Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfîs lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body's acts of worship, while the inner side refers to the heart's intentions and morality.
 
-Sûfis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.
+Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.
 
 In addition to being a Sûfî, Yunus Emre was one of the first to write and say poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sûfî literature.`,
     [
@@ -422,7 +422,7 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 1,
             "chapterTitle": "Yunus Emre and Sûfîsm",
-            "storyExample": "Sûfis lead a way of life within the outer (visible) and inner rules of Islam."
+            "storyExample": "Sûfîs lead a way of life within the outer (visible) and inner rules of Islam."
       },
       {
             "word": "biases",
@@ -445,7 +445,7 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 1,
             "chapterTitle": "Yunus Emre and Sûfîsm",
-            "storyExample": "Sûfis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
+            "storyExample": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
       },
       {
             "word": "literary",

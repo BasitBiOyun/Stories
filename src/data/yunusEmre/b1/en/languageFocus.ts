@@ -35,7 +35,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Which form do the principles in the list and the phrase after “In addition to” need?',
       errorItems: [
         {
-          sentence: 'Sûfis follow moral principles such as seeking to improve and become better people, being patient in times of need, give generously …',
+          sentence: 'Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, give generously …',
           error: 'give',
           options: ['giving', 'to give', 'gave'],
           answer: 0,
