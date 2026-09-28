@@ -15,7 +15,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       dragDropGroups: [
         {
           group: 'Places the story in history',
-          items: ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh (Firavun) ruled Egypt.'],
+          items: ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh ruled Egypt.'],
         },
         {
           group: 'Moves the story on',
@@ -23,7 +23,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: {
-        'Places the story in history': ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh (Firavun) ruled Egypt.'],
+        'Places the story in history': ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh ruled Egypt.'],
         'Moves the story on': ['Years passed', 'One day the Pharaoh had a dream.'],
       },
       explanation: '“In the 13th century BC” and “over 3000 years ago” date the story; “ago” counts back from today. “At that time” points back to that same period and describes the situation in Egypt. “Years passed” jumps over a long period, and “One day” moves the story to one particular event: the dream.',
@@ -65,7 +65,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Which words link a belief or a fear to its result, and show that a situation went on?',
       formChoices: [
         {
-          sentence: 'They believed in only one Allah, just like their ancestor, Prophet Abraham (pbuh). [choice], they did not believe that the Pharaoh was a god.',
+          sentence: 'They believed in Allah alone, just like their ancestor, Prophet Abraham (pbuh). [choice], they did not believe that the Pharaoh was a god.',
           options: ['Because', 'So', 'Although'],
           answer: 1,
         },

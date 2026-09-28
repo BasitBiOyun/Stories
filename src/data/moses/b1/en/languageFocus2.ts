@@ -180,7 +180,7 @@ export const mosesB1LanguageFocusChapter5: Record<number, Exercise[]> = {
       type: 'true-false',
       title: 'Which Action Was in Progress?',
       instructions: 'Read the sentence from Chapter 5. Is the statement true or false?',
-      question: '“One day, while Moses was walking in the bazaar, he saw two men fighting.” This means that Moses finished his walk first, and after that he saw the two men.',
+      question: '“One day, while Moses (pbuh) was walking in the bazaar, he saw two men fighting.” This means that Moses finished his walk first, and after that he saw the two men.',
       correctAnswer: false,
       explanation: '“While + past continuous” (was walking) describes a longer action that was already in progress. The past simple (saw) is a shorter event that happened in the middle of it. So Moses was still walking when he saw the fight. After that, “Suddenly” brings in a new, unexpected action: the man calls out for help.',
       feedback: {
@@ -295,7 +295,7 @@ export const mosesB1LanguageFocusChapter6: Record<number, Exercise[]> = {
         { id: '1', text: 'Moses knew that the punishment for killing an Egyptian was death.' },
         { id: '2', text: 'Moses escaped from the soldiers.' },
         { id: '3', text: 'He left Egypt and travelled for a long time.' },
-        { id: '4', text: 'After many days, he reached the land of Midian (Medyen) …' },
+        { id: '4', text: 'After many days, he reached the land of Midian …' },
         { id: '5', text: 'Moses was tired and thirsty. He was looking for water.' },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],
@@ -398,8 +398,8 @@ export const mosesB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       question: 'How can we turn a result into a reason, and say “there are no …” in another way?',
       transformItems: [
         {
-          source: 'Prophet Şuayb (pbuh) was very old. That’s why he had to send the girls alone.',
-          frame: 'Prophet Şuayb (pbuh) had to send the girls alone [blank] he was very old.',
+          source: 'Prophet Shu’ayb (pbuh) was very old. That’s why he had to send the girls alone.',
+          frame: 'Prophet Shu’ayb (pbuh) had to send the girls alone [blank] he was very old.',
           answers: ['because', 'as', 'since'],
         },
         {
@@ -412,7 +412,7 @@ export const mosesB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       explanation: '“That’s why” introduces a result; “because” introduces a reason, so the order of the ideas changes. “There are no + noun” and “do not have any + noun” both say that something is missing. Here the missing help is the reason why the sisters have to do the work themselves.',
       feedback: {
         correct: 'Well done. You turned the result into a reason and described the missing help in another way.',
-        incorrect: 'Which idea is the reason: Şuayb’s age or sending the girls alone? Which word goes with “do not have” before a plural noun?',
+        incorrect: 'Which idea is the reason: Shu’ayb’s age or sending the girls alone? Which word goes with “do not have” before a plural noun?',
       },
     },
     {
