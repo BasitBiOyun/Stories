@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 // Manual source of truth for Adam B1 English learning activities.
 
@@ -28,17 +28,17 @@ export const adamB1KnowledgeCheckExercises: Exercise[] = [
   { id: 'adam-b1-kc-8-turning-back', type: 'true-false', title: 'A Lasting Message', instructions: 'Decide whether the statement is true or false according to the story.', question: 'According to the last chapter, Adam’s message also teaches people to admit their mistakes and turn back to Allah.', correctAnswer: true, explanation: 'Chapter 12: “It also teaches people the importance of admitting mistakes and turning back to Allah.” This is exactly what Adam and Eve did in Chapter 7.', feedback: { correct: 'Right, the statement is true. The message repeats Adam’s own lesson: admit the mistake and turn back to Allah.', incorrect: 'Reread the end of Chapter 12. What does the message teach about mistakes?' } },
 ];
 
-export const adamB1VocabularyChallengePairs = [
-  { word: 'intellect', meaning: 'the ability to reason, learn, and understand' },
-  { word: 'arrogant', meaning: 'believing oneself more important or valuable than others' },
-  { word: 'origin', meaning: 'the point or material from which something begins' },
-  { word: 'deception', meaning: 'making someone believe something that is not true' },
-  { word: 'repentance', meaning: 'sincere regret followed by turning back from a wrong action' },
-  { word: 'barrier', meaning: 'something that blocks progress or understanding' },
-  { word: 'ruler', meaning: 'a steward or khalifa entrusted with responsibility on earth' },
-  { word: 'sincerity', meaning: 'honest intention without pretending or deceit' },
-  { word: 'regret', meaning: 'sadness about a wrong or harmful action' },
-  { word: 'legacy', meaning: 'an influence or message passed on to later generations' },
+export const adamB1VocabularyChallengePairs: VocabularyChallengePair[] = [
+  { word: 'curiosity', meaning: 'A strong wish to know more.', partOfSpeech: 'noun', chapter: 1, context: 'The angels were surprised and began to wait with curiosity.' },
+  { word: 'intellect', meaning: 'The ability to reason, learn, and understand.', partOfSpeech: 'noun', chapter: 2, context: 'Allah gave Adam (pbuh) life and intellect to learn and understand.' },
+  { word: 'arrogant', meaning: 'Too proud and sure of one’s own importance.', partOfSpeech: 'adjective', chapter: 3, context: 'Iblis was arrogant.' },
+  { word: 'lonely', meaning: 'Unhappy because one is without companionship.', partOfSpeech: 'adjective', chapter: 5, context: 'Adam was in Paradise, but he started to feel lonely.' },
+  { word: 'forbidden', meaning: 'Not allowed by a rule or command.', partOfSpeech: 'adjective', chapter: 6, context: 'They both ate of the forbidden tree.' },
+  { word: 'opposite', meaning: 'Completely different, or going in the other direction.', partOfSpeech: 'adjective', chapter: 7, context: 'On the other hand, Iblis chose an opposite path.' },
+  { word: 'survive', meaning: 'To continue to live despite difficulty or danger.', partOfSpeech: 'verb', chapter: 8, context: 'On earth, they had to struggle to survive and work hard to keep themselves alive.' },
+  { word: 'sacred', meaning: 'Connected with religion and deserving special respect.', partOfSpeech: 'adjective', chapter: 9, context: 'Allah never stopped sending messengers and sacred texts to remind people of Him.' },
+  { word: 'harm', meaning: 'To hurt or damage someone or something.', partOfSpeech: 'verb', chapter: 11, context: 'When Habil heard this, he said, “I won’t fight back and harm you. You are my brother, and I fear Allah.”' },
+  { word: 'guide', meaning: 'To show the right direction or way to act.', partOfSpeech: 'verb', chapter: 12, context: 'He sent His prophets, and their stories still guide us.' },
 ];
 
 export const adamB1FinalChallengeExercises: Exercise[] = [

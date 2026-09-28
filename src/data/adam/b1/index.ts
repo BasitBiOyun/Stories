@@ -1,4 +1,4 @@
-import type { BookData, Exercise, PageData } from '../../../types';
+import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
 import { adamB1Pages } from './en/pages';
 import { adamB1PagesAr } from './ar/pages';
 import {
@@ -81,7 +81,7 @@ const buildPages = (
   quickChallenges: Record<number, Exercise>,
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
+  vocabularyPairs: VocabularyChallengePair[],
   languageReview: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => pages.map((page) => {

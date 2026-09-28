@@ -9,14 +9,14 @@ export const adamB1Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch1.mp3?alt=media&token=1b85ccfb-4eaa-4154-b3d9-3eef74cd6e50',
     content: "Adam (pbuh) is the first Messenger and the father of all humans. Allah created him from soil and showed him great respect and gave him full value as the first human. The Holy Qur’an tells his tale in different surahs. Surahs A’raf, Baqarah, Hicr, Isra, Sâd and Taha describe Adam (pbuh)’s tale clearly. As the grandchildren of Adam (pbuh), we can learn many lessons from this fabulous but true story. In this story, there are numerous important messages about humans’ role in life.\n\nAfter Allah created the sky and the earth, He told the angels that He was going to create a human. He said He had decided to place a ruler (halîfe) on earth. This ruler would live there for many years. The angels were surprised and began to wait with curiosity.",
     vocabulary: [
-      { word: 'Messenger', definition: 'A person chosen by Allah to deliver His message.' },
+      { word: 'messenger', definition: 'A person chosen by Allah to deliver His message.' },
       { word: 'fabulous', definition: 'Very impressive or wonderful.' },
       { word: 'ruler', definition: 'A person given responsibility to lead or manage.' },
       { word: 'curiosity', definition: 'A strong wish to know more.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h1a', x: 31, y: 39, title: 'Soil', description: 'The chapter states that Adam was created from soil.' },
-      { id: 'adam-b1-en-h1b', x: 70, y: 61, title: 'Responsibility on Earth', description: 'Allah announces that a ruler, or khalifa, will be placed on earth.' },
+      { id: 'adam-b1-en-h1a', x: 31, y: 39, title: 'Created from Soil', description: 'Allah created Adam (pbuh) from soil and honored him as the first human.' },
+      { id: 'adam-b1-en-h1b', x: 70, y: 61, title: 'Responsibility on Earth', description: 'Allah told the angels that He would place a ruler, or khalifa, on earth.' },
     ],
   },
   {
@@ -28,11 +28,11 @@ export const adamB1Pages: PageData[] = [
       { word: 'handful', definition: 'An amount that can be held in one hand.' },
       { word: 'intellect', definition: 'The ability to reason, learn, and understand.' },
       { word: 'knowledge', definition: 'Information and understanding that someone has.' },
-      { word: 'goodness', definition: 'What is good, helpful, or beneficial.' },
+      { word: 'shaped', definition: 'Gave something a particular form.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h2a', x: 37, y: 64, title: 'Different Lands', description: 'The chapter connects soil from different lands with human variety.' },
-      { id: 'adam-b1-en-h2b', x: 66, y: 34, title: 'Knowledge and Intellect', description: 'Adam receives knowledge and the ability to learn and understand.' },
+      { id: 'adam-b1-en-h2a', x: 37, y: 64, title: 'Soil from Many Lands', description: 'The angels collected soil from different parts of the earth, so humans have different skin colors.' },
+      { id: 'adam-b1-en-h2b', x: 66, y: 34, title: 'A Gift of Knowledge', description: 'Allah gave Adam (pbuh) life, intellect and more knowledge than the angels.' },
     ],
   },
   {
@@ -47,8 +47,8 @@ export const adamB1Pages: PageData[] = [
       { word: 'superiority', definition: 'The state of being considered better or higher.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h3a', x: 27, y: 54, title: 'Fire and Soil', description: 'Iblis compares the materials from which he and Adam were created.' },
-      { id: 'adam-b1-en-h3b', x: 73, y: 35, title: 'Arrogance', description: 'The chapter rejects arrogance based on origin, race, color, or group.' },
+      { id: 'adam-b1-en-h3a', x: 27, y: 54, title: 'Fire and Soil', description: 'Iblis compared the fire he was created from with the soil of Adam (pbuh).' },
+      { id: 'adam-b1-en-h3b', x: 73, y: 35, title: 'Equal in Allah’s Sight', description: 'In the sight of Allah, superiority does not come from origin, race, color or group.' },
     ],
   },
   {
@@ -58,13 +58,13 @@ export const adamB1Pages: PageData[] = [
     content: "But Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis, “Go away! You are far from My love and care.” Iblis got angry with Adam (pbuh) and hated him. He didn’t want Allah to be kind to Adam (pbuh). He thought that because of Adam (pbuh), Allah had put him far from His help. \n\nHe waited for a chance to keep Adam (pbuh) away from Allah’s kindness, just as he himself was. Allah told Adam (pbuh) that Iblis was his enemy and warned him to be careful of Iblis.",
     vocabulary: [
       { word: 'Creator', definition: 'The One who brought all things into existence.' },
-      { word: 'angry', definition: 'Feeling strong displeasure.' },
+      { word: 'warned', definition: 'Told someone about a possible danger so they could avoid it.' },
       { word: 'enemy', definition: 'Someone who is hostile or wishes harm.' },
       { word: 'careful', definition: 'Paying attention to avoid danger or harm.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h4a', x: 34, y: 31, title: 'Distance from Mercy', description: 'Iblis is sent away after refusing to accept the command.' },
-      { id: 'adam-b1-en-h4b', x: 69, y: 66, title: 'The Warning', description: 'Adam is warned that Iblis is his enemy and that he must be careful.' },
+      { id: 'adam-b1-en-h4a', x: 34, y: 31, title: 'Distance from Mercy', description: 'Iblis was sent away from Allah’s love and care after he refused to respect Adam (pbuh).' },
+      { id: 'adam-b1-en-h4b', x: 69, y: 66, title: 'The Warning', description: 'Allah warned Adam (pbuh) that Iblis was his enemy and told him to be careful.' },
     ],
   },
   {
@@ -74,13 +74,13 @@ export const adamB1Pages: PageData[] = [
     content: "Adam was in Paradise, but he started to feel lonely. Allah gave him a wife called Eve (Hawwa) to be his companion. They began living in Paradise. It was more wonderful than we can imagine. All the blessings in Paradise were for them. \n\nAllah only asked them not to go near one tree. When Adam (pbuh) and Eve were happy in Paradise, Iblis came near them pretending to be their friend. It was a big lie. He whispered to them that if they ate from that one tree, they would never die.",
     vocabulary: [
       { word: 'lonely', definition: 'Unhappy because one is without companionship.' },
-      { word: 'wife', definition: 'A married woman in relation to her spouse.' },
+      { word: 'companion', definition: 'Someone who spends time with another person and shares their life.' },
       { word: 'blessings', definition: 'Good things or gifts for which people are thankful.' },
-      { word: 'friend', definition: 'A person who is trusted and cared about.' },
+      { word: 'pretending', definition: 'Acting as if something is true when it is not.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h5a', x: 24, y: 44, title: 'Life in Paradise', description: 'Adam and Eve live together among the blessings of Paradise.' },
-      { id: 'adam-b1-en-h5b', x: 76, y: 58, title: 'The One Tree', description: 'Iblis approaches them as a false friend and focuses attention on the forbidden tree.' },
+      { id: 'adam-b1-en-h5a', x: 24, y: 44, title: 'A Companion for Adam', description: 'Allah gave Adam (pbuh) a wife, Eve, and they lived together among the blessings of Paradise.' },
+      { id: 'adam-b1-en-h5b', x: 76, y: 58, title: 'The One Tree', description: 'Iblis came to them pretending to be their friend and whispered a lie about the tree.' },
     ],
   },
   {
@@ -95,8 +95,8 @@ export const adamB1Pages: PageData[] = [
       { word: 'inborn', definition: 'Present naturally from birth.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h6a', x: 39, y: 67, title: 'The Forbidden Tree', description: 'Adam and Eve eat from the tree after believing Iblis’s lie.' },
-      { id: 'adam-b1-en-h6b', x: 65, y: 32, title: 'Modesty', description: 'They quickly cover themselves when they become aware of their nakedness.' },
+      { id: 'adam-b1-en-h6a', x: 39, y: 67, title: 'The Forbidden Tree', description: 'Adam (pbuh) and Eve ate from the tree after they believed Iblis’s lies.' },
+      { id: 'adam-b1-en-h6b', x: 65, y: 32, title: 'Modesty', description: 'Adam (pbuh) and Eve quickly covered themselves with leaves, because a sense of shame is part of human nature.' },
     ],
   },
   {
@@ -105,14 +105,14 @@ export const adamB1Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch7.mp3?alt=media&token=26e2d23b-e788-46ce-a430-55ba78c495aa',
     content: "Adam (pbuh) bowed down and cried, “Forgiveness! Forgiveness!” Allah asked, “Are you running away from Me?” Adam (pbuh) replied, “No, my Lord, but I am shy of You.” \n\nThey made a mistake, but it wasn’t on purpose. They were very sad about their wrong action. They said sorry to Allah, learned from their mistake and decided never to repeat it. They wanted Allah to pardon them. \n\nOn the other hand, Iblis chose an opposite path. He never admitted he was wrong because he was arrogant. Arrogance is the biggest barrier to acting the right way and distinguishing between right and wrong, good and bad. \n\nAllah pardoned both Adam (pbuh) and Eve and put them on earth to live there. Allah taught them and gave them everything they needed to rule on earth. They were the rulers of planet Earth. They would direct, control and make everything better on the planet.",
     vocabulary: [
-      { word: 'mistake', definition: 'An action or decision that is wrong.' },
+      { word: 'opposite', definition: 'Completely different, or going in the other direction.' },
       { word: 'pardon', definition: 'To forgive someone for a wrong action.' },
       { word: 'barrier', definition: 'Something that prevents progress or clear understanding.' },
       { word: 'distinguishing', definition: 'Recognizing the difference between things.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h7a', x: 28, y: 36, title: 'Mistake and Pardon', description: 'Adam and Eve admit their mistake, learn from it, and ask Allah to forgive them.' },
-      { id: 'adam-b1-en-h7b', x: 72, y: 63, title: 'Arrogance as a Barrier', description: 'The chapter contrasts their response with Iblis’s refusal to admit he was wrong.' },
+      { id: 'adam-b1-en-h7a', x: 28, y: 36, title: 'Mistake and Pardon', description: 'Adam (pbuh) and Eve admitted their mistake, learned from it and asked Allah to forgive them.' },
+      { id: 'adam-b1-en-h7b', x: 72, y: 63, title: 'Arrogance as a Barrier', description: 'Iblis never admitted he was wrong, because his arrogance stopped him.' },
     ],
   },
   {
@@ -127,8 +127,8 @@ export const adamB1Pages: PageData[] = [
       { word: 'weapons', definition: 'Objects used for protection or fighting.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h8a', x: 35, y: 58, title: 'Work on Earth', description: 'Life on earth requires work, shelter, care for nature, and help for the weak.' },
-      { id: 'adam-b1-en-h8b', x: 67, y: 29, title: 'Struggle and Survival', description: 'Adam and Eve must work hard and protect themselves from danger.' },
+      { id: 'adam-b1-en-h8a', x: 35, y: 58, title: 'Work on Earth', description: 'On earth, Adam (pbuh) and Eve would grow crops, keep animals, build shelters, protect nature and help the weak.' },
+      { id: 'adam-b1-en-h8b', x: 67, y: 29, title: 'Protection from Danger', description: 'Adam (pbuh) and Eve had to work hard and protect themselves with clothes and weapons.' },
     ],
   },
   {
@@ -143,8 +143,8 @@ export const adamB1Pages: PageData[] = [
       { word: 'purpose', definition: 'The reason why something exists or is done.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h9a', x: 23, y: 65, title: 'A Community Forms', description: 'When a community forms, Adam begins teaching people how to live rightly.' },
-      { id: 'adam-b1-en-h9b', x: 77, y: 39, title: 'Continuing Guidance', description: 'Messengers and sacred texts continue to remind people of Allah and the right path.' },
+      { id: 'adam-b1-en-h9a', x: 23, y: 65, title: 'The First Community', description: 'When a community formed, Adam (pbuh) became the first Messenger and taught people to live righteously.' },
+      { id: 'adam-b1-en-h9b', x: 77, y: 39, title: 'Messengers and Sacred Texts', description: 'Allah kept sending messengers and sacred texts to remind people of Him and the right path.' },
     ],
   },
   {
@@ -159,8 +159,8 @@ export const adamB1Pages: PageData[] = [
       { word: 'offering', definition: 'A gift or sacrifice made to show devotion.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h10a', x: 32, y: 30, title: 'Two Different Brothers', description: 'Habil and Qabil grow up with different characters and kinds of work.' },
-      { id: 'adam-b1-en-h10b', x: 69, y: 68, title: 'The Two Offerings', description: 'Their disagreement leads them to present different offerings to Allah.' },
+      { id: 'adam-b1-en-h10a', x: 32, y: 30, title: 'Two Different Brothers', description: 'Habil and Qabil grew up with different characters: Habil became a shepherd and Qabil a farmer.' },
+      { id: 'adam-b1-en-h10b', x: 69, y: 68, title: 'The Two Offerings', description: 'To solve their disagreement, Habil offered his best sheep, but Qabil brought only a handful of poor crops.' },
     ],
   },
   {
@@ -170,13 +170,13 @@ export const adamB1Pages: PageData[] = [
     content: "Allah accepted Habil’s offering because he gave from his heart. Qabil’s face became very dark with anger, and he said, “I will kill you.” When Habil heard this, he said, “I won’t fight back and harm you. You are my brother, and I fear Allah.” Qabil started fighting with his brother and killed him. Soon, Qabil’s anger cooled, and he felt very sad. He also started to panic. He said, “I killed my brother. I did the worst thing in life. Now I don’t know what I should do with his dead body.” Then Allah sent a raven that landed near Qabil and started digging the ground. It showed Qabil the way to put his brother’s dead body in the pit. Qabil cried and said, “I am worse than this raven. I cannot hide my brother’s dead body.”",
     vocabulary: [
       { word: 'harm', definition: 'To hurt or damage someone or something.' },
-      { word: 'panic', definition: 'Sudden strong fear that makes calm thinking difficult.' },
+      { word: 'panic', definition: 'To suddenly feel so afraid that you cannot think calmly.' },
       { word: 'raven', definition: 'A large black bird.' },
       { word: 'digging', definition: 'Making a hole in the ground.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h11a', x: 26, y: 48, title: 'The Conflict', description: 'Qabil attacks Habil despite Habil refusing to fight back.' },
-      { id: 'adam-b1-en-h11b', x: 75, y: 70, title: 'The Raven', description: 'The raven shows Qabil how a body can be placed in the ground.' },
+      { id: 'adam-b1-en-h11a', x: 26, y: 48, title: 'Brother Against Brother', description: 'Qabil attacked and killed Habil, even though Habil refused to fight back.' },
+      { id: 'adam-b1-en-h11b', x: 75, y: 70, title: 'A Lesson from a Bird', description: 'Allah sent a raven that dug the ground and showed Qabil how to put his brother’s body in a pit.' },
     ],
   },
   {
@@ -185,14 +185,14 @@ export const adamB1Pages: PageData[] = [
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b1%2Faudio%2Fadam_b1_ch12.mp3?alt=media&token=6ee60473-9971-4392-862c-67ffc0928d19',
     content: "He went far away. Prophet Adam (pbuh) became very sad. He lost both of his sons on the same day. The story suggests that true believers should stay away from jealousy and control their anger. But as a prophet and the father of his other children, Adam (pbuh) had to continue his life. He got old over the years. His children and grandchildren moved to different parts of the world and spread his message worldwide. The message still calls upon people to turn away from Satan’s tricks and jealousy, to do good, and to avoid evil. It also teaches people the importance of admitting mistakes and turning back to Allah. Allah never left people alone. He sent His prophets, and their stories still guide us.",
     vocabulary: [
-      { word: 'jealousy', definition: 'A feeling of wanting what another person has.' },
+      { word: 'spread', definition: 'Carried or passed something to many people or places.' },
       { word: 'admitting', definition: 'Accepting or saying that something is true.' },
       { word: 'message', definition: 'An important idea or teaching passed to others.' },
       { word: 'guide', definition: 'To show the right direction or way to act.' },
     ],
     hotspots: [
-      { id: 'adam-b1-en-h12a', x: 40, y: 64, title: 'Adam’s Family', description: 'Adam continues his life as his children and grandchildren spread across the world.' },
-      { id: 'adam-b1-en-h12b', x: 62, y: 36, title: 'Continuing Guidance', description: 'The final chapter gathers lessons about jealousy, mistakes, good action, and guidance.' },
+      { id: 'adam-b1-en-h12a', x: 40, y: 64, title: 'A Family Across the World', description: 'Adam (pbuh) continued his life, and his children and grandchildren spread across the world.' },
+      { id: 'adam-b1-en-h12b', x: 62, y: 36, title: 'A Lasting Message', description: 'The message of Adam (pbuh) still teaches people to avoid jealousy, admit their mistakes and turn back to Allah.' },
     ],
   },
   { id: 13, type: 'quiz', title: 'Knowledge Check', content: 'Check your whole-book understanding with eight independent questions.' },
@@ -205,7 +205,7 @@ export const adamB1Pages: PageData[] = [
     content: 'Review all key vocabulary from the story in one place.',
     vocabulary: [
       {
-            "word": "Messenger",
+            "word": "messenger",
             "definition": "A person chosen by Allah to deliver His message.",
             "partOfSpeech": "noun",
             "level": "B1",
@@ -361,27 +361,27 @@ export const adamB1Pages: PageData[] = [
             "category": "Learning & Thinking"
       },
       {
-            "word": "goodness",
-            "definition": "What is good, helpful, or beneficial.",
-            "partOfSpeech": "noun",
+            "word": "shaped",
+            "definition": "Gave something a particular form.",
+            "partOfSpeech": "verb",
             "level": "B1",
-            "pronunciation": "/ˈɡʊdnəs/",
+            "pronunciation": "/ʃeɪpt/",
             "wordFamily": [
-                  "good",
-                  "goodness"
+                  "shape",
+                  "shaped",
+                  "shapeless"
             ],
             "collocations": [
-                  "real goodness",
-                  "human goodness"
+                  "shape clay",
+                  "shape a person"
             ],
             "synonyms": [
-                  "virtue",
-                  "kindness"
+                  "formed"
             ],
             "chapter": 2,
             "chapterTitle": "The Shaping of Adam",
-            "storyExample": "Later, He taught Adam (pbuh) everything he needed to do good on earth.",
-            "category": "Values"
+            "storyExample": "Then, Allah’s angels collected soil from different parts of the earth and Allah shaped Adam (pbuh).",
+            "category": "Creation"
       },
       {
             "word": "admired",
@@ -499,30 +499,24 @@ export const adamB1Pages: PageData[] = [
             "category": "Belief & Faith"
       },
       {
-            "word": "angry",
-            "definition": "Feeling strong displeasure.",
-            "partOfSpeech": "adjective",
+            "word": "warned",
+            "definition": "Told someone about a possible danger so they could avoid it.",
+            "partOfSpeech": "verb",
             "level": "B1",
-            "pronunciation": "/ˈæŋɡri/",
+            "pronunciation": "/wɔːrnd/",
             "wordFamily": [
-                  "anger",
-                  "angry",
-                  "angrily"
+                  "warn",
+                  "warned",
+                  "warning"
             ],
             "collocations": [
-                  "get angry",
-                  "angry with someone"
-            ],
-            "synonyms": [
-                  "furious"
-            ],
-            "antonyms": [
-                  "calm"
+                  "warn someone about",
+                  "warn someone to be careful"
             ],
             "chapter": 4,
             "chapterTitle": "The Expulsion of Iblis",
-            "storyExample": "Iblis got angry with Adam (pbuh) and hated him.",
-            "category": "Feelings"
+            "storyExample": "Allah told Adam (pbuh) that Iblis was his enemy and warned him to be careful of Iblis.",
+            "category": "Guidance & Faith"
       },
       {
             "word": "enemy",
@@ -598,18 +592,21 @@ export const adamB1Pages: PageData[] = [
             "category": "Feelings"
       },
       {
-            "word": "wife",
-            "definition": "A married woman in relation to her spouse.",
+            "word": "companion",
+            "definition": "Someone who spends time with another person and shares their life.",
             "partOfSpeech": "noun",
             "level": "B1",
-            "pronunciation": "/waɪf/",
+            "pronunciation": "/kəmˈpænjən/",
             "wordFamily": [
-                  "wife",
-                  "wives"
+                  "companion",
+                  "companionship"
             ],
             "collocations": [
-                  "husband and wife",
-                  "his wife"
+                  "a close companion",
+                  "be someone’s companion"
+            ],
+            "synonyms": [
+                  "partner"
             ],
             "chapter": 5,
             "chapterTitle": "Life in Paradise and the Warning",
@@ -640,27 +637,27 @@ export const adamB1Pages: PageData[] = [
             "category": "Spiritual Life"
       },
       {
-            "word": "friend",
-            "definition": "A person who is trusted and cared about.",
-            "partOfSpeech": "noun",
+            "word": "pretending",
+            "definition": "Acting as if something is true when it is not.",
+            "partOfSpeech": "verb",
             "level": "B1",
-            "pronunciation": "/frend/",
+            "pronunciation": "/prɪˈtendɪŋ/",
             "wordFamily": [
-                  "friend",
-                  "friendly",
-                  "friendship"
+                  "pretend",
+                  "pretending",
+                  "pretence"
             ],
             "collocations": [
-                  "close friend",
+                  "pretend to be",
                   "pretend to be a friend"
             ],
-            "antonyms": [
-                  "enemy"
+            "synonyms": [
+                  "faking"
             ],
             "chapter": 5,
             "chapterTitle": "Life in Paradise and the Warning",
             "storyExample": "When Adam (pbuh) and Eve were happy in Paradise, Iblis came near them pretending to be their friend.",
-            "category": "Relationships"
+            "category": "Honesty & Deception"
       },
       {
             "word": "forbidden",
@@ -755,25 +752,26 @@ export const adamB1Pages: PageData[] = [
             "category": "Human Nature"
       },
       {
-            "word": "mistake",
-            "definition": "An action or decision that is wrong.",
-            "partOfSpeech": "noun",
+            "word": "opposite",
+            "definition": "Completely different, or going in the other direction.",
+            "partOfSpeech": "adjective",
             "level": "B1",
-            "pronunciation": "/mɪˈsteɪk/",
+            "pronunciation": "/ˈɑːpəzɪt/",
             "wordFamily": [
-                  "mistake",
-                  "mistaken"
+                  "oppose",
+                  "opposite",
+                  "opposition"
             ],
             "collocations": [
-                  "make a mistake",
-                  "learn from a mistake"
+                  "the opposite direction",
+                  "an opposite path"
             ],
             "synonyms": [
-                  "error"
+                  "contrary"
             ],
             "chapter": 7,
             "chapterTitle": "Forgiveness and Repentance",
-            "storyExample": "They made a mistake, but it wasn’t on purpose.",
+            "storyExample": "On the other hand, Iblis chose an opposite path.",
             "category": "Learning & Choices"
       },
       {
@@ -1138,8 +1136,8 @@ export const adamB1Pages: PageData[] = [
       },
       {
             "word": "panic",
-            "definition": "Sudden strong fear that makes calm thinking difficult.",
-            "partOfSpeech": "noun",
+            "definition": "To suddenly feel so afraid that you cannot think calmly.",
+            "partOfSpeech": "verb",
             "level": "B1",
             "pronunciation": "/ˈpænɪk/",
             "wordFamily": [
@@ -1202,26 +1200,23 @@ export const adamB1Pages: PageData[] = [
             "category": "Actions"
       },
       {
-            "word": "jealousy",
-            "definition": "A feeling of wanting what another person has.",
-            "partOfSpeech": "noun",
+            "word": "spread",
+            "definition": "Carried or passed something to many people or places.",
+            "partOfSpeech": "verb",
             "level": "B1",
-            "pronunciation": "/ˈdʒeləsi/",
+            "pronunciation": "/spred/",
             "wordFamily": [
-                  "jealous",
-                  "jealousy"
+                  "spread",
+                  "widespread"
             ],
             "collocations": [
-                  "feel jealousy",
-                  "stay away from jealousy"
-            ],
-            "synonyms": [
-                  "envy"
+                  "spread a message",
+                  "spread across the world"
             ],
             "chapter": 12,
             "chapterTitle": "The Legacy of Adam",
-            "storyExample": "The story suggests that true believers should stay away from jealousy and control their anger.",
-            "category": "Feelings"
+            "storyExample": "His children and grandchildren moved to different parts of the world and spread his message worldwide.",
+            "category": "Guidance & Faith"
       },
       {
             "word": "admitting",
