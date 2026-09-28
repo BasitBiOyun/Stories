@@ -24,15 +24,14 @@ The city we are talking about is Mecca, and the time period is called the Age of
 The Age of Ignorance is the pre-Islamic era in the Arabian Peninsula that covers the period from the 5th century to the beginning of the revelation (vahiy) in 610.`,
     vocabulary: [
       { word: 'Middle Ages', definition: 'The historical period between the fall of the Roman Empire and the conquest of Constantinople.' },
-      { word: 'superpower', definition: 'A very powerful state or empire.' },
-      { word: 'rivalry', definition: 'Competition or conflict between two sides.' },
-      { word: 'political unity', definition: 'A situation in which people or groups are organized under one political authority.' },
-      { word: 'revelation', definition: 'A message sent by Allah to a prophet.' },
-      { word: 'span', definition: 'To extend across a period of time.' },
-      { word: 'conquest', definition: 'The act of taking control of a place by force.' },
+      { word: 'superpowers', definition: 'States with enough political, military, and economic influence to shape events far beyond their own borders.' },
+      { word: 'rivalry', definition: 'Sustained competition between powers seeking greater influence, advantage, or control.' },
+      { word: 'political unity', definition: 'The condition in which separate groups operate under a shared political authority or governing structure.' },
+      { word: 'revelation', definition: 'Divine guidance communicated by Allah to a prophet.' },
+      { word: 'conquest', definition: 'The acquisition of control over a territory through military force.' },
     ],
     hotspots: [
-      { id: 'h1-1', x: 34, y: 44, title: 'Middle Ages', description: 'One of the most important developments of the Middle Ages (Middle Ages span between the fall of the Roman Empire in 476 CE and the conquest of Constantinople in 1453 by the Ottoman Turks) was the rise of Islam.' },
+      { id: 'h1-1', x: 34, y: 44, title: 'Middle Ages', description: 'The rise of Islam was one of the most important developments of the Middle Ages (476–1453 CE).' },
       { id: 'h1-2', x: 68, y: 50, title: 'Mecca', description: 'Islam was born in the city of Mecca in the 7th century.' },
     ],
   },
@@ -51,18 +50,14 @@ The Jahiliyyah is the “age of barbarism.” In fact, the Prophet described Isl
 To understand Jahiliyyah, it is necessary to describe Mecca. Mecca is in the western part of the Arabian Peninsula. This piece of land is called a peninsula because water surrounds it on three sides: the south, west, and east. (The Arabian/Persian Gulf (Basra Körfezi) is in the east, the Indian Ocean is in the south, and the Red Sea is in the west.)`,
     vocabulary: [
       { word: 'Jahiliyyah', definition: 'The Age of Ignorance before Islam.' },
-      { word: 'barbarism', definition: 'Cruel, uncivilized, and violent behavior.' },
-      { word: 'oppressed', definition: 'Treated cruelly and unfairly.' },
-      { word: 'moral decline', definition: 'A fall in good behavior and moral values.' },
+      { word: 'barbarism', definition: 'A condition characterized by severe violence, cruelty, and the breakdown of civilized restraint.' },
+      { word: 'oppressed', definition: 'Subjected to persistent unjust treatment or control by a more powerful person or group.' },
+      { word: 'moral decline', definition: 'A deterioration in the ethical standards and conduct expected within a society.' },
       { word: 'peninsula', definition: 'A piece of land surrounded by water on three sides.' },
-      { word: 'truly', definition: 'In a truthful, accurate, or sincere way.' },
-      { word: 'era', definition: 'A long and distinct period of history.' },
-      { word: 'sided with', definition: 'Supported one person or group against another.' },
-      { word: 'upper class', definition: 'The social group that has the highest status or wealth.' },
-      { word: 'civilized', definition: 'Having an advanced, polite, and well-organized society.' },
+      { word: 'civilized', definition: 'Organized according to developed social institutions, norms, and forms of public order.' },
     ],
     hotspots: [
-      { id: 'h2-1', x: 34, y: 44, title: 'Jahiliyyah', description: 'This period is called the Age of Ignorance because people did not truly know Allah and widely did not have justice, order, and peace both in their personal and social lives.' },
+      { id: 'h2-1', x: 34, y: 44, title: 'Jahiliyyah', description: 'The period was called the Age of Ignorance because people did not truly know Allah and lacked justice, order, and peace.' },
       { id: 'h2-2', x: 68, y: 50, title: 'Peninsula', description: 'This piece of land is called a peninsula because water surrounds it on three sides: the south, west, and east.' },
     ],
   },
@@ -85,12 +80,12 @@ When Prophet Abraham (as) brought his son Ishmael and his wife Hagar to the city
       { word: 'holy', definition: 'Sacred and connected with worship.' },
       { word: 'Ka’ba', definition: 'The Holy House of Allah in Mecca.' },
       { word: 'Qiblah', definition: 'The direction Muslims face during prayer.' },
-      { word: 'migration', definition: 'Moving from one place to another.' },
+      { word: 'migration', definition: 'A move from one place to live in another; here, the Prophet’s (pbuh) journey from Mecca to Medina.' },
       { word: 'settlement', definition: 'A place where people begin to live.' },
     ],
     hotspots: [
-      { id: 'h3-1', x: 34, y: 44, title: 'Ka’ba', description: 'The Ka’ba is the main factor in the establishment of Mecca as a settlement. It can be said that city life began here only with the building of the Ka’ba.' },
-      { id: 'h3-2', x: 68, y: 50, title: 'Qiblah', description: 'The Qiblah is also located in the city, which is the direction towards which Muslims face while they are performing their daily prayers, salah.' },
+      { id: 'h3-1', x: 34, y: 44, title: 'Ka’ba', description: 'City life in Mecca began only with the building of the Ka’ba, the main factor in its establishment as a settlement.' },
+      { id: 'h3-2', x: 68, y: 50, title: 'Qiblah', description: 'The Qiblah is the direction Muslims face while performing their daily prayers, salah.' },
     ],
   },
   {
@@ -109,10 +104,9 @@ In the period when Islam came, the Byzantine and Sassanid empires, which were th
 India also played a very important role in Arabia's trade. There were many products made in India, Indonesia, and China.`,
     vocabulary: [
       { word: 'offspring', definition: 'A child or descendant.' },
-      { word: 'reconstruct', definition: 'To build again.' },
-      { word: 'pilgrimage', definition: 'A religious journey to a sacred place.' },
-      { word: 'monotheism', definition: 'Belief in one God only.' },
-      { word: 'idolatry', definition: 'Worshipping idols.' },
+      { word: 'reconstruct', definition: 'To build or form something again after it has been damaged, lost, or altered.' },
+      { word: 'pilgrimage', definition: 'A journey made to a sacred place for religious purposes.' },
+      { word: 'idolatry', definition: 'The religious practice of worshipping idols or treating them as objects of devotion.' },
       { word: 'tribe', definition: 'A group of people with the same language and ancestors.' },
     ],
     hotspots: [
@@ -134,16 +128,16 @@ This meant approximately 2–3 shiploads of cargo. At that time, the typical Rom
 
 In addition to these, many caravans left Mecca at almost every time of the year. For example, one of the places where the Quraysh caravans traveled for trade was Egypt, the Byzantine Empire’s wealthiest region. Abyssinia was also a place with which the Quraysh had trade relations by sea. Suhayl b. Amr and Uthman Ibn Affan were shipowners from the Quraysh tribe. So, beginning with the settlement of the Quraysh tribe in Mecca in the mid-5th century A.D., the city of Mecca gradually developed into a center of trade.`,
     vocabulary: [
-      { word: 'caravan', definition: 'A group of people, animals, or vehicles traveling together.' },
+      { word: 'caravans', definition: 'Groups of people and animals traveling together, especially to carry goods.' },
       { word: 'trade center', definition: 'A place where buying and selling are very important.' },
-      { word: 'boost', definition: 'To increase or improve something.' },
-      { word: 'merchant', definition: 'A person who buys and sells goods.' },
+      { word: 'boosting', definition: 'Increasing or improving something.' },
+      { word: 'merchants', definition: 'People who buy and sell goods.' },
       { word: 'cargo', definition: 'Goods carried by ship, camel, or vehicle.' },
-      { word: 'Hashim ibn Abd Manaf', definition: "The great-grandfather of Prophet Muhammad (as) who played a key role in boosting Mecca's economy." },
+      { word: 'carrying capacity', definition: 'The largest amount that a ship or vehicle can carry.' },
     ],
     hotspots: [
-      { id: 'h5-1', x: 34, y: 44, title: 'Caravans', description: 'The summer and winter journeys described in the Holy Quran were organized once a year with large caravans (see, Surah Quraysh: 1-4). These caravans numbered up to 2,500 camels.' },
-      { id: 'h5-2', x: 68, y: 50, title: 'Trade Center', description: 'Beginning with the settlement of the Quraysh tribe in Mecca in the mid-5th century A.D., the city of Mecca gradually developed into a center of trade.' },
+      { id: 'h5-1', x: 34, y: 44, title: 'Caravans', description: 'The yearly summer and winter journeys mentioned in Surah Quraysh used caravans of up to 2,500 camels.' },
+      { id: 'h5-2', x: 68, y: 50, title: 'Trade Center', description: 'From the mid-5th century, when the Quraysh settled there, Mecca gradually developed into a center of trade.' },
     ],
   },
   {
@@ -165,15 +159,13 @@ So, at the beginning of the 7th century, the Quraysh gained control of the most 
       { word: 'Silk Road', definition: 'An important trade route connecting East and West.' },
       { word: 'sacred months', definition: 'Four lunar months during which fighting was prohibited.' },
       { word: 'prohibited', definition: 'Not allowed.' },
-      { word: 'trade festival', definition: 'A large gathering where people buy and sell goods.' },
-      { word: 'extensive', definition: 'Very large or wide in range.' },
+      { word: 'trade festivals', definition: 'Large gatherings where people buy and sell goods.' },
+      { word: 'extensive', definition: 'Large in scale, range, or degree.' },
       { word: 'overland route', definition: 'A trade or travel route across land rather than sea.' },
-      { word: 'pagan', definition: 'A person who worships many gods or idols.' },
-      { word: 'Marwah', definition: 'A sacred hill near the Ka’ba in Mecca.' },
     ],
     hotspots: [
-      { id: 'h6-1', x: 34, y: 44, title: 'Sacred Months', description: 'The safe environment created by the sacred months (These are the four sacred lunar months during which fighting is prohibited...) made it possible for more people to perform the Hajj.' },
-      { id: 'h6-2', x: 68, y: 50, title: 'Trade Festivals', description: 'Major trade festivals such as Ukaz (Ukâz), Majannah (Mecenne), and Dhul-Majaz (Zülmecâz) were also held during the sacred months.' },
+      { id: 'h6-1', x: 34, y: 44, title: 'Sacred Months', description: 'The four sacred months, when fighting was prohibited, created a safe environment in which more people could perform the Hajj.' },
+      { id: 'h6-2', x: 68, y: 50, title: 'Trade Festivals', description: 'Major trade festivals such as Ukaz, Majannah, and Dhul-Majaz were held during the sacred months.' },
     ],
   },
   {
@@ -188,17 +180,16 @@ Because large amounts of wealth were concentrated in the hands of certain indivi
 
 There was a huge gap between the rich and the poor even in the most basic human relationships. Among the upper class of the Quraysh, money, wealth, children, and family were a source of pride and competition.`,
     vocabulary: [
-      { word: 'usury', definition: 'Lending money and taking unfair extra payment back.' },
-      { word: 'ribâ', definition: 'The Arabic term for usury.' },
-      { word: 'aristocracy', definition: 'A powerful upper class in society.' },
-      { word: 'capitalist', definition: 'A person who owns wealth and uses it for profit.' },
+      { word: 'usury', definition: 'The practice of lending money on exploitative or religiously prohibited interest terms.' },
+      { word: 'concentrated', definition: 'Gathered in one place or in the hands of a few people.' },
+      { word: 'aristocracy', definition: 'A socially dominant upper class whose status is based on wealth, lineage, or inherited influence.' },
+      { word: 'capitalists', definition: 'People who own or control capital and use it to generate profit.' },
       { word: 'social class', definition: 'A group of people with a similar economic or social position.' },
-      { word: 'survive', definition: 'To continue to live or exist, especially in spite of danger or hardship.' },
       { word: 'imposed', definition: 'Forced something on others by authority or power.' },
     ],
     hotspots: [
-      { id: 'h7-1', x: 34, y: 44, title: 'Usury', description: 'The Quraysh added to their wealth through lending at usury. ... This system was designed to make the rich richer and the poor poorer.' },
-      { id: 'h7-2', x: 68, y: 50, title: 'Social Classes', description: 'Due to the big money ownership in the hands of certain individuals, social class division was at an extremely high level.' },
+      { id: 'h7-1', x: 34, y: 44, title: 'Usury', description: 'The Quraysh added to their wealth by lending at usury, a system designed to make the rich richer and the poor poorer.' },
+      { id: 'h7-2', x: 68, y: 50, title: 'Social Classes', description: 'Because wealth was concentrated in the hands of certain individuals, the divisions between social classes were extreme.' },
     ],
   },
   {
@@ -215,20 +206,16 @@ During the pre-Islamic era, those who oppressed and treated people unfairly were
 
 This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilfü’l-fudûl for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.`,
     vocabulary: [
-      { word: 'orphan', definition: 'A child whose parents have died.' },
-      { word: 'defenseless', definition: 'Unable to protect oneself.' },
+      { word: 'orphans', definition: 'Children whose parents have died.' },
+      { word: 'defenseless', definition: 'Lacking sufficient means, power, or protection to resist harm or exploitation.' },
       { word: 'agreement', definition: 'A decision or promise made by people together.' },
       { word: 'Hilfü’l-Fudûl', definition: 'The Community of the Righteous formed to defend the oppressed.' },
-      { word: 'oppressed', definition: 'People treated cruelly or unfairly.' },
-      { word: 'looked down on', definition: 'Treated with contempt or as inferior.' },
-      { word: 'goods', definition: 'Things that are produced to be sold.' },
-      { word: 'property', definition: 'Things or belongings that someone owns.' },
-      { word: 'righteous', definition: 'Morally good, virtuous, or fair.' },
+      { word: 'righteous', definition: 'Morally upright and committed to justice or correct conduct.' },
       { word: 'received support', definition: 'Was helped, encouraged, or approved by others.' },
     ],
     hotspots: [
-      { id: 'h8-1', x: 34, y: 44, title: 'Hilfü’l-Fudûl', description: 'To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca. This formation was named Hilfü’l-fudûl...' },
-      { id: 'h8-2', x: 68, y: 50, title: 'Justice', description: 'This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed.' },
+      { id: 'h8-1', x: 34, y: 44, title: 'Hilfü’l-Fudûl', description: 'Some Quraysh tribes made an agreement to help people oppressed in Mecca and named it Hilfü’l-fudûl, the Community of the Righteous.' },
+      { id: 'h8-2', x: 68, y: 50, title: 'Protecting the Oppressed', description: 'This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed.' },
     ],
   },
   {
@@ -247,19 +234,16 @@ The admirable qualities of the Arabs before Islam, like generosity, were driven 
 
 Tribes were the basis of Arab society.`,
     vocabulary: [
-      { word: 'formation', definition: 'An organized group created for a purpose.' },
       { word: 'oath', definition: 'A serious promise.' },
       { word: 'generosity', definition: 'The quality of giving freely.' },
       { word: 'hospitality', definition: 'Kindness and welcome shown to guests.' },
-      { word: 'arrogance', definition: 'Pride that makes someone feel superior to others.' },
       { word: 'spoke highly', definition: 'Expressed great approval or praise for someone.' },
-      { word: 'abandon', definition: 'To give up or leave completely.' },
       { word: 'hesitation', definition: 'A pause or delay due to uncertainty.' },
       { word: 'bet on', definition: 'To wager or gamble on an outcome.' },
     ],
     hotspots: [
-      { id: 'h9-1', x: 34, y: 44, title: 'Generosity', description: 'The Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests.' },
-      { id: 'h9-2', x: 68, y: 50, title: 'Tribal Honor', description: 'The admirable qualities of the Arabs before Islam, like generosity, were driven mostly by arrogance rather than real goodness.' },
+      { id: 'h9-1', x: 34, y: 44, title: 'Generosity', description: 'Arabs before Islam were known for their generosity and hospitality, and they even bet on who could offer the most camels to their guests.' },
+      { id: 'h9-2', x: 68, y: 50, title: 'Tribal Honor', description: 'Their generosity was driven mostly by arrogance rather than real goodness and turned into a tribal honor contest.' },
     ],
   },
   {
@@ -279,15 +263,11 @@ However, many women from lower social and economic groups were mistreated and di
 When news of the birth of a daughter was given to them, people in the Age of Ignorance lamented and their faces were darkened with grief and fury. They themselves were ashamed of having daughters and longed for sons to increase their power and dignity. The Holy Qur’an describes this scene in Surah Nahl, verses 58-59;`,
     vocabulary: [
       { word: 'crucial', definition: 'Extremely important.' },
-      { word: 'ancestor', definition: 'A family member who lived long ago.' },
+      { word: 'ancestors', definition: 'Family members who lived long ago.' },
       { word: 'social status', definition: 'A person’s position in society.' },
       { word: 'disadvantaged', definition: 'Having fewer rights, chances, or resources.' },
       { word: 'dignity', definition: 'Honor and human worth.' },
-      { word: 'by heart', definition: 'From memory; completely.' },
       { word: 'mistreated', definition: 'Treated badly or cruelly.' },
-      { word: 'lamented', definition: 'Expressed deep grief or sorrow.' },
-      { word: 'longed for', definition: 'Wanted or desired something very much.' },
-      { word: 'ashamed', definition: 'Feeling shame, guilt, or embarrassment.' },
     ],
     hotspots: [
       { id: 'h10-1', x: 34, y: 44, title: 'Tribal Protection', description: 'Without tribal protection, people could not protect their lives and property.' },
@@ -306,17 +286,16 @@ Slavery was an economic institution in Mecca. Slaves, both male and female, were
 
 During this era, poets were an important part of social life and poetry was the most important part of the culture. Poetry was used to keep the tribe’s history alive. It told stories about brave ancestors and hard times. It also praised the tribe’s family and criticized enemies. Tribes were honored in poems, and poets praised conflict rather than peace and war instead of peace. There were very few poets who invited the tribes to peace and urged them to stay away from fighting. In a sense, they were serving as a media outlet. Tribes often formed a political alliance to defend each other, yet extreme tribalism made universal justice impossible when people supported their tribe even when it was wrong.`,
     vocabulary: [
-      { word: 'humiliation', definition: 'A feeling or condition of shame and loss of dignity.' },
+      { word: 'humiliation', definition: 'A state of being made to feel degraded or stripped of dignity.' },
       { word: 'slavery', definition: 'A system in which people are owned and forced to work.' },
-      { word: 'institution', definition: 'An established social or economic system.' },
-      { word: 'poet', definition: 'A person who writes poems.' },
+      { word: 'institution', definition: 'An established social, economic, religious, or political structure with an organized role in society.' },
       { word: 'media outlet', definition: 'A source that spreads information and ideas to people.' },
       { word: 'alliance', definition: 'A formal agreement or union between tribes or states for a common purpose.' },
-      { word: 'tribalism', definition: "Extreme loyalty to one's tribe, placing tribal survival above universal justice." },
+      { word: 'tribalism', definition: 'Strong loyalty to one’s tribe that can override broader principles of fairness or universal justice.' },
     ],
     hotspots: [
-      { id: 'h11-1', x: 34, y: 44, title: 'Slavery', description: 'Slavery was an economic institution in Mecca. Slaves, both male and female, were the most miserable class in society. They were bought and sold like animals.' },
-      { id: 'h11-2', x: 68, y: 50, title: 'Poets', description: 'Poets were an important part of social life and poetry was the most important part of the culture. ... In a sense, they were serving as a media outlet.' },
+      { id: 'h11-1', x: 34, y: 44, title: 'Slavery', description: 'Slavery was an economic institution in Mecca, and slaves were bought and sold like animals.' },
+      { id: 'h11-2', x: 68, y: 50, title: 'Poets', description: 'Poetry kept tribal history alive, and in a sense poets served as a media outlet.' },
     ],
   },
   {
@@ -334,14 +313,14 @@ No doubt, pilgrimage to the Ka’ba was the most popular and common form of wors
 Superstitious beliefs also dominated Arab life. Pre-Islamic Arabs thought the gods talked through kahins (soothsayers) and poets who had godly guidance and could predict the future. Before doing anything, people sought omens.`,
     vocabulary: [
       { word: 'idolatrous', definition: 'Connected with worshipping idols.' },
-      { word: 'Hanif', definition: 'A person who followed the religion of Abraham before Islam.' },
-      { word: 'mediator', definition: 'A go-between.' },
+      { word: 'Hanifs', definition: 'People who followed the religion of Abraham (as) before Islam.' },
+      { word: 'mediators', definition: 'People or intermediaries positioned between two parties to facilitate contact or influence.' },
       { word: 'Resurrection', definition: 'Being raised again after death.' },
-      { word: 'omen', definition: 'A sign believed to show what will happen in the future.' },
+      { word: 'omens', definition: 'Signs believed to show what will happen in the future.' },
     ],
     hotspots: [
       { id: 'h12-1', x: 34, y: 44, title: 'Idolatry', description: 'In Mecca there were some Hanifs who believed in the religion of Abraham (as), but idolatry was dominant.' },
-      { id: 'h12-2', x: 68, y: 50, title: 'Hanifs', description: "Actually, the Arabs of the Age of Ignorance accepted the presence of a higher God known as 'Allah.' Although they mainly worshipped idols, they believed 'Allah' to be the creator." },
+      { id: 'h12-2', x: 68, y: 50, title: 'Allah and the Idols', description: 'The Arabs accepted Allah as the creator, but they mainly worshipped idols and saw them as mediators.' },
     ],
   },
   {
@@ -356,15 +335,15 @@ The aristocracy provoked the public against the new religion. The leaders of the
 
 The first people who heard the Prophet's call, which began in 610, were the Quraysh tribe of Mecca. Some of the Quraysh responded positively to his call and became Muslims. When they heard the Prophet Muhammad (as) read the Quran, they were sure it was from Allah. This message totally changed them. It touched their hearts and minds, making them cry and feel deep respect, even causing their hair to stand on end. However, a large group led by the tribal leaders denied his prophethood and opposed him fiercely.`,
     vocabulary: [
-      { word: 'interconnected', definition: 'Connected with each other.' },
+      { word: 'interconnected', definition: 'Linked so that changes in one area affect or depend on developments in another.' },
       { word: 'opposition', definition: 'Resistance against something.' },
-      { word: 'authority', definition: 'Power or right to control.' },
-      { word: 'prestigious', definition: 'Respected and admired.' },
-      { word: 'prophethood', definition: 'The mission and status of being a prophet.' },
+      { word: 'authority', definition: 'The recognized power or right to command, decide, or govern.' },
+      { word: 'prestigious', definition: 'Associated with high social respect, influence, or status.' },
+      { word: 'prophethood', definition: 'The divinely appointed mission and status of a prophet.' },
     ],
     hotspots: [
       { id: 'h13-1', x: 34, y: 44, title: 'Opposition', description: 'It is understandable that Islam faced opposition from both politically and economically powerful groups in Mecca.' },
-      { id: 'h13-2', x: 68, y: 50, title: 'New Community', description: 'From the start, Islam showed that this was a new group. Islam made this new Muslim community different from, and better than, the people around them.' },
+      { id: 'h13-2', x: 68, y: 50, title: 'New Community', description: 'From the start, Islam made the new Muslim community different from, and better than, the people around them.' },
     ],
   },
   {
@@ -385,7 +364,7 @@ Maintaining their leadership position was of vital importance to the leaders of 
     vocabulary: [
       { word: 'super-rich', definition: 'Extremely wealthy people.' },
       { word: 'formation', definition: 'A newly formed group or structure.' },
-      { word: 'radical', definition: 'Major and fundamental.' },
+      { word: 'radical', definition: 'Producing or involving fundamental change to an existing system or structure.' },
       { word: 'lawful', definition: 'Allowed by law or religion.' },
       { word: 'leadership position', definition: 'A position of authority and control.' },
     ],
@@ -409,10 +388,10 @@ However, when the Quran began to speak ill of their idols, mock them, and announ
 The Meccan elites went further and imposed a social and economic boycott on the Muslims and those who protected the Prophet (as) between 617 and 620. During this period the Prophet (as), his wife Khadija, and Abu Talib spent all their wealth to support the Muslims. Some people died of starvation; there were even those who ate tree leaves. The cries of children dying of hunger began to be heard.`,
     vocabulary: [
       { word: 'monotheism', definition: 'Belief in one God only.' },
-      { word: 'exploitation', definition: 'Using people unfairly for benefit.' },
+      { word: 'exploitation', definition: 'The unfair use of people, labor, or resources for another party’s advantage.' },
       { word: 'mock', definition: 'To laugh at someone or something cruelly.' },
-      { word: 'boycott', definition: 'Refusing social or economic contact as a form of pressure.' },
-      { word: 'starvation', definition: 'Extreme suffering or death from lack of food.' },
+      { word: 'boycott', definition: 'An organized refusal of social or economic relations used to exert pressure on a person or group.' },
+      { word: 'starvation', definition: 'Severe deprivation caused by an extreme or prolonged lack of food.' },
     ],
     hotspots: [
       { id: 'h15-1', x: 34, y: 44, title: 'Bilal', description: 'Poor people or those without powerful protectors suffered the most. One of them was Bilal, an Abyssinian slave. He became one of the first believers in Islam.' },
@@ -433,14 +412,14 @@ They also refused to believe that they would face punishment in the afterlife fo
 
 As mentioned above, one of the characteristics of Arab society was tribal fanaticism. This was also one of the greatest barriers for the new religion. A tribal member could not show the courage to step outside the views of his tribe. Otherwise, he would be left unprotected by his tribe—which, in today’s terms, means being stateless and being left defenseless. The leaders in Mecca tried everything to stop the new Muslims. Because of this, the "freedom of choice" that Islam talked about could not work at that time.`,
     vocabulary: [
-      { word: 'hostility', definition: 'Strong opposition or hatred.' },
+      { word: 'hostility', definition: 'Strong and active opposition, often involving resentment or aggression.' },
       { word: 'abandon', definition: 'To leave or give up something.' },
       { word: 'afterlife', definition: 'Life after death.' },
-      { word: 'tribal fanaticism', definition: 'Extreme loyalty to one’s tribe even when it is wrong.' },
-      { word: 'stateless', definition: 'Without the protection of a state or political group.' },
+      { word: 'tribal fanaticism', definition: 'Extreme loyalty to tribal identity that suppresses independent judgment and can justify injustice.' },
+      { word: 'stateless', definition: 'Lacking the recognized protection and legal belonging normally provided by a political community or state.' },
     ],
     hotspots: [
-      { id: 'h16-1', x: 34, y: 44, title: 'Idols', description: 'The rejection of idols meant, for the Quraysh, the end of the trade on which they depended for their wealth. Leaders who built their authority on idols would lose both their political and economic influence if they lost their idols.' },
+      { id: 'h16-1', x: 34, y: 44, title: 'Idols', description: 'Rejecting the idols meant losing the trade, wealth, and influence that the Quraysh leaders depended on.' },
       { id: 'h16-2', x: 68, y: 50, title: 'Tribal Fanaticism', description: 'One of the characteristics of Arab society was tribal fanaticism. This was also one of the greatest barriers for the new religion.' },
     ],
   },
@@ -458,15 +437,15 @@ The Age of Ignorance was the opposite of Islam. The term both refers to pre-Isla
 
 The dreadful situation in the twenty-first century reminds us of the dark period of ignorance in seventh-century Mecca. So, the Age of Ignorance is not only a period in the past but also a way of thinking that can still exist today. Islam has always stood against it and will continue to do so.`,
     vocabulary: [
-      { word: 'opposition', definition: 'Resistance against something.' },
-      { word: 'oppression', definition: 'Cruel and unfair treatment.' },
-      { word: 'immorality', definition: 'Behavior that is morally wrong.' },
-      { word: 'human honor', definition: 'The dignity and value of every human being.' },
-      { word: 'arrogance', definition: 'Pride that makes someone feel superior to others.' },
+      { word: 'dreadful', definition: 'Extremely bad or unpleasant.' },
+      { word: 'oppression', definition: 'Systematic cruel or unjust treatment imposed by those with greater power.' },
+      { word: 'immorality', definition: 'Conduct that violates accepted moral principles or ethical standards.' },
+      { word: 'human honor', definition: 'The inherent dignity and moral worth that belongs to every human being.' },
+      { word: 'arrogance', definition: 'An exaggerated sense of superiority that leads a person to undervalue others.' },
     ],
     hotspots: [
-      { id: 'h17-1', x: 34, y: 44, title: 'Human Honor', description: 'At the heart of Islam is the human being and his honor. Islam respects humans as humans. All other differences are not important to Islam.' },
-      { id: 'h17-2', x: 68, y: 50, title: 'Against Ignorance', description: 'The Age of Ignorance was the opposite of Islam. ... On the other hand, Islam is all about making the world a more fair and peaceful place.' },
+      { id: 'h17-1', x: 34, y: 44, title: 'Human Honor', description: 'At the heart of Islam are human honor and dignity; slaves, women, the poor, and the weak all deserve respect.' },
+      { id: 'h17-2', x: 68, y: 50, title: 'Against Ignorance', description: 'The Age of Ignorance was the opposite of Islam, which aims to make the world a fairer and more peaceful place.' },
     ],
   },
   {
@@ -508,65 +487,11 @@ The dreadful situation in the twenty-first century reminds us of the dark period
 ];
 
 const STORY_IDS = new Set(Array.from({ length: 17 }, (_, index) => index + 1));
-export const meccaB2VocabIndexes: Record<number, number[]> = {
-  1:[0,1,2,3,4,6], 2:[0,1,2,3,4,9], 3:[0,1,2,3,4], 4:[0,1,2,4,5],
-  5:[0,1,2,3,4,5], 6:[0,1,2,3,4,5], 7:[0,1,2,3,4,6], 8:[0,1,2,3,8,9],
-  9:[1,2,3,5,7,8], 10:[0,1,2,3,4,6], 11:[0,1,2,4,5,6], 12:[0,1,2,3,4],
-  13:[0,1,2,3,4], 14:[0,1,2,3,4], 15:[0,1,2,3,4], 16:[0,1,2,3,4], 17:[0,1,2,3,4],
-};
-const EN_WORD_OVERRIDES: Record<number, Record<string, string>> = {
-  1:{ superpower:'superpowers' },
-  5:{ caravan:'caravans', boost:'boosting', merchant:'merchants' },
-  6:{ 'trade festival':'trade festivals' },
-  7:{ capitalist:'capitalists' },
-  8:{ orphan:'orphans' },
-  10:{ ancestor:'ancestors' },
-  12:{ Hanif:'Hanifs', mediator:'mediators', omen:'omens' },
-};
 export const meccaB2HotspotCoords: Record<number, [number, number, number, number]> = {
   1:[24,38,73,62], 2:[29,65,74,34], 3:[23,58,69,31], 4:[31,36,76,64], 5:[22,67,67,39],
   6:[27,32,72,68], 7:[25,55,78,35], 8:[32,70,70,42], 9:[21,43,75,66], 10:[30,29,69,61],
   11:[26,64,77,37], 12:[23,35,71,70], 13:[33,57,76,30], 14:[20,69,68,41], 15:[28,40,74,65],
   16:[24,61,79,33], 17:[31,34,70,68],
-};
-const EN_DEFINITION_OVERRIDES: Record<string, string> = {
-  superpower:'A state with enough political, military, and economic influence to shape events far beyond its own borders.',
-  rivalry:'Sustained competition between powers seeking greater influence, advantage, or control.',
-  'political unity':'The condition in which separate groups operate under a shared political authority or governing structure.',
-  revelation:'Divine guidance communicated by Allah to a prophet.',
-  conquest:'The acquisition of control over a territory through military force.',
-  barbarism:'A condition characterized by severe violence, cruelty, and the breakdown of civilized restraint.',
-  oppressed:'Subjected to persistent unjust treatment or control by a more powerful person or group.',
-  'moral decline':'A deterioration in the ethical standards and conduct expected within a society.',
-  civilized:'Organized according to developed social institutions, norms, and forms of public order.',
-  reconstruct:'To build or form something again after it has been damaged, lost, or altered.',
-  pilgrimage:'A journey made to a sacred place for religious purposes.',
-  idolatry:'The religious practice of worshipping idols or treating them as objects of devotion.',
-  extensive:'Large in scale, range, or degree.',
-  usury:'The practice of lending money on exploitative or religiously prohibited interest terms.',
-  aristocracy:'A socially dominant upper class whose status is based on wealth, lineage, or inherited influence.',
-  capitalist:'A person who owns or controls capital and uses it to generate profit.',
-  defenseless:'Lacking sufficient means, power, or protection to resist harm or exploitation.',
-  righteous:'Morally upright and committed to justice or correct conduct.',
-  humiliation:'A state of being made to feel degraded or stripped of dignity.',
-  institution:'An established social, economic, religious, or political structure with an organized role in society.',
-  tribalism:'Strong loyalty to one’s tribe that can override broader principles of fairness or universal justice.',
-  mediator:'A person or intermediary positioned between two parties to facilitate contact or influence.',
-  interconnected:'Linked so that changes in one area affect or depend on developments in another.',
-  authority:'The recognized power or right to command, decide, or govern.',
-  prestigious:'Associated with high social respect, influence, or status.',
-  prophethood:'The divinely appointed mission and status of a prophet.',
-  radical:'Producing or involving fundamental change to an existing system or structure.',
-  exploitation:'The unfair use of people, labor, or resources for another party’s advantage.',
-  boycott:'An organized refusal of social or economic relations used to exert pressure on a person or group.',
-  starvation:'Severe deprivation caused by an extreme or prolonged lack of food.',
-  hostility:'Strong and active opposition, often involving resentment or aggression.',
-  'tribal fanaticism':'Extreme loyalty to tribal identity that suppresses independent judgment and can justify injustice.',
-  stateless:'Lacking the recognized protection and legal belonging normally provided by a political community or state.',
-  oppression:'Systematic cruel or unjust treatment imposed by those with greater power.',
-  immorality:'Conduct that violates accepted moral principles or ethical standards.',
-  'human honor':'The inherent dignity and moral worth that belongs to every human being.',
-  arrogance:'An exaggerated sense of superiority that leads a person to undervalue others.',
 };
 const EN_FIXES: Record<number, [string, string][]> = {
   2:[["widely did not have justice, order, and peace", "did not widely have justice, order, and peace"]],
@@ -579,14 +504,9 @@ const EN_FIXES: Record<number, [string, string][]> = {
 const fixText=(text:string,fixes?:[string,string][]) => (fixes??[]).reduce((value,[from,to])=>value.replace(from,to),text);
 const standardizeEnglishPage=(page:PageData):PageData=>{
   if(!STORY_IDS.has(page.id)) return page;
-  const vocabulary=(meccaB2VocabIndexes[page.id]??[]).map(index=>page.vocabulary?.[index]).filter((item):item is NonNullable<PageData['vocabulary']>[number]=>Boolean(item)).map(item=>({
-    ...item,
-    word:EN_WORD_OVERRIDES[page.id]?.[item.word]??item.word,
-    definition:EN_DEFINITION_OVERRIDES[item.word]??item.definition,
-  }));
   const c=meccaB2HotspotCoords[page.id];
   const hotspots=(page.hotspots??[]).slice(0,2).map((hotspot,index)=>({...hotspot,id:`h${page.id}-${index+1}`,x:c[index*2],y:c[index*2+1]}));
-  return {...page,content:fixText(page.content??'',EN_FIXES[page.id]),vocabulary,hotspots};
+  return {...page,content:fixText(page.content??'',EN_FIXES[page.id]),hotspots};
 };
 const standardizedMeccaB2Pages=sourceMeccaB2Pages.map(standardizeEnglishPage);
 const englishLanguageFocus:Record<number,Exercise[]>={...meccaB2LanguageFocusExercises,...meccaB2LanguageFocusExercisesPart2,...meccaB2LanguageFocusExercisesPart3,...meccaB2LanguageFocusExercisesPart4};
