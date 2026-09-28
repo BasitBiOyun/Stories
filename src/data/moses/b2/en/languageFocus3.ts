@@ -779,8 +779,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
           answers: ['will bring', 'shall bring', 'am going to bring'],
         },
         {
-          source: 'During this time, the Torah (Tevrat) was given to him by Allah.',
-          frame: 'During this time, Allah [blank] the Torah (Tevrat).',
+          source: 'During this time, the Torah was given to him by Allah.',
+          frame: 'During this time, Allah [blank] the Torah.',
           answers: ['gave him', 'gave Moses'],
         },
       ],
@@ -884,7 +884,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     instructions: 'Each sentence makes a stronger claim than the book does. Tap the words that overclaim, then choose the writer’s original, more careful words.',
     question: 'Can you restore the writer’s degree of certainty?',
     errorItems: [
-      { sentence: 'The entire Torah (Tevrat) consists of the history of Moses (pbuh) and the Israelites under his leadership.', error: 'The entire', options: ['Almost the entire', 'The whole', 'Certainly the entire'], answer: 0 },
+      { sentence: 'The entire Torah consists of the history of Moses (pbuh) and the Israelites under his leadership.', error: 'The entire', options: ['Almost the entire', 'The whole', 'Certainly the entire'], answer: 0 },
       { sentence: 'All of the sources state that the Exodus … must have taken place in the early thirteenth century BC.', error: 'All', options: ['Every', 'Most', 'None'], answer: 1 },
       { sentence: 'It was certain that the Pharaoh would never accept Moses’ (pbuh) teachings or put an end to the hard days of the Children of Israel.', error: 'It was certain', options: ['It was proved', 'Everyone agreed', 'It seemed'], answer: 2 },
     ],
@@ -911,7 +911,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     question: 'How does the chapter report the decision about the contest without saying who made it?',
     sentenceChunks: ['It was decided', 'that a contest', 'would be held', 'between the magicians of Egypt', 'and Moses (pbuh).'],
     correctAnswer: null,
-    explanation: '“It was decided that …” is an impersonal passive: the decision is in focus and the deciders stay unnamed. Inside it, “would be held” is a passive seen from the past, looking forward to the contest. The book uses the passive in the same way elsewhere when what happens matters more than who acts: “He was placed in a basket” (Chapter 4), “the Torah (Tevrat) was given to him by Allah” (Chapter 24).',
+    explanation: '“It was decided that …” is an impersonal passive: the decision is in focus and the deciders stay unnamed. Inside it, “would be held” is a passive seen from the past, looking forward to the contest. The book uses the passive in the same way elsewhere when what happens matters more than who acts: “He was placed in a basket” (Chapter 4), “the Torah was given to him by Allah” (Chapter 24).',
     feedback: { correct: 'Well done. The impersonal passive puts the decision first.', incorrect: 'Start with the empty subject “It” and the passive verb. Then say what was decided, and between whom.' },
   },
   // USE — transfer the language into the learners' own world.
