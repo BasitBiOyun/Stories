@@ -125,92 +125,14 @@ export const adamA2VocabularyChallengePairs = [
 // Locked Final distribution:
 // 3 multiple choice + 2 true/false + 2 matching + 2 fill blanks + 1 sequencing.
 export const adamA2FinalChallengeExercises: Exercise[] = [
-{
-    id: 'adam-a2-final-1', type: 'multiple-choice', title: 'Earth and Work', instructions: 'Choose the true sentence.',
-    question: 'What do Chapters 1 and 6 both tell us about people on Earth?',
-    options: ['Chapter 1 says people should stay away from Earth. Chapter 6 says they should go back to Paradise at once.','Chapter 1 says people have a role on Earth. Chapter 6 shows some of their work and care.','Chapter 1 says people have no role on Earth. Chapter 6 says they have no duties.'], correctAnswer: 1,
-    explanation: 'Chapter 1 announces a human role on Earth; Chapter 6 later describes activities and responsibilities there.',
-    feedback: { correct: 'Correct. You connected an early idea with its later development.', incorrect: 'Compare the statement about the human role in Chapter 1 with the activity and responsibility list in Chapter 6.' }
-  },
-{
-    id: 'adam-a2-final-2', type: 'multiple-choice', title: 'Giving One’s Best', instructions: 'Choose the lesson stated after the two offerings.',
-    question: 'What lesson does Chapter 8 state after describing Habil’s and Qabil’s offerings?',
-    options: ['Real goodness is giving the best and the most loved','A person’s job decides whether the person is good','The quality and intention behind a gift never matter'], correctAnswer: 0,
-    explanation: 'The chapter explicitly states that real goodness is giving the best and the most loved.',
-    feedback: { correct: 'Correct.', incorrect: 'Use the final sentence of Chapter 8, not the brothers’ job titles.' }
-  },
-{
-    id: 'adam-a2-final-3', type: 'multiple-choice', title: 'Iblis’s Plan', instructions: 'Choose the plan stated in Chapter 4.',
-    question: 'What did Iblis want to happen to Adam?', options: ['He wanted Adam to remain careful about Iblis','He wanted Adam to keep following Allah’s warning','He wanted Adam to lose Allah’s love'], correctAnswer: 2,
-    explanation: 'The chapter says Iblis wanted Adam to lose Allah’s love, just as Iblis had.', feedback: { correct: 'Correct.', incorrect: 'Find the sentence explaining what Iblis wanted after he waited for a chance.' }
-  },
-{
-    id: 'adam-a2-final-4', type: 'true-false', title: 'Two Responses to Being Wrong', instructions: 'Decide whether the comparison agrees with Chapter 5.',
-    question: 'Adam and Eve admitted their mistake, and Iblis also accepted that he was wrong.', correctAnswer: false,
-    explanation: 'Adam and Eve were sorry and tried to repair their mistake; Iblis kept believing that he was right.',
-    feedback: { correct: 'Correct. You compared two different responses to being wrong.', incorrect: 'Compare the paragraph about Adam and Eve’s regret with the final paragraph about Iblis.' }
-  },
-{
-    id: 'adam-a2-final-5', type: 'true-false', title: 'Daily Life', instructions: 'Decide whether the statement agrees with Chapter 6.',
-    question: 'Iblis wanted people not to remember Allah in their daily lives.', correctAnswer: true,
-    explanation: 'The chapter states this as Iblis’s continuing aim on Earth.', feedback: { correct: 'Correct.', incorrect: 'Reread the final sentence about Iblis in Chapter 6.' }
-  },
-{
-    id: 'adam-a2-final-6', type: 'matching', title: 'Habil and Qabil', instructions: 'Match each brother with the right description.',
-    question: 'Which description is right for each brother?',
-    matchingPairs: [
-      { left: 'Habil', right: 'kind and gentle; he chose not to harm his brother' },
-      { left: 'Qabil', right: 'was jealous; his anger led to something terrible' }
-    ],
-    correctAnswer: { Habil: 'kind and gentle; he chose not to harm his brother', Qabil: 'was jealous; his anger led to something terrible' },
-    explanation: 'The two chapters contrast Habil’s gentle, non-retaliating response with Qabil’s jealousy and uncontrolled anger.',
-    feedback: { correct: 'Correct. You connected character descriptions with later actions.', incorrect: 'Use the character descriptions in Chapter 8 and the brothers’ actions in Chapter 9.' }
-  },
-{
-    id: 'adam-a2-final-7', type: 'matching', title: 'Lessons at the End', instructions: 'Match each idea with the action advised in Chapter 10.',
-    question: 'Connect each idea to the positive action in the final chapter.',
-    matchingPairs: [{ left: 'Jealousy', right: 'stay away from it' }, { left: 'Anger', right: 'control it' }, { left: 'Other people', right: 'be kind to them' }],
-    correctAnswer: { Jealousy: 'stay away from it', Anger: 'control it', 'Other people': 'be kind to them' },
-    explanation: 'The final chapter turns earlier events into clear behavioural advice.',
-    feedback: { correct: 'Correct.', incorrect: 'Reread the advice sentences in Chapter 10 and match each idea with its action.' }
-  },
-{
-    id: 'adam-a2-final-8', type: 'fill-blanks', title: 'Origin and Value', instructions: 'Complete the chapter sentence with one word.',
-    question: 'Complete the idea from Chapter 3.', fillBlanksText: 'For Allah, clay or fire did not make anybody [blank].', correctAnswer: 'valuable',
-    explanation: 'The missing word is valuable.',
-    feedback: { correct: 'Correct.', incorrect: 'Use the sentence beginning “For Allah” and find the final value word.' }
-  },
-{
-    id: 'adam-a2-final-9', type: 'fill-blanks', title: 'Guiding Children', instructions: 'Complete one positive action from Chapter 7.',
-    question: 'Complete the sentence.', fillBlanksText: 'Adam and Eve taught their children to [blank] well and to thank Allah.', correctAnswer: 'behave',
-    explanation: 'The chapter says they taught their children to behave well and thank Allah.',
-    feedback: { correct: 'Correct.', incorrect: 'Find the family paragraph and look at the first positive teaching action.' }
-  },
-{
-    id: 'adam-a2-final-10', type: 'sequencing', title: 'Story Order', instructions: 'Put these events in the correct order.',
-    question: 'What happened first, next, and later?',
-    sequencingItems: [
-      { id: '1', text: 'Iblis lies about the tree' },
-      { id: '2', text: 'Adam and Eve make a mistake and ask forgiveness' },
-      { id: '3', text: 'They begin life on Earth and have work to do' },
-      { id: '4', text: 'Habil and Qabil bring different offerings' },
-      { id: '5', text: 'A crow later shows Qabil what to do after Habil dies' }
-    ],
-    correctAnswer: ['1', '2', '3', '4', '5'],
-    explanation: 'These events happen in this order across Chapters 5–9.',
-    feedback: { correct: 'Correct. You connected five later stages in order.', incorrect: 'Use Chapters 5–9 and place one event at a time.' }
-  },
-{
-    id: 'adam-a2-final-11', type: 'multiple-choice', title: 'Knowledge and Respect', instructions: 'Choose the answer stated in Chapter 2.',
-    question: 'Why did the angels admire and respect Adam?',
-    options: ['Because he was created from fire','Because Allah gave him knowledge and taught him to think and learn','Because he already had many children'], correctAnswer: 1,
-    explanation: 'Chapter 2 says Allah gave Adam knowledge, taught him to think, and gave him the ability to learn and understand.',
-    feedback: { correct: 'Correct.', incorrect: 'Reread the sentences about Adam’s knowledge in Chapter 2.' }
-  },
-{
-    id: 'adam-a2-final-12', type: 'true-false', title: 'Different Human Colors', instructions: 'Decide whether the statement agrees with Chapter 1.',
-    question: 'Chapter 1 connects different human skin colors with soil collected from different parts of the earth.', correctAnswer: true,
-    explanation: 'The chapter says soil was collected from different parts of the earth and connects this with different human skin colors.',
-    feedback: { correct: 'Correct.', incorrect: 'Look again at the final two paragraphs of Chapter 1.' }
-  },
+{ id: 'adam-a2-final-1', type: 'fill-blanks', title: 'A Job on Earth', instructions: 'Complete Allah’s words from Chapter 1 with one word: ruler, angel or farmer.', question: 'What did Allah say about the new human?', fillBlanksText: 'The human is going to become the [blank] on earth.', correctAnswer: ['ruler'], explanation: 'In Chapter 1 Allah says: “The human is going to become the ruler on earth.”', feedback: { correct: 'Yes. From the start, Allah gives the human an important job on earth.', incorrect: 'Read what Allah tells the angels in Chapter 1. What will the human become on earth?' } },
+{ id: 'adam-a2-final-2', type: 'multiple-choice', title: 'How Iblis Saw Adam', instructions: 'Choose the answer from Chapter 2.', question: 'Why did Iblis think Adam was not important?', options: ['Adam could not learn new things.', 'Adam was created from clay.', 'The angels did not like Adam.'], correctAnswer: 1, explanation: 'Chapter 2 says: “Iblis thought Adam was an unimportant creature created from clay.” But the same chapter says Adam “could learn and understand”, and the angels “admired him and respected him”.', feedback: { correct: 'Yes. Iblis looked only at the clay. He did not see Adam’s knowledge.', incorrect: 'Read the last sentence of Chapter 2. What did Iblis look at when he thought about Adam?' } },
+{ id: 'adam-a2-final-3', type: 'true-false', title: 'One Warning', instructions: 'Is this sentence true or false?', question: 'In Paradise, Adam and Eve could eat from every tree.', correctAnswer: false, explanation: 'Chapter 4 says: “All the gifts in Paradise were for them. But Allah had only one warning. He told Adam and Eve not to go near one tree.”', feedback: { correct: 'Right. Almost everything was for them, but Allah told them not to go near one tree.', incorrect: 'Read the end of Chapter 4. What was Allah’s only warning?' } },
+{ id: 'adam-a2-final-4', type: 'sequencing', title: 'Adam’s Life in Order', instructions: 'Put these events in the correct order.', question: 'What happened first, next and later in Adam’s life?', sequencingItems: [{ id: '4', text: 'Adam and Eve eat from the banned tree.' }, { id: '1', text: 'Allah shapes Adam from soil.' }, { id: '6', text: 'Allah makes Adam His first Messenger.' }, { id: '3', text: 'Allah gives Adam a wife, Eve.' }, { id: '5', text: 'Adam and Eve start to live on earth.' }, { id: '2', text: 'The angels respect Adam, but Iblis does not.' }], correctAnswer: ['1', '2', '3', '4', '5', '6'], explanation: 'Allah shapes Adam (Chapter 1), the angels respect him but Iblis does not (Chapter 2), Allah gives him Eve (Chapter 4), they eat from the tree (Chapter 5) and live on earth (Chapter 6). After many years, “Allah made Adam His first Messenger” (Chapter 7).', feedback: { correct: 'Yes. Adam became a Messenger on earth, after many years there.', incorrect: 'Start with Chapter 1. Then remember: Adam became the first Messenger after he and Eve “lived on earth for many years”.' } },
+{ id: 'adam-a2-final-5', type: 'matching', title: 'Rulers of the Earth', instructions: 'Match each thing with what Adam and Eve did with it.', question: 'What did Adam and Eve do on earth?', matchingPairs: [{ left: 'land', right: 'used it to grow crops and keep animals' }, { left: 'buildings', right: 'built them for housing' }, { left: 'nature', right: 'protected it' }, { left: 'the weak', right: 'helped them' }], correctAnswer: { land: 'used it to grow crops and keep animals', buildings: 'built them for housing', nature: 'protected it', 'the weak': 'helped them' }, explanation: 'Chapter 6 says: “They were using land to grow crops and keep animals. They were going to build buildings for housing, protect nature and help the weak.”', feedback: { correct: 'Yes. As rulers, Adam and Eve took care of the earth and the people on it.', incorrect: 'Read the first paragraph of Chapter 6 again. Find each word: land, buildings, nature, the weak.' } },
+{ id: 'adam-a2-final-6', type: 'multiple-choice', title: 'After the Mistake', instructions: 'Choose the answer from Chapter 5.', question: 'After the mistake, how were Adam and Eve different from Iblis?', options: ['They blamed Iblis, and Iblis said sorry to Allah.', 'They stayed quiet, and Iblis ran away from them.', 'They said sorry, but Iblis never thought he was wrong.'], correctAnswer: 2, explanation: 'Chapter 5 says Adam and Eve “said sorry to Allah” and “learned from their mistake”. But Iblis “never thought he was wrong, because he was arrogant.”', feedback: { correct: 'Yes. Adam and Eve learned from their mistake. Iblis was arrogant and did not change.', incorrect: 'Compare the third paragraph of Chapter 5 (Adam and Eve) with the last paragraph (Iblis).' } },
+{ id: 'adam-a2-final-7', type: 'fill-blanks', title: 'Real Goodness', instructions: 'Complete the sentence from Chapter 8 with one word: loved, expensive or beautiful.', question: 'What is real goodness, as Chapter 8 says?', fillBlanksText: 'Real goodness is giving the best and the most [blank].', correctAnswer: ['loved'], explanation: 'Chapter 8 ends: “Real goodness is giving the best and the most loved.” Habil gave “his best and healthiest sheep”; Qabil gave “just a handful of his crops”.', feedback: { correct: 'Yes. Real goodness means giving what we love most, like Habil’s best sheep.', incorrect: 'Read the last sentence of Chapter 8. What kind of thing is best to give?' } },
+{ id: 'adam-a2-final-8', type: 'true-false', title: 'The Crow', instructions: 'Is this sentence true or false?', question: 'The crow showed Qabil how to put his brother’s body in the ground.', correctAnswer: true, explanation: 'Chapter 9 says Qabil did not know what to do. Then “The crow showed Qabil the way to put his brother\'s dead body in the hole.”', feedback: { correct: 'True. Allah sent a crow, and it dug the ground to show Qabil what to do.', incorrect: 'Read the end of Chapter 9. What did the crow do near Qabil?' } },
+{ id: 'adam-a2-final-9', type: 'matching', title: 'Words for Each Person', instructions: 'Match each person with the words the story uses for him.', question: 'Which words from the story describe each person?', matchingPairs: [{ left: 'Adam', right: 'wiser than the angels' }, { left: 'Iblis', right: 'arrogant' }, { left: 'Habil', right: 'kind and gentle' }, { left: 'Qabil', right: 'mostly jealous' }], correctAnswer: { Adam: 'wiser than the angels', Iblis: 'arrogant', Habil: 'kind and gentle', Qabil: 'mostly jealous' }, explanation: 'Chapter 2: Adam “was wiser than the angels”. Chapter 3: “Iblis was arrogant.” Chapter 8: “Habil was kind, gentle and loved taking care of animals. Qabil was mostly jealous.”', feedback: { correct: 'Yes. These words help us understand why each person acted the way he did.', incorrect: 'Look at Chapter 2 for Adam, Chapter 3 for Iblis and the start of Chapter 8 for the two brothers.' } },
+{ id: 'adam-a2-final-10', type: 'multiple-choice', title: 'The Lesson for Us', instructions: 'Choose the lesson from Chapter 10.', question: 'What does the story of the two brothers teach good people?', options: ['Stay away from jealousy and control your anger.', 'Give your best gifts only to your own family.', 'Go far away from people after a mistake.'], correctAnswer: 0, explanation: 'Chapter 10 says: “The story tells us that good people should stay away from jealousy and control their anger.” Qabil was jealous and angry, and this led to the first crime.', feedback: { correct: 'Yes. Jealousy and anger led Qabil to the worst thing in life.', incorrect: 'Read the first paragraph of Chapter 10. Find the sentence that begins “The story tells us”.' } },
 ];

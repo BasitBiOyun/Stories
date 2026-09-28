@@ -9,7 +9,8 @@
  * - feedback is more than a bare "Correct." / «صحيح.» and the incorrect feedback is not empty
  * - quotes “…” / «…» in question, explanation, feedback and item texts occur in the story text
  * - no item repeats a Quick Challenge or Knowledge Check question (word overlap of question + answer)
- * - no more than 2 items name the same chapter in their explanation (a rough coverage check)
+ * - no more than 2 items name the same chapter in their explanation (a rough coverage check;
+ *   the whole-book sequencing item is left out of this count)
  * Usage: npx tsx docs/final-challenge/tools/checkFinalChallenge.mts <story> <A2|B1|B2>
  * story ids: adam, ibrahim (Abraham), musa (Moses), mecca, yunusEmre
  */
@@ -21,7 +22,8 @@ const pair = await getBookDefinition(story, level as never)!.load();
 const norm = (s: string) => s.normalize('NFKC').replace(/[​-‏‪-‮⁦-⁩]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ى/g, 'ي').replace(/[ً-ْٰـ]/g, '').replace(/[’‘`]/g, "'").replace(/[“”"«»﴾﴿]/g, '').replace(/[.,!?;:،؛؟()\-–—]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
 const STOP = new Set('the a an of to in and or was were is are he she it his her they their them did do does what why how who which that this with for on at by from as be not no had has have after before when into about story chapter book في من على إلى الى عن أن ان ما ماذا لماذا كيف هل كان كانت ثم و لا لم هو هي التي الذي بعد قبل عند'.split(' '));
 const words = (s: string) => new Set(norm(s).split(' ').filter(w => w.length > 2 && !STOP.has(w)));
-const overlap = (a: Set<string>, b: Set<string>) => { let n = 0; a.forEach(w => { if (b.has(w)) n++; }); return n / Math.max(1, Math.min(a.size, b.size)); };
+// long whole-book items (sequencing, matching) share many words with any short item, so they are compared by the larger set
+const overlap = (a: Set<string>, b: Set<string>, wide = false) => { let n = 0; a.forEach(w => { if (b.has(w)) n++; }); return n / Math.max(1, wide ? Math.max(a.size, b.size) : Math.min(a.size, b.size)); };
 const key = (e: Exercise) => {
   const parts = [e.question ?? ''];
   if (e.type === 'multiple-choice' && typeof e.correctAnswer === 'number') parts.push(e.options?.[e.correctAnswer] ?? '');
@@ -87,8 +89,8 @@ for (const lang of ['en', 'ar'] as const) {
     for (const q of quoted.matchAll(/[“«]([^”»]{12,})[”»]/g))
       for (const part of q[1].split(/…|\.\.\./).map(norm).filter(x => x.split(' ').length >= 3)) if (!text.includes(part)) issue(`${e.id}: quote not in story text: “${part.slice(0, 90)}”`);
     const mine = words(key(e));
-    for (const o of others) { const r = overlap(mine, words(key(o.e))); if (r >= 0.6) issue(`${e.id}: close to ${o.id} (${Math.round(r * 100)}% word overlap): ${o.e.question}`); }
-    if (lang === 'en') {
+    for (const o of others) { const r = overlap(mine, words(key(o.e)), e.type === 'sequencing' || e.type === 'matching'); if (r >= 0.6) issue(`${e.id}: close to ${o.id} (${Math.round(r * 100)}% word overlap): ${o.e.question}`); }
+    if (lang === 'en' && e.type !== 'sequencing') {
       const named = new Set<number>();
       for (const m of (e.explanation ?? '').matchAll(/Chapters? (\d+)(?:[–-](\d+))?/g)) for (let n = +m[1]; n <= +(m[2] ?? m[1]); n++) named.add(n);
       for (const m of (e.explanation ?? '').matchAll(/Chapter (\w+)/gi)) { const n = EN_NUM.indexOf(m[1].toLowerCase()); if (n >= 0) named.add(n + 1); }
