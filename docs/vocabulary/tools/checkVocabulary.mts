@@ -65,7 +65,8 @@ for (const lang of ['en', 'ar'] as const) {
   const hotspotTitles = new Set<string>();
   for (const page of stories) {
     const chapter = chapterOf.get(page.id)!;
-    for (const item of page.vocabulary ?? []) {
+    // Historical-entity map cards (definition '__historical_entity__:<id>') are place cards, not Word Notes.
+    for (const item of (page.vocabulary ?? []).filter(v => !v.definition.startsWith('__historical_entity__:'))) {
       const key = normalizeHighlightText(item.word, hl);
       if (!has(String(page.content), item.word)) issue(`ch${chapter} Word Note "${item.word}" is not in the chapter text`);
       if (notes.has(key)) issue(`ch${chapter} Word Note "${item.word}" repeats ch${notes.get(key)!.chapter}`);
