@@ -100,7 +100,7 @@ export const yunusA2LanguageFocusExercises: Record<number, Exercise[]> = {
           answer: 1,
         },
         {
-          sentence: '[choice] the Creator, they forgave and tolerated the others.',
+          sentence: '[choice] the Creator, they forgave and tolerated others.',
           options: ['Because', 'Even if', 'Because of'],
           answer: 2,
         },
