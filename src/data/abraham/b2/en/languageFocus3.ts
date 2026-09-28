@@ -15,7 +15,7 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-19-voice-condition',
       type: 'true-false',
       title: 'A Lasting Change?',
-      instructions: 'Read the lines from Surah Enbiyâ quoted in Chapter 19. Is the statement true or false?',
+      instructions: 'Read the lines from Surah al-Anbiya quoted in Chapter 19. Is the statement true or false?',
       question: 'The words “You yourselves are the wrongdoers.” show that the people changed their minds for good.',
       correctAnswer: false,
       explanation: 'The people’s words to one another show a moment of self-correction. The very next sentence reverses it: “But they reverted to their old ideas”. “But” and the verb “reverted” (went back) mark the return to their earlier position, which is why Abraham answers with more questions.',
@@ -270,7 +270,7 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       title: 'Appearance and Effect',
       instructions: 'Complete the lines from Chapter 21 with words from the bank. Three options are not needed.',
       question: 'Which words show a surprising contrast, its cause and its limit?',
-      fillBlanksText: 'The rising flames were still there, [blank] they did not burn him, [blank] Allah commanded: “O fire! Be coolness and safety for Abraham” (Surah Enbiyâ: 69). The fire obeyed the order of Allah. It became cool and safe for Abraham (pbuh). It [blank] burned his ropes …',
+      fillBlanksText: 'The rising flames were still there, [blank] they did not burn him, [blank] Allah commanded: “O fire! Be coolness and safety for Abraham” (Surah al-Anbiya: 69). The fire obeyed the order of Allah. It became cool and safe for Abraham (pbuh). It [blank] burned his ropes …',
       wordBank: ['but', 'for', 'only', 'so', 'because of', 'also'],
       correctAnswer: ['but', 'for', 'only'],
       explanation: '“But” contrasts what stayed the same (the flames were still there) with what changed (they did not burn him). “For” + clause gives the reason; “because of” needs a noun, not a clause, and “so” would give a result. “Only” limits the fire’s effect to one thing, his ropes; “also” would wrongly suggest that it burned something else too.',
@@ -352,7 +352,7 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
       title: 'Turning Point and Contrast',
       instructions: 'Complete the lines from Chapter 22 with words from the bank. Three options are not needed.',
       question: 'Which words mark the turning point, the contrast and the earlier change?',
-      fillBlanksText: '[blank] the fire burnt out, they were shocked to see that Abraham (pbuh) stepped out of the pit completely unharmed. The smoke blackened their faces, [blank] his face was bright. The burning fire [blank] cool for Abraham (pbuh) and had only blackened the ropes which held him.',
+      fillBlanksText: '[blank] the fire burnt out, they were shocked to see that Abraham (pbuh) had stepped out of the pit completely unharmed. The smoke blackened their faces, [blank] his face was bright. The burning fire [blank] cool for Abraham (pbuh) and had only blackened the ropes which held him.',
       wordBank: ['Once', 'yet', 'had become', 'Unless', 'so', 'has become'],
       correctAnswer: ['Once', 'yet', 'had become'],
       explanation: '“Once” means “as soon as / after”: it marks the moment the fire ended and the next stage began. “Yet” sets two opposite results side by side: their faces were black, his was bright. The past perfect “had become” shows that the fire had changed for Abraham before he walked out; it matches “had only blackened”.',
@@ -932,7 +932,7 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-28-purpose-chain',
       type: 'matching',
       title: 'Reading Abraham’s Prayer',
-      instructions: 'Match each part of Abraham’s prayer (Surah Ibrâhim: 37) with its meaning.',
+      instructions: 'Match each part of Abraham’s prayer (Surah Ibrahim: 37) with its meaning.',
       question: 'What does Abraham ask for, and why?',
       matchingHeadings: { left: 'From the prayer', right: 'Meaning' },
       matchingPairs: [
@@ -1157,7 +1157,7 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       title: 'Event, Response and What Came Next',
       instructions: 'Complete the lines from Chapter 30 with words from the bank. Three options are not needed.',
       question: 'Which words show an immediate result, a purpose and a short gap in time?',
-      fillBlanksText: 'The angel hit the ground with his heel, and water [blank] flowed out. It was a miracle! Hagar quickly made a small basin around the water [blank] it from spreading, and she filled her water skin. … [blank], the tribe of Jurham (Cürhüm) that was moving from southern Arabia, Yemen, stopped by the valley of Mecca.',
+      fillBlanksText: 'The angel hit the ground with his heel, and water [blank] flowed out. It was a miracle! Hagar quickly made a small basin around the water [blank] it from spreading, and she filled her water skin. … [blank], the tribe of Jurham that was moving from southern Arabia, Yemen, stopped by the valley of Mecca.',
       wordBank: [
         'immediately',
         'to stop',
@@ -1186,8 +1186,8 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
           answers: ['which is called', 'which is named', 'known as', 'which is known as', 'named'],
         },
         {
-          source: 'This name was given to the water because the word Zemzem means …',
-          frame: 'People [blank] to the water because the word Zemzem means …',
+          source: 'This name was given to the water because the word Zamzam means …',
+          frame: 'People [blank] to the water because the word Zamzam means …',
           answers: ['gave this name', 'gave the name'],
         },
         {
@@ -1235,7 +1235,7 @@ export const abrahamB2LanguageFocusChapter31: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-31-time-development',
       type: 'matching',
       title: 'Reading the Verses',
-      instructions: 'Match each part of the verses in Chapter 31 (Surah Sâffât: 101–102) with its meaning.',
+      instructions: 'Match each part of the verses in Chapter 31 (Surah as-Saffat: 101–102) with its meaning.',
       question: 'How do the verses move from good news to a dream, a question and an answer?',
       matchingHeadings: { left: 'From the verses', right: 'Meaning' },
       matchingPairs: [
@@ -1553,7 +1553,7 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-34-command-commitment',
       type: 'multiple-choice',
       title: 'A Request, Not an Order',
-      instructions: 'Read the prayer at the end of Chapter 34 (Surah Baqarah: 127). Then choose the best explanation.',
+      instructions: 'Read the prayer at the end of Chapter 34 (Surah al-Baqarah: 127). Then choose the best explanation.',
       question: '“O our Lord! Accept this service from us; verily You are the All Hearer, the All Knower.” What does the imperative “Accept” do here?',
       options: [
         'It is a humble request made in prayer.',
@@ -1681,7 +1681,7 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'How Far Does the Evidence Go?',
       instructions: 'Read the sentence from Chapter 35. Then choose the statement that keeps its scope.',
-      question: '“Reconstruction of the Ka‘ba and the call to pilgrimage (see Surah Hajj: 27) are clear evidence that Prophet Abraham (pbuh) established the religion and invited those living in that region at that time to embrace it.” Which statement keeps the scope of this claim?',
+      question: '“Reconstruction of the Ka‘ba and the call to pilgrimage (see Surah al-Hajj: 27) are clear evidence that Prophet Abraham (pbuh) established the religion and invited those living in that region at that time to embrace it.” Which statement keeps the scope of this claim?',
       options: [
         'The reconstruction and the call to pilgrimage are presented as evidence of Abraham’s mission in that region at that time.',
         'They prove that everyone in the region accepted Abraham’s religion.',
