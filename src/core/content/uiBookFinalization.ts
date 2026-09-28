@@ -225,15 +225,14 @@ const finalizePreparedLanguage = (
   vocabularyPairs: NonNullable<PageData['vocabularyPairs']>,
   language: Language,
 ): BookData => {
-  const policy = getLearningLevelPolicy(book.level);
   const enriched = book.pages.map(page => {
     if (page.type === 'vocabulary-match') {
       return {
         ...page,
         title: language === 'ar' ? 'تحدي المفردات' : 'Vocabulary Challenge',
         content: language === 'ar'
-          ? `تدرّب على ${policy.vocabularyCount} كلمة أو عبارة مستهدفة عبر المطابقة والسياق والاسترجاع.`
-          : `Practise ${policy.vocabularyCount} target words through matching, context and recall.`,
+          ? `تدرّب على ${vocabularyPairs.length} ${vocabularyPairs.length <= 10 ? 'كلمات أو عبارات' : 'كلمة أو عبارة'} مستهدفة عبر المطابقة والسياق والاسترجاع.`
+          : `Practise ${vocabularyPairs.length} target words through matching, context and recall.`,
         vocabularyPairs,
       };
     }
@@ -268,6 +267,24 @@ const finalizePreparedLanguage = (
 };
 
 /**
+ * A reviewed Vocabulary Challenge is authored by hand with a story sentence (context) for every
+ * pair; it is used as written. Books not reviewed yet (pairs without context) still get the
+ * Word Note based set from pickPreparedTargets.
+ */
+const authoredTargets = (
+  english: BookData,
+  arabic: BookData,
+): { english: NonNullable<PageData['vocabularyPairs']>; arabic: NonNullable<PageData['vocabularyPairs']> } | null => {
+  const reviewed = (book: BookData) => {
+    const pairs = book.pages.find(page => page.type === 'vocabulary-match')?.vocabularyPairs ?? [];
+    return pairs.length && pairs.every(item => item.context?.trim() && item.chapter) ? pairs : null;
+  };
+  const en = reviewed(english);
+  const ar = reviewed(arabic);
+  return en && ar ? { english: en, arabic: ar } : null;
+};
+
+/**
  * Prepared books keep their reviewed/manual learning content. This lightweight
  * UI finalizer only normalizes the vocabulary study flow and enriches the
  * existing Vocabulary Challenge from the reviewed story Word Notes.
@@ -292,7 +309,7 @@ export const finalizePreparedBookPairForUi = (pair: BookPair): BookPair => {
 
   if (!englishVocabularyPages) return pair;
 
-  const targets = pickPreparedTargets(pair.en, pair.ar);
+  const targets = authoredTargets(pair.en, pair.ar) ?? pickPreparedTargets(pair.en, pair.ar);
   return {
     en: finalizePreparedLanguage(pair.en, targets.english, 'en'),
     ar: finalizePreparedLanguage(pair.ar, targets.arabic, 'ar'),

@@ -1,4 +1,4 @@
-import type { Exercise } from '../../../../types';
+import type { Exercise, VocabularyChallengePair } from '../../../../types';
 
 export const meccaA2QuickChallenges: Record<number, Exercise> = {
   1: { id: 'mecca-a2-quick-1', type: 'multiple-choice', title: 'Bilal’s Place', instructions: 'Read the question. Choose the answer from Chapter 1.', question: 'What was Bilal the first person to do in the history of Islam?', options: ['He was born free in Mecca.', 'He gave the Adhan, the call to prayer.', 'He went to live in Damascus.'], correctAnswer: 1, explanation: 'Chapter 1 says Bilal was “the first person to give the Adhan, the call to prayer, in the history of Islam.”', feedback: { correct: 'Yes! Bilal was the first person to give the Adhan. That is why his name is so special.', incorrect: 'Not this one. Read the first paragraph again and find the words “the first person to …”.' } },
@@ -31,13 +31,13 @@ export const meccaA2KnowledgeCheckExercisesPolished: Exercise[] = [
   { id: 'mecca-a2-kc-8-too-sad', type: 'multiple-choice', title: 'After the Prophet (pbuh)', instructions: 'Read the question. Choose the answer.', question: 'Why did Bilal stop giving the Adhan after the Prophet (pbuh) died?', options: ['Abu Bakr chose another man to give it.', 'He was too old and weak to call loudly.', 'He was very sad and cried at the Prophet’s name.'], correctAnswer: 2, explanation: 'Chapter 13: “When the Prophet (pbuh) died, Bilal was too sad to give the Adhan. He started crying when he said the Prophet’s name.”', feedback: { correct: 'Yes. Bilal loved the Prophet (pbuh) very much. He was too sad to give the Adhan, and he cried when he said his name.', incorrect: 'Not this one. Read the second paragraph of Chapter 13 again. How did Bilal feel when the Prophet (pbuh) died?' } },
 ];
 
-export const meccaA2VocabularyChallengePairsPolished = [
-  { word: 'Justice', meaning: 'Fair treatment of people' },
-  { word: 'Freedom', meaning: 'The state of not being a slave or prisoner' },
-  { word: 'Secretly', meaning: 'In a hidden way' },
-  { word: 'Refused', meaning: 'Said no and did not agree to do something' },
-  { word: 'Rescued', meaning: 'Saved from danger or harm' },
-  { word: 'Respected', meaning: 'Honored and treated as important' },
+export const meccaA2VocabularyChallengePairsPolished: VocabularyChallengePair[] = [
+  { word: 'justice', meaning: 'Fair treatment for people.', partOfSpeech: 'noun', chapter: 2, context: 'There was no real peace and justice in society.' },
+  { word: 'patient', meaning: 'Calm when you must wait or when life is hard.', partOfSpeech: 'adjective', chapter: 4, context: 'Bilal had to be patient and work hard every day.' },
+  { word: 'freedom', meaning: 'The state of not being a slave or prisoner.', partOfSpeech: 'noun', chapter: 5, context: 'He did not have any money to pay for his freedom.' },
+  { word: 'refused', meaning: 'Said no; did not agree to do something.', partOfSpeech: 'verb', chapter: 8, context: 'He forced him to look at idols and worship them, but Bilal refused.' },
+  { word: 'rescued', meaning: 'Saved from danger.', partOfSpeech: 'verb', chapter: 10, context: 'Abu Bakr bought Bilal and rescued him from his master’s hands.' },
+  { word: 'beloved', meaning: 'Loved very much.', partOfSpeech: 'adjective', chapter: 11, context: 'After Bilal became free, he became one of the Prophet’s most beloved and respected friends.' },
 ];
 
 export const meccaA2LanguageReviewExercises: Exercise[] = [

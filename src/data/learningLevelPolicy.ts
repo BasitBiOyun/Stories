@@ -32,7 +32,7 @@ export const LEARNING_LEVEL_POLICIES: Record<Level, LearningLevelPolicy> = {
   A2: {
     level: 'A2',
     knowledgeCount: 8,
-    vocabularyCount: 10,
+    vocabularyCount: 6,
     vocabularyContextCount: 5,
     vocabularyRecallCount: 4,
     vocabularyRecallMode: 'choice',
@@ -57,7 +57,7 @@ export const LEARNING_LEVEL_POLICIES: Record<Level, LearningLevelPolicy> = {
   B1: {
     level: 'B1',
     knowledgeCount: 8,
-    vocabularyCount: 12,
+    vocabularyCount: 10,
     vocabularyContextCount: 6,
     vocabularyRecallCount: 5,
     vocabularyRecallMode: 'guided',
@@ -82,7 +82,7 @@ export const LEARNING_LEVEL_POLICIES: Record<Level, LearningLevelPolicy> = {
   B2: {
     level: 'B2',
     knowledgeCount: 8,
-    vocabularyCount: 14,
+    vocabularyCount: 10,
     vocabularyContextCount: 7,
     vocabularyRecallCount: 6,
     vocabularyRecallMode: 'independent',
