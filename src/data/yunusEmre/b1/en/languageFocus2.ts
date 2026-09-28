@@ -294,7 +294,7 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
     type: 'multiple-choice',
     title: 'A Foundation and an Inspiration',
     instructions: 'Read the last two sentences of Chapter 7. Then choose the best answer.',
-    question: '“Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet\'s Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.” How are the two sources different?',
+    question: '“Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.” How are the two sources different?',
     options: [
       'The earlier Sûfîs are the foundation, and the Qur’an and the Sunnah are an extra inspiration.',
       'Both sentences say exactly the same thing in different words.',
@@ -347,7 +347,7 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
     title: 'Time, Pressure and Response',
     instructions: 'Complete the lines from Chapter 7 with words from the bank. Three words are not needed.',
     question: 'Which words place the events in time, name the pressure, and lead to Yunus’s response?',
-    fillBlanksText: 'Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. … Poetry was his [blank] influential tool.',
+    fillBlanksText: 'Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî and dervish and travelled around Anatolia. … Poetry was his [blank] influential tool.',
     wordBank: ['under', 'During', 'most', 'such', 'While', 'so', 'more'],
     correctAnswer: ['During', 'under', 'such', 'most'],
     explanation: '“During + noun” places an event inside a period; “while” needs a clause (while + subject + verb). “Under … pressure” shows the force behind an action. “Such an environment” points back to everything described before: chaos, pressure and new teachers. “His most influential tool” is a superlative: poetry was the strongest of his ways of reaching people.',

@@ -25,16 +25,16 @@ export const yunusB1Pages: PageData[] = [
 
 Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.
 
-In addition to being a Sûfî, Yunus Emre was one of the first to write and say poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sûfî literature.`,
+In addition to being a Sûfî, Yunus Emre was one of the first to write and recite poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sûfî literature.`,
     [
-      { word: 'Sûfî', definition: 'A Muslim who follows a spiritual path to become closer to Allah.' },
-      { word: 'outer', definition: 'Related to what is visible or outward.' },
+      { word: 'outer', definition: 'Belonging to the part that people can see.' },
       { word: 'biases', definition: 'Unfair opinions or preferences about people.' },
-      { word: 'literary', definition: 'Related to literature and artistic writing.' },
+      { word: 'worldly', definition: 'Related to ordinary daily life and things like money, not to spiritual matters.' },
+      { word: 'literary', definition: 'Connected with the writing of poems, stories and other artistic works.' },
     ],
     [
-      { id: 'yunus-b1-en-1-1', x: 31, y: 39, title: 'Sûfîsm', description: 'The chapter joins outward worship with inward intention and morality.' },
-      { id: 'yunus-b1-en-1-2', x: 70, y: 61, title: 'Moral Principles', description: 'Patience, generosity, kindness, and reduced attachment to worldly status are central values.' },
+      { id: 'yunus-b1-en-1-1', x: 31, y: 39, title: 'Sûfîsm', description: 'Sûfîsm joins outward worship with inward intention and good morals.' },
+      { id: 'yunus-b1-en-1-2', x: 70, y: 61, title: 'Moral Principles', description: 'Sûfîs value patience, generosity and kindness, and give no importance to wealth, status or fame.' },
     ],
   ),
   story(
@@ -42,18 +42,18 @@ In addition to being a Sûfî, Yunus Emre was one of the first to write and say 
     'His Language and Education',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch2-clean.png?alt=media&token=ef85a87c-039b-46e1-8d62-abeea2891b07',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F01_Chapter_2_His_Language_and_Education.mp3?alt=media&token=34d1568e-fb36-486e-914f-61928ab3bc20',
-    `People love his works very much due to his style. It is neither too simple nor too complex. His works are very popular because they combine great literary quality with simple language. This plain language helps people understand his writings and sayings easily. Philosophy in his poems includes important moral principles that still have a significant influence on Turkish culture and society.
+    `People love his works very much due to his style. It is neither too simple nor too complex. His works are very popular because they combine great literary quality with simple language. This plain language helps people understand his writings and sayings easily. The philosophy in his poems includes important moral principles that still have a significant influence on Turkish culture and society.
 
 According to historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi. He was born around 1240–1241 and died around 1320–1321. Some sources say that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he also studied Allah’s love and morals at the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor).`,
     [
-      { word: 'plain language', definition: 'Language that is clear and easy to understand.' },
+      { word: 'plain', definition: 'Simple, clear and easy to understand.' },
       { word: 'era', definition: 'A particular period of history.' },
-      { word: 'madrasa', definition: 'A traditional Islamic school or place of learning.' },
-      { word: 'spiritual tutor', definition: 'A teacher who guides someone in spiritual learning.' },
+      { word: 'sources', definition: 'Books, documents or people that give information, especially about the past.' },
+      { word: 'tutor', definition: 'A teacher who guides and teaches one person or a small group.' },
     ],
     [
-      { id: 'yunus-b1-en-2-1', x: 37, y: 64, title: 'Simple Language', description: 'His works combine literary quality with language people can understand.' },
-      { id: 'yunus-b1-en-2-2', x: 66, y: 34, title: 'Education', description: 'The chapter describes both madrasa education and learning in a tekke.' },
+      { id: 'yunus-b1-en-2-1', x: 37, y: 64, title: 'Simple Language', description: 'His works combine literary quality with language that people understand easily.' },
+      { id: 'yunus-b1-en-2-2', x: 66, y: 34, title: 'Education', description: 'Some sources say he studied at a madrasa; he also learned Allah’s love and morals in a tekke.' },
     ],
   ),
   story(
@@ -65,14 +65,14 @@ According to historical sources, he lived during the same era as important peopl
 
 Yunus Emre lived during the 13th and 14th centuries, which was a very difficult time in Anatolia. The Anatolian Seljuks were seriously weakened by the Babai revolts in the 13th century. While the negative effects of these revolts were still being felt, the defeat at Kösedağ took place. The defeat caused the Mongols' invasion of Anatolia. Because of these hard circumstances, Anatolia faced serious political, economic, and social problems. People were struggling to cope with these tough situations.`,
     [
-      { word: 'community organizations', definition: 'Groups that organize help and activities for a community.' },
-      { word: 'fine arts', definition: 'Creative arts such as poetry, music, and painting.' },
-      { word: 'revolts', definition: 'Organized rebellions against authority.' },
-      { word: 'invasion', definition: 'The act of entering a land by force.' },
+      { word: 'revolts', definition: 'Organized actions in which people fight against their rulers.' },
+      { word: 'invasion', definition: 'The act of entering another country by force to take control of it.' },
+      { word: 'circumstances', definition: 'The conditions that affect a situation or a person’s life.' },
+      { word: 'struggling', definition: 'Trying very hard to deal with something difficult.' },
     ],
     [
-      { id: 'yunus-b1-en-3-1', x: 27, y: 54, title: 'Tekkés', description: 'Tekkés served spiritual, social, and cultural functions.' },
-      { id: 'yunus-b1-en-3-2', x: 73, y: 35, title: 'Anatolia', description: 'The chapter places Yunus in a period of revolt, defeat, invasion, and serious social problems.' },
+      { id: 'yunus-b1-en-3-1', x: 27, y: 54, title: 'Tekkés', description: 'Tekkes were places of Sûfî training, community help and poetry.' },
+      { id: 'yunus-b1-en-3-2', x: 73, y: 35, title: 'Anatolia', description: 'Revolts, the defeat at Kösedağ and the Mongol invasion brought hard times to Anatolia.' },
     ],
   ),
   story(
@@ -86,12 +86,12 @@ The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was the most po
     [
       { word: 'navy', definition: 'A country’s military force that operates at sea.' },
       { word: 'governance', definition: 'The way a state or organization is managed.' },
-      { word: 'decline', definition: 'A process of becoming weaker or less successful.' },
+      { word: 'decline', definition: 'To become weaker or less successful.' },
       { word: 'chaos', definition: 'A state of serious disorder and confusion.' },
     ],
     [
-      { id: 'yunus-b1-en-4-1', x: 34, y: 31, title: 'Seljuk Anatolia', description: 'The chapter contrasts a powerful Seljuk period with later decline.' },
-      { id: 'yunus-b1-en-4-2', x: 69, y: 66, title: 'Mongol Pressure', description: 'Migration and poor governance are linked with worsening social and economic chaos.' },
+      { id: 'yunus-b1-en-4-1', x: 34, y: 31, title: 'Seljuk Anatolia', description: 'Under Alaeddin I the Seljuks were at their strongest; under his son they began to decline.' },
+      { id: 'yunus-b1-en-4-2', x: 69, y: 66, title: 'Mongol Pressure', description: 'The Mongol invasion pushed many people into Anatolia, and poor governance made the chaos worse.' },
     ],
   ),
   story(
@@ -103,14 +103,14 @@ The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was the most po
 
 However, this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster caused deep sorrow and fear among the Seljuk people. Finally, in 1243, the Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas. The Mongols used the classic false retreat and circling tactic. Thus, they easily defeated the Seljuks. After that, the Mongols destroyed and raided Sivas, Kayseri, and Erzincan, leaving not a single stone standing.`,
     [
-      { word: 'revolt', definition: 'An organized action against a government or authority.' },
+      { word: 'rebellion', definition: 'Organized, often violent action against a government or ruler.' },
       { word: 'captured', definition: 'Took control of a place by force.' },
+      { word: 'sorrow', definition: 'A feeling of deep sadness.' },
       { word: 'clashed', definition: 'Fought or came into violent conflict.' },
-      { word: 'false retreat', definition: 'A tactic in which an army pretends to withdraw to mislead the enemy.' },
     ],
     [
-      { id: 'yunus-b1-en-5-1', x: 24, y: 44, title: 'Kösedağ', description: 'The 1243 battle ended in a major Seljuk defeat.' },
-      { id: 'yunus-b1-en-5-2', x: 76, y: 58, title: 'Destruction', description: 'The defeat was followed by raids and destruction in major Anatolian cities.' },
+      { id: 'yunus-b1-en-5-1', x: 24, y: 44, title: 'Kösedağ', description: 'In 1243 the Mongols defeated the Seljuk army at Kösedağ with a false retreat.' },
+      { id: 'yunus-b1-en-5-2', x: 76, y: 58, title: 'Destruction', description: 'After the battle, the Mongols destroyed and raided Sivas, Kayseri and Erzincan.' },
     ],
   ),
   story(
@@ -120,16 +120,16 @@ However, this situation gave the Mongols in Azerbaijan the courage to attack the
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F05_Chapter_6_Chaos_in_Anatolia.mp3?alt=media&token=d8eaa69b-4531-4735-803e-551ea619d357',
     `The men were killed by the sword. The women and children were taken captive and forced to go with the Mongols. They caused a lot of destruction, sadness, and misery everywhere they went. After these cruel raids, cities were deserted. Yunus Emre lived during a time when the Mongol army invaded Anatolia.
 
-These events created an atmosphere of panic in Anatolia that had never been seen before. Finally, an agreement was made with the Mongols, but in time the Seljuks became dependent on them. The Seljuk sultans acted almost like government officials for the Mongols. A significant part of state income began to be sent to the Mongols every year. However, this tax increased continuously and this made both the state and the people poorer. After 1277, the Mongols began to administer Anatolia through the commanders and governors that they sent. And in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire (The Mongol state centred in Iran).`,
+These events created an atmosphere of panic in Anatolia that had never been seen before. Finally, an agreement was made with the Mongols, but in time the Seljuks became dependent on them. The Seljuk sultans acted almost like government officials for the Mongols. A significant part of state income began to be sent to the Mongols every year. However, this tax increased continuously and this made both the state and the people poorer. After 1277, the Mongols began to administer Anatolia through the commanders and governors that they sent. And in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire (the Mongol state centred in Iran).`,
     [
-      { word: 'captive', definition: 'A person kept as a prisoner.' },
+      { word: 'cruel', definition: 'Causing pain or suffering to others without pity.' },
       { word: 'deserted', definition: 'Empty because people have left.' },
       { word: 'dependent', definition: 'Relying on another person or power.' },
-      { word: 'state income', definition: 'Money received by a government or state.' },
+      { word: 'income', definition: 'Money that a person or a state receives regularly.' },
     ],
     [
-      { id: 'yunus-b1-en-6-1', x: 39, y: 67, title: 'Mongol Raids', description: 'The raids brought destruction, captivity, deserted cities, and panic.' },
-      { id: 'yunus-b1-en-6-2', x: 65, y: 32, title: 'Ilkhanate Empire', description: 'Seljuk dependence deepened until Anatolia was directly attached to the Ilkhanate.' },
+      { id: 'yunus-b1-en-6-1', x: 39, y: 67, title: 'Mongol Raids', description: 'The raids brought death, captivity, deserted cities and panic.' },
+      { id: 'yunus-b1-en-6-2', x: 65, y: 32, title: 'Ilkhanate Empire', description: 'The Seljuks became dependent on the Mongols, and in 1308 Anatolia was attached to the Ilkhanate.' },
     ],
   ),
   story(
@@ -139,18 +139,18 @@ These events created an atmosphere of panic in Anatolia that had never been seen
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F06_Chapter_7_Yunus_as_a_Wise_Dervish.mp3?alt=media&token=b49d99a5-9f7c-4fc0-9cc5-f2ad927740cf',
     `Anatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.
 
-So in such an environment, Yunus Emre also appeared as a wise Sûfî / dervish and travelled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.
+So in such an environment, Yunus Emre also appeared as a wise Sûfî and dervish and travelled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.
 
-Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet's Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.`,
+Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.`,
     [
-      { word: 'shaykhs', definition: 'Religious or spiritual teachers.' },
-      { word: 'dervishes', definition: 'People following a Sûfî spiritual path.' },
+      { word: 'pressure', definition: 'A strong force that pushes people to do something.' },
+      { word: 'dervishes', definition: 'Members of a Sûfî group who follow a spiritual path.' },
+      { word: 'influential', definition: 'Having a strong effect on what people think or do.' },
       { word: 'nomads', definition: 'People who move from place to place rather than living permanently in one place.' },
-      { word: 'respond', definition: 'To answer or react to a situation.' },
     ],
     [
-      { id: 'yunus-b1-en-7-1', x: 35, y: 58, title: 'Wise Sûfî', description: 'Yunus appears as a travelling wise Sûfî in a society experiencing chaos.' },
-      { id: 'yunus-b1-en-7-2', x: 67, y: 29, title: 'Poetry', description: 'The chapter describes poetry as his most influential tool.' },
+      { id: 'yunus-b1-en-7-1', x: 35, y: 58, title: 'Wise Sûfî', description: 'Yunus travelled around Anatolia and helped people make sense of life in hard days.' },
+      { id: 'yunus-b1-en-7-2', x: 67, y: 29, title: 'Poetry', description: 'Poetry was his most influential tool.' },
     ],
   ),
   story(
@@ -174,13 +174,13 @@ Bu tevhîdi inkâr iden öz cânına düşmânımış
 [/POEM]`,
     [
       { word: 'loyalty', definition: 'Strong support and faithfulness to someone.' },
-      { word: 'Tawhid', definition: 'The belief that Allah is One.' },
-      { word: 'Oneness', definition: 'The state of being one and undivided.' },
-      { word: 'unity of existence', definition: 'The idea of one true existence described in the chapter.' },
+      { word: 'oneness', definition: 'The quality of being single, without any partner or equal.' },
+      { word: 'connected', definition: 'Joined or linked to something else.' },
+      { word: 'universe', definition: 'Everything that Allah created, including the earth, the sky and all the stars.' },
     ],
     [
-      { id: 'yunus-b1-en-8-1', x: 28, y: 36, title: 'Tawhid', description: 'Tawhid is defined as the Oneness of Allah.' },
-      { id: 'yunus-b1-en-8-2', x: 72, y: 63, title: 'Unity', description: 'The chapter presents Allah as the source of all things and the true reality.' },
+      { id: 'yunus-b1-en-8-1', x: 28, y: 36, title: 'Tawhid', description: 'Tawhid means the Oneness of Allah, a basic principle in his works.' },
+      { id: 'yunus-b1-en-8-2', x: 72, y: 63, title: 'Unity', description: 'For Yunus, Allah is the source of all things and the only true reality.' },
     ],
   ),
   story(
@@ -188,7 +188,7 @@ Bu tevhîdi inkâr iden öz cânına düşmânımış
     'Allah’s Commands',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch9-clean.png?alt=media&token=5895a688-a4f9-4f23-a8a6-51a05df4dbd4',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F08_Chapter_9_Allah%E2%80%99s_Commands.mp3?alt=media&token=413b5ace-3eda-4ea1-a34d-f88cfc62ae28',
-    `As a result of creation, the original unity lost its unity and multiple existence appeared. All creations in the world are just reflections of Allah’s names. In this way, every creature is an image, but only Allah is truly real. The main goal for humans is to reach unity with Allah.
+    `As a result of creation, the original unity was lost and multiplicity appeared. All creations in the world are just reflections of Allah’s names. In this way, every creature is an image, but only Allah is truly real. The main goal for humans is to reach unity with Allah.
 
 His words remind us of Allah’s commands for achieving this unity.
 
@@ -205,14 +205,14 @@ Tanrı'nın buyruğun tutup beş vakit namaz kılsa gerek
 
 Love is a very important theme in Yunus Emre’s works. It is the most important part of his philosophy. Those who love the Creator love the created, and those who love the created also love the Creator.`,
     [
-      { word: 'creation', definition: 'The act or result of bringing things into existence.' },
-      { word: 'multiple existence', definition: 'The many created forms described in the chapter.' },
       { word: 'reflections', definition: 'Things that show or represent something else.' },
-      { word: 'five daily prayers', definition: 'The five acts of worship a Muslim performs at set times every day: Fajr, Dhuhr, Asr, Maghrib and Isha.' },
+      { word: 'claims', definition: 'Says that something is true, often without proof.' },
+      { word: 'requirements', definition: 'Things that are necessary or must be done.' },
+      { word: 'five daily prayers', definition: 'The acts of worship that Muslims must perform at set times from dawn to night: Fajr, Dhuhr, Asr, Maghrib and Isha.' },
     ],
     [
-      { id: 'yunus-b1-en-9-1', x: 40, y: 32, title: 'Allah’s Commands', description: 'The poem names following Allah’s command and the five daily prayers.' },
-      { id: 'yunus-b1-en-9-2', x: 63, y: 68, title: 'Love', description: 'The closing lines connect love of the Creator with love of created beings.' },
+      { id: 'yunus-b1-en-9-1', x: 40, y: 32, title: 'A Muslim’s Duties', description: 'The poem says a Muslim should follow Allah’s command and pray the five daily prayers.' },
+      { id: 'yunus-b1-en-9-2', x: 63, y: 68, title: 'Love', description: 'Love of the Creator and love of His creatures go together.' },
     ],
   ),
   story(
@@ -222,7 +222,7 @@ Love is a very important theme in Yunus Emre’s works. It is the most important
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F09_Chapter_10_The_Heart_and_Love.mp3?alt=media&token=9e3077d5-22aa-4723-8587-db790e04157e',
     `Love brings unity and harmony. According to him, where love is absent, negative emotions such as anger, heartbreak and separation arise.
 
-In Yunus Emre’s philosophy, heart is the center of love. It is “the throne of the Lord,” that is, the place where Allah reveals Himself. For this reason, he described breaking a heart as destroying Allah’s house. He says:
+In Yunus Emre’s philosophy, the heart is the center of love. It is “the throne of the Lord,” that is, the place where Allah reveals Himself. For this reason, he described breaking a heart as destroying Allah’s house. He says:
 
 [POEM]
 English:
@@ -233,18 +233,18 @@ Gönül Çalab’ın tahtı, Çalap gönüle baktı;
 İki cihan bedbahtı, kim gönül yıkar ise.
 [/POEM]
 
-Heart is the eye that sees the truth and the center of understanding.
+The heart is the eye that sees the truth and the center of understanding.
 
-Yunus Emre emphasizes not only heart but also intellect as a value; he described it as “a light from Allah that has existed since eternity.”`,
+Yunus Emre emphasizes not only the heart but also the intellect as a value; he described it as “a light from Allah that has existed since eternity.”`,
     [
       { word: 'harmony', definition: 'A peaceful state in which things work well together.' },
       { word: 'heartbreak', definition: 'Deep emotional sadness or pain.' },
-      { word: 'throne of the Lord', definition: 'The expression used in the chapter for the spiritual importance of the heart.' },
+      { word: 'throne', definition: 'The special seat of a king or queen, a sign of power.' },
       { word: 'intellect', definition: 'The ability to think, understand, and reason.' },
     ],
     [
-      { id: 'yunus-b1-en-10-1', x: 26, y: 62, title: 'The Heart', description: 'The chapter describes the heart as the center of love and understanding.' },
-      { id: 'yunus-b1-en-10-2', x: 74, y: 37, title: 'Intellect', description: 'Intellect is also presented as an important value.' },
+      { id: 'yunus-b1-en-10-1', x: 26, y: 62, title: 'The Heart', description: 'The heart is the center of love and understanding, “the throne of the Lord.”' },
+      { id: 'yunus-b1-en-10-2', x: 74, y: 37, title: 'Intellect', description: 'Yunus also valued the intellect as “a light from Allah.”' },
     ],
   ),
   story(
@@ -265,7 +265,7 @@ Seni türlü beladan kurtara akıl,
 Saadet ola sana cümle ay, yıl
 [/POEM]
 
-Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.
+Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.” (Ibn Majah, Zuhd, 31, no. 4259) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.
 
 About death he says:
 
@@ -278,14 +278,14 @@ Bu dünyaya gelen kişi, ahir yine gitse gerek
 Misafirdir, vatanına bir gün sefer etse gerek
 [/POEM]`,
     [
-      { word: 'salvation', definition: 'Being saved spiritually or reaching spiritual safety.' },
+      { word: 'salvation', definition: 'Being rescued from sin and its punishment; reaching spiritual safety.' },
       { word: 'wisdom', definition: 'The ability to use knowledge and experience well.' },
       { word: 'advisor', definition: 'A person or thing that gives guidance.' },
-      { word: 'homeland', definition: 'The place a person considers their home country or native land.' },
+      { word: 'homeland', definition: 'The country or place where a person was born or truly belongs.' },
     ],
     [
-      { id: 'yunus-b1-en-11-1', x: 38, y: 35, title: 'Intellect', description: 'Heart and intellect are presented as supporting one another.' },
-      { id: 'yunus-b1-en-11-2', x: 64, y: 64, title: 'Death as an Advisor', description: 'Remembering death is connected with meaningful and honest living.' },
+      { id: 'yunus-b1-en-11-1', x: 38, y: 35, title: 'Heart and Mind', description: 'To reach salvation, the heart and the intellect must support one another.' },
+      { id: 'yunus-b1-en-11-2', x: 64, y: 64, title: 'Death as an Advisor', description: 'Remembering death helps a person live a meaningful and honest life.' },
     ],
   ),
   story(
@@ -316,8 +316,8 @@ Katı berktir duvarı yıkamam
       { word: 'greed', definition: 'A strong selfish desire for more wealth or possessions.' },
     ],
     [
-      { id: 'yunus-b1-en-12-1', x: 30, y: 67, title: 'Morality', description: 'The chapter describes morality as building virtues and giving up harmful habits.' },
-      { id: 'yunus-b1-en-12-2', x: 71, y: 31, title: 'Good Habits', description: 'Honesty, patience, humility, generosity, respect, trust, and modesty are named.' },
+      { id: 'yunus-b1-en-12-1', x: 30, y: 67, title: 'Morality', description: 'True morality means giving up bad habits that do not suit people.' },
+      { id: 'yunus-b1-en-12-2', x: 71, y: 31, title: 'Good Habits', description: 'Yunus praised honesty, patience, humility, generosity, respect, trust in Allah and modesty.' },
     ],
   ),
   story(
@@ -365,13 +365,13 @@ Risâletü’n-Nushiye (a book of moral advice)
 Divan (his collected poems)`,
     [
       { word: 'patience', definition: 'The ability to stay calm and continue through difficulty.' },
+      { word: 'warns', definition: 'Tells people about a danger so that they can avoid it.' },
       { word: 'rage', definition: 'Very strong anger.' },
       { word: 'arrogance', definition: 'The belief that you are better or more important than others.' },
-      { word: 'moral guide', definition: 'Something that teaches or supports good and ethical behavior.' },
     ],
     [
-      { id: 'yunus-b1-en-13-1', x: 25, y: 56, title: 'Moral Guide', description: 'The final chapter presents Yunus Emre’s poems as continuing moral guidance.' },
-      { id: 'yunus-b1-en-13-2', x: 74, y: 33, title: 'Patience', description: 'Patience is praised, while rage and arrogance are warned against.' },
+      { id: 'yunus-b1-en-13-1', x: 25, y: 56, title: 'Lasting Value', description: 'His poems are still valuable today as a moral guide for future generations.' },
+      { id: 'yunus-b1-en-13-2', x: 74, y: 33, title: 'Patience', description: 'His verses praise patience and warn against rage and arrogance.' },
     ],
   ),
   { id: 14, type: 'quiz', title: 'Knowledge Check', image: '', content: 'Check your understanding of the complete B1 story.' },
@@ -384,27 +384,8 @@ Divan (his collected poems)`,
     content: 'Review all key vocabulary from the story in one place.',
     vocabulary: [
       {
-            "word": "Sûfî",
-            "definition": "A Muslim who follows a spiritual path to become closer to Allah.",
-            "partOfSpeech": "noun",
-            "pronunciation": "/ˈsuːfi/",
-            "wordFamily": [
-                  "Sûfî",
-                  "Sûfîsm"
-            ],
-            "collocations": [
-                  "Sûfî path",
-                  "Sûfî literature"
-            ],
-            "category": "Spiritual Life",
-            "level": "B1",
-            "chapter": 1,
-            "chapterTitle": "Yunus Emre and Sûfîsm",
-            "storyExample": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia."
-      },
-      {
             "word": "outer",
-            "definition": "Related to what is visible or outward.",
+            "definition": "Belonging to the part that people can see.",
             "partOfSpeech": "adjective",
             "pronunciation": "/ˈaʊtər/",
             "wordFamily": [
@@ -448,8 +429,27 @@ Divan (his collected poems)`,
             "storyExample": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
       },
       {
+            "word": "worldly",
+            "definition": "Related to ordinary daily life and things like money, not to spiritual matters.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈwɜːrldli/",
+            "wordFamily": [
+                  "world",
+                  "worldly"
+            ],
+            "collocations": [
+                  "worldly matters",
+                  "worldly things"
+            ],
+            "category": "Values & Society",
+            "level": "B1",
+            "chapter": 1,
+            "chapterTitle": "Yunus Emre and Sûfîsm",
+            "storyExample": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
+      },
+      {
             "word": "literary",
-            "definition": "Related to literature and artistic writing.",
+            "definition": "Connected with the writing of poems, stories and other artistic works.",
             "partOfSpeech": "adjective",
             "pronunciation": "/ˈlɪtəreri/",
             "wordFamily": [
@@ -467,20 +467,17 @@ Divan (his collected poems)`,
             "storyExample": "The words and phrases which he used helped develop a better literary Turkish."
       },
       {
-            "word": "plain language",
-            "definition": "Language that is clear and easy to understand.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/pleɪn ˈlæŋɡwɪdʒ/",
+            "word": "plain",
+            "definition": "Simple, clear and easy to understand.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/pleɪn/",
             "wordFamily": [
                   "plain",
                   "plainly"
             ],
             "collocations": [
-                  "use plain language",
-                  "clear plain language"
-            ],
-            "synonyms": [
-                  "simple language"
+                  "plain language",
+                  "plain words"
             ],
             "category": "Language & Communication",
             "level": "B1",
@@ -508,43 +505,39 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 2,
             "chapterTitle": "His Language and Education",
-            "storyExample": "His works are very popular because they combine great literary quality with simple language."
+            "storyExample": "According to historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi."
       },
       {
-            "word": "madrasa",
-            "definition": "A traditional Islamic school or place of learning.",
+            "word": "sources",
+            "definition": "Books, documents or people that give information, especially about the past.",
             "partOfSpeech": "noun",
-            "pronunciation": "/məˈdrɑːsə/",
+            "pronunciation": "/ˈsɔːrsɪz/",
             "wordFamily": [
-                  "madrasa",
-                  "madrasas"
+                  "source",
+                  "sources"
             ],
             "collocations": [
-                  "madrasa education",
-                  "study at a madrasa"
+                  "historical sources",
+                  "some sources say"
             ],
-            "category": "Education & History",
+            "category": "History & Time",
             "level": "B1",
             "chapter": 2,
             "chapterTitle": "His Language and Education",
-            "storyExample": "Some sources say that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time."
+            "storyExample": "According to historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi."
       },
       {
-            "word": "spiritual tutor",
-            "definition": "A teacher who guides someone in spiritual learning.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/ˈspɪrɪtʃuəl ˈtuːtər/",
+            "word": "tutor",
+            "definition": "A teacher who guides and teaches one person or a small group.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈtuːtər/",
             "wordFamily": [
-                  "spirit",
-                  "spiritual",
-                  "tutor"
+                  "tutor",
+                  "tutoring"
             ],
             "collocations": [
                   "spiritual tutor",
-                  "under a tutor’s guidance"
-            ],
-            "synonyms": [
-                  "spiritual teacher"
+                  "train under a tutor"
             ],
             "category": "Education & Spiritual Life",
             "level": "B1",
@@ -553,43 +546,8 @@ Divan (his collected poems)`,
             "storyExample": "But he also studied Allah’s love and morals at the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor)."
       },
       {
-            "word": "community organizations",
-            "definition": "Groups that organize help and activities for a community.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/kəˈmjuːnəti ˌɔːrɡənəˈzeɪʃənz/",
-            "wordFamily": [
-                  "community",
-                  "organize",
-                  "organization"
-            ],
-            "collocations": [
-                  "community organizations",
-                  "support organizations"
-            ],
-            "category": "Society & Institutions",
-            "level": "B1",
-            "chapter": 3,
-            "chapterTitle": "Tekkés and Anatolia",
-            "storyExample": "They were also important community organizations that helped people and brought them together."
-      },
-      {
-            "word": "fine arts",
-            "definition": "Creative arts such as poetry, music, and painting.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/faɪn ɑːrts/",
-            "collocations": [
-                  "fine arts",
-                  "study fine arts"
-            ],
-            "category": "Arts & Culture",
-            "level": "B1",
-            "chapter": 3,
-            "chapterTitle": "Tekkés and Anatolia",
-            "storyExample": "These places were very important for fine arts too, especially poetry."
-      },
-      {
             "word": "revolts",
-            "definition": "Organized rebellions against authority.",
+            "definition": "Organized actions in which people fight against their rulers.",
             "partOfSpeech": "noun",
             "pronunciation": "/rɪˈvoʊlts/",
             "wordFamily": [
@@ -611,7 +569,7 @@ Divan (his collected poems)`,
       },
       {
             "word": "invasion",
-            "definition": "The act of entering a land by force.",
+            "definition": "The act of entering another country by force to take control of it.",
             "partOfSpeech": "noun",
             "pronunciation": "/ɪnˈveɪʒən/",
             "wordFamily": [
@@ -628,6 +586,44 @@ Divan (his collected poems)`,
             "chapter": 3,
             "chapterTitle": "Tekkés and Anatolia",
             "storyExample": "The defeat caused the Mongols' invasion of Anatolia."
+      },
+      {
+            "word": "circumstances",
+            "definition": "The conditions that affect a situation or a person’s life.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈsɜːrkəmstænsɪz/",
+            "wordFamily": [
+                  "circumstance",
+                  "circumstances"
+            ],
+            "collocations": [
+                  "hard circumstances",
+                  "in these circumstances"
+            ],
+            "category": "Society & Conditions",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "Tekkés and Anatolia",
+            "storyExample": "Because of these hard circumstances, Anatolia faced serious political, economic, and social problems."
+      },
+      {
+            "word": "struggling",
+            "definition": "Trying very hard to deal with something difficult.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/ˈstrʌɡlɪŋ/",
+            "wordFamily": [
+                  "struggle",
+                  "struggling"
+            ],
+            "collocations": [
+                  "struggle to cope",
+                  "struggle with problems"
+            ],
+            "category": "Society & Conditions",
+            "level": "B1",
+            "chapter": 3,
+            "chapterTitle": "Tekkés and Anatolia",
+            "storyExample": "People were struggling to cope with these tough situations."
       },
       {
             "word": "navy",
@@ -670,16 +666,16 @@ Divan (his collected poems)`,
       },
       {
             "word": "decline",
-            "definition": "A process of becoming weaker or less successful.",
-            "partOfSpeech": "noun",
+            "definition": "To become weaker or less successful.",
+            "partOfSpeech": "verb",
             "pronunciation": "/dɪˈklaɪn/",
             "wordFamily": [
                   "decline",
                   "declining"
             ],
             "collocations": [
-                  "economic decline",
-                  "begin to decline"
+                  "begin to decline",
+                  "decline slowly"
             ],
             "synonyms": [
                   "weakening"
@@ -719,26 +715,24 @@ Divan (his collected poems)`,
             "storyExample": "However, Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos."
       },
       {
-            "word": "revolt",
-            "definition": "An organized action against a government or authority.",
+            "word": "rebellion",
+            "definition": "Organized, often violent action against a government or ruler.",
             "partOfSpeech": "noun",
-            "pronunciation": "/rɪˈvoʊlt/",
+            "pronunciation": "/rɪˈbeljən/",
             "wordFamily": [
-                  "revolt",
-                  "revolted"
+                  "rebel",
+                  "rebellion",
+                  "rebellious"
             ],
             "collocations": [
-                  "start a revolt",
-                  "revolt against the state"
-            ],
-            "synonyms": [
-                  "rebellion"
+                  "end a rebellion",
+                  "the rebellion spread"
             ],
             "category": "History & Conflict",
             "level": "B1",
             "chapter": 5,
             "chapterTitle": "Kösedağ and Destruction",
-            "storyExample": "Because of many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state."
+            "storyExample": "The rebellion spread rapidly; the Turkmen achieved significant success."
       },
       {
             "word": "captured",
@@ -763,6 +757,25 @@ Divan (his collected poems)`,
             "storyExample": "In 1242, the Mongols captured Erzurum and killed its people."
       },
       {
+            "word": "sorrow",
+            "definition": "A feeling of deep sadness.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈsɑːroʊ/",
+            "wordFamily": [
+                  "sorrow",
+                  "sorrowful"
+            ],
+            "collocations": [
+                  "deep sorrow",
+                  "sorrow and fear"
+            ],
+            "category": "Feelings",
+            "level": "B1",
+            "chapter": 5,
+            "chapterTitle": "Kösedağ and Destruction",
+            "storyExample": "This disaster caused deep sorrow and fear among the Seljuk people."
+      },
+      {
             "word": "clashed",
             "definition": "Fought or came into violent conflict.",
             "partOfSpeech": "verb",
@@ -785,41 +798,24 @@ Divan (his collected poems)`,
             "storyExample": "Finally, in 1243, the Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas."
       },
       {
-            "word": "false retreat",
-            "definition": "A tactic in which an army pretends to withdraw to mislead the enemy.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/fɔːls rɪˈtriːt/",
-            "collocations": [
-                  "false retreat tactic",
-                  "use a false retreat"
-            ],
-            "category": "Military & Strategy",
-            "level": "B1",
-            "chapter": 5,
-            "chapterTitle": "Kösedağ and Destruction",
-            "storyExample": "The Mongols used the classic false retreat and circling tactic."
-      },
-      {
-            "word": "captive",
-            "definition": "A person kept as a prisoner.",
-            "partOfSpeech": "noun",
-            "pronunciation": "/ˈkæptɪv/",
+            "word": "cruel",
+            "definition": "Causing pain or suffering to others without pity.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˈkruːəl/",
             "wordFamily": [
-                  "captive",
-                  "captivity"
+                  "cruel",
+                  "cruelty",
+                  "cruelly"
             ],
             "collocations": [
-                  "taken captive",
-                  "hold captive"
+                  "cruel raids",
+                  "cruel treatment"
             ],
-            "synonyms": [
-                  "prisoner"
-            ],
-            "category": "People & Conflict",
+            "category": "Conflict & Actions",
             "level": "B1",
             "chapter": 6,
             "chapterTitle": "Chaos in Anatolia",
-            "storyExample": "The women and children were taken captive and forced to go with the Mongols."
+            "storyExample": "After these cruel raids, cities were deserted."
       },
       {
             "word": "deserted",
@@ -867,17 +863,17 @@ Divan (his collected poems)`,
             "storyExample": "Finally, an agreement was made with the Mongols, but in time the Seljuks became dependent on them."
       },
       {
-            "word": "state income",
-            "definition": "Money received by a government or state.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/steɪt ˈɪnkʌm/",
+            "word": "income",
+            "definition": "Money that a person or a state receives regularly.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/ˈɪnkʌm/",
             "wordFamily": [
-                  "state",
-                  "income"
+                  "income",
+                  "incomes"
             ],
             "collocations": [
                   "state income",
-                  "government income"
+                  "a regular income"
             ],
             "category": "Economy & Government",
             "level": "B1",
@@ -886,19 +882,19 @@ Divan (his collected poems)`,
             "storyExample": "A significant part of state income began to be sent to the Mongols every year."
       },
       {
-            "word": "shaykhs",
-            "definition": "Religious or spiritual teachers.",
+            "word": "pressure",
+            "definition": "A strong force that pushes people to do something.",
             "partOfSpeech": "noun",
-            "pronunciation": "/ʃeɪks/",
+            "pronunciation": "/ˈpreʃər/",
             "wordFamily": [
-                  "shaykh",
-                  "shaykhs"
+                  "press",
+                  "pressure"
             ],
             "collocations": [
-                  "Sûfî shaykhs",
-                  "religious shaykhs"
+                  "under pressure",
+                  "political pressure"
             ],
-            "category": "People & Spiritual Life",
+            "category": "Politics & Power",
             "level": "B1",
             "chapter": 7,
             "chapterTitle": "Yunus as a Wise Dervish",
@@ -906,7 +902,7 @@ Divan (his collected poems)`,
       },
       {
             "word": "dervishes",
-            "definition": "People following a Sûfî spiritual path.",
+            "definition": "Members of a Sûfî group who follow a spiritual path.",
             "partOfSpeech": "noun",
             "pronunciation": "/ˈdɜːrvɪʃɪz/",
             "wordFamily": [
@@ -922,6 +918,25 @@ Divan (his collected poems)`,
             "chapter": 7,
             "chapterTitle": "Yunus as a Wise Dervish",
             "storyExample": "These shaykhs trained dervishes in their teachings."
+      },
+      {
+            "word": "influential",
+            "definition": "Having a strong effect on what people think or do.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/ˌɪnfluˈenʃəl/",
+            "wordFamily": [
+                  "influence",
+                  "influential"
+            ],
+            "collocations": [
+                  "influential among",
+                  "most influential tool"
+            ],
+            "category": "People & Society",
+            "level": "B1",
+            "chapter": 7,
+            "chapterTitle": "Yunus as a Wise Dervish",
+            "storyExample": "These dervishes were influential among nomads."
       },
       {
             "word": "nomads",
@@ -941,29 +956,6 @@ Divan (his collected poems)`,
             "chapter": 7,
             "chapterTitle": "Yunus as a Wise Dervish",
             "storyExample": "These dervishes were influential among nomads."
-      },
-      {
-            "word": "respond",
-            "definition": "To answer or react to a situation.",
-            "partOfSpeech": "verb",
-            "pronunciation": "/rɪˈspɑːnd/",
-            "wordFamily": [
-                  "respond",
-                  "response",
-                  "responsive"
-            ],
-            "collocations": [
-                  "respond to a need",
-                  "respond to a situation"
-            ],
-            "synonyms": [
-                  "react"
-            ],
-            "category": "Communication & Actions",
-            "level": "B1",
-            "chapter": 7,
-            "chapterTitle": "Yunus as a Wise Dervish",
-            "storyExample": "As a Sûfî, he helped people make sense of life during those hard days."
       },
       {
             "word": "loyalty",
@@ -988,31 +980,16 @@ Divan (his collected poems)`,
             "storyExample": "In his poems, he expresses a vivid love for Allah as a way of life, along with fear of Allah and loyalty to the Prophet Muhammad (pbuh)."
       },
       {
-            "word": "Tawhid",
-            "definition": "The belief that Allah is One.",
-            "partOfSpeech": "noun",
-            "pronunciation": "/taʊˈhiːd/",
-            "collocations": [
-                  "idea of Tawhid",
-                  "Tawhid and unity"
-            ],
-            "category": "Belief & Faith",
-            "level": "B1",
-            "chapter": 8,
-            "chapterTitle": "Tawhid and Unity",
-            "storyExample": "One of the most important basic spiritual principles in his works is the idea of Tawhid, which means the Oneness of Allah."
-      },
-      {
-            "word": "Oneness",
-            "definition": "The state of being one and undivided.",
+            "word": "oneness",
+            "definition": "The quality of being single, without any partner or equal.",
             "partOfSpeech": "noun",
             "pronunciation": "/ˈwʌnnəs/",
             "wordFamily": [
                   "one",
-                  "Oneness"
+                  "oneness"
             ],
             "collocations": [
-                  "Oneness of Allah",
+                  "the Oneness of Allah",
                   "divine Oneness"
             ],
             "category": "Belief & Faith",
@@ -1022,54 +999,43 @@ Divan (his collected poems)`,
             "storyExample": "One of the most important basic spiritual principles in his works is the idea of Tawhid, which means the Oneness of Allah."
       },
       {
-            "word": "unity of existence",
-            "definition": "The idea of one true existence described in the chapter.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/ˈjuːnəti əv ɪɡˈzɪstəns/",
+            "word": "connected",
+            "definition": "Joined or linked to something else.",
+            "partOfSpeech": "adjective",
+            "pronunciation": "/kəˈnektɪd/",
+            "wordFamily": [
+                  "connect",
+                  "connected",
+                  "connection"
+            ],
             "collocations": [
-                  "theory of unity of existence",
-                  "idea of unity"
+                  "connected to",
+                  "closely connected"
             ],
             "category": "Ideas & Spiritual Thought",
             "level": "B1",
             "chapter": 8,
             "chapterTitle": "Tawhid and Unity",
-            "storyExample": "According to the theory of the unity of existence, which was a key idea for Yunus Emre, there is only one true existence in the universe, and that is Allah."
+            "storyExample": "So everything is connected to Him."
       },
       {
-            "word": "creation",
-            "definition": "The act or result of bringing things into existence.",
+            "word": "universe",
+            "definition": "Everything that Allah created, including the earth, the sky and all the stars.",
             "partOfSpeech": "noun",
-            "pronunciation": "/kriˈeɪʃən/",
+            "pronunciation": "/ˈjuːnɪvɜːrs/",
             "wordFamily": [
-                  "create",
-                  "creation",
-                  "Creator"
+                  "universe",
+                  "universal"
             ],
             "collocations": [
-                  "act of creation",
-                  "creation of the world"
+                  "the entire universe",
+                  "in the universe"
             ],
             "category": "Belief & Ideas",
             "level": "B1",
-            "chapter": 9,
-            "chapterTitle": "Allah’s Commands",
-            "storyExample": "As a result of creation, the original unity lost its unity and multiple existence appeared."
-      },
-      {
-            "word": "multiple existence",
-            "definition": "The many created forms described in the chapter.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/ˈmʌltəpəl ɪɡˈzɪstəns/",
-            "collocations": [
-                  "multiple existence",
-                  "created existence"
-            ],
-            "category": "Ideas & Spiritual Thought",
-            "level": "B1",
-            "chapter": 9,
-            "chapterTitle": "Allah’s Commands",
-            "storyExample": "As a result of creation, the original unity lost its unity and multiple existence appeared."
+            "chapter": 8,
+            "chapterTitle": "Tawhid and Unity",
+            "storyExample": "According to the theory of the unity of existence, which was a key idea for Yunus Emre, there is only one true existence in the universe, and that is Allah."
       },
       {
             "word": "reflections",
@@ -1094,8 +1060,46 @@ Divan (his collected poems)`,
             "storyExample": "All creations in the world are just reflections of Allah’s names."
       },
       {
+            "word": "claims",
+            "definition": "Says that something is true, often without proof.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/kleɪmz/",
+            "wordFamily": [
+                  "claim",
+                  "claims"
+            ],
+            "collocations": [
+                  "claim to be",
+                  "claim that"
+            ],
+            "category": "Communication & Actions",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Allah’s Commands",
+            "storyExample": "“Anyone who claims to be a Muslim should know the requirements of Islam,"
+      },
+      {
+            "word": "requirements",
+            "definition": "Things that are necessary or must be done.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/rɪˈkwaɪərmənts/",
+            "wordFamily": [
+                  "require",
+                  "requirement"
+            ],
+            "collocations": [
+                  "the requirements of Islam",
+                  "meet the requirements"
+            ],
+            "category": "Spiritual Life",
+            "level": "B1",
+            "chapter": 9,
+            "chapterTitle": "Allah’s Commands",
+            "storyExample": "“Anyone who claims to be a Muslim should know the requirements of Islam,"
+      },
+      {
             "word": "five daily prayers",
-            "definition": "The five acts of worship a Muslim performs at set times every day: Fajr, Dhuhr, Asr, Maghrib and Isha.",
+            "definition": "The acts of worship that Muslims must perform at set times from dawn to night: Fajr, Dhuhr, Asr, Maghrib and Isha.",
             "partOfSpeech": "noun phrase",
             "pronunciation": "/faɪv ˈdeɪli prerz/",
             "collocations": [
@@ -1153,19 +1157,23 @@ Divan (his collected poems)`,
             "storyExample": "According to him, where love is absent, negative emotions such as anger, heartbreak and separation arise."
       },
       {
-            "word": "throne of the Lord",
-            "definition": "The expression used in the chapter for the spiritual importance of the heart.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/θroʊn əv ðə lɔːrd/",
+            "word": "throne",
+            "definition": "The special seat of a king or queen, a sign of power.",
+            "partOfSpeech": "noun",
+            "pronunciation": "/θroʊn/",
+            "wordFamily": [
+                  "throne",
+                  "thrones"
+            ],
             "collocations": [
                   "the throne of the Lord",
-                  "heart as a throne"
+                  "sit on the throne"
             ],
             "category": "Spiritual Ideas",
             "level": "B1",
             "chapter": 10,
             "chapterTitle": "The Heart and Love",
-            "storyExample": "It is “the throne of the Lord,” that is, the place where Allah reveals Himself."
+            "storyExample": "It is “the throne of the Lord,”"
       },
       {
             "word": "intellect",
@@ -1187,11 +1195,11 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 10,
             "chapterTitle": "The Heart and Love",
-            "storyExample": "Yunus Emre emphasizes not only heart but also intellect as a value; he described it as “a light from Allah that has existed since eternity.”"
+            "storyExample": "Yunus Emre emphasizes not only the heart but also the intellect as a value; he described it as “a light from Allah that has existed since eternity.”"
       },
       {
             "word": "salvation",
-            "definition": "Being saved spiritually or reaching spiritual safety.",
+            "definition": "Being rescued from sin and its punishment; reaching spiritual safety.",
             "partOfSpeech": "noun",
             "pronunciation": "/sælˈveɪʃən/",
             "wordFamily": [
@@ -1248,11 +1256,11 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 11,
             "chapterTitle": "Intellect and Death",
-            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest."
+            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.”"
       },
       {
             "word": "homeland",
-            "definition": "The place a person considers their home country or native land.",
+            "definition": "The country or place where a person was born or truly belongs.",
             "partOfSpeech": "noun",
             "pronunciation": "/ˈhoʊmlænd/",
             "wordFamily": [
@@ -1384,7 +1392,26 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 13,
             "chapterTitle": "A Moral Guide",
-            "storyExample": "In another verse, he talks about “patience” and says:"
+            "storyExample": "In another verse, he talks about “patience”"
+      },
+      {
+            "word": "warns",
+            "definition": "Tells people about a danger so that they can avoid it.",
+            "partOfSpeech": "verb",
+            "pronunciation": "/wɔːrnz/",
+            "wordFamily": [
+                  "warn",
+                  "warning"
+            ],
+            "collocations": [
+                  "warn against",
+                  "warn someone about"
+            ],
+            "category": "Communication & Actions",
+            "level": "B1",
+            "chapter": 13,
+            "chapterTitle": "A Moral Guide",
+            "storyExample": "In the following verse, he warns against “rage and arrogance”:"
       },
       {
             "word": "rage",
@@ -1433,26 +1460,6 @@ Divan (his collected poems)`,
             "chapter": 13,
             "chapterTitle": "A Moral Guide",
             "storyExample": "In the following verse, he warns against “rage and arrogance”:"
-      },
-      {
-            "word": "moral guide",
-            "definition": "Something that teaches or supports good and ethical behavior.",
-            "partOfSpeech": "noun phrase",
-            "pronunciation": "/ˈmɔːrəl ɡaɪd/",
-            "wordFamily": [
-                  "moral",
-                  "guide",
-                  "guidance"
-            ],
-            "collocations": [
-                  "serve as a moral guide",
-                  "moral guide for generations"
-            ],
-            "category": "Values & Guidance",
-            "level": "B1",
-            "chapter": 13,
-            "chapterTitle": "A Moral Guide",
-            "storyExample": "It is clear that Yunus Emre was an important person of his era, and his poems are still valuable today as a moral guide for future generations."
       }
 ]
   },
