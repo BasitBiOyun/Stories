@@ -34,7 +34,7 @@ Without Islam, he would always be a slave. People in Mecca thought Bilal was jus
 
 There was a big gap between rich and poor people. Rich people had a lot of money and lived in luxury. They used gold plates and silver cups. But many poor people lived in need. Life was very hard for them.
 
-Mecca was a business city. People bought and sold things there. Some rich people lent money to the poor and wanted more money back. This unfair extra money was called faiz. Because of this, the rich became richer and the poor became poorer.`,
+Mecca was a business city. People bought and sold things there. Some rich people lent money to the poor and wanted more money back. This unfair extra money was called riba. Because of this, the rich became richer and the poor became poorer.`,
     vocabulary: [
       { word: 'ignorance', definition: 'Not knowing or not following the truth.' },
       { word: 'idols', definition: 'Objects that people wrongly worship.' },
