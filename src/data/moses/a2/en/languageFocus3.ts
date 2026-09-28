@@ -216,7 +216,7 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
           items: [
             'The magicians came with sticks in their hands.',
             'They put down the sticks and ropes on the ground.',
-            'The magicians bowed down in front of Moses (pbuh).',
+            'The magicians bowed down to Allah.',
           ],
         },
         {
@@ -228,7 +228,7 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
         'A finished action': [
           'The magicians came with sticks in their hands.',
           'They put down the sticks and ropes on the ground.',
-          'The magicians bowed down in front of Moses (pbuh).',
+          'The magicians bowed down to Allah.',
         ],
         'An action in progress': ['Some were holding ropes.', 'They were moving like snakes!'],
       },

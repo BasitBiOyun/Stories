@@ -93,7 +93,7 @@ const approvedEnglishHotspots: HotspotOverrides = {
     'h11-2': { title: 'Harun', description: 'Moses (pbuh) took his brother Harun with him and went to the palace to give the message of Allah.' },
     'h12-1': { title: 'Big Snake', description: 'The stick turned into a big snake!' },
     'h12-2': { title: 'Only Magic', description: 'The king said to Moses (pbuh): “This is only magic.”' },
-    'h13-1': { title: 'The Magicians', description: 'The magicians bowed down in front of Moses (pbuh).' },
+    'h13-1': { title: 'The Magicians', description: 'The magicians bowed down to Allah.' },
     'h13-2': { title: 'The Snakes', description: 'His stick quickly ate all the snakes of the magicians.' },
     'h14-1': { title: 'At Night', description: 'They left Egypt at night.' },
     'h14-2': { title: 'Their Caravan', description: 'Their caravan moved slowly.' },
