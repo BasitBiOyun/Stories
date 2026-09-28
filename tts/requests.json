@@ -2,12 +2,28 @@
   "version": 1,
   "requests": [
     {
-      "id": "moses-a2-ch13-rowan-20260928-bowed-to-allah",
+      "id": "yunus-b1-ch11-rowan-20260928-hadith-love-fix",
       "enabled": true,
       "allowOverwrite": true,
-      "chapterNumber": 13,
-      "storagePath": "Moses/a2/audio/12_Chapter_13_The_Magicians_Believe.mp3",
-      "narrationText": "The Magicians Believe\n\nHe invited his magicians to the palace. The magicians came with sticks in their hands. Some were holding ropes. They put down the sticks and ropes on the ground. They were moving like snakes! Then, Allah spoke to Moses (pbuh), “Throw your stick!” Moses (pbuh) threw down his stick and it turned into a huge snake. His stick quickly ate all the snakes of the magicians. The magicians bowed down to Allah. They shouted, “We believe in the Lord of Moses and Harun!” The king still did not believe in Allah, because he was arrogant. The king did not like those people because they believed in Allah. He continued to harm Moses (pbuh) and his people day and night."
+      "chapterNumber": 11,
+      "storagePath": "yunus/b1/audio/10_Chapter_11_Intellect_and_Death.mp3",
+      "narrationText": "Intellect and Death\n\nHe highlights that for a person to reach salvation, heart and intellect must support one another.\n\nHe says:\n\n“May your intelligence / wisdom save you from all troubles\nMay happiness be yours for all the months and years to come”\n\nDeath is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.” A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.\n\nAbout death he says:\n\n“Whoever comes into this world must later leave it,\nA guest in this world, one day they must set out for their homeland”"
+    },
+    {
+      "id": "yunus-b2-ch9-rowan-20260928-hadith-love-fix",
+      "enabled": true,
+      "allowOverwrite": true,
+      "chapterNumber": 9,
+      "storagePath": "yunus/b2/audio/08_Chapter_9_Unity_and_Love.mp3",
+      "narrationText": "Unity and Love\n\nIn this sense, everything which is created is a reflection; the only thing that truly exists is Allah. The ultimate purpose of humanity is to reach unity with Allah.\n\nHis words remind us of Allah’s commands for achieving this unity.\n\nYunus says:\n\n“Anyone who claims to be a Muslim should know the requirements of Islam,\nHe should follow Allah’s command and pray the five daily prayers”\n\nLove, another important value that stands out in Yunus Emre’s works, lies at the core of his philosophy. He places love at the foundation of the human relationship with the Creator and with His creation. Love for the created is an extension of the love of Allah. Therefore, those who love the Creator love the created, and those who love the created also love the Creator. Love brings unity and harmony.\n\nThe purpose of love is to reach Allah and achieve unity in His presence. From this perspective, love and unity, which lie at the essence of his thought, are interrelated. For, according to him, where love is absent, negative emotions such as anger, heartbreak and separation arise."
+    },
+    {
+      "id": "yunus-b2-ch11-rowan-20260928-hadith-love-fix",
+      "enabled": true,
+      "allowOverwrite": true,
+      "chapterNumber": 11,
+      "storagePath": "yunus/b2/audio/10_Chapter_11_Salvation_and_Death.mp3",
+      "narrationText": "Salvation and Death\n\nHis understanding of unity is also evident in the relationship between the heart and reason; he emphasizes that for a person to reach salvation, heart and reason must support one another.\n\nYunus says:\n\n“May your intelligence / wisdom save you from all troubles\nMay happiness be yours for all the months and years to come”\n\nDeath is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.” A person who lives with an understanding of death’s advisory role lives a meaningful and righteous life.\n\nAbout death Yunus says:\n\n“Whoever comes into this world must eventually leave it,\nA guest in this world, one day they must set out for their homeland”"
     }
   ]
 }

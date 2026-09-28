@@ -265,7 +265,7 @@ Seni türlü beladan kurtara akıl,
 Saadet ola sana cümle ay, yıl
 [/POEM]
 
-Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.
+Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and honest life.
 
 About death he says:
 
@@ -1248,7 +1248,7 @@ Divan (his collected poems)`,
             "level": "B1",
             "chapter": 11,
             "chapterTitle": "Intellect and Death",
-            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest."
+            "storyExample": "According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest."
       },
       {
             "word": "homeland",

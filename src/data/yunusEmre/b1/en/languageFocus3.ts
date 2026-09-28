@@ -194,7 +194,7 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
       {
         group: 'The Prophet’s words',
         items: [
-          '“Those who remember death the most and prepare for it the best are the wisest.”',
+          '“Those who remember death the most and prepare best for what comes after it are the wisest.”',
         ],
       },
     ],
@@ -208,7 +208,7 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
         '“Whoever comes into this world must later leave it”',
       ],
       'The Prophet’s words': [
-        '“Those who remember death the most and prepare for it the best are the wisest.”',
+        '“Those who remember death the most and prepare best for what comes after it are the wisest.”',
       ],
     },
     explanation: 'Reporting verbs and phrases such as “He highlights that …” and “According to him, …” show that the writer is telling us Yunus’s view in the writer’s own words. Quotation marks show exact words. The chapter introduces the poems with “He says:” and the saying of the Prophet with “as the Prophet Muhammad (pbuh) said:”.',

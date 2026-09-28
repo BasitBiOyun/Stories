@@ -224,7 +224,7 @@ Müslümanım diyen kişi şartı nedir bilse gerek
 Tanrı'nın buyruğun tutup beş vakt namaz kılsa gerek
 [/POEM]
 
-Love, another important value that stands out in Yunus Emre’s works, lies at the core of his philosophy. He places love at the foundation of the human relationship with the Creator. The love extends to the love of Allah. Therefore, those who love the Creator love the created, and those who love the created also love the Creator. Love brings unity and harmony.
+Love, another important value that stands out in Yunus Emre’s works, lies at the core of his philosophy. He places love at the foundation of the human relationship with the Creator and with His creation. Love for the created is an extension of the love of Allah. Therefore, those who love the Creator love the created, and those who love the created also love the Creator. Love brings unity and harmony.
 
 The purpose of love is to reach Allah and achieve unity in His presence. From this perspective, love and unity, which lie at the essence of his thought, are interrelated. For, according to him, where love is absent, negative emotions such as anger, heartbreak and separation arise.`,
     vocabulary: [
@@ -292,7 +292,7 @@ Seni dürlü beladan kurtara akl,
 Saadet ola sana cümle ay, yıl
 [/POEM]
 
-Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare for it the best are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and righteous life.
+Death is another significant theme in Yunus’s poems. According to him, death is the best advisor for humanity, as the Prophet Muhammad (pbuh) said: “Those who remember death the most and prepare best for what comes after it are the wisest.” (İM4259 İbn Mâce, Zühd, 31) A person who lives with an understanding of death’s advisory role lives a meaningful and righteous life.
 
 About death Yunus says:
 
