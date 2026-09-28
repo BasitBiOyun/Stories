@@ -162,6 +162,7 @@ def multipart_upload(
     audio: bytes,
     existing_metadata: dict[str, Any] | None,
     request_id: str,
+    voice_id: str = VOICE_ID,
 ) -> tuple[dict[str, Any], str]:
     custom_metadata = dict((existing_metadata or {}).get("metadata") or {})
     download_token = custom_metadata.get("firebaseStorageDownloadTokens") or str(uuid.uuid4())
@@ -170,7 +171,7 @@ def multipart_upload(
     # keep its current audioUrl. The TTS metadata also makes requests idempotent.
     custom_metadata["firebaseStorageDownloadTokens"] = download_token
     custom_metadata["storiesTtsRequestId"] = request_id
-    custom_metadata["storiesTtsVoiceId"] = VOICE_ID
+    custom_metadata["storiesTtsVoiceId"] = voice_id
     custom_metadata["storiesTtsGeneratedAt"] = (
         dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
     )

@@ -39,6 +39,27 @@ steps:
         python3 scripts/tts/process_requests.py
         python3 scripts/tts/cleanup_duplicates.py
 
+  # Arabic narration queue (Eleven v4, slightly slowed). Uses its own key from the
+  # ELEVENLABS_ARABIC_API_KEY secret and only overwrites existing arabic_audio objects.
+  # If that secret is not set up yet, the step logs it and the deploy continues.
+  - id: tts-arabic-requests
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ ! -f tts/arabic_requests.json ]; then
+          echo "[Stories TTS Arabic] No tts/arabic_requests.json; skipping."
+          exit 0
+        fi
+        if ! ELEVENLABS_ARABIC_API_KEY="$(gcloud secrets versions access latest --secret=ELEVENLABS_ARABIC_API_KEY --project=$PROJECT_ID 2>/dev/null)"; then
+          echo "[Stories TTS Arabic] Secret ELEVENLABS_ARABIC_API_KEY is not readable; skipping Arabic narration."
+          exit 0
+        fi
+        export ELEVENLABS_ARABIC_API_KEY
+        python3 scripts/tts/process_arabic_requests.py
+
   - id: build
     name: gcr.io/cloud-builders/docker
     env:
