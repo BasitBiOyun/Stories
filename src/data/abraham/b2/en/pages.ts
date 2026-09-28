@@ -235,7 +235,7 @@ There was no fear or worry. The air became more pleasant as the fire was turned 
     title: 'Stepping Out Unharmed',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F21_Chapter_22_Stepping_Out_Unharmed.mp3?alt=media&token=6bbfc84a-e819-49ad-b929-fcad95254024',
-    content: `His trust in the true Allah was tested here. His last words before entering the flames were, “Allah is sufficient for me.” The large crowd, the leaders, and the priests were watching the fire from a distance. It was burning their faces and nearly made them breathless. The fire kept burning for such a long time that the disbelievers thought it would never be extinguished. Once the fire burnt out, they were shocked to see that Abraham (pbuh) stepped out of the pit completely unharmed. The smoke blackened their faces, yet his face was bright. The burning fire had become cool for Abraham (pbuh) and had only blackened the ropes which held him. He walked out of the fire as if he were walking out of a garden. Cries of astonishment were heard from the unbelievers. “They wanted to harm him, but We made them the worst losers” (Surah Enbiyâ: 70). This miracle shamed the despotic rulers, but the fire of their rage remained uncooled. Consequently, many people started following Abraham (pbuh), but some kept their faith secret out of fear of rulers.`,
+    content: `His trust in the true Allah was tested here. His last words before entering the flames were, “Allah is sufficient for me.” The large crowd, the leaders, and the priests were watching the fire from a distance. It was burning their faces and nearly made them breathless. The fire kept burning for such a long time that the disbelievers thought it would never be extinguished. Once the fire burnt out, they were shocked to see that Abraham (pbuh) stepped out of the pit completely unharmed. The smoke blackened their faces, yet his face was bright. The burning fire had become cool for Abraham (pbuh) and had only blackened the ropes which held him. He walked out of the fire as if he were walking out of a garden. Cries of astonishment were heard from the unbelievers. “They wanted to harm him, but We made them the worst losers” (Surah Enbiyâ: 70). This miracle shamed the despotic rulers, but the fire of their rage remained uncooled. Consequently, people did not dare to follow Abraham (pbuh) out of fear of rulers.`,
   },
   {
     id: 23,
@@ -748,16 +748,16 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b2-language-review-6-certainty-and-scope', type: 'multiple-choice', title: 'Build: Keep the Writer’s Certainty',
-    instructions: 'Read the sentences from Chapters 4 and 22. Choose the summary that keeps how sure the writer is and how many people are meant.',
-    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 20th century BC.” Chapter 22: “… many people started following Abraham (pbuh), but some kept their faith secret out of fear of rulers.” Which summary keeps the writer’s certainty and scope?',
+    instructions: 'Read the sentences from Chapters 4 and 24. Choose the summary that keeps how sure the writer is and how many people are meant.',
+    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 20th century BC.” Chapter 24: “Only one woman and one man of his people shared his belief in Allah.” Which summary keeps the writer’s certainty and scope?',
     options: [
-      'It has been proven that Abraham lived in the 20th century BC; after the fire, many people followed him, but some hid their faith because they feared the rulers.',
-      'Abraham is believed to have lived in the 20th century BC; after the fire, everyone followed him openly, and nobody feared the rulers.',
-      'Abraham is believed to have lived in the 20th century BC; after the fire, many people followed him, but some hid their faith because they feared the rulers.',
-      'Abraham is believed to have lived in the 20th century BC; after the fire, most people hid their faith, and only a few followed him.',
+      'It has been proven that Abraham lived in the 20th century BC; only two of his people, a woman and a man, shared his belief.',
+      'Abraham is believed to have lived in the 20th century BC; after the fire, many of his people shared his belief.',
+      'Abraham is believed to have lived in the 20th century BC; only two of his people, a woman and a man, shared his belief.',
+      'Abraham is believed to have lived in the 20th century BC; in the end, not a single person shared his belief.',
     ],
     correctAnswer: 2,
-    explanation: '“is believed to have lived” keeps a distance: it reports a belief about a date, so ‘It has been proven’ overstates it. Many … but some … divides the people into two groups: ‘everyone’ and ‘nobody’ erase the second group, and ‘most … only a few’ reverses their sizes. A good B2 summary changes the words but keeps the strength of the claim and its scope.',
+    explanation: '“is believed to have lived” keeps a distance: it reports a belief about a date, so ‘It has been proven’ overstates it. “Only one woman and one man” gives an exact scope: ‘many’ inflates it, and ‘not a single person’ erases the two believers. A good B2 summary changes the words but keeps the strength of the claim and its scope.',
     feedback: { correct: 'Correct. The summary keeps both the certainty and the size of each group.', incorrect: 'Check two things: does the summary make the date more certain than the book does, and does it keep many … but some …?' },
   },
   {
