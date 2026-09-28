@@ -124,7 +124,7 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
         answer: 2,
       },
       {
-        sentence: 'Yunus Emre emphasizes [choice] heart but also intellect as a value …',
+        sentence: 'Yunus Emre emphasizes [choice] the heart but also the intellect as a value …',
         options: ['not only', 'either', 'both'],
         answer: 0,
       },
@@ -143,7 +143,7 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
     instructions: 'Tap the pieces to rebuild this sentence from Chapter 10.',
     question: 'Where does the “that” clause go when it describes a noun?',
     sentenceChunks: [
-      'Heart is',
+      'The heart is',
       'the eye',
       'that sees',
       'the truth',
@@ -154,7 +154,7 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
     explanation: 'A “that” clause comes directly after the noun it describes: “the eye that sees the truth”. It tells us which eye the writer means. “And” then adds a second description of the heart: “the center of understanding”.',
     feedback: {
       correct: 'Well done. The “that” clause follows the noun it describes.',
-      incorrect: 'Start with “Heart is”, then name what the heart is. Put “that sees” right after the noun it describes. Check the sentence after the poem in Chapter 10.',
+      incorrect: 'Start with “The heart is”, then name what the heart is. Put “that sees” right after the noun it describes. Check the sentence after the poem in Chapter 10.',
     },
   },
   {
