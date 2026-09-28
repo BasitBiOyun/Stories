@@ -1,4 +1,5 @@
 import type { Exercise, PageData } from '../../../../types';
+import { highlightPhraseOccurs } from '../../../../lib/highlightTextMatch';
 import {
   abrahamB2FinalChallengeExercises,
   abrahamB2KnowledgeCheckExercises,
@@ -408,262 +409,463 @@ The ‘Beloved servant of Allah’ about whom Allah said, “I will make you a l
 // c11b
 ];
 
-export type AbrahamB2VocabSeed = readonly [en: string, ar: string, enDefinition: string, arDefinition: string];
-const v = (en: string, ar: string, enDefinition: string, arDefinition: string): AbrahamB2VocabSeed => [en, ar, enDefinition, arDefinition];
-export const abrahamB2CanonicalVocabulary: Record<number, readonly AbrahamB2VocabSeed[]> = {
-// k01a
-  1: [
-    v('monotheistic belief', 'العقيدة التوحيدية', 'Belief that Allah is One and has no partner.', 'الإيمان بأن الله واحد لا شريك له.'),
-    v('fundamental figure', 'الشخصية الأساسية', 'A person of central importance in a religious or historical tradition.', 'شخصية ذات أهمية محورية في تقليد ديني أو تاريخي.'),
-    v('direct forefather', 'الجد المباشر', 'A direct ancestor in a family line.', 'جد يقع مباشرة في سلسلة النسب.'),
-    v('Allah’s friend', 'خليل الله', 'A unique title of closeness and devotion given to Abraham.', 'لقب فريد يدل على القرب والمحبة والطاعة لله.'),
-    v('idol-worshipping nation', 'يعبدون الأصنام', 'A society in which the worship of idols is widespread.', 'قوم تنتشر بينهم عبادة الأصنام.'),
-  ],
-  2: [
-    v('life mission', 'مهمة حياته', 'The central purpose guiding a person’s life and actions.', 'الغاية الأساسية التي توجه حياة الإنسان وأعماله.'),
-    v('morally upright', 'مستقيم في الأخلاق', 'Behaving according to sound moral principles.', 'ملتزم بالسلوك القويم والمبادئ الأخلاقية.'),
-    v('through reasoning', 'عن طريق العقل والتفكير', 'By using logical thought to reach a conclusion.', 'باستخدام التفكير العقلي والمنطقي للوصول إلى نتيجة.'),
-    v('human capacity', 'قدرات الإنسان', 'The ability of human beings to think, act, or develop.', 'قدرة الإنسان على التفكير والعمل والتطور.'),
-    v('acts of worship', 'العبادات', 'Religious actions performed as devotion to Allah.', 'أعمال دينية يؤديها المؤمن تقربًا إلى الله.'),
-  ],
-  3: [
-    v('became mixed with idolatry', 'اختلط هذا الاعتقاد بالشرك', 'Lost its original purity by becoming combined with idol worship.', 'فقد صفاءه الأصلي حين اختلط بالشرك وعبادة غير الله.'),
-    v('corrupted', 'التحريف', 'Changed from an original form in a damaging or misleading way.', 'تغيير الشيء عن أصله بصورة تفسد معناه أو حقيقته.'),
-    v('first revelation', 'الوحي الأول', 'The first divine message received by a prophet.', 'أول رسالة أو وحي إلهي يتلقاه النبي.'),
-    v('prophethood', 'بنبوة', 'The status and mission of being a prophet.', 'مقام النبي ومهمته في تبليغ رسالة الله.'),
-    v('burning sun', 'الشمس الحارقة', 'Extremely hot sunlight capable of causing suffering.', 'شمس شديدة الحرارة تسبب المشقة والألم.'),
-  ],
-  4: [
-    v('Islamic sources', 'المصادر الإسلامية', 'Texts and reports used within the Islamic scholarly tradition.', 'نصوص وروايات يعتمد عليها التراث العلمي الإسلامي.'),
-    v('migrated from there', 'هاجر من هناك', 'Moved from one region to settle in another.', 'انتقل من منطقة إلى أخرى للإقامة فيها.'),
-    v('prosperous', 'مزدهرة', 'Economically or materially successful and flourishing.', 'ناجحة ومتقدمة من الناحية المادية والاقتصادية.'),
-    v('agriculture and industry', 'الزراعة والصناعة', 'Two major areas of economic production.', 'مجالان أساسيان من مجالات الإنتاج الاقتصادي.'),
-    v('kings and rulers', 'ملوكهم وحكامهم', 'People holding political authority over a society.', 'أشخاص يملكون السلطة السياسية على المجتمع.'),
-  ],
-  5: [
-    v('whole system', 'النظام كله', 'The complete social or political structure, not one isolated part.', 'البنية الاجتماعية أو السياسية كاملة لا جزءًا منفردًا منها.'),
-    v('fortunetellers', 'العرافين', 'People claiming to predict events through supernatural knowledge.', 'أشخاص يزعمون معرفة المستقبل بوسائل غيبية.'),
-    v('astrologers', 'المنجمين', 'People who interpret stars as signs of human events.', 'أشخاص يربطون حركة النجوم بأحداث البشر.'),
-    v('reign', 'حكم نمرود', 'The period or authority of a ruler’s government.', 'مدة حكم الملك أو سلطته على البلاد.'),
-    v('throne', 'يهدد عرشه', 'A symbol of royal power and political rule.', 'رمز للسلطة الملكية والحكم السياسي.'),
-  ],
-  6: [
-    v('sound judgement', 'رشده', 'The ability to make wise and reasonable decisions.', 'القدرة على اتخاذ قرارات حكيمة وصائبة.'),
-    v('wisdom', 'الحكمة', 'Deep understanding used to make good judgments.', 'فهم عميق يساعد على حسن الحكم والتصرف.'),
-    v('sculptures', 'تماثيل وأصناما', 'Figures shaped from material such as stone or wood.', 'أشكال مصنوعة من الحجر أو الخشب ونحوهما.'),
-    v('spontaneously', 'تلقائيا', 'Naturally and without being planned in advance.', 'بصورة طبيعية ومن غير تخطيط مسبق.'),
-    v('Chief God', 'الإله الأكبر', 'The deity regarded as highest within a polytheistic system.', 'الإله الذي يعد الأعلى في نظام متعدد الآلهة.'),
-  ],
-  7: [
-    v('reasonable person', 'شخص عاقل', 'A person capable of logical and sensible judgment.', 'شخص قادر على التفكير المنطقي والحكم السليم.'),
-    v('lifeless', 'بلا حياة', 'Having no life or living power.', 'خالٍ من الحياة، لا يتحرّك ولا يحسّ كما يفعل الكائن الحي.'),
-    v('entirely helpless', 'عاجزة تماما', 'Completely unable to act or defend oneself.', 'غير قادر إطلاقًا على الفعل أو الدفاع عن النفس.'),
-    v('niche', 'محراب', 'A recessed or designated sacred space in a place of worship.', 'موضع مخصص أو مجوف داخل مكان العبادة.'),
-    v('capable of hearing', 'قادرة على سماع دعائهم', 'Able to receive and respond to sound or prayer.', 'قادر على سماع الصوت أو الدعاء والاستجابة له.'),
-  ],
-  8: [
-    v('priest', 'كاهنا', 'A religious official serving in a place of worship.', 'شخص يتولى وظيفة دينية في مكان للعبادة.'),
-    v('displaying his hatred', 'إظهار كراهيته', 'Openly showing strong rejection or dislike.', 'إظهار الرفض أو الكراهية الشديدة بصورة واضحة.'),
-    v('cave', 'كهفا', 'A natural hollow space inside a mountain or rock.', 'تجويف طبيعي داخل جبل أو صخر.'),
-    v('certainty', 'الموقنين', 'A state of firm conviction without serious doubt.', 'الذين بلغوا يقينًا راسخًا لا يخالطه شكّ.'),
-    v('those that set', 'الآفلين', 'Celestial objects that disappear below the horizon.', 'الأجرام التي تغيب وتختفي عن الأفق.'),
-  ],
-  9: [
-    v('erring people', 'القوم الضالين', 'People who have moved away from the correct path.', 'قوم ابتعدوا عن الطريق أو الاعتقاد الصحيح.'),
-    v('innocent', 'بريء', 'Free from responsibility for or association with something wrong.', 'منزّه عن المشاركة في أمر باطل أو المسؤولية عنه.'),
-    v('heavenly bodies', 'الأجرام السماوية', 'Natural objects in space such as stars, planets, the sun, and the moon.', 'أجسام طبيعية في السماء كالنجوم والكواكب والشمس والقمر.'),
-    v('astronomical objects', 'النجوم والكويكبات', 'Objects studied as part of the physical universe beyond Earth.', 'أجرام يدرسها علم الفلك خارج الأرض.'),
-    v('Creator’s command', 'بأمر الخالق', 'The authority by which created things follow an ordered system.', 'الأمر الذي تخضع له المخلوقات في نظامها.'),
-  ],
-  10: [
-    v('evidently created', 'مخلوقة بوضوح', 'Clearly showing the characteristics of something created rather than eternal.', 'تظهر بوضوح صفات المخلوق لا صفات الأزلي.'),
-    v('everlasting', 'أزلي لا يزول', 'Continuing forever without ending or disappearing.', 'موجود بلا بداية، وباقٍ بلا نهاية.'),
-    v('unworthy of worship', 'غير مستحقة للعبادة', 'Not deserving religious devotion or worship.', 'لا تستحق أن تصرف لها العبادة.'),
-    v('rational thinking', 'تفكير إبراهيم العقلي', 'Reasoning based on logic and evidence.', 'تفكير يعتمد على العقل والمنطق والدليل.'),
-    v('uncover the truth', 'كشف الحقيقة', 'To reveal what is actually true after examination.', 'إظهار الحقيقة بعد البحث والنظر.'),
-  ],
-// k01b
-// k02a
-  11: [
-    v('present evidence', 'تقديم الأدلة', 'To offer reasons or proof in support of a claim.', 'عرض حجج أو براهين لتأييد ادعاء.'),
-    v('correctness of their beliefs', 'صحة معتقداتهم', 'The claimed truth or validity of what a group believes.', 'كون ما يعتقدونه صادقًا مطابقًا للحقيقة.'),
-    v('ridiculousness', 'سخافة ادعاءاتهم', 'The quality of being unreasonable or impossible to take seriously.', 'كون الادعاء غير معقول ولا يستند إلى حجة قوية.'),
-    v('threatened him', 'هددوه', 'Warned someone of intended harm or punishment.', 'أنذروه بإيقاع الأذى أو العقوبة.'),
-    v('punishment of their gods', 'عقاب آلهتهم', 'Harm they believed their deities could inflict.', 'الأذى الذي اعتقدوا أن آلهتهم تستطيع إيقاعه.'),
-  ],
-  12: [
-    v('paid no heed', 'لم يلتفت', 'Ignored a warning or refused to give it attention.', 'لم يهتم بالتهديد ولم يجعله يغير موقفه.'),
-    v('benefit and harm', 'النفع والضر', 'Positive and negative effects that may reach a person.', 'ما يصل إلى الإنسان من خير أو أذى.'),
-    v('mindful', 'لتذكير قومه', 'Consciously aware of an important truth or duty.', 'تنبيه قومه إلى أمر يجب ألّا يغفلوا عنه، وحثّهم على تذكّره.'),
-    v('evident error', 'ضلال مبين', 'A mistake or false belief that is clearly visible.', 'خطأ أو اعتقاد باطل ظاهر بوضوح.'),
-    v('bitter struggle', 'معركة حادة', 'A severe and continuing conflict between opposing sides.', 'صراع شديد ومستمر بين طرفين متعارضين.'),
-  ],
-  13: [
-    v('duty', 'من واجبه', 'A moral responsibility a person believes must be fulfilled.', 'مسؤولية أخلاقية يرى الإنسان وجوب القيام بها.'),
-    v('embarrassed', 'بالإحراج', 'Made to feel ashamed or socially uncomfortable.', 'شعر بالخجل أو الضيق أمام الآخرين.'),
-    v('fatherly love', 'الحب الأبوي', 'Affection associated with the relationship between a father and child.', 'المحبة المرتبطة بعلاقة الأب بابنه.'),
-    v('straight way', 'صراطا سويا', 'A correct and morally sound path.', 'طريق مستقيم صحيح من الناحية الدينية والأخلاقية.'),
-    v('disobedient', 'عصيا', 'Refusing to obey rightful authority or command.', 'رافض للطاعة ومخالف للأمر.'),
-  ],
-  14: [
-    v('harsh behavior', 'سلوك والده القاسي', 'Severe or unkind conduct toward another person.', 'تصرف شديد أو غير لين تجاه شخص آخر.'),
-    v('negative consequences', 'عواقب سلبية', 'Harmful results that may follow an action.', 'نتائج ضارة قد تترتب على فعل ما.'),
-    v('cause of an illness', 'سبب المرض', 'The underlying factor responsible for a disease or problem.', 'العامل الأساسي الذي يؤدي إلى مرض أو مشكلة.'),
-    v('clever judge', 'القاضي الذكي', 'A judge who reasons carefully to uncover facts.', 'قاض يستخدم التفكير الدقيق لكشف الحقيقة.'),
-    v('suspect', 'المشتبه به', 'A person believed possibly to be responsible for an act.', 'شخص يظن أنه قد يكون مسؤولًا عن فعل.'),
-  ],
-  15: [
-    v('defend their beliefs', 'الدفاع عن معتقداتهم', 'To give arguments in support of what they believe.', 'تقديم حجج لتأييد ما يؤمنون به.'),
-    v('confirmed their belief', 'يؤكد إيمانهم', 'Made an existing belief seem more certain to them.', 'جعل اعتقادهم القائم يبدو أكثر ثبوتًا لديهم.'),
-    v('worthy of worship', 'يستحق العبادة', 'Deserving religious devotion and worship.', 'جدير بأن تصرف له العبادة.'),
-    v('regulates all affairs', 'مدبر شؤون الحياة', 'Controls and orders the different matters of existence.', 'يدبر وينظم شؤون الحياة المختلفة.'),
-    v('persuade', 'ولإقناعهم', 'To lead someone to accept an idea through reasons or evidence.', 'جعل شخص يقبل فكرة عن طريق الحجة والدليل.'),
-  ],
-  16: [
-    v('beauty of Allah\'s creation', 'جمال خلق الله', 'The order and excellence seen in what Allah has created.', 'ما يظهر في خلق الله من نظام وحسن.'),
-    v('His power', 'قدرته', 'The ability and authority to bring about what He wills.', 'القدرة والسلطان على إيجاد ما يشاء.'),
-    v('His wisdom', 'حكمته', 'Perfect knowledge expressed in right and purposeful action.', 'العلم التام الذي يظهر في الفعل الصحيح ذي الغاية.'),
-    v('offers guidance', 'هدى عباده', 'Directs people toward the right path.', 'يرشد الناس إلى الطريق الصحيح.'),
-    v('heals the sick', 'يشفي المرضى', 'Restores health to people who are ill.', 'يعيد العافية إلى من أصابه المرض.'),
-  ],
-  17: [
-    v('held on tightly', 'تمسكوا بشدة', 'Refused to give up a belief or practice.', 'رفضوا ترك اعتقاد أو ممارسة وتمسكوا بها.'),
-    v('great celebration', 'احتفالا كبيرا', 'A major public festival or communal event.', 'مناسبة عامة كبيرة يشارك فيها المجتمع.'),
-    v('priests', 'الكهنة', 'Religious officials responsible for ritual duties.', 'أشخاص يتولون وظائف وشعائر دينية.'),
-    v('offerings', 'قرابين', 'Objects or food presented as acts of religious devotion.', 'أشياء أو طعام يقدم تعبّدًا وتقربًا.'),
-    v('silent and rigid', 'صامتا جامدا', 'Unable to speak, move, or show life.', 'لا ينطق ولا يتحرك ولا تظهر فيه حياة.'),
-  ],
-  18: [
-    v('mocking them', 'يسخر منها', 'Treating something as foolish through ridicule.', 'يتعامل معها باستهزاء لأنها تبدو له باطلة.'),
-    v('false gods', 'الآلهة الباطلة', 'Beings or objects wrongly treated as divine.', 'معبودات تعامل على أنها آلهة وهي باطلة.'),
-    v('practical proof', 'دليل عملي', 'Evidence demonstrated through an observable action.', 'برهان يظهر من خلال فعل يمكن ملاحظته.'),
-    v('smashed into pieces', 'مكسرة إلى قطع', 'Broken violently into many separate parts.', 'محطمة إلى أجزاء كثيرة منفصلة.'),
-    v('wrongdoers', 'الظالمين', 'People who act unjustly or commit serious wrongdoing.', 'أشخاص يرتكبون الظلم أو الخطأ الجسيم.'),
-  ],
-  19: [
-    v('may witness', 'يشهدون', 'May observe an event directly and testify about it.', 'يرون الحدث مباشرة ويشهدون عليه.'),
-    v('reverted', 'فرجعوا', 'Returned to an earlier state, position, or belief.', 'فكّروا في أنفسهم وراجعوا موقفهم.'),
-    v('arrested and judged', 'باعتقال إبراهيم ومحاكمته', 'Taken into custody and subjected to a formal judgment.', 'القبض على شخص وإخضاعه للمحاكمة.'),
-    v('demonstrate in public', 'ليظهر لهم أمام الناس', 'To prove or show something openly before others.', 'إظهار أمر وإثباته علنًا أمام الناس.'),
-    v('undamaged', 'لا يزال سليما', 'Remaining whole and not physically harmed.', 'باق على حاله من غير كسر أو ضرر.'),
-  ],
-  20: [
-    v('culprit', 'الجاني', 'The person or thing responsible for a wrongdoing.', 'الشخص أو الشيء المسؤول عن فعل خاطئ.'),
-    v('arrogance', 'كبرياءهم', 'Excessive pride that prevents acceptance of truth.', 'غرور شديد يمنع صاحبه من قبول الحق.'),
-    v('authority as tyrants', 'سلطتهم كطغاة', 'Power exercised through oppressive and unjust rule.', 'سلطة تمارس بالقهر والظلم.'),
-    v('chains', 'بالسلاسل', 'Metal restraints used to prevent a person from moving freely.', 'قيود معدنية تمنع الإنسان من الحركة بحرية.'),
-    v('catapult', 'منجنيقا', 'A device used to launch a heavy object over a distance.', 'آلة تستخدم لقذف جسم ثقيل إلى مسافة.'),
-  ],
-// k02b
-// k03a
-  21: [
-    v('flames reaching the sky', 'ألسنة لهبها تبلغ السماء', 'Very high flames rising from an intense fire.', 'لهب شديد يرتفع إلى علو كبير.'),
-    v('chief priest', 'كبير الكهنة', 'The highest-ranking religious official among the priests.', 'أعلى مسؤول ديني بين الكهنة.'),
-    v('angel Gabriel', 'الملك جبريل', 'The angel who acts as a messenger from Allah in the story.', 'جبريل عليه السلام، الملك الذي يبلغ رسالات الله.'),
-    v('coolness and safety', 'بردا وسلاما', 'A state in which the fire no longer causes harm.', 'حال أصبحت فيها النار باردة لا تؤذي.'),
-    v('burned his ropes', 'تحرق إلا حباله', 'Destroyed the restraints while leaving Abraham unharmed.', 'أحرقت القيود وحدها وتركت إبراهيم سالمًا.'),
-  ],
-  22: [
-    v('sufficient for me', 'حسبي الله', 'Enough to rely on completely for protection and support.', 'كاف لي أعتمد عليه في الحفظ والنصرة.'),
-    v('breathless', 'بلا نفس', 'Temporarily unable to breathe normally.', 'غير قادر على التنفس بصورة طبيعية.'),
-    v('completely unharmed', 'دون أي أذى', 'Having suffered no injury or damage at all.', 'لم يصبه أي ضرر أو إصابة.'),
-    v('astonishment', 'أصوات الدهشة', 'Great surprise caused by an unexpected event.', 'أصوات عالية تعبّر عن تعجّب شديد من أمر لم يتوقّعوه.'),
-    v('despotic rulers', 'الحكام الطغاة', 'Rulers who exercise power in an oppressive way.', 'حكام يستخدمون السلطة بالقهر والاستبداد.'),
-  ],
-  23: [
-    v('declared themselves as gods', 'ادعوا الألوهية', 'Claimed divine status and authority for themselves.', 'زعموا لأنفسهم مقام الألوهية وسلطتها.'),
-    v('filled with rage', 'امتلأ غضبا', 'Became extremely and intensely angry.', 'اشتد غضبه حتى سيطر عليه.'),
-    v('held a dialogue', 'دار بينهما حوار', 'Took part in a structured exchange of arguments.', 'جرى بين طرفين تبادل منظم للكلام والحجج.'),
-    v('undeniable', 'لا يمكن دحضه', 'So strong that it cannot reasonably be refuted.', 'قوي إلى درجة يصعب معها إبطاله بالحجة.'),
-    v('sentenced to death', 'حكم عليهما بالإعدام', 'Officially ordered to be executed as a punishment.', 'صدر عليه حكم رسمي بالقتل عقوبةً.'),
-  ],
-  24: [
-    v('put forth', 'طرح', 'Presented an argument, idea, or challenge for consideration.', 'قدم فكرة أو حجة أو تحديًا للنظر فيه.'),
-    v('unquestionably', 'بلا شك', 'In a way that leaves no reasonable doubt.', 'على نحو لا يترك مجالًا معقولًا للشك.'),
-    v('unable to speak', 'أعجزه عن الكلام', 'Left without an effective answer or response.', 'جعله غير قادر على تقديم جواب.'),
-    v('entire kingdom', 'جميع أنحاء مملكة بابل', 'The whole territory under a ruler’s authority.', 'كل الأراضي الواقعة تحت سلطة الملك.'),
-    v('every means', 'بكل الوسائل', 'All available methods that could be used to reach a goal.', 'جميع الطرق المتاحة لتحقيق غاية.'),
-  ],
-  25: [
-    v('emigrate', 'قرر الهجرة', 'To leave one land and settle in another.', 'مغادرة بلد للاستقرار في بلد آخر.'),
-    v('settled there', 'استقر فيها', 'Established a permanent or long-term home in a place.', 'اتخذ مكانًا للإقامة الدائمة أو الطويلة.'),
-    v('judged fairly', 'بالعدل', 'Made decisions according to justice rather than bias.', 'بإعطاء كل صاحب حقّ حقَّه، من غير ظلم ولا تحيّز.'),
-    v('righteousness', 'الحق والصواب', 'Moral correctness and commitment to what is right.', 'الاستقامة الأخلاقية والالتزام بالحق.'),
-    v('sterile', 'عاقرا', 'Unable to have children.', 'غير قادرة على الإنجاب.'),
-  ],
-  26: [
-    v('offspring', 'نسل هذين الابنين', 'Children and later descendants of a person.', 'الأبناء والذرية الذين يأتون بعد الإنسان.'),
-    v('descendants', 'ذرية إسماعيل', 'People descended from a particular ancestor.', 'أشخاص ينحدرون من جد معين.'),
-    v('Sacred City', 'المدينة المقدسة', 'A city regarded as holy because of its religious importance.', 'مدينة لها قداسة بسبب مكانتها الدينية.'),
-    v('master plan', 'تدبير الله الحكيم', 'A larger purposeful plan guiding a sequence of events.', 'خطة واسعة ذات غاية تربط أحداثًا متعددة.'),
-    v('uncultivated valley', 'واد غير ذي زرع', 'A valley where crops are not grown and vegetation is scarce.', 'واد لا توجد فيه زراعة ويقل فيه النبات.'),
-  ],
-  27: [
-    v('skin of water', 'سقاء من الماء', 'A traditional animal-skin container used to carry water.', 'وعاء تقليدي من الجلد يستخدم لحمل الماء.'),
-    v('leather bag', 'كيسا جلديا', 'A bag made from treated animal skin.', 'كيس مصنوع من جلد الحيوان.'),
-    v('anxious', 'تشعر بالقلق', 'Worried because the outcome of a situation is uncertain.', 'شعور بالقلق بسبب عدم وضوح ما سيحدث.'),
-    v('degree of comfort', 'بقدر من الراحة', 'A limited but real feeling of reassurance.', 'قدر من الطمأنينة يخفف القلق.'),
-    v('own decision', 'من تلقاء نفسه', 'A choice made independently without an external command.', 'قرار يتخذه الإنسان بإرادته من غير توجيه خارجي.'),
-  ],
-  28: [
-    v('Sacred House', 'البيت الحرام', 'The holy sanctuary identified with the Ka‘ba.', 'المكان المقدس الذي يقصد به الكعبة.'),
-    v('rebuilding', 'إعادة بناء', 'Constructing a structure again after it has been lost or damaged.', 'بناء منشأة من جديد بعد زوالها أو تلفها.'),
-    v('barren valley', 'وادي مكة الجدب', 'A dry valley with little or no vegetation.', 'واد جاف يقل فيه النبات أو ينعدم.'),
-    v('renewed center', 'مركزا للتوحيد', 'A place restored to function again as a central focus.', 'مكانًا يجتمع فيه الناس على عبادة الله وحده، وتنطلق منه الدعوة إليها.'),
-    v('throughout the Arabian Peninsula', 'جميع أنحاء شبه الجزيرة العربية', 'Across the different regions of the Arabian Peninsula.', 'في المناطق المختلفة من شبه الجزيرة العربية.'),
-  ],
-  29: [
-    v('companion', 'صحابة النبي', 'A person who lived with and supported Prophet Muhammad.', 'من لقي النبي محمد وآمن به وصحبه.'),
-    v('narrated many hadiths', 'الرواة الكبار للحديث', 'Reported a large number of transmitted sayings and accounts.', 'العلماء البارزون الذين نقلوا كثيرًا من أحاديث النبي ﷺ ورواياته.'),
-    v('Safa', 'جبل الصفا', 'One of the two hills between which Hagar searched for help.', 'أحد الجبلين اللذين سعت هاجر بينهما طلبًا للماء.'),
-    v('patient search', 'بحث هاجر المثابر', 'A persistent effort continued despite hardship.', 'سعي مستمر بصبر رغم المشقة.'),
-    v('pilgrimage', 'الحج', 'A religious journey to a sacred place.', 'رحلة دينية إلى مكان مقدس.'),
-  ],
-// k03b
-// k04a
-  30: [
-    v('hit the ground', 'ضرب الملك الأرض', 'Struck the earth with force.', 'دقّ الملَكُ الأرضَ بعقب قدمه.'),
-    v('small basin', 'حوضا صغيرا', 'A small enclosed area used to collect or hold water.', 'موضع صغير يجمع الماء ويحفظه.'),
-    v('abundant and flowing', 'الوفرة والتدفق', 'Present in a large quantity and moving continuously.', 'كثير ومستمر في الجريان.'),
-    v('origin is unknown', 'مجهول المنشأ', 'Having a source that is not known or identified.', 'لا يعرف مصدره أو أصله.'),
-    v('tribe of Jurham', 'قبيلة جرهم', 'The tribal group that later settled near the Zamzam water.', 'القبيلة التي استقرت لاحقًا قرب ماء زمزم.'),
-  ],
-  31: [
-    v('gentle character', 'لطف طباعه', 'A kind and mild way of behaving toward others.', 'طبع يتصف باللين وحسن المعاملة.'),
-    v('ultimate test', 'أعظم اختبار', 'The most demanding test of faith or commitment.', 'أشد اختبار للإيمان أو الالتزام.'),
-    v('glad tidings', 'فبشرناه', 'Good news that brings joy and hope.', 'خبر سار يجلب الفرح والأمل.'),
-    v('forbearing boy', 'غلام حليم', 'A boy described as patient, calm, and self-controlled.', 'غلام يتصف بالصبر والحلم وضبط النفس.'),
-    v('slaughtering you', 'أذبحك', 'Killing as an act of sacrifice in the reported vision.', 'الذبح بوصفه قربانًا في الرؤيا المذكورة.'),
-  ],
-  32: [
-    v("obeyed Allah's command", 'بطاعة الله', 'Acted in complete submission to what Allah commanded.', 'استجاب لأمر الله بخضوع كامل.'),
-    v('fulfilled the vision', 'صدقت الرؤيا', 'Carried out what the vision required as a test.', 'حقق ما دلت عليه الرؤيا من اختبار.'),
-    v('willingness to sacrifice', 'استعداده لتضحية', 'Readiness to give up something deeply valued for a higher duty.', 'الاستعداد لبذل شيء عزيز من أجل واجب أعلى.'),
-    v('leader of humanity', 'إماما للناس', 'A person appointed as a model and guide for people.', 'شخص جعل قدوة ودليلًا للناس.'),
-    v('proxy', 'الفداء', 'Something that takes the place of another; here, the animal sacrificed instead of Ishmael.', 'بديل يقدم عوضًا عن غيره.'),
-  ],
-  33: [
-    v('hundreds of millions', 'مئات الملايين', 'Many times one hundred million (100,000,000); an extremely large number.', 'عدد ضخم جدًّا يزيد على مئتي مليون.'),
-    v('widespread', 'شائعة', 'Existing or practiced across many places or among many people.', 'منتشر بين عدد كبير من الناس أو المناطق.'),
-    v('firstborn children', 'أول الأبناء', 'Children born first in their families.', 'الأبناء الذين يولدون أولًا في أسرهم.'),
-    v('equivalent to human life', 'تعادل حياة الإنسان', 'Treated as equal in value to a human life in the described context.', 'تعد مساوية في القيمة لحياة الإنسان في السياق المذكور.'),
-    v('separation', 'بعد فراق', 'A period in which people are apart from one another.', 'مدة يكون فيها الأشخاص بعيدين بعضهم عن بعض.'),
-  ],
-  34: [
-    v('made sacred', 'حرمه الله', 'Declared holy and protected by religious sanctity.', 'جعله مقدسًا محفوظ الحرمة.'),
-    v('important task', 'أمر عظيم', 'A significant duty requiring serious effort.', 'واجب مهم يحتاج إلى جهد وعناية.'),
-    v('foundations', 'أسس البناء القديم', 'The lowest structural parts on which a building is constructed.', 'الأجزاء السفلية التي يقوم عليها البناء.'),
-    v('Al-Maqam', 'حجر المقام', 'The stone associated with Abraham while building the Ka‘ba.', 'الحجر المرتبط بإبراهيم أثناء بناء الكعبة.'),
-    v('handing him the stones', 'يناوله الحجارة', 'Passing building stones to another person by hand.', 'إعطاء الحجارة لشخص آخر ليستخدمها في البناء.'),
-  ],
-  35: [
-    v('restorer', 'معيد بناء', 'A person who rebuilds or returns something to an earlier state.', 'مَن يقيم البناء مرة أخرى على ما كان موجودًا قبله، لا مَن يبنيه أول مرة.'),
-    v('clear evidence', 'دليل واضح', 'Strong and understandable proof supporting a conclusion.', 'برهان ظاهر يُفهم منه ما يدلّ عليه من غير عناء.'),
-    v('completion of Abraham', 'إكمالا لرسالة إبراهيم', 'The final stage that finishes the mission Abraham was given.', 'المرحلة التي تتم بها رسالة إبراهيم.'),
-    v('chosen race', 'عرق معين', 'A particular ethnic group selected over others.', 'جماعة من الناس يجمعها أصل ونسب واحد، تُخَصّ دون غيرها.'),
-    v('coexisted with idolatry', 'جنبا إلى جنب مع الوثنية', 'Existed at the same time and place as idol worship.', 'وجد في الوقت والمكان نفسيهما مع الوثنية.'),
-  ],
-// k04b
+// Word Notes and hotspots of the 35 story chapters, exactly as the reader shows them.
+const abrahamB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspots'>> = {
+  1: {
+    vocabulary: [
+      { word: "representative", partOfSpeech: "noun", definition: "A person who speaks or acts for a group, a belief or an idea." },
+      { word: "monotheistic", partOfSpeech: "adjective", definition: "Believing that there is only one God." },
+      { word: "rival", partOfSpeech: "noun", definition: "Someone or something that competes with another for the same position." },
+      { word: "forefather", partOfSpeech: "noun", definition: "A person from an earlier generation of your family; an ancestor." },
+      { word: "unique", partOfSpeech: "adjective", definition: "Being the only one of its kind; unlike anything else." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-1-1', x: 28, y: 41, title: "Messenger of Tawheed", description: "The Qur’an presents Abraham (pbuh) as the messenger of the belief that Allah is One and has no partner." },
+      { id: 'ab-b2-runtime-hs-1-2', x: 70, y: 62, title: "Father of Prophets", description: "Abraham (pbuh) was the father of Ishmael (pbuh) and Isaac (pbuh), and Ishmael (pbuh) was a forefather of Prophet Muhammad (pbuh)." },
+    ],
+  },
+  2: {
+    vocabulary: [
+      { word: "mission", partOfSpeech: "noun", definition: "An important task or purpose that someone is given or chooses to follow." },
+      { word: "struggle", partOfSpeech: "noun", definition: "A long, hard effort against difficulties or opposition." },
+      { word: "morally upright", partOfSpeech: "adjective", definition: "Honest, fair and always behaving in a decent way." },
+      { word: "reasoning", partOfSpeech: "noun", definition: "The process of thinking about something in a logical way to reach a conclusion." },
+      { word: "capacities", partOfSpeech: "noun", definition: "The abilities that people have to understand or do things." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-2-1', x: 35, y: 54, title: "A Life Mission", description: "Abraham (pbuh) spent his life teaching people to believe in Allah alone, and he passed hard tests with full trust in Him." },
+      { id: 'ab-b2-runtime-hs-2-2', x: 60, y: 65, title: "The Hanif Path", description: "The Qur’an describes Abraham (pbuh) as a hanîf: a monotheist who was neither a Jew, a Christian nor an idolater." },
+    ],
+  },
+  3: {
+    vocabulary: [
+      { word: "idolatry", partOfSpeech: "noun", definition: "The worship of statues, stars or other created things instead of Allah." },
+      { word: "corrupted", partOfSpeech: "verb", definition: "Changed from its pure, original form into something false." },
+      { word: "revelation", partOfSpeech: "noun", definition: "A message from Allah given to a prophet." },
+      { word: "prophethood", partOfSpeech: "noun", definition: "The position of someone chosen by Allah to carry His message to people." },
+      { word: "welcomed", partOfSpeech: "verb", definition: "Accepted something gladly and with approval." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-3-1', x: 42, y: 30, title: "The Hanifs of the Hijaz", description: "Before Islam, a group in the Hijaz called themselves hanîfs and stayed away from idolatry." },
+      { id: 'ab-b2-runtime-hs-3-2', x: 71, y: 44, title: "Bilal’s Cry: “One, One”", description: "Varaka b. Nevfel saw Bilal being punished under the burning sun while he kept repeating “Ahad, Ahad.”" },
+    ],
+  },
+  4: {
+    vocabulary: [
+      { word: "birthplace", partOfSpeech: "noun", definition: "The town or country where a person came into the world." },
+      { word: "historically", partOfSpeech: "adverb", definition: "According to history or to what is known about the past." },
+      { word: "prosperous", partOfSpeech: "adjective", definition: "Rich and successful." },
+      { word: "industry", partOfSpeech: "noun", definition: "The work of making goods, especially in large amounts." },
+      { word: "aspects", partOfSpeech: "noun", definition: "Particular parts or sides of something." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-4-1', x: 27, y: 43, title: "The Land of Nimrod", description: "Abraham (pbuh) was probably born in Ur or Babylon, the country of King Nimrod, around the 20th century BC." },
+      { id: 'ab-b2-runtime-hs-4-2', x: 61, y: 61, title: "Many Objects of Worship", description: "People in Abraham’s (pbuh) time worshipped planets, stars, the sun, the moon, idols of stone and wood, and even their kings." },
+    ],
+  },
+  5: {
+    vocabulary: [
+      { word: "atmosphere", partOfSpeech: "noun", definition: "The general mood and influences that surround a person or place." },
+      { word: "astrologers", partOfSpeech: "noun", definition: "People who claim to know the future by studying the movement of the planets." },
+      { word: "predicted", partOfSpeech: "verb", definition: "Said that something would happen in the future." },
+      { word: "reign", partOfSpeech: "noun", definition: "The period during which a king or queen rules." },
+      { word: "narration", partOfSpeech: "noun", definition: "A report of past events passed on from person to person." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-5-1', x: 34, y: 56, title: "The Astrologers’ Warning", description: "Nimrod’s astrologers predicted that a child named Abraham (pbuh) would change the people’s religion and end the king’s reign." },
+      { id: 'ab-b2-runtime-hs-5-2', x: 72, y: 40, title: "Born in a Cave", description: "To protect the baby from Nimrod’s order, Azer hid his pregnant wife in a cave, where Abraham (pbuh) was born." },
+    ],
+  },
+  6: {
+    vocabulary: [
+      { word: "cleared up", partOfSpeech: "verb", definition: "Made something pure and free from anything wrong or confusing." },
+      { word: "sound judgement", partOfSpeech: "noun", definition: "The ability to make wise and sensible decisions." },
+      { word: "astonished", partOfSpeech: "adjective", definition: "Extremely surprised." },
+      { word: "spontaneously", partOfSpeech: "adverb", definition: "Naturally and immediately, without planning or being told." },
+      { word: "sculptures", partOfSpeech: "noun", definition: "Figures of people or animals made from stone, wood or metal." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-6-1', x: 41, y: 32, title: "Wisdom from Childhood", description: "Allah gave Abraham (pbuh) wisdom and sound judgement while he was still a child." },
+      { id: 'ab-b2-runtime-hs-6-2', x: 62, y: 57, title: "Riding the Chief God", description: "Young Abraham (pbuh) rode on the statue of Mardukh, the chief god of Babylon, and his father became furious." },
+    ],
+  },
+  7: {
+    vocabulary: [
+      { word: "hatred", partOfSpeech: "noun", definition: "A very strong feeling of dislike." },
+      { word: "lifeless", partOfSpeech: "adjective", definition: "Without life; not living and unable to move or feel." },
+      { word: "helpless", partOfSpeech: "adjective", definition: "Completely unable to act or to protect oneself." },
+      { word: "niche", partOfSpeech: "noun", definition: "A hollow space in a wall where a statue or object is placed." },
+      { word: "begging", partOfSpeech: "verb", definition: "Asking for something in a desperate and humble way." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-7-1', x: 26, y: 45, title: "Idols That Cannot Stand", description: "Abraham (pbuh) saw that the idols were so helpless that they could not get up again when they fell." },
+      { id: 'ab-b2-runtime-hs-7-2', x: 73, y: 36, title: "The Great Temple", description: "His people’s temple was full of idols, and the biggest gods stood in a niche in the middle." },
+    ],
+  },
+  8: {
+    vocabulary: [
+      { word: "priest", partOfSpeech: "noun", definition: "A person who performs religious duties in a place of worship." },
+      { word: "empire", partOfSpeech: "noun", definition: "A very large area, or everything, under the rule of one power." },
+      { word: "incident", partOfSpeech: "noun", definition: "An event, especially an important or unusual one." },
+      { word: "certainty", partOfSpeech: "noun", definition: "Complete confidence that something is true." },
+      { word: "set", partOfSpeech: "verb", definition: "(Of the sun, moon, stars or planets) went down below the horizon." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-8-1', x: 33, y: 58, title: "A Night in the Mountains", description: "Abraham (pbuh) walked alone through the dark and rested in a cave in the mountains." },
+      { id: 'ab-b2-runtime-hs-8-2', x: 63, y: 39, title: "The Setting Planet", description: "When the planet disappeared, Abraham (pbuh) said that he did not love things that set." },
+    ],
+  },
+  9: {
+    vocabulary: [
+      { word: "innocent", partOfSpeech: "adjective", definition: "Having nothing to do with something wrong." },
+      { word: "heavenly bodies", partOfSpeech: "noun", definition: "Natural objects in the sky, such as the sun, the moon, stars and planets." },
+      { word: "asteroids", partOfSpeech: "noun", definition: "Small rocky objects that travel around the sun." },
+      { word: "debate", partOfSpeech: "noun", definition: "A discussion in which people give opposing opinions and arguments." },
+      { word: "directed", partOfSpeech: "verb", definition: "Turned or pointed something towards a particular person or thing." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-9-1', x: 40, y: 34, title: "The Moon and the Sun", description: "Abraham (pbuh) watched the moon and then the sun rise and set, and turned away from worshipping them." },
+      { id: 'ab-b2-runtime-hs-9-2', x: 74, y: 46, title: "A Debate About the Stars", description: "Abraham (pbuh) showed the star worshippers that heavenly bodies could not be partners with Allah." },
+    ],
+  },
+  10: {
+    vocabulary: [
+      { word: "everlasting", partOfSpeech: "adjective", definition: "Lasting for ever; never ending." },
+      { word: "unworthy", partOfSpeech: "adjective", definition: "Not deserving respect, attention or a particular treatment." },
+      { word: "clarified", partOfSpeech: "verb", definition: "Explained something so that it could be understood without confusion." },
+      { word: "emphasizes", partOfSpeech: "verb", definition: "Gives special importance to an idea." },
+      { word: "conflict", partOfSpeech: "noun", definition: "A serious disagreement or fight between people or groups." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-10-1', x: 25, y: 47, title: "Signs, Not Gods", description: "Abraham (pbuh) explained that the sun and the moon were signs of Allah, not gods to be worshipped." },
+      { id: 'ab-b2-runtime-hs-10-2', x: 64, y: 63, title: "The Conflict Begins", description: "His reasoning started a conflict with the star worshippers, who argued with him and threatened him." },
+    ],
+  },
+  11: {
+    vocabulary: [
+      { word: "argue", partOfSpeech: "verb", definition: "To give reasons for or against something, often angrily." },
+      { word: "correctness", partOfSpeech: "noun", definition: "The quality of being true or free from mistakes." },
+      { word: "ridiculousness", partOfSpeech: "noun", definition: "The quality of being so silly that nobody can take it seriously." },
+      { word: "claims", partOfSpeech: "noun", definition: "Statements that something is true, made without proof." },
+      { word: "threatened", partOfSpeech: "verb", definition: "Said that they would cause harm or punishment to someone." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-11-1', x: 32, y: 60, title: "Who Deserves Security?", description: "Abraham (pbuh) asked which side had more right to security: those who worshipped Allah alone or those who gave Him partners." },
+      { id: 'ab-b2-runtime-hs-11-2', x: 75, y: 52, title: "Empty Arguments", description: "His people tried to prove their beliefs, but their claims were so weak that the verses did not even mention them." },
+    ],
+  },
+  12: {
+    vocabulary: [
+      { word: "paid no heed", partOfSpeech: "verb", definition: "Completely ignored something." },
+      { word: "declared", partOfSpeech: "verb", definition: "Stated something clearly and publicly." },
+      { word: "mindful", partOfSpeech: "adjective", definition: "Aware of something important and giving it attention." },
+      { word: "firmly", partOfSpeech: "adverb", definition: "In a strong, determined way that will not change." },
+      { word: "evident error", partOfSpeech: "noun", definition: "A mistake or false belief that is clear for everyone to see." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-12-1', x: 39, y: 36, title: "No Fear of Idols", description: "Abraham (pbuh) ignored the threat and declared that benefit and harm come only from Allah." },
+      { id: 'ab-b2-runtime-hs-12-2', x: 65, y: 45, title: "The Angry Idol Maker", description: "His father was the most furious of all, because he shaped and sold idols as well as worshipping them." },
+    ],
+  },
+  13: {
+    vocabulary: [
+      { word: "duty", partOfSpeech: "noun", definition: "Something that you feel you must do because it is right." },
+      { word: "embarrassed", partOfSpeech: "adjective", definition: "Feeling ashamed and uncomfortable in front of others." },
+      { word: "fatherly love", partOfSpeech: "noun", definition: "The warm affection that a father has for his child." },
+      { word: "disobedient", partOfSpeech: "adjective", definition: "Refusing to do what one is told to do." },
+      { word: "afflict", partOfSpeech: "verb", definition: "To cause pain, suffering or trouble to someone." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-13-1', x: 24, y: 49, title: "Gentle Advice", description: "Abraham (pbuh) advised his father kindly, without mocking his job, and told him that he loved him." },
+      { id: 'ab-b2-runtime-hs-13-2', x: 76, y: 62, title: "A Warning About Satan", description: "Abraham (pbuh) warned his father not to worship Satan, who had disobeyed Allah." },
+    ],
+  },
+  14: {
+    vocabulary: [
+      { word: "harsh", partOfSpeech: "adjective", definition: "Cruel, severe and unkind." },
+      { word: "determined", partOfSpeech: "adjective", definition: "Having made a firm decision to do something." },
+      { word: "consequences", partOfSpeech: "noun", definition: "The results of an action, often bad ones." },
+      { word: "suspect", partOfSpeech: "noun", definition: "A person who is thought to have committed a crime." },
+      { word: "put an end to", partOfSpeech: "verb", definition: "To stop something completely." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-14-1', x: 31, y: 62, title: "A Father’s Threat", description: "Abraham’s (pbuh) father threatened to stone him, but Abraham (pbuh) answered with peace and prayed for his forgiveness." },
+      { id: 'ab-b2-runtime-hs-14-2', x: 66, y: 41, title: "Questions Like a Judge", description: "Like a clever judge questioning a suspect, Abraham (pbuh) asked people questions to reveal the truth." },
+    ],
+  },
+  15: {
+    vocabulary: [
+      { word: "defend", partOfSpeech: "verb", definition: "To protect something from attack by arguing in its favour." },
+      { word: "criticizing", partOfSpeech: "verb", definition: "Saying what is wrong with someone or something." },
+      { word: "regulates", partOfSpeech: "verb", definition: "Controls and organizes how something works." },
+      { word: "persuade", partOfSpeech: "verb", definition: "To make someone agree to something by giving good reasons." },
+      { word: "serious", partOfSpeech: "adjective", definition: "Meaning what you say; not joking." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-15-1', x: 38, y: 38, title: "The Forefathers’ Excuse", description: "The idolaters admitted that the idols were lifeless but said that their forefathers had worshipped them." },
+      { id: 'ab-b2-runtime-hs-15-2', x: 77, y: 58, title: "A Bold Challenge", description: "Abraham (pbuh) had criticized the idols openly and challenged the people to see whether they could harm him." },
+    ],
+  },
+  16: {
+    vocabulary: [
+      { word: "ancient", partOfSpeech: "adjective", definition: "Belonging to a time very long ago." },
+      { word: "sins", partOfSpeech: "noun", definition: "Wrong actions that break Allah’s law." },
+      { word: "universe", partOfSpeech: "noun", definition: "Everything that exists, including all stars and planets." },
+      { word: "provides", partOfSpeech: "verb", definition: "Gives people what they need." },
+      { word: "heals", partOfSpeech: "verb", definition: "Makes someone who is ill healthy again." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-16-1', x: 23, y: 51, title: "What Do You Worship?", description: "Abraham (pbuh) asked his people whether their idols could hear them, help them or harm them." },
+      { id: 'ab-b2-runtime-hs-16-2', x: 67, y: 37, title: "The Lord of the Worlds", description: "Abraham (pbuh) described Allah as the One who creates, guides, feeds, heals and brings the dead back to life." },
+    ],
+  },
+  17: {
+    vocabulary: [
+      { word: "held on tightly", partOfSpeech: "verb", definition: "Refused to let go of something." },
+      { word: "distanced", partOfSpeech: "verb", definition: "Kept away from someone or something." },
+      { word: "cautiously", partOfSpeech: "adverb", definition: "Carefully, trying to avoid danger or being noticed." },
+      { word: "offerings", partOfSpeech: "noun", definition: "Things such as food given to a god as an act of worship." },
+      { word: "rigid", partOfSpeech: "adjective", definition: "Stiff and unable to move or bend." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-17-1', x: 30, y: 64, title: "An Empty City", description: "Abraham (pbuh) waited until everyone, even the priests, had gone to the festival outside the town." },
+      { id: 'ab-b2-runtime-hs-17-2', x: 78, y: 54, title: "Food for the Idols", description: "Abraham (pbuh) asked a statue why it did not eat the food in front of it, but it stayed silent." },
+    ],
+  },
+  18: {
+    vocabulary: [
+      { word: "mocking", partOfSpeech: "verb", definition: "Laughing at someone or something in an unkind way." },
+      { word: "smash", partOfSpeech: "verb", definition: "To break something violently into many pieces." },
+      { word: "false gods", partOfSpeech: "noun", definition: "Beings or things that people wrongly worship as divine." },
+      { word: "foolishness", partOfSpeech: "noun", definition: "A lack of good sense or judgement." },
+      { word: "wrongdoers", partOfSpeech: "noun", definition: "People who act unjustly and harm others." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-18-1', x: 37, y: 40, title: "The Axe on the Idol’s Neck", description: "Abraham (pbuh) broke all the idols except the biggest one and hung the axe on its neck." },
+      { id: 'ab-b2-runtime-hs-18-2', x: 68, y: 47, title: "Shock in the Temple", description: "The people returned and were shocked to find their gods in pieces all over the temple." },
+    ],
+  },
+  19: {
+    vocabulary: [
+      { word: "witness", partOfSpeech: "verb", definition: "To see something happen with your own eyes." },
+      { word: "demanded", partOfSpeech: "verb", definition: "Asked for something firmly, as if it were a right." },
+      { word: "resist", partOfSpeech: "verb", definition: "To fight back or refuse to accept something." },
+      { word: "trial", partOfSpeech: "noun", definition: "A formal process in which a court decides whether someone is guilty." },
+      { word: "undamaged", partOfSpeech: "adjective", definition: "Not broken or harmed in any way." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-19-1', x: 22, y: 53, title: "Ask the Biggest Idol", description: "Abraham (pbuh) smiled and told them to ask the biggest idol, which was still undamaged." },
+      { id: 'ab-b2-runtime-hs-19-2', x: 79, y: 64, title: "A Public Trial", description: "Abraham (pbuh) did not resist his arrest, because a trial let him show everyone that their beliefs were foolish." },
+    ],
+  },
+  20: {
+    vocabulary: [
+      { word: "culprit", partOfSpeech: "noun", definition: "The person who is responsible for a crime or wrong action." },
+      { word: "arrogance", partOfSpeech: "noun", definition: "Too much pride that makes a person unwilling to accept that they are wrong." },
+      { word: "admit", partOfSpeech: "verb", definition: "To accept that something is true, often unwillingly." },
+      { word: "tyrants", partOfSpeech: "noun", definition: "Rulers who use their power in a cruel and unfair way." },
+      { word: "revenge", partOfSpeech: "noun", definition: "Harm done to someone as a punishment for harm they have done." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-20-1', x: 29, y: 29, title: "Pride over Truth", description: "The people knew their beliefs were foolish, but their arrogance stopped them from admitting it." },
+      { id: 'ab-b2-runtime-hs-20-2', x: 69, y: 67, title: "Preparing the Fire", description: "The citizens gathered wood for days and filled a deep pit to burn Abraham (pbuh) alive." },
+    ],
+  },
+  21: {
+    vocabulary: [
+      { word: "flames", partOfSpeech: "noun", definition: "The bright, hot parts of a fire that rise into the air." },
+      { word: "pit", partOfSpeech: "noun", definition: "A large, deep hole in the ground." },
+      { word: "catapult", partOfSpeech: "noun", definition: "A machine used in the past to throw heavy objects over a long distance." },
+      { word: "rising", partOfSpeech: "adjective", definition: "Moving or growing upwards." },
+      { word: "coolness", partOfSpeech: "noun", definition: "A pleasant, slightly cold quality." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-21-1', x: 36, y: 42, title: "Nothing from You", description: "When the angel Gabriel asked whether he wished for anything, Abraham (pbuh) replied that he wanted nothing from him." },
+      { id: 'ab-b2-runtime-hs-21-2', x: 59, y: 60, title: "Like a Cool Garden", description: "Allah ordered the fire to be cool and safe, so it burned only Abraham’s (pbuh) ropes." },
+    ],
+  },
+  22: {
+    vocabulary: [
+      { word: "breathless", partOfSpeech: "adjective", definition: "Hardly able to take in air." },
+      { word: "extinguished", partOfSpeech: "verb", definition: "(Of a fire) put out so that it stops burning." },
+      { word: "blackened", partOfSpeech: "verb", definition: "Made something dark in colour, for example with smoke or fire." },
+      { word: "shamed", partOfSpeech: "verb", definition: "Made someone feel disgraced in front of others." },
+      { word: "dare", partOfSpeech: "verb", definition: "To be brave enough to do something dangerous or difficult." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-22-1', x: 21, y: 55, title: "Allah Is Sufficient", description: "Abraham’s (pbuh) last words before entering the fire were “Allah is sufficient for me.”" },
+      { id: 'ab-b2-runtime-hs-22-2', x: 70, y: 49, title: "Out of the Pit", description: "Abraham (pbuh) walked out of the fire unharmed with a bright face, while smoke had blackened the faces of those watching." },
+    ],
+  },
+  23: {
+    vocabulary: [
+      { word: "ordinary", partOfSpeech: "adjective", definition: "Normal and not special in any way." },
+      { word: "filled with rage", partOfSpeech: "verb", definition: "Became extremely angry." },
+      { word: "disputed", partOfSpeech: "verb", definition: "Argued against someone about something." },
+      { word: "undeniable", partOfSpeech: "adjective", definition: "So clearly true that nobody can say it is false." },
+      { word: "sentenced to death", partOfSpeech: "verb", definition: "Officially ordered by a judge or ruler to be killed as a punishment." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-23-1', x: 28, y: 31, title: "A King Who Claimed to Be God", description: "King Nimrod claimed to be a god and called Abraham (pbuh) to argue with him in person." },
+      { id: 'ab-b2-runtime-hs-23-2', x: 60, y: 42, title: "Life and Death", description: "Nimrod freed one condemned man and had the other killed, claiming that he too gave life and caused death." },
+    ],
+  },
+  24: {
+    vocabulary: [
+      { word: "put forth", partOfSpeech: "verb", definition: "Offered an idea or argument for others to consider." },
+      { word: "unquestionably", partOfSpeech: "adverb", definition: "In a way that nobody can doubt." },
+      { word: "utterly defeated", partOfSpeech: "adjective", definition: "Completely beaten, with nothing left to say." },
+      { word: "fame", partOfSpeech: "noun", definition: "The state of being known and talked about by many people." },
+      { word: "means", partOfSpeech: "noun", definition: "Methods or ways of achieving something." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-24-1', x: 35, y: 44, title: "The Sun from the West", description: "Abraham (pbuh) challenged Nimrod to make the sun rise from the west, and the king could not answer." },
+      { id: 'ab-b2-runtime-hs-24-2', x: 71, y: 59, title: "Only Two Believers", description: "Only Sarah and Lot (pbuh) shared Abraham’s (pbuh) belief; Sarah became his wife, and Lot later became a prophet." },
+    ],
+  },
+  25: {
+    vocabulary: [
+      { word: "emigrate", partOfSpeech: "verb", definition: "To leave your own country to live in another." },
+      { word: "righteousness", partOfSpeech: "noun", definition: "Behaviour that is morally good and fair." },
+      { word: "sterile", partOfSpeech: "adjective", definition: "Unable to have children." },
+      { word: "aged", partOfSpeech: "verb", definition: "Grew old." },
+      { word: "suggested", partOfSpeech: "verb", definition: "Put forward an idea for someone to think about." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-25-1', x: 42, y: 57, title: "Journey to Egypt", description: "Abraham (pbuh) left his people with Sarah and Lot (pbuh), travelled to Egypt and then settled in Palestine." },
+      { id: 'ab-b2-runtime-hs-25-2', x: 61, y: 38, title: "The Birth of Ishmael", description: "Hagar gave birth to Ishmael (pbuh) when Abraham (pbuh) was already an old man." },
+    ],
+  },
+  26: {
+    vocabulary: [
+      { word: "offspring", partOfSpeech: "noun", definition: "A person’s children, grandchildren and later generations." },
+      { word: "descendants", partOfSpeech: "noun", definition: "People who come from a particular ancestor over many generations." },
+      { word: "informed", partOfSpeech: "verb", definition: "Told someone about something." },
+      { word: "nursing", partOfSpeech: "verb", definition: "Feeding a baby with milk from the breast." },
+      { word: "uncultivated", partOfSpeech: "adjective", definition: "Not used for growing crops or plants." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-26-1', x: 27, y: 33, title: "Two Sons, Many Prophets", description: "Prophet Muhammad (pbuh) came from Ishmael’s (pbuh) descendants, and Moses (pbuh) and Jesus (pbuh) came from Isaac’s (pbuh)." },
+      { id: 'ab-b2-runtime-hs-26-2', x: 72, y: 55, title: "Across the Desert", description: "Abraham (pbuh) led Hagar and baby Ishmael (pbuh) to a valley near the hills of Safa and Marwa." },
+    ],
+  },
+  27: {
+    vocabulary: [
+      { word: "anxious", partOfSpeech: "adjective", definition: "Worried and nervous about what may happen." },
+      { word: "comfort", partOfSpeech: "noun", definition: "A feeling of calm and relief after worry." },
+      { word: "satisfied", partOfSpeech: "adjective", definition: "Pleased and content with something." },
+      { word: "dates", partOfSpeech: "noun", definition: "The sweet brown fruit of the palm tree." },
+      { word: "advanced", partOfSpeech: "verb", definition: "Moved forward." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-27-1', x: 34, y: 46, title: "In Allah’s Care", description: "Abraham (pbuh) left Hagar and Ishmael (pbuh) in the empty valley with only water and dates, trusting them to Allah." },
+      { id: 'ab-b2-runtime-hs-27-2', x: 62, y: 34, title: "Hagar’s Question", description: "Hagar asked whether Allah had commanded this, and when Abraham (pbuh) said yes, she was at peace." },
+    ],
+  },
+  28: {
+    vocabulary: [
+      { word: "dwell", partOfSpeech: "verb", definition: "To live in a particular place." },
+      { word: "barren", partOfSpeech: "adjective", definition: "Dry and unable to produce plants or crops." },
+      { word: "intention", partOfSpeech: "noun", definition: "What someone plans or wants to happen." },
+      { word: "flood", partOfSpeech: "noun", definition: "A large amount of water covering land that is usually dry." },
+      { word: "renewed", partOfSpeech: "adjective", definition: "Made new or active again after a period." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-28-1', x: 41, y: 59, title: "A Prayer for the Valley", description: "Abraham (pbuh) prayed that people’s hearts would love the family he had left near the Sacred House." },
+      { id: 'ab-b2-runtime-hs-28-2', x: 73, y: 65, title: "The Ka‘ba’s Lost Place", description: "Hagar and Ishmael (pbuh) settled near the site of the Ka‘ba, which had been lost after Noah’s (pbuh) Flood." },
+    ],
+  },
+  29: {
+    vocabulary: [
+      { word: "used up", partOfSpeech: "verb", definition: "Finished completely so that none was left." },
+      { word: "grief", partOfSpeech: "noun", definition: "Deep sadness, especially after a loss." },
+      { word: "caravan", partOfSpeech: "noun", definition: "A group of travellers with animals crossing a desert together." },
+      { word: "commemorated", partOfSpeech: "verb", definition: "Remembered and honoured with a special act or ceremony." },
+      { word: "pilgrimage", partOfSpeech: "noun", definition: "A journey to a holy place for religious reasons." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-29-1', x: 26, y: 35, title: "Seven Runs", description: "Hagar ran between Safa and Marwa seven times, looking for water or help." },
+      { id: 'ab-b2-runtime-hs-29-2', x: 63, y: 68, title: "An Echo in Hajj", description: "Muslims on Hajj repeat Hagar’s search when they walk between the two hills (sa’y)." },
+    ],
+  },
+  30: {
+    vocabulary: [
+      { word: "heel", partOfSpeech: "noun", definition: "The back part of the foot." },
+      { word: "basin", partOfSpeech: "noun", definition: "A low, bowl-shaped hollow that holds water." },
+      { word: "abundant", partOfSpeech: "adjective", definition: "Existing in large amounts; more than enough." },
+      { word: "origin", partOfSpeech: "noun", definition: "The place or point where something begins." },
+      { word: "abandons", partOfSpeech: "verb", definition: "Leaves someone alone without help or care." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-30-1', x: 33, y: 48, title: "Water from the Ground", description: "The angel Gabriel struck the ground with his heel, and the water of Zamzam flowed out." },
+      { id: 'ab-b2-runtime-hs-30-2', x: 74, y: 61, title: "A Bird over the Valley", description: "The tribe of Jurham saw a bird flying towards the valley and understood that there was water there." },
+    ],
+  },
+  31: {
+    vocabulary: [
+      { word: "admired", partOfSpeech: "verb", definition: "Respected and liked someone very much." },
+      { word: "gentle", partOfSpeech: "adjective", definition: "Kind, calm and soft in manner." },
+      { word: "ultimate test", partOfSpeech: "noun", definition: "The greatest and hardest trial of someone’s faith." },
+      { word: "glad tidings", partOfSpeech: "noun", definition: "Good news that brings happiness." },
+      { word: "forbearing", partOfSpeech: "adjective", definition: "Patient and calm, even when treated badly." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-31-1', x: 40, y: 61, title: "Growing Up Among the Jurham", description: "Ishmael (pbuh) grew up among the Jurham, learned Arabic from them and married the daughter of one of their leaders." },
+      { id: 'ab-b2-runtime-hs-31-2', x: 64, y: 50, title: "The Hardest Dream", description: "Abraham (pbuh) saw in a dream that he was sacrificing his son, and Ishmael (pbuh) told him to do what he was commanded." },
+    ],
+  },
+  32: {
+    vocabulary: [
+      { word: "Allah-fearing", partOfSpeech: "adjective", definition: "Deeply devoted and careful to avoid sin." },
+      { word: "laid", partOfSpeech: "verb", definition: "Placed someone down on the ground." },
+      { word: "willingness", partOfSpeech: "noun", definition: "The state of being ready and happy to do something." },
+      { word: "substitute", partOfSpeech: "noun", definition: "Something that takes the place of another." },
+      { word: "ram", partOfSpeech: "noun", definition: "An adult male sheep." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-32-1', x: 25, y: 37, title: "A Voice at the Last Moment", description: "A voice stopped Abraham (pbuh) just as the knife was about to reach Ishmael (pbuh)." },
+      { id: 'ab-b2-runtime-hs-32-2', x: 75, y: 57, title: "A Leader for Humanity", description: "Because Abraham (pbuh) passed every test, Allah made him a leader for people and chose messengers from his children." },
+    ],
+  },
+  33: {
+    vocabulary: [
+      { word: "widespread", partOfSpeech: "adjective", definition: "Existing or happening in many places or among many people." },
+      { word: "equivalent", partOfSpeech: "adjective", definition: "Equal in value or meaning to something else." },
+      { word: "era", partOfSpeech: "noun", definition: "A long period of history." },
+      { word: "separation", partOfSpeech: "noun", definition: "A time when people are apart from each other." },
+      { word: "longing", partOfSpeech: "noun", definition: "A strong wish to see or have someone or something you love." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-33-1', x: 32, y: 50, title: "The Day of Sacrifice", description: "Every year during Hajj, Muslims remember Abraham’s (pbuh) trust in Allah on the Day of Sacrifice." },
+      { id: 'ab-b2-runtime-hs-33-2', x: 65, y: 60, title: "Father and Son Reunited", description: "After years apart, Abraham (pbuh) and Ishmael (pbuh) embraced each other and cried with joy." },
+    ],
+  },
+  34: {
+    vocabulary: [
+      { word: "made sacred", partOfSpeech: "verb", definition: "Declared holy and protected from harm or disrespect." },
+      { word: "foundations", partOfSpeech: "noun", definition: "The strong base under a building that supports it." },
+      { word: "handing", partOfSpeech: "verb", definition: "Passing something directly to another person." },
+      { word: "response", partOfSpeech: "noun", definition: "An answer or reaction to something." },
+      { word: "establish", partOfSpeech: "verb", definition: "To set up something that will last." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-34-1', x: 39, y: 63, title: "Standing on the Stone", description: "When the walls grew high, Abraham (pbuh) stood on the stone of Al-Maqam while Ishmael (pbuh) handed him the stones." },
+      { id: 'ab-b2-runtime-hs-34-2', x: 76, y: 39, title: "A Prayer While Building", description: "As they built, father and son asked Allah to accept their service." },
+    ],
+  },
+  35: {
+    vocabulary: [
+      { word: "restorer", partOfSpeech: "noun", definition: "A person who rebuilds something old and returns it to its first condition." },
+      { word: "embrace", partOfSpeech: "verb", definition: "To accept a belief fully and follow it." },
+      { word: "completion", partOfSpeech: "noun", definition: "The act of finishing something." },
+      { word: "coexisted", partOfSpeech: "verb", definition: "Existed together at the same time and in the same place." },
+      { word: "salvation", partOfSpeech: "noun", definition: "Being saved from sin, danger or ruin." },
+    ],
+    hotspots: [
+      { id: 'ab-b2-runtime-hs-35-1', x: 24, y: 39, title: "A House for Everyone", description: "Abraham (pbuh) built a place of worship for all people, not for one race or colour." },
+      { id: 'ab-b2-runtime-hs-35-2', x: 66, y: 56, title: "Dividing the Lands", description: "Before his death, Abraham (pbuh) left Palestine to Isaac (pbuh) and Mecca to Ishmael (pbuh)." },
+    ],
+  },
 };
 
 // t01a
@@ -819,20 +1021,6 @@ const STORY_IDS=new Set(Array.from({length:35},(_,index)=>index+1));
 const englishLanguageFocus:Record<number,Exercise[]>={...abrahamB2LanguageFocusPart1,...abrahamB2LanguageFocusPart2,...abrahamB2LanguageFocusPart3};
 const imageTokens=['43d9ebc7-48bf-4186-b63b-67bc0e802ccb','76b855a8-e11a-4cb0-b253-66dd9fbdaa49','f4afdb01-ccbe-4c95-9d16-69c26e703deb','7ba07b75-fcfb-4638-aba5-6f39c7926a48','57f04b55-8f74-40a7-be8c-3cb930c389a5','1bd63548-b8cf-4771-bce4-e6257f83edb7','2747cb7b-e6dd-4f64-a0f7-e229fb1f4998','b0ebd110-9850-4988-a3cb-eb3a9974269a','fca90286-8c0e-4b54-873d-e690f315f907','813a7fab-1e6f-4972-b23e-9e26fd9dec92','31c4c791-2a72-46a1-b54c-a10fe39472db','66045d4f-213c-4096-8776-df44861d0ea5','66892559-503c-4a8f-a4ab-2192bbe5851c','a806d7bc-e4ff-41b0-bc59-5192dce9440f','adb653da-0511-40dc-9db5-02c362fb3b20','e290f82a-46e4-4fd5-ad84-aa98df6f87cf','f3799f77-fe5d-4f3d-8f93-e90c9b1ef428','014cbefa-f28e-4915-a830-0256099d9a24','8a010ead-3641-4729-b9ee-aefcbed2be7b','46806189-2bf4-4bf7-b1c7-a8d934b2c191','bddaf258-5e76-44c4-a78a-36db4249d291','5b890972-155f-4ceb-a5ad-0027cc3524d4','3e850ea7-1b41-4439-bfb9-8c7fa2b4ed25','e809ade7-76af-453c-b299-cd151511e886','9cc99be9-686a-4898-bfec-1b3dd6ecf95b','13a18e7a-ab1f-4ce3-8d62-38b0a724aead','68966648-2077-4abf-80dd-d62eee99796e','35ed5958-0500-41a6-a170-e549c4a069f5','9d7364c7-1103-4862-af19-814cdf3a8384','1f01566b-ffc3-4fc0-be30-a13c92a9365e','258e6e7d-cfec-4f9a-af48-0a3ec52237f3','8e36da5a-2c1c-4086-9649-e34ed6586a30','e2eb0e82-eb65-45a2-b9fb-98c88bf7450e','48f70835-c4b4-4c22-ba7d-b7326278970e','580c305e-c318-42f7-aae9-ec2f6b8d306b'] as const;
 export const abrahamB2ImageUrl=(chapter:number)=>`https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Fimages%2Fabraham_b2_ch${chapter}-clean.png?alt=media&token=${imageTokens[chapter-1]}`;
-const englishSurfaceAlternates: Record<string,string> = {
-  'human capacity': 'Human beings are capable',
-  'demonstrate in public': 'demonstrate to them in public',
-  'throughout the Arabian Peninsula': 'all over the Arabian Peninsula',
-  'proxy': 'substitute',
-};
-const findEnglishSurface=(content:string,needle:string):string|null=>{
-  const candidate=englishSurfaceAlternates[needle]??needle;
-  // Case-insensitive search that keeps string positions: toLocaleLowerCase can change the length of
-  // the text (for example "İ" becomes two characters), which shifted the slice and cut words.
-  const index=content.search(new RegExp(candidate.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'));
-  return index<0?null:content.slice(index,index+candidate.length);
-};
-export const abrahamB2HotspotCoords=(chapter:number)=>{const leftX=21+((chapter*7)%22);const rightX=59+((chapter*11)%21);const firstY=28+((chapter*13)%37);let secondY=31+((chapter*17)%38);if(Math.abs(firstY-secondY)<9)secondY=secondY<52?secondY+14:secondY-14;return[{x:leftX,y:firstY},{x:rightX,y:secondY}] as const;};
 const cleanEnglishPage=(page:PageData):PageData=>{const{exercises:_exercises,vocabularyPairs:_vocabularyPairs,...base}=page;if(page.id===36)return{...base,type:'quiz',title:'Knowledge Check',content:'Check your understanding of the complete Prophet Abraham B2 story.',image:'',audioUrl:'',vocabulary:undefined,hotspots:undefined,animatedWords:undefined,syncPoints:undefined,timedChunks:undefined};if(page.id===37)return{...base,type:'exercises',title:'Language Review',content:'Review and use the source, stance, time, cohesion and discourse patterns developed across the complete story.',image:''};if(page.id===38)return{...base,type:'vocabulary-match',title:'B2 Vocabulary Challenge',content:'Match ten meaning-bearing story terms with their precise meanings.',image:'',vocabulary:undefined,animatedWords:undefined};if(page.id===39)return{...base,type:'glossary',title:'Master Glossary',content:'Review all key vocabulary from the story in one place.',image:''};if(page.id===40)return{...base,type:'final-challenge',title:'Final Challenge',content:'Demonstrate whole-book B2 mastery through analysis, evidence, comparison, and synthesis.',image:''};return base;};
 const abrahamB2GlossaryCategoryByChapter: Record<number,string> = {
   1:'Belief & Theology',2:'Belief & Theology',3:'Belief & History',4:'History & Society',5:'History & Mission',
@@ -843,35 +1031,22 @@ const abrahamB2GlossaryCategoryByChapter: Record<number,string> = {
   26:'Family & Legacy',27:'Trust & Migration',28:'Mecca & Sacred Geography',29:'Hagar & Pilgrimage',30:'Zamzam & Settlement',
   31:'Sacrifice & Family',32:'Submission & Mercy',33:'Sacrifice & Religious Practice',34:'Ka‘ba & Construction',35:'Legacy & Monotheism',
 };
-const inferAbrahamB2PartOfSpeech=(word:string,definition:string):string=>{
-  const lower=definition.toLocaleLowerCase('en');
-  if(/^(to |moved |lost |changed |warned |returned |taken |presented |acted |carried |declared |existed |struck |established |claimed |destroyed |passed |made |left |refused |reached |officially ordered |openly showing |took part |killing |constructing |passing )/.test(lower)) return word.includes(' ')?'verb phrase':'verb';
-  if(/^(by using |in a way |naturally |economically |openly |directly )/.test(lower)) return 'adverbial phrase';
-  if(/^(behaving |clearly showing |continuing |not deserving |free from |extremely |unable |having |present in |worried |kind and mild |so strong |morally |existing or practiced |declared holy )/.test(lower)) return word.includes(' ')?'adjective phrase':'adjective';
-  return word.includes(' ')?'noun phrase':'noun';
-};
-const findAbrahamB2StoryExample=(content:string,word:string):string|null=>{
-  const target=word.toLocaleLowerCase('en');
-  const sentences=content
-    .split(/\n+/)
-    .flatMap(paragraph=>paragraph.trim().split(/(?<=[.!?])(?:["”’']?)(?:\s+|$)/))
-    .map(sentence=>sentence.trim())
-    .filter(Boolean);
-  return sentences.find(sentence=>sentence.toLocaleLowerCase('en').includes(target))
-    ?? content.split(/\n+/).map(part=>part.trim()).find(part=>part.toLocaleLowerCase('en').includes(target))
-    ?? null;
-};
-const standardizeEnglishStory=(page:PageData):PageData=>{if(!STORY_IDS.has(page.id))return page;const resolved=(abrahamB2CanonicalVocabulary[page.id]??[]).map(([enNeedle,_arNeedle,enDefinition])=>{const word=findEnglishSurface(page.content??'',enNeedle);return word?{word,definition:enDefinition}:null;}).filter((item):item is {word:string;definition:string}=>item!==null).slice(0,5);if(resolved.length!==5)console.warn(`[Abraham B2 EN] Chapter ${page.id} resolved ${resolved.length}/5 canonical vocabulary items.`);const coordinates=abrahamB2HotspotCoords(page.id);const hotspots=resolved.slice(0,2).map((item,index)=>({id:`ab-b2-runtime-hs-${page.id}-${index+1}`,...coordinates[index],title:item.word,description:item.definition}));return{...page,image:abrahamB2ImageUrl(page.id),vocabulary:resolved,hotspots,animatedWords:undefined,syncPoints:undefined,timedChunks:undefined};};
+const standardizeEnglishStory=(page:PageData):PageData=>STORY_IDS.has(page.id)?{...page,image:abrahamB2ImageUrl(page.id),...abrahamB2StoryNotes[page.id],animatedWords:undefined,syncPoints:undefined,timedChunks:undefined}:page;
 const standardizedEnglishPages=rawAbrahamB2Pages.map(cleanEnglishPage).map(standardizeEnglishStory);
+// The Master Glossary lists every Word Note with its chapter and the story sentence it comes from.
+const storySentences=(content:string):string[]=>content
+  .split(/\n+/)
+  .flatMap(paragraph=>paragraph.trim().split(/(?<=[.!?][”"’]?)\s+/))
+  .map(sentence=>sentence.trim())
+  .filter(Boolean);
 const englishGlossary:NonNullable<PageData['vocabulary']>=standardizedEnglishPages
   .filter(page=>STORY_IDS.has(page.id))
   .flatMap(page=>(page.vocabulary??[]).map(item=>{
-    const storyExample=findAbrahamB2StoryExample(page.content??'',item.word);
+    const storyExample=storySentences(page.content??'').find(sentence=>highlightPhraseOccurs(sentence,item.word,'en'));
     if(!storyExample)throw new Error(`[Abraham B2 EN] Missing source example for ${item.word} in chapter ${page.id}.`);
     return{
       ...item,
       level:'B2' as const,
-      partOfSpeech:inferAbrahamB2PartOfSpeech(item.word,item.definition),
       chapter:page.id,
       chapterTitle:page.title,
       storyExample,
