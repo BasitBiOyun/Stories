@@ -1098,13 +1098,18 @@ const translations: Record<Language, Record<string, string>> = {
 const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    const stored = localStorage.getItem('app_language');
+    if (stored === 'en' || stored === 'ar') return stored;
+    return navigator.language?.toLowerCase().startsWith('ar') ? 'ar' : 'en';
+  });
 
   const isRTL = language === 'ar';
 
   useEffect(() => {
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
+    localStorage.setItem('app_language', language);
   }, [language, isRTL]);
 
   const t = (key: string) => {
