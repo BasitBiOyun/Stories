@@ -392,11 +392,44 @@ export const StoryPage = ({
   // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
   const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
   const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
+  // "What's next": the chapter's audio finished, or the reader scrolled to the end of the text.
+  const [audioEnded, setAudioEnded] = useState(false);
+  const [textEndReached, setTextEndReached] = useState(false);
+  const endSentinelsRef = useRef<Set<HTMLDivElement>>(new Set());
 
   useEffect(() => {
     if (page.type === 'story') trackChapterVisit(page.id);
     setIsLanguageFocusOpen(false);
+    setAudioEnded(false);
+    setTextEndReached(false);
   }, [page.id, page.type]);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) setTextEndReached(true);
+    });
+    endSentinelsRef.current.forEach(node => observer.observe(node));
+    return () => observer.disconnect();
+  }, [page.id]);
+
+  const registerEndSentinel = (node: HTMLDivElement | null) => {
+    if (node) endSentinelsRef.current.add(node);
+    else endSentinelsRef.current.clear();
+  };
+
+  // The reader's footer asks for the Quick Challenge when the reader tries to move on without it.
+  useEffect(() => {
+    const focusQuickChallenge = () => {
+      const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-quick-challenge]'));
+      const visible = panels.find(panel => panel.offsetParent !== null) ?? panels[0];
+      visible?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const exercise = page.exercises?.[0];
+      if (exercise) window.setTimeout(() => setActiveExercise(exercise), 450);
+    };
+    window.addEventListener('reader:focus-quick-challenge', focusQuickChallenge);
+    return () => window.removeEventListener('reader:focus-quick-challenge', focusQuickChallenge);
+  }, [page.id, page.exercises]);
 
   const isArabic = language === 'ar';
   const highlightLanguage = isArabic ? 'ar' : 'en';
@@ -1023,6 +1056,91 @@ export const StoryPage = ({
 
   const isAudioLocked = false;
 
+  const quickExercise = page.exercises?.[0];
+  const quickDone = Boolean(quickExercise && completedExercises.includes(quickExercise.id));
+  const focusExercises = page.languageFocusExercises ?? [];
+  const focusDone = focusExercises.length > 0 && focusExercises.every(exercise => completedExercises.includes(exercise.id));
+  const listened = audioEnded || stats.audioChaptersPlayed.has(page.id);
+
+  // End of the text: a sentinel for the observer, and the call to the Quick Challenge once the reader is there.
+  const renderNextUp = () => (
+    <>
+      <div ref={registerEndSentinel} className="h-px w-full" aria-hidden="true" />
+      <AnimatePresence>
+        {quickExercise && !quickDone && (audioEnded || textEndReached) && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.2 }}
+            className="mt-5 flex justify-end"
+          >
+            <button
+              type="button"
+              data-next-up
+              onClick={() => setActiveExercise(quickExercise)}
+              className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-700 px-5 font-display text-[12px] font-semibold text-white shadow-lg transition-colors hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            >
+              <Rocket size={15} />
+              {t('nav.nextUpQuickChallenge')}
+              <ArrowRight size={15} className={cn('transition-transform group-hover:translate-x-0.5', isRTL && 'rotate-180 group-hover:-translate-x-0.5')} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+
+  // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
+  const renderChapterSteps = () => {
+    if (page.type !== 'story') return null;
+    const steps: { key: string; label: string; done: boolean; onClick?: () => void }[] = [];
+    if (page.audioUrl) steps.push({ key: 'listen', label: t('nav.stepListen'), done: listened });
+    steps.push({ key: 'read', label: t('nav.stepRead'), done: textEndReached });
+    if (quickExercise) {
+      steps.push({ key: 'quick', label: t('nav.quickChallenge'), done: quickDone, onClick: () => setActiveExercise(quickExercise) });
+    }
+    if (focusExercises.length > 0) {
+      steps.push({
+        key: 'focus',
+        label: t('nav.languageFocus'),
+        done: focusDone,
+        onClick: () => {
+          setIsLanguageFocusOpen(true);
+          const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-language-focus]'));
+          (panels.find(panel => panel.offsetParent !== null) ?? panels[0])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        },
+      });
+    }
+    if (steps.length < 2) return null;
+    return (
+      <ol className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
+        {steps.map(step => {
+          const chip = (
+            <span
+              className={cn(
+                'inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-display text-[11px] font-semibold',
+                step.done ? 'bg-emerald-100 text-emerald-800' : 'bg-black/[0.05] text-wood/62',
+              )}
+            >
+              <span aria-hidden="true">{step.done ? '✓' : '○'}</span>
+              {step.label}
+            </span>
+          );
+          return (
+            <li key={step.key} className="flex">
+              {step.onClick ? (
+                <button type="button" onClick={step.onClick} className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+                  {chip}
+                </button>
+              ) : chip}
+            </li>
+          );
+        })}
+      </ol>
+    );
+  };
+
   const renderQuickChallengePanel = () => {
     const exercise = page.exercises?.[0];
     if (!exercise) return null;
@@ -1042,8 +1160,9 @@ export const StoryPage = ({
       <motion.section
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full shrink-0 mt-6"
+        className="w-full shrink-0 mt-6 scroll-mt-4"
         aria-label={t('nav.quickChallenge')}
+        data-quick-challenge
       >
         <div className={cn(
           'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_16px_42px_rgba(63,49,28,0.08)]',
@@ -1149,8 +1268,9 @@ export const StoryPage = ({
       <motion.section
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className={cn('w-full shrink-0', mobile ? 'mt-1' : 'mt-4')}
-        aria-label={language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
+        className={cn('w-full shrink-0 scroll-mt-4', mobile ? 'mt-1' : 'mt-4')}
+        aria-label={t('nav.languageFocus')}
+        data-language-focus
       >
         <div className={cn(
           'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_14px_38px_rgba(63,49,28,0.06)]',
@@ -1342,6 +1462,7 @@ export const StoryPage = ({
           )}>
             {t('nav.chapter')} {formatNumber(page.id)}
           </p>
+          {renderChapterSteps()}
         </div>
 
         <div className="shrink-0 w-full sm:w-auto">
@@ -1357,7 +1478,7 @@ export const StoryPage = ({
               <audio
                 ref={audioRef}
                 src={page.audioUrl}
-                onEnded={() => setIsPlaying(false)}
+                onEnded={() => { setIsPlaying(false); setAudioEnded(true); }}
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
               />
@@ -1573,6 +1694,7 @@ export const StoryPage = ({
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
           >
             {renderContent(page.content)}
+            {renderNextUp()}
           </div>
 
           {renderQuickChallengePanel()}
@@ -1633,6 +1755,7 @@ export const StoryPage = ({
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
               >
                 {renderContent(page.content)}
+                {renderNextUp()}
               </div>
             </div>
           </div>

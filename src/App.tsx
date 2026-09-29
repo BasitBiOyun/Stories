@@ -365,11 +365,54 @@ const AppContent = () => {
     setShowSummary(false);
   };
 
-  const handleNextPage = () => {
+  // Moving on with the chapter's Quick Challenge still open: one reminder per chapter, then the reader decides.
+  const [isQuickReminderOpen, setIsQuickReminderOpen] = useState(false);
+  const remindedPagesRef = useRef<Set<string>>(new Set());
+
+  const advancePage = () => {
+    setIsQuickReminderOpen(false);
     if (currentPageIndex < totalPages - 1) {
       setCurrentPageIndex(prev => prev + 1);
     }
   };
+
+  const handleNextPage = () => {
+    if (isQuickReminderOpen) {
+      advancePage();
+      return;
+    }
+    const quickExercise = currentPage?.type === 'story' ? currentPage.exercises?.[0] : undefined;
+    const reminderKey = `${selectedProphetId}:${currentLevel}:${currentPage?.id}`;
+    if (
+      quickExercise &&
+      currentPageIndex < totalPages - 1 &&
+      !doneExerciseSet.has(quickExercise.id) &&
+      !remindedPagesRef.current.has(reminderKey)
+    ) {
+      remindedPagesRef.current.add(reminderKey);
+      setIsQuickReminderOpen(true);
+      return;
+    }
+    advancePage();
+  };
+
+  const handleGoToQuickChallenge = () => {
+    setIsQuickReminderOpen(false);
+    window.dispatchEvent(new Event('reader:focus-quick-challenge'));
+  };
+
+  useEffect(() => {
+    setIsQuickReminderOpen(false);
+  }, [currentPageIndex, selectedProphetId, currentLevel]);
+
+  useEffect(() => {
+    if (!isQuickReminderOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsQuickReminderOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isQuickReminderOpen]);
 
   const handlePrevPage = () => {
     if (currentPageIndex > 0) {
@@ -1061,7 +1104,41 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="relative flex items-center gap-2">
+            <AnimatePresence>
+              {isQuickReminderOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                  transition={{ duration: 0.18 }}
+                  role="dialog"
+                  aria-labelledby="quick-reminder-title"
+                  data-quick-reminder
+                  className="absolute bottom-[calc(100%+10px)] left-1/2 z-50 w-[min(300px,calc(100vw-24px))] -translate-x-1/2 rounded-panel bg-white p-4 text-start shadow-[0_18px_48px_rgba(0,0,0,0.28)] ring-1 ring-black/10"
+                >
+                  <p id="quick-reminder-title" className="font-display text-[14px] font-semibold text-wood">{t('nav.quickChallengeFirst')}</p>
+                  <p className="mt-1 font-serif text-[13px] leading-snug text-wood/70">{t('nav.quickChallengeFirstHint')}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={handleGoToQuickChallenge}
+                      className="inline-flex min-h-10 flex-1 items-center justify-center rounded-full bg-brand-700 px-4 font-display text-[12px] font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+                    >
+                      {t('nav.goToQuickChallenge')}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={advancePage}
+                      className="inline-flex min-h-10 items-center justify-center rounded-full px-4 font-display text-[12px] font-semibold text-wood/70 ring-1 ring-black/10 transition-colors hover:bg-black/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                    >
+                      {t('nav.skipForNow')}
+                    </button>
+                  </div>
+                  <span aria-hidden="true" className="absolute left-1/2 top-full h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white ring-1 ring-black/10" />
+                </motion.div>
+              )}
+            </AnimatePresence>
             <button 
               onClick={handlePrevPage}
               disabled={currentPageIndex === 0}
