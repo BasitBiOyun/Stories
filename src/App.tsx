@@ -31,6 +31,7 @@ import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './l
 import { getStoryMeta } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
+import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
@@ -119,6 +120,7 @@ const AppContent = () => {
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { resetStats } = useStoryProgress();
+  const { isSupported: canFullscreen, isFullscreen, toggleFullscreen } = useFullscreen();
   const {
     definition: currentDefinition,
     pair: currentBookPair,
@@ -456,6 +458,31 @@ const AppContent = () => {
     isFinalChallengePage
   ]);
 
+  // A horizontal swipe on a touch screen turns the page; sliders, inputs and open overlays are left alone.
+  const swipeStartRef = useRef<{ x: number; y: number; ignore: boolean } | null>(null);
+  const handleSwipeStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    const target = e.target as HTMLElement | null;
+    const ignore =
+      !touch ||
+      Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"]')) ||
+      showSummary || isFinalChallengePage ||
+      isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+    swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
+  };
+  const handleSwipeEnd = (e: React.TouchEvent) => {
+    const start = swipeStartRef.current;
+    swipeStartRef.current = null;
+    const touch = e.changedTouches[0];
+    if (!start || start.ignore || !touch) return;
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    if (Math.abs(dx) < 70 || Math.abs(dy) > 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    const forward = isRTL ? dx > 0 : dx < 0;
+    if (forward) handleNextPage();
+    else handlePrevPage();
+  };
+
   const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (totalPages <= 1 || isFinalChallengePage) return;
     const rect = e.currentTarget.getBoundingClientRect();
@@ -684,7 +711,8 @@ const AppContent = () => {
                   className="max-w-[150px] truncate font-display text-[12px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
                   title={currentBookTitle}
                 >
-                  {currentBookTitle}
+                  <span className="sm:hidden">{currentPage?.title || currentBookTitle}</span>
+                  <span className="hidden sm:inline">{currentBookTitle}</span>
                 </h2>
                 <span className={cn(
                   "mt-0.5 block text-[11px] font-semibold uppercase tracking-[0.16em] sm:text-xs",
@@ -792,6 +820,22 @@ const AppContent = () => {
                           <span className="h-4 w-4 rounded-full bg-white shadow" />
                         </span>
                       </button>
+
+                      {canFullscreen && (
+                        <button
+                          type="button"
+                          onClick={() => { void toggleFullscreen(); }}
+                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                          aria-pressed={isFullscreen}
+                        >
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {isFullscreen
+                              ? (language === 'ar' ? 'الخروج من ملء الشاشة' : 'Exit full screen')
+                              : (language === 'ar' ? 'ملء الشاشة' : 'Full screen')}
+                          </span>
+                          <span className="text-parchment/70"><FullscreenIcon size={17} /></span>
+                        </button>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -831,7 +875,7 @@ const AppContent = () => {
               <button 
                 onClick={handleReturnToLibrary}
                 className={cn(
-                  "touch-target hidden items-center justify-center rounded-full border transition-colors sm:flex",
+                  "touch-target flex items-center justify-center rounded-full border transition-colors",
                   themeClasses.buttonSec
                 )}
                 title={t('nav.returnToLibrary')}
@@ -893,7 +937,11 @@ const AppContent = () => {
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 relative z-10 flex flex-col overflow-hidden min-h-0">
+      <main
+        className="flex-1 relative z-10 flex flex-col overflow-hidden min-h-0"
+        onTouchStart={handleSwipeStart}
+        onTouchEnd={handleSwipeEnd}
+      >
         <div className={cn(
           "flex-1 w-full relative page-texture transition-all duration-500 flex flex-col overflow-hidden min-h-0",
           themeClasses.mainBg
@@ -936,7 +984,8 @@ const AppContent = () => {
             >
               <BookMarked className={cn(themeClasses.goldText, "h-4 w-4 shrink-0")} />
               <span className="truncate font-display text-[12px] font-semibold sm:text-[13px] md:text-[14px]">
-                {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
+                <span className="hidden sm:inline">{t('nav.page')} </span>
+                {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
               </span>
               <ChevronUp className={cn("h-3 w-3 shrink-0 opacity-45 transition-transform", isQuickTOCOpen && "rotate-180")} />
             </button>

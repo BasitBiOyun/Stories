@@ -14,7 +14,8 @@ const PhosphorCornersOut = ({ size = 19 }: { size?: number }) => (
   </svg>
 );
 
-export const FullscreenButton = () => {
+/** Whether the page can go full screen, whether it is, and a toggle; the reader's settings menu renders the control. */
+export const useFullscreen = () => {
   const [isSupported, setIsSupported] = React.useState(false);
   const [isFullscreen, setIsFullscreen] = React.useState(false);
 
@@ -27,26 +28,19 @@ export const FullscreenButton = () => {
     return () => document.removeEventListener('fullscreenchange', syncFullscreenState);
   }, []);
 
-  const enterFullscreen = async () => {
-    if (!document.documentElement.requestFullscreen || document.fullscreenElement) return;
+  const toggleFullscreen = async () => {
     try {
-      await document.documentElement.requestFullscreen();
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else if (document.documentElement.requestFullscreen) {
+        await document.documentElement.requestFullscreen();
+      }
     } catch {
       // Browsers may reject fullscreen when it is blocked by the environment.
     }
   };
 
-  if (!isSupported || isFullscreen) return null;
-
-  return (
-    <button
-      type="button"
-      onClick={enterFullscreen}
-      className="fixed right-3 sm:right-4 bottom-16 sm:bottom-20 z-[260] w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-white/15 bg-black/45 backdrop-blur-md text-white/80 hover:text-white hover:bg-black/60 transition-colors shadow-lg flex items-center justify-center"
-      title="Full screen"
-      aria-label="Full screen"
-    >
-      <PhosphorCornersOut />
-    </button>
-  );
+  return { isSupported, isFullscreen, toggleFullscreen };
 };
+
+export const FullscreenIcon = PhosphorCornersOut;
