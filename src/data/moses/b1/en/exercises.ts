@@ -38,7 +38,7 @@ export const mosesB1VocabularyChallengePairs: VocabularyChallengePair[] = [
   { word: 'stranger', meaning: 'A person who is new to a place and does not know people there.', partOfSpeech: 'noun', chapter: 8, context: 'He accepted the offer, because he was a stranger in Midian and he urgently needed a job and a house.' },
   { word: 'signs', meaning: 'Miracles or proofs of Allah’s power.', partOfSpeech: 'noun', chapter: 9, context: 'Allah told Moses to go to Egypt and show the Pharaoh the signs and warn him to get guidance from Allah.' },
   { word: 'display', meaning: 'To show something so that people can see it.', partOfSpeech: 'verb', chapter: 10, context: 'Moses (pbuh) had no choice but to display the miracles.' },
-  { word: 'made fun of', meaning: 'Laughed at someone in an unkind way.', partOfSpeech: 'verb', chapter: 11, context: 'They made fun of Moses (pbuh) and Allah.' },
+  { word: 'made fun of', meaning: 'Laughed at someone in an unkind way.', partOfSpeech: 'verb', chapter: 11, context: 'They made fun of Moses (pbuh) and Allah’s signs.' },
   { word: 'trapped', meaning: 'Unable to escape from a dangerous place.', partOfSpeech: 'adjective', chapter: 13, context: 'They were trapped with the Red Sea in front and the king’s army behind them.' },
 ];
 

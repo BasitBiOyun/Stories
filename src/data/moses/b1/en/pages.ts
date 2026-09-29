@@ -189,7 +189,7 @@ export const mosesB1Pages: PageData[] = [
     11,
     'The Miracle of the Staff',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2F10_Chapter_11_The_Miracle_of_the_Staff.mp3?alt=media&token=dd7499b4-4031-4904-a038-ad43505e4ae0',
-    `They made fun of Moses (pbuh) and Allah. The king said to Moses (pbuh), “This is only magic. All of my magicians can do this.” He invited his magicians to the palace. The magicians came with sticks in their hands. Some were holding ropes. They put down the sticks and ropes. Once the sticks and ropes fell to the ground, they looked just like snakes! When Moses (pbuh) saw them, he got frightened. But Allah spoke to Moses (pbuh), “Throw down your staff!” Moses (pbuh) threw down his staff and it turned into a huge snake. In a second, his staff ate up all the snakes of the magicians. The magicians who witnessed this miracle bowed down to Allah. They shouted, “We believe in the Lord of Moses and Harun!” The king still refused to believe in Allah, because he was arrogant. The Pharaoh did not want to let those who worshipped Allah live. He continued to trouble Moses (pbuh) and his people day and night. He told his advisors and soldiers, “Be rude to them!”`,
+    `They made fun of Moses (pbuh) and Allah’s signs. The king said to Moses (pbuh), “This is only magic. All of my magicians can do this.” He invited his magicians to the palace. The magicians came with sticks in their hands. Some were holding ropes. They put down the sticks and ropes. Once the sticks and ropes fell to the ground, they looked just like snakes! When Moses (pbuh) saw them, he got frightened. But Allah spoke to Moses (pbuh), “Throw down your staff!” Moses (pbuh) threw down his staff and it turned into a huge snake. In a second, his staff ate up all the snakes of the magicians. The magicians who witnessed this miracle bowed down to Allah. They shouted, “We believe in the Lord of Moses and Harun!” The king still refused to believe in Allah, because he was arrogant. The Pharaoh did not want to let those who worshipped Allah live. He continued to trouble Moses (pbuh) and his people day and night. He told his advisors and soldiers, “Be rude to them!”`,
     [
       { word: 'made fun of', definition: 'Laughed at someone in an unkind way.' },
       { word: 'bowed down', definition: 'Bent the body low to the ground to worship.' },
@@ -1105,7 +1105,7 @@ export const mosesB1Pages: PageData[] = [
             ],
             "chapter": 11,
             "chapterTitle": "The Miracle of the Staff",
-            "storyExample": "They made fun of Moses (pbuh) and Allah.",
+            "storyExample": "They made fun of Moses (pbuh) and Allah’s signs.",
             "category": "Actions & Conduct"
       },
       {
