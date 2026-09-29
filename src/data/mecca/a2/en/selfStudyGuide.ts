@@ -269,7 +269,7 @@ export const meccaA2StudentGuideMetadata: StudentGuideMetadata = {
   level: 'A2',
   language: 'English',
   estimatedStudyTime: 'About 20 minutes per chapter, plus the review pages at the end',
-  whoIsThisFor: 'A2 learners (about Grades 5–6) who study the story of Bilal ibn Rabah at home or on their own.',
+  whoIsThisFor: 'A2 learners who study the story of Bilal ibn Rabah at home or on their own.',
   learningGoals: ['Understand the 13 chapters of Bilal’s story.', 'Find the answer sentence in the story.', 'Learn the Word Notes of each chapter.', 'Use each chapter’s Language Focus in your own sentences.', 'Turn respect, fairness and equality into small actions.'],
   recommendedUse: ['Study one chapter at a time.', 'Listen first, then read.', 'Answer the Quick Challenge before you read the feedback.', 'Do the Language Focus after you understand the chapter.', 'Do the review pages after Chapter 13.'],
 };

@@ -1097,6 +1097,7 @@ const AppContent = () => {
         subtitle={t('nav.reflectionPractice')}
         footerText={t('nav.interactiveEbookSeries')}
         collectionId={currentCollection || 'prophets'}
+        level={currentLevel}
       />
 
       {/* Background PDF Generation Notification Card */}

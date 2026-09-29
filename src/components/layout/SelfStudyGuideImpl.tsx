@@ -68,7 +68,8 @@ export const SelfStudyGuide = ({
   studentGuideText = '',
   studentGuideSections = [],
   metadata,
-  collectionId
+  collectionId,
+  level
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -81,6 +82,7 @@ export const SelfStudyGuide = ({
   studentGuideSections?: StudentGuideSection[];
   metadata?: import('../../types').StudentGuideMetadata;
   collectionId?: string;
+  level?: string | null;
 }) => {
   const [activeTab, setActiveTab] = useState('welcome');
   const [activeGuideSection, setActiveGuideSection] = useState(0);
@@ -94,6 +96,8 @@ export const SelfStudyGuide = ({
   const isHistory = collectionId === 'history';
   const isTurkish = collectionId === 'turkish';
   const isAr = language === 'ar';
+  // A2 learners look for "the answer sentence", not "evidence" (GUIDE_VISUAL_STANDARD, A2 learner language).
+  const isA2 = (level ?? metadata?.level) === 'A2';
 
   if (isAr) {
     title = title ? localizeArabicUiText(title) : title;
@@ -180,7 +184,7 @@ export const SelfStudyGuide = ({
     goals: 'هدفك في هذا الفصل',
     notice: 'ما الذي ألاحظه؟',
     read: 'اقرأ / استمع',
-    find: 'اعثر على الدليل في القصة',
+    find: isA2 ? 'اعثر على جملة الجواب في القصة' : 'اعثر على الدليل في القصة',
     vocab: 'المفردات في السياق',
     quick: 'التحدي السريع',
     wrong: 'إذا أخطأت',
@@ -193,7 +197,7 @@ export const SelfStudyGuide = ({
     goals: 'Your Chapter Goal',
     notice: 'What to Notice',
     read: 'Read / Listen',
-    find: 'Find the Evidence in the Story',
+    find: isA2 ? 'Find the Answer Sentence in the Story' : 'Find the Evidence in the Story',
     vocab: 'Vocabulary in Context',
     quick: 'Quick Challenge',
     wrong: 'If You Get It Wrong',
@@ -219,7 +223,9 @@ export const SelfStudyGuide = ({
     {
       id: 'read',
       title: isAr ? 'اقرأ واستمع' : 'Read & Listen',
-      subtitle: isAr ? 'اقرأ للمعنى ثم ارجع إلى الدليل.' : 'Read for meaning, then return to the evidence.',
+      subtitle: isA2
+        ? (isAr ? 'اقرأ للمعنى، ثم ابحث عن جملة الجواب.' : 'Read for meaning, then find the answer sentence.')
+        : (isAr ? 'اقرأ للمعنى ثم ارجع إلى الدليل.' : 'Read for meaning, then return to the evidence.'),
       icon: 'headphones',
       lists: [
         { title: labels.read, items: section.readListen },
@@ -243,7 +249,9 @@ export const SelfStudyGuide = ({
     {
       id: 'challenge',
       title: isAr ? 'اختبر وأصلح' : 'Challenge & Repair',
-      subtitle: isAr ? 'أجب أولاً، ثم استخدم الدليل إذا احتجت إلى إصلاح الإجابة.' : 'Answer first, then use evidence to repair what went wrong.',
+      subtitle: isA2
+        ? (isAr ? 'أجب أولًا. إذا أخطأت، فابحث عن جملة الجواب وحاول مرة أخرى.' : 'Answer first. If it is wrong, find the answer sentence and try again.')
+        : (isAr ? 'أجب أولاً، ثم استخدم الدليل إذا احتجت إلى إصلاح الإجابة.' : 'Answer first, then use evidence to repair what went wrong.'),
       icon: 'search',
       lists: [
         { title: labels.wrong, items: section.wrongAnswerSupport },
@@ -550,7 +558,9 @@ export const SelfStudyGuide = ({
                       {isAr ? 'وضع الإنقاذ' : 'RESCUE MODE'}
                     </p>
                     <h4 className="mt-1 font-display text-lg sm:text-xl font-bold text-white">
-                      {isAr ? 'لا تبحث عن الإجابة. عد إلى الدليل.' : "Don't hunt for the answer. Return to the evidence."}
+                      {isA2
+                        ? (isAr ? 'لا تخمّن. ارجع إلى جملة الجواب.' : "Don't guess. Go back to the answer sentence.")
+                        : (isAr ? 'لا تبحث عن الإجابة. عد إلى الدليل.' : "Don't hunt for the answer. Return to the evidence.")}
                     </h4>
                   </div>
                 </div>

@@ -347,7 +347,7 @@ const translations: Record<Language, Record<string, string>> = {
     'tg.pairTalk': 'Use pair talk before whole-class answers. End each lesson with a short real-life bridge.',
     'tg.clearTeacherTalk': 'Keep teacher talk clear and short. Repeat important language in natural ways.',
     'ssg.whoIsThisFor': '1. Who is this for?',
-    'ssg.whoIsThisForDesc': 'This guide is for A2 English learners (Grades 6-8). It helps you understand the story and learn new words easily.',
+    'ssg.whoIsThisForDesc': 'This guide is for A2 English learners. It helps you understand the story and learn new words easily.',
     'ssg.learnerType1': 'English students',
     'ssg.learnerType2': 'Learners studying alone or with a teacher',
     'ssg.whatInBook': '2. What is in the book?',
