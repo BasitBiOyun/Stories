@@ -245,6 +245,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     pointerY.set(0);
   };
 
+  const swipeInProgressRef = useRef(false);
+
   const handleSwipeEnd = (offsetX: number, velocityX: number) => {
     if (visibleStories.length <= 1) return;
     if (Math.abs(offsetX) < 55 && Math.abs(velocityX) < 450) return;
@@ -481,7 +483,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
             <div className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-6 py-8 sm:px-10 lg:min-h-0 lg:px-8 lg:py-8 [perspective:1800px]">
               <div className="absolute inset-x-[10%] bottom-[8%] h-16 rounded-[50%] bg-black/45 blur-3xl" />
 
-              <div className="relative h-[470px] w-full max-w-[560px] sm:h-[520px] lg:h-[560px]">
+              <motion.div
+                drag={visibleStories.length > 1 ? 'x' : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.13}
+                onDragStart={() => { swipeInProgressRef.current = true; }}
+                onDragEnd={(_, info) => {
+                  handleSwipeEnd(info.offset.x, info.velocity.x);
+                  // The click that follows a drag release must not select the cover under the pointer.
+                  window.setTimeout(() => { swipeInProgressRef.current = false; }, 0);
+                }}
+                className="relative h-[470px] w-full max-w-[560px] cursor-grab touch-pan-y active:cursor-grabbing sm:h-[520px] lg:h-[560px]"
+              >
                 {visibleStories.map((story, index) => {
                   const delta = circularDelta(index);
                   const absDelta = Math.abs(delta);
@@ -499,7 +512,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       <motion.button
                         type="button"
                         aria-label={translatedStoryName(story)}
-                        onClick={() => setActiveIndex(index)}
+                        onClick={() => {
+                          if (swipeInProgressRef.current) return;
+                          setActiveIndex(index);
+                        }}
                         initial={false}
                         animate={{
                           x: hidden ? (delta < 0 ? -330 : 330) : baseX,
@@ -533,6 +549,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                           <img
                             src={story.image}
                             alt=""
+                            draggable={false}
                             className="h-full w-full object-cover"
                             referrerPolicy="no-referrer"
                           />
@@ -554,16 +571,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                     </div>
                   );
                 })}
-
-                <motion.div
-                  drag={visibleStories.length > 1 ? 'x' : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.13}
-                  onDragEnd={(_, info) => handleSwipeEnd(info.offset.x, info.velocity.x)}
-                  className="absolute inset-0 z-40 cursor-grab touch-pan-y active:cursor-grabbing"
-                  aria-hidden="true"
-                />
-              </div>
+              </motion.div>
 
               <div className="absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5">
                 {visibleStories.map((story, index) => {
