@@ -1,13 +1,13 @@
 import type { Level, ProphetStory } from '../../types';
 
-// @ts-ignore
-import meccaCover from '../../assets/images/mecca_cover_1781516729384.jpg';
-// @ts-ignore
-import abrahamCover from '../../assets/images/abraham_cover.png';
-// @ts-ignore
-import mosesCover from '../../assets/images/moses_cover.png';
-// @ts-ignore
-import yunusEmreCover from '../../assets/images/yunus_emre_cover.png';
+import adamCover from '../../assets/images/adam_cover.webp';
+import meccaCover from '../../assets/images/mecca_cover.webp';
+import abrahamCover from '../../assets/images/abraham_cover.webp';
+import mosesCover from '../../assets/images/moses_cover.webp';
+import yunusEmreCover from '../../assets/images/yunus_emre_cover.webp';
+import prophetsIcon from '../../assets/images/prophets_icon.webp';
+import civilizationIcon from '../../assets/images/civilization_icon.webp';
+import scholarsIcon from '../../assets/images/scholars_icon.webp';
 
 export type StoryCollectionId = 'prophets' | 'history' | 'turkish';
 
@@ -41,8 +41,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     nameAr: 'آدم عليه السلام',
     description: 'The first human, the knowledge of names, and the beginning of humanity.',
     descriptionAr: 'الإنسان الأول، وتعليم الأسماء، وبداية البشرية.',
-    image:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2FAdam_soil.png?alt=media&token=88abb96a-8dad-4f48-9b60-f30073f9dd9c',
+    image: adamCover,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'prophets',
   },
@@ -109,8 +108,7 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
     summaryGradient: 'linear-gradient(145deg, #130d09 0%, #2a180d 48%, #0c0d0a 100%)',
     summaryCard: 'rgba(216,179,92,0.075)',
     summaryButton: '#B7791F',
-    icon:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/prophets_icon.png?alt=media&token=985739ce-9484-4998-a9e3-a11077955048',
+    icon: prophetsIcon,
   },
   history: {
     id: 'history',
@@ -126,8 +124,7 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
     summaryGradient: 'linear-gradient(145deg, #07140f 0%, #0d2a1d 48%, #06110d 100%)',
     summaryCard: 'rgba(85,201,151,0.075)',
     summaryButton: '#16865F',
-    icon:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/civilization_icon.png?alt=media&token=fc8ac841-d12e-4169-a052-4946d20409f2',
+    icon: civilizationIcon,
   },
   turkish: {
     id: 'turkish',
@@ -143,8 +140,7 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
     summaryGradient: 'linear-gradient(145deg, #071116 0%, #0c2730 48%, #061015 100%)',
     summaryCard: 'rgba(88,203,224,0.075)',
     summaryButton: '#137D93',
-    icon:
-      'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/scholars_icon.png?alt=media&token=3c0b480b-bea3-42e3-9718-2a1967dacf78',
+    icon: scholarsIcon,
   },
 };
 
