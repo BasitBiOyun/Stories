@@ -42,37 +42,14 @@ export const VocabularyWord = ({
   ), [word, normalizedDefinition, language]);
   const pairedLanguage = pairedEntry?.language ?? (language === 'ar' ? 'en' : 'ar');
 
-  const highlightStyle = useMemo(() => {
-    if (collectionId === 'turkish') {
-      return 'text-sky-700 border-b-2 border-cyan-500/60 hover:border-cyan-600 font-bold transition-colors';
-    }
-    return customStyle || 'border-b-2 border-gold/40 hover:border-gold font-bold text-wood';
-  }, [collectionId, customStyle]);
+  const highlightStyle = customStyle || 'border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors';
 
-  const tooltipTheme = useMemo(() => {
-    if (collectionId === 'turkish') {
-      return {
-        border: 'border-cyan-300/30',
-        accent: 'text-cyan-300',
-        accentSoft: 'text-cyan-300/70',
-        divider: 'border-cyan-300/20',
-      };
-    }
-    if (collectionId === 'history') {
-      return {
-        border: 'border-emerald-300/30',
-        accent: 'text-emerald-300',
-        accentSoft: 'text-emerald-300/70',
-        divider: 'border-emerald-300/20',
-      };
-    }
-    return {
-      border: 'border-gold/20',
-      accent: 'text-gold',
-      accentSoft: 'text-gold/70',
-      divider: 'border-gold/20',
-    };
-  }, [collectionId]);
+  const tooltipTheme = {
+    border: 'border-brand-300/30',
+    accent: 'text-brand-300',
+    accentSoft: 'text-brand-300/70',
+    divider: 'border-brand-300/20',
+  };
 
   const updateCoords = () => {
     if (!triggerRef.current) return;

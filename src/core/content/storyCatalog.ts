@@ -53,7 +53,46 @@ export interface ReaderTokens {
   page: string;
   /** Slightly deeper reading surface at B2. */
   pageDeep: string;
+  /** Eleven-step scale (50-950) behind the `brand-*` utilities used on light surfaces: cards, buttons, borders. */
+  scale: BrandScale;
 }
+
+export type BrandShade = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '950';
+export type BrandScale = Record<BrandShade, string>;
+
+// Tailwind's own amber, emerald and sky scales, so the migrated components render exactly as before.
+const amberScale: BrandScale = {
+  '50': 'oklch(98.7% .022 95.277)', '100': 'oklch(96.2% .059 95.617)', '200': 'oklch(92.4% .12 95.746)',
+  '300': 'oklch(87.9% .169 91.605)', '400': 'oklch(82.8% .189 84.429)', '500': 'oklch(76.9% .188 70.08)',
+  '600': 'oklch(66.6% .179 58.318)', '700': 'oklch(55.5% .163 48.998)', '800': 'oklch(47.3% .137 46.201)',
+  '900': 'oklch(41.4% .112 45.904)', '950': 'oklch(27.9% .077 45.635)',
+};
+const emeraldScale: BrandScale = {
+  '50': 'oklch(97.9% .021 166.113)', '100': 'oklch(95% .052 163.051)', '200': 'oklch(90.5% .093 164.15)',
+  '300': 'oklch(84.5% .143 164.978)', '400': 'oklch(76.5% .177 163.223)', '500': 'oklch(69.6% .17 162.48)',
+  '600': 'oklch(59.6% .145 163.225)', '700': 'oklch(50.8% .118 165.612)', '800': 'oklch(43.2% .095 166.913)',
+  '900': 'oklch(37.8% .077 168.94)', '950': 'oklch(26.2% .051 172.552)',
+};
+const skyScale: BrandScale = {
+  '50': 'oklch(97.7% .013 236.62)', '100': 'oklch(95.1% .026 236.824)', '200': 'oklch(90.1% .058 230.902)',
+  '300': 'oklch(82.8% .111 230.318)', '400': 'oklch(74.6% .16 232.661)', '500': 'oklch(68.5% .169 237.323)',
+  '600': 'oklch(58.8% .158 241.966)', '700': 'oklch(50% .134 242.749)', '800': 'oklch(44.3% .11 240.79)',
+  '900': 'oklch(39.1% .09 240.876)', '950': 'oklch(29.3% .066 243.157)',
+};
+
+/** Confetti and other canvas colours that cannot read CSS variables: three mid shades of the scale. */
+export const brandConfetti = (scale: BrandScale): string[] => [scale['600'], scale['500'], scale['300']];
+
+/** The CSS variables a collection publishes; App sets them on <html> so portals and overlays see them too. */
+export const readerTokenVariables = (tokens: ReaderTokens): Record<string, string> => ({
+  '--accent': tokens.accent,
+  '--accent-strong': tokens.accentStrong,
+  '--chrome': tokens.chrome,
+  '--chrome-menu': tokens.chromeMenu,
+  '--page': tokens.page,
+  '--page-deep': tokens.pageDeep,
+  ...Object.fromEntries(Object.entries(tokens.scale).map(([shade, value]) => [`--brand-${shade}`, value])),
+});
 
 export const storyCatalog: StoryCatalogItem[] = [
   {
@@ -137,6 +176,7 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
       chromeMenu: '#14221a',
       page: '#fff7ed',
       pageDeep: '#f4f1ea',
+      scale: amberScale,
     },
   },
   history: {
@@ -161,6 +201,7 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
       chromeMenu: '#042416',
       page: '#f4f7f5',
       pageDeep: '#edf2ee',
+      scale: emeraldScale,
     },
   },
   turkish: {
@@ -185,9 +226,14 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
       chromeMenu: '#0a1826',
       page: '#f2f6f9',
       pageDeep: '#eaf0f4',
+      scale: skyScale,
     },
   },
 };
+
+/** The visual set for a collection id that may come from a loosely typed prop; unknown ids fall back to Prophets. */
+export const collectionVisualFor = (collectionId?: string): CollectionVisual =>
+  collectionVisuals[(collectionId ?? 'prophets') as StoryCollectionId] ?? collectionVisuals.prophets;
 
 export const getStoryCollection = (storyId: string): StoryCollectionId =>
   storyCatalog.find(story => story.id === storyId)?.collection ?? 'prophets';

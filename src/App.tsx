@@ -29,7 +29,7 @@ import { generateBookPDF } from './lib/pdfGenerator';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
 import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
 import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bookProgress';
-import { collectionVisuals, getStoryMeta } from './core/content/storyCatalog';
+import { collectionVisuals, getStoryMeta, readerTokenVariables } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
@@ -297,16 +297,16 @@ const AppContent = () => {
     menuLogoContainer: "border-accent/20 bg-accent/10 shadow-[0_2px_10px_rgba(0,0,0,0.2)]",
   }), [currentLevel, showSummary]);
 
-  const readerTokenStyle = useMemo(() => {
-    const tokens = collectionVisuals[currentCollection ?? 'prophets'].readerTokens;
-    return {
-      '--accent': tokens.accent,
-      '--accent-strong': tokens.accentStrong,
-      '--chrome': tokens.chrome,
-      '--chrome-menu': tokens.chromeMenu,
-      '--page': tokens.page,
-      '--page-deep': tokens.pageDeep,
-    } as React.CSSProperties;
+  // The collection's tokens go on <html>, so portaled tooltips and overlays read the same variables as the reader.
+  useEffect(() => {
+    const root = document.documentElement;
+    const variables = readerTokenVariables(collectionVisuals[currentCollection ?? 'prophets'].readerTokens);
+    Object.entries(variables).forEach(([name, value]) => root.style.setProperty(name, value));
+    root.setAttribute('data-collection', currentCollection ?? 'prophets');
+    return () => {
+      Object.keys(variables).forEach(name => root.style.removeProperty(name));
+      root.removeAttribute('data-collection');
+    };
   }, [currentCollection]);
 
   // One name per book everywhere: the same translated story name the library shows.
@@ -663,8 +663,6 @@ const AppContent = () => {
     <div 
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={language}
-      data-collection={currentCollection ?? 'prophets'}
-      style={readerTokenStyle}
       className={cn(
         "h-dvh max-h-dvh bg-wood flex flex-col relative overflow-hidden page-texture",
         isDyslexic && language !== 'ar' && "font-dyslexic-mode"

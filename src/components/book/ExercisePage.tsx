@@ -39,58 +39,21 @@ export const ExercisePage = ({
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
   const [reviewIndex, setReviewIndex] = useState(0);
 
-  const colTheme = React.useMemo(() => {
-    if (collectionId === 'history') {
-      return {
-        audioBg: "bg-emerald-50/90 border-emerald-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-emerald-600 hover:bg-emerald-700 text-white",
-        audioSlider: "text-emerald-600 bg-emerald-200",
-        audioIcon: "hover:bg-emerald-200/50 text-emerald-600",
-        speedBtn: "bg-emerald-100/80 text-emerald-700 hover:bg-emerald-200",
-        containerBorder: "border-emerald-200/60",
-        iconBg: "bg-emerald-600 text-white",
-        iconText: "text-emerald-600",
-        quizSectionBorder: "border-emerald-200/60",
-        exerciseTitle: "text-emerald-900",
-        exerciseBtnHover: "hover:border-emerald-400 hover:shadow-emerald-50/50",
-        exerciseIdxBg: "bg-emerald-100 text-emerald-700",
-        exerciseArrowColor: "text-emerald-400"
+  const colTheme = {
+        audioBg: "bg-brand-50/90 border-brand-200 backdrop-blur-md shadow-lg",
+        audioBtn: "bg-brand-600 hover:bg-brand-700 text-white",
+        audioSlider: "text-brand-600 bg-brand-200",
+        audioIcon: "hover:bg-brand-200/50 text-brand-600",
+        speedBtn: "bg-brand-100/80 text-brand-700 hover:bg-brand-200",
+        containerBorder: "border-brand-100",
+        iconBg: "bg-brand-600 text-white",
+        iconText: "text-brand-600",
+        quizSectionBorder: "border-brand-200/60",
+        exerciseTitle: "text-brand-900",
+        exerciseBtnHover: "hover:border-brand-400 hover:shadow-brand-50/50",
+        exerciseIdxBg: "bg-brand-100 text-brand-700",
+        exerciseArrowColor: "text-brand-400"
       };
-    } else if (collectionId === 'turkish') {
-      return {
-        audioBg: "bg-sky-50/90 border-sky-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-sky-700 hover:bg-sky-850 text-white",
-        audioSlider: "text-sky-700 bg-sky-100",
-        audioIcon: "hover:bg-sky-100/60 text-sky-700",
-        speedBtn: "bg-sky-100/80 text-sky-850 hover:bg-sky-200",
-        containerBorder: "border-sky-200/60",
-        iconBg: "bg-sky-700 text-white",
-        iconText: "text-sky-700",
-        quizSectionBorder: "border-sky-200/60",
-        exerciseTitle: "text-sky-950",
-        exerciseBtnHover: "hover:border-sky-400 hover:shadow-sky-50/50",
-        exerciseIdxBg: "bg-sky-100 text-sky-700",
-        exerciseArrowColor: "text-sky-400"
-      };
-    } else {
-      // Default (prophets)
-      return {
-        audioBg: "bg-amber-50/90 border-amber-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-amber-600 hover:bg-amber-700 text-white",
-        audioSlider: "text-amber-600 bg-amber-200",
-        audioIcon: "hover:bg-amber-200/50 text-amber-600",
-        speedBtn: "bg-amber-100/80 text-amber-700 hover:bg-amber-200",
-        containerBorder: "border-amber-100",
-        iconBg: "bg-amber-600 text-white",
-        iconText: "text-amber-600",
-        quizSectionBorder: "border-amber-200/60",
-        exerciseTitle: "text-amber-900",
-        exerciseBtnHover: "hover:border-amber-400 hover:shadow-amber-50/50",
-        exerciseIdxBg: "bg-amber-100 text-amber-700",
-        exerciseArrowColor: "text-amber-400"
-      };
-    }
-  }, [collectionId]);
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -356,7 +319,7 @@ export const ExercisePage = ({
                             <motion.div
                               initial={false}
                               animate={{ width: `${reviewTotal ? ((reviewIndex + 1) / reviewTotal) * 100 : 0}%` }}
-                              className={cn("h-full rounded-full", collectionId === 'history' ? 'bg-emerald-600' : collectionId === 'turkish' ? 'bg-sky-700' : 'bg-amber-600')}
+                              className={cn("h-full rounded-full", 'bg-brand-600')}
                             />
                           </div>
                         </div>
