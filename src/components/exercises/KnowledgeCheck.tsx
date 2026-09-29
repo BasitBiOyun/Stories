@@ -130,7 +130,7 @@ const QuestionCard = ({
     >
       <div className="flex items-start gap-3 min-w-0">
         <span className={cn(
-          'h-8 min-w-8 shrink-0 rounded-xl px-2 flex items-center justify-center text-[10px] font-semibold font-display',
+          'h-8 min-w-8 shrink-0 rounded-xl px-2 flex items-center justify-center text-[11px] font-semibold font-display',
           showResults && hasAnswer
             ? correct
               ? 'bg-emerald-500 text-white'
@@ -219,7 +219,7 @@ const QuestionCard = ({
                 )}
               >
                 <span className={cn(
-                  'w-8 h-8 rounded-xl shrink-0 flex items-center justify-center text-[10px] font-semibold font-display',
+                  'w-8 h-8 rounded-xl shrink-0 flex items-center justify-center text-[11px] font-semibold font-display',
                   revealCorrect || revealWrong
                     ? 'bg-white/20 text-white'
                     : selected
@@ -409,7 +409,7 @@ export const KnowledgeCheck = ({
                 'rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-100 p-4 sm:p-5 font-serif text-wood/80 leading-relaxed',
                 isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-base'
               )}>
-                <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1.5', isArabic ? 'text-sm' : 'text-[10px] sm:text-xs')}>
+                <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1.5', isArabic ? 'text-sm' : 'text-[11px] sm:text-xs')}>
                   {t('ex.explanation')}
                 </span>
                 {activeExercise.explanation}
@@ -435,7 +435,7 @@ export const KnowledgeCheck = ({
               <GraduationCap size={23} />
             </div>
             <div className="min-w-0">
-              <p className={cn('font-display text-[10px] font-semibold uppercase tracking-[0.18em]', theme.accentText)}>
+              <p className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.18em]', theme.accentText)}>
                 {isArabic ? 'بعد إكمال القصة' : 'After the story'}
               </p>
               <h3 className={cn('mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] leading-tight', theme.title)}>{title}</h3>
@@ -520,7 +520,7 @@ export const KnowledgeCheck = ({
               </p>
             </div>
             {onReset && (
-              <button type="button" onClick={reset} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-4 font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-wood/60 shadow-sm ring-1 ring-black/[0.07]" aria-label={t('ex.tryAgain')}>
+              <button type="button" onClick={reset} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-4 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-wood/60 shadow-sm ring-1 ring-black/[0.07]" aria-label={t('ex.tryAgain')}>
                 <RotateCcw size={16} />
                 <span>{isArabic ? 'إعادة' : 'Try again'}</span>
               </button>

@@ -109,8 +109,9 @@ const HotspotButton = ({
     >
       <button
         ref={buttonRef}
+        type="button"
         onClick={onToggle}
-        className="relative z-[80] visible opacity-100 group/hotspot"
+        className="relative z-[80] -m-2 p-2 visible opacity-100 group/hotspot rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
         aria-expanded={isActive}
         aria-label={hotspot.title}
       >
@@ -1104,7 +1105,7 @@ export const StoryPage = ({
                     {t('nav.quickChallenge')}
                   </h4>
                   {completed && (
-                    <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-display text-[9px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                    <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
                       {t('nav.completed')}
                     </span>
                   )}
@@ -1235,12 +1236,12 @@ export const StoryPage = ({
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <p className={cn(
-                    'font-display text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.18em]',
+                    'font-display text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em]',
                     focusTheme.accent
                   )}>
                     {language === 'ar' ? 'بعد القراءة' : 'After reading'}
                   </p>
-                  <span className={cn('font-display text-[10px] sm:text-[11px] font-semibold', focusTheme.copy)}>
+                  <span className={cn('font-display text-[11px] sm:text-xs font-semibold', focusTheme.copy)}>
                     {formatNumber(exercises.length)} {language === 'ar' ? 'أنشطة' : exercises.length === 1 ? 'activity' : 'activities'}
                   </span>
                 </div>
@@ -1264,10 +1265,10 @@ export const StoryPage = ({
               <div className="shrink-0 flex items-center gap-3">
                 <div className="hidden sm:block min-w-[112px]">
                   <div className="flex items-center justify-between gap-2">
-                    <span className={cn('font-display text-[9px] font-semibold uppercase tracking-[0.12em]', focusTheme.copy)}>
+                    <span className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.12em]', focusTheme.copy)}>
                       {language === 'ar' ? 'التقدّم' : 'Progress'}
                     </span>
-                    <span className={cn('font-display text-[10px] font-semibold', focusTheme.accent)}>
+                    <span className={cn('font-display text-[11px] font-semibold', focusTheme.accent)}>
                       {formatNumber(completedCount)} / {formatNumber(exercises.length)}
                     </span>
                   </div>
@@ -1299,7 +1300,7 @@ export const StoryPage = ({
                   className={cn('h-full rounded-full', focusTheme.progress)}
                 />
               </div>
-              <span className={cn('font-display text-[10px] font-semibold', focusTheme.accent)}>
+              <span className={cn('font-display text-[11px] font-semibold', focusTheme.accent)}>
                 {formatNumber(completedCount)} / {formatNumber(exercises.length)}
               </span>
             </div>
@@ -1332,7 +1333,7 @@ export const StoryPage = ({
                           )}
                         >
                           <span className={cn(
-                            'flex h-9 min-w-9 items-center justify-center rounded-xl px-2 font-display text-[10px] font-semibold shrink-0',
+                            'flex h-9 min-w-9 items-center justify-center rounded-xl px-2 font-display text-[11px] font-semibold shrink-0',
                             completed ? 'bg-emerald-600 text-white' : focusTheme.number
                           )}>
                             {completed ? '✓' : formatNumber(index + 1)}
@@ -1348,7 +1349,7 @@ export const StoryPage = ({
                                 {presentExerciseTitle(exercise)}
                               </span>
                               <span className={cn(
-                                'rounded-full px-2 py-0.5 font-display text-[9px] font-semibold uppercase tracking-[0.12em]',
+                                'rounded-full px-2 py-0.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em]',
                                 completed ? 'bg-emerald-100 text-emerald-700' : focusTheme.number
                               )}>
                                 {completed ? t('nav.completed') : typeLabel(exercise)}
@@ -1459,7 +1460,7 @@ export const StoryPage = ({
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 sm:gap-2.5">
-                  <span className="w-9 shrink-0 text-start font-mono text-[10px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                  <span className="w-9 shrink-0 text-start font-mono text-[11px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
                     {formatTime(currentTime)}
                   </span>
 
@@ -1485,7 +1486,7 @@ export const StoryPage = ({
                     )}
                   />
 
-                  <span className="w-9 shrink-0 text-end font-mono text-[10px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                  <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
                     {formatTime(duration)}
                   </span>
                 </div>
@@ -1555,7 +1556,7 @@ export const StoryPage = ({
                           )}
                         />
 
-                        <span className="w-9 shrink-0 text-end font-mono text-[10px] font-semibold tabular-nums text-wood/50">
+                        <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/50">
                           {Math.round(volume * 100)}%
                         </span>
                       </div>

@@ -370,7 +370,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/5" />
               <div className="absolute inset-x-0 bottom-0 p-7 sm:p-8">
                 <div
-                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em]"
+                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em]"
                   style={{ color: visual.accentBright, borderColor: `${visual.accent}55`, background: visual.accentSoft }}
                 >
                   <img src={visual.icon} alt="" className="h-4 w-4 object-contain" />
@@ -400,7 +400,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                   <Trophy size={28} />
                 </motion.div>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/42">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/62">
                     {copy.eyebrow}
                   </p>
                   <p className="mt-1 text-sm font-semibold" style={{ color: visual.accentBright }}>
@@ -423,7 +423,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                 {summaryCards.map(({ icon: Icon, label, value, progress }) => (
                   <div key={label} className="rounded-2xl border border-white/8 bg-white/[0.035] p-4">
                     <Icon size={18} style={{ color: visual.accentBright }} />
-                    <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/42">{label}</p>
+                    <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/62">{label}</p>
                     <p className="mt-1 text-xl font-semibold tabular-nums text-white">{value}</p>
                     <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/8">
                       <div className="h-full rounded-full" style={{ width: `${progress}%`, background: visual.accent }} />
@@ -439,7 +439,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
           <div className="rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
                   {copy.journey}
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
@@ -500,7 +500,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                 <Target size={21} />
               </div>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">{copy.finalChallenge}</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/62">{copy.finalChallenge}</p>
                 <h3 className="mt-1 font-display text-2xl font-semibold tracking-[-0.03em]">
                   {finalScore === null ? '—' : `${formatNumber(finalScore)}%`}
                 </h3>
@@ -517,7 +517,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                     [copy.reflections, formatNumber(finalDetails.reflectionCompleted)],
                   ].map(([label, value]) => (
                     <div key={label} className="rounded-2xl border border-white/7 bg-black/10 p-4">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.13em] text-white/38">{label}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-white/62">{label}</p>
                       <p className="mt-2 text-2xl font-semibold tabular-nums">{value}</p>
                     </div>
                   ))}
@@ -536,7 +536,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                       {finalDetails.missedQuestions.slice(0, 3).map((item, index) => (
                         <div key={item.id} className="flex items-start gap-3 rounded-xl bg-white/[0.035] px-3 py-2.5">
                           <span
-                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold"
                             style={{ background: visual.accentSoft, color: visual.accentBright }}
                           >
                             {formatNumber(index + 1)}
@@ -565,7 +565,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
           <div className="flex items-center gap-3">
             <Award size={22} style={{ color: visual.accentBright }} />
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
                 {bookData.level}
               </p>
               <h3 className="mt-1 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
@@ -598,7 +598,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
         <section className="mt-6 overflow-hidden rounded-[30px] border border-white/8 bg-white/[0.035]">
           <div className="grid lg:grid-cols-[minmax(0,1fr)_360px]">
             <div className="p-6 sm:p-8">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: visual.accentBright }}>
                 {copy.continue}
               </p>
               <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">

@@ -11,7 +11,7 @@ type Pair = VocabularyChallengePair;
 
 /** The same number on a matched word and its meaning shows which two belong together. */
 const MatchedPairNumber = ({ label }: { label: string }) => (
-  <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 px-1 font-display text-[10px] font-black text-white">
+  <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 px-1 font-display text-[11px] font-black text-white">
     {label}
   </span>
 );
@@ -436,7 +436,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               <p className={cn('font-display text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm', theme.accent)}>
                 {copy.title}
               </p>
-              <p className={cn('mt-0.5 font-serif text-wood/52', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+              <p className={cn('mt-0.5 font-serif text-wood/62', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {copy.subtitle}
               </p>
             </div>
@@ -502,7 +502,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
             </div>
 
             <div className={cn('rounded-2xl p-5 ring-1', theme.barBg, theme.selected)}>
-              <div className="flex flex-wrap gap-2 font-display text-[9px] font-semibold uppercase tracking-[0.12em] text-wood/38">
+              <div className="flex flex-wrap gap-2 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-wood/58">
                 {currentContext.chapter && <span>{copy.chapter} {formatNumber(currentContext.chapter)}</span>}
                 {currentContext.partOfSpeech && <span>· {currentContext.partOfSpeech}</span>}
               </div>
@@ -560,7 +560,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     </p>
                   </div>
                   {contextFeedback === 'correct' && (
-                    <button type="button" onClick={continueContext} className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-3.5 font-display text-[10px] font-semibold', theme.badge)}>
+                    <button type="button" onClick={continueContext} className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-3.5 font-display text-[11px] font-semibold', theme.badge)}>
                       {copy.continue}<ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />
                     </button>
                   )}
@@ -599,7 +599,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                 </p>
               )}
               {policy.vocabularyRecallMode === 'guided' && (
-                <p className={cn('mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.12em]', theme.accent)}>
+                <p className={cn('mt-3 font-display text-[11px] font-semibold uppercase tracking-[0.12em]', theme.accent)}>
                   {copy.cue}: {currentRecall.word.charAt(0)}…
                 </p>
               )}
@@ -646,7 +646,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
 
             {policy.vocabularyRecallMode === 'independent' && recallFeedback === 'correct' && (
               <div className="rounded-2xl bg-white p-4 ring-1 ring-black/[0.06]">
-                <label className={cn('block font-display text-[10px] font-semibold uppercase tracking-[0.12em]', theme.accent)}>
+                <label className={cn('block font-display text-[11px] font-semibold uppercase tracking-[0.12em]', theme.accent)}>
                   {copy.usePrompt}
                 </label>
                 <textarea
@@ -679,7 +679,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                       setAnswerRevealed(true);
                       addRevisit(currentRecall.word);
                     }}
-                    className="min-h-11 rounded-xl bg-white px-4 font-display text-[10px] font-semibold text-wood/62 ring-1 ring-black/[0.07]"
+                    className="min-h-11 rounded-xl bg-white px-4 font-display text-[11px] font-semibold text-wood/62 ring-1 ring-black/[0.07]"
                   >
                     {copy.showAnswer}
                   </button>
@@ -767,7 +767,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     <div className="h-full flex flex-col gap-3 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'} onPointerDown={(event) => event.stopPropagation()}>
       {stageHeader}
       <div className="flex items-center gap-3 shrink-0 px-1">
-        <span className={cn('font-display font-semibold text-wood/45 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
+        <span className={cn('font-display font-semibold text-wood/60 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
           {formatNumber(correctCount)}/{formatNumber(total)}
         </span>
         <div className={cn('flex-1 h-1.5 rounded-full overflow-hidden', theme.barBg)}>
@@ -775,7 +775,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         </div>
         <AnimatePresence>
           {streak >= 2 && (
-            <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} className={cn('flex items-center gap-1 px-2 py-1 rounded-full font-semibold shrink-0', isArabic ? 'text-sm' : 'text-[10px]', theme.badge)}>
+            <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} className={cn('flex items-center gap-1 px-2 py-1 rounded-full font-semibold shrink-0', isArabic ? 'text-sm' : 'text-[11px]', theme.badge)}>
               <Zap size={10} />{formatNumber(streak)}×
             </motion.div>
           )}
@@ -796,7 +796,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               <button
                 type="button"
                 onClick={() => setStage('context')}
-                className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-4 font-display text-[10px] font-semibold', theme.badge)}
+                className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-4 font-display text-[11px] font-semibold', theme.badge)}
               >
                 {copy.continue}
                 <ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />

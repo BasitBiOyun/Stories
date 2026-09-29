@@ -687,7 +687,7 @@ const AppContent = () => {
                   {currentBookTitle}
                 </h2>
                 <span className={cn(
-                  "mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.16em] sm:text-[10px]",
+                  "mt-0.5 block text-[11px] font-semibold uppercase tracking-[0.16em] sm:text-xs",
                   themeClasses.headerSubtitle
                 )}>
                   {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
@@ -730,7 +730,7 @@ const AppContent = () => {
                           <p className="font-display text-[12px] font-semibold text-parchment">
                             {language === 'ar' ? 'حجم النص' : 'Text size'}
                           </p>
-                          <p className="mt-0.5 text-[10px] text-parchment/50">
+                          <p className="mt-0.5 text-[11px] text-parchment/62">
                             {language === 'ar' ? 'اضبط النص للقراءة المريحة' : 'Tune the story text for comfortable reading'}
                           </p>
                         </div>
@@ -777,7 +777,7 @@ const AppContent = () => {
                           <span className="block font-display text-[11px] font-semibold text-parchment">
                             {language === 'ar' ? 'خط سهل للقراءة' : 'Dyslexia-friendly font'}
                           </span>
-                          <span className="mt-0.5 block text-[9px] text-parchment/45">
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
                             OpenDyslexic
                           </span>
                         </span>
@@ -800,7 +800,7 @@ const AppContent = () => {
               {isFinalChallengePage ? (
                 <span
                   className={cn(
-                    "min-w-11 h-11 px-3 flex items-center justify-center rounded-full border font-display text-[10px] font-semibold uppercase",
+                    "min-w-11 h-11 px-3 flex items-center justify-center rounded-full border font-display text-[11px] font-semibold uppercase",
                     themeClasses.buttonSec
                   )}
                   title={language === 'ar' ? 'لغة التحدي ثابتة أثناء المحاولة' : 'Challenge language is locked during the attempt'}
@@ -814,7 +814,7 @@ const AppContent = () => {
                     type="button"
                     onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
                     className={cn(
-                      "touch-target flex items-center justify-center rounded-full border font-display text-[10px] font-semibold uppercase sm:hidden",
+                      "touch-target flex items-center justify-center rounded-full border font-display text-[11px] font-semibold uppercase sm:hidden",
                       themeClasses.buttonSec
                     )}
                     aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
@@ -1191,7 +1191,7 @@ const AppContent = () => {
               </svg>
             </div>
             <div className="flex-1 min-w-0">
-              <h5 className="font-display font-medium text-[10px] uppercase tracking-widest text-amber-400">Background Download</h5>
+              <h5 className="font-display font-medium text-[11px] uppercase tracking-widest text-amber-400">Background Download</h5>
               <p className="font-serif text-[13px] text-slate-200 truncate mt-0.5" title={name}>
                 Generating PDF for {name}...
               </p>

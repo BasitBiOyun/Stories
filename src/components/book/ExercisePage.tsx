@@ -233,7 +233,7 @@ export const ExercisePage = ({
                   colTheme.audioSlider
                 )}
               />
-              <div className="flex justify-between text-[9px] font-mono opacity-60">
+              <div className="flex justify-between text-[11px] font-mono opacity-80">
                 <span>{formatTime(currentTime)}</span>
                 <span>{formatTime(duration)}</span>
               </div>
@@ -269,7 +269,7 @@ export const ExercisePage = ({
               <button
                 onClick={handleSpeedChange}
                 className={cn(
-                  "px-2 py-0.5 text-[10px] font-bold rounded-lg transition-colors shrink-0",
+                  "px-2 py-0.5 text-[11px] font-bold rounded-lg transition-colors shrink-0",
                   colTheme.speedBtn
                 )}
               >
@@ -320,7 +320,7 @@ export const ExercisePage = ({
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0">
                           <p className={cn(
-                            "font-display text-[10px] font-semibold uppercase tracking-[0.18em]",
+                            "font-display text-[11px] font-semibold uppercase tracking-[0.18em]",
                             colTheme.iconText
                           )}>
                             {isArabic ? 'بعد المفردات' : 'After vocabulary'}
@@ -345,7 +345,7 @@ export const ExercisePage = ({
 
                         <div className="shrink-0 sm:min-w-[170px]">
                           <div className="flex items-center justify-between gap-3">
-                            <span className="font-display text-[9px] font-semibold uppercase tracking-[0.14em] text-wood/42">
+                            <span className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-wood/60">
                               {isArabic ? 'المهمة' : 'Task'}
                             </span>
                             <span className={cn("font-display text-sm font-semibold tabular-nums", colTheme.iconText)}>
@@ -404,7 +404,7 @@ export const ExercisePage = ({
                           <button
                             type="button"
                             onClick={() => setReviewIndex(index => Math.max(0, index - 1))}
-                            className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/70 px-3 font-display text-[10px] font-semibold uppercase tracking-[0.11em] text-wood/52 ring-1 ring-black/[0.06] transition-colors hover:bg-white"
+                            className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/70 px-3 font-display text-[11px] font-semibold uppercase tracking-[0.11em] text-wood/62 ring-1 ring-black/[0.06] transition-colors hover:bg-white"
                           >
                             <ChevronLeft size={14} className={cn(isArabic && 'rotate-180')} />
                             {isArabic ? 'السابق' : 'Previous'}
