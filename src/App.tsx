@@ -29,7 +29,7 @@ import { generateBookPDF } from './lib/pdfGenerator';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
 import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
 import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bookProgress';
-import { getStoryMeta } from './core/content/storyCatalog';
+import { collectionVisuals, getStoryMeta } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
@@ -270,93 +270,44 @@ const AppContent = () => {
   };
 
   // Dynamic UI theme classes based on active collection
-  const themeClasses = useMemo(() => {
-    if (currentCollection === 'history') {
-      return {
-        headerBg: "bg-emerald-950/85 border-emerald-500/20",
-        headerSubtitle: "text-emerald-400",
-        buttonSec: "bg-emerald-500/10 border-emerald-500/30 text-parchment hover:bg-emerald-500/20",
-        progressTrack: "bg-emerald-500/10",
-        progressBar: "bg-emerald-500",
-        percentageText: "text-emerald-400/80",
-        mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-[#F4F7F5]/95" 
-          : "bg-[#EDF2EE]/95"),
-        cardBorder: "border-emerald-500/20",
-        navButton: "bg-emerald-700 border-emerald-500 text-white hover:bg-emerald-800 hover:scale-110",
-        goldText: "text-emerald-400",
-        quoteLine: "via-emerald-500/40",
-        // Side-menu specific
-        menuOverlayBg: "bg-emerald-950/60",
-        menuBg: "bg-[#042416]/95",
-        menuBorder: "border-emerald-500/10",
-        menuAccentText: "text-emerald-400",
-        menuHoverBg: "hover:bg-emerald-500/10",
-        menuSectionHeader: "text-emerald-400/40",
-        menuItemActive: "bg-emerald-600 text-white",
-        menuItemHover: "hover:bg-emerald-500/5 text-parchment/60",
-        menuCloseButton: "text-emerald-400/40 hover:text-emerald-400",
-        menuLogoContainer: "border-emerald-500/20 bg-emerald-500/10 shadow-[0_2px_10px_rgba(16,185,129,0.15)]",
-      };
-    } else if (currentCollection === 'turkish') {
-      return {
-        headerBg: "bg-[#0D1D2C]/85 border-[#22D3EE]/20",
-        headerSubtitle: "text-[#22D3EE]",
-        buttonSec: "bg-[#22D3EE]/10 border-[#22D3EE]/30 text-parchment hover:bg-[#22D3EE]/20",
-        progressTrack: "bg-[#22D3EE]/10",
-        progressBar: "bg-[#22D3EE]",
-        percentageText: "text-[#22D3EE]/80",
-        mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-[#F2F6F9]/95" 
-          : "bg-[#EAF0F4]/95"),
-        cardBorder: "border-[#22D3EE]/20",
-        navButton: "bg-sky-700 border-sky-450 text-white hover:bg-sky-850 hover:scale-110",
-        goldText: "text-[#22D3EE]",
-        quoteLine: "via-[#22D3EE]/40",
-        // Side-menu specific
-        menuOverlayBg: "bg-[#06121D]/60",
-        menuBg: "bg-[#0a1826]/95",
-        menuBorder: "border-[#22D3EE]/10",
-        menuAccentText: "text-[#22D3EE]",
-        menuHoverBg: "hover:bg-[#22D3EE]/10",
-        menuSectionHeader: "text-[#22D3EE]/40",
-        menuItemActive: "bg-sky-700 text-white",
-        menuItemHover: "hover:bg-[#22D3EE]/5 text-parchment/60",
-        menuCloseButton: "text-[#22D3EE]/40 hover:text-[#22D3EE]",
-        menuLogoContainer: "border-[#22D3EE]/20 bg-[#22D3EE]/10 shadow-[0_2px_10px_rgba(34,211,238,0.15)]",
-      };
-    } else {
-      // Default 'prophets'
-      return {
-        headerBg: "bg-amber-950/80 border-amber-400/20",
-        headerSubtitle: "text-gold",
-        buttonSec: "bg-amber-400/10 border-amber-400/30 text-parchment hover:bg-amber-400/20",
-        progressTrack: "bg-gold/10",
-        progressBar: "bg-gold",
-        percentageText: "text-gold/60",
-        mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-orange-50/95" 
-          : "bg-parchment/95"),
-        cardBorder: "border-amber-400/10",
-        navButton: currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-amber-600 border-amber-400 text-white hover:bg-amber-700 hover:scale-110" 
-          : "bg-gold border-gold/40 text-white hover:bg-gold/80 hover:scale-110",
-        goldText: "text-gold",
-        quoteLine: "via-gold/40",
-        // Side-menu specific
-        menuOverlayBg: "bg-[#14221a]/60",
-        menuBg: "bg-[#14221a]/95",
-        menuBorder: "border-amber-400/10",
-        menuAccentText: "text-gold",
-        menuHoverBg: "hover:bg-gold/10",
-        menuSectionHeader: "text-gold/40",
-        menuItemActive: "bg-gold text-white",
-        menuItemHover: "hover:bg-gold/5 text-parchment/60",
-        menuCloseButton: "text-gold/40 hover:text-gold",
-        menuLogoContainer: "border-gold/20 bg-gold/10 shadow-[0_2px_10px_rgba(212,175,55,0.15)]",
-      };
-    }
-  }, [currentCollection, currentLevel, showSummary]);
+  // One palette for the reader chrome. The collection only changes the accent tokens the root
+  // publishes (see collectionVisuals[...].readerTokens); the class names never change.
+  const themeClasses = useMemo(() => ({
+    headerBg: "bg-chrome/85 border-accent/20",
+    headerSubtitle: "text-accent",
+    buttonSec: "bg-accent/10 border-accent/30 text-parchment hover:bg-accent/20",
+    progressTrack: "bg-accent/10",
+    progressBar: "bg-accent",
+    percentageText: "text-accent/80",
+    mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' ? "bg-page/95" : "bg-page-deep/95"),
+    cardBorder: "border-accent/20",
+    navButton: "bg-accent-strong border-accent text-white hover:brightness-110 hover:scale-110",
+    goldText: "text-accent",
+    quoteLine: "via-accent/40",
+    // Side-menu specific
+    menuOverlayBg: "bg-chrome/60",
+    menuBg: "bg-chrome-menu/95",
+    menuBorder: "border-accent/10",
+    menuAccentText: "text-accent",
+    menuHoverBg: "hover:bg-accent/10",
+    menuSectionHeader: "text-accent/40",
+    menuItemActive: "bg-accent-strong text-white",
+    menuItemHover: "hover:bg-accent/5 text-parchment/60",
+    menuCloseButton: "text-accent/40 hover:text-accent",
+    menuLogoContainer: "border-accent/20 bg-accent/10 shadow-[0_2px_10px_rgba(0,0,0,0.2)]",
+  }), [currentLevel, showSummary]);
+
+  const readerTokenStyle = useMemo(() => {
+    const tokens = collectionVisuals[currentCollection ?? 'prophets'].readerTokens;
+    return {
+      '--accent': tokens.accent,
+      '--accent-strong': tokens.accentStrong,
+      '--chrome': tokens.chrome,
+      '--chrome-menu': tokens.chromeMenu,
+      '--page': tokens.page,
+      '--page-deep': tokens.pageDeep,
+    } as React.CSSProperties;
+  }, [currentCollection]);
 
   // One name per book everywhere: the same translated story name the library shows.
   const currentBookTitle = useMemo(() => {
@@ -712,6 +663,8 @@ const AppContent = () => {
     <div 
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={language}
+      data-collection={currentCollection ?? 'prophets'}
+      style={readerTokenStyle}
       className={cn(
         "h-dvh max-h-dvh bg-wood flex flex-col relative overflow-hidden page-texture",
         isDyslexic && language !== 'ar' && "font-dyslexic-mode"
@@ -719,8 +672,8 @@ const AppContent = () => {
     >
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
       </div>
 
       {/* Reader Header */}
@@ -750,7 +703,7 @@ const AppContent = () => {
                   <span className="hidden sm:inline">{currentBookTitle}</span>
                 </h2>
                 <span className={cn(
-                  "mt-0.5 block text-[11px] font-semibold uppercase tracking-[0.16em] sm:text-xs",
+                  "ui-label mt-0.5 block sm:text-xs",
                   themeClasses.headerSubtitle
                 )}>
                   {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
@@ -893,7 +846,7 @@ const AppContent = () => {
                     type="button"
                     onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
                     className={cn(
-                      "touch-target flex items-center justify-center rounded-full border font-display text-[11px] font-semibold uppercase sm:hidden",
+                      "ui-control ui-label sm:hidden",
                       themeClasses.buttonSec
                     )}
                     aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
@@ -910,7 +863,7 @@ const AppContent = () => {
               <button 
                 onClick={handleReturnToLibrary}
                 className={cn(
-                  "touch-target flex items-center justify-center rounded-full border transition-colors",
+                  "ui-control",
                   themeClasses.buttonSec
                 )}
                 title={t('nav.returnToLibrary')}
@@ -1115,7 +1068,7 @@ const AppContent = () => {
               onClick={handlePrevPage}
               disabled={currentPageIndex === 0}
               className={cn(
-                "touch-target flex items-center justify-center rounded-full border transition-all disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
+                "ui-control disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
                 themeClasses.buttonSec
               )}
               title={t('nav.back')}
@@ -1128,7 +1081,7 @@ const AppContent = () => {
               onClick={handleNextPage}
               disabled={currentPageIndex === totalPages - 1}
               className={cn(
-                "touch-target flex items-center justify-center rounded-full border transition-all disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
+                "ui-control disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
                 themeClasses.navButton
               )}
               title={t('nav.next')}
