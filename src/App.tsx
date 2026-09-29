@@ -27,6 +27,7 @@ import {
 import { cn } from './lib/utils';
 import { generateBookPDF } from './lib/pdfGenerator';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
+import { getStoryMeta } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
@@ -298,9 +299,14 @@ const AppContent = () => {
     }
   }, [currentCollection, currentLevel, showSummary]);
 
+  // One name per book everywhere: the same translated story name the library shows.
   const currentBookTitle = useMemo(() => {
     if (!currentDefinition) return currentBook?.title ?? '';
-    return currentDefinition.titles[language];
+    const key = `prophet.${currentDefinition.storyId}`;
+    const translated = t(key);
+    if (translated && translated !== key) return translated;
+    return getStoryMeta(currentDefinition.storyId)?.name ?? currentBook?.title ?? '';
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentBook, currentDefinition, language]);
 
   // --- Handlers ---
@@ -1094,6 +1100,7 @@ const AppContent = () => {
         onClose={() => setIsTeacherGuideOpen(false)} 
         content={currentTeacherGuide?.content || []}
         pages={currentBook?.pages || []}
+        bookTitle={currentBookTitle}
         metadata={currentTeacherGuide?.metadata}
         bookId={currentBook?.id}
         level={currentLevel || undefined}
@@ -1106,6 +1113,7 @@ const AppContent = () => {
         onClose={() => setIsSelfStudyOpen(false)} 
         content={currentSelfStudyGuide?.content || []}
         pages={currentBook?.pages || []}
+        bookTitle={currentBookTitle}
         studentGuideText={currentSelfStudyGuide?.text}
         studentGuideSections={currentSelfStudyGuide?.sections}
         metadata={currentSelfStudyGuide?.metadata}

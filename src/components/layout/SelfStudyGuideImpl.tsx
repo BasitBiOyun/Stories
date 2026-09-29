@@ -68,6 +68,7 @@ export const SelfStudyGuide = ({
   studentGuideText = '',
   studentGuideSections = [],
   metadata,
+  bookTitle,
   collectionId,
   level
 }: {
@@ -81,6 +82,8 @@ export const SelfStudyGuide = ({
   studentGuideText?: string;
   studentGuideSections?: StudentGuideSection[];
   metadata?: import('../../types').StudentGuideMetadata;
+  /** The book's library name; shown instead of the guide's own title so every screen uses one name. */
+  bookTitle?: string;
   collectionId?: string;
   level?: string | null;
 }) => {
@@ -109,7 +112,7 @@ export const SelfStudyGuide = ({
     metadata = localizeArabicDeep(metadata);
   }
 
-  const displayTitle = metadata?.title || title || t('nav.studentSelfStudyGuide');
+  const displayTitle = bookTitle || metadata?.title || title || t('nav.studentSelfStudyGuide');
   const displaySubtitle = metadata?.subtitle || subtitle || t('nav.reflectionPractice');
   const displayFooter = footerText || t('nav.interactiveEbookSeries');
 

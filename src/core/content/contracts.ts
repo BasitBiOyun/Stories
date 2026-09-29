@@ -10,11 +10,6 @@ export interface BookPair {
   ar: BookData;
 }
 
-export interface BookDisplayTitles {
-  en: string;
-  ar: string;
-}
-
 export interface ContentReviewMetadata {
   status: ReviewStatus;
   version: string;
