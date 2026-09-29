@@ -47,6 +47,14 @@
   --color-emerald-605: #05905f;
   --color-emerald-650: #047a51;
 
+  /* Shape and label scale shared by the reader chrome and the home page. */
+  --radius-control: 9999px;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: 0.16em;
+
   --animate-shake: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 
   @keyframes shake {
@@ -55,6 +63,21 @@
     30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
     40%, 60% { transform: translate3d(4px, 0, 0); }
   }
+}
+
+/*
+ * Collection accent tokens. The values come from `collectionVisuals[...].readerTokens` in
+ * src/core/content/storyCatalog.ts: the reader root sets them as inline CSS variables, and these
+ * utilities (bg-accent, text-accent/60, bg-chrome/85, bg-page/95 ...) read them. The defaults are
+ * the Prophets palette, so anything rendered outside the reader still has a colour.
+ */
+@theme inline {
+  --color-accent: var(--accent, #c2aa6b);
+  --color-accent-strong: var(--accent-strong, #b7791f);
+  --color-chrome: var(--chrome, #2a1d0c);
+  --color-chrome-menu: var(--chrome-menu, #14221a);
+  --color-page: var(--page, #fff7ed);
+  --color-page-deep: var(--page-deep, #f4f1ea);
 }
 
 @layer base {
@@ -126,6 +149,29 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-gold/40 rounded-full hover:bg-gold/60 transition-colors;
+  }
+
+  /* Small uppercase caption used for levels, sections and counters. */
+  .ui-label {
+    font-family: var(--font-display);
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Round chrome control: the header and footer buttons of the reader. */
+  .ui-control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: var(--radius-control);
+    border-width: 1px;
+    transition-property: color, background-color, border-color, opacity, transform;
+    transition-duration: 200ms;
   }
 
   /* Shared primitives for the responsive pass. Opt-in only: existing layout is not changed globally. */

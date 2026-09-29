@@ -17,6 +17,11 @@ export interface StoryCatalogItem extends ProphetStory {
   collection: StoryCollectionId;
 }
 
+/**
+ * The one place a collection's colours live. The home page reads these fields directly; the reader
+ * publishes `readerTokens` as CSS variables on its root, which index.css maps to the `accent`,
+ * `accent-strong`, `chrome`, `chrome-menu`, `page` and `page-deep` utilities.
+ */
 export interface CollectionVisual {
   id: StoryCollectionId;
   nameEn: string;
@@ -32,6 +37,22 @@ export interface CollectionVisual {
   summaryCard: string;
   summaryButton: string;
   icon: string;
+  readerTokens: ReaderTokens;
+}
+
+export interface ReaderTokens {
+  /** Text and outline accent on the dark reader chrome. */
+  accent: string;
+  /** Filled controls (next button, active TOC row). */
+  accentStrong: string;
+  /** Header and footer surface. */
+  chrome: string;
+  /** Side menu and pop-over surface. */
+  chromeMenu: string;
+  /** Reading surface at A2/B1. */
+  page: string;
+  /** Slightly deeper reading surface at B2. */
+  pageDeep: string;
 }
 
 export const storyCatalog: StoryCatalogItem[] = [
@@ -109,6 +130,14 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
     summaryCard: 'rgba(216,179,92,0.075)',
     summaryButton: '#B7791F',
     icon: prophetsIcon,
+    readerTokens: {
+      accent: '#c2aa6b',
+      accentStrong: '#b7791f',
+      chrome: '#2a1d0c',
+      chromeMenu: '#14221a',
+      page: '#fff7ed',
+      pageDeep: '#f4f1ea',
+    },
   },
   history: {
     id: 'history',
@@ -125,6 +154,14 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
     summaryCard: 'rgba(85,201,151,0.075)',
     summaryButton: '#16865F',
     icon: civilizationIcon,
+    readerTokens: {
+      accent: '#34d399',
+      accentStrong: '#059669',
+      chrome: '#022c22',
+      chromeMenu: '#042416',
+      page: '#f4f7f5',
+      pageDeep: '#edf2ee',
+    },
   },
   turkish: {
     id: 'turkish',
@@ -141,6 +178,14 @@ export const collectionVisuals: Record<StoryCollectionId, CollectionVisual> = {
     summaryCard: 'rgba(88,203,224,0.075)',
     summaryButton: '#137D93',
     icon: scholarsIcon,
+    readerTokens: {
+      accent: '#22d3ee',
+      accentStrong: '#0369a1',
+      chrome: '#0d1d2c',
+      chromeMenu: '#0a1826',
+      page: '#f2f6f9',
+      pageDeep: '#eaf0f4',
+    },
   },
 };
 
