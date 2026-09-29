@@ -12,6 +12,8 @@ import {
   GraduationCap,
   Home,
   LoaderCircle,
+  CheckCircle,
+  Layers,
   Menu,
   X,
 } from './components/ui/icons';
@@ -49,6 +51,7 @@ import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { RolePicker } from './components/layout/RolePicker';
 import { useUserRole } from './contexts/UserRoleContext';
+import { saveBookOffline } from './lib/pwa';
 
 const AppContent = () => {
   // --- State ---
@@ -270,6 +273,25 @@ const AppContent = () => {
   const handleOpenTeacherGuideFromHome = (prophetId: string, level: Level) => {
     setPendingTeacherGuide(true);
     handleStartJourney(prophetId, level);
+  };
+
+  // "Save this book offline": every image and audio file of both language editions, stored by the service worker.
+  const [offlineSaveState, setOfflineSaveState] = useState<'idle' | 'saving' | 'saved' | 'failed'>('idle');
+  useEffect(() => { setOfflineSaveState('idle'); }, [currentBookPair]);
+  const canSaveOffline = import.meta.env.PROD && typeof navigator !== 'undefined' && 'serviceWorker' in navigator;
+  const handleSaveOffline = () => {
+    if (!currentBookPair || offlineSaveState === 'saving') return;
+    const urls = new Set<string>();
+    [currentBookPair.en, currentBookPair.ar].forEach(book => {
+      book.pages.forEach(page => {
+        if (page.image) urls.add(page.image);
+        if (page.audioUrl) urls.add(page.audioUrl);
+      });
+    });
+    setOfflineSaveState('saving');
+    saveBookOffline([...urls])
+      .then(result => setOfflineSaveState(result.failed === 0 ? 'saved' : 'failed'))
+      .catch(() => setOfflineSaveState('failed'));
   };
 
   const openSelfStudyGuide = () => {
@@ -1294,6 +1316,29 @@ const AppContent = () => {
                     <Download size={21} className={themeClasses.menuAccentText} />
                     <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.downloadPdf')}</span>
                   </button>
+
+                  {canSaveOffline && (
+                    <button
+                      type="button"
+                      onClick={handleSaveOffline}
+                      disabled={offlineSaveState === 'saving' || offlineSaveState === 'saved'}
+                      aria-live="polite"
+                      data-save-offline={offlineSaveState}
+                      className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors disabled:opacity-80", themeClasses.menuHoverBg)}
+                    >
+                      {offlineSaveState === 'saved'
+                        ? <CheckCircle size={21} className="text-emerald-400" />
+                        : offlineSaveState === 'saving'
+                          ? <LoaderCircle size={21} className={cn('animate-spin', themeClasses.menuAccentText)} />
+                          : <Layers size={21} className={themeClasses.menuAccentText} />}
+                      <span className="font-display text-[14px] sm:text-[15px] font-semibold">
+                        {offlineSaveState === 'saved' ? t('nav.savedOffline')
+                          : offlineSaveState === 'saving' ? t('nav.savingOffline')
+                          : offlineSaveState === 'failed' ? t('nav.saveOfflineFailed')
+                          : t('nav.saveOffline')}
+                      </span>
+                    </button>
+                  )}
                 </div>
               </div>
 

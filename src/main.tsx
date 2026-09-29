@@ -11,6 +11,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
 import { FullscreenButton } from './components/ui/FullscreenButton';
 import { UserRoleProvider } from './contexts/UserRoleContext';
+import { registerServiceWorker } from './lib/pwa';
 
 const CHUNK_RELOAD_KEY = 'stories_chunk_reload_at';
 
@@ -33,6 +34,8 @@ window.addEventListener('vite:preloadError', (event) => {
 window.setTimeout(() => {
   sessionStorage.removeItem(CHUNK_RELOAD_KEY);
 }, 30_000);
+
+registerServiceWorker();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

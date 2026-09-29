@@ -12,6 +12,7 @@ import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { RoleToggle } from '../ui/RoleToggle';
+import { InstallAppButton } from '../ui/InstallAppButton';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, GraduationCap } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
 import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
@@ -279,6 +280,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <InstallAppButton />
             <RoleToggle />
             <LanguageToggle />
           </div>
