@@ -26,6 +26,7 @@ import {
 } from './core/content/bookGuideLoader';
 import { cn } from './lib/utils';
 import { generateBookPDF } from './lib/pdfGenerator';
+import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
@@ -131,6 +132,21 @@ const AppContent = () => {
   const isFinalChallengePage = currentPage?.type === 'final-challenge';
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
+
+  // A resumed position may point past the end if the book changed since it was saved.
+  useEffect(() => {
+    if (!currentBook) return;
+    setCurrentPageIndex(prev => Math.min(prev, Math.max(currentBook.pages.length - 1, 0)));
+  }, [currentBook]);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || !currentPage) return;
+    if (showSummary) {
+      clearReaderPosition(selectedProphetId, currentLevel);
+      return;
+    }
+    saveReaderPosition(selectedProphetId, currentLevel, { pageIndex: currentPageIndex, totalPages });
+  }, [selectedProphetId, currentLevel, currentPage, currentPageIndex, totalPages, showSummary]);
 
   const currentCollection = currentDefinition?.collection ?? null;
 
@@ -288,10 +304,10 @@ const AppContent = () => {
   }, [currentBook, currentDefinition, language]);
 
   // --- Handlers ---
-  const handleStartJourney = (prophetId: string, level: Level) => {
+  const handleStartJourney = (prophetId: string, level: Level, options?: { resume?: boolean }) => {
     setSelectedProphetId(prophetId);
     setCurrentLevel(level);
-    setCurrentPageIndex(0);
+    setCurrentPageIndex(options?.resume ? readReaderPosition(prophetId, level)?.pageIndex ?? 0 : 0);
     setUserAnswers({});
     setIsMenuOpen(false);
     setShowSummary(false);

@@ -14,6 +14,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
+import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
 import {
   collectionStoryIds,
   collectionVisuals,
@@ -24,7 +25,7 @@ import {
 
 
 interface HomePageProps {
-  onStart: (prophetId: string, level: Level) => void;
+  onStart: (prophetId: string, level: Level, options?: { resume?: boolean }) => void;
 }
 
 type CollectionId = 'all' | 'prophets' | 'history' | 'turkish';
@@ -37,9 +38,9 @@ const levelDescriptions: Record<Level, { en: string; ar: string }> = {
 export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   const [activeCollection, setActiveCollection] = useState<CollectionId>('all');
   const [activeIndex, setActiveIndex] = useState(0);
-  const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level } | null>(null);
+  const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
 
-  const { language, t, isRTL } = useLanguage();
+  const { language, t, isRTL, formatNumber } = useLanguage();
   const reduceMotion = useReducedMotion();
   const stageRef = useRef<HTMLElement>(null);
 
@@ -197,7 +198,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       const level = parsed?.level as Level | undefined;
 
       if (story && level && story.availableLevels.includes(level)) {
-        setLastActive({ prophetId: story.id, level });
+        setLastActive({ prophetId: story.id, level, position: readReaderPosition(story.id, level) });
         setActiveIndex(storyIndex);
         preloadBook(story.id, level)?.catch(() => undefined);
       }
@@ -215,10 +216,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     preloadBook(prophetId, level)?.catch(() => undefined);
   };
 
-  const launchStory = (prophetId: string, level: Level) => {
+  const launchStory = (prophetId: string, level: Level, options?: { resume?: boolean }) => {
     localStorage.setItem('last_active_story', JSON.stringify({ prophetId, level }));
-    setLastActive({ prophetId, level });
-    onStart(prophetId, level);
+    setLastActive({ prophetId, level, position: options?.resume ? readReaderPosition(prophetId, level) : null });
+    onStart(prophetId, level, options);
   };
 
   const moveCarousel = (direction: 1 | -1) => {
@@ -318,7 +319,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               onPointerEnter={() => warmBook(lastActiveStory.id, lastActive.level)}
               onFocus={() => warmBook(lastActiveStory.id, lastActive.level)}
               onTouchStart={() => warmBook(lastActiveStory.id, lastActive.level)}
-              onClick={() => launchStory(lastActiveStory.id, lastActive.level)}
+              onClick={() => launchStory(lastActiveStory.id, lastActive.level, { resume: true })}
               className="group w-full rounded-2xl bg-white/[0.045] p-4 text-start transition-colors hover:bg-white/[0.075]"
             >
               <div className="flex items-start gap-4">
@@ -331,6 +332,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   </p>
                   <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
                     {translatedStoryName(lastActiveStory)} · {lastActive.level}
+                    {lastActive.position && lastActive.position.pageIndex > 0 && (
+                      <> · {t('nav.page')} {formatNumber(lastActive.position.pageIndex + 1)} / {formatNumber(lastActive.position.totalPages)}</>
+                    )}
                   </p>
                   <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/72 transition-colors group-hover:text-white">
                     {copy.continueAction}
