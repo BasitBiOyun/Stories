@@ -9,6 +9,7 @@ import {
   useTransform,
 } from 'motion/react';
 import { ProphetStory, Level } from '../../types';
+import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
@@ -287,7 +288,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           <div className="flex min-w-0 items-center gap-3.5">
             <div className="h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white/[0.045] p-1.5">
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/home_icon.png?alt=media&token=d8075082-0856-42d8-bc20-db4d7ce86c99"
+                src={homeIcon}
                 alt=""
                 className="h-full w-full object-contain"
                 referrerPolicy="no-referrer"
@@ -315,7 +316,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
             <h1 className="max-w-5xl text-[clamp(2.5rem,5.6vw,5.45rem)] font-semibold leading-[0.96] tracking-[-0.056em] text-[#FFF9EC]">
               {copy.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-[14px] font-medium leading-7 text-[#EDE5D4]/78 sm:text-[15px]">
+            <p className="mt-5 hidden max-w-2xl text-[14px] font-medium leading-7 text-[#EDE5D4]/78 sm:block sm:text-[15px]">
               {copy.intro}
             </p>
           </div>
@@ -355,13 +356,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           )}
         </section>
 
-        <section className="mt-9">
-          <div className="grid gap-3 md:grid-cols-4">
+        <section className="mt-6 md:mt-9">
+          <div className="-mx-5 flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-4 md:gap-3 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
             <button
               type="button"
               onClick={() => selectCollection('all')}
+              aria-pressed={activeCollection === 'all'}
               className={cn(
-                'rounded-2xl px-5 py-4 text-start transition-all',
+                'shrink-0 rounded-2xl px-4 py-3 text-start transition-all md:px-5 md:py-4',
                 activeCollection === 'all'
                   ? 'bg-[#D8B35C]/13 shadow-[0_16px_42px_rgba(0,0,0,0.16)]'
                   : 'bg-white/[0.025] hover:bg-white/[0.055]',
@@ -370,7 +372,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/72">
                 {copy.all}
               </span>
-              <span className="mt-1 block text-sm font-semibold text-[#FFF9EC]">
+              <span className="mt-1 hidden text-sm font-semibold text-[#FFF9EC] md:block">
                 {bookCount(stories.length)}
               </span>
             </button>
@@ -384,7 +386,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   key={collection}
                   type="button"
                   onClick={() => selectCollection(collection)}
-                  className="group relative overflow-hidden rounded-2xl px-4 py-3.5 text-start transition-all"
+                  aria-pressed={active}
+                  className="group relative shrink-0 overflow-hidden rounded-2xl px-3.5 py-2.5 text-start transition-all md:px-4 md:py-3.5"
                   style={{
                     background: active ? visual.accentSoft : 'rgba(255,255,255,0.025)',
                     boxShadow: active ? '0 16px 42px rgba(0,0,0,0.16)' : 'none',
@@ -392,7 +395,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                 >
                   <div className="relative flex items-center gap-3.5">
                     <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-1.5"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl p-1.5 md:h-11 md:w-11"
                       style={{ background: visual.accentSoft }}
                     >
                       <img
@@ -406,7 +409,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       <span className="block truncate text-[13px] font-semibold text-[#FFF9EC]">
                         {collectionLabels[collection]}
                       </span>
-                      <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/62">
+                      <span className="mt-1 hidden text-[11px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/62 md:block">
                         {bookCount(collectionStoryIds[collection].length)}
                       </span>
                     </div>
@@ -486,8 +489,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
             style={{ y: scrollSigilY }}
           />
 
-          <div className="relative grid min-h-[610px] lg:h-full lg:min-h-0 lg:grid-cols-[minmax(420px,0.95fr)_minmax(0,1.05fr)]">
-            <div className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-6 py-8 sm:px-10 lg:min-h-0 lg:px-8 lg:py-8 [perspective:1800px]">
+          <div className="relative grid lg:h-full lg:grid-cols-[minmax(420px,0.95fr)_minmax(0,1.05fr)]">
+            <div className="relative flex items-center justify-center overflow-hidden px-6 py-5 sm:min-h-[520px] sm:px-10 sm:py-8 lg:min-h-0 lg:px-8 lg:py-8 [perspective:1800px]">
               <div className="absolute inset-x-[10%] bottom-[8%] h-16 rounded-[50%] bg-black/45 blur-3xl" />
 
               <motion.div
@@ -500,7 +503,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   // The click that follows a drag release must not select the cover under the pointer.
                   window.setTimeout(() => { swipeInProgressRef.current = false; }, 0);
                 }}
-                className="relative h-[470px] w-full max-w-[560px] cursor-grab touch-pan-y active:cursor-grabbing sm:h-[520px] lg:h-[560px]"
+                className="relative h-[340px] w-full max-w-[560px] cursor-grab touch-pan-y active:cursor-grabbing sm:h-[520px] lg:h-[560px]"
               >
                 {visibleStories.map((story, index) => {
                   const delta = circularDelta(index);
@@ -602,7 +605,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               </div>
             </div>
 
-            <div className="relative flex min-h-[520px] flex-col justify-center px-6 py-8 sm:px-10 lg:h-full lg:min-h-0 lg:px-12 lg:py-10 xl:px-16">
+            <div className="relative flex flex-col justify-center px-6 py-6 sm:min-h-[520px] sm:px-10 sm:py-8 lg:h-full lg:min-h-0 lg:px-12 lg:py-10 xl:px-16">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`content-${activeStory.id}`}
@@ -636,15 +639,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                     </span>
                   </div>
 
-                  <h2 className="mt-7 max-w-2xl text-[clamp(2.6rem,4.7vw,5.15rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-[#FFF9EC]">
+                  <h2 className="mt-5 max-w-2xl text-[clamp(2.2rem,4.7vw,5.15rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-[#FFF9EC] sm:mt-7">
                     {translatedStoryName(activeStory)}
                   </h2>
 
-                  <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-[#EEE6D6]/84 sm:text-[16px]">
+                  <p className="mt-3 max-w-xl text-[15px] font-medium leading-6 text-[#EEE6D6]/84 sm:mt-5 sm:leading-7 sm:text-[16px]">
                     {translatedStoryDescription(activeStory)}
                   </p>
 
-                  <div className="mt-8">
+                  <div className="mt-6 sm:mt-8">
                     <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F0E8D8]/66">
                       {copy.chooseLevel}
                     </p>
