@@ -475,10 +475,10 @@ const Transformation = ({ exercise, isSubmitted, onSubmit, theme }: RendererProp
             <div className="min-w-0 flex-1 space-y-3">
               {resultSr(result, text.isArabic)}
               <div className="rounded-xl bg-stone-50 px-3 py-2">
-                <p className={cn('font-display font-bold uppercase tracking-widest text-wood/40', text.isArabic ? 'text-xs normal-case tracking-normal' : 'text-[10px]')}>{text.copy.original}</p>
+                <p className={cn('font-display font-bold uppercase tracking-widest text-wood/40', text.isArabic ? 'text-xs normal-case tracking-normal' : 'text-[11px]')}>{text.copy.original}</p>
                 <p className={cn('font-serif italic text-wood/80', text.isArabic ? 'text-base sm:text-lg not-italic' : 'text-sm sm:text-base')}>{item.source}</p>
               </div>
-              <p className={cn('font-display font-bold uppercase tracking-widest text-wood/40', text.isArabic ? 'text-xs normal-case tracking-normal' : 'text-[10px]')}>{text.copy.yourVersion}</p>
+              <p className={cn('font-display font-bold uppercase tracking-widest text-wood/40', text.isArabic ? 'text-xs normal-case tracking-normal' : 'text-[11px]')}>{text.copy.yourVersion}</p>
               <p className={cn('font-serif text-wood', text.body)}>
                 {item.frame.split(GAP).map((part, partIndex) => {
                   if (!isGap(part)) return <React.Fragment key={partIndex}>{part}</React.Fragment>;

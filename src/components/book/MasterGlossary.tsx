@@ -492,7 +492,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               <BrainCircuit size={23} />
             </div>
             <div className="min-w-0">
-              <div className={cn('text-[10px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>
+              <div className={cn('text-[11px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>
                 {copy.eyebrow}
               </div>
               <h2 className={cn('text-2xl sm:text-3xl font-black tracking-tight leading-none', colTheme.brandTextStrong)}>
@@ -510,7 +510,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                 <div className={cn('text-xs font-black uppercase tracking-[0.12em]', colTheme.brandText)}>
                   {copy.progressTitle}
                 </div>
-                <p className="text-[11px] sm:text-xs text-wood/45 mt-0.5">
+                <p className="text-[11px] sm:text-xs text-wood/60 mt-0.5">
                   {copy.progressHint}
                 </p>
               </div>
@@ -529,7 +529,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
             </div>
 
             <div className="flex items-center justify-between gap-2 mt-2">
-              <span className="text-[11px] sm:text-xs text-wood/45">
+              <span className="text-[11px] sm:text-xs text-wood/60">
                 {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)} {copy.confident.toLowerCase()}
               </span>
               {(knownCount > 0 || reviewCount > 0) && (
@@ -645,7 +645,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
           <div className="mt-2.5 pt-2.5 border-t border-black/5 flex flex-wrap items-center gap-2">
             {activeCategory && (
               <>
-                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+                <span className="text-[11px] font-black uppercase tracking-[0.1em] text-wood/55">
                   {copy.categoryLabel}
                 </span>
                 <button
@@ -664,7 +664,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
             )}
             {activeChapter !== null && (
               <>
-                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+                <span className="text-[11px] font-black uppercase tracking-[0.1em] text-wood/55">
                   {copy.chapterLabel}
                 </span>
                 <button
@@ -726,11 +726,11 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className="text-[10px] font-black tabular-nums text-wood/25">
+                        <span className="text-[11px] font-black tabular-nums text-wood/55">
                           {formatNumber(String((currentPage - 1) * WORDS_PER_PAGE + index + 1).padStart(2, '0'))}
                         </span>
                         <span className={cn(
-                          'px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.08em]',
+                          'px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-[0.08em]',
                           state === 'known'
                             ? 'bg-emerald-50 text-emerald-700'
                             : state === 'unknown'
@@ -750,7 +750,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                       </h3>
 
                       {(v.pronunciation || v.partOfSpeech || v.chapter) && (
-                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mt-1.5 text-[10px] sm:text-[11px] text-wood/45">
+                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mt-1.5 text-[11px] sm:text-xs text-wood/60">
                           {v.pronunciation && <span className="font-serif">{v.pronunciation}</span>}
                           {v.partOfSpeech && <span className="font-semibold">{v.partOfSpeech}</span>}
                           {v.chapter && (
@@ -797,7 +797,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                             onClick={() => setActiveCategory(activeCategory === v.category ? null : v.category)}
                             title={activeCategory === v.category ? v.category : `${copy.categoryLabel}: ${v.category}`}
                             className={cn(
-                              'px-2 py-1 rounded-lg text-[10px] font-black uppercase tracking-[0.08em] border transition-all',
+                              'px-2 py-1 rounded-lg text-[11px] font-black uppercase tracking-[0.08em] border transition-all',
                               activeCategory === v.category
                                 ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
                                 : cn(colTheme.brandSoft, colTheme.brandText, colTheme.border)
@@ -830,14 +830,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                           >
                             <div className={cn('mt-2.5 rounded-xl border bg-white/60 p-3', colTheme.border)}>
                               {v.chapterTitle && (
-                                <div className="text-[11px] font-bold text-wood/45 mb-2">
+                                <div className="text-[11px] font-bold text-wood/60 mb-2">
                                   {copy.chapterLabel} {v.chapter ? formatNumber(v.chapter) : ''}{v.chapter ? ' · ' : ''}{v.chapterTitle}
                                 </div>
                               )}
 
                               {v.storyExample && (
                                 <div className="mb-3">
-                                  <div className={cn('text-[10px] font-black uppercase tracking-[0.1em] mb-1', colTheme.brandText)}>
+                                  <div className={cn('text-[11px] font-black uppercase tracking-[0.1em] mb-1', colTheme.brandText)}>
                                     {copy.inStory}
                                   </div>
                                   <p className="font-serif italic text-sm text-wood/65 leading-relaxed">
@@ -849,25 +849,25 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                 {v.wordFamily?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.wordFamilyLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.wordFamilyLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.wordFamily.join(' · ')}</p>
                                   </div>
                                 ) : null}
                                 {v.collocations?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.collocationsLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.collocationsLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.collocations.join(' · ')}</p>
                                   </div>
                                 ) : null}
                                 {v.synonyms?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.synonymsLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.synonymsLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.synonyms.join(' · ')}</p>
                                   </div>
                                 ) : null}
                                 {v.antonyms?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.antonymsLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.antonymsLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.antonyms.join(' · ')}</p>
                                   </div>
                                 ) : null}

@@ -131,20 +131,33 @@ export const VocabularyWord = ({
 
   return (
     <span className="relative inline-block">
-      <span 
+      <span
         ref={triggerRef}
+        role={hasDefinition ? 'button' : undefined}
+        tabIndex={hasDefinition ? 0 : undefined}
+        aria-expanded={hasDefinition ? isOpen : undefined}
         onClick={(e) => {
           e.stopPropagation();
           if (!hasDefinition) return;
           setIsOpen(!isOpen);
           if (!isOpen) trackWordClick(word);
         }}
+        onKeyDown={(e) => {
+          if (!hasDefinition) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsOpen(!isOpen);
+            if (!isOpen) trackWordClick(word);
+          } else if (e.key === 'Escape' && isOpen) {
+            setIsOpen(false);
+          }
+        }}
         className={cn(
-          "transition-colors",
+          "transition-colors rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-1",
           hasDefinition ? "cursor-help" : "cursor-default",
           highlightStyle
         )}
-        aria-disabled={!hasDefinition}
       >
         {word}
       </span>
@@ -180,7 +193,7 @@ export const VocabularyWord = ({
                 <span className={cn(
                   "font-display uppercase tracking-widest mb-1 sm:mb-2 block",
                   tooltipTheme.accent,
-                  language === 'ar' ? "text-sm sm:text-base" : "text-[10px] sm:text-[11px]"
+                  language === 'ar' ? "text-sm sm:text-base" : "text-[11px] sm:text-xs"
                 )}>
                   {t('nav.meaning')}
                 </span>

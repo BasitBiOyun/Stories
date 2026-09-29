@@ -297,7 +297,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               <p className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#F7F1E5]">
                 {t('nav.homeTitle')}
               </p>
-              <p className="mt-0.5 hidden truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D8B35C]/68 sm:block">
+              <p className="mt-0.5 hidden truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-[#D8B35C]/68 sm:block">
                 {language === 'ar' ? 'مادة تعليمية ثنائية اللغة' : 'Bilingual curriculum library'}
               </p>
             </div>
@@ -309,7 +309,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       <main className="relative mx-auto w-full max-w-[1500px] px-5 pb-20 pt-7 sm:px-8 sm:pt-9 lg:px-12 lg:pt-11">
         <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-end">
           <div className="max-w-5xl text-start">
-            <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D8B35C]/78">
+            <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D8B35C]/78">
               {copy.eyebrow}
             </div>
             <h1 className="max-w-5xl text-[clamp(2.5rem,5.6vw,5.45rem)] font-semibold leading-[0.96] tracking-[-0.056em] text-[#FFF9EC]">
@@ -336,7 +336,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   <Clock size={18} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">
                     {copy.continueLabel}
                   </p>
                   <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
@@ -367,7 +367,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   : 'bg-white/[0.025] hover:bg-white/[0.055]',
               )}
             >
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/72">
+              <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/72">
                 {copy.all}
               </span>
               <span className="mt-1 block text-sm font-semibold text-[#FFF9EC]">
@@ -406,7 +406,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       <span className="block truncate text-[13px] font-semibold text-[#FFF9EC]">
                         {collectionLabels[collection]}
                       </span>
-                      <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/48">
+                      <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/62">
                         {bookCount(collectionStoryIds[collection].length)}
                       </span>
                     </div>
@@ -624,14 +624,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                         referrerPolicy="no-referrer"
                       />
                       <span
-                        className="text-[10px] font-semibold uppercase tracking-[0.16em]"
+                        className="text-[11px] font-semibold uppercase tracking-[0.16em]"
                         style={{ color: activeVisual.accentBright }}
                       >
                         {collectionLabels[activeStoryCollection]}
                       </span>
                     </div>
 
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#EDE5D4]/46">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#EDE5D4]/62">
                       {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
                     </span>
                   </div>
@@ -686,7 +686,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                   </div>
 
                   <div className="mt-8 flex items-center justify-between gap-4">
-                    <p className="hidden text-[10px] font-semibold uppercase tracking-[0.16em] text-[#EDE5D4]/42 sm:block">
+                    <p className="hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-[#EDE5D4]/62 sm:block">
                       {copy.explore}
                     </p>
 
