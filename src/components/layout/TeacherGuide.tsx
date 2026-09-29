@@ -1525,7 +1525,7 @@ entries.set(key, { word, definition });
               <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
                 <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8" />
                 <span className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1.5 rounded-full bg-black/55 border border-gold/30 flex items-center justify-center font-display text-[10px] font-black text-gold">
-                  {formatNumber(assessmentLevel)}
+                  {assessmentLevel}
                 </span>
               </div>
               <div className="min-w-0">
@@ -1737,7 +1737,7 @@ entries.set(key, { word, definition });
 
                   <div className="hidden sm:flex items-center gap-2">
                     <span className="px-3 py-1.5 rounded-full border border-gold/15 bg-gold/[0.06] font-display text-[11px] font-bold text-gold">
-                      {formatNumber(assessmentLevel)}
+                      {assessmentLevel}
                     </span>
                     <span className="px-3 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.03] font-display text-[11px] font-bold text-parchment/55">
                       {formatNumber(activeTabIndex + 1)} / {formatNumber(tabs.length)}

@@ -727,7 +727,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1.5">
                         <span className="text-[10px] font-black tabular-nums text-wood/25">
-                          {String((currentPage - 1) * WORDS_PER_PAGE + index + 1).padStart(2, '0')}
+                          {formatNumber(String((currentPage - 1) * WORDS_PER_PAGE + index + 1).padStart(2, '0'))}
                         </span>
                         <span className={cn(
                           'px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.08em]',
