@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   BookMarked,
@@ -27,6 +27,7 @@ import {
 import { cn } from './lib/utils';
 import { generateBookPDF } from './lib/pdfGenerator';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
+import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
 import { getStoryMeta } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
@@ -66,9 +67,11 @@ const AppContent = () => {
     }
   };
 
-  const [selectedProphetId, setSelectedProphetId] = useState<string | null>(null);
-  const [currentLevel, setCurrentLevel] = useState<Level | null>(null);
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  // A shared or reloaded link like #/mecca/a2/5 opens that book at that page.
+  const [initialRoute] = useState(() => parseHashRoute(window.location.hash));
+  const [selectedProphetId, setSelectedProphetId] = useState<string | null>(initialRoute?.storyId ?? null);
+  const [currentLevel, setCurrentLevel] = useState<Level | null>(initialRoute?.level ?? null);
+  const [currentPageIndex, setCurrentPageIndex] = useState(initialRoute?.pageIndex ?? 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
@@ -134,11 +137,11 @@ const AppContent = () => {
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
 
-  // A resumed position may point past the end if the book changed since it was saved.
+  // A resumed position or a hand-typed link may point past the end of the book.
   useEffect(() => {
     if (!currentBook) return;
     setCurrentPageIndex(prev => Math.min(prev, Math.max(currentBook.pages.length - 1, 0)));
-  }, [currentBook]);
+  }, [currentBook, currentPageIndex]);
 
   useEffect(() => {
     if (!selectedProphetId || !currentLevel || !currentPage) return;
@@ -148,6 +151,21 @@ const AppContent = () => {
     }
     saveReaderPosition(selectedProphetId, currentLevel, { pageIndex: currentPageIndex, totalPages });
   }, [selectedProphetId, currentLevel, currentPage, currentPageIndex, totalPages, showSummary]);
+
+  // --- URL hash: one entry per page, so the browser back button and reload keep the reader's place ---
+  const currentRoute = useMemo<HashRoute | null>(
+    () => (selectedProphetId && currentLevel ? { storyId: selectedProphetId, level: currentLevel, pageIndex: currentPageIndex } : null),
+    [selectedProphetId, currentLevel, currentPageIndex],
+  );
+  const currentRouteRef = useRef(currentRoute);
+  currentRouteRef.current = currentRoute;
+
+  useEffect(() => {
+    const next = formatHashRoute(currentRoute);
+    const hash = window.location.hash;
+    if (hash === next || (!currentRoute && isHomeHash(hash))) return;
+    window.location.hash = next;
+  }, [currentRoute]);
 
   const currentCollection = currentDefinition?.collection ?? null;
 
@@ -310,10 +328,16 @@ const AppContent = () => {
   }, [currentBook, currentDefinition, language]);
 
   // --- Handlers ---
-  const handleStartJourney = (prophetId: string, level: Level, options?: { resume?: boolean }) => {
+  const handleStartJourney = (
+    prophetId: string,
+    level: Level,
+    options?: { resume?: boolean; pageIndex?: number },
+  ) => {
     setSelectedProphetId(prophetId);
     setCurrentLevel(level);
-    setCurrentPageIndex(options?.resume ? readReaderPosition(prophetId, level)?.pageIndex ?? 0 : 0);
+    setCurrentPageIndex(
+      options?.pageIndex ?? (options?.resume ? readReaderPosition(prophetId, level)?.pageIndex ?? 0 : 0),
+    );
     setUserAnswers({});
     setIsMenuOpen(false);
     setShowSummary(false);
@@ -360,6 +384,26 @@ const AppContent = () => {
       setCurrentPageIndex(prev => prev - 1);
     }
   };
+
+  useEffect(() => {
+    const applyHash = () => {
+      const route = parseHashRoute(window.location.hash);
+      const current = currentRouteRef.current;
+      if (!route) {
+        if (current) handleReturnToLibrary();
+        return;
+      }
+      if (current && current.storyId === route.storyId && current.level === route.level) {
+        if (current.pageIndex !== route.pageIndex) setCurrentPageIndex(route.pageIndex);
+        setShowSummary(false);
+        return;
+      }
+      handleStartJourney(route.storyId, route.level, { pageIndex: route.pageIndex });
+    };
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
