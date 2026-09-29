@@ -16,6 +16,7 @@ import { LanguageToggle } from '../ui/LanguageToggle';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
 import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
+import { summarizeBookProgress, type BookProgressSummary } from '../../lib/bookProgress';
 import {
   collectionStoryIds,
   collectionVisuals,
@@ -214,6 +215,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       // Ignore malformed local storage data.
     }
   }, []);
+
+  // Progress per level of the book on stage, read when the stage changes (the reader writes it on every page).
+  const levelProgress = useMemo<Partial<Record<Level, BookProgressSummary | null>>>(
+    () => Object.fromEntries(activeStory.availableLevels.map(level => [level, summarizeBookProgress(activeStory.id, level)])),
+    [activeStory],
+  );
 
   const selectCollection = (collection: CollectionId) => {
     setActiveCollection(collection);
@@ -683,6 +690,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                           <span className="mt-2 block text-[12px] font-medium leading-4 text-[#F0E8D8]/76 sm:text-[13px]">
                             {levelDescriptions[level][language === 'ar' ? 'ar' : 'en']}
                           </span>
+                          {levelProgress[level] && (
+                            <span className="mt-2.5 flex items-center gap-2" aria-label={`${levelProgress[level]!.percent}%`}>
+                              <span className="h-1 flex-1 overflow-hidden rounded-full bg-white/10">
+                                <span
+                                  className="block h-full rounded-full"
+                                  style={{ width: `${levelProgress[level]!.percent}%`, background: activeVisual.accentBright }}
+                                />
+                              </span>
+                              <span className="text-[11px] font-semibold tabular-nums text-[#F0E8D8]/76">
+                                {formatNumber(levelProgress[level]!.percent)}%
+                              </span>
+                            </span>
+                          )}
                         </motion.button>
                       ))}
                     </div>

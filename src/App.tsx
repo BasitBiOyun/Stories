@@ -28,6 +28,7 @@ import { cn } from './lib/utils';
 import { generateBookPDF } from './lib/pdfGenerator';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
 import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
+import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bookProgress';
 import { getStoryMeta } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
@@ -119,7 +120,7 @@ const AppContent = () => {
   }, [isDyslexic]);
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
-  const { resetStats } = useStoryProgress();
+  const { stats, resetStats, hydrateStats } = useStoryProgress();
   const { isSupported: canFullscreen, isFullscreen, toggleFullscreen } = useFullscreen();
   const {
     definition: currentDefinition,
@@ -153,6 +154,45 @@ const AppContent = () => {
     }
     saveReaderPosition(selectedProphetId, currentLevel, { pageIndex: currentPageIndex, totalPages });
   }, [selectedProphetId, currentLevel, currentPage, currentPageIndex, totalPages, showSummary]);
+
+  // --- Book progress: pages read and exercises done, stored per book and shared by the TOC, summary and home page ---
+  const [bookProgress, setBookProgress] = useState<BookProgress | null>(null);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || !currentBookPair) {
+      setBookProgress(null);
+      return;
+    }
+    const saved = readBookProgress(selectedProphetId, currentLevel);
+    const pages = currentBookPair.en.pages;
+    const chaptersVisited = saved.readPages
+      .map(index => pages[index])
+      .filter(page => page?.type === 'story')
+      .map(page => page.id);
+    hydrateStats({ exercisesCompleted: saved.doneExercises, chaptersVisited });
+    setBookProgress(saved);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProphetId, currentLevel, currentBookPair]);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || !currentBook) return;
+    setBookProgress(
+      mergeBookProgress(selectedProphetId, currentLevel, {
+        readPages: [currentPageIndex],
+        totalPages: currentBook.pages.length,
+      }),
+    );
+  }, [selectedProphetId, currentLevel, currentBook, currentPageIndex]);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || stats.exercisesCompleted.size === 0) return;
+    setBookProgress(mergeBookProgress(selectedProphetId, currentLevel, { doneExercises: stats.exercisesCompleted }));
+  }, [selectedProphetId, currentLevel, stats.exercisesCompleted]);
+
+  const readPageSet = useMemo(() => new Set(bookProgress?.readPages ?? []), [bookProgress]);
+  const doneExerciseSet = useMemo(() => new Set(bookProgress?.doneExercises ?? []), [bookProgress]);
+  const allDone = (ids: string[] | undefined) =>
+    Boolean(ids && ids.length > 0 && ids.every(id => doneExerciseSet.has(id)));
 
   // --- URL hash: one entry per page, so the browser back button and reload keep the reader's place ---
   const currentRoute = useMemo<HashRoute | null>(
@@ -1040,12 +1080,28 @@ const AppContent = () => {
                                 : "text-parchment/68 hover:bg-white/[0.06] hover:text-white"
                             )}
                           >
-                            <span className="w-8 shrink-0 text-center font-display text-[11px] sm:text-[12px] font-semibold opacity-65">
-                              {formatNumber(idx + 1)}
+                            <span
+                              className={cn(
+                                "w-8 shrink-0 text-center font-display text-[11px] sm:text-[12px] font-semibold",
+                                readPageSet.has(idx) && !isActive ? "text-emerald-300" : "opacity-65"
+                              )}
+                              aria-label={readPageSet.has(idx) ? (language === 'ar' ? 'مقروءة' : 'Read') : undefined}
+                            >
+                              {readPageSet.has(idx) && !isActive ? '✓' : formatNumber(idx + 1)}
                             </span>
                             <span className="min-w-0 flex-1 truncate font-display text-[13px] font-medium sm:text-[14px]">
                               {page.title}
                             </span>
+                            {allDone(page.exercises?.map(exercise => exercise.id)) && (
+                              <span className="shrink-0 rounded-full bg-emerald-500/15 px-1.5 py-0.5 font-display text-[11px] font-semibold text-emerald-300">
+                                {page.type === 'story' ? 'QC ✓' : '✓'}
+                              </span>
+                            )}
+                            {allDone(page.languageFocusExercises?.map(exercise => exercise.id)) && (
+                              <span className="shrink-0 rounded-full bg-emerald-500/15 px-1.5 py-0.5 font-display text-[11px] font-semibold text-emerald-300">
+                                LF ✓
+                              </span>
+                            )}
                             {isActive && (
                               <span className={cn("h-2 w-2 shrink-0 rounded-full", themeClasses.progressBar)} />
                             )}
