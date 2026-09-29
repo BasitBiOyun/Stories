@@ -46,6 +46,8 @@ import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { FinalChallenge } from './components/book/FinalChallenge';
 import { SummaryDashboard } from './components/book/SummaryDashboard';
+import { RolePicker } from './components/layout/RolePicker';
+import { useUserRole } from './contexts/UserRoleContext';
 
 const AppContent = () => {
   // --- State ---
@@ -53,6 +55,7 @@ const AppContent = () => {
     const code = sessionStorage.getItem('app_access_code');
     return code === 'stories_enar';
   });
+  const { role, isTeacher } = useUserRole();
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -252,6 +255,20 @@ const AppContent = () => {
         setIsTeacherGuideOpen(true);
       })
       .catch(error => console.error('[Teacher Guide] Unable to load guide data.', error));
+  };
+
+  // The home page's Teacher Guide shortcut opens the book and then its guide once the book is in.
+  const [pendingTeacherGuide, setPendingTeacherGuide] = useState(false);
+  useEffect(() => {
+    if (!pendingTeacherGuide || !currentBook || !currentDefinition || !currentLevel) return;
+    setPendingTeacherGuide(false);
+    openTeacherGuide();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingTeacherGuide, currentBook, currentDefinition, currentLevel]);
+
+  const handleOpenTeacherGuideFromHome = (prophetId: string, level: Level) => {
+    setPendingTeacherGuide(true);
+    handleStartJourney(prophetId, level);
   };
 
   const openSelfStudyGuide = () => {
@@ -612,8 +629,12 @@ const AppContent = () => {
     );
   }
 
+  if (!role) {
+    return <RolePicker />;
+  }
+
   if (!selectedProphetId || !currentLevel) {
-    return <HomePage onStart={handleStartJourney} />;
+    return <HomePage onStart={handleStartJourney} onOpenTeacherGuide={isTeacher ? handleOpenTeacherGuideFromHome : undefined} />;
   }
 
   if (bookLoadError) {
@@ -1236,21 +1257,23 @@ const AppContent = () => {
                 </h4>
 
                 <div className="mt-2 space-y-1">
-                  <button 
-                    onClick={openTeacherGuide}
-                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
-                  >
-                    <GraduationCap size={21} className={themeClasses.menuAccentText} />
-                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.teacherGuide')}</span>
-                  </button>
-
-                  <button 
-                    onClick={openSelfStudyGuide}
-                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
-                  >
-                    <ClipboardList size={21} className={themeClasses.menuAccentText} />
-                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.selfStudyGuide')}</span>
-                  </button>
+                  {isTeacher ? (
+                    <button 
+                      onClick={openTeacherGuide}
+                      className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    >
+                      <GraduationCap size={21} className={themeClasses.menuAccentText} />
+                      <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.teacherGuide')}</span>
+                    </button>
+                  ) : (
+                    <button 
+                      onClick={openSelfStudyGuide}
+                      className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    >
+                      <ClipboardList size={21} className={themeClasses.menuAccentText} />
+                      <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.selfStudyGuide')}</span>
+                    </button>
+                  )}
 
                   <button 
                     data-pdf-locked="true"

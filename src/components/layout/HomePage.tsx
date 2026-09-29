@@ -11,7 +11,8 @@ import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
-import { ArrowRight, ChevronLeft, ChevronRight, Clock } from '../ui/icons';
+import { RoleToggle } from '../ui/RoleToggle';
+import { ArrowRight, ChevronLeft, ChevronRight, Clock, GraduationCap } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
 import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
 import { summarizeBookProgress, type BookProgressSummary } from '../../lib/bookProgress';
@@ -26,6 +27,8 @@ import {
 
 interface HomePageProps {
   onStart: (prophetId: string, level: Level, options?: { resume?: boolean }) => void;
+  /** Teachers get a Teacher Guide shortcut per level on the book card. */
+  onOpenTeacherGuide?: (prophetId: string, level: Level) => void;
 }
 
 type CollectionId = 'all' | 'prophets' | 'history' | 'turkish';
@@ -35,7 +38,7 @@ const levelDescriptions: Record<Level, { en: string; ar: string }> = {
   B2: { en: 'Upper intermediate', ar: 'فوق المتوسط' },
 };
 
-export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide }) => {
   const [activeCollection, setActiveCollection] = useState<CollectionId>('all');
   const [activeIndex, setActiveIndex] = useState(0);
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
@@ -267,7 +270,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               />
             </div>
             <div className="min-w-0 text-start">
-              <p className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#F7F1E5]">
+              <p className="line-clamp-2 text-[13px] font-semibold leading-tight tracking-[-0.01em] text-[#F7F1E5] sm:line-clamp-none sm:truncate sm:text-[15px]">
                 {t('nav.homeTitle')}
               </p>
               <p className="mt-0.5 hidden truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-[#D8B35C]/68 sm:block">
@@ -275,7 +278,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
               </p>
             </div>
           </div>
-          <LanguageToggle />
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <RoleToggle />
+            <LanguageToggle />
+          </div>
         </div>
       </header>
 
@@ -657,6 +663,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                         </motion.button>
                       ))}
                     </div>
+
+                    {onOpenTeacherGuide && (
+                      <div className="mt-3 flex max-w-2xl flex-wrap items-center gap-2" data-teacher-shortcut>
+                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#F0E8D8]/66">
+                          <GraduationCap size={14} style={{ color: activeVisual.accentBright }} />
+                          {t('nav.teacherGuideFor')}
+                        </span>
+                        {activeStory.availableLevels.map(level => (
+                          <button
+                            key={level}
+                            type="button"
+                            onClick={() => onOpenTeacherGuide(activeStory.id, level)}
+                            className="min-h-9 rounded-full border border-white/12 bg-white/[0.05] px-3.5 font-display text-[12px] font-semibold text-[#FFF9EC] transition-colors hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                          >
+                            {level}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-8 flex items-center justify-between gap-4">
