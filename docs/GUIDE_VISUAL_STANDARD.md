@@ -74,7 +74,7 @@ Recommended chapter routine:
 
 ## A2 learner-language standard
 
-A2 books are primarily for **Grades 5–6 EFL learners**. Learner-facing guide language must therefore be easier than the story text, not harder.
+A2 books are for learners at A2 level, whatever their age or school grade. Do not name a grade or age in learner-facing material. Learner-facing guide language must be easier than the story text, not harder.
 
 - Prefer common verbs: **look, listen, read, find, check, say, write, try, remember**.
 - Prefer common nouns: **word, sentence, answer, story, chapter, idea, fact**.
