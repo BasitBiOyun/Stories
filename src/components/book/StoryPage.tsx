@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from
 import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
 import { PageData, Hotspot, Exercise } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
+import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
 import { cn } from '../../lib/utils';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
@@ -112,6 +113,7 @@ const HotspotButton = ({
         type="button"
         onClick={onToggle}
         className="relative z-[80] -m-2 p-2 visible opacity-100 group/hotspot rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+        data-hotspot
         aria-expanded={isActive}
         aria-label={hotspot.title}
       >
@@ -392,6 +394,13 @@ export const StoryPage = ({
   // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
   const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
   const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
+  // First story page on this device: a three-step tour once the page has settled.
+  const [isTourActive, setIsTourActive] = useState(false);
+  useEffect(() => {
+    if (page.type !== 'story' || isReaderTourDone()) return;
+    const timer = window.setTimeout(() => setIsTourActive(true), 1100);
+    return () => window.clearTimeout(timer);
+  }, [page.type]);
   // "What's next": the chapter's audio finished, or the reader scrolled to the end of the text.
   const [audioEnded, setAudioEnded] = useState(false);
   const [textEndReached, setTextEndReached] = useState(false);
@@ -1786,6 +1795,8 @@ export const StoryPage = ({
           />
         )}
       </AnimatePresence>
+
+      <ReaderTour active={isTourActive} onFinish={() => setIsTourActive(false)} />
     </div>
   );
 };
