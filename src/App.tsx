@@ -690,7 +690,7 @@ const AppContent = () => {
                   "mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.16em] sm:text-[10px]",
                   themeClasses.headerSubtitle
                 )}>
-                  {t('nav.level')} {formatNumber(currentLevel || '')} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
+                  {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
                 </span>
               </div>
             </div>
@@ -854,15 +854,21 @@ const AppContent = () => {
             >
               لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ
             </p>
-            <p
-              dir="ltr"
-              lang="en"
-              className="mt-0.5 text-[9px] font-medium leading-tight text-parchment/62 2xl:text-[10px]"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              “In their stories there is truly a lesson for people of understanding.”
-              <span className="ms-1 text-parchment/38">Yusuf 12:111</span>
-            </p>
+            {language === 'ar' ? (
+              <p dir="rtl" lang="ar" className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/62 2xl:text-xs">
+                سُورَةُ يُوسُف، الآيَة ١١١
+              </p>
+            ) : (
+              <p
+                dir="ltr"
+                lang="en"
+                className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/70 2xl:text-xs"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                “In their stories there is truly a lesson for people of understanding.”
+                <span className="ms-1 text-parchment/50">Yusuf 12:111</span>
+              </p>
+            )}
           </div>
 
           <div className="absolute inset-x-0 bottom-0 h-[2px] bg-white/[0.06]" aria-hidden="true">
@@ -1073,7 +1079,7 @@ const AppContent = () => {
                     {currentBookTitle}
                   </h3>
                   <p className="mt-1 text-[13px] text-parchment/55">
-                    {t('nav.level')} {formatNumber(currentLevel || '')} · {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
+                    {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
                   </p>
                 </div>
                 <button

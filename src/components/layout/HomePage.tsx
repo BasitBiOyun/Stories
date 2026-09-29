@@ -89,7 +89,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           previous: 'الكتاب السابق',
           next: 'الكتاب التالي',
           explore: 'اسحب أو استخدم الأسهم للاستكشاف',
-          books: 'كتب',
         }
       : {
           eyebrow: 'Interactive story library',
@@ -105,8 +104,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           previous: 'Previous book',
           next: 'Next book',
           explore: 'Swipe or use the arrows to explore',
-          books: 'books',
         };
+
+  // "1 book" / "5 books"; Arabic counts one, two, and three-to-ten differently.
+  const bookCount = (count: number) => {
+    if (language === 'ar') {
+      const noun = count === 1 ? 'كتاب' : count === 2 ? 'كتابان' : count <= 10 ? 'كتب' : 'كتابًا';
+      return count === 1 || count === 2 ? noun : `${formatNumber(count)} ${noun}`;
+    }
+    return `${count} ${count === 1 ? 'book' : 'books'}`;
+  };
 
   const collectionLabels: Record<StoryCollectionId, string> = {
     prophets: copy.prophets,
@@ -364,7 +371,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                 {copy.all}
               </span>
               <span className="mt-1 block text-sm font-semibold text-[#FFF9EC]">
-                {stories.length} {copy.books}
+                {bookCount(stories.length)}
               </span>
             </button>
 
@@ -400,7 +407,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                         {collectionLabels[collection]}
                       </span>
                       <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/48">
-                        {collectionStoryIds[collection].length} {copy.books}
+                        {bookCount(collectionStoryIds[collection].length)}
                       </span>
                     </div>
                   </div>
