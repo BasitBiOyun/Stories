@@ -299,7 +299,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {[true, false].map((value) => {
             const selected = userAnswer === value;
-            const revealCorrect = isSubmitted && exercise.correctAnswer === value;
+            const revealCorrect = revealAnswer && exercise.correctAnswer === value;
             const revealWrong = isSubmitted && selected && !revealCorrect;
             return (
               <button
@@ -335,7 +335,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         <div className="grid grid-cols-1 gap-3">
           {presentedMcOptions.map((option, displayIndex) => {
             const selected = userAnswer === option.originalIndex;
-            const revealCorrect = isSubmitted && option.originalIndex === exercise.correctAnswer;
+            const revealCorrect = revealAnswer && option.originalIndex === exercise.correctAnswer;
             const revealWrong = isSubmitted && selected && !revealCorrect;
             return (
               <button
@@ -774,6 +774,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const correct = isSubmitted && (exercise.type === 'quiz-game'
     ? quizScore === (exercise.quizQuestions?.length ?? 0)
     : isCorrectAnswer(userAnswer));
+  // The first wrong try gets only the hint; the answer and explanation appear after a second try.
+  const revealAnswer = isSubmitted && (correct || attempt > 0);
 
   const quickBackground = collectionId === 'history'
     ? 'radial-gradient(circle at 14% 8%, rgba(16,185,129,0.12), transparent 34%), #FBFAF6'
@@ -921,11 +923,17 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   </div>
                 </div>
 
-                {exercise.explanation && (
+                {exercise.explanation && revealAnswer && (
                   <div className={cn('rounded-xl bg-white/70 border border-black/5 p-3 sm:p-4 font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
                     <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1', isArabic ? 'text-sm' : 'text-[10px]')}>{t('nav.explanation')}</span>
                     {exercise.explanation}
                   </div>
+                )}
+
+                {!revealAnswer && (
+                  <p className={cn('font-serif text-wood/55', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+                    {t('nav.answerAfterNextTry')}
+                  </p>
                 )}
 
                 <div className={cn(
@@ -933,11 +941,11 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   correct ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
                 )}>
                   {!correct && (
-                    <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl bg-white border-2 border-rose-200 text-rose-700 font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+                    <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', revealAnswer ? 'bg-white border-2 border-rose-200 text-rose-700' : `text-white ${theme.accentBg}`)}>
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
                   )}
-                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct ? 'bg-emerald-600' : 'bg-rose-600')}>
+                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct ? 'bg-emerald-600 text-white' : revealAnswer ? `text-white ${theme.accentBg}` : 'bg-white border-2 border-black/10 text-wood/70')}>
                     {t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
                   </button>
                 </div>
