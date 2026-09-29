@@ -85,6 +85,7 @@ export const TeacherGuide = ({
   const [prepChapterIndex, setPrepChapterIndex] = useState(0);
   const [pendingChapterIndex, setPendingChapterIndex] = useState<number | null>(null);
   const contentScrollRef = React.useRef<HTMLDivElement>(null);
+  const sectionNavRef = React.useRef<HTMLElement>(null);
   const chapterRefs = React.useRef<Record<number, HTMLDivElement | null>>({});
   const { language, t, formatNumber, isRTL } = useLanguage();
 
@@ -319,6 +320,15 @@ entries.set(key, { word, definition });
   React.useEffect(() => {
     if (!isOpen) return;
     contentScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab, isOpen]);
+
+  // Keep the active section tab in view: the phone strip scrolls sideways, the desktop map vertically.
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const active = sectionNavRef.current?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!active) return;
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
   }, [activeTab, isOpen]);
 
   React.useEffect(() => {
@@ -1614,7 +1624,7 @@ entries.set(key, { word, definition });
                 </div>
               </div>
 
-              <nav className="p-2 sm:p-3 md:px-4 md:pb-6 space-y-1.5">
+              <nav ref={sectionNavRef} className="p-2 sm:p-3 md:px-4 md:pb-6 space-y-1.5">
                 {tabs.map((tab, idx) => {
                   const isActive = activeTab === tab.id;
                   return (

@@ -94,6 +94,7 @@ export const SelfStudyGuide = ({
   const [isRescueOpen, setIsRescueOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const contentScrollRef = React.useRef<HTMLDivElement>(null);
+  const sectionNavRef = React.useRef<HTMLElement>(null);
   const { language, t, formatNumber, isRTL } = useLanguage();
   const { stats } = useStoryProgress();
 
@@ -313,6 +314,15 @@ export const SelfStudyGuide = ({
     if (!isOpen) return;
     contentScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab, activeGuideSection, isOpen]);
+
+  // Keep the active section tab in view: the phone strip scrolls sideways, the desktop map vertically.
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const active = sectionNavRef.current?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!active) return;
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+  }, [activeTab, isOpen]);
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -791,7 +801,7 @@ export const SelfStudyGuide = ({
                 </div>
               </div>
 
-              <nav className="p-2 sm:p-3 md:px-4 md:pb-6 space-y-1.5">
+              <nav ref={sectionNavRef} className="p-2 sm:p-3 md:px-4 md:pb-6 space-y-1.5">
                 {tabs.map((tab, index) => {
                   const isActive = activeTab === tab.id;
                   return (

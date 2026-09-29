@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   BookMarked,
@@ -36,7 +36,10 @@ import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton'
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
-import { TeacherGuide } from './components/layout/TeacherGuide';
+// Loaded on first use: the teacher guide, the final challenge and the summary are large and not needed to start reading.
+const TeacherGuide = lazy(() => import('./components/layout/TeacherGuide').then(module => ({ default: module.TeacherGuide })));
+const FinalChallenge = lazy(() => import('./components/book/FinalChallenge').then(module => ({ default: module.FinalChallenge })));
+const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard').then(module => ({ default: module.SummaryDashboard })));
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
 
@@ -44,8 +47,6 @@ import { HomePage } from './components/layout/HomePage';
 import { StoryPage } from './components/book/StoryPage';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
-import { FinalChallenge } from './components/book/FinalChallenge';
-import { SummaryDashboard } from './components/book/SummaryDashboard';
 import { RolePicker } from './components/layout/RolePicker';
 import { useUserRole } from './contexts/UserRoleContext';
 
@@ -663,13 +664,15 @@ const AppContent = () => {
   const renderPage = () => {
     if (showSummary) {
       return (
-        <SummaryDashboard 
-          bookData={currentBook!} 
-          onFinish={handleReturnToLibrary}
-          onReviewStory={handleReviewStory}
-          onReadAgain={handleReadAgain}
-          onStartJourney={handleStartJourney}
-        />
+        <Suspense fallback={null}>
+          <SummaryDashboard 
+            bookData={currentBook!} 
+            onFinish={handleReturnToLibrary}
+            onReviewStory={handleReviewStory}
+            onReadAgain={handleReadAgain}
+            onStartJourney={handleStartJourney}
+          />
+        </Suspense>
       );
     }
 
@@ -697,7 +700,11 @@ const AppContent = () => {
           />
         );
       case 'final-challenge':
-        return <FinalChallenge bookData={currentBook!} onComplete={() => setShowSummary(true)} />;
+        return (
+          <Suspense fallback={null}>
+            <FinalChallenge bookData={currentBook!} onComplete={() => setShowSummary(true)} />
+          </Suspense>
+        );
       default:
         return (
           <ExercisePage 
@@ -1296,17 +1303,21 @@ const AppContent = () => {
       </AnimatePresence>
 
       {/* Teacher Guide Overlay */}
-      <TeacherGuide 
-        isOpen={isTeacherGuideOpen} 
-        onClose={() => setIsTeacherGuideOpen(false)} 
-        content={currentTeacherGuide?.content || []}
-        pages={currentBook?.pages || []}
-        bookTitle={currentBookTitle}
-        metadata={currentTeacherGuide?.metadata}
-        bookId={currentBook?.id}
-        level={currentLevel || undefined}
-        collectionId={currentCollection || 'prophets'}
-      />
+      {isTeacher && (
+        <Suspense fallback={null}>
+          <TeacherGuide 
+            isOpen={isTeacherGuideOpen} 
+            onClose={() => setIsTeacherGuideOpen(false)} 
+            content={currentTeacherGuide?.content || []}
+            pages={currentBook?.pages || []}
+            bookTitle={currentBookTitle}
+            metadata={currentTeacherGuide?.metadata}
+            bookId={currentBook?.id}
+            level={currentLevel || undefined}
+            collectionId={currentCollection || 'prophets'}
+          />
+        </Suspense>
+      )}
 
       {/* Self-Study Guide Overlay (Student Guide) */}
       <SelfStudyGuide 
