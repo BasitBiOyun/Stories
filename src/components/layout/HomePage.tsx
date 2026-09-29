@@ -2,10 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   AnimatePresence,
   motion,
-  useMotionValue,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
 } from 'motion/react';
 import { ProphetStory, Level } from '../../types';
@@ -45,27 +43,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
   const { language, t, isRTL, formatNumber } = useLanguage();
   const reduceMotion = useReducedMotion();
   const stageRef = useRef<HTMLElement>(null);
-
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const pointerGlowX = useSpring(useTransform(pointerX, [-0.5, 0.5], [-42, 42]), {
-    stiffness: 160,
-    damping: 26,
-    mass: 0.7,
-  });
-  const pointerGlowY = useSpring(useTransform(pointerY, [-0.5, 0.5], [-28, 28]), {
-    stiffness: 160,
-    damping: 26,
-    mass: 0.7,
-  });
-  const coverRotateY = useSpring(
-    useTransform(pointerX, [-0.5, 0.5], reduceMotion ? [0, 0] : [-6, 6]),
-    { stiffness: 180, damping: 24, mass: 0.65 },
-  );
-  const coverRotateX = useSpring(
-    useTransform(pointerY, [-0.5, 0.5], reduceMotion ? [0, 0] : [5, -5]),
-    { stiffness: 180, damping: 24, mass: 0.65 },
-  );
 
   const { scrollYProgress } = useScroll({
     target: stageRef,
@@ -248,18 +225,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
     });
   };
 
-  const handleStagePointerMove = (event: React.PointerEvent<HTMLElement>) => {
-    if (reduceMotion || event.pointerType === 'touch') return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const resetPointer = () => {
-    pointerX.set(0);
-    pointerY.set(0);
-  };
-
   const swipeInProgressRef = useRef(false);
 
   const handleSwipeEnd = (offsetX: number, velocityX: number) => {
@@ -429,8 +394,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
 
         <section
           ref={stageRef}
-          onPointerMove={handleStagePointerMove}
-          onPointerLeave={resetPointer}
           onKeyDown={(event) => {
             if (event.key === 'ArrowLeft') moveCarousel(isRTL ? 1 : -1);
             if (event.key === 'ArrowRight') moveCarousel(isRTL ? -1 : 1);
@@ -470,11 +433,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#090c0a]/94 via-[#090c0a]/78 to-[#090c0a]/58" />
-              <motion.div
+              <div
                 className="absolute left-[12%] top-[8%] h-[58%] w-[46%] rounded-full blur-3xl"
                 style={{
-                  x: pointerGlowX,
-                  y: pointerGlowY,
                   background: `radial-gradient(circle, ${activeVisual.ambient}, transparent 68%)`,
                 }}
               />
@@ -497,7 +458,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
           />
 
           <div className="relative grid lg:h-full lg:grid-cols-[minmax(420px,0.95fr)_minmax(0,1.05fr)]">
-            <div className="relative flex items-center justify-center overflow-hidden px-6 py-5 sm:min-h-[520px] sm:px-10 sm:py-8 lg:min-h-0 lg:px-8 lg:py-8 [perspective:1800px]">
+            <div className="relative flex items-center justify-center overflow-hidden px-6 py-5 sm:min-h-[520px] sm:px-10 sm:py-8 lg:min-h-0 lg:px-8 lg:py-8">
               <div className="absolute inset-x-[10%] bottom-[8%] h-16 rounded-[50%] bg-black/45 blur-3xl" />
 
               <motion.div
@@ -551,17 +512,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
                       >
                         <motion.div
                           className="relative h-full w-full"
-                          style={
-                            isActive
-                              ? {
-                                  rotateX: coverRotateX,
-                                  rotateY: coverRotateY,
-                                  y: scrollCoverY,
-                                  transformPerspective: 1800,
-                                  transformStyle: 'preserve-3d',
-                                }
-                              : undefined
-                          }
+                          style={isActive ? { y: scrollCoverY } : undefined}
                         >
                           <img
                             src={story.image}

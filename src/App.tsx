@@ -46,7 +46,6 @@ import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { FinalChallenge } from './components/book/FinalChallenge';
 import { SummaryDashboard } from './components/book/SummaryDashboard';
-import { ParchmentEffect } from './components/ui/ParchmentEffect';
 
 const AppContent = () => {
   // --- State ---
@@ -551,7 +550,6 @@ const AppContent = () => {
           isDyslexic && language !== 'ar' && "font-dyslexic-mode"
         )}
       >
-        <ParchmentEffect />
 
         {/* Background Elements */}
         <div className="fixed inset-0 pointer-events-none opacity-20">
@@ -719,9 +717,6 @@ const AppContent = () => {
         isDyslexic && language !== 'ar' && "font-dyslexic-mode"
       )}
     >
-      {/* Living Parchment Effect */}
-      <ParchmentEffect />
-
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
