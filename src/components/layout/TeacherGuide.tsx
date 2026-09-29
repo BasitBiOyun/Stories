@@ -60,10 +60,11 @@ export const TeacherGuide = ({
   pages = [],
   metadata,
   bookId,
+  bookTitle,
   level,
   collectionId
-}: { 
-  isOpen: boolean; 
+}: {
+  isOpen: boolean;
   onClose: () => void;
   title?: string;
   subtitle?: string;
@@ -72,6 +73,8 @@ export const TeacherGuide = ({
   pages?: PageData[];
   metadata?: import('../../types').TeacherGuideMetadata;
   bookId?: string;
+  /** The book's library name; shown instead of the guide's own title so every screen uses one name. */
+  bookTitle?: string;
   level?: Level;
   collectionId?: string;
 }) => {
@@ -279,7 +282,7 @@ entries.set(key, { word, definition });
 
   const activeTabIndex = Math.max(0, tabs.findIndex(tab => tab.id === activeTab));
   const activeTabMeta = tabs[activeTabIndex] ?? tabs[0];
-  const displayGuideTitle = metadata?.title || title || t('tg.title');
+  const displayGuideTitle = bookTitle || metadata?.title || title || t('tg.title');
   const displayGuideSubtitle = metadata?.subtitle || subtitle || t('tg.subtitle');
   const selectedPrepChapter = content[prepChapterIndex] ?? content[0];
 
