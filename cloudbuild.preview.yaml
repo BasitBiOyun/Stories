@@ -35,9 +35,13 @@ steps:
           exit 0
         fi
         export ELEVENLABS_API_KEY="$(gcloud secrets versions access latest --secret=ELEVENLABS_API_KEY --project=$PROJECT_ID)"
-        python3 scripts/tts/expand_source_batch.py
-        python3 scripts/tts/process_requests.py
-        python3 scripts/tts/cleanup_duplicates.py
+        # Narration never blocks the app deploy: on a failure (for example an exhausted
+        # ElevenLabs quota) the requests stay queued and are retried by the next build.
+        if python3 scripts/tts/expand_source_batch.py && python3 scripts/tts/process_requests.py; then
+          python3 scripts/tts/cleanup_duplicates.py || echo "[Stories TTS] Duplicate cleanup failed; the deploy continues."
+        else
+          echo "[Stories TTS] WARNING: narration generation failed; the deploy continues and the queue is retried on the next build."
+        fi
 
   # Arabic narration queue (Eleven v4, slightly slowed). Uses its own key from the
   # ELEVENLABS_ARABIC_API_KEY secret and only overwrites existing arabic_audio objects.
@@ -58,7 +62,7 @@ steps:
           exit 0
         fi
         export ELEVENLABS_ARABIC_API_KEY
-        python3 scripts/tts/process_arabic_requests.py
+        python3 scripts/tts/process_arabic_requests.py || echo "[Stories TTS Arabic] WARNING: Arabic narration failed; the deploy continues and the queue is retried on the next build."
 
   - id: build
     name: gcr.io/cloud-builders/docker
