@@ -27,42 +27,16 @@ type Props = {
   onComplete?: (exerciseIds: string[]) => void;
 };
 
-const themeFor = (collectionId?: string) => {
-  if (collectionId === 'history') {
-    return {
-      border: 'border-emerald-200',
-      softBorder: 'border-emerald-100',
-      softBg: 'bg-emerald-50',
-      accentBg: 'bg-emerald-600',
-      accentText: 'text-emerald-700',
-      title: 'text-emerald-950',
-      progress: 'bg-emerald-500',
-      progressTrack: 'bg-emerald-100',
-    };
-  }
-  if (collectionId === 'turkish') {
-    return {
-      border: 'border-sky-200',
-      softBorder: 'border-sky-100',
-      softBg: 'bg-sky-50',
-      accentBg: 'bg-sky-700',
-      accentText: 'text-sky-700',
-      title: 'text-sky-950',
-      progress: 'bg-sky-600',
-      progressTrack: 'bg-sky-100',
-    };
-  }
-  return {
-    border: 'border-amber-200',
-    softBorder: 'border-amber-100',
-    softBg: 'bg-amber-50',
-    accentBg: 'bg-amber-600',
-    accentText: 'text-amber-700',
-    title: 'text-amber-950',
-    progress: 'bg-amber-500',
-    progressTrack: 'bg-amber-100',
+const theme = {
+    border: 'border-brand-200',
+    softBorder: 'border-brand-100',
+    softBg: 'bg-brand-50',
+    accentBg: 'bg-brand-600',
+    accentText: 'text-brand-700',
+    title: 'text-brand-950',
+    progress: 'bg-brand-500',
+    progressTrack: 'bg-brand-100',
   };
-};
 
 const isExerciseAnswerCorrect = (exercise: Exercise, answer: AnswerValue) => {
   if (answer === null || answer === undefined) return false;
@@ -90,7 +64,6 @@ const QuestionCard = ({
 }) => {
   const { t, formatNumber, isRTL, language } = useLanguage();
   const isArabic = language === 'ar';
-  const theme = themeFor(collectionId);
   const hasAnswer = answer !== null && answer !== undefined;
   const correct = isExerciseAnswerCorrect(exercise, answer);
   const presentedOptions = React.useMemo(
@@ -255,7 +228,6 @@ export const KnowledgeCheck = ({
 }: Props) => {
   const { t, formatNumber, isRTL, language } = useLanguage();
   const isArabic = language === 'ar';
-  const theme = themeFor(collectionId);
   const supportedExercises = React.useMemo(
     () => exercises.filter((exercise) => exercise.type === 'true-false' || exercise.type === 'multiple-choice'),
     [exercises]

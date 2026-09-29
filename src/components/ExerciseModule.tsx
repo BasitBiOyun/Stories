@@ -14,6 +14,7 @@ import {
 } from './ui/icons';
 import { Exercise } from '../types';
 import { cn } from '../lib/utils';
+import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
@@ -48,39 +49,16 @@ interface ExerciseModuleProps {
   embedded?: boolean;
 }
 
-const themeFor = (collectionId: string) => {
-  if (collectionId === 'history') {
-    return {
-      accentBg: 'bg-emerald-600',
-      accentHover: 'hover:bg-emerald-700',
-      accentText: 'text-emerald-700',
-      title: 'text-emerald-950',
-      softBg: 'bg-emerald-50',
-      softBorder: 'border-emerald-200',
-      selected: 'border-emerald-500 bg-emerald-50 text-emerald-900',
-    };
-  }
-  if (collectionId === 'turkish') {
-    return {
-      accentBg: 'bg-sky-700',
-      accentHover: 'hover:bg-sky-800',
-      accentText: 'text-sky-700',
-      title: 'text-sky-950',
-      softBg: 'bg-sky-50',
-      softBorder: 'border-sky-200',
-      selected: 'border-sky-500 bg-sky-50 text-sky-950',
-    };
-  }
-  return {
-    accentBg: 'bg-amber-600',
-    accentHover: 'hover:bg-amber-700',
-    accentText: 'text-amber-700',
-    title: 'text-amber-950',
-    softBg: 'bg-amber-50',
-    softBorder: 'border-amber-200',
-    selected: 'border-amber-500 bg-amber-50 text-amber-950',
+// The collection's colours come from the brand-* tokens App publishes; the classes are the same for every collection.
+const theme = {
+    accentBg: 'bg-brand-600',
+    accentHover: 'hover:bg-brand-700',
+    accentText: 'text-brand-700',
+    title: 'text-brand-950',
+    softBg: 'bg-brand-50',
+    softBorder: 'border-brand-200',
+    selected: 'border-brand-500 bg-brand-50 text-brand-950',
   };
-};
 
 const normalizeText = (value: unknown) => String(value ?? '')
   .trim()
@@ -110,8 +88,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   embedded = false,
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
-  const theme = themeFor(collectionId);
-  const isArabic = language === 'ar';
+    const isArabic = language === 'ar';
   const isQuick = variant === 'quick';
   const isLanguage = variant === 'language';
   const isReview = variant === 'review';
@@ -214,11 +191,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         particleCount: isQuick ? 60 : isLanguage ? 36 : isReview ? 22 : 110,
         spread: isQuick ? 52 : isLanguage ? 42 : isReview ? 34 : 65,
         origin: { y: 0.65 },
-        colors: collectionId === 'history'
-          ? ['#059669', '#10B981', '#34D399']
-          : collectionId === 'turkish'
-            ? ['#0284C7', '#0EA5E9', '#38BDF8']
-            : ['#D97706', '#F59E0B', '#FCD34D'],
+        colors: brandConfetti(collectionVisualFor(collectionId).readerTokens.scale),
       });
     }
   };
@@ -777,17 +750,10 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   // The first wrong try gets only the hint; the answer and explanation appear after a second try.
   const revealAnswer = isSubmitted && (correct || attempt > 0);
 
-  const quickBackground = collectionId === 'history'
-    ? 'radial-gradient(circle at 14% 8%, rgba(16,185,129,0.12), transparent 34%), #FBFAF6'
-    : collectionId === 'turkish'
-    ? 'radial-gradient(circle at 14% 8%, rgba(14,165,233,0.12), transparent 34%), #FBFAF6'
-    : 'radial-gradient(circle at 14% 8%, rgba(217,119,6,0.12), transparent 34%), #FBFAF6';
-
-  const languageBackground = collectionId === 'history'
-    ? 'radial-gradient(circle at 88% 12%, rgba(16,185,129,0.11), transparent 32%), #FCFBF8'
-    : collectionId === 'turkish'
-    ? 'radial-gradient(circle at 88% 12%, rgba(14,165,233,0.11), transparent 32%), #FCFBF8'
-    : 'radial-gradient(circle at 88% 12%, rgba(217,119,6,0.11), transparent 32%), #FCFBF8';
+  const quickBackground =
+    'radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--brand-500) 12%, transparent), transparent 34%), #FBFAF6';
+  const languageBackground =
+    'radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--brand-500) 11%, transparent), transparent 32%), #FCFBF8';
 
   const dialog = (
     <motion.div

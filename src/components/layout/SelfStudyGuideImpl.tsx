@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { X, Crown, Download } from '../ui/icons';
 import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
 import { cn } from '../../lib/utils';
+import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
 import { PageData, StudentGuideSection, TeacherGuideSection } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -96,8 +97,7 @@ export const SelfStudyGuide = ({
   const { language, t, formatNumber, isRTL } = useLanguage();
   const { stats } = useStoryProgress();
 
-  const isHistory = collectionId === 'history';
-  const isTurkish = collectionId === 'turkish';
+  const guideTokens = collectionVisualFor(collectionId).readerTokens;
   const isAr = language === 'ar';
   // A2 learners look for "the answer sentence", not "evidence" (GUIDE_VISUAL_STANDARD, A2 learner language).
   const isA2 = (level ?? metadata?.level) === 'A2';
@@ -724,8 +724,8 @@ export const SelfStudyGuide = ({
           exit={{ opacity: 0 }}
           className={cn('self-study-shell fixed inset-0 bg-wood/98 backdrop-blur-3xl z-[100] overflow-hidden flex flex-col', isRTL && 'font-arabic')}
           style={{
-            '--color-gold': isHistory ? '#10b981' : isTurkish ? '#22D3EE' : '#c2aa6b',
-            '--color-wood': isHistory ? '#042416' : isTurkish ? '#0d1d2c' : '#14221a'
+            '--color-gold': guideTokens.accent,
+            '--color-wood': guideTokens.chromeMenu
           } as React.CSSProperties}
           dir={isRTL ? 'rtl' : 'ltr'}
         >

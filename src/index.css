@@ -78,6 +78,18 @@
   --color-chrome-menu: var(--chrome-menu, #14221a);
   --color-page: var(--page, #fff7ed);
   --color-page-deep: var(--page-deep, #f4f1ea);
+  /* brand-50 … brand-950: the collection's scale on light surfaces (amber, emerald or sky). */
+  --color-brand-50: var(--brand-50, oklch(98.7% .022 95.277));
+  --color-brand-100: var(--brand-100, oklch(96.2% .059 95.617));
+  --color-brand-200: var(--brand-200, oklch(92.4% .12 95.746));
+  --color-brand-300: var(--brand-300, oklch(87.9% .169 91.605));
+  --color-brand-400: var(--brand-400, oklch(82.8% .189 84.429));
+  --color-brand-500: var(--brand-500, oklch(76.9% .188 70.08));
+  --color-brand-600: var(--brand-600, oklch(66.6% .179 58.318));
+  --color-brand-700: var(--brand-700, oklch(55.5% .163 48.998));
+  --color-brand-800: var(--brand-800, oklch(47.3% .137 46.201));
+  --color-brand-900: var(--brand-900, oklch(41.4% .112 45.904));
+  --color-brand-950: var(--brand-950, oklch(27.9% .077 45.635));
 }
 
 @layer base {

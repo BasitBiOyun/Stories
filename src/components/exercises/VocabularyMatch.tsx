@@ -97,32 +97,15 @@ const maskWord = (context: string | undefined, word: string) => {
   return context.slice(0, startIndex) + '_____' + context.slice(endIndex);
 };
 
-const themeFor = (collectionId: string) => {
-  if (collectionId === 'history') {
-    return {
-      barBg: 'bg-emerald-100', barFill: 'bg-emerald-500', accent: 'text-emerald-700', dot: 'bg-emerald-500',
-      badge: 'bg-emerald-600 text-white', reset: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
-      selected: 'border-emerald-500 bg-emerald-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-emerald-100 bg-white hover:border-emerald-300',
-    };
-  }
-  if (collectionId === 'turkish') {
-    return {
-      barBg: 'bg-sky-100', barFill: 'bg-sky-600', accent: 'text-sky-700', dot: 'bg-sky-600',
-      badge: 'bg-sky-600 text-white', reset: 'bg-sky-100 text-sky-700 hover:bg-sky-200',
-      selected: 'border-sky-500 bg-sky-50', matched: 'border-sky-300 bg-sky-50', idle: 'border-sky-100 bg-white hover:border-sky-300',
-    };
-  }
-  return {
-    barBg: 'bg-amber-100', barFill: 'bg-amber-500', accent: 'text-amber-700', dot: 'bg-amber-500',
-    badge: 'bg-amber-500 text-white', reset: 'bg-amber-100 text-amber-700 hover:bg-amber-200',
-    selected: 'border-amber-500 bg-amber-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-amber-100 bg-white hover:border-amber-300',
+const theme = {
+    barBg: 'bg-brand-100', barFill: 'bg-brand-500', accent: 'text-brand-700', dot: 'bg-brand-500',
+    badge: 'bg-brand-500 text-white', reset: 'bg-brand-100 text-brand-700 hover:bg-brand-200',
+    selected: 'border-brand-500 bg-brand-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-brand-100 bg-white hover:border-brand-300',
   };
-};
 
 export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary, onComplete }: Props) => {
   const { t, formatNumber, language, isRTL } = useLanguage();
   const policy = getLearningLevelPolicy(level);
-  const theme = themeFor(collectionId);
   const isArabic = language === 'ar';
   const [meaningOrder, setMeaningOrder] = useState(() => shuffle(pairs.map((pair) => pair.meaning)));
   const [selectedWord, setSelectedWord] = useState<string | null>(null);

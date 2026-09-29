@@ -216,68 +216,24 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
         };
   }, [isRTL, bookData.level]);
 
-  const colTheme = useMemo(() => {
-    if (collectionId === 'history') {
-      return {
-        brand600: 'bg-emerald-600',
-        brand700: 'bg-emerald-700',
-        brandText: 'text-emerald-700',
-        brandTextStrong: 'text-emerald-950',
-        brandSoft: 'bg-emerald-50',
-        brandSoftStrong: 'bg-emerald-100',
-        border: 'border-emerald-100',
-        borderStrong: 'border-emerald-200',
-        hoverBorder: 'hover:border-emerald-300',
-        progressTrack: 'bg-emerald-100',
-        progressFill: 'bg-emerald-500',
-        audio: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
-        audioPlaying: 'bg-emerald-600 text-white',
-        hero: 'from-emerald-50/95 via-white/80 to-teal-50/70',
-        heroGlow: 'bg-emerald-300/20',
-        accentBorder: 'border-emerald-200/70',
-      };
-    }
-
-    if (collectionId === 'turkish') {
-      return {
-        brand600: 'bg-sky-700',
-        brand700: 'bg-sky-800',
-        brandText: 'text-sky-700',
-        brandTextStrong: 'text-sky-950',
-        brandSoft: 'bg-sky-50',
-        brandSoftStrong: 'bg-sky-100',
-        border: 'border-sky-100',
-        borderStrong: 'border-sky-200',
-        hoverBorder: 'hover:border-sky-300',
-        progressTrack: 'bg-sky-100',
-        progressFill: 'bg-sky-600',
-        audio: 'bg-sky-100 text-sky-700 hover:bg-sky-200',
-        audioPlaying: 'bg-sky-700 text-white',
-        hero: 'from-sky-50/95 via-white/80 to-cyan-50/70',
-        heroGlow: 'bg-sky-300/20',
-        accentBorder: 'border-sky-200/70',
-      };
-    }
-
-    return {
-      brand600: 'bg-amber-600',
-      brand700: 'bg-amber-700',
-      brandText: 'text-amber-700',
-      brandTextStrong: 'text-amber-950',
-      brandSoft: 'bg-amber-50',
-      brandSoftStrong: 'bg-amber-100',
-      border: 'border-amber-100',
-      borderStrong: 'border-amber-200',
-      hoverBorder: 'hover:border-amber-300',
-      progressTrack: 'bg-amber-100',
-      progressFill: 'bg-amber-500',
-      audio: 'bg-amber-100 text-amber-700 hover:bg-amber-200',
-      audioPlaying: 'bg-amber-600 text-white',
-      hero: 'from-amber-50/95 via-white/80 to-orange-50/70',
-      heroGlow: 'bg-amber-300/20',
-      accentBorder: 'border-amber-200/70',
+  const colTheme = {
+      brand600: 'bg-brand-600',
+      brand700: 'bg-brand-700',
+      brandText: 'text-brand-700',
+      brandTextStrong: 'text-brand-950',
+      brandSoft: 'bg-brand-50',
+      brandSoftStrong: 'bg-brand-100',
+      border: 'border-brand-100',
+      borderStrong: 'border-brand-200',
+      hoverBorder: 'hover:border-brand-300',
+      progressTrack: 'bg-brand-100',
+      progressFill: 'bg-brand-500',
+      audio: 'bg-brand-100 text-brand-700 hover:bg-brand-200',
+      audioPlaying: 'bg-brand-600 text-white',
+      hero: 'from-brand-50/95 via-white/80 to-brand-50/70',
+      heroGlow: 'bg-brand-300/20',
+      accentBorder: 'border-brand-200/70',
     };
-  }, [collectionId]);
 
   useEffect(() => {
     try {

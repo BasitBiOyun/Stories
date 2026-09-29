@@ -120,7 +120,7 @@ const HotspotButton = ({
           transition={{ duration: 2, repeat: Infinity }}
           className={cn(
             "w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white",
-            collectionId === 'history' ? "bg-emerald-600/80" : collectionId === 'turkish' ? "bg-cyan-600/80" : "bg-amber-600/80"
+            "bg-brand-600/80"
           )}
         >
           <Info size={12} />
@@ -151,14 +151,14 @@ const HotspotButton = ({
                     "w-[calc(100vw-1.5rem)] max-w-[22rem] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
                     language === 'ar' ? "p-4 sm:p-6" : "p-3.5 sm:p-5",
                     "bg-wood/95 backdrop-blur-md rounded-2xl shadow-2xl border",
-                    collectionId === 'history' ? "border-emerald-500/40" : collectionId === 'turkish' ? "border-cyan-400/40" : "border-gold/30"
+                    "border-brand-500/40"
                   )}
                   dir={language === 'ar' ? 'rtl' : 'ltr'}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <h4 className={cn(
                     "font-display mb-2",
-                    collectionId === 'history' ? "text-emerald-400" : collectionId === 'turkish' ? "text-cyan-400" : "text-gold",
+                    "text-brand-400",
                     language === 'ar' ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
                   )}>
                     {hotspot.title}
@@ -401,25 +401,9 @@ export const StoryPage = ({
   const isArabic = language === 'ar';
   const highlightLanguage = isArabic ? 'ar' : 'en';
 
-  const vocabStyle = useMemo(() => {
-    if (collectionId === 'history') {
-      return "border-b-2 border-teal-600/40 hover:border-teal-700 font-bold text-teal-900 transition-colors cursor-help";
-    } else if (collectionId === 'turkish') {
-      return "border-b-2 border-sky-600/40 hover:border-sky-600 font-bold text-blue-950 transition-colors cursor-help";
-    } else {
-      return "border-b-2 border-gold/40 hover:border-gold font-bold text-wood transition-colors cursor-help";
-    }
-  }, [collectionId]);
+  const vocabStyle = "border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors cursor-help";
 
-  const animatedStyle = useMemo(() => {
-    if (collectionId === 'history') {
-      return "text-emerald-700 border-b-2 border-emerald-500/50 hover:border-emerald-605 transition-colors font-bold cursor-help";
-    } else if (collectionId === 'turkish') {
-      return "text-sky-700 border-b-2 border-sky-500/50 hover:border-sky-600 transition-colors font-bold cursor-help";
-    } else {
-      return "text-amber-600 border-b-2 border-amber-400/50 hover:border-amber-500 transition-colors font-bold cursor-help";
-    }
-  }, [collectionId]);
+  const animatedStyle = "text-brand-700 border-b-2 border-brand-500/50 hover:border-brand-600 transition-colors font-bold cursor-help";
 
   const seenHighlightedWords = useMemo(() => {
     const seen = new Set<string>();
@@ -1044,34 +1028,14 @@ export const StoryPage = ({
     if (!exercise) return null;
 
     const completed = completedExercises.includes(exercise.id);
-    const quickTheme = collectionId === 'history'
-      ? {
-          container: 'bg-gradient-to-br from-emerald-50/95 via-white/90 to-emerald-50/65 ring-emerald-200/70',
-          rail: 'bg-emerald-500',
-          icon: 'bg-emerald-700 text-white shadow-emerald-900/10',
-          title: 'text-emerald-950',
-          copy: 'text-emerald-950/58',
-          button: 'bg-emerald-700 hover:bg-emerald-800 focus-visible:ring-emerald-500',
-          glow: 'bg-emerald-300/20',
-        }
-      : collectionId === 'turkish'
-      ? {
-          container: 'bg-gradient-to-br from-sky-50/95 via-white/90 to-cyan-50/65 ring-cyan-200/70',
-          rail: 'bg-cyan-500',
-          icon: 'bg-sky-700 text-white shadow-sky-900/10',
-          title: 'text-sky-950',
-          copy: 'text-sky-950/58',
-          button: 'bg-sky-700 hover:bg-sky-800 focus-visible:ring-sky-500',
-          glow: 'bg-cyan-300/20',
-        }
-      : {
-          container: 'bg-gradient-to-br from-amber-50/95 via-white/90 to-orange-50/55 ring-amber-200/70',
-          rail: 'bg-amber-500',
-          icon: 'bg-amber-700 text-white shadow-amber-900/10',
-          title: 'text-amber-950',
-          copy: 'text-amber-950/58',
-          button: 'bg-amber-700 hover:bg-amber-800 focus-visible:ring-amber-500',
-          glow: 'bg-amber-300/20',
+    const quickTheme = {
+          container: 'bg-gradient-to-br from-brand-50/95 via-white/90 to-brand-50/55 ring-brand-200/70',
+          rail: 'bg-brand-500',
+          icon: 'bg-brand-700 text-white shadow-brand-900/10',
+          title: 'text-brand-950',
+          copy: 'text-brand-950/58',
+          button: 'bg-brand-700 hover:bg-brand-800 focus-visible:ring-brand-500',
+          glow: 'bg-brand-300/20',
         };
 
     return (
@@ -1148,43 +1112,17 @@ export const StoryPage = ({
     if (!exercises.length) return null;
 
     const completedCount = exercises.filter(exercise => completedExercises.includes(exercise.id)).length;
-    const focusTheme = collectionId === 'history'
-      ? {
-          container: 'bg-gradient-to-br from-emerald-50/92 via-white/94 to-teal-50/72 ring-emerald-200/65',
-          icon: 'bg-emerald-800 text-white',
-          accent: 'text-emerald-800',
-          title: 'text-emerald-950',
-          copy: 'text-emerald-950/58',
-          card: 'bg-white/82 hover:bg-white ring-emerald-100/80 hover:ring-emerald-300/90',
-          number: 'bg-emerald-100 text-emerald-800',
-          glow: 'bg-emerald-300/18',
-          progress: 'bg-emerald-600',
-          arrow: 'text-emerald-700',
-        }
-      : collectionId === 'turkish'
-      ? {
-          container: 'bg-gradient-to-br from-sky-50/92 via-white/94 to-cyan-50/72 ring-cyan-200/65',
-          icon: 'bg-sky-800 text-white',
-          accent: 'text-sky-800',
-          title: 'text-sky-950',
-          copy: 'text-sky-950/58',
-          card: 'bg-white/82 hover:bg-white ring-cyan-100/80 hover:ring-cyan-300/90',
-          number: 'bg-cyan-100 text-cyan-800',
-          glow: 'bg-cyan-300/18',
-          progress: 'bg-sky-700',
-          arrow: 'text-sky-700',
-        }
-      : {
-          container: 'bg-gradient-to-br from-amber-50/92 via-white/94 to-orange-50/65 ring-amber-200/65',
-          icon: 'bg-amber-800 text-white',
-          accent: 'text-amber-800',
-          title: 'text-amber-950',
-          copy: 'text-amber-950/58',
-          card: 'bg-white/82 hover:bg-white ring-amber-100/80 hover:ring-amber-300/90',
-          number: 'bg-amber-100 text-amber-800',
-          glow: 'bg-amber-300/18',
-          progress: 'bg-amber-700',
-          arrow: 'text-amber-700',
+    const focusTheme = {
+          container: 'bg-gradient-to-br from-brand-50/92 via-white/94 to-brand-50/65 ring-brand-200/65',
+          icon: 'bg-brand-800 text-white',
+          accent: 'text-brand-800',
+          title: 'text-brand-950',
+          copy: 'text-brand-950/58',
+          card: 'bg-white/82 hover:bg-white ring-brand-100/80 hover:ring-brand-300/90',
+          number: 'bg-brand-100 text-brand-800',
+          glow: 'bg-brand-300/18',
+          progress: 'bg-brand-700',
+          arrow: 'text-brand-700',
         };
 
     const typeLabel = (exercise: Exercise) => {
@@ -1400,11 +1338,7 @@ export const StoryPage = ({
           <p className={cn(
             "font-serif text-xs sm:text-base lg:text-lg mt-0.5",
             language !== 'ar' && "italic",
-            collectionId === 'history' 
-              ? "text-teal-600" 
-              : collectionId === 'turkish' 
-              ? "text-cyan-600" 
-              : isA2 ? "text-amber-600" : "text-gold"
+            "text-brand-600"
           )}>
             {t('nav.chapter')} {formatNumber(page.id)}
           </p>
@@ -1417,13 +1351,7 @@ export const StoryPage = ({
               dir="ltr"
               className={cn(
                 "relative flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
-                collectionId === 'history'
-                  ? "bg-emerald-50/88 border-emerald-200/90"
-                  : collectionId === 'turkish'
-                  ? "bg-sky-50/88 border-sky-200/90"
-                  : isA2
-                    ? "bg-amber-50/88 border-amber-200/90"
-                    : "bg-white/88 border-gold/20"
+                "bg-brand-50/88 border-brand-200/90"
               )}
             >
               <audio
@@ -1442,13 +1370,7 @@ export const StoryPage = ({
                   "flex h-11 w-11 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12",
                   isAudioLocked
                     ? "bg-gray-400 text-white cursor-not-allowed opacity-60"
-                    : collectionId === 'history'
-                    ? "bg-teal-700 text-white hover:bg-teal-800"
-                    : collectionId === 'turkish'
-                    ? "bg-sky-800 text-white hover:bg-sky-900"
-                    : isA2
-                      ? "bg-amber-700 text-white hover:bg-amber-800"
-                      : "bg-gold text-white hover:bg-gold/85"
+                    : "bg-brand-700 text-white hover:bg-brand-800"
                 )}
                 aria-label={isPlaying ? (language === 'ar' ? 'إيقاف مؤقت' : 'Pause audio') : (language === 'ar' ? 'تشغيل' : 'Play audio')}
               >
@@ -1477,13 +1399,7 @@ export const StoryPage = ({
                       "h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full accent-current",
                       isAudioLocked
                         ? "cursor-not-allowed opacity-30"
-                        : collectionId === 'history'
-                        ? "bg-teal-200 text-teal-700"
-                        : collectionId === 'turkish'
-                        ? "bg-sky-200 text-sky-700"
-                        : isA2
-                          ? "bg-amber-200 text-amber-700"
-                          : "bg-gold/20 text-gold"
+                        : "bg-brand-200 text-brand-700"
                     )}
                   />
 
@@ -1503,16 +1419,8 @@ export const StoryPage = ({
                     isAudioLocked
                       ? "cursor-not-allowed opacity-30"
                       : audioMenu === 'volume'
-                      ? collectionId === 'history'
-                        ? "bg-teal-100 text-teal-800"
-                        : collectionId === 'turkish'
-                        ? "bg-sky-100 text-sky-800"
-                        : "bg-amber-100 text-amber-800"
-                      : collectionId === 'history'
-                      ? "text-teal-700 hover:bg-teal-100"
-                      : collectionId === 'turkish'
-                      ? "text-sky-700 hover:bg-sky-100"
-                      : "text-amber-700 hover:bg-amber-100"
+                      ? "bg-brand-100 text-brand-800"
+                      : "text-brand-700 hover:bg-brand-100"
                   )}
                   aria-label={language === 'ar' ? 'مستوى الصوت' : 'Volume'}
                   aria-expanded={audioMenu === 'volume'}
@@ -1549,11 +1457,7 @@ export const StoryPage = ({
                           aria-label={language === 'ar' ? 'مستوى الصوت' : 'Volume level'}
                           className={cn(
                             "h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full accent-current",
-                            collectionId === 'history'
-                              ? "bg-teal-200 text-teal-700"
-                              : collectionId === 'turkish'
-                              ? "bg-sky-200 text-sky-700"
-                              : "bg-amber-200 text-amber-700"
+                            "bg-brand-200 text-brand-700"
                           )}
                         />
 
@@ -1576,16 +1480,8 @@ export const StoryPage = ({
                     isAudioLocked
                       ? "cursor-not-allowed bg-gray-100 text-gray-400"
                       : audioMenu === 'speed'
-                      ? collectionId === 'history'
-                        ? "bg-teal-100 text-teal-800"
-                        : collectionId === 'turkish'
-                        ? "bg-sky-100 text-sky-800"
-                        : "bg-amber-100 text-amber-800"
-                      : collectionId === 'history'
-                      ? "bg-teal-50 text-teal-800 hover:bg-teal-100"
-                      : collectionId === 'turkish'
-                      ? "bg-sky-50 text-sky-800 hover:bg-sky-100"
-                      : "bg-amber-50 text-amber-800 hover:bg-amber-100"
+                      ? "bg-brand-100 text-brand-800"
+                      : "bg-brand-50 text-brand-800 hover:bg-brand-100"
                   )}
                   aria-label={language === 'ar' ? 'سرعة التشغيل' : 'Playback speed'}
                   aria-expanded={audioMenu === 'speed'}
@@ -1610,11 +1506,7 @@ export const StoryPage = ({
                           className={cn(
                             "flex min-h-10 w-full items-center justify-between rounded-xl px-3 font-display text-[11px] font-semibold tabular-nums transition-colors",
                             speed === option
-                              ? collectionId === 'history'
-                                ? "bg-teal-50 text-teal-800"
-                                : collectionId === 'turkish'
-                                ? "bg-sky-50 text-sky-800"
-                                : "bg-amber-50 text-amber-800"
+                              ? "bg-brand-50 text-brand-800"
                               : "text-wood/62 hover:bg-black/[0.045]"
                           )}
                         >

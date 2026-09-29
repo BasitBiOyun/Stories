@@ -26,6 +26,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -87,8 +88,7 @@ export const TeacherGuide = ({
   const chapterRefs = React.useRef<Record<number, HTMLDivElement | null>>({});
   const { language, t, formatNumber, isRTL } = useLanguage();
 
-  const isHistory = collectionId === 'history';
-  const isTurkish = collectionId === 'turkish';
+  const guideTokens = collectionVisualFor(collectionId).readerTokens;
 
   const isAdam = bookId?.toLowerCase().includes('adam');
   const isAbraham = bookId?.toLowerCase().includes('abraham');
@@ -1514,8 +1514,8 @@ entries.set(key, { word, definition });
             isRTL && "font-arabic"
           )}
           style={{
-            '--color-gold': isHistory ? '#10b981' : isTurkish ? '#22D3EE' : '#c2aa6b',
-            '--color-wood': isHistory ? '#042416' : isTurkish ? '#0d1d2c' : '#14221a',
+            '--color-gold': guideTokens.accent,
+            '--color-wood': guideTokens.chromeMenu,
           } as React.CSSProperties}
           dir={isRTL ? 'rtl' : 'ltr'}
         >
