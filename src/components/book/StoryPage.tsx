@@ -378,7 +378,7 @@ export const StoryPage = ({
   collectionId?: string;
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
-  const { trackExerciseComplete, trackChapterVisit, trackAudioChapter } = useStoryProgress();
+  const { stats, trackExerciseComplete, trackChapterVisit, trackAudioChapter } = useStoryProgress();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -389,7 +389,8 @@ export const StoryPage = ({
   const audioControlsRef = useRef<HTMLDivElement>(null);
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
-  const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
+  const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
   const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
 
   useEffect(() => {
@@ -1755,7 +1756,6 @@ export const StoryPage = ({
           <ExerciseModule
             exercise={activeExercise}
             onComplete={() => {
-              setCompletedExercises(prev => [...prev, activeExercise.id]);
               trackExerciseComplete(activeExercise.id);
               setActiveExercise(null);
             }}

@@ -34,6 +34,8 @@ interface StoryProgressContextType {
   setFinalScore: (score: number) => void;
   setFinalChallengeDetails: (details: FinalChallengeDetails) => void;
   resetStats: () => void;
+  /** Restores stored progress for the open book, so completed exercises stay completed across pages and sessions. */
+  hydrateStats: (saved: { exercisesCompleted: Iterable<string>; chaptersVisited: Iterable<number> }) => void;
 }
 
 const StoryProgressContext = createContext<StoryProgressContextType | undefined>(undefined);
@@ -99,8 +101,16 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     });
   };
 
+  const hydrateStats = (saved: { exercisesCompleted: Iterable<string>; chaptersVisited: Iterable<number> }) => {
+    setStats(prev => ({
+      ...prev,
+      exercisesCompleted: new Set([...prev.exercisesCompleted, ...saved.exercisesCompleted]),
+      chaptersVisited: new Set([...prev.chaptersVisited, ...saved.chaptersVisited]),
+    }));
+  };
+
   return (
-    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, trackChapterVisit, trackAudioChapter, setFinalScore, setFinalChallengeDetails, resetStats }}>
+    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, trackChapterVisit, trackAudioChapter, setFinalScore, setFinalChallengeDetails, resetStats, hydrateStats }}>
       {children}
     </StoryProgressContext.Provider>
   );
