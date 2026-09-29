@@ -237,7 +237,19 @@ def load_requests() -> list[dict[str, Any]]:
     items = payload.get("requests")
     if not isinstance(items, list):
         raise TtsError("tts/requests.json must contain a requests array.")
-    return [item for item in items if isinstance(item, dict) and item.get("enabled", True)]
+    enabled = [item for item in items if isinstance(item, dict) and item.get("enabled", True)]
+    # One request per Storage object. Two enabled requests for the same path would
+    # regenerate that chapter on every build (each undoing the other) and burn quota.
+    latest_by_path: dict[str, dict[str, Any]] = {}
+    for item in enabled:
+        path = str(item.get("storagePath", ""))
+        if path in latest_by_path:
+            log(
+                f"{latest_by_path[path].get('id')}: superseded by {item.get('id')} "
+                f"for {path}; skipping the older request."
+            )
+        latest_by_path[path] = item
+    return list(latest_by_path.values())
 
 
 def main() -> int:
