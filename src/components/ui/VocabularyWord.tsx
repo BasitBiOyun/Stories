@@ -111,6 +111,7 @@ export const VocabularyWord = ({
       <span
         ref={triggerRef}
         role={hasDefinition ? 'button' : undefined}
+        data-vocab-word={hasDefinition ? '' : undefined}
         tabIndex={hasDefinition ? 0 : undefined}
         aria-expanded={hasDefinition ? isOpen : undefined}
         onClick={(e) => {
