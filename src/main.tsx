@@ -9,6 +9,7 @@ import './arabicTypography.css';
 import './lib/pdfDownloadLock';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
+import { FullscreenButton } from './components/ui/FullscreenButton';
 
 const CHUNK_RELOAD_KEY = 'stories_chunk_reload_at';
 
@@ -36,6 +37,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LanguageProvider>
       <App />
+      <FullscreenButton />
       <ArabicUiSanitizer />
     </LanguageProvider>
   </StrictMode>,
