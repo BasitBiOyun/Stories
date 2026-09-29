@@ -1,101 +1,291 @@
 import type { TeacherGuideSection, StudentGuideMetadata, StudentGuideSection } from '../../../../types';
-import { abrahamA2PagesEn } from './pages';
 
-// Chapter-specific learner guidance. Each section follows the actual chapter and active Quick Challenge.
-export const abrahamA2SelfStudyGuideEn: TeacherGuideSection[] = [
-  { chapter: 'Chapter 1 — Abraham and the Idols', timing: '15–20 minutes', objectives: ['Find what people believed about the stone objects.', 'Find what Abraham noticed the objects could not do.'], pedagogy: 'Read for evidence first. Keep what people believed separate from what Abraham observed.', lessonPlan: '1. Look at the picture. 2. Listen once. 3. Read the final paragraph slowly. 4. Find what people did and three things the objects could not do. 5. Do the Quick Challenge. 6. Repair from the same sentences if needed.', discussionPoints: ['What did people do with the objects?', 'What could the objects not do?'], interactiveTips: ['Use the hotspots only after you have found the evidence in the story.'], differentiation: { strugglingLearners: 'Use: “People ___.” / “The objects could not ___.”', fastFinishers: 'Give three different could not sentences from the chapter.' }, whatToNotice: ['people making wishes', 'the list of things the objects could not do'], readListen: ['Listen once without stopping.', 'Reread the final five sentences for evidence.'], findAnswerInStory: ['For the Quick Challenge, look at what Abraham saw about the stone objects.'], vocabularyInContext: ['Use worship and Messenger from their chapter sentences before opening Word Notes.'], quickChallengeGuide: 'Choose the reason Abraham found it silly to talk to the stone gods.', wrongAnswerSupport: ['Do not reread the whole chapter.', 'Return to the final sentences describing what the stone objects could not do.'], selfCheck: ['Can I say one thing the people did?', 'Can I say three things the objects could not do?'], useWhatYouLearned: 'Say one simple fact about an everyday object using can or can’t.', reflectionPrompt: 'Which sentence gave you the clearest evidence?' },
-  { chapter: 'Chapter 2 — Abraham and His Father', timing: '15–20 minutes', objectives: ['Find what Abraham’s father made.', 'Explain why Abraham laughed at the Mardukh explanation.'], pedagogy: 'Find the father’s words first, then Abraham’s reaction. Use because to connect them.', lessonPlan: '1. Listen. 2. Find the father’s work. 3. Read the Mardukh dialogue. 4. Do the Quick Challenge. 5. Say one because sentence.', discussionPoints: ['What did the father make?', 'Why did Abraham laugh?'], interactiveTips: ['Use the Mardukh hotspot to return to the exact dialogue.'], differentiation: { strugglingLearners: 'Use: “Abraham laughed because his father said ___.”', fastFinishers: 'Retell the dialogue in three short sentences.' }, whatToNotice: ['the father’s work', 'the explanation about Mardukh’s ears'], readListen: ['Listen for father and Mardukh.', 'Reread only the dialogue for the reason question.'], findAnswerInStory: ['The answer is in the father’s explanation immediately before Abraham laughs.'], vocabularyInContext: ['Use idol and ridiculous from the father–son exchange.'], quickChallengeGuide: 'Choose the explanation the father actually gives about the ears.', wrongAnswerSupport: ['Return to the sentence explaining why Mardukh has big ears.'], selfCheck: ['Can I name the father’s work?', 'Can I explain Abraham’s reaction with because?'], useWhatYouLearned: 'Give one simple claim and one reason for it.', reflectionPrompt: 'Did you answer from the dialogue or from memory only?' },
-  { chapter: 'Chapter 3 — Abraham Looks at the Sky', timing: '15–20 minutes', objectives: ['Follow the star and moon examples.', 'Find the same thing that happens to both.'], pedagogy: 'Compare two pieces of evidence instead of memorising them separately.', lessonPlan: '1. Listen. 2. Mark the star. 3. Mark the moon. 4. Compare their endings. 5. Do the Quick Challenge: put the events in order. 6. Check your order in the second paragraph.', discussionPoints: ['What happened to the star?', 'What happened to the moon?'], interactiveTips: ['Say the order of the night to yourself before you move the cards.'], differentiation: { strugglingLearners: 'Make two boxes: Star / Moon.', fastFinishers: 'Say one sentence beginning “Both…”.' }, whatToNotice: ['the star disappears', 'the moon goes away', 'Abraham’s conclusion after each'], readListen: ['Listen once for the two sky objects.', 'Read the two conclusion sentences again.'], findAnswerInStory: ['Follow the second paragraph: the cave, the star and then the moon.'], vocabularyInContext: ['Use disappeared and Creator from the chapter sentences.'], quickChallengeGuide: 'Put the five events of the night in order.', wrongAnswerSupport: ['Check what Abraham does first, then what happens to the star, then to the moon.'], selfCheck: ['Can I say what happened to both?', 'Can I say why that mattered to Abraham?'], useWhatYouLearned: 'Compare two changing things with “Both…”.', reflectionPrompt: 'What helped more: listening once or comparing the two sentences?' },
-  { chapter: 'Chapter 4 — Allah Guides Abraham', timing: '15–20 minutes', objectives: ['Find what Abraham understood when the sun set.', 'Find what he asked Allah for.'], pedagogy: 'Keep two ideas separate: Creator/creation and prayer/guidance.', lessonPlan: '1. Recall Chapter 3. 2. Listen for the sun. 3. Find the sentence after sunset. 4. Find Abraham’s prayer. 5. Do the Quick Challenge. 6. Say one Creator/creation sentence.', discussionPoints: ['What did the sunset show?', 'What did Abraham ask for?'], interactiveTips: ['Use the Sun and Sujud hotspots for two different pieces of evidence.'], differentiation: { strugglingLearners: 'Use: “The sun is a ___. Allah is the ___.”', fastFinishers: 'Give the three-step sequence: sunset → understanding → prayer.' }, whatToNotice: ['the sun sets', 'Allah is the Creator, not creation', 'the prayer for the right way'], readListen: ['Listen for Creator and prayer.', 'Reread the first sentence after sunset and the prayer.'], findAnswerInStory: ['For the Quick Challenge, use the sentence immediately after the sun sets.'], vocabularyInContext: ['Compare Creator and creation as related words with different meanings.'], quickChallengeGuide: 'Choose why the bright sun could not be Allah: what happened to it?', wrongAnswerSupport: ['Return to the sunset sentence and read the next two sentences.'], selfCheck: ['Can I use Creator and creation correctly?', 'Can I say what Abraham asked for?'], useWhatYouLearned: 'Make one simple maker/made comparison with an everyday object.', reflectionPrompt: 'Which two words were easiest to confuse?' },
-  { chapter: 'Chapter 5 — Abraham Calls His People', timing: '15–20 minutes', objectives: ['Find why the people said they worshipped idols.', 'Find two examples Abraham gives of Allah’s care.'], pedagogy: 'Separate the people’s stated reason from Abraham’s examples.', lessonPlan: '1. Listen. 2. Mark the people’s answer. 3. Mark Abraham’s food, drink and healing examples. 4. Do the Quick Challenge. 5. Say one because sentence.', discussionPoints: ['Why did the people continue?', 'What did Abraham say Allah does?'], interactiveTips: ['Use The People and Provisions hotspots as evidence markers.'], differentiation: { strugglingLearners: 'Use: “They followed idols because ___.”', fastFinishers: 'Give two different examples from Abraham’s reply.' }, whatToNotice: ['family tradition', 'food and drink', 'healing', 'the people still do not listen'], readListen: ['Listen for fathers.', 'Reread Abraham’s final speech.'], findAnswerInStory: ['The people explain their reason in one direct sentence.'], vocabularyInContext: ['Use power and heals from Abraham’s speech.'], quickChallengeGuide: 'Decide whether the statement gives the people’s real reason.', wrongAnswerSupport: ['Return to the people’s direct answer about their fathers.'], selfCheck: ['Can I state their reason?', 'Can I give two examples from Abraham’s speech?'], useWhatYouLearned: 'Think of one habit and ask what reason supports it.', reflectionPrompt: 'What is the difference between a tradition and evidence?' },
-  { chapter: 'Chapter 6 — Abraham Breaks the Idols', timing: '15–20 minutes', objectives: ['Put Abraham’s main actions in order.', 'Find exactly what he did with the largest idol and the axe.'], pedagogy: 'Use the event sequence first. Keep the Quick Challenge on the directly stated final actions; discuss purpose only after the answer is secure.', lessonPlan: '1. Listen. 2. Number the main actions. 3. Reread the final three sentences. 4. Do the Quick Challenge. 5. Retell with first, then and finally.', discussionPoints: ['What did Abraham break?', 'What did he leave unbroken?', 'Where did he put the axe?'], interactiveTips: ['Use the Axe hotspot only after reading the final actions.'], differentiation: { strugglingLearners: 'Use: “He broke ___. He left ___. He put ___.”', fastFinishers: 'After answering, explain how the final arrangement prepares the next chapter.' }, whatToNotice: ['the town becomes empty', 'the smaller idols are broken', 'the largest idol remains unbroken', 'the axe is placed around its neck'], readListen: ['Listen for action verbs.', 'Reread the final three sentences.'], findAnswerInStory: ['The Quick Challenge answer is in the first paragraph: where did all the people go?'], vocabularyInContext: ['Use festival, axe and unbroken from their chapter actions.'], quickChallengeGuide: 'Choose the time when Abraham went into the house of the stone gods.', wrongAnswerSupport: ['Find “When the town was empty” and read the sentences before it.'], selfCheck: ['Can I retell the order?', 'Can I state the final two actions exactly?'], useWhatYouLearned: 'Retell a simple three-step everyday action with first, then and finally.', reflectionPrompt: 'Which final action is easiest to verify directly from the text?' },
-  { chapter: 'Chapter 7 — The People Question Abraham', timing: '15–20 minutes', objectives: ['Find what the people admit about the idols.', 'Explain how their own words support Abraham’s point.'], pedagogy: 'Read the dialogue as evidence and notice the contradiction.', lessonPlan: '1. Listen to the dialogue. 2. Find the people’s statement about speaking. 3. Find Abraham’s next question. 4. Do the Quick Challenge. 5. Explain the link.', discussionPoints: ['What did the people admit?', 'What did Abraham ask next?'], interactiveTips: ['Use the Questioning hotspot to locate the dialogue, not to replace it.'], differentiation: { strugglingLearners: 'Use: “They said ___. Then Abraham asked ___.”', fastFinishers: 'Explain the contradiction in two sentences.' }, whatToNotice: ['the people know the idols cannot speak', 'Abraham lists more things they cannot do'], readListen: ['Listen for the people’s direct words.', 'Reread Abraham’s final reply.'], findAnswerInStory: ['Read the people’s answer and Abraham’s next question.'], vocabularyInContext: ['Use protect and harm from the questioning scene.'], quickChallengeGuide: 'Choose why Abraham told the people to ask the biggest idol.', wrongAnswerSupport: ['Find the line stating that the objects do not speak.'], selfCheck: ['Can I state their admission?', 'Can I explain why it matters?'], useWhatYouLearned: 'Give a harmless example where one fact helps answer another question.', reflectionPrompt: 'Did the people’s admission mean they accepted everything Abraham said?' },
-  { chapter: 'Chapter 8 — Abraham Is Thrown into the Fire', timing: '15–20 minutes', objectives: ['Find two details showing the fire was dangerous.', 'Find why Abraham stayed calm.'], pedagogy: 'Contrast danger with calm trust. Focus on meaning, not graphic detail.', lessonPlan: '1. Preview dangerous. 2. Listen. 3. Find two danger details. 4. Find the reason for calmness. 5. Do the Quick Challenge. 6. Say one contrast sentence.', discussionPoints: ['How dangerous was the fire?', 'Why was Abraham calm?'], interactiveTips: ['Use the Firewood and Catapult hotspots only to orient yourself.'], differentiation: { strugglingLearners: 'Use: “The fire was ___. Abraham was ___ because ___.”', fastFinishers: 'Use two different danger details in your explanation.' }, whatToNotice: ['the fire is huge and hot', 'birds cannot fly over it', 'Abraham trusts Allah'], readListen: ['Listen for danger words.', 'Reread the sentence explaining Abraham’s calmness.'], findAnswerInStory: ['The reason for calmness is stated directly in Chapter 8.'], vocabularyInContext: ['Use dangerous, flames and catapult from the scene.'], quickChallengeGuide: 'Decide whether the statement about Abraham’s feeling is true.', wrongAnswerSupport: ['Do not use Chapter 9 yet; return to the sentence explaining his calmness here.'], selfCheck: ['Can I give two danger details?', 'Can I give the stated reason for calmness?'], useWhatYouLearned: 'Say one calm action you can take in a difficult but safe situation.', reflectionPrompt: 'How can a text show both danger and calm at the same time?' },
-  { chapter: 'Chapter 9 — Allah Saves Abraham', timing: '15–20 minutes', objectives: ['Identify what changes in the fire.', 'Identify what does not change in the people.'], pedagogy: 'Use changed / unchanged to avoid confusing amazement with acceptance.', lessonPlan: '1. Listen. 2. List changes to the fire, ropes and Abraham. 3. Read the people’s final response. 4. Do the Quick Challenge. 5. Make one but sentence.', discussionPoints: ['What changed?', 'What stayed the same?'], interactiveTips: ['Use the Miracle and Angel Gabriel hotspots after locating the sentences.'], differentiation: { strugglingLearners: 'Make two boxes: Changed / Did not change.', fastFinishers: 'List three changes and one unchanged response.' }, whatToNotice: ['the fire becomes cool', 'Abraham is safe', 'the people are amazed', 'their position remains against Abraham'], readListen: ['Listen for became and harmed.', 'Reread the final two sentences.'], findAnswerInStory: ['For the Quick Challenge, match Gabriel, the fire, the ropes and the people with what happened.'], vocabularyInContext: ['Use miracle, harmed and amazed from the chapter.'], quickChallengeGuide: 'Keep amazement separate from changing their minds, and match all four parts.', wrongAnswerSupport: ['Read the final contrast beginning with the people’s amazement.'], selfCheck: ['Can I say what changed?', 'Can I say what stayed the same?'], useWhatYouLearned: 'Make a simple “X changed, but Y did not” sentence.', reflectionPrompt: 'Why are amazed and convinced not the same word?' },
-  { chapter: 'Chapter 10 — Abraham and Nimrod', timing: '15–20 minutes', objectives: ['Find Nimrod’s claim and example.', 'Explain why the sun question challenges him.'], pedagogy: 'Follow claim → example → challenge. Keep the reasoning concrete.', lessonPlan: '1. Review east and west. 2. Listen. 3. Mark Nimrod’s claim. 4. Mark the two-slave example. 5. Mark Abraham’s sun question. 6. Do the Quick Challenge.', discussionPoints: ['What did Nimrod claim?', 'What could he not do?'], interactiveTips: ['Use The Challenge hotspot for the final question only.'], differentiation: { strugglingLearners: 'Make three boxes: Claim / Example / Challenge.', fastFinishers: 'Explain why the challenge is stronger evidence.' }, whatToNotice: ['the claim about life and death', 'the two slaves', 'the sun rises in the east', 'the west challenge'], readListen: ['Listen for “I can…” and “Can you…?”.', 'Reread the final four sentences.'], findAnswerInStory: ['The answer is Abraham’s last question to Nimrod.'], vocabularyInContext: ['Use guards, ordinary and west from their sentences.'], quickChallengeGuide: 'Choose how Abraham showed that Nimrod’s claim was wrong.', wrongAnswerSupport: ['Return to the question beginning “Can you make the sun…” and finish it.'], selfCheck: ['Can I separate the claim from the challenge?', 'Can I explain why Nimrod cannot answer it?'], useWhatYouLearned: 'Take a simple claim and ask what evidence would really prove it.', reflectionPrompt: 'Why is remembering west alone not enough?' },
-  { chapter: 'Chapter 11 — Abraham Leaves Babylon', timing: '15–20 minutes', objectives: ['Identify Sarah and Lot.', 'Find why Abraham leaves Babylon.', 'Follow the route to the valley.'], pedagogy: 'Use who / why / where to manage new people and places.', lessonPlan: '1. Listen. 2. Note Sarah and Lot. 3. Find the reason for leaving. 4. Track Babylon → Syria/Palestine → valley. 5. Do the Quick Challenge.', discussionPoints: ['Who believed with Abraham?', 'Why did he leave?', 'Where did the chapter end?'], interactiveTips: ['Use Travel and The Valley hotspots as place markers.'], differentiation: { strugglingLearners: 'Make three boxes: Who / Why / Where.', fastFinishers: 'Retell the chapter in four sentences.' }, whatToNotice: ['Sarah and Lot', 'the message purpose', 'Hagar and Ishmael', 'Safa and Marwah'], readListen: ['Listen first for names.', 'Read again for the reason and route.'], findAnswerInStory: ['Look for the time words: So, During his journey, One day, Finally.'], vocabularyInContext: ['Use journey, valley and tiring from the travel paragraph.'], quickChallengeGuide: 'Put the four events of the journey in order.', wrongAnswerSupport: ['Start with Abraham’s decision to leave Babylon and follow the time words.'], selfCheck: ['Can I name Sarah and Lot?', 'Can I say why Abraham left?', 'Can I name the final location?'], useWhatYouLearned: 'State the purpose of one familiar journey with “to + verb”.', reflectionPrompt: 'Which part was harder: the people, the reason or the route?' },
-  { chapter: 'Chapter 12 — Hagar and Ishmael in the Valley', timing: '15–20 minutes', objectives: ['Find what the valley did not have.', 'Connect Hagar’s trust with her search.'], pedagogy: 'Read both parts: trust first, action second. Do not treat trust as inactivity.', lessonPlan: '1. Listen. 2. List what is missing. 3. Find Hagar’s trust sentence. 4. Find Abraham’s prayer. 5. Find Hagar’s actions. 6. Do the Quick Challenge.', discussionPoints: ['What did Hagar believe?', 'What problem did she face?', 'What did she do?'], interactiveTips: ['Use Hagar’s Faith and Desert Life hotspots to compare belief and action.'], differentiation: { strugglingLearners: 'Use: “She believed ___. Then she ___.”', fastFinishers: 'Add Abraham’s prayer as a third idea.' }, whatToNotice: ['food and water run out', 'Hagar trusts Allah', 'she searches', 'she runs from hill to hill'], readListen: ['Listen for protect and water.', 'Reread one sentence about trust and one about action.'], findAnswerInStory: ['The Quick Challenge needs what Hagar knew and what she thought.'], vocabularyInContext: ['Use blessings and valley from the chapter context.'], quickChallengeGuide: 'Choose why Hagar was not afraid when Abraham left.', wrongAnswerSupport: ['Use the first paragraph: find what Hagar knew and her words about Allah.'], selfCheck: ['Can I name the problem?', 'Can I say both trust and action?'], useWhatYouLearned: 'Complete: “I can stay hopeful and also ___.” with a realistic action.', reflectionPrompt: 'Why do you need both trust and action for a complete answer?' },
-  { chapter: 'Chapter 13 — The Zamzam Water', timing: '15–20 minutes', objectives: ['Retell what happens when water appears.', 'Follow water → people → Mecca.'], pedagogy: 'Study immediate events and the longer cause-result chain separately, then connect them.', lessonPlan: '1. Recall Chapter 12’s problem. 2. Listen. 3. Follow water → Hagar/Ishmael. 4. Follow water → people → Mecca. 5. Do the sequencing Quick Challenge.', discussionPoints: ['Where did the water appear?', 'What did Hagar do?', 'Why did people come?'], interactiveTips: ['Use Zamzam and Mecca hotspots as the beginning and end of the longer chain.'], differentiation: { strugglingLearners: 'Draw four arrows: water → Hagar/Ishmael → people → Mecca.', fastFinishers: 'Explain which result is immediate and which is later.' }, whatToNotice: ['water under Ishmael’s feet', 'Hagar drinks and gives water to Ishmael', 'more people come', 'Mecca is built'], readListen: ['Listen for suddenly and because.', 'Reread the final paragraph.'], findAnswerInStory: ['The Quick Challenge answer is in the last sentences, with “because of”.'], vocabularyInContext: ['Use desert, gift and ground from the water scene.'], quickChallengeGuide: 'Choose why more people came to the place.', wrongAnswerSupport: ['Start where Ishmael and his mother live near the water and read to the end.'], selfCheck: ['Can I retell Hagar’s first actions?', 'Can I give the longer result chain?'], useWhatYouLearned: 'Make a simple cause-result chain from daily life.', reflectionPrompt: 'Which result happens immediately, and which happens later?' },
-  { chapter: 'Chapter 14 — Abraham and Ishmael Build the Ka’ba', timing: '20 minutes', objectives: ['Find Abraham’s task and Ishmael’s response.', 'State the final message accurately.', 'Connect the final chapter with one earlier idea.'], pedagogy: 'Finish with synthesis: shared action, continuing memory and final message. Do not turn the ending into trivia.', lessonPlan: '1. Listen. 2. Mark the building task. 3. Find the Hajj sentence. 4. Read the final message. 5. Do the Quick Challenge. 6. Write a three-sentence summary.', discussionPoints: ['Who built together?', 'What does Hajj help people remember?', 'What is the final message?'], interactiveTips: ['Use The Ka’ba and Hajj hotspots only after reading the relevant paragraphs.'], differentiation: { strugglingLearners: 'Use: “Abraham and ___ built ___. Allah has no ___.”', fastFinishers: 'Connect the final message with one earlier chapter about the idols or sky.' }, whatToNotice: ['Ishmael helps Abraham', 'the Ka’ba is built', 'Hajj remembers the family story', 'Allah has no partner'], readListen: ['Listen once for build and help.', 'Read the final quoted message twice.'], findAnswerInStory: ['For the Quick Challenge, use Ishmael’s answer, the Ka’ba sentence, the Hajj sentence and the paragraph about Muhammad (pbuh).'], vocabularyInContext: ['Use mission, unique and partner from the closing chapter.'], quickChallengeGuide: 'Match Ishmael, the Ka’ba, Hajj and Muhammad (pbuh) with what the chapter says.', wrongAnswerSupport: ['Find Ishmael’s answer to Abraham, then read the Hajj paragraph and the next one.'], selfCheck: ['Can I name the builders?', 'Can I state the final message without adding outside information?'], useWhatYouLearned: 'Choose one important message from the book and support it with one earlier event.', reflectionPrompt: 'Which earlier chapter connects most clearly to the final message, and why?' }
-];
-
-const storyPages = abrahamA2PagesEn.filter(page => page.type === 'story').slice(0, 14);
-
-export const abrahamA2StudentGuideSectionsPreview: StudentGuideSection[] = [
-  { title: '1. Start With a Goal', icon: 'Target', text: 'Choose one small goal before each chapter so you can see what you learned.', points: ['Main idea', '3–5 source words', 'One Language Focus pattern', 'One repaired mistake', 'One value/action'] },
-  { title: '2. Preview', icon: 'Eye', text: 'Use the real title, image and hotspots to predict one idea.', points: ['Predict one idea', 'Use only real page features'] },
-  { title: '3. Listen for Meaning', icon: 'Ear', text: 'Listen once for the main event, then again while following the text.', points: ['Gist first', 'Evidence second', 'Repeat one short sentence'] },
-  { title: '4. Read and Find Evidence', icon: 'BookOpen', text: 'Read in short parts and locate the sentence that supports your answer.', points: ['What happened?', 'Why?', 'What happened next?', 'Which sentence proves it?'] },
-  { title: '5. Language Focus', icon: 'Compass', text: 'Use the real Language Focus after the story meaning is clear: notice, understand, then use.', points: ['Notice', 'Understand', 'Use'] },
-  { title: '6. Vocabulary', icon: 'BookOpen', text: 'Choose 3–5 source words and learn them in context.', points: ['Guess', 'Check', 'Say', 'Reuse'] },
-  { title: '7. Quick Challenge and Repair', icon: 'CheckCircle', text: 'Try first, check feedback, return to the evidence and retry.', points: ['Try', 'Check', 'Find proof', 'Repair', 'Try again'] },
-  { title: '8. Say or Write', icon: 'PenTool', text: 'Finish with 2–4 simple sentences that show what you understood.', points: ['One fact', 'One language sentence', 'One reflection'] },
-  { title: '9. Need More Help?', icon: 'HelpCircle', text: 'Change the strategy, not the goal.', points: ['Real hotspot', 'Short replay', '2–3 lines', 'Three words', 'Sentence frame'] },
-  { title: '10. Ready for a Challenge?', icon: 'Stars', text: 'Deepen understanding with connected language and evidence.', points: ['3–5 connected sentences', 'Retell with sequence words', 'Explain with evidence'] },
-  { title: '11. Values in Action', icon: 'Heart', text: 'Connect a story-supported value with an observable action.', points: ['Respect', 'Courage', 'Trust', 'Patience', 'Gratitude', 'Humility', 'Cooperation'] },
-  { title: '12. Review and Final', icon: 'Clock', text: 'After Chapter 14, use the real review pages in order.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Language Review', 'Master Glossary Parts 1–2', 'Final Challenge'] },
-];
-
-export const abrahamA2StudentGuideMetadataPreview: StudentGuideMetadata = {
-  title: 'Self-Study Guide — Prophet Abraham (A2)',
-  subtitle: 'Understand • Notice • Use • Check • Repair • Reflect',
-  level: 'A2', language: 'English', estimatedStudyTime: '15–20 minutes per chapter plus final review',
-  whoIsThisFor: 'A2 learners studying the fourteen-chapter Prophet Abraham interactive story independently or with light support.',
-  learningGoals: ['Understand the fourteen chapters', 'Use listening and reading together', 'Learn source vocabulary', 'Use the real Language Focus', 'Find evidence and repair mistakes', 'Produce short A2 responses', 'Connect values with practical actions'],
-  recommendedUse: ['One chapter per session', 'Chapter Support for exact guidance', 'Quick Challenge before feedback', 'Language Focus after comprehension', 'Review after Chapter 14'],
+// Learner-facing A2 study path, written by hand for each chapter of the Prophet Abraham A2 story.
+// "Language Focus" and "Quick Challenge" refer to the activities as they exist on each chapter page.
+type SelfPlan = {
+  chapter: string;
+  hotspots: [string, string];
+  goals: string[];
+  notice: string[];
+  read: string[];
+  find: string[];
+  words: string[];
+  languageFocus: string;
+  sayIt: string;
+  quick: string;
+  wrong: string[];
+  check: string[];
+  use: string;
+  reflect: string;
 };
 
-const chapterMap = abrahamA2SelfStudyGuideEn.map((section, index) => `### Chapter ${index + 1} — ${storyPages[index]?.title || section.chapter}\n**Goals:** ${(section.objectives || []).join(' ')}  \n**Language:** ${section.grammarFocus || 'Use the real Language Focus attached to the chapter.'}  \n**Check:** ${section.quickChallengeGuide || 'Complete the real Quick Challenge and repair any mistake.'}  \n**Action:** ${section.useWhatYouLearned || 'Connect the chapter lesson with one practical action.'}`).join('\n\n');
+const selfPlans: SelfPlan[] = [
+  {
+    chapter: 'Chapter 1: Abraham and the Idols',
+    hotspots: ['Babylon', 'Stone Gods'],
+    goals: ['I can say what the people did with the stone objects.', 'I can say three things the stone objects could not do.', 'I can use did not and could not + base verb.'],
+    notice: ['The people believed one thing. Abraham looked and saw something different.', 'Look at “These objects looked like people or animals.” They looked like people, but they were only stone.'],
+    read: ['Look at the title and the picture. What can you see?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. What did the people do in the special house?'],
+    find: ['Paragraph 1: find two words about Abraham as a boy.', 'Paragraph 1: find four things the people bowed to.', 'Paragraph 2: find what the stone objects did not do and could not do.'],
+    words: ['Word Notes: Messenger, worship, honest, wish. Tap Babylon and Mesopotamia to learn about the places.', '“Abraham was an honest and intelligent boy.” Did he tell the truth? Say yes or no.', 'Write one sentence with wish: My wish is ….'],
+    languageFocus: 'Choose what “looked like” means. Match five verbs with their past forms (grow → grew, think → thought, see → saw). Then choose the verb after did not and could not. Remember: did not eat, not did not ate.',
+    sayIt: 'Say the stress: MES-sen-ger, HON-est, in-TEL-li-gent. The h in honest is silent. Say “could not hear or understand” as one group.',
+    quick: 'The question asks why Abraham thought talking to the stone gods was silly. Read the last sentences of paragraph 2 before you choose.',
+    wrong: ['Go back to paragraph 2.', 'Find the words “He saw that” and read to the end of the chapter.', 'Ask yourself: what could the objects not do? Then try again.'],
+    check: ['Can I say one thing the people did?', 'Can I say three things the objects could not do?', 'Can I say “They could not move” correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say three or four short sentences. Say what the people believed and what Abraham saw. Use did not, could not or looked like.',
+    reflect: 'Abraham looked carefully and thought for himself. What is one thing you check before you believe it?',
+  },
+  {
+    chapter: 'Chapter 2: Abraham and His Father',
+    hotspots: ['Idol Making', 'Mardukh'],
+    goals: ['I can say what Abraham’s father made.', 'I can say why Abraham laughed.', 'I can use used to, bigger than and because.'],
+    notice: ['The father said the idols were gods. Abraham played with them as toys.', 'Look at “Abraham used to watch his father making idols from stone.” used to shows something he did many times.'],
+    read: ['Look at the title and the picture. What is the father making?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the talk about Mardukh in paragraph 2 again. Who asks, and who answers?'],
+    find: ['Paragraph 1: find the father’s job.', 'Paragraph 1: find two things the family did for the idols.', 'Paragraph 2: find three things Abraham did with the idols.'],
+    words: ['Word Notes: idol, respect, ridiculous, presents.', '“that was so ridiculous”: was it smart or silly?', 'Write one sentence with presents: I give presents to ….'],
+    languageFocus: 'Put actions into two groups: again and again, or only one time. Choose watch, bigger and because. Then build “He got angry and told his son not to play with it again.” We say used to watch, not used to watching.',
+    sayIt: 'Say the stress: I-dol, ri-DIC-u-lous, PRE-sents. Say “bigger than ours” as one group.',
+    quick: 'The question asks why Abraham laughed at his father’s words. Read the end of paragraph 2 before you choose.',
+    wrong: ['Go back to the end of paragraph 2.', 'Find the father’s answer that starts with “It is Mardukh” and read it again.', 'Try again.'],
+    check: ['Can I say what the father made?', 'Can I say what the father said about Mardukh’s ears?', 'Can I say used to + base verb correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say three or four short sentences about a statue or a picture. Ask a question, compare with bigger than and give a reason with because.',
+    reflect: 'Abraham asked his father questions. How can you ask a question politely when you do not agree?',
+  },
+  {
+    chapter: 'Chapter 3: Abraham Looks at the Sky',
+    hotspots: ['The Star', 'The Moon'],
+    goals: ['I can tell the night in the right order.', 'I can say what happened to the star and the moon.', 'I can use “Could this be …?”, then and because.'],
+    notice: ['Abraham asked a question, watched, and then decided.', 'Look at “Could this be my Lord?” Abraham is not sure yet. He is asking himself.'],
+    read: ['Look at the title and the picture. What can you see in the sky?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find the star and the moon.'],
+    find: ['Paragraph 1: find what Abraham wanted to know.', 'Paragraph 2: find where Abraham sat.', 'Paragraph 2: find what Abraham said about the star and about the moon.'],
+    words: ['Word Notes: Creator, search, disappeared, countryside.', '“Abraham was in search of one true Creator.” Was he looking for something? Say yes or no.', 'Write one sentence with disappeared: The sun disappeared behind ….'],
+    languageFocus: 'Choose what “Could this be my Lord?” shows. Match expressions like was in search of and disappeared with their meanings. Then complete lines with Then, because and could not.',
+    sayIt: 'Say the stress: cre-A-tor, COUN-try-side, dis-ap-PEARED. Let your voice go up at the end of “Could this be my Lord?”',
+    quick: 'You will put five events of the night in order. Follow paragraph 2 step by step.',
+    wrong: ['Go back to paragraph 2.', 'Find the cave first, then the star, then the moon.', 'Put the events in that order. Try again.'],
+    check: ['Can I say what Abraham did first that night?', 'Can I say what happened to the star and the moon?', 'Can I ask “Could this be …?” correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say three or four short sentences about a new, simple example. Ask “Could this be …?”, say what you see, and end with because or could not be.',
+    reflect: 'Abraham thought carefully before he decided. When do you need to stop and think before you decide?',
+  },
+  {
+    chapter: 'Chapter 4: Allah Guides Abraham',
+    hotspots: ['The Setting Sun', 'Prayer'],
+    goals: ['I can say what Abraham understood when the sun set.', 'I can say what Abraham asked Allah for.', 'I can use had to, In the morning and “If …, I will …”.'],
+    notice: ['The chapter moves from the night to the morning. Then Abraham becomes a Messenger.', 'Look at “From then on, he had to guide his people.” had to shows a new duty.'],
+    read: ['Look at the title and the picture. What is in the sky?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find Abraham’s words to Allah and to his father.'],
+    find: ['Paragraph 1: find the sentence after the sun set.', 'Paragraph 2: find what Abraham did with his forehead.', 'Paragraph 2: find what Abraham told his father, and his father’s answer.'],
+    words: ['Word Notes: guide, prayer, forehead, bright.', '“It was shining and very bright.” Was the light strong or weak?', 'Write one sentence with guide: My teacher guides me when ….'],
+    languageFocus: 'Decide if “had to guide” shows a duty. Complete lines with all night, In the morning and When. Then fix two mistakes: “If Allah doesn’t show me …” (not will not show) and “Stop worshipping stones.” (not Stop worship).',
+    sayIt: 'Say the stress: FORE-head, PRAY-er, cre-A-tion. Say “In the morning” as one group.',
+    quick: 'The question asks why the bright sun could not be Allah. Read paragraph 1 before you choose.',
+    wrong: ['Go back to paragraph 1.', 'Find “But when it set” and read that sentence and the next one again.', 'Try again.'],
+    check: ['Can I say what happened to the sun?', 'Can I say what Abraham asked Allah for?', 'Can I say “Allah is the Creator of everything”?'],
+    use: 'Language Focus, last activity (Say It): write or say three short sentences. Use one If … will … sentence, one sentence with have to, and one short instruction like Follow … or Stop ….',
+    reflect: 'Abraham asked Allah to show him the right way. Who helps you find the right way when you are not sure?',
+  },
+  {
+    chapter: 'Chapter 5: Abraham Calls His People',
+    hotspots: ['One God', 'Allah Provides'],
+    goals: ['I can say why the people worshipped the idols.', 'I can say two things Abraham said Allah does.', 'I can use do not, have and when.'],
+    notice: ['The people gave a reason: their fathers. Abraham gave examples of what Allah does.', 'Look at “He heals me when I am sick.” when shows something that happens every time.'],
+    read: ['Look at the title and the picture. Who is Abraham talking to?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find the people’s answer.'],
+    find: ['Paragraph 1: find what the father said to Abraham.', 'Paragraph 1: find what Abraham said to the people about Allah.', 'Paragraph 2: find the people’s reason and Abraham’s answer.'],
+    words: ['Word Notes: heals, believe, power, bow down.', '“They have no power to help you.” Can the idols help? Say yes or no.', 'Write one sentence with believe: I believe that ….'],
+    languageFocus: 'Match Leave here now, bow down to, heals me and didn’t listen to him with their meanings. Choose do not, do and have. Then build “My Allah gives me food and drink when I need them.” We say Your gods have, not Your gods has.',
+    sayIt: 'Say the stress: be-LIEVE, POW-er, bow DOWN. Here, bow sounds like now. Say “when I am sick” as one group.',
+    quick: 'This is a true or false sentence about the people’s reason. Read paragraph 2 before you decide.',
+    wrong: ['Go back to paragraph 2.', 'Find the people’s answer with “because of this” and read it again.', 'Ask yourself: who talked about food and drink? Then try again.'],
+    check: ['Can I say the people’s reason?', 'Can I say two things Abraham said about Allah?', 'Can I say “I do not …” correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences. Say what you believe, give a reason with because, say what happens when …, and say what someone has the power to do.',
+    reflect: 'The people did something only because their fathers did it. What is one habit you have? Why do you do it?',
+  },
+  {
+    chapter: 'Chapter 6: Abraham Breaks the Idols',
+    hotspots: ['The Axe', 'The Largest Idol'],
+    goals: ['I can tell Abraham’s plan in the right order.', 'I can say what Abraham did with the largest idol and the axe.', 'I can use wanted to, There were and began to.'],
+    notice: ['Abraham made a plan, waited for the right time and then acted.', 'Look at “It is getting cold.” Abraham said it as a joke, because the idols cannot eat.'],
+    read: ['Look at the title and the picture. What is in Abraham’s hand?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find “In the end”.'],
+    find: ['Paragraph 1: find where all the people went.', 'Paragraph 1: find what Abraham got and what he did next.', 'Paragraph 2: find the last two things Abraham did.'],
+    words: ['Word Notes: festival, axe, unbroken, hurried.', '“He left the largest one unbroken.” Was it broken? Say yes or no.', 'Write one sentence with hurried: I hurried to … because ….'],
+    languageFocus: 'Choose what “It is getting cold” means. Choose to show, anyone and were. Then put five sentences of the plan in order. We say There were plates, not There was plates.',
+    sayIt: 'Say the stress: FES-ti-val, un-BRO-ken, HUR-ried. Say “one after another” as one group.',
+    quick: 'The question asks when Abraham went into the big house. Read paragraph 1 before you choose.',
+    wrong: ['Go back to paragraph 1.', 'Find “When the town was empty” and read the sentences before it.', 'Ask yourself: where were the people? Then try again.'],
+    check: ['Can I tell the plan with first, then and in the end?', 'Can I say why the town was empty?', 'Can I say wanted to + base verb correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four or five short sentences about a simple, safe plan, like a surprise for a friend. Use wanted to, made a plan to, There was or There were, When …, began to and In the end. Do not explain why Abraham left the largest idol.',
+    reflect: 'Abraham waited for the right time. When is it better to wait before you act?',
+  },
+  {
+    chapter: 'Chapter 7: The People Question Abraham',
+    hotspots: ['Broken Idols', 'Abraham’s Answer'],
+    goals: ['I can say what the people found the next day.', 'I can say what the people said about the objects.', 'I can ask questions with Who, Why, Did you and Don’t you.'],
+    notice: ['The people said something true: the objects do not speak. Abraham used their own words.', 'Look at “Don’t you understand?” Abraham does not need an answer. He wants the people to think.'],
+    read: ['Look at the title and the picture. How do the people feel?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find the question marks (?).'],
+    find: ['Paragraph 1: find why the people were shocked.', 'Paragraph 1: find the name the people remembered.', 'Paragraph 2: find what the people said about the objects and what Abraham asked next.'],
+    words: ['Word Notes: shocked, displeased, protect, harm.', '“Did you harm our gods?” Who asks this question?', 'Write one sentence with protect: I protect my … from ….'],
+    languageFocus: 'Put questions into two groups: questions with Who or Why, and yes or no questions. Complete lines with The next day, shocked and with. Then fix three mistakes: Did you harm (not harmed), can speak (not can speaks) and these objects don’t speak (not doesn’t).',
+    sayIt: 'Say the stress: SHOCKED, dis-PLEASED, pro-TECT. Let your voice go up at the end of “Did you harm our gods?”',
+    quick: 'The question asks why Abraham said “Ask it if it can speak!” Read the end of paragraph 2 before you choose.',
+    wrong: ['Go back to paragraph 2.', 'Read the people’s answer: “You know that these objects don’t speak!”', 'Then read Abraham’s next question. Try again.'],
+    check: ['Can I say why the people were shocked?', 'Can I say what the people said about the objects?', 'Can I ask a question with Did you + base verb?'],
+    use: 'Language Focus, last activity (Say It): write or say four or five short lines about a simple past problem, like a broken cup at home. Use The next day, Who …?, Did you …?, I know that … and because. Do not repeat the Quick Challenge answer.',
+    reflect: 'Abraham stayed calm when the people asked him. How can you stay calm when someone is angry with you?',
+  },
+  {
+    chapter: 'Chapter 8: Abraham Is Thrown into the Fire',
+    hotspots: ['The Fire', 'The Catapult'],
+    goals: ['I can say why the people did not accept their mistake.', 'I can say why Abraham stayed calm.', 'I can use too … to, so … that and to + verb.'],
+    notice: ['The fire was very dangerous, but Abraham was calm.', 'Look at “But they were too arrogant to accept their mistake.” too … to means they did not do it.'],
+    read: ['Look at the title and the picture. This chapter is hard, so take your time.', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 1 again. Find the word calm.'],
+    find: ['Paragraph 1: find how the people felt, and why.', 'Paragraph 1: find the sentence about Abraham and Allah.', 'Paragraph 2: find why people came from many towns.'],
+    words: ['Word Notes: arrogant, catapult, flames, ashamed.', '“They felt ashamed”: did they know they were wrong?', 'Write one sentence with ashamed: I felt ashamed when ….'],
+    languageFocus: 'Decide what “too arrogant to accept their mistake” means. Choose so, to watch and could not. Then match felt ashamed, stayed calm, collected and finally with their meanings.',
+    sayIt: 'Say the stress: AR-ro-gant, CAT-a-pult, a-SHAMED. The -ed in ashamed sounds like /d/. Say “so huge that” as one group.',
+    quick: 'This is a true or false sentence about how Abraham felt. Read paragraph 1 before you decide.',
+    wrong: ['Go back to paragraph 1.', 'Find the sentence that starts with “But Abraham (pbuh) stayed” and read it again.', 'Try again.'],
+    check: ['Can I say why the people did not say sorry?', 'Can I say why Abraham was calm?', 'Can I say too + adjective + to + verb correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a very hot day or a big storm. Use too or so, one could not sentence, one reason with to + verb and a time word like finally.',
+    reflect: 'Abraham stayed calm because he trusted Allah. What helps you stay calm when you feel afraid?',
+  },
+  {
+    chapter: 'Chapter 9: Allah Saves Abraham',
+    hotspots: ['The Miracle', 'Angel Gabriel'],
+    goals: ['I can say what happened to the fire.', 'I can say what changed and what did not change.', 'I can use became, turned into and still.'],
+    notice: ['The fire changed, but the people did not change.', 'Look at “but they were still against him.” still shows that nothing changed.'],
+    read: ['Look at the title and the picture. Is Abraham safe?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find the word but two times.'],
+    find: ['Paragraph 1: find Gabriel’s question and Abraham’s answer.', 'Paragraph 1: find the only thing the fire burnt.', 'Paragraph 2: find how the people felt and what they did not change.'],
+    words: ['Word Notes: miracle, amazed, ropes, moment.', '“The miracle amazed the people”: were they surprised?', 'Write one sentence that starts with At that moment.'],
+    languageFocus: 'Decide if “not harmed at all” means a little harm or no harm. Complete lines with became, turned into and still. Then choose what “Nothing from you!” means.',
+    sayIt: 'Say the stress: MIR-a-cle, a-MAZED, MO-ment. Say “not harmed at all” as one group.',
+    quick: 'You will match four parts: Gabriel, the fire, the ropes and the people. Paragraph 1 is about the first three. Paragraph 2 is about the people.',
+    wrong: ['Read paragraph 1 again for Gabriel, the fire and the ropes.', 'Read paragraph 2 again for the people.', 'Match again.'],
+    check: ['Can I say what the fire became?', 'Can I say one thing that did not change?', 'Can I use still in a sentence?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a surprising change, like rain on a sunny day. Use became or turned into, a time word, how people felt and still.',
+    reflect: 'The people saw a miracle, but they did not change their minds. Why is it hard to say I was wrong?',
+  },
+  {
+    chapter: 'Chapter 10: Abraham and Nimrod',
+    hotspots: ['Nimrod', 'The Sun from the West'],
+    goals: ['I can say who Nimrod was.', 'I can say how Abraham showed that Nimrod was wrong.', 'I can use heard, thought, wanted and ordered … to.'],
+    notice: ['Nimrod said he could give life and death. Abraham asked him a question he could not answer.', 'Look at “He ordered his guards to bring two slaves.” After ordered, we say who, and then to + verb.'],
+    read: ['Look at the title and the picture. Who is the king?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the end of paragraph 2 again. Find east and west.'],
+    find: ['Paragraph 1: find why Nimrod wanted to meet Abraham.', 'Paragraph 1: find what Abraham said about Allah.', 'Paragraph 2: find Abraham’s question about the sun.'],
+    words: ['Word Notes: slaves, ordinary, guards, east. Tap Babylon to learn about the place.', '“He thought Abraham was not an ordinary person.” Was Abraham special?', 'Write one sentence with east: The sun comes up in the ….'],
+    languageFocus: 'Match ordinary, Let him go, brings death and angrier with their meanings. Complete lines with heard, thought and wanted (not thinked). Then build “He ordered his guards to bring two slaves.”',
+    sayIt: 'Say the stress: OR-di-nar-y, GUARDS, AN-gri-er. Let your voice go up at the end of “Can you make the sun rise from the west?”',
+    quick: 'The question asks how Abraham showed that Nimrod was wrong. Read the end of paragraph 2 before you choose.',
+    wrong: ['Go back to the end of paragraph 2.', 'Find Abraham’s question that starts with “Can you make the sun” and read it again.', 'Ask yourself: who let the slave go? Then try again.'],
+    check: ['Can I say what Nimrod said he could do?', 'Can I say Abraham’s question?', 'Can I say “He ordered … to …” correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a friend who says: I can run faster than a car. Use thought …, ordered … to …, Can you …? and couldn’t ….',
+    reflect: 'Nimrod had power, but he could not move the sun. How can you stay humble when you are good at something?',
+  },
+  {
+    chapter: 'Chapter 11: Abraham Leaves Babylon',
+    hotspots: ['The Journey', 'Safa and Marwah'],
+    goals: ['I can name the two people who believed with Abraham.', 'I can say why Abraham left Babylon.', 'I can use decided to, from … to … and arrived at.'],
+    notice: ['The chapter is a long journey with new people and new places.', 'Look at “Finally, they arrived at a quiet valley”. Finally shows the end of the journey.'],
+    read: ['Look at the title and the picture. How are they travelling?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find “During his journey”, “One day” and Finally.'],
+    find: ['Paragraph 1: find the names of the woman and the man.', 'Paragraph 1: find why Abraham decided to leave Babylon.', 'Paragraph 2: find the name of Abraham’s son and where the family arrived.'],
+    words: ['Word Notes: journey, valley, tiring, decided. Tap Babylon, Syria and Palestine to learn about the places.', '“It was a long, hot, and tiring journey.” Was it easy?', 'Write one sentence with tiring: My … was tiring because ….'],
+    languageFocus: 'Put phrases into two groups: where or how, and when or how long. Choose to leave, to tell and to travel. Then fix two mistakes: began (not begun) and arrived at (not arrived to).',
+    sayIt: 'Say the stress: JOUR-ney, VAL-ley, TI-ring, de-CI-ded. The -ed in decided is an extra part. Say “from Babylon to Syria and Palestine” as one group.',
+    quick: 'You will put four events of the journey in order. Look for the time words So, During his journey, One day and Finally.',
+    wrong: ['Read the chapter again from the start.', 'Stop at each time word and say what happened.', 'Put the events in that order. Try again.'],
+    check: ['Can I say who Sarah and Lot were?', 'Can I say why Abraham left?', 'Can I say “arrived at” correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a short journey. Use decided to, from … to …, a travel phrase like by bus, and Finally, … arrived at ….',
+    reflect: 'The journey was long and tiring, but Abraham did not stop. What helps you keep going when a job is long?',
+  },
+  {
+    chapter: 'Chapter 12: Hagar and Ishmael in the Valley',
+    hotspots: ['Hagar’s Trust', 'The Empty Valley'],
+    goals: ['I can say what the valley did not have.', 'I can say why Hagar was not afraid.', 'I can use told … to, had to and will never.'],
+    notice: ['Hagar trusted Allah, and she also worked hard to find water.', 'Look at “Allah will never let us die”. never comes after will.'],
+    read: ['Look at the title and the picture. What is in the valley?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 1 again. What did Hagar know, and what did she think?'],
+    find: ['Paragraph 1: find where Abraham told his wife to stay.', 'Paragraph 1: find four things the valley did not have.', 'Paragraph 2: find what Abraham asked Allah for, and what Hagar did.'],
+    words: ['Word Notes: blessings, fearlessly, useless, plan.', '“She thought fearlessly”: was Hagar afraid?', 'Write one sentence with useless: … was useless because ….'],
+    languageFocus: 'Match fearlessly, protect, blessings and useless with their meanings. Build Hagar’s words “Allah will never let us die.” Then choose to stay, had to and nobody.',
+    sayIt: 'Say the stress: BLESS-ings, FEAR-less-ly, USE-less. Say “from hill to hill” as one group.',
+    quick: 'The question asks why Hagar was not afraid. Read paragraph 1 before you choose.',
+    wrong: ['Go back to paragraph 1.', 'Find “Hagar knew that” and read that sentence and the next one again.', 'Try again.'],
+    check: ['Can I name three things the valley did not have?', 'Can I say what Hagar thought?', 'Can I say “told his wife to stay” correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a day with a problem, like a trip with no water bottle. Use no …, had to …, asked … to … and will surely or will never.',
+    reflect: 'Hagar trusted Allah, and she also looked for water. What can you do yourself when you have a problem?',
+  },
+  {
+    chapter: 'Chapter 13: The Zamzam Water',
+    hotspots: ['Water from the Ground', 'Mecca'],
+    goals: ['I can say where the water came from.', 'I can say why more people came to the place.', 'I can use was + -ing, Suddenly and because of.'],
+    notice: ['First, something was going on. Then, suddenly, something new happened.', 'Look at “Hagar was running in the desert”. was running shows what was going on at that time.'],
+    read: ['Look at the title and the picture. Where is the water?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find the word special.'],
+    find: ['Paragraph 1: find where the water came out.', 'Paragraph 1: find what Hagar did first, and what she did next.', 'Paragraph 2: find why the water is special and what the people built.'],
+    words: ['Word Notes: desert, suddenly, shouted, famous. Tap Mecca to learn about the place.', '“Later, this water became very famous.” Do many people know it?', 'Write one sentence with suddenly: I was …, and suddenly ….'],
+    languageFocus: 'Put parts of the chapter into two groups: was going on, or happened at one moment. Choose became, because and because of. Then decide what Flow and stop do in “Flow slowly, stop!”',
+    sayIt: 'Say the stress: DES-ert, SUD-den-ly, FA-mous. The -ed in shouted is an extra part: SHOUT-ed. Say “Suddenly water came out of the ground” in a surprised voice.',
+    quick: 'The question asks why more people came to this place. Read the last sentences of paragraph 2 before you choose.',
+    wrong: ['Go back to the end of paragraph 2.', 'Find “More people came there” and read that sentence again.', 'Ask yourself: what was in this place? Then try again.'],
+    check: ['Can I say where the water came from?', 'Can I say what Hagar shouted?', 'Can I use because and because of correctly?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a sudden change. Use was or were + -ing, Suddenly …, Then … and because ….',
+    reflect: 'The water was a gift, and Hagar gave some to her son. What is one thing you can share with someone today?',
+  },
+  {
+    chapter: "Chapter 14: The Ka'ba and Abraham's Message",
+    hotspots: ['Building the Ka’ba', 'Hajj'],
+    goals: ['I can say who built the Ka’ba.', 'I can say what Hajj makes us remember.', 'I can use will for a promise, still and One of.'],
+    notice: ['The last chapter goes from the past to today.', 'Look at “Today, people still visit the House of Allah to make Hajj.” still shows it is true today, too.'],
+    read: ['Look at the title and the picture. What are the father and son building?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last paragraph two times. It is Abraham’s message.'],
+    find: ['Paragraph 1: find Ishmael’s answer to his father.', 'Paragraph 2: find what people still do at the House of Allah today.', 'Paragraph 3: find who told people Abraham’s message.'],
+    words: ['Word Notes: mission, ancestor, partner, holy. Tap Mecca to learn about the place.', '“It was the first holy place on Earth”: was the Ka’ba an ordinary place?', 'Write one sentence with mission: My mission at home is ….'],
+    languageFocus: 'Choose what “I will help you for sure” means. Match During that time, Mecca, several times and to see his family with When?, Where?, How often? and Why? Then complete lines with After, still and One of.',
+    sayIt: 'Say the stress: MIS-sion, AN-ces-tor, PART-ner. Say “I will help you for sure” in a happy, sure voice.',
+    quick: 'You will match Ishmael, the Ka’ba, Hajj and Muhammad (pbuh) with what the chapter says. Paragraph 1 is about Ishmael and the Ka’ba. Paragraphs 2 and 3 tell you the rest.',
+    wrong: ['Read paragraph 1 again for Ishmael and the Ka’ba.', 'Read paragraphs 2 and 3 again for Hajj and Muhammad (pbuh).', 'Match again.'],
+    check: ['Can I say who built the Ka’ba?', 'Can I say the message in the last paragraph?', 'Can I use still in a sentence about today?'],
+    use: 'Language Focus, last activity (Say It): write or say four short sentences about a job you do with someone in your family. Use a time phrase, to + verb for a reason, will for help and still.',
+    reflect: 'Father and son built the Ka’ba together. What job can you do together with someone in your family this week?',
+  },
+];
 
-export const abrahamA2StudentGuideTextPreview = `# A2 Self-Study Guide — Prophet Abraham
+export const abrahamA2SelfStudyGuideEn: TeacherGuideSection[] = selfPlans.map(p => ({
+  chapter: p.chapter,
+  timing: 'About 20 minutes',
+  objectives: p.goals,
+  pedagogy: 'Look, listen and read first. Then find the answer sentences, do the Quick Challenge, and use the chapter’s Language Focus.',
+  grammarFocus: p.languageFocus,
+  pronunciationFocus: p.sayIt,
+  lessonPlan: p.read.join(' '),
+  discussionPoints: [p.reflect],
+  interactiveTips: [`Tap the picture hotspots “${p.hotspots[0]}” and “${p.hotspots[1]}”.`],
+  differentiation: { strugglingLearners: p.wrong.join(' '), fastFinishers: p.use },
+  whatToNotice: p.notice,
+  readListen: [...p.read, `Tap the picture hotspots “${p.hotspots[0]}” and “${p.hotspots[1]}”.`],
+  findAnswerInStory: p.find,
+  vocabularyInContext: p.words,
+  quickChallengeGuide: p.quick,
+  wrongAnswerSupport: p.wrong,
+  selfCheck: p.check,
+  useWhatYouLearned: p.use,
+  reflectionPrompt: p.reflect,
+}));
 
-This guide follows the **14 real story chapters** in the preview book and uses its real audio, hotspots, Word Notes, Quick Challenges, Language Focus and final review pages.
+export const abrahamA2StudentGuideSections: StudentGuideSection[] = [
+  { title: '1. One Chapter at a Time', icon: 'Target', text: 'Study one chapter in one sitting. It takes about 20 minutes. Open “Study Path” to see the steps for your chapter.', points: ['Look at the title and the picture.', 'Listen and follow the text.', 'Read one paragraph at a time.', 'Do the Quick Challenge.', 'Do the Language Focus.'] },
+  { title: '2. Listen and Read', icon: 'Ear', text: 'Every chapter has audio. Listen first, then read.', points: ['First time: listen for the main idea.', 'Second time: follow the words with your eyes.', 'Stop the audio and say one short sentence again.'] },
+  { title: '3. Word Notes and Hotspots', icon: 'BookOpen', text: 'Each chapter has underlined words. Tap a word to see its Word Note. Place names like Babylon and Mecca open a short note about the place. Tap the hotspots on the picture for short notes.', points: ['Read the word in its sentence first.', 'Guess the meaning, then check the Word Note.', 'Write the word and one sentence in your notebook.'] },
+  { title: '4. Quick Challenge', icon: 'CheckCircle', text: 'Each chapter has one Quick Challenge. Answer first, then read the feedback.', points: ['Wrong answer? Find the answer sentence.', 'Read it again.', 'Try again.'] },
+  { title: '5. Language Focus', icon: 'Compass', text: 'Each chapter has four Language Focus activities. Do them after you understand the chapter. They use sentences from the story.', points: ['Activity 1: look at a story sentence and its meaning.', 'Activities 2 and 3: practise the words and forms.', 'Last activity (Say It): write or say three to five sentences of your own.'] },
+  { title: '6. When It Is Hard', icon: 'HelpCircle', text: 'It is fine to find a chapter hard. Change how you study, not your goal.', points: ['Listen to one paragraph only.', 'Read two or three lines at a time.', 'Look at the picture and the hotspots again.', 'Learn only two words today.'] },
+  { title: '7. Values in the Story', icon: 'Heart', text: 'The story of Prophet Abraham (pbuh) is about thinking, good manners, calm trust, humility and working together. Turn each value into one small action.', points: ['Thinking: look and check before you believe (Chapters 1 and 3).', 'Good manners: ask questions politely, even when you do not agree (Chapter 2).', 'Calm trust: stay calm in a hard moment (Chapters 7 and 8).', 'Humility: accept your mistake and do not be arrogant (Chapters 8 and 10).', 'Trust and hard work: trust Allah and also do your best (Chapter 12).', 'Working together: help your family with an important job (Chapter 14).'] },
+  { title: '8. At the End of the Book', icon: 'Stars', text: 'After Chapter 14, do the review pages in this order. Go back to a chapter when an answer is not clear.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Language Review', 'Master Glossary', 'Final Challenge'] },
+];
 
-**understand → notice → use → check → repair → reflect**
-
-## 1. One Goal Before Every Chapter
-Choose one small goal: main idea, 3–5 words, one Language Focus pattern, one repaired mistake, or one value/action.
-
-**My goal today: __________**  
-**My next step: __________**
-
-## 2. A2 Study Cycle
-1. Preview the title, image and real hotspots.  
-2. Listen once for the main event.  
-3. Read 2–4 lines at a time.  
-4. Choose 3–5 source words.  
-5. Try the real Quick Challenge.  
-6. Check feedback and find the supporting sentence.  
-7. Repair the answer if needed.  
-8. Use the real Language Focus.  
-9. Say or write 2–4 simple sentences.  
-10. Connect one value with an action.
-
-## 3. Evidence and Feedback
-Use **Try → Check → Find proof → Repair → Try again**. Do not rely on guessing or outside information.
-
-## 4. Language Focus
-After understanding the chapter, notice the real example, understand its meaning, and make one short new sentence. Keep grammar connected to story meaning.
-
-## 5. Fourteen-Chapter Study Map
-${chapterMap}
-
-## 6. Sensitive Scenes
-Some chapters include threats, the fire and conflict with Nimrod. Focus on reasoning, courage, trust, consequence and the lesson. Do not add graphic detail or role-play violence.
-
-## 7. Need More Help? / Ready for a Challenge?
-For support, use a real hotspot, replay a short part, read 2–3 lines, choose three words or use a sentence frame. For challenge, write 3–5 connected sentences, retell with sequence words, use two source words, make one Language Focus sentence or explain an answer with evidence.
-
-## 8. Chapter Self-Check
-- [ ] I can tell the main idea.  
-- [ ] I can use 3–5 chapter words.  
-- [ ] I completed the real Quick Challenge.  
-- [ ] I found evidence and repaired a mistake if needed.  
-- [ ] I can understand or use one Language Focus pattern.  
-- [ ] I can say or write 2–4 simple sentences.  
-- [ ] I can connect one value with one action.  
-- [ ] I know my next step.
-
-## 9. Review After Chapter 14
-Use the actual preview sequence: **Knowledge Check → Vocabulary Challenge → Language Review → Master Glossary Parts 1–2 → Final Challenge**. Repair errors before moving to the final scored set.
-`;
+export const abrahamA2StudentGuideMetadata: StudentGuideMetadata = {
+  title: 'Prophet Abraham A2 — Self-Study Guide',
+  subtitle: 'Look • Listen • Read • Check • Use',
+  level: 'A2',
+  language: 'English',
+  estimatedStudyTime: 'About 20 minutes per chapter, plus the review pages at the end',
+  whoIsThisFor: 'A2 learners who study the story of Prophet Abraham at home or on their own.',
+  learningGoals: ['Understand the 14 chapters of the story of Prophet Abraham (pbuh).', 'Find the answer sentence in the story.', 'Learn the Word Notes of each chapter.', 'Use each chapter’s Language Focus in your own sentences.', 'Turn calm trust, humility and working together into small actions.'],
+  recommendedUse: ['Study one chapter at a time.', 'Listen first, then read.', 'Answer the Quick Challenge before you read the feedback.', 'Do the Language Focus after you understand the chapter.', 'Do the review pages after Chapter 14.'],
+};
