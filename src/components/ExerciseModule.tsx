@@ -27,18 +27,7 @@ import {
 } from '../lib/exercisePresentation';
 import { isLanguageItemType, scoreLanguageItems } from '../lib/exerciseScoring';
 import { LanguageItemExercise } from './exercises/LanguageItemExercises';
-import { MatchConnectors, pairColor } from './exercises/MatchConnectors';
-
-/** Shared number badge for a linked matching pair; shows ✓/✕ once checked. */
-const MatchPairBadge = ({ label, color, result, description }: { label: string; color: string; result: boolean | null; description: string }) => (
-  <span
-    className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full px-1.5 font-display text-[11px] font-black text-white"
-    style={{ backgroundColor: result === null ? color : result ? '#10B981' : '#F43F5E' }}
-  >
-    {result === null ? label : result ? '✓' : '✕'}
-    <span className="sr-only">{` ${description}`}</span>
-  </span>
-);
+import { MatchingBoard } from './exercises/MatchingBoard';
 
 interface ExerciseModuleProps {
   exercise: Exercise;
@@ -96,7 +85,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [showHint, setShowHint] = React.useState(false);
-  const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
   const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
   const [localSequence, setLocalSequence] = React.useState<string[]>([]);
   const [selectedDragItem, setSelectedDragItem] = React.useState<string | null>(null);
@@ -108,7 +96,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const [quizWasCorrect, setQuizWasCorrect] = React.useState<boolean | null>(null);
   const [reflectionResponse, setReflectionResponse] = React.useState('');
   const [attempt, setAttempt] = React.useState(0);
-  const matchingGridRef = React.useRef<HTMLDivElement>(null);
 
   const reflectionNeedsWriting = exercise.type === 'reflection' && (
     /\bwrite\b/i.test(exercise.instructions ?? '')
@@ -127,7 +114,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setUserAnswer(null);
     setIsSubmitted(false);
     setShowHint(false);
-    setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setLocalSequence([]);
     setSelectedDragItem(null);
@@ -201,26 +187,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setUserAnswer(null);
     setIsSubmitted(false);
     setShowHint(false);
-    setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setLocalSequence([]);
     setSelectedDragItem(null);
     setDragAssignments({});
     setRevealedItems(new Set());
     setReflectionResponse('');
-  };
-
-  const selectMeaning = (meaning: string) => {
-    if (!selectedMatchingLeft || isSubmitted) return;
-    setMatchingAssignments((previous) => {
-      const next = { ...previous };
-      for (const [left, assignedMeaning] of Object.entries(next)) {
-        if (assignedMeaning === meaning) delete next[left];
-      }
-      next[selectedMatchingLeft] = meaning;
-      return next;
-    });
-    setSelectedMatchingLeft(null);
   };
 
   const assignDragItem = (groupName: string) => {
@@ -355,105 +327,18 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
     if (exercise.type === 'matching') {
       const pairs = exercise.matchingPairs ?? [];
-      const assignedMeanings = new Set(Object.values(matchingAssignments));
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          {!exercise.matchingHeadings && (
-            <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
-          )}
-          <div ref={matchingGridRef} className="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            <div className="space-y-2.5">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
-                {exercise.matchingHeadings?.left ?? (isArabic ? 'المفاهيم' : 'Concepts')}
-              </p>
-              {pairs.map((pair, pairIndex) => {
-                const selected = selectedMatchingLeft === pair.left;
-                const assigned = matchingAssignments[pair.left];
-                const pairCorrect = isSubmitted && assigned ? assigned === pair.right : null;
-                return (
-                  <button
-                    key={pair.left}
-                    type="button"
-                    data-match-left={pair.left}
-                    disabled={isSubmitted}
-                    onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
-                    aria-pressed={selected}
-                    className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-bold transition-colors flex items-center justify-between gap-3',
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
-                      selected ? theme.selected : `bg-white ${theme.softBorder}`
-                    )}
-                    style={assigned && !selected ? { borderColor: pairCorrect === null ? pairColor(pairIndex) : pairCorrect ? '#10B981' : '#F43F5E' } : undefined}
-                  >
-                    <span>{pair.left}</span>
-                    {assigned && (
-                      <MatchPairBadge
-                        label={formatNumber(pairIndex + 1)}
-                        color={pairColor(pairIndex)}
-                        result={pairCorrect}
-                        description={isArabic ? `مرتبط بـ«${assigned}»` : `linked to “${assigned}”`}
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-            <div className="space-y-2.5">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
-                {exercise.matchingHeadings?.right ?? (isArabic ? 'المعاني' : 'Meanings')}
-              </p>
-              {presentedMeanings.map((meaning) => {
-                const used = assignedMeanings.has(meaning);
-                const ownerIndex = pairs.findIndex((pair) => matchingAssignments[pair.left] === meaning);
-                const owner = pairs[ownerIndex];
-                const pairCorrect = isSubmitted && owner ? owner.right === meaning : null;
-                return (
-                  <button
-                    key={meaning}
-                    type="button"
-                    data-match-right={meaning}
-                    disabled={isSubmitted || !selectedMatchingLeft}
-                    onClick={() => selectMeaning(meaning)}
-                    className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-medium transition-colors flex items-center gap-3',
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
-                      used
-                        ? 'bg-white text-wood'
-                        : selectedMatchingLeft
-                          ? `bg-white ${theme.softBorder} hover:bg-gray-50`
-                          : 'bg-gray-50 border-gray-100 text-wood/45'
-                    )}
-                    style={used && owner ? { borderColor: pairCorrect === null ? pairColor(ownerIndex) : pairCorrect ? '#10B981' : '#F43F5E' } : undefined}
-                  >
-                    {used && owner && (
-                      <MatchPairBadge
-                        label={formatNumber(ownerIndex + 1)}
-                        color={pairColor(ownerIndex)}
-                        result={pairCorrect}
-                        description={isArabic ? `مرتبط بـ«${owner.left}»` : `linked to “${owner.left}”`}
-                      />
-                    )}
-                    <span className="flex-1">{meaning}</span>
-                  </button>
-                );
-              })}
-            </div>
-            <MatchConnectors
-              containerRef={matchingGridRef}
-              connectors={pairs.flatMap((pair, pairIndex) => {
-                const assigned = matchingAssignments[pair.left];
-                if (!assigned) return [];
-                const pairCorrect = isSubmitted ? assigned === pair.right : null;
-                return [{
-                  left: pair.left,
-                  right: assigned,
-                  color: pairCorrect === null ? pairColor(pairIndex) : pairCorrect ? '#10B981' : '#F43F5E',
-                  dashed: pairCorrect === false,
-                }];
-              })}
-            />
-          </div>
+          <MatchingBoard
+            pairs={pairs}
+            meanings={presentedMeanings}
+            assignments={matchingAssignments}
+            onAssignmentsChange={setMatchingAssignments}
+            submitted={isSubmitted}
+            headings={exercise.matchingHeadings}
+            instructions={exercise.matchingHeadings ? null : undefined}
+          />
           {!isSubmitted && (
             <button
               type="button"
