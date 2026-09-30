@@ -8,6 +8,8 @@ import {
   Info,
   RotateCcw,
   Trophy,
+  ChevronLeft,
+  ChevronRight,
 } from '../ui/icons';
 import { Exercise } from '../../types';
 import { cn } from '../../lib/utils';
@@ -239,6 +241,8 @@ export const KnowledgeCheck = ({
   const [localAnswers, setLocalAnswers] = React.useState<Record<string, AnswerValue>>({});
   const [showResults, setShowResults] = React.useState(false);
   const [activeFeedback, setActiveFeedback] = React.useState<string | null>(null);
+  // One question on screen at a time, like the Final Challenge.
+  const [currentStep, setCurrentStep] = React.useState(0);
 
   React.useEffect(() => {
     let restored: Record<string, AnswerValue> = {};
@@ -258,6 +262,12 @@ export const KnowledgeCheck = ({
     setLocalAnswers(restored);
     setShowResults(false);
     setActiveFeedback(null);
+    const firstOpen = supportedExercises.findIndex((exercise) => {
+      const saved = restored[exercise.id];
+      return saved === null || saved === undefined;
+    });
+    setCurrentStep(firstOpen >= 0 ? firstOpen : 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey]);
 
   const answerFor = React.useCallback((exercise: Exercise): AnswerValue => {
@@ -276,6 +286,9 @@ export const KnowledgeCheck = ({
   const percentage = supportedExercises.length
     ? Math.round((correctCount / supportedExercises.length) * 100)
     : 0;
+  const safeStep = Math.min(currentStep, Math.max(0, supportedExercises.length - 1));
+  const currentExercise = supportedExercises[safeStep] ?? null;
+  const isLastStep = safeStep >= supportedExercises.length - 1;
   const activeExercise = supportedExercises.find((exercise) => exercise.id === activeFeedback) ?? null;
   const activeIsCorrect = activeExercise
     ? isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
@@ -301,6 +314,7 @@ export const KnowledgeCheck = ({
 
   const reset = () => {
     setLocalAnswers({});
+    setCurrentStep(0);
     setShowResults(false);
     setActiveFeedback(null);
     if (typeof window !== 'undefined') {
@@ -429,53 +443,93 @@ export const KnowledgeCheck = ({
           )}
         </div>
 
-        <div className="flex items-center gap-3 px-1">
-          <span className={cn('font-display font-semibold text-wood/50 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
+        <div className="flex items-center justify-between gap-3 px-1" data-kc-progress>
+          <span className={cn('font-display font-semibold text-wood/60 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
+            {t('nav.question')} {formatNumber(safeStep + 1)} {t('nav.of')} {formatNumber(supportedExercises.length)}
+          </span>
+          <span className={cn('font-display font-semibold text-wood/45 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
             {isArabic ? 'تمت الإجابة' : 'Answered'} {formatNumber(answeredCount)}/{formatNumber(supportedExercises.length)}
           </span>
-          <div className={cn('h-1.5 rounded-full flex-1 overflow-hidden', theme.progressTrack)}>
-            <motion.div
-              className={cn('h-full rounded-full', theme.progress)}
-              animate={{ width: `${supportedExercises.length ? (answeredCount / supportedExercises.length) * 100 : 0}%` }}
-            />
-          </div>
         </div>
-
-        <div className="space-y-3.5">
+        <div className="flex gap-1.5 px-1" aria-hidden="true">
           {supportedExercises.map((exercise, index) => (
-            <QuestionCard
+            <span
               key={exercise.id}
-              exercise={exercise}
-              index={index}
-              answer={answerFor(exercise)}
-              showResults={showResults}
-              active={activeFeedback === exercise.id}
-              onAnswer={(answer) => answerQuestion(exercise, answer)}
-              onInfo={() => setActiveFeedback(activeFeedback === exercise.id ? null : exercise.id)}
-              collectionId={collectionId}
+              className={cn(
+                'h-1.5 flex-1 rounded-full transition-colors',
+                index === safeStep ? theme.progress : answerFor(exercise) !== null ? 'bg-brand-300' : theme.progressTrack,
+              )}
             />
           ))}
         </div>
 
-        {!showResults && (
+        {currentExercise && (
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={currentExercise.id}
+              initial={{ opacity: 0, x: isRTL ? -16 : 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: isRTL ? 16 : -16 }}
+              transition={{ duration: 0.18 }}
+            >
+              <QuestionCard
+                exercise={currentExercise}
+                index={safeStep}
+                answer={answerFor(currentExercise)}
+                showResults={showResults}
+                active={activeFeedback === currentExercise.id}
+                onAnswer={(answer) => answerQuestion(currentExercise, answer)}
+                onInfo={() => setActiveFeedback(activeFeedback === currentExercise.id ? null : currentExercise.id)}
+                collectionId={collectionId}
+              />
+            </motion.div>
+          </AnimatePresence>
+        )}
+
+        <div className="flex items-center justify-between gap-3">
           <button
             type="button"
-            onClick={() => {
-              setShowResults(true);
-              onComplete?.(supportedExercises.map(exercise => exercise.id));
-            }}
-            disabled={!allAnswered}
-            className={cn(
-              'w-full min-h-14 rounded-2xl px-6 font-display uppercase tracking-[0.13em] font-semibold flex items-center justify-center gap-2 transition-all',
-              isArabic ? 'text-sm sm:text-base' : 'text-[12px] sm:text-[13px]',
-              allAnswered
-                ? `${theme.accentBg} text-white shadow-md`
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-            )}
+            onClick={() => setCurrentStep((step) => Math.max(0, step - 1))}
+            disabled={safeStep === 0}
+            data-kc-prev
+            className="inline-flex min-h-12 items-center gap-1.5 rounded-xl px-4 font-display text-[12px] font-semibold text-wood/65 ring-1 ring-black/[0.08] transition-colors hover:bg-black/[0.04] disabled:cursor-not-allowed disabled:opacity-35"
           >
-            <CheckCircle2 size={16} /> {t('ex.seeResults')}
+            <ChevronLeft size={16} className={cn(isRTL && 'rotate-180')} />
+            {t('nav.back')}
           </button>
-        )}
+          {isLastStep && !showResults ? (
+            <button
+              type="button"
+              onClick={() => {
+                setShowResults(true);
+                onComplete?.(supportedExercises.map(exercise => exercise.id));
+              }}
+              disabled={!allAnswered}
+              data-kc-results
+              className={cn(
+                'inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 font-display uppercase tracking-[0.13em] font-semibold transition-all',
+                isArabic ? 'text-sm' : 'text-[12px]',
+                allAnswered ? `${theme.accentBg} text-white shadow-md` : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              )}
+            >
+              <CheckCircle2 size={16} /> {t('ex.seeResults')}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setCurrentStep((step) => Math.min(supportedExercises.length - 1, step + 1))}
+              disabled={isLastStep || (!showResults && currentExercise !== null && answerFor(currentExercise) === null)}
+              data-kc-next
+              className={cn(
+                'inline-flex min-h-12 items-center gap-1.5 rounded-xl px-5 font-display text-[12px] font-semibold text-white transition-all disabled:cursor-not-allowed disabled:opacity-35',
+                theme.accentBg
+              )}
+            >
+              {t('nav.next')}
+              <ChevronRight size={16} className={cn(isRTL && 'rotate-180')} />
+            </button>
+          )}
+        </div>
 
         {showResults && (
           <div className={cn(
