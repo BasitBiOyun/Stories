@@ -12,7 +12,6 @@ import {
   Library,
   RotateCcw,
   Rocket,
-  Sparkles,
   Target,
   Trophy,
 } from '../ui/icons';
@@ -446,7 +445,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                   {copy.how}
                 </h3>
               </div>
-              <Sparkles size={23} style={{ color: visual.accentBright }} />
+              <Trophy size={23} style={{ color: visual.accentBright }} />
             </div>
 
             <div className="mt-7 space-y-3">
