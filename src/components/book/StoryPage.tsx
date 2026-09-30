@@ -1696,7 +1696,7 @@ export const StoryPage = ({
           {/* Text Content */}
           <div 
             className={cn(
-              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch]",
+              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch] wide:max-w-none",
               isDyslexic ? "font-sans tracking-wide" : "",
               isRTL && "text-right"
             )}
@@ -1713,7 +1713,7 @@ export const StoryPage = ({
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
         <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pe-3 xl:pe-4 pb-4">
-          <div className="grid grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-12 gap-8 desk:gap-12 items-start">
             {/* Left side: Image */}
             <div className="col-span-5 self-start lg:sticky lg:top-0">
               {page.image && (
@@ -1757,7 +1757,7 @@ export const StoryPage = ({
             <div className="col-span-7">
               <div 
                 className={cn(
-                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch]",
+                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch] desk:max-w-[80ch] wide:max-w-none",
                   isDyslexic ? "font-sans tracking-wide" : "",
                   isRTL && "text-right"
                 )}

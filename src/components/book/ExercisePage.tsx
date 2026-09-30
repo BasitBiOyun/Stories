@@ -275,7 +275,7 @@ export const ExercisePage = ({
               )}
               {page.type === 'exercises' && page.exercises && (
                 <div className="h-full min-h-0 overflow-y-auto pe-1 custom-scrollbar">
-                  <div className="mx-auto w-full max-w-5xl space-y-4 pb-4">
+                  <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-4 pb-4">
                     <section className={cn(
                       "rounded-[28px] bg-white/68 p-5 shadow-[0_16px_42px_rgba(63,49,28,0.06)] ring-1 sm:p-6",
                       colTheme.containerBorder

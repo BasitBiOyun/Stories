@@ -35,6 +35,7 @@ import { collectionVisuals, getStoryMeta, readerTokenVariables } from './core/co
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
+import { useMediaQuery } from './lib/useMediaQuery';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
@@ -90,6 +91,8 @@ const AppContent = () => {
     const stored = Number(localStorage.getItem('reader_scale'));
     return Number.isFinite(stored) && stored >= 0.85 && stored <= 1.3 ? stored : 1;
   });
+  const [isWideView, setIsWideView] = useState(() => localStorage.getItem('reader_wide') === 'true');
+  const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
@@ -124,6 +127,10 @@ const AppContent = () => {
   useEffect(() => {
     localStorage.setItem('reader_dyslexic', String(isDyslexic));
   }, [isDyslexic]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_wide', String(isWideView));
+  }, [isWideView]);
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { stats, resetStats, hydrateStats } = useStoryProgress();
@@ -708,7 +715,7 @@ const AppContent = () => {
             allPages={currentBook?.pages || []}
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
-            fontSize={(currentBook?.baseFontSize || 12) * readerScale}
+            fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1)}
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
           />
@@ -756,6 +763,7 @@ const AppContent = () => {
     <div 
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={language}
+      data-reader-wide={isWideView ? 'true' : undefined}
       className={cn(
         "h-dvh max-h-dvh bg-wood flex flex-col relative overflow-hidden page-texture",
         isDyslexic && language !== 'ar' && "font-dyslexic-mode"
@@ -900,6 +908,33 @@ const AppContent = () => {
                         </span>
                       </button>
 
+                      <button
+                        type="button"
+                        onClick={() => setIsWideView(prev => !prev)}
+                        className="mt-2 hidden w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08] lg:flex"
+                        aria-pressed={isWideView}
+                        data-wide-view-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'عرض واسع' : 'Wide view'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'يملأ النص واللوحات الشاشة' : 'Text and panels fill the screen'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            isWideView ? themeClasses.progressBar : "bg-white/15",
+                            isWideView ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
                       {canFullscreen && (
                         <button
                           type="button"
@@ -1027,8 +1062,8 @@ const AppContent = () => {
         )}>
           <div className="flex-1 overflow-hidden min-h-0 flex flex-col">
             <div className={cn(
-              "w-full max-w-[1700px] mx-auto h-full flex flex-col min-h-0",
-              !showSummary && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18"
+              "w-full max-w-[1700px] desk:max-w-[1900px] wide:max-w-none mx-auto h-full flex flex-col min-h-0",
+              !showSummary && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18 wide:lg:px-6 wide:xl:px-8 wide:2xl:px-10"
             )}>
               <AnimatePresence mode="wait">
                 <motion.div
