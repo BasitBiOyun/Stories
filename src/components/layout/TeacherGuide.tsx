@@ -23,7 +23,7 @@ import {
   ChevronRight,
   Search,
   Clock,
-  Sparkles
+  ClipboardCheck
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { collectionVisualFor } from '../../core/content/storyCatalog';
@@ -514,7 +514,7 @@ entries.set(key, { word, definition });
                           onClick={() => openLessonPrep(idx)}
                           className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-gold/20 bg-black/10 px-3 font-display text-[10px] sm:text-[11px] font-bold text-gold hover:bg-gold hover:text-white transition-colors"
                         >
-                          <Sparkles size={14} />
+                          <ClipboardCheck size={14} />
                           {language === 'ar' ? 'تحضير' : 'Prep'}
                         </button>
                       </div>
@@ -1567,7 +1567,7 @@ entries.set(key, { word, definition });
                 title={language === 'ar' ? 'فتح وضع تحضير الدرس' : 'Open Lesson Prep Mode'}
                 aria-label={language === 'ar' ? 'فتح وضع تحضير الدرس' : 'Open Lesson Prep Mode'}
               >
-                <Sparkles size={17} />
+                <ClipboardCheck size={17} />
                 <span className="hidden sm:inline">{language === 'ar' ? 'تحضير الدرس' : 'Lesson Prep'}</span>
               </button>
               <button
@@ -1835,7 +1835,7 @@ entries.set(key, { word, definition });
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0 flex items-start gap-3 sm:gap-4">
                         <span className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gold text-white flex items-center justify-center shrink-0 shadow-lg">
-                          <Sparkles size={22} />
+                          <ClipboardCheck size={22} />
                         </span>
                         <div className="min-w-0">
                           <p className="font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gold/55">
