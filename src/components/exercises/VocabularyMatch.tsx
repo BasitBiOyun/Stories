@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb, ArrowRight, BrainCircuit } from '../ui/icons';
+import { MatchingBoard } from './MatchingBoard';
 import type { Level, VocabularyChallengePair } from '../../types';
 import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -10,17 +11,11 @@ import confetti from 'canvas-confetti';
 type Pair = VocabularyChallengePair;
 
 /** The same number on a matched word and its meaning shows which two belong together. */
-const MatchedPairNumber = ({ label }: { label: string }) => (
-  <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 px-1 font-display text-[11px] font-black text-white">
-    {label}
-  </span>
-);
 type Props = { pairs: Pair[]; collectionId?: string; level: Level; onReviewGlossary?: () => void; onComplete?: () => void };
 
 type FeedbackState =
   | { kind: 'idle' }
-  | { kind: 'correct'; word: string; meaning: string }
-  | { kind: 'wrong'; word: string; meaning: string }
+  | { kind: 'checked'; correct: number; wrong: number }
   | { kind: 'done' };
 
 const shuffle = <T,>(items: T[]): T[] => [...items].sort(() => Math.random() - 0.5);
@@ -108,11 +103,10 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const policy = getLearningLevelPolicy(level);
   const isArabic = language === 'ar';
   const [meaningOrder, setMeaningOrder] = useState(() => shuffle(pairs.map((pair) => pair.meaning)));
-  const [selectedWord, setSelectedWord] = useState<string | null>(null);
-  const [selectedMeaning, setSelectedMeaning] = useState<string | null>(null);
+  // Confirmed pairs (locked), pairs placed but not yet checked, and the ✕ marks of the last check.
   const [matches, setMatches] = useState<Record<string, string>>({});
-  const [wrongWord, setWrongWord] = useState<string | null>(null);
-  const [wrongMeaning, setWrongMeaning] = useState<string | null>(null);
+  const [pending, setPending] = useState<Record<string, string>>({});
+  const [checkMarks, setCheckMarks] = useState<Record<string, boolean>>({});
   const [streak, setStreak] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackState>({ kind: 'idle' });
 
@@ -160,11 +154,9 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
 
   const reset = () => {
     setMeaningOrder(shuffle(pairs.map((pair) => pair.meaning)));
-    setSelectedWord(null);
-    setSelectedMeaning(null);
     setMatches({});
-    setWrongWord(null);
-    setWrongMeaning(null);
+    setPending({});
+    setCheckMarks({});
     setStreak(0);
     setFeedback({ kind: 'idle' });
     setStage('match');
@@ -196,55 +188,59 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     });
   };
 
-  const tryMatch = (word: string, meaning: string) => {
-    if (wordToMeaning[word] === meaning) {
-      const next = { ...matches, [word]: meaning };
-      setMatches(next);
-      setSelectedWord(null);
-      setSelectedMeaning(null);
-      const nextStreak = streak + 1;
-      setStreak(nextStreak);
+  const boardPairs = useMemo(() => pairs.map((pair) => ({ left: pair.word, right: pair.meaning })), [pairs]);
+  const boardAssignments = useMemo(() => ({ ...pending, ...matches }), [pending, matches]);
+  const lockedWords = useMemo(() => new Set(Object.keys(matches)), [matches]);
+  const boardResults = useMemo(() => {
+    const marks: Record<string, boolean> = { ...checkMarks };
+    Object.keys(matches).forEach((word) => { marks[word] = true; });
+    return marks;
+  }, [checkMarks, matches]);
+  const allPlaced = Object.keys(boardAssignments).length === total && total > 0;
 
-      if (Object.keys(next).length === total) {
-        setFeedback({ kind: 'done' });
-        setMaxUnlockedStage(current => Math.max(current, 1));
+  const handleBoardChange = (next: Record<string, string>) => {
+    const nextPending: Record<string, string> = {};
+    Object.entries(next).forEach(([word, meaning]) => {
+      if (!matches[word]) nextPending[word] = meaning;
+    });
+    setPending(nextPending);
+    setCheckMarks({});
+    if (feedback.kind === 'checked') setFeedback({ kind: 'idle' });
+  };
+
+  // Check every placed pair at once: right ones lock in, wrong ones show ✕ and come back for another go.
+  const checkMatches = () => {
+    if (!allPlaced || feedback.kind === 'done') return;
+    const nextMatches = { ...matches };
+    const marks: Record<string, boolean> = {};
+    let correct = 0;
+    let wrong = 0;
+    Object.entries(pending).forEach(([word, meaning]) => {
+      if (wordToMeaning[word] === meaning) {
+        nextMatches[word] = meaning;
+        marks[word] = true;
+        correct += 1;
       } else {
-        setFeedback({ kind: 'correct', word, meaning });
+        marks[word] = false;
+        wrong += 1;
+        addRevisit(word);
       }
+    });
+    setMatches(nextMatches);
+    setStreak(wrong === 0 ? streak + correct : 0);
+    if (Object.keys(nextMatches).length === total) {
+      setPending({});
+      setCheckMarks({});
+      setFeedback({ kind: 'done' });
+      setMaxUnlockedStage(current => Math.max(current, 1));
       return;
     }
-
-    setStreak(0);
-    addRevisit(word);
-    setWrongWord(word);
-    setWrongMeaning(meaning);
-    setFeedback({ kind: 'wrong', word, meaning });
+    setCheckMarks(marks);
+    setFeedback({ kind: 'checked', correct, wrong });
     setTimeout(() => {
-      setWrongWord(null);
-      setWrongMeaning(null);
-      setSelectedWord(null);
-      setSelectedMeaning(null);
-    }, 450);
-  };
-
-  const chooseWord = (word: string) => {
-    if (matches[word] || feedback.kind === 'done') return;
-    if (selectedMeaning) {
-      tryMatch(word, selectedMeaning);
-      return;
-    }
-    setSelectedWord((current) => current === word ? null : word);
-    setFeedback({ kind: 'idle' });
-  };
-
-  const chooseMeaning = (meaning: string) => {
-    if (matchedMeanings.includes(meaning) || feedback.kind === 'done') return;
-    if (selectedWord) {
-      tryMatch(selectedWord, meaning);
-      return;
-    }
-    setSelectedMeaning((current) => current === meaning ? null : meaning);
-    setFeedback({ kind: 'idle' });
+      setPending({});
+      setCheckMarks({});
+    }, 900);
   };
 
   const copy = isArabic
@@ -785,15 +781,12 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                 <ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />
               </button>
             </motion.div>
-          ) : feedback.kind === 'correct' ? (
-            <motion.div key={`correct-${feedback.word}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3 flex items-center gap-3">
-              <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
-              <p className={cn('font-serif text-emerald-800', isArabic ? 'text-base' : 'text-sm')}><strong>{displayWord(feedback.word, language)}</strong> {t('ex.means')} <span className={isArabic ? '' : 'italic'}>{feedback.meaning}</span></p>
-            </motion.div>
-          ) : feedback.kind === 'wrong' ? (
-            <motion.div key={`wrong-${feedback.word}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3 flex items-center gap-3">
+          ) : feedback.kind === 'checked' ? (
+            <motion.div key={`checked-${feedback.correct}-${feedback.wrong}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3 flex items-center gap-3">
               <XCircle size={20} className="text-rose-600 shrink-0" />
-              <p className={cn('font-serif text-rose-800', isArabic ? 'text-base' : 'text-sm')}><strong>{displayWord(feedback.word, language)}</strong> {t('ex.doesNotMean')} <span className={isArabic ? '' : 'italic'}>{feedback.meaning}</span>. {t('ex.keepTrying')}</p>
+              <p className={cn('font-serif text-rose-800', isArabic ? 'text-base' : 'text-sm')}>
+                {t('ex.matchesResult').replace('{correct}', formatNumber(feedback.correct)).replace('{wrong}', formatNumber(feedback.wrong))} {t('ex.keepTrying')}
+              </p>
             </motion.div>
           ) : (
             <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-2xl border-2 border-dashed border-gray-200 h-full min-h-[58px] flex items-center justify-center gap-2 px-4">
@@ -805,61 +798,34 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
       </div>
 
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden custom-scrollbar px-2">
-        <div className="grid grid-cols-2 gap-x-3 gap-y-2 pb-1 items-start">
-          <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accent)}>{t('ex.words')}</span></div>
-          <div className="flex items-center gap-2"><span className={cn('w-1 h-4 rounded-full', theme.dot)} /><span className={cn('font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accent)}>{t('ex.meanings')}</span></div>
-
-          {pairs.map((pair, index) => {
-            const meaning = meaningOrder[index];
-            const wordMatched = Boolean(matches[pair.word]);
-            const meaningMatched = matchedMeanings.includes(meaning);
-            const meaningOwnerIndex = meaningMatched ? pairs.findIndex((candidate) => matches[candidate.word] === meaning) : -1;
-            const wordSelected = selectedWord === pair.word;
-            const meaningSelected = selectedMeaning === meaning;
-            const wordWrong = wrongWord === pair.word;
-            const meaningWrong = wrongMeaning === meaning;
-
-            return (
-              <React.Fragment key={pair.word}>
-                <motion.button
-                  animate={wordWrong ? { x: [0, -7, 7, -4, 4, 0] } : {}}
-                  whileTap={!wordMatched ? { scale: 0.97 } : {}}
-                  onClick={() => chooseWord(pair.word)}
-                  disabled={wordMatched || feedback.kind === 'done'}
-                  className={cn(
-                    'w-full min-h-[48px] sm:min-h-[58px] px-3 sm:px-4 py-2 sm:py-3 rounded-xl border-2 text-left transition-all',
-                    wordMatched ? theme.matched : wordWrong ? 'border-rose-400 bg-rose-50' : wordSelected ? theme.selected : theme.idle
-                  )}
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <span className={cn('font-serif font-bold leading-snug', isArabic ? 'text-sm sm:text-lg md:text-lg' : 'text-xs sm:text-base md:text-lg', wordMatched ? 'text-emerald-800' : wordWrong ? 'text-rose-700' : 'text-wood')}>
-                      {displayWord(pair.word, language)}
-                    </span>
-                    {wordMatched && <MatchedPairNumber label={formatNumber(index + 1)} />}
-                    {wordWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
-                  </div>
-                </motion.button>
-
-                <motion.button
-                  animate={meaningWrong ? { x: [0, -7, 7, -4, 4, 0] } : {}}
-                  whileTap={!meaningMatched ? { scale: 0.97 } : {}}
-                  onClick={() => chooseMeaning(meaning)}
-                  disabled={meaningMatched || feedback.kind === 'done'}
-                  className={cn(
-                    'w-full min-h-[48px] sm:min-h-[58px] px-3 sm:px-4 py-2 sm:py-3 rounded-xl border-2 text-left transition-all',
-                    meaningMatched ? theme.matched : meaningWrong ? 'border-rose-400 bg-rose-50' : meaningSelected ? theme.selected : theme.idle
-                  )}
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <span className={cn('font-serif leading-snug', isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base', meaningMatched ? 'text-emerald-800' : meaningWrong ? 'text-rose-700' : 'text-wood/80')}>{meaning}</span>
-                    {meaningMatched && meaningOwnerIndex >= 0 && <MatchedPairNumber label={formatNumber(meaningOwnerIndex + 1)} />}
-                    {meaningWrong && <XCircle size={16} className="text-rose-500 shrink-0" />}
-                  </div>
-                </motion.button>
-              </React.Fragment>
-            );
-          })}
-        </div>
+        <MatchingBoard
+          pairs={boardPairs}
+          meanings={meaningOrder}
+          assignments={boardAssignments}
+          onAssignmentsChange={handleBoardChange}
+          results={boardResults}
+          lockedLefts={lockedWords}
+          disabled={feedback.kind === 'done'}
+          headings={{ left: t('ex.words'), right: t('ex.meanings') }}
+          instructions={null}
+          renderLeft={(word) => displayWord(word, language)}
+          className="pb-2"
+        />
+        {feedback.kind !== 'done' && (
+          <button
+            type="button"
+            onClick={checkMatches}
+            disabled={!allPlaced}
+            data-check-matches
+            className={cn(
+              'mt-4 w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold transition-colors',
+              isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
+              allPlaced ? 'bg-brand-600 text-white hover:bg-brand-700' : 'bg-gray-100 text-gray-400 cursor-not-allowed',
+            )}
+          >
+            {t('nav.matchedThem')}
+          </button>
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { highlightPhraseMatches } from '../../lib/highlightTextMatch';
 import { presentMatchingMeanings } from '../../lib/exercisePresentation';
+import { MatchingBoard } from '../exercises/MatchingBoard';
 
 interface FinalChallengeProps {
   bookData: BookData;
@@ -85,7 +86,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
   const [selectedAnswer, setSelectedAnswer] = React.useState<FinalAnswer>(null);
   const [lastCorrect, setLastCorrect] = React.useState<boolean | null>(null);
   const [fillDraft, setFillDraft] = React.useState('');
-  const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
   const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
   const [sequenceDraft, setSequenceDraft] = React.useState<string[]>([]);
   const [reflectionDraft, setReflectionDraft] = React.useState('');
@@ -117,7 +117,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setSelectedAnswer(null);
     setLastCorrect(null);
     setFillDraft('');
-    setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setSequenceDraft([]);
     setReflectionDraft('');
@@ -233,7 +232,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     setLastCorrect(null);
     setAttemptNumber(2);
     setFillDraft('');
-    setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setReflectionDraft('');
 
@@ -242,18 +240,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
     }
   };
 
-  const selectMeaning = (meaning: string) => {
-    if (!selectedMatchingLeft || selectedAnswer !== null) return;
-    setMatchingAssignments((previous) => {
-      const next = { ...previous };
-      for (const [left, assigned] of Object.entries(next)) {
-        if (assigned === meaning) delete next[left];
-      }
-      next[selectedMatchingLeft] = meaning;
-      return next;
-    });
-    setSelectedMatchingLeft(null);
-  };
 
   const moveSequenceItem = (index: number, delta: number) => {
     if (selectedAnswer !== null) return;
@@ -540,65 +526,16 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
 
     if (currentQuestion.type === 'matching') {
       const pairs = currentQuestion.matchingPairs ?? [];
-      const assignedMeanings = new Set(Object.values(matchingAssignments));
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            <div className="space-y-2.5">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.subtext)}>
-                {language === 'ar' ? 'المفاهيم' : 'Concepts'}
-              </p>
-              {pairs.map((pair) => {
-                const selected = selectedMatchingLeft === pair.left;
-                const assigned = matchingAssignments[pair.left];
-                return (
-                  <button
-                    key={pair.left}
-                    type="button"
-                    disabled={selectedAnswer !== null}
-                    onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
-                    className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-bold transition-colors flex items-center justify-between gap-3',
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
-                      selected ? `${theme.soft} ${theme.text}` : `bg-white ${theme.border}`
-                    )}
-                  >
-                    <span>{pair.left}</span>
-                    {assigned && <span className={cn('font-medium truncate max-w-[45%]', isArabic ? 'text-sm' : 'text-xs', theme.subtext)}>✓ {assigned}</span>}
-                  </button>
-                );
-              })}
-            </div>
-            <div className="space-y-2.5">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.subtext)}>
-                {language === 'ar' ? 'المعاني' : 'Meanings'}
-              </p>
-              {presentedMeanings.map((meaning) => {
-                const used = assignedMeanings.has(meaning);
-                return (
-                  <button
-                    key={meaning}
-                    type="button"
-                    disabled={selectedAnswer !== null || !selectedMatchingLeft}
-                    onClick={() => selectMeaning(meaning)}
-                    className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-medium transition-colors',
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
-                      used
-                        ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
-                        : selectedMatchingLeft
-                          ? `bg-white ${theme.border}`
-                          : 'bg-gray-50 border-gray-100 text-wood/45'
-                    )}
-                  >
-                    {meaning}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <MatchingBoard
+            pairs={pairs}
+            meanings={presentedMeanings}
+            assignments={matchingAssignments}
+            onAssignmentsChange={setMatchingAssignments}
+            submitted={selectedAnswer !== null}
+          />
           {selectedAnswer === null && (
             <button
               type="button"
