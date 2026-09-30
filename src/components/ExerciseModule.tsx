@@ -696,7 +696,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.instructions && (
             <p className={cn(
               'font-serif',
-              isQuick ? 'mt-2 max-w-3xl text-wood/58' : isLanguage ? 'mt-2 max-w-3xl text-wood/55' : `mt-1 ${theme.accentText}`,
+              isQuick ? 'mt-2 max-w-3xl desk:max-w-4xl wide:max-w-none text-wood/58' : isLanguage ? 'mt-2 max-w-3xl desk:max-w-4xl wide:max-w-none text-wood/55' : `mt-1 ${theme.accentText}`,
               isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base'
             )}>
               {exercise.instructions}
@@ -725,23 +725,23 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         <div className={cn(
           'w-full mx-auto px-4 sm:px-6 md:px-10 space-y-6',
           embedded && isReview
-            ? 'max-w-5xl py-5 sm:py-6 md:py-7'
+            ? 'max-w-5xl desk:max-w-[84rem] wide:max-w-none py-5 sm:py-6 md:py-7'
             : isQuick
-            ? 'max-w-4xl py-7 sm:py-10 md:py-12'
+            ? 'max-w-4xl desk:max-w-[72rem] wide:max-w-none py-7 sm:py-10 md:py-12'
             : isLanguage
-            ? 'max-w-5xl py-7 sm:py-9 md:py-10'
-            : 'max-w-6xl py-5 sm:py-8'
+            ? 'max-w-5xl desk:max-w-[84rem] wide:max-w-none py-7 sm:py-9 md:py-10'
+            : 'max-w-6xl desk:max-w-[92rem] wide:max-w-none py-5 sm:py-8'
         )}>
           {exercise.question && exercise.type !== 'quiz-game' && (
             <h4 className={cn(
               'font-display font-semibold text-wood leading-[1.16]',
               isQuick
-                ? 'max-w-3xl text-2xl tracking-[-0.03em] sm:text-3xl md:text-[2.15rem]'
+                ? 'max-w-3xl desk:max-w-5xl wide:max-w-none text-2xl tracking-[-0.03em] sm:text-3xl md:text-[2.15rem] desk:text-[2.45rem]'
                 : isLanguage
-                ? 'max-w-4xl text-xl tracking-[-0.025em] sm:text-2xl md:text-[1.75rem]'
+                ? 'max-w-4xl desk:max-w-5xl wide:max-w-none text-xl tracking-[-0.025em] sm:text-2xl md:text-[1.75rem] desk:text-[2rem]'
                 : isReview
-                ? 'max-w-4xl text-lg tracking-[-0.02em] sm:text-xl md:text-2xl'
-                : 'text-xl sm:text-2xl md:text-3xl'
+                ? 'max-w-4xl desk:max-w-5xl wide:max-w-none text-lg tracking-[-0.02em] sm:text-xl md:text-2xl desk:text-[1.75rem]'
+                : 'text-xl sm:text-2xl md:text-3xl desk:text-[2.15rem]'
             )}>
               {exercise.question}
             </h4>

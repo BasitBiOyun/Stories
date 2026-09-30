@@ -432,7 +432,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 onClick={() => handleAnswer(value)}
                 className={cn(
                   'min-h-14 sm:min-h-16 rounded-2xl border-2 px-4 font-display font-black uppercase tracking-widest transition-colors',
-                  isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-lg',
+                  isArabic ? 'text-base sm:text-lg md:text-xl desk:text-[1.45rem]' : 'text-sm sm:text-lg desk:text-[1.3rem]',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
@@ -476,7 +476,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                 )}>
                   {String.fromCharCode(65 + displayIndex)}
                 </span>
-                <span className={cn('font-serif font-semibold flex-1 leading-snug', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{option.text}</span>
+                <span className={cn('font-serif font-semibold flex-1 leading-snug', isArabic ? 'text-base sm:text-lg md:text-xl desk:text-[1.4rem]' : 'text-sm sm:text-base md:text-lg desk:text-[1.3rem]')}>{option.text}</span>
               </button>
             );
           })}
@@ -657,7 +657,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
 
   return (
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 py-5 sm:p-8">
-      <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8 pb-4">
+      <div className="w-full max-w-4xl desk:max-w-[72rem] wide:max-w-none mx-auto space-y-6 sm:space-y-8 pb-4">
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">

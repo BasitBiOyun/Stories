@@ -469,7 +469,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
       <div className="h-full flex flex-col gap-3 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'} onPointerDown={(event) => event.stopPropagation()}>
         {stageHeader}
         <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2">
-          <div className="mx-auto max-w-4xl space-y-4 pb-3">
+          <div className="mx-auto max-w-4xl desk:max-w-[80rem] wide:max-w-none space-y-4 pb-3">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className={cn('font-display text-sm font-semibold tracking-[0.04em] sm:text-base', theme.accent)}>02 · {copy.context}</p>
@@ -557,7 +557,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
       <div className="h-full flex flex-col gap-3 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'} onPointerDown={(event) => event.stopPropagation()}>
         {stageHeader}
         <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2">
-          <div className="mx-auto max-w-3xl space-y-4 pb-3">
+          <div className="mx-auto max-w-3xl desk:max-w-5xl wide:max-w-none space-y-4 pb-3">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className={cn('font-display text-sm font-semibold tracking-[0.04em] sm:text-base', theme.accent)}>03 · {copy.recall}</p>
@@ -698,7 +698,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
       <div className="h-full flex flex-col gap-3 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
         {stageHeader}
         <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2">
-          <div className="mx-auto max-w-3xl space-y-4 pb-3">
+          <div className="mx-auto max-w-3xl desk:max-w-5xl wide:max-w-none space-y-4 pb-3">
             <div className={cn('rounded-2xl p-6 text-center ring-1', theme.barBg, theme.selected)}>
               <CheckCircle2 size={30} className="mx-auto text-emerald-600" />
               <h4 className="mt-3 font-display text-2xl font-semibold tracking-[-0.03em] text-wood">{copy.done}</h4>

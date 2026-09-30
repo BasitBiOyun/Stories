@@ -116,7 +116,7 @@ const QuestionCard = ({
         </span>
         <p className={cn(
           'font-serif font-semibold leading-[1.55] text-wood flex-1 min-w-0',
-          isArabic ? 'text-[17px] sm:text-lg md:text-xl' : 'text-base sm:text-[17px] md:text-lg'
+          isArabic ? 'text-[17px] sm:text-lg md:text-xl desk:text-[1.45rem]' : 'text-base sm:text-[17px] md:text-lg desk:text-[1.3rem]'
         )}>
           {exercise.question}
         </p>
@@ -153,7 +153,7 @@ const QuestionCard = ({
                 onClick={() => onAnswer(value)}
                 className={cn(
                   'min-h-12 sm:min-h-14 rounded-2xl px-4 font-display font-semibold ring-1 transition-all',
-                  isArabic ? 'text-sm sm:text-[15px] md:text-[17px]' : 'text-xs sm:text-sm md:text-base',
+                  isArabic ? 'text-sm sm:text-[15px] md:text-[17px] desk:text-[1.2rem]' : 'text-xs sm:text-sm md:text-base desk:text-[1.15rem]',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
@@ -205,7 +205,7 @@ const QuestionCard = ({
                 </span>
                 <span className={cn(
                   'font-serif font-medium leading-relaxed flex-1',
-                  isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-[15px] md:text-base',
+                  isArabic ? 'text-[15px] sm:text-[17px] desk:text-[1.2rem]' : 'text-sm sm:text-[15px] md:text-base desk:text-[1.15rem]',
                   isRTL && 'text-right'
                 )}>
                   {option.text}
@@ -410,7 +410,7 @@ export const KnowledgeCheck = ({
 
   return (
     <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pe-2">
-      <div className="mx-auto w-full max-w-5xl space-y-5 pb-4">
+      <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
           'relative overflow-hidden rounded-[28px] p-5 sm:p-6 ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)] flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
           theme.softBg,
