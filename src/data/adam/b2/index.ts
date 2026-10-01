@@ -14,7 +14,7 @@ export const adamB2BookDataEn: BookData = {
 
 export const adamB2BookDataAr: BookData = {
   id: 'b2-prophets-ar',
-  title: 'قصص الأنبياء: آدم (عليه السلام)',
+  title: 'قصص الأنبياء: آدم عليه السلام',
   level: 'B2',
   baseFontSize: 14,
   pages: adamB2PagesAr,

@@ -14,7 +14,7 @@ export const abrahamB2BookDataEn: BookData = {
 
 export const abrahamB2BookDataAr: BookData = {
   id: 'b2-abraham-ar',
-  title: 'النبي إبراهيم (عليه السلام) (B2)',
+  title: 'النبي إبراهيم عليه السلام (B2)',
   level: 'B2',
   baseFontSize: 14,
   pages: abrahamB2PagesAr,

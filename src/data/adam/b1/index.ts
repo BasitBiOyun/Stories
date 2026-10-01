@@ -132,7 +132,7 @@ export const adamB1BookDataEn: BookData = {
 
 export const adamB1BookDataAr: BookData = {
   id: 'b1-prophets-ar',
-  title: 'قصص الأنبياء: آدم (عليه السلام)',
+  title: 'قصص الأنبياء: آدم عليه السلام',
   level: 'B1',
   baseFontSize: 14,
   pages: arabicPages,
