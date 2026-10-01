@@ -11,6 +11,7 @@ import {
   EyeOff,
   GraduationCap,
   Home,
+  Info,
   LoaderCircle,
   CheckCircle,
   Layers,
@@ -45,6 +46,7 @@ const FinalChallenge = lazy(() => import('./components/book/FinalChallenge').the
 const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard').then(module => ({ default: module.SummaryDashboard })));
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
+import { AboutPage } from './components/layout/AboutPage';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
@@ -82,6 +84,7 @@ const AppContent = () => {
   const [currentLevel, setCurrentLevel] = useState<Level | null>(initialRoute?.level ?? null);
   const [currentPageIndex, setCurrentPageIndex] = useState(initialRoute?.pageIndex ?? 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
   const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
@@ -503,7 +506,7 @@ const AppContent = () => {
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
       if (!selectedProphetId || showSummary || isFinalChallengePage) return;
-      if (isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
+      if (isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -528,6 +531,7 @@ const AppContent = () => {
     selectedProphetId,
     showSummary,
     isMenuOpen,
+    isAboutOpen,
     isTeacherGuideOpen,
     isSelfStudyOpen,
     isQuickTOCOpen,
@@ -547,7 +551,7 @@ const AppContent = () => {
       !touch ||
       Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"]')) ||
       showSummary || isFinalChallengePage ||
-      isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+      isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
   };
   const handleSwipeEnd = (e: React.TouchEvent) => {
@@ -1377,10 +1381,27 @@ const AppContent = () => {
                 </div>
               </div>
 
+              <div className="mt-auto pt-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsAboutOpen(true);
+                  }}
+                  className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment/80 transition-colors", themeClasses.menuHoverBg)}
+                  data-about-link
+                >
+                  <Info size={21} className={themeClasses.menuAccentText} />
+                  <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.aboutSources')}</span>
+                </button>
+              </div>
+
             </motion.aside>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
 
       {/* Teacher Guide Overlay */}
       {isTeacher && (
