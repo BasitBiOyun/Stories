@@ -20,7 +20,7 @@ export const yunusA2StoryMapCopyEn: StoryMapCopy = {
     kosedag: {
       name: 'Kösedağ, 1243',
       kind: 'Battle',
-      text: 'In 1243, the Seljuk army fought the Mongol army here. The Seljuks lost. After that, life in Anatolia became very hard. Yunus Emre was only three years old.',
+      text: 'In 1243, the Anatolian Seljuk army fought the Mongol army here. The Anatolian Seljuks lost. After that, life in Anatolia became very hard. Yunus Emre was only three years old.',
       teacherNote: 'The exact battlefield is not known. Sources place it near Kösedağ, about 80 km northeast of Sivas. The B1 and B2 books tell this event in detail.',
       question: 'What happened in Anatolia after 1243?',
     },
@@ -43,8 +43,8 @@ export const yunusA2StoryMapCopyEn: StoryMapCopy = {
   seas: { blackSea: 'Black Sea', mediterranean: 'Mediterranean Sea' },
   timeline: { 1240: 'Yunus is born', 1243: 'Kösedağ', 1273: 'Mevlana dies', 1320: 'Yunus dies' },
   legend: {
-    'seljuk-1243': 'Seljuk lands',
-    'seljuk-pressure': 'Seljuk lands under Mongol pressure',
+    'seljuk-1243': 'Anatolian Seljuk lands',
+    'seljuk-pressure': 'Anatolian Seljuk lands under Mongol pressure',
     'mongol-1243': 'Mongol army, 1242–1243',
   },
   age: {
