@@ -24,7 +24,7 @@ const rawMosesA2PagesAr: PageData[] = [
     ],
   },
   {
-    id: 2, type: 'story', title: 'حُلْمُ فِرْعَوْن',
+    id: 2, type: 'story', title: 'حلم فرعون',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch2.png?alt=media&token=593d804d-010a-4849-928e-47a64d57e741',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%202.mp3?alt=media&token=245fe0a6-52cb-4c15-83f8-eeaee0d3846e',
     content: `مَرَّتِ السَّنَوَاتُ، وَتَوَالَى عَلَى حُكْمِ مِصْرَ الْعَدِيدُ مِنَ الْمُلُوكِ الْمُسْتَبِدِّينَ. وَفِي أَحَدِ الْأَيَّامِ، رَأَى فِرْعَوْنُ حُلْمًا. فَقَدْ رَأَى فِي رُؤْيَاهُ نَارًا. كَانَتِ النَّارُ قَادِمَةً مِنَ الْقُدْسِ، وَأَحْرَقَتْ بُيُوتَ الْمِصْرِيِّينَ. لٰكِنَّهَا لَمْ تَمَسَّ أَحَدًا مِنْ بَنِي إِسْرَائِيلَ.
