@@ -41,7 +41,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
         about: 'عن المشروع',
         sources: 'المصادر',
         close: 'إغلاق',
-        video: 'شاهد الفيلم التعريفي',
+        video: 'الفيلم التعريفي',
+        openYoutube: 'افتح على يوتيوب',
         team: 'فريق المشروع',
         board: 'الهيئة العلمية',
         boardNote: 'الاستشارة الأكاديمية والملاحظات العلمية',
@@ -54,7 +55,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
         about: 'About',
         sources: 'Sources',
         close: 'Close',
-        video: 'Watch the introduction film',
+        video: 'Introduction film',
+        openYoutube: 'Open on YouTube',
         team: 'Project team',
         board: 'Academic Advisory Board',
         boardNote: 'Academic advice and scholarly feedback',
@@ -140,15 +142,31 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href={aboutIntro.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex min-h-11 items-center gap-2.5 rounded-full border border-[#D8B35C]/40 bg-[#D8B35C]/10 px-5 font-display text-[14px] font-semibold text-[#F3D58C] transition-colors hover:bg-[#D8B35C]/20"
-                  >
-                    <Play size={17} />
-                    {copy.video}
-                  </a>
+                  <figure className="mt-8 max-w-3xl">
+                    <figcaption className="mb-3 flex items-center gap-2 font-display text-[14px] font-semibold text-[#F3D58C]">
+                      <Play size={17} />
+                      {copy.video}
+                    </figcaption>
+                    <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+                      <iframe
+                        src={`https://www.youtube-nocookie.com/embed/${aboutIntro.videoId}?rel=0`}
+                        title={copy.video}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        className="h-full w-full"
+                      />
+                    </div>
+                    <a
+                      href={`https://youtu.be/${aboutIntro.videoId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-block text-[12px] text-[#F6F0E2]/50 underline decoration-white/20 underline-offset-4 hover:text-[#F6F0E2]"
+                    >
+                      {copy.openYoutube}
+                    </a>
+                  </figure>
                 </section>
 
                 <section className="text-start" aria-labelledby="about-team">
