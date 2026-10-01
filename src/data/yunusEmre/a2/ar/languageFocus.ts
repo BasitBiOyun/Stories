@@ -168,7 +168,7 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة الأولى — صفهم: «كانوا لُطفاءَ و...»', mode: 'Individual' },
+        { question: 'الجملة الأولى — صفهم: «كانوا لُطَفاءَ و...»', mode: 'Individual' },
         { question: 'الجملة الثانية — اذكر عادة: «كانوا يحاولون ...» أو «كانوا يشاركون ...»', mode: 'Individual' },
         { question: 'الجملة الثالثة — أضف مقابلة أو سببًا: «كانوا يسمون أنفسهم فقراء، ولكنّ ...» أو «من أجل الخالق، كانوا ...»', mode: 'Pair' },
       ],
