@@ -28,3 +28,12 @@ export const ANATOLIA_RELIEF: Array<[number, number]> = [
   [44.2, 42.75], [46.3, 42.15],
   [36.6, 34.2],
 ];
+
+/**
+ * Time rules for the slider (fractional years). The Mongol route is drawn between 1242 and 1243;
+ * the Seljuk lands change from "own power" to "under Mongol pressure" in the months after Kösedağ (1243).
+ */
+export const MONGOL_ROUTE_START = 1242;
+export const MONGOL_ROUTE_END = 1243;
+export const SELJUK_PRESSURE_START = 1243;
+export const SELJUK_PRESSURE_SPAN = 0.6;
