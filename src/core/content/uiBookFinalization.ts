@@ -231,7 +231,7 @@ const finalizePreparedLanguage = (
         ...page,
         title: language === 'ar' ? 'تحدي المفردات' : 'Vocabulary Challenge',
         content: language === 'ar'
-          ? `تدرّب على ${vocabularyPairs.length} ${vocabularyPairs.length <= 10 ? 'كلمات أو عبارات' : 'كلمة أو عبارة'} مستهدفة عبر المطابقة والسياق والاسترجاع.`
+          ? `تدرّب على ${vocabularyPairs.length} ${vocabularyPairs.length <= 10 ? 'كلمات' : 'كلمة'} مستهدفة عبر المطابقة والسياق والاسترجاع.`
           : `Practise ${vocabularyPairs.length} target words through matching, context and recall.`,
         vocabularyPairs,
       };
