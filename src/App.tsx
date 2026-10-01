@@ -1014,7 +1014,7 @@ const AppContent = () => {
               className={cn("text-[13px] font-semibold leading-tight 2xl:text-[15px]", themeClasses.goldText)}
               style={{ fontFamily: 'Arakom, sans-serif' }}
             >
-              لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ
+              ﴿لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ﴾
             </p>
             {language === 'ar' ? (
               <p dir="rtl" lang="ar" className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/62 2xl:text-xs">
@@ -1134,7 +1134,7 @@ const AppContent = () => {
                         {t('nav.tableOfContents')}
                       </h4>
                       <span className="font-display text-[11px] sm:text-[12px] text-white/50">
-                        {formatNumber(totalPages)} {language === 'ar' ? "صفحة" : "pages"}
+                        {formatNumber(totalPages)} {language === 'ar' ? (totalPages === 2 ? 'صفحتان' : totalPages >= 3 && totalPages <= 10 ? 'صفحات' : 'صفحة') : "pages"}
                       </span>
                     </div>
 

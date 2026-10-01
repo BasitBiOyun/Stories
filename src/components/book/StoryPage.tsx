@@ -1310,7 +1310,7 @@ export const StoryPage = ({
                     {language === 'ar' ? 'بعد القراءة' : 'After reading'}
                   </p>
                   <span className={cn('font-display text-[11px] sm:text-xs font-semibold', focusTheme.copy)}>
-                    {formatNumber(exercises.length)} {language === 'ar' ? 'أنشطة' : exercises.length === 1 ? 'activity' : 'activities'}
+                    {formatNumber(exercises.length)} {language === 'ar' ? (exercises.length === 1 ? 'نشاط' : exercises.length === 2 ? 'نشاطان' : exercises.length <= 10 ? 'أنشطة' : 'نشاطًا') : exercises.length === 1 ? 'activity' : 'activities'}
                   </span>
                 </div>
                 <h4 className={cn(
