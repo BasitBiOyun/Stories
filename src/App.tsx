@@ -1149,9 +1149,28 @@ const AppContent = () => {
                     <div className="max-h-[min(58vh,24rem)] space-y-1 overflow-y-auto pe-1 custom-scrollbar">
                       {currentBook?.pages.map((page, idx) => {
                         const isActive = currentPageIndex === idx;
+                        const isStorySection = page.type === 'story' || page.type === 'map';
+                        const prevPage = idx > 0 ? currentBook.pages[idx - 1] : null;
+                        const prevIsStorySection = prevPage ? prevPage.type === 'story' || prevPage.type === 'map' : null;
+                        const sectionHeading = prevIsStorySection === isStorySection
+                          ? null
+                          : (isStorySection ? t('nav.tocStory') : t('nav.tocPractice'));
                         return (
+                          <React.Fragment key={page.id}>
+                          {sectionHeading && (
+                            <div
+                              role="presentation"
+                              className={cn(
+                                "flex items-center gap-3 px-1 pb-1 font-display text-[11px] font-semibold uppercase tracking-[0.16em]",
+                                idx === 0 ? "pt-0.5" : "pt-3 mt-2 border-t border-white/10",
+                                isStorySection ? "text-white/45" : themeClasses.goldText
+                              )}
+                            >
+                              <span>{sectionHeading}</span>
+                              <span className="h-px flex-1 bg-white/10" aria-hidden="true" />
+                            </div>
+                          )}
                           <button
-                            key={page.id}
                             type="button"
                             aria-current={isActive ? 'page' : undefined}
                             onClick={() => {
@@ -1192,6 +1211,7 @@ const AppContent = () => {
                               <span className={cn("h-2 w-2 shrink-0 rounded-full", themeClasses.progressBar)} />
                             )}
                           </button>
+                          </React.Fragment>
                         );
                       })}
                     </div>
