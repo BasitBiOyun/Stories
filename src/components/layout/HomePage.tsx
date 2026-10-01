@@ -13,6 +13,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { RoleToggle } from '../ui/RoleToggle';
 import { InstallAppButton } from '../ui/InstallAppButton';
+import { AboutPage } from './AboutPage';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, GraduationCap } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
 import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
@@ -42,6 +43,7 @@ const levelDescriptions: Record<Level, { en: string; ar: string }> = {
 export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide }) => {
   const [activeCollection, setActiveCollection] = useState<CollectionId>('all');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
 
   const { language, t, isRTL, formatNumber } = useLanguage();
@@ -718,6 +720,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
           </div>
         </section>
       </main>
+
+      <footer className="mx-auto w-full max-w-[1500px] px-5 pb-10 text-center sm:px-8 lg:px-12">
+        <button
+          type="button"
+          onClick={() => setIsAboutOpen(true)}
+          className="min-h-10 rounded-full px-4 text-[13px] font-semibold text-[#F6F0E2]/55 underline decoration-white/20 underline-offset-4 transition-colors hover:text-[#F6F0E2] hover:decoration-[#D8B35C]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+          data-about-link
+        >
+          {t('nav.aboutSources')}
+        </button>
+      </footer>
+
+      <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     </div>
   );
 };
