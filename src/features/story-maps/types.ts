@@ -25,7 +25,6 @@ export interface StoryMapPlaceCopy {
   kind: string;
   text: string;
   teacherNote?: string;
-  source?: string;
 }
 
 export interface StoryMapNamedPoint {
