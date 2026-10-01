@@ -84,7 +84,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
     if (isRTL) {
       return isA2
         ? {
-            eyebrow: 'كلماتي',
+            eyebrow: 'المعجم الرئيسي',
             subtitle: 'تعلّم كلمات القصة واختر الكلمات التي تريد أن تتدرّب عليها مرة أخرى.',
             progressTitle: 'تقدّمي',
             progressHint: 'يوضح هذا الكلمات التي تعرفها الآن.',
@@ -116,8 +116,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
             ofLabel: 'من',
           }
         : {
-            eyebrow: 'مركز المفردات',
-            subtitle: 'راجِعْ الكلمات، قيِّمْ ثقتك، وحدِّدْ ما يحتاج إلى مزيد من التدرّب.',
+            eyebrow: 'المعجم الرئيسي',
+            subtitle: 'راجِعِ الكلمات، وقيِّمْ ثقتك، وحدِّدْ ما يحتاج إلى مزيد من التدرّب.',
             progressTitle: 'خريطة الثقة',
             progressHint: 'يعكس هذا المؤشر تقييمك الذاتي الحالي للكلمات.',
             total: 'كل الكلمات',

@@ -98,7 +98,7 @@ const sourceSentences = (
   maxWords: number,
 ): string[] => {
   const cleaned = cleanStoryText(content);
-  const sentences = (cleaned.match(/[^.!?؟]+(?:[.!?؟]+[”"’']*|$)/gu) ?? [cleaned])
+  const sentences = (cleaned.match(/[^.!?؟]+(?:[.!?؟]+[”"’'»﴾]*|$)/gu) ?? [cleaned])
     .map(sentence => sentence.trim())
     .filter(Boolean);
 
