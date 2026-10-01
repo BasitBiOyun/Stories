@@ -49,8 +49,8 @@ export const yunusA2StoryMapCopyEn: StoryMapCopy = {
   },
   age: {
     born: 'Yunus Emre is born.',
-    alive: value => `Yunus Emre is about ${value} years old.`,
-    died: value => `Yunus Emre dies. He is about ${value} years old.`,
+    alive: (value, age) => `Yunus Emre is about ${value} ${age === 1 ? 'year' : 'years'} old.`,
+    died: (value, age) => `Yunus Emre dies. He is about ${value} ${age === 1 ? 'year' : 'years'} old.`,
   },
   challenge: {
     anatolia: 'Find Anatolia, the home of Yunus Emre.',
