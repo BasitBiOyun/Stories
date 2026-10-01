@@ -45,8 +45,37 @@ import {
   yunusB1LanguageFocusChapter12Ar,
   yunusB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { yunusB1StoryMapLayout } from './storyMap';
+import { yunusB1StoryMapCopyEn } from './en/storyMap';
+import { yunusB1StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+
+// Interactive map page, placed right after chapter 7 (the last chapter with places and dates).
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 7;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Anatolia in Yunus Emre’s Time',
+  subtitle: 'Map · 1240–1320',
+  content: '',
+  map: buildStoryMap(yunusB1StoryMapLayout, yunusB1StoryMapCopyEn, 'Yunus Emre B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'الأَنَاضُولُ في زَمَنِ يُونُسَ إِمْرَه',
+  subtitle: 'خَرِيطَة · مِنْ عامِ 1240 إِلى عامِ 1320',
+  content: '',
+  map: buildStoryMap(yunusB1StoryMapLayout, yunusB1StoryMapCopyAr, 'Yunus Emre B1 AR'),
+};
 
 const englishLanguageFocus: Record<number, Exercise[]> = {
   ...yunusB1LanguageFocusExercises,
@@ -97,7 +126,7 @@ const buildPages = (
   return page;
 });
 
-const englishPages = buildPages(
+const englishPages = withMapPage(buildPages(
   yunusB1Pages,
   yunusB1QuickChallenges,
   englishLanguageFocus,
@@ -105,8 +134,8 @@ const englishPages = buildPages(
   yunusB1VocabularyChallengePairs,
   yunusB1LanguageReviewExercises,
   yunusB1FinalChallengeExercises,
-);
-const arabicPages = buildPages(
+), mapPageEn);
+const arabicPages = withMapPage(buildPages(
   yunusEmreB1PagesAr,
   yunusB1QuickChallengesAr,
   arabicLanguageFocus,
@@ -114,7 +143,7 @@ const arabicPages = buildPages(
   yunusB1VocabularyChallengePairsAr,
   yunusB1LanguageReviewExercisesAr,
   yunusB1FinalChallengeExercisesAr,
-);
+), mapPageAr);
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',

@@ -47,10 +47,39 @@ import {
   meccaA2LanguageFocusExercisesArPart11,
   meccaA2LanguageFocusExercisesArPart12,
 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { meccaA2StoryMapLayout } from './storyMap';
+import { meccaA2StoryMapCopyEn } from './en/storyMap';
+import { meccaA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
+// Interactive map page, placed right after chapter 3 (Mecca, Arabia and Abyssinia have all been named by then).
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 3;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Bilal’s World',
+  subtitle: 'Map · Chapters 1–13',
+  content: '',
+  map: buildStoryMap(meccaA2StoryMapLayout, meccaA2StoryMapCopyEn, 'Mecca A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'عالَمُ بِلالٍ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 13',
+  content: '',
+  map: buildStoryMap(meccaA2StoryMapLayout, meccaA2StoryMapCopyAr, 'Mecca A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(meccaA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocus = meccaA2LanguageFocusExercisesPart12[page.id] ?? meccaA2LanguageFocusExercisesPart11[page.id] ?? meccaA2LanguageFocusExercisesPart10[page.id] ?? meccaA2LanguageFocusExercisesPart9[page.id] ?? meccaA2LanguageFocusExercisesPart8[page.id] ?? meccaA2LanguageFocusExercisesPart7[page.id] ?? meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
     return {
@@ -69,9 +98,9 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
   };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(meccaA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocus = meccaA2LanguageFocusExercisesArPart12[page.id] ?? meccaA2LanguageFocusExercisesArPart11[page.id] ?? meccaA2LanguageFocusExercisesArPart10[page.id] ?? meccaA2LanguageFocusExercisesArPart9[page.id] ?? meccaA2LanguageFocusExercisesArPart8[page.id] ?? meccaA2LanguageFocusExercisesArPart7[page.id] ?? meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
     return {
@@ -90,7 +119,7 @@ const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
   };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',

@@ -51,6 +51,35 @@ import {
   meccaB1LanguageFocusChapter14Ar,
   meccaB1LanguageFocusChapter15Ar,
 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { meccaB1StoryMapLayout } from './storyMap';
+import { meccaB1StoryMapCopyEn } from './en/storyMap';
+import { meccaB1StoryMapCopyAr } from './ar/storyMap';
+
+// Interactive map page, placed right after chapter 6 (every place of chapters 1–6 has been named by then).
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 6;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Mecca and Its World',
+  subtitle: 'Map · Chapters 1–6',
+  content: '',
+  map: buildStoryMap(meccaB1StoryMapLayout, meccaB1StoryMapCopyEn, 'Mecca B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'مَكَّةُ وعالَمُها',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 6',
+  content: '',
+  map: buildStoryMap(meccaB1StoryMapLayout, meccaB1StoryMapCopyAr, 'Mecca B1 AR'),
+};
 
 const englishLanguageFocus = {
   ...meccaB1LanguageFocusExercises,
@@ -115,7 +144,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises),
+  pages: withMapPage(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises), mapPageEn),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -125,7 +154,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
+  pages: withMapPage(attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr), mapPageAr),
   teacherGuide: [],
   selfStudyGuide: [],
 };

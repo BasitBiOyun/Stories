@@ -45,10 +45,39 @@ import {
   mosesA2LanguageFocusExercisesPart10Ar,
   mosesA2LanguageFocusExercisesPart11Ar,
 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { mosesA2StoryMapLayout } from './storyMap';
+import { mosesA2StoryMapCopyEn } from './en/storyMap';
+import { mosesA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 16 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(page => {
+// Interactive map page, placed right after chapter 1 (where Egypt and "more than 3000 years ago" appear).
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 1;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Moses’s Journey',
+  subtitle: 'Map · Chapters 1–16',
+  content: '',
+  map: buildStoryMap(mosesA2StoryMapLayout, mosesA2StoryMapCopyEn, 'Moses A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ مُوسَى عَلَيْهِ السَّلَامُ',
+  subtitle: 'خَريطَة · مِنَ الفَصْلِ 1 إِلى الفَصْلِ 16',
+  content: '',
+  map: buildStoryMap(mosesA2StoryMapLayout, mosesA2StoryMapCopyAr, 'Moses A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(mosesA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id] ?? mosesA2LanguageFocusExercisesPart6[page.id] ?? mosesA2LanguageFocusExercisesPart7[page.id] ?? mosesA2LanguageFocusExercisesPart8[page.id] ?? mosesA2LanguageFocusExercisesPart9[page.id] ?? mosesA2LanguageFocusExercisesPart10[page.id] ?? mosesA2LanguageFocusExercisesPart11[page.id];
     return {
@@ -67,9 +96,9 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(page => {
   };
   if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(mosesA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id] ?? mosesA2LanguageFocusExercisesPart6Ar[page.id] ?? mosesA2LanguageFocusExercisesPart7Ar[page.id] ?? mosesA2LanguageFocusExercisesPart8Ar[page.id] ?? mosesA2LanguageFocusExercisesPart9Ar[page.id] ?? mosesA2LanguageFocusExercisesPart10Ar[page.id] ?? mosesA2LanguageFocusExercisesPart11Ar[page.id];
     return {
@@ -88,7 +117,7 @@ const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(page => {
   };
   if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',

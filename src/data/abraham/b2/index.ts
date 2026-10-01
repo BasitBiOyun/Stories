@@ -1,13 +1,43 @@
-import type { BookData } from '../../../types';
+import type { BookData, PageData } from '../../../types';
 import { abrahamB2Pages } from './en/pages';
 import { abrahamB2PagesAr } from './ar/pages';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { abrahamB2StoryMapLayout } from './storyMap';
+import { abrahamB2StoryMapCopyEn } from './en/storyMap';
+import { abrahamB2StoryMapCopyAr } from './ar/storyMap';
+
+// Interactive map page, placed right after chapter 4 ("Abraham’s Land and Time", where the birthplace,
+// Harran and the dates are discussed) as a preview of the journey. Chapter 5 starts a new scene.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 4;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Abraham’s Journey',
+  subtitle: 'Map · Chapters 4–35',
+  content: '',
+  map: buildStoryMap(abrahamB2StoryMapLayout, abrahamB2StoryMapCopyEn, 'Abraham B2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ إِبْراهيمَ عَلَيْهِ السَّلامُ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 4 إِلى 35',
+  content: '',
+  map: buildStoryMap(abrahamB2StoryMapLayout, abrahamB2StoryMapCopyAr, 'Abraham B2 AR'),
+};
 
 export const abrahamB2BookDataEn: BookData = {
   id: 'b2-abraham-en',
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: abrahamB2Pages,
+  pages: withMapPage(abrahamB2Pages, mapPageEn),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -17,7 +47,7 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم عليه السلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: abrahamB2PagesAr,
+  pages: withMapPage(abrahamB2PagesAr, mapPageAr),
   teacherGuide: [],
   selfStudyGuide: [],
 };

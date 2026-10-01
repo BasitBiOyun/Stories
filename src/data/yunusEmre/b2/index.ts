@@ -1,14 +1,43 @@
-import type { BookData } from '../../../types';
+import type { BookData, PageData } from '../../../types';
 
 import { yunusB2Pages } from './en/pages';
 import { yunusEmreB2PagesAr } from './ar/pages';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { yunusB2StoryMapLayout } from './storyMap';
+import { yunusB2StoryMapCopyEn } from './en/storyMap';
+import { yunusB2StoryMapCopyAr } from './ar/storyMap';
+
+// Interactive map page, placed right after chapter 7 (the last chapter with places and dates).
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 7;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Anatolia in Yunus Emre’s Time',
+  subtitle: 'Map · 1240–1320',
+  content: '',
+  map: buildStoryMap(yunusB2StoryMapLayout, yunusB2StoryMapCopyEn, 'Yunus Emre B2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'الأَنَاضُولُ في زَمَنِ يُونُسَ إِمْرَه',
+  subtitle: 'خَرِيطَة · مِنْ عامِ 1240 إِلى عامِ 1320',
+  content: '',
+  map: buildStoryMap(yunusB2StoryMapLayout, yunusB2StoryMapCopyAr, 'Yunus Emre B2 AR'),
+};
 
 export const yunusEmreB2BookDataEn: BookData = {
   id: 'yunusEmre-b2-en',
   title: 'Yunus Emre: History, Poetry, and Moral Thought (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: yunusB2Pages,
+  pages: withMapPage(yunusB2Pages, mapPageEn),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -18,7 +47,7 @@ export const yunusEmreB2BookDataAr: BookData = {
   title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: yunusEmreB2PagesAr,
+  pages: withMapPage(yunusEmreB2PagesAr, mapPageAr),
   teacherGuide: [],
   selfStudyGuide: [],
 };
