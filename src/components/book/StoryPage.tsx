@@ -894,7 +894,12 @@ export const StoryPage = ({
       }
 
       // Normal text part
-      const paragraphs = part.split('\n\n').filter(p => p.trim().length > 0);
+      const paragraphs = part
+        .split('\n')
+        .filter(line => !/^\s*\/\/\s*c\d+[ab]?\s*$/.test(line))
+        .join('\n')
+        .split('\n\n')
+        .filter(p => p.trim().length > 0);
       return paragraphs.map((paragraph, pIdx) => {
         const words = paragraph.split(/(\s+)/);
 

@@ -231,9 +231,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
                       <dl className="mt-3 space-y-2 rounded-xl bg-white/[0.03] p-4">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D8B35C]/75">{copy.citedInText}</p>
                         {group.citations.map(citation => (
-                          <div key={citation.text} className="text-[13px] leading-relaxed">
+                          <div key={citation.text.en} className="text-[13px] leading-relaxed">
                             <dt className="inline font-semibold text-[#F6F0E2]/80">{citation.label[lang]}: </dt>
-                            <dd className="inline text-[#F6F0E2]/70" dir="ltr">{citation.text}</dd>
+                            <dd className="inline text-[#F6F0E2]/70" dir={lang === 'ar' ? 'rtl' : 'ltr'}>{citation.text[lang]}</dd>
                           </div>
                         ))}
                       </dl>

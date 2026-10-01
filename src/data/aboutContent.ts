@@ -39,7 +39,7 @@ export interface SourceGroup {
   title?: Localized;
   sources: SourceEntry[];
   /** Qur'an verses and hadith the book's text cites inline. */
-  citations?: { label: Localized; text: string }[];
+  citations?: { label: Localized; text: Localized }[];
 }
 
 export const aboutIntro = {
@@ -61,8 +61,8 @@ export const aboutIntro = {
     ],
   },
   facts: {
-    en: ['5 stories', 'A2 · B1 · B2', 'English and Arabic', '30 levelled books'],
-    ar: ['٥ قصص', 'A2 · B1 · B2', 'الإنجليزية والعربية', '٣٠ كتابًا متدرّجًا'],
+    en: ['5 stories', 'A2 · B1 · B2', 'English and Arabic', '15 levelled books'],
+    ar: ['٥ قصص', 'A2 · B1 · B2', 'الإنجليزية والعربية', '١٥ كتابًا متدرّجًا بلغتين'],
   },
   videoUrl: 'https://youtu.be/d0Cqec-UlY0',
 };
@@ -146,8 +146,8 @@ export const sourceGroups: SourceGroup[] = [
     id: 'adam',
     sources: [],
     citations: [
-      { label: quranLabel, text: 'al-Isra 70 · an-Nisa 163–165 · Sad 72' },
-      { label: hadithLabel, text: 'Abu Dawud, Sunnah 16 · Tirmidhi, Tafsir 2/1 · Muslim, Jumu‘ah 17, 18 · Tirmidhi, Jumu‘ah 1, 2 · Nasa’i, Jumu‘ah 4, 45' },
+      { label: quranLabel, text: { en: 'al-Isra 70 · an-Nisa 163–165 · Sad 72', ar: 'الإسراء ٧٠ · النساء ١٦٣–١٦٥ · ص ٧٢' } },
+      { label: hadithLabel, text: { en: 'Abu Dawud, Sunnah 16 · Tirmidhi, Tafsir 2/1 · Muslim, Jumu‘ah 17, 18 · Tirmidhi, Jumu‘ah 1, 2 · Nasa’i, Jumu‘ah 4, 45', ar: 'أبو داود، السنة ١٦ · الترمذي، التفسير ٢/١ · مسلم، الجمعة ١٧، ١٨ · الترمذي، الجمعة ١، ٢ · النسائي، الجمعة ٤، ٤٥' } },
     ],
   },
   {
@@ -156,7 +156,7 @@ export const sourceGroups: SourceGroup[] = [
     citations: [
       {
         label: quranLabel,
-        text: 'al-Baqarah 124, 127, 258 · Al Imran 96 · al-An’am 74, 77, 80–83 · Ibrahim 37 · al-Anbiya 51, 68–70 · al-Ankabut 24, 26 · as-Saffat 91–92, 101–106 · Fussilat 37',
+        text: { en: 'al-Baqarah 124, 127, 258 · Al Imran 96 · al-An’am 74, 77, 80–83 · Ibrahim 37 · al-Anbiya 51, 68–70 · al-Ankabut 24, 26 · as-Saffat 91–92, 101–106 · Fussilat 37', ar: 'البقرة ١٢٤، ١٢٧، ٢٥٨ · آل عمران ٩٦ · الأنعام ٧٤، ٧٧، ٨٠–٨٣ · إبراهيم ٣٧ · الأنبياء ٥١، ٦٨–٧٠ · العنكبوت ٢٤، ٢٦ · الصافات ٩١–٩٢، ١٠١–١٠٦ · فصّلت ٣٧' },
       },
     ],
   },
@@ -168,7 +168,7 @@ export const sourceGroups: SourceGroup[] = [
       },
     ],
     citations: [
-      { label: quranLabel, text: 'al-A’raf 142 · Taha 9–24 · ash-Shu’ara 30–33, 52–68 · al-Qasas 7, 9, 15–21' },
+      { label: quranLabel, text: { en: 'al-A’raf 142 · Taha 9–24 · ash-Shu’ara 30–33, 52–68 · al-Qasas 7, 9, 15–21', ar: 'الأعراف ١٤٢ · طه ٩–٢٤ · الشعراء ٣٠–٣٣، ٥٢–٦٨ · القصص ٧، ٩، ١٥–٢١' } },
     ],
   },
   {
@@ -178,8 +178,8 @@ export const sourceGroups: SourceGroup[] = [
       { text: 'Kelpetin, Mahmut. “Cahiliye,” TÜBİTAK Ansiklopedisi.' },
     ],
     citations: [
-      { label: quranLabel, text: 'Al Imran 96 · an-Nahl 58–59 · Ibrahim 37 · az-Zukhruf 31 · Quraysh 1–4' },
-      { label: hadithLabel, text: 'Sunan al-Tirmidhi, 3925' },
+      { label: quranLabel, text: { en: 'Al Imran 96 · an-Nahl 58–59 · Ibrahim 37 · az-Zukhruf 31 · Quraysh 1–4', ar: 'آل عمران ٩٦ · النحل ٥٨–٥٩ · إبراهيم ٣٧ · الزخرف ٣١ · قريش ١–٤' } },
+      { label: hadithLabel, text: { en: 'Sunan al-Tirmidhi, 3925', ar: 'سنن الترمذي، ٣٩٢٥' } },
     ],
   },
   {
@@ -198,6 +198,6 @@ export const sourceGroups: SourceGroup[] = [
       { text: 'Yazıcı, Tahsin. “Derviş,” TDV İslâm Ansiklopedisi.', url: 'https://islamansiklopedisi.org.tr/dervis' },
       { text: 'Yeniterzi, Emine. “Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerler,” I. Ulusal Yunus Emre Sempozyumu, Karaman, 2010, s. 101-116.' },
     ],
-    citations: [{ label: hadithLabel, text: 'Ibn Majah, Zuhd 31, no. 4259' }],
+    citations: [{ label: hadithLabel, text: { en: 'Ibn Majah, Zuhd 31, no. 4259', ar: 'ابن ماجه، الزهد ٣١، رقم ٤٢٥٩' } }],
   },
 ];
