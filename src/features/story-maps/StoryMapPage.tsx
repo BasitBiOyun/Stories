@@ -14,7 +14,7 @@ import {
   SELJUK_PRESSURE_SPAN,
   SELJUK_PRESSURE_START,
 } from './overlays';
-import { clamp, distanceKm, partialPolyline, pathFromPoints } from './geometry';
+import { clamp, distanceKm, partialPolyline, trimPolyline, pathFromPoints } from './geometry';
 import { MapGlyph } from './MapGlyph';
 import { MapTimePanel } from './MapTimePanel';
 import { EVENT_SETTLE, makeTimeScale } from './timeScale';
@@ -230,8 +230,9 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   }, [size, animateTo, homeView]);
 
   const initialEvent = useMemo(
-    () => map.timeline.find(item => places.find(place => place.id === item.placeId)?.tone === 'event') ?? map.timeline[0],
-    [map.timeline, places],
+    // A story told in chapter steps opens at its first step, so the map does not give away the ending.
+    () => (map.time.mode === 'stages' ? undefined : map.timeline.find(item => places.find(place => place.id === item.placeId)?.tone === 'event')) ?? map.timeline[0],
+    [map.timeline, map.time.mode, places],
   );
   const [year, setYearState] = useState(() => (initialEvent ? initialEvent.year + EVENT_SETTLE : map.time.start));
   const yearRef = useRef(year);
@@ -275,6 +276,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const tourToken = useRef(0);
   const suppressAuto = useRef(false);
   const [tourRunning, setTourRunning] = useState(false);
+  /** A tour was paused before its end, so the next press of play resumes it. */
+  const tourUnfinished = useRef(false);
 
   const stopTour = useCallback(() => {
     if (tourToken.current === 0 && !suppressAuto.current) return;
@@ -373,22 +376,28 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
   // The tour never stands still: the camera lifts and flies between events, and while a card is
   // being read the camera keeps pushing in slowly and the year keeps creeping forward.
-  const startTour = useCallback(async () => {
+  const startTour = useCallback(async (resume = false) => {
     if (challengeOn) return;
     tourToken.current += 1;
     const token = tourToken.current;
     const alive = () => tourToken.current === token;
     suppressAuto.current = true;
     setTourRunning(true);
-    setSelectedId(null);
+    tourUnfinished.current = true;
     playMapSound('start');
-    // Opening: wind the clock back to the start while the camera lifts to the whole region.
-    await Promise.all([
-      tweenYear(map.time.start, 900),
-      animateTo(homeView(aspect), 900, 'fly'),
-    ]);
-    if (!alive()) return;
-    for (let i = 0; i < map.timeline.length; i += 1) {
+    // After a pause, play carries on from where the slider stands; a new tour starts at the beginning.
+    const next = resume ? map.timeline.findIndex(item => item.year + EVENT_SETTLE > yearRef.current + 0.01) : -1;
+    const from = next >= 0 ? next : 0;
+    if (from === 0) {
+      setSelectedId(null);
+      // Opening: wind the clock back to the start while the camera lifts to the whole region.
+      await Promise.all([
+        tweenYear(map.time.start, 900),
+        animateTo(homeView(aspect), 900, 'fly'),
+      ]);
+      if (!alive()) return;
+    }
+    for (let i = from; i < map.timeline.length; i += 1) {
       const item = map.timeline[i];
       // Every stretch of the line takes the same time, so 47 quiet years do not drag.
       await goToEvent(i, i === 0 ? 1500 : 2600);
@@ -404,6 +413,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       ]);
       if (!alive()) return;
     }
+    tourUnfinished.current = false;
     playMapSound('whoosh');
     await animateTo(homeView(aspect), 1400, 'fly');
     if (!alive()) return;
@@ -411,7 +421,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     setTourRunning(false);
   }, [challengeOn, map.timeline, map.time.start, map.time.lastYear, goToEvent, language, animateTo, tweenYear, homeView, aspect, clampView]);
 
-  const toggleTour = () => { if (tourRunning) stopTour(); else void startTour(); };
+  // Pause keeps the map exactly where it is; pressing play again carries on from there.
+  const toggleTour = () => { if (tourRunning) stopTour(); else void startTour(tourUnfinished.current); };
 
   const scrubTo = (value: number) => {
     stopTour();
@@ -620,7 +631,17 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const routeDrawings = map.routes.map(item => {
     const progress = timeOn ? clamp((year - item.start) / Math.max(0.01, item.end - item.start), 0, 1) : 1;
     const colour = item.tone === 'army' ? PALETTE.mongol : 'var(--brand-600)';
-    return { route: item, progress, colour, drawn: partialPolyline(item.points.map(([lon, lat]) => BASE.project(lon, lat)), progress) };
+    // A line that starts or ends on a marker stops at the marker's edge, so its arrow stays visible.
+    const projected = item.points.map(([lon, lat]) => BASE.project(lon, lat));
+    const cutAt = (point: [number, number]) => {
+      const near = (lon: number, lat: number, radius: number) => {
+        const [x, y] = BASE.project(lon, lat);
+        return Math.hypot(x - point[0], y - point[1]) < radius * px ? radius * px : 0;
+      };
+      return Math.max(0, ...places.map(place => near(place.lon, place.lat, PIN + 5)), ...map.towns.map(town => near(town.lon, town.lat, 7)));
+    };
+    const trimmed = trimPolyline(projected, cutAt(projected[0]), cutAt(projected[projected.length - 1]));
+    return { route: item, progress, colour, drawn: partialPolyline(trimmed, progress) };
   });
 
   const seljukPath = useMemo(() => pathFromPoints(OVERLAY_SHAPES['seljuk-1243'].points.map(([lon, lat]) => BASE.project(lon, lat)), true), []);
