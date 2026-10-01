@@ -13,7 +13,7 @@ export const yunusA2StoryMapCopyEn: StoryMapCopy = {
     konya: {
       name: 'Konya',
       kind: 'City',
-      text: 'Konya was the capital city of the Seljuks. Mevlana lived here and died here in 1273. Yunus Emre lived at the same time.',
+      text: 'Konya was the capital city of the Anatolian Seljuks. Mevlana lived here and died here in 1273. Yunus Emre lived at the same time.',
       teacherNote: 'Chapter 1 says Yunus was 33 or 34 years old when Mevlana died.',
       question: 'How old was Yunus Emre in 1273? Move the slider to check.',
     },
@@ -54,7 +54,7 @@ export const yunusA2StoryMapCopyEn: StoryMapCopy = {
   },
   challenge: {
     anatolia: 'Find Anatolia, the home of Yunus Emre.',
-    konya: 'Find Konya. It was the capital city of the Seljuks.',
+    konya: 'Find Konya. It was the capital city of the Anatolian Seljuks.',
     syria: 'Find Syria. Aleppo and Damascus were there.',
     azerbaijan: 'Find Azerbaijan. It is east of Anatolia.',
     kosedag: 'Find Kösedağ. It is about 80 km northeast of Sivas.',
