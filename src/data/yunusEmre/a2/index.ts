@@ -21,10 +21,39 @@ import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocus3';
 import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
 import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { yunusA2StoryMapLayout } from './storyMap';
+import { yunusA2StoryMapCopyEn } from './en/storyMap';
+import { yunusA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 8 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
+// Interactive map page, placed right after chapter 1 (where the dates and places of Yunus Emre's life appear).
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 1;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Yunus Emre’s World',
+  subtitle: 'Map · 1240–1320',
+  content: '',
+  map: buildStoryMap(yunusA2StoryMapLayout, yunusA2StoryMapCopyEn, 'Yunus Emre A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'عالَمُ يونُس إِمْرَه',
+  subtitle: 'خَريطَة · مِنْ عامِ 1240 إِلى عامِ 1320',
+  content: '',
+  map: buildStoryMap(yunusA2StoryMapLayout, yunusA2StoryMapCopyAr, 'Yunus Emre A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(yunusA2Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = yunusA2LanguageFocusExercises[page.id]
       ?? yunusA2LanguageFocusExercisesPart2[page.id]
@@ -45,9 +74,9 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
   };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercises };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(yunusEmreA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = yunusA2LanguageFocusExercisesAr[page.id]
       ?? yunusA2LanguageFocusExercisesArPart2[page.id]
@@ -68,7 +97,7 @@ const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
   };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercisesAr };
   return page;
-});
+}), mapPageAr);
 
 export const yunusEmreA2BookDataEn: BookData = {
   id: 'yunusEmre-a2-en',
