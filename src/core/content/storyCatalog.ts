@@ -5,6 +5,7 @@ import meccaCover from '../../assets/images/mecca_cover.webp';
 import abrahamCover from '../../assets/images/abraham_cover.webp';
 import mosesCover from '../../assets/images/moses_cover.webp';
 import yunusEmreCover from '../../assets/images/yunus_emre_cover.webp';
+import ibnJubayrCover from '../../assets/images/ibn_jubayr_cover.webp';
 import prophetsIcon from '../../assets/images/prophets_icon.webp';
 import civilizationIcon from '../../assets/images/civilization_icon.webp';
 import scholarsIcon from '../../assets/images/scholars_icon.webp';
@@ -15,6 +16,8 @@ export interface StoryCatalogItem extends ProphetStory {
   nameAr: string;
   descriptionAr: string;
   collection: StoryCollectionId;
+  /** The book has no Arabic edition: the reader opens it in English and hides the language switch. */
+  englishOnly?: boolean;
 }
 
 /**
@@ -134,6 +137,17 @@ export const storyCatalog: StoryCatalogItem[] = [
     image: meccaCover,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'history',
+  },
+  {
+    id: 'ibnJubayr',
+    name: 'Ibn Jubayr',
+    nameAr: 'ابن جبير',
+    description: 'A Great Andalusian Traveler of the Middle Ages',
+    descriptionAr: 'رحّالة أندلسي كبير في العصور الوسطى',
+    image: ibnJubayrCover,
+    availableLevels: ['A2'],
+    collection: 'history',
+    englishOnly: true,
   },
   {
     id: 'yunusEmre',

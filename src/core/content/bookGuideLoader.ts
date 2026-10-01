@@ -39,6 +39,7 @@ const storyFolder: Record<StoryId, string> = {
   ibrahim: 'abraham',
   musa: 'moses',
   mecca: 'mecca',
+  ibnJubayr: 'ibnJubayr',
   yunusEmre: 'yunusEmre',
 };
 
@@ -90,11 +91,17 @@ const modulePath = (
   file: 'teacherGuide' | 'selfStudyGuide',
 ) => `../../data/${storyFolder[storyId]}/${level.toLowerCase()}/${language}/${file}.ts`;
 
+// English-only books have no ar/ guide files; their Arabic slot reuses the English guide.
+const withEnglishFallback = (
+  modules: Record<string, () => Promise<unknown>>,
+  path: string,
+) => (modules[path] ? path : path.replace('/ar/', '/en/'));
+
 const loadModule = async (
   modules: Record<string, () => Promise<unknown>>,
   path: string,
 ): Promise<GuideModule> => {
-  const loader = modules[path];
+  const loader = modules[withEnglishFallback(modules, path)];
   if (!loader) throw new Error(`[Guide Loader] Missing module: ${path}`);
   const loaded = await loader();
   return loaded && typeof loaded === 'object' ? loaded as GuideModule : {};

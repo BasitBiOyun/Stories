@@ -40,6 +40,7 @@ const getCurrentStoryId = (bookId: string) => {
   if (id.includes('abraham')) return 'ibrahim';
   if (id.includes('moses')) return 'musa';
   if (id.includes('mecca')) return 'mecca';
+  if (id.includes('ibnjubayr')) return 'ibnJubayr';
   if (id.includes('yunusemre')) return 'yunusEmre';
   return 'adam';
 };
@@ -134,7 +135,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
 
   const nextRecommendation = useMemo(() => {
     const nextLevel = getNextLevel(bookData.level);
-    if (nextLevel) return { story, level: nextLevel };
+    if (nextLevel && story.availableLevels.includes(nextLevel)) return { story, level: nextLevel };
 
     const sameCollection = storyCatalog.find(item => item.collection === story.collection && item.id !== story.id);
     if (sameCollection) return { story: sameCollection, level: 'A2' as Level };

@@ -156,6 +156,13 @@ export const bookRegistry: readonly BookDefinition[] = [
     'Mecca B2',
   )),
 
+  createDefinition('ibnJubayr', 'A2', 'history', () => loadBookPairFromModule(
+    () => import('../../data/ibnJubayr/a2'),
+    'ibnJubayrA2BookDataEn',
+    'ibnJubayrA2BookDataAr',
+    'Ibn Jubayr A2',
+  )),
+
   createDefinition('yunusEmre', 'A2', 'turkish', () => loadBookPairFromModule(
     () => import('../../data/yunusEmre/a2'),
     'yunusEmreA2BookDataEn',
