@@ -11,9 +11,9 @@ export const yunusB1StoryMapLayout: StoryMapLayout = {
   time: { start: 1240, lastYear: 1320, birth: 1240 },
   routes: [
     // Chapter 4: the Mongol invasion made many people migrate to Anatolia from Central Asia (drawn by the first step).
-    { id: 'migrations', points: [[51.5, 38.6], [47.5, 36.9], [43.5, 38.2], [38.6, 38.9]], start: 1240, end: 1240.6, tone: 'journey' },
+    { id: 'migrations', points: [[51.5, 38.6], [47.5, 36.9], [43.5, 38.2], [38.6, 38.9], [36.2, 39.0], [34.1, 39.35]], start: 1240, end: 1240.6, tone: 'journey' },
     // Chapter 5: the Mongols in Azerbaijan take Erzurum (1242), then fight at Kösedağ (1243), then raid three cities.
-    { id: 'mongols', points: [[46.1, 38.1], [43.6, 39.15], [41.27, 39.9]], start: 1241.6, end: 1242.6, tone: 'army' },
+    { id: 'mongols', points: [[46.29, 38.08], [43.6, 39.15], [41.27, 39.9]], start: 1241.6, end: 1242.6, tone: 'army' },
     { id: 'mongols-kosedag', points: [[41.27, 39.9], [39.4, 40.08], [38.05, 40.1]], start: 1242.6, end: 1243.25, tone: 'army' },
     // The raids finish by 1243.6, where the thumb rests after jumping to 1243, so the step shows them.
     { id: 'raid-sivas', points: [[38.05, 40.1], [37.02, 39.75]], start: 1243.25, end: 1243.6, tone: 'army' },

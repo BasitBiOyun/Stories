@@ -638,7 +638,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
         const [x, y] = BASE.project(lon, lat);
         return Math.hypot(x - point[0], y - point[1]) < radius * px ? radius * px : 0;
       };
-      return Math.max(0, ...places.map(place => near(place.lon, place.lat, PIN + 5)), ...map.towns.map(town => near(town.lon, town.lat, 7)));
+      return Math.max(0, ...places.map(place => near(place.lon, place.lat, PIN + 1)), ...map.towns.map(town => near(town.lon, town.lat, 5)));
     };
     const trimmed = trimPolyline(projected, cutAt(projected[0]), cutAt(projected[projected.length - 1]));
     return { route: item, progress, colour, drawn: partialPolyline(trimmed, progress) };
