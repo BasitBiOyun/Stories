@@ -17,7 +17,7 @@ export const meccaB2StoryMapLayout: StoryMapLayout = {
     // and Quraysh caravans to Egypt and Iraq. Stops are not named in the book.
     { id: 'caravanNorth', points: [[44.2, 15.3], [44.1, 17.4], [42.4, 19.0], [40.8, 20.6], [39.83, 21.42], [39.0, 24.3], [37.8, 27.0], [36.6, 29.4], [36.0, 31.4], [36.3, 33.5]], start: 4.6, end: 5, tone: 'journey' },
     { id: 'caravanEgypt', points: [[39.83, 21.42], [39.0, 24.3], [37.8, 27.0], [36.4, 28.9], [35.0, 29.6], [33.6, 30.2], [32.2, 29.9], [31.2, 29.0]], start: 4.6, end: 5, tone: 'journey' },
-    { id: 'caravanIraq', points: [[39.83, 21.42], [41.6, 24.2], [43.0, 27.4], [43.9, 30.0], [44.4, 32.2]], start: 4.6, end: 5, tone: 'journey' },
+    { id: 'caravanIraq', points: [[39.83, 21.42], [41.6, 24.2], [43.0, 27.4], [43.9, 30.0], [44.4, 32.3]], start: 4.6, end: 5, tone: 'journey' },
     // Chapter 5: trade with Abyssinia by sea, across the Red Sea. No port is named; the line is only a guide.
     { id: 'seaAbyssinia', points: [[39.83, 21.42], [39.05, 21.5], [38.7, 19.0], [39.7, 16.0], [39.45, 15.6], [38.9, 13.3]], start: 5.6, end: 6, tone: 'journey' },
   ],
