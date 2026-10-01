@@ -189,7 +189,7 @@ export const meccaA2LanguageFocusExercisesArPart4: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-5-purpose', type: 'word-bank', title: 'تدرّب: طلب من ... أن',
       instructions: 'اسحب الكلمة المناسبة إلى كل فراغ. في البنك كلمات زائدة.',
-      question: 'كيف ينقل الفصل تعليم النبي ﷺ وطلبه؟',
+      question: 'كيف ينقل الفصل تعليم النبي صلى الله عليه وسلم وطلبه؟',
       fillBlanksText: 'وَعَلَّمَهُمْ أَنَّ النَّاسَ يَجِبُ أَنْ يَكُونُوا [blank] وَمُتَسَاوِينَ. وَطَلَبَ [blank] أَهْلِ مَكَّةَ أَنْ [blank] عِبَادَةَ الْأَصْنَامِ …',
       wordBank: ['عَادِلِينَ', 'عَادِلُونَ', 'مِنْ', 'عَنْ', 'يَتْرُكُوا', 'يَتْرُكُونَ'],
       correctAnswer: ['عَادِلِينَ', 'مِنْ', 'يَتْرُكُوا'],
