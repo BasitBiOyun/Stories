@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ANATOLIA_UNITS_PER_KM, projectAnatolia } from './baseMaps/anatolia';
+import type { BaseMapDef } from './baseMaps';
 import { playMapSound } from './mapSounds';
 import type { StoryMap, StoryMapEventScene } from './types';
 
@@ -114,8 +114,8 @@ const Traveller: React.FC<{ d: string; px: number; delay: number; dur: number; o
 };
 
 /** Light rising over a place: a birth. */
-const Dawn: React.FC<{ at: Point; px: number; uid: string }> = ({ at, px, uid }) => {
-  const r = 300 * ANATOLIA_UNITS_PER_KM;
+const Dawn: React.FC<{ at: Point; px: number; uid: string; km: number }> = ({ at, px, uid, km }) => {
+  const r = 300 * km;
   return (
     <g>
       <defs>
@@ -152,8 +152,8 @@ const Dawn: React.FC<{ at: Point; px: number; uid: string }> = ({ at, px, uid })
 };
 
 /** Light and rings spreading out from a city, with threads reaching other towns. */
-const Radiate: React.FC<{ at: Point; reach: Point[]; px: number; uid: string }> = ({ at, reach, px, uid }) => {
-  const r = 420 * ANATOLIA_UNITS_PER_KM;
+const Radiate: React.FC<{ at: Point; reach: Point[]; px: number; uid: string; km: number }> = ({ at, reach, px, uid, km }) => {
+  const r = 420 * km;
   return (
     <g>
       <defs>
@@ -163,7 +163,7 @@ const Radiate: React.FC<{ at: Point; reach: Point[]; px: number; uid: string }> 
         </radialGradient>
       </defs>
       <g transform={`translate(${at[0]} ${at[1]})`}>
-        <g className="scene-grow"><circle className="scene-breathe" r={140 * ANATOLIA_UNITS_PER_KM} fill={`url(#${uid}-glow)`} /></g>
+        <g className="scene-grow"><circle className="scene-breathe" r={140 * km} fill={`url(#${uid}-glow)`} /></g>
         {[0, 1, 2, 3].map(i => (
           <circle
             key={i}
@@ -198,9 +198,9 @@ const Radiate: React.FC<{ at: Point; reach: Point[]; px: number; uid: string }> 
 };
 
 /** A life drawn as a whole: the travels, the places lighting up, then a wide glow spreading out. */
-const Journey: React.FC<{ from: Point; to: Point[]; lifePlaces: Point[]; px: number; uid: string }> = ({ from, to, lifePlaces, px, uid }) => {
+const Journey: React.FC<{ from: Point; to: Point[]; lifePlaces: Point[]; px: number; uid: string; km: number; radiusKm?: number }> = ({ from, to, lifePlaces, px, uid, km, radiusKm = 820 }) => {
   const legacyAt = 0.6 + to.length * 1.9 + 0.5;
-  const r = 820 * ANATOLIA_UNITS_PER_KM;
+  const r = radiusKm * km;
 
   useEffect(() => {
     const timer = window.setTimeout(() => playMapSound('finish'), legacyAt * 1000);
@@ -257,31 +257,35 @@ const Journey: React.FC<{ from: Point; to: Point[]; lifePlaces: Point[]; px: num
 interface MapEventSceneProps {
   scene: StoryMapEventScene;
   map: StoryMap;
+  base: BaseMapDef;
   px: number;
   uid: string;
 }
 
 /** Plays one event's scene on the map. Mount it with a new key to play it again. */
-export const MapEventScene: React.FC<MapEventSceneProps> = ({ scene, map, px, uid }) => {
+export const MapEventScene: React.FC<MapEventSceneProps> = ({ scene, map, base, px, uid }) => {
+  const km = base.unitsPerKm;
   const placeAt = useMemo(() => {
     const lookup = new Map<string, Point>();
-    map.places.forEach(place => lookup.set(place.id, projectAnatolia(place.lon, place.lat)));
+    map.places.forEach(place => lookup.set(place.id, base.project(place.lon, place.lat)));
     return lookup;
-  }, [map.places]);
+  }, [map.places, base]);
 
   let body: React.ReactNode = null;
   if (scene.kind === 'dawn') {
     const at = placeAt.get(scene.placeId);
-    if (at) body = <Dawn at={at} px={px} uid={uid} />;
+    if (at) body = <Dawn at={at} px={px} uid={uid} km={km} />;
   } else if (scene.kind === 'radiate') {
     const at = placeAt.get(scene.placeId);
-    const reach = map.towns.map(town => projectAnatolia(town.lon, town.lat));
-    if (at) body = <Radiate at={at} reach={reach} px={px} uid={uid} />;
+    const points = [...map.towns, ...map.places].filter(point => point.id !== scene.placeId);
+    const reach = (scene.reach ? points.filter(point => scene.reach?.includes(point.id)) : map.towns)
+      .map(point => base.project(point.lon, point.lat));
+    if (at) body = <Radiate at={at} reach={reach} px={px} uid={uid} km={km} />;
   } else {
     const from = placeAt.get(scene.fromId);
     const to = scene.toIds.map(id => placeAt.get(id)).filter((point): point is Point => !!point);
     const lifePlaces = map.places.filter(place => place.tone !== 'event').map(place => placeAt.get(place.id) as Point);
-    if (from) body = <Journey from={from} to={to} lifePlaces={lifePlaces} px={px} uid={uid} />;
+    if (from) body = <Journey from={from} to={to} lifePlaces={lifePlaces} px={px} uid={uid} km={km} />;
   }
 
   return (

@@ -6,9 +6,8 @@ import { useUserRole } from '../../contexts/UserRoleContext';
 import { cn } from '../../lib/utils';
 import { ArrowRight, Check, GraduationCap, MapPin, RotateCcw, Target, Volume2, VolumeX } from '../../components/ui/icons';
 import { isMapSoundOn, playMapSound, setMapSoundOn, subscribeMapSound } from './mapSounds';
-import { ANATOLIA_BASE, ANATOLIA_UNITS_PER_KM, projectAnatolia, unprojectAnatolia } from './baseMaps/anatolia';
+import { BASE_MAPS } from './baseMaps';
 import {
-  ANATOLIA_RELIEF,
   MONGOL_ROUTE_END,
   MONGOL_ROUTE_START,
   OVERLAY_SHAPES,
@@ -25,7 +24,6 @@ import type { StoryMap, StoryMapCamera, StoryMapPlace } from './types';
 
 type View = { x: number; y: number; w: number; h: number };
 
-const BASE = ANATOLIA_BASE;
 const MAX_ZOOM = 6;
 const PIN = 17;
 const GOOD = '#0f8a5f';
@@ -60,6 +58,7 @@ interface StoryMapPageProps {
 
 export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const map = page.map as StoryMap;
+  const BASE = BASE_MAPS[map.baseMap];
   const { t, language, isRTL, formatNumber } = useLanguage();
   const { isTeacher } = useUserRole();
   const uid = useId().replace(/:/g, '');
@@ -96,8 +95,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
   // --- View geometry ---------------------------------------------------------------------------
   const homeRect = useMemo(() => {
-    const [x0, y0] = projectAnatolia(map.home.west, map.home.north);
-    const [x1, y1] = projectAnatolia(map.home.east, map.home.south);
+    const [x0, y0] = BASE.project(map.home.west, map.home.north);
+    const [x1, y1] = BASE.project(map.home.east, map.home.south);
     return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
   }, [map.home]);
 
@@ -123,7 +122,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
   // Centre of the places, so a cropped home view still keeps every marker in sight.
   const placesCentre = useMemo(() => {
-    const xs = map.places.map(place => projectAnatolia(place.lon, place.lat)[0]);
+    const xs = map.places.map(place => BASE.project(place.lon, place.lat)[0]);
     return (Math.min(...xs) + Math.max(...xs)) / 2;
   }, [map.places]);
 
@@ -141,7 +140,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   }, [aspect, homeView, view]);
 
   const cameraView = useCallback((camera: StoryMapCamera): View => {
-    const [cx, cy] = projectAnatolia(camera.lon, camera.lat);
+    const [cx, cy] = BASE.project(camera.lon, camera.lat);
     const w = fitWidth(aspect) / camera.zoom;
     const h = w / aspect;
     return clampView({ x: cx - w / 2, y: cy - h / 2, w, h }, aspect);
@@ -307,7 +306,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   // Keep a selected place on screen when it is chosen from the card or the timeline.
   const revealPlace = useCallback((place: StoryMapPlace) => {
     const current = viewRef.current;
-    const [px, py] = projectAnatolia(place.lon, place.lat);
+    const [px, py] = BASE.project(place.lon, place.lat);
     const margin = current.w * 0.12;
     const inside = px > current.x + margin && px < current.x + current.w - margin
       && py > current.y + margin && py < current.y + current.h - margin;
@@ -450,7 +449,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const handleChallengeTap = (clientX: number, clientY: number) => {
     if (!challengeOn || !question || answer) return;
     const [mx, my] = toMap(clientX, clientY);
-    const [lon, lat] = unprojectAnatolia(mx, my);
+    const [lon, lat] = BASE.unproject(mx, my);
     const distance = distanceKm(lon, lat, question.lon, question.lat);
     const correct = distance <= question.radiusKm;
     setAnswers(previous => {
@@ -471,8 +470,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       }, 560);
     }
     // Show the answer and the right place together.
-    const [tx, ty] = projectAnatolia(question.lon, question.lat);
-    const r = question.radiusKm * ANATOLIA_UNITS_PER_KM;
+    const [tx, ty] = BASE.project(question.lon, question.lat);
+    const r = question.radiusKm * BASE.unitsPerKm;
     const minX = Math.min(tx - r, mx);
     const maxX = Math.max(tx + r, mx);
     const minY = Math.min(ty - r, my);
@@ -612,20 +611,28 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
   const routeProgress = timeOn ? clamp((year - MONGOL_ROUTE_START) / (MONGOL_ROUTE_END - MONGOL_ROUTE_START), 0, 1) : 1;
   const pressure = timeOn ? clamp((year - SELJUK_PRESSURE_START) / SELJUK_PRESSURE_SPAN, 0, 1) : 0;
+  // From 1308 the Seljuk lands were joined directly to the Ilkhanate (books that tell it only).
+  const annexed = timeOn && map.overlays.includes('ilkhanate-1308') ? clamp((year - 1308) / SELJUK_PRESSURE_SPAN, 0, 1) : 0;
+  const stagesMode = map.time.mode === 'stages';
+  const routeDrawings = map.routes.map(item => {
+    const progress = timeOn ? clamp((year - item.start) / Math.max(0.01, item.end - item.start), 0, 1) : 1;
+    const colour = item.tone === 'army' ? PALETTE.mongol : 'var(--brand-600)';
+    return { route: item, progress, colour, drawn: partialPolyline(item.points.map(([lon, lat]) => BASE.project(lon, lat)), progress) };
+  });
 
-  const seljukPath = useMemo(() => pathFromPoints(OVERLAY_SHAPES['seljuk-1243'].points.map(([lon, lat]) => projectAnatolia(lon, lat)), true), []);
-  const mongolPoints = useMemo(() => OVERLAY_SHAPES['mongol-1243'].points.map(([lon, lat]) => projectAnatolia(lon, lat)), []);
+  const seljukPath = useMemo(() => pathFromPoints(OVERLAY_SHAPES['seljuk-1243'].points.map(([lon, lat]) => BASE.project(lon, lat)), true), []);
+  const mongolPoints = useMemo(() => OVERLAY_SHAPES['mongol-1243'].points.map(([lon, lat]) => BASE.project(lon, lat)), []);
   const route = partialPolyline(mongolPoints, routeProgress);
 
   const scaleKm = 200;
-  const scaleBarPx = (scaleKm * ANATOLIA_UNITS_PER_KM) / px;
+  const scaleBarPx = (scaleKm * BASE.unitsPerKm) / px;
 
   const exploredText = `${t('map.explored')} ${formatNumber(visited.size)} / ${formatNumber(places.length)}`;
   const svgFont = language === 'ar' ? 'var(--font-arabic, var(--font-display))' : 'var(--font-display)';
 
   const shownYear = Math.min(Math.floor(year), map.time.lastYear);
   const age = shownYear - map.time.birth;
-  const ageLine = age <= 0
+  const ageLine = !map.age || stagesMode ? null : age <= 0
     ? map.age.born
     : shownYear >= map.time.lastYear ? map.age.died(formatNumber(age), age) : map.age.alive(formatNumber(age), age);
   const activeEvent = map.timeline[activeIndex];
@@ -640,7 +647,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     }
   };
 
-  const seljukLegend = pressure > 0.5 ? map.legend['seljuk-pressure'] : map.legend['seljuk-1243'];
+  const seljukLegend = annexed > 0.5 && map.legend['ilkhanate-1308'] ? map.legend['ilkhanate-1308'] : pressure > 0.5 ? map.legend['seljuk-pressure'] : map.legend['seljuk-1243'];
   const legend = (
     <div className="rounded-xl border border-white/70 bg-white/80 px-3 py-2 text-[11px] leading-snug text-[#3c3428] shadow-sm backdrop-blur-sm sm:text-[12px]">
       {map.overlays.includes('seljuk-1243') && seljukLegend && (
@@ -659,6 +666,12 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           {map.legend['mongol-1243']}
         </div>
       )}
+      {routeDrawings.filter(item => item.progress > 0 && map.legend[`route:${item.route.id}`]).map(item => (
+        <div key={item.route.id} className="flex items-center gap-2">
+          <svg width="16" height="8" viewBox="0 0 16 8" aria-hidden="true" className="shrink-0"><path d="M0 4 H11" stroke={item.colour} strokeWidth="2" strokeDasharray="4 2" /><path d="M10 0.5 L15.5 4 L10 7.5 Z" fill={item.colour} /></svg>
+          {map.legend[`route:${item.route.id}`]}
+        </div>
+      ))}
       <div className="mt-0.5 opacity-70">{t('map.approximate')}</div>
     </div>
   );
@@ -819,8 +832,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               <path d={BASE.rivers} fill="none" stroke={PALETTE.river} strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
 
               {/* Relief glyphs */}
-              {ANATOLIA_RELIEF.map(([lon, lat]) => {
-                const [x, y] = projectAnatolia(lon, lat);
+              {BASE.relief.map(([lon, lat]) => {
+                const [x, y] = BASE.project(lon, lat);
                 return (
                   <g key={`${lon}-${lat}`} transform={`translate(${x} ${y}) scale(${px})`} fill="none" stroke={PALETTE.relief} strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" opacity={0.85}>
                     <path d="M-13 4 L-6 -5 L0 2 L5 -3 L12 4" />
@@ -833,7 +846,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
             {!challengeOn && map.overlays.includes('seljuk-1243') && (
               <g>
                 <path d={seljukPath} fill={PALETTE.seljuk} opacity={0.26 * (1 - pressure * 0.75)} filter={`url(#${uid}-soft)`} />
-                <path d={seljukPath} fill={PALETTE.mongol} opacity={0.18 * pressure} filter={`url(#${uid}-soft)`} />
+                <path d={seljukPath} fill={PALETTE.mongol} opacity={0.18 * pressure + 0.14 * annexed} filter={`url(#${uid}-soft)`} />
                 <path d={seljukPath} fill={`url(#${uid}-hatch)`} opacity={0.4 * pressure} />
                 <path d={seljukPath} fill="none" stroke={PALETTE.seljuk} strokeWidth={1.6} strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" opacity={0.9 * (1 - pressure)} />
                 <path d={seljukPath} fill="none" stroke={PALETTE.mongol} strokeWidth={1.6} strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" opacity={0.85 * pressure} />
@@ -850,9 +863,28 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               </g>
             )}
 
+            {/* Journeys and campaigns that draw themselves along the time line */}
+            {!challengeOn && routeDrawings.filter(item => item.progress > 0.001).map(({ route: item, drawn, colour }) => (
+              <g key={item.id}>
+                <path d={pathFromPoints(drawn.points)} fill="none" stroke={PALETTE.halo} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" opacity={0.7} />
+                <path className="story-map-march" d={pathFromPoints(drawn.points)} fill="none" stroke={colour} strokeWidth={2.6} strokeDasharray={item.tone === 'army' ? '9 5' : '6 6'} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+                <g transform={`translate(${drawn.tip[0]} ${drawn.tip[1]}) rotate(${drawn.angle}) scale(${px})`}>
+                  <path d="M-9 -7 L3 0 L-9 7 Z" fill={colour} stroke={PALETTE.halo} strokeWidth={1.4} strokeLinejoin="round" />
+                </g>
+              </g>
+            ))}
+
+            {/* Regions that are always shown as soft areas */}
+            {!challengeOn && shownPlaces.filter(place => place.showArea && place.areaRadiusKm && place.id !== selectedId).map(place => {
+              const [x, y] = BASE.project(place.lon, place.lat);
+              return (
+                <circle key={`area-${place.id}`} cx={x} cy={y} r={(place.areaRadiusKm ?? 0) * BASE.unitsPerKm} fill="var(--brand-500)" fillOpacity={0.06} stroke="var(--brand-600)" strokeOpacity={0.3} strokeWidth={1.2} strokeDasharray="4 6" vectorEffect="non-scaling-stroke" />
+              );
+            })}
+
             {/* Sea names */}
             {map.seas.map(sea => {
-              const [x, y] = projectAnatolia(sea.lon, sea.lat);
+              const [x, y] = BASE.project(sea.lon, sea.lat);
               return (
                 <text key={sea.id} transform={`translate(${x} ${y}) scale(${px})`} textAnchor="middle" fill={PALETTE.sea} fontSize={14} fontStyle={language === 'ar' ? 'normal' : 'italic'} letterSpacing={language === 'ar' ? 0 : 1.5} style={{ fontFamily: svgFont }} opacity={0.9}>
                   {sea.name}
@@ -862,8 +894,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
             {/* Selected region wash */}
             {!challengeOn && selected?.areaRadiusKm && (() => {
-              const [x, y] = projectAnatolia(selected.lon, selected.lat);
-              const r = selected.areaRadiusKm * ANATOLIA_UNITS_PER_KM;
+              const [x, y] = BASE.project(selected.lon, selected.lat);
+              const r = selected.areaRadiusKm * BASE.unitsPerKm;
               return (
                 <circle cx={x} cy={y} r={r} fill="var(--brand-500)" fillOpacity={0.12} stroke="var(--brand-600)" strokeOpacity={0.55} strokeWidth={1.5} strokeDasharray="5 5" vectorEffect="non-scaling-stroke" />
               );
@@ -871,12 +903,12 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
             {/* The current event's scene: every date on the time line shows something happening */}
             {!challengeOn && timeOn && activeEvent?.scene && Math.floor(year) >= activeEvent.year && (
-              <MapEventScene key={`scene-${activeEvent.year}`} scene={activeEvent.scene} map={map} px={px} uid={`${uid}-s${activeEvent.year}`} />
+              <MapEventScene key={`scene-${activeEvent.year}`} scene={activeEvent.scene} map={map} base={BASE} px={px} uid={`${uid}-s${activeEvent.year}`} />
             )}
 
             {/* Reference towns */}
             {map.towns.map(town => {
-              const [x, y] = projectAnatolia(town.lon, town.lat);
+              const [x, y] = BASE.project(town.lon, town.lat);
               return (
                 <g key={town.id} transform={`translate(${x} ${y}) scale(${px})`}>
                   <circle r={3.4} fill={PALETTE.halo} stroke={PALETTE.label} strokeWidth={1.4} />
@@ -892,7 +924,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
             {/* Places */}
             {!challengeOn && shownPlaces.map(place => {
               const index = places.indexOf(place);
-              const [x, y] = projectAnatolia(place.lon, place.lat);
+              const [x, y] = BASE.project(place.lon, place.lat);
               const isSelected = place.id === selectedId;
               const isVisited = visited.has(place.id);
               const fill = place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)';
@@ -961,9 +993,9 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
             {/* Challenge: your tap, the right place, and the distance between them. It plays out in order:
                 your pin lands, a line draws, the green circle grows, then the labels appear. */}
             {challengeOn && answer && question && (() => {
-              const [tx, ty] = projectAnatolia(question.lon, question.lat);
-              const [ax, ay] = projectAnatolia(answer.lon, answer.lat);
-              const r = question.radiusKm * ANATOLIA_UNITS_PER_KM;
+              const [tx, ty] = BASE.project(question.lon, question.lat);
+              const [ax, ay] = BASE.project(answer.lon, answer.lat);
+              const r = question.radiusKm * BASE.unitsPerKm;
               const colour = answer.correct ? GOOD : PALETTE.mongol;
               const length = Math.hypot(tx - ax, ty - ay);
               const km = `${formatNumber(Math.round(answer.distanceKm))} ${t('map.km')}`;
@@ -1038,10 +1070,14 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
             <div className="pointer-events-none absolute left-[64px] right-[64px] top-3 z-10 flex justify-center" dir={isRTL ? 'rtl' : 'ltr'}>
               <div className="max-w-full rounded-2xl border border-white/70 bg-white/88 px-3 py-1.5 text-center shadow-sm backdrop-blur-sm">
                 <div className="flex items-center justify-center gap-2 font-display text-[13px] font-bold text-[#3c3428] sm:text-[14px]">
-                  <span className="tabular-nums" style={{ color: activeIsBattle ? PALETTE.mongol : 'var(--brand-700)' }}>{formatNumber(shownYear)}</span>
+                  <span className="tabular-nums" style={{ color: activeIsBattle ? PALETTE.mongol : 'var(--brand-700)' }}>
+                    {stagesMode
+                      ? (activeEvent?.chapter ? t('map.chapterShort').replace('{n}', formatNumber(activeEvent.chapter)) : formatNumber(activeIndex + 1))
+                      : formatNumber(shownYear)}
+                  </span>
                   <span className="truncate font-semibold">{activeEvent?.label}</span>
                 </div>
-                <div className={cn('text-[#3c3428]/75', language === 'ar' ? 'text-[13px] leading-snug' : 'text-[11px] sm:text-[12px]')}>{ageLine}</div>
+                {ageLine && <div className={cn('text-[#3c3428]/75', language === 'ar' ? 'text-[13px] leading-snug' : 'text-[11px] sm:text-[12px]')}>{ageLine}</div>}
               </div>
             </div>
           )}

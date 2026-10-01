@@ -28,6 +28,14 @@ export const MapTimePanel: React.FC<MapTimePanelProps> = ({ map, year, activeInd
   const pos = scale.toPos(year);
   const shownYear = Math.min(Math.floor(year), map.time.lastYear);
   const n = map.timeline.length;
+  const stages = map.time.mode === 'stages';
+  // In stages mode the buttons show chapters, not years.
+  const stepText = (index: number) => {
+    const chapter = map.timeline[index]?.chapter;
+    return stages
+      ? (chapter ? t('map.chapterShort').replace('{n}', formatNumber(chapter)) : formatNumber(index + 1))
+      : formatNumber(map.timeline[index]?.year ?? 0);
+  };
   const isBattle = (placeId: string) => map.places.find(place => place.id === placeId)?.tone === 'event';
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -82,7 +90,7 @@ export const MapTimePanel: React.FC<MapTimePanelProps> = ({ map, year, activeInd
                 );
               })}
               {/* How many years each stretch of the line covers: the stretches are drawn the same size */}
-              {map.timeline.slice(1).map((item, index) => (
+              {!stages && map.timeline.slice(1).map((item, index) => (
                 <span
                   key={`gap-${item.year}`}
                   className="absolute -top-3.5 -translate-x-1/2 font-display text-[10px] font-semibold tabular-nums text-brand-700/60"
@@ -102,8 +110,8 @@ export const MapTimePanel: React.FC<MapTimePanelProps> = ({ map, year, activeInd
               value={pos}
               onChange={event => onScrub(scale.toYear(Number(event.target.value)))}
               onKeyDown={onKeyDown}
-              aria-label={t('map.timeSlider')}
-              aria-valuetext={`${formatNumber(shownYear)} · ${map.timeline[activeIndex]?.label ?? ''}`}
+              aria-label={stages ? t('map.stepSlider') : t('map.timeSlider')}
+              aria-valuetext={`${stages ? stepText(activeIndex) : formatNumber(shownYear)} · ${map.timeline[activeIndex]?.label ?? ''}`}
               style={{ '--p': along(pos) } as React.CSSProperties}
             />
           </div>
@@ -133,7 +141,7 @@ export const MapTimePanel: React.FC<MapTimePanelProps> = ({ map, year, activeInd
                       )}
                       style={active && battle ? { background: eventColor } : undefined}
                     >
-                      {formatNumber(item.year)}
+                      {stepText(index)}
                     </span>
                     <span dir="auto" className={cn('line-clamp-2 w-full text-[10px] leading-tight sm:text-[12px]', active ? 'font-semibold text-wood' : 'text-wood/65')}>{item.label}</span>
                   </button>
@@ -143,8 +151,8 @@ export const MapTimePanel: React.FC<MapTimePanelProps> = ({ map, year, activeInd
           </ol>
         </div>
 
-        <span className="mt-[-2px] hidden w-[4.4ch] shrink-0 text-end font-display text-2xl sm:block font-bold tabular-nums text-brand-800 sm:text-3xl" aria-hidden="true">
-          {formatNumber(shownYear)}
+        <span className={cn('mt-[-2px] hidden shrink-0 text-end font-display font-bold tabular-nums text-brand-800 sm:block', stages ? 'min-w-[4.4ch] whitespace-nowrap text-xl sm:text-2xl' : 'w-[4.4ch] text-2xl sm:text-3xl')} aria-hidden="true">
+          {stages ? stepText(activeIndex) : formatNumber(shownYear)}
         </span>
       </div>
     </div>

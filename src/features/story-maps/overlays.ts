@@ -4,7 +4,7 @@ import type { StoryMapOverlay } from './types';
  * Historical overlays in degrees (lon, lat). They are deliberately soft and approximate:
  * the Seljuk area around 1243 is drawn as a blurred zone, never as a hard border line.
  */
-export const OVERLAY_SHAPES: Record<StoryMapOverlay, { kind: 'area' | 'route'; points: Array<[number, number]> }> = {
+export const OVERLAY_SHAPES: Record<Exclude<StoryMapOverlay, 'ilkhanate-1308'>, { kind: 'area' | 'route'; points: Array<[number, number]> }> = {
   'seljuk-1243': {
     kind: 'area',
     points: [
@@ -20,14 +20,6 @@ export const OVERLAY_SHAPES: Record<StoryMapOverlay, { kind: 'area' | 'route'; p
   },
 };
 
-/** Mountain glyph positions on real ranges (Taurus, Pontic, eastern highlands, Caucasus). Decoration only. */
-export const ANATOLIA_RELIEF: Array<[number, number]> = [
-  [30.9, 37.35], [32.6, 37.0], [34.2, 37.25], [35.6, 37.75], [37.4, 38.15],
-  [36.8, 40.75], [38.9, 40.55], [40.6, 40.6], [42.4, 40.95],
-  [42.6, 39.35], [44.0, 39.6],
-  [44.2, 42.75], [46.3, 42.15],
-  [36.6, 34.2],
-];
 
 /**
  * Time rules for the slider (fractional years). The Mongol route is drawn between 1242 and 1243;
