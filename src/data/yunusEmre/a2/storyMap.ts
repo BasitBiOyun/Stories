@@ -29,10 +29,11 @@ export const yunusA2StoryMapLayout: StoryMapLayout = {
     { id: 'mediterranean', lon: 30.6, lat: 34.6 },
   ],
   timeline: [
-    { year: 1240, placeId: 'anatolia', camera: { lon: 34.5, lat: 39.2, zoom: 1.5 } },
+    { year: 1240, placeId: 'anatolia', camera: { lon: 34.5, lat: 39.2, zoom: 1.5 }, scene: { kind: 'dawn', placeId: 'anatolia' } },
     { year: 1243, placeId: 'kosedag', camera: { lon: 41.5, lat: 39.6, zoom: 1.7 } },
-    { year: 1273, placeId: 'konya', camera: { lon: 33.3, lat: 38.4, zoom: 2.3 } },
-    { year: 1320, placeId: 'anatolia', camera: { lon: 36, lat: 39, zoom: 1.2 } },
+    { year: 1273, placeId: 'konya', camera: { lon: 33.6, lat: 38.5, zoom: 1.9 }, scene: { kind: 'radiate', placeId: 'konya' } },
+    // The A2 text names Yunus's travels without dates, so they are drawn only as a summary of his life at its end.
+    { year: 1320, placeId: 'anatolia', camera: { lon: 38.6, lat: 37.6, zoom: 1.05 }, scene: { kind: 'journey', fromId: 'anatolia', toIds: ['syria', 'azerbaijan'] } },
   ],
   // The accepted answer is a circle, wide enough for a child's finger and for places that are regions.
   challenge: [
