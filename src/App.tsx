@@ -1162,12 +1162,11 @@ const AppContent = () => {
                               role="presentation"
                               className={cn(
                                 "flex items-center gap-3 px-1 pb-1 font-display text-[11px] font-semibold uppercase tracking-[0.16em]",
-                                idx === 0 ? "pt-0.5" : "pt-3 mt-2 border-t border-white/10",
+                                idx === 0 ? "pt-0.5" : "pt-4",
                                 isStorySection ? "text-white/45" : themeClasses.goldText
                               )}
                             >
                               <span>{sectionHeading}</span>
-                              <span className="h-px flex-1 bg-white/10" aria-hidden="true" />
                             </div>
                           )}
                           <button
