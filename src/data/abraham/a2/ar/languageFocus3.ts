@@ -33,7 +33,7 @@ export const abrahamA2LanguageFocusExercisesArPart7: Record<number, Exercise[]> 
           answer: 0,
         },
         {
-          sentence: 'اُنْظُرْ! أَنَا أَيْضًا [choice] وَأُمِيتُ!',
+          sentence: 'انْظُرْ! أَنَا أَيْضًا [choice] وَأُمِيتُ!',
           options: ['يُحْيِي', 'أُحْيِي', 'نُحْيِي'],
           answer: 1,
         },
@@ -100,7 +100,7 @@ export const abrahamA2LanguageFocusExercisesArPart8: Record<number, Exercise[]> 
       question: 'ما آخر الفعل بعد «لن» و«أن» و«لِـ»؟',
       formChoices: [
         {
-          sentence: 'فَهِمَ إِبْرَاهِيمُ (عَلَيْهِ السَّلَامُ) أَنَّ أَحَدًا لَنْ [choice] كَلَامَهُ.',
+          sentence: 'فَهِمَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ أَنَّ أَحَدًا لَنْ [choice] كَلَامَهُ.',
           options: ['يَسْمَعُ', 'يَسْمَعَ'],
           answer: 1,
         },
@@ -128,7 +128,7 @@ export const abrahamA2LanguageFocusExercisesArPart8: Record<number, Exercise[]> 
       title: 'تدرّب: جملة الأمر',
       instructions: 'رتّب القطع لتبني جملة الفصل.',
       question: 'ماذا أمر الله إبراهيم أن يفعل؟',
-      sentenceChunks: ['أَمَرَ اللهُ', 'إِبْرَاهِيمَ (عَلَيْهِ السَّلَامُ)', 'أَنْ يُسَافِرَ', 'مَعَ زَوْجَتِهِ', 'وَطِفْلِهِ الصَّغِيرِ إِسْمَاعِيلَ.'],
+      sentenceChunks: ['أَمَرَ اللهُ', 'إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ', 'أَنْ يُسَافِرَ', 'مَعَ زَوْجَتِهِ', 'وَطِفْلِهِ الصَّغِيرِ إِسْمَاعِيلَ.'],
       correctAnswer: null,
       explanation: 'نقول: «أَمَرَ اللهُ» + الشخص + «أَنْ» + فعل: «أَمَرَ اللهُ إِبْرَاهِيمَ أَنْ يُسَافِرَ». ثم نذكر مع مَن سافر: «مَعَ زَوْجَتِهِ وَطِفْلِهِ».',
       feedback: {
@@ -183,7 +183,7 @@ export const abrahamA2LanguageFocusExercisesArPart9: Record<number, Exercise[]> 
       question: 'ما آخر الفعل بعد «أن»، وبعد «لم»، وبعد «لِـ»؟',
       formChoices: [
         {
-          sentence: 'ذَهَبَ إِبْرَاهِيمُ (عَلَيْهِ السَّلَامُ) بَعِيدًا، وَدَعَا اللهَ أَنْ [choice] أَهْلَهُ.',
+          sentence: 'ذَهَبَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ بَعِيدًا، وَدَعَا اللهَ أَنْ [choice] أَهْلَهُ.',
           options: ['يَحْمِي', 'يَحْمِيَ'],
           answer: 1,
         },
@@ -325,12 +325,12 @@ export const abrahamA2LanguageFocusExercisesArPart11: Record<number, Exercise[]>
       question: 'هل الجملة عن الماضي، أم المستقبل، أم شيء ما زال يحدث اليوم؟',
       formChoices: [
         {
-          sentence: 'فَقَالَ إِسْمَاعِيلُ: "[choice] بِالتَّأْكِيدِ."',
+          sentence: 'فَقَالَ إِسْمَاعِيلُ: «[choice] بِالتَّأْكِيدِ.»',
           options: ['سَاعَدْتُكَ', 'سَأُسَاعِدُكَ'],
           answer: 1,
         },
         {
-          sentence: 'وَبَعْدَ أَنْ [choice] إِبْرَاهِيمُ (عَلَيْهِ السَّلَامُ) الْكَعْبَةَ الْمُشَرَّفَةَ، اِنْتَهَتْ مُهِمَّتُهُ.',
+          sentence: 'وَبَعْدَ أَنْ [choice] إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ الْكَعْبَةَ الْمُشَرَّفَةَ، انْتَهَتْ مُهِمَّتُهُ.',
           options: ['بَنَى', 'سَيَبْنِي'],
           answer: 0,
         },
