@@ -532,10 +532,15 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     if (exercise.type === 'reflection') {
       return (
         <div className="space-y-4">
-          {reflectionNeedsWriting && (
+          {exercise.type === 'reflection' && (
             <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-5">
+              {!reflectionNeedsWriting && (
+                <p className={cn('mb-2 font-display font-semibold uppercase tracking-widest text-wood/45', isArabic ? 'text-sm' : 'text-[11px]')}>
+                  {isArabic ? 'قُلْها أو اكتُبْها (اختياري)' : 'Say it or write it (optional)'}
+                </p>
+              )}
               <textarea
-                rows={5}
+                rows={reflectionNeedsWriting ? 5 : 3}
                 disabled={isSubmitted}
                 value={reflectionResponse}
                 onChange={(event) => setReflectionResponse(event.target.value)}
@@ -561,7 +566,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             <button
               type="button"
               disabled={reflectionNeedsWriting && !reflectionResponse.trim()}
-              onClick={() => submit(reflectionNeedsWriting ? reflectionResponse : true)}
+              onClick={() => submit(reflectionResponse.trim() ? reflectionResponse : true)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-bold',
                 isArabic && 'text-base',

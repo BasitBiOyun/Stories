@@ -294,8 +294,11 @@ export const KnowledgeCheck = ({
     ? isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
     : false;
 
+  const isAnswered = (exercise: Exercise) => answerFor(exercise) !== null;
+
+  // Each question is checked as soon as it is answered (formative feedback), then locked.
   const answerQuestion = (exercise: Exercise, answer: boolean | number) => {
-    if (showResults) return;
+    if (showResults || isAnswered(exercise)) return;
     setLocalAnswers((previous) => {
       const next = { ...previous, [exercise.id]: answer };
       if (typeof window !== 'undefined') {
@@ -329,7 +332,7 @@ export const KnowledgeCheck = ({
 
   const feedbackOverlay = createPortal(
     <AnimatePresence>
-      {showResults && activeExercise && (
+      {activeExercise && isAnswered(activeExercise) && (
         <motion.div
           key={activeExercise.id}
           initial={{ opacity: 0 }}
@@ -476,12 +479,32 @@ export const KnowledgeCheck = ({
                 exercise={currentExercise}
                 index={safeStep}
                 answer={answerFor(currentExercise)}
-                showResults={showResults}
+                showResults={showResults || isAnswered(currentExercise)}
                 active={activeFeedback === currentExercise.id}
                 onAnswer={(answer) => answerQuestion(currentExercise, answer)}
                 onInfo={() => setActiveFeedback(activeFeedback === currentExercise.id ? null : currentExercise.id)}
                 collectionId={collectionId}
               />
+              {isAnswered(currentExercise) && (() => {
+                const correctNow = isExerciseAnswerCorrect(currentExercise, answerFor(currentExercise));
+                return (
+                  <div className={cn(
+                    'mt-3 rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed',
+                    isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-base',
+                    correctNow ? 'bg-emerald-50 border-emerald-100 text-emerald-950' : 'bg-rose-50 border-rose-100 text-rose-950'
+                  )}>
+                    <p className={cn('flex items-center gap-2 font-display font-bold uppercase tracking-widest mb-1.5', isArabic ? 'text-sm' : 'text-xs', correctNow ? 'text-emerald-700' : 'text-rose-700')}>
+                      {correctNow ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
+                      {correctNow ? t('ex.correct') : t('ex.notQuite')}
+                    </p>
+                    <p>{correctNow ? currentExercise.feedback.correct : currentExercise.feedback.incorrect}</p>
+                    <p className="mt-2 text-wood/70">
+                      <span className={cn('font-display uppercase tracking-widest text-wood/40 me-1.5', isArabic ? 'text-sm' : 'text-[11px]')}>{t('ex.explanation')}</span>
+                      {currentExercise.explanation}
+                    </p>
+                  </div>
+                );
+              })()}
             </motion.div>
           </AnimatePresence>
         )}
