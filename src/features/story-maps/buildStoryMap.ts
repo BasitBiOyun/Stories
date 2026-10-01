@@ -15,6 +15,7 @@ export const buildStoryMap = (layout: StoryMapLayout, copy: StoryMapCopy, label:
     time: layout.time,
     legend: copy.legend,
     age: copy.age,
+    routes: layout.routes ?? [],
     places: layout.places.map(place => ({ ...place, ...need(copy.places[place.id], `place "${place.id}"`) })),
     towns: layout.towns.map(town => ({ ...town, name: need(copy.towns[town.id], `town "${town.id}"`) })),
     seas: layout.seas.map(sea => ({ ...sea, name: need(copy.seas[sea.id], `sea "${sea.id}"`) })),
