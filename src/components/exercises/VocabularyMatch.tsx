@@ -271,7 +271,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         done: 'اكتمل تحدي المفردات',
         mastered: 'متقنة في هذه الجولة',
         revisit: 'كلمات للمراجعة',
-        revisitHint: 'راجع هذه الكلمات في المعجم الرئيسي ثم أعد التحدي.',
+        revisitHint: 'أخطأت في هذه الكلمات مرة واحدة على الأقل. راجعها في المعجم الرئيسي ثم أعد التحدي.',
         restart: 'إعادة التحدي',
         backToGlossary: 'العودة إلى المعجم الرئيسي',
         usePrompt: 'استخدم الكلمة في جملة قصيرة مرتبطة بالقصة.',
@@ -304,7 +304,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         done: 'Vocabulary Challenge complete',
         mastered: 'mastered this round',
         revisit: 'Words to revisit',
-        revisitHint: 'Review these words in Master Glossary, then try the challenge again.',
+        revisitHint: 'You made a mistake with these words at least once. Review them in Master Glossary, then try the challenge again.',
         restart: 'Restart challenge',
         backToGlossary: 'Review in Master Glossary',
         usePrompt: 'Use the word in one short sentence connected to the story.',
@@ -597,7 +597,11 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     disabled={recallFeedback === 'correct'}
                     className={cn(
                       'min-h-14 rounded-2xl px-4 font-serif font-semibold ring-1 transition-all',
-                      recallChoice === word ? cn(theme.selected, 'ring-1') : cn('bg-white ring-black/[0.07]', theme.idle)
+                      (recallFeedback === 'correct' || answerRevealed) && word === currentRecall.word
+                        ? 'bg-emerald-600 text-white ring-emerald-600'
+                        : recallFeedback === 'wrong' && recallChoice === word
+                        ? 'bg-rose-50 text-rose-700 ring-rose-300'
+                        : recallChoice === word ? cn(theme.selected, 'ring-1') : cn('bg-white ring-black/[0.07]', theme.idle)
                     )}
                   >
                     {displayWord(word, language)}
@@ -640,13 +644,22 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
 
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-h-10 flex-1">
-                {recallFeedback === 'wrong' && (
-                  <p className={cn('font-serif text-rose-700', isArabic ? 'text-base' : 'text-sm')}>{copy.wrong}</p>
+                {recallFeedback === 'wrong' && !answerRevealed && (
+                  <p className={cn('flex items-center gap-2 font-serif text-rose-700', isArabic ? 'text-base' : 'text-sm')}>
+                    <XCircle size={17} className="shrink-0" />{copy.wrong}
+                  </p>
                 )}
                 {(recallFeedback === 'correct' || answerRevealed) && (
-                  <p className={cn('font-serif text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>
-                    <strong>{displayWord(currentRecall.word, language)}</strong> · {currentRecall.meaning}
-                  </p>
+                  <div className={cn('font-serif', recallFeedback === 'correct' ? 'text-emerald-800' : 'text-wood/70', isArabic ? 'text-base' : 'text-sm')}>
+                    {recallFeedback === 'correct' && (
+                      <p className="flex items-center gap-2 font-display font-semibold">
+                        <CheckCircle2 size={17} className="shrink-0" />{copy.correct}
+                      </p>
+                    )}
+                    <p className="mt-1">
+                      <strong>{displayWord(currentRecall.word, language)}</strong> · {currentRecall.meaning}
+                    </p>
+                  </div>
                 )}
               </div>
 
