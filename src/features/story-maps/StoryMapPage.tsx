@@ -4,7 +4,8 @@ import type { PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useUserRole } from '../../contexts/UserRoleContext';
 import { cn } from '../../lib/utils';
-import { ArrowRight, Check, GraduationCap, MapPin, RotateCcw, Target } from '../../components/ui/icons';
+import { ArrowRight, Check, GraduationCap, MapPin, RotateCcw, Target, Volume2, VolumeX } from '../../components/ui/icons';
+import { isMapSoundOn, playMapSound, setMapSoundOn, subscribeMapSound } from './mapSounds';
 import { ANATOLIA_BASE, ANATOLIA_UNITS_PER_KM, projectAnatolia, unprojectAnatolia } from './baseMaps/anatolia';
 import {
   ANATOLIA_RELIEF,
@@ -82,6 +83,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const [classroom, setClassroom] = useState(false);
   const [revealed, setRevealed] = useState<Set<string>>(() => new Set());
   const [cIndex, setCIndex] = useState(0);
+  const [soundOn, setSoundOn] = useState(isMapSoundOn);
+  useEffect(() => subscribeMapSound(setSoundOn), []);
   const [answers, setAnswers] = useState<ChallengeAnswer[]>([]);
   const challengeOn = mode === 'challenge';
   const question = map.challenge[cIndex];
@@ -143,6 +146,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   }, [fitWidth, clampView, aspect]);
 
   const sizedRef = useRef(false);
+  const introPending = useRef(false);
   useEffect(() => {
     const element = stageRef.current;
     if (!element) return;
@@ -150,7 +154,14 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       const rect = entries[0]?.contentRect;
       if (!rect || rect.width === 0 || rect.height === 0) return;
       const nextAspect = rect.width / rect.height;
-      if (!sizedRef.current) setView(homeView(nextAspect));
+      if (!sizedRef.current) {
+        // Open slightly closer, then settle back: the map arrives instead of just appearing.
+        const home = homeView(nextAspect);
+        const w = home.w * 0.8;
+        const h = home.h * 0.8;
+        setView(prefersReducedMotion() ? home : clampView({ x: home.x + (home.w - w) / 2, y: home.y + (home.h - h) / 2, w, h }, nextAspect));
+        introPending.current = !prefersReducedMotion();
+      }
       else setView(current => clampView({ ...current, h: current.w / nextAspect }, nextAspect));
       sizedRef.current = true;
       setSize({ w: rect.width, h: rect.height });
@@ -170,16 +181,28 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     animationDone.current = null;
   }, []);
 
-  const animateTo = useCallback((target: View, duration = 320): Promise<void> => new Promise(resolve => {
+  // `fly` lifts the camera on long moves (zoom out, travel, zoom in), like a map app.
+  // `linear` is for slow drifts that must never look like a stop.
+  const animateTo = useCallback((target: View, duration = 320, style: 'auto' | 'fly' | 'linear' = 'auto'): Promise<void> => new Promise(resolve => {
     cancelAnimation();
     if (prefersReducedMotion() || duration <= 0) { setView(target); resolve(); return; }
     animationDone.current = resolve;
     const from = viewRef.current;
     const start = performance.now();
+    const fromCx = from.x + from.w / 2;
+    const fromCy = from.y + from.h / 2;
+    const toCx = target.x + target.w / 2;
+    const toCy = target.y + target.h / 2;
+    const travel = Math.hypot(toCx - fromCx, toCy - fromCy);
+    const lift = style === 'fly' ? Math.min(0.55, travel / Math.max(from.w, target.w) * 0.35) : 0;
     const step = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
-      const e = duration > 500 ? easeInOut(p) : 1 - Math.pow(1 - p, 3);
-      setView({
+      const e = style === 'linear' ? p : duration > 500 ? easeInOut(p) : 1 - Math.pow(1 - p, 3);
+      const w = (from.w + (target.w - from.w) * e) * (1 + lift * Math.sin(Math.PI * e));
+      const h = w / (from.w / from.h);
+      const cx = fromCx + (toCx - fromCx) * e;
+      const cy = fromCy + (toCy - fromCy) * e;
+      setView(lift > 0 ? clampView({ x: cx - w / 2, y: cy - h / 2, w, h }, from.w / from.h) : {
         x: from.x + (target.x - from.x) * e,
         y: from.y + (target.y - from.y) * e,
         w: from.w + (target.w - from.w) * e,
@@ -194,7 +217,13 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       }
     };
     animationRef.current = requestAnimationFrame(step);
-  }), [cancelAnimation]);
+  }), [cancelAnimation, clampView]);
+
+  useEffect(() => {
+    if (size.w === 0 || !introPending.current) return;
+    introPending.current = false;
+    void animateTo(homeView(size.w / size.h), 2600);
+  }, [size, animateTo, homeView]);
 
   const initialEvent = useMemo(
     () => map.timeline.find(item => places.find(place => place.id === item.placeId)?.tone === 'event') ?? map.timeline[0],
@@ -290,7 +319,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (place && reveal) revealPlace(place);
   }, [places, revealPlace, classroom]);
 
-  const onPinSelect = (id: string) => { stopTour(); buzz(); selectPlace(id); };
+  const onPinSelect = (id: string) => { stopTour(); buzz(); playMapSound('select'); selectPlace(id); };
 
   // --- Time: slider, events, tour ---------------------------------------------------------------
   const activeIndex = useMemo(() => {
@@ -305,18 +334,27 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (previousActive.current === activeIndex) return;
     previousActive.current = activeIndex;
     if (suppressAuto.current || challengeOn || !timeOn) return;
-    selectPlace(map.timeline[activeIndex].placeId);
-  }, [activeIndex, challengeOn, timeOn, selectPlace, map.timeline]);
+    const placeId = map.timeline[activeIndex].placeId;
+    playMapSound(places.find(place => place.id === placeId)?.tone === 'event' ? 'drum' : 'milestone');
+    selectPlace(placeId);
+  }, [activeIndex, challengeOn, timeOn, selectPlace, map.timeline, places]);
+
+  const arrivalSound = useCallback((index: number) => {
+    const placeId = map.timeline[index].placeId;
+    playMapSound(places.find(place => place.id === placeId)?.tone === 'event' ? 'drum' : 'milestone');
+  }, [map.timeline, places]);
 
   const goToEvent = useCallback(async (index: number, ms: number) => {
     const item = map.timeline[index];
     suppressAuto.current = true;
-    selectPlace(item.placeId);
+    playMapSound('whoosh');
     await Promise.all([
       tweenYear(item.year + EVENT_SETTLE, ms),
-      animateTo(cameraView(item.camera), Math.max(900, ms)),
+      animateTo(cameraView(item.camera), Math.max(900, ms), 'fly'),
     ]);
-  }, [map.timeline, selectPlace, tweenYear, animateTo, cameraView]);
+    selectPlace(item.placeId);
+    arrivalSound(index);
+  }, [map.timeline, selectPlace, tweenYear, animateTo, cameraView, arrivalSound]);
 
   const jumpToEvent = useCallback(async (index: number) => {
     stopTour();
@@ -326,26 +364,44 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (tourToken.current === token) suppressAuto.current = false;
   }, [stopTour, goToEvent, map.timeline]);
 
+  // The tour never stands still: the camera lifts and flies between events, and while a card is
+  // being read the camera keeps pushing in slowly and the year keeps creeping forward.
   const startTour = useCallback(async () => {
     if (challengeOn) return;
     tourToken.current += 1;
     const token = tourToken.current;
     const alive = () => tourToken.current === token;
+    suppressAuto.current = true;
     setTourRunning(true);
+    setSelectedId(null);
+    playMapSound('start');
+    const first = map.timeline[0];
+    // Opening: wind the clock back to the start while the camera lifts to the whole region.
+    await Promise.all([
+      tweenYear(map.time.start, 900),
+      animateTo(homeView(aspect), 900, 'fly'),
+    ]);
+    if (!alive()) return;
     for (let i = 0; i < map.timeline.length; i += 1) {
-      const gap = i === 0
-        ? Math.abs(yearRef.current - (map.timeline[0].year + EVENT_SETTLE))
-        : map.timeline[i].year - map.timeline[i - 1].year;
-      await goToEvent(i, clamp(gap * 60, 1500, 3600));
+      const item = map.timeline[i];
+      const gap = i === 0 ? first.year - map.time.start + EVENT_SETTLE : item.year - map.timeline[i - 1].year;
+      await goToEvent(i, clamp(gap * 70, 1700, 3800));
       if (!alive()) return;
-      await wait(language === 'ar' ? 5600 : 4600);
+      const dwell = language === 'ar' ? 5200 : 4200;
+      const here = viewRef.current;
+      const push = clampView({ x: here.x + here.w * 0.05, y: here.y + here.h * 0.05, w: here.w * 0.9, h: here.h * 0.9 }, aspect);
+      await Promise.all([
+        animateTo(push, dwell, 'linear'),
+        tweenYear(Math.min(item.year + 0.95, map.time.lastYear + 0.99), dwell),
+      ]);
       if (!alive()) return;
     }
-    await animateTo(homeView(aspect), 1100);
+    playMapSound('whoosh');
+    await animateTo(homeView(aspect), 1400, 'fly');
     if (!alive()) return;
     suppressAuto.current = false;
     setTourRunning(false);
-  }, [challengeOn, map.timeline, goToEvent, language, animateTo, homeView, aspect]);
+  }, [challengeOn, map.timeline, map.time, goToEvent, language, animateTo, tweenYear, homeView, aspect, clampView]);
 
   const toggleTour = () => { if (tourRunning) stopTour(); else void startTour(); };
 
@@ -353,6 +409,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     stopTour();
     cancelYearTween();
     suppressAuto.current = false;
+    if (Math.floor(value) !== Math.floor(yearRef.current)) playMapSound('tick');
     setYear(value);
   };
 
@@ -361,6 +418,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   // --- Challenge --------------------------------------------------------------------------------
   const enterChallenge = () => {
     stopTour();
+    playMapSound('start');
     setMode('challenge');
     setCIndex(0);
     setAnswers([]);
@@ -378,6 +436,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   };
   const nextQuestion = () => {
     const next = cIndex + 1;
+    playMapSound('next');
     setCIndex(next);
     if (next < map.challenge.length) void animateTo(homeView(aspect), 500);
   };
@@ -394,6 +453,17 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       return next;
     });
     buzz();
+    playMapSound('drop');
+    window.setTimeout(() => playMapSound(correct ? 'correct' : 'wrong'), 560);
+    if (correct) {
+      window.setTimeout(() => {
+        void import('canvas-confetti').then(module => module.default({
+          particleCount: 36, spread: 70, startVelocity: 22, ticks: 90, scalar: 0.8,
+          origin: { x: clientX / window.innerWidth, y: clientY / window.innerHeight },
+          colors: [GOOD, PALETTE.seljuk, '#1f5f63'],
+        }));
+      }, 560);
+    }
     // Show the answer and the right place together.
     const [tx, ty] = projectAnatolia(question.lon, question.lat);
     const r = question.radiusKm * ANATOLIA_UNITS_PER_KM;
@@ -426,9 +496,10 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (!next) return;
     stopTour();
     buzz();
+    playMapSound('reveal');
     selectPlace(next.id, true);
   };
-  const hideAll = () => { setRevealed(new Set()); setSelectedId(null); };
+  const hideAll = () => { playMapSound('hide'); setRevealed(new Set()); setSelectedId(null); };
 
   // --- Pointer: drag to pan, pinch and wheel to zoom, tap to answer ------------------------------
   const pointers = useRef(new Map<number, { x: number; y: number }>());
@@ -596,19 +667,45 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
         @keyframes story-map-march { to { stroke-dashoffset: -28 } }
         @keyframes story-map-ink { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }
         @keyframes story-map-landfade { from { opacity: 0 } to { opacity: 1 } }
-        @keyframes story-map-drop { 0% { transform: translateY(-28px) scale(.4); opacity: 0 } 60% { transform: translateY(2px) scale(1.08); opacity: 1 } 100% { transform: none; opacity: 1 } }
-        .story-map-pulse { transform-box: fill-box; transform-origin: center; animation: story-map-pulse 2.2s ease-out infinite; }
+        @keyframes story-map-drop { 0% { transform: translateY(-46px) scale(.5); opacity: 0 } 55% { transform: translateY(0) scale(1); opacity: 1 } 72% { transform: translateY(-7px) scale(1.04) } 86% { transform: translateY(0) scale(.98) } 100% { transform: none; opacity: 1 } }
+        @keyframes story-map-land { 0% { transform: scale(.6); opacity: .7 } 100% { transform: scale(2.4); opacity: 0 } }
+        @keyframes story-map-ripple { 0% { transform: scale(1); opacity: .7 } 100% { transform: scale(2.6); opacity: 0 } }
+        @keyframes story-map-pop { 0% { transform: scale(.2) } 60% { transform: scale(1.35) } 100% { transform: scale(1) } }
+        @keyframes story-map-grow { 0% { transform: scale(0); opacity: 0 } 65% { transform: scale(1.06); opacity: 1 } 100% { transform: scale(1); opacity: 1 } }
+        @keyframes story-map-line { from { stroke-dashoffset: var(--len) } to { stroke-dashoffset: 0 } }
+        @keyframes story-map-fade { from { opacity: 0 } to { opacity: 1 } }
+        @keyframes story-map-tapring { 0% { transform: scale(.6); opacity: .85 } 100% { transform: scale(4.2); opacity: 0 } }
+        @keyframes story-map-pinland { 0% { transform: translateY(-34px) scale(.4); opacity: 0 } 55% { transform: translateY(0) scale(1.08); opacity: 1 } 75% { transform: translateY(-5px) } 100% { transform: none; opacity: 1 } }
+        @keyframes story-map-shake { 0%, 100% { transform: translateX(0) } 20% { transform: translateX(-5px) } 40% { transform: translateX(5px) } 60% { transform: translateX(-3px) } 80% { transform: translateX(2px) } }
+        @keyframes story-map-cue { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,.5) } 50% { transform: scale(1.12); box-shadow: 0 0 0 7px rgba(255,255,255,0) } }
+        .story-map-pulse { transform-box: fill-box; transform-origin: center; animation: story-map-pulse 2.6s ease-out infinite; }
         .story-map-march { animation: story-map-march 1.6s linear infinite; }
         .story-map-ink { animation: story-map-ink 2.1s ease-in-out both; }
         .story-map-landfade { animation: story-map-landfade 1.5s ease-out .6s both; }
-        .story-map-drop { transform-box: fill-box; transform-origin: 50% 100%; animation: story-map-drop .6s cubic-bezier(.2,.9,.3,1.2) both; }
+        .story-map-drop { transform-box: fill-box; transform-origin: 50% 100%; animation: story-map-drop .75s cubic-bezier(.3,.7,.4,1) both; }
+        .story-map-land { transform-box: fill-box; transform-origin: center; animation: story-map-land .7s ease-out both; opacity: 0; }
+        .story-map-ripple { transform-box: fill-box; transform-origin: center; animation: story-map-ripple 1s ease-out both; }
+        .story-map-pop { transform-box: fill-box; transform-origin: center; animation: story-map-pop .45s cubic-bezier(.3,1.6,.5,1) both; }
+        .story-map-grow { transform-box: fill-box; transform-origin: center; animation: story-map-grow .7s cubic-bezier(.2,.9,.3,1.2) .55s both; }
+        .story-map-line { animation: story-map-line .5s ease-out .3s both; }
+        .story-map-fade { animation: story-map-fade .4s ease-out both; opacity: 0; }
+        .story-map-tapring { transform-box: fill-box; transform-origin: center; animation: story-map-tapring .8s ease-out both; }
+        .story-map-pinland { transform-box: fill-box; transform-origin: center; animation: story-map-pinland .55s cubic-bezier(.3,.8,.4,1) both; }
+        .story-map-shake { animation: story-map-pinland .55s cubic-bezier(.3,.8,.4,1) both, story-map-shake .45s ease-in-out .6s both; }
+        .story-map-cue { animation: story-map-cue 1.6s ease-in-out infinite; }
+        .story-map-selring { transform-box: fill-box; transform-origin: center; opacity: 0; transform: scale(.7); transition: opacity .25s, transform .35s cubic-bezier(.3,1.5,.5,1); }
+        .story-map-selring[data-on="1"] { opacity: 1; transform: scale(1); }
+        .story-map-body { transform-box: fill-box; transform-origin: center; transition: transform .3s cubic-bezier(.3,1.5,.5,1); }
+        .story-map-body[data-on="1"] { transform: scale(1.14); }
+        [data-map-pin]:hover .story-map-body[data-on="0"] { transform: scale(1.07); }
+        [data-map-pin]:focus-visible .story-map-selring { opacity: 1; transform: scale(1); }
         .story-map-range { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; margin: 0; background: transparent; cursor: pointer; }
         .story-map-range::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(to right, var(--brand-600) var(--p), var(--brand-200) var(--p)); }
         .story-map-range::-moz-range-track { height: 6px; border-radius: 999px; background: linear-gradient(to right, var(--brand-600) var(--p), var(--brand-200) var(--p)); }
         .story-map-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border-radius: 999px; background: var(--brand-700); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
         .story-map-range::-moz-range-thumb { width: 16px; height: 16px; border-radius: 999px; background: var(--brand-700); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
         .story-map-range:focus-visible { outline: 2px solid var(--brand-500); outline-offset: 4px; border-radius: 999px; }
-        @media (prefers-reduced-motion: reduce) { .story-map-pulse, .story-map-march, .story-map-ink, .story-map-landfade, .story-map-drop { animation: none; } }
+        @media (prefers-reduced-motion: reduce) { .story-map-pulse, .story-map-march, .story-map-ink, .story-map-landfade, .story-map-drop, .story-map-land, .story-map-ripple, .story-map-pop, .story-map-line, .story-map-tapring, .story-map-pinland, .story-map-shake, .story-map-cue { animation: none; } .story-map-grow, .story-map-fade { animation: none; opacity: 1; } }
       `}</style>
 
       {/* Title row, matching the chapter pages */}
@@ -804,18 +901,21 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onPinSelect(place.id); }
                   }}
                 >
-                  <g className="story-map-drop" style={{ animationDelay: `${(classroom ? 0 : 0.9) + (classroom ? 0 : index * 0.12)}s` }}>
+                  <g className="story-map-drop" style={{ animationDelay: `${(classroom ? 0 : 0.9) + (classroom ? 0 : index * 0.14)}s` }}>
+                    {!classroom && <circle className="story-map-land" r={PIN} fill="none" stroke={fill} strokeWidth={2.5} style={{ animationDelay: `${0.9 + index * 0.14 + 0.38}s` }} />}
                     {!isVisited && !isSelected && (
                       <circle className="story-map-pulse" r={PIN + 1} fill="none" stroke={fill} strokeWidth={2} />
                     )}
-                    <circle className="ring" r={PIN + 6} fill="none" stroke="var(--brand-500)" strokeWidth={2.5} opacity={isSelected ? 1 : 0} />
-                    <g transform={isSelected ? 'scale(1.12)' : undefined} filter={`url(#${uid}-shadow)`}>
+                    {isSelected && <circle key={`rp-${tourRunning}-${selectedId}`} className="story-map-ripple" r={PIN} fill="none" stroke={fill} strokeWidth={2.5} />}
+                    <circle className="ring story-map-selring" r={PIN + 6} fill="none" stroke="var(--brand-500)" strokeWidth={2.5} data-on={isSelected ? '1' : '0'} />
+                    <g className="story-map-body" data-on={isSelected ? '1' : '0'} filter={`url(#${uid}-shadow)`}>
                       <circle r={PIN + 2.5} fill="#fffdf7" />
                       <circle r={PIN - 1} fill={fill} />
                       <g color="#ffffff">
                         <MapGlyph icon={place.icon} size={20} x={-10} y={-10} strokeWidth={2} />
                       </g>
                       <g transform={`translate(${PIN - 2} ${-(PIN - 2)})`}>
+                        <g key={isVisited ? 'seen' : 'new'} className={isVisited ? 'story-map-pop' : undefined}>
                         <circle r={8.5} fill={isVisited ? GOOD : '#fffdf7'} stroke={isVisited ? '#fffdf7' : fill} strokeWidth={1.6} />
                         {isVisited ? (
                           <path d="M-3.6 0.2 L-1 2.8 L3.8 -2.4" fill="none" stroke="#ffffff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
@@ -824,6 +924,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                             {formatNumber(index + 1)}
                           </text>
                         )}
+                        </g>
                       </g>
                     </g>
                     <text
@@ -846,24 +947,54 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               );
             })}
 
-            {/* Challenge: the learner's answer and the right place */}
+            {/* Challenge: your tap, the right place, and the distance between them. It plays out in order:
+                your pin lands, a line draws, the green circle grows, then the labels appear. */}
             {challengeOn && answer && question && (() => {
               const [tx, ty] = projectAnatolia(question.lon, question.lat);
               const [ax, ay] = projectAnatolia(answer.lon, answer.lat);
               const r = question.radiusKm * ANATOLIA_UNITS_PER_KM;
               const colour = answer.correct ? GOOD : PALETTE.mongol;
+              const length = Math.hypot(tx - ax, ty - ay);
+              const km = `${formatNumber(Math.round(answer.distanceKm))} ${t('map.km')}`;
+              const tag = (text: string, fill: string, y: number, delay: string) => (
+                <text y={y} textAnchor="middle" fontSize={12} fontWeight={700} fill={fill} stroke={PALETTE.halo} strokeWidth={4} paintOrder="stroke" strokeLinejoin="round" className="story-map-fade" style={{ fontFamily: svgFont, animationDelay: delay }}>
+                  {text}
+                </text>
+              );
               return (
-                <g>
-                  <circle cx={tx} cy={ty} r={r} fill={GOOD} fillOpacity={0.16} stroke={GOOD} strokeWidth={2.2} strokeDasharray="6 5" vectorEffect="non-scaling-stroke" />
-                  {!answer.correct && <line x1={ax} y1={ay} x2={tx} y2={ty} stroke={PALETTE.label} strokeOpacity={0.55} strokeWidth={1.8} strokeDasharray="3 5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />}
-                  <g transform={`translate(${tx} ${ty}) scale(${px})`}>
-                    <circle r={5} fill={GOOD} stroke="#fff" strokeWidth={2} />
+                <g key={`answer-${cIndex}`}>
+                  <g transform={`translate(${tx} ${ty})`}>
+                    <circle className="story-map-grow" r={r} fill={GOOD} fillOpacity={0.18} stroke={GOOD} strokeWidth={2.2} strokeDasharray="6 5" vectorEffect="non-scaling-stroke" />
                   </g>
-                  <g transform={`translate(${ax} ${ay}) scale(${px})`} filter={`url(#${uid}-shadow)`}>
-                    <circle r={11} fill="#fff" stroke={colour} strokeWidth={3.5} />
-                    {answer.correct
-                      ? <path d="M-4.5 0.4 L-1.4 3.4 L4.6 -3" fill="none" stroke={colour} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-                      : <path d="M-4 -4 L4 4 M4 -4 L-4 4" fill="none" stroke={colour} strokeWidth={2.6} strokeLinecap="round" />}
+                  {!answer.correct && length > 1 && (
+                    <line
+                      className="story-map-line"
+                      x1={ax} y1={ay} x2={tx} y2={ty}
+                      stroke={PALETTE.label} strokeOpacity={0.6} strokeWidth={2 * px} strokeLinecap="round"
+                      strokeDasharray={length}
+                      style={{ '--len': length } as React.CSSProperties}
+                    />
+                  )}
+                  <g transform={`translate(${tx} ${ty}) scale(${px})`}>
+                    <circle className="story-map-fade" r={5} fill={GOOD} stroke="#fff" strokeWidth={2} style={{ animationDelay: '0.6s' }} />
+                  </g>
+                  <g transform={`translate(${tx} ${ty - r}) scale(${px})`}>{tag(t('map.rightPlace'), GOOD, -9, '0.95s')}</g>
+                  {!answer.correct && length > 1 && (
+                    <g transform={`translate(${(ax + tx) / 2} ${(ay + ty) / 2}) scale(${px})`} className="story-map-fade" style={{ animationDelay: '0.95s' }}>
+                      <rect x={-27} y={-11} width={54} height={22} rx={11} fill="#fffdf7" stroke={PALETTE.label} strokeOpacity={0.35} />
+                      <text y={4.5} textAnchor="middle" fontSize={12} fontWeight={700} fill={PALETTE.label} style={{ fontFamily: svgFont }}>{km}</text>
+                    </g>
+                  )}
+                  <g transform={`translate(${ax} ${ay}) scale(${px})`}>
+                    <circle className="story-map-tapring" r={11} fill="none" stroke={colour} strokeWidth={2.5} />
+                    <circle className="story-map-tapring" r={11} fill="none" stroke={colour} strokeWidth={2.5} style={{ animationDelay: '0.14s' }} />
+                    <g className={answer.correct ? 'story-map-pinland' : 'story-map-pinland story-map-shake'} filter={`url(#${uid}-shadow)`}>
+                      <circle r={11} fill="#fff" stroke={colour} strokeWidth={3.5} />
+                      {answer.correct
+                        ? <path d="M-4.5 0.4 L-1.4 3.4 L4.6 -3" fill="none" stroke={colour} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
+                        : <path d="M-4 -4 L4 4 M4 -4 L-4 4" fill="none" stroke={colour} strokeWidth={2.6} strokeLinecap="round" />}
+                    </g>
+                    {tag(t('map.yourAnswer'), colour, 30, '0.5s')}
                   </g>
                 </g>
               );
@@ -881,6 +1012,10 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
             <button type="button" onClick={() => { stopTour(); zoomBy(0.7); }} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-11 w-11 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">+</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
             <button type="button" onClick={() => { stopTour(); zoomBy(1 / 0.7); }} disabled={!zoomed} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-11 w-11 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">−</button>
+            <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
+            <button type="button" onClick={() => setMapSoundOn(!soundOn)} aria-pressed={soundOn} aria-label={soundOn ? t('map.soundOff') : t('map.soundOn')} title={soundOn ? t('map.soundOff') : t('map.soundOn')} className="flex h-11 w-11 items-center justify-center text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
+              {soundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
+            </button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
             <button type="button" onClick={resetView} disabled={isHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-11 w-11 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
               <RotateCcw size={18} />
@@ -917,6 +1052,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               index={cIndex}
               total={map.challenge.length}
               answer={answer}
+              results={answers}
               done={challengeDone}
               score={score}
               onNext={nextQuestion}
@@ -938,9 +1074,28 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                   <Target size={22} aria-hidden="true" />
                 </span>
                 <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{t('map.challengeTitle')}</h4>
-                <p className={cn('font-serif text-wood/80', language === 'ar' ? 'text-[18px] leading-[1.9]' : 'text-[15px] leading-[1.7] sm:text-[16px]')}>
-                  {t('map.challengeText')}
-                </p>
+                <ol className="flex flex-col gap-1.5" aria-label={t('map.challengeText')}>
+                  {(['map.step1', 'map.step2', 'map.step3'] as const).map((key, step) => {
+                    const activeStep = challengeDone ? -1 : answer ? 2 : 1;
+                    const on = step === activeStep || (step === 0 && !answer && !challengeDone);
+                    return (
+                      <li key={key} className={cn('flex items-center gap-2.5 text-wood transition-opacity', on ? 'opacity-100' : 'opacity-45')}>
+                        <span className={cn('flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-display text-[12px] font-bold', on ? 'bg-brand-700 text-white' : 'bg-brand-200 text-brand-800')}>{formatNumber(step + 1)}</span>
+                        <span className={cn('font-serif', language === 'ar' ? 'text-[16px] leading-snug' : 'text-[14px] leading-snug')}>{t(key)}</span>
+                      </li>
+                    );
+                  })}
+                </ol>
+                <div className="flex flex-wrap gap-x-4 gap-y-1.5 rounded-xl border border-brand-200/80 bg-white/70 px-3 py-2 text-[12px] text-wood/85">
+                  <span className="flex items-center gap-1.5">
+                    <svg width="16" height="16" viewBox="-9 -9 18 18" aria-hidden="true"><circle r="6.5" fill="#fff" stroke={PALETTE.mongol} strokeWidth="2.5" /></svg>
+                    {t('map.yourAnswer')}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <svg width="18" height="18" viewBox="-9 -9 18 18" aria-hidden="true"><circle r="7" fill={GOOD} fillOpacity="0.2" stroke={GOOD} strokeWidth="1.8" strokeDasharray="3 2.5" /></svg>
+                    {t('map.rightPlace')}
+                  </span>
+                </div>
                 <ol className="flex flex-col gap-1.5">
                   {map.challenge.map((item, index) => {
                     const result = answers[index];
