@@ -64,7 +64,7 @@ export const aboutIntro = {
     en: ['5 stories', 'A2 · B1 · B2', 'English and Arabic', '15 levelled books'],
     ar: ['٥ قصص', 'A2 · B1 · B2', 'الإنجليزية والعربية', '١٥ كتابًا متدرّجًا بلغتين'],
   },
-  videoUrl: 'https://youtu.be/d0Cqec-UlY0',
+  videoId: 'd0Cqec-UlY0',
 };
 
 const editor: Localized = { en: 'Editor', ar: 'التحرير' };
