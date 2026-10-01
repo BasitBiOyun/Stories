@@ -47,8 +47,37 @@ import {
   abrahamB1LanguageFocusChapter12Ar,
   abrahamB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { abrahamB1StoryMapLayout } from './storyMap';
+import { abrahamB1StoryMapCopyEn } from './en/storyMap';
+import { abrahamB1StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
+
+// Interactive map page, placed right after chapter 1 (where Babylon and Mesopotamia are first named) as a preview of the journey.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 1;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Abraham’s Journey',
+  subtitle: 'Map · Chapters 1–13',
+  content: '',
+  map: buildStoryMap(abrahamB1StoryMapLayout, abrahamB1StoryMapCopyEn, 'Abraham B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ إِبْراهيمَ عَلَيْهِ السَّلامُ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 13',
+  content: '',
+  map: buildStoryMap(abrahamB1StoryMapLayout, abrahamB1StoryMapCopyAr, 'Abraham B1 AR'),
+};
 
 const englishLanguageFocus = {
   ...abrahamB1LanguageFocusExercises,
@@ -80,7 +109,7 @@ const arabicLanguageFocus = {
   ...abrahamB1LanguageFocusChapter13Ar,
 };
 
-const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
+const buildEnglishPages = (): PageData[] => withMapPage(abrahamB1Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = englishLanguageFocus[page.id];
     return {
@@ -99,9 +128,9 @@ const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsPolished };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(abrahamB1PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = arabicLanguageFocus[page.id];
     return {
@@ -120,7 +149,7 @@ const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsArPolished };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const abrahamB1BookDataEn: BookData = {
   id: 'b1-abraham-en',

@@ -29,6 +29,9 @@ const PIN = 17;
 const GOOD = '#0f8a5f';
 
 // Soft atlas palette, fixed so the map reads the same in every collection; markers take the book accent.
+/** How far (in map units) the base map fades into the sea at its edges. */
+const EDGE_FADE = 70;
+
 const PALETTE = {
   seaTop: '#d9ebef',
   seaBottom: '#c3dde4',
@@ -840,6 +843,29 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                   </g>
                 );
               })}
+            </g>
+
+            {/* The base map fades into the sea at its edges, so a wide screen never shows a cut coastline */}
+            <g pointerEvents="none" aria-hidden="true">
+              {([
+                ['l', 1, 0, 0, 0],
+                ['r', 0, 0, 1, 0],
+                ['t', 0, 1, 0, 0],
+                ['b', 0, 0, 0, 1],
+              ] as const).map(([side, x1, y1, x2, y2]) => (
+                <linearGradient key={side} id={`${uid}-edge-${side}`} x1={x1} y1={y1} x2={x2} y2={y2}>
+                  <stop offset="0" stopColor={PALETTE.seaBottom} stopOpacity="0" />
+                  <stop offset="1" stopColor={PALETTE.seaBottom} stopOpacity="1" />
+                </linearGradient>
+              ))}
+              <rect x={-BASE.width} y={-BASE.height} width={BASE.width} height={BASE.height * 3} fill={PALETTE.seaBottom} />
+              <rect x={BASE.width} y={-BASE.height} width={BASE.width} height={BASE.height * 3} fill={PALETTE.seaBottom} />
+              <rect x={0} y={-BASE.height} width={BASE.width} height={BASE.height} fill={PALETTE.seaBottom} />
+              <rect x={0} y={BASE.height} width={BASE.width} height={BASE.height} fill={PALETTE.seaBottom} />
+              <rect x={0} y={0} width={EDGE_FADE} height={BASE.height} fill={`url(#${uid}-edge-l)`} />
+              <rect x={BASE.width - EDGE_FADE} y={0} width={EDGE_FADE} height={BASE.height} fill={`url(#${uid}-edge-r)`} />
+              <rect x={0} y={0} width={BASE.width} height={EDGE_FADE} fill={`url(#${uid}-edge-t)`} />
+              <rect x={0} y={BASE.height - EDGE_FADE} width={BASE.width} height={EDGE_FADE} fill={`url(#${uid}-edge-b)`} />
             </g>
 
             {/* Historical overlays: they follow the year on the slider */}

@@ -10,10 +10,39 @@ import { abrahamA2LanguageFocusExercisesPart7, abrahamA2LanguageFocusExercisesPa
 import { abrahamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamA2LanguageFocusExercisesArPart2, abrahamA2LanguageFocusExercisesArPart3, abrahamA2LanguageFocusExercisesArPart4, abrahamA2LanguageFocusExercisesArPart5, abrahamA2LanguageFocusExercisesArPart6 } from './ar/languageFocus2';
 import { abrahamA2LanguageFocusExercisesArPart7, abrahamA2LanguageFocusExercisesArPart8, abrahamA2LanguageFocusExercisesArPart9, abrahamA2LanguageFocusExercisesArPart10, abrahamA2LanguageFocusExercisesArPart11 } from './ar/languageFocus3';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { abrahamA2StoryMapLayout } from './storyMap';
+import { abrahamA2StoryMapCopyEn } from './en/storyMap';
+import { abrahamA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 14 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(sourcePage => {
+// Interactive map page, placed right after chapter 1 (where Babylon and Mesopotamia are first named) as a preview of the journey.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 1;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Abraham’s Journey',
+  subtitle: 'Map · Chapters 1–14',
+  content: '',
+  map: buildStoryMap(abrahamA2StoryMapLayout, abrahamA2StoryMapCopyEn, 'Abraham A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ إِبْراهيمَ عَلَيْهِ السَّلامُ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 14',
+  content: '',
+  map: buildStoryMap(abrahamA2StoryMapLayout, abrahamA2StoryMapCopyAr, 'Abraham A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(abrahamA2PagesEn.map(sourcePage => {
   const page = applyHistoricalEntitiesToPage(sourcePage, 'abraham-a2', 'en');
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercises[page.id] ?? abrahamA2LanguageFocusExercisesPart2[page.id] ?? abrahamA2LanguageFocusExercisesPart3[page.id] ?? abrahamA2LanguageFocusExercisesPart4[page.id] ?? abrahamA2LanguageFocusExercisesPart5[page.id] ?? abrahamA2LanguageFocusExercisesPart6[page.id] ?? abrahamA2LanguageFocusExercisesPart7[page.id] ?? abrahamA2LanguageFocusExercisesPart8[page.id] ?? abrahamA2LanguageFocusExercisesPart9[page.id] ?? abrahamA2LanguageFocusExercisesPart10[page.id] ?? abrahamA2LanguageFocusExercisesPart11[page.id];
@@ -24,9 +53,9 @@ const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(sourcePage => {
   if (page.id === 17) return { ...page, title: 'Language Review', content: 'Review and use the grammar patterns and language functions from all fourteen chapters.', exercises: abrahamA2LanguageReviewExercises };
   if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(sourcePage => {
+const buildArabicPages = (): PageData[] => withMapPage(abrahamA2PagesAr.map(sourcePage => {
   const page = applyHistoricalEntitiesToPage(sourcePage, 'abraham-a2', 'ar');
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercisesAr[page.id] ?? abrahamA2LanguageFocusExercisesArPart2[page.id] ?? abrahamA2LanguageFocusExercisesArPart3[page.id] ?? abrahamA2LanguageFocusExercisesArPart4[page.id] ?? abrahamA2LanguageFocusExercisesArPart5[page.id] ?? abrahamA2LanguageFocusExercisesArPart6[page.id] ?? abrahamA2LanguageFocusExercisesArPart7[page.id] ?? abrahamA2LanguageFocusExercisesArPart8[page.id] ?? abrahamA2LanguageFocusExercisesArPart9[page.id] ?? abrahamA2LanguageFocusExercisesArPart10[page.id] ?? abrahamA2LanguageFocusExercisesArPart11[page.id];
@@ -37,7 +66,7 @@ const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(sourcePage => {
   if (page.id === 17) return { ...page, title: 'مراجعة اللغة', content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الأربعة عشر.', exercises: abrahamA2LanguageReviewExercisesAr };
   if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en', title: 'Stories of the Prophets: Abraham (A2)', level: 'A2', baseFontSize: 13,
