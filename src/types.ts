@@ -1,6 +1,7 @@
+import type { StoryMap } from './features/story-maps/types';
 import React from 'react';
 
-export type PageType = 'story' | 'quiz' | 'vocabulary-match' | 'exercises' | 'glossary' | 'final-challenge';
+export type PageType = 'story' | 'quiz' | 'vocabulary-match' | 'exercises' | 'glossary' | 'final-challenge' | 'map';
 
 export type Level = 'A2' | 'B1' | 'B2';
 
@@ -131,6 +132,8 @@ export interface PageData {
   animatedWords?: string[];
   syncPoints?: number[];
   timedChunks?: { start: number; end: number; text: string }[];
+  /** Interactive map shown on a `map` page between chapters. */
+  map?: StoryMap;
 }
 
 export interface StudentGuideSection {

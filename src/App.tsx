@@ -15,6 +15,7 @@ import {
   LoaderCircle,
   CheckCircle,
   Layers,
+  MapPin,
   Menu,
   X,
 } from './components/ui/icons';
@@ -43,6 +44,7 @@ import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgres
 // Loaded on first use: the teacher guide, the final challenge and the summary are large and not needed to start reading.
 const TeacherGuide = lazy(() => import('./components/layout/TeacherGuide').then(module => ({ default: module.TeacherGuide })));
 const FinalChallenge = lazy(() => import('./components/book/FinalChallenge').then(module => ({ default: module.FinalChallenge })));
+const StoryMapPage = lazy(() => import('./features/story-maps/StoryMapPage').then(module => ({ default: module.StoryMapPage })));
 const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard').then(module => ({ default: module.SummaryDashboard })));
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
@@ -549,7 +551,7 @@ const AppContent = () => {
     const target = e.target as HTMLElement | null;
     const ignore =
       !touch ||
-      Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"]')) ||
+      Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
       showSummary || isFinalChallengePage ||
       isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
@@ -723,6 +725,12 @@ const AppContent = () => {
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
           />
+        );
+      case 'map':
+        return (
+          <Suspense fallback={null}>
+            <StoryMapPage page={currentPage} />
+          </Suspense>
         );
       case 'glossary':
         return (
@@ -1165,7 +1173,7 @@ const AppContent = () => {
                               )}
                               aria-label={readPageSet.has(idx) ? (language === 'ar' ? 'مقروءة' : 'Read') : undefined}
                             >
-                              {readPageSet.has(idx) && !isActive ? '✓' : formatNumber(idx + 1)}
+                              {readPageSet.has(idx) && !isActive ? '✓' : page.type === 'map' ? <MapPin size={15} className="mx-auto" aria-label={t('map.label')} /> : formatNumber(idx + 1)}
                             </span>
                             <span className="min-w-0 flex-1 truncate font-display text-[13px] font-medium sm:text-[14px]">
                               {page.title}
