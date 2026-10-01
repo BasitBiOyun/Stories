@@ -181,7 +181,7 @@ export const abrahamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       question: 'ما الحركة أو الصيغة الصحيحة بعد «ليس»، وبعد حرف الجر «من»، ولصفة المثنى؟',
       errorItems: [
         {
-          sentence: 'فأجاب آزر: "إنها ليست ألعابٌ، بل هي آلهتنا."',
+          sentence: 'فأجاب آزر: «إنها ليست ألعابٌ، بل هي آلهتنا.»',
           error: 'ألعابٌ',
           options: ['أَلْعَابٍ', 'أَلْعَابًا'],
           answer: 1,
@@ -193,7 +193,7 @@ export const abrahamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: 'سأل إبراهيم: "ما هذا التمثال يا أبي؟ له أذُنان كبيرتان، أكبر من أذنانا."',
+          sentence: 'سأل إبراهيم: «ما هذا التمثال يا أبي؟ له أُذُنانِ كبيرتان، أكبر من أذنانا.»',
           error: 'أذنانا',
           options: ['أُذُنَيْنا', 'أُذُنُنا'],
           answer: 0,
@@ -215,11 +215,11 @@ export const abrahamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       transformItems: [
         {
           source: 'فغضب منه، وأمره ألّا يَلْعَب به مرة أخرى.',
-          frame: 'قال له والده غاضبًا: "[blank] به مرة أخرى!"',
+          frame: 'قال له والده غاضبًا: «[blank] به مرة أخرى!»',
           answers: ['لا تلعب'],
         },
         {
-          source: 'وذات يوم، سأل إبراهيم والده: "لماذا تَضَع هذه الألعاب في بيت العبادة؟"',
+          source: 'وذات يوم، سأل إبراهيم والده: «لماذا تَضَع هذه الألعاب في بيت العبادة؟»',
           frame: 'سأل إبراهيم والده لماذا [blank] تلك الألعاب في بيت العبادة.',
           answers: ['يضع', 'كان يضع'],
         },
