@@ -47,10 +47,23 @@ export interface StoryMapCamera {
   zoom: number;
 }
 
+/**
+ * A short scene that plays on the map while its event is the current one, so every date on the
+ * time line shows something happening, not only a camera move.
+ * - dawn: soft light rises over a place (a birth).
+ * - radiate: light and rings spread out from a city (a teacher's words reaching people).
+ * - journey: travel lines draw from one place to others, then a wide glow spreads (a life's legacy).
+ */
+export type StoryMapEventScene =
+  | { kind: 'dawn'; placeId: string }
+  | { kind: 'radiate'; placeId: string }
+  | { kind: 'journey'; fromId: string; toIds: string[] };
+
 export interface StoryMapTimelineEvent {
   year: number;
   placeId: string;
   camera: StoryMapCamera;
+  scene?: StoryMapEventScene;
 }
 
 export interface StoryMapTimelineItem extends StoryMapTimelineEvent {

@@ -17,7 +17,9 @@ import {
 } from './overlays';
 import { clamp, distanceKm, partialPolyline, pathFromPoints } from './geometry';
 import { MapGlyph } from './MapGlyph';
-import { EVENT_SETTLE, MapTimePanel } from './MapTimePanel';
+import { MapTimePanel } from './MapTimePanel';
+import { EVENT_SETTLE, makeTimeScale } from './timeScale';
+import { MapEventScene } from './MapEventScene';
 import { MapChallengeOverlay, type ChallengeAnswer } from './MapChallengeOverlay';
 import type { StoryMap, StoryMapCamera, StoryMapPlace } from './types';
 
@@ -242,15 +244,18 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     tween.done = null;
   }, []);
 
-  const tweenYear = useCallback((to: number, ms: number): Promise<void> => new Promise(resolve => {
+  // The year moves along the slider at an even pace, whatever the number of years in a stretch.
+  const timeScale = useMemo(() => makeTimeScale(map), [map]);
+  const tweenYear = useCallback((to: number, ms: number, linear = false): Promise<void> => new Promise(resolve => {
     cancelYearTween();
     if (prefersReducedMotion() || ms <= 0) { setYear(to); resolve(); return; }
-    const from = yearRef.current;
+    const from = timeScale.toPos(yearRef.current);
+    const target = timeScale.toPos(to);
     const start = performance.now();
     yearTween.current.done = resolve;
     const step = (now: number) => {
       const p = Math.min(1, (now - start) / ms);
-      setYear(from + (to - from) * easeInOut(p));
+      setYear(p >= 1 ? to : timeScale.toYear(from + (target - from) * (linear ? p : easeInOut(p))));
       if (p < 1) {
         yearTween.current.raf = requestAnimationFrame(step);
       } else {
@@ -260,7 +265,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       }
     };
     yearTween.current.raf = requestAnimationFrame(step);
-  }), [cancelYearTween, setYear]);
+  }), [cancelYearTween, setYear, timeScale]);
 
   useEffect(() => () => { cancelAnimation(); cancelYearTween(); }, [cancelAnimation, cancelYearTween]);
 
@@ -359,10 +364,10 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const jumpToEvent = useCallback(async (index: number) => {
     stopTour();
     const token = tourToken.current;
-    const gap = Math.abs(map.timeline[index].year + EVENT_SETTLE - yearRef.current);
-    await goToEvent(index, clamp(gap * 45, 900, 2200));
+    const gap = Math.abs(timeScale.eventPos[index] - timeScale.toPos(yearRef.current));
+    await goToEvent(index, clamp(gap * 3200, 900, 2400));
     if (tourToken.current === token) suppressAuto.current = false;
-  }, [stopTour, goToEvent, map.timeline]);
+  }, [stopTour, goToEvent, timeScale]);
 
   // The tour never stands still: the camera lifts and flies between events, and while a card is
   // being read the camera keeps pushing in slowly and the year keeps creeping forward.
@@ -375,7 +380,6 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     setTourRunning(true);
     setSelectedId(null);
     playMapSound('start');
-    const first = map.timeline[0];
     // Opening: wind the clock back to the start while the camera lifts to the whole region.
     await Promise.all([
       tweenYear(map.time.start, 900),
@@ -384,10 +388,12 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (!alive()) return;
     for (let i = 0; i < map.timeline.length; i += 1) {
       const item = map.timeline[i];
-      const gap = i === 0 ? first.year - map.time.start + EVENT_SETTLE : item.year - map.timeline[i - 1].year;
-      await goToEvent(i, clamp(gap * 70, 1700, 3800));
+      // Every stretch of the line takes the same time, so 47 quiet years do not drag.
+      await goToEvent(i, i === 0 ? 1500 : 2600);
       if (!alive()) return;
-      const dwell = language === 'ar' ? 5200 : 4200;
+      // Stay long enough for the event's scene to play and the card to be read.
+      const sceneTime = item.scene?.kind === 'journey' ? 7600 : item.scene?.kind === 'radiate' ? 5600 : 4400;
+      const dwell = sceneTime + (language === 'ar' ? 1000 : 0);
       const here = viewRef.current;
       const push = clampView({ x: here.x + here.w * 0.05, y: here.y + here.h * 0.05, w: here.w * 0.9, h: here.h * 0.9 }, aspect);
       await Promise.all([
@@ -401,7 +407,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (!alive()) return;
     suppressAuto.current = false;
     setTourRunning(false);
-  }, [challengeOn, map.timeline, map.time, goToEvent, language, animateTo, tweenYear, homeView, aspect, clampView]);
+  }, [challengeOn, map.timeline, map.time.start, map.time.lastYear, goToEvent, language, animateTo, tweenYear, homeView, aspect, clampView]);
 
   const toggleTour = () => { if (tourRunning) stopTour(); else void startTour(); };
 
@@ -862,6 +868,11 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                 <circle cx={x} cy={y} r={r} fill="var(--brand-500)" fillOpacity={0.12} stroke="var(--brand-600)" strokeOpacity={0.55} strokeWidth={1.5} strokeDasharray="5 5" vectorEffect="non-scaling-stroke" />
               );
             })()}
+
+            {/* The current event's scene: every date on the time line shows something happening */}
+            {!challengeOn && timeOn && activeEvent?.scene && Math.floor(year) >= activeEvent.year && (
+              <MapEventScene key={`scene-${activeEvent.year}`} scene={activeEvent.scene} map={map} px={px} uid={`${uid}-s${activeEvent.year}`} />
+            )}
 
             {/* Reference towns */}
             {map.towns.map(town => {
