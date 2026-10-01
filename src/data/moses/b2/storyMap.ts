@@ -32,12 +32,12 @@ export const mosesB2StoryMapLayout: StoryMapLayout = {
   ],
   // Broad journeys only: the text gives no roads.
   routes: [
-    { id: 'flight', points: [[31.2, 30.1], [32.3, 30.15], [33.5, 30.0], [34.6, 29.65], [35.05, 29.2], [35.3, 28.55]], start: 2.6, end: 3, tone: 'journey' },
-    { id: 'return', points: [[35.3, 28.5], [35.05, 29.15], [34.8, 29.5], [34.4, 29.3], [33.95, 28.95]], start: 4.6, end: 5, tone: 'journey' },
-    { id: 'toEgypt', points: [[33.8, 29.0], [33.35, 29.45], [32.75, 30.0], [32.0, 30.15], [31.25, 30.15]], start: 5.6, end: 6, tone: 'journey' },
-    { id: 'exodus', points: [[31.25, 30.05], [31.9, 29.95], [32.45, 29.72]], start: 6.6, end: 7, tone: 'journey' },
+    { id: 'flight', points: [[30.7, 30.2], [32.3, 30.15], [33.5, 30.0], [34.6, 29.65], [35.05, 29.2], [35.4, 28.3]], start: 2.6, end: 3, tone: 'journey' },
+    { id: 'return', points: [[35.4, 28.3], [35.05, 29.15], [34.8, 29.5], [34.4, 29.3], [33.85, 28.85]], start: 4.6, end: 5, tone: 'journey' },
+    { id: 'toEgypt', points: [[33.85, 28.85], [33.35, 29.45], [32.75, 30.0], [32.0, 30.15], [30.7, 30.2]], start: 5.6, end: 6, tone: 'journey' },
+    { id: 'exodus', points: [[30.7, 30.2], [31.9, 29.95], [32.6, 29.6]], start: 6.6, end: 7, tone: 'journey' },
     // "Toward the land of Canaan": the line stops short of Canaan, because the text does not say they arrived.
-    { id: 'toCanaan', points: [[32.8, 29.75], [33.3, 30.3], [33.9, 30.75], [34.45, 31.05]], start: 7.6, end: 8, tone: 'journey' },
+    { id: 'toCanaan', points: [[32.6, 29.6], [33.3, 30.3], [33.9, 30.75], [35.1, 31.65]], start: 7.6, end: 8, tone: 'journey' },
   ],
   timeline: [
     // Ch. 1–3: the Israelites in Egypt; the Nile and the Nile Delta.

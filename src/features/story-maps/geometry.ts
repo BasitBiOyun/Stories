@@ -39,3 +39,24 @@ export const partialPolyline = (points: Array<[number, number]>, t: number) => {
   }
   return { points: out, tip: out[out.length - 1], angle };
 };
+
+/** Cut a polyline short at both ends, so a line that starts or ends on a marker stops at its edge. */
+export const trimPolyline = (points: Array<[number, number]>, startCut: number, endCut: number) => {
+  const cutStart = (line: Array<[number, number]>, cut: number) => {
+    let remaining = cut;
+    for (let i = 1; i < line.length; i += 1) {
+      const [x0, y0] = line[i - 1];
+      const [x1, y1] = line[i];
+      const length = Math.hypot(x1 - x0, y1 - y0);
+      if (remaining < length) {
+        const f = remaining / length;
+        return [[x0 + (x1 - x0) * f, y0 + (y1 - y0) * f] as [number, number], ...line.slice(i)];
+      }
+      remaining -= length;
+    }
+    return line.slice(-1);
+  };
+  if (points.length < 2) return points;
+  const start = startCut > 0 ? cutStart(points, startCut) : points;
+  return endCut > 0 ? cutStart([...start].reverse(), endCut).reverse() : start;
+};
