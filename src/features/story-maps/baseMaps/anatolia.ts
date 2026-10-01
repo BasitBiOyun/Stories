@@ -19,5 +19,11 @@ export const projectAnatolia = (lon: number, lat: number): [number, number] => [
   (LAT1 - lat) * SCALE,
 ];
 
+/** Base-map units back to longitude/latitude. */
+export const unprojectAnatolia = (x: number, y: number): [number, number] => [
+  x / (COS * SCALE) + LON0,
+  LAT1 - y / SCALE,
+];
+
 /** Base-map units for one kilometre (north-south), for the scale bar. */
 export const ANATOLIA_UNITS_PER_KM = SCALE / 111.2;

@@ -5,6 +5,10 @@ export const yunusA2StoryMapLayout: StoryMapLayout = {
   baseMap: 'anatolia',
   home: { west: 25.5, east: 49, south: 32.5, north: 43.5 },
   overlays: ['seljuk-1243', 'mongol-1243'],
+  // A2 learners get the full set of tools; each is simple to use on its own.
+  features: { timeSlider: true, tour: true, challenge: true, classroom: true },
+  // The book says Yunus Emre was born in 1240 and died in 1320.
+  time: { start: 1240, lastYear: 1320, birth: 1240 },
   places: [
     { id: 'anatolia', lon: 34.1, lat: 39.35, icon: 'quill', tone: 'place', labelSide: 'left' },
     { id: 'konya', lon: 32.49, lat: 37.87, icon: 'dome', tone: 'place', labelSide: 'bottom' },
@@ -25,9 +29,17 @@ export const yunusA2StoryMapLayout: StoryMapLayout = {
     { id: 'mediterranean', lon: 30.6, lat: 34.6 },
   ],
   timeline: [
-    { year: 1240, placeId: 'anatolia' },
-    { year: 1243, placeId: 'kosedag' },
-    { year: 1273, placeId: 'konya' },
-    { year: 1320, placeId: 'anatolia' },
+    { year: 1240, placeId: 'anatolia', camera: { lon: 34.5, lat: 39.2, zoom: 1.5 } },
+    { year: 1243, placeId: 'kosedag', camera: { lon: 41.5, lat: 39.6, zoom: 1.7 } },
+    { year: 1273, placeId: 'konya', camera: { lon: 33.3, lat: 38.4, zoom: 2.3 } },
+    { year: 1320, placeId: 'anatolia', camera: { lon: 36, lat: 39, zoom: 1.2 } },
+  ],
+  // The accepted answer is a circle, wide enough for a child's finger and for places that are regions.
+  challenge: [
+    { id: 'anatolia', lon: 33.6, lat: 39.0, radiusKm: 330 },
+    { id: 'konya', lon: 32.49, lat: 37.87, radiusKm: 110 },
+    { id: 'syria', lon: 37.3, lat: 34.9, radiusKm: 230 },
+    { id: 'azerbaijan', lon: 46.29, lat: 38.08, radiusKm: 170 },
+    { id: 'kosedag', lon: 38.05, lat: 40.1, radiusKm: 110 },
   ],
 };
