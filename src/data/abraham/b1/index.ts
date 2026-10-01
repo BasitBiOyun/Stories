@@ -134,7 +134,7 @@ export const abrahamB1BookDataEn: BookData = {
 
 export const abrahamB1BookDataAr: BookData = {
   id: 'b1-abraham-ar',
-  title: 'قصص الأنبياء: إبراهيم (عليه السلام) (B1)',
+  title: 'قصص الأنبياء: إبراهيم عليه السلام (B1)',
   level: 'B1',
   baseFontSize: 14,
   pages: buildArabicPages(),

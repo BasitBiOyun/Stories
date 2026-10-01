@@ -102,7 +102,7 @@ export const mosesA2BookDataEn: BookData = {
 
 export const mosesA2BookDataAr: BookData = {
   id: 'moses-a2-ar',
-  title: 'قصص الأنبياء: موسى (عليه السلام) (A2)',
+  title: 'قصص الأنبياء: موسى عليه السلام (A2)',
   level: 'A2',
   baseFontSize: 14,
   pages: buildArabicPages(),

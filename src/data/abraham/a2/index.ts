@@ -46,7 +46,7 @@ export const abrahamA2BookDataEn: BookData = {
 };
 
 export const abrahamA2BookDataAr: BookData = {
-  id: 'a2-abraham-ar', title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)', level: 'A2', baseFontSize: 14,
+  id: 'a2-abraham-ar', title: 'قصص الأنبياء: إبراهيم عليه السلام (A2)', level: 'A2', baseFontSize: 14,
   pages: buildArabicPages(), teacherGuide: [],
   selfStudyGuide: [],
 };
