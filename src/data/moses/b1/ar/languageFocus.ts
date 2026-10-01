@@ -182,7 +182,7 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         },
         {
           source: 'لم تكنْ تعرِف ماذا تفعَل.',
-          frame: 'قالت أمّ موسى في نفسها: «لا [blank] ماذا أفعل.»',
+          frame: 'قالت أمّ موسى في نفسها: «لا [blank] ماذا أفعل».',
           answers: ['أعرف'],
         },
       ],
