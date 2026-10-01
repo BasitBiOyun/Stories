@@ -583,18 +583,13 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                   {selected.text}
                 </p>
 
-                {isTeacher && (selected.teacherNote || selected.source) && (
+                {isTeacher && selected.teacherNote && (
                   <div className="rounded-2xl border border-dashed border-brand-300 bg-white/70 p-3 text-[13px] leading-relaxed text-wood/80 sm:text-[14px]">
                     <div className="mb-1 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
                       <GraduationCap size={15} aria-hidden="true" />
                       {t('map.teacherNote')}
                     </div>
-                    {selected.teacherNote && <p>{selected.teacherNote}</p>}
-                    {selected.source && (
-                      <p className="mt-1.5 text-[12px] text-wood/60">
-                        <span className="font-semibold">{t('map.source')}:</span> <bdi dir="ltr">{selected.source}</bdi>
-                      </p>
-                    )}
+                    <p>{selected.teacherNote}</p>
                   </div>
                 )}
 
