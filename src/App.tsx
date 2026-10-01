@@ -147,6 +147,12 @@ const AppContent = () => {
     error: bookLoadError,
   } = useBookBundle(selectedProphetId, currentLevel);
 
+  // English-only books (no Arabic edition) always open in English.
+  const isEnglishOnlyBook = Boolean(selectedProphetId && getStoryMeta(selectedProphetId)?.englishOnly);
+  useEffect(() => {
+    if (isEnglishOnlyBook && language === 'ar') setLanguage('en');
+  }, [isEnglishOnlyBook, language, setLanguage]);
+
   // --- Data ---
   const currentBook = useMemo(() => {
     if (!currentBookPair) return null;
@@ -978,7 +984,7 @@ const AppContent = () => {
                 >
                   {language.toUpperCase()}
                 </span>
-              ) : (
+              ) : isEnglishOnlyBook ? null : (
                 <>
                   <button
                     type="button"

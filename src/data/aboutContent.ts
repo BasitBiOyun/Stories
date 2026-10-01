@@ -61,8 +61,8 @@ export const aboutIntro = {
     ],
   },
   facts: {
-    en: ['5 stories', 'A2 · B1 · B2', 'English and Arabic', '15 levelled books'],
-    ar: ['٥ قصص', 'A2 · B1 · B2', 'الإنجليزية والعربية', '١٥ كتابًا متدرّجًا بلغتين'],
+    en: ['6 stories', 'A2 · B1 · B2', 'English and Arabic', '16 levelled books'],
+    ar: ['٦ قصص', 'A2 · B1 · B2', 'الإنجليزية والعربية', '١٦ كتابًا متدرّجًا'],
   },
   videoId: 'd0Cqec-UlY0',
 };
