@@ -6,7 +6,7 @@ import { cn } from '../../lib/utils';
 import { getHistoricalEntity, resolveHistoricalCopy, resolveHistoricalMapAsset } from './registry';
 import { EntityMap } from './EntityMap';
 import { LearnerName } from './LearnerNameLine';
-import { TimelineStrip } from './TimelineStrip';
+import { groupColor } from './categories';
 
 export const HistoricalEntityWord = ({
   word,
@@ -83,6 +83,7 @@ export const HistoricalEntityWord = ({
   const copy = resolveHistoricalCopy(entity, locale);
   const isArabic = locale === 'ar';
   const mapAsset = resolveHistoricalMapAsset(entity, locale);
+  const colors = groupColor(entity);
 
   return (
     <span className="relative inline-block">
@@ -142,7 +143,8 @@ export const HistoricalEntityWord = ({
                 <div className="px-3.5 pt-3 pb-2">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
-                      <span className="block text-[10px] uppercase tracking-[0.18em] text-teal-300/80 font-display">
+                      <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] font-display" style={{ color: colors.onDark }}>
+                        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: colors.onDark }} />
                         {copy.kindLabel}
                       </span>
                       <h4 className={cn('mt-0.5 font-display font-bold leading-tight text-teal-200', isArabic ? 'text-xl' : 'text-lg')}>
@@ -163,6 +165,7 @@ export const HistoricalEntityWord = ({
                     focus={entity.focus}
                     showFocus={Boolean(entity.showFocus)}
                     aspect={entity.mapAspect}
+                    color={colors.base}
                     label={copy.title}
                     className="mx-3"
                   />
@@ -172,7 +175,6 @@ export const HistoricalEntityWord = ({
                   <p className={cn('font-serif leading-snug text-parchment/90', isArabic ? 'text-base' : 'text-sm')}>
                     {copy.summary}
                   </p>
-                  {entity.timeline && <TimelineStrip timeline={entity.timeline} tone="dark" className="mt-2.5" />}
                   {copy.approximateLabel && (
                     <p className="mt-1.5 text-[10px] text-teal-200/65">
                       {copy.approximateLabel}
