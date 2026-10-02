@@ -139,8 +139,9 @@ const PLACES_PAGE_COPY: Record<HistoricalEntityLocale, { title: string; content:
 };
 
 /**
- * Makes the story's places tappable and adds the Places & People page right
- * before the Final Challenge (after the Master Glossary).
+ * Makes the story's places tappable and adds the Places & People page. The
+ * pages after the story then run Knowledge Check, Master Glossary, Places &
+ * People, Vocabulary Challenge, Language Review, Final Challenge.
  */
 export const withPlacesLayer = (
   pages: PageData[],
@@ -149,10 +150,25 @@ export const withPlacesLayer = (
 ): PageData[] => {
   if (!isHistoricalEntityBookKey(bookKey)) return pages;
   const withCards = pages.map(page => applyHistoricalEntitiesToPage(page, bookKey, locale));
-  if (withCards.some(page => page.type === 'places')) return withCards;
+  if (withCards.some(page => page.type === 'places')) return inBookEndOrder(withCards);
 
   const placesPage: PageData = { id: PLACES_PAGE_ID, type: 'places', ...PLACES_PAGE_COPY[locale], entityBookKey: bookKey };
-  const finalChallenge = withCards.findIndex(page => page.type === 'final-challenge');
-  const at = finalChallenge >= 0 ? finalChallenge : withCards.length;
-  return [...withCards.slice(0, at), placesPage, ...withCards.slice(at)];
+  return inBookEndOrder([...withCards, placesPage]);
+};
+
+// The pages after the story run in the same order in every book. This matches
+// reorderPreparedLearningFlow (core/content/uiBookFinalization.ts), which later
+// puts Knowledge Check, Glossary, Vocabulary Challenge, Language Review and
+// Final Challenge back into these slots, so Places & People stays right after
+// the Master Glossary.
+const BOOK_END_ORDER: PageData['type'][] = ['quiz', 'glossary', 'places', 'vocabulary-match', 'exercises', 'final-challenge'];
+
+const inBookEndOrder = (pages: PageData[]): PageData[] => {
+  const isEnd = (page: PageData) => BOOK_END_ORDER.includes(page.type);
+  const firstEnd = pages.findIndex(isEnd);
+  if (firstEnd < 0) return pages;
+  const head = pages.slice(0, firstEnd);
+  const tail = pages.slice(firstEnd);
+  const ends = tail.filter(isEnd).sort((a, b) => BOOK_END_ORDER.indexOf(a.type) - BOOK_END_ORDER.indexOf(b.type));
+  return [...head, ...ends, ...tail.filter(page => !isEnd(page))];
 };
