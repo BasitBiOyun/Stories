@@ -447,7 +447,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     question: 'Can you keep the claim as careful as the chapter and use the passive where the subject does not do the action?',
     errorItems: [
       { sentence: 'All of the first Muslims were the poor and the slaves.', error: 'All of', options: ['Much of', 'Many of', 'Every of'], answer: 1 },
-      { sentence: 'In addition, major trade festivals such as Ukaz (Ukâz) … were also holding during the sacred months.', error: 'were also holding', options: ['were also hold', 'had also held', 'were also held'], answer: 2 },
+      { sentence: 'In addition, major trade festivals such as Ukaz … were also holding during the sacred months.', error: 'were also holding', options: ['were also hold', 'had also held', 'were also held'], answer: 2 },
       { sentence: 'Otherwise, he would leave unprotected by his tribe …', error: 'would leave unprotected', options: ['would be left unprotected', 'would left unprotected', 'would have leave unprotected'], answer: 0 },
     ],
     correctAnswer: null,

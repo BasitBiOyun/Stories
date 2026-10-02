@@ -207,7 +207,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       question: 'Which expressions build the chapter’s argument step by step?',
       formChoices: [
         {
-          sentence: 'The Creator is the true and only reality. [choice], Yunus Emre held the idea of the Unity of Existence (vahdet-i vücut).',
+          sentence: 'The Creator is the true and only reality. [choice], Yunus Emre held the idea of the Unity of Existence.',
           options: ['In contrast', 'From this perspective', 'For example'],
           answer: 1,
         },

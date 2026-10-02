@@ -59,7 +59,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
         answer: 1,
       },
       {
-        sentence: 'The Age of Ignorance is the pre-Islamic era in the Arabian Peninsula who covers the period from the 5th century to the beginning of the revelation (vahiy) in 610.',
+        sentence: 'The Age of Ignorance is the pre-Islamic era in the Arabian Peninsula who covers the period from the 5th century to the beginning of the revelation in 610.',
         error: 'who covers',
         options: ['whom covers', 'who cover', 'that covers'],
         answer: 2,
@@ -173,7 +173,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     title: 'Marking a Long History',
     instructions: 'Complete the lines from Chapter 4 with time expressions from the bank. Three words are not needed.',
     question: 'Which time expressions organise several centuries of Meccan history?',
-    fillBlanksText: '[blank] the discovery of the Zamzam water, the Jurhumites (Cürhümlüler) from Yemen settled in Mecca. … [blank], when Ishmael grew up, Abraham (as) came to the city to reconstruct the Holy Ka’ba with his son. … [blank] the rule of this tribe, people forgot the religion of Abraham (as) (monotheism) and spread idolatry throughout the city. [blank] the 5th century, the administration of Mecca and the Ka’ba passed to the Quraysh tribe.',
+    fillBlanksText: '[blank] the discovery of the Zamzam water, the Jurhumites from Yemen settled in Mecca. … [blank], when Ishmael grew up, Abraham (as) came to the city to reconstruct the Holy Ka’ba with his son. … [blank] the rule of this tribe, people forgot the religion of Abraham (as) (monotheism) and spread idolatry throughout the city. [blank] the 5th century, the administration of Mecca and the Ka’ba passed to the Quraysh tribe.',
     wordBank: ['After', 'Later', 'During', 'In', 'While', 'Since', 'Before'],
     correctAnswer: ['After', 'Later', 'During', 'In'],
     explanation: '“After + noun” places one event later than another (the settlement came after Zamzam was found). “Later” is an adverb that moves the story forward on its own. “During + noun” covers the whole length of a period (the rule of the Khuza’a). “In the 5th century” names a point on the timeline. “While” needs a clause, not a noun, and “since” as a time word needs a perfect tense, so neither fits these past simple sentences.',

@@ -7,13 +7,13 @@ export const ibnJubayrA2Pages: PageData[] = [
     type: 'story',
     title: "Al-Andalus and a Great Traveler",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch1.webp?alt=media",
-    content: `Muslims ruled some parts of Spain and Portugal from 711 to 1492. People called this land Al-Andalus (Endülüs). For 781 years of Islamic rule in Al-Andalus, Muslims, Christians (Hristiyanlar), and Jews (Yahudiler) lived side by side, and often worked, traded and studied together. They built one of the greatest cultures of the Middle Ages (Ortaçağ) in the West. They created many special works in art, architecture, medicine, literature, and philosophy. Al-Andalus was in Europe because of its location and its people, but it was a part of the Islamic West, too.
+    content: `Muslims ruled some parts of Spain and Portugal from 711 to 1492. People called this land Al-Andalus. For 781 years of Islamic rule in Al-Andalus, Muslims, Christians, and Jews lived side by side, and often worked, traded and studied together. They built one of the greatest cultures of the Middle Ages in the West. They created many special works in art, architecture, medicine, literature, and philosophy. Al-Andalus was in Europe because of its location and its people, but it was a part of the Islamic West, too.
 
 Many famous people lived in Al-Andalus. Ibn al-Arabi was a thinker and poet. Ibn Rushd was a scientist, thinker, and doctor. Ibn Tufayl was a writer and doctor.
 
-After Muslims took control of Spain in the 700s, the connection between Europe and the Middle East (Ortadoğu) became stronger. Christian, Jewish, and Muslim people traveled a lot because they wanted to trade, learn more, and visit holy places. Ibn Jubayr was also one of the most important travelers of the Middle Ages from Al-Andalus.
+After Muslims took control of Spain in the 700s, the connection between Europe and the Middle East became stronger. Christian, Jewish, and Muslim people traveled a lot because they wanted to trade, learn more, and visit holy places. Ibn Jubayr was also one of the most important travelers of the Middle Ages from Al-Andalus.
 
-When Ibn Jubayr was born in Valencia in the year 1145, Muslim Spain was rich in culture and learning. Valencia is a famous city in the east of Spain, near the sea. In the tenth century, Granada (Gırnata) was bigger than most cities in Western Europe and the east. Sevilla was also a big city with 500 bathhouses and 1,000 mosques. Córdoba (Kurtuba) had 700,000 people, so it was the largest city in Western Europe. This great culture surprised the people of that time because Muslims lived a much better life than them. Historians say that Islamic Spain brought great culture and knowledge to the rural life of Western Europe.`,
+When Ibn Jubayr was born in Valencia in the year 1145, Muslim Spain was rich in culture and learning. Valencia is a famous city in the east of Spain, near the sea. In the tenth century, Granada was bigger than most cities in Western Europe and the east. Sevilla was also a big city with 500 bathhouses and 1,000 mosques. Córdoba had 700,000 people, so it was the largest city in Western Europe. This great culture surprised the people of that time because Muslims lived a much better life than them. Historians say that Islamic Spain brought great culture and knowledge to the rural life of Western Europe.`,
     vocabulary: [
       { word: "traded", definition: "Bought and sold things." },
       { word: "location", definition: "The place where something is." },
@@ -30,7 +30,7 @@ When Ibn Jubayr was born in Valencia in the year 1145, Muslim Spain was rich in 
     type: 'story',
     title: "A Young Scholar from Granada",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch2.webp?alt=media",
-    content: `When he was young, Ibn Jubayr studied hard and learned more about Islam, languages and literature. He had a good education. When he grew up, he got a job with the government and worked as a secretary for the governor of Granada. One of his biggest dreams was to go on Hajj. He also wanted to gain new knowledge and skills during his journey to Mecca. Another goal of this trip was to get information about other Muslim lands. So, he visited great Eastern cities like Baghdad (Bağdat), Mosul (Musul), Aleppo (Halep), Jerusalem (Kudüs) and Damascus (Şam).
+    content: `When he was young, Ibn Jubayr studied hard and learned more about Islam, languages and literature. He had a good education. When he grew up, he got a job with the government and worked as a secretary for the governor of Granada. One of his biggest dreams was to go on Hajj. He also wanted to gain new knowledge and skills during his journey to Mecca. Another goal of this trip was to get information about other Muslim lands. So, he visited great Eastern cities like Baghdad, Mosul, Aleppo, Jerusalem and Damascus.
 
 When he started his long journey in 1183, he was a middle-aged man from a well-known family in Al-Andalus.`,
     vocabulary: [
@@ -48,7 +48,7 @@ When he started his long journey in 1183, he was a middle-aged man from a well-k
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch3.webp?alt=media",
     content: `Ibn Jubayr was not the first person from Al-Andalus to travel for Hajj. But he was one of the first to carefully write about his trip and share his stories with many other people. Ibn Jubayr wrote a travel diary about his journey. The name of his travel book is the Rihla. In the Arabic language, the word rihla means travel book. This book made him very famous in history, because his diary became the model for a whole new kind of travel book.
 
-Today, everyone knows this book as the Rihla of Ibn Jubayr. Ibn Jubayr wrote down everything he saw and heard almost every day while he still remembered the details. This old travel book opens a magical window into the Mediterranean (Akdeniz) journeys in the twelfth century. This helps the reader imagine everything Ibn Jubayr saw. He describes both daily life and amazing sights. For example, while you are reading his travel book, you can see big storms hitting ships and imagine large crowds of pilgrims (hacı) in Mecca. At that time, Crusaders (Haçlılar) were in Palestine. Ibn Jubayr wrote about Muslim prisoners. You can also see that Crusaders sold Muslim slaves in the market.
+Today, everyone knows this book as the Rihla of Ibn Jubayr. Ibn Jubayr wrote down everything he saw and heard almost every day while he still remembered the details. This old travel book opens a magical window into the Mediterranean journeys in the twelfth century. This helps the reader imagine everything Ibn Jubayr saw. He describes both daily life and amazing sights. For example, while you are reading his travel book, you can see big storms hitting ships and imagine large crowds of pilgrims in Mecca. At that time, Crusaders were in Palestine. Ibn Jubayr wrote about Muslim prisoners. You can also see that Crusaders sold Muslim slaves in the market.
 
 In the Middle Ages, the journey to Mecca for Hajj was very long and difficult. It was much harder than today. At the end of the twelfth century, the Mediterranean Sea and the lands around it were very dangerous. Almost the whole area was a war zone. Ibn Jubayr’s long journey took two years and three and a half months. He traveled by boat, by camel, and on foot to visit Mecca.`,
     vocabulary: [
@@ -71,9 +71,9 @@ In the Middle Ages, the journey to Mecca for Hajj was very long and difficult. I
     type: 'story',
     title: "Across the Mediterranean",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch4.webp?alt=media",
-    content: `On February 3, 1183, Ibn Jubayr left Granada and went to Ceuta (Sebte şehri). Ceuta was a Muslim city in North Africa. There, he took a Genoese (Cenova) ship and passed the islands of Sardinia (Sardinya Adası) and Sicily. While they were sailing between these islands, a terrible storm caught them. After the storm stopped, the ship continued on its way toward the island of Crete. Then, it turned south towards Egypt and finally arrived in Alexandria (İskenderiye) on March 26. At that time, traveling by sea was faster and safer than traveling by land. That’s why Ibn Jubayr followed this interesting route.
+    content: `On February 3, 1183, Ibn Jubayr left Granada and went to Ceuta. Ceuta was a Muslim city in North Africa. There, he took a Genoese ship and passed the islands of Sardinia and Sicily. While they were sailing between these islands, a terrible storm caught them. After the storm stopped, the ship continued on its way toward the island of Crete. Then, it turned south towards Egypt and finally arrived in Alexandria on March 26. At that time, traveling by sea was faster and safer than traveling by land. That’s why Ibn Jubayr followed this interesting route.
 
-In Alexandria, Ibn Jubayr went to see the famous Lighthouse of Alexandria (İskenderiye Feneri). It was still standing during that time. The very big size and beauty of the lighthouse amazed him. He wrote that it was more than 50 men tall and it was very old and strong. After he stayed there for eight days, he traveled to Cairo (Kahire).`,
+In Alexandria, Ibn Jubayr went to see the famous Lighthouse of Alexandria. It was still standing during that time. The very big size and beauty of the lighthouse amazed him. He wrote that it was more than 50 men tall and it was very old and strong. After he stayed there for eight days, he traveled to Cairo.`,
     vocabulary: [
       { word: "amazed", definition: "Surprised very much." },
     ],
@@ -87,7 +87,7 @@ In Alexandria, Ibn Jubayr went to see the famous Lighthouse of Alexandria (İske
     type: 'story',
     title: "Cairo under Saladin",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch5.webp?alt=media",
-    content: `Three days later, Ibn Jubayr arrived in Cairo. At that time, Cairo was the capital of the Ayyubid state (Eyyûbîler), and its ruler was Saladin al-Ayyubi (Selâhaddin-i Eyyûbî). Ayyubid state was a Turkish state. It ruled Egypt, the Middle East, Yemen, and North Africa between 1171 and 1462.
+    content: `Three days later, Ibn Jubayr arrived in Cairo. At that time, Cairo was the capital of the Ayyubid state, and its ruler was Saladin al-Ayyubi. Ayyubid state was a Turkish state. It ruled Egypt, the Middle East, Yemen, and North Africa between 1171 and 1462.
 
 Ibn Jubayr felt great respect for Sultan Saladin. He praised Saladin’s kindness and generosity. He told us that Sultan Saladin gave support to every single mosque, hospital, and school. Ibn Jubayr also wrote about Saladin's fair rules. He did not ask the farmers to pay the Nile water taxes. The roads were also so safe that people could travel day and night without any fear.
 
@@ -125,7 +125,7 @@ In Alexandria and Cairo, Ibn Jubayr saw many colleges and guesthouses. Saladin b
     type: 'story',
     title: "The Caravan to Mecca",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch6.webp?alt=media",
-    content: `Then, he joined a group of travelers in a camel caravan to go to the Red Sea (Kızıldeniz). Ibn Jubayr wrote about the caravans. He said that you could easily see who was rich and who was poor in caravans. You only needed to look at their tents. The tents of rich royal people were amazing. They were like beautiful moving palaces.`,
+    content: `Then, he joined a group of travelers in a camel caravan to go to the Red Sea. Ibn Jubayr wrote about the caravans. He said that you could easily see who was rich and who was poor in caravans. You only needed to look at their tents. The tents of rich royal people were amazing. They were like beautiful moving palaces.`,
     vocabulary: [
       { word: "tents", definition: "Shelters made of cloth that people sleep in outside." },
       { word: "moving palaces", definition: "Here: very big, beautiful tents that move with the caravan, like palaces." },
@@ -156,7 +156,7 @@ In Alexandria and Cairo, Ibn Jubayr saw many colleges and guesthouses. Saladin b
     type: 'story',
     title: "Medina and Baghdad",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch8.webp?alt=media",
-    content: `Then, he went to Medina (April 16, 1184) and stayed there for only five nights. From there, he joined a large group of people on a slow journey through the desert. He traveled northeast to Baghdad. He passed near the Euphrates River (Fırat Nehri). At that time, Baghdad was the capital city of the Abbasids (Abbasiler). Ibn Jubayr wrote that there were 2,000 bathhouses and eleven Friday mosques in Baghdad. He describes the city as it was about 75 years before the Mongols (Moğollar) attacked in 1258. Then, he went to northern Syria.`,
+    content: `Then, he went to Medina (April 16, 1184) and stayed there for only five nights. From there, he joined a large group of people on a slow journey through the desert. He traveled northeast to Baghdad. He passed near the Euphrates River. At that time, Baghdad was the capital city of the Abbasids. Ibn Jubayr wrote that there were 2,000 bathhouses and eleven Friday mosques in Baghdad. He describes the city as it was about 75 years before the Mongols attacked in 1258. Then, he went to northern Syria.`,
     vocabulary: [
       { word: "desert", definition: "A large, dry, hot area with sand and very little water." },
     ],
@@ -170,7 +170,7 @@ In Alexandria and Cairo, Ibn Jubayr saw many colleges and guesthouses. Saladin b
     type: 'story',
     title: "Damascus and Its Great Mosque",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch9.webp?alt=media",
-    content: `He went through Aleppo (Halep) and finally arrived in Damascus (Şam). Damascus was the first capital of the old Umayyads (Emeviler). He gives many details about the Great Mosque of Damascus (Şam Emeviyye Cami). He describes its size, roof, the dome, the courtyard, and the tall minarets. He also talks about the water basins, the pretty mosaics, the gateways, the water clock, the prayer places, the special rooms for important people, and the shops next to it. He writes a lot about this famous mosque and shows us how the mosque looked before Timur burned the city in 1401 and before the great fire of 1893.
+    content: `He went through Aleppo and finally arrived in Damascus. Damascus was the first capital of the old Umayyads. He gives many details about the Great Mosque of Damascus. He describes its size, roof, the dome, the courtyard, and the tall minarets. He also talks about the water basins, the pretty mosaics, the gateways, the water clock, the prayer places, the special rooms for important people, and the shops next to it. He writes a lot about this famous mosque and shows us how the mosque looked before Timur burned the city in 1401 and before the great fire of 1893.
 
 In the city of Damascus, Ibn Jubayr also wrote about helpful gifts of money. These gifts helped travelers and students from other countries. They could also stay in madrasas (schools) and not pay for their living costs. These places helped Muslims travel to new places for a short or long time.`,
     vocabulary: [
@@ -189,7 +189,7 @@ In the city of Damascus, Ibn Jubayr also wrote about helpful gifts of money. The
     type: 'story',
     title: "Palestine and Acre",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch10.webp?alt=media",
-    content: `From there, he went to Palestine. Palestine was under the control of the Crusaders (Haçlılar) at that time. Ibn Jubayr stayed in this Christian Crusader Kingdom of Jerusalem for about a month. During this time, he spent nearly two weeks waiting at the port city of Acre (Akkâ) because he needed good winds to sail.
+    content: `From there, he went to Palestine. Palestine was under the control of the Crusaders at that time. Ibn Jubayr stayed in this Christian Crusader Kingdom of Jerusalem for about a month. During this time, he spent nearly two weeks waiting at the port city of Acre because he needed good winds to sail.
 
 In 1184, Saladin was attacking the castle of Kerak. The Crusaders built the castle in 1142. In 1187, Saladin turned his eyes to the Crusader lands and attacked Jerusalem. Ibn Jubayr went to Mecca for the second time to thank Allah because Saladin took Jerusalem back from the Crusaders 88 years later in 1187.`,
     vocabulary: [
@@ -249,7 +249,7 @@ In fact, the weather and nature could also bring real dangers. The caravans usua
     type: 'story',
     title: "Return, Later Life, and Lessons",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch13.webp?alt=media",
-    content: `When Ibn Jubayr returned to Granada, he began writing his travel book and continued his studies. He taught hadiths (hadis) of Prophet Muhammad (pbuh). (Hadiths are the words and actions of the Prophet Muhammad.) After his wife’s death, he started his third long trip to Mecca for the pilgrimage. He stayed in Mecca for some time. Finally, he moved to Alexandria and died there in 1217. Muslim thinkers often traveled to the East for knowledge. Ibn Jubayr was also one of them.
+    content: `When Ibn Jubayr returned to Granada, he began writing his travel book and continued his studies. He taught hadiths of Prophet Muhammad (pbuh). (Hadiths are the words and actions of the Prophet Muhammad.) After his wife’s death, he started his third long trip to Mecca for the pilgrimage. He stayed in Mecca for some time. Finally, he moved to Alexandria and died there in 1217. Muslim thinkers often traveled to the East for knowledge. Ibn Jubayr was also one of them.
 
 At the start of his journey, Ibn Jubayr felt very excited about his trip. However, he never thought his Hajj would become such a big adventure. He survived a terrible shipwreck and escaped the great dangers of the desert. But outside of these dangers, his journey taught him a lot. His main goal was the Hajj, but he also gained many new experiences. For him, learning was just as important as Hajj. He completed the journey, visited Mecca for Hajj, and met other Muslims from the Islamic world. He could never find these experiences back home in Al-Andalus. In the end, he learned many things that he could not learn at home in Granada. His journey made him a wiser person.
 
@@ -290,7 +290,7 @@ Ibn Jubayr thought that other people should do the same. He told young people to
           ],
           "chapter": 1,
           "chapterTitle": "Al-Andalus and a Great Traveler",
-          "storyExample": "For 781 years of Islamic rule in Al-Andalus, Muslims, Christians (Hristiyanlar), and Jews (Yahudiler) lived side by side, and often worked, traded and studied together.",
+          "storyExample": "For 781 years of Islamic rule in Al-Andalus, Muslims, Christians, and Jews lived side by side, and often worked, traded and studied together.",
           "category": "Work and Trade"
       },
       {
@@ -494,7 +494,7 @@ Ibn Jubayr thought that other people should do the same. He told young people to
           ],
           "chapter": 3,
           "chapterTitle": "The Rihla and a Dangerous Journey",
-          "storyExample": "At that time, Crusaders (Haçlılar) were in Palestine.",
+          "storyExample": "At that time, Crusaders were in Palestine.",
           "category": "War and Safety"
       },
       {
@@ -1184,7 +1184,7 @@ Ibn Jubayr thought that other people should do the same. He told young people to
           ],
           "chapter": 10,
           "chapterTitle": "Palestine and Acre",
-          "storyExample": "During this time, he spent nearly two weeks waiting at the port city of Acre (Akkâ) because he needed good winds to sail.",
+          "storyExample": "During this time, he spent nearly two weeks waiting at the port city of Acre because he needed good winds to sail.",
           "category": "Weather and Nature"
       },
       {
@@ -1207,7 +1207,7 @@ Ibn Jubayr thought that other people should do the same. He told young people to
           ],
           "chapter": 10,
           "chapterTitle": "Palestine and Acre",
-          "storyExample": "During this time, he spent nearly two weeks waiting at the port city of Acre (Akkâ) because he needed good winds to sail.",
+          "storyExample": "During this time, he spent nearly two weeks waiting at the port city of Acre because he needed good winds to sail.",
           "category": "Travel"
       },
       {
