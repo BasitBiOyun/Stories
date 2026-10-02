@@ -48,6 +48,12 @@ export type HistoricalMapFocus =
       zoom?: number;
       arrows?: { fromX: number; fromY: number; toX: number; toY: number }[];
       pins?: { x: number; y: number; label: string }[];
+      /**
+       * Slide the map out to show lands beyond the usual frame (e.g. where the
+       * Mongols came from). x/y are the top-left corner of the view, in map
+       * percentages; scale below 1 zooms out onto the wide map.
+       */
+      view?: { x: number; y: number; scale: number };
     };
 
 export interface HistoricalEntityCopy {
@@ -55,6 +61,8 @@ export interface HistoricalEntityCopy {
   kindLabel: string;
   periodLabel: string;
   summary: string;
+  /** One more short sentence, shown on the Places page only. */
+  more?: string;
   mapAlt: string;
   approximateLabel?: string;
 }
@@ -81,4 +89,6 @@ export interface HistoricalEntity {
   /** The usual name in the learner's own language, when there is one. */
   learnerNames?: Partial<Record<LearnerLanguage, string>>;
   sources: string[];
+  /** A square picture in assets/pictures/<folder>/<name>.webp, once it has been drawn. */
+  picture?: { folder: string; name: string };
 }
