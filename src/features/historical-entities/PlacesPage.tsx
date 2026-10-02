@@ -5,6 +5,7 @@ import { cn } from '../../lib/utils';
 import type { PageData } from '../../types';
 import { EntityMap } from './EntityMap';
 import { LearnerName } from './LearnerNameLine';
+import { TimelineStrip } from './TimelineStrip';
 import { MEDITERRANEAN_MAP_ASPECT, mediterraneanContextMap } from './mediterraneanMap';
 import {
   getBookEntityIndex,
@@ -162,6 +163,7 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
                   </span>
                 </div>
                 <p className="mt-1.5 font-serif text-[15px] leading-snug text-wood/90">{selectedCopy.summary}</p>
+                {selected.entity.timeline && <TimelineStrip timeline={selected.entity.timeline} className="mt-2" />}
                 <div className="mt-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-wood/55">
                   <span className="font-bold">{chapterLine(selected.chapters)}</span>
                   <span>{selectedMap ? selectedCopy.approximateLabel : text.noMap}</span>

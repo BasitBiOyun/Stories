@@ -46,3 +46,41 @@ export const medFeature = (feature: MediterraneanFeatureId, lat: number, lon: nu
   y: round(yPercent(lat)),
   zoom,
 });
+
+type LatLon = [lat: number, lon: number];
+
+/**
+ * A people or a ruling family: round lands (radius in degrees), pins for their
+ * cities and arrows for where they came from. The title label sits at `label`.
+ */
+export const medGroup = ({
+  label,
+  zoom = 1,
+  areas = [],
+  pins = [],
+  arrows = [],
+}: {
+  label: LatLon;
+  zoom?: number;
+  areas?: { at: LatLon; radius: number; faint?: boolean }[];
+  pins?: { at: LatLon; label: string }[];
+  arrows?: { from: LatLon; to: LatLon }[];
+}): HistoricalMapFocus => ({
+  mode: 'group',
+  x: round(xPercent(label[1])),
+  y: round(yPercent(label[0])),
+  zoom,
+  areas: areas.map(area => ({
+    x: round(xPercent(area.at[1])),
+    y: round(yPercent(area.at[0])),
+    radius: round(((area.radius * PX_PER_DEGREE_LAT) / WIDTH) * 100),
+    ...(area.faint ? { faint: true } : {}),
+  })),
+  pins: pins.map(pin => ({ x: round(xPercent(pin.at[1])), y: round(yPercent(pin.at[0])), label: pin.label })),
+  arrows: arrows.map(arrow => ({
+    fromX: round(xPercent(arrow.from[1])),
+    fromY: round(yPercent(arrow.from[0])),
+    toX: round(xPercent(arrow.to[1])),
+    toY: round(yPercent(arrow.to[0])),
+  })),
+});

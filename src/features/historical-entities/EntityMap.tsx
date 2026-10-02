@@ -13,8 +13,9 @@ const HIGHLIGHT = '#e11d48';
 
 /**
  * A context map with the entity's place drawn on top: a pin for a city or a
- * building, a round soft area for a land, and the real shape of a sea, a river
- * or an island, lit up with a glow. The map zooms around the place, so the
+ * building, a round soft area for a land, the real shape of a sea, a river
+ * or an island lit up with a glow, and for a people their lands, cities and
+ * the way they came. The map zooms around the place, so the
  * pin stays where it is on the canvas.
  */
 export const EntityMap = ({
@@ -40,7 +41,10 @@ export const EntityMap = ({
   onMarkerClick?: (id: string) => void;
   className?: string;
 }) => {
-  const glowId = `entity-glow-${useId().replace(/:/g, '')}`;
+  const uid = useId().replace(/:/g, '');
+  const glowId = `entity-glow-${uid}`;
+  const arrowId = `entity-arrow-${uid}`;
+  const [aspectWidth, aspectHeight] = aspect.split('/').map(part => Number(part.trim()) || 1);
   const zoom = showFocus && focus?.zoom ? focus.zoom : 1;
   const originX = focus?.x ?? 50;
   const originY = focus?.y ?? 50;
@@ -48,6 +52,7 @@ export const EntityMap = ({
   const feature = showFocus && focus?.mode === 'feature'
     ? MEDITERRANEAN_FEATURES[focus.feature as keyof typeof MEDITERRANEAN_FEATURES]
     : undefined;
+  const group = showFocus && focus?.mode === 'group' ? focus : undefined;
 
   return (
     <div className={cn('relative overflow-hidden rounded-xl bg-[#b9d3cf]', className)} style={{ aspectRatio: aspect }}>
@@ -128,18 +133,59 @@ export const EntityMap = ({
           />
         )}
 
-        {showFocus && focus?.mode === 'circle' && (
-          <span
+        {showFocus && focus?.mode === 'circle' && <RoundArea x={focus.x} y={focus.y} radius={focus.radius} />}
+
+        {group?.areas.map((area, index) => (
+          <RoundArea key={`area-${index}`} x={area.x} y={area.y} radius={area.radius} faint={area.faint} />
+        ))}
+
+        {group?.arrows && group.arrows.length > 0 && (
+          <svg
             aria-hidden="true"
-            className="absolute aspect-square rounded-full border-2 border-dashed border-rose-700/80 bg-rose-500/20 shadow-[0_0_18px_rgba(225,29,72,0.35)]"
-            style={{
-              left: `${focus.x}%`,
-              top: `${focus.y}%`,
-              width: `${focus.radius * 2}%`,
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
+            viewBox={`0 0 ${aspectWidth} ${aspectHeight}`}
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute inset-0 h-full w-full"
+          >
+            <defs>
+              <marker id={arrowId} viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill={HIGHLIGHT} />
+              </marker>
+            </defs>
+            {group.arrows.map((arrow, index) => (
+              <line
+                key={`arrow-${index}`}
+                x1={(arrow.fromX / 100) * aspectWidth}
+                y1={(arrow.fromY / 100) * aspectHeight}
+                x2={(arrow.toX / 100) * aspectWidth}
+                y2={(arrow.toY / 100) * aspectHeight}
+                stroke={HIGHLIGHT}
+                strokeWidth={4}
+                strokeDasharray="10 7"
+                strokeLinecap="round"
+                markerEnd={`url(#${arrowId})`}
+              />
+            ))}
+          </svg>
         )}
+
+        {group?.pins.map(pin => (
+          <span
+            key={`pin-${pin.label}`}
+            aria-hidden="true"
+            className="pointer-events-none absolute"
+            style={{ left: `${pin.x}%`, top: `${pin.y}%`, transform: `scale(${1 / zoom})`, transformOrigin: '0 0' }}
+          >
+            <span className="absolute -left-[6px] -top-[6px] h-3 w-3 rounded-full border-2 border-white bg-rose-600 shadow-md" />
+            <span
+              className={cn(
+                'absolute top-0 -translate-y-1/2 whitespace-nowrap rounded bg-white/85 px-1 py-px text-[10px] font-semibold leading-tight text-stone-800 shadow-sm',
+                pin.x > 70 ? 'right-[9px]' : 'left-[9px]',
+              )}
+            >
+              {pin.label}
+            </span>
+          </span>
+        ))}
       </div>
 
       {showFocus && focus?.mode === 'point' && (
@@ -172,3 +218,17 @@ export const EntityMap = ({
     </div>
   );
 };
+
+/** A round, approximate land. `radius` is a percentage of the map width. */
+const RoundArea = ({ x, y, radius, faint = false }: { x: number; y: number; radius: number; faint?: boolean }) => (
+  <span
+    aria-hidden="true"
+    className={cn(
+      'absolute aspect-square rounded-full border-2 border-dashed',
+      faint
+        ? 'border-rose-700/45 bg-rose-500/10'
+        : 'border-rose-700/80 bg-rose-500/20 shadow-[0_0_18px_rgba(225,29,72,0.35)]',
+    )}
+    style={{ left: `${x}%`, top: `${y}%`, width: `${radius * 2}%`, transform: 'translate(-50%, -50%)' }}
+  />
+);
