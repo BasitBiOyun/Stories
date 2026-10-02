@@ -53,7 +53,10 @@ def validate_request(item: dict[str, Any]) -> tuple[str, str, str]:
         raise TtsError(f"{request_id}: narrationText is not Arabic.")
     if not storage_path or storage_path.startswith("/") or ".." in Path(storage_path).parts:
         raise TtsError(f"{request_id}: invalid storagePath.")
-    if "/arabic_audio/" not in storage_path or not storage_path.lower().endswith(".mp3"):
+    in_arabic_audio_folder = any(
+        part.lower().endswith("arabic_audio") for part in Path(storage_path).parts[:-1]
+    )
+    if not in_arabic_audio_folder or not storage_path.lower().endswith(".mp3"):
         raise TtsError(f"{request_id}: storagePath must be an .mp3 inside an arabic_audio folder.")
     return request_id, narration_text, storage_path
 
