@@ -8,6 +8,14 @@ import type { MediterraneanFeatureId } from './mediterraneanFeatures';
  */
 export const mediterraneanContextMap = new URL('./assets/maps/mediterranean-context-map.svg', import.meta.url).href;
 
+/**
+ * The same map carried on east to 127°E and from 6°N to 63°N, so a card can
+ * slide out to Central and East Asia. It sits under the context map, which
+ * covers its frame exactly; these are its edges as percentages of that frame.
+ */
+export const wideContextMap = new URL('./assets/maps/wide-context-map.svg', import.meta.url).href;
+export const WIDE_MAP_PLACEMENT = { left: -3.3333, top: -44.1043, width: 231.6667, height: 167.5978 };
+
 const WEST = -10;
 const EAST = 50;
 const SOUTH = 14;
@@ -40,7 +48,12 @@ export const medFeature = (
   lat: number,
   lon: number,
   zoom = 1,
-  extras: { arrows?: { from: LatLon; to: LatLon }[]; pins?: { at: LatLon; label: string }[] } = {},
+  extras: {
+    arrows?: { from: LatLon; to: LatLon }[];
+    pins?: { at: LatLon; label: string }[];
+    /** Slide out to a wider view: its north-west corner and its width in degrees. */
+    view?: { north: number; west: number; widthDegrees: number };
+  } = {},
 ): HistoricalMapFocus => ({
   mode: 'feature',
   features: Array.isArray(features) ? features : [features],
@@ -59,6 +72,15 @@ export const medFeature = (
     : {}),
   ...(extras.pins
     ? { pins: extras.pins.map(pin => ({ x: round(xPercent(pin.at[1])), y: round(yPercent(pin.at[0])), label: pin.label })) }
+    : {}),
+  ...(extras.view
+    ? {
+        view: {
+          x: round(xPercent(extras.view.west)),
+          y: round(yPercent(extras.view.north)),
+          scale: (EAST - WEST) / extras.view.widthDegrees,
+        },
+      }
     : {}),
 });
 

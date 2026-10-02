@@ -5,6 +5,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import { getHistoricalEntity, resolveHistoricalCopy, resolveHistoricalMapAsset } from './registry';
 import { EntityMap } from './EntityMap';
+import { entityPictureUrl } from './pictures';
 import { LearnerName } from './LearnerNameLine';
 import { groupColor } from './categories';
 
@@ -83,6 +84,7 @@ export const HistoricalEntityWord = ({
   const copy = resolveHistoricalCopy(entity, locale);
   const isArabic = locale === 'ar';
   const mapAsset = resolveHistoricalMapAsset(entity, locale);
+  const picture = entityPictureUrl(entity);
   const colors = groupColor(entity);
 
   return (
@@ -159,16 +161,29 @@ export const HistoricalEntityWord = ({
                 </div>
 
                 {mapAsset && (
-                  <EntityMap
-                    src={mapAsset}
-                    alt={copy.mapAlt}
-                    focus={entity.focus}
-                    showFocus={Boolean(entity.showFocus)}
-                    aspect={entity.mapAspect}
-                    color={colors.base}
-                    label={copy.title}
-                    className="mx-3"
-                  />
+                  <div className="relative mx-3">
+                    <EntityMap
+                      src={mapAsset}
+                      alt={copy.mapAlt}
+                      focus={entity.focus}
+                      showFocus={Boolean(entity.showFocus)}
+                      aspect={entity.mapAspect}
+                      color={colors.base}
+                      label={copy.title}
+                    />
+                    {picture && (
+                      // The picture sits in the map corner away from the place, so it never covers it.
+                      <img
+                        src={picture}
+                        alt=""
+                        className={cn(
+                          'pointer-events-none absolute h-[72px] w-[72px] rounded-full object-cover shadow-lg ring-2 ring-white/90',
+                          (entity.focus?.x ?? 0) > 50 ? 'left-2' : 'right-2',
+                          (entity.focus?.y ?? 0) > 50 ? 'top-2' : 'bottom-2',
+                        )}
+                      />
+                    )}
+                  </div>
                 )}
 
                 <div className={cn('px-3.5 pb-3', mapAsset ? 'pt-2.5' : 'pt-0')}>

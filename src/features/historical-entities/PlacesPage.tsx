@@ -1,10 +1,11 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { Compass, Target } from '../../components/ui/icons';
+import { ArrowRight, BookOpen, Compass, Target } from '../../components/ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import type { PageData } from '../../types';
 import { GROUP_COLORS, GROUP_OF_KIND, GROUP_ORDER, tint, type EntityGroup } from './categories';
 import { EntityMap } from './EntityMap';
+import { EntityPicture } from './EntityPicture';
 import { LearnerName } from './LearnerNameLine';
 import { MapGame } from './MapGame';
 import { MEDITERRANEAN_MAP_ASPECT, mediterraneanContextMap } from './mediterraneanMap';
@@ -15,6 +16,7 @@ import {
   resolveHistoricalMapAsset,
   type BookEntityEntry,
 } from './registry';
+import type { HistoricalEntity } from './types';
 
 const COPY = {
   en: {
@@ -34,6 +36,8 @@ const COPY = {
     names: 'names',
     noMap: 'This card has no map.',
     play: 'Find it on the map',
+    inTheStory: 'In the story',
+    readChapter: (chapter: string) => `Read Chapter ${chapter}`,
   },
   ar: {
     eyebrow: 'أطلس الكتاب',
@@ -52,6 +56,8 @@ const COPY = {
     names: 'اسمًا',
     noMap: 'ليس لهذه البطاقة خريطة.',
     play: 'Find it on the map',
+    inTheStory: 'في القصة',
+    readChapter: (chapter: string) => `اقرأ الفصل ${chapter}`,
   },
 };
 
@@ -60,7 +66,59 @@ const aspectRatioOf = (aspect: string) => {
   return width && height ? width / height : 4 / 3;
 };
 
-export const PlacesPage = ({ page }: { page: PageData }) => {
+interface StoryQuote {
+  chapter: number;
+  pageIndex: number;
+  sentence: string;
+  alias: string;
+}
+
+/** The first sentence of the story that names the entity, quoted exactly. */
+const findStoryQuote = (entity: HistoricalEntity, chapters: number[], pages: PageData[], locale: 'en' | 'ar'): StoryQuote | undefined => {
+  const aliases = entity.aliases[locale] ?? entity.aliases.en ?? [];
+  for (const chapter of chapters) {
+    const pageIndex = pages.findIndex(page => page.type === 'story' && page.id === chapter);
+    if (pageIndex < 0) continue;
+    const sentences = pages[pageIndex].content
+      .split(/\n+/)
+      .flatMap(paragraph => paragraph.split(/(?<=[.!?])\s+(?=[A-Z“"])/));
+    for (const sentence of sentences) {
+      const alias = aliases.find(candidate => sentence.includes(candidate));
+      if (alias) return { chapter, pageIndex, sentence: sentence.trim(), alias };
+    }
+  }
+  return undefined;
+};
+
+/** The quote with the entity's name picked out in its group colour. */
+const QuoteText = ({ quote, color }: { quote: StoryQuote; color: string }) => {
+  const at = quote.sentence.indexOf(quote.alias);
+  return (
+    <>
+      {quote.sentence.slice(0, at)}
+      <strong className="font-bold not-italic" style={{ color }}>{quote.alias}</strong>
+      {quote.sentence.slice(at + quote.alias.length)}
+    </>
+  );
+};
+
+/**
+ * How the list shows a group: the full list keeps its compact grid, and fewer
+ * cards get more room, so every filter fills the panel.
+ */
+type ListLayout = 'compact' | 'rows' | 'cards' | 'tall';
+const layoutFor = (count: number): ListLayout => (count > 18 ? 'compact' : count > 8 ? 'rows' : count > 3 ? 'cards' : 'tall');
+
+export const PlacesPage = ({
+  page,
+  pages = [],
+  onOpenPage,
+}: {
+  page: PageData;
+  /** All pages of the book, for the story quote and the chapter link. */
+  pages?: PageData[];
+  onOpenPage?: (pageIndex: number) => void;
+}) => {
   const { language, formatNumber, isRTL } = useLanguage();
   const locale = language === 'ar' ? 'ar' : 'en';
   const text = COPY[locale];
@@ -80,6 +138,10 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
   const [playing, setPlaying] = useState(false);
 
   const selected = entries.find(entry => entry.entity.id === selectedId) ?? entries[0];
+  const quote = useMemo(
+    () => (selected ? findStoryQuote(selected.entity, selected.chapters, pages, locale) : undefined),
+    [selected, pages, locale],
+  );
   if (!selected) return null;
 
   const selectedCopy = resolveHistoricalCopy(selected.entity, locale);
@@ -88,13 +150,13 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
   const placeCount = entries.filter(entry => GROUP_OF_KIND[entry.entity.kind] !== 'people').length;
   const nameCount = entries.length - placeCount;
   const mapAspect = selected.entity.mapAspect ?? MEDITERRANEAN_MAP_ASPECT;
-  // On large screens the map takes the room left above the details: as wide as
-  // the column allows, and never taller than the space it sits in.
-  const gameMapClassName = 'w-full lg:w-[min(100cqw,calc(100cqh*var(--map-ratio)))]';
-  const mapClassName = 'w-full lg:w-[min(100cqw,calc((100cqh-10.5rem)*var(--map-ratio)))]';
+  // On large screens the map takes the room left above the picture and the text:
+  // as wide as the column allows, and never taller than the space it sits in.
+  const mapClassName = 'w-full lg:w-[min(100cqw,calc((100cqh-var(--info-height))*var(--map-ratio)))]';
   const mapStyle = { '--map-ratio': aspectRatioOf(mapAspect) } as React.CSSProperties;
+  const slidOut = selected.entity.focus?.mode === 'feature' && Boolean(selected.entity.focus.view);
 
-  const markers = entries
+  const markers = slidOut ? [] : entries
     .filter(entry => entry.entity.focus?.mode === 'point' && entry.entity.id !== selected.entity.id)
     .map(entry => ({
       id: entry.entity.id,
@@ -103,19 +165,150 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
       color: tint(GROUP_COLORS[GROUP_OF_KIND[entry.entity.kind]].base, 0.75),
     }));
 
-  const select = (id: string) => {
-    setSelectedId(id);
-    setPlaying(false);
+  const scrollToDetail = () => {
     if (window.matchMedia('(max-width: 1023px)').matches) {
       window.setTimeout(() => detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
     }
   };
 
+  const select = (id: string) => {
+    setSelectedId(id);
+    setPlaying(false);
+    scrollToDetail();
+  };
+
   const chapterLine = (chapters: number[]) =>
     `${chapters.length > 1 ? text.chapters : text.chapter} ${chapters.map(chapter => formatNumber(chapter)).join(', ')}`;
+  const chapterTag = (chapters: number[]) =>
+    `${text.chapterShort} ${chapters.map(chapter => formatNumber(chapter)).join(', ')}`;
 
   const showAll = activeGroup === 'all';
   const visibleEntries = (showAll ? grouped : grouped.filter(group => group.key === activeGroup)).flatMap(group => group.entries);
+  const layout = layoutFor(visibleEntries.length);
+
+  const renderCard = (entry: BookEntityEntry) => {
+    const color = GROUP_COLORS[GROUP_OF_KIND[entry.entity.kind]].base;
+    const copy = resolveHistoricalCopy(entry.entity, locale);
+    const isActive = entry.entity.id === selected.entity.id;
+    const cardStyle: React.CSSProperties = {
+      borderInlineStartColor: color,
+      ...(isActive ? { backgroundColor: tint(color, 0.12), boxShadow: `0 0 0 2px ${tint(color, 0.4)}` } : {}),
+    };
+    const title = (
+      <>
+        {copy.title}
+        <LearnerName entity={entry.entity} className="text-wood/75" />
+      </>
+    );
+    const tag = (
+      <span className="shrink-0 text-[10px] leading-tight text-wood/55 min-[1800px]:text-[11px]" title={chapterLine(entry.chapters)}>
+        {chapterTag(entry.chapters)}
+      </span>
+    );
+    const common = {
+      type: 'button' as const,
+      'aria-pressed': isActive,
+      onClick: () => select(entry.entity.id),
+      style: cardStyle,
+    };
+
+    if (layout === 'compact') {
+      return (
+        <button
+          key={entry.entity.id}
+          {...common}
+          className={cn(
+            'flex items-center rounded-lg border border-black/5 border-s-[3px] px-2.5 py-1 text-start transition-all [@media(max-height:820px)]:py-0.5',
+            isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
+          )}
+        >
+          <span className="flex w-full items-baseline justify-between gap-2">
+            <span className="min-w-0 font-display text-[13px] font-bold leading-tight text-brand-950 min-[1800px]:text-[15px] [@media(max-height:820px)]:text-[12px]">
+              {title}
+            </span>
+            {tag}
+          </span>
+        </button>
+      );
+    }
+
+    if (layout === 'rows') {
+      return (
+        <button
+          key={entry.entity.id}
+          {...common}
+          className={cn(
+            'flex min-h-0 items-center gap-2.5 overflow-hidden rounded-xl border border-black/5 border-s-[3px] p-1 text-start transition-all',
+            isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
+          )}
+        >
+          <EntityPicture entity={entry.entity} iconSize={20} className="h-14 w-14 shrink-0 rounded-lg lg:h-full lg:w-auto lg:aspect-square" />
+          <span className="min-w-0 flex-1">
+            <span className="flex items-baseline justify-between gap-2">
+              <span className="min-w-0 truncate font-display text-[14px] font-bold leading-tight text-brand-950 min-[1800px]:text-[16px]">{title}</span>
+              {tag}
+            </span>
+            <span className="mt-0.5 line-clamp-1 font-serif text-[12px] leading-snug text-wood/70 min-[1800px]:text-[13px] [@media(min-height:900px)]:line-clamp-2">
+              {copy.summary}
+            </span>
+          </span>
+        </button>
+      );
+    }
+
+    if (layout === 'cards') {
+      return (
+        <button
+          key={entry.entity.id}
+          {...common}
+          className={cn(
+            'flex min-h-0 items-stretch gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
+            isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
+          )}
+        >
+          <EntityPicture entity={entry.entity} iconSize={32} className="h-24 w-24 shrink-0 rounded-xl lg:h-auto lg:w-auto lg:max-w-[45%] lg:aspect-square" />
+          <span className="flex min-w-0 flex-1 flex-col py-0.5">
+            <span className="flex items-baseline justify-between gap-2">
+              <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
+              {tag}
+            </span>
+            <span className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</span>
+            <span className="mt-1 line-clamp-2 font-serif text-[13px] leading-snug text-wood/75 min-[1800px]:text-[14px] [@media(min-height:860px)]:line-clamp-3 [@media(min-height:1000px)]:line-clamp-4">
+              {copy.summary}
+            </span>
+          </span>
+        </button>
+      );
+    }
+
+    return (
+      <button
+        key={entry.entity.id}
+        {...common}
+        className={cn(
+          'flex min-h-0 flex-col gap-2 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
+          isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
+        )}
+      >
+        <EntityPicture entity={entry.entity} iconSize={44} className="aspect-[4/3] w-full shrink-0 rounded-xl lg:aspect-auto lg:min-h-0 lg:flex-1" />
+        <span className="flex min-w-0 flex-col px-1 pb-0.5">
+          <span className="flex items-baseline justify-between gap-2">
+            <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
+            {tag}
+          </span>
+          <span className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</span>
+          <span className="mt-1 line-clamp-3 font-serif text-[13px] leading-snug text-wood/75 min-[1800px]:text-[14px]">{copy.summary}</span>
+        </span>
+      </button>
+    );
+  };
+
+  const gridClass = {
+    compact: 'grid-cols-2 gap-1.5 lg:grid-cols-3 [@media(max-height:820px)]:gap-1',
+    rows: 'grid-cols-1 gap-1.5 sm:grid-cols-2 [@media(max-height:820px)]:gap-1',
+    cards: 'grid-cols-1 gap-2 sm:grid-cols-2',
+    tall: cn('grid-cols-1 gap-2', visibleEntries.length > 1 && 'sm:grid-cols-2', visibleEntries.length > 2 && 'lg:grid-cols-3'),
+  }[layout];
 
   return (
     <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar lg:overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -137,9 +330,7 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
               type="button"
               onClick={() => {
                 setPlaying(value => !value);
-                if (window.matchMedia('(max-width: 1023px)').matches) {
-                  window.setTimeout(() => detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
-                }
+                scrollToDetail();
               }}
               aria-pressed={playing}
               aria-label={text.play}
@@ -154,48 +345,43 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
           </div>
         </section>
 
-        <div className="grid grid-cols-[minmax(0,1fr)] gap-3 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] min-[1800px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div ref={detailRef} className="scroll-mt-3 lg:min-h-0">
-            <section className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm lg:h-full lg:[container-type:size]">
-              {playing ? (
-                <MapGame
-                  entries={entries}
-                  mapSrc={mediterraneanContextMap}
-                  aspect={MEDITERRANEAN_MAP_ASPECT}
-                  locale={locale}
-                  mapClassName={gameMapClassName}
-                  mapStyle={{ '--map-ratio': aspectRatioOf(MEDITERRANEAN_MAP_ASPECT) } as React.CSSProperties}
-                  onClose={() => setPlaying(false)}
-                />
-              ) : (
-                <>
-                  <div className="flex justify-center">
-                    <EntityMap
-                      src={selectedMap ?? mediterraneanContextMap}
-                      alt={selectedMap ? selectedCopy.mapAlt : ''}
-                      focus={selectedMap ? selected.entity.focus : undefined}
-                      showFocus={Boolean(selectedMap && selected.entity.showFocus)}
-                      aspect={mapAspect}
-                      color={selectedColors.base}
-                      label={selectedCopy.title}
-                      markers={markers}
-                      onMarkerClick={select}
-                      className={mapClassName}
-                      style={mapStyle}
-                    />
-                  </div>
-                  <div className="px-1 pt-3" aria-live="polite">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: selectedColors.base }}>
-                          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: selectedColors.base }} />
-                          {selectedCopy.kindLabel}
-                        </span>
-                        <h3 className="font-display text-xl font-bold leading-tight text-brand-950">
-                          {selectedCopy.title}
-                          <LearnerName entity={selected.entity} className="text-wood/80" />
-                        </h3>
-                      </div>
+        {playing ? (
+          <div ref={detailRef} className="scroll-mt-3 lg:min-h-0 lg:flex-1">
+            <MapGame entries={entries} locale={locale} onClose={() => setPlaying(false)} />
+          </div>
+        ) : (
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-3 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] min-[1800px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div ref={detailRef} className="scroll-mt-3 lg:min-h-0">
+              <section
+                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:15rem] lg:h-full lg:[container-type:size] [@media(max-height:820px)]:[--info-height:14rem] [@media(min-height:1000px)]:[--info-height:17rem]"
+              >
+                <div className="flex shrink-0 justify-center">
+                  <EntityMap
+                    src={selectedMap ?? mediterraneanContextMap}
+                    alt={selectedMap ? selectedCopy.mapAlt : ''}
+                    focus={selectedMap ? selected.entity.focus : undefined}
+                    showFocus={Boolean(selectedMap && selected.entity.showFocus)}
+                    aspect={mapAspect}
+                    color={selectedColors.base}
+                    label={selectedCopy.title}
+                    markers={markers}
+                    onMarkerClick={select}
+                    className={mapClassName}
+                    style={mapStyle}
+                  />
+                </div>
+                <div className="flex items-start gap-3 pt-3 lg:min-h-0 lg:flex-1 lg:items-stretch" aria-live="polite">
+                  <EntityPicture
+                    entity={selected.entity}
+                    iconSize={48}
+                    className="aspect-square w-28 shrink-0 rounded-2xl shadow-sm sm:w-48 lg:w-auto lg:max-h-full lg:max-w-[42%]"
+                  />
+                  <div className="flex min-w-0 flex-1 flex-col lg:min-h-0 lg:overflow-y-auto custom-scrollbar">
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="flex items-center gap-1.5 pt-0.5 text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: selectedColors.base }}>
+                        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: selectedColors.base }} />
+                        {selectedCopy.kindLabel}
+                      </span>
                       <span
                         className="shrink-0 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
                         style={{ borderColor: tint(selectedColors.base, 0.25), backgroundColor: tint(selectedColors.base, 0.08), color: selectedColors.base }}
@@ -203,83 +389,84 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
                         {selectedCopy.periodLabel}
                       </span>
                     </div>
-                    <p className="mt-1.5 font-serif text-[15px] leading-snug text-wood/90 xl:text-base">{selectedCopy.summary}</p>
-                    <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[11px] text-wood/55">
+                    <h3 className="font-display text-xl font-bold leading-tight text-brand-950 [@media(max-height:820px)]:text-lg">
+                      {selectedCopy.title}
+                      <LearnerName entity={selected.entity} className="text-wood/80" />
+                    </h3>
+                    <p className="mt-1 font-serif text-[15px] leading-snug text-wood/90 [@media(max-height:820px)]:text-[14px] [@media(min-height:900px)]:xl:text-base">
+                      {selectedCopy.summary}
+                      {selectedCopy.more && <> {selectedCopy.more}</>}
+                    </p>
+                    {quote && (
+                      <figure className="mt-2 rounded-xl border-s-[3px] px-3 py-1.5" style={{ borderInlineStartColor: tint(selectedColors.base, 0.6), backgroundColor: tint(selectedColors.base, 0.06) }}>
+                        <figcaption className="flex flex-wrap items-center justify-between gap-x-2 text-[10px] font-black uppercase tracking-[0.14em] text-wood/60">
+                          <span className="flex items-center gap-1.5 whitespace-nowrap">
+                            <BookOpen size={12} /> {text.inTheStory} · {text.chapter} {formatNumber(quote.chapter)}
+                          </span>
+                          {onOpenPage && (
+                            <button
+                              type="button"
+                              onClick={() => onOpenPage(quote.pageIndex)}
+                              className="inline-flex shrink-0 items-center gap-1 rounded-md px-1.5 py-0.5 normal-case tracking-normal text-[11px] font-bold hover:bg-white/80"
+                              style={{ color: selectedColors.base }}
+                            >
+                              {text.readChapter(formatNumber(quote.chapter))}
+                              <ArrowRight size={12} className={cn(isRTL && 'rotate-180')} />
+                            </button>
+                          )}
+                        </figcaption>
+                        <blockquote className="mt-0.5 line-clamp-3 font-serif text-[13.5px] italic leading-snug text-wood/85 [@media(max-height:820px)]:line-clamp-2 [@media(max-height:820px)]:text-[13px]">
+                          “<QuoteText quote={quote} color={selectedColors.base} />”
+                        </blockquote>
+                      </figure>
+                    )}
+                    <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-2 text-[11px] text-wood/55">
                       <span className="font-bold">{chapterLine(selected.chapters)}</span>
                       <span>{selectedMap ? selectedCopy.approximateLabel : text.noMap}</span>
                     </div>
                   </div>
-                </>
-              )}
-            </section>
-          </div>
-
-          <section className="flex flex-col rounded-2xl border border-black/5 bg-white/45 p-3 shadow-sm backdrop-blur-sm lg:min-h-0">
-            <div className="flex shrink-0 gap-1.5 overflow-x-auto pb-1.5 custom-scrollbar">
-              {(['all', ...grouped.map(group => group.key)] as const).map(key => {
-                const count = key === 'all' ? entries.length : grouped.find(group => group.key === key)?.entries.length ?? 0;
-                const color = key === 'all' ? undefined : GROUP_COLORS[key].base;
-                const active = activeGroup === key;
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => setActiveGroup(key)}
-                    className={cn(
-                      'inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-[11px] font-bold transition-all xl:text-xs',
-                      active ? 'text-white shadow-sm' : 'bg-white/70 text-wood/85 hover:bg-white',
-                    )}
-                    style={{
-                      borderColor: color ? tint(color, active ? 1 : 0.25) : active ? '#0f766e' : 'rgba(15,118,110,0.15)',
-                      backgroundColor: active ? color ?? '#0f766e' : undefined,
-                    }}
-                  >
-                    {color && !active && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />}
-                    {key === 'all' ? text.all : text.groups[key]} <span className="opacity-70">· {formatNumber(count)}</span>
-                  </button>
-                );
-              })}
+                </div>
+              </section>
             </div>
 
-            {/* One colour-coded grid: the filter chips above are the legend. With every
-                place shown, the rows share the column height so the list fills the screen. */}
-            <div className="mt-1.5 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
-              <div className={cn('grid grid-cols-2 gap-1.5 lg:grid-cols-3 [@media(max-height:820px)]:gap-1', showAll && 'lg:h-full lg:[grid-auto-rows:minmax(min-content,1fr)]')}>
-                {visibleEntries.map(entry => {
-                  const color = GROUP_COLORS[GROUP_OF_KIND[entry.entity.kind]].base;
-                  const copy = resolveHistoricalCopy(entry.entity, locale);
-                  const isActive = entry.entity.id === selected.entity.id && !playing;
+            <section className="flex flex-col rounded-2xl border border-black/5 bg-white/45 p-3 shadow-sm backdrop-blur-sm lg:min-h-0">
+              <div className="flex shrink-0 gap-1.5 overflow-x-auto pb-1.5 custom-scrollbar">
+                {(['all', ...grouped.map(group => group.key)] as const).map(key => {
+                  const count = key === 'all' ? entries.length : grouped.find(group => group.key === key)?.entries.length ?? 0;
+                  const color = key === 'all' ? undefined : GROUP_COLORS[key].base;
+                  const active = activeGroup === key;
                   return (
                     <button
-                      key={entry.entity.id}
+                      key={key}
                       type="button"
-                      aria-pressed={isActive}
-                      onClick={() => select(entry.entity.id)}
+                      onClick={() => setActiveGroup(key)}
                       className={cn(
-                        'flex items-center rounded-lg border border-black/5 border-s-[3px] px-2.5 py-1 text-start transition-all [@media(max-height:820px)]:py-0.5',
-                        isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
+                        'inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-[11px] font-bold transition-all xl:text-xs',
+                        active ? 'text-white shadow-sm' : 'bg-white/70 text-wood/85 hover:bg-white',
                       )}
                       style={{
-                        borderInlineStartColor: color,
-                        ...(isActive ? { backgroundColor: tint(color, 0.12), boxShadow: `0 0 0 2px ${tint(color, 0.4)}` } : {}),
+                        borderColor: color ? tint(color, active ? 1 : 0.25) : active ? '#0f766e' : 'rgba(15,118,110,0.15)',
+                        backgroundColor: active ? color ?? '#0f766e' : undefined,
                       }}
                     >
-                      <span className="flex w-full items-baseline justify-between gap-2">
-                        <span className="min-w-0 font-display text-[13px] font-bold leading-tight text-brand-950 min-[1800px]:text-[15px] [@media(max-height:820px)]:text-[12px]">
-                          {copy.title}
-                          <LearnerName entity={entry.entity} className="text-wood/75" />
-                        </span>
-                        <span className="shrink-0 text-[10px] leading-tight text-wood/55 min-[1800px]:text-[11px]" title={chapterLine(entry.chapters)}>
-                          {text.chapterShort} {entry.chapters.map(chapter => formatNumber(chapter)).join(', ')}
-                        </span>
-                      </span>
+                      {color && !active && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />}
+                      {key === 'all' ? text.all : text.groups[key]} <span className="opacity-70">· {formatNumber(count)}</span>
                     </button>
                   );
                 })}
               </div>
-            </div>
-          </section>
-        </div>
+
+              {/* One colour-coded grid: the filter chips above are the legend. The rows
+                  share the panel height, so every filter fills the screen; the padding
+                  keeps the selected card's ring inside the scroll box. */}
+              <div className="-mx-1 mt-1 px-1 py-1 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
+                <div className={cn('grid lg:h-full', layout === 'compact' ? 'lg:[grid-auto-rows:minmax(min-content,1fr)]' : 'lg:[grid-auto-rows:minmax(0,1fr)]', gridClass)}>
+                  {visibleEntries.map(renderCard)}
+                </div>
+              </div>
+            </section>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -742,7 +742,11 @@ const AppContent = () => {
       case 'places':
         return (
           <Suspense fallback={null}>
-            <PlacesPage page={currentPage} />
+            <PlacesPage
+              page={currentPage}
+              pages={currentBook?.pages ?? []}
+              onOpenPage={index => setCurrentPageIndex(index)}
+            />
           </Suspense>
         );
       case 'glossary':

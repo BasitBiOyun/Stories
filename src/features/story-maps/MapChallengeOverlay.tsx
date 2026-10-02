@@ -24,6 +24,8 @@ interface MapChallengeOverlayProps {
   onNext: () => void;
   onRetry: () => void;
   onExit: () => void;
+  /** Replaces the distance line under "Correct!" or "Not quite.", e.g. for a sea or a land. */
+  detail?: string;
 }
 
 const GOOD = '#0f8a5f';
@@ -126,7 +128,7 @@ const ScoreDialog: React.FC<{ score: number; total: number; results: (ChallengeA
 };
 
 /** Prompt on top of the map, a tap cue while waiting, the feedback sheet, and the final score. */
-export const MapChallengeOverlay: React.FC<MapChallengeOverlayProps> = ({ question, index, total, answer, results, done, score, onNext, onRetry, onExit }) => {
+export const MapChallengeOverlay: React.FC<MapChallengeOverlayProps> = ({ question, index, total, answer, results, done, score, onNext, onRetry, onExit, detail }) => {
   const { t, language, isRTL, formatNumber } = useLanguage();
   const isLast = index >= total - 1;
   const textSize = language === 'ar' ? 'text-[17px] leading-[1.8]' : 'text-[14px] leading-snug sm:text-[15px]';
@@ -202,8 +204,12 @@ export const MapChallengeOverlay: React.FC<MapChallengeOverlayProps> = ({ questi
                     {answer.correct ? t('map.correct') : t('map.notQuite')}
                   </div>
                   <p className={cn('font-serif text-[#3c3428]/85', language === 'ar' ? 'text-[15px] leading-[1.7]' : 'text-[12px] leading-snug sm:text-[13px]')}>
-                    {t('map.kmAway').replace('{n}', formatNumber(Math.round(answer.distanceKm)))}
-                    {!answer.correct && <> {t('map.greenCircle')}</>}
+                    {detail ?? (
+                      <>
+                        {t('map.kmAway').replace('{n}', formatNumber(Math.round(answer.distanceKm)))}
+                        {!answer.correct && <> {t('map.greenCircle')}</>}
+                      </>
+                    )}
                   </p>
                 </div>
               </div>

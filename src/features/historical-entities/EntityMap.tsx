@@ -1,6 +1,7 @@
-import React, { useId } from 'react';
+import React, { useId, useRef } from 'react';
 import { cn } from '../../lib/utils';
 import { MEDITERRANEAN_FEATURES, MEDITERRANEAN_FEATURE_VIEWBOX } from './mediterraneanFeatures';
+import { WIDE_MAP_PLACEMENT, mediterraneanContextMap, wideContextMap } from './mediterraneanMap';
 import type { HistoricalMapFocus } from './types';
 
 interface MapMarker {
@@ -18,7 +19,8 @@ const [, , VIEW_WIDTH, VIEW_HEIGHT] = MEDITERRANEAN_FEATURE_VIEWBOX.split(' ').m
  * glowing dot for a city or a building, the real shape of a sea, a river or an
  * island, a soft shape for a land or the lands a people ruled, and arrows for
  * where a people came from. The map zooms around the place, so the dot stays
- * where it is on the canvas.
+ * where it is on the canvas. A focus with a `view` slides the map out onto the
+ * wide map, e.g. to show where the Mongols came from.
  */
 export const EntityMap = ({
   src,
@@ -56,11 +58,21 @@ export const EntityMap = ({
 }) => {
   const glowId = `entity-glow-${useId().replace(/:/g, '')}`;
   const arrowId = `${glowId}-arrow`;
-  const zoom = showFocus && focus?.zoom ? focus.zoom : 1;
-  const originX = focus?.x ?? 50;
-  const originY = focus?.y ?? 50;
-  const labelOnLeft = (focus?.x ?? 0) > 68;
   const featureFocus = showFocus && focus?.mode === 'feature' ? focus : undefined;
+  const view = featureFocus?.view;
+  // One transform for both cases, so the map glides between them:
+  // zoom around the place, or slide out to the view's corner.
+  const scale = view ? view.scale : showFocus && focus?.zoom ? focus.zoom : 1;
+  const shiftX = view ? -view.x * scale : (focus?.x ?? 50) * (1 - scale);
+  const shiftY = view ? -view.y * scale : (focus?.y ?? 50) * (1 - scale);
+  /** Where a point of the map (in map percentages) is on screen. */
+  const onScreen = (x: number, y: number) => ({ x: shiftX + x * scale, y: shiftY + y * scale });
+  // Keep the wide map once it has been shown, so sliding back stays smooth.
+  const usedWide = useRef(false);
+  if (view) usedWide.current = true;
+  const showWide = usedWide.current && src === mediterraneanContextMap;
+  const focusOnScreen = focus ? onScreen(focus.x, focus.y) : undefined;
+  const labelOnLeft = (focusOnScreen?.x ?? 0) > 68;
   const shapes = (featureFocus?.features ?? [])
     .map(id => MEDITERRANEAN_FEATURES[id as keyof typeof MEDITERRANEAN_FEATURES])
     .filter(Boolean);
@@ -78,9 +90,24 @@ export const EntityMap = ({
       onClick={onMapClick ? handleClick : undefined}
     >
       <div
-        className="absolute inset-0 transition-transform duration-500 ease-out"
-        style={{ transform: `scale(${zoom})`, transformOrigin: `${originX}% ${originY}%` }}
+        className="absolute inset-0 transition-transform duration-700 ease-in-out motion-reduce:transition-none"
+        style={{ transform: `translate(${shiftX}%, ${shiftY}%) scale(${scale})`, transformOrigin: '0 0' }}
       >
+        {showWide && (
+          <img
+            src={wideContextMap}
+            alt=""
+            aria-hidden="true"
+            className="absolute max-w-none"
+            style={{
+              left: `${WIDE_MAP_PLACEMENT.left}%`,
+              top: `${WIDE_MAP_PLACEMENT.top}%`,
+              width: `${WIDE_MAP_PLACEMENT.width}%`,
+              height: `${WIDE_MAP_PLACEMENT.height}%`,
+            }}
+            draggable={false}
+          />
+        )}
         <img
           src={src}
           alt={alt}
@@ -93,7 +120,7 @@ export const EntityMap = ({
             aria-hidden="true"
             viewBox={MEDITERRANEAN_FEATURE_VIEWBOX}
             preserveAspectRatio="none"
-            className="pointer-events-none absolute inset-0 h-full w-full"
+            className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
           >
             <defs>
               <filter id={glowId} x="-20%" y="-20%" width="140%" height="140%">
@@ -147,7 +174,7 @@ export const EntityMap = ({
             key={`pin-${pin.label}`}
             aria-hidden="true"
             className="pointer-events-none absolute"
-            style={{ left: `${pin.x}%`, top: `${pin.y}%`, transform: `scale(${1 / zoom})`, transformOrigin: '0 0' }}
+            style={{ left: `${pin.x}%`, top: `${pin.y}%`, transform: `scale(${1 / scale})`, transformOrigin: '0 0' }}
           >
             <span className="absolute -left-[6px] -top-[6px] h-3 w-3 rounded-full border-2 border-white shadow-md" style={{ backgroundColor: color }} />
             <span
@@ -176,7 +203,7 @@ export const EntityMap = ({
               left: `${marker.x}%`,
               top: `${marker.y}%`,
               backgroundColor: marker.color ?? 'rgba(15, 118, 110, 0.7)',
-              transform: `translate(-50%, -50%) scale(${1 / zoom})`,
+              transform: `translate(-50%, -50%) scale(${1 / scale})`,
             }}
           />
         ))}
@@ -196,11 +223,11 @@ export const EntityMap = ({
         )}
       </div>
 
-      {showFocus && focus?.mode === 'point' && (
+      {showFocus && focus?.mode === 'point' && focusOnScreen && (
         <span
           aria-hidden="true"
           className="pointer-events-none absolute"
-          style={{ left: `${focus.x}%`, top: `${focus.y}%` }}
+          style={{ left: `${focusOnScreen.x}%`, top: `${focusOnScreen.y}%` }}
         >
           <span className="absolute -left-3.5 -top-3.5 h-7 w-7 animate-ping rounded-full opacity-40" style={{ backgroundColor: color }} />
           <span
@@ -218,14 +245,14 @@ export const EntityMap = ({
         />
       )}
 
-      {showFocus && focus && label && (
+      {showFocus && focus && focusOnScreen && label && (
         <span
           aria-hidden="true"
           className="pointer-events-none absolute whitespace-nowrap rounded-md bg-white/90 px-1.5 py-0.5 font-display text-[11px] font-bold text-stone-900 shadow-sm"
           style={{
             // A label for an area sits in its middle, kept off the map edge.
-            left: `${focus.mode === 'point' ? focus.x : Math.min(Math.max(focus.x, 14), 86)}%`,
-            top: `${focus.y}%`,
+            left: `${focus.mode === 'point' ? focusOnScreen.x : Math.min(Math.max(focusOnScreen.x, 14), 86)}%`,
+            top: `${focusOnScreen.y}%`,
             transform: focus.mode === 'point'
               ? `translate(${labelOnLeft ? 'calc(-100% - 12px)' : '12px'}, -50%)`
               : 'translate(-50%, -50%)',

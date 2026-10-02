@@ -35,6 +35,12 @@ The base map is language-neutral and uses geographic context only. Historical re
 
 Reference checks used for this pilot include Britannica, UNESCO (Babylon), and The Metropolitan Museum of Art (Mesopotamia).
 
+## Pictures and the wide map
+
+Card pictures live in `assets/pictures/<folder>/<name>.webp` (480px squares made from the uploads in Storage `places-people/<Story>/`); an entity names its file with `picture`, and a card without a file shows a placeholder in its group colour.
+
+`wide-context-map.svg` carries the Mediterranean map east to 127°E in the same projection. It sits under the context map, so a focus with a `view` can slide the map out (the Mongols card).
+
 ## Removal
 
 To remove the feature completely:
