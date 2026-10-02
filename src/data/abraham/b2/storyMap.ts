@@ -12,16 +12,16 @@ export const abrahamB2StoryMapLayout: StoryMapLayout = {
   time: { start: 1, lastYear: 9, birth: 1, mode: 'stages' },
   places: [
     // Chapter 4: "born in the city of Ur or Babylon". One birth card; Ur is the small town dot.
-    { id: 'babylon', lon: 44.42, lat: 32.54, icon: 'city', tone: 'place', labelSide: 'left' },
+    { id: 'babylon', entityId: 'abraham-babylon', lon: 44.42, lat: 32.54, icon: 'city', tone: 'place', labelSide: 'left' },
     // Chapter 4: only "some sources" say he migrated to Harran. Ancient Harran, south-east Türkiye today.
-    { id: 'harran', lon: 39.03, lat: 36.87, icon: 'route', tone: 'place', labelSide: 'right' },
+    { id: 'harran', entityId: 'abraham-harran', lon: 39.03, lat: 36.87, icon: 'route', tone: 'place', labelSide: 'right' },
     // The text does not say where the fire was; the pin sits beside Babylon so the event has its own card.
     { id: 'fire', lon: 45.3, lat: 33.0, icon: 'palace', tone: 'event', labelSide: 'right' },
-    { id: 'egypt', lon: 30.9, lat: 28.4, icon: 'waves', tone: 'place', areaRadiusKm: 300, showArea: true, labelSide: 'bottom' },
-    { id: 'palestine', lon: 35.2, lat: 31.6, icon: 'route', tone: 'place', areaRadiusKm: 110, labelSide: 'right' },
-    { id: 'mecca', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'left' },
+    { id: 'egypt', entityId: 'abraham-egypt-ancient', lon: 30.9, lat: 28.4, icon: 'waves', tone: 'place', areaRadiusKm: 300, showArea: true, labelSide: 'bottom' },
+    { id: 'palestine', entityId: 'abraham-palestine-ancient', lon: 35.2, lat: 31.6, icon: 'route', tone: 'place', areaRadiusKm: 110, labelSide: 'right' },
+    { id: 'mecca', entityId: 'abraham-mecca-valley-ancient', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'left' },
     // Chapter 30: Jurham came "from southern Arabia, Yemen".
-    { id: 'yemen', lon: 44.8, lat: 15.6, icon: 'tent', tone: 'place', areaRadiusKm: 260, showArea: true, labelSide: 'right' },
+    { id: 'yemen', entityId: 'abraham-yemen', lon: 44.8, lat: 15.6, icon: 'tent', tone: 'place', areaRadiusKm: 260, showArea: true, labelSide: 'right' },
   ],
   towns: [
     { id: 'ur', lon: 46.1, lat: 30.96 },

@@ -22,16 +22,16 @@ export const yunusB2StoryMapLayout: StoryMapLayout = {
     { id: 'raid-erzincan', points: [[38.05, 40.1], [38.8, 39.95], [39.49, 39.75]], start: 1243.25, end: 1243.6, tone: 'army' },
   ],
   places: [
-    { id: 'anatolia', lon: 34.1, lat: 39.35, icon: 'quill', tone: 'place', labelSide: 'left' },
+    { id: 'anatolia', entityId: 'yunus-anatolia', lon: 34.1, lat: 39.35, icon: 'quill', tone: 'place', labelSide: 'left' },
     // B2 names Konya only in "the Seljuk Sultanate of Konya"; the pin marks the city.
-    { id: 'konya', lon: 32.49, lat: 37.87, icon: 'dome', tone: 'place', labelSide: 'bottom' },
-    { id: 'erzurum', lon: 41.27, lat: 39.9, icon: 'city', tone: 'event', labelSide: 'top' },
+    { id: 'konya', entityId: 'yunus-konya', lon: 32.49, lat: 37.87, icon: 'dome', tone: 'place', labelSide: 'bottom' },
+    { id: 'erzurum', entityId: 'yunus-erzurum', lon: 41.27, lat: 39.9, icon: 'city', tone: 'event', labelSide: 'top' },
     // The book places the battle 80 km north-east of Sivas; the exact battlefield is not known.
-    { id: 'kosedag', lon: 38.05, lat: 40.1, icon: 'swords', tone: 'event', labelSide: 'top' },
+    { id: 'kosedag', entityId: 'yunus-kosedag', lon: 38.05, lat: 40.1, icon: 'swords', tone: 'event', labelSide: 'top' },
     // Medieval Azerbaijan: the land around Tabriz (north-west Iran today).
-    { id: 'azerbaijan', lon: 46.29, lat: 38.08, icon: 'route', tone: 'place', areaRadiusKm: 150, labelSide: 'top' },
+    { id: 'azerbaijan', entityId: 'yunus-azerbaijan', lon: 46.29, lat: 38.08, icon: 'route', tone: 'place', areaRadiusKm: 150, labelSide: 'top' },
     // The Ilkhanate was "the Mongol state centred in Iran"; the pin marks the region only.
-    { id: 'iran', lon: 49.0, lat: 34.9, icon: 'palace', tone: 'place', areaRadiusKm: 280, labelSide: 'left' },
+    { id: 'iran', entityId: 'yunus-iran', lon: 49.0, lat: 34.9, icon: 'palace', tone: 'place', areaRadiusKm: 280, labelSide: 'left' },
   ],
   towns: [
     { id: 'sivas', lon: 37.02, lat: 39.75, labelSide: 'bottom' },

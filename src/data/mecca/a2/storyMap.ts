@@ -16,13 +16,13 @@ export const meccaA2StoryMapLayout: StoryMapLayout = {
     { id: 'toDamascus', points: [[39.61, 24.47], [38.6, 26.5], [36.9, 28.4], [36.2, 30.3], [36.0, 32.0], [36.29, 33.51]], start: 5.6, end: 6, tone: 'journey' },
   ],
   places: [
-    { id: 'mecca', lon: 39.83, lat: 21.42, icon: 'city', tone: 'place', labelSide: 'right' },
+    { id: 'mecca', entityId: 'mecca-mecca-7th-century', lon: 39.83, lat: 21.42, icon: 'city', tone: 'place', labelSide: 'right' },
     // A soft circle over the peninsula; the book gives no borders.
-    { id: 'arabia', lon: 44.5, lat: 23.6, icon: 'tent', tone: 'place', areaRadiusKm: 600, showArea: true, labelSide: 'top' },
+    { id: 'arabia', entityId: 'mecca-arabian-peninsula', lon: 44.5, lat: 23.6, icon: 'tent', tone: 'place', areaRadiusKm: 600, showArea: true, labelSide: 'top' },
     // Bilal's mother was Ethiopian and many slaves came from Abyssinia; Bilal himself was born in Mecca, so no journey is drawn from here.
-    { id: 'abyssinia', lon: 38.9, lat: 13.3, icon: 'route', tone: 'place', areaRadiusKm: 270, showArea: true, labelSide: 'right' },
-    { id: 'medina', lon: 39.61, lat: 24.47, icon: 'palm', tone: 'place', labelSide: 'right' },
-    { id: 'damascus', lon: 36.29, lat: 33.51, icon: 'city', tone: 'place', labelSide: 'right' },
+    { id: 'abyssinia', entityId: 'mecca-abyssinia', lon: 38.9, lat: 13.3, icon: 'route', tone: 'place', areaRadiusKm: 270, showArea: true, labelSide: 'right' },
+    { id: 'medina', entityId: 'mecca-medina-7th-century', lon: 39.61, lat: 24.47, icon: 'palm', tone: 'place', labelSide: 'right' },
+    { id: 'damascus', entityId: 'mecca-damascus-7th-century', lon: 36.29, lat: 33.51, icon: 'city', tone: 'place', labelSide: 'right' },
   ],
   towns: [],
   seas: [

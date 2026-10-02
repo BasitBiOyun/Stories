@@ -24,6 +24,8 @@ export interface StoryMapPlaceLayout {
   /** Keep the region's soft circle visible all the time, not only when selected. */
   showArea?: boolean;
   labelSide?: StoryMapLabelSide;
+  /** The Places & People card with this place's picture, shown under the place's text. */
+  entityId?: string;
 }
 
 /** Manually authored card text for one place, in one language. */
