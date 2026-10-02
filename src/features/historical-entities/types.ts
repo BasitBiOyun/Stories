@@ -34,6 +34,22 @@ export type HistoricalMapFocus =
       height: number;
       rotate?: number;
       zoom?: number;
+    }
+  | {
+      /** A round, approximate area. `radius` is a percentage of the map width. */
+      mode: 'circle';
+      x: number;
+      y: number;
+      radius: number;
+      zoom?: number;
+    }
+  | {
+      /** A sea, river or island drawn in its own shape; x/y place the label. */
+      mode: 'feature';
+      feature: string;
+      x: number;
+      y: number;
+      zoom?: number;
     };
 
 export interface HistoricalEntityCopy {
@@ -55,6 +71,8 @@ export interface HistoricalEntity {
   copy: { en: HistoricalEntityCopy } & Partial<Record<HistoricalEntityLocale, HistoricalEntityCopy>>;
   /** People and ruling families have no map. */
   mapAsset?: HistoricalMapAsset;
+  /** CSS aspect ratio of the map image, e.g. '800 / 537'. Defaults to 4 / 3. */
+  mapAspect?: string;
   focus?: HistoricalMapFocus;
   /**
    * Draw the focus on top of a plain context map. Off for maps that already
