@@ -209,11 +209,11 @@ export const PlacesPage = ({
         key={entry.entity.id}
         {...common}
         className={cn(
-          'flex min-h-0 items-stretch gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
+          'flex min-h-0 items-start gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
           isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
         )}
       >
-        <EntityPicture entity={entry.entity} iconSize={32} className="h-24 w-24 shrink-0 rounded-xl lg:h-auto lg:w-auto lg:max-w-[45%] lg:aspect-square" />
+        <EntityPicture entity={entry.entity} iconSize={32} className="aspect-square h-24 w-24 shrink-0 self-start rounded-xl lg:h-auto lg:w-[40%] lg:max-w-[12rem]" />
         <span className="flex min-w-0 flex-1 flex-col py-0.5">
           <span className="flex items-baseline justify-between gap-2">
             <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
@@ -292,7 +292,7 @@ export const PlacesPage = ({
                   <EntityPicture
                     entity={selected.entity}
                     iconSize={48}
-                    className="aspect-square w-28 shrink-0 rounded-2xl shadow-sm sm:w-48 lg:w-auto lg:max-h-full lg:max-w-[42%]"
+                    className="aspect-square w-28 shrink-0 self-start rounded-2xl shadow-sm sm:w-48 lg:h-auto lg:w-[min(42%,calc(var(--info-height)-1rem))]"
                   />
                   <div className="flex min-w-0 flex-1 flex-col lg:min-h-0 lg:overflow-y-auto custom-scrollbar">
                     <div className="flex items-start justify-between gap-2">
@@ -375,11 +375,11 @@ export const PlacesPage = ({
               </div>
 
               {/* Picture cards in two columns, colour-coded: the filter chips above are the
-                  legend. Only this list scrolls; the detail card on the left stays put. A short
-                  list stretches its rows to fill the panel. The padding keeps the selected
+                  legend. Only this list scrolls; the detail card on the left stays put. Pictures stay
+                  square and cards never stretch to fill a tall screen. The padding keeps the selected
                   card's ring inside the scroll box. */}
               <div className="-mx-1 mt-1 px-1 py-1 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:min-h-full lg:[grid-auto-rows:minmax(8.5rem,1fr)] [@media(min-height:900px)]:lg:[grid-auto-rows:minmax(10rem,1fr)]">
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 content-start">
                   {visibleEntries.map(renderCard)}
                 </div>
               </div>
