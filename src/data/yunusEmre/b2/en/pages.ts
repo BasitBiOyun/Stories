@@ -178,7 +178,7 @@ Yunus’s understanding of Sûfîsm is based on the Qur’an and the Sunnah, whi
     title: 'Tawhid and True Reality',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Fimages%2Fyunus_b2_ch8.png?alt=media&token=bd2646dd-6daa-4e8f-9901-23d8e185ed04',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb2%2Faudio%2F07_Chapter_8_Tawhid_and_True_Reality.mp3?alt=media&token=4e5a6ee4-b0c6-4672-a007-e0c5bd10bb52',
-    content: `One of the most important fundamental values in his works is the belief in tawhid, which means the absolute Oneness of Allah. According to Yunus Emre, the Creator, Allah is the source of all things and, therefore, everything is connected to Him. The Creator is the true and only reality. From this perspective, Yunus Emre held the idea of the Unity of Existence (vahdet-i vücut). According to the theory of the Unity of Existence, Allah, the absolute reality, desired to be known and to reveal Himself, and for this reason, He created the worlds through His attributes.
+    content: `One of the most important fundamental values in his works is the belief in tawhid, which means the absolute Oneness of Allah. According to Yunus Emre, the Creator, Allah is the source of all things and, therefore, everything is connected to Him. The Creator is the true and only reality. From this perspective, Yunus Emre held the idea of the Unity of Existence. According to the theory of the Unity of Existence, Allah, the absolute reality, desired to be known and to reveal Himself, and for this reason, He created the worlds through His attributes.
 
 Yunus says:
 

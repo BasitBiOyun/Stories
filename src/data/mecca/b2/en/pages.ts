@@ -21,7 +21,7 @@ After describing the broad background of the time, take a closer look at the cit
 
 The city we are talking about is Mecca, and the time period is called the Age of Ignorance.
 
-The Age of Ignorance is the pre-Islamic era in the Arabian Peninsula that covers the period from the 5th century to the beginning of the revelation (vahiy) in 610.`,
+The Age of Ignorance is the pre-Islamic era in the Arabian Peninsula that covers the period from the 5th century to the beginning of the revelation in 610.`,
     vocabulary: [
       { word: 'Middle Ages', definition: 'The historical period between the fall of the Roman Empire and the conquest of Constantinople.' },
       { word: 'superpowers', definition: 'States with enough political, military, and economic influence to shape events far beyond their own borders.' },
@@ -47,7 +47,7 @@ The Quran points to the ignorance and barbarism of the pre-Islamic era, as well 
 
 The Jahiliyyah is the “age of barbarism.” In fact, the Prophet described Islam as the opposite of barbarism. An ignorant person is wild, is a slave to their desires, follows their animalistic feelings, and is brutal and aggressive; in other words, a “barbarian.” The opposite of this is a civilized person. Although the word “jahiliyyah” essentially describes the pre-Islamic period of the Arabs, the Prophet (as) did not view it as a period of the past. On the contrary, he believed it could arise again at any moment and warned people against it.
 
-To understand Jahiliyyah, it is necessary to describe Mecca. Mecca is in the western part of the Arabian Peninsula. This piece of land is called a peninsula because water surrounds it on three sides: the south, west, and east. (The Arabian/Persian Gulf (Basra Körfezi) is in the east, the Indian Ocean is in the south, and the Red Sea is in the west.)`,
+To understand Jahiliyyah, it is necessary to describe Mecca. Mecca is in the western part of the Arabian Peninsula. This piece of land is called a peninsula because water surrounds it on three sides: the south, west, and east. (The Arabian/Persian Gulf is in the east, the Indian Ocean is in the south, and the Red Sea is in the west.)`,
     vocabulary: [
       { word: 'Jahiliyyah', definition: 'The Age of Ignorance before Islam.' },
       { word: 'barbarism', definition: 'A condition characterized by severe violence, cruelty, and the breakdown of civilized restraint.' },
@@ -94,9 +94,9 @@ When Prophet Abraham (as) brought his son Ishmael and his wife Hagar to the city
     title: 'The Ka’ba and the Quraysh',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch4-clean.png?alt=media&token=4a2bb961-4045-4f8c-9f81-97d5ad10d425',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F03_Chapter_4_The_Ka%E2%80%99ba_and_the_Quraysh.mp3?alt=media&token=ff1aec97-a9a9-4832-955f-2bce598ee1cf',
-    content: `After the discovery of the Zamzam water, the Jurhumites (Cürhümlüler) from Yemen settled in Mecca. Ishmael, who was the first offspring of Abraham (as) to speak Arabic, learned the language from the Jurhumites. Later, when Ishmael grew up, Abraham (as) came to the city to reconstruct the Holy Ka’ba with his son. For the Arabs who accepted the religion taught by Abraham (as) and Ishmael (as), the Ka’ba became a pilgrimage site; this helped the city grow rapidly. After Abraham (as) invited people for pilgrimage (hajj) and completed his mission, he returned to Palestine.
+    content: `After the discovery of the Zamzam water, the Jurhumites from Yemen settled in Mecca. Ishmael, who was the first offspring of Abraham (as) to speak Arabic, learned the language from the Jurhumites. Later, when Ishmael grew up, Abraham (as) came to the city to reconstruct the Holy Ka’ba with his son. For the Arabs who accepted the religion taught by Abraham (as) and Ishmael (as), the Ka’ba became a pilgrimage site; this helped the city grow rapidly. After Abraham (as) invited people for pilgrimage (hajj) and completed his mission, he returned to Palestine.
 
-Then a new tribe, the Khuza’a (Huzâa), came to Mecca, defeated the Jurhumites, and established their rule over the city. During the rule of this tribe, people forgot the religion of Abraham (as) (monotheism) and spread idolatry throughout the city. In the 5th century, the administration of Mecca and the Ka’ba passed to the Quraysh tribe. Pre-Islamic Mecca was administered by a council of mostly wealthy merchants.
+Then a new tribe, the Khuza’a, came to Mecca, defeated the Jurhumites, and established their rule over the city. During the rule of this tribe, people forgot the religion of Abraham (as) (monotheism) and spread idolatry throughout the city. In the 5th century, the administration of Mecca and the Ka’ba passed to the Quraysh tribe. Pre-Islamic Mecca was administered by a council of mostly wealthy merchants.
 
 Since the surroundings of the city were not suitable for agriculture, people tried to make a living through trade.
 
@@ -122,7 +122,7 @@ India also played a very important role in Arabia's trade. There were many produ
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F04_Chapter_5_Mecca_as_a_Trade_Center.mp3?alt=media&token=5daf39d9-8b4f-42ca-bce6-523e06230d54',
     content: `Tribes from Yemen brought these products to the coast of Yemen and they organized caravans to transport them to Iraq, Syria, Palestine, and Egypt.
 
-Mecca began to develop into a trade center from the early 6th century CE (Common Era: Milattan Sonra). Hashim ibn Abd Manaf, the great-grandfather of Muhammad (as), played a key role in boosting the economy of Mecca. He, along with the leaders of the Quraysh tribe, made trade deals with some tribes and nations, and they were given permission to travel freely. These agreements also allowed Quraysh merchants to enter Byzantium, Yemen, Iraq, and Abyssinia (Ethiopia). The summer and winter journeys described in the Holy Quran were organized once a year with large caravans (see Surah Quraysh: 1-4). These caravans numbered up to 2,500 camels.
+Mecca began to develop into a trade center from the early 6th century CE (Common Era). Hashim ibn Abd Manaf, the great-grandfather of Muhammad (as), played a key role in boosting the economy of Mecca. He, along with the leaders of the Quraysh tribe, made trade deals with some tribes and nations, and they were given permission to travel freely. These agreements also allowed Quraysh merchants to enter Byzantium, Yemen, Iraq, and Abyssinia (Ethiopia). The summer and winter journeys described in the Holy Quran were organized once a year with large caravans (see Surah Quraysh: 1-4). These caravans numbered up to 2,500 camels.
 
 This meant approximately 2–3 shiploads of cargo. At that time, the typical Roman trade ship had a carrying capacity of around 100–150 tons. This number shows us how large the trade was.
 
@@ -150,7 +150,7 @@ In addition to these, many caravans left Mecca at almost every time of the year.
 
 The safe environment created by the sacred months (These are the four sacred lunar months during which fighting is prohibited. During this period, which consists of Zilkade, Zilhicce, Muharram, and Rajab, people focus on worship, show respect, and refrain from sinning, with the aim of creating an atmosphere of peace.) made it possible for more people to perform the Hajj. (During the pre-Islamic Jahiliyyah period, the Arabs continued to visit the Ka’ba and the sacred sites in its neighborhood. Pagan people would walk around the Ka’ba, perform the sa'y between Safa and Marwah, and stand in Arafat.)
 
-Hajj also meant livelier trade. In addition, major trade festivals such as Ukaz (Ukâz), Majannah (Mecenne), and Dhul-Majaz (Zülmecâz) were also held during the sacred months. They were particularly held during the Hajj season, and after people attended these fairs, they went to Arafat.
+Hajj also meant livelier trade. In addition, major trade festivals such as Ukaz, Majannah, and Dhul-Majaz were also held during the sacred months. They were particularly held during the Hajj season, and after people attended these fairs, they went to Arafat.
 
 Because of its extensive trade activities, Mecca was described as the "Republic of Traders."
 
@@ -174,7 +174,7 @@ So, at the beginning of the 7th century, the Quraysh gained control of the most 
     title: 'Social Classes in Mecca',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch7-clean.png?alt=media&token=6fb13f37-a434-4468-bf64-d956bb7ecda2',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F06_Chapter_7_Social_Classes_in_Mecca.mp3?alt=media&token=15d61607-1493-435a-b106-c39713f3026f',
-    content: `The Quraysh used coins, as well as gold and silver, in their trade. Paying a fee to borrow money—which is usury (faiz)—played a very significant role in the economic activities of the time. This practice also affected the social structure. Usury, which means additional money on the original amount of money, is “ribâ” in Arabic. The Quraysh added to their wealth through lending at usury. It was the easiest and most profitable way to increase one’s wealth. As a result of the money trade, there was a wealthy aristocracy in the city. In such an environment where trade and money were so important, all human relationships were based on making more money. Money lenders and capitalists were the city’s most powerful class. They imposed enormous borrowing rates on debts. This system was designed to make the rich richer and the poor poorer. Vices of drinking and gambling were also so common that this was also one reason why people were constantly falling into debt.
+    content: `The Quraysh used coins, as well as gold and silver, in their trade. Paying a fee to borrow money—which is usury—played a very significant role in the economic activities of the time. This practice also affected the social structure. Usury, which means additional money on the original amount of money, is “ribâ” in Arabic. The Quraysh added to their wealth through lending at usury. It was the easiest and most profitable way to increase one’s wealth. As a result of the money trade, there was a wealthy aristocracy in the city. In such an environment where trade and money were so important, all human relationships were based on making more money. Money lenders and capitalists were the city’s most powerful class. They imposed enormous borrowing rates on debts. This system was designed to make the rich richer and the poor poorer. Vices of drinking and gambling were also so common that this was also one reason why people were constantly falling into debt.
 
 Because large amounts of wealth were concentrated in the hands of certain individuals, there were extreme divisions between social classes. In fact, there were rich people who ate from gold plates and drank from silver cups and crystal glasses, but there were also poor people who could barely survive.
 
