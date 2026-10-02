@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Check, Target, X } from '../../components/ui/icons';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Check, RotateCcw, Target, X } from '../../components/ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import { MapChallengeOverlay, type ChallengeAnswer } from '../story-maps/MapChallengeOverlay';
@@ -18,8 +18,9 @@ import type { HistoricalEntity } from './types';
 
 const ROUNDS = 8;
 const [, , VIEW_WIDTH, VIEW_HEIGHT] = MEDITERRANEAN_FEATURE_VIEWBOX.split(' ').map(Number);
-/** How far from a city dot a tap still counts, in map units (the map is 800 wide). */
-const POINT_REACH = 24;
+/** How far from a city or a building a tap still counts as found. */
+const POINT_KM = 150;
+const MAX_ZOOM = 5;
 /** Extra reach around a shape's edge, so small islands and thin rivers are fair. */
 const EDGE_REACH = 18;
 const GOOD = '#0f8a5f';
@@ -48,6 +49,15 @@ const distanceKm = (lon1: number, lat1: number, lon2: number, lat2: number) => {
   const a = Math.sin(((lat2 - lat1) * rad) / 2) ** 2
     + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(((lon2 - lon1) * rad) / 2) ** 2;
   return 6371 * 2 * Math.asin(Math.min(1, Math.sqrt(a)));
+};
+
+/** The POINT_KM circle around a place, in map units (wider than tall, as on the map). */
+const reachAround = (y: number) => {
+  const lat = NORTH - (y / VIEW_HEIGHT) * (NORTH - SOUTH);
+  return {
+    rx: (POINT_KM / (111.32 * Math.cos((lat * Math.PI) / 180))) * (VIEW_WIDTH / (EAST - WEST)),
+    ry: (POINT_KM / 110.57) * (VIEW_HEIGHT / (NORTH - SOUTH)),
+  };
 };
 
 const shapePoints = (entity: HistoricalEntity) => {
@@ -86,7 +96,9 @@ const isHit = (entity: HistoricalEntity, x: number, y: number) => {
   const focus = entity.focus;
   if (!focus) return false;
   if (focus.mode === 'point') {
-    return Math.hypot((focus.x / 100) * VIEW_WIDTH - x, (focus.y / 100) * VIEW_HEIGHT - y) <= POINT_REACH;
+    const [lon, lat] = toLonLat(x, y);
+    const [placeLon, placeLat] = toLonLat((focus.x / 100) * VIEW_WIDTH, (focus.y / 100) * VIEW_HEIGHT);
+    return distanceKm(lon, lat, placeLon, placeLat) <= POINT_KM;
   }
   if (focus.mode !== 'feature') return false;
   const context = getHitContext();
@@ -151,6 +163,86 @@ export const MapGame = ({
 
   useEffect(() => { playMapSound('start'); }, []);
 
+  // Zoom and pan, as in the story maps: + and − buttons, the mouse wheel, dragging,
+  // and pinching. A tap that ends a drag is not an answer.
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [view, setView] = useState({ s: 1, x: 0, y: 0 });
+  const [gliding, setGliding] = useState(true);
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const gesture = useRef<{ s: number; x: number; y: number; px: number; py: number; dist: number; moved: boolean } | null>(null);
+  const suppressClick = useRef(false);
+
+  const fit = (s: number, x: number, y: number) => {
+    const frame = frameRef.current;
+    if (!frame) return { s: 1, x: 0, y: 0 };
+    const scale = Math.min(MAX_ZOOM, Math.max(1, s));
+    const width = frame.clientWidth;
+    const height = frame.clientHeight;
+    return { s: scale, x: Math.min(0, Math.max(width * (1 - scale), x)), y: Math.min(0, Math.max(height * (1 - scale), y)) };
+  };
+  const zoomAt = (factor: number, px?: number, py?: number) => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    const cx = px ?? frame.clientWidth / 2;
+    const cy = py ?? frame.clientHeight / 2;
+    setGliding(px === undefined);
+    setView(current => {
+      const s = Math.min(MAX_ZOOM, Math.max(1, current.s * factor));
+      return fit(s, cx - (cx - current.x) * (s / current.s), cy - (cy - current.y) * (s / current.s));
+    });
+  };
+  const resetView = () => {
+    setGliding(true);
+    setView({ s: 1, x: 0, y: 0 });
+  };
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return undefined;
+    const onWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      const rect = frame.getBoundingClientRect();
+      zoomAt(event.deltaY < 0 ? 1.25 : 0.8, event.clientX - rect.left, event.clientY - rect.top);
+    };
+    frame.addEventListener('wheel', onWheel, { passive: false });
+    return () => frame.removeEventListener('wheel', onWheel);
+  });
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if ((event.target as Element).closest('button')) return;
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    const list = [...pointers.current.values()];
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = list.reduce((sum, point) => sum + point.x, 0) / list.length - rect.left;
+    const py = list.reduce((sum, point) => sum + point.y, 0) / list.length - rect.top;
+    const dist = list.length > 1 ? Math.hypot(list[0].x - list[1].x, list[0].y - list[1].y) : 0;
+    gesture.current = { ...view, px, py, dist, moved: gesture.current?.moved ?? false };
+    suppressClick.current = false;
+  };
+  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!pointers.current.has(event.pointerId) || !gesture.current) return;
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    const list = [...pointers.current.values()];
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = list.reduce((sum, point) => sum + point.x, 0) / list.length - rect.left;
+    const py = list.reduce((sum, point) => sum + point.y, 0) / list.length - rect.top;
+    const start = gesture.current;
+    if (Math.hypot(px - start.px, py - start.py) > 6 || list.length > 1) start.moved = true;
+    if (!start.moved) return;
+    if (list.length > 1 && !start.dist) return;
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    setGliding(false);
+    const s = list.length > 1 ? start.s * (Math.hypot(list[0].x - list[1].x, list[0].y - list[1].y) / start.dist) : start.s;
+    const ratioNow = Math.min(MAX_ZOOM, Math.max(1, s)) / start.s;
+    setView(fit(s, px - (start.px - start.x) * ratioNow, py - (start.py - start.y) * ratioNow));
+  };
+  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    pointers.current.delete(event.pointerId);
+    if (gesture.current?.moved) suppressClick.current = true;
+    if (pointers.current.size === 0) gesture.current = null;
+    else gesture.current = { ...view, px: 0, py: 0, dist: 0, moved: true };
+  };
+
   const total = questions.length;
   const done = index >= total;
   const target = done ? undefined : questions[index];
@@ -177,6 +269,19 @@ export const MapGame = ({
       list[index] = next;
       return list;
     });
+    // Show the answer and the right place together, close enough to tell them apart.
+    const frame = frameRef.current;
+    if (frame) {
+      const unit = frame.clientWidth / VIEW_WIDTH;
+      const reach = target.focus?.mode === 'point' ? reachAround(point[1]) : { rx: 0, ry: 0 };
+      const width = (Math.abs(point[0] - x) + reach.rx * 2 + 60) * unit;
+      const height = (Math.abs(point[1] - y) + reach.ry * 2 + 60) * unit;
+      const s = Math.min(3.5, frame.clientWidth / width, frame.clientHeight / height);
+      const cx = ((point[0] + x) / 2) * unit;
+      const cy = ((point[1] + y) / 2) * unit;
+      setGliding(true);
+      setView(current => (s > current.s * 1.15 ? fit(s, frame.clientWidth / 2 - cx * s, frame.clientHeight / 2 - cy * s) : current));
+    }
     buzz();
     playMapSound('drop');
     window.setTimeout(() => playMapSound(correct ? 'correct' : 'wrong'), 560);
@@ -192,6 +297,7 @@ export const MapGame = ({
   };
 
   const nextQuestion = () => {
+    resetView();
     playMapSound('next');
     setIndex(value => value + 1);
   };
@@ -200,6 +306,7 @@ export const MapGame = ({
     setQuestions(shuffle(pool).slice(0, ROUNDS));
     setIndex(0);
     setAnswers([]);
+    resetView();
     playMapSound('start');
   };
 
@@ -245,9 +352,23 @@ export const MapGame = ({
 
       <section className="flex items-center justify-center rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm lg:min-h-0 lg:[container-type:size]">
         <div
-          className="relative w-full lg:w-[min(100cqw,calc(100cqh*var(--map-ratio)))]"
-          style={{ '--map-ratio': ratio } as React.CSSProperties}
+          ref={frameRef}
+          className="relative w-full overflow-hidden rounded-xl lg:w-[min(100cqw,calc(100cqh*var(--map-ratio)))]"
+          style={{ '--map-ratio': ratio, touchAction: 'none' } as React.CSSProperties}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          onClickCapture={event => {
+            if (!suppressClick.current) return;
+            suppressClick.current = false;
+            event.stopPropagation();
+          }}
         >
+          <div
+            className={cn(gliding && 'transition-transform duration-500 ease-out motion-reduce:transition-none')}
+            style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.s})`, transformOrigin: '0 0' }}
+          >
           <EntityMap
             src={mediterraneanContextMap}
             alt=""
@@ -269,31 +390,40 @@ export const MapGame = ({
                 const length = Math.hypot(tx - ax, ty - ay);
                 const showLine = !answer.correct && length > 1;
                 const km = `${formatNumber(Math.round(answer.distanceKm))} ${t('map.km')}`;
+                // Pins and labels keep their size when the map is zoomed.
+                const k = 1 / view.s;
+                const reach = reachAround(ty);
+                // The distance label sits beside the line, never under a pin.
+                let nx = length ? -(ty - ay) / length : 0;
+                let ny = length ? (tx - ax) / length : -1;
+                if (ny > 0) { nx = -nx; ny = -ny; }
+                const labelX = (ax + tx) / 2 + nx * 26 * k;
+                const labelY = (ay + ty) / 2 + ny * 26 * k;
                 return (
                   <g key={`answer-${index}`}>
                     {!isFeature && (
                       <g transform={`translate(${tx} ${ty})`}>
-                        <circle className="story-map-grow" r={POINT_REACH} fill={GOOD} fillOpacity={0.18} stroke={GOOD} strokeWidth={2.2} strokeDasharray="6 5" />
-                        <circle className="story-map-fade" r={5} fill={GOOD} stroke="#fff" strokeWidth={2} style={{ animationDelay: '0.6s' }} />
-                        <g transform={`translate(0 ${-POINT_REACH})`}>{tag(t('map.rightPlace'), GOOD, -9, '0.95s')}</g>
+                        <ellipse className="story-map-grow" rx={reach.rx} ry={reach.ry} fill={GOOD} fillOpacity={0.18} stroke={GOOD} strokeWidth={2.2} strokeDasharray="6 5" vectorEffect="non-scaling-stroke" />
+                        <circle className="story-map-fade" r={5 * k} fill={GOOD} stroke="#fff" strokeWidth={2 * k} style={{ animationDelay: '0.6s' }} />
+                        <g transform={`translate(0 ${-reach.ry}) scale(${k})`}>{tag(t('map.rightPlace'), GOOD, -9, '0.95s')}</g>
                       </g>
                     )}
                     {showLine && (
                       <line
                         className="story-map-line"
                         x1={ax} y1={ay} x2={tx} y2={ty}
-                        stroke={INK} strokeOpacity={0.6} strokeWidth={2} strokeLinecap="round"
+                        stroke={INK} strokeOpacity={0.6} strokeWidth={2} strokeLinecap="round" vectorEffect="non-scaling-stroke"
                         strokeDasharray={length}
                         style={{ '--len': length } as React.CSSProperties}
                       />
                     )}
                     {showLine && (
-                      <g transform={`translate(${(ax + tx) / 2} ${(ay + ty) / 2})`} className="story-map-fade" style={{ animationDelay: '0.95s' }}>
+                      <g transform={`translate(${labelX} ${labelY}) scale(${k})`} className="story-map-fade" style={{ animationDelay: '0.95s' }}>
                         <rect x={-31} y={-11} width={62} height={22} rx={11} fill="#fffdf7" stroke={INK} strokeOpacity={0.35} />
                         <text y={4.5} textAnchor="middle" fontSize={12} fontWeight={700} fill={INK} style={{ fontFamily: svgFont }}>{km}</text>
                       </g>
                     )}
-                    <g transform={`translate(${ax} ${ay})`}>
+                    <g transform={`translate(${ax} ${ay}) scale(${k})`}>
                       <circle className="story-map-tapring" r={11} fill="none" stroke={colour} strokeWidth={2.5} />
                       <circle className="story-map-tapring" r={11} fill="none" stroke={colour} strokeWidth={2.5} style={{ animationDelay: '0.14s' }} />
                       <g className={answer.correct ? 'story-map-pinland' : 'story-map-pinland story-map-shake'}>
@@ -309,6 +439,17 @@ export const MapGame = ({
               })()}
             </svg>
           )}
+          </div>
+
+          <div className="absolute right-2 top-2 z-10 flex flex-col overflow-hidden rounded-xl border border-brand-200 bg-white/90 shadow-md backdrop-blur-sm">
+            <button type="button" onClick={() => zoomAt(1.5)} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-10 w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50">+</button>
+            <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
+            <button type="button" onClick={() => zoomAt(1 / 1.5)} disabled={view.s <= 1} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-10 w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35">−</button>
+            <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
+            <button type="button" onClick={resetView} disabled={view.s <= 1} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-10 w-10 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35">
+              <RotateCcw size={17} />
+            </button>
+          </div>
 
           <MapChallengeOverlay
             question={target ? { id: target.id, prompt: prompts[index], lon: 0, lat: 0, radiusKm: 0 } : undefined}
