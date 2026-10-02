@@ -1,11 +1,21 @@
 export type HistoricalEntityLocale = 'en' | 'ar';
 
+/** The learner's own language, shown as a small "name in your language" line. */
+export type LearnerLanguage = 'tr';
+
 export type HistoricalEntityKind =
   | 'city'
   | 'kingdom'
   | 'region'
+  | 'country'
+  | 'sea'
+  | 'river'
+  | 'island'
+  | 'landmark'
   | 'people'
   | 'tribe'
+  | 'dynasty'
+  | 'person'
   | 'empire';
 
 export type HistoricalMapFocus =
@@ -13,6 +23,8 @@ export type HistoricalMapFocus =
       mode: 'point';
       x: number;
       y: number;
+      /** Card map zoom around the point. 1 shows the whole map. */
+      zoom?: number;
     }
   | {
       mode: 'area';
@@ -21,6 +33,7 @@ export type HistoricalMapFocus =
       width: number;
       height: number;
       rotate?: number;
+      zoom?: number;
     };
 
 export interface HistoricalEntityCopy {
@@ -37,10 +50,19 @@ export type HistoricalMapAsset = string | Record<HistoricalEntityLocale, string>
 export interface HistoricalEntity {
   id: string;
   kind: HistoricalEntityKind;
-  aliases: Record<HistoricalEntityLocale, string[]>;
-  copy: Record<HistoricalEntityLocale, HistoricalEntityCopy>;
-  mapAsset: HistoricalMapAsset;
-  focus: HistoricalMapFocus;
+  aliases: Partial<Record<HistoricalEntityLocale, string[]>>;
+  /** English is required; other editions fall back to it until they are written. */
+  copy: { en: HistoricalEntityCopy } & Partial<Record<HistoricalEntityLocale, HistoricalEntityCopy>>;
+  /** People and ruling families have no map. */
+  mapAsset?: HistoricalMapAsset;
+  focus?: HistoricalMapFocus;
+  /**
+   * Draw the focus on top of a plain context map. Off for maps that already
+   * carry their own marker artwork.
+   */
+  showFocus?: boolean;
   approximate: boolean;
+  /** The usual name in the learner's own language, when there is one. */
+  learnerNames?: Partial<Record<LearnerLanguage, string>>;
   sources: string[];
 }

@@ -1,12 +1,13 @@
 import type { PageData } from '../../types';
-import type { HistoricalEntity, HistoricalEntityLocale } from './types';
+import type { HistoricalEntity, HistoricalEntityCopy, HistoricalEntityLocale } from './types';
+import { IBN_JUBAYR_A2_CHAPTER_ENTITIES, ibnJubayrA2Entities } from './books/ibnJubayrA2';
 
 const HISTORICAL_ENTITY_MARKER = '__historical_entity__:';
 const ancientNearEastContextMap = new URL('./assets/maps/ancient-near-east-context-map.svg', import.meta.url).href;
 const abrahamA2BabylonMapEn = new URL('./assets/maps/abraham-a2/abraham-a2-babylon-map-en.webp', import.meta.url).href;
 const abrahamA2BabylonMapAr = new URL('./assets/maps/abraham-a2/abraham-a2-babylon-map-ar.webp', import.meta.url).href;
 
-export const historicalEntities: Record<string, HistoricalEntity> = {
+const abrahamA2Entities: Record<string, HistoricalEntity> = {
   babylon: {
     id: 'babylon',
     kind: 'kingdom',
@@ -172,6 +173,11 @@ export const historicalEntities: Record<string, HistoricalEntity> = {
   },
 };
 
+export const historicalEntities: Record<string, HistoricalEntity> = {
+  ...abrahamA2Entities,
+  ...ibnJubayrA2Entities,
+};
+
 const ABRAHAM_A2_CHAPTER_ENTITIES: Record<number, string[]> = {
   1: ['babylon', 'mesopotamia'],
   10: ['babylon'],
@@ -179,6 +185,16 @@ const ABRAHAM_A2_CHAPTER_ENTITIES: Record<number, string[]> = {
   13: ['mecca'],
   14: ['mecca'],
 };
+
+export type HistoricalEntityBookKey = 'abraham-a2' | 'ibnjubayr-a2';
+
+const BOOK_CHAPTER_ENTITIES: Record<HistoricalEntityBookKey, Record<number, string[]>> = {
+  'abraham-a2': ABRAHAM_A2_CHAPTER_ENTITIES,
+  'ibnjubayr-a2': IBN_JUBAYR_A2_CHAPTER_ENTITIES,
+};
+
+export const isHistoricalEntityBookKey = (value: unknown): value is HistoricalEntityBookKey =>
+  typeof value === 'string' && value in BOOK_CHAPTER_ENTITIES;
 
 const normalizeForMerge = (value: string) => value
   .normalize('NFKD')
@@ -203,23 +219,56 @@ export const getHistoricalEntity = (entityId: string) => historicalEntities[enti
 export const resolveHistoricalMapAsset = (
   entity: HistoricalEntity,
   locale: HistoricalEntityLocale,
-): string => typeof entity.mapAsset === 'string' ? entity.mapAsset : entity.mapAsset[locale];
+): string | undefined => {
+  if (!entity.mapAsset) return undefined;
+  return typeof entity.mapAsset === 'string' ? entity.mapAsset : entity.mapAsset[locale];
+};
+
+export const resolveHistoricalCopy = (
+  entity: HistoricalEntity,
+  locale: HistoricalEntityLocale,
+): HistoricalEntityCopy => entity.copy[locale] ?? entity.copy.en;
+
+export interface BookEntityEntry {
+  entity: HistoricalEntity;
+  chapters: number[];
+}
+
+/** Every card a book offers, in order of first appearance, with its chapters. */
+export const getBookEntityIndex = (bookKey: HistoricalEntityBookKey): BookEntityEntry[] => {
+  const chapters = new Map<string, number[]>();
+  Object.entries(BOOK_CHAPTER_ENTITIES[bookKey])
+    .map(([chapter, ids]) => [Number(chapter), ids] as const)
+    .sort(([left], [right]) => left - right)
+    .forEach(([chapter, ids]) => {
+      ids.forEach(id => {
+        const list = chapters.get(id) ?? [];
+        if (!list.includes(chapter)) list.push(chapter);
+        chapters.set(id, list);
+      });
+    });
+
+  return [...chapters.entries()].flatMap(([id, list]) => {
+    const entity = historicalEntities[id];
+    return entity ? [{ entity, chapters: list }] : [];
+  });
+};
 
 export const applyHistoricalEntitiesToPage = (
   page: PageData,
-  bookKey: 'abraham-a2',
+  bookKey: HistoricalEntityBookKey,
   locale: HistoricalEntityLocale,
 ): PageData => {
-  if (bookKey !== 'abraham-a2' || page.type !== 'story') return page;
+  if (page.type !== 'story') return page;
 
-  const entityIds = ABRAHAM_A2_CHAPTER_ENTITIES[page.id] ?? [];
+  const entityIds = BOOK_CHAPTER_ENTITIES[bookKey]?.[page.id] ?? [];
   if (entityIds.length === 0) return page;
 
   const historicalVocabulary = entityIds.flatMap(entityId => {
     const entity = historicalEntities[entityId];
     if (!entity) return [];
 
-    const alias = entity.aliases[locale].find(candidate => page.content.includes(candidate));
+    const alias = (entity.aliases[locale] ?? []).find(candidate => page.content.includes(candidate));
     if (!alias) return [];
 
     return [{ word: alias, definition: historicalEntityDefinition(entityId) }];

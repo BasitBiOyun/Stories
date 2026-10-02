@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { applyHistoricalEntitiesToPage } from '../../../features/historical-entities';
 import { ibnJubayrA2Pages } from './en/pages';
 import {
   ibnJubayrA2QuickChallenges,
@@ -11,7 +12,8 @@ import { ibnJubayrA2LanguageFocusExercises } from './en/languageFocus';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => ibnJubayrA2Pages.map(page => {
+const buildEnglishPages = (): PageData[] => ibnJubayrA2Pages.map(sourcePage => {
+  const page = applyHistoricalEntitiesToPage(sourcePage, 'ibnjubayr-a2', 'en');
   if (STORY_IDS.has(page.id)) {
     return {
       ...page,

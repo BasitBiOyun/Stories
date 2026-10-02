@@ -45,6 +45,7 @@ import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgres
 const TeacherGuide = lazy(() => import('./components/layout/TeacherGuide').then(module => ({ default: module.TeacherGuide })));
 const FinalChallenge = lazy(() => import('./components/book/FinalChallenge').then(module => ({ default: module.FinalChallenge })));
 const StoryMapPage = lazy(() => import('./features/story-maps/StoryMapPage').then(module => ({ default: module.StoryMapPage })));
+const PlacesPage = lazy(() => import('./features/historical-entities/PlacesPage'));
 const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard').then(module => ({ default: module.SummaryDashboard })));
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
@@ -736,6 +737,12 @@ const AppContent = () => {
         return (
           <Suspense fallback={null}>
             <StoryMapPage page={currentPage} />
+          </Suspense>
+        );
+      case 'places':
+        return (
+          <Suspense fallback={null}>
+            <PlacesPage page={currentPage} />
           </Suspense>
         );
       case 'glossary':

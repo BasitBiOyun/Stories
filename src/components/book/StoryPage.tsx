@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from
 import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
 import { PageData, Hotspot, Exercise } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
+import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
 import { cn } from '../../lib/utils';
@@ -455,7 +456,10 @@ export const StoryPage = ({
         prevPage.animatedWords.forEach(word => seen.add(word));
       }
       if (prevPage.vocabulary) {
-        prevPage.vocabulary.forEach(v => seen.add(v.word));
+        // Place and history cards stay tappable in every chapter they are listed for.
+        prevPage.vocabulary
+          .filter(v => !getHistoricalEntityIdFromDefinition(v.definition))
+          .forEach(v => seen.add(v.word));
       }
     }
     return seen;
@@ -755,7 +759,11 @@ export const StoryPage = ({
         }
 
         let foundPhrase: { vocab?: { word: string; definition: string }; animatedWord?: string; endIdx: number; text: string } | null = null;
-        const potentialPhrases: { text: string; endIdx: number }[] = [];
+        // A hyphenated word such as "Al-Andalus" or "middle-aged" is one surface
+        // token but two normalized words, so it is matched as a phrase too.
+        const potentialPhrases: { text: string; endIdx: number }[] = highlightWordCount(word) > 1
+          ? [{ text: word, endIdx: wIdx }]
+          : [];
         let currentPotential = word;
         let wordsInPotential = 1;
 
@@ -919,7 +927,10 @@ export const StoryPage = ({
           }
 
           let foundPhrase = null;
-          const potentialPhrases: { text: string; endIdx: number }[] = [];
+          // Hyphenated words ("Al-Andalus", "middle-aged") match as phrases too.
+          const potentialPhrases: { text: string; endIdx: number }[] = highlightWordCount(word) > 1
+            ? [{ text: word, endIdx: wIdx }]
+            : [];
           let currentPotential = word;
           let wordsInPotential = 1;
           
