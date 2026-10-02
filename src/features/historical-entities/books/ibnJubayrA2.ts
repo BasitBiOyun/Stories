@@ -1,5 +1,5 @@
-import type { HistoricalEntity, HistoricalEntityCopy, HistoricalEntityKind, HistoricalMapFocus } from '../types';
-import { MEDITERRANEAN_MAP_ASPECT, mediterraneanContextMap, medCircle, medFeature, medPoint } from '../mediterraneanMap';
+import type { HistoricalEntity, HistoricalEntityCopy, HistoricalEntityKind, HistoricalMapFocus, HistoricalTimeline } from '../types';
+import { MEDITERRANEAN_MAP_ASPECT, mediterraneanContextMap, medCircle, medFeature, medGroup, medPoint } from '../mediterraneanMap';
 
 // Places and historical names in Ibn Jubayr A2 (English only).
 // Copy is A2 English: short sentences and story words. The Turkish name sits in
@@ -7,6 +7,18 @@ import { MEDITERRANEAN_MAP_ASPECT, mediterraneanContextMap, medCircle, medFeatur
 
 const POINT_NOTE = 'Location shown on a regional map';
 const AREA_NOTE = 'Area shown approximately';
+const GROUP_NOTE = 'Lands shown approximately';
+
+/** People and ruling families are set against the journey years on a short time strip. */
+const timeline = (
+  segments: HistoricalTimeline['segments'],
+  events?: HistoricalTimeline['events'],
+): HistoricalTimeline => ({
+  axis: [600, 1500],
+  reference: { from: 1183, to: 1185, label: 'Ibn Jubayr’s journey' },
+  segments,
+  ...(events ? { events } : {}),
+});
 
 interface PlaceInput {
   id: string;
@@ -18,19 +30,21 @@ interface PlaceInput {
   summary: string;
   tr?: string;
   focus?: HistoricalMapFocus;
+  timeline?: HistoricalTimeline;
   sources: string[];
 }
 
-const place = ({ id, kind, aliases, title, kindLabel, periodLabel, summary, tr, focus, sources }: PlaceInput): HistoricalEntity => {
+const place = ({ id, kind, aliases, title, kindLabel, periodLabel, summary, tr, focus, timeline, sources }: PlaceInput): HistoricalEntity => {
   const hasMap = Boolean(focus);
-  const isArea = focus?.mode === 'circle';
+  const isGroup = focus?.mode === 'group';
+  const isArea = focus?.mode === 'circle' || isGroup;
   const copy: HistoricalEntityCopy = {
     title,
     kindLabel,
     periodLabel,
     summary,
-    mapAlt: hasMap ? `Map showing where ${title} is.` : '',
-    ...(hasMap ? { approximateLabel: isArea ? AREA_NOTE : POINT_NOTE } : {}),
+    mapAlt: !hasMap ? '' : isGroup ? `Map showing the lands of ${title}.` : `Map showing where ${title} is.`,
+    ...(hasMap ? { approximateLabel: isGroup ? GROUP_NOTE : isArea ? AREA_NOTE : POINT_NOTE } : {}),
   };
   return {
     id,
@@ -40,6 +54,7 @@ const place = ({ id, kind, aliases, title, kindLabel, periodLabel, summary, tr, 
     ...(focus ? { mapAsset: mediterraneanContextMap, mapAspect: MEDITERRANEAN_MAP_ASPECT, focus, showFocus: true } : {}),
     approximate: isArea,
     ...(tr ? { learnerNames: { tr } } : {}),
+    ...(timeline ? { timeline } : {}),
     sources,
   };
 };
@@ -287,12 +302,20 @@ const entities: HistoricalEntity[] = [
     sources: ['TDV İslâm Ansiklopedisi: Kerek'],
   }),
 
-  // People and ruling families (no map)
+  // People and ruling families: their lands, cities and years
+  // City coordinates match the city cards above.
   place({
     id: 'ibnjubayr-crusaders', kind: 'people', aliases: ['Crusaders'],
     title: 'The Crusaders', kindLabel: 'Soldiers', periodLabel: '1096–1291',
     summary: 'The Crusaders were Christian soldiers from Europe. They came to the Middle East and took Jerusalem and other lands in 1099.',
     tr: 'Haçlılar',
+    focus: medGroup({
+      label: [44.6, 25],
+      areas: [{ at: [33.6, 35.9], radius: 2.4 }],
+      pins: [{ at: [31.78, 35.22], label: 'Jerusalem' }],
+      arrows: [{ from: [45.5, 4], to: [35.6, 33.4] }],
+    }),
+    timeline: timeline([{ from: 1096, to: 1291 }], [{ year: 1099, label: 'they took Jerusalem' }]),
     sources: ['TDV İslâm Ansiklopedisi: Haçlı Seferleri'],
   }),
   place({
@@ -300,6 +323,19 @@ const entities: HistoricalEntity[] = [
     title: 'The Ayyubids', kindLabel: 'Ruling family', periodLabel: 'From 1171',
     summary: 'The Ayyubids were a Muslim family of rulers. Saladin started their state in Egypt. They also ruled Syria, Yemen and other lands.',
     tr: 'Eyyûbîler',
+    focus: medGroup({
+      label: [37.6, 33],
+      areas: [
+        { at: [26.8, 30.3], radius: 4.6 },
+        { at: [34, 37.2], radius: 3.2 },
+        { at: [16, 44.5], radius: 2.2 },
+      ],
+      pins: [
+        { at: [30.04, 31.24], label: 'Cairo' },
+        { at: [33.51, 36.29], label: 'Damascus' },
+      ],
+    }),
+    timeline: timeline([{ from: 1171, to: 1462 }]),
     sources: ['TDV İslâm Ansiklopedisi: Eyyûbîler'],
   }),
   place({
@@ -307,6 +343,20 @@ const entities: HistoricalEntity[] = [
     title: 'Saladin', kindLabel: 'Sultan', periodLabel: '1138–1193',
     summary: 'Saladin (Salah ad-Din al-Ayyubi) was a great Muslim ruler and army leader. He ruled Egypt and Syria. In 1187, he took Jerusalem back from the Crusaders.',
     tr: 'Selâhaddîn-i Eyyûbî',
+    focus: medGroup({
+      label: [37.4, 31.5],
+      zoom: 1.4,
+      areas: [
+        { at: [26.8, 30.3], radius: 4.6 },
+        { at: [34, 37.2], radius: 3.2 },
+      ],
+      pins: [
+        { at: [30.04, 31.24], label: 'Cairo' },
+        { at: [33.51, 36.29], label: 'Damascus' },
+        { at: [31.78, 35.22], label: 'Jerusalem' },
+      ],
+    }),
+    timeline: timeline([{ from: 1138, to: 1193, label: 'his life' }], [{ year: 1187, label: 'he took Jerusalem back' }]),
     sources: ['TDV İslâm Ansiklopedisi: Selâhaddîn-i Eyyûbî'],
   }),
   place({
@@ -314,6 +364,12 @@ const entities: HistoricalEntity[] = [
     title: 'The Abbasids', kindLabel: 'Ruling family', periodLabel: '750–1258',
     summary: 'The Abbasids were a family of caliphs. They ruled from Baghdad until the Mongols attacked the city in 1258.',
     tr: 'Abbâsîler',
+    focus: medGroup({
+      label: [39, 41],
+      areas: [{ at: [32.8, 43.6], radius: 6 }],
+      pins: [{ at: [33.31, 44.36], label: 'Baghdad' }],
+    }),
+    timeline: timeline([{ from: 750, to: 1258, label: 'in Baghdad' }]),
     sources: ['TDV İslâm Ansiklopedisi: Abbâsîler'],
   }),
   place({
@@ -321,6 +377,12 @@ const entities: HistoricalEntity[] = [
     title: 'The Mongols', kindLabel: 'People', periodLabel: '13th century',
     summary: 'The Mongols were people from Central Asia. In 1258, their army attacked Baghdad and destroyed a large part of it.',
     tr: 'Moğollar',
+    focus: medGroup({
+      label: [41.2, 42],
+      pins: [{ at: [33.31, 44.36], label: 'Baghdad' }],
+      arrows: [{ from: [40, 50], to: [34, 44.9] }],
+    }),
+    timeline: timeline([{ from: 1201, to: 1300, text: '13th century' }], [{ year: 1258, label: 'they attacked Baghdad' }]),
     sources: [],
   }),
   place({
@@ -328,6 +390,21 @@ const entities: HistoricalEntity[] = [
     title: 'The Umayyads', kindLabel: 'Ruling family', periodLabel: '661–750',
     summary: 'The Umayyads were the first family of caliphs. They ruled from Damascus from 661 to 750. Later, another Umayyad family ruled Al-Andalus from Córdoba.',
     tr: 'Emevîler',
+    focus: medGroup({
+      label: [40.6, 37.5],
+      areas: [
+        { at: [33.8, 37.5], radius: 4.6 },
+        { at: [38.3, -4.6], radius: 3, faint: true },
+      ],
+      pins: [
+        { at: [33.51, 36.29], label: 'Damascus' },
+        { at: [37.88, -4.78], label: 'Córdoba' },
+      ],
+    }),
+    timeline: timeline([
+      { from: 661, to: 750, label: 'in Damascus' },
+      { from: 756, to: 1031, label: 'in Al-Andalus', faint: true },
+    ]),
     sources: ['TDV İslâm Ansiklopedisi: Emevîler'],
   }),
 ];

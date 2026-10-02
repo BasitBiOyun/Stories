@@ -50,7 +50,31 @@ export type HistoricalMapFocus =
       x: number;
       y: number;
       zoom?: number;
+    }
+  | {
+      /**
+       * Where a people or a ruling family lived and acted: round lands, pins
+       * for their main cities and arrows for where they came from. x/y place
+       * the title label. All values are percentages of the map.
+       */
+      mode: 'group';
+      x: number;
+      y: number;
+      zoom?: number;
+      areas: { x: number; y: number; radius: number; faint?: boolean }[];
+      pins: { x: number; y: number; label: string }[];
+      arrows?: { fromX: number; fromY: number; toX: number; toY: number }[];
     };
+
+/** A short time strip that sets a people or a ruler against the story's own years. */
+export interface HistoricalTimeline {
+  /** First and last year of the strip. */
+  axis: [number, number];
+  /** The story's own moment, e.g. the journey years. */
+  reference: { from: number; to: number; label: string };
+  segments: { from: number; to: number; label?: string; text?: string; faint?: boolean }[];
+  events?: { year: number; label: string }[];
+}
 
 export interface HistoricalEntityCopy {
   title: string;
@@ -69,7 +93,7 @@ export interface HistoricalEntity {
   aliases: Partial<Record<HistoricalEntityLocale, string[]>>;
   /** English is required; other editions fall back to it until they are written. */
   copy: { en: HistoricalEntityCopy } & Partial<Record<HistoricalEntityLocale, HistoricalEntityCopy>>;
-  /** People and ruling families have no map. */
+  /** Optional: a card without a map shows only its text. */
   mapAsset?: HistoricalMapAsset;
   /** CSS aspect ratio of the map image, e.g. '800 / 537'. Defaults to 4 / 3. */
   mapAspect?: string;
@@ -80,6 +104,7 @@ export interface HistoricalEntity {
    */
   showFocus?: boolean;
   approximate: boolean;
+  timeline?: HistoricalTimeline;
   /** The usual name in the learner's own language, when there is one. */
   learnerNames?: Partial<Record<LearnerLanguage, string>>;
   sources: string[];

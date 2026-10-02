@@ -6,6 +6,7 @@ import { cn } from '../../lib/utils';
 import { getHistoricalEntity, resolveHistoricalCopy, resolveHistoricalMapAsset } from './registry';
 import { EntityMap } from './EntityMap';
 import { LearnerName } from './LearnerNameLine';
+import { TimelineStrip } from './TimelineStrip';
 
 export const HistoricalEntityWord = ({
   word,
@@ -35,7 +36,7 @@ export const HistoricalEntityWord = ({
     const viewportHeight = window.innerHeight;
     const edge = 12;
     const gap = 8;
-    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - edge * 2, 420);
+    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - edge * 2, 360);
     const tooltipHeight = tooltipRef.current?.offsetHeight ?? Math.min(viewportHeight - edge * 2, 420);
     const triggerCenterX = rect.left + rect.width / 2;
 
@@ -133,23 +134,23 @@ export const HistoricalEntityWord = ({
                 lang={locale}
                 onClick={(event) => event.stopPropagation()}
                 className={cn(
-                  'w-[calc(100vw-1.5rem)] max-w-[420px] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden rounded-2xl border border-teal-300/30',
+                  'w-[calc(100vw-1.5rem)] max-w-[360px] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden rounded-2xl border border-teal-300/30',
                   'bg-wood text-parchment shadow-2xl',
                   isArabic ? 'text-right' : 'text-left',
                 )}
               >
-                <div className="p-4 sm:p-5 pb-3 sm:pb-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-teal-300/80 font-display">
+                <div className="px-3.5 pt-3 pb-2">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <span className="block text-[10px] uppercase tracking-[0.18em] text-teal-300/80 font-display">
                         {copy.kindLabel}
                       </span>
-                      <h4 className={cn('mt-1 font-display font-bold text-teal-200', isArabic ? 'text-2xl' : 'text-xl')}>
+                      <h4 className={cn('mt-0.5 font-display font-bold leading-tight text-teal-200', isArabic ? 'text-xl' : 'text-lg')}>
                         {copy.title}
                         <LearnerName entity={entity} className="text-teal-100" />
                       </h4>
                     </div>
-                    <span className="shrink-0 rounded-full border border-teal-300/20 bg-teal-300/10 px-2.5 py-1 text-[10px] sm:text-xs text-teal-100/85">
+                    <span className="shrink-0 rounded-full border border-teal-300/20 bg-teal-300/10 px-2 py-0.5 text-[10px] text-teal-100/85">
                       {copy.periodLabel}
                     </span>
                   </div>
@@ -163,16 +164,17 @@ export const HistoricalEntityWord = ({
                     showFocus={Boolean(entity.showFocus)}
                     aspect={entity.mapAspect}
                     label={copy.title}
-                    className="mx-3 sm:mx-4"
+                    className="mx-3"
                   />
                 )}
 
-                <div className={cn('p-4 sm:p-5', mapAsset ? 'pt-3.5 sm:pt-4' : 'pt-0 sm:pt-0')}>
-                  <p className={cn('font-serif leading-relaxed text-parchment/90', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-[15px]')}>
+                <div className={cn('px-3.5 pb-3', mapAsset ? 'pt-2.5' : 'pt-0')}>
+                  <p className={cn('font-serif leading-snug text-parchment/90', isArabic ? 'text-base' : 'text-sm')}>
                     {copy.summary}
                   </p>
+                  {entity.timeline && <TimelineStrip timeline={entity.timeline} tone="dark" className="mt-2.5" />}
                   {copy.approximateLabel && (
-                    <p className="mt-2.5 text-[10px] sm:text-[11px] text-teal-200/65">
+                    <p className="mt-1.5 text-[10px] text-teal-200/65">
                       {copy.approximateLabel}
                     </p>
                   )}
