@@ -20,14 +20,14 @@ export const meccaB1StoryMapLayout: StoryMapLayout = {
     { id: 'tradeIraq', points: [[39.83, 21.42], [41.6, 24.2], [43.0, 27.4], [43.9, 30.0], [44.2, 32.0]], start: 5.6, end: 6, tone: 'journey' },
   ],
   places: [
-    { id: 'mecca', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'right' },
-    { id: 'yemen', lon: 44.2, lat: 15.3, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'right' },
-    { id: 'palestine', lon: 35.2, lat: 31.7, icon: 'route', tone: 'place', areaRadiusKm: 110, showArea: true, labelSide: 'left' },
-    { id: 'iraq', lon: 44.2, lat: 32.0, icon: 'route', tone: 'place', areaRadiusKm: 220, showArea: true, labelSide: 'left' },
-    { id: 'ethiopia', lon: 38.9, lat: 13.3, icon: 'route', tone: 'place', areaRadiusKm: 270, showArea: true, labelSide: 'right' },
+    { id: 'mecca', entityId: 'mecca-mecca-7th-century', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'right' },
+    { id: 'yemen', entityId: 'mecca-yemen-6th-century', lon: 44.2, lat: 15.3, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'right' },
+    { id: 'palestine', entityId: 'mecca-palestine-ancient', lon: 35.2, lat: 31.7, icon: 'route', tone: 'place', areaRadiusKm: 110, showArea: true, labelSide: 'left' },
+    { id: 'iraq', entityId: 'mecca-iraq-6th-century', lon: 44.2, lat: 32.0, icon: 'route', tone: 'place', areaRadiusKm: 220, showArea: true, labelSide: 'left' },
+    { id: 'ethiopia', entityId: 'mecca-abyssinia', lon: 38.9, lat: 13.3, icon: 'route', tone: 'place', areaRadiusKm: 270, showArea: true, labelSide: 'right' },
     // B1 only says these two empires were powerful and traded with Arabia; their areas are soft and approximate.
-    { id: 'byzantium', lon: 34.5, lat: 36.8, icon: 'palace', tone: 'place', areaRadiusKm: 260, showArea: true, labelSide: 'right' },
-    { id: 'sassanids', lon: 48.3, lat: 34.2, icon: 'palace', tone: 'place', areaRadiusKm: 200, showArea: true, labelSide: 'left' },
+    { id: 'byzantium', entityId: 'mecca-byzantine-empire', lon: 34.5, lat: 36.8, icon: 'palace', tone: 'place', areaRadiusKm: 260, showArea: true, labelSide: 'right' },
+    { id: 'sassanids', entityId: 'mecca-sassanids', lon: 48.3, lat: 34.2, icon: 'palace', tone: 'place', areaRadiusKm: 200, showArea: true, labelSide: 'left' },
   ],
   towns: [],
   seas: [

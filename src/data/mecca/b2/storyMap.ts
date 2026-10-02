@@ -22,14 +22,14 @@ export const meccaB2StoryMapLayout: StoryMapLayout = {
     { id: 'seaAbyssinia', points: [[39.83, 21.42], [39.05, 21.5], [38.7, 19.0], [39.7, 16.0], [39.45, 15.6], [38.9, 13.3]], start: 5.6, end: 6, tone: 'journey' },
   ],
   places: [
-    { id: 'mecca', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'right' },
-    { id: 'medina', lon: 39.61, lat: 24.47, icon: 'palm', tone: 'place', labelSide: 'right' },
-    { id: 'yemen', lon: 44.2, lat: 15.3, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'right' },
-    { id: 'abyssinia', lon: 38.9, lat: 13.3, icon: 'route', tone: 'place', areaRadiusKm: 270, showArea: true, labelSide: 'right' },
-    { id: 'egypt', lon: 31.2, lat: 29.0, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'left' },
-    { id: 'iraq', lon: 44.4, lat: 32.3, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'right' },
+    { id: 'mecca', entityId: 'mecca-mecca-7th-century', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'right' },
+    { id: 'medina', entityId: 'mecca-medina-7th-century', lon: 39.61, lat: 24.47, icon: 'palm', tone: 'place', labelSide: 'right' },
+    { id: 'yemen', entityId: 'mecca-yemen-6th-century', lon: 44.2, lat: 15.3, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'right' },
+    { id: 'abyssinia', entityId: 'mecca-abyssinia', lon: 38.9, lat: 13.3, icon: 'route', tone: 'place', areaRadiusKm: 270, showArea: true, labelSide: 'right' },
+    { id: 'egypt', entityId: 'mecca-egypt-byzantine', lon: 31.2, lat: 29.0, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'left' },
+    { id: 'iraq', entityId: 'mecca-iraq-6th-century', lon: 44.4, lat: 32.3, icon: 'route', tone: 'place', areaRadiusKm: 230, showArea: true, labelSide: 'right' },
     // The capital of the Byzantine Empire, at the north edge of the base map.
-    { id: 'constantinople', lon: 28.98, lat: 41.01, icon: 'palace', tone: 'place', labelSide: 'right' },
+    { id: 'constantinople', entityId: 'mecca-constantinople-byzantine', lon: 28.98, lat: 41.01, icon: 'palace', tone: 'place', labelSide: 'right' },
   ],
   // Caravan destinations named in chapter 5, shown only as reference dots.
   towns: [

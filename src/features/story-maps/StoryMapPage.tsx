@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import type { PageData } from '../../types';
+import { getHistoricalEntity } from '../historical-entities/registry';
+import { entityPictureUrl } from '../historical-entities/pictures';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useUserRole } from '../../contexts/UserRoleContext';
 import { cn } from '../../lib/utils';
@@ -1257,6 +1259,26 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                     <p className="font-semibold">{selected.question}</p>
                   </div>
                 )}
+
+                {/* The place's square picture fills the free space under the text: it sits a
+                    little low, keeps a margin above and below, and shrinks when the text is long. */}
+                {(() => {
+                  const entity = selected.entityId ? getHistoricalEntity(selected.entityId) : undefined;
+                  const picture = entity ? entityPictureUrl(entity) : undefined;
+                  if (!picture) return null;
+                  return (
+                    <div className="flex justify-center pb-1 pt-3 lg:relative lg:min-h-[9rem] lg:flex-1 lg:p-0">
+                      <div className="contents lg:absolute lg:inset-x-0 lg:bottom-2 lg:top-6 lg:flex lg:items-center lg:justify-center">
+                        <img
+                          src={picture}
+                          alt=""
+                          loading="lazy"
+                          className="aspect-square w-44 rounded-2xl object-cover shadow-sm ring-1 ring-brand-200/70 sm:w-52 lg:h-full lg:max-h-64 lg:w-auto"
+                        />
+                      </div>
+                    </div>
+                  );
+                })()}
 
                 <div className="mt-auto flex items-center justify-between gap-2 pt-2">
                   <button

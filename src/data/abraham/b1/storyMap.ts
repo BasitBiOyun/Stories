@@ -11,15 +11,15 @@ export const abrahamB1StoryMapLayout: StoryMapLayout = {
   features: { timeSlider: true, tour: true, challenge: true, classroom: true },
   time: { start: 1, lastYear: 6, birth: 1, mode: 'stages' },
   places: [
-    { id: 'babylon', lon: 44.42, lat: 32.54, icon: 'city', tone: 'place', labelSide: 'left' },
-    { id: 'mesopotamia', lon: 44.0, lat: 34.0, icon: 'waves', tone: 'place', areaRadiusKm: 350, showArea: true, labelSide: 'top' },
+    { id: 'babylon', entityId: 'abraham-babylon', lon: 44.42, lat: 32.54, icon: 'city', tone: 'place', labelSide: 'left' },
+    { id: 'mesopotamia', entityId: 'abraham-mesopotamia', lon: 44.0, lat: 34.0, icon: 'waves', tone: 'place', areaRadiusKm: 350, showArea: true, labelSide: 'top' },
     // The text does not say where the fire was; the pin sits beside Babylon so the event has its own card.
     { id: 'fire', lon: 45.3, lat: 33.0, icon: 'palace', tone: 'event', labelSide: 'right' },
-    { id: 'syria', lon: 37.3, lat: 34.6, icon: 'route', tone: 'place', areaRadiusKm: 220, labelSide: 'right' },
-    { id: 'palestine', lon: 35.2, lat: 31.6, icon: 'route', tone: 'place', areaRadiusKm: 110, labelSide: 'left' },
-    { id: 'mecca', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'left' },
+    { id: 'syria', entityId: 'abraham-syria-ancient', lon: 37.3, lat: 34.6, icon: 'route', tone: 'place', areaRadiusKm: 220, labelSide: 'right' },
+    { id: 'palestine', entityId: 'abraham-palestine-ancient', lon: 35.2, lat: 31.6, icon: 'route', tone: 'place', areaRadiusKm: 110, labelSide: 'left' },
+    { id: 'mecca', entityId: 'abraham-mecca-valley-ancient', lon: 39.83, lat: 21.42, icon: 'kaaba', tone: 'place', labelSide: 'left' },
     // Chapter 13: Ishmael's descendants "spread all over the Arabian Peninsula". Shown when selected.
-    { id: 'arabia', lon: 45.0, lat: 23.8, icon: 'palm', tone: 'place', areaRadiusKm: 700, labelSide: 'right' },
+    { id: 'arabia', entityId: 'abraham-arabian-peninsula', lon: 45.0, lat: 23.8, icon: 'palm', tone: 'place', areaRadiusKm: 700, labelSide: 'right' },
   ],
   towns: [],
   seas: [

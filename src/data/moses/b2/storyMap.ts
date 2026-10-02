@@ -13,17 +13,17 @@ export const mosesB2StoryMapLayout: StoryMapLayout = {
   time: { start: 1, lastYear: 9, birth: 1, mode: 'stages' },
   places: [
     // Egypt with the Nile Delta. The palace and the capital of Ramses are not located by the text.
-    { id: 'egypt', lon: 30.7, lat: 30.2, icon: 'palace', tone: 'place', areaRadiusKm: 170, showArea: true, labelSide: 'left' },
+    { id: 'egypt', entityId: 'moses-egypt-ancient', lon: 30.7, lat: 30.2, icon: 'palace', tone: 'place', areaRadiusKm: 170, showArea: true, labelSide: 'left' },
     // The Nile: the engine draws only circles, so a soft circle sits on the river in Middle Egypt.
-    { id: 'nile', lon: 31.15, lat: 27.2, icon: 'waves', tone: 'place', areaRadiusKm: 190, showArea: true, labelSide: 'left' },
+    { id: 'nile', entityId: 'moses-nile', lon: 31.15, lat: 27.2, icon: 'waves', tone: 'place', areaRadiusKm: 190, showArea: true, labelSide: 'left' },
     // Midian: "the eastern part of the Gulf of Aqaba" (ch. 13).
-    { id: 'midian', lon: 35.4, lat: 28.3, icon: 'well', tone: 'place', areaRadiusKm: 130, showArea: true, labelSide: 'right' },
+    { id: 'midian', entityId: 'moses-midian', lon: 35.4, lat: 28.3, icon: 'well', tone: 'place', areaRadiusKm: 130, showArea: true, labelSide: 'right' },
     // Sinai: one soft area for Mount Sinai / Mount Tur and the sacred valley Tuwa; no exact peak or valley is claimed.
-    { id: 'sinai', lon: 33.85, lat: 28.85, icon: 'mountain', tone: 'place', areaRadiusKm: 120, showArea: true, labelSide: 'bottom' },
+    { id: 'sinai', entityId: 'moses-mount-sinai', lon: 33.85, lat: 28.85, icon: 'mountain', tone: 'place', areaRadiusKm: 120, showArea: true, labelSide: 'bottom' },
     // The Red Sea. The crossing place is not known; a soft area at the Gulf of Suez.
-    { id: 'redSea', lon: 32.6, lat: 29.6, icon: 'waves', tone: 'event', areaRadiusKm: 90, showArea: true, labelSide: 'left' },
+    { id: 'redSea', entityId: 'moses-red-sea', lon: 32.6, lat: 29.6, icon: 'waves', tone: 'event', areaRadiusKm: 90, showArea: true, labelSide: 'left' },
     // The land of Canaan, the land of Palestine (ch. 23): the direction of the journey after the crossing.
-    { id: 'canaan', lon: 35.1, lat: 31.65, icon: 'route', tone: 'place', areaRadiusKm: 110, showArea: true, labelSide: 'right' },
+    { id: 'canaan', entityId: 'moses-canaan', lon: 35.1, lat: 31.65, icon: 'route', tone: 'place', areaRadiusKm: 110, showArea: true, labelSide: 'right' },
   ],
   towns: [],
   seas: [

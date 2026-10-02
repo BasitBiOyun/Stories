@@ -13,15 +13,15 @@ export const mosesA2StoryMapLayout: StoryMapLayout = {
   time: { start: 1, lastYear: 8, birth: 1, mode: 'stages' },
   places: [
     // Egypt: the land of the palace and the city. The text names neither, so it is a region around the delta.
-    { id: 'egypt', lon: 30.7, lat: 30.2, icon: 'palace', tone: 'place', areaRadiusKm: 170, showArea: true, labelSide: 'left' },
+    { id: 'egypt', entityId: 'moses-egypt-ancient', lon: 30.7, lat: 30.2, icon: 'palace', tone: 'place', areaRadiusKm: 170, showArea: true, labelSide: 'left' },
     // The Nile: the engine draws only circles, so a soft circle sits on the river in Middle Egypt.
-    { id: 'nile', lon: 31.15, lat: 27.2, icon: 'waves', tone: 'place', areaRadiusKm: 190, showArea: true, labelSide: 'left' },
+    { id: 'nile', entityId: 'moses-nile', lon: 31.15, lat: 27.2, icon: 'waves', tone: 'place', areaRadiusKm: 190, showArea: true, labelSide: 'left' },
     // Midian: east of the Gulf of Aqaba (named in B1/B2 only; A2 says "near Egypt").
-    { id: 'midian', lon: 35.4, lat: 28.3, icon: 'well', tone: 'place', areaRadiusKm: 130, showArea: true, labelSide: 'right' },
+    { id: 'midian', entityId: 'moses-midian', lon: 35.4, lat: 28.3, icon: 'well', tone: 'place', areaRadiusKm: 130, showArea: true, labelSide: 'right' },
     // "The mountain": unnamed in A2. A soft area in southern Sinai (B2 names it Mount Sinai / Mount Tur).
-    { id: 'mountain', lon: 33.95, lat: 28.55, icon: 'mountain', tone: 'place', areaRadiusKm: 80, showArea: true, labelSide: 'bottom' },
+    { id: 'mountain', entityId: 'moses-mount-sinai', lon: 33.95, lat: 28.55, icon: 'mountain', tone: 'place', areaRadiusKm: 80, showArea: true, labelSide: 'bottom' },
     // "The sea": unnamed in A2. The crossing place is not known; a soft area at the Gulf of Suez.
-    { id: 'sea', lon: 32.6, lat: 29.6, icon: 'waves', tone: 'event', areaRadiusKm: 90, showArea: true, labelSide: 'right' },
+    { id: 'sea', entityId: 'moses-red-sea', lon: 32.6, lat: 29.6, icon: 'waves', tone: 'event', areaRadiusKm: 90, showArea: true, labelSide: 'right' },
   ],
   towns: [],
   seas: [

@@ -10,13 +10,13 @@ export const yunusA2StoryMapLayout: StoryMapLayout = {
   // The book says Yunus Emre was born in 1240 and died in 1320.
   time: { start: 1240, lastYear: 1320, birth: 1240 },
   places: [
-    { id: 'anatolia', lon: 34.1, lat: 39.35, icon: 'quill', tone: 'place', labelSide: 'left' },
-    { id: 'konya', lon: 32.49, lat: 37.87, icon: 'dome', tone: 'place', labelSide: 'bottom' },
+    { id: 'anatolia', entityId: 'yunus-anatolia', lon: 34.1, lat: 39.35, icon: 'quill', tone: 'place', labelSide: 'left' },
+    { id: 'konya', entityId: 'yunus-konya', lon: 32.49, lat: 37.87, icon: 'dome', tone: 'place', labelSide: 'bottom' },
     // The exact battlefield is not known; sources place it near Kösedağ, about 80 km north-east of Sivas.
-    { id: 'kosedag', lon: 38.05, lat: 40.1, icon: 'swords', tone: 'event', labelSide: 'top' },
-    { id: 'syria', lon: 37.3, lat: 34.9, icon: 'route', tone: 'place', areaRadiusKm: 230, labelSide: 'right' },
+    { id: 'kosedag', entityId: 'yunus-kosedag', lon: 38.05, lat: 40.1, icon: 'swords', tone: 'event', labelSide: 'top' },
+    { id: 'syria', entityId: 'yunus-syria', lon: 37.3, lat: 34.9, icon: 'route', tone: 'place', areaRadiusKm: 230, labelSide: 'right' },
     // Medieval Azerbaijan: the land around Tabriz (north-west Iran today).
-    { id: 'azerbaijan', lon: 46.29, lat: 38.08, icon: 'route', tone: 'place', areaRadiusKm: 150, labelSide: 'top' },
+    { id: 'azerbaijan', entityId: 'yunus-azerbaijan', lon: 46.29, lat: 38.08, icon: 'route', tone: 'place', areaRadiusKm: 150, labelSide: 'top' },
   ],
   towns: [
     { id: 'sivas', lon: 37.02, lat: 39.75, labelSide: 'bottom' },
