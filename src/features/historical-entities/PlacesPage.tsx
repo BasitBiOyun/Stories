@@ -102,13 +102,6 @@ const QuoteText = ({ quote, color }: { quote: StoryQuote; color: string }) => {
   );
 };
 
-/**
- * How the list shows a group: the full list keeps its compact grid, and fewer
- * cards get more room, so every filter fills the panel.
- */
-type ListLayout = 'compact' | 'rows' | 'cards' | 'tall';
-const layoutFor = (count: number): ListLayout => (count > 18 ? 'compact' : count > 8 ? 'rows' : count > 3 ? 'cards' : 'tall');
-
 export const PlacesPage = ({
   page,
   pages = [],
@@ -184,7 +177,6 @@ export const PlacesPage = ({
 
   const showAll = activeGroup === 'all';
   const visibleEntries = (showAll ? grouped : grouped.filter(group => group.key === activeGroup)).flatMap(group => group.entries);
-  const layout = layoutFor(visibleEntries.length);
 
   const renderCard = (entry: BookEntityEntry) => {
     const color = GROUP_COLORS[GROUP_OF_KIND[entry.entity.kind]].base;
@@ -212,103 +204,29 @@ export const PlacesPage = ({
       style: cardStyle,
     };
 
-    if (layout === 'compact') {
-      return (
-        <button
-          key={entry.entity.id}
-          {...common}
-          className={cn(
-            'flex items-center rounded-lg border border-black/5 border-s-[3px] px-2.5 py-1 text-start transition-all [@media(max-height:820px)]:py-0.5',
-            isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
-          )}
-        >
-          <span className="flex w-full items-baseline justify-between gap-2">
-            <span className="min-w-0 font-display text-[13px] font-bold leading-tight text-brand-950 min-[1800px]:text-[15px] [@media(max-height:820px)]:text-[12px]">
-              {title}
-            </span>
-            {tag}
-          </span>
-        </button>
-      );
-    }
-
-    if (layout === 'rows') {
-      return (
-        <button
-          key={entry.entity.id}
-          {...common}
-          className={cn(
-            'flex min-h-0 items-center gap-2.5 overflow-hidden rounded-xl border border-black/5 border-s-[3px] p-1 text-start transition-all',
-            isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
-          )}
-        >
-          <EntityPicture entity={entry.entity} iconSize={20} className="h-14 w-14 shrink-0 rounded-lg lg:h-full lg:w-auto lg:aspect-square" />
-          <span className="min-w-0 flex-1">
-            <span className="flex items-baseline justify-between gap-2">
-              <span className="min-w-0 truncate font-display text-[14px] font-bold leading-tight text-brand-950 min-[1800px]:text-[16px]">{title}</span>
-              {tag}
-            </span>
-            <span className="mt-0.5 line-clamp-1 font-serif text-[12px] leading-snug text-wood/70 min-[1800px]:text-[13px] [@media(min-height:900px)]:line-clamp-2">
-              {copy.summary}
-            </span>
-          </span>
-        </button>
-      );
-    }
-
-    if (layout === 'cards') {
-      return (
-        <button
-          key={entry.entity.id}
-          {...common}
-          className={cn(
-            'flex min-h-0 items-stretch gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
-            isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
-          )}
-        >
-          <EntityPicture entity={entry.entity} iconSize={32} className="h-24 w-24 shrink-0 rounded-xl lg:h-auto lg:w-auto lg:max-w-[45%] lg:aspect-square" />
-          <span className="flex min-w-0 flex-1 flex-col py-0.5">
-            <span className="flex items-baseline justify-between gap-2">
-              <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
-              {tag}
-            </span>
-            <span className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</span>
-            <span className="mt-1 line-clamp-2 font-serif text-[13px] leading-snug text-wood/75 min-[1800px]:text-[14px] [@media(min-height:860px)]:line-clamp-3 [@media(min-height:1000px)]:line-clamp-4">
-              {copy.summary}
-            </span>
-          </span>
-        </button>
-      );
-    }
-
     return (
       <button
         key={entry.entity.id}
         {...common}
         className={cn(
-          'flex min-h-0 flex-col gap-2 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
+          'flex min-h-0 items-stretch gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
           isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
         )}
       >
-        <EntityPicture entity={entry.entity} iconSize={44} className="aspect-[4/3] w-full shrink-0 rounded-xl lg:aspect-auto lg:min-h-0 lg:flex-1" />
-        <span className="flex min-w-0 flex-col px-1 pb-0.5">
+        <EntityPicture entity={entry.entity} iconSize={32} className="h-24 w-24 shrink-0 rounded-xl lg:h-auto lg:w-auto lg:max-w-[45%] lg:aspect-square" />
+        <span className="flex min-w-0 flex-1 flex-col py-0.5">
           <span className="flex items-baseline justify-between gap-2">
             <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
             {tag}
           </span>
           <span className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</span>
-          <span className="mt-1 line-clamp-3 font-serif text-[13px] leading-snug text-wood/75 min-[1800px]:text-[14px]">{copy.summary}</span>
+          <span className="mt-1 line-clamp-2 font-serif text-[13px] leading-snug text-wood/75 min-[1800px]:text-[14px] [@media(min-height:860px)]:line-clamp-3 [@media(min-height:1000px)]:line-clamp-4">
+            {copy.summary}
+          </span>
         </span>
       </button>
     );
   };
-
-  const gridClass = {
-    compact: 'grid-cols-2 gap-1.5 lg:grid-cols-3 [@media(max-height:820px)]:gap-1',
-    rows: 'grid-cols-1 gap-1.5 sm:grid-cols-2 [@media(max-height:820px)]:gap-1',
-    cards: 'grid-cols-1 gap-2 sm:grid-cols-2',
-    tall: cn('grid-cols-1 gap-2', visibleEntries.length > 1 && 'sm:grid-cols-2', visibleEntries.length > 2 && 'lg:grid-cols-3'),
-  }[layout];
 
   return (
     <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar lg:overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -456,11 +374,12 @@ export const PlacesPage = ({
                 })}
               </div>
 
-              {/* One colour-coded grid: the filter chips above are the legend. The rows
-                  share the panel height, so every filter fills the screen; the padding
-                  keeps the selected card's ring inside the scroll box. */}
+              {/* Picture cards in two columns, colour-coded: the filter chips above are the
+                  legend. Only this list scrolls; the detail card on the left stays put. A short
+                  list stretches its rows to fill the panel. The padding keeps the selected
+                  card's ring inside the scroll box. */}
               <div className="-mx-1 mt-1 px-1 py-1 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
-                <div className={cn('grid lg:h-full', layout === 'compact' ? 'lg:[grid-auto-rows:minmax(min-content,1fr)]' : 'lg:[grid-auto-rows:minmax(0,1fr)]', gridClass)}>
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:min-h-full lg:[grid-auto-rows:minmax(8.5rem,1fr)] [@media(min-height:900px)]:lg:[grid-auto-rows:minmax(10rem,1fr)]">
                   {visibleEntries.map(renderCard)}
                 </div>
               </div>
