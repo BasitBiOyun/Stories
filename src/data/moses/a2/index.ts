@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { mosesA2Pages as mosesA2PagesEn } from './en/pages';
 import { mosesA2PagesAr } from './ar/pages';
 import {
@@ -124,7 +125,7 @@ export const mosesA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
+  pages: withPlacesLayer(buildEnglishPages(), 'moses-a2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -134,7 +135,7 @@ export const mosesA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى عليه السلام (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
+  pages: withPlacesLayer(buildArabicPages(), 'moses-a2', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

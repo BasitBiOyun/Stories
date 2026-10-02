@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1PagesAr } from './ar/pages';
 import {
@@ -144,7 +145,7 @@ export const mosesB1BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: buildEnglishPages(),
+  pages: withPlacesLayer(buildEnglishPages(), 'moses-b1', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -154,7 +155,7 @@ export const mosesB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى عليه السلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: buildArabicPages(),
+  pages: withPlacesLayer(buildArabicPages(), 'moses-b1', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

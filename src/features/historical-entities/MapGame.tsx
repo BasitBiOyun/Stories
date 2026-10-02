@@ -33,13 +33,23 @@ const EAST = 50;
 const NORTH = 48;
 const SOUTH = 14;
 
-const COPY = {
-  title: 'Find it on the map',
-  where: (name: string) => `Where is ${name.replace(/^The /, 'the ')}?`,
-  inside: 'You tapped inside it.',
-  away: (km: string) => `Your answer is ${km} km away. The green shape shows the right place.`,
-  close: 'Back to the atlas',
-  found: (found: string, total: string) => `${found} of ${total} found`,
+const COPY_BY_LOCALE = {
+  en: {
+    title: 'Find it on the map',
+    where: (name: string) => `Where is ${name.replace(/^The /, 'the ')}?`,
+    inside: 'You tapped inside it.',
+    away: (km: string) => `Your answer is ${km} km away. The green shape shows the right place.`,
+    close: 'Back to the atlas',
+    found: (found: string, total: string) => `${found} of ${total} found`,
+  },
+  ar: {
+    title: 'اِبْحَثْ عَنْهُ عَلَى الخَرِيطَةِ',
+    where: (name: string) => `أَيْنَ ${name}؟`,
+    inside: 'لَمَسْتَ دَاخِلَ المَكَانِ.',
+    away: (km: string) => `إِجَابَتُكَ تَبْعُدُ ${km} كم. الشَّكْلُ الأَخْضَرُ يُبَيِّنُ المَكَانَ الصَّحِيحَ.`,
+    close: 'العَوْدَةُ إِلَى الأَطْلَسِ',
+    found: (found: string, total: string) => `وَجَدْتَ ${found} مِنْ ${total}`,
+  },
 };
 
 const toLonLat = (x: number, y: number) => [WEST + (x / VIEW_WIDTH) * (EAST - WEST), NORTH - (y / VIEW_HEIGHT) * (NORTH - SOUTH)] as const;
@@ -156,6 +166,7 @@ export const MapGame = ({
   onClose: () => void;
 }) => {
   const { t, formatNumber, language } = useLanguage();
+  const COPY = COPY_BY_LOCALE[locale];
   const pool = useMemo(() => entries.map(entry => entry.entity).filter(isPlayable), [entries]);
   const [questions, setQuestions] = useState(() => shuffle(pool).slice(0, ROUNDS));
   const [index, setIndex] = useState(0);
@@ -251,7 +262,7 @@ export const MapGame = ({
   const prompts = useMemo(() => questions.map(entity => {
     const copy = resolveHistoricalCopy(entity, locale);
     const learnerName = entity.learnerNames?.tr;
-    return COPY.where(learnerName ? `${copy.title} (${learnerName})` : copy.title);
+    return COPY.where(learnerName ? `${copy.title} (\u2068${learnerName}\u2069)` : copy.title);
   }), [questions, locale]);
 
   const handleTap = (xPercent: number, yPercent: number) => {

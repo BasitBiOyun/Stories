@@ -1,6 +1,7 @@
 import type { BookData, VocabularyChallengePair } from '../../src/types';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
 import { getLearningLevelPolicy } from '../../src/data/learningLevelPolicy';
+import { getHistoricalEntityIdFromDefinition } from '../../src/features/historical-entities/registry';
 
 type Language = 'en' | 'ar';
 
@@ -146,8 +147,10 @@ const validatePair = async (
       return;
     }
 
-    const enCount = page.vocabulary?.length ?? 0;
-    const arCount = arabic.vocabulary?.length ?? 0;
+    // Place cards follow each language's own text, so only Word Notes must match.
+    const wordNotes = (list: typeof page.vocabulary) => (list ?? []).filter(item => !getHistoricalEntityIdFromDefinition(item.definition)).length;
+    const enCount = wordNotes(page.vocabulary);
+    const arCount = wordNotes(arabic.vocabulary);
     if (enCount !== arCount) {
       errors.push(`chapter ${page.id} Word Notes differ EN=${enCount}, AR=${arCount}`);
     }

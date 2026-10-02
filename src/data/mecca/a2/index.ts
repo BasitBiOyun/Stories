@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { meccaA2Pages as meccaA2PagesEn } from './en/pages';
 import { meccaA2PagesAr } from './ar/pages';
 import {
@@ -126,7 +127,7 @@ export const meccaA2BookDataEn: BookData = {
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
+  pages: withPlacesLayer(buildEnglishPages(), 'mecca-a2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -136,7 +137,7 @@ export const meccaA2BookDataAr: BookData = {
   title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
+  pages: withPlacesLayer(buildArabicPages(), 'mecca-a2', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

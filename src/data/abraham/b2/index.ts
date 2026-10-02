@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { abrahamB2Pages } from './en/pages';
 import { abrahamB2PagesAr } from './ar/pages';
 import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
@@ -37,7 +38,7 @@ export const abrahamB2BookDataEn: BookData = {
   title: 'Prophet Abraham (B2)',
   level: 'B2',
   baseFontSize: 12,
-  pages: withMapPage(abrahamB2Pages, mapPageEn),
+  pages: withPlacesLayer(withMapPage(abrahamB2Pages, mapPageEn), 'abraham-b2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -47,7 +48,7 @@ export const abrahamB2BookDataAr: BookData = {
   title: 'النبي إبراهيم عليه السلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: withMapPage(abrahamB2PagesAr, mapPageAr),
+  pages: withPlacesLayer(withMapPage(abrahamB2PagesAr, mapPageAr), 'abraham-b2', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

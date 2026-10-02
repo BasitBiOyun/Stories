@@ -1,4 +1,5 @@
 import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { meccaB1Pages } from './en/pages';
 import {
   meccaB1FinalChallengeExercises,
@@ -144,7 +145,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: withMapPage(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises), mapPageEn),
+  pages: withPlacesLayer(withMapPage(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises), mapPageEn), 'mecca-b1', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -154,7 +155,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: withMapPage(attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr), mapPageAr),
+  pages: withPlacesLayer(withMapPage(attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr), mapPageAr), 'mecca-b1', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
