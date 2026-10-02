@@ -19,7 +19,7 @@ import type { HistoricalEntity } from './types';
 const ROUNDS = 8;
 const [, , VIEW_WIDTH, VIEW_HEIGHT] = MEDITERRANEAN_FEATURE_VIEWBOX.split(' ').map(Number);
 /** How far from a city or a building a tap still counts as found. */
-const POINT_KM = 150;
+const POINT_KM = 100;
 const MAX_ZOOM = 5;
 /** Extra reach around a shape's edge, so small islands and thin rivers are fair. */
 const EDGE_REACH = 18;
@@ -393,12 +393,24 @@ export const MapGame = ({
                 // Pins and labels keep their size when the map is zoomed.
                 const k = 1 / view.s;
                 const reach = reachAround(ty);
-                // The distance label sits beside the line, never under a pin.
-                let nx = length ? -(ty - ay) / length : 0;
-                let ny = length ? (tx - ax) / length : -1;
-                if (ny > 0) { nx = -nx; ny = -ny; }
-                const labelX = (ax + tx) / 2 + nx * 26 * k;
-                const labelY = (ay + ty) / 2 + ny * 26 * k;
+                // The distance label never sits under a pin. On a long line it rides above the
+                // middle of the line; on a short one it stands beside your answer, on the side
+                // away from the right place (and away from the map edge).
+                let labelX: number;
+                let labelY: number;
+                if (length / k > 170) {
+                  let nx = -(ty - ay) / length;
+                  let ny = (tx - ax) / length;
+                  if (ny > 0) { nx = -nx; ny = -ny; }
+                  labelX = (ax + tx) / 2 + nx * 26 * k;
+                  labelY = (ay + ty) / 2 + ny * 26 * k;
+                } else {
+                  const gap = 52 * k;
+                  let side = tx > ax ? -1 : 1;
+                  if (ax + side * gap < 34 * k || ax + side * gap > VIEW_WIDTH - 34 * k) side = -side;
+                  labelX = ax + side * gap;
+                  labelY = ay;
+                }
                 return (
                   <g key={`answer-${index}`}>
                     {!isFeature && (
