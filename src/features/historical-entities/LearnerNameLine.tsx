@@ -22,7 +22,8 @@ export const LearnerName = ({
   return (
     <>
       {' '}
-      <span lang={LEARNER_LANGUAGE} className={cn('font-normal opacity-80', className)}>({name})</span>
+      {/* The name is isolated so the brackets follow the card's own direction. */}
+      <span className={cn('font-normal opacity-80', className)}>(<bdi lang={LEARNER_LANGUAGE}>{name}</bdi>)</span>
     </>
   );
 };

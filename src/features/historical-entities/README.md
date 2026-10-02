@@ -50,3 +50,15 @@ To remove the feature completely:
 3. Remove `applyHistoricalEntitiesToPage` from `src/data/abraham/a2/index.ts` and use each source page directly again.
 
 No story prose, exercise file, teacher guide, storage object, or global `PageData` type is changed by this feature.
+
+## Cards for the bilingual books
+
+Abraham, Moses, Mecca and Yunus Emre (A2, B1, B2) have English and Arabic cards in
+`books/{abraham,moses,mecca,yunus}.ts`, built with `defineEntity` (`books/define.ts`)
+and listed in `books/index.ts`. One card text serves all three levels. The chapter
+lists say where each level's story names the place, in English or Arabic
+(`placeMatch.ts`: English names match whole words; Arabic names match with vowels and
+attached letters). Each level's `index.ts` wraps its pages in `withPlacesLayer`, which
+makes the names tappable and adds the Places & People page before the Final
+Challenge. In these books a Word Note in the same chapter wins over a card, so both
+editions keep the teacher's Word Notes. Adam has no cards.

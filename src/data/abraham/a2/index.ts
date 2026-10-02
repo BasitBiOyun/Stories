@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { applyHistoricalEntitiesToPage } from '../../../features/historical-entities';
 import { abrahamA2PagesEn } from './en/pages';
 import { abrahamA2PagesAr } from './ar/pages';
@@ -70,13 +71,13 @@ const buildArabicPages = (): PageData[] => withMapPage(abrahamA2PagesAr.map(sour
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en', title: 'Stories of the Prophets: Abraham (A2)', level: 'A2', baseFontSize: 13,
-  pages: buildEnglishPages(), teacherGuide: [],
+  pages: withPlacesLayer(buildEnglishPages(), 'abraham-a2', 'en'), teacherGuide: [],
   selfStudyGuide: [],
 };
 
 export const abrahamA2BookDataAr: BookData = {
   id: 'a2-abraham-ar', title: 'قصص الأنبياء: إبراهيم عليه السلام (A2)', level: 'A2', baseFontSize: 14,
-  pages: buildArabicPages(), teacherGuide: [],
+  pages: withPlacesLayer(buildArabicPages(), 'abraham-a2', 'ar'), teacherGuide: [],
   selfStudyGuide: [],
 };
 

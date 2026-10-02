@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { yunusA2Pages } from './en/pages';
 import { yunusEmreA2PagesAr } from './ar/pages';
 import {
@@ -104,7 +105,7 @@ export const yunusEmreA2BookDataEn: BookData = {
   title: 'Yunus Emre: Faith, Character, and Poetry (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
+  pages: withPlacesLayer(buildEnglishPages(), 'yunusEmre-a2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -114,7 +115,7 @@ export const yunusEmreA2BookDataAr: BookData = {
   title: 'يونس إمره: الإيمان والأخلاق والشعر (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
+  pages: withPlacesLayer(buildArabicPages(), 'yunusEmre-a2', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

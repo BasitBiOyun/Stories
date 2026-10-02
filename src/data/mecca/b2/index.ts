@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 
 import { meccaB2Pages } from './en/pages';
 
@@ -38,7 +39,7 @@ export const meccaB2BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: withMapPage(meccaB2Pages, mapPageEn),
+  pages: withPlacesLayer(withMapPage(meccaB2Pages, mapPageEn), 'mecca-b2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -48,7 +49,7 @@ export const meccaB2BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: withMapPage(meccaB2PagesAr, mapPageAr),
+  pages: withPlacesLayer(withMapPage(meccaB2PagesAr, mapPageAr), 'mecca-b2', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

@@ -1,6 +1,7 @@
 export { HistoricalEntityWord } from './HistoricalEntityWord';
 export {
   applyHistoricalEntitiesToPage,
+  withPlacesLayer,
   getBookEntityIndex,
   isHistoricalEntityBookKey,
   resolveHistoricalCopy,

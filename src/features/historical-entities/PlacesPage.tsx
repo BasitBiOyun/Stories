@@ -17,6 +17,7 @@ import {
   type BookEntityEntry,
 } from './registry';
 import type { HistoricalEntity } from './types';
+import { findPlaceName } from './placeMatch';
 
 const COPY = {
   en: {
@@ -55,7 +56,7 @@ const COPY = {
     places: 'مكانًا',
     names: 'اسمًا',
     noMap: 'ليس لهذه البطاقة خريطة.',
-    play: 'Find it on the map',
+    play: 'اِبْحَثْ عَنْهُ عَلَى الخَرِيطَةِ',
     inTheStory: 'في القصة',
     readChapter: (chapter: string) => `اقرأ الفصل ${chapter}`,
   },
@@ -80,10 +81,12 @@ const findStoryQuote = (entity: HistoricalEntity, chapters: number[], pages: Pag
     const pageIndex = pages.findIndex(page => page.type === 'story' && page.id === chapter);
     if (pageIndex < 0) continue;
     const sentences = pages[pageIndex].content
+      .replace(/\*\*/g, '')
       .split(/\n+/)
-      .flatMap(paragraph => paragraph.split(/(?<=[.!?])\s+(?=[A-Z“"])/));
+      .flatMap(paragraph => paragraph.split(locale === 'ar' ? /(?<=[.!؟])\s+/ : /(?<=[.!?])\s+(?=[A-Z“"])/));
     for (const sentence of sentences) {
-      const alias = aliases.find(candidate => sentence.includes(candidate));
+      // The name exactly as the sentence writes it (Arabic adds vowels and letters).
+      const alias = aliases.map(candidate => findPlaceName(sentence, candidate, locale)).find(Boolean);
       if (alias) return { chapter, pageIndex, sentence: sentence.trim(), alias };
     }
   }
@@ -172,8 +175,12 @@ export const PlacesPage = ({
 
   const chapterLine = (chapters: number[]) =>
     `${chapters.length > 1 ? text.chapters : text.chapter} ${chapters.map(chapter => formatNumber(chapter)).join(', ')}`;
-  const chapterTag = (chapters: number[]) =>
-    `${text.chapterShort} ${chapters.map(chapter => formatNumber(chapter)).join(', ')}`;
+  // A short tag on the card: a long list ends in "+N" (the full list is in its tooltip).
+  const chapterTag = (chapters: number[]) => {
+    const shown = chapters.length > 3 ? chapters.slice(0, 2) : chapters;
+    const rest = chapters.length - shown.length;
+    return `${text.chapterShort} ${shown.map(chapter => formatNumber(chapter)).join(', ')}${rest ? ` +${formatNumber(rest)}` : ''}`;
+  };
 
   const showAll = activeGroup === 'all';
   const visibleEntries = (showAll ? grouped : grouped.filter(group => group.key === activeGroup)).flatMap(group => group.entries);

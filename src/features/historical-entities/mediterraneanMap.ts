@@ -9,12 +9,12 @@ import type { MediterraneanFeatureId } from './mediterraneanFeatures';
 export const mediterraneanContextMap = new URL('./assets/maps/mediterranean-context-map.svg', import.meta.url).href;
 
 /**
- * The same map carried on east to 127°E and from 6°N to 63°N, so a card can
+ * The same map carried on east to 127°E and from 12°S to 63°N, so a card can
  * slide out to Central and East Asia. It sits under the context map, which
  * covers its frame exactly; these are its edges as percentages of that frame.
  */
 export const wideContextMap = new URL('./assets/maps/wide-context-map.svg', import.meta.url).href;
-export const WIDE_MAP_PLACEMENT = { left: -3.3333, top: -44.1043, width: 231.6667, height: 167.5978 };
+export const WIDE_MAP_PLACEMENT = { left: -3.3333, top: -44.1047, width: 231.6667, height: 220.5234 };
 
 const WEST = -10;
 const EAST = 50;

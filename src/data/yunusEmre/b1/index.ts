@@ -1,4 +1,5 @@
 import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { yunusB1Pages } from './en/pages';
 import { yunusEmreB1PagesAr } from './ar/pages';
 import {
@@ -150,7 +151,7 @@ export const yunusEmreB1BookDataEn: BookData = {
   title: 'Yunus Emre: History, Poetry, and Moral Thought (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: englishPages,
+  pages: withPlacesLayer(englishPages, 'yunusEmre-b1', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -160,7 +161,7 @@ export const yunusEmreB1BookDataAr: BookData = {
   title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: arabicPages,
+  pages: withPlacesLayer(arabicPages, 'yunusEmre-b1', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };

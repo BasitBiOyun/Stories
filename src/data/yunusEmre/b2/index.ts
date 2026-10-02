@@ -1,4 +1,5 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 
 import { yunusB2Pages } from './en/pages';
 import { yunusEmreB2PagesAr } from './ar/pages';
@@ -37,7 +38,7 @@ export const yunusEmreB2BookDataEn: BookData = {
   title: 'Yunus Emre: History, Poetry, and Moral Thought (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: withMapPage(yunusB2Pages, mapPageEn),
+  pages: withPlacesLayer(withMapPage(yunusB2Pages, mapPageEn), 'yunusEmre-b2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -47,7 +48,7 @@ export const yunusEmreB2BookDataAr: BookData = {
   title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: withMapPage(yunusEmreB2PagesAr, mapPageAr),
+  pages: withPlacesLayer(withMapPage(yunusEmreB2PagesAr, mapPageAr), 'yunusEmre-b2', 'ar'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
