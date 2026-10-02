@@ -3,7 +3,9 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
-import { getHistoricalEntity, resolveHistoricalMapAsset } from './registry';
+import { getHistoricalEntity, resolveHistoricalCopy, resolveHistoricalMapAsset } from './registry';
+import { EntityMap } from './EntityMap';
+import { LearnerNameLine } from './LearnerNameLine';
 
 export const HistoricalEntityWord = ({
   word,
@@ -77,7 +79,7 @@ export const HistoricalEntityWord = ({
 
   if (!entity) return <>{word}</>;
 
-  const copy = entity.copy[locale];
+  const copy = resolveHistoricalCopy(entity, locale);
   const isArabic = locale === 'ar';
   const mapAsset = resolveHistoricalMapAsset(entity, locale);
 
@@ -145,6 +147,7 @@ export const HistoricalEntityWord = ({
                       <h4 className={cn('mt-1 font-display font-bold text-teal-200', isArabic ? 'text-2xl' : 'text-xl')}>
                         {copy.title}
                       </h4>
+                      <LearnerNameLine entity={entity} className="mt-1 text-teal-100/80" />
                     </div>
                     <span className="shrink-0 rounded-full border border-teal-300/20 bg-teal-300/10 px-2.5 py-1 text-[10px] sm:text-xs text-teal-100/85">
                       {copy.periodLabel}
@@ -152,16 +155,18 @@ export const HistoricalEntityWord = ({
                   </div>
                 </div>
 
-                <div className="relative mx-3 sm:mx-4 aspect-[4/3] overflow-hidden rounded-xl bg-[#d8c7a7]">
-                  <img
+                {mapAsset && (
+                  <EntityMap
                     src={mapAsset}
                     alt={copy.mapAlt}
-                    className="absolute inset-0 h-full w-full object-contain"
-                    draggable={false}
+                    focus={entity.focus}
+                    showFocus={Boolean(entity.showFocus)}
+                    label={copy.title}
+                    className="mx-3 sm:mx-4"
                   />
-                </div>
+                )}
 
-                <div className="p-4 sm:p-5 pt-3.5 sm:pt-4">
+                <div className={cn('p-4 sm:p-5', mapAsset ? 'pt-3.5 sm:pt-4' : 'pt-0 sm:pt-0')}>
                   <p className={cn('font-serif leading-relaxed text-parchment/90', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-[15px]')}>
                     {copy.summary}
                   </p>

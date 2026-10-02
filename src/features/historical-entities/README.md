@@ -2,9 +2,10 @@
 
 Self-contained historical context cards for story text.
 
-## Current pilot
+## Books
 
-Abraham A2 only. Active entities:
+- Ibn Jubayr A2 (pilot, 2026-10-02): 39 cards for cities, lands, seas, rivers, islands, buildings, and people and ruling families, in `books/ibnJubayrA2.ts`. Each card has a short A2 summary, a pin or soft oval on `assets/maps/mediterranean-context-map.svg` (Natural Earth, 10°W–50°E), and the Turkish name in `learnerNames.tr`. The book also has a `places` page ("Places & People") that lists every card with its chapters.
+- Abraham A2. Active entities:
 
 - Babylon
 - Mesopotamia
@@ -13,6 +14,12 @@ Abraham A2 only. Active entities:
 - Mecca
 
 English and Arabic use separate aliases and copy. Map artwork is language-neutral; text is rendered by the UI so a second image is not required for Arabic.
+
+Cards are tappable in every chapter that lists them (`BOOK_CHAPTER_ENTITIES` in `registry.ts`), not only on their first page.
+
+## Turkish names
+
+The story text does not need Turkish in brackets. A card shows "Türkçesi: …" from `learnerNames.tr`. Another learner language only adds a key there and changes `LEARNER_LANGUAGE` in `LearnerNameLine.tsx`.
 
 ## Visual behavior
 
