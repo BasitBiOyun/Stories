@@ -161,6 +161,7 @@ export const HistoricalEntityWord = ({
                     alt={copy.mapAlt}
                     focus={entity.focus}
                     showFocus={Boolean(entity.showFocus)}
+                    aspect={entity.mapAspect}
                     label={copy.title}
                     className="mx-3 sm:mx-4"
                   />
