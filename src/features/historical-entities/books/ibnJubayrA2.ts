@@ -3,7 +3,7 @@ import { mediterraneanContextMap, medArea, medPoint, medStrip } from '../mediter
 
 // Places and historical names in Ibn Jubayr A2 (English only).
 // Copy is A2 English: short sentences and story words. The Turkish name sits in
-// `learnerNames.tr`, so the story text itself can stay free of Turkish glosses.
+// `learnerNames.tr` and shows in brackets after the title, e.g. "Damascus (Şam)".
 
 const POINT_NOTE = 'Location shown on a regional map';
 const AREA_NOTE = 'Area shown approximately';
@@ -67,7 +67,7 @@ const entities: HistoricalEntity[] = [
     id: 'ibnjubayr-seville', kind: 'city', aliases: ['Sevilla', 'Seville'],
     title: 'Sevilla', kindLabel: 'City', periodLabel: 'Al-Andalus · Spain',
     summary: 'Sevilla (Seville) is a city in the south-west of Spain, on a big river. In Al-Andalus, it was a large and rich city.',
-    tr: 'Sevilla · tarihî adı İşbîliye', focus: medPoint(37.39, -5.98, CITY_ZOOM),
+    tr: 'İşbîliye', focus: medPoint(37.39, -5.98, CITY_ZOOM),
     sources: ['Britannica: Sevilla Spain', 'TDV İslâm Ansiklopedisi: İşbîliye'],
   }),
   place({
@@ -88,7 +88,7 @@ const entities: HistoricalEntity[] = [
     id: 'ibnjubayr-genoa', kind: 'city', aliases: ['Genoese', 'Genoa'],
     title: 'Genoa', kindLabel: 'Port city', periodLabel: 'Italy',
     summary: 'Genoa is a port city in the north-west of Italy. In the Middle Ages, its ships carried people and goods across the Mediterranean. "Genoese" means "from Genoa".',
-    tr: 'Cenova · Genoese: Cenevizli', focus: medPoint(44.41, 8.93, 1.4),
+    tr: 'Cenova', focus: medPoint(44.41, 8.93, 1.4),
     sources: ['Britannica: Genoa'],
   }),
   place({
@@ -195,7 +195,7 @@ const entities: HistoricalEntity[] = [
     id: 'ibnjubayr-syria', kind: 'region', aliases: ['Syria'],
     title: 'Syria', kindLabel: 'Historical land', periodLabel: 'East of the Mediterranean',
     summary: 'In the Middle Ages, Syria was a large land east of the Mediterranean Sea. Aleppo and Damascus were its great cities.',
-    tr: 'Suriye · tarihte Şam diyarı', focus: medArea({ west: 35.4, east: 40.5, south: 32.6, north: 37 }, { zoom: 1.6 }),
+    tr: 'Suriye', focus: medArea({ west: 35.4, east: 40.5, south: 32.6, north: 37 }, { zoom: 1.6 }),
     sources: ['Britannica: Syria', 'TDV İslâm Ansiklopedisi: Suriye'],
   }),
   place({
@@ -209,7 +209,7 @@ const entities: HistoricalEntity[] = [
     id: 'ibnjubayr-kingdom-of-jerusalem', kind: 'kingdom', aliases: ['Kingdom of Jerusalem'],
     title: 'Kingdom of Jerusalem', kindLabel: 'Crusader state', periodLabel: '1099–1291',
     summary: 'The Kingdom of Jerusalem was a Christian state. The Crusaders started it in 1099. Acre was its main port.',
-    tr: 'Kudüs Krallığı (Haçlı devleti)', focus: medArea({ west: 34.2, east: 36.2, south: 30, north: 34.3 }, { zoom: 2 }),
+    tr: 'Kudüs Krallığı', focus: medArea({ west: 34.2, east: 36.2, south: 30, north: 34.3 }, { zoom: 2 }),
     sources: ['Britannica: Latin Kingdom of Jerusalem'],
   }),
 
@@ -276,7 +276,7 @@ const entities: HistoricalEntity[] = [
     id: 'ibnjubayr-great-mosque-of-damascus', kind: 'landmark', aliases: ['Great Mosque of Damascus'],
     title: 'Great Mosque of Damascus', kindLabel: 'Mosque', periodLabel: 'Syria · early 700s',
     summary: 'The Great Mosque of Damascus is also called the Umayyad Mosque. The Umayyads built it in the early 700s. It is one of the oldest great mosques in the world.',
-    tr: 'Emevî Camii (Şam)', focus: medPoint(33.51, 36.31, 2.4),
+    tr: 'Emevî Camii', focus: medPoint(33.51, 36.31, 2.4),
     sources: ['Britannica: Great Mosque of Damascus', 'TDV İslâm Ansiklopedisi: Emevî Camii'],
   }),
   place({
@@ -303,9 +303,9 @@ const entities: HistoricalEntity[] = [
     sources: ['Britannica: Ayyubid dynasty', 'TDV İslâm Ansiklopedisi: Eyyûbîler'],
   }),
   place({
-    id: 'ibnjubayr-saladin', kind: 'person', aliases: ['Salah ad-Din al-Ayyubi', 'Saladin'],
-    title: 'Saladin (Salah ad-Din al-Ayyubi)', kindLabel: 'Sultan', periodLabel: '1138–1193',
-    summary: 'Saladin was a great Muslim ruler and army leader. He ruled Egypt and Syria. In 1187, he took Jerusalem back from the Crusaders.',
+    id: 'ibnjubayr-saladin', kind: 'person', aliases: ['Saladin al-Ayyubi', 'Salah ad-Din al-Ayyubi', 'Saladin'],
+    title: 'Saladin', kindLabel: 'Sultan', periodLabel: '1138–1193',
+    summary: 'Saladin (Salah ad-Din al-Ayyubi) was a great Muslim ruler and army leader. He ruled Egypt and Syria. In 1187, he took Jerusalem back from the Crusaders.',
     tr: 'Selâhaddîn-i Eyyûbî',
     sources: ['Britannica: Saladin', 'TDV İslâm Ansiklopedisi: Selâhaddîn-i Eyyûbî'],
   }),
@@ -340,13 +340,13 @@ export const ibnJubayrA2Entities: Record<string, HistoricalEntity> = Object.from
 export const IBN_JUBAYR_A2_CHAPTER_ENTITIES: Record<number, string[]> = {
   1: ['ibnjubayr-al-andalus', 'ibnjubayr-middle-east', 'ibnjubayr-valencia', 'ibnjubayr-granada', 'ibnjubayr-seville', 'ibnjubayr-cordoba'],
   2: ['ibnjubayr-baghdad', 'ibnjubayr-mosul', 'ibnjubayr-aleppo', 'ibnjubayr-jerusalem', 'ibnjubayr-damascus'],
-  3: ['ibnjubayr-mediterranean', 'ibnjubayr-crusaders', 'ibnjubayr-palestine'],
+  3: ['ibnjubayr-mediterranean', 'ibnjubayr-palestine'],
   4: ['ibnjubayr-ceuta', 'ibnjubayr-north-africa', 'ibnjubayr-genoa', 'ibnjubayr-sardinia', 'ibnjubayr-sicily', 'ibnjubayr-crete', 'ibnjubayr-egypt', 'ibnjubayr-alexandria', 'ibnjubayr-lighthouse-of-alexandria', 'ibnjubayr-cairo'],
   5: ['ibnjubayr-ayyubids', 'ibnjubayr-saladin', 'ibnjubayr-nile'],
   6: ['ibnjubayr-red-sea'],
   7: ['ibnjubayr-mecca'],
   8: ['ibnjubayr-medina', 'ibnjubayr-baghdad', 'ibnjubayr-euphrates', 'ibnjubayr-abbasids', 'ibnjubayr-mongols', 'ibnjubayr-syria'],
   9: ['ibnjubayr-aleppo', 'ibnjubayr-damascus', 'ibnjubayr-umayyads', 'ibnjubayr-great-mosque-of-damascus'],
-  10: ['ibnjubayr-palestine', 'ibnjubayr-crusaders', 'ibnjubayr-kingdom-of-jerusalem', 'ibnjubayr-acre', 'ibnjubayr-kerak', 'ibnjubayr-jerusalem'],
-  11: ['ibnjubayr-sicily'],
+  10: ['ibnjubayr-palestine', 'ibnjubayr-crusaders', 'ibnjubayr-acre', 'ibnjubayr-kerak', 'ibnjubayr-jerusalem'],
+  11: ['ibnjubayr-kingdom-of-jerusalem', 'ibnjubayr-sicily'],
 };

@@ -5,7 +5,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import { getHistoricalEntity, resolveHistoricalCopy, resolveHistoricalMapAsset } from './registry';
 import { EntityMap } from './EntityMap';
-import { LearnerNameLine } from './LearnerNameLine';
+import { LearnerName } from './LearnerNameLine';
 
 export const HistoricalEntityWord = ({
   word,
@@ -146,8 +146,8 @@ export const HistoricalEntityWord = ({
                       </span>
                       <h4 className={cn('mt-1 font-display font-bold text-teal-200', isArabic ? 'text-2xl' : 'text-xl')}>
                         {copy.title}
+                        <LearnerName entity={entity} className="text-teal-100" />
                       </h4>
-                      <LearnerNameLine entity={entity} className="mt-1 text-teal-100/80" />
                     </div>
                     <span className="shrink-0 rounded-full border border-teal-300/20 bg-teal-300/10 px-2.5 py-1 text-[10px] sm:text-xs text-teal-100/85">
                       {copy.periodLabel}

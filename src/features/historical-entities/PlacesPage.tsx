@@ -4,7 +4,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import type { PageData } from '../../types';
 import { EntityMap } from './EntityMap';
-import { LearnerNameLine } from './LearnerNameLine';
+import { LearnerName } from './LearnerNameLine';
 import { mediterraneanContextMap } from './mediterraneanMap';
 import {
   getBookEntityIndex,
@@ -154,8 +154,10 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
                     <span className="block text-[11px] font-black uppercase tracking-[0.16em] text-teal-800/80">
                       {selectedCopy.kindLabel}
                     </span>
-                    <h3 className="mt-0.5 font-display text-xl font-bold text-brand-950 sm:text-2xl">{selectedCopy.title}</h3>
-                    <LearnerNameLine entity={selected.entity} className="mt-0.5 text-wood/75" />
+                    <h3 className="mt-0.5 font-display text-xl font-bold text-brand-950 sm:text-2xl">
+                      {selectedCopy.title}
+                      <LearnerName entity={selected.entity} className="text-wood/80" />
+                    </h3>
                   </div>
                   <span className="shrink-0 rounded-full border border-teal-700/15 bg-teal-50 px-2.5 py-1 text-[11px] font-semibold text-teal-900/80">
                     {selectedCopy.periodLabel}
@@ -217,11 +219,11 @@ export const PlacesPage = ({ page }: { page: PageData }) => {
                               : 'border-black/5 bg-white/70 hover:border-teal-600/40 hover:bg-white',
                           )}
                         >
-                          <span className="block font-display text-[15px] font-bold leading-tight text-brand-950">{copy.title}</span>
-                          <span className="mt-0.5 flex flex-wrap items-baseline justify-between gap-x-2 text-[11px] text-wood/60">
-                            <LearnerNameLine entity={entry.entity} className="text-[11px]" />
-                            <span>{chapterLine(entry.chapters)}</span>
+                          <span className="block font-display text-[15px] font-bold leading-tight text-brand-950">
+                            {copy.title}
+                            <LearnerName entity={entry.entity} className="text-wood/80" />
                           </span>
+                          <span className="mt-0.5 block text-[11px] text-wood/60">{chapterLine(entry.chapters)}</span>
                         </button>
                       );
                     })}

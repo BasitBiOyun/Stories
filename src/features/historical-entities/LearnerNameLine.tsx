@@ -8,11 +8,8 @@ import type { HistoricalEntity, LearnerLanguage } from './types';
  */
 export const LEARNER_LANGUAGE: LearnerLanguage = 'tr';
 
-const LEARNER_NAME_LABEL: Record<LearnerLanguage, string> = {
-  tr: 'Türkçesi',
-};
-
-export const LearnerNameLine = ({
+/** The name in the learner's language, in brackets after the title: "Damascus (Şam)". */
+export const LearnerName = ({
   entity,
   className,
 }: {
@@ -23,9 +20,9 @@ export const LearnerNameLine = ({
   if (!name) return null;
 
   return (
-    <p lang={LEARNER_LANGUAGE} dir="ltr" className={cn('text-[13px] leading-snug', className)}>
-      <span className="opacity-75">{LEARNER_NAME_LABEL[LEARNER_LANGUAGE]}:</span>{' '}
-      <span className="font-semibold">{name}</span>
-    </p>
+    <>
+      {' '}
+      <span lang={LEARNER_LANGUAGE} className={cn('font-normal opacity-80', className)}>({name})</span>
+    </>
   );
 };

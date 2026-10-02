@@ -448,6 +448,8 @@ export const StoryPage = ({
 
   const animatedStyle = "text-brand-700 border-b-2 border-brand-500/50 hover:border-brand-600 transition-colors font-bold cursor-help";
 
+  // Place and history cards show in every chapter that lists them.
+  const isPlaceCard = (definition: string) => Boolean(getHistoricalEntityIdFromDefinition(definition));
   const seenHighlightedWords = useMemo(() => {
     const seen = new Set<string>();
     for (let i = 0; i < currentIndex; i++) {
@@ -780,7 +782,7 @@ export const StoryPage = ({
           const candidate = potentialPhrases[i];
           const vocab = page.vocabulary?.find(v => (
             highlightWordCount(v.word) > 1
-            && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+            && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
             && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
             && highlightPhraseMatches(candidate.text, v.word, highlightLanguage)
           ));
@@ -822,7 +824,7 @@ export const StoryPage = ({
 
         const vocab = page.vocabulary?.find(v => (
           highlightWordCount(v.word) === 1
-          && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+          && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
           && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
           && highlightTokenMatches(word, v.word, highlightLanguage)
         ));
@@ -949,7 +951,7 @@ export const StoryPage = ({
             const p = potentialPhrases[i];
             const vocab = page.vocabulary?.find(v => (
               highlightWordCount(v.word) > 1
-              && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+              && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightPhraseMatches(p.text, v.word, highlightLanguage)
             ));
@@ -1014,7 +1016,7 @@ export const StoryPage = ({
           } else {
             const vocab = page.vocabulary?.find(v => (
               highlightWordCount(v.word) === 1
-              && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+              && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightTokenMatches(word, v.word, highlightLanguage)
             ));
