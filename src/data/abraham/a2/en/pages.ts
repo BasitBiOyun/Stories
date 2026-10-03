@@ -240,7 +240,7 @@ export const abrahamA2PagesEn: PageData[] = [
   {
     id: 14,
     type: 'story',
-    title: "The Ka'ba and Abraham's Message",
+    title: "The Ka’ba and Abraham's Message",
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Faudio%2F07_Chapter_14.mp3?alt=media&token=6f9ee9e4-3ea0-4bb4-9c71-9420fcc5e9b4',
     content: "During that time, Abraham (pbuh) visited Mecca several times to see his family. One day, Allah asked Abraham (pbuh) to build the House of Allah, the Ka’ba. Abraham (pbuh) said to Ishmael, “O Ishmael, Allah gave me an important job, and you will help me with it.” Ishmael said, “I will help you for sure.” The Ka’ba was a very old building. It was the first holy place on Earth, but it was lost after a long time.\n\nFather and son found the bottom of the old building of the Ka’ba and built the new building on it. After Abraham (pbuh) built the Sacred Ka’ba, his mission was over. He built a special place for Muslims of all colors. Today, people still visit the House of Allah to make Hajj. Hajj makes us remember Abraham (pbuh) and his family's story.\n\nAfter many years, Ishmael’s family grew and grew. One of them was Muhammad, the Prophet of Islam (pbuh). Muhammad (pbuh) told people the message of his ancestor, Abraham (pbuh).\n\nThe message is: “There is no god but Allah. He has no partner, rival or helper. Allah is unique in every way.”",

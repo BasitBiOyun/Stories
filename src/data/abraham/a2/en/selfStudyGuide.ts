@@ -229,7 +229,7 @@ const selfPlans: SelfPlan[] = [
     reflect: 'The water was a gift, and Hagar gave some to her son. What is one thing you can share with someone today?',
   },
   {
-    chapter: "Chapter 14: The Ka'ba and Abraham's Message",
+    chapter: "Chapter 14: The Ka’ba and Abraham's Message",
     hotspots: ['Building the Ka’ba', 'Hajj'],
     goals: ['I can say who built the Ka’ba.', 'I can say what Hajj makes us remember.', 'I can use will for a promise, still and One of.'],
     notice: ['The last chapter goes from the past to today.', 'Look at “Today, people still visit the House of Allah to make Hajj.” still shows it is true today, too.'],

@@ -200,11 +200,11 @@ There was a huge gap between the rich and the poor even in the most basic human 
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F07_Chapter_8_Injustice_and_Hilf%C3%BC%E2%80%99l-Fud%C3%BBl.mp3?alt=media&token=99765b8e-c692-41bc-bbbc-bdb8c267dcb1',
     content: `Even when Prophet Muhammad (as) began calling people to Islam, these people said, “With men like us around, is it really up to Muhammad to become the leader of the Quraysh?” (see Surah Zuhruf: 31)
 
-In such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy. For instance, the camels of the weak used to be taken without payment, and the goods and property of small sellers were unjustly seized by force. Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed. To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca. Prophet Muhammad (as), who was twenty years old at the time, also attended this meeting. This formation was named Hilfü’l-fudûl, which means The Community of the Righteous. Young Muhammad became an enthusiastic member of the organization.
+In such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy. For instance, the camels of the weak used to be taken without payment, and the goods and property of small sellers were unjustly seized by force. Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed. To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca. Prophet Muhammad (as), who was twenty years old at the time, also attended this meeting. This formation was named Hilfü’l-Fudûl, which means The Community of the Righteous. Young Muhammad became an enthusiastic member of the organization.
 
 During the pre-Islamic era, those who oppressed and treated people unfairly were generally wealthy and powerful individuals. Due to its fight against injustice, Hilfü’l-Fudûl received support from the community.
 
-This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilfü’l-fudûl for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.`,
+This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilfü’l-Fudûl for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.`,
     vocabulary: [
       { word: 'orphans', definition: 'Children whose parents have died.' },
       { word: 'defenseless', definition: 'Lacking sufficient means, power, or protection to resist harm or exploitation.' },
@@ -214,7 +214,7 @@ This organization played a very important role in maintaining justice and order 
       { word: 'received support', definition: 'Was helped, encouraged, or approved by others.' },
     ],
     hotspots: [
-      { id: 'h8-1', x: 34, y: 44, title: 'Hilfü’l-Fudûl', description: 'Some Quraysh tribes made an agreement to help people oppressed in Mecca and named it Hilfü’l-fudûl, the Community of the Righteous.' },
+      { id: 'h8-1', x: 34, y: 44, title: 'Hilfü’l-Fudûl', description: 'Some Quraysh tribes made an agreement to help people oppressed in Mecca and named it Hilfü’l-Fudûl, the Community of the Righteous.' },
       { id: 'h8-2', x: 68, y: 50, title: 'Protecting the Oppressed', description: 'This organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed.' },
     ],
   },
@@ -280,7 +280,7 @@ When news of the birth of a daughter was given to them, people in the Age of Ign
     title: 'Slavery, Poets and Media',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch11-clean.png?alt=media&token=463b4569-1c7e-401c-95ce-8c82fdad0be8',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F10_Chapter_11_Slavery%2C_Poets_and_Media.mp3?alt=media&token=05ecbabc-1d76-4ba2-9605-8e61e949263c',
-    content: `The Holy Qur’an describes this scene in Surah Nahl, verses 58-59: “And when one of them is given news of a female baby, his face darkens, and he can’t breathe with grief. He hides from the people because of the bad news given to him. Shall he keep it in humiliation, or bury it in the dust? Evil is the decision they make.”
+    content: `The Holy Quran describes this scene in Surah Nahl, verses 58-59: “And when one of them is given news of a female baby, his face darkens, and he can’t breathe with grief. He hides from the people because of the bad news given to him. Shall he keep it in humiliation, or bury it in the dust? Evil is the decision they make.”
 
 Slavery was an economic institution in Mecca. Slaves, both male and female, were the most miserable class in society. They were bought and sold like animals. They were employed in various tasks as well as for people’s personal service. They were a show of wealth. They also acted as weapons to protect their owners in times of war. White slaves brought from the regions of Damascus and Iraq were more expensive than black slaves brought from Africa because they served better and were skilled workers.
 

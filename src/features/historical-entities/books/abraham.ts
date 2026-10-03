@@ -156,7 +156,7 @@ const entities = [
     id: "abraham-safa-and-marwa-ancient", kind: "landmark", tr: "Safa ve Merve",
     aliases: { en: ["Safa and Marwah","Safa and Marwa","Safa","Marwa"], ar: ["الصفا","المروة"] },
     copy: {
-      en: { title: "Safa and Marwa", kindLabel: "Two hills", periodLabel: "Mecca · Western Arabia", summary: "Safa and Marwa are two small hills in Mecca, near the Ka'ba. In the story, Hagar ran between them to look for water.", more: "During Hajj and Umrah, Muslims walk between these two hills seven times; this is called sa'y." },
+      en: { title: "Safa and Marwa", kindLabel: "Two hills", periodLabel: "Mecca · Western Arabia", summary: "Safa and Marwa are two small hills in Mecca, near the Ka’ba. In the story, Hagar ran between them to look for water.", more: "During Hajj and Umrah, Muslims walk between these two hills seven times; this is called sa'y." },
       ar: { title: "الصَّفَا وَالْمَرْوَةُ", kindLabel: "تَلَّانِ", periodLabel: "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ", summary: "الصَّفَا وَالْمَرْوَةُ تَلَّانِ صَغِيرَانِ فِي مَكَّةَ، قُرْبَ الْكَعْبَةِ. وَفِي الْقِصَّةِ سَعَتْ هَاجَرُ بَيْنَهُمَا تَبْحَثُ عَنِ الْمَاءِ.", more: "وَفِي الْحَجِّ وَالْعُمْرَةِ يَسْعَى الْمُسْلِمُونَ بَيْنَهُمَا سَبْعَةَ أَشْوَاطٍ، وَيُسَمَّى ذَلِكَ السَّعْيَ." },
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
@@ -167,7 +167,7 @@ const entities = [
     id: "abraham-zamzam", kind: "landmark", tr: "Zemzem",
     aliases: { en: ["Zamzam"], ar: ["زمزم"] },
     copy: {
-      en: { title: "Zamzam", kindLabel: "Well (spring)", periodLabel: "Mecca · Western Arabia", summary: "Zamzam is the water that came out of the ground in the valley of Mecca, near little Ishmael (pbuh). It still flows today, near the Ka'ba.", more: "Pilgrims drink Zamzam water, and many take some home with them." },
+      en: { title: "Zamzam", kindLabel: "Well (spring)", periodLabel: "Mecca · Western Arabia", summary: "Zamzam is the water that came out of the ground in the valley of Mecca, near little Ishmael (pbuh). It still flows today, near the Ka’ba.", more: "Pilgrims drink Zamzam water, and many take some home with them." },
       ar: { title: "زَمْزَمُ", kindLabel: "بِئْرٌ (نَبْعٌ)", periodLabel: "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ", summary: "زَمْزَمُ مَاءٌ خَرَجَ مِنَ الْأَرْضِ فِي وَادِي مَكَّةَ، عِنْدَ الطِّفْلِ إِسْمَاعِيلَ عَلَيْهِ السَّلَامُ. وَمَا زَالَ يَتَدَفَّقُ إِلَى الْيَوْمِ قُرْبَ الْكَعْبَةِ.", more: "وَيَشْرَبُ الْحُجَّاجُ مِنْ مَاءِ زَمْزَمَ، وَيَأْخُذُ كَثِيرٌ مِنْهُمْ شَيْئًا مِنْهُ إِلَى بِلَادِهِمْ." },
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
@@ -178,7 +178,7 @@ const entities = [
     id: "abraham-kaaba-abraham", kind: "landmark", tr: "Kâbe",
     aliases: { en: ["Ka’ba","Ka‘ba","House of Allah"], ar: ["الكعبة","بيت الله"] },
     copy: {
-      en: { title: "The Ka'ba", kindLabel: "Holy building", periodLabel: "Mecca · Western Arabia", summary: "The Ka'ba, the House of Allah, is the holy building in Mecca. In the story, Abraham (pbuh) and Ishmael (pbuh) built it again on its old foundations.", more: "Muslims all over the world face the Ka'ba when they pray." },
+      en: { title: "The Ka’ba", kindLabel: "Holy building", periodLabel: "Mecca · Western Arabia", summary: "The Ka’ba, the House of Allah, is the holy building in Mecca. In the story, Abraham (pbuh) and Ishmael (pbuh) built it again on its old foundations.", more: "Muslims all over the world face the Ka’ba when they pray." },
       ar: { title: "الْكَعْبَةُ", kindLabel: "بَيْتٌ مُقَدَّسٌ", periodLabel: "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ", summary: "الْكَعْبَةُ هِيَ بَيْتُ اللهِ الْحَرَامُ فِي مَكَّةَ. وَفِي الْقِصَّةِ بَنَاهَا إِبْرَاهِيمُ وَإِسْمَاعِيلُ عَلَيْهِمَا السَّلَامُ مِنْ جَدِيدٍ عَلَى أُسُسِهَا الْقَدِيمَةِ.", more: "وَيَتَّجِهُ إِلَيْهَا الْمُسْلِمُونَ فِي كُلِّ الْعَالَمِ عِنْدَ الصَّلَاةِ؛ فَهِيَ قِبْلَتُهُمْ." },
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
@@ -200,7 +200,7 @@ const entities = [
     id: "abraham-jurhum", kind: "tribe", tr: "Cürhüm kabilesi",
     aliases: { en: ["Jurham"], ar: ["جرهم"] },
     copy: {
-      en: { title: "Jurham", kindLabel: "Arab tribe", periodLabel: "Yemen and Mecca", summary: "Jurham was an Arab tribe that came from Yemen, in southern Arabia, to the valley of Mecca. In the story, Ishmael (pbuh) grew up among them and learned Arabic from them.", more: "History books say that Jurham looked after the Ka'ba for a long time." },
+      en: { title: "Jurham", kindLabel: "Arab tribe", periodLabel: "Yemen and Mecca", summary: "Jurham was an Arab tribe that came from Yemen, in southern Arabia, to the valley of Mecca. In the story, Ishmael (pbuh) grew up among them and learned Arabic from them.", more: "History books say that Jurham looked after the Ka’ba for a long time." },
       ar: { title: "جُرْهُمُ", kindLabel: "قَبِيلَةٌ عَرَبِيَّةٌ", periodLabel: "الْيَمَنُ وَمَكَّةُ", summary: "جُرْهُمُ قَبِيلَةٌ عَرَبِيَّةٌ جَاءَتْ مِنَ الْيَمَنِ، فِي جَنُوبِ الْجَزِيرَةِ الْعَرَبِيَّةِ، إِلَى وَادِي مَكَّةَ. وَفِي الْقِصَّةِ نَشَأَ إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ بَيْنَهُمْ، وَتَعَلَّمَ مِنْهُمُ الْعَرَبِيَّةَ.", more: "وَتَذْكُرُ كُتُبُ التَّارِيخِ أَنَّ جُرْهُمَ تَوَلَّتْ أَمْرَ الْكَعْبَةِ زَمَنًا طَوِيلًا." },
     },
     focus: medFeature('yemen', 15.5, 47, 1, { arrows: [{ from: [15.4, 44.2], to: [21.42, 39.83] }] }),
