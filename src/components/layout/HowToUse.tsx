@@ -14,7 +14,7 @@ interface HowToUseProps {
 const GROUPS: { title: { en: string; ar: string }; items: SectionIconEntry[] }[] = [
   {
     title: { en: 'In every chapter', ar: 'فِي كُلِّ فَصْلٍ' },
-    items: [SECTION_ICONS.beforeYouRead, SECTION_ICONS.listen, SECTION_ICONS.read, SECTION_ICONS.quickChallenge, SECTION_ICONS.languageFocus, SECTION_ICONS.iCan],
+    items: [SECTION_ICONS.beforeYouRead, SECTION_ICONS.listen, SECTION_ICONS.read, SECTION_ICONS.quickChallenge, SECTION_ICONS.languageFocus, SECTION_ICONS.iCan, SECTION_ICONS.myWords],
   },
   {
     title: { en: 'At the end of the book', ar: 'فِي آخِرِ الكِتَابِ' },

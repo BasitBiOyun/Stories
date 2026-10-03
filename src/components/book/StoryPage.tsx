@@ -15,6 +15,7 @@ import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText }
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
+import { MyWordsReminder } from './MyWordsPanel';
 
 const HotspotButton = ({ 
   hotspot, 
@@ -1758,6 +1759,7 @@ export const StoryPage = ({
 
           {renderGroupTask()}
           {renderICan()}
+          {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
@@ -1829,6 +1831,7 @@ export const StoryPage = ({
 
           {renderGroupTask()}
           {renderICan()}
+          {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
       </div>
 

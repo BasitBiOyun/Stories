@@ -57,6 +57,8 @@ import { StoryPage } from './components/book/StoryPage';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { RolePicker } from './components/layout/RolePicker';
+import { MyWordsPanel } from './components/book/MyWordsPanel';
+import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
 import { saveBookOffline } from './lib/pwa';
 
@@ -90,6 +92,7 @@ const AppContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isHowToUseOpen, setIsHowToUseOpen] = useState(false);
+  const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
   const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
@@ -181,6 +184,10 @@ const AppContent = () => {
     }
     saveReaderPosition(selectedProphetId, currentLevel, { pageIndex: currentPageIndex, totalPages });
   }, [selectedProphetId, currentLevel, currentPage, currentPageIndex, totalPages, showSummary]);
+
+  useEffect(() => {
+    setMyWordsBook(selectedProphetId && currentLevel ? { storyId: selectedProphetId, level: currentLevel } : null);
+  }, [selectedProphetId, currentLevel]);
 
   // --- Book progress: pages read and exercises done, stored per book and shared by the TOC, summary and home page ---
   const [bookProgress, setBookProgress] = useState<BookProgress | null>(null);
@@ -517,7 +524,7 @@ const AppContent = () => {
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
       if (!selectedProphetId || showSummary || isFinalChallengePage) return;
-      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
+      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -544,6 +551,7 @@ const AppContent = () => {
     isMenuOpen,
     isAboutOpen,
     isHowToUseOpen,
+    isMyWordsOpen,
     isTeacherGuideOpen,
     isSelfStudyOpen,
     isQuickTOCOpen,
@@ -563,7 +571,7 @@ const AppContent = () => {
       !touch ||
       Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
       showSummary || isFinalChallengePage ||
-      isMenuOpen || isAboutOpen || isHowToUseOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+      isMenuOpen || isAboutOpen || isHowToUseOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
   };
   const handleSwipeEnd = (e: React.TouchEvent) => {
@@ -1385,6 +1393,19 @@ const AppContent = () => {
                     <span className="font-display text-[14px] sm:text-[15px] font-semibold">{language === 'ar' ? 'كَيْفَ تَسْتَخْدِمُ هٰذَا الكِتَابَ' : 'How to use this book'}</span>
                   </button>
 
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsMyWordsOpen(true);
+                    }}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-my-words-link
+                  >
+                    <SECTION_ICONS.myWords.icon size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{SECTION_ICONS.myWords[language === 'ar' ? 'ar' : 'en']}</span>
+                  </button>
+
                   {isTeacher ? (
                     <button 
                       onClick={openTeacherGuide}
@@ -1463,6 +1484,7 @@ const AppContent = () => {
 
       <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
       <HowToUse isOpen={isHowToUseOpen} onClose={() => setIsHowToUseOpen(false)} isTeacher={isTeacher} />
+      <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
 
       {/* Teacher Guide Overlay */}
       {isTeacher && (

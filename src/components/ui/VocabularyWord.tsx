@@ -6,6 +6,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCards';
 import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
+import { BookMarked, Check } from './icons';
+import { isMyWord, toggleMyWord, useMyWords } from '../../lib/myWords';
 
 export const VocabularyWord = ({ 
   word, 
@@ -21,6 +23,9 @@ export const VocabularyWord = ({
   const { t, language } = useLanguage();
   const { trackWordClick } = useStoryProgress();
   const [isOpen, setIsOpen] = useState(false);
+  const myWords = useMyWords();
+  const wordLanguage = language === 'ar' ? 'ar' : 'en';
+  const isSaved = isMyWord(myWords, wordLanguage, word);
   const triggerRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState<{
@@ -212,6 +217,22 @@ export const VocabularyWord = ({
                     </span>
                   </div>
                 )}
+
+                <button
+                  type="button"
+                  data-my-word-toggle
+                  aria-pressed={isSaved}
+                  onClick={() => toggleMyWord({ word, definition: normalizedDefinition, language: wordLanguage })}
+                  className={cn(
+                    "mt-3.5 inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 font-display text-[11px] font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
+                    isSaved ? "border-brand-300/50 bg-brand-300/15 text-brand-200" : "border-white/15 text-parchment/75 hover:border-brand-300/50 hover:text-parchment",
+                  )}
+                >
+                  {isSaved ? <Check size={14} /> : <BookMarked size={14} />}
+                  {isSaved
+                    ? (language === 'ar' ? 'فِي كَلِمَاتِي' : 'In My words')
+                    : (language === 'ar' ? 'احْفَظْ فِي كَلِمَاتِي' : 'Save to My words')}
+                </button>
 
                 <div 
                   style={{

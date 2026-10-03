@@ -1,4 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { suggestNextBook, type NextBookReason } from '../../lib/nextBook';
+import { useMyWords } from '../../lib/myWords';
+import { MyWordsPanel } from './MyWordsPanel';
 import { SECTION_ICONS, MODE_ICONS } from '../../lib/sectionIcons';
 import { motion } from 'motion/react';
 import {
@@ -17,7 +20,6 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import {
   collectionVisuals,
-  getNextLevel,
   getStoryMeta,
   storyCatalog,
 } from '../../core/content/storyCatalog';
@@ -131,16 +133,15 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
     Math.max(audioChapterTotal, stats.audioChaptersPlayed.size),
   );
 
-  const nextRecommendation = useMemo(() => {
-    const nextLevel = getNextLevel(bookData.level);
-    if (nextLevel && story.availableLevels.includes(nextLevel)) return { story, level: nextLevel };
-
-    const sameCollection = storyCatalog.find(item => item.collection === story.collection && item.id !== story.id);
-    if (sameCollection) return { story: sameCollection, level: 'A2' as Level };
-
-    const other = storyCatalog.find(item => item.id !== story.id);
-    return other ? { story: other, level: 'A2' as Level } : null;
-  }, [bookData.level, story]);
+  const nextRecommendation = useMemo(
+    () => suggestNextBook(currentStoryId, bookData.level, isArabic ? 'ar' : 'en', finalScore),
+    // Worked out once when the summary opens, so it does not change under the reader.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [currentStoryId, bookData.level, isArabic],
+  );
+  const myWords = useMyWords();
+  const bookWords = myWords.filter(word => word.storyId === currentStoryId && word.level === bookData.level && word.language === (isArabic ? 'ar' : 'en'));
+  const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
 
   const scoreBand = useMemo(() => {
     if (finalScore === null) {
@@ -195,6 +196,14 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
         library: 'العودة إلى المكتبة',
         start: 'متابعة الرحلة',
         of: 'من',
+        reason: {
+          nextLevel: 'أحسنتَ في التحدي النهائي. المستوى التالي من القصة نفسها مناسب لك.',
+          sameLevel: 'قصة جديدة في المستوى نفسه، لتقرأ أكثر قبل أن تنتقل إلى المستوى التالي.',
+          practiseMore: 'قصة أخرى في المستوى نفسه أولًا. ستجعلك أقوى قبل المستوى التالي.',
+        } as Record<NextBookReason, string>,
+        myWordsTitle: (n: string) => `حفظتَ ${n} من كلمات هذا الكتاب`,
+        myWordsText: 'راجعها الآن مرة واحدة. ستظهر لك مرة أخرى في كتابك التالي.',
+        myWordsAction: 'راجع كلماتي',
       }
     : {
         eyebrow: 'Journey complete',
@@ -227,6 +236,14 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
         library: 'Back to library',
         start: 'Continue journey',
         of: 'of',
+        reason: {
+          nextLevel: 'You did well in the Final Challenge. The next level of the same story is right for you.',
+          sameLevel: 'A new story at the same level, so you read more before the next level.',
+          practiseMore: 'Another story at the same level first. It will make you stronger before the next level.',
+        } as Record<NextBookReason, string>,
+        myWordsTitle: (n: string) => `You saved ${n} words from this book`,
+        myWordsText: 'Review them once now. They will come back in your next book.',
+        myWordsAction: 'Review my words',
       };
 
   const canDoItems = useMemo(() => {
@@ -593,6 +610,32 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
           </div>
         </section>
 
+        {bookWords.length > 0 && (
+          <section className="mt-6 flex flex-col gap-4 rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:flex-row sm:items-center sm:p-8" data-summary-my-words>
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full" style={{ background: visual.accentSoft, color: visual.accentBright }}>
+              <SECTION_ICONS.myWords.icon size={22} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="font-display text-xl font-semibold">{copy.myWordsTitle(formatNumber(bookWords.length))}</h3>
+              <p className="mt-1 text-sm leading-6 text-white/62">{copy.myWordsText}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsMyWordsOpen(true)}
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+              style={{ background: visual.summaryButton }}
+            >
+              {copy.myWordsAction}
+            </button>
+            <MyWordsPanel
+              isOpen={isMyWordsOpen}
+              onClose={() => setIsMyWordsOpen(false)}
+              startInReview
+              book={{ storyId: currentStoryId, level: bookData.level }}
+            />
+          </section>
+        )}
+
         <section className="mt-6 overflow-hidden rounded-[30px] border border-white/8 bg-white/[0.035]">
           <div className="grid lg:grid-cols-[minmax(0,1fr)_360px]">
             <div className="p-6 sm:p-8">
@@ -621,6 +664,11 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                     </p>
                   </div>
                 </div>
+              )}
+              {nextRecommendation && (
+                <p className="mt-4 max-w-xl text-sm leading-6 text-white/62" data-next-book-reason>
+                  {copy.reason[nextRecommendation.reason]}
+                </p>
               )}
 
               <div className="mt-6 flex flex-wrap gap-3">

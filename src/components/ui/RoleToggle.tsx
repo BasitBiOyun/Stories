@@ -3,11 +3,12 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useUserRole, UserRole } from '../../contexts/UserRoleContext';
 import { cn } from '../../lib/utils';
 
-/** Small Teacher · Student switch for the home header; the choice is a device preference. */
+/** Small Student · Teacher · On my own switch for the home header; the choice is a device preference. */
 export const RoleToggle: React.FC = () => {
   const { t } = useLanguage();
   const { role, setRole } = useUserRole();
-  const options: UserRole[] = ['student', 'teacher'];
+  const options: UserRole[] = ['student', 'teacher', 'self'];
+  const labels: Record<UserRole, string> = { student: t('nav.roleStudent'), teacher: t('nav.roleTeacher'), self: t('nav.roleSelf') };
 
   return (
     <div
@@ -27,7 +28,7 @@ export const RoleToggle: React.FC = () => {
             role === option ? 'bg-white/[0.14] text-[#FFF9EC]' : 'text-parchment/60 hover:bg-white/5 hover:text-parchment',
           )}
         >
-          {option === 'student' ? t('nav.roleStudent') : t('nav.roleTeacher')}
+          {labels[option]}
         </button>
       ))}
     </div>

@@ -15,6 +15,8 @@ import {
   Trophy,
   ClipboardList,
   GraduationCap,
+  BookMarked,
+  Layers,
   User,
   Users,
   UsersThree,
@@ -126,6 +128,18 @@ export const SECTION_ICONS = {
     en: 'Self-Study Guide',
     ar: 'دَلِيلُ التَّعَلُّمِ الذَّاتِيِّ',
     hint: { en: 'A plan for learning on your own.', ar: 'خُطَّةٌ لِلتَّعَلُّمِ وَحْدَكَ.' },
+  },
+  myWords: {
+    icon: BookMarked,
+    en: 'My words',
+    ar: 'كَلِمَاتِي',
+    hint: { en: 'Save words and review them later.', ar: 'احْفَظِ الكَلِمَاتِ وَرَاجِعْهَا لَاحِقًا.' },
+  },
+  levelTest: {
+    icon: Layers,
+    en: 'Level test',
+    ar: 'اخْتِبَارُ المُسْتَوَى',
+    hint: { en: 'Ten short questions suggest a level for you.', ar: 'عَشَرَةُ أَسْئِلَةٍ قَصِيرَةٍ تَقْتَرِحُ لَكَ مُسْتَوًى.' },
   },
   teacherGuide: {
     icon: GraduationCap,

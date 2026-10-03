@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { BookOpen, GraduationCap } from '../ui/icons';
+import { BookOpen, GraduationCap, User } from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useUserRole, UserRole } from '../../contexts/UserRoleContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { cn } from '../../lib/utils';
 
-/** Shown once after the access code: Student or Teacher, no account, changeable later from the home header. */
+/** Shown once after the access code: Student, Teacher or On my own, no account, changeable later from the home header. */
 export const RolePicker: React.FC = () => {
   const { language, t, isRTL } = useLanguage();
   const { setRole } = useUserRole();
@@ -14,6 +14,7 @@ export const RolePicker: React.FC = () => {
   const options: { role: UserRole; title: string; hint: string; icon: React.ReactNode }[] = [
     { role: 'student', title: t('nav.roleStudent'), hint: t('nav.roleStudentHint'), icon: <BookOpen size={30} /> },
     { role: 'teacher', title: t('nav.roleTeacher'), hint: t('nav.roleTeacherHint'), icon: <GraduationCap size={30} /> },
+    { role: 'self', title: t('nav.roleSelf'), hint: t('nav.roleSelfHint'), icon: <User size={30} /> },
   ];
 
   return (
@@ -35,7 +36,7 @@ export const RolePicker: React.FC = () => {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="relative z-10 w-full max-w-xl rounded-2xl border-2 border-gold/40 bg-[#1e1915]/95 p-7 text-center shadow-[0_0_50px_rgba(212,175,55,0.15)] backdrop-blur-sm sm:p-9"
+        className="relative z-10 w-full max-w-3xl rounded-2xl border-2 border-gold/40 bg-[#1e1915]/95 p-7 text-center shadow-[0_0_50px_rgba(212,175,55,0.15)] backdrop-blur-sm sm:p-9"
         role="group"
         aria-labelledby="role-picker-title"
       >
@@ -50,7 +51,7 @@ export const RolePicker: React.FC = () => {
         </h2>
         <p className="mx-auto mt-2 max-w-md font-serif text-[14px] leading-relaxed text-[#F5EDD6]/70">{t('nav.roleNote')}</p>
 
-        <div className="mt-7 grid gap-3 sm:grid-cols-2">
+        <div className="mt-7 grid gap-3 sm:grid-cols-3">
           {options.map(option => (
             <button
               key={option.role}
