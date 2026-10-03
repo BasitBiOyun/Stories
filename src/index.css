@@ -386,7 +386,19 @@
     border-bottom: 1px solid color-mix(in srgb, var(--color-gold) 16%, transparent);
     scrollbar-width: none;
     scroll-snap-type: x proximity;
+    scroll-padding-inline: 0.5rem;
     overscroll-behavior-inline: contain;
+    /* A soft fade at the far edge shows the strip scrolls, instead of a hard cut through a tab. */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  }
+
+  [dir="rtl"] div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside,
+  [dir="rtl"] div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside,
+  div[dir="rtl"][class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside,
+  div[dir="rtl"][class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside {
+    -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to left, #000 calc(100% - 2.5rem), transparent);
   }
 
   div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside::-webkit-scrollbar,
@@ -411,8 +423,8 @@
 
   div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside > nav > button,
   div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside > nav > button {
-    width: 4.75rem;
-    min-width: 4.75rem;
+    width: 4rem;
+    min-width: 4rem;
     min-height: 3.75rem;
     margin: 0;
     padding: 0.5rem;
@@ -437,6 +449,13 @@
   div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > :nth-child(2) {
     min-height: 0;
     padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* The section bar sticks flush to the top and full width, so text never scrolls past beside or above it. */
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > :nth-child(2) > .sticky,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > :nth-child(2) > .sticky {
+    top: calc(-1 * clamp(1rem, 3vw, 2rem));
+    margin: calc(-1 * clamp(1rem, 3vw, 2rem)) calc(-1 * clamp(1rem, 3vw, 2rem)) 0;
   }
 }
 

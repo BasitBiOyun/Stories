@@ -5,8 +5,9 @@ import { getHistoricalEntity } from '../historical-entities/registry';
 import { entityPictureUrl } from '../historical-entities/pictures';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useUserRole } from '../../contexts/UserRoleContext';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
-import { ArrowRight, Check, GraduationCap, MapPin, RotateCcw, Target, Volume2, VolumeX } from '../../components/ui/icons';
+import { ArrowRight, Check, MapPin, RotateCcw, Target, Volume2, VolumeX } from '../../components/ui/icons';
 import { isMapSoundOn, playMapSound, setMapSoundOn, subscribeMapSound } from './mapSounds';
 import { BASE_MAPS } from './baseMaps';
 import {
@@ -772,7 +773,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               aria-pressed={classroom}
               className={cn(pillButton, classroom ? 'border-transparent bg-brand-700 text-white' : 'border-brand-200 bg-white text-brand-800 hover:bg-brand-50')}
             >
-              <GraduationCap size={15} aria-hidden="true" />
+              <SECTION_ICONS.classMode.icon size={15} aria-hidden="true" />
               {t('map.classroom')}
             </button>
           )}
@@ -1244,7 +1245,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                 {isTeacher && selected.teacherNote && (
                   <div className="rounded-2xl border border-dashed border-brand-300 bg-white/70 p-3 text-[13px] leading-relaxed text-wood/80 sm:text-[14px]">
                     <div className="mb-1 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
-                      <GraduationCap size={15} aria-hidden="true" />
+                      <SECTION_ICONS.teacherGuide.icon size={15} aria-hidden="true" />
                       {t('map.teacherNote')}
                     </div>
                     <p>{selected.teacherNote}</p>
@@ -1320,7 +1321,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                 className="flex flex-1 flex-col gap-3"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                  {classroom ? <GraduationCap size={22} aria-hidden="true" /> : <MapPin size={22} aria-hidden="true" />}
+                  {classroom ? <SECTION_ICONS.classMode.icon size={22} aria-hidden="true" /> : <MapPin size={22} aria-hidden="true" />}
                 </span>
                 <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{classroom ? t('map.classroom') : t('map.startTitle')}</h4>
                 <p className={cn('font-serif text-wood/80', language === 'ar' ? 'text-[18px] leading-[1.9]' : 'text-[15px] leading-[1.7] sm:text-[16px]')}>

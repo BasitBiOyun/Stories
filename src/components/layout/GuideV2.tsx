@@ -74,7 +74,7 @@ export const GuideV2ChapterBox = ({ page, language, variant }: { page?: PageData
   const text = 'font-serif text-[13px] sm:text-[15px] text-white leading-relaxed';
 
   return (
-    <div className="rounded-2xl border border-gold/20 bg-gold/[0.06] p-4 sm:p-6" data-guide-v2>
+    <div className="rounded-2xl border border-gold/20 bg-gold/[0.06] p-3.5 sm:p-6" data-guide-v2>
       <h5 className="mb-3 flex items-center gap-2 font-display text-[13px] uppercase tracking-widest text-gold sm:text-[15px]">
         <SECTION_ICONS.lessonCard.icon size={16} className="shrink-0" />
         {isTeacher ? L.title : L.selfTitle}
@@ -112,7 +112,7 @@ export const GuideV2ChapterBox = ({ page, language, variant }: { page?: PageData
             <p className="font-semibold text-gold">{isTeacher ? L.group : L.solo}</p>
             <p className="mt-0.5">
               {groupTask.title} · {L.types[groupTask.type]}
-              {isTeacher && <> · {groupTask.time} · {groupTask.groupSize} {L.people}</>}
+              {isTeacher && <> · <span className="whitespace-nowrap">{groupTask.time}</span> · <span className="whitespace-nowrap">{groupTask.groupSize} {L.people}</span></>}
             </p>
             {isTeacher ? (
               <>
@@ -191,6 +191,19 @@ const TOOLS = {
   },
 };
 
+/**
+ * "Before you read: one guess…" → label "Before you read", body "one guess…", so the card title is not repeated in its text.
+ * A line without a short lead-in ("Open “Lesson card” under…", "Reading settings (Aa) → Class mode: …") keeps the section name as its title.
+ */
+const splitToolLine = (line: string, fallback: string) => {
+  const match = line.match(/^([^:→←]+):\s*(.+)$/s);
+  if (match && match[1].replace(/[\u064B-\u0652\u0670]/g, '').length <= 25) {
+    const body = match[2];
+    return { label: match[1], body: body.charAt(0).toLocaleUpperCase() + body.slice(1) };
+  }
+  return { label: fallback, body: line };
+};
+
 /** One card on the guide's first tab listing the V2 tools. */
 export const GuideV2Tools = ({ language, variant }: { language: string; variant: 'teacher' | 'self' }) => {
   const copy = TOOLS[variant][language === 'ar' ? 'ar' : 'en'];
@@ -200,17 +213,20 @@ export const GuideV2Tools = ({ language, variant }: { language: string; variant:
       <h3 className="font-display text-lg text-gold sm:text-2xl">{copy.title}</h3>
       <p className="mt-1 font-serif text-sm text-parchment/70 sm:text-base">{copy.intro}</p>
       <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-        {copy.items.map(([entry, line]) => (
+        {copy.items.map(([entry, line]) => {
+          const { label, body } = splitToolLine(line, entry[lang]);
+          return (
           <li key={entry.en} className="flex gap-3 rounded-xl bg-black/20 p-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold/10 text-gold">
               <entry.icon size={18} />
             </span>
             <span className="min-w-0">
-              <span className="block font-display text-[13px] font-semibold text-parchment sm:text-sm">{entry[lang]}</span>
-              <span className="block font-serif text-[13px] leading-relaxed text-white/80 sm:text-[15px]">{line}</span>
+              <span className="block font-display text-[13px] font-semibold text-parchment sm:text-sm">{label}</span>
+              <span className="mt-0.5 block font-serif text-[13px] leading-relaxed text-white/80 sm:text-[15px]">{body}</span>
             </span>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );

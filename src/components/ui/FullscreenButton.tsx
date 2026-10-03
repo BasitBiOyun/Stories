@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { cn } from '../../lib/utils';
 
 // Phosphor Icons / CornersOut / Regular (MIT)
 const PhosphorCornersOut = ({ size = 19 }: { size?: number }) => (
@@ -64,7 +65,7 @@ export const ExitFullscreenIcon = PhosphorCornersIn;
 /** Floating full-screen control at the bottom corner of every screen; Escape leaves full screen. */
 export const FullscreenButton = () => {
   const { isSupported, isFullscreen, toggleFullscreen } = useFullscreen();
-  const { language } = useLanguage();
+  const { language, isRTL } = useLanguage();
 
   React.useEffect(() => {
     if (!isFullscreen) return;
@@ -87,13 +88,17 @@ export const FullscreenButton = () => {
     <button
       type="button"
       onClick={() => { void toggleFullscreen(); }}
-      className="fixed right-3 bottom-16 z-[260] flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-black/45 text-white/80 shadow-lg backdrop-blur-md transition-colors hover:bg-black/60 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 sm:right-4 sm:bottom-20 sm:h-11 sm:w-11"
+      className={cn(
+        // Phone: a small control in the empty end of the reader's bottom bar, clear of the story text.
+        "fixed bottom-2 z-[260] flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-black/45 text-white/80 shadow-lg backdrop-blur-md transition-colors hover:bg-black/60 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 sm:bottom-20 sm:h-11 sm:w-11",
+        isRTL ? "left-3 sm:left-auto sm:right-4" : "right-3 sm:right-4",
+      )}
       title={label}
       aria-label={label}
       aria-pressed={isFullscreen}
       data-fullscreen-button
     >
-      {isFullscreen ? <PhosphorCornersIn /> : <PhosphorCornersOut />}
+      {isFullscreen ? <PhosphorCornersIn size={17} /> : <PhosphorCornersOut size={17} />}
     </button>
   );
 };

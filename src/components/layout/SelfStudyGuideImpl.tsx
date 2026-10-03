@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
-import { X, Download } from '../ui/icons';
+import { X, Download, User, BookOpen, Lightbulb, Clock, Compass, Award, Headphones, Pencil, ListOrdered, Heart, FileText, Eye, CheckCircle, Scroll, ArrowRight, type AppIconProps } from '../ui/icons';
 import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
@@ -16,16 +16,21 @@ const GuideIcon = ({ name, className = 'w-7 h-7' }: { name: GuideIconName; class
   <PhosphorGuideIcon name={name} className={className} />
 );
 
-const iconNameMap: Record<string, GuideIconName> = {
-  Users: 'book', BookOpen: 'book', Rocket: 'target', Clock: 'clock', Compass: 'search',
-  Stars: 'trophy', Ear: 'headphones', PenTool: 'pencil', Smile: 'check', Map: 'search',
-  Lightbulb: 'book', Target: 'target', Heart: 'check', HelpCircle: 'search', FileText: 'book',
-  Eye: 'eye', CheckCircle: 'check'
+/**
+ * Guide data names an icon loosely ("Stars", "Map", "Target"). Each one resolves here to an icon that does not
+ * already stand for a reader section (no trophy, rocket, magnifier or target), so one icon keeps one meaning.
+ */
+const iconNameMap: Record<string, React.ComponentType<AppIconProps>> = {
+  Users: User, BookOpen: BookOpen, Rocket: Lightbulb, Clock: Clock, Compass: Compass,
+  Stars: Award, Ear: Headphones, PenTool: Pencil, Smile: Lightbulb, Map: ListOrdered,
+  Lightbulb: Lightbulb, Target: Clock, Heart: Heart, HelpCircle: Lightbulb, FileText: FileText,
+  Eye: Eye, CheckCircle: CheckCircle, Overview: Scroll,
 };
 
-const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => (
-  <GuideIcon name={name && iconNameMap[name] ? iconNameMap[name] : 'book'} className={className} />
-);
+const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => {
+  const Icon = (name && iconNameMap[name]) || FileText;
+  return <Icon className={className} aria-hidden="true" />;
+};
 
 const localizeArabicUiText = (value: string) => value
   .replace(/Tap\s*&\s*Reveal/gi, 'اضغط واكشف')
@@ -138,7 +143,7 @@ export const SelfStudyGuide = ({
     : defaultGuideSections;
 
   const tabs = [
-    { id: 'welcome', label: isAr ? 'مساحة الدراسة' : 'Study Home', icon: iconFor('Stars', 'w-5 h-5') },
+    { id: 'welcome', label: isAr ? 'مساحة الدراسة' : 'Study Home', icon: iconFor('Overview', 'w-5 h-5') },
     ...(content.length ? [{ id: 'chapters', label: isAr ? 'مسار الفصول' : 'Study Path', icon: iconFor('Map', 'w-5 h-5') }] : []),
     ...displaySections.map((section, idx) => ({
       id: `section-${idx}`,
@@ -393,9 +398,9 @@ export const SelfStudyGuide = ({
                   onClick={() => openChapter(continueIndex)}
                   className="mt-5 inline-flex min-h-12 items-center gap-3 rounded-2xl bg-gold px-5 sm:px-6 font-display text-[13px] sm:text-sm font-bold text-white shadow-lg shadow-black/15 transition-transform hover:-translate-y-0.5"
                 >
-                  <GuideIcon name="target" className="w-5 h-5" />
                   <span>{isAr ? 'تابع من حيث توقفت' : 'Continue where you left off'}</span>
                   <span className="opacity-70">· {formatNumber(continueIndex + 1)}</span>
+                  <ArrowRight className={cn('w-5 h-5', isRTL && 'rotate-180')} aria-hidden="true" />
                 </button>
               )}
             </div>
@@ -842,7 +847,7 @@ export const SelfStudyGuide = ({
             </aside>
 
             <main ref={contentScrollRef} className="self-study-content flex-1 overflow-y-auto custom-scrollbar">
-              <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-9 lg:px-11 py-3">
+              <div className="sticky top-0 z-20 border-b border-gold/10 bg-wood/95 backdrop-blur-xl px-4 sm:px-7 md:px-9 lg:px-11 py-3">
                 <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-3">
                   <div className="min-w-0 flex flex-1 items-center gap-3">
                     <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">{activeTabMeta.icon}</span>

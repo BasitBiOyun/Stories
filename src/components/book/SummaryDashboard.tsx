@@ -15,10 +15,12 @@ import {
   Headphones,
   Library,
   RotateCcw,
-  Rocket,
+  Pencil,
+  Type,
   Trophy,
 } from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { cn } from '../../lib/utils';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import {
   collectionVisuals,
@@ -306,13 +308,13 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
       total: audioChapterTotal,
     },
     {
-      icon: SECTION_ICONS.vocabularyChallenge.icon,
+      icon: Type,
       label: copy.explore,
       value: wordsExplored,
       total: totalWordNotes,
     },
     {
-      icon: Rocket,
+      icon: Pencil,
       label: copy.practise,
       value: completedActivityCount,
       total: expectedActivityIds.size,
@@ -333,13 +335,13 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
       progress: percent(chapterVisited, chapterCount),
     },
     {
-      icon: SECTION_ICONS.vocabularyChallenge.icon,
+      icon: Type,
       label: copy.words,
       value: totalWordNotes ? `${formatNumber(wordsExplored)} / ${formatNumber(totalWordNotes)}` : formatNumber(wordsExplored),
       progress: percent(wordsExplored, totalWordNotes),
     },
     {
-      icon: Rocket,
+      icon: Pencil,
       label: copy.practice,
       value: expectedActivityIds.size
         ? `${formatNumber(completedActivityCount)} / ${formatNumber(expectedActivityIds.size)}`
@@ -514,15 +516,15 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
             </div>
           </div>
 
-          <div className="rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
+          <div className="flex flex-col rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: visual.accentSoft, color: visual.accentBright }}>
                 <SECTION_ICONS.finalChallenge.icon size={21} />
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/62">{copy.finalChallenge}</p>
-                <h3 className="mt-1 font-display text-2xl font-semibold tracking-[-0.03em]">
-                  {finalScore === null ? '—' : `${formatNumber(finalScore)}%`}
+                <h3 className={cn('mt-1 font-display font-semibold tracking-[-0.03em]', finalScore === null ? 'text-lg text-white/70' : 'text-2xl')}>
+                  {finalScore === null ? (isArabic ? 'لم يُنجَز بعد' : 'Not taken yet') : `${formatNumber(finalScore)}%`}
                 </h3>
               </div>
             </div>
@@ -574,9 +576,12 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                 </div>
               </>
             ) : (
-              <p className="mt-6 text-sm leading-7 text-white/52">
-                {isArabic ? 'تظهر هنا تفاصيل المحاولة الأولى والمراجعة عند إكمال التحدي النهائي.' : 'First-try and review details appear here when the Final Challenge is completed.'}
-              </p>
+              <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-white/12 bg-black/10 px-6 py-8 text-center">
+                <SECTION_ICONS.finalChallenge.icon size={30} className="opacity-35" style={{ color: visual.accentBright }} />
+                <p className="max-w-xs text-sm leading-6 text-white/58">
+                  {isArabic ? 'تظهر هنا تفاصيل المحاولة الأولى والمراجعة عند إكمال التحدي النهائي.' : 'First-try and review details appear here when the Final Challenge is completed.'}
+                </p>
+              </div>
             )}
           </div>
         </section>

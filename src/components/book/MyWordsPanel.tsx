@@ -298,13 +298,13 @@ export const MyWordsReminder: React.FC = () => {
   if (!book || due.length === 0) return null;
   const Icon = SECTION_ICONS.myWords.icon;
   const copy = lang === 'ar'
-    ? { title: 'كَلِمَاتٌ مِنْ كُتُبِكَ السَّابِقَةِ', text: 'رَاجِعْهَا قَبْلَ أَنْ تَبْدَأَ. يَكْفِي دَقِيقَةٌ وَاحِدَةٌ.', action: 'رَاجِعِ الآنَ' }
-    : { title: 'Words from your earlier books', text: 'Review them before you start. One minute is enough.', action: 'Review now' };
+    ? { title: 'رَاجِعْ كَلِمَاتٍ مِنْ كُتُبِكَ السَّابِقَةِ', text: 'أَنْهَيْتَ الفَصْلَ الأَوَّلَ. رَاجِعْ هٰذِهِ الكَلِمَاتِ قَبْلَ الفَصْلِ التَّالِي، يَكْفِي دَقِيقَةٌ وَاحِدَةٌ.', action: 'رَاجِعِ الآنَ' }
+    : { title: 'Review words from your earlier books', text: 'You finished Chapter 1. Review these words before the next chapter. One minute is enough.', action: 'Review now' };
 
   return (
     <aside
       dir={isRTL ? 'rtl' : 'ltr'}
-      className="mx-auto mt-8 max-w-[68ch] rounded-2xl border border-brand-300/40 bg-brand-50/70 p-4 sm:p-5 lg:max-w-none"
+      className="mx-auto mt-8 w-full max-w-[68ch] rounded-2xl border border-brand-300/40 bg-brand-50/70 p-4 sm:p-5 lg:max-w-none"
       data-my-words-reminder
     >
       <div className="flex items-start gap-3">
