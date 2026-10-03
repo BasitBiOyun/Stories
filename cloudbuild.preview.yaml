@@ -8,15 +8,37 @@ substitutions:
   _SERVICE: stories-preview
 
 steps:
+  # Skips the image build and deploy when nothing that goes into the app changed
+  # (for example a docs, promo or TTS-queue-only commit). The hash of the app inputs is
+  # stored as a label on the Cloud Run service by the deploy step and compared here.
+  - id: check-app-changes
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eu
+        hash="$$(find src public deploy scripts/validation index.html package.json package-lock.json \
+          vite.config.ts tsconfig.json Dockerfile .dockerignore cloudbuild.preview.yaml \
+          -type f -print0 2>/dev/null | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -c1-40)"
+        echo "$$hash" > /workspace/.app-hash
+        deployed="$$(gcloud run services describe ${_SERVICE} --region=${_REGION} \
+          --format='value(metadata.labels.app-hash)' 2>/dev/null || true)"
+        if [ -n "$$deployed" ] && [ "$$deployed" = "$$hash" ]; then
+          echo "[Stories] App inputs unchanged ($$hash); skipping build and deploy."
+          touch /workspace/.skip-deploy
+        else
+          echo "[Stories] App inputs changed ($${deployed:-none} -> $$hash); building."
+        fi
+
   - id: pull-cache
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - -c
-      - >-
-        docker pull
-        ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-        || true
+      - |
+        [ -f /workspace/.skip-deploy ] && exit 0
+        docker pull ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest || true
 
   # Chat-controlled narration queue. Normal preview commits do nothing here unless
   # tts/requests.json exists. When it does, the build reads the ElevenLabs key
@@ -64,43 +86,78 @@ steps:
         export ELEVENLABS_ARABIC_API_KEY
         python3 scripts/tts/process_arabic_requests.py || echo "[Stories TTS Arabic] WARNING: Arabic narration failed; the deploy continues and the queue is retried on the next build."
 
+  # Two builds so the dependency install (npm ci) is cached too: the first keeps the
+  # build stage as its own cache image, the second builds the small runtime image.
   - id: build
     name: gcr.io/cloud-builders/docker
+    entrypoint: bash
     env:
       - DOCKER_BUILDKIT=1
     args:
-      - build
-      - --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-      - --build-arg
-      - BUILDKIT_INLINE_CACHE=1
-      - -t
-      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-      - -t
-      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-      - .
+      - -c
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        docker build --target app-build \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache .
+        docker build \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest .
 
   - id: push
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - -c
-      - >-
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
         docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-        && docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+        docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+        docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache
 
   - id: deploy
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-    entrypoint: gcloud
+    entrypoint: bash
     args:
-      - run
-      - deploy
-      - ${_SERVICE}
-      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-      - --region=${_REGION}
-      - --platform=managed
-      - --quiet
-      - --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME
-      - --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
+      - -c
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        gcloud run deploy ${_SERVICE} \
+          --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
+          --region=${_REGION} \
+          --platform=managed \
+          --quiet \
+          --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME \
+          --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build,app-hash=$$(cat /workspace/.app-hash)
+
+  # Keeps only the newest images of this service in Artifact Registry (plus the latest,
+  # build-cache and currently served ones). Never blocks: a failure only leaves old images.
+  - id: cleanup-old-images
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -uo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        keep=20
+        served="$$(gcloud run services describe ${_SERVICE} --region=${_REGION} \
+          --format='value(spec.template.spec.containers[0].image)' 2>/dev/null | sed 's/.*://')"
+        gcloud artifacts docker images list ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE} --include-tags \
+          --sort-by=~UPDATE_TIME --format='value(version,tags)' 2>/dev/null \
+          | tail -n +$$((keep + 1)) \
+          | awk -v served="$$served" '$$0 !~ /(latest|build-cache)/ && (served == "" || index($$0, served) == 0) {print $$1}' \
+          | head -n 60 \
+          | xargs -r -P 8 -I{} gcloud artifacts docker images delete ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}@{} --delete-tags --quiet \
+          || echo "[Stories] Old image cleanup failed; the build continues."
+        exit 0
 
 options:
   logging: CLOUD_LOGGING_ONLY
