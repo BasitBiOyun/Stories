@@ -126,7 +126,7 @@ Mecca began to develop into a trade center from the early 6th century CE (Common
 
 This meant approximately 2–3 shiploads of cargo. At that time, the typical Roman trade ship had a carrying capacity of around 100–150 tons. This number shows us how large the trade was.
 
-In addition to these, many caravans left Mecca at almost every time of the year. For example, one of the places where the Quraysh caravans traveled for trade was Egypt, the Byzantine Empire’s wealthiest region. Abyssinia was also a place with which the Quraysh had trade relations by sea. Suhayl b. Amr and Uthman Ibn Affan were shipowners from the Quraysh tribe. So, beginning with the settlement of the Quraysh tribe in Mecca in the mid-5th century A.D., the city of Mecca gradually developed into a center of trade.`,
+In addition to these, many caravans left Mecca at almost every time of the year. For example, one of the places where the Quraysh caravans traveled for trade was Egypt, the Byzantine Empire’s wealthiest region. Abyssinia was also a place with which the Quraysh had trade relations by sea. Suhayl b. Amr and Uthman Ibn Affan were shipowners from the Quraysh tribe. So, beginning with the settlement of the Quraysh tribe in Mecca in the mid-5th century CE, the city of Mecca gradually developed into a center of trade.`,
     vocabulary: [
       { word: 'caravans', definition: 'Groups of people and animals traveling together, especially to carry goods.' },
       { word: 'trade center', definition: 'A place where buying and selling are very important.' },

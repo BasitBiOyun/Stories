@@ -245,7 +245,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
         answer: 0,
       },
       {
-        sentence: 'So, beginning with the settlement of the Quraysh tribe in Mecca in the mid-5th century A.D., the city of Mecca suddenly developed into a center of trade.',
+        sentence: 'So, beginning with the settlement of the Quraysh tribe in Mecca in the mid-5th century CE, the city of Mecca suddenly developed into a center of trade.',
         error: 'suddenly',
         options: ['immediately', 'finally', 'gradually'],
         answer: 2,
