@@ -119,7 +119,7 @@ export const PlacesPage = ({
   const locale = language === 'ar' ? 'ar' : 'en';
   const text = COPY[locale];
   const detailRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef(new Map<string, HTMLButtonElement>());
+  const cardRefs = useRef(new Map<string, HTMLDivElement>());
 
   const entries = useMemo<BookEntityEntry[]>(
     () => (isHistoricalEntityBookKey(page.entityBookKey) ? getBookEntityIndex(page.entityBookKey) : []),
@@ -135,9 +135,10 @@ export const PlacesPage = ({
   const [playing, setPlaying] = useState(false);
 
   const selected = entries.find(entry => entry.entity.id === selectedId) ?? entries[0];
-  const quote = useMemo(
-    () => (selected ? findStoryQuote(selected.entity, selected.chapters, pages, locale) : undefined),
-    [selected, pages, locale],
+  // Every card shows its story quote, so they are all found once.
+  const quotes = useMemo(
+    () => new Map(entries.map(entry => [entry.entity.id, findStoryQuote(entry.entity, entry.chapters, pages, locale)])),
+    [entries, pages, locale],
   );
   if (!selected) return null;
 
@@ -149,7 +150,7 @@ export const PlacesPage = ({
   const mapAspect = selected.entity.mapAspect ?? MEDITERRANEAN_MAP_ASPECT;
   // On large screens the map takes the room left above the picture row: as wide
   // as the column allows, and never taller than the space it sits in.
-  const mapClassName = 'w-full lg:w-[min(100cqw,calc((100cqh-var(--info-height))*var(--map-ratio)))]';
+  const mapClassName = 'w-full lg:w-[min(100cqw,calc((100cqh-var(--info-height)-2.5rem)*var(--map-ratio)))]';
   const mapStyle = { '--map-ratio': aspectRatioOf(mapAspect) } as React.CSSProperties;
   const slidOut = selected.entity.focus?.mode === 'feature' && Boolean(selected.entity.focus.view);
 
@@ -209,49 +210,72 @@ export const PlacesPage = ({
         {chapterTag(entry.chapters)}
       </span>
     );
-    const common = {
-      type: 'button' as const,
-      'aria-pressed': isActive,
-      onClick: () => select(entry.entity.id),
-      style: cardStyle,
-    };
+    const quote = quotes.get(entry.entity.id);
 
+    // Every card is complete on its own: text, extra sentence and story quote.
+    // Selecting a card only highlights it and shows it on the map; its size never changes.
     return (
-      <button
+      <div
         key={entry.entity.id}
         ref={element => { if (element) cardRefs.current.set(entry.entity.id, element); else cardRefs.current.delete(entry.entity.id); }}
-        {...common}
+        role="button"
+        tabIndex={0}
+        aria-pressed={isActive}
+        onClick={() => select(entry.entity.id)}
+        onKeyDown={event => {
+          if (event.target !== event.currentTarget) return;
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            select(entry.entity.id);
+          }
+        }}
+        style={cardStyle}
         className={cn(
-          'flex min-h-0 items-start gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
+          'flex cursor-pointer items-start gap-3 rounded-2xl border border-black/5 border-s-[3px] p-2.5 text-start transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50',
           isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
         )}
       >
-        <EntityPicture entity={entry.entity} iconSize={32} className="aspect-square h-24 w-24 shrink-0 self-start rounded-xl lg:h-auto lg:w-[42%] lg:max-w-[14rem]" />
-        <span className="flex min-w-0 flex-1 flex-col py-0.5">
-          <span className="flex items-baseline justify-between gap-2">
+        <EntityPicture entity={entry.entity} iconSize={32} className="aspect-square h-24 w-24 shrink-0 self-start rounded-xl lg:h-auto lg:w-[38%] lg:max-w-[13rem]" />
+        <div className="flex min-w-0 flex-1 flex-col py-0.5">
+          <div className="flex items-baseline justify-between gap-2">
             <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
             {tag}
-          </span>
-          <span className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</span>
-          <span className="mt-1 font-serif text-[13.5px] leading-snug text-wood/80 min-[1800px]:text-[15px]">
+          </div>
+          <h4 className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</h4>
+          <span className="mt-1 text-[11px] font-semibold" style={{ color }}>{copy.periodLabel}</span>
+          <p className="mt-1 font-serif text-[13.5px] leading-snug text-wood/85 min-[1800px]:text-[15px]">
             {copy.summary}
-            {isActive && copy.more && <> {copy.more}</>}
-          </span>
-          {isActive && quote && (
-            <span
-              className="mt-2 block rounded-xl border-s-[3px] px-2.5 py-1.5"
-              style={{ borderInlineStartColor: tint(color, 0.6), backgroundColor: 'rgba(255,255,255,0.6)' }}
+            {copy.more && <> {copy.more}</>}
+          </p>
+          {quote && (
+            <figure
+              className="mt-2 rounded-xl border-s-[3px] px-2.5 py-1.5"
+              style={{ borderInlineStartColor: tint(color, 0.6), backgroundColor: tint(color, 0.06) }}
             >
-              <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-wood/60">
-                <BookOpen size={12} /> {text.inTheStory} · {text.chapter} {formatNumber(quote.chapter)}
-              </span>
-              <span className="mt-0.5 block font-serif text-[13px] italic leading-snug text-wood/85 min-[1800px]:text-[14px]">
+              <figcaption className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-wood/60">
+                <BookOpen size={12} className="shrink-0" /> {text.inTheStory} · {text.chapter} {formatNumber(quote.chapter)}
+              </figcaption>
+              <blockquote className="mt-0.5 font-serif text-[13px] italic leading-snug text-wood/85 min-[1800px]:text-[14px]">
                 “<QuoteText quote={quote} color={color} />”
-              </span>
-            </span>
+              </blockquote>
+              {onOpenPage && (
+                <button
+                  type="button"
+                  onClick={event => {
+                    event.stopPropagation();
+                    onOpenPage(quote.pageIndex);
+                  }}
+                  className="-ms-1.5 mt-0.5 inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] font-bold hover:bg-white/80"
+                  style={{ color }}
+                >
+                  {text.readChapter(formatNumber(quote.chapter))}
+                  <ArrowRight size={12} className={cn(isRTL && 'rotate-180')} />
+                </button>
+              )}
+            </figure>
           )}
-        </span>
-      </button>
+        </div>
+      </div>
     );
   };
 
@@ -298,7 +322,7 @@ export const PlacesPage = ({
           <div className="grid grid-cols-[minmax(0,1fr)] gap-3 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] min-[1800px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div ref={detailRef} className="scroll-mt-3 lg:min-h-0">
               <section
-                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:42cqh] lg:h-full lg:[container-type:size]"
+                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:50cqh] lg:h-full lg:[container-type:size]"
               >
                 <div className="flex shrink-0 justify-center">
                   <EntityMap
@@ -315,45 +339,15 @@ export const PlacesPage = ({
                     style={mapStyle}
                   />
                 </div>
-                {/* Under the map: the picture, square and as large as the room allows, with
-                    the name, chapters and a link back to the story beside it. The full text
-                    is on the selected card in the list. */}
-                <div className="flex items-stretch gap-4 pt-3 lg:min-h-0 lg:flex-1" aria-live="polite">
+                {/* Under the map only the picture, square and as large as the room allows.
+                    Everything written about the place is on its card in the list. */}
+                <div className="flex flex-col items-center pt-3 lg:min-h-0 lg:flex-1" aria-live="polite">
                   <EntityPicture
                     entity={selected.entity}
-                    iconSize={56}
-                    className="aspect-square w-36 shrink-0 self-start rounded-2xl shadow-sm sm:w-52 lg:h-auto lg:w-[min(55%,calc(var(--info-height)-0.75rem))]"
+                    iconSize={64}
+                    className="aspect-square w-full max-w-sm rounded-2xl shadow-sm lg:h-auto lg:w-[min(100cqw,var(--info-height))] lg:max-w-none"
                   />
-                  <div className="flex min-w-0 flex-1 flex-col gap-1.5 py-1">
-                    <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: selectedColors.base }}>
-                      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: selectedColors.base }} />
-                      {selectedCopy.kindLabel}
-                    </span>
-                    <h3 className="font-display text-2xl font-bold leading-tight text-brand-950 [@media(max-height:820px)]:text-xl">
-                      {selectedCopy.title}
-                      <LearnerName entity={selected.entity} className="block text-lg text-wood/75 [@media(max-height:820px)]:text-base" />
-                    </h3>
-                    <span
-                      className="self-start rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
-                      style={{ borderColor: tint(selectedColors.base, 0.25), backgroundColor: tint(selectedColors.base, 0.08), color: selectedColors.base }}
-                    >
-                      {selectedCopy.periodLabel}
-                    </span>
-                    <span className="text-[12px] font-bold text-wood/65">{chapterLine(selected.chapters)}</span>
-                    {quote && onOpenPage && (
-                      <button
-                        type="button"
-                        onClick={() => onOpenPage(quote.pageIndex)}
-                        className="mt-1 inline-flex items-center gap-1.5 self-start rounded-xl px-3 py-1.5 text-[12px] font-bold text-white shadow-sm transition-opacity hover:opacity-90"
-                        style={{ backgroundColor: selectedColors.base }}
-                      >
-                        <BookOpen size={14} />
-                        {text.readChapter(formatNumber(quote.chapter))}
-                        <ArrowRight size={13} className={cn(isRTL && 'rotate-180')} />
-                      </button>
-                    )}
-                    <span className="mt-auto text-[11px] text-wood/55">{selectedMap ? selectedCopy.approximateLabel : text.noMap}</span>
-                  </div>
+                  <p className="mt-1.5 text-center text-[11px] text-wood/55">{selectedMap ? selectedCopy.approximateLabel : text.noMap}</p>
                 </div>
               </section>
             </div>
