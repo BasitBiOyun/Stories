@@ -201,7 +201,7 @@ const QuestionCard = ({
                       ? `${theme.accentBg} text-white`
                       : `${theme.softBg} ${theme.accentText}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
                   'font-serif font-medium leading-relaxed flex-1',
@@ -412,12 +412,11 @@ export const KnowledgeCheck = ({
   );
 
   return (
-    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pe-2">
+    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar px-0.5 pt-0.5 pe-2">
       <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
-          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)] flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
-          theme.softBg,
-          theme.softBorder
+          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 ring-1 ring-brand-100 shadow-[0_18px_48px_rgba(63,49,28,0.07)] flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
+          theme.softBg
         )}>
           <div className="flex items-center gap-3 min-w-0">
             <div className={cn('flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shrink-0', theme.accentBg)}>

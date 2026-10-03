@@ -206,7 +206,7 @@ export const ICanPanel = ({ items, language, storageKey }: { items: string[]; la
 
   return (
     <section data-i-can className="mt-6 rounded-[26px] border border-brand-100 bg-white p-5 sm:p-6 shadow-[0_14px_38px_rgba(63,49,28,0.06)] font-sans" dir={isArabic ? 'rtl' : 'ltr'}>
-      <header className="flex items-baseline gap-3">
+      <header className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <span className="inline-flex items-center gap-2 text-brand-800">
           <SECTION_ICONS.iCan.icon size={18} />
           <span className={cn('font-display font-semibold uppercase tracking-widest', isArabic ? 'text-sm' : 'text-[11px]')}>{L.canTitle}</span>

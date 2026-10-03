@@ -1717,7 +1717,7 @@ export const StoryPage = ({
       {/* Dynamic responsive layout container */}
       <div className="flex-1 min-h-0 overflow-hidden">
         {/* Mobile View: Vertical scrolling stack */}
-        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar pe-3 sm:pe-4 space-y-6">
+        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar px-0.5 sm:ps-0.5 sm:pe-4 space-y-6">
           {page.image && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -1782,7 +1782,7 @@ export const StoryPage = ({
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
-        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pe-3 xl:pe-4 pb-4">
+        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar ps-0.5 pe-3 xl:pe-4 pb-4">
           <div className="grid grid-cols-12 gap-8 desk:gap-12 items-start">
             {/* Left side: Image */}
             <div className="col-span-5 self-start lg:sticky lg:top-0">

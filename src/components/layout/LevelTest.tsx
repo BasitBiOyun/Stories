@@ -130,7 +130,7 @@ export const LevelTest: React.FC<LevelTestProps> = ({ isOpen, onClose, onResult,
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/60 p-3 sm:items-center sm:p-6"
+          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/60 p-3 sm:p-6"
           onClick={onClose}
           data-level-test
         >
@@ -144,7 +144,7 @@ export const LevelTest: React.FC<LevelTestProps> = ({ isOpen, onClose, onResult,
             dir={isRTL ? 'rtl' : 'ltr'}
             lang={lang}
             onClick={event => event.stopPropagation()}
-            className={cn('relative w-full max-w-2xl rounded-[26px] bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
+            className={cn('relative w-full max-w-2xl rounded-[26px] sm:my-auto bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
           >
             <button
               ref={closeRef}
@@ -209,7 +209,7 @@ export const LevelTest: React.FC<LevelTestProps> = ({ isOpen, onClose, onResult,
             {finished && level && (
               <div className="mt-5" data-level-test-result>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-wood/55">{copy.resultTitle}</p>
-                <p className="mt-1 font-display text-5xl font-semibold text-wood">{level}</p>
+                <p className="mt-3 font-display text-5xl font-semibold leading-none text-wood">{level}</p>
                 <p className="mt-3 text-[15px] leading-relaxed text-wood/80">{copy.resultText[level]}</p>
                 <p className="mt-1 text-sm text-wood/60">{copy.score(formatNumber(rightCount), formatNumber(items.length))}</p>
                 <div className="mt-6 flex flex-wrap gap-3">

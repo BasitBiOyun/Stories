@@ -245,7 +245,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
           sameLevel: 'A new story at the same level, so you read more before the next level.',
           practiseMore: 'Another story at the same level first. It will make you stronger before the next level.',
         } as Record<NextBookReason, string>,
-        myWordsTitle: (n: string) => `You saved ${n} words from this book`,
+        myWordsTitle: (n: string) => `You saved ${n} ${n === '1' ? 'word' : 'words'} from this book`,
         myWordsText: 'Review them once now. They will come back in your next book.',
         myWordsAction: 'Review my words',
       };
@@ -422,9 +422,11 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/62">
                     {copy.eyebrow}
                   </p>
-                  <p className="mt-1 text-sm font-semibold" style={{ color: visual.accentBright }}>
-                    {scoreBand.label}
-                  </p>
+                  {scoreBand.label !== copy.eyebrow && (
+                    <p className="mt-1 text-sm font-semibold" style={{ color: visual.accentBright }}>
+                      {scoreBand.label}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -465,7 +467,6 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                   {copy.how}
                 </h3>
               </div>
-              <Trophy size={23} style={{ color: visual.accentBright }} />
             </div>
 
             <div className="mt-7 space-y-3">
@@ -712,7 +713,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                   <button
                     type="button"
                     onClick={() => onStartJourney?.(nextRecommendation.story.id, nextRecommendation.level)}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:w-auto"
                     style={{ background: visual.summaryButton }}
                   >
                     {copy.start}
@@ -722,7 +723,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                 <button
                   type="button"
                   onClick={onReviewStory ?? onFinish}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-5 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.08]"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-5 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.08] sm:w-auto"
                 >
                   <BookOpen size={16} />
                   {copy.review}
@@ -730,7 +731,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
                 <button
                   type="button"
                   onClick={onReadAgain ?? onFinish}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-5 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.08]"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-5 text-sm font-semibold text-white/76 transition-colors hover:bg-white/[0.08] sm:w-auto"
                 >
                   <RotateCcw size={16} />
                   {copy.readAgain}

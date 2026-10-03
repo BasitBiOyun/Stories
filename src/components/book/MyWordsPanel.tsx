@@ -129,7 +129,7 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-3 sm:items-center sm:p-6"
+          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-3 sm:p-6"
           onClick={onClose}
           data-my-words
         >
@@ -142,7 +142,7 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
             aria-label={SECTION_ICONS.myWords[lang]}
             dir={isRTL ? 'rtl' : 'ltr'}
             onClick={event => event.stopPropagation()}
-            className={cn('relative w-full max-w-2xl rounded-[26px] bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
+            className={cn('relative w-full max-w-2xl rounded-[26px] sm:my-auto bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
           >
             <button
               ref={closeRef}
@@ -304,7 +304,7 @@ export const MyWordsReminder: React.FC = () => {
   return (
     <aside
       dir={isRTL ? 'rtl' : 'ltr'}
-      className="mx-auto mt-8 max-w-[68ch] rounded-2xl border border-brand-300/40 bg-brand-50/70 p-4 sm:p-5"
+      className="mx-auto mt-8 max-w-[68ch] rounded-2xl border border-brand-300/40 bg-brand-50/70 p-4 sm:p-5 lg:max-w-none"
       data-my-words-reminder
     >
       <div className="flex items-start gap-3">

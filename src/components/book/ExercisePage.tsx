@@ -275,11 +275,10 @@ export const ExercisePage = ({
                 </div>
               )}
               {page.type === 'exercises' && page.exercises && (
-                <div className="h-full min-h-0 overflow-y-auto pe-1 custom-scrollbar">
+                <div className="h-full min-h-0 overflow-y-auto px-0.5 pt-0.5 pe-1 custom-scrollbar">
                   <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-4 pb-4">
                     <section className={cn(
-                      "rounded-[28px] bg-white/68 p-5 shadow-[0_16px_42px_rgba(63,49,28,0.06)] ring-1 sm:p-6",
-                      colTheme.containerBorder
+                      "rounded-[28px] bg-white/68 p-5 shadow-[0_16px_42px_rgba(63,49,28,0.06)] ring-1 ring-brand-100 sm:p-6"
                     )}>
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0">

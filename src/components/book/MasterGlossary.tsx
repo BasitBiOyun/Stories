@@ -150,7 +150,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
 
     return isA2
       ? {
-          eyebrow: 'My Words',
+          eyebrow: 'Story words',
           subtitle: 'Learn the words from the story and choose the words you want to practise again.',
           progressTitle: 'My Progress',
           progressHint: 'This shows the words you know now.',
@@ -485,7 +485,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
 
             <div className="flex items-center justify-between gap-2 mt-2">
               <span className="text-[11px] sm:text-xs text-wood/60">
-                {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)} {copy.confident.toLowerCase()}
+                {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)} {copy.confident === 'I Know' ? 'I know' : copy.confident.toLowerCase()}
               </span>
               {(knownCount > 0 || reviewCount > 0) && (
                 <button

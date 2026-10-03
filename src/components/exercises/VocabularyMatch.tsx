@@ -96,7 +96,7 @@ const maskWord = (context: string | undefined, word: string) => {
 const theme = {
     barBg: 'bg-brand-100', barFill: 'bg-brand-500', accent: 'text-brand-700', dot: 'bg-brand-500',
     badge: 'bg-brand-500 text-white', reset: 'bg-brand-100 text-brand-700 hover:bg-brand-200',
-    selected: 'border-brand-500 bg-brand-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-brand-100 bg-white hover:border-brand-300',
+    selected: 'border-brand-500 ring-brand-400 bg-brand-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-brand-100 bg-white hover:border-brand-300',
   };
 
 export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary, onComplete }: Props) => {

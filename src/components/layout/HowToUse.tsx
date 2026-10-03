@@ -68,7 +68,7 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-3 sm:items-center sm:p-6"
+          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-3 sm:p-6"
           onClick={onClose}
           data-how-to-use
         >
@@ -81,7 +81,7 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
             aria-label={copy.heading}
             dir={isRTL ? 'rtl' : 'ltr'}
             onClick={event => event.stopPropagation()}
-            className={cn('relative w-full max-w-3xl rounded-[26px] bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
+            className={cn('relative w-full max-w-3xl rounded-[26px] sm:my-auto bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
           >
             <button
               ref={closeRef}

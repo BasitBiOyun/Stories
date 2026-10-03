@@ -224,7 +224,7 @@ export const VocabularyWord = ({
                   aria-pressed={isSaved}
                   onClick={() => toggleMyWord({ word, definition: normalizedDefinition, language: wordLanguage })}
                   className={cn(
-                    "mt-3.5 inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 font-display text-[11px] font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
+                    "mt-3.5 inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 font-display text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
                     isSaved ? "border-brand-300/50 bg-brand-300/15 text-brand-200" : "border-white/15 text-parchment/75 hover:border-brand-300/50 hover:text-parchment",
                   )}
                 >

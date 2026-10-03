@@ -887,8 +887,8 @@ const AppContent = () => {
                       exit={{ opacity: 0, y: -8, scale: 0.97 }}
                       transition={{ duration: 0.16, ease: 'easeOut' }}
                       className={cn(
-                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl",
-                        isRTL ? "left-0" : "right-0",
+                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl max-sm:fixed max-sm:inset-x-3 max-sm:top-[3.9rem] max-sm:w-auto",
+                        isRTL ? "sm:left-0" : "sm:right-0",
                         themeClasses.menuBg,
                         themeClasses.menuBorder
                       )}
@@ -1109,7 +1109,7 @@ const AppContent = () => {
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 “In their stories there is truly a lesson for people of understanding.”
-                <span className="ms-1 text-parchment/50">Yusuf 12:111</span>
+                <span className="ms-1 whitespace-nowrap text-parchment/50">Yusuf 12:111</span>
               </p>
             )}
           </div>
@@ -1338,7 +1338,7 @@ const AppContent = () => {
               title={t('nav.back')}
               aria-label={t('nav.back')}
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className={cn("h-5 w-5", isRTL && "rotate-180")} />
             </button>
 
             <button 
@@ -1351,7 +1351,7 @@ const AppContent = () => {
               title={t('nav.next')}
               aria-label={t('nav.next')}
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
             </button>
           </div>
 

@@ -311,7 +311,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                       ? `${theme.accentBg} text-white`
                       : `${theme.softBg} ${theme.accentText}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
                   'font-serif font-semibold leading-snug flex-1',
