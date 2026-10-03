@@ -15,6 +15,7 @@ import { MODE_ICONS, modeKeyFor } from '../lib/sectionIcons';
 import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useClassMode } from '../contexts/ClassModeContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
 import {
   presentDeranged,
@@ -93,6 +94,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const [quizAnswered, setQuizAnswered] = React.useState(false);
   const [quizWasCorrect, setQuizWasCorrect] = React.useState<boolean | null>(null);
   const [reflectionResponse, setReflectionResponse] = React.useState('');
+  const { classMode } = useClassMode();
+  const [shownExamples, setShownExamples] = React.useState<Set<number>>(new Set());
   const [attempt, setAttempt] = React.useState(0);
 
   const reflectionNeedsWriting = exercise.type === 'reflection' && (
@@ -566,7 +569,17 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 })()}
               </div>
               <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{prompt.question}</p>
-              {isSubmitted && prompt.example && (
+              {classMode && !isSubmitted && prompt.example && !shownExamples.has(index) && (
+                <button
+                  type="button"
+                  data-class-show-example
+                  onClick={() => setShownExamples(prev => new Set(prev).add(index))}
+                  className={cn('mt-3 inline-flex min-h-9 items-center rounded-lg border border-emerald-300 bg-white px-3 font-display font-semibold text-emerald-800 hover:bg-emerald-50', isArabic ? 'text-sm' : 'text-[12px]')}
+                >
+                  {isArabic ? 'أَظْهِرِ المِثَالَ' : 'Show example'}
+                </button>
+              )}
+              {(isSubmitted || shownExamples.has(index)) && prompt.example && (
                 <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3 py-2">
                   <p className={cn('font-display font-semibold uppercase tracking-widest text-emerald-800', isArabic ? 'text-sm' : 'text-[11px]')}>
                     {isArabic ? 'مِثَالٌ عَلَى إِجَابَةٍ' : 'Example answer'}

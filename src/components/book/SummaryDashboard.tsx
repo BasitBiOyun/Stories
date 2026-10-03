@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { suggestNextBook, type NextBookReason } from '../../lib/nextBook';
 import { useMyWords } from '../../lib/myWords';
 import { MyWordsPanel } from './MyWordsPanel';
+import { ResultCard } from './ResultCard';
+import { useUserRole } from '../../contexts/UserRoleContext';
 import { SECTION_ICONS, MODE_ICONS } from '../../lib/sectionIcons';
 import { motion } from 'motion/react';
 import {
@@ -60,6 +62,8 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
   const { formatNumber, isRTL, language } = useLanguage();
   const { stats } = useStoryProgress();
   const isArabic = language === 'ar';
+  const { isTeacher } = useUserRole();
+  const [isResultOpen, setIsResultOpen] = useState(false);
 
   const currentStoryId = useMemo(() => getCurrentStoryId(bookData.id), [bookData.id]);
   const story = useMemo(() => getStoryMeta(currentStoryId) ?? storyCatalog[0], [currentStoryId]);
@@ -609,6 +613,38 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
             ))}
           </div>
         </section>
+
+        {!isTeacher && (
+          <section className="mt-6 flex flex-col gap-4 rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:flex-row sm:items-center sm:p-8" data-summary-result-card>
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full" style={{ background: visual.accentSoft, color: visual.accentBright }}>
+              <SECTION_ICONS.resultCard.icon size={22} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="font-display text-xl font-semibold">{SECTION_ICONS.resultCard[isArabic ? 'ar' : 'en']}</h3>
+              <p className="mt-1 text-sm leading-6 text-white/62">
+                {isArabic
+                  ? 'نَتَائِجُكَ فِي هٰذَا الكِتَابِ مَعَ رَمْزٍ قَصِيرٍ. أَرِهِ لِمُعَلِّمِكَ أَوِ اطْبَعْهُ.'
+                  : 'Your results for this book with a short code. Show it to your teacher or print it.'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsResultOpen(true)}
+              data-result-card-open
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+              style={{ background: visual.summaryButton }}
+            >
+              {isArabic ? 'افْتَحِ البِطَاقَةَ' : 'Open my card'}
+            </button>
+            <ResultCard
+              isOpen={isResultOpen}
+              onClose={() => setIsResultOpen(false)}
+              bookData={bookData}
+              storyId={currentStoryId}
+              level={bookData.level}
+            />
+          </section>
+        )}
 
         {bookWords.length > 0 && (
           <section className="mt-6 flex flex-col gap-4 rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:flex-row sm:items-center sm:p-8" data-summary-my-words>

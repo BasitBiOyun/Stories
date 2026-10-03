@@ -16,6 +16,7 @@ import { useUserRole } from '../../contexts/UserRoleContext';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { LevelTest, readLevelTestResult } from './LevelTest';
 import { MyWordsPanel } from '../book/MyWordsPanel';
+import { CheckResultCode } from './CheckResultCode';
 import { useMyWords } from '../../lib/myWords';
 import { firstOpenBookAt } from '../../lib/nextBook';
 import { InstallAppButton } from '../ui/InstallAppButton';
@@ -53,7 +54,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
 
   const { language, t, isRTL, formatNumber } = useLanguage();
-  const { isSelfLearner } = useUserRole();
+  const { isSelfLearner, isTeacher } = useUserRole();
+  const [isCheckCodeOpen, setIsCheckCodeOpen] = useState(false);
   const [isLevelTestOpen, setIsLevelTestOpen] = useState(false);
   const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
   const [suggestedLevel, setSuggestedLevel] = useState<Level | null>(() => readLevelTestResult()?.level ?? null);
@@ -357,6 +359,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                   </div>
                 </div>
               </motion.button>
+            )}
+            {isTeacher && (
+              <div className="rounded-2xl bg-white/[0.045] p-4 text-start" data-teacher-tools-card>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
+                    <SECTION_ICONS.checkCode.icon size={18} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{SECTION_ICONS.checkCode[language === 'ar' ? 'ar' : 'en']}</p>
+                    <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">
+                      {language === 'ar' ? 'يُظْهِرُ الطَّالِبُ بِطَاقَةَ نَتِيجَتِهِ فِي آخِرِ الكِتَابِ. اكْتُبْ رَمْزَهَا هُنَا.' : 'Students show a result card at the end of each book. Type its code here.'}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setIsCheckCodeOpen(true)}
+                      className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                      data-check-code-open
+                    >
+                      {language === 'ar' ? 'تَحَقَّقْ مِنْ رَمْزٍ' : 'Check a code'}
+                      <ArrowRight size={14} mirrored={isRTL} />
+                    </button>
+                  </div>
+                </div>
+              </div>
             )}
             {isSelfLearner && (
               <div className="rounded-2xl bg-white/[0.045] p-4 text-start" data-self-learner-card>
@@ -806,6 +832,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
         }}
       />
       <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
+      <CheckResultCode isOpen={isCheckCodeOpen} onClose={() => setIsCheckCodeOpen(false)} />
 
       <footer className="mx-auto w-full max-w-[1500px] px-5 pb-10 text-center sm:px-8 lg:px-12">
         <button

@@ -2,12 +2,13 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
 import { Play, Pause, Volume2, VolumeX, Info, Rocket, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
-import { PageData, Hotspot, Exercise } from '../../types';
+import { PageData, Hotspot, Exercise, TeacherGuideSection } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
 import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
 import { BeforeYouReadPanel, GroupTaskPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
+import { LessonCard } from './LessonCard';
 import { cn } from '../../lib/utils';
 import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
@@ -373,7 +374,8 @@ export const StoryPage = ({
   isDyslexic,
   fontSize,
   level,
-  collectionId = 'prophets'
+  collectionId = 'prophets',
+  lessonSection,
 }: { 
   page: PageData; 
   allPages: PageData[];
@@ -382,6 +384,8 @@ export const StoryPage = ({
   fontSize: number;
   level: string;
   collectionId?: string;
+  /** The Teacher Guide section for this chapter; given only to teachers. */
+  lessonSection?: TeacherGuideSection;
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
   const { stats, trackExerciseComplete, trackChapterVisit, trackAudioChapter } = useStoryProgress();
@@ -398,6 +402,7 @@ export const StoryPage = ({
   // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
   const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
   const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
+  const [isLessonCardOpen, setIsLessonCardOpen] = useState(false);
   // First story page on this device: a three-step tour once the page has settled.
   const [isTourActive, setIsTourActive] = useState(false);
   useEffect(() => {
@@ -1161,7 +1166,8 @@ export const StoryPage = ({
         },
       });
     }
-    if (steps.length < 2) return null;
+    if (steps.length < 2 && !lessonSection) return null;
+    const LessonIcon = SECTION_ICONS.lessonCard.icon;
     return (
       <ol className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
         {steps.map(step => {
@@ -1188,6 +1194,19 @@ export const StoryPage = ({
             </li>
           );
         })}
+        {lessonSection && (
+          <li className="flex">
+            <button
+              type="button"
+              onClick={() => setIsLessonCardOpen(true)}
+              data-lesson-card-open
+              className="inline-flex items-center gap-1 rounded-full border border-brand-300 bg-white px-2 py-0.5 font-display text-[11px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <LessonIcon size={12} aria-hidden="true" />
+              {SECTION_ICONS.lessonCard[language === 'ar' ? 'ar' : 'en']}
+            </button>
+          </li>
+        )}
       </ol>
     );
   };
@@ -1857,6 +1876,15 @@ export const StoryPage = ({
       </AnimatePresence>
 
       <ReaderTour active={isTourActive} onFinish={() => setIsTourActive(false)} />
+      {lessonSection && (
+        <LessonCard
+          isOpen={isLessonCardOpen}
+          onClose={() => setIsLessonCardOpen(false)}
+          section={lessonSection}
+          groupTask={page.type === 'story' ? page.groupTask : undefined}
+          language={language}
+        />
+      )}
     </div>
   );
 };

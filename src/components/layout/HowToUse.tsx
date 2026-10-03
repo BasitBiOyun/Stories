@@ -45,7 +45,20 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
   const copy = lang === 'ar'
     ? { heading: 'كَيْفَ تَسْتَخْدِمُ هٰذَا الكِتَابَ', intro: 'لِكُلِّ قِسْمٍ رَمْزٌ وَاحِدٌ. تَرَى الرَّمْزَ نَفْسَهُ فِي التَّطْبِيقِ وَفِي الكِتَابِ المَطْبُوعِ.', close: 'إغلاق' }
     : { heading: 'How to use this book', intro: 'Each part of the book has one icon. You see the same icon in the app and in the printed book.', close: 'Close' };
-  const guide = isTeacher ? SECTION_ICONS.teacherGuide : SECTION_ICONS.selfStudy;
+  // Students see their result card with the book's end; teachers get their own group of tools.
+  const groups = isTeacher
+    ? [
+        ...GROUPS,
+        {
+          title: { en: 'For the teacher', ar: 'لِلْمُعَلِّمِ' },
+          items: [SECTION_ICONS.teacherGuide, SECTION_ICONS.lessonCard, SECTION_ICONS.classMode, SECTION_ICONS.checkCode],
+        },
+      ]
+    : GROUPS.map(group =>
+        group.title.en === 'At the end of the book'
+          ? { ...group, items: [...group.items, SECTION_ICONS.resultCard, SECTION_ICONS.selfStudy] }
+          : group,
+      );
 
   return (
     <AnimatePresence>
@@ -83,11 +96,11 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
             <p className={cn('mt-1 font-serif text-wood/65', lang === 'ar' ? 'text-base' : 'text-sm')}>{copy.intro}</p>
 
             <div className="mt-5 space-y-5">
-              {GROUPS.map(group => (
+              {groups.map(group => (
                 <section key={group.title.en}>
                   <h3 className={cn('font-display font-semibold uppercase tracking-[0.16em] text-brand-700', lang === 'ar' ? 'text-sm' : 'text-[11px]')}>{group.title[lang]}</h3>
                   <ul className="mt-2 grid gap-2 sm:grid-cols-2">
-                    {(group.title.en === 'At the end of the book' ? [...group.items, guide] : group.items).map(item => (
+                    {group.items.map(item => (
                       <li key={item.en} className="flex items-start gap-3 rounded-xl border border-brand-100 bg-white px-3 py-2.5">
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
                           <item.icon size={20} aria-hidden="true" />

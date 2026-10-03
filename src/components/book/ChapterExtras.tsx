@@ -3,6 +3,7 @@ import { Check, CheckCircle, ChevronRight, Clock } from '../ui/icons';
 import { MODE_ICONS, SECTION_ICONS } from '../../lib/sectionIcons';
 import type { BeforeYouRead, GroupTask } from '../../types';
 import { cn } from '../../lib/utils';
+import { useClassMode } from '../../contexts/ClassModeContext';
 
 const readStored = <T,>(key: string, fallback: T): T => {
   try {
@@ -47,6 +48,8 @@ const LABELS = {
     check: 'Check my guess',
     right: 'Your guess was right!',
     wrong: 'Good try. The answer is:',
+    answerIs: 'The answer is:',
+    showAnswer: 'Show the answer',
     canTitle: 'I can',
     canHint: 'How well can you do these now?',
     yes: 'Yes',
@@ -58,6 +61,8 @@ const LABELS = {
     check: 'تَحَقَّقْ مِنْ تَخْمِينِي',
     right: 'تَخْمِينُكَ صَحِيحٌ!',
     wrong: 'مُحَاوَلَةٌ جَيِّدَةٌ. الإِجَابَةُ:',
+    answerIs: 'الإِجَابَةُ:',
+    showAnswer: 'أَظْهِرِ الإِجَابَةَ',
     canTitle: 'أَسْتَطِيعُ',
     canHint: 'إِلَى أَيِّ حَدٍّ تَسْتَطِيعُ ذٰلِكَ الآنَ؟',
     yes: 'نَعَمْ',
@@ -84,6 +89,7 @@ export const BeforeYouReadPanel = ({
   const isArabic = language === 'ar';
   const { guess, checked } = state;
   const right = checked && guess === data.answer;
+  const { classMode } = useClassMode();
 
   const letters = isArabic ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
 
@@ -101,6 +107,16 @@ export const BeforeYouReadPanel = ({
           </span>
           <span className="font-semibold">{data.question}</span>
         </p>
+        {!checked && guess === null && classMode && (
+          <button
+            type="button"
+            onClick={onCheck}
+            data-class-show-answer
+            className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-brand-300 bg-white px-3 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50"
+          >
+            {L.showAnswer}
+          </button>
+        )}
         {!checked && guess !== null && (
           <button
             type="button"
@@ -162,7 +178,7 @@ export const BeforeYouReadPanel = ({
 
       {checked && (
         <p className={cn('mt-1.5', isArabic ? 'text-sm' : 'text-[13px]', right ? 'text-emerald-800' : 'text-wood/80')}>
-          <span className="font-semibold">{right ? L.right : `${L.wrong} ${data.options[data.answer]}`}</span>
+          <span className="font-semibold">{right ? L.right : `${guess === null ? L.answerIs : L.wrong} ${data.options[data.answer]}`}</span>
           {data.quote && data.quote.replace(/[.\s]+$/, '') !== data.options[data.answer].replace(/[.\s]+$/, '') && <span className={cn('ms-1.5 font-serif text-wood/60', !isArabic && 'italic')}>{isArabic ? `«${data.quote}»` : `“${data.quote}”`}</span>}
         </p>
       )}
@@ -253,7 +269,8 @@ const GROUP_LABELS = {
 export const GroupTaskPanel = ({ task, language }: { task: GroupTask; language: string }) => {
   const isArabic = language === 'ar';
   const L = isArabic ? GROUP_LABELS.ar : GROUP_LABELS.en;
-  const [open, setOpen] = useState(false);
+  const { classMode } = useClassMode();
+  const [open, setOpen] = useState(classMode);
   const GroupIcon = MODE_ICONS.group.icon;
   const SoloIcon = MODE_ICONS.individual.icon;
   const small = isArabic ? 'text-sm' : 'text-[13px]';

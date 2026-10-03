@@ -11,6 +11,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
 import { FullscreenButton } from './components/ui/FullscreenButton';
 import { UserRoleProvider } from './contexts/UserRoleContext';
+import { ClassModeProvider } from './contexts/ClassModeContext';
 import { registerServiceWorker } from './lib/pwa';
 
 const CHUNK_RELOAD_KEY = 'stories_chunk_reload_at';
@@ -41,9 +42,11 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LanguageProvider>
       <UserRoleProvider>
-        <App />
-        <FullscreenButton />
-        <ArabicUiSanitizer />
+        <ClassModeProvider>
+          <App />
+          <FullscreenButton />
+          <ArabicUiSanitizer />
+        </ClassModeProvider>
       </UserRoleProvider>
     </LanguageProvider>
   </StrictMode>,

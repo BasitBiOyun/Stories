@@ -19,7 +19,7 @@ import {
   Menu,
   X, HelpCircle } from './components/ui/icons';
 
-import { Level } from './types';
+import { Level, PageData } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
 import {
   loadSelfStudyGuideData,
@@ -60,6 +60,7 @@ import { RolePicker } from './components/layout/RolePicker';
 import { MyWordsPanel } from './components/book/MyWordsPanel';
 import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
+import { useClassMode } from './contexts/ClassModeContext';
 import { saveBookOffline } from './lib/pwa';
 
 const AppContent = () => {
@@ -69,6 +70,7 @@ const AppContent = () => {
     return code === 'stories_enar';
   });
   const { role, isTeacher } = useUserRole();
+  const { classMode, setClassMode } = useClassMode();
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -251,6 +253,16 @@ const AppContent = () => {
   const currentSelfStudyGuide = selfStudyGuideData
     ? (language === 'ar' ? selfStudyGuideData.ar : selfStudyGuideData.en)
     : null;
+
+  // The Teacher Guide section for a story chapter: matched by the chapter number in its title, else by position.
+  const lessonSectionFor = (page: PageData) => {
+    const sections = currentTeacherGuide?.content;
+    if (!sections?.length || page.type !== 'story') return undefined;
+    const storyPages = (currentBook?.pages ?? []).filter(item => item.type === 'story');
+    const chapterNo = storyPages.findIndex(item => item.id === page.id) + 1;
+    if (chapterNo < 1) return undefined;
+    return sections.find(section => Number(section.chapter.match(/\d+/)?.[0]) === chapterNo) ?? sections[chapterNo - 1];
+  };
 
   useEffect(() => {
     setTeacherGuideData(null);
@@ -739,9 +751,10 @@ const AppContent = () => {
             allPages={currentBook?.pages || []}
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
-            fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1)}
+            fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
+            lessonSection={isTeacher ? lessonSectionFor(currentPage) : undefined}
           />
         );
       case 'map':
@@ -974,6 +987,38 @@ const AppContent = () => {
                           <span className="h-4 w-4 rounded-full bg-white shadow" />
                         </span>
                       </button>
+
+                      {isTeacher && (
+                        <button
+                          type="button"
+                          onClick={() => setClassMode(!classMode)}
+                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                          aria-pressed={classMode}
+                          data-class-mode-toggle
+                        >
+                          <span className="flex items-start gap-2.5">
+                            <SECTION_ICONS.classMode.icon size={17} className="mt-0.5 shrink-0 text-parchment/80" />
+                            <span>
+                              <span className="block font-display text-[11px] font-semibold text-parchment">
+                                {SECTION_ICONS.classMode[language === 'ar' ? 'ar' : 'en']}
+                              </span>
+                              <span className="mt-0.5 block text-[11px] text-parchment/62">
+                                {language === 'ar' ? 'نَصٌّ أَكْبَرُ لِلسَّبُّورَةِ، وَالإِجَابَاتُ وَالأَمْثِلَةُ عِنْدَ الطَّلَبِ' : 'Bigger text for the board, answers and examples on demand'}
+                              </span>
+                            </span>
+                          </span>
+                          <span
+                            dir="ltr"
+                            className={cn(
+                              "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                              classMode ? themeClasses.progressBar : "bg-white/15",
+                              classMode ? "justify-end" : "justify-start"
+                            )}
+                          >
+                            <span className="h-4 w-4 rounded-full bg-white shadow" />
+                          </span>
+                        </button>
+                      )}
 
                       {canFullscreen && (
                         <button
