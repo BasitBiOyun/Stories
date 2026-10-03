@@ -112,7 +112,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     id: 'ibrahim',
     name: 'Prophet Abraham',
     nameAr: 'إبراهيم عليه السلام',
-    description: 'The search for truth, the building of the Kaaba, and unwavering faith.',
+    description: 'The search for truth, the building of the Ka’ba, and unwavering faith.',
     descriptionAr: 'البحث عن الحقيقة، وبناء الكعبة، والإيمان الراسخ.',
     image: abrahamCover,
     availableLevels: ['A2', 'B1', 'B2'],
