@@ -1,4 +1,9 @@
 import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { adamB1ChapterExtrasEn } from './en/chapterExtras';
+import { adamB1GroupTasksEn } from './en/groupTasks';
+import { adamB1ChapterExtrasAr } from './ar/chapterExtras';
+import { adamB1GroupTasksAr } from './ar/groupTasks';
 import { adamB1Pages } from './en/pages';
 import { adamB1PagesAr } from './ar/pages';
 import {
@@ -125,7 +130,7 @@ export const adamB1BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: englishPages,
+  pages: applyChapterExtras(englishPages, { ...adamB1ChapterExtrasEn, groupTasks: adamB1GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -135,7 +140,7 @@ export const adamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم عليه السلام',
   level: 'B1',
   baseFontSize: 14,
-  pages: arabicPages,
+  pages: applyChapterExtras(arabicPages, { ...adamB1ChapterExtrasAr, groupTasks: adamB1GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };

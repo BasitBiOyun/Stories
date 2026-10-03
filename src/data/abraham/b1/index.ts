@@ -1,5 +1,10 @@
 import type { BookData, PageData } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { abrahamB1ChapterExtrasEn } from './en/chapterExtras';
+import { abrahamB1GroupTasksEn } from './en/groupTasks';
+import { abrahamB1ChapterExtrasAr } from './ar/chapterExtras';
+import { abrahamB1GroupTasksAr } from './ar/groupTasks';
 import { abrahamB1Pages } from './en/pages';
 import { abrahamB1PagesAr } from './ar/pages';
 import {
@@ -157,7 +162,7 @@ export const abrahamB1BookDataEn: BookData = {
   title: 'Stories of the Prophets: Abraham (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: withPlacesLayer(buildEnglishPages(), 'abraham-b1', 'en'),
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'abraham-b1', 'en'), { ...abrahamB1ChapterExtrasEn, groupTasks: abrahamB1GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -167,7 +172,7 @@ export const abrahamB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: إبراهيم عليه السلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: withPlacesLayer(buildArabicPages(), 'abraham-b1', 'ar'),
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'abraham-b1', 'ar'), { ...abrahamB1ChapterExtrasAr, groupTasks: abrahamB1GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
