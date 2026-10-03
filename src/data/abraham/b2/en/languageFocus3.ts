@@ -4,7 +4,7 @@ import type { Exercise } from '../../../../types';
  * Abraham B2 (English) Language Focus. Each chapter follows Notice → Build → Use:
  * learners first discover what a form does in real chapter sentences, then practise
  * it in context, then use it in the chapter's reflection task. Every quoted sentence
- * comes from the English chapter text; Qur'anic verses are only read, sorted,
+ * comes from the English chapter text; Qur’anic verses are only read, sorted,
  * matched to meanings or asked about, never altered.
  */
 
@@ -958,7 +958,7 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Why “Had To”?',
       instructions: 'Read the sentences from Chapter 28. Then choose the best explanation.',
-      question: '“Abraham (pbuh) had to take Hagar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka‘ba.” What does “had to” show?',
+      question: '“Abraham (pbuh) had to take Hagar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka’ba.” What does “had to” show?',
       options: [
         'The move was necessary as part of Allah’s intention, not Abraham’s personal choice.',
         'Abraham wanted to move because he preferred the new place.',
@@ -966,7 +966,7 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
         'Abraham was not sure whether he would move.',
       ],
       correctAnswer: 0,
-      explanation: '“Had to” is the past of “must/have to”: it expresses necessity. The chapter explains where the necessity came from: “According to Allah’s intention, Hagar and Ishmael had to leave Palestine …”. “That is” then clarifies the word “temple” by naming it: the Ka‘ba.',
+      explanation: '“Had to” is the past of “must/have to”: it expresses necessity. The chapter explains where the necessity came from: “According to Allah’s intention, Hagar and Ishmael had to leave Palestine …”. “That is” then clarifies the word “temple” by naming it: the Ka’ba.',
       feedback: {
         correct: 'Correct. “Had to” shows necessity coming from Allah’s intention.',
         incorrect: 'Read the next sentences: “According to Allah’s intention …”. Is the move a wish, a habit, a doubt, or a necessity?',
@@ -978,13 +978,13 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       title: 'Linking Across Generations',
       instructions: 'Complete the lines from Chapter 28 with words from the bank. Three options are not needed.',
       question: 'Which words refer back and give a purpose across a long stretch of time?',
-      fillBlanksText: '… to reconstruct the Holy Ka‘ba [blank] was lost after Noah’s Flood … Over the years, Ishmael’s children had children; one of [blank] was Muhammad, the Prophet of Islam (pbuh). [blank] spread all over the Arabian Peninsula [blank] their grandfather Abraham (pbuh)’s message of monotheism.',
+      fillBlanksText: '… to reconstruct the Holy Ka’ba [blank] was lost after Noah’s Flood … Over the years, Ishmael’s children had children; one of [blank] was Muhammad, the Prophet of Islam (pbuh). [blank] spread all over the Arabian Peninsula [blank] their grandfather Abraham (pbuh)’s message of monotheism.',
       wordBank: ['which', 'them', 'They', 'to carry', 'who', 'it', 'for carrying'],
       correctAnswer: ['which', 'them', 'They', 'to carry'],
-      explanation: '“Which” adds background about a thing (the Ka‘ba). “One of them” picks one person from the group just mentioned (Ishmael’s descendants), and “They” keeps the same group as the subject of the next sentence. “To + verb” gives the purpose of spreading: to carry the message. “For carrying” is not used for the purpose of a person’s action.',
+      explanation: '“Which” adds background about a thing (the Ka’ba). “One of them” picks one person from the group just mentioned (Ishmael’s descendants), and “They” keeps the same group as the subject of the next sentence. “To + verb” gives the purpose of spreading: to carry the message. “For carrying” is not used for the purpose of a person’s action.',
       feedback: {
         correct: 'Correct. You kept the reference clear and gave the purpose.',
-        incorrect: 'Ask: is the Ka‘ba a person or a thing? Who is “one of …” chosen from? Which form shows purpose after a verb? Check the end of Chapter 28.',
+        incorrect: 'Ask: is the Ka’ba a person or a thing? Who is “one of …” chosen from? Which form shows purpose after a verb? Check the end of Chapter 28.',
       },
     },
     {
@@ -1602,7 +1602,7 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       formChoices: [
         {
           options: ['on', 'in', 'at'],
-          sentence: 'Father and son found the foundations of the old structure and began to build the Ka‘ba [choice] it.',
+          sentence: 'Father and son found the foundations of the old structure and began to build the Ka’ba [choice] it.',
           answer: 0,
         },
         {
@@ -1670,10 +1670,10 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
         'not just people of a chosen race or color': 'nobody excluded because of their origin',
         'coexisted with idolatry': 'lived side by side with the worship of idols',
       },
-      explanation: '“But” can mean “only” (was but the restorer = was only the restorer): it limits the claim, because the Ka‘ba “was originally built long before”. “Not just X” widens the scope to everyone. The prefix co- in “coexisted” means “together”: the two beliefs were present in the same region at the same time.',
+      explanation: '“But” can mean “only” (was but the restorer = was only the restorer): it limits the claim, because the Ka’ba “was originally built long before”. “Not just X” widens the scope to everyone. The prefix co- in “coexisted” means “together”: the two beliefs were present in the same region at the same time.',
       feedback: {
         correct: 'Correct. You read the limiting, widening and coexistence expressions.',
-        incorrect: 'Find each expression in Chapter 35. Which one limits Abraham’s role, which widens who the Ka‘ba is for, and which shows two things existing together?',
+        incorrect: 'Find each expression in Chapter 35. Which one limits Abraham’s role, which widens who the Ka’ba is for, and which shows two things existing together?',
       },
     },
     {
@@ -1681,15 +1681,15 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'How Far Does the Evidence Go?',
       instructions: 'Read the sentence from Chapter 35. Then choose the statement that keeps its scope.',
-      question: '“Reconstruction of the Ka‘ba and the call to pilgrimage (see Surah al-Hajj: 27) are clear evidence that Prophet Abraham (pbuh) established the religion and invited those living in that region at that time to embrace it.” Which statement keeps the scope of this claim?',
+      question: '“Reconstruction of the Ka’ba and the call to pilgrimage (see Surah al-Hajj: 27) are clear evidence that Prophet Abraham (pbuh) established the religion and invited those living in that region at that time to embrace it.” Which statement keeps the scope of this claim?',
       options: [
         'The reconstruction and the call to pilgrimage are presented as evidence of Abraham’s mission in that region at that time.',
         'They prove that everyone in the region accepted Abraham’s religion.',
-        'They prove that Abraham built the first Ka‘ba.',
+        'They prove that Abraham built the first Ka’ba.',
         'The chapter says there is no evidence for Abraham’s mission.',
       ],
       correctAnswer: 0,
-      explanation: 'The claim is limited in place and time: “those living in that region at that time”. It says Abraham invited people, not that everyone accepted. The chapter also calls Abraham “the restorer” of an older structure, so the evidence does not show he built the first Ka‘ba.',
+      explanation: 'The claim is limited in place and time: “those living in that region at that time”. It says Abraham invited people, not that everyone accepted. The chapter also calls Abraham “the restorer” of an older structure, so the evidence does not show he built the first Ka’ba.',
       feedback: {
         correct: 'Correct. This statement keeps the limits of place, time and invitation.',
         incorrect: 'Check the limits in the sentence: which region, which time, and did people accept or were they invited? Also compare the first sentence of the chapter.',

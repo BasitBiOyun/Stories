@@ -11,7 +11,7 @@ export const meccaB1StoryMapLayout: StoryMapLayout = {
   routes: [
     // Chapter 3: the Jurhum tribe from Yemen settles in Mecca. The book gives no route; the line is only a guide.
     { id: 'jurhum', points: [[44.2, 15.3], [43.1, 16.6], [42.3, 17.9], [41.2, 19.4], [40.3, 20.7], [39.83, 21.42]], start: 2.6, end: 3, tone: 'journey' },
-    // Chapter 4: Abraham (as) returns to Palestine.
+    // Chapter 4: Abraham (pbuh) returns to Palestine.
     { id: 'abraham', points: [[39.83, 21.42], [39.3, 24.2], [38.0, 27.3], [36.6, 29.5], [35.6, 30.9], [35.2, 31.7]], start: 3.6, end: 4, tone: 'journey' },
     // Chapter 5: merchants travel to Byzantium, Yemen and Iraq. The book does not say how they reached Ethiopia,
     // so Ethiopia is joined only by a thread in the chapter 5 scene.

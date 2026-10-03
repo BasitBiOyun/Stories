@@ -354,7 +354,7 @@ const entities = [
     id: "mecca-pre-islamic-arabs", kind: "people", tr: "Araplar",
     aliases: { en: ["Arabs"], ar: ["كان العرب","قبول العرب","عرب الجاهلية","لعربي على أعجمي"] },
     copy: {
-      en: { title: "Arabs", kindLabel: "People", periodLabel: "Before Islam", summary: "The Arabs are the people of the Arabian Peninsula. Before Islam, they lived in tribes, and most of them worshipped idols.", more: "Their language, Arabic, is the language of the Quran." },
+      en: { title: "Arabs", kindLabel: "People", periodLabel: "Before Islam", summary: "The Arabs are the people of the Arabian Peninsula. Before Islam, they lived in tribes, and most of them worshipped idols.", more: "Their language, Arabic, is the language of the Qur’an." },
       ar: { title: "الْعَرَبُ", kindLabel: "شَعْبٌ", periodLabel: "قَبْلَ الْإِسْلَامِ", summary: "الْعَرَبُ هُمْ أَهْلُ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. وَقَبْلَ الْإِسْلَامِ كَانُوا يَعِيشُونَ فِي قَبَائِلَ، وَكَانَ أَكْثَرُهُمْ يَعْبُدُونَ الْأَصْنَامَ.", more: "لُغَتُهُمُ الْعَرَبِيَّةُ هِيَ لُغَةُ الْقُرْآنِ الْكَرِيمِ." },
     },
     focus: medFeature('arabian-peninsula', 23, 45, 1),
@@ -365,7 +365,7 @@ const entities = [
     id: "mecca-hanifs", kind: "people", tr: "Hanîfler",
     aliases: { en: ["Hanifs"], ar: ["حنفاء"] },
     copy: {
-      en: { title: "Hanifs", kindLabel: "Believers in one God", periodLabel: "Before Islam", summary: "The Hanifs were a few people before Islam who followed the old religion of Abraham (pbuh). They believed only in Allah and did not worship idols.", more: "The Quran calls Abraham (pbuh) a hanif." },
+      en: { title: "Hanifs", kindLabel: "Believers in one God", periodLabel: "Before Islam", summary: "The Hanifs were a few people before Islam who followed the old religion of Abraham (pbuh). They believed only in Allah and did not worship idols.", more: "The Qur’an calls Abraham (pbuh) a hanif." },
       ar: { title: "الْحُنَفَاءُ", kindLabel: "مُوَحِّدُونَ", periodLabel: "قَبْلَ الْإِسْلَامِ", summary: "الْحُنَفَاءُ أَشْخَاصٌ قَلِيلُونَ قَبْلَ الْإِسْلَامِ، اتَّبَعُوا دِينَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ الْقَدِيمَ. فَكَانُوا يُؤْمِنُونَ بِاللَّهِ وَحْدَهُ، وَلَا يَعْبُدُونَ الْأَصْنَامَ.", more: "وَصَفَ الْقُرْآنُ الْكَرِيمُ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ بِأَنَّهُ كَانَ حَنِيفًا." },
     },
     focus: medFeature('mecca-area', 21.42, 39.83, 1),

@@ -35,15 +35,15 @@ export const abrahamB2StoryMapCopyEn: StoryMapCopy = {
       name: 'Palestine',
       kind: 'Region',
       text: 'After Egypt, Abraham (pbuh) traveled to Palestine and settled there, calling people to Allah and judging fairly between them. Years later, he returned to Palestine from Mecca. Before his death, he left Palestine to his son Isaac, and he died there.',
-      teacherNote: 'Ishmael was born when Abraham (pbuh) was an old man; the book does not say where, though chapter 28 says Hagar and Ishmael had to leave Palestine. In chapter 33 the return to Palestine and the reunion with Ishmael are told briefly; chapter 34 then says he traveled to Mecca to build the Ka‘ba.',
+      teacherNote: 'Ishmael was born when Abraham (pbuh) was an old man; the book does not say where, though chapter 28 says Hagar and Ishmael had to leave Palestine. In chapter 33 the return to Palestine and the reunion with Ishmael are told briefly; chapter 34 then says he traveled to Mecca to build the Ka’ba.',
       question: 'Which son received Palestine, and which son received Mecca?',
     },
     mecca: {
       name: 'Mecca',
       kind: 'Valley and city',
-      text: 'Abraham (pbuh) walked through cultivated land, desert and mountains to an uncultivated valley near the hills of Safa and Marwa. There, Zamzam water flowed for Hagar and Ishmael, and it still flows in the city of Mecca today. Years later, father and son built the Ka‘ba on the foundations of the old structure. Before his death, Abraham (pbuh) left Mecca to Ishmael.',
+      text: 'Abraham (pbuh) walked through cultivated land, desert and mountains to an uncultivated valley near the hills of Safa and Marwa. There, Zamzam water flowed for Hagar and Ishmael, and it still flows in the city of Mecca today. Years later, father and son built the Ka’ba on the foundations of the old structure. Before his death, Abraham (pbuh) left Mecca to Ishmael.',
       teacherNote: 'While building, Abraham (pbuh) stood over the stone of Al-Maqam (chapter 34). Hagar’s running between Safa and Marwa is remembered in Hajj. Chapter 35 adds that Ishmael taught his father’s faith in the Hijaz region.',
-      question: 'Why does the book call the Ka‘ba the oldest place of worship?',
+      question: 'Why does the book call the Ka’ba the oldest place of worship?',
     },
     yemen: {
       name: 'Yemen',
@@ -64,7 +64,7 @@ export const abrahamB2StoryMapCopyEn: StoryMapCopy = {
     6: 'To Mecca',
     7: 'Zamzam, Jurham',
     8: 'Back to Palestine',
-    9: 'Ka‘ba, legacy',
+    9: 'Ka’ba, legacy',
   },
   legend: {
     'route:harran': 'To Harran (some sources)',

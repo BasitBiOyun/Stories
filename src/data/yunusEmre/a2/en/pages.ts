@@ -137,7 +137,7 @@ Yunus served his teacher Taptuk Emre in this way for exactly forty years. Taptuk
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F05_Chapter_6_The_Door_of_Honesty.mp3?alt=media&token=ae9043fe-3949-413b-8258-3821a1d649e0',
     content: `Yunus replied, "My teacher, this place is a door of honesty and goodness. Not even a crooked piece of wood can enter here. And a dishonest and insincere person cannot enter this place, either."
 
-Nature and living alone helped the dervish think deeply about himself. During this time, Yunus made his heart purer. He learned the special language of all creatures. He looked at nature and found a lesson from everything in it, like reading the Quran. Also, the lessons and talks at the dervish house helped him with this learning. For Yunus, woodcutting in nature helped him become a better person.
+Nature and living alone helped the dervish think deeply about himself. During this time, Yunus made his heart purer. He learned the special language of all creatures. He looked at nature and found a lesson from everything in it, like reading the Qur’an. Also, the lessons and talks at the dervish house helped him with this learning. For Yunus, woodcutting in nature helped him become a better person.
 
 He first learned to be alone with Allah in the mountains. The mountains are quiet and far from people. There are trees, animals, and rivers. If you look closely, you find a deeper meaning in everything in nature. Everything tells a story.`,
     vocabulary: [

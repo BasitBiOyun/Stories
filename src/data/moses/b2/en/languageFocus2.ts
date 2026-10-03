@@ -3,7 +3,7 @@ import type { Exercise } from '../../../../types';
 /**
  * Manually authored B2 Language Focus for Moses, chapters 7–12.
  * Notice → Build → Use; every quoted sentence comes from the English chapter.
- * Qur'anic quotations are only read, matched or asked about, never altered.
+ * Qur’anic quotations are only read, matched or asked about, never altered.
  */
 
 const reflection = (id: string, title: string, prompts: string[], explanation: string): Exercise => ({

@@ -176,7 +176,7 @@ const entities = [
   }),
   defineEntity({
     id: "abraham-kaaba-abraham", kind: "landmark", tr: "Kâbe",
-    aliases: { en: ["Ka’ba","Ka‘ba","House of Allah"], ar: ["الكعبة","بيت الله"] },
+    aliases: { en: ["Ka’ba","Ka’ba","House of Allah"], ar: ["الكعبة","بيت الله"] },
     copy: {
       en: { title: "The Ka’ba", kindLabel: "Holy building", periodLabel: "Mecca · Western Arabia", summary: "The Ka’ba, the House of Allah, is the holy building in Mecca. In the story, Abraham (pbuh) and Ishmael (pbuh) built it again on its old foundations.", more: "Muslims all over the world face the Ka’ba when they pray." },
       ar: { title: "الْكَعْبَةُ", kindLabel: "بَيْتٌ مُقَدَّسٌ", periodLabel: "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ", summary: "الْكَعْبَةُ هِيَ بَيْتُ اللهِ الْحَرَامُ فِي مَكَّةَ. وَفِي الْقِصَّةِ بَنَاهَا إِبْرَاهِيمُ وَإِسْمَاعِيلُ عَلَيْهِمَا السَّلَامُ مِنْ جَدِيدٍ عَلَى أُسُسِهَا الْقَدِيمَةِ.", more: "وَيَتَّجِهُ إِلَيْهَا الْمُسْلِمُونَ فِي كُلِّ الْعَالَمِ عِنْدَ الصَّلَاةِ؛ فَهِيَ قِبْلَتُهُمْ." },
@@ -189,7 +189,7 @@ const entities = [
     id: "abraham-nimrod", kind: "person", tr: "Nemrut",
     aliases: { en: ["Nimrod"], ar: ["نمرود"] },
     copy: {
-      en: { title: "Nimrod", kindLabel: "King", periodLabel: "Kingdom of Babylon", summary: "In the story, Nimrod was the king of Babylon. He argued with Abraham (pbuh) about Allah, but he could not answer him.", more: "The Qur'an tells about this argument, but it does not give the king's name." },
+      en: { title: "Nimrod", kindLabel: "King", periodLabel: "Kingdom of Babylon", summary: "In the story, Nimrod was the king of Babylon. He argued with Abraham (pbuh) about Allah, but he could not answer him.", more: "The Qur’an tells about this argument, but it does not give the king's name." },
       ar: { title: "نُمْرُودُ", kindLabel: "مَلِكٌ", periodLabel: "مَمْلَكَةُ بَابِلَ", summary: "فِي الْقِصَّةِ كَانَ نُمْرُودُ مَلِكَ بَابِلَ. وَقَدْ جَادَلَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ فِي رَبِّهِ، فَلَمْ يَجِدْ جَوَابًا.", more: "وَيَذْكُرُ الْقُرْآنُ الْكَرِيمُ هَذَا الْجِدَالَ، وَلَكِنَّهُ لَا يَذْكُرُ اسْمَ الْمَلِكِ." },
     },
     focus: medPoint(32.54, 44.42, CITY_ZOOM),
@@ -211,7 +211,7 @@ const entities = [
     id: "abraham-hanifs", kind: "people", tr: "Hanifler",
     aliases: { en: ["hanîfs"], ar: ["حنفاء"] },
     copy: {
-      en: { title: "The hanîfs", kindLabel: "Believers in one God", periodLabel: "The Hijaz · before Islam", summary: "The hanîfs were a group of people in the Hijaz before Islam. They believed in one God and stayed away from idols.", more: "In the Qur'an, Abraham (pbuh) is called a hanîf." },
+      en: { title: "The hanîfs", kindLabel: "Believers in one God", periodLabel: "The Hijaz · before Islam", summary: "The hanîfs were a group of people in the Hijaz before Islam. They believed in one God and stayed away from idols.", more: "In the Qur’an, Abraham (pbuh) is called a hanîf." },
       ar: { title: "الْحُنَفَاءُ", kindLabel: "مُؤْمِنُونَ بِإِلَهٍ وَاحِدٍ", periodLabel: "الْحِجَازُ قَبْلَ الْإِسْلَامِ", summary: "الْحُنَفَاءُ جَمَاعَةٌ مِنَ النَّاسِ كَانُوا فِي الْحِجَازِ قَبْلَ الْإِسْلَامِ. وَكَانُوا يُؤْمِنُونَ بِاللهِ الْوَاحِدِ، وَيَبْتَعِدُونَ عَنِ الْأَصْنَامِ.", more: "وَيَصِفُ الْقُرْآنُ الْكَرِيمُ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ بِأَنَّهُ كَانَ حَنِيفًا." },
     },
     focus: medFeature('hijaz', 24.2, 39, 1),

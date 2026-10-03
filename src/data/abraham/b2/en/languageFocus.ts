@@ -4,7 +4,7 @@ import type { Exercise } from '../../../../types';
  * Abraham B2 (English) Language Focus. Each chapter follows Notice → Build → Use:
  * learners first discover what a form does in real chapter sentences, then practise
  * it in context, then use it in the chapter's reflection task. Every quoted sentence
- * comes from the English chapter text; Qur'anic verses are only read, sorted,
+ * comes from the English chapter text; Qur’anic verses are only read, sorted,
  * matched to meanings or asked about, never altered.
  */
 
@@ -36,7 +36,7 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       title: 'Define, Add, Expand',
       instructions: 'Complete the lines from Chapter 1 with words from the bank. Two options are not needed.',
       question: 'Which expressions define an idea, add a new role, and announce a fuller account?',
-      fillBlanksText: 'Monotheistic belief [blank] bearing witness that there is no god but Allah. … Abraham (pbuh) is [blank] a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). … The Qur’an presents [blank] his discovery of the oneness of Allah (Tawheed) in the middle of an idol-worshipping nation.',
+      fillBlanksText: 'Monotheistic belief [blank] bearing witness that there is no god but Allah. … Abraham (pbuh) is [blank] a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). … The Qur’an presents [blank] his discovery of the oneness of Allah (Tawhid) in the middle of an idol-worshipping nation.',
       wordBank: ['means', 'also', 'in detail', 'means that', 'instead'],
       correctAnswer: ['means', 'also', 'in detail'],
       explanation: '“X means + -ing form” unpacks an abstract term into an action. (“Means that” needs a full clause with its own subject, not an -ing form.) “Also” adds a second role to the earlier description without replacing it; “instead” would cancel the first role. “Presents in detail” tells the reader that the Qur’an gives a fuller account, not just a short mention.',
@@ -106,7 +106,7 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
       question: 'How does Chapter 2 build meaning through definitions?',
       matchingHeadings: { left: 'Term from the chapter', right: 'How the chapter defines it' },
       matchingPairs: [
-        { left: 'Tawheed', right: 'the belief that Allah is One and He has no partners' },
+        { left: 'Tawhid', right: 'the belief that Allah is One and He has no partners' },
         { left: 'a hanîf', right: 'a monotheist who is not a Jew, a Christian, or an idolater' },
         { left: 'Hanifism', right: 'the belief in the oneness of Allah taught by Prophet Abraham (pbuh)' },
         {
@@ -115,12 +115,12 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: {
-        Tawheed: 'the belief that Allah is One and He has no partners',
+        Tawhid: 'the belief that Allah is One and He has no partners',
         'a hanîf': 'a monotheist who is not a Jew, a Christian, or an idolater',
         Hanifism: 'the belief in the oneness of Allah taught by Prophet Abraham (pbuh)',
         'the acts of worship': 'the only point where Abraham’s monotheism and the Islam taught by Muhammad differ',
       },
-      explanation: 'The chapter defines its terms in different ways: with a dash (“Tawheed—the belief that …”), with a relative clause (“a monotheist who is not …”), and with a participle phrase (“the belief … taught by Prophet Abraham”). Its last sentence limits the difference with “only”: the difference is “only in the acts of worship”. A hanîf is a person; Hanifism is the belief system.',
+      explanation: 'The chapter defines its terms in different ways: with a dash (“Tawhid—the belief that …”), with a relative clause (“a monotheist who is not …”), and with a participle phrase (“the belief … taught by Prophet Abraham”). Its last sentence limits the difference with “only”: the difference is “only in the acts of worship”. A hanîf is a person; Hanifism is the belief system.',
       feedback: {
         correct: 'Correct. You separated the person (a hanîf) from the belief (Hanifism) and read the limiting “only”.',
         incorrect: 'Find each term in Chapter 2 and read what comes straight after it: a dash, “who …”, or “taught by …”. The last sentence of the chapter says where the difference lies.',

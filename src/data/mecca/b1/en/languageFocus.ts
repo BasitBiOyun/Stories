@@ -55,8 +55,8 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
           answers: ['treated people from poor backgrounds', 'treated poor people', 'treated those from poor backgrounds', 'treated people from a poor background'],
         },
         {
-          source: 'The Quran describes this period as a time of ignorance and cruelty.',
-          frame: 'In the Quran, this period [blank] a time of ignorance and cruelty.',
+          source: 'The Qur’an describes this period as a time of ignorance and cruelty.',
+          frame: 'In the Qur’an, this period [blank] a time of ignorance and cruelty.',
           answers: ['is described as', 'was described as'],
         },
       ],
@@ -115,14 +115,14 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       instructions: 'Tap the pieces to rebuild this sentence from Chapter 2.',
       question: 'Where does “as” go when we describe one idea in terms of another?',
       sentenceChunks: [
-        'Prophet Muhammad (as)',
+        'Prophet Muhammad (pbuh)',
         'described',
         'Islam',
         'as the opposite',
         'of barbarism.',
       ],
       correctAnswer: null,
-      explanation: 'The pattern is describe + thing + as + description: “described Islam as the opposite of barbarism”. The same pattern appears in Chapter 1: “The Quran describes this period as a time of ignorance and cruelty.” Here the pattern builds a contrast, because the chapter has just called the Jahiliyyah “an age of barbarism”.',
+      explanation: 'The pattern is describe + thing + as + description: “described Islam as the opposite of barbarism”. The same pattern appears in Chapter 1: “The Qur’an describes this period as a time of ignorance and cruelty.” Here the pattern builds a contrast, because the chapter has just called the Jahiliyyah “an age of barbarism”.',
       feedback: {
         correct: 'Well done. The thing being described comes straight after “described”, and “as” introduces the description.',
         incorrect: 'Start with the person, then “described”, then what he described, then “as …”. Check the first paragraph of Chapter 2.',
@@ -136,8 +136,8 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you move a “when” clause to the front and unpack a definition that sits inside a sentence?',
       transformItems: [
         {
-          source: 'This era ended when the first revelation of the Quran began in 610 CE.',
-          frame: 'When the first revelation of the Quran began in 610 CE, [blank].',
+          source: 'This era ended when the first revelation of the Qur’an began in 610 CE.',
+          frame: 'When the first revelation of the Qur’an began in 610 CE, [blank].',
           answers: ['this era ended', 'the era ended', 'the Jahiliyyah ended', 'the Jahiliyyah era ended', 'the Jahiliyyah period ended'],
         },
         {

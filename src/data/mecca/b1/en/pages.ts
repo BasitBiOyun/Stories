@@ -20,7 +20,7 @@ export const meccaB1Pages: PageData[] = [
 
 Before Islam, Mecca was led by a council of rich merchants. For this reason, the city was known as the Republic of Merchants. Powerful people controlled many parts of life, while poor and weak people lived in misery.
 
-Society was not fair, and people from poor backgrounds were often treated badly. The Quran describes this period as a time of ignorance and cruelty. Violence, hatred, and fighting were common in the social life of the time.`,
+Society was not fair, and people from poor backgrounds were often treated badly. The Qur’an describes this period as a time of ignorance and cruelty. Violence, hatred, and fighting were common in the social life of the time.`,
     [
       { word: 'Jahiliyyah', definition: 'The period before Islam, also called the Age of Ignorance.' },
       { word: 'chaotic', definition: 'Very disordered and difficult to control.' },
@@ -36,11 +36,11 @@ Society was not fair, and people from poor backgrounds were often treated badly.
   story(2, 'The Age of Ignorance',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Fimages%2Fmecca_b1_ch2-clean.png?alt=media&token=30b4e38f-3e89-4444-a124-90d27e776d87',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F01_Chapter_2_The_Age_of_Ignorance.mp3?alt=media&token=294fb1a4-f413-4f58-b941-8e85e7e710c5',
-    `The Jahiliyyah was an age of barbarism. People did not truly know Allah, and many people did not have justice, order, and peace in their personal and social lives. Prophet Muhammad (as) described Islam as the opposite of barbarism. This era ended when the first revelation of the Quran began in 610 CE.
+    `The Jahiliyyah was an age of barbarism. People did not truly know Allah, and many people did not have justice, order, and peace in their personal and social lives. Prophet Muhammad (pbuh) described Islam as the opposite of barbarism. This era ended when the first revelation of the Qur’an began in 610 CE.
 
 To understand the Jahiliyyah period, we must first talk about Mecca. Mecca is the holy city of Islam. Allah chose this city to be the location of His House, the Holy Ka’ba.
 
-Prophet Muhammad (as) was also born in Mecca. He spent 52 years of his life in this city and began to teach the message of Islam here. The Qiblah, the direction Muslims face during salah, is also located in Mecca.`,
+Prophet Muhammad (pbuh) was also born in Mecca. He spent 52 years of his life in this city and began to teach the message of Islam here. The Qiblah, the direction Muslims face during salah, is also located in Mecca.`,
     [
       { word: 'barbarism', definition: 'Cruel and uncivilized behavior.' },
       { word: 'revelation', definition: 'A message revealed by Allah to a prophet.' },
@@ -49,18 +49,18 @@ Prophet Muhammad (as) was also born in Mecca. He spent 52 years of his life in t
       { word: 'Qiblah', definition: 'The direction Muslims face during salah.' },
     ],
     [
-      { id: 'mecca-b1-en-2-1', x: 37, y: 64, title: 'Revelation', description: 'The Jahiliyyah era ended when the first revelation of the Quran began in 610 CE.' },
+      { id: 'mecca-b1-en-2-1', x: 37, y: 64, title: 'Revelation', description: 'The Jahiliyyah era ended when the first revelation of the Qur’an began in 610 CE.' },
       { id: 'mecca-b1-en-2-2', x: 66, y: 34, title: 'The Holy Ka’ba', description: 'Allah chose Mecca to be the location of His House, the Holy Ka’ba.' },
     ]
   ),
   story(3, 'The Beginning of Mecca',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Fimages%2Fmecca_b1_ch3-clean.png?alt=media&token=07bbbc1c-3b99-40a0-bb88-ab033468083b',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F02_Chapter_3_The_Beginning_of_Mecca.mp3?alt=media&token=cb81d6a2-ea78-4ac0-8ec4-dcce50223e2e',
-    `The Quran describes Mecca as a valley where no crops grow. City life began there with the building of the Ka’ba. When Prophet Abraham (as) brought his son Ishmael (as) and his wife Hagar to the city, Zamzam water had not been discovered yet. There was no population in the land.
+    `The Qur’an describes Mecca as a valley where no crops grow. City life began there with the building of the Ka’ba. When Prophet Abraham (pbuh) brought his son Ishmael (pbuh) and his wife Hagar to the city, Zamzam water had not been discovered yet. There was no population in the land.
 
-After the discovery of Zamzam water, the Jurhumites from Yemen settled in Mecca. Ishmael (as) learned Arabic from them. Later, when Ishmael (as) grew up, Abraham (as) came to the city to reconstruct the Holy Ka’ba with his son.
+After the discovery of Zamzam water, the Jurhumites from Yemen settled in Mecca. Ishmael (pbuh) learned Arabic from them. Later, when Ishmael (pbuh) grew up, Abraham (pbuh) came to the city to reconstruct the Holy Ka’ba with his son.
 
-Arabs accepted the religion of Abraham (as) and Ishmael (as), so the Ka’ba became a pilgrimage site. This helped the city grow rapidly.`,
+Arabs accepted the religion of Abraham (pbuh) and Ishmael (pbuh), so the Ka’ba became a pilgrimage site. This helped the city grow rapidly.`,
     [
       { word: 'valley', definition: 'Low land between hills or mountains.' },
       { word: 'crops', definition: 'Plants grown for food or other use.' },
@@ -70,15 +70,15 @@ Arabs accepted the religion of Abraham (as) and Ishmael (as), so the Ka’ba bec
     ],
     [
       { id: 'mecca-b1-en-3-1', x: 27, y: 54, title: 'Zamzam', description: 'After the discovery of Zamzam water, the Jurhumites from Yemen settled in Mecca.' },
-      { id: 'mecca-b1-en-3-2', x: 73, y: 35, title: 'Abraham and Ishmael', description: 'Abraham (as) came to Mecca to reconstruct the Holy Ka’ba with his son Ishmael (as).' },
+      { id: 'mecca-b1-en-3-2', x: 73, y: 35, title: 'Abraham and Ishmael', description: 'Abraham (pbuh) came to Mecca to reconstruct the Holy Ka’ba with his son Ishmael (pbuh).' },
     ]
   ),
   story(4, 'The Ka’ba and Trade',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Fimages%2Fmecca_b1_ch4-clean.png?alt=media&token=0400d1bb-ab36-40c2-9ef7-cffe6a12887f',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F03_Chapter_4_The_Ka%E2%80%99ba_and_Trade.mp3?alt=media&token=9a4a3cd1-c263-4fa2-beb2-d96f6e78b22f',
-    `After Abraham (as) completed his mission and invited people for pilgrimage, he returned to Palestine. Later, the Khuza’a tribe came to Mecca, defeated the Jurhum tribe, and took control of the city.
+    `After Abraham (pbuh) completed his mission and invited people for pilgrimage, he returned to Palestine. Later, the Khuza’a tribe came to Mecca, defeated the Jurhum tribe, and took control of the city.
 
-Under Khuza’a rule, people forgot the religion of Abraham (as) and started worshipping many idols. Later, in the 5th century, the Quraysh tribe took over the city and the Ka’ba.
+Under Khuza’a rule, people forgot the religion of Abraham (pbuh) and started worshipping many idols. Later, in the 5th century, the Quraysh tribe took over the city and the Ka’ba.
 
 Because people could not farm in this dry land, they made money through trade. When Islam began, the Byzantine and Sassanid empires were powerful states. They traded with both the north and south of Arabia. India, Indonesia, and China were also important for trade because they produced many different goods.`,
     [
@@ -98,7 +98,7 @@ Because people could not farm in this dry land, they made money through trade. W
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F04_Chapter_5_The_Trade_Routes.mp3?alt=media&token=236486a7-c3f0-415c-aabe-1584a1da8bb8',
     `Because Mecca was in the middle of important trade routes, it became a busy and wealthy city. From the early 6th century, Mecca became a major trading center.
 
-Hashim ibn Abd Manaf, Prophet Muhammad’s (as) great-grandfather, helped grow Mecca’s economy. He and the Quraysh leaders made special trade agreements with other tribes and nations. These agreements allowed merchants to travel safely and trade in places like Byzantium, Yemen, Iraq, and Ethiopia.
+Hashim ibn Abd Manaf, Prophet Muhammad’s (pbuh) great-grandfather, helped grow Mecca’s economy. He and the Quraysh leaders made special trade agreements with other tribes and nations. These agreements allowed merchants to travel safely and trade in places like Byzantium, Yemen, Iraq, and Ethiopia.
 
 The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer. In these months, people focused on worship, showed respect, and stayed away from fighting. Because of this safe atmosphere, more people could visit the city to perform Hajj.`,
     [
@@ -140,7 +140,7 @@ At the beginning of the 7th century, the Quraysh tribe controlled the most impor
 
 While the rich lived in luxury with gold plates and silver cups, the poor struggled to survive. For the wealthy Quraysh, money and tribe were the most important values.
 
-When Prophet Muhammad (as) started calling people to Islam, some rich leaders asked why Muhammad should be the leader while they were rich and important. Orphans and weak people were treated badly, and powerful people often took their property by force.`,
+When Prophet Muhammad (pbuh) started calling people to Islam, some rich leaders asked why Muhammad should be the leader while they were rich and important. Orphans and weak people were treated badly, and powerful people often took their property by force.`,
     [
       { word: 'social classes', definition: 'Groups in society divided by wealth, status, or power.' },
       { word: 'debt', definition: 'Money that a person owes and must pay back.' },
@@ -198,19 +198,19 @@ Poets were also very important in social life. Poetry kept tribal history alive,
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F09_Chapter_10_Religious_Life_in_Mecca.mp3?alt=media&token=0dbde837-40f1-447b-a0b2-483c175750ef',
     `Before Islam, most people in Arabia worshipped idols. Only a few people followed religions like Christianity. In Mecca, most people also worshipped idols. There were 360 idols, including Lat, Manat, and Uzza. They were kept in and around the Ka’ba and in homes.
 
-Some people, called Hanifs, followed the old religion of Abraham (as). Arab people in that period actually believed in one main God, Allah, as the Creator. However, they also worshipped many idols. They thought these idols helped them talk to Allah.
+Some people, called Hanifs, followed the old religion of Abraham (pbuh). Arab people in that period actually believed in one main God, Allah, as the Creator. However, they also worshipped many idols. They thought these idols helped them talk to Allah.
 
 Pilgrimage to the Ka’ba was the most important religious activity in early Arabia. Life in the Age of Ignorance was also full of superstitions. People believed in kahins, or soothsayers, and checked omens before making decisions.`,
     [
       { word: 'idols', definition: 'Objects wrongly worshipped as gods.' },
-      { word: 'Hanifs', definition: 'People who followed the old religion of Abraham (as) and did not worship idols.' },
+      { word: 'Hanifs', definition: 'People who followed the old religion of Abraham (pbuh) and did not worship idols.' },
       { word: 'Creator', definition: 'Allah, the One who created everything.' },
       { word: 'superstitions', definition: 'Beliefs based on fear or tradition rather than sound evidence or true religion.' },
       { word: 'omens', definition: 'Signs people believed could predict what would happen.' },
     ],
     [
       { id: 'mecca-b1-en-10-1', x: 32, y: 30, title: '360 Idols', description: '360 idols, including Lat, Manat and Uzza, were kept in and around the Ka’ba and in homes.' },
-      { id: 'mecca-b1-en-10-2', x: 69, y: 68, title: 'Hanifs', description: 'Hanifs followed the old religion of Abraham (as) rather than idol worship.' },
+      { id: 'mecca-b1-en-10-2', x: 69, y: 68, title: 'Hanifs', description: 'Hanifs followed the old religion of Abraham (pbuh) rather than idol worship.' },
     ]
   ),
   story(11, 'What Islam Meant',
@@ -218,9 +218,9 @@ Pilgrimage to the Ka’ba was the most important religious activity in early Ara
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F10_Chapter_11_What_Islam_Meant.mp3?alt=media&token=e836e9f4-a7f0-4bb7-81f3-44ef2202bf43',
     `Politics, economics, and religion are connected. Beliefs shape how people live. That is why powerful groups in Mecca did not like Islam. From the beginning, Islam showed that Muslims were a new community. They were going to be different from the people around them.
 
-In 610, Prophet Muhammad (as) started teaching Islam in Mecca. The Quraysh tribe heard his message first. Some people became Muslims. When they heard Prophet Muhammad (as) read the Quran, they were sure it was from Allah.
+In 610, Prophet Muhammad (pbuh) started teaching Islam in Mecca. The Quraysh tribe heard his message first. Some people became Muslims. When they heard Prophet Muhammad (pbuh) read the Qur’an, they were sure it was from Allah.
 
-This message changed them deeply. It touched their hearts and minds and made them feel great respect. However, many leaders ignored the Quran and stood against the Prophet (as). Prophet Muhammad (as) taught in Mecca for 13 years, in a city with about 5,000 to 10,000 people.`,
+This message changed them deeply. It touched their hearts and minds and made them feel great respect. However, many leaders ignored the Qur’an and stood against the Prophet (pbuh). Prophet Muhammad (pbuh) taught in Mecca for 13 years, in a city with about 5,000 to 10,000 people.`,
     [
       { word: 'politics', definition: 'Activities connected with power and governing society.' },
       { word: 'economics', definition: 'Activities connected with money, work, trade, and resources.' },
@@ -230,7 +230,7 @@ This message changed them deeply. It touched their hearts and minds and made the
     ],
     [
       { id: 'mecca-b1-en-11-1', x: 26, y: 48, title: 'A New Community', description: 'Islam formed a new community with beliefs that differed from the society around it.' },
-      { id: 'mecca-b1-en-11-2', x: 75, y: 70, title: 'The Quran', description: 'The message of the Quran deeply affected those who accepted it, while many leaders opposed it.' },
+      { id: 'mecca-b1-en-11-2', x: 75, y: 70, title: 'The Qur’an', description: 'The message of the Qur’an deeply affected those who accepted it, while many leaders opposed it.' },
     ]
   ),
   story(12, 'The Leaders of Quraysh',
@@ -240,7 +240,7 @@ This message changed them deeply. It touched their hearts and minds and made the
 
 They were very rich, and other tribes respected them because of trade and the idols in the Ka’ba. They had high prestige, making them the prestigious caretakers of pilgrimage in the Arabian region. Keeping their power and unity was very important for them. Rich leaders turned the people against the new religion.
 
-Islam brought serious changes. For example, Quraysh used unfair money systems like usury, but the Quran forbade this and allowed only honest trade. Islam also commanded zakat and sadaqah to help the poor. Meccan leaders tried to stop Islam from growing.`,
+Islam brought serious changes. For example, Quraysh used unfair money systems like usury, but the Qur’an forbade this and allowed only honest trade. Islam also commanded zakat and sadaqah to help the poor. Meccan leaders tried to stop Islam from growing.`,
     [
       { word: 'super-rich', definition: 'Extremely wealthy.' },
       { word: 'prestigious', definition: 'Highly respected and admired.' },
@@ -250,17 +250,17 @@ Islam brought serious changes. For example, Quraysh used unfair money systems li
     ],
     [
       { id: 'mecca-b1-en-12-1', x: 40, y: 64, title: 'Quraysh Leaders', description: 'The leaders of Quraysh saw Islam as a danger to their power and status.' },
-      { id: 'mecca-b1-en-12-2', x: 62, y: 36, title: 'Honest Trade', description: 'The Quran forbade usury and allowed honest trade, while Islam commanded support for the poor.' },
+      { id: 'mecca-b1-en-12-2', x: 62, y: 36, title: 'Honest Trade', description: 'The Qur’an forbade usury and allowed honest trade, while Islam commanded support for the poor.' },
     ]
   ),
   story(13, 'Opposition to Islam',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Fimages%2Fmecca_b1_ch13-clean.png?alt=media&token=85709003-6a84-4c91-815c-77275b994297',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F12_Chapter_13_Opposition_to_Islam.mp3?alt=media&token=6c2ea379-8f68-4384-b707-49052ae36526',
-    `At first, the leaders of Mecca only mocked Islam. Whenever Prophet Muhammad (as) walked by, they laughed and said that he was talking about messages from heaven. But when the Quran criticized the idols and warned against false worship, their opposition became violent.
+    `At first, the leaders of Mecca only mocked Islam. Whenever Prophet Muhammad (pbuh) walked by, they laughed and said that he was talking about messages from heaven. But when the Qur’an criticized the idols and warned against false worship, their opposition became violent.
 
 Poor Muslims and those without powerful friends suffered the most. One of them was Bilal, an Abyssinian slave and one of the first believers in Islam. His master, Umayya, often took him out in the hot midday sun. He put a heavy rock on Bilal’s chest and ordered him to give up his religion.
 
-The leaders of Mecca went further. Between 617 and 620, they began a social and economic boycott against Muslims and those who helped them. During this hard time, the Prophet (as), Khadija, and Abu Talib spent their money to support the Muslims.`,
+The leaders of Mecca went further. Between 617 and 620, they began a social and economic boycott against Muslims and those who helped them. During this hard time, the Prophet (pbuh), Khadija, and Abu Talib spent their money to support the Muslims.`,
     [
       { word: 'mocked', definition: 'Made fun of someone or something in an unkind way.' },
       { word: 'criticized the idols', definition: 'Said that idol worship was wrong.' },
@@ -278,7 +278,7 @@ The leaders of Mecca went further. Between 617 and 620, they began a social and 
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F13_Chapter_14_Boycott_and_Pressure.mp3?alt=media&token=68541084-fb07-4b4b-91d0-3ef54b281a76',
     `During the boycott, people had no food. Some died of hunger, and others even ate tree leaves to survive. The cries of hungry children could be heard everywhere.
 
-Prophet Muhammad (as) continued to ask people to stop worshipping idols and worship Allah alone. However, the leaders were proud of their old beliefs and did not want to change. The idols brought them money, trade, and power. Losing the idols meant losing wealth and influence, so they became hostile to Islam.
+Prophet Muhammad (pbuh) continued to ask people to stop worshipping idols and worship Allah alone. However, the leaders were proud of their old beliefs and did not want to change. The idols brought them money, trade, and power. Losing the idols meant losing wealth and influence, so they became hostile to Islam.
 
 They also did not want to accept that people would be judged after death. They did not want to think about punishment for hurting people, making money unfairly, drinking alcohol, or doing other evil things. Tribal loyalty was another challenge because people feared losing their tribe’s protection.`,
     [
@@ -300,7 +300,7 @@ They also did not want to accept that people would be judged after death. They d
 
 The Quraysh leaders said Islam was breaking up families and destroying unity. In reality, Islam was calling people to a better form of unity based on justice, mercy, and belief in one Allah.
 
-Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad (as) told people to be fair, respectful, and merciful. In Islam, every person is important. Background, wealth, gender, and social power do not make one person more valuable than another. Jahiliyyah means a society without justice and mercy; Islam is the opposite because it brings peace and fairness.`,
+Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad (pbuh) told people to be fair, respectful, and merciful. In Islam, every person is important. Background, wealth, gender, and social power do not make one person more valuable than another. Jahiliyyah means a society without justice and mercy; Islam is the opposite because it brings peace and fairness.`,
     [
       { word: 'stateless', definition: 'Without the protection or recognized belonging of a state or community.' },
       { word: 'freedom of choice', definition: 'The ability to make a choice without being forced.' },
@@ -432,7 +432,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 1,
             "chapterTitle": "The City and the Age",
-            "storyExample": "The Quran describes this period as a time of ignorance and cruelty."
+            "storyExample": "The Qur’an describes this period as a time of ignorance and cruelty."
         },
         {
             "word": "barbarism",
@@ -473,7 +473,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 2,
             "chapterTitle": "The Age of Ignorance",
-            "storyExample": "This era ended when the first revelation of the Quran began in 610 CE."
+            "storyExample": "This era ended when the first revelation of the Qur’an began in 610 CE."
         },
         {
             "word": "holy city",
@@ -544,7 +544,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 3,
             "chapterTitle": "The Beginning of Mecca",
-            "storyExample": "The Quran describes Mecca as a valley where no crops grow."
+            "storyExample": "The Qur’an describes Mecca as a valley where no crops grow."
         },
         {
             "word": "crops",
@@ -563,7 +563,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 3,
             "chapterTitle": "The Beginning of Mecca",
-            "storyExample": "The Quran describes Mecca as a valley where no crops grow."
+            "storyExample": "The Qur’an describes Mecca as a valley where no crops grow."
         },
         {
             "word": "population",
@@ -624,7 +624,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 3,
             "chapterTitle": "The Beginning of Mecca",
-            "storyExample": "Arabs accepted the religion of Abraham (as) and Ishmael (as), so the Ka’ba became a pilgrimage site."
+            "storyExample": "Arabs accepted the religion of Abraham (pbuh) and Ishmael (pbuh), so the Ka’ba became a pilgrimage site."
         },
         {
             "word": "mission",
@@ -646,7 +646,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 4,
             "chapterTitle": "The Ka’ba and Trade",
-            "storyExample": "After Abraham (as) completed his mission and invited people for pilgrimage, he returned to Palestine."
+            "storyExample": "After Abraham (pbuh) completed his mission and invited people for pilgrimage, he returned to Palestine."
         },
         {
             "word": "defeated",
@@ -1227,7 +1227,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
         },
         {
             "word": "Hanifs",
-            "definition": "People who followed the old religion of Abraham (as) and did not worship idols.",
+            "definition": "People who followed the old religion of Abraham (pbuh) and did not worship idols.",
             "partOfSpeech": "noun",
             "pronunciation": "/həˈniːfs/",
             "collocations": [
@@ -1238,7 +1238,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 10,
             "chapterTitle": "Religious Life in Mecca",
-            "storyExample": "Some people, called Hanifs, followed the old religion of Abraham (as)."
+            "storyExample": "Some people, called Hanifs, followed the old religion of Abraham (pbuh)."
         },
         {
             "word": "Creator",
@@ -1381,7 +1381,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 11,
             "chapterTitle": "What Islam Meant",
-            "storyExample": "However, many leaders ignored the Quran and stood against the Prophet (as)."
+            "storyExample": "However, many leaders ignored the Qur’an and stood against the Prophet (pbuh)."
         },
         {
             "word": "leaders",
@@ -1401,7 +1401,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 11,
             "chapterTitle": "What Islam Meant",
-            "storyExample": "However, many leaders ignored the Quran and stood against the Prophet (as)."
+            "storyExample": "However, many leaders ignored the Qur’an and stood against the Prophet (pbuh)."
         },
         {
             "word": "super-rich",
@@ -1483,7 +1483,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 12,
             "chapterTitle": "The Leaders of Quraysh",
-            "storyExample": "For example, Quraysh used unfair money systems like usury, but the Quran forbade this and allowed only honest trade."
+            "storyExample": "For example, Quraysh used unfair money systems like usury, but the Qur’an forbade this and allowed only honest trade."
         },
         {
             "word": "zakat",
@@ -1541,7 +1541,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 13,
             "chapterTitle": "Opposition to Islam",
-            "storyExample": "But when the Quran criticized the idols and warned against false worship, their opposition became violent."
+            "storyExample": "But when the Qur’an criticized the idols and warned against false worship, their opposition became violent."
         },
         {
             "word": "violent",
@@ -1567,7 +1567,7 @@ Before Islam, Mecca was a difficult place with much unfairness. Prophet Muhammad
             "level": "B1",
             "chapter": 13,
             "chapterTitle": "Opposition to Islam",
-            "storyExample": "But when the Quran criticized the idols and warned against false worship, their opposition became violent."
+            "storyExample": "But when the Qur’an criticized the idols and warned against false worship, their opposition became violent."
         },
         {
             "word": "Abyssinian",

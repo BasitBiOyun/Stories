@@ -8,7 +8,7 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Which Came First?',
       instructions: 'Read the sentence from Chapter 3. Then choose what it tells us about the order of events.',
-      question: '“When Prophet Abraham (as) brought his son Ishmael (as) and his wife Hagar to the city, Zamzam water had not been discovered yet.” What does “had not been discovered yet” tell us?',
+      question: '“When Prophet Abraham (pbuh) brought his son Ishmael (pbuh) and his wife Hagar to the city, Zamzam water had not been discovered yet.” What does “had not been discovered yet” tell us?',
       options: [
         'Zamzam water was discovered before they arrived.',
         'Zamzam water was discovered at the moment they arrived.',
@@ -30,8 +30,8 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       question: 'Can you change a result into a reason, and a noun phrase into a clause?',
       transformItems: [
         {
-          source: 'Arabs accepted the religion of Abraham (as) and Ishmael (as), so the Ka’ba became a pilgrimage site.',
-          frame: 'The Ka’ba became a pilgrimage site [blank] the religion of Abraham (as) and Ishmael (as).',
+          source: 'Arabs accepted the religion of Abraham (pbuh) and Ishmael (pbuh), so the Ka’ba became a pilgrimage site.',
+          frame: 'The Ka’ba became a pilgrimage site [blank] the religion of Abraham (pbuh) and Ishmael (pbuh).',
           answers: ['because Arabs accepted', 'because the Arabs accepted', 'as Arabs accepted', 'as the Arabs accepted', 'since Arabs accepted', 'since the Arabs accepted'],
         },
         {
@@ -55,12 +55,12 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       question: 'Which form describes a place, gives a purpose and shows help with a change?',
       formChoices: [
         {
-          sentence: 'The Quran describes Mecca as a valley [choice] no crops grow.',
+          sentence: 'The Qur’an describes Mecca as a valley [choice] no crops grow.',
           options: ['which', 'where', 'when'],
           answer: 1,
         },
         {
-          sentence: 'Later, when Ishmael (as) grew up, Abraham (as) came to the city [choice] the Holy Ka’ba with his son.',
+          sentence: 'Later, when Ishmael (pbuh) grew up, Abraham (pbuh) came to the city [choice] the Holy Ka’ba with his son.',
           options: ['to reconstruct', 'for reconstruct', 'reconstructing'],
           answer: 0,
         },
@@ -112,8 +112,8 @@ export const meccaB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       question: 'How do “after”, “later” and “under … rule” guide the reader through the changes in Mecca?',
       sequencingItems: [
         { id: 'a', text: 'Later, in the 5th century, the Quraysh tribe …' },
-        { id: 'b', text: 'Under Khuza’a rule, people forgot the religion of Abraham (as) …' },
-        { id: 'c', text: 'After Abraham (as) completed his mission and invited people for pilgrimage, he returned to Palestine.' },
+        { id: 'b', text: 'Under Khuza’a rule, people forgot the religion of Abraham (pbuh) …' },
+        { id: 'c', text: 'After Abraham (pbuh) completed his mission and invited people for pilgrimage, he returned to Palestine.' },
         { id: 'd', text: 'Later, the Khuza’a tribe came to Mecca, defeated the Jurhum tribe, and took control of the city.' },
       ],
       correctAnswer: ['c', 'd', 'b', 'a'],
@@ -131,7 +131,7 @@ export const meccaB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       question: 'Which forms show the start of a new practice and a new group taking control?',
       formChoices: [
         {
-          sentence: '… people forgot the religion of Abraham (as) and started [choice] many idols.',
+          sentence: '… people forgot the religion of Abraham (pbuh) and started [choice] many idols.',
           options: ['worship', 'worshipping', 'worshipped'],
           answer: 1,
         },
@@ -353,7 +353,7 @@ export const meccaB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Whose Idea Is It?',
       instructions: 'Read the sentence from Chapter 7. Then choose the best answer.',
-      question: '“When Prophet Muhammad (as) started calling people to Islam, some rich leaders asked why Muhammad should be the leader while they were rich and important.” What does this reported question show?',
+      question: '“When Prophet Muhammad (pbuh) started calling people to Islam, some rich leaders asked why Muhammad should be the leader while they were rich and important.” What does this reported question show?',
       options: [
         'The writer thinks that rich people should be leaders.',
         'The leaders wanted information about the Prophet’s life.',

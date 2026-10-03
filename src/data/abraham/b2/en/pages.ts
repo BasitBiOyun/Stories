@@ -15,12 +15,12 @@ const rawAbrahamB2Pages: PageData[] = [
   {
     id: 1,
     type: 'story',
-    title: 'Prophet Abraham and Tawheed',
+    title: 'Prophet Abraham and Tawhid',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=dd864d33-97bb-47a7-a10e-8c0a68d0ffb7',
-    content: `KEY WORDS: Hanifism (Path of Prophet Abraham (pbuh)); monotheism (Oneness and Unity of Allah); Tawheed (La ilaha illa Allah: There is no god but Allah); idol worship, idolatry (paganism); idolater (pagan).
+    content: `KEY WORDS: Hanifism (Path of Prophet Abraham (pbuh)); monotheism (Oneness and Unity of Allah); Tawhid (La ilaha illa Allah: There is no god but Allah); idol worship, idolatry (paganism); idolater (pagan).
 
-In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and representative of the monotheistic belief. Monotheistic belief means bearing witness that there is no god but Allah. He has no partner, rival, or helper. Allah is unique in every way. Abraham (pbuh) is also a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). The fourteenth surah of the Qur’an is named Surah Ibrahim. Abraham (pbuh) is the father of two prophets: Prophet Ishmael (pbuh) and Prophet Isaac (pbuh). Prophet Ishmael (pbuh) is the direct forefather of Prophet Muhammad (pbuh). Prophet Isaac (pbuh) is the father of Prophet Jacob (pbuh). Prophet Jacob is the father of Joseph (pbuh) and an ancestor of Moses (pbuh), Aaron (pbuh), Jonah (pbuh), and Jesus (pbuh). Abraham (pbuh) was also given the unique name of “Allah’s friend” (Khalilullah; see Surah an-Nisa: 125). This title was not given to any other prophet before. The Qur’an presents in detail his discovery of the oneness of Allah (Tawheed) in the middle of an idol-worshipping nation.`,
+In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and representative of the monotheistic belief. Monotheistic belief means bearing witness that there is no god but Allah. He has no partner, rival, or helper. Allah is unique in every way. Abraham (pbuh) is also a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). The fourteenth surah of the Qur’an is named Surah Ibrahim. Abraham (pbuh) is the father of two prophets: Prophet Ishmael (pbuh) and Prophet Isaac (pbuh). Prophet Ishmael (pbuh) is the direct forefather of Prophet Muhammad (pbuh). Prophet Isaac (pbuh) is the father of Prophet Jacob (pbuh). Prophet Jacob is the father of Joseph (pbuh) and an ancestor of Moses (pbuh), Aaron (pbuh), Jonah (pbuh), and Jesus (pbuh). Abraham (pbuh) was also given the unique name of “Allah’s friend” (Khalilullah; see Surah an-Nisa: 125). This title was not given to any other prophet before. The Qur’an presents in detail his discovery of the oneness of Allah (Tawhid) in the middle of an idol-worshipping nation.`,
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and r
     title: 'Hanifism and the One True Faith',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F01_Chapter_2_Abraham_as_Allah%E2%80%99s_Friend.mp3?alt=media&token=0303777a-0c94-4898-ad1c-ce260e331d8e',
-    content: `He challenged the idol worship of his time and taught people to believe in Allah alone. His life mission was to spread the message of Tawheed—the belief that Allah is One and He has no partners. During his struggle, he had very difficult tests and he passed the tests with his full trust in Allah.
+    content: `He challenged the idol worship of his time and taught people to believe in Allah alone. His life mission was to spread the message of Tawhid—the belief that Allah is One and He has no partners. During his struggle, he had very difficult tests and he passed the tests with his full trust in Allah.
 
 In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf; a hanîf is a monotheist who is not a Jew, a Christian, or an idolater (see Surah Al Imran: 67) and is also morally upright. Hanifism is the belief in the oneness of Allah taught by Prophet Abraham (pbuh). We may say that it is the former version of Islam. Human beings are capable of discovering Hanifism; that is, the existence of Allah can be found through reasoning. Actually, all prophets taught this religion. As human conditions and capacities changed over time, some changes in details became necessary. So, the difference between the monotheism taught by Abraham (pbuh) and the Islam taught by Muhammad is only in the acts of worship.`,
   },
@@ -122,7 +122,7 @@ They began arguing and threatening Abraham (pbuh).`,
   {
     id: 11,
     type: 'story',
-    title: 'Arguing for Tawheed',
+    title: 'Arguing for Tawhid',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F10_Chapter_11_Arguing_for_Tawheed.mp3?alt=media&token=b9953447-ffeb-49fb-9009-c991b3e4ffb7',
     content: `“And his people argued with him. He said, ‘Do you argue with me about Allah, when He has guided me? I do not fear partners you assign to Him, unless my Lord wills it. My Lord comprehends all things in knowledge. Will you not reconsider? And why should I fear the partners you give to Him, and you do not fear worshipping others alongside Allah for which He sent down to you no authority? So which of the two parties has more right to security, if you are aware?’ They who believe, and do not mix their belief with injustice—those will have security, and they are (rightly) guided. That was Our argument which We gave to Abraham against his people.” (Surah al-An’am: 80–83). His people attempted to argue with him and present evidence to prove the correctness of their beliefs. That these arguments are not told in the verses shows the ridiculousness of their claims. It is understood from Abraham (pbuh)'s statement, “I do not fear partners you worship alongside Allah,” that his people threatened him with the punishment of their gods.`,
@@ -289,7 +289,7 @@ The woman's name was Sarah and she became his wife. The man's name was Lot and h
     title: 'Abraham’s Prayer for Mecca',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F27_Chapter_28_Zamzam_Appears.mp3?alt=media&token=baf68a2a-1d4c-4428-972b-f49b47c307b2',
-    content: `He turned his face towards the direction where the Ka‘ba stands today and raised his hands, praying as follows: “O Our Lord! I have made some of my offspring to dwell in a valley with no cultivation, by Your Sacred House (the Ka‘ba at Mecca); in order, O our Lord, that they may offer prayers perfectly (Iqamat as salat); so fill some hearts among men with love towards them, and O Allah provide them with fruits so that they may give thanks” (Surah Ibrahim: 37). Abraham (pbuh) had to take Hagar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka‘ba. According to Allah’s intention, Hagar and Ishmael had to leave Palestine and settle in the barren valley of Mecca, near the place of the old temple, to reconstruct the Holy Ka‘ba which was lost after Noah’s Flood, making this place the renewed center of monotheism: Islam. Over the years, Ishmael’s children had children; one of them was Muhammad, the Prophet of Islam (pbuh).
+    content: `He turned his face towards the direction where the Ka’ba stands today and raised his hands, praying as follows: “O Our Lord! I have made some of my offspring to dwell in a valley with no cultivation, by Your Sacred House (the Ka’ba at Mecca); in order, O our Lord, that they may offer prayers perfectly (Iqamat as salat); so fill some hearts among men with love towards them, and O Allah provide them with fruits so that they may give thanks” (Surah Ibrahim: 37). Abraham (pbuh) had to take Hagar and Ishmael away from Palestine to a new place. This was about the rebuilding of the temple, that is, the Ka’ba. According to Allah’s intention, Hagar and Ishmael had to leave Palestine and settle in the barren valley of Mecca, near the place of the old temple, to reconstruct the Holy Ka’ba which was lost after Noah’s Flood, making this place the renewed center of monotheism: Islam. Over the years, Ishmael’s children had children; one of them was Muhammad, the Prophet of Islam (pbuh).
 
 They spread all over the Arabian Peninsula to carry their grandfather Abraham (pbuh)’s message of monotheism.`,
   },
@@ -346,12 +346,12 @@ He (Abraham) said (asking of Allah), ‘and from my children” (Surah al-Baqara
   {
     id: 34,
     type: 'story',
-    title: 'Building the Ka‘ba',
+    title: 'Building the Ka’ba',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F33_Chapter_34_The_First_Call_to_Pilgrimage.mp3?alt=media&token=0e5a8118-0498-4e50-a826-e6aaca1b8cc4',
-    content: `Prophet Muhammad (pbuh) said: “Indeed this place has been made sacred by Allah since the day He created the heavens and the earth, and it will remain so until the Day of Judgment” (Sunan an-Nasa'i, 2874). Abraham (pbuh) said to Ishmael: “O Ishmael, Allah has commanded me to do an important task, and you will help me in this task.” Ishmael replied, “I will help you for sure.” Abraham (pbuh) said, “The Almighty Allah commanded me to build a house for Himself.” Father and son found the foundations of the old structure and began to build the Ka‘ba on it. When the building became high and the old man Abraham (pbuh) could no longer lift the stones to such a high position, he stood over the stone of Al-Maqam and Ishmael carried on handing him the stones, and both of them were saying: “O our Lord! Accept this service from us; verily You are the All Hearer, the All Knower” (Surah al-Baqarah: 127).
+    content: `Prophet Muhammad (pbuh) said: “Indeed this place has been made sacred by Allah since the day He created the heavens and the earth, and it will remain so until the Day of Judgment” (Sunan an-Nasa'i, 2874). Abraham (pbuh) said to Ishmael: “O Ishmael, Allah has commanded me to do an important task, and you will help me in this task.” Ishmael replied, “I will help you for sure.” Abraham (pbuh) said, “The Almighty Allah commanded me to build a house for Himself.” Father and son found the foundations of the old structure and began to build the Ka’ba on it. When the building became high and the old man Abraham (pbuh) could no longer lift the stones to such a high position, he stood over the stone of Al-Maqam and Ishmael carried on handing him the stones, and both of them were saying: “O our Lord! Accept this service from us; verily You are the All Hearer, the All Knower” (Surah al-Baqarah: 127).
 
-Abraham (pbuh) traveled to Mecca in response to Allah’s command to establish the sacred Ka‘ba.`,
+Abraham (pbuh) traveled to Mecca in response to Allah’s command to establish the sacred Ka’ba.`,
   },
   {
     id: 35,
@@ -359,7 +359,7 @@ Abraham (pbuh) traveled to Mecca in response to Allah’s command to establish t
     title: 'The Legacy of Abraham',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F34_Chapter_35_The_Legacy_of_Abraham.mp3?alt=media&token=a7065900-a5e2-4469-aa93-a4a284b627f5',
-    content: `He was but the restorer of the structure that was originally built long before. No other place of worship is older than the Ka‘ba of Mecca. Reconstruction of the Ka‘ba and the call to pilgrimage (see Surah al-Hajj: 27) are clear evidence that Prophet Abraham (pbuh) established the religion and invited those living in that region at that time to embrace it. This belief is known as Hanifism. Reconstructing the Holy Ka‘ba was the completion of Abraham (pbuh)’s mission. He built a place of worship for all people, not just people of a chosen race or color. This actually reminds us of the oneness of Allah. During Hajj Muslims are reminded of many events of Allah’s beloved “friend” Abraham (pbuh) and his family. Before his death, Abraham (pbuh) left Palestine to Isaac and Mecca to Ishmael, and sent his other children eastward. His son Ishmael taught his father Abraham (pbuh)'s faith in the Hijaz region, and in this region, his Hanif faith coexisted with idolatry.
+    content: `He was but the restorer of the structure that was originally built long before. No other place of worship is older than the Ka’ba of Mecca. Reconstruction of the Ka’ba and the call to pilgrimage (see Surah al-Hajj: 27) are clear evidence that Prophet Abraham (pbuh) established the religion and invited those living in that region at that time to embrace it. This belief is known as Hanifism. Reconstructing the Holy Ka’ba was the completion of Abraham (pbuh)’s mission. He built a place of worship for all people, not just people of a chosen race or color. This actually reminds us of the oneness of Allah. During Hajj Muslims are reminded of many events of Allah’s beloved “friend” Abraham (pbuh) and his family. Before his death, Abraham (pbuh) left Palestine to Isaac and Mecca to Ishmael, and sent his other children eastward. His son Ishmael taught his father Abraham (pbuh)'s faith in the Hijaz region, and in this region, his Hanif faith coexisted with idolatry.
 
 The ‘Beloved servant of Allah’ about whom Allah said, “I will make you a leader to the nations,” returned to Palestine and died there. When people have lost their way and are looking for salvation, Abraham (pbuh) has always been there to show them the right path. This is especially true in societies where morals have worsened and the real path that Allah showed them has been corrupted.`,
   },
@@ -416,7 +416,7 @@ const abrahamB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspot
       { word: "unique", partOfSpeech: "adjective", definition: "Being the only one of its kind; unlike anything else." },
     ],
     hotspots: [
-      { id: 'ab-b2-runtime-hs-1-1', x: 28, y: 41, title: "Messenger of Tawheed", description: "The Qur’an presents Abraham (pbuh) as the messenger of the belief that Allah is One and has no partner." },
+      { id: 'ab-b2-runtime-hs-1-1', x: 28, y: 41, title: "Messenger of Tawhid", description: "The Qur’an presents Abraham (pbuh) as the messenger of the belief that Allah is One and has no partner." },
       { id: 'ab-b2-runtime-hs-1-2', x: 70, y: 62, title: "Father of Prophets", description: "Abraham (pbuh) was the father of Ishmael (pbuh) and Isaac (pbuh), and Ishmael (pbuh) was a forefather of Prophet Muhammad (pbuh)." },
     ],
   },
@@ -768,7 +768,7 @@ const abrahamB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspot
     ],
     hotspots: [
       { id: 'ab-b2-runtime-hs-28-1', x: 41, y: 59, title: "A Prayer for the Valley", description: "Abraham (pbuh) prayed that people’s hearts would love the family he had left near the Sacred House." },
-      { id: 'ab-b2-runtime-hs-28-2', x: 73, y: 65, title: "The Ka‘ba’s Lost Place", description: "Hagar and Ishmael (pbuh) settled near the site of the Ka‘ba, which had been lost after Noah’s (pbuh) Flood." },
+      { id: 'ab-b2-runtime-hs-28-2', x: 73, y: 65, title: "The Ka’ba’s Lost Place", description: "Hagar and Ishmael (pbuh) settled near the site of the Ka’ba, which had been lost after Noah’s (pbuh) Flood." },
     ],
   },
   29: {
@@ -873,12 +873,12 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
     question: 'Does the sentence pass on a source, give the writer’s own interpretation, or simply tell an event?',
     dragDropGroups: [
       { group: 'The writer passes on a source or tradition', items: ['In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf …', 'Azer is presented in Islamic sources as Nimrod\'s idol maker.', 'According to another narration, Nimrod had a dream that a child in the region would challenge his throne.'] },
-      { group: 'The writer interprets or concludes', items: ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka‘ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'] },
+      { group: 'The writer interprets or concludes', items: ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka’ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'] },
       { group: 'The narrator tells an event directly', items: ['A bitter struggle began between Abraham (pbuh) and his people.', 'Ishmael learned Arabic from them …', 'Abraham (pbuh) returned to Palestine.'] },
     ],
     correctAnswer: {
       'The writer passes on a source or tradition': ['In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf …', 'Azer is presented in Islamic sources as Nimrod\'s idol maker.', 'According to another narration, Nimrod had a dream that a child in the region would challenge his throne.'],
-      'The writer interprets or concludes': ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka‘ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'],
+      'The writer interprets or concludes': ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka’ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'],
       'The narrator tells an event directly': ['A bitter struggle began between Abraham (pbuh) and his people.', 'Ishmael learned Arabic from them …', 'Abraham (pbuh) returned to Palestine.'],
     },
     explanation: 'Framing words show where a claim comes from. “is often described as”, “is presented in Islamic sources as” and “According to another narration” pass on what a source or tradition says. “We may say that”, “It is understood from … that” and “are clear evidence that” mark the writer’s own reasoning: a view the writer offers, or a conclusion drawn from evidence. A past simple sentence with no frame (began, learned, returned) tells an event directly. A careful B2 reader keeps these three voices apart.',
@@ -1025,7 +1025,7 @@ const abrahamB2GlossaryCategoryByChapter: Record<number,string> = {
   16:'Creation & Guidance',17:'Belief & Tradition',18:'Evidence & Action',19:'Public Debate & Evidence',20:'Power & Conflict',
   21:'Trial & Faith',22:'Miracle & Faith',23:'Power & Debate',24:'Argument & Political Power',25:'Migration & Family',
   26:'Family & Legacy',27:'Trust & Migration',28:'Mecca & Sacred Geography',29:'Hagar & Pilgrimage',30:'Zamzam & Settlement',
-  31:'Sacrifice & Family',32:'Submission & Mercy',33:'Sacrifice & Religious Practice',34:'Ka‘ba & Construction',35:'Legacy & Monotheism',
+  31:'Sacrifice & Family',32:'Submission & Mercy',33:'Sacrifice & Religious Practice',34:'Ka’ba & Construction',35:'Legacy & Monotheism',
 };
 const standardizeEnglishStory=(page:PageData):PageData=>STORY_IDS.has(page.id)?{...page,image:abrahamB2ImageUrl(page.id),...abrahamB2StoryNotes[page.id],animatedWords:undefined,syncPoints:undefined,timedChunks:undefined}:page;
 const standardizedEnglishPages=rawAbrahamB2Pages.map(cleanEnglishPage).map(standardizeEnglishStory);

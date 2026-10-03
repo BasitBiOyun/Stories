@@ -33,7 +33,7 @@ const GLYPHS: Record<StoryMapIcon, React.ReactNode> = {
       <path d="M7.9 16.1 5 19" />
     </>
   ),
-  // The Ka‘ba: a cube with its band.
+  // The Ka’ba: a cube with its band.
   kaaba: (
     <>
       <path d="M5 8.5 12 5l7 3.5v8L12 20l-7-3.5z" />

@@ -38,7 +38,7 @@ export interface SourceGroup {
   id: string;
   title?: Localized;
   sources: SourceEntry[];
-  /** Qur'an verses and hadith the book's text cites inline. */
+  /** Qur’an verses and hadith the book's text cites inline. */
   citations?: { label: Localized; text: Localized }[];
 }
 

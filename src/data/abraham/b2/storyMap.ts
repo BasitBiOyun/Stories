@@ -83,7 +83,7 @@ export const abrahamB2StoryMapLayout: StoryMapLayout = {
     { year: 6, chapter: 26, placeId: 'mecca', camera: { lon: 37.6, lat: 26.5, zoom: 1.35 } },
     { year: 7, chapter: 30, placeId: 'mecca', camera: { lon: 41.8, lat: 18.8, zoom: 1.5 }, scene: { kind: 'dawn', placeId: 'mecca' } },
     { year: 8, chapter: 33, placeId: 'palestine', camera: { lon: 37.6, lat: 26.5, zoom: 1.35 } },
-    // Chapters 34–35: Abraham (pbuh) travels to Mecca to build the Ka‘ba; he leaves Palestine to Isaac and Mecca to Ishmael.
+    // Chapters 34–35: Abraham (pbuh) travels to Mecca to build the Ka’ba; he leaves Palestine to Isaac and Mecca to Ishmael.
     { year: 9, chapter: 35, placeId: 'mecca', camera: { lon: 37.6, lat: 26.5, zoom: 1.15 }, scene: { kind: 'journey', fromId: 'palestine', toIds: ['mecca'] } },
   ],
   challenge: [
