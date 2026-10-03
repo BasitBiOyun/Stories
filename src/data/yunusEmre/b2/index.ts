@@ -1,5 +1,10 @@
 import type { BookData, PageData } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { yunusEmreB2ChapterExtrasEn } from './en/chapterExtras';
+import { yunusEmreB2GroupTasksEn } from './en/groupTasks';
+import { yunusEmreB2ChapterExtrasAr } from './ar/chapterExtras';
+import { yunusEmreB2GroupTasksAr } from './ar/groupTasks';
 
 import { yunusB2Pages } from './en/pages';
 import { yunusEmreB2PagesAr } from './ar/pages';
@@ -38,7 +43,7 @@ export const yunusEmreB2BookDataEn: BookData = {
   title: 'Yunus Emre: History, Poetry, and Moral Thought (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: withPlacesLayer(withMapPage(yunusB2Pages, mapPageEn), 'yunusEmre-b2', 'en'),
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(yunusB2Pages, mapPageEn), 'yunusEmre-b2', 'en'), { ...yunusEmreB2ChapterExtrasEn, groupTasks: yunusEmreB2GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -48,7 +53,7 @@ export const yunusEmreB2BookDataAr: BookData = {
   title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: withPlacesLayer(withMapPage(yunusEmreB2PagesAr, mapPageAr), 'yunusEmre-b2', 'ar'),
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(yunusEmreB2PagesAr, mapPageAr), 'yunusEmre-b2', 'ar'), { ...yunusEmreB2ChapterExtrasAr, groupTasks: yunusEmreB2GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
