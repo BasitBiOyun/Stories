@@ -7,6 +7,7 @@ import { VocabularyWord } from '../ui/VocabularyWord';
 import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
+import { BeforeYouReadPanel, HiddenTextCover, ICanPanel, useBeforeYouRead } from './ChapterExtras';
 import { cn } from '../../lib/utils';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
@@ -1083,6 +1084,32 @@ export const StoryPage = ({
 
   const isAudioLocked = false;
 
+  // Before you read: one guess, checked by listening with the text closed (or by reading when there is no audio).
+  const extrasKey = `v2:${level}:${language}:${page.id}:${page.title}`;
+  const beforeYouRead = useBeforeYouRead(`${extrasKey}:byr`);
+  const [textForced, setTextForced] = useState(false);
+  useEffect(() => setTextForced(false), [page.id]);
+  useEffect(() => {
+    if (audioEnded && beforeYouRead.state.guess !== null && !beforeYouRead.state.checked) beforeYouRead.check();
+  }, [audioEnded]);
+  const hideStoryText = page.type === 'story' && Boolean(page.beforeYouRead && page.audioUrl)
+    && !beforeYouRead.state.checked && !audioEnded && !textForced;
+  const renderBeforeYouRead = () => page.type === 'story' && page.beforeYouRead ? (
+    <BeforeYouReadPanel
+      data={page.beforeYouRead}
+      language={language}
+      hasAudio={Boolean(page.audioUrl)}
+      isPlaying={isPlaying}
+      onListen={toggleAudio}
+      state={beforeYouRead.state}
+      onGuess={beforeYouRead.guess}
+      onCheck={beforeYouRead.check}
+    />
+  ) : null;
+  const renderICan = () => page.type === 'story' && page.iCan?.length ? (
+    <ICanPanel items={page.iCan} language={language} storageKey={`${extrasKey}:ican`} />
+  ) : null;
+
   const quickExercise = page.exercises?.[0];
   const quickDone = Boolean(quickExercise && completedExercises.includes(quickExercise.id));
   const focusExercises = page.languageFocusExercises ?? [];
@@ -1712,21 +1739,31 @@ export const StoryPage = ({
           )}
 
           {/* Text Content */}
+          <div className="mx-auto max-w-[68ch] wide:max-w-none">
+          {renderBeforeYouRead()}
+          <div className="relative">
           <div 
             className={cn(
-              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch] wide:max-w-none",
+              "font-serif leading-[1.72] text-wood/90",
               isDyslexic ? "font-sans tracking-wide" : "",
-              isRTL && "text-right"
+              isRTL && "text-right",
+              hideStoryText && "blur-[6px] select-none pointer-events-none"
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
+            aria-hidden={hideStoryText || undefined}
           >
             {renderContent(page.content)}
             {renderNextUp()}
+          </div>
+          {hideStoryText && <HiddenTextCover language={language} onShow={() => setTextForced(true)} />}
+          </div>
           </div>
 
           {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel(true)}
+
+          {renderICan()}
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
@@ -1773,16 +1810,24 @@ export const StoryPage = ({
 
             {/* Right side: Story text scrolling content */}
             <div className="col-span-7">
+              <div className="w-full max-w-[72ch] desk:max-w-[80ch] wide:max-w-none">
+              {renderBeforeYouRead()}
+              <div className="relative">
               <div 
                 className={cn(
-                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch] desk:max-w-[80ch] wide:max-w-none",
+                  "font-serif leading-[1.72] text-wood/90",
                   isDyslexic ? "font-sans tracking-wide" : "",
-                  isRTL && "text-right"
+                  isRTL && "text-right",
+                  hideStoryText && "blur-[6px] select-none pointer-events-none"
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
+                aria-hidden={hideStoryText || undefined}
               >
                 {renderContent(page.content)}
                 {renderNextUp()}
+              </div>
+              {hideStoryText && <HiddenTextCover language={language} onShow={() => setTextForced(true)} />}
+              </div>
               </div>
             </div>
           </div>
@@ -1790,6 +1835,8 @@ export const StoryPage = ({
           {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel()}
+
+          {renderICan()}
         </div>
       </div>
 

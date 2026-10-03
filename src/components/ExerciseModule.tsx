@@ -560,6 +560,14 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
               </div>
               <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{prompt.question}</p>
+              {isSubmitted && prompt.example && (
+                <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3 py-2">
+                  <p className={cn('font-display font-semibold uppercase tracking-widest text-emerald-800', isArabic ? 'text-sm' : 'text-[11px]')}>
+                    {isArabic ? 'مِثَالٌ عَلَى إِجَابَةٍ' : 'Example answer'}
+                  </p>
+                  <p className={cn('mt-1 font-serif text-wood', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{prompt.example}</p>
+                </div>
+              )}
             </div>
           ))}
           {!isSubmitted && (

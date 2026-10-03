@@ -78,7 +78,8 @@ export interface Exercise {
   dragDropGroups?: { group: string; items: string[] }[];
   tapRevealItems?: { question: string; answer: string }[];
   hints?: string[];
-  discussionPrompts?: { question: string; mode: string }[];
+  /** `example` is a short model answer, shown after the learner submits. */
+  discussionPrompts?: { question: string; mode: string; example?: string }[];
   quizQuestions?: QuizQuestion[];
 }
 
@@ -116,6 +117,16 @@ export interface VocabularyChallengePair {
   partOfSpeech?: string;
 }
 
+/** One prediction question before a chapter, checked by listening (or reading when there is no audio). */
+export interface BeforeYouRead {
+  question: string;
+  options: string[];
+  /** Index of the correct option. */
+  answer: number;
+  /** Words from the story that prove the answer. */
+  quote?: string;
+}
+
 export interface PageData {
   id: number;
   type: PageType;
@@ -136,6 +147,9 @@ export interface PageData {
   map?: StoryMap;
   /** Which book's place and history cards a `places` page lists. */
   entityBookKey?: string;
+  beforeYouRead?: BeforeYouRead;
+  /** Three can-do lines the learner rates at the end of the chapter. */
+  iCan?: string[];
 }
 
 export interface StudentGuideSection {
