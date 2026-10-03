@@ -142,7 +142,7 @@ const approvedEnglishHotspots: HotspotOverrides = {
     'h5-1': { title: 'Straightest Pieces', description: 'He chose the straightest pieces of wood with the greatest care.' },
     'h5-2': { title: 'Heart and Ego', description: 'But in fact, he is training his own heart and ego.' },
     'h6-1': { title: 'Honesty and Goodness', description: 'My teacher, this place is a door of honesty and goodness.' },
-    'h6-2': { title: 'Nature', description: 'He looked at nature and found a lesson from everything in it, like reading the Quran.' },
+    'h6-2': { title: 'Nature', description: 'He looked at nature and found a lesson from everything in it, like reading the Qur’an.' },
     'h7-1': { title: 'Single Daisy', description: 'In the late afternoon, he returned with a single daisy.' },
     'h7-2': { title: 'Name of Allah', description: 'I walked around the fields, and wherever I saw a flower, I heard that it was saying the name of Allah.' },
     'h8-1': { title: 'My Time', description: 'My time is up now; I’m dried up and dying.' },

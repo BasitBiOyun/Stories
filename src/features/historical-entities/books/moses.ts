@@ -101,7 +101,7 @@ const entities = [
     id: "moses-valley-of-tuwa", kind: "landmark", tr: "Tuva vadisi",
     aliases: { en: ["Tuwa","valley between mountains"], ar: ["طوى","واد بين الجبال","واديا بين الجبال"] },
     copy: {
-      en: { title: "Tuwa, the sacred valley", kindLabel: "Valley", periodLabel: "Sinai", summary: "Tuwa is a sacred valley at Mount Sinai (Mount Tur). This is where Allah first spoke to Moses (pbuh).", more: "The Quran names this valley in Surah Taha." },
+      en: { title: "Tuwa, the sacred valley", kindLabel: "Valley", periodLabel: "Sinai", summary: "Tuwa is a sacred valley at Mount Sinai (Mount Tur). This is where Allah first spoke to Moses (pbuh).", more: "The Qur’an names this valley in Surah Taha." },
       ar: { title: "وَادِي طُوًى", kindLabel: "وَادٍ", periodLabel: "سَيْنَاءُ", summary: "طُوًى وَادٍ مُقَدَّسٌ عِنْدَ جَبَلِ الطُّورِ. وَفِيهِ كَلَّمَ اللهُ مُوسَى عَلَيْهِ السَّلَامُ أَوَّلَ مَرَّةٍ.", more: "وَقَدْ ذَكَرَ الْقُرْآنُ الْكَرِيمُ هَذَا الْوَادِيَ بِاسْمِهِ فِي سُورَةِ طٰهٰ." },
     },
     focus: medPoint(28.56, 33.98, CITY_ZOOM),

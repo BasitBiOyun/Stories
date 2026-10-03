@@ -1201,7 +1201,7 @@ entries.set(key, { word, definition });
             'Handle the fire scene as a miracle of protection; focus on the lesson of trust.',
             'Explain "idols" simply as physical things people mistakenly worshipped instead of the Creator.',
             'Present Hagar and Ishmael’s story with deep respect for their patience, hope, and resilience.',
-            'Focus on key historical milestones like the building of the Ka‘ba and the miracle of Zamzam.',
+            'Focus on key historical milestones like the building of the Ka’ba and the miracle of Zamzam.',
             'Keep structural focus on internal strength and character development of the prophets.'
           ]
         ) : isMoses ? (

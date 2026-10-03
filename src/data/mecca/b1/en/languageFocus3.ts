@@ -149,17 +149,17 @@ export const meccaB1LanguageFocusChapter11: Record<number, Exercise[]> = {
       question: 'Which forms show a future development seen from the past, and an action someone heard?',
       formChoices: [
         { sentence: 'From the beginning, Islam showed that Muslims were a new community. They [choice] different from the people around them.', options: ['are going to be', 'were going to be', 'was going to be'], answer: 1 },
-        { sentence: 'When they heard Prophet Muhammad (as) [choice] the Quran, they were sure it was from Allah.', options: ['to read', 'reads', 'read'], answer: 2 },
+        { sentence: 'When they heard Prophet Muhammad (pbuh) [choice] the Qur’an, they were sure it was from Allah.', options: ['to read', 'reads', 'read'], answer: 2 },
       ],
       correctAnswer: null,
-      explanation: '“Was/were going to + verb” describes a future development seen from a point in the past: at the beginning, the difference was still to come. “They” is plural, so “were”. “Hear + person + base verb” reports an action that someone heard from start to end: “heard Prophet Muhammad read the Quran” (no “to”, and no -s).',
+      explanation: '“Was/were going to + verb” describes a future development seen from a point in the past: at the beginning, the difference was still to come. “They” is plural, so “were”. “Hear + person + base verb” reports an action that someone heard from start to end: “heard Prophet Muhammad read the Qur’an” (no “to”, and no -s).',
       feedback: { correct: 'Correct. You chose the future-in-the-past and the right verb after “heard”.', incorrect: 'The story is told in the past, and “they” is plural. After “heard + person”, use the base verb. Check the first two paragraphs of Chapter 11.' },
     },
     {
       id: 'mecca-b1-language-11-hearing-response-contrast', type: 'word-bank', title: 'Effect, Contrast and Time',
       instructions: 'Complete the lines from Chapter 11 with words from the bank. Three words are not needed.',
       question: 'Which words show an effect on people, a contrast between reactions, and a length of time?',
-      fillBlanksText: 'This message changed them deeply. It touched their hearts and minds and made them [blank] great respect. [blank], many leaders ignored the Quran and stood against the Prophet (as). Prophet Muhammad (as) taught in Mecca [blank] 13 years, in a city with about 5,000 to 10,000 people.',
+      fillBlanksText: 'This message changed them deeply. It touched their hearts and minds and made them [blank] great respect. [blank], many leaders ignored the Qur’an and stood against the Prophet (pbuh). Prophet Muhammad (pbuh) taught in Mecca [blank] 13 years, in a city with about 5,000 to 10,000 people.',
       wordBank: ['to feel', 'However', 'since', 'feel', 'So', 'for'],
       correctAnswer: ['feel', 'However', 'for'],
       explanation: '“Make + person + base verb” shows an effect on someone’s feelings: “made them feel great respect” (no “to”). “However” introduces a reaction that is the opposite of the one before; “So” would wrongly present the leaders’ opposition as a result of the message touching people’s hearts. “For + a period of time” gives the length of time; “since” needs a starting point.',
@@ -210,14 +210,14 @@ export const meccaB1LanguageFocusChapter12: Record<number, Exercise[]> = {
         { left: 'They had high prestige', right: 'Others respected and admired them a lot.' },
         { left: 'caretakers of pilgrimage', right: 'the people who looked after visitors to the holy place' },
         { left: 'turned the people against the new religion', right: 'made others hostile to Islam' },
-        { left: 'the Quran forbade this', right: 'the Quran said that people must not do it' },
+        { left: 'the Qur’an forbade this', right: 'the Qur’an said that people must not do it' },
         { left: 'Islam also commanded zakat and sadaqah', right: 'Islam made giving to those in need a duty' },
       ],
       correctAnswer: {
         'They had high prestige': 'Others respected and admired them a lot.',
         'caretakers of pilgrimage': 'the people who looked after visitors to the holy place',
         'turned the people against the new religion': 'made others hostile to Islam',
-        'the Quran forbade this': 'the Quran said that people must not do it',
+        'the Qur’an forbade this': 'the Qur’an said that people must not do it',
         'Islam also commanded zakat and sadaqah': 'Islam made giving to those in need a duty',
       },
       explanation: '“Forbid” (past: forbade) means “say that something must not be done”; “command” means “order as a duty”. “Turn someone against something” means “make them hostile to it”. “Prestige” is the respect a person or group has in society. These words show both why the leaders had power and how Islam challenged it.',
@@ -239,7 +239,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
         { id: 'a', text: 'The leaders of Mecca went further.' },
         { id: 'b', text: 'At first, the leaders of Mecca only mocked Islam.' },
         { id: 'c', text: 'Between 617 and 620, they began a social and economic boycott against Muslims and those who helped them.' },
-        { id: 'd', text: 'But when the Quran criticized the idols and warned against false worship, their opposition became violent.' },
+        { id: 'd', text: 'But when the Qur’an criticized the idols and warned against false worship, their opposition became violent.' },
       ],
       correctAnswer: ['b', 'd', 'a', 'c'],
       explanation: '“At first” sets the earliest stage, and “only” shows it was limited to mockery. “But when …” marks a change caused by a new event. “Went further” tells the reader that the next action will be even stronger, and the boycott sentence gives that action. These markers show escalation: each step is more serious than the one before.',
@@ -251,7 +251,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
       question: 'Can you correct a repeated past action, a reported order and a purpose phrase?',
       errorItems: [
         {
-          sentence: 'Whenever Prophet Muhammad (as) walked by, they laugh and said that he was talking about messages from heaven.',
+          sentence: 'Whenever Prophet Muhammad (pbuh) walked by, they laugh and said that he was talking about messages from heaven.',
           error: 'laugh',
           options: ['were laugh', 'laughed', 'laughing'],
           answer: 1,
@@ -263,7 +263,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: 'During this hard time, the Prophet (as), Khadija, and Abu Talib spent their money for support the Muslims.',
+          sentence: 'During this hard time, the Prophet (pbuh), Khadija, and Abu Talib spent their money for support the Muslims.',
           error: 'for support',
           options: ['for to support', 'supporting to', 'to support'],
           answer: 2,
@@ -335,7 +335,7 @@ export const meccaB1LanguageFocusChapter14: Record<number, Exercise[]> = {
       question: 'Can you correct the verb forms after “stop” and “want”, and in a list of -ing forms?',
       errorItems: [
         {
-          sentence: 'Prophet Muhammad (as) continued to ask people to stop worship idols and worship Allah alone.',
+          sentence: 'Prophet Muhammad (pbuh) continued to ask people to stop worship idols and worship Allah alone.',
           error: 'stop worship',
           options: ['stop worshipping', 'stop to worship', 'stopping worship'],
           answer: 0,
@@ -398,7 +398,7 @@ export const meccaB1LanguageFocusChapter15: Record<number, Exercise[]> = {
           answer: 0,
         },
         {
-          sentence: 'Prophet Muhammad (as) told people be fair, respectful, and merciful.',
+          sentence: 'Prophet Muhammad (pbuh) told people be fair, respectful, and merciful.',
           error: 'people be',
           options: ['to people be', 'people to be', 'people being'],
           answer: 1,

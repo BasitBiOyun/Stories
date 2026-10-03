@@ -6,23 +6,23 @@ export const meccaB1StoryMapCopyEn: StoryMapCopy = {
     mecca: {
       name: 'Mecca',
       kind: 'Holy city',
-      text: 'Mecca is the holy city of Islam, and the Holy Ka’ba is here. The Quran describes Mecca as a valley where no crops grow, so people made money through trade. In the 5th century, the Quraysh tribe took over the city and the Ka’ba. In the pilgrimage season, people went to big fairs such as Ukaz, Majannah and Dhul-Majaz first, and then to Arafat.',
-      teacherNote: 'The book does not give the locations of Arafat or of the fairs (Ukaz, Majannah, Dhul-Majaz), so they are not drawn. Chapter 2 adds that the Qiblah is in Mecca and that Prophet Muhammad (as) was born here and spent 52 years of his life here.',
+      text: 'Mecca is the holy city of Islam, and the Holy Ka’ba is here. The Qur’an describes Mecca as a valley where no crops grow, so people made money through trade. In the 5th century, the Quraysh tribe took over the city and the Ka’ba. In the pilgrimage season, people went to big fairs such as Ukaz, Majannah and Dhul-Majaz first, and then to Arafat.',
+      teacherNote: 'The book does not give the locations of Arafat or of the fairs (Ukaz, Majannah, Dhul-Majaz), so they are not drawn. Chapter 2 adds that the Qiblah is in Mecca and that Prophet Muhammad (pbuh) was born here and spent 52 years of his life here.',
       question: 'Why did the people of Mecca make money through trade?',
     },
     yemen: {
       name: 'Yemen',
       kind: 'Region',
-      text: 'After the discovery of Zamzam water, the Jurhumites from Yemen settled in Mecca. Ishmael (as) learned Arabic from them. Later, Meccan merchants traveled safely to Yemen to trade.',
+      text: 'After the discovery of Zamzam water, the Jurhumites from Yemen settled in Mecca. Ishmael (pbuh) learned Arabic from them. Later, Meccan merchants traveled safely to Yemen to trade.',
       teacherNote: 'The book does not say which way the Jurhumites traveled, so both lines are only a guide. Chapter 4 says the Khuza’a tribe later defeated the Jurhum tribe, but it does not say where the Khuza’a came from, so they are not on the map.',
-      question: 'What did Ishmael (as) learn from the Jurhumites?',
+      question: 'What did Ishmael (pbuh) learn from the Jurhumites?',
     },
     palestine: {
       name: 'Palestine',
       kind: 'Region',
-      text: 'Prophet Abraham (as) came to Mecca to reconstruct the Holy Ka’ba with his son Ishmael (as). After he completed his mission and invited people for pilgrimage, he returned to Palestine.',
-      teacherNote: 'The book gives no date for Abraham (as) and does not say where he set out from when he first brought Hagar and Ishmael (as) to Mecca. Only his return to Palestine (chapter 4) is drawn.',
-      question: 'What did Abraham (as) and Ishmael (as) do together in Mecca?',
+      text: 'Prophet Abraham (pbuh) came to Mecca to reconstruct the Holy Ka’ba with his son Ishmael (pbuh). After he completed his mission and invited people for pilgrimage, he returned to Palestine.',
+      teacherNote: 'The book gives no date for Abraham (pbuh) and does not say where he set out from when he first brought Hagar and Ishmael (pbuh) to Mecca. Only his return to Palestine (chapter 4) is drawn.',
+      question: 'What did Abraham (pbuh) and Ishmael (pbuh) do together in Mecca?',
     },
     iraq: {
       name: 'Iraq',
@@ -66,7 +66,7 @@ export const meccaB1StoryMapCopyEn: StoryMapCopy = {
   },
   legend: {
     'route:jurhum': 'The Jurhumites come from Yemen',
-    'route:abraham': 'Abraham (as) returns to Palestine',
+    'route:abraham': 'Abraham (pbuh) returns to Palestine',
     'route:tradeByzantium': 'Trade with Byzantium',
     'route:tradeYemen': 'Trade with Yemen',
     'route:tradeIraq': 'Trade with Iraq',
@@ -74,7 +74,7 @@ export const meccaB1StoryMapCopyEn: StoryMapCopy = {
   challenge: {
     mecca: 'Find Mecca, the holy city where the Holy Ka’ba is.',
     yemen: 'Find Yemen. The Jurhumites came from here and settled in Mecca.',
-    palestine: 'Find Palestine. Abraham (as) returned here after his mission in Mecca.',
+    palestine: 'Find Palestine. Abraham (pbuh) returned here after his mission in Mecca.',
     iraq: 'Find Iraq. Meccan merchants traveled here to trade.',
     ethiopia: 'Find Ethiopia, another place where Meccan merchants traded.',
   },

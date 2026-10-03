@@ -58,7 +58,7 @@ According to historical sources, he lived during the same era as important peopl
   ),
   story(
     3,
-    'Tekkés and Anatolia',
+    'Tekkes and Anatolia',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch3-clean.png?alt=media&token=e198d320-064d-4e55-ba56-f3157dead704',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F02_Chapter_3_Tekk%C3%A9s_and_Anatolia.mp3?alt=media&token=682bf6e3-309d-4d12-9672-3a2e89a0419e',
     `At that time, tekkes were not only places for Sûfî training. They were also important community organizations that helped people and brought them together. Furthermore, they received support from government officials. These places were very important for fine arts too, especially poetry. Many famous Turkish poets improved their skills in tekkes. Yunus Emre was also a great poet who trained under his spiritual tutor, Taptuk Emre.
@@ -71,7 +71,7 @@ Yunus Emre lived during the 13th and 14th centuries, which was a very difficult 
       { word: 'struggling', definition: 'Trying very hard to deal with something difficult.' },
     ],
     [
-      { id: 'yunus-b1-en-3-1', x: 27, y: 54, title: 'Tekkés', description: 'Tekkes were places of Sûfî training, community help and poetry.' },
+      { id: 'yunus-b1-en-3-1', x: 27, y: 54, title: 'Tekkes', description: 'Tekkes were places of Sûfî training, community help and poetry.' },
       { id: 'yunus-b1-en-3-2', x: 73, y: 35, title: 'Anatolia', description: 'Revolts, the defeat at Kösedağ and the Mongol invasion brought hard times to Anatolia.' },
     ],
   ),
@@ -564,7 +564,7 @@ Divan (his collected poems)`,
             "category": "History & Conflict",
             "level": "B1",
             "chapter": 3,
-            "chapterTitle": "Tekkés and Anatolia",
+            "chapterTitle": "Tekkes and Anatolia",
             "storyExample": "The Anatolian Seljuks were seriously weakened by the Babai revolts in the 13th century."
       },
       {
@@ -584,7 +584,7 @@ Divan (his collected poems)`,
             "category": "History & Conflict",
             "level": "B1",
             "chapter": 3,
-            "chapterTitle": "Tekkés and Anatolia",
+            "chapterTitle": "Tekkes and Anatolia",
             "storyExample": "The defeat caused the Mongols' invasion of Anatolia."
       },
       {
@@ -603,7 +603,7 @@ Divan (his collected poems)`,
             "category": "Society & Conditions",
             "level": "B1",
             "chapter": 3,
-            "chapterTitle": "Tekkés and Anatolia",
+            "chapterTitle": "Tekkes and Anatolia",
             "storyExample": "Because of these hard circumstances, Anatolia faced serious political, economic, and social problems."
       },
       {
@@ -622,7 +622,7 @@ Divan (his collected poems)`,
             "category": "Society & Conditions",
             "level": "B1",
             "chapter": 3,
-            "chapterTitle": "Tekkés and Anatolia",
+            "chapterTitle": "Tekkes and Anatolia",
             "storyExample": "People were struggling to cope with these tough situations."
       },
       {

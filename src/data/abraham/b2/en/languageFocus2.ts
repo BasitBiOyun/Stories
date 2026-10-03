@@ -4,7 +4,7 @@ import type { Exercise } from '../../../../types';
  * Abraham B2 (English) Language Focus. Each chapter follows Notice → Build → Use:
  * learners first discover what a form does in real chapter sentences, then practise
  * it in context, then use it in the chapter's reflection task. Every quoted sentence
- * comes from the English chapter text; Qur'anic verses are only read, sorted,
+ * comes from the English chapter text; Qur’anic verses are only read, sorted,
  * matched to meanings or asked about, never altered.
  */
 
