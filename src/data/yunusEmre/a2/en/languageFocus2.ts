@@ -9,20 +9,20 @@ export const yunusA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'yunus-a2-language-5-question-functions',
       type: 'sequencing',
-      title: 'From “It Looks Like” to “In Fact”',
+      title: 'From “It Looked Like” to “In Fact”',
       instructions: 'Put the four sentences from Chapter 5 in the correct order.',
       question: 'How does the chapter move from what we see to what is really happening?',
       sequencingItems: [
-        { id: '1', text: 'It looks like Yunus is working with wood to fix crooked pieces.' },
-        { id: '2', text: 'But in fact, he is training his own heart and ego.' },
-        { id: '3', text: 'Every time he uses the axe, he makes a bad part of himself better.' },
+        { id: '1', text: 'It looked like Yunus was working with wood to fix crooked pieces.' },
+        { id: '2', text: 'But in fact, he was training his own heart and ego.' },
+        { id: '3', text: 'Every time he used the axe, he made a bad part of himself better.' },
         { id: '4', text: 'This service taught him how to have a good heart and do the right thing.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
-      explanation: '“It looks like …” gives a first idea: what we see. “But in fact …” gives the true meaning. “Every time …” shows something that happens again and again. “This service taught him how to …” gives the result: what Yunus learned.',
+      explanation: '“It looked like …” gives a first idea: what we see. “But in fact …” gives the true meaning. “Every time …” shows something that happens again and again. “This service taught him how to …” gives the result: what Yunus learned.',
       feedback: {
         correct: 'Correct. You followed the chapter from the first idea to the true meaning and the result.',
-        incorrect: 'Read the second paragraph of Chapter 5. Start with “It looks like”. Which sentence says what is true “in fact”?',
+        incorrect: 'Read the second paragraph of Chapter 5. Start with “It looked like”. Which sentence says what is true “in fact”?',
       },
     },
     {
@@ -52,8 +52,8 @@ export const yunusA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — First impression: “At first, it looks like Yunus is ...”', mode: 'Individual' },
-        { question: 'Sentence 2 — Deeper meaning: “But in fact, he is ...”', mode: 'Individual' },
+        { question: 'Sentence 1 — First impression: “At first, it looked like Yunus was ...”', mode: 'Individual' },
+        { question: 'Sentence 2 — Deeper meaning: “But in fact, he was ...”', mode: 'Individual' },
         { question: 'Sentence 3 — Repeated change: “Every time he ..., he ...”', mode: 'Pair' },
         { question: 'Sentence 4 — Learning: “This service taught him how to ...”', mode: 'Pair' },
       ],

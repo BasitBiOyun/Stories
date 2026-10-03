@@ -1353,7 +1353,7 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'The Last Moment',
       instructions: 'Read the sentence from Chapter 32. Then choose the best explanation.',
-      question: '“A voice stopped Abraham (pbuh) just as his knife was about to near Ishmael …” What does “was about to” show?',
+      question: '“A voice stopped Abraham (pbuh) just as his knife was about to touch Ishmael …” What does “was about to” show?',
       options: [
         'The action was going to happen in the next moment, but it had not happened yet.',
         'The knife had already touched Ishmael.',

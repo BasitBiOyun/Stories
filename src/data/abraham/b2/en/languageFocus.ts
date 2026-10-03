@@ -337,9 +337,9 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
       instructions: 'Choose the summary that keeps the level of certainty of Chapter 4.',
       question: 'Which summary of Abraham’s birthplace and dates is faithful to the chapter?',
       options: [
-        'Accounts differ, but broadly speaking Abraham was born in Mesopotamia, probably around the 20th century BC.',
+        'Accounts differ, but broadly speaking Abraham was born in Mesopotamia, probably around the 22nd and 21st centuries BC.',
         'Abraham was born in Ur in 2200 BC and later migrated to Harran.',
-        'The sources agree that Abraham was born in Sumer and lived in the 20th century BC.',
+        'The sources agree that Abraham was born in Sumer and lived in the 22nd and 21st centuries BC.',
         'Because the sources disagree, the chapter says nothing about where or when Abraham lived.',
       ],
       correctAnswer: 0,
@@ -364,7 +364,7 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
         },
         {
           options: ['to have lived', 'to living', 'that lived'],
-          sentence: 'Historically, Abraham (pbuh) is believed to live in the 20th century BC.',
+          sentence: 'Historically, Abraham (pbuh) is believed to live in the 22nd and 21st centuries BC.',
           error: 'to live',
           answer: 0,
         },

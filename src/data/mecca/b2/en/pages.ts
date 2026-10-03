@@ -260,7 +260,7 @@ The position of Arab women before Islam was not always the same. It changed acco
 
 However, many women from lower social and economic groups were mistreated and disadvantaged. Those women and girls had no status and no human or legal rights in their family lives and in society. They had no say and were not allowed to give their opinions.
 
-When news of the birth of a daughter was given to them, people in the Age of Ignorance lamented and their faces were darkened with grief and fury. They themselves were ashamed of having daughters and longed for sons to increase their power and dignity. The Holy Qur’an describes this scene in Surah Nahl, verses 58-59;`,
+When news of the birth of a daughter was given to them, people in the Age of Ignorance lamented and their faces were darkened with grief and fury. They themselves were ashamed of having daughters and longed for sons to increase their power and dignity.`,
     vocabulary: [
       { word: 'crucial', definition: 'Extremely important.' },
       { word: 'ancestors', definition: 'Family members who lived long ago.' },
@@ -280,7 +280,7 @@ When news of the birth of a daughter was given to them, people in the Age of Ign
     title: 'Slavery, Poets and Media',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch11-clean.png?alt=media&token=463b4569-1c7e-401c-95ce-8c82fdad0be8',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F10_Chapter_11_Slavery%2C_Poets_and_Media.mp3?alt=media&token=05ecbabc-1d76-4ba2-9605-8e61e949263c',
-    content: `“And when one of them is given news of a female baby, his face darkens, and he can’t breathe with grief. He hides from the people because of the bad news given to him. Shall he keep it in humiliation, or bury it in the dust? Evil is the decision they make.”
+    content: `The Holy Qur’an describes this scene in Surah Nahl, verses 58-59: “And when one of them is given news of a female baby, his face darkens, and he can’t breathe with grief. He hides from the people because of the bad news given to him. Shall he keep it in humiliation, or bury it in the dust? Evil is the decision they make.”
 
 Slavery was an economic institution in Mecca. Slaves, both male and female, were the most miserable class in society. They were bought and sold like animals. They were employed in various tasks as well as for people’s personal service. They were a show of wealth. They also acted as weapons to protect their owners in times of war. White slaves brought from the regions of Damascus and Iraq were more expensive than black slaves brought from Africa because they served better and were skilled workers.
 
