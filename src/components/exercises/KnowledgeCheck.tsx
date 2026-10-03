@@ -92,7 +92,7 @@ const QuestionCard = ({
       role={showResults && hasAnswer ? 'button' : undefined}
       tabIndex={showResults && hasAnswer ? 0 : undefined}
       className={cn(
-        'rounded-[24px] bg-white/85 p-4 sm:p-5 md:p-6 shadow-[0_12px_32px_rgba(63,49,28,0.055)] ring-1 flex flex-col gap-4 min-w-0 self-start w-full transition-all',
+        'rounded-[24px] bg-white/85 p-4 sm:p-5 md:p-6 ring-1 flex flex-col gap-4 min-w-0 self-start w-full transition-all',
         showResults && hasAnswer && 'cursor-pointer',
         showResults && hasAnswer
           ? correct
@@ -415,9 +415,8 @@ export const KnowledgeCheck = ({
     <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pe-2">
       <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
-          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 ring-1 shadow-[0_18px_48px_rgba(63,49,28,0.07)] flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
-          theme.softBg,
-          theme.softBorder
+          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
+          theme.softBg
         )}>
           <div className="flex items-center gap-3 min-w-0">
             <div className={cn('flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shrink-0', theme.accentBg)}>

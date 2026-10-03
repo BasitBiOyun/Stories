@@ -562,7 +562,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                 className={cn(
                   'px-3 py-2 rounded-xl text-xs font-bold transition-all border whitespace-nowrap',
                   filter === opt.value
-                    ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
+                    ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')}`
                     : cn('bg-white/60 hover:bg-white', colTheme.brandText, colTheme.border)
                 )}
               >

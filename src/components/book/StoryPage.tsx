@@ -1192,7 +1192,7 @@ export const StoryPage = ({
         data-quick-challenge
       >
         <div className={cn(
-          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_16px_42px_rgba(63,49,28,0.08)]',
+          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_22px_28px_-26px_rgba(63,49,28,0.45)]',
           quickTheme.container
         )}>
           <div className={cn('absolute inset-y-0 start-0 w-1.5', quickTheme.rail)} aria-hidden="true" />
@@ -1300,7 +1300,7 @@ export const StoryPage = ({
         data-language-focus
       >
         <div className={cn(
-          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_14px_38px_rgba(63,49,28,0.06)]',
+          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_22px_28px_-26px_rgba(63,49,28,0.4)]',
           focusTheme.container
         )}>
           <div className={cn('pointer-events-none absolute -end-12 -top-12 h-36 w-36 rounded-full blur-3xl', focusTheme.glow)} aria-hidden="true" />
@@ -1498,7 +1498,7 @@ export const StoryPage = ({
               ref={audioControlsRef}
               dir="ltr"
               className={cn(
-                "relative flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
+                "relative flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
                 "bg-brand-50/88 border-brand-200/90"
               )}
             >
@@ -1684,7 +1684,7 @@ export const StoryPage = ({
               onMouseLeave={handleMouseLeave}
               style={{ rotateX, rotateY }}
             >
-              <div className="relative aspect-[4/5] w-full rounded-[1.5rem] shadow-xl overflow-hidden">
+              <div className="relative aspect-[4/5] w-full rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden">
                 <motion.img 
                   src={page.image} 
                   alt={page.title}
@@ -1743,7 +1743,7 @@ export const StoryPage = ({
                   onMouseLeave={handleMouseLeave}
                   style={{ rotateX, rotateY }}
                 >
-                  <div className="relative aspect-[4/5] w-full rounded-[1.25rem] shadow-xl overflow-hidden border border-gold/15">
+                  <div className="relative aspect-[4/5] w-full rounded-[1.25rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden border border-gold/15">
                     <motion.img 
                       src={page.image} 
                       alt={page.title}

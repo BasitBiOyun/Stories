@@ -248,7 +248,7 @@ export const ExercisePage = ({
           className="relative group h-full flex flex-col justify-center w-full min-h-0 flex-1"
         >
           <div className={cn(
-            "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 shadow-xl h-full flex flex-col overflow-y-auto custom-scrollbar",
+            "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 h-full flex flex-col overflow-y-auto custom-scrollbar",
             colTheme.containerBorder
           )}>
             <div className="flex-1 min-h-0 flex flex-col h-full">
@@ -277,8 +277,7 @@ export const ExercisePage = ({
                 <div className="h-full min-h-0 overflow-y-auto pe-1 custom-scrollbar">
                   <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-4 pb-4">
                     <section className={cn(
-                      "rounded-[28px] bg-white/68 p-5 shadow-[0_16px_42px_rgba(63,49,28,0.06)] ring-1 sm:p-6",
-                      colTheme.containerBorder
+                      "rounded-[28px] bg-white/68 p-5 sm:p-6"
                     )}>
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0">
