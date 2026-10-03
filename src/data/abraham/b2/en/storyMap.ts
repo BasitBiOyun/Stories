@@ -6,7 +6,7 @@ export const abrahamB2StoryMapCopyEn: StoryMapCopy = {
     babylon: {
       name: 'Babylon or Ur',
       kind: 'Birthplace',
-      text: 'There are different ideas about Abraham (pbuh)’s birthplace. Most generally, the book says he was born in the city of Ur or Babylon, the country of King Nimrod. He is believed to have lived in the 20th century BC, and some sources suggest 2200–2000 BC. At that time, the Sumerian/Mesopotamian country was prosperous in agriculture and industry.',
+      text: 'There are different ideas about Abraham (pbuh)’s birthplace. Most generally, the book says he was born in the city of Ur or Babylon, the country of King Nimrod. He is believed to have lived in the 22nd and 21st centuries BC, and some sources suggest 2200–2000 BC. At that time, the Sumerian/Mesopotamian country was prosperous in agriculture and industry.',
       teacherNote: 'The book gives both names, so the pin marks Babylon and the small dot marks Ur; neither is presented as certain. Chapter 5 adds that he was born in a cave where his mother was hidden from Nimrod. The dates are hedged (“believed”, “some sources”).',
       question: 'Why does the book give two names for Abraham (pbuh)’s birthplace?',
     },

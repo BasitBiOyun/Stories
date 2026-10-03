@@ -69,7 +69,7 @@ const approvedEnglishHotspots: HotspotOverrides = {
   },
   musa: {
     'h1-1': { title: 'Cruel Ruler', description: 'He was an unfair and cruel ruler.' },
-    'h1-2': { title: 'Children of Israel', description: 'They believed in one Allah, like their great-grandfather, Prophet Abraham (pbuh).' },
+    'h1-2': { title: 'Children of Israel', description: 'They believed in one Allah, like Prophet Abraham (pbuh).' },
     'h2-1': { title: 'A Fire', description: 'He saw a fire in his vision.' },
     'h2-2': { title: 'His Soldiers', description: 'Then, the king told his soldiers: “Kill all the baby boys of the Children of Israel.”' },
     'h2-3': { title: 'Baby Boys', description: 'When they found baby boys, they killed them.' },
