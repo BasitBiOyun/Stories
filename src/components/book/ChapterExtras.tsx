@@ -177,7 +177,7 @@ export const BeforeYouReadPanel = ({
             {right && <CheckCircle size={16} />}
             {right ? L.right : `${L.wrong} ${data.options[data.answer]}`}
           </p>
-          {data.quote && <p className={cn('mt-1 font-serif italic text-wood/70', isArabic ? 'text-base not-italic' : 'text-sm')}>“{data.quote}”</p>}
+          {data.quote && <p className={cn('mt-1 font-serif text-wood/70', isArabic ? 'text-base' : 'text-sm italic')}>{isArabic ? `«${data.quote}»` : `“${data.quote}”`}</p>}
         </div>
       )}
     </section>

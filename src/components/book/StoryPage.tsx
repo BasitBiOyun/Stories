@@ -1747,7 +1747,7 @@ export const StoryPage = ({
               "font-serif leading-[1.72] text-wood/90",
               isDyslexic ? "font-sans tracking-wide" : "",
               isRTL && "text-right",
-              hideStoryText && "blur-[6px] select-none pointer-events-none"
+              hideStoryText && "blur-[11px] select-none pointer-events-none"
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
             aria-hidden={hideStoryText || undefined}
@@ -1818,7 +1818,7 @@ export const StoryPage = ({
                   "font-serif leading-[1.72] text-wood/90",
                   isDyslexic ? "font-sans tracking-wide" : "",
                   isRTL && "text-right",
-                  hideStoryText && "blur-[6px] select-none pointer-events-none"
+                  hideStoryText && "blur-[11px] select-none pointer-events-none"
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
                 aria-hidden={hideStoryText || undefined}
