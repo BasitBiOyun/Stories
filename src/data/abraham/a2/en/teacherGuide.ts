@@ -279,7 +279,7 @@ export const abrahamA2TeacherGuideEn: TeacherGuideSection[] = [
     assessmentTools: { rubric: ['Background vs sudden event', 'Water-to-city chain', 'was + -ing / because / because of', 'Personal story'], exitTicket: ['Complete: “I was ____ing. Suddenly, ____. I was happy because ____.”'] },
   },
   {
-    chapter: "Chapter 14 — The Ka'ba and Abraham's Message", timing: '40 minutes',
+    chapter: "Chapter 14 — The Ka’ba and Abraham's Message", timing: '40 minutes',
     objectives: ['Say what task Allah gave Abraham and how Ishmael answered.', 'Connect the Ka’ba, Hajj today and the final message as the chapter states them.', 'Discover that “will” can make a promise, see how one sentence answers When? Where? How often? Why?, and use After + past event, still and One of + plural.', 'Describe a shared class task with a promise, a purpose and something that continues.'],
     pedagogy: 'This last chapter joins the story together. Start with a “story wall”: learners call out one word from each earlier chapter and you write them in a line on the board. Then learners read how the story ends: a task, a promise, a building, a place people still visit, and a message. The grammar starts with Ishmael’s answer: you ask “Is he talking about the past or the future? Is he sure?” and learners discover that “will … for sure” is a promise.',
     priorKnowledge: ['Mecca and Zamzam from Chapter 13; build, help, family.'],
