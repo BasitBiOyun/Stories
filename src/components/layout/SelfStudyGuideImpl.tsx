@@ -8,6 +8,7 @@ import { cn } from '../../lib/utils';
 import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
 import { PageData, StudentGuideSection, TeacherGuideSection } from '../../types';
+import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
@@ -479,6 +480,8 @@ export const SelfStudyGuide = ({
             {metadata?.recommendedUse?.length ? renderList(isAr ? 'طريقة الاستخدام المقترحة' : 'Recommended Study Routine', metadata.recommendedUse) : null}
           </div>
         )}
+
+        <GuideV2Tools language={language} variant="self" />
       </motion.div>
     );
   };
@@ -587,6 +590,8 @@ export const SelfStudyGuide = ({
             </motion.div>
           )}
         </AnimatePresence>
+
+        <GuideV2ChapterBox page={activeSection ? storyPageForSection(pages, activeSection, activeGuideSection) : undefined} language={language} variant="self" />
 
         <div className="rounded-[1.6rem] border border-white/[0.07] bg-black/10 p-3 sm:p-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-2">

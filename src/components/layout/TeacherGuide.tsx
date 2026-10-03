@@ -30,6 +30,7 @@ import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
 
 const splitLessonPlanSteps = (lessonPlan: string): string[] => {
   const normalized = lessonPlan.replace(/\s+/g, ' ').trim();
@@ -387,6 +388,7 @@ entries.set(key, { word, definition });
                 <li className="flex gap-2.5 sm:gap-3 items-start"><CheckCircle size={18} className="text-gold shrink-0 mt-0.5" /> <span><strong>{t('tg.character')}:</strong> {t('tg.characterDesc')}</span></li>
               </ul>
             </div>
+            <GuideV2Tools language={language} variant="teacher" />
           </div>
         );
       case 'curriculum':
@@ -642,6 +644,8 @@ entries.set(key, { word, definition });
                           </div>
                         </div>
                       </div>
+
+                      <GuideV2ChapterBox page={storyPageForSection(pages, section, idx)} language={language} variant="teacher" />
 
                       <div className="bg-gold/5 border border-gold/10 p-4 sm:p-6 rounded-2xl space-y-3 sm:space-y-4">
                         <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">

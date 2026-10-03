@@ -1,4 +1,9 @@
 import type { BookData, PageData } from '../../../types';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { adamA2ChapterExtrasEn } from './en/chapterExtras';
+import { adamA2GroupTasksEn } from './en/groupTasks';
+import { adamA2ChapterExtrasAr } from './ar/chapterExtras';
+import { adamA2GroupTasksAr } from './ar/groupTasks';
 import { adamA2Pages } from './en/pages';
 import { adamA2PagesAr } from './ar/pages';
 import {
@@ -69,7 +74,7 @@ export const adamA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
+  pages: applyChapterExtras(buildEnglishPages(), { ...adamA2ChapterExtrasEn, groupTasks: adamA2GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -79,7 +84,7 @@ export const adamA2BookDataAr: BookData = {
   title: 'قصص الأنبياء: آدم عليه السلام',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
+  pages: applyChapterExtras(buildArabicPages(), { ...adamA2ChapterExtrasAr, groupTasks: adamA2GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
