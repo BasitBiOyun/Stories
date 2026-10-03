@@ -119,6 +119,7 @@ export const PlacesPage = ({
   const locale = language === 'ar' ? 'ar' : 'en';
   const text = COPY[locale];
   const detailRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef(new Map<string, HTMLButtonElement>());
 
   const entries = useMemo<BookEntityEntry[]>(
     () => (isHistoricalEntityBookKey(page.entityBookKey) ? getBookEntityIndex(page.entityBookKey) : []),
@@ -146,8 +147,8 @@ export const PlacesPage = ({
   const placeCount = entries.filter(entry => GROUP_OF_KIND[entry.entity.kind] !== 'people').length;
   const nameCount = entries.length - placeCount;
   const mapAspect = selected.entity.mapAspect ?? MEDITERRANEAN_MAP_ASPECT;
-  // On large screens the map takes the room left above the picture and the text:
-  // as wide as the column allows, and never taller than the space it sits in.
+  // On large screens the map takes the room left above the picture row: as wide
+  // as the column allows, and never taller than the space it sits in.
   const mapClassName = 'w-full lg:w-[min(100cqw,calc((100cqh-var(--info-height))*var(--map-ratio)))]';
   const mapStyle = { '--map-ratio': aspectRatioOf(mapAspect) } as React.CSSProperties;
   const slidOut = selected.entity.focus?.mode === 'feature' && Boolean(selected.entity.focus.view);
@@ -171,6 +172,10 @@ export const PlacesPage = ({
     setSelectedId(id);
     setPlaying(false);
     scrollToDetail();
+    // A place picked on the map brings its card into view in the list.
+    if (!window.matchMedia('(max-width: 1023px)').matches) {
+      window.setTimeout(() => cardRefs.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
+    }
   };
 
   const chapterLine = (chapters: number[]) =>
@@ -214,22 +219,37 @@ export const PlacesPage = ({
     return (
       <button
         key={entry.entity.id}
+        ref={element => { if (element) cardRefs.current.set(entry.entity.id, element); else cardRefs.current.delete(entry.entity.id); }}
         {...common}
         className={cn(
           'flex min-h-0 items-start gap-3 overflow-hidden rounded-2xl border border-black/5 border-s-[3px] p-2 text-start transition-all',
           isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
         )}
       >
-        <EntityPicture entity={entry.entity} iconSize={32} className="aspect-square h-24 w-24 shrink-0 self-start rounded-xl lg:h-auto lg:w-[40%] lg:max-w-[12rem]" />
+        <EntityPicture entity={entry.entity} iconSize={32} className="aspect-square h-24 w-24 shrink-0 self-start rounded-xl lg:h-auto lg:w-[42%] lg:max-w-[14rem]" />
         <span className="flex min-w-0 flex-1 flex-col py-0.5">
           <span className="flex items-baseline justify-between gap-2">
             <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
             {tag}
           </span>
           <span className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</span>
-          <span className="mt-1 line-clamp-2 font-serif text-[13px] leading-snug text-wood/75 min-[1800px]:text-[14px] [@media(min-height:860px)]:line-clamp-3 [@media(min-height:1000px)]:line-clamp-4">
+          <span className="mt-1 font-serif text-[13.5px] leading-snug text-wood/80 min-[1800px]:text-[15px]">
             {copy.summary}
+            {isActive && copy.more && <> {copy.more}</>}
           </span>
+          {isActive && quote && (
+            <span
+              className="mt-2 block rounded-xl border-s-[3px] px-2.5 py-1.5"
+              style={{ borderInlineStartColor: tint(color, 0.6), backgroundColor: 'rgba(255,255,255,0.6)' }}
+            >
+              <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-wood/60">
+                <BookOpen size={12} /> {text.inTheStory} · {text.chapter} {formatNumber(quote.chapter)}
+              </span>
+              <span className="mt-0.5 block font-serif text-[13px] italic leading-snug text-wood/85 min-[1800px]:text-[14px]">
+                “<QuoteText quote={quote} color={color} />”
+              </span>
+            </span>
+          )}
         </span>
       </button>
     );
@@ -278,7 +298,7 @@ export const PlacesPage = ({
           <div className="grid grid-cols-[minmax(0,1fr)] gap-3 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] min-[1800px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div ref={detailRef} className="scroll-mt-3 lg:min-h-0">
               <section
-                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:15rem] lg:h-full lg:[container-type:size] [@media(max-height:820px)]:[--info-height:14rem] [@media(min-height:1000px)]:[--info-height:17rem]"
+                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:42cqh] lg:h-full lg:[container-type:size]"
               >
                 <div className="flex shrink-0 justify-center">
                   <EntityMap
@@ -295,60 +315,44 @@ export const PlacesPage = ({
                     style={mapStyle}
                   />
                 </div>
-                <div className="flex items-start gap-3 pt-3 lg:min-h-0 lg:flex-1 lg:items-stretch" aria-live="polite">
+                {/* Under the map: the picture, square and as large as the room allows, with
+                    the name, chapters and a link back to the story beside it. The full text
+                    is on the selected card in the list. */}
+                <div className="flex items-stretch gap-4 pt-3 lg:min-h-0 lg:flex-1" aria-live="polite">
                   <EntityPicture
                     entity={selected.entity}
-                    iconSize={48}
-                    className="aspect-square w-28 shrink-0 self-start rounded-2xl shadow-sm sm:w-48 lg:h-auto lg:w-[min(42%,calc(var(--info-height)-1rem))]"
+                    iconSize={56}
+                    className="aspect-square w-36 shrink-0 self-start rounded-2xl shadow-sm sm:w-52 lg:h-auto lg:w-[min(55%,calc(var(--info-height)-0.75rem))]"
                   />
-                  <div className="flex min-w-0 flex-1 flex-col lg:min-h-0 lg:overflow-y-auto custom-scrollbar">
-                    <div className="flex items-start justify-between gap-2">
-                      <span className="flex items-center gap-1.5 pt-0.5 text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: selectedColors.base }}>
-                        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: selectedColors.base }} />
-                        {selectedCopy.kindLabel}
-                      </span>
-                      <span
-                        className="shrink-0 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
-                        style={{ borderColor: tint(selectedColors.base, 0.25), backgroundColor: tint(selectedColors.base, 0.08), color: selectedColors.base }}
-                      >
-                        {selectedCopy.periodLabel}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-xl font-bold leading-tight text-brand-950 [@media(max-height:820px)]:text-lg">
+                  <div className="flex min-w-0 flex-1 flex-col gap-1.5 py-1">
+                    <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: selectedColors.base }}>
+                      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: selectedColors.base }} />
+                      {selectedCopy.kindLabel}
+                    </span>
+                    <h3 className="font-display text-2xl font-bold leading-tight text-brand-950 [@media(max-height:820px)]:text-xl">
                       {selectedCopy.title}
-                      <LearnerName entity={selected.entity} className="text-wood/80" />
+                      <LearnerName entity={selected.entity} className="block text-lg text-wood/75 [@media(max-height:820px)]:text-base" />
                     </h3>
-                    <p className="mt-1 font-serif text-[15px] leading-snug text-wood/90 [@media(max-height:820px)]:text-[14px] [@media(min-height:900px)]:xl:text-base">
-                      {selectedCopy.summary}
-                      {selectedCopy.more && <> {selectedCopy.more}</>}
-                    </p>
-                    {quote && (
-                      <figure className="mt-2 rounded-xl border-s-[3px] px-3 py-1.5" style={{ borderInlineStartColor: tint(selectedColors.base, 0.6), backgroundColor: tint(selectedColors.base, 0.06) }}>
-                        <figcaption className="flex flex-wrap items-center justify-between gap-x-2 text-[10px] font-black uppercase tracking-[0.14em] text-wood/60">
-                          <span className="flex items-center gap-1.5 whitespace-nowrap">
-                            <BookOpen size={12} /> {text.inTheStory} · {text.chapter} {formatNumber(quote.chapter)}
-                          </span>
-                          {onOpenPage && (
-                            <button
-                              type="button"
-                              onClick={() => onOpenPage(quote.pageIndex)}
-                              className="inline-flex shrink-0 items-center gap-1 rounded-md px-1.5 py-0.5 normal-case tracking-normal text-[11px] font-bold hover:bg-white/80"
-                              style={{ color: selectedColors.base }}
-                            >
-                              {text.readChapter(formatNumber(quote.chapter))}
-                              <ArrowRight size={12} className={cn(isRTL && 'rotate-180')} />
-                            </button>
-                          )}
-                        </figcaption>
-                        <blockquote className="mt-0.5 line-clamp-3 font-serif text-[13.5px] italic leading-snug text-wood/85 [@media(max-height:820px)]:line-clamp-2 [@media(max-height:820px)]:text-[13px]">
-                          “<QuoteText quote={quote} color={selectedColors.base} />”
-                        </blockquote>
-                      </figure>
+                    <span
+                      className="self-start rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
+                      style={{ borderColor: tint(selectedColors.base, 0.25), backgroundColor: tint(selectedColors.base, 0.08), color: selectedColors.base }}
+                    >
+                      {selectedCopy.periodLabel}
+                    </span>
+                    <span className="text-[12px] font-bold text-wood/65">{chapterLine(selected.chapters)}</span>
+                    {quote && onOpenPage && (
+                      <button
+                        type="button"
+                        onClick={() => onOpenPage(quote.pageIndex)}
+                        className="mt-1 inline-flex items-center gap-1.5 self-start rounded-xl px-3 py-1.5 text-[12px] font-bold text-white shadow-sm transition-opacity hover:opacity-90"
+                        style={{ backgroundColor: selectedColors.base }}
+                      >
+                        <BookOpen size={14} />
+                        {text.readChapter(formatNumber(quote.chapter))}
+                        <ArrowRight size={13} className={cn(isRTL && 'rotate-180')} />
+                      </button>
                     )}
-                    <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-2 text-[11px] text-wood/55">
-                      <span className="font-bold">{chapterLine(selected.chapters)}</span>
-                      <span>{selectedMap ? selectedCopy.approximateLabel : text.noMap}</span>
-                    </div>
+                    <span className="mt-auto text-[11px] text-wood/55">{selectedMap ? selectedCopy.approximateLabel : text.noMap}</span>
                   </div>
                 </div>
               </section>
@@ -386,7 +390,7 @@ export const PlacesPage = ({
                   square and cards never stretch to fill a tall screen. The padding keeps the selected
                   card's ring inside the scroll box. */}
               <div className="-mx-1 mt-1 px-1 py-1 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 content-start">
+                <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-2 content-start">
                   {visibleEntries.map(renderCard)}
                 </div>
               </div>
