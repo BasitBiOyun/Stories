@@ -27,7 +27,20 @@ const iconNameMap: Record<string, React.ComponentType<AppIconProps>> = {
   Eye: Eye, CheckCircle: CheckCircle, Overview: Scroll,
 };
 
+// A guide section about one reader section gets that section's icon; icons that mean something
+// else in the app (target, stars, compass, eye) become a neutral page icon.
+const sectionIconName = (title: string, name?: string): string | undefined => {
+  if (/quick challenge|التحدي السريع|التَّحَدِّي السَّرِيعُ/i.test(title)) return 'QuickChallenge';
+  if (/language focus|التركيز اللغوي|التَّرْكِيزُ اللُّغَوِيُّ/i.test(title)) return 'LanguageFocus';
+  if (/listen|استمع|اسْتَمِعْ|الاستماع/i.test(title)) return 'Listen';
+  return name && ['Target', 'Stars', 'Compass', 'Eye'].includes(name) ? 'FileText' : name;
+};
+
 const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => {
+  if (name === 'QuickChallenge' || name === 'LanguageFocus' || name === 'Listen') {
+    const Icon = SECTION_ICONS[name === 'QuickChallenge' ? 'quickChallenge' : name === 'LanguageFocus' ? 'languageFocus' : 'listen'].icon;
+    return <Icon className={className} aria-hidden="true" />;
+  }
   const Icon = (name && iconNameMap[name]) || FileText;
   return <Icon className={className} aria-hidden="true" />;
 };
@@ -139,7 +152,7 @@ export const SelfStudyGuide = ({
   ];
 
   const displaySections = studentGuideSections.length > 0
-    ? studentGuideSections.map(section => ({ ...section, icon: iconFor(section.icon) }))
+    ? studentGuideSections.map(section => ({ ...section, icon: iconFor(sectionIconName(section.title, section.icon)) }))
     : defaultGuideSections;
 
   const tabs = [
@@ -149,7 +162,7 @@ export const SelfStudyGuide = ({
       id: `section-${idx}`,
       label: section.title,
       icon: studentGuideSections.length > 0
-        ? iconFor(studentGuideSections[idx]?.icon, 'w-5 h-5')
+        ? iconFor(sectionIconName(studentGuideSections[idx]?.title ?? '', studentGuideSections[idx]?.icon), 'w-5 h-5')
         : React.isValidElement(section.icon)
           ? React.cloneElement(section.icon as React.ReactElement<{ className?: string }>, { className: 'w-5 h-5' })
           : iconFor('FileText', 'w-5 h-5')
@@ -224,7 +237,7 @@ export const SelfStudyGuide = ({
       id: 'goal',
       title: isAr ? 'حدّد هدفك' : 'Set Your Goal',
       subtitle: isAr ? 'اعرف ما الذي تبحث عنه قبل أن تبدأ.' : 'Know what you are looking for before you begin.',
-      icon: 'target',
+      icon: 'goal',
       lists: [
         { title: labels.goals, items: section.objectives },
         { title: labels.notice, items: section.whatToNotice },
@@ -248,7 +261,7 @@ export const SelfStudyGuide = ({
       id: 'notice',
       title: isAr ? 'لاحظ اللغة' : 'Notice the Language',
       subtitle: isAr ? 'اربط المفردات والتراكيب بما رأيته في الفصل.' : 'Connect vocabulary and language patterns to the chapter.',
-      icon: 'eye',
+      icon: 'language',
       lists: [
         { title: labels.vocab, items: section.vocabularyInContext },
       ],
@@ -263,7 +276,7 @@ export const SelfStudyGuide = ({
       subtitle: isA2
         ? (isAr ? 'أجب أولًا. إذا أخطأت، فابحث عن جملة الجواب وحاول مرة أخرى.' : 'Answer first. If it is wrong, find the answer sentence and try again.')
         : (isAr ? 'أجب أولاً، ثم استخدم الدليل إذا احتجت إلى إصلاح الإجابة.' : 'Answer first, then use evidence to repair what went wrong.'),
-      icon: 'search',
+      icon: 'pencil',
       lists: [
         { title: labels.wrong, items: section.wrongAnswerSupport },
       ],
@@ -573,7 +586,7 @@ export const SelfStudyGuide = ({
               <div className="rounded-[1.5rem] border border-amber-300/20 bg-amber-300/[0.065] p-4 sm:p-5">
                 <div className="flex items-start gap-3">
                   <span className="w-10 h-10 rounded-xl bg-amber-300/[0.12] text-amber-200 flex items-center justify-center shrink-0">
-                    <GuideIcon name="search" className="w-5 h-5" />
+                    <GuideIcon name="help" className="w-5 h-5" />
                   </span>
                   <div>
                     <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-amber-200/65">
@@ -889,7 +902,7 @@ export const SelfStudyGuide = ({
                                 className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-start hover:bg-white/[0.06]"
                               >
                                 <span className="w-8 h-8 rounded-lg bg-gold/[0.10] text-gold flex items-center justify-center shrink-0">
-                                  <GuideIcon name={result.kind === 'chapter' ? 'book' : 'target'} className="w-4 h-4" />
+                                  <GuideIcon name={result.kind === 'chapter' ? 'book' : 'file'} className="w-4 h-4" />
                                 </span>
                                 <span className="min-w-0 flex-1">
                                   <span className="block font-display text-[10px] font-black uppercase tracking-[0.12em] text-gold/42">
