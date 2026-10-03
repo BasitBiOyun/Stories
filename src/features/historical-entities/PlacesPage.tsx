@@ -231,7 +231,7 @@ export const PlacesPage = ({
         }}
         style={cardStyle}
         className={cn(
-          'flex cursor-pointer items-start gap-3 rounded-2xl border border-black/5 border-s-[3px] p-2.5 text-start transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50',
+          'flex cursor-pointer items-stretch gap-3 rounded-2xl border border-black/5 border-s-[3px] p-2.5 text-start transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50',
           isActive ? 'shadow-sm' : 'bg-white/75 hover:bg-white',
         )}
       >
@@ -247,9 +247,10 @@ export const PlacesPage = ({
             {copy.summary}
             {copy.more && <> {copy.more}</>}
           </p>
+          <span aria-hidden className="block h-2 shrink-0" />
           {quote && (
             <figure
-              className="mt-2 rounded-xl border-s-[3px] px-2.5 py-1.5"
+              className="mt-auto rounded-xl border-s-[3px] px-2.5 py-1.5"
               style={{ borderInlineStartColor: tint(color, 0.6), backgroundColor: tint(color, 0.06) }}
             >
               <figcaption className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-wood/60">
@@ -384,7 +385,7 @@ export const PlacesPage = ({
                   square and cards never stretch to fill a tall screen. The padding keeps the selected
                   card's ring inside the scroll box. */}
               <div className="-mx-1 mt-1 px-1 py-1 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
-                <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-2 content-start">
+                <div className="grid grid-cols-1 items-stretch gap-2 sm:grid-cols-2 content-start">
                   {visibleEntries.map(renderCard)}
                 </div>
               </div>
