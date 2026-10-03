@@ -7,7 +7,7 @@ import { VocabularyWord } from '../ui/VocabularyWord';
 import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
-import { BeforeYouReadPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
+import { BeforeYouReadPanel, GroupTaskPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
 import { cn } from '../../lib/utils';
 import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
@@ -1100,6 +1100,9 @@ export const StoryPage = ({
   const renderICan = () => page.type === 'story' && page.iCan?.length ? (
     <ICanPanel items={page.iCan} language={language} storageKey={`${extrasKey}:ican`} />
   ) : null;
+  const renderGroupTask = () => page.type === 'story' && page.groupTask ? (
+    <GroupTaskPanel key={extrasKey} task={page.groupTask} language={language} />
+  ) : null;
 
   const quickExercise = page.exercises?.[0];
   const quickDone = Boolean(quickExercise && completedExercises.includes(quickExercise.id));
@@ -1753,6 +1756,7 @@ export const StoryPage = ({
 
           {renderLanguageFocusPanel(true)}
 
+          {renderGroupTask()}
           {renderICan()}
         </div>
 
@@ -1823,6 +1827,7 @@ export const StoryPage = ({
 
           {renderLanguageFocusPanel()}
 
+          {renderGroupTask()}
           {renderICan()}
         </div>
       </div>

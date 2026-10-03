@@ -10,6 +10,7 @@ import {
 } from './en/exercises';
 import { ibnJubayrA2LanguageFocusExercises } from './en/languageFocus';
 import { ibnJubayrA2ChapterExtras } from './en/chapterExtras';
+import { ibnJubayrA2GroupTasksEn } from './en/groupTasks';
 import { applyChapterExtras } from '../../../lib/chapterExtras';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
@@ -33,7 +34,7 @@ const buildEnglishPages = (): PageData[] => applyChapterExtras(ibnJubayrA2Pages.
   };
   if (page.id === 19) return { ...page, exercises: ibnJubayrA2FinalChallengeExercises };
   return page;
-}), ibnJubayrA2ChapterExtras);
+}), { ...ibnJubayrA2ChapterExtras, groupTasks: ibnJubayrA2GroupTasksEn });
 
 export const ibnJubayrA2BookDataEn: BookData = {
   id: 'ibnJubayr-history-a2-en',

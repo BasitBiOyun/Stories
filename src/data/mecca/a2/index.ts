@@ -2,6 +2,8 @@ import type { BookData, PageData } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
 import { applyChapterExtras } from '../../../lib/chapterExtras';
 import { meccaA2ChapterExtrasEn } from './en/chapterExtras';
+import { meccaA2GroupTasksEn } from './en/groupTasks';
+import { meccaA2GroupTasksAr } from './ar/groupTasks';
 import { meccaA2ChapterExtrasAr } from './ar/chapterExtras';
 import { meccaA2Pages as meccaA2PagesEn } from './en/pages';
 import { meccaA2PagesAr } from './ar/pages';
@@ -130,7 +132,7 @@ export const meccaA2BookDataEn: BookData = {
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'mecca-a2', 'en'), meccaA2ChapterExtrasEn),
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'mecca-a2', 'en'), { ...meccaA2ChapterExtrasEn, groupTasks: meccaA2GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -140,7 +142,7 @@ export const meccaA2BookDataAr: BookData = {
   title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'mecca-a2', 'ar'), meccaA2ChapterExtrasAr),
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'mecca-a2', 'ar'), { ...meccaA2ChapterExtrasAr, groupTasks: meccaA2GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };

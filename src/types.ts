@@ -118,6 +118,20 @@ export interface VocabularyChallengePair {
 }
 
 /** One prediction question before a chapter, checked by listening (or reading when there is no audio). */
+/** A short task for a group of 3–4 learners, shown after some chapters. */
+export interface GroupTask {
+  type: 'jigsaw' | 'roleplay' | 'mapGap' | 'project';
+  title: string;
+  time: string;
+  groupSize: string;
+  roles?: { name: string; job: string }[];
+  steps: string[];
+  /** What each group shows the class at the end. */
+  share: string;
+  /** How a learner who studies alone can do a version of it. */
+  solo: string;
+}
+
 export interface BeforeYouRead {
   question: string;
   options: string[];
@@ -150,6 +164,7 @@ export interface PageData {
   beforeYouRead?: BeforeYouRead;
   /** Three can-do lines the learner rates at the end of the chapter. */
   iCan?: string[];
+  groupTask?: GroupTask;
 }
 
 export interface StudentGuideSection {

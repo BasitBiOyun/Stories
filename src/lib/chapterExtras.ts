@@ -1,4 +1,4 @@
-import type { BeforeYouRead, Exercise, PageData } from '../types';
+import type { BeforeYouRead, Exercise, GroupTask, PageData } from '../types';
 
 /** Before you read, I can and example answers for one book edition, keyed by chapter id. */
 export interface ChapterExtras {
@@ -8,6 +8,8 @@ export interface ChapterExtras {
   examples: Record<number, string[]>;
   /** Example answers for the Language Review prompts, in prompt order. */
   reviewExamples?: string[];
+  /** A group task shown at the end of some chapters. */
+  groupTasks?: Record<number, GroupTask>;
 }
 
 const withExamples = (exercises: Exercise[] | undefined, examples: string[] | undefined): Exercise[] | undefined => {
@@ -26,6 +28,7 @@ export const applyChapterExtras = (pages: PageData[], extras: ChapterExtras): Pa
       beforeYouRead: extras.beforeYouRead[page.id] ?? page.beforeYouRead,
       iCan: extras.iCan[page.id] ?? page.iCan,
       languageFocusExercises: withExamples(page.languageFocusExercises, extras.examples[page.id]),
+      groupTask: extras.groupTasks?.[page.id] ?? page.groupTask,
     };
   }
   if (page.type === 'exercises' && extras.reviewExamples) {
