@@ -1,12 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
-import { X, Crown, Download } from '../ui/icons';
+import { X, Download, User, BookOpen, Lightbulb, Clock, Compass, Award, Headphones, Pencil, ListOrdered, Heart, FileText, Eye, CheckCircle, Scroll, ArrowRight, type AppIconProps } from '../ui/icons';
 import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
 import { PageData, StudentGuideSection, TeacherGuideSection } from '../../types';
+import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
@@ -14,16 +16,34 @@ const GuideIcon = ({ name, className = 'w-7 h-7' }: { name: GuideIconName; class
   <PhosphorGuideIcon name={name} className={className} />
 );
 
-const iconNameMap: Record<string, GuideIconName> = {
-  Users: 'book', BookOpen: 'book', Rocket: 'target', Clock: 'clock', Compass: 'search',
-  Stars: 'trophy', Ear: 'headphones', PenTool: 'pencil', Smile: 'check', Map: 'search',
-  Lightbulb: 'book', Target: 'target', Heart: 'check', HelpCircle: 'search', FileText: 'book',
-  Eye: 'eye', CheckCircle: 'check'
+/**
+ * Guide data names an icon loosely ("Stars", "Map", "Target"). Each one resolves here to an icon that does not
+ * already stand for a reader section (no trophy, rocket, magnifier or target), so one icon keeps one meaning.
+ */
+const iconNameMap: Record<string, React.ComponentType<AppIconProps>> = {
+  Users: User, BookOpen: BookOpen, Rocket: Lightbulb, Clock: Clock, Compass: Compass,
+  Stars: Award, Ear: Headphones, PenTool: Pencil, Smile: Lightbulb, Map: ListOrdered,
+  Lightbulb: Lightbulb, Target: Clock, Heart: Heart, HelpCircle: Lightbulb, FileText: FileText,
+  Eye: Eye, CheckCircle: CheckCircle, Overview: Scroll,
 };
 
-const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => (
-  <GuideIcon name={name && iconNameMap[name] ? iconNameMap[name] : 'book'} className={className} />
-);
+// A guide section about one reader section gets that section's icon; icons that mean something
+// else in the app (target, stars, compass, eye) become a neutral page icon.
+const sectionIconName = (title: string, name?: string): string | undefined => {
+  if (/quick challenge|التحدي السريع|التَّحَدِّي السَّرِيعُ/i.test(title)) return 'QuickChallenge';
+  if (/language focus|التركيز اللغوي|التَّرْكِيزُ اللُّغَوِيُّ/i.test(title)) return 'LanguageFocus';
+  if (/listen|استمع|اسْتَمِعْ|الاستماع/i.test(title)) return 'Listen';
+  return name && ['Target', 'Stars', 'Compass', 'Eye'].includes(name) ? 'FileText' : name;
+};
+
+const iconFor = (name?: string, className = 'w-7 h-7'): React.ReactNode => {
+  if (name === 'QuickChallenge' || name === 'LanguageFocus' || name === 'Listen') {
+    const Icon = SECTION_ICONS[name === 'QuickChallenge' ? 'quickChallenge' : name === 'LanguageFocus' ? 'languageFocus' : 'listen'].icon;
+    return <Icon className={className} aria-hidden="true" />;
+  }
+  const Icon = (name && iconNameMap[name]) || FileText;
+  return <Icon className={className} aria-hidden="true" />;
+};
 
 const localizeArabicUiText = (value: string) => value
   .replace(/Tap\s*&\s*Reveal/gi, 'اضغط واكشف')
@@ -132,17 +152,17 @@ export const SelfStudyGuide = ({
   ];
 
   const displaySections = studentGuideSections.length > 0
-    ? studentGuideSections.map(section => ({ ...section, icon: iconFor(section.icon) }))
+    ? studentGuideSections.map(section => ({ ...section, icon: iconFor(sectionIconName(section.title, section.icon)) }))
     : defaultGuideSections;
 
   const tabs = [
-    { id: 'welcome', label: isAr ? 'مساحة الدراسة' : 'Study Home', icon: iconFor('Stars', 'w-5 h-5') },
+    { id: 'welcome', label: isAr ? 'مساحة الدراسة' : 'Study Home', icon: iconFor('Overview', 'w-5 h-5') },
     ...(content.length ? [{ id: 'chapters', label: isAr ? 'مسار الفصول' : 'Study Path', icon: iconFor('Map', 'w-5 h-5') }] : []),
     ...displaySections.map((section, idx) => ({
       id: `section-${idx}`,
       label: section.title,
       icon: studentGuideSections.length > 0
-        ? iconFor(studentGuideSections[idx]?.icon, 'w-5 h-5')
+        ? iconFor(sectionIconName(studentGuideSections[idx]?.title ?? '', studentGuideSections[idx]?.icon), 'w-5 h-5')
         : React.isValidElement(section.icon)
           ? React.cloneElement(section.icon as React.ReactElement<{ className?: string }>, { className: 'w-5 h-5' })
           : iconFor('FileText', 'w-5 h-5')
@@ -217,7 +237,7 @@ export const SelfStudyGuide = ({
       id: 'goal',
       title: isAr ? 'حدّد هدفك' : 'Set Your Goal',
       subtitle: isAr ? 'اعرف ما الذي تبحث عنه قبل أن تبدأ.' : 'Know what you are looking for before you begin.',
-      icon: 'target',
+      icon: 'goal',
       lists: [
         { title: labels.goals, items: section.objectives },
         { title: labels.notice, items: section.whatToNotice },
@@ -241,7 +261,7 @@ export const SelfStudyGuide = ({
       id: 'notice',
       title: isAr ? 'لاحظ اللغة' : 'Notice the Language',
       subtitle: isAr ? 'اربط المفردات والتراكيب بما رأيته في الفصل.' : 'Connect vocabulary and language patterns to the chapter.',
-      icon: 'eye',
+      icon: 'language',
       lists: [
         { title: labels.vocab, items: section.vocabularyInContext },
       ],
@@ -256,7 +276,7 @@ export const SelfStudyGuide = ({
       subtitle: isA2
         ? (isAr ? 'أجب أولًا. إذا أخطأت، فابحث عن جملة الجواب وحاول مرة أخرى.' : 'Answer first. If it is wrong, find the answer sentence and try again.')
         : (isAr ? 'أجب أولاً، ثم استخدم الدليل إذا احتجت إلى إصلاح الإجابة.' : 'Answer first, then use evidence to repair what went wrong.'),
-      icon: 'search',
+      icon: 'pencil',
       lists: [
         { title: labels.wrong, items: section.wrongAnswerSupport },
       ],
@@ -391,9 +411,9 @@ export const SelfStudyGuide = ({
                   onClick={() => openChapter(continueIndex)}
                   className="mt-5 inline-flex min-h-12 items-center gap-3 rounded-2xl bg-gold px-5 sm:px-6 font-display text-[13px] sm:text-sm font-bold text-white shadow-lg shadow-black/15 transition-transform hover:-translate-y-0.5"
                 >
-                  <GuideIcon name="target" className="w-5 h-5" />
                   <span>{isAr ? 'تابع من حيث توقفت' : 'Continue where you left off'}</span>
                   <span className="opacity-70">· {formatNumber(continueIndex + 1)}</span>
+                  <ArrowRight className={cn('w-5 h-5', isRTL && 'rotate-180')} aria-hidden="true" />
                 </button>
               )}
             </div>
@@ -478,6 +498,8 @@ export const SelfStudyGuide = ({
             {metadata?.recommendedUse?.length ? renderList(isAr ? 'طريقة الاستخدام المقترحة' : 'Recommended Study Routine', metadata.recommendedUse) : null}
           </div>
         )}
+
+        <GuideV2Tools language={language} variant="self" />
       </motion.div>
     );
   };
@@ -564,7 +586,7 @@ export const SelfStudyGuide = ({
               <div className="rounded-[1.5rem] border border-amber-300/20 bg-amber-300/[0.065] p-4 sm:p-5">
                 <div className="flex items-start gap-3">
                   <span className="w-10 h-10 rounded-xl bg-amber-300/[0.12] text-amber-200 flex items-center justify-center shrink-0">
-                    <GuideIcon name="search" className="w-5 h-5" />
+                    <GuideIcon name="help" className="w-5 h-5" />
                   </span>
                   <div>
                     <p className="font-display text-[10px] font-black uppercase tracking-[0.16em] text-amber-200/65">
@@ -586,6 +608,8 @@ export const SelfStudyGuide = ({
             </motion.div>
           )}
         </AnimatePresence>
+
+        <GuideV2ChapterBox page={activeSection ? storyPageForSection(pages, activeSection, activeGuideSection) : undefined} language={language} variant="self" />
 
         <div className="rounded-[1.6rem] border border-white/[0.07] bg-black/10 p-3 sm:p-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
@@ -742,7 +766,7 @@ export const SelfStudyGuide = ({
           <header className="self-study-header min-h-[4.75rem] md:min-h-[6.25rem] border-b border-gold/15 px-4 sm:px-7 md:px-10 lg:px-12 py-3.5 flex items-center justify-between shrink-0 gap-3">
             <div className="flex items-center gap-3.5 sm:gap-5 min-w-0">
               <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
-                <Crown className="w-6 h-6 sm:w-8 sm:h-8" />
+                <SECTION_ICONS.selfStudy.icon className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               <div className="min-w-0">
                 <p className="font-display text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-gold/60">
@@ -836,7 +860,7 @@ export const SelfStudyGuide = ({
             </aside>
 
             <main ref={contentScrollRef} className="self-study-content flex-1 overflow-y-auto custom-scrollbar">
-              <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-9 lg:px-11 py-3">
+              <div className="sticky top-0 z-20 border-b border-gold/10 bg-wood/95 backdrop-blur-xl px-4 sm:px-7 md:px-9 lg:px-11 py-3">
                 <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-3">
                   <div className="min-w-0 flex flex-1 items-center gap-3">
                     <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">{activeTabMeta.icon}</span>
@@ -878,7 +902,7 @@ export const SelfStudyGuide = ({
                                 className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-start hover:bg-white/[0.06]"
                               >
                                 <span className="w-8 h-8 rounded-lg bg-gold/[0.10] text-gold flex items-center justify-center shrink-0">
-                                  <GuideIcon name={result.kind === 'chapter' ? 'book' : 'target'} className="w-4 h-4" />
+                                  <GuideIcon name={result.kind === 'chapter' ? 'book' : 'file'} className="w-4 h-4" />
                                 </span>
                                 <span className="min-w-0 flex-1">
                                   <span className="block font-display text-[10px] font-black uppercase tracking-[0.12em] text-gold/42">

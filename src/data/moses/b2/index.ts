@@ -1,5 +1,10 @@
 import type { BookData, PageData } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { mosesB2ChapterExtrasEn } from './en/chapterExtras';
+import { mosesB2GroupTasksEn } from './en/groupTasks';
+import { mosesB2ChapterExtrasAr } from './ar/chapterExtras';
+import { mosesB2GroupTasksAr } from './ar/groupTasks';
 import { mosesB2Pages } from './en/pages';
 import { mosesB2PagesAr } from './ar/pages';
 import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
@@ -32,6 +37,6 @@ const mapPageAr: PageData = {
   map: buildStoryMap(mosesB2StoryMapLayout, mosesB2StoryMapCopyAr, 'Moses B2 AR'),
 };
 
-export const mosesB2BookDataEn:BookData={id:'moses-b2-en',title:'Stories of the Prophets: Moses (B2)',level:'B2',baseFontSize:13,pages:withPlacesLayer(withMapPage(mosesB2Pages,mapPageEn), 'moses-b2', 'en'),teacherGuide: [],selfStudyGuide: []};
-export const mosesB2BookDataAr:BookData={id:'moses-b2-ar',title:'قصص الأنبياء: موسى عليه السلام (B2)',level:'B2',baseFontSize:14,pages:withPlacesLayer(withMapPage(mosesB2PagesAr,mapPageAr), 'moses-b2', 'ar'),teacherGuide: [],selfStudyGuide: []};
+export const mosesB2BookDataEn:BookData={id:'moses-b2-en',title:'Stories of the Prophets: Moses (B2)',level:'B2',baseFontSize:13,pages:applyChapterExtras(withPlacesLayer(withMapPage(mosesB2Pages,mapPageEn), 'moses-b2', 'en'), { ...mosesB2ChapterExtrasEn, groupTasks: mosesB2GroupTasksEn }),teacherGuide: [],selfStudyGuide: []};
+export const mosesB2BookDataAr:BookData={id:'moses-b2-ar',title:'قصص الأنبياء: موسى عليه السلام (B2)',level:'B2',baseFontSize:14,pages:applyChapterExtras(withPlacesLayer(withMapPage(mosesB2PagesAr,mapPageAr), 'moses-b2', 'ar'), { ...mosesB2ChapterExtrasAr, groupTasks: mosesB2GroupTasksAr }),teacherGuide: [],selfStudyGuide: []};
 export const mosesB2BookData=mosesB2BookDataEn;

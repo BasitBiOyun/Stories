@@ -4,6 +4,9 @@ import {
   GraduationCap, 
   X, 
   BookOpen, 
+  Scroll,
+  ListOrdered,
+  Accessibility,
   Book as BookIcon,
   Layout, 
   Users, 
@@ -30,6 +33,7 @@ import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
 
 const splitLessonPlanSteps = (lessonPlan: string): string[] => {
   const normalized = lessonPlan.replace(/\s+/g, ' ').trim();
@@ -263,13 +267,13 @@ entries.set(key, { word, definition });
   }, [pages, isArabicGuide]);
 
   const tabs = [
-    { id: 'overview', label: t('tg.overview'), icon: <BookOpen size={22} /> },
+    { id: 'overview', label: t('tg.overview'), icon: <Scroll size={22} /> },
     { id: 'curriculum', label: t('tg.curriculum'), icon: <Layout size={22} /> },
     { id: 'approach', label: t('tg.approach'), icon: <Lightbulb size={22} /> },
     { id: 'framework', label: t('tg.framework'), icon: <MessageSquare size={22} /> },
     { id: 'chapters', label: t('tg.chapters'), icon: <BookIcon size={22} /> },
-    { id: 'management', label: t('tg.management'), icon: <Users size={22} /> },
-    { id: 'differentiation', label: t('tg.differentiation'), icon: <Users size={22} /> },
+    { id: 'management', label: t('tg.management'), icon: <ListOrdered size={22} /> },
+    { id: 'differentiation', label: t('tg.differentiation'), icon: <Accessibility size={22} /> },
     { id: 'assessment', label: t('tg.assessment'), icon: <Award size={22} /> },
     { id: 'kinesthetic', label: t('tg.kinesthetic'), icon: <Move size={22} /> },
     { id: 'global', label: t('tg.global'), icon: <Globe size={22} /> },
@@ -387,6 +391,7 @@ entries.set(key, { word, definition });
                 <li className="flex gap-2.5 sm:gap-3 items-start"><CheckCircle size={18} className="text-gold shrink-0 mt-0.5" /> <span><strong>{t('tg.character')}:</strong> {t('tg.characterDesc')}</span></li>
               </ul>
             </div>
+            <GuideV2Tools language={language} variant="teacher" />
           </div>
         );
       case 'curriculum':
@@ -628,7 +633,7 @@ entries.set(key, { word, definition });
                         </div>
                         <div className="space-y-3 sm:space-y-4">
                           <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
-                            <Users size={16} className="text-gold shrink-0" /> {t('tg.differentiation')}
+                            <Accessibility size={16} className="text-gold shrink-0" /> {t('tg.differentiation')}
                           </h5>
                           <div className="space-y-3 sm:space-y-4">
                             <div className="bg-white/5 p-3 sm:p-4 rounded-xl border border-gold/10">
@@ -642,6 +647,8 @@ entries.set(key, { word, definition });
                           </div>
                         </div>
                       </div>
+
+                      <GuideV2ChapterBox page={storyPageForSection(pages, section, idx)} language={language} variant="teacher" />
 
                       <div className="bg-gold/5 border border-gold/10 p-4 sm:p-6 rounded-2xl space-y-3 sm:space-y-4">
                         <h5 className="font-display text-[13px] sm:text-[15px] text-gold uppercase tracking-widest flex items-center gap-2 sm:gap-3">
@@ -1534,7 +1541,7 @@ entries.set(key, { word, definition });
             <div className="flex items-center gap-3.5 sm:gap-5 min-w-0">
               <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
                 <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8" />
-                <span className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1.5 rounded-full bg-black/55 border border-gold/30 flex items-center justify-center font-display text-[10px] font-black text-gold">
+                <span className="absolute -bottom-1 -end-1 hidden sm:flex min-w-6 h-6 px-1.5 rounded-full bg-black/55 border border-gold/30 items-center justify-center font-display text-[10px] font-black text-gold">
                   {assessmentLevel}
                 </span>
               </div>
@@ -1542,6 +1549,9 @@ entries.set(key, { word, definition });
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gold/65">
                     {language === 'ar' ? 'مساحة عمل المعلم' : 'TEACHER WORKSPACE'}
+                  </span>
+                  <span className="sm:hidden rounded-full border border-gold/30 bg-black/30 px-1.5 py-px font-display text-[10px] font-black leading-none text-gold">
+                    {assessmentLevel}
                   </span>
                   <span className="hidden sm:inline h-1 w-1 rounded-full bg-gold/35" />
                   <span className="hidden sm:inline font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-parchment/35">
@@ -1552,7 +1562,7 @@ entries.set(key, { word, definition });
                   {displayGuideTitle}
                 </h2>
                 <p className={cn(
-                  "font-serif text-gold/75 text-[13px] sm:text-[15px] md:text-[15px] mt-0.5 truncate",
+                  "hidden sm:block font-serif text-gold/75 text-[13px] sm:text-[15px] md:text-[15px] mt-0.5 truncate",
                   language !== 'ar' && "italic"
                 )}>
                   {displayGuideSubtitle}
@@ -1673,7 +1683,7 @@ entries.set(key, { word, definition });
 
             {/* Content Area */}
             <div ref={contentScrollRef} className="teacher-guide-content flex-1 overflow-y-auto custom-scrollbar">
-              <div className="sticky top-0 z-20 border-b border-gold/10 bg-black/25 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
+              <div className="sticky top-0 z-20 border-b border-gold/10 bg-wood/95 backdrop-blur-xl px-4 sm:px-7 md:px-10 lg:px-12 py-3.5">
                 <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-3 sm:gap-4">
                   <div className="min-w-0 flex flex-1 items-center gap-3">
                     <span className="w-10 h-10 rounded-xl bg-gold/[0.10] border border-gold/15 text-gold flex items-center justify-center shrink-0">

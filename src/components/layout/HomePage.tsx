@@ -12,6 +12,13 @@ import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { RoleToggle } from '../ui/RoleToggle';
+import { useUserRole } from '../../contexts/UserRoleContext';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
+import { LevelTest, readLevelTestResult } from './LevelTest';
+import { MyWordsPanel } from '../book/MyWordsPanel';
+import { CheckResultCode } from './CheckResultCode';
+import { useMyWords } from '../../lib/myWords';
+import { firstOpenBookAt } from '../../lib/nextBook';
 import { InstallAppButton } from '../ui/InstallAppButton';
 import { AboutPage } from './AboutPage';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, GraduationCap } from '../ui/icons';
@@ -47,6 +54,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
 
   const { language, t, isRTL, formatNumber } = useLanguage();
+  const { isSelfLearner, isTeacher } = useUserRole();
+  const [isCheckCodeOpen, setIsCheckCodeOpen] = useState(false);
+  const [isLevelTestOpen, setIsLevelTestOpen] = useState(false);
+  const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
+  const [suggestedLevel, setSuggestedLevel] = useState<Level | null>(() => readLevelTestResult()?.level ?? null);
+  const suggestedBook = suggestedLevel ? firstOpenBookAt(suggestedLevel, language === 'ar' ? 'ar' : 'en') : null;
+  const myWordCount = useMyWords().filter(word => word.language === (language === 'ar' ? 'ar' : 'en')).length;
+  const selfCopy = language === 'ar'
+    ? { question: 'لَا تَعْرِفُ مُسْتَوَاكَ؟ اخْتِبَارٌ قَصِيرٌ فِي ثَلَاثِ دَقَائِقَ.', take: 'ابْدَأِ الاخْتِبَارَ', suggested: 'مُسْتَوَاكَ المُقْتَرَحُ', startWith: 'ابْدَأْ بِـ', again: 'أَعِدِ الاخْتِبَارَ' }
+    : { question: 'Don’t know your level? A three-minute test.', take: 'Take the test', suggested: 'Your suggested level', startWith: 'Start with', again: 'Take the test again' };
   const reduceMotion = useReducedMotion();
   const stageRef = useRef<HTMLElement>(null);
 
@@ -283,13 +300,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
           </div>
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <InstallAppButton />
-            <RoleToggle />
+            <div className="hidden sm:block">
+              <RoleToggle />
+            </div>
             <LanguageToggle />
           </div>
         </div>
       </header>
 
       <main className="relative mx-auto w-full max-w-[1500px] px-5 pb-20 pt-7 sm:px-8 sm:pt-9 lg:px-12 lg:pt-11">
+        {/* Three role options do not fit beside the title on a phone, so the switch gets its own row there. */}
+        <div className="-mt-2 mb-6 flex sm:hidden">
+          <RoleToggle />
+        </div>
         <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-end">
           <div className="max-w-5xl text-start">
             <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D8B35C]/78">
@@ -303,39 +326,117 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
             </p>
           </div>
 
-          {lastActiveStory && lastActive && (
-            <motion.button
-              type="button"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.985 }}
-              onPointerEnter={() => warmBook(lastActiveStory.id, lastActive.level)}
-              onFocus={() => warmBook(lastActiveStory.id, lastActive.level)}
-              onTouchStart={() => warmBook(lastActiveStory.id, lastActive.level)}
-              onClick={() => launchStory(lastActiveStory.id, lastActive.level, { resume: true })}
-              className="group w-full rounded-2xl bg-white/[0.045] p-4 text-start transition-colors hover:bg-white/[0.075]"
-            >
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
-                  <Clock size={18} />
+          <div className="flex flex-col gap-3">
+            {lastActiveStory && lastActive && (
+              <motion.button
+                type="button"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.985 }}
+                onPointerEnter={() => warmBook(lastActiveStory.id, lastActive.level)}
+                onFocus={() => warmBook(lastActiveStory.id, lastActive.level)}
+                onTouchStart={() => warmBook(lastActiveStory.id, lastActive.level)}
+                onClick={() => launchStory(lastActiveStory.id, lastActive.level, { resume: true })}
+                className="group w-full rounded-2xl bg-white/[0.045] p-4 text-start transition-colors hover:bg-white/[0.075]"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
+                    <Clock size={18} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">
+                      {copy.continueLabel}
+                    </p>
+                    <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
+                      {translatedStoryName(lastActiveStory)} · {lastActive.level}
+                      {lastActive.position && lastActive.position.pageIndex > 0 && (
+                        <> · {t('nav.page')} {formatNumber(lastActive.position.pageIndex + 1)} / {formatNumber(lastActive.position.totalPages)}</>
+                      )}
+                    </p>
+                    <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/72 transition-colors group-hover:text-white">
+                      {copy.continueAction}
+                      <ArrowRight size={14} mirrored={isRTL} />
+                    </span>
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">
-                    {copy.continueLabel}
-                  </p>
-                  <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
-                    {translatedStoryName(lastActiveStory)} · {lastActive.level}
-                    {lastActive.position && lastActive.position.pageIndex > 0 && (
-                      <> · {t('nav.page')} {formatNumber(lastActive.position.pageIndex + 1)} / {formatNumber(lastActive.position.totalPages)}</>
-                    )}
-                  </p>
-                  <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/72 transition-colors group-hover:text-white">
-                    {copy.continueAction}
-                    <ArrowRight size={14} mirrored={isRTL} />
-                  </span>
+              </motion.button>
+            )}
+            {isTeacher && (
+              <div className="rounded-2xl bg-white/[0.045] p-4 text-start" data-teacher-tools-card>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
+                    <SECTION_ICONS.checkCode.icon size={18} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{SECTION_ICONS.checkCode[language === 'ar' ? 'ar' : 'en']}</p>
+                    <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">
+                      {language === 'ar' ? 'يُظْهِرُ الطَّالِبُ بِطَاقَةَ نَتِيجَتِهِ فِي آخِرِ الكِتَابِ. اكْتُبْ رَمْزَهَا هُنَا.' : 'Students show a result card at the end of each book. Type its code here.'}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setIsCheckCodeOpen(true)}
+                      className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                      data-check-code-open
+                    >
+                      {language === 'ar' ? 'تَحَقَّقْ مِنْ رَمْزٍ' : 'Check a code'}
+                      <ArrowRight size={14} mirrored={isRTL} />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </motion.button>
-          )}
+            )}
+            {isSelfLearner && (
+              <div className="rounded-2xl bg-white/[0.045] p-4 text-start" data-self-learner-card>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
+                    <SECTION_ICONS.levelTest.icon size={18} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    {suggestedLevel ? (
+                      <>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{selfCopy.suggested}</p>
+                        <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">{suggestedLevel}</p>
+                        {suggestedBook && (
+                          <button
+                            type="button"
+                            onClick={() => launchStory(suggestedBook.id, suggestedLevel)}
+                            className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                          >
+                            {selfCopy.startWith} {translatedStoryName(suggestedBook)} · {suggestedLevel}
+                            <ArrowRight size={14} mirrored={isRTL} />
+                          </button>
+                        )}
+                        <button type="button" onClick={() => setIsLevelTestOpen(true)} className="mt-1 block text-xs text-[#EDE5D4]/55 underline-offset-4 hover:text-white hover:underline">
+                          {selfCopy.again}
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{SECTION_ICONS.levelTest[language === 'ar' ? 'ar' : 'en']}</p>
+                        <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">{selfCopy.question}</p>
+                        <button
+                          type="button"
+                          onClick={() => setIsLevelTestOpen(true)}
+                          className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                          data-level-test-open
+                        >
+                          {selfCopy.take}
+                          <ArrowRight size={14} mirrored={isRTL} />
+                        </button>
+                      </>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setIsMyWordsOpen(true)}
+                      className="mt-3 flex w-full items-center gap-2 border-t border-white/8 pt-3 text-xs font-semibold text-[#EDE5D4]/72 transition-colors hover:text-white"
+                    >
+                      <SECTION_ICONS.myWords.icon size={14} />
+                      {SECTION_ICONS.myWords[language === 'ar' ? 'ar' : 'en']} · {formatNumber(myWordCount)}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </section>
 
         <section className="mt-6 md:mt-9">
@@ -720,6 +821,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
           </div>
         </section>
       </main>
+
+      <LevelTest
+        isOpen={isLevelTestOpen}
+        onClose={() => setIsLevelTestOpen(false)}
+        onResult={setSuggestedLevel}
+        onStart={(storyId, level) => {
+          setIsLevelTestOpen(false);
+          launchStory(storyId, level);
+        }}
+      />
+      <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
+      <CheckResultCode isOpen={isCheckCodeOpen} onClose={() => setIsCheckCodeOpen(false)} />
 
       <footer className="mx-auto w-full max-w-[1500px] px-5 pb-10 text-center sm:px-8 lg:px-12">
         <button

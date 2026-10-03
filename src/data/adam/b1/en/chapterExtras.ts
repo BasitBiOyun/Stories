@@ -1,0 +1,113 @@
+import type { ChapterExtras } from '../../../../lib/chapterExtras';
+
+// Before you read, I can and example answers (V2). The story text is unchanged.
+export const adamB1ChapterExtrasEn: ChapterExtras = {
+  beforeYouRead: {
+    1: { question: "Look at the picture. What do you think Allah created Adam (pbuh) from?", options: ["fire", "soil", "water"], answer: 1, quote: "Allah created him from soil" },
+    2: { question: "Look at the picture. Why do you think humans have different skin colors?", options: ["The angels collected soil from different parts of the earth.", "People lived near different seas.", "People ate different kinds of food."], answer: 0, quote: "Allah’s angels collected soil from different parts of the earth" },
+    3: { question: "Look at the picture. What do you think Iblis said about himself?", options: ["He was weaker than Adam (pbuh).", "He was just like the angels.", "He was better than Adam (pbuh)."], answer: 2, quote: "I am better than Adam (pbuh)." },
+    4: { question: "Look at the picture. What do you think Allah told Adam (pbuh) about Iblis?", options: ["Iblis was his enemy.", "Iblis was his teacher.", "Iblis would never come back."], answer: 0, quote: "Allah told Adam (pbuh) that Iblis was his enemy" },
+    5: { question: "Look at the picture. Why do you think Allah gave Adam (pbuh) a wife?", options: ["because he needed help on a farm", "because he started to feel lonely", "because he wanted to leave Paradise"], answer: 1, quote: "he started to feel lonely" },
+    6: { question: "Look at the picture. What do you think Adam (pbuh) and Eve forgot?", options: ["the names of the trees", "the way back home", "the warning Allah had given them"], answer: 2, quote: "they forgot the warning Allah had given them" },
+    7: { question: "Look at the picture. What do you think Adam (pbuh) asked Allah for?", options: ["forgiveness", "more fruit", "a new home"], answer: 0, quote: "Forgiveness! Forgiveness!" },
+    8: { question: "Look at the picture. What do you think life on earth was like for Adam (pbuh) and Eve?", options: ["easy, with no work", "hard, with a lot of work and struggle", "quiet, with no dangers"], answer: 1, quote: "they had to struggle to survive and work hard to keep themselves alive" },
+    9: { question: "Look at the picture. What do you think Adam (pbuh) became when a community formed?", options: ["a farmer", "a king", "the first Messenger of Allah"], answer: 2, quote: "Adam (pbuh) became the first Messenger of Allah" },
+    10: { question: "Look at the picture. What do you think Habil brought as a gift for Allah?", options: ["his best and healthiest sheep", "a handful of crops", "some water from a river"], answer: 0, quote: "Habil brought his best and healthiest sheep" },
+    11: { question: "Look at the picture. What do you think the raven did?", options: ["It flew to Adam (pbuh).", "It started digging the ground.", "It brought food to Qabil."], answer: 1, quote: "started digging the ground" },
+    12: { question: "Look at the picture. What do you think Adam’s (pbuh) children and grandchildren did?", options: ["They stayed in one small village.", "They forgot his message.", "They spread his message worldwide."], answer: 2, quote: "spread his message worldwide" },
+  },
+  iCan: {
+    1: ["I can say what Allah told the angels before He created Adam (pbuh).", "I can say what someone was going to do later.", "I can write four linked sentences about the start of a story."],
+    2: ["I can explain why humans have different skin colors.", "I can give a reason and its result with “so” or “that’s why”.", "I can explain a new learning situation in four sentences."],
+    3: ["I can explain why Iblis refused to respect Adam (pbuh).", "I can compare two things with “better than” and “more … than”.", "I can report two different opinions and give my conclusion."],
+    4: ["I can explain why Iblis was sent away.", "I can say that someone kept doing something and why.", "I can write a short story with a clear warning."],
+    5: ["I can describe life in Paradise and the one rule.", "I can say what someone asked another person not to do.", "I can say what would happen if someone did something."],
+    6: ["I can tell what happened when Adam (pbuh) and Eve ate the fruit.", "I can talk about something that happened before another past event.", "I can write a short chain of events and results."],
+    7: ["I can explain how Adam (pbuh) and Eve asked for forgiveness.", "I can say what someone decided never to do again.", "I can write how someone puts a mistake right."],
+    8: ["I can describe the work Adam (pbuh) and Eve did on earth.", "I can say what people had to do and why.", "I can describe life in a difficult new place."],
+    9: ["I can explain how Adam (pbuh) became the first Messenger.", "I can say when something began and that it never stopped.", "I can write about someone who guides a group."],
+    10: ["I can compare the offerings of Habil and Qabil.", "I can show a difference with “but” or “while”.", "I can compare two people who do the same task in different ways."],
+    11: ["I can tell how the raven showed Qabil what to do.", "I can make a firm promise with “will” or “won’t”.", "I can write what someone should do after a serious mistake."],
+    12: ["I can explain the message Adam (pbuh) left for people.", "I can say what still matters today.", "I can share a useful lesson from someone’s life."],
+  },
+  examples: {
+    1: [
+      "The Qur’an tells the story of Adam (pbuh) in different surahs, such as Surah Baqarah and Surah Taha.",
+      "After Allah created the sky and the earth, He decided to create a human.",
+      "He told the angels that He was going to place a ruler on earth.",
+      "This ruler would live on earth for many years, so the angels waited with curiosity.",
+    ],
+    2: [
+      "Our teacher told us that the science club would start a new project next week.",
+      "We had never used the new microscope, so she showed us how it works first.",
+      "Each of us looked at a leaf to learn how plants make their food.",
+      "Learning with the microscope was more exciting than reading about it in a book.",
+    ],
+    3: [
+      "Sara thought that our class trip should go to the museum.",
+      "She chose the museum because we could learn a lot about history there.",
+      "Ali believed that the park was better than the museum on a sunny day.",
+      "However, after we heard both ideas, most of us decided to visit the museum in the morning and the park after lunch.",
+    ],
+    4: [
+      "Omar continued playing games on his phone late every night.",
+      "Because of his tiredness, he often fell asleep in class.",
+      "During lessons, he only waited for a chance to play again in the break.",
+      "His teacher warned him to be careful of too much screen time.",
+    ],
+    5: [
+      "When the new school year began, Lina started to feel nervous about the long bus ride.",
+      "But her new school was bigger and more beautiful than her old one.",
+      "Her mother asked her not to use her phone on the bus.",
+      "If she listened to her mother, she would see the city and make new friends on the way.",
+    ],
+    6: [
+      "The coach had told the players to drink water during the long training.",
+      "But a classmate convinced Yusuf to skip the water break and keep playing.",
+      "Soon he became very tired, so he had to sit down.",
+      "He drank some water to feel better, because he finally remembered the coach’s advice.",
+    ],
+    7: [
+      "Mariam dropped her heavy bag on her friend’s pencil case and broke it, but it wasn’t on purpose.",
+      "She said sorry at once and learned to be more careful with other people’s things.",
+      "Because she wanted to be fair, she decided never to put her bag on a friend’s desk again.",
+      "She saved her pocket money to buy her friend a new pencil case, and she would be more careful in the future.",
+    ],
+    8: [
+      "At the mountain camp, the new students would cook, clean and look after the garden.",
+      "They had to collect wood every morning to keep the fire burning.",
+      "In addition, they needed fresh water, so they carried it from the river with big bottles.",
+      "They worked hard because life at the camp was not easy, and they stayed there for two weeks.",
+    ],
+    9: [
+      "After our old captain left the school, Hana became the leader of the football team.",
+      "She started teaching the young players to pass the ball to each other.",
+      "She wanted everyone to feel part of the team.",
+      "She never stopped encouraging them, even when they lost a match.",
+    ],
+    10: [
+      "When the school garden opened, Ahmed and Layla became its first helpers.",
+      "To make the garden beautiful, they had to plant flowers every Monday.",
+      "Ahmed chose the strongest and healthiest plants, while Layla only planted the old ones that nobody wanted.",
+      "Real care is giving your best effort to every task.",
+    ],
+    11: [
+      "Karim lost the money for the class trip because he left it on the bus.",
+      "He said to himself, “I won’t hide this from my teacher.”",
+      "But at first, he didn’t know what he should say to her.",
+      "His older sister guided him to tell the truth, and he learned that honesty is better than hiding a mistake.",
+    ],
+    12: [
+      "As a young nurse, my grandmother had to work long nights in a small village clinic.",
+      "Over the years, she became an expert and trained many young nurses.",
+      "Her kindness still influences the people in our village today.",
+      "Her life shows the importance of helping others without waiting for thanks.",
+    ],
+  },
+  reviewExamples: [
+    "Last month, I had to bring my part of a group poster for science class. I forgot it at home because I was busy with a football match.",
+    "I realised that I had let my group down: it wasn’t on purpose, but they had to wait for me.",
+    "However, I decided never to leave my work until the last day, and I managed to finish my part the next morning.",
+    "This experience suggests that we should plan our work early. It shows the importance of keeping promises to our classmates.",
+  ],
+};

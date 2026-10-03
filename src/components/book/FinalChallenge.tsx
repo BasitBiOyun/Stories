@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Trophy, ArrowRight, Target } from '../ui/icons';
+import { Trophy, ArrowRight } from '../ui/icons';
 import { BookData, Exercise } from '../../types';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -474,7 +475,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
                   'w-9 h-9 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm',
                   revealCorrect || revealWrong ? 'bg-white/20 text-white' : `${theme.soft} ${theme.subtext}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn('font-serif font-semibold flex-1 leading-snug', isArabic ? 'text-base sm:text-lg md:text-xl desk:text-[1.4rem]' : 'text-sm sm:text-base md:text-lg desk:text-[1.3rem]')}>{option.text}</span>
               </button>
@@ -672,7 +673,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
               </div>
             </div>
             <div className={cn('px-3 py-2 rounded-xl border flex items-center gap-2 shrink-0', theme.soft)}>
-              <Target size={17} className={theme.subtext} />
+              <SECTION_ICONS.finalChallenge.icon size={17} className={theme.subtext} />
               <span className={cn('font-display text-xs sm:text-sm font-black', theme.text)}>{questionTypeLabel}</span>
             </div>
           </div>

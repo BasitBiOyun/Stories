@@ -1,5 +1,10 @@
 import type { BookData, PageData } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { mosesB1ChapterExtrasEn } from './en/chapterExtras';
+import { mosesB1GroupTasksEn } from './en/groupTasks';
+import { mosesB1ChapterExtrasAr } from './ar/chapterExtras';
+import { mosesB1GroupTasksAr } from './ar/groupTasks';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1PagesAr } from './ar/pages';
 import {
@@ -145,7 +150,7 @@ export const mosesB1BookDataEn: BookData = {
   title: 'Stories of the Prophets: Moses (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: withPlacesLayer(buildEnglishPages(), 'moses-b1', 'en'),
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'moses-b1', 'en'), { ...mosesB1ChapterExtrasEn, groupTasks: mosesB1GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -155,7 +160,7 @@ export const mosesB1BookDataAr: BookData = {
   title: 'قصص الأنبياء: موسى عليه السلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: withPlacesLayer(buildArabicPages(), 'moses-b1', 'ar'),
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'moses-b1', 'ar'), { ...mosesB1ChapterExtrasAr, groupTasks: mosesB1GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };

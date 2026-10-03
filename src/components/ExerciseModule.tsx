@@ -7,16 +7,15 @@ import {
   HelpCircle,
   ArrowRight,
   RotateCcw,
-  MessageSquare,
-  Users,
-  GraduationCap,
   Lightbulb,
 } from './ui/icons';
 import { Exercise } from '../types';
 import { cn } from '../lib/utils';
+import { MODE_ICONS, modeKeyFor } from '../lib/sectionIcons';
 import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useClassMode } from '../contexts/ClassModeContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
 import {
   presentDeranged,
@@ -95,6 +94,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const [quizAnswered, setQuizAnswered] = React.useState(false);
   const [quizWasCorrect, setQuizWasCorrect] = React.useState<boolean | null>(null);
   const [reflectionResponse, setReflectionResponse] = React.useState('');
+  const { classMode } = useClassMode();
+  const [shownExamples, setShownExamples] = React.useState<Set<number>>(new Set());
   const [attempt, setAttempt] = React.useState(0);
 
   const reflectionNeedsWriting = exercise.type === 'reflection' && (
@@ -310,7 +311,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                       ? `${theme.accentBg} text-white`
                       : `${theme.softBg} ${theme.accentText}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
                   'font-serif font-semibold leading-snug flex-1',
@@ -535,7 +536,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.type === 'reflection' && (
             <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-5">
               {!reflectionNeedsWriting && (
-                <p className={cn('mb-2 font-display font-semibold uppercase tracking-widest text-wood/45', isArabic ? 'text-sm' : 'text-[11px]')}>
+                <p className={cn('mb-2 flex items-center gap-1.5 font-display font-semibold uppercase tracking-widest text-wood/45', isArabic ? 'text-sm' : 'text-[11px]')}>
+                  <MODE_ICONS.sayOrWrite.icon size={15} aria-hidden="true" />
                   {isArabic ? 'قُلْها أو اكتُبْها (اختياري)' : 'Say it or write it (optional)'}
                 </p>
               )}
@@ -556,10 +558,35 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.discussionPrompts?.map((prompt, index) => (
             <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
               <div className="flex items-center gap-2 mb-2 text-wood/50">
-                {prompt.mode === 'Individual' ? <GraduationCap size={18} /> : prompt.mode === 'Pair' ? <MessageSquare size={18} /> : <Users size={18} />}
-                <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
+                {(() => {
+                  const mode = MODE_ICONS[modeKeyFor(prompt.mode)];
+                  return (
+                    <>
+                      <mode.icon size={18} aria-hidden="true" />
+                      <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? mode.ar : mode.en}</span>
+                    </>
+                  );
+                })()}
               </div>
               <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{prompt.question}</p>
+              {classMode && !isSubmitted && prompt.example && !shownExamples.has(index) && (
+                <button
+                  type="button"
+                  data-class-show-example
+                  onClick={() => setShownExamples(prev => new Set(prev).add(index))}
+                  className={cn('mt-3 inline-flex min-h-9 items-center rounded-lg border border-emerald-300 bg-white px-3 font-display font-semibold text-emerald-800 hover:bg-emerald-50', isArabic ? 'text-sm' : 'text-[12px]')}
+                >
+                  {isArabic ? 'أَظْهِرِ المِثَالَ' : 'Show example'}
+                </button>
+              )}
+              {(isSubmitted || shownExamples.has(index)) && prompt.example && (
+                <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3 py-2">
+                  <p className={cn('font-display font-semibold uppercase tracking-widest text-emerald-800', isArabic ? 'text-sm' : 'text-[11px]')}>
+                    {isArabic ? 'مِثَالٌ عَلَى إِجَابَةٍ' : 'Example answer'}
+                  </p>
+                  <p className={cn('mt-1 font-serif text-wood', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{prompt.example}</p>
+                </div>
+              )}
             </div>
           ))}
           {!isSubmitted && (

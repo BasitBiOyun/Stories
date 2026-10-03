@@ -1,18 +1,22 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
-import { PageData, Hotspot, Exercise } from '../../types';
+import { Play, Pause, Volume2, VolumeX, Info, Rocket, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
+import { PageData, Hotspot, Exercise, TeacherGuideSection } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
 import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
+import { BeforeYouReadPanel, GroupTaskPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
+import { LessonCard } from './LessonCard';
 import { cn } from '../../lib/utils';
+import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
+import { MyWordsReminder } from './MyWordsPanel';
 
 const HotspotButton = ({ 
   hotspot, 
@@ -370,7 +374,8 @@ export const StoryPage = ({
   isDyslexic,
   fontSize,
   level,
-  collectionId = 'prophets'
+  collectionId = 'prophets',
+  lessonSection,
 }: { 
   page: PageData; 
   allPages: PageData[];
@@ -379,6 +384,8 @@ export const StoryPage = ({
   fontSize: number;
   level: string;
   collectionId?: string;
+  /** The Teacher Guide section for this chapter; given only to teachers. */
+  lessonSection?: TeacherGuideSection;
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
   const { stats, trackExerciseComplete, trackChapterVisit, trackAudioChapter } = useStoryProgress();
@@ -395,6 +402,7 @@ export const StoryPage = ({
   // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
   const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
   const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
+  const [isLessonCardOpen, setIsLessonCardOpen] = useState(false);
   // First story page on this device: a three-step tour once the page has settled.
   const [isTourActive, setIsTourActive] = useState(false);
   useEffect(() => {
@@ -1083,6 +1091,25 @@ export const StoryPage = ({
 
   const isAudioLocked = false;
 
+  // Before you read: one optional guess above the story; the text is always visible.
+  const extrasKey = `v2:${level}:${language}:${page.id}:${page.title}`;
+  const beforeYouRead = useBeforeYouRead(`${extrasKey}:byr`);
+  const renderBeforeYouRead = () => page.type === 'story' && page.beforeYouRead ? (
+    <BeforeYouReadPanel
+      data={page.beforeYouRead}
+      language={language}
+      state={beforeYouRead.state}
+      onGuess={beforeYouRead.guess}
+      onCheck={beforeYouRead.check}
+    />
+  ) : null;
+  const renderICan = () => page.type === 'story' && page.iCan?.length ? (
+    <ICanPanel items={page.iCan} language={language} storageKey={`${extrasKey}:ican`} />
+  ) : null;
+  const renderGroupTask = () => page.type === 'story' && page.groupTask ? (
+    <GroupTaskPanel key={extrasKey} task={page.groupTask} language={language} />
+  ) : null;
+
   const quickExercise = page.exercises?.[0];
   const quickDone = Boolean(quickExercise && completedExercises.includes(quickExercise.id));
   const focusExercises = page.languageFocusExercises ?? [];
@@ -1121,15 +1148,15 @@ export const StoryPage = ({
   // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
   const renderChapterSteps = () => {
     if (page.type !== 'story') return null;
-    const steps: { key: string; label: string; done: boolean; onClick?: () => void }[] = [];
+    const steps: { key: SectionKey; label: string; done: boolean; onClick?: () => void }[] = [];
     if (page.audioUrl) steps.push({ key: 'listen', label: t('nav.stepListen'), done: listened });
     steps.push({ key: 'read', label: t('nav.stepRead'), done: textEndReached });
     if (quickExercise) {
-      steps.push({ key: 'quick', label: t('nav.quickChallenge'), done: quickDone, onClick: () => setActiveExercise(quickExercise) });
+      steps.push({ key: 'quickChallenge', label: t('nav.quickChallenge'), done: quickDone, onClick: () => setActiveExercise(quickExercise) });
     }
     if (focusExercises.length > 0) {
       steps.push({
-        key: 'focus',
+        key: 'languageFocus',
         label: t('nav.languageFocus'),
         done: focusDone,
         onClick: () => {
@@ -1139,10 +1166,12 @@ export const StoryPage = ({
         },
       });
     }
-    if (steps.length < 2) return null;
+    if (steps.length < 2 && !lessonSection) return null;
+    const LessonIcon = SECTION_ICONS.lessonCard.icon;
     return (
       <ol className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
         {steps.map(step => {
+          const StepIcon = SECTION_ICONS[step.key].icon;
           const chip = (
             <span
               className={cn(
@@ -1150,8 +1179,9 @@ export const StoryPage = ({
                 step.done ? 'bg-emerald-100 text-emerald-800' : 'bg-black/[0.05] text-wood/62',
               )}
             >
-              <span aria-hidden="true">{step.done ? '✓' : '○'}</span>
+              <StepIcon size={12} aria-hidden="true" />
               {step.label}
+              {step.done && <span aria-hidden="true">✓</span>}
             </span>
           );
           return (
@@ -1164,6 +1194,19 @@ export const StoryPage = ({
             </li>
           );
         })}
+        {lessonSection && (
+          <li className="flex">
+            <button
+              type="button"
+              onClick={() => setIsLessonCardOpen(true)}
+              data-lesson-card-open
+              className="inline-flex items-center gap-1 rounded-full border border-brand-300 bg-white px-2 py-0.5 font-display text-[11px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <LessonIcon size={12} aria-hidden="true" />
+              {SECTION_ICONS.lessonCard[language === 'ar' ? 'ar' : 'en']}
+            </button>
+          </li>
+        )}
       </ol>
     );
   };
@@ -1204,7 +1247,7 @@ export const StoryPage = ({
                 'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-lg',
                 quickTheme.icon
               )}>
-                {completed ? <CheckCircle2 size={23} /> : <Rocket size={22} />}
+                {completed ? <CheckCircle2 size={23} /> : <SECTION_ICONS.quickChallenge.icon size={22} />}
               </div>
 
               <div className="min-w-0 pt-0.5">
@@ -1316,7 +1359,7 @@ export const StoryPage = ({
                 'flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl shadow-md',
                 focusTheme.icon
               )}>
-                <BookIcon size={21} />
+                <SECTION_ICONS.languageFocus.icon size={21} />
               </div>
 
               <div className="min-w-0 flex-1">
@@ -1674,7 +1717,7 @@ export const StoryPage = ({
       {/* Dynamic responsive layout container */}
       <div className="flex-1 min-h-0 overflow-hidden">
         {/* Mobile View: Vertical scrolling stack */}
-        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar pe-3 sm:pe-4 space-y-6">
+        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar px-0.5 sm:ps-0.5 sm:pe-4 space-y-6">
           {page.image && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -1712,9 +1755,12 @@ export const StoryPage = ({
           )}
 
           {/* Text Content */}
+          <div className="mx-auto max-w-[68ch] wide:max-w-none">
+          {renderBeforeYouRead()}
+          <div className="relative">
           <div 
             className={cn(
-              "font-serif leading-[1.72] text-wood/90 mx-auto max-w-[68ch] wide:max-w-none",
+              "font-serif leading-[1.72] text-wood/90",
               isDyslexic ? "font-sans tracking-wide" : "",
               isRTL && "text-right"
             )}
@@ -1723,14 +1769,20 @@ export const StoryPage = ({
             {renderContent(page.content)}
             {renderNextUp()}
           </div>
+          </div>
+          </div>
 
           {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel(true)}
+
+          {renderGroupTask()}
+          {renderICan()}
+          {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
-        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pe-3 xl:pe-4 pb-4">
+        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar ps-0.5 pe-3 xl:pe-4 pb-4">
           <div className="grid grid-cols-12 gap-8 desk:gap-12 items-start">
             {/* Left side: Image */}
             <div className="col-span-5 self-start lg:sticky lg:top-0">
@@ -1773,16 +1825,21 @@ export const StoryPage = ({
 
             {/* Right side: Story text scrolling content */}
             <div className="col-span-7">
+              <div className="w-full max-w-[72ch] desk:max-w-[80ch] wide:max-w-none">
+              {renderBeforeYouRead()}
+              <div className="relative">
               <div 
                 className={cn(
-                  "font-serif leading-[1.72] text-wood/90 w-full max-w-[72ch] desk:max-w-[80ch] wide:max-w-none",
+                  "font-serif leading-[1.72] text-wood/90",
                   isDyslexic ? "font-sans tracking-wide" : "",
                   isRTL && "text-right"
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
-              >
+                  >
                 {renderContent(page.content)}
                 {renderNextUp()}
+              </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -1790,6 +1847,10 @@ export const StoryPage = ({
           {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel()}
+
+          {renderGroupTask()}
+          {renderICan()}
+          {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
       </div>
 
@@ -1815,6 +1876,15 @@ export const StoryPage = ({
       </AnimatePresence>
 
       <ReaderTour active={isTourActive} onFinish={() => setIsTourActive(false)} />
+      {lessonSection && (
+        <LessonCard
+          isOpen={isLessonCardOpen}
+          onClose={() => setIsLessonCardOpen(false)}
+          section={lessonSection}
+          groupTask={page.type === 'story' ? page.groupTask : undefined}
+          language={language}
+        />
+      )}
     </div>
   );
 };

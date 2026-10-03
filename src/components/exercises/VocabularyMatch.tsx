@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb, ArrowRight, BrainCircuit } from '../ui/icons';
+import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb, ArrowRight } from '../ui/icons';
 import { MatchingBoard } from './MatchingBoard';
 import type { Level, VocabularyChallengePair } from '../../types';
 import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import confetti from 'canvas-confetti';
 
@@ -407,7 +408,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     <div className="shrink-0 rounded-2xl bg-white/65 p-3 ring-1 ring-inset ring-black/[0.06]">
       <div className="flex items-center gap-3">
         <div className={cn('hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white sm:flex', theme.badge)}>
-          <BrainCircuit size={18} />
+          <SECTION_ICONS.vocabularyChallenge.icon size={18} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-3">
@@ -741,7 +742,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                   onClick={onReviewGlossary}
                   className={cn('inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[11px] font-semibold', theme.badge)}
                 >
-                  <BrainCircuit size={16} />
+                  <SECTION_ICONS.glossary.icon size={16} />
                   {copy.backToGlossary}
                 </button>
               )}

@@ -1,5 +1,10 @@
 import type { BookData, PageData } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { meccaB2ChapterExtrasEn } from './en/chapterExtras';
+import { meccaB2GroupTasksEn } from './en/groupTasks';
+import { meccaB2ChapterExtrasAr } from './ar/chapterExtras';
+import { meccaB2GroupTasksAr } from './ar/groupTasks';
 
 import { meccaB2Pages } from './en/pages';
 
@@ -39,7 +44,7 @@ export const meccaB2BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B2)',
   level: 'B2',
   baseFontSize: 13,
-  pages: withPlacesLayer(withMapPage(meccaB2Pages, mapPageEn), 'mecca-b2', 'en'),
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(meccaB2Pages, mapPageEn), 'mecca-b2', 'en'), { ...meccaB2ChapterExtrasEn, groupTasks: meccaB2GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -49,7 +54,7 @@ export const meccaB2BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B2)',
   level: 'B2',
   baseFontSize: 14,
-  pages: withPlacesLayer(withMapPage(meccaB2PagesAr, mapPageAr), 'mecca-b2', 'ar'),
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(meccaB2PagesAr, mapPageAr), 'mecca-b2', 'ar'), { ...meccaB2ChapterExtrasAr, groupTasks: meccaB2GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };

@@ -1,5 +1,10 @@
 import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
 import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { meccaB1ChapterExtrasEn } from './en/chapterExtras';
+import { meccaB1GroupTasksEn } from './en/groupTasks';
+import { meccaB1ChapterExtrasAr } from './ar/chapterExtras';
+import { meccaB1GroupTasksAr } from './ar/groupTasks';
 import { meccaB1Pages } from './en/pages';
 import {
   meccaB1FinalChallengeExercises,
@@ -145,7 +150,7 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: withPlacesLayer(withMapPage(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises), mapPageEn), 'mecca-b1', 'en'),
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises), mapPageEn), 'mecca-b1', 'en'), { ...meccaB1ChapterExtrasEn, groupTasks: meccaB1GroupTasksEn }),
   teacherGuide: [],
   selfStudyGuide: [],
 };
@@ -155,7 +160,7 @@ export const meccaB1BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: withPlacesLayer(withMapPage(attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr), mapPageAr), 'mecca-b1', 'ar'),
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr), mapPageAr), 'mecca-b1', 'ar'), { ...meccaB1ChapterExtrasAr, groupTasks: meccaB1GroupTasksAr }),
   teacherGuide: [],
   selfStudyGuide: [],
 };

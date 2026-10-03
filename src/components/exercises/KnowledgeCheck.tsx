@@ -2,7 +2,6 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  GraduationCap,
   CheckCircle2,
   XCircle,
   Info,
@@ -12,6 +11,7 @@ import {
   ChevronRight,
 } from '../ui/icons';
 import { Exercise } from '../../types';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { presentMultipleChoice } from '../../lib/exercisePresentation';
@@ -201,7 +201,7 @@ const QuestionCard = ({
                       ? `${theme.accentBg} text-white`
                       : `${theme.softBg} ${theme.accentText}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
                   'font-serif font-medium leading-relaxed flex-1',
@@ -412,7 +412,7 @@ export const KnowledgeCheck = ({
   );
 
   return (
-    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pe-2">
+    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar px-0.5 pt-0.5 pe-2">
       <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
           'relative overflow-hidden rounded-[28px] p-5 sm:p-6 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
@@ -420,7 +420,7 @@ export const KnowledgeCheck = ({
         )}>
           <div className="flex items-center gap-3 min-w-0">
             <div className={cn('flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shrink-0', theme.accentBg)}>
-              <GraduationCap size={23} />
+              <SECTION_ICONS.knowledgeCheck.icon size={23} />
             </div>
             <div className="min-w-0">
               <p className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.18em]', theme.accentText)}>

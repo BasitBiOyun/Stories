@@ -1,14 +1,17 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-/** Student or teacher: a preference stored on the device, not an account. Only the guides differ. */
-export type UserRole = 'student' | 'teacher';
+/**
+ * Student, teacher or self-learner: a preference stored on the device, not an account.
+ * Teachers get the Teacher Guide; self-learners are also offered the level test and a next-book suggestion on the home page.
+ */
+export type UserRole = 'student' | 'teacher' | 'self';
 
 const STORAGE_KEY = 'app_user_role';
 
 const readStoredRole = (): UserRole | null => {
   try {
     const value = localStorage.getItem(STORAGE_KEY);
-    return value === 'student' || value === 'teacher' ? value : null;
+    return value === 'student' || value === 'teacher' || value === 'self' ? value : null;
   } catch {
     return null;
   }
@@ -17,6 +20,7 @@ const readStoredRole = (): UserRole | null => {
 interface UserRoleContextValue {
   role: UserRole | null;
   isTeacher: boolean;
+  isSelfLearner: boolean;
   setRole: (role: UserRole) => void;
   clearRole: () => void;
 }
@@ -39,7 +43,7 @@ export const UserRoleProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const clearRole = useCallback(() => setRoleState(null), []);
 
   const value = useMemo(
-    () => ({ role, isTeacher: role === 'teacher', setRole, clearRole }),
+    () => ({ role, isTeacher: role === 'teacher', isSelfLearner: role === 'self', setRole, clearRole }),
     [role, setRole, clearRole],
   );
 

@@ -17,10 +17,9 @@ import {
   Layers,
   MapPin,
   Menu,
-  X,
-} from './components/ui/icons';
+  X, HelpCircle } from './components/ui/icons';
 
-import { Level } from './types';
+import { Level, PageData } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
 import {
   loadSelfStudyGuideData,
@@ -50,13 +49,18 @@ const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard')
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
 import { AboutPage } from './components/layout/AboutPage';
+import { HowToUse } from './components/layout/HowToUse';
+import { SECTION_ICONS } from './lib/sectionIcons';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { RolePicker } from './components/layout/RolePicker';
+import { MyWordsPanel } from './components/book/MyWordsPanel';
+import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
+import { useClassMode } from './contexts/ClassModeContext';
 import { saveBookOffline } from './lib/pwa';
 
 const AppContent = () => {
@@ -66,6 +70,7 @@ const AppContent = () => {
     return code === 'stories_enar';
   });
   const { role, isTeacher } = useUserRole();
+  const { classMode, setClassMode } = useClassMode();
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -88,6 +93,8 @@ const AppContent = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(initialRoute?.pageIndex ?? 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isHowToUseOpen, setIsHowToUseOpen] = useState(false);
+  const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
   const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
@@ -180,6 +187,10 @@ const AppContent = () => {
     saveReaderPosition(selectedProphetId, currentLevel, { pageIndex: currentPageIndex, totalPages });
   }, [selectedProphetId, currentLevel, currentPage, currentPageIndex, totalPages, showSummary]);
 
+  useEffect(() => {
+    setMyWordsBook(selectedProphetId && currentLevel ? { storyId: selectedProphetId, level: currentLevel } : null);
+  }, [selectedProphetId, currentLevel]);
+
   // --- Book progress: pages read and exercises done, stored per book and shared by the TOC, summary and home page ---
   const [bookProgress, setBookProgress] = useState<BookProgress | null>(null);
 
@@ -242,6 +253,16 @@ const AppContent = () => {
   const currentSelfStudyGuide = selfStudyGuideData
     ? (language === 'ar' ? selfStudyGuideData.ar : selfStudyGuideData.en)
     : null;
+
+  // The Teacher Guide section for a story chapter: matched by the chapter number in its title, else by position.
+  const lessonSectionFor = (page: PageData) => {
+    const sections = currentTeacherGuide?.content;
+    if (!sections?.length || page.type !== 'story') return undefined;
+    const storyPages = (currentBook?.pages ?? []).filter(item => item.type === 'story');
+    const chapterNo = storyPages.findIndex(item => item.id === page.id) + 1;
+    if (chapterNo < 1) return undefined;
+    return sections.find(section => Number(section.chapter.match(/\d+/)?.[0]) === chapterNo) ?? sections[chapterNo - 1];
+  };
 
   useEffect(() => {
     setTeacherGuideData(null);
@@ -515,7 +536,7 @@ const AppContent = () => {
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
       if (!selectedProphetId || showSummary || isFinalChallengePage) return;
-      if (isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
+      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -541,6 +562,8 @@ const AppContent = () => {
     showSummary,
     isMenuOpen,
     isAboutOpen,
+    isHowToUseOpen,
+    isMyWordsOpen,
     isTeacherGuideOpen,
     isSelfStudyOpen,
     isQuickTOCOpen,
@@ -560,7 +583,7 @@ const AppContent = () => {
       !touch ||
       Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
       showSummary || isFinalChallengePage ||
-      isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+      isMenuOpen || isAboutOpen || isHowToUseOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
   };
   const handleSwipeEnd = (e: React.TouchEvent) => {
@@ -728,9 +751,10 @@ const AppContent = () => {
             allPages={currentBook?.pages || []}
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
-            fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1)}
+            fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
+            lessonSection={isTeacher ? lessonSectionFor(currentPage) : undefined}
           />
         );
       case 'map':
@@ -863,8 +887,8 @@ const AppContent = () => {
                       exit={{ opacity: 0, y: -8, scale: 0.97 }}
                       transition={{ duration: 0.16, ease: 'easeOut' }}
                       className={cn(
-                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl",
-                        isRTL ? "left-0" : "right-0",
+                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl max-sm:fixed max-sm:inset-x-3 max-sm:top-[3.9rem] max-sm:w-auto",
+                        isRTL ? "sm:left-0" : "sm:right-0",
                         themeClasses.menuBg,
                         themeClasses.menuBorder
                       )}
@@ -964,6 +988,38 @@ const AppContent = () => {
                         </span>
                       </button>
 
+                      {isTeacher && (
+                        <button
+                          type="button"
+                          onClick={() => setClassMode(!classMode)}
+                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                          aria-pressed={classMode}
+                          data-class-mode-toggle
+                        >
+                          <span className="flex items-start gap-2.5">
+                            <SECTION_ICONS.classMode.icon size={17} className="mt-0.5 shrink-0 text-parchment/80" />
+                            <span>
+                              <span className="block font-display text-[11px] font-semibold text-parchment">
+                                {SECTION_ICONS.classMode[language === 'ar' ? 'ar' : 'en']}
+                              </span>
+                              <span className="mt-0.5 block text-[11px] text-parchment/62">
+                                {language === 'ar' ? 'نَصٌّ أَكْبَرُ لِلسَّبُّورَةِ، وَالإِجَابَاتُ وَالأَمْثِلَةُ عِنْدَ الطَّلَبِ' : 'Bigger text for the board, answers and examples on demand'}
+                              </span>
+                            </span>
+                          </span>
+                          <span
+                            dir="ltr"
+                            className={cn(
+                              "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                              classMode ? themeClasses.progressBar : "bg-white/15",
+                              classMode ? "justify-end" : "justify-start"
+                            )}
+                          >
+                            <span className="h-4 w-4 rounded-full bg-white shadow" />
+                          </span>
+                        </button>
+                      )}
+
                       {canFullscreen && (
                         <button
                           type="button"
@@ -1053,7 +1109,7 @@ const AppContent = () => {
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 “In their stories there is truly a lesson for people of understanding.”
-                <span className="ms-1 text-parchment/50">Yusuf 12:111</span>
+                <span className="ms-1 whitespace-nowrap text-parchment/50">Yusuf 12:111</span>
               </p>
             )}
           </div>
@@ -1282,7 +1338,7 @@ const AppContent = () => {
               title={t('nav.back')}
               aria-label={t('nav.back')}
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className={cn("h-5 w-5", isRTL && "rotate-180")} />
             </button>
 
             <button 
@@ -1295,7 +1351,7 @@ const AppContent = () => {
               title={t('nav.next')}
               aria-label={t('nav.next')}
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
             </button>
           </div>
 
@@ -1369,12 +1425,38 @@ const AppContent = () => {
                 </h4>
 
                 <div className="mt-2 space-y-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsHowToUseOpen(true);
+                    }}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-how-to-use-link
+                  >
+                    <HelpCircle size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{language === 'ar' ? 'كَيْفَ تَسْتَخْدِمُ هٰذَا الكِتَابَ' : 'How to use this book'}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsMyWordsOpen(true);
+                    }}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-my-words-link
+                  >
+                    <SECTION_ICONS.myWords.icon size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{SECTION_ICONS.myWords[language === 'ar' ? 'ar' : 'en']}</span>
+                  </button>
+
                   {isTeacher ? (
                     <button 
                       onClick={openTeacherGuide}
                       className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                     >
-                      <GraduationCap size={21} className={themeClasses.menuAccentText} />
+                      <SECTION_ICONS.teacherGuide.icon size={21} className={themeClasses.menuAccentText} />
                       <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.teacherGuide')}</span>
                     </button>
                   ) : (
@@ -1382,7 +1464,7 @@ const AppContent = () => {
                       onClick={openSelfStudyGuide}
                       className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                     >
-                      <ClipboardList size={21} className={themeClasses.menuAccentText} />
+                      <SECTION_ICONS.selfStudy.icon size={21} className={themeClasses.menuAccentText} />
                       <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.selfStudyGuide')}</span>
                     </button>
                   )}
@@ -1446,6 +1528,8 @@ const AppContent = () => {
       </AnimatePresence>
 
       <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <HowToUse isOpen={isHowToUseOpen} onClose={() => setIsHowToUseOpen(false)} isTeacher={isTeacher} />
+      <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
 
       {/* Teacher Guide Overlay */}
       {isTeacher && (
