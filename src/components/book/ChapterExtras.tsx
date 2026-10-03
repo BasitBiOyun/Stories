@@ -84,49 +84,27 @@ export const BeforeYouReadPanel = ({
   const { guess, checked } = state;
   const right = checked && guess === data.answer;
 
+  const letters = isArabic ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+
   return (
     <section
       data-before-you-read
-      className="mb-4 rounded-xl border border-brand-200/80 bg-brand-50/60 px-3.5 py-3 font-sans"
+      className="mb-4 rounded-xl border border-brand-200/80 bg-brand-50/60 px-3 py-2.5 font-sans"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
-      <p className={cn('text-wood', isArabic ? 'text-base' : 'text-sm')}>
-        <span className={cn('me-2 inline-flex items-center gap-1 align-middle font-display font-semibold uppercase tracking-widest text-brand-800', isArabic ? 'text-xs' : 'text-[10px]')}>
-          <Eye size={14} />
-          {L.title}
-        </span>
-        <span className="font-semibold">{data.question}</span>
-      </p>
-
-      <div className="mt-2 flex flex-wrap items-center gap-1.5">
-        {data.options.map((option, index) => {
-          const isGuess = guess === index;
-          const isAnswer = checked && index === data.answer;
-          return (
-            <button
-              key={option}
-              type="button"
-              disabled={checked}
-              onClick={() => onGuess(index)}
-              className={cn(
-                'min-h-8 rounded-full border px-3 py-1 text-start transition-colors',
-                isArabic ? 'text-sm' : 'text-[13px]',
-                isAnswer
-                  ? 'border-emerald-500 bg-emerald-50 text-emerald-900 font-semibold'
-                  : isGuess
-                  ? checked ? 'border-amber-400 bg-amber-50 text-wood' : 'border-brand-600 bg-white text-wood font-semibold'
-                  : 'border-brand-100 bg-white text-wood/80 hover:border-brand-300',
-              )}
-            >
-              {option}
-            </button>
-          );
-        })}
+      <div className="flex items-center gap-2">
+        <p className={cn('min-w-0 flex-1 text-wood', isArabic ? 'text-base' : 'text-sm')}>
+          <span className={cn('me-2 inline-flex items-center gap-1 align-middle font-display font-semibold uppercase tracking-widest text-brand-800', isArabic ? 'text-xs' : 'text-[10px]')}>
+            <Eye size={14} />
+            {L.title}
+          </span>
+          <span className="font-semibold">{data.question}</span>
+        </p>
         {!checked && guess !== null && (
           <button
             type="button"
             onClick={onCheck}
-            className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-brand-700 px-3 font-display text-[12px] font-semibold text-white hover:bg-brand-800"
+            className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg bg-brand-700 px-3 font-display text-[12px] font-semibold text-white hover:bg-brand-800"
           >
             <Target size={14} />
             {L.check}
@@ -134,12 +112,56 @@ export const BeforeYouReadPanel = ({
         )}
       </div>
 
+      <div role="radiogroup" className="mt-2 grid gap-1.5 sm:grid-cols-3">
+        {data.options.map((option, index) => {
+          const isGuess = guess === index;
+          const isAnswer = checked && index === data.answer;
+          const isWrongGuess = checked && isGuess && !isAnswer;
+          return (
+            <button
+              key={option}
+              type="button"
+              role="radio"
+              aria-checked={isGuess}
+              disabled={checked}
+              onClick={() => onGuess(index)}
+              className={cn(
+                'flex min-h-9 items-center gap-2 rounded-lg border bg-white px-2 py-1 text-start leading-snug transition-colors',
+                isArabic ? 'text-sm' : 'text-[13px]',
+                isAnswer
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-900 font-semibold'
+                  : isWrongGuess
+                  ? 'border-amber-400 bg-amber-50 text-wood'
+                  : isGuess
+                  ? 'border-brand-600 ring-1 ring-brand-600 text-wood font-semibold'
+                  : checked
+                  ? 'border-brand-100 text-wood/50'
+                  : 'border-brand-100 text-wood/85 hover:border-brand-400',
+              )}
+            >
+              <span
+                className={cn(
+                  'flex h-6 w-6 shrink-0 items-center justify-center rounded-full border font-display text-[11px] font-bold',
+                  isAnswer
+                    ? 'border-emerald-600 bg-emerald-600 text-white'
+                    : isWrongGuess
+                    ? 'border-amber-500 bg-amber-500 text-white'
+                    : isGuess
+                    ? 'border-brand-700 bg-brand-700 text-white'
+                    : 'border-brand-200 text-brand-700',
+                )}
+              >
+                {isAnswer ? <CheckCircle size={14} /> : letters[index]}
+              </span>
+              <span>{option}</span>
+            </button>
+          );
+        })}
+      </div>
+
       {checked && (
-        <p className={cn('mt-2', isArabic ? 'text-sm' : 'text-[13px]', right ? 'text-emerald-800' : 'text-wood/80')}>
-          <span className="inline-flex items-center gap-1 font-semibold">
-            {right && <CheckCircle size={14} />}
-            {right ? L.right : `${L.wrong} ${data.options[data.answer]}`}
-          </span>
+        <p className={cn('mt-1.5', isArabic ? 'text-sm' : 'text-[13px]', right ? 'text-emerald-800' : 'text-wood/80')}>
+          <span className="font-semibold">{right ? L.right : `${L.wrong} ${data.options[data.answer]}`}</span>
           {data.quote && data.quote.replace(/[.\s]+$/, '') !== data.options[data.answer].replace(/[.\s]+$/, '') && <span className={cn('ms-1.5 font-serif text-wood/60', !isArabic && 'italic')}>{isArabic ? `«${data.quote}»` : `“${data.quote}”`}</span>}
         </p>
       )}
