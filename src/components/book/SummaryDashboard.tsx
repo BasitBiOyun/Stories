@@ -1,18 +1,16 @@
 import React, { useEffect, useMemo } from 'react';
+import { SECTION_ICONS, MODE_ICONS } from '../../lib/sectionIcons';
 import { motion } from 'motion/react';
 import {
   Award,
   BookOpen,
-  BrainCircuit,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Compass,
   Headphones,
   Library,
   RotateCcw,
   Rocket,
-  Target,
   Trophy,
 } from '../ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -287,7 +285,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
       total: audioChapterTotal,
     },
     {
-      icon: Compass,
+      icon: SECTION_ICONS.vocabularyChallenge.icon,
       label: copy.explore,
       value: wordsExplored,
       total: totalWordNotes,
@@ -299,7 +297,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
       total: expectedActivityIds.size,
     },
     {
-      icon: BrainCircuit,
+      icon: MODE_ICONS.sayOrWrite.icon,
       label: copy.reflect,
       value: finalDetails?.reflectionCompleted ?? 0,
       total: reflectionTotal,
@@ -314,7 +312,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
       progress: percent(chapterVisited, chapterCount),
     },
     {
-      icon: Compass,
+      icon: SECTION_ICONS.vocabularyChallenge.icon,
       label: copy.words,
       value: totalWordNotes ? `${formatNumber(wordsExplored)} / ${formatNumber(totalWordNotes)}` : formatNumber(wordsExplored),
       progress: percent(wordsExplored, totalWordNotes),
@@ -328,7 +326,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
       progress: percent(completedActivityCount, expectedActivityIds.size),
     },
     {
-      icon: Target,
+      icon: SECTION_ICONS.finalChallenge.icon,
       label: copy.mastery,
       value: finalScore === null ? '—' : `${formatNumber(finalScore)}%`,
       progress: finalScore ?? 0,
@@ -497,7 +495,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
           <div className="rounded-[30px] border border-white/8 bg-white/[0.035] p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: visual.accentSoft, color: visual.accentBright }}>
-                <Target size={21} />
+                <SECTION_ICONS.finalChallenge.icon size={21} />
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/62">{copy.finalChallenge}</p>

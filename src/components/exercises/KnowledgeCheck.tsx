@@ -2,7 +2,6 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  GraduationCap,
   CheckCircle2,
   XCircle,
   Info,
@@ -12,6 +11,7 @@ import {
   ChevronRight,
 } from '../ui/icons';
 import { Exercise } from '../../types';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { presentMultipleChoice } from '../../lib/exercisePresentation';
@@ -421,7 +421,7 @@ export const KnowledgeCheck = ({
         )}>
           <div className="flex items-center gap-3 min-w-0">
             <div className={cn('flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shrink-0', theme.accentBg)}>
-              <GraduationCap size={23} />
+              <SECTION_ICONS.knowledgeCheck.icon size={23} />
             </div>
             <div className="min-w-0">
               <p className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.18em]', theme.accentText)}>

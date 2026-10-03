@@ -1,7 +1,7 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
+import { Play, Pause, Volume2, VolumeX, Info, Rocket, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
 import { PageData, Hotspot, Exercise } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
 import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
@@ -9,6 +9,7 @@ import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
 import { BeforeYouReadPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
 import { cn } from '../../lib/utils';
+import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -1138,15 +1139,15 @@ export const StoryPage = ({
   // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
   const renderChapterSteps = () => {
     if (page.type !== 'story') return null;
-    const steps: { key: string; label: string; done: boolean; onClick?: () => void }[] = [];
+    const steps: { key: SectionKey; label: string; done: boolean; onClick?: () => void }[] = [];
     if (page.audioUrl) steps.push({ key: 'listen', label: t('nav.stepListen'), done: listened });
     steps.push({ key: 'read', label: t('nav.stepRead'), done: textEndReached });
     if (quickExercise) {
-      steps.push({ key: 'quick', label: t('nav.quickChallenge'), done: quickDone, onClick: () => setActiveExercise(quickExercise) });
+      steps.push({ key: 'quickChallenge', label: t('nav.quickChallenge'), done: quickDone, onClick: () => setActiveExercise(quickExercise) });
     }
     if (focusExercises.length > 0) {
       steps.push({
-        key: 'focus',
+        key: 'languageFocus',
         label: t('nav.languageFocus'),
         done: focusDone,
         onClick: () => {
@@ -1160,6 +1161,7 @@ export const StoryPage = ({
     return (
       <ol className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
         {steps.map(step => {
+          const StepIcon = SECTION_ICONS[step.key].icon;
           const chip = (
             <span
               className={cn(
@@ -1167,8 +1169,9 @@ export const StoryPage = ({
                 step.done ? 'bg-emerald-100 text-emerald-800' : 'bg-black/[0.05] text-wood/62',
               )}
             >
-              <span aria-hidden="true">{step.done ? '✓' : '○'}</span>
+              <StepIcon size={12} aria-hidden="true" />
               {step.label}
+              {step.done && <span aria-hidden="true">✓</span>}
             </span>
           );
           return (
@@ -1221,7 +1224,7 @@ export const StoryPage = ({
                 'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-lg',
                 quickTheme.icon
               )}>
-                {completed ? <CheckCircle2 size={23} /> : <Rocket size={22} />}
+                {completed ? <CheckCircle2 size={23} /> : <SECTION_ICONS.quickChallenge.icon size={22} />}
               </div>
 
               <div className="min-w-0 pt-0.5">
@@ -1333,7 +1336,7 @@ export const StoryPage = ({
                 'flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl shadow-md',
                 focusTheme.icon
               )}>
-                <BookIcon size={21} />
+                <SECTION_ICONS.languageFocus.icon size={21} />
               </div>
 
               <div className="min-w-0 flex-1">

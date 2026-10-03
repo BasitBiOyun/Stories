@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
-import { X, Crown, Download } from '../ui/icons';
+import { X, Download } from '../ui/icons';
 import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIcon';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
@@ -742,7 +743,7 @@ export const SelfStudyGuide = ({
           <header className="self-study-header min-h-[4.75rem] md:min-h-[6.25rem] border-b border-gold/15 px-4 sm:px-7 md:px-10 lg:px-12 py-3.5 flex items-center justify-between shrink-0 gap-3">
             <div className="flex items-center gap-3.5 sm:gap-5 min-w-0">
               <div className="relative p-2.5 sm:p-3.5 bg-gold text-white rounded-2xl shrink-0 shadow-lg shadow-black/15">
-                <Crown className="w-6 h-6 sm:w-8 sm:h-8" />
+                <SECTION_ICONS.selfStudy.icon className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               <div className="min-w-0">
                 <p className="font-display text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-gold/60">

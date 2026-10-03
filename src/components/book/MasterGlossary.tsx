@@ -7,14 +7,13 @@ import {
   X,
   RotateCcw,
   BookOpenCheck,
-  BrainCircuit,
-  Target,
   Clock,
   CheckCircle,
   ChevronLeft,
   ChevronRight,
 } from '../ui/icons';
 import { PageData, BookData, VocabularyItem } from '../../types';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -419,7 +418,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
       key: 'unknown' as FilterMode,
       label: copy.practice,
       value: reviewCount,
-      icon: Target,
+      icon: RotateCcw,
       className: 'bg-rose-50 text-rose-700 border-rose-100',
     },
     {
@@ -445,7 +444,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               'w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-white flex items-center justify-center shadow-lg shrink-0',
               colTheme.brand600
             )}>
-              <BrainCircuit size={23} />
+              <SECTION_ICONS.glossary.icon size={23} />
             </div>
             <div className="min-w-0">
               <div className={cn('text-[11px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>

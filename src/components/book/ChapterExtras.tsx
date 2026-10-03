@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Eye, CheckCircle, Target } from '../ui/icons';
+import { Check, CheckCircle } from '../ui/icons';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import type { BeforeYouRead } from '../../types';
 import { cn } from '../../lib/utils';
 
@@ -95,7 +96,7 @@ export const BeforeYouReadPanel = ({
       <div className="flex items-center gap-2">
         <p className={cn('min-w-0 flex-1 text-wood', isArabic ? 'text-base' : 'text-sm')}>
           <span className={cn('me-2 inline-flex items-center gap-1 align-middle font-display font-semibold uppercase tracking-widest text-brand-800', isArabic ? 'text-xs' : 'text-[10px]')}>
-            <Eye size={14} />
+            <SECTION_ICONS.beforeYouRead.icon size={14} />
             {L.title}
           </span>
           <span className="font-semibold">{data.question}</span>
@@ -106,7 +107,7 @@ export const BeforeYouReadPanel = ({
             onClick={onCheck}
             className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg bg-brand-700 px-3 font-display text-[12px] font-semibold text-white hover:bg-brand-800"
           >
-            <Target size={14} />
+            <Check size={14} />
             {L.check}
           </button>
         )}
@@ -191,7 +192,7 @@ export const ICanPanel = ({ items, language, storageKey }: { items: string[]; la
     <section data-i-can className="mt-6 rounded-[26px] border border-brand-100 bg-white p-5 sm:p-6 shadow-[0_14px_38px_rgba(63,49,28,0.06)] font-sans" dir={isArabic ? 'rtl' : 'ltr'}>
       <header className="flex items-baseline gap-3">
         <span className="inline-flex items-center gap-2 text-brand-800">
-          <CheckCircle size={18} />
+          <SECTION_ICONS.iCan.icon size={18} />
           <span className={cn('font-display font-semibold uppercase tracking-widest', isArabic ? 'text-sm' : 'text-[11px]')}>{L.canTitle}</span>
         </span>
         <span className={cn('text-wood/55', isArabic ? 'text-sm' : 'text-xs')}>{L.canHint}</span>

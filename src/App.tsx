@@ -17,8 +17,7 @@ import {
   Layers,
   MapPin,
   Menu,
-  X,
-} from './components/ui/icons';
+  X, HelpCircle } from './components/ui/icons';
 
 import { Level } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
@@ -50,6 +49,8 @@ const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard')
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
 import { AboutPage } from './components/layout/AboutPage';
+import { HowToUse } from './components/layout/HowToUse';
+import { SECTION_ICONS } from './lib/sectionIcons';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
@@ -88,6 +89,7 @@ const AppContent = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(initialRoute?.pageIndex ?? 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isHowToUseOpen, setIsHowToUseOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
   const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
@@ -515,7 +517,7 @@ const AppContent = () => {
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
       if (!selectedProphetId || showSummary || isFinalChallengePage) return;
-      if (isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
+      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -541,6 +543,7 @@ const AppContent = () => {
     showSummary,
     isMenuOpen,
     isAboutOpen,
+    isHowToUseOpen,
     isTeacherGuideOpen,
     isSelfStudyOpen,
     isQuickTOCOpen,
@@ -560,7 +563,7 @@ const AppContent = () => {
       !touch ||
       Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
       showSummary || isFinalChallengePage ||
-      isMenuOpen || isAboutOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+      isMenuOpen || isAboutOpen || isHowToUseOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
   };
   const handleSwipeEnd = (e: React.TouchEvent) => {
@@ -1369,12 +1372,25 @@ const AppContent = () => {
                 </h4>
 
                 <div className="mt-2 space-y-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsHowToUseOpen(true);
+                    }}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-how-to-use-link
+                  >
+                    <HelpCircle size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{language === 'ar' ? 'كَيْفَ تَسْتَخْدِمُ هٰذَا الكِتَابَ' : 'How to use this book'}</span>
+                  </button>
+
                   {isTeacher ? (
                     <button 
                       onClick={openTeacherGuide}
                       className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                     >
-                      <GraduationCap size={21} className={themeClasses.menuAccentText} />
+                      <SECTION_ICONS.teacherGuide.icon size={21} className={themeClasses.menuAccentText} />
                       <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.teacherGuide')}</span>
                     </button>
                   ) : (
@@ -1382,7 +1398,7 @@ const AppContent = () => {
                       onClick={openSelfStudyGuide}
                       className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                     >
-                      <ClipboardList size={21} className={themeClasses.menuAccentText} />
+                      <SECTION_ICONS.selfStudy.icon size={21} className={themeClasses.menuAccentText} />
                       <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.selfStudyGuide')}</span>
                     </button>
                   )}
@@ -1446,6 +1462,7 @@ const AppContent = () => {
       </AnimatePresence>
 
       <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <HowToUse isOpen={isHowToUseOpen} onClose={() => setIsHowToUseOpen(false)} isTeacher={isTeacher} />
 
       {/* Teacher Guide Overlay */}
       {isTeacher && (

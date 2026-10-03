@@ -8,6 +8,7 @@ import { ExerciseModule } from '../ExerciseModule';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 
 export const ExercisePage = ({ 
@@ -290,8 +291,10 @@ export const ExercisePage = ({
                           </p>
                           <h3 className={cn(
                             "mt-1 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl",
+                            "flex items-center gap-2.5",
                             colTheme.exerciseTitle
                           )}>
+                            <SECTION_ICONS.languageReview.icon size={26} aria-hidden="true" className="shrink-0" />
                             {isArabic ? 'مراجعة اللغة' : 'Language Review'}
                           </h3>
                           <p className={cn(

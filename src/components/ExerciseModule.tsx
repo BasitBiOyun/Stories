@@ -7,13 +7,11 @@ import {
   HelpCircle,
   ArrowRight,
   RotateCcw,
-  MessageSquare,
-  Users,
-  GraduationCap,
   Lightbulb,
 } from './ui/icons';
 import { Exercise } from '../types';
 import { cn } from '../lib/utils';
+import { MODE_ICONS, modeKeyFor } from '../lib/sectionIcons';
 import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -535,7 +533,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.type === 'reflection' && (
             <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-5">
               {!reflectionNeedsWriting && (
-                <p className={cn('mb-2 font-display font-semibold uppercase tracking-widest text-wood/45', isArabic ? 'text-sm' : 'text-[11px]')}>
+                <p className={cn('mb-2 flex items-center gap-1.5 font-display font-semibold uppercase tracking-widest text-wood/45', isArabic ? 'text-sm' : 'text-[11px]')}>
+                  <MODE_ICONS.sayOrWrite.icon size={15} aria-hidden="true" />
                   {isArabic ? 'قُلْها أو اكتُبْها (اختياري)' : 'Say it or write it (optional)'}
                 </p>
               )}
@@ -556,8 +555,15 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.discussionPrompts?.map((prompt, index) => (
             <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
               <div className="flex items-center gap-2 mb-2 text-wood/50">
-                {prompt.mode === 'Individual' ? <GraduationCap size={18} /> : prompt.mode === 'Pair' ? <MessageSquare size={18} /> : <Users size={18} />}
-                <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
+                {(() => {
+                  const mode = MODE_ICONS[modeKeyFor(prompt.mode)];
+                  return (
+                    <>
+                      <mode.icon size={18} aria-hidden="true" />
+                      <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? mode.ar : mode.en}</span>
+                    </>
+                  );
+                })()}
               </div>
               <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{prompt.question}</p>
               {isSubmitted && prompt.example && (
