@@ -15,8 +15,8 @@ export const meccaA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-8-refusal', type: 'error-correction', title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word, then choose the correction.',
-      question: 'Can you fix a past question and a sentence with “if”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix Umayya’s words to Bilal?',
       errorItems: [
         { sentence: 'Umayya asked Bilal angrily, “Is it true? Did you left our religion and believe in this magic man Muhammad?”', error: 'left', options: ['leaving', 'leave', 'leaves'], answer: 1 },
         { sentence: 'He told him, “If you speak well of our idols, you would be free.”', error: 'would', options: ['will', 'were', 'did'], answer: 0 },
@@ -31,7 +31,7 @@ export const meccaA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-8-condition', type: 'choose-form', title: 'Bilal’s Answer',
       instructions: 'Choose the correct word or words for each sentence from Chapter 8.',
-      question: 'Which forms show Bilal’s answer and Umayya’s reaction?',
+      question: 'What did Bilal answer, and what did Umayya do?',
       formChoices: [
         { sentence: 'Yes, Allah helped me [choice] the right way.', options: ['to find', 'finding', 'found'], answer: 0 },
         { sentence: 'Now I [choice] in the true religion.', options: ['believed', 'believe', 'believing'], answer: 1 },
@@ -45,14 +45,14 @@ export const meccaA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'mecca-a2-language-8-production', type: 'reflection', title: 'Use the Language Safely',
-      instructions: 'Write or say four short A2 sentences about refusing unfair pressure in a safe everyday situation.', question: 'Can you use a question, refusal and condition-result pattern?', correctAnswer: null,
+      id: 'mecca-a2-language-8-production', type: 'reflection', title: 'Saying No',
+      instructions: 'Write or say four sentences about saying no to an unfair request.', question: 'What did someone ask, and why did you say no?', correctAnswer: null,
       explanation: 'Transfer the language without recreating the violent scene.', feedback: { correct: 'Use at least three Chapter 8 patterns.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Ask one past yes/no question.', mode: 'Individual' },
-        { question: 'Use “refused” or “refused to ...”.', mode: 'Individual' },
-        { question: 'Use “forced ... to ...” only in a safe non-violent example.', mode: 'Individual' },
-        { question: 'Finish with an if–will sentence.', mode: 'Pair' },
+        { question: 'Sentence 1 — Ask about the past: “Did you …?”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say no: “… refused” or “I refused to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what someone tried to make you do: “… tried to force me to …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Give a result with “if”: “If you …, you will …”', mode: 'Pair' },
       ],
     },
   ],
@@ -63,7 +63,7 @@ export const meccaA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-9-response', type: 'matching', title: 'What Does It Mean?',
       instructions: 'Match each phrase from Chapter 9 with its meaning.',
-      question: 'How does the chapter describe Abu Bakr’s help and Umayya’s answer?',
+      question: 'What do these phrases tell us about Abu Bakr and Umayya?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'Abu Bakr heard that Umayya was hurting Bilal', right: 'news of the pain reached Abu Bakr' },
@@ -109,13 +109,13 @@ export const meccaA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-9-production', type: 'reflection', title: 'Respond to a Problem',
-      instructions: 'Write or say four short A2 sentences about hearing of a safe everyday problem and helping.', question: 'Can you report information, act quickly, ask a question and make a request?', correctAnswer: null,
+      instructions: 'Write or say four sentences about hearing of a problem and helping.', question: 'What did you hear, and how did you help?', correctAnswer: null,
       explanation: 'Use at least three Chapter 9 patterns.', feedback: { correct: 'Keep the response practical and safe.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Begin with “I heard that ...”.', mode: 'Individual' },
-        { question: 'Add “right away”.', mode: 'Individual' },
-        { question: 'Ask one did-question.', mode: 'Individual' },
-        { question: 'Use “asked ... to ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what you heard: “I heard that …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what you did quickly: “… right away.”', mode: 'Individual' },
+        { question: 'Sentence 3 — Ask a question: “Did you …?”', mode: 'Individual' },
+        { question: 'Sentence 4 — Ask someone for help: “I asked … to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -125,8 +125,8 @@ export const meccaA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
   10: [
     {
       id: 'mecca-a2-language-10-condition-price', type: 'drag-drop', title: 'Real or Imagined?',
-      instructions: 'Read each part of Chapter 10. Did it really happen, or is it only imagined? Put it in the right group.',
-      question: 'Which sentences tell real events, and which only imagine a situation?',
+      instructions: 'Real or only imagined? Put each part in the right group.',
+      question: 'Did it really happen, or did someone only imagine it?',
       dragDropGroups: [
         { group: 'Really happened', items: ['Umayya agreed … for five pieces of gold.', 'Abu Bakr moved the heavy rock from Bilal’s chest.', 'Bilal stood up with difficulty.'] },
         { group: 'Only imagined', items: ['If you offered me only one piece of gold, I would still sell him to you.', 'If you asked me for one hundred pieces of gold, I would still pay that price for him.'] },
@@ -144,7 +144,7 @@ export const meccaA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-10-condition', type: 'choose-form', title: 'Agreement and Freedom',
       instructions: 'Choose the correct word or words for each sentence from Chapter 10.',
-      question: 'Which forms show agreement, a changed state and a new ability?',
+      question: 'How did Bilal become free, and what could he do?',
       formChoices: [
         { sentence: 'Finally, Umayya agreed [choice] Bilal for five pieces of gold.', options: ['selling', 'to sell', 'sell'], answer: 1 },
         { sentence: 'Abu Bakr told Bilal that he was now a free man and no [choice] a slave.', options: ['more', 'again', 'longer'], answer: 2 },
@@ -175,13 +175,13 @@ export const meccaA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-10-production', type: 'reflection', title: 'Describe a Change',
-      instructions: 'Write or say four short A2 sentences about a positive change in someone’s situation.', question: 'Can you use agreement, an imagined condition and no longer?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a good change in someone’s life.', question: 'What changed, and how is life different now?', correctAnswer: null,
       explanation: 'Use at least three Chapter 10 patterns.', feedback: { correct: 'Keep the example realistic and simple.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use “agreed to ...”.', mode: 'Individual' },
-        { question: 'Add one “If ..., I would ...” sentence.', mode: 'Individual' },
-        { question: 'Use “no longer ...”.', mode: 'Individual' },
-        { question: 'Add one could/couldn’t sentence.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what someone agreed to: “… agreed to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Imagine something: “If I …, I would …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what stopped: “… no longer …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what you could or couldn’t do: “Before, I couldn’t …”', mode: 'Pair' },
       ],
     },
   ],
@@ -208,7 +208,7 @@ export const meccaA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-11-purpose', type: 'matching', title: 'What Does It Mean?',
       instructions: 'Match each phrase from Chapter 11 with its meaning.',
-      question: 'How does the chapter show Bilal’s new place near the Prophet?',
+      question: 'What do these phrases tell us about Bilal and the Prophet?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'he often allowed only Bilal to stay with him', right: 'Bilal was the one friend he let be near him' },
@@ -230,8 +230,8 @@ export const meccaA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-11-time', type: 'error-correction', title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Can you fix sentences with “wanted/told + person + to” and “one of the …”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Bilal and the Prophet?',
       errorItems: [
         { sentence: 'After the Hijrah, the Prophet (pbuh) wanted someone call people to prayer.', error: 'call', options: ['calling', 'to call', 'called'], answer: 1 },
         { sentence: 'After many years of hardship in Mecca, the Prophet (pbuh) told the Muslims move to Medina.', error: 'move', options: ['to move', 'moving', 'moved'], answer: 0 },
@@ -246,13 +246,13 @@ export const meccaA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-11-production', type: 'reflection', title: 'Choose Someone for a Task',
-      instructions: 'Write or say four short A2 sentences about choosing someone for a positive group task.', question: 'Can you use after, wanted someone to, chose and even when?', correctAnswer: null,
+      instructions: 'Write or say four sentences about choosing someone for a group job.', question: 'Who was chosen for the job, and why?', correctAnswer: null,
       explanation: 'Use at least three Chapter 11 patterns.', feedback: { correct: 'Keep the example positive and clear.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Begin with “After ...”.', mode: 'Individual' },
-        { question: 'Use “wanted someone to ...”.', mode: 'Individual' },
-        { question: 'Say who was chosen.', mode: 'Individual' },
-        { question: 'Add one “even when ...” sentence.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say when: “After …, …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what someone wanted: “… wanted someone to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say who was chosen: “We chose … because …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Show they did not stop: “… even when …”', mode: 'Pair' },
       ],
     },
   ],
@@ -273,8 +273,8 @@ export const meccaA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-12-habit', type: 'word-bank', title: 'Meaning and Equality',
-      instructions: 'Complete the lines from Chapter 12 with words from the bank. Three words are not needed.',
-      question: 'Which words explain a meaning and make a statement about all people?',
+      instructions: 'Complete the lines with the word bank. Three words are extra.',
+      question: 'What did Bilal add, and what did the Prophet teach?',
       fillBlanksText: 'He added the words “as-salatu khayrun minan-nawm,” [blank] “Prayer is better than sleep.” … Prophet Muhammad (pbuh) taught that [blank] people are equal. No skin color is [blank] than another.',
       wordBank: ['which means', 'all', 'better', 'who means', 'every', 'good'],
       correctAnswer: ['which means', 'all', 'better'],
@@ -298,13 +298,13 @@ export const meccaA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-12-production', type: 'reflection', title: 'Explain a Routine and a Principle',
-      instructions: 'Write or say four short A2 sentences about a routine and one fair principle.', question: 'Can you use used to, which means, told ... to, and all ... are?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a habit and one fair rule.', question: 'What was the old habit, and what is the fair rule?', correctAnswer: null,
       explanation: 'Use at least three Chapter 12 patterns.', feedback: { correct: 'Keep the language simple and respectful.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use “used to ...”.', mode: 'Individual' },
-        { question: 'Explain one phrase with “which means ...”.', mode: 'Individual' },
-        { question: 'Report one instruction.', mode: 'Individual' },
-        { question: 'End with an “All ... are ...” statement.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give an old habit: “… used to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Explain a word: “…, which means …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what someone told you: “… told us to …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say something about everyone: “All … are …”', mode: 'Pair' },
       ],
     },
   ],
@@ -331,7 +331,7 @@ export const meccaA2LanguageFocusExercisesPart12: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-13-degree', type: 'choose-form', title: 'Comparing and Asking',
       instructions: 'Choose the correct word or words for each sentence from Chapter 13.',
-      question: 'Which forms compare people, make a request and say what is important?',
+      question: 'What really matters, and what did Bilal ask Abu Bakr?',
       formChoices: [
         { sentence: 'Arabs are not better [choice] non-Arabs, …', options: ['then', 'than', 'as'], answer: 1 },
         { sentence: 'He could not stay in Medina, so he asked Abu Bakr [choice] him leave.', options: ['to let', 'let', 'letting'], answer: 0 },
@@ -346,8 +346,8 @@ export const meccaA2LanguageFocusExercisesPart12: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-13-importance', type: 'error-correction', title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Can you fix a reason phrase and a past verb?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Bilal’s life?',
       errorItems: [
         { sentence: 'His life teaches us that it is unfair to behave badly to people because their skin color or nationality.', error: 'because their', options: ['because of their', 'because they', 'for because their'], answer: 0 },
         { sentence: 'He started crying when he say the Prophet’s name.', error: 'say', options: ['saying', 'said', 'says'], answer: 1 },
@@ -361,13 +361,13 @@ export const meccaA2LanguageFocusExercisesPart12: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-13-production', type: 'reflection', title: 'State a Fair Principle',
-      instructions: 'Write or say four short A2 sentences about fairness and what makes a person valuable.', question: 'Can you compare fairly, give a reason and state what matters?', correctAnswer: null,
+      instructions: 'Write or say four sentences about being fair to all people.', question: 'What makes a person truly good?', correctAnswer: null,
       explanation: 'Use at least three Chapter 13 patterns without adding claims outside the chapter’s theme.', feedback: { correct: 'Keep the message respectful and clear.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use “not better than ...”.', mode: 'Individual' },
-        { question: 'Give one reason with “because of ...”.', mode: 'Individual' },
-        { question: 'Use one “too ... to ...” sentence in a neutral example.', mode: 'Individual' },
-        { question: 'Finish with “What matters is ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say who is not better: “… is not better than …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give a reason: “… because of …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what was too hard: “… was too … to …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what is important: “What matters is …”', mode: 'Pair' },
       ],
     },
   ],

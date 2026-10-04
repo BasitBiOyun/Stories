@@ -6,8 +6,8 @@ import type { Exercise } from '../../../../types';
  * Qur’anic quotations are only read, sorted, matched or asked about, never altered.
  */
 
-const reflection = (id: string, title: string, prompts: string[], explanation: string): Exercise => ({
-  id, type: 'reflection', title, instructions: 'Produce a short response using the target language naturally and accurately.', question: prompts[0], correctAnswer: null, explanation,
+const reflection = (id: string, title: string, prompts: string[], explanation: string, ask?: { instructions: string; question: string }): Exercise => ({
+  id, type: 'reflection', title, instructions: ask?.instructions ?? 'Produce a short response using the target language naturally and accurately.', question: ask?.question ?? prompts[0], correctAnswer: null, explanation,
   feedback: {
     correct: 'Check that each target form does a clear job in your paragraph.',
     incorrect: 'Look back at how the chapter uses these forms, then revise your paragraph.',
@@ -21,7 +21,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'mo-b2-lf13-a',
       type: 'true-false',
       title: 'What Does “which” Point To?',
-      instructions: 'Read the sentence from Chapter 13. Decide whether the statement about its meaning is true or false.',
+      instructions: 'Read the sentence from Chapter 13. Is the statement true or false?',
       question: '“The young ladies returned home unexpectedly early, which surprised their father.” — Here “which” refers only to the word “home”.',
       correctAnswer: false,
       explanation: 'After a comma, “which” can refer to the whole previous clause. What surprised the father was the fact that the daughters came back unexpectedly early, not their home. This kind of relative clause adds a comment or reaction to an event.',
@@ -34,8 +34,8 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'mo-b2-lf13-b',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct a cause phrase, a purpose clause and a time phrase?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix a reason, an aim and a time phrase?',
       errorItems: [
         {
           sentence: 'Due to Moses helped at the spring, they came back early and told him about it.',
@@ -64,16 +64,19 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf13-c', 'Evidence and Interpretation', [
-      'The chapter says, “It was clear to Moses that they enjoyed a comfortable and harmonious home life.” Write 4–5 sentences distinguishing what Moses directly observes from the interpretation he forms.',
-    ], 'B2 reading should distinguish narrated evidence from the character’s interpretation of that evidence.'),
+      'Say what Moses sees first, then what “It was clear to Moses that …” adds.',
+    ], 'B2 reading should distinguish narrated evidence from the character’s interpretation of that evidence.', {
+      instructions: 'Explain in 4–5 sentences what Moses sees and what he concludes.',
+      question: 'How does Moses know the family is happy?',
+    }),
   ],
   14: [
     {
       id: 'mo-b2-lf14-a',
       type: 'multiple-choice',
       title: 'Reason, Not Coincidence',
-      instructions: 'Choose the sentence that best keeps the reason the chapter gives.',
-      question: '“This offer suited Moses well, because …” Which sentence best captures why the offer suited Moses?',
+      instructions: 'Choose the sentence that keeps the chapter’s reason.',
+      question: '“This offer suited Moses well, because …” Why did the offer suit Moses?',
       options: [
         'It suited him although he already had a home and work in Midian.',
         'It suited him because the Pharaoh had ordered the family to employ him.',
@@ -90,9 +93,9 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     {
       id: 'mo-b2-lf14-b',
       type: 'error-correction',
-      title: 'Verb Patterns Around Work',
-      instructions: 'Each sentence has one mistake in its verb pattern. Tap the wrong words, then choose the correction.',
-      question: 'Can you use advise, offer and marry with the right pattern?',
+      title: 'Advise, Offer and Marry',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you use advise, offer and marry correctly?',
       errorItems: [
         {
           sentence: 'Because they needed someone reliable and strong, one of the daughters advised her father employing Moses.',
@@ -125,7 +128,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Purpose, Duration and Time',
       instructions: 'Complete the lines from Chapter 14 with words from the bank. Two words are not needed.',
-      question: 'Which prepositions show the purpose of a period, the end of a period, and a point inside a time span?',
+      question: 'Which word fits each gap?',
       fillBlanksText: 'This period of ten years was important in his life. It was a period of spiritual preparation [blank] prophethood. [blank] a period of ten years, Moses returned to his fatherland, Egypt, [blank] the early days of Ramses II’s rule (approximately 1279-1213 BC).',
       wordBank: ['for', 'After', 'during', 'Since', 'while'],
       correctAnswer: ['for', 'After', 'during'],
@@ -136,15 +139,18 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf14-d', 'Preparation or Delay?', [
-      'Write 6–7 sentences explaining why the text calls the ten years “spiritual preparation” rather than simply “a delay”. Use at least two pieces of chapter evidence and one qualifying phrase such as “the chapter presents…”.',
-    ], 'B2 interpretation should be explicitly tied to textual evidence and framed as the text’s interpretation.'),
+      'Give two facts from the chapter, and use “The chapter presents …”.',
+    ], 'B2 interpretation should be explicitly tied to textual evidence and framed as the text’s interpretation.', {
+      instructions: 'Explain in 6–7 sentences why the ten years were preparation, not delay.',
+      question: 'Were the ten years in Midian wasted time?',
+    }),
   ],
   15: [
     {
       id: 'mo-b2-lf15-a',
       type: 'multiple-choice',
       title: 'Hoping, Not Achieving',
-      instructions: 'Read the sentence from Chapter 15 and choose the best interpretation.',
+      instructions: 'Read the sentence from Chapter 15 and choose the best meaning.',
       question: '“Moses noticed a fire in the distance and approached it, hoping to bring his family some fire to warm themselves and find a guide by the fire.” What does “hoping to …” show?',
       options: [
         'A result he wanted but could not yet be sure of',
@@ -163,8 +169,8 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'mo-b2-lf15-b',
       type: 'transformation',
       title: 'Purpose and Something About to Happen',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you express purpose with “so that” and near future in the past in another way?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “to make him” and “about to happen”?',
       transformItems: [
         {
           source: 'Allah asked about the staff in Moses’ hand to make him focus on it.',
@@ -185,15 +191,18 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf15-c', 'Ordinary → Extraordinary', [
-      'Write 5 sentences describing how the chapter moves from the ordinary uses of the staff to its extraordinary role. Use “at first”, “then”, and one relative clause with “which” or “on which”.',
-    ], 'The task practises discourse movement from familiar description to a transformed meaning.'),
+      'Use “At first”, “Then”, and “which” or “on which”.',
+    ], 'The task practises discourse movement from familiar description to a transformed meaning.', {
+      instructions: 'Describe in five sentences how the staff goes from ordinary to amazing.',
+      question: 'How does a simple stick become part of a miracle?',
+    }),
   ],
   16: [
     {
       id: 'mo-b2-lf16-a',
       type: 'matching',
       title: 'At the Fire: What the Words Do',
-      instructions: 'Read the Qur’anic words quoted in Chapter 16. Match each line with what it does.',
+      instructions: 'Match each Qur’anic line in Chapter 16 with what it does.',
       question: 'What does each quoted line do in the scene at the fire?',
       matchingHeadings: { left: 'From the chapter', right: 'What the words do' },
       matchingPairs: [
@@ -218,8 +227,8 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'mo-b2-lf16-b',
       type: 'transformation',
       title: 'Reason and Reported Command',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you express a reason with a participle clause and report a command?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “because he realized” and Allah’s command?',
       transformItems: [
         {
           source: 'Moses’ fear subsided, and he felt peace, because he realized that he was witnessing the Truth.',
@@ -240,15 +249,18 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf16-c', 'Evidence Creates Responsibility', [
-      'Write 5–7 sentences explaining how receiving the two signs changes Moses’ situation. Include one cause clause, one reported command, and one purpose clause.',
-    ], 'The B2 target is to integrate grammar with the chapter’s meaning: signs are followed by a public responsibility.'),
+      'Use “because …”, “commanded him to …” and “so that …”.',
+    ], 'The B2 target is to integrate grammar with the chapter’s meaning: signs are followed by a public responsibility.', {
+      instructions: 'Explain in 5–7 sentences how the two signs change Moses’ life.',
+      question: 'How is Moses different after the two signs?',
+    }),
   ],
   17: [
     {
       id: 'mo-b2-lf17-a',
       type: 'multiple-choice',
       title: 'Warning: “lest”',
-      instructions: 'Read the Qur’anic line quoted in Chapter 17 and choose the best meaning.',
+      instructions: 'Read the Qur’anic line from Chapter 17 and choose the best meaning.',
       question: '“Therefore, do not let him who denies it … turn you away from it, lest you fall.” What does “lest you fall” mean?',
       options: [
         'unless you fall',
@@ -267,8 +279,8 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'mo-b2-lf17-b',
       type: 'choose-form',
       title: 'The Language of Continuity',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 17.',
-      question: 'Which forms express sameness and family or prophetic continuity?',
+      instructions: 'Choose the correct words for each sentence from Chapter 17.',
+      question: 'How does the chapter link Moses to Jacob and Abraham?',
       formChoices: [
         {
           sentence: 'The religion of Moses (pbuh) was the same as [choice] Jacob (pbuh), which was Islamic monotheism.',
@@ -294,8 +306,11 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf17-c', 'Explaining Continuity', [
-      'Write 5 sentences explaining the chapter’s claim of prophetic continuity from Abraham through Jacob to Moses. Use one relative clause and one consequence connector.',
-    ], 'The task asks learners to build a connected explanation rather than list family names.'),
+      'Use “who” or “which” once, and “Therefore” or “so”.',
+    ], 'The task asks learners to build a connected explanation rather than list family names.', {
+      instructions: 'Explain in five sentences how Moses is linked to Jacob and Abraham.',
+      question: 'How does Moses carry on Abraham’s message?',
+    }),
   ],
   18: [
     {
@@ -327,8 +342,8 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'mo-b2-lf18-b',
       type: 'transformation',
       title: 'Reported and Direct Questions',
-      instructions: 'Rewrite each chapter sentence in the new form. Keep the meaning. Write only the missing words.',
-      question: 'Can you move between reported and direct speech?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'Can you change reported words into direct words, and back?',
       transformItems: [
         {
           source: 'Then the Pharaoh mockingly asked whether his name was Moses.',
@@ -358,7 +373,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Ownership vs Lordship',
       instructions: 'Choose the contrast that the dialogue itself builds.',
-      question: 'Which contrast is built directly into the exchange?',
+      question: 'What difference does the dialogue itself show?',
       options: [
         'Both speakers agree that Pharaoh owns every person absolutely.',
         'Moses asks Pharaoh to become the Lord of the Israelites.',
@@ -372,9 +387,12 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: 'Look at the Pharaoh’s question about sending the Israelites and at Moses’ short reply.',
       },
     },
-    reflection('mo-b2-lf18-d', 'Rhetorical Question Analysis', [
-      'Choose two questions from the chapter and explain in 5–6 sentences how each question tries to control the dialogue. Use “whereas” or “while” to compare their functions.',
-    ], 'B2 analysis should identify what questions do rhetorically, not only what information they contain.'),
+    reflection('mo-b2-lf18-d', 'Two Questions, Two Aims', [
+      'Compare the two questions with “whereas” or “while”.',
+    ], 'B2 analysis should identify what questions do rhetorically, not only what information they contain.', {
+      instructions: 'Choose two questions from the chapter. Explain in 5–6 sentences what each one does.',
+      question: 'How does the Pharaoh use questions to control the talk?',
+    }),
   ],
 };
 
@@ -384,8 +402,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf19-a',
       type: 'drag-drop',
       title: 'Accusation and Answer',
-      instructions: 'Sort the parts of Chapter 19. Are they the Pharaoh’s accusation in his own words, or Moses’ answer as the narrator reports it?',
-      question: 'How does the chapter present the two sides of the argument differently?',
+      instructions: 'Sort the parts of Chapter 19: the Pharaoh’s own words, or Moses’ answer as reported?',
+      question: 'Is it the Pharaoh speaking, or the narrator reporting Moses?',
       dragDropGroups: [
         {
           group: 'The Pharaoh’s accusation (his own words)',
@@ -410,8 +428,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf19-b',
       type: 'transformation',
       title: 'Concession, Challenge and Threat',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you express a concession, report a hypothetical challenge and report a threat?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “despite the fact that”, “What if” and the threat?',
       transformItems: [
         {
           source: 'He explained to the Pharaoh that, despite the fact that the killing was an accident, he had left Egypt out of fear of revenge.',
@@ -440,8 +458,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf19-c',
       type: 'error-correction',
       title: 'Correction and No Choice',
-      instructions: 'Each sentence has one mistake. Tap the wrong word, then choose the correction.',
-      question: 'Can you use the right word to correct an accusation, and the right form after “no choice but”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix the linking word, and the verb after “no choice but”?',
       errorItems: [
         {
           sentence: 'Ignoring his irony, Moses (pbuh) explained that he was not a disbeliever when he killed the Egyptian; however, he had committed the act only by accident.',
@@ -463,9 +481,12 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Which word replaces a rejected claim with the true account? And which form follows “no choice but”? Check the middle and end of Chapter 19.',
       },
     },
-    reflection('mo-b2-lf19-d', 'A Structured Rebuttal', [
-      'Write a 6-sentence rebuttal in a new context. Use “rather”, “despite”, one if-clause, and “What if…?” to move from correction to challenge.',
-    ], 'The task transfers the chapter’s argumentative resources to a new discourse situation.'),
+    reflection('mo-b2-lf19-d', 'Correct, Then Challenge', [
+      'Use “rather”, “despite” and “If …”, and end with “What if …?”',
+    ], 'The task transfers the chapter’s argumentative resources to a new discourse situation.', {
+      instructions: 'Answer a complaint in six sentences, in a new situation.',
+      question: 'How can you correct a claim and then challenge it?',
+    }),
   ],
   20: [
     {
@@ -497,8 +518,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf20-b',
       type: 'transformation',
       title: 'Decision, Recommendation and Motive',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you turn an impersonal passive into an active sentence, and rephrase a recommendation and a motive?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “It was decided”, “recommended that” and “out of fear”?',
       transformItems: [
         {
           source: 'It was decided that a contest would be held between the magicians of Egypt and Moses (pbuh).',
@@ -524,8 +545,11 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf20-c', 'Managing Public Perception', [
-      'Write 5–7 sentences explaining how the advisers plan to reduce the impact of Moses’ signs. Use one passive reporting structure, one purpose expression, and one sentence showing expectation versus outcome.',
-    ], 'The task integrates political purpose with discourse organization and source-based interpretation.'),
+      'Use “It was decided that …”, an aim with “to …”, and “did not go as … expected”.',
+    ], 'The task integrates political purpose with discourse organization and source-based interpretation.', {
+      instructions: 'Explain in 5–7 sentences how the advisers hope to weaken Moses’ signs.',
+      question: 'What did the advisers plan, and did it work?',
+    }),
   ],
   21: [
     {
@@ -533,7 +557,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'Why “not merely … but …” Matters',
       instructions: 'Read the sentence from Chapter 21 and choose what the contrast adds.',
-      question: '“At that time, magicians were not merely performers, but the elite intellectual scholars of ancient Egypt.” What does the “not merely … but …” contrast add?',
+      question: '“At that time, magicians were not merely performers, but the elite intellectual scholars of ancient Egypt.” What does “not merely … but …” add?',
       options: [
         'It says the magicians had no real knowledge or skill.',
         'It explains why the magicians’ belief carried intellectual and political weight.',
@@ -551,8 +575,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf21-b',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct the forms after “but”, “after” and a cause linker?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix the verbs after “but” and “After”, and the reason word?',
       errorItems: [
         {
           sentence: 'Moses (pbuh) couldn’t do anything but advising his people to be patient.',
@@ -584,8 +608,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf21-c',
       type: 'choose-form',
       title: 'Reaction and Response',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 21.',
-      question: 'Which form describes a feeling, and which form follows “by”?',
+      instructions: 'Choose the correct word for each sentence from Chapter 21.',
+      question: 'Which word fits after “was utterly”, and which after “by”?',
       formChoices: [
         {
           sentence: 'When he faced the miracles, the Pharaoh was utterly [choice].',
@@ -605,17 +629,20 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Is the Pharaoh feeling horror or causing it? And which form follows a preposition like “by”? Check Chapter 21.',
       },
     },
-    reflection('mo-b2-lf21-d', 'Expert Recognition vs Public Obedience', [
-      'Write 6–8 sentences explaining why expert recognition damages Pharaoh’s position while many ordinary subjects still obey him. Use “not merely … but…”, “so”, and one cause connector.',
-    ], 'The chapter supports a B2 contrast between expert judgment and social obedience under long-term oppression.'),
+    reflection('mo-b2-lf21-d', 'When the Experts Believe', [
+      'Use “not merely … but …”, “so” and “because”.',
+    ], 'The chapter supports a B2 contrast between expert judgment and social obedience under long-term oppression.', {
+      instructions: 'Explain in 6–8 sentences why the magicians’ belief hurts the Pharaoh.',
+      question: 'Why does their belief matter, if many people still obey him?',
+    }),
   ],
   22: [
     {
       id: 'mo-b2-lf22-a',
       type: 'drag-drop',
       title: 'Two Responses to the Same Danger',
-      instructions: 'Sort the lines from Chapter 22. Do they express fear of the visible danger, or trust before any way out is visible?',
-      question: 'How does the chapter set panic and trust side by side?',
+      instructions: 'Sort the lines from Chapter 22: fear of what they see, or trust in Allah?',
+      question: 'Who panics, and who trusts?',
       dragDropGroups: [
         {
           group: 'Fear of the visible danger',
@@ -639,9 +666,9 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     {
       id: 'mo-b2-lf22-b',
       type: 'transformation',
-      title: 'Participle Clauses in the Escape',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you move between a participle clause and a full clause?',
+      title: 'Two Ways to Tell the Escape',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “realized …, so” and “finding no other way”?',
       transformItems: [
         {
           source: 'The Pharaoh realized their departure, so he mobilized his huge army and started following them.',
@@ -665,8 +692,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf22-c',
       type: 'choose-form',
       title: 'Catching Up and Parting',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 22.',
-      question: 'Which form follows “manage”, and which verb form describes what the sea did?',
+      instructions: 'Choose the correct word for each sentence from Chapter 22.',
+      question: 'Which word fits after “managed”, and what did the sea do?',
       formChoices: [
         {
           sentence: 'Soon, they easily managed [choice] up with them.',
@@ -686,17 +713,20 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Which form follows “manage”? And which tense do the other verbs in the long sentence use? Check Chapter 22.',
       },
     },
-    reflection('mo-b2-lf22-d', 'Certainty Before Visible Evidence', [
-      'Write 6–8 sentences analyzing the difference between the people’s visible evidence and Moses’ confidence. Keep separate what the characters can see, what Moses says, and what happens later.',
-    ], 'B2 analysis distinguishes present evidence, stated confidence, and later outcome instead of collapsing them into one moment.'),
+    reflection('mo-b2-lf22-d', 'Trust Before Seeing', [
+      'Keep apart what they see, what Moses says, and what happens later.',
+    ], 'B2 analysis distinguishes present evidence, stated confidence, and later outcome instead of collapsing them into one moment.', {
+      instructions: 'Explain in 6–8 sentences how the people’s fear differs from Moses’ trust.',
+      question: 'What could the people see, and what did Moses say?',
+    }),
   ],
   23: [
     {
       id: 'mo-b2-lf23-a',
       type: 'drag-drop',
       title: 'Event vs Self-Serving Interpretation',
-      instructions: 'Sort the parts of Chapter 23. Are they events the narrator reports, or the Pharaoh’s interpretation of the event?',
-      question: 'How does the chapter keep what happened apart from how the Pharaoh explained it?',
+      instructions: 'Sort the parts of Chapter 23: what happened, or the Pharaoh’s explanation?',
+      question: 'What really happened, and what did the Pharaoh claim?',
       dragDropGroups: [
         {
           group: 'What the narrator reports',
@@ -721,8 +751,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf23-b',
       type: 'transformation',
       title: 'Reporting a Claim',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you report the Pharaoh’s claim and rephrase how his men interpreted the event?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say the Pharaoh’s words and what his men believed?',
       transformItems: [
         {
           source: 'But the Pharaoh turned to his men and said, “Look! The sea has opened at my command.”',
@@ -742,17 +772,20 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Item 1: move “has opened” one step back. Item 2: what did they believe the event was a sign of? Check the middle of Chapter 23.',
       },
     },
-    reflection('mo-b2-lf23-c', 'Evidence and Motivated Interpretation', [
-      'Write 5–7 sentences explaining why Pharaoh’s claim about the opened sea is a self-serving interpretation rather than the chapter’s explanation. Quote or paraphrase two pieces of chapter evidence.',
-    ], 'The task requires B2 evidence-versus-interpretation reasoning grounded in the source.'),
+    reflection('mo-b2-lf23-c', 'Whose Explanation?', [
+      'Quote or retell two things from the chapter that show the real cause.',
+    ], 'The task requires B2 evidence-versus-interpretation reasoning grounded in the source.', {
+      instructions: 'Explain in 5–7 sentences why the Pharaoh says the sea opened at his command.',
+      question: 'Who really opened the sea, and why does the Pharaoh claim it?',
+    }),
   ],
   24: [
     {
       id: 'mo-b2-lf24-a',
       type: 'multiple-choice',
       title: 'Looking Forward from the Ending',
-      instructions: 'Read the lines from the end of Chapter 24 and choose what “would” does.',
-      question: '“His story would not end here. He would face many difficult tests …” What does “would” do in these sentences?',
+      instructions: 'Read the end of Chapter 24 and choose what “would” does.',
+      question: '“His story would not end here. He would face many difficult tests …” What does “would” do here?',
       options: [
         'It describes something Moses used to do regularly.',
         'It makes a polite request.',
@@ -770,8 +803,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf24-b',
       type: 'transformation',
       title: 'Promise and Gift',
-      instructions: 'Rewrite each chapter sentence in the new form. Keep the meaning. Write only the missing words.',
-      question: 'Can you turn a reported promise into direct speech and a passive into an active sentence?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say his promise and “was given … by Allah”?',
       transformItems: [
         {
           source: 'When Moses (pbuh) led the Children of Israel out of Egypt, he told his people that he would bring them a Book from Allah.',
@@ -795,8 +828,8 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'mo-b2-lf24-c',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct subject–verb agreement and the pattern after “see someone”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix the verb after “efforts”, and the verb after “saw his people”?',
       errorItems: [
         {
           sentence: 'Moses\'s (pbuh) efforts to guide them to the right path is the reason he is known as the Prophet of Great Determination.',
@@ -819,8 +852,11 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf24-d', 'Liberation Is Not the End', [
-      'Write 7–8 sentences explaining the final chapter’s message that liberation is followed by continuing responsibility. Use “despite”, one future-in-the-past form with “would”, and at least two pieces of evidence.',
-    ], 'A B2 synthesis should connect rescue, guidance, disobedience, and continuing determination without reducing the ending to one event.'),
+      'Use “Despite …”, “would” for what came later, and two facts from the chapter.',
+    ], 'A B2 synthesis should connect rescue, guidance, disobedience, and continuing determination without reducing the ending to one event.', {
+      instructions: 'Explain in 7–8 sentences why freedom is not the end of the story.',
+      question: 'What new duties come after freedom?',
+    }),
   ],
 };
 
@@ -828,8 +864,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'mo-b2-language-review-1-source-hedge-view', type: 'drag-drop', title: 'Notice: Whose Claim, and How Sure?',
-    instructions: 'Read the sentences from Chapters 2, 5, 18 and 23. Decide how each one presents its information, and put it in the right group.',
-    question: 'Does the writer report a source, hedge a claim, or present a character’s view?',
+    instructions: 'Put each sentence from the book in the right group.',
+    question: 'Is it a source, a careful guess, or a character’s view?',
     dragDropGroups: [
       { group: 'The writer reports a source', items: ['According to the sources, Seti I … was the pharaoh who oppressed the Israelites.', 'Ibn Abbas said, “The Pharaoh saw a fire in his vision. …”'] },
       { group: 'The writer hedges: likely or possible, not proved', items: ['So the pharaoh who drowned at sea was probably Ramses II.', 'It is possible that some people of that period did not practise or believe in paganism.'] },
@@ -845,8 +881,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-2-not-only-not-merely', type: 'multiple-choice', title: 'Notice: Not Only … / Not Merely …',
-    instructions: 'Read the two sentences from Chapters 3 and 21. Then choose the best explanation.',
-    question: 'Chapter 3: “… god-king authority was based not only on the richness of the river, but also on the manpower of the slaves …” Chapter 21: “At that time, magicians were not merely performers, but the elite intellectual scholars of ancient Egypt.” What do the two structures do?',
+    instructions: 'Read the two sentences. Then choose the best explanation.',
+    question: 'Chapter 3: “… god-king authority was based not only on the richness of the river, but also on the manpower of the slaves …” Chapter 21: “At that time, magicians were not merely performers, but the elite intellectual scholars of ancient Egypt.” What do “not only” and “not merely” do here?',
     options: [
       'They reject the first description as false and put a correct one in its place.',
       'They accept the first description but show it is incomplete, then add a second, weightier point.',
@@ -859,7 +895,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-3-participle-clauses', type: 'true-false', title: 'Notice: -ing Phrases Around Moses',
-    instructions: 'Read the sentences from Chapters 12, 15 and 19. Decide whether the statement about their meaning is true or false.',
+    instructions: 'Read the sentences. Is the statement true or false?',
     question: 'Chapter 12: “Forgetting his thirst, Moses approached them …” Chapter 15: “… approached it, hoping to bring his family some fire …” Chapter 19: “Ignoring his irony, Moses (pbuh) explained that he was not a disbeliever …” — Statement: the -ing phrases describe actions that happen only after the main action is finished.',
     correctAnswer: false,
     explanation: 'The -ing phrase and the main verb share one subject (Moses), and they happen at the same time: while he approaches, he forgets his thirst or hopes for fire; while he explains, he ignores the Pharaoh’s irony. The phrase adds his attitude or aim to the action without a second full clause. It does not mean “afterwards”.',
@@ -868,8 +904,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   // BUILD — controlled practice in the book's own sentences.
   {
     id: 'mo-b2-language-review-4-cause-linkers', type: 'choose-form', title: 'Build: Cause Before a Noun, a Clause or a Sentence',
-    instructions: 'Choose the form that completes each sentence from the book. Look at what comes after the gap.',
-    question: 'Which linker fits a noun phrase, which fits a clause, and which links two sentences?',
+    instructions: 'Choose the right words for each sentence from the book.',
+    question: 'Which word fits? Look at what comes after the gap.',
     formChoices: [
       { sentence: 'Control of the Nile River was vital. [choice], the geographical structure of the land was reshaped by human power.', options: ['Because', 'For this reason', 'Despite this'], answer: 1 },
       { sentence: '[choice] the crowd at the water source, the young women could only water their animals after the male shepherds had taken their flocks away.', options: ['Due to', 'Because', 'Although'], answer: 0 },
@@ -881,8 +917,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-5-overclaims', type: 'error-correction', title: 'Build: Do Not Overclaim',
-    instructions: 'Each sentence makes a stronger claim than the book does. Tap the words that overclaim, then choose the writer’s original, more careful words.',
-    question: 'Can you restore the writer’s degree of certainty?',
+    instructions: 'Each sentence says more than the book. Tap the strong words, then choose the book’s words.',
+    question: 'Can you make each sentence as careful as the book?',
     errorItems: [
       { sentence: 'The entire Torah consists of the history of Moses (pbuh) and the Israelites under his leadership.', error: 'The entire', options: ['Almost the entire', 'The whole', 'Certainly the entire'], answer: 0 },
       { sentence: 'All of the sources state that the Exodus … must have taken place in the early thirteenth century BC.', error: 'All', options: ['Every', 'Most', 'None'], answer: 1 },
@@ -894,8 +930,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-6-reporting', type: 'transformation', title: 'Build: Report What They Said',
-    instructions: 'Report each piece of direct speech from Chapters 8, 12 and 13. Write only the missing words.',
-    question: 'How do tense, pronouns and word order change when you report a question or a statement?',
+    instructions: 'Report what each person said. Write only the missing words.',
+    question: 'What changes when you report a question or a statement?',
     transformItems: [
       { source: 'The Pharaoh was astonished and asked, “Who are you? …”', frame: 'The Pharaoh was astonished and asked her who [blank].', answers: ['she was'] },
       { source: 'He asked, “Why are you shepherding?”', frame: 'He asked the two sisters why [blank].', answers: ['they were shepherding'] },
@@ -907,8 +943,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-7-impersonal-passive', type: 'sentence-building', title: 'Build: A Decision Without a Named Decider',
-    instructions: 'Put the parts in order to rebuild a sentence from Chapter 20.',
-    question: 'How does the chapter report the decision about the contest without saying who made it?',
+    instructions: 'Put the parts in order to make a sentence from Chapter 20.',
+    question: 'How can we give a decision without saying who made it?',
     sentenceChunks: ['It was decided', 'that a contest', 'would be held', 'between the magicians of Egypt', 'and Moses (pbuh).'],
     correctAnswer: null,
     explanation: '“It was decided that …” is an impersonal passive: the decision is in focus and the deciders stay unnamed. Inside it, “would be held” is a passive seen from the past, looking forward to the contest. The book uses the passive in the same way elsewhere when what happens matters more than who acts: “He was placed in a basket” (Chapter 4), “the Torah was given to him by Allah” (Chapter 24).',
@@ -917,8 +953,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   // USE — transfer the language into the learners' own world.
   {
     id: 'mo-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Report on a School Project',
-    instructions: 'This text is not from the book. Complete the report with words and phrases from the bank. Two of them are not needed.',
-    question: 'Can you report evidence, give a cause, add a second point and hedge a conclusion?',
+    instructions: 'Complete this new text with words from the bank. Two are extra.',
+    question: 'Which word fits each gap in the school report?',
     fillBlanksText: 'Last term, our class started a recycling project at school. [blank] our survey, most students threw plastic bottles into ordinary bins. [blank] a lack of recycling boxes in the corridors, many bottles ended up in the rubbish. We placed new boxes on every floor, and the project helped not only the environment [blank] the school budget. The number of bottles in the ordinary bins fell by half, so the new boxes were [blank] the main reason for the change. However, we cannot be sure: some students were also away on a school trip that month.',
     wordBank: ['According to', 'Due to', 'but also', 'probably', 'certainly', 'Although'],
     correctAnswer: ['According to', 'Due to', 'but also', 'probably'],
@@ -927,8 +963,8 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Make the Claim More Careful',
-    instructions: 'These sentences are not from the book. Each one claims too much. Rewrite it more carefully. Write only the missing words.',
-    question: 'Can you hedge a claim with a quantifier, an adverb or a careful reporting verb?',
+    instructions: 'These new sentences say too much. Make them more careful. Write the missing words.',
+    question: 'How can you make a claim less strong?',
     transformItems: [
       { source: 'Everyone in our class hates the new timetable.', frame: '[blank] students in our class dislike the new timetable.', answers: ['Many', 'Most', 'Some', 'Several', 'A lot of', 'Lots of', 'Quite a few'] },
       { source: 'The new bus timetable is the reason for our late arrivals.', frame: 'The new bus timetable is [blank] the reason for our late arrivals.', answers: ['probably', 'possibly', 'perhaps', 'likely', 'most likely', 'very likely', 'partly'] },
@@ -940,16 +976,16 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mo-b2-language-review-10-transfer', type: 'reflection', title: 'Use: A Short Argued Paragraph',
-    instructions: 'Should students in your school do one hour of helpful work each month, for example in the library, the school garden or for older neighbours? Write a short argued paragraph of 6–8 sentences. Discuss your ideas with a partner first.',
-    question: 'Can you state a position, support it with evidence and qualify it, using the language of the whole book?',
+    instructions: 'Should students do one hour of helpful work each month? Write 6–8 sentences. Talk to a partner first.',
+    question: 'Can you give your view and support it?',
     correctAnswer: null,
     explanation: 'Example: “In my view, one hour of helpful work each month would probably be good for our school. According to our class survey, most students would like to help in the library or the school garden. The project would help not only the people we support but also the students themselves, because they would learn responsibility. Due to busy timetables, however, some students have little free time. It is possible that a few of them will see the hour as extra work. Although this worry is understandable, the hour would be short and flexible. It is not a punishment; rather, it is a chance to be useful.”',
     feedback: { correct: 'Check your paragraph: a hedged position (probably / it seems), a source (according to), a cause (because / due to), not only … but also, a concession (although), and a correction with rather.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Position — state your view carefully: “In my view, … would probably …” or “It seems that …”', mode: 'Individual' },
-      { question: 'Evidence — name your source and give a cause: “According to …, …” / “… because …” / “Due to …, …”', mode: 'Individual' },
-      { question: 'Develop — add a second, stronger point: “… not only … but also …”', mode: 'Pair' },
-      { question: 'Qualify — answer a possible objection: “Although …, …” or “It is not …; rather, …”', mode: 'Pair' },
+      { question: 'Your view — “In my view, … would probably …” or “It seems that …”', mode: 'Individual' },
+      { question: 'A source and a reason — “According to …, …” / “because …” / “Due to …”', mode: 'Individual' },
+      { question: 'A stronger point — “… not only … but also …”', mode: 'Pair' },
+      { question: 'A doubt and your answer — “Although …, …” or “It is not …; rather, …”', mode: 'Pair' },
     ],
   },
 ];

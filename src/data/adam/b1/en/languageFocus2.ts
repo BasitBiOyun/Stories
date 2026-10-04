@@ -6,8 +6,8 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b1-language-3-reporting-beliefs',
       type: 'drag-drop',
       title: 'Whose View Is It?',
-      instructions: 'Read each part of Chapter 3. Is it a character’s view, or is it the narrator telling us what happened or what was true? Put it in the right group.',
-      question: 'How does the narrator keep the characters’ opinions separate from the narrator’s own statements?',
+      instructions: 'Is it a character’s view or the narrator’s words? Put each part in the right group.',
+      question: 'Who says it: a character, or the narrator?',
       dragDropGroups: [
         {
           group: 'A character’s view (thought / believed / said)',
@@ -49,7 +49,7 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Comparing and Contrasting',
       instructions: 'Choose the correct form to complete each sentence from Chapter 3.',
-      question: 'Which forms compare value and introduce a contrasting view?',
+      question: 'Which words compare, and which word starts a different view?',
       formChoices: [
         {
           sentence: 'He thought he was [choice] and more valuable than Adam (pbuh) …',
@@ -78,8 +78,8 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b1-language-3-reason-and-result',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct a reported belief, a contrast and a clause that adds a result?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Iblis and Adam?',
       errorItems: [
         {
           sentence: 'Iblis thought that Adam is an unimportant being created from clay.',
@@ -108,9 +108,9 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'adam-b1-language-3-build-a-balanced-judgment', type: 'reflection', title: 'Build a Balanced Judgment', instructions: 'Write or say four connected B1 sentences about a new situation involving two different opinions. Use at least three Chapter 3 language patterns.', question: 'Can you report two viewpoints, give a reason, compare them, and then signal your contrasting conclusion without retelling Chapter 3?', correctAnswer: null,
+      id: 'adam-b1-language-3-build-a-balanced-judgment', type: 'reflection', title: 'Build a Balanced Judgment', instructions: 'Write or say four sentences about two people with different opinions.', question: 'What does each person think, and what do you decide?', correctAnswer: null,
       explanation: 'A strong response can use “thought that” or “believed”, add a reason with “because”, make a comparison with “better/more ... than”, and introduce a contrasting conclusion with “but” or “however”.', feedback: { correct: 'Keep each sentence connected to the same situation and make the contrast clear.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Report one person’s view with “thought that” or “believed ...”.', mode: 'Individual' }, { question: 'Sentence 2 — Give the reason using “because ...”.', mode: 'Individual' }, { question: 'Sentence 3 — Add a comparison with “better than” or “more ... than”.', mode: 'Individual' }, { question: 'Sentence 4 — Introduce a different conclusion with “but” or “however”.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Give one person’s view: “… thought that …”', mode: 'Individual' }, { question: 'Sentence 2 — Give the reason: “because …”', mode: 'Individual' }, { question: 'Sentence 3 — Give another view and compare: “… is better than …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what you decide: “However, …” or “But …”', mode: 'Pair' }],
     },
   ],
 };
@@ -121,8 +121,8 @@ export const adamB1LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b1-language-4-continuing-and-reaction',
       type: 'multiple-choice',
       title: 'Which Happened First?',
-      instructions: 'Read the first paragraph of Chapter 4 again. Then choose the best answer.',
-      question: 'Allah said to Iblis, “Go away! …” Later in the paragraph we read: “He thought that … Allah had put him far from His help.” Why does the writer use “had put” and not “put”?',
+      instructions: 'Read the first paragraph of Chapter 4. Then choose the best answer.',
+      question: 'Allah said to Iblis, “Go away! …” Later in the paragraph we read: “He thought that … Allah had put him far from His help.” Why “had put” and not “put”?',
       options: [
         'Iblis was sent away at the same moment as he was thinking this.',
         'Allah had already sent Iblis away before Iblis had this thought.',
@@ -141,7 +141,7 @@ export const adamB1LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Verb Patterns and Reasons',
       instructions: 'Choose the correct form to complete each sentence from Chapter 4.',
-      question: 'Which forms follow “continue” and “want”, and which reason word comes before a noun?',
+      question: 'Which words fit after “continued” and “want”, and which gives a reason?',
       formChoices: [
         {
           sentence: 'But Iblis continued [choice] he was right and the Creator was wrong.',
@@ -170,8 +170,8 @@ export const adamB1LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b1-language-4-purpose-warning',
       type: 'sentence-building',
       title: 'Build Iblis’s Plan',
-      instructions: 'Put the chunks in order to rebuild the sentence from Chapter 4.',
-      question: 'How do “a chance to …” and “keep someone away from …” work together in one sentence?',
+      instructions: 'Tap the pieces to make the sentence from Chapter 4.',
+      question: 'What was Iblis waiting for?',
       sentenceChunks: ['He waited', 'for a chance', 'to keep', 'Adam (pbuh)', 'away from', 'Allah’s kindness,', 'just as he himself was.'],
       correctAnswer: null,
       explanation: '“Wait for a chance to + verb” says what someone is waiting to be able to do. “Keep + person + away from + something” means stop that person from being close to it; the person comes between “keep” and “away from”. “Just as he himself was” compares Adam’s possible future with Iblis’s own situation.',
@@ -180,7 +180,7 @@ export const adamB1LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: 'Start with the person and the verb. Then: what was he waiting for? Put the person after “keep”, and finish with the comparison. Check the second paragraph of Chapter 4.',
       },
     },
-    { id: 'adam-b1-language-4-build-warning-situation', type: 'reflection', title: 'Build a Warning Situation', instructions: 'Write or say four connected B1 sentences about a new situation in which someone continues a harmful plan and another person gives a warning. Use at least three Chapter 4 patterns.', question: 'Can you connect continuation, reason, purpose, and warning in a short new situation without retelling Chapter 4?', correctAnswer: null, explanation: 'A strong response may use “continued + -ing”, “because of + noun”, “waited for a chance to ...”, “keep + object + away from ...”, and “warned + person + to be careful of ...”.', feedback: { correct: 'Keep the four sentences connected and make the reason and warning clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Show an action that continues with “continued + -ing”.', mode: 'Individual' }, { question: 'Sentence 2 — Give a reason with “because of + noun”.', mode: 'Individual' }, { question: 'Sentence 3 — Express purpose with “waited for a chance to ...” or a similar pattern.', mode: 'Individual' }, { question: 'Sentence 4 — Report a warning with “warned + person + to be careful of ...”.', mode: 'Pair' }] },
+    { id: 'adam-b1-language-4-build-warning-situation', type: 'reflection', title: 'Build a Warning Situation', instructions: 'Write or say four sentences about a bad habit and a warning.', question: 'What does the person keep doing, and who warns them?', correctAnswer: null, explanation: 'A strong response may use “continued + -ing”, “because of + noun”, “waited for a chance to ...”, “keep + object + away from ...”, and “warned + person + to be careful of ...”.', feedback: { correct: 'Keep the four sentences connected and make the reason and warning clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone kept doing: “… continued + -ing …”', mode: 'Individual' }, { question: 'Sentence 2 — Give a reason: “Because of + thing, …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what they waited for: “… waited for a chance to …”', mode: 'Individual' }, { question: 'Sentence 4 — Give the warning: “… warned him to be careful of …”', mode: 'Pair' }] },
   ],
 };
 
@@ -218,7 +218,7 @@ export const adamB1LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Beginnings and a Restriction',
       instructions: 'Choose the correct form to complete each sentence from Chapter 5.',
-      question: 'Which forms follow “start”, “begin” and “ask … not …”?',
+      question: 'Which words come after “started”, “began” and “asked them”?',
       formChoices: [
         {
           sentence: 'Adam was in Paradise, but he started [choice] lonely.',
@@ -247,8 +247,8 @@ export const adamB1LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'adam-b1-language-5-time-manner-condition',
       type: 'transformation',
       title: 'From Reported Words to Direct Words',
-      instructions: 'The chapter reports what Iblis whispered. Complete Iblis’s words as he might have said them directly.',
-      question: 'How does a reported “if … would …” sentence change when we give the speaker’s direct words?',
+      instructions: 'Write Iblis’s own words. Keep the same meaning.',
+      question: 'What did Iblis say to them?',
       transformItems: [
         {
           source: 'He whispered to them that if they ate from that one tree, they would never die.',
@@ -263,7 +263,7 @@ export const adamB1LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'In direct speech the verbs move forward again: “ate” becomes “eat”, and “would” becomes “will”. Keep the word “never”.',
       },
     },
-    { id: 'adam-b1-language-5-build-advice-situation', type: 'reflection', title: 'Build a New Advice Situation', instructions: 'Write or say four connected B1 sentences about a new situation with a beginning, one clear restriction, and a conditional result. Use at least three Chapter 5 patterns.', question: 'Can you reuse the chapter’s language relationships in a new situation without retelling Chapter 5?', correctAnswer: null, explanation: 'A strong response may use “started to ...”, “began + -ing”, “more ... than ...”, “asked + person + not to ...”, “when ...”, and an “if ... would ...” relationship.', feedback: { correct: 'Keep the sentences connected and make the restriction and result easy to follow.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Show the beginning of a feeling or activity with “started to ...” or “began + -ing”.', mode: 'Individual' }, { question: 'Sentence 2 — Add a comparison with “more ... than ...” if it fits your situation.', mode: 'Individual' }, { question: 'Sentence 3 — Report one negative instruction with “asked + person + not to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Add a condition and result with “if ... would ...” or another natural conditional pattern.', mode: 'Pair' }] },
+    { id: 'adam-b1-language-5-build-advice-situation', type: 'reflection', title: 'Build a New Advice Situation', instructions: 'Write or say four sentences about someone who starts something new.', question: 'What starts, what is not allowed, and what could happen?', correctAnswer: null, explanation: 'A strong response may use “started to ...”, “began + -ing”, “more ... than ...”, “asked + person + not to ...”, “when ...”, and an “if ... would ...” relationship.', feedback: { correct: 'Keep the sentences connected and make the restriction and result easy to follow.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what started: “… started to …” or “… began + -ing”', mode: 'Individual' }, { question: 'Sentence 2 — Compare: “… was more … than …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what someone asked: “… asked her not to …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what would happen: “If …, … would …”', mode: 'Pair' }] },
   ],
 };
 
@@ -292,8 +292,8 @@ export const adamB1LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
       id: 'adam-b1-language-6-sequence-change-discovery',
       type: 'sequencing',
       title: 'Put the Events in Order',
-      instructions: 'Put the parts of Chapter 6 in the order in which they happened.',
-      question: 'How do the verbs and time clauses show the order of events?',
+      instructions: 'Put the parts of Chapter 6 in the right order.',
+      question: 'What happened after Iblis tricked them?',
       sequencingItems: [
         { id: 'a', text: 'He convinced them to believe his lies, …' },
         { id: 'b', text: 'Adam stretched out his hand, picked one of the fruits and offered it to Eve.' },
@@ -323,7 +323,7 @@ export const adamB1LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
         incorrect: 'Read the last paragraph of Chapter 6. Ask: what happened as a result? Why did they cut leaves? Why did they hurry?',
       },
     },
-    { id: 'adam-b1-language-6-build-consequence-chain', type: 'reflection', title: 'Build a Consequence Chain', instructions: 'Write or say four connected B1 sentences about a new situation in which an earlier warning is forgotten, an action creates a change, and someone reacts for a clear purpose. Use at least three Chapter 6 patterns.', question: 'Can you use the chapter’s language to build a new action → change → reaction sequence without retelling Chapter 6?', correctAnswer: null, explanation: 'A strong response may use “managed to ...”, “convinced + person + to ...”, “had + past participle”, “when ...”, “became ...”, “so ...”, “to + verb” for purpose, and “because ...”.', feedback: { correct: 'Keep the sequence easy to follow and make the purpose and cause explicit.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Mention an earlier warning or instruction using a past-perfect form such as “had given” or “had told”.', mode: 'Individual' }, { question: 'Sentence 2 — Show a successful action or influence with “managed to ...” or “convinced + person + to ...”.', mode: 'Individual' }, { question: 'Sentence 3 — Describe a change and its result using “became ...” and/or “so ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Explain the reaction with a purpose phrase “to ...” and a reason with “because ...”.', mode: 'Pair' }] },
+    { id: 'adam-b1-language-6-build-consequence-chain', type: 'reflection', title: 'Build a Consequence Chain', instructions: 'Write or say four sentences about someone who forgets good advice.', question: 'What advice was forgotten, and what happened?', correctAnswer: null, explanation: 'A strong response may use “managed to ...”, “convinced + person + to ...”, “had + past participle”, “when ...”, “became ...”, “so ...”, “to + verb” for purpose, and “because ...”.', feedback: { correct: 'Keep the sequence easy to follow and make the purpose and cause explicit.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Give the earlier advice: “… had told them to …”', mode: 'Individual' }, { question: 'Sentence 2 — Say who got him to do it: “… convinced him to …”', mode: 'Individual' }, { question: 'Sentence 3 — Show a change: “Soon he became …, so …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what he did and why: “He … to … because …”', mode: 'Pair' }] },
   ],
 };
 
@@ -334,7 +334,7 @@ export const adamB1LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'Words for Responsibility',
       instructions: 'Match each phrase from Chapter 7 with its meaning.',
-      question: 'What do these phrases tell us about the two different responses to a wrong action?',
+      question: 'What do these phrases tell us about Adam, Eve and Iblis?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'it wasn’t on purpose', right: 'they did not do it deliberately' },
@@ -361,7 +361,7 @@ export const adamB1LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Linking Two Responses',
       instructions: 'Complete the lines from Chapter 7 with words from the bank. Three words are not needed.',
-      question: 'Which linking words show contrast inside a sentence, contrast between two paths, and a reason?',
+      question: 'Which words show a difference, and which gives a reason?',
       fillBlanksText: 'They made a mistake, [blank] it wasn’t on purpose. … [blank], Iblis chose an opposite path. He never admitted he was wrong [blank] he was arrogant.',
       wordBank: ['but', 'On the other hand', 'because', 'so', 'In addition', 'because of'],
       correctAnswer: ['but', 'On the other hand', 'because'],
@@ -376,7 +376,7 @@ export const adamB1LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Decision, Wish and Purpose',
       instructions: 'Choose the correct form to complete each sentence from Chapter 7.',
-      question: 'Which verb forms follow “decide never”, “want someone” and a purpose?',
+      question: 'Which words fit after “decided never” and “wanted Allah”, and which says what for?',
       formChoices: [
         {
           sentence: 'They said sorry to Allah, learned from their mistake and decided never [choice] it.',
@@ -401,6 +401,6 @@ export const adamB1LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
         incorrect: 'Look at the second and fourth paragraphs of Chapter 7. After “decided never”, “wanted Allah” and “on earth”, which form do you find?',
       },
     },
-    { id: 'adam-b1-language-7-build-repair-plan', type: 'reflection', title: 'Build a Repair-and-Responsibility Plan', instructions: 'Write or say four connected B1 sentences about a new situation where someone makes an unintentional mistake, responds responsibly, and then takes on a useful next step. Use at least four Chapter 7 patterns.', question: 'Can you use the chapter’s language to explain intention, response, reason, decision, and future responsibility in a new context?', correctAnswer: null, explanation: 'A strong response may include “not on purpose”, “was/were sad about ...”, “learned from ...”, “decided never to ...”, “wanted + person + to ...”, “because ...”, “on the other hand ...”, “to + verb” for purpose, or “would ...” for an expected later action.', feedback: { correct: 'Keep the four sentences connected so the intention, response, reason, and next responsibility are easy to follow.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Explain that a mistake happened but was not on purpose.', mode: 'Individual' }, { question: 'Sentence 2 — Describe the person’s response and what they learned from the mistake.', mode: 'Individual' }, { question: 'Sentence 3 — Give a reason and a decision using “because ...” and “decided never to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — State a useful next purpose or expected responsibility using “to + verb” and/or “would ...”.', mode: 'Pair' }] },
+    { id: 'adam-b1-language-7-build-repair-plan', type: 'reflection', title: 'Build a Repair-and-Responsibility Plan', instructions: 'Write or say four sentences about someone who puts a mistake right.', question: 'What went wrong, and how did the person fix it?', correctAnswer: null, explanation: 'A strong response may include “not on purpose”, “was/were sad about ...”, “learned from ...”, “decided never to ...”, “wanted + person + to ...”, “because ...”, “on the other hand ...”, “to + verb” for purpose, or “would ...” for an expected later action.', feedback: { correct: 'Keep the four sentences connected so the intention, response, reason, and next responsibility are easy to follow.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what went wrong: “…, but it wasn’t on purpose.”', mode: 'Individual' }, { question: 'Sentence 2 — Say what the person did and learned: “She said sorry and learned to …”', mode: 'Individual' }, { question: 'Sentence 3 — Give a reason and a decision: “Because …, she decided never to …”', mode: 'Individual' }, { question: 'Sentence 4 — Say the next step: “She … to …” or “She would …”', mode: 'Pair' }] },
   ],
 };

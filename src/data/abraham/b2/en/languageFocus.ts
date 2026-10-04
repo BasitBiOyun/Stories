@@ -15,8 +15,8 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-1-source-framing',
       type: 'multiple-choice',
       title: 'Who Is Presenting Whom?',
-      instructions: 'Read the opening sentence of Chapter 1. Then choose the best explanation of the wording.',
-      question: '“In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and representative of the monotheistic belief.” Why does the writer use “is presented as” instead of simply stating that Abraham is the messenger?',
+      instructions: 'Read the first sentence of Chapter 1. Then choose the best answer.',
+      question: '“In the Holy Qur’an, Prophet Abraham (pbuh) is presented as the messenger and representative of the monotheistic belief.” Why does the writer say “is presented as”?',
       options: [
         'It shows that the description comes from a source, the Qur’an, so the writer is reporting how that source portrays Abraham.',
         'It shows that the writer is not sure the description is true.',
@@ -34,8 +34,8 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-1-definition-reformulation',
       type: 'word-bank',
       title: 'Define, Add, Expand',
-      instructions: 'Complete the lines from Chapter 1 with words from the bank. Two options are not needed.',
-      question: 'Which expressions define an idea, add a new role, and announce a fuller account?',
+      instructions: 'Complete the lines from Chapter 1 with words from the bank. Two words are not needed.',
+      question: 'Which words explain an idea, add a role and give more detail?',
       fillBlanksText: 'Monotheistic belief [blank] bearing witness that there is no god but Allah. … Abraham (pbuh) is [blank] a fundamental figure in the three great monotheistic religions (Judaism, Christianity, and Islam). … The Qur’an presents [blank] his discovery of the oneness of Allah (Tawhid) in the middle of an idol-worshipping nation.',
       wordBank: ['means', 'also', 'in detail', 'means that', 'instead'],
       correctAnswer: ['means', 'also', 'in detail'],
@@ -49,8 +49,8 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-1-passive-focus',
       type: 'transformation',
       title: 'Same Fact, New Focus',
-      instructions: 'Rewrite each sentence so that it starts with the words given. Keep the passive voice and the meaning.',
-      question: 'How can a passive sentence put either the person or the thing given at the front?',
+      instructions: 'Rewrite each sentence. Start with the words given and keep the meaning.',
+      question: 'Can the sentence start with the person or with the thing given?',
       transformItems: [
         {
           source: 'This title was not given to any other prophet before.',
@@ -74,8 +74,8 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-1-production',
       type: 'reflection',
       title: 'Build a Framed B2 Explanation',
-      instructions: 'Write or say a 7–9 sentence paragraph about a non-story concept or historical figure. Introduce the topic with a source-framing expression such as “is presented as” or “is described as”, define one abstract idea with “means that”, add one related point with “also”, and use one passive sentence to foreground a title, distinction or recognition. End by explaining why your wording makes the paragraph clearer. Do not retell Chapter 1.',
-      question: 'Can you organise a short explanation by controlling source framing, definition, addition and information focus?',
+      instructions: 'Write or say 7–9 sentences about a famous person or an important idea.',
+      question: 'How can you explain a person or an idea clearly?',
       correctAnswer: null,
       explanation: 'A strong B2 response should not merely include the target expressions. It should use each one for a clear discourse purpose: framing a source, unpacking meaning, adding a related point and foregrounding selected information.',
       feedback: {
@@ -83,13 +83,12 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Source — Which source or viewpoint will frame your opening description?', mode: 'Individual' },
-        { question: 'Definition — Which abstract idea needs to be unpacked for the reader?', mode: 'Individual' },
-        {
-          question: 'Focus — What title or distinction is more important than the person or institution that granted it?',
+        { question: 'Step 1 — Name the source: “In …, … is presented as …”', mode: 'Individual' },
+        { question: 'Step 2 — Explain one idea: “… means that …”', mode: 'Individual' },
+        { question: 'Step 3 — Put the prize or title first: “She was awarded …”',
           mode: 'Pair',
         },
-        { question: 'Organisation — Does each sentence clearly add, define or reframe information?', mode: 'Pair' },
+        { question: 'Step 4 — Check: does each sentence name a source, explain, or add with “also”?', mode: 'Pair' },
       ],
     },
   ],
@@ -103,7 +102,7 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'How the Chapter Defines Its Terms',
       instructions: 'Match each term with the definition the chapter gives for it.',
-      question: 'How does Chapter 2 build meaning through definitions?',
+      question: 'What does each word mean in Chapter 2?',
       matchingHeadings: { left: 'Term from the chapter', right: 'How the chapter defines it' },
       matchingPairs: [
         { left: 'Tawhid', right: 'the belief that Allah is One and He has no partners' },
@@ -150,7 +149,7 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Reason, Result and Reformulation',
       instructions: 'Rewrite each sentence from Chapter 2 with the words given. Keep the meaning.',
-      question: 'How can the same cause, conclusion or reformulation be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 2?',
       transformItems: [
         {
           source: 'As human conditions and capacities changed over time, some changes in details became necessary.',
@@ -174,8 +173,8 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-2-production',
       type: 'reflection',
       title: 'Explain Continuity and Change',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story tradition, system or practice that has a stable core but has changed in some details over time. Define one key term with a relative clause, use a cautious stance marker such as “we may say that”, reformulate one idea with “that is”, and build one clear cause → result → conclusion chain with “due to” and “so” or equivalent expressions. End by stating what remained constant and what changed. Do not retell Chapter 2.',
-      question: 'Can you use definition, reformulation, stance and logical connection to explain continuity and change clearly?',
+      instructions: 'Write or say 8–10 sentences about a tradition that has changed in some ways over time.',
+      question: 'What stayed the same, and what changed?',
       correctAnswer: null,
       explanation: 'A strong B2 response should organise ideas rather than simply insert target phrases. The reader should be able to see what the concept means, which statement is interpretive, why a change occurred, and what conclusion follows.',
       feedback: {
@@ -183,14 +182,12 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Definition — Which term needs a precise relative-clause definition?', mode: 'Individual' },
-        {
-          question: 'Stance — Which claim should be presented cautiously rather than absolutely?',
+        { question: 'Step 1 — Explain a key word: “A … is a … which …”', mode: 'Individual' },
+        { question: 'Step 2 — Give a careful opinion: “We may say that …”',
           mode: 'Individual',
         },
-        { question: 'Logic — What cause genuinely explains the change you describe?', mode: 'Pair' },
-        {
-          question: 'Conclusion — Can the reader clearly identify what stayed stable and what changed?',
+        { question: 'Step 3 — Give a reason and a result: “Due to …, … . So …”', mode: 'Pair' },
+        { question: 'Step 4 — Say what stayed and what changed: “The core stayed …; the details changed …”',
           mode: 'Pair',
         },
       ],
@@ -224,8 +221,8 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-3-relative-scope',
       type: 'word-bank',
       title: 'Turning Points in the Argument',
-      instructions: 'Complete the lines from Chapter 3 with words from the bank. Two options are not needed.',
-      question: 'Which words stress a claim, mark a change, compare and add?',
+      instructions: 'Complete the lines from Chapter 3 with words from the bank. Two words are not needed.',
+      question: 'Which word fits each gap?',
       fillBlanksText: '[blank], Judaism, Christianity, and Islam are all based on the religion of Abraham (pbuh). … They stayed away from idolatry and its practices. [blank], later on, this belief became mixed with idolatry and, [blank] Judaism and Christianity, it was corrupted. … As the last faith, Islam includes [blank] what Allah told Abraham (pbuh), but also what Allah told Noah (pbuh), Moses (pbuh), Jesus (pbuh), and all the other prophets.',
       wordBank: ['In fact', 'However', 'like', 'not only', 'Therefore', 'unlike'],
       correctAnswer: ['In fact', 'However', 'like', 'not only'],
@@ -240,7 +237,7 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
       type: 'sentence-building',
       title: 'Build a Layered Scene',
       instructions: 'Tap the pieces to rebuild this sentence from Chapter 3.',
-      question: 'How does one sentence hold the time, the place, the main event and two background details?',
+      question: 'When, where and what did Waraqa see?',
       sentenceChunks: [
         'One day,',
         'while he was in the desert,',
@@ -259,8 +256,8 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-3-production',
       type: 'reflection',
       title: 'Build a Coherent Contrast-and-Extension Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story belief, tradition, institution or idea that changed over time while keeping some continuity. Use one strengthening marker such as “in fact”, one clear contrast such as “however”, one time-layering structure with “when” or “while”, one relative clause that adds a limited evaluation, and one “not only... but also...” structure to widen the final point. Keep any evaluation carefully limited by time or context. Do not retell Chapter 3.',
-      question: 'Can you use discourse markers, time relations, relative clauses and additive scope to organise a nuanced B2 explanation?',
+      instructions: 'Write or say 8–10 sentences about a place or an idea that changed but kept its main purpose.',
+      question: 'How did it change, and what did it keep?',
       correctAnswer: null,
       explanation: 'A strong response should show controlled progression: establish a point, mark change, locate events in time, add a qualified description, and widen the conclusion without overclaiming.',
       feedback: {
@@ -268,14 +265,12 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Continuity — What remains stable across the period you describe?', mode: 'Individual' },
-        {
-          question: 'Contrast — Where does a real change occur, and which connector makes it clear?',
+        { question: 'Step 1 — Say what stayed the same: “In fact, … have … for centuries.”', mode: 'Individual' },
+        { question: 'Step 2 — Show a real change: “However, …”',
           mode: 'Individual',
         },
-        { question: 'Qualification — Which evaluation needs a time or context limit?', mode: 'Pair' },
-        {
-          question: 'Extension — What wider point can you add naturally with “not only... but also...”?',
+        { question: 'Step 3 — Limit your opinion to a time: “…, at that time, …”', mode: 'Pair' },
+        { question: 'Step 4 — Widen your last point: “… not only … but also …”',
           mode: 'Pair',
         },
       ],
@@ -290,8 +285,8 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-4-source-status',
       type: 'drag-drop',
       title: 'Fact or Reported View?',
-      instructions: 'Sort the parts of Chapter 4. Does the writer state it directly, or report it as a source’s view, a belief or a cautious conclusion?',
-      question: 'How does the chapter show which information is certain and which is uncertain?',
+      instructions: 'Put each part of Chapter 4 in the right group: stated directly, or reported.',
+      question: 'Is the writer sure, or passing on a view?',
       dragDropGroups: [
         {
           group: 'Reported or hedged',
@@ -353,8 +348,8 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-4-change-and-contrast',
       type: 'error-correction',
       title: 'Earlier Past and Social Variety',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct a verb that looks back from the past and a word that adds another group?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Abraham’s time?',
       errorItems: [
         {
           options: ['had existed', 'was existing', 'exists'],
@@ -386,8 +381,8 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-4-production',
       type: 'reflection',
       title: 'Write a Qualified Historical Overview',
-      instructions: 'Write or say an 8–10 sentence paragraph about a disputed or partly uncertain historical topic outside this story. Use at least three different source-status frames such as “some sources say”, “is believed to”, “evidence suggests”, or “broadly speaking, we can say”; include one earlier-state structure with “had + past participle”; show one change with “but/however”; and describe at least two different groups with “some... while/still others...”. Make clear which points are evidence, which are cautious synthesis, and which remain uncertain. Do not retell Chapter 4.',
-      question: 'Can you build a coherent B2 historical explanation without making uncertain evidence sound certain?',
+      instructions: 'Write or say 8–10 sentences about a place in history that experts still disagree about.',
+      question: 'What is known, and what is still not sure?',
       correctAnswer: null,
       explanation: 'A strong response should organise evidence and uncertainty explicitly: attribute claims, synthesise cautiously, locate an earlier state in time, mark change, and distinguish groups rather than overgeneralising.',
       feedback: {
@@ -395,20 +390,16 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Source status — Which statement belongs to a named or limited source rather than to you as a certain fact?',
+        { question: 'Step 1 — Pass on a source: “Some sources say that …”',
           mode: 'Individual',
         },
-        {
-          question: 'Synthesis — What can you responsibly say when several sources overlap but do not fully agree?',
+        { question: 'Step 2 — Give a careful summary: “Broadly speaking, we can say that …”',
           mode: 'Individual',
         },
-        {
-          question: 'Time — Which earlier condition needs a past-perfect form before you describe later change?',
+        { question: 'Step 3 — Say what happened earlier: “Before …, people had already …”',
           mode: 'Pair',
         },
-        {
-          question: 'Variation — How will you show that different groups acted differently without saying “everyone”?',
+        { question: 'Step 4 — Show different views: “Some … think …, while others …”',
           mode: 'Pair',
         },
       ],
@@ -423,8 +414,8 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-5-past-viewpoint',
       type: 'drag-drop',
       title: 'The Future Seen from the Past',
-      instructions: 'Sort the parts of Chapter 5. Do they tell an event that happened, or a later event seen from an earlier past moment?',
-      question: 'How does the chapter look forward while it tells a story in the past?',
+      instructions: 'Did it happen, or is it a later event seen from the past? Put each part in a group.',
+      question: 'What was still in the future at that time?',
       dragDropGroups: [
         {
           group: 'A later event seen from the past',
@@ -485,7 +476,7 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Linking Result, Person and Place',
       instructions: 'Rewrite each part of Chapter 5 with the words given. Keep the meaning.',
-      question: 'How do linkers and relative words connect a result, a person and a place?',
+      question: 'How else can we say these lines from Chapter 5?',
       transformItems: [
         {
           source: 'So, he gathered pregnant women in one place and ordered that all male children be killed.',
@@ -522,8 +513,8 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-5-production',
       type: 'reflection',
       title: 'Write a Layered Past Narrative',
-      instructions: 'Write or say an 8–10 sentence paragraph about a historical or fictional situation outside this story. Establish a past setting, describe one later development with “was/were going to”, report a prediction or expectation with at least two uses of “would”, introduce an alternative account with “according to another account/source”, show a consequence with “so/upon this/as a result”, and add one “who” clause plus one “where” clause. Keep any alternative account clearly marked rather than presenting both versions as one certainty. Do not retell Chapter 5.',
-      question: 'Can you organise a B2 past narrative that distinguishes viewpoint, prediction, source status, consequence and supporting detail?',
+      instructions: 'Write or say 8–10 sentences about a past event with two different accounts.',
+      question: 'What did people expect, and what do the two accounts say?',
       correctAnswer: null,
       explanation: 'A strong response should control time from a past viewpoint, distinguish the status of an alternative account, connect causes and consequences, and embed background/place detail without breaking the narrative flow.',
       feedback: {
@@ -531,17 +522,14 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Viewpoint — Which event was still in the future from your chosen past moment?',
+        { question: 'Step 1 — Set the time and look ahead: “In …, … . They were going to …”',
           mode: 'Individual',
         },
-        { question: 'Prediction — Which later developments will you report with “would”?', mode: 'Individual' },
-        {
-          question: 'Source status — How will you signal that the second account is an alternative rather than an additional certainty?',
+        { question: 'Step 2 — Report what people expected: “They predicted that … would …”', mode: 'Individual' },
+        { question: 'Step 3 — Give another account: “According to another account, …”',
           mode: 'Pair',
         },
-        {
-          question: 'Cohesion — Which detail belongs in a “who” clause and which belongs in a “where” clause?',
+        { question: 'Step 4 — Add details: “The …, who …,” and “The …, where …,”',
           mode: 'Pair',
         },
       ],
@@ -576,7 +564,7 @@ export const abrahamB2LanguageFocusChapter6: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Reported and Direct Speech',
       instructions: 'Rewrite each sentence from Chapter 6 with the words given.',
-      question: 'How do questions, statements and orders change between direct and reported speech?',
+      question: 'What changes when we report words, or quote them?',
       transformItems: [
         {
           source: 'Abraham (pbuh) asked: “What is this statue, father? …”',
@@ -605,8 +593,8 @@ export const abrahamB2LanguageFocusChapter6: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-6-comparison-effect',
       type: 'word-bank',
       title: 'Making a Comparison',
-      instructions: 'Complete the lines from Chapter 6 with words from the bank. Three options are not needed.',
-      question: 'Which words build the comparisons that make the idols look ordinary?',
+      instructions: 'Complete the lines from Chapter 6 with words from the bank. Three words are not needed.',
+      question: 'Which words compare the idols with ordinary things?',
       fillBlanksText: '… sitting on their backs [blank] people sit on the backs of donkeys. … “What is this statue, father? It has big ears, [blank] [blank] ours.”',
       wordBank: ['as', 'bigger', 'than', 'such as', 'more', 'then'],
       correctAnswer: ['as', 'bigger', 'than'],
@@ -620,8 +608,8 @@ export const abrahamB2LanguageFocusChapter6: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-6-production',
       type: 'reflection',
       title: 'Build a Childhood Memory with Layered Language',
-      instructions: 'Write or say an 8–10 sentence paragraph about a childhood memory or fictional scene outside this story. Use one broad time frame such as “when I was young” or “during my early childhood”, one specific event marker such as “one day”, one non-finite background phrase such as “being a child” or an equivalent structure, one reported question, one reported statement, one directive with “told/ordered + person + (not) to”, and one comparison with “as” or a comparative form. Make the paragraph coherent rather than listing grammar examples.',
-      question: 'Can you use time framing, reported interaction and comparison to organise a coherent B2 narrative?',
+      instructions: 'Write or say 8–10 sentences about a memory from your childhood.',
+      question: 'What happened one day when you were young?',
       correctAnswer: null,
       explanation: 'A strong response should distinguish background from main events, preserve the different functions of reported speech, and use comparison to develop perspective rather than as an isolated sentence pattern.',
       feedback: {
@@ -629,20 +617,16 @@ export const abrahamB2LanguageFocusChapter6: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Time — Which sentence establishes the broad childhood frame, and which sentence moves to one specific event?',
+        { question: 'Step 1 — Set the time, then one event: “When I was young, … . One day, …”',
           mode: 'Individual',
         },
-        {
-          question: 'Background — What information can you compress into a non-finite phrase instead of another full event sentence?',
+        { question: 'Step 2 — Add background: “Being the youngest child, I …”',
           mode: 'Individual',
         },
-        {
-          question: 'Speech — Which part is a question, which is a statement, and which is a directive?',
+        { question: 'Step 3 — Report a question, a statement and an order: “She told us not to …”',
           mode: 'Pair',
         },
-        {
-          question: 'Comparison — What comparison will reveal a viewpoint rather than merely describe size or appearance?',
+        { question: 'Step 4 — Compare: “The … looked as … as …”',
           mode: 'Pair',
         },
       ],
@@ -671,7 +655,7 @@ export const abrahamB2LanguageFocusChapter7: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Background Inside the Sentence',
       instructions: 'Choose the correct form to complete each sentence from Chapter 7.',
-      question: 'How does the chapter add earlier actions and background details inside one sentence?',
+      question: 'Which form fits each sentence about the temple?',
       formChoices: [
         {
           options: ['had made', 'has made', 'was making'],
@@ -701,7 +685,7 @@ export const abrahamB2LanguageFocusChapter7: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'From Evidence to Evaluation',
       instructions: 'Rewrite each sentence from Chapter 7 with the words given. Keep the meaning.',
-      question: 'How can ability, impossibility and a change of feeling be expressed in other ways?',
+      question: 'How else can we say these lines from Chapter 7?',
       transformItems: [
         {
           source: '… when they fell, they could not get back up.',
@@ -737,8 +721,8 @@ export const abrahamB2LanguageFocusChapter7: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-7-production',
       type: 'reflection',
       title: 'Write an Observation-to-Evaluation Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which someone notices a contradiction between evidence and behaviour or belief. Include: one observation with three linked qualities, one concrete example introduced by “when” or “if”, one use of “could” for plausibility and one for ability, one relative clause that embeds background, one “as if” clause that reveals the gap between appearance and reality, and an “at first ... but later ...” change in viewpoint or feeling. Keep the paragraph coherent and evidence-led.',
-      question: 'Can you move from observation to evidence, evaluation, contradiction and changed viewpoint in a coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a habit that does not match the facts.',
+      question: 'What do people do, and what is really true?',
       correctAnswer: null,
       explanation: 'A strong response should use the target structures to organize reasoning. The grammar should help the reader see how evidence leads to judgement and how the writer’s viewpoint develops.',
       feedback: {
@@ -746,20 +730,16 @@ export const abrahamB2LanguageFocusChapter7: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Observation — What three qualities or facts will form the basis of your judgement?',
+        { question: 'Step 1 — Describe it with three facts: “It is cheap, … and …”',
           mode: 'Individual',
         },
-        {
-          question: 'Evidence — What concrete “when/if” example will make the observation harder to dismiss?',
+        { question: 'Step 2 — Give an example: “When …, …” or “If …, …”',
           mode: 'Individual',
         },
-        {
-          question: 'Viewpoint — Where can an “as if” clause expose a gap between appearance and reality?',
+        { question: 'Step 3 — Show the gap: “They … as if it could …”',
           mode: 'Pair',
         },
-        {
-          question: 'Development — How will “at first ... but later ...” show a genuine change rather than simple chronology?',
+        { question: 'Step 4 — Show how your view changed: “At first, I …, but later …”',
           mode: 'Pair',
         },
       ],
@@ -774,7 +754,7 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-8-concession-persistence',
       type: 'multiple-choice',
       title: 'Purpose in the Verse',
-      instructions: 'Read the lines from Surah al-An’am quoted in Chapter 8. Then choose the best explanation.',
+      instructions: 'Read the lines from Surah al-An’am in Chapter 8. Then choose the best answer.',
       question: '“Thus, We showed Abraham the empire of the heavens and the earth, that he might be one of those with certainty.” What does “that he might be …” express?',
       options: [
         'The purpose of showing him the heavens and the earth: so that he would reach certainty.',
@@ -793,8 +773,8 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-8-purpose-result',
       type: 'error-correction',
       title: 'Persistence and Its Effect',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct a relative clause that comments on a situation and a verb pattern that shows persistence?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Abraham and his father?',
       errorItems: [
         {
           options: ['which', 'that', 'who'],
@@ -821,7 +801,7 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       type: 'sentence-building',
       title: 'Build the Narrator’s Conclusion',
       instructions: 'Tap the pieces to rebuild the last sentence of Chapter 8.',
-      question: 'How does the narrator link an observation to its reason?',
+      question: 'What did Abraham see about the stars, and why?',
       sentenceChunks: [
         'Abraham (pbuh) saw',
         'that the stars',
@@ -841,8 +821,8 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-8-production',
       type: 'reflection',
       title: 'Write a Change-as-Evidence Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which an initial appearance is tested by what happens over time. Include: one expectation imposed by another person, one “yet” contrast showing persistence, one evaluative relative clause with “which”, one purpose/intended-result clause using “so that” or “might”, and a temporal reasoning chain using “when ... but when ...” that leads to a conclusion. Keep the paragraph analytical rather than narrative-only.',
-      question: 'Can you use contrast, purpose and temporal change to build an evidence-based B2 argument?',
+      instructions: 'Write or say 8–10 sentences about someone whose real talent shows over time.',
+      question: 'What did others expect, and what did time show?',
       correctAnswer: null,
       explanation: 'A strong response should make grammatical choices carry the reasoning: pressure is contrasted with persistence, an action has an intended result, and change over time becomes evidence for the final judgement.',
       feedback: {
@@ -850,17 +830,14 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Pressure — What expectation or demand will someone else impose?', mode: 'Individual' },
-        {
-          question: 'Contrast — What will continue despite that pressure, and where will “yet” make the contrast clearest?',
+        { question: 'Step 1 — Say what others expected: “His parents expected him to …”', mode: 'Individual' },
+        { question: 'Step 2 — Show what continued: “He …, yet he never stopped …”',
           mode: 'Individual',
         },
-        {
-          question: 'Evidence — What change over time will your “when ... but when ...” sequence reveal?',
+        { question: 'Step 3 — Show the change: “When …, … . But when …, …”',
           mode: 'Pair',
         },
-        {
-          question: 'Conclusion — What evaluation follows from that change, and how will you avoid merely retelling events?',
+        { question: 'Step 4 — Give your judgement: “This shows that …, which …”',
           mode: 'Pair',
         },
       ],
@@ -875,7 +852,7 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-9-condition-guidance',
       type: 'true-false',
       title: 'Condition and Guidance',
-      instructions: 'Read the line from the verse quoted in Chapter 9. Is the statement true or false?',
+      instructions: 'Read the line from the verse in Chapter 9. Is the statement true or false?',
       question: 'In “If my Lord does not guide me, I will be one of the erring people”, Abraham says that he has already gone astray.',
       correctAnswer: false,
       explanation: 'This is a real (first) conditional: if + present simple, will + verb. It describes a possible future result that depends on a condition. Abraham does not say he has gone astray; he says his right guidance depends on his Lord. This prepares his clear statement at the end of the verse: “I am not of the idolaters.”',
@@ -888,8 +865,8 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-9-stance-shift',
       type: 'word-bank',
       title: 'Appearance and Reality',
-      instructions: 'Complete the lines from Chapter 9 with words from the bank. Three options are not needed.',
-      question: 'Which forms separate what people did from what was really true?',
+      instructions: 'Complete the lines from Chapter 9 with words from the bank. Three words are not needed.',
+      question: 'What did people do, and what was really true?',
       fillBlanksText: 'He was astonished that these heavenly bodies [blank] by people, [blank] all those stars, asteroids, the Sun, the Moon, etc., [blank]; they appeared and disappeared at the Creator’s command.',
       wordBank: [
         'were worshipped',
@@ -911,7 +888,7 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Who Does What?',
       instructions: 'Rewrite each sentence from Chapter 9 with the words given. Keep the meaning.',
-      question: 'How can the same idea be expressed with a different subject or a shorter description?',
+      question: 'How else can we say these lines from Chapter 9?',
       transformItems: [
         {
           source: 'In that debate, Abraham (pbuh) demonstrated to the people that these heavenly bodies cannot be worshipped as partners with Allah.',
@@ -949,8 +926,8 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-9-production',
       type: 'reflection',
       title: 'Build an Evidence-to-Stance Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story issue where an initial appearance is tested and then rejected or revised. Include: one real condition with “if ... will ...”, one sentence that moves from tentative examination to explicit stance, one passive structure that foregrounds an object or idea, one corrective contrast using “while in fact” or “however”, and one final sentence explaining how repeated evidence leads to a reasoned position. Keep the paragraph analytical and coherent.',
-      question: 'Can you use condition, contrast, passive focus and stance development to build a B2 argument?',
+      instructions: 'Write or say 8–10 sentences about a popular idea that turned out to be wrong.',
+      question: 'What did people believe, and what did the evidence show?',
       correctAnswer: null,
       explanation: 'A strong response should show reasoning developing across the paragraph: a possibility is examined, evidence changes the evaluation, and the final stance is expressed more explicitly.',
       feedback: {
@@ -958,16 +935,14 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Condition — What outcome will depend on a clear “if” condition?', mode: 'Individual' },
-        {
-          question: 'Appearance — What seems plausible at first, and what evidence later challenges it?',
+        { question: 'Step 1 — Give a real condition: “If you …, your … will …”', mode: 'Individual' },
+        { question: 'Step 2 — Say what seemed true, then what changed: “At first, it seemed …”',
           mode: 'Individual',
         },
-        {
-          question: 'Correction — Where will a passive structure and “while in fact” sharpen the contrast?',
+        { question: 'Step 3 — Correct the idea: “It is often repeated …, while in fact …”',
           mode: 'Pair',
         },
-        { question: 'Stance — How will the final sentence show a stronger, evidence-based position?', mode: 'Pair' },
+        { question: 'Step 4 — End with your view: “Therefore, I now see …”', mode: 'Pair' },
       ],
     },
   ],
@@ -1027,7 +1002,7 @@ export const abrahamB2LanguageFocusChapter10: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Organising a Two-Part Explanation',
       instructions: 'Rewrite each sentence from Chapter 10 with the words given. Keep the meaning.',
-      question: 'How can two points and a sequence of events be organised in another way?',
+      question: 'How else can we say these lines from Chapter 10?',
       transformItems: [
         {
           source: 'Abraham (pbuh) clarified the situation for them, firstly, that the heavenly bodies are unworthy of worship and, secondly, that they are the signs of Allah.',
@@ -1051,8 +1026,8 @@ export const abrahamB2LanguageFocusChapter10: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-10-production',
       type: 'reflection',
       title: 'Build a Contrast-and-Reframing Argument',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story topic where something visible is first evaluated, then reinterpreted through evidence. Use one passive description, one “however” contrast, a “firstly / secondly” structure, and a final sentence showing how evidence leads to disagreement or debate. Do not retell the Abraham story.',
-      question: 'Can you move from observation to contrast, evaluation and reframing in a coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about something old in your town and what it means now.',
+      question: 'What do people see, and what does it really mean?',
       correctAnswer: null,
       explanation: 'A strong response should make each language choice advance the reasoning: observation, limitation, contrast, two-part interpretation, and a final consequence.',
       feedback: {
@@ -1060,10 +1035,10 @@ export const abrahamB2LanguageFocusChapter10: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Observation — What visible feature will you describe first?', mode: 'Individual' },
-        { question: 'Contrast — What will “however” introduce?', mode: 'Individual' },
-        { question: 'Reframing — What will “firstly” reject and “secondly” reinterpret?', mode: 'Pair' },
-        { question: 'Consequence — How will the reasoning lead to disagreement, decision, or debate?', mode: 'Pair' },
+        { question: 'Step 1 — Describe what people see: “It is covered with … and admired by …”', mode: 'Individual' },
+        { question: 'Step 2 — Add a problem: “However, …”', mode: 'Individual' },
+        { question: 'Step 3 — Give two points: “Firstly, … . Secondly, …”', mode: 'Pair' },
+        { question: 'Step 4 — Say what people now argue about: “Some want …, while others …”', mode: 'Pair' },
       ],
     },
   ],
@@ -1076,8 +1051,8 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-11-rhetorical-questions',
       type: 'drag-drop',
       title: 'What the Verses Say, What the Writer Adds',
-      instructions: 'Sort the parts of Chapter 11. Is it from the verses, or is it the writer’s comment or inference?',
-      question: 'How does the chapter separate quoted evidence from interpretation?',
+      instructions: 'Is it from the verses, or the writer’s comment? Put each part in the right group.',
+      question: 'Which words are from the verses, and which are the writer’s?',
       dragDropGroups: [
         {
           group: 'From the verses',
@@ -1118,7 +1093,7 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-11-unless-exception',
       type: 'multiple-choice',
       title: 'An Exception That Keeps the Claim',
-      instructions: 'Read the line from the verse quoted in Chapter 11. Then choose the best explanation.',
+      instructions: 'Read the line from the verse in Chapter 11. Then choose the best answer.',
       question: '“I do not fear partners you assign to Him, unless my Lord wills it.” What does “unless my Lord wills it” do?',
       options: [
         'It keeps the main statement — no fear of the partners — and says that anything that happens to him depends only on his Lord’s will.',
@@ -1138,7 +1113,7 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Framing an Inference',
       instructions: 'Rewrite each sentence from Chapter 11 with the words given. Keep the meaning.',
-      question: 'How can a writer turn a fact into the subject of a sentence, or state an inference personally?',
+      question: 'How else can we say these lines from Chapter 11?',
       transformItems: [
         {
           source: 'That these arguments are not told in the verses shows the ridiculousness of their claims.',
@@ -1162,8 +1137,8 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-11-production',
       type: 'reflection',
       title: 'Build a Question-Led Evidence Argument',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story disagreement. Use at least two rhetorical questions, one narrow exception with “unless”, one sentence about evidence or authority, one sentence that explicitly marks an inference with wording such as “it can be inferred that”, and a final comparison that asks which position is better supported. Do not retell the Abraham story.',
-      question: 'Can you use questions, qualification and evidence status to build a coherent B2 argument?',
+      instructions: 'Write or say 8–10 sentences about a disagreement at school or in your town.',
+      question: 'Which side has better reasons?',
       correctAnswer: null,
       explanation: 'A strong response should use language choices to organise reasoning: challenge an assumption, qualify a claim, distinguish evidence from inference, and end with an evaluative comparison.',
       feedback: {
@@ -1171,10 +1146,10 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Assumption — Which idea will your first rhetorical question challenge?', mode: 'Individual' },
-        { question: 'Qualification — What narrow exception will “unless” introduce?', mode: 'Individual' },
-        { question: 'Evidence — What is directly supported, and what is only inferred?', mode: 'Pair' },
-        { question: 'Comparison — How will your final question compare the two positions?', mode: 'Pair' },
+        { question: 'Step 1 — Challenge an idea with a question: “Do … really …?”', mode: 'Individual' },
+        { question: 'Step 2 — Add one exception: “… unless …”', mode: 'Individual' },
+        { question: 'Step 3 — Give the evidence, then a careful guess: “It can be inferred that …”', mode: 'Pair' },
+        { question: 'Step 4 — End with a question: “Which position is better supported?”', mode: 'Pair' },
       ],
     },
   ],
@@ -1187,8 +1162,8 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-12-discourse-stance',
       type: 'sequencing',
       title: 'Follow the Debate',
-      instructions: 'Put the lines of the exchange from Surah al-Anbiya in Chapter 12 in order. Use what each line does to help you.',
-      question: 'How does the debate move from a question to a clear statement of belief?',
+      instructions: 'Put the lines from Surah al-Anbiya in Chapter 12 in order.',
+      question: 'How does the debate move from a question to a clear belief?',
       sequencingItems: [
         { id: '1', text: '‘What are these statues to which you are faithful?’' },
         { id: '2', text: '‘We found our parents worshipping them.’' },
@@ -1238,7 +1213,7 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Adding and Reporting',
       instructions: 'Rewrite each sentence from Chapter 12 with the words given. Keep the meaning.',
-      question: 'How can a writer stress an addition and turn a reported instruction into direct speech?',
+      question: 'How else can we say these lines from Chapter 12?',
       transformItems: [
         {
           source: '… for he not only worshipped idols but shaped and sold them as well.',
@@ -1262,8 +1237,8 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-12-production',
       type: 'reflection',
       title: 'Build a Stance-and-Response Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which someone faces pressure but responds from a clear principle. Use one viewpoint frame such as “As a...”, one connector such as “In doing so” to explain the meaning of an action, one short exchange containing a genuine challenge and a response, and one “not only... but also...” sentence that expands the final description. Do not retell the Abraham story.',
-      question: 'Can you use viewpoint, dialogue and expanding contrast to build a coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about someone who stays calm under pressure.',
+      question: 'What pressure does the person face, and how do they answer?',
       correctAnswer: null,
       explanation: 'A strong response should connect pressure, principle, action, interpretation and dialogue into one coherent argument rather than produce isolated grammar examples.',
       feedback: {
@@ -1271,14 +1246,12 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Pressure — What external pressure starts your situation?', mode: 'Individual' },
-        { question: 'Viewpoint — Which identity or principle will frame the response?', mode: 'Individual' },
-        {
-          question: 'Dialogue — What challenge will one speaker make, and how will the other reframe it?',
+        { question: 'Step 1 — Describe the pressure: “In the last minute, …”', mode: 'Individual' },
+        { question: 'Step 2 — Give the person’s principle: “As a …, she must …”', mode: 'Individual' },
+        { question: 'Step 3 — Write a short exchange: “Are you …?” “I …”',
           mode: 'Pair',
         },
-        {
-          question: 'Expansion — What second fact will “not only... but also...” add to deepen the final description?',
+        { question: 'Step 4 — End wider: “She was not only … but also …”',
           mode: 'Pair',
         },
       ],

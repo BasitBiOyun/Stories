@@ -10,8 +10,8 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
       id: 'mecca-a2-language-1-biography', type: 'drag-drop', title: 'Fact or Belief?',
-      instructions: 'Read Chapter 1 again. Is each part a fact in the story, or only what people in Mecca thought? Put it in the right group.',
-      question: 'Which parts are facts, and which parts are only what people thought?',
+      instructions: 'Put each part in the right group: fact or belief.',
+      question: 'Is it a fact, or only what people in Mecca thought?',
       dragDropGroups: [
         { group: 'A fact in the story', items: ['Bilal was a black slave.', 'His mother was an Ethiopian woman.', 'He was also the first person to give the Adhan …'] },
         { group: 'What people in Mecca thought', items: ['Bilal was just a poor slave.', 'he had no power', '… would never become someone important.'] },
@@ -29,7 +29,7 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-1-belief', type: 'matching', title: 'Past Forms in Chapter 1',
       instructions: 'Match each verb with its past form from Chapter 1.',
-      question: 'Which past forms tell Bilal’s story?',
+      question: 'What is the past form of each verb?',
       matchingHeadings: { left: 'Base verb', right: 'Past form in Chapter 1' },
       matchingPairs: [
         { left: 'say', right: 'said' },
@@ -47,7 +47,7 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-1-change', type: 'choose-form', title: 'Background and Change',
       instructions: 'Choose the correct word for each sentence from Chapter 1.',
-      question: 'Which words give background facts and show a change?',
+      question: 'Where was Bilal born, and how did Islam change him?',
       formChoices: [
         { sentence: 'He was born [choice] Mecca.', options: ['on', 'in', 'at'], answer: 1 },
         { sentence: 'His father, Rabah, and his mother, Hamama, [choice] also slaves.', options: ['was', 'were', 'be'], answer: 1 },
@@ -61,15 +61,15 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'mecca-a2-language-1-production', type: 'reflection', title: 'Use the Patterns',
-      instructions: 'Write or say four short A2 sentences about a real or imaginary person.', question: 'Can you combine background, belief and change?', correctAnswer: null,
+      id: 'mecca-a2-language-1-production', type: 'reflection', title: 'A Short Life Story',
+      instructions: 'Write or say four sentences about a real or imaginary person.', question: 'Can you tell a short life story?', correctAnswer: null,
       explanation: 'Use chapter language rather than retelling the Quick Challenge.',
       feedback: { correct: 'Use at least three different patterns.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use “was born in ...”.', mode: 'Individual' },
-        { question: 'Add one “was/were ...” background fact.', mode: 'Individual' },
-        { question: 'Report an old belief with “People thought ...”.', mode: 'Individual' },
-        { question: 'Show a change with “made ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say where they were born: “… was born in …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Add a fact about the past: “… was/were …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what people thought: “People thought …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Show a change: “… made him/her …”', mode: 'Pair' },
       ],
     },
   ],
@@ -92,8 +92,8 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-2-contrast', type: 'word-bank', title: 'Describing the Past',
-      instructions: 'Complete the lines from Chapter 2 with words from the bank. Two words are not needed.',
-      question: 'Which words give a name, say what existed and show quantity?',
+      instructions: 'Complete the lines with the word bank. Two words are extra.',
+      question: 'What was life like before Islam?',
       fillBlanksText: 'The period before Islam [blank] the Age of Ignorance, or Jahiliyyah. … [blank] no real peace and justice in society. … Rich people had [blank] money and lived in luxury.',
       wordBank: ['was called', 'There was', 'a lot of', 'many', 'There were'],
       correctAnswer: ['was called', 'There was', 'a lot of'],
@@ -106,7 +106,7 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-2-result', type: 'sentence-building', title: 'Cause and Result',
       instructions: 'Put the parts in order to make the sentence from Chapter 2.',
-      question: 'How does the chapter show the result of the unfair money system?',
+      question: 'What happened to the rich and the poor?',
       sentenceChunks: ['Because of this,', 'the rich', 'became richer', 'and the poor', 'became poorer.'],
       correctAnswer: null,
       explanation: '“Because of this” gives the result of something the writer said before (the unfair extra money). “Became + richer/poorer” shows a change over time.',
@@ -117,14 +117,14 @@ export const meccaA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-2-production', type: 'reflection', title: 'Describe a Past Community',
-      instructions: 'Write or say four short A2 sentences about an imaginary town in the past.', question: 'Can you describe a condition, contrast two groups and give one result?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a town in the past.', question: 'Can you describe a town in the past?', correctAnswer: null,
       explanation: 'Use “there was”, quantity language, “but”, and “because of this”.',
       feedback: { correct: 'Keep the description short and connected.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Begin with “There was ...”.', mode: 'Individual' },
-        { question: 'Add “many ...” or “a lot of ...”.', mode: 'Individual' },
-        { question: 'Contrast two situations with “but”.', mode: 'Individual' },
-        { question: 'End with “Because of this, ... became ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what was there: “There was …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say how many: “many …” or “a lot of …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Show two different lives: “…, but …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Give a result: “Because of this, … became …”', mode: 'Pair' },
       ],
     },
   ],

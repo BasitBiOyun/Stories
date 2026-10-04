@@ -60,7 +60,7 @@ export const abrahamA2LanguageFocusExercisesArPart7: Record<number, Exercise[]> 
         incorrect: 'ارجع إلى أول الفصل. أي حرف يأتي بعد «سمع»؟ وهل الجملة الأخيرة سبب أم نتيجة؟',
       },
     },
-    { id: 'abraham-a2-ar-language-10-production', type: 'reflection', title: 'قُلْها: ادعاء واختبار', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع ذكر فكرة، وأمر، وسؤال عن القدرة، ونتيجة؟', correctAnswer: null, explanation: 'استعمل «ظن أن»، و«أمر ... أن»، وسؤالًا بـ«هل تستطيع»، ثم جملة بـ«لم يستطع».', feedback: { correct: 'اجعل الموقف قصيرًا ومترابطًا.', incorrect: '' }, discussionPrompts: [{ question: 'اذكر فكرة باستعمال «ظن أن».', mode: 'Individual' }, { question: 'اذكر أمرًا منقولًا.', mode: 'Individual' }, { question: 'اسأل عن القدرة.', mode: 'Individual' }, { question: 'اختم بعدم القدرة أو نتيجة.', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-10-production', type: 'reflection', title: 'قُلْها: ادعاء واختبار', instructions: 'اكتب أو قل أربع جمل قصيرة عن اختبار كلام صديق.', question: 'هل يستطيع صديقك حقًّا أن يفعل ذلك؟', correctAnswer: null, explanation: 'استعمل «ظن أن»، و«أمر ... أن»، وسؤالًا بـ«هل تستطيع»، ثم جملة بـ«لم يستطع».', feedback: { correct: 'اجعل الموقف قصيرًا ومترابطًا.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر ما ظنّه شخص: «ظَنَّ ... أَنَّ ...»', mode: 'Individual' }, { question: 'الجملة الثانية — انقل أمرًا: «أَمَرَنَا ... أَنْ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اسأل: «هَلْ تَسْتَطِيعُ أَنْ ...؟»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر النتيجة: «لَمْ يَسْتَطِعْ، فَـ...»', mode: 'Pair' }] }
   ]
 };
 
@@ -136,7 +136,7 @@ export const abrahamA2LanguageFocusExercisesArPart8: Record<number, Exercise[]> 
         incorrect: 'ابدأ بـ«أمر الله»، ثم الشخص، ثم «أن + فعل»، ثم «مع…». ارجع إلى آخر الفصل.',
       },
     },
-    { id: 'abraham-a2-ar-language-11-production', type: 'reflection', title: 'قُلْها: رحلة قصيرة', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع وصف قرار، ومسار، ووسيلة سفر، ووصول؟', correctAnswer: null, explanation: 'استعمل «قرر أن»، و«من ... إلى ...»، ووسيلة سفر، و«أخيرًا وصل ...».', feedback: { correct: 'اجعل الرحلة واضحة وقصيرة.', incorrect: '' }, discussionPrompts: [{ question: 'اذكر قرارًا.', mode: 'Individual' }, { question: 'اذكر المسار.', mode: 'Individual' }, { question: 'أضف وسيلة سفر أو وقتًا.', mode: 'Individual' }, { question: 'اختم بالوصول.', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-11-production', type: 'reflection', title: 'قُلْها: رحلة قصيرة', instructions: 'اكتب أو قل أربع جمل قصيرة عن رحلة قمت بها.', question: 'إلى أين سافرت، وكيف؟', correctAnswer: null, explanation: 'استعمل «قرر أن»، و«من ... إلى ...»، ووسيلة سفر، و«أخيرًا وصل ...».', feedback: { correct: 'اجعل الرحلة واضحة وقصيرة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر القرار: «قَرَّرَ ... أَنْ ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر الطريق: «سَافَرْنَا مِنْ ... إِلَى ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر وسيلة السفر أو الوقت: «بِالْحَافِلَةِ ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر الوصول: «وَأَخِيرًا، وَصَلْنَا إِلَى ...»', mode: 'Pair' }] }
   ]
 };
 
@@ -205,7 +205,7 @@ export const abrahamA2LanguageFocusExercisesArPart9: Record<number, Exercise[]> 
         incorrect: 'انظر إلى الكلمة قبل الفعل: «أن»؟ «لم»؟ «لِـ»؟ ثم ارجع إلى الفقرة الثانية من الفصل.',
       },
     },
-    { id: 'abraham-a2-ar-language-12-production', type: 'reflection', title: 'قُلْها: حاجة وطلب وثقة', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع وصف شيء مفقود، وحاجة، وطلب، وثقة بالمستقبل؟', correctAnswer: null, explanation: 'استعمل «لا ...»، و«كان على ... أن»، وطلبًا، ثم «لن» أو «سـ».', feedback: { correct: 'اجعل الأفكار الأربع مترابطة.', incorrect: '' }, discussionPrompts: [{ question: 'اذكر شيئًا غير موجود.', mode: 'Individual' }, { question: 'أضف ضرورة باستعمال «كان على ... أن».', mode: 'Individual' }, { question: 'اذكر طلبًا.', mode: 'Individual' }, { question: 'اختم بثقة عن المستقبل.', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-12-production', type: 'reflection', title: 'قُلْها: حاجة وطلب وثقة', instructions: 'اكتب أو قل أربع جمل قصيرة عن شيء احتاجه صفّك.', question: 'ماذا احتجتم، وماذا فعلتم؟', correctAnswer: null, explanation: 'استعمل «لا ...»، و«كان على ... أن»، وطلبًا، ثم «لن» أو «سـ».', feedback: { correct: 'اجعل الأفكار الأربع مترابطة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر ما ليس موجودًا: «لَمْ يَبْقَ ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر ما كان عليكم: «كَانَ عَلَيْنَا أَنْ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اطلب شيئًا: «طَلَبْنَا مِنْ ... أَنْ ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر ما سيحدث: «سَـ... بِالتَّأْكِيدِ»', mode: 'Pair' }] }
   ]
 };
 
@@ -216,7 +216,7 @@ export const abrahamA2LanguageFocusExercisesArPart10: Record<number, Exercise[]>
       type: 'sequencing',
       title: 'انظر: ماذا كان يحدث؟ وماذا حدث فجأة؟',
       instructions: 'رتّب عبارات الفصل كما حدثت.',
-      question: 'القصة تبدأ بما كان يحدث، ثم حدث مفاجئ، ثم ما حدث بعده. انتبه إلى «كان» و«فجأة» و«لمّا» و«ثم».',
+      question: 'ماذا كان يحدث؟ وماذا حدث فجأة؟ وماذا حدث بعده؟',
       sequencingItems: [
         { id: '1', text: 'كَانَتْ هَاجَرُ تَرْكُضُ فِي الصَّحْرَاءِ…' },
         { id: '2', text: 'وَفَجْأَةً، خَرَجَ الْمَاءُ مِنَ الْأَرْضِ…' },
@@ -265,7 +265,7 @@ export const abrahamA2LanguageFocusExercisesArPart10: Record<number, Exercise[]>
       id: 'abraham-a2-ar-language-13-reason',
       type: 'transformation',
       title: 'تدرّب: السبب والنتيجة',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الجملة الجديدة.',
+      instructions: 'اكتب الكلمة الناقصة. حافظ على المعنى نفسه.',
       question: 'كيف نقول المعنى نفسه بـ«لذلك» وبـ«لأنّ»؟',
       transformItems: [
         {
@@ -286,7 +286,7 @@ export const abrahamA2LanguageFocusExercisesArPart10: Record<number, Exercise[]>
         incorrect: 'في الجملة الأولى تحتاج إلى كلمة قبل النتيجة. وفي الثانية تحتاج إلى كلمة سبب قبل جملة. ارجع إلى الفقرة الثانية من الفصل.',
       },
     },
-    { id: 'abraham-a2-ar-language-13-production', type: 'reflection', title: 'قُلْها: تغير مفاجئ', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع وصف ما كان يحدث، وحدث مفاجئ، وما حدث بعده، وسبب؟', correctAnswer: null, explanation: 'استعمل «كان + مضارع»، و«فجأة»، و«ثم»، و«لأن».', feedback: { correct: 'اجعل التسلسل قصيرًا وواضحًا.', incorrect: '' }, discussionPrompts: [{ question: 'اذكر فعلًا كان مستمرًّا.', mode: 'Individual' }, { question: 'أضف حدثًا بـ«فجأة».', mode: 'Individual' }, { question: 'انتقل إلى الفعل التالي بـ«ثم».', mode: 'Individual' }, { question: 'اختم بسبب باستعمال «لأن».', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-13-production', type: 'reflection', title: 'قُلْها: تغير مفاجئ', instructions: 'اكتب أو قل أربع جمل قصيرة عن شيء حدث فجأة.', question: 'ماذا حدث فجأة؟', correctAnswer: null, explanation: 'استعمل «كان + مضارع»، و«فجأة»، و«ثم»، و«لأن».', feedback: { correct: 'اجعل التسلسل قصيرًا وواضحًا.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر ما كان يحدث: «كُنْتُ ...»', mode: 'Individual' }, { question: 'الجملة الثانية — أضف حدثًا مفاجئًا: «وَفَجْأَةً، ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر ما حدث بعده: «ثُمَّ ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر السبب: «... لِأَنَّ ...»', mode: 'Pair' }] }
   ]
 };
 
@@ -352,7 +352,7 @@ export const abrahamA2LanguageFocusExercisesArPart11: Record<number, Exercise[]>
       type: 'error-correction',
       title: 'تدرّب: صحّح الخطأ',
       instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما آخر الكلمة بعد «كانت»؟ وما الفعل لشخصين؟ وكيف يتبع الوصفُ الاسمَ؟',
+      question: 'هل تستطيع أن تصحّح الجمل عن بناء الكعبة؟',
       errorItems: [
         {
           sentence: 'كَانَتِ الْكَعْبَةُ بِنَاءٌ قَدِيمًا جِدًّا.',
@@ -380,6 +380,6 @@ export const abrahamA2LanguageFocusExercisesArPart11: Record<number, Exercise[]>
         incorrect: 'ارجع إلى الفصل: انظر إلى الكلمة بعد «كانت الكعبة»، وإلى الفعل بعد «الأب والابن»، وإلى الوصف بعد «مكانًا».',
       },
     },
-    { id: 'abraham-a2-ar-language-14-production', type: 'reflection', title: 'قُلْها: مهمة مشتركة', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع شرح زمن المهمة وغايتها ومن سيساعد وما الذي يستمر بعد ذلك؟', correctAnswer: null, explanation: 'استعمل عبارة زمن، ولام الغاية، وجملة مستقبل بالسين، و«لا يزال».', feedback: { correct: 'اجعل الأفكار الأربع مترابطة.', incorrect: '' }, discussionPrompts: [{ question: 'ابدأ بعبارة زمن.', mode: 'Individual' }, { question: 'اذكر الغاية بلام الغاية.', mode: 'Individual' }, { question: 'أضف جملة مستقبلية.', mode: 'Pair' }, { question: 'اختم بشيء «لا يزال» يحدث.', mode: 'Individual' }] }
+    { id: 'abraham-a2-ar-language-14-production', type: 'reflection', title: 'قُلْها: مهمة مشتركة', instructions: 'اكتب أو قل أربع جمل قصيرة عن عمل قام به صفّك معًا.', question: 'ماذا فعلتم، ولماذا؟', correctAnswer: null, explanation: 'استعمل عبارة زمن، ولام الغاية، وجملة مستقبل بالسين، و«لا يزال».', feedback: { correct: 'اجعل الأفكار الأربع مترابطة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — ابدأ بالوقت: «فِي الْأُسْبُوعِ الْمَاضِي، ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر الغاية: «... لِـ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — أضف وعدًا: «سَأُسَاعِدُكَ ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — اذكر ما لا يزال يحدث: «وَالْيَوْمَ، لَا نَزَالُ ...»', mode: 'Individual' }] }
   ]
 };

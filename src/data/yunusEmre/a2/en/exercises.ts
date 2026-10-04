@@ -35,7 +35,7 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   // LOOK — notice what the book's language does, across chapters.
   {
     id: 'yunus-a2-language-review-1-past-biography', type: 'drag-drop', title: 'Look: Two Kinds of Past',
-    instructions: 'Look at the past verb in each sentence from the book. Put the sentence in the right group.',
+    instructions: 'Look at the past verb. Put each sentence in the right group.',
     question: 'How does each verb show the past?',
     dragDropGroups: [
       { group: 'The verb adds -ed', items: ['He traveled to many cities in Anatolia …', 'Yunus served his teacher Taptuk Emre …', 'They whispered in each other’s ears …'] },
@@ -51,8 +51,8 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'yunus-a2-language-review-2-how-often-how-many', type: 'matching', title: 'Look: How Often? How Many?',
     matchingHeadings: { left: 'From the book', right: 'Meaning' },
-    instructions: 'Read the words from Chapters 2, 4 and 7. Match each one with its meaning.',
-    question: 'What do always, never, a single and some mean in these sentences?',
+    instructions: 'Match each phrase from the book with its meaning.',
+    question: 'What do always, never, a single and some mean?',
     matchingPairs: [
       { left: 'they always called themselves poor', right: 'at all times' },
       { left: 'he never cut or brought green or crooked wood', right: 'not one time' },
@@ -70,7 +70,7 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-a2-language-review-3-appearance-reality', type: 'multiple-choice', title: 'Look: It Looks Like …',
-    instructions: 'Read the sentences from Chapters 4 and 5. Then choose the best answer.',
+    instructions: 'Read the sentences. Then choose the best answer.',
     question: 'Chapter 4: “Some jobs look ordinary at first glance.” Chapter 5: “It looked like Yunus was working with wood to fix crooked pieces. But in fact, he was training his own heart and ego.” What do “look” and “It looked like” tell us?',
     options: ['what is really true', 'what we see at first', 'what will happen later'],
     correctAnswer: 1,
@@ -80,8 +80,8 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   // PRACTISE — use the forms in the book's own sentences.
   {
     id: 'yunus-a2-language-review-4-linking-ideas', type: 'word-bank', title: 'Practise: Reason, Result, Different Idea',
-    instructions: 'Complete the sentences from Chapters 1, 2 and 8 with words from the bank. Two words are not needed.',
-    question: 'Which word gives a reason, which gives a result, and which gives a different idea?',
+    instructions: 'Fill the gaps from the word bank. Two words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: 'People could easily understand his poems [blank] he wrote and said them in simple Turkish. … Dervishes were fully aware that they were in need of Allah in every way. [blank], even if they were rich, they always called themselves poor. … they could call themselves poor, [blank] their hearts were very rich. … Every job is important, [blank] we should do it well and correctly …',
     wordBank: ['because', 'That is why', 'but', 'so', 'when', 'Because of'],
     correctAnswer: ['because', 'That is why', 'but', 'so'],
@@ -90,8 +90,8 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-a2-language-review-5-verb-patterns', type: 'choose-form', title: 'Practise: What Comes After the Verb?',
-    instructions: 'Choose the correct form to complete each sentence from the book.',
-    question: 'After “taught him how”, “helped him” and “let my life”, which form comes next?',
+    instructions: 'Choose the correct form for each sentence from the book.',
+    question: 'What comes after “taught him how”, “helped him” and “let my life”?',
     formChoices: [
       { sentence: 'This service taught him how [choice] a good heart and do the right thing.', options: ['have', 'to have', 'having'], answer: 1 },
       { sentence: 'For Yunus, woodcutting in nature helped him [choice] a better person.', options: ['becoming', 'became', 'become'], answer: 2 },
@@ -103,8 +103,8 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-a2-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Practise: Fix One Mistake',
-    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the past verbs and the form after “must”?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the verb in each sentence?',
     errorItems: [
       { sentence: 'He choosed the straightest pieces of wood with the greatest care.', error: 'choosed', options: ['chose', 'choosing', 'chooses'], answer: 0 },
       { sentence: 'They picked flowers and runned back to their teacher.', error: 'runned', options: ['run', 'ran', 'running'], answer: 1 },
@@ -117,7 +117,7 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'yunus-a2-language-review-7-every-time', type: 'sentence-building', title: 'Practise: Every Time …',
     instructions: 'Put the words in order to make the sentence from Chapter 5.',
-    question: 'How do we say that something happens again and again, and what changes?',
+    question: 'What changed each time Yunus worked?',
     sentenceChunks: ['Every time', 'he used the axe,', 'he made', 'a bad part of himself', 'better.'],
     correctAnswer: null,
     explanation: '“Every time + action” means: again and again, each time this happens. “Make + something + adjective” shows a change: a bad part becomes better. Chapter 6 uses the same pattern: “Yunus made his heart purer.”',
@@ -126,8 +126,8 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'yunus-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Helper at School',
-    instructions: 'This text is not from the book. Complete it with words you met in the book. Two words are not needed.',
-    question: 'Can you use the book’s words to write about a person in your school?',
+    instructions: 'Fill the gaps in this new text. Two words are not needed.',
+    question: 'Can you use the book’s words in a school story?',
     fillBlanksText: 'Mrs Ayşe works in our school kitchen. [blank] day, she cooks lunch for many students. She [blank] comes late. It looks like an easy job, [blank] in fact it is hard work. [blank], we always say “thank you” to her.',
     wordBank: ['Every', 'never', 'but', 'That is why', 'some', 'because'],
     correctAnswer: ['Every', 'never', 'but', 'That is why'],
@@ -136,16 +136,16 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-a2-language-review-9-transfer', type: 'reflection', title: 'Use: An Everyday Hero',
-    instructions: 'Write four or five short sentences about a person whose everyday work helps others: at home, at school or in your town. Say your sentences to a partner first.',
-    question: 'Can you use the language of the whole book to write about someone in your own life?',
+    instructions: 'Write 4–5 sentences about a helper. Tell a partner first.',
+    question: 'Who helps others every day in your life?',
     correctAnswer: null,
     explanation: 'Example: “Mr Ali is our school caretaker. Every day, he opens the doors at seven. It looks like an easy job, but in fact he works very hard. Last winter, he fixed the heater in our classroom. His job is important, so we should keep our school clean. This helps us study well.”',
     feedback: { correct: 'Check your sentences: past verbs, how often, It looks like … but in fact …, so, should, helps us.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — Who and how often: “Every day, he/she …”, “He/She never …”', mode: 'Individual' },
-      { question: 'Sentence 2 — One past event: “Last week, he/she …” (helped, made, told, found …)', mode: 'Individual' },
-      { question: 'Sentence 3 — What we see and what is true: “It looks like …, but in fact …”', mode: 'Pair' },
-      { question: 'Sentence 4 — Result and advice: “His/Her job is important, so we should … . This helps us …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Say how often: “Every day, he/she …” or “He/She never …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Give one past event: “Last week, he/she …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say how it looks and what is true: “It looks like …, but in fact …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Give the result: “His/Her job is important, so we should … . This helps us …”', mode: 'Pair' },
     ],
   },
 ];

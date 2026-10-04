@@ -6,8 +6,8 @@ export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       id: 'adam-b1-language-8-future-necessity-purpose-addition',
       type: 'drag-drop',
       title: 'Why, With What, How Long?',
-      instructions: 'Read each part of Chapter 8. Does the phrase in it tell us why (purpose), with what (means), or how long (time)? Put it in the right group.',
-      question: 'What do “to + verb”, “with + noun” and the two uses of “for” add to a sentence?',
+      instructions: 'Does it say why, with what, or how long? Put each part in the right group.',
+      question: 'What does each phrase tell us: why, with what, or how long?',
       dragDropGroups: [
         {
           group: 'Why? (purpose)',
@@ -53,8 +53,8 @@ export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       id: 'adam-b1-language-8-means-cause-duration-contrast',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct a future seen from the past, a purpose and a “want” pattern?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about life on earth and Iblis?',
       errorItems: [
         {
           sentence: 'They will use land to grow crops and keep animals.',
@@ -87,7 +87,7 @@ export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Necessity and Addition',
       instructions: 'Complete the lines from Chapter 8 with words from the bank. Three words are not needed.',
-      question: 'Which words add another need, show past necessity, and join two kinds of experience?',
+      question: 'Which word adds more, which shows a need, and which joins two things?',
       fillBlanksText: '[blank], they [blank] protect themselves with clothes and weapons and protect themselves from dangers in the wild. … They had [blank] good and difficult times and they had many children.',
       wordBank: ['In addition', 'had to', 'both', 'However', 'must', 'either'],
       correctAnswer: ['In addition', 'had to', 'both'],
@@ -98,9 +98,9 @@ export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'adam-b1-language-8-build-new-responsibility-account', type: 'reflection', title: 'Build a New Responsibility Account', instructions: 'Write or say four connected B1 sentences about people beginning life in a difficult new place. Use at least four Chapter 8 patterns.', question: 'Can you use the chapter’s language to connect an expected role, necessity, purpose, addition, and cause in a new context?', correctAnswer: null,
+      id: 'adam-b1-language-8-build-new-responsibility-account', type: 'reflection', title: 'Build a New Responsibility Account', instructions: 'Write or say four sentences about people starting life in a hard new place.', question: 'What do the people have to do in their new place?', correctAnswer: null,
       explanation: 'A strong response may use “would + verb” for an expected role, “had to + verb” for necessity, “to + verb” for purpose, “in addition” to add another demand, “with + noun” for means, “because + clause” for cause, or “for + period” for duration.', feedback: { correct: 'Keep the four sentences connected so the role, necessity, purpose, and reason form one coherent account.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — State what the people would do in their new role.', mode: 'Individual' }, { question: 'Sentence 2 — State something they had to do and explain its purpose with “to + verb”.', mode: 'Individual' }, { question: 'Sentence 3 — Add another need with “In addition” and show a means with “with + noun”.', mode: 'Individual' }, { question: 'Sentence 4 — Give a reason with “because ...” and, if natural, add a duration with “for ...”.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Say what the people would do: “They would …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what they had to do and why: “They had to … to …”', mode: 'Individual' }, { question: 'Sentence 3 — Add more: “In addition, …” and “with + thing”', mode: 'Individual' }, { question: 'Sentence 4 — Give a reason: “because …” and how long: “for …”', mode: 'Pair' }],
     },
   ],
 };
@@ -112,7 +112,7 @@ export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       type: 'true-false',
       title: 'Stopped Doing or Stopped to Do?',
       instructions: 'Read the sentence from Chapter 9. Then decide: true or false?',
-      question: '“Allah never stopped sending messengers and sacred texts to remind people of Him.” True or false: this sentence has the same meaning as “Allah never stopped to send messengers.”',
+      question: '“Allah never stopped sending messengers and sacred texts to remind people of Him.” True or false: this means the same as “Allah never stopped to send messengers.”',
       correctAnswer: false,
       explanation: '“Stop + -ing” means that an activity ends: “never stopped sending” means the sending went on and never ended. “Stop + to + verb” means to pause one activity in order to do something else. So the two sentences have different meanings, and only “never stopped sending” fits the chapter.',
       feedback: {
@@ -124,8 +124,8 @@ export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       id: 'adam-b1-language-9-teaching-purpose-direction',
       type: 'sequencing',
       title: 'Follow the Time Markers',
-      instructions: 'Put the parts of Chapter 9 in order. Use the time words to help you.',
-      question: 'How do “At that time”, “After a period of time”, “Thus” and “Years later” organise the chapter?',
+      instructions: 'Put the parts of Chapter 9 in order. The time words can help.',
+      question: 'What happened before and after Adam (pbuh) became a Messenger?',
       sequencingItems: [
         { id: 'a', text: 'At that time, there was no community.' },
         { id: 'b', text: 'After a period of time, when a community formed, Adam (pbuh) became the first Messenger of Allah.' },
@@ -143,8 +143,8 @@ export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       id: 'adam-b1-language-9-connect-time-purpose-result',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct “teach + person + to”, a purpose and an if-clause about a general truth?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about teaching people?',
       errorItems: [
         {
           sentence: 'He started teaching people live righteously and act honestly.',
@@ -173,9 +173,9 @@ export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'adam-b1-language-9-build-guidance-paragraph', type: 'reflection', title: 'Build a Guidance Paragraph', instructions: 'Write or say four connected B1 sentences about someone who begins guiding a group. Use at least four Chapter 9 patterns.', question: 'Can you use the chapter’s language to show time, a new role, teaching, purpose, continuation, and a general result in a new context?', correctAnswer: null,
+      id: 'adam-b1-language-9-build-guidance-paragraph', type: 'reflection', title: 'Build a Guidance Paragraph', instructions: 'Write or say four sentences about someone who starts to lead a group.', question: 'How does the new leader guide the group?', correctAnswer: null,
       explanation: 'A strong response may use “after ... / when ...”, “became ...”, “started teaching ... to ...”, “never stopped + -ing”, “to + verb” for purpose, “wanted + person + to ...”, or “if + present, present” for a general result.', feedback: { correct: 'Keep the four sentences connected so the role change, teaching, purpose, and result form one coherent paragraph.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Use “after ...” or “when ...” and “became” to introduce a new stage or role.', mode: 'Individual' }, { question: 'Sentence 2 — Use “started teaching ... to ...” to explain what guidance began.', mode: 'Individual' }, { question: 'Sentence 3 — Add a purpose with “to + verb” or a wish with “wanted + person + to ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Add either continuation with “never stopped + -ing” or a general result with “if + present, present”.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Give the new role: “After …, … became …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what they taught: “… started teaching … to …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what they wanted: “… wanted everyone to …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what went on: “… never stopped + -ing” or “If …, …”', mode: 'Pair' }],
     },
   ],
 };
@@ -212,7 +212,7 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Roles, Obligation and the Best Gift',
       instructions: 'Choose the correct form to complete each sentence from Chapter 10.',
-      question: 'Which forms show a new role, a past obligation and the highest quality?',
+      question: 'Which words show a new job, what they had to do, and the best?',
       formChoices: [
         {
           sentence: 'When they grew up, Habil [choice] a shepherd.',
@@ -241,8 +241,8 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       id: 'adam-b1-language-10-build-connected-comparison',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct the verb forms after “loved” and “care about”, and the contrast between the brothers?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Habil and Qabil?',
       errorItems: [
         {
           sentence: 'Habil was kind, gentle and loved take care of animals.',
@@ -271,9 +271,9 @@ export const adamB1LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'adam-b1-language-10-compare-two-choices', type: 'reflection', title: 'Compare Two Choices', instructions: 'Write or say four connected B1 sentences about two people who respond differently to the same task. Use at least four Chapter 10 patterns.', question: 'Can you use the chapter’s language to show development or role, purpose, obligation, contrasting actions, and a general principle in a new situation?', correctAnswer: null,
+      id: 'adam-b1-language-10-compare-two-choices', type: 'reflection', title: 'Compare Two Choices', instructions: 'Write or say four sentences about two people who do the same job differently.', question: 'How are the two people different?', correctAnswer: null,
       explanation: 'A strong response may use “when ... grew up”, “became ...”, “to + verb” for purpose, “had to ...”, “but/while/however” for contrast, “didn’t care about + -ing”, and a pattern such as “real responsibility is + -ing ...” to express a general principle.', feedback: { correct: 'Keep the four sentences connected so the contrast grows naturally from the shared task.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Introduce the two people and, if useful, a change of role with “when ...” and “became ...”.', mode: 'Individual' }, { question: 'Sentence 2 — State the shared purpose and obligation with “to + verb” and “had to ...”.', mode: 'Individual' }, { question: 'Sentence 3 — Contrast their actions with “but”, “while”, or “however”.', mode: 'Individual' }, { question: 'Sentence 4 — State a general principle using “... is + -ing ...” or another natural Chapter 10 pattern.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Name the two people and their role: “When …, … became …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what they had to do and why: “To …, they had to …”', mode: 'Individual' }, { question: 'Sentence 3 — Show the difference: “…, while …” or “… but …”', mode: 'Individual' }, { question: 'Sentence 4 — Give a lesson: “Real … is + -ing …”', mode: 'Pair' }],
     },
   ],
 };
@@ -284,8 +284,8 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       id: 'adam-b1-language-11-cause-threat-refusal',
       type: 'drag-drop',
       title: 'Future, Past or Now?',
-      instructions: 'Read the words spoken in Chapter 11. Is the speaker talking about the future, the past or the present moment? Put each one in the right group.',
-      question: 'How do the verb forms in the spoken words show a threat, a refusal, an admission and a present feeling?',
+      instructions: 'Future, past or now? Put each spoken line in the right group.',
+      question: 'Is each line about the future, the past or now?',
       dragDropGroups: [
         {
           group: 'The future: a threat or a refusal',
@@ -316,7 +316,7 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Reason, Beginning and Guidance',
       instructions: 'Choose the correct form to complete each sentence from Chapter 11.',
-      question: 'Which forms give a reason, show a beginning, and describe how the raven guided Qabil?',
+      question: 'Which word gives a reason, and which words come after “started” and “the way”?',
       formChoices: [
         {
           sentence: 'Allah accepted Habil’s offering [choice] he gave from his heart.',
@@ -345,8 +345,8 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       id: 'adam-b1-language-11-process-and-guidance',
       type: 'transformation',
       title: 'Report What Qabil Said',
-      instructions: 'Complete each sentence to report Qabil’s words. Keep the meaning.',
-      question: 'How do an admission and a question word change when we report someone’s words?',
+      instructions: 'Report Qabil’s words. Write the missing words.',
+      question: 'What did Qabil admit, and what did he not know?',
       transformItems: [
         {
           source: 'He said, “I killed my brother. …”',
@@ -367,9 +367,9 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'adam-b1-language-11-reflect-and-revise', type: 'reflection', title: 'From a Bad Choice to a Better Next Step', instructions: 'Write or say four connected B1 sentences about someone who makes a serious mistake and then has to decide what to do next. Use at least four Chapter 11 patterns.', question: 'Can you use the chapter’s language to express cause, a strong intention or refusal, uncertainty, guidance, comparison, or inability in a new situation?', correctAnswer: null,
+      id: 'adam-b1-language-11-reflect-and-revise', type: 'reflection', title: 'From a Bad Choice to a Better Next Step', instructions: 'Write or say four sentences about someone who makes a serious mistake.', question: 'What did the person do wrong, and what did they do next?', correctAnswer: null,
       explanation: 'A strong response may use “because ...”, “I will ... / I won’t ...”, “when ...”, “started + -ing”, “I don’t know what I should ...”, “showed ... the way to ...”, “worse/better than ...”, or “cannot ...”. Keep the sentences connected around one new situation rather than retelling Chapter 11.', feedback: { correct: 'Keep the response coherent: show the choice, the reaction, the uncertainty, and the next step.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — State the situation and, if useful, explain a reason with “because”.', mode: 'Individual' }, { question: 'Sentence 2 — Express a strong intention or refusal with “will” or “won’t”.', mode: 'Individual' }, { question: 'Sentence 3 — Show uncertainty with “I don’t know what I should ...” or a process with “started + -ing”.', mode: 'Individual' }, { question: 'Sentence 4 — Add guidance, comparison, or inability to show what the person learns next.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Say what happened and why: “… because …”', mode: 'Individual' }, { question: 'Sentence 2 — Make a strong promise: “I will …” or “I won’t …”', mode: 'Individual' }, { question: 'Sentence 3 — Show they are not sure: “I don’t know what I should …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what they learned: “… guided him to …” or “… is better than …”', mode: 'Pair' }],
     },
   ],
 };
@@ -400,7 +400,7 @@ export const adamB1LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Necessity, Time and Continuity',
       instructions: 'Complete the lines from Chapter 12 with words from the bank. Three words are not needed.',
-      question: 'Which words show a past necessity, change across time, and something that continues now?',
+      question: 'Which word shows a need, which shows time passing, and which means “even now”?',
       fillBlanksText: 'But as a prophet and the father of his other children, Adam (pbuh) [blank] continue his life. He got old [blank] the years. … He sent His prophets, and their stories [blank] guide us.',
       wordBank: ['had to', 'over', 'still', 'must', 'since', 'yet'],
       correctAnswer: ['had to', 'over', 'still'],
@@ -414,8 +414,8 @@ export const adamB1LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       id: 'adam-b1-language-12-coherent-legacy-passage',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word, then choose the correction.',
-      question: 'Can you correct the verb forms in a list of actions and after “the importance of”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the story’s message?',
       errorItems: [
         {
           sentence: 'It also teaches people the importance of admit mistakes and turning back to Allah.',
@@ -438,9 +438,9 @@ export const adamB1LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'adam-b1-language-12-reflect-and-transfer', type: 'reflection', title: 'A Lesson That Remains Useful', instructions: 'Write or say four connected B1 sentences about a person, family, class, or community whose experience leaves a useful lesson. Use at least four Chapter 12 patterns.', question: 'Can you describe a past responsibility, development over time, and a message that still matters without retelling Adam’s story?', correctAnswer: null,
+      id: 'adam-b1-language-12-reflect-and-transfer', type: 'reflection', title: 'A Lesson That Remains Useful', instructions: 'Write or say four sentences about someone whose life teaches a useful lesson.', question: 'What did the person do, and what can we learn?', correctAnswer: null,
       explanation: 'A strong response may use “As a/an ..., ... had to ...”, “over the years ...”, “still ...”, “never ...”, “the story/experience suggests that ... should ...”, or “the importance of + -ing”. Keep the four sentences connected around one new situation.', feedback: { correct: 'Keep the response coherent: past role, development, continuing influence, and present lesson.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Introduce a role and a past responsibility with “As a/an ...” and “had to”.', mode: 'Individual' }, { question: 'Sentence 2 — Show change or development “over the years”.', mode: 'Individual' }, { question: 'Sentence 3 — Explain what “still” continues to influence people now.', mode: 'Individual' }, { question: 'Sentence 4 — State a recommendation with “suggests that ... should ...” or a principle with “the importance of + -ing”.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Give the role and a past duty: “As a …, she had to …”', mode: 'Individual' }, { question: 'Sentence 2 — Show a change: “Over the years, …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what still matters now: “… still …”', mode: 'Individual' }, { question: 'Sentence 4 — Give the lesson: “… shows the importance of + -ing” or “… suggests that we should …”', mode: 'Pair' }],
     },
   ],
 };

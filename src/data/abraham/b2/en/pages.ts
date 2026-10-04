@@ -869,8 +869,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   // NOTICE — find what the book's language does, across chapters.
   {
     id: 'abraham-b2-language-review-1-whose-claim', type: 'drag-drop', title: 'Notice: Whose Claim Is It?',
-    instructions: 'Read the sentences from Chapters 2, 4, 5, 11, 12, 31, 33 and 35. Who is responsible for each claim? Put each sentence in the right group.',
-    question: 'Does the sentence pass on a source, give the writer’s own interpretation, or simply tell an event?',
+    instructions: 'Who is responsible for each claim? Put each sentence from the book in the right group.',
+    question: 'Does the sentence pass on a source, give the writer’s view, or tell an event?',
     dragDropGroups: [
       { group: 'The writer passes on a source or tradition', items: ['In the Holy Qur’an, Abraham (pbuh) is often described as a hanîf …', 'Azer is presented in Islamic sources as Nimrod\'s idol maker.', 'According to another narration, Nimrod had a dream that a child in the region would challenge his throne.'] },
       { group: 'The writer interprets or concludes', items: ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka’ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'] },
@@ -901,8 +901,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'abraham-b2-language-review-3-cause-aim-obstacle-result', type: 'matching', title: 'Notice: Cause, Aim, Obstacle, Result',
     matchingHeadings: { left: 'From the book', right: 'What the linking language does' },
-    instructions: 'Read the sentences from Chapters 3, 14, 21 and 32. Match each one with what its linking language does.',
-    question: 'How does each sentence connect an action with a cause, an aim, an obstacle or a result?',
+    instructions: 'Match each sentence from the book with what its linking words do.',
+    question: 'Does it give a cause, an aim, a problem or a result?',
     matchingPairs: [
       { left: 'The people stood away from the pit because of the great heat.', right: 'gives the cause after the action it explains' },
       { left: 'He went to Damascus in search of Hanifism …', right: 'names the goal of a journey' },
@@ -921,8 +921,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   // BUILD — controlled practice in the book's own sentences.
   {
     id: 'abraham-b2-language-review-4-passive-earlier-past', type: 'error-correction', title: 'Build: Passive Forms and the Earlier Past',
-    instructions: 'Each sentence from Chapters 20, 22 and 25 has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the passive forms and the verb that steps back to an earlier past?',
+    instructions: 'Each sentence from the book has one mistake. Tap it, then choose the correct form.',
+    question: 'Can you fix the verbs in these sentences?',
     errorItems: [
       { sentence: 'Abraham (pbuh) was put on the catapult; his hands and feet were tying.', error: 'were tying', options: ['had tied', 'were tied', 'tied'], answer: 1 },
       { sentence: 'Cries of astonishment was heard from the unbelievers.', error: 'was heard', options: ['were heard', 'were hearing', 'heard'], answer: 0 },
@@ -934,8 +934,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b2-language-review-5-reporting-words', type: 'transformation', title: 'Build: Report the Words',
-    instructions: 'Report the words from Chapters 6 and 15. Complete each new sentence and keep the meaning.',
-    question: 'How do a statement and a question change when we report them in a past story?',
+    instructions: 'Report the words from Chapters 6 and 15. Complete each new sentence.',
+    question: 'What changes when we report words in a past story?',
     transformItems: [
       { source: 'His father continued, “These big ears show his deep knowledge.”', frame: 'His father added that those big ears [blank] his deep knowledge.', answers: ['showed'] },
       { source: 'they responded: “Are you criticizing our gods and our forefathers? …”', frame: 'They asked Abraham (pbuh) [blank] their gods and their forefathers.', answers: ['whether he was criticizing', 'if he was criticizing', 'whether he was criticising', 'if he was criticising'] },
@@ -946,8 +946,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b2-language-review-6-certainty-and-scope', type: 'multiple-choice', title: 'Build: Keep the Writer’s Certainty',
-    instructions: 'Read the sentences from Chapters 4 and 24. Choose the summary that keeps how sure the writer is and how many people are meant.',
-    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 22nd and 21st centuries BC.” Chapter 24: “Only one woman and one man of his people shared his belief in Allah.” Which summary keeps the writer’s certainty and scope?',
+    instructions: 'Choose the summary that keeps how sure the writer is and how many people are meant.',
+    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 22nd and 21st centuries BC.” Chapter 24: “Only one woman and one man of his people shared his belief in Allah.” Which summary is the most faithful?',
     options: [
       'It has been proven that Abraham lived in the 22nd and 21st centuries BC; only two of his people, a woman and a man, shared his belief.',
       'Abraham is believed to have lived in the 22nd and 21st centuries BC; after the fire, many of his people shared his belief.',
@@ -960,8 +960,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b2-language-review-7-link-limit-collocate', type: 'word-bank', title: 'Build: Link, Limit and Collocate',
-    instructions: 'Complete the lines from Chapters 14, 17, 25 and 35 with words from the bank. Two words are not needed.',
-    question: 'Which words complete a collocation, mark an unexpected turn, give a result and widen the scope?',
+    instructions: 'Complete the lines from the book with words from the bank. Two words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: '… he was determined to [blank] to these practices … Allah also will cause them to die and bring them back to life again. [blank], idolaters would not give up but held on tightly to their idols. … Sarah thought she could not have a child. [blank], she suggested Abraham (pbuh) get married to Hagar. … He built a place of worship for all people, [blank] people of a chosen race or color.',
     wordBank: ['put an end', 'However', 'Therefore', 'not just', 'give an end', 'Although'],
     correctAnswer: ['put an end', 'However', 'Therefore', 'not just'],
@@ -971,8 +971,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into new contexts from the learners' world.
   {
     id: 'abraham-b2-language-review-8-new-context', type: 'choose-form', title: 'Use: Our Town’s Old Fountain',
-    instructions: 'This text is not from the book. It is part of a report for the school newspaper. Choose the form that fits each sentence.',
-    question: 'Can you name a source, keep the right degree of certainty and link the ideas in a new text?',
+    instructions: 'This new text is from a school newspaper report. Choose the form that fits each sentence.',
+    question: 'Can you use the book’s language in a new text?',
     formChoices: [
       { sentence: 'According to a sign in the town museum, the old fountain in the square [choice] in 1890.', options: ['built', 'was built', 'had built'], answer: 1 },
       { sentence: 'Some older residents [choice] that its water once came from a spring in the hills, but no written record confirms this.', options: ['believe', 'prove', 'have shown'], answer: 0 },
@@ -984,7 +984,7 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Say It More Carefully',
-    instructions: 'These sentences are not from the book. Rewrite each one so that the claim is reported as a belief or made less certain. Complete the new sentence.',
+    instructions: 'These sentences are not from the book. Make each one less certain, or report it as a belief.',
     question: 'Can you report a belief and soften a claim that is too strong?',
     transformItems: [
       { source: 'People believe that the Romans built the old bridge.', frame: 'The old bridge [blank] by the Romans.', answers: ['is believed to have been built'] },
@@ -997,16 +997,16 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b2-language-review-10-transfer', type: 'reflection', title: 'Use: Argue a School Decision',
-    instructions: 'Write a short argued paragraph (6–8 sentences) about a decision in your school or town, for example a new timetable, a phone rule or a new use for an old building. State your position, give evidence and add one qualification. Plan it with a partner first.',
-    question: 'Can you use the language of the whole book to argue carefully: position, source, background, evidence and limits?',
+    instructions: 'Write 6–8 sentences about a decision in your school or town. Plan with a partner first.',
+    question: 'Can you argue for your view carefully?',
     correctAnswer: null,
     explanation: 'Example: “In my view, our school should keep the library open at lunchtime. According to a class survey, about sixty students use it every week. Before this year, the library had already become a quiet place for homework. Last spring the school was going to close it at lunch because of staff costs; however, some parents offered to help as volunteers. The survey suggests that students value a quiet space, although it may not show what every student thinks. Therefore, the library should stay open at lunch, not just for readers but for anyone who needs to study.”',
     feedback: { correct: 'Check your paragraph: a position (In my view …), a source (According to …), background (had + past participle, was going to), a contrast (however, although), a careful claim (suggests, may), a result (Therefore) and a scope marker (not just).', incorrect: '' },
     discussionPrompts: [
-      { question: 'Position and source: “In my view, … . According to …, …”', mode: 'Individual' },
-      { question: 'Background: “Before …, … had already …” or “The school was going to …; however, …”', mode: 'Individual' },
-      { question: 'Evidence and interpretation: “The survey suggests that …, although it may not …”', mode: 'Pair' },
-      { question: 'Conclusion and scope: “Therefore, … , not just … but …”', mode: 'Pair' },
+      { question: 'Step 1 — Give your view and a source: “In my view, … . According to …, …”', mode: 'Individual' },
+      { question: 'Step 2 — Give the background: “Before …, … had already …” or “… was going to …; however, …”', mode: 'Individual' },
+      { question: 'Step 3 — Give evidence carefully: “The survey suggests that …, although it may not …”', mode: 'Pair' },
+      { question: 'Step 4 — Conclude: “Therefore, …, not just … but …”', mode: 'Pair' },
     ],
   },
 ];

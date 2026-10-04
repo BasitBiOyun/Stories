@@ -7,8 +7,8 @@ import type { Exercise } from '../../../../types';
  * it in a new situation. Every quoted sentence comes from the English chapter.
  */
 
-const reflection = (id: string, title: string, prompts: string[], explanation: string): Exercise => ({
-  id, type: 'reflection', title, instructions: 'Produce a short response using the target language naturally and accurately.', question: prompts[0], correctAnswer: null, explanation,
+const reflection = (id: string, title: string, prompts: string[], explanation: string, ask?: { instructions: string; question: string }): Exercise => ({
+  id, type: 'reflection', title, instructions: ask?.instructions ?? 'Produce a short response using the target language naturally and accurately.', question: ask?.question ?? prompts[0], correctAnswer: null, explanation,
   feedback: {
     correct: 'Check that each target form does a clear job in your paragraph.',
     incorrect: 'Look back at how the chapter uses these forms, then revise your paragraph.',
@@ -22,7 +22,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mo-b2-lf1-a',
       type: 'true-false',
       title: 'Who Makes the Claim?',
-      instructions: 'Read the first sentence of Chapter 1. Decide whether the statement about its meaning is true or false.',
+      instructions: 'Read the first sentence of Chapter 1. Is the statement true or false?',
       question: '“Moses (pbuh) is one of the great prophets according to Judaism, Christianity, and Islam …” — The phrase “according to Judaism, Christianity, and Islam” shows that the writer has proved this as a historical fact.',
       correctAnswer: false,
       explanation: '“According to …” attributes a view to a source. Here the writer reports how three religious traditions see Moses; the phrase frames the claim rather than presenting historical proof. B2 writers use such framing to show whose view a statement expresses.',
@@ -35,8 +35,8 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mo-b2-lf1-b',
       type: 'transformation',
       title: 'Cause and Purpose in Other Words',
-      instructions: 'Rewrite each chapter sentence so that it keeps the same meaning. Write only the missing words.',
-      question: 'Can you express the same cause and the same purpose with a different structure?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we give the reason and the aim?',
       transformItems: [
         {
           source: 'However, because they grew so quickly compared to the local population, the Egyptian rulers … began to see them as a danger.',
@@ -57,15 +57,18 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf1-c', 'From Fact to Explanation', [
-      'Write 4–5 sentences about a historical change. Use one framing phrase such as “according to…”, one cause with “because”, and one purpose phrase with “to + verb”.',
-    ], 'A B2 response should connect information through source framing, cause, and purpose instead of presenting disconnected facts.'),
+      'Use “According to …”, “because …” and “to + verb” for the aim.',
+    ], 'A B2 response should connect information through source framing, cause, and purpose instead of presenting disconnected facts.', {
+      instructions: 'Describe a change in history in 4–5 sentences.',
+      question: 'What changed in history, and why?',
+    }),
   ],
   2: [
     {
       id: 'mo-b2-lf2-a',
       type: 'matching',
       title: 'Degrees of Historical Certainty',
-      instructions: 'Match each expression from Chapter 2 with what it tells the reader about the claim.',
+      instructions: 'Match each phrase from Chapter 2 with what it tells you.',
       question: 'How sure is the writer, and whose claim is it?',
       matchingHeadings: { left: 'From the chapter', right: 'What it tells the reader' },
       matchingPairs: [
@@ -92,8 +95,8 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mo-b2-lf2-b',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct a result phrase and the passive the writer uses for forced work?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix the words for a result and for forced work?',
       errorItems: [
         {
           sentence: 'As a result these disorders, the Israelites escaped from Egypt during the rule of Ramses II (approximately 1279-1213 BC).',
@@ -118,9 +121,9 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'mo-b2-lf2-c',
       type: 'multiple-choice',
-      title: 'Keep the Writer’s Stance',
-      instructions: 'Choose the summary that keeps the stance of the chapter sentence.',
-      question: '“According to the sources, Seti I (approximately 1290-1279 BC) was the pharaoh who oppressed the Israelites.” Which summary keeps the writer’s stance?',
+      title: 'Just as Sure as the Writer',
+      instructions: 'Choose the summary that says the same as the chapter.',
+      question: '“According to the sources, Seti I (approximately 1290-1279 BC) was the pharaoh who oppressed the Israelites.” Which summary is just as sure as the writer?',
       options: [
         'It has been proved beyond doubt that Seti I oppressed the Israelites.',
         'The sources identify Seti I as the pharaoh who oppressed the Israelites.',
@@ -135,15 +138,18 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf2-d', 'Qualified Historical Summary', [
-      'Write a 5-sentence historical summary using “according to the sources”, “probably”, and one sentence that openly states what is not known.',
-    ], 'The task practises B2 qualification: evidence can support a conclusion without turning an uncertain point into a fixed fact.'),
+      'Use “According to the sources”, “probably”, and say one thing that is unknown.',
+    ], 'The task practises B2 qualification: evidence can support a conclusion without turning an uncertain point into a fixed fact.', {
+      instructions: 'Sum up an event from history in five sentences.',
+      question: 'What do the sources say, and what is unknown?',
+    }),
   ],
   3: [
     {
       id: 'mo-b2-lf3-a',
       type: 'multiple-choice',
       title: 'What Does the Analogy Compare?',
-      instructions: 'Read the last sentence of Chapter 3 and choose the best interpretation of the comparison.',
+      instructions: 'Read the last sentence of Chapter 3. Choose what the writer compares.',
       question: '“Just like today’s petrol, control of the power of the Nile also needed a strong administration, a god-king authority.” What does the writer compare?',
       options: [
         'Two dangerous substances that people should keep away from',
@@ -162,8 +168,8 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mo-b2-lf3-b',
       type: 'transformation',
       title: 'Rebuild the Explanation',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you keep a two-cause explanation and a cause–consequence link in a new structure?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “not only … but also” and “For this reason”?',
       transformItems: [
         {
           source: 'Apparently, Pharaohs’ god-king authority was based not only on the richness of the river, but also on the manpower of the slaves …',
@@ -183,17 +189,20 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: 'Item 1: “as well as” needs the other basis of power (the river). Item 2: “Because” needs a full clause with a verb. Check the middle and end of Chapter 3.',
       },
     },
-    reflection('mo-b2-lf3-c', 'Analogy with Limits', [
-      'Explain in 4–6 sentences why the text compares the Nile with modern petrol. Use “not only … but also …” and make clear that the comparison is an analogy, not an identity.',
-    ], 'A strong B2 comparison identifies the shared function of strategic resources while respecting the limits of the analogy.'),
+    reflection('mo-b2-lf3-c', 'Like Petrol, but Not the Same', [
+      'Use “not only … but also …”, then say how the two are not the same.',
+    ], 'A strong B2 comparison identifies the shared function of strategic resources while respecting the limits of the analogy.', {
+      instructions: 'Explain in 4–6 sentences why the text compares the Nile with petrol.',
+      question: 'How are the Nile and petrol alike, and how are they different?',
+    }),
   ],
   4: [
     {
       id: 'mo-b2-lf4-a',
       type: 'multiple-choice',
-      title: 'Why the Passive?',
-      instructions: 'Read the sentence from Chapter 4 and choose the best explanation.',
-      question: '“He was placed in a basket and the basket was set free on the waters of the Nile.” Why does the writer use the passive here?',
+      title: 'Why Not Say Who Did It?',
+      instructions: 'Read the sentence from Chapter 4. Choose the best explanation.',
+      question: '“He was placed in a basket and the basket was set free on the waters of the Nile.” Why does the writer not say who did these actions?',
       options: [
         'To show that nobody actually did these actions',
         'To keep attention on the baby and the basket rather than on the person who acted',
@@ -211,8 +220,8 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mo-b2-lf4-b',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake in its verb form. Tap the wrong words, then choose the correction.',
-      question: 'Can you form the passive correctly, and recognise a verb that has no passive?',
+      instructions: 'Each sentence has one mistake in the verb. Tap it, then choose the correction.',
+      question: 'Can you fix the verbs that say what happened?',
       errorItems: [
         {
           sentence: 'It was find at the foot of a tree near the Pharaoh’s palace on the banks of the Nile and he was miraculously saved.',
@@ -241,16 +250,19 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf4-c', 'Parallel Without Repetition', [
-      'Write 4–5 sentences explaining the Nile/Red Sea parallel. Use one passive form and one contrast or time marker such as “later”, “while”, or “whereas”.',
-    ], 'The task practises thematic comparison while keeping the two events historically and narratively distinct.'),
+      'Use one “was …ed” form, like “was placed”, and “later”, “while” or “whereas”.',
+    ], 'The task practises thematic comparison while keeping the two events historically and narratively distinct.', {
+      instructions: 'Explain in 4–5 sentences how the Nile and the Red Sea are linked.',
+      question: 'How does water save Moses and his people?',
+    }),
   ],
   5: [
     {
       id: 'mo-b2-lf5-a',
       type: 'drag-drop',
       title: 'Public Behaviour and Private Position',
-      instructions: 'Sort the phrases from Chapter 5. Do they describe what people showed in public, or what they held in private?',
-      question: 'How does the chapter separate outward behaviour from inner belief?',
+      instructions: 'Sort the phrases from Chapter 5: shown in public, or kept private?',
+      question: 'What did people show, and what did they hide?',
       dragDropGroups: [
         {
           group: 'What people showed in public',
@@ -275,8 +287,8 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mo-b2-lf5-b',
       type: 'error-correction',
       title: 'Power and Possibility',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Can you keep the chapter’s degree of certainty and its structure for forced action?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix how sure the sentence is, and the verb after “made”?',
       errorItems: [
         {
           sentence: 'It is certain that some people of that period did not practise or believe in paganism.',
@@ -303,7 +315,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Reporting the Vision',
       instructions: 'Report each quotation from Chapter 5. Write only the missing words.',
-      question: 'How do verb forms change when a report moves back in time?',
+      question: 'What happens to “saw” and “will be” when you report them?',
       transformItems: [
         {
           source: 'Ibn Abbas said, “The Pharaoh saw a fire in his vision. …”',
@@ -324,16 +336,19 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf5-d', 'Reporting a Vision Carefully', [
-      'Write 4–6 sentences reporting a dream or prediction from a source. Attribute the report, use “said that” or an equivalent reporting structure, and distinguish the reported prediction from an established fact.',
-    ], 'The chapter attributes the vision account to Ibn Abbas and reports what priests and magicians said would happen.'),
+      'Say who said it, use “said that …”, and keep the prediction apart from facts.',
+    ], 'The chapter attributes the vision account to Ibn Abbas and reports what priests and magicians said would happen.', {
+      instructions: 'Report a dream or a prediction from a source in 4–6 sentences.',
+      question: 'What did the source say, and what do we really know?',
+    }),
   ],
   6: [
     {
       id: 'mo-b2-lf6-a',
       type: 'matching',
       title: 'Instruction and Reassurance',
-      instructions: 'Read the Qur’anic words quoted in Chapter 6. Match each part with what it does.',
-      question: 'What does each part of the inspired message do for Moses’ mother?',
+      instructions: 'Match each part of the Qur’anic words in Chapter 6 with what it does.',
+      question: 'What does each part tell Moses’ mother?',
       matchingHeadings: { left: 'From the chapter', right: 'What the words do' },
       matchingPairs: [
         { left: 'but when you fear for him, then put him into the river', right: 'a condition followed by the action it requires' },
@@ -358,7 +373,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Cause, Result and Fear',
       instructions: 'Complete the lines from Chapter 6 with words from the bank. Two words are not needed.',
-      question: 'Which linker shows a cause, which a result, and which the fear behind an action?',
+      question: 'Which word fits each gap?',
       fillBlanksText: 'But the Pharaoh began to lose his manpower [blank] the Children of Israel did most of the heavy jobs in the country. … The Pharaoh thought the solution was economically realistic, [blank] he accepted it. … His mother was very frightened by his birth, so she nursed him in secret [blank] that he would be killed.',
       wordBank: ['because', 'so', 'for fear', 'although', 'in case'],
       correctAnswer: ['because', 'so', 'for fear'],
@@ -369,7 +384,10 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf6-c', 'Explaining a Difficult Decision', [
-      'Write 5 sentences about a difficult decision. Use one cause, one conditional “when/if” relationship, one instruction, and one future reassurance.',
-    ], 'B2 use means combining forms into a coherent decision sequence rather than practising them in isolation.'),
+      'Use a reason, “if” or “when”, an instruction, and a promise with “will”.',
+    ], 'B2 use means combining forms into a coherent decision sequence rather than practising them in isolation.', {
+      instructions: 'Describe a hard decision in five sentences.',
+      question: 'Why was the decision hard, and what was promised?',
+    }),
   ],
 };

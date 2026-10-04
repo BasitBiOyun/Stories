@@ -21,7 +21,7 @@ export const abrahamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> 
       type: 'word-bank',
       title: 'تدرّب: كلمات الوقت',
       instructions: 'ضع الكلمة المناسبة في كل فراغ. كلمتان لن تستعملهما.',
-      question: 'كيف يبيّن الفصل مدة الحدث، والوقت الجديد، وبداية المهمة؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'بَقِيَ إِبْرَاهِيمُ هُنَاكَ [blank] اللَّيْلِ. وَ[blank]، طَلَعَتِ الشَّمْسُ. … وَ[blank] هَذَا الْوَقْتِ، كَانَ عَلَيْهِ أَنْ يَهْدِيَ قَوْمَهُ.',
       wordBank: ['طُولَ', 'فِي الصَّبَاحِ', 'مِنْ', 'فِي الْمَسَاءِ', 'عَنْ'],
       correctAnswer: ['طُولَ', 'فِي الصَّبَاحِ', 'مِنْ'],
@@ -58,7 +58,7 @@ export const abrahamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> 
         incorrect: 'ارجع إلى دعاء إبراهيم، وإلى كلامه لأبيه، وإلى وصف الشمس في بداية الفصل.',
       },
     },
-    { id: 'abraham-a2-ar-language-4-guidance-production', type: 'reflection', title: 'قُلْها: شرط ومسؤولية وتوجيه', instructions: 'اكتب أو قل ثلاث جمل قصيرة من مستوى A2 باستعمال أنماط الفصل.', question: 'هل تستطيع استعمال شرط، ومسؤولية، وأمر مباشر؟', correctAnswer: null, explanation: 'استعمل «إن ... فـ...»، و«عليّ أن ...»، وصيغة أمر قصيرة.', feedback: { correct: 'اجعل الجمل قصيرة وواضحة.', incorrect: '' }, discussionPrompts: [{ question: 'اكتب جملة شرطية قصيرة.', mode: 'Individual' }, { question: 'أضف جملة فيها «عليّ أن ...».', mode: 'Individual' }, { question: 'اختم بأمر أو توجيه قصير.', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-4-guidance-production', type: 'reflection', title: 'قُلْها: شرط ومسؤولية وتوجيه', instructions: 'اكتب أو قل ثلاث جمل قصيرة عن يومك.', question: 'ماذا عليك أن تفعل؟', correctAnswer: null, explanation: 'استعمل «إن ... فـ...»، و«عليّ أن ...»، وصيغة أمر قصيرة.', feedback: { correct: 'اجعل الجمل قصيرة وواضحة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر ما سيحدث: «إِنْ ...، فَـ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر ما عليك: «عَلَيَّ أَنْ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اطلب شيئًا: «أَغْلِقِ ... مِنْ فَضْلِكَ»', mode: 'Pair' }] }
   ],
   5: [
     {
@@ -66,7 +66,7 @@ export const abrahamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> 
       type: 'matching',
       title: 'انظر: السبب والوقت',
       instructions: 'صِل بداية كل جملة بنهايتها في الفصل.',
-      question: 'كيف تكمل «لأنّ» و«عندما» و«فَـ» الكلام؟',
+      question: 'ما نهاية كل جملة؟',
       matchingHeadings: { left: 'بداية الجملة', right: 'نهايتها في الفصل' },
       matchingPairs: [
         { left: 'وَلَا أَعْبُدُ الْأَصْنَامَ الْحَجَرِيَّةَ؛', right: '… لِأَنَّ اللهَ هُوَ الْإِلَهُ الْوَاحِدُ.' },
@@ -120,7 +120,7 @@ export const abrahamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> 
       id: 'abraham-a2-ar-language-5-when-and-power',
       type: 'transformation',
       title: 'تدرّب: قلها بطريقة أخرى',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الجملة الجديدة.',
+      instructions: 'اكتب الكلمة الناقصة. حافظ على المعنى نفسه.',
       question: 'كيف نقول المعنى نفسه بـ«لا تستطيع أن» وبـ«لأنّ»؟',
       transformItems: [
         {
@@ -141,7 +141,7 @@ export const abrahamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> 
         incorrect: 'في الجملة الأولى ضع الفعل بعد «أن». وفي الثانية تحتاج إلى أداة سبب مع «نا».',
       },
     },
-    { id: 'abraham-a2-ar-language-5-production', type: 'reflection', title: 'قُلْها: موقف وسبب وحالة عامة', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع التعبير عن موقف، وسبب، وحالة عامة، وقدرة؟', correctAnswer: null, explanation: 'استعمل جملة إيمان أو موقف، و«لأن»، و«عندما/إذا»، وعبارة عن القدرة.', feedback: { correct: 'اجعل كل جملة قصيرة ومباشرة.', incorrect: '' }, discussionPrompts: [{ question: 'ابدأ بموقف أو اعتقاد.', mode: 'Individual' }, { question: 'أعط سببًا بـ«لأن».', mode: 'Individual' }, { question: 'استعمل «عندما» أو «إذا».', mode: 'Individual' }, { question: 'اختم بعبارة عن القدرة أو عدمها.', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-5-production', type: 'reflection', title: 'قُلْها: موقف وسبب وحالة عامة', instructions: 'اكتب أو قل أربع جمل قصيرة عن رأيك في شيء.', question: 'ما رأيك، ولماذا؟', correctAnswer: null, explanation: 'استعمل جملة إيمان أو موقف، و«لأن»، و«عندما/إذا»، وعبارة عن القدرة.', feedback: { correct: 'اجعل كل جملة قصيرة ومباشرة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر رأيك: «أَعْتَقِدُ أَنَّ ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر السبب: «... لِأَنَّ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر ما يحدث: «عِنْدَمَا ...» أو «إِذَا ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر ما لا يستطيعه شيء: «... لَا يَسْتَطِيعُ أَنْ ...»', mode: 'Pair' }] }
   ]
 };
 
@@ -196,7 +196,7 @@ export const abrahamA2LanguageFocusExercisesArPart3: Record<number, Exercise[]> 
       type: 'matching',
       title: 'تدرّب: كيف كان؟',
       instructions: 'صِل كل عبارة من الفصل بمعناها.',
-      question: 'ماذا تعني الكلمات التي تصف كيف كان الشخص أو الشيء؟',
+      question: 'ماذا تعني هذه الكلمات؟',
       matchingHeadings: { left: 'من الفصل', right: 'المعنى' },
       matchingPairs: [
         { left: 'فَسَأَلَهَا… مَازِحًا', right: 'قال ذلك ليُضحِك، لا بجدّ' },
@@ -216,7 +216,7 @@ export const abrahamA2LanguageFocusExercisesArPart3: Record<number, Exercise[]> 
         incorrect: 'ارجع إلى كل عبارة في الفصل، واسأل: كيف كان إبراهيم، أو الصنم، أو المدينة في تلك اللحظة؟',
       },
     },
-    { id: 'abraham-a2-ar-language-6-plan-production', type: 'reflection', title: 'قُلْها: خطة وتسلسل بسيط', instructions: 'اكتب أو قل أربعًا أو خمس جمل قصيرة من مستوى A2 عن خطة بسيطة، مستعملًا أربعة أنماط على الأقل من لغة الفصل. لا تشرح سبب ترك الصنم الأكبر سليمًا.', question: 'هل تستطيع التعبير عن نية، ووصف مشهد، وربط الأحداث، ثم إنهاء تسلسل قصير؟', correctAnswer: null, explanation: 'يمكن للإجابة الجيدة أن تستعمل «أردت أن ...»، و«وضعت خطة لـ...»، و«كان هناك ...»، و«لما ...»، و«بدأت ...»، وعبارة ترتيب مثل «واحدًا بعد واحد» أو «في النهاية».', feedback: { correct: 'اجعل التسلسل واضحًا واستعمل كل تركيب لوظيفته الحقيقية.', incorrect: '' }, discussionPrompts: [{ question: 'النية — ابدأ بـ«أردت أن ...»', mode: 'Individual' }, { question: 'الخطة — أضف «وضعت خطة لـ...» أو «وضعت خطة لكي ...»', mode: 'Individual' }, { question: 'المشهد والزمن — استعمل «كان هناك ...» أو «لما ...»', mode: 'Individual' }, { question: 'بداية الفعل — أضف «بدأت ...»', mode: 'Individual' }, { question: 'النهاية — اختم بـ«واحدًا بعد واحد» أو «في النهاية ...»', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-6-plan-production', type: 'reflection', title: 'قُلْها: خطة وتسلسل بسيط', instructions: 'اكتب أو قل أربع جمل أو خمسًا عن خطة وضعتها.', question: 'هل تستطيع أن تحكي خطتك خطوة خطوة؟', correctAnswer: null, explanation: 'يمكن للإجابة الجيدة أن تستعمل «أردت أن ...»، و«وضعت خطة لـ...»، و«كان هناك ...»، و«لما ...»، و«بدأت ...»، وعبارة ترتيب مثل «واحدًا بعد واحد» أو «في النهاية».', feedback: { correct: 'اجعل التسلسل واضحًا واستعمل كل تركيب لوظيفته الحقيقية.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر ما أردته: «أردت أن ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر خطتك: «وضعت خطة لـ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — صف المشهد: «كان هناك ...» أو «لما ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر ما بدأت تفعله: «بدأت ...»', mode: 'Individual' }, { question: 'الجملة الخامسة — اذكر النهاية: «في النهاية ...» أو «واحدًا بعد واحد»', mode: 'Pair' }] }
   ]
 };
 
@@ -227,7 +227,7 @@ export const abrahamA2LanguageFocusExercisesArPart4: Record<number, Exercise[]> 
       type: 'matching',
       title: 'انظر: ماذا يطلب السؤال؟',
       instructions: 'صِل كل سؤال من الفصل بما يطلبه.',
-      question: 'كل سؤال يبدأ بكلمة مختلفة. ماذا يريد السائل؟',
+      question: 'ماذا يريد السائل في كل سؤال؟',
       matchingHeadings: { left: 'السؤال من الفصل', right: 'ماذا يطلب؟' },
       matchingPairs: [
         { left: 'مَنْ فَعَلَ هَذَا بِآلِهَتِنَا؟', right: 'يريد أن يعرف الشخص الفاعل.' },
@@ -289,7 +289,7 @@ export const abrahamA2LanguageFocusExercisesArPart4: Record<number, Exercise[]> 
         incorrect: 'ارجع إلى بداية الفصل وإلى جواب الناس بعد كلام إبراهيم. هل تحتاج إلى وقت، أم سبب، أم حرف؟',
       },
     },
-    { id: 'abraham-a2-ar-language-7-questioning-production', type: 'reflection', title: 'قُلْها: اسأل وفسّر', instructions: 'اكتب أو قل أربعًا أو خمس جمل قصيرة من مستوى A2 عن موقف ماضٍ بسيط. استعمل أربعة أنماط على الأقل من لغة الفصل، ولا تكرر جواب Quick Challenge.', question: 'هل تستطيع أن تسأل عن حدث، وتذكر ما تعرفه، وتعبّر عن القدرة، وتذكر سببًا؟', correctAnswer: null, explanation: 'يمكن للإجابة الجيدة أن تستعمل «في اليوم التالي ...»، و«من فعل ...؟»، و«أأنت ...؟»، و«أنا أعلم أن ...»، و«يستطيع/لا يستطيع أن ...»، و«لأن ...».', feedback: { correct: 'اجعل الأسئلة طبيعية، واستعمل كل تركيب لوظيفته الحقيقية.', incorrect: '' }, discussionPrompts: [{ question: 'الزمن — ابدأ بـ«في اليوم التالي ...» أو عبارة زمن ماضٍ مناسبة.', mode: 'Individual' }, { question: 'السؤال — استعمل «من فعل ...؟» أو سؤالًا بالهمزة.', mode: 'Individual' }, { question: 'المعرفة — أضف «أنا أعلم أن ...».', mode: 'Individual' }, { question: 'القدرة — استعمل «يستطيع أن ...» أو «لا يستطيع أن ...».', mode: 'Individual' }, { question: 'السبب — اختم فكرة بـ«لأن ...».', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-7-questioning-production', type: 'reflection', title: 'قُلْها: اسأل وفسّر', instructions: 'اكتب أو قل أربع جمل أو خمسًا عن لغز صغير في المدرسة.', question: 'ماذا حدث، ومن فعله؟', correctAnswer: null, explanation: 'يمكن للإجابة الجيدة أن تستعمل «في اليوم التالي ...»، و«من فعل ...؟»، و«أأنت ...؟»، و«أنا أعلم أن ...»، و«يستطيع/لا يستطيع أن ...»، و«لأن ...».', feedback: { correct: 'اجعل الأسئلة طبيعية، واستعمل كل تركيب لوظيفته الحقيقية.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر الوقت: «في اليوم التالي ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اسأل: «من فعل ...؟» أو «أَ...؟»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر ما تعرفه: «أنا أعلم أن ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر ما يستطيعه شيء: «يستطيع أن ...» أو «لا يستطيع أن ...»', mode: 'Individual' }, { question: 'الجملة الخامسة — اذكر السبب: «... لأن ...»', mode: 'Pair' }] }
   ]
 };
 
@@ -352,7 +352,7 @@ export const abrahamA2LanguageFocusExercisesArPart5: Record<number, Exercise[]> 
         incorrect: 'ابدأ بمن استعمل الآلة، ثم الآلة، ثم الهدف بعد «لِـ». ارجع إلى آخر الفصل.',
       },
     },
-    { id: 'abraham-a2-ar-language-8-production', type: 'reflection', title: 'قُلْها: موقف شديد وخطة', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع وصف الشدة، وعدم القدرة، والغاية، والتسلسل؟', correctAnswer: null, explanation: 'استعمل «جدًّا» أو «حتى إن»، و«لم يستطع»، ولام الغاية، و«أخيرًا».', feedback: { correct: 'اجعل الجمل مترابطة وقصيرة.', incorrect: '' }, discussionPrompts: [{ question: 'صف شيئًا شديدًا.', mode: 'Individual' }, { question: 'أضف جملة عن عدم القدرة.', mode: 'Individual' }, { question: 'اذكر غاية باستعمال «لـ...».', mode: 'Individual' }, { question: 'اختم بـ«أخيرًا».', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-8-production', type: 'reflection', title: 'قُلْها: موقف شديد وخطة', instructions: 'اكتب أو قل أربع جمل قصيرة عن يوم حارّ جدًّا.', question: 'ماذا لم تستطع أن تفعل، وماذا فعلت؟', correctAnswer: null, explanation: 'استعمل «جدًّا» أو «حتى إن»، و«لم يستطع»، ولام الغاية، و«أخيرًا».', feedback: { correct: 'اجعل الجمل مترابطة وقصيرة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — صف شيئًا شديدًا: «كَانَ ... جِدًّا، فَـ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر ما لم تستطعه: «لَمْ نَسْتَطِعْ أَنْ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر الغاية: «... لِـ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اختم: «وَأَخِيرًا، ...»', mode: 'Pair' }] }
   ]
 };
 
@@ -402,7 +402,7 @@ export const abrahamA2LanguageFocusExercisesArPart6: Record<number, Exercise[]> 
       type: 'choose-form',
       title: 'تدرّب: صار، لم، أيّ',
       instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما آخر الوصف بعد «صارت»؟ وما آخر الفعل بعد «لم»؟ وأيّ كلمة تنفي كل الأذى؟',
+      question: 'ما الكلمة الصحيحة في كل جملة عن النار؟',
       formChoices: [
         {
           sentence: 'فَصَارَتِ النَّارُ [choice] وَآمِنَةً لَهُ.',
@@ -427,6 +427,6 @@ export const abrahamA2LanguageFocusExercisesArPart6: Record<number, Exercise[]> 
         incorrect: 'ارجع إلى الفصل، وانظر إلى الكلمة بعد «صارت» وبعد «لم».',
       },
     },
-    { id: 'abraham-a2-ar-language-9-production', type: 'reflection', title: 'قُلْها: تغير مفاجئ ورد فعل', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 باستعمال لغة الفصل.', question: 'هل تستطيع وصف تغير، ووقت، ورد فعل، وشيء لم يتغير؟', correctAnswer: null, explanation: 'استعمل «صار»، وعبارة زمن، وفعلًا يصف رد فعل، ثم جملة منفية بـ«لم».', feedback: { correct: 'اجعل الجمل مترابطة.', incorrect: '' }, discussionPrompts: [{ question: 'صف تغيرًا باستعمال «صار».', mode: 'Individual' }, { question: 'أضف عبارة زمن.', mode: 'Individual' }, { question: 'صف رد فعل.', mode: 'Individual' }, { question: 'اختم بجملة منفية بـ«لم».', mode: 'Pair' }] }
+    { id: 'abraham-a2-ar-language-9-production', type: 'reflection', title: 'قُلْها: تغير مفاجئ ورد فعل', instructions: 'اكتب أو قل أربع جمل قصيرة عن تغيّر مفاجئ.', question: 'ماذا تغيّر، وماذا لم يتغيّر؟', correctAnswer: null, explanation: 'استعمل «صار»، وعبارة زمن، وفعلًا يصف رد فعل، ثم جملة منفية بـ«لم».', feedback: { correct: 'اجعل الجمل مترابطة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة الأولى — اذكر ما تغيّر: «صَارَ ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر الوقت: «وَفِي ...، ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر ما شعر به شخص: «دُهِشَ ... عِنْدَمَا ...»', mode: 'Individual' }, { question: 'الجملة الرابعة — اذكر ما لم يتغيّر: «وَلَكِنَّ ... لَمْ ...»', mode: 'Pair' }] }
   ]
 };

@@ -44,8 +44,8 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   // LOOK — notice what the book's language does, across chapters.
   {
     id: 'mecca-a2-language-review-1-habit-or-event', type: 'drag-drop', title: 'Look: Again and Again, or One Time?',
-    instructions: 'Read the sentences from the book. Did it happen again and again, or only one time? Put each sentence in the right group.',
-    question: 'Which words tell us that something happened again and again?',
+    instructions: 'Put each sentence in the right group.',
+    question: 'Did it happen again and again, or only one time?',
     dragDropGroups: [
       { group: 'Again and again (a habit)', items: ['Umayya was always very unkind to Bilal.', '… he often allowed only Bilal to stay with him.', 'Bilal used to start the morning call to prayer very early.'] },
       { group: 'One time (one event)', items: ['One day, Bilal heard people talking about a new Prophet …', 'In the end, he accepted Islam.', 'Before he died in 632, he gave his last speech.'] },
@@ -60,8 +60,8 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'mecca-a2-language-review-2-had-to-could-would', type: 'matching', title: 'Look: Had To, Could, Would',
     matchingHeadings: { left: 'From the book', right: 'Meaning' },
-    instructions: 'Read the sentences from Chapters 4, 5, 7 and 10. Match each one with its meaning.',
-    question: 'What do had to, could, could not and would mean in these sentences?',
+    instructions: 'Match each sentence from the book with its meaning.',
+    question: 'What do “had to”, “could” and “would” mean here?',
     matchingPairs: [
       { left: 'Bilal had to be patient and work hard every day.', right: 'There was no other way for him.' },
       { left: 'He could not sleep during the night.', right: 'Sleep was impossible for him.' },
@@ -79,8 +79,8 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-a2-language-review-3-if-sentences', type: 'multiple-choice', title: 'Look: If … Will, If … Would',
-    instructions: 'Read the two sentences from Chapters 8 and 10. Then choose the best answer.',
-    question: 'Chapter 8: “If you speak well of our idols, you will be free.” Chapter 10: “If you offered me only one piece of gold, I would still sell him to you.” Which sentence talks about a real possible future, a choice Bilal could really make?',
+    instructions: 'Read the two sentences. Then choose the best answer.',
+    question: 'Chapter 8: “If you speak well of our idols, you will be free.” Chapter 10: “If you offered me only one piece of gold, I would still sell him to you.” Which sentence is about a real choice Bilal could make?',
     options: ['the sentence from Chapter 8 (If … will …)', 'the sentence from Chapter 10 (If … would …)', 'both sentences'],
     correctAnswer: 0,
     explanation: '“If + present verb …, will + verb” talks about a real possible future: Umayya gave Bilal a real choice. “If + past verb …, would + verb” talks about an imagined situation: nobody offered one piece of gold. The real price was different.',
@@ -89,8 +89,8 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   // PRACTISE — use the forms in the book's own sentences.
   {
     id: 'mecca-a2-language-review-4-linking-ideas', type: 'word-bank', title: 'Practise: But, So, Because',
-    instructions: 'Complete the sentences from Chapters 1, 2, 5 and 13 with words from the bank. Two words are not needed.',
-    question: 'Which word gives a different idea, which gives a reason, and which gives a result?',
+    instructions: 'Complete the lines with the word bank. Two words are extra.',
+    question: 'Does each gap need a reason, a result or a different idea?',
     fillBlanksText: 'People in Mecca thought Bilal was just a poor slave. … [blank] Islam made him a free and great man. … Some rich people lent money to the poor and wanted more money back. … [blank], the rich became richer and the poor became poorer. … Umayya liked Bilal [blank] he was an obedient and hardworking servant. … He could not stay in Medina, [blank] he asked Abu Bakr …',
     wordBank: ['But', 'Because of this', 'because', 'so', 'because of', 'When'],
     correctAnswer: ['But', 'Because of this', 'because', 'so'],
@@ -100,7 +100,7 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'mecca-a2-language-review-5-person-to-verb', type: 'choose-form', title: 'Practise: Wanted Him To …, Let Him …',
     instructions: 'Choose the correct form to complete each sentence from the book.',
-    question: 'After “forced him”, “wanted Bilal” and “let him”, which form comes next?',
+    question: 'After “forced him”, “wanted Bilal” and “let him”: “to” or no “to”?',
     formChoices: [
       { sentence: 'He forced him [choice] at idols and worship them …', options: ['look', 'to look', 'looking'], answer: 1 },
       { sentence: 'Umayya wanted Bilal [choice] sorry and leave his new religion.', options: ['to feel', 'feel', 'feeling'], answer: 0 },
@@ -112,8 +112,8 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-a2-language-review-6-fix-the-past', type: 'error-correction', title: 'Practise: Fix One Mistake',
-    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the past verbs and the verb after “did not”?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the verbs in these past sentences?',
     errorItems: [
       { sentence: 'He leaved his room secretly and walked on a hidden path.', error: 'leaved', options: ['leave', 'left', 'leaving'], answer: 1 },
       { sentence: 'Umayya did not wanted to set Bilal free.', error: 'wanted', options: ['wants', 'wanting', 'want'], answer: 2 },
@@ -126,7 +126,7 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'mecca-a2-language-review-7-one-of-the-most', type: 'sentence-building', title: 'Practise: One of the Most …',
     instructions: 'Put the parts in order to make the sentence from Chapter 11.',
-    question: 'How does the book put Bilal in a top group of people?',
+    question: 'What did Bilal become after he was free?',
     sentenceChunks: ['After Bilal became free,', 'he became', 'one of', 'the Prophet’s most beloved and respected', 'friends.'],
     correctAnswer: null,
     explanation: '“One of the + most … / -est + plural noun” puts one person in a top group: “one of the Prophet’s most beloved and respected friends”. The noun at the end is plural. Chapter 3 uses the same pattern for Umayya: “one of the richest and most powerful leaders in Mecca”.',
@@ -135,8 +135,8 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'mecca-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A New Student',
-    instructions: 'This text is not from the book. Complete it with words you met in the book. Two words are not needed.',
-    question: 'Can you use the book’s language to write about a new student at your school?',
+    instructions: 'Complete this new text from the word bank. Two words are extra.',
+    question: 'Can you use the book’s words in a school story?',
     fillBlanksText: 'Deniz is a new student from another country. On her first day, she could not [blank] the lessons, and she was very quiet. Our teacher asked us [blank] help her. [blank], we sat with her at lunch every day. Now she is one of the happiest [blank] in our class.',
     wordBank: ['understand', 'to', 'Because of this', 'students', 'understood', 'student'],
     correctAnswer: ['understand', 'to', 'Because of this', 'students'],
@@ -145,16 +145,16 @@ export const meccaA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-a2-language-review-9-transfer', type: 'reflection', title: 'Use: Someone Helped Me',
-    instructions: 'Write four or five short sentences about a problem you had and a person who helped you: at home, at school or in your town. Say your sentences to a partner first.',
-    question: 'Can you use the language of the whole book to write about your own life?',
+    instructions: 'Tell a partner. Then write 4–5 sentences about someone who helped.',
+    question: 'Who helped you with a problem?',
     correctAnswer: null,
     explanation: 'Example: “Last year, I was often late for school. I had to take two buses, and I could not wake up early. My brother told me to go to bed at ten, and my mother let me use her alarm clock. Because of this, I am never late now. My mornings are easier than before.”',
     feedback: { correct: 'Check your sentences: often / used to, had to, could not, told / asked me to …, let me …, because / so / because of this, -er than.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — A habit in the past: “Last year, I was often …” or “I used to …”', mode: 'Individual' },
-      { question: 'Sentence 2 — The problem: “I had to … , and I could not …”', mode: 'Individual' },
-      { question: 'Sentence 3 — The help: “My … told me to … / asked me to … / let me …”', mode: 'Pair' },
-      { question: 'Sentence 4 — The result: “Because of this, … . Now my … is/are …-er than before.”', mode: 'Pair' },
+      { question: 'Sentence 1 — Give a past habit: “Last year, I was often …” or “I used to …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Give the problem: “I had to …, and I could not …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say who helped: “My … told me to … / asked me to … / let me …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Give the result: “Because of this, … . Now my … is/are …-er than before.”', mode: 'Pair' },
     ],
   },
 ];

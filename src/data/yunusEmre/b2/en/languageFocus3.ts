@@ -6,7 +6,7 @@ import type { Exercise } from '../../../../types';
  * the English chapter text; quoted verses are only read, sorted or matched.
  */
 const reflectionFeedback = { correct: 'Well done. Check that each target pattern carries a clear relationship in your paragraph.', incorrect: 'Return to the chapter sentences that use these patterns and model your own sentences on them.' };
-const refl = (id: string, title: string, q: string, p: string[], e: string): Exercise => ({ id, type: 'reflection', title, instructions: 'Produce a short analytical B2 response.', question: q, correctAnswer: null, explanation: e, feedback: reflectionFeedback, discussionPrompts: p.map(question => ({ question, mode: 'Individual' })) });
+const refl = (id: string, title: string, instructions: string, q: string, p: string[], e: string): Exercise => ({ id, type: 'reflection', title, instructions, question: q, correctAnswer: null, explanation: e, feedback: reflectionFeedback, discussionPrompts: p.map(question => ({ question, mode: 'Individual' })) });
 
 export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   9: [
@@ -14,8 +14,8 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yu-b2-lf9-1',
       type: 'drag-drop',
       title: 'Purpose, Conclusion or Reason?',
-      instructions: 'Read each sentence from Chapter 9. What does it do in the argument? Put it in the right group.',
-      question: 'How does the chapter connect reality, love and unity?',
+      instructions: 'Put each sentence from Chapter 9 in the right group.',
+      question: 'Does the sentence give a goal, a conclusion or a reason?',
       dragDropGroups: [
         {
           group: 'It states a goal or purpose',
@@ -63,8 +63,8 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yu-b2-lf9-2',
       type: 'word-bank',
       title: 'Where Love Stands',
-      instructions: 'Complete the lines from Chapter 9 with words from the bank. Some words are not needed.',
-      question: 'Which words complete the fixed expressions the writer uses to show how central love is?',
+      instructions: 'Complete the lines from Chapter 9 with words from the bank. Three words are not needed.',
+      question: 'Which small words complete these phrases about love?',
       fillBlanksText: 'Love, another important value that stands [blank] in Yunus Emre’s works, lies at the [blank] of his philosophy. … The love extends [blank] the love of Allah.',
       wordBank: ['out', 'core', 'to', 'up', 'off', 'on'],
       correctAnswer: ['out', 'core', 'to'],
@@ -74,7 +74,7 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: 'Read the third paragraph of Chapter 9 again. Which small word follows “stand” when something is especially noticeable, and which word follows “extends”?',
       },
     },
-    refl('yu-b2-lf9-3', 'Connect Ideas Across Paragraphs', 'Explain how the chapter moves from “everything is a reflection” to love, harmony and religious practice.', ['Use in this sense, therefore, and while or at the same time.'], 'B2 discourse work should connect the conceptual and practical layers.'),
+    refl('yu-b2-lf9-3', 'Connect Ideas Across Paragraphs', 'Write a short paragraph about love in Yunus’s thought.', 'How does the chapter move from creation to love and prayer?', ['Use “in this sense”, “therefore” and “while” or “at the same time”.'], 'B2 discourse work should connect the conceptual and practical layers.'),
   ],
   10: [
     {
@@ -106,8 +106,8 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yu-b2-lf10-2',
       type: 'error-correction',
       title: 'Describing and Clarifying',
-      instructions: 'Each sentence has one mistake. Tap the wrong word, then choose the correction.',
-      question: 'Which forms does the writer use to describe, clarify and draw conclusions?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct word.',
+      question: 'Can you fix the sentences about love and the heart?',
       errorItems: [
         {
           sentence: 'Therefore, for Yunus Emre the love and the oneness of Allah is the values at the foundation of moral behavior.',
@@ -135,14 +135,14 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: 'Check the first two paragraphs of Chapter 10: how many things are “the values”, what word follows “the place”, and which word follows “described breaking a heart”?',
       },
     },
-    refl('yu-b2-lf10-3', 'Clarify, Then Infer', 'Explain the heart metaphor and one moral consequence without presenting the metaphor as a literal anatomical claim.', ['Use is described as, that is, and for this reason.'], 'The task practices clarification and responsible inference.'),
+    refl('yu-b2-lf10-3', 'Clarify, Then Infer', 'Write a short paragraph about the heart as an image.', 'What does the heart image mean, and what lesson follows?', ['Use “is described as”, “that is” and “for this reason”. It is an image, not the body.'], 'The task practices clarification and responsible inference.'),
   ],
   11: [
     {
       id: 'yu-b2-lf11-1',
       type: 'drag-drop',
       title: 'Must and May',
-      instructions: 'Read each line from Chapter 11. What does “must” or “may” express? Put it in the right group.',
+      instructions: 'What does “must” or “may” mean? Put each line in the right group.',
       question: 'Does “must” always mean the same thing?',
       dragDropGroups: [
         {
@@ -189,8 +189,8 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yu-b2-lf11-2',
       type: 'transformation',
       title: 'Saying It Another Way',
-      instructions: 'Complete each sentence so that it keeps the meaning of the chapter sentence. Type only the missing words.',
-      question: 'Can you express purpose, comparison and role with different structures?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines from Chapter 11?',
       transformItems: [
         {
           source: '… he emphasizes that for a person to reach salvation, heart and reason must support one another.',
@@ -215,7 +215,7 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: 'Check the purpose, the comparison and the word form in each item. Then read the first and second paragraphs of Chapter 11 again.',
       },
     },
-    refl('yu-b2-lf11-3', 'Mortality as Advice', 'Explain how awareness of death can function as an advisor in the chapter’s moral framework.', ['Use must, can, and rather than. Write 5–6 sentences.'], 'The response should distinguish moral guidance from automatic cause.'),
+    refl('yu-b2-lf11-3', 'Mortality as Advice', 'Write 5–6 sentences about death as an advisor.', 'How can remembering death be good advice?', ['Use “must”, “can” and “rather than”.'], 'The response should distinguish moral guidance from automatic cause.'),
   ],
   12: [
     {
@@ -241,8 +241,8 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yu-b2-lf12-2',
       type: 'error-correction',
       title: 'Defining Morality Correctly',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Which forms follow “consists of”, and which verbs agree with their subjects?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix these sentences about good values?',
       errorItems: [
         {
           sentence: 'According to Yunus, morality consists of abandon behaviors unbecoming of humans.',
@@ -274,8 +274,8 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yu-b2-lf12-3',
       type: 'sentence-building',
       title: 'Two Functions at Once',
-      instructions: 'Put the chunks in order to build the chapter’s claim about Yunus Emre’s poems.',
-      question: 'How does the writer give the poems two functions in one sentence?',
+      instructions: 'Put the pieces in order to make the sentence about the poems.',
+      question: 'What two things are Yunus Emre’s poems?',
       sentenceChunks: ['Yunus Emre\'s poems', 'are not only', 'literary works', 'but also', 'a moral guide'],
       correctAnswer: [['Yunus Emre\'s poems', 'are not only', 'a moral guide', 'but also', 'literary works']],
       explanation: '“Not only … but also …” adds a second, often more surprising, quality to the first. The poems are literary works, and they also guide people’s behaviour. The two parts after “not only” and “but also” have the same form (two noun phrases).',
@@ -284,7 +284,7 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: 'Start with the subject and the verb. Then put “not only” before the first quality and “but also” before the second one.',
       },
     },
-    refl('yu-b2-lf12-4', 'Balanced Moral Paragraph', 'Write a paragraph contrasting two virtues with two harmful traits from the chapter.', ['Use such as, while, and not only ... but also.'], 'The production task organizes moral contrast without turning it into a vocabulary list.'),
+    refl('yu-b2-lf12-4', 'Balanced Moral Paragraph', 'Write a paragraph that compares two good values with two bad habits.', 'Which good values and bad habits does the chapter show?', ['Use “such as”, “while” and “not only … but also”.'], 'The production task organizes moral contrast without turning it into a vocabulary list.'),
   ],
 };
 
@@ -318,9 +318,9 @@ export const yunusB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     {
       id: 'yu-b2-lf13-2',
       type: 'transformation',
-      title: 'Stance and Addition',
-      instructions: 'Complete each sentence so that it keeps the meaning of the chapter sentence. Type only the missing words.',
-      question: 'How can you keep the writer’s certainty and the two parts of the legacy with different structures?',
+      title: 'His Lasting Legacy',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines about his legacy?',
       transformItems: [
         {
           source: 'It is obvious that Yunus Emre was not only a prominent figure in his own time but also left a lasting legacy.',
@@ -345,7 +345,7 @@ export const yunusB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Read the last paragraph of Chapter 13 again. Which one-word adverb means “it is obvious that”, and which structures add a second quality?',
       },
     },
-    refl('yu-b2-lf13-3', 'Final Synthesis', 'Write a 6–8 sentence conclusion explaining why Yunus Emre remains significant in this book.', ['Connect language/literature, historical context, Sûfî thought and moral guidance. Use both ... and plus one present-perfect form such as has continued to.'], 'The task asks learners to synthesize the whole book through B2 discourse rather than recall one fact.'),
+    refl('yu-b2-lf13-3', 'Final Synthesis', 'Write a 6–8 sentence conclusion about why Yunus Emre still matters.', 'Why does Yunus Emre still matter?', ['Cover language, history, Sûfî thought and morals. Use “both … and” and “has continued to”.'], 'The task asks learners to synthesize the whole book through B2 discourse rather than recall one fact.'),
   ],
 };
 
@@ -353,8 +353,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   // NOTICE — what the book's language does to a claim, across chapters.
   {
     id: 'yunus-b2-language-review-1-whose-claim', type: 'drag-drop', title: 'Notice: Whose Claim Is It?',
-    instructions: 'Read each sentence from the book. Who is responsible for the claim: historical sources, Yunus Emre, or the writer? Put it in the right group.',
-    question: 'How does the writer show whose claim each sentence makes?',
+    instructions: 'Whose claim is it? Put each sentence in the right group.',
+    question: 'Is it from sources, from Yunus Emre, or from the writer?',
     dragDropGroups: [
       { group: 'The writer reports what sources or scholars say', items: ['Some sources note that he received a good madrasa education …', 'According to the widely accepted view, he was born in 1240–41 and died in 1320–21.', 'Sources say: “The Mongols slaughtered the people of the great cities and towns …”'] },
       { group: 'The writer reports Yunus Emre’s own view', items: ['For, according to him, where love is absent, negative emotions such as anger, heartbreak and separation arise.', 'In his view, purity of the heart is essential for the proper performance of acts of worship.', 'According to Yunus, morality consists of abandoning behaviors unbecoming of humans.'] },
@@ -370,7 +370,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-2-concession', type: 'multiple-choice', title: 'Notice: Accept, Then Qualify',
-    instructions: 'Read the three sentences from Chapters 2, 6 and 8. Then choose what the linking word at the start of each one does.',
+    instructions: 'Read the three sentences. Then choose what the first word does.',
     question: 'Chapter 2: “However, his education was not limited to madrasas.” Chapter 6: “Nevertheless, these efforts were not enough.” Chapter 8: “Nonetheless, this multiple existence is nothing but manifestations of the names of Allah.” What do “However”, “Nevertheless” and “Nonetheless” do?',
     options: [
       'They show that the sentence before was wrong and should be forgotten.',
@@ -384,7 +384,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-3-perception-comparison', type: 'true-false', title: 'Notice: Seen, Not Literally True',
-    instructions: 'Read the two sentences from Chapters 5 and 6. Is the statement true or false?',
+    instructions: 'Read the two sentences. Is the statement true or false?',
     question: 'Chapter 5: “In the eyes of the Turkmen, these spiritual fathers were divine saviors.” Chapter 6: “The Seljuk sultans began to act almost as if they were Mongols’ civil officials.” Statement: In both sentences, the writer states as a literal fact what these people really were.',
     correctAnswer: false,
     explanation: 'False. “In the eyes of the Turkmen” limits the claim to how one group saw the fathers; the writer does not say that they really were saviors. “As if” + a past form (“were”) compares the sultans with officials and marks the comparison as not literally true, and “almost” softens it further. B2 writers use such frames to keep perception and interpretation apart from fact.',
@@ -393,8 +393,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   // BUILD — controlled practice in the book's own sentences.
   {
     id: 'yunus-b2-language-review-4-linking-relations', type: 'word-bank', title: 'Build: Contrast, Cause and Conclusion',
-    instructions: 'Complete the sentences from Chapters 1, 3, 6 and 9 with words from the bank. Two words are not needed.',
-    question: 'Which word contrasts, which gives a cause, which links a cause to its result, and which draws a conclusion?',
+    instructions: 'Complete the sentences from the book with words from the bank. Two words are not needed.',
+    question: 'Which words show a contrast, a cause, a result and a conclusion?',
     fillBlanksText: 'The outer part relates to the body’s acts of worship, [blank] the inner side handles the morality and intentions of the heart. … Anatolia faced political, economic, and social hardships [blank] these assaults. … The weakening of the Seljuk Sultanate of Konya [blank] the rapid emergence of small principalities in Anatolia. … Love for the created is an extension of the love of Allah. [blank], those who love the Creator love the created, …',
     wordBank: ['whereas', 'as a result of', 'led to', 'Therefore', 'because', 'despite'],
     correctAnswer: ['whereas', 'as a result of', 'led to', 'Therefore'],
@@ -403,8 +403,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-5-overclaims', type: 'error-correction', title: 'Build: No More Than the Book Says',
-    instructions: 'Each sentence claims more than the book does: one word or phrase makes it too strong. Tap it, then choose the version that keeps the writer’s claim.',
-    question: 'Can you remove the overclaim in each sentence?',
+    instructions: 'Each sentence says too much. Tap the strong words, then choose a more careful version.',
+    question: 'Can you make each sentence say only what the book says?',
     errorItems: [
       { sentence: 'If we take a closer look at this historical atmosphere, we can fully understand Anatolia …', error: 'fully', options: ['perfectly', 'better', 'finally'], answer: 1 },
       { sentence: 'All state income began to be sent to the Mongols every year.', error: 'All', options: ['The whole of', 'Every part of', 'A significant part of'], answer: 2 },
@@ -416,8 +416,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-6-nominalisation', type: 'transformation', title: 'Build: Events as Nouns, Events as Verbs',
-    instructions: 'Complete each sentence so that it keeps the meaning of the sentence from the book. Type only the missing word or words.',
-    question: 'Can you turn an event into a noun, and a noun back into a verb?',
+    instructions: 'Write the missing words. Keep the same meaning as the book.',
+    question: 'Can you change a verb into a noun, and a noun into a verb?',
     transformItems: [
       { source: 'He expanded the country’s borders and established a navy in the Mediterranean and Black Seas.', frame: 'His rule saw the [blank] of the country’s borders and the establishment of a navy in the Mediterranean and Black Seas.', answers: ['expansion', 'extension', 'widening'] },
       { source: 'Starting in the 13th century, the Turkmen population grew in Anatolia.', frame: 'Starting in the 13th century, there was a [blank] in the Turkmen population in Anatolia.', answers: ['growth', 'rise', 'increase', 'steady growth', 'steady rise', 'steady increase'] },
@@ -429,8 +429,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-7-two-sides', type: 'choose-form', title: 'Build: Two Sides in One Sentence',
-    instructions: 'Choose the word or words that complete each sentence from Chapters 2 and 10.',
-    question: 'Which pair of words adds a second side to the first?',
+    instructions: 'Choose the words that complete each sentence from the book.',
+    question: 'Which words add a second idea to the first?',
     formChoices: [
       { sentence: 'At that time, tekkes were not just institutions that offered Sûfî training [choice] they were also important civil society organizations …', options: ['but', 'and', 'so'], answer: 0 },
       { sentence: 'He also studied [choice] divine love and morals at the tekke, …', options: ['either', 'both', 'neither'], answer: 1 },
@@ -443,8 +443,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into new, everyday contexts.
   {
     id: 'yunus-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: The Old Covered Bazaar',
-    instructions: 'This paragraph is not from the book. Complete it with language you reviewed. Three words are not needed.',
-    question: 'Can you use the book’s language of sources, cause, concession and addition in a local history report?',
+    instructions: 'This paragraph is not from the book. Complete it with words from the bank. Three words are not needed.',
+    question: 'Which words fit this report about an old bazaar?',
     fillBlanksText: 'Our class studied the history of the old covered bazaar in the centre of our town. [blank] the town archive, it was built more than two hundred years ago. Some older residents say that it was once the busiest market in the region. In the 1990s, many of its shops closed [blank] the opening of large shopping centres. [blank], a group of craftspeople did not give up and kept their workshops open. Today the bazaar is not only a place for shopping [blank] a meeting point for families and visitors. It seems that caring for old places can protect them, although it cannot solve every problem.',
     wordBank: ['According to', 'as a result of', 'Nevertheless', 'but also', 'because', 'Although', 'and also'],
     correctAnswer: ['According to', 'as a result of', 'Nevertheless', 'but also'],
@@ -453,8 +453,8 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Careful Claims at School',
-    instructions: 'These sentences are from a school report and are not from the book. Each one claims too much. Complete the careful version. Type only the missing word or words.',
-    question: 'In a class survey, 21 of 28 students chose a spring trip. Can you rewrite each claim so that it matches the evidence?',
+    instructions: 'These school sentences say too much. Write the missing words to make them careful.',
+    question: 'In a class survey, 21 of 28 students chose a spring trip. What can we really say?',
     transformItems: [
       { source: 'Everyone in our class agrees that the school trip should be in spring.', frame: '[blank] students in our class think that the school trip should be in spring.', answers: ['Most', 'Many', 'Most of the', 'The majority of', 'The majority of the', 'Three quarters of the', 'Three-quarters of the'] },
       { source: 'The new sports hall caused all the problems in our school budget.', frame: 'The new sports hall [blank] to the problems in our school budget.', answers: ['contributed', 'has contributed', 'partly contributed', 'may have contributed', 'might have contributed', 'added'] },
@@ -466,16 +466,16 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b2-language-review-10-transfer', type: 'reflection', title: 'Use: Take a Position',
-    instructions: 'Write a short argued paragraph (6–8 sentences): Should every class in our school do a community project each term, for example helping older neighbours, cleaning a park or collecting books? State your position, give evidence with its source, and qualify your claim. Plan your sentences with a partner first.',
-    question: 'Can you use the language of the whole book to argue a position carefully?',
+    instructions: 'Write 6–8 sentences: should every class do a community project each term? Give your view carefully.',
+    question: 'Should every class do a community project each term?',
     correctAnswer: null,
     explanation: 'Example: “In my view, a community project each term would be not only useful for our town but also good for us as learners. According to our class survey, most students would like to take part. Some teachers note that students who help others often feel more responsible. Last year, our book collection led to a new reading corner in a village school. As a result of this project, many of us understood our neighbours better. Nevertheless, a project every term could take time away from exams. Therefore, I suggest short projects that are planned together with teachers. Our experience suggests that community work can support learning, although it cannot replace lessons.”',
     feedback: { correct: 'Check your paragraph: a clear position; not only … but also; a source (According to …, Some … note that …); cause and result (as a result of, led to, Therefore); a concession (Nevertheless, However); a careful claim (most, suggests, may) instead of an overclaim.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — Your position with two sides: “In my view, … would be not only … but also …”', mode: 'Individual' },
-      { question: 'Sentences 2–3 — Evidence with its source: “According to …, …” / “Some … note that …”', mode: 'Individual' },
-      { question: 'Sentences 4–5 — Cause and result: “… led to …” / “As a result of …, …” / “Therefore, …”', mode: 'Pair' },
-      { question: 'Sentences 6–8 — Qualify your claim: “Nevertheless, …” / “This suggests that …, although …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Give your view with two sides: “In my view, … would be not only … but also …”', mode: 'Individual' },
+      { question: 'Sentences 2–3 — Give evidence and its source: “According to …, …” / “Some … note that …”', mode: 'Individual' },
+      { question: 'Sentences 4–5 — Give a cause and a result: “… led to …” / “As a result of …, …” / “Therefore, …”', mode: 'Pair' },
+      { question: 'Sentences 6–8 — Make your claim careful: “Nevertheless, …” / “This suggests that …, although …”', mode: 'Pair' },
     ],
   },
 ];

@@ -28,7 +28,7 @@ export const meccaA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-3-place', type: 'choose-form', title: 'Place, Origin and Time',
       instructions: 'Choose the correct word for each sentence from Chapter 3.',
-      question: 'Which forms describe a place, where people came from and when something happened?',
+      question: 'What was Mecca a center for, and where were slaves from?',
       formChoices: [
         { sentence: 'Mecca was a center for [choice] and selling slaves.', options: ['buy', 'buying', 'to buy'], answer: 1 },
         { sentence: 'Many slaves [choice] different lands, especially from Abyssinia, lived in the homes of Meccan people.', options: ['from', 'in', 'at'], answer: 0 },
@@ -44,7 +44,7 @@ export const meccaA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-3-time', type: 'sentence-building', title: 'One of the Richest',
       instructions: 'Put the parts in order to make the sentence from Chapter 3.',
-      question: 'How does the chapter put Umayya in a top group?',
+      question: 'Who was Umayya in Mecca?',
       sentenceChunks: ['Umayya was', 'one of', 'the richest and most powerful', 'leaders', 'in Mecca.'],
       correctAnswer: null,
       explanation: '“One of the + superlative + plural noun” puts one person inside a top group: Umayya was one of the richest leaders. The noun after it is plural: “leaders”.',
@@ -55,13 +55,13 @@ export const meccaA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-3-production', type: 'reflection', title: 'Describe a Changing City',
-      instructions: 'Write or say four short A2 sentences about an imaginary city.', question: 'Can you describe place, change, comparison and intention?', correctAnswer: null,
+      instructions: 'Write or say four sentences about an imaginary city.', question: 'Can you describe a city that is changing?', correctAnswer: null,
       explanation: 'Use at least three Chapter 3 patterns.', feedback: { correct: 'Keep the four sentences connected.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use “was a center for ...”.', mode: 'Individual' },
-        { question: 'Add “were getting ...”.', mode: 'Individual' },
-        { question: 'Use one superlative.', mode: 'Individual' },
-        { question: 'Add “When ..., someone wanted ... to ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what the city is known for: “… was a center for …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Show a change: “… were getting …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what was the top one: “the biggest …” or “the most …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what someone wanted: “When …, … wanted … to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -71,8 +71,8 @@ export const meccaA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   4: [
     {
       id: 'mecca-a2-language-4-frequency', type: 'drag-drop', title: 'How Often, or What Job?',
-      instructions: 'Read each part of Chapter 4. Does it tell us how often or how long, or does it tell us Bilal’s job and duty? Put it in the right group.',
-      question: 'How does the chapter describe Bilal’s hard days?',
+      instructions: 'Put each part in the right group: how often, or his job.',
+      question: 'Does it say how often, or what Bilal had to do?',
       dragDropGroups: [
         { group: 'How often or how long', items: ['Umayya was always very unkind to Bilal.', 'His master was often angry and harsh.', '… worked under the hot sun in the desert of Mecca all day.'] },
         { group: 'Bilal’s job or duty', items: ['He looked after his master’s camels …', '… his job was to bring food and wine to his master.', 'Bilal had to be patient …'] },
@@ -89,8 +89,8 @@ export const meccaA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-4-purpose', type: 'error-correction', title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Can you fix a purpose phrase and a negative past sentence?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about how people treated Bilal?',
       errorItems: [
         { sentence: 'They called Bilal “the son of the black woman” for hurt his feelings.', error: 'for hurt', options: ['to hurt', 'for hurting to', 'hurted'], answer: 0 },
         { sentence: 'They did not respected him as a person.', error: 'respected', options: ['respecting', 'respect', 'respects'], answer: 1 },
@@ -120,13 +120,13 @@ export const meccaA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-4-production', type: 'reflection', title: 'Describe a Difficult Routine',
-      instructions: 'Write or say four short A2 sentences about a difficult daily routine.', question: 'Can you use frequency, duty, purpose and obligation?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a hard daily routine.', question: 'What does the person do every day?', correctAnswer: null,
       explanation: 'Use at least three Chapter 4 patterns.', feedback: { correct: 'Keep it short and clear.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use always or often.', mode: 'Individual' },
-        { question: 'Add “His/Her job was to ...”.', mode: 'Individual' },
-        { question: 'Add one purpose with “to + verb”.', mode: 'Individual' },
-        { question: 'Finish with “had to ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say how often: “always …” or “often …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give the job: “His/Her job was to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what for: “… to + verb”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what they had to do: “… had to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -148,7 +148,7 @@ export const meccaA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-5-reporting', type: 'matching', title: 'Bilal’s Situation',
       instructions: 'Match each phrase from Chapter 5 with its meaning.',
-      question: 'How does the chapter explain Bilal’s situation?',
+      question: 'What was Bilal’s life like?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'because he was an obedient and hardworking servant', right: 'the reason Umayya liked him' },
@@ -170,8 +170,8 @@ export const meccaA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-5-command', type: 'word-bank', title: 'The Prophet’s Message',
-      instructions: 'Complete the lines from Chapter 5 with words from the bank. Two words are not needed.',
-      question: 'Which words report the Prophet’s teaching and instruction?',
+      instructions: 'Complete the lines with the word bank. Two words are extra.',
+      question: 'What did the Prophet teach, and what did he tell people?',
       fillBlanksText: 'He taught that people [blank] be fair and equal. He told the people of Mecca [blank] stop [blank] idols.',
       wordBank: ['must', 'to', 'worshipping', 'worship', 'for'],
       correctAnswer: ['must', 'to', 'worshipping'],
@@ -183,13 +183,13 @@ export const meccaA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-5-production', type: 'reflection', title: 'Explain a New Message',
-      instructions: 'Write or say four short A2 sentences about a new rule or idea.', question: 'Can you give a reason, report a message and state an instruction?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a new rule or idea.', question: 'What is the new rule, and why?', correctAnswer: null,
       explanation: 'Use at least three Chapter 5 patterns.', feedback: { correct: 'Keep the message clear and simple.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Give a reason with because.', mode: 'Individual' },
-        { question: 'Use “had to ...” once.', mode: 'Individual' },
-        { question: 'Report an idea with “taught that ...”.', mode: 'Individual' },
-        { question: 'Report an instruction with “told ... to ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give a reason: “… because …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what people had to do: “… had to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what someone taught: “… taught that …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what someone told people: “… told us to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -216,7 +216,7 @@ export const meccaA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-6-sequence', type: 'choose-form', title: 'Thinking and Deciding',
       instructions: 'Choose the correct word or words for each sentence from Chapter 6.',
-      question: 'Which forms show thinking, a decision and a time?',
+      question: 'What did Bilal think about and decide?',
       formChoices: [
         { sentence: 'Bilal thought [choice] the message of Islam for many days.', options: ['at', 'about', 'to'], answer: 1 },
         { sentence: 'Bilal decided [choice] Abu Bakr, the close friend of Prophet Muhammad (pbuh).', options: ['to visit', 'visiting', 'visit'], answer: 0 },
@@ -243,13 +243,13 @@ export const meccaA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-6-production', type: 'reflection', title: 'Tell a Short Visit Story',
-      instructions: 'Write or say four short A2 sentences about a safe secret or surprise visit.', question: 'Can you use decision, sequence and time language?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a surprise visit.', question: 'Who did you visit, and what happened?', correctAnswer: null,
       explanation: 'Use at least three Chapter 6 patterns.', feedback: { correct: 'Keep the story in order.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Begin with “I decided to ...”.', mode: 'Individual' },
-        { question: 'Add one action done secretly.', mode: 'Individual' },
-        { question: 'Use “When I arrived ...”.', mode: 'Individual' },
-        { question: 'Finish with “I started to ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give a decision: “I decided to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what you did secretly: “I … secretly …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what you found: “When I arrived, …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what you started to do: “I started to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -259,8 +259,8 @@ export const meccaA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
   7: [
     {
       id: 'mecca-a2-language-7-belief-choice', type: 'sequencing', title: 'Bilal’s Big Decision',
-      instructions: 'Put the sentences from Chapter 7 in the order of the story. Use the time words to help you.',
-      question: 'How does the chapter move from new information to a final decision?',
+      instructions: 'Put the events from Chapter 7 in order. Time words can help.',
+      question: 'What happened before Bilal accepted Islam?',
       sequencingItems: [
         { id: '1', text: 'Abu Bakr told Bilal about the new religion.' },
         { id: '2', text: 'Bilal told Abu Bakr that he wanted to be a Muslim, too.' },
@@ -278,7 +278,7 @@ export const meccaA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-7-difficulty', type: 'choose-form', title: 'A Long Night',
       instructions: 'Choose the correct word for each sentence from Chapter 7.',
-      question: 'Which forms show what Bilal expected and what he could not do?',
+      question: 'What did Bilal know, and what could he not do?',
       formChoices: [
         { sentence: 'He knew that life [choice] be difficult after becoming a Muslim.', options: ['was being', 'would', 'was'], answer: 1 },
         { sentence: 'He could not [choice] during the night.', options: ['slept', 'sleeping', 'sleep'], answer: 2 },
@@ -293,7 +293,7 @@ export const meccaA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-language-7-result', type: 'matching', title: 'What Does It Mean?',
       instructions: 'Match each phrase from Chapter 7 with its meaning.',
-      question: 'How does the chapter describe feelings and choices?',
+      question: 'What do these phrases from Chapter 7 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'supported Bilal', right: 'helped him and stood by him' },
@@ -315,13 +315,13 @@ export const meccaA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-language-7-production', type: 'reflection', title: 'Describe a Difficult Choice',
-      instructions: 'Write or say four short A2 sentences about a difficult but safe choice.', question: 'Can you express belief, expected difficulty and a final decision?', correctAnswer: null,
+      instructions: 'Write or say four sentences about a hard choice.', question: 'What did you want, and what did you decide?', correctAnswer: null,
       explanation: 'Use at least three Chapter 7 patterns.', feedback: { correct: 'Keep the sequence clear.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Use “I wanted to ...”.', mode: 'Individual' },
-        { question: 'Add “I knew that ...”.', mode: 'Individual' },
-        { question: 'Use “would be ...”.', mode: 'Individual' },
-        { question: 'Finish with “In the end ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what you wanted: “I wanted to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what you knew: “I knew that …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what you expected: “… would be …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Give the end: “In the end, …”', mode: 'Pair' },
       ],
     },
   ],

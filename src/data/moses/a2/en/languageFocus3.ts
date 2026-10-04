@@ -11,7 +11,7 @@ export const mosesA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'It or There?',
       instructions: 'Choose the correct word for each sentence from Chapter 10.',
-      question: 'Which words describe the weather, the time and the empty road?',
+      question: 'Which words fit the weather, the time and the empty road?',
       formChoices: [
         { sentence: '[choice] was winter.', options: ['There', 'It'], answer: 1 },
         { sentence: '[choice] was nobody on the way.', options: ['There', 'It'], answer: 0 },
@@ -42,7 +42,7 @@ export const mosesA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       id: 'moses-a2-language-10-commands-change',
       type: 'matching',
       title: 'Words from the Mountain',
-      instructions: 'Find these words in Chapter 10. Match each one with its meaning.',
+      instructions: 'Match each word from Chapter 10 with its meaning.',
       question: 'What do these words from Chapter 10 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
@@ -65,7 +65,7 @@ export const mosesA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
         incorrect: 'Read Chapter 10 again. Find each word and look at the sentence around it.',
       },
     },
-    { id:'moses-a2-language-10-production', type:'reflection', title:'Use It: A Cold Evening', instructions:'Create a new A2 situation using Chapter 10 patterns.', question:'Can you describe changing conditions, give an instruction, state a plan and explain purpose?', correctAnswer:null, explanation:'Use getting + adjective, there is/are, an imperative, will + verb, and to + verb.', feedback:{correct:'Keep the situation new.',incorrect:''}, discussionPrompts:[{question:'Describe one changing condition.',mode:'Individual'},{question:'Give one instruction.',mode:'Pair'},{question:'State what you will do.',mode:'Individual'},{question:'Explain why with to + verb.',mode:'Individual'}] },
+    { id:'moses-a2-language-10-production', type:'reflection', title:'Use It: A Cold Evening', instructions: 'Say four short sentences about a cold evening.', question: 'What is changing, and what will you do?', correctAnswer:null, explanation:'Use getting + adjective, there is/are, an imperative, will + verb, and to + verb.', feedback:{correct:'Keep the situation new.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say how it is changing: “It was getting …”',mode:'Individual'},{ question: 'Sentence 2 — Tell someone what to do: “Put on …, please.”',mode:'Pair'},{ question: 'Sentence 3 — Say what you will do: “I will …”',mode:'Individual'},{ question: 'Sentence 4 — Say why: “We will … to …”',mode:'Individual'}] },
   ],
 };
 
@@ -75,8 +75,8 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       id: 'moses-a2-language-11-command-message',
       type: 'drag-drop',
       title: 'An Instruction or a Story Event?',
-      instructions: 'Read the parts of Chapter 11. Put each one in the right group.',
-      question: 'Which parts tell Moses what to do, and which parts tell us what happened?',
+      instructions: 'Put each part of Chapter 11 in the right group.',
+      question: 'Is it an order to Moses, or something that happened?',
       dragDropGroups: [
         {
           group: 'Allah tells Moses what to do',
@@ -119,8 +119,8 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       id: 'moses-a2-language-11-companion-purpose',
       type: 'word-bank',
       title: 'With Whom? Why?',
-      instructions: 'Complete the sentence from Chapter 11. Use the words in the box. Two words are not needed.',
-      question: 'Which word shows who went with Moses, and which word shows why he went?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Who went with Moses, and why did he go?',
       fillBlanksText: 'Moses (pbuh) took his brother Harun (pbuh) [blank] him and went to the palace [blank] give the message of Allah.',
       wordBank: ['with', 'to', 'for', 'and'],
       correctAnswer: ['with', 'to'],
@@ -130,7 +130,7 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
         incorrect: 'Read the end of Chapter 11 again. Before a base verb (give), use to for the purpose.',
       },
     },
-    { id:'moses-a2-language-11-production', type:'reflection', title:'Use It: A Small Mission', instructions:'Create a new A2 task using Chapter 11 patterns.', question:'Can you give an instruction, name a companion, explain purpose and describe a change?', correctAnswer:null, explanation:'Use an imperative, take + person + with, go to + place, to + verb, become, or make + person + complement.', feedback:{correct:'Use a new everyday task.',incorrect:''}, discussionPrompts:[{question:'Give one instruction.',mode:'Pair'},{question:'Say who goes with you.',mode:'Individual'},{question:'Explain purpose with to + verb.',mode:'Individual'},{question:'Describe one change.',mode:'Individual'}] },
+    { id:'moses-a2-language-11-production', type:'reflection', title:'Use It: A Small Mission', instructions: 'Say four short sentences about a small job you did.', question: 'Can you tell us about a small job?', correctAnswer:null, explanation:'Use an imperative, take + person + with, go to + place, to + verb, become, or make + person + complement.', feedback:{correct:'Use a new everyday task.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say what someone asked: “Take this … to …”',mode:'Pair'},{ question: 'Sentence 2 — Say who went with you: “I took … with me.”',mode:'Individual'},{ question: 'Sentence 3 — Say why you went: “We went to … to …”',mode:'Individual'},{ question: 'Sentence 4 — Say how things changed: “After that, I became …”',mode:'Individual'}] },
   ],
 };
 
@@ -140,7 +140,7 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       id: 'moses-a2-language-12-thought-decision',
       type: 'matching',
       title: 'Words in the Palace',
-      instructions: 'Find these words in Chapter 12. Match each one with its meaning.',
+      instructions: 'Match each word from Chapter 12 with its meaning.',
       question: 'What do these words from Chapter 12 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
@@ -166,7 +166,7 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Told, Decided To, Can',
       instructions: 'Choose the correct words for each sentence from Chapter 12.',
-      question: 'Which verb patterns complete the sentences?',
+      question: 'Which words fit the sentences?',
       formChoices: [
         { sentence: 'Moses (pbuh) [choice] him about Allah.', options: ['said', 'told', 'spoke'], answer: 1 },
         { sentence: 'Moses (pbuh) decided [choice] the miracles.', options: ['to show', 'showing', 'show'], answer: 0 },
@@ -198,7 +198,7 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
         incorrect: 'Read Chapter 12 again. Look for Then to find the second sign.',
       },
     },
-    { id:'moses-a2-language-12-production', type:'reflection', title:'Use It: Show and Explain', instructions:'Create a new A2 example using Chapter 12 patterns.', question:'Can you report a thought, describe a change, explain purpose and state ability?', correctAnswer:null, explanation:'Use thought + clause, decided to, turned into, then, to + verb or can + verb.', feedback:{correct:'Keep the example new and simple.',incorrect:''}, discussionPrompts:[{question:'Report one thought or decision.',mode:'Pair'},{question:'Describe a change.',mode:'Individual'},{question:'Explain one purpose.',mode:'Individual'},{question:'State one ability.',mode:'Individual'}] },
+    { id:'moses-a2-language-12-production', type:'reflection', title:'Use It: Show and Explain', instructions: 'Say four short sentences about something you can make.', question: 'Can you show someone how you make something?', correctAnswer:null, explanation:'Use thought + clause, decided to, turned into, then, to + verb or can + verb.', feedback:{correct:'Keep the example new and simple.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say what someone thought: “My friend thought …, so I decided to …”',mode:'Pair'},{ question: 'Sentence 2 — Say how it changed: “It turned into …”',mode:'Individual'},{ question: 'Sentence 3 — Say why you did it: “I … to …”',mode:'Individual'},{ question: 'Sentence 4 — Say what you can do now: “Now I can …”',mode:'Individual'}] },
   ],
 };
 
@@ -208,8 +208,8 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       id: 'moses-a2-language-13-arrival-action',
       type: 'drag-drop',
       title: 'Finished or in Progress?',
-      instructions: 'Read the parts of Chapter 13. Put each one in the right group.',
-      question: 'Which actions were finished, and which actions were in progress?',
+      instructions: 'Put each part of Chapter 13 in the right group.',
+      question: 'Did it happen once, or was it going on?',
       dragDropGroups: [
         {
           group: 'A finished action',
@@ -242,8 +242,8 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       id: 'moses-a2-language-13-command-change',
       type: 'error-correction',
       title: 'Fix the Past Verb and the Adverb',
-      instructions: 'Each sentence has one mistake. Tap the wrong word. Then choose the correct word.',
-      question: 'Can you fix an irregular past verb and a word that describes how?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct word.',
+      question: 'Can you fix the two words about Moses’s stick?',
       errorItems: [
         {
           sentence: 'Moses (pbuh) throwed down his stick and it turned into a huge snake.',
@@ -269,8 +269,8 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       id: 'moses-a2-language-13-reason-continuation',
       type: 'word-bank',
       title: 'Still, Because, Continued To',
-      instructions: 'Complete the sentences from Chapter 13. Use the words in the box. Two words are not needed.',
-      question: 'Which word shows no change, which gives a reason, and which follows continued?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Which word fits each gap?',
       fillBlanksText: 'The king [blank] did not believe in Allah, [blank] he was arrogant. … He continued [blank] harm Moses (pbuh) and his people day and night.',
       wordBank: ['still', 'because', 'to', 'already', 'for'],
       correctAnswer: ['still', 'because', 'to'],
@@ -280,14 +280,14 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
         incorrect: 'Read the end of Chapter 13 again. Did the king change after the miracle? Why not?',
       },
     },
-    { id:'moses-a2-language-13-production', type:'reflection', title:'Use It: A Small Demonstration', instructions:'Create a new A2 situation using Chapter 13 patterns.', question:'Can you describe arrival, give a command, describe change and explain continuation?', correctAnswer:null, explanation:'Use came with, was/were + -ing, an imperative, turned into, quickly, because, still or continued to.', feedback:{correct:'Use a new everyday situation.',incorrect:''}, discussionPrompts:[{question:'Say what someone came with or was holding.',mode:'Pair'},{question:'Give one command.',mode:'Individual'},{question:'Describe one change.',mode:'Individual'},{question:'Add still, because or continued to.',mode:'Individual'}] },
+    { id:'moses-a2-language-13-production', type:'reflection', title:'Use It: A Small Demonstration', instructions: 'Say four short sentences about a small experiment.', question: 'Can you say how something changed?', correctAnswer:null, explanation:'Use came with, was/were + -ing, an imperative, turned into, quickly, because, still or continued to.', feedback:{correct:'Use a new everyday situation.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say who came and what they had: “… came with …”',mode:'Pair'},{ question: 'Sentence 2 — Tell someone what to do: “Put …”',mode:'Individual'},{ question: 'Sentence 3 — Say how it changed: “After …, … turned into …”',mode:'Individual'},{ question: 'Sentence 4 — Say what still happens and why: “She/He still … because …”',mode:'Individual'}] },
   ],
   14: [
     {
       id: 'moses-a2-language-14-command-plan',
       type: 'true-false',
       title: 'A Plan for the Journey',
-      instructions: 'Read Moses’s words from Chapter 14. Is the sentence below true or false?',
+      instructions: 'Read Moses’s words. True or false?',
       question: 'Moses (pbuh) called his people and said, “Get ready for the journey. We are going away from Egypt.” — When Moses said this, the people were already far away from Egypt.',
       correctAnswer: false,
       explanation: 'Get ready for is an instruction to prepare. We are going away (are + -ing) talks about a plan for the near future. The people had not left yet; they left Egypt at night.',
@@ -300,7 +300,7 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       id: 'moses-a2-language-14-obligation-future',
       type: 'matching',
       title: 'Night Journey Words',
-      instructions: 'Find these words in Chapter 14. Match each one with its meaning.',
+      instructions: 'Match each word from Chapter 14 with its meaning.',
       question: 'What do these words from Chapter 14 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
@@ -328,7 +328,7 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Slowly Through the Night',
       instructions: 'Choose the correct words for each sentence from Chapter 14.',
-      question: 'Which words show ability, how something moved, and time?',
+      question: 'How did they move, and when did they arrive?',
       formChoices: [
         { sentence: 'The children and the old [choice] walk fast and got tired very quickly.', options: ['cannot', 'could not', 'did not could'], answer: 1 },
         { sentence: 'Their caravan moved [choice].', options: ['slow', 'slower', 'slowly'], answer: 2 },
@@ -341,7 +341,7 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
         incorrect: 'Read the end of Chapter 14 again. The story is in the past. Which word tells us how the caravan moved?',
       },
     },
-    { id:'moses-a2-language-14-production', type:'reflection', title:'Use It: Plan a Quiet Trip', instructions:'Create a new A2 journey using Chapter 14 patterns.', question:'Can you give an instruction, state an obligation, make a future plan and describe movement?', correctAnswer:null, explanation:'Use an imperative, get ready for, must, will, could not, slowly/quickly or when.', feedback:{correct:'Use a new travel situation.',incorrect:''}, discussionPrompts:[{question:'Give one preparation instruction.',mode:'Individual'},{question:'State one obligation with must.',mode:'Pair'},{question:'Say what will happen.',mode:'Individual'},{question:'Describe ability or speed.',mode:'Individual'}] },
+    { id:'moses-a2-language-14-production', type:'reflection', title:'Use It: Plan a Quiet Trip', instructions: 'Say four short sentences about a school trip.', question: 'What must everyone do on the trip?', correctAnswer:null, explanation:'Use an imperative, get ready for, must, will, could not, slowly/quickly or when.', feedback:{correct:'Use a new travel situation.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Tell people to get ready: “Get ready for …”',mode:'Individual'},{ question: 'Sentence 2 — Say what we must do: “We must …”',mode:'Pair'},{ question: 'Sentence 3 — Say what will happen: “We will …”',mode:'Individual'},{ question: 'Sentence 4 — Say who is slow: “… cannot walk fast, so …”',mode:'Individual'}] },
   ],
 };
 
@@ -351,7 +351,7 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       id: 'moses-a2-language-15-position-reassurance',
       type: 'word-bank',
       title: 'In Front Of, Behind, With',
-      instructions: 'Complete the sentences from Chapter 15. Use the words in the box. One word is not needed.',
+      instructions: 'Fill each gap from the word bank. One word is not needed.',
       question: 'Where were the sea and the army?',
       fillBlanksText: 'The sea was [blank] them. The king and his army were [blank] them. They had no place to escape. But Allah was [blank] them.',
       wordBank: ['in front of', 'behind', 'with', 'between'],
@@ -385,8 +385,8 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       id: 'moses-a2-language-15-safe-movement',
       type: 'error-correction',
       title: 'Fix the Verbs',
-      instructions: 'Each sentence has one mistake. Tap the wrong word. Then choose the correct word.',
-      question: 'Can you fix the verb after will and an irregular past verb?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct word.',
+      question: 'Can you fix the two verbs?',
       errorItems: [
         {
           sentence: '“Calm down! Allah … will helps us go to a safe place.”',
@@ -408,7 +408,7 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
         incorrect: 'Read Chapter 15 again. After will, the verb does not change. Catch has an irregular past.',
       },
     },
-    { id:'moses-a2-language-15-production', type:'reflection', title:'Use It: Find a Safe Route', instructions:'Create a new A2 route situation using Chapter 15 patterns.', question:'Can you describe positions, reassure someone, describe a change and explain safe movement?', correctAnswer:null, explanation:'Use in front of, behind, an imperative, will, became, could, between and safely.', feedback:{correct:'Use a new everyday route.',incorrect:''}, discussionPrompts:[{question:'Describe what is in front of or behind the group.',mode:'Individual'},{question:'Give reassurance with an instruction and will.',mode:'Pair'},{question:'Describe one change.',mode:'Individual'},{question:'Explain a safe route with between.',mode:'Individual'}] },
+    { id:'moses-a2-language-15-production', type:'reflection', title:'Use It: Find a Safe Route', instructions: 'Say four short sentences about a busy street.', question: 'Can you find a safe way through a busy place?', correctAnswer:null, explanation:'Use in front of, behind, an imperative, will, became, could, between and safely.', feedback:{correct:'Use a new everyday route.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say what is in front and behind: “… was in front of us, and … was behind us.”',mode:'Individual'},{ question: 'Sentence 2 — Help someone feel calm: “Calm down! … We will …”',mode:'Pair'},{ question: 'Sentence 3 — Say how something changed: “The … became …”',mode:'Individual'},{ question: 'Sentence 4 — Say the safe way: “We walked between …”',mode:'Individual'}] },
   ],
   16: [
     {
@@ -429,8 +429,8 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       id: 'moses-a2-language-16-claim-command-result',
       type: 'error-correction',
       title: 'Said To, Told … To',
-      instructions: 'Each sentence has one mistake. Tap the wrong words. Then choose the correct words.',
-      question: 'Can you fix say to + person and tell + person/thing + to + verb?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix what the king said?',
       errorItems: [
         {
           sentence: 'The king said his soldiers, “Look! …”',
@@ -456,8 +456,8 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       id: 'moses-a2-language-16-general-lessons',
       type: 'matching',
       title: 'Place and Time Words',
-      instructions: 'Find these words in Chapter 16. Match each one with its meaning.',
-      question: 'What do these place and time words from Chapter 16 mean?',
+      instructions: 'Match each word from Chapter 16 with its meaning.',
+      question: 'What do these words from Chapter 16 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'very close behind', right: 'only a short distance after' },
@@ -479,6 +479,6 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
         incorrect: 'Read Chapter 16 again. Find each word and look at the sentence around it.',
       },
     },
-    { id:'moses-a2-language-16-production', type:'reflection', title:'Use It: Explain a Simple Lesson', instructions:'Think of a short everyday story and use Chapter 16 patterns.', question:'Can you locate an event, report an instruction, give a result and express a lesson?', correctAnswer:null, explanation:'Use in the middle of, when, in the end, said to/told + person + to, It tells us that, or It shows that.', feedback:{correct:'Use a new everyday story.',incorrect:''}, discussionPrompts:[{question:'Give place and time.',mode:'Individual'},{question:'Report one instruction.',mode:'Pair'},{question:'State the result.',mode:'Individual'},{question:'Finish with one lesson frame.',mode:'Individual'}] },
+    { id:'moses-a2-language-16-production', type:'reflection', title:'Use It: Explain a Simple Lesson', instructions: 'Say four short sentences about a small job you did together.', question: 'What happened, and what does it teach us?', correctAnswer:null, explanation:'Use in the middle of, when, in the end, said to/told + person + to, It tells us that, or It shows that.', feedback:{correct:'Use a new everyday story.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say where and when: “Last …, we were at …”',mode:'Individual'},{ question: 'Sentence 2 — Say what someone told you to do: “… told us to …”',mode:'Pair'},{ question: 'Sentence 3 — Say how it ended: “In the end, …”',mode:'Individual'},{ question: 'Sentence 4 — Give the lesson: “This story tells us that …”',mode:'Individual'}] },
   ],
 };

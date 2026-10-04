@@ -15,7 +15,7 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-13-purpose-chain',
       type: 'true-false',
       title: 'Fear or Certainty?',
-      instructions: 'Read the line from Surah Maryam quoted in Chapter 13. Is the statement true or false?',
+      instructions: 'Read the line from Surah Maryam in Chapter 13. Is the statement true or false?',
       question: 'In “O my father, I fear that a punishment from the Most Beneficent (Allah) will afflict you …”, Abraham presents the punishment as certain.',
       correctAnswer: false,
       explanation: '“I fear that …” frames the future as a worry, not as a fact. Abraham speaks with concern for his father: he warns him about a possible consequence instead of announcing a certain one. This fits the chapter’s picture of a kind, respectful son.',
@@ -29,7 +29,7 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Purpose and Reason',
       instructions: 'Rewrite each sentence from Chapter 13 with the words given. Keep the meaning.',
-      question: 'How can purpose, reason and hope be expressed in more compact ways?',
+      question: 'How else can we say these lines from Chapter 13?',
       transformItems: [
         {
           source: 'Abraham (pbuh) felt that it was his duty as a good son to advise his father against this evil so that his father could be saved from Allah\'s punishment.',
@@ -59,7 +59,7 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Asking Without Offending',
       instructions: 'Choose the correct form to complete each part of Chapter 13.',
-      question: 'Which forms does the narrator use to report Abraham’s careful question?',
+      question: 'Which words fit when Abraham kindly asks his father?',
       formChoices: [
         {
           options: ['or', 'nor', 'neither'],
@@ -88,8 +88,8 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-13-production',
       type: 'reflection',
       title: 'Design a Respectful Persuasion Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which one person tries to persuade someone they respect without humiliating them. Include one purpose clause with “so that”, one connector such as “in that way” to explain an interpersonal effect, one parallel negative structure such as “neither... nor...”, one invitation or recommendation, and one carefully framed possible consequence using language such as “I’m concerned that...” or “I fear that...”. Do not retell the Abraham story.',
-      question: 'Can you organise B2 persuasion so that purpose, evidence, respect and consequence work together coherently?',
+      instructions: 'Write or say 8–10 sentences about kindly persuading someone you respect.',
+      question: 'How can you persuade someone without hurting them?',
       correctAnswer: null,
       explanation: 'A strong response should use language choices to manage both argument and relationship, rather than producing isolated grammar examples.',
       feedback: {
@@ -97,13 +97,12 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Purpose — What change does the speaker hope for, and why?', mode: 'Individual' },
-        { question: 'Relationship — Which wording avoids embarrassment or attack?', mode: 'Individual' },
-        {
-          question: 'Evidence — What two or three parallel limitations or reasons strengthen the case?',
+        { question: 'Step 1 — Say what you hope for: “… so that she can …”', mode: 'Individual' },
+        { question: 'Step 2 — Choose kind words: “Instead, she will say …; in that way, …”', mode: 'Individual' },
+        { question: 'Step 3 — Give reasons in a row: “She can neither … nor …”',
           mode: 'Pair',
         },
-        { question: 'Consequence — How can you frame risk as concern rather than aggression?', mode: 'Pair' },
+        { question: 'Step 4 — Show care, not anger: “I’m worried that …”', mode: 'Pair' },
       ],
     },
   ],
@@ -116,8 +115,8 @@ export const abrahamB2LanguageFocusChapter14: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-14-condition-threat',
       type: 'drag-drop',
       title: 'Threat or Promise?',
-      instructions: 'Sort the lines from the conversation in Chapter 14. Is it a threat or demand, or a promise or hope?',
-      question: 'How can the same future form, will, carry a threat or a calm commitment?',
+      instructions: 'Is it a threat or a promise? Put each line from Chapter 14 in the right group.',
+      question: 'How can “will” carry a threat or a calm promise?',
       dragDropGroups: [
         {
           group: 'Threat or demand (the father)',
@@ -202,8 +201,8 @@ export const abrahamB2LanguageFocusChapter14: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-14-production',
       type: 'reflection',
       title: 'Build a Risk-Aware Reasoning Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which someone continues a difficult course of action despite possible consequences. Include one condition→consequence sentence, two different future commitments using “will”, one cautious possibility with “might”, and one analogy introduced with “just as” that explains why questioning or investigation is useful. End by stating the purpose of the inquiry with “to uncover...”, “to reveal...”, or an equivalent expression. Do not retell the Abraham story.',
-      question: 'Can you combine condition, stance, future commitment, risk and analogy into one coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about someone who keeps going despite a risk.',
+      question: 'What does the person do, and what might happen?',
       correctAnswer: null,
       explanation: 'A strong response should show why the person acts, what risk remains possible, what they commit to doing, and how the analogy clarifies the reasoning process.',
       feedback: {
@@ -211,10 +210,10 @@ export const abrahamB2LanguageFocusChapter14: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Condition — What future consequence depends on a present choice?', mode: 'Individual' },
-        { question: 'Commitment — Which actions will the person deliberately take?', mode: 'Individual' },
-        { question: 'Risk — What might still happen even if the person continues?', mode: 'Pair' },
-        { question: 'Analogy — What familiar role or process explains the value of investigation?', mode: 'Pair' },
+        { question: 'Step 1 — Give a condition: “If …, … will …”', mode: 'Individual' },
+        { question: 'Step 2 — Say what the person will do: “She will … . She will also …”', mode: 'Individual' },
+        { question: 'Step 3 — Name a risk: “She might …”', mode: 'Pair' },
+        { question: 'Step 4 — Compare: “Just as a doctor …, … to uncover …”', mode: 'Pair' },
       ],
     },
   ],
@@ -227,7 +226,7 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-15-rhetorical-questions',
       type: 'drag-drop',
       title: 'Testing or Defending?',
-      instructions: 'Sort the lines from Chapter 15. Is Abraham testing the idols, or are the people defending their belief?',
+      instructions: 'Sort the lines from Chapter 15: Abraham testing the idols, or the people defending them.',
       question: 'How do the two sides use questions differently?',
       dragDropGroups: [
         {
@@ -270,7 +269,7 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Manner and Purpose',
       instructions: 'Rewrite each sentence from Chapter 15 with the words given. Keep the meaning.',
-      question: 'How can the manner and the purpose of an action be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 15?',
       transformItems: [
         {
           source: 'Abraham (pbuh) showed no fear as he replied: …',
@@ -300,8 +299,8 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-15-definition-contrast',
       type: 'error-correction',
       title: 'Reporting the Argument',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the verb forms that report the people’s argument and Abraham’s answer?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the report of the argument?',
       errorItems: [
         {
           options: ['had worshipped', 'were worshipped', 'worship'],
@@ -333,8 +332,8 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-15-production',
       type: 'reflection',
       title: 'Build an Evidence-vs-Tradition Argument',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story belief, habit, rule or claim that people defend mainly because “it has always been done this way.” Include two rhetorical questions that test the claim, one sentence using “although” or “even though” to acknowledge an existing fact, one “but” contrast between evidence and inherited practice, one relative clause that defines a stronger alternative, and one observable test introduced with “see whether...” or “test whether...”. End with a balanced conclusion rather than an insult. Do not retell the Abraham story.',
-      question: 'Can you turn questions, contrast, definition and an observable test into one coherent B2 argument?',
+      instructions: 'Write or say 8–10 sentences about a rule people keep only because it is old.',
+      question: 'Does the old rule really work?',
       correctAnswer: null,
       explanation: 'A strong response should acknowledge what people believe, distinguish inherited practice from evidence, test the claim through questions, define an alternative clearly, and conclude in a controlled way.',
       feedback: {
@@ -342,13 +341,12 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Questions — What two questions reveal whether the claim actually works?', mode: 'Individual' },
-        {
-          question: 'Contrast — What fact is acknowledged, and what inherited practice conflicts with it?',
+        { question: 'Step 1 — Ask two testing questions: “Does … help …? Does it …?”', mode: 'Individual' },
+        { question: 'Step 2 — Admit a fact: “Although …, the rule has never changed.”',
           mode: 'Individual',
         },
-        { question: 'Definition — What stronger alternative can you define with a relative clause?', mode: 'Pair' },
-        { question: 'Test — What observable result would support or weaken the claim?', mode: 'Pair' },
+        { question: 'Step 3 — Describe a better choice: “A better choice is … which …”', mode: 'Pair' },
+        { question: 'Step 4 — Suggest a test: “We could test whether …”', mode: 'Pair' },
       ],
     },
   ],
@@ -361,8 +359,8 @@ export const abrahamB2LanguageFocusChapter16: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-16-dialogue-structure',
       type: 'matching',
       title: 'What Abraham Says About His Lord',
-      instructions: 'Match each line from the verses in Chapter 16 with what it says about the Lord.',
-      question: 'How does the chain of “He who …” lines build a picture of the Lord?',
+      instructions: 'Match each line from the verses with what it says about the Lord.',
+      question: 'What do the “He who …” lines say about the Lord?',
       matchingHeadings: { left: 'From the verses', right: 'What it says about the Lord' },
       matchingPairs: [
         { left: 'He who created me, and guides me.', right: 'the Creator, Who also shows the way' },
@@ -391,8 +389,8 @@ export const abrahamB2LanguageFocusChapter16: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-16-relative-chain',
       type: 'transformation',
       title: 'Changing the Focus',
-      instructions: 'Rewrite each part of the last sentence of Chapter 16 with the words given. Keep the meaning.',
-      question: 'How does the sentence change when Allah is the subject, or when “provide” takes a different pattern?',
+      instructions: 'Rewrite each part of the last sentence of Chapter 16. Keep the meaning.',
+      question: 'How else can we say the last sentence of Chapter 16?',
       transformItems: [
         {
           source: 'Idol worship is hated by Allah, as Allah is the Lord of the universe …',
@@ -435,8 +433,8 @@ export const abrahamB2LanguageFocusChapter16: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-16-production',
       type: 'reflection',
       title: 'Build a Cohesive Evaluation Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story practice, policy, technology or social habit. Begin with one question that identifies the practice, add two questions that test it through observable effects, include one sentence reporting an inherited or conventional justification, then reframe the issue with “Have you considered...?” or a natural equivalent. Build a three-part relative-clause chain using “which/that/who” to define a stronger alternative. Include one clear exception with “except” or “but not...”, and one local stance marker such as “I hope”, “I expect”, or “it seems”. End with a reasoned conclusion. Do not retell the Abraham story.',
-      question: 'Can you combine dialogue moves, relative-clause cohesion, exception and stance in one controlled B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a school habit that may need to change.',
+      question: 'Is there a better way to do it?',
       correctAnswer: null,
       explanation: 'A strong response should move logically from questioning to evaluation, use repeated clause structure for cohesion, and keep strong claims separate from local stance markers.',
       feedback: {
@@ -444,17 +442,14 @@ export const abrahamB2LanguageFocusChapter16: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Testing — What two observable effects could you question?', mode: 'Individual' },
-        {
-          question: 'Convention — What inherited or conventional justification could someone give?',
+        { question: 'Step 1 — Ask two questions about its effects: “Does … help …?”', mode: 'Individual' },
+        { question: 'Step 2 — Give the old reason: “We have always done it this way.”',
           mode: 'Individual',
         },
-        {
-          question: 'Cohesion — What three linked relative clauses can define the stronger alternative?',
+        { question: 'Step 3 — Describe a better way: “… which …, that …, and which …”',
           mode: 'Pair',
         },
-        {
-          question: 'Stance — Which statement is firm, and which one should be marked as hope, expectation or interpretation?',
+        { question: 'Step 4 — Separate facts from hopes: “I expect that …”',
           mode: 'Individual',
         },
       ],
@@ -488,8 +483,8 @@ export const abrahamB2LanguageFocusChapter17: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-17-sequence',
       type: 'transformation',
       title: 'Back to Abraham’s Thoughts',
-      instructions: 'Rewrite each reported idea from Chapter 17 as Abraham’s own thought at that moment.',
-      question: 'Which forms does the narrator use for a future event seen from the past?',
+      instructions: 'Write each idea from Chapter 17 as Abraham’s own thought.',
+      question: 'What did Abraham think would happen?',
       transformItems: [
         {
           source: 'He knew that there was going to be a great celebration outside the town.',
@@ -513,8 +508,8 @@ export const abrahamB2LanguageFocusChapter17: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-17-rhetorical-question',
       type: 'error-correction',
       title: 'Timing the Plan',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the forms that show a decision, a waiting point and an earlier event?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Abraham’s plan?',
       errorItems: [
         {
           options: ['to do', 'do', 'done'],
@@ -546,8 +541,8 @@ export const abrahamB2LanguageFocusChapter17: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-17-production',
       type: 'reflection',
       title: 'Write a Plan-and-Test Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which someone notices resistance to an argument, forms a plan, waits for the right condition, and then uses an observable test to reveal a weakness in an idea, product or policy. Use one contrast marker such as “however”, one decision phrase, one purpose clause with “to...”, one future-from-the-past form such as “was/were going to” or “would”, one “until” clause, one past-perfect sentence to mark an earlier completed event, and one rhetorical or ironic question. End by explaining what the test revealed. Do not retell the Abraham story.',
-      question: 'Can you control viewpoint, sequencing, purpose and rhetorical testing in one coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about someone who plans a test to show a problem.',
+      question: 'What is the plan, and what does the test show?',
       correctAnswer: null,
       explanation: 'A strong response should make the time relations and the purpose of each action clear while using the final question as part of the argument rather than as a request for unknown information.',
       feedback: {
@@ -555,13 +550,12 @@ export const abrahamB2LanguageFocusChapter17: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Resistance — What position or habit continues despite earlier reasoning?', mode: 'Individual' },
-        {
-          question: 'Plan — What future event was already known or expected from the earlier viewpoint?',
+        { question: 'Step 1 — Show that people will not listen: “Even after …, many people kept saying …”', mode: 'Individual' },
+        { question: 'Step 2 — Say what was going to happen: “She knew that … was going to …”',
           mode: 'Individual',
         },
-        { question: 'Timing — What had already happened before the key action began?', mode: 'Pair' },
-        { question: 'Test — What question can expose the weakness through an observable result?', mode: 'Pair' },
+        { question: 'Step 3 — Say what happened earlier: “Before …, she had already …”', mode: 'Pair' },
+        { question: 'Step 4 — Ask a testing question: “If it is so …, why …?”', mode: 'Pair' },
       ],
     },
   ],
@@ -588,7 +582,7 @@ export const abrahamB2LanguageFocusChapter18: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Exception and Completion',
       instructions: 'Rewrite each part of Chapter 18 with the words given. Keep the meaning.',
-      question: 'How can an exception and a completed action be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 18?',
       transformItems: [
         {
           source: 'He destroyed them all except one.',
@@ -626,8 +620,8 @@ export const abrahamB2LanguageFocusChapter18: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-18-evidence-shift',
       type: 'word-bank',
       title: 'After the People Returned',
-      instructions: 'Complete the lines from Chapter 18 with words from the bank. Three options are not needed.',
-      question: 'Which forms tell a deliberate action, a reaction and an earlier deed?',
+      instructions: 'Complete the lines from Chapter 18 with words from the bank. Three words are not needed.',
+      question: 'What did Abraham do, and how did the people react?',
       fillBlanksText: 'On its neck, he [blank] the axe. … When the people returned, they were shocked [blank] their gods smashed into pieces, spread all over the temple. They tried to find out who [blank] that to their idols …',
       wordBank: ['hung', 'to see', 'had done', 'hanged', 'for seeing', 'has done'],
       correctAnswer: ['hung', 'to see', 'had done'],
@@ -641,8 +635,8 @@ export const abrahamB2LanguageFocusChapter18: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-18-production',
       type: 'reflection',
       title: 'Write an Evidence-Building Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which someone challenges an ineffective claim, uses a rhetorical question, gives the reason for the question with “for” or another natural reason connector, creates one deliberate exception with “except”, completes an action before a later reaction using the past perfect, and then shifts from narrative summary to a short explicitly attributed quotation or piece of evidence. End by explaining what the evidence shows. Do not retell the Abraham story.',
-      question: 'Can you combine rhetorical testing, exception, completed purpose and source-marked evidence in one coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about someone who tests a false claim in an advert.',
+      question: 'How can you show that a claim is false?',
       correctAnswer: null,
       explanation: 'A strong response should make each discourse move purposeful: the rhetorical question tests a claim, the reason explains the test, the exception matters to the logic, the past perfect clarifies sequence, and the quotation is explicitly sourced rather than blended into the narrator’s voice.',
       feedback: {
@@ -650,17 +644,14 @@ export const abrahamB2LanguageFocusChapter18: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Test — What rhetorical question can expose a weakness without genuinely asking for unknown information?',
+        { question: 'Step 1 — Ask a question you know the answer to: “Has anyone ever …?”',
           mode: 'Individual',
         },
-        { question: 'Reason — What connector will explain why that question is being asked?', mode: 'Individual' },
-        {
-          question: 'Exception — What single item or case will you exclude, and why does that exception matter?',
+        { question: 'Step 2 — Give the reason for asking: “She asks this, for …”', mode: 'Individual' },
+        { question: 'Step 3 — Add one exception: “She tested every … except one, because …”',
           mode: 'Pair',
         },
-        {
-          question: 'Evidence — How will you mark the source of the final quotation or evidence explicitly?',
+        { question: 'Step 4 — Name the source: “According to a report by …, …”',
           mode: 'Pair',
         },
       ],

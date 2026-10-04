@@ -15,7 +15,7 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf1-1',
       type: 'multiple-choice',
       title: 'لاحظ: «بَيْنَمَا» بين جانبين',
-      instructions: 'اقرأ الجملة من الفصل الأول، ثم اختر الوصف الأدق لوظيفة «بَيْنَمَا».',
+      instructions: 'اقرأ الجملة من الفصل الأول، ثم اختر ما تفعله «بَيْنَمَا».',
       question: '«يَتَعَلَّقُ الْجَانِبُ الظَّاهِرُ بِأَعْمَالِ الْعِبَادَةِ الَّتِي يُؤَدِّيهَا الْجَسَدُ، بَيْنَمَا يَتَوَلَّى الْجَانِبُ الْبَاطِنُ تَهْذِيبَ أَخْلَاقِ الْقَلْبِ وَنِيَّاتِهِ.» ماذا تفعل «بَيْنَمَا» في هذه الجملة؟',
       options: [
         'تبيّن أن الجانب الباطن يأتي زمنيًّا بعد الانتهاء من الجانب الظاهر.',
@@ -33,8 +33,8 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf1-2',
       type: 'transformation',
       title: 'ابنِ: الإضافة والتقييد بصياغة أخرى',
-      instructions: 'اقرأ العبارة من الفصل، ثم اكتب الكلمة الناقصة لتعبّر عن المعنى نفسه بتركيب آخر.',
-      question: 'كيف نعيد صياغة الإضافة («بِالْإِضَافَةِ إِلَى»، «كَمَا») والتقييد («دُونَ») دون أن يتغيّر المعنى؟',
+      instructions: 'اكتب الكلمة الناقصة. حافظ على المعنى نفسه.',
+      question: 'كيف نقول هذه العبارات بطريقة أخرى؟',
       transformItems: [
         {
           source: 'كَانَ يُونُسُ إِمْرَه شَاعِرًا أَنَاضُولِيًّا عَظِيمًا وَصُوفِيًّا مُسْلِمًا.',
@@ -64,7 +64,7 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'error-correction',
       title: 'ابنِ: الإعراب والمطابقة في جمل الوصف',
       instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'هل جاء كل اسم بالحالة الإعرابية الصحيحة؟ وهل يطابق الاسمُ الموصول ما يصفه؟',
+      question: 'ما الشكل الصحيح للكلمة في كل جملة؟',
       errorItems: [
         {
           sentence: 'كَمَا كَانَ أَحَدُ الشُّعَرَاءِ الْأَتْرَاكِ الَّذِينَ لَعِبُوا دَوْرًا مِحْوَرِيًّا فِي تَطَوُّرِ التُّرْكِيَّةِ الْأَنَاضُولِيَّةِ الْقَدِيمَةِ.',
@@ -96,13 +96,13 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf1-4',
       type: 'reflection',
       title: 'بُعْدَانِ لِلأَهَمِّيَّة',
-      instructions: 'أنتج استجابة تحليلية قصيرة بمستوى B2.',
-      question: 'اشرح كيف يجمع الفصل بين المكانة الصوفية والأثر اللغوي الأدبي ليونس.',
+      instructions: 'اكتب فقرة قصيرة عن مكانة يونس في مجالين.',
+      question: 'لماذا كان يونس مهمًّا في مجالين؟',
       correctAnswer: null,
       explanation: 'يُنتظر ربط البعدين دون اختزال أحدهما في الآخر.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'اكتب 5–6 جمل مستخدمًا «بينما» و«بالإضافة إلى» مرة واحدة على الأقل.', mode: 'Individual' },
+        { question: 'اكتب 5–6 جمل. استخدم «بينما» مرة، و«بالإضافة إلى» مرة.', mode: 'Individual' },
       ],
     },
   ],
@@ -111,8 +111,8 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf2-1',
       type: 'drag-drop',
       title: 'لاحظ: مَن يقول هذا؟',
-      instructions: 'ضع كل عبارة من الفصل الثاني في المجموعة المناسبة.',
-      question: 'هل يقدّم الكاتب المعلومة منسوبةً إلى مصدر أو رأي، أم يقدّمها حكمًا منه مباشرة؟',
+      instructions: 'ضع كل عبارة من الفصل الثاني في مجموعتها.',
+      question: 'هل ينقل الكاتب عن مصدر، أم يحكم بنفسه؟',
       dragDropGroups: [
         {
           group: 'معلومة منسوبة إلى مصدر أو رأي',
@@ -151,8 +151,8 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf2-2',
       type: 'error-correction',
       title: 'ابنِ: اسم «كان» وخبرها',
-      instructions: 'في كل جملة خطأ واحد في الإعراب. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما الاسم المرفوع وما الخبر المنصوب في جمل «كان» و«لم تكن»؟',
+      instructions: 'في كل جملة خطأ في آخر كلمة. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'ما آخر الكلمة بعد «كان» و«لم تكن»؟',
       errorItems: [
         {
           sentence: 'وَتَشْمَلُ فَلْسَفَتُهُ قِيَمًا أَسَاسِيَّةً كَانَ لَهَا تَأْثِيرًا كَبِيرًا فِي الثَّقَافَةِ التُّرْكِيَّةِ…',
@@ -178,8 +178,8 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf2-3',
       type: 'word-bank',
       title: 'ابنِ: «لَيْسَ... وَلَا...» و«لَمْ يَقْتَصِرْ... بَلْ...»',
-      instructions: 'اسحب الكلمة المناسبة إلى كل فراغ. في البنك كلمتان زائدتان.',
-      question: 'كيف يضع الكاتب الأسلوب بين طرفين، وكيف يوسّع نطاق تعليم يونس؟',
+      instructions: 'أكمل الجمل بكلمات من البنك. كلمتان لا نحتاج إليهما.',
+      question: 'ما الكلمات التي تكمل «ليس… ولا…» و«لم يقتصر… بل…»؟',
       fillBlanksText: 'فَإِنَّ أُسْلُوبَهُ لَيْسَ بَسِيطًا جِدًّا [blank] مُعَقَّدًا جِدًّا. … وَمَعَ ذَلِكَ، لَمْ يَقْتَصِرْ تَعْلِيمُهُ عَلَى الْمَدَارِسِ الدِّينِيَّةِ [blank]، [blank] دَرَسَ [blank] الْحُبَّ الْإِلَهِيَّ وَالْأَخْلَاقَ فِي التَّكِيَّةِ.',
       wordBank: ['وَلَا', 'فَحَسْبُ', 'بَلْ', 'أَيْضًا', 'ثُمَّ', 'لَكِنَّ'],
       correctAnswer: ['وَلَا', 'فَحَسْبُ', 'بَلْ', 'أَيْضًا'],
@@ -193,13 +193,13 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf2-4',
       type: 'reflection',
       title: 'اكتب بحذر تاريخي',
-      instructions: 'أنتج استجابة تحليلية قصيرة بمستوى B2.',
-      question: 'لخّص تعليم يونس دون تحويل الروايات المقيدة إلى حقائق مطلقة.',
+      instructions: 'اكتب فقرة قصيرة وحذرة عن تعليم يونس.',
+      question: 'ماذا تقول المصادر عن تعليم يونس؟',
       correctAnswer: null,
       explanation: 'المطلوب جمع الدقة التاريخية بالتنظيم الخطابي.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'استخدم عبارة مصدر واحدة على الأقل، وتركيب «لم يقتصر... بل...» في فقرة من 5–7 جمل.', mode: 'Individual' },
+        { question: 'اكتب 5–7 جمل. استخدم «وفقًا لـ…» مرة، و«لم يقتصر… بل…» مرة.', mode: 'Individual' },
       ],
     },
   ],
@@ -221,8 +221,8 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf3-2',
       type: 'choose-form',
       title: 'ابنِ: المفعول المطلق والفاعل المتأخر والنتيجة',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'أي صيغة تناسب موقعها في الجملة إعرابًا ومعنى؟',
+      instructions: 'اختر الكلمة الصحيحة لكل جملة من الفصل.',
+      question: 'أيّ كلمة تناسب كل جملة عن تلك السنوات الصعبة؟',
       formChoices: [
         {
           sentence: 'فَفِي تِلْكَ السَّنَوَاتِ، ضَعُفَ السَّلَاجِقَةُ الْأَنَاضُولِيُّونَ [choice] شَدِيدًا بِسَبَبِ انْتِفَاضَاتِ الْبَابَائِيِّينَ.',
@@ -251,13 +251,13 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf3-3',
       type: 'reflection',
       title: 'السياق قبل التفسير',
-      instructions: 'أنتج استجابة تحليلية قصيرة بمستوى B2.',
-      question: 'اشرح لماذا يطلب الفصل النظر إلى الجو التاريخي لفهم يونس.',
+      instructions: 'اكتب فقرة قصيرة عن زمن يونس الصعب.',
+      question: 'لماذا ننظر إلى زمن يونس أولًا؟',
       correctAnswer: null,
       explanation: 'المهمة تحول الأحداث إلى تفسير مترابط.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'استخدم «أعقب ذلك» و«نتيجة لذلك» و«لذلك» في فقرة قصيرة.', mode: 'Individual' },
+        { question: 'استخدم «أعقب ذلك» و«نتيجةً لذلك» و«لذلك».', mode: 'Individual' },
       ],
     },
   ],
@@ -267,7 +267,7 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: السبب والدافع',
       instructions: 'ضع كل عبارة من الفصل الرابع في المجموعة المناسبة.',
-      question: 'هل تبيّن العبارة سببًا أدّى إلى ما بعده، أم دافعًا أو غاية يسعى إليها أصحاب الفعل؟',
+      question: 'هل تذكر العبارة سببًا، أم غاية يريدها الناس؟',
       dragDropGroups: [
         {
           group: 'سبب أدّى إلى ما بعده',
@@ -306,8 +306,8 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf4-2',
       type: 'transformation',
       title: 'ابنِ: من المصدر إلى الجملة الفعلية',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة لتعبّر عن المعنى نفسه بجملة فعلية.',
-      question: 'كيف نعبّر عن السبب والدافع والنتيجة بفعل بدل المصدر؟',
+      instructions: 'اكتب الفعل الناقص. حافظ على المعنى نفسه.',
+      question: 'كيف نقول السبب والغاية والنتيجة بفعل؟',
       transformItems: [
         {
           source: 'وَبِسَبَبِ سُوءِ إِدَارَةِ ابْنِهِ غِيَاثِ الدِّينِ كَيْخُسْرُو الثَّانِي (مِنْ عَامِ أَلْفٍ وَمِئَتَيْنِ وَسَبْعَةٍ وَثَلَاثِينَ إِلَى عَامِ أَلْفٍ وَمِئَتَيْنِ وَسِتَّةٍ وَأَرْبَعِينَ)، بَدَأَتِ الْبِنْيَةُ الاقْتِصَادِيَّةُ وَالاجْتِمَاعِيَّةُ لِلسَّلاجِقَةِ فِي التَّدَهْوُرِ.',
@@ -336,13 +336,13 @@ export const yunusB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yu-b2-ar-lf4-3',
       type: 'reflection',
       title: 'ابنِ تفسيرًا سببيًّا',
-      instructions: 'أنتج استجابة تحليلية قصيرة بمستوى B2.',
-      question: 'اكتب فقرة تشرح البيئة التي سبقت تمرد البابائيين.',
+      instructions: 'اكتب فقرة عن أسباب تمرّد البابائيين.',
+      question: 'لماذا تمرّد البابائيون؟',
       correctAnswer: null,
       explanation: 'المطلوب تفسير تفاعلي لا قائمة أسباب منفصلة.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'استخدم «بسبب» و«عندما أُضيفت…» و«أدّى… إلى» و«هربًا من» أو ما يؤدي وظيفتها.', mode: 'Individual' },
+        { question: 'استخدم «بسبب» و«عندما أُضيفت…» و«أدّى… إلى» و«هربًا من».', mode: 'Individual' },
       ],
     },
   ],

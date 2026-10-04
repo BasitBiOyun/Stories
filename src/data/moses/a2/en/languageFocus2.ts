@@ -10,8 +10,8 @@ export const mosesA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'moses-a2-language-3-could',
       type: 'choose-form',
       title: 'Could or Could Not?',
-      instructions: 'Read the start of Chapter 3. Choose could or could not.',
-      question: 'Which sentence is about a danger that was possible, and which is about something she was not able to do?',
+      instructions: 'Choose could or could not for each sentence.',
+      question: 'Was something possible, or was she not able?',
       formChoices: [
         { sentence: 'His mother was afraid that soldiers [choice] find her baby.', options: ['could not', 'could'], answer: 1 },
         { sentence: 'So, she [choice] sleep at night.', options: ['could', 'could not'], answer: 1 },
@@ -27,8 +27,8 @@ export const mosesA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'moses-a2-language-3-instructions-promise',
       type: 'word-bank',
       title: 'What Did She Do?',
-      instructions: 'Complete the sentences from Chapter 3. Use the words in the box. Two words are not needed.',
-      question: 'Which past forms tell us what Moses’s mother did and what the water did?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'What did Moses’s mother do? What did the water do?',
       fillBlanksText: 'Moses’s mother [blank] the baby Moses in a basket and [blank] it to the river. … The water [blank] it away.',
       wordBank: ['put', 'took', 'carried', 'take', 'carry'],
       correctAnswer: ['put', 'took', 'carried'],
@@ -42,8 +42,8 @@ export const mosesA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'moses-a2-language-3-tell-comparison',
       type: 'error-correction',
       title: 'Told Her To … / Kinder Than',
-      instructions: 'Each sentence has one mistake. Tap the wrong words. Then choose the correct words.',
-      question: 'Can you fix “told + person + to” and a comparison?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the two sentences about Moses’s mother?',
       errorItems: [
         {
           sentence: 'Moses’s mother was very worried and told her daughter follow the basket.',
@@ -67,14 +67,14 @@ export const mosesA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     },
     {
       id: 'moses-a2-language-3-production', type: 'reflection', title: 'Use It: Help in a Difficult Situation',
-      instructions: 'Create a safe new A2 situation using at least three Chapter 3 patterns.', question: 'Can you describe a difficulty, give an instruction and add reassurance?',
+      instructions: 'Say four short sentences about helping someone with a problem.', question: 'Can you help someone with a problem?',
       correctAnswer: null, explanation: 'Use could/could not, an imperative, will + verb, tell + person + to + verb, or a simple comparative.',
       feedback: { correct: 'Keep the situation new and the forms accurate.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Describe one difficulty with could/could not.', mode: 'Individual' },
-        { question: 'Give one safe instruction.', mode: 'Individual' },
-        { question: 'Add one will sentence.', mode: 'Individual' },
-        { question: 'Report one instruction.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say the problem: “… could not …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Tell them what to do: “Look …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Help them feel better: “Don’t worry. I will …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what someone told them: “… told him/her to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -86,8 +86,8 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'moses-a2-language-4-past-actions',
       type: 'drag-drop',
       title: 'Going Somewhere or Being Somewhere?',
-      instructions: 'Read the parts of Chapter 4. Put each one in the right group.',
-      question: 'Which parts show movement to a place or person, and which parts say where something is?',
+      instructions: 'Put each part of Chapter 4 in the right group.',
+      question: 'Going to a place, or where something is?',
       dragDropGroups: [
         {
           group: 'Going to a place or person',
@@ -126,7 +126,7 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'moses-a2-language-4-different-from',
       type: 'matching',
       title: 'Words About the Queen',
-      instructions: 'Find these words in Chapter 4. Match each one with its meaning.',
+      instructions: 'Match each word from Chapter 4 with its meaning.',
       question: 'What do these words from Chapter 4 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
@@ -165,11 +165,11 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'moses-a2-language-4-production', type: 'reflection', title: 'Use It: A Helpful Plan', instructions: 'Create a new A2 situation using Chapter 4 patterns.', question: 'Can you describe a helpful person, contrast people, state a decision and give an instruction?',
+      id: 'moses-a2-language-4-production', type: 'reflection', title: 'Use It: A Helpful Plan', instructions: 'Say four short sentences about a helpful neighbour.', question: 'Can you describe a helpful person and your plan?',
       correctAnswer: null, explanation: 'Use be + adjective, different from, will + verb and an imperative.', feedback: { correct: 'Keep the example new and clear.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Describe one person with two adjectives.', mode: 'Individual' }, { question: 'Use different from once.', mode: 'Individual' },
-        { question: 'State one decision with will.', mode: 'Individual' }, { question: 'Give one safe command.', mode: 'Pair' },
+        { question: 'Sentence 1 — Describe the person: “Our … is … and …”', mode: 'Individual' }, { question: 'Sentence 2 — Compare: “She/He is different from …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what you will do: “I will …”', mode: 'Individual' }, { question: 'Sentence 4 — Ask someone to do something: “Put …, please.”', mode: 'Pair' },
       ],
     },
   ],
@@ -178,7 +178,7 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'moses-a2-language-5-care-growth',
       type: 'matching',
       title: 'Care and Change',
-      instructions: 'Find these words in Chapter 5. Match each one with its meaning.',
+      instructions: 'Match each word from Chapter 5 with its meaning.',
       question: 'What do these words from Chapter 5 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
@@ -205,8 +205,8 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'moses-a2-language-5-habits-reasons',
       type: 'word-bank',
       title: 'Always and Because',
-      instructions: 'Complete the sentences from Chapter 5. Use the words in the box. Two words are not needed.',
-      question: 'Which word shows something that did not change, and which word gives a reason?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Which word means “all the time”, and which gives a reason?',
       fillBlanksText: 'Moses grew up in a safe place, in the house of the king. He [blank] loved Allah. … He loved the Children of Israel [blank] his mother was from the Children of Israel.',
       wordBank: ['always', 'because', 'because of', 'never'],
       correctAnswer: ['always', 'because'],
@@ -220,7 +220,7 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'moses-a2-language-5-background-event',
       type: 'true-false',
       title: 'Walking, Then Seeing',
-      instructions: 'Read the sentences from Chapter 5. Is the sentence below true or false?',
+      instructions: 'Read the sentences from Chapter 5. True or false?',
       question: '“One day he was walking in the bazaar. He saw two men fighting.” — Moses started walking after he saw the two men.',
       correctAnswer: false,
       explanation: 'Was walking (was + -ing) shows an action that was already happening. Saw (simple past) shows a new event in the middle of that action. So Moses was walking first, and then he saw the men.',
@@ -230,11 +230,11 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'moses-a2-language-5-production', type: 'reflection', title: 'Use It: Someone Who Helps', instructions: 'Create a new A2 example using at least three Chapter 5 patterns.', question: 'Can you describe care, change, a regular quality and a reason?',
+      id: 'moses-a2-language-5-production', type: 'reflection', title: 'Use It: Someone Who Helps', instructions: 'Say four short sentences about someone who helps others.', question: 'Who helps others in your life?',
       correctAnswer: null, explanation: 'Use look after/take care of, became, always, because, or was/were + -ing.', feedback: { correct: 'Use the language in a new situation.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Say who someone looks after.', mode: 'Individual' }, { question: 'Describe one change with became.', mode: 'Individual' },
-        { question: 'Use always for one regular quality.', mode: 'Individual' }, { question: 'Give one reason with because.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say who they look after: “My … looks after …”', mode: 'Individual' }, { question: 'Sentence 2 — Say how they changed: “She/He became …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what they are always like: “She/He is always …”', mode: 'Individual' }, { question: 'Sentence 4 — Give a reason: “She/He likes … because …”', mode: 'Pair' },
       ],
     },
   ],
@@ -277,7 +277,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'moses-a2-language-6-warning-language',
       type: 'error-correction',
       title: 'A Friend’s Warning',
-      instructions: 'Each sentence has one mistake. Tap the wrong words. Then choose the correct words.',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
       question: 'Can you fix the verbs about now and about the future?',
       errorItems: [
         {
@@ -300,7 +300,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Read the man’s words at the end of Chapter 6. Be + -ing for now; be going to + base verb for the future.',
       },
     },
-    { id:'moses-a2-language-6-production', type:'reflection', title:'Use It: Give a Safe Warning', instructions:'Create a safe new situation using Chapter 6 patterns.', question:'Can you explain purpose, reason, present danger and a future warning?', correctAnswer:null, explanation:'Use to + verb, because, present continuous, be going to/will and an imperative.', feedback:{correct:'Keep the situation safe and new.',incorrect:''}, discussionPrompts:[{question:'Give one purpose with to + verb.',mode:'Individual'},{question:'Add a reason with because.',mode:'Individual'},{question:'Describe what is happening now.',mode:'Individual'},{question:'Give one safe warning and instruction.',mode:'Pair'}] },
+    { id:'moses-a2-language-6-production', type:'reflection', title:'Use It: Give a Safe Warning', instructions: 'Say four short sentences about a small accident at home.', question: 'Can you say what happened and warn someone?', correctAnswer:null, explanation:'Use to + verb, because, present continuous, be going to/will and an imperative.', feedback:{correct:'Keep the situation safe and new.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say why you went: “I went to … to …”',mode:'Individual'},{ question: 'Sentence 2 — Say what happened and why: “… because …”',mode:'Individual'},{ question: 'Sentence 3 — Say what is happening now: “Now … is …-ing …”',mode:'Individual'},{ question: 'Sentence 4 — Warn someone: “Be careful! …”',mode:'Pair'}] },
   ],
   7: [
     {
@@ -308,7 +308,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'At the Well',
       instructions: 'Choose the correct word for each sentence from Chapter 7.',
-      question: 'Is the subject one or more than one? Which word fits?',
+      question: 'Is it one, or more than one? Which word fits?',
       formChoices: [
         { sentence: 'There [choice] many men around the water.', options: ['was', 'were'], answer: 1 },
         { sentence: 'They [choice] watering their animals.', options: ['was', 'are', 'were'], answer: 2 },
@@ -325,8 +325,8 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'moses-a2-language-7-reason-result',
       type: 'word-bank',
       title: 'Arriving and Looking',
-      instructions: 'Complete the sentences from Chapter 7. Use the words in the box. Two words are not needed.',
-      question: 'Which small words complete the journey?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Which small words fit the sentences?',
       fillBlanksText: 'After many days, he arrived [blank] Midian. … Moses was tired and thirsty. [blank], he looked [blank] water.',
       wordBank: ['at', 'So', 'for', 'Because', 'to'],
       correctAnswer: ['at', 'So', 'for'],
@@ -340,7 +340,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       id: 'moses-a2-language-7-scene-actions',
       type: 'matching',
       title: 'Journey Words',
-      instructions: 'Find these words in Chapter 7. Match each one with its meaning.',
+      instructions: 'Match each word from Chapter 7 with its meaning.',
       question: 'What do these words from Chapter 7 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
@@ -363,7 +363,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         incorrect: 'Read Chapter 7 again. Find each word and look at the sentence around it.',
       },
     },
-    { id:'moses-a2-language-7-production', type:'reflection', title:'Use It: Describe an Arrival', instructions:'Imagine a safe journey and use Chapter 7 patterns.', question:'Can you describe arrival, a need, a search and an action in progress?', correctAnswer:null, explanation:'Use after, arrived at, so, looked for, there were and was/were + -ing.', feedback:{correct:'Use the forms in a new situation.',incorrect:''}, discussionPrompts:[{question:'Say where you arrived.',mode:'Individual'},{question:'Give a need and result with so.',mode:'Individual'},{question:'Say what you looked for.',mode:'Individual'},{question:'Describe what people were doing.',mode:'Pair'}] },
+    { id:'moses-a2-language-7-production', type:'reflection', title:'Use It: Describe an Arrival', instructions: 'Say four short sentences about a trip you made.', question: 'Where did you go, and what did you see?', correctAnswer:null, explanation:'Use after, arrived at, so, looked for, there were and was/were + -ing.', feedback:{correct:'Use the forms in a new situation.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say where you arrived: “After …, we arrived at …”',mode:'Individual'},{ question: 'Sentence 2 — Say what you needed: “I was …, so I …”',mode:'Individual'},{ question: 'Sentence 3 — Say what you looked for: “Then I looked for …”',mode:'Individual'},{ question: 'Sentence 4 — Say what people were doing: “Some … were …-ing …”',mode:'Pair'}] },
   ],
 };
 
@@ -373,7 +373,7 @@ export const mosesA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
       id: 'moses-a2-language-8-question-ability',
       type: 'multiple-choice',
       title: 'What Does “Cannot” Mean?',
-      instructions: 'Read the girls’ words from Chapter 8. Choose the best meaning.',
+      instructions: 'Read the girls’ words. Choose the best meaning.',
       question: '“Our father is very old. He cannot come with us.” What does cannot come tell us?',
       options: ['He does not want to come.', 'He will come later.', 'He is not able to come.'],
       correctAnswer: 2,
@@ -401,8 +401,8 @@ export const mosesA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
       id: 'moses-a2-language-8-time-waiting',
       type: 'error-correction',
       title: 'Fix the Sisters’ Words',
-      instructions: 'Each sentence has one mistake. Tap the wrong words. Then choose the correct words.',
-      question: 'Can you fix there are no and wait for … to …?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sisters’ words?',
       errorItems: [
         {
           sentence: '“There is no young men in our house to help us. So, we take the sheep to the water.”',
@@ -424,7 +424,7 @@ export const mosesA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
         incorrect: 'Read the sisters’ words in Chapter 8. Young men is plural. What small word comes before leave?',
       },
     },
-    { id:'moses-a2-language-8-production', type:'reflection', title:'Use It: Explain a Shared Task', instructions:'Create a safe everyday situation using Chapter 8 patterns.', question:'Can you ask about a missing action, explain inability, give a result and describe waiting?', correctAnswer:null, explanation:'Use Why aren’t you...?, cannot, There are no..., so, wait for, when or early.', feedback:{correct:'Keep the example new and clear.',incorrect:''}, discussionPrompts:[{question:'Ask one Why aren’t you...? question.',mode:'Pair'},{question:'Explain one thing someone cannot do.',mode:'Individual'},{question:'Add a result with so.',mode:'Individual'},{question:'Add wait for, when or early.',mode:'Individual'}] },
+    { id:'moses-a2-language-8-production', type:'reflection', title:'Use It: Explain a Shared Task', instructions: 'Say four short sentences about a job you share at home.', question: 'Who helps at home, and who cannot?', correctAnswer:null, explanation:'Use Why aren’t you...?, cannot, There are no..., so, wait for, when or early.', feedback:{correct:'Keep the example new and clear.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Ask a question: “Why aren’t you …?”',mode:'Pair'},{ question: 'Sentence 2 — Say what someone cannot do: “… cannot …”',mode:'Individual'},{ question: 'Sentence 3 — Give a result: “…, so I …”',mode:'Individual'},{ question: 'Sentence 4 — Say when: “When we finished …, …”',mode:'Individual'}] },
   ],
 };
 
@@ -434,8 +434,8 @@ export const mosesA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       id: 'moses-a2-language-9-reason-need',
       type: 'word-bank',
       title: 'Couldn’t, Needed, Because',
-      instructions: 'Complete the sentences from Chapter 9. Use the words in the box. Two words are not needed.',
-      question: 'Which word shows he was not able, which shows a need, and which gives a reason?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Which word fits each gap?',
       fillBlanksText: 'He was very old, so he [blank] help his daughters. … Moses accepted the job [blank] he was a stranger in Midian. He [blank] a job and a house.',
       wordBank: ['couldn’t', 'because', 'needed', 'so', 'can’t'],
       correctAnswer: ['couldn’t', 'because', 'needed'],
@@ -450,7 +450,7 @@ export const mosesA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Want To, Decided To',
       instructions: 'Choose the correct words for each sentence from Chapter 9.',
-      question: 'What form of the verb comes after want and decided?',
+      question: 'What comes after “want” and “decided”?',
       formChoices: [
         { sentence: 'Shu’ayb (pbuh) said, “Go and call the young man. I want [choice] him for his work.”', options: ['thank', 'to thank', 'thanking'], answer: 1 },
         { sentence: 'After ten years, Moses decided [choice] back to Egypt.', options: ['going', 'go', 'to go'], answer: 2 },
@@ -481,6 +481,6 @@ export const mosesA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
         incorrect: 'Read Chapter 9 again. Look for Later and After ten years.',
       },
     },
-    { id:'moses-a2-language-9-production', type:'reflection', title:'Use It: A New Opportunity', instructions:'Create a safe new situation using Chapter 9 patterns.', question:'Can you explain a need, give a reason, describe an intention or offer, and make a later decision?', correctAnswer:null, explanation:'Use need, because, want to, offer/accept, later, after + time or decide to.', feedback:{correct:'Use the forms in a new situation.',incorrect:''}, discussionPrompts:[{question:'State one need.',mode:'Individual'},{question:'Give one reason with because.',mode:'Individual'},{question:'Describe an intention or offer.',mode:'Pair'},{question:'Add a later decision.',mode:'Individual'}] },
+    { id:'moses-a2-language-9-production', type:'reflection', title:'Use It: A New Opportunity', instructions: 'Say four short sentences about a new plan for your class.', question: 'What do you need, and what will you do?', correctAnswer:null, explanation:'Use need, because, want to, offer/accept, later, after + time or decide to.', feedback:{correct:'Use the forms in a new situation.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say what you need: “Our class needs …”',mode:'Individual'},{ question: 'Sentence 2 — Say why: “We need it because …”',mode:'Individual'},{ question: 'Sentence 3 — Say what someone wants or offers: “… wants to …” / “I offered to …”',mode:'Pair'},{ question: 'Sentence 4 — Say what you decided: “Later, we decided to …”',mode:'Individual'}] },
   ],
 };

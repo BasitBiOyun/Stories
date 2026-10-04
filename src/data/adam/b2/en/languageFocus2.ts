@@ -8,8 +8,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-7-general-tendency',
       type: 'drag-drop',
       title: 'People in General or This Story?',
-      instructions: 'Read the parts of Chapter 7 below. Is each one true of people in general, or is it one event in this story? Sort them.',
-      question: 'How does the chapter move between a general truth about people and the events of Adam’s story?',
+      instructions: 'Sort the parts of Chapter 7: true of all people, or one event?',
+      question: 'Is it true of people in general, or only of this story?',
       dragDropGroups: [
         {
           group: 'True of people in general',
@@ -49,9 +49,9 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-7-cause-purpose-chain',
       type: 'transformation',
-      title: 'Participle and Inversion',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 7 sentence. Write only the missing words.',
-      question: 'Can you expand a participle clause and turn “as soon as” into “no sooner … than”?',
+      title: 'Say It Another Way',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say what Satan did and how Adam felt?',
       transformItems: [
         {
           source: 'He started to whisper to them day after day, trying to persuade both …',
@@ -75,8 +75,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-7-possibility-condition-time',
       type: 'choose-form',
       title: 'Condition, Possibility, Earlier Past',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 7.',
-      question: 'Which forms show an imagined condition, an uncertain possibility and an earlier past event?',
+      instructions: 'Choose the correct words for each sentence from Chapter 7.',
+      question: 'Which form fits Adam’s thoughts and what they forgot?',
       formChoices: [
         {
           sentence: 'Adam (pbuh) started to ask himself: “What will happen if I [choice] from this tree?',
@@ -104,17 +104,17 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-7-production',
       type: 'reflection',
-      title: 'Write a Vulnerability–Decision–Consequence Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a person who is gradually persuaded into a poor decision. Do not retell Adam and Eve eating from the tree. Begin with one general human tendency in the present simple, explain a motive with “because”, add a purpose phrase with “to + verb”, include one imagined condition with “if” and one uncertain possibility with “might”, then use past perfect and “as soon as” to make the final consequence sequence clear.',
-      question: 'Can you organise vulnerability, persuasion, uncertainty, decision and consequence through grammar rather than a list of events?',
+      title: 'A Poor Choice',
+      instructions: 'Write or say 8–10 sentences about someone who is slowly talked into a bad choice.',
+      question: 'How was the person talked into it, and what happened?',
       correctAnswer: null,
       explanation: 'A strong response moves from a general tendency to a specific situation, makes motive and purpose explicit, preserves uncertainty before the decision and then clarifies sequence.',
       feedback: { correct: 'Keep the structure visible: tendency → motive/purpose → possibility → decision → consequence.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Generality — Open with a present-simple statement about a recurring human tendency.', mode: 'Individual' },
-        { question: 'Motive and purpose — Explain why someone acts and what they hope to achieve.', mode: 'Individual' },
-        { question: 'Uncertainty — Use “if” and “might” before the decision.', mode: 'Individual' },
-        { question: 'Narrative time — Use past perfect plus “as soon as” to make the final sequence precise.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what people often do: “People often …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give a reason and an aim: “He … because … . He … to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Show doubt: “If I …, I might …”', mode: 'Individual' },
+        { question: 'Sentence 4 — End the story: “He had already … . As soon as …”', mode: 'Pair' },
       ],
     },
   ],
@@ -123,8 +123,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-8-sequence-result',
       type: 'matching',
       title: 'What Is Each Line Doing?',
-      instructions: 'Match each line of dialogue in Chapter 8 with what it does. The questions are not asking for new information.',
-      question: 'What do the questions and replies do in this dialogue?',
+      instructions: 'Match each line from Chapter 8 with what it does. The questions do not ask for new facts.',
+      question: 'What do the questions and answers do?',
       matchingHeadings: { left: 'From the chapter', right: 'What it does' },
       matchingPairs: [
         { left: 'Did I not forbid you from this tree, and say to you that Satan is a clear enemy to you?', right: 'reminds them of a warning they already knew' },
@@ -149,7 +149,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Time, Result and Reason',
       instructions: 'Complete the narrator’s lines from Chapter 8 with words from the bank. Three words are not needed.',
-      question: 'Which linkers connect the moment of discovery, the response and the reason for it?',
+      question: 'Which words say when, what happened next, and why?',
       fillBlanksText: '[blank] they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, [blank] they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, [blank] the sense of shame (haya) is inborn human nature and nakedness is contrary to human nature.',
       wordBank: ['When', 'so', 'because', 'Although', 'unless', 'but'],
       correctAnswer: ['When', 'so', 'because'],
@@ -163,8 +163,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-8-source-boundaries',
       type: 'drag-drop',
       title: 'Text or Interpretation?',
-      instructions: 'Read the parts of Chapter 8 below. Sort them: does each part report what the Qur’an says (or does not say), or does it give an interpretation added by others?',
-      question: 'How does the last paragraph keep the Qur’anic text separate from later explanation?',
+      instructions: 'Sort the parts of Chapter 8: the Qur’an’s words or other people’s explanation?',
+      question: 'Is it from the Qur’an, or added by others?',
       dragDropGroups: [
         {
           group: 'What the Qur’an says or does not say',
@@ -203,8 +203,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-8-production',
       type: 'reflection',
       title: 'Write a Source-Aware Explanatory Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a historical, scientific or cultural claim you know from a source. Do not retell Chapter 8. State one detail the source explicitly gives, one detail it does not specify, and one interpretation attributed to a scholar/researcher using “according to...”. Add a clarification with “that is” or “in other words”. Include one question used to remind or challenge rather than simply request new information, then answer it with a correction pattern such as “No, ... but ...”.',
-      question: 'Can you keep evidence, omission, attributed interpretation and clarification separate while still writing a coherent paragraph?',
+      instructions: 'Write or say 8–10 sentences about a fact you know from a source.',
+      question: 'What does the source say, and what does it not say?',
       correctAnswer: null,
       explanation: 'A strong B2 response makes source responsibility visible, avoids turning interpretation into fact, and uses dialogue or rhetorical questioning for a clear discourse purpose.',
       feedback: {
@@ -212,10 +212,10 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Evidence — State exactly what the source says.', mode: 'Individual' },
-        { question: 'Boundary — State one relevant detail the source does not specify.', mode: 'Individual' },
-        { question: 'Attribution — Introduce an interpretation with “according to...”.', mode: 'Individual' },
-        { question: 'Clarification — Use “that is” or “in other words” without changing the certainty of the original claim.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what the source says: “The … says that …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what it does not tell us: “The source does not say …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give someone’s view: “According to …, …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say it more clearly: “In other words, …”', mode: 'Pair' },
       ],
     },
   ],
@@ -224,7 +224,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-9-cause-response',
       type: 'multiple-choice',
       title: 'What Does “Unless” Mean Here?',
-      instructions: 'Read the prayer quoted in Chapter 9. Then choose the sentence that gives the meaning of its second part.',
+      instructions: 'Read the prayer. Then choose the meaning of its second part.',
       question: '“They said, ‘Our Lord, we have done wrong to ourselves. Unless You forgive us, and have mercy on us, we will be among the losers.’” (A’raf: 23) What does the second part mean?',
       options: [
         'Even if You forgive us and have mercy on us, we will be among the losers.',
@@ -242,9 +242,9 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-9-condition-consequence',
       type: 'transformation',
-      title: 'Cause as a Noun, Agent as Subject',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 9 sentence. Write only the missing words.',
-      question: 'Can you express a cause with a preposition and turn a passive into an active sentence?',
+      title: 'Why Adam Was Forgiven',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say why Allah forgave Adam?',
       transformItems: [
         {
           source: 'His regret itself was the reason for Allah’s mercy upon him.',
@@ -276,9 +276,9 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-9-obligation-process',
       type: 'error-correction',
-      title: 'Earlier Past, Double Negative, Modal',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the past perfect, “neither … nor …” and the verb after “must”?',
+      title: 'Fix the Mistakes',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix these sentences from Chapter 9?',
       errorItems: [
         {
           sentence: 'Adam (pbuh) severely regretted what he has done.',
@@ -310,16 +310,16 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-9-production',
       type: 'reflection',
       title: 'Write a Responsibility-and-Recovery Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which a person or group makes a mistake and responds responsibly. State the mistake without hiding responsibility, use a conditional consequence, add one cause-result expression, move from what people are capable of doing to what they must do, and end with a concrete change of direction rather than only regret.',
-      question: 'Can you distinguish recognition, consequence, cause, obligation and corrective action in one coherent paragraph?',
+      instructions: 'Write or say 8–10 sentences about a mistake and how people put it right.',
+      question: 'How can a mistake be put right?',
       correctAnswer: null,
       explanation: 'A strong B2 response uses grammar to organise responsibility: acknowledgment → condition/consequence → cause/result → obligation → changed action.',
       feedback: { correct: 'Make the final corrective action more concrete than simply saying someone felt sorry.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Acknowledgment — State what went wrong without shifting blame.', mode: 'Individual' },
-        { question: 'Condition — Use “unless...” or an equivalent conditional.', mode: 'Individual' },
-        { question: 'Cause/result — Explain why the response changes what happens next.', mode: 'Individual' },
-        { question: 'Obligation — Move from what people can do to what they must do.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what went wrong: “It was our mistake …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what will happen if not: “Unless we …, we will …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what changed: “As a result, …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what you must do now: “We can …, but we must …”', mode: 'Pair' },
       ],
     },
   ],
@@ -328,8 +328,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-10-future-viewpoint',
       type: 'drag-drop',
       title: 'Who Is the Source?',
-      instructions: 'Read the reports in Chapter 10 about where Adam descended. Sort them: is a named person given as the source, or is the report given without a named source?',
-      question: 'How does the chapter show where each detail comes from?',
+      instructions: 'Sort the reports from Chapter 10: is a person named as the source?',
+      question: 'Does it name who said it?',
       dragDropGroups: [
         {
           group: 'A named person is the source',
@@ -387,8 +387,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-10-source-certainty',
       type: 'error-correction',
       title: 'Viewpoint, Purpose and Correction',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the future in the past, “be meant to” and “did not + verb”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the descent to Earth?',
       errorItems: [
         {
           sentence: 'He knew that Satan will violate their innocence.',
@@ -419,9 +419,9 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-10-production',
       type: 'reflection',
-      title: 'Write with Viewpoint, Reframing and Source Distance',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story historical or community event for which people give more than one account. Do not retell Chapter 10. Begin from a past viewpoint and use “would” at least once to refer to something that was still later at that point. Use “was meant to...” or an equivalent purpose expression. Correct one possible interpretation with “not... but rather...”. Then introduce at least two claims with different source frames such as “X said...”, “it is reported that...”, or “it is said to...”. Do not turn a reported claim into a certain fact.',
-      question: 'Can you control time viewpoint, corrective contrast and source certainty across one coherent paragraph?',
+      title: 'One Event, Many Stories',
+      instructions: 'Write or say 8–10 sentences about a past event that people tell in different ways.',
+      question: 'How do people tell the story differently?',
       correctAnswer: null,
       explanation: 'A strong B2 response uses grammar and reporting language to manage chronology, interpretation and evidential distance rather than merely listing information.',
       feedback: {
@@ -429,10 +429,10 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Viewpoint — From one past moment, what would happen later?', mode: 'Individual' },
-        { question: 'Purpose — What was the event or action meant to achieve?', mode: 'Individual' },
-        { question: 'Reframing — Reject one interpretation and replace it with a more precise one.', mode: 'Pair' },
-        { question: 'Source distance — Attribute two claims without presenting both as certain facts.', mode: 'Pair' },
+        { question: 'Sentence 1 — Look ahead from the past: “Nobody knew that it would …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give the aim: “It was meant to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Correct an idea: “It was not …, but rather …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Report two claims: “… said that … . It is also said that …”', mode: 'Pair' },
       ],
     },
   ],
@@ -461,7 +461,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Priority, Consequence and Contrast',
       instructions: 'Complete the lines from Chapter 11 with words from the bank. Three words are not needed.',
-      question: 'Which expressions rank a responsibility, state a wider consequence and contrast two groups?',
+      question: 'Which word fits each gap?',
       fillBlanksText: '[blank], he had to struggle with the spirit of evil. … the removal of Allah from the human mind [blank] the removal of meaning and purpose from human life. The battle between good and evil is continuous, but those who follow Allah\'s guidance should fear nothing, [blank] those who disobey Allah and follow Iblis will be away from the mercy of Allah along with him.',
       wordBank: ['Above all', 'means', 'while', 'After all', 'so that', 'unless'],
       correctAnswer: ['Above all', 'means', 'while'],
@@ -475,8 +475,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-11-contrast-consequence',
       type: 'transformation',
       title: 'Necessity, Negation and Time',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 11 sentence. Write only the missing words.',
-      question: 'Can you express necessity, a negative wish and an immediate sequence in another way?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines from Chapter 11?',
       transformItems: [
         {
           source: 'He also had to work hard to keep himself alive.',
@@ -505,8 +505,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-11-production',
       type: 'reflection',
       title: 'Build a Responsibility Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which a person or group enters a demanding new environment. Do not retell Chapter 11. Use “no sooner... than...” or an equivalent compressed-time structure once. Use “had to” or another necessity form at least twice for different kinds of responsibility. Rank one responsibility with “above all” or an equivalent expression. Contrast two possible paths with “while” or “yet”, and explain one wider consequence with “means” or an equivalent cause-result frame.',
-      question: 'Can you organise time, necessity, priority, contrast and consequence across one coherent paragraph?',
+      instructions: 'Write or say 8–10 sentences about someone who starts a hard new life somewhere.',
+      question: 'What must the person do, and what matters most?',
       correctAnswer: null,
       explanation: 'A strong B2 response uses grammar to organise a whole argument: pressure develops over time, responsibilities accumulate, priorities are ranked, and consequences are contrasted.',
       feedback: {
@@ -514,10 +514,10 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Time pressure — Which two events happen with almost no gap?', mode: 'Individual' },
-        { question: 'Necessity — Which practical and non-practical responsibilities must be handled?', mode: 'Individual' },
-        { question: 'Priority — Which responsibility matters most, and how will you signal that?', mode: 'Pair' },
-        { question: 'Contrast and consequence — What two paths can you contrast, and what one choice lead to?', mode: 'Pair' },
+        { question: 'Sentence 1 — Show two quick events: “No sooner had … than …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what they had to do: “She had to … . She also had to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what matters most: “Above all, …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Compare two choices: “…, yet … . This means that …”', mode: 'Pair' },
       ],
     },
   ],
@@ -525,9 +525,9 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-12-contrast',
       type: 'multiple-choice',
-      title: 'Why the Passive Here?',
-      instructions: 'Read the sentence from Chapter 12. Then choose the best explanation of the writer’s choice.',
-      question: '“Qabil’s sacrifice was not accepted by Allah because of his insincerity in his offering.” Why does the writer begin with “Qabil’s sacrifice” and use the passive?',
+      title: 'Why Start with the Sacrifice?',
+      instructions: 'Read the sentence. Then choose the best explanation.',
+      question: '“Qabil’s sacrifice was not accepted by Allah because of his insincerity in his offering.” Why does the sentence begin with “Qabil’s sacrifice”?',
       options: [
         'because the writer does not know who did not accept the sacrifice',
         'to keep attention on Qabil’s sacrifice and what happened to it, and then explain why',
@@ -545,8 +545,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-12-passive-relative-cause',
       type: 'transformation',
       title: 'Contrast and Omission in Other Words',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 12 sentence. Write only the missing words.',
-      question: 'Can you express the same contrast with a linking adverb, and the same omission with an active -ing form?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines about the two sons?',
       transformItems: [
         {
           source: 'Habil offered his best cattle while Qabil offered his worst grain.',
@@ -570,8 +570,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-12-source-limits',
       type: 'matching',
       title: 'Where Does the Account Stop?',
-      instructions: 'Match each expression from the end of Chapter 12 with what it signals about the source.',
-      question: 'How does the chapter show what the account tells us, what it leaves out and what we do not know?',
+      instructions: 'Match each phrase from the end of Chapter 12 with what it tells us.',
+      question: 'What does the account tell us, and what does it leave out?',
       matchingHeadings: { left: 'From the chapter', right: 'What it signals' },
       matchingPairs: [
         { left: 'without mentioning names', right: 'shows that a detail is left out' },
@@ -595,8 +595,8 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'adam-b2-language-12-production',
       type: 'reflection',
       title: 'Write a Source-Aware Contrast Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story dispute, report or historical case. Do not retell Chapter 12. Contrast two people or positions with “while” or an equivalent structure. Use one passive to foreground an outcome rather than the actor. Explain one cause with “because of”, “because”, or an equivalent expression. Include one source-limiting phrase such as “according to...”, “the source does not state...”, or “although we do not know...”. End with a conclusion that stays inside the evidence you introduced.',
-      question: 'Can you combine contrast, information focus, cause and source qualification in one coherent paragraph?',
+      instructions: 'Write or say 8–10 sentences about a disagreement, using what a report says.',
+      question: 'What happened, and what does the report not tell us?',
       correctAnswer: null,
       explanation: 'A strong B2 response does not simply insert target forms. It uses them to compare positions, foreground outcomes, explain causes and keep conclusions proportionate to the available evidence.',
       feedback: {
@@ -604,10 +604,10 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Contrast — Which two roles, actions or positions will you place side by side?', mode: 'Individual' },
-        { question: 'Focus — Which outcome matters more than naming the actor?', mode: 'Individual' },
-        { question: 'Cause — What directly explains one important result?', mode: 'Pair' },
-        { question: 'Source limits — What can your source support, and what should you avoid claiming?', mode: 'Pair' },
+        { question: 'Sentence 1 — Compare two people: “…, while …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Put the result first: “The result was cancelled …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give the cause: “… because of …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Say what the source shows: “According to …, … . It does not state …”', mode: 'Pair' },
       ],
     },
   ]

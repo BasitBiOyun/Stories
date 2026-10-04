@@ -15,7 +15,7 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf5-1',
       type: 'multiple-choice',
       title: 'لاحظ: نسبة القول إلى المصادر',
-      instructions: 'اقرأ الجملة الأخيرة من الفصل الخامس، ثم اختر التلخيص الذي يحافظ على موقف الكاتب.',
+      instructions: 'اقرأ الجملة الأخيرة من الفصل الخامس، ثم اختر التلخيص الأدق.',
       question: '«وَتَقُولُ الْمَصَادِرُ: «ذَبَحَ الْمُغُولُ سُكَّانَ الْمُدُنِ وَالْبَلَدَاتِ الْكُبْرَى بِلَا رَحْمَةٍ، حَتَّى لَمْ يَبْقَ فِيهَا أَحَدٌ تَقْرِيبًا»». أي تلخيص أدق؟',
       options: [
         'يؤكّد الكاتب بنفسه أن المغول قتلوا كل من كان في الأناضول دون استثناء.',
@@ -33,8 +33,8 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf5-2',
       type: 'choose-form',
       title: 'ابنِ: «أَمَّا... فَـ» والحال وما بعد «بَعْدَ»',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'أي صيغة يتطلبها التركيب في كل جملة؟',
+      instructions: 'اختر الكلمة الصحيحة لكل جملة من الفصل.',
+      question: 'أيّ كلمة تناسب كل جملة عن المعركة؟',
       formChoices: [
         {
           sentence: 'وَذَبَحُوا الرِّجَالَ بِالسُّيُوفِ؛ أَمَّا النِّسَاءُ وَالْأَطْفَالُ [choice] أَسْرَى…',
@@ -63,13 +63,13 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf5-3',
       type: 'reflection',
       title: 'كوسه داغ نقطة تحول',
-      instructions: 'اكتب استجابة B2 مترابطة.',
-      question: 'اشرح لماذا لا تظهر المعركة كحدث عسكري فقط.',
+      instructions: 'اكتب فقرة قصيرة عن معركة كوسه داغ.',
+      question: 'لماذا كانت كوسه داغ أكثر من معركة؟',
       correctAnswer: null,
       explanation: 'يجب أن يصل الجواب بين المعركة والهيمنة ومعاناة المدنيين.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'استخدم رابط ترتيب، ورابط نتيجة، وعبارة نسبة للمصدر في 5–6 جمل.', mode: 'Individual' },
+        { question: 'اكتب 5–6 جمل. استخدم «في البداية» أو «بعد»، و«نتيجةً لذلك»، و«تقول المصادر».', mode: 'Individual' },
       ],
     },
   ],
@@ -78,8 +78,8 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf6-1',
       type: 'drag-drop',
       title: 'لاحظ: مراحل المسار والاستدراك',
-      instructions: 'ضع كل عبارة من الفصل السادس في المجموعة المناسبة.',
-      question: 'هل تحدّد العبارة مرحلة في مسار يتطور مع الزمن، أم تستدرك على ما قبلها فتقيّده أو تخالف المتوقَّع منه؟',
+      instructions: 'ضع كل عبارة من الفصل السادس في مجموعتها.',
+      question: 'هل تذكر العبارة خطوة في الطريق، أم شيئًا يخالف ما قبلها؟',
       dragDropGroups: [
         {
           group: 'مرحلة في مسار يتطور مع الزمن',
@@ -118,7 +118,7 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf6-2',
       type: 'multiple-choice',
       title: 'ابنِ: تشبيه لا حقيقة حرفية',
-      instructions: 'اختر التفسير الذي يحافظ على قوة التشبيه كما في الفصل.',
+      instructions: 'اقرأ الجملة من الفصل، ثم اختر معناها.',
       question: '«وَبَدَأَ السَّلَاطِينُ السَّلَاجِقَةُ يَتَصَرَّفُونَ تَقْرِيبًا كَأَنَّهُمْ مُوَظَّفُونَ مَدَنِيُّونَ لِلْمُغُولِ.» ماذا تفيد «كَأَنَّهُمْ» هنا؟',
       options: [
         'أن المغول عيّنوا السلاطين رسميًّا موظفين مدنيين في إدارتهم.',
@@ -137,7 +137,7 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       type: 'error-correction',
       title: 'ابنِ: «أَدَّى إِلَى» و«لَا تَزَالُ» و«مِنْ جِهَةٍ... وَمِنْ جِهَةٍ أُخْرَى»',
       instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'هل استعمل الكاتب حرف الجر المطلوب، والحالة الإعرابية الصحيحة؟',
+      question: 'هل تستطيع أن تصحّح الجمل عن ضعف السلاجقة؟',
       errorItems: [
         {
           sentence: 'أَدَّى ضَعْفُ سَلْطَنَةِ سَلَاجِقَةِ قُونْيَةَ الظُّهُورَ السَّرِيعَ لِإِمَارَاتٍ صَغِيرَةٍ فِي الْأَنَاضُولِ.',
@@ -169,13 +169,13 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf6-4',
       type: 'reflection',
       title: 'من الاتفاق إلى الضم',
-      instructions: 'اكتب استجابة B2 مترابطة.',
-      question: 'اكتب فقرة تشرح مراحل فقدان الاستقلال.',
+      instructions: 'اكتب فقرة عن فقدان السلاجقة استقلالهم.',
+      question: 'كيف فقد السلاجقة استقلالهم خطوة بعد خطوة؟',
       correctAnswer: null,
       explanation: 'المهمة تتطلب كتابة عملية تاريخية مترابطة.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'استخدم «أدى إلى» و«مع مرور الوقت» و«ومع ذلك» و«أخيرًا».', mode: 'Individual' },
+        { question: 'استخدم «أدّى إلى» و«مع مرور الوقت» و«ومع ذلك» و«أخيرًا».', mode: 'Individual' },
       ],
     },
   ],
@@ -184,8 +184,8 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf7-1',
       type: 'multiple-choice',
       title: 'لاحظ: كيف برز؟ وكيف أجاب؟',
-      instructions: 'اقرأ الجملتين من الفصل السابع، ثم اختر الوصف الأدق.',
-      question: '«وَفِي مِثْلِ هَذِهِ الْبِيئَةِ، بَرَزَ يُونُسُ إِمْرَه دَرْوِيشًا حَكِيمًا» و«…مِنْ خِلَالِ عَدَسَةِ هُوِيَّتِهِ الصُّوفِيَّةِ، مُسْتَخْدِمًا الشِّعْرَ وَسِيلَةً لِذَلِكَ». ما وظيفة الكلمتين المنصوبتين «دَرْوِيشًا» و«مُسْتَخْدِمًا»؟',
+      instructions: 'اقرأ الجملتين من الفصل السابع، ثم اختر الإجابة الأدق.',
+      question: '«وَفِي مِثْلِ هَذِهِ الْبِيئَةِ، بَرَزَ يُونُسُ إِمْرَه دَرْوِيشًا حَكِيمًا» و«…مِنْ خِلَالِ عَدَسَةِ هُوِيَّتِهِ الصُّوفِيَّةِ، مُسْتَخْدِمًا الشِّعْرَ وَسِيلَةً لِذَلِكَ». ماذا تصف الكلمتان «دَرْوِيشًا» و«مُسْتَخْدِمًا»؟',
       options: [
         'تبيّنان سبب ظهور يونس وسبب إجابته عن أسئلة الناس.',
         'تقعان مفعولًا به للفعلين «بَرَزَ» و«حَاوَلَ».',
@@ -202,8 +202,8 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf7-2',
       type: 'transformation',
       title: 'ابنِ: من الحال وشبه الجملة إلى الجملة',
-      instructions: 'اقرأ العبارة من الفصل، ثم اكتب الكلمة الناقصة لتعبّر عن المعنى نفسه بتركيب آخر.',
-      question: 'كيف نفكّ الحال وشبه الجملة إلى جمل مستقلة دون أن يتغيّر المعنى؟',
+      instructions: 'اكتب الكلمة الناقصة. حافظ على المعنى نفسه.',
+      question: 'كيف نقول هذه العبارات بجمل أبسط؟',
       transformItems: [
         {
           source: 'وَحَاوَلَ أَنْ يُجِيبَ عَنْ سَعْيِ النَّاسِ إِلَى فَهْمِ مَعْنَى الْحَيَاةِ فِي تِلْكَ الْأَيَّامِ الصَّعْبَةِ مِنْ خِلَالِ عَدَسَةِ هُوِيَّتِهِ الصُّوفِيَّةِ، مُسْتَخْدِمًا الشِّعْرَ وَسِيلَةً لِذَلِكَ.',
@@ -232,8 +232,8 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf7-3',
       type: 'reflection',
       title: 'السياق ← المنظور ← الوسيلة',
-      instructions: 'اكتب استجابة B2 مترابطة.',
-      question: 'اكتب 5–7 جمل تربط الفوضى بهوية يونس وبالشعر.',
+      instructions: 'اكتب 5–7 جمل عن الفوضى وجواب يونس بالشعر.',
+      question: 'كيف أجاب يونس عن أسئلة الناس في زمن الفوضى؟',
       correctAnswer: null,
       explanation: 'ينبغي أن تحمل العلاقات اللغوية نفسها التفسير التاريخي.',
       feedback: reflectionFeedback,
@@ -247,8 +247,8 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf8-1',
       type: 'matching',
       title: 'لاحظ: فكرة مَن هذه؟',
-      instructions: 'صِل كل عبارة من الفصل الثامن بمصدر الفكرة فيها.',
-      question: 'كيف يميّز الكاتب بين حكمه هو، وفكرة يونس، ومضمون المذهب، وكلام الشاعر نفسه؟',
+      instructions: 'صِل كل عبارة من الفصل الثامن بصاحب الفكرة فيها.',
+      question: 'مَن صاحب الفكرة: الكاتب، أم يونس، أم المذهب، أم الشعر؟',
       matchingHeadings: { left: 'من الفصل', right: 'مصدر الفكرة' },
       matchingPairs: [
         { left: 'يُعَدُّ الْإِيمَانُ بِالتَّوْحِيدِ… إِحْدَى أَهَمِّ الْقِيَمِ الْأَسَاسِيَّةِ فِي أَعْمَالِهِ', right: 'تقييم يقدّمه الكاتب لأعمال الشاعر' },
@@ -273,7 +273,7 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       type: 'choose-form',
       title: 'ابنِ: «فَإِنَّ» والنتيجة والاستدراك',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'أي صيغة تناسب الإعراب والعلاقة بين الأفكار؟',
+      question: 'أيّ كلمة تناسب كل جملة عن الخلق؟',
       formChoices: [
         {
           sentence: 'وَلِذَلِكَ فَإِنَّ كُلَّ شَيْءٍ [choice] بِهِ.',
@@ -302,13 +302,13 @@ export const yunusB2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
       id: 'yu-b2-ar-lf8-3',
       type: 'reflection',
       title: 'اشرح مع النسبة',
-      instructions: 'اكتب استجابة B2 مترابطة.',
-      question: 'اشرح العلاقة في الفصل بين التوحيد والحقيقة والخلق.',
+      instructions: 'اكتب فقرة قصيرة عن التوحيد والخلق.',
+      question: 'ما العلاقة بين التوحيد والحقيقة والخلق؟',
       correctAnswer: null,
       explanation: 'تجمع المهمة بين الاتساق المفهومي والانضباط في النسبة.',
       feedback: reflectionFeedback,
       discussionPrompts: [
-        { question: 'استخدم «وفقًا لـ» و«ولذلك» و«من هذا المنظور»، ولا تعمم خارج حدود النص.', mode: 'Individual' },
+        { question: 'استخدم «وفقًا لـ» و«ولذلك» و«من هذا المنظور». قل ما يقوله الفصل فقط.', mode: 'Individual' },
       ],
     },
   ],

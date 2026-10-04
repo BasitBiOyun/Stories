@@ -44,7 +44,7 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   // LOOK — notice what the book's language does, across chapters.
   {
     id: 'moses-a2-language-review-1-in-progress-or-finished', type: 'drag-drop', title: 'Look: Was It Happening or Did It Happen?',
-    instructions: 'Read the sentences from Chapters 5, 7 and 11. Was the action already happening at that moment, or is it a finished action? Put each sentence in the right group.',
+    instructions: 'Was it already happening, or finished? Put each sentence in a group.',
     question: 'What is the difference between “was walking” and “saw”?',
     dragDropGroups: [
       { group: 'Already happening at that moment', items: ['One day he was walking in the bazaar.', 'They were watering their animals.', 'The king was sitting on his throne.'] },
@@ -60,8 +60,8 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'moses-a2-language-review-2-can-could', type: 'matching', title: 'Look: Able or Not Able?',
     matchingHeadings: { left: 'From the book', right: 'Meaning' },
-    instructions: 'Read the sentences from Chapters 8, 12, 14 and 15. Match each one with its meaning.',
-    question: 'What do can, cannot, could and could not mean in these sentences?',
+    instructions: 'Match each sentence from the book with its meaning.',
+    question: 'What do can, cannot, could and could not mean?',
     matchingPairs: [
       { left: 'All of my magicians can do this.', right: 'They are able now.' },
       { left: 'He cannot come with us.', right: 'He is not able now.' },
@@ -79,8 +79,8 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-a2-language-review-3-future', type: 'multiple-choice', title: 'Look: Will and Going To',
-    instructions: 'Read the words of three speakers from Chapters 2, 6 and 14. Then choose the best answer.',
-    question: 'The helpers and magicians: “A boy will be born from the Children of Israel …” The man from the city: “Now they are going to catch you.” Moses (pbuh): “We will leave at night.” When do the actions in these sentences happen?',
+    instructions: 'Read the three speakers’ words. Then choose the best answer.',
+    question: 'The helpers and magicians: “A boy will be born from the Children of Israel …” The man from the city: “Now they are going to catch you.” Moses (pbuh): “We will leave at night.” When do these actions happen?',
     options: ['before the person speaks', 'at the same moment as the person speaks', 'later, after the person speaks'],
     correctAnswer: 2,
     explanation: 'Will + base verb and are going to + base verb talk about the future. The helpers and magicians make a prediction (will be born), the man from the city says what he expects soon (are going to catch), and Moses gives a plan (will leave). After that, the story tells what really happened in the past: “They left Egypt at night.”',
@@ -89,8 +89,8 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   // PRACTISE — use the forms in the book's own sentences.
   {
     id: 'moses-a2-language-review-4-reason-result', type: 'word-bank', title: 'Practise: Reason, Result, Different Idea',
-    instructions: 'Complete the sentences from Chapters 1, 3, 6 and 9 with words from the bank. Two words are not needed.',
-    question: 'Which word gives a reason, which gives a result, and which gives a different idea?',
+    instructions: 'Fill the gaps from the word bank. Two words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: '[blank] his fear, he was rude to the Children of Israel. … Moses’s mother was so sad. [blank] she knew that Allah was kinder to the baby Moses than she was. … He was so sorry [blank] he accidentally caused someone’s death. … He was very old, [blank] he couldn’t help his daughters.',
     wordBank: ['Because of', 'But', 'because', 'so', 'if', 'to'],
     correctAnswer: ['Because of', 'But', 'because', 'so'],
@@ -99,8 +99,8 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-a2-language-review-5-verb-patterns', type: 'choose-form', title: 'Practise: What Comes After the Verb?',
-    instructions: 'Choose the correct form to complete each sentence from Chapters 1, 9 and 12.',
-    question: 'After “forced them”, “began” and “gave them to Moses”, which verb form comes next?',
+    instructions: 'Choose the correct form for each sentence from the book.',
+    question: 'What comes after “forced them”, “began” and “gave them to Moses”?',
     formChoices: [
       { sentence: 'He forced them [choice] dangerous work for no money.', options: ['do', 'to do', 'doing'], answer: 1 },
       { sentence: 'Moses began [choice] with the family.', options: ['to stay', 'stay', 'stayed'], answer: 0 },
@@ -112,8 +112,8 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-a2-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Practise: Fix One Past Verb',
-    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct two irregular past verbs and one was/were + -ing?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the verb in each sentence?',
     errorItems: [
       { sentence: 'He thinked Moses was crazy.', error: 'thinked', options: ['thought', 'think', 'thinking'], answer: 0 },
       { sentence: 'When the sun rised, they arrived at the sea.', error: 'rised', options: ['rising', 'raised', 'rose'], answer: 2 },
@@ -125,7 +125,7 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-a2-language-review-7-a-decision', type: 'sentence-building', title: 'Practise: The Queen’s Decision',
-    instructions: 'Put the words in order to make Queen Asiye’s words from Chapter 4.',
+    instructions: 'Put the words in order to make the queen’s words.',
     question: 'How does the queen say her decision?',
     sentenceChunks: ['I will', 'take him', 'to the palace', 'and look after', 'him.'],
     correctAnswer: null,
@@ -135,8 +135,8 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'moses-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Rainy Morning',
-    instructions: 'This text is not from the book. Complete it with words you practised in the book. Two words are not needed.',
-    question: 'Can you use the book’s language to write about a morning in your own life?',
+    instructions: 'Fill the gaps in this new text. Two words are not needed.',
+    question: 'Can you use the book’s words in a rainy-day story?',
     fillBlanksText: 'Last Monday, I [blank] walking to school with my little brother. It was cold and rainy, [blank] we walked fast. My brother could not find his hat. I gave him my scarf [blank] keep him warm. He smiled and said, “Tomorrow I [blank] bring my own hat.”',
     wordBank: ['was', 'so', 'to', 'will', 'were', 'because'],
     correctAnswer: ['was', 'so', 'to', 'will'],
@@ -145,16 +145,16 @@ export const mosesA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-a2-language-review-9-transfer', type: 'reflection', title: 'Use: A Time Someone Needed Help',
-    instructions: 'Write four or five short sentences about a time you or someone in your family helped a person: at home, at school or in your town. Say your sentences to a partner first.',
-    question: 'Can you use the language of the whole book to tell a short story from your own life?',
+    instructions: 'Write 4–5 sentences about helping someone. Tell a partner first.',
+    question: 'Can you tell a short story from your life?',
     correctAnswer: null,
     explanation: 'Example: “Last week, I was waiting for the bus with my mother. An old man was standing near us. His bag was very heavy, so he could not carry it. My mother told me to help him. I carried his bag to the bus. Next time, I will help again because it is the right thing to do.”',
     feedback: { correct: 'Check your sentences: was/were + -ing, a past verb, could not, because or so, told … to …, will.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — The background: “Last …, I was …-ing …” or “We were …-ing …”', mode: 'Individual' },
-      { question: 'Sentence 2 — The problem: “He/She could not … because …” or “…, so he/she …”', mode: 'Individual' },
-      { question: 'Sentence 3 — The help: “My … told me to … .” “I decided to … to …” (helped, carried, gave …)', mode: 'Pair' },
-      { question: 'Sentence 4 — Next time: “Next time, I will …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Set the scene: “Last …, I was …-ing …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say the problem: “He/She could not … because …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say how you helped: “My … told me to … . I decided to …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Say what you will do: “Next time, I will …”', mode: 'Pair' },
     ],
   },
 ];

@@ -41,8 +41,8 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   // LOOK — notice what the book's language does, across chapters.
   {
     id: 'abraham-a2-language-review-1-going-on-or-one-event', type: 'drag-drop', title: 'Look: Going On, or One Event?',
-    instructions: 'Read the parts from Chapters 2, 5, 6 and 13. Was it going on for some time, or did it happen once? Put each part in the right group.',
-    question: 'Which verbs show something going on for some time, and which show one event?',
+    instructions: 'Put each part in the right group.',
+    question: 'Did it go on for some time, or happen once?',
     dragDropGroups: [
       { group: 'Going on for some time', items: ['Abraham used to watch his father making idols from stone', 'He was trying to show them the right way', 'Hagar was running in the desert'] },
       { group: 'Happened once', items: ['One day, his father saw Abraham.', 'He got an axe and waited.', 'Suddenly water came out of the ground'] },
@@ -57,8 +57,8 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'abraham-a2-language-review-2-had-to-could-can-will', type: 'matching', title: 'Look: Had To, Could Not, Can, Will',
     matchingHeadings: { left: 'From the book', right: 'Meaning' },
-    instructions: 'Read the sentences from Chapters 4, 7, 8 and 14. Match each one with its meaning.',
-    question: 'What do had to, could not, can and will mean in these sentences?',
+    instructions: 'Match each sentence from the book with its meaning.',
+    question: 'What do had to, could not, can and will mean?',
     matchingPairs: [
       { left: 'From then on, he had to guide his people.', right: 'It was his duty.' },
       { left: 'Birds could not fly over the flames.', right: 'In the past, they were not able to do it.' },
@@ -76,7 +76,7 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-a2-language-review-3-reason-result', type: 'multiple-choice', title: 'Look: Because and So',
-    instructions: 'Read the sentences from Chapters 8 and 10. Then choose the best answer.',
+    instructions: 'Read the two sentences. Then choose the best answer.',
     question: 'Chapter 8: “But Abraham (pbuh) stayed calm, because he trusted Allah.” Chapter 10: “He thought Abraham was not an ordinary person. So, he wanted to meet him.” Which parts give the REASON?',
     options: ['he stayed calm … / he wanted to meet him', 'he trusted Allah … / He thought Abraham was not an ordinary person', 'he stayed calm … / He thought Abraham was not an ordinary person'],
     correctAnswer: 1,
@@ -86,8 +86,8 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   // PRACTISE — use the forms in the book's own sentences.
   {
     id: 'abraham-a2-language-review-4-linking-words', type: 'word-bank', title: 'Practise: Reason, Result, Different Idea',
-    instructions: 'Complete the sentences from Chapters 5, 8, 11 and 14 with words from the bank. Two words are not needed.',
-    question: 'Which words give a reason or a result, and which word gives a different idea?',
+    instructions: 'Fill each gap from the bank. Two words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: 'People said, “We saw our fathers worship them; [blank] this, we do the same.” … But they were [blank] arrogant to accept their mistake. … Abraham (pbuh) understood that no one was going to listen to him. [blank], he decided to leave Babylon … It was the first holy place on Earth, [blank] it was lost after a long time.',
     wordBank: ['because of', 'too', 'So', 'but', 'because', 'very'],
     correctAnswer: ['because of', 'too', 'So', 'but'],
@@ -96,8 +96,8 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-a2-language-review-5-verb-patterns', type: 'choose-form', title: 'Practise: Told, Let, Began',
-    instructions: 'Choose the correct form to complete each sentence from the book.',
-    question: 'After “told his son not”, “let the second slave” and “began”, which form comes next?',
+    instructions: 'Choose the correct form for each sentence from the book.',
+    question: 'Which form comes after “told … not”, “let” and “began”?',
     formChoices: [
       { sentence: 'He got angry and told his son not [choice] with it again.', options: ['play', 'to play', 'playing'], answer: 1 },
       { sentence: 'Then Nimrod said, “I let the second slave [choice]. Let him go.”', options: ['to live', 'living', 'live'], answer: 2 },
@@ -109,8 +109,8 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-a2-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Practise: Fix One Mistake',
-    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the verb after “If” and two past verbs?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the verbs in these sentences?',
     errorItems: [
       { sentence: 'If you will not stop speaking like this, I will stone you.', error: 'will not stop', options: ['do not stop', 'did not stop', 'not stop'], answer: 0 },
       { sentence: 'People found Abraham (pbuh) and bringed him to the house of idols.', error: 'bringed', options: ['brings', 'brought', 'bring'], answer: 1 },
@@ -132,8 +132,8 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'abraham-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Rainy Afternoon',
-    instructions: 'This text is not from the book. Complete it with words you practised in the book. Two words are not needed.',
-    question: 'Can you use the book’s language to tell about a day at school?',
+    instructions: 'Complete this new text from the bank. Two words are extra.',
+    question: 'Can you use the book’s words in a school story?',
     fillBlanksText: 'Last Friday, it was raining when school finished. Our teacher told us [blank] wait inside [blank] we had no umbrellas. We [blank] wait for thirty minutes. Then the sky became clear, but the ground was [blank] wet. We walked home carefully.',
     wordBank: ['to', 'because', 'had to', 'still', 'because of', 'used to'],
     correctAnswer: ['to', 'because', 'had to', 'still'],
@@ -142,16 +142,16 @@ export const abrahamA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-a2-language-review-9-transfer', type: 'reflection', title: 'Use: A Day I Remember',
-    instructions: 'Write four or five short sentences about a difficult day: at home, at school or on a trip. Say your sentences to a partner first.',
-    question: 'Can you use the language of the whole book to tell about a day in your own life?',
+    instructions: 'Write 4–5 sentences about a hard day. Tell a partner first.',
+    question: 'Can you tell the story of a hard day?',
     correctAnswer: null,
     explanation: 'Example: “Last winter, I was walking to school with my brother. Suddenly, it started to snow. We could not see the road, so we had to walk slowly. My mother told us to wear our warm coats. Now it is spring, but I still remember that day.”',
     feedback: { correct: 'Check your sentences: was + -ing, one past event, could not / had to, so or because, told … to, still.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — What was going on: “Last …, I was …-ing when …”', mode: 'Individual' },
-      { question: 'Sentence 2 — One event: “One day / Suddenly, …” (came, saw, got …)', mode: 'Individual' },
-      { question: 'Sentence 3 — Ability, duty and reason: “I could not …, so I had to …” or “… because …”', mode: 'Pair' },
-      { question: 'Sentence 4 — An instruction and no change: “My … told me to … . I still …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Set the scene: “Last …, I was …ing when …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say what happened: “One day / Suddenly, …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say what you had to do: “I could not …, so I had to …”', mode: 'Pair' },
+      { question: 'Sentence 4 — End with: “My … told me to … . I still …”', mode: 'Pair' },
     ],
   },
 ];

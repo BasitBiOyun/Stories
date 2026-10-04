@@ -10,8 +10,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
     {
       id: 'ibnjubayr-a2-language-1-past-forms', type: 'matching', title: 'Look: Past Forms in History',
-      instructions: 'Chapter 1 tells the history of Al-Andalus. Match each verb with its past form from the chapter.',
-      question: 'Which past forms does Chapter 1 use for finished events?',
+      instructions: 'Match each verb with its past form in Chapter 1.',
+      question: 'What is the past form of each verb?',
       matchingHeadings: { left: 'Verb', right: 'Past form in Chapter 1' },
       matchingPairs: [{ left: 'build', right: 'built' }, { left: 'take', right: 'took' }, { left: 'bring', right: 'brought' }, { left: 'have', right: 'had' }],
       correctAnswer: { build: 'built', take: 'took', bring: 'brought', have: 'had' },
@@ -20,8 +20,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-1-because-so', type: 'word-bank', title: 'Practise: Because, Because of, So',
-      instructions: 'Complete the sentences from Chapter 1 with words from the bank. Two words are not needed.',
-      question: 'Which word comes before a noun, which comes before a reason sentence, and which gives a result?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Because, because of or so: which fits each gap?',
       fillBlanksText: 'Al-Andalus was in Europe [blank] its location and its people … Córdoba had 700,000 people, [blank] it was the largest city in Western Europe. This great culture surprised the people of that time [blank] Muslims lived a much better life than them.',
       wordBank: ['because of', 'so', 'because', 'but', 'when'],
       correctAnswer: ['because of', 'so', 'because'],
@@ -30,15 +30,15 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-1-describe-city', type: 'reflection', title: 'Use: A Great City',
-      instructions: 'Use the language of Chapter 1 to talk about a big city in Türkiye or in the world. Say three sentences to your partner.',
-      question: 'Can you describe a city with a fact, a reason and a result?',
+      instructions: 'Tell your partner three sentences about a big city.',
+      question: 'Can you describe a big city?',
       correctAnswer: null,
       explanation: 'Example: “İstanbul is a very big city. It is famous because of its history and its mosques. It has more than 15 million people, so it is the largest city in Türkiye.”',
       feedback: { correct: 'Check your sentences: one fact, because or because of, and so for a result.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — A fact: “… is a big city in …”', mode: 'Individual' },
-        { question: 'Sentence 2 — A reason: “It is famous because of …”', mode: 'Individual' },
-        { question: 'Sentence 3 — A result: “It has …, so …”', mode: 'Pair' },
+        { question: 'Sentence 1 — Give a fact: “… is a big city in …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give a reason: “It is famous because of …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give a result: “It has …, so …”', mode: 'Pair' },
       ],
     },
   ],
@@ -46,7 +46,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'ibnjubayr-a2-language-2-when', type: 'multiple-choice', title: 'Look: When He Was Young',
       instructions: 'Read the sentences from Chapter 2. Then choose the best answer.',
-      question: '“When he was young, Ibn Jubayr studied hard …” and “When he grew up, he got a job with the government …” What does “When …” tell us in these sentences?',
+      question: '“When he was young, Ibn Jubayr studied hard …” and “When he grew up, he got a job with the government …” What does “When …” tell us?',
       options: ['the time in his life', 'the reason for his job', 'the place of his school'],
       correctAnswer: 0,
       explanation: '“When + past sentence” gives a time in a person’s life: when he was young, when he grew up. The main sentence tells what happened at that time: he studied hard, he got a job.',
@@ -54,7 +54,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-2-goals', type: 'word-bank', title: 'Practise: Dreams and Goals',
-      instructions: 'Complete the sentences from Chapter 2 with words from the bank. Two words are not needed.',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
       question: 'What form comes after “dream was”, “wanted” and “goal was”?',
       fillBlanksText: 'One of his biggest dreams was [blank] on Hajj. He also wanted [blank] new knowledge and skills during his journey to Mecca. Another goal of this trip was [blank] information about other Muslim lands.',
       wordBank: ['to go', 'to gain', 'to get', 'going', 'gained'],
@@ -64,15 +64,15 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-2-my-dream', type: 'reflection', title: 'Use: My Biggest Dream',
-      instructions: 'Talk about your own dreams and goals. Say three sentences to your partner, then write them.',
-      question: 'Can you talk about your dreams with “to + verb”?',
+      instructions: 'Say three sentences about your dreams to a partner. Then write them.',
+      question: 'Can you talk about your dreams?',
       correctAnswer: null,
       explanation: 'Example: “One of my biggest dreams is to visit Japan. I also want to learn a new language. Another goal is to make new friends there.”',
       feedback: { correct: 'Check your sentences: dream is to …, want to …, goal is to … .', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — “One of my biggest dreams is to …”', mode: 'Individual' },
-        { question: 'Sentence 2 — “I also want to …”', mode: 'Individual' },
-        { question: 'Sentence 3 — “Another goal is to …” Ask your partner: “What is your biggest dream?”', mode: 'Pair' },
+        { question: 'Sentence 1 — Your big dream: “One of my biggest dreams is to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Add a wish: “I also want to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Add a goal: “Another goal is to …” Ask: “What is your biggest dream?”', mode: 'Pair' },
       ],
     },
   ],
@@ -88,7 +88,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-3-by-on', type: 'word-bank', title: 'Practise: By Boat, On Foot',
-      instructions: 'Complete the sentence from Chapter 3 with words from the bank. Two words are not needed.',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
       question: 'Which small words go with ways of traveling?',
       fillBlanksText: 'He traveled [blank] boat, by camel, and [blank] foot to visit Mecca.',
       wordBank: ['by', 'on', 'in', 'with'],
@@ -98,14 +98,14 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-3-my-trip', type: 'reflection', title: 'Use: How Did You Travel?',
-      instructions: 'Think of a trip you made: to school, to a village, to another city. Tell your partner how you traveled.',
+      instructions: 'Tell your partner about a trip and how you traveled.',
       question: 'Can you say how you traveled and why?',
       correctAnswer: null,
       explanation: 'Example: “Last summer, I traveled to my grandparents’ village by car. Then we went to the river on foot. I wrote about it in my notebook.”',
       feedback: { correct: 'Check your sentences: past verbs, by + transport, on foot.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — “Last …, I traveled to … by …”', mode: 'Individual' },
-        { question: 'Sentence 2 — “Then we went to … on foot / by …”', mode: 'Individual' },
+        { question: 'Sentence 1 — Say where and how: “Last …, I traveled to … by …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what came next: “Then we went to … on foot / by …”', mode: 'Individual' },
         { question: 'Ask your partner: “How do you come to school?”', mode: 'Pair' },
       ],
     },
@@ -122,7 +122,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-4-sequence', type: 'word-bank', title: 'Practise: The Order of the Journey',
-      instructions: 'Complete the sentences from Chapter 4 with words from the bank. One word is not needed.',
+      instructions: 'Fill each gap from the word bank. One word is not needed.',
       question: 'Which words show the order of events?',
       fillBlanksText: '[blank] they were sailing between these islands, a terrible storm caught them. [blank] the storm stopped, the ship continued on its way toward the island of Crete. [blank], it turned south towards Egypt and [blank] arrived in Alexandria on March 26.',
       wordBank: ['While', 'After', 'Then', 'finally', 'Before'],
@@ -132,7 +132,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-4-retell-route', type: 'reflection', title: 'Use: Tell the Route',
-      instructions: 'Retell Ibn Jubayr’s route from Granada to Cairo. Use the order words. Then tell your partner your route from home to school.',
+      instructions: 'Tell Ibn Jubayr’s route in order. Then tell your route to school.',
       question: 'Can you tell a route in order?',
       correctAnswer: null,
       explanation: 'Example: “First, Ibn Jubayr went to Ceuta. Then, he took a Genoese ship. While they were sailing, a storm caught them. After the storm stopped, the ship went to Crete. Finally, he arrived in Alexandria.”',
@@ -155,7 +155,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-5-forms', type: 'choose-form', title: 'Practise: Did Not, Used To, Could',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 5.',
+      instructions: 'Choose the correct word for each sentence from Chapter 5.',
       question: 'Which form comes after “did not”, “used it” and “could”?',
       formChoices: [
         { sentence: 'He did not [choice] the farmers to pay the Nile water taxes.', options: ['asked', 'ask', 'asking'], answer: 1 },
@@ -168,15 +168,15 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-5-good-leader', type: 'reflection', title: 'Use: A Good Leader',
-      instructions: 'Saladin helped mosques, hospitals, schools and poor people. Talk about what a good leader does for a city or a school.',
-      question: 'Can you describe a good leader with the language of Chapter 5?',
+      instructions: 'Talk with your partner about what a good leader does.',
+      question: 'What does a good leader do?',
       correctAnswer: null,
       explanation: 'Example: “A good leader is fair and kind. He or she gives support to schools and hospitals. A good leader does not forget poor people. The streets are so clean that everyone is happy.”',
       feedback: { correct: 'Check your sentences: gives support to …, does not + verb, so … that … .', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — “A good leader is … and …”', mode: 'Individual' },
-        { question: 'Sentence 2 — “He or she gives support to …”', mode: 'Individual' },
-        { question: 'Sentence 3 — “The … are so … that …” Compare your ideas with your partner.', mode: 'Pair' },
+        { question: 'Sentence 1 — Describe the leader: “A good leader is … and …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say who they help: “He or she gives support to …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give a result: “The … are so … that …” Compare with your partner.', mode: 'Pair' },
       ],
     },
   ],
@@ -192,8 +192,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-6-caravan', type: 'word-bank', title: 'Practise: Rich and Poor',
-      instructions: 'Complete the sentences from Chapter 6 with words from the bank. Two words are not needed.',
-      question: 'Can you complete the sentences about the caravan?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'How could people see who was rich?',
       fillBlanksText: 'He said that you could easily see [blank] was rich and who was poor in caravans. You only [blank] to look at their tents. The tents of rich royal people [blank] amazing.',
       wordBank: ['who', 'needed', 'were', 'what', 'was'],
       correctAnswer: ['who', 'needed', 'were'],
@@ -202,7 +202,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-6-picture', type: 'reflection', title: 'Use: It Is Like …',
-      instructions: 'Look at the picture for Chapter 6. Describe it to your partner with “It is like …” and “They are like …”.',
+      instructions: 'Describe the Chapter 6 picture to your partner with “It is like …”.',
       question: 'Can you describe a picture with “be like”?',
       correctAnswer: null,
       explanation: 'Example: “The desert is like a sea of sand. The red tent on the camel is like a small palace. The camels are like a long line on the hills.”',
@@ -226,7 +226,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-7-with-respect', type: 'word-bank', title: 'Practise: With Respect, Such As',
-      instructions: 'Complete the sentences from Chapter 7 with words from the bank. Two words are not needed.',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
       question: 'Which words tell us how, and which words give examples?',
       fillBlanksText: 'He describes the Great Mosque of Mecca and the holy Ka\'bah [blank] respect. People traveled to Mecca from very far places [blank] Persia, India, and Africa. … A mother\'s body [blank] makes enough space for her baby.',
       wordBank: ['with', 'such as', 'surprisingly', 'for', 'surprising'],
@@ -236,15 +236,15 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-7-special-place', type: 'reflection', title: 'Use: A Special Place',
-      instructions: 'Describe a special place you know: a mosque, a park, a square. Say where it is and what it can do.',
+      instructions: 'Describe a special place you know. Say where it is.',
       question: 'Can you describe a place with “is located in” and “can”?',
       correctAnswer: null,
       explanation: 'Example: “Our town mosque is located in the old market. It is not very big, but it can hold many people on Fridays. People speak quietly and with respect there. Many people, such as students and old men, come here.”',
       feedback: { correct: 'Check: is located in …, can / cannot + verb, with respect or such as.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — “… is located in …”', mode: 'Individual' },
-        { question: 'Sentence 2 — “It can … / It cannot …”', mode: 'Individual' },
-        { question: 'Sentence 3 — “People … with respect there.” or “… such as …”', mode: 'Pair' },
+        { question: 'Sentence 1 — Say where it is: “… is located in …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what it can do: “It can … / It cannot …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Add more: “People … with respect there.” or “… such as …”', mode: 'Pair' },
       ],
     },
   ],
@@ -271,7 +271,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-8-there-were', type: 'choose-form', title: 'Practise: Was or Were?',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 8.',
+      instructions: 'Choose the correct word for each sentence from Chapter 8.',
       question: 'When do we use was, were and -ed?',
       formChoices: [
         { sentence: 'At that time, Baghdad [choice] the capital city of the Abbasids.', options: ['were', 'was', 'is'], answer: 1 },
@@ -284,7 +284,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-8-my-town', type: 'reflection', title: 'Use: In My Town',
-      instructions: 'Ibn Jubayr counted the bathhouses and mosques in Baghdad. Write three sentences about your town with “there is” and “there are”.',
+      instructions: 'Write three sentences about your town with “there is” and “there are”.',
       question: 'Can you describe your town with numbers?',
       correctAnswer: null,
       explanation: 'Example: “In my town, there are four schools and ten mosques. There is a big park near the river. There are many shops in the centre.”',
@@ -308,7 +308,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-9-gifts', type: 'word-bank', title: 'Practise: Help for Students',
-      instructions: 'Complete the sentences from Chapter 9 with words from the bank. Two words are not needed.',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
       question: 'Which form comes after “gifts”, “could” and “not”?',
       fillBlanksText: 'These gifts [blank] travelers and students from other countries. They could also [blank] in madrasas (schools) and not [blank] for their living costs.',
       wordBank: ['helped', 'stay', 'pay', 'helps', 'staying'],
@@ -318,7 +318,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-9-building', type: 'reflection', title: 'Use: Describe a Building',
-      instructions: 'Ibn Jubayr listed the parts of the Great Mosque. Choose a building you know and list its parts for your partner.',
+      instructions: 'Choose a building you know. Tell your partner about its parts.',
       question: 'Can you describe a building with a list?',
       correctAnswer: null,
       explanation: 'Example: “Our school has a big garden, a library, a sports hall and three floors. The library has many books and a quiet corner.”',
@@ -352,8 +352,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-10-purpose', type: 'word-bank', title: 'Practise: Why and What For?',
-      instructions: 'Complete the sentences from Chapter 10 with words from the bank. Two words are not needed.',
-      question: 'Which form gives the purpose, and which gives a past event?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'Which words say why, and which say what happened?',
       fillBlanksText: '… he spent nearly two weeks waiting at the port city of Acre because he needed good winds [blank]. … In 1187, Saladin turned his eyes to the Crusader lands and [blank] Jerusalem. Ibn Jubayr went to Mecca for the second time [blank] Allah …',
       wordBank: ['to sail', 'attacked', 'to thank', 'sailing', 'thanked'],
       correctAnswer: ['to sail', 'attacked', 'to thank'],
@@ -362,7 +362,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-10-waiting', type: 'reflection', title: 'Use: Waiting for Something',
-      instructions: 'Ibn Jubayr waited nearly two weeks for good winds. Tell your partner about a time you waited for something.',
+      instructions: 'Tell your partner about a time you waited for something.',
       question: 'Can you talk about waiting, with a time and a reason?',
       correctAnswer: null,
       explanation: 'Example: “Last year, I waited for nearly an hour at the bus station because the bus was late. I went there to visit my aunt.”',
@@ -385,7 +385,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-11-time-order', type: 'word-bank', title: 'Practise: In 1184, Then, In the End',
-      instructions: 'Complete the sentences from Chapter 11 with words from the bank. Two words are not needed.',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
       question: 'Which words show the order of the voyage home?',
       fillBlanksText: '[blank] 1184, he took a ship to travel back home. … [blank], he waited for better weather to take another ship home from Sicily. [blank], in 1185, he passed Sardinia and reached the coast of Spain.',
       wordBank: ['In', 'Then', 'In the end', 'On', 'Before'],
@@ -395,8 +395,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-11-hard-day', type: 'reflection', title: 'Use: A Hard Day with a Happy End',
-      instructions: 'Tell your partner about a difficult day that ended well: a lost bag, a missed bus, a hard exam.',
-      question: 'Can you tell a short story with “almost”, “but” and “In the end”?',
+      instructions: 'Tell your partner about a hard day that ended well.',
+      question: 'Can you tell a short story with “almost” and “In the end”?',
       correctAnswer: null,
       explanation: 'Example: “Last week, I almost missed the school bus, but my father drove me to school. In the end, I arrived on time and I was very thankful.”',
       feedback: { correct: 'Check: almost + past verb, but, In the end.', incorrect: '' },
@@ -418,8 +418,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-12-forms', type: 'choose-form', title: 'Practise: Needed, Avoided, Had To',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 12.',
-      question: 'Which past forms and base verbs complete the sentences?',
+      instructions: 'Choose the correct word for each sentence from Chapter 12.',
+      question: 'Which form fits each sentence?',
       formChoices: [
         { sentence: 'Travelers also [choice] to fill their water bags all the time.', options: ['needed', 'need', 'needing'], answer: 0 },
         { sentence: 'This way, they [choice] the hot afternoon sun.', options: ['avoid', 'avoiding', 'avoided'], answer: 2 },
@@ -431,7 +431,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-12-safety', type: 'reflection', title: 'Use: Travel Safety Tips',
-      instructions: 'Travelers today also need to be careful. With your partner, write three safety tips for a school trip.',
+      instructions: 'With your partner, write three safety tips for a school trip.',
       question: 'Can you give safety advice with “have to” and “should”?',
       correctAnswer: null,
       explanation: 'Example: “You have to stay with your group. You should carry a water bottle. You should not walk in the hot afternoon sun for a long time.”',
@@ -455,8 +455,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-13-lessons', type: 'word-bank', title: 'Practise: What He Learned',
-      instructions: 'Complete the sentences from Chapter 13 with words from the bank. Two words are not needed.',
-      question: 'Can you complete the sentences about his lessons?',
+      instructions: 'Fill each gap from the word bank. Two words are not needed.',
+      question: 'What did he learn from his journey?',
       fillBlanksText: 'For him, learning was just as [blank] as Hajj. … In the end, he learned many things he [blank] learn at home in Granada. His journey made him a [blank] person.',
       wordBank: ['important', 'could not', 'wiser', 'more important', 'wise'],
       correctAnswer: ['important', 'could not', 'wiser'],
@@ -465,7 +465,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     {
       id: 'ibnjubayr-a2-language-13-advice', type: 'reflection', title: 'Use: Advice for a Young Learner',
-      instructions: 'Write three sentences of advice for a younger student. Use “should” and give a reason.',
+      instructions: 'Write three sentences of advice for a younger student.',
       question: 'Can you give advice like Ibn Jubayr?',
       correctAnswer: null,
       explanation: 'Example: “You should read a lot of books because they teach you new things. You should visit new places with your family. You should ask questions, so you can learn more.”',

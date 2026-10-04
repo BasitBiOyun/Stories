@@ -12,7 +12,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: مَن الفاعل؟ ولماذا لا يُذكر؟',
       instructions: 'ضع كل جملة من المقدمة في المجموعة المناسبة.',
-      question: 'هل يظهر في الجملة مَن قام بالفعل، أم بُني الفعل للمجهول فصار التركيز على الحدث ومَن وقع عليه؟',
+      question: 'هل نعرف مَن قام بالفعل في الجملة، أم لا يُذكر؟',
       dragDropGroups: [
         {
           group: 'الفاعل ظاهر في الجملة',
@@ -53,8 +53,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-1-ar-contrast',
       type: 'error-correction',
       title: 'ابنِ: الخبر المنصوب بعد «ليس» و«كونه»',
-      instructions: 'في كل جملة خطأ واحد في الإعراب. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما حالة الخبر بعد «ليست» وبعد «كونه»؟',
+      instructions: 'في كل جملة خطأ في آخر كلمة. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'ما آخر الكلمة بعد «ليست» و«كونه»؟',
       errorItems: [
         {
           sentence: 'قصة آدم ليست رمزية أو اختلاقٌ خياليٌّ، بل هي قصة فريدة ذات حقيقة وصحة تاريخية',
@@ -80,8 +80,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-1-ar-cohesion',
       type: 'multiple-choice',
       title: 'حلّل: صياغة تحفظ موقف الكاتب',
-      instructions: 'اختر الصياغة التي تحافظ بدقة على ما تقوله المقدمة عن الشيطان.',
-      question: 'تقول المقدمة إن الشيطان يوصف في السور بأنه عصى أمر الله، ثم تحدد كيف يُعرض أساسًا. أي صياغة تحفظ هذا الموقف دون زيادة أو نقص؟',
+      instructions: 'اختر الصياغة التي تحفظ ما تقوله المقدمة عن الشيطان.',
+      question: 'أي صياغة تقول ما تقوله المقدمة عن الشيطان، بلا زيادة ولا نقص؟',
       options: [
         'الشيطان في هذه السور معارض لله فقط، وليست له علاقة بالإنسان.',
         'الشيطان عاصٍ لأمر الله، لكن السور تُبرزه أكثر بوصفه منافسًا وعدوًّا لآدم وللإنسان.',
@@ -99,16 +99,16 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-1-ar-production',
       type: 'reflection',
       title: 'فقرة تفسيرية واعية بالمصدر',
-      instructions: 'اكتب فقرة عربية مترابطة من 6–8 جمل عن رواية تاريخية أو أدبية أو دينية تعرفها. استخدم إحالة إلى مصدر، وجملة مبنية للمجهول، وتصحيحًا بـ«بل» أو «أكثر من كونه»، ومقابلة واضحة. لا تعِد سرد قصة آدم.',
-      question: 'هل تستطيع ضبط المصدر والتركيز والمقابلة في فقرة واحدة؟',
+      instructions: 'اكتب فقرة من 6–8 جمل عن قصة تاريخية تعرفها، واذكر مصدرها.',
+      question: 'هل تستطيع أن تحكي قصة وتذكر مصدرها؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تحدد مصدرها وتختار تركيز الجملة وتستعمل المقابلة لتدقيق المعنى.',
       feedback: { correct: 'حافظ على المصدر ودرجة اليقين والترابط.', incorrect: '' },
       discussionPrompts: [
-        { question: 'المصدر — ابدأ بـ«وفقًا لـ...» عند الحاجة.', mode: 'Individual' },
-        { question: 'التركيز — استخدم مبنيًا للمجهول حين يكون الحدث أو المتلقي أهم.', mode: 'Individual' },
-        { question: 'التصحيح — استخدم «بل» لتصحيح فكرة.', mode: 'Individual' },
-        { question: 'المقابلة — اختم بعلاقة تضاد أو ترجيح واضحة.', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر المصدر: «وفقًا لـ…، …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — ابدأ بالحدث لا بمن فعله: «كُتِبَ … / أُمْلِيَ …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — صحّح فكرة: «ليست …، بل …»', mode: 'Individual' },
+        { question: 'الجملة الرابعة — اختم بمقابلة: «أمّا …، فـ…»', mode: 'Pair' },
       ],
     },
   ],
@@ -118,7 +118,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: الشرح والشاهد والنتيجة',
       instructions: 'ضع كل عبارة من الفصل الثاني في المجموعة المناسبة.',
-      question: 'هل تشرح العبارة معنى كلمة، أم تقدّم شاهدًا من مصدر، أم تستخلص نتيجة؟',
+      question: 'هل تشرح العبارة كلمة، أم تذكر شاهدًا، أم تستخلص نتيجة؟',
       dragDropGroups: [
         {
           group: 'شرح أو تعريف',
@@ -148,8 +148,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-2-ar-source-evidence',
       type: 'choose-form',
       title: 'ابنِ: المبني للمجهول والإعراب في جمل الشرح',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'انتبه إلى صيغة الفعل ومَن وقع عليه، وإلى حالة الاسم بعد حرف الجر والمضاف.',
+      instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
+      question: 'أيّ كلمة تناسب كل جملة؟',
       formChoices: [
         {
           sentence: 'خلق آدم من مادة [choice] في القرآن بتعابير مختلفة، مثل التراب والماء والطين.',
@@ -178,8 +178,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-2-ar-synthesis',
       type: 'sentence-building',
       title: 'ابنِ: النفي ثم التصحيح بـ«بل»',
-      instructions: 'رتّب القطع لتبني جملة النتيجة كما وردت في آخر الفصل.',
-      question: 'كيف ينفي الفصل تصورًا عن أصل آدم ثم يضع مكانه التصور الصحيح؟',
+      instructions: 'رتّب القطع لتبني جملة النتيجة في آخر الفصل.',
+      question: 'مِمَّ لم يُخلق آدم، ومِمَّ خُلق؟',
       sentenceChunks: ['وبناء على ذلك،', 'فإن آدم عليه السلام', 'لم يُخْلَقْ', 'من كائن آخر،', 'بل خُلِقَ', 'مباشرة من التراب.'],
       correctAnswer: null,
       explanation: 'تبدأ الجملة بعلامة النتيجة «وبناء على ذلك»، ثم «فإنّ» + اسمها المنصوب «آدمَ». بعد ذلك ينفي الكاتب بـ«لم» + مضارع مجزوم («لم يُخْلَقْ») تصورًا خاطئًا، ثم يصحّحه بـ«بل» + الفعل الماضي («بل خُلِقَ مباشرة من التراب»). «بل» بعد النفي تعني: ليس الأمر كذلك، وإنما هو كذا.',
@@ -192,8 +192,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-2-ar-production',
       type: 'reflection',
       title: 'فقرة من الدليل إلى النتيجة',
-      instructions: 'اكتب فقرة من 6–8 جمل تشرح مفهومًا يمكن وصفه بأكثر من تعبير. استخدم جملة تعريفية، ومبنيًا للمجهول عند الحاجة، وعلامة مثال، وشاهدًا منسوبًا بوضوح، ثم اختم بـ«وهكذا» أو «بناء على ذلك» بنتيجة مبررة.',
-      question: 'هل تستطيع بناء شرح مترابط لا يخلط بين المصدر والنتيجة؟',
+      instructions: 'اكتب فقرة من 6–8 جمل تشرح فكرة، ثم أعطِ مثالًا، واختم بنتيجة.',
+      question: 'هل تستطيع أن تشرح فكرة وتصل إلى نتيجة؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تجعل كل نتيجة قابلة للتتبع إلى شرح أو دليل سابق.',
       feedback: { correct: 'أبقِ الشاهد والنتيجة في مستويين واضحين.', incorrect: '' },
@@ -204,7 +204,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-3-ar-purpose-necessity',
       type: 'multiple-choice',
       title: 'لاحظ: درجة اليقين في التفسير',
-      instructions: 'اقرأ جملة الفصل، ثم اختر الصياغة التي تحافظ على درجة يقين الكاتب.',
+      instructions: 'اقرأ جملة الفصل، ثم اختر صياغة لها درجة اليقين نفسها.',
       question: 'يقول الكاتب: «ويمكن فهْم هذه الأسماء على أنها الأساس العِلميّ للإنسانية». أي صياغة تحفظ درجة اليقين نفسها؟',
       options: [
         'ثبت قطعًا أن هذه الأسماء هي الأساس العلمي الوحيد للإنسانية.',
@@ -223,8 +223,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-3-ar-stance',
       type: 'choose-form',
       title: 'ابنِ: «لا بد أن» وأفعال الدلالة',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما صيغة الفعل بعد «أن»؟ وما الحرف الذي يأتي بعد «يدل» وبعد «تشير»؟',
+      instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
+      question: 'ما آخر الفعل بعد «أن»؟ وما الحرف بعد «يدل» و«تشير»؟',
       formChoices: [
         {
           sentence: 'كذلك كان لا بد أن [choice] الله.',
@@ -253,8 +253,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-3-ar-synthesis',
       type: 'transformation',
       title: 'ابنِ: الغاية والمصدر في صياغة جديدة',
-      instructions: 'اقرأ جملة الفصل، ثم اكتب ما ينقص في الصياغة الجديدة بحيث يبقى المعنى نفسه.',
-      question: 'كيف تنقل الغاية إلى آخر الجملة؟ وكيف تحوّل المصدر «فهْم» إلى «أن» + فعل؟',
+      instructions: 'اكتب الكلمات الناقصة، ولا تغيّر المعنى.',
+      question: 'كيف نقول هاتين الجملتين بطريقة أخرى؟',
       transformItems: [
         {
           source: 'لكي يكون آدم عليه السلام خليفة في الأرض، كان يحتاج إلى بعض الصفات الاستثنائية.',
@@ -278,8 +278,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-3-ar-production',
       type: 'reflection',
       title: 'اكتب تفسيرًا مقيدًا',
-      instructions: 'اكتب فقرة من 7–9 جمل تبدأ بدليل، ثم تستخدم «يدل على»، و«يشير إلى»، و«يمكن فهم... على أنه» بدرجات مختلفة. اختم باحتمال لا يتجاوز قوة الدليل.',
-      question: 'هل تستطيع التحكم بدرجة قوة التفسير؟',
+      instructions: 'اكتب فقرة من 7–9 جمل عن دليل، وما يدل عليه، وما قد يعنيه.',
+      question: 'هل تستطيع أن تبيّن مدى يقينك من معنى الدليل؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تجعل الفرق ظاهرًا بين الدليل والتفسير القوي والاستنتاج والاحتمال.',
       feedback: { correct: 'اجعل كل درجة من التفسير متناسبة مع الدليل.', incorrect: '' },
@@ -309,8 +309,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-4-ar-need',
       type: 'word-bank',
       title: 'ابنِ: أدوات الربط في حجة التكامل',
-      instructions: 'اسحب الأداة المناسبة إلى كل فراغ. في البنك أداتان زائدتان.',
-      question: 'أي أداة تستدرك؟ وأيها تعرّف؟ وأيها تصحّح بعد النفي؟ وأيها تفصّل؟',
+      instructions: 'أكمل الجمل بكلمات من البنك. في البنك كلمتان زائدتان.',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: '[blank]، يذكر الله في القرآن نوعا آخر من العلم، [blank] الوحي … وهذان النوعان لا يغني أحدهما عن الآخر، [blank] يكمل أحدهما الآخر. فأحدهما ضروري ليستمر الإنسان في حياته الدنيا، [blank] الوحي فهو ضروري لفهم دوره، وواجبه، والنظام الذي وضعه الله.',
       wordBank: ['ومع ذلك', 'وهو', 'بل', 'أما', 'لذلك', 'لكي'],
       correctAnswer: ['ومع ذلك', 'وهو', 'بل', 'أما'],
@@ -324,7 +324,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-4-ar-synthesis',
       type: 'error-correction',
       title: 'ابنِ: الفعل وحرفه وإعراب المضارع',
-      instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
+      instructions: 'في كل جملة خطأ. انقر الخطأ، ثم اختر التصحيح.',
       question: 'ما الحرف الذي يأتي مع «يحتاج»؟ ومتى تبقى نون «يسجدون»؟',
       errorItems: [
         {
@@ -351,8 +351,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-4-ar-production',
       type: 'reflection',
       title: 'اكتب حجة تكامل',
-      instructions: 'اكتب فقرة من 7–9 جمل عن موردين أو مهارتين مختلفتين لكنهما متكاملتان. استخدم «ومع ذلك»، و«ليس... بل...»، و«كلا/كلاهما»، وصيغة ضرورة أو حاجة، ثم اختم بالغاية المشتركة.',
-      question: 'هل تستطيع بيان اختلاف الوظائف دون صنع تعارض زائف؟',
+      instructions: 'اكتب فقرة من 7–9 جمل عن مهارتين مختلفتين تكمل إحداهما الأخرى.',
+      question: 'لماذا نحتاج إلى الاثنتين معًا؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تشرح الفرق ثم تصحح الاختيار الزائف وتبين كيف يخدم الموردان غاية أكبر.',
       feedback: { correct: 'حافظ على اختلاف الوظيفة ووحدة الغاية.', incorrect: '' },
@@ -364,7 +364,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: التوضيح والتعليل',
       instructions: 'ضع كل عبارة من الفصل الخامس في المجموعة المناسبة.',
-      question: 'هل تحدّد العبارة المقصود بكلمة سبقتها، أم تذكر سبب حكم أو فعل؟',
+      question: 'هل توضّح العبارة كلمة قبلها، أم تذكر السبب؟',
       dragDropGroups: [
         {
           group: 'توضيح: تحدّد المقصود بكلمة سابقة',
@@ -405,8 +405,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-5-ar-cause-contrast',
       type: 'choose-form',
       title: 'ابنِ: اسم «أنّ» و«لكنّ» وخبر «كان»',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما حالة الاسم بعد «أنّ» و«لكنّ»؟ وما حالة خبر «يكن»؟',
+      instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
+      question: 'ما آخر الكلمة بعد «أنّ» و«لكنّ» و«يكن»؟',
       formChoices: [
         {
           sentence: 'وأدركت أن آدم عليه السلام هو المخلوق الذي يعلم ما لا يعلمون، وأنّ [choice] على التعلم هي أسمى خصائصه.',
@@ -435,8 +435,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-5-ar-reformulation',
       type: 'transformation',
       title: 'ابنِ: الحصر والتعليل بصياغة أخرى',
-      instructions: 'اقرأ جملة الفصل، ثم اكتب ما ينقص في الصياغة الجديدة بحيث يبقى المعنى نفسه.',
-      question: 'كيف تعبّر عن الحصر بغير «لا... إلا»؟ وكيف تحوّل المصدر «اعتقاده» إلى فعل؟',
+      instructions: 'اكتب الكلمات الناقصة، ولا تغيّر المعنى.',
+      question: 'كيف نقول هاتين الجملتين بطريقة أخرى؟',
       transformItems: [
         {
           source: 'لأن هذا السجود لا يكون إلا لله وحده',
@@ -460,8 +460,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-5-ar-production',
       type: 'reflection',
       title: 'ناقش معيارا ضعيفا',
-      instructions: 'اكتب أو قل فقرة من 6–8 جمل عن ادعاء يحكم على الناس أو الأفكار أو الإنجازات بمعيار غير كاف. استخدم أربعة موارد على الأقل من الفصل: توضيحا بـ«وهو» أو «أي»، جملة تعليل بـ«لأن»، انتقالا بـ«من جهة أخرى»، ومقابلة بـ«ولكن» أو ما يؤدي وظيفتها. لا تعِد جواب التحدي السريع عن خلل حجة إبليس.',
-      question: 'هل تستطيع كشف المعيار الذي تقوم عليه دعوى ثم مناقشته بلغة مترابطة ودقيقة؟',
+      instructions: 'اكتب أو قل فقرة من 6–8 جمل عن طريقة ضعيفة في الحكم على الناس أو الأشياء.',
+      question: 'لماذا هذا المعيار ضعيف؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تحدد المعيار وتوضح معناه، وتبين سبب الاعتماد عليه، ثم تنقل القارئ إلى منظور آخر وتقدم حجة تبين قصوره.',
       feedback: {
@@ -469,10 +469,10 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'التوضيح — استخدم «وهو» أو «أي» لتحديد معنى مصطلح أو مرجع.', mode: 'Individual' },
-        { question: 'التعليل — استخدم «لأن» لتبين الأساس الذي تقوم عليه الدعوى.', mode: 'Individual' },
-        { question: 'الانتقال — استخدم «من جهة أخرى» عندما تنتقل فعلا إلى زاوية نظر مقابلة.', mode: 'Individual' },
-        { question: 'النقد — استخدم «ولكن» أو أداة مناسبة لإدخال ما يضعف المعيار أو يعارضه.', mode: 'Pair' },
+        { question: 'الجملة الأولى — وضّح كلمة: «…، أي …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — اذكر سبب هذا الحكم: «… لأنهم …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — قدّم رأيًا آخر: «ومن جهة أخرى، …»', mode: 'Individual' },
+        { question: 'الجملة الرابعة — بيّن ضعف المعيار: «ولكنّ …»', mode: 'Pair' },
       ],
     },
   ],
@@ -482,7 +482,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'لاحظ: الأمر والإذن والنهي والطلب',
       instructions: 'صل كل عبارة من الآيات في الفصل بما تؤديه في سياقها.',
-      question: 'ماذا يفعل المتكلم بكل عبارة: يأمر، أم يأذن، أم ينهى، أم يطلب؟',
+      question: 'هل تأمر العبارة، أم تأذن، أم تنهى، أم تطلب؟',
       matchingHeadings: { left: 'من الفصل', right: 'ما تؤديه في السياق' },
       matchingPairs: [
         { left: 'اسكن أنت وزوجك الجنة', right: 'أمر يحدد مكان الإقامة ومَن يشارك فيها' },
@@ -509,7 +509,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'sentence-building',
       title: 'ابنِ: مقابلة مسارين بـ«بينما»',
       instructions: 'رتّب القطع لتبني جملة المقابلة كما وردت في الفصل.',
-      question: 'كيف يضع الكاتب مسار الشيطان ومسار آدم جنبًا إلى جنب في جملة واحدة؟',
+      question: 'ما الفرق بين طريق الشيطان وطريق آدم؟',
       sentenceChunks: [
         'فبينما وصل الشيطان',
         'إلى نقطة اللاعودة',
@@ -529,7 +529,7 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'لاحظ: العزم المؤكد',
       instructions: 'اختر التفسير الأدق.',
-      question: 'في ﴿لأقعدن لهم صراطك المستقيم﴾ و«ثم لآتينهم» و﴿فبعزتك لأغوينهم أجمعين﴾ لام في أول الفعل ونون مشددة في آخره. ما الذي يضيفه هذا البناء إلى كلام إبليس؟',
+      question: 'في ﴿لأقعدن لهم صراطك المستقيم﴾ و«ثم لآتينهم» و﴿فبعزتك لأغوينهم أجمعين﴾ لام في أول الفعل ونون مشددة في آخره. ماذا تضيفان إلى كلام إبليس؟',
       options: [
         'يصف أفعالًا فعلها إبليس في الماضي وانتهت.',
         'يعبّر عن عزم مؤكد على فعل في المستقبل، كأنه قسم على الإغواء.',
@@ -547,8 +547,8 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b2-language-6-ar-production',
       type: 'reflection',
       title: 'اكتب مقابلة بين مسارين',
-      instructions: 'اكتب أو قل فقرة من 7–9 جمل عن شخصين أو جماعتين أو خيارين يسيران في اتجاهين مختلفين بوضوح. استخدم تعبيرا يحدد ما هو مأذون أو ممنوع، ومقابلة بـ«بينما»، وتصريحا بأن أحد المسارين مختلف عن الآخر، وصيغتين على الأقل تدلان على عزم مستقبلي قوي، مع توازٍ تركيبي مرة واحدة. لا تعِد ترتيب أحداث التحدي السريع.',
-      question: 'هل تستطيع استخدام الحدود والمقابلة والعزم المستقبلي والتوازي لبناء فقرة مترابطة؟',
+      instructions: 'اكتب أو قل فقرة من 7–9 جمل عن شخصين يختاران طريقين مختلفين.',
+      question: 'كيف يختلف الطريقان؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تحدد المجال والحد، ثم تضع المسارين في مقابلة واضحة، وتطور كل مسار بلغة تظهر النية أو الالتزام، وتستخدم التوازي لإحكام التنظيم.',
       feedback: {
@@ -556,10 +556,10 @@ export const adamB2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الحد — بين ما هو مأذون أو مطلوب أو ممنوع في الموقف.', mode: 'Individual' },
-        { question: 'المقابلة — استخدم «بينما» لوضع مسارين متطورين جنبا إلى جنب.', mode: 'Individual' },
-        { question: 'العزم — استخدم صيغا تدل على نية مستقبلية قوية لا مجرد توقع.', mode: 'Individual' },
-        { question: 'التوازي — كرر بنية نحوية واحدة لتجعل الفكرة منظمة أو تراكمية.', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر المسموح والممنوع: «يُسمح لـ… بـ…، ولكن يُمنع …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — قارن بين الاثنين: «بينما …، …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — بيّن عزمًا قويًّا: «سأُنهي …، ولن أترك …»', mode: 'Individual' },
+        { question: 'الجملة الرابعة — كرّر الصيغة نفسها: «يومًا بعد يوم، وصفحةً بعد صفحة، …»', mode: 'Pair' },
       ],
     },
   ],

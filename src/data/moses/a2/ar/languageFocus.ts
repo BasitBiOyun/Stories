@@ -8,8 +8,8 @@ export const mosesA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
   1: [
     {
       id: 'moses-a2-ar-language-1-kan-description', type: 'drag-drop', title: 'انظر: عَمَّن تتكلّم الجملة؟',
-      instructions: 'ضع كل جملة من الفصل في المجموعة المناسبة.',
-      question: 'هل تتكلّم الجملة عن فرعون (هو)، أم عن بني إسرائيل (هم)؟ انظر إلى آخر الفعل.',
+      instructions: 'ضع كل جملة في مجموعتها. انظر إلى آخر الفعل.',
+      question: 'عمّن تتكلّم الجملة: فرعون (هو)، أم بنو إسرائيل (هم)؟',
       dragDropGroups: [
         { group: 'فِرْعَوْنُ (هُوَ)', items: ['كَانَ يَعْتَقِدُ أَنَّهُ إِلٰهٌ', 'كَانَ فَظًّا مَعَ بَنِي إِسْرَائِيلَ', 'جَعَلَ حَيَاتَهُمْ صَعْبَةً'] },
         { group: 'بَنُو إِسْرَائِيلَ (هُمْ)', items: ['كَانُوا أَبْنَاءَ يَعْقُوبَ', 'كَانُوا يُؤْمِنُونَ بِإِلٰهٍ وَاحِدٍ', 'لَمْ يَعْتَقِدُوا أَنَّ فِرْعَوْنَ إِلٰهٌ'] },
@@ -43,7 +43,7 @@ export const mosesA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     {
       id: 'moses-a2-ar-language-1-cause', type: 'word-bank', title: 'تدرّب: السبب والنتيجة',
       instructions: 'اختر الكلمة المناسبة لكل فراغ.',
-      question: 'أيّ كلمة تأتي قبل النتيجة؟ وأيّ كلمة تأتي قبل اسم السبب؟',
+      question: 'أيّ كلمة تذكر النتيجة، وأيّها تذكر السبب؟',
       fillBlanksText: 'كَانُوا يُؤْمِنُونَ بِإِلٰهٍ وَاحِدٍ … [blank]، لَمْ يَعْتَقِدُوا أَنَّ فِرْعَوْنَ إِلٰهٌ. … خَافَ فِرْعَوْنُ مِنْ أَنْ يَسْتَوْلُوا عَلَى مَمْلَكَتِهِ. وَ[blank] خَوْفِهِ، كَانَ فَظًّا مَعَ بَنِي إِسْرَائِيلَ.',
       wordBank: ['لِذٰلِكَ', 'بِسَبَبِ', 'لِأَنَّ'],
       correctAnswer: ['لِذٰلِكَ', 'بِسَبَبِ'],
@@ -55,20 +55,20 @@ export const mosesA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     },
     {
       id: 'moses-a2-ar-language-1-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'اكتب أو قل ثلاث جمل قصيرة.', question: 'هل تستطيع وصف شخص بـ«كان»، ونفي فكرة بـ«لم»، وذكر سبب بـ«بسبب»؟',
+      instructions: 'اكتب أو قل ثلاث جمل قصيرة عن شخص تعرفه.', question: 'هل تستطيع أن تصف شخصًا تعرفه؟',
       correctAnswer: null, explanation: 'انقل التراكيب إلى مثال يومي جديد.', feedback: { correct: 'استخدم التراكيب الثلاثة بدقة.', incorrect: '' },
       discussionPrompts: [
-        { question: 'جملة 1 — كان/كانت + اسم أو صفة.', mode: 'Individual' },
-        { question: 'جملة 2 — لم + فعل مضارع.', mode: 'Individual' },
-        { question: 'جملة 3 — بسبب + اسم.', mode: 'Pair' },
+        { question: 'الجملة 1 — صف الشخص: «كان/كانت ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر شيئًا لم يفعله: «لم ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر سببًا: «بسبب ...، ...»', mode: 'Pair' },
       ],
     },
   ],
   2: [
     {
       id: 'moses-a2-ar-language-2-past-sequence', type: 'sequencing', title: 'انظر: الأحداث بالترتيب',
-      instructions: 'رتّب الجمل كما جاءت في الفصل.',
-      question: 'أيّ كلمات تساعدك على الترتيب؟ انظر إلى «فَـ» و«ثُمَّ».',
+      instructions: 'رتّب الجمل كما جاءت في الفصل. «فـ» و«ثمّ» تساعدانك.',
+      question: 'ماذا حدث بعد حلم فرعون؟',
       sequencingItems: [
         { id: '1', text: 'وَفِي أَحَدِ الْأَيَّامِ، رَأَى فِرْعَوْنُ حُلْمًا.' },
         { id: '2', text: 'اِسْتَيْقَظَ فِرْعَوْنُ، فَاسْتَدْعَى مُسَاعِدِيهِ وَالسَّحَرَةَ.' },
@@ -122,12 +122,12 @@ export const mosesA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     },
     {
       id: 'moses-a2-ar-language-2-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'أنشئ مثالًا آمنًا من الحياة اليومية.', question: 'هل تستطيع استعمال مستقبل بسيط، وأمر آمن، وجملة تبدأ بـ«عندما»؟',
+      instructions: 'قل ثلاث جمل قصيرة عن يوم ممطر.', question: 'ماذا سيحدث؟ وماذا نفعل؟',
       correctAnswer: null, explanation: 'الهدف نقل التراكيب إلى سياق جديد.', feedback: { correct: 'استخدم التراكيب الثلاثة.', incorrect: '' },
       discussionPrompts: [
-        { question: 'توقع بسيط بـ«سـ + فعل مضارع».', mode: 'Individual' },
-        { question: 'أمر آمن مثل «افتح الكتاب».', mode: 'Pair' },
-        { question: 'جملة «عندما + ماضٍ».', mode: 'Individual' },
+        { question: 'الجملة 1 — قل ما سيحدث: «سـ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — أعطِ أمرًا: «خُذْ ...»', mode: 'Pair' },
+        { question: 'الجملة 3 — اربط حدثين: «عندما ...، ...»', mode: 'Individual' },
       ],
     },
   ],

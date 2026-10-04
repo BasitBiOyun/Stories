@@ -5,7 +5,7 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
   5: [
     {
       id: 'adam-a2-ar-language-5-condition-result', type: 'drag-drop', title: 'انظر: شخصان أم شخص واحد؟',
-      instructions: 'ضع كل عبارة من الفصل الخامس في المجموعة المناسبة. انظر إلى آخر الفعل.', question: 'من فعل هذا: آدم وحواء معًا، أم إبليس وحده؟',
+      instructions: 'ضع كل عبارة في مجموعتها. انظر إلى آخر الفعل.', question: 'من فعل هذا: آدم وحواء معًا، أم إبليس وحده؟',
       dragDropGroups: [
         { group: 'آدم وحواء (شخصان)', items: ['حَزِنَا كَثِيرًا', 'وَطَلَبَا الْمَغْفِرَةَ مِنَ اللهِ', 'تَعَلَّمَا مِنَ الْخَطَأِ'] },
         { group: 'إبليس (شخص واحد)', items: ['سَلَكَ طَريقًا مُخالِفًا تَمامًا', 'لَمْ يَعْتَرِفْ أَبَدًا بِأَنَّهُ مُخْطِئٌ', 'وَكانَ يَظُنُّ أَنَّهُ أَفْضَلُ مِنَ الإِنْسانِ'] },
@@ -19,7 +19,7 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
     },
     {
       id: 'adam-a2-ar-language-5-mistake-response', type: 'choose-form', title: 'تدرّب: الفعل لشخصين بعد «لم» و«أن» و«لن»',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.', question: 'ماذا يحدث للنون في آخر الفعل بعد «لم» و«أن» و«لن»؟',
+      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.', question: 'ما آخر الفعل لشخصين بعد «لم» و«أن» و«لن»؟',
       formChoices: [
         { sentence: 'وَقَعَا فِي الْخَطَأِ، لَكِنَّهُمَا لَمْ [choice] عِصْيَانَ اللهِ.', options: ['يَقْصِدَانِ', 'يَقْصِدَا'], answer: 1 },
         { sentence: 'وَقَرَّرا أَنْ لا [choice] أَبَدًا.', options: ['يُكَرِّراهُ', 'يُكَرِّرانِهِ'], answer: 0 },
@@ -37,9 +37,9 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
       feedback: { correct: 'صحيح، العبارة خاطئة. «إذا أكلتما» شرط لشيء سيأتي.', incorrect: 'ارجع إلى الفقرة الأولى: هل كان آدم وحواء قد أكلا عندما تكلّم إبليس؟ متى أكلا؟' },
     },
     {
-      id: 'adam-a2-ar-language-5-talk-about-mistake', type: 'reflection', title: 'قُلْها: تعلّم من الخطأ', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 عن خطأ بسيط واستجابة أفضل، مستعملًا لغة الفصل الخامس.', question: 'هل تستطيع أن تصف خطأً، والنية، وما تعلمته منه، ثم قرارًا جديدًا؟', correctAnswer: null,
+      id: 'adam-a2-ar-language-5-talk-about-mistake', type: 'reflection', title: 'قُلْها: تعلّم من الخطأ', instructions: 'اكتب أو قل أربع جمل قصيرة عن خطأ تعلّمت منه.', question: 'ما الخطأ، وماذا تعلّمت منه؟', correctAnswer: null,
       explanation: 'الإجابة الجيدة تنتقل من الخطأ إلى النية ثم التعلم والقرار باستعمال تراكيب طبيعية من الفصل.', feedback: { correct: 'استعمل بدايات الجمل لبناء تسلسل واضح من الخطأ إلى التعلم.', incorrect: '' },
-      discussionPrompts: [{ question: 'الجملة الأولى — الخطأ: «وقعتُ في الخطأ عندما ...»', mode: 'Individual' }, { question: 'الجملة الثانية — النية: «لم أقصد أن ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — التعلم: «تعلّمتُ من الخطأ أن ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — القرار: «قررتُ أن لا ... مرة أخرى.»', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'الجملة الأولى — اذكر الخطأ: «وقعتُ في الخطأ عندما ...»', mode: 'Individual' }, { question: 'الجملة الثانية — هل قصدته؟ «لم أقصد أن ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر ما تعلّمته: «تعلّمتُ من الخطأ أن ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — اذكر قرارك: «قررتُ أن لا ... مرة أخرى.»', mode: 'Pair' }],
     },
   ],
   6: [
@@ -62,7 +62,7 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
     },
     {
       id: 'adam-a2-ar-language-6-purpose', type: 'choose-form', title: 'تدرّب: الكلمة لشخصين',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.', question: 'آدم وحواء شخصان: كيف تنتهي الكلمة التي تصفهما أو تتحدث عنهما؟',
+      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.', question: 'كيف تنتهي الكلمة لشخصين: آدم وحواء؟',
       formChoices: [
         { sentence: 'وَعَلَّمَهُما اللهُ كُلَّ شَيْءٍ [choice] إِلَيْهِ.', options: ['يَحْتاجُ', 'يَحْتاجانِ', 'يَحْتاجونَ'], answer: 1 },
         { sentence: 'وَكانا [choice] عَلَى هذِهِ الأَرْضِ.', options: ['حاكِمانِ', 'حاكِمَيْنِ'], answer: 1 },
@@ -81,9 +81,9 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
       feedback: { correct: 'صحيح. بنيت جملة الإرادة: كان يريد + أن + فعل.', incorrect: 'ابدأ بـ«وكان يريد»، ثم «أن» والفعل، ثم من ينسى، ثم ماذا ينسون، ثم أين. ارجع إلى الفقرة الأخيرة من الفصل.' },
     },
     {
-      id: 'adam-a2-ar-language-6-talk-about-responsibility', type: 'reflection', title: 'قُلْها: حياة فيها مسؤولية', instructions: 'اكتب أو قُل أربع جمل قصيرة من مستوى A2 عن خطة نافعة وغرض ومسؤولية. استخدم تراكيب الفصل السادس.', question: 'هل تستطيع أن تتحدث عن خطة وغرض ومسؤولية نافعة؟', correctAnswer: null,
+      id: 'adam-a2-ar-language-6-talk-about-responsibility', type: 'reflection', title: 'قُلْها: حياة فيها مسؤولية', instructions: 'اكتب أو قُل أربع جمل قصيرة عن عمل نافع ستقوم به.', question: 'ماذا ستفعل، ولماذا؟', correctAnswer: null,
       explanation: 'الإجابة الجيدة تنقل لغة الفصل من القصة إلى موقف بسيط: خطة، ثم غرض، ثم مسؤولية، ثم رغبة إيجابية.', feedback: { correct: 'استخدم بدايات الجمل لربط الخطة بالغرض والمسؤولية.', incorrect: '' },
-      discussionPrompts: [{ question: 'الجملة الأولى — خطة: «سنـ... / نحن سنـ...»', mode: 'Individual' }, { question: 'الجملة الثانية — غرض: «نستخدم ... لِـ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — مسؤولية: «سنحافظ على ... / سنساعد ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — رغبة إيجابية: «أريد أن ...»', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'الجملة الأولى — اذكر خطتك: «سنـ... / نحن سنـ...»', mode: 'Individual' }, { question: 'الجملة الثانية — اذكر الغرض: «نستخدم ... لِـ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر ما ستحافظ عليه: «سنحافظ على ... / سنساعد ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — اذكر ما تريده: «أريد أن ...»', mode: 'Pair' }],
     },
   ],
   7: [
@@ -105,7 +105,7 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
     },
     {
       id: 'adam-a2-ar-language-7-story-time', type: 'sequencing', title: 'تدرّب: ثم، فـ، بعد',
-      instructions: 'رتّب جمل الفصل السابع. استعن بكلمات الزمن: «ثُمَّ»، «فَـ»، «بَعْدَ».', question: 'كيف ينتقل الفصل من حياة آدم وحواء إلى الأنبياء بعد آدم؟',
+      instructions: 'رتّب جمل الفصل السابع. «ثُمَّ» و«فَـ» و«بَعْدَ» تساعدك.', question: 'ماذا حدث من آدم إلى الأنبياء بعده؟',
       sequencingItems: [
         { id: '1', text: 'وَعاشَ آدَمُ وَحَوّاءُ سِنينَ طَويلَةً فِي الأَرْضِ.' },
         { id: '2', text: 'ثُمَّ جَعَلَ اللهُ آدَمَ أَوَّلَ نَبِيٍّ لَهُ.' },
@@ -117,9 +117,9 @@ export const adamA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
       feedback: { correct: 'صحيح. استعملت كلمات الزمن لترتيب الأحداث.', incorrect: 'ابدأ بالحياة الطويلة في الأرض، ثم ابحث عن «ثم» و«فبدأ»، ثم «بعد وفاة آدم».' },
     },
     {
-      id: 'adam-a2-ar-language-7-give-guidance', type: 'reflection', title: 'قُلْها: قَدِّمْ تَوْجيهًا جَيِّدًا', instructions: 'اكتب أو قل أربع جمل قصيرة من مستوى A2 تستعمل لغة التعليم والتحذير والسبب.', question: 'هل تستطيع استعمال لغة الفصل لتقدّم توجيهًا بسيطًا في الحياة اليومية؟', correctAnswer: null,
+      id: 'adam-a2-ar-language-7-give-guidance', type: 'reflection', title: 'قُلْها: قَدِّمْ تَوْجيهًا جَيِّدًا', instructions: 'اكتب أو قل أربع جمل قصيرة تعلّم فيها وتحذّر.', question: 'ما النصيحة التي تقدّمها في حياتك اليومية؟', correctAnswer: null,
       explanation: 'الإجابة الجيدة تنقل تراكيب الفصل من القصة إلى موقف مألوف: تعليم، تحذير، سبب، وهدف إيجابي.', feedback: { correct: 'استخدم بدايات الجمل لتكوين توجيه واضح وبسيط.', incorrect: '' },
-      discussionPrompts: [{ question: 'الجملة الأولى — تعليم: «أُعَلِّمُ / أُساعِدُ صديقي أن ...»', mode: 'Individual' }, { question: 'الجملة الثانية — تحذير: «أُحَذِّرُ ... مِنْ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — سبب: «... لِأَنَّ ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — هدف إيجابي: «أُريدُ أَنْ ...»', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'الجملة الأولى — علّم: «أُعَلِّمُ / أُساعِدُ صديقي أن ...»', mode: 'Individual' }, { question: 'الجملة الثانية — حذّر: «أُحَذِّرُ ... مِنْ ...»', mode: 'Individual' }, { question: 'الجملة الثالثة — اذكر السبب: «... لِأَنَّ ...»', mode: 'Pair' }, { question: 'الجملة الرابعة — اذكر ما تريده: «أُريدُ أَنْ ...»', mode: 'Pair' }],
     },
   ],
 };

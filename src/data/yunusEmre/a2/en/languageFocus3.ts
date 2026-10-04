@@ -10,7 +10,7 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yunus-a2-language-7-story-sequence',
       type: 'sequencing',
       title: 'Tell the Flower Story in Order',
-      instructions: 'Put the sentences from Chapter 7 in the order the events happen.',
+      instructions: 'Put the sentences from Chapter 7 in order.',
       question: 'What happened first, next and last?',
       sequencingItems: [
         { id: '1', text: 'One day, Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers.”' },
@@ -30,7 +30,7 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yunus-a2-language-7-quantity-groups',
       type: 'choose-form',
       title: 'Some, Any, A Single',
-      instructions: 'Choose the correct word to complete each sentence from Chapter 7.',
+      instructions: 'Choose the correct word for each sentence from Chapter 7.',
       question: 'How many dervishes? How many flowers?',
       formChoices: [
         {
@@ -60,8 +60,8 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yunus-a2-language-7-retell-daisy',
       type: 'reflection',
       title: 'Say It: Retell the Daisy Scene',
-      instructions: 'Retell Chapter 7 in four short sentences. Use the chapter’s time and quantity language.',
-      question: 'Can you tell the main events clearly without copying the whole paragraph?',
+      instructions: 'Retell Chapter 7 in four short sentences.',
+      question: 'What happened with the flowers?',
       correctAnswer: null,
       explanation: 'A strong A2 retelling uses a clear event order and simple expressions such as all, some, a single, could not, and when.',
       feedback: {
@@ -69,10 +69,10 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Start the event: “One day, Taptuk asked all the students to ...”', mode: 'Individual' },
-        { question: 'Sentence 2 — Contrast Yunus with the group: “The dervishes ..., but Yunus ...”', mode: 'Individual' },
-        { question: 'Sentence 3 — Explain his reason: “He could not cut any flowers because ...”', mode: 'Pair' },
-        { question: 'Sentence 4 — End this chapter: “When it started to get dark, ...”', mode: 'Pair' },
+        { question: 'Sentence 1 — Start the story: “One day, Taptuk asked all the students to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Compare Yunus with the others: “The dervishes …, but Yunus …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give his reason: “He could not cut any flowers because …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Say how it ends: “When it started to get dark, …”', mode: 'Pair' },
       ],
     },
   ],
@@ -81,7 +81,7 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yunus-a2-language-8-advice-necessity-result',
       type: 'multiple-choice',
       title: 'Must or Should?',
-      instructions: 'Read the two parts of sentences from Chapter 8. Then choose the best answer.',
+      instructions: 'Read the two lines. Then choose the best answer.',
       question: 'A: “Our hearts must be full of love for Him …” B: “… we should do it well and correctly …” Which word gives the stronger rule?',
       options: [
         'should',
@@ -124,8 +124,8 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'yunus-a2-language-8-daily-life-message',
       type: 'reflection',
       title: 'Say It: A Meaningful Daily Life',
-      instructions: 'Use the final chapter’s language to give four short pieces of advice for daily life.',
-      question: 'Can you apply Yunus’s closing lesson to your own daily actions using tells us to, must, should and helps us?',
+      instructions: 'Give four short pieces of advice for daily life.',
+      question: 'How can Yunus’s lesson help you every day?',
       correctAnswer: null,
       explanation: 'A strong A2 response transfers the chapter’s language from the story to a simple personal message about everyday behaviour.',
       feedback: {
@@ -133,10 +133,10 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Report the message: “Yunus tells us to ...”', mode: 'Individual' },
-        { question: 'Sentence 2 — State a strong responsibility: “We must ...”', mode: 'Individual' },
-        { question: 'Sentence 3 — Give practical advice: “We should ... because/so ...”', mode: 'Pair' },
-        { question: 'Sentence 4 — State the result: “This helps us ...”', mode: 'Pair' },
+        { question: 'Sentence 1 — Give Yunus’s message: “Yunus tells us to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what we must do: “We must …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give advice and a reason: “We should … because …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Say the result: “This helps us …”', mode: 'Pair' },
       ],
     },
   ],

@@ -6,7 +6,7 @@ import type { Exercise } from '../../../../types';
  * the English chapter text; quoted verses are only read, sorted or matched.
  */
 const reflectionFeedback = { correct: 'Well done. Check that each target pattern carries a clear relationship in your paragraph.', incorrect: 'Return to the chapter sentences that use these patterns and model your own sentences on them.' };
-const refl = (id: string, title: string, q: string, p: string[], e: string): Exercise => ({ id, type: 'reflection', title, instructions: 'Produce a short B2 response using the target relationship naturally.', question: q, correctAnswer: null, explanation: e, feedback: reflectionFeedback, discussionPrompts: p.map(question => ({ question, mode: 'Individual' })) });
+const refl = (id: string, title: string, instructions: string, q: string, p: string[], e: string): Exercise => ({ id, type: 'reflection', title, instructions, question: q, correctAnswer: null, explanation: e, feedback: reflectionFeedback, discussionPrompts: p.map(question => ({ question, mode: 'Individual' })) });
 
 export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
   5: [
@@ -14,8 +14,8 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'yu-b2-lf5-1',
       type: 'sequencing',
       title: 'Following the Connectors',
-      instructions: 'These sentences from Chapter 5 are mixed up. Use the linking words at the start of each sentence to put them in order.',
-      question: 'Which words show how the story moves from the rebellion to the disaster after Kösedağ?',
+      instructions: 'Put the sentences from Chapter 5 in order. The first words can help.',
+      question: 'What happened between the rebellion and the destruction of the cities?',
       sequencingItems: [
         { id: 'a', text: 'In the end, the Seljuk forces suppressed the rebellion with great difficulty …' },
         { id: 'b', text: 'However, this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire.' },
@@ -35,7 +35,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'The Language of Destruction',
       instructions: 'Match each expression from Chapter 5 with its meaning.',
-      question: 'How does the writer make the scale of the destruction clear?',
+      question: 'How does the writer show how terrible the destruction was?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'wiped out the Seljuk forces', right: 'defeated the army so completely that it no longer existed' },
@@ -55,14 +55,14 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: 'Read the last paragraph of Chapter 5 again and look at what each expression describes: an army, buildings, a whole region or the people of the cities.',
       },
     },
-    refl('yu-b2-lf5-3', 'Write a Qualified Turning Point', 'Explain why Kösedağ is more than a battlefield event in this chapter.', ['Use one sequencing connector, one consequence connector, and one attribution phrase such as sources say.'], 'The response should connect battle, domination and civilian suffering.'),
+    refl('yu-b2-lf5-3', 'Why Kösedağ Matters', 'Write a short paragraph about the battle of Kösedağ.', 'Why is Kösedağ more than a battle?', ['Use a time phrase (“Following …”), “As a result” and “Sources say”.'], 'The response should connect battle, domination and civilian suffering.'),
   ],
   6: [
     {
       id: 'yu-b2-lf6-1',
       type: 'multiple-choice',
-      title: 'Comparison Without Overstatement',
-      instructions: 'Read the sentence from Chapter 6. Then choose what the comparison means.',
+      title: 'Almost Like Officials',
+      instructions: 'Read the sentence from Chapter 6. Then choose what it means.',
       question: '“The Seljuk sultans began to act almost as if they were Mongols’ civil officials.” What does the writer mean?',
       options: [
         'The sultans officially became Mongol civil servants and gave up their titles.',
@@ -81,8 +81,8 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'yu-b2-lf6-2',
       type: 'word-bank',
       title: 'Stages of Dependency',
-      instructions: 'Complete the lines from Chapter 6 with words from the bank. Some words are not needed.',
-      question: 'Which words show the stages of the process and the limits of the statesmen’s efforts?',
+      instructions: 'Complete the lines from Chapter 6 with words from the bank. Three words are not needed.',
+      question: 'Which words show the steps, and that the efforts were not enough?',
       fillBlanksText: 'In the end, an agreement was reached with the Mongols, but [blank] the Seljuks became a dependent state of the Mongols. … Statesmen like Celaleddin Karatay, [blank] on the one hand trying to manage the Mongols, were also making efforts to provide some relief to the state and the people. [blank], these efforts were not enough. [blank], in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire …',
       wordBank: ['in time', 'while', 'Nevertheless', 'Finally', 'Therefore', 'during', 'At first'],
       correctAnswer: ['in time', 'while', 'Nevertheless', 'Finally'],
@@ -95,9 +95,9 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'yu-b2-lf6-3',
       type: 'transformation',
-      title: 'From Noun Phrase to Clause',
-      instructions: 'Complete each sentence so that it keeps the meaning of the chapter sentence. Type only the missing words.',
-      question: 'How can a cause and its consequence be expressed with a clause instead of a noun phrase?',
+      title: 'Same Result, New Words',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say the cause and the result?',
       transformItems: [
         {
           source: 'The weakening of the Seljuk Sultanate of Konya led to the rapid emergence of small principalities in Anatolia.',
@@ -117,7 +117,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: 'Turn the noun into a verb in the past simple (emergence → emerged) or ask what happened to the state and the people. Then check the first and second paragraphs of Chapter 6.',
       },
     },
-    refl('yu-b2-lf6-4', 'From Agreement to Annexation', 'Describe the stages by which political agreement became dependency and then direct attachment.', ['Use led to, in time, nevertheless, and finally.'], 'The task requires process writing rather than isolated dates.'),
+    refl('yu-b2-lf6-4', 'From Agreement to Annexation', 'Write a short paragraph about how the Seljuks lost their freedom.', 'How did the Seljuks lose their freedom, step by step?', ['Use “led to”, “in time”, “nevertheless” and “finally”.'], 'The task requires process writing rather than isolated dates.'),
   ],
   7: [
     {
@@ -125,7 +125,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'Circumstance, Perspective and Means',
       instructions: 'Match each phrase from Chapter 7 with its meaning in the chapter.',
-      question: 'What do these phrases tell us about the situation and about Yunus’s response?',
+      question: 'What do these phrases tell us about the times and about Yunus?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'under Mongol pressure', right: 'because they were being forced by an invading power' },
@@ -151,8 +151,8 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'yu-b2-lf7-2',
       type: 'transformation',
       title: 'Packing Ideas Into One Sentence',
-      instructions: 'Complete each sentence so that it keeps the meaning of the chapter sentence. Type only the missing words.',
-      question: 'How can two actions or two clauses be joined in one sentence?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we join these ideas in one sentence?',
       transformItems: [
         {
           source: 'He tried to respond to people’s efforts to make sense of life in hard days through the lens of his Sûfî identity, using poetry as his medium.',
@@ -177,15 +177,15 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: 'Ask what each short phrase means as a full clause: who used what, who were the dervishes, and who put pressure on the shaykhs? Then check Chapter 7.',
       },
     },
-    refl('yu-b2-lf7-3', 'Context → Perspective → Medium', 'Write 5–7 sentences explaining how the chapter moves from crisis to Yunus’s response.', ['Include under pressure, through, and using.'], 'A strong paragraph makes the grammatical relationships carry the historical interpretation.'),
+    refl('yu-b2-lf7-3', 'From Crisis to Poetry', 'Write 5–7 sentences about the crisis and Yunus’s answer to it.', 'How did Yunus answer people in hard times?', ['Use “under … pressure”, “through” and “using”.'], 'A strong paragraph makes the grammatical relationships carry the historical interpretation.'),
   ],
   8: [
     {
       id: 'yu-b2-lf8-1',
       type: 'multiple-choice',
       title: 'Whose View Is It?',
-      instructions: 'Read the two sentence openings from Chapter 8. Then choose why the writer uses them.',
-      question: '“According to Yunus Emre, the Creator, Allah is the source of all things …” / “According to the theory of the Unity of Existence, Allah, the absolute reality, desired to be known …” Why does the writer begin these sentences with “According to …”?',
+      instructions: 'Read the two sentence openings from Chapter 8. Then choose the best answer.',
+      question: '“According to Yunus Emre, the Creator, Allah is the source of all things …” / “According to the theory of the Unity of Existence, Allah, the absolute reality, desired to be known …” Why does the writer begin with “According to …”?',
       options: [
         'To show that the writer disagrees with these ideas.',
         'To show whose view or which theory the ideas belong to.',
@@ -203,8 +203,8 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'yu-b2-lf8-2',
       type: 'choose-form',
       title: 'Linking the Argument',
-      instructions: 'Choose the linking expression that completes each sentence from Chapter 8.',
-      question: 'Which expressions build the chapter’s argument step by step?',
+      instructions: 'Choose the words that complete each sentence from Chapter 8.',
+      question: 'Which words link the ideas step by step?',
       formChoices: [
         {
           sentence: 'The Creator is the true and only reality. [choice], Yunus Emre held the idea of the Unity of Existence.',
@@ -229,6 +229,6 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: 'Ask how the two ideas in each item are related: a viewpoint, a cause and its result, or a surprising contrast. Then read Chapter 8 again.',
       },
     },
-    refl('yu-b2-lf8-3', 'Explain a Concept With Attribution', 'Explain the chapter’s connection between tawhid, true reality and creation.', ['Use according to, therefore, and from this perspective. Do not universalize beyond the chapter.'], 'The task combines conceptual coherence with careful attribution.'),
+    refl('yu-b2-lf8-3', 'Tawhid and Creation', 'Write a short paragraph about tawhid and creation.', 'How are tawhid, true reality and creation connected?', ['Use “according to”, “therefore” and “from this perspective”. Say only what the chapter says.'], 'The task combines conceptual coherence with careful attribution.'),
   ],
 };

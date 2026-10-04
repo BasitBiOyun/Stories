@@ -5,7 +5,7 @@ export const mosesA2LanguageFocusExercisesPart2Ar: Record<number, Exercise[]> = 
     {
       id: 'moses-a2-ar-language-3-fear-ability', type: 'drag-drop', title: 'انظر: أمرٌ أم خبر؟',
       instructions: 'ضع كل جملة من الفصل في المجموعة المناسبة.',
-      question: 'هل الجملة أمرٌ من الله لأمّ موسى، أم خبرٌ عمّا فعلته أمّ موسى؟',
+      question: 'هل هي أمر لأمّ موسى، أم شيء فعلته؟',
       dragDropGroups: [
         { group: 'أَمْرٌ لِأُمِّ مُوسَى', items: ['خُذِي تَابُوتًا صَغِيرًا', 'ضَعِي طِفْلَكِ فِي التَّابُوتِ', 'خُذِي التَّابُوتَ إِلَى نَهْرِ النِّيلِ'] },
         { group: 'مَا فَعَلَتْهُ أُمُّ مُوسَى', items: ['وَضَعَتْ أُمُّ مُوسَى الطِّفْلَ مُوسَى فِي تَابُوتٍ صَغِيرٍ', 'وَأَخَذَتِ التَّابُوتَ إِلَى النَّهْرِ', 'وَضَعَتِ التَّابُوتَ فِي الْمَاءِ'] },
@@ -50,12 +50,12 @@ export const mosesA2LanguageFocusExercisesPart2Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-3-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'أنشئ موقفًا جديدًا وآمنًا.', question: 'هل تستطيع ذكر خوف أو صعوبة، وإعطاء توجيه، ثم إضافة طمأنة؟',
+      instructions: 'قل ثلاث جمل قصيرة عن شخص عنده مشكلة.', question: 'هل تستطيع أن تساعد شخصًا قلقًا؟',
       correctAnswer: null, explanation: 'استخدم «يخاف أن»، و«لم يستطع»، وفعل أمر، و«سـ + فعل مضارع».', feedback: { correct: 'اجعل الجمل قصيرة وواضحة.', incorrect: '' },
       discussionPrompts: [
-        { question: 'جملة خوف أو عدم قدرة.', mode: 'Individual' },
-        { question: 'أمر آمن.', mode: 'Pair' },
-        { question: 'طمأنة أو توقع بالمستقبل.', mode: 'Individual' },
+        { question: 'الجملة 1 — اذكر المشكلة: «لم يستطع أن ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — قل له ماذا يفعل: «ابحثْ ...»', mode: 'Pair' },
+        { question: 'الجملة 3 — طمئنه: «لا تقلق، سـ...»', mode: 'Individual' },
       ],
     },
   ],
@@ -66,7 +66,7 @@ export const mosesA2LanguageFocusExercisesPart3Ar: Record<number, Exercise[]> = 
     {
       id: 'moses-a2-ar-language-4-past-movement', type: 'drag-drop', title: 'انظر: إلى أين؟ أم أين؟',
       instructions: 'ضع كل عبارة من الفصل في المجموعة المناسبة.',
-      question: 'هل تصف العبارة حركةً نحو مكان أو شخص، أم تقول أين يوجد شيء أو شخص؟',
+      question: 'هل هي حركة إلى مكان، أم تقول أين الشيء؟',
       dragDropGroups: [
         { group: 'حَرَكَةٌ: إِلَى أَيْنَ؟', items: ['وَصَلَ التَّابُوتُ إِلَى شَاطِئِ النَّهْرِ', 'وَأَخَذُوهُ إِلَى فِرْعَوْنَ وَآسِيَةَ', 'فَأَسْرَعَتْ إِلَى آسِيَةَ'] },
         { group: 'مَكَانٌ: أَيْنَ؟', items: ['كَانَ قَرِيبًا مِنْ قَصْرِ فِرْعَوْنَ', 'تَعِيشُ فِي الْجِوَارِ'] },
@@ -112,11 +112,11 @@ export const mosesA2LanguageFocusExercisesPart3Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-4-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'أنشئ موقفًا بسيطًا عن مساعدة شخص.', question: 'هل تستطيع وصف شخص، وبيان اختلاف، وذكر قرار للمستقبل، وإعطاء أمر آمن؟',
+      instructions: 'قل أربع جمل قصيرة عن جار جديد.', question: 'هل تستطيع أن تصف شخصًا وتقول ما ستفعله؟',
       correctAnswer: null, explanation: 'استخدم «كان/كانت + صفة»، و«مختلف عن»، و«سـ + فعل»، وفعل أمر.', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'صف شخصًا بصفتين.', mode: 'Individual' }, { question: 'استخدم «مختلف عن».', mode: 'Individual' },
-        { question: 'قل ما ستفعله لاحقًا.', mode: 'Individual' }, { question: 'أعطِ أمرًا آمنًا.', mode: 'Pair' },
+        { question: 'الجملة 1 — صف الشخص بصفتين: «... لطيف و...»', mode: 'Individual' }, { question: 'الجملة 2 — قارن: «هو مختلف عن ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل ما ستفعله: «سـ...»', mode: 'Individual' }, { question: 'الجملة 4 — اطلب شيئًا: «ضَعْ ...، من فضلك.»', mode: 'Pair' },
       ],
     },
   ],
@@ -175,11 +175,11 @@ export const mosesA2LanguageFocusExercisesPart3Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-5-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'اكتب ثلاث أو أربع جمل عن شخص يساعد الآخرين.', question: 'هل تستطيع استعمال «أصبح»، و«دائمًا»، و«لأن»، وجملة خلفية بـ«كان + مضارع»؟',
+      instructions: 'اكتب ثلاث أو أربع جمل عن شخص يساعد الآخرين.', question: 'مَن يساعد الآخرين في حياتك؟',
       correctAnswer: null, explanation: 'انقل لغة الفصل إلى موقف جديد.', feedback: { correct: 'اجعل الجمل مترابطة وبسيطة.', incorrect: '' },
       discussionPrompts: [
-        { question: 'صف تغيرًا بـ«أصبح».', mode: 'Individual' }, { question: 'صف عادة بـ«دائمًا».', mode: 'Individual' },
-        { question: 'اذكر سببًا بـ«لأن».', mode: 'Individual' }, { question: 'أضف خلفية بـ«كان + فعل مضارع».', mode: 'Pair' },
+        { question: 'الجملة 1 — قل كيف تغيّر: «أصبح/أصبحت ...»', mode: 'Individual' }, { question: 'الجملة 2 — قل كيف هو دائمًا: «هو دائمًا ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر سببًا: «... لأنّ ...»', mode: 'Individual' }, { question: 'الجملة 4 — قل ماذا كان يفعل: «كان ... كل ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -232,11 +232,11 @@ export const mosesA2LanguageFocusExercisesPart4Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-6-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل موقفًا آمنًا فيه خطأ غير مقصود وتحذير.', question: 'هل تستطيع ذكر غاية وسبب، ثم وصف خطر قائم وإعطاء أمر مناسب؟',
+      instructions: 'قل أربع جمل قصيرة عن حادث صغير في البيت.', question: 'ماذا حدث؟ وكيف تحذّر غيرك؟',
       correctAnswer: null, explanation: 'استخدم «لـ»، و«عن غير قصد»، و«لأن»، وفعلًا مضارعًا، وفعل أمر.', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر غاية فعل.', mode: 'Individual' }, { question: 'اذكر نتيجة حدثت عن غير قصد.', mode: 'Individual' },
-        { question: 'اشرح السبب بـ«لأن».', mode: 'Individual' }, { question: 'أعط تحذيرًا آمنًا.', mode: 'Pair' },
+        { question: 'الجملة 1 — قل لماذا ذهبت: «ذهبت إلى ... لـ...»', mode: 'Individual' }, { question: 'الجملة 2 — قل ما حدث: «... عن غير قصد.»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر السبب: «... لأنّ ...»', mode: 'Individual' }, { question: 'الجملة 4 — حذّر غيرك: «انتبه! ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -280,11 +280,11 @@ export const mosesA2LanguageFocusExercisesPart4Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-7-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'صف رحلة قصيرة مألوفة.', question: 'هل تستطيع استعمال فعلين في الماضي، و«بعد»، و«لذلك»، و«وصل إلى»؟',
+      instructions: 'قل أربع جمل قصيرة عن رحلة قمت بها.', question: 'إلى أين سافرت؟ وماذا حدث في الطريق؟',
       correctAnswer: null, explanation: 'استخدم تراكيب الرحلة في موقف جديد.', feedback: { correct: 'اجعل الترتيب واضحًا.', incorrect: '' },
       discussionPrompts: [
-        { question: 'ابدأ بفعل سفر في الماضي.', mode: 'Individual' }, { question: 'أضف «بعد + مدة».', mode: 'Individual' },
-        { question: 'اذكر نتيجة بـ«لذلك».', mode: 'Individual' }, { question: 'اختم بـ«وصل إلى».', mode: 'Pair' },
+        { question: 'الجملة 1 — قل كيف سافرت: «سافرنا بـ... إلى ...»', mode: 'Individual' }, { question: 'الجملة 2 — قل كم مرّ من الوقت: «بعد ...، ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر نتيجة: «...، لذلك ...»', mode: 'Individual' }, { question: 'الجملة 4 — قل أين وصلت: «وصلنا إلى ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -295,7 +295,7 @@ export const mosesA2LanguageFocusExercisesPart5Ar: Record<number, Exercise[]> = 
     {
       id: 'moses-a2-ar-language-8-question-ability', type: 'drag-drop', title: 'انظر: اثنتان أم نحن؟',
       instructions: 'ضع كل عبارة من الفصل في المجموعة المناسبة.',
-      question: 'هل تتكلّم العبارة عن الفتاتين (اثنتين)، أم تتكلّم الفتاتان عن نفسيهما بـ«نحن»؟',
+      question: 'هل تتكلّم العبارة عن الفتاتين، أم تتكلّمان عن نفسيهما؟',
       dragDropGroups: [
         { group: 'اِثْنَتَانِ (هُمَا / أَنْتُمَا)', items: ['لِمَاذَا لَا تَأْخُذَانِ غَنَمَكُمَا لِتَشْرَبَ؟', 'فَأَخَذَتَا غَنَمَهُمَا وَذَهَبَتَا إِلَى الْبَيْتِ', 'لَقَدْ عُدْتُمَا إِلَى الْبَيْتِ مُبَكِّرًا جِدًّا!'] },
         { group: 'نَحْنُ', items: ['نَحْنُ نَأْخُذُ الْغَنَمَ إِلَى الْمَاءِ', 'وَنَنْتَظِرُ دَوْرَنَا', 'سَاعَدَنَا شَابٌّ فِي سَقْيِ غَنَمِنَا'] },
@@ -313,7 +313,7 @@ export const mosesA2LanguageFocusExercisesPart5Ar: Record<number, Exercise[]> = 
     {
       id: 'moses-a2-ar-language-8-purpose-result', type: 'word-bank', title: 'تدرّب: «لذلك» و«بحاجة إلى» و«عندما»',
       instructions: 'اختر الكلمة المناسبة لكل فراغ.',
-      question: 'أيّ كلمة تربط الأفكار في الفصل؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'وَلَا يُوجَدُ شُبَّانٌ فِي بَيْتِنَا لِيُسَاعِدُونَا. [blank]، نَحْنُ نَأْخُذُ الْغَنَمَ إِلَى الْمَاءِ … أَدْرَكَ مُوسَى أَنَّ الْفَتَاتَيْنِ [blank] إِلَى الْمُسَاعَدَةِ. … [blank] عَادَتِ الْفَتَاتَانِ إِلَى الْبَيْتِ مُبَكِّرًا، سَأَلَ أَبُوهُمَا …',
       wordBank: ['لِذٰلِكَ', 'بِحَاجَةٍ', 'عِنْدَمَا', 'لِأَنَّ'],
       correctAnswer: ['لِذٰلِكَ', 'بِحَاجَةٍ', 'عِنْدَمَا'],
@@ -341,11 +341,11 @@ export const mosesA2LanguageFocusExercisesPart5Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-8-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل مهمة مشتركة في البيت أو المدرسة.', question: 'هل تستطيع أن تسأل شخصين، وتذكر عدم قدرة، ثم نتيجة، ثم وقتًا أو انتظارًا؟',
+      instructions: 'قل أربع جمل قصيرة عن عمل تتشاركونه في البيت.', question: 'مَن يساعد في البيت؟ ومَن لا يستطيع؟',
       correctAnswer: null, explanation: 'استخدم «لماذا لا»، و«لا يستطيع»، و«لذلك»، و«حتى» أو «عندما».', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'وجّه سؤالًا إلى شخصين.', mode: 'Pair' }, { question: 'اذكر عدم قدرة.', mode: 'Individual' },
-        { question: 'أضف نتيجة بـ«لذلك».', mode: 'Individual' }, { question: 'أضف جملة فيها «حتى» أو «عندما».', mode: 'Individual' },
+        { question: 'الجملة 1 — اسأل شخصين: «لماذا لا ...انِ ...؟»', mode: 'Pair' }, { question: 'الجملة 2 — قل ما لا يستطيعه شخص: «لا يستطيع أن ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر النتيجة: «لذلك، ...»', mode: 'Individual' }, { question: 'الجملة 4 — قل متى: «عندما ...، ...» أو «حتى ...»', mode: 'Individual' },
       ],
     },
   ],
@@ -409,11 +409,11 @@ export const mosesA2LanguageFocusExercisesPart6Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-9-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل فرصة جديدة في المدرسة أو البيت.', question: 'هل تستطيع ذكر حاجة وسبب، ثم رغبة أو عرضًا، ثم قرارًا لاحقًا؟',
+      instructions: 'قل أربع جمل قصيرة عن خطة جديدة لصفّك.', question: 'ماذا تحتاجون؟ وماذا قرّرتم؟',
       correctAnswer: null, explanation: 'استخدم «بحاجة إلى»، و«لأن»، و«أريد أن»، و«بعد ذلك»، و«قرر».', feedback: { correct: 'اجعل المثال جديدًا وبسيطًا.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر حاجة.', mode: 'Individual' }, { question: 'اشرح سببًا.', mode: 'Individual' },
-        { question: 'عبّر عن رغبة أو عرض.', mode: 'Pair' }, { question: 'اختم بقرار لاحق.', mode: 'Individual' },
+        { question: 'الجملة 1 — اذكر حاجة: «... بحاجة إلى ...»', mode: 'Individual' }, { question: 'الجملة 2 — قل لماذا: «... لأنّ ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل ما تريد أن تفعله: «أريد أن ...»', mode: 'Pair' }, { question: 'الجملة 4 — قل ما قرّرتم بعد ذلك: «وبعد ذلك، قرّرنا أن ...»', mode: 'Individual' },
       ],
     },
   ],

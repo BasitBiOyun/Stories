@@ -6,8 +6,8 @@ import type { Exercise } from '../../../../types';
  * Qur’anic quotations are only read, matched or asked about, never altered.
  */
 
-const reflection = (id: string, title: string, prompts: string[], explanation: string): Exercise => ({
-  id, type: 'reflection', title, instructions: 'Produce a short response using the target language naturally and accurately.', question: prompts[0], correctAnswer: null, explanation,
+const reflection = (id: string, title: string, prompts: string[], explanation: string, ask?: { instructions: string; question: string }): Exercise => ({
+  id, type: 'reflection', title, instructions: ask?.instructions ?? 'Produce a short response using the target language naturally and accurately.', question: ask?.question ?? prompts[0], correctAnswer: null, explanation,
   feedback: {
     correct: 'Check that each target form does a clear job in your paragraph.',
     incorrect: 'Look back at how the chapter uses these forms, then revise your paragraph.',
@@ -40,8 +40,8 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'mo-b2-lf7-b',
       type: 'transformation',
       title: 'Report the Request, Keep the Contrast',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you report a request and a command, and express a contrast in a new way?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we report her words and show a difference?',
       transformItems: [
         {
           source: 'She said to her husband, “Let me keep the baby and let him be our son.”',
@@ -67,15 +67,18 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf7-c', 'A Persuasive Proposal', [
-      'Write a short persuasive proposal using “Let me…”, “let … be…”, and one sentence explaining why the proposal could benefit both sides.',
-    ], 'The task transfers the chapter’s persuasion pattern to a new context without retelling the event.'),
+      'Use “Let me …” and “Let … be …”, and say how both sides gain.',
+    ], 'The task transfers the chapter’s persuasion pattern to a new context without retelling the event.', {
+      instructions: 'Make a short proposal to persuade someone.',
+      question: 'How can your idea help both sides?',
+    }),
   ],
   8: [
     {
       id: 'mo-b2-lf8-a',
       type: 'true-false',
       title: 'Timeline: Not Yet',
-      instructions: 'Read the sentence from Chapter 8. Decide whether the statement about its meaning is true or false.',
+      instructions: 'Read the sentence from Chapter 8. Is the statement true or false?',
       question: '“He had not yet been given the prophetic mission.” — This sentence means that, at this point in the story, Moses was already a prophet but had not started preaching.',
       correctAnswer: false,
       explanation: '“Had not yet been given” (past perfect passive + “not yet”) says that by this point the mission had not happened; it comes later. The young man’s inner conflict belongs to the time before prophethood.',
@@ -88,8 +91,8 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'mo-b2-lf8-b',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct an indirect question, a cause phrase and a past-before-past verb?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correction.',
+      question: 'Can you fix the word order, the reason and the past verb?',
       errorItems: [
         {
           sentence: 'He couldn’t decide whether should he be thankful to the Pharaoh or oppose the oppression against the Children of Israel.',
@@ -118,16 +121,19 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf8-c', 'Writing an Inner Conflict', [
-      'Write 5–6 sentences about a person facing two competing duties. Use “had not yet…”, “whether … or …”, and one cause/result link.',
-    ], 'The production task uses timeline and alternative-choice language to build a coherent B2 dilemma.'),
+      'Use “had not yet …”, “whether … or …”, and a reason or a result.',
+    ], 'The production task uses timeline and alternative-choice language to build a coherent B2 dilemma.', {
+      instructions: 'Describe in 5–6 sentences a person caught between two duties.',
+      question: 'Which duty should the person choose?',
+    }),
   ],
   9: [
     {
       id: 'mo-b2-lf9-a',
       type: 'drag-drop',
       title: 'Action and Consequence',
-      instructions: 'Sort the phrases from Chapter 9. Is each one an action someone chose, or a consequence that followed?',
-      question: 'How does the chapter keep deliberate actions separate from their results?',
+      instructions: 'Sort the phrases from Chapter 9: a choice someone made, or what followed?',
+      question: 'Was it a choice, or what happened because of it?',
       dragDropGroups: [
         {
           group: 'An action someone chose',
@@ -152,8 +158,8 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'mo-b2-lf9-b',
       type: 'transformation',
       title: 'Intention, Result and Warning',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you express intention, result and a warning in another way?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “unintentionally”, “result in” and “Run away, or …”?',
       transformItems: [
         {
           source: 'He unintentionally killed the Copt with a single punch.',
@@ -178,17 +184,20 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         incorrect: 'Item 1: which verb means “have the intention”? Item 2: result in → result from when you swap the order. Item 3: “Run away, or …” means “If you do not run away, …”.',
       },
     },
-    reflection('mo-b2-lf9-c', 'Qualified Responsibility', [
-      'Write a 5-sentence claim-evidence explanation showing how a harmful consequence can be serious even when it was unintended. Use “although” or “even though” once.',
-    ], 'The task practises qualification: intention matters, but it does not erase the consequences described by the narrative.'),
+    reflection('mo-b2-lf9-c', 'Serious, Even If Not Planned', [
+      'Give a claim and an example, and use “although” or “even though” once.',
+    ], 'The task practises qualification: intention matters, but it does not erase the consequences described by the narrative.', {
+      instructions: 'Explain in five sentences how harm can be serious without being planned.',
+      question: 'Is harm less serious if nobody planned it?',
+    }),
   ],
   10: [
     {
       id: 'mo-b2-lf10-a',
       type: 'matching',
       title: 'Repentance and Accusation',
-      instructions: 'Read the Qur’anic words quoted in Chapter 10. Match each line with what it does.',
-      question: 'What does each quoted line do in the passage?',
+      instructions: 'Match each Qur’anic line in Chapter 10 with what it does.',
+      question: 'Does each line admit, report, promise or accuse?',
       matchingHeadings: { left: 'From the chapter', right: 'What the words do' },
       matchingPairs: [
         { left: '“My Lord! Verily, I have wronged myself, so forgive me.”', right: 'admits a fault and asks for pardon' },
@@ -228,16 +237,19 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf10-c', 'Past Action → Future Principle', [
-      'Write 4–6 sentences about learning from a mistake. Move from what happened, to acknowledgement, to a future commitment using “will not” or “will never”.',
-    ], 'A coherent B2 response should show how reflection on a past event changes future conduct.'),
+      'Say what happened, admit it, then promise: “I will never …” or “I will not …”.',
+    ], 'A coherent B2 response should show how reflection on a past event changes future conduct.', {
+      instructions: 'Tell how someone learned from a mistake in 4–6 sentences.',
+      question: 'What went wrong, and what will change now?',
+    }),
   ],
   11: [
     {
       id: 'mo-b2-lf11-a',
       type: 'matching',
       title: 'Warning and Flight',
-      instructions: 'Read the Qur’anic words quoted in Chapter 11. Match each line with its meaning.',
-      question: 'What does each quoted line mean in the escape scene?',
+      instructions: 'Match each Qur’anic line in Chapter 11 with its meaning.',
+      question: 'What does each line mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'the chiefs are taking counsel together about you to kill you', right: 'the leaders are meeting to plan his death' },
@@ -260,9 +272,9 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     {
       id: 'mo-b2-lf11-b',
       type: 'transformation',
-      title: 'Hardship, Concession and Manner',
-      instructions: 'Rewrite each chapter sentence with the new structure. Keep the meaning. Write only the missing words.',
-      question: 'Can you turn a “however” contrast into a concession, and a participle phrase into a full clause?',
+      title: 'Hardship on the Road',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say “However”, “without changing” and “hiding”?',
       transformItems: [
         {
           source: 'The hot sand burned his soles. However, fearing pursuit by the Pharaoh’s men, he forced himself to continue on.',
@@ -288,15 +300,18 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf11-c', 'Continuing Despite Hardship', [
-      'Write 4–5 sentences about a difficult journey someone had to make. Use “although” or “despite”, one participle phrase such as “fearing …” or “hoping …”, and one sentence with “without + -ing”.',
-    ], 'The task transfers the chapter’s language of concession and manner to a new situation without retelling the escape.'),
+      'Use “although” or “despite”, “fearing …” or “hoping …”, and “without …ing”.',
+    ], 'The task transfers the chapter’s language of concession and manner to a new situation without retelling the escape.', {
+      instructions: 'Describe a hard journey someone had to make in 4–5 sentences.',
+      question: 'What made the journey hard, and why go on?',
+    }),
   ],
   12: [
     {
       id: 'mo-b2-lf12-a',
       type: 'multiple-choice',
       title: 'What Does “could only … after” Show?',
-      instructions: 'Read the sentence from Chapter 12 and choose the best interpretation.',
+      instructions: 'Read the sentence from Chapter 12 and choose the best meaning.',
       question: '“Due to the crowd at the water source, the young women could only water their animals after the male shepherds had taken their flocks away.” What does the sentence tell us?',
       options: [
         'The women watered their animals first and then the men watered theirs.',
@@ -315,8 +330,8 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       id: 'mo-b2-lf12-b',
       type: 'choose-form',
       title: 'Offer, Time and Reaction',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 12.',
-      question: 'Which form reports an offer, links two times, and introduces a reaction?',
+      instructions: 'Choose the correct word for each sentence from Chapter 12.',
+      question: 'Which word fits each sentence?',
       formChoices: [
         {
           sentence: 'Forgetting his thirst, Moses approached them and asked if he [choice] help them in any way.',
@@ -342,7 +357,10 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       },
     },
     reflection('mo-b2-lf12-c', 'Service Despite Need', [
-      'Explain in 5–6 sentences why “Forgetting his thirst” matters in the paragraph. Use one cause phrase, one limitation with “could only”, and one sentence of interpretation.',
-    ], 'The phrase foregrounds Moses’ own need and helps the reader interpret the priority he gives to helping others.'),
+      'Give a reason with “Due to …”, use “could only”, then say what it shows.',
+    ], 'The phrase foregrounds Moses’ own need and helps the reader interpret the priority he gives to helping others.', {
+      instructions: 'Explain in 5–6 sentences why “Forgetting his thirst” matters.',
+      question: 'What does “Forgetting his thirst” show about Moses?',
+    }),
   ],
 };

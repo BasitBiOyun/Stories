@@ -9,7 +9,7 @@ export const meccaA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-ar-language-1-form-function', type: 'drag-drop', title: 'لاحظ: ما حدث وما ظنّه الناس',
       instructions: 'ضع كل عبارة من الفصل الأول في المجموعة المناسبة.',
-      question: 'هل تخبرنا العبارة بما حدث فعلًا، أم بما ظنّه أهل مكة عن بلال؟',
+      question: 'هل حدث هذا فعلًا، أم ظنّه أهل مكة فقط؟',
       dragDropGroups: [
         {
           group: 'ما حدث فعلًا',
@@ -47,7 +47,7 @@ export const meccaA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-ar-language-1-future', type: 'choose-form', title: 'تدرّب: كان ولن',
       instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
-      question: 'انتبه إلى آخر الكلمة بعد «كان» و«كانت» و«لن».',
+      question: 'كيف تنتهي الكلمة بعد «كان» و«كانت» و«لن»؟',
       formChoices: [
         { sentence: 'كَانَ بِلَالٌ [choice] أَسْوَدَ، وَقَدْ وُلِدَ فِي مَكَّةَ.', options: ['عَبْدٌ', 'عَبْدًا'], answer: 1 },
         { sentence: 'وَكَانَتْ أُمُّهُ [choice] حَبَشِيَّةً', options: ['امْرَأَةً', 'امْرَأَةٌ'], answer: 0 },
@@ -75,14 +75,14 @@ export const meccaA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-ar-language-1-production', type: 'reflection', title: 'نبذة قصيرة',
-      instructions: 'اكتب أربع جمل A2 عن شخص حقيقي أو خيالي باستعمال لغة الفصل، من دون إعادة قصة بلال.',
-      question: 'هل تستطيع الجمع بين خلفية واعتقاد وتغيّر أو درس؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن شخص حقيقي أو خيالي.',
+      question: 'هل تستطيع أن تحكي قصة حياة قصيرة؟', correctAnswer: null,
       explanation: 'استعمل ثلاثة تراكيب على الأقل: كان/كانت، وُلِدَ في، ظنّ أن، لن، جعل، تعلّمنا أن.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر خلفية في الماضي.', mode: 'Individual' },
-        { question: 'انقل اعتقادًا سابقًا.', mode: 'Individual' },
-        { question: 'اذكر تغيّرًا أو درسًا.', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر ماضيه: «وُلِدَ ... في ...، وكان ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر ما ظنّه الناس: «ظنّ الناس أنّه ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر تغيّرًا: «ولكنّ ... جعله ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -126,7 +126,7 @@ export const meccaA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     {
       id: 'mecca-a2-ar-language-2-existence', type: 'choose-form', title: 'تدرّب: آخر الكلمة',
       instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
-      question: 'انتبه إلى آخر الكلمة.',
+      question: 'كيف تنتهي الكلمة في كل جملة؟',
       formChoices: [
         { sentence: 'لَمْ يَكُنْ هُناكَ [choice] …', options: ['سَلامًا', 'سَلامٌ'], answer: 1 },
         { sentence: 'كانَ الْأَغْنِياءُ يَمْلِكونَ [choice] كَثِيرَةً', options: ['أَمْوالًا', 'أَمْوالٌ'], answer: 0 },
@@ -141,14 +141,14 @@ export const meccaA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-a2-ar-language-2-production', type: 'reflection', title: 'صف مجتمعًا',
-      instructions: 'اكتب أربع جمل A2 عن مدينة خيالية في الماضي. استعمل ثلاثة تراكيب من الفصل.',
-      question: 'هل تستطيع وصف وجود شيء ونفي شيء وذكر فرق بين مجموعتين؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن مدينة خيالية في الماضي.',
+      question: 'كيف كانت الحياة في هذه المدينة؟', correctAnswer: null,
       explanation: 'يمكن استعمال كانت هناك، لم يكن هناك، الكثير من، لكن، وكان الناس + فعل مضارع.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر شيئًا كان موجودًا.', mode: 'Individual' },
-        { question: 'انفِ وجود شيء آخر.', mode: 'Individual' },
-        { question: 'اربط حالتين مختلفتين بـ«لكن».', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر شيئًا كان موجودًا: «كانت هناك ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر شيئًا لم يكن موجودًا: «لم يكن هناك ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قارن بين حالين: «كان ...، لكنّ ...»', mode: 'Pair' },
       ],
     },
   ],

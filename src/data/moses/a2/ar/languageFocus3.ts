@@ -5,7 +5,7 @@ export const mosesA2LanguageFocusExercisesPart7Ar: Record<number, Exercise[]> = 
     {
       id: 'moses-a2-ar-language-10-setting-change', type: 'drag-drop', title: 'انظر: حالٌ ثابتة أم تتغيّر؟',
       instructions: 'ضع كل عبارة من الفصل في المجموعة المناسبة.',
-      question: 'هل تصف العبارة حالًا ثابتة في المشهد، أم شيئًا يتغيّر؟',
+      question: 'هل بقي الشيء كما هو، أم تغيّر؟',
       dragDropGroups: [
         { group: 'حَالٌ ثَابِتَةٌ', items: ['كَانَ الشِّتَاءُ', 'وَلَمْ يَكُنْ هُنَاكَ أَحَدٌ فِي الطَّرِيقِ', 'كَانُوا فِي وَادٍ بَيْنَ الْجِبَالِ', 'وَكَانَ الْمَكَانُ هَادِئًا جِدًّا'] },
         { group: 'شَيْءٌ يَتَغَيَّرُ', items: ['بَدَأَ الظَّلَامُ يَحِلُّ', 'وَاشْتَدَّ الْبَرْدُ', 'فَتَحَوَّلَتْ إِلَى ثُعْبَانٍ كَبِيرٍ'] },
@@ -48,11 +48,11 @@ export const mosesA2LanguageFocusExercisesPart7Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-10-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل مساء باردًا في موقف يومي.', question: 'هل تستطيع وصف تغير، وإعطاء توجيه، وذكر فعل قادم وغاية منه؟',
+      instructions: 'قل أربع جمل قصيرة عن مساء بارد.', question: 'ماذا يتغيّر؟ وماذا ستفعل؟',
       correctAnswer: null, explanation: 'استخدم «بدأ»، وفعل أمر، و«سـ + فعل»، و«لـ + فعل».', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'صف شيئًا بدأ يتغير.', mode: 'Individual' }, { question: 'أعط توجيهًا بسيطًا.', mode: 'Pair' },
-        { question: 'قل ما ستفعله بعد قليل.', mode: 'Individual' }, { question: 'اذكر الغاية منه.', mode: 'Individual' },
+        { question: 'الجملة 1 — قل ما بدأ يتغيّر: «بدأ ... يـ...»', mode: 'Individual' }, { question: 'الجملة 2 — أعطِ أمرًا: «الْبَسْ ...، من فضلك.»', mode: 'Pair' },
+        { question: 'الجملة 3 — قل ما ستفعله: «سـ... بعد قليل.»', mode: 'Individual' }, { question: 'الجملة 4 — قل لماذا: «... لِـ...»', mode: 'Individual' },
       ],
     },
   ],
@@ -74,8 +74,8 @@ export const mosesA2LanguageFocusExercisesPart8Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-11-change-role', type: 'matching', title: 'تدرّب: إلى مَن يعود الضمير؟',
-      instructions: 'صِل كل عبارة بالشخص أو الشيء الذي يدلّ عليه الضمير في آخر الكلمة (ـهَا، ـهُ، ـكَ، ـهُمْ).',
-      question: 'عَلَامَ يدلّ الضمير في كل عبارة؟',
+      instructions: 'صِل كل عبارة بمَن تدلّ عليه «ـه» أو «ـها» وغيرهما.',
+      question: 'مَن المقصود في كل عبارة؟',
       matchingHeadings: { left: 'من الفصل', right: 'الضمير يعود إلى' },
       matchingPairs: [
         { left: 'ثُمَّ أَخْرِجْهَا', right: 'يَدُ مُوسَى' },
@@ -113,14 +113,14 @@ export const mosesA2LanguageFocusExercisesPart8Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-11-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل مهمة صغيرة في المدرسة أو البيت.', question: 'هل تستطيع إعطاء توجيه وذكر المرافق وبيان الغاية ووصف نتيجة؟',
+      instructions: 'قل أربع جمل قصيرة عن عمل صغير قمت به.', question: 'ماذا فعلت؟ ومَن ذهب معك؟',
       correctAnswer: null, explanation: 'استخدم صيغة توجيه، و«معه»، و«لـ + فعل»، و«جعل» أو «لم + فعل».',
       feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'أعط توجيهًا بسيطًا.', mode: 'Pair' },
-        { question: 'اذكر من يرافقك.', mode: 'Individual' },
-        { question: 'اذكر الغاية.', mode: 'Individual' },
-        { question: 'صف نتيجة أو دورًا جديدًا.', mode: 'Individual' }
+        { question: 'الجملة 1 — أعطِ أمرًا: «خُذْ ... إلى ...»', mode: 'Pair' },
+        { question: 'الجملة 2 — قل مَن ذهب معك: «أخذت ... معي.»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل لماذا ذهبتم: «ذهبنا إلى ... لِـ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — قل ما تغيّر بعد ذلك: «أصبحتُ ...»', mode: 'Individual' }
       ]
     }
   ]
@@ -131,7 +131,7 @@ export const mosesA2LanguageFocusExercisesPart9Ar: Record<number, Exercise[]> = 
     {
       id: 'moses-a2-ar-language-12-message-thought', type: 'drag-drop', title: 'انظر: مَن يتكلّم؟',
       instructions: 'ضع كل عبارة من الفصل في المجموعة المناسبة.',
-      question: 'هل العبارة كلامُ شخصية كما قالته، أم يحكي فيها الراوي ما حدث؟',
+      question: 'هل هذا كلام شخصية، أم الراوي يحكي؟',
       dragDropGroups: [
         { group: 'كَلَامُ الشَّخْصِيَّةِ', items: ['إِنِّي رَسُولٌ مِنْ رَبِّ الْعَالَمِينَ', 'هٰذَا مُجَرَّدُ سِحْرٍ', 'كُلُّ سَحَرَتِي يَسْتَطِيعُونَ فِعْلَ هٰذَا'] },
         { group: 'الرَّاوِي يَحْكِي', items: ['فَأَخَذَ مُوسَى عَلَيْهِ السَّلَامُ عَصَاهُ', 'ثُمَّ أَدْخَلَ يَدَهُ فِي جَيْبِهِ، وَأَخْرَجَهَا', 'كَانَتْ هٰذِهِ آيَاتٍ مِنَ اللهِ'] },
@@ -187,11 +187,11 @@ export const mosesA2LanguageFocusExercisesPart9Ar: Record<number, Exercise[]> = 
     },
     {
       id: 'moses-a2-ar-language-12-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل أنك تعرض مهارة أو تجربة بسيطة.', question: 'هل تستطيع التعبير عن رأي أو قرار، ووصف تحول، وذكر قدرة؟',
+      instructions: 'قل أربع جمل قصيرة عن شيء تستطيع أن تصنعه.', question: 'هل تستطيع أن تُري غيرك شيئًا تصنعه؟',
       correctAnswer: null, explanation: 'استخدم «ظن أن»، و«قرر أن»، و«تحول إلى»، و«يستطيع».', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر رأيًا أو اعتقادًا.', mode: 'Pair' }, { question: 'اذكر قرارًا.', mode: 'Individual' },
-        { question: 'صف تحولًا.', mode: 'Individual' }, { question: 'اذكر قدرة.', mode: 'Individual' },
+        { question: 'الجملة 1 — قل ما ظنّه شخص: «ظنّ ... أنّ ...»', mode: 'Pair' }, { question: 'الجملة 2 — قل ما قرّرت: «فقرّرت أن ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل كيف تغيّر الشيء: «تحوّل ... إلى ...»', mode: 'Individual' }, { question: 'الجملة 4 — قل ما تستطيعه الآن: «الآن أستطيع أن ...»', mode: 'Individual' },
       ],
     },
   ],
@@ -202,7 +202,7 @@ export const mosesA2LanguageFocusExercisesPart10Ar: Record<number, Exercise[]> =
     {
       id: 'moses-a2-ar-language-13-arrival-action', type: 'drag-drop', title: 'انظر: مرّة واحدة أم وقتًا طويلًا؟',
       instructions: 'ضع كل عبارة من الفصل في المجموعة المناسبة.',
-      question: 'هل حدث الفعل مرّة واحدة وانتهى، أم استمرّ وقتًا في الماضي؟',
+      question: 'هل حدث مرّة وانتهى، أم استمرّ وقتًا؟',
       dragDropGroups: [
         { group: 'حَدَثَ مَرَّةً وَانْتَهَى', items: ['فَوَضَعُوا الْعِصِيَّ وَالْحِبَالَ عَلَى الْأَرْضِ', 'فَأَلْقَى مُوسَى عَلَيْهِ السَّلَامُ عَصَاهُ', 'فَسَجَدَ السَّحَرَةُ لِلهِ'] },
         { group: 'اِسْتَمَرَّ وَقْتًا', items: ['وَكَانَ بَعْضُهُمْ يَحْمِلُ حِبَالًا', 'فَاسْتَمَرَّ فِي إِيذَاءِ مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمِهِ لَيْلًا وَنَهَارًا'] },
@@ -246,13 +246,13 @@ export const mosesA2LanguageFocusExercisesPart10Ar: Record<number, Exercise[]> =
     },
     {
       id: 'moses-a2-ar-language-13-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل تجربة أو نشاطًا بسيطًا.', question: 'هل تستطيع وصف حضور شخص، ثم توجيه، ثم تحول، ثم سبب أو فعل مستمر؟',
+      instructions: 'قل أربع جمل قصيرة عن تجربة صغيرة.', question: 'كيف تغيّر الشيء في تجربتك؟',
       correctAnswer: null, explanation: 'استخدم «جاء ... ومعه»، وصيغة توجيه، و«تحول إلى»، و«لأن» أو «استمر في».', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر ماذا كان مع شخص عند وصوله.', mode: 'Pair' },
-        { question: 'أعط توجيهًا قصيرًا.', mode: 'Individual' },
-        { question: 'صف تحولًا.', mode: 'Individual' },
-        { question: 'اذكر سببًا أو استمرارًا.', mode: 'Individual' }
+        { question: 'الجملة 1 — قل مَن جاء وماذا معه: «جاء ... وفي يده ...»', mode: 'Pair' },
+        { question: 'الجملة 2 — أعطِ أمرًا قصيرًا: «ضَعْ ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل كيف تغيّر: «تحوّل ... إلى ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — قل ما استمرّ ولماذا: «واستمرّ في ...، لأنّ ...»', mode: 'Individual' }
       ]
     }
   ],
@@ -308,13 +308,13 @@ export const mosesA2LanguageFocusExercisesPart10Ar: Record<number, Exercise[]> =
     },
     {
       id: 'moses-a2-ar-language-14-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'خطط لنشاط جماعي آمن.', question: 'هل تستطيع إعطاء توجيه، وذكر استعداد، وواجب، وخطة مستقبلية؟',
+      instructions: 'قل أربع جمل قصيرة عن رحلة مدرسية.', question: 'ماذا يجب أن نفعل في الرحلة؟',
       correctAnswer: null, explanation: 'استخدم صيغة توجيه، و«استعد لـ»، و«عليك أن»، و«سـ + فعل».', feedback: { correct: 'اجعل المثال يوميًا وآمنًا.', incorrect: '' },
       discussionPrompts: [
-        { question: 'أعط توجيهًا.', mode: 'Pair' },
-        { question: 'اذكر ما يجب الاستعداد له.', mode: 'Individual' },
-        { question: 'اذكر واجبًا.', mode: 'Individual' },
-        { question: 'اختم بخطة مستقبلية.', mode: 'Individual' }
+        { question: 'الجملة 1 — أعطِ أمرًا: «اجلسوا ...»', mode: 'Pair' },
+        { question: 'الجملة 2 — قل بماذا نستعدّ: «استعدّوا لـ...، وأحضروا ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل ما يجب: «يجب أن ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — قل ما سيحدث: «سنغادر ...»', mode: 'Individual' }
       ]
     }
   ]
@@ -363,21 +363,21 @@ export const mosesA2LanguageFocusExercisesPart11Ar: Record<number, Exercise[]> =
     },
     {
       id: 'moses-a2-ar-language-15-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'تخيل مجموعة تحتاج إلى المرور بأمان في مكان مزدحم.', question: 'هل تستطيع وصف ما أمامهم وخلفهم، وطمأنتهم، ثم وصف طريق آمن؟',
+      instructions: 'قل أربع جمل قصيرة عن طريق آمن في مكان مزدحم.', question: 'كيف تمرّون بأمان في مكان مزدحم؟',
       correctAnswer: null, explanation: 'استخدم «أمام»، و«خلف»، وصيغة توجيه، و«سـ + فعل»، و«بين» و«بأمان».', feedback: { correct: 'استخدم التراكيب في موقف جديد.', incorrect: '' },
       discussionPrompts: [
-        { question: 'صف ما أمام المجموعة وما خلفها.', mode: 'Individual' },
-        { question: 'قدّم طمأنة قصيرة.', mode: 'Pair' },
-        { question: 'اذكر شيئًا سيحدث.', mode: 'Individual' },
-        { question: 'صف طريقًا آمنًا.', mode: 'Individual' }
+        { question: 'الجملة 1 — قل ما أمامكم وما خلفكم: «كان ... أمامنا، وكان ... خلفنا.»', mode: 'Individual' },
+        { question: 'الجملة 2 — طمئن صديقك: «لا تخف، ...»', mode: 'Pair' },
+        { question: 'الجملة 3 — قل ما سيحدث: «سنصل ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — صف الطريق الآمن: «سرنا بأمان بين ...»', mode: 'Individual' }
       ]
     }
   ],
   16: [
     {
       id: 'moses-a2-ar-language-16-place-time', type: 'sequencing', title: 'انظر: كلمات الوقت',
-      instructions: 'رتّب الجمل كما جاءت في الفصل.',
-      question: 'كيف تساعدك «عِنْدَمَا» و«فِي النِّهَايَةِ» على الترتيب؟',
+      instructions: 'رتّب الجمل كما جاءت في الفصل. «عندما» و«في النهاية» تساعدانك.',
+      question: 'ماذا حدث لفرعون وجنوده في البحر؟',
       sequencingItems: [
         { id: '1', text: 'وَرَأَوْا هُمْ أَيْضًا الطَّرِيقَ فِي وَسَطِ الْبَحْرِ.' },
         { id: '2', text: 'دَخَلُوا فِي الْمَاءِ.' },
@@ -432,12 +432,12 @@ export const mosesA2LanguageFocusExercisesPart11Ar: Record<number, Exercise[]> =
     },
     {
       id: 'moses-a2-ar-language-16-production', type: 'reflection', title: 'استخدم اللغة',
-      instructions: 'اكتب أو قل خاتمة قصيرة لحدث يومي آمن.', question: 'هل تستطيع استعمال عبارة مكان، و«عندما»، و«في النهاية» لترتيب الحدث؟',
+      instructions: 'اكتب أو قل ثلاث جمل عن عمل قمتم به معًا.', question: 'ماذا حدث؟ وكيف انتهى؟',
       correctAnswer: null, explanation: 'انقل لغة المكان والزمن والترتيب إلى موقف جديد.', feedback: { correct: 'اجعل الخاتمة واضحة وبسيطة.', incorrect: '' },
       discussionPrompts: [
-        { question: 'ابدأ بعبارة مكان.', mode: 'Individual' },
-        { question: 'أضف جملة تبدأ بـ«عندما».', mode: 'Individual' },
-        { question: 'اختم بـ«في النهاية».', mode: 'Pair' }
+        { question: 'الجملة 1 — ابدأ بالمكان: «في ...، ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — قل ما حدث: «عندما ...، ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — قل كيف انتهى: «في النهاية، ...»', mode: 'Pair' }
       ]
     }
   ]

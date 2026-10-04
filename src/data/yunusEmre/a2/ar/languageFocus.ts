@@ -12,7 +12,7 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'انظر: أفعال السيرة في الماضي',
       instructions: 'صِل كل فعل بصيغة الماضي التي جاءت في الفصل الأول.',
-      question: 'ما الأفعال التي يستعملها الفصل ليحكي حياة يونس إمره؟',
+      question: 'ما الماضي من كل فعل؟',
       matchingHeadings: { left: 'الفعل الآن', right: 'في الفصل (الماضي)' },
       matchingPairs: [
         { left: 'يَكونُ', right: 'كانَ' },
@@ -66,8 +66,8 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yunus-a2-ar-language-1-mini-biography',
       type: 'reflection',
       title: 'قُلْها: سيرة قصيرة',
-      instructions: 'استخدم لغة الفصل الأول لتقول ثلاث جمل قصيرة عن يونس إمره.',
-      question: 'هل تستطيع أن تعيد أهم المعلومات في سيرة يونس إمره بجمل كاملة؟',
+      instructions: 'قل ثلاث جمل قصيرة عن حياة يونس إمره.',
+      question: 'ماذا تعرف عن حياة يونس إمره؟',
       correctAnswer: null,
       explanation: 'يمكن أن تجمع الإجابة بين الميلاد، والتحول في حياته بعد التعليم، وحدث آخر مثل السفر أو العيش في زمن مولانا.',
       feedback: {
@@ -75,9 +75,9 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة الأولى — ابدأ بالميلاد: «وُلِدَ يونس إمره ...»', mode: 'Individual' },
-        { question: 'الجملة الثانية — تابع بالتغير: «بعد أن أكمل ...، أصبح ...»', mode: 'Individual' },
-        { question: 'الجملة الثالثة — أضف حقيقة أخرى: «سافر ...» أو «عاش ...» أو «كان ... عندما ...»', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر ميلاده: «وُلِدَ يونس إمره ...»', mode: 'Individual' },
+        { question: 'الجملة الثانية — قل ماذا أصبح: «بعد أن أكمل ...، أصبح ...»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — أضف معلومة أخرى: «سافر ...» أو «عاش ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -87,7 +87,7 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'انظر: ماذا كانوا يفعلون؟ كيف كانوا؟',
       instructions: 'ضع كل عبارة من الفصل الثاني في المجموعة المناسبة.',
-      question: 'هل تذكر العبارة شيئًا كان الدراويش يفعلونه، أم صفة كانت فيهم؟',
+      question: 'هل هي شيء كانوا يفعلونه، أم صفة فيهم؟',
       dragDropGroups: [
         {
           group: 'ماذا كانوا يفعلون؟ (كانوا + فعل)',
@@ -126,8 +126,8 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yunus-a2-ar-language-2-reason-contrast-links',
       type: 'error-correction',
       title: 'تدرّب: آخر الكلمة بعد «كان» و«لكنّ»',
-      instructions: 'في كل جملة خطأ واحد في آخر كلمة. انقر الخطأ، ثم اختر التصحيح.',
-      question: 'ما الحركة الصحيحة بعد «كانَ» و«لَمْ يَكونوا» و«لٰكِنَّ»؟',
+      instructions: 'في كل جملة خطأ في آخر كلمة. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'ما آخر الكلمة بعد «كان» و«لم يكونوا» و«لكنّ»؟',
       errorItems: [
         {
           sentence: 'كانوا يُسَمّونَ أَنْفُسَهُمْ فُقَراءَ، وَلٰكِنَّ قُلوبُهُمْ كانَتْ غَنِيَّةً جِدًّا.',
@@ -159,8 +159,8 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yunus-a2-ar-language-2-character-portrait',
       type: 'reflection',
       title: 'قُلْها: وصف الدَّراويش',
-      instructions: 'صف الدَّراويش في ثلاث جمل قصيرة مستخدمًا لغة الفصل الثاني.',
-      question: 'هل تستطيع أن تجمع بين صفة وعادة ومقابلة في وصفك؟',
+      instructions: 'قل ثلاث جمل قصيرة عن الدَّراويش.',
+      question: 'كيف كان الدَّراويش؟',
       correctAnswer: null,
       explanation: 'الإجابة الجيدة في مستوى A2 تذكر صفة واحدة، وفعلًا كانوا يفعلونه عادة، ثم جملة فيها مقابلة أو سبب.',
       feedback: {
@@ -168,9 +168,9 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة الأولى — صفهم: «كانوا لُطَفاءَ و...»', mode: 'Individual' },
-        { question: 'الجملة الثانية — اذكر عادة: «كانوا يحاولون ...» أو «كانوا يشاركون ...»', mode: 'Individual' },
-        { question: 'الجملة الثالثة — أضف مقابلة أو سببًا: «كانوا يسمون أنفسهم فقراء، ولكنّ ...» أو «من أجل الخالق، كانوا ...»', mode: 'Pair' },
+        { question: 'الجملة الأولى — صفهم: «كانوا ... و...»', mode: 'Individual' },
+        { question: 'الجملة الثانية — قل ماذا كانوا يفعلون: «كانوا يحاولون ...» أو «كانوا يشاركون ...»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — أضف «ولكنّ» أو سببًا: «كانوا يسمّون أنفسهم فقراء، ولكنّ ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -180,7 +180,7 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'انظر: ماذا يحتاج الدرويش؟ ماذا يجب عليه؟',
       instructions: 'اقرأ أبيات القصيدة، ثم ضع كل بيت في المجموعة المناسبة.',
-      question: 'هل يذكر البيت شيئًا يحتاج إليه الدرويش، أم شيئًا يجب أن يفعله أو يكونه؟',
+      question: 'هل يحتاج الدرويش إلى هذا، أم يجب أن يفعله؟',
       dragDropGroups: [
         {
           group: 'شيء يحتاج إليه (يَحْتاجُ إِلى + اسم)',
@@ -220,7 +220,7 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'تدرّب: حياة الدراويش',
       instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل الثالث.',
-      question: 'أيّ كلمة تناسب الجملة في آخرها وفي عددها؟',
+      question: 'أيّ كلمة تناسب كل جملة؟',
       formChoices: [
         {
           sentence: 'في الْحَقيقَةِ، كانَ طَريقُ الدَّراويشِ [choice] شاقًّا جِدًّا.',
@@ -249,8 +249,8 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yunus-a2-ar-language-3-difficult-path',
       type: 'reflection',
       title: 'قُلْها: الطَّريق الشّاقّ',
-      instructions: 'استخدم لغة الفصل الثالث لتشرح طريق الدَّراويش في ثلاث جمل قصيرة.',
-      question: 'هل تستطيع أن تجمع بين حاجة وواجب وعادة من الحياة المنظمة؟',
+      instructions: 'قل ثلاث جمل قصيرة عن حياة الدَّراويش.',
+      question: 'لماذا كان طريق الدَّراويش شاقًّا؟',
       correctAnswer: null,
       explanation: 'الإجابة الجيدة في مستوى A2 تعيد استعمال تراكيب الفصل في معنى واضح، بدل حفظ قاعدة منفصلة عن النص.',
       feedback: {
@@ -258,9 +258,9 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة الأولى — اذكر حاجة: «يحتاج الدرويش إلى ...»', mode: 'Individual' },
-        { question: 'الجملة الثانية — اذكر واجبًا: «يجب أن ...»', mode: 'Individual' },
-        { question: 'الجملة الثالثة — صف الحياة: «كان الدَّراويش ... قليلًا، وكانوا يقضون وقتهم ...»', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر ما يحتاج إليه: «يحتاج الدرويش إلى ...»', mode: 'Individual' },
+        { question: 'الجملة الثانية — اذكر ما يجب عليه: «يجب أن ...»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — صف حياتهم: «كان الدَّراويش ... قليلًا، وكانوا يقضون وقتهم ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -283,7 +283,7 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'تدرّب: الشرط والطلب و«أبدًا»',
       instructions: 'أكمل جمل الفصل الرابع بكلمات من البنك. ثلاث كلمات لا نحتاج إليها.',
-      question: 'أيّ كلمة تناسب كل فراغ في معناها وفي آخرها؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'كانَ أَوَّلُ شَرْطٍ لِمَنْ يُريدُ أَنْ يَكونَ تِلْميذًا أَنْ يَكونَ [blank]، وَمُسْتَعِدًّا لِخِدْمَةِ النّاسِ وَالْمَخْلوقاتِ. … فَطَلَبَ تابْتوك مِنْ يونُس أَنْ [blank] الْحَطَبَ في دارِ الدَّراويشِ. … لٰكِنَّهُ لَمْ يَقْطَعْ وَلَمْ يُحْضِرْ [blank] حَطَبًا أَخْضَرَ أَوْ مُعْوَجًّا.',
       wordBank: ['مُتَواضِعًا', 'يَقْطَعُ', 'أَبَدًا', 'مُتَواضِعٌ', 'يَقْطَعَ', 'أَبَدٌ'],
       correctAnswer: ['مُتَواضِعًا', 'يَقْطَعَ', 'أَبَدًا'],
@@ -297,8 +297,8 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'yunus-a2-ar-language-4-service-routine',
       type: 'reflection',
       title: 'قُلْها: الخدمة والروتين',
-      instructions: 'استخدم لغة الفصل الرابع لوصف استعداد يونس وخدمته اليومية في ثلاث جمل قصيرة.',
-      question: 'هل تستطيع أن تجمع بين الاستعداد والوعد والروتين المتكرر؟',
+      instructions: 'قل ثلاث جمل قصيرة عن خدمة يونس لمعلّمه.',
+      question: 'كيف خدم يونس معلّمه؟',
       correctAnswer: null,
       explanation: 'الإجابة الجيدة تنقل الطالب من ملاحظة تراكيب الفصل إلى استعمالها في وصف قصير ذي معنى.',
       feedback: {
@@ -306,9 +306,9 @@ export const yunusA2LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة الأولى — صف الاستعداد: «كان يونس مستعدًّا لِـ ...»', mode: 'Individual' },
-        { question: 'الجملة الثانية — اذكر الوعد: «قال: سأقوم ...»', mode: 'Individual' },
-        { question: 'الجملة الثالثة — صف الروتين: «في كل يوم كان ...، لكنه لم ... أبدًا»', mode: 'Pair' },
+        { question: 'الجملة الأولى — قل إنه كان مستعدًّا: «كان يونس مستعدًّا لـ...»', mode: 'Individual' },
+        { question: 'الجملة الثانية — اذكر وعده: «قال: سأقوم ...»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — قل ماذا كان يفعل كل يوم: «في كل يوم كان ...، لكنه لم ... أبدًا»', mode: 'Pair' },
       ],
     },
   ],

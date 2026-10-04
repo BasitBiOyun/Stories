@@ -8,8 +8,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-13-concession-contrast',
       type: 'drag-drop',
       title: 'Accepted First, Stressed Next',
-      instructions: 'Each pair below comes from Chapter 13. In each pair, one part is a point the writer accepts or mentions first, and the other is the point the writer wants to stress. Sort them.',
-      question: 'How does the writer admit one point and then move the reader’s attention to another?',
+      instructions: 'Sort each pair from Chapter 13: the point accepted first, or the point stressed?',
+      question: 'Which point does the writer accept, and which does he stress?',
       dragDropGroups: [
         {
           group: 'A point accepted or mentioned first',
@@ -50,8 +50,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-13-modal-stance',
       type: 'transformation',
       title: 'Concession and Hope in Other Words',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 13 sentence. Write only the missing words.',
-      question: 'Can you split a concession into two sentences and expand a participle of purpose?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say what Habil did and why?',
       transformItems: [
         {
           source: 'It is understood from the above verses that although Qabil had the intention to kill, Habil did not adopt an aggressive attitude.',
@@ -85,8 +85,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-13-purpose-condition',
       type: 'error-correction',
       title: 'Advice and Condition',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Which verb forms follow “It is better that you …”, “if” and “did not”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the verbs after “It is better that you”, “if” and “did not”?',
       errorItems: [
         {
           sentence: 'It is better that you repented to Allah and forget about your foolish threat.',
@@ -117,9 +117,9 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-13-production',
       type: 'reflection',
-      title: 'Build a Qualified Conflict-Response Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story conflict. Do not retell Chapter 13. Begin with a concession using “although”, “even if”, or an equivalent expression. Use one modal expression such as “may”, “can”, or “might” to describe a possibility without presenting it as certainty. State the purpose of one response, recommend an alternative action, and finish with an if-clause that makes a consequence or responsibility clear. Keep the paragraph coherent rather than listing target forms.',
-      question: 'Can you use concession, modal stance, purpose and condition-consequence language to explain a measured response to conflict?',
+      title: 'A Calm Answer',
+      instructions: 'Write or say 8–10 sentences about a conflict and a calm way to answer it.',
+      question: 'How can someone answer a conflict calmly?',
       correctAnswer: null,
       explanation: 'A strong B2 response uses these resources to control viewpoint and logic: acknowledge tension, avoid overclaiming, explain intention, propose an alternative and make consequences explicit.',
       feedback: {
@@ -127,10 +127,10 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Concession — What difficult fact will you acknowledge before presenting the response?', mode: 'Individual' },
-        { question: 'Stance — Which claim should be presented as possible rather than certain?', mode: 'Individual' },
-        { question: 'Purpose — What result is the responder trying to achieve?', mode: 'Pair' },
-        { question: 'Condition — What happens if the recommended alternative is rejected?', mode: 'Pair' },
+        { question: 'Sentence 1 — Admit a hard fact: “Although …, I did not …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what may be true: “He may … , or he might …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give your aim and idea: “I … in order to … . I suggested …”', mode: 'Pair' },
+        { question: 'Sentence 4 — End with “if”: “If he …, I will …”', mode: 'Pair' },
       ],
     },
   ],
@@ -139,8 +139,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-14-negative-coordination',
       type: 'drag-drop',
       title: 'A State Reached or a Process Going On?',
-      instructions: 'Read the parts of Chapter 14 below. Does each part describe a state that has already been reached, or something still going on or just beginning? Sort them.',
-      question: 'How do the verb forms show the change in Qabil after the crime?',
+      instructions: 'Sort the parts of Chapter 14: a finished change, or one still going on?',
+      question: 'Has the change already happened, or is it still going on?',
       dragDropGroups: [
         {
           group: 'A state already reached',
@@ -179,8 +179,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-14-passive-focus',
       type: 'sentence-building',
       title: 'Build the Negative Chain',
-      instructions: 'Tap the pieces to rebuild the first sentence of Chapter 14.',
-      question: 'What word order follows “nor” when it starts a negative clause?',
+      instructions: 'Tap the pieces to make the first sentence of Chapter 14.',
+      question: 'What word order comes after “nor”?',
       sentenceChunks: [
         'This brotherly request',
         'did nothing to lessen the hatred',
@@ -200,9 +200,9 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-14-development-purpose',
       type: 'error-correction',
-      title: 'Passive and Reported Forms',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct two passive forms and a verb in reported speech?',
+      title: 'After the Crime',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Qabil after the crime?',
       errorItems: [
         {
           sentence: 'Even familial considerations were gave up.',
@@ -234,8 +234,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-14-production',
       type: 'reflection',
       title: 'Build a Consequence-and-Realisation Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which someone ignores several restraints, faces an accumulating consequence, and then learns through an unexpected example. Use one layered negative structure such as “not... nor...”, one passive form to foreground a result or lost restraint, one expression of a developing state such as “was becoming / was getting...”, and one purpose expression such as “to show / in order to...”. Do not retell Chapter 14.',
-      question: 'Can you use information focus, developing-state language and purpose framing to build a coherent consequence-and-realisation paragraph?',
+      instructions: 'Write or say 8–10 sentences about someone who ignores warnings until a problem grows.',
+      question: 'How does the problem grow, and what helps in the end?',
       correctAnswer: null,
       explanation: 'A strong B2 response should use the target structures to organise discourse: failed restraints → visible consequence → developing burden → purposeful learning moment.',
       feedback: {
@@ -243,10 +243,10 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Restraints — Which two warnings or considerations are ignored?', mode: 'Individual' },
-        { question: 'Focus — Which result is better foregrounded with a passive form?', mode: 'Individual' },
-        { question: 'Development — What burden or condition grows over time?', mode: 'Pair' },
-        { question: 'Purpose — What does the final example teach or demonstrate?', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what was ignored: “He did not …, nor did he …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give the result: “… had not been started, and … was postponed.”', mode: 'Individual' },
+        { question: 'Sentence 3 — Show it growing: “… was getting bigger / becoming …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Say what the example showed: “… in order to … . It showed him …”', mode: 'Pair' },
       ],
     },
   ],
@@ -273,9 +273,9 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-15-interpretive-framing',
       type: 'transformation',
-      title: 'Compact Clauses in Full',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 15 sentence. Write only the missing words.',
-      question: 'Can you expand a participle clause and a reduced passive, and split a relative clause?',
+      title: 'Say It in Full',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines about Qabil?',
       transformItems: [
         {
           source: 'Witnessing this, Qabil was overcome with shame and guilt.',
@@ -304,8 +304,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-15-characterisation',
       type: 'drag-drop',
       title: 'Event or Interpretation?',
-      instructions: 'Read the parts of Chapter 15 below. Does each part tell what happened, or does it give the writer’s interpretation of it? Sort them.',
-      question: 'Where does the chapter move from narrating events to interpreting them?',
+      instructions: 'Sort the parts of Chapter 15: what happened, or what it means?',
+      question: 'Does it tell what happened, or what it means?',
       dragDropGroups: [
         {
           group: 'What happened',
@@ -346,16 +346,16 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-15-production',
       type: 'reflection',
       title: 'Write an Event-to-Interpretation Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which an event leads to a wider interpretation about human behaviour. Include one purpose structure, one embedded how-clause, the frame “What is essentially described here is...”, one explanatory relative clause and one contrast with “while”. Keep factual description and interpretation clearly separate.',
-      question: 'Can you move from a concrete event to a careful interpretation while using clause structure to organise the argument?',
+      instructions: 'Write or say 8–10 sentences about a small event and what it shows about people.',
+      question: 'What happened, and what does it mean?',
       correctAnswer: null,
       explanation: 'A strong response describes what happened first, explicitly marks the move into interpretation, explains a cause or effect and contrasts two responses without confusing interpretation with fact.',
       feedback: { correct: 'Keep event sentences factual and make the interpretive shift explicit.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Event — What concrete action or incident happens first?', mode: 'Individual' },
-        { question: 'Purpose — What action is done to show, prevent or teach something?', mode: 'Individual' },
-        { question: 'Interpretation — Which sentence clearly marks the move from event to meaning?', mode: 'Pair' },
-        { question: 'Contrast — Which two responses or character types will “while” compare?', mode: 'Pair' },
+        { question: 'Sentence 1 — Say what happened: “During …, …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give the aim: “He … to show that …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Say what it means: “What is essentially described here is …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Compare two reactions: “While some …, he …”', mode: 'Pair' },
       ],
     },
   ],
@@ -364,7 +364,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-16-simultaneous-guidance',
       type: 'true-false',
       title: 'A Reported Detail',
-      instructions: 'Read the sentence from Chapter 16: “It was narrated that when Adam (pbuh)’s death drew near, he appointed his son Seth to be his successor …” Is the statement true or false?',
+      instructions: 'Read the sentence about Seth in Chapter 16. Is the statement true or false?',
       question: 'The words “It was narrated that …” present the detail about Seth as something passed on by others, not as the writer’s own direct claim.',
       correctAnswer: true,
       explanation: '“It was narrated that …” is an impersonal passive reporting frame. It attributes the detail to transmitted narration and keeps some distance between the writer and the claim. It does not say the report is false; it shows where the information comes from.',
@@ -376,9 +376,9 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     {
       id: 'adam-b2-language-16-source-status',
       type: 'error-correction',
-      title: 'Parallel -ing Forms and Verb Patterns',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you keep a list of actions parallel and use the right verb form after a preposition and after “tempt”?',
+      title: 'Adam’s Advice',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Adam’s advice to his children?',
       errorItems: [
         {
           sentence: 'At the same time, he was a prophet advising his children and grandchildren, telling them about Allah and to call them to believe in Him.',
@@ -410,8 +410,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-16-future-unity',
       type: 'transformation',
       title: 'From Reported to Direct Speech',
-      instructions: 'Rewrite Adam’s reported words as he might have said them directly. Write only the missing words.',
-      question: 'What happens to “would” when reported speech becomes direct speech?',
+      instructions: 'Write Adam’s words as he might have said them. Write only the missing words.',
+      question: 'What happens to “would” when we use Adam’s own words?',
       transformItems: [
         {
           source: 'Before his death, Adam (pbuh) told his children that Allah would not leave man alone on Earth, but would send His prophets to guide them.',
@@ -435,8 +435,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-16-production',
       type: 'reflection',
       title: 'Write a Careful Legacy Paragraph',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story person or institution passing guidance, values, or responsibility to a later generation. Use one main-role sentence expanded with two parallel -ing phrases, one qualified reporting expression such as “It was reported that...” or “According to...”, at least two future-in-the-past forms with “would”, and one contrast pattern of the form “different..., but united in...”. Keep reported information clearly separate from your own interpretation. Do not retell Chapter 16.',
-      question: 'Can you describe continuity across generations while keeping source status, time viewpoint, and contrast clear?',
+      instructions: 'Write or say 8–10 sentences about someone who passes something on to later generations.',
+      question: 'What does the person leave for the people after them?',
       correctAnswer: null,
       explanation: 'A strong B2 response should distinguish role from action, mark reported information explicitly, keep future events anchored to a past viewpoint, and use contrast to show how diversity can coexist with continuity.',
       feedback: {
@@ -444,10 +444,10 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Role — What central role or identity frames the person or institution?', mode: 'Individual' },
-        { question: 'Source — Which sentence needs an explicit reporting frame rather than direct assertion?', mode: 'Individual' },
-        { question: 'Continuity — Which later actions will be expressed with “would”?', mode: 'Pair' },
-        { question: 'Contrast — What can differ while a shared purpose remains?', mode: 'Pair' },
+        { question: 'Sentence 1 — Give their role: “… was …, collecting … and teaching …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Report a fact: “It was reported that …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Look ahead: “He knew that they would …”', mode: 'Pair' },
+        { question: 'Sentence 4 — Show difference and unity: “… different in …, but united in …”', mode: 'Pair' },
       ],
     },
   ],
@@ -457,7 +457,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'A Claim and Its Limits',
       instructions: 'Match each line from the verses in Chapter 17 with its meaning.',
-      question: 'How do the verses limit a claim that at first sounds complete?',
+      question: 'Who can Satan mislead, and who not?',
       matchingHeadings: { left: 'From the verses', right: 'Meaning' },
       matchingPairs: [
         { left: 'I will mislead them all.', right: 'Satan claims he will lead every person astray.' },
@@ -481,8 +481,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-17-concession-reframing',
       type: 'transformation',
       title: 'Focus on the Real Cause',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the Chapter 17 sentence. Write only the missing words.',
-      question: 'Can you keep the focus on the real cause with a different cleft, and express a means in another way?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines from Chapter 17?',
       transformItems: [
         {
           source: 'Satan alone is not strong; it is only man\'s weakness and lack of morals and carefulness that make Satan look so strong.',
@@ -506,8 +506,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-17-cause-appearance',
       type: 'multiple-choice',
       title: 'Keep What Is Conceded and What Is Stressed',
-      instructions: 'Read the sentence from Chapter 17. Then choose the summary that keeps the writer’s stance.',
-      question: '“The Holy Qur’an does not focus so much on Satan’s anti-God position (although he is unquestionably a rebel against Allah and surely personifies this disobedient character) but rather underlines his anti-human attitude …” Which summary keeps this stance?',
+      instructions: 'Read the sentence. Then choose the summary that keeps the writer’s view.',
+      question: '“The Holy Qur’an does not focus so much on Satan’s anti-God position (although he is unquestionably a rebel against Allah and surely personifies this disobedient character) but rather underlines his anti-human attitude …” Which summary keeps this view?',
       options: [
         'The Qur’an does not present Satan as a rebel against Allah.',
         'The writer is not sure whether Satan really rebelled against Allah.',
@@ -525,8 +525,8 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-17-production',
       type: 'reflection',
       title: 'Build a Qualified Final Argument',
-      instructions: 'Write or say an 8–10 sentence B2 paragraph about a non-story situation in which an influence seems powerful but actually depends on human choices, habits, or conditions. Use one broad statement narrowed by an exception, one concessive pattern such as “although..., ...”, one corrective reframing with “but rather” or “in fact”, and one cause-to-appearance pattern such as “it is ... that makes ... look ...”. End with a genuine open question that follows from your argument. Do not retell Chapter 17.',
-      question: 'Can you build a nuanced argument that limits an absolute claim, reframes emphasis, explains apparent power, and ends with a meaningful question?',
+      instructions: 'Write or say 8–10 sentences about something that seems strong but depends on us.',
+      question: 'What really gives it its power?',
       correctAnswer: null,
       explanation: 'A strong B2 response should control scope, preserve a conceded point without losing the main emphasis, distinguish actual power from apparent power, and make the final question emerge logically from the preceding argument.',
       feedback: {
@@ -534,10 +534,10 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Scope — What broad claim will you make, and which group or case will you exclude?', mode: 'Individual' },
-        { question: 'Concession — What point will you accept before redirecting the emphasis?', mode: 'Individual' },
-        { question: 'Cause — Which human condition creates the appearance of greater power?', mode: 'Pair' },
-        { question: 'Final question — What unresolved issue follows naturally from your paragraph?', mode: 'Pair' },
+        { question: 'Sentence 1 — Make a claim with an exception: “Most …, except for …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Admit a point: “Although …, …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Name the real cause: “It is … that makes … look …”', mode: 'Pair' },
+        { question: 'Sentence 4 — End with an open question: “So the real question is: …?”', mode: 'Pair' },
       ],
     },
   ]

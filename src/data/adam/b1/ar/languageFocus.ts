@@ -12,7 +12,7 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: الحديث عن المصدر وسرد القصة',
       instructions: 'ضع كل عبارة من الفصل الأول في المجموعة المناسبة.',
-      question: 'هل تتحدث العبارة عن القرآن والقصة كما هما الآن، أم تحكي حدثًا وقع في الماضي؟',
+      question: 'هل تتحدث العبارة عن القصة الآن، أم تحكي حدثًا في الماضي؟',
       dragDropGroups: [
         {
           group: 'تتحدث عن المصدر والقصة الآن',
@@ -54,7 +54,7 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: «أخبر أنّ» و«قال إنّ» و«أن + المضارع»',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما الهمزة الصحيحة بعد «أخبر» وبعد «قال»؟ وما آخر الفعل بعد «أن»؟',
+      question: 'ما الكلمة الصحيحة بعد «أخبر» و«قال» و«أن»؟',
       formChoices: [
         {
           sentence: '… أخبر الملائكة [choice] سيخلق إنسانًا.',
@@ -84,7 +84,7 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: ترتيب الأحداث والمستقبل داخل السرد',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من فقرة الفصل.',
-      question: 'أيّ كلمة ترتّب حدثين، وأيّها تحكي عن مستقبل من داخل الماضي، وأيّها تبيّن بداية فعل؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: '[blank] خلق الله السماء والأرض، أخبر الملائكة … . وكان هذا الخليفة [blank] فيها سنوات كثيرة. فتعجبت الملائكة و[blank] تنتظر بفضول.',
       wordBank: ['بعد أن', 'سيعيش', 'بدأت', 'قبل أن', 'عاش', 'بدأ'],
       correctAnswer: ['بعد أن', 'سيعيش', 'بدأت'],
@@ -98,8 +98,8 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-1-connected-production',
       type: 'reflection',
       title: 'ابنِ فقرة مترابطة قصيرة',
-      instructions: 'اكتب أو قل أربع جمل مترابطة مستفيدًا من ثلاثة تراكيب مختلفة على الأقل من تركيز اللغة في هذا الفصل.',
-      question: 'هل تستطيع الانتقال من عرض المصدر إلى السرد الماضي ثم نقل ما كان سيحدث بعد ذلك؟',
+      instructions: 'اكتب أو قل أربع جمل عن بداية قصة آدم عليه السلام.',
+      question: 'هل تستطيع أن تحكي كيف بدأت القصة؟',
       correctAnswer: null,
       explanation: 'يمكن للإجابة الجيدة أن تبدأ بجملة مضارعة عن المصدر، ثم تنتقل إلى الماضي، وتستخدم «بعد أن» للترتيب، و«أخبر ... أنه» أو «كان ... سيـ» لنقل المستقبل من داخل السرد.',
       feedback: {
@@ -107,10 +107,10 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة 1 — ابدأ بعرض المصدر: «يحكي القرآن ...» أو «تتحدث السور ...».', mode: 'Individual' },
-        { question: 'الجملة 2 — انتقل إلى الماضي مستخدمًا «بعد أن ...».', mode: 'Individual' },
-        { question: 'الجملة 3 — انقل الخبر باستخدام «أخبر ... أنه ...».', mode: 'Individual' },
-        { question: 'الجملة 4 — عبّر عن المستقبل داخل السرد باستخدام «كان ... سيـ».', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر المصدر: «يحكي القرآن ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — ابدأ القصة: «بعد أن ...، ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — انقل الخبر: «أخبر ... أنّه سـ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — اذكر ما كان سيحدث: «وكان ... سـ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -154,7 +154,7 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: خبر «أصبح» والصفة المنصوبة',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما آخر الكلمة بعد «أصبحت ألوان ...»؟ وما آخر الصفة التي تصف «العلمَ»؟',
+      question: 'ما الكلمة الصحيحة بعد «أصبحت ألوان بشرة الناس» وبعد «العلم»؟',
       formChoices: [
         {
           sentence: '… أصبحت ألوان بشرة الناس [choice].',
@@ -178,8 +178,8 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-2-connected-production',
       type: 'reflection',
       title: 'ابنِ شرحًا مترابطًا',
-      instructions: 'اكتب أو قل أربع جمل مترابطة عن موقف تعلم جديد. استخدم ثلاثة تراكيب على الأقل من تراكيب الفصل الثاني دون إعادة سرد القصة.',
-      question: 'هل تستطيع نقل معلومة، وبناء سبب ونتيجة، وشرح غاية، ثم إضافة مقارنة في فقرة قصيرة واحدة؟',
+      instructions: 'اكتب أو قل أربع جمل عن تجربة تعلّم جديدة.',
+      question: 'ماذا تعلّمتم، وكيف؟',
       correctAnswer: null,
       explanation: 'يمكنك مثلًا أن تنقل ما قاله معلم، ثم تستخدم «ولذلك» للنتيجة، و«لكي» للغرض، وتنهي بمقارنة باستخدام «أكثر من».',
       feedback: {
@@ -187,10 +187,10 @@ export const adamB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة 1 — انقل معلومة باستخدام «قال ... إن ...».', mode: 'Individual' },
-        { question: 'الجملة 2 — اربط السبب بالنتيجة باستخدام «ولذلك» أو «ولهذا السبب».', mode: 'Individual' },
-        { question: 'الجملة 3 — عبّر عن الغاية باستخدام «لكي + فعل».', mode: 'Individual' },
-        { question: 'الجملة 4 — أضف مقارنة باستخدام «أكثر من».', mode: 'Pair' },
+        { question: 'الجملة 1 — انقل خبرًا: «قالت ... إنّ ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر سببًا ونتيجة: «...، ولذلك ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر الغاية: «... لكي ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — قارن: «... أكثر من ...»', mode: 'Pair' },
       ],
     },
   ],

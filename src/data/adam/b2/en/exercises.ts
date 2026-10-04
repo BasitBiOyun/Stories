@@ -50,8 +50,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'adam-b2-language-review-1-source-report-interpretation', type: 'drag-drop', title: 'Notice: Source, Report or Interpretation?',
-    instructions: 'Read the sentences from Chapters 1, 3, 8, 10, 12, 16 and 17. Who is responsible for each claim? Sort them into three groups.',
-    question: 'How does the book show whether a claim comes from the Qur’an itself, from a report passed on by others, or from the writer’s own reading?',
+    instructions: 'Sort the sentences from the book into three groups by where each claim comes from.',
+    question: 'Is it the Qur’an, a report from others, or the writer’s view?',
     dragDropGroups: [
       { group: 'What the Qur’an itself says or leaves out', items: ['The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur\'an.', 'This tree is not described in the Holy Qur\'an.', 'Habil and Qabil are referred to as Adam (pbuh)’s two sons without their names being given.'] },
       { group: 'A report passed on by others', items: ['It is also reported that Adam (pbuh) descended with the Black Stone …', 'It was narrated that when Adam (pbuh)’s death drew near, he appointed his son Seth to be his successor …', 'According to Islamic scholars, this incident happened while Adam (pbuh) was in Paradise …'] },
@@ -67,7 +67,7 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b2-language-review-2-claim-strength', type: 'multiple-choice', title: 'Notice: How Strong Is the Claim?',
-    instructions: 'Read the three sentences from Chapters 3, 7 and 13. Then choose the best answer.',
+    instructions: 'Read the three sentences. Then choose the best answer.',
     question: 'Chapter 3: “… points to the broadness of Adam (pbuh)’s knowledge.” Chapter 7: “It might truly be the Tree of Immortality.” Chapter 13: “At first glance, Qabil’s rebellious attitude may seem unacceptable.” What do “points to”, “might” and “may seem” have in common here?',
     options: [
       'They pass on what another person said without naming the source.',
@@ -82,8 +82,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'adam-b2-language-review-3-contrast-reframe', type: 'matching', title: 'Notice: Contrast, Answer, Reframe',
     matchingHeadings: { left: 'From the book', right: 'What the writer does' },
-    instructions: 'Read the parts of Chapters 1, 5, 6 and 17. Match each one with what the writer does with it.',
-    question: 'How does the book set ideas against each other without simply listing them?',
+    instructions: 'Match each part of the book with what the writer does.',
+    question: 'How does the writer set ideas against each other?',
     matchingPairs: [
       { left: 'While Satan reached the point of no return by challenging his Creator, Adam (pbuh) took a path completely different from him.', right: 'sets two opposite directions side by side' },
       { left: 'He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins', right: 'answers a claim with evidence that works against it' },
@@ -102,8 +102,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   // BUILD — controlled practice of the reviewed forms in the book's own sentences.
   {
     id: 'adam-b2-language-review-4-passive-active', type: 'transformation', title: 'Build: Passive or Active?',
-    instructions: 'Rewrite each sentence from Chapters 2, 8 and 12 in the active, with the doer as the subject. Write only the missing words.',
-    question: 'What changes when the doer becomes the subject, and why does the book prefer the passive in these sentences?',
+    instructions: 'Rewrite each sentence so that the doer comes first. Write only the missing words.',
+    question: 'What changes when the doer comes first?',
     transformItems: [
       { source: 'He was given the necessary spiritual, moral, mental, and psychological abilities.', frame: 'Allah [blank] the necessary spiritual, moral, mental, and psychological abilities.', answers: ['gave him', 'gave Adam (pbuh)', 'gave Adam', 'had given him', 'had given Adam (pbuh)', 'had given Adam'] },
       { source: 'After Adam (pbuh) and Eve were placed in Paradise, they enjoyed Allah\'s blessings as they pleased.', frame: 'After Allah [blank] in Paradise, they enjoyed Allah\'s blessings as they pleased.', answers: ['placed Adam (pbuh) and Eve', 'placed Adam and Eve', 'had placed Adam (pbuh) and Eve', 'had placed Adam and Eve', 'placed them', 'had placed them'] },
@@ -115,8 +115,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b2-language-review-5-concede-narrow-turn', type: 'word-bank', title: 'Build: Narrow, Concede, Turn',
-    instructions: 'Complete the lines from Chapters 1, 12 and 13 with words from the bank. Three words are not needed.',
-    question: 'Which expression narrows a claim, which concedes a gap in our knowledge, and which turns from a first impression to the writer’s view?',
+    instructions: 'Complete the lines from the book with words from the bank. Three words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: '… Satan is portrayed as a rebel against Allah’s command but also as a rival and enemy of Adam (pbuh) [blank] Allah. … [blank] we don’t know the whole story, Adam (pbuh)’s children, Habil and Qabil, were involved in a conflict … At first glance, Qabil’s rebellious attitude may seem unacceptable. [blank], it is important to remember that humans have the potential for both good and evil.',
     wordBank: ['rather than', 'Although', 'However', 'Despite', 'Unless', 'so that'],
     correctAnswer: ['rather than', 'Although', 'However'],
@@ -125,8 +125,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b2-language-review-6-time-and-strength', type: 'error-correction', title: 'Build: Time Viewpoint and Claim Strength',
-    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you fix the time viewpoint in two sentences and an overclaim in the third?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the time in two sentences and a claim that is too strong?',
     errorItems: [
       { sentence: 'Allah commanded that each son offer a sacrifice, and the one whose offering was accepted will be in the right.', error: 'will be', options: ['would be', 'is', 'had been'], answer: 0 },
       { sentence: 'Adam (pbuh) knew he has said goodbye to peace, and he left Paradise.', error: 'has said', options: ['says', 'had said', 'was saying'], answer: 1 },
@@ -138,8 +138,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b2-language-review-7-naming-the-cause', type: 'choose-form', title: 'Build: Naming the Cause',
-    instructions: 'Choose the correct form to complete each sentence from Chapters 2, 9 and 17.',
-    question: 'Which form introduces a cause before a noun, after “the reason”, and in a sentence that puts the real cause in focus?',
+    instructions: 'Choose the correct words for each sentence from the book.',
+    question: 'Which word gives the cause in each sentence?',
     formChoices: [
       { sentence: 'So, in essence, people are from the same soil and they have no superiority over one another [choice] the difference in their colors.', options: ['because', 'due to', 'so'], answer: 1 },
       { sentence: 'His regret itself was the reason [choice] Allah’s mercy upon him.', options: ['of', 'why', 'for'], answer: 2 },
@@ -152,8 +152,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'adam-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: A New Screen at School',
-    instructions: 'This paragraph is not from the book. Complete it with language you reviewed. Three words are not needed.',
-    question: 'Can you report evidence, reframe an aim and keep a claim as careful as the evidence allows?',
+    instructions: 'Complete this new paragraph with words from the bank. Three words are extra.',
+    question: 'Can you use the book’s words to write about a change at school?',
     fillBlanksText: 'Last month, our school replaced the paper notices in the corridor with a digital screen. At first glance, the change may seem to be only about saving paper. [blank], the student council says that its real aim is to share news faster [blank] to save money. [blank] a short survey by the council, most students now read the notices every day, [blank] only sixty students answered it. So the screen [blank] be helping, but we cannot be sure until the council asks more students.',
     wordBank: ['However', 'rather than', 'According to', 'although', 'might', 'must', 'instead of', 'Unless'],
     correctAnswer: ['However', 'rather than', 'According to', 'although', 'might'],
@@ -162,8 +162,8 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Say It More Carefully',
-    instructions: 'These sentences are not from the book. Rewrite each one so that it does not claim more than the speaker knows. Write only the missing words.',
-    question: 'Can you hedge a claim, pass on a rumour with distance, and report a prediction from a past viewpoint?',
+    instructions: 'Make each new sentence more careful. Write only the missing words.',
+    question: 'Can you say these things more carefully?',
     transformItems: [
       { source: 'The new timetable is the reason for our better marks.', frame: 'The new timetable [blank] one reason for our better marks.', answers: ['may be', 'might be', 'could be', 'may well be', 'might well be', 'could well be', 'is probably', 'is possibly', 'is perhaps'] },
       { source: 'Some students say that the school trip has been cancelled, but nobody knows who said it first.', frame: 'It [blank] that the school trip has been cancelled.', answers: ['is said', 'is reported', 'has been said', 'has been reported', 'is rumoured', 'is rumored', 'is claimed'] },
@@ -175,16 +175,16 @@ export const adamB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b2-language-review-10-transfer', type: 'reflection', title: 'Use: A Careful Argument',
-    instructions: 'Write a paragraph of six to eight sentences about a rule or change in your school or town, for example phones in class, a new timetable or a new bus route. State your position, give evidence, and qualify your conclusion. Discuss your plan with a partner first.',
-    question: 'Can you use the language of the whole book to argue a position without claiming more than your evidence shows?',
+    instructions: 'Write 6–8 sentences about a rule or change in your school or town. Plan with a partner first.',
+    question: 'Can you use the book’s language to argue for your view carefully?',
     correctAnswer: null,
     explanation: 'Example: “Our school now asks students to leave their phones in a box during lessons. At first glance, this rule may seem unfair, because phones can be useful for research. However, I believe it is a good rule. According to our class teacher, students ask more questions in lessons now. It is also reported that fewer phones are lost or broken. This could mean that the rule helps us concentrate, although it does not prove that everyone learns better. The real aim of the rule is not to punish us, but rather to protect our attention. So I would keep it, at least until we have clearer evidence.”',
     feedback: { correct: 'Check your paragraph: a clear position; at first glance … may seem …, however …; according to … / it is reported that …; could / might; although …; not …, but rather …; a conclusion that stays inside your evidence.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Position — start from a first impression and turn: “At first glance, … may seem …. However, I believe …”', mode: 'Individual' },
-      { question: 'Evidence — name your source: “According to …, …” / “It is reported that …”', mode: 'Individual' },
-      { question: 'Qualification — keep the claim careful: “This could mean that …, although it does not prove that …”', mode: 'Pair' },
-      { question: 'Conclusion — reframe and limit: “The real aim is not …, but rather …. So I would …, at least until …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Start with a first view: “At first glance, … may seem …. However, I believe …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Name your source: “According to …, …” / “It is reported that …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Stay careful: “This could mean that …, although it does not prove that …”', mode: 'Pair' },
+      { question: 'Sentence 4 — End with your view: “The real aim is not …, but rather …. So I would …”', mode: 'Pair' },
     ],
   },
 ];

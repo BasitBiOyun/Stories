@@ -6,7 +6,7 @@ import type { Exercise } from '../../../../types';
  * the English chapter text; quoted verses are only read, sorted or matched.
  */
 const reflectionFeedback = { correct: 'Well done. Check that each target pattern carries a clear relationship in your paragraph.', incorrect: 'Return to the chapter sentences that use these patterns and model your own sentences on them.' };
-const refl = (id: string, title: string, q: string, p: string[], e: string): Exercise => ({ id, type: 'reflection', title, instructions: 'Produce a short B2 response using the target relationship naturally.', question: q, correctAnswer: null, explanation: e, feedback: reflectionFeedback, discussionPrompts: p.map(question => ({ question, mode: 'Individual' })) });
+const refl = (id: string, title: string, instructions: string, q: string, p: string[], e: string): Exercise => ({ id, type: 'reflection', title, instructions, question: q, correctAnswer: null, explanation: e, feedback: reflectionFeedback, discussionPrompts: p.map(question => ({ question, mode: 'Individual' })) });
 
 export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
   1: [
@@ -14,7 +14,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf1-1',
       type: 'multiple-choice',
       title: 'Outer and Inner',
-      instructions: 'Read the sentence from Chapter 1. Then choose what “whereas” shows.',
+      instructions: 'Read the sentence from Chapter 1. Then choose what “whereas” does.',
       question: '“The outer part relates to the body’s acts of worship, whereas the inner side handles the morality and intentions of the heart.” What does “whereas” do in this sentence?',
       options: [
         'It shows that the inner side takes the place of the outer part.',
@@ -33,8 +33,8 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf1-2',
       type: 'transformation',
       title: 'Adding a Second Identity',
-      instructions: 'Rewrite each idea so that it adds information in the way shown. Type only the missing words.',
-      question: 'How can you add a second role to a person, either with a linking word or with “in addition to + -ing”?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say that Yunus Emre had a second role?',
       transformItems: [
         {
           source: 'In addition to his standing as a Sûfî, Yunus Emre was one of the first to create and perform poetry from the heart in plain Turkish.',
@@ -58,8 +58,8 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf1-4',
       type: 'error-correction',
       title: 'Principles Without Mistakes',
-      instructions: 'Each part of the Sûfî principles has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Which verb form follows a preposition such as “of” or “without”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'What form of the verb comes after “of” and “without”?',
       errorItems: [
         {
           sentence: 'Sûfîs adhere to moral principles that include the pursuit of become better people, the ability to remain patient during difficult times, …',
@@ -81,15 +81,15 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: 'Find the list of moral principles in the first paragraph of Chapter 1 and look at the verb form after “of” and “without”.',
       },
     },
-    refl('yu-b2-lf1-3', 'Two Dimensions', 'Explain how the chapter presents Yunus as important in two different but connected fields.', ['Write 5–6 sentences. Use whereas or while once, and in addition to once.'], 'A B2 response should connect spiritual and literary importance without reducing either one.'),
+    refl('yu-b2-lf1-3', 'Two Dimensions', 'Write a short paragraph about Yunus Emre’s two roles.', 'Why is Yunus Emre important in two ways?', ['Write 5–6 sentences. Use “whereas” or “while” once, and “in addition to” once.'], 'A B2 response should connect spiritual and literary importance without reducing either one.'),
   ],
   2: [
     {
       id: 'yu-b2-lf2-1',
       type: 'drag-drop',
-      title: 'Qualified Biography',
-      instructions: 'Read each sentence from Chapter 2. Does the writer show where the claim comes from or present it as a reported judgement, or does the writer state it directly? Put it in the right group.',
-      question: 'How does the writer show which biographical details are less certain?',
+      title: 'Source or Fact?',
+      instructions: 'Put each sentence from Chapter 2 in the right group.',
+      question: 'Does the writer give a source or a view, or say it directly?',
       dragDropGroups: [
         {
           group: 'The writer reports or qualifies the claim',
@@ -130,8 +130,8 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf2-2',
       type: 'multiple-choice',
       title: 'Keep the Source Caution',
-      instructions: 'Choose the rewrite that keeps the writer’s degree of certainty.',
-      question: '“According to the widely accepted view, he was born in 1240–41 and died in 1320–21.” Which version keeps the same degree of certainty?',
+      instructions: 'Choose the version that is just as sure as the writer.',
+      question: '“According to the widely accepted view, he was born in 1240–41 and died in 1320–21.” Which version is just as sure?',
       options: [
         'It has been proven beyond doubt that he was born in 1240–41 and died in 1320–21.',
         'Most scholars accept that he was born in 1240–41 and died in 1320–21.',
@@ -149,8 +149,8 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf2-3',
       type: 'word-bank',
       title: 'Balanced Style, Wider Education',
-      instructions: 'Complete the lines from Chapter 2 with words from the bank. Some words are not needed.',
-      question: 'Which words place his style between two extremes and widen the picture of his education?',
+      instructions: 'Complete the lines from Chapter 2 with words from the bank. Three words are not needed.',
+      question: 'Which words complete the lines about his style and his education?',
       fillBlanksText: 'His style is [blank] too simple [blank] too complex. Thus, his works [blank] have literary value and are easy to understand. … However, his education was not [blank] to madrasas.',
       wordBank: ['neither', 'nor', 'both', 'limited', 'either', 'or', 'whether'],
       correctAnswer: ['neither', 'nor', 'both', 'limited'],
@@ -160,15 +160,15 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: 'Check the first and third paragraphs of Chapter 2. Remember that “neither” pairs with “nor”, and “both” pairs with “and”.',
       },
     },
-    refl('yu-b2-lf2-4', 'Write With Source Caution', 'Summarize Yunus’s education without making uncertain details sound certain.', ['Write 5–7 sentences. Use one attribution phrase and one not only/not limited to structure.'], 'The task combines historical caution with coherent educational synthesis.'),
+    refl('yu-b2-lf2-4', 'Write With Source Caution', 'Write a short, careful paragraph about Yunus’s education.', 'What do the sources say about his education?', ['Write 5–7 sentences. Use “According to …” once, and “not only” or “not limited to” once.'], 'The task combines historical caution with coherent educational synthesis.'),
   ],
   3: [
     {
       id: 'yu-b2-lf3-1',
       type: 'drag-drop',
       title: 'Time, Cause or Condition?',
-      instructions: 'Read each sentence from Chapter 3. What relationship does the highlighted structure create? Put it in the right group.',
-      question: 'How does the chapter move from time order to cause and then to interpretation?',
+      instructions: 'Put each sentence from Chapter 3 in the right group.',
+      question: 'Does the sentence say when, why, or what happens “if …”?',
       dragDropGroups: [
         {
           group: 'Time: what happened when',
@@ -214,8 +214,8 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf3-2',
       type: 'transformation',
       title: 'Rewrite the Historical Chain',
-      instructions: 'Complete each sentence so that it keeps the meaning of the chapter sentence. Type only the missing words.',
-      question: 'Can you express sequence and cause with different structures?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say what came first and what caused what?',
       transformItems: [
         {
           source: 'The defeat at Kösedağ facilitated the Mongols’ invasion of Anatolia.',
@@ -240,14 +240,14 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: 'Ask which event came first and which event made the other possible. Then check the second paragraph of Chapter 3.',
       },
     },
-    refl('yu-b2-lf3-3', 'Context Before Interpretation', 'Explain why the chapter asks readers to examine the historical atmosphere before interpreting Yunus.', ['Write a short analytical paragraph using followed by, as a result, and therefore or so.'], 'The production task turns chronological facts into a coherent explanatory chain.'),
+    refl('yu-b2-lf3-3', 'Context Before Interpretation', 'Write a short paragraph about the hard times Yunus lived in.', 'Why should we look at Yunus’s times first?', ['Use “followed by”, “as a result” and “therefore” or “so”.'], 'The production task turns chronological facts into a coherent explanatory chain.'),
   ],
   4: [
     {
       id: 'yu-b2-lf4-1',
       type: 'multiple-choice',
       title: 'What Does “Even” Add?',
-      instructions: 'Read the sentence from Chapter 4. Then choose what “even” adds to the meaning.',
+      instructions: 'Read the sentence from Chapter 4. Then choose what “even” adds.',
       question: '“Giyaseddin Keyhüsrev II’s failure to manage this situation even worsened the social and economic chaos.” What does “even” show?',
       options: [
         'The chaos began only because of his failure.',
@@ -266,8 +266,8 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yu-b2-lf4-2',
       type: 'error-correction',
       title: 'Cause and Purpose',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Which structures express a cause and a purpose correctly?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'How do we say why something happened, and what it was for?',
       errorItems: [
         {
           sentence: 'However, because the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline.',
@@ -292,9 +292,9 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'yu-b2-lf4-3',
       type: 'transformation',
-      title: 'From Noun Phrase to Clause',
-      instructions: 'Complete each sentence so that it keeps the meaning of the chapter sentence. Type only the missing words.',
-      question: 'Can you rewrite the causes with a different structure but the same meaning?',
+      title: 'Same Causes, New Words',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say the causes of the chaos?',
       transformItems: [
         {
           source: 'Giyaseddin Keyhüsrev II’s failure to manage this situation even worsened the social and economic chaos.',
@@ -314,6 +314,6 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: 'Ask who did what: who failed, and what turned people’s lives upside down? Then write the verb in the past simple.',
       },
     },
-    refl('yu-b2-lf4-4', 'Multi-Cause Explanation', 'Write a paragraph explaining why the Babai uprising emerged in a wider crisis.', ['Use due to, when ... was added, and worsened or intensified.'], 'B2 historical explanation should show interaction rather than list isolated facts.'),
+    refl('yu-b2-lf4-4', 'Multi-Cause Explanation', 'Write a paragraph about the causes of the Babai uprising.', 'Why did the Babai uprising happen?', ['Use “due to”, “when … was added” and “worsened” or “intensified”.'], 'B2 historical explanation should show interaction rather than list isolated facts.'),
   ],
 };

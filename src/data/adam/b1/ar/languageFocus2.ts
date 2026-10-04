@@ -7,7 +7,7 @@ export const adamB1LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: رأي الشخصية وحكم الراوي',
       instructions: 'ضع كل عبارة من الفصل الثالث في المجموعة المناسبة.',
-      question: 'هل تنقل العبارة رأيًا يعتقده شخص في القصة، أم حكمًا يقوله الراوي بصوته؟',
+      question: 'من يقول هذا: شخصية في القصة، أم الراوي؟',
       dragDropGroups: [
         {
           group: 'رأي منسوب إلى شخصية',
@@ -48,8 +48,8 @@ export const adamB1LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-3-contrast-and-comparison',
       type: 'error-correction',
       title: 'ابنِ: بعد «أنّ» و«إلّا» ومع «أفعل من»',
-      instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما آخر الاسم بعد «أنّ» وبعد «إلّا»؟ وكيف نقارن بـ«أفعل من»؟',
+      instructions: 'في كل جملة خطأ واحد. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'هل تستطيع أن تصحّح الجمل عن إبليس وآدم؟',
       errorItems: [
         {
           sentence: 'كان إبليس يرى أن آدمُ شخص غير مهم',
@@ -81,8 +81,8 @@ export const adamB1LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-3-reason-limitation-result',
       type: 'matching',
       title: 'ابنِ: ماذا تضيف كل عبارة إلى الحجة؟',
-      instructions: 'صِل كل عبارة من الفصل الثالث بمعناها في السياق.',
-      question: 'كيف يربط الفصل بين السبب والعجز والنتيجة والحكم المخالف؟',
+      instructions: 'صِل كل عبارة من الفصل الثالث بمعناها.',
+      question: 'ماذا تقول هذه العبارات عن خطأ إبليس؟',
       matchingHeadings: { left: 'من الفصل', right: 'المعنى' },
       matchingPairs: [
         { left: 'لأنه خُلِقَ من التراب', right: 'ما بنى عليه إبليس احتقاره لآدم' },
@@ -102,7 +102,7 @@ export const adamB1LanguageFocusExercisesArPart2: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفصل الثالث واقرأ ما قبل كل عبارة وما بعدها: هل تذكر سببًا، أم عجزًا، أم نتيجة، أم حكمًا مخالفًا؟',
       },
     },
-    { id: 'adam-b1-ar-language-3-connected-judgment', type: 'reflection', title: 'ابنِ حكمًا مترابطًا', instructions: 'اكتب أو قل أربع جمل مترابطة عن موقف جديد فيه رأيان مختلفان. استخدم ثلاثة تراكيب على الأقل من لغة الفصل.', question: 'هل تستطيع نقل رأيين، وذكر سبب، وإجراء مقارنة، ثم تقديم نتيجة أو موقف مخالف من غير إعادة سرد الفصل؟', correctAnswer: null, explanation: 'يمكن أن تبدأ بـ«اعتقد أن» أو «يرى أن»، ثم تضيف سببًا بـ«لأنه»، وتجري مقارنة بـ«أفضل من/أهم من»، وتنهي بموقف مخالف باستخدام «ومع ذلك».', feedback: { correct: 'حافظ على ترابط الجمل واجعل الاختلاف بين الرأيين واضحًا.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — انقل رأيًا باستعمال «اعتقد أن» أو «يرى أن».', mode: 'Individual' }, { question: 'الجملة 2 — اذكر السبب باستعمال «لأنه ...».', mode: 'Individual' }, { question: 'الجملة 3 — أضف مقارنة باستعمال «أفضل من» أو «أهم من».', mode: 'Individual' }, { question: 'الجملة 4 — قدم موقفًا مخالفًا باستعمال «ومع ذلك».', mode: 'Pair' }] },
+    { id: 'adam-b1-ar-language-3-connected-judgment', type: 'reflection', title: 'ابنِ حكمًا مترابطًا', instructions: 'اكتب أو قل أربع جمل عن شخصين لهما رأيان مختلفان.', question: 'ماذا يرى كل شخص، وماذا تقرّرون؟', correctAnswer: null, explanation: 'يمكن أن تبدأ بـ«اعتقد أن» أو «يرى أن»، ثم تضيف سببًا بـ«لأنه»، وتجري مقارنة بـ«أفضل من/أهم من»، وتنهي بموقف مخالف باستخدام «ومع ذلك».', feedback: { correct: 'حافظ على ترابط الجمل واجعل الاختلاف بين الرأيين واضحًا.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — اذكر رأي شخص: «اعتقد ... أنّ ...»', mode: 'Individual' }, { question: 'الجملة 2 — اذكر السبب: «لأنّ ...»', mode: 'Individual' }, { question: 'الجملة 3 — اذكر رأيًا آخر وقارن: «... أفضل من ...»', mode: 'Individual' }, { question: 'الجملة 4 — اذكر القرار: «ومع ذلك، ...»', mode: 'Pair' }] },
   ],
 };
 
@@ -112,7 +112,7 @@ export const adamB1LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-4-continuation-reaction',
       type: 'true-false',
       title: 'لاحظ: «استمرّ في»',
-      instructions: 'اقرأ العبارة، ثم قرّر: هل هي صحيحة أم خاطئة؟',
+      instructions: 'اقرأ العبارة، ثم قرّر: صحيحة أم خاطئة؟',
       question: 'في جملة «ومع ذلك، استمر إبليس في القول إنه كان محقا» معنى «استمرّ ... في القول» أن إبليس قال ذلك مرة واحدة ثم توقّف.',
       correctAnswer: false,
       explanation: '«استمرّ في» + مصدر («القول») تعني أن الفعل لم يتوقف: لم يكفّ إبليس عن قول إنه محقّ. و«ومع ذلك» في أول الفصل تربط هذا الإصرار بما قبله: كان إبليس مخطئًا (الفصل الثالث)، ومع ذلك لم يتراجع عن رأيه. وبعد «القول» تُكسَر همزة «إنّ»: «في القول إنّه كان محقًّا».',
@@ -126,7 +126,7 @@ export const adamB1LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: «لم» و«بسبب» و«أن»',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما صيغة الفعل بعد «لم» وبعد «أن»؟ وماذا نستعمل قبل اسم يبيّن السبب؟',
+      question: 'ما الكلمة الصحيحة بعد «لم» و«أن»؟ وأيّ كلمة تذكر السبب؟',
       formChoices: [
         {
           sentence: 'ولم [choice] أن يُحسن الله إلى آدم عليه السلام.',
@@ -155,8 +155,8 @@ export const adamB1LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-4-purpose-warning',
       type: 'transformation',
       title: 'ابنِ: المعنى نفسه بتركيب آخر',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الصياغة الجديدة.',
-      question: 'كيف نعبّر عن الاستمرار وعن الشعور بتركيب آخر من غير أن يتغيّر المعنى؟',
+      instructions: 'اكتب الكلمة الناقصة، وحافظ على المعنى نفسه.',
+      question: 'كيف نقول هذه الجمل بطريقة أخرى؟',
       transformItems: [
         {
           source: 'ومع ذلك، استمر إبليس في القول إنه كان محقا',
@@ -176,7 +176,7 @@ export const adamB1LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى جملة الفصل: ما الفعل الذي يستمر؟ وما الشعور الذي يصفه الكاتب؟ تذكّر أن «ظلّ» يأتي بعدها مضارع، وأن «يشعر» يأتي بعدها حرف الباء.',
       },
     },
-    { id: 'adam-b1-ar-language-4-build-warning-situation', type: 'reflection', title: 'ابنِ موقفًا فيه تحذير', instructions: 'اكتب أو قل أربع جمل مترابطة عن موقف جديد يستمر فيه شخص في خطة ضارة ويحذر شخص آخر منه. استخدم ثلاثة تراكيب على الأقل من لغة الفصل.', question: 'هل تستطيع ربط الاستمرار والسبب والغرض والتحذير في موقف جديد من غير إعادة سرد الفصل؟', correctAnswer: null, explanation: 'يمكن أن تستخدم «استمر في ...»، و«بسبب ...»، و«انتظر فرصة لـ...»، و«قال له إن ...»، و«أمره أن يكون حذرًا».', feedback: { correct: 'حافظ على ترابط الجمل واجعل السبب والتحذير واضحين.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — عبّر عن استمرار فعل أو موقف باستخدام «استمر في ...».', mode: 'Individual' }, { question: 'الجملة 2 — اذكر سببًا باستخدام «بسبب + اسم».', mode: 'Individual' }, { question: 'الجملة 3 — عبّر عن غرض باستخدام «فرصة لـ...» أو تركيب مشابه.', mode: 'Individual' }, { question: 'الجملة 4 — انقل تحذيرًا أو توجيهًا باستخدام «قال له إن ...» أو «أمره أن ...».', mode: 'Pair' }] },
+    { id: 'adam-b1-ar-language-4-build-warning-situation', type: 'reflection', title: 'ابنِ موقفًا فيه تحذير', instructions: 'اكتب أو قل أربع جمل عن عادة سيئة وتحذير.', question: 'ماذا يستمر الشخص في فعله، ومن يحذّره؟', correctAnswer: null, explanation: 'يمكن أن تستخدم «استمر في ...»، و«بسبب ...»، و«انتظر فرصة لـ...»، و«قال له إن ...»، و«أمره أن يكون حذرًا».', feedback: { correct: 'حافظ على ترابط الجمل واجعل السبب والتحذير واضحين.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — اذكر ما استمر فيه: «استمر ... في ...»', mode: 'Individual' }, { question: 'الجملة 2 — اذكر السبب: «وبسبب ...، ...»', mode: 'Individual' }, { question: 'الجملة 3 — اذكر ما كان ينتظره: «كان ينتظر فرصة لـ...»', mode: 'Individual' }, { question: 'الجملة 4 — انقل التحذير: «قال له إنّ ...» أو «أمره أن ...»', mode: 'Pair' }] },
   ],
 };
 
@@ -205,8 +205,8 @@ export const adamB1LanguageFocusExercisesArPart4: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-5-comparison-instruction',
       type: 'transformation',
       title: 'ابنِ: من الكلام المنقول إلى الكلام المباشر',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة أو الكلمتين الناقصتين في الكلام المباشر.',
-      question: 'ماذا يتغيّر في الضمير والفعل عندما يتكلم إبليس بنفسه إلى آدم وحواء؟',
+      instructions: 'اكتب الكلمة الناقصة في كلام إبليس نفسه.',
+      question: 'ماذا قال إبليس لآدم وحواء؟',
       transformItems: [
         {
           source: 'جاء إبليس إليهما وقال إنه صديقهما',
@@ -231,7 +231,7 @@ export const adamB1LanguageFocusExercisesArPart4: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: المثنى بعد «بدأ» و«ألّا» و«كان»',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما صيغة الفعل أو الاسم المثنى في كل جملة؟',
+      question: 'ما الكلمة الصحيحة عندما نتكلم عن آدم وحواء معًا؟',
       formChoices: [
         {
           sentence: 'فخلق الله له زوجة اسمها حواء. وبدآ [choice] في الجنة.',
@@ -256,7 +256,7 @@ export const adamB1LanguageFocusExercisesArPart4: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفصل الخامس: هل قبل الفعل «أن/ألّا» أم «بدأ»؟ وهل الكلمة خبر لـ«كان»؟',
       },
     },
-    { id: 'adam-b1-ar-language-5-build-new-situation', type: 'reflection', title: 'ابنِ موقفًا جديدًا', instructions: 'اكتب أو قل أربع جمل مترابطة عن موقف جديد فيه بداية حالة، وتعليمات واضحة، ثم شرط ونتيجة. استخدم ثلاثة تراكيب على الأقل من لغة الفصل.', question: 'هل تستطيع استخدام علاقات الفصل اللغوية في موقف جديد من غير إعادة سرد الفصل؟', correctAnswer: null, explanation: 'يمكن أن تستخدم «شعر بـ...»، و«فـ...»، و«بدأ + مضارع»، و«أروع مما...»، و«طلب منه ألا...»، و«بينما كان...»، و«إذا... لن/فسوف...».', feedback: { correct: 'حافظ على ترابط الجمل واجعل التعليمات والشرط والنتيجة واضحة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — صف بداية شعور أو حالة باستخدام «شعر بـ...» أو «بدأ + مضارع».', mode: 'Individual' }, { question: 'الجملة 2 — اربط نتيجة بما قبلها باستخدام الفاء إذا كان ذلك طبيعيًا.', mode: 'Individual' }, { question: 'الجملة 3 — انقل توجيهًا سلبيًا باستخدام «طلب منه/منها ألا...».', mode: 'Individual' }, { question: 'الجملة 4 — أضف شرطًا ونتيجة باستخدام «إذا...» مع نتيجة مناسبة.', mode: 'Pair' }] },
+    { id: 'adam-b1-ar-language-5-build-new-situation', type: 'reflection', title: 'ابنِ موقفًا جديدًا', instructions: 'اكتب أو قل أربع جمل عن شخص يبدأ شيئًا جديدًا.', question: 'ماذا بدأ، وماذا طُلب منه، وماذا قد يحدث؟', correctAnswer: null, explanation: 'يمكن أن تستخدم «شعر بـ...»، و«فـ...»، و«بدأ + مضارع»، و«أروع مما...»، و«طلب منه ألا...»، و«بينما كان...»، و«إذا... لن/فسوف...».', feedback: { correct: 'حافظ على ترابط الجمل واجعل التعليمات والشرط والنتيجة واضحة.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — اذكر شعورًا أو بداية: «شعر بـ...» أو «بدأ يـ...»', mode: 'Individual' }, { question: 'الجملة 2 — اذكر ما حدث بعد ذلك: «فـ...»', mode: 'Individual' }, { question: 'الجملة 3 — انقل طلبًا: «طلب منه ألّا ...»', mode: 'Individual' }, { question: 'الجملة 4 — اذكر شرطًا ونتيجة: «إذا ...، فـ...»', mode: 'Pair' }] },
   ],
 };
 
@@ -267,7 +267,7 @@ export const adamB1LanguageFocusExercisesArPart5: Record<number, Exercise[]> = {
       type: 'sequencing',
       title: 'لاحظ: كلمات الزمن تُرتّب الأحداث',
       instructions: 'رتّب الجمل كما جاءت في الفصل السادس. استعن بكلمات الزمن.',
-      question: 'أيّ الكلمات تساعدك على معرفة الترتيب؟ ماذا حدث بعد الخداع؟ ومتى شعر آدم بالحزن؟',
+      question: 'ماذا حدث بعد أن خدعهما إبليس؟',
       sequencingItems: [
         { id: '1', text: 'وبعد فترة، جاء إبليس وخدعهما بالكذب.' },
         { id: '2', text: 'مد آدم يده، وقطف إحدى الثمار وأعطاها لحواء.' },
@@ -287,7 +287,7 @@ export const adamB1LanguageFocusExercisesArPart5: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: «جعلهما يفعلان» و«أنسى» و«لم»',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما صيغة الفعل بعد «جعلهما»؟ وأيّ فعل معناه أن إبليس جعلهما ينسيان؟ وما صيغة الفعل بعد «لم»؟',
+      question: 'ما الكلمة الصحيحة بعد «جعلهما» و«لم»؟ وأيّ فعل يعني «جعلهما ينسيان»؟',
       formChoices: [
         {
           sentence: 'جعلهما [choice] كذبته، …',
@@ -327,7 +327,7 @@ export const adamB1LanguageFocusExercisesArPart5: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى آخر الفصل السادس، واسأل عند كل فراغ: هل أحتاج إلى نتيجة، أم غاية (لماذا قطعا الأوراق؟)، أم سبب (لماذا أسرعا؟)؟',
       },
     },
-    { id: 'adam-b1-ar-language-6-build-consequence-chain', type: 'reflection', title: 'ابنِ سلسلة سبب ونتيجة', instructions: 'اكتب أو قل أربع جمل مترابطة عن موقف جديد فيه تأثير أو خداع، ثم فعل، ثم تغيّر، ثم رد فعل له غرض وسبب. استخدم ثلاثة تراكيب على الأقل من لغة الفصل.', question: 'هل تستطيع بناء تسلسل جديد من الفعل إلى التغيّر ثم رد الفعل من غير إعادة سرد الفصل؟', correctAnswer: null, explanation: 'يمكن أن تستخدم «بعد فترة»، و«جعل + مفعول + فعل»، و«عندما...»، و«شعر بـ...»، و«تغيّر...»، و«أدرك أن...»، و«لذلك...»، ولام الغرض، و«لأن...».', feedback: { correct: 'اجعل التسلسل واضحًا، وميّز بين النتيجة والغرض والسبب.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — قدّم انتقالًا زمنيًا أو تأثيرًا باستخدام «بعد فترة» أو «جعل + مفعول + فعل».', mode: 'Individual' }, { question: 'الجملة 2 — اربط حدثًا برد فعل باستخدام «عندما...» أو صف شعورًا بـ«شعر بـ...».', mode: 'Individual' }, { question: 'الجملة 3 — صف تغيّرًا أو إدراكًا جديدًا باستخدام «تغيّر...» أو «أدرك أن...».', mode: 'Individual' }, { question: 'الجملة 4 — أضف نتيجة بـ«لذلك»، وغرضًا باللام، وسببًا بـ«لأن» إذا كان ذلك طبيعيًا.', mode: 'Pair' }] },
+    { id: 'adam-b1-ar-language-6-build-consequence-chain', type: 'reflection', title: 'ابنِ سلسلة سبب ونتيجة', instructions: 'اكتب أو قل أربع جمل عن شخص نسي نصيحة مهمة.', question: 'ماذا نسي، وماذا حدث بعد ذلك؟', correctAnswer: null, explanation: 'يمكن أن تستخدم «بعد فترة»، و«جعل + مفعول + فعل»، و«عندما...»، و«شعر بـ...»، و«تغيّر...»، و«أدرك أن...»، و«لذلك...»، ولام الغرض، و«لأن...».', feedback: { correct: 'اجعل التسلسل واضحًا، وميّز بين النتيجة والغرض والسبب.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — اذكر من أثّر فيه: «بعد فترة، جعل ... يـ...»', mode: 'Individual' }, { question: 'الجملة 2 — اذكر شعوره: «عندما ...، شعر بـ...»', mode: 'Individual' }, { question: 'الجملة 3 — اذكر ما أدركه: «فأدرك أنّ ...»', mode: 'Individual' }, { question: 'الجملة 4 — اذكر النتيجة والسبب: «لذلك ... لـ...، لأنّ ...»', mode: 'Pair' }] },
   ],
 };
 
@@ -337,8 +337,8 @@ export const adamB1LanguageFocusExercisesArPart6: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-7-intention-regret-decision',
       type: 'matching',
       title: 'لاحظ: من الخطأ إلى القرار',
-      instructions: 'صِل كل عبارة من الفصل السابع بمعناها في السياق.',
-      question: 'ماذا تعني هذه العبارات في وصف ما فعله آدم وحواء بعد الخطأ؟',
+      instructions: 'صِل كل عبارة من الفصل السابع بمعناها.',
+      question: 'ماذا فعل آدم وحواء بعد الخطأ؟',
       matchingHeadings: { left: 'من الفصل', right: 'المعنى' },
       matchingPairs: [
         { left: 'لكنه لم يكن متعمدا', right: 'لم يقصدا فعله' },
@@ -362,8 +362,8 @@ export const adamB1LanguageFocusExercisesArPart6: Record<number, Exercise[]> = {
       id: 'adam-b1-ar-language-7-request-admission-contrast-cause',
       type: 'error-correction',
       title: 'ابنِ: اسم الموصول والحرف الثابت والمثنى',
-      instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'هل يتفق اسم الموصول مع الاسم قبله؟ ما الحرف الذي يأتي بعد «اعترف»؟ وما صيغة خبر «كان» المثنى؟',
+      instructions: 'في كل جملة خطأ واحد. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'هل تستطيع أن تصحّح الجمل عن آدم وحواء وإبليس؟',
       errorItems: [
         {
           sentence: 'حَزِنَا حُزْنًا شَدِيدًا عَلَى الْخَطَأِ الَّتِي فَعَلَاهُ.',
@@ -396,7 +396,7 @@ export const adamB1LanguageFocusExercisesArPart6: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: المقابلة والعقبة والغاية',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من الفصل.',
-      question: 'أيّ كلمة تنقل الكلام إلى موقف مقابل، وأيّها تأتي مع «عقبة»، وأيّها تبيّن الغاية؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'وطلبا من الله أن يغفر لهما. [blank]، قام إبليس بخيار معاكس. … إن الكبر هو أكبر عقبة [blank] التصرف بطريقة صحيحة … . علمهما الله كل شيء وأعطاهما ما يلزم [blank] الحياة.',
       wordBank: ['من ناحية أخرى', 'أمام', 'لإدارة', 'لذلك', 'خلف', 'بإدارة'],
       correctAnswer: ['من ناحية أخرى', 'أمام', 'لإدارة'],
@@ -406,6 +406,6 @@ export const adamB1LanguageFocusExercisesArPart6: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى آخر الفصل السابع: هل موقف إبليس نتيجة لموقف آدم أم عكسه؟ وأين تقف العقبة؟ ولماذا أعطاهما الله ما يلزم؟',
       },
     },
-    { id: 'adam-b1-ar-language-7-build-repair-plan', type: 'reflection', title: 'ابنِ موقفًا من الخطأ إلى المسؤولية', instructions: 'اكتب أو قل أربع جمل مترابطة عن موقف جديد يحدث فيه خطأ غير متعمد، ثم يأتي الاعتذار والتعلم وقرار مفيد للمستقبل. استخدم أربعة تراكيب على الأقل من الفصل.', question: 'هل تستطيع استخدام لغة الفصل للتعبير عن النية والندم والسبب والقرار والغرض في سياق جديد؟', correctAnswer: null, explanation: 'يمكن أن تستخدم: «لم يكن متعمدًا»، «حزن على...»، «تعلم من...»، «صمم على عدم...»، «طلب من... أن...»، «لأنه...»، «من ناحية أخرى...»، أو اللام للغرض مثل «لإصلاح...» و«لتحسين...».', feedback: { correct: 'اجعل الجمل الأربع مترابطة بحيث يظهر السبب والقرار والغرض بوضوح.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — اذكر خطأً وقع، وبيّن أنه لم يكن متعمدًا.', mode: 'Individual' }, { question: 'الجملة 2 — صف شعور الشخص وما تعلمه من الخطأ.', mode: 'Individual' }, { question: 'الجملة 3 — اذكر سببًا وقرارًا باستخدام «لأنه...» و«صمم على عدم...».', mode: 'Individual' }, { question: 'الجملة 4 — اختم بخطوة مسؤولة جديدة مستخدمًا تعبيرًا عن الغرض مثل «لإصلاح...» أو «لتحسين...».', mode: 'Pair' }] },
+    { id: 'adam-b1-ar-language-7-build-repair-plan', type: 'reflection', title: 'ابنِ موقفًا من الخطأ إلى المسؤولية', instructions: 'اكتب أو قل أربع جمل عن شخص يصلح خطأً وقع منه.', question: 'ماذا حدث، وكيف أصلح الشخص خطأه؟', correctAnswer: null, explanation: 'يمكن أن تستخدم: «لم يكن متعمدًا»، «حزن على...»، «تعلم من...»، «صمم على عدم...»، «طلب من... أن...»، «لأنه...»، «من ناحية أخرى...»، أو اللام للغرض مثل «لإصلاح...» و«لتحسين...».', feedback: { correct: 'اجعل الجمل الأربع مترابطة بحيث يظهر السبب والقرار والغرض بوضوح.', incorrect: '' }, discussionPrompts: [{ question: 'الجملة 1 — اذكر الخطأ: «...، لكنّ ذلك لم يكن متعمَّدًا»', mode: 'Individual' }, { question: 'الجملة 2 — اذكر الشعور والدرس: «حزن ...، وتعلّم أن ...»', mode: 'Individual' }, { question: 'الجملة 3 — اذكر السبب والقرار: «ولأنّ ...، صمّم على عدم ...»', mode: 'Individual' }, { question: 'الجملة 4 — اذكر الخطوة الجديدة: «ثم ... لإصلاح ...»', mode: 'Pair' }] },
   ],
 };

@@ -15,7 +15,7 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-19-voice-condition',
       type: 'true-false',
       title: 'A Lasting Change?',
-      instructions: 'Read the lines from Surah al-Anbiya quoted in Chapter 19. Is the statement true or false?',
+      instructions: 'Read the lines from Surah al-Anbiya in Chapter 19. Is the statement true or false?',
       question: 'The words “You yourselves are the wrongdoers.” show that the people changed their minds for good.',
       correctAnswer: false,
       explanation: 'The people’s words to one another show a moment of self-correction. The very next sentence reverses it: “But they reverted to their old ideas”. “But” and the verb “reverted” (went back) mark the return to their earlier position, which is why Abraham answers with more questions.',
@@ -28,8 +28,8 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-19-reversal-purpose',
       type: 'error-correction',
       title: 'Reporting the Trial',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct a reported question, a reported instruction and a formal demand?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the trial?',
       errorItems: [
         {
           options: ['he was', 'he is', 'was him'],
@@ -62,7 +62,7 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Purpose Behind the Calm',
       instructions: 'Rewrite each sentence from Chapter 19 with the words given. Keep the meaning.',
-      question: 'How can Abraham’s calm reaction and its purpose be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 19?',
       transformItems: [
         {
           source: 'This was exactly what he was aiming for, so that he could demonstrate to them in public that their beliefs were foolish.',
@@ -86,8 +86,8 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-19-production',
       type: 'reflection',
       title: 'Build a Public Contradiction Test',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation where a public claim is tested. Begin with a direct accusation or challenge, use a corrective contrast such as “but”, introduce a conditional test with “if”, show a brief moment of self-correction, then reverse that movement with a contrast marker. Include a purpose clause with “so that” and end with a rhetorical question that exposes the contradiction. Do not retell the Abraham story.',
-      question: 'Can you use dialogue, condition, reversal and purpose to build a coherent B2 argument?',
+      instructions: 'Write or say 8–10 sentences about a public claim that someone tests.',
+      question: 'How can you test a claim in front of everyone?',
       correctAnswer: null,
       explanation: 'A strong response should make the language do argumentative work: the condition tests the claim, the reversal shows a change in stance, the purpose clause explains the speaker’s strategy, and the final rhetorical question crystallizes the contradiction.',
       feedback: {
@@ -95,14 +95,12 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Challenge — What direct question opens the confrontation?', mode: 'Individual' },
-        { question: 'Condition — What “if” test forces the claim to face its own logic?', mode: 'Pair' },
-        {
-          question: 'Reversal — Where does the audience briefly reconsider, and what contrast marker shows that they reverse course?',
+        { question: 'Step 1 — Open with a direct question: “Did your … really …?”', mode: 'Individual' },
+        { question: 'Step 2 — Test it with “if”: “If …, then …”', mode: 'Pair' },
+        { question: 'Step 3 — Show a short change of mind: “For a moment, … . But then …”',
           mode: 'Pair',
         },
-        {
-          question: 'Purpose — Why does the speaker continue the public exchange, and how will “so that” express that?',
+        { question: 'Step 4 — Say why you go on: “… so that everyone can see …”',
           mode: 'Individual',
         },
       ],
@@ -136,8 +134,8 @@ export const abrahamB2LanguageFocusChapter20: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-20-limitation-authority',
       type: 'word-bank',
       title: 'From Argument to Force',
-      instructions: 'Complete the lines from Chapter 20 with words from the bank. Three options are not needed.',
-      question: 'Which forms show a narrowed choice, a decision and the preparation of the fire?',
+      instructions: 'Complete the lines from Chapter 20 with words from the bank. Three words are not needed.',
+      question: 'What could the people do, and what did they decide?',
       fillBlanksText: 'All they [blank] do was use their authority as tyrants to punish Abraham (pbuh). … They decided [blank] Abraham (pbuh) into the biggest fire they could build. … They [blank] a deep pit, filled it with firewood, and set it on fire.',
       wordBank: ['could', 'to throw', 'dug', 'can', 'throwing', 'digged'],
       correctAnswer: ['could', 'to throw', 'dug'],
@@ -152,7 +150,7 @@ export const abrahamB2LanguageFocusChapter20: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Recognition, Refusal and Orders',
       instructions: 'Rewrite each sentence from Chapter 20 with the words given. Keep the meaning.',
-      question: 'How can a contrast, an order and a collective decision be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 20?',
       transformItems: [
         {
           source: 'In fact, they realized the stupidity of their beliefs; however, their arrogance would not allow them to admit their foolishness.',
@@ -188,8 +186,8 @@ export const abrahamB2LanguageFocusChapter20: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-20-production',
       type: 'reflection',
       title: 'Write Recognition Without Admission',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation where a group recognizes that an argument is weak but refuses to admit it. Use “must” for a strong inference, “in fact” to state recognition, “however” to mark resistance, and a narrowing structure such as “all they could do was...”. Then report a collective decision with “agreed that” or “decided to”, include one passive command, and finish with a purpose phrase such as “to...” or “for...”. Do not retell the Abraham story.',
-      question: 'Can you build a coherent B2 paragraph in which inference, concession, authority and purpose each perform a different discourse function?',
+      instructions: 'Write or say 8–10 sentences about a group that will not admit a mistake.',
+      question: 'What does the group know, and what does it do?',
       correctAnswer: null,
       explanation: 'A strong response should clearly separate what the group recognizes from what it is willing to admit, then show how the language shifts from reasoning to authority and organized action.',
       feedback: {
@@ -197,16 +195,14 @@ export const abrahamB2LanguageFocusChapter20: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Inference — What conclusion “must” follow from the evidence?', mode: 'Individual' },
-        {
-          question: 'Concession — What does the group recognize, and what does “however” show it refuses to admit?',
+        { question: 'Step 1 — Draw a strong conclusion: “The plan must be weak, because …”', mode: 'Individual' },
+        { question: 'Step 2 — Show what they knew but would not admit: “In fact, … . However, …”',
           mode: 'Pair',
         },
-        {
-          question: 'Authority — What is the only response left, and how will you report the decision?',
+        { question: 'Step 3 — Show their only choice: “All they could do was … . They decided to …”',
           mode: 'Pair',
         },
-        { question: 'Purpose — What action is ordered, and for what intended purpose?', mode: 'Individual' },
+        { question: 'Step 4 — Give the order and its aim: “The workers were ordered to … to …”', mode: 'Individual' },
       ],
     },
   ],
@@ -238,8 +234,8 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-21-passive-change',
       type: 'transformation',
       title: 'Who Did It?',
-      instructions: 'Rewrite each passive or noun phrase from Chapter 21 with the words given. Keep the meaning.',
-      question: 'Why does the chapter use the passive at the turning point of the story?',
+      instructions: 'Rewrite each line from Chapter 21 with the words given. Keep the meaning.',
+      question: 'How else can we say these lines from Chapter 21?',
       transformItems: [
         {
           source: 'The catapult was fired, and Abraham (pbuh) was thrown into the fire.',
@@ -268,8 +264,8 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-21-comparison',
       type: 'word-bank',
       title: 'Appearance and Effect',
-      instructions: 'Complete the lines from Chapter 21 with words from the bank. Three options are not needed.',
-      question: 'Which words show a surprising contrast, its cause and its limit?',
+      instructions: 'Complete the lines from Chapter 21 with words from the bank. Three words are not needed.',
+      question: 'Why did the fire not burn Abraham?',
       fillBlanksText: 'The rising flames were still there, [blank] they did not burn him, [blank] Allah commanded: “O fire! Be coolness and safety for Abraham” (Surah al-Anbiya: 69). The fire obeyed the order of Allah. It became cool and safe for Abraham (pbuh). It [blank] burned his ropes …',
       wordBank: ['but', 'for', 'only', 'so', 'because of', 'also'],
       correctAnswer: ['but', 'for', 'only'],
@@ -283,8 +279,8 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-21-production',
       type: 'reflection',
       title: 'Write Appearance Versus Effect',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which something still looks dangerous, difficult, or negative but its actual effect changes. Use “but” for a genuine reversal, one passive sentence to foreground an event, “for” or “because” to explain a cause, “only” to restrict an effect, one “as if” comparison, and one change-of-state form such as “became” or “was turned into”. Do not retell the Abraham story.',
-      question: 'Can you build a coherent B2 paragraph that separates appearance, cause, limited effect, comparison and resulting state?',
+      instructions: 'Write or say 8–10 sentences about something that looks dangerous but actually helps.',
+      question: 'How does it look, and what does it really do?',
       correctAnswer: null,
       explanation: 'A strong response should make the contrast meaningful: the visible situation may remain similar while its consequence changes, and each connector or structure should perform a distinct discourse function.',
       feedback: {
@@ -292,11 +288,10 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Appearance — What still looks unchanged?', mode: 'Individual' },
-        { question: 'Reversal — What actual effect is different?', mode: 'Pair' },
-        { question: 'Cause — What explains the change?', mode: 'Pair' },
-        {
-          question: 'Comparison — What “as if” image can describe the new experience without becoming a literal claim?',
+        { question: 'Step 1 — Say how it still looks: “The forest still looks …”', mode: 'Individual' },
+        { question: 'Step 2 — Show the real effect: “But it only …”', mode: 'Pair' },
+        { question: 'Step 3 — Give the reason: “This happens because …”', mode: 'Pair' },
+        { question: 'Step 4 — Compare: “It looks as if …”',
           mode: 'Individual',
         },
       ],
@@ -331,7 +326,7 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
       type: 'sentence-building',
       title: 'Duration and Result',
       instructions: 'Tap the pieces to rebuild this sentence from Chapter 22.',
-      question: 'How does one sentence link how long something lasted to what people thought as a result?',
+      question: 'How long did the fire burn, and what did people think?',
       sentenceChunks: [
         'The fire kept burning',
         'for such',
@@ -350,8 +345,8 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-22-motive-vs-result',
       type: 'word-bank',
       title: 'Turning Point and Contrast',
-      instructions: 'Complete the lines from Chapter 22 with words from the bank. Three options are not needed.',
-      question: 'Which words mark the turning point, the contrast and the earlier change?',
+      instructions: 'Complete the lines from Chapter 22 with words from the bank. Three words are not needed.',
+      question: 'What happened when the fire burnt out?',
       fillBlanksText: '[blank] the fire burnt out, they were shocked to see that Abraham (pbuh) had stepped out of the pit completely unharmed. The smoke blackened their faces, [blank] his face was bright. The burning fire [blank] cool for Abraham (pbuh) and had only blackened the ropes which held him.',
       wordBank: ['Once', 'yet', 'had become', 'Unless', 'so', 'has become'],
       correctAnswer: ['Once', 'yet', 'had become'],
@@ -365,8 +360,8 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-22-production',
       type: 'reflection',
       title: 'Build a Turning-Point Paragraph',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation where a long-running difficulty reaches a turning point and produces mixed reactions. Use one duration-to-result structure such as “for such a long time that”, one “once” clause, one past-perfect sentence for an earlier completed result, “yet” or “but” for a genuine reversal, one passive sentence to foreground a reaction or event, “consequently” for a later result, and a separate motive phrase such as “out of fear of...”, “because of...”, or “to avoid...”. Do not retell the Abraham story.',
-      question: 'Can you organize duration, turning point, reversal, consequence and motive into one coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a long problem that finally ends.',
+      question: 'What changed at the turning point?',
       correctAnswer: null,
       explanation: 'A strong response should make the timeline clear and keep discourse relations distinct: duration leads toward a turning point, contrast reverses an expectation, consequence follows from an event, and motive explains a person’s choice.',
       feedback: {
@@ -374,11 +369,10 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Duration — What continued for a long time?', mode: 'Individual' },
-        { question: 'Turning point — What completed event changed the situation?', mode: 'Pair' },
-        { question: 'Reversal — What happened differently from what people expected?', mode: 'Pair' },
-        {
-          question: 'Result and motive — What followed, and why did one person or group react differently?',
+        { question: 'Step 1 — Say how long it lasted: “… for such a long time that …”', mode: 'Individual' },
+        { question: 'Step 2 — Give the turning point: “Once …, … had finally …”', mode: 'Pair' },
+        { question: 'Step 3 — Show a surprise: “People expected …, yet …”', mode: 'Pair' },
+        { question: 'Step 4 — Give a result and a reason: “Consequently, … . … out of fear of …”',
           mode: 'Individual',
         },
       ],
@@ -393,8 +387,8 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-23-stance-focus',
       type: 'drag-drop',
       title: 'Statement or Reported Claim?',
-      instructions: 'Sort the parts of Chapter 23. Does the narrator state it, or report someone’s claim or belief?',
-      question: 'How does the narrator keep a distance from Nimrod’s claims?',
+      instructions: 'Does the narrator say it, or report someone’s claim? Put each part in a group.',
+      question: 'Is it the narrator’s own statement, or someone else’s claim?',
       dragDropGroups: [
         {
           group: 'The narrator states it',
@@ -435,8 +429,8 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-23-time-cause',
       type: 'error-correction',
       title: 'Cause and the Other One',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct an earlier past and a word that points to the second of two?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the king?',
       errorItems: [
         {
           options: ['had emerged', 'was emerging', 'emerges'],
@@ -463,7 +457,7 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'The Same Words, a Different Claim',
       instructions: 'Read the exchange at the end of Chapter 23. Then choose the best explanation.',
-      question: 'Abraham says, “My Lord (Allah) is He Who gives life and causes death.” Nimrod answers, “I give life and cause death.” What does Nimrod’s use of almost the same words show?',
+      question: 'Abraham says, “My Lord (Allah) is He Who gives life and causes death.” Nimrod answers, “I give life and cause death.” What do Nimrod’s almost-same words show?',
       options: [
         'He copies the wording but gives it a much narrower meaning, which he shows by freeing one prisoner and executing the other.',
         'He agrees with what Abraham says about his Lord.',
@@ -481,8 +475,8 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-23-production',
       type: 'reflection',
       title: 'Write a Claim-and-Counterclaim Exchange',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story disagreement in which one person presents an important claim and another person responds using closely parallel wording. Include one reported-attitude clause such as “she thought that...”, one passive modal such as “could not be questioned”, one past-perfect clause inside a “when” sentence, one explicit reason with “because”, one contrast with “even”, “still”, or a semicolon, and one pair of deliberately parallel claims. Make clear that similar wording does not automatically mean identical scope or meaning.',
-      question: 'Can you use stance, chronology, cause, contrast and parallel wording to build a coherent B2 argument?',
+      instructions: 'Write or say 8–10 sentences about two people who use similar words for different plans.',
+      question: 'How can the same words mean different plans?',
       correctAnswer: null,
       explanation: 'A strong response should show who holds each viewpoint, order the events clearly, explain why the disagreement occurs, and use parallel wording as an argumentative device rather than as empty repetition.',
       feedback: {
@@ -490,11 +484,10 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Stance — Whose belief or assumption is being reported?', mode: 'Individual' },
-        { question: 'Chronology — What earlier event needs a past-perfect form?', mode: 'Pair' },
-        { question: 'Cause — What explicit reason drives the disagreement?', mode: 'Pair' },
-        {
-          question: 'Parallel wording — How can two speakers use similar words for different claims?',
+        { question: 'Step 1 — Report a belief: “She thought that her plan could not be questioned.”', mode: 'Individual' },
+        { question: 'Step 2 — Say what happened first: “When … had been …, …”', mode: 'Pair' },
+        { question: 'Step 3 — Give the reason for the disagreement: “They disagreed because …”', mode: 'Pair' },
+        { question: 'Step 4 — Use similar words: “I will … .” “I will … too, by …”',
           mode: 'Individual',
         },
       ],
@@ -537,7 +530,7 @@ export const abrahamB2LanguageFocusChapter24: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Effort Against Result',
       instructions: 'Rewrite each sentence from Chapter 24 with the words given. Keep the meaning.',
-      question: 'How can a concession and a limited result be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 24?',
       transformItems: [
         {
           source: 'However, in spite of his love and care for his people, they left him alone.',
@@ -589,8 +582,8 @@ export const abrahamB2LanguageFocusChapter24: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-24-production',
       type: 'reflection',
       title: 'Write Effort, Resistance and Limited Outcome',
-      instructions: 'Write or say an 8–10 sentence paragraph about a non-story situation in which someone makes a strong effort but receives only limited support. Include one consequence connector such as “so”, one phrase showing expected effect with “would”, one simultaneity marker such as “in the meantime”, one concession pattern with “however” plus “in spite of” or “although”, one limiting expression with “only”, and a final pair of parallel sentences that identify two specific supporters or outcomes. Keep the paragraph coherent rather than treating the forms as separate examples.',
-      question: 'Can you organize a B2 paragraph around escalation, simultaneous development, concession and a sharply limited result?',
+      instructions: 'Write or say 8–10 sentences about someone who works hard but gets little help.',
+      question: 'How much effort was made, and how much help came?',
       correctAnswer: null,
       explanation: 'A strong response should show how an earlier event motivates a stronger action, how another development continues at the same time, why the eventual result is unexpected, and how a general reference can be developed into specific details.',
       feedback: {
@@ -598,11 +591,10 @@ export const abrahamB2LanguageFocusChapter24: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Escalation — What earlier problem motivates a stronger response?', mode: 'Individual' },
-        { question: 'Simultaneity — What two developments are happening at the same time?', mode: 'Pair' },
-        { question: 'Concession — Why is the final result surprising despite the effort?', mode: 'Pair' },
-        {
-          question: 'Reference — How will you move from a general group to specific people or outcomes?',
+        { question: 'Step 1 — Give the problem and a step: “…, so she decided to … . She hoped it would …”', mode: 'Individual' },
+        { question: 'Step 2 — Show two things at once: “She was … . In the meantime, …”', mode: 'Pair' },
+        { question: 'Step 3 — Show the small result: “However, in spite of …, only …”', mode: 'Pair' },
+        { question: 'Step 4 — Name the helpers: “The first was …, and the second was …”',
           mode: 'Individual',
         },
       ],
@@ -617,8 +609,8 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-25-decision-chain',
       type: 'drag-drop',
       title: 'Background or Main Event?',
-      instructions: 'Sort the sentences from Chapter 25. Do they give earlier background, or move the story forward?',
-      question: 'How does the past perfect fill in background without stopping the story?',
+      instructions: 'Is it earlier background, or does it move the story on? Sort the sentences.',
+      question: 'Which sentences go back to earlier events?',
       dragDropGroups: [
         {
           group: 'Earlier background (past perfect)',
@@ -658,7 +650,7 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Realisation and Recurring Action',
       instructions: 'Rewrite each part of Chapter 25 with the words given. Keep the meaning.',
-      question: 'How can a future seen from the past and a repeated action be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 25?',
       transformItems: [
         {
           source: 'When Abraham (pbuh) realized that no one else was going to believe in his call, he decided to emigrate.',
@@ -682,8 +674,8 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-25-background-time',
       type: 'error-correction',
       title: 'Sarah’s Thought and Suggestion',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct a reported thought and the verb after “suggest”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix what Sarah thought and suggested?',
       errorItems: [
         {
           options: ['could not', 'will not', 'must not'],
@@ -709,8 +701,8 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-25-production',
       type: 'reflection',
       title: 'Write a Coherent Change-of-Plan Narrative',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about someone who changes plans after realizing an expected outcome will not happen. Use one past-viewpoint future form such as “was going to” or “would”, one explicit decision phrase, at least two coordinated action verbs, one “wherever/whenever” clause to widen scope, one past-perfect sentence for earlier background, and one consequence connector such as “therefore” or “so”. Keep the paragraph coherent rather than listing grammar examples.',
-      question: 'Can you control viewpoint, background and consequence in one connected B2 narrative?',
+      instructions: 'Write or say 8–10 sentences about someone who has to change plans.',
+      question: 'What did the person realise, and what did they do?',
       correctAnswer: null,
       explanation: 'A strong response should distinguish what had happened earlier, what the person realized at a later moment, what decision followed, and how the new actions developed across time or place.',
       feedback: {
@@ -718,10 +710,10 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Background — What had already happened before the person changed plans?', mode: 'Individual' },
-        { question: 'Viewpoint — What outcome did the person realize was not going to happen?', mode: 'Pair' },
-        { question: 'Decision — What explicit choice followed that realization?', mode: 'Pair' },
-        { question: 'Scope — Which action continued wherever or whenever the person moved?', mode: 'Individual' },
+        { question: 'Step 1 — Say what had happened before: “He had … for five years.”', mode: 'Individual' },
+        { question: 'Step 2 — Say what was not going to happen: “He realised that he was not going to …”', mode: 'Pair' },
+        { question: 'Step 3 — Give the decision: “He decided to … . Therefore, he …”', mode: 'Pair' },
+        { question: 'Step 4 — Say what he did everywhere: “Wherever he …, he …”', mode: 'Individual' },
       ],
     },
   ],
@@ -753,8 +745,8 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-26-reported-plan',
       type: 'word-bank',
       title: 'Branches, Background and the End of the Journey',
-      instructions: 'Complete the lines from Chapter 26 with words from the bank. Three options are not needed.',
-      question: 'Which words set two family lines side by side, show a continuing state and mark the end of a journey?',
+      instructions: 'Complete the lines from Chapter 26 with words from the bank. Three words are not needed.',
+      question: 'Which words fit the lines about the family and the journey?',
       fillBlanksText: 'From Ishmael\'s descendants came Prophet Muhammad (pbuh), [blank] from Isaac\'s came Moses (pbuh) and Jesus (pbuh). … Hagar was [blank] nursing Ishmael … Abraham (pbuh) walked through cultivated land, desert, and mountains [blank] he reached the desert of the Arabian Peninsula …',
       wordBank: ['while', 'still', 'until', 'since', 'during', 'unless'],
       correctAnswer: ['while', 'still', 'until'],
@@ -769,7 +761,7 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Time and Focus',
       instructions: 'Rewrite each sentence from Chapter 26 with the words given. Keep the meaning.',
-      question: 'How can the time of an event or the focus of a sentence be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 26?',
       transformItems: [
         {
           source: 'Some time later, Allah gave Abraham (pbuh) another son from his first wife, Sarah.',
@@ -793,8 +785,8 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-26-production',
       type: 'reflection',
       title: 'Write a Planned Journey with Layered Viewpoint',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a family or team receiving an instruction to move somewhere for a future purpose. Use one reported instruction with “told ... that ... should”, one future-in-the-past form with “would”, one parallel contrast with “while”, one continuing-background form with “was/were still ...”, and one “until” clause that marks the endpoint of a journey. Keep the paragraph coherent and make the future plan clearly different from the actions already completed.',
-      question: 'Can you combine reported instruction, future plan, contrast, background and movement in one connected B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a team that must move somewhere new.',
+      question: 'What was the team told, and what happened on the way?',
       correctAnswer: null,
       explanation: 'A strong response should distinguish the instruction from the later intended result, keep the narrative viewpoint consistently in the past, and use the movement sequence to reach a clearly marked destination.',
       feedback: {
@@ -802,11 +794,10 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Instruction — What was the group told that it should do?', mode: 'Individual' },
-        { question: 'Plan — What was said would happen later?', mode: 'Pair' },
-        { question: 'Contrast — What two parallel outcomes or groups can you connect with “while”?', mode: 'Pair' },
-        {
-          question: 'Journey — What continued in the background until the group reached its destination?',
+        { question: 'Step 1 — Report an instruction: “The team was told that it should …”', mode: 'Individual' },
+        { question: 'Step 2 — Say what would happen later: “The manager said that … would …”', mode: 'Pair' },
+        { question: 'Step 3 — Compare two groups: “The older ones …, while the younger ones …”', mode: 'Pair' },
+        { question: 'Step 4 — Describe the journey: “They were still … . They sailed until …”',
           mode: 'Individual',
         },
       ],
@@ -840,8 +831,8 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-27-dialogue-reasoning',
       type: 'error-correction',
       title: 'Absence, Movement and Place',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct a list of things that were missing, a participle and a relative word for a place?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the valley?',
       errorItems: [
         {
           options: ['no water', 'any water', 'none water'],
@@ -874,7 +865,7 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Correction and Report',
       instructions: 'Rewrite each part of Chapter 27 with the words given. Keep the meaning.',
-      question: 'How can a correction and a question be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 27?',
       transformItems: [
         {
           source: 'Abraham (pbuh) was not acting on his own decision; Allah had commanded him to leave them.',
@@ -904,8 +895,8 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-27-production',
       type: 'reflection',
       title: 'Write from Uncertainty to Reassurance',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a difficult relocation, separation or responsibility. Begin with an accumulated description using at least three coordinated negatives or limitations. Add a background-to-reaction structure such as “As/While ... , ...”, include one direct or reported question that clarifies the reason for an action, one reason clause with “since” or “because”, one corrective contrast using “not ...; rather/but ...”, and one endpoint/location clause with “as far as”, “until”, or “where”. Keep the paragraph coherent and show a clear change from uncertainty to a more informed response.',
-      question: 'Can you use setting, dialogue, causal reasoning and movement to build one connected B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a hard move to a new place.',
+      question: 'How do the feelings change, from worry to understanding?',
       correctAnswer: null,
       explanation: 'A strong response should use the language forms to move the reader through stages: difficult setting → uncertainty → clarification → reasoned response → spatial or narrative endpoint.',
       feedback: {
@@ -913,13 +904,12 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Setting — Which repeated limitations make the situation difficult?', mode: 'Individual' },
-        { question: 'Clarification — What question reveals the real reason for the action?', mode: 'Pair' },
-        {
-          question: 'Correction — Which first interpretation must be replaced by a more accurate one?',
+        { question: 'Step 1 — List what is missing: “There were no …, no … and no …”', mode: 'Individual' },
+        { question: 'Step 2 — Ask for the reason: “Why do I have to …?”', mode: 'Pair' },
+        { question: 'Step 3 — Correct the first idea: “It was not …; rather, it was …”',
           mode: 'Pair',
         },
-        { question: 'Endpoint — How will you mark the final place or stage of the movement?', mode: 'Individual' },
+        { question: 'Step 4 — Mark the end of the trip: “… as far as …” or “… until …”', mode: 'Individual' },
       ],
     },
   ],
@@ -976,8 +966,8 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-28-time-reference',
       type: 'word-bank',
       title: 'Linking Across Generations',
-      instructions: 'Complete the lines from Chapter 28 with words from the bank. Three options are not needed.',
-      question: 'Which words refer back and give a purpose across a long stretch of time?',
+      instructions: 'Complete the lines from Chapter 28 with words from the bank. Three words are not needed.',
+      question: 'Which words fit the lines about Ishmael’s family?',
       fillBlanksText: '… to reconstruct the Holy Ka’ba [blank] was lost after Noah’s Flood … Over the years, Ishmael’s children had children; one of [blank] was Muhammad, the Prophet of Islam (pbuh). [blank] spread all over the Arabian Peninsula [blank] their grandfather Abraham (pbuh)’s message of monotheism.',
       wordBank: ['which', 'them', 'They', 'to carry', 'who', 'it', 'for carrying'],
       correctAnswer: ['which', 'them', 'They', 'to carry'],
@@ -991,8 +981,8 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-28-production',
       type: 'reflection',
       title: 'Write a Purpose-to-Legacy Paragraph',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a community project, institution or long-term plan. Include one obligation structure with “had to” or “needed to”, one clarification with “that is” or “in other words”, at least two purpose/result links using “in order to”, “so that”, “to”, or an -ing result phrase, one relative clause that adds earlier background, one explicit long-term time shift such as “over the years”, and clear pronoun/reference links across at least three sentences. Do not write isolated examples; make the paragraph move from an immediate necessity to a wider long-term effect.',
-      question: 'Can you connect necessity, clarification, purpose, background and long-term consequence in one coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a community project and its long-term effect.',
+      question: 'How did a first need grow into a lasting result?',
       correctAnswer: null,
       explanation: 'A strong response should show a clear discourse progression: necessity → clarification → immediate purpose → wider result → earlier/later background → long-term consequence.',
       feedback: {
@@ -1000,11 +990,10 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Necessity — What action had to happen first, and why?', mode: 'Individual' },
-        { question: 'Clarification — Which term or idea needs to be reformulated for the reader?', mode: 'Pair' },
-        { question: 'Purpose — Which two outcomes should be linked rather than simply listed?', mode: 'Pair' },
-        {
-          question: 'Legacy — How will you move from the immediate project to its effect years later?',
+        { question: 'Step 1 — Say what had to happen first: “The village had to …, because …”', mode: 'Individual' },
+        { question: 'Step 2 — Explain a word: “…, that is, …”', mode: 'Pair' },
+        { question: 'Step 3 — Link two aims: “They … in order to …, so that …”', mode: 'Pair' },
+        { question: 'Step 4 — Jump ahead in time: “Over the years, …”',
           mode: 'Individual',
         },
       ],
@@ -1019,8 +1008,8 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-29-source-voice',
       type: 'drag-drop',
       title: 'Whose Voice?',
-      instructions: 'Sort the sentences from Chapter 29. Are they inside Ibn Abbas’s report, or told by the narrator outside it?',
-      question: 'How does the chapter show where the source ends and the narrator begins?',
+      instructions: 'Is it inside Ibn Abbas’s report, or told by the narrator? Sort the sentences.',
+      question: 'Where does Ibn Abbas’s report end?',
       dragDropGroups: [
         {
           group: 'Inside Ibn Abbas’s report',
@@ -1062,7 +1051,7 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Naming the Source',
       instructions: 'Rewrite each sentence from Chapter 29 with the words given. Keep the meaning.',
-      question: 'How can the narrator’s sentences about the source and the later practice be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 29?',
       transformItems: [
         {
           source: 'Ibn Abbas, a companion of Prophet Muhammad (pbuh) who narrated many hadiths, said, …',
@@ -1105,8 +1094,8 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-29-production',
       type: 'reflection',
       title: 'Write from Report to Later Interpretation',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a documented journey, experiment, rescue, discovery or repeated attempt. Begin with an attributed source frame such as “According to...” or “X reported that...”. Include one internal possibility with “might/maybe”, one trigger clause with “when/after”, one reduced -ing background phrase, at least two sequence markers, one contrastive failed or unexpected result with “but/yet/still”, and finish by clearly marking a later comparison, interpretation or symbolic meaning. Keep report, possibility and interpretation distinct.',
-      question: 'Can you move from attributed evidence through a coherent action sequence to a later interpretation without blurring certainty?',
+      instructions: 'Write or say 8–10 sentences about a rescue or a search from a news report.',
+      question: 'What happened, and what did it mean later?',
       correctAnswer: null,
       explanation: 'A strong B2 response should show a controlled discourse progression: attributed source → trigger → repeated or developing action → tentative possibility → contrastive result → later comparison/interpretation.',
       feedback: {
@@ -1114,20 +1103,16 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Source — Who reports the initial event, and how will you mark that attribution?',
+        { question: 'Step 1 — Name the source: “According to …, …”',
           mode: 'Individual',
         },
-        {
-          question: 'Possibility — What did the person think might happen without knowing it for certain?',
+        { question: 'Step 2 — Say what someone thought might happen: “She thought there might be …”',
           mode: 'Pair',
         },
-        {
-          question: 'Sequence — Which actions need explicit ordering, and which can be compressed into an -ing phrase?',
+        { question: 'Step 3 — Put the steps in order: “First, … . Then, climbing …, they …”',
           mode: 'Pair',
         },
-        {
-          question: 'Interpretation — What later comparison or meaning can you add without presenting it as part of the original event?',
+        { question: 'Step 4 — Add a later meaning: “Later, …”',
           mode: 'Individual',
         },
       ],
@@ -1155,8 +1140,8 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-30-reference-time',
       type: 'word-bank',
       title: 'Event, Response and What Came Next',
-      instructions: 'Complete the lines from Chapter 30 with words from the bank. Three options are not needed.',
-      question: 'Which words show an immediate result, a purpose and a short gap in time?',
+      instructions: 'Complete the lines from Chapter 30 with words from the bank. Three words are not needed.',
+      question: 'What happened right away, and what came next?',
       fillBlanksText: 'The angel hit the ground with his heel, and water [blank] flowed out. It was a miracle! Hagar quickly made a small basin around the water [blank] it from spreading, and she filled her water skin. … [blank], the tribe of Jurham that was moving from southern Arabia, Yemen, stopped by the valley of Mecca.',
       wordBank: [
         'immediately',
@@ -1178,7 +1163,7 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Names and Conclusions',
       instructions: 'Rewrite each part of Chapter 30 with the words given. Keep the meaning.',
-      question: 'How can a name and a conclusion be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 30?',
       transformItems: [
         {
           source: 'This well, called Zamzam, is flowing to this day in the city of Mecca …',
@@ -1207,8 +1192,8 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-30-production',
       type: 'reflection',
       title: 'Write from Sign to Settlement',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a discovery that changes what people do next. Include one action with an immediate result, one purpose phrase with “to...”, one future-in-view statement with “will”, one continuing-present expression such as “still/to this day”, one later-time marker such as “not long after/later”, one past-perfect background sentence, and one clearly marked inference from observable evidence using “could mean / suggested / indicated”. Do not present the inference as if it were the original observation.',
-      question: 'Can you connect action, purpose, time shifts, evidence and inference in one coherent B2 paragraph?',
+      instructions: 'Write or say 8–10 sentences about a discovery that changed what people did.',
+      question: 'What was found, and what did people think it meant?',
       correctAnswer: null,
       explanation: 'A strong response should move coherently from an initiating event through purpose and time shifts to an evidence-based inference that motivates a later action.',
       feedback: {
@@ -1216,11 +1201,10 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Trigger — What event creates an immediate visible change?', mode: 'Individual' },
-        { question: 'Purpose — What does someone do in response, and why?', mode: 'Pair' },
-        { question: 'Evidence — What can later observers actually see?', mode: 'Pair' },
-        {
-          question: 'Inference — What conclusion do they draw, and which phrase makes it clear that this is an inference?',
+        { question: 'Step 1 — Show a quick result: “…, and … immediately …”', mode: 'Individual' },
+        { question: 'Step 2 — Say what someone did and why: “He called … to …”', mode: 'Pair' },
+        { question: 'Step 3 — Say what people can still see: “Visitors can still see … to this day.”', mode: 'Pair' },
+        { question: 'Step 4 — Make a careful guess: “Experts said that … could mean …”',
           mode: 'Individual',
         },
       ],
@@ -1235,8 +1219,8 @@ export const abrahamB2LanguageFocusChapter31: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-31-time-development',
       type: 'matching',
       title: 'Reading the Verses',
-      instructions: 'Match each part of the verses in Chapter 31 (Surah as-Saffat: 101–102) with its meaning.',
-      question: 'How do the verses move from good news to a dream, a question and an answer?',
+      instructions: 'Match each part of the verses in Chapter 31 with its meaning.',
+      question: 'What happens in these verses, step by step?',
       matchingHeadings: { left: 'From the verses', right: 'Meaning' },
       matchingPairs: [
         { left: 'the glad tidings of a forbearing boy', right: 'good news of a gentle, calm son' },
@@ -1266,7 +1250,7 @@ export const abrahamB2LanguageFocusChapter31: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Growing Up and Obligation',
       instructions: 'Rewrite each sentence from Chapter 31 with the words given. Keep the meaning.',
-      question: 'How can background growth and a reported obligation be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 31?',
       transformItems: [
         {
           source: 'Growing up among the Jurham tribe, Ishmael married the daughter of one of their leaders.',
@@ -1318,8 +1302,8 @@ export const abrahamB2LanguageFocusChapter31: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-31-production',
       type: 'reflection',
       title: 'Build a Consultation under Pressure',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a difficult responsibility discussed between two people. Include one background-growth expression, one turning-point sentence, one report of an obligation or instruction, one direct question inviting the other person’s view, one response that accepts or challenges the obligation with a reason, and one future-oriented commitment qualified by uncertainty or dependence such as “if possible”, “if all goes well”, or “God willing”. Keep obligation, consultation and personal choice clearly distinct.',
-      question: 'Can you build a coherent B2 exchange in which responsibility is reported, discussed and responded to rather than simply announced?',
+      instructions: 'Write or say 8–10 sentences about two people talking about a hard duty.',
+      question: 'Whose duty is it, and what do they say?',
       correctAnswer: null,
       explanation: 'A strong response should move from background to a turning point, distinguish obligation from preference, and use consultation language to develop the interaction.',
       feedback: {
@@ -1327,17 +1311,14 @@ export const abrahamB2LanguageFocusChapter31: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Background — What had developed before the difficult responsibility appeared?',
+        { question: 'Step 1 — Give the background: “Over the years, … had become …”',
           mode: 'Individual',
         },
-        {
-          question: 'Obligation — How will you show that a responsibility comes from a rule, role or instruction rather than preference?',
+        { question: 'Step 2 — Say where the duty comes from: “The rules said that … must …”',
           mode: 'Pair',
         },
-        { question: 'Consultation — What direct question genuinely invites another viewpoint?', mode: 'Pair' },
-        {
-          question: 'Commitment — How can the response show willingness without pretending complete control over the future?',
+        { question: 'Step 3 — Ask for an opinion: “What do you think? Can you …?”', mode: 'Pair' },
+        { question: 'Step 4 — Answer with a careful promise: “I will …, if all goes well.”',
           mode: 'Individual',
         },
       ],
@@ -1371,8 +1352,8 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-32-test-fulfilment',
       type: 'word-bank',
       title: 'Promise, Consequence and Limit',
-      instructions: 'Complete the lines from Chapter 32 with words from the bank. Three options are not needed.',
-      question: 'Which words show a promise, a consequence and the real nature of the event?',
+      instructions: 'Complete the lines from Chapter 32 with words from the bank. Three words are not needed.',
+      question: 'Which words fit the lines about the promise and the test?',
       fillBlanksText: 'The Allah-fearing son of a faithful father promised [blank] Allah. … [blank] this, Allah made him the leader of humanity and brought Messengers from his children. … It was [blank] a test; the substitute was a ram or goat.',
       wordBank: ['to obey', 'Because of', 'only', 'obeying', 'Because', 'even'],
       correctAnswer: ['to obey', 'Because of', 'only'],
@@ -1387,7 +1368,7 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
       type: 'sentence-building',
       title: 'Build the Evaluation',
       instructions: 'Tap the pieces to rebuild this sentence from Chapter 32.',
-      question: 'How does the narrator evaluate what Abraham showed?',
+      question: 'What did Abraham show here?',
       sentenceChunks: [
         'Here,',
         'Abraham (pbuh) showed',
@@ -1407,8 +1388,8 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-32-production',
       type: 'reflection',
       title: 'Write a Turning-Point Evaluation',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about a difficult test, inspection, trial, or responsibility that reaches a critical point and is then reassessed. Include one “when” clause to frame a decisive moment, one “was about to” expression for an imminent action, one interruption or reversal, one sentence that explicitly evaluates what the event proved, one cause/result connector such as “because of this” or “therefore”, and one final sentence that limits or corrects a possible misunderstanding with “only”, “rather than”, or “not... but...”.',
-      question: 'Can you move from event sequence to B2-level interpretation without confusing what happened with what the event demonstrated?',
+      instructions: 'Write or say 8–10 sentences about a test that stops at a key moment.',
+      question: 'What happened, and what did it really show?',
       correctAnswer: null,
       explanation: 'A strong response should separate event timing, interruption, evaluation and consequence, then use a final limiting expression to prevent overstatement.',
       feedback: {
@@ -1416,13 +1397,12 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Timing — Which event was already happening, and what was just about to happen?',
+        { question: 'Step 1 — Set the moment: “… was just about to …”',
           mode: 'Individual',
         },
-        { question: 'Reversal — What interrupted the expected result?', mode: 'Pair' },
-        { question: 'Evaluation — What did the event demonstrate, rather than merely what happened?', mode: 'Pair' },
-        { question: 'Boundary — Which final sentence prevents an exaggerated interpretation?', mode: 'Individual' },
+        { question: 'Step 2 — Show what stopped it: “Suddenly, …”', mode: 'Pair' },
+        { question: 'Step 3 — Say what it showed: “The event showed that … . Because of this, …”', mode: 'Pair' },
+        { question: 'Step 4 — Do not say too much: “It was only …, not …”', mode: 'Individual' },
       ],
     },
   ],
@@ -1435,8 +1415,8 @@ export const abrahamB2LanguageFocusChapter33: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-33-contrast-history',
       type: 'drag-drop',
       title: 'Then or Now?',
-      instructions: 'Sort the parts of Chapter 33. Is the claim limited to Abraham’s time and people, or is it about today?',
-      question: 'How does the chapter limit its claims to a time and a group?',
+      instructions: 'Is it about Abraham’s time, or about today? Sort the parts of Chapter 33.',
+      question: 'Is the claim about then, or about now?',
       dragDropGroups: [
         {
           group: 'Limited to Abraham’s time',
@@ -1476,7 +1456,7 @@ export const abrahamB2LanguageFocusChapter33: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Contrast and Plan',
       instructions: 'Rewrite each sentence from Chapter 33 with the words given. Keep the meaning.',
-      question: 'How can a contrast and a plan seen from the past be expressed in another way?',
+      question: 'How else can we say these lines from Chapter 33?',
       transformItems: [
         {
           source: 'Prophets before him also sacrificed animals, while idolaters sacrificed humans.',
@@ -1525,22 +1505,20 @@ export const abrahamB2LanguageFocusChapter33: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-33-production',
       type: 'reflection',
       title: 'Write a Historically Framed Contrast',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph comparing two practices, policies, or traditions across time. Use one explicit historical time frame, one “in fact” or similar clarification, one “while” contrast, one sentence that limits a claim to people or conditions of that period, one past-background expression such as “after several years”, and one future-in-the-past form such as “was/were going to” to show a later plan from that past viewpoint.',
-      question: 'Can you compare historical practices and later developments without turning time-bound claims into universal statements?',
+      instructions: 'Write or say 8–10 sentences comparing a practice from the past with today.',
+      question: 'How was it then, and how is it now?',
       correctAnswer: null,
       explanation: 'A strong B2 response should distinguish historical context, contrast, clarification and later intention while keeping claims within their proper scope.',
       feedback: { correct: 'Check that each claim is tied to its time, group or context where necessary.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Scope — Which claim is limited to a specific period or group?', mode: 'Individual' },
-        {
-          question: 'Contrast — Which two practices are compared with “while” or an equivalent linker?',
+        { question: 'Step 1 — Limit the claim to a time: “In the 1700s, many … believed …”', mode: 'Individual' },
+        { question: 'Step 2 — Compare then and now: “Doctors then …, while doctors today …”',
           mode: 'Pair',
         },
-        {
-          question: 'Clarification — What possible misunderstanding does your “in fact” sentence correct?',
+        { question: 'Step 3 — Correct a wrong idea: “In fact, …”',
           mode: 'Pair',
         },
-        { question: 'Viewpoint — What later plan do you describe from the earlier past moment?', mode: 'Individual' },
+        { question: 'Step 4 — Show a later plan: “After several years, … were going to …”', mode: 'Individual' },
       ],
     },
   ],
@@ -1553,8 +1531,8 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-34-command-commitment',
       type: 'multiple-choice',
       title: 'A Request, Not an Order',
-      instructions: 'Read the prayer at the end of Chapter 34 (Surah al-Baqarah: 127). Then choose the best explanation.',
-      question: '“O our Lord! Accept this service from us; verily You are the All Hearer, the All Knower.” What does the imperative “Accept” do here?',
+      instructions: 'Read the prayer at the end of Chapter 34. Then choose the best answer.',
+      question: '“O our Lord! Accept this service from us; verily You are the All Hearer, the All Knower.” What does “Accept” do here?',
       options: [
         'It is a humble request made in prayer.',
         'It is an order given to an equal.',
@@ -1573,7 +1551,7 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Reporting the Dialogue',
       instructions: 'Report what Abraham and Ishmael said in Chapter 34. Complete each sentence.',
-      question: 'How do the tenses change when the dialogue is reported?',
+      question: 'What changes when we report their words?',
       transformItems: [
         {
           source: 'Abraham (pbuh) said to Ishmael: “O Ishmael, Allah has commanded me to do an important task, and you will help me in this task.”',
@@ -1598,7 +1576,7 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Building Together',
       instructions: 'Choose the correct form to complete each sentence from Chapter 34.',
-      question: 'Which forms show where they built, what changed and what continued?',
+      question: 'Which word fits each sentence about the building?',
       formChoices: [
         {
           options: ['on', 'in', 'at'],
@@ -1627,8 +1605,8 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-34-production',
       type: 'reflection',
       title: 'Write a Shared-Task Sequence',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about two people completing a demanding shared task. Include one present-relevance form such as “has asked/has required”, one future commitment with “will”, one reported instruction, one change expressed through “no longer”, one continuing parallel action, one cause→adaptation link, and one final respectful request or appeal.',
-      question: 'Can you show how a task moves from instruction to commitment, difficulty, adaptation and coordinated completion?',
+      instructions: 'Write or say 8–10 sentences about two people doing a hard job together.',
+      question: 'How do they share the work?',
       correctAnswer: null,
       explanation: 'A strong B2 response should organize time, stance and coordinated action across a coherent paragraph rather than as isolated grammar examples.',
       feedback: {
@@ -1636,11 +1614,10 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Commitment — Which sentence changes a plan into a personal promise?', mode: 'Individual' },
-        { question: 'Change — Where does “no longer” mark a new limitation or situation?', mode: 'Pair' },
-        { question: 'Coordination — Which two actions continue at the same time?', mode: 'Pair' },
-        {
-          question: 'Function — Is your final imperative a command, request, invitation or appeal?',
+        { question: 'Step 1 — Give the task and a promise: “The teacher has asked us … . I will …”', mode: 'Individual' },
+        { question: 'Step 2 — Show a change: “She could no longer …, so …”', mode: 'Pair' },
+        { question: 'Step 3 — Show two actions at once: “… carried on …ing while … kept …ing.”', mode: 'Pair' },
+        { question: 'Step 4 — End with a polite request: “Please …”',
           mode: 'Individual',
         },
       ],
@@ -1656,7 +1633,7 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'Careful Claims About a Legacy',
       instructions: 'Match each expression from Chapter 35 with its meaning.',
-      question: 'How does the chapter describe Abraham’s legacy without overstating it?',
+      question: 'What do these words say about Abraham’s legacy?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'was but the restorer of the structure', right: 'only rebuilt something that already existed' },
@@ -1699,8 +1676,8 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-35-coexistence-continuity',
       type: 'error-correction',
       title: 'A Lasting Guide',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the tense that links the past to now and the relative word for a situation?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about Abraham’s legacy?',
       errorItems: [
         {
           options: ['has always been', 'always is', 'had always been'],
@@ -1726,8 +1703,8 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-35-production',
       type: 'reflection',
       title: 'Write a Qualified Legacy Paragraph',
-      instructions: 'Write or say an 8–10 sentence non-story paragraph about the legacy of a historical institution, idea, or reform. Include one phrase that limits an overstrong claim, one evidence → interpretation link, one “not just ...” scope contrast, one coexistence statement, one recurring condition with “when/whenever”, and one form showing continuing relevance such as “has remained / has continued / has served”.',
-      question: 'Can you explain a legacy without turning interpretation into certainty or reducing it to a list of past events?',
+      instructions: 'Write or say 8–10 sentences about the legacy of a famous reformer or idea.',
+      question: 'What has lasted, and how far did it reach?',
       correctAnswer: null,
       explanation: 'A strong B2 response should distinguish event, evidence, interpretation, scope, coexistence and continuing relevance across a coherent paragraph.',
       feedback: {
@@ -1735,13 +1712,12 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        {
-          question: 'Qualification — Which sentence prevents your historical claim from becoming too strong?',
+        { question: 'Step 1 — Keep the claim small: “… was but one of many …”',
           mode: 'Individual',
         },
-        { question: 'Evidence — What observation or event supports your interpretation?', mode: 'Pair' },
-        { question: 'Scope — Where do you widen or narrow who, where, or when the claim applies to?', mode: 'Pair' },
-        { question: 'Continuity — Which form connects the past with continuing relevance?', mode: 'Individual' },
+        { question: 'Step 2 — Link evidence to meaning: “This is evidence that …”', mode: 'Pair' },
+        { question: 'Step 3 — Widen the claim: “… not just … but …”', mode: 'Pair' },
+        { question: 'Step 4 — Show it still matters: “… has remained … . Whenever …, …”', mode: 'Individual' },
       ],
     },
   ],

@@ -63,8 +63,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'adam-b1-language-review-1-time-perspective', type: 'drag-drop', title: 'Notice: Looking Back, Looking Forward, True Now',
-    instructions: 'The book tells its story in the past. Read each part from different chapters. Does the verb look back to something earlier, look forward to something still ahead, or say what is true now? Put each part in the right group.',
-    question: 'What do had + past participle, was going to / would + verb and the present simple do in the book?',
+    instructions: 'Looking back, looking ahead, or true now? Put each part in the right group.',
+    question: 'Does it look back, look ahead, or say what is true now?',
     dragDropGroups: [
       { group: 'Looks back: it happened earlier', items: ['He said He had decided to place a ruler (khalifah) on earth.', '… Allah had put him far from His help.', '… they forgot the warning Allah had given them.'] },
       { group: 'Looks forward: it was still ahead', items: ['… He told the angels that He was going to create a human.', 'They would direct, control and make everything better on the planet.', 'They would use land to grow crops and keep animals.'] },
@@ -80,7 +80,7 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b1-language-review-2-viewpoint', type: 'multiple-choice', title: 'Notice: Whose Idea Is It?',
-    instructions: 'Read the two sentences from Chapters 3 and 12. Then choose the best answer.',
+    instructions: 'Read the two sentences. Then choose the best answer.',
     question: 'Chapter 3: “Iblis thought that Adam was an unimportant being created from clay.” Chapter 12: “The story suggests that true believers should stay away from jealousy and control their anger.” What is the difference between “thought that” and “The story suggests that … should”?',
     options: [
       'Both report facts that the narrator agrees with.',
@@ -95,8 +95,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   {
     id: 'adam-b1-language-review-3-verb-meanings', type: 'matching', title: 'Notice: Verbs That Shape the Story',
     matchingHeadings: { left: 'From the book', right: 'Meaning' },
-    instructions: 'Read the phrases from Chapters 4, 6, 7 and 9. Match each one with its meaning.',
-    question: 'What do continue, manage, decide and stop add to the verb that follows them?',
+    instructions: 'Match each phrase from the book with its meaning.',
+    question: 'What do continue, manage, decide and stop mean here?',
     matchingPairs: [
       { left: 'But Iblis continued saying he was right', right: 'did not give up his claim' },
       { left: 'Eventually, Iblis managed to trick them.', right: 'succeeded in the end, after trying for some time' },
@@ -115,8 +115,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   // BUILD — practise the reviewed forms in the book's own sentences.
   {
     id: 'adam-b1-language-review-4-linkers', type: 'word-bank', title: 'Build: Reason, Contrast, Conclusion',
-    instructions: 'Complete the sentences from Chapters 3, 5, 9 and 10 with words from the bank. Two words are not needed.',
-    question: 'Which word gives a reason, which joins two ideas that do not fit together easily, which sums up, and which turns to a contrasting view?',
+    instructions: 'Complete the lines from the book with words from the bank. Two words are not needed.',
+    question: 'Which word gives a reason, shows a difference, or sums up?',
     fillBlanksText: 'He thought he was more important and more valuable than Adam (pbuh) [blank] he believed his origin was superior. … Adam was in Paradise, [blank] he started to feel lonely. … After a period of time, when a community formed, Adam (pbuh) became the first Messenger of Allah. [blank], he became the first human, the first father, and the first messenger of Islam. … Qabil didn’t care about pleasing Allah and his father Adam (pbuh). [blank], real goodness is giving out the best and the most loved.',
     wordBank: ['because', 'but', 'Thus', 'However', 'because of', 'Although'],
     correctAnswer: ['because', 'but', 'Thus', 'However'],
@@ -125,8 +125,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b1-language-review-5-verb-patterns', type: 'choose-form', title: 'Build: What Follows the Verb?',
-    instructions: 'Choose the correct form to complete each sentence from Chapters 6, 9 and 7.',
-    question: 'Which form follows “convince + person”, “want + person” and the preposition to in a barrier to …?',
+    instructions: 'Choose the correct form for each sentence from the book.',
+    question: 'Which form comes after “convinced them”, “wanted people” and “barrier to”?',
     formChoices: [
       { sentence: 'He convinced them [choice] his lies, …', options: ['believe', 'to believe', 'believing'], answer: 1 },
       { sentence: 'They wanted people [choice] Allah in their minds …', options: ['keep', 'that they keep', 'to keep'], answer: 2 },
@@ -138,8 +138,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b1-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Build: Fix the Comparison or the Tense',
-    instructions: 'Each sentence from Chapters 5, 11 and 12 has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct two comparisons and a past verb?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the comparing words and the past verb?',
     errorItems: [
       { sentence: 'It was wonderfuller than we can imagine.', error: 'wonderfuller', options: ['most wonderful', 'more wonderful', 'as wonderful'], answer: 1 },
       { sentence: 'Qabil cried and said, “I am worst than this raven. …”', error: 'worst', options: ['worse', 'more bad', 'the worst'], answer: 0 },
@@ -151,8 +151,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b1-language-review-7-reported-speech', type: 'transformation', title: 'Build: Report What They Said',
-    instructions: 'Read the words from Chapters 3 and 11. Complete each sentence to report them. Keep the meaning.',
-    question: 'What changes in the verb and the pronouns when we report someone’s words after “said” or “told”?',
+    instructions: 'Report what the people said. Write the missing words.',
+    question: 'What changes when we report someone’s words?',
     transformItems: [
       { source: 'Iblis said, “I am better than Adam (pbuh). …”', frame: 'Iblis said that he [blank] better than Adam (pbuh).', answers: ['was'] },
       { source: 'When Habil heard this, he said, “I won’t fight back and harm you. …”', frame: 'Habil told his brother that he [blank] fight back and harm him.', answers: ['would not', 'wouldn’t', "wouldn't", 'was not going to', 'wasn’t going to', "wasn't going to"] },
@@ -164,8 +164,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'adam-b1-language-review-8-new-context', type: 'word-bank', title: 'Use: Our Garden Project',
-    instructions: 'This text is not from the book. Complete it with words from the bank. Two words are not needed.',
-    question: 'Can you use the book’s linking words and its past necessity in a story about your school?',
+    instructions: 'Complete this new text with words from the bank. Three words are extra.',
+    question: 'Can you use the book’s words in a story about your school?',
     fillBlanksText: 'Last autumn, our class decided to clean the old school garden. At first, it looked like an easy job, [blank] the garden was full of rubbish and dry leaves. For six weeks, we [blank] work there every Friday afternoon. Some students wanted to stop [blank] the weather was cold and windy. Our teacher told us that the younger pupils would play in the garden in spring. [blank] nobody gave up. In the end, we managed to plant twenty young trees, and the garden looked more beautiful than ever.',
     wordBank: ['but', 'had to', 'because', 'That is why', 'must', 'because of', 'Although'],
     correctAnswer: ['but', 'had to', 'because', 'That is why'],
@@ -174,8 +174,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b1-language-review-9-new-context', type: 'error-correction', title: 'Use: Check New Sentences',
-    instructions: 'These sentences are not from the book. Each one has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you use the book’s verb patterns in new sentences about everyday life?',
+    instructions: 'Each new sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix these new sentences about everyday life?',
     errorItems: [
       { sentence: 'When I arrived at the bus stop, the bus has already left.', error: 'has already left', options: ['already leaves', 'had already left', 'have already left'], answer: 1 },
       { sentence: 'Our teacher wanted us bringing our old books to the school library.', error: 'us bringing', options: ['us to bring', 'us bring', 'that we bring'], answer: 0 },
@@ -187,8 +187,8 @@ export const adamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'adam-b1-language-review-10-transfer', type: 'reflection', title: 'Use: A Mistake Put Right',
-    instructions: 'Write five or six connected sentences about a time when you, or someone you know, made a mistake at school or at home and then put it right. Plan your ideas with a partner first.',
-    question: 'Can you use the language of the whole book to tell and explain a real experience from your own life?',
+    instructions: 'Write 5–6 sentences about a mistake you put right. Tell a partner first.',
+    question: 'Can you tell a true story about a mistake you put right?',
     correctAnswer: null,
     explanation: 'Example: “Last week, I had to bring my group’s poster to class. I forgot it because I was in a hurry. When I arrived at school, I realised that I had left it on my desk. It wasn’t on purpose, but my group was upset. However, I decided to tell my teacher the truth, and I managed to make a new poster at lunchtime. This experience suggests that we should admit our mistakes quickly; it shows the importance of saying sorry and putting things right.”',
     feedback: { correct: 'Check your sentences: had to, because, had + past participle, but / however, decided (never) to, managed to, should, the importance of + -ing.', incorrect: '' },

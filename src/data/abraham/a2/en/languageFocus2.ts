@@ -19,8 +19,8 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-4-if-future-result',
       type: 'word-bank',
       title: 'Time Words in the Story',
-      instructions: 'Complete the lines from Chapter 4 with words from the bank. Two words are not needed.',
-      question: 'Which time words move the story from the night to the morning?',
+      instructions: 'Fill each gap from the bank. Two words are not needed.',
+      question: 'Which time words fit the gaps?',
       fillBlanksText: 'Abraham stayed [blank]. [blank] the sun came out. It was shining and very bright. [blank] he saw the bright sun, he thought, “Could this be my Lord? It is bigger and brighter.”',
       wordBank: ['all night', 'In the morning', 'When', 'On the morning', 'during'],
       correctAnswer: ['all night', 'In the morning', 'When'],
@@ -34,8 +34,8 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-4-duty-and-guidance',
       type: 'error-correction',
       title: 'Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong words, then choose the correction.',
-      question: 'Can you correct the verb forms in Abraham’s prayer and in his words to his father?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix Abraham’s words?',
       errorItems: [
         {
           sentence: 'He said, “If Allah will not show me the right way, I will be on the wrong path.”',
@@ -57,7 +57,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
         incorrect: 'Read Abraham’s prayer and his words to his father in Chapter 4. Which form comes after “If”? Which form comes after “Stop”?',
       },
     },
-    { id: 'abraham-a2-language-4-guidance-production', type: 'reflection', title: 'Say It: Condition, Duty and Guidance', instructions: 'Write or say three short A2 sentences using Chapter 4 patterns.', question: 'Can you use an if-clause, a responsibility, and one direct instruction?', correctAnswer: null, explanation: 'Use “If ... will ...”, “have to ...”, and an imperative such as “Follow ...” or “Stop ...”.', feedback: { correct: 'Keep the sentences short and make each pattern clear.', incorrect: '' }, discussionPrompts: [{ question: 'Use one “If ... will ...” sentence.', mode: 'Individual' }, { question: 'Add one sentence with “have to”.', mode: 'Individual' }, { question: 'Give one short instruction.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-4-guidance-production', type: 'reflection', title: 'Say It: Condition, Duty and Guidance', instructions: 'Write or say three short sentences about your day.', question: 'What do you have to do?', correctAnswer: null, explanation: 'Use “If ... will ...”, “have to ...”, and an imperative such as “Follow ...” or “Stop ...”.', feedback: { correct: 'Keep the sentences short and make each pattern clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what will happen: “If I …, I will …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what you must do: “I have to …”', mode: 'Individual' }, { question: 'Sentence 3 — Give a short instruction: “Please …”', mode: 'Pair' }] }
   ],
   5: [
     {
@@ -65,7 +65,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       type: 'matching',
       title: 'Words from Abraham’s Talk',
       instructions: 'Match each Chapter 5 expression with its meaning.',
-      question: 'What do these words from the talk between Abraham, his father and the people mean?',
+      question: 'What do these words from Chapter 5 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'Leave here now.', right: 'Go away at once.' },
@@ -90,7 +90,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       type: 'choose-form',
       title: 'Do or Does? Have or Has?',
       instructions: 'Choose the correct word to complete each sentence from Chapter 5.',
-      question: 'Which present form goes with I, you and they?',
+      question: 'Which word goes with I, you and they?',
       formChoices: [
         { sentence: '“O people! I believe in Allah. I [choice] worship stone idols …', options: ['does not', 'do not', 'not'], answer: 1 },
         { sentence: '“Why [choice] you bow down to these objects?', options: ['do', 'does', 'are'], answer: 0 },
@@ -117,7 +117,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
         incorrect: 'Start with who gives, then what He gives, then “when” and the situation.',
       },
     },
-    { id: 'abraham-a2-language-5-position-production', type: 'reflection', title: 'Say It: Belief, Reason and General Situations', instructions: 'Write or say four short A2 sentences using Chapter 5 patterns.', question: 'Can you state a belief, give a reason, describe a general situation and talk about ability?', correctAnswer: null, explanation: 'Use “I believe ...”, “because ...”, “When ...”, and “has/has no power to ...”.', feedback: { correct: 'Keep each sentence simple and clear.', incorrect: '' }, discussionPrompts: [{ question: 'State one belief.', mode: 'Individual' }, { question: 'Give one reason with “because”.', mode: 'Individual' }, { question: 'Use one “When ...” sentence.', mode: 'Individual' }, { question: 'Finish with “has/has no power to ...”.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-5-position-production', type: 'reflection', title: 'Say It: Belief, Reason and General Situations', instructions: 'Write or say four short sentences about something you believe.', question: 'What do you believe, and why?', correctAnswer: null, explanation: 'Use “I believe ...”, “because ...”, “When ...”, and “has/has no power to ...”.', feedback: { correct: 'Keep each sentence simple and clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what you believe: “I believe that …”', mode: 'Individual' }, { question: 'Sentence 2 — Give a reason: “… because …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what happens: “When I …, I …”', mode: 'Individual' }, { question: 'Sentence 4 — End with: “… has / has no power to …”', mode: 'Pair' }] }
   ]
 };
 
@@ -146,7 +146,7 @@ export const abrahamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = 
       type: 'choose-form',
       title: 'Plans and Scenes',
       instructions: 'Choose the correct word to complete each sentence from Chapter 6.',
-      question: 'Can you complete Abraham’s intention, his secret and the scene in the big house?',
+      question: 'Which word fits each sentence about Abraham’s plan?',
       formChoices: [
         { sentence: 'Abraham (pbuh) wanted [choice] his people that it was so silly to love and talk to idols.', options: ['show', 'to show', 'showing'], answer: 1 },
         { sentence: 'But he did not tell [choice] about his plan.', options: ['someone', 'nobody', 'anyone'], answer: 2 },
@@ -164,7 +164,7 @@ export const abrahamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = 
       type: 'sequencing',
       title: 'Step by Step',
       instructions: 'Put the Chapter 6 sentences in the order they happened.',
-      question: 'How does Abraham carry out his plan?',
+      question: 'What did Abraham do first, next and last?',
       sequencingItems: [
         { id: '1', text: 'He got an axe and waited.' },
         { id: '2', text: 'When the town was empty, he went into the big house …' },
@@ -179,7 +179,7 @@ export const abrahamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = 
         incorrect: 'Look for the time words in Chapter 6: “When”, “began to”, “In the end”.',
       },
     },
-    { id: 'abraham-a2-language-6-plan-production', type: 'reflection', title: 'Say It: A Simple Plan and Sequence', instructions: 'Write or say four or five short A2 sentences about a simple plan. Use at least four Chapter 6 language patterns below. Do not explain why Abraham left the largest idol unbroken.', question: 'Can you express an intention, set a scene and tell a short sequence clearly?', correctAnswer: null, explanation: 'A strong response can use “wanted to ...”, “made a plan to ...”, “There was/were ...”, “When ...”, “began to ...”, and a sequence expression such as “one after another” or “In the end”.', feedback: { correct: 'Keep the sequence clear and use each pattern for its real function.', incorrect: '' }, discussionPrompts: [{ question: 'Intention — Begin with “I wanted to ...”', mode: 'Individual' }, { question: 'Plan — Add “I made a plan to ...”', mode: 'Individual' }, { question: 'Setting/time — Use “There was/were ...” or “When ...”', mode: 'Individual' }, { question: 'Action — Add “I began to ...”', mode: 'Individual' }, { question: 'Sequence/result — Finish with “one after another” or “In the end ...”', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-6-plan-production', type: 'reflection', title: 'Say It: A Simple Plan and Sequence', instructions: 'Write or say four or five short sentences about your plan.', question: 'Can you tell your plan step by step?', correctAnswer: null, explanation: 'A strong response can use “wanted to ...”, “made a plan to ...”, “There was/were ...”, “When ...”, “began to ...”, and a sequence expression such as “one after another” or “In the end”.', feedback: { correct: 'Keep the sequence clear and use each pattern for its real function.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what you wanted: “I wanted to …”', mode: 'Individual' }, { question: 'Sentence 2 — Say your plan: “I made a plan to …”', mode: 'Individual' }, { question: 'Sentence 3 — Set the scene: “There was / were …” or “When …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what you did: “I began to …”', mode: 'Individual' }, { question: 'Sentence 5 — Say how it ended: “In the end, …” or “one after another”', mode: 'Pair' }] }
   ]
 };
 
@@ -190,7 +190,7 @@ export const abrahamA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = 
       type: 'drag-drop',
       title: 'Two Kinds of Questions',
       instructions: 'Put each Chapter 7 question in the right group.',
-      question: 'Which questions use a question word, and which can have a yes/no answer?',
+      question: 'Is it a “Who? Why?” question, or a yes/no question?',
       dragDropGroups: [
         { group: 'Has a question word (Who? Why?)', items: ['Who did this?', 'Then, why do you worship these objects?'] },
         { group: 'Yes or no question', items: ['Don’t you see that they …?', 'Don’t you understand?'] },
@@ -209,8 +209,8 @@ export const abrahamA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-7-question-functions',
       type: 'word-bank',
       title: 'The Next Day',
-      instructions: 'Complete the lines from Chapter 7 with words from the bank. Two words are not needed.',
-      question: 'Which words tell us when the people came and how they felt?',
+      instructions: 'Fill each gap from the bank. Two words are not needed.',
+      question: 'When did the people come, and how did they feel?',
       fillBlanksText: '[blank], people went to the house of gods. They were [blank] because all their stone gods were in pieces. … The people were displeased [blank] his answer …',
       wordBank: ['The next day', 'shocked', 'with', 'of', 'happy'],
       correctAnswer: ['The next day', 'shocked', 'with'],
@@ -224,8 +224,8 @@ export const abrahamA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-7-knowledge-question-and-ability',
       type: 'error-correction',
       title: 'Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Can you correct the verbs in these questions and answers?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the verbs in these lines?',
       errorItems: [
         {
           sentence: 'They asked him, “Did you harmed our gods?”',
@@ -253,7 +253,7 @@ export const abrahamA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = 
         incorrect: 'Read the second paragraph of Chapter 7 again. Look at the verb after “Did” and “can”, and at the subject “these objects”.',
       },
     },
-    { id: 'abraham-a2-language-7-questioning-production', type: 'reflection', title: 'Say It: Ask and Explain', instructions: 'Write or say four or five short A2 lines about a simple past situation. Use at least four Chapter 7 language patterns. Do not retell the answer to the Quick Challenge.', question: 'Can you ask about a past event, report what you know and explain a reason?', correctAnswer: null, explanation: 'A strong response can use “The next day ...”, “Who ...?”, “Did you ...?”, “I know that ...”, “Ask ... if ...”, “can/can’t ...”, and “because ...”.', feedback: { correct: 'Keep the questions natural and use each pattern for its real function.', incorrect: '' }, discussionPrompts: [{ question: 'Time — Begin with “The next day ...” or another past-time expression.', mode: 'Individual' }, { question: 'Past event — Ask “Who ...?” or “Did you ...?”', mode: 'Individual' }, { question: 'Knowledge — Add “I know that ...”', mode: 'Individual' }, { question: 'Ability — Use “can” or “can’t” with a base verb.', mode: 'Individual' }, { question: 'Reason — Finish one idea with “because ...”.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-7-questioning-production', type: 'reflection', title: 'Say It: Ask and Explain', instructions: 'Write or say four or five sentences about a small school mystery.', question: 'What happened, and who did it?', correctAnswer: null, explanation: 'A strong response can use “The next day ...”, “Who ...?”, “Did you ...?”, “I know that ...”, “Ask ... if ...”, “can/can’t ...”, and “because ...”.', feedback: { correct: 'Keep the questions natural and use each pattern for its real function.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Give the time: “The next day, …”', mode: 'Individual' }, { question: 'Sentence 2 — Ask a question: “Who …?” or “Did you …?”', mode: 'Individual' }, { question: 'Sentence 3 — Say what you know: “I know that …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what something can or can’t do: “… can’t …”', mode: 'Individual' }, { question: 'Sentence 5 — Give a reason: “… because …”', mode: 'Pair' }] }
   ]
 };
 
@@ -281,8 +281,8 @@ export const abrahamA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-8-purpose',
       type: 'choose-form',
       title: 'So, To, Could Not',
-      instructions: 'Choose the correct word or words to complete each sentence from Chapter 8.',
-      question: 'Can you complete the sentences about the size of the fire, the people’s purpose and the birds?',
+      instructions: 'Choose the correct words for each sentence from Chapter 8.',
+      question: 'Which words fit the sentences about the fire?',
       formChoices: [
         { sentence: 'The fire was [choice] huge that it was dangerous to go near it.', options: ['too', 'very', 'so'], answer: 2 },
         { sentence: 'People from many different towns came [choice] Abraham (pbuh).', options: ['to watch', 'for watch', 'for watching'], answer: 0 },
@@ -320,7 +320,7 @@ export const abrahamA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = 
         incorrect: 'Find each expression in Chapter 8 and read the sentence around it.',
       },
     },
-    { id: 'abraham-a2-language-8-production', type: 'reflection', title: 'Say It: Describe a Dangerous Plan', instructions: 'Write or say four short A2 sentences using Chapter 8 patterns.', question: 'Can you describe degree, inability, purpose and sequence?', correctAnswer: null, explanation: 'Use a pattern with “too” or “so”, one “could not” sentence, one purpose with “to”, and one time marker.', feedback: { correct: 'Keep the description short and connected.', incorrect: '' }, discussionPrompts: [{ question: 'Use “too ... to” or “so ... that”.', mode: 'Individual' }, { question: 'Add “could not + verb”.', mode: 'Individual' }, { question: 'Add a purpose with “to + verb”.', mode: 'Individual' }, { question: 'Finish with “finally”.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-8-production', type: 'reflection', title: 'Say It: Describe a Dangerous Plan', instructions: 'Write or say four short sentences about a very hot day.', question: 'What could you not do, and what did you do?', correctAnswer: null, explanation: 'Use a pattern with “too” or “so”, one “could not” sentence, one purpose with “to”, and one time marker.', feedback: { correct: 'Keep the description short and connected.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say how hot it was: “so … that …” or “too … to …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what you could not do: “We could not …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what for: “We went … to …”', mode: 'Individual' }, { question: 'Sentence 4 — Say how it ended: “Finally, …”', mode: 'Pair' }] }
   ]
 };
 
@@ -343,8 +343,8 @@ export const abrahamA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-9-change-and-time',
       type: 'word-bank',
       title: 'What Changed and What Did Not',
-      instructions: 'Complete the lines from Chapter 9 with words from the bank. Two words are not needed.',
-      question: 'Which words show how the fire changed, and which word shows that the people did not change?',
+      instructions: 'Fill each gap from the bank. Two words are not needed.',
+      question: 'What changed, and what did not change?',
       fillBlanksText: 'The fire [blank] cool and safe for him. … The fire [blank] a garden. … Abraham (pbuh) tried hard to show them the truth, but they were [blank] against him.',
       wordBank: ['became', 'turned into', 'still', 'become', 'never'],
       correctAnswer: ['became', 'turned into', 'still'],
@@ -372,6 +372,6 @@ export const abrahamA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = 
         incorrect: 'Read the next sentence in Chapter 9: “He knew Allah was on his side.” Who did Abraham trust?',
       },
     },
-    { id: 'abraham-a2-language-9-production', type: 'reflection', title: 'Say It: A Surprising Change', instructions: 'Write or say four short A2 sentences using Chapter 9 patterns.', question: 'Can you describe change, time, reaction and continuation?', correctAnswer: null, explanation: 'Use “became” or “turned into”, one time linker, one reaction, and “still”.', feedback: { correct: 'Make the four sentences form one short situation.', incorrect: '' }, discussionPrompts: [{ question: 'Describe one change.', mode: 'Individual' }, { question: 'Add “when” or “at that moment”.', mode: 'Individual' }, { question: 'Describe a reaction.', mode: 'Individual' }, { question: 'Use “still” to show what continued.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-9-production', type: 'reflection', title: 'Say It: A Surprising Change', instructions: 'Write or say four short sentences about a surprising change.', question: 'What changed, and what stayed the same?', correctAnswer: null, explanation: 'Use “became” or “turned into”, one time linker, one reaction, and “still”.', feedback: { correct: 'Make the four sentences form one short situation.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what changed: “… turned into …” or “… became …”', mode: 'Individual' }, { question: 'Sentence 2 — Say when: “When …” or “At that moment, …”', mode: 'Individual' }, { question: 'Sentence 3 — Say how someone felt: “… was amazed to see …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what did not change: “… is still …”', mode: 'Pair' }] }
   ]
 };

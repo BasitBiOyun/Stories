@@ -7,7 +7,7 @@ export const abrahamA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = 
       type: 'matching',
       title: 'Words from the King’s Palace',
       instructions: 'Match each Chapter 10 expression with its meaning.',
-      question: 'What do these words from the meeting between Abraham and Nimrod mean?',
+      question: 'What do these words from Chapter 10 mean?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'ordinary', right: 'like everybody else' },
@@ -31,8 +31,8 @@ export const abrahamA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-10-commands-let',
       type: 'word-bank',
       title: 'Heard, Thought, Wanted',
-      instructions: 'Complete the lines from Chapter 10 with words from the bank. Two words are not needed.',
-      question: 'Which past forms tell us what Nimrod heard, thought and wanted?',
+      instructions: 'Fill each gap from the bank. Two words are not needed.',
+      question: 'Which past form fits each gap?',
       fillBlanksText: 'Nimrod was the King of Babylon. He [blank] about the miracle. He [blank] Abraham was not an ordinary person. So, he [blank] to meet him.',
       wordBank: ['heard', 'thought', 'wanted', 'thinked', 'hear'],
       correctAnswer: ['heard', 'thought', 'wanted'],
@@ -46,8 +46,8 @@ export const abrahamA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-10-ability-cause',
       type: 'sentence-building',
       title: 'The King’s Order',
-      instructions: 'Tap the pieces to build the sentence from Chapter 10.',
-      question: 'How does the chapter tell us what Nimrod ordered?',
+      instructions: 'Tap the pieces to make the sentence from Chapter 10.',
+      question: 'What did Nimrod order?',
       sentenceChunks: ['He ordered', 'his guards', 'to bring', 'two slaves.'],
       correctAnswer: null,
       explanation: 'The pattern is “order + person + to + base verb”: “He ordered his guards to bring two slaves.” First we say who got the order, then what they must do.',
@@ -56,7 +56,7 @@ export const abrahamA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = 
         incorrect: 'Start with “He ordered”. Then say who got the order, and then “to + verb”.',
       },
     },
-    { id: 'abraham-a2-language-10-production', type: 'reflection', title: 'Say It: A Claim and a Test', instructions: 'Write or say four short A2 sentences using Chapter 10 patterns.', question: 'Can you report a thought, give an order, ask about ability and show a result?', correctAnswer: null, explanation: 'Use “thought ...”, “ordered ... to ...”, “Can you ...?”, and “couldn’t ...” or “made ... + adjective”.', feedback: { correct: 'Keep the situation short and connected.', incorrect: '' }, discussionPrompts: [{ question: 'Report one thought.', mode: 'Individual' }, { question: 'Report one order.', mode: 'Individual' }, { question: 'Ask one “Can you ...?” question.', mode: 'Individual' }, { question: 'Finish with a result.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-10-production', type: 'reflection', title: 'Say It: A Claim and a Test', instructions: 'Write or say four short sentences about testing a friend’s words.', question: 'Can your friend really do it?', correctAnswer: null, explanation: 'Use “thought ...”, “ordered ... to ...”, “Can you ...?”, and “couldn’t ...” or “made ... + adjective”.', feedback: { correct: 'Keep the situation short and connected.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone thought: “My friend thought …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what someone ordered: “Our teacher told us to …”', mode: 'Individual' }, { question: 'Sentence 3 — Ask: “Can you …?”', mode: 'Individual' }, { question: 'Sentence 4 — Give the result: “He couldn’t, and …”', mode: 'Pair' }] }
   ]
 };
 
@@ -67,7 +67,7 @@ export const abrahamA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = 
       type: 'drag-drop',
       title: 'Talking About a Journey',
       instructions: 'Put each Chapter 11 phrase in the right group.',
-      question: 'Which phrases tell us where or how they travelled, and which tell us when or how long?',
+      question: 'Where or how did they travel? When, or how long?',
       dragDropGroups: [
         { group: 'Where or how', items: ['from Babylon to Syria and Palestine', 'on camels', 'near two small hills'] },
         { group: 'When or how long', items: ['During his journey', 'for a long time', 'Finally'] },
@@ -86,8 +86,8 @@ export const abrahamA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-11-journey-language',
       type: 'choose-form',
       title: 'Decided To, Asked To',
-      instructions: 'Choose the correct words to complete each sentence from Chapter 11.',
-      question: 'Which verb form comes after “decided”, after a place, and after “asked + person”?',
+      instructions: 'Choose the correct words for each sentence from Chapter 11.',
+      question: 'Which words fit each sentence about the journey?',
       formChoices: [
         { sentence: 'So, he decided [choice] Babylon …', options: ['leaving', 'to leave', 'leave'], answer: 1 },
         { sentence: '… travel to other lands [choice] people about Allah’s message.', options: ['for tell', 'tell', 'to tell'], answer: 2 },
@@ -104,8 +104,8 @@ export const abrahamA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-11-family-naming',
       type: 'error-correction',
       title: 'Fix the Mistake',
-      instructions: 'Each sentence has one mistake. Tap the wrong word or words, then choose the correction.',
-      question: 'Can you correct the past verb and the preposition after “arrived”?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the journey?',
       errorItems: [
         {
           sentence: 'Abraham (pbuh) begun his journey.',
@@ -127,7 +127,7 @@ export const abrahamA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = 
         incorrect: 'Read the second paragraph of Chapter 11 again. What is the past of “begin”? Which word comes after “arrived”?',
       },
     },
-    { id: 'abraham-a2-language-11-production', type: 'reflection', title: 'Say It: A Short Journey', instructions: 'Write or say four short A2 sentences using Chapter 11 patterns.', question: 'Can you describe a decision, route, travel detail and arrival?', correctAnswer: null, explanation: 'Use “decided to”, “from ... to ...”, a transport phrase, and “Finally, arrived at ...”.', feedback: { correct: 'Keep the journey clear and short.', incorrect: '' }, discussionPrompts: [{ question: 'State one decision.', mode: 'Individual' }, { question: 'Give the route.', mode: 'Individual' }, { question: 'Add transport or a time detail.', mode: 'Individual' }, { question: 'Finish with the arrival.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-11-production', type: 'reflection', title: 'Say It: A Short Journey', instructions: 'Write or say four short sentences about a journey you made.', question: 'Where did you go, and how?', correctAnswer: null, explanation: 'Use “decided to”, “from ... to ...”, a transport phrase, and “Finally, arrived at ...”.', feedback: { correct: 'Keep the journey clear and short.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what you decided: “We decided to …”', mode: 'Individual' }, { question: 'Sentence 2 — Give the route: “We travelled from … to …”', mode: 'Individual' }, { question: 'Sentence 3 — Say how or how long: “We went by …” or “The journey took …”', mode: 'Individual' }, { question: 'Sentence 4 — Say when you arrived: “Finally, we arrived at …”', mode: 'Pair' }] }
   ]
 };
 
@@ -176,8 +176,8 @@ export const abrahamA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-12-lack-search',
       type: 'choose-form',
       title: 'Told To, Had To, Nobody',
-      instructions: 'Choose the correct word or words to complete each sentence from Chapter 12.',
-      question: 'Can you complete an instruction, a duty and a sentence about no help?',
+      instructions: 'Choose the correct words for each sentence from Chapter 12.',
+      question: 'Which words fit the sentences about Hagar?',
       formChoices: [
         { sentence: 'Abraham (pbuh) told his wife [choice] near one of the hills with Ishmael.', options: ['stay', 'to stay', 'staying'], answer: 1 },
         { sentence: 'Hagar [choice] give food to her child.', options: ['has to', 'must to', 'had to'], answer: 2 },
@@ -190,7 +190,7 @@ export const abrahamA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = 
         incorrect: 'Read Chapter 12 again. The story is in the past. Which word means “no person”?',
       },
     },
-    { id: 'abraham-a2-language-12-production', type: 'reflection', title: 'Say It: Need, Request and Action', instructions: 'Write or say four short A2 sentences using Chapter 12 patterns.', question: 'Can you describe what is missing, what someone needs to do, what they ask for and what they believe will happen?', correctAnswer: null, explanation: 'Use “no ...”, “had to ...”, “asked ... to ...”, and “will surely/will never ...”.', feedback: { correct: 'Keep the four ideas connected.', incorrect: '' }, discussionPrompts: [{ question: 'Say what is missing.', mode: 'Individual' }, { question: 'Add one “had to” sentence.', mode: 'Individual' }, { question: 'Make one request.', mode: 'Individual' }, { question: 'Finish with a future belief.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-12-production', type: 'reflection', title: 'Say It: Need, Request and Action', instructions: 'Write or say four short sentences about something your class needed.', question: 'What did you need, and what did you do?', correctAnswer: null, explanation: 'Use “no ...”, “had to ...”, “asked ... to ...”, and “will surely/will never ...”.', feedback: { correct: 'Keep the four ideas connected.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what is missing: “We had no … left.”', mode: 'Individual' }, { question: 'Sentence 2 — Say what you had to do: “We had to …”', mode: 'Individual' }, { question: 'Sentence 3 — Ask for help: “We asked … to …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what will happen: “We will surely …”', mode: 'Pair' }] }
   ]
 };
 
@@ -201,7 +201,7 @@ export const abrahamA2LanguageFocusExercisesPart10: Record<number, Exercise[]> =
       type: 'drag-drop',
       title: 'Going On, or One Moment?',
       instructions: 'Put each part of Chapter 13 in the right group.',
-      question: 'Which actions were going on at that time, and which happened at one moment?',
+      question: 'Was it going on, or did it happen at one moment?',
       dragDropGroups: [
         { group: 'Was going on', items: ['Hagar was running in the desert', 'Ishmael was crying for water'] },
         { group: 'Happened at one moment', items: ['Suddenly water came out of the ground', 'she shouted, “Zamzam!”', 'She drank the water.'] },
@@ -220,8 +220,8 @@ export const abrahamA2LanguageFocusExercisesPart10: Record<number, Exercise[]> =
       id: 'abraham-a2-language-13-sequence-degree',
       type: 'choose-form',
       title: 'Because or Because Of?',
-      instructions: 'Choose the correct word or words to complete each sentence from Chapter 13.',
-      question: 'Can you complete a change and two reasons?',
+      instructions: 'Choose the correct words for each sentence from Chapter 13.',
+      question: 'Which fits: became, because or because of?',
       formChoices: [
         { sentence: 'Later, this water [choice] very famous.', options: ['become', 'became', 'becomes'], answer: 1 },
         { sentence: 'The water is special [choice] it was a gift from Allah in the middle of the desert.', options: ['because of', 'so', 'because'], answer: 2 },
@@ -252,7 +252,7 @@ export const abrahamA2LanguageFocusExercisesPart10: Record<number, Exercise[]> =
         incorrect: 'Look at the verbs “Flow” and “stop”. Is there a question mark? Is there a past form?',
       },
     },
-    { id: 'abraham-a2-language-13-production', type: 'reflection', title: 'Say It: A Sudden Change', instructions: 'Write or say four short A2 sentences using Chapter 13 patterns.', question: 'Can you describe what was happening, what suddenly changed, what happened next and why?', correctAnswer: null, explanation: 'Use “was/were + -ing”, “Suddenly ...”, “Then ...”, and “because ...”.', feedback: { correct: 'Make the sequence short and clear.', incorrect: '' }, discussionPrompts: [{ question: 'Give one background action.', mode: 'Individual' }, { question: 'Add a sudden event.', mode: 'Individual' }, { question: 'Move to the next action with “Then”.', mode: 'Individual' }, { question: 'Finish with a reason.', mode: 'Pair' }] }
+    { id: 'abraham-a2-language-13-production', type: 'reflection', title: 'Say It: A Sudden Change', instructions: 'Write or say four short sentences about something that happened suddenly.', question: 'What happened suddenly?', correctAnswer: null, explanation: 'Use “was/were + -ing”, “Suddenly ...”, “Then ...”, and “because ...”.', feedback: { correct: 'Make the sequence short and clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what was going on: “I was …ing …”', mode: 'Individual' }, { question: 'Sentence 2 — Add a sudden event: “Suddenly, …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what happened next: “Then …”', mode: 'Individual' }, { question: 'Sentence 4 — Give a reason: “… because …”', mode: 'Pair' }] }
   ]
 };
 
@@ -280,8 +280,8 @@ export const abrahamA2LanguageFocusExercisesPart11: Record<number, Exercise[]> =
       id: 'abraham-a2-language-14-future-certainty',
       type: 'matching',
       title: 'Which Question Does It Answer?',
-      instructions: 'Match each Chapter 14 phrase with the question it answers.',
-      question: 'Read: “During that time, Abraham (pbuh) visited Mecca several times to see his family.” Which question does each part answer?',
+      instructions: 'Match each part of the sentence with the question it answers.',
+      question: '“During that time, Abraham (pbuh) visited Mecca several times to see his family.”',
       matchingHeadings: { left: 'From the chapter', right: 'It answers' },
       matchingPairs: [
         { left: 'During that time', right: 'When?' },
@@ -305,8 +305,8 @@ export const abrahamA2LanguageFocusExercisesPart11: Record<number, Exercise[]> =
       id: 'abraham-a2-language-14-after-still-connection',
       type: 'word-bank',
       title: 'After, Still, One Of',
-      instructions: 'Complete the lines from Chapter 14 with words from the bank. Two words are not needed.',
-      question: 'Which words connect the Ka’ba to today and to the Prophet Muhammad (pbuh)?',
+      instructions: 'Fill each gap from the bank. Two words are not needed.',
+      question: 'Which word fits each gap?',
       fillBlanksText: '[blank] Abraham (pbuh) built the Sacred Ka’ba, his mission was over. … Today, people [blank] visit the House of Allah to make Hajj. … After many years, Ishmael’s family grew and grew. [blank] them was Muhammad, the Prophet of Islam (pbuh).',
       wordBank: ['After', 'still', 'One of', 'Before', 'yet'],
       correctAnswer: ['After', 'still', 'One of'],
@@ -316,6 +316,6 @@ export const abrahamA2LanguageFocusExercisesPart11: Record<number, Exercise[]> =
         incorrect: 'Read Chapter 14 again. When was the mission over: before or after the building? Which word shows that Hajj continues today?',
       },
     },
-    { id: 'abraham-a2-language-14-production', type: 'reflection', title: 'Say It: A Shared Task', instructions: 'Write or say four short A2 sentences using Chapter 14 patterns.', question: 'Can you explain when a task happens, why it is done, who will help and what continues afterwards?', correctAnswer: null, explanation: 'Use one time expression, purpose with “to”, “will” for help, and “still” for continuation.', feedback: { correct: 'Keep the four ideas connected.', incorrect: '' }, discussionPrompts: [{ question: 'Begin with a time expression.', mode: 'Individual' }, { question: 'Explain one purpose with “to + verb”.', mode: 'Individual' }, { question: 'Add one “will” sentence.', mode: 'Pair' }, { question: 'Finish with something that “still” happens.', mode: 'Individual' }] }
+    { id: 'abraham-a2-language-14-production', type: 'reflection', title: 'Say It: A Shared Task', instructions: 'Write or say four sentences about a job your class did together.', question: 'What did you do, and why?', correctAnswer: null, explanation: 'Use one time expression, purpose with “to”, “will” for help, and “still” for continuation.', feedback: { correct: 'Keep the four ideas connected.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Begin with the time: “Last week, …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what for: “We … to …”', mode: 'Individual' }, { question: 'Sentence 3 — Add a promise: “I will help you …”', mode: 'Pair' }, { question: 'Sentence 4 — Say what still happens: “Today, we still …”', mode: 'Individual' }] }
   ]
 };

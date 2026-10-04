@@ -12,7 +12,7 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'لاحظ: «قد» بين الاحتمال والتحقيق',
       instructions: 'ضع كل عبارة من الفصل الثالث عشر في المجموعة المناسبة.',
-      question: 'هل تقدّم العبارة أمرًا ممكنًا لا يقطع به الكاتب، أم خبرًا يقرره النص؟',
+      question: 'هل العبارة احتمال، أم خبر مؤكد؟',
       dragDropGroups: [
         {
           group: 'احتمال أو إمكان',
@@ -45,8 +45,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-13-ar-possibility',
       type: 'transformation',
       title: 'ابنِ: الاستدراك والنصيحة بصياغة أخرى',
-      instructions: 'اقرأ جملة الفصل، ثم اكتب ما ينقص في الصياغة الجديدة بحيث يبقى المعنى نفسه.',
-      question: 'كيف تعبّر عن المقابلة في «مع أنه... فإن...» بجملتين؟ وكيف تحوّل النصيحة «الأفضل لك أن تتوب» إلى فعل أمر؟',
+      instructions: 'اكتب الكلمات الناقصة، ولا تغيّر المعنى.',
+      question: 'كيف نقول هاتين الجملتين بطريقة أخرى؟',
       transformItems: [
         {
           source: 'ويفهم من الآيات السابقة أنه مع أن قابيل كان ينوي القتل، فإن هابيل لم يتخذ موقفا عدوانيا.',
@@ -70,8 +70,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-13-ar-purpose-condition',
       type: 'error-correction',
       title: 'ابنِ: الشرط بـ«إن لم» والحال المنصوبة',
-      instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما صيغة الفعل بعد «لم»؟ وماذا نضع قبل جواب شرط يبدأ بالسين؟ وما حالة الخبر المعطوف بعد «كان»؟',
+      instructions: 'في كل جملة خطأ. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'هل تستطيع أن تصحّح الجمل عن هابيل وقابيل؟',
       errorItems: [
         {
           sentence: 'ولكن إن لم تفعلُ، …',
@@ -103,8 +103,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-13-ar-production',
       type: 'reflection',
       title: 'اكتب فقرة تضبط الموقف والعاقبة',
-      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن خلاف غير مرتبط بالقصة. لا تعِد سرد الفصل. ابدأ بتركيب يفيد الإقرار مع المقابلة مثل «مع أن... فإن...» أو ما يؤدي معناه. استخدم «قد» مرة لعرض احتمال أو تقييم غير قطعي. وضح غاية أحد الردود، واقترح مسارا بديلا، ثم اختم بشرط من نوع «إن لم... فـ...» يبين نتيجة أو مسؤولية. اجعل العلاقات تخدم معنى الفقرة ولا تجمع التراكيب جمعا آليا.',
-      question: 'هل تستطيع بناء فقرة مترابطة تجمع الإقرار، والاحتمال، والغاية، والشرط والعاقبة؟',
+      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن خلاف، وعن ردّ هادئ عليه.',
+      question: 'كيف نردّ على الخلاف بهدوء؟',
       correctAnswer: null,
       explanation: 'في الاستجابة القوية تخدم هذه التراكيب تنظيم الموقف: الاعتراف بصعوبة، تجنب التعميم، بيان النية، تقديم بديل، ثم توضيح نتيجة الاختيار.',
       feedback: {
@@ -112,10 +112,10 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الإقرار — ما الحقيقة الصعبة التي ستعترف بها قبل تقديم رد مختلف؟', mode: 'Individual' },
-        { question: 'الاحتمال — أي حكم ينبغي أن يبقى احتماليا لا قطعيا؟', mode: 'Individual' },
-        { question: 'الغاية — ما النتيجة التي يريد المتحدث الوصول إليها؟', mode: 'Pair' },
-        { question: 'الشرط — ماذا يترتب إذا رفض الطرف الآخر البديل المقترح؟', mode: 'Pair' },
+        { question: 'الجملة الأولى — أقرّ بأمر صعب: «مع أنّ …، فإنني …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — اذكر احتمالًا: «قد لا …، وقد …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — اذكر هدف ردّك: «فـ… لـ…»', mode: 'Pair' },
+        { question: 'الجملة الرابعة — اختم بشرط: «إن لم …، فسـ…»', mode: 'Pair' },
       ],
     },
   ],
@@ -125,7 +125,7 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       type: 'multiple-choice',
       title: 'لاحظ: لماذا لا يُذكر الفاعل؟',
       instructions: 'اختر التفسير الأدق.',
-      question: 'في الفصل: «ورحمة من الله، ولإظهار أن كرامة الإنسان يجب أن تُحفظ حتى بعد موته، أرسل الله غرابيْن». لماذا جاء الفعل «تُحفظ» مبنيًّا للمجهول؟',
+      question: 'في الفصل: «ورحمة من الله، ولإظهار أن كرامة الإنسان يجب أن تُحفظ حتى بعد موته، أرسل الله غرابيْن». لماذا لا يذكر الفعل «تُحفظ» مَن يحفظ؟',
       options: [
         'لأن الكاتب لا يعرف مَن حفظ جثة هابيل.',
         'لأن المهم هو الكرامة التي يجب حفظها، لا شخص معيّن يحفظها؛ فالحكم عام على الجميع.',
@@ -143,8 +143,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-14-ar-passive',
       type: 'error-correction',
       title: 'ابنِ: الجزم بعد «لم» والحال والمثنى',
-      instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما صيغة المضارع المعطوف بعد «لم»؟ وما حالة الحال؟ وكيف يتفق الفعل مع المثنى؟',
+      instructions: 'في كل جملة خطأ. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'هل تستطيع أن تصحّح الجمل عن قابيل والغرابين؟',
       errorItems: [
         {
           sentence: 'لم يخفّف هذا الرجاء الأخوي من الكراهية في قلب قابيل، ولم يُظهرُ أي خوف من عقاب الله.',
@@ -176,8 +176,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-14-ar-development-purpose',
       type: 'word-bank',
       title: 'ابنِ: تغيّر الحال خطوة خطوة',
-      instructions: 'اسحب الكلمة المناسبة إلى كل فراغ. في البنك كلمات زائدة.',
-      question: 'كيف يصوّر الكاتب تغيّر حال قابيل: ما الذي خفّ؟ وما الذي صار؟ وما الذي بدأ؟',
+      instructions: 'أكمل الجمل بكلمات من البنك. في البنك كلمات زائدة.',
+      question: 'كيف تغيّرت حال قابيل؟',
       fillBlanksText: 'وكان غضبه قد [blank]، ولكن قلبه [blank] مثقلا بالذنب. [blank] يتعب من حمل الجثة.',
       wordBank: ['خفّ', 'خفيف', 'صار', 'صارت', 'وبدأ', 'وبدأت'],
       correctAnswer: ['خفّ', 'صار', 'وبدأ'],
@@ -191,8 +191,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-14-ar-production',
       type: 'reflection',
       title: 'ابن فقرة عن العاقبة والإدراك',
-      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن موقف غير قصصي يتجاهل فيه شخص أكثر من رادع، ثم يواجه عاقبة تتزايد ويتعلم من مثال غير متوقع. استخدم نفيين مترابطين مثل «لم... ولم...»، واستدراكا أو انتقالا مثل «بل» أو «ولكن»، وجملة بالمبني للمجهول تبرز النتيجة أو المبدأ، وتعبيرا عن تغير تدريجي مثل «بدأ...» أو «صار...»، وتعبيرا عن الغاية مثل «لإظهار...» أو «لكي...». لا تعِد سرد الفصل الرابع عشر.',
-      question: 'هل تستطيع استخدام النفي وتغير الحال والمبني للمجهول والغاية لبناء فقرة مترابطة عن العاقبة والإدراك؟',
+      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن شخص لا يسمع التحذير حتى تكبر المشكلة.',
+      question: 'كيف تكبر المشكلة، وما الذي يساعد في النهاية؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تستخدم هذه الأدوات لتنظيم الخطاب: انهيار الرادع ثم ظهور العاقبة ثم تزايد العبء ثم لحظة تعلم ذات غاية واضحة.',
       feedback: {
@@ -200,10 +200,10 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'ما الرادعان اللذان تم تجاهلهما؟', mode: 'Individual' },
-        { question: 'ما النتيجة التي يناسب إبرازها بالمبني للمجهول؟', mode: 'Individual' },
-        { question: 'ما العبء أو الحالة التي بدأت تتزايد؟', mode: 'Pair' },
-        { question: 'ما الغاية من المثال الأخير؟', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر ما تجاهله: «لم …، ولم …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — اذكر النتيجة دون مَن فعلها: «… فأُجِّل …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — بيّن ما زاد: «وبدأ … يتراكم، وصار …»', mode: 'Pair' },
+        { question: 'الجملة الرابعة — اذكر هدف المثال: «… لكي …، فأظهر له …»', mode: 'Pair' },
       ],
     },
   ],
@@ -246,8 +246,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-15-ar-interpretive-framing',
       type: 'choose-form',
       title: 'ابنِ: الاسم الموصول والصفة والمضاف إليه',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'أي اسم موصول يناسب الاسم قبله؟ وما حالة الصفة؟ وما صيغة المثنى المضاف إليه؟',
+      instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
+      question: 'أيّ كلمة تناسب كل جملة؟',
       formChoices: [
         {
           sentence: 'فهو ينشأ من الحسد [choice] يغلب مشاعر المحبة والرحمة بين الإخوة.',
@@ -277,7 +277,7 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       type: 'sentence-building',
       title: 'ابنِ: التوازي بالعطف و«بدل»',
       instructions: 'رتّب القطع لتبني جملة الفصل عن الدرس الذي تقدمه القصة.',
-      question: 'ما الذي يطهّر الطبيعة الإنسانية بحسب الفصل؟ وكيف تُعطف الاختيارات بعضها على بعض؟',
+      question: 'ما الذي يطهّر الطبيعة الإنسانية بحسب الفصل؟',
       sentenceChunks: [
         'وتقدّم هذه القصة مثالًا',
         'يبين أن اتباع هدى الوحي،',
@@ -297,8 +297,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-15-ar-production',
       type: 'reflection',
       title: 'اكتب من الحدث إلى التفسير',
-      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن موقف غير قصصي يبدأ بحدث واضح ثم ينتقل إلى تفسير أوسع للسلوك الإنساني. استخدم تعبيرا للغرض مثل «ليريه / لكي يبين...»، وتركيبا يضم «كيف» لبيان الطريقة داخل الجملة، وإطارا تفسيريا مثل «وما يظهر هنا في الحقيقة هو...»، وجملة صلة تشرح سببا أو أثرا، ومقابلة بـ«بينما». افصل بوضوح بين ما وقع فعلا وبين تفسيرك له. لا تعِد سرد الفصل الخامس عشر.',
-      question: 'هل تستطيع الانتقال من وصف حدث إلى تفسير دلالته مع استخدام الغاية والصلة والمقابلة لتنظيم الفقرة؟',
+      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن حدث صغير وما يدل عليه.',
+      question: 'ماذا حدث، وماذا يعني؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تميز بين طبقتين من الخطاب: وصف الحدث أولا، ثم إعلان الانتقال إلى التفسير، ثم شرح سبب أو أثر، ثم مقارنة استجابتين أو نموذجين.',
       feedback: {
@@ -306,10 +306,10 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الحدث — ما الفعل أو الموقف الذي تبدأ به؟', mode: 'Individual' },
-        { question: 'الغاية — ما الذي يحدث لكي يبين أو يعلم شيئا؟', mode: 'Individual' },
-        { question: 'التفسير — ما الجملة التي تعلن الانتقال من الحدث إلى دلالته؟', mode: 'Pair' },
-        { question: 'المقابلة — ما الاستجابتان أو النموذجان اللذان ستقارنهما بـ«بينما»؟', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر ما حدث: «في …، …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — اذكر الهدف: «… لكي يبيّن أنّ …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — فسّر المعنى: «وما يظهر هنا في الحقيقة هو …»', mode: 'Pair' },
+        { question: 'الجملة الرابعة — قارن بين ردّين: «بينما …، …»', mode: 'Pair' },
       ],
     },
   ],
@@ -331,8 +331,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-16-ar-source-status',
       type: 'error-correction',
       title: 'ابنِ: الأفعال المتوازية واسم «كان» والغاية',
-      instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'هل تتوازى الأفعال في الزمن؟ ما حالة اسم «ستكون» المؤخر؟ وما صيغة الفعل بعد لام التعليل؟',
+      instructions: 'في كل جملة خطأ. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'هل تستطيع أن تصحّح الجمل عن وصية آدم لأولاده؟',
       errorItems: [
         {
           sentence: 'وفي الوقت نفسه، كان نبيا يوجه أولاده وأحفاده، ويحدثهم عن الله، ودعاهم إلى الإيمان به.',
@@ -364,8 +364,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-16-ar-future-continuity',
       type: 'transformation',
       title: 'ابنِ: المقابلة والزمن بصياغة أخرى',
-      instructions: 'اقرأ جملة الفصل، ثم اكتب ما ينقص في الصياغة الجديدة بحيث يبقى المعنى نفسه.',
-      question: 'كيف تجمع بين اختلاف الأنبياء واجتماعهم بـ«مع أنّ... فإنّ...»؟ وكيف تحوّل «لما اقتربت» إلى ظرف + مصدر؟',
+      instructions: 'اكتب الكلمات الناقصة، ولا تغيّر المعنى.',
+      question: 'كيف نقول هاتين الجملتين بطريقة أخرى؟',
       transformItems: [
         {
           source: '…لكنهم سيجتمعون في شيء واحد، وهو الدعوة إلى اتباع صراط الله المستقيم.',
@@ -389,8 +389,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-16-ar-production',
       type: 'reflection',
       title: 'اكتب فقرة عن إرث يستمر',
-      instructions: 'اكتب أو قل فقرة من 8–10 جمل بمستوى B2 عن شخص أو مؤسسة غير واردة في القصة تنقل مسؤولية أو قيما أو معرفة إلى جيل لاحق. استخدم «كان + مضارع» أو بنية مناسبة لتصوير عمل متكرر مستمر، وعبارة نقل محتاطة مثل «روي أن...» أو «بحسب...»، وبنيتين على الأقل للمستقبل، ومقابلة من نوع «تختلف... لكن...». افصل بوضوح بين المعلومة المنقولة وتفسيرك الشخصي. لا تعد سرد الفصل.',
-      question: 'هل تستطيع وصف انتقال المسؤولية عبر الأجيال مع ضبط المصدر والزمن والمقابلة؟',
+      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن شخص ينقل شيئًا مهمًّا إلى من بعده.',
+      question: 'ماذا يترك الشخص لمن يأتي بعده؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية تميز بين الدور والفعل المتكرر، وتحافظ على نسبة المعلومة المنقولة، وتستخدم المستقبل لتصوير الاستمرار، ثم تجعل المقابلة توضح كيف يمكن أن تختلف التفاصيل مع بقاء الغاية المشتركة.',
       feedback: {
@@ -398,10 +398,10 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الدور — ما الهوية أو المسؤولية الرئيسة التي تؤطر فقرتك؟', mode: 'Individual' },
-        { question: 'المصدر — أي معلومة تحتاج إلى «بحسب...» أو «روي أن...»؟', mode: 'Individual' },
-        { question: 'الاستمرار — ما الذي سيبقى أو سينتقل إلى الجيل اللاحق؟', mode: 'Pair' },
-        { question: 'المقابلة — ما الذي يمكن أن يختلف مع بقاء الغاية واحدة؟', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر دوره: «كان …، وكان يـ… ويـ…»', mode: 'Individual' },
+        { question: 'الجملة الثانية — انقل خبرًا: «بحسب …، … ورُوي أنّ …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — اذكر ما سيأتي: «سـ…، وسوف …»', mode: 'Pair' },
+        { question: 'الجملة الرابعة — بيّن الاختلاف والغاية الواحدة: «تختلف …، لكنّ …»', mode: 'Pair' },
       ],
     },
   ],
@@ -411,7 +411,7 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'لاحظ: الحكم العام والاستثناء',
       instructions: 'صل كل جزء من الآيات في أول الفصل بمعناه.',
-      question: 'كيف يضيّق الاستثناء بـ«إلا» حكمًا عامًّا؟',
+      question: 'مَن يقدر عليهم الشيطان، ومَن لا يقدر عليهم؟',
       matchingHeadings: { left: 'من الآيات', right: 'المعنى' },
       matchingPairs: [
         { left: 'لأزينن لهم في الأرض ولأغوينهم أجمعين', right: 'عزم مؤكد يشمل البشر جميعًا' },
@@ -435,8 +435,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-17-ar-concession-reframing',
       type: 'transformation',
       title: 'ابنِ: الحصر بصياغة أخرى',
-      instructions: 'اقرأ جملة الفصل، ثم اكتب ما ينقص في الصياغة الجديدة بحيث يبقى المعنى نفسه.',
-      question: 'كيف تعبّر عن «ولكن الذي يقويه هو...» بأداة حصر؟',
+      instructions: 'اكتب الكلمات الناقصة، ولا تغيّر المعنى.',
+      question: 'كيف نقول «ولكن الذي يقويه هو…» بطريقة أخرى؟',
       transformItems: [
         {
           source: 'والشيطان ليس قويا في نفسه، ولكن الذي يقويه هو ضعف الإنسان، ونقصه الأخلاقي، وغفلته.',
@@ -455,8 +455,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-17-ar-cause-appearance',
       type: 'choose-form',
       title: 'ابنِ: خبر «كون» والمصدر المجرور و«أن» + المضارع',
-      instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما حالة خبر «كونه»؟ وما الذي يأتي بعد «يسعى إلى»؟ وما صيغة الفعل بعد «إلى أن»؟',
+      instructions: 'اختر الكلمة الصحيحة لتكمل جملة الفصل.',
+      question: 'أيّ كلمة تناسب كل جملة؟',
       formChoices: [
         {
           sentence: 'ويؤكد القرآن أن الشيطان، مع كونه [choice] على الله…، يبرز أكثر بوصفه عدوا للإنسان',
@@ -485,8 +485,8 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
       id: 'adam-b2-language-17-ar-production',
       type: 'reflection',
       title: 'ابن حجة ختامية منضبطة',
-      instructions: 'اكتب أو قل فقرة من 8–10 جمل بمستوى B2 عن موقف غير وارد في القصة يبدو فيه تأثير ما قويا، لكنه يعتمد في الحقيقة على اختيارات الناس أو عاداتهم أو ظروفهم. استخدم حكما عاما تضبطه باستثناء بـ«إلا»، وبنية إقرار واستدراك مثل «مع أن/مع كونه... فإن...»، وبنية حصر أو سبب مثل «الذي يجعل... هو...» أو «إنما...»، وعبارة تصحيح أو توضيح مثل «وفي الحقيقة» أو «ولكن». اختم بسؤال مفتوح حقيقي يخرج من الحجة نفسها. لا تعد سرد الفصل.',
-      question: 'هل تستطيع بناء حجة تضبط التعميم، وتعيد توجيه التركيز، وتفسر سبب القوة الظاهرة، ثم تنتهي بسؤال منطقي؟',
+      instructions: 'اكتب أو قل فقرة من 8–10 جمل عن شيء يبدو قويًّا، لكن قوته تأتي منا.',
+      question: 'من أين تأتي قوته في الحقيقة؟',
       correctAnswer: null,
       explanation: 'الإجابة القوية لا تكتفي بعرض رأي؛ بل تضبط نطاقه، وتحافظ على معنى تقره قبل الاستدراك عليه، وتحدد سببا واضحا للمظهر، ثم تجعل السؤال الختامي نتيجة طبيعية لمسار الفقرة.',
       feedback: {
@@ -494,10 +494,10 @@ export const adamB2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'النطاق — ما الحكم العام، وما الحالة التي ستستثنيها منه؟', mode: 'Individual' },
-        { question: 'الاستدراك — ما المعنى الذي ستقر به قبل تحويل مركز التركيز؟', mode: 'Individual' },
-        { question: 'السبب — ما العامل البشري الذي يجعل التأثير يبدو أقوى؟', mode: 'Pair' },
-        { question: 'السؤال الختامي — ما القضية التي تبقى مفتوحة بعد حجتك؟', mode: 'Pair' },
+        { question: 'الجملة الأولى — اذكر حكمًا عامًّا واستثناءً: «… إلا …»', mode: 'Individual' },
+        { question: 'الجملة الثانية — أقرّ بأمر: «مع أنّ …، فإنّ …»', mode: 'Individual' },
+        { question: 'الجملة الثالثة — اذكر السبب الحقيقي: «إنّ الذي يجعل … يبدو … هو …»', mode: 'Pair' },
+        { question: 'الجملة الرابعة — اختم بسؤال مفتوح: «فالسؤال الحقيقي إذن: …؟»', mode: 'Pair' },
       ],
     },
   ],

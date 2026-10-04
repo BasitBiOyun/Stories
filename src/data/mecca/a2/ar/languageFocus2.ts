@@ -21,7 +21,7 @@ export const meccaA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-3-comparison', type: 'choose-form', title: 'تدرّب: آخر الكلمة',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'انتبه إلى آخر الكلمة بعد «أن» وبعد «كانت»، وإلى الحركة قبل «ال».',
+      question: 'كيف تنتهي الكلمة بعد «أن» و«كانت» وقبل «ال»؟',
       formChoices: [
         { sentence: 'أَرَادَ أُمَيَّةُ أَنْ [choice] هَذِهِ الرِّسَالَةَ.', options: ['يَمْنَعُ', 'يَمْنَعَ', 'يَمْنَعْ'], answer: 1 },
         { sentence: 'وَكَانَتْ مَكَّةُ [choice] لِشِرَاءِ الْعَبِيدِ وَبَيْعِهِمْ.', options: ['مَرْكَزٌ', 'مَرْكَزًا'], answer: 1 },
@@ -37,7 +37,7 @@ export const meccaA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-3-time', type: 'sentence-building', title: 'تدرّب: من أغنى',
       instructions: 'رتّب الأجزاء لتكوّن جملة الفصل عن أمية.',
-      question: 'كيف يقول الفصل إن أمية كان من أغنى رؤساء مكة؟',
+      question: 'من كان أمية في مكة؟',
       sentenceChunks: ['كَانَ أُمَيَّةُ', 'مِنْ أَغْنَى', 'رُؤَسَاءِ', 'مَكَّةَ', 'وَأَكْثَرِهِمْ نُفُوذًا'],
       correctAnswer: null,
       explanation: '«من أغنى رؤساء مكة» = واحد من الرؤساء الذين هم أغنى من غيرهم. بعد «أغنى» يأتي الاسم المضاف إليه: «أغنى رؤساءِ مكةَ»، ثم «وأكثرِهم نفوذًا».',
@@ -48,14 +48,14 @@ export const meccaA2LanguageFocusExercisesArPart2: Record<number, Exercise[]> = 
     },
     {
       id: 'mecca-a2-ar-language-3-production', type: 'reflection', title: 'مدينة تتغيّر',
-      instructions: 'اكتب أربع جمل A2 عن مدينة خيالية، واستعمل ثلاثة تراكيب من الفصل.',
-      question: 'هل تستطيع وصف تغيّر ومقارنة ومكان ثم رغبة؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن مدينة خيالية تتغيّر.',
+      question: 'كيف تغيّرت المدينة؟', correctAnswer: null,
       explanation: 'استعمل يزداد، صيغة تفضيل، من + مكان، عندما، أو أراد أن.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'صف تغيّرًا تدريجيًا.', mode: 'Individual' },
-        { question: 'أضف مقارنة.', mode: 'Individual' },
-        { question: 'اربط حدثًا برغبة باستخدام «عندما» و«أراد أن».', mode: 'Pair' },
+        { question: 'الجملة 1 — صف تغيّرًا: «كانت ... تزداد ... كلّ سنة»', mode: 'Individual' },
+        { question: 'الجملة 2 — قارن بين شيئين: «كان ... أكبر من ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر رغبة: «عندما ...، أراد ... أن ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -66,7 +66,7 @@ export const meccaA2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-4-form-function', type: 'drag-drop', title: 'لاحظ: عمل متكرر أم وصف؟',
       instructions: 'ضع كل عبارة من الفصل الرابع في المجموعة المناسبة.',
-      question: 'هل تصف «كان» هنا عملًا يتكرر، أم تصف شخصًا وحاله؟',
+      question: 'هل هذا عمل يتكرّر، أم وصف لشخص؟',
       dragDropGroups: [
         {
           group: 'كان + فعل مضارع: عمل يتكرر',
@@ -139,14 +139,14 @@ export const meccaA2LanguageFocusExercisesArPart3: Record<number, Exercise[]> = 
     },
     {
       id: 'mecca-a2-ar-language-4-production', type: 'reflection', title: 'روتين يومي',
-      instructions: 'اكتب أربع جمل A2 عن روتين صعب لشخص خيالي، من دون إعادة قصة بلال.',
-      question: 'هل تستطيع وصف التكرار والواجب والغرض؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن عمل يومي صعب لشخص خيالي.',
+      question: 'ماذا يفعل هذا الشخص كل يوم؟', correctAnswer: null,
       explanation: 'استعمل غالبًا أو كل يوم، كان + فعل مضارع، كان عليه أن، ولِـ + فعل.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر عادة متكررة.', mode: 'Individual' },
-        { question: 'اذكر واجبًا.', mode: 'Individual' },
-        { question: 'اشرح الغرض من فعل واحد.', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر عادة: «كان ... غالبًا ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر واجبًا: «كان عليه أن ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر الغرض: «... لِـ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -173,7 +173,7 @@ export const meccaA2LanguageFocusExercisesArPart4: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-5-future', type: 'choose-form', title: 'تدرّب: الفعل بعد لِـ وبعد سمع',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'انتبه إلى آخر الفعل.',
+      question: 'كيف ينتهي الفعل بعد «لِـ» وبعد «سمع»؟',
       formChoices: [
         { sentence: 'لَمْ يَكُنْ عِنْدَهُ مَالٌ [choice] ثَمَنَ حُرِّيَّتِهِ.', options: ['لِيَدْفَعُ', 'لِيَدْفَعَ'], answer: 1 },
         { sentence: '… لَمْ يَكُنْ يَمْلِكُ الْقُوَّةَ [choice] نَفْسَهُ مِنَ الْمُعَامَلَةِ السَّيِّئَةِ.', options: ['لِيَحْمِيَ', 'لِيَحْمِي'], answer: 0 },
@@ -189,7 +189,7 @@ export const meccaA2LanguageFocusExercisesArPart4: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-5-purpose', type: 'word-bank', title: 'تدرّب: طلب من ... أن',
       instructions: 'اسحب الكلمة المناسبة إلى كل فراغ. في البنك كلمات زائدة.',
-      question: 'كيف ينقل الفصل تعليم النبي صلى الله عليه وسلم وطلبه؟',
+      question: 'ماذا علّم النبي صلى الله عليه وسلم أهل مكة، وماذا طلب منهم؟',
       fillBlanksText: 'وَعَلَّمَهُمْ أَنَّ النَّاسَ يَجِبُ أَنْ يَكُونُوا [blank] وَمُتَسَاوِينَ. وَطَلَبَ [blank] أَهْلِ مَكَّةَ أَنْ [blank] عِبَادَةَ الْأَصْنَامِ …',
       wordBank: ['عَادِلِينَ', 'عَادِلُونَ', 'مِنْ', 'عَنْ', 'يَتْرُكُوا', 'يَتْرُكُونَ'],
       correctAnswer: ['عَادِلِينَ', 'مِنْ', 'يَتْرُكُوا'],
@@ -201,14 +201,14 @@ export const meccaA2LanguageFocusExercisesArPart4: Record<number, Exercise[]> = 
     },
     {
       id: 'mecca-a2-ar-language-5-production', type: 'reflection', title: 'رسالة وتوقّع',
-      instructions: 'اكتب أربع جمل A2 عن شخص يسمع فكرة جديدة ويتغير توقّعه، من دون إعادة قصة بلال.',
-      question: 'هل تستطيع استعمال اعتقاد وطلب وواجب وغرض؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن شخص يسمع فكرة جديدة.',
+      question: 'كيف تغيّر رأي هذا الشخص؟', correctAnswer: null,
       explanation: 'استعمل ثلاثة تراكيب على الأقل: ظنّ أن، سمع، يجب أن، طلب من ... أن، ولِـ + فعل.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'اذكر توقعًا قديمًا.', mode: 'Individual' },
-        { question: 'أضف معلومة أو رسالة جديدة.', mode: 'Individual' },
-        { question: 'أضف واجبًا أو طلبًا وغرضًا.', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر ما ظنّه من قبل: «ظنّ ... أنّ ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — أضف رسالة جديدة: «ثم سمع ... يقول ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر طلبًا وغرضًا: «طلب منه ... أن ... لِـ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -242,7 +242,7 @@ export const meccaA2LanguageFocusExercisesArPart5: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-6-decision', type: 'sentence-building', title: 'تدرّب: لم يُرِدْ أن',
       instructions: 'رتّب الكلمات لتكوّن جملة الفصل.',
-      question: 'لماذا مشى بلال في طريق خفي؟ رتّب الجملة التي تجيب.',
+      question: 'لماذا مشى بلال في طريق خفي؟',
       sentenceChunks: ['لَمْ', 'يُرِدْ', 'أَنْ', 'يَرَاهُ', 'أَحَدٌ'],
       correctAnswer: null,
       explanation: '«لم يُرِدْ أن + فعل» تعبّر عن عدم الرغبة في الماضي. بعد «لم» يُجزم الفعل: «يريد» تصير «يُرِدْ».',
@@ -254,7 +254,7 @@ export const meccaA2LanguageFocusExercisesArPart5: Record<number, Exercise[]> = 
     {
       id: 'mecca-a2-ar-language-6-starting', type: 'choose-form', title: 'تدرّب: قرّر وبدأ وعرف',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'انتبه إلى آخر الكلمة بعد «أنْ» و«بدأ» و«أنّ».',
+      question: 'كيف تنتهي الكلمة بعد «أنْ» و«بدأ» و«أنّ»؟',
       formChoices: [
         { sentence: 'قَرَّرَ بِلالٌ أَنْ [choice] …', options: ['يَزُورُ', 'يَزُورَ', 'يَزُرْ'], answer: 1 },
         { sentence: 'بَدَأَ [choice] أَسْئِلَةً كَثِيرَةً عَنِ الدِّينِ الْجَدِيدِ.', options: ['يَسْأَلُ', 'يَسْأَلَ'], answer: 0 },
@@ -269,14 +269,14 @@ export const meccaA2LanguageFocusExercisesArPart5: Record<number, Exercise[]> = 
     },
     {
       id: 'mecca-a2-ar-language-6-production', type: 'reflection', title: 'فكّر ثم قرّر',
-      instructions: 'اكتب أربع جمل A2 عن شخص يفكر في أمر ثم يتخذ قرارًا ويبدأ فعلًا جديدًا.',
-      question: 'هل تستطيع استعمال التفكير والقرار والرغبة والوقت؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن قرار وبداية جديدة.',
+      question: 'فيمَ فكّرت، وماذا قرّرت؟', correctAnswer: null,
       explanation: 'استعمل ثلاثة تراكيب على الأقل: فكّر في، قرّر أن، لم يرد أن، عرف أن، عندما، بدأ + فعل.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'ابدأ بتفكير.', mode: 'Individual' },
-        { question: 'أضف قرارًا.', mode: 'Individual' },
-        { question: 'اختم بفعل يبدأ عند وقت محدد.', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر ما فكّرت فيه: «فكّرتُ في ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر قرارك: «ثم قرّرتُ أن ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر ما بدأته: «عندما وصلتُ ...، بدأتُ ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -328,14 +328,14 @@ export const meccaA2LanguageFocusExercisesArPart6: Record<number, Exercise[]> = 
     },
     {
       id: 'mecca-a2-ar-language-7-production', type: 'reflection', title: 'أخبر وتوقّع وقرّر',
-      instructions: 'اكتب أربع جمل A2 عن شخص يسمع معلومة ويعبّر عن رغبة ويتوقع صعوبة ثم يصل إلى نتيجة.',
-      question: 'هل تستطيع استعمال لغة الفصل في موقف قرار جديد؟', correctAnswer: null,
+      instructions: 'اكتب أو قل ثلاث جمل عن خبر وقرار صعب.',
+      question: 'ماذا سمعت، وماذا قرّرت؟', correctAnswer: null,
       explanation: 'استعمل ثلاثة تراكيب على الأقل: أخبر عن/أن، يريد أن، بعد أن، عرف أن ... ستكون، في النهاية.',
       feedback: { correct: 'استخدم ثلاثة تراكيب على الأقل.', incorrect: '' },
       discussionPrompts: [
-        { question: 'انقل معلومة.', mode: 'Individual' },
-        { question: 'اذكر رغبة أو توقعًا.', mode: 'Individual' },
-        { question: 'اختم بنتيجة واضحة.', mode: 'Pair' },
+        { question: 'الجملة 1 — انقل خبرًا: «أخبرني ... أنّ ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر رغبة وتوقّعًا: «أردتُ أن ...، وعرفتُ أنّ ... سيكون ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — اذكر النهاية: «في النهاية، ...»', mode: 'Pair' },
       ],
     },
   ],

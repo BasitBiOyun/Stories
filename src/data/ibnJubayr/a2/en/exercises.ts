@@ -40,8 +40,8 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   // LOOK — notice what the book's language does, across chapters.
   {
     id: 'ibnjubayr-a2-language-review-1-past-verbs', type: 'drag-drop', title: 'Look: Two Kinds of Past',
-    instructions: 'Look at the past verb in each sentence from the book. Put the sentence in the right group.',
-    question: 'How does each verb show the past?',
+    instructions: 'Look at the past verb. Put each sentence in the right group.',
+    question: 'Does the verb add -ed, or does it change?',
     dragDropGroups: [
       { group: 'The verb adds -ed', items: ['He traveled northeast to Baghdad.', 'He praised Saladin’s kindness and generosity.', 'Ibn Jubayr visited a large hospital in Cairo.'] },
       { group: 'The verb changes (no -ed)', items: ['Ibn Jubayr wrote a travel diary about his journey.', 'He also saw the famous pyramids and the Sphinx.', 'Ibn Jubayr felt great respect for Sultan Saladin.'] },
@@ -56,8 +56,8 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   {
     id: 'ibnjubayr-a2-language-review-2-time-words', type: 'matching', title: 'Look: When and How Long?',
     matchingHeadings: { left: 'From the book', right: 'It tells us …' },
-    instructions: 'Read the time words from Chapters 1, 4 and 5. Match each one with what it tells us.',
-    question: 'What does each time expression tell us?',
+    instructions: 'Match each time phrase from the book with its meaning.',
+    question: 'What does each time phrase tell us?',
     matchingPairs: [
       { left: 'in the year 1145', right: 'a year' },
       { left: 'On February 3, 1183', right: 'a day and a month' },
@@ -85,8 +85,8 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   // PRACTISE — use the forms in the book's own sentences.
   {
     id: 'ibnjubayr-a2-language-review-4-linking-ideas', type: 'word-bank', title: 'Practise: Reason, Result, Different Idea',
-    instructions: 'Complete the sentences from Chapters 1 and 11 with words from the bank. Two words are not needed.',
-    question: 'Which word gives a reason, which gives a result, and which gives a different idea?',
+    instructions: 'Fill each gap from the word bank. Two words are not needed.',
+    question: 'Which word gives a reason, a result or a different idea?',
     fillBlanksText: 'Christian, Jewish, and Muslim people traveled a lot [blank] they wanted to trade, learn more, and visit holy places. … This was the main port, [blank] ships sailed to many different places from here. … The trip was very dangerous because of big storms. [blank] their ship hit the ground near the coast of Sicily. Ibn Jubayr almost died, [blank] he survived.',
     wordBank: ['because', 'so', 'That’s why', 'but', 'when', 'because of'],
     correctAnswer: ['because', 'so', 'That’s why', 'but'],
@@ -95,8 +95,8 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'ibnjubayr-a2-language-review-5-comparatives', type: 'choose-form', title: 'Practise: Bigger, Harder, Most Important',
-    instructions: 'Choose the correct form to complete each sentence from the book.',
-    question: 'Which form compares two things, and which form compares one thing with all the others?',
+    instructions: 'Choose the correct word for each sentence from the book.',
+    question: 'Do we compare two things, or one with all the others?',
     formChoices: [
       { sentence: 'In the tenth century, Granada was [choice] than most cities in Western Europe and the east.', options: ['big', 'bigger', 'biggest'], answer: 1 },
       { sentence: 'In the Middle Ages, the journey to Mecca for Hajj was very long and difficult. It was much [choice] than today.', options: ['harder', 'hard', 'hardest'], answer: 0 },
@@ -108,8 +108,8 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'ibnjubayr-a2-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Practise: Fix One Mistake',
-    instructions: 'Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the past forms?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct word.',
+    question: 'Can you fix the past forms?',
     errorItems: [
       { sentence: 'In 1184, he taked a ship to travel back home.', error: 'taked', options: ['took', 'taking', 'takes'], answer: 0 },
       { sentence: 'He also seed the famous pyramids and the Sphinx.', error: 'seed', options: ['see', 'saw', 'seeing'], answer: 1 },
@@ -131,8 +131,8 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'ibnjubayr-a2-language-review-8-new-context', type: 'word-bank', title: 'Use: A School Trip',
-    instructions: 'This text is not from the book. Complete it with words you met in the book. Two words are not needed.',
-    question: 'Can you use the book’s language to write about a trip?',
+    instructions: 'Complete this new text from the word bank. Two words are extra.',
+    question: 'Can you use the book’s words to write about a trip?',
     fillBlanksText: 'Last spring, our class [blank] to Konya by bus. The bus was [blank] than the train. We stayed there [blank] two days. On the first day, we [blank] a big museum, and our teacher told us about its history.',
     wordBank: ['traveled', 'cheaper', 'for', 'visited', 'cheapest', 'on'],
     correctAnswer: ['traveled', 'cheaper', 'for', 'visited'],
@@ -141,16 +141,16 @@ export const ibnJubayrA2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'ibnjubayr-a2-language-review-9-transfer', type: 'reflection', title: 'Use: My Travel Diary',
-    instructions: 'Write four or five short sentences for a travel diary about a real trip: to a city, a village, a museum or a family visit. Say your sentences to a partner first.',
-    question: 'Can you use the language of the whole book to write about your own journey?',
+    instructions: 'Write 4–5 diary sentences about a trip. Tell a partner first.',
+    question: 'Can you write about your own trip?',
     correctAnswer: null,
     explanation: 'Example: “On July 10, I traveled to Antalya by bus with my family. We stayed there for five days. The sea was warmer than the sea in my town. I saw an old castle, and I learned a lot about its history. That’s why I want to go there again.”',
     feedback: { correct: 'Check your sentences: a date, by + transport, for + how long, a comparison with than, past verbs, a result.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — When and how: “On …, I traveled to … by …”', mode: 'Individual' },
-      { question: 'Sentence 2 — How long: “We stayed there for …”', mode: 'Individual' },
+      { question: 'Sentence 1 — Say when and how: “On …, I traveled to … by …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say how long: “We stayed there for …”', mode: 'Individual' },
       { question: 'Sentence 3 — Compare: “… was bigger / older / more beautiful than …”', mode: 'Pair' },
-      { question: 'Sentence 4 — What you saw and learned, and a result: “I saw … . That’s why …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Say what you saw, and a result: “I saw … . That’s why …”', mode: 'Pair' },
     ],
   },
 ];
