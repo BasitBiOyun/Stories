@@ -56,7 +56,7 @@ Abraham asked, “What is this statue, father? It has big ears, bigger than ours
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F02_Chapter_3_Searching_for_the_True_Creator.mp3?alt=media&token=28cd4203-ad7f-4883-9a5b-b145567721e5',
     `Years passed, and Abraham grew into a young man. Although he always wondered about Allah, he also knew that Allah could not be a statue. It made him sad to see the people of the kingdom; they were still showing love and respect to idols. On the other hand, Abraham was in search of one true Creator.
 
-One night, Abraham left his home to take a walk in the countryside. On a nearby mountain, he found a cave, sat there, and started thinking about Allah. Then he stood up and looked up at the beautiful sky. He saw a bright star and wondered, “Could this be my Lord?” But when it disappeared, he said, “I will not show respect to it or worship it, because it sets and disappears.” He then saw the shining moon and said, “Could this be my Lord?” But when the moon faded, he understood that it could not be Allah.`,
+One night, Abraham left his home to take a walk in the countryside. On a nearby mountain, he found a cave, sat there, and started thinking about Allah. Then he stood up and looked up at the beautiful sky. He saw a bright star and wondered, “Could this be my Lord?” But when it disappeared, he said, “I will not show respect to it or worship it, because it sets and disappears.” He then saw the shining moon and said, “Could this be my Lord?” But when the moon faded, he understood that it could not be his Lord.`,
     [
       { word: 'Creator', definition: 'The One who brought everything into existence and controls it.' },
       { word: 'countryside', definition: 'Land outside towns and cities.' },
@@ -65,7 +65,7 @@ One night, Abraham left his home to take a walk in the countryside. On a nearby 
     ],
     [
       { id: 'abraham-b1-en-3-1', x: 27, y: 54, title: 'The Cave', description: 'Abraham (pbuh) sat in a cave on a nearby mountain and started thinking about Allah.' },
-      { id: 'abraham-b1-en-3-2', x: 73, y: 35, title: 'The Star and the Moon', description: 'The star disappeared and the moon faded, so Abraham (pbuh) understood that neither could be Allah.' },
+      { id: 'abraham-b1-en-3-2', x: 73, y: 35, title: 'The Star and the Moon', description: 'The star disappeared and the moon faded, so Abraham (pbuh) understood that neither could be his Lord.' },
     ],
   ),
   story(4, 'Abraham Receives Guidance',
@@ -535,7 +535,7 @@ const masterGlossary: NonNullable<PageData['vocabulary']> = [
     ],
     "chapter": 3,
     "chapterTitle": "Searching for the True Creator",
-    "storyExample": "But when the moon faded, he understood that it could not be Allah.",
+    "storyExample": "But when the moon faded, he understood that it could not be his Lord.",
     "category": "Change & Description"
   },
   {

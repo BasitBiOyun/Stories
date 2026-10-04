@@ -45,7 +45,7 @@ export const abrahamA2PagesEn: PageData[] = [
     title: 'Abraham Looks at the Sky',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch3.png?alt=media&token=501af204-5d22-4f08-911d-33887a5bdb5a',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Faudio%2Fabraham_a2_ch3.mp3?alt=media&token=b8dd1bf3-f76c-42ec-bfae-f0b9cc091818',
-    content: "He was only seven years old at that time. Years passed and Abraham grew up. He always thought about Allah. He wanted to know who created the world. He knew that Allah was not an object. He was sad to see the people in the kingdom; they were still worshipping stone gods. Abraham was in search of one true Creator.\n\nOne night, Abraham left his home and took a walk in the countryside. On a nearby mountain, he found a cave and sat there. He started thinking about Allah. Then, he stood up and looked at the beautiful sky. He saw a bright star and thought, “Could this be my Lord?” But when it disappeared, he said, “I will not show respect to it, because it sets and disappears.” He then saw the shining moon and said, “Could this be my Lord?” But when the moon went away, he said, “Allah never goes away!” He understood that it could not be Allah.",
+    content: "He was only seven years old at that time. Years passed and Abraham grew up. He always thought about Allah. He wanted to know who created the world. He knew that Allah was not an object. He was sad to see the people in the kingdom; they were still worshipping stone gods. Abraham was in search of one true Creator.\n\nOne night, Abraham left his home and took a walk in the countryside. On a nearby mountain, he found a cave and sat there. He started thinking about Allah. Then, he stood up and looked at the beautiful sky. He saw a bright star and thought, “Could this be my Lord?” But when it disappeared, he said, “I will not show respect to it, because it sets and disappears.” He then saw the shining moon and said, “Could this be my Lord?” But when the moon went away, he said, “Allah never goes away!” He understood that it could not be his Lord.",
     vocabulary: [
       { word: 'Creator', definition: 'The One who made everything.' },
       { word: 'search', definition: 'The act of looking for something.' },
@@ -54,7 +54,7 @@ export const abrahamA2PagesEn: PageData[] = [
     ],
     hotspots: [
       { id: 'abraham-a2-en-h3a', x: 24, y: 32, title: 'The Star', description: 'Abraham (pbuh) saw a bright star and asked, “Could this be my Lord?”' },
-      { id: 'abraham-a2-en-h3b', x: 73, y: 57, title: 'The Moon', description: 'The moon also went away, so Abraham (pbuh) knew it could not be Allah.' }
+      { id: 'abraham-a2-en-h3b', x: 73, y: 57, title: 'The Moon', description: 'The moon also went away, so Abraham (pbuh) knew it could not be his Lord.' }
     ]
   },
   {
@@ -81,7 +81,7 @@ export const abrahamA2PagesEn: PageData[] = [
     title: 'Abraham Calls His People',
     image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch5.png?alt=media&token=8d8b76f6-0647-4513-83fe-841f78ab64ad',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Faudio%2Fabraham_a2_ch5.mp3?alt=media&token=617fb9db-a2d1-4db1-87dc-34944690090c',
-    content: "His father said, “If you do not stop speaking like this, I will stone you. Leave here now.” Prophet Abraham (pbuh) was very sad about his father. Then, he went to the people of the kingdom. He was trying to show them the right way: “O people! I believe in Allah. I do not worship stone idols, because Allah is the one and only God!” People were very angry when they heard him.\n\nAbraham (pbuh) said to them, “Why do you bow down to these objects? They have no power to help you.” People said, “We saw our fathers worship them; because of this, we do the same.” Abraham (pbuh) told them, “My Allah gives me food and drink when I need them. He heals me when I am sick. Your gods have no power to do these things.” But people didn’t listen to him.",
+    content: "His father said, “If you do not stop speaking like this, I will stone you. Leave here now.” Prophet Abraham (pbuh) was very sad about his father. Then, he went to the people of the kingdom. He was trying to show them the right way: “O people! I believe in Allah. I do not worship stone idols, because Allah is the one and only God!” People were very angry when they heard him.\n\nAbraham (pbuh) said to them, “Why do you bow down to these objects? They have no power to help you.” People said, “We saw our fathers worship them; because of this, we do the same.” Abraham (pbuh) told them, “My Lord gives me food and drink when I need them. He heals me when I am sick. Your gods have no power to do these things.” But people didn’t listen to him.",
     vocabulary: [
       { word: 'heals', definition: 'Makes a sick person healthy again.' },
       { word: 'believe', definition: 'To accept that something is true.' },

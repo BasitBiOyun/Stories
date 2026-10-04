@@ -52,7 +52,7 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
           ],
         },
         {
-          source: 'But when the moon faded, he understood that it could not be Allah.',
+          source: 'But when the moon faded, he understood that it could not be his Lord.',
           frame: 'But when the moon faded, he said, “[blank] Allah.”',
           answers: [
             'It cannot be', "It can't be", 'It can not be', 'This cannot be', "This can't be",
@@ -61,7 +61,7 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'A reported yes/no question uses if or whether and statement word order: “Could this be my Lord?” → “He wondered if it could be his Lord.” A reported conclusion often moves back in time: Abraham’s thought “It cannot be Allah” becomes “he understood that it could not be Allah”. Together these forms build a reasoning chain: test a possibility, then report the conclusion.',
+      explanation: 'A reported yes/no question uses if or whether and statement word order: “Could this be my Lord?” → “He wondered if it could be his Lord.” A reported conclusion often moves back in time: Abraham’s thought “It cannot be my Lord” becomes “he understood that it could not be his Lord”. Together these forms build a reasoning chain: test a possibility, then report the conclusion.',
       feedback: {
         correct: 'Well done. You moved between direct words and reported thinking.',
         incorrect: 'Item 1: start with if or whether and put the subject before the verb. Item 2: use Abraham’s own words, for example “It can’t be …”.',

@@ -109,7 +109,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       title: 'Every Time I Need',
       instructions: 'Tap the pieces to build Abraham’s sentence from Chapter 5.',
       question: 'How does Abraham say what Allah always does for him?',
-      sentenceChunks: ['My Allah gives me', 'food and drink', 'when', 'I need them.'],
+      sentenceChunks: ['My Lord gives me', 'food and drink', 'when', 'I need them.'],
       correctAnswer: null,
       explanation: '“When + present verb” shows something that happens every time: every time Abraham needs food and drink, Allah gives them to him. The chapter uses the same pattern in “He heals me when I am sick.”',
       feedback: {

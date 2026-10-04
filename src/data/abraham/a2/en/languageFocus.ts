@@ -173,7 +173,7 @@ export const abrahamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       instructions: 'Read the question from Chapter 3. Choose what Abraham is doing.',
       question: 'Abraham saw a bright star and thought, “Could this be my Lord?” What is Abraham doing?',
       options: [
-        'He is sure that the star is Allah.',
+        'He is sure that the star is his Lord.',
         'He is telling the star what to do.',
         'He is asking himself if it is possible.',
       ],
@@ -215,10 +215,10 @@ export const abrahamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       title: 'Then, Because, Could Not',
       instructions: 'Fill each gap from the bank. Two words are not needed.',
       question: 'Which word fits each gap?',
-      fillBlanksText: '[blank], he stood up and looked at the beautiful sky. … But when it disappeared, he said, “I will not show respect to it, [blank] it sets and disappears.” … He understood that it [blank] be Allah.',
+      fillBlanksText: '[blank], he stood up and looked at the beautiful sky. … But when it disappeared, he said, “I will not show respect to it, [blank] it sets and disappears.” … He understood that it [blank] be his Lord.',
       wordBank: ['Then', 'because', 'could not', 'can', 'did not'],
       correctAnswer: ['Then', 'because', 'could not'],
-      explanation: '“Then” moves the story to the next action. “Because” gives the reason for Abraham’s words. “Could not be” shows his conclusion: it was not possible for the star or the moon to be Allah.',
+      explanation: '“Then” moves the story to the next action. “Because” gives the reason for Abraham’s words. “Could not be” shows his conclusion: it was not possible for the star or the moon to be his Lord.',
       feedback: {
         correct: 'Correct. You used a sequence word, a reason word and a conclusion.',
         incorrect: 'Read the second paragraph of Chapter 3 again. Which word gives the next action? Which word gives a reason? What did Abraham understand at the end?',
