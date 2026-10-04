@@ -42,7 +42,13 @@ def narration_for_audio(text: str) -> str:
     cleaned = strip_parenthetical_content(text)
     cleaned = re.sub(r"[ \t]+([،؛.!?؟:])", r"\1", cleaned)
     cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
-    return cleaned.strip()
+    cleaned = cleaned.strip()
+    # A title without closing punctuation ran straight into the first sentence;
+    # a full stop makes the voice end the title before the story starts.
+    title, sep, story = cleaned.partition("\n")
+    if sep and title.strip() and not re.search(r"[.!?؟:…]$", title.strip()):
+        cleaned = f"{title.rstrip()}.{sep}{story}"
+    return cleaned
 
 
 def validate_request(item: dict[str, Any]) -> tuple[str, str, str]:
