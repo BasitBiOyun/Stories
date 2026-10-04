@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { X } from '../ui/icons';
+import { ChevronLeft } from '../ui/icons';
 import { MODE_ICONS, SECTION_ICONS, type SectionIconEntry } from '../../lib/sectionIcons';
 
 interface HowToUseProps {
@@ -68,8 +68,7 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-3 sm:p-6"
-          onClick={onClose}
+          className="fixed inset-0 z-[300] overflow-y-auto overscroll-contain bg-[#FBF8F1]"
           data-how-to-use
         >
           <motion.div
@@ -81,18 +80,19 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
             aria-label={copy.heading}
             dir={isRTL ? 'rtl' : 'ltr'}
             onClick={event => event.stopPropagation()}
-            className={cn('relative w-full max-w-3xl rounded-[26px] sm:my-auto bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
+            className={cn('relative mx-auto min-h-full w-full max-w-4xl px-5 pb-16 pt-5 text-wood sm:px-8 sm:pt-8', isRTL && 'font-arabic')}
           >
+            {/* A page of its own: the way back is a clear button at the top, not a close cross. */}
             <button
               ref={closeRef}
               type="button"
               onClick={onClose}
-              aria-label={copy.close}
-              className="absolute end-3 top-3 flex h-10 w-10 items-center justify-center rounded-full text-wood/60 hover:bg-black/5 hover:text-wood focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="mb-6 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-brand-200 bg-white ps-3 pe-4 font-display text-[13px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 sm:text-sm"
             >
-              <X size={20} />
+              <ChevronLeft size={16} className="rtl:rotate-180" aria-hidden="true" />
+              {isRTL ? 'رُجُوع' : 'Back'}
             </button>
-            <h2 className={cn('pe-10 font-display font-semibold tracking-tight text-brand-900', lang === 'ar' ? 'text-2xl' : 'text-xl sm:text-2xl')}>{copy.heading}</h2>
+            <h2 className={cn('font-display font-semibold tracking-tight text-brand-900', lang === 'ar' ? 'text-2xl' : 'text-xl sm:text-2xl')}>{copy.heading}</h2>
             <p className={cn('mt-1 font-serif text-wood/65', lang === 'ar' ? 'text-base' : 'text-sm')}>{copy.intro}</p>
 
             <div className="mt-5 space-y-5">

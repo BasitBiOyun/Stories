@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { X } from '../ui/icons';
+import { ChevronLeft } from '../ui/icons';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { getStoryMeta } from '../../core/content/storyCatalog';
 import { MY_WORDS_LEARNED, getMyWordsBook, markMyWord, removeMyWord, reviewQueue, useMyWords, type MyWord } from '../../lib/myWords';
@@ -129,8 +129,7 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[300] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-3 sm:p-6"
-          onClick={onClose}
+          className="fixed inset-0 z-[300] overflow-y-auto overscroll-contain bg-[#FBF8F1]"
           data-my-words
         >
           <motion.div
@@ -142,19 +141,20 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
             aria-label={SECTION_ICONS.myWords[lang]}
             dir={isRTL ? 'rtl' : 'ltr'}
             onClick={event => event.stopPropagation()}
-            className={cn('relative w-full max-w-2xl rounded-[26px] sm:my-auto bg-[#FBF8F1] p-5 text-wood shadow-2xl sm:p-7', isRTL && 'font-arabic')}
+            className={cn('relative mx-auto min-h-full w-full max-w-4xl px-5 pb-16 pt-5 text-wood sm:px-8 sm:pt-8', isRTL && 'font-arabic')}
           >
+            {/* A page of its own: the way back is a clear button at the top, not a close cross. */}
             <button
               ref={closeRef}
               type="button"
               onClick={onClose}
-              aria-label={copy.close}
-              className="absolute end-3 top-3 flex h-10 w-10 items-center justify-center rounded-full text-wood/60 hover:bg-black/5 hover:text-wood focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="mb-6 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-brand-200 bg-white ps-3 pe-4 font-display text-[13px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 sm:text-sm"
             >
-              <X size={20} />
+              <ChevronLeft size={16} className="rtl:rotate-180" aria-hidden="true" />
+              {isRTL ? 'رُجُوع' : 'Back'}
             </button>
 
-            <div className="flex items-center gap-3 pe-10">
+            <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-800">
                 <Icon size={22} />
               </span>

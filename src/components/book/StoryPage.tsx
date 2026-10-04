@@ -1825,7 +1825,7 @@ export const StoryPage = ({
 
             {/* Right side: Story text scrolling content */}
             <div className="col-span-7">
-              <div className="w-full max-w-[72ch] desk:max-w-[80ch] wide:max-w-none">
+              <div className="w-full max-w-[72ch] desk:max-w-none">
               {renderBeforeYouRead()}
               <div className="relative">
               <div 
