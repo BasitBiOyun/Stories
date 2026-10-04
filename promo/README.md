@@ -1,85 +1,128 @@
-# Lisandan Kültüre — Tanıtım Filmi (motion graphic) · v9
+# Lisandan Kültüre — Tanıtım Filmi (motion graphic)
 
-**1:56.7** süreli, **3840×2160 (4K UHD), 60 fps**, müzikli tanıtım filmi (yalnızca iki kısa gerçek anlatım kesiti).
-Final dosya: `out/lisandan-kulture-v9-4k.mp4` (H.264 High + AAC 48 kHz); hızlı paylaşım için
-`out/lisandan-kulture-v9-1080p.mp4`.
+2:43 süreli (v10), **3840×2160 (4K UHD), 60 fps**, müzikli tanıtım filmi (yalnızca iki kısa gerçek anlatım kesiti).
+Final dosya: `out/lisandan-kulture-v10-4k.mp4` (H.264 High + AAC 48 kHz). v10 = v8 filmi aynen + araya eklenen 7 yeni
+özellik sahnesi (aşağıda "v10").
 
-Film tamamen kodla üretilir: `index.html` + `film.css` + `film.js` (+ `icons.js`: uygulamanın kendi Phosphor
-ikonları) deterministik bir zaman çizelgesidir (`window.__seek(t)` → t anının tam karesi). 1920×1080 CSS
-kompozisyonu **device scale factor 2** ile rasterize edilir; metin, SVG ve UI gerçek 4K çözünürlükte çizilir.
+Film tamamen kodla üretilir: `index.html` + `film.css` + `film.js` deterministik bir zaman çizelgesidir
+(`window.__seek(t)` → t anının tam karesi). 1920×1080 CSS kompozisyonu **device scale factor 2** ile
+rasterize edilir; metin, SVG ve UI gerçek 4K çözünürlükte çizilir (upscale yok). Görseller orijinal
+çözünürlüklerinden (Adam B1 bölümleri 3200×4000) dışa aktarılmıştır.
 
-Her sahne kendi saatiyle koreografe edilir; `timeline.json → warps[id] = [[sahne saati, film zamanı], …]` sahne
-saatini film zamanına parça parça doğrusal eşler. Böylece eski sahneler koreografisi bozulmadan kısaltıldı/uzatıldı.
+Sahneler kendi saatleriyle koreografe edilir; `scene(..., warp)` ile film zamanına eşlenir. Böylece v2'deki
+sahneler koreografisi bozulmadan yavaşlatıldı, araya yeni sahneler eklendi.
 
 ## Zaman çizelgesi (90 BPM; kesmeler vuruşlarda)
 
-| Sahne | Süre (sn) | İçerik |
-|-------|-----------|--------|
-| s0 Açılış | 0.0–13.3 | 5 durak: Peygamberlerin Hikâyeleri · Mekke · Kudüs · Buhara · İstanbul → "Dil öğrenirken tarihini ve medeniyetini de keşfet." |
-| s1 Hook | 13.3–18.0 | Işık noktası, logo kemeri, kitap görselleri arasında uçuş: **Oku. Dinle. Anla.** |
-| s2 Hikâye sayfası | 18.0–26.7 | Adam B1 · 1. bölüm: **Before you read** (tahmin → Check my guess → doğru), sesli anlatım (EN), keşif noktası, Word Notes |
-| s3 Word Notes | 26.7–32.0 | "Messenger" → Word Note (Arapça «نبي») → **Save to My words → In My words** |
-| s4 EN ⇄ AR | 32.0–41.3 | Dil anahtarı; Arapça sayfa (`ar/pages.ts` ile birebir), Arapça Before you read, **kadın sesli Arapça anlatım** (ilk cümle vurgulanır), iki Arapça keşif noktası |
-| s5 Bölüm döngüsü | 41.3–54.0 | **Hikâye → Quick Challenge → Language Focus → I can**; I can: Yes / Yes / Almost; 12 bölümün rayı |
-| s5b Kitap sonu | 54.0–66.7 | Knowledge Check (8 soru) → Master Glossary (48 kelime) → Vocabulary Challenge (10 kelime) → Language Review (Görev 1/10) → Final Challenge |
-| s6 Seviyeler | 66.7–73.3 | Mecca Before Islam: A2 — Temel, B1 — Orta, B2 — Üst |
-| n1 Üç yol | 73.3–78.0 | Gerçek RolePicker: Student / Teacher / On my own |
-| n5 Kendi başına | 78.0–84.0 | Seviye testi sonucu (B1, 8/10) → My words tekrar kartı (Show the meaning → I knew it) |
-| n6 Öğretmen | 84.0–92.0 | Lesson card (Mecca A2 · 10. bölüm, 40 dk) → Grup görevi "History Radio Show" (4. adım vurgulu) → Class mode |
-| n7 Sonuç kodu | 92.0–97.3 | Result card (Mecca A2) → **Check a result code**: 2ENLRSSA → VALID CODE |
-| s7 Kılavuzlar | 97.3–103.3 | Öğretmen Kılavuzu (16 bölüm) · Evde Bağımsız Çalışma Kılavuzu (12 bölüm, 60 etkinlik) |
-| n4 Yerler ve haritalar | 103.3–110.7 | Ibn Jubayr "Places & People" (33 yer · 6 isim) → Musa yolculuk haritası (Midian'a dokunulur) → 6. hikâye ailesi: **Ibn Jubayr · A2 · English · 13 bölüm** |
-| s8 Final | 110.7–116.7 | Yer görsellerinden duvar, kemer + açık kitap + ışık noktası işareti, **Lisandan Kültüre**, English · العربية · A2 · B1 · B2 · 6 hikâye ailesi |
+| Sahne | Süre | İçerik |
+|-------|------|--------|
+| Hook | 0.0–4.7 | Yıldız, logo kemeri, 5 kitabın illüstrasyonları arasında uçuş: **Oku. Dinle. Anla.** |
+| Hikâye sayfası | 4.7–10.7 | Adam B1 · 1. bölüm: sayfa 3B'de kurulur; sesli anlatım, keşif noktası (Soil), Word Notes etiketleri. |
+| Word Notes | 10.7–15.3 | "Messenger" sayfadan kopar → Word Note kartı (anlam + Arapça). Bölüm 1'in 4 kelimesi. |
+| EN ⇄ AR | 15.3–20.7 | Gerçek dil anahtarı; RTL ışık dikişi sayfayı ayna düzenli Arapça sürüme çevirir; «قصص تُقرأ، وتُسمع، وتُعاش.» |
+| Bölüm döngüsü | 20.7–29.3 | Akış göstergesi **Hikâye → Quick Challenge → Language Focus**. Quick Challenge çözülür; "After reading" Language Focus'un 4 gerçek etkinliği; 1. etkinlik (Source Voice and Story Time) eşleştirilir. Ardından 12 bölümün rayı: her bölümde aynı döngü. |
+| Kitap sonu | 29.3–42.7 | Kemer kapısından geçiş; üstte gerçek sırayla ilerleyen çubuk: **Knowledge Check → Master Glossary → Vocabulary Challenge → Language Review → Final Challenge**. Master Glossary'de kitabın 48 kelimesinin tamamı, öz-değerlendirme (Confident / Practice / New) ve güven haritası. |
+| Seviyeler | 42.7–48.7 | Mecca Before Islam: **A2 — Temel, B1 — Orta, B2 — Üst**; üç ayrı illüstrasyon dünyası ve her seviyeden aynı konudaki gerçek cümle. |
+| Kılavuzlar | 48.7–54.7 | Işık dikişinden açılan kitap: **Öğretmen Kılavuzu** (16 bölüm) · **Evde Bağımsız Çalışma Kılavuzu** (12 bölüm, 60 etkinlik). |
+| Final | 54.7–60.0 | Kütüphane duvarı, logo, **Lisandan Kültüre**, "Etkileşimli Dil ve Değerler Kütüphanesi", English · العربية · A2 · B1 · B2. |
 
-## Kurallar (v9'da denetlendi)
+### Doğrulanan öğrenme akışı (kaynak kod)
 
-- Yıldız / parıltı / hexagram / sekiz köşeli yıldız yok: eski dört köşeli parıltı (s1, s8) yuvarlak ışık noktasıyla
-  değiştirildi; "✦ Lesson Prep" → pano ikonu; yıldızlı B2 görseli (mecca_b2_02) → mecca_b2_12. Uygulamanın logo
-  PNG'si (`assets/brand/home_icon.png`) dört köşeli bir parıltı ve sekiz dilimli bir çerçeve içerdiği için **filmde
-  kullanılmaz**; finalde kodla çizilmiş bir işaret (kemer + açık kitap + ışık noktası) var.
-- Peygamber, ailesi, sahabe ve hikâyedeki adı geçen kişiler gösterilmez: açılıştaki ve hook'taki insan içeren
-  görseller (Yunus Emre, Kaşgarlı, Yesevi, genç İbrahim, denizi geçen kalabalık) çıkarıldı; final duvarı yalnızca
-  `src/features/historical-entities/assets/pictures` yer görsellerinden (73 görsel, `assets/img/places/`) kurulur;
-  Ibn Jubayr ve Yunus Emre kapakları kullanılmaz.
-- Ad: "Lisandan Kültüre" (EN "From Language to Culture").
-- 6 hikâye ailesi: 5'i A2/B1/B2 × EN/AR, Ibn Jubayr yalnızca A2 · English (16 kitap).
-- Ekrandaki her sayı `src/data` ve bileşenlerden doğrulandı (sayfa 1/17, 4 Word Note, 8 KC sorusu, 48 kelime,
-  10 VC kelimesi, 10 LR görevi, 16 öğretmen bölümü, 12 bölüm / 60 etkinlik, 33 yer · 6 isim, 13 bölüm, 40 dk,
-  15 dk · 3–4 kişi, 2ENLRSSA kodunun puanları `lib/resultCode.ts` ile çözülerek).
+- Bölüm içi: `src/components/book/StoryPage.tsx` hikâye metninden sonra önce **Quick Challenge** panelini,
+  ardından "After reading" **Language Focus** panelini gösterir; Self-Study Guide ders planları da aynı sırayı önerir.
+- Kitap sonu: `src/core/content/uiBookFinalization.ts` → `reorderPreparedLearningFlow` sırası
+  `knowledge → glossaries → vocabulary → review → final`. Uygulamadaki içindekiler: 13 Knowledge Check,
+  14 Master Glossary, 15 Vocabulary Challenge, 16 Language Review ("After vocabulary"), 17 Final Challenge.
 
 ## Ses
 
-`scripts/build_audio.py` özgün, prosedürel bir müzik besteler (sample yok): açılışta ney/ud/def, sonra pad,
-yaylılar, piyano motifi, kalimba arpeji, bas, davul. Bölümler v9 vuruş planını izler
-(`OPEN, HOOK, A0, B0, C0, D0, G0, E0, F0 = 0, 20, 27, 62, 81, 100, 110, 146, 166`); G yeni özellikler bölümüdür.
-Ses efektleri sahne saatine bağlıdır (`film_time()` warps üzerinden). Anlatım:
+Konuşma / TTS yok. `scripts/build_audio.py` özgün, prosedürel bir müzik besteler (hazır sample yok → lisans
+sorunu yok): pad, yaylı ensemble, piyano motifi, kalimba arpeji, bas, sinematik davul; bölümler filmi izler
+(sakin hikâye → bölüm döngüsü → kitap sonunda doruk → seviyelerde nefes → kılavuzlarda yükseliş → D majörde
+final). Üzerine ince ses tasarımı: geçiş whoosh'ları, UI tıkları, doğru cevap çanı, riser ve final darbesi.
+Master: -14 LUFS, -1.2 dBTP.
 
-- EN (s2, saat 4.80): `assets/audio/narration_en_ch1.wav` — Adam B1 1. bölüm İngilizce kaydı, 2.54–6.62 sn.
-- AR (s4, saat 14.42): `assets/audio/narration_ar_ch1.wav` — Adam B1 1. bölüm Arapça kaydı (uygulamanın şu anki
-  **kadın sesi**, `src/data/adam/b1/ar/pages.ts` → `audioUrl`), **2.26–7.30 sn** (bölüm başlığı atıldı):
-  «آدَمُ عَلَيْهِ السَّلَامُ هُوَ أَوَّلُ نَبِيٍّ وَأَبُو الْبَشَرِ جَمِيعًا.»
+## Kullanılan gerçek proje assetleri
 
-Anlatım sırasında müzik alçalır. Master: -14 LUFS, -1.2 dBTP.
-
-## Assetler
-
-- `assets/img/app/`: çalışan uygulamadan 2× ekran görüntüleri (RolePicker, Lesson card, grup görevi, Class mode,
-  Ibn Jubayr Places & People, Musa yolculuk haritası).
-- `assets/img/places/`: yer görselleri (kişi içermeyenler); `assets/img/covers/`: Musa ve Mekke kapakları.
-- Diğer diyaloglar (seviye testi sonucu, My words, Result card, Check a result code, Before you read, I can) bileşenlerin
-  kendi metinleriyle HTML olarak yeniden kurulmuştur.
+- Logo (`home_icon.png`) → `assets/brand/`
+- Hikâye illüstrasyonları (Adam, Abraham, Moses, Mecca, Yunus Emre; A2/B1/B2) → `assets/img/`,
+  Adam B1'in 12 bölüm görseli → `assets/img/adam_b1/`, duvar → `assets/img/wall/`
+- Adam B1: 1. bölüm İngilizce/Arapça metin, Word Notes, hotspot'lar, Quick Challenge, Language Focus
+  etkinlikleri, 12 bölüm başlığı, Knowledge Check soruları, Master Glossary'nin 48 kelimesi (tanım, tür,
+  bölüm, kategori), Vocabulary Challenge ve Language Review ekran içerikleri, Final Challenge ekranı
+- Mecca A2/B1/B2 "Age of Ignorance" cümleleri
+- Teacher Guide ve Self-Study Guide başlıkları/bölüm listeleri
+- Fontlar: Poppins (OFL, uygulamanın fontu), Arakom (`public/`); renkler `src/index.css` tokenlarından
 
 ## Üretim komutları
 
 ```bash
 pip install playwright imageio-ffmpeg numpy scipy soundfile
-python3 promo/scripts/build_audio.py                                   # → promo/out/mix.wav (+ stems)
-python3 promo/scripts/render.py --scale 1 --workers 6 --out promo/out/lisandan-kulture-v9-1080p.mp4   # 1080p60
-python3 promo/scripts/render.py --workers 6 --crf 14 --out promo/out/lisandan-kulture-v9-4k.mp4      # 4K60 master
-# 4 CPU / 16 GB makinede 4K tek seferde bellek yetmeyebilir: out/c4k/run.sh filmi 12 parçada (3'er paralel,
-# --no-audio --crf 14) üretir; parçalar concat ile kopyalanıp out/mix.wav AAC 256k olarak eklenir.
-python3 promo/scripts/render.py --scale 1 --stills 20.7 50.3 75 82.5 95.5 109.5    # tek kareler → promo/out/stills/
+# Chromium: PLAYWRIGHT_BROWSERS_PATH altında ya da --chrome /yol/chrome
+
+python3 promo/scripts/build_audio.py                        # → promo/out/mix.wav (+ stems)
+python3 promo/scripts/render.py --workers 4 --crf 14 --out promo/out/master-4k.mp4   # 4K60 master
+python3 promo/scripts/render.py --stills 12 33.8 57         # 4K tek kareler → promo/out/stills/
+python3 promo/scripts/render.py --scale 1 --workers 4 --out promo/out/preview-1080.mp4  # hızlı 1080p önizleme
 ```
 
 Önizleme: `promo/` klasörünü bir HTTP sunucusuyla açıp `index.html` (gerçek zamanlı döngü) veya
-`index.html?t=50.3` (tek kare) adresine gidin.
+`index.html?t=33.8` (tek kare) adresine gidin.
+
+
+## v8 — Arapça keşif noktaları ve gerçek anlatım
+
+- **EN ⇄ AR sahnesi** (≈37.2–46.7 sn): dil Arapçaya geçtikten sonra kamera bölüm illüstrasyonuna yaklaşır; iki keşif
+  noktasına dokunulur ve Arapça kartlar açılır — «التراب» ve «المسؤولية في الأرض» (metinler
+  `src/data/adam/b1/ar/pages.ts` 1. bölüm hotspot'larından, değiştirilmeden). Film bu vuruş için bir ölçü (4 vuruş,
+  2.667 sn) uzadı: toplam **1:41**.
+- **Sesli anlatım**: uygulamanın kendi 1. bölüm kayıtlarından iki kısa kesit — hikâye sayfasında oynat tuşuna
+  basılınca İngilizce "Adam (pbuh) is the first Messenger and the father of all humans." (≈24.3 sn), Arapçaya
+  geçince «آدم (عليه السلام) هو أول رسول وأبو البشر جميعا» (≈39.8 sn; Arapça oynatıcı da ilerler). Anlatım
+  sırasında müzik alçalır. Kesitler: `assets/audio/narration_{en,ar}_ch1.wav`.
+- **Müzik**: ilk (prosedürel) müzik. Yeni ölçü için Gm9 ölçüsü (vuruş 59–63) bir kez tekrarlanır; sonraki bütün
+  bölümler kesmelere aynen oturur.
+
+Teslim dosyası (YouTube 4K için yüksek bitrate H.264, ~80 Mbps): yalnızca değişen aralık yeniden çizilir, geri
+kalan kareler önceki master'dan yeniden sıkıştırılmadan kopyalanır:
+
+```bash
+python3 promo/scripts/build_audio.py                       # müzik + efekt + anlatım → out/mix.wav
+# yeni film 39.75 → 50.733 sn (kareler 2385–3044) 4K kayıpsız çizilir (promo/out/v8/run.sh)
+python3 promo/scripts/splice_copy.py --master promo/out/master-4k-v2.mp4 \
+    --patch promo/out/v8/r_0.mkv promo/out/v8/r_1.mkv promo/out/v8/r_2.mkv promo/out/v8/r_3.mkv \
+    --from 39.75 --old-to 48.066667 --out promo/out/lisandan-kulture-4k.mp4
+```
+
+
+## v10 — v8 aynen, araya 7 yeni özellik sahnesi (4 Ekim 2026)
+
+Kural (proje sahibi): önceki film (v8) temel alınır, içindeki hiçbir sahne, tempo, giriş ve kapanış değişmez;
+yeni özellikler yalnızca sahnelerin arasına, aynı sakin tempoda eklenir. Reddedilen v9 (commit 70a26d8) kullanılmaz.
+
+- **Nasıl:** `timeline.json → inserts` yedi ekleme noktası verir. `film.js` içindeki `mapTime` film zamanını v8 zamanına
+  çevirir: ekleme sahnesi yarım saniyede (insertFade) v8'in üstüne açılır, v8 o karede bekler, sahne biter, aynı kareden
+  v8 devam eder. Aynı noktadaki eklemeler birbirine geçer. v8'in kendi sahne kodu değişmedi.
+- **Müzik:** `build_audio.py → splice_inserts` müziği ekleme noktasından önceki tam ölçülerle uzatır (her ekleme tam ölçü:
+  8 sn = 3 ölçü, 10.67 sn = 4 ölçü), böylece v8'in bütün kesmeleri yine vuruşa düşer. Efektler eklemenin altında söner,
+  ekleme sahnelerinin dokunuşlarına küçük tık sesleri gelir.
+- **Ekran görüntüleri:** `assets/img/app/*.jpg`, çalışan uygulamadan 2× (3840×2160) alındı.
+
+| Ekleme | v8 noktası | Süre | Ekranda | Yazı |
+|---|---|---|---|---|
+| n1 · Üç yol | 23.30 (hook → hikâye) | 8 sn | Student / Teacher / On my own, yalnız simge ve isim; Student seçilir | Herkes için bir yol. |
+| n2 · Before you read | 31.35 (hikâye → Word Notes) | 8 sn | Adam B1 1. bölüm: soil seçilir, Check my guess, Your guess was right! | Okumadan önce tahmin et. |
+| n3 · I can + grup görevi | 62.62 (bölüm döngüsü → kitap sonu) | 10.67 sn | I can: Yes, Yes, Almost; History Radio Show: roller, 4. adım | Ne öğrendiğini kendin gör. · Grupla, rollerle konuş. |
+| n4 · Sonuç kartı | 81.25 (kitap sonu → seviyeler) | 8 sn | Result card, kod 2ENLRSSA, Check a result code | Sonucunu öğretmenine göster. |
+| n5 · Kendi başına | 88.30 (seviyeler → kılavuzlar) | 8 sn | Seviye testi B1, My words kartı | Kendi hızında öğren. |
+| n6 · Öğretmen | 88.30 | 10.67 sn | Lesson card (40 dk), Class mode açılır, Show the answer | Derse hazır, tahtaya hazır. |
+| n7 · Yerler ve haritalar | 88.30 | 8 sn | Moses A2 Places &amp; People (Midian), Moses’s Journey (Midian) | Hikâyenin geçtiği yerleri keşfet. |
+
+v8 içindeki küçük düzeltmeler (planda onaylı): Arapça anlatım uygulamanın şimdiki kadın sesi (`narration_ar_ch1.wav`,
+Adam B1 1. bölüm, 2.26–7.30 sn); Arapça sayfa metni ve Word Note «نبي» ile hikâye metniyle aynı; Word Notes kartında
+"Save to My words"; İngilizce metinde güncel yazımlar (Hijr, Sad, khalifah); kılavuzdaki "✦ Lesson Prep" yerine pano simgesi.
+
+```bash
+python3 promo/scripts/build_audio.py
+python3 promo/scripts/render.py --workers 3 --crf 14 --out promo/out/lisandan-kulture-v10-4k.mp4
+```

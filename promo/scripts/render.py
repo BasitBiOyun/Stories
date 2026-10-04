@@ -102,7 +102,7 @@ async def run(args: argparse.Namespace) -> None:
         out_path.parent.mkdir(parents=True, exist_ok=True)
         if args.raw:
             cmd = [ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(fps), "-i", "-",
-                   "-c:v", "libx264", "-preset", "ultrafast", "-qp", "0", "-pix_fmt", "yuv444p", str(out_path)]
+                   "-c:v", "libx264", "-preset", "fast", "-crf", "6", "-pix_fmt", "yuv444p", str(out_path)]   # near-lossless intermediate (a full 4K film fits on disk)
             ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
             for i in range(n):
                 ff.stdin.write(await grab(t0 + i / fps))
