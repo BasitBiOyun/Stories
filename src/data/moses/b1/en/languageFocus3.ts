@@ -23,8 +23,8 @@ export const mosesB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       id: 'moses-b1-language-9-reported-mission',
       type: 'choose-form',
       title: 'Change, Mission and New Role',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 9.',
-      question: 'Which forms show a complete change, a reported instruction and a new role?',
+      instructions: 'Choose the correct words for each sentence from Chapter 9.',
+      question: 'What changed on the mountain, and what was Moses told to do?',
       formChoices: [
         {
           sentence: 'Moses put down his staff on the ground. It [choice] a big snake!',
@@ -53,8 +53,8 @@ export const mosesB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       id: 'moses-b1-language-9-role-change',
       type: 'sequencing',
       title: 'On the Mountain',
-      instructions: 'Put the parts of Chapter 9 in the right order. Use “Then” and “Once more” to help you.',
-      question: 'How does the chapter move from Allah’s words to Moses’s action?',
+      instructions: 'Put the parts of Chapter 9 in order. “Then” and “Once more” can help.',
+      question: 'What did Allah say, and what did Moses do?',
       sequencingItems: [
         { id: '1', text: 'Moses climbed the mountain.' },
         { id: '2', text: 'In the silence he heard a thundering voice …' },
@@ -70,9 +70,9 @@ export const mosesB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'moses-b1-language-9-connected-production', type: 'reflection', title: 'Explain a New Responsibility', instructions: 'Write or say five connected B1 sentences about someone who receives instructions, carries them out, takes on a new responsibility, and then begins a new task. Do not retell the chapter.', question: 'Can you connect direct instruction, reported instruction, change of role and next action naturally?', correctAnswer: null,
+      id: 'moses-b1-language-9-connected-production', type: 'reflection', title: 'Explain a New Responsibility', instructions: 'Write or say five sentences about someone who gets a new job or duty.', question: 'What is the person told to do, and what changes?', correctAnswer: null,
       explanation: 'Keep one situation throughout. Useful language includes an imperative, “told + person + to...”, “After this...”, “became...”, and a final sentence showing the next action.', feedback: { correct: 'Keep the five sentences connected so the responsibility develops clearly from instruction to action.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Give a short direct instruction with an imperative.', mode: 'Individual' }, { question: 'Sentence 2 — Report the instruction using “told + person + to + verb”.', mode: 'Individual' }, { question: 'Sentence 3 — Show that the instruction was carried out and had a result.', mode: 'Individual' }, { question: 'Sentence 4 — Use “After this...” and “became...” to show a new role or responsibility.', mode: 'Pair' }, { question: 'Sentence 5 — Show the next action that follows from that responsibility.', mode: 'Pair' }]
+      discussionPrompts: [{ question: 'Sentence 1 — Give an instruction: “Look after …”', mode: 'Individual' }, { question: 'Sentence 2 — Report it: “She told my friend to …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what happened: “She did it, and soon …”', mode: 'Individual' }, { question: 'Sentence 4 — Show the new duty: “After this, she became …”', mode: 'Pair' }, { question: 'Sentence 5 — Say what she does now.', mode: 'Pair' }]
     }
   ]
 };
@@ -97,8 +97,8 @@ export const mosesB1LanguageFocusChapter10: Record<number, Exercise[]> = { 10: [
     id: 'moses-b1-language-10-action-result',
     type: 'sequencing',
     title: 'Action and Visible Result',
-    instructions: 'Put the parts of Chapter 10 in the right order. Use “Then” and “When” to help you.',
-    question: 'How does the chapter connect Moses’s actions with the changes that follow?',
+    instructions: 'Put the parts of Chapter 10 in order. “Then” and “When” can help.',
+    question: 'What did Moses do, and what happened each time?',
     sequencingItems: [
       { id: '1', text: 'Moses (pbuh) got his staff and threw it on the ground.' },
       { id: '2', text: 'The staff turned into a big snake!' },
@@ -117,8 +117,8 @@ export const mosesB1LanguageFocusChapter10: Record<number, Exercise[]> = { 10: [
     id: 'moses-b1-language-10-purpose-contrast',
     type: 'transformation',
     title: 'Effort, Repetition and Purpose',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 10. Type the missing word or words.',
-    question: 'How can we express effort, repeated refusal and purpose in another way?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say these lines from Chapter 10?',
     transformItems: [
       {
         source: 'After making every effort to convince him, Moses (pbuh) realized that logical discussions would not work.',
@@ -143,7 +143,7 @@ export const mosesB1LanguageFocusChapter10: Record<number, Exercise[]> = { 10: [
       incorrect: 'Use the past form of “make” after “After he …”, think about what “kept refusing” says about how often he refused, and use a modal such as “could” after “so that they”.',
     },
   },
-  { id:'moses-b1-language-10-connected-production', type:'reflection', title:'Explain a Change of Approach', instructions:'Write or say five connected B1 sentences about a person who first tries one solution, realizes it is not working, chooses another action, sees a result, and explains the purpose of that action. Do not retell the chapter.', question:'Can you connect effort, realization, necessity, result and purpose in one short explanation?', correctAnswer:null, explanation:'Keep one situation throughout. Useful language includes “After making every effort...”, “realized that...”, “kept...”, “had no choice but to...”, “When...”, “turned into/became...”, and “in order to...”.', feedback:{correct:'Keep the five sentences connected so the change of approach is easy to follow.',incorrect:''}, discussionPrompts:[{question:'Sentence 1 — Describe the first solution and the effort made.',mode:'Individual'},{question:'Sentence 2 — Use “realized that...” to explain why the first approach was not working.',mode:'Individual'},{question:'Sentence 3 — Use “had no choice but to...” or another natural necessity expression for the next step.',mode:'Individual'},{question:'Sentence 4 — Use “When...” or a sequence marker to show the result of the new action.',mode:'Pair'},{question:'Sentence 5 — Use “in order to...” to explain the purpose of the new action.',mode:'Pair'}]}
+  { id:'moses-b1-language-10-connected-production', type:'reflection', title:'Explain a Change of Approach', instructions: 'Write or say five sentences about someone who tries a new way to solve a problem.', question: 'What did the person try first, and what did they do next?', correctAnswer:null, explanation:'Keep one situation throughout. Useful language includes “After making every effort...”, “realized that...”, “kept...”, “had no choice but to...”, “When...”, “turned into/became...”, and “in order to...”.', feedback:{correct:'Keep the five sentences connected so the change of approach is easy to follow.',incorrect:''}, discussionPrompts:[{ question: 'Sentence 1 — Say what they tried first: “We tried to …”',mode:'Individual'},{ question: 'Sentence 2 — Say what they understood: “… realized that …”',mode:'Individual'},{ question: 'Sentence 3 — Give the next step: “She had no choice but to …”',mode:'Individual'},{ question: 'Sentence 4 — Give the result: “When she …, everyone …”',mode:'Pair'},{ question: 'Sentence 5 — Say why: “She did it in order to …”',mode:'Pair'}]}
 ]};
 
 /** Moses B1 Chapter 11 Language Focus, manually derived from the English story text. */
@@ -162,8 +162,8 @@ export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
     id: 'moses-b1-language-11-command-response',
     type: 'error-correction',
     title: 'Find and Fix the Mistake',
-    instructions: 'Each sentence from Chapter 11 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-    question: 'Can you correct a person clause, a “let” structure and an order?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the sentences about the contest?',
     errorItems: [
       {
         sentence: 'The magicians which witnessed this miracle bowed down to Allah.',
@@ -196,7 +196,7 @@ export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
     type: 'word-bank',
     title: 'The King Does Not Change',
     instructions: 'Complete the lines from Chapter 11 with words from the bank. Three words are not needed.',
-    question: 'Which words show that the refusal continued, give its reason and show an action going on over time?',
+    question: 'Why did the king still refuse?',
     fillBlanksText: 'The king [blank] refused to believe in Allah, [blank] he was arrogant. … He continued [blank] Moses (pbuh) and his people day and night.',
     wordBank: ['already', 'because of', 'still', 'troubled', 'because', 'to trouble'],
     correctAnswer: ['still', 'because', 'to trouble'],
@@ -206,7 +206,7 @@ export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
       incorrect: 'The magicians changed, but did the king? Look at what follows each gap: a clause or a verb? Then check the end of Chapter 11.',
     },
   },
-  {id:'moses-b1-language-11-connected-production',type:'reflection',title:'Describe a Turning Point',instructions:'Write or say five connected B1 sentences about a non-story situation in which an instruction leads to an action, the action produces a result, one group changes its view, and another person keeps resisting. Do not retell the chapter.',question:'Can you connect command, action, result, changed response, and continued resistance in one short paragraph?',correctAnswer:null,explanation:'Useful language includes “Once...”, “When...”, a direct imperative, “turned into/became...”, “who...”, “still...”, “continued to...”, and “because...”.',feedback:{correct:'Keep the five sentences connected around one situation and make the cause of the continued resistance clear.',incorrect:''},discussionPrompts:[{question:'Sentence 1 — Give a direct instruction.',mode:'Individual'},{question:'Sentence 2 — Show the action and use “Once...” or “When...” to connect it with the result.',mode:'Individual'},{question:'Sentence 3 — Describe a group who saw the result and changed its view.',mode:'Individual'},{question:'Sentence 4 — Use “still” or “continued to” for someone who did not change.',mode:'Pair'},{question:'Sentence 5 — Use “because” to explain why the resistance continued.',mode:'Pair'}]}
+  {id:'moses-b1-language-11-connected-production',type:'reflection',title:'Describe a Turning Point',instructions: 'Write or say five sentences about a new idea that most people accept.',question: 'Who changes their mind, and who does not?',correctAnswer:null,explanation:'Useful language includes “Once...”, “When...”, a direct imperative, “turned into/became...”, “who...”, “still...”, “continued to...”, and “because...”.',feedback:{correct:'Keep the five sentences connected around one situation and make the cause of the continued resistance clear.',incorrect:''},discussionPrompts:[{ question: 'Sentence 1 — Give an instruction: “Try …”',mode:'Individual'},{ question: 'Sentence 2 — Show the result: “When they …, they …”',mode:'Individual'},{ question: 'Sentence 3 — Say who changed: “Most of the students …”',mode:'Individual'},{ question: 'Sentence 4 — Say who did not: “But one boy still …”',mode:'Pair'},{ question: 'Sentence 5 — Say why: “He did not change because …”',mode:'Pair'}]}
 ]};
 
 /** Moses B1 Chapter 12 Language Focus, manually derived from the English story text. */
@@ -215,8 +215,8 @@ export const mosesB1LanguageFocusChapter12: Record<number, Exercise[]> = { 12: [
     id: 'moses-b1-language-12-plan-obligation',
     type: 'drag-drop',
     title: 'The Plan and the Rules',
-    instructions: 'Read Moses’s words to his people in Chapter 12. Does each sentence tell the plan, or give an instruction or a rule? Put it in the right group.',
-    question: 'How does Moses use different forms for the plan and for the rules the group must follow?',
+    instructions: 'Is it the plan, or an instruction? Put each sentence in the right group.',
+    question: 'What is the plan, and what are the rules?',
     dragDropGroups: [
       {
         group: 'The plan (what is going to happen)',
@@ -241,8 +241,8 @@ export const mosesB1LanguageFocusChapter12: Record<number, Exercise[]> = { 12: [
     id: 'moses-b1-language-12-inability-result',
     type: 'transformation',
     title: 'Cause, Result and Success',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 12. Type the missing word or words.',
-    question: 'How can we join a cause and its result, and say that someone succeeded?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say these lines from Chapter 12?',
     transformItems: [
       {
         source: 'The children and the old could not walk fast and got tired very quickly. That’s why the caravan moved slowly.',
@@ -267,7 +267,7 @@ export const mosesB1LanguageFocusChapter12: Record<number, Exercise[]> = { 12: [
     type: 'matching',
     title: 'Words for the Chase',
     instructions: 'Match each word or phrase from Chapter 12 with its meaning.',
-    question: 'What do these words tell us about the journey, the chase and Moses’s answer to his people’s fear?',
+    question: 'What do these words tell us about the journey and the chase?',
     matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
     matchingPairs: [
       { left: 'caravan', right: 'a group of people travelling together' },
@@ -289,7 +289,7 @@ export const mosesB1LanguageFocusChapter12: Record<number, Exercise[]> = { 12: [
       incorrect: 'Find each word in Chapter 12 and use the sentence around it to work out its meaning.',
     },
   },
-  {id:'moses-b1-language-12-connected-production',type:'reflection',title:'Explain a Difficult Group Plan',instructions:'Write or say five connected B1 sentences about a non-story group that must leave quietly, has members who cannot move quickly, is followed by another group, and receives reassurance from its leader. Do not retell the chapter.',question:'Can you connect instruction, obligation, inability, result, time, and reassurance in one short paragraph?',correctAnswer:null,explanation:'Useful language includes an imperative, “must/should”, “could not”, “That’s why...”, “When...”, “managed to...”, and “will...”.',feedback:{correct:'Keep the sentences connected around one situation and make the final reassurance respond naturally to the problem.',incorrect:''},discussionPrompts:[{question:'Sentence 1 — Give a direct instruction and state the group’s plan.',mode:'Individual'},{question:'Sentence 2 — Use “must” or “should” to explain a rule for the plan.',mode:'Individual'},{question:'Sentence 3 — Use “could not” and “That’s why...” to connect a limitation with its result.',mode:'Individual'},{question:'Sentence 4 — Use “When...” and “managed to...” to describe another group following them.',mode:'Pair'},{question:'Sentence 5 — End with reassurance using a present support statement and “will” for future help.',mode:'Pair'}]}
+  {id:'moses-b1-language-12-connected-production',type:'reflection',title:'Explain a Difficult Group Plan',instructions: 'Write or say five sentences about a group trip with a problem.',question: 'What is the plan, and how does the leader help?',correctAnswer:null,explanation:'Useful language includes an imperative, “must/should”, “could not”, “That’s why...”, “When...”, “managed to...”, and “will...”.',feedback:{correct:'Keep the sentences connected around one situation and make the final reassurance respond naturally to the problem.',incorrect:''},discussionPrompts:[{ question: 'Sentence 1 — Give the plan: “Get ready. We are going to …”',mode:'Individual'},{ question: 'Sentence 2 — Give a rule: “You must … / Nobody should …”',mode:'Individual'},{ question: 'Sentence 3 — Give a problem and result: “… could not …. That’s why …”',mode:'Individual'},{ question: 'Sentence 4 — Say who followed: “When …, they managed to …”',mode:'Pair'},{ question: 'Sentence 5 — Calm the group: “I am with you, and I will …”',mode:'Pair'}]}
 ]};
 
 /** Moses B1 Chapter 13 Language Focus, manually derived from the English story text. */
@@ -312,7 +312,7 @@ export const mosesB1LanguageFocusChapter13: Record<number, Exercise[]> = { 13: [
     type: 'sequencing',
     title: 'Through the Sea',
     instructions: 'Put the parts of Chapter 13 in the right order.',
-    question: 'How does the chapter move from a command, through a trigger, to a final consequence?',
+    question: 'What happened at the sea, from start to end?',
     sequencingItems: [
       { id: '1', text: 'He told Moses (pbuh), “Hit the sea with your stick!”' },
       { id: '2', text: 'When the stick touched the waters of the sea, a miracle happened!' },
@@ -332,8 +332,8 @@ export const mosesB1LanguageFocusChapter13: Record<number, Exercise[]> = { 13: [
     id: 'moses-b1-language-13-purpose-general-lesson',
     type: 'word-bank',
     title: 'From Story to Lesson',
-    instructions: 'Complete the lines from the end of Chapter 13 with words from the bank. Three words are not needed.',
-    question: 'Which words turn the events of the story into lessons and explain a purpose?',
+    instructions: 'Complete the last lines of Chapter 13. Three words in the bank are extra.',
+    question: 'What lesson does the story teach?',
     fillBlanksText: 'The story of Moses (pbuh) has many lessons for us [blank]. It again reminds us [blank] no one can enslave another human being. … Allah sent prophets [blank] show people a better life.',
     wordBank: ['learning', 'to learn', 'what', 'that', 'for', 'to'],
     correctAnswer: ['to learn', 'that', 'to'],
@@ -343,5 +343,5 @@ export const mosesB1LanguageFocusChapter13: Record<number, Exercise[]> = { 13: [
       incorrect: 'Look at what follows each gap: a full clause after “reminds us”, and a base verb after the last gap. Check the last paragraph of Chapter 13.',
     },
   },
-  {id:'moses-b1-language-13-connected-production',type:'reflection',title:'From Event to Lesson',instructions:'Write or say five connected B1 sentences about a non-story situation where a leader gives an instruction, an event changes the situation, a consequence follows, and the group later explains what it learned. Do not retell the chapter.',question:'Can you move naturally from command and sequence to consequence, purpose, and a general lesson?',correctAnswer:null,explanation:'Useful language includes an imperative, “When...”, a clear result clause, “to + verb” for purpose, and “This reminds us that...” or “This shows that...”.',feedback:{correct:'Keep one clear situation and make the final lesson grow naturally from the earlier events.',incorrect:''},discussionPrompts:[{question:'Sentence 1 — Give a direct instruction.',mode:'Individual'},{question:'Sentence 2 — Use “When...” to introduce the event that follows.',mode:'Individual'},{question:'Sentence 3 — State the consequence of that event.',mode:'Individual'},{question:'Sentence 4 — Use “to + verb” to explain the purpose of one action.',mode:'Pair'},{question:'Sentence 5 — End with “This reminds us that...” or “This shows that...” to express a general lesson.',mode:'Pair'}]}
+  {id:'moses-b1-language-13-connected-production',type:'reflection',title:'From Event to Lesson',instructions: 'Write or say five sentences about an event and the lesson it teaches.',question: 'What happened, and what did you learn?',correctAnswer:null,explanation:'Useful language includes an imperative, “When...”, a clear result clause, “to + verb” for purpose, and “This reminds us that...” or “This shows that...”.',feedback:{correct:'Keep one clear situation and make the final lesson grow naturally from the earlier events.',incorrect:''},discussionPrompts:[{ question: 'Sentence 1 — Give an instruction: “Clean …”',mode:'Individual'},{ question: 'Sentence 2 — Say what happened: “When we started, …”',mode:'Individual'},{ question: 'Sentence 3 — Give the result: “As a result, …”',mode:'Individual'},{ question: 'Sentence 4 — Say what for: “We used … to …”',mode:'Pair'},{ question: 'Sentence 5 — Give the lesson: “This reminds us that …”',mode:'Pair'}]}
 ]};

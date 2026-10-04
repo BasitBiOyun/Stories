@@ -66,8 +66,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'moses-b1-language-review-1-verb-person-verb', type: 'drag-drop', title: 'Notice: Make, Let, Tell and Order',
-    instructions: 'Read the sentences from Chapters 1, 3, 8, 11 and 13. Look at the verb after the person or thing. Is it a base verb with no “to”, or “to” + verb? Put each sentence in the right group.',
-    question: 'What comes after make, let, tell and order + a person?',
+    instructions: 'Look at the verb after the person. Put each sentence in the right group.',
+    question: 'After make, let, tell and order + a person: “to” or no “to”?',
     dragDropGroups: [
       { group: 'verb + person + base verb (no “to”)', items: ['He made the Children of Israel do dangerous work for little or no money.', 'The Pharaoh did not want to let those who worshipped Allah live.', 'Let me go and take some burning sticks from the fire …'] },
       { group: 'verb + person + “to” + verb', items: ['Moses’s mother was very worried and told her daughter to follow the basket.', 'Allah told the waves to be kind while carrying the baby.', '… Allah ordered the sea to close.'] },
@@ -82,8 +82,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   {
     id: 'moses-b1-language-review-2-necessity-ability', type: 'matching', title: 'Notice: Necessary, Possible or Important?',
     matchingHeadings: { left: 'From the book', right: 'Meaning' },
-    instructions: 'Read the words from Chapters 7, 10 and 12. Match each one with its meaning.',
-    question: 'What do have to, did not have to, cannot, should and had no choice but to mean here?',
+    instructions: 'Match each phrase from the book with its meaning.',
+    question: 'What do have to, cannot, should and had no choice but to mean?',
     matchingPairs: [
       { left: 'We have to wait our turn.', right: 'This is something we need to do.' },
       { left: 'We did not have to wait …', right: 'There was no need for it that day.' },
@@ -103,7 +103,7 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-b1-language-review-3-background-event', type: 'multiple-choice', title: 'Notice: Setting the Scene',
-    instructions: 'Read the two scenes from Chapters 6 and 10. Then choose the best answer.',
+    instructions: 'Read the two scenes. Then choose the best answer.',
     question: 'Chapter 6: “Moses was tired and thirsty. He was looking for water. Soon, he found a well …” Chapter 10: “The king was sitting on his throne, and his advisors and soldiers were standing around him. Moses (pbuh) told him about Allah.” What do “was looking”, “was sitting” and “were standing” do in these scenes?',
     options: ['They show actions that started after the main event.', 'They describe the situation that was already in progress when the main event happened.', 'They show things that happened every day for many years.', 'They show what the people were planning to do next.'],
     correctAnswer: 1,
@@ -113,8 +113,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   // BUILD — controlled practice in the book's own sentences.
   {
     id: 'moses-b1-language-review-4-linking-ideas', type: 'word-bank', title: 'Build: Contrast, Reason, Purpose, Result',
-    instructions: 'Complete the lines from Chapters 6, 8, 10 and 12 with words from the bank. Two words are not needed.',
-    question: 'Which word shows a contrast, which gives a reason, which gives a purpose and which introduces a result?',
+    instructions: 'Complete the lines from the book with words from the bank. Two words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: 'They also had sheep with them. [blank] they did not go near it. … He accepted the offer, [blank] he was a stranger in Midian and he urgently needed a job and a house. … Allah gave them to Moses (pbuh) [blank] help him against the Pharaoh. … The children and the old could not walk fast and got tired very quickly. [blank] the caravan moved slowly.',
     wordBank: ['But', 'because', 'in order to', 'That’s why', 'because of', 'so that'],
     correctAnswer: ['But', 'because', 'in order to', 'That’s why'],
@@ -123,8 +123,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-b1-language-review-5-to-or-ing', type: 'choose-form', title: 'Build: “To” + Verb or -ing?',
-    instructions: 'Choose the correct form to complete each sentence from the book.',
-    question: 'After keep, manage and decide, which form comes next?',
+    instructions: 'Choose the correct form for each sentence from the book.',
+    question: 'After keep, manage and decide: “to” + verb or -ing?',
     formChoices: [
       { sentence: 'The Pharaoh kept [choice] to believe in Allah.', options: ['to refuse', 'refusing', 'refuse'], answer: 1 },
       { sentence: 'When the Pharaoh noticed that they had left the land, he prepared his huge army and easily managed [choice] up with them.', options: ['catching', 'to catch', 'catch'], answer: 1 },
@@ -136,8 +136,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-b1-language-review-6-clauses', type: 'error-correction', title: 'Build: Who, Where and Until',
-    instructions: 'Each sentence from the book has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the clauses that add information about a person, a place and a time?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix who, where and until?',
     errorItems: [
       { sentence: 'The queen, which was different from her husband, was good, kind-hearted, and believed in Allah.', error: 'which', options: ['who', 'whose', 'where'], answer: 0 },
       { sentence: 'The next day, Moses was again in the bazaar which he saw two men fighting.', error: 'which', options: ['who', 'where', 'whose'], answer: 1 },
@@ -149,8 +149,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-b1-language-review-7-reporting', type: 'transformation', title: 'Build: Report the Words',
-    instructions: 'Read the words from Chapters 4, 12 and 6. Complete each new sentence so that it reports them. Type the missing words.',
-    question: 'What changes when we report an order, a plan and a question?',
+    instructions: 'Report what the people said. Write the missing words.',
+    question: 'What changes when we report someone’s words?',
     transformItems: [
       { source: 'She said to her servants, “Find a nurse for the baby.”', frame: 'She told her servants [blank] a nurse for the baby.', answers: ['to find'] },
       { source: 'We will leave at night.', frame: 'Moses (pbuh) told his people that they [blank] at night.', answers: ['would leave', 'were going to leave', 'were leaving'] },
@@ -163,8 +163,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'moses-b1-language-review-8-new-context', type: 'word-bank', title: 'Use: Getting Ready for the School Fair',
-    instructions: 'This text is not from the book. Complete it with words from the bank. Three words are not needed.',
-    question: 'Can you use the book’s language to tell a story from your own school?',
+    instructions: 'Complete this new text with words from the bank. Three words are extra.',
+    question: 'Can you use the book’s words in a school story?',
     fillBlanksText: 'Last Friday, our class was preparing a stand for the school fair. Some students were painting a big sign, and others were carrying tables into the garden. Our teacher, Mrs Demir, told us to finish everything before three o’clock. Deniz, [blank] had a broken arm, could not carry anything heavy. [blank] she wrote the price cards in beautiful letters. Everyone helped, and we managed [blank] the stand at half past two. We did not [blank] ask the older students for help. At the end of the day, Mrs Demir let us choose a name for our stand.',
     wordBank: ['who', 'That’s why', 'to open', 'have to', 'which', 'because', 'opening'],
     correctAnswer: ['who', 'That’s why', 'to open', 'have to'],
@@ -173,8 +173,8 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-b1-language-review-9-new-context', type: 'error-correction', title: 'Use: Check a Friend’s Sentences',
-    instructions: 'A classmate wrote these sentences about his week. Each sentence has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct the verb pattern, the tense and the reported plan?',
+    instructions: 'Each sentence from a classmate has one mistake. Tap it and choose the correct words.',
+    question: 'Can you help your classmate fix the sentences?',
     errorItems: [
       { sentence: 'My grandmother made me to promise that I would call her every week.', error: 'to promise', options: ['promise', 'promising', 'promised'], answer: 0 },
       { sentence: 'While I was walking to school, I was seeing an old man fall on the ice.', error: 'was seeing', options: ['see', 'saw', 'have seen'], answer: 1 },
@@ -186,16 +186,16 @@ export const mosesB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'moses-b1-language-review-10-transfer', type: 'reflection', title: 'Use: A Plan That Needed Help',
-    instructions: 'Write five or six connected sentences about a time when your class, team or family had to do something difficult together. Say your sentences to a partner first.',
-    question: 'Can you use the language of the whole book to tell a real story from your own life?',
+    instructions: 'Write 5–6 sentences about a hard job you did with others. Tell a partner first.',
+    question: 'Can you use the book’s language to tell your own story?',
     correctAnswer: null,
     explanation: 'Example: “Last spring, our class was planning a trip to the science museum. While we were collecting the money, our teacher told us to bring our own lunch. Two students could not pay for the bus, so we had a cake sale in order to help them. That’s why everyone was able to come. We managed to reach the museum on time, and we did not have to wait in the long queue. Our teacher let us choose the last activity of the day.”',
     feedback: { correct: 'Check your sentences: was/were + -ing for the background, have to / did not have to / could not, because / so / that’s why / in order to, told us to …, let us …, managed to …', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — The background: “Last …, we were …ing … when/while …”', mode: 'Individual' },
-      { question: 'Sentence 2 — Necessity and ability: “We had to … / … could not … / We did not have to …”', mode: 'Individual' },
-      { question: 'Sentence 3 — Reason, result and purpose: “…, because … . That’s why … . We … in order to …”', mode: 'Pair' },
-      { question: 'Sentence 4 — Instructions and success: “Our teacher told us to … / let us … . In the end, we managed to …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Set the scene: “Last …, we were …ing when …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say what you had to do: “We had to … / We could not …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Give reasons: “because … . That’s why … . We … in order to …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Say how it ended: “Our teacher told us to … . In the end, we managed to …”', mode: 'Pair' },
     ],
   },
 ];

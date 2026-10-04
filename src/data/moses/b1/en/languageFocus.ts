@@ -10,8 +10,8 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-1-time-frame',
       type: 'drag-drop',
       title: 'Setting the Time or Moving It On?',
-      instructions: 'Read the time expressions from Chapter 1. Does each one place the story in a period of history, or move the story on to a later moment? Put it in the right group.',
-      question: 'How does Chapter 1 set its historical time and then move the story forward?',
+      instructions: 'Put each time phrase in the right group.',
+      question: 'Does it give a time in history, or move the story on?',
       dragDropGroups: [
         {
           group: 'Places the story in history',
@@ -36,8 +36,8 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-1-fear-and-future',
       type: 'transformation',
       title: 'Fear and Forced Work',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 1. Type the missing word or words.',
-      question: 'How can we say the same idea about the Pharaoh’s fear and his control in a different way?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say the Pharaoh’s fear and his orders?',
       transformItems: [
         {
           source: 'The Pharaoh feared that this group, which was larger than the Egyptians, would take control of his kingdom.',
@@ -61,8 +61,8 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-1-cause-result-power',
       type: 'choose-form',
       title: 'Linking Reason and Result',
-      instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 1.',
-      question: 'Which words link a belief or a fear to its result, and show that a situation went on?',
+      instructions: 'Choose the correct words for each sentence from Chapter 1.',
+      question: 'Which words give a result, and which show that something went on?',
       formChoices: [
         {
           sentence: 'They believed in Allah alone, just like their ancestor, Prophet Abraham (pbuh). [choice], they did not believe that the Pharaoh was a god.',
@@ -90,9 +90,9 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'moses-b1-language-1-build-context',
       type: 'reflection',
-      title: 'Build a Connected Historical Account',
-      instructions: 'Write or say five connected B1 sentences about a different historical situation. Use at least four patterns from this Language Focus.',
-      question: 'Can you set the time, explain a fear or expectation, show a cause-result link, and describe an action that continued or was forced?',
+      title: 'A Story from History',
+      instructions: 'Write or say five sentences about another time in history.',
+      question: 'Can you tell a short story from history?',
       correctAnswer: null,
       explanation: 'A strong answer should create a coherent mini-paragraph rather than isolated sentences. Useful patterns include “At that time...”, “feared that... would...”, “that’s why...”, “made ... + verb”, and “continued to...”.',
       feedback: {
@@ -100,11 +100,11 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Set a historical time using “At that time...” or a date expression.', mode: 'Individual' },
-        { question: 'Sentence 2 — Describe what a leader or group feared might happen using “feared that ... would ...”.', mode: 'Individual' },
-        { question: 'Sentence 3 — Add a result with “so” or “that’s why”.', mode: 'Individual' },
-        { question: 'Sentence 4 — Describe control or coercion using “made + person/group + verb”.', mode: 'Pair' },
-        { question: 'Sentence 5 — Show persistence using “continued to + verb”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give the time: “At that time, …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what someone feared: “… feared that … would …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Add a result: “so …” or “That’s why …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say what someone made people do: “… made them …”', mode: 'Pair' },
+        { question: 'Sentence 5 — Say what went on: “… continued to …”', mode: 'Pair' },
       ],
     },
   ],
@@ -113,7 +113,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-2-reporting-prediction',
       type: 'multiple-choice',
       title: 'A Prediction About the Future',
-      instructions: 'Read the advisors’ words from Chapter 2. Then choose the best answer.',
+      instructions: 'Read the advisors’ words. Then choose the best answer.',
       question: 'They said, “A boy will be born of the Children of Israel and the Egyptian people will die at this boy’s hands.” What are the advisors doing when they use “will”?',
       options: ['reporting something that has already happened', 'giving the soldiers an order', 'predicting something that they believe is going to happen', 'describing something that happens every year'],
       correctAnswer: 2,
@@ -127,8 +127,8 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-2-sequence-and-command',
       type: 'sequencing',
       title: 'What Happened After the Dream?',
-      instructions: 'Put the events from Chapter 2 in the right order. Use “When” and “Then” to help you.',
-      question: 'How do “when” and “then” organise the events after the Pharaoh’s dream?',
+      instructions: 'Put the events from Chapter 2 in order. “When” and “Then” can help.',
+      question: 'What happened after the Pharaoh’s dream?',
       sequencingItems: [
         { id: '1', text: 'When he woke up, he called all his advisors and magicians and asked about the dream.' },
         { id: '2', text: 'Then, the Pharaoh told his soldiers, “Kill all the newborn boys of the Children of Israel.”' },
@@ -146,8 +146,8 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-2-fear-intensity',
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
-      instructions: 'Each sentence from Chapter 2 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the language that describes the mother’s fear?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the sentences about the mother’s fear?',
       errorItems: [
         {
           sentence: 'His mother was such frightened that she was unable to sleep at night.',
@@ -179,8 +179,8 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'moses-b1-language-2-connected-response',
       type: 'reflection',
       title: 'Report a Warning and a Response',
-      instructions: 'Write or say five connected B1 sentences about a different situation in which someone receives a warning and must decide what to do.',
-      question: 'Can you report what someone predicted or said, give a command, describe fear with a result, and end with a response or request for help?',
+      instructions: 'Write or say five sentences about someone who gets a warning.',
+      question: 'What happens after the warning?',
       correctAnswer: null,
       explanation: 'Keep one situation across all five sentences. Useful patterns include “They said that/will...”, a direct imperative, “when...”, “so ... that...”, “was scared that ... could...”, and “did not know what to do”.',
       feedback: {
@@ -188,11 +188,11 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Report a warning or prediction about what may happen next.', mode: 'Individual' },
-        { question: 'Sentence 2 — Add a direct command connected to that warning.', mode: 'Individual' },
-        { question: 'Sentence 3 — Use “when” or “then” to move the situation forward.', mode: 'Individual' },
-        { question: 'Sentence 4 — Describe strong fear and its result with “so ... that...” or a feared possibility with “scared that ... could...”.', mode: 'Pair' },
-        { question: 'Sentence 5 — End with uncertainty, a decision, or a request for help.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give the warning: “… warned that … would …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Give an order: “Stay … / Close …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Move the story on: “When …” or “Then …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Show strong fear: “… was so scared that …”', mode: 'Pair' },
+        { question: 'Sentence 5 — End with a decision or a call for help.', mode: 'Pair' },
       ],
     },
   ],

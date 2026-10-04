@@ -28,7 +28,7 @@ export const mosesB1LanguageFocusChapter3Ar: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: المقابلة والإضافة والتزامن',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من جمل الفصل.',
-      question: 'أيّ كلمة تقابل بين فكرتين، وأيّها تضيف فكرة، وأيّها تصف حدثًا يقع في أثناء حدث آخر؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'كانت حزينة جدًّا، [blank] عرفت أنّ الله أرحم بموسى الرضيع منها. فالله ربّهم، وربّ النِّيل [blank]. … [blank] كانت تنظُر إلى الطفل، قالت لزوجها …',
       wordBank: ['لكنّها', 'أيضًا', 'وبينما', 'لذلك', 'فجأة'],
       correctAnswer: ['لكنّها', 'أيضًا', 'وبينما'],
@@ -42,8 +42,8 @@ export const mosesB1LanguageFocusChapter3Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-3-description-decision',
       type: 'transformation',
       title: 'ابنِ: الأمر والقرار والوصف بـ«التي»',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الصياغة الجديدة.',
-      question: 'كيف يصير الكلام المنقول أمرًا مباشرًا؟ وكيف ننقل قرارًا في المستقبل؟ وكيف نصل جملتين بـ«التي»؟',
+      instructions: 'اكتب الكلمة الناقصة، وحافظ على المعنى نفسه.',
+      question: 'كيف نقول هذه الجمل بطريقة أخرى؟',
       transformItems: [
         {
           source: 'فطلبت من ابنتها أنْ تَتَّبِع السلّة.',
@@ -68,7 +68,7 @@ export const mosesB1LanguageFocusChapter3Ar: Record<number, Exercise[]> = {
         incorrect: 'اسأل: مَن المتكلم؟ ومَن المخاطَب؟ وهل الاسم الموصوف مذكر أم مؤنث؟ ثم ارجع إلى جملة الفصل.',
       },
     },
-    { id:'moses-b1-ar-language-3-connected-production', type:'reflection', title:'اكتب موقفًا فيه توجيه وقرار', instructions:'اكتب أو قل خمس جمل مترابطة عن شخص تلقّى توجيهًا، وشعر بالقلق، ثم اتخذ قرارًا.', question:'هل تستطيع الجمع بين الأمر، والتتابع، والمقابلة، والربط الزمني، والقرار المستقبلي في نص قصير واحد؟', correctAnswer:null, explanation:'اجعل الجمل الخمس تتحدث عن موقف واحد. يمكنك استعمال الأمر المباشر، «فـ»، «لكنّ»، «عندما»، و«سـ» للتعبير عن القرار.', feedback:{correct:'حافظ على ترابط الجمل بحيث تطوّر جميعها الموقف نفسه.',incorrect:''}, discussionPrompts:[{question:'الجملة 1 — ابدأ بأمر مباشر أو توجيه واضح.',mode:'Individual'},{question:'الجملة 2 — أضف ما حدث بعد ذلك باستعمال الفاء أو تعبير زمني.',mode:'Individual'},{question:'الجملة 3 — صف قلقًا أو حزنًا ثم قابله بثقة أو أمل باستعمال «لكنّ».',mode:'Individual'},{question:'الجملة 4 — اربط حدثًا جديدًا بلحظته باستعمال «عندما».',mode:'Pair'},{question:'الجملة 5 — اختم بقرار مستقبلي باستعمال «سـ» أو صيغة مناسبة.',mode:'Pair'}]},
+    { id:'moses-b1-ar-language-3-connected-production', type:'reflection', title:'اكتب موقفًا فيه توجيه وقرار', instructions: 'اكتب أو قل خمس جمل عن شخص عليه أن يتخذ قرارًا صعبًا.', question: 'بماذا يشعر هذا الشخص، وماذا يقرر؟', correctAnswer:null, explanation:'اجعل الجمل الخمس تتحدث عن موقف واحد. يمكنك استعمال الأمر المباشر، «فـ»، «لكنّ»، «عندما»، و«سـ» للتعبير عن القرار.', feedback:{correct:'حافظ على ترابط الجمل بحيث تطوّر جميعها الموقف نفسه.',incorrect:''}, discussionPrompts:[{ question: 'الجملة 1 — أعطِ أمرًا: «سجّل ... / اذهب ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر ما حدث بعد ذلك: «فذهبتُ ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر القلق والثقة: «كنت قلقًا، لكنّني ...»',mode:'Individual'},{ question: 'الجملة 4 — أضف الزمن: «وعندما ...»',mode:'Pair'},{ question: 'الجملة 5 — اختم بقرار: «سأ...»',mode:'Pair'}]},
   ],
 };
 
@@ -78,7 +78,7 @@ export const mosesB1LanguageFocusChapter4Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-4-instruction-prediction',
       type: 'true-false',
       title: 'لاحظ: ماذا يأتي بعد «بسبب»؟',
-      instructions: 'اقرأ العبارة، ثم قرّر: هل هي صحيحة أم خاطئة؟',
+      instructions: 'اقرأ العبارة، ثم قرّر: صحيحة أم خاطئة؟',
       question: 'في جملة «ويذكُرها الناس دائمًا بسبب طِيبَتِها وشَجاعتها» يأتي بعد «بسبب» فعلٌ، فيمكن أن نقول أيضًا: «بسبب كانت طيّبة».',
       correctAnswer: false,
       explanation: 'بعد «بسبب» يأتي اسم مجرور (مضاف إليه)، وكثيرًا ما يكون مصدرًا: «بسببِ طِيبَتِها وشجاعتِها»، ومعناها: لأنها كانت طيّبة وشجاعة. أما «لأنّ» فتأتي بعدها جملة تبدأ باسم أو بضمير متصل بها، ثم الخبر.',
@@ -92,7 +92,7 @@ export const mosesB1LanguageFocusChapter4Ar: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: الأمر والغاية والسبب',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من جمل الفصل.',
-      question: 'أيّ صيغة أمر تناسب مخاطبة الخدم؟ وأيّ كلمة تبيّن الغاية؟ وأيّها تذكر السبب بجملة؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'فقالت لخَدَمها: «[blank] عن مرضِعة للطفل». … وأحضرت أمَّها، [blank] مرضِعة موسى في القصر. … وشعر موسى أنّه قريب من بني إسرائيل؛ [blank] لم يكن في الأصل من أهل القصر، وكانت أمه من بني إسرائيل.',
       wordBank: ['اِبحَثوا', 'اِبحَثْ', 'لتكون', 'ستكون', 'لأنه', 'بسبب'],
       correctAnswer: ['اِبحَثوا', 'لتكون', 'لأنه'],
@@ -106,8 +106,8 @@ export const mosesB1LanguageFocusChapter4Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-4-growth-identity',
       type: 'matching',
       title: 'ابنِ: معاني عبارات التغيّر والرعاية',
-      instructions: 'صِل كل عبارة من الفصل الرابع بمعناها في السياق.',
-      question: 'ماذا تعني هذه العبارات التي تصف عودة موسى إلى أمه ونموّه مع الزمن؟',
+      instructions: 'صِل كل عبارة من الفصل الرابع بمعناها.',
+      question: 'ماذا تقول هذه العبارات عن موسى وأمه؟',
       matchingHeadings: { left: 'من الفصل', right: 'المعنى' },
       matchingPairs: [
         { left: 'ردّ الله موسى إلى أمه', right: 'أعاده إليها بعد أن ابتعد عنها' },
@@ -129,7 +129,7 @@ export const mosesB1LanguageFocusChapter4Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفقرتين الثانية والأخيرة من الفصل الرابع، واقرأ ما قبل كل عبارة وما بعدها.',
       },
     },
-    {id:'moses-b1-ar-language-4-connected-production',type:'reflection',title:'اكتب عن شخص ينمو إلى دور جديد',instructions:'اكتب أو قل خمس جمل مترابطة عن شخص يتلقى مساعدة، ثم ينمو مع الزمن ويتكوّن لديه إحساس بالمسؤولية أو الانتماء.',question:'هل تستطيع الجمع بين الأمر، والغاية، والسبب، والتغيّر عبر الزمن، والصفة المستمرة في موقف واحد؟',correctAnswer:null,explanation:'اجعل الجمل الخمس تتحدث عن شخص واحد وموقف واحد. يمكنك استخدام أمر مباشر، و«لـ» للغاية، و«لأن/بسبب» للسبب، و«أصبح» للتغيّر، و«كان دائمًا/كان يحبّ» للصفة المستمرة.',feedback:{correct:'حافظ على ترابط الجمل بحيث تطوّر الشخصية نفسها من البداية إلى النهاية.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — أعطِ أمرًا أو توجيهًا مباشرًا.',mode:'Individual'},{question:'الجملة 2 — اذكر فعلًا وبيّن غايته باستخدام «لـ» أو تعبير غاية طبيعي.',mode:'Individual'},{question:'الجملة 3 — اشرح سببًا باستخدام «لأن» أو «بسبب».',mode:'Individual'},{question:'الجملة 4 — أظهر تغيّرًا لاحقًا باستخدام «أصبح» أو تعبير مناسب.',mode:'Pair'},{question:'الجملة 5 — اختم بصفة أو ميل مستمر مثل «كان دائمًا...» أو «كان يحبّ...».',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-4-connected-production',type:'reflection',title:'اكتب عن شخص ينمو إلى دور جديد',instructions: 'اكتب أو قل خمس جمل عن شخص يتلقى مساعدة ويكبر.',question: 'كيف يتغيّر هذا الشخص مع الزمن؟',correctAnswer:null,explanation:'اجعل الجمل الخمس تتحدث عن شخص واحد وموقف واحد. يمكنك استخدام أمر مباشر، و«لـ» للغاية، و«لأن/بسبب» للسبب، و«أصبح» للتغيّر، و«كان دائمًا/كان يحبّ» للصفة المستمرة.',feedback:{correct:'حافظ على ترابط الجمل بحيث تطوّر الشخصية نفسها من البداية إلى النهاية.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — أعطِ نصيحة: «راقِب ... وتعلّم ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر الغاية: «... لِـ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر السبب: «لأنّ ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر التغيّر: «وبعد ثلاث سنوات، أصبح ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر ما كان يفعله دائمًا: «وكان دائمًا ...»',mode:'Pair'}]},
   ],
 };
 
@@ -139,8 +139,8 @@ export const mosesB1LanguageFocusChapter5Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-5-background-sequence',
       type: 'drag-drop',
       title: 'لاحظ: الخلفية والحدث',
-      instructions: 'ضع كل عبارة من الفصل الخامس في المجموعة المناسبة.',
-      question: 'هل تصف العبارة فعلًا مستمرًّا أو حالًا في خلفية المشهد، أم حدثًا وقع في لحظة ودفع القصة إلى الأمام؟',
+      instructions: 'ضع كل عبارة في مجموعتها: خلفية المشهد أو حدث جديد.',
+      question: 'ما الذي كان يحدث، وما الذي وقع فجأة؟',
       dragDropGroups: [
         {
           group: 'فعل مستمر أو حال في الخلفية',
@@ -182,7 +182,7 @@ export const mosesB1LanguageFocusChapter5Ar: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: المثنى واسم الموصول',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما صيغة الفعل والصفة مع «رجلين»؟ وأيّ اسم موصول يناسب «الرجل»؟',
+      question: 'ما الكلمة الصحيحة مع «رجلين» ومع «الرجل»؟',
       formChoices: [
         {
           sentence: 'ذات يوم، وبينما كان موسى يمْشي في السوق، رأى رجليْن [choice].',
@@ -211,8 +211,8 @@ export const mosesB1LanguageFocusChapter5Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-5-direct-voice-future-question',
       type: 'matching',
       title: 'ابنِ: ماذا يفعل المتكلم بكلامه؟',
-      instructions: 'صِل كل قول من الفصل الخامس بما يفعله المتكلم به.',
-      question: 'هل يطلب المتكلم، أم يدعو، أم يعترف، أم يتّهم؟',
+      instructions: 'صِل كل قول من الفصل الخامس بما يفعله المتكلم.',
+      question: 'من يطلب، ومن يعترف، ومن يتّهم؟',
       matchingHeadings: { left: 'من الفصل', right: 'ماذا يفعل المتكلم؟' },
       matchingPairs: [
         { left: '«ساعدْني!»', right: 'يطلب النجدة بسرعة من شخص قريب' },
@@ -232,7 +232,7 @@ export const mosesB1LanguageFocusChapter5Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفصل الخامس، وحدّد أولًا: مَن المتكلم؟ ولمن يتكلم؟ وماذا حدث قبل كلامه؟',
       },
     },
-    {id:'moses-b1-ar-language-5-connected-production',type:'reflection',title:'اكتب موقفًا قصيرًا مترابطًا',instructions:'اكتب أو قل خمس جمل B1 مترابطة عن موقف متوتر في مكان عام. لا تعِد سرد الفصل.',question:'هل تستطيع الجمع بين الخلفية، والمفاجأة، والتعريف بشخص، والاستنتاج، وسؤال مستقبلي في موقف واحد؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام «بينما كان...»، و«فجأة»، وجملة بـ«الذي»، و«عرف/أدرك أنّ...»، ثم سؤال بـ«هل ستـ...؟».',feedback:{correct:'اجعل الجمل الخمس مترابطة بحيث تطوّر الموقف نفسه من البداية إلى النهاية.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — ابدأ بخلفية باستخدام «بينما كان...».',mode:'Individual'},{question:'الجملة 2 — أدخل حدثًا مفاجئًا باستخدام «فجأة».',mode:'Individual'},{question:'الجملة 3 — عرّف شخصًا بجملة قصيرة فيها «الذي».',mode:'Individual'},{question:'الجملة 4 — اذكر ما عرفه أو أدركه أحد الأشخاص من الموقف.',mode:'Pair'},{question:'الجملة 5 — اختم بسؤال مستقبلي طبيعي باستخدام «هل ستـ...؟».',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-5-connected-production',type:'reflection',title:'اكتب موقفًا قصيرًا مترابطًا',instructions: 'اكتب أو قل خمس جمل عن شجار في الشارع.',question: 'هل تستطيع أن تحكي ما حدث خطوة خطوة؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام «بينما كان...»، و«فجأة»، وجملة بـ«الذي»، و«عرف/أدرك أنّ...»، ثم سؤال بـ«هل ستـ...؟».',feedback:{correct:'اجعل الجمل الخمس مترابطة بحيث تطوّر الموقف نفسه من البداية إلى النهاية.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — صف المشهد: «بينما كنت ...، كان ...»',mode:'Individual'},{ question: 'الجملة 2 — أضف مفاجأة: «وفجأة، ...»',mode:'Individual'},{ question: 'الجملة 3 — عرّف شخصًا: «الرجل الذي ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر ما فهمه: «وعرف أنّ ...»',mode:'Pair'},{ question: 'الجملة 5 — اختم بسؤال: «هل ستـ...؟»',mode:'Pair'}]},
   ],
 };
 
@@ -242,8 +242,8 @@ export const mosesB1LanguageFocusChapter6Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-6-warning-action',
       type: 'sequencing',
       title: 'لاحظ: من المعرفة إلى الحركة',
-      instructions: 'رتّب الجمل كما جاءت في الفصل السادس. استعن بالكلمات الرابطة.',
-      question: 'أيّ الكلمات تساعدك على الترتيب: الفاء، «بعد أيام كثيرة»، «بعد قليل»؟',
+      instructions: 'رتّب الجمل كما جاءت في الفصل السادس.',
+      question: 'كيف خرج موسى من مصر إلى مدين؟',
       sequencingItems: [
         { id: '1', text: 'كان موسى يعلَم أنّ عقوبة قتْل المصريّ هي الموْت.' },
         { id: '2', text: 'فهرب موسى من الجنود.' },
@@ -263,7 +263,7 @@ export const mosesB1LanguageFocusChapter6Ar: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: «إنّ» و«أنْ» وفعل الأمر',
       instructions: 'اختر الصيغة الصحيحة لتكمل كلام الرجل الذي جاء من أقصى المدينة.',
-      question: 'ما حركة الاسم بعد «إنّ»؟ وماذا يحدث لـ«يقبضون» بعد «أنْ»؟ وما صيغة الأمر لشخص واحد؟',
+      question: 'ما الكلمة الصحيحة بعد «إنّ» و«أنْ»؟ وكيف نأمر شخصًا واحدًا؟',
       formChoices: [
         {
           sentence: 'إنّ [choice] فرعون يبحَثون عنك.',
@@ -292,8 +292,8 @@ export const mosesB1LanguageFocusChapter6Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-6-well-scene',
       type: 'error-correction',
       title: 'ابنِ: الفعل مع المثنى',
-      instructions: 'في كل جملة خطأ واحد في الفعل. انقر الخطأ ثم اختر التصحيح.',
-      question: 'كيف يكون المضارع مع الفتاتين؟ وماذا يحدث له بعد «لم»؟',
+      instructions: 'في كل جملة خطأ واحد. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'كيف نتكلم عن فتاتين؟',
       errorItems: [
         {
           sentence: 'لكنّهما لم تقتربوا من الماء.',
@@ -321,7 +321,7 @@ export const mosesB1LanguageFocusChapter6Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى آخر الفصل السادس: كم فتاة هناك؟ ثم انظر: هل قبل الفعل «لم» أم «لا»؟',
       },
     },
-    {id:'moses-b1-ar-language-6-connected-production',type:'reflection',title:'اكتب موقفًا من تحذير إلى مكان جديد',instructions:'اكتب أو قل خمس جمل مترابطة عن شخص يواجه خطرًا ثم يصل إلى مكان غير مألوف. لا تُعِد سرد الفصل.',question:'هل تستطيع أن تربط بين خطر قائم، ونية قريبة، وأمر عاجل، وانتقال زمني، ثم سؤال طبيعي في المكان الجديد؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام فعل مضارع للخطر القائم، و«يريد أن + فعل» لنية قريبة، وفعل أمر، و«بعد...» للانتقال الزمني، ثم سؤال يبدأ بـ«لماذا».',feedback:{correct:'اجعل الجمل الخمس متصلة بحيث يقود التحذير بصورة طبيعية إلى المشهد الأخير.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — صف خطرًا يحدث الآن بالفعل.',mode:'Individual'},{question:'الجملة 2 — عبّر عن نية قريبة باستخدام «يريد أن + فعل».',mode:'Individual'},{question:'الجملة 3 — أعطِ أمرًا مباشرًا مناسبًا للموقف.',mode:'Individual'},{question:'الجملة 4 — انقل الزمن إلى مرحلة لاحقة باستخدام «بعد...».',mode:'Pair'},{question:'الجملة 5 — اختم بسؤال طبيعي يبدأ بـ«لماذا» عن شيء ظاهر في المكان الجديد.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-6-connected-production',type:'reflection',title:'اكتب موقفًا من تحذير إلى مكان جديد',instructions: 'اكتب أو قل خمس جمل عن شخص يجب أن يغادر مكانه بسرعة.',question: 'ما الخطر، وإلى أين يذهب هذا الشخص؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام فعل مضارع للخطر القائم، و«يريد أن + فعل» لنية قريبة، وفعل أمر، و«بعد...» للانتقال الزمني، ثم سؤال يبدأ بـ«لماذا».',feedback:{correct:'اجعل الجمل الخمس متصلة بحيث يقود التحذير بصورة طبيعية إلى المشهد الأخير.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — صف خطرًا يحدث الآن: «إنّ الماء يرتفع الآن!»',mode:'Individual'},{ question: 'الجملة 2 — اذكر ما يريد الناس فعله: «يريدون أن ...»',mode:'Individual'},{ question: 'الجملة 3 — أعطِ أمرًا: «اخرجوا ... واصعدوا ...!»',mode:'Individual'},{ question: 'الجملة 4 — اذكر الوصول: «وبعد ...، وصلنا إلى ...»',mode:'Pair'},{ question: 'الجملة 5 — اسأل سؤالًا: «لماذا ...؟»',mode:'Pair'}]},
   ],
 };
 
@@ -331,7 +331,7 @@ export const mosesB1LanguageFocusChapter7Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-7-obligation-patience',
       type: 'true-false',
       title: 'لاحظ: «لم ننتظرْ حتى ...»',
-      instructions: 'اقرأ العبارة، ثم قرّر: هل هي صحيحة أم خاطئة؟',
+      instructions: 'اقرأ العبارة، ثم قرّر: صحيحة أم خاطئة؟',
       question: 'قالت الفتاتان لأبيهما: «فلمْ ننتظِرْ حتى يذهَب الرُّعاة الآخرون». المعنى: انتظرتا كعادتهما حتى ذهب الرعاة كلهم، ثم سقتا الغنم.',
       correctAnswer: false,
       explanation: '«لم» + مضارع مجزوم («لم ننتظرْ») تنفي الفعل في الماضي: هذه المرّة لم تنتظرا؛ لأن شابًّا ساعدهما، فعادتا إلى البيت مبكّرًا. وكانت عادتهما أن تنتظرا «حتى يذهبَ الرعاة»: «حتى» + مضارع منصوب تحدّد نهاية الانتظار.',
@@ -345,7 +345,7 @@ export const mosesB1LanguageFocusChapter7Ar: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: من السبب إلى الواجب ثم الفعل',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من جمل الفصل.',
-      question: 'أيّ كلمة تقدّم النتيجة؟ وأيّها تعبّر عن الواجب؟ وماذا يأتي بعد «فهم»؟ وما الذي يربط الفهم بالفعل؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: 'أبونا مُسِنّ جدًّا. لا يستطيع أنْ يأتيَ معَنا. … [blank]، [blank] أنْ نأخذَ الأغنام إلى الماء بأنْفُسِنا. … فهِم موسى [blank] الأختيْن تحتاجان إلى المساعدة. [blank] غنمهما إلى البئْر، وسقَى الغنم.',
       wordBank: ['لذلك', 'علينا', 'أنّ', 'فأخذ', 'لأنّ', 'لكنّ'],
       correctAnswer: ['لذلك', 'علينا', 'أنّ', 'فأخذ'],
@@ -360,7 +360,7 @@ export const mosesB1LanguageFocusChapter7Ar: Record<number, Exercise[]> = {
       type: 'error-correction',
       title: 'ابنِ: المثنى وخبر «كان» ونون الفعل',
       instructions: 'في كل جملة خطأ واحد. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما صيغة خبر «كان» مع المثنى؟ ولماذا تبقى النون في الفعل؟ وكيف نخاطب اثنتين؟',
+      question: 'كيف نتكلم عن فتاتين؟',
       errorItems: [
         {
           sentence: 'كانت الفتاتان سعيدتان جدًّا.',
@@ -388,7 +388,7 @@ export const mosesB1LanguageFocusChapter7Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفصل السابع، واسأل: كم شخصًا في الجملة؟ هل قبل الفعل ناصب أو جازم؟ وما عمل «كان» في الخبر؟',
       },
     },
-    {id:'moses-b1-ar-language-7-connected-production',type:'reflection',title:'اكتب عن روتين تغيّر بسبب المساعدة',instructions:'اكتب أو قل خمس جمل مترابطة عن أشخاص عليهم عادةً القيام بعمل صعب، ثم يحصلون على مساعدة غير متوقعة في يوم ما. لا تُعِد سرد الفصل.',question:'هل تستطيع أن تربط بين سبب، وواجب، وانتظار، ومساعدة، ثم نتيجة مختلفة؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام «لا يستطيع»، و«علينا أن»، و«حتى»، ثم فعل ماضٍ يغيّر الموقف، وأخيرًا جملة تنفي ما كان يجب فعله عادةً.',feedback:{correct:'اجعل التغيّر في النتيجة واضحًا ومتصلاً بسبب المساعدة.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — اذكر سببًا أو قيدًا يجعل الموقف صعبًا.',mode:'Individual'},{question:'الجملة 2 — عبّر عمّا يجب فعله باستخدام «علينا أن».',mode:'Individual'},{question:'الجملة 3 — استخدم «حتى» لبيان ما ينتظره الأشخاص عادةً.',mode:'Individual'},{question:'الجملة 4 — صف مساعدة غير متوقعة بفعل ماضٍ.',mode:'Pair'},{question:'الجملة 5 — بيّن ما لم يعد ضروريًا بعد تغيّر الموقف.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-7-connected-production',type:'reflection',title:'اكتب عن روتين تغيّر بسبب المساعدة',instructions: 'اكتب أو قل خمس جمل عن أشخاص يساعدهم أحد يومًا ما.',question: 'ماذا يتغيّر عندما يساعدنا أحد؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام «لا يستطيع»، و«علينا أن»، و«حتى»، ثم فعل ماضٍ يغيّر الموقف، وأخيرًا جملة تنفي ما كان يجب فعله عادةً.',feedback:{correct:'اجعل التغيّر في النتيجة واضحًا ومتصلاً بسبب المساعدة.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — اذكر ما ينقص: «ليس في قريتنا ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر ما يجب فعله: «علينا أن ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر الانتظار: «ينتظرون حتى ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر من ساعد: «وفي يوم من الأيام، ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر ما تغيّر: «فلم يعد عليهم أن ...»',mode:'Pair'}]},
   ],
 };
 
@@ -417,8 +417,8 @@ export const mosesB1LanguageFocusChapter8Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-8-duration-decision',
       type: 'matching',
       title: 'ابنِ: الفعل وما يأتي بعده',
-      instructions: 'صِل كل فعل من الفصل الثامن بما جاء بعده في الفصل. انتبه إلى حرف الجرّ الذي يحتاجه الفعل.',
-      question: 'أيّ حرف جرّ يأتي مع «عرض» و«احتاج» و«شكر»؟ وأيّ فعل لا يحتاج إلى حرف جرّ؟',
+      instructions: 'صِل كل فعل من الفصل الثامن بما جاء بعده.',
+      question: 'أيّ حرف يأتي بعد كل فعل؟',
       matchingHeadings: { left: 'الفعل في الفصل', right: 'ما جاء بعده' },
       matchingPairs: [
         { left: 'عَرَضَ الرجل الصالح', right: 'على موسى عملًا' },
@@ -444,8 +444,8 @@ export const mosesB1LanguageFocusChapter8Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-8-background-purpose',
       type: 'transformation',
       title: 'ابنِ: السبب والنتيجة والكلام المنقول',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الصياغة الجديدة.',
-      question: 'كيف نقدّم السبب ثم النتيجة؟ وكيف ننقل قرارًا في المستقبل وأمرًا لجماعة؟',
+      instructions: 'اكتب الكلمة الناقصة، وحافظ على المعنى نفسه.',
+      question: 'كيف نقول هذه الجمل بطريقة أخرى؟',
       transformItems: [
         {
           source: 'فقبِل موسى العرْض؛ لأنه كان غريبًا في مديَن …',
@@ -470,6 +470,6 @@ export const mosesB1LanguageFocusChapter8Ar: Record<number, Exercise[]> = {
         incorrect: 'اسأل: هل يأتي السبب أولًا الآن؟ مَن المتكلم في الجملة الجديدة؟ وماذا يأتي بعد «أنْ»؟ ثم ارجع إلى جملة الفصل.',
       },
     },
-    {id:'moses-b1-ar-language-8-connected-production',type:'reflection',title:'اكتب عن تغيّر في الخطة',instructions:'اكتب أو قل خمس جمل عربية مترابطة عن شخص عاش أو عمل مدة طويلة في مكان، ثم قرر المغادرة، وبعد ذلك غيّر فعله بسبب موقف مفاجئ. لا تُعِد سرد الفصل.',question:'هل تستطيع أن تربط بين مدة، وقرار، وخلفية مستمرة، وحدث مفاجئ، وغاية؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام «بعد أن»، و«أراد أن» أو «قرر أن»، و«كان... يـ»، و«فجأة»، ثم «لـ» أو «فـ» لبيان الغاية أو النتيجة.',feedback:{correct:'اجعل الجمل الخمس مترابطة بحيث يؤدي الحدث المفاجئ طبيعيًا إلى الفعل الأخير.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — اذكر مدة سابقة باستخدام «بعد أن» أو تعبير زمني مناسب.',mode:'Individual'},{question:'الجملة 2 — عبّر عن قرار أو رغبة جديدة.',mode:'Individual'},{question:'الجملة 3 — ابنِ خلفية مستمرة باستخدام «كان... يـ».',mode:'Individual'},{question:'الجملة 4 — أدخل حدثًا غير متوقع باستخدام «فجأة».',mode:'Pair'},{question:'الجملة 5 — اشرح الفعل التالي وغايتَه أو نتيجته.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-8-connected-production',type:'reflection',title:'اكتب عن تغيّر في الخطة',instructions: 'اكتب أو قل خمس جمل عن شخص غيّر خطته فجأة.',question: 'ماذا كان يريد هذا الشخص، وماذا تغيّر؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام «بعد أن»، و«أراد أن» أو «قرر أن»، و«كان... يـ»، و«فجأة»، ثم «لـ» أو «فـ» لبيان الغاية أو النتيجة.',feedback:{correct:'اجعل الجمل الخمس مترابطة بحيث يؤدي الحدث المفاجئ طبيعيًا إلى الفعل الأخير.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — اذكر المدة: «بعد أن عمل ... سنة، ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر القرار: «فقرّر أن ...»',mode:'Individual'},{ question: 'الجملة 3 — صف المشهد: «كان يقود ...، وكان ...»',mode:'Individual'},{ question: 'الجملة 4 — أضف مفاجأة: «وفجأة، رأى ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر ما فعله ولماذا: «فتوقّف لِـ...»',mode:'Pair'}]},
   ],
 };

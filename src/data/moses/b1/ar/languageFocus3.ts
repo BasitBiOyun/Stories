@@ -8,8 +8,8 @@ export const mosesB1LanguageFocusChapter9Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-9-command-result',
       type: 'drag-drop',
       title: 'لاحظ: الأمر والتنفيذ والنتيجة',
-      instructions: 'ضع كل عبارة من الفصل التاسع في المجموعة المناسبة.',
-      question: 'هل العبارة أمر من الله، أم تنفيذ موسى للأمر، أم ما نتج عن ذلك؟',
+      instructions: 'ضع كل عبارة في مجموعتها: الأمر أو التنفيذ أو النتيجة.',
+      question: 'ماذا أمر الله، وماذا فعل موسى، وماذا حدث؟',
       dragDropGroups: [
         {
           group: 'أمر من الله',
@@ -40,7 +40,7 @@ export const mosesB1LanguageFocusChapter9Ar: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: المضارع بعد «أنْ» وخبر «صار» وحرف الفعل',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما حركة المضارع بعد «أنْ»؟ وما حركة الخبر بعد «صار»؟ وبأيّ حرف يأتي الفعل «توجّه»؟',
+      question: 'ما الكلمة الصحيحة بعد «أنْ» و«صار» و«توجّه»؟',
       formChoices: [
         {
           sentence: '… وأنْ [choice] فرعون الآيات، وأنْ يَدْعُوَهُ إلى هداية الله.',
@@ -69,8 +69,8 @@ export const mosesB1LanguageFocusChapter9Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-9-role-change',
       type: 'transformation',
       title: 'ابنِ: من الأمر المباشر إلى المهمة المنقولة',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الصياغة الجديدة.',
-      question: 'كيف ننقل أمر الله إلى موسى بتركيب «أمر + شخص + أنْ + فعل»؟',
+      instructions: 'اكتب الكلمة الناقصة، وحافظ على المعنى نفسه.',
+      question: 'بماذا أمر الله موسى؟',
       transformItems: [
         {
           source: 'اِذهَبْ بهذه الآيات إلى فرعون',
@@ -95,7 +95,7 @@ export const mosesB1LanguageFocusChapter9Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفقرة الثالثة من الفصل التاسع، وانظر كيف نقل الراوي أمر الله بـ«أمر الله موسى أنْ ...»، ثم غيّر فعل الأمر والضمير بالطريقة نفسها.',
       },
     },
-    {id:'moses-b1-ar-language-9-connected-production',type:'reflection',title:'اشرح مسؤولية جديدة',instructions:'اكتب أو قل خمس جمل مترابطة عن شخص تلقّى تعليمات، نفذها، ثم تحمّل مسؤولية جديدة وبدأ مهمة أخرى. لا تعِد سرد الفصل.',question:'هل تستطيع الربط طبيعيًا بين الأمر، ونقل التعليمات، وتغير الدور، والفعل التالي؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام أمر مباشر، ثم «أمره أن...»، ثم «بعد ذلك» أو «بعد هذا»، و«صار...»، وجملة أخيرة تبين الفعل التالي.',feedback:{correct:'اجعل الجمل الخمس متصلة بحيث تتطور المسؤولية بوضوح من التعليمات إلى الفعل.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — اكتب أمرًا مباشرًا قصيرًا.',mode:'Individual'},{question:'الجملة 2 — انقل الأمر بصيغة «أمره أن...».',mode:'Individual'},{question:'الجملة 3 — بيّن تنفيذ التعليمات ونتيجتها باستخدام الفاء أو ثم عند الحاجة.',mode:'Individual'},{question:'الجملة 4 — استخدم «بعد هذا» و«صار» لبيان مسؤولية أو دور جديد.',mode:'Pair'},{question:'الجملة 5 — اختم بالفعل الذي نتج عن هذه المسؤولية، ويمكنك بيان الغاية بـ«لـ».',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-9-connected-production',type:'reflection',title:'اشرح مسؤولية جديدة',instructions: 'اكتب أو قل خمس جمل عن شخص يتولى مسؤولية جديدة.',question: 'بماذا أُمر هذا الشخص، وماذا تغيّر؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام أمر مباشر، ثم «أمره أن...»، ثم «بعد ذلك» أو «بعد هذا»، و«صار...»، وجملة أخيرة تبين الفعل التالي.',feedback:{correct:'اجعل الجمل الخمس متصلة بحيث تتطور المسؤولية بوضوح من التعليمات إلى الفعل.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — أعطِ أمرًا: «اعتني بـ...»',mode:'Individual'},{ question: 'الجملة 2 — انقل الأمر: «وأمرتها أن ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر ما حدث: «فـ... ثم ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر الدور الجديد: «وبعد هذا، صارت ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر ما تفعله الآن: «وهي الآن ...»',mode:'Pair'}]},
   ],
 };
 
@@ -124,8 +124,8 @@ export const mosesB1LanguageFocusChapter10Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-10-action-result',
       type: 'error-correction',
       title: 'ابنِ: خبر «كان» واسم «لكنّ» ولام التعليل',
-      instructions: 'في كل جملة خطأ واحد في آخر الكلمة. انقر الخطأ ثم اختر التصحيح.',
-      question: 'ما حركة خبر «كان»، واسم «لكنّ»، والمضارع بعد لام التعليل؟',
+      instructions: 'في كل جملة خطأ في آخر كلمة. انقر الخطأ، ثم اختر التصحيح.',
+      question: 'هل تستطيع أن تصحّح آخر الكلمة؟',
       errorItems: [
         {
           sentence: 'كان فرعون جالسٌ على عرْشه،',
@@ -157,7 +157,7 @@ export const mosesB1LanguageFocusChapter10Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-10-purpose-contrast',
       type: 'sentence-building',
       title: 'ابنِ: المحاولة ثم الإدراك',
-      instructions: 'رتّب القطع لتبني جملة الفصل التي تبيّن ماذا عرف موسى بعد محاولته.',
+      instructions: 'رتّب القطع لتكوّن جملة من الفصل.',
       question: 'ماذا عرف موسى بعد أن بذل كلّ جهده في دعوة فرعون؟',
       sentenceChunks: ['وبعد أنْ بذل موسى', 'كلّ جهده في دعوته،', 'عرَف', 'أنّ الكلام وحْده', 'لن ينفعَ', 'مع فرعون.'],
       correctAnswer: null,
@@ -167,7 +167,7 @@ export const mosesB1LanguageFocusChapter10Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفقرة الثالثة من الفصل العاشر. ابدأ بالمحاولة («وبعد أنْ ...»)، ثم الفعل «عرف»، ثم ما عرفه.',
       },
     },
-    {id:'moses-b1-ar-language-10-connected-production',type:'reflection',title:'اشرح تغيير طريقة التعامل',instructions:'اكتب أو قل خمس جمل عربية مترابطة عن شخص جرّب حلًا أولًا، ثم أدرك أنه لا ينفع، فانتقل إلى فعل آخر، وظهرت نتيجة، ثم وضّح غرض الفعل الجديد. لا تُعِد سرد الفصل.',question:'هل تستطيع ربط المحاولة والاستنتاج والاستمرار والنتيجة والغرض في موقف واحد؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام: «بعد أن...»، «عرف أن...»، «ظلّ...»، «عند ذلك...»، «فـ»، «ثم»، «لمّا...»، «لـ»، و«لكنّ».',feedback:{correct:'اجعل الجمل الخمس متصلة بحيث يظهر بوضوح سبب تغيير الطريقة والنتيجة التي تبعتها.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — استخدم «بعد أن...» لبيان المحاولة الأولى.',mode:'Individual'},{question:'الجملة 2 — استخدم «عرف أن...» لبيان الاستنتاج.',mode:'Individual'},{question:'الجملة 3 — استخدم «ظلّ...» أو تركيبًا مناسبًا لبيان استمرار المشكلة، ثم انتقل إلى فعل جديد.',mode:'Individual'},{question:'الجملة 4 — استخدم فـ أو ثم أو لمّا لربط الفعل الجديد بنتيجته.',mode:'Pair'},{question:'الجملة 5 — استخدم لام التعليل لبيان غرض الفعل، ويمكنك إضافة «لكنّ» إذا كان هناك تباين.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-10-connected-production',type:'reflection',title:'اشرح تغيير طريقة التعامل',instructions: 'اكتب أو قل خمس جمل عن شخص جرّب طريقة جديدة لحلّ مشكلة.',question: 'ماذا جرّب أولًا، وماذا فعل بعد ذلك؟',correctAnswer:null,explanation:'حافظ على موقف واحد. يمكنك استخدام: «بعد أن...»، «عرف أن...»، «ظلّ...»، «عند ذلك...»، «فـ»، «ثم»، «لمّا...»، «لـ»، و«لكنّ».',feedback:{correct:'اجعل الجمل الخمس متصلة بحيث يظهر بوضوح سبب تغيير الطريقة والنتيجة التي تبعتها.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — اذكر المحاولة الأولى: «بعد أن حاول ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر ما عرفه: «عرف أنّ ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر الفعل الجديد: «ظلّ ...، فـ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر النتيجة: «فلمّا ...، ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر الغاية: «... لِـ...»',mode:'Pair'}]},
   ],
 };
 
@@ -177,7 +177,7 @@ export const mosesB1LanguageFocusChapter11Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-11-sequence-result',
       type: 'true-false',
       title: 'لاحظ: «بدا كأنّ» و«تحوّل إلى»',
-      instructions: 'اقرأ العبارة، ثم قرّر: هل هي صحيحة أم خاطئة؟',
+      instructions: 'اقرأ العبارة، ثم قرّر: صحيحة أم خاطئة؟',
       question: 'في جملة «فلمّا وقعت العصيّ والحبال على الأرض، بدتْ كأنها أفاعٍ!» صارت عصيّ السحرة وحبالهم أفاعيَ حقيقية.',
       correctAnswer: false,
       explanation: '«بدا» + «كأنّ» تصف مظهرًا فقط: رآها الناس مثل الأفاعي، لكنها بقيت عصيًّا وحبالًا. أما «تحوّل إلى» فتدلّ على تغيّر حقيقي في الشيء نفسه، كما حدث لعصا موسى. و«فلمّا» + فعل ماضٍ بمعنى «فعندما».',
@@ -191,7 +191,7 @@ export const mosesB1LanguageFocusChapter11Ar: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: الإدراك والاستمرار والسبب',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من جمل الفصل.',
-      question: 'أيّ كلمة تربط الرؤية بالإدراك؟ وأيّها تعبّر عن استمرار الرفض؟ وأيّها تذكر سببه؟',
+      question: 'لماذا ظلّ فرعون يرفض الإيمان؟',
       fillBlanksText: 'رأى السحرة هذه المعجزة، [blank] أنّها ليستْ سِحْرًا. … [blank] فرعون يرفُض الإيمان بالله؛ [blank] كان متكبِّرًا. ولم يُرِدْ أنْ يترك الذين يعبدون الله أحياءً. واستمرّ في إِيذَاء موسى عليه السلام وقومه ليلًا ونهارًا.',
       wordBank: ['فعرَفوا', 'ظلّ', 'لأنه', 'بسبب', 'كأنّ', 'فجأة'],
       correctAnswer: ['فعرَفوا', 'ظلّ', 'لأنه'],
@@ -205,8 +205,8 @@ export const mosesB1LanguageFocusChapter11Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-11-persistence-cause',
       type: 'sequencing',
       title: 'ابنِ: رتّب المشهد بالروابط',
-      instructions: 'رتّب الجمل كما جاءت في الفصل الحادي عشر. استعن بالكلمات الرابطة.',
-      question: 'كيف تساعدك «عندما» و«لكنّ» والفاء و«وفي لحظة» على ترتيب المشهد؟',
+      instructions: 'رتّب الجمل كما جاءت في الفصل الحادي عشر.',
+      question: 'ماذا حدث في المباراة بين موسى والسحرة؟',
       sequencingItems: [
         { id: '1', text: 'فوضَعوا العِصِيّ والحِبال على الأرض.' },
         { id: '2', text: 'عندما رآها موسى عليه السلام، خاف في نفسه.' },
@@ -221,7 +221,7 @@ export const mosesB1LanguageFocusChapter11Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفقرتين الثانية والثالثة من الفصل الحادي عشر، وابحث عن «عندما» و«لكنّ» والفاء.',
       },
     },
-    {id:'moses-b1-ar-language-11-connected-production',type:'reflection',title:'صِف نقطة تحوّل',instructions:'اكتب أو قل خمس جمل عربية مترابطة عن موقف غير قصصي يبدأ بأمر، ثم فعل ونتيجة، ثم يغيّر بعض الناس موقفهم بينما يستمر شخص آخر في الرفض. لا تُعِد سرد الفصل.',question:'هل تستطيع ربط الأمر والفعل والنتيجة والإدراك والاستمرار والسبب في فقرة قصيرة؟',correctAnswer:null,explanation:'يمكنك استخدام: فعل أمر، «فلمّا/عندما»، «فـ»، «كأنّ»، «عرف أن...»، «لكنّ»، «ظلّ + مضارع»، و«لأنّ».',feedback:{correct:'حافظ على موقف واحد واجعل سبب استمرار الرفض واضحًا في النهاية.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — ابدأ بأمر مباشر.',mode:'Individual'},{question:'الجملة 2 — استخدم «فـ» أو «فلمّا» لربط تنفيذ الفعل بنتيجته.',mode:'Individual'},{question:'الجملة 3 — استخدم «عرف أن...» لبيان استنتاج شخص أو مجموعة.',mode:'Individual'},{question:'الجملة 4 — استخدم «لكنّ» و«ظلّ + مضارع» لوصف شخص لم يغيّر موقفه.',mode:'Pair'},{question:'الجملة 5 — استخدم «لأنّ» لشرح سبب استمرار هذا الموقف.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-11-connected-production',type:'reflection',title:'صِف نقطة تحوّل',instructions: 'اكتب أو قل خمس جمل عن فكرة جديدة يقبلها أكثر الناس.',question: 'من يغيّر رأيه، ومن لا يغيّره؟',correctAnswer:null,explanation:'يمكنك استخدام: فعل أمر، «فلمّا/عندما»، «فـ»، «كأنّ»، «عرف أن...»، «لكنّ»، «ظلّ + مضارع»، و«لأنّ».',feedback:{correct:'حافظ على موقف واحد واجعل سبب استمرار الرفض واضحًا في النهاية.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — أعطِ أمرًا: «جرّبوا ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر النتيجة: «فلمّا ...، ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر من فهم: «فعرف أكثرهم أنّ ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر من لم يتغيّر: «لكنّ ... ظلّ ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر السبب: «لأنّه ...»',mode:'Pair'}]},
   ],
 };
 
@@ -251,7 +251,7 @@ export const mosesB1LanguageFocusChapter12Ar: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: «عليكم أنْ» و«لم يستطع أنْ» وأمر الجماعة',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ماذا يحدث للمضارع بعد «أنْ» مع الجماعة؟ وما صيغة الأمر لجماعة؟',
+      question: 'ما الكلمة الصحيحة عندما نكلّم جماعة؟',
       formChoices: [
         {
           sentence: 'لكن عليكم أنْ [choice] الأمر سرًّا.',
@@ -280,8 +280,8 @@ export const mosesB1LanguageFocusChapter12Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-12-time-reassurance',
       type: 'matching',
       title: 'ابنِ: معاني عبارات الخروج والمطاردة',
-      instructions: 'صِل كل عبارة من الفصل الثاني عشر بمعناها في السياق.',
-      question: 'ماذا تعني هذه العبارات في مشهد الخروج من مصر؟',
+      instructions: 'صِل كل عبارة من الفصل الثاني عشر بمعناها.',
+      question: 'ماذا تقول هذه العبارات عن الخروج من مصر؟',
       matchingHeadings: { left: 'من الفصل', right: 'المعنى' },
       matchingPairs: [
         { left: 'وتعِبوا سريعًا', right: 'فقدوا قوّتهم بعد وقت قصير' },
@@ -303,7 +303,7 @@ export const mosesB1LanguageFocusChapter12Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفقرات الثلاث الأخيرة من الفصل الثاني عشر، واقرأ ما قبل كل عبارة وما بعدها.',
       },
     },
-    {id:'moses-b1-ar-language-12-connected-production',type:'reflection',title:'اشرح خطة جماعية صعبة',instructions:'اكتب أو قل خمس جمل عربية مترابطة عن مجموعة غير قصصية يجب أن تغادر بهدوء، وفيها أشخاص لا يستطيعون الحركة بسرعة، ثم تلحق بها مجموعة أخرى، ويطمئنها قائدها. لا تُعِد سرد الفصل.',question:'هل تستطيع ربط الأمر والوجوب وعدم الاستطاعة والنتيجة والزمن والطمأنينة في فقرة قصيرة؟',correctAnswer:null,explanation:'يمكنك استخدام: فعل أمر، «عليكم أن»، «لا ينبغي أن»، «لم يستطع أن»، «لذلك»، «عندما»، «فـ/و»، «إنّ»، و«سيـ».',feedback:{correct:'حافظ على موقف واحد، واجعل الطمأنينة في الجملة الأخيرة استجابة طبيعية للمشكلة.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — ابدأ بأمر مباشر واذكر الخطة.',mode:'Individual'},{question:'الجملة 2 — استخدم «عليكم أن» أو «لا ينبغي أن» لذكر قاعدة للخطة.',mode:'Individual'},{question:'الجملة 3 — استخدم «لم يستطع أن» و«لذلك» لربط صعوبة بنتيجتها.',mode:'Individual'},{question:'الجملة 4 — استخدم «عندما» لوصف بدء المطاردة أو تغيّر الموقف.',mode:'Pair'},{question:'الجملة 5 — اختم بطمأنينة تستخدم «إنّ» و«سيـ» للمستقبل.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-12-connected-production',type:'reflection',title:'اشرح خطة جماعية صعبة',instructions: 'اكتب أو قل خمس جمل عن رحلة جماعية فيها مشكلة.',question: 'ما الخطة، وكيف يطمئن القائد المجموعة؟',correctAnswer:null,explanation:'يمكنك استخدام: فعل أمر، «عليكم أن»، «لا ينبغي أن»، «لم يستطع أن»، «لذلك»، «عندما»، «فـ/و»، «إنّ»، و«سيـ».',feedback:{correct:'حافظ على موقف واحد، واجعل الطمأنينة في الجملة الأخيرة استجابة طبيعية للمشكلة.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — اذكر الخطة: «استعدّوا! سنـ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر قاعدة: «عليكم أن ... / لا ينبغي أن ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر صعوبة ونتيجتها: «لم يستطع ... أن ...، لذلك ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر من لحق بكم: «وعندما ...، ...»',mode:'Pair'},{ question: 'الجملة 5 — طمئن المجموعة: «لا تقلقوا، إنّ ...، وسـ...»',mode:'Pair'}]},
   ],
 };
 
@@ -313,8 +313,8 @@ export const mosesB1LanguageFocusChapter13Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-13-command-event-result',
       type: 'drag-drop',
       title: 'لاحظ: الحدث والدرس العامّ',
-      instructions: 'ضع كل عبارة من الفصل الثالث عشر في المجموعة المناسبة.',
-      question: 'هل تروي العبارة شيئًا حدث مرة واحدة في القصة، أم تقدّم درسًا عامًّا يصدق في كل زمن؟',
+      instructions: 'ضع كل عبارة في مجموعتها: حدث في القصة أو درس عام.',
+      question: 'ما الذي حدث مرة واحدة، وما الدرس لكل زمن؟',
       dragDropGroups: [
         {
           group: 'حدث وقع في القصة',
@@ -339,8 +339,8 @@ export const mosesB1LanguageFocusChapter13Ar: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-13-time-change-consequence',
       type: 'transformation',
       title: 'ابنِ: من الكلام المباشر إلى الكلام المنقول',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الصياغة الجديدة.',
-      question: 'كيف ننقل أمرًا مباشرًا بتركيب «أمر + شخص + أنْ + فعل»؟ وماذا يتغيّر في الضمير عندما ننقل الكلام؟',
+      instructions: 'اكتب الكلمة الناقصة، وحافظ على المعنى نفسه.',
+      question: 'كيف ننقل أمرًا قاله شخص؟',
       transformItems: [
         {
           source: 'فقال الله لموسى عليه السلام: «اِضرِبِ البحرَ بعصاك!».',
@@ -370,7 +370,7 @@ export const mosesB1LanguageFocusChapter13Ar: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: الزمن والنتيجة والغاية',
       instructions: 'ضع الكلمة المناسبة في كل فراغ من جمل الفصل.',
-      question: 'أيّ كلمة تعني «عندما»؟ وأيّها تبيّن ما حدث مباشرة بعد أمر الله؟ وأيّها تبيّن الغاية من إرسال الأنبياء؟',
+      question: 'أيّ كلمة تناسب كل فراغ؟',
       fillBlanksText: '[blank] لمَست العصا ماء البحر، حدثت معجزة! … [blank] البحر عليهم، فغرِقوا جميعًا. … أرْسل الله الأنبياء [blank] الناس إلى حياة طيّبة، …',
       wordBank: ['ولمّا', 'فانطبق', 'ليَهدوا', 'ليَهدون', 'بسبب'],
       correctAnswer: ['ولمّا', 'فانطبق', 'ليَهدوا'],
@@ -380,6 +380,6 @@ export const mosesB1LanguageFocusChapter13Ar: Record<number, Exercise[]> = {
         incorrect: 'ارجع إلى الفقرات الثانية والرابعة والأخيرة من الفصل الثالث عشر، واسأل عند كل فراغ: هل أحتاج إلى وقت، أم نتيجة مباشرة، أم غاية؟',
       },
     },
-    {id:'moses-b1-ar-language-13-connected-production',type:'reflection',title:'من الحدث إلى الدرس',instructions:'اكتب أو قل خمس جمل عربية مترابطة عن موقف غير قصصي يعطي فيه قائد أمرًا، ثم يتغيّر الموقف، وتظهر نتيجة، وبعد ذلك تشرح المجموعة ما تعلّمته. لا تُعِد سرد الفصل.',question:'هل تستطيع الانتقال من الأمر والزمن إلى النتيجة والغرض والدرس العام؟',correctAnswer:null,explanation:'يمكنك استخدام: فعل أمر، «لمّا» أو «عندما»، «فـ» للنتيجة، لام التعليل، و«هذا يذكّرنا أنّ...» أو «هذا يبيّن أنّ...».',feedback:{correct:'حافظ على موقف واحد، واجعل الدرس الأخير مرتبطًا طبيعيًا بما حدث قبله.',incorrect:''},discussionPrompts:[{question:'الجملة 1 — ابدأ بأمر مباشر.',mode:'Individual'},{question:'الجملة 2 — استخدم «لمّا» أو «عندما» لتقديم الحدث التالي.',mode:'Individual'},{question:'الجملة 3 — استخدم الفاء لبيان النتيجة.',mode:'Individual'},{question:'الجملة 4 — استخدم لام التعليل لبيان الغرض من فعل ما.',mode:'Pair'},{question:'الجملة 5 — اختم بـ«هذا يذكّرنا أنّ...» أو «هذا يبيّن أنّ...» لاستخلاص درس عام.',mode:'Pair'}]},
+    {id:'moses-b1-ar-language-13-connected-production',type:'reflection',title:'من الحدث إلى الدرس',instructions: 'اكتب أو قل خمس جمل عن حدث والدرس الذي تعلّمته منه.',question: 'ماذا حدث، وماذا تعلّمت؟',correctAnswer:null,explanation:'يمكنك استخدام: فعل أمر، «لمّا» أو «عندما»، «فـ» للنتيجة، لام التعليل، و«هذا يذكّرنا أنّ...» أو «هذا يبيّن أنّ...».',feedback:{correct:'حافظ على موقف واحد، واجعل الدرس الأخير مرتبطًا طبيعيًا بما حدث قبله.',incorrect:''},discussionPrompts:[{ question: 'الجملة 1 — أعطِ أمرًا: «نظّفوا ...»',mode:'Individual'},{ question: 'الجملة 2 — اذكر ما حدث: «ولمّا بدأنا، ...»',mode:'Individual'},{ question: 'الجملة 3 — اذكر النتيجة: «فـ...»',mode:'Individual'},{ question: 'الجملة 4 — اذكر الغاية: «... لِـ...»',mode:'Pair'},{ question: 'الجملة 5 — اذكر الدرس: «هذا يذكّرنا أنّ ...»',mode:'Pair'}]},
   ],
 };

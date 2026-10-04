@@ -10,8 +10,8 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-1-time-frame',
       type: 'drag-drop',
       title: 'لاحظ: السبب والنتيجة',
-      instructions: 'ضع كل عبارة من الفصل الأول في المجموعة المناسبة.',
-      question: 'في الفصل جملتان تبدآن بـ«لذلك» و«ولهذا السبب». أيّ العبارات تذكر السبب، وأيّها تذكر ما نتج عنه؟',
+      instructions: 'ضع كل عبارة في مجموعتها: السبب أو النتيجة.',
+      question: 'ما الذي حدث، ولماذا حدث؟',
       dragDropGroups: [
         {
           group: 'السبب',
@@ -51,7 +51,7 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: «خاف أنْ» و«أجبر على» و«بقي يفعل»',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'ما صيغة الفعل بعد «أنْ» وبعد «بقي»؟ وما الحرف الذي يأتي بعد «أجبر»؟',
+      question: 'ما الكلمة الصحيحة بعد «أنْ» و«بقي» و«أجبر»؟',
       formChoices: [
         {
           sentence: 'خاف أنْ [choice] عددهم، وأنْ تخرج المملكة من يده.',
@@ -81,7 +81,7 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'ابنِ: الإطار الزمني',
       instructions: 'ضع الكلمة أو العبارة المناسبة في كل فراغ من جمل الفصل.',
-      question: 'أيّ تعبير يحدّد الفترة التاريخية، وأيّها يقيس المسافة الزمنية، وأيّها يصف الخلفية، وأيّها ينقل السرد إلى وقت لاحق؟',
+      question: 'أيّ تعبير زمني يناسب كل جملة؟',
       fillBlanksText: 'وعاش هناك [blank] القرْن الثالث عشر قبل الميلاد، [blank] أكثرَ من ثلاثة آلاف عام. [blank]، كان فرعون يحكُم مصر. … [blank] السنوات، …',
       wordBank: ['في', 'منْذ', 'في ذلك الوقت', 'مرّت', 'عندما', 'لذلك'],
       correctAnswer: ['في', 'منْذ', 'في ذلك الوقت', 'مرّت'],
@@ -95,8 +95,8 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-1-connected-account',
       type: 'reflection',
       title: 'ابنِ فقرة مترابطة',
-      instructions: 'اكتب أو قل خمس جمل مترابطة عن موقف تاريخي مختلف، واستعمل أربعة تراكيب على الأقل من هذا التركيز اللغوي.',
-      question: 'هل تستطيع تحديد الزمن، وذكر خوف أو احتمال، وربط السبب بالنتيجة، ثم وصف فعل مفروض أو حالة استمرت؟',
+      instructions: 'اكتب أو قل خمس جمل عن زمن آخر في التاريخ.',
+      question: 'هل تستطيع أن تحكي قصة قصيرة من التاريخ؟',
       correctAnswer: null,
       explanation: 'الإجابة الجيدة تكون فقرة قصيرة مترابطة لا جملًا منفصلة. يمكنك استعمال: «في ذلك الوقت...»، «خاف أن...»، «لذلك/ولهذا السبب...»، «أجبر... على...»، «بقي... يفعل...».',
       feedback: {
@@ -104,11 +104,11 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة 1 — حدّد الزمن بـ«في ذلك الوقت...» أو تعبير تاريخي مناسب.', mode: 'Individual' },
-        { question: 'الجملة 2 — اذكر خوفًا أو احتمالًا باستخدام «خاف أن...».', mode: 'Individual' },
-        { question: 'الجملة 3 — أضف نتيجة أو سببًا بـ«لذلك» أو «ولهذا السبب».', mode: 'Individual' },
-        { question: 'الجملة 4 — صف فعلًا مفروضًا باستخدام «أجبر... على...».', mode: 'Pair' },
-        { question: 'الجملة 5 — عبّر عن الاستمرار باستخدام «بقي... يفعل...».', mode: 'Pair' },
+        { question: 'الجملة 1 — اذكر الزمن: «في ذلك الوقت، ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — اذكر خوفًا: «خاف ... أن ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — أضف نتيجة: «لذلك ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — اذكر ما أُجبر عليه الناس: «أجبروهم على ...»', mode: 'Pair' },
+        { question: 'الجملة 5 — اذكر ما استمرّ: «وبقي ... يفعل ...»', mode: 'Pair' },
       ],
     },
   ],
@@ -117,8 +117,8 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-2-reporting-future',
       type: 'sequencing',
       title: 'لاحظ: «عندما» و«ثم» في ترتيب الأحداث',
-      instructions: 'رتّب الجمل كما جاءت في الفصل الثاني. استعن بالكلمات الرابطة.',
-      question: 'أيّ الكلمات تساعدك على معرفة الترتيب: «عندما»، «ثم»، «لكنّ»؟',
+      instructions: 'رتّب الجمل كما جاءت في الفصل الثاني. «عندما» و«ثم» تساعدانك.',
+      question: 'ماذا حدث بعد حلم فرعون؟',
       sequencingItems: [
         { id: '1', text: 'عندما استيقظ، دعا جميع مُستشارِيه وسَحَرَته، وسألهم عن الحُلم.' },
         { id: '2', text: 'ثم قال فرعون لجنوده: «اُقتُلوا جميع المواليد الذُّكور من بني إسرائيل».' },
@@ -138,7 +138,7 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'ابنِ: المستقبل والنصب والجزم',
       instructions: 'اختر الصيغة الصحيحة لتكمل جملة الفصل.',
-      question: 'كيف نعبّر عن حدث سيقع في المستقبل؟ وما صيغة المضارع بعد «لم» وبعد «أنْ»؟',
+      question: 'ما الكلمة الصحيحة بعد «لم» و«أنْ»؟ وكيف نتكلم عن المستقبل؟',
       formChoices: [
         {
           sentence: 'فقالوا: «[choice] صبيّ من بني إسرائيل …»',
@@ -167,8 +167,8 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-2-fear-result',
       type: 'transformation',
       title: 'ابنِ: من الكلام المباشر إلى الكلام المنقول',
-      instructions: 'اقرأ الجملة من الفصل، ثم اكتب الكلمة الناقصة في الصياغة الجديدة.',
-      question: 'ماذا يتغيّر في الفعل عندما ننقل أمرًا؟ وماذا يتغيّر في الضمير عندما يتكلّم الشخص عن نفسه؟',
+      instructions: 'اكتب الكلمة الناقصة، وحافظ على المعنى نفسه.',
+      question: 'كيف ننقل كلام شخص آخر؟',
       transformItems: [
         {
           source: 'ثم قال فرعون لجنوده: «اُقتُلوا جميع المواليد الذُّكور من بني إسرائيل».',
@@ -197,8 +197,8 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
       id: 'moses-b1-ar-language-2-connected-response',
       type: 'reflection',
       title: 'انقل تحذيرًا وابنِ استجابة',
-      instructions: 'اكتب أو قل خمس جمل مترابطة عن موقف مختلف يتلقى فيه شخص تحذيرًا ثم يقرر كيف يتصرف.',
-      question: 'هل تستطيع نقل تنبؤ أو قول، وإضافة أمر مباشر، ووصف خوف ونتيجته، ثم إنهاء الموقف باستجابة أو طلب للمساعدة؟',
+      instructions: 'اكتب أو قل خمس جمل عن شخص يسمع تحذيرًا.',
+      question: 'ماذا يحدث بعد التحذير؟',
       correctAnswer: null,
       explanation: 'اجعل الجمل الخمس جزءًا من موقف واحد. يمكنك استعمال «قالوا: سي...»، وفعل أمر، و«عندما/ثم»، و«خائف جدًا حتى إن...»، و«يخاف أن...»، و«لم يعرف ماذا يفعل».',
       feedback: {
@@ -206,11 +206,11 @@ export const mosesB1LanguageFocusExercisesAr: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'الجملة 1 — انقل تحذيرًا أو تنبؤًا عن حدث لاحق.', mode: 'Individual' },
-        { question: 'الجملة 2 — أضف أمرًا مباشرًا مرتبطًا بذلك التحذير.', mode: 'Individual' },
-        { question: 'الجملة 3 — حرّك الموقف إلى الأمام باستخدام «عندما» أو «ثم».', mode: 'Individual' },
-        { question: 'الجملة 4 — عبّر عن خوف شديد ونتيجته بـ«حتى إنّ...» أو عن احتمال مخيف بـ«يخاف أن...».', mode: 'Pair' },
-        { question: 'الجملة 5 — اختم بحيرة أو قرار أو طلب للمساعدة.', mode: 'Pair' },
+        { question: 'الجملة 1 — انقل التحذير: «قال ... إنّ ... سـ...»', mode: 'Individual' },
+        { question: 'الجملة 2 — أعطِ أمرًا: «ابقَوا ... / أغلقوا ...»', mode: 'Individual' },
+        { question: 'الجملة 3 — تابع القصة: «عندما ...» أو «ثم ...»', mode: 'Individual' },
+        { question: 'الجملة 4 — صف خوفًا شديدًا: «كان خائفًا جدًّا، حتى إنّه ...»', mode: 'Pair' },
+        { question: 'الجملة 5 — اختم بقرار أو بطلب مساعدة.', mode: 'Pair' },
       ],
     },
   ],
