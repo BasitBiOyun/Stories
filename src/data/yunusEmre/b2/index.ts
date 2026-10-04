@@ -13,7 +13,7 @@ import { yunusB2StoryMapLayout } from './storyMap';
 import { yunusB2StoryMapCopyEn } from './en/storyMap';
 import { yunusB2StoryMapCopyAr } from './ar/storyMap';
 
-// Interactive map page, placed after the last chapter (before the References page): the story is read without a break, then the whole journey is seen on the map.
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
 const MAP_PAGE_ID = 101;
 const MAP_AFTER_CHAPTER = 13;
 

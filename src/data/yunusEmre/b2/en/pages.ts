@@ -403,38 +403,6 @@ It is obvious that Yunus Emre was not only a prominent figure in his own time bu
       { id: 'h13-2', x: 68, y: 70, title: 'Guide for Generations', description: 'Yunus Emre’s writings are valuable both as literary works and as a moral guide for future generations.' },
     ],
   },
-  {
-    id: 14,
-    type: 'story',
-    title: 'References',
-    image: '',
-    audioUrl: '',
-    content: `Bulduk, Üçler. "Yunus Emre Çağında Anadolu’nun Siyasal ve Sosyal Durumu," DTCF Dergisi Yunus Emre Özel Sayısı, 2021, s. 57-67.
-
-Gürer, Banu. "Yunus Emre," Türk Maarif Ansiklopedisi, https://turkmaarifansiklopedisi.org.tr/yunus-emre.
-
-Kara, Mustafa. "Tekke," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/tekke.
-
-Ocak, Ahmet Yaşar. "Babaîlik," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/babailik.
-
-Ocak, Ahmet Yaşar. Babaîler İsyanı, Dergah Yayınları, İstanbul, 2011.
-
-Öngören, Reşat. "Sûfî," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/sufi.
-
-Sevim, Ali. "Keyhüsrev II," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keyhusrev-ii.
-
-Sümer, Faruk. "Keykubad I," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keykubad-i.
-
-Sümer, Faruk. "Kösedağ Savaşı," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/kosedag-savasi.
-
-Tatcı, Mustafa. "Yûnus Emre," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/yunus-emre.
-
-Yazıcı, Tahsin. "Derviş," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/dervis.
-
-Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerler," I. Ulusal Yunus Emre Sempozyumu, Karaman, 2010, s. 101-116.`,
-    vocabulary: [],
-    hotspots: [],
-  },
   { id: 15, type: 'quiz', title: 'Knowledge Check', image: '', audioUrl: '', content: 'Check whole-book comprehension with eight evidence-based questions.' },
   { id: 16, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: '', audioUrl: '', content: 'Match ten important story words with distinct meanings.' },
   { id: 17, type: 'glossary', title: 'Master Glossary', image: '', content: 'Review all key vocabulary from the story in one place.', vocabulary: [] },

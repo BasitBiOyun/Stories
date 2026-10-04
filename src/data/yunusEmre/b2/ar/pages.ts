@@ -339,33 +339,6 @@ Buşu kimdeyise imanı gider
     ],
     hotspots: [{ id: 'h13-1', x: 30, y: 41, title: 'قيمة في الفعل', description: 'مدحت أبيات يونس الصبر الذي تكمن فيه كل أنواع المهارات، وحذّرت من أن الغضب يُفقد المرء إيمانه.' }, { id: 'h13-2', x: 68, y: 70, title: 'الإرث', description: 'تُعدّ كتابات يونس ذات قيمة بوصفها أعمالًا أدبية، وبوصفها أيضًا دليلًا أخلاقيًا للأجيال القادمة.' }],
   },
-  {
-    id: 14, type: 'story', title: 'الْمَصَادِرُ وَالْمَرَاجِعُ', image: '', audioUrl: '',
-    content: `Bulduk, Üçler. "Yunus Emre Çağında Anadolu’nun Siyasal ve Sosyal Durumu," DTCF Dergisi Yunus Emre Özel Sayısı, 2021, s. 57-67.
-
-Gürer, Banu. "Yunus Emre," Türk Maarif Ansiklopedisi, https://turkmaarifansiklopedisi.org.tr/yunus-emre.
-
-Kara, Mustafa. "Tekke," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/tekke.
-
-Ocak, Ahmet Yaşar. "Babaîlik," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/babailik.
-
-Ocak, Ahmet Yaşar. Babaîler İsyanı, Dergah Yayınları, İstanbul, 2011.
-
-Öngören, Reşat. "Sûfî," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/sufi.
-
-Sevim, Ali. "Keyhüsrev II," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keyhusrev-ii.
-
-Sümer, Faruk. "Keykubad I," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/keykubad-i.
-
-Sümer, Faruk. "Kösedağ Savaşı," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/kosedag-savasi.
-
-Tatcı, Mustafa. "Yûnus Emre," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/yunus-emre.
-
-Yazıcı, Tahsin. "Derviş," TDV İslâm Ansiklopedisi, https://islamansiklopedisi.org.tr/dervis.
-
-Yeniterzi, Emine. "Mesnevi-i Şerif ve Risaletü’n-Nushiyye’de Ortak Değerler," I. Ulusal Yunus Emre Sempozyumu, Karaman, 2010, s. 101-116.`,
-    vocabulary: [], hotspots: [],
-  },
   { id: 15, type: 'quiz', title: 'اختبار المعرفة', image: '', audioUrl: '', content: 'اختبر فهم الكتاب بثمانية أسئلة قائمة على الدليل.' },
   { id: 16, type: 'vocabulary-match', title: 'تحدي المفردات B2', image: '', audioUrl: '', content: 'طابق عشر كلمات محورية بمعانيها في سياق القصة.' },
   { id: 17, type: 'glossary', title: 'المعجم الرئيسي', image: '', content: 'راجع جميع مفردات القصة المهمة في مكان واحد.', vocabulary: [] },
