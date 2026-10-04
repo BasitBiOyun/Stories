@@ -185,8 +185,8 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'abraham-b1-language-review-1-habit-background-event', type: 'drag-drop', title: 'Notice: Habit, Background or Event?',
-    instructions: 'Read the parts of Chapters 2, 3, 6, 10 and 12. Does each part describe a past habit, an action in progress in the background, or one event that moves the story on? Put it in the right group.',
-    question: 'How does the book show the difference between a habit, a background action and a single event?',
+    instructions: 'A habit, a background action, or one event? Put each part in the right group.',
+    question: 'Which parts are habits, background actions or single events?',
     dragDropGroups: [
       { group: 'A habit in the past', items: ['But Abraham used to play with these idols as toys …', 'All the people usually went outside of town …'] },
       { group: 'An action in progress (background)', items: ['… they were still showing love and respect to idols.', 'While the little child Ishmael was crying with thirst …'] },
@@ -203,7 +203,7 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   {
     id: 'abraham-b1-language-review-2-could-in-context', type: 'matching', title: 'Notice: What Does “Could” Do?',
     matchingHeadings: { left: 'From the book', right: 'What “could” shows here' },
-    instructions: 'Read the sentences from Chapters 1, 3, 8 and 10. Match each one with the job that could / couldn’t does in it.',
+    instructions: 'Read the sentences from the book. Match each one with what “could” means.',
     question: 'The book uses “could” again and again. Does it always mean the same thing?',
     matchingPairs: [
       { left: '… see it as a god which could help or harm him.', right: 'an ability that people wrongly believed in' },
@@ -237,7 +237,7 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   // BUILD — use the forms in the book's own sentences, mixing chapters.
   {
     id: 'abraham-b1-language-review-4-reason-result-contrast', type: 'word-bank', title: 'Build: Reason, Result and Surprise',
-    instructions: 'Complete the lines from Chapters 4, 9 and 10 with words from the bank. Two words are not needed.',
+    instructions: 'Complete the lines from the book with words from the bank. Two are not needed.',
     question: 'Which word gives a reason, which gives a result, and which show an unexpected contrast?',
     fillBlanksText: 'He recognized that he should guide his people [blank] Allah chose him to be His Messenger. … People felt embarrassed by the miracle, [blank] their anger and arrogance remained unchanged. Prophet Abraham (pbuh) tried every way to show them their error; [blank], their rage didn’t calm down. … Abraham (pbuh) realized that nobody was going to listen to his message. [blank], he decided to leave Babylon …',
     wordBank: ['because', 'yet', 'however', 'Therefore', 'because of', 'so'],
@@ -260,8 +260,8 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b1-language-review-6-passive-and-time', type: 'error-correction', title: 'Build: Fix the Verb Form',
-    instructions: 'Each sentence has one mistake in a verb form. Tap the mistake, then choose the correction.',
-    question: 'Can you correct a passive verb and a verb after “until”?',
+    instructions: 'Each sentence has one mistake in a verb. Tap it, then choose the correction.',
+    question: 'Can you fix the verb forms?',
     errorItems: [
       { sentence: 'But these prayers and wishes could not be hear or understood by the statues!', error: 'be hear', options: ['be heard', 'been heard', 'be hearing'], answer: 0 },
       { sentence: 'Prophet Abraham’s (pbuh) hands and feet was tied, and he was placed on a catapult.', error: 'was tied', options: ['were tied', 'were tying', 'tied'], answer: 0 },
@@ -287,7 +287,7 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'abraham-b1-language-review-8-new-context', type: 'word-bank', title: 'Use: Our Recycling Project',
-    instructions: 'This text is not from the book. Complete it with forms you practised in the book. Three words are not needed.',
+    instructions: 'This text is new. Complete it with words from the bank. Three are not needed.',
     question: 'Can you use the book’s language to tell the story of a class project?',
     fillBlanksText: 'Last year, many students in our class [blank] throw paper into the rubbish bin. One day, our teacher, Mrs Demir, asked us to make a recycling box. We made a plan, but we did not tell the other classes what we [blank] to do. At first, some students laughed at the idea. We did not give up, [blank]. After two months, the box was [blank] full that we needed a second one. Now, every Friday, the paper [blank] to a recycling centre in our town.',
     wordBank: ['used to', 'were going', 'though', 'so', 'is taken', 'use to', 'such', 'takes'],
@@ -297,7 +297,7 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b1-language-review-9-new-context', type: 'error-correction', title: 'Use: Check a Friend’s Sentences',
-    instructions: 'A friend wrote these sentences about school. Each one has one mistake. Tap the mistake, then choose the correction.',
+    instructions: 'A friend wrote these sentences. Each has one mistake. Tap it, then choose the correction.',
     question: 'Can you use the rules from the book to correct new sentences?',
     errorItems: [
       { sentence: 'Our coach made us to run around the school field three times.', error: 'to run', options: ['run', 'running', 'ran'], answer: 0 },
@@ -310,16 +310,16 @@ export const abrahamB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'abraham-b1-language-review-10-transfer', type: 'reflection', title: 'Use: A Plan That Changed Something',
-    instructions: 'Write five or six connected sentences about a plan or project that changed something in your school, family or town. Tell your story to a partner first. Do not retell Abraham’s story.',
-    question: 'Can you use the language of the whole book to tell a real story from your own life?',
+    instructions: 'Write five or six sentences about a plan that changed your life. Tell a partner first.',
+    question: 'What was the plan, and what did it change?',
     correctAnswer: null,
     explanation: 'Example: Two years ago, the children in our street used to play on a dirty piece of land. One day, while we were cleaning our bikes, our neighbour Mr Aydın told us to write to the town council. We sent a letter, but we did not know what they were going to say. However, they said yes, so the rubbish was collected and new trees were planted. The park was so beautiful that everybody came to see it. Today we still play there every afternoon.',
     feedback: { correct: 'Check your sentences: used to for a past habit, while + was/were -ing for the background, told/asked + person + to, was/were going to, a passive (was/were + past participle), a linker (however, so, because) and so … that.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentences 1–2 — Before and the start: “… used to …”, “One day, while … was/were -ing, …”', mode: 'Individual' },
-      { question: 'Sentence 3 — An instruction and a plan: “… told/asked us to …”, “We didn’t know what … was/were going to …”', mode: 'Individual' },
-      { question: 'Sentence 4 — The work and a turn: a passive (“… was/were cleaned / painted / planted”) and a linker (however / so / because)', mode: 'Pair' },
-      { question: 'Sentences 5–6 — The result: “It was so … that …”, “Today … still …”', mode: 'Pair' },
+      { question: 'Sentences 1–2 — Before: “We used to …” “One day, while we were …ing, …”', mode: 'Individual' },
+      { question: 'Sentence 3 — The plan: “… asked us to …” “We didn’t know what we were going to …”', mode: 'Individual' },
+      { question: 'Sentence 4 — The work: “… was cleaned / painted / planted”, with “however”, “so” or “because”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — The result: “It was so … that …” “Today … still …”', mode: 'Pair' },
     ],
   },
 ];

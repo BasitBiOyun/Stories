@@ -1,7 +1,7 @@
 import type { Exercise } from '../../../../types';
 
 const feedback={correct:'Correct. You used the chapter language and relationship accurately.',incorrect:'Not yet. Return to the chapter wording and check the relationship the form expresses.'};
-const reflect=(id:string,title:string,question:string,prompts:string[],explanation:string):Exercise=>({id,type:'reflection',title,instructions:'Use the target language to produce a short B2 response.',question,correctAnswer:null,explanation,feedback,discussionPrompts:prompts.map(q=>({question:q,mode:'Individual'}))});
+const reflect=(id:string,title:string,question:string,prompts:string[],explanation:string,instructions:string='Use the target language to produce a short B2 response.'):Exercise=>({id,type:'reflection',title,instructions,question,correctAnswer:null,explanation,feedback,discussionPrompts:prompts.map(q=>({question:q,mode:'Individual'}))});
 const pairsToAnswer=(pairs:{left:string;right:string}[])=>Object.fromEntries(pairs.map(p=>[p.left,p.right]));
 
 const ch11Pairs=[
@@ -68,15 +68,15 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 3 and 4 of Chapter 10. Which blank needs a word after “not”, which needs a preposition before “their social status”, and which one is followed by a noun phrase?',
     },
   },
-  reflect('me-b2-lf10c','Write a Qualified Comparison','Can you compare women’s experiences without turning one example into a universal rule?',['Write 5–6 sentences using not always, according to, despite, however, and one example from Khadija or Hind alongside the lower-status women.'],'B2 social description should make the scope and limits of a claim visible.')
+  reflect('me-b2-lf10c','Write a Qualified Comparison','Were all women’s lives the same?',['Use “not always”, “according to”, “despite” and “however”. Give Khadija or Hind as one example.'],'B2 social description should make the scope and limits of a claim visible.','Write or say five or six sentences comparing the lives of different women.')
 ],
 11:[
   {
     id: 'me-b2-lf11a',
     type: 'matching',
     title: 'Poets as a Media Outlet',
-    instructions: 'The writer says that poets were, “in a sense”, serving as a media outlet. Match each thing poetry did with the modern media role it resembles.',
-    question: 'How far does the comparison between poets and the media work?',
+    instructions: 'The writer says poets were “in a sense” the media. Match each job with a media role.',
+    question: 'How were poets like today’s media?',
     matchingHeadings: { left: 'From the chapter', right: 'Modern media role' },
     matchingPairs: ch11Pairs,
     correctAnswer: pairsToAnswer(ch11Pairs),
@@ -90,8 +90,8 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     id: 'me-b2-lf11b',
     type: 'transformation',
     title: 'Passive or Active?',
-    instructions: 'Rewrite each passive sentence from Chapter 11 in the active by completing the frame. Keep the meaning.',
-    question: 'What does the active version add, and what does the chapter’s passive version keep in focus?',
+    instructions: 'Complete the new sentence. Say who did the action. Keep the meaning.',
+    question: 'Who did each action, and why does the chapter not say?',
     transformItems: [
       { source: 'They were bought and sold like animals.', frame: 'People [blank] them like animals.', answers: ['bought and sold', 'sold and bought'] },
       { source: 'They were employed in various tasks as well as for people’s personal service.', frame: 'Their owners [blank] them in various tasks as well as for people’s personal service.', answers: ['employed', 'used'] },
@@ -104,7 +104,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       incorrect: 'Keep the past simple and use the same verb as the original: “were bought and sold” → “bought and sold”; “were employed” → “employed”; “were honored” → “honored”.',
     },
   },
-  reflect('me-b2-lf11c','Compare Material and Cultural Power','How did slavery and poetry influence social hierarchy in different ways?',['Write a short analytical paragraph using both…and, more…than or rather than, yet, and at least one passive form.'],'The chapter places an economic institution beside a cultural communication system, allowing a B2 comparison of different kinds of power.')
+  reflect('me-b2-lf11c','Compare Material and Cultural Power','How did slavery and poetry give some people more power?',['Use “both … and …”, “more … than”, “yet”, and “… was / were seen as …”.'],'The chapter places an economic institution beside a cultural communication system, allowing a B2 comparison of different kinds of power.','Write or say a short paragraph comparing slavery and poetry in that society.')
 ],
 12:[
   {
@@ -140,7 +140,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 1–3 of Chapter 12. Does the first gap follow a time, a place or a thing? Is the second about people? Did the stones place themselves?',
     },
   },
-  reflect('me-b2-lf12c','Explain a Religious Contradiction','Can you describe the system without simplifying it?',['Write 5 sentences using although, while or but, one passive form such as were seen as, and a sentence explaining the role of mediators.'],'B2 explanation should hold together beliefs that appear inconsistent while staying faithful to the source.')
+  reflect('me-b2-lf12c','Explain a Religious Contradiction','What did people believe, and why was it strange?',['Use “although”, “but”, “… were seen as …”, and say what the idols were for.'],'B2 explanation should hold together beliefs that appear inconsistent while staying faithful to the source.','Write or say five sentences about the beliefs of people in Mecca.')
 ],
 13:[
   {
@@ -166,8 +166,8 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     id: 'me-b2-lf13b',
     type: 'transformation',
     title: 'Packing and Unpacking Sentences',
-    instructions: 'Rewrite each sentence from Chapter 13 by completing the frame. Keep the meaning of the original.',
-    question: 'How do participle clauses, as well as and short participle phrases make the chapter’s sentences compact?',
+    instructions: 'Complete the new sentence. Keep the meaning of the original.',
+    question: 'How can we make these sentences shorter, or longer?',
     transformItems: [
       {
         source: 'It touched their hearts and minds, making them cry and feel deep respect, even causing their hair to stand on end.',
@@ -192,7 +192,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 2 and 3 of Chapter 13. What did the recitation do to the listeners? What second factor made the Quraysh leaders? Who led the large group?',
     },
   },
-  reflect('me-b2-lf13c','Explain Interconnected Opposition','Why could a religious message affect political and economic power?',['Write a 5–6 sentence explanation using interconnected, so, as well as, however, and one cause-effect sentence.'],'B2 synthesis should show how changes in one domain can create consequences in another.')
+  reflect('me-b2-lf13c','Explain Interconnected Opposition','Why could a religious message worry rich and powerful people?',['Use “interconnected”, “so”, “as well as”, “however” and one cause and result.'],'B2 synthesis should show how changes in one domain can create consequences in another.','Write or say five or six sentences about why the leaders feared the message.')
 ]
 };
 
@@ -218,7 +218,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     type: 'error-correction',
     title: 'Precise Groups, Precise Links',
     instructions: 'Each sentence from Chapter 14 has one mistake. Tap the wrong words, then choose the correction.',
-    question: 'Can you correct the quantifier, the relative pronoun and the concession?',
+    question: 'Can you fix the words that link and describe the groups?',
     errorItems: [
       {
         sentence: 'Indeed, almost no of the tribal leaders had accepted Islam.',
@@ -246,15 +246,15 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 2 and 3 of Chapter 14. Which word goes before “of the tribal leaders”? Whose survival is it? Does a sentence with “Although” also need “but”?',
     },
   },
-  reflect('me-b2-lf14c','Write a Qualified Power Analysis','How can you explain elite opposition without reducing it to wealth alone?',['Write 5–6 sentences using almost, many, although, while, and a relative clause about the upper class whose survival depended on the existing order.'],'B2 analysis should combine social pattern, economic interest and qualified exceptions.')
+  reflect('me-b2-lf14c','Write a Qualified Power Analysis','Was it only about money?',['Use “almost”, “many”, “although”, “while” and “… whose power depended on …”.'],'B2 analysis should combine social pattern, economic interest and qualified exceptions.','Write or say five or six sentences about why the leaders opposed Islam.')
 ],
 15:[
   {
     id: 'me-b2-lf15a',
     type: 'sequencing',
     title: 'How the Opposition Grew',
-    instructions: 'Put these moments from Chapter 15 in order. Use the signals At first, However, when … and went further to trace how the opposition grew.',
-    question: 'Which discourse signals show that the opposition became stronger step by step?',
+    instructions: 'Put the moments in order. “At first”, “However, when” and “went further” help.',
+    question: 'Which words show that the opposition grew step by step?',
     sequencingItems: [
       { id: 'c', text: 'Poor people or those without powerful protectors suffered the most.' },
       { id: 'a', text: 'At first, they mocked just the new religion.' },
@@ -286,7 +286,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 1, 2 and 4 of Chapter 15. The first sentence looks forward from the past; the second gap follows “the places”; the third follows “those”.',
     },
   },
-  reflect('me-b2-lf15c','Explain Escalation and Vulnerability','Why did pressure intensify, and who paid the highest cost?',['Write a short paragraph using because, would eventually, at first, however/when, and went further. Include one sentence about people without powerful protectors.'],'B2 historical narration should show both escalation and unequal exposure to harm.')
+  reflect('me-b2-lf15c','Explain Escalation and Vulnerability','Why did the pressure grow, and who suffered most?',['Use “at first”, “however, when”, “went further” and “would eventually”. Mention people with no protectors.'],'B2 historical narration should show both escalation and unequal exposure to harm.','Write or say a short paragraph about how the pressure grew.')
 ],
 16:[
   {
@@ -313,7 +313,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     type: 'error-correction',
     title: 'Conditions, Consequences and Judgment',
     instructions: 'Each sentence from Chapter 16 has one mistake. Tap the wrong words, then choose the correction.',
-    question: 'Can you correct the hypothetical condition, the passive and the cause link?',
+    question: 'Can you fix the verbs and the linking words?',
     errorItems: [
       {
         sentence: 'Leaders who built their authority on idols would lose both their political and economic influence if they would lose their idols.',
@@ -341,7 +341,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 2–4 of Chapter 16. Which clause takes “would”? Who would do the judging? What follows “Because” when there is no full clause?',
     },
   },
-  reflect('me-b2-lf16c','Analyse Constrained Choice','Was freedom of choice merely an individual matter in the chapter?',['Write 5–6 sentences using if, would/could, otherwise, and because of this to explain how tribal protection affected individual decisions.'],'B2 conditional analysis can make hidden social pressures and possible consequences explicit.')
+  reflect('me-b2-lf16c','Analyse Constrained Choice','Could people really choose freely?',['Use “if”, “would / could”, “otherwise” and “because of this”.'],'B2 conditional analysis can make hidden social pressures and possible consequences explicit.','Write or say five or six sentences about how the tribe affected people’s choices.')
 ],
 17:[
   {
@@ -349,7 +349,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     type: 'matching',
     title: 'From Historical Period to Recurring Pattern',
     instructions: 'Match each sentence from Chapter 17 with what the writer is doing in it.',
-    question: 'How does the conclusion widen its claim from one period to a recurring pattern?',
+    question: 'How does the last chapter connect the past to today?',
     matchingHeadings: { left: 'From the chapter', right: 'What the writer is doing' },
     matchingPairs: ch17Pairs,
     correctAnswer: pairsToAnswer(ch17Pairs),
@@ -363,8 +363,8 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     id: 'me-b2-lf17b',
     type: 'transformation',
     title: 'Reporting and Identifying',
-    instructions: 'Rewrite each sentence from Chapter 17 by completing the frame. Keep the meaning of the original.',
-    question: 'How do reported speech and relative clauses change the way information is presented?',
+    instructions: 'Complete the new sentence. Keep the meaning of the original.',
+    question: 'How else can we say these sentences from Chapter 17?',
     transformItems: [
       {
         source: 'When the Quraysh leaders blamed the Prophet, they said, “You have destroyed our unity.”',
@@ -384,7 +384,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       incorrect: 'In the first frame, move the tense one step back after “they said that”. In the second, add a relative pronoun and a verb for a person in the past.',
     },
   },
-  reflect('me-b2-lf17c','Synthesize Across Time','Can you distinguish historical evidence from a modern analogy?',['Write 6–7 sentences: first state what Jahiliyyah refers to historically, then explain how the chapter extends the term. Use both…and also, whether…or, on the other hand, and one present/future sentence. Clearly mark the modern comparison as the chapter’s concluding analogy.'],'B2 synthesis should keep historical description, conceptual extension and present-day comparison distinct but connected.')
+  reflect('me-b2-lf17c','Synthesize Across Time','What did Jahiliyyah mean then, and what can it mean today?',['Say what it meant then, then today. Use “both … and”, “whether … or” and “on the other hand”.'],'B2 synthesis should keep historical description, conceptual extension and present-day comparison distinct but connected.','Write or say six or seven sentences about the word “Jahiliyyah”, then and now.')
 ]
 };
 
@@ -393,7 +393,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'me-b2-language-review-1-writer-stance', type: 'drag-drop', title: 'Notice: How Sure Is the Writer?',
-    instructions: 'Read the sentences from Chapters 5, 9, 11, 12, 13, 14 and 17. Does the writer limit the claim, report what other people believed or said, or state the claim with certainty? Put each sentence in its group.',
+    instructions: 'Does the writer limit the claim, report others’ views, or say it for sure? Sort.',
     question: 'Which words show how far the writer stands behind each claim?',
     dragDropGroups: [
       { group: 'The writer limits the claim', items: ['These caravans numbered up to 2,500 camels.', 'In a sense, they were serving as a media outlet.', 'The population of Mecca … was between 5,000 and 10,000.'] },
@@ -434,7 +434,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'me-b2-language-review-4-reason-and-concession', type: 'word-bank', title: 'Build: Reason, Result or Concession?',
     instructions: 'Complete the lines from Chapters 3, 4, 12 and 14 with words from the bank. Two words are not needed.',
-    question: 'Which link gives a result, which gives a reason with a clause, which needs a noun phrase, and which admits a fact before a contrasting one?',
+    question: 'Which word gives a result, a reason, or a contrast?',
     fillBlanksText: '… the Zamzam water had not yet been discovered, [blank] there was no population living there. … [blank] the surroundings of the city were not suitable for agriculture, people tried to make a living through trade. … [blank] they mainly worshipped idols, they believed “Allah” to be the creator. … These people, who saw themselves as superior to others [blank] their wealth, ignored the Qur’an’s commands …',
     wordBank: ['so', 'Since', 'Although', 'because of', 'Despite', 'However'],
     correctAnswer: ['so', 'Since', 'Although', 'because of'],
@@ -443,8 +443,8 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'me-b2-language-review-5-claim-and-passive', type: 'error-correction', title: 'Build: Fix the Claim, Fix the Form',
-    instructions: 'Each sentence from Chapters 6, 14 and 16 has one mistake: a claim that is too strong, or a verb form that makes the subject the doer. Tap the mistake, then choose the correction.',
-    question: 'Can you keep the claim as careful as the chapter and use the passive where the subject does not do the action?',
+    instructions: 'Each sentence has one mistake: a claim that is too strong, or a wrong verb. Tap it, then fix it.',
+    question: 'Can you keep each sentence careful and correct?',
     errorItems: [
       { sentence: 'All of the first Muslims were the poor and the slaves.', error: 'All of', options: ['Much of', 'Many of', 'Every of'], answer: 1 },
       { sentence: 'In addition, major trade festivals such as Ukaz … were also holding during the sacred months.', error: 'were also holding', options: ['were also hold', 'had also held', 'were also held'], answer: 2 },
@@ -457,7 +457,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'me-b2-language-review-6-same-meaning-new-structure', type: 'transformation', title: 'Build: Same Meaning, New Structure',
     instructions: 'Rewrite each sentence from Chapters 7, 8 and 14 by completing the frame. Keep the meaning of the original.',
-    question: 'What changes when a cause becomes a clause, when a result gets its own linker, and when direct speech becomes reported speech?',
+    question: 'How else can we say these sentences from the book?',
     transformItems: [
       { source: 'Due to its fight against injustice, Hilfü’l-Fudûl received support from the community.', frame: 'Hilfü’l-Fudûl received support from the community because [blank].', answers: ['it fought against injustice', 'it fought injustice', 'it was fighting against injustice', 'it was fighting injustice', 'of its fight against injustice', 'it struggled against injustice'] },
       { source: 'Because large amounts of wealth were concentrated in the hands of certain individuals, there were extreme divisions between social classes.', frame: 'Large amounts of wealth were concentrated in the hands of certain individuals. [blank], there were extreme divisions between social classes.', answers: ['As a result', 'Therefore', 'Consequently', 'As a consequence', 'For this reason', 'Because of this', 'Due to this', 'Thus', 'Hence', 'So', 'That is why', 'This is why'] },
@@ -470,7 +470,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'me-b2-language-review-7-relative-words', type: 'choose-form', title: 'Build: Which Relative Word?',
     instructions: 'Choose the correct word to complete each sentence from Chapters 8, 16 and 17.',
-    question: 'Which relative word fits a person, a thing after a preposition, and a place that is the subject of the clause?',
+    question: 'Which word fits a person, and which fits a thing or a place?',
     formChoices: [
       { sentence: 'Prophet Muhammad (pbuh), [choice] was twenty years old at the time, also attended this meeting.', options: ['which', 'who', 'that'], answer: 1 },
       { sentence: 'The rejection of idols meant, for the Quraysh, the end of the trade on [choice] they depended for their wealth.', options: ['that', 'whom', 'which'], answer: 2 },
@@ -483,7 +483,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   // USE — take the language into new, everyday contexts.
   {
     id: 'me-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Report on a School Project',
-    instructions: 'This text is not from the book. It is part of a report written by a student council. Complete it with expressions from the bank. Two expressions are not needed.',
+    instructions: 'This is part of a student report. Complete it with words from the bank. Two are not needed.',
     question: 'Can you report a school project carefully, without saying more than the evidence shows?',
     fillBlanksText: 'Last term, a recycling project was started at our school by the student council. [blank] 40 bags of paper were collected every week, but the number changed from month to month. [blank] the project, the school needed to buy less new paper. [blank] some classes joined enthusiastically, others took part only occasionally. It can be said that the project was [blank] successful, but it is too early to call it a complete success. Next year, the council hopes that every class will take part.',
     wordBank: ['Up to', 'As a result of', 'Although', 'mostly', 'Despite', 'entirely'],
@@ -493,7 +493,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'me-b2-language-review-9-new-context', type: 'choose-form', title: 'Use: Say Only What the Evidence Shows',
-    instructions: 'These sentences are not from the book. Read the evidence in each sentence, then choose the form that says exactly what the evidence allows.',
+    instructions: 'These sentences are new. Choose the words that say only what the facts show.',
     question: 'Which form keeps each new sentence accurate and fair?',
     formChoices: [
       { sentence: 'In our class survey, 18 of 25 students said they read every day, so [choice] students in our class read daily.', options: ['all', 'almost no', 'most'], answer: 2 },
@@ -506,16 +506,16 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'me-b2-language-review-10-transfer', type: 'reflection', title: 'Use: Argue a Careful Case',
-    instructions: 'Write a short argued paragraph (6–8 sentences) on this question: Should our school set up a student committee to help classmates who are treated unfairly? State your position, give reasons and evidence from school life, and add at least one qualification. Plan your paragraph with a partner first.',
-    question: 'Can you use the language of the whole book to argue a position carefully?',
+    instructions: 'Should your school have a student group that helps classmates treated unfairly? Write six to eight sentences.',
+    question: 'What do you think, and why?',
     correctAnswer: null,
     explanation: 'Example: “In my view, our school should set up a student committee to help classmates who are treated unfairly. At present, some students are left out or laughed at, and these problems are often not reported. Due to fear of being mocked, many students stay silent. As a result of this silence, small problems can grow into serious ones. Although our teachers already help, they cannot see everything that happens in the corridors. The committee would not replace the teachers; its role would be mostly to listen rather than to punish. If it worked fairly and respectfully, it would make our school a safer place for everyone.”',
     feedback: { correct: 'Check your paragraph: a clear position; a reason with because, due to or as a result of; a limit such as mostly, many, not always or although; a passive without “by” (students are left out …); and an if … would … sentence for a possible result.', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — Your position: “In my view, our school should … because …” or “It can be said that …”', mode: 'Individual' },
-      { question: 'Sentences 2–3 — Evidence and cause: “Some students are left out / are not listened to …”, “Due to …, …”, “As a result of …, …”', mode: 'Individual' },
-      { question: 'Sentences 4–5 — Qualification: “Although …, …”, “Its role would be mostly … rather than …”, “… is not always …”', mode: 'Pair' },
-      { question: 'Sentences 6–7 — Consequence: “If the committee …, it would … . Otherwise, …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Your view: “In my view, our school should … because …”', mode: 'Individual' },
+      { question: 'Sentences 2–3 — Reasons: “Some students are left out …”, “Due to …, …”', mode: 'Individual' },
+      { question: 'Sentences 4–5 — Be careful: “Although …, …”, “… is not always …”', mode: 'Pair' },
+      { question: 'Sentences 6–7 — Results: “If the group …, it would … . Otherwise, …”', mode: 'Pair' },
     ],
   },
 ];

@@ -7,7 +7,7 @@ import type { Exercise } from '../../../../types';
  * short connected B2 response. Every quoted sentence comes from the English chapter.
  */
 const feedback = { correct: 'Correct. You used the chapter language and relationship accurately.', incorrect: 'Not yet. Return to the chapter wording and check the relationship the form expresses.' };
-const reflect = (id:string,title:string,question:string,prompts:string[],explanation:string):Exercise => ({ id,type:'reflection',title,instructions:'Use the target language to produce a short B2 response.',question,correctAnswer:null,explanation,feedback,discussionPrompts:prompts.map(q=>({question:q,mode:'Individual'})) });
+const reflect = (id:string,title:string,question:string,prompts:string[],explanation:string,instructions:string='Use the target language to produce a short B2 response.'):Exercise => ({ id,type:'reflection',title,instructions,question,correctAnswer:null,explanation,feedback,discussionPrompts:prompts.map(q=>({question:q,mode:'Individual'})) });
 const pairsToAnswer = (pairs:{left:string;right:string}[]) => Object.fromEntries(pairs.map(p=>[p.left,p.right]));
 
 const ch2Pairs = [
@@ -23,7 +23,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     id: 'me-b2-lf1a',
     type: 'sequencing',
     title: 'From the Wider World to Mecca',
-    instructions: 'Put these five sentences from Chapter 1 in the order the writer uses them. Use the reference words and the transition signal to help you.',
+    instructions: 'Put the five sentences from Chapter 1 in order. Words like “these” and “however” help.',
     question: 'How does the opening move from the wider world to one city and one era?',
     sequencingItems: [
       { id: 'c', text: 'The rivalry between these two superpowers exhausted both sides.' },
@@ -44,7 +44,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     type: 'error-correction',
     title: 'Cause and Relative Clauses',
     instructions: 'Each sentence from Chapter 1 has one mistake. Tap the wrong words, then choose the correction.',
-    question: 'Can you correct the cause clause and the relative clauses the writer uses to build the background?',
+    question: 'Can you fix the linking words in these sentences?',
     errorItems: [
       {
         sentence: '… with its capital city Constantinople (which we now call it Istanbul) …',
@@ -72,7 +72,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       incorrect: 'Check the second and third paragraphs and the last sentence of Chapter 1: which pronoun or linker does the writer actually use?',
     },
   },
-  reflect('me-b2-lf1c','Frame a Historical Introduction','Can you move from a broad context to a precise local focus?',['Write 4–5 sentences: introduce the Byzantine-Sassanid rivalry, contrast it with Arabia, then narrow the focus to Mecca. Use because and a contrast linker.'],'A B2 introduction should show how the larger context relates to the local subject rather than listing facts separately.')
+  reflect('me-b2-lf1c','Frame a Historical Introduction','How does the story move from two empires to Mecca?',['Start with the two empires, compare them with Arabia, then turn to Mecca. Use “because” and “however”.'],'A B2 introduction should show how the larger context relates to the local subject rather than listing facts separately.','Write or say four or five sentences that lead from the wider world to Mecca.')
 ],
 2: [
   {
@@ -105,15 +105,15 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 2 and 3 of Chapter 2. Is the writer adding to a list, supporting a claim, or summing up a description in one word?',
     },
   },
-  reflect('me-b2-lf2c','Define Without Oversimplifying','How can you define a difficult term precisely?',['Write a 4-sentence definition of Jahiliyyah using not simply…, because…, although…, and on the contrary or another suitable contrast expression.'],'B2 definitions should distinguish a concept from nearby but inaccurate meanings.')
+  reflect('me-b2-lf2c','Define Without Oversimplifying','What does “Jahiliyyah” really mean?',['Use “not simply …”, “because …”, “although …” and “on the contrary”.'],'B2 definitions should distinguish a concept from nearby but inaccurate meanings.','Write or say four sentences that explain the word “Jahiliyyah” carefully.')
 ],
 3: [
   {
     id: 'me-b2-lf3a',
     type: 'multiple-choice',
     title: 'How Certain Is the Writer?',
-    instructions: 'Read paragraph 4 of Chapter 3 again. Then choose the sentence that keeps the writer’s level of certainty.',
-    question: 'The writer makes a claim about when city life began in Mecca. Which version keeps the writer’s stance?',
+    instructions: 'Read paragraph 4 of Chapter 3 again. Choose the sentence that is just as careful.',
+    question: 'Which version is as sure, and as careful, as the writer?',
     options: [
       'It is a proven fact that city life began here only with the building of the Ka’ba.',
       'It can be said that city life began here only with the building of the Ka’ba.',
@@ -145,7 +145,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       incorrect: 'Check paragraphs 1, 4 and 5 of Chapter 3. Who describes Mecca? Which word follows “It was also in this city …”? Which past event came first?',
     },
   },
-  reflect('me-b2-lf3c','Evidence and Interpretation','Can you separate source statement from interpretation?',['Write 4–5 sentences about why Mecca became a settlement. Use one passive source statement, one cautious phrase such as it can be said, and one counterfactual sentence about the migration quotation.'],'B2 historical writing should distinguish what a source says from what the writer infers.')
+  reflect('me-b2-lf3c','Evidence and Interpretation','What do the sources say, and what do we think?',['Use “It is reported that …”, “It can be said that …” and “If … had not …, … would not …”.'],'B2 historical writing should distinguish what a source says from what the writer infers.','Write or say four or five sentences about why people settled in Mecca.')
 ],
 4: [
   {
@@ -182,14 +182,14 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       incorrect: 'Check the first two paragraphs of Chapter 4. Which blanks are followed by a noun, which one by a comma, and which one names a century?',
     },
   },
-  reflect('me-b2-lf4c','Explain a Multi-Stage Change','How did religion, political control and geography shape Mecca?',['Write a short paragraph using after, later, during, and since to connect at least four changes from the chapter.'],'B2 chronology becomes analytical when time markers also reveal changing causes and institutions.')
+  reflect('me-b2-lf4c','Explain a Multi-Stage Change','How did religion, rulers and geography shape Mecca?',['Join four or more changes with “after”, “later”, “during” and “since”.'],'B2 chronology becomes analytical when time markers also reveal changing causes and institutions.','Write or say a short paragraph about how Mecca changed over time.')
 ],
 5: [
   {
     id: 'me-b2-lf5a',
     type: 'drag-drop',
     title: 'Evidence or Judgment?',
-    instructions: 'Sort the sentences from Chapter 5. Does each one report a fact or figure, or does it give the writer’s judgment or conclusion?',
+    instructions: 'Is it a fact or number, or the writer’s own judgment? Sort the sentences.',
     question: 'Where does the writer report evidence, and where does the writer draw a conclusion from it?',
     dragDropGroups: [
       {
@@ -229,7 +229,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     id: 'me-b2-lf5b',
     type: 'error-correction',
     title: 'Remove the Overclaim',
-    instructions: 'In each sentence one word makes the claim stronger than the chapter allows. Tap it, then choose the chapter’s more careful wording.',
+    instructions: 'One word in each sentence says too much. Tap it, then choose the chapter’s careful word.',
     question: 'Can you keep the numbers and the change over time as careful as the writer does?',
     errorItems: [
       {
@@ -258,6 +258,6 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       incorrect: 'Reread paragraphs 2–4 of Chapter 5. Does the writer give an exact number, an upper limit or an estimate? Did Mecca change quickly or over a long time?',
     },
   },
-  reflect('me-b2-lf5c','Evidence-Based Scale','Can you use numerical evidence without overclaiming?',['Write 4–5 sentences explaining the scale of Quraysh trade. Include up to, approximately, a comparison with ship capacity, and a cautious conclusion.'],'B2 source use requires accurate quantities plus a proportionate interpretation.')
+  reflect('me-b2-lf5c','Evidence-Based Scale','How big was the trade, without saying too much?',['Use “up to”, “approximately”, a comparison with ships, and a careful ending.'],'B2 source use requires accurate quantities plus a proportionate interpretation.','Write or say four or five sentences about how big the Quraysh trade was.')
 ]
 };

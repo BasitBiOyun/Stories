@@ -40,7 +40,7 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-3-question-to-conclusion',
       type: 'transformation',
       title: 'Asking and Concluding',
-      instructions: 'Rewrite each sentence. Report the direct question in item 1. Change the reported conclusion into Abraham’s own words in item 2.',
+      instructions: 'Rewrite each sentence. Item 1: report the question. Item 2: use Abraham’s words.',
       question: 'How does a question or a conclusion change when we report it?',
       transformItems: [
         {
@@ -68,14 +68,14 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'abraham-b1-language-3-reasoned-observation', type: 'reflection', title: 'Build a Short Reasoning Chain', instructions: 'Write or say four connected B1 sentences about someone examining two possible explanations for an everyday situation. Use at least three Chapter 3 language patterns without retelling the story.', question: 'Can you move from contrast or viewpoint to purpose or sequence, then test a possibility and finish with a reasoned conclusion?', correctAnswer: null,
+      id: 'abraham-b1-language-3-reasoned-observation', type: 'reflection', title: 'Build a Short Reasoning Chain', instructions: 'Write or say four sentences about someone thinking about two possible reasons for something.', question: 'What are the two possible reasons, and what does the person decide?', correctAnswer: null,
       explanation: 'A strong response can use “Although ...”, “On the other hand ...”, “Could this be ...?”, “because ...”, and “I understood/realised that ...” in one coherent line of reasoning.',
       feedback: { correct: 'Keep all four sentences focused on one situation and make the conclusion follow from the evidence.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — Introduce contrast with “Although ...” or shift viewpoint with “On the other hand ...”.', mode: 'Individual' },
-        { question: 'Sentence 2 — Add purpose or sequence with “to + verb”, linked actions, or “Then ...”.', mode: 'Individual' },
-        { question: 'Sentence 3 — Test a possibility with “Could this be ...?” and give a reason with “because ...”.', mode: 'Individual' },
-        { question: 'Sentence 4 — Report the conclusion with “I understood/realised that ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Show a contrast: “Although …, …” or “On the other hand, …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say what the person did next: “Then …” or “… to + verb”', mode: 'Individual' },
+        { question: 'Sentence 3 — Test an idea: “Could this be …? … because …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Give the answer: “I understood that …”', mode: 'Pair' },
       ],
     },
   ],
@@ -155,9 +155,9 @@ export const abrahamB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'abraham-b1-language-4-connected-response', type: 'reflection', title: 'Build a Responsibility-and-Response Scene', instructions: 'Write or say four connected B1 sentences about a person who realises a responsibility, explains why it matters, gives one direct instruction, and faces a conditional response. Do not retell Chapter 4.', question: 'Can you connect time or realisation, responsibility + reason, an imperative, and an if-clause in one short coherent scene?', correctAnswer: null,
+      id: 'abraham-b1-language-4-connected-response', type: 'reflection', title: 'Build a Responsibility-and-Response Scene', instructions: 'Write or say four sentences about someone who sees a duty and tells others.', question: 'What is the duty, and how do other people answer?', correctAnswer: null,
       explanation: 'A strong response can combine “when ...”, “should ... because ...”, a direct imperative, and “If ... , I will ...” while keeping one clear situation.', feedback: { correct: 'Keep the four sentences connected and make the conditional response logically follow from the situation.', incorrect: '' },
-      discussionPrompts: [{ question: 'Sentence 1 — Introduce the moment of realisation with “when ...” or an endpoint with “until ...”.', mode: 'Individual' }, { question: 'Sentence 2 — State a responsibility with “should ... because ...”.', mode: 'Individual' }, { question: 'Sentence 3 — Give one clear imperative such as “Follow ...”, “Stop ...”, or “Leave ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Add a realistic consequence or response with “If ... , I will ...”.', mode: 'Pair' }],
+      discussionPrompts: [{ question: 'Sentence 1 — Start with “When …” or “Until …”', mode: 'Individual' }, { question: 'Sentence 2 — Give a duty and a reason: “We should … because …”', mode: 'Individual' }, { question: 'Sentence 3 — Give one clear instruction: “Follow …”, “Stop …” or “Leave …”', mode: 'Individual' }, { question: 'Sentence 4 — Give an answer: “If …, I will …”', mode: 'Pair' }],
     },
   ],
 };
@@ -226,7 +226,7 @@ export const abrahamB1LanguageFocusChapter5: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Wanting Someone to Act',
       instructions: 'Rewrite each sentence from Chapter 5 so that it keeps the same meaning.',
-      question: 'How do we say what we want another person to do, and how can a when-clause move?',
+      question: 'How can we say what we want someone to do?',
       transformItems: [
         {
           source: 'He wanted them to reconsider their beliefs.',
@@ -246,7 +246,7 @@ export const abrahamB1LanguageFocusChapter5: Record<number, Exercise[]> = {
         incorrect: 'Item 1: Abraham speaks to the people, so “them” becomes “you”. Item 2: the when-clause now comes first, so it needs its own subject.',
       },
     },
-    { id: 'abraham-b1-language-5-connected-response', type: 'reflection', title: 'Build a Persuasion Scene', instructions: 'Write or say four connected B1 sentences about someone trying to change another person’s mind. Do not retell Chapter 5.', question: 'Can you connect a reason, an attempt, persistence, and a contrasting response in one short scene?', correctAnswer: null, explanation: 'A strong response can use because, try to, not give up or continue, want someone to..., and though/but to keep one coherent situation.', feedback: { correct: 'Keep all four sentences in one situation and make the contrast logically follow from the attempt.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State a belief or decision and give a reason with because.', mode: 'Individual' }, { question: 'Sentence 2 — Show an attempt with try to + verb.', mode: 'Individual' }, { question: 'Sentence 3 — Show persistence or a desired change with did not give up / wanted ... to ....', mode: 'Individual' }, { question: 'Sentence 4 — Add a contrasting response with but or though.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-5-connected-response', type: 'reflection', title: 'Build a Persuasion Scene', instructions: 'Write or say four sentences about someone trying to change another person’s mind.', question: 'How does the person try, and what is the answer?', correctAnswer: null, explanation: 'A strong response can use because, try to, not give up or continue, want someone to..., and though/but to keep one coherent situation.', feedback: { correct: 'Keep all four sentences in one situation and make the contrast logically follow from the attempt.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Give a belief and a reason with “because”.', mode: 'Individual' }, { question: 'Sentence 2 — Show an attempt: “… tried to …”', mode: 'Individual' }, { question: 'Sentence 3 — Show they kept trying: “… did not give up” or “… wanted … to …”', mode: 'Individual' }, { question: 'Sentence 4 — Give a different answer with “but” or “though”.', mode: 'Pair' }] },
   ],
 };
 
@@ -306,7 +306,7 @@ export const abrahamB1LanguageFocusChapter6: Record<number, Exercise[]> = {
         incorrect: 'Start with “He left”, then say what he left, then how it stayed. Check the last paragraph of Chapter 6.',
       },
     },
-    { id: 'abraham-b1-language-6-connected-production', type: 'reflection', title: 'Describe a Deliberate Plan', instructions: 'Write or say four connected B1 sentences about a person carrying out a careful plan in a new situation. Do not retell Chapter 6.', question: 'Can you connect intention, opportunity, timing, and a final resulting state?', correctAnswer: null, explanation: 'A strong response can combine decided/planned to, usually or a background situation, so, until, began to, and left + object + adjective/complement.', feedback: { correct: 'Keep the four sentences in one coherent situation and make each action logically lead to the next.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State a decision or plan using decided to or planned to.', mode: 'Individual' }, { question: 'Sentence 2 — Describe the situation or opportunity, and connect the response with so.', mode: 'Individual' }, { question: 'Sentence 3 — Use until to show when the main action could begin or end.', mode: 'Individual' }, { question: 'Sentence 4 — Show the final state using left + object + adjective/complement, or another clear result expression.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-6-connected-production', type: 'reflection', title: 'Describe a Deliberate Plan', instructions: 'Write or say four sentences about someone carrying out a careful plan.', question: 'What is the plan, and how does it end?', correctAnswer: null, explanation: 'A strong response can combine decided/planned to, usually or a background situation, so, until, began to, and left + object + adjective/complement.', feedback: { correct: 'Keep the four sentences in one coherent situation and make each action logically lead to the next.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Give the plan: “… decided to …” or “… planned to …”', mode: 'Individual' }, { question: 'Sentence 2 — Describe the chance, and join with “so”.', mode: 'Individual' }, { question: 'Sentence 3 — Use “until” to show when the action began or ended.', mode: 'Individual' }, { question: 'Sentence 4 — Show the end: “… left … broken / empty / …”', mode: 'Pair' }] },
   ],
 };
 
@@ -316,7 +316,7 @@ export const abrahamB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-7-reporting-reaction',
       type: 'drag-drop',
       title: 'Two Kinds of Questions',
-      instructions: 'Sort the parts of Chapter 7. Is it a question in the speaker’s exact words, or a question idea inside a longer sentence?',
+      instructions: 'Is it a question in the speaker’s words, or inside a longer sentence? Sort the parts.',
       question: 'How is the word order different when a question sits inside a longer sentence?',
       dragDropGroups: [
         {
@@ -390,7 +390,7 @@ export const abrahamB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       type: 'choose-form',
       title: 'Reason, Result and Consequence',
       instructions: 'Choose the correct word to complete each sentence from Chapter 7.',
-      question: 'How does the chapter explain why the people felt ashamed but still refused to accept the truth?',
+      question: 'Why were the people ashamed but still did not accept the truth?',
       formChoices: [
         {
           sentence: 'They looked at each other in shame [choice] their thoughts and feelings told them that Abraham (pbuh) was right.',
@@ -415,7 +415,7 @@ export const abrahamB1LanguageFocusChapter7: Record<number, Exercise[]> = {
         incorrect: 'Read the last paragraph of Chapter 7. Ask which word gives a reason, which word completes “so arrogant …”, and which tense fits a story told in the past.',
       },
     },
-    { id: 'abraham-b1-language-7-connected-production', type: 'reflection', title: 'Report a Disagreement Clearly', instructions: 'Write or say four connected B1 sentences about a disagreement in a new situation. Do not retell Chapter 7.', question: 'Can you report what people heard or discovered, include an embedded question, and explain a contrast or consequence?', correctAnswer: null, explanation: 'A strong response can combine heard/saw/remembered, find out who/what/why, because or but, and an if...then consequence.', feedback: { correct: 'Keep the four sentences connected so the information, reaction, and consequence form one coherent situation.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Report something someone heard, saw, or remembered.', mode: 'Individual' }, { question: 'Sentence 2 — Add an embedded question such as find out who/what/why...', mode: 'Individual' }, { question: 'Sentence 3 — Explain a reaction using because, but, or so...that.', mode: 'Individual' }, { question: 'Sentence 4 — Add an if...then consequence or a clear final result.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-7-connected-production', type: 'reflection', title: 'Report a Disagreement Clearly', instructions: 'Write or say four sentences about a disagreement. Do not retell Chapter 7.', question: 'What did people hear, and how did they react?', correctAnswer: null, explanation: 'A strong response can combine heard/saw/remembered, find out who/what/why, because or but, and an if...then consequence.', feedback: { correct: 'Keep the four sentences connected so the information, reaction, and consequence form one coherent situation.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone heard, saw or remembered.', mode: 'Individual' }, { question: 'Sentence 2 — Add a question idea: “… wanted to find out who / what / why …”', mode: 'Individual' }, { question: 'Sentence 3 — Explain a reaction with “because”, “but” or “so … that”.', mode: 'Individual' }, { question: 'Sentence 4 — Add “If …, …” or a clear result.', mode: 'Pair' }] },
   ],
 };
 
@@ -425,7 +425,7 @@ export const abrahamB1LanguageFocusChapter8: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-8-degree-result',
       type: 'drag-drop',
       title: 'Who Did the Action?',
-      instructions: 'Sort the parts of Chapter 8. Does the sentence tell us who did the action, or not?',
+      instructions: 'Does each sentence say who did the action? Sort the parts of Chapter 8.',
       question: 'Why does the chapter sometimes not say who did an action?',
       dragDropGroups: [
         {
@@ -508,6 +508,6 @@ export const abrahamB1LanguageFocusChapter8: Record<number, Exercise[]> = {
         incorrect: 'The story is in the past, so the future is expressed with would and a past verb. Read the second, third and fourth paragraphs of Chapter 8 again.',
       },
     },
-    { id: 'abraham-b1-language-8-connected-production', type: 'reflection', title: 'Describe Pressure and an Unexpected Outcome', instructions: 'Write or say four connected B1 sentences about a new situation involving pressure and an unexpected result. Do not retell Chapter 8.', question: 'Can you connect degree-result, contrast/cause, a past viewpoint, and a final change?', correctAnswer: null, explanation: 'A strong response can use so...that, however/because, knew/thought that ... would, and turned out to be/became.', feedback: { correct: 'Keep the four sentences connected as one short narrative.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Describe an extreme situation using so...that.', mode: 'Individual' }, { question: 'Sentence 2 — Add a contrasting response and explain it with however and/or because.', mode: 'Individual' }, { question: 'Sentence 3 — Report what someone expected using knew/thought that ... would.', mode: 'Individual' }, { question: 'Sentence 4 — End with an unexpected result using turned out to be, became, or turned into.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-8-connected-production', type: 'reflection', title: 'Describe Pressure and an Unexpected Outcome', instructions: 'Write or say four sentences about a hard situation with a surprising end.', question: 'What was hard, and what was the surprise at the end?', correctAnswer: null, explanation: 'A strong response can use so...that, however/because, knew/thought that ... would, and turned out to be/became.', feedback: { correct: 'Keep the four sentences connected as one short narrative.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Describe a hard moment: “It was so … that …”', mode: 'Individual' }, { question: 'Sentence 2 — Add a different reaction with “however” or “because”.', mode: 'Individual' }, { question: 'Sentence 3 — Say what someone expected: “He knew / thought that … would …”', mode: 'Individual' }, { question: 'Sentence 4 — Give the surprise: “… turned out to be …”, “… became …” or “… turned into …”', mode: 'Pair' }] },
   ],
 };

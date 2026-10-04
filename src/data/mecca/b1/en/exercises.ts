@@ -62,8 +62,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'mecca-b1-language-review-1-once-or-again', type: 'drag-drop', title: 'Notice: Once, or Again and Again?',
-    instructions: 'Read the sentences from Chapters 2, 3, 4, 5, 7, 11 and 13. All the verbs are in the past simple. Does the sentence tell us about something that happened once, or about something that happened again and again? Put each sentence in its group.',
-    question: 'Which words show that a past action happened once, and which show that it was repeated or usual?',
+    instructions: 'Did it happen once, or again and again? Put each sentence in its group.',
+    question: 'Which words show that an action happened again and again?',
     dragDropGroups: [
       { group: 'Happened once', items: ['This era ended when the first revelation of the Qur’an began in 610 CE.', 'Ishmael (pbuh) learned Arabic from them.', 'Later, in the 5th century, the Quraysh tribe took over the city and the Ka’ba.', 'In 610, Prophet Muhammad (pbuh) started teaching Islam in Mecca.'] },
       { group: 'Happened again and again', items: ['In these months, people focused on worship, showed respect, and stayed away from fighting.', 'Powerful people were usually merchants who lent money with usury.', 'Whenever Prophet Muhammad (pbuh) walked by, they laughed …', 'His master, Umayya, often took him out in the hot midday sun.'] },
@@ -86,7 +86,7 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-b1-language-review-3-passive-focus', type: 'true-false', title: 'Notice: Who Did It?',
-    instructions: 'Read the sentences from Chapters 1, 3, 9 and 14. Is the statement about them true or false?',
+    instructions: 'Read the sentences from the book. Is the statement true or false?',
     question: '“… people from poor backgrounds were often treated badly.” “… Zamzam water had not been discovered yet.” “Slaves faced brutal conditions and were bought and sold like animals.” “The cries of hungry children could be heard everywhere.” Statement: in these sentences, the poor people, the water, the slaves and the cries are the ones who did the actions of treating, discovering, buying and selling, and hearing.',
     correctAnswer: false,
     explanation: 'These are passive forms: be + past participle (were treated, had been discovered, were bought and sold, could be heard). The subject is the person or thing that the action happens to, not the doer. The writer leaves the doer out because it is general, unknown or not important, and keeps the reader’s attention on the people who suffered, on the water, and on the cries.',
@@ -95,8 +95,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   // BUILD — controlled practice in the book's own sentences, mixing chapters.
   {
     id: 'mecca-b1-language-review-4-linkers', type: 'word-bank', title: 'Build: Link the Ideas',
-    instructions: 'Complete the sentences from Chapters 3, 7, 10 and 12 with words from the bank. Two words are not needed.',
-    question: 'Which linker gives a result, a cause, a contrast between two groups, and something we would not expect?',
+    instructions: 'Complete the sentences from the book with words from the bank. Two are not needed.',
+    question: 'Which word gives a result, a cause, a contrast or a surprise?',
     fillBlanksText: 'Arabs accepted the religion of Abraham (pbuh) and Ishmael (pbuh), [blank] the Ka’ba became a pilgrimage site. … [blank] the rich lived in luxury with gold plates and silver cups, the poor struggled to survive. … Arab people in that period actually believed in one main God, Allah, as the Creator. [blank], they also worshipped many idols. … They were very rich, and other tribes respected them [blank] trade and the idols in the Ka’ba.',
     wordBank: ['so', 'While', 'However', 'because of', 'Therefore', 'because'],
     correctAnswer: ['so', 'While', 'However', 'because of'],
@@ -118,8 +118,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-b1-language-review-6-fix-the-mistake', type: 'error-correction', title: 'Build: Fix One Mistake',
-    instructions: 'Each sentence from Chapters 7, 8 and 14 has one mistake. Tap the mistake, then choose the correct form.',
-    question: 'Can you correct a reported question and two passive forms?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct form.',
+    question: 'Can you fix a question and two verb forms?',
     errorItems: [
       { sentence: 'When Prophet Muhammad (pbuh) started calling people to Islam, some rich leaders asked why should Muhammad be the leader while they were rich and important.', error: 'why should Muhammad be', options: ['why Muhammad should be', 'why Muhammad should to be', 'why did Muhammad be'], answer: 0 },
       { sentence: 'Men were often saw as valuable because they were fighters in wars.', error: 'saw', options: ['seeing', 'seen', 'see'], answer: 1 },
@@ -131,8 +131,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-b1-language-review-7-combine-rewrite', type: 'transformation', title: 'Build: Combine and Rewrite',
-    instructions: 'Rewrite each part of Chapters 9 and 4 so that it keeps the same meaning. Use the start that is given.',
-    question: 'Can you join two contrasting sentences with “while”, and put the group that lost at the start of the sentence?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'Can you join two sentences with “while” and start with a new subject?',
     transformItems: [
       { source: 'Rich women, like Khadija, could run their own businesses. … many poor women had no rights and faced unfair treatment.', frame: 'While [blank], many poor women had no rights and faced unfair treatment.', answers: ['rich women, like Khadija, could run their own businesses', 'rich women like Khadija could run their own businesses', 'rich women could run their own businesses', 'rich women, like Khadija, were able to run their own businesses', 'rich women were able to run their own businesses', 'rich women, like Khadija, could run their businesses'] },
       { source: 'Later, the Khuza’a tribe came to Mecca, defeated the Jurhum tribe, and took control of the city.', frame: 'Later, the Jurhum tribe [blank] by the Khuza’a tribe, and the Khuza’a took control of the city.', answers: ['was defeated', 'got defeated'] },
@@ -144,8 +144,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   // USE — the book's language in a new, everyday context.
   {
     id: 'mecca-b1-language-review-8-new-context', type: 'word-bank', title: 'Use: Our School Garden',
-    instructions: 'This text is not from the book. Complete it with words and forms you met in the book. Two words are not needed.',
-    question: 'Can you use the book’s linkers and forms to tell the story of a change at school?',
+    instructions: 'This text is new. Complete it with words from the bank. Two are not needed.',
+    question: 'Can you use the book’s words to tell a school story?',
     fillBlanksText: 'Last year, the land behind our school was full of rubbish. Some parents thought that a garden would be a waste of time. [blank], our class decided to try. The rubbish [blank] by students and teachers in two days, and the head teacher allowed us to grow vegetables there. [blank] the spring rain, the plants grew very fast. Everyone loves the garden now, [blank] nobody leaves rubbish there any more.',
     wordBank: ['However', 'was collected', 'Because of', 'so', 'collected', 'Because'],
     correctAnswer: ['However', 'was collected', 'Because of', 'so'],
@@ -154,8 +154,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-b1-language-review-9-new-context', type: 'error-correction', title: 'Use: Check a Class Report',
-    instructions: 'These sentences are from a student’s report about a school trip, not from the book. Each one has one mistake. Tap it, then choose the correct form.',
-    question: 'Can you correct a reported question, a verb pattern and a passive in new sentences?',
+    instructions: 'A student wrote these sentences. Each has one mistake. Tap it, then choose the correction.',
+    question: 'Can you fix the mistakes in a student’s report?',
     errorItems: [
       { sentence: 'Our teacher asked us why were we late for the museum trip.', error: 'why were we', options: ['why we were', 'why we are', 'why did we be'], answer: 0 },
       { sentence: 'A new rule stops students from to run in the corridors.', error: 'from to run', options: ['to running', 'from running', 'from run'], answer: 1 },
@@ -167,8 +167,8 @@ export const meccaB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'mecca-b1-language-review-10-transfer', type: 'reflection', title: 'Use: A Change in My Community',
-    instructions: 'Write five or six connected sentences about a change at your school or in your town that people had different views about. Do not retell the book. Plan your sentences with a partner first.',
-    question: 'Can you use the language of the whole book to explain a change, report different views and give the result?',
+    instructions: 'Write five or six sentences about a change at school or in your town.',
+    question: 'What changed, and what did people think about it?',
     correctAnswer: null,
     explanation: 'Example: “Last year, a new bus stop was built near our school because many students walked a long way in the rain. At first, some shopkeepers thought that the buses would make the street too busy. They asked why the stop could not be further away. However, the town kept the stop, and the street was made safer with a new crossing. This allowed younger students to arrive on time and stopped them from waiting in the rain. That is why most families are happy with the change now.”',
     feedback: { correct: 'Check your sentences: because / because of; so / That is why; However / While; thought that / asked why + statement order; a passive (was + past participle); allow … to / stop … from + -ing.', incorrect: '' },

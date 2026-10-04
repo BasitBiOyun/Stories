@@ -7,7 +7,7 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-3-place-and-state',
       type: 'multiple-choice',
       title: 'Which Came First?',
-      instructions: 'Read the sentence from Chapter 3. Then choose what it tells us about the order of events.',
+      instructions: 'Read the sentence from Chapter 3. What does it tell us about the order?',
       question: '“When Prophet Abraham (pbuh) brought his son Ishmael (pbuh) and his wife Hagar to the city, Zamzam water had not been discovered yet.” What does “had not been discovered yet” tell us?',
       options: [
         'Zamzam water was discovered before they arrived.',
@@ -27,7 +27,7 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Reason and Result, Noun and Clause',
       instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
-      question: 'Can you change a result into a reason, and a noun phrase into a clause?',
+      question: 'How else can we say these sentences from Chapter 3?',
       transformItems: [
         {
           source: 'Arabs accepted the religion of Abraham (pbuh) and Ishmael (pbuh), so the Ka’ba became a pilgrimage site.',
@@ -81,8 +81,8 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-3-production',
       type: 'reflection',
       title: 'Explain How a Place Changed Over Time',
-      instructions: 'Write or say six connected B1 sentences about a different place that changed over time. Do not retell Chapter 3.',
-      question: 'Can you describe the starting place, show an earlier condition, organise two later developments, give one purpose, and explain one result?',
+      instructions: 'Write or say six sentences about another place that changed over time.',
+      question: 'What was the place like, and how did it change?',
       correctAnswer: null,
       explanation: 'A strong response should form one short historical paragraph. Useful patterns include “a place where...”, “There was/were...”, “had not ... yet”, “after...”, “later, when...”, “to + verb”, “so...”, and “helped ... grow/change”.',
       feedback: {
@@ -108,7 +108,7 @@ export const meccaB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-4-succession',
       type: 'sequencing',
       title: 'Stages of Control',
-      instructions: 'Put these parts of Chapter 4 in time order. The time words at the start of each sentence will help you.',
+      instructions: 'Put the parts of Chapter 4 in time order. The time words will help you.',
       question: 'How do “after”, “later” and “under … rule” guide the reader through the changes in Mecca?',
       sequencingItems: [
         { id: 'a', text: 'Later, in the 5th century, the Quraysh tribe …' },
@@ -153,7 +153,7 @@ export const meccaB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Reason First or Reason Second?',
       instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
-      question: 'Can you move a reason to a new place in the sentence, or turn it into a result?',
+      question: 'Where else can the reason go in these sentences?',
       transformItems: [
         {
           source: 'Because people could not farm in this dry land, they made money through trade.',
@@ -174,7 +174,7 @@ export const meccaB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       },
     },
     {
-      id: 'mecca-b1-language-4-production', type: 'reflection', title: 'Explain a Historical Change', instructions: 'Write or say six connected B1 sentences about a different historical place or community. Do not retell Chapter 4.', question: 'Can you show an earlier stage, a later change of control, one change in practice, one limitation and response, and a wider background situation?', correctAnswer: null,
+      id: 'mecca-b1-language-4-production', type: 'reflection', title: 'Explain a Historical Change', instructions: 'Write or say six sentences about another place or community that changed.', question: 'Who controlled the place, and what changed?', correctAnswer: null,
       explanation: 'A strong response should form one connected paragraph. Useful patterns include “after...”, “later...”, “under ... rule...”, “started + -ing”, “because ... could not..., ...”, and “when ... began, ... was/were ...”.',
       feedback: { correct: 'Keep the sequence clear and make each connector show a real relationship between ideas.', incorrect: '' },
       discussionPrompts: [
@@ -263,7 +263,7 @@ export const meccaB1LanguageFocusChapter5: Record<number, Exercise[]> = {
         incorrect: 'Check the verb in the first sentence (“became”), remember that “safer” is already a comparative, and ask why people visited. Then compare with Chapter 5.',
       },
     },
-    { id: 'mecca-b1-language-5-production', type: 'reflection', title: 'Explain How Conditions Create Opportunity', instructions: 'Write or say six connected B1 sentences about a different place, event or community. Do not retell Chapter 5.', question: 'Can you explain a reason, a change over time, an agreement or rule, a safer/easier condition, what people could then do, and their purpose?', correctAnswer: null, explanation: 'A strong response should form one connected paragraph using relationships such as “because...”, “from...”, “allowed ... to...”, “made ... safer/easier”, “could...”, and “to + verb” for purpose.', feedback: { correct: 'Keep the paragraph connected and make every language choice express a clear relationship.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-5-production', type: 'reflection', title: 'Explain How Conditions Create Opportunity', instructions: 'Write or say six sentences about a place or event that gave people a new chance.', question: 'What changed, and what could people do then?', correctAnswer: null, explanation: 'A strong response should form one connected paragraph using relationships such as “because...”, “from...”, “allowed ... to...”, “made ... safer/easier”, “could...”, and “to + verb” for purpose.', feedback: { correct: 'Keep the paragraph connected and make every language choice express a clear relationship.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Give a reason with “because...”.', mode: 'Individual' }, { question: 'Sentence 2 — Show a change beginning from a particular time.', mode: 'Individual' }, { question: 'Sentence 3 — Describe an agreement, rule or action that “allowed” people to do something.', mode: 'Individual' }, { question: 'Sentence 4 — Show how it “made” a place or situation safer, easier or more open.', mode: 'Pair' }, { question: 'Sentence 5 — Explain what people “could” do as a result.', mode: 'Pair' }, { question: 'Sentence 6 — Finish with “to + verb” to state their purpose.', mode: 'Pair' } ] },
   ],
 };
@@ -275,7 +275,7 @@ export const meccaB1LanguageFocusChapter6: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-6-continuation',
       type: 'true-false',
       title: 'What Does “Continued To” Show?',
-      instructions: 'Read the sentence from Chapter 6. Decide whether the statement about its meaning is true or false.',
+      instructions: 'Read the sentence from Chapter 6. Is the statement true or false?',
       question: '“Before Islam, idol worshippers continued to visit and walk around the Ka’ba.” The words “continued to” show that visiting the Ka’ba was a new practice that started at this time.',
       correctAnswer: false,
       explanation: '“Continue to + verb” shows that an action went on and did not stop. People had already visited the Ka’ba for a long time (Chapter 3: “the Ka’ba became a pilgrimage site”). Even after people started worshipping idols, the visits did not stop. The writer then shows the effect of this continuing activity on the city.',
@@ -289,7 +289,7 @@ export const meccaB1LanguageFocusChapter6: Record<number, Exercise[]> = {
       type: 'error-correction',
       title: 'Find and Fix the Mistake',
       instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the verb patterns after “kept” and “helped”, and keep the past tense in a sequence?',
+      question: 'Can you fix the verbs after “kept” and “helped”?',
       errorItems: [
         {
           sentence: 'These practices kept Mecca to be active during the pilgrimage season.',
@@ -340,7 +340,7 @@ export const meccaB1LanguageFocusChapter6: Record<number, Exercise[]> = {
         incorrect: 'Start with “This made”, then give a group and how it changed, then “and”, then the other group. Check the last paragraph of Chapter 6.',
       },
     },
-    { id: 'mecca-b1-language-6-production', type: 'reflection', title: 'Explain a System and Its Effects', instructions: 'Write or say six connected B1 sentences about a different event, school, community or economic situation. Do not retell Chapter 6.', question: 'Can you describe a continuing activity, organise two actions in sequence, set a time frame, explain a widespread practice and show how it affected two groups differently?', correctAnswer: null, explanation: 'A strong response should form one connected paragraph using language such as “continued to...”, “kept...”, “first... then...”, a historical or situational time frame, “was widespread”, and “made ... more/less ...” or another clear cause-and-result comparison.', feedback: { correct: 'Keep the paragraph connected and make each form express a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-6-production', type: 'reflection', title: 'Explain a System and Its Effects', instructions: 'Write or say six sentences about a school, a market or a busy event.', question: 'What kept going, and how did it affect people?', correctAnswer: null, explanation: 'A strong response should form one connected paragraph using language such as “continued to...”, “kept...”, “first... then...”, a historical or situational time frame, “was widespread”, and “made ... more/less ...” or another clear cause-and-result comparison.', feedback: { correct: 'Keep the paragraph connected and make each form express a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Describe an activity that “continued to” happen.', mode: 'Individual' }, { question: 'Sentence 2 — Explain what that activity “kept” active, busy, open or connected.', mode: 'Individual' }, { question: 'Sentence 3 — Order two related actions with “first ... then ...”.', mode: 'Individual' }, { question: 'Sentence 4 — Set a clear time frame for the situation.', mode: 'Pair' }, { question: 'Sentence 5 — Describe one practice as common or widespread.', mode: 'Pair' }, { question: 'Sentence 6 — Show how that practice affected two groups differently.', mode: 'Pair' } ] },
   ],
 };
@@ -407,7 +407,7 @@ export const meccaB1LanguageFocusChapter7: Record<number, Exercise[]> = {
         incorrect: 'Look at what follows each gap: a verb, a noun phrase, or the word “debt” after “deeper”. Then check the first paragraph of Chapter 7.',
       },
     },
-    { id: 'mecca-b1-language-7-production', type: 'reflection', title: 'Describe Inequality Without Retelling the Story', instructions: 'Write or say six connected B1 sentences about a different school, workplace or community situation. Do not retell Chapter 7.', question: 'Can you explain a cause, describe inability, contrast two groups, state a group’s priorities and report one person’s objection?', correctAnswer: null, explanation: 'A strong response should connect ideas with language such as “because of...”, “could not...”, “while...”, “the most important...”, “when...”, and “asked why...” or a natural equivalent.', feedback: { correct: 'Keep the paragraph connected and use each form to express a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-7-production', type: 'reflection', title: 'Describe Inequality Without Retelling the Story', instructions: 'Write or say six sentences about a place where life was unfair for some people.', question: 'Who had a hard life, and who spoke up?', correctAnswer: null, explanation: 'A strong response should connect ideas with language such as “because of...”, “could not...”, “while...”, “the most important...”, “when...”, and “asked why...” or a natural equivalent.', feedback: { correct: 'Keep the paragraph connected and use each form to express a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Describe a difficult situation.', mode: 'Individual' }, { question: 'Sentence 2 — Explain one cause with “because of...”.', mode: 'Individual' }, { question: 'Sentence 3 — Show what one group could not do.', mode: 'Individual' }, { question: 'Sentence 4 — Contrast two groups with “while...”.', mode: 'Pair' }, { question: 'Sentence 5 — State what one group considered most important.', mode: 'Pair' }, { question: 'Sentence 6 — Report an objection with “asked why...”.', mode: 'Pair' } ] },
   ],
 };
@@ -462,7 +462,7 @@ export const meccaB1LanguageFocusChapter8: Record<number, Exercise[]> = {
       type: 'transformation',
       title: '“Without” and “If”',
       instructions: 'Rewrite the sentence from Chapter 8 with “if”. Keep the same meaning.',
-      question: 'How can a “without” phrase become an “if” clause?',
+      question: 'How can we say “without …” with “if”?',
       transformItems: [
         {
           source: 'Without a tribe, people could not easily protect their lives or property.',
@@ -477,7 +477,7 @@ export const meccaB1LanguageFocusChapter8: Record<number, Exercise[]> = {
         incorrect: 'Keep “could not” and the word “easily” in your answer. Check the second paragraph of Chapter 8.',
       },
     },
-    { id: 'mecca-b1-language-8-production', type: 'reflection', title: 'Explain Rules, Support and Consequences', instructions: 'Write or say six connected B1 sentences about a different group, team, club or community. Do not retell Chapter 8.', question: 'Can you explain a difficult condition, give a reason and a purpose, show what people could not do without support, and describe one strong obligation with “even when”?', correctAnswer: null, explanation: 'A strong response should use connected language such as “so”, “because”, “to + verb”, “without...”, “could not...”, “had to...” and “even when...” where they fit naturally.', feedback: { correct: 'Keep the six sentences connected so each structure expresses a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-8-production', type: 'reflection', title: 'Explain Rules, Support and Consequences', instructions: 'Write or say six sentences about a team, a club or a group.', question: 'What was hard, and what did people have to do?', correctAnswer: null, explanation: 'A strong response should use connected language such as “so”, “because”, “to + verb”, “without...”, “could not...”, “had to...” and “even when...” where they fit naturally.', feedback: { correct: 'Keep the six sentences connected so each structure expresses a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Describe a difficult condition.', mode: 'Individual' }, { question: 'Sentence 2 — Give one result with “so”.', mode: 'Individual' }, { question: 'Sentence 3 — Explain a reason with “because”.', mode: 'Individual' }, { question: 'Sentence 4 — State a purpose with “to + verb”.', mode: 'Pair' }, { question: 'Sentence 5 — Explain what people could not do without one kind of support.', mode: 'Pair' }, { question: 'Sentence 6 — State one obligation and add an “even when” contrast.', mode: 'Pair' } ] },
   ],
 };

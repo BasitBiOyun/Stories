@@ -31,8 +31,8 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-1-ability-and-possibility',
       type: 'transformation',
       title: 'Short Phrase, Full Clause',
-      instructions: 'The chapter adds detail to a noun with a short phrase. Complete each sentence with a full relative clause (who / which / that + verb) that keeps the same meaning.',
-      question: 'How does a short phrase like “named …” or “made from …” carry the same information as a full clause?',
+      instructions: 'Complete each sentence with who, which or that. Keep the same meaning.',
+      question: 'How else can we say “named …” or “made from …”?',
       transformItems: [
         {
           source: '… there was a boy named Abraham.',
@@ -71,8 +71,8 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-1-connected-observation',
       type: 'reflection',
       title: 'Build a Connected Observation',
-      instructions: 'Write or say four connected B1 sentences about a person noticing something surprising in a new place. Use at least three Chapter 1 language patterns without retelling the story.',
-      question: 'Can you combine time framing, an indirect “how” idea, ability/possibility, and added description in one short coherent response?',
+      instructions: 'Write or say four sentences about someone who sees something surprising in a new place.',
+      question: 'What did the person see, and what could they not understand?',
       correctAnswer: null,
       explanation: 'A strong response can open with a past-time expression, describe a person or object with added detail, use “could/could not” in context, and include a sentence such as “She could not understand how ...”.',
       feedback: {
@@ -80,10 +80,10 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Set the time with “a long time ago”, “when ...”, or another suitable past-time frame.', mode: 'Individual' },
-        { question: 'Sentence 2 — Describe a person, place, or object with an added phrase such as “named ...”, “made from ...”, or “full of ...”.', mode: 'Individual' },
-        { question: 'Sentence 3 — Use “could” or “could not” to express ability, possibility, or difficulty understanding.', mode: 'Individual' },
-        { question: 'Sentence 4 — Add an indirect idea with “could not understand how ...” and connect it to the same situation.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give the time: “A long time ago, …” or “When …, …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Describe a person or thing: “… named …”, “… made from …” or “… full of …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Use “could” or “could not”.', mode: 'Individual' },
+        { question: 'Sentence 4 — Add: “He could not understand how …”', mode: 'Pair' },
       ],
     },
   ],
@@ -92,8 +92,8 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-2-past-habit-background',
       type: 'drag-drop',
       title: 'Again and Again, or One Time?',
-      instructions: 'Read each part of Chapter 2. Did it happen again and again in Abraham’s childhood, or only one time? Put it in the right group.',
-      question: 'How does the chapter show the difference between childhood habits and one particular event?',
+      instructions: 'Again and again, or only one time? Put each part in the right group.',
+      question: 'Which parts were habits, and which happened only once?',
       dragDropGroups: [
         {
           group: 'Again and again (a habit)',
@@ -197,8 +197,8 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-2-connected-memory',
       type: 'reflection',
       title: 'Describe a Past Routine and a Turning Point',
-      instructions: 'Write or say four connected B1 sentences about a childhood routine that leads to one memorable event. Use at least three Chapter 2 language patterns without retelling the story.',
-      question: 'Can you combine a past habit, a background action, one specific event, and either a reported instruction or a comparison?',
+      instructions: 'Write or say four sentences about a childhood habit and one day you remember.',
+      question: 'What did you use to do, and what happened one day?',
       correctAnswer: null,
       explanation: 'A strong response can begin with “I used to ...”, add “while ... was/were -ing”, shift with “One day ...”, and finish with a reported instruction such as “My teacher told me not to ...” or a comparison such as “It was bigger than ...”.',
       feedback: {
@@ -206,10 +206,10 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Describe a repeated past habit with “used to”.', mode: 'Individual' },
-        { question: 'Sentence 2 — Add a simultaneous background action with “while ... was/were -ing”.', mode: 'Individual' },
-        { question: 'Sentence 3 — Move to one specific event with “One day ...”.', mode: 'Individual' },
-        { question: 'Sentence 4 — Add a reported instruction with “told ... (not) to ...” or a comparison with “... than ...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give a habit: “I used to …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Add what else was happening: “… while … was/were …ing.”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give one event: “One day, …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Add “… told me (not) to …” or compare with “… than …”', mode: 'Pair' },
       ],
     },
   ],

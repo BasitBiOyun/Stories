@@ -1,7 +1,7 @@
 import type { Exercise } from '../../../../types';
 
 const feedback = { correct: 'Correct. You used the chapter language and relationship accurately.', incorrect: 'Not yet. Return to the chapter wording and check the relationship the form expresses.' };
-const reflect=(id:string,title:string,question:string,prompts:string[],explanation:string):Exercise=>({id,type:'reflection',title,instructions:'Use the target language to produce a short B2 response.',question,correctAnswer:null,explanation,feedback,discussionPrompts:prompts.map(q=>({question:q,mode:'Individual'}))});
+const reflect=(id:string,title:string,question:string,prompts:string[],explanation:string,instructions:string='Use the target language to produce a short B2 response.'):Exercise=>({id,type:'reflection',title,instructions,question,correctAnswer:null,explanation,feedback,discussionPrompts:prompts.map(q=>({question:q,mode:'Individual'}))});
 
 const ch8Harmed = [
   'orphans were oppressed',
@@ -49,8 +49,8 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     id: 'me-b2-lf6b',
     type: 'transformation',
     title: 'Expressing Cause in Different Ways',
-    instructions: 'Rewrite each sentence from Chapter 6 by completing the new frame. Keep the cause–result meaning of the original.',
-    question: 'How can the same cause be expressed with a clause, a noun phrase or a causing verb?',
+    instructions: 'Complete the new sentence. Keep the same cause and result.',
+    question: 'How many ways can we say the same cause?',
     transformItems: [
       {
         source: 'Because of its extensive trade activities, Mecca was described as the "Republic of Traders."',
@@ -75,7 +75,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       incorrect: 'Look at what follows each gap: after “because”, write a full clause; after “the safe environment”, add a short participle phrase; before “the Silk Road unusable”, use a verb that means “caused it to be”.',
     },
   },
-  reflect('me-b2-lf6c','Explain Interacting Causes','How did war, sacred time and pilgrimage reinforce Mecca’s trade?',['Write 5–6 sentences using due to or because of, this made…, in addition, and a final therefore/so conclusion.'],'A B2 explanation should connect several mechanisms into one coherent causal account.')
+  reflect('me-b2-lf6c','Explain Interacting Causes','How did war, holy months and pilgrimage help trade?',['Use “due to” or “because of”, “this made …”, “in addition” and “so”.'],'A B2 explanation should connect several mechanisms into one coherent causal account.','Write or say five or six sentences about why trade grew in Mecca.')
 ],
 7:[
   {
@@ -113,7 +113,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       incorrect: 'Check the first two paragraphs of Chapter 7. What comes after each gap: a noun phrase, an adjective + that, or a description of where the wealth was?',
     },
   },
-  reflect('me-b2-lf7c','Explain a System, Not a Fact','Can you show how one practice affects an entire social structure?',['Write a short paragraph linking usury, debt, concentrated wealth and class division. Use as a result, so…that, and one paired comparative such as richer/poorer or stronger/weaker.'],'B2 analysis should make the mechanism between economic practice and social outcome explicit.')
+  reflect('me-b2-lf7c','Explain a System, Not a Fact','How did one practice change the whole society?',['Link usury, debt, wealth and class. Use “as a result”, “so … that” and “the richer …, the poorer …”.'],'B2 analysis should make the mechanism between economic practice and social outcome explicit.','Write or say a short paragraph about how usury divided society.')
 ],
 8:[
   {
@@ -161,7 +161,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       incorrect: 'In the first frame, the tribes are the subject: what did they do? In the second, the merchant is speaking now, about the future: which form follows “If you do not pay, they …”?',
     },
   },
-  reflect('me-b2-lf8c','Conditional Enforcement','How did Hilfü’l-Fudûl turn principle into practical pressure?',['Write 4–5 sentences about the unpaid merchant. Include if he did not pay…, they would…, one passive form, and one purpose clause.'],'The chapter’s conditional shows that justice was backed by a stated consequence, not only moral advice.')
+  reflect('me-b2-lf8c','Conditional Enforcement','How did the Hilf al-Fudul help the merchant?',['Use “If he did not pay …, they would …”, “… was forced to …” and “… to + verb”.'],'The chapter’s conditional shows that justice was backed by a stated consequence, not only moral advice.','Write or say four or five sentences about the merchant who was not paid.')
 ],
 9:[
   {
@@ -216,6 +216,6 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       incorrect: 'Check paragraph 3 of Chapter 9. Which word can describe an adjective? Which small word follows “In addition”? Who does the slaughtering?',
     },
   },
-  reflect('me-b2-lf9c','Make a Balanced Historical Judgment','Can you praise an action while still evaluating its motive?',['Write a 5-sentence evaluation of pre-Islamic generosity using not entirely…, in addition, however, and rather than.'],'B2 evaluation should preserve positive evidence while also explaining the chapter’s criticism.')
+  reflect('me-b2-lf9c','Make a Balanced Historical Judgment','What was good about this generosity, and what was not?',['Use “not entirely …”, “in addition”, “however” and “rather than”.'],'B2 evaluation should preserve positive evidence while also explaining the chapter’s criticism.','Write or say five sentences about generosity before Islam.')
 ]
 };

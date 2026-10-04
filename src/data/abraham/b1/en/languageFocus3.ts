@@ -58,7 +58,7 @@ export const abrahamB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-9-ability-challenge',
       type: 'transformation',
       title: 'Inability and Exclusive Power',
-      instructions: 'Complete each new sentence so that it has the same meaning as the sentence from Chapter 9.',
+      instructions: 'Write the missing words. Keep the same meaning.',
       question: 'How else can we say “was unable to” and “only …”?',
       transformItems: [
         {
@@ -79,7 +79,7 @@ export const abrahamB1LanguageFocusChapter9: Record<number, Exercise[]> = {
         incorrect: 'Item 1: use could not or was not able to + do. Item 2: after “the only one”, add who/that + has.',
       },
     },
-    { id: 'abraham-b1-language-9-connected-production', type: 'reflection', title: 'Challenge a Claim with Evidence', instructions: 'Write or say four connected B1 sentences about a new situation in which someone makes a claim and another person tests it. Do not retell Chapter 9.', question: 'Can you connect a claim, a reason or decision, a challenge, and the final result?', correctAnswer: null, explanation: 'A strong response can use can/can’t, so, however/yet, order/tell/let if natural, and a final result expression such as was unable to or this made....', feedback: { correct: 'Keep the four sentences connected as one short exchange or narrative.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State a claim using can or another ability expression.', mode: 'Individual' }, { question: 'Sentence 2 — Explain why someone decides to test the claim using so, because, or another natural connector.', mode: 'Individual' }, { question: 'Sentence 3 — Write the challenge as a direct question or instruction.', mode: 'Individual' }, { question: 'Sentence 4 — Report the outcome using was able/unable to, however/yet, or this made....', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-9-connected-production', type: 'reflection', title: 'Challenge a Claim with Evidence', instructions: 'Write or say four sentences about someone who says they can do something, and a test.', question: 'What does the person say, and what does the test show?', correctAnswer: null, explanation: 'A strong response can use can/can’t, so, however/yet, order/tell/let if natural, and a final result expression such as was unable to or this made....', feedback: { correct: 'Keep the four sentences connected as one short exchange or narrative.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone can do, using “can”.', mode: 'Individual' }, { question: 'Sentence 2 — Say why another person tests it, with “so” or “because”.', mode: 'Individual' }, { question: 'Sentence 3 — Write the test as a question or an instruction.', mode: 'Individual' }, { question: 'Sentence 4 — Give the result: “… was able / unable to …” or “However, …”', mode: 'Pair' }] },
   ],
 };
 
@@ -89,7 +89,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-10-realization-decision',
       type: 'drag-drop',
       title: 'Why? or What Was He Told?',
-      instructions: 'All of these parts of Chapter 10 use “to + verb” or “so that”. Sort them: does the part explain why someone acts, or what someone is told to do?',
+      instructions: 'Does each part say why someone acts, or what someone is told to do? Sort them.',
       question: 'Does “to + verb” always show purpose?',
       dragDropGroups: [
         {
@@ -173,7 +173,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
         incorrect: 'In direct words, “was going to” becomes “is going to”, and “his message” becomes “my message”.',
       },
     },
-    { id: 'abraham-b1-language-10-connected-production', type: 'reflection', title: 'Explain a Purposeful Journey', instructions: 'Write or say five connected B1 sentences about a new journey or change of place. Do not retell Chapter 10.', question: 'Can you connect a realization, a decision, a purpose, events during the journey, and an endpoint?', correctAnswer: null, explanation: 'A strong response can use realized that, therefore/so, decided to, to + verb or so that, during, soon, one day, and finally.', feedback: { correct: 'Keep the sentences connected as one short narrative, not five unrelated statements.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State what the person realizes about the situation.', mode: 'Individual' }, { question: 'Sentence 2 — Give the decision that follows, using therefore or so if natural.', mode: 'Individual' }, { question: 'Sentence 3 — Explain the purpose with to + verb or so that.', mode: 'Individual' }, { question: 'Sentence 4 — Add one event that happens during the journey.', mode: 'Individual' }, { question: 'Sentence 5 — Mark the endpoint with finally or another natural sequencing expression.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-10-connected-production', type: 'reflection', title: 'Explain a Purposeful Journey', instructions: 'Write or say five sentences about a journey or a move to a new place.', question: 'Why does the person go, and where does the journey end?', correctAnswer: null, explanation: 'A strong response can use realized that, therefore/so, decided to, to + verb or so that, during, soon, one day, and finally.', feedback: { correct: 'Keep the sentences connected as one short narrative, not five unrelated statements.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what the person realizes.', mode: 'Individual' }, { question: 'Sentence 2 — Give the decision, with “so” or “therefore”.', mode: 'Individual' }, { question: 'Sentence 3 — Give the reason: “… to …” or “… so that …”', mode: 'Individual' }, { question: 'Sentence 4 — Add one event on the way.', mode: 'Individual' }, { question: 'Sentence 5 — Give the end: “Finally, …”', mode: 'Pair' }] },
   ],
 };
 
@@ -251,7 +251,7 @@ export const abrahamB1LanguageFocusChapter11: Record<number, Exercise[]> = {
         incorrect: 'Check the end of Chapter 11. The name is given with a passive form, and “must” is never followed by “to”.',
       },
     },
-    { id: 'abraham-b1-language-11-connected-production', type: 'reflection', title: 'Explain a Process Clearly', instructions: 'Write or say five connected B1 sentences about a non-story routine, practice, or difficult situation. Do not retell Chapter 11.', question: 'Can you connect a purpose, a need, a developing action, an obligation, and a short explanation of the process?', correctAnswer: null, explanation: 'A strong response can use so that, need to, start + -ing, look for, must, after + -ing, is known as, or involves + -ing when natural.', feedback: { correct: 'Keep the five sentences connected as one short explanation rather than isolated examples.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — State the situation or goal.', mode: 'Individual' }, { question: 'Sentence 2 — Express a need or purpose with need to or so that.', mode: 'Individual' }, { question: 'Sentence 3 — Show the beginning of an action with start + -ing or another natural structure.', mode: 'Individual' }, { question: 'Sentence 4 — Add one rule or obligation with must if appropriate.', mode: 'Individual' }, { question: 'Sentence 5 — Explain what the process includes or what happens after another step.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-11-connected-production', type: 'reflection', title: 'Explain a Process Clearly', instructions: 'Write or say five sentences about a routine, a practice or a hard situation.', question: 'What do people need to do, and in what order?', correctAnswer: null, explanation: 'A strong response can use so that, need to, start + -ing, look for, must, after + -ing, is known as, or involves + -ing when natural.', feedback: { correct: 'Keep the five sentences connected as one short explanation rather than isolated examples.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Give the situation or the aim.', mode: 'Individual' }, { question: 'Sentence 2 — Give a need: “… need to …” or “… so that …”', mode: 'Individual' }, { question: 'Sentence 3 — Show a start: “… started …ing …”', mode: 'Individual' }, { question: 'Sentence 4 — Add a rule with “must”.', mode: 'Individual' }, { question: 'Sentence 5 — Say what happens next, or what it includes.', mode: 'Pair' }] },
   ],
 };
 
@@ -307,7 +307,7 @@ export const abrahamB1LanguageFocusChapter12: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-12-development',
       type: 'sentence-building',
       title: 'Build a Cause Sentence',
-      instructions: 'Tap the pieces to build the sentence from Chapter 12. You can also start with the cause.',
+      instructions: 'Tap the pieces to build the sentence. You can start with the cause.',
       question: 'What follows “because of”, and where can the cause go?',
       sentenceChunks: ['More people', 'came', 'to settle there', 'because of', 'this sacred spring'],
       correctAnswer: [['because of', 'this sacred spring', 'More people', 'came', 'to settle there']],
@@ -317,7 +317,7 @@ export const abrahamB1LanguageFocusChapter12: Record<number, Exercise[]> = {
         incorrect: 'Start with who came (More people), then why they came (to settle there), then the cause (because of + noun). Check the second paragraph of Chapter 12.',
       },
     },
-    { id: 'abraham-b1-language-12-connected-production', type: 'reflection', title: 'Explain How a Place Changes', instructions: 'Write or say five connected B1 sentences about a non-story place that changes over time. Do not retell Chapter 12.', question: 'Can you combine background, a sudden event, cause, continuity, and development in one short explanation?', correctAnswer: null, explanation: 'A strong response can use while, suddenly, when, still, because/because of, begin/start, come to + verb, and meanwhile where natural.', feedback: { correct: 'Keep the sentences connected as one short development story.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Set the background with while or another natural time expression.', mode: 'Individual' }, { question: 'Sentence 2 — Introduce a new event with suddenly or when.', mode: 'Individual' }, { question: 'Sentence 3 — Explain one result or reason with because or because of.', mode: 'Individual' }, { question: 'Sentence 4 — Show something that continues with still or another natural continuity expression.', mode: 'Individual' }, { question: 'Sentence 5 — Show later development with begin/start, come to + verb, or meanwhile.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-12-connected-production', type: 'reflection', title: 'Explain How a Place Changes', instructions: 'Write or say five sentences about a place that changes over time.', question: 'What was the place like, and how did it change?', correctAnswer: null, explanation: 'A strong response can use while, suddenly, when, still, because/because of, begin/start, come to + verb, and meanwhile where natural.', feedback: { correct: 'Keep the sentences connected as one short development story.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Set the scene: “While …, …”', mode: 'Individual' }, { question: 'Sentence 2 — Add a new event with “suddenly” or “when”.', mode: 'Individual' }, { question: 'Sentence 3 — Give a reason with “because” or “because of”.', mode: 'Individual' }, { question: 'Sentence 4 — Show what continues: “… still …”', mode: 'Individual' }, { question: 'Sentence 5 — Show a later change with “began to”, “started to” or “meanwhile”.', mode: 'Pair' }] },
   ],
 };
 
@@ -327,7 +327,7 @@ export const abrahamB1LanguageFocusChapter13: Record<number, Exercise[]> = {
       id: 'abraham-b1-language-13-command-commitment',
       type: 'drag-drop',
       title: 'Instruction or Promise?',
-      instructions: 'Sort the parts of Chapter 13. Does each part report what someone was told to do, or say what someone will do in the future?',
+      instructions: 'Is each part an instruction, or a promise about the future? Sort the parts.',
       question: 'How does the opening dialogue move from an instruction to a promise?',
       dragDropGroups: [
         {
@@ -396,6 +396,6 @@ export const abrahamB1LanguageFocusChapter13: Record<number, Exercise[]> = {
         incorrect: 'Ask: who was the place for? How long did it take for children to have children? Why did they spread? Then check the last two paragraphs of Chapter 13.',
       },
     },
-    { id: 'abraham-b1-language-13-connected-production', type: 'reflection', title: 'Explain How a Legacy Continues', instructions: 'Write or say five connected B1 sentences about a non-story project, tradition, or idea that continues after its founder. Do not retell Chapter 13.', question: 'Can you connect instruction, action, completion, purpose, and continuity in one short paragraph?', correctAnswer: null, explanation: 'A strong response can use told/asked + person + to + verb, will, after, begin/start, to + verb for purpose, and over the years where natural.', feedback: { correct: 'Keep the five sentences connected as one explanation of how something continues over time.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Report an instruction, request, or goal.', mode: 'Individual' }, { question: 'Sentence 2 — Show a person’s future commitment or expected role.', mode: 'Individual' }, { question: 'Sentence 3 — Describe the beginning or completion of an important action.', mode: 'Individual' }, { question: 'Sentence 4 — Explain the purpose or function of what was created.', mode: 'Individual' }, { question: 'Sentence 5 — Show how the idea or work continues over the years.', mode: 'Pair' }] },
+    { id: 'abraham-b1-language-13-connected-production', type: 'reflection', title: 'Explain How a Legacy Continues', instructions: 'Write or say five sentences about a project or tradition that lives on.', question: 'How did the work start, and how does it continue?', correctAnswer: null, explanation: 'A strong response can use told/asked + person + to + verb, will, after, begin/start, to + verb for purpose, and over the years where natural.', feedback: { correct: 'Keep the five sentences connected as one explanation of how something continues over time.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone was asked to do.', mode: 'Individual' }, { question: 'Sentence 2 — Say what someone will do: “… will …”', mode: 'Individual' }, { question: 'Sentence 3 — Say how the work started or was finished.', mode: 'Individual' }, { question: 'Sentence 4 — Say what it is for: “… so that …” or “… for …”', mode: 'Individual' }, { question: 'Sentence 5 — Show how it continues over the years.', mode: 'Pair' }] },
   ],
 };

@@ -47,7 +47,7 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Who Did It, and Who Says So?',
       instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
-      question: 'How does the chapter keep the focus on the people affected, and how does it show the source of a description?',
+      question: 'How else can we say these sentences from Chapter 1?',
       transformItems: [
         {
           source: 'Society was not fair, and people from poor backgrounds were often treated badly.',
@@ -71,8 +71,8 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-1-production',
       type: 'reflection',
       title: 'Write a Connected Historical Snapshot',
-      instructions: 'Write or say five to six connected B1 sentences about a different historical city or society. Do not retell Chapter 1.',
-      question: 'Can you set the time, describe the social or political situation, explain one reason or result, add a contrast, and report a source or general description?',
+      instructions: 'Write or say five or six sentences about another city or people from history.',
+      question: 'What was life like there, and why?',
       correctAnswer: null,
       explanation: 'A strong answer should read like one short historical paragraph rather than separate grammar examples. Useful patterns include “In the ... century...”, “was called... because...”, “for this reason...”, “while...”, “was led by...”, and “X describes... as...”.',
       feedback: {
@@ -80,11 +80,11 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Set a historical time and place.', mode: 'Individual' },
-        { question: 'Sentence 2 — Describe an important political or social condition.', mode: 'Individual' },
-        { question: 'Sentence 3 — Add a reason with “because” or a result with “for this reason”.', mode: 'Individual' },
-        { question: 'Sentence 4 — Contrast two groups or conditions with “while”.', mode: 'Pair' },
-        { question: 'Sentence 5–6 — Use one passive form or attribute a description to a source.', mode: 'Pair' },
+        { question: 'Sentence 1 — Give the time and place.', mode: 'Individual' },
+        { question: 'Sentence 2 — Say who led the city or how people lived.', mode: 'Individual' },
+        { question: 'Sentence 3 — Give a reason with “because” or a result with “For this reason, …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Compare two groups with “while”.', mode: 'Pair' },
+        { question: 'Sentences 5–6 — Add “… were often treated …” or “… was known as …”', mode: 'Pair' },
       ],
     },
   ],
@@ -93,7 +93,7 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-2-definition-contrast',
       type: 'sequencing',
       title: 'Follow the Explanation',
-      instructions: 'Put these sentences from Chapter 2 in the most natural order. Words like “the Jahiliyyah period”, “first” and “this city” will help you.',
+      instructions: 'Put the sentences from Chapter 2 in order. Words like “first” and “this city” help.',
       question: 'How does the writer move from the Jahiliyyah to a short profile of Mecca?',
       sequencingItems: [
         { id: 'a', text: 'Allah chose this city to be the location of His House, the Holy Ka’ba.' },
@@ -133,7 +133,7 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'transformation',
       title: 'Time Clauses and Inserted Definitions',
       instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
-      question: 'Can you move a “when” clause to the front and unpack a definition that sits inside a sentence?',
+      question: 'How else can we say these sentences from Chapter 2?',
       transformItems: [
         {
           source: 'This era ended when the first revelation of the Qur’an began in 610 CE.',
@@ -157,8 +157,8 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'mecca-b1-language-2-production',
       type: 'reflection',
       title: 'Build a Short Explanatory Profile',
-      instructions: 'Write or say five to six connected B1 sentences about a different important city, place or institution. Do not retell Chapter 2.',
-      question: 'Can you define the topic, explain why it matters, organise the explanation with a clear first step, add two related facts, and define one key term inside a sentence?',
+      instructions: 'Write or say five or six sentences about another important city or place.',
+      question: 'What is this place, and why is it important?',
       correctAnswer: null,
       explanation: 'A strong response should use connected explanatory language such as “To understand..., we must first...”, “is...”, “also”, “and”, and a short inserted definition like “X, the..., ...”.',
       feedback: {

@@ -5,7 +5,7 @@ export const meccaB1LanguageFocusChapter9: Record<number, Exercise[]> = {
   9: [
     {
       id: 'mecca-b1-language-9-contrast-status', type: 'true-false', title: 'What Does “Depending On” Mean?',
-      instructions: 'Read the sentence from Chapter 9. Decide whether the statement about its meaning is true or false.',
+      instructions: 'Read the sentence from Chapter 9. Is the statement true or false?',
       question: '“Before Islam, the life of Arab women was very different depending on their wealth and family.” This means that a woman’s life changed according to how rich she was and which family she came from.',
       correctAnswer: true,
       explanation: '“Depending on …” shows that one thing changes according to another factor. Here, women’s lives changed according to wealth and family. The next sentences give the two sides: what rich women like Khadija were able to do, and then, marked by “However”, the situation of many poor women.',
@@ -13,7 +13,7 @@ export const meccaB1LanguageFocusChapter9: Record<number, Exercise[]> = {
     },
     {
       id: 'mecca-b1-language-9-cause-passive', type: 'transformation', title: 'Who Did It?',
-      instructions: 'Rewrite each part of Chapter 9 so that it keeps the same meaning. Use the start that is given.',
+      instructions: 'Rewrite each part of Chapter 9. Use the start that is given.',
       question: 'Why does the chapter keep the slaves, not the owners, at the centre of these sentences?',
       transformItems: [
         {
@@ -34,7 +34,7 @@ export const meccaB1LanguageFocusChapter9: Record<number, Exercise[]> = {
     {
       id: 'mecca-b1-language-9-poetry-functions', type: 'error-correction', title: 'Find and Fix the Mistake',
       instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct a verb after “could”, a reason clause and a list of parallel verbs?',
+      question: 'Can you fix the verbs in these sentences?',
       errorItems: [
         {
           sentence: 'Rich women, like Khadija, could ran their own businesses.',
@@ -60,11 +60,11 @@ export const meccaB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       feedback: { correct: 'Well done. You fixed the modal verb, the reason clause and the parallel list.', incorrect: 'Check the first paragraph of Chapter 9 for the first two sentences, and the last paragraph for the list of what poetry did.' },
     },
     {
-      id: 'mecca-b1-language-9-production', type: 'reflection', title: 'Describe Unequal Roles and Social Functions', instructions: 'Write or say six connected B1 sentences about a different historical or modern community. Do not retell Chapter 9.', question: 'Can you show how people’s opportunities vary, add a contrast, explain one cause, use one passive sentence, and describe an institution through several parallel verbs or a comparison?', correctAnswer: null,
+      id: 'mecca-b1-language-9-production', type: 'reflection', title: 'Describe Unequal Roles and Social Functions', instructions: 'Write or say six sentences about people in a community, then or now.', question: 'Who had more chances, and who had fewer?', correctAnswer: null,
       explanation: 'A strong response should use language such as “depending on...”, “however”, “because”, a passive form, and a clear list of parallel verbs or a useful comparison.',
       feedback: { correct: 'Keep the ideas connected so the grammar shows real relationships rather than appearing as separate examples.', incorrect: '' },
       discussionPrompts: [
-        { question: 'Sentence 1 — Describe how opportunities vary depending on one factor.', mode: 'Individual' }, { question: 'Sentence 2 — Give one contrasting example with “however”.', mode: 'Individual' }, { question: 'Sentence 3 — Explain one reason with “because”.', mode: 'Individual' }, { question: 'Sentence 4 — Use a passive sentence to focus on people affected by an action.', mode: 'Pair' }, { question: 'Sentence 5 — Describe one institution with two or three parallel verbs.', mode: 'Pair' }, { question: 'Sentence 6 — Add a comparison that helps explain its social role.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say how chances were different “depending on …”', mode: 'Individual' }, { question: 'Sentence 2 — Give a different example with “However, …”', mode: 'Individual' }, { question: 'Sentence 3 — Give a reason with “because”.', mode: 'Individual' }, { question: 'Sentence 4 — Say what happened to people: “… were treated / helped / sent …”', mode: 'Pair' }, { question: 'Sentence 5 — Say two or three things a place or group did.', mode: 'Pair' }, { question: 'Sentence 6 — Compare it: “It was like …”', mode: 'Pair' },
       ],
     },
   ],
@@ -75,8 +75,8 @@ export const meccaB1LanguageFocusChapter10: Record<number, Exercise[]> = {
   10: [
     {
       id: 'mecca-b1-language-10-group-contrast', type: 'drag-drop', title: 'Fact or Belief?',
-      instructions: 'Sort the parts of Chapter 10. Does the writer say it directly, or report what people in that period thought or believed?',
-      question: 'How does the chapter keep the writer’s statements separate from the beliefs of people in the past?',
+      instructions: 'Does the writer say it, or report what people then believed? Sort the parts.',
+      question: 'Which parts are facts, and which are old beliefs?',
       dragDropGroups: [
         { group: 'The writer says it directly', items: ['There were 360 idols …', 'Pilgrimage to the Ka’ba was the most important religious activity in early Arabia.', 'Life in the Age of Ignorance was also full of superstitions.'] },
         { group: 'The writer reports what people thought or believed', items: ['They thought these idols helped them talk to Allah.', 'People believed in kahins, or soothsayers …', 'Arab people in that period actually believed in one main God, Allah, as the Creator.'] },
@@ -104,7 +104,7 @@ export const meccaB1LanguageFocusChapter10: Record<number, Exercise[]> = {
     {
       id: 'mecca-b1-language-10-belief-purpose-decision', type: 'transformation', title: 'Where and When',
       instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
-      question: 'Can you change a passive sentence about place into an active one, and “before + -ing” into a full clause?',
+      question: 'How else can we say where and when?',
       transformItems: [
         {
           source: 'They were kept in and around the Ka’ba and in homes.',
@@ -121,8 +121,8 @@ export const meccaB1LanguageFocusChapter10: Record<number, Exercise[]> = {
       explanation: 'The chapter uses the passive “were kept” because the idols and their places are the topic; who kept them is not important. “Before + -ing” is a short form of “before + subject + verb”: “before making decisions” = “before they made decisions”. It shows that checking omens came first and the decision came after.',
       feedback: { correct: 'Well done. You changed the focus and the time clause without changing the meaning.', incorrect: 'Item 1: use the past simple “kept” and put the idols after it. Item 2: use a past simple verb after “before they”.' },
     },
-    { id: 'mecca-b1-language-10-production', type: 'reflection', title: 'Describe Beliefs Without Overgeneralizing', instructions: 'Write or say six connected B1 sentences about a different historical or modern community. Do not retell Chapter 10.', question: 'Can you describe a majority pattern, add one or two exceptions, use one passive location sentence, report a belief with “thought/believed”, and explain how that belief influenced a decision?', correctAnswer: null, explanation: 'A strong response should use precise group language such as “most”, “some” or “only a few”, plus a passive form, reported belief, and a clear before/decision relationship.', feedback: { correct: 'Keep the sentences connected so each language choice helps explain a real relationship.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — State the main pattern with “most”.', mode: 'Individual' }, { question: 'Sentence 2 — Add a small exception with “only a few” or “some”.', mode: 'Individual' }, { question: 'Sentence 3 — Use a passive sentence to describe where an object, practice or symbol was found.', mode: 'Individual' }, { question: 'Sentence 4 — Report what a group thought or believed.', mode: 'Pair' }, { question: 'Sentence 5 — Show an action that happened before a decision.', mode: 'Pair' }, { question: 'Sentence 6 — Explain how the belief influenced the decision or behavior.', mode: 'Pair' } ] },
+    { id: 'mecca-b1-language-10-production', type: 'reflection', title: 'Describe Beliefs Without Overgeneralizing', instructions: 'Write or say six sentences about what people in a community believe.', question: 'What did most people believe, and who was different?', correctAnswer: null, explanation: 'A strong response should use precise group language such as “most”, “some” or “only a few”, plus a passive form, reported belief, and a clear before/decision relationship.', feedback: { correct: 'Keep the sentences connected so each language choice helps explain a real relationship.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Give the main group with “most”.', mode: 'Individual' }, { question: 'Sentence 2 — Add a few different people: “Only a few …” or “Some …”', mode: 'Individual' }, { question: 'Sentence 3 — Say where something was: “… was found / kept / placed in …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what a group thought or believed.', mode: 'Pair' }, { question: 'Sentence 5 — Say what they did before a decision: “Before …ing, …”', mode: 'Pair' }, { question: 'Sentence 6 — Say how the belief changed what they did.', mode: 'Pair' } ] },
   ],
 };
 
@@ -165,7 +165,7 @@ export const meccaB1LanguageFocusChapter11: Record<number, Exercise[]> = {
       explanation: '“Make + person + base verb” shows an effect on someone’s feelings: “made them feel great respect” (no “to”). “However” introduces a reaction that is the opposite of the one before; “So” would wrongly present the leaders’ opposition as a result of the message touching people’s hearts. “For + a period of time” gives the length of time; “since” needs a starting point.',
       feedback: { correct: 'Correct. You showed the effect, the contrasting reaction and the length of time.', incorrect: 'Check the last paragraph of Chapter 11. After “made them”, is there “to”? Do the leaders react in the same way or the opposite way? Is “13 years” a length or a starting point?' },
     },
-    { id: 'mecca-b1-language-11-production', type: 'reflection', title: 'Explain a Social Change', instructions: 'Write or say six connected B1 sentences about a different social, school, historical or community change. Do not retell Chapter 11.', question: 'Can you explain how an idea affected a group, show a future change from a past viewpoint, and compare two different reactions?', correctAnswer: null, explanation: 'A strong answer should include a general relationship, a clear cause/result link, a new group identity or role, one “was/were going to” sentence, a time clause with “when”, and a contrast with “however”.', feedback: { correct: 'Keep the six sentences connected so the reader can follow the change and the different reactions.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-11-production', type: 'reflection', title: 'Explain a Social Change', instructions: 'Write or say six sentences about a change at school, at home or in a community.', question: 'How did a new idea change people?', correctAnswer: null, explanation: 'A strong answer should include a general relationship, a clear cause/result link, a new group identity or role, one “was/were going to” sentence, a time clause with “when”, and a contrast with “however”.', feedback: { correct: 'Keep the six sentences connected so the reader can follow the change and the different reactions.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — State how two parts of the situation are connected.', mode: 'Individual' }, { question: 'Sentence 2 — Explain how an idea or belief affected behavior.', mode: 'Individual' }, { question: 'Sentence 3 — Use “That is why” to show a result or reaction.', mode: 'Individual' }, { question: 'Sentence 4 — Describe a new identity, role or community.', mode: 'Pair' }, { question: 'Sentence 5 — Use “was/were going to” for a later development viewed from the past.', mode: 'Pair' }, { question: 'Sentence 6 — Use “When...” and “However...” to compare two reactions.', mode: 'Pair' } ] },
   ],
 };
@@ -175,7 +175,7 @@ export const meccaB1LanguageFocusChapter12: Record<number, Exercise[]> = {
   12: [
     {
       id: 'mecca-b1-language-12-quantity-threat', type: 'true-false', title: 'How Many Is “Almost None”?',
-      instructions: 'Read the sentence from Chapter 12. Decide whether the statement about its meaning is true or false.',
+      instructions: 'Read the sentence from Chapter 12. Is the statement true or false?',
       question: '“In the first few years of the call to Islam, almost none of Mecca’s super-rich people became Muslims.” This means that not one super-rich person in Mecca became a Muslim in those years.',
       correctAnswer: false,
       explanation: '“Almost none” means “very, very few”, not “zero”. The writer chooses a careful quantity word so the claim is not stronger than the evidence. “In the first few years” also limits the claim to one period. Accurate history writing often depends on small words like these.',
@@ -223,7 +223,7 @@ export const meccaB1LanguageFocusChapter12: Record<number, Exercise[]> = {
       explanation: '“Forbid” (past: forbade) means “say that something must not be done”; “command” means “order as a duty”. “Turn someone against something” means “make them hostile to it”. “Prestige” is the respect a person or group has in society. These words show both why the leaders had power and how Islam challenged it.',
       feedback: { correct: 'Correct. You matched each phrase with its meaning in the chapter.', incorrect: 'Read the second and third paragraphs of Chapter 12 again. Replace each phrase with your answer and check that the sentence still makes sense.' },
     },
-    { id: 'mecca-b1-language-12-production', type: 'reflection', title: 'Explain Resistance to Change', instructions: 'Write or say six connected B1 sentences about a different school, community or historical change. Do not retell Chapter 12.', question: 'Can you explain why a powerful group resisted a change, what it wanted to preserve, and how a new rule challenged an old practice?', correctAnswer: null, explanation: 'A strong answer should include a quantity expression, a reported viewpoint with “felt/thought that”, a reason with “because/because of”, an -ing clause as subject to express a priority, a contrast with “but”, and a purpose phrase with “to + verb”.', feedback: { correct: 'Keep the six sentences connected so the reader can follow the group’s position, priority, contrast and purpose.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-12-production', type: 'reflection', title: 'Explain Resistance to Change', instructions: 'Write or say six sentences about a group that did not want a change.', question: 'Why did the group not want the change?', correctAnswer: null, explanation: 'A strong answer should include a quantity expression, a reported viewpoint with “felt/thought that”, a reason with “because/because of”, an -ing clause as subject to express a priority, a contrast with “but”, and a purpose phrase with “to + verb”.', feedback: { correct: 'Keep the six sentences connected so the reader can follow the group’s position, priority, contrast and purpose.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Use “almost all / almost none / only a few” to describe a group.', mode: 'Individual' }, { question: 'Sentence 2 — Report a viewpoint with “felt/thought that...”.', mode: 'Individual' }, { question: 'Sentence 3 — Give a reason with “because” or “because of”.', mode: 'Individual' }, { question: 'Sentence 4 — Use an -ing form as the subject: “Keeping/Protecting/Changing ... was important.”', mode: 'Pair' }, { question: 'Sentence 5 — Contrast an old practice with a new rule using “but”.', mode: 'Pair' }, { question: 'Sentence 6 — Explain the purpose of the new rule with “to + verb”.', mode: 'Pair' } ] },
   ],
 };
@@ -233,7 +233,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
   13: [
     {
       id: 'mecca-b1-language-13-escalation', type: 'sequencing', title: 'From Mocking to Boycott',
-      instructions: 'Put these sentences from Chapter 13 in order. Use “At first”, “But when” and “went further” to help you.',
+      instructions: 'Put the sentences in order. “At first”, “But when” and “went further” help.',
       question: 'How does the chapter show opposition becoming more and more serious?',
       sequencingItems: [
         { id: 'a', text: 'The leaders of Mecca went further.' },
@@ -287,7 +287,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
       explanation: '“Those + without + noun” describes a group by what they did not have. This links back to Chapter 8: in Meccan society, protection came from strong people and tribes. The next sentence gives one clear example of such a person: Bilal, “an Abyssinian slave”.',
       feedback: { correct: 'Correct. The phrase describes people who had no one strong to protect them.', incorrect: 'Look at the word “powerful”. The phrase is not about having friends in general. Who is the example in the next sentence?' },
     },
-    { id: 'mecca-b1-language-13-production', type: 'reflection', title: 'Describe a Situation That Becomes More Serious', instructions: 'Write or say six connected B1 sentences about a different school, community or historical situation. Do not retell Chapter 13.', question: 'Can you describe how a problem began, became more serious, involved repeated behaviour, included an order, affected a vulnerable group and led someone to act for a purpose?', correctAnswer: null, explanation: 'A strong response should use “at first”, a change with “but when”, a repeated-past pattern with “whenever” or “often”, a reported command with “ordered/told + person + to + verb”, a group description with “those without...”, and a purpose phrase with “to + verb”.', feedback: { correct: 'Keep the six sentences connected so the reader can follow the change, repeated behaviour, command, vulnerability and purpose.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-13-production', type: 'reflection', title: 'Describe a Situation That Becomes More Serious', instructions: 'Write or say six sentences about a problem that got worse.', question: 'How did the problem start, and how did it get worse?', correctAnswer: null, explanation: 'A strong response should use “at first”, a change with “but when”, a repeated-past pattern with “whenever” or “often”, a reported command with “ordered/told + person + to + verb”, a group description with “those without...”, and a purpose phrase with “to + verb”.', feedback: { correct: 'Keep the six sentences connected so the reader can follow the change, repeated behaviour, command, vulnerability and purpose.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Set the earlier stage with “At first...”.', mode: 'Individual' }, { question: 'Sentence 2 — Show a change with “But when...”.', mode: 'Individual' }, { question: 'Sentence 3 — Add repeated past behaviour with “whenever” or “often”.', mode: 'Individual' }, { question: 'Sentence 4 — Report an order with “ordered/told + person + to + verb”.', mode: 'Pair' }, { question: 'Sentence 5 — Describe a group with “those without...”.', mode: 'Pair' }, { question: 'Sentence 6 — Explain an action’s purpose with “to + verb”.', mode: 'Pair' } ] },
   ],
 };
@@ -312,7 +312,7 @@ export const meccaB1LanguageFocusChapter14: Record<number, Exercise[]> = {
     {
       id: 'mecca-b1-language-14-continuation-resistance', type: 'transformation', title: 'Result or Reason?',
       instructions: 'Rewrite each sentence so that it keeps the same meaning. Use the start that is given.',
-      question: 'Can you turn a “so” result into a “because” reason, and a “because” reason into a “so” result?',
+      question: 'Can you change “so” into “because”, and “because” into “so”?',
       transformItems: [
         {
           source: 'Losing the idols meant losing wealth and influence, so they became hostile to Islam.',
@@ -332,7 +332,7 @@ export const meccaB1LanguageFocusChapter14: Record<number, Exercise[]> = {
     {
       id: 'mecca-b1-language-14-cause-consequence', type: 'error-correction', title: 'Find and Fix the Mistake',
       instructions: 'Each sentence has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Can you correct the verb forms after “stop” and “want”, and in a list of -ing forms?',
+      question: 'Can you fix the verbs after “stop” and “want”?',
       errorItems: [
         {
           sentence: 'Prophet Muhammad (pbuh) continued to ask people to stop worship idols and worship Allah alone.',
@@ -357,7 +357,7 @@ export const meccaB1LanguageFocusChapter14: Record<number, Exercise[]> = {
       explanation: '“Stop + -ing” means “no longer do something”; “stop to + verb” would mean stopping in order to do it. “Want + to + verb” expresses wish or unwillingness: “did not want to change”. After “for”, the list uses -ing forms, and every item must have the same form: “hurting …, making …, drinking …, or doing …”.',
       feedback: { correct: 'Well done. You fixed the verb patterns and the parallel list.', incorrect: 'Check what follows “stop”, “want” and “for” in the second and third paragraphs of Chapter 14.' },
     },
-    { id: 'mecca-b1-language-14-production', type: 'reflection', title: 'Explain Why People Resist Change', instructions: 'Write or say five to six connected B1 sentences about a different school, social or historical situation. Do not retell Chapter 14.', question: 'Can you explain a difficult situation, what people continued to do, what they refused to change, what consequence they feared, and why that fear affected their behaviour?', correctAnswer: null, explanation: 'A strong response should include a purpose phrase with “to + verb”, one continuation pattern with “continued to...”, one unwillingness pattern with “did not want to...”, one cause-result link with “so”, and one reason with “because”.', feedback: { correct: 'Keep the ideas connected so the reader can follow the situation, persistence, resistance, feared consequence and reason.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-14-production', type: 'reflection', title: 'Explain Why People Resist Change', instructions: 'Write or say five or six sentences about people who did not want to change.', question: 'What did people refuse to change, and why?', correctAnswer: null, explanation: 'A strong response should include a purpose phrase with “to + verb”, one continuation pattern with “continued to...”, one unwillingness pattern with “did not want to...”, one cause-result link with “so”, and one reason with “because”.', feedback: { correct: 'Keep the ideas connected so the reader can follow the situation, persistence, resistance, feared consequence and reason.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Describe a difficult situation and one action done for a purpose.', mode: 'Individual' }, { question: 'Sentence 2 — Say what someone continued to do.', mode: 'Individual' }, { question: 'Sentence 3 — Say what another person or group did not want to change.', mode: 'Individual' }, { question: 'Sentence 4 — Explain a feared consequence and its result with “so”.', mode: 'Pair' }, { question: 'Sentence 5–6 — Give the reason with “because” and add one short list of related actions if natural.', mode: 'Pair' } ] },
   ],
 };
@@ -367,7 +367,7 @@ export const meccaB1LanguageFocusChapter15: Record<number, Exercise[]> = {
   15: [
     {
       id: 'mecca-b1-language-15-pressure-condition', type: 'drag-drop', title: 'Their Claim or the Writer’s View?',
-      instructions: 'Sort the parts of Chapter 15. Is it what the Quraysh leaders said, or the writer’s own view?',
+      instructions: 'Is it what the Quraysh leaders said, or the writer’s view? Sort the parts.',
       question: 'How does the chapter keep a reported claim separate from the writer’s own view?',
       dragDropGroups: [
         { group: 'What the Quraysh leaders said', items: ['Islam was breaking up families …', '… destroying unity.'] },
@@ -430,7 +430,7 @@ export const meccaB1LanguageFocusChapter15: Record<number, Exercise[]> = {
       explanation: '“Could” shows a possible result, not a certain one. “Almost like” makes a careful comparison with today. “In reality” introduces what the writer sees as true, in contrast to a claim. “Based on” names the foundation of something. “Make + person + comparative adjective” in the negative rejects the idea that background or wealth gives more value.',
       feedback: { correct: 'Correct. You matched each phrase with its meaning in the chapter.', incorrect: 'Read Chapter 15 again. Replace each phrase with your answer and check that the sentence still makes sense.' },
     },
-    { id: 'mecca-b1-language-15-production', type: 'reflection', title: 'Explain Pressure and a Fairer Alternative', instructions: 'Write or say five to six connected B1 sentences about a different school, community or historical situation. Do not retell Chapter 15.', question: 'Can you describe a strong social pressure, explain a possible consequence, report what one group claimed, contrast that claim with another view, and describe a fairer principle?', correctAnswer: null, explanation: 'A strong response should naturally use one “so ... that” relationship, one “if ... could ...” consequence, one prevention phrase, one reported claim, one contrast marker such as “In reality” or “however”, and one sentence explaining what a fair system is based on.', feedback: { correct: 'Keep the response connected so the reader can follow the pressure, consequence, reported claim, contrast and alternative principle.', incorrect: '' }, discussionPrompts: [
+    { id: 'mecca-b1-language-15-production', type: 'reflection', title: 'Explain Pressure and a Fairer Alternative', instructions: 'Write or say five or six sentences about strong pressure on people, and a fairer way.', question: 'What was the pressure, and what is a fairer way?', correctAnswer: null, explanation: 'A strong response should naturally use one “so ... that” relationship, one “if ... could ...” consequence, one prevention phrase, one reported claim, one contrast marker such as “In reality” or “however”, and one sentence explaining what a fair system is based on.', feedback: { correct: 'Keep the response connected so the reader can follow the pressure, consequence, reported claim, contrast and alternative principle.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Describe a pressure that was so strong that it affected people’s choices.', mode: 'Individual' }, { question: 'Sentence 2 — Explain what could happen if someone resisted that pressure.', mode: 'Individual' }, { question: 'Sentence 3 — Say how a person or group tried to prevent a change.', mode: 'Individual' }, { question: 'Sentence 4 — Report what that group said or believed.', mode: 'Pair' }, { question: 'Sentence 5–6 — Contrast the claim with another view and explain what the fairer alternative is based on.', mode: 'Pair' } ] },
   ],
 };
