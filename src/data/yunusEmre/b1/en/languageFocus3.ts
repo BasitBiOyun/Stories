@@ -6,8 +6,8 @@ export const yunusB1LanguageFocusChapter9: Exercise[] = [
     id: 'yunus-b1-language-9-result-purpose',
     type: 'sequencing',
     title: 'Follow the Chain of Ideas',
-    instructions: 'Put the sentences from the first part of Chapter 9 in the right order. Use the linking words to help you.',
-    question: 'How do “as a result of”, “in this way”, “the main goal” and “this unity” link the ideas together?',
+    instructions: 'Put the sentences from Chapter 9 in order. The linking words can help.',
+    question: 'How does each idea lead to the next?',
     sequencingItems: [
       { id: 'a', text: 'In this way, every creature is an image, but only Allah is truly real.' },
       { id: 'b', text: 'His words remind us of Allah’s commands for achieving this unity.' },
@@ -45,8 +45,8 @@ export const yunusB1LanguageFocusChapter9: Exercise[] = [
     id: 'yunus-b1-language-9-parallel-relationship',
     type: 'error-correction',
     title: 'Find and Fix the Mistake',
-    instructions: 'Each sentence from the end of Chapter 9 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-    question: 'Can you correct a superlative and keep a two-way relationship balanced?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the sentences about love?',
     errorItems: [
       {
         sentence: 'Love is a very important theme in Yunus Emre’s works. It is most important part of his philosophy.',
@@ -69,12 +69,12 @@ export const yunusB1LanguageFocusChapter9: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-9-production', type: 'reflection', title: 'Explain a Goal and the Responsibilities Around It', instructions: 'Write or say five to six connected B1 sentences about a goal in school, community life, teamwork, health, or another everyday context. Do not retell Chapter 9.', question: 'Can you move from a result or situation to a goal, explain a purpose, state a general responsibility, and finish with two connected general statements?', correctAnswer: null, explanation: 'Useful language from the chapter includes “as a result of...”, “in this way...”, “the main goal is to...”, “for achieving...”, “remind us of...”, “anyone who... should...”, and “those who..., and those who... also...”.', feedback: { correct: 'Keep the paragraph connected: establish the situation, state the goal, explain what helps achieve it, and end with a broader responsibility or relationship.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Introduce a situation or result with “as a result of...”.', mode: 'Individual' },
-      { question: 'Sentence 2 — Develop the consequence with “in this way...”.', mode: 'Individual' },
-      { question: 'Sentence 3 — State the main goal with “the main goal is to...”.', mode: 'Pair' },
-      { question: 'Sentence 4 — Explain a purpose with “for achieving...” or mention something that reminds people of an important responsibility.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Use “anyone who... should...” and/or a balanced “those who..., and those who... also...” relationship.', mode: 'Pair' },
+    id: 'yunus-b1-language-9-production', type: 'reflection', title: 'Explain a Goal and the Responsibilities Around It', instructions: 'Write or say five or six sentences about a goal at school or at home.', question: 'What is the goal, and what should people do?', correctAnswer: null, explanation: 'Useful language from the chapter includes “as a result of...”, “in this way...”, “the main goal is to...”, “for achieving...”, “remind us of...”, “anyone who... should...”, and “those who..., and those who... also...”.', feedback: { correct: 'Keep the paragraph connected: establish the situation, state the goal, explain what helps achieve it, and end with a broader responsibility or relationship.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Give the situation: “As a result of …, …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Add the effect: “In this way, …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Give the goal: “The main goal is to …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Give a reminder: “… remind us of …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — End: “Anyone who … should …” and “Those who …, and those who … also …”', mode: 'Pair' },
     ],
   },
 ];
@@ -86,7 +86,7 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
     type: 'matching',
     title: 'What Do These Phrases Mean?',
     instructions: 'Match each phrase from Chapter 10 with its meaning in plain English.',
-    question: 'What do these phrases from the chapter and the poem mean?',
+    question: 'What do these phrases from Chapter 10 mean?',
     matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
     matchingPairs: [
       { left: 'the throne of the Lord', right: 'the place where Allah reveals Himself' },
@@ -110,8 +110,8 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
     id: 'yunus-b1-language-10-describe-as',
     type: 'choose-form',
     title: 'Situation, Interpretation and Addition',
-    instructions: 'Choose the correct word or form to complete each sentence from Chapter 10.',
-    question: 'Which forms show a general result, an interpretation and an added value?',
+    instructions: 'Choose the correct words for each sentence from Chapter 10.',
+    question: 'What does Yunus Emre say about love and the heart?',
     formChoices: [
       {
         sentence: 'According to him, where love is absent, negative emotions such as anger, heartbreak and separation [choice].',
@@ -140,8 +140,8 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
     id: 'yunus-b1-language-10-addition-duration',
     type: 'sentence-building',
     title: 'Build the Description of the Heart',
-    instructions: 'Tap the pieces to rebuild this sentence from Chapter 10.',
-    question: 'Where does the “that” clause go when it describes a noun?',
+    instructions: 'Tap the pieces to make the sentence from Chapter 10.',
+    question: 'How does Yunus Emre describe the heart?',
     sentenceChunks: [
       'The heart is',
       'the eye',
@@ -158,12 +158,12 @@ export const yunusB1LanguageFocusChapter10: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-10-production', type: 'reflection', title: 'Explain Why a Value Matters', instructions: 'Write or say five to six connected B1 sentences about a value in friendship, family life, school, teamwork, or community life. Do not retell Chapter 10.', question: 'Can you describe what happens when a value is absent, clarify what the value means, explain a consequence, add a second related value, and show why the idea remains important over time?', correctAnswer: null, explanation: 'Useful language from the chapter includes “where ... is absent, ... arise”, “that is...”, “for this reason...”, “describe ... as ...”, “the ... that ...”, “not only ... but also ...”, and “has existed since/for ...”.', feedback: { correct: 'Keep the paragraph connected: situation, clarification, consequence, added value, and continued importance.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Name a value and say what it brings.', mode: 'Individual' },
-      { question: 'Sentence 2 — Use “where ... is absent...” to describe a likely negative result.', mode: 'Individual' },
-      { question: 'Sentence 3 — Clarify the value with “that is...” or a “that...” clause.', mode: 'Pair' },
-      { question: 'Sentence 4 — Use “for this reason...” and/or “describe ... as ...” to explain a consequence.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Add another related value with “not only ... but also ...” and, if natural, show continuity with “has existed since/for ...”.', mode: 'Pair' },
+    id: 'yunus-b1-language-10-production', type: 'reflection', title: 'Explain Why a Value Matters', instructions: 'Write or say five or six sentences about a value, for example trust.', question: 'Why does this value matter?', correctAnswer: null, explanation: 'Useful language from the chapter includes “where ... is absent, ... arise”, “that is...”, “for this reason...”, “describe ... as ...”, “the ... that ...”, “not only ... but also ...”, and “has existed since/for ...”.', feedback: { correct: 'Keep the paragraph connected: situation, clarification, consequence, added value, and continued importance.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Name the value: “Trust brings …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say what happens without it: “Where … is absent, …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Explain it: “… is …, that is, …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Give a result: “For this reason, …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — Add a second value: “… value not only … but also …”', mode: 'Pair' },
     ],
   },
 ];
@@ -174,8 +174,8 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
     id: 'yunus-b1-language-11-purpose-necessity',
     type: 'drag-drop',
     title: 'Whose Words Are These?',
-    instructions: 'Read each part of Chapter 11. Is it the writer reporting Yunus Emre’s view, Yunus Emre’s own words from a poem, or the words of the Prophet Muhammad (pbuh)? Put it in the right group.',
-    question: 'How does the chapter show whose idea or words we are reading?',
+    instructions: 'Who is speaking: the writer, a poem or the Prophet (pbuh)? Sort the parts.',
+    question: 'Whose words are we reading?',
     dragDropGroups: [
       {
         group: 'The writer reports Yunus’s view',
@@ -221,8 +221,8 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
     id: 'yunus-b1-language-11-must-relationship',
     type: 'transformation',
     title: 'Say It Another Way',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 11.',
-    question: 'Can you report a view and make a general statement with a different structure?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say these lines from Chapter 11?',
     transformItems: [
       {
         source: 'According to him, death is the best advisor for humanity …',
@@ -246,8 +246,8 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
     id: 'yunus-b1-language-11-source-generalisation',
     type: 'choose-form',
     title: 'Goal and Supporting Voice',
-    instructions: 'Choose the correct word or form to complete each sentence from Chapter 11.',
-    question: 'Which forms state a goal and connect a view with a supporting voice?',
+    instructions: 'Choose the correct words for each sentence from Chapter 11.',
+    question: 'What does a person need, and who said it?',
     formChoices: [
       {
         sentence: 'He highlights that for a person [choice] salvation, heart and intellect must support one another.',
@@ -268,12 +268,12 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-11-production', type: 'reflection', title: 'Explain a Principle and Its Consequence', instructions: 'Write or say five to six connected B1 sentences about a principle for learning, friendship, teamwork, family life, or personal growth. Do not retell Chapter 11.', question: 'Can you state a goal, explain what must happen to reach it, attribute one idea to another person or source, and finish with a general statement about people and consequences?', correctAnswer: null, explanation: 'Useful language from the chapter includes “for a person to...”, “must...”, “According to...”, “as ... said...”, “a person who...”, and “whoever...”. Use only the patterns that fit your topic naturally.', feedback: { correct: 'Keep the response connected: goal, necessary relationship, attributed idea, explanation, and general consequence.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — State a goal using “for ... to ...” if natural.', mode: 'Individual' },
-      { question: 'Sentence 2 — Explain what two actions, qualities, or people must do for that goal.', mode: 'Individual' },
-      { question: 'Sentence 3 — Attribute a useful idea with “According to...” or “as ... said...”.', mode: 'Pair' },
-      { question: 'Sentence 4 — Explain why that idea matters in your chosen context.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Finish with “a person who...” or “whoever...” to express a broader consequence or principle.', mode: 'Pair' },
+    id: 'yunus-b1-language-11-production', type: 'reflection', title: 'Explain a Principle and Its Consequence', instructions: 'Write or say five or six sentences about a rule for learning or friendship.', question: 'What is the goal, and how can people reach it?', correctAnswer: null, explanation: 'Useful language from the chapter includes “for a person to...”, “must...”, “According to...”, “as ... said...”, “a person who...”, and “whoever...”. Use only the patterns that fit your topic naturally.', feedback: { correct: 'Keep the response connected: goal, necessary relationship, attributed idea, explanation, and general consequence.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Give a goal: “For a student to …, …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say what must happen: “… and … must …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Give someone’s view: “As my teacher said, …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Say why this matters: “This idea matters because …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — End: “A person who …” or “Whoever …”', mode: 'Pair' },
     ],
   },
 ];
@@ -284,8 +284,8 @@ export const yunusB1LanguageFocusChapter12: Exercise[] = [
     id: 'yunus-b1-language-12-meaning-relations',
     type: 'drag-drop',
     title: 'Principles and Bad Habits',
-    instructions: 'Sort the words from Chapter 12. Is it a moral principle to build, or a bad habit to avoid?',
-    question: 'What kind of word does the chapter use for the principles, and what kind for the bad habits?',
+    instructions: 'Is it a good habit to build, or a bad habit to avoid? Sort the words.',
+    question: 'Which habits are good, and which are bad?',
     dragDropGroups: [
       {
         group: 'Moral principles (nouns)',
@@ -311,7 +311,7 @@ export const yunusB1LanguageFocusChapter12: Exercise[] = [
     type: 'word-bank',
     title: 'Define, Give Examples, Guide',
     instructions: 'Complete the lines from Chapter 12 with words from the bank. Two words are not needed.',
-    question: 'Which forms follow “is about”, “teach people” and “like”?',
+    question: 'Which word fits each gap?',
     fillBlanksText: 'Yunus believes that true morality is about [blank] up bad habits that are not suitable for people. Moral principles [blank] as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. … He also taught people [blank] avoid bad habits like [blank] arrogant, stingy, greedy, selfish, or jealous, and gossiping.',
     wordBank: ['to', 'giving', 'being', 'such', 'give', 'be'],
     correctAnswer: ['giving', 'such', 'to', 'being'],
@@ -325,8 +325,8 @@ export const yunusB1LanguageFocusChapter12: Exercise[] = [
     id: 'yunus-b1-language-12-balanced-role',
     type: 'error-correction',
     title: 'Find and Fix the Mistake',
-    instructions: 'Each sentence from Chapter 12 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-    question: 'Can you correct a verb form and a “not only … but also …” pattern?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the sentences about Yunus Emre’s poems?',
     errorItems: [
       {
         sentence: 'With these principles, Yunus Emre teach people the path to an honest life.',
@@ -349,12 +349,12 @@ export const yunusB1LanguageFocusChapter12: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-12-production', type: 'reflection', title: 'Define a Value and Turn It into Action', instructions: 'Write or say five to six connected B1 sentences about one value in school, friendship, family life, teamwork, or personal growth. Do not retell Chapter 12.', question: 'Can you define the value, give examples, show how it guides action, contrast a helpful behaviour with one to avoid, and describe a wider role or result?', correctAnswer: null, explanation: 'Useful language from the chapter includes “is about + -ing”, “such as...”, “with these principles...”, “teach someone to...”, “avoid...”, and “not only... but also...”. Use only the forms that fit your topic naturally.', feedback: { correct: 'Keep the response connected: definition, examples, guidance, contrast in behaviour, and a wider role or result.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Define the value using “is about + -ing” or another natural definition.', mode: 'Individual' },
-      { question: 'Sentence 2 — Give two or three examples with “such as...” if useful.', mode: 'Individual' },
-      { question: 'Sentence 3 — Explain how the value can guide people using “with...” or “teach ... to ...”.', mode: 'Pair' },
-      { question: 'Sentence 4 — Contrast one action to build with one behaviour to avoid.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Use “not only ... but also ...” or another suitable connector to explain the value’s wider role or effect.', mode: 'Pair' },
+    id: 'yunus-b1-language-12-production', type: 'reflection', title: 'Define a Value and Turn It into Action', instructions: 'Write or say five or six sentences about a value, for example respect.', question: 'What does the value mean, and how do we show it?', correctAnswer: null, explanation: 'Useful language from the chapter includes “is about + -ing”, “such as...”, “with these principles...”, “teach someone to...”, “avoid...”, and “not only... but also...”. Use only the forms that fit your topic naturally.', feedback: { correct: 'Keep the response connected: definition, examples, guidance, contrast in behaviour, and a wider role or result.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Explain the value: “Respect is about …ing …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Give examples: “… such as …, … and …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say how it guides us: “Our teacher teaches us to …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Compare: “We should …, and we should avoid …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — End: “… is not only … but also …”', mode: 'Pair' },
     ],
   },
 ];
@@ -365,8 +365,8 @@ export const yunusB1LanguageFocusChapter13: Exercise[] = [
     id: 'yunus-b1-language-13-relations',
     type: 'matching',
     title: 'What Do the Lines Mean?',
-    instructions: 'Read the lines of the poems in Chapter 13. Match each line with its meaning.',
-    question: 'What do Yunus Emre’s lines about patience and anger say?',
+    instructions: 'Match each line from the poems in Chapter 13 with its meaning.',
+    question: 'What do the lines say about patience and anger?',
     matchingHeadings: { left: 'From the poems', right: 'Meaning' },
     matchingPairs: [
       { left: 'Patience is the foundation of an everlasting kingdom', right: 'Success that lasts is built on patience.' },
@@ -412,7 +412,7 @@ export const yunusB1LanguageFocusChapter13: Exercise[] = [
     type: 'word-bank',
     title: 'Linking the Verses',
     instructions: 'Complete the lines from Chapter 13 with words from the bank. Three words are not needed.',
-    question: 'Which words introduce the verses, show what a warning is about, and bring Yunus’s work into the present?',
+    question: 'Which word fits each gap?',
     fillBlanksText: '[blank] another verse, he talks about “patience” and says: … In the following verse, he warns [blank] “rage and arrogance”: … It is clear that Yunus Emre was an important person of his era, and his poems are [blank] valuable today as a moral guide for future generations. His works are as [blank]:',
     wordBank: ['still', 'In', 'follows', 'against', 'following', 'yet', 'At'],
     correctAnswer: ['In', 'against', 'still', 'follows'],
@@ -423,12 +423,12 @@ export const yunusB1LanguageFocusChapter13: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-13-production', type: 'reflection', title: 'Build a Short Principle-and-Result Paragraph', instructions: 'Write or say five connected B1 sentences about a principle in school, friendship, teamwork, family life, or personal growth. Do not retell Chapter 13.', question: 'Can you introduce one principle, generalise who it affects, show a result, add a related warning or contrast, and finish with practical guidance?', correctAnswer: null, explanation: 'Useful language from the chapter includes “those who ... will ...”, “whoever ...”, “if ...”, “one must ...”, and a transition such as “in another case” or “in the following example”. Use only the forms that fit your message naturally.', feedback: { correct: 'Keep the response connected: principle, general condition, consequence, related warning or example, and final guidance.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Introduce the principle and why it matters.', mode: 'Individual' },
-      { question: 'Sentence 2 — Use “those who ... will ...” or another natural group-and-result pattern.', mode: 'Individual' },
-      { question: 'Sentence 3 — Use “whoever ...” to make a broader generalisation.', mode: 'Pair' },
-      { question: 'Sentence 4 — Add a related warning, contrast, or second example with a suitable transition.', mode: 'Pair' },
-      { question: 'Sentence 5 — Use “if ... one must ...” or another natural condition-and-guidance structure.', mode: 'Pair' },
+    id: 'yunus-b1-language-13-production', type: 'reflection', title: 'Build a Short Principle-and-Result Paragraph', instructions: 'Write or say five sentences about a good rule for life, for example patience.', question: 'Why is this rule important?', correctAnswer: null, explanation: 'Useful language from the chapter includes “those who ... will ...”, “whoever ...”, “if ...”, “one must ...”, and a transition such as “in another case” or “in the following example”. Use only the forms that fit your message naturally.', feedback: { correct: 'Keep the response connected: principle, general condition, consequence, related warning or example, and final guidance.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Give the rule and why it matters.', mode: 'Individual' },
+      { question: 'Sentence 2 — Say who wins: “Those who … will …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say more: “Whoever …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Add a warning: “In the same way, …”', mode: 'Pair' },
+      { question: 'Sentence 5 — End with advice: “If one wants to …, one must …”', mode: 'Pair' },
     ],
   },
 ];

@@ -31,8 +31,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-1-parallel-actions',
       type: 'error-correction',
       title: 'Keep the List Parallel',
-      instructions: 'Each sentence from Chapter 1 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-      question: 'Which form do the principles in the list and the phrase after “In addition to” need?',
+      instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+      question: 'Can you fix the list of principles?',
       errorItems: [
         {
           sentence: 'Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, give generously …',
@@ -64,8 +64,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-1-addition-description-result',
       type: 'transformation',
       title: 'Say It Another Way',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 1.',
-      question: 'Can you express the same aim, contribution and reputation with a different structure?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say these lines about the Sûfî?',
       transformItems: [
         {
           source: 'A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism.',
@@ -94,8 +94,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-1-production',
       type: 'reflection',
       title: 'Describe a Person, Practice, and Contribution',
-      instructions: 'Write or say five to six connected B1 sentences about a real or imagined teacher, thinker, artist, or community figure. Do not retell Chapter 1.',
-      question: 'Can you define the person, explain one aim and how it is pursued, list two or three principles in parallel form, and add a contribution or reputation?',
+      instructions: 'Write or say five or six sentences about a teacher, artist or helper you know.',
+      question: 'Who is this person, and what do they do?',
       correctAnswer: null,
       explanation: 'A strong answer should form one short connected paragraph. Useful patterns include “a person who...”, “aims to... by -ing...”, parallel -ing forms, “without -ing...”, “in addition to...”, “which...”, “helped...”, and “is known as...”.',
       feedback: {
@@ -103,10 +103,10 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1 — Define the person with “a person who...”.', mode: 'Individual' },
-        { question: 'Sentence 2 — State one aim and explain the method with “by + -ing”.', mode: 'Individual' },
-        { question: 'Sentence 3–4 — Give two or three principles using parallel forms; use “without” or a negative form where natural.', mode: 'Pair' },
-        { question: 'Sentence 5–6 — Add another role, contribution, or reputation using “in addition to...”, “which...”, “helped...”, or “is known as...”.', mode: 'Pair' },
+        { question: 'Sentence 1 — Say who the person is: “… is a … who …”', mode: 'Individual' },
+        { question: 'Sentence 2 — Say their aim and how: “She aims to … by …ing …”', mode: 'Individual' },
+        { question: 'Sentences 3–4 — Give two or three things they believe in: “She believes in …ing, …ing and …ing.”', mode: 'Pair' },
+        { question: 'Sentences 5–6 — Add more: “In addition to …, she … . She is known as …”', mode: 'Pair' },
       ],
     },
   ],
@@ -116,7 +116,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'matching',
       title: 'What Do These Phrases Mean?',
       instructions: 'Match each phrase from Chapter 2 with its meaning in plain English.',
-      question: 'How does the first paragraph explain why people love Yunus Emre’s works?',
+      question: 'Why do people love Yunus Emre’s works?',
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'due to his style', right: 'because of the way he writes' },
@@ -142,8 +142,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-2-source-stance',
       type: 'choose-form',
       title: 'Report History Carefully',
-      instructions: 'Choose the word or phrase that completes each sentence from Chapter 2.',
-      question: 'How does the writer show where information comes from and how certain it is?',
+      instructions: 'Choose the correct words for each sentence from Chapter 2.',
+      question: 'How sure is the writer about Yunus Emre’s life?',
       formChoices: [
         {
           sentence: '[choice] historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi.',
@@ -173,7 +173,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'word-bank',
       title: 'Two Kinds of Learning',
       instructions: 'Complete the lines from Chapter 2 with words from the bank. Two words are not needed.',
-      question: 'How does the chapter add a second kind of learning and explain what the tekke was?',
+      question: 'Where did Yunus Emre learn, and what was a tekke?',
       fillBlanksText: '… he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he [blank] studied Allah’s love and morals at the tekke, [blank] was a place where Sûfî education was [blank] under the guidance of a sheikh (spiritual tutor).',
       wordBank: ['also', 'which', 'taught', 'who', 'teaching'],
       correctAnswer: ['also', 'which', 'taught'],
@@ -187,8 +187,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-2-production',
       type: 'reflection',
       title: 'Write a Balanced, Evidence-Aware Profile',
-      instructions: 'Write or say five to six connected B1 sentences about a real or imagined writer, artist, teacher, or historical figure. Do not retell Chapter 2.',
-      question: 'Can you evaluate one quality between two extremes, explain why it is effective, report one source-based claim carefully, and connect two kinds of learning or experience?',
+      instructions: 'Write or say five or six sentences about a writer, artist or teacher.',
+      question: 'What is good about this person, and where did they learn?',
       correctAnswer: null,
       explanation: 'A strong response should develop one short profile rather than separate answers. Useful patterns include “due to...”, “neither too... nor too...”, “combine... with...”, “helps ... + verb”, “still...”, “according to...”, “some sources say that...”, “around...”, “but ... also...”, and a “which/where” clause when useful.',
       feedback: {
@@ -196,10 +196,10 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1–2 — Give a balanced evaluation and explain its effect or reason.', mode: 'Individual' },
-        { question: 'Sentence 3 — Combine two strengths or qualities in one sentence.', mode: 'Individual' },
-        { question: 'Sentence 4 — Report one claim with an appropriate source marker or approximate detail.', mode: 'Pair' },
-        { question: 'Sentence 5–6 — Add a second kind of learning or experience and explain the place or guidance involved.', mode: 'Pair' },
+        { question: 'Sentences 1–2 — Say what is good, and why: “… are neither too … nor too … . Due to this, …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Join two strengths: “… combine … with …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Say where a fact comes from: “According to …, she was born around …”', mode: 'Pair' },
+        { question: 'Sentences 5–6 — Add a second place of learning: “She also learned a lot at …”', mode: 'Pair' },
       ],
     },
   ],
@@ -208,8 +208,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-3-addition-emphasis',
       type: 'drag-drop',
       title: 'Adding Information or Showing Cause?',
-      instructions: 'Read each sentence from Chapter 3. Does it add more information, or does it show a cause or a result? Put it in the right group.',
-      question: 'How are the two paragraphs of Chapter 3 built differently?',
+      instructions: 'Adding information, or cause and result? Put each sentence in the right group.',
+      question: 'How is each paragraph of Chapter 3 built?',
       dragDropGroups: [
         {
           group: 'Adds more information',
@@ -250,8 +250,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-3-overlap-change',
       type: 'choose-form',
       title: 'Background and Event',
-      instructions: 'Choose the correct form to complete each sentence from Chapter 3.',
-      question: 'Which form shows a situation that was still continuing, and which shows a new event?',
+      instructions: 'Choose the correct form for each sentence from Chapter 3.',
+      question: 'What was still going on, and what happened suddenly?',
       formChoices: [
         {
           sentence: 'While the negative effects of these revolts [choice], the defeat at Kösedağ …',
@@ -280,8 +280,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-3-cause-result-coping',
       type: 'transformation',
       title: 'Same Cause, New Sentence',
-      instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 3.',
-      question: 'Can you express the same cause and result with a different structure?',
+      instructions: 'Write the missing words. Keep the same meaning.',
+      question: 'How else can we say why things changed?',
       transformItems: [
         {
           source: 'The Anatolian Seljuks were seriously weakened by the Babai revolts in the 13th century.',
@@ -305,8 +305,8 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'yunus-b1-language-3-production',
       type: 'reflection',
       title: 'Explain Change in a Difficult Period',
-      instructions: 'Write or say five to six connected B1 sentences about a real or imagined community facing change. Do not retell Chapter 3.',
-      question: 'Can you broaden a description, highlight one important example, show an ongoing situation interrupted by a new event, and explain a cause-result-response chain?',
+      instructions: 'Write or say five or six sentences about a place or group that faced a change.',
+      question: 'What happened, and how did people cope?',
       correctAnswer: null,
       explanation: 'A strong response should form one connected account. Useful patterns include “not only ... but also...”, “furthermore”, “too”, “especially”, “while ... was/were still...”, “caused...”, “because of...”, and “struggle to cope with...”.',
       feedback: {
@@ -314,10 +314,10 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
         incorrect: '',
       },
       discussionPrompts: [
-        { question: 'Sentence 1–2 — Describe a place, group, or organization with “not only ... but also...” and add one further point.', mode: 'Individual' },
-        { question: 'Sentence 3 — Highlight one example with “especially” or add a useful “who/which” clause.', mode: 'Individual' },
-        { question: 'Sentence 4 — Use “while” to place a new event inside an ongoing past situation.', mode: 'Pair' },
-        { question: 'Sentence 5–6 — Explain one cause, one consequence, and how people tried to cope.', mode: 'Pair' },
+        { question: 'Sentences 1–2 — Describe the place: “… is not only … but also …”', mode: 'Individual' },
+        { question: 'Sentence 3 — Give an example: “… especially …”', mode: 'Individual' },
+        { question: 'Sentence 4 — Add a new event: “While … were still …, …”', mode: 'Pair' },
+        { question: 'Sentences 5–6 — Give the cause, the result and how people coped.', mode: 'Pair' },
       ],
     },
   ],

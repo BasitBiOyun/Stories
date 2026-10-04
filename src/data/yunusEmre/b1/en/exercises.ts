@@ -59,8 +59,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   // NOTICE — discover what the book's language does, across chapters.
   {
     id: 'yunus-b1-language-review-1-passive-focus', type: 'drag-drop', title: 'Notice: Who Is in Focus?',
-    instructions: 'Read each sentence from the book. Who or what is the subject, and do we learn who did the action? Put each sentence in the right group.',
-    question: 'When does the book use the passive, and when does it name the doer?',
+    instructions: 'Do we learn who did the action? Put each sentence in the right group.',
+    question: 'When does the book say who did it?',
     dragDropGroups: [
       { group: 'Active: the subject does the action', items: ['He expanded the country’s borders and established a navy …', 'The Mongols used the classic false retreat and circling tactic.', 'These shaykhs trained dervishes in their teachings.'] },
       { group: 'Passive with “by”: the doer is named at the end', items: ['The Anatolian Seljuks were seriously weakened by the Babai revolts …', 'He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.'] },
@@ -76,7 +76,7 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-2-source-and-certainty', type: 'multiple-choice', title: 'Notice: How Sure Is the Writer?',
-    instructions: 'Read the sentences from Chapters 2, 8 and 11. Then choose the best answer.',
+    instructions: 'Read the sentences from the book. Then choose the best answer.',
     question: '“He was born around 1240–1241 …” / “Some sources say that he received a good madrasa education …” / “According to Yunus Emre, Allah, the Creator, is the source of all things.” / “He highlights that for a person to reach salvation, heart and intellect must support one another.” What do “around”, “Some sources say that”, “According to” and “He highlights that” do in these sentences?',
     options: [
       'They show that the writer thinks this information is false.',
@@ -90,7 +90,7 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-3-not-only-but-also', type: 'true-false', title: 'Notice: Not Only … But Also',
-    instructions: 'Read the sentences from Chapters 3, 10 and 12. Is the statement true or false?',
+    instructions: 'Read the sentences from the book. Is the statement true or false?',
     question: 'Chapter 3: “At that time, tekkes were not only places for Sûfî training. They were also important community organizations …” Chapter 10: “Yunus Emre emphasizes not only the heart but also the intellect as a value …” Chapter 12: “Yunus Emre’s poems are not only literary works but also a moral guide.” Statement: In these sentences, the second idea replaces the first one. For example, Yunus Emre’s poems are a moral guide, not literary works.',
     correctAnswer: false,
     explanation: '‘Not only A but also B’ keeps A and adds B with the same weight: the poems are literary works AND a moral guide; Yunus values the heart AND the intellect. In Chapter 3 the pattern is split over two sentences: “not only …” in the first, “also …” in the second. The pattern is used when the second point might surprise the reader.',
@@ -99,8 +99,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   // BUILD — use the reviewed forms in the book's own sentences.
   {
     id: 'yunus-b1-language-review-4-reason-turn-result', type: 'word-bank', title: 'Build: Reason, Turn and Result',
-    instructions: 'Complete the lines from Chapters 2, 4 and 10 with words from the bank. Two words are not needed.',
-    question: 'Which words give a reason, turn the story in a new direction, or lead to a result?',
+    instructions: 'Complete the lines from the book with words from the bank. Two words are not needed.',
+    question: 'Which word fits each gap?',
     fillBlanksText: 'People love his works very much [blank] his style. … At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. [blank], because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline. The Mongol invasion [blank] many people to migrate to Anatolia from Central Asia … It is “the throne of the Lord,” that is, the place where Allah reveals Himself. [blank], he described breaking a heart as destroying Allah’s house.',
     wordBank: ['due to', 'However', 'caused', 'For this reason', 'because', 'made'],
     correctAnswer: ['due to', 'However', 'caused', 'For this reason'],
@@ -109,8 +109,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-5-verb-patterns', type: 'choose-form', title: 'Build: What Comes Next?',
-    instructions: 'Choose the correct form to complete each sentence from the book.',
-    question: 'Which verb form follows “helped”, “failure” and “for”?',
+    instructions: 'Choose the correct form for each sentence from the book.',
+    question: 'Which form comes after “helped”, “failure” and “for”?',
     formChoices: [
       { sentence: 'The words and phrases which he used helped [choice] a better literary Turkish.', options: ['develop', 'developing', 'developed'], answer: 0 },
       { sentence: '… Giyaseddin Keyhüsrev II’s failure [choice] this situation worsened the social and economic chaos.', options: ['managing', 'to manage', 'manage'], answer: 1 },
@@ -122,8 +122,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-6-history-verbs', type: 'error-correction', title: 'Build: Fix the History Verbs',
-    instructions: 'Each sentence from the book has one mistake in a verb. Tap the mistake, then choose the correction.',
-    question: 'Can you correct a background situation, a future seen from the past and a passive?',
+    instructions: 'Each sentence has one wrong verb. Tap it, then choose the correct form.',
+    question: 'Can you fix the verbs?',
     errorItems: [
       { sentence: 'Anatolia was experience total chaos.', error: 'experience', options: ['experiences', 'experiencing', 'experienced'], answer: 1 },
       { sentence: 'They followed spiritual leaders called \'Baba\', because they believed these leaders will save them.', error: 'will save', options: ['save', 'would saved', 'would save'], answer: 2 },
@@ -135,8 +135,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-7-say-it-another-way', type: 'transformation', title: 'Build: Say It Another Way',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from the book.',
-    question: 'Can you compare, describe a place and make a general statement with a different structure?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say these lines from the book?',
     transformItems: [
       { source: 'The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was the most powerful and brilliant period of the Seljuks.', frame: 'No other period of the Seljuks was as [blank] as the rule of Alaeddin I.', answers: ['powerful and brilliant', 'brilliant and powerful'] },
       { source: 'Many famous Turkish poets improved their skills in tekkes.', frame: 'Tekkes were places [blank] many famous Turkish poets improved their skills.', answers: ['where', 'in which', 'at which'] },
@@ -149,8 +149,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   // USE — take the language into a new, everyday context.
   {
     id: 'yunus-b1-language-review-8-new-context', type: 'word-bank', title: 'Use: Our New School Library',
-    instructions: 'This text is not from the book. Complete it with words from the bank. Three words are not needed.',
-    question: 'Can you use the language of the book to report a change in your school?',
+    instructions: 'Complete this new text with words from the bank. Three words are extra.',
+    question: 'Can you use the book’s words to tell about your school?',
     fillBlanksText: 'Two years ago, our school library was a small, dark room next to the gym. Very few students went there [blank] the noise from the gym. [blank], last summer the library was moved to a bright room on the first floor. New shelves were built there. Many new books [blank] by families from our town, too. According to our librarian, Mrs Selin, the number of visitors has doubled this year. The new library is not only quieter [blank] more comfortable. Now students read there during their breaks, and some of them help younger children choose books.',
     wordBank: ['due to', 'However', 'were donated', 'but also', 'because', 'donated', 'and also'],
     correctAnswer: ['due to', 'However', 'were donated', 'but also'],
@@ -159,8 +159,8 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-9-new-context', type: 'error-correction', title: 'Use: Check a Classmate’s Sentences',
-    instructions: 'These sentences are not from the book. A classmate wrote them, and each one has one mistake. Tap the mistake, then choose the correction.',
-    question: 'Can you correct a passive, a reason and a general statement in new sentences?',
+    instructions: 'Each sentence from a classmate has one mistake. Tap it and choose the correct words.',
+    question: 'Can you help your classmate fix the sentences?',
     errorItems: [
       { sentence: 'Our class trip was cancel yesterday, so we stayed at school.', error: 'cancel', options: ['cancelling', 'cancelled', 'cancels'], answer: 1 },
       { sentence: 'Because the bad weather, the football match started an hour late.', error: 'Because', options: ['Because of', 'Although', 'So'], answer: 0 },
@@ -172,16 +172,16 @@ export const yunusB1LanguageReviewExercises: Exercise[] = [
   },
   {
     id: 'yunus-b1-language-review-10-transfer', type: 'reflection', title: 'Use: A Change in Our Community',
-    instructions: 'Write five or six connected sentences about a real change in your school, your neighbourhood or your town: a new park, a cleaner street, a new club or service. Do not retell the book. Plan your sentences with a partner first.',
-    question: 'Can you use the language of the whole book to report a change clearly and carefully?',
+    instructions: 'Write 5–6 sentences about a real change in your school or town.',
+    question: 'Can you tell the news of a change clearly?',
     correctAnswer: null,
     explanation: 'Example: “Three years ago, the park in our neighbourhood was full of rubbish, and few families were using it. However, last spring the park was cleaned by volunteers from our school, and new benches were put in. According to my neighbour, Mr Hasan, more children play there now than ever before. The park is not only cleaner but also safer, because it has new lights. For this reason, my friends and I go there almost every day. Anyone who uses the park should help keep it clean.”',
     feedback: { correct: 'Check your paragraph: was/were + -ing for the background; However for the turn; was/were + past participle for the change; According to … for someone’s view; not only … but also …; because / because of, For this reason; Anyone who … should ….', incorrect: '' },
     discussionPrompts: [
-      { question: 'Sentence 1 — The situation before: “… years ago, the … was …, and people were …-ing …”', mode: 'Individual' },
-      { question: 'Sentence 2 — The change, with the place in focus: “However, last … the … was/were + past participle (by …).”', mode: 'Individual' },
-      { question: 'Sentence 3 — Someone’s view, reported carefully: “According to …, …” or “Some people say that …”', mode: 'Pair' },
-      { question: 'Sentences 4–6 — The result and a general statement: “The … is not only … but also … . For this reason, … . Anyone who … should …”', mode: 'Pair' },
+      { question: 'Sentence 1 — Before: “… years ago, the … was …, and people were …ing …”', mode: 'Individual' },
+      { question: 'Sentence 2 — The change: “However, last …, the … was …ed.”', mode: 'Individual' },
+      { question: 'Sentence 3 — A view: “According to …, …” or “Some people say that …”', mode: 'Pair' },
+      { question: 'Sentences 4–6 — The result: “The … is not only … but also … . For this reason, … . Anyone who … should …”', mode: 'Pair' },
     ],
   },
 ];

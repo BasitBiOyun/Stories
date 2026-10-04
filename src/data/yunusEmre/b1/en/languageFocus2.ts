@@ -25,8 +25,8 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
     id: 'yunus-b1-language-4-contrast-change',
     type: 'choose-form',
     title: 'Strength, Change and Place',
-    instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 4.',
-    question: 'Which forms describe a high point, mark a change in direction, and add information about a place?',
+    instructions: 'Choose the correct words for each sentence from Chapter 4.',
+    question: 'When was the state strong, and what changed?',
     formChoices: [
       {
         sentence: 'The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was [choice] period of the Seljuks.',
@@ -55,8 +55,8 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
     id: 'yunus-b1-language-4-cause-chain',
     type: 'transformation',
     title: 'Same Cause, New Sentence',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 4.',
-    question: 'Can you express the same cause and result with a different structure?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say why things got worse?',
     transformItems: [
       {
         source: 'The Mongol invasion caused many people to migrate to Anatolia from Central Asia …',
@@ -80,8 +80,8 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
     id: 'yunus-b1-language-4-production',
     type: 'reflection',
     title: 'Explain How a Situation Changes Over Time',
-    instructions: 'Write or say five to six connected B1 sentences about a real or imagined place, institution, or community. Do not retell Chapter 4.',
-    question: 'Can you begin with an “if ... can ...” perspective, describe an earlier high point, mark a later contrast, and explain a short cause-result chain?',
+    instructions: 'Write or say five or six sentences about a place that changed over time.',
+    question: 'What was the place like before, and what changed?',
     correctAnswer: null,
     explanation: 'A strong response should develop one coherent account. Useful language from the chapter includes “If we... we can...”, superlative descriptions such as “the most...”, “however”, “because of...”, “caused ... to...”, “which...”, “began to...”, and “failure to ... worsened...”.',
     feedback: {
@@ -89,10 +89,10 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
       incorrect: '',
     },
     discussionPrompts: [
-      { question: 'Sentence 1 — Use “If we... we can...” to explain how looking at one factor can improve understanding.', mode: 'Individual' },
-      { question: 'Sentence 2 — Describe an earlier strong or successful period with an appropriate comparative or superlative expression.', mode: 'Individual' },
-      { question: 'Sentence 3 — Use “however” to mark a later change in direction.', mode: 'Pair' },
-      { question: 'Sentences 4–6 — Build a short chain with a cause, an effect on people or conditions, and a final worsening or improvement.', mode: 'Pair' },
+      { question: 'Sentence 1 — Start: “If we look at …, we can better understand …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Describe a good time: “… years ago, … was the busiest …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Show a change: “However, …”', mode: 'Pair' },
+      { question: 'Sentences 4–6 — Give a cause, its effect and how it ended.', mode: 'Pair' },
     ],
   },
 ];
@@ -103,7 +103,7 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
     id: 'yunus-b1-language-5-cause-response',
     type: 'multiple-choice',
     title: 'What Does “Would” Show?',
-    instructions: 'Read the part of the sentence from Chapter 5. Then choose the best answer.',
+    instructions: 'Read the words from Chapter 5. Then choose the best answer.',
     question: '“… they believed these leaders would save them.” What does “would save” tell us?',
     options: [
       'The leaders really saved the Turkmen in the end.',
@@ -123,7 +123,7 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
     type: 'word-bank',
     title: 'Linking Events in a Chain',
     instructions: 'Complete the lines from Chapter 5 with words from the bank. Two words are not needed.',
-    question: 'Which words show a surprising change, a result and a consequence in the second paragraph?',
+    question: 'What happened, and what did it lead to?',
     fillBlanksText: '[blank], this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster [blank] deep sorrow and fear among the Seljuk people. … The Mongols used the classic false retreat and circling tactic. [blank], they easily defeated the Seljuks.',
     wordBank: ['caused', 'However', 'Thus', 'made', 'Because'],
     correctAnswer: ['However', 'caused', 'Thus'],
@@ -137,8 +137,8 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
     id: 'yunus-b1-language-5-contrast-result',
     type: 'error-correction',
     title: 'Because or Because Of?',
-    instructions: 'Each sentence from Chapter 5 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-    question: 'Which linking form needs a noun, and which needs a full clause?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you choose between “because” and “because of”?',
     errorItems: [
       {
         sentence: 'Because many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state.',
@@ -167,12 +167,12 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-5-production', type: 'reflection', title: 'Explain a Chain of Pressure, Belief, and Result', instructions: 'Write or say five to six connected B1 sentences about a real or imagined social situation. Do not retell Chapter 5.', question: 'Can you explain a difficult condition, describe how people respond, report what they believe will happen, introduce an unexpected development, and finish with a clear result?', correctAnswer: null, explanation: 'A strong response should read as one connected explanation. Useful language from the chapter includes “because of...”, “were looking for...”, “started...”, “because they believed... would...”, “however”, “caused...”, “thus”, and “after that”.', feedback: { correct: 'Keep the relationships explicit so each sentence develops the previous one.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Introduce a difficult condition with “because of...”.', mode: 'Individual' },
-      { question: 'Sentence 2 — Describe how people were trying to respond to that condition.', mode: 'Individual' },
-      { question: 'Sentence 3 — Report what they believed would happen next.', mode: 'Pair' },
-      { question: 'Sentence 4 — Use “however” to introduce an unexpected new development.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Show one or two consequences with “caused...”, “thus”, or another clear result expression.', mode: 'Pair' },
+    id: 'yunus-b1-language-5-production', type: 'reflection', title: 'Explain a Chain of Pressure, Belief, and Result', instructions: 'Write or say five or six sentences about a hard time for a town or village.', question: 'What did people hope for, and what really happened?', correctAnswer: null, explanation: 'A strong response should read as one connected explanation. Useful language from the chapter includes “because of...”, “were looking for...”, “started...”, “because they believed... would...”, “however”, “caused...”, “thus”, and “after that”.', feedback: { correct: 'Keep the relationships explicit so each sentence develops the previous one.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Give the problem: “Because of …, …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say what people were doing: “Families were …ing …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Say what they believed: “They believed that … would …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Add a surprise: “However, …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — Give the result: “This caused … . Thus, …”', mode: 'Pair' },
     ],
   },
 ];
@@ -183,8 +183,8 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
     id: 'yunus-b1-language-6-focus-and-effect',
     type: 'drag-drop',
     title: 'Who Is the Subject?',
-    instructions: 'Read each sentence from Chapter 6. Is the subject the one who acts, or the person or thing that the action happens to? Put it in the right group.',
-    question: 'When does the chapter use the passive, and what does it put in focus?',
+    instructions: 'Does the subject do the action, or does the action happen to it? Sort the sentences.',
+    question: 'Who does the action in each sentence?',
     dragDropGroups: [
       {
         group: 'Active: the subject acts',
@@ -225,8 +225,8 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
     id: 'yunus-b1-language-6-change-over-time',
     type: 'choose-form',
     title: 'Step by Step to Dependence',
-    instructions: 'Choose the correct word or phrase to complete each sentence from Chapter 6.',
-    question: 'Which forms show a change of state, a comparison and a process that started?',
+    instructions: 'Choose the correct words for each sentence from Chapter 6.',
+    question: 'How did the Seljuk state slowly lose its power?',
     formChoices: [
       {
         sentence: 'Finally, an agreement was made with the Mongols, but in time the Seljuks [choice] dependent on them.',
@@ -255,8 +255,8 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
     id: 'yunus-b1-language-6-comparison-result',
     type: 'transformation',
     title: 'Keep the Meaning, Change the Focus',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 6.',
-    question: 'Can you say the same result or the same action with a different structure?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say these lines from Chapter 6?',
     transformItems: [
       {
         source: '… this tax increased continuously and this made both the state and the people poorer.',
@@ -277,12 +277,12 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-6-production', type: 'reflection', title: 'Describe a Process of Losing Control', instructions: 'Write or say five to six connected B1 sentences about a real, historical, or imagined situation in which a person, group, or organisation gradually loses control. Do not retell Chapter 6.', question: 'Can you keep the affected side in focus, show change over time, compare its new role with an earlier one, and finish with a clear consequence?', correctAnswer: null, explanation: 'A strong response should develop as one short process. Useful language from the chapter includes “was/were + past participle”, “in time”, “became...”, “almost like...”, “began to be...”, “however”, “made ... + adjective”, “through...”, and “was/were directly attached to...”.', feedback: { correct: 'Keep the stages connected so the reader can see who is affected, how the situation changes, and what the final consequence is.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Introduce something that happened to the affected person, group, or organisation.', mode: 'Individual' },
-      { question: 'Sentence 2 — Use “in time” or “became...” to show a change in status or independence.', mode: 'Individual' },
-      { question: 'Sentence 3 — Use “almost like...” to compare the new role with another role.', mode: 'Pair' },
-      { question: 'Sentence 4 — Show a new process beginning, using “began to...” or “began to be...”.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Add a contrast or worsening development and finish with a clear effect using “made...”, another result expression, or a final passive sentence.', mode: 'Pair' },
+    id: 'yunus-b1-language-6-production', type: 'reflection', title: 'Describe a Process of Losing Control', instructions: 'Write or say five or six sentences about a group that slowly loses control.', question: 'How does the group lose control, step by step?', correctAnswer: null, explanation: 'A strong response should develop as one short process. Useful language from the chapter includes “was/were + past participle”, “in time”, “became...”, “almost like...”, “began to be...”, “however”, “made ... + adjective”, “through...”, and “was/were directly attached to...”.', feedback: { correct: 'Keep the stages connected so the reader can see who is affected, how the situation changes, and what the final consequence is.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Say what happened to the group: “… was bought by …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Show a change: “In time, … became …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Compare: “… acted almost like …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Show a new start: “Soon, … began to be …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — Give the result: “However, … . This made …”', mode: 'Pair' },
     ],
   },
 ];
@@ -312,8 +312,8 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
     id: 'yunus-b1-language-7-influence-response',
     type: 'error-correction',
     title: 'Find and Fix the Mistake',
-    instructions: 'Each sentence from Chapter 7 has one mistake. Tap the wrong word or phrase, then choose the correction.',
-    question: 'Can you correct a parallel -ing form, a preposition and a verb pattern?',
+    instructions: 'Each sentence has one mistake. Tap it, then choose the correct words.',
+    question: 'Can you fix the sentences about the dervishes?',
     errorItems: [
       {
         sentence: 'They were spreading a simple understanding of Islam and established popular Sûfîsm.',
@@ -346,7 +346,7 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
     type: 'word-bank',
     title: 'Time, Pressure and Response',
     instructions: 'Complete the lines from Chapter 7 with words from the bank. Three words are not needed.',
-    question: 'Which words place the events in time, name the pressure, and lead to Yunus’s response?',
+    question: 'What was happening, and how did Yunus Emre help?',
     fillBlanksText: 'Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî and dervish and travelled around Anatolia. … Poetry was his [blank] influential tool.',
     wordBank: ['under', 'During', 'most', 'such', 'While', 'so', 'more'],
     correctAnswer: ['During', 'under', 'such', 'most'],
@@ -357,12 +357,12 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-7-production', type: 'reflection', title: 'Build a Response from Its Context', instructions: 'Write or say five to six connected B1 sentences about a real or imagined person who appears in a difficult situation and responds to a need in the community. Do not retell Chapter 7.', question: 'Can you establish the situation, show ongoing activity, explain the person’s response and tool, and identify the sources of their ideas?', correctAnswer: null, explanation: 'Useful language from the chapter includes “during the same period”, “under ... pressure”, “were ...-ing and ...-ing”, “so in such an environment”, “helped people make sense of...”, “influential among...”, “most influential tool”, “comes from...”, and “was inspired by...”.', feedback: { correct: 'Keep the sentences connected so the context leads naturally to the response, the tool, and the sources of influence.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Introduce a difficult situation or pressure.', mode: 'Individual' },
-      { question: 'Sentence 2 — Describe two activities that were happening during the same period.', mode: 'Individual' },
-      { question: 'Sentence 3 — Use “so” or a similar connector to move from the situation to the person’s response.', mode: 'Pair' },
-      { question: 'Sentence 4 — Explain how the person helped people (“helped people + verb”) and name their most influential tool or means.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — State what the person’s approach comes from and add another source of inspiration.', mode: 'Pair' },
+    id: 'yunus-b1-language-7-production', type: 'reflection', title: 'Build a Response from Its Context', instructions: 'Write or say five or six sentences about someone who helped people in a hard time.', question: 'What was the problem, and how did the person help?', correctAnswer: null, explanation: 'Useful language from the chapter includes “during the same period”, “under ... pressure”, “were ...-ing and ...-ing”, “so in such an environment”, “helped people make sense of...”, “influential among...”, “most influential tool”, “comes from...”, and “was inspired by...”.', feedback: { correct: 'Keep the sentences connected so the context leads naturally to the response, the tool, and the sources of influence.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Give the problem: “Last winter, …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Say what people were doing: “During that time, … were …ing …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Bring in the person: “So …, … also offered help.”', mode: 'Pair' },
+      { question: 'Sentence 4 — Say how she helped: “She helped people … . Her … was her most useful tool.”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — Say where her ideas come from: “Her way … comes from … . She was also inspired by …”', mode: 'Pair' },
     ],
   },
 ];
@@ -374,7 +374,7 @@ export const yunusB1LanguageFocusChapter8: Exercise[] = [
     type: 'matching',
     title: 'What Do These Phrases Mean?',
     instructions: 'Match each phrase from Chapter 8 with its meaning in plain English.',
-    question: 'What do these phrases from the chapter and the poem mean?',
+    question: 'What do these phrases from Chapter 8 mean?',
     matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
     matchingPairs: [
       { left: 'a vivid love', right: 'a strong and lively feeling' },
@@ -399,7 +399,7 @@ export const yunusB1LanguageFocusChapter8: Exercise[] = [
     type: 'word-bank',
     title: 'Define, Report, Conclude',
     instructions: 'Complete the lines from Chapter 8 with words from the bank. Three words are not needed.',
-    question: 'Which words define an idea, show whose view it is, and draw a conclusion?',
+    question: 'Which word fits each gap?',
     fillBlanksText: 'One of the most important basic spiritual principles in his works is the idea of Tawhid, [blank] means the Oneness of Allah. [blank] Yunus Emre, Allah, the Creator, is the source of all things. [blank] everything is connected to Him.',
     wordBank: ['So', 'which', 'According to', 'who', 'Due to', 'But'],
     correctAnswer: ['which', 'According to', 'So'],
@@ -413,8 +413,8 @@ export const yunusB1LanguageFocusChapter8: Exercise[] = [
     id: 'yunus-b1-language-8-whoever-condition',
     type: 'transformation',
     title: 'Only One: Say It Another Way',
-    instructions: 'Complete each new sentence so that it keeps the meaning of the sentence from Chapter 8.',
-    question: 'How else can you say that there is only one true reality?',
+    instructions: 'Write the missing words. Keep the same meaning.',
+    question: 'How else can we say that there is only one true reality?',
     transformItems: [
       {
         source: 'The Creator is the true and only reality.',
@@ -435,12 +435,12 @@ export const yunusB1LanguageFocusChapter8: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-8-production', type: 'reflection', title: 'Explain an Idea from Definition to Conclusion', instructions: 'Write or say five to six connected B1 sentences about a principle, belief, or important idea from school, community life, science, or everyday experience. Do not retell Chapter 8.', question: 'Can you define the idea, attribute a viewpoint, add explanatory information, draw a consequence, and end with a general statement about people?', correctAnswer: null, explanation: 'Useful language from the chapter includes “the idea of ... which means ...”, “according to ...”, “..., which is/was ...”, “so ...”, “there is only one ..., and that is ...”, and “whoever ...”.', feedback: { correct: 'Keep the paragraph connected: define the idea first, develop it, then move to a consequence or general statement.', incorrect: '' }, discussionPrompts: [
-      { question: 'Sentence 1 — Introduce an idea and define it with “which means...”.', mode: 'Individual' },
-      { question: 'Sentence 2 — Attribute a viewpoint with “according to...”.', mode: 'Individual' },
-      { question: 'Sentence 3 — Add extra information with a “which” clause.', mode: 'Pair' },
-      { question: 'Sentence 4 — Use “so” to show a conclusion or consequence.', mode: 'Pair' },
-      { question: 'Sentences 5–6 — Identify one central point with “there is only one..., and that is...” or finish with a general “whoever...” statement.', mode: 'Pair' },
+    id: 'yunus-b1-language-8-production', type: 'reflection', title: 'Explain an Idea from Definition to Conclusion', instructions: 'Write or say five or six sentences about an important idea, for example fair play.', question: 'What does the idea mean, and why does it matter?', correctAnswer: null, explanation: 'Useful language from the chapter includes “the idea of ... which means ...”, “according to ...”, “..., which is/was ...”, “so ...”, “there is only one ..., and that is ...”, and “whoever ...”.', feedback: { correct: 'Keep the paragraph connected: define the idea first, develop it, then move to a consequence or general statement.', incorrect: '' }, discussionPrompts: [
+      { question: 'Sentence 1 — Explain the idea: “… is …, which means …”', mode: 'Individual' },
+      { question: 'Sentence 2 — Give a view: “According to …, …”', mode: 'Individual' },
+      { question: 'Sentence 3 — Add information: “This idea, which …, …”', mode: 'Pair' },
+      { question: 'Sentence 4 — Give a result: “So …”', mode: 'Pair' },
+      { question: 'Sentences 5–6 — End: “There is only one …, and that is …” or “Whoever …”', mode: 'Pair' },
     ],
   },
 ];
