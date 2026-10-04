@@ -12,9 +12,9 @@ import { mosesB2StoryMapLayout } from './storyMap';
 import { mosesB2StoryMapCopyEn } from './en/storyMap';
 import { mosesB2StoryMapCopyAr } from './ar/storyMap';
 
-// Interactive map page, placed right after chapter 3 (the end of the background block on Egypt, the dates, the Nile and the Delta).
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
 const MAP_PAGE_ID = 101;
-const MAP_AFTER_CHAPTER = 3;
+const MAP_AFTER_CHAPTER = 24;
 
 const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
   pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));

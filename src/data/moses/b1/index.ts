@@ -90,9 +90,9 @@ const arabicLanguageFocus = {
   ...mosesB1LanguageFocusChapter13Ar,
 };
 
-// Interactive map page, placed right after chapter 4 (the first clean scene break; Egypt, the Nile and the palace are known by then).
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
 const MAP_PAGE_ID = 101;
-const MAP_AFTER_CHAPTER = 4;
+const MAP_AFTER_CHAPTER = 13;
 
 const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
   pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));

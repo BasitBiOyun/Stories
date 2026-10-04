@@ -30,7 +30,6 @@ import {
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { collectionVisualFor } from '../../core/content/storyCatalog';
-import { generateTeacherGuidePDF } from '../../lib/pdfGenerator';
 import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
@@ -67,7 +66,8 @@ export const TeacherGuide = ({
   bookId,
   bookTitle,
   level,
-  collectionId
+  collectionId,
+  pdfUrl
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -82,6 +82,8 @@ export const TeacherGuide = ({
   bookTitle?: string;
   level?: Level;
   collectionId?: string;
+  /** The book's printable Teacher's Book (opens in a new tab). */
+  pdfUrl?: string;
 }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [searchQuery, setSearchQuery] = useState('');
@@ -1580,16 +1582,19 @@ entries.set(key, { word, definition });
                 <ClipboardCheck size={17} />
                 <span className="hidden sm:inline">{language === 'ar' ? 'تحضير الدرس' : 'Lesson Prep'}</span>
               </button>
-              <button
-                data-pdf-locked="true"
-                aria-disabled="true"
-                onClick={() => generateTeacherGuidePDF(displayGuideTitle, displayGuideSubtitle, content, metadata)}
-                className="flex items-center gap-2 min-h-11 px-3 sm:px-4 bg-gold/[0.08] text-gold rounded-xl border border-gold/15 transition-all font-display text-[13px] sm:text-[15px] group cursor-pointer"
-                title={t('nav.downloadPdf')}
+              {pdfUrl && (
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener"
+                data-book-pdf-link
+                className="flex items-center gap-2 min-h-11 px-3 sm:px-4 bg-gold/[0.08] text-gold rounded-xl border border-gold/15 transition-all font-display text-[13px] sm:text-[15px] hover:bg-gold hover:text-white"
+                title={language === 'ar' ? 'افتح كتاب المعلم PDF للقراءة أو الطباعة' : "Open the Teacher's Book PDF to read or print"}
               >
                 <Download size={18} className="shrink-0" />
-                <span className="hidden sm:inline">{t('nav.downloadPdf')}</span>
-              </button>
+                <span className="hidden sm:inline">PDF</span>
+              </a>
+              )}
               <button 
                 onClick={onClose}
                 className="w-11 h-11 flex items-center justify-center bg-white/[0.05] text-gold hover:bg-white/10 rounded-xl border border-white/[0.06] transition-all cursor-pointer shrink-0"

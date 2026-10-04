@@ -6,7 +6,6 @@ import { PhosphorGuideIcon, type GuideIconName } from '../icons/PhosphorGuideIco
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { collectionVisualFor } from '../../core/content/storyCatalog';
-import { generateStudentGuidePDF } from '../../lib/pdfGenerator';
 import { PageData, StudentGuideSection, TeacherGuideSection } from '../../types';
 import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -91,7 +90,8 @@ export const SelfStudyGuide = ({
   metadata,
   bookTitle,
   collectionId,
-  level
+  level,
+  pdfUrl
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -107,6 +107,8 @@ export const SelfStudyGuide = ({
   bookTitle?: string;
   collectionId?: string;
   level?: string | null;
+  /** The book's printable Self-Study Guide (opens in a new tab). */
+  pdfUrl?: string;
 }) => {
   const [activeTab, setActiveTab] = useState('welcome');
   const [activeGuideSection, setActiveGuideSection] = useState(0);
@@ -778,16 +780,19 @@ export const SelfStudyGuide = ({
             </div>
 
             <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-              <button
-                data-pdf-locked="true"
-                aria-disabled="true"
-                onClick={() => generateStudentGuidePDF(displayTitle, displaySubtitle, metadata, studentGuideText, displaySections.map(section => ({ title: section.title, text: section.text, points: section.points })))}
-                className="flex min-h-11 items-center gap-2 rounded-xl border border-gold/15 bg-gold/[0.07] px-3 sm:px-4 font-display text-[12px] sm:text-[13px] font-bold text-gold"
-                title={t('nav.downloadPdf')}
+              {pdfUrl && (
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener"
+                data-book-pdf-link
+                className="flex min-h-11 items-center gap-2 rounded-xl border border-gold/15 bg-gold/[0.07] px-3 sm:px-4 font-display text-[12px] sm:text-[13px] font-bold text-gold transition-colors hover:bg-gold hover:text-white"
+                title={isAr ? 'افتح دليل التعلم الذاتي PDF للقراءة أو الطباعة' : 'Open the Self-Study Guide PDF to read or print'}
               >
-                <Download size={18} />
-                <span className="hidden sm:inline">{t('nav.downloadPdf')}</span>
-              </button>
+                <Download size={18} className="shrink-0" />
+                <span className="hidden sm:inline">PDF</span>
+              </a>
+              )}
               <button
                 type="button"
                 onClick={onClose}

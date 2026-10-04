@@ -12,10 +12,9 @@ import { abrahamB2StoryMapLayout } from './storyMap';
 import { abrahamB2StoryMapCopyEn } from './en/storyMap';
 import { abrahamB2StoryMapCopyAr } from './ar/storyMap';
 
-// Interactive map page, placed right after chapter 4 ("Abraham’s Land and Time", where the birthplace,
-// Harran and the dates are discussed) as a preview of the journey. Chapter 5 starts a new scene.
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
 const MAP_PAGE_ID = 101;
-const MAP_AFTER_CHAPTER = 4;
+const MAP_AFTER_CHAPTER = 35;
 
 const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
   pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));

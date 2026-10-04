@@ -62,9 +62,9 @@ import { meccaB1StoryMapLayout } from './storyMap';
 import { meccaB1StoryMapCopyEn } from './en/storyMap';
 import { meccaB1StoryMapCopyAr } from './ar/storyMap';
 
-// Interactive map page, placed right after chapter 6 (every place of chapters 1–6 has been named by then).
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
 const MAP_PAGE_ID = 101;
-const MAP_AFTER_CHAPTER = 6;
+const MAP_AFTER_CHAPTER = 15;
 
 const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
   pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));

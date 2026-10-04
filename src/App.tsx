@@ -28,7 +28,6 @@ import {
   type BilingualTeacherGuideData,
 } from './core/content/bookGuideLoader';
 import { cn } from './lib/utils';
-import { generateBookPDF } from './lib/pdfGenerator';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
 import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
 import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bookProgress';
@@ -53,6 +52,7 @@ import { HowToUse } from './components/layout/HowToUse';
 import { UsageGuide } from './components/layout/UsageGuide';
 import { USAGE_GUIDES } from './data/usageGuides';
 import { SECTION_ICONS } from './lib/sectionIcons';
+import { BOOK_PDF_LABELS, bookPdfUrl } from './lib/bookPdfs';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
@@ -1486,19 +1486,6 @@ const AppContent = () => {
                     </button>
                   )}
 
-                  <button 
-                    data-pdf-locked="true"
-                    aria-disabled="true"
-                    onClick={() => {
-                      currentBook && generateBookPDF(currentBook);
-                      setIsMenuOpen(false);
-                    }}
-                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
-                  >
-                    <Download size={21} className={themeClasses.menuAccentText} />
-                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.downloadPdf')}</span>
-                  </button>
-
                   {canSaveOffline && (
                     <button
                       type="button"
@@ -1522,6 +1509,31 @@ const AppContent = () => {
                     </button>
                   )}
                 </div>
+
+                {selectedProphetId && currentLevel && (
+                  <>
+                    <h4 className={cn("mt-6 px-4 font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuSectionHeader)}>
+                      {BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'].heading}
+                    </h4>
+                    <div className="mt-2 space-y-1" data-book-pdfs>
+                      {(['story', isTeacher ? 'teachers-book' : 'self-study-guide'] as const).map(kind => (
+                        <a
+                          key={kind}
+                          href={bookPdfUrl(selectedProphetId, currentLevel, language, kind)}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() => setIsMenuOpen(false)}
+                          className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                          data-book-pdf={kind}
+                        >
+                          <Download size={21} className={themeClasses.menuAccentText} />
+                          <span className="font-display text-[14px] sm:text-[15px] font-semibold">{BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'][kind]}</span>
+                        </a>
+                      ))}
+                      <p className="px-4 pt-1 text-[12px] text-parchment/50">{BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'].hint}</p>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="mt-auto pt-6">
@@ -1562,6 +1574,7 @@ const AppContent = () => {
             bookId={currentBook?.id}
             level={currentLevel || undefined}
             collectionId={currentCollection || 'prophets'}
+            pdfUrl={selectedProphetId && currentLevel ? bookPdfUrl(selectedProphetId, currentLevel, language, 'teachers-book') : undefined}
           />
         </Suspense>
       )}
@@ -1581,6 +1594,7 @@ const AppContent = () => {
         footerText={t('nav.interactiveEbookSeries')}
         collectionId={currentCollection || 'prophets'}
         level={currentLevel}
+        pdfUrl={selectedProphetId && currentLevel ? bookPdfUrl(selectedProphetId, currentLevel, language, 'self-study-guide') : undefined}
       />
 
       {/* Background PDF Generation Notification Card */}

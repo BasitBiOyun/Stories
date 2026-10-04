@@ -1279,6 +1279,9 @@ const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '�
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
+    // A printed book's QR code says which edition it belongs to (?lang=en or ?lang=ar).
+    const fromLink = new URLSearchParams(window.location.search).get('lang');
+    if (fromLink === 'en' || fromLink === 'ar') return fromLink;
     const stored = localStorage.getItem('app_language');
     if (stored === 'en' || stored === 'ar') return stored;
     return navigator.language?.toLowerCase().startsWith('ar') ? 'ar' : 'en';

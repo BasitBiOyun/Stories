@@ -58,9 +58,9 @@ import { yunusB1StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
-// Interactive map page, placed right after chapter 7 (the last chapter with places and dates).
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
 const MAP_PAGE_ID = 101;
-const MAP_AFTER_CHAPTER = 7;
+const MAP_AFTER_CHAPTER = 13;
 
 const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
   pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
