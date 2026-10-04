@@ -535,6 +535,11 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const pinchRef = useRef<number | null>(null);
   const tapRef = useRef<{ x: number; y: number } | null>(null);
   const [dragging, setDragging] = useState(false);
+  // While the hand moves the map, the wide coast glow is left out: redrawing it every frame is
+  // what makes panning stutter on weak screens such as classroom boards. It comes back on release.
+  const [moving, setMoving] = useState(false);
+  const wheelTimer = useRef<number | null>(null);
+  useEffect(() => () => { if (wheelTimer.current) window.clearTimeout(wheelTimer.current); }, []);
 
   const onPointerDown = (event: React.PointerEvent) => {
     if ((event.target as Element).closest('[data-map-pin]')) return;
@@ -561,6 +566,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       const [a, b] = [...pointers.current.values()];
       const distance = Math.hypot(a.x - b.x, a.y - b.y);
       const [mx, my] = toMap((a.x + b.x) / 2, (a.y + b.y) / 2);
+      setMoving(true);
       zoomBy(pinchRef.current / distance, mx, my, false);
       pinchRef.current = distance;
       return;
@@ -568,6 +574,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     if (pointers.current.size === 1 && size.w > 0 && !tapRef.current) {
       const current = viewRef.current;
       const scale = current.w / size.w;
+      setMoving(true);
       setView(clampView({
         ...current,
         x: current.x - (event.clientX - previous.x) * scale,
@@ -583,7 +590,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     tapRef.current = null;
     pointers.current.delete(event.pointerId);
     if (pointers.current.size < 2) pinchRef.current = null;
-    if (pointers.current.size === 0) setDragging(false);
+    if (pointers.current.size === 0) { setDragging(false); setMoving(false); }
   };
 
   useEffect(() => {
@@ -593,6 +600,9 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       event.preventDefault();
       stopTour();
       const [x, y] = toMap(event.clientX, event.clientY);
+      setMoving(true);
+      if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
+      wheelTimer.current = window.setTimeout(() => setMoving(false), 220);
       zoomBy(event.deltaY > 0 ? 1.18 : 1 / 1.18, x, y, false);
     };
     element.addEventListener('wheel', onWheel, { passive: false });
@@ -860,7 +870,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               <use href={`#${uid}-landpath`} className="story-map-ink" fill="none" stroke={PALETTE.coast} strokeWidth={2.4 * px} strokeLinejoin="round" strokeDasharray="1 2" />
             )}
             <g className={inkDone ? undefined : 'story-map-landfade'}>
-              <use href={`#${uid}-landpath`} fill="none" stroke={PALETTE.coastGlow} strokeWidth={9} strokeLinejoin="round" vectorEffect="non-scaling-stroke" opacity={0.75} />
+              {!moving && <use href={`#${uid}-landpath`} fill="none" stroke={PALETTE.coastGlow} strokeWidth={9} strokeLinejoin="round" vectorEffect="non-scaling-stroke" opacity={0.75} />}
               <use href={`#${uid}-landpath`} fill={`url(#${uid}-land)`} stroke={PALETTE.coast} strokeWidth={0.9} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
               <path d={BASE.lakes} fill={PALETTE.seaTop} stroke={PALETTE.coast} strokeWidth={0.6} vectorEffect="non-scaling-stroke" />
               <path d={BASE.rivers} fill="none" stroke={PALETTE.river} strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />

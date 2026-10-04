@@ -1,6 +1,7 @@
 import http from 'node:http';
-import { createReadStream, existsSync, statSync } from 'node:fs';
+import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
+import { brotliCompressSync, gzipSync, constants as zlibConstants } from 'node:zlib';
 
 const port = Number(process.env.PORT || 8080);
 const root = join(process.cwd(), 'dist');
@@ -28,16 +29,45 @@ const contentTypes = {
   '.pdf': 'application/pdf',
 };
 
-const sendFile = (res, filePath) => {
+// Text files go out compressed (about a quarter of their size), which matters most on slow
+// school networks. Files never change inside one revision, so each is compressed once and kept.
+const compressible = new Set(['.html', '.js', '.css', '.json', '.svg', '.ttf']);
+const compressedCache = new Map();
+const compressed = (filePath, encoding) => {
+  const key = `${encoding}:${filePath}`;
+  let body = compressedCache.get(key);
+  if (!body) {
+    const raw = readFileSync(filePath);
+    body = encoding === 'br'
+      ? brotliCompressSync(raw, { params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 6, [zlibConstants.BROTLI_PARAM_SIZE_HINT]: raw.length } })
+      : gzipSync(raw, { level: 6 });
+    compressedCache.set(key, body);
+  }
+  return body;
+};
+
+const sendFile = (req, res, filePath) => {
   const ext = extname(filePath).toLowerCase();
-  res.writeHead(200, {
+  const headers = {
     'Content-Type': contentTypes[ext] || 'application/octet-stream',
     // PDFs keep their names when they are rebuilt, so they are only cached for an hour.
     'Cache-Control': ext === '.html' ? 'no-cache' : ext === '.pdf' ? 'public, max-age=3600' : 'public, max-age=31536000, immutable',
     'X-Content-Type-Options': 'nosniff',
     'X-Stories-Git-Sha': gitSha,
     'X-Stories-Revision': revision,
-  });
+  };
+  if (compressible.has(ext)) {
+    const accepted = String(req.headers['accept-encoding'] || '');
+    const encoding = /\bbr\b/.test(accepted) ? 'br' : /\bgzip\b/.test(accepted) ? 'gzip' : null;
+    headers.Vary = 'Accept-Encoding';
+    if (encoding) {
+      const body = compressed(filePath, encoding);
+      res.writeHead(200, { ...headers, 'Content-Encoding': encoding, 'Content-Length': body.length });
+      res.end(req.method === 'HEAD' ? undefined : body);
+      return;
+    }
+  }
+  res.writeHead(200, headers);
   createReadStream(filePath).pipe(res);
 };
 
@@ -71,7 +101,7 @@ const server = http.createServer((req, res) => {
   let filePath = join(root, safePath === '/' ? 'index.html' : safePath);
 
   if (existsSync(filePath) && statSync(filePath).isFile()) {
-    return sendFile(res, filePath);
+    return sendFile(req, res, filePath);
   }
 
   // Never serve the SPA HTML fallback for a missing hashed Vite asset. A stale
@@ -90,7 +120,7 @@ const server = http.createServer((req, res) => {
 
   filePath = join(root, 'index.html');
   if (existsSync(filePath)) {
-    return sendFile(res, filePath);
+    return sendFile(req, res, filePath);
   }
 
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
