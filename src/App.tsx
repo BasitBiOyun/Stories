@@ -64,6 +64,7 @@ import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
 import { useClassMode } from './contexts/ClassModeContext';
 import { saveBookOffline } from './lib/pwa';
+import { OFFLINE_BOOK_SIZE_MB } from './data/offlineBookSizes';
 
 const AppContent = () => {
   // --- State ---
@@ -321,12 +322,16 @@ const AppContent = () => {
   // "Save this book offline": every image and audio file of both language editions, stored by the service worker.
   const [offlineSaveState, setOfflineSaveState] = useState<'idle' | 'saving' | 'saved' | 'failed'>('idle');
   useEffect(() => { setOfflineSaveState('idle'); }, [currentBookPair]);
+  const offlineBookSizeMb = selectedProphetId && currentLevel ? OFFLINE_BOOK_SIZE_MB[`${selectedProphetId}:${currentLevel}`] : undefined;
+  const offlineBookHasAudio = Boolean(currentBookPair?.en.pages.some(page => page.type === 'story' && page.audioUrl));
   const canSaveOffline = import.meta.env.PROD && typeof navigator !== 'undefined' && 'serviceWorker' in navigator;
   const handleSaveOffline = () => {
     if (!currentBookPair || offlineSaveState === 'saving') return;
     const urls = new Set<string>();
     [currentBookPair.en, currentBookPair.ar].forEach(book => {
       book.pages.forEach(page => {
+        // Only story pages show pictures; learning pages carry unused (some dead) image links.
+        if (page.type !== 'story') return;
         if (page.image) urls.add(page.image);
         if (page.audioUrl) urls.add(page.audioUrl);
       });
@@ -1507,6 +1512,11 @@ const AppContent = () => {
                           : t('nav.saveOffline')}
                       </span>
                     </button>
+                  )}
+                  {canSaveOffline && offlineBookSizeMb && (
+                    <p className="px-4 pb-1 pl-[3.3rem] rtl:pl-4 rtl:pr-[3.3rem] text-[12px] sm:text-[13px] leading-snug text-parchment/70" data-save-offline-hint>
+                      {t(offlineBookHasAudio ? 'nav.saveOfflineHint' : 'nav.saveOfflineHintImages').replace('{size}', formatNumber(offlineBookSizeMb))}
+                    </p>
                   )}
                 </div>
 
